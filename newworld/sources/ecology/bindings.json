@@ -1032,6 +1032,35 @@
     1,
     1
    ]
+  },
+  "rootworm": {
+   "records": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMRootworm2"
+   ],
+   "why": "Curse of Cipactli's rootworm, the lore's translucent travelling worm",
+   "levels": [
+    20
+   ]
+  },
+  "spike-ox": {
+   "records": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMTrikeBaby",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMTrike"
+   ],
+   "why": "Curse of Cipactli's spike-ox: young, then grown",
+   "levels": [
+    2,
+    38
+   ]
+  },
+  "mudrunner": {
+   "records": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMMudRunner"
+   ],
+   "why": "Curse of Cipactli's mudrunner",
+   "levels": [
+    1
+   ]
   }
  },
  "npc_groups": {

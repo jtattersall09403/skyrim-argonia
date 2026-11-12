@@ -2,7 +2,7 @@
  "region": "arnesian-jungle",
  "creatures": [
   {
-   "kind": "parrot",
+   "kind": "hummingbird",
    "size_class": "small",
    "hostility": "benign",
    "habitat": "canopy",
@@ -12,8 +12,9 @@
     8
    ],
    "signature": true,
-   "asset": "tropical-skyrim",
-   "extrapolation": "Tropical Skyrim bird set supplies canopy parrots; a jungle staple"
+   "asset": "mod",
+   "extrapolation": "Tropical Skyrim bird set supplies canopy parrots; a jungle staple",
+   "cite": "extrapolation: bright nectar birds of the jungle canopy, as the parrot of the old row"
   },
   {
    "kind": "giant-spider",
@@ -130,7 +131,7 @@
    "extrapolation": "canopy insects whose chorus marks a healthy jungle; extrapolated"
   },
   {
-   "kind": "giant-wasp",
+   "kind": "giant-mosquito",
    "size_class": "insect",
    "hostility": "hostile",
    "habitat": "canopy",
@@ -140,8 +141,8 @@
     3
    ],
    "signature": false,
-   "asset": "bmv",
-   "cite": "story/lore/topics/fauna-hazards.md#Everyday hazards"
+   "asset": "mod",
+   "cite": "extrapolation: the swamp's biting insects (story/lore/topics/fauna-hazards.md#Everyday hazards); HTBM's giant mosquito"
   },
   {
    "kind": "tree-viper",
@@ -212,6 +213,34 @@
    "signature": false,
    "asset": "vanilla",
    "cite": "story/lore/topics/ecology-encounters-loot.md#2. Regional encounter composition"
+  },
+  {
+   "kind": "sabretooth-salmon",
+   "size_class": "game",
+   "hostility": "defensive",
+   "habitat": "water-brackish",
+   "time": "any",
+   "group": [
+    1,
+    3
+   ],
+   "signature": false,
+   "asset": "mod",
+   "cite": "extrapolation: a large fish running up the brackish estuaries"
+  },
+  {
+   "kind": "sea-turtle",
+   "size_class": "game",
+   "hostility": "benign",
+   "habitat": "water-salt",
+   "time": "any",
+   "group": [
+    1,
+    3
+   ],
+   "signature": false,
+   "asset": "mod",
+   "cite": "extrapolation: sea turtles of the Topal coast"
   }
  ],
  "harvestables": [

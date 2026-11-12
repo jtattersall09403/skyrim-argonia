@@ -44,18 +44,19 @@
    "extrapolation": "shore and sea birds; Tropical Skyrim and vanilla bird sets"
   },
   {
-   "kind": "tern",
+   "kind": "shorebird",
    "size_class": "small",
    "hostility": "benign",
-   "habitat": "water-salt",
+   "habitat": "shore",
    "time": "day",
    "group": [
     3,
     8
    ],
    "signature": false,
-   "asset": "tropical-skyrim",
-   "extrapolation": "open-sea bird; extrapolated for sea regions"
+   "asset": "mod",
+   "extrapolation": "open-sea bird; extrapolated for sea regions",
+   "cite": "extrapolation: wading shorebirds of the coast, as the tern of the old row"
   },
   {
    "kind": "sea-skater",
@@ -86,7 +87,7 @@
    "extrapolation": "schooling surface fish of warm open seas"
   },
   {
-   "kind": "manta-ray",
+   "kind": "goliath-grouper",
    "size_class": "game",
    "hostility": "benign",
    "habitat": "water-salt",
@@ -96,8 +97,9 @@
     4
    ],
    "signature": true,
-   "asset": "vanilla",
-   "extrapolation": "shelf-sea wing-fish; extrapolated"
+   "asset": "mod",
+   "extrapolation": "shelf-sea wing-fish; extrapolated",
+   "cite": "extrapolation: a great slow reef fish of the Topal sea, as the manta of the old row"
   },
   {
    "kind": "reef-slaughterfish",
@@ -182,6 +184,34 @@
    "signature": true,
    "asset": "bmv",
    "extrapolation": "a vast old turtle of the shelf; the sea-going cousin of haj mota"
+  },
+  {
+   "kind": "tuna",
+   "size_class": "game",
+   "hostility": "benign",
+   "habitat": "water-salt",
+   "time": "any",
+   "group": [
+    3,
+    8
+   ],
+   "signature": false,
+   "asset": "mod",
+   "cite": "extrapolation: tuna shoals of the open Topal sea"
+  },
+  {
+   "kind": "megalodon",
+   "size_class": "giant",
+   "hostility": "hostile",
+   "habitat": "water-salt",
+   "time": "any",
+   "group": [
+    1,
+    1
+   ],
+   "signature": false,
+   "asset": "mod",
+   "cite": "extrapolation: a great shark of the open Padomaic deep"
   }
  ],
  "harvestables": [

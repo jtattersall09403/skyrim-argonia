@@ -12,7 +12,7 @@
     1
    ],
    "signature": true,
-   "asset": "bmv",
+   "asset": "mod",
    "cite": "story/lore/topics/fauna-hazards.md#Apex and set-piece creatures"
   },
   {
@@ -40,7 +40,7 @@
     1
    ],
    "signature": true,
-   "asset": "bmv",
+   "asset": "mod",
    "cite": "story/lore/topics/fauna-hazards.md#Apex and set-piece creatures"
   },
   {
@@ -110,7 +110,7 @@
     6
    ],
    "signature": false,
-   "asset": "none",
+   "asset": "mod",
    "cite": "story/lore/topics/fauna-hazards.md#Everyday hazards"
   },
   {
@@ -196,6 +196,48 @@
    "signature": false,
    "asset": "vanilla",
    "extrapolation": "the earlier list and the turtle-shell uses of EC S1 imply living turtles"
+  },
+  {
+   "kind": "torchbug",
+   "size_class": "insect",
+   "hostility": "benign",
+   "habitat": "marsh",
+   "time": "night",
+   "group": [
+    3,
+    10
+   ],
+   "signature": false,
+   "asset": "mod",
+   "cite": "story/lore/topics/fauna-hazards.md#Flora"
+  },
+  {
+   "kind": "wild-boar",
+   "size_class": "game",
+   "hostility": "defensive",
+   "habitat": "bush",
+   "time": "any",
+   "group": [
+    1,
+    3
+   ],
+   "signature": false,
+   "asset": "mod",
+   "cite": "extrapolation: brush boar of the swamp forest"
+  },
+  {
+   "kind": "medusa",
+   "size_class": "predator",
+   "hostility": "hostile",
+   "habitat": "marsh",
+   "time": "any",
+   "group": [
+    1,
+    3
+   ],
+   "signature": false,
+   "asset": "mod",
+   "cite": "story/lore/topics/fauna-hazards.md#Apex and set-piece creatures"
   }
  ],
  "harvestables": [

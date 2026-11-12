@@ -30,18 +30,19 @@
    "extrapolation": "water-striders on calm sea surface; a harmless insect for sea regions"
   },
   {
-   "kind": "tern",
+   "kind": "shorebird",
    "size_class": "small",
    "hostility": "benign",
-   "habitat": "water-salt",
+   "habitat": "shore",
    "time": "day",
    "group": [
     3,
     8
    ],
    "signature": false,
-   "asset": "tropical-skyrim",
-   "extrapolation": "open-sea bird; extrapolated for sea regions"
+   "asset": "mod",
+   "extrapolation": "open-sea bird; extrapolated for sea regions",
+   "cite": "extrapolation: wading shorebirds of the coast, as the tern of the old row"
   },
   {
    "kind": "sea-gull",
@@ -86,7 +87,7 @@
    "extrapolation": "sea jellyfish of warm shelf water; extrapolated hazard"
   },
   {
-   "kind": "sea-snake",
+   "kind": "anglerfish",
    "size_class": "predator",
    "hostility": "hostile",
    "habitat": "water-salt",
@@ -96,8 +97,9 @@
     3
    ],
    "signature": true,
-   "asset": "vanilla",
-   "extrapolation": "sea-going serpent of warm shelf; extrapolated from the snake abundance of the lore"
+   "asset": "mod",
+   "extrapolation": "sea-going serpent of warm shelf; extrapolated from the snake abundance of the lore",
+   "cite": "extrapolation: an ambush fish of the Topal sea, as the sea snake of the old row"
   },
   {
    "kind": "shark",
@@ -114,7 +116,7 @@
    "extrapolation": "Black Marsh mod ships sharks; coast fauna of any warm sea"
   },
   {
-   "kind": "manta-ray",
+   "kind": "goliath-grouper",
    "size_class": "game",
    "hostility": "benign",
    "habitat": "water-salt",
@@ -124,8 +126,9 @@
     4
    ],
    "signature": false,
-   "asset": "vanilla",
-   "extrapolation": "shelf-sea wing-fish; extrapolated"
+   "asset": "mod",
+   "extrapolation": "shelf-sea wing-fish; extrapolated",
+   "cite": "extrapolation: a great slow reef fish of the Topal sea, as the manta of the old row"
   },
   {
    "kind": "sea-turtle",
@@ -142,34 +145,6 @@
    "extrapolation": "warm-water shelf turtle; extrapolated"
   },
   {
-   "kind": "great-whale",
-   "size_class": "giant",
-   "hostility": "benign",
-   "habitat": "water-salt",
-   "time": "any",
-   "group": [
-    1,
-    2
-   ],
-   "signature": false,
-   "asset": "vanilla",
-   "extrapolation": "baleen whales cross every warm ocean; extrapolated for the open sea"
-  },
-  {
-   "kind": "giant-squid",
-   "size_class": "giant",
-   "hostility": "hostile",
-   "habitat": "water-salt",
-   "time": "night",
-   "group": [
-    1,
-    1
-   ],
-   "signature": false,
-   "asset": "bmv",
-   "extrapolation": "deep-water giant; the dreugh and sea-drake lore points to monsters of the deeps"
-  },
-  {
    "kind": "sea-drake",
    "size_class": "giant",
    "hostility": "hostile",
@@ -182,6 +157,48 @@
    "signature": false,
    "asset": "bmv",
    "cite": "story/lore/topics/fauna-hazards.md#Apex and set-piece creatures"
+  },
+  {
+   "kind": "sabretooth-salmon",
+   "size_class": "game",
+   "hostility": "defensive",
+   "habitat": "water-brackish",
+   "time": "any",
+   "group": [
+    1,
+    3
+   ],
+   "signature": false,
+   "asset": "mod",
+   "cite": "extrapolation: a large fish running up the brackish estuaries"
+  },
+  {
+   "kind": "megalania",
+   "size_class": "predator",
+   "hostility": "hostile",
+   "habitat": "shore",
+   "time": "any",
+   "group": [
+    1,
+    3
+   ],
+   "signature": false,
+   "asset": "mod",
+   "cite": "extrapolation: a giant monitor lizard of the swamp edge"
+  },
+  {
+   "kind": "sea-otter",
+   "size_class": "small",
+   "hostility": "benign",
+   "habitat": "shore",
+   "time": "any",
+   "group": [
+    1,
+    3
+   ],
+   "signature": false,
+   "asset": "mod",
+   "cite": "extrapolation: otters on the coast"
   }
  ],
  "harvestables": [

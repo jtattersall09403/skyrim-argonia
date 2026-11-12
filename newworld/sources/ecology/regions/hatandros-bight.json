@@ -69,7 +69,7 @@
     3
    ],
    "signature": true,
-   "asset": "vanilla",
+   "asset": "mod",
    "cite": "story/lore/topics/ecology-encounters-loot.md#2. Regional encounter composition"
   },
   {
@@ -172,7 +172,7 @@
    "cite": "story/lore/topics/fauna-hazards.md#Apex and set-piece creatures ; newworld/story/data/db/region_note.jsonl#hatandros-bight/ecology"
   },
   {
-   "kind": "dragonfly",
+   "kind": "meganeura",
    "size_class": "insect",
    "hostility": "benign",
    "habitat": "water-fresh",
@@ -182,12 +182,13 @@
     8
    ],
    "signature": false,
-   "asset": "vanilla",
-   "extrapolation": "a harmless water-edge insect that makes the still water read as alive; nothing in the lore forbids it"
+   "asset": "mod",
+   "extrapolation": "a harmless water-edge insect that makes the still water read as alive; nothing in the lore forbids it",
+   "cite": "extrapolation: King of the Murkmire places meganeura, giant dragonflies, over Black Marsh's still water"
   },
   {
-   "kind": "sea-lion",
-   "size_class": "game",
+   "kind": "sea-otter",
+   "size_class": "small",
    "hostility": "benign",
    "habitat": "shore",
    "time": "day",
@@ -196,8 +197,9 @@
     6
    ],
    "signature": false,
-   "asset": "vanilla",
-   "extrapolation": "shore-resting seals for cold open coast; extrapolated"
+   "asset": "mod",
+   "extrapolation": "shore-resting seals for cold open coast; extrapolated",
+   "cite": "extrapolation: otters on the coast, the sea mammal the sea lion's row asked for"
   },
   {
    "kind": "king-crab",

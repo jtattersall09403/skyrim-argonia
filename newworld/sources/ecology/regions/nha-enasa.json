@@ -2,7 +2,7 @@
  "region": "nha-enasa",
  "creatures": [
   {
-   "kind": "osheeja-gar",
+   "kind": "sabretooth-salmon",
    "size_class": "game",
    "hostility": "defensive",
    "habitat": "water-fresh",
@@ -12,8 +12,8 @@
     5
    ],
    "signature": false,
-   "asset": "vanilla",
-   "cite": "story/lore/topics/fauna-hazards.md#Domesticated and useful animals ; newworld/story/data/db/region_note.jsonl#nha-enasa/ecology"
+   "asset": "mod",
+   "cite": "extrapolation: a large river fish of the kind the Naka-Desh fish for (story/lore/topics/fauna-hazards.md#Domesticated and useful animals)"
   },
   {
    "kind": "mudcrab",
@@ -101,7 +101,7 @@
    "cite": "story/lore/topics/fauna-hazards.md#Domesticated and useful animals"
   },
   {
-   "kind": "dragonfly",
+   "kind": "meganeura",
    "size_class": "insect",
    "hostility": "benign",
    "habitat": "water-fresh",
@@ -111,8 +111,9 @@
     8
    ],
    "signature": true,
-   "asset": "vanilla",
-   "extrapolation": "a harmless water-edge insect that makes the still water read as alive; nothing in the lore forbids it"
+   "asset": "mod",
+   "extrapolation": "a harmless water-edge insect that makes the still water read as alive; nothing in the lore forbids it",
+   "cite": "extrapolation: King of the Murkmire places meganeura, giant dragonflies, over Black Marsh's still water"
   },
   {
    "kind": "kotu-gava",
@@ -125,7 +126,7 @@
     6
    ],
    "signature": false,
-   "asset": "none",
+   "asset": "mod",
    "cite": "story/lore/topics/fauna-hazards.md#Everyday hazards"
   },
   {

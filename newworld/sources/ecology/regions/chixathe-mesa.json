@@ -68,7 +68,7 @@
     3
    ],
    "signature": true,
-   "asset": "vanilla",
+   "asset": "mod",
    "cite": "story/lore/topics/ecology-encounters-loot.md#2. Regional encounter composition"
   },
   {
@@ -210,6 +210,20 @@
    "signature": false,
    "asset": "bmv",
    "extrapolation": "the mod forest guardian and tree mother, a plant-body guardian of high ground"
+  },
+  {
+   "kind": "cicada-chorus",
+   "size_class": "insect",
+   "hostility": "benign",
+   "habitat": "canopy",
+   "time": "day",
+   "group": [
+    1,
+    3
+   ],
+   "signature": false,
+   "asset": "mod",
+   "cite": "extrapolation: cicadas of the dry scrub canopy"
   }
  ],
  "harvestables": [

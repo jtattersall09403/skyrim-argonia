@@ -1113,5 +1113,86 @@
   "used_by": "the NewWorld profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): a layout source for 3 new-world places (nw-04)",
   "linked_or_forked_by": "none: depended on as the player’s own download; its plugins never active, never a master",
   "notes": "author YeahButIronically. The player's own download is fine as a dependency; placing its meshes/textures or copied records in our generated plugin needs the author's permission."
+ },
+ {
+  "name": "Giant Spider Crabs - (Animal Series Pt.9) SE (Nexus 49521)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/49521?tab=files&file_id=201870",
+  "version": "1.0 (mods/dependencies.json row giant-spider-crabs)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): creature records and assets of the new world's ecology (phase nw-03b)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author Skinwalker21. No terms stated on the page."
+ },
+ {
+  "name": "Goliath Groupers - (Animal Series Pt.8) SE (Nexus 49523)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/49523?tab=files&file_id=201876",
+  "version": "1.0 (mods/dependencies.json row goliath-groupers)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): creature records and assets of the new world's ecology (phase nw-03b)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author Skinwalker21. No terms stated on the page."
+ },
+ {
+  "name": "Tuna Fish  (Animal Series) SE (Nexus 58749)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/58749?tab=files&file_id=428992",
+  "version": "1.1 (mods/dependencies.json row tuna-fish)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): creature records and assets of the new world's ecology (phase nw-03b)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author Skinwalker21. No terms stated on the page."
+ },
+ {
+  "name": "Shroom Beetles (Creature Series pt.6) SE (Nexus 69828)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/69828?tab=files&file_id=291873",
+  "version": "1.0 (mods/dependencies.json row shroom-beetles)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): creature records and assets of the new world's ecology (phase nw-03b)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author Skinwalker21. No terms stated on the page."
+ },
+ {
+  "name": "Megalania (Prehistoric Content Series) SE-AE (Nexus 109174)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/109174?tab=files&file_id=460945",
+  "version": "1.0 (mods/dependencies.json row megalania)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): creature records and assets of the new world's ecology (phase nw-03b)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author Skinwalker21. No terms stated on the page."
+ },
+ {
+  "name": "Hummingbirds- Mihail Monsters and Animals (SE-AE version) (''bird'') (Nexus 78759)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/78759?tab=files&file_id=331784",
+  "version": "1 (mods/dependencies.json row hummingbirds)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): creature records and assets of the new world's ecology (phase nw-03b)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author Mihail. No terms stated on the page."
+ },
+ {
+  "name": "Anglerfish - Pixie's Creature Series (Nexus 87250)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/87250?tab=files&file_id=443787",
+  "version": "1.1 (mods/dependencies.json row anglerfish)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): creature records and assets of the new world's ecology (phase nw-03b)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author PixieBomb. No terms stated on the page."
+ },
+ {
+  "name": "Sabertooth Salmon (Prehistoric Content Series) SE (Nexus 60270)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/60270?tab=files&file_id=431753",
+  "version": "1.1 (mods/dependencies.json row sabertooth-salmon)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): creature records and assets of the new world's ecology (phase nw-03b)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author Skinwalker21. No terms stated on the page."
+ },
+ {
+  "name": "Megalodon - (Prehistoric Content Series Pt.13) SE (Nexus 59005)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/59005?tab=files&file_id=244463",
+  "version": "1.1 (mods/dependencies.json row megalodon)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): creature records and assets of the new world's ecology (phase nw-03b)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author Skinwalker21. No terms stated on the page."
  }
 ]

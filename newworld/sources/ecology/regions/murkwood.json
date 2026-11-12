@@ -54,7 +54,7 @@
     1
    ],
    "signature": false,
-   "asset": "bmv",
+   "asset": "vanilla",
    "cite": "story/lore/topics/fauna-hazards.md#Apex and set-piece creatures"
   },
   {
@@ -68,7 +68,7 @@
     6
    ],
    "signature": true,
-   "asset": "none",
+   "asset": "mod",
    "cite": "story/lore/topics/fauna-hazards.md#Domesticated and useful animals"
   },
   {
@@ -166,11 +166,11 @@
     3
    ],
    "signature": false,
-   "asset": "none",
+   "asset": "mod",
    "cite": "story/lore/topics/ecology-encounters-loot.md#Creature notes that change how a fight plays"
   },
   {
-   "kind": "giant-wasp",
+   "kind": "giant-mosquito",
    "size_class": "insect",
    "hostility": "hostile",
    "habitat": "canopy",
@@ -180,22 +180,78 @@
     3
    ],
    "signature": false,
-   "asset": "bmv",
-   "cite": "story/lore/topics/fauna-hazards.md#Everyday hazards"
+   "asset": "mod",
+   "cite": "extrapolation: the swamp's biting insects (story/lore/topics/fauna-hazards.md#Everyday hazards); HTBM's giant mosquito"
   },
   {
-   "kind": "feather-serpent",
+   "kind": "kaj-thux",
    "size_class": "giant",
    "hostility": "hostile",
-   "habitat": "canopy",
+   "habitat": "marsh",
    "time": "any",
    "group": [
     1,
     1
    ],
    "signature": true,
-   "asset": "none",
-   "cite": "story/lore/topics/fauna-hazards.md#Apex and set-piece creatures"
+   "asset": "mod",
+   "cite": "story/lore/topics/fauna-hazards.md#Apex and set-piece creatures (kaj-thux, Ample Serpents)"
+  },
+  {
+   "kind": "wild-boar",
+   "size_class": "game",
+   "hostility": "defensive",
+   "habitat": "bush",
+   "time": "any",
+   "group": [
+    1,
+    3
+   ],
+   "signature": false,
+   "asset": "mod",
+   "cite": "extrapolation: brush boar of the swamp forest"
+  },
+  {
+   "kind": "swamp-leech",
+   "size_class": "small",
+   "hostility": "hostile",
+   "habitat": "marsh",
+   "time": "any",
+   "group": [
+    1,
+    3
+   ],
+   "signature": false,
+   "asset": "mod",
+   "cite": "story/lore/topics/fauna-hazards.md#Everyday hazards (giant leeches)"
+  },
+  {
+   "kind": "hummingbird",
+   "size_class": "small",
+   "hostility": "benign",
+   "habitat": "canopy",
+   "time": "any",
+   "group": [
+    1,
+    3
+   ],
+   "signature": false,
+   "asset": "mod",
+   "cite": "extrapolation: bright nectar birds of the canopy"
+  },
+  {
+   "kind": "stalker-cat",
+   "size_class": "predator",
+   "hostility": "hostile",
+   "habitat": "canopy",
+   "time": "any",
+   "group": [
+    1,
+    3
+   ],
+   "signature": false,
+   "asset": "mod",
+   "cite": "extrapolation: jungle cats of the mangrove canopy"
   }
  ],
  "harvestables": [

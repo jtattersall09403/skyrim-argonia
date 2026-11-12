@@ -2,8 +2,8 @@
  "region": "althii-archipelago",
  "creatures": [
   {
-   "kind": "mangrove-crab",
-   "size_class": "small",
+   "kind": "giant-spider-crab",
+   "size_class": "game",
    "hostility": "defensive",
    "habitat": "shore",
    "time": "any",
@@ -12,9 +12,9 @@
     5
    ],
    "signature": true,
-   "asset": "vanilla",
+   "asset": "mod",
    "extrapolation": "region note: mangrove coasts, paddy fauna and crabs",
-   "cite": "newworld/story/data/db/region_note.jsonl#althii-archipelago/ecology"
+   "cite": "extrapolation: a large crab of the mangrove coast"
   },
   {
    "kind": "mudcrab",
@@ -75,7 +75,7 @@
    "extrapolation": "shore and sea birds; Tropical Skyrim and vanilla bird sets"
   },
   {
-   "kind": "reed-heron",
+   "kind": "kingfisher",
    "size_class": "small",
    "hostility": "benign",
    "habitat": "water-fresh",
@@ -85,8 +85,9 @@
     2
    ],
    "signature": false,
-   "asset": "tropical-skyrim",
-   "extrapolation": "a still-water wader; extrapolated from the wading birds of region notes"
+   "asset": "mod",
+   "extrapolation": "a still-water wader; extrapolated from the wading birds of region notes",
+   "cite": "extrapolation: a fishing bird of reed-fringed fresh water, as the heron of the old row"
   },
   {
    "kind": "slaughterfish",
@@ -103,18 +104,18 @@
    "cite": "story/lore/topics/ecology-encounters-loot.md#2. Regional encounter composition ; newworld/story/data/db/region_note.jsonl#althii-archipelago/dangers"
   },
   {
-   "kind": "glowgill-guar",
+   "kind": "kagouti",
    "size_class": "game",
-   "hostility": "benign",
-   "habitat": "shore",
+   "hostility": "defensive",
+   "habitat": "open",
    "time": "day",
    "group": [
     2,
     4
    ],
    "signature": true,
-   "asset": "bmv",
-   "cite": "story/lore/topics/fauna-hazards.md#Domesticated and useful animals"
+   "asset": "mod",
+   "cite": "extrapolation: Morrowind's kagouti, herd beast of the lands bordering Black Marsh"
   },
   {
    "kind": "guar",
@@ -215,7 +216,7 @@
    "extrapolation": "a standing cloud over still water follows from the lore of insect load as the baseline hazard (EC P2)"
   },
   {
-   "kind": "dragonfly",
+   "kind": "meganeura",
    "size_class": "insect",
    "hostility": "benign",
    "habitat": "water-fresh",
@@ -225,8 +226,37 @@
     8
    ],
    "signature": false,
-   "asset": "vanilla",
-   "extrapolation": "a harmless water-edge insect that makes the still water read as alive; nothing in the lore forbids it"
+   "asset": "mod",
+   "extrapolation": "a harmless water-edge insect that makes the still water read as alive; nothing in the lore forbids it",
+   "cite": "extrapolation: King of the Murkmire places meganeura, giant dragonflies, over Black Marsh's still water"
+  },
+  {
+   "kind": "giant-snail",
+   "size_class": "small",
+   "hostility": "benign",
+   "habitat": "marsh",
+   "time": "any",
+   "group": [
+    1,
+    4
+   ],
+   "signature": true,
+   "asset": "mod",
+   "cite": "story/lore/topics/ingredients-alchemy.md#snail-mucus (giant snails of the marsh)"
+  },
+  {
+   "kind": "sabretooth-salmon",
+   "size_class": "game",
+   "hostility": "defensive",
+   "habitat": "water-brackish",
+   "time": "any",
+   "group": [
+    1,
+    3
+   ],
+   "signature": false,
+   "asset": "mod",
+   "cite": "extrapolation: a large fish running up the brackish estuaries"
   }
  ],
  "harvestables": [

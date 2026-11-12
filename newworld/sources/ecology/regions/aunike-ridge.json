@@ -100,62 +100,6 @@
    "cite": "story/lore/topics/ecology-encounters-loot.md#Creature notes that change how a fight plays"
   },
   {
-   "kind": "red-wolf",
-   "size_class": "predator",
-   "hostility": "hostile",
-   "habitat": "open",
-   "time": "night",
-   "group": [
-    2,
-    4
-   ],
-   "signature": true,
-   "asset": "bmv",
-   "extrapolation": "Black Marsh mod 2 ships red wolf for open drier ground"
-  },
-  {
-   "kind": "alit",
-   "size_class": "game",
-   "hostility": "hostile",
-   "habitat": "open",
-   "time": "day",
-   "group": [
-    1,
-    3
-   ],
-   "signature": false,
-   "asset": "vanilla",
-   "cite": "story/lore/topics/ecology-encounters-loot.md#2. Regional encounter composition"
-  },
-  {
-   "kind": "netch",
-   "size_class": "game",
-   "hostility": "benign",
-   "habitat": "open",
-   "time": "day",
-   "group": [
-    1,
-    2
-   ],
-   "signature": false,
-   "asset": "vanilla",
-   "extrapolation": "Morrowind kind named for the Morrowind border and Velothi ruin country"
-  },
-  {
-   "kind": "kagouti",
-   "size_class": "game",
-   "hostility": "defensive",
-   "habitat": "open",
-   "time": "day",
-   "group": [
-    1,
-    3
-   ],
-   "signature": false,
-   "asset": "vanilla",
-   "cite": "story/lore/topics/ecology-encounters-loot.md#2. Regional encounter composition"
-  },
-  {
    "kind": "giant-centipede",
    "size_class": "insect",
    "hostility": "hostile",
@@ -184,20 +128,6 @@
    "cite": "story/lore/topics/fauna-hazards.md#Flora"
   },
   {
-   "kind": "lamia",
-   "size_class": "predator",
-   "hostility": "hostile",
-   "habitat": "rock",
-   "time": "any",
-   "group": [
-    1,
-    3
-   ],
-   "signature": false,
-   "asset": "bmv",
-   "cite": "story/lore/topics/fauna-hazards.md#Apex and set-piece creatures"
-  },
-  {
    "kind": "treant-grove-guardian",
    "size_class": "giant",
    "hostility": "defensive",
@@ -210,6 +140,90 @@
    "signature": false,
    "asset": "bmv",
    "extrapolation": "the mod forest guardian and tree mother, a plant-body guardian of high ground"
+  },
+  {
+   "kind": "shroom-beetle",
+   "size_class": "small",
+   "hostility": "hostile",
+   "habitat": "bush",
+   "time": "any",
+   "group": [
+    1,
+    3
+   ],
+   "signature": true,
+   "asset": "mod",
+   "cite": "extrapolation: jaw beetles of the Archon children's games (story/lore/topics/ecology-encounters-loot.md#Archon's children) as wild fungus beetles"
+  },
+  {
+   "kind": "hist-frog",
+   "size_class": "small",
+   "hostility": "benign",
+   "habitat": "marsh",
+   "time": "any",
+   "group": [
+    2,
+    6
+   ],
+   "signature": false,
+   "asset": "mod",
+   "cite": "story/lore/topics/fauna-hazards.md#Domesticated and useful animals"
+  },
+  {
+   "kind": "marsh-deer",
+   "size_class": "game",
+   "hostility": "benign",
+   "habitat": "bush",
+   "time": "any",
+   "group": [
+    2,
+    4
+   ],
+   "signature": false,
+   "asset": "mod",
+   "cite": "extrapolation: deer of the reed margins"
+  },
+  {
+   "kind": "wild-boar",
+   "size_class": "game",
+   "hostility": "defensive",
+   "habitat": "bush",
+   "time": "any",
+   "group": [
+    1,
+    3
+   ],
+   "signature": false,
+   "asset": "mod",
+   "cite": "extrapolation: brush boar of the swamp forest"
+  },
+  {
+   "kind": "crocodile",
+   "size_class": "predator",
+   "hostility": "hostile",
+   "habitat": "water-fresh",
+   "time": "any",
+   "group": [
+    1,
+    3
+   ],
+   "signature": false,
+   "asset": "mod",
+   "cite": "extrapolation: crocodiles of the ridge's marsh pools"
+  },
+  {
+   "kind": "giant-leech",
+   "size_class": "insect",
+   "hostility": "hostile",
+   "habitat": "water-fresh",
+   "time": "any",
+   "group": [
+    1,
+    3
+   ],
+   "signature": false,
+   "asset": "mod",
+   "cite": "story/lore/topics/fauna-hazards.md#Everyday hazards (giant leeches)"
   }
  ],
  "harvestables": [

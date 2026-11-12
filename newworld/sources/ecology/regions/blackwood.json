@@ -3,16 +3,16 @@
  "creatures": [
   {
    "kind": "death-hopper",
-   "size_class": "predator",
-   "hostility": "hostile",
-   "habitat": "water-fresh",
+   "size_class": "small",
+   "hostility": "defensive",
+   "habitat": "marsh",
    "time": "any",
    "group": [
     2,
     5
    ],
    "signature": true,
-   "asset": "none",
+   "asset": "mod",
    "cite": "story/lore/topics/fauna-hazards.md#Everyday hazards"
   },
   {
@@ -97,7 +97,7 @@
     1
    ],
    "signature": true,
-   "asset": "bmv",
+   "asset": "vanilla",
    "cite": "story/lore/topics/fauna-hazards.md#Apex and set-piece creatures"
   },
   {
@@ -125,11 +125,11 @@
     6
    ],
    "signature": false,
-   "asset": "none",
+   "asset": "mod",
    "cite": "story/lore/topics/fauna-hazards.md#Everyday hazards"
   },
   {
-   "kind": "giant-wasp",
+   "kind": "giant-mosquito",
    "size_class": "insect",
    "hostility": "hostile",
    "habitat": "canopy",
@@ -139,8 +139,8 @@
     3
    ],
    "signature": false,
-   "asset": "bmv",
-   "cite": "story/lore/topics/fauna-hazards.md#Everyday hazards"
+   "asset": "mod",
+   "cite": "extrapolation: the swamp's biting insects (story/lore/topics/fauna-hazards.md#Everyday hazards); HTBM's giant mosquito"
   },
   {
    "kind": "marsh-rat",
@@ -211,6 +211,34 @@
    "signature": false,
    "asset": "bmv",
    "extrapolation": "Black Marsh mod lists deer; a browser of dry rises"
+  },
+  {
+   "kind": "wild-boar",
+   "size_class": "game",
+   "hostility": "defensive",
+   "habitat": "bush",
+   "time": "any",
+   "group": [
+    1,
+    3
+   ],
+   "signature": false,
+   "asset": "mod",
+   "cite": "extrapolation: brush boar of the swamp forest"
+  },
+  {
+   "kind": "shroom-beetle",
+   "size_class": "small",
+   "hostility": "hostile",
+   "habitat": "bush",
+   "time": "any",
+   "group": [
+    1,
+    3
+   ],
+   "signature": false,
+   "asset": "mod",
+   "cite": "extrapolation: jaw beetles of the Archon children's games (story/lore/topics/ecology-encounters-loot.md#Archon's children) as wild fungus beetles"
   }
  ],
  "harvestables": [

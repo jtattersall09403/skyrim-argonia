@@ -2,7 +2,7 @@
  "region": "banujha-basin",
  "creatures": [
   {
-   "kind": "osheeja-gar",
+   "kind": "sabretooth-salmon",
    "size_class": "game",
    "hostility": "defensive",
    "habitat": "water-fresh",
@@ -12,8 +12,8 @@
     5
    ],
    "signature": true,
-   "asset": "vanilla",
-   "cite": "story/lore/topics/fauna-hazards.md#Domesticated and useful animals ; newworld/story/data/db/region_note.jsonl#banujha-basin/ecology"
+   "asset": "mod",
+   "cite": "extrapolation: a large river fish of the kind the Naka-Desh fish for (story/lore/topics/fauna-hazards.md#Domesticated and useful animals)"
   },
   {
    "kind": "mudcrab",
@@ -60,16 +60,16 @@
   },
   {
    "kind": "death-hopper",
-   "size_class": "predator",
-   "hostility": "hostile",
-   "habitat": "water-fresh",
+   "size_class": "small",
+   "hostility": "defensive",
+   "habitat": "marsh",
    "time": "any",
    "group": [
     2,
     5
    ],
    "signature": false,
-   "asset": "none",
+   "asset": "mod",
    "cite": "story/lore/topics/fauna-hazards.md#Everyday hazards"
   },
   {
@@ -139,7 +139,7 @@
     6
    ],
    "signature": false,
-   "asset": "none",
+   "asset": "mod",
    "cite": "story/lore/topics/fauna-hazards.md#Everyday hazards"
   },
   {
@@ -195,7 +195,7 @@
     3
    ],
    "signature": false,
-   "asset": "none",
+   "asset": "mod",
    "cite": "story/lore/topics/ecology-encounters-loot.md#Creature notes that change how a fight plays"
   },
   {
@@ -211,6 +211,62 @@
    "signature": false,
    "asset": "bmv",
    "cite": "story/lore/topics/fauna-hazards.md#Apex and set-piece creatures"
+  },
+  {
+   "kind": "torchbug",
+   "size_class": "insect",
+   "hostility": "benign",
+   "habitat": "marsh",
+   "time": "night",
+   "group": [
+    3,
+    10
+   ],
+   "signature": false,
+   "asset": "mod",
+   "cite": "story/lore/topics/fauna-hazards.md#Flora"
+  },
+  {
+   "kind": "rootworm",
+   "size_class": "giant",
+   "hostility": "defensive",
+   "habitat": "marsh",
+   "time": "any",
+   "group": [
+    1,
+    1
+   ],
+   "signature": true,
+   "asset": "mod",
+   "cite": "story/lore/topics/ecology-encounters-loot.md#Rootworm (translucent worm, travels the Hist root tunnels)"
+  },
+  {
+   "kind": "haj-mota",
+   "size_class": "game",
+   "hostility": "defensive",
+   "habitat": "water-fresh",
+   "time": "any",
+   "group": [
+    1,
+    3
+   ],
+   "signature": false,
+   "asset": "mod",
+   "cite": "story/lore/topics/fauna-hazards.md#Apex and set-piece creatures (haj mota)"
+  },
+  {
+   "kind": "swamp-leech",
+   "size_class": "small",
+   "hostility": "hostile",
+   "habitat": "marsh",
+   "time": "any",
+   "group": [
+    1,
+    3
+   ],
+   "signature": false,
+   "asset": "mod",
+   "cite": "story/lore/topics/fauna-hazards.md#Everyday hazards (giant leeches)"
   }
  ],
  "harvestables": [

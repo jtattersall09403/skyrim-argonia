@@ -2838,6 +2838,285 @@
    "asset_only": true
   },
   {
+   "id": "giant-spider-crabs",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 49521,
+    "file": 201870
+   },
+   "name": "Giant Spider Crabs - (Animal Series Pt.9) SE",
+   "author": "Skinwalker21",
+   "version": "1.0",
+   "archive": "Giant Spider Crabs - (Animal Series Pt.9) SE-49521-1-0-1620239266.zip",
+   "size_kb": 5955,
+   "why": "a creature kind of the new world's regions (nw-03b D3 creature loop, docs/research/creature-mod-search.md); asset-only: its creature records copied into ArgoniaNewWorld.esm (ForeignCopy), assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "sha256": "09afcaaf9f5339e7b07dcac9881f6532a3170e7b1fc42570143d9a84cfaa1435",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency; copying its records into our generated plugin is using its contents and needs the author's word before release (as htbm).",
+   "ai_clause": "not stated",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read 2026-11-12 (lane nw-03b D3)",
+   "plugins": [
+    "Spider Crabs.esp"
+   ],
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download; ArgoniaNewWorld.esm copies its creature records",
+   "from": "nw-03b D3",
+   "asset_only": true
+  },
+  {
+   "id": "goliath-groupers",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 49523,
+    "file": 201876
+   },
+   "name": "Goliath Groupers - (Animal Series Pt.8) SE",
+   "author": "Skinwalker21",
+   "version": "1.0",
+   "archive": "Goliath Groupers - (Animal Series Pt.8) SE-49523-1-0-1620240250.zip",
+   "size_kb": 5750,
+   "why": "a creature kind of the new world's regions (nw-03b D3 creature loop, docs/research/creature-mod-search.md); asset-only: its creature records copied into ArgoniaNewWorld.esm (ForeignCopy), assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "sha256": "e8dd99be20d89d87b2080156d61d69fccf83ee5aaf09b76a1379d7f26ec5bcc4",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency; copying its records into our generated plugin is using its contents and needs the author's word before release (as htbm).",
+   "ai_clause": "not stated",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read 2026-11-12 (lane nw-03b D3)",
+   "plugins": [
+    "GoliathGrouper.esp"
+   ],
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download; ArgoniaNewWorld.esm copies its creature records",
+   "from": "nw-03b D3",
+   "asset_only": true
+  },
+  {
+   "id": "tuna-fish",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 58749,
+    "file": 428992
+   },
+   "name": "Tuna Fish  (Animal Series) SE",
+   "author": "Skinwalker21",
+   "version": "1.1",
+   "archive": "Tuna Fish (Animal Series) SE-58749-1-1-1695680287.zip",
+   "size_kb": 9568,
+   "why": "a creature kind of the new world's regions (nw-03b D3 creature loop, docs/research/creature-mod-search.md); asset-only: its creature records copied into ArgoniaNewWorld.esm (ForeignCopy), assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "sha256": "5bee32eb868f2b46f91ff8e967cb6151f32ab4a324666a2a37831c047702e60c",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency; copying its records into our generated plugin is using its contents and needs the author's word before release (as htbm).",
+   "ai_clause": "not stated",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read 2026-11-12 (lane nw-03b D3)",
+   "plugins": [
+    "Tuna.esp"
+   ],
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download; ArgoniaNewWorld.esm copies its creature records",
+   "from": "nw-03b D3",
+   "asset_only": true
+  },
+  {
+   "id": "shroom-beetles",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 69828,
+    "file": 291873
+   },
+   "name": "Shroom Beetles (Creature Series pt.6) SE",
+   "author": "Skinwalker21",
+   "version": "1.0",
+   "archive": "Shroom Beetles (Creature Series pt.6)-69828-1-0-1655498622.zip",
+   "size_kb": 42164,
+   "why": "a creature kind of the new world's regions (nw-03b D3 creature loop, docs/research/creature-mod-search.md); asset-only: its creature records copied into ArgoniaNewWorld.esm (ForeignCopy), assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "sha256": "7baa3cc93953774c03a231f7384a6430e0474780cb1db34b764761099473abbc",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency; copying its records into our generated plugin is using its contents and needs the author's word before release (as htbm).",
+   "ai_clause": "not stated",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read 2026-11-12 (lane nw-03b D3)",
+   "plugins": [
+    "Shroom Beetles.esp"
+   ],
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download; ArgoniaNewWorld.esm copies its creature records",
+   "from": "nw-03b D3",
+   "asset_only": true
+  },
+  {
+   "id": "megalania",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 109174,
+    "file": 460945
+   },
+   "name": "Megalania (Prehistoric Content Series) SE-AE",
+   "author": "Skinwalker21",
+   "version": "1.0",
+   "archive": "Megalania (Prehistoric Content Series) SE-AE-109174-1-0-1705154047.zip",
+   "size_kb": 65244,
+   "why": "a creature kind of the new world's regions (nw-03b D3 creature loop, docs/research/creature-mod-search.md); asset-only: its creature records copied into ArgoniaNewWorld.esm (ForeignCopy), assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "sha256": "1eb67d3b167234400f7e2749d7d70b4fd061e0bb575009b1cd4e369688af13fd",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency; copying its records into our generated plugin is using its contents and needs the author's word before release (as htbm).",
+   "ai_clause": "not stated",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read 2026-11-12 (lane nw-03b D3)",
+   "plugins": [
+    "BirbWalker21_Megalania.esp"
+   ],
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download; ArgoniaNewWorld.esm copies its creature records",
+   "from": "nw-03b D3",
+   "asset_only": true
+  },
+  {
+   "id": "hummingbirds",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 78759,
+    "file": 331784
+   },
+   "name": "Hummingbirds- Mihail Monsters and Animals (SE-AE version) (''bird'')",
+   "author": "Mihail",
+   "version": "1",
+   "archive": "hummingbirds (SE-AE) v1-78759-1-1668432395.rar",
+   "size_kb": 31707,
+   "why": "a creature kind of the new world's regions (nw-03b D3 creature loop, docs/research/creature-mod-search.md); asset-only: its creature records copied into ArgoniaNewWorld.esm (ForeignCopy), assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "sha256": "bab522430476f24f02145bbc2d5c37dd4d60db2766337ccd4d9a0c3899242f75",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency; copying its records into our generated plugin is using its contents and needs the author's word before release (as htbm).",
+   "ai_clause": "not stated",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read 2026-11-12 (lane nw-03b D3)",
+   "plugins": [
+    "mihailhummingbird.esp"
+   ],
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download; ArgoniaNewWorld.esm copies its creature records",
+   "from": "nw-03b D3",
+   "asset_only": true
+  },
+  {
+   "id": "anglerfish",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 87250,
+    "file": 443787
+   },
+   "name": "Anglerfish - Pixie's Creature Series",
+   "author": "PixieBomb",
+   "version": "1.1",
+   "archive": "Anglerfish-87250-1-1-1700347644.rar",
+   "size_kb": 2727,
+   "why": "a creature kind of the new world's regions (nw-03b D3 creature loop, docs/research/creature-mod-search.md); asset-only: its creature records copied into ArgoniaNewWorld.esm (ForeignCopy), assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "sha256": "b80f51f795a7f203f1008768e42b0c66dc3bce4dba9307f1f3fd008c8b9083bb",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency; copying its records into our generated plugin is using its contents and needs the author's word before release (as htbm).",
+   "ai_clause": "not stated",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read 2026-11-12 (lane nw-03b D3)",
+   "plugins": [
+    "FA06Anglerfish.esp"
+   ],
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download; ArgoniaNewWorld.esm copies its creature records",
+   "from": "nw-03b D3",
+   "asset_only": true
+  },
+  {
+   "id": "sabertooth-salmon",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 60270,
+    "file": 431753
+   },
+   "name": "Sabertooth Salmon (Prehistoric Content Series) SE",
+   "author": "Skinwalker21",
+   "version": "1.1",
+   "archive": "Sabertooth Salmon (Prehistoric Content Series)-60270-1-1-1696628808.zip",
+   "size_kb": 10293,
+   "why": "a creature kind of the new world's regions (nw-03b D3 creature loop, docs/research/creature-mod-search.md); asset-only: its creature records copied into ArgoniaNewWorld.esm (ForeignCopy), assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "sha256": "f1f1fb49661275afa00deadd1ef3e81fada69280239f0afb9a42e3bc076c36a3",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency; copying its records into our generated plugin is using its contents and needs the author's word before release (as htbm).",
+   "ai_clause": "not stated",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read 2026-11-12 (lane nw-03b D3)",
+   "plugins": [
+    "Sabertooth Salmon.esp"
+   ],
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download; ArgoniaNewWorld.esm copies its creature records",
+   "from": "nw-03b D3",
+   "asset_only": true
+  },
+  {
+   "id": "megalodon",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 59005,
+    "file": 244463
+   },
+   "name": "Megalodon - (Prehistoric Content Series Pt.13) SE",
+   "author": "Skinwalker21",
+   "version": "1.1",
+   "archive": "(Prehistoric Content Series Pt.13) SE-59005-1-1-1637915343.zip",
+   "size_kb": 9275,
+   "why": "a creature kind of the new world's regions (nw-03b D3 creature loop, docs/research/creature-mod-search.md); asset-only: its creature records copied into ArgoniaNewWorld.esm (ForeignCopy), assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "sha256": "24b7b051839ee48b40dfb7a4e6458563ceec1bc3b2fa2bcda3ba362aa56e1bd6",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency; copying its records into our generated plugin is using its contents and needs the author's word before release (as htbm).",
+   "ai_clause": "not stated",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read 2026-11-12 (lane nw-03b D3)",
+   "plugins": [
+    "Megalodon.esp"
+   ],
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download; ArgoniaNewWorld.esm copies its creature records",
+   "from": "nw-03b D3",
+   "asset_only": true
+  },
+  {
    "id": "mihail-kagouti",
    "group": "newworld",
    "source": {
@@ -4389,6 +4668,28 @@
    "conflicts": "not swept (plugins never active)",
    "linked_or_forked_by": "none: depended on as the player’s own download",
    "asset_only": true
+  },
+  {
+   "id": "argonia-soundtrack",
+   "group": "newworld",
+   "source": {
+    "built": "argonia-soundtrack"
+   },
+   "name": "Elder Souls: Argonia soundtrack (Black Marsh)",
+   "author": "Elder Souls: Argonia",
+   "version": "0.1.0",
+   "archive": "built-argonia-soundtrack.tar",
+   "size_kb": 482690,
+   "why": "our own music: one slot per role (theme, 8 exploration, 7 battle, 3 stings) under music/argonia/, read by the new world's music records (docs/design/music.md)",
+   "required": true,
+   "profile": "newworld",
+   "sha256": "7e036a8694202ef17cc1c3bdeba86bf5f4c803cf3b8d3972b4fb9563b4cb27e7",
+   "licence": "our own: generated 2026-11-12 with Google Lyria 3.5 through fal.ai (output owned by the requester, commercial use allowed per fal's terms); the theme slot may hold the owner's own file",
+   "permission_summary": "Original pieces from our own text prompts; no third-party audio was given to the model. Built by tools/newworld/music/soundtrack.py build and never committed (decision 0003).",
+   "ai_clause": "AI-generated audio: model google/lyria-3.5, prompts in newworld/sources/music/pieces.json, request ids in manifest.json",
+   "permission_ask": false,
+   "runtime": "engine music files (WAV 44.1 kHz 16-bit stereo)",
+   "conflicts": "none: new files under music/argonia/ only"
   }
  ]
 }

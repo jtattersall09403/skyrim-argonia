@@ -10,9 +10,9 @@ The recipe for what lives in the new world between its places, and how the rebui
   harvestables. A kind is a signature in at most two regions.
 - `newworld/sources/ecology/bindings.json`: each kind bound to real NPC_ records of the plugins we hold, weakest
   first (`levels` gives their census levels, a relative order only), or dropped with its reason; each lore-backed
-  hostile group of `npc_encounters.json` bound the same way. Never an invented record. Measured: 68 of 96 kinds
-  bound to 167 records, 11 of the dropped also bound to critter spawners and swarms (below), 28 dropped as actors (kinds no mod models, such as
-  dreugh and lamia; bats, leeches, manta rays); 38 of 39 people groups bound: the Naga, the tribal
+  hostile group of `npc_encounters.json` bound the same way. Never an invented record. Measured: 85 of 97 kinds
+  bound to 209 records, 11 bound to critter spawners and swarms (below), the cave bat waiting on its spawner
+  (Skyrim's bat activator); no binding is a nearest fit (the roster test below); 38 of 39 people groups bound: the Naga, the tribal
   Argonians and the undead to King of the Murkmire and Curse of Cipactli records, every bandit, raider, deserter,
   smuggler, pirate, salvager and slaver group to whole bandit-faction records of the Argonian, Dunmer, Imperial,
   Khajiit, Redguard, Orc, Breton and Bosmer of Skyrim, Dawnguard and Dragonborn (`tools/newworld/ecology/people.py`;
@@ -25,6 +25,31 @@ The recipe for what lives in the new world between its places, and how the rebui
   script runs; and how many times denser King of the Murkmire places spawners than Skyrim (`black_marsh.factor`).
 - `tools/newworld/ecology/census.py` lists every creature, race, LVLN and harvestable per plugin
   (out/newworld/ecology/census.json); bindings are checked against it.
+
+## The roster test
+
+`tools/newworld/ecology/roster_check.py` holds every region's roster to the owner's "full range, as wide as
+possible, rich and alive", and exits 1 on any failure. Per region:
+
+- a. Kinds per size class at least: land tiny (insects and critters) 2, small 3, game 2, predator 3, giant 1; sea
+  tiny 1, small 3, game 1, predator 2, giant 1.
+- b. On land, a benign and a hostile kind among the tiny, the small and the game (defensive counts as hostile: it
+  fights back); predators and monsters are hostile by the lore.
+- c. At least 4 kinds no bordering region has (borders: 3 or more shared cell edges in `cell_region.json`), and no
+  two regions sharing more than half their kinds (Jaccard, the stage's own bound).
+- d. Each water kind of the region (fresh, brackish, salt; 20,000 m2 or more in `water_classified.json`) has a
+  swimmer of that water.
+- e. Every kind bound to a true model: records or a critter base; never dropped, never a `why` that says nearest or
+  stand-in. A lore name may bind to the same animal under another name (kaj-thux to the giant snakes, haj mota to
+  the armoured turtles, death hoppers to large frogs).
+- f. Province-wide, distinct actor kinds placed at least the 38 creature races Skyrim.esm places in Tamriel (every
+  ACHR resolved through its lists).
+
+A kind no mod models is re-authored: another creature that fills its niche in that region, from the lore or stated
+as extrapolation, first from the census's unused creatures, then searched and sourced
+([creature-mod-search](../research/creature-mod-search.md)). Measured: 97 kinds over 24 regions, 85 actor kinds
+against Skyrim's 38; largest overlap of two regions 0.5; the one failure left is the cave bat (clause e) in four
+regions, bound once its spawner is.
 
 ## The stage
 

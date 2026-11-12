@@ -82,7 +82,7 @@
     6
    ],
    "signature": false,
-   "asset": "none",
+   "asset": "mod",
    "cite": "story/lore/topics/fauna-hazards.md#Everyday hazards"
   },
   {
@@ -128,9 +128,9 @@
    "cite": "story/lore/topics/fauna-hazards.md#Domesticated and useful animals"
   },
   {
-   "kind": "fleshfly-larvae",
-   "size_class": "insect",
-   "hostility": "defensive",
+   "kind": "giant-snail",
+   "size_class": "small",
+   "hostility": "benign",
    "habitat": "marsh",
    "time": "any",
    "group": [
@@ -138,8 +138,8 @@
     8
    ],
    "signature": false,
-   "asset": "effect-only",
-   "cite": "story/lore/topics/fauna-hazards.md#Everyday hazards"
+   "asset": "mod",
+   "cite": "extrapolation: King of the Murkmire places snails in Black Marsh's wet ground"
   },
   {
    "kind": "marsh-turtle",
@@ -196,6 +196,34 @@
    "signature": true,
    "asset": "bmv",
    "cite": "story/lore/topics/fauna-hazards.md#Apex and set-piece creatures"
+  },
+  {
+   "kind": "meganeura",
+   "size_class": "insect",
+   "hostility": "benign",
+   "habitat": "water-fresh",
+   "time": "any",
+   "group": [
+    1,
+    3
+   ],
+   "signature": false,
+   "asset": "mod",
+   "cite": "extrapolation: King of the Murkmire places meganeura, giant dragonflies, over Black Marsh's still water"
+  },
+  {
+   "kind": "spike-ox",
+   "size_class": "game",
+   "hostility": "defensive",
+   "habitat": "open",
+   "time": "any",
+   "group": [
+    2,
+    5
+   ],
+   "signature": true,
+   "asset": "mod",
+   "cite": "extrapolation: Curse of Cipactli's spike-ox, a horned grazer of its Black Marsh"
   }
  ],
  "harvestables": [

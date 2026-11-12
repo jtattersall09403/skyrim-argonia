@@ -21,12 +21,27 @@ How to find a real actor for a lore creature kind the mods we hold do not cover,
 6. Fetch with the stack's Nexus route, lay it asset-only (assets under `~/games/skyrimse/newworld-assets/<id>`, the
    plugin in `Data` for reading), check every script its records name is shipped, bind, rerun the census.
 
-## Result (2026-11-12)
+## The loop
+
+The roster test (`python3 -m tools.newworld.ecology.roster_check`, [ecology](../design/ecology.md)) is the exit.
+Each round: list its failures per region; re-author each kind no model fits to a creature that fills the same niche
+there (cited, or stated as extrapolation), first from the census's unused creatures; search and source for the rest;
+bind; rerun. Stop when it passes, or when two rounds add nothing.
+
+## Result
 
 Taken: Dreughs 139898, Otters 49518, Better Bats 33789 (owner), Kagouti 27521, Giant Leeches 104589,
-Blue Whales 47619, LamiaEnemies 50880, Gorgons and Medusa 100485, Nix-Hounds 54358.
+Blue Whales 47619, LamiaEnemies 50880, Gorgons and Medusa 100485, Nix-Hounds 54358, Giant Spider Crabs 49521,
+Goliath Groupers 49523, Tuna 58749, Shroom Beetles 69828, Megalania 109174, Hummingbirds 78759, Anglerfish 87250,
+Sabertooth Salmon 60270, Megalodon 59005. Census creatures put to use: King of the Murkmire's snails, Curse of
+Cipactli's rootworm, spike-ox and mudrunner, Skinwalker21's small leeches, Dawnguard's Spriggan Earth Mother.
 
-No SE mod found for: sea-lion (Mihail's seals are not on SE; 49700 is a patch for them), manta-ray (88505's rays
-fly), flying-fish, mudskipper, osheeja-gar, death-hopper, feather-serpent, hoarvor, kaj-thux, barracuda, moray,
-sea-snake, mosquito, ibis, heron, parrot, wild monkeys. Found but not taken, as the kind already has a true fit:
-giant snakes 36548, frogs 120998, sea turtles 122141, Marsh Leviathans 86261 (a spinosaurus).
+Re-authored, as no SE model exists: sea lion to sea otter, manta ray to goliath grouper, barracuda and sea snake to
+anglerfish, moray to megalania, osheeja gar to sabretooth salmon, hoarvor to swamp leech, feather-serpent to
+kaj-thux, fleshfly larvae to giant snail, heron to kingfisher, ibis and tern to shorebird, parrot to hummingbird,
+mangrove and hermit crab to giant spider crab, glowgill guar to kagouti, fire drake to swamp wyvern, giant wasp to
+giant mosquito, dragonfly to meganeura. Searched without an SE actor model: sea lion, seal, manta, stingray,
+barracuda, moray, sea snake, mosquito, wasp, hornet, heron, egret, ibis, flamingo, pelican, crane, parrot, macaw,
+iguana, gecko, gar, pike, monkey, haj mota, hermit crab (Mihail's terns 90518 are critter activators, not actors).
+Found but not taken, as the kind already has a true fit: giant snakes 36548, frogs 120998, sea turtles 122141,
+Marsh Leviathans 86261 (a spinosaurus), Giant Gastropods 98488 (King of the Murkmire's snails serve).

@@ -44,7 +44,7 @@
    "extrapolation": "Black Marsh mod ships sharks; coast fauna of any warm sea"
   },
   {
-   "kind": "barracuda",
+   "kind": "anglerfish",
    "size_class": "predator",
    "hostility": "hostile",
    "habitat": "water-salt",
@@ -54,11 +54,12 @@
     6
    ],
    "signature": true,
-   "asset": "vanilla",
-   "extrapolation": "open-sea ambusher; extrapolated"
+   "asset": "mod",
+   "extrapolation": "open-sea ambusher; extrapolated",
+   "cite": "extrapolation: an ambush fish of the Topal sea's depths, as the barracuda of the old row"
   },
   {
-   "kind": "manta-ray",
+   "kind": "goliath-grouper",
    "size_class": "game",
    "hostility": "benign",
    "habitat": "water-salt",
@@ -68,8 +69,9 @@
     4
    ],
    "signature": false,
-   "asset": "vanilla",
-   "extrapolation": "shelf-sea wing-fish; extrapolated"
+   "asset": "mod",
+   "extrapolation": "shelf-sea wing-fish; extrapolated",
+   "cite": "extrapolation: a great slow reef fish of the Topal sea, as the manta of the old row"
   },
   {
    "kind": "flying-fish",
@@ -86,18 +88,19 @@
    "extrapolation": "schooling surface fish of warm open seas"
   },
   {
-   "kind": "tern",
+   "kind": "shorebird",
    "size_class": "small",
    "hostility": "benign",
-   "habitat": "water-salt",
+   "habitat": "shore",
    "time": "day",
    "group": [
     3,
     8
    ],
    "signature": false,
-   "asset": "tropical-skyrim",
-   "extrapolation": "open-sea bird; extrapolated for sea regions"
+   "asset": "mod",
+   "extrapolation": "open-sea bird; extrapolated for sea regions",
+   "cite": "extrapolation: wading shorebirds of the coast, as the tern of the old row"
   },
   {
    "kind": "sea-skater",
@@ -142,20 +145,6 @@
    "extrapolation": "sea jellyfish of warm shelf water; extrapolated hazard"
   },
   {
-   "kind": "king-crab",
-   "size_class": "giant",
-   "hostility": "hostile",
-   "habitat": "shore",
-   "time": "any",
-   "group": [
-    1,
-    1
-   ],
-   "signature": true,
-   "asset": "bmv",
-   "extrapolation": "wreck- and spire-haunting crab of mud flats; the mod stone-crab at giant scale"
-  },
-  {
    "kind": "giant-squid",
    "size_class": "giant",
    "hostility": "hostile",
@@ -182,6 +171,48 @@
    "signature": false,
    "asset": "effect-only",
    "extrapolation": "tide-flat biting midges, the salt-water cousin of the fleshfly baseline"
+  },
+  {
+   "kind": "tuna",
+   "size_class": "game",
+   "hostility": "benign",
+   "habitat": "water-salt",
+   "time": "any",
+   "group": [
+    3,
+    8
+   ],
+   "signature": true,
+   "asset": "mod",
+   "cite": "extrapolation: tuna shoals of the open Topal sea"
+  },
+  {
+   "kind": "megalodon",
+   "size_class": "giant",
+   "hostility": "hostile",
+   "habitat": "water-salt",
+   "time": "any",
+   "group": [
+    1,
+    1
+   ],
+   "signature": true,
+   "asset": "mod",
+   "cite": "extrapolation: a great shark of the open Padomaic deep"
+  },
+  {
+   "kind": "sabretooth-salmon",
+   "size_class": "game",
+   "hostility": "defensive",
+   "habitat": "water-brackish",
+   "time": "any",
+   "group": [
+    1,
+    3
+   ],
+   "signature": false,
+   "asset": "mod",
+   "cite": "extrapolation: a large fish running up the brackish estuaries"
   }
  ],
  "harvestables": [

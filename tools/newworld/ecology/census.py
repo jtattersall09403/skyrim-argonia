@@ -34,7 +34,9 @@ PLUGINS = ["Skyrim.esm", "Dawnguard.esm", "Dragonborn.esm", "ccBGSSSE001-Fish.es
            "Black Marsh North.esp", "Here There Be Monsters.esp", "Here There Be Monsters - Curse of Cipactli.esp",
            "King of the Murkmire.esp", "Tropical Skyrim.esp", "Tropical Skyrim -- Birds.esp",
            "mihaildreughbundle.esp", "Otters.esp", "mihailkagouti.esp",
-           "BirbWalker21_Leeches.esp", "Blue Whales.esp", "LamiaEnemies.esp", "Medusas ENG.esp", "mihailnixcreatures.esp"]
+           "BirbWalker21_Leeches.esp", "Blue Whales.esp", "LamiaEnemies.esp", "Medusas ENG.esp", "mihailnixcreatures.esp",
+           "Spider Crabs.esp", "GoliathGrouper.esp", "Tuna.esp", "Shroom Beetles.esp", "BirbWalker21_Megalania.esp",
+           "mihailhummingbird.esp", "FA06Anglerfish.esp", "Sabertooth Salmon.esp", "Megalodon.esp"]
 HUMAN_SOURCES = {"Black Marsh.esm", "Black Marsh North.esp", "King of the Murkmire.esp"}
 HOSTILE = re.compile(r"bandit|raider|slaver|pirate|thief|outlaw|brigand|marauder|cultist|necromancer|warlock|mage|"
                      r"poacher|smuggler|assassin|cutthroat|reaver|corsair", re.I)

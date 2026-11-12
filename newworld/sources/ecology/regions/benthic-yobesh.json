@@ -100,7 +100,7 @@
    "extrapolation": "sea jellyfish of warm shelf water; extrapolated hazard"
   },
   {
-   "kind": "manta-ray",
+   "kind": "goliath-grouper",
    "size_class": "game",
    "hostility": "benign",
    "habitat": "water-salt",
@@ -110,8 +110,9 @@
     4
    ],
    "signature": false,
-   "asset": "vanilla",
-   "extrapolation": "shelf-sea wing-fish; extrapolated"
+   "asset": "mod",
+   "extrapolation": "shelf-sea wing-fish; extrapolated",
+   "cite": "extrapolation: a great slow reef fish of the Topal sea, as the manta of the old row"
   },
   {
    "kind": "sea-turtle",
@@ -140,20 +141,6 @@
    "signature": false,
    "asset": "vanilla",
    "extrapolation": "water-striders on calm sea surface; a harmless insect for sea regions"
-  },
-  {
-   "kind": "tern",
-   "size_class": "small",
-   "hostility": "benign",
-   "habitat": "water-salt",
-   "time": "day",
-   "group": [
-    3,
-    8
-   ],
-   "signature": false,
-   "asset": "tropical-skyrim",
-   "extrapolation": "open-sea bird; extrapolated for sea regions"
   },
   {
    "kind": "great-sea-turtle",

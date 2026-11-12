@@ -12,7 +12,7 @@
     1
    ],
    "signature": true,
-   "asset": "bmv",
+   "asset": "mod",
    "extrapolation": "Haynekhtnamet is Shadowfen legend; a storm-bound wamasu suits the Valley of Storms"
   },
   {
@@ -166,7 +166,7 @@
     6
    ],
    "signature": false,
-   "asset": "none",
+   "asset": "mod",
    "cite": "story/lore/topics/fauna-hazards.md#Everyday hazards"
   },
   {
@@ -185,16 +185,16 @@
   },
   {
    "kind": "death-hopper",
-   "size_class": "predator",
-   "hostility": "hostile",
-   "habitat": "water-fresh",
+   "size_class": "small",
+   "hostility": "defensive",
+   "habitat": "marsh",
    "time": "any",
    "group": [
     2,
     5
    ],
    "signature": false,
-   "asset": "none",
+   "asset": "mod",
    "cite": "story/lore/topics/fauna-hazards.md#Everyday hazards"
   },
   {
@@ -210,6 +210,20 @@
    "signature": false,
    "asset": "vanilla",
    "extrapolation": "the earlier list and the turtle-shell uses of EC S1 imply living turtles"
+  },
+  {
+   "kind": "spike-ox",
+   "size_class": "game",
+   "hostility": "defensive",
+   "habitat": "open",
+   "time": "any",
+   "group": [
+    2,
+    5
+   ],
+   "signature": false,
+   "asset": "mod",
+   "cite": "extrapolation: Curse of Cipactli's spike-ox, a horned grazer of its Black Marsh"
   }
  ],
  "harvestables": [

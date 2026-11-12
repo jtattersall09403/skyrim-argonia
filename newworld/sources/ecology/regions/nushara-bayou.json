@@ -16,18 +16,18 @@
    "cite": "story/lore/topics/ecology-encounters-loot.md#Creature notes that change how a fight plays"
   },
   {
-   "kind": "glowgill-guar",
+   "kind": "kagouti",
    "size_class": "game",
-   "hostility": "benign",
-   "habitat": "shore",
+   "hostility": "defensive",
+   "habitat": "open",
    "time": "day",
    "group": [
     2,
     4
    ],
    "signature": true,
-   "asset": "bmv",
-   "cite": "story/lore/topics/fauna-hazards.md#Domesticated and useful animals"
+   "asset": "mod",
+   "cite": "extrapolation: Morrowind's kagouti, herd beast of the lands bordering Black Marsh"
   },
   {
    "kind": "crocodile",
@@ -73,7 +73,7 @@
    "cite": "newworld/story/data/db/region_note.jsonl#nushara-bayou/ecology"
   },
   {
-   "kind": "reed-heron",
+   "kind": "kingfisher",
    "size_class": "small",
    "hostility": "benign",
    "habitat": "water-fresh",
@@ -83,8 +83,9 @@
     2
    ],
    "signature": false,
-   "asset": "tropical-skyrim",
-   "extrapolation": "a still-water wader; extrapolated from the wading birds of region notes"
+   "asset": "mod",
+   "extrapolation": "a still-water wader; extrapolated from the wading birds of region notes",
+   "cite": "extrapolation: a fishing bird of reed-fringed fresh water, as the heron of the old row"
   },
   {
    "kind": "slaughterfish",
@@ -102,16 +103,16 @@
   },
   {
    "kind": "death-hopper",
-   "size_class": "predator",
-   "hostility": "hostile",
-   "habitat": "water-fresh",
+   "size_class": "small",
+   "hostility": "defensive",
+   "habitat": "marsh",
    "time": "any",
    "group": [
     2,
     5
    ],
    "signature": false,
-   "asset": "none",
+   "asset": "mod",
    "cite": "story/lore/topics/fauna-hazards.md#Everyday hazards"
   },
   {
@@ -181,7 +182,7 @@
     3
    ],
    "signature": true,
-   "asset": "none",
+   "asset": "mod",
    "cite": "story/lore/topics/ecology-encounters-loot.md#Creature notes that change how a fight plays"
   },
   {
@@ -195,7 +196,7 @@
     6
    ],
    "signature": false,
-   "asset": "none",
+   "asset": "mod",
    "cite": "story/lore/topics/fauna-hazards.md#Everyday hazards"
   },
   {
@@ -209,8 +210,64 @@
     1
    ],
    "signature": false,
-   "asset": "bmv",
+   "asset": "mod",
    "cite": "story/lore/topics/fauna-hazards.md#Apex and set-piece creatures"
+  },
+  {
+   "kind": "megalania",
+   "size_class": "predator",
+   "hostility": "hostile",
+   "habitat": "shore",
+   "time": "any",
+   "group": [
+    1,
+    3
+   ],
+   "signature": false,
+   "asset": "mod",
+   "cite": "extrapolation: a giant monitor lizard of the swamp edge"
+  },
+  {
+   "kind": "sea-turtle",
+   "size_class": "game",
+   "hostility": "benign",
+   "habitat": "water-salt",
+   "time": "any",
+   "group": [
+    1,
+    3
+   ],
+   "signature": false,
+   "asset": "mod",
+   "cite": "extrapolation: sea turtles of the Topal coast"
+  },
+  {
+   "kind": "river-naga-beast",
+   "size_class": "predator",
+   "hostility": "hostile",
+   "habitat": "water-brackish",
+   "time": "any",
+   "group": [
+    1,
+    3
+   ],
+   "signature": false,
+   "asset": "mod",
+   "cite": "story/lore/topics/fauna-hazards.md#Apex and set-piece creatures"
+  },
+  {
+   "kind": "wild-boar",
+   "size_class": "game",
+   "hostility": "defensive",
+   "habitat": "bush",
+   "time": "any",
+   "group": [
+    1,
+    3
+   ],
+   "signature": false,
+   "asset": "mod",
+   "cite": "extrapolation: brush boar of the swamp forest"
   }
  ],
  "harvestables": [

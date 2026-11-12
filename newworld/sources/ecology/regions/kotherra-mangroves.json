@@ -2,8 +2,8 @@
  "region": "kotherra-mangroves",
  "creatures": [
   {
-   "kind": "mangrove-crab",
-   "size_class": "small",
+   "kind": "giant-spider-crab",
+   "size_class": "game",
    "hostility": "defensive",
    "habitat": "shore",
    "time": "any",
@@ -12,21 +12,22 @@
     5
    ],
    "signature": true,
-   "asset": "vanilla",
-   "extrapolation": "region note: mangrove coasts, paddy fauna and crabs"
+   "asset": "mod",
+   "extrapolation": "region note: mangrove coasts, paddy fauna and crabs",
+   "cite": "extrapolation: a large crab of the mangrove coast"
   },
   {
    "kind": "death-hopper",
-   "size_class": "predator",
-   "hostility": "hostile",
-   "habitat": "water-fresh",
+   "size_class": "small",
+   "hostility": "defensive",
+   "habitat": "marsh",
    "time": "any",
    "group": [
     2,
     5
    ],
    "signature": true,
-   "asset": "none",
+   "asset": "mod",
    "cite": "story/lore/topics/fauna-hazards.md#Everyday hazards"
   },
   {
@@ -58,18 +59,19 @@
    "cite": "story/lore/topics/fauna-hazards.md#Apex and set-piece creatures ; newworld/story/data/db/region_note.jsonl#kotherra-mangroves/dangers"
   },
   {
-   "kind": "moray",
+   "kind": "megalania",
    "size_class": "predator",
    "hostility": "hostile",
-   "habitat": "water-brackish",
+   "habitat": "shore",
    "time": "any",
    "group": [
     1,
     2
    ],
    "signature": true,
-   "asset": "bmv",
-   "extrapolation": "the mod ships a moray eel; brackish channel ambusher"
+   "asset": "mod",
+   "extrapolation": "the mod ships a moray eel; brackish channel ambusher",
+   "cite": "extrapolation: a giant monitor lizard of the mangrove edge, the reptile hunter the moray's niche left open"
   },
   {
    "kind": "ripper-eel",
@@ -128,18 +130,19 @@
    "extrapolation": "wading and reed birds fill every wet region note; unnamed in the lore"
   },
   {
-   "kind": "wading-ibis",
+   "kind": "shorebird",
    "size_class": "small",
    "hostility": "benign",
-   "habitat": "marsh",
+   "habitat": "shore",
    "time": "day",
    "group": [
     2,
     6
    ],
    "signature": false,
-   "asset": "tropical-skyrim",
-   "extrapolation": "Tropical Skyrim wading bird; extrapolated for flats"
+   "asset": "mod",
+   "extrapolation": "Tropical Skyrim wading bird; extrapolated for flats",
+   "cite": "extrapolation: wading shorebirds of the mud flats, as the ibis of the old row"
   },
   {
    "kind": "fleshfly",
@@ -222,8 +225,22 @@
     1
    ],
    "signature": false,
-   "asset": "bmv",
+   "asset": "mod",
    "cite": "story/lore/topics/fauna-hazards.md#Apex and set-piece creatures"
+  },
+  {
+   "kind": "mist-moth",
+   "size_class": "insect",
+   "hostility": "benign",
+   "habitat": "shore",
+   "time": "night",
+   "group": [
+    1,
+    3
+   ],
+   "signature": false,
+   "asset": "mod",
+   "cite": "extrapolation: night moths of the misty coast"
   }
  ],
  "harvestables": [
