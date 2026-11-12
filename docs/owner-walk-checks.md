@@ -239,6 +239,17 @@ why the gang could not march to the old camp; the new camp is on the same stretc
       it again once it is done. Say which quest and step if a marker is missing or points at nothing, or if someone
       offers a finished quest again.
 
+## 11. Directions told the Morrowind way (built 2026-11-12)
+
+People now give directions by landmarks and compass points, and say how far in words ("just", "a short way", "a fair
+way", "a long walk") instead of counting paces.
+
+- [ ] **Ask for directions.** In Black Rose, talk to Tzeel-Vaa (a guard at the west gate) and Sakeeth (who watches the
+      south landing); in Lilmoth, talk to Uleesh (a fisher in the shallows below the walls). Ask each one for directions, and ask each
+      about "someone". Each answer should name things you can see (a dock, a boat, a ruin, a tower) and compass
+      directions, and should never give a number of paces or metres. Then follow one route from each person: you
+      should arrive where they said. Reply here with any answer that sends you the wrong way or still gives a number.
+
 ## Done
 
 - Climbing works (Phase 1 walk, 2026-11-06).

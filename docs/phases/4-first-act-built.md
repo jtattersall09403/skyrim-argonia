@@ -1,7 +1,7 @@
 # Phase 4: the first story slice, built from the proven blocks
 
 Status: [PROGRESS.md](../PROGRESS.md). The plan: [PLAN.md](../PLAN.md). Edit this file as the phase goes; it is the phase's whole brief.
-Rewritten 2026-11-08 after the owner's third walk (tmp/walk-3-feedback.md, [owner-rulings](../owner-rulings.md)). **Status 2026-11-11: walk 5's fixes built, read back and deployed; the owner's walk is owed (docs/owner-walk-checks.md sections 7 and 10).**
+Rewritten 2026-11-08 after the owner's third walk (tmp/walk-3-feedback.md, [owner-rulings](../owner-rulings.md)). **Status 2026-11-11: walk 5's fixes built, read back and deployed; the owner's walk is owed (docs/owner-walk-checks.md sections 7 and 10).** 2026-11-12: every direction line and the 25 quest lines that counted paces or yards rewritten the Morrowind way (Phase 4a); owed: the owner's check, section 11.
 
 ## Already done (do not redo)
 

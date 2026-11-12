@@ -61,10 +61,14 @@ directions rewrite after routes v2 landed, one reader pass (150 fixes). Talk.cs 
 Black Marsh's main world (BlackMarsh2's 18 crashed the seed); they keep the shared base name. Seed, check and
 `talk_check` (ESP read-back) 0 problems.
 
-**Directions the Morrowind way (2026-11-12).** Owed: rewrite the lines that count paces (lint B13), 403 talk lines
-(Thorn 104, Blackrose 121, Lilmoth 43, Hereguard Plantation 34, Helstrom 28, village 28, dock5 23, dock2 22; 115 of
-them directions) and 25 quest `dialogue_line` rows (Claywater 13, about-Blackwood and about-Gideon 6, LQ83 2,
-imported 4), from regenerated briefs.
+**Directions the Morrowind way (2026-11-12, done).** The owner asked for every flagged line rewritten with the
+updated skill. The 110 routes were regenerated in words (`talk_route facts --write`); all 119 talkers had flagged
+lines, and each got a fresh brief and one `dialogue-writer` run with the find step: 403 talk lines rewritten
+(Blackrose 121, Thorn 104, Lilmoth 43, Hereguard Plantation 34, Helstrom 28, village 28, dock5 23, dock2 22), plus
+the 25 quest `dialogue_line` rows (Claywater 19, the Naga camp 2, the unwritten lot 2, from place briefs). One reader
+pass (40 fixes). Gates: lint B13 0 everywhere, `talk_check` 0 problems and 0 rewrites owed, echoes 0 clusters,
+`quest_text_check` hard 0, `plugin.sh check` round trip clean and `questcheck` 0 failed. Owed: the owner's walk check
+(docs/owner-walk-checks.md section 11).
 
 **The slice quests' people (2026-11-08).** On a new game 119 talkers are reachable: the SEQ file
 (`out/SEQ/Argonia.seq`, from Seq.cs) starts the start-game quests that carry their dialogue. Of the 25 people the
