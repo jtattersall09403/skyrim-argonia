@@ -108,12 +108,13 @@ function Set-GameWindow {
   # the auto-vanity camera: after fAutoVanityModeDelay seconds idle the camera orbits the player and no first-person
   # switch takes; never in the studio
   & $set "$docs\Skyrim.ini" 'Camera' @{ 'fAutoVanityModeDelay' = 1000000 }
-  # The compass is on (owner walk 2026-11-07: "I need the compass so I can follow directions"); quest markers stay off
-  # (below, Morrowind's way), so the compass shows places and directions but no quest target.
+  # The compass is on (owner walk 2026-11-07: "I need the compass so I can follow directions"), and so are the quest
+  # markers on the compass, the map and over the target in the world (owner ruling 2026-11-12: "Quest markers on the map
+  # and in game for objectives and things to pick up or use").
   & $set "$docs\SkyrimPrefs.ini" 'Interface' @{ 'bShowCompass' = 1 }
   # Light shafts: the engine's volumetric lighting, linked per weather (WTHR HNAM, lane 1.15-r6-light); off by default in the prefs the stack writes.
   & $set "$docs\SkyrimPrefs.ini" 'Display' @{ 'bVolumetricLightingEnable' = 1 }
-  & $set "$docs\SkyrimPrefs.ini" 'GamePlay' @{ 'bShowQuestMarkers' = 0; 'bShowFloatingQuestMarkers' = 0 }
+  & $set "$docs\SkyrimPrefs.ini" 'GamePlay' @{ 'bShowQuestMarkers' = 1; 'bShowFloatingQuestMarkers' = 1 }
   # Draw distances: Bethesda's own Ultra preset (the game's Ultra.ini; the machine ran High's LOD switch distances and
   # lower fades): distant LOD switches to coarser levels later, and objects, items and actors fade later inside the
   # loaded cells. Grass stays at Ultra's 7000 (Bethesda's slider maximum). bEnableLandFade=0 stops terrain flickering

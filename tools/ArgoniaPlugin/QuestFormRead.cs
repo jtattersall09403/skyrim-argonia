@@ -275,7 +275,7 @@ static class QuestFormRead
             return hit[0];
         }
         var triggers = new JsonArray();
-        var minorDeaths = new Dictionary<string, int>();
+        var minorDeaths = new Dictionary<string, (int fail, int? from, int? to)>();
         foreach (var fa in vm.Aliases)
         {
             var an = aliasName.TryGetValue((uint)fa.Property.Alias, out var x) ? x : throw No($"alias scripts on alias {fa.Property.Alias}");
@@ -293,8 +293,12 @@ static class QuestFormRead
                     case QuestForm.ReadScript: Only("preReqStage", "StageToSet"); (kindT, pre, sets) = ("use", ints["preReqStage"], ints["StageToSet"]); break;
                     case QuestForm.DeathScript:
                         Only("myQST", "preReqStage", "StageToSet"); Mine("myQST");
-                        if (ints["preReqStage"] == -1) { minorDeaths[an] = ints["StageToSet"]; continue; }
+                        if (ints["preReqStage"] == -1) { minorDeaths[an] = (ints["StageToSet"], null, null); continue; }
                         (kindT, pre, sets) = ("death", ints["preReqStage"], ints["StageToSet"]); break;
+                    case QuestForm.AliasScript:
+                        Only("Op", "What", "Num");
+                        minorDeaths[an] = Death(Arrays(s.Properties, e), q.FormKey) ?? throw No($"{QuestForm.AliasScript} on {an} is no who-must-live death");
+                        continue;
                     default: throw No($"alias {an} carries {s.Name}, which no form says");
                 }
                 var id = TrigId(kindT, an, pre, sets, out var choice);
@@ -317,20 +321,26 @@ static class QuestFormRead
         triggers = new JsonArray([.. triggers.OrderBy(t => order.IndexOf(t!["id"]!.GetValue<string>())).Select(t => t!.DeepClone())]);
 
         // ---- who must live: the start check, then the mortal watch (main_message) or the quest's own death script
-        foreach (var m in mustLive.Cast<JsonObject>())
+        // a start check is a death trigger's (one open from the start) or a who-must-live row's
+        var starts = mustLive.Cast<JsonObject>().Select(m => (who: m["ref"]!.GetValue<string>(), at: m["fail_stage"]!.GetValue<int>()))
+            .Where(x => !triggers.Any(t => t!["kind"]!.GetValue<string>() == "death" && t["ref"]!.GetValue<string>() == x.who && t["sets"]!.GetValue<int>() == x.at && t["prerequisite"]!.GetValue<int>() == start)).ToList();
+        var deaths = c.Watch?.Aliases.Where(a => a.Name?.StartsWith(qid + "|") == true).Select(a => (who: a.Name![(qid.Length + 1)..], main: true, d: WatchRows(c, q.FormKey, a.Name![(qid.Length + 1)..])))
+            .Select(x => (x.who, x.main, d: x.d ?? throw No($"the mortal watch's rows for {x.who} are not a who-must-live death"))).ToList() ?? [];
+        deaths.AddRange(minorDeaths.Select(kv => (kv.Key, false, kv.Value)));
+        mustLive = [];
+        foreach (var (who, main, d) in deaths)
         {
-            var who = m["ref"]!.GetValue<string>(); var fail = m["fail_stage"]!.GetValue<int>();
-            var watched = WatchRows(c, q.FormKey, who);
-            if (watched is { } w)
-            {
-                if (w != fail) throw No($"the mortal watch fails {who}'s quest at {w}, the start check at {fail}");
-                m["main_message"] = true;
-                if (WatchMessage(c, q.FormKey, who) is { } mt) m["message"] = mt;
-            }
-            else if (minorDeaths.TryGetValue(who, out var d) && d == fail) { m["main_message"] = false; minorDeaths.Remove(who); }
-            else throw No($"{who} is checked alive at the start, and nothing fails the quest on their death");
+            var m = new JsonObject { ["ref"] = who, ["fail_stage"] = d.fail, ["main_message"] = main };
+            if (d.from is { } f) m["from"] = f;
+            if (d.to is { } t) m["to"] = t;
+            if (main && WatchMessage(c, q.FormKey, who) is { } mt) m["message"] = mt;
+            var within = (d.from is not { } f2 || start >= f2) && (d.to is not { } t2 || start <= t2);
+            var checkedAt = starts.Where(x => x.who == who).ToList();
+            if (within != (checkedAt.Count == 1 && checkedAt[0].at == d.fail)) throw No($"{who}: the start check does not match the death's window");
+            starts.RemoveAll(x => x.who == who);
+            mustLive.Add(m);
         }
-        if (minorDeaths.Count > 0) throw No($"a death script with no prerequisite on {string.Join(", ", minorDeaths.Keys)} and no start check");
+        if (starts.Count > 0) throw No($"a start check on {string.Join(", ", starts.Select(x => x.who))} that nothing else explains");
 
         // ---- lines: every response of ours whose ARG_LineEffects names this quest as its owner
         var lines = new JsonArray();
@@ -474,18 +484,32 @@ static class QuestFormRead
             }
         return false;
     }
-    static int? WatchRows(Ctx c, FormKey q, string who)
+    // The mortal watch's rows for a person: [IfQuestOpen, window, ShowMessage, window, SetStageIfRunning].
+    static (int fail, int? from, int? to)? WatchRows(Ctx c, FormKey q, string who)
     {
         if (c.Watch?.VirtualMachineAdapter is not { } vm) return null;
-        foreach (var a in c.Watch.Aliases)
+        var a = c.Watch.Aliases.FirstOrDefault(x => x.Name == $"{c.Rows[q].qid}|{who}");
+        var s = a == null ? null : vm.Aliases.FirstOrDefault(x => x.Property.Alias == a.ID)?.Scripts.SingleOrDefault(x => x.Name == QuestForm.AliasScript);
+        var rows = s == null ? [] : Arrays(s.Properties, QuestForm.WatchId);
+        var show = rows.FindIndex(r => r.Op == QuestForm.Op.ShowMessage);
+        if (rows.Count == 0 || rows[0].Op != QuestForm.Op.IfQuestOpen || rows[0].What != q || show < 0) return null;
+        var before = Death([.. rows.GetRange(1, show - 1), new Rw(QuestForm.Op.SetStageIfRunning, q, rows[^1].Num)], q);
+        var after = Death(rows.GetRange(show + 1, rows.Count - show - 1), q);
+        return before == after ? after : null;
+    }
+    // A who-must-live death's rows: the window's guards, then the failed ending set while the quest runs.
+    static (int fail, int? from, int? to)? Death(List<Rw> rows, FormKey q)
+    {
+        if (rows.Count == 0 || rows[^1].Op != QuestForm.Op.SetStageIfRunning || rows[^1].What != q) return null;
+        int? from = null, to = null;
+        foreach (var r in rows[..^1])
         {
-            if (a.Name != $"{c.Rows[q].qid}|{who}") continue;
-            var s = vm.Aliases.FirstOrDefault(x => x.Property.Alias == a.ID)?.Scripts.SingleOrDefault(x => x.Name == QuestForm.AliasScript);
-            var rows = s == null ? [] : Arrays(s.Properties, QuestForm.WatchId);
-            if (rows.Count == 3 && rows[0].Op == QuestForm.Op.IfQuestOpen && rows[1].Op == QuestForm.Op.ShowMessage && rows[2].Op == QuestForm.Op.SetStageIfRunning && rows[2].What == q)
-                return (int)rows[2].Num;
+            if (r.What != q) return null;
+            if (r.Op == QuestForm.Op.IfStageDone && from == null) from = (int)r.Num;
+            else if (r.Op == QuestForm.Op.IfStageAtMost && to == null) to = (int)r.Num;
+            else return null;
         }
-        return null;
+        return ((int)rows[^1].Num, from, to);
     }
 
     static JsonObject Result(Ctx c, Rw r, Func<string, Bad> no, Func<string, FormKey, string> name, Func<FormKey, string> quest, Func<FormKey, string, string> refName, string where)

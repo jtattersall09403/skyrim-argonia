@@ -15,8 +15,10 @@ The operation numbers are QuestForm.cs's (tools/ArgoniaPlugin); a number not lis
 ;  7 IncSideQuests      What: Skyrim.esm's AchievementsQuest; "Side Quests Completed" on the Stats page
 ;  8 FailIfDead         What: a person who must live; Num: the failed ending, set if they are dead (the other rows are skipped)
 ;  9 SetStageIfRunning  What: a quest; Num: its stage, set only while that quest runs and has not done it
-; 10 IfStageDone        What: a quest; Num: a stage; the next row runs only if that stage is done
-; 11 IfQuestOpen        What: a quest; the next row runs only if that quest has not ended
+; 10 IfStageDone        What: a quest; Num: a stage; guards the next row: it runs only if that stage is done
+; 11 IfQuestOpen        What: a quest; guards the next row: it runs only if that quest has not ended
+; 13 IfStageAtMost      What: a quest; Num: a stage; guards the next row: it runs only if the quest's stage is at most that
+;                       (guards stand in a row before the one row they guard: one that fails skips the rest and that row)
 ; 12 StartOnStage       What: a quest started by this stage; Num: the stage it starts at
 ; ---- the form's results
 ; 20 GiveItem  21 TakeItem   What: the item; Num: how many
@@ -75,14 +77,13 @@ Function Run(Int[] op, Form[] what, Float[] num, Int from, Int to, Quest q, Obje
 			If x.IsRunning() && !x.GetStageDone(n)
 				x.SetStage(n)
 			EndIf
-		ElseIf o == 10
-			If !(w as Quest).GetStageDone(n)
-				i += 1
-			EndIf
-		ElseIf o == 11
+		ElseIf o == 10 || o == 11 || o == 13
 			x = w as Quest
-			If x.IsCompleted() || (x.IsStopped() && x.GetStage() > 0)
+			If (o == 10 && !x.GetStageDone(n)) || (o == 11 && (x.IsCompleted() || (x.IsStopped() && x.GetStage() > 0))) || (o == 13 && x.GetStage() > n)
 				i += 1
+				While i < to && (op[i] == 10 || op[i] == 11 || op[i] == 13)
+					i += 1
+				EndWhile
 			EndIf
 		ElseIf o == 12 || o == 35
 			x = w as Quest

@@ -36,7 +36,7 @@ static class QuestForm
     public static class Op
     {
         public const int SetStage = 1, ShowObjective = 2, CompleteObjective = 3, FailObjective = 4, SetActive = 5, StopQuest = 6,
-            IncSideQuests = 7, FailIfDead = 8, SetStageIfRunning = 9, IfStageDone = 10, IfQuestOpen = 11, StartOnStage = 12,
+            IncSideQuests = 7, FailIfDead = 8, SetStageIfRunning = 9, IfStageDone = 10, IfQuestOpen = 11, StartOnStage = 12, IfStageAtMost = 13,
             GiveItem = 20, TakeItem = 21, GiveGold = 22, TakeGold = 23, SetNumber = 24, AddNumber = 25, JoinFaction = 26,
             SetRank = 27, ChangeRegard = 28, SwitchOn = 29, SwitchOff = 30, LockDoor = 31, UnlockDoor = 32, ShowMessage = 33,
             SpeakerHostile = 34, StartQuest = 35;
@@ -114,7 +114,8 @@ static class QuestForm
         public Dictionary<FormKey, Where> Wheres = [];
         public Dictionary<(FormKey world, int x, int y), FormKey> Grid = [];
         public Dictionary<FormKey, FormKey> CellWorld = [];
-        public Dictionary<FormKey, P3Float> Arrivals = [];   // a load door: where the player comes out of it
+        public Dictionary<FormKey, P3Float> Arrivals = [];
+        public Dictionary<string, (string Quest, string Same, FormKey Placed, FormKey Base, bool Npc, bool Created)> Shared = [];   // a load door: where the player comes out of it
         public QuestKit? Kit;
         public FormKey Key(string name) => new(Mod.ModKey, Ids.Take(Kind, name));
         public string Q = ""; public Built? Cur;
@@ -225,7 +226,7 @@ static class QuestForm
         {
             var r = RefOf(c, b, S(m, "ref"), "must live");
             if (!r.Npc) throw c.No("must-live", $"{r.Id} is not a person");
-            Add(b.Own, b.Start, new Row(Op.FailIfDead, r.Placed, I(m, "fail_stage")));
+            if (Within(m, b.Start)) Add(b.Own, b.Start, new Row(Op.FailIfDead, r.Placed, I(m, "fail_stage")));
         }
         foreach (var s in stages.OrderBy(s => I(s, "number")))
             foreach (var res in A(s, "results"))
@@ -436,6 +437,21 @@ static class QuestForm
     {
         var j = r.Json; var p = j.GetProperty("placement");
         if (r.Hostile && r.Kind != "person") throw c.No("hostile", $"{r.Id} is hostile and not a person");
+        // a ref another form names too is the same reference: one placement, which both forms must state alike
+        var same = $"{r.Kind}|{p.GetRawText()}|{r.Enabled}|{r.Hostile}";
+        if (c.Shared.TryGetValue(r.Id, out var had))
+        {
+            if (had.Same != same) throw c.No("shared-ref", $"{r.Id} is placed otherwise by {had.Quest}");
+            if (had.Created) throw c.No("shared-ref", $"{r.Id} is made in a container for {had.Quest}; a made thing belongs to one quest");
+            (r.Placed, r.Base, r.Npc) = (had.Placed, had.Base, had.Npc);
+            return;
+        }
+        try { PlaceOnce(c, b, r, p); }
+        finally { if (!r.Placed.IsNull || r.Created) c.Shared[r.Id] = (b.Qid, same, r.Placed, r.Base, r.Npc, r.Created); }
+    }
+
+    static void PlaceOnce(Ctx c, Built b, Ref r, JsonElement p)
+    {
         if (p.TryGetProperty("existing", out var ex))
         {
             if (r.Hostile) throw c.No("hostile", $"{r.Id}: a person the player fights is a new placement (its base of ours is made aggressive)");
@@ -465,8 +481,8 @@ static class QuestForm
         }
         if (!p.TryGetProperty("anchor", out var anchor)) throw c.No("placement", $"{r.Id}: a new placement with neither an anchor nor a container");
         var (cell, world, interior, at) = Spot(c, b, r, anchor);
-        var key = c.Key($"ref:{b.Qid}:{r.Id}");
-        var edid = $"{b.Edid}_{Slug(r.Id)}";
+        var key = c.Key($"ref:{r.Id}");
+        var edid = $"ARG_R_{Slug(r.Id)}";
         var flags = 0x400 | (r.Enabled ? 0 : 0x800);
         IPlaced placed;
         if (r.Kind == "person")
@@ -580,8 +596,8 @@ static class QuestForm
     {
         var tk = Exists<INpcGetter>(c, tpl, "template");
         var t = c.Npcs.TryGetValue(tk, out var tw) ? tw.rec : c.Mod.Npcs.First(x => x.FormKey == tk);
-        var k = c.Key($"npc:{b.Qid}:{r.Id}");
-        var n = new Npc(k, SkyrimRelease.SkyrimSE) { EditorID = $"{b.Edid}_{Slug(r.Id)}_Base" };
+        var k = c.Key($"npc:{r.Id}");
+        var n = new Npc(k, SkyrimRelease.SkyrimSE) { EditorID = $"ARG_R_{Slug(r.Id)}_Base" };
         n.Template.SetTo(tk);
         n.Race.SetTo(t.Race.FormKey);
         n.Class.SetTo(t.Class.FormKey);
@@ -890,13 +906,35 @@ static class QuestForm
             AddAliasScript(c, b, r, s, id);
             b.Labels.Add($"trigger={id}|{kind}|{r.Id}|{pre}|{sets}|{(B(t, "choice") ? "choice" : "")}");
         }
-        // who must live, outside the mortal watch: vanilla's death script, from any stage, sets the failed ending
+        // a death trigger open from the start: a death before the quest began moves it as it starts (the start check)
+        foreach (var t in A(b.F, "triggers").Where(t => S(t, "kind") == "death" && I(t, "prerequisite") == b.Start))
+            Add(b.Own, b.Start, new Row(Op.FailIfDead, b.Refs[S(t, "ref")].Placed, I(t, "sets")));
+        // who must live, outside the mortal watch: vanilla's death script sets the failed ending from any stage; within a
+        // window, ARG_AliasEffects with the window's guards
         foreach (var m in A(b.F, "must_live"))
         {
             if (B(m, "main_message")) { if (b.Kind == "minor") throw c.No("main-message", $"{S(m, "ref")}: a minor quest's death shows no message"); continue; }
             var r = b.Refs[S(m, "ref")];
-            AddAliasScript(c, b, r, QuestKit.OnDeath(b.Q, -1, I(m, "fail_stage")), $"must live {r.Id}");
+            if (!m.TryGetProperty("from", out _) && !m.TryGetProperty("to", out _))
+                AddAliasScript(c, b, r, QuestKit.OnDeath(b.Q, -1, I(m, "fail_stage")), $"must live {r.Id}");
+            else
+            {
+                var e = new ScriptEntry { Name = AliasScript };
+                e.Properties.AddRange(Arrays([.. Window(b.Q.FormKey, m), new Row(Op.SetStageIfRunning, b.Q.FormKey, I(m, "fail_stage"))]));
+                AddAliasScript(c, b, r, e, $"must live {r.Id}");
+            }
         }
+    }
+    /// Whether a who-must-live row's window (from, to; either may be left out) holds the stage.
+    static bool Within(JsonElement m, int stage) =>
+        (!m.TryGetProperty("from", out var f) || stage >= f.GetInt32()) && (!m.TryGetProperty("to", out var t) || stage <= t.GetInt32());
+    /// The guards of a who-must-live window: the next row runs only from its first stage up to its last.
+    static List<Row> Window(FormKey q, JsonElement m)
+    {
+        var l = new List<Row>();
+        if (m.TryGetProperty("from", out var f)) l.Add(new Row(Op.IfStageDone, q, f.GetInt32()));
+        if (m.TryGetProperty("to", out var t)) l.Add(new Row(Op.IfStageAtMost, q, t.GetInt32()));
+        return l;
     }
     static void AddAliasScript(Ctx c, Built b, Ref r, ScriptEntry s, string what)
     {
@@ -934,7 +972,9 @@ static class QuestForm
             a.ForcedReference.SetTo(r.Placed);
             w.Aliases.Add(a);
             var s = new ScriptEntry { Name = AliasScript };
-            s.Properties.AddRange(Arrays([new Row(Op.IfQuestOpen, b.Q.FormKey, 0), new Row(Op.ShowMessage, msg, 0), new Row(Op.SetStageIfRunning, b.Q.FormKey, I(m, "fail_stage"))]));
+            s.Properties.AddRange(Arrays([new Row(Op.IfQuestOpen, b.Q.FormKey, 0), .. Window(b.Q.FormKey, m), new Row(Op.ShowMessage, msg, 0),
+                .. Window(b.Q.FormKey, m), new Row(Op.SetStageIfRunning, b.Q.FormKey, I(m, "fail_stage"))]));
+            if (So(m, "message") is { } given && given != (b.Kind == "main" ? MainMessage : FactionMessage)) throw c.No("message", $"{r.Id}: the death message is the {b.Kind} quests' own, not the form's");
             var f = new QuestFragmentAlias { Property = new ScriptObjectProperty { Name = "", Object = new FormLink<ISkyrimMajorRecordGetter>(w.FormKey), Alias = (short)id } };
             f.Scripts.Add(s);
             vm.Aliases.Add(f);

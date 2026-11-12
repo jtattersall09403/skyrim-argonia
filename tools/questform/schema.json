@@ -208,7 +208,9 @@
           "ref": {"$ref": "#/$defs/id"},
           "fail_stage": {"$ref": "#/$defs/stage"},
           "main_message": {"type": "boolean"},
-          "message": {"$ref": "#/$defs/text"}
+          "message": {"$ref": "#/$defs/text"},
+          "from": {"$ref": "#/$defs/stage"},
+          "to": {"$ref": "#/$defs/stage"}
         }
       }
     }
