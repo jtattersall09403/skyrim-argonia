@@ -828,16 +828,16 @@
 {"talker":"0C72A3:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"Black Rose and Lilmoth have been rivals for as long as anyone has kept count. I am a guard, not a teller of old tales."}
 {"talker":"0C72A3:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Raxa-Tum. I guard the north landing, where the fishing boats tie up. I was a fisher myself once."}
 {"talker":"0C72A3:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Okeemu is the best fisher in town. You will usually find Okeemu just south-west of here, at the north landing."}
-{"talker":"0C72A4:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The jail. Walk south-west about one hundred and seventy-five paces. Black Rose Jail is there."}
+{"talker":"0C72A4:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The jail. Walk south-west a short way. Black Rose Jail is there."}
 {"talker":"0C72A4:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"You have come up the road again, my friend. I keep the road, as ever. Speak if you wish."}
 {"talker":"0C72A4:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"State your business on the north road."}
 {"talker":"0C72A4:Black Marsh.esm","topic":"talk.greet-stranger","ord":2,"text":"Halt. Say what you want. I am on watch."}
-{"talker":"0C72A4:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is the north road into Black Rose. The northern marker post is about fifteen paces south of here. A boat lies about thirty-five paces east-south-east."}
-{"talker":"0C72A4:Black Marsh.esm","topic":"talk.here","ord":2,"text":"I keep watch here, above the northern marker post. The post is about fifteen paces south. There is a boat about thirty-five paces east-south-east of where we stand."}
-{"talker":"0C72A4:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"In Empress Morihatha's day the people of Black Rose raised an army against the Empire. Her battlemage Welloc broke it with a spell, not with soldiers. No one in the town has trusted a battlemage since."}
+{"talker":"0C72A4:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is the north road into Black Rose. The northern marker post is just south of here. A boat lies just east-south-east."}
+{"talker":"0C72A4:Black Marsh.esm","topic":"talk.here","ord":2,"text":"I keep watch here, above the northern marker post. The post is just south. There is a boat just east-south-east of where we stand."}
+{"talker":"0C72A4:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"In Empress Morihatha's day the people of Black Rose raised an army against the Empire. Her battlemage Welloc broke it with a spell, not with soldiers. In the town, nobody has trusted a battlemage since."}
 {"talker":"0C72A4:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Watches-The-Road. I guard the north road into town. I report every lapse I see. That includes the lapses of other guards."}
 {"talker":"0C72A4:Black Marsh.esm","topic":"talk.self","ord":2,"text":"I am a guard. I watch the north road and I report what I find."}
-{"talker":"0C72A4:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Raxa-Tum, the guard at the north landing, is usually about fifty paces north-north-west of here. He fishes on duty. He should be dismissed."}
+{"talker":"0C72A4:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Raxa-Tum, the guard at the north landing, is usually just north-north-west of here. He fishes on duty. He should be dismissed."}
 {"talker":"0C72A6:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The cooking fire? Walk south past the house, about three hundred paces. You will find it there."}
 {"talker":"0C72A6:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"The water is good today. Sit by me a while."}
 {"talker":"0C72A6:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"I am fishing, so please speak softly."}
