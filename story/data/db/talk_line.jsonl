@@ -368,14 +368,14 @@
 {"talker":"05D7CA:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is Soulrest, sir. Two cows graze just east-north-east of here, and Cow-Chaser scares them on purpose. Then he says it was me."}
 {"talker":"05D7CA:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Little-Gecko. I sit in the middle, sir, where the grown-ups talk, so I hear everything. One day I will be a boat captain."}
 {"talker":"05D7CA:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Seeks-The-Channel, the boat captain, stands just east of here. She is the best captain there is. Feldril Nethri, the Dunmer, works just north-east. He is kind to me, miss."}
-{"talker":"05D7CB:Black Marsh.esm","topic":"talk.danger","ord":1,"text":"A Vale Deer lies dead about fifty paces south-east of here, child. Something killed it. I would not go looking to for the cause."}
+{"talker":"05D7CB:Black Marsh.esm","topic":"talk.danger","ord":1,"text":"A Vale Deer lies dead just south-east of here, child. Something killed it. I would not go looking for the cause."}
 {"talker":"05D7CB:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Child, you came back. Sit by me, out of the wind, and let me look at your hands. Tell me how you are."}
 {"talker":"05D7CB:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Mind the reeds, child. I have not finished with them yet."}
-{"talker":"05D7CB:Black Marsh.esm","topic":"talk.harvest","ord":1,"text":"Far south, under the trees, there are glowing mushrooms and creep cluster. It is a long walk, child, about a hundred and ten paces. I do not go that far now."}
+{"talker":"05D7CB:Black Marsh.esm","topic":"talk.harvest","ord":1,"text":"Glowing mushrooms and creep cluster grow under the trees, a short way south of here, child. I do not go that far now."}
 {"talker":"05D7CB:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"An Argonian kept long from the Hist grows pale, child. The colour thins and the markings go soft. When they go home, it all comes back."}
 {"talker":"05D7CB:Black Marsh.esm","topic":"talk.rumours","ord":1,"text":"Careful hands are sometimes of use to Tilts-The-Jug, child. Inside the house on Soulrest's dock, I am told. I always look at a stranger's hands first. Let me see yours."}
 {"talker":"05D7CB:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Plaits-The-Reed. I weave mats and baskets for the families here, and for the boats. My husband is out fishing, child. He will be back soon."}
-{"talker":"05D7CB:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Xeeh-Nah works about fifteen paces east, a little to the south. Xeeh-Nah should marry, I always say. Go and see, child."}
+{"talker":"05D7CB:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Xeeh-Nah works just east-south-east of here. Xeeh-Nah should marry, I always say. Go and see, child."}
 {"talker":"05D7CC:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Warrior! You are here! Did you bring the sword? Show me, show me, I will not touch it."}
 {"talker":"05D7CC:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Hey, warrior! Have you got a sword? Do you have any scars? Show me one!"}
 {"talker":"05D7CC:Black Marsh.esm","topic":"talk.harvest","ord":1,"text":"Gourds? Fifteen paces north-west, warrior. I could carry them all myself, but I am busy with the cows."}
