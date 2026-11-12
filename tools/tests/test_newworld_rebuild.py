@@ -35,7 +35,8 @@ def test_real_order_is_derived_and_true():
                           ("cells", "landings"), ("cells", "mist"), ("place", "mist"), ("mist", "map"), ("place", "map"),
                           ("atmosphere", "height-fog"), ("paint", "esm"), ("navmesh", "esm"), ("map", "esm"),
                           ("mist", "esm"), ("atmosphere", "esm"), ("esm", "readback"), ("height-fog", "readback"),
-                          ("readback", "upload"), ("tools", "esm"), ("land", "relief")]:
+                          ("readback", "upload"), ("tools", "esm"), ("land", "relief"),
+                          ("navmesh", "dressing"), ("map", "dressing"), ("dressing", "esm"), ("dressing", "readback")]:
         assert at[before] < at[after], (before, after)
 
 

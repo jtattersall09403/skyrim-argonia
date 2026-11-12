@@ -49,6 +49,7 @@ BIN = REPO / "out/tools/ArgoniaPlugin-verify"
 MASTERS = ["Skyrim.esm", "Update.esm", "Black Marsh.esm"]
 ESM = "ArgoniaNewWorld.esm"
 MARKERS = 116
+FLOWER_GRASS_DENSITY = 40   # Flower Fields copies thinned to King of the Murkmire's flower grasses (docs/design/dressing.md); NewWorld.cs FlowerGrassDensity
 GRASS_SHARE_MIN = 0.80   # land quadrants (mean height above water) with a grass-bearing texture layer
 REFS_CAP = 162           # natural refs in a cell: vanilla's forested max
 JACCARD_MAX = 0.60       # two regions' base sets: the most they may share (the place step reports 0.58, two sea regions)
@@ -115,8 +116,21 @@ def jload(p: Path):
 def dump(plugin: Path, out: Path) -> None:
     env = dict(os.environ, DOTNET_ROOT=str(Path.home() / ".dotnet"), DOTNET_CLI_TELEMETRY_OPTOUT="1", DOTNET_NOLOGO="1")
     env["PATH"] = f"{Path.home() / '.dotnet'}:{env['PATH']}"
-    subprocess.run(["dotnet", "build", "-c", "Release", "-o", str(BIN), str(REPO / "tools/ArgoniaPlugin"), "-v", "q", "-nologo"],
-                   check=True, env=env, capture_output=True)
+    # every dotnet build of tools/ArgoniaPlugin shares its obj/ folder: builds that overlap (a lane's, the tools stage, a
+    # second read-back) corrupt each other's, so this one takes the file lock the others take, and its output is kept
+    import fcntl
+    lock = Path.home() / ".argonia/dotnet-build.lock"
+    lock.parent.mkdir(parents=True, exist_ok=True)
+    with open(lock, "w") as lf:
+        fcntl.flock(lf, fcntl.LOCK_EX)
+        for attempt in (1, 2):
+            b = subprocess.run(["dotnet", "build", "-c", "Release", "-o", str(BIN), str(REPO / "tools/ArgoniaPlugin"), "-v", "q", "-nologo"],
+                               env=env, capture_output=True, text=True)
+            if b.returncode == 0:
+                break
+        else:
+            print((b.stdout + b.stderr)[-2000:], file=sys.stderr)
+            raise subprocess.CalledProcessError(b.returncode, b.args)
     subprocess.run(["dotnet", str(BIN / "ArgoniaPlugin.dll"), "nwverify", "dump", str(plugin / ESM), str(DATA), str(out / "dump")],
                    check=True, env=env)
 
@@ -244,6 +258,10 @@ def run(plugin: Path, out: Path, do_dump: bool = True, only: set | None = None, 
         share = round(gq / lq, 3) if lq else 0.0
         rep.row("textures", f"GRAS coverage: land quadrants with a grass-bearing layer >= {GRASS_SHARE_MIN}", share,
                 share >= GRASS_SHARE_MIN, f"{gq}/{lq} quadrants; {sum(1 for t in lt if t['grasses'])} LTEX carry GRAS")
+        gd = H.get("grass_density", {})
+        thick = flower_grass_thick(gd)
+        rep.row("textures", f"Flower Fields grass copies at density <= {FLOWER_GRASS_DENSITY} (no carpets)", len(thick), not thick,
+                f"e.g. {thick[:4]}" if thick else f"{len(gd)} GRAS in the file")
         from tools.newworld.world import texcheck
         if not (plugin / "tex/manifest.json").exists():
             rep.fail("textures", "texture edge and swathe metrics", "out/newworld/plugin/tex/manifest.json missing: run world/texture.py")
@@ -631,14 +649,35 @@ def ecology_rows(rep: Report, plugin: Path, d: Path) -> None:
     rep.row("ecology", "every actor's base NPC_ has the fixed level of actors.json (no player-level multiplier, no stats template)",
             f"{n - bad_lvl}/{n}", not bad_lvl, "; ".join(ex[:4]) if bad_lvl else "")
     eco_npcs = [r for r in npcs.values() if r["level_kind"] != "fixed" or r["stats_template"] == "True"]
-    rep.row("ecology", "no ANW_Eco_ NPC_ has a player-level multiplier or a stats template", len(eco_npcs), not eco_npcs,
-            ", ".join(r["edid"] for r in eco_npcs[:3]))
-    rep.row("ecology", "ANW_Eco_ NPC_ records = actors of actors.json", len(npcs), len(npcs) == len(actors), f"{len(actors)} actors")
+    rep.row("ecology", "no NPC_ of our file has a player-level multiplier or a stats template (band copies of mod actors included)",
+            len(eco_npcs), not eco_npcs, ", ".join(r["edid"] for r in eco_npcs[:3]))
+    band = [r for r in npcs.values() if r["edid"].startswith("ANW_Eco_")]
+    rep.row("ecology", "ANW_Eco_ NPC_ records = actors of actors.json", len(band), len(band) == len(actors), f"{len(actors)} actors")
     out = [fid for fid in got if not 0xF00000 <= int(fid, 16) <= 0xFDFFFF]
     rep.row("ecology", "no ecology ACHR outside 0xF00000..0xFDFFFF", len(out), not out, ", ".join(out[:4]))
     extra = set(got) - seen
     rep.row("ecology", "no ACHR in the ESM that no shard names", len(extra), not extra, ", ".join(sorted(extra)[:4]))
     critter_rows(rep, eco, crit)
+    dressing_rows(rep, plugin)
+
+
+def flower_grass_thick(density: dict) -> list:
+    """The Flower Fields grass copies (by the grass census) in a world file's {edid: density} that are over the limit."""
+    census = jload(REPO / "newworld/sources/dressing/grass_census.json")["grasses"]
+    ff = {r["edid"] for r in census if r["winner"] == "FlowerFields.esp"}
+    return sorted(k for k, v in density.items() if k in ff and v > FLOWER_GRASS_DENSITY)
+
+
+def dressing_rows(rep: Report, plugin: Path) -> None:
+    """The small signature things (dressing/place.py): the stage placed some, and its own check found no fault."""
+    dr = plugin / "dressing"
+    if not (dr / "manifest.json").exists():
+        rep.row("ecology", "dressing placed", "no dressing", True, "no dressing/manifest.json: nothing to read back")
+        return
+    man, chk = jload(dr / "manifest.json"), jload(dr / "check.json") if (dr / "check.json").exists() else {}
+    rep.row("ecology", "dressing references placed (the stage's manifest)", man["refs"], man["refs"] > 0)
+    rep.row("ecology", "dressing check: no fault", chk.get("fault_count", "no check.json"), chk.get("fault_count") == 0,
+            "; ".join(chk.get("faults", [])[:3]))
 
 
 def harvest_rows(rep: Report, eco: Path, rows_all: dict) -> None:

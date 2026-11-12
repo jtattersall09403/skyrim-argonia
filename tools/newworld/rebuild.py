@@ -128,6 +128,7 @@ IDSPACE_EDITS = IDSPACE + "#added,placed,placed-high,navmesh"
 IDSPACE_ECOLOGY = IDSPACE + "#ecology"
 FORMIDS = "src:newworld/sources/world_formids.json"       # the world file's form ids by name: the writer adds, never changes
 BUILT_PLACES = ("src:newworld/places/*/land.jsonl", "src:newworld/places/*/spaces/exterior/refs.jsonl")
+IDSPACE_DRESSING = IDSPACE + "#dressing"
 DBPY = "src:tools/argonia_world/db.py"
 LAID = "laid:NewWorld"
 ESM = "out:newworld/plugin/ArgoniaNewWorld.esm"
@@ -163,7 +164,7 @@ DB_SOURCES = (*MAPS, "src:newworld/sources/road_corrections.json", PLACE_PEOPLE,
 EARLY_CHECKS = ("needs", "water", "relief", "landings", "place", "edits")
 EXTERNAL = ("newworld/raster/water.png", "newworld/raster/foreign.png", "newworld/roads.json", "newworld/borders.json",
             "newworld/symbols.json", "newworld/research/flora_catalogue.json", "newworld/terrain_ref/tamriel_h.npy",
-            "newworld/terrain_ref/tamriel_w.npy")
+            "newworld/terrain_ref/tamriel_w.npy", "newworld/dressing/grass_census.json")
 
 # The navmesh's fast test (tools/navmesh/__main__.py, `sample`: five blocks of 64 cells, bare and round what is
 # placed, about two minutes; exit 1 on a red block). The navmesh stage runs it before the province build, and a
@@ -305,11 +306,15 @@ STAGES: tuple[Stage, ...] = (
     Stage("paint", "the ground paint, and its check on the engine's view: layers, seams, edges, roads, swathes",
           cmds=((PY, "-m", "tools.newworld.keyed", "paint", "--out", PLUGIN),),
           proof=(PY, "-m", "tools.newworld.proofs", "paint", "--plugin", PLUGIN),
-          checks=((PY, "-m", "tools.newworld.world.texcheck", "--out", PLUGIN),),
+          checks=((PY, "-m", "tools.newworld.world.texcheck", "--out", PLUGIN),
+                  (PY, "-m", "tools.newworld.dressing.ground_colour")),
           reads=(LAND, LANDCOVER, "db:habitat", "db:region", "db:road", "src:tools/newworld/world/texture.py",
                  "src:tools/newworld/world/roadpaint.py", "src:tools/newworld/landcover.py", "src:tools/newworld/terrain.py",
                  "src:tools/newworld/frame.py"),
-          check_reads=("src:tools/newworld/world/texcheck.py", "src:tools/places/assets/resolve.py", LAID),
+          check_reads=("src:tools/newworld/world/texcheck.py", "src:tools/places/assets/resolve.py", LAID,
+                       "src:tools/newworld/dressing/ground_colour.py", "src:tools/newworld/dressing/grass_census.py",
+                       "out:newworld/dressing/grass_census.json",
+                       "src:newworld/sources/identity/adjacency.json", "src:newworld/sources/identity/regions.json"),
           writes=("out:newworld/plugin/tex/manifest.json", "out:newworld/plugin/tex/materials.json"),
           agree=(("out:newworld/plugin/tex/manifest.json#key", "out:newworld/plugin/land/manifest.json#key", "starts"),),
           after=EARLY_CHECKS, gb=5.6, minutes=21.0),
@@ -366,10 +371,12 @@ STAGES: tuple[Stage, ...] = (
           cmds=((PY, "-m", "tools.newworld.ecology.place", "run", "--out", PLUGIN),
                 (PY, "-m", "tools.newworld.ecology.harvest", "run", "--out", PLUGIN)),
           checks=((PY, "-m", "tools.newworld.ecology.place", "check", "--out", PLUGIN),
-                  (PY, "-m", "tools.newworld.ecology.harvest", "check", "--out", PLUGIN)),
+                  (PY, "-m", "tools.newworld.ecology.harvest", "check", "--out", PLUGIN),
+                  (PY, "-m", "tools.newworld.ecology.roster_check")),
           reads=(LAND, LANDCOVER, "out:newworld/landcover/legend.json", FLORA, "out:newworld/plugin/map/teleports.json",
                  "db:cell", "db:danger_band", "src:newworld/sources/ecology/**/*", "src:newworld/sources/terrain_held.json",
-                 "src:tools/newworld/ecology/place.py", "src:tools/newworld/ecology/harvest.py", "src:tools/newworld/ecology/toughness.py", IDSPACE_ECOLOGY),
+                 "src:tools/newworld/ecology/place.py", "src:tools/newworld/ecology/harvest.py", "src:tools/newworld/ecology/toughness.py", "src:tools/newworld/ecology/roster_check.py",
+                 "out:newworld/cell_region.json", "out:newworld/water_classified.json", IDSPACE_ECOLOGY),
           writes=("out:newworld/plugin/ecology/manifest.json", "out:newworld/plugin/ecology/actors.json",
                   "out:newworld/plugin/ecology/check.json", "out:newworld/plugin/ecology/harvest/manifest.json",
                   "out:newworld/plugin/ecology/harvest/records.json", "out:newworld/plugin/ecology/harvest/check.json"),
@@ -377,6 +384,17 @@ STAGES: tuple[Stage, ...] = (
           after=("navmesh",), gb=1.0, minutes=0.5),
     Stage("esm", "ArgoniaNewWorld.esm written, the map data applied, and the file's own check",
           cmds=(("tools/newworld/world/world.sh", "write"), ("tools/newworld/world/world.sh", "map")),
+    Stage("dressing", "the small signature things of each region (two kinds no neighbour has), by Skyrim's rate per sort; checked",
+          cmds=((PY, "-m", "tools.newworld.dressing.place", "run"),),
+          checks=((PY, "-m", "tools.newworld.dressing.place", "check"),),
+          reads=(LAND, LANDCOVER, "out:newworld/landcover/legend.json", FLORA, "out:newworld/plugin/map/teleports.json",
+                 "db:cell", "src:newworld/sources/dressing/**/*", "src:newworld/sources/identity/adjacency.json",
+                 "src:newworld/sources/terrain_held.json", "src:tools/newworld/dressing/place.py",
+                 "src:tools/newworld/ecology/place.py", "src:tools/newworld/world/texture.py", "src:tools/newworld/assets_audit.py",
+                 "src:tools/places/assets/resolve.py", "src:tools/argonia_world/esm.py", IDSPACE_DRESSING),
+          writes=("out:newworld/plugin/dressing/manifest.json", "out:newworld/plugin/dressing/check.json"),
+          agree=(("out:newworld/plugin/dressing/manifest.json#build_id", "out:newworld/plugin/land/manifest.json#build_id", "eq"),),
+          after=("navmesh",), gb=1.0, minutes=0.5),
           checks=(("tools/newworld/world/world.sh", "check"),),
           reads=(LAND, "out:newworld/plugin/tex/manifest.json#key", "out:newworld/plugin/tex/materials.json", CELLS,
                  "out:newworld/plugin/atmosphere.json", FLORA, "out:newworld/plugin/refs/flora/bases.json",
@@ -387,6 +405,7 @@ STAGES: tuple[Stage, ...] = (
                  "out:newworld/plugin/ecology/harvest/manifest.json", "out:newworld/plugin/ecology/harvest/records.json",
                  f"ext:{GAME}/Skyrim.esm", f"ext:{GAME}/Update.esm", f"ext:{GAME}/Black Marsh.esm", LAID,
                  "src:tools/newworld/world/world.sh", FORMIDS),
+                 "out:newworld/plugin/dressing/manifest.json",
           adds=(FORMIDS,),
           writes=("out:newworld/plugin/ArgoniaNewWorld.esm", "out:newworld/plugin/ArgoniaNewWorld.json",
                   "out:newworld/plugin/check.txt"),
@@ -394,7 +413,8 @@ STAGES: tuple[Stage, ...] = (
           after=("tools",), gb=6.0, minutes=3.0, lock="dotnet"),
     Stage("readback", "the read-back of the written file: every requirement with a number",
           checks=((PY, "-m", "tools.newworld.verify", "--skip", f"{DOWNSTREAM_GROUPS},relief"),
-                  (PY, "-m", "tools.newworld.assets_audit", "--json", "out/newworld/verify/assets.json")),
+                  (PY, "-m", "tools.newworld.assets_audit", "--json", "out/newworld/verify/assets.json"),
+                  (PY, "-m", "tools.newworld.identity", "check")),
           reads=(ESM, "out:newworld/plugin/ArgoniaNewWorld.json#key", "out:newworld/plugin/check.txt",
                  "out:newworld/plugin/navmesh/check.json#-check_s", "out:newworld/water_check.json",
                  "src:mods/dependencies.json", f"ext:{STACK}/installed-NewWorld.json", f"ext:{STACK}/installed.json",
@@ -404,6 +424,7 @@ STAGES: tuple[Stage, ...] = (
                  "src:tools/newworld/assets_audit.py", "src:tools/argonia_world/esm.py", "src:newworld/sources/assets_missing_allowed.json",
                  "src:mods/texture-aliases.json", "src:tools/ArgoniaPlugin/NewWorldVerify.cs", "src:tools/ArgoniaPlugin/WaterStudy.cs"),
           gb=2.7, minutes=3.5, lock="dotnet"),
+                 "src:tools/newworld/identity.py", "src:newworld/sources/identity/*.json",
     Stage("upload", "the world file and its records to the bucket",
           cmds=((PY, "-m", "tools.newworld.terrain_upload"), ("tools/newworld/world/world.sh", "upload")),
           reads=(BUILD, ESM, "out:newworld/plugin/ArgoniaNewWorld.json#key", "out:newworld/plugin/check.txt",

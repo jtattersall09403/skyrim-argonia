@@ -29,7 +29,7 @@ HUMANOID = ("Nord", "Imperial", "Breton", "Redguard", "HighElf", "DarkElf", "Woo
             "Elder", "Child", "Draugr", "Skeleton", "Falmer", "Dremora", "Vampire", "Afflicted", "Snow", "Manakin",
             "Default", "Naga", "Human", "Elf")
 KEEP = {b"NPC_", b"LVLN", b"ECZN", b"RACE", b"CELL", b"WRLD", b"FLOR", b"TREE", b"ACTI"}
-CRITTER = re.compile(r"^(critter|DragonFly|Fish|Firefly|Moth|FXbird|FXBird|FCAmb)", re.I)
+CRITTER = re.compile(r"^(critter|DragonFly|Fish|Firefly|Moth|FXbird|FXBird|FXbat|FCAmb)", re.I)
 NOT_CRITTER = re.compile(r"Dummy|Trig|Quest|Furniture|Tank|CatchData", re.I)
 OUT = Path(__file__).resolve().parents[3] / "newworld" / "sources" / "ecology" / "skyrim_measures.json"
 GROUP_R = 1500.0
@@ -256,7 +256,7 @@ def measure_critters(o: dict, cls: dict, cells: dict, world_water: float, land: 
     sky = sum(r["n"] for e, r in rows.items() if spawners.match(e))
     return {"bases": bases, "black_marsh": black_marsh_critters(o, sky / sum(land.values())),
             "method": "REFR in Tamriel whose base ACTI is a critter spawner or critter (editor id starting critter, DragonFly, "
-                      "Fish, Firefly, Moth, FXbird, FCAmb; not dummies, triggers, furniture or tanks), in a cell with LAND; "
+                      "Fish, Firefly, Moth, FXbird, FXbat, FCAmb; not dummies, triggers, furniture or tanks), in a cell with LAND; "
                       "per 100 cells = refs / cells of the class * 100; over water = ground under the cell's water height "
                       "at the ref, on the edge = within 2 m above it; near a harvestable = a FLOR with an ingredient within "
                       "15 m; spawn_hours = the start and end hour and most critters of each critterspawn script of the base"}

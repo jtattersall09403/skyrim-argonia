@@ -35,7 +35,9 @@ static class NewWorld
     // Every other record's id is its name's in the registry (FormIds.cs), in its kind's block.
     // Every allocator's range is one table, tools/newworld/idspace.py; these are its numbers.
     const uint IdWorld = 0x800, IdTopCell = 0x801, IdMarker = 0x802, IdCells = 0x100000, IdRefs = 0x200000, IdRefsCounted = 0x740000, IdRefsEnd = 0x7FFFFF;
+    const byte FlowerGrassDensity = 40;   // verify.py FLOWER_GRASS_DENSITY
     const uint IdNavmesh = 0x600000, IdNavmeshEnd = 0x609677;
+    const uint IdDressing = 0x0A0000, IdDressingEnd = 0x0FFFFF;   // tools/newworld/idspace.py row `dressing`
     const uint IdEcology = 0xF00000, IdEcologyEnd = 0xFDFFFF;   // tools/newworld/idspace.py row `ecology`
     static readonly string[] Allowed = { "Skyrim.esm", "Update.esm", "Black Marsh.esm" };  // the only masters (verify.py MASTERS)
 
@@ -127,7 +129,13 @@ static class NewWorld
             if (!ts.IsNull && ts.ModKey != modKey) lt.TextureSet.SetTo(fc.Get(ts, ts.ModKey.FileName, forceCopy: true));
             lt.Grasses.Clear();
             foreach (var gs in m.GetProperty("grass").EnumerateArray().Select(x => x.GetString()!.Split(':')))
-                lt.Grasses.Add(new FormLink<IGrassGetter>(fc.Get(gs[0], gs[1])));
+            {
+                var gk = fc.Get(gs[0], gs[1]);
+                // Flower Fields' grasses come at density 100; King of the Murkmire's flower grasses and the middle of
+                // Skyrim's are 40 (docs/design/dressing.md): our copy is thinned to that, so a patch is not a carpet
+                if (gs[0] == "FlowerFields.esp" && mod.Grasses.TryGetValue(gk, out var gr) && gr.Density > FlowerGrassDensity) gr.Density = FlowerGrassDensity;
+                lt.Grasses.Add(new FormLink<IGrassGetter>(gk));
+            }
             matKeys.Add(key);
         }
         // water types, regions and weather, placed refs (tools/newworld/world/cells.py)
@@ -171,6 +179,7 @@ static class NewWorld
         var actorsByCell = Ecology(plugDir, fc, ids, mod);
         var crittersByCell = Critters(plugDir, fc);
         var harvestByCell = Harvest(plugDir, fc, ids, mod);
+        var dressingByCell = Dressing(plugDir, fc);
         uint refId = IdRefsCounted;
         var given = new HashSet<uint>();
         var mk = man.Marker;
@@ -259,6 +268,18 @@ static class NewWorld
                     {
                         if (fid < IdEcology || fid > IdEcologyEnd || !given.Add(fid))
                             throw new InvalidDataException($"an ecology harvestable's form id {fid:X6} is given twice or lies outside {IdEcology:X6}..{IdEcologyEnd:X6}");
+                        c.Temporary.Add(new PlacedObject(K(fid), Rel)
+                        {
+                            Base = new FormLinkNullable<IPlaceableObjectGetter>(bk),
+                            Placement = new Placement { Position = pos, Rotation = new P3Float(0, 0, rz) },
+                            Scale = sc == 1f ? null : sc,
+                        });
+                    }
+                if (dressingByCell.TryGetValue((cx, cy), out var dl))
+                    foreach (var (bk, pos, rz, sc, fid) in dl)
+                    {
+                        if (fid < IdDressing || fid > IdDressingEnd || !given.Add(fid))
+                            throw new InvalidDataException($"a dressing reference's form id {fid:X6} is given twice or lies outside {IdDressing:X6}..{IdDressingEnd:X6}");
                         c.Temporary.Add(new PlacedObject(K(fid), Rel)
                         {
                             Base = new FormLinkNullable<IPlaceableObjectGetter>(bk),
@@ -533,6 +554,32 @@ static class NewWorld
     }
 
     // Placed refs from every producer's shards: <plugin dir>/refs/<producer>/cy<+NNN>.jsonl (format: cells.py).
+    // The small signature things (<plugin dir>/dressing/cy*.jsonl, tools/newworld/dressing/place.py): one reference a line,
+    // its base from a master plugin (fc.Get), position, yaw, scale and form id.
+    static Dictionary<(int, int), List<(FormKey, P3Float, float, float, uint)>> Dressing(string plugDir, ForeignCopy fc)
+    {
+        var res = new Dictionary<(int, int), List<(FormKey, P3Float, float, float, uint)>>();
+        var dir = Path.Combine(plugDir, "dressing");
+        if (!Directory.Exists(dir)) return res;
+        var bases = new Dictionary<string, FormKey>();
+        foreach (var f in Directory.EnumerateFiles(dir, "cy*.jsonl").Order())
+            foreach (var line in File.ReadAllLines(f))
+            {
+                if (line.Length == 0) continue;
+                var o = JsonDocument.Parse(line).RootElement;
+                float G(string k) => (float)o.GetProperty(k).GetDouble();
+                var src = o.GetProperty("base").GetString()!;
+                if (!bases.TryGetValue(src, out var bk)) { var q = src.Split(':', 2); bases[src] = bk = fc.Get(q[0], q[1]); }
+                var pos = new P3Float(G("x"), G("y"), G("z"));
+                var cell = ((int)Math.Floor(pos.X / CELL), (int)Math.Floor(pos.Y / CELL));
+                if (!res.TryGetValue(cell, out var l)) res[cell] = l = new();
+                var fid = uint.Parse(o.GetProperty("fid").GetString()!, System.Globalization.NumberStyles.HexNumber);
+                if (fid < IdDressing || fid > IdDressingEnd) throw new InvalidDataException($"dressing form id {fid:X6} lies outside {IdDressing:X6}..{IdDressingEnd:X6}");
+                l.Add((bk, pos, G("rz"), G("scale"), fid));
+            }
+        return res;
+    }
+
     static Dictionary<(int, int), List<(FormKey, P3Float, P3Float, float, uint?)>> Refs(string plugDir, ForeignCopy fc)
     {
         var res = new Dictionary<(int, int), List<(FormKey, P3Float, P3Float, float, uint?)>>();

@@ -242,6 +242,18 @@
     "share_near_harvestable_15m": 0.167,
     "spawn_hours": []
    },
+   "FXbatGroupACT": {
+    "refs": 2,
+    "refs_per_100_cells_by_class": {
+     "forest": 0.046,
+     "mountain": 0.03
+    },
+    "share_over_water": 0.0,
+    "share_on_water_edge": 0.0,
+    "share_dry": 1.0,
+    "share_near_harvestable_15m": 0.0,
+    "spawn_hours": []
+   },
    "FXbirdOPreyACT": {
     "refs": 6,
     "refs_per_100_cells_by_class": {

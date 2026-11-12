@@ -63,3 +63,38 @@ def test_ecology_critter_rows(tmp_path):
     rep = v.Report()
     v.ecology_rows(rep, tmp_path / "plugin", d)
     assert sum(r["result"] != "PASS" for r in rep.rows if "critter" in r["requirement"]) == 2, rep.md()
+
+
+def test_every_npc_of_the_file_is_judged_for_a_player_level_multiplier(tmp_path):
+    eco, d = tmp_path / "plugin/ecology", tmp_path / "dump"
+    eco.mkdir(parents=True)
+    d.mkdir()
+    (eco / "actors.json").write_text('{"actors":[]}')
+    (d / "ecology.tsv").write_text("cx\tcy\tfid\tx\ty\tz\trz\tbase\tbase_edid\tsig\n")
+    (d / "eco_npcs.tsv").write_text("edid\tkey\tlevel_kind\tlevel\tstats_template\tautocalc\nSomeModActor\tK\tpc_mult\t1\tFalse\tFalse\n")
+    rep = v.Report()
+    v.ecology_rows(rep, tmp_path / "plugin", d)
+    bad = [r for r in rep.rows if "no NPC_ of our file" in r["requirement"]]
+    assert len(bad) == 1 and bad[0]["result"] == "FAIL" and "SomeModActor" in bad[0]["detail"]
+
+
+def test_dressing_rows(tmp_path):
+    dr = tmp_path / "plugin/dressing"
+    rep = v.Report()
+    v.dressing_rows(rep, tmp_path / "plugin")
+    assert rep.rows[0]["result"] == "PASS"
+    dr.mkdir(parents=True)
+    (dr / "manifest.json").write_text('{"refs": 12}')
+    (dr / "check.json").write_text('{"fault_count": 0, "faults": []}')
+    rep = v.Report()
+    v.dressing_rows(rep, tmp_path / "plugin")
+    assert [r["result"] for r in rep.rows] == ["PASS", "PASS"]
+    (dr / "check.json").write_text('{"fault_count": 2, "faults": ["a", "b"]}')
+    rep = v.Report()
+    v.dressing_rows(rep, tmp_path / "plugin")
+    assert rep.rows[-1]["result"] == "FAIL"
+
+
+def test_flower_grass_thick():
+    from tools.newworld import verify as v
+    assert v.flower_grass_thick({"ESpTulipRed": 100, "ESpTulipWhite": 40, "ALPAGrassFern01": 90}) == ["ESpTulipRed"]

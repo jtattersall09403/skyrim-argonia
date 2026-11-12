@@ -6673,6 +6673,9 @@
    "critterSpawnPond_Deep",
    "critterSpawnPond_Deep_FishOnly",
    "critterSpawnPond_Small"
+  ],
+  "bats": [
+   "FXbatGroupACT"
   ]
  },
  "critter_kinds": {
@@ -6741,6 +6744,12 @@
    "function": "pond",
    "time": "day",
    "why": "nearest: Skyrim's shallow-water fish school, 6 to 23 h; no mudskipper critter"
+  },
+  "cave-bat": {
+   "critter": "Skyrim.esm:FXbatGroupACT",
+   "function": "bats",
+   "time": "none",
+   "why": "Skyrim's own bat colony activator (FXbatGroupACT, a bat group that flies from its roost and scatters when scared); it carries no spawn hours, so the kind's night is dropped; placed on the kind's rock ground at Skyrim's rate per class"
   }
  }
 }

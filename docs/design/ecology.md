@@ -48,8 +48,34 @@ possible, rich and alive", and exits 1 on any failure. Per region:
 A kind no mod models is re-authored: another creature that fills its niche in that region, from the lore or stated
 as extrapolation, first from the census's unused creatures, then searched and sourced
 ([creature-mod-search](../research/creature-mod-search.md)). Measured: 97 kinds over 24 regions, 85 actor kinds
-against Skyrim's 38; largest overlap of two regions 0.5; the one failure left is the cave bat (clause e) in four
-regions, bound once its spawner is.
+against Skyrim's 38; largest overlap of two regions 0.5. The cave bat is Skyrim's own bat colony activator
+(`FXbatGroupACT`) bound as a critter (`bindings.json` `critter_kinds`, function `bats`): it carries no spawn hours, so
+the bat is always out, and it stands on the kind's rock ground at Skyrim's rate for it (two refs in Tamriel, in
+forest and mountain cells).
+
+### Kinds no model exists for
+
+Each lore kind with no Skyrim Special Edition actor model is either bound to the nearest honest fit, said so and why,
+or left out. Searches that found no actor model are listed in the search record's Result section.
+
+| Lore kind | Fit | Why |
+|---|---|---|
+| sea lion | sea otter (Otters) | a swimming fur-coated shore hunter of the same size class; no sea lion or seal model |
+| manta ray | goliath grouper | the lore's big, slow, harmless filter swimmer of the shallows; no ray model |
+| barracuda | anglerfish | a fish predator that ambushes from the water; no barracuda model |
+| sea snake | anglerfish | the same niche, a fish-shaped predator of the sea; no sea snake or eel model |
+| moray | megalania (Megalania) | a lurking ambusher at the water's edge; no eel model |
+| osheeja gar | sabretooth salmon | the lore's long-toothed river fish; no gar or pike model |
+| hoarvor | swamp leech | a bloodsucker of the standing water; the leech is Giant Leeches' |
+| feather-serpent | kaj-thux (giant snakes) | the same snake under another name in the lore |
+| death hopper | large frogs | the lore's death hoppers are large frogs: the frog mod models them true |
+| mosquito | giant mosquito | the big biting insect; a critter swarm stands for the small ones |
+| ibis, heron | shorebird, kingfisher | the nearest wading and fishing birds the load order carries |
+| parrot | hummingbird | the nearest small bright bird; no parrot model |
+
+Flying fish and mudskipper are critters (shallow-water fish school, and the nearest the water spawner gives).
+A kind with no honest fit in its region is left out of that region's roster: the roster test then holds the region to
+its size-class floors with the kinds that remain.
 
 ## The stage
 

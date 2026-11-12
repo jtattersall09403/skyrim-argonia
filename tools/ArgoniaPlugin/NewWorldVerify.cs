@@ -89,6 +89,7 @@ static class NewWorldVerify
                 edid = t.EditorID, grasses = t.Grasses?.Count ?? 0,
                 diffuse = txst.TryGetValue(t.TextureSet.FormKey, out var ts) ? ts.Diffuse?.ToString() : null,
             }).ToList(),
+            ["grass_density"] = mod.Grasses.GroupBy(g => g.EditorID ?? g.FormKey.ToString()).ToDictionary(g => g.Key, g => (int)g.Max(x => x.Density)),
             ["regions"] = mod.Regions.Select(r => new
             {
                 edid = r.EditorID, weathers = r.Weather?.Weathers?.Select(w => Ed(w.Weather.FormKey)).ToList(),
@@ -117,13 +118,13 @@ static class NewWorldVerify
         cw.WriteLine("x\ty\tedid\tland\twater\twater_h\tregion\trefs\tnavm\tnavm_tris\tland_quads\tgrass_quads\th_min\th_max\th_mean");
         using var gz = new GZipStream(File.Create(Path.Combine(outDir, "refs.tsv.gz")), CompressionLevel.Fastest);
         using var rw = new StreamWriter(gz);
-        // placed actors (ecology): one row each, and our ANW_Eco_ NPC_ records with the level they carry
+        // placed actors (ecology): one row each, and every NPC_ record of our file with the level it carries
         using var ew = new StreamWriter(Path.Combine(outDir, "ecology.tsv"));
         ew.WriteLine("cx\tcy\tfid\tx\ty\tz\trz\tbase\tbase_edid\tsig");
         using (var nw = new StreamWriter(Path.Combine(outDir, "eco_npcs.tsv")))
         {
             nw.WriteLine("edid\tkey\tlevel_kind\tlevel\tstats_template\tautocalc");
-            foreach (var n in mod.Npcs.Where(n => (n.EditorID ?? "").StartsWith("ANW_Eco_")))
+            foreach (var n in mod.Npcs)
             {
                 var lv = n.Configuration.Level;
                 var (kind, val) = lv switch { INpcLevelGetter l when l is NpcLevel nl => ("fixed", (double)nl.Level), PcLevelMult pm => ("pc_mult", (double)pm.LevelMult), _ => ("other", 0d) };
