@@ -720,15 +720,15 @@
 {"talker":"0C7259:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"The families who hold the Rose say it is their home, not a prison. They take it badly when outsiders call it one. I call it a jail. I do not care who hears me."}
 {"talker":"0C7259:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Wazei. I guard this road. My captain has put me where he can see me, because I have been warned twice for wanting a fight with the keepers up there."}
 {"talker":"0C7259:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Ruh-Jaal is the guard nearest the jail. You will usually find him just west-north-west of here. Do not expect much of him. He is a coward."}
-{"talker":"0C725A:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The cooking fire? Walk south about forty-five paces, to the boat on its rack. Then south-west about forty-five more. You will be standing at it. Are you meeting someone there?"}
+{"talker":"0C725A:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Walk just south until you reach the boat on its rack. Then just south-west, and the cooking fire is there. Keep your voice low about who asked."}
 {"talker":"0C725A:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Come closer, my friend. Keep your voice down. I hear more on this dock than any other guard. For you I will share it."}
 {"talker":"0C725A:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Keep your voice low. I do not know your face. I like to know every face on this dock."}
 {"talker":"0C725A:Black Marsh.esm","topic":"talk.greet-stranger","ord":2,"text":"You are new here. Who have you been speaking to since you arrived?"}
-{"talker":"0C725A:Black Marsh.esm","topic":"talk.here","ord":1,"text":"Quietly now, though everyone knows it. The dock is about twenty-five paces south-south-west of here. A boat lies about thirty paces the same way."}
+{"talker":"0C725A:Black Marsh.esm","topic":"talk.here","ord":1,"text":"Quietly now, though everyone knows it. The dock is just south-south-west of here. A boat lies the same way, just as near."}
 {"talker":"0C725A:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"Quietly now. Ask Quintel about the Imperial court. That is his tale, but I would like to know who else asks him for it."}
 {"talker":"0C725A:Black Marsh.esm","topic":"talk.rumours","ord":1,"text":"Ask Tzeel-Vaa about the Haven road. I hear everything said on this dock, not what is said elsewhere. I would like to know what he says."}
 {"talker":"0C725A:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Tuh-Weem. I guard this dock. Everything said on it reaches my ears. I am rarely wrong about what I hear."}
-{"talker":"0C725A:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Mends-The-Hulls mends boats at the north-east dock. He is usually about fifteen paces north-east of here. I think he is courting someone. Ask him yourself. Tell me what he says."}
+{"talker":"0C725A:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Mends-The-Hulls mends boats at the north-east dock. She is usually just north-east of here. I think she is courting someone. Ask her yourself. Tell me what she says."}
 {"talker":"0C725B:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The longboat? Walk south-east, a hundred and seventy paces or so. The longboat is in front of you."}
 {"talker":"0C725B:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"The water is low this season, so I have time to talk. Stand by me if you like."}
 {"talker":"0C725B:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Mind where you put your boots. The silt is soft here."}
