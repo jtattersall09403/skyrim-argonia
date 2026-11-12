@@ -55,12 +55,12 @@
 {"talker":"015193:Black Marsh.esm","topic":"talk.secret","ord":1,"text":"The house dresser stands just west-south-west of here, guest. That is all I will say of it to a stranger. Ask me again when I know you better."}
 {"talker":"015193:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Neeta-Lei. I keep the plantation house clean and its linen folded. I stay near it in case I am called. We take some pride in it."}
 {"talker":"015193:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Looks-At-Books has her shelf just west of here. She is the only person here worth talking to, guest. Hurz-Weel keeps the yard, just north-north-west. He tramps mud through the house, and I do not forgive it."}
-{"talker":"015195:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The dock, rider? Walk east a fair way until you reach Lilmoth on your right. Then walk east a short way until you reach the burnt-out house on your left. From there it is south-east a short way, and Lilmoth Dock is there."}
+{"talker":"015195:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The dock, rider? Go east a fair way, until Lilmoth is on your right. Keep on east a short way, to the burnt-out house on your left. Then turn south-east a short way, and there is Lilmoth Dock."}
 {"talker":"015195:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Hm, it is you. Come to the horses with me, friend. They are calmer when you are near."}
 {"talker":"015195:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Hm. Yes, rider? Speak up, I am busy."}
-{"talker":"015195:Black Marsh.esm","topic":"talk.here","ord":1,"text":"Mind the horses, rider. They stand just west-north-west of here, and one of them is a saddled black. Cows graze just west, and more just south."}
+{"talker":"015195:Black Marsh.esm","topic":"talk.here","ord":1,"text":"The horses, rider? Stand quiet and you will see them just west-north-west of here. One of them is a saddled black. Cows graze just west, and more just south."}
 {"talker":"015195:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Mazei-Tul. I serve in the house, but I keep the horses, because that is the work I like. One day I will be a rider."}
-{"talker":"015195:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Lifts-The-Sacks? He works the middle of the yard, just east of here. He helps with the feed, so go and be civil to him."}
+{"talker":"015195:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Lifts-The-Sacks? Just east of here, in the middle of the yard. He helps me with the feed, so be civil to him."}
 {"talker":"01CCD9:Black Marsh North.esp","topic":"talk.directions","ord":1,"text":"Thorn? Walk south-west a short way and Thorn is there, outlander. It is no great walk."}
 {"talker":"01CCD9:Black Marsh North.esp","topic":"talk.greet-friend","ord":1,"text":"Ah, my friend. Come, stand here by me; nobody is counting us just now. What do you need?"}
 {"talker":"01CCD9:Black Marsh North.esp","topic":"talk.greet-stranger","ord":1,"text":"Outlander. If you are counting something, count it elsewhere. What do you want?"}
