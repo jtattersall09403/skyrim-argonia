@@ -412,3 +412,9 @@ added here the day they are made, with the date and the issue.
   dealing with that issue"); terrain, trees, scatter placement and LOD stay untouched in nw-03b; (d) hostile NPC
   bands are "widely varied (in a lore consistent way) in terms of appearance and gear", gear quality and value by
   danger band and by who they are (the owner's edit of the phase file).
+- 2026-11-12 (in session, nw-04 check #64): (a) "yes happy with nordic layouts as the base (they get adapted to
+  our land anyway)": Skyrim's towns stay layout sources for our places; the call is dropped from the sources page;
+  (b) "yes please source more ruin mods to mine. please do the same for any other bad gaps as well (e.g. the
+  villages that got mapped to shrines)": every kind whose allocated sources are of another kind or culture, or
+  score low, gets more sources, first by mining what we hold more finely, then by new mods taken as layout
+  sources and asset dependencies the player downloads (never redistributed).
