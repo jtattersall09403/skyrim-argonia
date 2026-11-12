@@ -49,9 +49,15 @@ only (sources below), in plain musical terms.
 | battle-war | Drumbeats of the Dunmer (2:03) | stripped back; minimalist repeating drum rhythms that want a resonant, forceful sound; few instruments above | 120 BPM, G minor; repeating war-drum patterns, massed wordless chant |
 | battle-water | Stormclouds on the Battlefield (2:11) | sparse, repetitive rhythmic writing; dark, brooding, surging | 128 BPM, B minor; churning gourd and wood rhythm, swirling strings, surges |
 | battle-last | Knight's Charge (2:05) | its opening seconds announce the fight; bold, driving, building tension | 136 BPM, F minor; bold opening hit, driving drums and strings, choir swells to a climax |
-| sting-levelup | none: an excerpt of our own Overture, as Skyrim cuts its level-up sting from its main theme | what the player hears at a level-up (measured from Skyrim.esm and Skyrim - Sounds.bsa): the UI sound UILevelUp (SOUN 057B45 -> SNDR 057B44, UI_LevelUp.wav, 10.3 s file): about 4 s of body (peak at 2.8 s), then about 4 s of decay (-38 dB at 6.5 s, -47 dB by 8 s). The level-up music type (DOBJ LUMS -> MUSC 03B565 MUSSpecialSuccess, tracks MUS_LevelUp_01-03, 18.7-19.3 s) is a different, longer layer | the Overture 2:09.5-2:17.5 (8.0 s): its last bar into the final chord at 3.9 s, then 4 s of the chord's own decay under a fade; alternatives B 0:39.1-0:47.1 and C 0:48.2-0:56.2 in pieces.json `excerpt_alternatives` |
+| music-levelup | none: an excerpt of our own Overture | Skyrim's level-up music type (DOBJ LUMS -> MUSC 03B565 MUSSpecialSuccess, tracks MUS_LevelUp_01-03, measured 18.7-19.3 s: a steady body, the peak at 12.0-12.9 s, 20 dB down within 2.0-2.3 s, under -40 dB by 16.8-18.6 s) | the Overture 1:59.6-2:18.6 (19.0 s): its closing statement into the final chord at 13.8 s, which decays under a 3.5 s fade |
+| sting-levelup | none: an excerpt of our own Overture, as Skyrim cuts its level-up sting from its main theme | what the player hears at a level-up (measured from Skyrim.esm and Skyrim - Sounds.bsa): the UI sound UILevelUp (SOUN 057B45 -> SNDR 057B44, UI_LevelUp.wav, 10.3 s file): about 4 s of body (peak at 2.8 s), then about 4 s of decay (-38 dB at 6.5 s, -47 dB by 8 s). the music type is the separate, longer layer (music-levelup) | the Overture 2:09.5-2:17.5 (8.0 s): its last bar into the final chord at 3.9 s, then 4 s of the chord's own decay under a fade; alternatives B 0:39.1-0:47.1 and C 0:48.2-0:56.2 in pieces.json `excerpt_alternatives` |
 | sting-death | Fate's Quickening (0:17) | a short jingle, falling and mournful | the call slowed on low flute over a fading drone (round-1 take kept) |
 | sting-discovery | The Prophecy Fulfilled (1:11) | angelic choir and a high solo voice; a starry-eyed sense of wonder | thumb-piano and airy choir rising into the call |
+
+Level-up has two parts, as Skyrim's does: the UI sound UILevelUp (SNDR 057B44, our sting-levelup, 8 s) and the
+level-up music type MUSC 03B565 (our music-levelup, 19 s, joined to the type for the new world only). The records do
+not show which moment the engine plays MUSC 03B565 at (the level-up notice or the stats menu); that is an owner walk
+check.
 
 ### Sources for the feel
 
@@ -90,7 +96,9 @@ at pieces, so swapping a file needs no record change.
 
 To put your own music in a slot:
 
-1. Name the file after the slot, for example `explore-mist.mp3`. Accepted: `.wav`, `.mp3`, `.flac`, `.m4a`.
+1. Name the file after the slot, for example `explore-mist.mp3`. The two level-up slots, `sting-levelup` and
+   `music-levelup`, are cut from the theme slot's file at their times in pieces.json (`excerpt`): drop a new
+   theme and both follow it; change their times there to choose another cut. Accepted: `.wav`, `.mp3`, `.flac`, `.m4a`.
 2. Upload it to `s3://argonia-private-050977237313/nw/music/owner/`.
 3. Run `python3 tools/newworld/music/soundtrack.py build` on the build machine, then `stack.py stage` on the play
    machine.

@@ -3996,11 +3996,11 @@
     },
     {
      "path": "SKSE/Plugins/CommunityShaders/Weathers/0x80B38~ArgoniaNewWorld.esm.json",
-     "text": "{\"_argonia\": {\"weather\": \"ANW_W_Blackwood_Fair\", \"class\": \"blackwater-swamp\", \"band\": \"middle\", \"kind\": \"fair\"}, \"featureSettings\": {\"ExponentialHeightFog\": {\"__enabled\": true, \"Fog Density\": 0.1677, \"Fog Height\": 210.0, \"Fog Height Falloff\": 2.0, \"Directional Inscattering Multiplier\": 1.0, \"volumetricFogEnabled\": true, \"disableVanillaFog\": true, \"Original Fog Color Amount\": 1.0, \"Fog Inscattering Color\": [0.0, 0.0, 0.0, 0.0], \"Inscattering Cubemap Tint\": [1.0, 1.0, 1.0, 0.0], \"Volumetric Albedo\": [0.729, 0.854, 1.0, 1.0]}}}\n"
+     "text": "{\"_argonia\": {\"weather\": \"ANW_W_Blackwood_Fair\", \"class\": \"blackwater-swamp\", \"band\": \"middle\", \"kind\": \"fair\"}, \"featureSettings\": {\"ExponentialHeightFog\": {\"__enabled\": true, \"Fog Density\": 0.1666, \"Fog Height\": 210.0, \"Fog Height Falloff\": 2.0, \"Directional Inscattering Multiplier\": 1.0, \"volumetricFogEnabled\": true, \"disableVanillaFog\": true, \"Original Fog Color Amount\": 1.0, \"Fog Inscattering Color\": [0.0, 0.0, 0.0, 0.0], \"Inscattering Cubemap Tint\": [1.0, 1.0, 1.0, 0.0], \"Volumetric Albedo\": [0.729, 0.854, 1.0, 1.0]}}}\n"
     },
     {
      "path": "SKSE/Plugins/CommunityShaders/Weathers/0x80B39~ArgoniaNewWorld.esm.json",
-     "text": "{\"_argonia\": {\"weather\": \"ANW_W_Blackwood_Cloudy\", \"class\": \"blackwater-swamp\", \"band\": \"middle\", \"kind\": \"cloudy\"}, \"featureSettings\": {\"ExponentialHeightFog\": {\"__enabled\": true, \"Fog Density\": 0.1725, \"Fog Height\": 210.0, \"Fog Height Falloff\": 2.0, \"Directional Inscattering Multiplier\": 0.8, \"volumetricFogEnabled\": true, \"disableVanillaFog\": true, \"Original Fog Color Amount\": 1.0, \"Fog Inscattering Color\": [0.0, 0.0, 0.0, 0.0], \"Inscattering Cubemap Tint\": [1.0, 1.0, 1.0, 0.0], \"Volumetric Albedo\": [0.727, 0.848, 1.0, 1.0]}}}\n"
+     "text": "{\"_argonia\": {\"weather\": \"ANW_W_Blackwood_Cloudy\", \"class\": \"blackwater-swamp\", \"band\": \"middle\", \"kind\": \"cloudy\"}, \"featureSettings\": {\"ExponentialHeightFog\": {\"__enabled\": true, \"Fog Density\": 0.1666, \"Fog Height\": 210.0, \"Fog Height Falloff\": 2.0, \"Directional Inscattering Multiplier\": 0.8, \"volumetricFogEnabled\": true, \"disableVanillaFog\": true, \"Original Fog Color Amount\": 1.0, \"Fog Inscattering Color\": [0.0, 0.0, 0.0, 0.0], \"Inscattering Cubemap Tint\": [1.0, 1.0, 1.0, 0.0], \"Volumetric Albedo\": [0.727, 0.848, 1.0, 1.0]}}}\n"
     },
     {
      "path": "SKSE/Plugins/CommunityShaders/Weathers/0x80B3A~ArgoniaNewWorld.esm.json",
@@ -4356,11 +4356,11 @@
     },
     {
      "path": "SKSE/Plugins/CommunityShaders/Weathers/0x80BB0~ArgoniaNewWorld.esm.json",
-     "text": "{\"_argonia\": {\"weather\": \"ANW_W_UltherusSwamp_Fair\", \"class\": \"blackwater-swamp\", \"band\": \"south\", \"kind\": \"fair\"}, \"featureSettings\": {\"ExponentialHeightFog\": {\"__enabled\": true, \"Fog Density\": 0.1957, \"Fog Height\": 210.0, \"Fog Height Falloff\": 2.0, \"Directional Inscattering Multiplier\": 1.0, \"volumetricFogEnabled\": true, \"disableVanillaFog\": true, \"Original Fog Color Amount\": 1.0, \"Fog Inscattering Color\": [0.0, 0.0, 0.0, 0.0], \"Inscattering Cubemap Tint\": [1.0, 1.0, 1.0, 0.0], \"Volumetric Albedo\": [0.846, 1.0, 0.75, 1.0]}}}\n"
+     "text": "{\"_argonia\": {\"weather\": \"ANW_W_UltherusSwamp_Fair\", \"class\": \"blackwater-swamp\", \"band\": \"south\", \"kind\": \"fair\"}, \"featureSettings\": {\"ExponentialHeightFog\": {\"__enabled\": true, \"Fog Density\": 0.1666, \"Fog Height\": 210.0, \"Fog Height Falloff\": 2.0, \"Directional Inscattering Multiplier\": 1.0, \"volumetricFogEnabled\": true, \"disableVanillaFog\": true, \"Original Fog Color Amount\": 1.0, \"Fog Inscattering Color\": [0.0, 0.0, 0.0, 0.0], \"Inscattering Cubemap Tint\": [1.0, 1.0, 1.0, 0.0], \"Volumetric Albedo\": [0.846, 1.0, 0.75, 1.0]}}}\n"
     },
     {
      "path": "SKSE/Plugins/CommunityShaders/Weathers/0x80BB1~ArgoniaNewWorld.esm.json",
-     "text": "{\"_argonia\": {\"weather\": \"ANW_W_UltherusSwamp_Cloudy\", \"class\": \"blackwater-swamp\", \"band\": \"south\", \"kind\": \"cloudy\"}, \"featureSettings\": {\"ExponentialHeightFog\": {\"__enabled\": true, \"Fog Density\": 0.2013, \"Fog Height\": 210.0, \"Fog Height Falloff\": 2.0, \"Directional Inscattering Multiplier\": 0.8, \"volumetricFogEnabled\": true, \"disableVanillaFog\": true, \"Original Fog Color Amount\": 1.0, \"Fog Inscattering Color\": [0.0, 0.0, 0.0, 0.0], \"Inscattering Cubemap Tint\": [1.0, 1.0, 1.0, 0.0], \"Volumetric Albedo\": [0.85, 1.0, 0.757, 1.0]}}}\n"
+     "text": "{\"_argonia\": {\"weather\": \"ANW_W_UltherusSwamp_Cloudy\", \"class\": \"blackwater-swamp\", \"band\": \"south\", \"kind\": \"cloudy\"}, \"featureSettings\": {\"ExponentialHeightFog\": {\"__enabled\": true, \"Fog Density\": 0.1666, \"Fog Height\": 210.0, \"Fog Height Falloff\": 2.0, \"Directional Inscattering Multiplier\": 0.8, \"volumetricFogEnabled\": true, \"disableVanillaFog\": true, \"Original Fog Color Amount\": 1.0, \"Fog Inscattering Color\": [0.0, 0.0, 0.0, 0.0], \"Inscattering Cubemap Tint\": [1.0, 1.0, 1.0, 0.0], \"Volumetric Albedo\": [0.85, 1.0, 0.757, 1.0]}}}\n"
     },
     {
      "path": "SKSE/Plugins/CommunityShaders/Weathers/0x80BB2~ArgoniaNewWorld.esm.json",
@@ -4847,11 +4847,11 @@
    "author": "Elder Souls: Argonia",
    "version": "0.1.0",
    "archive": "built-argonia-soundtrack.tar",
-   "size_kb": 426870,
+   "size_kb": 430140,
    "why": "our own music: one slot per role (theme, 8 exploration, 7 battle, 3 stings) under music/argonia/, read by the new world's music records (docs/design/music.md)",
    "required": true,
    "profile": "newworld",
-   "sha256": "ed838f61107c60d9dcbbe0bc906c1fa42d4762b77cd2acce23f2a3b163871a5b",
+   "sha256": "ebf31f1a281cb05b593f7da403ee882c5d4daab753ce6f0a36f662f987dc1857",
    "licence": "our own: generated 2026-11-12 with Google Lyria 3.5 through fal.ai (output owned by the requester, commercial use allowed per fal's terms); the theme slot may hold the owner's own file",
    "permission_summary": "Original pieces from our own text prompts; no third-party audio was given to the model. Built by tools/newworld/music/soundtrack.py build and never committed (decision 0003).",
    "ai_clause": "AI-generated audio: model google/lyria-3.5, prompts in newworld/sources/music/pieces.json, request ids in manifest.json",

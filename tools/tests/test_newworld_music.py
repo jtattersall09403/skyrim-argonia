@@ -59,7 +59,10 @@ def test_an_excerpt_is_cut_from_another_slot_with_clean_fades():
     for p in PIECES["pieces"]:
         for ex in [p["excerpt"], *p.get("excerpt_alternatives", [])] if "excerpt" in p else []:
             assert ex["of"] in SLOTS and ex["of"] != p["id"] and "excerpt" not in next(q for q in PIECES["pieces"] if q["id"] == ex["of"])
-            assert 7 <= ex["end_s"] - ex["start_s"] <= 9 and 0.03 <= ex["fade_in_s"] <= 0.08 and 3 <= ex["fade_out_s"] <= 5  # Skyrim's heard sting: 4 s + 4 s
+            # Skyrim's level-up: the UI sound about 4 s + 4 s, the music 18.7-19.3 s
+            length = (7, 9) if p["id"] == "sting-levelup" else (17.5, 20.5)
+            assert length[0] <= ex["end_s"] - ex["start_s"] <= length[1], p["id"]
+            assert 0.03 <= ex["fade_in_s"] <= 0.08 and 3 <= ex["fade_out_s"] <= 5
     args = soundtrack.excerpt_filter({"of": "theme", "start_s": 129.5, "end_s": 137.5, "fade_in_s": 0.05, "fade_out_s": 4.0})
     assert args[1] .startswith("afade=t=in:st=0:d=0.05,afade=t=out:st=4.0:d=4.0,loudnorm")
     assert soundtrack.excerpt_input({"start_s": 129.5, "end_s": 137.5}) == ["-ss", "129.5", "-t", "8.0"]

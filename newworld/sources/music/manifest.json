@@ -1,5 +1,5 @@
 {
-  "about": "Generation manifest: piece -> take -> fal request id (google/lyria-3.5, $0.10 per generation, 2026-11-12). A restart reads results by request id and never resubmits. Audio is never committed; kept files live at s3://argonia-private-050977237313/nw/music/. sting-levelup's generated takes were rejected (owner, 2026-11-12); the slot is now an 8 s excerpt of the Overture (2:09.5-2:17.5), shaped like the UI level-up sound the player hears (pieces.json `excerpt`); the kept take t9 is in the bucket at nw/music/round3/sting-levelup-t9-rejected.mp3.",
+  "about": "Generation manifest: piece -> take -> fal request id (google/lyria-3.5, $0.10 per generation, 2026-11-12). A restart reads results by request id and never resubmits. Audio is never committed; kept files live at s3://argonia-private-050977237313/nw/music/. sting-levelup's generated takes were rejected (owner, 2026-11-12); the slot is now an 8 s excerpt of the Overture (2:09.5-2:17.5), shaped like the UI level-up sound the player hears (pieces.json `excerpt`); the kept take t9 is in the bucket at nw/music/round3/sting-levelup-t9-rejected.mp3. music-levelup is not generated: a 19 s excerpt of the Overture (1:59.6-2:18.6) for Skyrim's level-up music type.",
   "model": "google/lyria-3.5 via fal.ai",
   "takes": {
     "theme": {
