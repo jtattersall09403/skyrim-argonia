@@ -42,6 +42,9 @@ static class NewWorldVerify
         }
         mods.Add(mod);
         // every record of the masters and ours: what a link resolves to (later wins)
+        // PlayerRef (000014) is the engine's own reference, named by Skyrim's conditions (a music track's run-on
+        // reference in NewWorldMusic's overrides); it is no record of the masters' record groups
+        var PlayerRef = FormKey.Factory("000014:Skyrim.esm");
         var recs = new Dictionary<FormKey, Base>();
         foreach (var m in mods)
             foreach (var r in m.EnumerateMajorRecords())
@@ -65,7 +68,7 @@ static class NewWorldVerify
                     if (l.IsNull) continue;
                     links++;
                     if (!allowed.Contains(l.FormKey.ModKey)) { foreignLinks++; if (foreignEx.Count < 10) foreignEx.Add($"{r.FormKey} -> {l.FormKey}"); }
-                    else if (!recs.ContainsKey(l.FormKey)) { unresolved++; if (unresEx.Count < 10) unresEx.Add($"{r.FormKey} -> {l.FormKey}"); }
+                    else if (!recs.ContainsKey(l.FormKey) && l.FormKey != PlayerRef) { unresolved++; if (unresEx.Count < 10) unresEx.Add($"{r.FormKey} -> {l.FormKey}"); }
                 }
             }
             catch (Exception e) { Err($"{r.FormKey}: {e.GetType().Name} {e.Message}"); }
