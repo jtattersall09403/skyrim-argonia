@@ -81,7 +81,11 @@ Each run is a folder `story/playtests/<quest id>/<utc>-<player>-<designed|built>
 | `session.json` | the forms played, their hash, the world snapshot, the final state |
 | `run.json` | quest, form source and hash, player, model, counts (commands, stalls, harness errors), how it ended and how each quest stands, cost, minutes |
 
-`python3 -m tools.playtest index` rebuilds `story/playtests/index.json`. A stall is a repeated command, a third
+`python3 -m tools.playtest index` rebuilds `story/playtests/index.json`. `python3 -m tools.playtest page` then writes
+the owner's page for exploring the runs (`out/playtest/index.html`, one self-contained file, published as a private
+artifact): every quest's stages with each run drawn along them, the takes and answers side by side, and each run step
+by step with its thinking, the screen, the state and a map of where the player went. It is made wholly from the run
+folders; make it again after new runs are kept. A stall is a repeated command, a third
 journal or map view running, or a think that says stuck.
 
 Read the take first, then the thinks around each stall and each wrong guess: what did the player believe, and what

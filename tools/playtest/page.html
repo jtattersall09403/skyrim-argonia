@@ -1,0 +1,845 @@
+<title>Argonia Playtest Journal</title>
+<meta charset="utf-8">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Spectral:ital,wght@0,400;0,500;1,400&display=swap">
+<style>
+/* Layout: a field journal. Each quest is a ribbon of its stages with every run inked along it; a run is a
+   column of footprints, the player's thought set large at each one and the game's screen as a slip beneath. */
+:root {
+  --paper: #eef0e8; --leaf: #f8f9f4; --silt: #e1e6d7; --ink: #1b2520; --ink-2: #48574e; --ink-3: #6f7d74;
+  --rule: #cdd4c6; --reed: #2f5a42; --reed-soft: #d7e3d8;
+  --p-careful: #2f62b3; --p-impatient: #c4572c; --p-wanderer: #178a6c; --p-other: #77847b;
+  --ok: #2c7347; --bad: #ad3434; --warn: #94640a; --warn-soft: #f2e5c4; --bad-soft: #f3dcd7; --mark: #f5e39a;
+  --f-display: "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --f-text: "Spectral", "Iowan Old Style", Georgia, serif;
+  --f-ui: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --s-1: .8125rem; --s0: 1rem; --s1: 1.1875rem; --s2: 1.5rem; --s3: 2.125rem; --s4: 2.875rem;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #111714; --leaf: #18201b; --silt: #1f2a23; --ink: #dde5db; --ink-2: #a8b5ab; --ink-3: #82907f;
+    --rule: #2c3832; --reed: #8cc09d; --reed-soft: #1f3128;
+    --p-careful: #5f88d4; --p-impatient: #d4643a; --p-wanderer: #24a080; --p-other: #82907f;
+    --ok: #6dbf88; --bad: #e27d70; --warn: #d9a441; --warn-soft: #3a2f17; --bad-soft: #3d221e; --mark: #5c4f1c;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #111714; --leaf: #18201b; --silt: #1f2a23; --ink: #dde5db; --ink-2: #a8b5ab; --ink-3: #82907f;
+  --rule: #2c3832; --reed: #8cc09d; --reed-soft: #1f3128;
+  --p-careful: #5f88d4; --p-impatient: #d4643a; --p-wanderer: #24a080; --p-other: #82907f;
+  --ok: #6dbf88; --bad: #e27d70; --warn: #d9a441; --warn-soft: #3a2f17; --bad-soft: #3d221e; --mark: #5c4f1c;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  background: var(--paper); color: var(--ink); font-family: var(--f-ui); font-size: var(--s0); line-height: 1.5;
+  margin: 0;
+}
+.wrap {
+  max-width: 76rem; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 1.25rem 4rem;
+}
+a { color: var(--reed); text-underline-offset: .18em; text-decoration-thickness: 1px; }
+a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible, summary:focus-visible {
+  outline: 2px solid var(--reed); outline-offset: 2px; border-radius: 3px;
+}
+h1, h2, h3 { text-wrap: balance; margin: 0; }
+h1 { font-family: var(--f-display); font-weight: 600; font-size: var(--s4); line-height: 1.02; letter-spacing: -.01em; }
+h2 { font-family: var(--f-display); font-weight: 600; font-size: var(--s3); line-height: 1.1; }
+h3 { font-family: var(--f-ui); font-size: var(--s-1); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); }
+p { margin: 0; }
+mark { background: var(--mark); color: inherit; border-radius: 2px; padding: 0 .1em; }
+.eyebrow { font-size: .75rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); }
+.mono { font-family: var(--f-mono); font-size: .8125rem; }
+.muted { color: var(--ink-3); }
+.num { font-variant-numeric: tabular-nums; }
+.stack { display: flex; flex-direction: column; gap: 1rem; }
+section.block { display: flex; flex-direction: column; gap: 1rem; padding-block: 1.75rem; border-top: 1px solid var(--rule); }
+
+/* masthead and crumbs */
+.top { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .5rem 1rem; padding-bottom: .75rem; }
+.brand { font-family: var(--f-display); font-style: italic; font-size: var(--s1); color: var(--ink-2); text-decoration: none; }
+.crumbs { display: flex; flex-wrap: wrap; gap: .25rem .5rem; font-size: var(--s-1); color: var(--ink-3); }
+.crumbs a { color: var(--ink-2); }
+.lede { font-family: var(--f-text); font-size: var(--s1); color: var(--ink-2); max-width: 40rem; line-height: 1.55; }
+
+/* filter bar */
+.filters { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)) minmax(0, 2fr); gap: .5rem; align-items: end; padding: .75rem; background: var(--leaf); border: 1px solid var(--rule); border-radius: 6px; }
+.filters label { display: flex; flex-direction: column; gap: .2rem; font-size: .6875rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); min-width: 0; }
+.filters select, .filters input { font: inherit; font-size: .9375rem; letter-spacing: 0; text-transform: none; color: var(--ink); background: var(--paper); border: 1px solid var(--rule); border-radius: 4px; padding: .45rem .5rem; width: 100%; min-width: 0; }
+.filterline { display: flex; flex-wrap: wrap; gap: .5rem 1rem; align-items: center; font-size: var(--s-1); color: var(--ink-3); }
+button.linkish { font: inherit; background: none; border: 0; padding: 0; color: var(--reed); text-decoration: underline; text-underline-offset: .18em; cursor: pointer; }
+@media (max-width: 760px) {
+  .filters { grid-template-columns: 1fr 1fr; }
+  .filters .search { grid-column: 1 / -1; }
+}
+
+/* chips, swatches, outcomes */
+.chips { display: flex; flex-wrap: wrap; gap: .4rem .5rem; align-items: center; }
+.chip { display: inline-flex; align-items: center; gap: .35rem; font-size: .8125rem; color: var(--ink-2); border: 1px solid var(--rule); border-radius: 999px; padding: .15rem .6rem; background: var(--leaf); white-space: nowrap; }
+.chip b { color: var(--ink); font-weight: 600; font-variant-numeric: tabular-nums; }
+.sw { display: inline-block; width: .75rem; height: .75rem; border-radius: 50%; background: var(--pc, var(--p-other)); flex: none; }
+.who { display: inline-flex; align-items: center; gap: .4rem; font-weight: 600; color: var(--ink); }
+.src { font-size: .6875rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); border: 1px solid var(--rule); border-radius: 3px; padding: 0 .3rem; font-weight: 500; }
+.src.built { color: var(--reed); border-color: var(--reed); }
+.out { display: inline-flex; align-items: center; gap: .35rem; font-size: .8125rem; font-weight: 500; color: var(--tone); white-space: nowrap; }
+.out svg { flex: none; }
+.t-ok { --tone: var(--ok); } .t-bad { --tone: var(--bad); } .t-warn { --tone: var(--warn); } .t-mute { --tone: var(--ink-3); }
+
+/* the ribbon: a quest's stages as a line, every run drawn along it */
+.ribbon { overflow-x: auto; }
+.ribbon-in { min-width: var(--minw); display: flex; flex-direction: column; }
+@media (max-width: 560px) {
+  .ribbon-in { min-width: var(--minwp); }
+  .rrow { grid-template-columns: var(--colsp) !important; }
+  .rend .out .w, .rend.eyebrow { font-size: 0; }
+  .rend { padding-left: .25rem; }
+}
+.rrow { display: grid; grid-template-columns: var(--cols); align-items: center; min-height: 2.75rem; color: inherit; text-decoration: none; border-top: 1px solid var(--rule); }
+.rrow.head { min-height: 0; border-top: 0; padding-bottom: .35rem; align-items: end; }
+a.rrow:hover { background: var(--silt); }
+.rlab { display: flex; flex-direction: column; gap: .1rem; padding: .35rem .5rem .35rem .25rem; min-width: 0; }
+.rlab .who { font-size: .9375rem; }
+.rlab .sub { font-size: .75rem; color: var(--ink-3); display: flex; gap: .4rem; align-items: center; flex-wrap: wrap; }
+.shead { text-align: center; font-family: var(--f-mono); font-size: .75rem; color: var(--ink-2); line-height: 1.2; }
+.shead small { display: block; font-family: var(--f-ui); font-size: .625rem; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+.cell { position: relative; height: 2.75rem; display: flex; align-items: center; justify-content: center; }
+.cell::before { content: ""; position: absolute; top: 50%; height: 1px; left: 0; right: 0; background: var(--rule); }
+.cell.on::before { height: 3px; margin-top: -1px; background: var(--pc); opacity: .85; }
+.cell.first::before { left: 50%; } .cell.last::before { right: 50%; }
+.cell.solo::before { display: none; }
+.dot { position: relative; z-index: 1; width: var(--d, 10px); height: var(--d, 10px); border-radius: 50%; background: var(--pc); box-shadow: 0 0 0 2px var(--leaf); }
+.dot.skip { background: var(--leaf); border: 2px solid var(--pc); }
+.dot.stall { box-shadow: 0 0 0 2px var(--leaf), 0 0 0 4.5px var(--warn); }
+.dot.harn { box-shadow: 0 0 0 2px var(--leaf), 0 0 0 4.5px var(--bad); }
+.cell .n { position: absolute; z-index: 2; top: calc(50% - var(--d) / 2 - .95rem); left: calc(50% + var(--d) / 2); font-size: .625rem; font-weight: 600; color: var(--warn); font-variant-numeric: tabular-nums; }
+.rend { padding-left: .5rem; }
+.ribbon-card { background: var(--leaf); border: 1px solid var(--rule); border-radius: 6px; padding: .5rem .75rem .25rem; }
+.legend { display: flex; flex-wrap: wrap; gap: .3rem 1rem; font-size: .75rem; color: var(--ink-3); align-items: center; }
+.legend span { display: inline-flex; align-items: center; gap: .35rem; }
+.lg-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--ink-3); }
+.lg-dot.big { width: 16px; height: 16px; }
+.lg-dot.stall { box-shadow: 0 0 0 2px var(--leaf), 0 0 0 4px var(--warn); }
+.lg-dot.skip { background: transparent; border: 2px solid var(--ink-3); }
+
+/* overview quests */
+.quest-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .25rem 1rem; }
+.quest-head h2 a { color: var(--ink); text-decoration: none; }
+.quest-head h2 a:hover { text-decoration: underline; text-decoration-thickness: 1px; }
+.findings { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: .75rem 1.5rem; }
+.finding { font-size: .9375rem; color: var(--ink-2); max-width: 38rem; }
+.finding strong { color: var(--ink); font-weight: 600; }
+.words { display: flex; flex-direction: column; gap: .25rem; }
+.word { display: grid; grid-template-columns: 7rem minmax(0, 1fr); gap: .25rem 1rem; color: inherit; text-decoration: none; padding: .45rem 0; border-top: 1px solid var(--rule); align-items: baseline; }
+.word:hover .wt { text-decoration: underline; text-decoration-thickness: 1px; }
+.word .wt { font-family: var(--f-text); font-size: 1.0625rem; line-height: 1.5; max-width: 46rem; }
+@media (max-width: 560px) { .word { grid-template-columns: minmax(0, 1fr); } }
+.empty { padding: 2rem 1.25rem; border: 1px dashed var(--rule); border-radius: 6px; background: var(--leaf); display: flex; flex-direction: column; gap: .5rem; max-width: 44rem; }
+.empty code { font-family: var(--f-mono); font-size: .8125rem; background: var(--silt); padding: .1rem .3rem; border-radius: 3px; overflow-wrap: anywhere; }
+
+/* takes */
+.takes { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16.5rem), 1fr)); gap: 1rem; }
+.take { background: var(--leaf); border: 1px solid var(--rule); border-top: 3px solid var(--pc); border-radius: 4px 4px 6px 6px; padding: 1rem 1.1rem 1.1rem; display: flex; flex-direction: column; gap: .75rem; min-width: 0; }
+.take-head { display: flex; flex-wrap: wrap; gap: .3rem .6rem; align-items: center; justify-content: space-between; }
+.take-text { font-family: var(--f-text); font-size: var(--s1); line-height: 1.6; color: var(--ink); }
+.take-text::before { content: "\201C"; font-family: var(--f-display); font-size: 2.4em; line-height: 0; vertical-align: -.42em; margin-right: .08em; color: var(--pc); }
+.qa { display: flex; flex-direction: column; gap: .6rem; margin: 0; }
+.qa dt { font-size: .75rem; font-weight: 600; letter-spacing: .04em; color: var(--ink-3); }
+.qa dd { margin: .1rem 0 0; font-family: var(--f-text); font-size: 1.0625rem; line-height: 1.55; }
+.qcompare { display: flex; flex-direction: column; gap: 1.25rem; }
+.qrow { display: flex; flex-direction: column; gap: .5rem; }
+.qrow h4 { margin: 0; font-family: var(--f-display); font-size: var(--s2); font-weight: 500; font-style: italic; line-height: 1.2; }
+.qgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); gap: .5rem 1rem; }
+.qans { border-left: 3px solid var(--pc); padding: .1rem 0 .1rem .75rem; display: flex; flex-direction: column; gap: .2rem; min-width: 0; }
+.qans .who { font-size: .8125rem; }
+.qans p { font-family: var(--f-text); font-size: 1.0625rem; line-height: 1.55; }
+
+/* stage-by-stage grid */
+.sgrid-wrap { overflow-x: auto; border: 1px solid var(--rule); border-radius: 6px; background: var(--leaf); }
+table.sgrid { border-collapse: collapse; width: 100%; font-size: .875rem; }
+.sgrid th, .sgrid td { border-top: 1px solid var(--rule); padding: .6rem .7rem; vertical-align: top; text-align: left; }
+.sgrid thead th { border-top: 0; background: var(--silt); font-weight: 600; white-space: nowrap; }
+.sgrid tbody th { width: 34%; min-width: 9rem; font-weight: 400; }
+.sgrid td { min-width: 10rem; }
+.sgrid .stn { font-family: var(--f-mono); font-size: .8125rem; color: var(--ink); font-weight: 500; }
+.sgrid .jr { font-family: var(--f-text); font-style: italic; color: var(--ink-2); display: block; margin-top: .2rem; line-height: 1.45; }
+.ticks { display: flex; flex-wrap: wrap; gap: 3px; margin-bottom: .35rem; }
+.tick { width: 5px; height: 14px; border-radius: 2px; background: var(--pc); display: block; }
+.tick.stall { background: var(--warn); } .tick.harn { background: var(--bad); }
+.tick.ph { background: repeating-linear-gradient(45deg, var(--pc) 0 2px, transparent 2px 4px); outline: 1px solid var(--pc); outline-offset: -1px; }
+.snip { font-family: var(--f-text); color: var(--ink-2); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.45; }
+.notreached { color: var(--ink-3); font-size: .8125rem; }
+@media (max-width: 640px) {
+  .sgrid th, .sgrid td { padding: .5rem .55rem; }
+  .sgrid tbody th { min-width: 7rem; width: 7rem; }
+  .sgrid td { min-width: 8.5rem; }
+  .sgrid .jr { display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; font-size: .8125rem; }
+  .sgrid .snip { -webkit-line-clamp: 2; }
+  .rlab .dt { display: none; }
+}
+
+/* run view */
+.run-head { display: flex; flex-direction: column; gap: .6rem; padding-bottom: 1.25rem; }
+.run-head h1 { display: flex; flex-wrap: wrap; align-items: baseline; gap: .1rem .6rem; }
+.run-head h1 .pl { color: var(--pc); }
+.facts { display: flex; flex-wrap: wrap; gap: .35rem 1.25rem; font-size: .875rem; color: var(--ink-2); }
+.facts span b { font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; }
+.run-body { display: grid; grid-template-columns: minmax(0, 1fr) 21rem; gap: 2rem; align-items: start; }
+.aside { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 1rem); display: flex; flex-direction: column; gap: 1.25rem; max-height: calc(100vh - 2rem); overflow-y: auto; padding-bottom: .5rem; }
+@media (max-width: 960px) {
+  .run-body { grid-template-columns: minmax(0, 1fr); }
+  .aside { position: static; max-height: none; order: -1; }
+}
+.panel { background: var(--leaf); border: 1px solid var(--rule); border-radius: 6px; padding: .85rem .9rem; display: flex; flex-direction: column; gap: .6rem; min-width: 0; }
+.ladder { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.ladder li { display: grid; grid-template-columns: 1.5rem 2.4rem minmax(0, 1fr); gap: .4rem; align-items: start; padding: .3rem 0; position: relative; }
+.ladder li::before { content: ""; position: absolute; left: .7rem; top: 1.1rem; bottom: -.4rem; width: 2px; background: var(--rule); }
+.ladder li:last-child::before { display: none; }
+.ladder li.on::before { background: var(--pc); }
+.ladder .lnode { width: 12px; height: 12px; margin: .3rem 0 0 .4rem; border-radius: 50%; border: 2px solid var(--rule); background: var(--leaf); position: relative; z-index: 1; }
+.ladder li.on .lnode { background: var(--pc); border-color: var(--pc); }
+.ladder .ln { font-family: var(--f-mono); font-size: .8125rem; padding-top: .1rem; }
+.ladder .lj { font-family: var(--f-text); font-size: .9375rem; line-height: 1.4; color: var(--ink-2); }
+.ladder li:not(.on) .lj { color: var(--ink-3); }
+.ladder .lj a { font-family: var(--f-ui); font-size: .75rem; white-space: nowrap; }
+.ladder .end { font-family: var(--f-ui); font-size: .6875rem; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+.map svg { display: block; width: 100%; height: auto; max-width: 100%; }
+.map .m-grid { stroke: var(--rule); stroke-width: 1; }
+.map .m-path { fill: none; stroke: var(--pc); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.map .m-node { fill: var(--pc); stroke: var(--leaf); stroke-width: 2; }
+.map .m-start { fill: var(--leaf); stroke: var(--pc); stroke-width: 2.5; }
+.map .m-mark { fill: none; stroke: var(--ink); stroke-width: 1.5; }
+.map text { font-family: var(--f-ui); font-size: 11px; fill: var(--ink-2); paint-order: stroke; stroke: var(--leaf); stroke-width: 3px; stroke-linejoin: round; }
+.map text.m-step { font-size: 9px; font-weight: 600; fill: var(--leaf); stroke: none; }
+.map text.m-n { font-weight: 600; fill: var(--ink-3); font-size: 10px; }
+.map .m-bar { stroke: var(--ink-2); stroke-width: 1.5; }
+
+.track { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.step { display: grid; grid-template-columns: 2.25rem minmax(0, 1fr); gap: .5rem .9rem; position: relative; padding-bottom: 1.75rem; scroll-margin-top: 1rem; }
+.step::before { content: ""; position: absolute; left: calc(1.125rem - 1px); top: 2.25rem; bottom: 0; width: 2px; background: var(--rule); }
+.step:last-child::before { display: none; }
+.step .node { width: 2.25rem; height: 2.25rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: .8125rem; font-weight: 600; font-variant-numeric: tabular-nums; background: var(--leaf); border: 2px solid var(--pc); color: var(--ink); position: relative; z-index: 1; }
+.step.s-stall .node { border-color: var(--warn); background: var(--warn-soft); }
+.step.s-harn .node { border-color: var(--bad); background: var(--bad-soft); }
+.step.target .node { box-shadow: 0 0 0 4px var(--reed-soft); }
+.step .body { display: flex; flex-direction: column; gap: .7rem; min-width: 0; }
+.did { display: flex; flex-wrap: wrap; align-items: baseline; gap: .2rem .7rem; padding-top: .3rem; }
+.did .act { font-weight: 600; font-size: 1rem; color: var(--ink); }
+.did .raw { color: var(--ink-3); }
+.flag { font-size: .6875rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; padding: .1rem .45rem; border-radius: 3px; white-space: nowrap; }
+.flag.warn { background: var(--warn-soft); color: var(--warn); }
+.flag.bad { background: var(--bad-soft); color: var(--bad); }
+.flag.ph { background: var(--silt); color: var(--ink-2); }
+.think { margin: 0; font-family: var(--f-text); font-size: 1.3125rem; line-height: 1.5; color: var(--ink); max-width: 40rem; padding-left: .9rem; border-left: 2px solid var(--pc); }
+.think .lab, .screen .lab { display: block; font-family: var(--f-ui); font-size: .6875rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); margin-bottom: .1rem; }
+.screen { background: var(--leaf); border: 1px solid var(--rule); border-radius: 6px; padding: .75rem .9rem; display: flex; flex-direction: column; gap: .45rem; font-size: .9375rem; max-width: 44rem; }
+.screen.clip .more-hidden { display: none; }
+.screen > div { min-width: 0; overflow-wrap: anywhere; }
+.l-say { font-family: var(--f-text); font-size: 1.0625rem; line-height: 1.5; }
+.l-say .sp { font-family: var(--f-ui); font-size: .75rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); display: block; }
+.ph-chip { font-family: var(--f-ui); font-size: .6875rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; background: var(--silt); color: var(--ink-2); border: 1px dashed var(--ink-3); border-radius: 3px; padding: 0 .35rem; margin-right: .35rem; white-space: nowrap; }
+.ph-text { font-style: italic; color: var(--ink-2); }
+.l-jr { background: var(--silt); border-radius: 4px; padding: .5rem .65rem; font-family: var(--f-text); font-style: italic; line-height: 1.5; }
+.l-obj { display: flex; gap: .5rem; align-items: baseline; font-weight: 500; }
+.l-obj .box { flex: none; width: .8rem; height: .8rem; border: 1.5px solid var(--reed); border-radius: 2px; transform: translateY(.1rem); display: inline-flex; align-items: center; justify-content: center; }
+.l-obj.done { color: var(--ink-2); }
+.l-obj.done .box { background: var(--reed); }
+.l-obj.done .box::after { content: ""; width: .35rem; height: .2rem; border: solid var(--leaf); border-width: 0 0 2px 2px; transform: rotate(-45deg) translate(1px, -1px); }
+.l-quest { font-family: var(--f-display); font-size: 1.25rem; font-weight: 600; color: var(--reed); }
+.l-quest.failed { color: var(--bad); }
+.l-msg { border: 1px solid var(--ink-3); border-radius: 4px; padding: .5rem .65rem; }
+.l-item { font-weight: 500; color: var(--reed); }
+.l-menu ol { margin: .15rem 0 0; padding-left: 1.4rem; color: var(--ink-2); }
+.l-place { font-weight: 600; color: var(--ink-2); }
+.l-scene, .l-text { color: var(--ink-3); font-size: .875rem; }
+.l-harn { color: var(--bad); font-family: var(--f-mono); font-size: .8125rem; }
+.l-ref { color: var(--warn); font-size: .875rem; }
+.after { display: flex; flex-wrap: wrap; gap: .3rem 1rem; font-size: .8125rem; color: var(--ink-3); }
+.after b { color: var(--ink-2); font-weight: 600; }
+.after .moved { color: var(--reed); font-weight: 600; }
+details.brief summary { cursor: pointer; font-weight: 600; font-size: .875rem; color: var(--ink-2); }
+details.brief pre { white-space: pre-wrap; overflow-wrap: anywhere; font-family: var(--f-text); font-size: .9375rem; line-height: 1.5; margin: .6rem 0 0; color: var(--ink-2); }
+
+/* search hits */
+.hits { display: flex; flex-direction: column; gap: .5rem; }
+.hit { display: grid; grid-template-columns: minmax(8rem, 12rem) minmax(0, 1fr); gap: .25rem 1rem; padding: .6rem .75rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--leaf); color: inherit; text-decoration: none; border-left: 3px solid var(--pc); }
+.hit:hover { background: var(--silt); }
+.hit .where { font-size: .8125rem; color: var(--ink-3); display: flex; flex-direction: column; gap: .1rem; }
+.hit p { font-family: var(--f-text); font-size: 1rem; line-height: 1.5; }
+@media (max-width: 560px) { .hit { grid-template-columns: minmax(0, 1fr); } h1 { font-size: 2.25rem; } h2 { font-size: 1.75rem; } .think { font-size: 1.1875rem; } }
+@media (prefers-reduced-motion: no-preference) { .step.target .node { transition: box-shadow .3s; } }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="#">Argonia &middot; the paper playtests</a>
+    <nav class="crumbs" id="crumbs" aria-label="Where you are"></nav>
+  </header>
+  <div class="filters" id="filters" role="search">
+    <label for="f-quest">Quest<select id="f-quest"></select></label>
+    <label for="f-player">Player<select id="f-player"></select></label>
+    <label for="f-source">Form<select id="f-source"></select></label>
+    <label for="f-outcome">Ended<select id="f-outcome"></select></label>
+    <label for="f-q" class="search">Search the thinking and takes<input id="f-q" type="search" placeholder="a word, a name, a stage" autocomplete="off"></label>
+  </div>
+  <main id="view"></main>
+</div>
+
+<script id="data" type="application/json">/*__DATA__*/null</script>
+<script>
+(function () {
+"use strict";
+const D = JSON.parse(document.getElementById("data").textContent) || { runs: [], forms: {}, questions: [] };
+const RUNS = D.runs || [], FORMS = D.forms || {};
+const PLAYERS = ["careful", "impatient", "wanderer"];
+const OUT = {
+  completed: ["completed", "ok"], failed: ["failed", "bad"], cutoff: ["cut off", "warn"],
+  stopped: ["stopped", "warn"], harness: ["harness error", "bad"], open: ["unfinished", "mute"], other: ["other", "mute"]
+};
+const FLAG = {
+  repeat: ["repeated", "warn"], views: ["third view running", "warn"], stuck: ["says stuck", "warn"],
+  harness: ["harness error", "bad"], placeholder: ["line not yet written", "ph"], refused: ["refused", "warn"]
+};
+const STALL = ["repeat", "views", "stuck"];
+const state = { quest: "", player: "", source: "", outcome: "", q: "" };
+const NS = "http://www.w3.org/2000/svg";
+
+function h(tag, attrs, ...kids) {
+  const e = document.createElement(tag);
+  setAttrs(e, attrs);
+  add(e, kids);
+  return e;
+}
+function s(tag, attrs, ...kids) {
+  const e = document.createElementNS(NS, tag);
+  setAttrs(e, attrs);
+  add(e, kids);
+  return e;
+}
+function setAttrs(e, attrs) {
+  for (const [k, v] of Object.entries(attrs || {})) {
+    if (v == null || v === false) continue;
+    if (k === "class") e.setAttribute("class", v);
+    else if (k === "style") e.style.cssText = v;
+    else if (k.startsWith("on")) e.addEventListener(k.slice(2), v);
+    else e.setAttribute(k, v === true ? "" : v);
+  }
+}
+function add(e, kids) {
+  for (const k of kids.flat(Infinity)) {
+    if (k == null || k === false) continue;
+    e.append(k instanceof Node ? k : document.createTextNode(String(k)));
+  }
+}
+const pc = p => "--pc: var(--p-" + (PLAYERS.includes(p) ? p : "other") + ")";
+const cap = t => t ? t[0].toUpperCase() + t.slice(1) : t;
+const isStall = st => st.flags.some(f => STALL.includes(f));
+const esc = t => t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+function hl(text) {
+  text = text == null ? "" : String(text);
+  if (!state.q) return text;
+  const parts = text.split(new RegExp("(" + esc(state.q) + ")", "ig"));
+  return parts.map((p, i) => i % 2 ? h("mark", null, p) : p);
+}
+function stamp(c) {
+  const m = /^(\d{4})(\d\d)(\d\d)T(\d\d)(\d\d)/.exec(c || "");
+  return m ? `${m[1]}-${m[2]}-${m[3]} ${m[4]}:${m[5]} UTC` : (c || "");
+}
+function glyph(outcome) {
+  const g = s("svg", { width: 12, height: 12, viewBox: "0 0 12 12", "aria-hidden": "true" });
+  const c = "currentColor";
+  if (outcome === "completed") g.append(s("circle", { cx: 6, cy: 6, r: 5, fill: c }));
+  else if (outcome === "failed") g.append(s("path", { d: "M2 2L10 10M10 2L2 10", stroke: c, "stroke-width": 2.2, fill: "none" }));
+  else if (outcome === "cutoff") g.append(s("rect", { x: 4, y: 1, width: 4, height: 10, rx: 1, fill: c }));
+  else if (outcome === "harness") g.append(s("path", { d: "M6 1L11 11H1Z", fill: c }));
+  else g.append(s("circle", { cx: 6, cy: 6, r: 4.2, fill: "none", stroke: c, "stroke-width": 1.8, "stroke-dasharray": outcome === "open" ? "2 2" : null }));
+  return g;
+}
+function outEl(r, long) {
+  const [word, tone] = OUT[r.outcome] || OUT.other;
+  return h("span", { class: "out t-" + tone, title: r.ended }, glyph(r.outcome), h("span", { class: "w" }, long ? r.outcome_label : word));
+}
+const whoEl = r => h("span", { class: "who", style: pc(r.player) }, h("span", { class: "sw" }), cap(r.player));
+const srcEl = r => h("span", { class: "src " + r.source }, r.source);
+const meta = r => FORMS[r.forms] || { name: r.quest, stages: [], names: {}, places: {}, refs: {} };
+const runHref = (r, step) => "#r-" + r.id + (step != null ? "--s" + step : "");
+const questHref = qid => "#q-" + qid;
+
+// per-run derivations: the stage each command was made at, and what happened there
+for (const r of RUNS) {
+  r.at = {};
+  r.reachedAt = {};
+  r.steps.forEach((st, k) => {
+    if (st.stage != null && !(st.stage in r.reachedAt)) r.reachedAt[st.stage] = k;
+    if (k === 0 || st.think == null) return;
+    const before = r.steps[k - 1].stage;
+    const a = r.at[before] || (r.at[before] = { cmds: 0, stalls: 0, harness: 0, ph: 0, steps: [] });
+    a.cmds++; a.steps.push(k);
+    if (isStall(st)) a.stalls++;
+    if (st.flags.includes("harness")) a.harness++;
+    if (st.flags.includes("placeholder")) a.ph++;
+  });
+  r.reached = new Set([...(r.stages_done || []), ...Object.keys(r.reachedAt).map(Number)]);
+  r.text = [r.take || "", ...(r.answers || []).map(a => a.a), ...r.steps.map(x => x.think || "")].join("\n").toLowerCase();
+  r.stallCount = r.steps.filter(isStall).length;
+  r.harnCount = r.steps.filter(x => x.flags.includes("harness")).length;
+}
+const order = (a, b) => {
+  const pa = PLAYERS.indexOf(a.player), pb = PLAYERS.indexOf(b.player);
+  return (pa < 0 ? 9 : pa) - (pb < 0 ? 9 : pb) || a.source.localeCompare(b.source) || (a.created || "").localeCompare(b.created || "");
+};
+RUNS.sort(order);
+const QUESTS = [...new Set(RUNS.map(r => r.quest))].sort();
+const qname = q => { const r = RUNS.find(x => x.quest === q); return r ? meta(r).name : q; };
+
+function filtered(ignoreQuest) {
+  const q = state.q.toLowerCase();
+  return RUNS.filter(r => (ignoreQuest || !state.quest || r.quest === state.quest) && (!state.player || r.player === state.player) &&
+    (!state.source || r.source === state.source) && (!state.outcome || r.outcome === state.outcome) && (!q || r.text.includes(q)));
+}
+
+// ---- filters
+function fillSelect(id, label, values, names) {
+  const el = document.getElementById(id);
+  el.replaceChildren(h("option", { value: "" }, label), ...values.map(v => h("option", { value: v }, names ? names(v) : v)));
+}
+fillSelect("f-quest", "All quests", QUESTS, qname);
+fillSelect("f-player", "All players", [...new Set(RUNS.map(r => r.player))].sort((a, b) => order({ player: a, source: "" }, { player: b, source: "" })), cap);
+fillSelect("f-source", "Designed and built", [...new Set(RUNS.map(r => r.source))].sort());
+fillSelect("f-outcome", "Any ending", Object.keys(OUT).filter(k => RUNS.some(r => r.outcome === k)), k => cap(OUT[k][0]));
+for (const [id, key] of [["f-quest", "quest"], ["f-player", "player"], ["f-source", "source"], ["f-outcome", "outcome"]]) {
+  document.getElementById(id).addEventListener("change", e => { state[key] = e.target.value; render(); });
+}
+let qTimer;
+document.getElementById("f-q").addEventListener("input", e => {
+  clearTimeout(qTimer);
+  qTimer = setTimeout(() => { state.q = e.target.value.trim(); render(); }, 160);
+});
+function clearFilters() {
+  Object.assign(state, { quest: "", player: "", source: "", outcome: "", q: "" });
+  for (const id of ["f-quest", "f-player", "f-source", "f-outcome", "f-q"]) document.getElementById(id).value = "";
+  render();
+}
+function filterLine(shown, total) {
+  const active = state.quest || state.player || state.source || state.outcome || state.q;
+  if (!active) return null;
+  return h("p", { class: "filterline" }, `Showing ${shown} of ${total} runs.`, h("button", { class: "linkish", type: "button", onclick: clearFilters }, "Clear the filters"));
+}
+
+// ---- the ribbon
+function stagesOf(runs) {
+  const set = new Map();
+  for (const r of runs) for (const st of meta(r).stages) if (!set.has(st.n)) set.set(st.n, st);
+  for (const r of runs) for (const n of r.reached) if (!set.has(n)) set.set(n, { n, ending: "none", journal: "" });
+  return [...set.values()].sort((a, b) => a.n - b.n);
+}
+function ribbon(runs, opts) {
+  const stages = stagesOf(runs);
+  const cols = `minmax(7.5rem, 11rem) repeat(${stages.length}, minmax(2.4rem, 1fr)) minmax(5.5rem, 8.5rem)`;
+  const colsp = `minmax(5.75rem, 7rem) repeat(${stages.length}, minmax(1.9rem, 1fr)) 1.5rem`;
+  const maxCmds = Math.max(1, ...runs.flatMap(r => Object.values(r.at).map(a => a.cmds)));
+  const inner = h("div", { class: "ribbon-in", style: `--cols: ${cols}; --colsp: ${colsp}; --minw: ${8 + stages.length * 2.5 + 6}rem; --minwp: ${6 + stages.length * 2 + 1.75}rem` });
+  inner.append(h("div", { class: "rrow head", "aria-hidden": "true" }, h("span", { class: "eyebrow" }, "Stage"),
+    stages.map(st => h("div", { class: "shead", title: st.journal }, st.n,
+      st.ending && st.ending !== "none" ? h("small", null, st.ending === "completed" ? "end" : st.ending === "failed" ? "fail" : st.ending) : null)),
+    h("span", { class: "eyebrow rend" }, "Ended")));
+  for (const r of runs) {
+    const idx = stages.map((st, i) => r.reached.has(st.n) ? i : -1).filter(i => i >= 0);
+    const lo = Math.min(...idx), hi = Math.max(...idx);
+    const row = h("a", { class: "rrow", href: runHref(r), style: pc(r.player),
+      "aria-label": `${cap(r.player)} player, ${r.source} form, ${r.outcome_label}: open the run` },
+      h("div", { class: "rlab" }, whoEl(r), h("span", { class: "sub" }, srcEl(r), opts && opts.dates ? h("span", { class: "dt" }, stamp(r.created)) : null)));
+    stages.forEach((st, i) => {
+      const a = r.at[st.n];
+      const on = idx.length && i >= lo && i <= hi;
+      const cls = ["cell"];
+      if (on) cls.push("on");
+      if (i === lo) cls.push("first");
+      if (i === hi) cls.push("last");
+      if (lo === hi && i === lo) cls.push("solo");
+      const cell = h("div", { class: cls.join(" ") });
+      if (r.reached.has(st.n) || a) {
+        const d = 8 + Math.round(14 * Math.sqrt((a ? a.cmds : 0) / maxCmds));
+        const dc = ["dot"];
+        if (!r.reached.has(st.n)) dc.push("skip");
+        if (a && a.harness) dc.push("harn"); else if (a && a.stalls) dc.push("stall");
+        const tip = `Stage ${st.n}: ` + (a ? `${a.cmds} command${a.cmds === 1 ? "" : "s"} here` : "passed through") +
+          (a && a.stalls ? `, ${a.stalls} stall${a.stalls === 1 ? "" : "s"}` : "") + (a && a.harness ? ", a harness error" : "") +
+          (st.journal ? `. Journal: ${st.journal}` : "");
+        cell.style.setProperty("--d", d + "px");
+        cell.append(h("span", { class: dc.join(" "), title: tip }));
+        if (a && a.stalls) cell.append(h("span", { class: "n", "aria-hidden": "true" }, a.stalls));
+        cell.title = tip;
+      } else if (on) {
+        cell.append(h("span", { class: "dot skip", style: "--d: 8px", title: `Stage ${st.n}: skipped` }));
+      }
+      row.append(cell);
+    });
+    row.append(h("div", { class: "rend" }, outEl(r)));
+    inner.append(row);
+  }
+  const legend = h("div", { class: "legend" },
+    h("span", null, h("i", { class: "lg-dot" }), h("i", { class: "lg-dot big" }), "commands spent at a stage"),
+    h("span", null, h("i", { class: "lg-dot stall" }), "a stall there (count beside)"),
+    h("span", null, h("i", { class: "lg-dot skip" }), "set without being stood at"),
+    h("span", null, "each row is one run; open it to walk the steps"));
+  return h("div", { class: "ribbon-card" }, h("div", { class: "ribbon" }, inner), legend);
+}
+
+const lastStage = r => { for (let k = r.steps.length - 1; k >= 0; k--) if (r.steps[k].stage != null) return r.steps[k].stage; return "none"; };
+function findings(runs) {
+  const out = [];
+  const byStage = {};
+  for (const r of runs) for (const [n, a] of Object.entries(r.at)) {
+    if (!a.stalls && !a.harness) continue;
+    (byStage[n] = byStage[n] || []).push(`${cap(r.player)} ${a.stalls ? a.stalls + "×" : ""}${a.harness ? " harness error" : ""}`.trim());
+  }
+  const stalls = Object.entries(byStage);
+  out.push(stalls.length
+    ? h("p", { class: "finding" }, h("strong", null, "Stalled at "), stalls.map(([n, who], i) => [i ? "; " : "", `stage ${n} (${who.join(", ")})`]), ".")
+    : h("p", { class: "finding" }, h("strong", null, "No stalls. "), "No player repeated a command, circled the journal and map, or said they were stuck."));
+  const unfinished = runs.filter(r => r.outcome !== "completed");
+  if (unfinished.length) {
+    out.push(h("p", { class: "finding" }, h("strong", null, "Did not complete: "),
+      unfinished.map((r, i) => [i ? "; " : "", `${cap(r.player)} (${r.outcome_label}, last at stage ${lastStage(r)})`]), "."));
+  }
+  const ph = runs.reduce((n, r) => n + r.steps.filter(x => x.flags.includes("placeholder")).length, 0);
+  if (ph) out.push(h("p", { class: "finding" }, h("strong", null, "Unwritten lines met: "), `${ph} time${ph === 1 ? "" : "s"} across ${runs.length} run${runs.length === 1 ? "" : "s"}.`));
+  return h("div", { class: "findings" }, out);
+}
+
+function words(runs) {
+  const withTake = runs.filter(r => r.take);
+  if (!withTake.length) return null;
+  const first = t => { const m = /^(.{40,220}?[.!?])(\s|$)/.exec(t); return m ? m[1] : t.slice(0, 220) + (t.length > 220 ? "…" : ""); };
+  return h("div", { class: "words" }, h("h3", null, "In their words"),
+    withTake.map(r => h("a", { class: "word", href: questHref(r.qid), style: pc(r.player) }, whoEl(r), h("span", { class: "wt" }, hl(first(r.take))))));
+}
+
+// ---- search hits
+function hitsSection(runs) {
+  const q = state.q.toLowerCase(), hits = [];
+  const snip = t => {
+    const i = t.toLowerCase().indexOf(q);
+    const a = Math.max(0, i - 90), b = Math.min(t.length, i + q.length + 140);
+    return (a ? "…" : "") + t.slice(a, b) + (b < t.length ? "…" : "");
+  };
+  for (const r of runs) {
+    if (r.take && r.take.toLowerCase().includes(q)) hits.push([r, "Closing take", null, r.take]);
+    for (const a of r.answers || []) if (a.a.toLowerCase().includes(q)) hits.push([r, a.n ? "Answer " + a.n : "Answers", null, a.a]);
+    r.steps.forEach((st, k) => { if (st.think && st.think.toLowerCase().includes(q)) hits.push([r, "Thinking at step " + k, k, st.think]); });
+  }
+  return h("section", { class: "block" }, h("h3", null, `${hits.length} passage${hits.length === 1 ? "" : "s"} with “${state.q}”`),
+    h("div", { class: "hits" }, hits.slice(0, 120).map(([r, where, k, t]) =>
+      h("a", { class: "hit", href: runHref(r, k), style: pc(r.player) },
+        h("span", { class: "where" }, whoEl(r), h("span", null, qname(r.quest)), h("span", null, where)), h("p", null, hl(snip(t)))))));
+}
+
+// ---- views
+function crumbs(parts) {
+  const el = document.getElementById("crumbs");
+  el.replaceChildren(...parts.flatMap((p, i) => [i ? h("span", { "aria-hidden": "true" }, "›") : null, p[1] ? h("a", { href: p[1] }, p[0]) : h("span", null, p[0])]).filter(Boolean));
+}
+
+function overview() {
+  crumbs([["All quests"]]);
+  const runs = filtered();
+  const view = h("div", { class: "stack" });
+  const players = [...new Set(RUNS.map(r => r.player))];
+  view.append(h("section", { class: "stack", style: "padding-block: 1.5rem 1.75rem" },
+    h("h1", null, "What the players made of it"),
+    h("p", { class: "lede" }, "Fresh players who know nothing of a quest play it in words, thinking aloud at every step, then say what they made of it. " +
+      `${RUNS.length} run${RUNS.length === 1 ? "" : "s"} of ${QUESTS.length} quest${QUESTS.length === 1 ? "" : "s"} are kept.`),
+    RUNS.length ? h("div", { class: "chips" },
+      players.map(p => h("span", { class: "chip", style: pc(p) }, h("span", { class: "sw" }), cap(p), h("b", null, RUNS.filter(r => r.player === p).length))),
+      [...new Set(RUNS.map(r => r.source))].map(src => h("span", { class: "chip" }, src, h("b", null, RUNS.filter(r => r.source === src).length))),
+      Object.keys(OUT).filter(k => RUNS.some(r => r.outcome === k)).map(k => h("span", { class: "chip" }, h("span", { class: "out t-" + OUT[k][1] }, glyph(k), OUT[k][0]), h("b", null, RUNS.filter(r => r.outcome === k).length))))
+      : null,
+    filterLine(runs.length, RUNS.length)));
+  if (!RUNS.length) {
+    view.append(h("div", { class: "empty" }, h("h2", null, "No runs kept yet"),
+      h("p", null, "Each paper playtest run appears here once it is kept in story/playtests. Play one, then make this page again:"),
+      h("p", null, h("code", null, "python3 -m tools.playtest run --forms <quest form> --player careful")),
+      h("p", null, h("code", null, "python3 -m tools.playtest page"))));
+    return view;
+  }
+  if (state.q) view.append(hitsSection(runs));
+  for (const q of QUESTS) {
+    const qr = runs.filter(r => r.quest === q);
+    if (!qr.length) continue;
+    const m = meta(qr[0]);
+    const srcs = [...new Set(qr.map(r => r.source))].join(" and ");
+    view.append(h("section", { class: "block" },
+      h("div", { class: "quest-head" }, h("h2", null, h("a", { href: questHref(qr[0].qid) }, m.name)),
+        h("span", { class: "muted mono" }, q)),
+      h("p", { class: "muted" }, `${qr.length} run${qr.length === 1 ? "" : "s"} on the ${srcs} form` + (m.kind ? `; a ${m.kind} quest` : "") + ". ",
+        h("a", { href: questHref(qr[0].qid) }, "Read the takes and compare the runs")),
+      ribbon(qr), findings(qr), words(qr)));
+  }
+  if (!runs.length) view.append(h("p", { class: "empty" }, "No run matches these filters."));
+  return view;
+}
+
+function questView(qid) {
+  const all = RUNS.filter(r => r.qid === qid);
+  if (!all.length) return notFound();
+  const q = all[0].quest, m = meta(all[0]);
+  crumbs([["All quests", "#"], [m.name]]);
+  const runs = filtered(true).filter(r => r.qid === qid);
+  const view = h("div", { class: "stack" });
+  view.append(h("section", { class: "stack", style: "padding-block: 1.25rem 1.5rem" },
+    h("span", { class: "eyebrow" }, (m.kind ? m.kind + " quest · " : "") + q),
+    h("h1", null, m.name),
+    h("p", { class: "lede" }, `${all.length} run${all.length === 1 ? "" : "s"}. What each player said at the end comes first, in full; then how far each got, stage by stage.`),
+    filterLine(runs.length, all.length)));
+  if (!runs.length) { view.append(h("p", { class: "empty" }, "No run of this quest matches these filters.")); return view; }
+  view.append(h("section", { class: "block" }, h("h3", null, "Their closing takes"),
+    h("div", { class: "takes" }, runs.map(r => h("article", { class: "take", style: pc(r.player) },
+      h("div", { class: "take-head" }, h("span", { class: "chips" }, whoEl(r), srcEl(r)), outEl(r)),
+      r.take ? h("p", { class: "take-text" }, hl(r.take)) : h("p", { class: "muted" }, "No take was given."),
+      h("a", { href: runHref(r), style: "font-size: .875rem" }, `Walk through the ${r.player} run, ${r.steps.length ? r.steps.length - 1 : 0} commands`))))));
+  const qs = D.questions || [];
+  const anyAns = runs.some(r => (r.answers || []).length);
+  if (anyAns) {
+    const rows = qs.map((qq, i) => ({ q: qq, n: i + 1 }));
+    view.append(h("section", { class: "block" }, h("h3", null, "Their answers, side by side"),
+      h("div", { class: "qcompare" }, rows.map(row => h("div", { class: "qrow" }, h("h4", null, row.q),
+        h("div", { class: "qgrid" }, runs.map(r => {
+          const a = (r.answers || []).find(x => x.n === row.n) || (row.n === 1 ? (r.answers || []).find(x => !x.n) : null);
+          return h("div", { class: "qans", style: pc(r.player) }, whoEl(r), h("p", null, a ? hl(a.a) : h("span", { class: "muted" }, "No answer.")));
+        })))))));
+  }
+  view.append(h("section", { class: "block" }, h("h3", null, "Every run along the stages"), ribbon(runs, { dates: true })));
+  view.append(h("section", { class: "block" }, h("h3", null, "Stage by stage"),
+    h("p", { class: "muted", style: "font-size: .875rem" }, "Each tick is one command made at that stage; amber is a stall, red a harness error, hatched a line not yet written. Beneath, what the player was thinking when they first acted there."),
+    stageGrid(runs)));
+  return view;
+}
+
+function stageGrid(runs) {
+  const stages = stagesOf(runs);
+  const body = stages.map(st => h("tr", null,
+    h("th", { scope: "row" }, h("span", { class: "stn" }, `Stage ${st.n}`, st.ending && st.ending !== "none" ? ` · ${st.ending}` : ""), st.journal ? h("span", { class: "jr" }, st.journal) : null),
+    runs.map(r => {
+      const a = r.at[st.n];
+      if (!a) return h("td", { style: pc(r.player) }, r.reached.has(st.n) ? h("span", { class: "notreached" }, "Reached; no command made here.") : h("span", { class: "notreached" }, "—"));
+      const first = r.steps[a.steps[0]];
+      return h("td", { style: pc(r.player) },
+        h("a", { class: "ticks", href: runHref(r, a.steps[0]), "aria-label": `${a.cmds} commands; open at step ${a.steps[0]}` },
+          a.steps.map(k => { const x = r.steps[k]; return h("span", { class: "tick" + (x.flags.includes("harness") ? " harn" : isStall(x) ? " stall" : x.flags.includes("placeholder") ? " ph" : ""), title: `Step ${k}: ${x.plain}` }); })),
+        first && first.think ? h("span", { class: "snip" }, hl(first.think)) : null);
+    })));
+  const end = h("tr", null, h("th", { scope: "row" }, h("span", { class: "stn" }, "Ended")), runs.map(r => h("td", null, outEl(r, true))));
+  return h("div", { class: "sgrid-wrap" }, h("table", { class: "sgrid" },
+    h("thead", null, h("tr", null, h("th", { scope: "col" }, "Stage"), runs.map(r => h("th", { scope: "col" }, h("a", { href: runHref(r), style: "text-decoration: none" }, whoEl(r)), " ", srcEl(r))))),
+    h("tbody", null, body, end)));
+}
+
+// ---- the map: plain SVG from the positions in the state after each step
+function mapPanel(r) {
+  const m = meta(r);
+  const toPt = pos => {
+    if (!pos || pos.x == null) return null;
+    const pl = (m.places || {})[pos.cell];
+    if (pl && pl.interior) return pl.entrance ? { x: pl.entrance.x, y: pl.entrance.y, inside: true } : null;
+    return { x: pos.x, y: pos.y };
+  };
+  const visits = [];
+  let lastExt = null;
+  r.steps.forEach((st, k) => {
+    if (!st.pos) return;
+    let p = toPt(st.pos);
+    if (!p && lastExt) p = { x: lastExt.x, y: lastExt.y, inside: true };
+    if (!p) return;
+    if (!p.inside) lastExt = p;
+    const prev = visits[visits.length - 1];
+    if (prev && Math.abs(prev.x - p.x) < 1 && Math.abs(prev.y - p.y) < 1) { prev.steps.push(k); return; }
+    visits.push({ x: p.x, y: p.y, inside: p.inside, place: st.pos.place, steps: [k] });
+  });
+  if (!visits.length) return h("div", { class: "panel" }, h("h3", null, "Where they went"), h("p", { class: "muted" }, "This run has no positions to draw."));
+  const markIds = [...new Set(r.steps.flatMap(st => st.markers || []))];
+  const marks = markIds.map(id => {
+    const ref = (m.refs || {})[id];
+    if (!ref) return null;
+    const p = ref.interior ? (((m.places || {})[ref.cell] || {}).entrance || null) : { x: ref.x, y: ref.y };
+    return p ? { x: p.x, y: p.y, id, name: (m.names || {})[id] || id } : null;
+  }).filter(Boolean);
+  const pts = [...visits, ...marks];
+  let x0 = Math.min(...pts.map(p => p.x)), x1 = Math.max(...pts.map(p => p.x));
+  let y0 = Math.min(...pts.map(p => p.y)), y1 = Math.max(...pts.map(p => p.y));
+  const minSpan = 70 * 80;
+  if (x1 - x0 < minSpan) { const c = (x0 + x1) / 2; x0 = c - minSpan / 2; x1 = c + minSpan / 2; }
+  if (y1 - y0 < minSpan) { const c = (y0 + y1) / 2; y0 = c - minSpan / 2; y1 = c + minSpan / 2; }
+  const W = 320, pad = 34;
+  const H = Math.round(Math.max(170, Math.min(260, (W - 2 * pad) * (y1 - y0) / (x1 - x0) + 2 * pad)));
+  const k = Math.min((W - 2 * pad) / (x1 - x0), (H - 2 * pad) / (y1 - y0));
+  const cx = (x0 + x1) / 2, cy = (y0 + y1) / 2;
+  const X = x => W / 2 + (x - cx) * k, Y = y => H / 2 - (y - cy) * k;
+  const svg = s("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": `Map of the places visited: ${[...new Set(visits.map(v => v.place))].join(", ")}` });
+  // a faint grid at a round number of metres
+  const metres = (W - 2 * pad) / k / 70;
+  const stepM = [10, 20, 50, 100, 200, 250, 500, 1000, 2000, 5000].find(v => metres / v <= 5) || 10000;
+  const g = stepM * 70;
+  for (let gx = Math.ceil((cx - W / 2 / k) / g) * g; X(gx) < W; gx += g) svg.append(s("line", { class: "m-grid", x1: X(gx), x2: X(gx), y1: 0, y2: H }));
+  for (let gy = Math.ceil((cy - H / 2 / k) / g) * g; Y(gy) > 0; gy += g) svg.append(s("line", { class: "m-grid", x1: 0, x2: W, y1: Y(gy), y2: Y(gy) }));
+  svg.append(s("rect", { x: 0, y: 0, width: W, height: H, fill: "none", stroke: "var(--rule)" }));
+  if (visits.length > 1) svg.append(s("polyline", { class: "m-path", points: visits.map(v => `${X(v.x).toFixed(1)},${Y(v.y).toFixed(1)}`).join(" ") }));
+  for (const mk of marks) {
+    const x = X(mk.x), y = Y(mk.y);
+    svg.append(s("path", { class: "m-mark", d: `M${x} ${y - 8}L${x + 8} ${y}L${x} ${y + 8}L${x - 8} ${y}Z` }, s("title", null, "Marker: " + mk.name)));
+  }
+  const labelled = new Set();
+  visits.forEach((v, i) => {
+    const x = X(v.x), y = Y(v.y);
+    svg.append(s("circle", { class: i === 0 ? "m-start" : "m-node", cx: x, cy: y, r: i === 0 ? 6 : 8 }, s("title", null, `${v.place}: step ${v.steps.join(", ")}`)));
+    if (i > 0) svg.append(s("text", { class: "m-step", x, y: y + 3, "text-anchor": "middle" }, i));
+    if (!labelled.has(v.place)) {
+      labelled.add(v.place);
+      const right = x < W * 0.62;
+      svg.append(s("text", { x: right ? x + 12 : x - 12, y: y - 9, "text-anchor": right ? "start" : "end" }, (v.inside ? "into " : "") + v.place));
+    }
+  });
+  const barPx = stepM * 70 * k;
+  svg.append(s("line", { class: "m-bar", x1: 10, x2: 10 + barPx, y1: H - 12, y2: H - 12 }),
+    s("line", { class: "m-bar", x1: 10, x2: 10, y1: H - 16, y2: H - 8 }), s("line", { class: "m-bar", x1: 10 + barPx, x2: 10 + barPx, y1: H - 16, y2: H - 8 }),
+    s("text", { x: 14 + barPx, y: H - 8 }, stepM >= 1000 ? stepM / 1000 + " km" : stepM + " m"),
+    s("text", { class: "m-n", x: W - 12, y: 16, "text-anchor": "middle" }, "N"));
+  return h("div", { class: "panel map", style: pc(r.player) }, h("h3", null, "Where they went"), svg,
+    h("div", { class: "legend" }, h("span", null, "open ring: the start; numbers: each move in order"), marks.length ? h("span", null, "diamonds: the map markers they were shown") : null,
+      visits.some(v => v.inside) ? h("span", null, "an interior is drawn at its door") : null));
+}
+
+function ladder(r) {
+  const m = meta(r);
+  const stages = stagesOf([r]);
+  if (!stages.length) return null;
+  return h("div", { class: "panel", style: pc(r.player) }, h("h3", null, "Stages"),
+    h("ol", { class: "ladder" }, stages.map(st => {
+      const on = r.reached.has(st.n), k = r.reachedAt[st.n];
+      return h("li", { class: on ? "on" : "" }, h("span", { class: "lnode" }), h("span", { class: "ln" }, st.n),
+        h("span", { class: "lj" }, st.ending && st.ending !== "none" ? h("span", { class: "end" }, "ends: " + st.ending + " ") : null,
+          st.journal || "(no journal entry)", on && k != null ? [" ", h("a", { href: runHref(r, k) }, "step " + k)] : null));
+    })));
+}
+
+function lineEl(l, names) {
+  const t = l.t || "";
+  const phText = txt => {
+    const i = txt.indexOf("[not yet written; the gist:]");
+    if (i < 0) return hl(txt);
+    return [hl(txt.slice(0, i)), h("span", { class: "ph-chip" }, "not yet written"), h("span", { class: "ph-text" }, "the gist: ", hl(txt.slice(i + 28).trim()))];
+  };
+  switch (l.k) {
+    case "speech": return h("div", { class: "l-say" }, h("span", { class: "sp" }, l.who), l.ph ? phText(t) : ["“", hl(t), "”"]);
+    case "journal": return h("div", { class: "l-jr" }, h("span", { class: "lab" }, "Journal · " + (l.who || "")), hl(t));
+    case "objnew": return h("div", { class: "l-obj" }, h("span", { class: "box" }), h("span", null, "New objective: ", hl(t)));
+    case "objdone": return h("div", { class: "l-obj done" }, h("span", { class: "box" }), h("span", null, "Done: ", hl(t)));
+    case "quest": return h("div", { class: "l-quest" }, "Quest started: ", t);
+    case "questend": return h("div", { class: "l-quest" + (l.who === "failed" ? " failed" : "") }, `Quest ${l.who}: `, t);
+    case "message": return h("div", { class: "l-msg" }, h("span", { class: "lab" }, "Message box"), hl(t));
+    case "item": return h("div", { class: "l-item" }, t);
+    case "menu": return h("div", { class: "l-menu" }, h("span", { class: "lab" }, l.t === "Topics" ? "Topics open" : "Answers offered"), h("ol", null, l.options.map(o => h("li", null, o))));
+    case "place": return h("div", { class: "l-place" }, t);
+    case "scene": return h("div", { class: "l-scene" }, t);
+    case "harness": return h("div", { class: "l-harn" }, t);
+    case "refused": return h("div", { class: "l-ref" }, t);
+    default: return h("div", { class: "l-text" }, l.ph ? phText(t) : hl(t));
+  }
+}
+
+function stepEl(r, st, k, target) {
+  const m = meta(r);
+  const names = m.names || {};
+  const flags = st.flags.map(f => FLAG[f] ? h("span", { class: "flag " + FLAG[f][1] }, FLAG[f][0]) : null);
+  const cls = ["step"];
+  if (st.flags.includes("harness")) cls.push("s-harn"); else if (isStall(st)) cls.push("s-stall");
+  if (target) cls.push("target");
+  const screen = h("div", { class: "screen" }, h("span", { class: "lab" }, "The game showed"));
+  const total = st.lines.reduce((n, l) => n + (l.t || "").length + (l.options || []).join("").length, 0);
+  const clip = st.lines.length > 14 || total > 1600;
+  st.lines.forEach((l, i) => { const e = lineEl(l, names); if (clip && i >= 10) e.classList.add("more-hidden"); screen.append(e); });
+  if (clip) {
+    screen.classList.add("clip");
+    const b = h("button", { class: "linkish", type: "button" }, `Show all ${st.lines.length} lines`);
+    b.addEventListener("click", () => { const c = screen.classList.toggle("clip"); b.textContent = c ? `Show all ${st.lines.length} lines` : "Show fewer"; });
+    screen.append(b);
+  }
+  const after = h("div", { class: "after" });
+  if (st.stage != null) after.append(st.from != null || (k === 0) ? h("span", { class: "moved" }, st.from != null ? `Stage ${st.from} → ${st.stage}` : `Stage ${st.stage}`) : h("span", null, "Stage ", h("b", null, st.stage)));
+  if (st.ended) after.append(h("span", { class: "moved" }, "Quest " + st.ended));
+  if (st.pos && st.pos.place) after.append(h("span", null, "At ", h("b", null, st.pos.place)));
+  if (st.markers && st.markers.length) after.append(h("span", null, "Markers: ", st.markers.map(id => names[id] || id).join(", ")));
+  if (st.talking) after.append(h("span", null, "Talking with ", names[st.talking] || st.talking));
+  return h("li", { class: cls.join(" "), id: "s" + k, style: pc(r.player) },
+    h("span", { class: "node", "aria-hidden": "true" }, k),
+    h("div", { class: "body" },
+      h("div", { class: "did" }, h("span", { class: "act" }, k ? st.plain : "The game begins"), k ? h("span", { class: "raw mono" }, st.cmd) : null, flags),
+      st.think ? h("blockquote", { class: "think" }, h("span", { class: "lab" }, "Thinking"), hl(st.think)) : null,
+      st.lines.length ? screen : null, after));
+}
+
+function runView(id, step) {
+  const r = RUNS.find(x => x.id === id);
+  if (!r) return notFound();
+  const m = meta(r);
+  crumbs([["All quests", "#"], [m.name, questHref(r.qid)], [cap(r.player) + " run"]]);
+  const c = r.counts || {};
+  const view = h("div", { class: "stack", style: pc(r.player) });
+  view.append(h("section", { class: "run-head", style: "padding-top: 1.25rem" },
+    h("span", { class: "eyebrow" }, m.name + " · " + r.source + " form"),
+    h("h1", null, h("span", { class: "pl" }, `The ${r.player} player`)),
+    h("div", { class: "facts" }, outEl(r, true),
+      h("span", null, h("b", null, c.commands ?? r.steps.length - 1), " commands"),
+      h("span", null, h("b", null, c.stalls ?? r.stallCount), " stalls"),
+      h("span", null, h("b", null, c.harness_errors ?? r.harnCount), " harness errors"),
+      r.minutes != null ? h("span", null, h("b", null, r.minutes), " minutes") : null,
+      r.cost_usd != null ? h("span", null, h("b", null, "$" + Number(r.cost_usd).toFixed(3))) : null,
+      r.model ? h("span", null, "model ", h("b", null, r.model)) : null,
+      h("span", null, stamp(r.created))),
+    r.broken ? h("p", { class: "l-harn" }, "The run stopped on a harness error: " + r.broken) : null));
+  view.append(h("section", { class: "block" }, h("div", { class: "takes" },
+    h("article", { class: "take", style: pc(r.player) }, h("h3", null, "Closing take"), r.take ? h("p", { class: "take-text" }, hl(r.take)) : h("p", { class: "muted" }, "No take was given.")),
+    (r.answers || []).length ? h("article", { class: "take", style: pc(r.player) }, h("h3", null, "Answers"),
+      h("dl", { class: "qa" }, r.answers.map(a => [h("dt", null, a.q || "Answer"), h("dd", null, hl(a.a))]))) : null)));
+  const aside = h("aside", { class: "aside" }, ladder(r), mapPanel(r),
+    r.brief ? h("details", { class: "panel brief" }, h("summary", null, "What the player was told"), h("pre", null, r.brief)) : null);
+  const track = h("ol", { class: "track", "aria-label": "Steps" }, r.steps.map((st, k) => stepEl(r, st, k, k === step)));
+  view.append(h("section", { class: "block" }, h("h3", null, "Step by step"), h("div", { class: "run-body" }, track, aside)));
+  return view;
+}
+
+function notFound() {
+  crumbs([["All quests", "#"]]);
+  return h("div", { class: "empty", style: "margin-top: 2rem" }, h("h2", null, "That run is not on this page"), h("p", null, "The page was made before it was kept, or its name changed. "), h("a", { href: "#" }, "Back to all quests"));
+}
+
+function render() {
+  const hash = decodeURIComponent(location.hash.slice(1));
+  const main = document.getElementById("view");
+  let view, step = null;
+  if (hash.startsWith("r-")) {
+    const [id, st] = hash.slice(2).split("--s");
+    step = st != null && st !== "" ? Number(st) : null;
+    view = runView(id, step);
+  } else if (hash.startsWith("q-")) view = questView(hash.slice(2));
+  else view = overview();
+  document.getElementById("filters").hidden = hash.startsWith("r-");
+  main.replaceChildren(view);
+  return step;
+}
+function route() {
+  const step = render();
+  if (step != null) { const el = document.getElementById("s" + step); if (el) el.scrollIntoView({ block: "start" }); }
+  else window.scrollTo(0, 0);
+}
+window.addEventListener("hashchange", route);
+route();
+})();
+</script>

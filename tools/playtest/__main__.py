@@ -8,6 +8,7 @@
     python3 -m tools.playtest run --forms ... --player careful|impatient|wanderer [--model sonnet] [--know ...]
     python3 -m tools.playtest probe [--model haiku]      # proves the player cannot read the repo
     python3 -m tools.playtest index                      # rebuild story/playtests/index.json
+    python3 -m tools.playtest page [--out <html>] [--runs <dir>]   # the owner's page for exploring the runs
 """
 from __future__ import annotations
 
@@ -56,6 +57,9 @@ def main(argv=None) -> int:
     pr = sub.add_parser("probe")
     pr.add_argument("--model", default="haiku")
     sub.add_parser("index")
+    pg = sub.add_parser("page")
+    pg.add_argument("--out", default=None, help="the HTML file (default out/playtest/index.html)")
+    pg.add_argument("--runs", default=str(S.RUNS), help="the runs folder (default story/playtests)")
     a = ap.parse_args(argv)
     try:
         if a.cmd == "new":
@@ -88,6 +92,11 @@ def main(argv=None) -> int:
         ok, out = runner.probe(a.model)
         print(f"probe: {'the player could not read the repo' if ok else 'THE PLAYER READ THE REPO'}; stream {out}")
         return 0 if ok else 1
+    if a.cmd == "page":
+        from tools.playtest import page
+        out, n, size = page.write(Path(a.out) if a.out else page.DEFAULT_OUT, Path(a.runs))
+        print(f"page: {out} ({n} runs, {size / 1024:.0f} KB)")
+        return 0
     print(f"index: {S.index()}")
     return 0
 
