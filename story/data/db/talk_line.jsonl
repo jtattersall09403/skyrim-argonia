@@ -173,15 +173,15 @@
 {"talker":"01CCFA:Black Marsh North.esp","topic":"talk.secret","ord":2,"text":"Very well, stranger, but keep it to yourself. At night I carry water to the cage door, just west-south-west of here."}
 {"talker":"01CCFA:Black Marsh North.esp","topic":"talk.self","ord":1,"text":"I am Wazei-Ru. I stand at these doors with Counts-The-Bars. I would rather be posted anywhere else."}
 {"talker":"01CCFA:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Ilvesa Drethan is a Dunmer held in a long Owing, a debt worked off in service. People call her a slave. You will find her just north-north-west of here, and I think well of her."}
-{"talker":"01CCFC:Black Marsh North.esp","topic":"talk.directions","ord":1,"text":"The bridge, visitor? Walk north-west from here, about three hundred paces, and the bridge is there. It is an easy walk. Take it slowly."}
-{"talker":"01CCFC:Black Marsh North.esp","topic":"talk.directions","ord":2,"text":"Looking for the bridge? Go north-west, three hundred paces and a few more, and you will be standing on it."}
+{"talker":"01CCFC:Black Marsh North.esp","topic":"talk.directions","ord":1,"text":"The bridge, visitor? Walk north-west from here a fair way, and you will find it. It is an easy walk. Take it slowly."}
+{"talker":"01CCFC:Black Marsh North.esp","topic":"talk.directions","ord":2,"text":"Looking for the bridge? Go north-west a fair way, and you will be standing on it."}
 {"talker":"01CCFC:Black Marsh North.esp","topic":"talk.greet-friend","ord":1,"text":"Come and sit with me out of the sun, if you have a mind to. I have all the keys on my belt today, and that is a good day."}
 {"talker":"01CCFC:Black Marsh North.esp","topic":"talk.greet-stranger","ord":1,"text":"Visitor. I keep the keys to the west cages here, so do not ask me for anything that needs a hurry."}
-{"talker":"01CCFC:Black Marsh North.esp","topic":"talk.here","ord":1,"text":"Visitor, these are the west cages and the huts beside them. Walk about forty paces north-east and you will find the cage door."}
-{"talker":"01CCFC:Black Marsh North.esp","topic":"talk.here","ord":2,"text":"It is a quiet post, and I like it quiet, visitor. If you want the cage door, it is some forty paces north-east."}
+{"talker":"01CCFC:Black Marsh North.esp","topic":"talk.here","ord":1,"text":"Visitor, these are the west cages and the huts beside them. The cage door is just north-east of here."}
+{"talker":"01CCFC:Black Marsh North.esp","topic":"talk.here","ord":2,"text":"It is a quiet post, and I like it quiet, visitor. If you want the cage door, it is just north-east, there in sight."}
 {"talker":"01CCFC:Black Marsh North.esp","topic":"talk.lore","ord":1,"text":"An Owing is a debt a man works off in labour, visitor. It can be sold: the one who is owed sells it on, and the debtor's work goes with it. Such sales are common enough."}
 {"talker":"01CCFC:Black Marsh North.esp","topic":"talk.self","ord":1,"text":"I am Keeps-The-Lock, visitor. I hold the keys to the west cages, and I lose them more often than I should. I am not a cruel man, only a slow one."}
-{"talker":"01CCFC:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Counts-The-Bars watches the cage doors on the west side, about ninety paces east-north-east of here. Visitor, he is a nag: he reports every key I lose."}
+{"talker":"01CCFC:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Counts-The-Bars watches the cage doors on the west side, a short way east-north-east of here. Visitor, he is a nag: he reports every key I lose."}
 {"talker":"01CCFE:Black Marsh North.esp","topic":"talk.greet-friend","ord":1,"text":"A known face. That is rare enough to welcome. Stand easy; the houses are quiet and I have time to talk."}
 {"talker":"01CCFE:Black Marsh North.esp","topic":"talk.greet-stranger","ord":1,"text":"Outlander. I guard these houses. State your business and keep to the path."}
 {"talker":"01CCFE:Black Marsh North.esp","topic":"talk.here","ord":1,"text":"These are the north-west houses, with the cages behind them. I keep watch over both. The house is ten paces north-north-east of here."}
