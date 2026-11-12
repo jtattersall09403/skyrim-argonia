@@ -942,17 +942,17 @@
 {"talker":"1454F5:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is the east docks. Can you not see the big ship? It is just west-north-west of here. The dock is just north-west. I know every board of it."}
 {"talker":"1454F5:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Tadpole. I play between the big ships and run errands for the crews. One day I will sail on one. Then you will hear of me. What is your name?"}
 {"talker":"1454F5:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Ojeel? He unloads the big ship. He is usually just north of here. He chases me off the ship every time, so do not say I sent you."}
-{"talker":"1454FC:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Haven? Walk south-east about two hundred and fifty paces, until you reach the stone tower. Then south-west a little over a hundred and thirty paces. Haven is there."}
-{"talker":"1454FC:Black Marsh.esm","topic":"talk.directions","ord":2,"text":"The cooking fire? Walk east about two hundred and eighty paces. You will find it there."}
+{"talker":"1454FC:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Haven? Walk south-east a short way, until you reach the stone tower. Then walk south-west a short way. Haven is there."}
+{"talker":"1454FC:Black Marsh.esm","topic":"talk.directions","ord":2,"text":"The cooking fire? Walk east a fair way. You will find it there."}
 {"talker":"1454FC:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"The next fish will not be long, so sit by the fire."}
 {"talker":"1454FC:Black Marsh.esm","topic":"talk.greet-friend","ord":2,"text":"Come near the fire and tell me what you need."}
 {"talker":"1454FC:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"The fish is still on the fire. Say what you want."}
 {"talker":"1454FC:Black Marsh.esm","topic":"talk.greet-stranger","ord":2,"text":"You are standing in my smoke. Speak, or buy something."}
-{"talker":"1454FC:Black Marsh.esm","topic":"talk.here","ord":1,"text":"My cooking fire is about twenty paces west-south-west of here, outside the west gate. The tower is forty paces north."}
+{"talker":"1454FC:Black Marsh.esm","topic":"talk.here","ord":1,"text":"My cooking fire is just west-south-west of here, outside the west gate. The tower is just north of here."}
 {"talker":"1454FC:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"Ask Talks-To-Water about the old bandit king. I know fish and smoke. That tale takes longer than a fish."}
 {"talker":"1454FC:Black Marsh.esm","topic":"talk.rumours","ord":1,"text":"For news of the road toward Haven, ask Tzeel-Vaa. He is the only honest guard at the west gate, so he will tell it straight."}
 {"talker":"1454FC:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Ahkeeh. I smoke fish over this fire outside the west gate. I sell it to the guards and to anyone coming in by road. I was born on a boat and came ashore when it sank. I have not been on the water since."}
-{"talker":"1454FC:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Tzeel-Vaa is the oldest of the three guards at the west gate. He is the only honest one. Look about fifty-five paces south-east of here. That is where Tzeel-Vaa usually stands."}
+{"talker":"1454FC:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Tzeel-Vaa is the oldest of the three guards at the west gate. He is the only honest one. You will usually find him just south-east of here."}
 {"talker":"166BC1:Black Marsh North.esp","topic":"talk.advice","ord":1,"text":"Ask Gih-Xaleel about the alleys, and wipe your feet before you come in. I keep this floor clean."}
 {"talker":"166BC1:Black Marsh North.esp","topic":"talk.greet-friend","ord":1,"text":"You again. Come in out of the wet, friend. Mind the floor, though."}
 {"talker":"166BC1:Black Marsh North.esp","topic":"talk.greet-stranger","ord":1,"text":"You. State your business, or move on."}
