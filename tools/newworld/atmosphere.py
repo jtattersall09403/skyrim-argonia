@@ -386,8 +386,7 @@ def build_spec(rec: Records, rc: dict[str, tuple[str, str]], ident: dict | None 
         ch = chances(with_identity(cls["classes"][cid], ident[rid]), {"chances": {}}, cls["kinds"])
         spec["sets"][rid] = [[w["edid"], ch[w["kind"]]] for w in part["weathers"]]
         spec["regions"][rid] = spec["sets"][rid]
-    from tools.newworld import sound
-    spec["sounds"], spec["sound_copies"] = sound.sound_spec(ident)
+    spec["sounds"], spec["sound_copies"] = {}, []   # the regions' sound: `python -m tools.newworld.sound spec` fills these
     cl = cls["climate"]
     home = min((r for r, cb in rc.items() if cb == (cl["default_class"], cl["default_band"])), default=min(rc))
     spec["climate"] = {"formid": BASE["CLMT"], "edid": "ANW_Climate", "copy": "Black Marsh.esm:BlackMarshClimate",

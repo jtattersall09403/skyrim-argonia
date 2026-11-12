@@ -3,6 +3,7 @@ of the sheets as real sound descriptors the load order holds. Records only, no a
 
     python3 -m tools.newworld.sound study   # newworld/sources/identity/sound_measured.json (Skyrim, Update, BM&V, Tropical, KotM)
     python3 -m tools.newworld.sound beds    # newworld/sources/identity/sound_beds.json from BEDS below and the study
+    python3 -m tools.newworld.sound spec [--plugin out/newworld/plugin]   # the regions' sound into atmosphere.json (the atmosphere stage)
 
 How Skyrim does it (sound_measured.json): a region's Sounds data is a list of (sound descriptor, the weathers it plays in,
 a chance) with a priority and, on the sets that must beat a neighbour, the Override flag. Every period of the day is in
@@ -234,6 +235,12 @@ def main() -> None:
         st = json.loads(scratch.read_text()) if scratch.exists() else run_study(scratch)
         doc = write_beds(st)
         print(f"{len(doc['beds'])} beds, {len(doc['copy_ids'])} copies -> {BEDS_FILE}", file=sys.stderr)
+    elif cmd == "spec":  # the atmosphere stage's second step: the regions' sound into <plugin>/atmosphere.json
+        plugin = Path(sys.argv[3]) if len(sys.argv) > 3 and sys.argv[2] == "--plugin" else REPO / "out/newworld/plugin"
+        sp = json.loads((plugin / "atmosphere.json").read_text())
+        sp["sounds"], sp["sound_copies"] = sound_spec(json.loads((IDENT / "regions.json").read_text())["regions"])
+        (plugin / "atmosphere.json").write_text(json.dumps(sp, indent=0))
+        print(f"sound: {sum(map(len, sp['sounds'].values()))} region entries, {len(sp['sound_copies'])} copies", file=sys.stderr)
     else:
         raise SystemExit(__doc__)
 

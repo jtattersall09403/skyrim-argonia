@@ -148,6 +148,7 @@ static class NewWorld
                 Worldspace = new FormLinkNullable<IWorldspaceGetter>(ws.FormKey),
                 MapColor = System.Drawing.Color.FromArgb(120, 140, 90),
                 Weather = NewWorldAtmosphere.RegionWeatherOf(regionWeather(r.Name)),
+                Sounds = NewWorldAtmosphere.RegionSoundsOf(r.Name),
                 Map = new RegionMap { Name = r.Value.GetProperty("name").GetString() },
             };
             mod.Regions.Add(reg);
