@@ -7000,5 +7000,19 @@
     "on": "helstrom.5D6YAVN2Y2P84B46BHPKVTQC0T"
    }
   ]
+ },
+ "hang": {
+  "added": [
+   {
+    "id": "helstrom.hang.W8H2ZE5XRXHVJN6080NV1ASNXE.0",
+    "base": "King of the Murkmire.esp:2F01D6",
+    "on": "helstrom.W8H2ZE5XRXHVJN6080NV1ASNXE"
+   },
+   {
+    "id": "helstrom.hang.W8H2ZE5XRXHVJN6080NV1ASNXE.1",
+    "base": "King of the Murkmire.esp:1A845D",
+    "on": "helstrom.W8H2ZE5XRXHVJN6080NV1ASNXE"
+   }
+  ]
  }
 }

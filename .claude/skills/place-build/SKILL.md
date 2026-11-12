@@ -315,6 +315,7 @@ and removed per file; a stage that would write outside what it owns changes noth
 | `stations` | the record promises a station the files lack | the added station, its worker's stop, `place.json` `stations` |
 | `jail` | the place's law, the jail room, its door or its arrival, the landing or the streets changed | the jail's or the Owing's prison markers, bedroll and chests; `place.json`'s crime row `law`, `law_why`, `jail` and `owing` |
 | `primitives` | the source bundle, the kept pieces or the primitive classes changed | each exterior row's `primitive`, and a kept collision box's place, turn, seat and cluster by its piece; a dropped box's or trigger's row and its ledger row |
+| `hang` | trees under a place's Hist moved, turned or were swapped; lanterns are owed to a drafted place | the place's rope lanterns on its Hist and the trees round it; `place.json` `hang` |
 
 1. Make the change that calls for it (`place.json` `draft`, the people source, a rule of the tools).
 2. Run the stage and read its counts: they are the whole change. Then run `streets` when what the network is built
