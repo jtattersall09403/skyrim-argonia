@@ -170,6 +170,9 @@ The owner's bar for it: the quests and story must not feel "patched or shoehorne
 "really naturally and deeply integrated with it", keeping the factions and the spirit; there is creative licence to
 rewrite and re-author so it reads as "a really nicely written exciting story throughout that any elder scrolls fan
 would fall in love with"; and every quest uses in-game skills, which is "really key to the fun".
+The overall story of the main quest and of each major faction is written by Fable, knowing the quest rules and the
+ceiling, aiming at what Morrowind achieved inside minimal scripting: storytelling, deep world building, compelling
+lines, moral ambiguity and real conflict of several kinds.
 
 ## What the owner will be asked to check
 

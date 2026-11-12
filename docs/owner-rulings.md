@@ -491,3 +491,11 @@ added here the day they are made, with the date and the issue.
   quest is really key to the fun as well btw)". For nw-05: the factions and the spirit are kept; everything else
   may be rewritten so the story grows out of the new world's places, people and regions; every quest is played
   with the game's own skills.
+- 2026-11-12 (in session, who writes the story, nw-05): "The overall story for the main quest and each major
+  faction should be written by Fable by the way, it's comfortably the best writer. It should be aware of our
+  various quest rules though and Morrowind level scripting so it doesn't write an overall story that is
+  undeliverable. The art really is in achieving what Morrowind achieved: beautiful storytelling, deep world
+  building, compelling narrative lines, moral ambiguity, genuinely interesting conflict (of various kinds) all
+  within the constraints of minimal scripting". The main quest's and each major faction's overall story is written
+  by Fable (the lead, or a lane forced to Fable 5.2), with the quest rules and the Morrowind-level ceiling in its
+  brief; delivery lanes on Opus build quests from that story.
