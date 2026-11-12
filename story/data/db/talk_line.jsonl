@@ -21,11 +21,11 @@
 {"talker":"00FF4F:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Reads-The-Shallows, the boat captain, waits about ten paces north-north-west of here. He thanks a man for his work. Few do. Ha."}
 {"talker":"01512B:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"There you are, my friend. You are thinner than last time. Sit by the spit and eat something."}
 {"talker":"01512B:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Well, hatchling, you look hungry. Eat something."}
-{"talker":"01512B:Black Marsh.esm","topic":"talk.harvest","ord":1,"text":"Gleamblossom grows about sixty paces south of here, hatchling. Do not go picking on an empty belly."}
-{"talker":"01512B:Black Marsh.esm","topic":"talk.here","ord":1,"text":"The hands' cooking spit is about five paces west-south-west of my spot, where they eat. Go and look at it, hatchling. Eat something."}
-{"talker":"01512B:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Salith. I came up from Lilmoth to sell food here. I stayed because no other trader on the plantation sells food. Eat something."}
+{"talker":"01512B:Black Marsh.esm","topic":"talk.harvest","ord":1,"text":"Gleamblossom grows a short way south of here, hatchling. Do not go picking on an empty belly."}
+{"talker":"01512B:Black Marsh.esm","topic":"talk.here","ord":1,"text":"The hands' cooking spit is just west-south-west of here, where they eat. Go and look at it, hatchling. Eat something."}
+{"talker":"01512B:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Salith. I came up from Lilmoth to sell food here. I stayed because no other trader here sells food. Eat something."}
 {"talker":"01512B:Black Marsh.esm","topic":"talk.services","ord":1,"text":"I sell food and small goods, hatchling. The hands come here hungry, so I feed them."}
-{"talker":"01512B:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Okan-Wul is usually about five paces north of here, and I see that Okan-Wul eats. Tumeesh is about twenty-five paces north-north-east, and sweet, but lazy. Uleesh fishes the shallows below Lilmoth's walls, about forty-five paces east. He is the most honest man outside them."}
+{"talker":"01512B:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Okan-Wul is usually just north of here, and I see that Okan-Wul eats. Tumeesh is just north-north-east, and sweet, but lazy. Uleesh fishes the shallows below Lilmoth's walls, just east of here. He is the most honest man outside them."}
 {"talker":"01512C:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Ah, it is you, my friend. What if I showed you the new roof beam I set? It will outlast the rains."}
 {"talker":"01512C:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Stranger. What do you want? I have a roof to finish."}
 {"talker":"01512C:Black Marsh.esm","topic":"talk.here","ord":1,"text":"The hands' huts stand about thirty-five paces west of here, and more of them forty paces west-north-west. I mend every one. The stone wall along the east side is about fifteen paces south-west. I think it is the best thing on this plantation."}
