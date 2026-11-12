@@ -594,6 +594,7 @@ def ecology_rows(rep: Report, plugin: Path, d: Path) -> None:
     actors = jload(eco / "actors.json")["actors"]
     level = {a["name"]: int(a["level"]) for a in actors}
     rows_all = {r["fid"].upper(): r for r in read_tsv(d / "ecology.tsv")}
+    harvest_rows(rep, eco, rows_all)
     got = {k: r for k, r in rows_all.items() if r["sig"] != "Activator"}
     crit = {k: r for k, r in rows_all.items() if r["sig"] == "Activator"}
     npcs = {r["edid"]: r for r in read_tsv(d / "eco_npcs.tsv")}
@@ -638,6 +639,43 @@ def ecology_rows(rep: Report, plugin: Path, d: Path) -> None:
     extra = set(got) - seen
     rep.row("ecology", "no ACHR in the ESM that no shard names", len(extra), not extra, ", ".join(sorted(extra)[:4]))
     critter_rows(rep, eco, crit)
+
+
+def harvest_rows(rep: Report, eco: Path, rows_all: dict) -> None:
+    """The harvestables (ecology/harvest/cy*.jsonl) read back: each stands as a REFR of the record its shard names (or one
+    of our own new FLOR/TREE records), under its own id, in its cell, where the shard put it. Takes them out of `rows_all`
+    so the actor and critter rows judge only theirs."""
+    hdir = eco / "harvest"
+    if not hdir.is_dir():
+        return
+    n = miss = moved = wrong = base = 0
+    ex: list[str] = []
+    seen = set()
+    for f in sorted(hdir.glob("cy*.jsonl")):
+        for ln in f.read_text(encoding="utf-8").splitlines():
+            if not ln:
+                continue
+            o = json.loads(ln)
+            n += 1
+            fid = o["fid"].upper()
+            seen.add(fid)
+            r = rows_all.pop(fid, None)
+            if r is None:
+                miss += 1
+                ex.append(f"{fid} absent")
+                continue
+            if max(abs(float(r["x"]) - o["x"]), abs(float(r["y"]) - o["y"]), abs(float(r["z"]) - o["z"])) > 1.0:
+                moved += 1
+                ex.append(f"{fid} moved")
+            if (int(r["cx"]), int(r["cy"])) != (math.floor(o["x"] / 4096), math.floor(o["y"] / 4096)):
+                wrong += 1
+            want = o["base"].split(":", 1)[1]
+            if not r["base_edid"].endswith(want):       # a copied base is `ANW_<plugin initials>_<edid>`
+                base += 1
+                ex.append(f"{fid} base {r['base_edid']} not {want}")
+    rep.row("ecology", "every harvestable shard ref stands as a REFR under its own form id, within 1 unit of its place, on the base its shard names",
+            f"{n - miss - moved - base}/{n}", not miss and not moved and not base, "; ".join(ex[:4]))
+    rep.row("ecology", "every harvestable stands in the cell holding its x,y", f"{n - wrong}/{n}", not wrong)
 
 
 def critter_rows(rep: Report, eco: Path, crit: dict) -> None:

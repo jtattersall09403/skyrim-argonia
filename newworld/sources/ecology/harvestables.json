@@ -1,0 +1,939 @@
+{
+ "schema": 1,
+ "about": "Every harvestable the ecology stage adds, bound to real FLOR/TREE/ACTI records of the plugins we hold (harvest_bases.json lists them, with the ingredient each yields). A kind lists the bases it is drawn from; the lore map says which kind each lore ingredient of the regions' tables is (or why it is no growing thing); the class pools are Skyrim's own variety per habitat class (skyrim_measures.json bases_by_class_top) read as the Black Marsh kinds that stand in for each.",
+ "mask_rules": {
+  "bank": "dry ground within 6 m of water (nirnroot grows at the water's edge)",
+  "bed-fresh": "river, pond or lake bed 0.5 to 10 m under fresh water",
+  "bed-salt": "sea bed 0.5 to 10 m under ocean, bay or shallow-coast water",
+  "bed-brackish": "bed 0.5 to 10 m under estuary, bay or shallow-coast water",
+  "others": "the ecology stage's own masks (place.py Cellview): marsh, shore, canopy, bush, open, rock"
+ },
+ "kinds": {
+  "nirnroot": {
+   "name": "Nirnroot",
+   "mask": "bank",
+   "records": [
+    "Skyrim.esm:TreeFloraNirnroot01",
+    "Skyrim.esm:TreeFloraNirnrootRed01"
+   ],
+   "why": "the vanilla activators that give Nirnroot and Crimson Nirnroot; Skyrim sets them at the water's edge"
+  },
+  "hanging-moss": {
+   "name": "Hanging Moss",
+   "records": [
+    "Skyrim.esm:TreeFloraHangingMoss01",
+    "Skyrim.esm:TreeFloraHangingMoss02",
+    "Skyrim.esm:TreeFloraHangingMoss03",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMJungleHangingMossB1",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMJungleHangingMossB2",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMJungleHangingMossB3",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMJungleHangingMossA1"
+   ],
+   "why": "Skyrim's hanging moss and the Cipactli jungle's Sithis' Beard drapes"
+  },
+  "dragons-tongue": {
+   "name": "Dragon's Tongue",
+   "records": [
+    "Skyrim.esm:TreeFloraDragonsTongue01",
+    "Skyrim.esm:TreeFloraDragonsTongue02"
+   ],
+   "why": "vanilla Dragon's Tongue"
+  },
+  "lavender": {
+   "name": "Lavender",
+   "records": [
+    "Skyrim.esm:TreeFloraLavender01"
+   ],
+   "why": "vanilla Lavender"
+  },
+  "thistle-branch": {
+   "name": "Thistle",
+   "records": [
+    "Skyrim.esm:TreeFloraThistle01"
+   ],
+   "why": "vanilla Thistle"
+  },
+  "fly-amanita": {
+   "name": "Fly Amanita",
+   "records": [
+    "King of the Murkmire.esp:FloraMushroom01Rainforest",
+    "King of the Murkmire.esp:FloraMushroom01SmallRainforest",
+    "King of the Murkmire.esp:FloraMushroom01Mud",
+    "King of the Murkmire.esp:FloraMushroom01SmallMud"
+   ],
+   "why": "King of the Murkmire's rainforest and mud copies of the vanilla mushroom"
+  },
+  "white-cap": {
+   "name": "White Cap",
+   "records": [
+    "King of the Murkmire.esp:FloraMushroom03Mud",
+    "King of the Murkmire.esp:FloraMushroom03SmallMud",
+    "King of the Murkmire.esp:FloraMushroom03MarshMud02",
+    "King of the Murkmire.esp:FloraMushroom03SmallMarshMud02"
+   ],
+   "why": "King of the Murkmire's mud copies of the vanilla mushroom"
+  },
+  "imp-stool": {
+   "name": "Imp Stool",
+   "records": [
+    "King of the Murkmire.esp:FloraMushroom04Rainforest",
+    "King of the Murkmire.esp:FloraMushroom04SmallRainforest",
+    "King of the Murkmire.esp:FloraMushroom04MarshMud02",
+    "King of the Murkmire.esp:FloraMushroom04SmallMarshMud02"
+   ],
+   "why": "King of the Murkmire's rainforest and mud copies of the vanilla mushroom"
+  },
+  "namiras-rot": {
+   "name": "Namira's Rot",
+   "records": [
+    "King of the Murkmire.esp:FloraMushroom05Rainforest",
+    "King of the Murkmire.esp:FloraMushroom05SmallRainforest",
+    "King of the Murkmire.esp:FloraMushroom05MarshMud02"
+   ],
+   "why": "King of the Murkmire's copies of the vanilla mushroom"
+  },
+  "blisterwort": {
+   "name": "Blisterwort",
+   "records": [
+    "King of the Murkmire.esp:FloraMushroom06Rainforest",
+    "King of the Murkmire.esp:FloraMushroom06SmallRainforest",
+    "King of the Murkmire.esp:FloraMushroom06Xanmeer",
+    "King of the Murkmire.esp:FloraMushroom06SmallXanmeer"
+   ],
+   "why": "King of the Murkmire's copies of the vanilla mushroom"
+  },
+  "luminous-russula": {
+   "name": "Luminous Russula",
+   "records": [
+    "King of the Murkmire.esp:ArgoniaLuminousRussula01Mud",
+    "King of the Murkmire.esp:ArgoniaLuminousRussula02Mud",
+    "King of the Murkmire.esp:ArgoniaLuminousRussula01MarshGrass",
+    "King of the Murkmire.esp:ArgoniaLuminousRussula02MarshGrass"
+   ],
+   "why": "King of the Murkmire's own glowing fungus"
+  },
+  "giant-lichen": {
+   "name": "Giant Lichen",
+   "records": [
+    "Skyrim.esm:FloraGiantLichen"
+   ],
+   "why": "vanilla Giant Lichen"
+  },
+  "swamp-fungal-pod": {
+   "name": "Swamp Fungal Pod",
+   "records": [
+    "Skyrim.esm:FloraSwampFungalPod01"
+   ],
+   "why": "vanilla Swamp Fungal Pod"
+  },
+  "creep-cluster": {
+   "name": "Creep Cluster",
+   "records": [
+    "Skyrim.esm:FloraCreepCluster",
+    "Skyrim.esm:FloraCreepClusterRock"
+   ],
+   "why": "vanilla Creep Cluster"
+  },
+  "deathbell": {
+   "name": "Deathbell",
+   "records": [
+    "Skyrim.esm:TreeFloraDeathBell01",
+    "Skyrim.esm:TreeFloraDeathBell02"
+   ],
+   "why": "vanilla Deathbell"
+  },
+  "canis-root": {
+   "name": "Canis Root",
+   "records": [
+    "Skyrim.esm:TreeFloraCanisRoot01"
+   ],
+   "why": "vanilla Canis Root"
+  },
+  "jazbay": {
+   "name": "Jazbay",
+   "records": [
+    "Skyrim.esm:TreeFloraJazBay01"
+   ],
+   "why": "vanilla Jazbay"
+  },
+  "spiky-grass": {
+   "name": "Spiky Grass",
+   "records": [
+    "Skyrim.esm:TreeFloraSpikyGrass01",
+    "Skyrim.esm:TreeFloraSpikyGrass02"
+   ],
+   "why": "vanilla Spiky Grass"
+  },
+  "birds-nest": {
+   "name": "Bird's Nest",
+   "records": [
+    "Skyrim.esm:BirdsNest",
+    "Skyrim.esm:BirdsNest02"
+   ],
+   "why": "vanilla nests with Rock Warbler and Pine Thrush eggs, as Skyrim counts nests among its harvestables"
+  },
+  "bantam-guar-nest": {
+   "name": "Bantam Guar Nest",
+   "records": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMBantamGuarNest"
+   ],
+   "why": "the Cipactli bantam guar's nest and egg"
+  },
+  "hackwing-nest": {
+   "name": "Hackwing Nest",
+   "records": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMHackwingNest"
+   ],
+   "why": "the Cipactli hackwing's nest and egg"
+  },
+  "somnalius-frond": {
+   "name": "Somnalius Frond",
+   "records": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMJungleSomnalius"
+   ],
+   "why": "the Cipactli jungle's somnalius fern"
+  },
+  "slaughterfish-egg": {
+   "name": "Slaughterfish Egg Nest",
+   "records": [
+    "Skyrim.esm:SlaughterfishEggNest01"
+   ],
+   "why": "vanilla Slaughterfish Egg Nest, set in shallow fresh water"
+  },
+  "small-pearl": {
+   "name": "Pearl Oyster",
+   "records": [
+    "Dragonborn.esm:DLC2PearlOysterThin01",
+    "Dragonborn.esm:DLC2PearlOysterLarge01"
+   ],
+   "why": "the Dragonborn pearl oysters (Small Pearl and Pearl)"
+  },
+  "kraken-barnacle": {
+   "name": "Kraken Barnacle Cluster",
+   "records": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMKrakenBarnacle"
+   ],
+   "why": "the Cipactli barnacle cluster, which stands where Skyrim's Nordic Barnacle Cluster does (its water class is mostly these)"
+  },
+  "thorny-oyster": {
+   "name": "Thorny Oyster",
+   "records": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMOyster01",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMOyster02",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMOyster03"
+   ],
+   "why": "the Cipactli oysters, the sea clams of the sea beds"
+  },
+  "clam": {
+   "name": "Clam",
+   "records": [
+    "Skyrim.esm:Clam01",
+    "Skyrim.esm:ClamLarge01",
+    "Skyrim.esm:ClamThin01"
+   ],
+   "why": "vanilla clams of the sea bed (Skyrim's water class holds 634 of them)"
+  },
+  "river-clam": {
+   "name": "River Clam",
+   "records": [
+    "King of the Murkmire.esp:ArgoniaRiverClam01",
+    "King of the Murkmire.esp:ArgoniaRiverClamLarge01",
+    "King of the Murkmire.esp:ArgoniaRiverClamThin01"
+   ],
+   "why": "King of the Murkmire's Maxeem-Urto river clams"
+  },
+  "muck-sponge": {
+   "name": "Muck Sponge",
+   "records": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMJungleMucksponge"
+   ],
+   "why": "the Cipactli muck sponge of the mud beds"
+  },
+  "bloatspore": {
+   "name": "Bloatspore",
+   "records": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMJungleBloatspore"
+   ],
+   "why": "the Cipactli bloatspore fungus"
+  },
+  "bog-beacon": {
+   "name": "Bog Beacon",
+   "records": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMJungleBogBeacon",
+    "King of the Murkmire.esp:ArgoniaBogBeacon01",
+    "King of the Murkmire.esp:ArgoniaBogBeacon02"
+   ],
+   "why": "the Cipactli and King of the Murkmire bog beacon fungi"
+  },
+  "stinkhorn": {
+   "name": "Stinkhorn",
+   "records": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMJungleStinkhorn"
+   ],
+   "why": "the Cipactli stinkhorn"
+  },
+  "marshmerrow": {
+   "name": "Marshmerrow",
+   "records": [
+    "King of the Murkmire.esp:ArgoniaMarshmerrow01",
+    "King of the Murkmire.esp:ArgoniaMarshmerrow02",
+    "King of the Murkmire.esp:ArgoniaMarshmerrow03"
+   ],
+   "why": "King of the Murkmire's Marshmerrow"
+  },
+  "hackle-lo": {
+   "name": "Hackle-Lo",
+   "records": [
+    "King of the Murkmire.esp:ArgoniaHackleLo01",
+    "King of the Murkmire.esp:ArgoniaHackleLo02",
+    "King of the Murkmire.esp:ArgoniaHackleLo03"
+   ],
+   "why": "King of the Murkmire's Hackle-Lo"
+  },
+  "marshweed": {
+   "name": "Marshweed",
+   "records": [
+    "new:ANW_Flora_Marshweed"
+   ],
+   "why": "no record of the plugins we hold; a new FLOR over the Cipactli swamp leaf (a leaf plant), yielding a new Marshweed"
+  },
+  "dried-flower-buds": {
+   "name": "Flower Buds",
+   "records": [
+    "new:ANW_Flora_FlowerBuds"
+   ],
+   "why": "no record of the plugins we hold; a new FLOR over King of the Murkmire's redwort flower, yielding new Dried Flower Buds"
+  },
+  "rootland-mushroom": {
+   "name": "Rootland Mushroom",
+   "records": [
+    "new:ANW_Flora_RootlandMushroom"
+   ],
+   "why": "no record of the plugins we hold; a new FLOR over the Cipactli stinkhorn (a tall mushroom), yielding a new Rootland Mushroom"
+  },
+  "moon-sugar": {
+   "name": "Sugar Cane",
+   "records": [
+    "new:ANW_Flora_MoonSugarCane"
+   ],
+   "why": "vanilla has the Moon Sugar ingredient but no plant for it; a new FLOR over the Cipactli sugar cane, yielding vanilla Moon Sugar"
+  }
+ },
+ "new_records": [
+  {
+   "edid": "ANW_Flora_Marshweed",
+   "flor_name": "Marshweed",
+   "flor_from": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMJungleSwampLeaf",
+   "ingr": {
+    "edid": "ANW_Ingr_Marshweed",
+    "name": "Marshweed",
+    "from": "Skyrim.esm:Lavender",
+    "effects": [
+     [
+      "Skyrim.esm:CritterPondFish05Ingredient",
+      0
+     ],
+     [
+      "Skyrim.esm:SwampFungalPod01",
+      2
+     ],
+     [
+      "Skyrim.esm:CritterPondFish05Ingredient",
+      3
+     ]
+    ]
+   },
+   "lore": "ingredients-alchemy.md item.marshweed: restore-fatigue, paralyze, water-breathing, restore-personality; mapped to Skyrim's Restore Stamina, Paralysis and Waterbreathing (there is no personality effect)"
+  },
+  {
+   "edid": "ANW_Flora_FlowerBuds",
+   "flor_name": "Flower Buds",
+   "flor_from": "King of the Murkmire.esp:ArgoniaRedwort01",
+   "ingr": {
+    "edid": "ANW_Ingr_DriedFlowerBuds",
+    "name": "Dried Flower Buds",
+    "from": "Skyrim.esm:Lavender",
+    "effects": [
+     [
+      "Skyrim.esm:MudcrabChitin",
+      0
+     ],
+     [
+      "Skyrim.esm:MudcrabChitin",
+      1
+     ],
+     [
+      "Skyrim.esm:MudcrabChitin",
+      2
+     ]
+    ]
+   },
+   "lore": "ingredients-alchemy.md item.dried-flower-buds: cure-common-disease, cure-poison, resist-common-disease, restore-fatigue; mapped to Restore Stamina, Cure Disease and Resist Poison"
+  },
+  {
+   "edid": "ANW_Flora_RootlandMushroom",
+   "flor_name": "Rootland Mushroom",
+   "flor_from": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMJungleStinkhorn",
+   "ingr": {
+    "edid": "ANW_Ingr_RootlandMushroom",
+    "name": "Rootland Mushroom",
+    "from": "Skyrim.esm:Mushroom03",
+    "effects": [
+     [
+      "Skyrim.esm:deathBell",
+      2
+     ],
+     [
+      "Skyrim.esm:Mushroom06",
+      0
+     ]
+    ]
+   },
+   "lore": "ingredients-alchemy.md item.rootland-mushroom: drain-speed, drain-endurance, dispel, drain-strength; mapped to Damage Speed and Damage Stamina"
+  },
+  {
+   "edid": "ANW_Flora_MoonSugarCane",
+   "flor_name": "Sugar Cane",
+   "flor_from": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMJungleCane1",
+   "ingr": {
+    "from": "Skyrim.esm:MoonSugar"
+   },
+   "lore": "ingredients-alchemy.md item.moon-sugar; Skyrim's own Moon Sugar record"
+  }
+ ],
+ "lore": {
+  "nirnroot": {
+   "kind": "nirnroot"
+  },
+  "hanging-moss": {
+   "kind": "hanging-moss"
+  },
+  "dragons-tongue": {
+   "kind": "dragons-tongue"
+  },
+  "lavender": {
+   "kind": "lavender"
+  },
+  "thistle-branch": {
+   "kind": "thistle-branch"
+  },
+  "fly-amanita": {
+   "kind": "fly-amanita"
+  },
+  "white-cap": {
+   "kind": "white-cap"
+  },
+  "imp-stool": {
+   "kind": "imp-stool"
+  },
+  "giant-lichen": {
+   "kind": "giant-lichen"
+  },
+  "swamp-fungal-pod": {
+   "kind": "swamp-fungal-pod"
+  },
+  "somnalius-frond": {
+   "kind": "somnalius-frond"
+  },
+  "slaughterfish-egg": {
+   "kind": "slaughterfish-egg"
+  },
+  "rock-warbler-egg": {
+   "kind": "birds-nest"
+  },
+  "small-pearl": {
+   "kind": "small-pearl"
+  },
+  "marshweed": {
+   "kind": "marshweed"
+  },
+  "dried-flower-buds": {
+   "kind": "dried-flower-buds"
+  },
+  "rootland-mushroom": {
+   "kind": "rootland-mushroom"
+  },
+  "moon-sugar": {
+   "kind": "moon-sugar"
+  },
+  "hackwing-plume": {
+   "drop": "a feather of the hackwing, dropped by the creature; its nest stands in the forest pool"
+  },
+  "bee": {
+   "drop": "taken from the insect itself"
+  },
+  "honeycomb": {
+   "drop": "taken from a hive, which is a model of the place's, not a plant"
+  },
+  "wasp-sting": {
+   "drop": "dropped by the insect"
+  },
+  "blue-dartwing": {
+   "drop": "taken from the insect itself"
+  },
+  "orange-dartwing": {
+   "drop": "taken from the insect itself"
+  },
+  "bog-dog-dung": {
+   "drop": "dropped by the creature"
+  },
+  "crow-feather": {
+   "drop": "dropped by the bird"
+  },
+  "daedra-heart": {
+   "drop": "dropped by a daedra"
+  },
+  "death-hopper-bile": {
+   "drop": "dropped by the creature"
+  },
+  "dreugh-wax": {
+   "drop": "dropped by the dreugh"
+  },
+  "ectoplasm": {
+   "drop": "dropped by the dead"
+  },
+  "eel-slime": {
+   "drop": "dropped by the eel"
+  },
+  "fire-salts": {
+   "drop": "dropped by a daedra"
+  },
+  "frost-salts": {
+   "drop": "dropped by a daedra"
+  },
+  "void-salts": {
+   "drop": "dropped by a daedra"
+  },
+  "fleshfly-husks": {
+   "drop": "left by the swarm"
+  },
+  "giant-leech-blood": {
+   "drop": "dropped by the creature"
+  },
+  "glow-dust": {
+   "drop": "dropped by a wisp or a moth"
+  },
+  "hoarvor-blood-sac": {
+   "drop": "dropped by the creature"
+  },
+  "jelly-feeler": {
+   "drop": "dropped by the creature"
+  },
+  "kotu-gava-wings": {
+   "drop": "dropped by the creature"
+  },
+  "lamia-scales": {
+   "drop": "dropped by the creature"
+  },
+  "marsh-giant-blood": {
+   "drop": "dropped by the creature"
+  },
+  "moon-adder-venom": {
+   "drop": "dropped by the creature"
+  },
+  "mudcrab-chitin": {
+   "drop": "dropped by the creature"
+  },
+  "osheeja-gar-flesh": {
+   "drop": "dropped by the creature"
+  },
+  "river-betty": {
+   "drop": "a fish, taken from the water by the fishing kinds"
+  },
+  "river-salt": {
+   "drop": "a deposit of the bank, not a growing thing: no record shows one"
+  },
+  "slaughterfish-scales": {
+   "drop": "dropped by the fish"
+  },
+  "spriggan-sap": {
+   "drop": "dropped by the creature"
+  },
+  "torchbug-thorax": {
+   "drop": "taken from the insect itself"
+  },
+  "troll-fat": {
+   "drop": "dropped by the creature"
+  },
+  "wamasu-organ": {
+   "drop": "dropped by the creature"
+  },
+  "wisp-wrappings": {
+   "drop": "dropped by a wisp"
+  }
+ },
+ "pools": {
+  "water": [
+   [
+    "kraken-barnacle",
+    "bed-salt",
+    5
+   ],
+   [
+    "kraken-barnacle",
+    "bed-brackish",
+    2
+   ],
+   [
+    "thorny-oyster",
+    "bed-salt",
+    3
+   ],
+   [
+    "thorny-oyster",
+    "bed-brackish",
+    2
+   ],
+   [
+    "clam",
+    "bed-salt",
+    3
+   ],
+   [
+    "river-clam",
+    "bed-fresh",
+    4
+   ],
+   [
+    "slaughterfish-egg",
+    "bed-fresh",
+    5
+   ],
+   [
+    "small-pearl",
+    "bed-salt",
+    1
+   ],
+   [
+    "muck-sponge",
+    "bed-fresh",
+    1
+   ]
+  ],
+  "shore": [
+   [
+    "swamp-fungal-pod",
+    "marsh",
+    3
+   ],
+   [
+    "giant-lichen",
+    "shore",
+    2
+   ],
+   [
+    "dragons-tongue",
+    "marsh",
+    2
+   ],
+   [
+    "creep-cluster",
+    "shore",
+    2
+   ],
+   [
+    "deathbell",
+    "shore",
+    1
+   ],
+   [
+    "nirnroot",
+    "bank",
+    2
+   ],
+   [
+    "marshmerrow",
+    "shore",
+    2
+   ],
+   [
+    "bog-beacon",
+    "marsh",
+    2
+   ],
+   [
+    "stinkhorn",
+    "marsh",
+    1
+   ],
+   [
+    "slaughterfish-egg",
+    "bed-fresh",
+    2
+   ],
+   [
+    "river-clam",
+    "bed-fresh",
+    1
+   ],
+   [
+    "kraken-barnacle",
+    "bed-salt",
+    1
+   ],
+   [
+    "thorny-oyster",
+    "bed-salt",
+    1
+   ]
+  ],
+  "forest": [
+   [
+    "hanging-moss",
+    "canopy",
+    4
+   ],
+   [
+    "fly-amanita",
+    "bush",
+    2
+   ],
+   [
+    "white-cap",
+    "canopy",
+    2
+   ],
+   [
+    "imp-stool",
+    "canopy",
+    1
+   ],
+   [
+    "blisterwort",
+    "canopy",
+    1
+   ],
+   [
+    "canis-root",
+    "bush",
+    1
+   ],
+   [
+    "jazbay",
+    "bush",
+    1
+   ],
+   [
+    "creep-cluster",
+    "canopy",
+    1
+   ],
+   [
+    "hackle-lo",
+    "bush",
+    1
+   ],
+   [
+    "birds-nest",
+    "canopy",
+    1
+   ],
+   [
+    "bantam-guar-nest",
+    "bush",
+    1
+   ],
+   [
+    "bloatspore",
+    "marsh",
+    1
+   ],
+   [
+    "luminous-russula",
+    "canopy",
+    1
+   ]
+  ],
+  "mountain": [
+   [
+    "canis-root",
+    "rock",
+    3
+   ],
+   [
+    "giant-lichen",
+    "rock",
+    2
+   ],
+   [
+    "birds-nest",
+    "rock",
+    2
+   ],
+   [
+    "imp-stool",
+    "rock",
+    1
+   ],
+   [
+    "white-cap",
+    "rock",
+    1
+   ],
+   [
+    "thistle-branch",
+    "open",
+    1
+   ]
+  ],
+  "open": [
+   [
+    "thistle-branch",
+    "open",
+    3
+   ],
+   [
+    "lavender",
+    "open",
+    2
+   ],
+   [
+    "dragons-tongue",
+    "open",
+    2
+   ],
+   [
+    "spiky-grass",
+    "open",
+    2
+   ]
+  ]
+ },
+ "skyrim_bases_by_class_top": {
+  "forest": {
+   "TreeFloraSnowberry01Snow": 873,
+   "TreeFloraJuniper01": 715,
+   "TreeFloraTundraCotton01": 598,
+   "TreeFloraMountainFlower02Blue": 573,
+   "TreeFloraThistle01": 540,
+   "TreeFloraMountainFlower01Purple": 538,
+   "TreeFloraMountainFlower02Purple": 533,
+   "TreeFloraMountainFlower01Blue": 424,
+   "TreeFloraLavender01": 377,
+   "TreeFloraMountainFlower01Red": 242,
+   "TreeFloraHangingMoss03": 238,
+   "TreeFloraMountainFlower02Red": 205,
+   "TreeFloraCabbage01": 191,
+   "TreeFloraSnowberry01": 179,
+   "TreeFloraPotatoPlant01": 178,
+   "TreeFloraJazBay01": 167,
+   "TreeFloraDragonsTongue02": 162,
+   "TreeFloraHangingMoss02": 135,
+   "TreeFloraLeek01": 134,
+   "TreeFloraDragonsTongue01": 129,
+   "FloraCreepCluster": 97,
+   "BirdsNest": 86,
+   "TreeFloraHangingMoss01": 79,
+   "TreeReachTreeStump01MoraTapinella": 74,
+   "TreePineForestStump01MoraTapinella": 72
+  },
+  "mountain": {
+   "TreeFloraMountainFlower02Purple": 350,
+   "TreeFloraCanisRoot01": 343,
+   "TreeGourdCluster01": 328,
+   "TreeFloraMountainFlower02Red": 278,
+   "TreeFloraMountainFlower02Blue": 257,
+   "TreeFloraSnowberry01Snow": 229,
+   "TreeFloraMountainFlower01Red": 121,
+   "TreeFloraMountainFlower01Blue": 113,
+   "TreeAspenStump01ScalyPholiota": 95,
+   "TreeFloraMountainFlower01Purple": 87,
+   "TreeAspenLog01ScalyPholiota": 68,
+   "BirdsNest02": 52,
+   "TreeFloraThistle01": 35,
+   "TreeFloraSnowberry01": 30,
+   "TreeFloraPotatoPlant01": 27,
+   "TreeFloraCabbage01": 20,
+   "TreeFloraLeek01": 15,
+   "TreeFloraWheat01": 14,
+   "ChickenNest": 13,
+   "CoinPurseMedium": 10,
+   "TreePineForestStump01MoraTapinella": 9,
+   "TreePineForestLog01MoraTapinella": 9,
+   "CoinPurseSmall": 9,
+   "DeadSalmon01": 7,
+   "TreeFloraNightshade01": 7
+  },
+  "open": {
+   "TreeFloraSnowberry01Snow": 40,
+   "TreeFloraTundraCotton01": 19,
+   "TreeFloraJuniper01": 16,
+   "TreeFloraLavender01": 11,
+   "DeadSalmon01": 10,
+   "TreeFloraMountainFlower01Blue": 8,
+   "TreeFloraThistle01": 8,
+   "CoinPurseMedium": 7,
+   "HangingRabbit01": 7,
+   "TreeFloraSpikyGrass02": 7,
+   "TreeFloraMountainFlower01Purple": 7,
+   "TreeFloraDragonsTongue01": 7,
+   "DeadSalmon02": 6,
+   "CoinPurseSmall": 5,
+   "TreeFloraSnowberry01": 5,
+   "MammothCheese01": 4,
+   "TreeFloraMountainFlower02Blue": 4,
+   "TreeFloraJazBay01": 4,
+   "FloraCreepCluster": 4,
+   "TreeFloraMountainFlower02Purple": 4,
+   "TreeFloraHangingMoss03": 3,
+   "TreeFloraHangingMoss01": 3,
+   "GiantSkewer01CharredSkeever02": 2,
+   "TreeFloraMountainFlower02Red": 2,
+   "ChickenNest": 2
+  },
+  "shore": {
+   "TreeFloraJuniper01": 237,
+   "TreeFloraSpikyGrass02": 210,
+   "TreeFloraMountainFlower02Purple": 157,
+   "SlaughterfishEggNest01": 155,
+   "TreeFloraThistle01": 154,
+   "TreeFloraJazBay01": 150,
+   "TreeFloraCanisRoot01": 144,
+   "NordicBarnacleCluster01": 128,
+   "FloraSwampFungalPod01": 120,
+   "TreeFloraDragonsTongue01": 118,
+   "TreeFloraDragonsTongue02": 116,
+   "TreeFloraMountainFlower01Purple": 109,
+   "TreeFloraMountainFlower02Red": 109,
+   "TreeFloraMountainFlower01Blue": 105,
+   "TreeFloraMountainFlower02Blue": 105,
+   "FloraCreepCluster": 96,
+   "FloraGiantLichen": 95,
+   "TreeFloraMountainFlower01Red": 82,
+   "TreeReachTreeStump01MoraTapinella": 82,
+   "TreeFloraSnowberry01Snow": 80,
+   "TreeFloraTundraCotton01": 76,
+   "TreeFloraSpikyGrass01": 73,
+   "TreeFloraHangingMoss03": 73,
+   "TreeFloraDeathBell01": 70,
+   "TreeFloraLavender01": 65
+  },
+  "water": {
+   "NordicBarnacleCluster01": 576,
+   "SlaughterfishEggNest01": 416,
+   "ClamLarge01": 222,
+   "ClamThin01": 218,
+   "Clam01": 194,
+   "TreeFloraSpikyGrass02": 114,
+   "TreeFloraSpikyGrass01": 68,
+   "TreeFloraCanisRoot01": 47,
+   "TreeFloraMountainFlower02Blue": 31,
+   "TreeFloraMountainFlower02Purple": 31,
+   "FXAmbWaterSalmon01A": 25,
+   "TreeFloraJazBay01": 23,
+   "TreeFloraMountainFlower01Red": 21,
+   "FXAmbWaterSalmon01B": 20,
+   "TreeFloraMountainFlower02Red": 20,
+   "FXAmbWaterSalmon02A": 18,
+   "FXAmbWaterSalmon02B": 18,
+   "TreeFloraMountainFlower01Blue": 18,
+   "TreeFloraDeathBell01": 16,
+   "DeadSalmon01": 15,
+   "DeadSalmon02": 15,
+   "TreeFloraMountainFlower01Purple": 15,
+   "TreeReachTreeStump01MoraTapinella": 15,
+   "TreeFloraThistle01": 14,
+   "TreeFloraDragonsTongue01": 13
+  }
+ }
+}

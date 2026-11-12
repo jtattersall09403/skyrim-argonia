@@ -87,6 +87,8 @@ OPEN = ("coastal_grassland", "upland_scrub", "dry_hammock", "beach_shore")
 BUSHY = ("understorey", "fern", "reed")
 TREES = ("canopy_tree", "palm")
 TOLERANCE = (0.5, 1.6)   # actors placed / Skyrim's measure for the same cells (band density applied)
+CRITTER_CAP = 8          # critter spawners in one cell
+CRITTER_MIN_EXPECT = 3.0  # a region expected to hold at least this many critters holds one
 
 
 def log(*a):
@@ -101,6 +103,29 @@ def load_sources() -> tuple[dict, dict, dict, dict]:
         d = json.loads(f.read_text())
         rows[d["region"]] = [dict(r) for r in d["creatures"] if bind["kinds"].get(r["kind"], {}).get("records")]
     return rows, bind, json.loads((SRC / "skyrim_measures.json").read_text()), json.loads((SRC / "npc_encounters.json").read_text())
+
+
+def critter_rows(bind: dict) -> dict:
+    """region -> its lore rows whose kind binds to a critter spawner or swarm (bindings.json `critter`)."""
+    res = {}
+    for f in sorted((SRC / "regions").glob("*.json")):
+        d = json.loads(f.read_text())
+        res[d["region"]] = [dict(r) for r in d["creatures"] if bind["critter_kinds"].get(r["kind"], {}).get("critter")]
+    return res
+
+
+def critter_rates(bind: dict, meas: dict) -> dict:
+    """function -> class -> critter spawners per cell: Skyrim's refs per 100 cells of the function's bases, summed, times
+    how many times denser the modder of this world's ground (King of the Murkmire) places them than Skyrim does."""
+    bases, factor = meas["critters"]["bases"], meas["critters"]["black_marsh"]["factor"]
+    res: dict = {}
+    for fn, names in bind["critter_functions"].items():
+        rate: Counter = Counter()
+        for n in names:
+            for cl, v in bases.get(n, {}).get("refs_per_100_cells_by_class", {}).items():
+                rate[cl] += v / 100 * factor
+        res[fn] = dict(rate)
+    return res
 
 
 def jsonl(name: str) -> list[dict]:
@@ -244,6 +269,12 @@ def build(out: Path) -> dict:
     cells = {(c["x"], c["y"]): c for c in jsonl("cell")}
     held = held_cells(out)
     flora = flora_near(out)
+    crow, crate = critter_rows(bind), critter_rates(bind, meas)
+    cdir = out / "ecology" / "critters"
+    cdir.mkdir(parents=True, exist_ok=True)
+    for old in cdir.glob("cy*.jsonl"):
+        old.unlink()
+    ctally, cexpect, ckind_expect = Counter(), Counter(), Counter()
     groups = {}
     for reg, e in enc["regions"].items():
         groups[reg] = [b for gr in e.get("groups", []) if gr.get("support") != "none"
@@ -265,7 +296,7 @@ def build(out: Path) -> dict:
         sl = {"hm": np.asarray(hm[rs]), "flags": np.asarray(arr["flags"][rs]), "hab": np.asarray(arr["habitat"][rs]),
               "kind": np.asarray(arr["kind"][rs]), "canopy": np.asarray(arr["canopy"][rs]), "slope": np.asarray(arr["slope"][rs]),
               "shore": np.asarray(arr["shore"][rs]), "road": np.asarray(arr["road"][rs])}
-        lines = []
+        lines, clines = [], []
         for i in range(g["cells_x"]):
             cx = g["cx0"] + i
             c = cells.get((cx // 2, cy // 2))   # the database cell is a map (Morrowind) cell, two Skyrim cells a side
@@ -311,6 +342,12 @@ def build(out: Path) -> dict:
                     placed += spot(cv, row, 1, band, True, rng, cx, cy, kind=kind, size="npc",
                                    rec=look + (f"~{GEAR_TIER[band]}{gi}" if gi >= 0 else ""), people=True,
                                    gear=tier[gi] if gi >= 0 else None)
+            for p in critters(cv, cl, crow.get(reg, []), crate, bind, np.random.default_rng((0xEC1, cx & 0xFFFF, cy & 0xFFFF)),
+                              g["water"], cexpect, ckind_expect, reg):
+                ident = f"{cx},{cy}/critter/{p['kind']}/{len(clines)}"
+                p.update(region=reg, cell=[cx, cy], cls=cl, id=ident, fid=f"{fid_of(ident, given):06X}")
+                clines.append(json.dumps(p, sort_keys=True))
+                ctally[(reg, p["kind"], cl)] += 1
             ordinal = Counter()
             for p in placed[:CAP[band]]:
                 ident = f"{cx},{cy}/{p['kind']}/{ordinal[p['kind']]}"
@@ -327,15 +364,70 @@ def build(out: Path) -> dict:
                 lines.append(json.dumps(p, sort_keys=True))
                 tally[(reg, band, p["kind"], p["hostile"], cl)] += 1
         (d / f"cy{cy:+04d}.jsonl").write_text("\n".join(lines) + ("\n" if lines else ""))
+        (cdir / f"cy{cy:+04d}.jsonl").write_text("\n".join(clines) + ("\n" if clines else ""))
     (d / "actors.json").write_text(json.dumps({"build_id": man["build_id"], "actors": sorted(actors.values(), key=lambda a: a["name"])}, indent=1))
     res = summary(tally, expect, man["build_id"])
+    res["critters"] = critter_summary(ctally, cexpect, ckind_expect)
     h = hashlib.sha256()
-    for f in sorted(d.glob("cy*.jsonl")):
+    for f in sorted([*d.glob("cy*.jsonl"), *cdir.glob("cy*.jsonl")]):
         h.update(f.name.encode() + f.read_bytes())
     res["shard_sha256"] = h.hexdigest()
     (d / "manifest.json").write_text(json.dumps(res, indent=1, sort_keys=True))
-    log(f"ecology: {res['refs']} actors, {len(actors)} band actors; by band {res['by_band']}")
+    log(f"ecology: {res['refs']} actors, {len(actors)} band actors; by band {res['by_band']}; "
+        f"{res['critters']['refs']} critter spawners, by region {res['critters']['by_region']}")
     return res
+
+
+def critters(cv: Cellview, cl: str, rows: list, rates: dict, bind: dict, rng, water: float, expect: Counter,
+             kind_expect: Counter, reg: str) -> list[dict]:
+    """The cell's critter spawners (insects, fish, swarms), as Skyrim places its own: per function (insects,
+    dragonflies, pond fish) a Poisson draw at Skyrim's spawners per cell of the class; each is of one of the region's
+    lore kinds of that function whose ground the cell holds (signature rows twice as likely), on that ground. The
+    base carries its hours (a night kind binds a night-only spawner); a swarm has none. No band thins them."""
+    out: list[dict] = []
+    for fn, by_cls in rates.items():
+        rate = by_cls.get(cl, 0.0)
+        cand = [r for r in rows if bind["critter_kinds"][r["kind"]]["function"] == fn and cv.mask(r).any()]
+        if not rate or not cand:
+            continue
+        w = np.array([2.0 if r.get("signature") else 1.0 for r in cand])
+        w /= w.sum()
+        expect[(reg, cl)] += rate
+        for r, p in zip(cand, w):
+            kind_expect[(reg, r["kind"])] += rate * p
+        for _ in range(int(rng.poisson(rate))):
+            if len(out) >= CRITTER_CAP:
+                break
+            r = cand[int(rng.choice(len(cand), p=w))]
+            b = bind["critter_kinds"][r["kind"]]
+            m = cv.mask(r)
+            ys, xs = np.nonzero(m)
+            k = int(rng.integers(len(ys)))
+            ry, rx = float(ys[k] + rng.random()), float(xs[k] + rng.random())
+            x, y = cv.world(ry, rx)
+            z = water if r["habitat"].startswith("water") and r["size_class"] != "insect" else z_for(cv, r, ry, rx)
+            out.append({"base": b["critter"], "kind": r["kind"], "fn": fn, "time": b["time"], "row_time": r["time"],
+                        "hab": r["habitat"], "x": round(x, 1), "y": round(y, 1), "z": round(z, 1),
+                        "rz": round(float(rng.uniform(0, 2 * math.pi)), 3)})
+    return out
+
+
+def critter_summary(tally: Counter, expect: Counter, kind_expect: Counter) -> dict:
+    by_region, by_kind, by_cls, kinds = Counter(), Counter(), Counter(), defaultdict(Counter)
+    for (reg, kind, cl), n in tally.items():
+        by_region[reg] += n
+        by_kind[kind] += n
+        by_cls[cl] += n
+        kinds[reg][kind] += n
+    exp_cls, exp_reg = Counter(), Counter()
+    for (reg, cl), e in expect.items():
+        exp_cls[cl] += e
+        exp_reg[reg] += e
+    return {"refs": int(sum(tally.values())), "by_region": dict(sorted(by_region.items())), "by_kind": dict(sorted(by_kind.items())),
+            "by_class": dict(sorted(by_cls.items())), "kinds_by_region": {r: dict(sorted(v.items())) for r, v in sorted(kinds.items())},
+            "expected_by_class": {k: round(v, 1) for k, v in sorted(exp_cls.items())},
+            "expected_by_region": {k: round(v, 1) for k, v in sorted(exp_reg.items())},
+            "expected_by_kind": {f"{r}|{k}": round(v, 1) for (r, k), v in sorted(kind_expect.items())}}
 
 
 def spot(cv: Cellview, row: dict, n: int, band: str, hostile: bool, rng, cx: int, cy: int, *, kind: str, size: str,
@@ -482,13 +574,76 @@ def check(out: Path) -> int:
         density[cl] = {"expected": e, "placed": got, "ratio": round(got / e, 2) if e else None}
         if e >= 20 and not TOLERANCE[0] <= got / e <= TOLERANCE[1]:
             faults.append(f"density of {cl}: {got} placed against {e} by Skyrim's measure, outside {TOLERANCE}")
-    out_doc = {"build_id": res["build_id"], "refs": n, "faults": faults[:50], "fault_count": len(faults),
+    cres = check_critters(d, res, bind, seen, held, cells, arr, kinds, g, faults)
+    out_doc = {"build_id": res["build_id"], "refs": n, "critters": cres, "faults": faults[:50], "fault_count": len(faults),
                "max_region_overlap": worst, "density": density, "people_variety": variety, "gear_value_by_band": worn_mean, "toughness": tough_doc, "by_band": res["by_band"]}
     (d / "check.json").write_text(json.dumps(out_doc, indent=1, sort_keys=True))
     print(f"ecology check: {n} actors, {len(faults)} faults; worst region overlap {worst}; density {density}")
+    print(f"  critters: {cres['refs']} spawners; by region {cres['by_region']}; by class {cres['by_class']} against {cres['expected_by_class']}")
     for x in faults[:20]:
         print("  " + x)
     return 1 if faults else 0
+
+
+def check_critters(d: Path, res: dict, bind: dict, seen: set, held: set, cells: dict, arr: dict, kinds: list, g: dict,
+                   faults: list) -> dict:
+    """Every critter spawner on the ground or water of its kind, outside held and landing cells, of the base its kind
+    binds (a night kind on a night-only spawner), its id in the ecology range and given once, at most CRITTER_CAP a
+    cell, no class over 1.6 times Skyrim's spawners per cell, and every region expected to hold critters holding some."""
+    n, per_cell, per_kind = 0, Counter(), Counter()
+    by_region, by_class = Counter(), Counter()
+    for f in sorted((d / "critters").glob("cy*.jsonl")):
+        for line in f.read_text().splitlines():
+            if not line:
+                continue
+            o = json.loads(line)
+            n += 1
+            cx, cy = o["cell"]
+            per_cell[(cx, cy)] += 1
+            by_region[o["region"]] += 1
+            by_class[o["cls"]] += 1
+            per_kind[(o["region"], o["kind"])] += 1
+            fid = int(o["fid"], 16)
+            if not ECO_FIRST <= fid <= ECO_LAST or fid in seen:
+                faults.append(f"{o['id']}: id {o['fid']} outside the ecology range or given twice")
+            seen.add(fid)
+            if (cx, cy) in held:
+                faults.append(f"{o['id']}: in a held or landing cell")
+            b = bind["critter_kinds"].get(o["kind"], {})
+            if o["base"] != b.get("critter"):
+                faults.append(f"{o['id']}: base {o['base']} is not the one {o['kind']} binds")
+            if o["row_time"] in ("day", "night") and b.get("time") not in (o["row_time"], "none"):
+                faults.append(f"{o['id']}: a {o['row_time']} kind on a {b.get('time')} spawner")
+            sy, sx = int((g["origin_y"] - o["y"]) / SAMPLE), int((o["x"] - g["origin_x"]) / SAMPLE)
+            fl = int(arr["flags"][sy, sx])
+            if o["hab"].startswith("water"):
+                k = kinds[arr["kind"][sy, sx]] if arr["kind"][sy, sx] < len(kinds) else ""
+                ok = {"water-fresh": FRESH, "water-salt": SALT, "water-brackish": BRACKISH}[o["hab"]]
+                if not fl & 1 or k not in ok:
+                    faults.append(f"{o['id']}: a water critter of {o['hab']} on {'land' if not fl & 1 else k}")
+            elif o["hab"] != "marsh" and (fl & 1 or fl & 10 or arr["slope"][sy, sx] >= MAX_SLOPE):
+                faults.append(f"{o['id']}: a land critter on water, a road, a place pad or a slope")
+    for (cx, cy), k in per_cell.items():
+        if k > CRITTER_CAP:
+            faults.append(f"cell {cx},{cy}: {k} critter spawners over the cap {CRITTER_CAP}")
+    cr = res["critters"]
+    for cl, e in cr["expected_by_class"].items():
+        if e >= 20 and by_class.get(cl, 0) > TOLERANCE[1] * e:
+            faults.append(f"critters of {cl}: {by_class.get(cl, 0)} placed against {e} by Skyrim's measure, over {TOLERANCE[1]} times")
+    for reg, e in cr["expected_by_region"].items():
+        if e >= CRITTER_MIN_EXPECT and not by_region.get(reg):
+            faults.append(f"{reg}: expected {e} critters, none placed")
+    for key, e in cr["expected_by_kind"].items():
+        reg, kind = key.split("|")
+        if e >= 4 * CRITTER_MIN_EXPECT and not per_kind.get((reg, kind)):
+            faults.append(f"{reg}: expected {e} {kind} spawners, none placed")
+    for kind, b in bind["critter_kinds"].items():
+        if b.get("critter"):
+            fn = bind["critter_functions"].get(b.get("function"))
+            if not fn or b.get("time") not in ("day", "night", "any", "none"):
+                faults.append(f"{kind}: a critter binding without a function or a time")
+    return {"refs": n, "by_region": dict(sorted(by_region.items())), "by_class": dict(sorted(by_class.items())),
+            "expected_by_class": cr["expected_by_class"], "by_kind": dict(sorted(Counter(k for (_, k) in per_kind.elements()).items()))}
 
 
 def main(argv: list[str] | None = None) -> int:

@@ -1,0 +1,3954 @@
+{
+"schema": 1,
+"about": "editor ids and names of the harvestable bases and ingredients of the plugins we hold (read by tools.newworld.ecology.harvest catalogue)",
+"bases": [
+{
+"ref": "Dawnguard.esm:DLC01AncestorsGladeTree",
+"sig": "TREE",
+"name": "This should not be visible",
+"model": "dlc01ancestorgladetree01.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "Dawnguard.esm:DLC01Gleamblossom01",
+"sig": "FLOR",
+"name": "Gleamblossom",
+"model": "dlc01glowplant01.nif",
+"yields": "DLC01GlowPlant01Ingredient",
+"yields_name": "Gleamblossom"
+},
+{
+"ref": "Dawnguard.esm:DLC01Gleamblossom01old",
+"sig": "TREE",
+"name": "Gleamblossom",
+"model": "dlc01glowplant01.nif",
+"yields": "DLC01GlowPlant01Ingredient",
+"yields_name": "Gleamblossom"
+},
+{
+"ref": "Dawnguard.esm:DLC01SoulHusk01",
+"sig": "FLOR",
+"name": "Soul Husk",
+"model": "dlc01soulhusk01.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "Dawnguard.esm:DLC01SoulHusk02",
+"sig": "FLOR",
+"name": "Soul Husk",
+"model": "dlc01soulhusk02.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "Dawnguard.esm:DLC1TreeFloraMountainFlower01Yellow",
+"sig": "TREE",
+"name": "Mountain Flower",
+"model": "dlc01floramountainflower01.nif",
+"yields": "DLC1MountainFlower01Yellow",
+"yields_name": "Yellow Mountain Flower"
+},
+{
+"ref": "Dawnguard.esm:DLC1TreeFloraMountainFlower02Yellow",
+"sig": "TREE",
+"name": "Mountain Flower",
+"model": "dlc01floramountainflower02.nif",
+"yields": "DLC1MountainFlower01Yellow",
+"yields_name": "Yellow Mountain Flower"
+},
+{
+"ref": "Dragonborn.esm:DLC2FloraCreepClusterAsh",
+"sig": "FLOR",
+"name": "Creep Cluster",
+"model": "floradlc2creepclusterash01.nif",
+"yields": "DLC2AshCreepCluster",
+"yields_name": "Ash Creep Cluster"
+},
+{
+"ref": "Dragonborn.esm:DLC2FloraCreepClusterAshRock",
+"sig": "FLOR",
+"name": "Creep Cluster",
+"model": "floradlc2creepclusterash02.nif",
+"yields": "DLC2AshCreepCluster",
+"yields_name": "Ash Creep Cluster"
+},
+{
+"ref": "Dragonborn.esm:DLC2FloraTramaRoot01",
+"sig": "FLOR",
+"name": "Trama Root",
+"model": "floradlc01tramaroot01.nif",
+"yields": "DLC2TramaRoot01",
+"yields_name": "Trama Root"
+},
+{
+"ref": "Dragonborn.esm:DLC2FloraTramaRoot02",
+"sig": "FLOR",
+"name": "Trama Root",
+"model": "floradlc01tramaroot02.nif",
+"yields": "DLC2TramaRoot01",
+"yields_name": "Trama Root"
+},
+{
+"ref": "Dragonborn.esm:DLC2FloraTramaRoot03",
+"sig": "FLOR",
+"name": "Trama Root",
+"model": "floradlc01tramaroot03.nif",
+"yields": "DLC2TramaRoot01",
+"yields_name": "Trama Root"
+},
+{
+"ref": "Dragonborn.esm:DLC2HorkerDead01",
+"sig": "FLOR",
+"name": "Horker",
+"model": "dlc2horker01.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "Dragonborn.esm:DLC2HorkerMeat01",
+"sig": "FLOR",
+"name": "Horker meat",
+"model": "dlc2horkermeat01.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "Dragonborn.esm:DLC2PearlOysterLarge01",
+"sig": "FLOR",
+"name": "Pearl Oyster",
+"model": "oysterlarge01.nif",
+"yields": "Pearl",
+"yields_name": "Pearl"
+},
+{
+"ref": "Dragonborn.esm:DLC2PearlOysterThin01",
+"sig": "FLOR",
+"name": "Pearl Oyster",
+"model": "oysterthin01.nif",
+"yields": "PearlSmall",
+"yields_name": "Small Pearl"
+},
+{
+"ref": "Dragonborn.esm:DLC2TreeFloraAshYam01",
+"sig": "TREE",
+"name": "Ash Yam",
+"model": "floradlc2ashyam01.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "Dragonborn.esm:DLC2TreeFloraHangingMoss01",
+"sig": "TREE",
+"name": "Emperor Parasol Moss",
+"model": "dlc2florahangingmoss01.nif",
+"yields": "DLC2HangingMoss",
+"yields_name": "Emperor Parasol Moss"
+},
+{
+"ref": "Dragonborn.esm:DLC2TreeFloraHangingMoss02",
+"sig": "TREE",
+"name": "Emperor Parasol Moss",
+"model": "dlc2florahangingmoss02.nif",
+"yields": "DLC2HangingMoss",
+"yields_name": "Emperor Parasol Moss"
+},
+{
+"ref": "Dragonborn.esm:DLC2TreeFloraHangingMoss03",
+"sig": "TREE",
+"name": "Emperor Parasol Moss",
+"model": "dlc2florahangingmoss03.nif",
+"yields": "DLC2HangingMoss",
+"yields_name": "Emperor Parasol Moss"
+},
+{
+"ref": "Dragonborn.esm:DLC2TreeFloraScathecraw01",
+"sig": "TREE",
+"name": "Scathecraw",
+"model": "florascathecraw01.nif",
+"yields": "DLC2Scathecraw01",
+"yields_name": "Scathecraw"
+},
+{
+"ref": "Dragonborn.esm:DLC2TreeFloraScathecraw02",
+"sig": "TREE",
+"name": "Scathecraw",
+"model": "florascathecraw02.nif",
+"yields": "DLC2Scathecraw01",
+"yields_name": "Scathecraw"
+},
+{
+"ref": "Dragonborn.esm:DLC2TreeFloraSpikyGrassAsh01",
+"sig": "TREE",
+"name": "Spiky Grass",
+"model": "floraspikygrassash01.nif",
+"yields": "DLC2SpikyGrassAsh01",
+"yields_name": "Ashen Grass Pod"
+},
+{
+"ref": "Dragonborn.esm:DLC2TreeFloraSpikyGrassAsh02",
+"sig": "TREE",
+"name": "Spiky Grass",
+"model": "floraspikygrassash02.nif",
+"yields": "DLC2SpikyGrassAsh01",
+"yields_name": "Ashen Grass Pod"
+},
+{
+"ref": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMBantamGuarNest",
+"sig": "FLOR",
+"name": "Bantam Guar Nest",
+"model": "chickennest01.nif",
+"yields": "CIPHTBMBantamGuarEgg",
+"yields_name": "Bantam Guar Egg"
+},
+{
+"ref": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMHackwingNest",
+"sig": "FLOR",
+"name": "Hackwing Nest",
+"model": "chickennest01.nif",
+"yields": "CIPHTBMHackwingEgg",
+"yields_name": "Hackwing's Egg"
+},
+{
+"ref": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMJungleBamboo1",
+"sig": "TREE",
+"name": "Bamboo",
+"model": "citsmarshmerrow.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMJungleBamboo2",
+"sig": "TREE",
+"name": "Bamboo",
+"model": "bambooplant.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMJungleBamboo3",
+"sig": "FLOR",
+"name": "Bamboo",
+"model": "citsflorabamboo01.nif",
+"yields": "CIPHTBMJungleBambooIng",
+"yields_name": "Bamboo"
+},
+{
+"ref": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMJungleBamboo3D",
+"sig": "TREE",
+"name": "Bamboo",
+"model": "citsflorabamboo01.nif",
+"yields": "CIPHTBMJungleBambooIng",
+"yields_name": "Bamboo"
+},
+{
+"ref": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMJungleBamboo4",
+"sig": "FLOR",
+"name": "Bamboo",
+"model": "citsflorabamboo02.nif",
+"yields": "CIPHTBMJungleBambooIng",
+"yields_name": "Bamboo"
+},
+{
+"ref": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMJungleBamboo4D",
+"sig": "TREE",
+"name": "Bamboo",
+"model": "citsflorabamboo02.nif",
+"yields": "CIPHTBMJungleBambooIng",
+"yields_name": "Bamboo"
+},
+{
+"ref": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMJungleBloatspore",
+"sig": "FLOR",
+"name": "Bloatspore",
+"model": "florabloatspore01.nif",
+"yields": "CIPHTBMJungleBloatsporeIng",
+"yields_name": "Bloat"
+},
+{
+"ref": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMJungleBogBeacon",
+"sig": "FLOR",
+"name": "Bog Beacon",
+"model": "florabogbeaconasco01small.nif",
+"yields": "CIPHTBMJungleBogBeaconIng",
+"yields_name": "Bog Beacon Cap"
+},
+{
+"ref": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMJungleCane1",
+"sig": "FLOR",
+"name": "Sugar Cane",
+"model": "citsflorasugarcane.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMJungleCane1D",
+"sig": "TREE",
+"name": "Sugar Cane",
+"model": "citsflorasugarcane.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMJungleCane2",
+"sig": "FLOR",
+"name": "Sugar Cane",
+"model": "citsflorasugarcanenoleaf.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMJungleCane2D",
+"sig": "TREE",
+"name": "Sugar Cane",
+"model": "citsflorasugarcanenoleaf.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMJungleHackleLo1",
+"sig": "FLOR",
+"name": "Hackle-Lo",
+"model": "citsflorahacklelo.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMJungleHackleLo1D",
+"sig": "TREE",
+"name": "Hackle-Lo",
+"model": "citsflorahacklelo.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMJungleHackleLo2",
+"sig": "FLOR",
+"name": "Hackle-Lo",
+"model": "citsflorahacklelofluffy.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMJungleHackleLo2D",
+"sig": "TREE",
+"name": "Hackle-Lo",
+"model": "citsflorahacklelofluffy.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMJungleHangingMossA1",
+"sig": "TREE",
+"name": "Grey Sithis' Beard",
+"model": "dlc2florahangingmoss01.nif",
+"yields": "CIPHTBMJungleHangingMossIngA",
+"yields_name": "Grey Sithis' Beard"
+},
+{
+"ref": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMJungleHangingMossA2",
+"sig": "TREE",
+"name": "Grey Sithis' Beard",
+"model": "dlc2florahangingmoss02.nif",
+"yields": "CIPHTBMJungleHangingMossIngA",
+"yields_name": "Grey Sithis' Beard"
+},
+{
+"ref": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMJungleHangingMossA3",
+"sig": "TREE",
+"name": "Grey Sithis' Beard",
+"model": "dlc2florahangingmoss03.nif",
+"yields": "CIPHTBMJungleHangingMossIngA",
+"yields_name": "Grey Sithis' Beard"
+},
+{
+"ref": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMJungleHangingMossB1",
+"sig": "TREE",
+"name": "Green Sithis' Beard",
+"model": "florahangingmoss01.nif",
+"yields": "CIPHTBMJungleHangingMossIngB",
+"yields_name": "Green Sithis' Beard"
+},
+{
+"ref": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMJungleHangingMossB2",
+"sig": "TREE",
+"name": "Green Sithis' Beard",
+"model": "florahangingmoss02.nif",
+"yields": "CIPHTBMJungleHangingMossIngB",
+"yields_name": "Green Sithis' Beard"
+},
+{
+"ref": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMJungleHangingMossB3",
+"sig": "TREE",
+"name": "Green Sithis' Beard",
+"model": "florahangingmoss03.nif",
+"yields": "CIPHTBMJungleHangingMossIngB",
+"yields_name": "Green Sithis' Beard"
+},
+{
+"ref": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMJungleHistSapPuddle",
+"sig": "FLOR",
+"name": "Hist Sap",
+"model": "oiltrappuddle01.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMJungleHistTree",
+"sig": "FLOR",
+"name": "Hist Tree",
+"model": "histtree.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMJungleHistTreeD",
+"sig": "TREE",
+"name": "The Hist",
+"model": "histtree.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMJungleMucksponge",
+"sig": "FLOR",
+"name": "Muck Sponge",
+"model": "floramucksponge01.nif",
+"yields": "CIPHTBMJungleMuckspongeIng",
+"yields_name": "Muck"
+},
+{
+"ref": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMJungleSomnalius",
+"sig": "TREE",
+"name": "Somnalius Plant",
+"model": "florasomnaliusfern01.nif",
+"yields": "CIPHTBMJungleSomnaliusFrond",
+"yields_name": "Somnalius Frond"
+},
+{
+"ref": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMJungleStinkhorn",
+"sig": "FLOR",
+"name": "Stinkhorn",
+"model": "florastinkhorn01small.nif",
+"yields": "CIPHTBMJungleStinkhornIng",
+"yields_name": "Stinkhorn Cap"
+},
+{
+"ref": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMJungleSwampLeaf",
+"sig": "TREE",
+"name": "Swamp Leaf",
+"model": "swampleafflora.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMJungleSwampPad",
+"sig": "FLOR",
+"name": "Swamp Pad",
+"model": "floragiantlichen01.nif",
+"yields": "CIPHTBMJungleSwampPadIng",
+"yields_name": "Swamp Pad"
+},
+{
+"ref": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMKrakenBarnacle",
+"sig": "FLOR",
+"name": "Kraken Barnacle Cluster",
+"model": "nordicbarnaclecluster01.nif",
+"yields": "CIPHTBMKrakenBarnacleIng",
+"yields_name": "Kraken Barnacle"
+},
+{
+"ref": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMOyster01",
+"sig": "FLOR",
+"name": "Thorny Oyster",
+"model": "clam01.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMOyster02",
+"sig": "FLOR",
+"name": "Thorny Oyster",
+"model": "clamlarge01.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMOyster03",
+"sig": "FLOR",
+"name": "Thorny Oyster",
+"model": "clamthin01.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSwampRatCharred",
+"sig": "FLOR",
+"name": "Charred Swamp Rat",
+"model": "charredskeever03.nif",
+"yields": "CIPHTBMSwampRatHide",
+"yields_name": "Charred Swamp Rat Hide"
+},
+{
+"ref": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSwampRayAmb",
+"sig": "FLOR",
+"name": "Salmon",
+"model": "fxambwatersalmon01a.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSwampRayDead",
+"sig": "FLOR",
+"name": "Swamp Ray",
+"model": "swampray.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMTrogfishDead",
+"sig": "FLOR",
+"name": "Trogfish",
+"model": "trogfish.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "King of the Murkmire.esp:ArgoniaBogBeacon01",
+"sig": "FLOR",
+"name": "Bog Beacon Cluster",
+"model": "bogbeaconcluster01.nif",
+"yields": "ccBGSSSE037_BogBeacon",
+"yields_name": "Bog Beacon"
+},
+{
+"ref": "King of the Murkmire.esp:ArgoniaBogBeacon02",
+"sig": "FLOR",
+"name": "Bog Beacon Cluster",
+"model": "bogbeaconcluster02.nif",
+"yields": "ccBGSSSE037_BogBeacon",
+"yields_name": "Bog Beacon"
+},
+{
+"ref": "King of the Murkmire.esp:ArgoniaDomesticSaltrice01",
+"sig": "FLOR",
+"name": "Saltrice",
+"model": "saltrice.nif",
+"yields": "ccBGSSSE037_Saltrice",
+"yields_name": "Saltrice"
+},
+{
+"ref": "King of the Murkmire.esp:ArgoniaFloraChokeberry01",
+"sig": "TREE",
+"name": "Chokeberry",
+"model": "chokeberrybush01.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "King of the Murkmire.esp:ArgoniaFloraChokeberry02",
+"sig": "TREE",
+"name": "Chokeberry",
+"model": "chokeberrybush02.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "King of the Murkmire.esp:ArgoniaFloraFanikGoc",
+"sig": "TREE",
+"name": "Fanik Goc",
+"model": "florafanikgoc.nif",
+"yields": "FanikGocIngredient",
+"yields_name": "Fanik Goc Bark"
+},
+{
+"ref": "King of the Murkmire.esp:ArgoniaFloraManaBloom",
+"sig": "TREE",
+"name": "Mana Bloom",
+"model": "ambrosiaplant.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "King of the Murkmire.esp:ArgoniaGoldKanet01",
+"sig": "FLOR",
+"name": "Gold Kanet",
+"model": "goldkanet01.nif",
+"yields": "ccBGSSSE037_GoldKanet",
+"yields_name": "Gold Kanet"
+},
+{
+"ref": "King of the Murkmire.esp:ArgoniaGoldKanet02",
+"sig": "FLOR",
+"name": "Gold Kanet",
+"model": "goldkanet02.nif",
+"yields": "ccBGSSSE037_GoldKanet",
+"yields_name": "Gold Kanet"
+},
+{
+"ref": "King of the Murkmire.esp:ArgoniaHackleLo01",
+"sig": "FLOR",
+"name": "Hackle Lo",
+"model": "hackleloplant.nif",
+"yields": "ccBGSSSE037_HackleLoLeaf",
+"yields_name": "Hackle-Lo Leaf"
+},
+{
+"ref": "King of the Murkmire.esp:ArgoniaHackleLo02",
+"sig": "FLOR",
+"name": "Hackle Lo",
+"model": "hackleloplant02.nif",
+"yields": "ccBGSSSE037_HackleLoLeaf",
+"yields_name": "Hackle-Lo Leaf"
+},
+{
+"ref": "King of the Murkmire.esp:ArgoniaHackleLo03",
+"sig": "FLOR",
+"name": "Hackle Lo",
+"model": "hackleloplant03.nif",
+"yields": "ccBGSSSE037_HackleLoLeaf",
+"yields_name": "Hackle-Lo Leaf"
+},
+{
+"ref": "King of the Murkmire.esp:ArgoniaHackleLo04",
+"sig": "FLOR",
+"name": "Hackle Lo",
+"model": "hackleloplant03.nif",
+"yields": "ccBGSSSE037_HackleLoLeaf",
+"yields_name": "Hackle-Lo Leaf"
+},
+{
+"ref": "King of the Murkmire.esp:ArgoniaHyphaFaciaTreeHollow01",
+"sig": "FLOR",
+"name": "Hypha Facia",
+"model": "treepineforesthollowhyphafacia.nif",
+"yields": "ccBGSSSE037_HyphaFacia",
+"yields_name": "Hypha Facia"
+},
+{
+"ref": "King of the Murkmire.esp:ArgoniaHyphaFaciaTreeStump01",
+"sig": "FLOR",
+"name": "Hypha Facia",
+"model": "treepineforeststump01hyphafacia.nif",
+"yields": "ccBGSSSE037_HyphaFacia",
+"yields_name": "Hypha Facia"
+},
+{
+"ref": "King of the Murkmire.esp:ArgoniaKreshweed01",
+"sig": "FLOR",
+"name": "Kreshweed",
+"model": "kreshweed.nif",
+"yields": "ccBGSSSE037_KreshFiber",
+"yields_name": "Kresh Fiber"
+},
+{
+"ref": "King of the Murkmire.esp:ArgoniaKreshweed02",
+"sig": "FLOR",
+"name": "Kreshweed",
+"model": "kreshweed02.nif",
+"yields": "ccBGSSSE037_KreshFiber",
+"yields_name": "Kresh Fiber"
+},
+{
+"ref": "King of the Murkmire.esp:ArgoniaKreshweed03",
+"sig": "FLOR",
+"name": "Kreshweed",
+"model": "kreshweed03.nif",
+"yields": "ccBGSSSE037_KreshFiber",
+"yields_name": "Kresh Fiber"
+},
+{
+"ref": "King of the Murkmire.esp:ArgoniaLuminousRussula01AYLD",
+"sig": "FLOR",
+"name": "Luminous Russula",
+"model": "luminousrussula01.nif",
+"yields": "ccBGSSSE037_LuminousRussula",
+"yields_name": "Luminous Russula"
+},
+{
+"ref": "King of the Murkmire.esp:ArgoniaLuminousRussula01AYLDMoss",
+"sig": "FLOR",
+"name": "Luminous Russula",
+"model": "luminousrussula01.nif",
+"yields": "ccBGSSSE037_LuminousRussula",
+"yields_name": "Luminous Russula"
+},
+{
+"ref": "King of the Murkmire.esp:ArgoniaLuminousRussula01MarshGrass",
+"sig": "FLOR",
+"name": "Luminous Russula",
+"model": "luminousrussula01.nif",
+"yields": "ccBGSSSE037_LuminousRussula",
+"yields_name": "Luminous Russula"
+},
+{
+"ref": "King of the Murkmire.esp:ArgoniaLuminousRussula01Mud",
+"sig": "FLOR",
+"name": "Luminous Russula",
+"model": "luminousrussula01.nif",
+"yields": "ccBGSSSE037_LuminousRussula",
+"yields_name": "Luminous Russula"
+},
+{
+"ref": "King of the Murkmire.esp:ArgoniaLuminousRussula01Xanmeer",
+"sig": "FLOR",
+"name": "Luminous Russula",
+"model": "luminousrussula01.nif",
+"yields": "ccBGSSSE037_LuminousRussula",
+"yields_name": "Luminous Russula"
+},
+{
+"ref": "King of the Murkmire.esp:ArgoniaLuminousRussula02AYLD",
+"sig": "FLOR",
+"name": "Luminous Russula",
+"model": "luminousrussula02.nif",
+"yields": "ccBGSSSE037_LuminousRussula",
+"yields_name": "Luminous Russula"
+},
+{
+"ref": "King of the Murkmire.esp:ArgoniaLuminousRussula02AYLDMoss",
+"sig": "FLOR",
+"name": "Luminous Russula",
+"model": "luminousrussula02.nif",
+"yields": "ccBGSSSE037_LuminousRussula",
+"yields_name": "Luminous Russula"
+},
+{
+"ref": "King of the Murkmire.esp:ArgoniaLuminousRussula02MarshGrass",
+"sig": "FLOR",
+"name": "Luminous Russula",
+"model": "luminousrussula02.nif",
+"yields": "ccBGSSSE037_LuminousRussula",
+"yields_name": "Luminous Russula"
+},
+{
+"ref": "King of the Murkmire.esp:ArgoniaLuminousRussula02Mud",
+"sig": "FLOR",
+"name": "Luminous Russula",
+"model": "luminousrussula02.nif",
+"yields": "ccBGSSSE037_LuminousRussula",
+"yields_name": "Luminous Russula"
+},
+{
+"ref": "King of the Murkmire.esp:ArgoniaLuminousRussula02Xanmeer",
+"sig": "FLOR",
+"name": "Luminous Russula",
+"model": "luminousrussula02.nif",
+"yields": "ccBGSSSE037_LuminousRussula",
+"yields_name": "Luminous Russula"
+},
+{
+"ref": "King of the Murkmire.esp:ArgoniaLuminousRussula02XanmeerMoss",
+"sig": "FLOR",
+"name": "Luminous Russula",
+"model": "luminousrussula02.nif",
+"yields": "ccBGSSSE037_LuminousRussula",
+"yields_name": "Luminous Russula"
+},
+{
+"ref": "King of the Murkmire.esp:ArgoniaManaBloom",
+"sig": "FLOR",
+"name": "Mana Bloom",
+"model": "ambrosiaplant.nif",
+"yields": "ccBGSSSE037_Ambrosia",
+"yields_name": "Ambrosia"
+},
+{
+"ref": "King of the Murkmire.esp:ArgoniaMarshmerrow01",
+"sig": "FLOR",
+"name": "Marshmerrow Cluster",
+"model": "marshmerrowcluster01.nif",
+"yields": "ccBGSSSE037_Marshmerrow",
+"yields_name": "Marshmerrow"
+},
+{
+"ref": "King of the Murkmire.esp:ArgoniaMarshmerrow02",
+"sig": "FLOR",
+"name": "Marshmerrow Cluster",
+"model": "marshmerrowcluster02.nif",
+"yields": "ccBGSSSE037_Marshmerrow",
+"yields_name": "Marshmerrow"
+},
+{
+"ref": "King of the Murkmire.esp:ArgoniaMarshmerrow03",
+"sig": "FLOR",
+"name": "Marshmerrow Cluster",
+"model": "marshmerrowcluster03.nif",
+"yields": "ccBGSSSE037_Marshmerrow",
+"yields_name": "Marshmerrow"
+},
+{
+"ref": "King of the Murkmire.esp:ArgoniaRedwort01",
+"sig": "FLOR",
+"name": "Domica Redwort",
+"model": "redwort01.nif",
+"yields": "ccBGSSSE037_Redwort",
+"yields_name": "Redwort Flower"
+},
+{
+"ref": "King of the Murkmire.esp:ArgoniaRedwort02",
+"sig": "FLOR",
+"name": "Domica Redwort",
+"model": "redwort02.nif",
+"yields": "ccBGSSSE037_Redwort",
+"yields_name": "Redwort Flower"
+},
+{
+"ref": "King of the Murkmire.esp:ArgoniaRiverClam01",
+"sig": "FLOR",
+"name": "Maxeem-Urto",
+"model": "clam01.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "King of the Murkmire.esp:ArgoniaRiverClamLarge01",
+"sig": "FLOR",
+"name": "Maxeem-Urto",
+"model": "clamlarge01.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "King of the Murkmire.esp:ArgoniaRiverClamThin01",
+"sig": "FLOR",
+"name": "Maxeem-Urto",
+"model": "clamthin01.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "King of the Murkmire.esp:ArgoniaStoneflower01",
+"sig": "FLOR",
+"name": "Stoneflower",
+"model": "stoneflower01.nif",
+"yields": "ccBGSSSE037_StoneflowerPetals",
+"yields_name": "Stoneflower Petals"
+},
+{
+"ref": "King of the Murkmire.esp:ArgoniaStoneflower02",
+"sig": "FLOR",
+"name": "Stoneflower",
+"model": "stoneflower02.nif",
+"yields": "ccBGSSSE037_StoneflowerPetals",
+"yields_name": "Stoneflower Petals"
+},
+{
+"ref": "King of the Murkmire.esp:ArgoniaWildSaltrice01",
+"sig": "FLOR",
+"name": "Wild Saltrice",
+"model": "saltrice.nif",
+"yields": "ccBGSSSE037_Saltrice",
+"yields_name": "Saltrice"
+},
+{
+"ref": "King of the Murkmire.esp:FloraMushroom01HistMoss",
+"sig": "FLOR",
+"name": "Fly Amanita",
+"model": "floramushroom01.nif",
+"yields": "Mushroom01",
+"yields_name": "Fly Amanita"
+},
+{
+"ref": "King of the Murkmire.esp:FloraMushroom01Mud",
+"sig": "FLOR",
+"name": "Fly Amanita",
+"model": "floramushroom01.nif",
+"yields": "Mushroom01",
+"yields_name": "Fly Amanita"
+},
+{
+"ref": "King of the Murkmire.esp:FloraMushroom01Rainforest",
+"sig": "FLOR",
+"name": "Fly Amanita",
+"model": "floramushroom01.nif",
+"yields": "Mushroom01",
+"yields_name": "Fly Amanita"
+},
+{
+"ref": "King of the Murkmire.esp:FloraMushroom01SmallMud",
+"sig": "FLOR",
+"name": "Fly Amanita",
+"model": "floramushroom01small.nif",
+"yields": "Mushroom01",
+"yields_name": "Fly Amanita"
+},
+{
+"ref": "King of the Murkmire.esp:FloraMushroom01SmallRainforest",
+"sig": "FLOR",
+"name": "Fly Amanita",
+"model": "floramushroom01small.nif",
+"yields": "Mushroom01",
+"yields_name": "Fly Amanita"
+},
+{
+"ref": "King of the Murkmire.esp:FloraMushroom03MarshMud02",
+"sig": "FLOR",
+"name": "White Cap",
+"model": "floramushroom03.nif",
+"yields": "Mushroom03",
+"yields_name": "White Cap"
+},
+{
+"ref": "King of the Murkmire.esp:FloraMushroom03Mud",
+"sig": "FLOR",
+"name": "White Cap",
+"model": "floramushroom03.nif",
+"yields": "Mushroom03",
+"yields_name": "White Cap"
+},
+{
+"ref": "King of the Murkmire.esp:FloraMushroom03SmallMarshMud02",
+"sig": "FLOR",
+"name": "White Cap",
+"model": "floramushroom03small.nif",
+"yields": "Mushroom03",
+"yields_name": "White Cap"
+},
+{
+"ref": "King of the Murkmire.esp:FloraMushroom03SmallMud",
+"sig": "FLOR",
+"name": "White Cap",
+"model": "floramushroom03small.nif",
+"yields": "Mushroom03",
+"yields_name": "White Cap"
+},
+{
+"ref": "King of the Murkmire.esp:FloraMushroom04MarshMud02",
+"sig": "FLOR",
+"name": "Imp Stool",
+"model": "floramushroom04.nif",
+"yields": "Mushroom04",
+"yields_name": "Imp Stool"
+},
+{
+"ref": "King of the Murkmire.esp:FloraMushroom04Rainforest",
+"sig": "FLOR",
+"name": "Imp Stool",
+"model": "floramushroom04.nif",
+"yields": "Mushroom04",
+"yields_name": "Imp Stool"
+},
+{
+"ref": "King of the Murkmire.esp:FloraMushroom04SmallMarshMud02",
+"sig": "FLOR",
+"name": "Imp Stool",
+"model": "floramushroom04small.nif",
+"yields": "Mushroom04",
+"yields_name": "Imp Stool"
+},
+{
+"ref": "King of the Murkmire.esp:FloraMushroom04SmallRainforest",
+"sig": "FLOR",
+"name": "Imp Stool",
+"model": "floramushroom04small.nif",
+"yields": "Mushroom04",
+"yields_name": "Imp Stool"
+},
+{
+"ref": "King of the Murkmire.esp:FloraMushroom05MarshMud02",
+"sig": "FLOR",
+"name": "Namira's Rot",
+"model": "floramushroom05.nif",
+"yields": "Mushroom05",
+"yields_name": "Namira's Rot"
+},
+{
+"ref": "King of the Murkmire.esp:FloraMushroom05Rainforest",
+"sig": "FLOR",
+"name": "Namira's Rot",
+"model": "floramushroom05.nif",
+"yields": "Mushroom05",
+"yields_name": "Namira's Rot"
+},
+{
+"ref": "King of the Murkmire.esp:FloraMushroom05SmallRainforest",
+"sig": "FLOR",
+"name": "Namira's Rot",
+"model": "floramushroom05small.nif",
+"yields": "Mushroom05",
+"yields_name": "Namira's Rot"
+},
+{
+"ref": "King of the Murkmire.esp:FloraMushroom06Rainforest",
+"sig": "FLOR",
+"name": "Blisterwort",
+"model": "floramushroom06.nif",
+"yields": "Mushroom06",
+"yields_name": "Blisterwort"
+},
+{
+"ref": "King of the Murkmire.esp:FloraMushroom06SmallRainforest",
+"sig": "FLOR",
+"name": "Blisterwort",
+"model": "floramushroom06small.nif",
+"yields": "Mushroom06",
+"yields_name": "Blisterwort"
+},
+{
+"ref": "King of the Murkmire.esp:FloraMushroom06SmallXanmeer",
+"sig": "FLOR",
+"name": "Blisterwort",
+"model": "floramushroom06small.nif",
+"yields": "Mushroom06",
+"yields_name": "Blisterwort"
+},
+{
+"ref": "King of the Murkmire.esp:FloraMushroom06Xanmeer",
+"sig": "FLOR",
+"name": "Blisterwort",
+"model": "floramushroom06.nif",
+"yields": "Mushroom06",
+"yields_name": "Blisterwort"
+},
+{
+"ref": "King of the Murkmire.esp:HistAmberDeposit01",
+"sig": "FLOR",
+"name": "Hist Amber",
+"model": "rootrotscaleactivator.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "Skyrim.esm:BirdsNest",
+"sig": "FLOR",
+"name": "Birds' Nest",
+"model": "birdsnest01.nif",
+"yields": "BirdEgg01",
+"yields_name": "Rock Warbler Egg"
+},
+{
+"ref": "Skyrim.esm:BirdsNest02",
+"sig": "FLOR",
+"name": "Birds' Nest",
+"model": "birdsnest02.nif",
+"yields": "BirdEgg02",
+"yields_name": "Pine Thrush Egg"
+},
+{
+"ref": "Skyrim.esm:CharredSkeever03",
+"sig": "FLOR",
+"name": "Charred Skeever",
+"model": "charredskeever03.nif",
+"yields": "CharredSkeeverHide",
+"yields_name": "Charred Skeever Hide"
+},
+{
+"ref": "Skyrim.esm:ChaurusEggSac01",
+"sig": "FLOR",
+"name": "Egg Sacs",
+"model": "eggsacs.nif",
+"yields": "ChaurusEggs",
+"yields_name": "Chaurus Eggs"
+},
+{
+"ref": "Skyrim.esm:ChaurusEggSac02",
+"sig": "FLOR",
+"name": "Egg Sacs",
+"model": "eggsacs01.nif",
+"yields": "ChaurusEggs",
+"yields_name": "Chaurus Eggs"
+},
+{
+"ref": "Skyrim.esm:ChaurusEggSac03",
+"sig": "FLOR",
+"name": "Egg Sacs",
+"model": "eggsacs02.nif",
+"yields": "ChaurusEggs",
+"yields_name": "Chaurus Eggs"
+},
+{
+"ref": "Skyrim.esm:ChickenNest",
+"sig": "FLOR",
+"name": "Chickens' Nest",
+"model": "chickennest01.nif",
+"yields": "BirdEgg03",
+"yields_name": "Chicken's Egg"
+},
+{
+"ref": "Skyrim.esm:Clam01",
+"sig": "FLOR",
+"name": "Clam",
+"model": "clam01.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "Skyrim.esm:ClamLarge01",
+"sig": "FLOR",
+"name": "Clam",
+"model": "clamlarge01.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "Skyrim.esm:ClamThin01",
+"sig": "FLOR",
+"name": "Clam",
+"model": "clamthin01.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "Skyrim.esm:CoinPurseLarge",
+"sig": "FLOR",
+"name": "Coin Purse",
+"model": "coinbaglarge.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "Skyrim.esm:CoinPurseMedium",
+"sig": "FLOR",
+"name": "Coin Purse",
+"model": "coinbagmed.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "Skyrim.esm:CoinPurseSmall",
+"sig": "FLOR",
+"name": "Coin Purse",
+"model": "coinbagsmall.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "Skyrim.esm:DeadSalmon01",
+"sig": "FLOR",
+"name": "Salmon",
+"model": "deadsalmon01.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "Skyrim.esm:DeadSalmon01NoNail",
+"sig": "FLOR",
+"name": "Salmon",
+"model": "deadsalmon01nonail.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "Skyrim.esm:DeadSalmon02",
+"sig": "FLOR",
+"name": "Salmon",
+"model": "deadsalmon02.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "Skyrim.esm:DeadSalmon02NoNail",
+"sig": "FLOR",
+"name": "Salmon",
+"model": "deadsalmon02nonail.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "Skyrim.esm:FXAmbWaterSalmon01A",
+"sig": "FLOR",
+"name": "Salmon",
+"model": "fxambwatersalmon01a.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "Skyrim.esm:FXAmbWaterSalmon01B",
+"sig": "FLOR",
+"name": "Salmon",
+"model": "fxambwatersalmon01b.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "Skyrim.esm:FXAmbWaterSalmon02A",
+"sig": "FLOR",
+"name": "Salmon",
+"model": "fxambwatersalmon02a.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "Skyrim.esm:FXAmbWaterSalmon02B",
+"sig": "FLOR",
+"name": "Salmon",
+"model": "fxambwatersalmon02b.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "Skyrim.esm:FloraCreepCluster",
+"sig": "FLOR",
+"name": "Creep Cluster",
+"model": "floracreepcluster01.nif",
+"yields": "CreepClusterRoot",
+"yields_name": "Creep Cluster"
+},
+{
+"ref": "Skyrim.esm:FloraCreepClusterRock",
+"sig": "FLOR",
+"name": "Creep Cluster",
+"model": "floracreepcluster02.nif",
+"yields": "CreepClusterRoot",
+"yields_name": "Creep Cluster"
+},
+{
+"ref": "Skyrim.esm:FloraGiantLichen",
+"sig": "FLOR",
+"name": "Giant Lichen",
+"model": "floragiantlichen01.nif",
+"yields": "GiantLichen",
+"yields_name": "Giant Lichen"
+},
+{
+"ref": "Skyrim.esm:FloraMushroom01",
+"sig": "FLOR",
+"name": "Fly Amanita",
+"model": "floramushroom01.nif",
+"yields": "Mushroom01",
+"yields_name": "Fly Amanita"
+},
+{
+"ref": "Skyrim.esm:FloraMushroom01FallForestDirt01",
+"sig": "FLOR",
+"name": "Fly Amanita",
+"model": "floramushroom01.nif",
+"yields": "Mushroom01",
+"yields_name": "Fly Amanita"
+},
+{
+"ref": "Skyrim.esm:FloraMushroom01ReachDirt01",
+"sig": "FLOR",
+"name": "Fly Amanita",
+"model": "floramushroom01.nif",
+"yields": "Mushroom01",
+"yields_name": "Fly Amanita"
+},
+{
+"ref": "Skyrim.esm:FloraMushroom01Small",
+"sig": "FLOR",
+"name": "Fly Amanita",
+"model": "floramushroom01small.nif",
+"yields": "Mushroom01",
+"yields_name": "Fly Amanita"
+},
+{
+"ref": "Skyrim.esm:FloraMushroom01SmallReachDirt01",
+"sig": "FLOR",
+"name": "Fly Amanita",
+"model": "floramushroom01small.nif",
+"yields": "Mushroom01",
+"yields_name": "Fly Amanita"
+},
+{
+"ref": "Skyrim.esm:FloraMushroom02",
+"sig": "FLOR",
+"name": "Bleeding Crown",
+"model": "floramushroom02.nif",
+"yields": "Mushroom02",
+"yields_name": "Bleeding Crown"
+},
+{
+"ref": "Skyrim.esm:FloraMushroom02Dirt01",
+"sig": "FLOR",
+"name": "Bleeding Crown",
+"model": "floramushroom02.nif",
+"yields": "Mushroom02",
+"yields_name": "Bleeding Crown"
+},
+{
+"ref": "Skyrim.esm:FloraMushroom02FallForestDirt",
+"sig": "FLOR",
+"name": "Bleeding Crown",
+"model": "floramushroom02.nif",
+"yields": "Mushroom02",
+"yields_name": "Bleeding Crown"
+},
+{
+"ref": "Skyrim.esm:FloraMushroom02ReachDirt01",
+"sig": "FLOR",
+"name": "Bleeding Crown",
+"model": "floramushroom02.nif",
+"yields": "Mushroom02",
+"yields_name": "Bleeding Crown"
+},
+{
+"ref": "Skyrim.esm:FloraMushroom02Small",
+"sig": "FLOR",
+"name": "Bleeding Crown",
+"model": "floramushroom02small.nif",
+"yields": "Mushroom02",
+"yields_name": "Bleeding Crown"
+},
+{
+"ref": "Skyrim.esm:FloraMushroom02SmallDirt01",
+"sig": "FLOR",
+"name": "Bleeding Crown",
+"model": "floramushroom02small.nif",
+"yields": "Mushroom02",
+"yields_name": "Bleeding Crown"
+},
+{
+"ref": "Skyrim.esm:FloraMushroom02SmallFallForestDirt",
+"sig": "FLOR",
+"name": "Bleeding Crown",
+"model": "floramushroom02small.nif",
+"yields": "Mushroom02",
+"yields_name": "Bleeding Crown"
+},
+{
+"ref": "Skyrim.esm:FloraMushroom02SmallReachDirt01",
+"sig": "FLOR",
+"name": "Bleeding Crown",
+"model": "floramushroom02small.nif",
+"yields": "Mushroom02",
+"yields_name": "Bleeding Crown"
+},
+{
+"ref": "Skyrim.esm:FloraMushroom03",
+"sig": "FLOR",
+"name": "White Cap",
+"model": "floramushroom03.nif",
+"yields": "Mushroom03",
+"yields_name": "White Cap"
+},
+{
+"ref": "Skyrim.esm:FloraMushroom03Dirt01",
+"sig": "FLOR",
+"name": "White Cap",
+"model": "floramushroom03.nif",
+"yields": "Mushroom03",
+"yields_name": "White Cap"
+},
+{
+"ref": "Skyrim.esm:FloraMushroom03ReachDirt01",
+"sig": "FLOR",
+"name": "White Cap",
+"model": "floramushroom03.nif",
+"yields": "Mushroom03",
+"yields_name": "White Cap"
+},
+{
+"ref": "Skyrim.esm:FloraMushroom03Small",
+"sig": "FLOR",
+"name": "White Cap",
+"model": "floramushroom03small.nif",
+"yields": "Mushroom03",
+"yields_name": "White Cap"
+},
+{
+"ref": "Skyrim.esm:FloraMushroom03SmallFallForestGrass",
+"sig": "FLOR",
+"name": "White Cap",
+"model": "floramushroom03small.nif",
+"yields": "Mushroom03",
+"yields_name": "White Cap"
+},
+{
+"ref": "Skyrim.esm:FloraMushroom03SmallReachDirt01",
+"sig": "FLOR",
+"name": "White Cap",
+"model": "floramushroom03small.nif",
+"yields": "Mushroom03",
+"yields_name": "White Cap"
+},
+{
+"ref": "Skyrim.esm:FloraMushroom04",
+"sig": "FLOR",
+"name": "Imp Stool",
+"model": "floramushroom04.nif",
+"yields": "Mushroom04",
+"yields_name": "Imp Stool"
+},
+{
+"ref": "Skyrim.esm:FloraMushroom04ReachDirt01",
+"sig": "FLOR",
+"name": "Imp Stool",
+"model": "floramushroom04.nif",
+"yields": "Mushroom04",
+"yields_name": "Imp Stool"
+},
+{
+"ref": "Skyrim.esm:FloraMushroom04Small",
+"sig": "FLOR",
+"name": "Imp Stool",
+"model": "floramushroom04small.nif",
+"yields": "Mushroom04",
+"yields_name": "Imp Stool"
+},
+{
+"ref": "Skyrim.esm:FloraMushroom04SmallReachDirt01",
+"sig": "FLOR",
+"name": "Imp Stool",
+"model": "floramushroom04small.nif",
+"yields": "Mushroom04",
+"yields_name": "Imp Stool"
+},
+{
+"ref": "Skyrim.esm:FloraMushroom05",
+"sig": "FLOR",
+"name": "Namira's Rot",
+"model": "floramushroom05.nif",
+"yields": "Mushroom05",
+"yields_name": "Namira's Rot"
+},
+{
+"ref": "Skyrim.esm:FloraMushroom05Dirt01",
+"sig": "FLOR",
+"name": "Namira's Rot",
+"model": "floramushroom05.nif",
+"yields": "Mushroom05",
+"yields_name": "Namira's Rot"
+},
+{
+"ref": "Skyrim.esm:FloraMushroom05ReachDirt01",
+"sig": "FLOR",
+"name": "Namira's Rot",
+"model": "floramushroom05.nif",
+"yields": "Mushroom05",
+"yields_name": "Namira's Rot"
+},
+{
+"ref": "Skyrim.esm:FloraMushroom05Small",
+"sig": "FLOR",
+"name": "Namira's Rot",
+"model": "floramushroom05small.nif",
+"yields": "Mushroom05",
+"yields_name": "Namira's Rot"
+},
+{
+"ref": "Skyrim.esm:FloraMushroom05SmallReachDirt01",
+"sig": "FLOR",
+"name": "Namira's Rot",
+"model": "floramushroom05small.nif",
+"yields": "Mushroom05",
+"yields_name": "Namira's Rot"
+},
+{
+"ref": "Skyrim.esm:FloraMushroom06",
+"sig": "FLOR",
+"name": "Blisterwort",
+"model": "floramushroom06.nif",
+"yields": "Mushroom06",
+"yields_name": "Blisterwort"
+},
+{
+"ref": "Skyrim.esm:FloraMushroom06ReachDirt01",
+"sig": "FLOR",
+"name": "Blisterwort",
+"model": "floramushroom06.nif",
+"yields": "Mushroom06",
+"yields_name": "Blisterwort"
+},
+{
+"ref": "Skyrim.esm:FloraMushroom06Small",
+"sig": "FLOR",
+"name": "Blisterwort",
+"model": "floramushroom06small.nif",
+"yields": "Mushroom06",
+"yields_name": "Blisterwort"
+},
+{
+"ref": "Skyrim.esm:FloraMushroom06SmallDirt01",
+"sig": "FLOR",
+"name": "Blisterwort",
+"model": "floramushroom06small.nif",
+"yields": "Mushroom06",
+"yields_name": "Blisterwort"
+},
+{
+"ref": "Skyrim.esm:FloraMushroom06SmallReachDirt01",
+"sig": "FLOR",
+"name": "Blisterwort",
+"model": "floramushroom06small.nif",
+"yields": "Mushroom06",
+"yields_name": "Blisterwort"
+},
+{
+"ref": "Skyrim.esm:FloraSwampFungalPod01",
+"sig": "FLOR",
+"name": "Swamp Fungal Pod",
+"model": "floraswampfungalpod01.nif",
+"yields": "SwampFungalPod01",
+"yields_name": "Swamp Fungal Pod"
+},
+{
+"ref": "Skyrim.esm:GiantSkewer01CharredSkeever01",
+"sig": "FLOR",
+"name": "Charred Skeever",
+"model": "charredskeever01.nif",
+"yields": "CharredSkeeverHide",
+"yields_name": "Charred Skeever Hide"
+},
+{
+"ref": "Skyrim.esm:GiantSkewer01CharredSkeever02",
+"sig": "FLOR",
+"name": "Charred Skeever",
+"model": "charredskeever02.nif",
+"yields": "CharredSkeeverHide",
+"yields_name": "Charred Skeever Hide"
+},
+{
+"ref": "Skyrim.esm:GlowingMushroomCluster",
+"sig": "FLOR",
+"name": "Glowing Mushrooms",
+"model": "glowingmushroomcluster01.nif",
+"yields": "GlowingMushroom",
+"yields_name": "Glowing Mushroom"
+},
+{
+"ref": "Skyrim.esm:GlowingMushroomSingle",
+"sig": "FLOR",
+"name": "Glowing Mushrooms",
+"model": "glowingmushroomsingle01.nif",
+"yields": "GlowingMushroom",
+"yields_name": "Glowing Mushroom"
+},
+{
+"ref": "Skyrim.esm:HangingElvesEar01",
+"sig": "FLOR",
+"name": "Dried Elves Ear",
+"model": "hangingelvesear01.nif",
+"yields": "ElvesEar",
+"yields_name": "Elves Ear"
+},
+{
+"ref": "Skyrim.esm:HangingFrostMirriam",
+"sig": "FLOR",
+"name": "Dried Frost Mirriam",
+"model": "hangingfrostmirriam01.nif",
+"yields": "FrostMirriam",
+"yields_name": "Frost Mirriam"
+},
+{
+"ref": "Skyrim.esm:HangingGarlicBraid",
+"sig": "FLOR",
+"name": "Garlic Braid",
+"model": "hanginggarlicbraid01.nif",
+"yields": "Garlic",
+"yields_name": "Garlic"
+},
+{
+"ref": "Skyrim.esm:HangingPheasant01",
+"sig": "FLOR",
+"name": "Pheasant",
+"model": "hangingpheasant01.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "Skyrim.esm:HangingPheasant02",
+"sig": "FLOR",
+"name": "Pheasant",
+"model": "hangingpheasant02.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "Skyrim.esm:HangingRabbit01",
+"sig": "FLOR",
+"name": "Rabbit",
+"model": "hangingrabbit01.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "Skyrim.esm:HangingRabbit02",
+"sig": "FLOR",
+"name": "Rabbit",
+"model": "hangingrabbit02.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "Skyrim.esm:MammothCheese01",
+"sig": "FLOR",
+"name": "Mammoth Cheese",
+"model": "mammothcheese01.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "Skyrim.esm:NordicBarnacleCluster01",
+"sig": "FLOR",
+"name": "Nordic Barnacle Cluster",
+"model": "nordicbarnaclecluster01.nif",
+"yields": "NordicBarnacles",
+"yields_name": "Nordic Barnacle"
+},
+{
+"ref": "Skyrim.esm:SlaughterfishEggNest01",
+"sig": "FLOR",
+"name": "Slaughterfish Egg Nest",
+"model": "slaughterfisheggcluster01.nif",
+"yields": "SlaughterfishEgg01",
+"yields_name": "Slaughterfish Egg"
+},
+{
+"ref": "Skyrim.esm:TGCoinPurseLargeNEW",
+"sig": "FLOR",
+"name": "Coin Purse",
+"model": "coinbaglarge.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "Skyrim.esm:TGCoinPurseMediumNEW",
+"sig": "FLOR",
+"name": "Coin Purse",
+"model": "coinbagmed.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "Skyrim.esm:TGCoinPurseSmallNEW",
+"sig": "FLOR",
+"name": "Coin Purse",
+"model": "coinbagsmall.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "Skyrim.esm:TestTreeFloraMountainFlower01Blue",
+"sig": "TREE",
+"name": "Mountain Flower",
+"model": "testmountainflower01blue.nif",
+"yields": "MountainFlower01Blue",
+"yields_name": "Blue Mountain Flower"
+},
+{
+"ref": "Skyrim.esm:TreeAspenLog01ScalyPholiota",
+"sig": "FLOR",
+"name": "Scaly Pholiota",
+"model": "treeaspenlog01scalypholiota.nif",
+"yields": "ScalyPholiotaBits",
+"yields_name": "Scaly Pholiota"
+},
+{
+"ref": "Skyrim.esm:TreeAspenStump01ScalyPholiota",
+"sig": "FLOR",
+"name": "Scaly Pholiota",
+"model": "treeaspenstump01scalypholiota.nif",
+"yields": "ScalyPholiotaBits",
+"yields_name": "Scaly Pholiota"
+},
+{
+"ref": "Skyrim.esm:TreeFloraCabbage01",
+"sig": "TREE",
+"name": "Cabbage",
+"model": "floracabbage01.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "Skyrim.esm:TreeFloraCanisRoot01",
+"sig": "TREE",
+"name": "Canis Root",
+"model": "floracanisroot01.nif",
+"yields": "CanisRoot01",
+"yields_name": "Canis Root"
+},
+{
+"ref": "Skyrim.esm:TreeFloraDeathBell01",
+"sig": "TREE",
+"name": "Deathbell",
+"model": "floradeathbell01.nif",
+"yields": "deathBell",
+"yields_name": "Deathbell"
+},
+{
+"ref": "Skyrim.esm:TreeFloraDeathBell02",
+"sig": "TREE",
+"name": "Deathbell",
+"model": "floradeathbell02.nif",
+"yields": "deathBell",
+"yields_name": "Deathbell"
+},
+{
+"ref": "Skyrim.esm:TreeFloraDragonsTongue01",
+"sig": "TREE",
+"name": "Dragon's Tongue",
+"model": "floradragonstongue01.nif",
+"yields": "DragonsTongue",
+"yields_name": "Dragon's Tongue"
+},
+{
+"ref": "Skyrim.esm:TreeFloraDragonsTongue02",
+"sig": "TREE",
+"name": "Dragon's Tongue",
+"model": "floradragonstongue02.nif",
+"yields": "DragonsTongue",
+"yields_name": "Dragon's Tongue"
+},
+{
+"ref": "Skyrim.esm:TreeFloraHangingMoss01",
+"sig": "TREE",
+"name": "Hanging Moss",
+"model": "florahangingmoss01.nif",
+"yields": "HangingMoss",
+"yields_name": "Hanging Moss"
+},
+{
+"ref": "Skyrim.esm:TreeFloraHangingMoss02",
+"sig": "TREE",
+"name": "Hanging Moss",
+"model": "florahangingmoss02.nif",
+"yields": "HangingMoss",
+"yields_name": "Hanging Moss"
+},
+{
+"ref": "Skyrim.esm:TreeFloraHangingMoss03",
+"sig": "TREE",
+"name": "Hanging Moss",
+"model": "florahangingmoss03.nif",
+"yields": "HangingMoss",
+"yields_name": "Hanging Moss"
+},
+{
+"ref": "Skyrim.esm:TreeFloraJazBay01",
+"sig": "TREE",
+"name": "Jazbay",
+"model": "florajazbay01.nif",
+"yields": "JazBay",
+"yields_name": "Jazbay Grapes"
+},
+{
+"ref": "Skyrim.esm:TreeFloraJuniper01",
+"sig": "TREE",
+"name": "Juniper",
+"model": "florajuniper01.nif",
+"yields": "JuniperBerries",
+"yields_name": "Juniper Berries"
+},
+{
+"ref": "Skyrim.esm:TreeFloraLavender01",
+"sig": "TREE",
+"name": "Lavender",
+"model": "floralavender01.nif",
+"yields": "Lavender",
+"yields_name": "Lavender"
+},
+{
+"ref": "Skyrim.esm:TreeFloraLeek01",
+"sig": "TREE",
+"name": "Leek",
+"model": "floraleek01.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "Skyrim.esm:TreeFloraMountainFlower01Blue",
+"sig": "TREE",
+"name": "Mountain Flower",
+"model": "floramountainflower01blue.nif",
+"yields": "MountainFlower01Blue",
+"yields_name": "Blue Mountain Flower"
+},
+{
+"ref": "Skyrim.esm:TreeFloraMountainFlower01Purple",
+"sig": "TREE",
+"name": "Mountain Flower",
+"model": "floramountainflower01purple.nif",
+"yields": "MountainFlower01Purple",
+"yields_name": "Purple Mountain Flower"
+},
+{
+"ref": "Skyrim.esm:TreeFloraMountainFlower01Red",
+"sig": "TREE",
+"name": "Mountain Flower",
+"model": "floramountainflower01red.nif",
+"yields": "MountainFlower01Red",
+"yields_name": "Red Mountain Flower"
+},
+{
+"ref": "Skyrim.esm:TreeFloraMountainFlower02Blue",
+"sig": "TREE",
+"name": "Mountain Flower",
+"model": "floramountainflower02blue.nif",
+"yields": "MountainFlower01Blue",
+"yields_name": "Blue Mountain Flower"
+},
+{
+"ref": "Skyrim.esm:TreeFloraMountainFlower02Purple",
+"sig": "TREE",
+"name": "Mountain Flower",
+"model": "floramountainflower02purple.nif",
+"yields": "MountainFlower01Purple",
+"yields_name": "Purple Mountain Flower"
+},
+{
+"ref": "Skyrim.esm:TreeFloraMountainFlower02Red",
+"sig": "TREE",
+"name": "Mountain Flower",
+"model": "floramountainflower02red.nif",
+"yields": "MountainFlower01Red",
+"yields_name": "Red Mountain Flower"
+},
+{
+"ref": "Skyrim.esm:TreeFloraNightshade01",
+"sig": "TREE",
+"name": "Nightshade",
+"model": "floranightshade01.nif",
+"yields": "Nightshade",
+"yields_name": "Nightshade"
+},
+{
+"ref": "Skyrim.esm:TreeFloraNightshade02",
+"sig": "TREE",
+"name": "Nightshade",
+"model": "floranightshade02.nif",
+"yields": "Nightshade",
+"yields_name": "Nightshade"
+},
+{
+"ref": "Skyrim.esm:TreeFloraNirnroot01",
+"sig": "ACTI",
+"name": "Nirnroot",
+"model": "floranirnroot01.nif",
+"yields": "Nirnroot",
+"yields_name": null
+},
+{
+"ref": "Skyrim.esm:TreeFloraNirnrootRed01",
+"sig": "ACTI",
+"name": "Crimson Nirnroot",
+"model": "floranirnroot01red.nif",
+"yields": "Nirnroot",
+"yields_name": null
+},
+{
+"ref": "Skyrim.esm:TreeFloraPotatoPlant01",
+"sig": "TREE",
+"name": "Potato Plant",
+"model": "florapotatoplant01.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "Skyrim.esm:TreeFloraSnowberry01",
+"sig": "TREE",
+"name": "Snowberry",
+"model": "florasnowberry01.nif",
+"yields": "Snowberry",
+"yields_name": "Snowberries"
+},
+{
+"ref": "Skyrim.esm:TreeFloraSnowberry01Snow",
+"sig": "TREE",
+"name": "Snowberry",
+"model": "florasnowberry01snow.nif",
+"yields": "Snowberry",
+"yields_name": "Snowberries"
+},
+{
+"ref": "Skyrim.esm:TreeFloraSnowberry02",
+"sig": "TREE",
+"name": "Snowberry",
+"model": "florasnowberry02.nif",
+"yields": "Snowberry",
+"yields_name": "Snowberries"
+},
+{
+"ref": "Skyrim.esm:TreeFloraSpikyGrass01",
+"sig": "TREE",
+"name": "Spiky Grass",
+"model": "floraspikygrass01.nif",
+"yields": "SpikyGrass01",
+"yields_name": "Grass Pod"
+},
+{
+"ref": "Skyrim.esm:TreeFloraSpikyGrass02",
+"sig": "TREE",
+"name": "Spiky Grass",
+"model": "floraspikygrass02.nif",
+"yields": "SpikyGrass01",
+"yields_name": "Grass Pod"
+},
+{
+"ref": "Skyrim.esm:TreeFloraThistle01",
+"sig": "TREE",
+"name": "Thistle",
+"model": "florathistle01.nif",
+"yields": "Thistle01",
+"yields_name": "Thistle Branch"
+},
+{
+"ref": "Skyrim.esm:TreeFloraTundraCotton01",
+"sig": "TREE",
+"name": "Tundra Cotton",
+"model": "floratundracotton01.nif",
+"yields": "TundraCotton",
+"yields_name": "Tundra Cotton"
+},
+{
+"ref": "Skyrim.esm:TreeFloraWheat01",
+"sig": "TREE",
+"name": "Wheat",
+"model": "florawheat01.nif",
+"yields": "Wheat",
+"yields_name": "Wheat"
+},
+{
+"ref": "Skyrim.esm:TreeGourdCluster01",
+"sig": "TREE",
+"name": "Gourds",
+"model": "gourdcluster01.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "Skyrim.esm:TreePineForestHollow01BMoraTapinella",
+"sig": "FLOR",
+"name": "Mora Tapinella",
+"model": "treepineforesthollow01mshrm01.nif",
+"yields": "MoraTapinellaBits",
+"yields_name": "Mora Tapinella"
+},
+{
+"ref": "Skyrim.esm:TreePineForestLog01MoraTapinella",
+"sig": "FLOR",
+"name": "Mora Tapinella",
+"model": "treepineforestlog01mshrm.nif",
+"yields": "MoraTapinellaBits",
+"yields_name": "Mora Tapinella"
+},
+{
+"ref": "Skyrim.esm:TreePineForestStump01MoraTapinella",
+"sig": "FLOR",
+"name": "Mora Tapinella",
+"model": "treepineforeststump01mshrm.nif",
+"yields": "MoraTapinellaBits",
+"yields_name": "Mora Tapinella"
+},
+{
+"ref": "Skyrim.esm:TreePineForestStump02AMoraTapinella",
+"sig": "FLOR",
+"name": "Mora Tapinella",
+"model": "treepineforeststump02amshrm.nif",
+"yields": "MoraTapinellaBits",
+"yields_name": "Mora Tapinella"
+},
+{
+"ref": "Skyrim.esm:TreePineForestStump02BMoraTapinella",
+"sig": "FLOR",
+"name": "Mora Tapinella",
+"model": "treepineforeststump02bmshrm.nif",
+"yields": "MoraTapinellaBits",
+"yields_name": "Mora Tapinella"
+},
+{
+"ref": "Skyrim.esm:TreeReachTreeStump01MoraTapinella",
+"sig": "FLOR",
+"name": "Mora Tapinella",
+"model": "reachtreestump01_mush.nif",
+"yields": "MoraTapinellaBits",
+"yields_name": "Mora Tapinella"
+},
+{
+"ref": "ccBGSSSE001-Fish.esm:ccBGSSSE001_BucketfishFlora01A",
+"sig": "FLOR",
+"name": "Brook Bass",
+"model": "fxambwaterfishbucket01a.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "ccBGSSSE001-Fish.esm:ccBGSSSE001_BucketfishFlora01B",
+"sig": "FLOR",
+"name": "Brook Bass",
+"model": "fxambwaterfishbucket01b.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "ccBGSSSE001-Fish.esm:ccBGSSSE001_JuvenileMudcrabFlora",
+"sig": "FLOR",
+"name": "Juvenile Mudcrab",
+"model": "juvenilecrab01animated.nif",
+"yields": "ccBGSSSE001_JuvenileMudcrabIng",
+"yields_name": "Juvenile Mudcrab"
+},
+{
+"ref": "ccBGSSSE001-Fish.esm:ccBGSSSE001_MiscSolitude_CoinPurseLarge",
+"sig": "FLOR",
+"name": "Coin Purse",
+"model": "coinbaglarge.nif",
+"yields": null,
+"yields_name": null
+},
+{
+"ref": "ccBGSSSE001-Fish.esm:ccBGSSSE001_TripodfishFlora",
+"sig": "FLOR",
+"name": "Tripod Spiderfish",
+"model": "fishtripodfish01static.nif",
+"yields": null,
+"yields_name": null
+}
+],
+"ingredients": {
+"Black Marsh.esm:01POISONBLOOM": {
+"name": "Poison Bloom",
+"effects": [
+"AlchDamageHealth",
+"AlchDamageSpeed",
+"AlchFortifyCarryWeight",
+"AlchInfluenceConfDown"
+]
+},
+"Black Marsh.esm:01POISONBLOOMDUPLICATE001": {
+"name": "Poison Bloom",
+"effects": [
+"AlchDamageHealth",
+"AlchDamageSpeed",
+"AlchFortifyCarryWeight",
+"AlchInfluenceConfDown"
+]
+},
+"Dawnguard.esm:DLC01ChaurusHunterAntennae": {
+"name": "Chaurus Hunter Antennae",
+"effects": [
+"AlchDamageStamina",
+"AlchFortifyConjuration",
+"AlchDamageMagickaRate",
+"AlchFortifyEnchanting"
+]
+},
+"Dawnguard.esm:DLC01GlowPlant01Ingredient": {
+"name": "Gleamblossom",
+"effects": [
+"AlchResistMagic",
+"AlchInfluenceConfDown",
+"AlchFortifyHealRate",
+"AlchParalysis"
+]
+},
+"Dawnguard.esm:DLC01MothWingAncestor": {
+"name": "Ancestor Moth Wing",
+"effects": [
+"AlchDamageStamina",
+"AlchFortifyConjuration",
+"AlchDamageMagickaRate",
+"AlchFortifyEnchanting"
+]
+},
+"Dawnguard.esm:DLC01PoisonBloom": {
+"name": "Poison Bloom",
+"effects": [
+"AlchDamageHealth",
+"AlchDamageSpeed",
+"AlchFortifyCarryWeight",
+"AlchInfluenceConfDown"
+]
+},
+"Dawnguard.esm:DLC1MountainFlower01Yellow": {
+"name": "Yellow Mountain Flower",
+"effects": [
+"AlchResistPoison",
+"AlchFortifyRestoration",
+"AlchFortifyHealth",
+"AlchDamageStaminaRate"
+]
+},
+"Dragonborn.esm:DLC2AshCreepCluster": {
+"name": "Ash Creep Cluster",
+"effects": [
+"AlchDamageStamina",
+"AlchInvisibillity",
+"AlchResistFire",
+"AlchFortifyDestruction"
+]
+},
+"Dragonborn.esm:DLC2AshHopperJelly": {
+"name": "Ash Hopper Jelly",
+"effects": [
+"AlchRestoreHealth",
+"AlchFortifyLightArmor",
+"AlchResistShock",
+"AlchWeaknessFrost"
+]
+},
+"Dragonborn.esm:DLC2BoarTusk": {
+"name": "Boar Tusk",
+"effects": [
+"AlchFortifyStamina",
+"AlchFortifyHealth",
+"AlchFortifyBlock",
+"AlchInfluenceAggUp"
+]
+},
+"Dragonborn.esm:DLC2BurntSprigganWood": {
+"name": "Burnt Spriggan Wood",
+"effects": [
+"AlchWeaknessFire",
+"AlchFortifyAlteration",
+"AlchDamageMagickaRate",
+"AlchDamageSpeed"
+]
+},
+"Dragonborn.esm:DLC2GhoulAsh": {
+"name": "Spawn Ash",
+"effects": [
+"AlchDamageStaminaRavage",
+"AlchResistFire",
+"AlchFortifyEnchanting",
+"AlchDamageMagickaRavage"
+]
+},
+"Dragonborn.esm:DLC2HangingMoss": {
+"name": "Emperor Parasol Moss",
+"effects": [
+"AlchDamageHealth",
+"AlchFortifyMagicka",
+"AlchFortifyHealRate",
+"AlchFortifyTwoHanded"
+]
+},
+"Dragonborn.esm:DLC2NetchJelly": {
+"name": "Netch Jelly",
+"effects": [
+"AlchParalysis",
+"AlchFortifyCarryWeight",
+"AlchRestoreStamina",
+"AlchInfluenceConfDown"
+]
+},
+"Dragonborn.esm:DLC2Scathecraw01": {
+"name": "Scathecraw",
+"effects": [
+"AlchDamageHealthRavage",
+"AlchDamageStaminaRavage",
+"AlchDamageMagickaRavage",
+"AlchDamageHealthDuration"
+]
+},
+"Dragonborn.esm:DLC2SpikyGrassAsh01": {
+"name": "Ashen Grass Pod",
+"effects": [
+"AlchResistFire",
+"AlchWeaknessShock",
+"AlchFortifyLockpicking",
+"AlchFortifySneak"
+]
+},
+"Dragonborn.esm:DLC2TernFeathers": {
+"name": "Felsaad Tern Feathers",
+"effects": [
+"AlchRestoreHealth",
+"AlchFortifyLightArmor",
+"AlchCureDisease",
+"AlchResistMagic"
+]
+},
+"Dragonborn.esm:DLC2TramaRoot01": {
+"name": "Trama Root",
+"effects": [
+"AlchWeaknessShock",
+"AlchFortifyCarryWeight",
+"AlchDamageMagicka",
+"AlchDamageSpeed"
+]
+},
+"Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMBantamGuarEgg": {
+"name": "Bantam Guar Egg",
+"effects": [
+"AlchResistMagic",
+"AlchDamageMagickaRate",
+"AlchWaterbreathing",
+"AlchDamageStaminaDuration"
+]
+},
+"Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMBrushBoarTusk": {
+"name": "Brushboar Tusk",
+"effects": [
+"AlchFortifyStamina",
+"AlchFortifyHealth",
+"AlchFortifyBlock",
+"AlchInfluenceAggUp"
+]
+},
+"Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMCipactliBlood": {
+"name": "Blood of Cipactli",
+"effects": [
+"AlchRestoreMagickaAll",
+"AlchFortifyLockpicking",
+"AlchResistShock",
+"AlchWeaknessPoison"
+]
+},
+"Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMFrogBlueLeg": {
+"name": "Blue Frog Leg",
+"effects": [
+"AlchWeaknessPoison",
+"AlchInfluenceAggUp",
+"AlchDamageMagickaRate",
+"AlchInfluenceAggUpCombo"
+]
+},
+"Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMFrogGreenLeg": {
+"name": "Green Frog Leg",
+"effects": [
+"AlchWeaknessPoison",
+"AlchParalysis",
+"AlchDamageSpeed",
+"AlchDamageStaminaDuration"
+]
+},
+"Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMFrogRedLeg": {
+"name": "Red Frog Leg",
+"effects": [
+"AlchWeaknessPoison",
+"AlchInfluenceConfDown",
+"AlchWeaknessMagic",
+"AlchDamageMagickaRavage"
+]
+},
+"Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMFrogToadLeg": {
+"name": "Toad Leg",
+"effects": [
+"AlchWeaknessPoison",
+"AlchDamageHealth",
+"AlchDamageHealthDuration",
+"AlchDamageHealthRavage"
+]
+},
+"Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMGallimimusTooth": {
+"name": "Verminous Stalker Fang",
+"effects": [
+"AlchRestoreStamina",
+"AlchFortifyHeavyArmor",
+"AlchFortifySmithing",
+"AlchWeaknessPoison"
+]
+},
+"Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMHackwingEgg": {
+"name": "Hackwing's Egg",
+"effects": [
+"AlchResistMagic",
+"AlchDamageMagickaRate",
+"AlchWaterbreathing",
+"AlchDamageStaminaDuration"
+]
+},
+"Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMHackwingFeathers": {
+"name": "Hackwing Feathers",
+"effects": [
+"AlchCurePoison",
+"AlchFortifyEnchanting",
+"AlchInfluenceConfDown",
+"AlchWeaknessMagic"
+]
+},
+"Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMJungleBambooIng": {
+"name": "Bamboo",
+"effects": [
+"AlchWeaknessFire",
+"AlchFortifyAlteration",
+"AlchDamageMagickaRate",
+"AlchDamageSpeed"
+]
+},
+"Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMJungleBloatsporeIng": {
+"name": "Bloat",
+"effects": [
+"AlchFortifyIllusion",
+"AlchDamageMagicka",
+"AlchFortifySmithing",
+"AlchFortifyMarksman"
+]
+},
+"Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMJungleBogBeaconIng": {
+"name": "Bog Beacon Cap",
+"effects": [
+"AlchDamageStamina",
+"AlchInfluenceConfDown",
+"AlchFortifyHeavyArmor",
+"AlchRestoreMagicka"
+]
+},
+"Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMJungleHangingMossIngA": {
+"name": "Grey Sithis' Beard",
+"effects": [
+"AlchDamageHealth",
+"AlchFortifyMagicka",
+"AlchFortifyHealRate",
+"AlchFortifyTwoHanded"
+]
+},
+"Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMJungleHangingMossIngB": {
+"name": "Green Sithis' Beard",
+"effects": [
+"AlchDamageMagicka",
+"AlchFortifyHealth",
+"AlchDamageMagickaRate",
+"AlchFortifyOneHanded"
+]
+},
+"Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMJungleMuckspongeIng": {
+"name": "Muck",
+"effects": [
+"AlchCurePoison",
+"AlchDamageMagicka",
+"AlchWeaknessMagic",
+"AlchCureDisease"
+]
+},
+"Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMJungleSomnaliusFrond": {
+"name": "Somnalius Frond",
+"effects": [
+"RestoreStaminaFFSelf",
+"AlchDamageStaminaRate",
+"AlchFortifyHealth",
+"AlchFortifyCarryWeight"
+]
+},
+"Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMJungleStinkhornIng": {
+"name": "Stinkhorn Cap",
+"effects": [
+"AlchInvisibillity",
+"AlchDamageHealth",
+"AlchWaterWalking",
+"AlchRestoreMagicka"
+]
+},
+"Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMJungleSwampPadIng": {
+"name": "Swamp Pad",
+"effects": [
+"AlchWeaknessShock",
+"AlchDamageHealthRavage",
+"AlchWeaknessPoison",
+"AlchRestoreMagicka"
+]
+},
+"Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMKrakenBarnacleIng": {
+"name": "Kraken Barnacle",
+"effects": [
+"AlchDamageMagicka",
+"AlchWaterbreathing",
+"AlchFortifyHealRate",
+"AlchFortifyPickpocket"
+]
+},
+"Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMLizardTooth": {
+"name": "Lizard Tooth",
+"effects": [
+"AlchRestoreStamina",
+"AlchFortifyHeavyArmor",
+"AlchFortifySmithing",
+"AlchWeaknessPoison"
+]
+},
+"Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMRipperEelEgg": {
+"name": "Ripper Egg",
+"effects": [
+"AlchResistPoison",
+"AlchFortifyPickpocket",
+"AlchDamageHealthDuration",
+"AlchFortifyStamina"
+]
+},
+"Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMRipperEelScales": {
+"name": "Ripper Scales",
+"effects": [
+"AlchResistFrost",
+"AlchDamageHealthDuration",
+"AlchFortifyHeavyArmor",
+"AlchFortifyBlock"
+]
+},
+"Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMRootwormJelly": {
+"name": "Rootworm Jelly",
+"effects": [
+"AlchRestoreMagickaAll",
+"AlchFortifyLockpicking",
+"AlchResistShock",
+"AlchWeaknessPoison"
+]
+},
+"Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSeaDrakeTooth": {
+"name": "Sea Drake Tooth",
+"effects": [
+"AlchRestoreStamina",
+"AlchFortifyMagicka",
+"AlchFortifyMarksman",
+"AlchWeaknessShock"
+]
+},
+"Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSerpentFeathers": {
+"name": "Serpent Feathers",
+"effects": [
+"AlchCurePoison",
+"AlchFortifyEnchanting",
+"AlchInfluenceConfDown",
+"AlchWeaknessMagic"
+]
+},
+"Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSloadBlood": {
+"name": "Sload Blood",
+"effects": [
+"AlchParalysis",
+"AlchDamageHealthRavage",
+"AlchDamageMagickaRavage",
+"AlchDamageStaminaRavage"
+]
+},
+"Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSwampRatHide": {
+"name": "Charred Swamp Rat Hide",
+"effects": [
+"AlchRestoreStamina",
+"AlchCureDisease",
+"AlchResistPoison",
+"AlchRestoreHealth"
+]
+},
+"Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSwampRatTail": {
+"name": "Swamp Rat Tail",
+"effects": [
+"AlchDamageStaminaRate",
+"AlchDamageHealthRavage",
+"AlchDamageHealth",
+"AlchFortifyLightArmor"
+]
+},
+"Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMTrikeFat": {
+"name": "Spike-Ox Fat",
+"effects": [
+"AlchResistPoison",
+"AlchFortifyTwoHanded",
+"AlchInfluenceAggUp",
+"AlchDamageHealth"
+]
+},
+"Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMTrikeHorn": {
+"name": "Spike-Ox Horn",
+"effects": [
+"AlchFortifyStamina",
+"AlchFortifyHealth",
+"AlchFortifyBlock",
+"AlchInfluenceAggUp"
+]
+},
+"Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMTurtleShell": {
+"name": "Turtle Shell",
+"effects": [
+"AlchWeaknessFrost",
+"AlchFortifyHeavyArmor",
+"AlchDamageStamina",
+"AlchRestoreMagicka"
+]
+},
+"Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMTurtleYoungShell": {
+"name": "Baby Turtle Shell",
+"effects": [
+"AlchWeaknessFrost",
+"AlchFortifyHeavyArmor",
+"AlchDamageStamina",
+"AlchRestoreMagicka"
+]
+},
+"Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMWamasuAlphaScales": {
+"name": "Wamasu Scales",
+"effects": [
+"AlchWeaknessPoison",
+"AlchDamageMagickaRavage",
+"AlchFortifyDestruction",
+"AlchFortifyStaminaRate"
+]
+},
+"Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMWamasuScales": {
+"name": "Wamasu Scales",
+"effects": [
+"AlchWeaknessPoison",
+"AlchDamageMagickaRavage",
+"AlchFortifyDestruction",
+"AlchFortifyStamina"
+]
+},
+"Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMmihailwillothewispdust": {
+"name": "Shine Dust",
+"effects": [
+"AlchDamageMagicka",
+"AlchDamageMagickaRate",
+"AlchFortifyDestruction",
+"AlchResistFire"
+]
+},
+"Here There Be Monsters - Curse of Cipactli.esp:mihailvoriplasmLOOT": {
+"name": "Voriplasm Slime",
+"effects": [
+"AlchWaterbreathing",
+"AlchDamageHealth",
+"AlchFortifyMagicka",
+"AlchInfluenceConfDown"
+]
+},
+"King of the Murkmire.esp:ArgoniaHistSapShiner": {
+"name": "Hist Sap Shiner",
+"effects": [
+"AlchRestoreStamina",
+"AlchFortifyMagicka",
+"AlchDamageStaminaRate",
+"AlchWaterbreathing"
+]
+},
+"King of the Murkmire.esp:ArgoniaMullet": {
+"name": "Thick-Scaled Mullet",
+"effects": [
+"AlchDamageStamina",
+"AlchFortifyRestoration",
+"AlchInfluenceConfDown",
+"AlchDamageHealthRavage"
+]
+},
+"King of the Murkmire.esp:FanikGocIngredient": {
+"name": "Fanik Goc Bark",
+"effects": [
+"AlchWaterWalking",
+"AlchInvisibillity",
+"AlchRestoreHealth",
+"AlchParalysis"
+]
+},
+"King of the Murkmire.esp:SnailSlimeIngredient": {
+"name": "Snail Mucus",
+"effects": [
+"AlchDamageSpeed",
+"AlchFortifyHeavyArmor",
+"AlchResistPoison",
+"AlchFortifyHealRate"
+]
+},
+"King of the Murkmire.esp:SwampLeviathanClaws": {
+"name": "Swamp Beast Claws",
+"effects": [
+"AlchDamageSpeed",
+"AlchFortifyHealRate",
+"AlchResistPoison",
+"AlchRestoreStamina"
+]
+},
+"King of the Murkmire.esp:mihailgiantcentipede_loot_1": {
+"name": "Giant Centipede Mandible",
+"effects": [
+"AlchResistPoison",
+"AlchResistShock",
+"AlchFortifyStamina",
+"AlchCureDisease"
+]
+},
+"King of the Murkmire.esp:mihailgiantcentipede_loot_2": {
+"name": "Ashen Giant Centipede Mandible",
+"effects": [
+"AlchResistPoison",
+"AlchResistShock",
+"AlchFortifyStamina",
+"AlchCureDisease"
+]
+},
+"King of the Murkmire.esp:mihailgiantcentipede_loot_3": {
+"name": "Pale Giant Centipede Mandible",
+"effects": [
+"AlchResistPoison",
+"AlchResistShock",
+"AlchFortifyStamina",
+"AlchCureDisease"
+]
+},
+"King of the Murkmire.esp:mihailvoriplasmLOOT": {
+"name": "Voriplasm Slime",
+"effects": [
+"AlchWaterbreathing",
+"AlchDamageHealth",
+"AlchDamageSpeed",
+"AlchInfluenceConfDown"
+]
+},
+"Skyrim.esm:AntlersLarge": {
+"name": "Large Antlers",
+"effects": [
+"AlchRestoreStamina",
+"AlchFortifyStamina",
+"AlchDamageSpeed",
+"AlchDamageStaminaRate"
+]
+},
+"Skyrim.esm:AntlersSmall": {
+"name": "Small Antlers",
+"effects": [
+"AlchWeaknessPoison",
+"AlchFortifyRestoration",
+"AlchDamageStaminaDuration",
+"AlchDamageHealth"
+]
+},
+"Skyrim.esm:BearClaws": {
+"name": "Bear Claws",
+"effects": [
+"AlchRestoreStamina",
+"AlchFortifyHealth",
+"AlchFortifyOneHanded",
+"AlchDamageMagickaRate"
+]
+},
+"Skyrim.esm:BeeHiveHusk": {
+"name": "Beehive Husk",
+"effects": [
+"AlchResistPoison",
+"AlchFortifyLightArmor",
+"AlchFortifySneak",
+"AlchFortifyDestruction"
+]
+},
+"Skyrim.esm:BeeHoneyComb": {
+"name": "Honeycomb",
+"effects": [
+"AlchRestoreStamina",
+"AlchFortifyBlock",
+"AlchFortifyLightArmor",
+"AlchDamageStaminaRavage"
+]
+},
+"Skyrim.esm:BirdEgg01": {
+"name": "Rock Warbler Egg",
+"effects": [
+"AlchRestoreHealth",
+"AlchFortifyOneHanded",
+"AlchDamageStamina",
+"AlchWeaknessMagic"
+]
+},
+"Skyrim.esm:BirdEgg02": {
+"name": "Pine Thrush Egg",
+"effects": [
+"AlchRestoreStamina",
+"AlchFortifyLockpicking",
+"AlchWeaknessPoison",
+"AlchResistShock"
+]
+},
+"Skyrim.esm:BirdEgg03": {
+"name": "Chicken's Egg",
+"effects": [
+"AlchResistMagic",
+"AlchDamageMagickaRate",
+"AlchWaterbreathing",
+"AlchDamageStaminaDuration"
+]
+},
+"Skyrim.esm:BoneMeal": {
+"name": "Bone Meal",
+"effects": [
+"AlchDamageStamina",
+"AlchResistFire",
+"AlchFortifyConjuration",
+"AlchDamageStaminaRavage"
+]
+},
+"Skyrim.esm:BriarHeart": {
+"name": "Briar Heart",
+"effects": [
+"AlchRestoreMagicka",
+"AlchFortifyBlock",
+"AlchParalysis",
+"AlchFortifyMagicka"
+]
+},
+"Skyrim.esm:CanisRoot01": {
+"name": "Canis Root",
+"effects": [
+"AlchDamageStamina",
+"AlchFortifyOneHanded",
+"AlchFortifyMarksman",
+"AlchParalysis"
+]
+},
+"Skyrim.esm:CharredSkeeverHide": {
+"name": "Charred Skeever Hide",
+"effects": [
+"AlchRestoreStamina",
+"AlchCureDisease",
+"AlchResistPoison",
+"AlchRestoreHealth"
+]
+},
+"Skyrim.esm:ChaurusEggs": {
+"name": "Chaurus Eggs",
+"effects": [
+"AlchWeaknessPoison",
+"AlchFortifyStamina",
+"AlchDamageMagicka",
+"AlchInvisibillity"
+]
+},
+"Skyrim.esm:CreepClusterRoot": {
+"name": "Creep Cluster",
+"effects": [
+"AlchRestoreMagicka",
+"AlchDamageStaminaRate",
+"AlchFortifyCarryWeight",
+"AlchWeaknessMagic"
+]
+},
+"Skyrim.esm:CritterBeeIngredient": {
+"name": "Bee",
+"effects": [
+"AlchRestoreStamina",
+"AlchDamageStaminaRavage",
+"AlchFortifyStaminaRate",
+"AlchWeaknessShock"
+]
+},
+"Skyrim.esm:CritterPondFish01Ingredient": {
+"name": "Silverside Perch",
+"effects": [
+"AlchRestoreStamina",
+"AlchDamageStaminaRate",
+"AlchDamageHealthRavage",
+"AlchResistFrost"
+]
+},
+"Skyrim.esm:CritterPondFish02Ingredient": {
+"name": "Abecean Longfin",
+"effects": [
+"AlchWeaknessFrost",
+"AlchFortifySneak",
+"AlchWeaknessPoison",
+"AlchFortifyRestoration"
+]
+},
+"Skyrim.esm:CritterPondFish03Ingredient": {
+"name": "River Betty",
+"effects": [
+"AlchDamageHealth",
+"AlchFortifyAlteration",
+"AlchDamageSpeed",
+"AlchFortifyCarryWeight"
+]
+},
+"Skyrim.esm:CritterPondFish04Ingredient": {
+"name": "Cyrodilic Spadetail",
+"effects": [
+"AlchDamageStamina",
+"AlchFortifyRestoration",
+"AlchInfluenceConfDown",
+"AlchDamageHealthRavage"
+]
+},
+"Skyrim.esm:CritterPondFish05Ingredient": {
+"name": "Histcarp",
+"effects": [
+"AlchRestoreStamina",
+"AlchFortifyMagicka",
+"AlchDamageStaminaRate",
+"AlchWaterbreathing"
+]
+},
+"Skyrim.esm:DBJarrinRoot": {
+"name": "Jarrin Root",
+"effects": [
+"AlchDamageHealth",
+"AlchDamageMagicka",
+"AlchDamageStamina",
+"AlchDamageMagickaRate"
+]
+},
+"Skyrim.esm:DaedraHeart": {
+"name": "Daedra Heart",
+"effects": [
+"AlchRestoreHealth",
+"AlchDamageStaminaRate",
+"AlchDamageMagicka",
+"AlchInfluenceConfDown"
+]
+},
+"Skyrim.esm:DragonflyBlue": {
+"name": "Blue Dartwing",
+"effects": [
+"AlchResistShock",
+"AlchFortifyPickpocket",
+"AlchRestoreHealth",
+"AlchInfluenceConfDown"
+]
+},
+"Skyrim.esm:DragonflyOrange": {
+"name": "Orange Dartwing",
+"effects": [
+"AlchRestoreStamina",
+"AlchDamageMagickaRavage",
+"AlchFortifyPickpocket",
+"AlchDamageHealthDuration"
+]
+},
+"Skyrim.esm:DragonsTongue": {
+"name": "Dragon's Tongue",
+"effects": [
+"AlchResistFire",
+"AlchFortifyBarter",
+"AlchFortifyIllusion",
+"AlchFortifyTwoHanded"
+]
+},
+"Skyrim.esm:DwarvenOil": {
+"name": "Dwarven Oil",
+"effects": [
+"AlchWeaknessMagic",
+"AlchFortifyIllusion",
+"AlchFortifyMagickaRate",
+"AlchRestoreMagicka"
+]
+},
+"Skyrim.esm:Ectoplasm": {
+"name": "Ectoplasm",
+"effects": [
+"AlchRestoreMagicka",
+"AlchFortifyDestruction",
+"AlchFortifyMagicka",
+"AlchDamageHealth"
+]
+},
+"Skyrim.esm:ElvesEar": {
+"name": "Elves Ear",
+"effects": [
+"AlchRestoreMagicka",
+"AlchFortifyMarksman",
+"AlchWeaknessFrost",
+"AlchResistFire"
+]
+},
+"Skyrim.esm:FalmerEar": {
+"name": "Falmer Ear",
+"effects": [
+"AlchDamageHealth",
+"AlchInfluenceAggUp",
+"AlchResistPoison",
+"AlchFortifyLockpicking"
+]
+},
+"Skyrim.esm:FavorThadgeirAshes": {
+"name": "Berit's Ashes",
+"effects": [
+"AlchDamageStamina",
+"AlchResistFire",
+"AlchFortifyConjuration",
+"AlchDamageStaminaRavage"
+]
+},
+"Skyrim.esm:FireSalts": {
+"name": "Fire Salts",
+"effects": [
+"AlchWeaknessFrost",
+"AlchResistFire",
+"AlchRestoreMagicka",
+"AlchFortifyMagickaRate"
+]
+},
+"Skyrim.esm:FireflyThorax": {
+"name": "Torchbug Thorax",
+"effects": [
+"AlchRestoreStamina",
+"AlchDamageMagickaDuration",
+"AlchWeaknessMagic",
+"AlchFortifyStamina"
+]
+},
+"Skyrim.esm:FrostMirriam": {
+"name": "Frost Mirriam",
+"effects": [
+"AlchResistFrost",
+"AlchFortifySneak",
+"AlchDamageMagickaRavage",
+"AlchDamageStaminaRate"
+]
+},
+"Skyrim.esm:FrostSalts": {
+"name": "Frost Salts",
+"effects": [
+"AlchWeaknessFire",
+"AlchResistFrost",
+"AlchRestoreMagicka",
+"AlchFortifyConjuration"
+]
+},
+"Skyrim.esm:Garlic": {
+"name": "Garlic",
+"effects": [
+"AlchResistPoison",
+"AlchFortifyStamina",
+"AlchFortifyMagickaRate",
+"AlchFortifyHealRate"
+]
+},
+"Skyrim.esm:GiantLichen": {
+"name": "Giant Lichen",
+"effects": [
+"AlchWeaknessShock",
+"AlchDamageHealthRavage",
+"AlchWeaknessPoison",
+"AlchRestoreMagicka"
+]
+},
+"Skyrim.esm:GiantToes": {
+"name": "Giant's Toe",
+"effects": [
+"AlchDamageStamina",
+"AlchFortifyHealth",
+"AlchFortifyCarryWeight",
+"AlchDamageStaminaRate"
+]
+},
+"Skyrim.esm:GlowingMushroom": {
+"name": "Glowing Mushroom",
+"effects": [
+"AlchResistShock",
+"AlchFortifyDestruction",
+"AlchFortifySmithing",
+"AlchFortifyHealth"
+]
+},
+"Skyrim.esm:HagravenClaw": {
+"name": "Hagraven Claw",
+"effects": [
+"AlchResistMagic",
+"AlchDamageMagickaDuration",
+"AlchFortifyEnchanting",
+"AlchFortifyBarter"
+]
+},
+"Skyrim.esm:HagravenFeathers": {
+"name": "Hagraven Feathers",
+"effects": [
+"AlchDamageMagicka",
+"AlchFortifyConjuration",
+"AlchInfluenceAggUp",
+"AlchWeaknessShock"
+]
+},
+"Skyrim.esm:HangingMoss": {
+"name": "Hanging Moss",
+"effects": [
+"AlchDamageMagicka",
+"AlchFortifyHealth",
+"AlchDamageMagickaRate",
+"AlchFortifyOneHanded"
+]
+},
+"Skyrim.esm:HawkBeak": {
+"name": "Hawk Beak",
+"effects": [
+"AlchRestoreStamina",
+"AlchResistFrost",
+"AlchFortifyCarryWeight",
+"AlchResistShock"
+]
+},
+"Skyrim.esm:HawkFeathers": {
+"name": "Hawk Feathers",
+"effects": [
+"AlchCureDisease",
+"AlchFortifyLightArmor",
+"AlchFortifyOneHanded",
+"AlchFortifySneak"
+]
+},
+"Skyrim.esm:HumanFlesh": {
+"name": "Human Flesh",
+"effects": [
+"AlchDamageHealth",
+"AlchParalysis",
+"AlchRestoreMagicka",
+"AlchFortifySneak"
+]
+},
+"Skyrim.esm:HumanHeart": {
+"name": "Human Heart",
+"effects": [
+"AlchDamageHealth",
+"AlchDamageMagicka",
+"AlchDamageMagickaRate",
+"AlchInfluenceAggUp"
+]
+},
+"Skyrim.esm:IceWraithTeeth": {
+"name": "Ice Wraith Teeth",
+"effects": [
+"AlchWeaknessFrost",
+"AlchFortifyHeavyArmor",
+"AlchInvisibillity",
+"AlchWeaknessFire"
+]
+},
+"Skyrim.esm:JazBay": {
+"name": "Jazbay Grapes",
+"effects": [
+"AlchWeaknessMagic",
+"AlchFortifyMagicka",
+"AlchFortifyMagickaRate",
+"AlchDamageHealthRavage"
+]
+},
+"Skyrim.esm:JuniperBerries": {
+"name": "Juniper Berries",
+"effects": [
+"AlchWeaknessFire",
+"AlchFortifyMarksman",
+"AlchFortifyHealRate",
+"AlchDamageStaminaRate"
+]
+},
+"Skyrim.esm:Lavender": {
+"name": "Lavender",
+"effects": [
+"AlchResistMagic",
+"AlchFortifyStamina",
+"AlchDamageMagickaRavage",
+"AlchFortifyConjuration"
+]
+},
+"Skyrim.esm:MS03BlackBriarSecretIngredient": {
+"name": "Salt Pile",
+"effects": [
+"AlchWeaknessMagic",
+"AlchFortifyRestoration",
+"AlchDamageSpeed",
+"AlchFortifyMagickaRate"
+]
+},
+"Skyrim.esm:MoonSugar": {
+"name": "Moon Sugar",
+"effects": [
+"AlchWeaknessFire",
+"AlchResistFrost",
+"AlchRestoreMagicka",
+"AlchFortifyMagickaRate"
+]
+},
+"Skyrim.esm:MoraTapinellaBits": {
+"name": "Mora Tapinella",
+"effects": [
+"AlchRestoreMagicka",
+"AlchDamageHealthDuration",
+"AlchFortifyStaminaRate",
+"AlchFortifyIllusion"
+]
+},
+"Skyrim.esm:MothWingBlue": {
+"name": "Blue Butterfly Wing",
+"effects": [
+"AlchDamageStamina",
+"AlchFortifyConjuration",
+"AlchDamageMagickaRate",
+"AlchFortifyEnchanting"
+]
+},
+"Skyrim.esm:MothWingLuna": {
+"name": "Luna Moth Wing",
+"effects": [
+"AlchDamageMagicka",
+"AlchFortifyLightArmor",
+"AlchFortifyHealRate",
+"AlchInvisibillity"
+]
+},
+"Skyrim.esm:MothWingMonarch": {
+"name": "Butterfly Wing",
+"effects": [
+"AlchRestoreHealth",
+"AlchFortifyBarter",
+"AlchDamageStaminaDuration",
+"AlchDamageMagicka"
+]
+},
+"Skyrim.esm:MountainFlower01Blue": {
+"name": "Blue Mountain Flower",
+"effects": [
+"AlchRestoreHealth",
+"AlchFortifyConjuration",
+"AlchFortifyHealth",
+"AlchDamageMagickaRate"
+]
+},
+"Skyrim.esm:MountainFlower01Purple": {
+"name": "Purple Mountain Flower",
+"effects": [
+"AlchRestoreStamina",
+"AlchFortifySneak",
+"AlchDamageMagickaDuration",
+"AlchResistFrost"
+]
+},
+"Skyrim.esm:MountainFlower01Red": {
+"name": "Red Mountain Flower",
+"effects": [
+"AlchRestoreMagicka",
+"AlchDamageMagickaRavage",
+"AlchFortifyMagicka",
+"AlchDamageHealth"
+]
+},
+"Skyrim.esm:MudcrabChitin": {
+"name": "Mudcrab Chitin",
+"effects": [
+"AlchRestoreStamina",
+"AlchCureDisease",
+"AlchResistPoison",
+"AlchResistFire"
+]
+},
+"Skyrim.esm:Mushroom01": {
+"name": "Fly Amanita",
+"effects": [
+"AlchResistFire",
+"AlchFortifyTwoHanded",
+"AlchInfluenceAggUp",
+"AlchFortifyStaminaRate"
+]
+},
+"Skyrim.esm:Mushroom02": {
+"name": "Bleeding Crown",
+"effects": [
+"AlchWeaknessFire",
+"AlchFortifyBlock",
+"AlchWeaknessPoison",
+"AlchResistMagic"
+]
+},
+"Skyrim.esm:Mushroom03": {
+"name": "White Cap",
+"effects": [
+"AlchWeaknessFrost",
+"AlchFortifyHeavyArmor",
+"AlchRestoreMagicka",
+"AlchDamageMagickaRavage"
+]
+},
+"Skyrim.esm:Mushroom04": {
+"name": "Imp Stool",
+"effects": [
+"AlchDamageHealth",
+"AlchDamageHealthDuration",
+"AlchParalysis",
+"AlchRestoreHealth"
+]
+},
+"Skyrim.esm:Mushroom05": {
+"name": "Namira's Rot",
+"effects": [
+"AlchDamageMagicka",
+"AlchFortifyLockpicking",
+"AlchInfluenceConfDown",
+"AlchFortifyHealRate"
+]
+},
+"Skyrim.esm:Mushroom06": {
+"name": "Blisterwort",
+"effects": [
+"AlchDamageStamina",
+"AlchInfluenceAggUp",
+"AlchRestoreHealth",
+"AlchFortifySmithing"
+]
+},
+"Skyrim.esm:Nightshade": {
+"name": "Nightshade",
+"effects": [
+"AlchDamageHealth",
+"AlchDamageMagickaRate",
+"AlchDamageStaminaDuration",
+"AlchFortifyDestruction"
+]
+},
+"Skyrim.esm:Nirnroot": {
+"name": "Nirnroot",
+"effects": [
+"AlchDamageHealth",
+"AlchDamageStamina",
+"AlchInvisibillity",
+"AlchResistMagic"
+]
+},
+"Skyrim.esm:NirnrootRed": {
+"name": "Crimson Nirnroot",
+"effects": [
+"AlchDamageHealth",
+"AlchDamageStamina",
+"AlchInvisibillity",
+"AlchResistMagic"
+]
+},
+"Skyrim.esm:NordicBarnacles": {
+"name": "Nordic Barnacle",
+"effects": [
+"AlchDamageMagicka",
+"AlchWaterbreathing",
+"AlchFortifyHealRate",
+"AlchFortifyPickpocket"
+]
+},
+"Skyrim.esm:Pearl": {
+"name": "Pearl",
+"effects": [
+"AlchRestoreStamina",
+"AlchFortifyBlock",
+"AlchRestoreMagicka",
+"AlchResistShock"
+]
+},
+"Skyrim.esm:PearlSmall": {
+"name": "Small Pearl",
+"effects": [
+"AlchRestoreStamina",
+"AlchFortifyOneHanded",
+"AlchFortifyRestoration",
+"AlchResistFrost"
+]
+},
+"Skyrim.esm:PowderedMammothTusk": {
+"name": "Powdered Mammoth Tusk",
+"effects": [
+"AlchRestoreStamina",
+"AlchFortifySneak",
+"AlchWeaknessFire",
+"AlchInfluenceConfDown"
+]
+},
+"Skyrim.esm:SabrecatEyeball": {
+"name": "Eye of Sabre Cat",
+"effects": [
+"AlchRestoreStamina",
+"AlchDamageHealthRavage",
+"AlchDamageMagicka",
+"AlchRestoreHealth"
+]
+},
+"Skyrim.esm:SabrecatTooth": {
+"name": "Sabre Cat Tooth",
+"effects": [
+"AlchRestoreStamina",
+"AlchFortifyHeavyArmor",
+"AlchFortifySmithing",
+"AlchWeaknessPoison"
+]
+},
+"Skyrim.esm:SaltPile": {
+"name": "Salt Pile",
+"effects": [
+"AlchWeaknessMagic",
+"AlchFortifyRestoration",
+"AlchDamageSpeed",
+"AlchFortifyMagickaRate"
+]
+},
+"Skyrim.esm:ScalyPholiotaBits": {
+"name": "Scaly Pholiota",
+"effects": [
+"AlchWeaknessMagic",
+"AlchFortifyIllusion",
+"AlchFortifyStaminaRate",
+"AlchFortifyCarryWeight"
+]
+},
+"Skyrim.esm:SkeeverTail": {
+"name": "Skeever Tail",
+"effects": [
+"AlchDamageStaminaRate",
+"AlchDamageHealthRavage",
+"AlchDamageHealth",
+"AlchFortifyLightArmor"
+]
+},
+"Skyrim.esm:SlaughterfishEgg01": {
+"name": "Slaughterfish Egg",
+"effects": [
+"AlchResistPoison",
+"AlchFortifyPickpocket",
+"AlchDamageHealthDuration",
+"AlchFortifyStamina"
+]
+},
+"Skyrim.esm:SlaughterfishScales": {
+"name": "Slaughterfish Scales",
+"effects": [
+"AlchResistFrost",
+"AlchDamageHealthDuration",
+"AlchFortifyHeavyArmor",
+"AlchFortifyBlock"
+]
+},
+"Skyrim.esm:Snowberry": {
+"name": "Snowberries",
+"effects": [
+"AlchResistFire",
+"AlchFortifyEnchanting",
+"AlchResistFrost",
+"AlchResistShock"
+]
+},
+"Skyrim.esm:SpiderEgg": {
+"name": "Spider Egg",
+"effects": [
+"AlchDamageStamina",
+"AlchDamageMagickaRate",
+"AlchFortifyLockpicking",
+"AlchFortifyMarksman"
+]
+},
+"Skyrim.esm:SpikyGrass01": {
+"name": "Grass Pod",
+"effects": [
+"AlchResistPoison",
+"AlchDamageMagickaRavage",
+"AlchFortifyAlteration",
+"AlchRestoreMagicka"
+]
+},
+"Skyrim.esm:SprigganSap": {
+"name": "Spriggan Sap",
+"effects": [
+"AlchDamageMagickaRate",
+"AlchFortifyEnchanting",
+"AlchFortifySmithing",
+"AlchFortifyAlteration"
+]
+},
+"Skyrim.esm:SwampFungalPod01": {
+"name": "Swamp Fungal Pod",
+"effects": [
+"AlchResistShock",
+"AlchDamageMagickaDuration",
+"AlchParalysis",
+"AlchRestoreHealth"
+]
+},
+"Skyrim.esm:Taproot": {
+"name": "Taproot",
+"effects": [
+"AlchWeaknessMagic",
+"AlchFortifyIllusion",
+"AlchFortifyMagickaRate",
+"AlchRestoreMagicka"
+]
+},
+"Skyrim.esm:Thistle01": {
+"name": "Thistle Branch",
+"effects": [
+"AlchResistFrost",
+"AlchDamageStaminaRavage",
+"AlchResistPoison",
+"AlchFortifyHeavyArmor"
+]
+},
+"Skyrim.esm:TrollFat": {
+"name": "Troll Fat",
+"effects": [
+"AlchResistPoison",
+"AlchFortifyTwoHanded",
+"AlchInfluenceAggUp",
+"AlchDamageHealth"
+]
+},
+"Skyrim.esm:TundraCotton": {
+"name": "Tundra Cotton",
+"effects": [
+"AlchResistMagic",
+"AlchFortifyMagicka",
+"AlchFortifyBlock",
+"AlchFortifyBarter"
+]
+},
+"Skyrim.esm:VoidSalts": {
+"name": "Void Salts",
+"effects": [
+"AlchWeaknessShock",
+"AlchResistMagic",
+"AlchDamageHealth",
+"AlchFortifyMagicka"
+]
+},
+"Skyrim.esm:Wheat": {
+"name": "Wheat",
+"effects": [
+"AlchRestoreHealth",
+"AlchFortifyHealth",
+"AlchDamageStaminaRate",
+"AlchDamageMagickaDuration"
+]
+},
+"Skyrim.esm:WispWrappings": {
+"name": "Wisp Wrappings",
+"effects": [
+"AlchRestoreStamina",
+"AlchFortifyDestruction",
+"AlchFortifyCarryWeight",
+"AlchResistMagic"
+]
+},
+"Skyrim.esm:deathBell": {
+"name": "Deathbell",
+"effects": [
+"AlchDamageHealth",
+"AlchDamageStaminaRavage",
+"AlchDamageSpeed",
+"AlchWeaknessPoison"
+]
+},
+"Skyrim.esm:glowDust": {
+"name": "Glow Dust",
+"effects": [
+"AlchDamageMagicka",
+"AlchDamageMagickaRate",
+"AlchFortifyDestruction",
+"AlchResistShock"
+]
+},
+"Skyrim.esm:vampireDust": {
+"name": "Vampire Dust",
+"effects": [
+"AlchInvisibillity",
+"AlchRestoreMagicka",
+"AlchFortifyHealRate",
+"AlchCureDisease"
+]
+},
+"ccBGSSSE001-Fish.esm:ccBGSSSE001_AngelfishIng": {
+"name": "Angelfish",
+"effects": [
+"AlchFortifyHealRate",
+"AlchResistFire",
+"AlchFortifyMarksman",
+"AlchWaterbreathing"
+]
+},
+"ccBGSSSE001-Fish.esm:ccBGSSSE001_AnglerLarvaeIng": {
+"name": "Angler Larvae",
+"effects": [
+"AlchDamageHealthDuration",
+"AlchFortifyStaminaRate",
+"AlchWaterbreathing",
+"AlchFortifyTwoHanded"
+]
+},
+"ccBGSSSE001-Fish.esm:ccBGSSSE001_GlassfishIng": {
+"name": "Glassfish",
+"effects": [
+"AlchRestoreMagicka",
+"AlchInvisibillity",
+"AlchFortifyIllusion",
+"AlchFortifyPersuasion"
+]
+},
+"ccBGSSSE001-Fish.esm:ccBGSSSE001_GoldfishIng": {
+"name": "Goldfish",
+"effects": [
+"AlchRestoreStamina",
+"AlchFortifyHeavyArmor",
+"AlchWaterbreathing",
+"AlchResistFrost"
+]
+},
+"ccBGSSSE001-Fish.esm:ccBGSSSE001_JuvenileMudcrabIng": {
+"name": "Juvenile Mudcrab",
+"effects": [
+"AlchFortifyStaminaRate",
+"AlchFortifyCarryWeight",
+"AlchCureDisease",
+"AlchFortifyTwoHanded"
+]
+},
+"ccBGSSSE001-Fish.esm:ccBGSSSE001_LyretailAnthiasIng": {
+"name": "Lyretail Anthias",
+"effects": [
+"AlchRestoreMagicka",
+"AlchFortifyAlteration",
+"AlchFortifyConjuration",
+"AlchFortifyCarryWeight"
+]
+},
+"ccBGSSSE001-Fish.esm:ccBGSSSE001_PearlfishIng": {
+"name": "Pearlfish",
+"effects": [
+"AlchRestoreStamina",
+"AlchResistFrost",
+"AlchFortifySmithing",
+"AlchFortifyOneHanded"
+]
+},
+"ccBGSSSE001-Fish.esm:ccBGSSSE001_PinnateSpadefishIng": {
+"name": "Spadefish",
+"effects": [
+"AlchRestoreHealth",
+"AlchFortifyLockpicking",
+"AlchFortifyPickpocket",
+"AlchCureDisease"
+]
+},
+"ccBGSSSE001-Fish.esm:ccBGSSSE001_PygmySunfishIng": {
+"name": "Pygmy Sunfish",
+"effects": [
+"AlchRestoreStamina",
+"AlchDamageMagickaDuration",
+"AlchDamageMagickaRate",
+"AlchFortifyRestoration"
+]
+},
+"ccBGSSSE037-Curios.esl:ccBGSSSE037_AlocasiaFruit": {
+"name": "Alocasia Fruit",
+"effects": [
+"AlchFortifyStaminaRate",
+"ccBGSSSE037_LightFFSelf",
+"AlchDamageMagickaRavage",
+"AlchFortifyHealRate"
+]
+},
+"ccBGSSSE037-Curios.esl:ccBGSSSE037_Ambrosia": {
+"name": "Ambrosia",
+"effects": [
+"AlchRestoreHealth",
+"AlchFortifyHealRate",
+"AlchFortifyHealth",
+"AlchCurePoison"
+]
+},
+"ccBGSSSE037-Curios.esl:ccBGSSSE037_AsterBloomCore": {
+"name": "Aster Bloom Core",
+"effects": [
+"AlchResistMagic",
+"AlchFortifyLightArmor",
+"AlchFortifyBlock",
+"AlchParalysis"
+]
+},
+"ccBGSSSE037-Curios.esl:ccBGSSSE037_BittergreenPetals": {
+"name": "Bittergreen Petals",
+"effects": [
+"AlchDamageStaminaDuration",
+"AlchInvisibillity",
+"AlchCurePoison",
+"AlchDamageMagicka"
+]
+},
+"ccBGSSSE037-Curios.esl:ccBGSSSE037_BlisterPodCap": {
+"name": "Blister Pod Cap",
+"effects": [
+"AlchRestoreMagicka",
+"AlchFortifyMagicka",
+"ccBGSSSE037_NightEyeEffect",
+"AlchInvisibillity"
+]
+},
+"ccBGSSSE037-Curios.esl:ccBGSSSE037_BogBeacon": {
+"name": "Bog Beacon",
+"effects": [
+"AlchRestoreMagicka",
+"AlchFortifyHeavyArmor",
+"AlchInfluenceConfDown",
+"AlchDamageStamina"
+]
+},
+"ccBGSSSE037-Curios.esl:ccBGSSSE037_BunglersBane": {
+"name": "Bungler's Bane",
+"effects": [
+"AlchDamageSpeed",
+"AlchDamageStaminaRavage",
+"AlchDamageStaminaRate",
+"AlchResistMagic"
+]
+},
+"ccBGSSSE037-Curios.esl:ccBGSSSE037_Chokeberry": {
+"name": "Chokeberry",
+"effects": [
+"AlchDamageHealth",
+"AlchDamageHealthRavage",
+"AlchDamageHealthDuration",
+"AlchWeaknessPoison"
+]
+},
+"ccBGSSSE037-Curios.esl:ccBGSSSE037_Chokeweed": {
+"name": "Chokeweed",
+"effects": [
+"AlchWeaknessFrost",
+"AlchRestoreStamina",
+"AlchCureDisease",
+"AlchDamageMagicka"
+]
+},
+"ccBGSSSE037-Curios.esl:ccBGSSSE037_CodaFlower": {
+"name": "Coda Flower",
+"effects": [
+"AlchDamageHealth",
+"AlchDamageStaminaDuration",
+"AlchDamageMagickaRavage",
+"AlchFortifyCarryWeight"
+]
+},
+"ccBGSSSE037-Curios.esl:ccBGSSSE037_Comberry": {
+"name": "Comberry",
+"effects": [
+"AlchDamageStamina",
+"ccBGSSSE037_RaceBretonAbsorbSpellChance",
+"AlchRestoreMagicka",
+"AlchFortifyDestruction"
+]
+},
+"ccBGSSSE037-Curios.esl:ccBGSSSE037_CongealedPutrescence": {
+"name": "Congealed Putrescence",
+"effects": [
+"AlchDamageHealthRavage",
+"AlchRestoreMagicka",
+"AlchWeaknessFire",
+"AlchFortifyConjuration"
+]
+},
+"ccBGSSSE037-Curios.esl:ccBGSSSE037_CorkbulbRoot": {
+"name": "Corkbulb Root",
+"effects": [
+"AlchParalysis",
+"AlchRestoreHealth",
+"AlchResistShock",
+"AlchFortifyMarksman"
+]
+},
+"ccBGSSSE037-Curios.esl:ccBGSSSE037_DaedraSilk": {
+"name": "Daedra Silk",
+"effects": [
+"AlchDamageStaminaDuration",
+"AlchParalysis",
+"ccBGSSSE037_NightEyeEffect",
+"AlchInvisibillity"
+]
+},
+"ccBGSSSE037-Curios.esl:ccBGSSSE037_DaedraVenin": {
+"name": "Daedra Venin",
+"effects": [
+"AlchDamageHealthRavage",
+"AlchParalysis",
+"AlchFortifyDestruction",
+"ccBGSSSE037_RaceBretonAbsorbSpellChance"
+]
+},
+"ccBGSSSE037-Curios.esl:ccBGSSSE037_DaedrothTeeth": {
+"name": "Daedroth Teeth",
+"effects": [
+"AlchResistFrost",
+"ccBGSSSE037_LightFFSelf",
+"AlchDamageMagickaRate",
+"AlchFortifyStaminaRate"
+]
+},
+"ccBGSSSE037-Curios.esl:ccBGSSSE037_DreughWax": {
+"name": "Dreugh Wax",
+"effects": [
+"AlchWeaknessMagic",
+"AlchInfluenceAggUp",
+"AlchFortifyEnchanting",
+"AlchFortifySmithing"
+]
+},
+"ccBGSSSE037-Curios.esl:ccBGSSSE037_ElytraIchor": {
+"name": "Elytra Ichor",
+"effects": [
+"AlchRestoreMagicka",
+"AlchInvisibillity",
+"AlchDamageSpeed",
+"AlchInfluenceConfDown"
+]
+},
+"ccBGSSSE037-Curios.esl:ccBGSSSE037_FirePetal": {
+"name": "Fire Petal",
+"effects": [
+"AlchDamageHealth",
+"AlchResistFire",
+"ccBGSSSE037_RaceBretonAbsorbSpellChance",
+"AlchParalysis"
+]
+},
+"ccBGSSSE037-Curios.esl:ccBGSSSE037_FlameStalk": {
+"name": "Flame Stalk",
+"effects": [
+"AlchRestoreHealth",
+"AlchResistFrost",
+"AlchWeaknessFire",
+"AlchInvisibillity"
+]
+},
+"ccBGSSSE037-Curios.esl:ccBGSSSE037_FungusStalk": {
+"name": "Fungus Stalk",
+"effects": [
+"AlchRestoreMagicka",
+"AlchFortifyHealth",
+"AlchFortifyStamina",
+"AlchWaterbreathing"
+]
+},
+"ccBGSSSE037-Curios.esl:ccBGSSSE037_GnarlBark": {
+"name": "Gnarl Bark",
+"effects": [
+"AlchDamageHealth",
+"AlchFortifyHealRate",
+"AlchFortifyHeavyArmor",
+"AlchResistFire"
+]
+},
+"ccBGSSSE037-Curios.esl:ccBGSSSE037_GoldKanet": {
+"name": "Gold Kanet",
+"effects": [
+"AlchParalysis",
+"AlchDamageHealthRavage",
+"AlchWeaknessFrost",
+"AlchFortifySmithing"
+]
+},
+"ccBGSSSE037-Curios.esl:ccBGSSSE037_HackleLoLeaf": {
+"name": "Hackle-Lo Leaf",
+"effects": [
+"AlchRestoreStamina",
+"AlchParalysis",
+"AlchWaterbreathing",
+"AlchFortifyRestoration"
+]
+},
+"ccBGSSSE037-Curios.esl:ccBGSSSE037_HeartofOrderIngredient": {
+"name": "Heart of Order",
+"effects": [
+"AlchRestoreHealth",
+"AlchFortifyHealth",
+"AlchFortifyOneHanded",
+"AlchFortifyTwoHanded"
+]
+},
+"ccBGSSSE037-Curios.esl:ccBGSSSE037_HungerTongue": {
+"name": "Hunger Tongue",
+"effects": [
+"AlchWeaknessFire",
+"AlchCureDisease",
+"AlchCurePoison",
+"AlchFortifyMagicka"
+]
+},
+"ccBGSSSE037-Curios.esl:ccBGSSSE037_HydnumAzureGiantSpore": {
+"name": "Hydnum Azure Giant Spore",
+"effects": [
+"AlchResistFrost",
+"AlchFortifyHealth",
+"AlchFortifyHealRate",
+"ccBGSSSE037_LightFFSelf"
+]
+},
+"ccBGSSSE037-Curios.esl:ccBGSSSE037_HyphaFacia": {
+"name": "Hypha Facia",
+"effects": [
+"AlchWeaknessPoison",
+"AlchInfluenceAggUp",
+"AlchDamageStaminaRavage",
+"AlchResistMagic"
+]
+},
+"ccBGSSSE037-Curios.esl:ccBGSSSE037_ImpGall": {
+"name": "Imp Gall",
+"effects": [
+"AlchDamageHealth",
+"AlchWeaknessFire",
+"AlchFortifyBarter",
+"AlchCurePoison"
+]
+},
+"ccBGSSSE037-Curios.esl:ccBGSSSE037_KagoutiHide": {
+"name": "Kagouti Hide",
+"effects": [
+"AlchDamageStaminaDuration",
+"ccBGSSSE037_NightEyeEffect",
+"AlchFortifyCarryWeight",
+"AlchResistShock"
+]
+},
+"ccBGSSSE037-Curios.esl:ccBGSSSE037_KreshFiber": {
+"name": "Kresh Fiber",
+"effects": [
+"AlchWeaknessMagic",
+"AlchDamageSpeed",
+"AlchFortifySneak",
+"AlchFortifyPickpocket"
+]
+},
+"ccBGSSSE037-Curios.esl:ccBGSSSE037_Lichor": {
+"name": "Lichor",
+"effects": [
+"AlchRestoreMagicka",
+"AlchFortifyMagickaRate",
+"AlchFortifyMagicka",
+"ccBGSSSE037_RaceBretonAbsorbSpellChance"
+]
+},
+"ccBGSSSE037-Curios.esl:ccBGSSSE037_LuminousRussula": {
+"name": "Luminous Russula",
+"effects": [
+"AlchDamageStaminaDuration",
+"AlchDamageHealthDuration",
+"AlchWaterbreathing",
+"AlchInfluenceConfDown"
+]
+},
+"ccBGSSSE037-Curios.esl:ccBGSSSE037_Marshmerrow": {
+"name": "Marshmerrow",
+"effects": [
+"AlchRestoreHealth",
+"AlchFortifyCarryWeight",
+"AlchWeaknessMagic",
+"AlchDamageStamina"
+]
+},
+"ccBGSSSE037-Curios.esl:ccBGSSSE037_MinotaurHorn": {
+"name": "Minotaur Horn",
+"effects": [
+"AlchResistPoison",
+"AlchDamageMagickaRate",
+"AlchFortifyHealRate",
+"AlchFortifyMagickaRate"
+]
+},
+"ccBGSSSE037-Curios.esl:ccBGSSSE037_OgresTeeth": {
+"name": "Ogre's Teeth",
+"effects": [
+"AlchWeaknessShock",
+"AlchResistPoison",
+"AlchDamageMagickaDuration",
+"AlchFortifyHealRate"
+]
+},
+"ccBGSSSE037-Curios.esl:ccBGSSSE037_RedKelpGasBladder": {
+"name": "Red Kelp Gas Bladder",
+"effects": [
+"AlchFortifyStaminaRate",
+"AlchWaterbreathing",
+"AlchCureDisease",
+"AlchFortifyMagicka"
+]
+},
+"ccBGSSSE037-Curios.esl:ccBGSSSE037_Redwort": {
+"name": "Redwort Flower",
+"effects": [
+"AlchResistFrost",
+"AlchCurePoison",
+"AlchDamageHealth",
+"AlchInvisibillity"
+]
+},
+"ccBGSSSE037-Curios.esl:ccBGSSSE037_Roobrush": {
+"name": "Roobrush",
+"effects": [
+"AlchWeaknessMagic",
+"AlchFortifySneak",
+"AlchDamageHealthDuration",
+"AlchCurePoison"
+]
+},
+"ccBGSSSE037-Curios.esl:ccBGSSSE037_Saltrice": {
+"name": "Saltrice",
+"effects": [
+"AlchRestoreStamina",
+"AlchFortifyMagicka",
+"AlchDamageStaminaRate",
+"AlchRestoreHealth"
+]
+},
+"ccBGSSSE037-Curios.esl:ccBGSSSE037_ScalonFin": {
+"name": "Scalon Fin",
+"effects": [
+"AlchWaterbreathing",
+"AlchDamageHealth",
+"AlchDamageMagickaDuration",
+"AlchDamageMagickaRate"
+]
+},
+"ccBGSSSE037-Curios.esl:ccBGSSSE037_ScribJelly": {
+"name": "Scrib Jelly",
+"effects": [
+"AlchFortifyMagickaRate",
+"AlchCurePoison",
+"AlchCureDisease",
+"AlchFortifyStaminaRate"
+]
+},
+"ccBGSSSE037-Curios.esl:ccBGSSSE037_ScribJerky": {
+"name": "Scrib Jerky",
+"effects": [
+"AlchRestoreStamina",
+"AlchFortifyStamina",
+"AlchParalysis",
+"AlchWaterbreathing"
+]
+},
+"ccBGSSSE037-Curios.esl:ccBGSSSE037_SloadSoap": {
+"name": "Sload Soap",
+"effects": [
+"AlchResistFire",
+"AlchInfluenceConfDown",
+"AlchFortifyConjuration",
+"AlchFortifyAlteration"
+]
+},
+"ccBGSSSE037-Curios.esl:ccBGSSSE037_StoneflowerPetals": {
+"name": "Stoneflower Petals",
+"effects": [
+"AlchWeaknessShock",
+"AlchFortifyOneHanded",
+"AlchFortifyMagicka",
+"AlchFortifyEnchanting"
+]
+},
+"ccBGSSSE037-Curios.esl:ccBGSSSE037_VoidEssence": {
+"name": "Void Essence",
+"effects": [
+"AlchRestoreHealth",
+"AlchFortifyHealth",
+"AlchFortifyStamina",
+"AlchFortifyHealRate"
+]
+},
+"ccBGSSSE037-Curios.esl:ccBGSSSE037_WatchersEye": {
+"name": "Watcher's Eye",
+"effects": [
+"ccBGSSSE037_NightEyeEffect",
+"AlchFortifyMagicka",
+"AlchFortifyIllusion",
+"ccBGSSSE037_RaceBretonAbsorbSpellChance"
+]
+},
+"ccBGSSSE037-Curios.esl:ccBGSSSE037_WatchersEyeBlind": {
+"name": "Blind Watcher's Eye",
+"effects": [
+"ccBGSSSE037_LightFFSelf",
+"AlchFortifyMagicka",
+"AlchFortifyAlteration",
+"ccBGSSSE037_RaceBretonAbsorbSpellChance"
+]
+},
+"ccBGSSSE037-Curios.esl:ccBGSSSE037_WispStalkCaps": {
+"name": "Wisp Stalk Caps",
+"effects": [
+"AlchDamageHealth",
+"AlchWeaknessPoison",
+"AlchInfluenceAggUp",
+"AlchFortifyStaminaRate"
+]
+},
+"ccBGSSSE037-Curios.esl:ccBGSSSE037_WitheringMoon": {
+"name": "Withering Moon",
+"effects": [
+"AlchRestoreMagicka",
+"ccBGSSSE037_RaceBretonAbsorbSpellChance",
+"AlchFortifyLightArmor",
+"AlchCureDisease"
+]
+},
+"ccBGSSSE037-Curios.esl:ccBGSSSE037_WormsHeadCap": {
+"name": "Worm's Head Cap",
+"effects": [
+"AlchFortifyLockpicking",
+"ccBGSSSE037_NightEyeEffect",
+"AlchFortifyCarryWeight",
+"AlchDamageSpeed"
+]
+}
+}
+}

@@ -168,6 +168,8 @@ static class NewWorld
         fc.Kind = "base";
         var refsByCell = Refs(plugDir, fc);
         var actorsByCell = Ecology(plugDir, fc, ids, mod);
+        var crittersByCell = Critters(plugDir, fc);
+        var harvestByCell = Harvest(plugDir, fc, ids, mod);
         uint refId = IdRefsCounted;
         var given = new HashSet<uint>();
         var mk = man.Marker;
@@ -238,6 +240,29 @@ static class NewWorld
                         {
                             Base = new FormLinkNullable<INpcGetter>(nk),
                             Placement = new Placement { Position = pos, Rotation = new P3Float(0, 0, rz) },
+                        });
+                    }
+                if (crittersByCell.TryGetValue((cx, cy), out var cl))
+                    foreach (var (bk, pos, rz, fid) in cl)
+                    {
+                        if (fid < IdEcology || fid > IdEcologyEnd || !given.Add(fid))
+                            throw new InvalidDataException($"an ecology critter's form id {fid:X6} is given twice or lies outside {IdEcology:X6}..{IdEcologyEnd:X6}");
+                        c.Temporary.Add(new PlacedObject(K(fid), Rel)
+                        {
+                            Base = new FormLinkNullable<IPlaceableObjectGetter>(bk),
+                            Placement = new Placement { Position = pos, Rotation = new P3Float(0, 0, rz) },
+                        });
+                    }
+                if (harvestByCell.TryGetValue((cx, cy), out var hl))
+                    foreach (var (bk, pos, rz, sc, fid) in hl)
+                    {
+                        if (fid < IdEcology || fid > IdEcologyEnd || !given.Add(fid))
+                            throw new InvalidDataException($"an ecology harvestable's form id {fid:X6} is given twice or lies outside {IdEcology:X6}..{IdEcologyEnd:X6}");
+                        c.Temporary.Add(new PlacedObject(K(fid), Rel)
+                        {
+                            Base = new FormLinkNullable<IPlaceableObjectGetter>(bk),
+                            Placement = new Placement { Position = pos, Rotation = new P3Float(0, 0, rz) },
+                            Scale = sc == 1f ? null : sc,
                         });
                     }
                 if ((cx, cy) == mCell)
@@ -403,6 +428,105 @@ static class NewWorld
                 var cell = ((int)Math.Floor(pos.X / CELL), (int)Math.Floor(pos.Y / CELL));
                 if (!res.TryGetValue(cell, out var l)) res[cell] = l = new();
                 l.Add((actor[o.GetProperty("actor").GetString()!], pos, G("rz"), uint.Parse(o.GetProperty("fid").GetString()!, System.Globalization.NumberStyles.HexNumber)));
+            }
+        return res;
+    }
+
+    // The ecology stage's critters (insects, fish, swarms): <plugin dir>/ecology/critters/cy<+NNN>.jsonl, one REFR a line
+    // of the base a line names (a critter spawner of Skyrim.esm or a swarm of Black Marsh.esm: masters, linked as they
+    // are, with their own spawn script and hours).
+    static Dictionary<(int, int), List<(FormKey, P3Float, float, uint)>> Critters(string plugDir, ForeignCopy fc)
+    {
+        var res = new Dictionary<(int, int), List<(FormKey, P3Float, float, uint)>>();
+        var dir = Path.Combine(plugDir, "ecology", "critters");
+        if (!Directory.Exists(dir)) return res;
+        var bases = new Dictionary<string, FormKey>();
+        foreach (var f in Directory.EnumerateFiles(dir, "cy*.jsonl").Order())
+            foreach (var line in File.ReadAllLines(f))
+            {
+                if (line.Length == 0) continue;
+                var o = JsonDocument.Parse(line).RootElement;
+                float G(string k) => (float)o.GetProperty(k).GetDouble();
+                var src = o.GetProperty("base").GetString()!;
+                if (!bases.TryGetValue(src, out var bk))
+                {
+                    var sp = src.Split(':', 2);
+                    bases[src] = bk = fc.Get(sp[0], sp[1]);
+                    if (!fc.IsAllowed(bk.ModKey)) throw new InvalidDataException($"critter base {src} is not a record of a master");
+                }
+                var pos = new P3Float(G("x"), G("y"), G("z"));
+                var cell = ((int)Math.Floor(pos.X / CELL), (int)Math.Floor(pos.Y / CELL));
+                if (!res.TryGetValue(cell, out var l)) res[cell] = l = new();
+                l.Add((bk, pos, G("rz"), uint.Parse(o.GetProperty("fid").GetString()!, System.Globalization.NumberStyles.HexNumber)));
+            }
+        return res;
+    }
+
+    // The ecology stage's harvestables (tools/newworld/ecology/harvest.py): <plugin dir>/ecology/harvest/records.json names
+    // the new FLOR records (a copy of a mesh's FLOR under a new name, yielding an existing or a new INGR whose effects are
+    // taken from existing ingredients' effects), cy<+NNN>.jsonl one REFR a line of a record of a plugin we hold or of those.
+    static Dictionary<(int, int), List<(FormKey, P3Float, float, float, uint)>> Harvest(string plugDir, ForeignCopy fc, FormIds ids, SkyrimMod mod)
+    {
+        var res = new Dictionary<(int, int), List<(FormKey, P3Float, float, float, uint)>>();
+        var dir = Path.Combine(plugDir, "ecology", "harvest");
+        if (!Directory.Exists(dir)) return res;
+        var bases = new Dictionary<string, FormKey>();
+        FormKey Of(string r) { var q = r.Split(':', 2); return fc.Get(q[0], q[1]); }
+        var rj = Path.Combine(dir, "records.json");
+        if (File.Exists(rj))
+            foreach (var r in JsonDocument.Parse(File.ReadAllText(rj)).RootElement.GetProperty("records").EnumerateArray())
+            {
+                var edid = r.GetProperty("edid").GetString()!;
+                var ing = r.GetProperty("ingr");
+                var yields = Of(ing.GetProperty("from").GetString()!);
+                if (ing.TryGetProperty("edid", out var ie))
+                {
+                    var sp = ing.GetProperty("from").GetString()!.Split(':', 2);
+                    var srcI = mod.Ingredients[fc.Get(sp[0], sp[1], forceCopy: true)];
+                    var ni = (Ingredient)srcI.Duplicate(new FormKey(mod.ModKey, ids.Take("base", "harvest-ingr:" + edid)));
+                    ni.EditorID = ie.GetString();
+                    ni.Name = new TranslatedString(Language.English, ing.GetProperty("name").GetString()!);
+                    ni.Effects.Clear();
+                    foreach (var ef in ing.GetProperty("effects").EnumerateArray())
+                    {
+                        var ep = ef[0].GetString()!.Split(':', 2);
+                        var src = (IIngredientGetter)fc.Find(ep[0], ep[1]);
+                        ni.Effects.Add(src.Effects[ef[1].GetInt32()].DeepCopy());
+                    }
+                    mod.Ingredients.Add(ni);
+                    yields = ni.FormKey;
+                }
+                var fp = r.GetProperty("flor_from").GetString()!.Split(':', 2);
+                var fkey = new FormKey(mod.ModKey, ids.Take("base", "harvest:" + edid));
+                var fname = new TranslatedString(Language.English, r.GetProperty("flor_name").GetString()!);
+                var copied = fc.Get(fp[0], fp[1], forceCopy: true);
+                FormKey nfk;
+                if (fc.Find(fp[0], fp[1]) is ITreeGetter)
+                {
+                    var nt = (Tree)mod.Trees[copied].Duplicate(fkey);
+                    nt.EditorID = edid; nt.Name = fname; nt.Ingredient = new FormLinkNullable<IHarvestTargetGetter>(yields);
+                    mod.Trees.Add(nt); nfk = nt.FormKey;
+                }
+                else
+                {
+                    var nf = (Flora)mod.Florae[copied].Duplicate(fkey);
+                    nf.EditorID = edid; nf.Name = fname; nf.Ingredient = new FormLinkNullable<IHarvestTargetGetter>(yields);
+                    mod.Florae.Add(nf); nfk = nf.FormKey;
+                }
+                bases["new:" + edid] = nfk;
+            }
+        foreach (var f in Directory.EnumerateFiles(dir, "cy*.jsonl").Order())
+            foreach (var line in File.ReadAllLines(f))
+            {
+                if (line.Length == 0) continue;
+                var o = JsonDocument.Parse(line).RootElement;
+                float G(string k) => (float)o.GetProperty(k).GetDouble();
+                var src = o.GetProperty("base").GetString()!;
+                if (!bases.TryGetValue(src, out var bk)) bases[src] = bk = Of(src);
+                var pos = new P3Float(G("x"), G("y"), G("z"));
+                var cell = ((int)Math.Floor(pos.X / CELL), (int)Math.Floor(pos.Y / CELL));
+                if (!res.TryGetValue(cell, out var l)) res[cell] = l = new();
+                l.Add((bk, pos, G("rz"), G("scale"), uint.Parse(o.GetProperty("fid").GetString()!, System.Globalization.NumberStyles.HexNumber)));
             }
         return res;
     }

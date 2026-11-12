@@ -11,8 +11,8 @@ The recipe for what lives in the new world between its places, and how the rebui
 - `newworld/sources/ecology/bindings.json`: each kind bound to real NPC_ records of the plugins we hold, weakest
   first (`levels` gives their census levels, a relative order only), or dropped with its reason; each lore-backed
   hostile group of `npc_encounters.json` bound the same way. Never an invented record. Measured: 68 of 96 kinds
-  bound to 167 records, 28 dropped (effect-only swarms; critters that are activators, not actors, such as torch bugs;
-  kinds no mod models, such as dreugh and lamia); 38 of 39 people groups bound: the Naga, the tribal
+  bound to 167 records, 11 of the dropped also bound to critter spawners and swarms (below), 28 dropped as actors (kinds no mod models, such as
+  dreugh and lamia; bats, leeches, manta rays); 38 of 39 people groups bound: the Naga, the tribal
   Argonians and the undead to King of the Murkmire and Curse of Cipactli records, every bandit, raider, deserter,
   smuggler, pirate, salvager and slaver group to whole bandit-faction records of the Argonian, Dunmer, Imperial,
   Khajiit, Redguard, Orc, Breton and Bosmer of Skyrim, Dawnguard and Dragonborn (`tools/newworld/ecology/people.py`;
@@ -20,6 +20,9 @@ The recipe for what lives in the new world between its places, and how the rebui
   Chixathe Mesa: the held plugins' Dunmer dead are unique ghosts, none a generic actor.
 - `newworld/sources/ecology/skyrim_measures.json`: Skyrim's own numbers (decision 0034): creatures per 100 cells
   shore 77, forest 60, mountain 14, open 12, water 8; 38% hostile; mean group 1.56.
+  Its `critters` section: per critter spawner base Skyrim places (insects, pond fish, dragonflies, birds) the refs
+  per 100 cells of each class, where they stand against water and harvestable plants, and the hours its spawn
+  script runs; and how many times denser King of the Murkmire places spawners than Skyrim (`black_marsh.factor`).
 - `tools/newworld/ecology/census.py` lists every creature, race, LVLN and harvestable per plugin
   (out/newworld/ecology/census.json); bindings are checked against it.
 
@@ -66,6 +69,22 @@ A cell (never a margin cell, a held cell of a built place, or a teleport landing
    holds each group to 4 looks and 2 sets a tier, its mean value rising tier on tier, no Nord voice among its looks
    and no Nordic piece in its kit.
 
+6. Critters, the tiny life: Skyrim places insects, fish and birds as refs of critter spawner activators (ACTI with
+   the `critterspawn` script: up to a few critters inside a leash, within the hours of its script), not as actors.
+   A lore kind that is such a creature binds to one base (`bindings.json`, `critter_kinds`: `critter`, its `function`, its `time`; the kind stays dropped as an actor in `kinds`):
+   night kinds (torchbugs, moths, fire beetles) to a night-only insect spawner (20 to 23 h), day kinds to the bee,
+   dragonfly or shallow-fish spawner (hours as the base runs), kinds of no hours to the swarm record that exists
+   (Black Marsh's Flesh Flies, for gnat clouds, midges and flies; a fixed critter, so its kind's time is dropped).
+   A kind's `time` is honoured only by choosing the base whose hours fit; a row never takes a spawner of the other
+   time. Only bases of Skyrim.esm and Black Marsh.esm, linked as masters with their own script and hours, never
+   copied. A cell draws per function (`critter_functions`: insects, dragonflies, pond fish) a Poisson count at
+   Skyrim's spawners per cell of its class for that function's bases, times the King of the Murkmire factor, each
+   of one of the region's kinds of that function whose ground the cell holds (signature rows twice as likely) on that
+   ground: insects over their habitat or the water's surface, fish on water of their kind at the surface. No band
+   thins them; at most 8 a cell. Every region whose lore lists such a kind has its spawners.
+   They are written to `ecology/critters/cy<+NNN>.jsonl` (one REFR a line) and the world writer places each as a
+   REFR of its base, id in the ecology range.
+
 Every draw is seeded by the cell, so a rerun writes the same bytes. Each actor's id is in the `ecology` range of
 tools/newworld/idspace.py (0xF00000..0xFDFFFF), its identity's digest (cell, kind, ordinal), probed on a collision.
 The world writer (NewWorld.cs `Ecology`) copies each band actor's record whole into the world file (ForeignCopy:
@@ -98,21 +117,80 @@ weapon value rises, and no actor carries a player-level multiplier, template or 
 The stage's check (fails the stage): every actor on ground or water of its kind; none in a held, landing or margin
 cell; no cell over its band's cap; no hostile in D0; levels as the band's; ids in range and once; no two regions
 sharing more than half their kinds; creatures per class within 0.5 to 1.6 of Skyrim's measure times band density
-where 20 or more are expected. The readback (`verify.py`, part `ecology`) proves each actor is in the written file
-at its id, place and cell, and each band actor's level is fixed and its band's.
+where 20 or more are expected. For critters: every spawner on ground or water of its kind, on the base its kind
+binds, a night or day kind on a spawner of that time, outside held cells, ids once and in range, at most 8 a cell,
+no class over 1.6 times its rate, every region expected to hold critters holding some. The readback (`verify.py`, part `ecology`) proves each actor is in the written file
+at its id, place and cell, and each band actor's level is fixed and its band's; and each critter a REFR of its base
+at its id, place and cell.
 
 Measured on the small world (16 x 16 cells; arnesian-jungle, chixathe-mesa, valley-of-storms): 106 actors (D1 6,
 D2 44, D3 56), 68 band actors, Dunmer slavers among the people; hostile blows by band, mean D1 6.6, D2 20.4, D3 28.7,
-peak 11, 35, 91;  forest 28 against 32 expected, shore 37 against 40,
+peak 11, 35, 91; forest 28 against 32 expected, shore 37 against 40,
 open 10 against 13, mountain 10 against 7; largest overlap of two regions' kinds 0.08. The province, at the same
 rates over its cells, holds about 25 per 100 land cells at D2, twice that at D5.
 
 ## Harvestables
 
-The flora stage already places 31 King of the Murkmire FLOR bases with ingredients, 35,343 refs. Per 100 cells of
-each region (all its cells, water included): swamp and forest regions 104 to 377 (Murkwood 327, Nushara Bayou 355,
-Ultherus Swamp 377, Barsaebica 241), within Skyrim's forest 386 and shore 460; drier and island regions lower
-(Valley of Storms 50, Chixathe Mesa 66, Althii 61, Aphon and Skeith 13 to 14); the sea regions 4 to 18, against
-Skyrim's water 75. Each land region grows 12 to 22 harvestable kinds, more than its lore list of 5 to 7. No new
-harvestable is added: the lore lists name ingredients by lore name, and binding them to existing FLOR and INGR
-records region by region is the open step, with sea harvestables the first gap.
+Skyrim counts as harvestable every placed FLOR or TREE that yields an ingredient (17,307 refs). Per 100 cells of each
+habitat class it holds: shore 460, forest 386, mountain 79, water 75, open 12.5 (`skyrim_measures.json`). The flora stage
+places King of the Murkmire FLOR bases and ingredient-bearing trees with the plants of each region's habitats;
+`tools/newworld/ecology/harvest.py` (the second command of the `ecology` stage) binds each region's lore plants to records
+and brings every region to Skyrim's density for its classes. It writes `ecology/harvest/`, never `refs/`: the flora stage,
+the LOD plan and the navmesh are not touched.
+
+- `newworld/sources/ecology/harvestables.json`: the kinds (each a list of real FLOR, TREE or ACTI records of Skyrim and its
+  DLC, King of the Murkmire and the Cipactli jungle; never a Nordic name), the lore map (each lore ingredient of the regions'
+  tables is a kind, or a creature's drop with the reason), the class pools (Skyrim's own variety per class,
+  `skyrim_bases_by_class_top`: barnacles, fish-egg nests and clams in the water; fungi, moss and roots on shore and in
+  forest) and the new records. `harvest_bases.json` lists every ingredient-bearing FLOR and TREE of the plugins we hold and
+  the two Nirnroot activators (`harvest.py catalogue` rewrites it from the game files); the check holds every kind to it.
+- New records, where no record of ours had the plant: Marshweed, Flower Buds yielding Dried Flower Buds, Rootland Mushroom,
+  and a Sugar Cane plant yielding Skyrim's Moon Sugar. Each is a FLOR or TREE copied from a mesh we hold under a Black Marsh
+  name, yielding a new INGR (or Skyrim's) whose effects are existing ingredients' effects nearest the lore's
+  (ingredients-alchemy.md); the world writer makes them (`NewWorld.cs` `Harvest`). Of the lore's 53 harvestables 18 are
+  plants, fungi, eggs or shells and are bound; the other 35 are creature or daedra drops, taken from the creature, not placed.
+  Kelp yields no ingredient in Skyrim, so none is placed.
+- Placement: a region's target is Skyrim's rate for each of its cells' classes (classed as the creatures are); what the flora
+  stage placed counts toward it. Each bound lore plant gets at least 2 per 100 cells (never under 6), net of the flora
+  stage's, on the ground its lore row names, spread by that ground's area in each cell. The rest of the target is Skyrim's
+  variety for the cell's class, the region's lore plants twice as likely, in the cells short of their class's rate. Grounds:
+  the stage's masks (marsh, shore, canopy, bush, open, rock) and: a bank (dry within 6 m of water: Nirnroot), and a bed
+  0.5 to 10 m under fresh, salt or brackish water of its kind (clams, oysters, barnacles, pearl oysters, fish-egg nests; the
+  bed stands at the ground height). No two within 128 units; at most 60 a cell; never a margin, held or landing cell.
+- The stage's check: every ref on ground of its habitat, in its region and cell, its base a record of the catalogue or ours,
+  its id in the ecology range and given once; every region at or over Skyrim's class density; every bound lore plant of the
+  region present at its quota; every lore ingredient bound or a drop. The readback (`verify.py`, part `ecology`) proves each
+  ref stands in the written file at its id, place, cell and base.
+
+Per region over the province's cells (`harvest.py run`): the flora stage's refs per 100 cells, the refs this stage adds,
+the total per 100 cells, Skyrim's density for the region's classes, and its bound lore plants.
+
+| region | cells | flora per 100 | added | total per 100 | Skyrim's | lore plants |
+|---|---|---|---|---|---|---|
+| althii-archipelago | 481 | 98.1 | 719 | 247.6 | 228.8 | small-pearl, dried-flower-buds, marshweed |
+| aphon-isle | 143 | 21.0 | 234 | 184.6 | 164.1 | small-pearl |
+| arnesian-jungle | 889 | 252.3 | 276 | 283.4 | 279.8 | hanging-moss, somnalius-frond, fly-amanita |
+| aunike-ridge | 456 | 236.0 | 34 | 243.4 | 109.0 | giant-lichen, thistle-branch, birds-nest, white-cap, imp-stool, lavender |
+| banujha-basin | 912 | 190.5 | 989 | 298.9 | 285.6 | nirnroot, marshweed, swamp-fungal-pod |
+| barsaebica | 517 | 668.9 | 22 | 673.1 | 221.2 | swamp-fungal-pod, hanging-moss |
+| benthic-yobesh | 400 | 32.5 | 186 | 79.0 | 75.5 | small-pearl |
+| blackwood | 213 | 306.1 | 12 | 311.7 | 310.7 | - |
+| cape-percar | 567 | 148.7 | 256 | 193.8 | 188.1 | thistle-branch |
+| chixathe-mesa | 556 | 106.1 | 341 | 167.4 | 160.1 | giant-lichen, birds-nest, white-cap, imp-stool |
+| hatandros-bight | 377 | 139.5 | 362 | 235.5 | 224.9 | lavender, moon-sugar, thistle-branch |
+| kotherra-mangroves | 195 | 154.4 | 415 | 367.2 | 339.6 | marshweed |
+| lake-ulaish | 391 | 204.1 | 16 | 208.2 | 184.3 | nirnroot, marshweed |
+| murkwood | 1234 | 363.9 | 100 | 372.0 | 297.0 | rootland-mushroom, swamp-fungal-pod, hanging-moss, somnalius-frond |
+| nha-enasa | 505 | 328.5 | 33 | 335.0 | 202.9 | nirnroot, marshweed, dried-flower-buds |
+| nushara-bayou | 765 | 466.4 | 16 | 468.5 | 268.4 | marshweed |
+| okuwun-rahei | 1081 | 255.5 | 66 | 261.6 | 253.2 | dried-flower-buds, nirnroot, marshweed, thistle-branch |
+| padomaic-ocean | 588 | 115.1 | 12 | 117.2 | 78.1 | small-pearl |
+| sea-of-mists | 526 | 109.9 | 11 | 112.0 | 79.8 | small-pearl |
+| skeith-isle | 149 | 65.8 | 130 | 153.0 | 142.2 | small-pearl, giant-lichen |
+| topal-bay | 491 | 2.0 | 388 | 81.1 | 76.3 | small-pearl |
+| tulmek-washes | 1279 | 96.6 | 2528 | 294.2 | 269.5 | nirnroot, slaughterfish-egg, marshweed |
+| ultherus-swamp | 304 | 484.5 | 28 | 493.8 | 314.2 | dragons-tongue, swamp-fungal-pod, somnalius-frond, marshweed |
+| valley-of-storms | 666 | 142.5 | 56 | 150.9 | 135.6 | nirnroot, marshweed, dried-flower-buds, swamp-fungal-pod |
+
+Small world (arnesian-jungle, chixathe-mesa, valley-of-storms): 66 added, all three regions over Skyrim's density (243, 195
+and 220 per 100 cells against 166, 97 and 219), every lore plant present, check and readback green.

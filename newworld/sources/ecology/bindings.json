@@ -16,34 +16,12 @@
     13
    ]
   },
-  "mangrove-crab": {
-   "records": [
-    "Skyrim.esm:EncMudcrabMedium",
-    "ccBGSSSE001-Fish.esm:ccBGSSSE001_EncMudcrabMediumAggressive"
-   ],
-   "why": "nearest: medium mudcrabs; no mangrove crab model",
-   "levels": [
-    1,
-    9
-   ]
-  },
   "burglar-crab": {
    "records": [
     "ccBGSSSE001-Fish.esm:ccBGSSSE001_EncMudcrabLargeFlamingPot"
    ],
-   "why": "nearest: large mudcrab carrying a pot shell (burglar crab carries objects)",
+   "why": "the Fishing mudcrab that carries a pot as its shell: the burglar crab's habit of carrying what it finds",
    "levels": [
-    13
-   ]
-  },
-  "hermit-crab": {
-   "records": [
-    "Skyrim.esm:EncMudcrabMedium",
-    "ccBGSSSE001-Fish.esm:ccBGSSSE001_EncMudcrabLargeFlamingPot"
-   ],
-   "why": "nearest: shell-carrying mudcrab",
-   "levels": [
-    1,
     13
    ]
   },
@@ -90,54 +68,6 @@
     1
    ]
   },
-  "tern": {
-   "records": [
-    "Tropical Skyrim -- Birds.esp:01BOSActorSeagull2",
-    "Tropical Skyrim -- Birds.esp:01BOSOystercatcher",
-    "Tropical Skyrim -- Birds.esp:01BOSPectoralSandpiper"
-   ],
-   "why": "nearest: shore birds; no tern model",
-   "levels": [
-    1,
-    1,
-    1
-   ]
-  },
-  "reed-heron": {
-   "records": [
-    "Tropical Skyrim -- Birds.esp:01BOSActorKingfisher",
-    "Tropical Skyrim -- Birds.esp:01BOSOystercatcher",
-    "Tropical Skyrim -- Birds.esp:01BOSPectoralSandpiper"
-   ],
-   "why": "nearest: water-edge birds; no heron model",
-   "levels": [
-    1,
-    1,
-    1
-   ]
-  },
-  "wading-ibis": {
-   "records": [
-    "Tropical Skyrim -- Birds.esp:01BOSOystercatcher",
-    "Tropical Skyrim -- Birds.esp:01BOSPectoralSandpiper"
-   ],
-   "why": "nearest: wading shore birds; no ibis model",
-   "levels": [
-    1,
-    1
-   ]
-  },
-  "parrot": {
-   "records": [
-    "Tropical Skyrim -- Birds.esp:01BOSActorKingfisher",
-    "Tropical Skyrim -- Birds.esp:01BOSActorStarlingSpotted"
-   ],
-   "why": "nearest: colourful small birds; no parrot model",
-   "levels": [
-    1,
-    1
-   ]
-  },
   "crow": {
    "records": [
     "Tropical Skyrim -- Birds.esp:01BOSActorRaven",
@@ -169,38 +99,11 @@
     1
    ]
   },
-  "barracuda": {
-   "records": [
-    "Skyrim.esm:EncSlaughterfish"
-   ],
-   "why": "nearest: slaughterfish",
-   "levels": [
-    1
-   ]
-  },
   "ripper-eel": {
    "records": [
     "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMRipperEel"
    ],
    "why": "HTBM ripper eel",
-   "levels": [
-    1000
-   ]
-  },
-  "moray": {
-   "records": [
-    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMRipperEel"
-   ],
-   "why": "nearest: HTBM ripper eel",
-   "levels": [
-    1000
-   ]
-  },
-  "sea-snake": {
-   "records": [
-    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSerpent"
-   ],
-   "why": "nearest: HTBM serpent",
    "levels": [
     1000
    ]
@@ -264,17 +167,6 @@
     3000
    ]
   },
-  "fire-drake": {
-   "records": [
-    "Black Marsh.esm:0wolfdrake",
-    "Black Marsh.esm:0SwampWyvern"
-   ],
-   "why": "nearest: Black Marsh wyvern and forest drake",
-   "levels": [
-    10,
-    30
-   ]
-  },
   "wamasu": {
    "records": [
     "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMWamasu",
@@ -290,13 +182,11 @@
   },
   "storm-wamasu": {
    "records": [
-    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMWamasuAlpha",
-    "King of the Murkmire.esp:Wamasu01"
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMWamasuAlpha"
    ],
-   "why": "nearest: alpha wamasu",
+   "why": "HTBM's alpha wamasu, the storm-charged great wamasu",
    "levels": [
-    6,
-    1200
+    6
    ]
   },
   "guar": {
@@ -312,17 +202,6 @@
     1,
     1000,
     1000,
-    1000,
-    1000
-   ]
-  },
-  "glowgill-guar": {
-   "records": [
-    "King of the Murkmire.esp:ALPAGwar03",
-    "King of the Murkmire.esp:ALPAGwarWild01"
-   ],
-   "why": "nearest: wild guar; no glowing variant",
-   "levels": [
     1000,
     1000
    ]
@@ -400,7 +279,7 @@
     "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSnake1",
     "Here There Be Monsters - Curse of Cipactli.esp:mihailsnakeVIPER"
    ],
-   "why": "nearest: small venomous snakes",
+   "why": "small venomous snakes: HTBM's snake and Mihail's viper",
    "levels": [
     1,
     1
@@ -587,24 +466,6 @@
     1900
    ]
   },
-  "giant-wasp": {
-   "records": [
-    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMMosquito"
-   ],
-   "why": "nearest: HTBM giant mosquito",
-   "levels": [
-    100
-   ]
-  },
-  "dragonfly": {
-   "records": [
-    "King of the Murkmire.esp:BW21_EncMeganeuraRavenous"
-   ],
-   "why": "nearest: giant dragonfly (meganeura)",
-   "levels": [
-    3
-   ]
-  },
   "kotu-gava": {
    "records": [
     "King of the Murkmire.esp:KotuGava01",
@@ -635,7 +496,7 @@
    "records": [
     "mihailnixcreatures.esp:mihailnixhound_NPC"
    ],
-   "why": "Mihail's nix-hound (Nexus 54358), the lore's marsh hound; replaces the Forest Drake wolf-form nearest fit",
+   "why": "Mihail's nix-hound (Nexus 54358), the lore's marsh hound",
    "levels": [
     1000
    ]
@@ -672,7 +533,7 @@
    "records": [
     "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMBehemothNaga"
    ],
-   "why": "nearest: HTBM naga behemoth",
+   "why": "HTBM's naga behemoth, the Naga's river beast",
    "levels": [
     100
    ]
@@ -690,31 +551,31 @@
   },
   "haj-mota": {
    "records": [
-    "King of the Murkmire.esp:ArgonianBrute01",
-    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMBehemoth"
+    "Black Marsh.esm:Turtle",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMTurtleFemale"
    ],
-   "why": "nearest: large Argonian brute and behemoth",
+   "why": "the lore's haj mota is a large armoured swamp turtle: Black Marsh's and HTBM's turtles",
    "levels": [
-    25,
-    100
+    38,
+    349
    ]
   },
   "elder-haj-mota": {
    "records": [
-    "King of the Murkmire.esp:ArgonianBehemoth01"
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMTurtleMale"
    ],
-   "why": "nearest: Argonian behemoth",
+   "why": "the largest armoured turtle, HTBM's male turtle: the lore's haj mota grown old",
    "levels": [
-    3000
+    500
    ]
   },
   "marsh-giant": {
    "records": [
-    "King of the Murkmire.esp:EncRiverTroll"
+    "Dawnguard.esm:DLC1EncSprigganEarthMother"
    ],
-   "why": "nearest: river troll (not the frost troll); templated",
+   "why": "the lore's marsh giant is a giant-sized spriggan cousin: Dawnguard's Spriggan Earth Mother",
    "levels": [
-    26
+    30
    ]
   },
   "treant-grove-guardian": {
@@ -773,7 +634,7 @@
    "records": [
     "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMGallimimus"
    ],
-   "why": "nearest: fast verminous stalker runner",
+   "why": "the lore's fellrunner is a fast feathered runner: HTBM's gallimimus",
    "levels": [
     2
    ]
@@ -795,7 +656,7 @@
    "records": [
     "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSwampJellyCalf"
    ],
-   "why": "nearest: swamp jelly",
+   "why": "HTBM's drifting jelly (calf), the same jelly in salt water",
    "levels": [
     25
    ]
@@ -820,10 +681,6 @@
    "nearest": null
   },
   "salt-midge": {
-   "dropped": "no actor; effect only",
-   "nearest": null
-  },
-  "fleshfly-larvae": {
    "dropped": "no actor; effect only",
    "nearest": null
   },
@@ -873,14 +730,6 @@
     1000
    ]
   },
-  "sea-lion": {
-   "dropped": "no sea mammal actor",
-   "nearest": null
-  },
-  "manta-ray": {
-   "dropped": "no ray actor",
-   "nearest": null
-  },
   "flying-fish": {
    "dropped": "no flying fish actor",
    "nearest": null
@@ -919,13 +768,16 @@
     1000
    ]
   },
-  "osheeja-gar": {
-   "dropped": "no matching actor",
-   "nearest": null
-  },
   "death-hopper": {
-   "dropped": "no matching actor",
-   "nearest": null
+   "records": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMFrogToad",
+    "King of the Murkmire.esp:FrogBrown01"
+   ],
+   "why": "the lore's death hoppers are large frogs: HTBM's toad and King of the Murkmire's brown frog",
+   "levels": [
+    1,
+    1
+   ]
   },
   "lamia": {
    "records": [
@@ -962,10 +814,6 @@
     1000
    ]
   },
-  "feather-serpent": {
-   "dropped": "no feathered serpent actor",
-   "nearest": null
-  },
   "giant-leech": {
    "records": [
     "BirbWalker21_Leeches.esp:BW21_EncLeechMedium0",
@@ -979,13 +827,211 @@
     10
    ]
   },
-  "hoarvor": {
-   "dropped": "no matching actor",
-   "nearest": null
-  },
   "kaj-thux": {
-   "dropped": "no matching actor",
-   "nearest": null
+   "records": [
+    "King of the Murkmire.esp:GiantSnakeBlue01",
+    "King of the Murkmire.esp:GiantSnakeBrown01",
+    "King of the Murkmire.esp:GiantSnakeGreen01"
+   ],
+   "why": "kaj-thux is the lore's own name for the giant snakes (Ample Serpents): King of the Murkmire's giant snakes",
+   "levels": [
+    1000,
+    1000,
+    1000
+   ]
+  },
+  "giant-spider-crab": {
+   "records": [
+    "Spider Crabs.esp:EncSpiderCrab",
+    "Spider Crabs.esp:EncKingSpiderCrab"
+   ],
+   "why": "Skinwalker21's giant spider crabs (Nexus 49521): spider crab, king spider crab",
+   "levels": [
+    1000,
+    1000
+   ]
+  },
+  "goliath-grouper": {
+   "records": [
+    "GoliathGrouper.esp:EncGoliathGrouper",
+    "GoliathGrouper.esp:EncGoliathGrouperBlue",
+    "GoliathGrouper.esp:EncGoliathGrouperGreen",
+    "GoliathGrouper.esp:EncGoliathGrouperRed",
+    "GoliathGrouper.esp:EncGoliathGrouperYellow"
+   ],
+   "why": "Skinwalker21's goliath groupers (Nexus 49523), five colours",
+   "levels": [
+    20,
+    20,
+    20,
+    20,
+    20
+   ]
+  },
+  "tuna": {
+   "records": [
+    "Tuna.esp:BW21EncBluefinTunaBasee",
+    "Tuna.esp:BW21EncPacificBluefinTunaBase",
+    "Tuna.esp:BW21EncYellowfinTunaBase"
+   ],
+   "why": "Skinwalker21's tuna (Nexus 58749): bluefin, silverfin, yellowfin",
+   "levels": [
+    1,
+    1,
+    1
+   ]
+  },
+  "shroom-beetle": {
+   "records": [
+    "Shroom Beetles.esp:EncShroomBeetleRed",
+    "Shroom Beetles.esp:EncShroomBeetleYellow",
+    "Shroom Beetles.esp:EncShroomBeetleBlue"
+   ],
+   "why": "Skinwalker21's shroom beetles (Nexus 69828), the wild ones, not the Blackreach or pet records",
+   "levels": [
+    1,
+    1,
+    1
+   ]
+  },
+  "megalania": {
+   "records": [
+    "BirbWalker21_Megalania.esp:BW21_EncMegalania"
+   ],
+   "why": "Skinwalker21's megalania (Nexus 109174), a giant monitor lizard",
+   "levels": [
+    1000
+   ]
+  },
+  "hummingbird": {
+   "records": [
+    "mihailhummingbird.esp:mihailhummingbird"
+   ],
+   "why": "Mihail's hummingbirds (Nexus 78759), the base record",
+   "levels": [
+    1
+   ]
+  },
+  "anglerfish": {
+   "records": [
+    "FA06Anglerfish.esp:FA06AnglerfishBase"
+   ],
+   "why": "PixieBomb's anglerfish (Nexus 87250), the base record; its named Big Caesar left out",
+   "levels": [
+    1
+   ]
+  },
+  "sabretooth-salmon": {
+   "records": [
+    "Sabertooth Salmon.esp:EncSabertoothSalmonBase",
+    "Sabertooth Salmon.esp:EncSabertoothSalmonBase2",
+    "Sabertooth Salmon.esp:EncSabertoothSalmonBase3"
+   ],
+   "why": "Skinwalker21's sabertooth salmon (Nexus 60270), its three base records",
+   "levels": [
+    1,
+    1,
+    1
+   ]
+  },
+  "megalodon": {
+   "records": [
+    "Megalodon.esp:EncMegalodonbase"
+   ],
+   "why": "Skinwalker21's megalodon (Nexus 59005), the base record",
+   "levels": [
+    1000
+   ]
+  },
+  "giant-snail": {
+   "records": [
+    "King of the Murkmire.esp:ArgoniaEncSnailBase",
+    "King of the Murkmire.esp:ArgoniaEncLargeSnailBase",
+    "King of the Murkmire.esp:ArgoniaEncGiantSnailBase"
+   ],
+   "why": "King of the Murkmire's snails: snail, large snail, giant snail",
+   "levels": [
+    1,
+    5,
+    15
+   ]
+  },
+  "swamp-leech": {
+   "records": [
+    "BirbWalker21_Leeches.esp:BW21_EncLeechSmall0",
+    "BirbWalker21_Leeches.esp:BW21_EncLeechSmall1",
+    "BirbWalker21_Leeches.esp:BW21_EncLeechSmall2",
+    "BirbWalker21_Leeches.esp:BW21_EncLeechSmall3"
+   ],
+   "why": "Skinwalker21's small leeches (Nexus 104589)",
+   "levels": [
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  "kingfisher": {
+   "records": [
+    "Tropical Skyrim -- Birds.esp:01BOSActorKingfisher"
+   ],
+   "why": "Tropical Skyrim's kingfisher",
+   "levels": [
+    1
+   ]
+  },
+  "shorebird": {
+   "records": [
+    "Tropical Skyrim -- Birds.esp:01BOSOystercatcher",
+    "Tropical Skyrim -- Birds.esp:01BOSPectoralSandpiper"
+   ],
+   "why": "Tropical Skyrim's oystercatcher and sandpiper, wading shorebirds",
+   "levels": [
+    1,
+    1
+   ]
+  },
+  "meganeura": {
+   "records": [
+    "King of the Murkmire.esp:BW21_EncMeganeuraRavenous"
+   ],
+   "why": "King of the Murkmire's meganeura, a giant dragonfly",
+   "levels": [
+    3
+   ]
+  },
+  "giant-mosquito": {
+   "records": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMMosquito"
+   ],
+   "why": "HTBM's giant mosquito",
+   "levels": [
+    100
+   ]
+  },
+  "swamp-wyvern": {
+   "records": [
+    "Black Marsh.esm:0SwampWyvern"
+   ],
+   "why": "Black Marsh's own swamp wyvern",
+   "levels": [
+    30
+   ]
+  },
+  "sea-otter": {
+   "records": [
+    "Otters.esp:EncOtter",
+    "Otters.esp:EncOtter2",
+    "Otters.esp:EncOtter3",
+    "Otters.esp:EncOtter4"
+   ],
+   "why": "Skinwalker21's otters (Nexus 49518) on the coast",
+   "levels": [
+    1,
+    1,
+    1,
+    1
+   ]
   }
  },
  "npc_groups": {
@@ -6575,6 +6621,97 @@
      }
     ]
    }
+  }
+ },
+ "critter_functions": {
+  "insects": [
+   "critterSpawnInsects_Many",
+   "critterSpawnInsects_Few",
+   "critterSpawnInsects_Single",
+   "critterSpawnInsects_ManyNocturnalOnly",
+   "critterSpawnInsects_SingleNocturnalOnly",
+   "critterSpawnInsects_Bees",
+   "MothSpawner"
+  ],
+  "dragonflies": [
+   "critterSpawnDragonflies24x7",
+   "critterSpawnDragonflies24x7_Many",
+   "critterSpawnDragonfliesFireflies24x7",
+   "critterSpawnFirefly24x7"
+  ],
+  "pond": [
+   "critterSpawnPond_Shallow",
+   "critterSpawnPond_Deep",
+   "critterSpawnPond_Deep_FishOnly",
+   "critterSpawnPond_Small"
+  ]
+ },
+ "critter_kinds": {
+  "fleshfly": {
+   "critter": "Black Marsh.esm:01FleshFly1",
+   "function": "insects",
+   "time": "none",
+   "why": "Black Marsh's own Flesh Flies swarm; no hours, so the kind's time is dropped"
+  },
+  "gnat-cloud": {
+   "critter": "Black Marsh.esm:01FleshFly1",
+   "function": "insects",
+   "time": "none",
+   "why": "Black Marsh's own flies swarm (Flesh Flies, a fixed critter): the nearest existing swarm; it has no hours, so the kind's time is dropped"
+  },
+  "salt-midge": {
+   "critter": "Black Marsh.esm:01FleshFly1",
+   "function": "insects",
+   "time": "none",
+   "why": "Black Marsh's own flies swarm: the nearest existing swarm; no hours, so the kind's time is dropped"
+  },
+  "torchbug": {
+   "critter": "Skyrim.esm:critterSpawnInsects_ManyNocturnalOnly",
+   "function": "insects",
+   "time": "night",
+   "why": "Skyrim's night insect spawner: its torchbugs (CritterFirefly, named Torchbug) and luna moths, 20 to 23 h"
+  },
+  "cicada-chorus": {
+   "critter": "Skyrim.esm:critterSpawnInsects_Bees",
+   "function": "insects",
+   "time": "day",
+   "why": "nearest: Skyrim's bee spawner (a buzzing day insect, 6 to 18 h); no cicada critter"
+  },
+  "sea-skater": {
+   "critter": "Skyrim.esm:critterSpawnDragonflies24x7",
+   "function": "dragonflies",
+   "time": "day",
+   "why": "nearest: Skyrim's day dragonflies over water, 5 to 20 h; no skater critter"
+  },
+  "mist-moth": {
+   "critter": "Skyrim.esm:critterSpawnInsects_SingleNocturnalOnly",
+   "function": "insects",
+   "time": "night",
+   "why": "Skyrim's night insect spawner: luna moths and torchbugs, 20 to 23 h"
+  },
+  "reed-borer": {
+   "critter": "Skyrim.esm:critterSpawnDragonfliesFireflies24x7",
+   "function": "dragonflies",
+   "time": "any",
+   "why": "nearest: dragonflies by day and torchbugs at night; no reed beetle critter"
+  },
+  "fire-beetle": {
+   "critter": "Skyrim.esm:critterSpawnInsects_SingleNocturnalOnly",
+   "function": "insects",
+   "time": "night",
+   "why": "nearest: Skyrim's night glow insects (torchbugs); no beetle critter"
+  },
+  "flying-fish": {
+   "critter": "Skyrim.esm:critterSpawnPond_Shallow",
+   "function": "pond",
+   "time": "day",
+   "why": "nearest: Skyrim's shallow-water fish school, 6 to 23 h; no flying fish critter"
+  },
+  "mudskipper": {
+   "critter": "Skyrim.esm:critterSpawnPond_Shallow",
+   "function": "pond",
+   "time": "day",
+   "why": "nearest: Skyrim's shallow-water fish school, 6 to 23 h; no mudskipper critter"
   }
  }
 }
