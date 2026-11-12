@@ -134,12 +134,12 @@ def run_claude(cmd: list[str], stream_path: Path, cwd: Path, timeout: int = 3600
     return result
 
 
-def run(forms, player: str, model: str = "sonnet", know: str | None = None, names=(), at=None, start=None,
+def run(forms, player: str, model: str = "sonnet", know: str | None = None, at=None, start=None,
         source="designed", sheet=None, max_commands=40, use_db=True, root: Path = S.RUNS) -> Path:
     if player not in TEMPERAMENTS:
         raise SystemExit(f"--player is one of {', '.join(TEMPERAMENTS)}")
     for _ in range(ATTEMPTS):
-        folder, played = _attempt(forms, player, model, know, names, at, start, source, sheet, max_commands,
+        folder, played = _attempt(forms, player, model, know, at, start, source, sheet, max_commands,
                                   use_db, root)
         if played:
             break
@@ -148,9 +148,9 @@ def run(forms, player: str, model: str = "sonnet", know: str | None = None, name
     return folder
 
 
-def _attempt(forms, player, model, know, names, at, start, source, sheet, max_commands, use_db, root):
+def _attempt(forms, player, model, know, at, start, source, sheet, max_commands, use_db, root):
     folder, screen = S.new(forms, player=player, source=source, start=start, at=at, sheet=sheet, know=know,
-                           names=names, use_db=use_db, max_commands=max_commands, root=root, model=model)
+                           use_db=use_db, max_commands=max_commands, root=root, model=model)
     play = wrapper(folder)
     room = Path(tempfile.mkdtemp(prefix="pt-"))
     system = brief(str(play), player, know_text(know))

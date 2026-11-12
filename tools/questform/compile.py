@@ -38,6 +38,50 @@ HINT_OTHER = "not in the form's vocabulary: re-author it with the form's conditi
 DROPPED = {"grantTopic", "removeTopic"}       # a line's first and last stage open and close it
 
 
+# The skills a record names, as Skyrim's actor value names (the form holds only these; blocks.md, "How record terms map
+# to blocks"). Morrowind's skills go to the nearest Skyrim one; one with none is refused.
+SKILL_OF = {
+    "speech": "Speech", "speechcraft": "Speech", "mercantile": "Speech",
+    "sneak": "Sneak", "pickpocket": "Pickpocket", "lockpicking": "Lockpicking", "security": "Lockpicking",
+    "alchemy": "Alchemy", "archery": "Archery", "marksman": "Archery", "block": "Block",
+    "onehanded": "OneHanded", "shortblade": "OneHanded", "longblade": "OneHanded", "axe": "OneHanded",
+    "blunt": "OneHanded", "bluntweapon": "OneHanded", "twohanded": "TwoHanded", "spear": "TwoHanded",
+    "heavyarmor": "HeavyArmor", "lightarmor": "LightArmor", "smithing": "Smithing", "armorer": "Smithing",
+    "enchanting": "Enchanting", "enchant": "Enchanting", "alteration": "Alteration", "conjuration": "Conjuration",
+    "destruction": "Destruction", "illusion": "Illusion", "restoration": "Restoration",
+}
+
+
+def skill_of(word: str) -> str | None:
+    """A record's skill word as the form's Skyrim skill name, or None when Skyrim has no such skill."""
+    k = word.lower()
+    for pre in ("skill.", "stat."):
+        k = k.removeprefix(pre)
+    return SKILL_OF.get(k.replace("-", "").replace("_", "").replace(" ", ""))
+
+
+def place(w: db.World, cell: str) -> dict:
+    """A cell as the player sees it: its name (a settlement's for an exterior without one; an interior's with its
+    settlement) and whether it is indoors, and for an interior its door's outside position (`entrance`)."""
+    c = w.query("SELECT name, interior FROM bmv_cell WHERE id = ?", cell)
+    if not c:
+        return {}
+    out = {"name": c[0]["name"], "interior": bool(c[0]["interior"])}
+    s = w.query("SELECT s.name FROM bmv_settlement_cell x JOIN bmv_settlement s ON s.id = x.settlement "
+                "WHERE x.cell = ?", cell)
+    if s and not out["interior"] and not out["name"]:
+        out["name"] = s[0]["name"]
+    elif s and out["interior"] and out["name"] and s[0]["name"] not in out["name"]:
+        out["name"] = f"{out['name']}, {s[0]['name']}"
+    if out["interior"]:
+        e = w.query("SELECT t.x, t.y FROM bmv_interior_exit x JOIN bmv_door d ON d.id = x.door "
+                    "JOIN bmv_door t ON t.id = d.target JOIN bmv_cell c ON c.id = t.cell "
+                    "WHERE x.interior = ? AND c.interior = 0", cell)
+        if e:
+            out["entrance"] = {"x": e[0]["x"], "y": e[0]["y"]}
+    return out
+
+
 class Refusal(Exception):
     pass
 
@@ -111,7 +155,12 @@ class Compiler:
         if term == "goldAtLeast":
             return [{"is": "gold_at_least", "gold": int(a[0])}]
         if term == "skillAtLeast":
-            return [{"is": "skill_at_least", "skill": a[0], "value": int(a[1])}]
+            sk = skill_of(str(a[0]))
+            if sk is None:
+                self.refuse("skillAtLeast", where, f"{a[0]} is no Skyrim skill and maps to none: name one of the "
+                            "form's skills (Speech, Sneak, Lockpicking, Pickpocket, Alchemy, OneHanded, ...)")
+                return []
+            return [{"is": "skill_at_least", "skill": sk, "value": int(a[1])}]
         if term == "npcAlive":
             return [{"is": "alive", "ref": self.use(a[0], where)}]
         if term == "dispositionAtLeast":
@@ -313,11 +362,15 @@ class Compiler:
                 t["choice"] = True
         if self.refused:
             return None
-        return {"version": 1,
+        form = {"version": 1,
                 "quest": {"id": q["id"], "editor_id": f"ARG_{q['code']}", "name": q["title"],
                           "kind": kind, "start": start},
                 "stages": stages, "objectives": objectives, "refs": refs, "lines": lines, "triggers": triggers,
                 "must_live": must_live}
+        names = self.item_names(form)
+        if names:
+            form["names"] = names
+        return form
 
     # -- lines -------------------------------------------------------------------------------------------------
     def _written(self, code):
@@ -412,7 +465,44 @@ class Compiler:
             at = self._at(r)
             if at:
                 o["at"] = at
+            self._name(o, r)
             out.append(o)
+        return out
+
+    # -- the names the player sees: a person's, a thing's, a door's and where it leads, a marker's place ------------
+    def _name(self, o: dict, r) -> None:
+        q = self.w.query
+        key = r["form_key"] or r["base"]
+        got = None
+        if o["kind"] == "person":
+            got = (q("SELECT known_as AS n FROM talker WHERE id = ?", key)
+                   or q("SELECT n.name AS n FROM bmv_placement p JOIN bmv_npc n ON n.id = p.npc WHERE p.id = ?", key)
+                   or q("SELECT name AS n FROM bmv_npc WHERE id = ?", key))
+        elif o["kind"] == "thing":
+            got = (q("SELECT name AS n FROM item WHERE id = ?", key) or q("SELECT name AS n FROM bmv_book WHERE id = ?", key))
+        elif o["kind"] == "door":
+            got = q("SELECT base_name AS n FROM bmv_door WHERE id = ?", key)
+            to = q("SELECT t.cell AS c FROM bmv_door d JOIN bmv_door t ON t.id = d.target WHERE d.id = ?", key)
+            if to and place(self.w, to[0]["c"]).get("name"):
+                o["destination"] = place(self.w, to[0]["c"])["name"]
+        elif o["kind"] == "marker" and o.get("at"):
+            got = [{"n": place(self.w, o["at"]["cell"]).get("name")}]
+        if got and got[0]["n"]:
+            o["name"] = got[0]["n"]
+
+    def item_names(self, form: dict) -> dict:
+        """The story name of every item id the form names (a result, a condition, a thing's base)."""
+        ids = {r["placement"]["base"]["id"] for r in form["refs"]
+               if r["placement"].get("base", {}).get("kind") == "item"}
+        ids |= {x["item"] for s in form["stages"] for x in s["results"] if "item" in x}
+        for ln in form["lines"]:
+            ids |= {x["item"] for x in ln["results"] + ln["conditions"] if "item" in x}
+        ids -= {r["id"] for r in form["refs"]}
+        out = {}
+        for i in sorted(ids):
+            got = self.w.query("SELECT name FROM item WHERE id = ?", i)
+            if got and got[0]["name"]:
+                out[i] = got[0]["name"]
         return out
 
     def _at(self, r):

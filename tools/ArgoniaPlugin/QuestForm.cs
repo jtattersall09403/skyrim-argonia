@@ -14,7 +14,9 @@ using Noggog;
 //   the people and things  one forced-reference alias per ref (the alias's name is the ref id); an existing ref made
 //                   persistent; a new one placed from its anchor (Snap on the navmesh, or the Surface under it),
 //                   persistent; a person on a base of ours templated on the form's base (hostile: aggressive and brave);
-//                   a thing in a container by a create-in-container alias
+//                   a thing in a container, or in a person's pocket, by a create-in alias; a lock (XLOC) and an owner (XOWN) on
+//                   a door or a thing placed or overridden; a new container's contents, its own copy of the base with those items
+//                   and no respawn
 //   the stage rows  ARG_QuestStages on the quest: every stage's work as rows of three arrays (Op, What, Num) that
 //                   ARG_Effects carries out; one fragment per stage that has rows
 //   the lines       topics and responses; ARG_LineEffects on every response with the line's rows; the speaks-first
@@ -88,7 +90,7 @@ static class QuestForm
         public string Id = "", Kind = ""; public uint Alias; public JsonElement Json;
         public FormKey Placed;              // the placed reference (null for a thing created in a container)
         public FormKey Base;                // its base (the item for a thing in a container)
-        public bool Created, Enabled, Hostile, Npc;
+        public bool Created, Enabled, Hostile, Npc, Fresh;
         public QuestAlias A = null!;
     }
     sealed class Built
@@ -294,30 +296,30 @@ static class QuestForm
     {
         var r = RefOf(c, b, id, "a lock");
         if (r.Kind != "door") throw c.No("refs-exist", $"{id} is locked or unlocked and is not a door");
-        if (unlocked && Overrides.Placed(c.Mod, r.Placed) is PlacedObject o && o.Lock == null) o.Lock = new LockData { Level = LockLevel.RequiresKey };
+        if (unlocked && Overrides.Placed(c.Mod, r.Placed) is PlacedObject o && o.Lock == null)
+        {
+            o.Lock = new LockData { Level = LockLevel.RequiresKey };
+            Label(c, $"autolock={r.Id}");
+        }
         return r.Placed;
     }
 
     // ---- what the vocabulary names
-    static readonly Dictionary<string, ActorValue> Skills = new(StringComparer.OrdinalIgnoreCase)
+    static readonly Dictionary<string, ActorValue> Skills = new(StringComparer.Ordinal)
     {
-        ["speech"] = ActorValue.Speech, ["speechcraft"] = ActorValue.Speech, ["mercantile"] = ActorValue.Speech,
-        ["lockpicking"] = ActorValue.Lockpicking, ["security"] = ActorValue.Lockpicking, ["sneak"] = ActorValue.Sneak,
-        ["pickpocket"] = ActorValue.Pickpocket, ["archery"] = ActorValue.Archery, ["marksman"] = ActorValue.Archery,
-        ["onehanded"] = ActorValue.OneHanded, ["short-blade"] = ActorValue.OneHanded, ["long-blade"] = ActorValue.OneHanded,
-        ["axe"] = ActorValue.OneHanded, ["blunt"] = ActorValue.OneHanded, ["twohanded"] = ActorValue.TwoHanded, ["spear"] = ActorValue.TwoHanded,
-        ["block"] = ActorValue.Block, ["heavyarmor"] = ActorValue.HeavyArmor, ["lightarmor"] = ActorValue.LightArmor,
-        ["smithing"] = ActorValue.Smithing, ["armorer"] = ActorValue.Smithing, ["alchemy"] = ActorValue.Alchemy,
-        ["enchanting"] = ActorValue.Enchanting, ["alteration"] = ActorValue.Alteration, ["conjuration"] = ActorValue.Conjuration,
-        ["destruction"] = ActorValue.Destruction, ["illusion"] = ActorValue.Illusion, ["restoration"] = ActorValue.Restoration,
+        ["Speech"] = ActorValue.Speech, ["Sneak"] = ActorValue.Sneak, ["Lockpicking"] = ActorValue.Lockpicking, ["Pickpocket"] = ActorValue.Pickpocket,
+        ["Alchemy"] = ActorValue.Alchemy, ["OneHanded"] = ActorValue.OneHanded, ["TwoHanded"] = ActorValue.TwoHanded, ["Archery"] = ActorValue.Archery,
+        ["Block"] = ActorValue.Block, ["HeavyArmor"] = ActorValue.HeavyArmor, ["LightArmor"] = ActorValue.LightArmor, ["Smithing"] = ActorValue.Smithing,
+        ["Enchanting"] = ActorValue.Enchanting, ["Alteration"] = ActorValue.Alteration, ["Conjuration"] = ActorValue.Conjuration,
+        ["Destruction"] = ActorValue.Destruction, ["Illusion"] = ActorValue.Illusion, ["Restoration"] = ActorValue.Restoration,
     };
-    /// The skill's actor value: a Skyrim skill's name, or a Morrowind skill that maps to it (blocks.md, C-skill).
-    public static ActorValue? Skill(string s) => Skills.TryGetValue(s.StartsWith("skill.") ? s[6..] : s, out var v) ? v : null;
-    /// The name the reader writes for an actor value: Skyrim's, lower case.
-    public static string SkillName(ActorValue v) => v.ToString().ToLowerInvariant();
+    /// The skill's actor value: Skyrim's own name for it (the form holds no other).
+    public static ActorValue? Skill(string s) => Skills.TryGetValue(s, out var v) ? v : null;
+    /// The name the reader writes for an actor value: Skyrim's.
+    public static string SkillName(ActorValue v) => v.ToString();
 
-    // Each id the form names that the record it resolves to cannot carry (a number's id, a story item's or faction's id, a
-    // skill's own word) is kept as a label on the quest, "name=<kind>|<what it became>|<the form's word>", so the plugin
+    // Each id the form names that the record it resolves to cannot carry (a number's id, a story item's or faction's id,
+    // a container's base) is kept as a label on the quest, "name=<kind>|<what it became>|<the form's word>", so the plugin
     // reader writes the form's word back.
     static FormKey Named(Ctx c, string kind, string given, FormKey k)
     {
@@ -331,12 +333,7 @@ static class QuestForm
     // an item named by a thing of the form is labelled "thing" (its base keeps its own word where it is placed)
     static FormKey Item(Ctx c, Built b, string id) => Named(c, b.Refs.ContainsKey(id) ? "thing" : "item", id, Item0(c, b, id));
     static FormKey Race(Ctx c, string v) => Named(c, "race", v, Race0(c, v));
-    static ActorValue SkillOf(Ctx c, string s)
-    {
-        var v = Skill(s) ?? throw c.No("vocabulary", $"no skill {s}");
-        if (s != SkillName(v)) Label(c, $"name=skill|{SkillName(v)}|{s}");
-        return v;
-    }
+    static ActorValue SkillOf(Ctx c, string s) => Skill(s) ?? throw c.No("vocabulary", $"no skill {s}");
 
     static FormKey QuestKey0(Ctx c, string qid)
     {
@@ -414,12 +411,14 @@ static class QuestForm
         }
         // containers first: a thing in a container names the container's alias
         foreach (var r in b.Refs.Values) Place(c, b, r);
+        foreach (var r in b.Refs.Values.Where(r => r.Fresh)) Decorate(c, b, r);
         foreach (var r in b.Refs.Values)
         {
             var a = new QuestAlias { ID = r.Alias, Type = QuestAlias.TypeEnum.Reference, Name = r.Id };
             if (r.Created)
             {
-                var cont = b.Refs[S(r.Json.GetProperty("placement"), "container")];
+                var pl = r.Json.GetProperty("placement");
+                var cont = b.Refs[So(pl, "container") ?? S(pl, "carried_by")];
                 a.CreateReferenceToObject = new CreateReferenceToObject { AliasID = (short)cont.Alias, Create = CreateReferenceToObject.CreateEnum.In, Level = Level.Easy };
                 a.CreateReferenceToObject.Object.SetTo(r.Base);
             }
@@ -438,7 +437,7 @@ static class QuestForm
         var j = r.Json; var p = j.GetProperty("placement");
         if (r.Hostile && r.Kind != "person") throw c.No("hostile", $"{r.Id} is hostile and not a person");
         // a ref another form names too is the same reference: one placement, which both forms must state alike
-        var same = $"{r.Kind}|{p.GetRawText()}|{r.Enabled}|{r.Hostile}";
+        var same = $"{r.Kind}|{p.GetRawText()}|{r.Enabled}|{r.Hostile}|{(j.TryGetProperty("lock", out var l1) ? l1.GetRawText() : "")}|{So(j, "owner")}|{(j.TryGetProperty("contents", out var c1) ? c1.GetRawText() : "")}";
         if (c.Shared.TryGetValue(r.Id, out var had))
         {
             if (had.Same != same) throw c.No("shared-ref", $"{r.Id} is placed otherwise by {had.Quest}");
@@ -446,12 +445,13 @@ static class QuestForm
             (r.Placed, r.Base, r.Npc) = (had.Placed, had.Base, had.Npc);
             return;
         }
-        try { PlaceOnce(c, b, r, p); }
+        try { PlaceOnce(c, b, r, p); r.Fresh = true; }
         finally { if (!r.Placed.IsNull || r.Created) c.Shared[r.Id] = (b.Qid, same, r.Placed, r.Base, r.Npc, r.Created); }
     }
 
     static void PlaceOnce(Ctx c, Built b, Ref r, JsonElement p)
     {
+        var j0 = r.Json;
         if (p.TryGetProperty("existing", out var ex))
         {
             if (r.Hostile) throw c.No("hostile", $"{r.Id}: a person the player fights is a new placement (its base of ours is made aggressive)");
@@ -466,20 +466,21 @@ static class QuestForm
             var parent = rec switch { IPlacedNpcGetter pn => pn.EnableParent, IPlacedObjectGetter po => po.EnableParent, _ => null };
             if (parent != null && !parent.Reference.IsNull) throw c.No("placement", $"{r.Id}: {k} hangs on an enable parent, so the form cannot say when it is on");
             r.Placed = k;
-            Persist(c, k, r.Enabled);
+            Persist(c, k, r.Enabled, j0.TryGetProperty("lock", out _) || j0.TryGetProperty("owner", out _));
             return;
         }
         var bas = p.GetProperty("base"); var bk = S(bas, "kind"); var bid = S(bas, "id");
-        if (p.TryGetProperty("container", out var cont))
+        var holder = So(p, "container") is { } cn ? (cn, "thing", "container") : So(p, "carried_by") is { } cb ? (cb, "person", "carrier") : default;
+        if (holder.Item1 != null)
         {
-            if (p.TryGetProperty("anchor", out _)) throw c.No("placement", $"{r.Id}: both an anchor and a container");
-            if (r.Kind != "thing" || bk != "item") throw c.No("placement", $"{r.Id}: only an item thing sits in a container");
-            if (!r.Enabled) throw c.No("placement", $"{r.Id}: a thing made in a container is there from the quest's start (enabled)");
-            if (!b.Refs.TryGetValue(cont.GetString()!, out var box) || box.Kind != "thing") throw c.No("placement", $"{r.Id}: its container {cont.GetString()} is not a thing of the form");
+            if (p.TryGetProperty("anchor", out _) || (p.TryGetProperty("container", out _) && p.TryGetProperty("carried_by", out _))) throw c.No("placement", $"{r.Id}: more than one of an anchor, a container and a carrier");
+            if (r.Kind != "thing" || bk != "item") throw c.No("placement", $"{r.Id}: only an item thing sits in a {holder.Item3}");
+            if (!r.Enabled) throw c.No("placement", $"{r.Id}: a thing made in a {holder.Item3} is there from the quest's start (enabled)");
+            if (!b.Refs.TryGetValue(holder.Item1, out var box) || box.Kind != holder.Item2) throw c.No("placement", $"{r.Id}: its {holder.Item3} {holder.Item1} is not a {holder.Item2} of the form");
             r.Base = Item(c, b, bid); r.Created = true;
             return;
         }
-        if (!p.TryGetProperty("anchor", out var anchor)) throw c.No("placement", $"{r.Id}: a new placement with neither an anchor nor a container");
+        if (!p.TryGetProperty("anchor", out var anchor)) throw c.No("placement", $"{r.Id}: a new placement with neither an anchor, a container nor a carrier");
         var (cell, world, interior, at) = Spot(c, b, r, anchor);
         var key = c.Key($"ref:{r.Id}");
         var edid = $"ARG_R_{Slug(r.Id)}";
@@ -496,6 +497,7 @@ static class QuestForm
         {
             if (bk == "template_person") throw c.No("placement", $"{r.Id}: a {r.Kind} placed as a person");
             r.Base = bk == "item" ? Item(c, b, bid) : Exists<IPlaceableObjectGetter>(c, bid, "base");
+            if (j0.TryGetProperty("contents", out var contents)) r.Base = Contents(c, b, r, bk, bid, contents);
             if (r.Kind == "door" && !c.Mods.Any(m => m.Doors.Any(d => d.FormKey == r.Base))) throw c.No("placement", $"{r.Id}: base {bid} is not a door");
             var o = new PlacedObject(key, SkyrimRelease.SkyrimSE) { EditorID = edid, MajorRecordFlagsRaw = flags, Placement = new Placement { Position = at, Rotation = new P3Float() } };
             o.Base.SetTo(r.Base); placed = o;
@@ -504,6 +506,81 @@ static class QuestForm
         if (interior) Overrides.Interior(c.Mod, c.Mods, cell).Persistent.Add(placed);
         else Overrides.World(c.Mod, c.Mods, world).TopCell!.Persistent.Add(placed);
         c.Wheres[key] = new Where(cell, world, interior, at);
+    }
+
+    // A new container's contents: our own copy of the form's container base with exactly those items and no respawn.
+    static FormKey Contents(Ctx c, Built b, Ref r, string bk, string bid, JsonElement contents)
+    {
+        if (r.Kind != "thing" || bk != "existing_base") throw c.No("contents", $"{r.Id}: contents are set on a new container, a thing of an existing base");
+        var baseKey = r.Base;
+        var src = Enumerable.Reverse(c.Mods).SelectMany(m => m.Containers).FirstOrDefault(x => x.FormKey == baseKey)
+            ?? throw c.No("contents", $"{r.Id}: base {bid} is no container of the load order");
+        var k = c.Key($"cont:{r.Id}");
+        var cont = src.Duplicate(k);
+        cont.EditorID = $"ARG_R_{Slug(r.Id)}_Cont";
+        cont.Flags &= ~Container.Flag.Respawns;
+        cont.Items = contents.EnumerateArray()
+            .Select(x => new ContainerEntry { Item = new ContainerItem { Item = new FormLink<IItemGetter>(ItemIn(c, b, S(x, "item"), r)), Count = I(x, "count") } })
+            .ToExtendedList();
+        c.Mod.Containers.Add(cont);
+        Named(c, "base", bid, k);
+        return k;
+    }
+    static FormKey ItemIn(Ctx c, Built b, string id, Ref r)
+    {
+        if (b.Refs.ContainsKey(id)) throw c.No("contents", $"{r.Id}: content {id} is a ref of the form: name an item by its own id");
+        return Item(c, b, id);
+    }
+
+    static LockLevel LevelOf(Ctx c, string w) => w switch
+    {
+        "novice" => LockLevel.Novice, "apprentice" => LockLevel.Apprentice, "adept" => LockLevel.Adept, "expert" => LockLevel.Expert,
+        "master" => LockLevel.Master, "key" => LockLevel.RequiresKey, _ => throw c.No("lock", $"no lock level {w}"),
+    };
+    public static bool IsContainer(IEnumerable<ISkyrimModGetter> mods, FormKey k) => mods.Any(m => m.Containers.Any(x => x.FormKey == k));
+
+    // A lock (XLOC) and an owner (XOWN) on the placed reference: on our new placement, or on our override of an existing one
+    // (which says something the winning record does not: a form that states what the reference already has is refused).
+    static void Decorate(Ctx c, Built b, Ref r)
+    {
+        var j = r.Json;
+        var hasLock = j.TryGetProperty("lock", out var lk); var hasOwner = j.TryGetProperty("owner", out var ow);
+        if (!hasLock && !hasOwner) return;
+        var what = hasLock ? "lock" : "owner";
+        if (r.Created) throw c.No(what, $"{r.Id}: a thing made in a container or a pocket has no reference to {(hasLock ? "lock" : "own")}");
+        var o = Overrides.Placed(c.Mod, r.Placed) as PlacedObject ?? throw c.No(what, $"{r.Id}: only a placed object takes a {what}");
+        var before = c.Placed.TryGetValue(r.Placed, out var src) ? src.rec as IPlacedObjectGetter : null;
+        if (hasLock)
+        {
+            if (r.Kind == "thing" ? !IsContainer(c.Mods.Append(c.Mod), r.Base) : r.Kind != "door") throw c.No("lock", $"{r.Id}: only a door or a container is locked");
+            var level = LevelOf(c, S(lk, "level"));
+            FormKey? key = null;
+            if (So(lk, "key") is { } kid)
+            {
+                var kk = Item(c, b, kid);
+                if (!c.Mods.Append(c.Mod).Any(m => m.Keys.Any(x => x.FormKey == kk))) throw c.No("lock", $"{r.Id}: its key {kid} is no key item");
+                key = kk;
+            }
+            if (before?.Lock is { } was && ((int)was.Level & 0xFF) == ((int)level & 0xFF) && (was.Key.IsNull ? null : (FormKey?)was.Key.FormKey) == key) throw c.No("lock", $"{r.Id}: the lock states what the reference already has");
+            var ld = new LockData { Level = level };
+            if (key is { } kv) ld.Key.SetTo(kv);
+            o.Lock = ld;
+        }
+        if (hasOwner)
+        {
+            if (r.Kind != "thing") throw c.No("owner", $"{r.Id}: only a thing has an owner");
+            var oid = ow.GetString()!;
+            FormKey owner;
+            if (b.Refs.TryGetValue(oid, out var pr))
+            {
+                if (!pr.Npc) throw c.No("owner", $"{r.Id}: its owner {oid} is not a person");
+                if (b.Refs.Values.Count(x => x.Npc && x.Base == pr.Base) != 1) throw c.No("owner", $"{r.Id}: its owner {oid} shares a base with another person of the form, so the record cannot name one");
+                owner = pr.Base;
+            }
+            else owner = Faction(c, oid);
+            if (before is { } bo && bo.Owner.FormKey == owner) throw c.No("owner", $"{r.Id}: the owner states what the reference already has");
+            o.Owner.SetTo(owner);
+        }
     }
 
     // The spot a new placement stands on: from `at` when the form gives it, else the anchor ref's; then the rule:
@@ -615,7 +692,7 @@ static class QuestForm
     }
 
     /// A ref of the load order made persistent in our plugin (an alias's forced ref must be), with its starting state.
-    static void Persist(Ctx c, FormKey key, bool enabled)
+    static void Persist(Ctx c, FormKey key, bool enabled, bool force = false)
     {
         var mine = Overrides.Placed(c.Mod, key);
         var wh = c.Wheres[key];
@@ -623,7 +700,7 @@ static class QuestForm
         {
             var src = c.Placed[key].rec;
             var off = (src.MajorRecordFlagsRaw & 0x800) != 0;
-            if ((src.MajorRecordFlagsRaw & 0x400) != 0 && off == !enabled) return;
+            if ((src.MajorRecordFlagsRaw & 0x400) != 0 && off == !enabled && !force) return;
             mine = (IPlaced)((IMajorRecordGetter)src).DeepCopy();
             if (wh.Interior) Overrides.Interior(c.Mod, c.Mods, wh.Cell).Persistent.Add(mine);
             else Overrides.World(c.Mod, c.Mods, wh.World).TopCell!.Persistent.Add(mine);

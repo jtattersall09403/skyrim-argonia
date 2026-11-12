@@ -29,7 +29,7 @@ static class QuestFormRead
         var all = mods.Append(mod).ToList();
         Directory.CreateDirectory(outDir);
         var formed = mod.Quests.Where(q => q.FormKey.ModKey == mod.ModKey && q.VirtualMachineAdapter?.FileName == QuestForm.StagesScript).ToList();
-        var ctx = new Ctx(mod, all, formed);
+        var ctx = new Ctx(mod, all, formed, mods);
         var bad = 0;
         foreach (var q in formed)
         {
@@ -54,15 +54,17 @@ static class QuestFormRead
     {
         public readonly ISkyrimModGetter Mod; public readonly List<ISkyrimModGetter> All; public readonly List<IQuestGetter> Formed;
         public readonly Dictionary<FormKey, (IPlacedGetter rec, ModKey from)> Placed;
+        public readonly Dictionary<FormKey, (IPlacedGetter rec, ModKey from)> Orig;     // the load order's winners without our plugin
         public readonly Dictionary<FormKey, (FormKey cell, FormKey world, bool interior)> Where = [];
         public readonly Dictionary<(FormKey, int, int), FormKey> Grid = [];
         public readonly Dictionary<FormKey, (List<Rw> rows, Dictionary<int, (int from, int to)> stages, string qid)> Rows = [];
         public readonly IQuestGetter? Watch;
         public readonly Dictionary<FormKey, IMajorRecordGetter> Recs = [];
-        public Ctx(ISkyrimModGetter mod, List<ISkyrimModGetter> all, List<IQuestGetter> formed)
+        public Ctx(ISkyrimModGetter mod, List<ISkyrimModGetter> all, List<IQuestGetter> formed, List<ISkyrimModGetter> loaded)
         {
             Mod = mod; All = all; Formed = formed;
             Placed = Survey.Winners<IPlacedGetter>(all);
+            Orig = Survey.Winners<IPlacedGetter>(loaded);
             foreach (var m in all)
             {
                 foreach (var w in m.Worldspaces)
@@ -129,6 +131,11 @@ static class QuestFormRead
         var refOf = new Dictionary<FormKey, string>();
         var refs = new JsonArray();
         var aliasName = aliases.ToDictionary(a => a.ID, a => a.Name ?? throw No($"alias {a.ID} has no name"));
+        var persons = aliases.Where(x => !x.ForcedReference.IsNull && Placed(c, x.ForcedReference.FormKey) is IPlacedNpcGetter).ToList();
+        var personIds = persons.Select(x => x.ID).ToHashSet();
+        var personOfBase = persons.GroupBy(x => ((IPlacedNpcGetter)Placed(c, x.ForcedReference.FormKey)!).Base.FormKey).Where(g => g.Count() == 1)
+            .ToDictionary(g => g.Key, g => g.First().Name!);
+        var autolocked = labels.Where(l => l.StartsWith("autolock=")).Select(l => l[9..]).ToHashSet();
         foreach (var a in aliases)
         {
             if (a.Type != QuestAlias.TypeEnum.Reference) throw No($"alias {a.Name} is not a reference alias");
@@ -140,7 +147,7 @@ static class QuestFormRead
                 if (cr.Create != CreateReferenceToObject.CreateEnum.In || !a.ForcedReference.IsNull) throw No($"alias {a.Name}: a created reference not in a container");
                 j["kind"] = "thing";
                 j["placement"] = new JsonObject { ["base"] = new JsonObject { ["kind"] = "item", ["id"] = Name("item", cr.Object.FormKey) },
-                    ["container"] = aliasName.TryGetValue((uint)cr.AliasID, out var cn) ? cn : throw No($"alias {a.Name}'s container alias {cr.AliasID}") };
+                    [personIds.Contains((uint)cr.AliasID) ? "carried_by" : "container"] = aliasName.TryGetValue((uint)cr.AliasID, out var cn) ? cn : throw No($"alias {a.Name}'s container alias {cr.AliasID}") };
                 j["enabled"] = true;
                 if (Full(c, cr.Object.FormKey) is { } cnm) j["name"] = cnm;
                 if (c.Recs.GetValueOrDefault(cr.Object.FormKey) is IBookGetter cbk && cbk.BookText?.String is { } cbt) j["text"] = cbt;
@@ -174,7 +181,7 @@ static class QuestFormRead
                 else
                 {
                     var item = c.All.Any(m => m.EnumerateMajorRecords<IItemGetter>().Any(x => x.FormKey == baseKey));
-                    bas = new JsonObject { ["kind"] = item ? "item" : "existing_base", ["id"] = item ? Name("item", baseKey) : baseKey.ToString() };
+                    bas = new JsonObject { ["kind"] = item ? "item" : "existing_base", ["id"] = item ? Name("item", baseKey) : Name("base", baseKey) };
                 }
                 j["placement"] = new JsonObject { ["base"] = bas, ["anchor"] = anchor };
             }
@@ -188,6 +195,26 @@ static class QuestFormRead
                 if (dest != null) j["destination"] = dest;
             }
             if (c.Recs.GetValueOrDefault(baseKey) is IBookGetter bk && bk.BookText?.String is { } bt) j["text"] = bt;
+            // a lock, an owner and a new container's contents: what our record says that the load order's winner does not
+            if (rec is IPlacedObjectGetter plo)
+            {
+                var orig = c.Orig.TryGetValue(k, out var ow0) ? ow0.rec as IPlacedObjectGetter : null;
+                if (plo.Lock is { } lk && !(orig?.Lock is { } ol && ol.Level == lk.Level && ol.Key.FormKey == lk.Key.FormKey)
+                    && !(autolocked.Contains(a.Name!) && RequiresKey(lk.Level) && lk.Key.IsNull))
+                {
+                    var lj = new JsonObject { ["level"] = LevelWord(lk.Level, w => No($"{a.Name}: {w}")) };
+                    if (!lk.Key.IsNull) lj["key"] = ItemWord(Name, lk.Key.FormKey);
+                    j["lock"] = lj;
+                }
+                if (!plo.Owner.IsNull && plo.Owner.FormKey != (orig?.Owner.FormKey ?? default))
+                {
+                    var ok = plo.Owner.FormKey;
+                    j["owner"] = personOfBase.TryGetValue(ok, out var pn) ? pn : c.Recs.GetValueOrDefault(ok) is IFactionGetter ? Name("faction", ok)
+                        : throw No($"{a.Name}'s owner {ok} is neither a faction nor one person of the form");
+                }
+                if (isNew && c.Mod.Containers.FirstOrDefault(x => x.FormKey == baseKey) is { } cont)
+                    j["contents"] = new JsonArray([.. cont.Items?.Select(e => (JsonNode)new JsonObject { ["item"] = ItemWord(Name, e.Item.Item.FormKey), ["count"] = e.Item.Count }) ?? []]);
+            }
             var pos = rec switch { IPlacedNpcGetter n => n.Placement!.Position, IPlacedObjectGetter o => o.Placement!.Position, _ => default };
             var cell = CellOf(c, k, rec);
             j["at"] = new JsonObject { ["cell"] = cell.ToString(), ["interior"] = c.Where[k].interior, ["x"] = pos.X, ["y"] = pos.Y, ["z"] = pos.Z };
@@ -371,7 +398,7 @@ static class QuestFormRead
                     || g1.Quest.Link.FormKey != q.FormKey || g2.Quest.Link.FormKey != q.FormKey || conds[1].CompareOperator != CompareOperator.GreaterThanOrEqualTo || conds[2].CompareOperator != CompareOperator.LessThanOrEqualTo)
                     throw No($"line {id}: its first conditions are not the speaker and the stage window");
                 var speaker = RefName(sp.Target.Link.FormKey, $"line {id}'s speaker");
-                var cj = new JsonArray([.. conds.Skip(3).Select(cd => (JsonNode)Condition(c, cd, No, Name, QuestName, RefName, sk => names.TryGetValue(("skill", sk), out var given) ? given : sk, $"line {id}"))]);
+                var cj = new JsonArray([.. conds.Skip(3).Select(cd => (JsonNode)Condition(c, cd, No, Name, QuestName, RefName, $"line {id}"))]);
                 var rj = new JsonArray([.. lrows.Select(r => (JsonNode)Result(c, r, No, Name, QuestName, RefName, $"line {id}"))]);
                 string lkind; string? prompt = null;
                 if (t.Subtype == DialogTopic.SubtypeEnum.Hello) lkind = "greeting";
@@ -454,6 +481,13 @@ static class QuestFormRead
         var rows = s == null ? [] : Arrays(s.Properties, QuestForm.WatchId);
         return rows.Where(r => r.Op == QuestForm.Op.ShowMessage).Select(r => c.Mod.Messages.FirstOrDefault(m => m.FormKey == r.What)?.Description?.String).FirstOrDefault();
     }
+    static string LevelWord(LockLevel l, Func<string, Bad> no) => l switch
+    {
+        LockLevel.Novice => "novice", LockLevel.Apprentice => "apprentice", LockLevel.Adept => "adept", LockLevel.Expert => "expert",
+        LockLevel.Master => "master", _ when RequiresKey(l) => "key", _ => throw no($"lock level {l} is none of the form's"),
+    };
+    // Requires Key is the byte 255; a record read from the plugin file gives it as 255, the enum's member is -1
+    static bool RequiresKey(LockLevel l) => ((int)l & 0xFF) == 0xFF;
     // an item a result or condition names: a thing of the form's by its ref id, else the item's own word
     static string ItemWord(Func<string, FormKey, string> name, FormKey k) => name("thing", k) is var t && t != k.ToString() ? t : name("item", k);
     static IPlacedGetter? Placed(Ctx c, FormKey k) =>
@@ -534,7 +568,7 @@ static class QuestFormRead
         return j;
     }
 
-    static JsonObject Condition(Ctx c, IConditionGetter cd, Func<string, Bad> no, Func<string, FormKey, string> name, Func<FormKey, string> quest, Func<FormKey, string, string> refName, Func<string, string> skill, string where)
+    static JsonObject Condition(Ctx c, IConditionGetter cd, Func<string, Bad> no, Func<string, FormKey, string> name, Func<FormKey, string> quest, Func<FormKey, string, string> refName, string where)
     {
         if (cd is not IConditionFloatGetter f || (cd.Flags & Mutagen.Bethesda.Skyrim.Condition.Flag.OR) != 0) throw no($"{where}: a condition that is not one plain test");
         var op = f.CompareOperator; var v = f.ComparisonValue; var d = cd.Data;
@@ -575,7 +609,7 @@ static class QuestFormRead
                 Player();
                 var sk = QuestForm.SkillName(g.ActorValue);
                 if (QuestForm.Skill(sk) != g.ActorValue) throw no($"{where}: actor value {g.ActorValue} is no skill");
-                return J("skill_at_least", Neg(CompareOperator.GreaterThanOrEqualTo), ("skill", skill(sk)), ("value", (int)v));
+                return J("skill_at_least", Neg(CompareOperator.GreaterThanOrEqualTo), ("skill", sk), ("value", (int)v));
             case IGetDeadConditionDataGetter:
                 var who = refName(OnRef(), where);
                 if (v == 0) return J("alive", Neg(CompareOperator.EqualTo), ("ref", who));

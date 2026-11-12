@@ -1,7 +1,7 @@
 """The paper playtest's command line (docs/design/paper-playtest.md).
 
     python3 -m tools.playtest new --forms <dir|files...> [--start <quest id>|--new-game] [--at <ref id>]
-                                  [--sheet race=Argonian,sex=female,Speech=30] [--know <file>] [--names <file>...]
+                                  [--sheet race=Argonian,sex=female,Speech=30] [--know <file>]
                                   [--player hand] [--source designed|built] [--no-db] [--max-commands N]
     python3 -m tools.playtest do <session> "<command>" --think "<what I believe is going on and why I do this>"
     python3 -m tools.playtest end <session> --take "<open take>" | --answers "<answers>"
@@ -27,9 +27,8 @@ def _common(p):
     p.add_argument("--at", help="the ref id the player starts beside (default: the first marker's target)")
     p.add_argument("--sheet")
     p.add_argument("--know")
-    p.add_argument("--names", nargs="*", default=[])
     p.add_argument("--source", choices=("designed", "built"), default="designed")
-    p.add_argument("--no-db", action="store_true", help="no world database: names and places from --names only")
+    p.add_argument("--no-db", action="store_true", help="no world database: names and places from the forms only")
     p.add_argument("--out", default=str(S.RUNS), help="the runs folder (default story/playtests)")
 
 
@@ -64,13 +63,13 @@ def main(argv=None) -> int:
     try:
         if a.cmd == "new":
             folder, screen = S.new(a.forms, player=a.player, source=a.source, start=a.start, at=a.at,
-                                   sheet=a.sheet, know=a.know, names=a.names, use_db=not a.no_db,
+                                   sheet=a.sheet, know=a.know, use_db=not a.no_db,
                                    max_commands=a.max_commands, root=Path(a.out))
             print(f"session: {folder}\n\n{screen}")
             return 0
         if a.cmd == "run":
             from tools.playtest import runner
-            folder = runner.run(a.forms, a.player, model=a.model, know=a.know, names=a.names, at=a.at,
+            folder = runner.run(a.forms, a.player, model=a.model, know=a.know, at=a.at,
                                 start=a.start, source=a.source, sheet=a.sheet, max_commands=a.max_commands,
                                 use_db=not a.no_db, root=Path(a.out))
             print(f"run: {folder}")

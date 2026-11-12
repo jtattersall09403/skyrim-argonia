@@ -10,33 +10,48 @@ from tools.playtest import session as S
 
 REPO = Path(__file__).resolve().parents[2]
 EXAMPLE = REPO / "tools/questform/examples/opening.json"
-NAMES = REPO / "tools/playtest/examples/opening.names.json"
+# What the player sees for the example's refs and places: the example uses made-up form keys the world database does
+# not hold, so its names are put in the form, as the compiler and the plugin reader put them.
+SEEN = {"npc.example.roll-man": "Gang Boss", "door.example.hold": "Barge Hold Door", "npc.example.contact": "Sample-Contact"}
+PLACES = {"0A0100:Example.esp": ("Barge Pier", False), "0A0200:Example.esp": ("Sample House, Lilmoth", True)}
 SCHEMA = json.loads((REPO / "tools/questform/schema.json").read_text())
 
 
 def form():
-    return json.loads(EXAMPLE.read_text())
+    f = json.loads(EXAMPLE.read_text())
+    for r in f["refs"]:
+        r["name"] = SEEN[r["id"]]
+    for i, (cell, (name, interior)) in enumerate(PLACES.items()):
+        f["refs"].append({"id": f"marker.example.{i}", "kind": "marker", "enabled": True, "name": name,
+                          "placement": {"existing": f"0A03{i:02X}:Example.esp"},
+                          "at": {"cell": cell, "interior": interior, "x": 0.0, "y": 0.0, "z": 0.0}})
+    return f
 
 
-def world(extra_names=None, talkers=()):
-    n = json.loads(NAMES.read_text())
-    return {"names": {**n["names"], **(extra_names or {})}, "places": n["places"], "talkers": list(talkers),
-            "doors": {}}
+def world(f=None, talkers=()):
+    """The snapshot of a form without the database; the house's door outside is a world fact the form does not hold."""
+    from tools.playtest import world as W
+    w = W.snapshot([f or form()], use_db=False)
+    w["places"]["0A0200:Example.esp"]["entrance"] = {"x": 40000.0, "y": -30000.0}
+    w["talkers"] = list(talkers)
+    return w
 
 
-def game(f=None, **kw):
-    g = G.Game([f or form()], world(**kw))
+def game(f=None, extra_names=None, talkers=()):
+    f = f or form()
+    f.setdefault("names", {}).update(extra_names or {})
+    g = G.Game([f], world(f, talkers))
     g.begin(at="door.example.hold")
     return g
 
 
 def new_session(tmp_path, *forms):
     paths = []
-    for i, f in enumerate(forms):
+    for i, f in enumerate(forms or [form()]):
         p = tmp_path / f"form{i}.json"
         p.write_text(json.dumps(f))
         paths.append(str(p))
-    return S.new(paths or [str(EXAMPLE)], names=[str(NAMES)], at="door.example.hold", use_db=False,
+    return S.new(paths, at="door.example.hold", use_db=False,
                  root=tmp_path / "runs")
 
 
@@ -193,11 +208,12 @@ def test_a_must_live_death_fails_the_quest_and_shows_the_message():
 
 def fetch_form():
     f = form()
-    f["refs"].append({"id": "thing.ring", "kind": "thing", "enabled": True,
+    f["names"] = {"item.ring": "Silver Ring"}
+    f["refs"].append({"id": "thing.ring", "kind": "thing", "enabled": True, "name": "Silver Ring",
                       "placement": {"base": {"kind": "item", "id": "item.ring"},
                                     "anchor": {"near": "0A0020:Example.esp", "rule": "surface"}},
                       "at": {"cell": "0A0100:Example.esp", "interior": False, "x": 1200.0, "y": 2000.0, "z": 50.0}})
-    f["refs"].append({"id": "npc.bandit", "kind": "person", "enabled": True, "hostile": True,
+    f["refs"].append({"id": "npc.bandit", "kind": "person", "enabled": True, "hostile": True, "name": "Bandit",
                       "placement": {"existing": "0B0001:Example.esp"},
                       "at": {"cell": "0A0100:Example.esp", "interior": False, "x": 1300.0, "y": 2000.0, "z": 50.0}})
     f["triggers"] = [{"id": "take.ring", "kind": "take", "ref": "thing.ring", "prerequisite": 20, "sets": 30},
@@ -206,7 +222,7 @@ def fetch_form():
 
 
 def test_take_and_death_triggers_move_the_quest():
-    g = game(fetch_form(), extra_names={"thing.ring": "Silver Ring", "npc.bandit": "Bandit", "item.ring": "Silver Ring"})
+    g = game(fetch_form())
     assert "Bandit (hostile)" in g.look() and "Silver Ring" in g.look()
     out = g.do("take silver ring")
     assert "Added: Silver Ring" in out and "I found Sample-Contact" in out
@@ -291,10 +307,10 @@ def test_the_world_database_gives_the_talkers_standing_where_a_quest_is():
     c = next(r for r in f["refs"] if r["id"] == CONTACT)
     c["placement"] = {"existing": "02A1E9:Black Marsh.esm"}
     c["at"] = {"cell": "005A11:Black Marsh.esm", "interior": False, "x": 21606.0, "y": -11999.0, "z": 0.0}
-    snap = W.snapshot([f], [NAMES])
+    snap = W.snapshot([f])
     assert "Peeks-Under-Boats" in {t["name"] for t in snap["talkers"]}
     assert snap["places"]["005A11:Black Marsh.esm"]["name"] == "Lilmoth"
-    del snap["names"][CONTACT]
+    snap["names"].pop(CONTACT)
     g = G.Game([f], snap)
     g.begin(at="door.example.hold")
     g.do("go peeks-under-boats")

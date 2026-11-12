@@ -118,13 +118,31 @@
                       }
                     ]
                   },
-                  "container": {"$ref": "#/$defs/id"}
+                  "container": {"$ref": "#/$defs/id"},
+                  "carried_by": {"$ref": "#/$defs/id"}
                 }
               }
             ]
           },
           "enabled": {"type": "boolean"},
           "hostile": {"type": "boolean"},
+          "lock": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["level"],
+            "properties": {"level": {"enum": ["novice", "apprentice", "adept", "expert", "master", "key"]},
+                           "key": {"$ref": "#/$defs/id"}}
+          },
+          "owner": {"$ref": "#/$defs/id"},
+          "contents": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["item", "count"],
+              "properties": {"item": {"$ref": "#/$defs/id"}, "count": {"type": "integer", "minimum": 1}}
+            }
+          },
           "name": {"$ref": "#/$defs/text"},
           "destination": {"$ref": "#/$defs/text"},
           "text": {"$ref": "#/$defs/text"},
@@ -220,6 +238,9 @@
     "text": {"type": "string", "minLength": 1},
     "stage": {"type": "integer", "minimum": 0, "maximum": 255},
     "rule": {"enum": ["surface", "navmesh"]},
+    "skill": {"enum": ["Speech", "Sneak", "Lockpicking", "Pickpocket", "Alchemy", "OneHanded", "TwoHanded", "Archery",
+                       "Block", "HeavyArmor", "LightArmor", "Smithing", "Enchanting", "Alteration", "Conjuration",
+                       "Destruction", "Illusion", "Restoration"]},
     "conditions": {"type": "array", "items": {"$ref": "#/$defs/condition"}},
     "results": {"type": "array", "items": {"$ref": "#/$defs/result"}},
     "condition": {
@@ -275,7 +296,7 @@
     },
     "c_skill": {
       "type": "object", "additionalProperties": false, "required": ["is", "skill", "value"],
-      "properties": {"not": {"type": "boolean"}, "is": {"const": "skill_at_least"}, "skill": {"$ref": "#/$defs/id"},
+      "properties": {"not": {"type": "boolean"}, "is": {"const": "skill_at_least"}, "skill": {"$ref": "#/$defs/skill"},
                      "value": {"type": "integer", "minimum": 0}}
     },
     "c_ref": {

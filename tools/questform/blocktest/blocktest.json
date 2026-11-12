@@ -94,7 +94,7 @@
    "conditions": [{"is": "in_faction", "faction": "faction.test.dock-hands"},
                   {"is": "rank_at_least", "faction": "faction.test.dock-hands", "rank": 0},
                   {"is": "number_compare", "number": "number.test.counter", "op": ">=", "value": 2},
-                  {"is": "skill_at_least", "skill": "speech", "value": 5},
+                  {"is": "skill_at_least", "skill": "Speech", "value": 5},
                   {"is": "stage_done", "quest": "quest.test.blocktest", "stage": 30},
                   {"is": "stage_is", "quest": "quest.test.blocktest", "stage": 40},
                   {"is": "stage_at_least", "quest": "quest.test.blocktest", "stage": 40}],

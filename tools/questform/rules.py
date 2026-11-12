@@ -21,7 +21,8 @@ AWAY_UNITS = 18000.0
 MAX_STAGE_RESULTS = 128
 MAX_LINE_RESULTS = 128
 
-RULES = ("schema", "vocabulary", "unique-ids", "stages-exist", "refs-exist", "placement", "journal-text",
+RULES = ("schema", "vocabulary", "unique-ids", "stages-exist", "refs-exist", "placement", "lock", "owner", "contents",
+         "journal-text",
          "way-out", "reachable", "objective-target-on", "asked-is-target", "completes-on-target", "hand-in", "line-window",
          "switch-cause", "away", "must-live-fails", "main-message", "death-hostile", "result-limits", "speaks-first-has-line")
 
@@ -110,7 +111,7 @@ class Form:
             return None
         if "at" in r:
             return r["at"]
-        box = r["placement"].get("container")
+        box = r["placement"].get("container") or r["placement"].get("carried_by")
         return self.position(box) if box else None
 
 
@@ -161,9 +162,9 @@ def _named_refs(fm: Form):
     for m in fm.f["must_live"]:
         yield "who-must-live", m["ref"]
     for r in fm.f["refs"]:
-        box = r["placement"].get("container")
-        if box:
-            yield f"ref {r['id']}", box
+        for box in (r["placement"].get("container"), r["placement"].get("carried_by")):
+            if box:
+                yield f"ref {r['id']}", box
 
 
 def check(form) -> list[tuple[str, str]]:
@@ -185,6 +186,7 @@ def check(form) -> list[tuple[str, str]]:
     out += [("vocabulary", f"stage {s['number']}: speaker_hostile is a line's result (the speaker turns hostile)")
             for s in form["stages"] if any(r["do"] == "speaker_hostile" for r in s["results"])]
     out += _placement(fm)
+    out += _lock_owner_contents(fm)
     if out:
         return out          # the graph rules below need every named stage and ref to exist
     out += _journal(fm)
@@ -256,11 +258,42 @@ def _placement(fm: Form):
         p = r["placement"]
         if "existing" in p:
             continue
-        has_anchor, box = "anchor" in p, p.get("container")
-        if has_anchor == bool(box):
-            out.append(("placement", f"ref {r['id']}: a new placement has an anchor or a container, exactly one"))
+        box, holder = p.get("container"), p.get("carried_by")
+        if ("anchor" in p) + bool(box) + bool(holder) != 1:
+            out.append(("placement", f"ref {r['id']}: a new placement has an anchor, a container or a carrier, exactly one"))
         if box and (r["kind"] != "thing" or fm.refs.get(box, {}).get("kind") != "thing"):
             out.append(("placement", f"ref {r['id']}: only a thing sits in a container, and the container is a thing"))
+        if holder and (r["kind"] != "thing" or p["base"]["kind"] != "item" or fm.refs.get(holder, {}).get("kind") != "person"):
+            out.append(("placement", f"ref {r['id']}: only an item thing is carried, and the carrier is a person"))
+    return out
+
+
+def _lock_owner_contents(fm: Form):
+    """A lock is on a door or a thing (a container), its key an item; an owner is on a thing and is a person of the
+    form or a faction; contents are on a new container (an existing base placed by an anchor), each an item."""
+    out = []
+
+    def item_ref(rid, what, rule, word):
+        if rid in fm.refs and fm.refs[rid]["kind"] != "thing":
+            out.append((rule, f"ref {what}: {word} {rid} is a {fm.refs[rid]['kind']}, not an item"))
+    for r in fm.f["refs"]:
+        rid = r["id"]
+        if "lock" in r:
+            if r["kind"] not in ("door", "thing"):
+                out.append(("lock", f"ref {rid}: only a door or a thing (a container) is locked"))
+            if "key" in r["lock"]:
+                item_ref(r["lock"]["key"], rid, "lock", "its key")
+        if "owner" in r:
+            if r["kind"] != "thing":
+                out.append(("owner", f"ref {rid}: only a thing has an owner"))
+            if r["owner"] in fm.refs and fm.refs[r["owner"]]["kind"] != "person":
+                out.append(("owner", f"ref {rid}: its owner {r['owner']} is a {fm.refs[r['owner']]['kind']}, not a person or a faction"))
+        if "contents" in r:
+            p = r["placement"]
+            if r["kind"] != "thing" or "anchor" not in p or p["base"]["kind"] != "existing_base":
+                out.append(("contents", f"ref {rid}: contents are set on a new container: a thing of an existing base placed by an anchor"))
+            out += [("contents", f"ref {rid}: content {c['item']} is a ref of the form: name an item by its own id")
+                    for c in r["contents"] if c["item"] in fm.refs]
     return out
 
 
