@@ -798,13 +798,13 @@
 {"talker":"0C7267:Black Marsh.esm","topic":"talk.self","ord":2,"text":"Nuxi-Ra. I trade here at the market."}
 {"talker":"0C7267:Black Marsh.esm","topic":"talk.services","ord":1,"text":"I buy and I sell. My stall is at the market, by the cooking fire. My stock is whatever the boats bring in. Show me what you have and I will name a price."}
 {"talker":"0C7267:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Rows-Against-It captains a boat from the market dock, and is usually just south-south-west of here. Of all the captains, that is the one who pays on time."}
-{"talker":"0C7268:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Walk along the boards north-east, ninety paces or so. The longboat is there. You cannot miss it."}
+{"talker":"0C7268:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Follow the boards north-east a short way, and you will find the longboat."}
 {"talker":"0C7268:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Calm water today, and a fare I know. My boat is yours if you need her."}
 {"talker":"0C7268:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"You want a crossing, say where. If not, I have rope to mend."}
-{"talker":"0C7268:Black Marsh.esm","topic":"talk.here","ord":1,"text":"My boat is ten paces south of here. The dock is five paces south-east, so mind your feet on the boards."}
+{"talker":"0C7268:Black Marsh.esm","topic":"talk.here","ord":1,"text":"My boat is just south of here. The dock is just south-east, so mind your feet on the boards."}
 {"talker":"0C7268:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"Ask Okaw-Sei about the last of the Lilmothiit. I carry fares, not old stories. If you want a crossing, say where."}
 {"talker":"0C7268:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Rows-Against-It. I run this boat from the market dock to wherever a fare will go. I paid off my owing on the water and kept the boat. No crossing-keeper gives me orders now."}
-{"talker":"0C7268:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Weeska cooks at the market fire. She is usually about twenty paces north-east of here."}
+{"talker":"0C7268:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Weeska cooks at the market fire. She is usually just north-east of here."}
 {"talker":"0C7269:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The jail. North, two hundred and thirty paces. Black Rose Jail is there."}
 {"talker":"0C7269:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"You again, my friend. Good. Stand by the fire and watch the market with me."}
 {"talker":"0C7269:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Show me your hands. Then say what you want."}
