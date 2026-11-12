@@ -1,0 +1,56 @@
+{
+ "_about": "Every paper playtest run (python3 -m tools.playtest index rebuilds this)",
+ "runs": [
+  {
+   "path": "quest.example.opening/20261112T220056Z-impatient-designed",
+   "quest": "quest.example.opening",
+   "player": "impatient",
+   "source": "designed",
+   "model": "sonnet",
+   "created": "20261112T220056Z",
+   "forms_hash": "af3af820b8d43d45",
+   "counts": {
+    "commands": 6,
+    "stalls": 0,
+    "harness_errors": 0
+   },
+   "ended": "quest completed",
+   "cost_usd": 0.037889,
+   "minutes": 0.3
+  },
+  {
+   "path": "quest.example.opening/20261112T220149Z-wanderer-designed",
+   "quest": "quest.example.opening",
+   "player": "wanderer",
+   "source": "designed",
+   "model": "sonnet",
+   "created": "20261112T220149Z",
+   "forms_hash": "af3af820b8d43d45",
+   "counts": {
+    "commands": 7,
+    "stalls": 0,
+    "harness_errors": 0
+   },
+   "ended": "quest completed",
+   "cost_usd": 0.034291,
+   "minutes": 0.4
+  },
+  {
+   "path": "quest.example.opening/20261112T220244Z-careful-designed",
+   "quest": "quest.example.opening",
+   "player": "careful",
+   "source": "designed",
+   "model": "sonnet",
+   "created": "20261112T220244Z",
+   "forms_hash": "af3af820b8d43d45",
+   "counts": {
+    "commands": 6,
+    "stalls": 0,
+    "harness_errors": 0
+   },
+   "ended": "quest completed",
+   "cost_usd": 0.031735400000000004,
+   "minutes": 0.2
+  }
+ ]
+}

@@ -1,0 +1,37 @@
+{
+ "quest": "quest.example.opening",
+ "player": "careful",
+ "source": "designed",
+ "model": "sonnet",
+ "form_files": [
+  "tools/questform/examples/opening.json"
+ ],
+ "forms_hash": "af3af820b8d43d45",
+ "created": "20261112T220244Z",
+ "counts": {
+  "commands": 6,
+  "stalls": 0,
+  "harness_errors": 0
+ },
+ "stages": {
+  "quest.example.opening": [
+   10,
+   20,
+   30,
+   40
+  ]
+ },
+ "ended": "quest completed",
+ "take": true,
+ "answers": true,
+ "player_error": null,
+ "cost_usd": 0.031735400000000004,
+ "minutes": 0.2,
+ "turns": 9,
+ "tokens": {
+  "input_tokens": 18,
+  "output_tokens": 1218,
+  "cache_read_input_tokens": 38154,
+  "cache_creation_input_tokens": 3926
+ }
+}

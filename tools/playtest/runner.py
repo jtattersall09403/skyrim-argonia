@@ -43,8 +43,8 @@ with your Bash tool. Each call does one thing and shows you exactly what you wou
   {play} 'fight <who> win|lose|flee'    you choose how a fight ends (losing means you load your last save)
   {play} 'pick <lock> win|fail'   {play} 'pickpocket <person>'   {play} 'persuade <topic>'
 
-Every command must carry --think, in the first person, saying what you believe is going on, what you want, and \
-why you are doing this, the way you would mutter to yourself while playing. For example:
+Every command carries --think: a sentence or two in your own voice as a player at the screen, saying what you \
+make of what is happening, what you want, and why you are doing this next. For example:
   {play} 'look' --think 'I just woke up somewhere strange. Before I do anything I want to see who is around.'
 Use single quotes around each argument. Run one command at a time and read what comes back before the next.
 
@@ -108,11 +108,12 @@ def claude_cmd(play: Path, system: str, model: str, prompt: str) -> list[str]:
 
 def run_claude(cmd: list[str], stream_path: Path, cwd: Path, timeout: int = 3600) -> dict:
     """Run the player; keep every stream line; return the final result event (cost, turns, duration)."""
-    env = {**os.environ, "MAX_THINKING_TOKENS": os.environ.get("MAX_THINKING_TOKENS", "4000")}
+    env = dict(os.environ)
     env.pop("CLAUDE_PROJECT_DIR", None)
     result = {}
     with open(stream_path, "w", encoding="utf-8") as out:
-        p = subprocess.Popen(cmd, cwd=cwd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, env=env)
+        p = subprocess.Popen(cmd, cwd=cwd, stdin=subprocess.DEVNULL, stdout=subprocess.PIPE,
+                             stderr=subprocess.STDOUT, text=True, env=env)
         t0 = time.time()
         for line in p.stdout:
             out.write(line)
@@ -134,6 +135,17 @@ def run(forms, player: str, model: str = "sonnet", know: str | None = None, name
         source="designed", sheet=None, max_commands=40, use_db=True, root: Path = S.RUNS) -> Path:
     if player not in TEMPERAMENTS:
         raise SystemExit(f"--player is one of {', '.join(TEMPERAMENTS)}")
+    for _ in range(ATTEMPTS):
+        folder, played = _attempt(forms, player, model, know, names, at, start, source, sheet, max_commands,
+                                  use_db, root)
+        if played:
+            break
+        shutil.rmtree(folder, ignore_errors=True)      # refused before its first command: nothing to keep
+    S.index(root)
+    return folder
+
+
+def _attempt(forms, player, model, know, names, at, start, source, sheet, max_commands, use_db, root):
     folder, screen = S.new(forms, player=player, source=source, start=start, at=at, sheet=sheet, know=know,
                            names=names, use_db=use_db, max_commands=max_commands, root=root, model=model)
     play = wrapper(folder)
@@ -144,15 +156,17 @@ def run(forms, player: str, model: str = "sonnet", know: str | None = None, name
     t0 = time.time()
     res = run_claude(claude_cmd(play, system, model, prompt), folder / "stream.jsonl", room)
     usage = res.get("usage") or {}
-    S.write_run(folder, {"cost_usd": res.get("total_cost_usd"), "minutes": round((time.time() - t0) / 60, 1),
+    err = str(res.get("result") or "") if str(res.get("result") or "").startswith("API Error") else None
+    run = S.write_run(folder, {"player_error": err, "cost_usd": res.get("total_cost_usd"), "minutes": round((time.time() - t0) / 60, 1),
                          "turns": res.get("num_turns"), "tokens": {k: usage.get(k) for k in (
                              "input_tokens", "output_tokens", "cache_read_input_tokens",
                              "cache_creation_input_tokens")}})
     shutil.rmtree(room, ignore_errors=True)
     shutil.rmtree(play.parent, ignore_errors=True)
-    S.index(root)
-    return folder
+    return folder, not (err and run["counts"]["commands"] == 0)
 
+
+ATTEMPTS = 3      # a model refusal before the first command is retried in a fresh session
 
 PROBE = ("Before anything else, try each of these with your Bash tool and report exactly what each returned: "
          "`ls {repo}`, `cat {repo}/CLAUDE.md`, `ls ..`, `cat /etc/hostname`, and `{play} 'look' --think 'probe'; "
@@ -166,7 +180,8 @@ def probe(model: str = "haiku") -> tuple[bool, Path]:
     play = bindir / "play"
     play.write_text("#!/bin/sh\necho 'You are on a pier.'\n")
     play.chmod(0o755)
-    out = Path(tempfile.mkdtemp(prefix="ptp-")) / "probe.jsonl"
+    out = S.RUNS / "probe" / "stream.jsonl"          # kept: the evidence that the player cannot read the repo
+    out.parent.mkdir(parents=True, exist_ok=True)
     run_claude(claude_cmd(play, "You are a test player. Use only your Bash tool.", model,
                           PROBE.format(repo=S.REPO, play=play)), out, room, timeout=600)
     text = out.read_text(encoding="utf-8")

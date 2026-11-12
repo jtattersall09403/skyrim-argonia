@@ -149,13 +149,14 @@ def transcript(folder) -> list[dict]:
 
 
 def stalls(rows: list[dict]) -> int:
-    """A command that repeats the one before, the third journal-or-map view running, or a think that says stuck."""
+    """A command that repeats the one before and gets the same screen (a "say 1" that moves a conversation on is
+    not a repeat), the third journal-or-map view running, or a think that says stuck."""
     n, prev, views = 0, None, 0
     for r in rows:
         if r["think"] is None:
             continue
-        cmd = " ".join(r["command"].lower().split())
-        views = views + 1 if cmd.split(" ")[0] in STALL_VIEWS else 0
+        cmd = (" ".join(r["command"].lower().split()), r["result"])
+        views = views + 1 if cmd[0].split(" ")[0] in STALL_VIEWS else 0
         if cmd == prev or (views and views % 3 == 0) or re.search(r"\bstuck\b", r["think"] or "", re.I):
             n += 1
         prev = cmd

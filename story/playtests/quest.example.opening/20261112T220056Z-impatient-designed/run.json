@@ -1,0 +1,36 @@
+{
+ "quest": "quest.example.opening",
+ "player": "impatient",
+ "source": "designed",
+ "model": "sonnet",
+ "form_files": [
+  "tools/questform/examples/opening.json"
+ ],
+ "forms_hash": "af3af820b8d43d45",
+ "created": "20261112T220056Z",
+ "counts": {
+  "commands": 6,
+  "stalls": 0,
+  "harness_errors": 0
+ },
+ "stages": {
+  "quest.example.opening": [
+   10,
+   20,
+   30,
+   40
+  ]
+ },
+ "ended": "quest completed",
+ "take": true,
+ "answers": true,
+ "cost_usd": 0.037889,
+ "minutes": 0.3,
+ "turns": 9,
+ "tokens": {
+  "input_tokens": 18,
+  "output_tokens": 1161,
+  "cache_read_input_tokens": 36790,
+  "cache_creation_input_tokens": 5641
+ }
+}

@@ -260,9 +260,10 @@ def test_new_sheet_race_skills():
 
 
 def test_stalls():
-    def r(cmd, think="go on"):
-        return {"command": cmd, "think": think, "result": ""}
-    rows = [r("look"), r("look"), r("journal"), r("map"), r("journal"), r("talk x", "I am stuck here"), r("map")]
+    def r(cmd, think="go on", result=""):
+        return {"command": cmd, "think": think, "result": result}
+    rows = [r("look"), r("look"), r("journal"), r("map"), r("journal"), r("talk x", "I am stuck here"), r("map"),
+            r("say 1", result="a"), r("say 1", result="b")]
     assert S.stalls(rows) == 3
 
 
