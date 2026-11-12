@@ -19,7 +19,7 @@ How a cell is dressed (decision 0034: Skyrim's own numbers):
   understorey), open, rock (rock habitats), slope (dry ground of 15 to 35 degrees), marsh (marsh habitats and
   shallow fresh water edges), reeds (within REED_M of a placed reed or fern, or a marsh habitat), shore (within
   SHORE_M of water). Never on a road (ROAD_M), in a held cell, a landing's cell, or water deeper than its edge.
-- Each thing sits on the ground with a random yaw and a scale in SCALE; spawners and effects sit as they are.
+- Each thing sits on the ground (a floating kind `lift` units above it) with a random yaw and a scale in SCALE; spawners and effects sit as they are.
 Every draw is seeded by the cell and kind, so a rerun writes the same bytes. A reference's id is DRESS_FIRST + its
 identity's digest (cell, kind, ordinal) in the `dressing` idspace row, probed on a collision.
 """
@@ -158,7 +158,7 @@ def build(out: Path) -> dict:
                     x, y = cv.world(ry, rx)
                     base = v["bases"][int(rng.integers(len(v["bases"])))]
                     ident = f"{cx},{cy}/{k}/{o}"
-                    placed.append({"base": base, "x": round(x, 1), "y": round(y, 1), "z": round(max(cv.ground(ry, rx), 0.0), 1),
+                    placed.append({"base": base, "x": round(x, 1), "y": round(y, 1), "z": round(max(cv.ground(ry, rx), 0.0) + v.get("lift", 0), 1),
                                    "rz": round(float(rng.uniform(0, 360)), 1),
                                    "scale": round(float(rng.uniform(*SCALE)), 3), "kind": k, "region": reg,
                                    "cell": [cx, cy], "id": ident})

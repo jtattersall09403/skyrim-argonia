@@ -122,7 +122,7 @@
     "valley-of-storms",
     "tulmek-washes"
    ],
-   "thing": "pale moths over the flooded causeways at night, the lights the valley's wisp tales grow from (valley-of-storms sheet asks will-o'-the-wisps: no walk-through wisp asset held)",
+   "thing": "pale moths over the washes and causeways at night",
    "bases": [
     "Skyrim.esm:MothSpawner"
    ]
@@ -294,6 +294,47 @@
    "thing": "shore-bird ground nests in the paddy margins and shore grass",
    "bases": [
     "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMBantamGuarNest"
+   ]
+  },
+  "wisps": {
+   "sort": "ambient_fx",
+   "per100": 4,
+   "habitat": "marsh",
+   "regions": [
+    "valley-of-storms"
+   ],
+   "thing": "will-o'-the-wisps on the flooded causeways (valley-of-storms sheet): Curse of Cipactli's glowing wisp cores (Skyrim's wispCoreScript: taken, they yield glow dust)",
+   "bases": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMmihailwillothewispcore"
+   ],
+   "lift": 110
+  },
+  "crab-mounds": {
+   "sort": "mounds",
+   "per100": 4,
+   "habitat": "shore",
+   "regions": [
+    "althii-archipelago",
+    "kotherra-mangroves"
+   ],
+   "thing": "crab burrow mounds on the mud (althii-archipelago, kotherra-mangroves sheets)",
+   "bases": [
+    "Skyrim.esm:RiftenRWDirtMound01",
+    "Skyrim.esm:RiftenRWDirtMound02"
+   ]
+  },
+  "clay-mounds": {
+   "sort": "mounds",
+   "per100": 4,
+   "habitat": "open",
+   "regions": [
+    "cape-percar",
+    "chixathe-mesa"
+   ],
+   "thing": "termite clay mounds on the red ground",
+   "bases": [
+    "Skyrim.esm:RiftenRWDirtMound04",
+    "Skyrim.esm:RiftenRWDirtMound03"
    ]
   }
  }
