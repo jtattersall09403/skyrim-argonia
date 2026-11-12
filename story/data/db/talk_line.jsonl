@@ -845,12 +845,12 @@
 {"talker":"0C72A6:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"Ask Keeps-The-Stone about the Lilmothiit. I know the water and the fish. That is enough for me."}
 {"talker":"0C72A6:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Okeemu. I fish from the north landing with my family. My boat is the oldest at the landing."}
 {"talker":"0C72A6:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Heshra, the fishwife at the north landing, is usually just west of here."}
-{"talker":"0C72A7:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Walk south-east about sixty-five paces. Black Rose will be on your left. Then south about eighty paces, until the statue is on your left. Then south-east about sixty-five paces, until the house is on your left. Then south about ninety paces. The longboat is there."}
+{"talker":"0C72A7:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Walk south-east just until you reach Black Rose on your left. Then walk south a short way until you reach the statue on your left. Walk south-east just until you reach the house on your left, then south a short way more. The longboat is there."}
 {"talker":"0C72A7:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"For you I will not haggle. Come closer and look at the catch."}
 {"talker":"0C72A7:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"What do you want? If you are buying, say what you want and what you will pay."}
-{"talker":"0C72A7:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is the north landing, where I gut and sell the catch. The house is about forty paces south-south-west of here."}
+{"talker":"0C72A7:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is the north landing, where I gut and sell the catch. The house is just south-south-west of here."}
 {"talker":"0C72A7:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Heshra. I gut and sell Okeemu's catch here. I run my family. I watch the prices. A buyer does not bargain with me twice."}
-{"talker":"0C72A7:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Okeemu is usually about five paces east of here. Okeemu is too soft to ask what a catch is worth, so I do the selling."}
+{"talker":"0C72A7:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Okeemu is usually just east of here. Okeemu is too soft to ask what a catch is worth, so I do the selling."}
 {"talker":"0C72A8:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The cooking fire is south of here. Walk past the house, about three hundred paces. You will find it."}
 {"talker":"0C72A8:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"It is you, my friend. I practised with my stick today. Nobody laughed."}
 {"talker":"0C72A8:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Oh. Hello. I am helping with the nets, so I cannot talk for long."}
