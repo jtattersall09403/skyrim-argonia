@@ -17,6 +17,11 @@ plugins=($(printf '%s\n' "${plugins[@]}" | while read -r f; do [ -f "$f" ] && ec
 seq=(out/SEQ/*.seq); [ -f "${seq[0]:-}" ] || seq=()  # Seq.cs: the start-game quests a new game starts first
 key=$({ [ ${#plugins[@]} -gt 0 ] && sha256sum "${plugins[@]}"; [ ${#seq[@]} -gt 0 ] && sha256sum "${seq[@]}"; [ ${#pex[@]} -gt 0 ] && sha256sum "${pex[@]}"; true; } | sha256sum | cut -c1-12)
 step "machine up" "$run" up
+# never under the owner's stream: a deploy restarts the stack. DEPLOY_STREAM_WAITED=1 says the caller already waited.
+if [ -z "${DEPLOY_STREAM_WAITED:-}" ]; then
+  live=$(ARGONIA_PEEK=1 "$run" ps '. C:\argonia\infra\stream-activity.ps1; (Get-StreamActivity).streaming' 2>/dev/null | tr -d '\r' | tail -1)
+  [ "$live" = True ] && { echo "deploy refused: a stream session is live on the machine; wait for it to end (or DEPLOY_STREAM_WAITED=1 after waiting)" >&2; exit 3; }
+fi
 have=$("$run" ps 'Get-Content C:\argonia\state\deployed.key -EA SilentlyContinue' 2>/dev/null | tr -d '\r\n ' || true)
 if [ -z "${DEPLOY_FORCE:-}" ] && [ "$have" = "$key" ]; then echo "DEPLOY held: $key, skipped in $(( SECONDS - t0 )) s"; exit 0; fi
 echo "deploy: machine holds ${have:-nothing}, laying $key"
