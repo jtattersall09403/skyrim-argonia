@@ -770,18 +770,18 @@
 {"talker":"0C7263:Black Marsh.esm","topic":"talk.rumours","ord":1,"text":"Hush, water. You ask for news, stranger. In the Chainbreakers' house, in the north district, Never-Sold has saved coin to buy a woman free of her Owing at the estate north of Blackrose. Never-Sold is asking for a hand with it."}
 {"talker":"0C7263:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Talks-To-Water. I captain a boat out of the north landing. Yes, I talk to the water. My crew is used to it."}
 {"talker":"0C7263:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Zeeki, the child of the north district, is usually just east-north-east of here. That one should be a sailor. I have said so."}
-{"talker":"0C7264:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The cooking fire? Walk south about eighty paces, until the longboat is on your left. Then the boards, west, about sixty-five paces. The fire is there."}
+{"talker":"0C7264:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The cooking fire? Go just south, until the longboat is on your left. Then along the boards, just west. The fire is there."}
 {"talker":"0C7264:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"If you have a boat that leaks, bring it to me and I will patch it today."}
 {"talker":"0C7264:Black Marsh.esm","topic":"talk.greet-friend","ord":2,"text":"You are welcome here. Mind the boards, they are wet. What needs mending?"}
 {"talker":"0C7264:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"What do you want? I have hulls to patch."}
 {"talker":"0C7264:Black Marsh.esm","topic":"talk.greet-stranger","ord":2,"text":"Speak quickly. I am in the middle of a hull."}
-{"talker":"0C7264:Black Marsh.esm","topic":"talk.here","ord":1,"text":"My house is about ten paces north-east of here. The dock is east-north-east, about twenty-five paces, where the small boats tie up."}
-{"talker":"0C7264:Black Marsh.esm","topic":"talk.here","ord":2,"text":"North-east, ten paces, is my house. East-north-east, twenty-five paces, is the dock. I patch the boats there."}
+{"talker":"0C7264:Black Marsh.esm","topic":"talk.here","ord":1,"text":"My house is just north-east of here. The dock is just east-north-east, where the small boats tie up."}
+{"talker":"0C7264:Black Marsh.esm","topic":"talk.here","ord":2,"text":"Just north-east is my house. Just east-north-east is the dock. I patch the boats there."}
 {"talker":"0C7264:Black Marsh.esm","topic":"talk.rumours","ord":1,"text":"If you want something to do, Never-Sold needs a hand. The money is ready to buy a woman out of her Owing on the estate north of Blackrose. Ask at the Chainbreakers' house in the north district."}
 {"talker":"0C7264:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Mends-The-Hulls. I patch the small boats at the north-east dock, cheap and fast. My mother taught me the trade. She learned it working off an owing."}
 {"talker":"0C7264:Black Marsh.esm","topic":"talk.self","ord":2,"text":"I mend hulls. Pitch-Pot says my work is careless, but Pitch-Pot is slow and expensive. My patches hold."}
-{"talker":"0C7264:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Tuh-Weem is the guard at the north-east boat dock. She is usually about fifteen paces south-west of here. She should mind her own dock."}
-{"talker":"0C7264:Black Marsh.esm","topic":"talk.someone","ord":2,"text":"You want Tuh-Weem, the guard at the north-east boat dock. About fifteen paces south-west of here, as a rule. Go and ask her."}
+{"talker":"0C7264:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Tuh-Weem is the guard at the north-east boat dock. She is usually just south-west of here. She should mind her own dock."}
+{"talker":"0C7264:Black Marsh.esm","topic":"talk.someone","ord":2,"text":"You want Tuh-Weem, the guard at the north-east boat dock. As a rule she is just south-west of here. Go and ask her."}
 {"talker":"0C7266:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Walk north-west for a little over two hundred paces. You will be at Black Rose Jail. Eat before you go."}
 {"talker":"0C7266:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"There you are, my friend. Sit down and eat. You look thin to me. The pot is hot."}
 {"talker":"0C7266:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"If you want food, say so. If you do not, I have a pot to watch."}
