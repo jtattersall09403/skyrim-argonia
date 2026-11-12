@@ -1,0 +1,2086 @@
+{
+ "schema": 1,
+ "kinds": {
+  "mudcrab": {
+   "records": [
+    "Skyrim.esm:EncMudcrabMedium",
+    "Skyrim.esm:EncMudcrabLarge",
+    "ccBGSSSE001-Fish.esm:ccBGSSSE001_EncMudcrabMediumAggressive",
+    "ccBGSSSE001-Fish.esm:ccBGSSSE001_EncMudcrabLargeAggressive"
+   ],
+   "why": "vanilla and Fish mudcrabs",
+   "levels": [
+    1,
+    2,
+    9,
+    13
+   ]
+  },
+  "mangrove-crab": {
+   "records": [
+    "Skyrim.esm:EncMudcrabMedium",
+    "ccBGSSSE001-Fish.esm:ccBGSSSE001_EncMudcrabMediumAggressive"
+   ],
+   "why": "nearest: medium mudcrabs; no mangrove crab model",
+   "levels": [
+    1,
+    9
+   ]
+  },
+  "burglar-crab": {
+   "records": [
+    "ccBGSSSE001-Fish.esm:ccBGSSSE001_EncMudcrabLargeFlamingPot"
+   ],
+   "why": "nearest: large mudcrab carrying a pot shell (burglar crab carries objects)",
+   "levels": [
+    13
+   ]
+  },
+  "hermit-crab": {
+   "records": [
+    "Skyrim.esm:EncMudcrabMedium",
+    "ccBGSSSE001-Fish.esm:ccBGSSSE001_EncMudcrabLargeFlamingPot"
+   ],
+   "why": "nearest: shell-carrying mudcrab",
+   "levels": [
+    1,
+    13
+   ]
+  },
+  "king-crab": {
+   "records": [
+    "Skyrim.esm:EncMudcrabGiant",
+    "ccBGSSSE001-Fish.esm:ccBGSSSE001_EncMudcrabGiantAggressive",
+    "Here There Be Monsters.esp:HTBMKARKINOSSPAWN"
+   ],
+   "why": "giant mudcrabs plus HTBM Karkinos spawn (giant crab)",
+   "levels": [
+    3,
+    20,
+    350
+   ]
+  },
+  "marsh-bird": {
+   "records": [
+    "Tropical Skyrim -- Birds.esp:01BOSActorKingfisher",
+    "Tropical Skyrim -- Birds.esp:01BOSActorMagpie",
+    "Tropical Skyrim -- Birds.esp:01BOSActorPigeonWood",
+    "Tropical Skyrim -- Birds.esp:01BOSActorStarling",
+    "Tropical Skyrim -- Birds.esp:01BOSActorStarlingSpotted",
+    "Tropical Skyrim -- Birds.esp:01BOSActorWillowTit"
+   ],
+   "why": "Tropical Skyrim birds, non-snow species",
+   "levels": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  "sea-gull": {
+   "records": [
+    "Tropical Skyrim -- Birds.esp:01BOSActorSeagull",
+    "Tropical Skyrim -- Birds.esp:01BOSActorSeagull2"
+   ],
+   "why": "Tropical Skyrim seagulls",
+   "levels": [
+    1,
+    1
+   ]
+  },
+  "tern": {
+   "records": [
+    "Tropical Skyrim -- Birds.esp:01BOSActorSeagull2",
+    "Tropical Skyrim -- Birds.esp:01BOSOystercatcher",
+    "Tropical Skyrim -- Birds.esp:01BOSPectoralSandpiper"
+   ],
+   "why": "nearest: shore birds; no tern model",
+   "levels": [
+    1,
+    1,
+    1
+   ]
+  },
+  "reed-heron": {
+   "records": [
+    "Tropical Skyrim -- Birds.esp:01BOSActorKingfisher",
+    "Tropical Skyrim -- Birds.esp:01BOSOystercatcher",
+    "Tropical Skyrim -- Birds.esp:01BOSPectoralSandpiper"
+   ],
+   "why": "nearest: water-edge birds; no heron model",
+   "levels": [
+    1,
+    1,
+    1
+   ]
+  },
+  "wading-ibis": {
+   "records": [
+    "Tropical Skyrim -- Birds.esp:01BOSOystercatcher",
+    "Tropical Skyrim -- Birds.esp:01BOSPectoralSandpiper"
+   ],
+   "why": "nearest: wading shore birds; no ibis model",
+   "levels": [
+    1,
+    1
+   ]
+  },
+  "parrot": {
+   "records": [
+    "Tropical Skyrim -- Birds.esp:01BOSActorKingfisher",
+    "Tropical Skyrim -- Birds.esp:01BOSActorStarlingSpotted"
+   ],
+   "why": "nearest: colourful small birds; no parrot model",
+   "levels": [
+    1,
+    1
+   ]
+  },
+  "crow": {
+   "records": [
+    "Tropical Skyrim -- Birds.esp:01BOSActorRaven",
+    "Tropical Skyrim -- Birds.esp:01BOSCrow1",
+    "Tropical Skyrim -- Birds.esp:01BOSGreycrow"
+   ],
+   "why": "Tropical Skyrim crows and raven",
+   "levels": [
+    1,
+    1,
+    1
+   ]
+  },
+  "slaughterfish": {
+   "records": [
+    "Skyrim.esm:EncSlaughterfish"
+   ],
+   "why": "vanilla slaughterfish",
+   "levels": [
+    1
+   ]
+  },
+  "reef-slaughterfish": {
+   "records": [
+    "Skyrim.esm:EncSlaughterfish"
+   ],
+   "why": "vanilla slaughterfish",
+   "levels": [
+    1
+   ]
+  },
+  "barracuda": {
+   "records": [
+    "Skyrim.esm:EncSlaughterfish"
+   ],
+   "why": "nearest: slaughterfish",
+   "levels": [
+    1
+   ]
+  },
+  "ripper-eel": {
+   "records": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMRipperEel"
+   ],
+   "why": "HTBM ripper eel",
+   "levels": [
+    1000
+   ]
+  },
+  "moray": {
+   "records": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMRipperEel"
+   ],
+   "why": "nearest: HTBM ripper eel",
+   "levels": [
+    1000
+   ]
+  },
+  "sea-snake": {
+   "records": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSerpent"
+   ],
+   "why": "nearest: HTBM serpent",
+   "levels": [
+    1000
+   ]
+  },
+  "shark": {
+   "records": [
+    "Here There Be Monsters.esp:HTBMSharkEnc",
+    "Here There Be Monsters.esp:HTBMSharkEncPhorcys",
+    "Here There Be Monsters.esp:HTBMSharkLargeEnc",
+    "Here There Be Monsters.esp:HTBMSharkLargeEncPhorcys",
+    "Here There Be Monsters.esp:HTBMSharkCarcharodon1"
+   ],
+   "why": "HTBM sharks, small to large",
+   "levels": [
+    400,
+    400,
+    400,
+    400,
+    1000
+   ]
+  },
+  "lurker-shark": {
+   "records": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMMudShark",
+    "Here There Be Monsters.esp:HTBMSharkCarcharodon2"
+   ],
+   "why": "HTBM mud shark and carcharodon",
+   "levels": [
+    1,
+    1000
+   ]
+  },
+  "giant-squid": {
+   "records": [
+    "Here There Be Monsters.esp:HTBMKraken2",
+    "Here There Be Monsters.esp:HTBMKraken2NOEYE"
+   ],
+   "why": "HTBM kraken",
+   "levels": [
+    2000,
+    2000
+   ]
+  },
+  "swamp-leviathan": {
+   "records": [
+    "Here There Be Monsters.esp:HTBMLEVIATHANSPAWN",
+    "King of the Murkmire.esp:SwampLeviathan"
+   ],
+   "why": "King of the Murkmire swamp leviathan",
+   "levels": [
+    300,
+    1500
+   ]
+  },
+  "sea-drake": {
+   "records": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSeaDrake"
+   ],
+   "why": "HTBM sea drake",
+   "levels": [
+    3000
+   ]
+  },
+  "fire-drake": {
+   "records": [
+    "Black Marsh.esm:0wolfdrake",
+    "Black Marsh.esm:0SwampWyvern"
+   ],
+   "why": "nearest: Black Marsh wyvern and forest drake",
+   "levels": [
+    10,
+    30
+   ]
+  },
+  "wamasu": {
+   "records": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMWamasu",
+    "King of the Murkmire.esp:Wamasu01",
+    "Black Marsh.esm:01Wamasu1"
+   ],
+   "why": "wamasu from three Black Marsh mods",
+   "levels": [
+    6,
+    1200,
+    4000
+   ]
+  },
+  "storm-wamasu": {
+   "records": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMWamasuAlpha",
+    "King of the Murkmire.esp:Wamasu01"
+   ],
+   "why": "nearest: alpha wamasu",
+   "levels": [
+    6,
+    1200
+   ]
+  },
+  "guar": {
+   "records": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMBantamGuar",
+    "King of the Murkmire.esp:ALPAGwar01",
+    "King of the Murkmire.esp:ALPAGwar02",
+    "King of the Murkmire.esp:ALPAGwar03",
+    "King of the Murkmire.esp:ALPAGwarWild01"
+   ],
+   "why": "guar herd animals",
+   "levels": [
+    1,
+    1000,
+    1000,
+    1000,
+    1000
+   ]
+  },
+  "glowgill-guar": {
+   "records": [
+    "King of the Murkmire.esp:ALPAGwar03",
+    "King of the Murkmire.esp:ALPAGwarWild01"
+   ],
+   "why": "nearest: wild guar; no glowing variant",
+   "levels": [
+    1000,
+    1000
+   ]
+  },
+  "lizard-steed-wild": {
+   "records": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMDuckbillBaby",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMDuckbill",
+    "King of the Murkmire.esp:ALPAGwar01Mount"
+   ],
+   "why": "HTBM scalehorse (duckbill) and mount guar",
+   "levels": [
+    1,
+    1,
+    1000
+   ]
+  },
+  "crocodile": {
+   "records": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMCrocodile",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMCrocodileSalt",
+    "Black Marsh.esm:1Crocodile",
+    "King of the Murkmire.esp:EncCrocodileBlackMarsh01",
+    "King of the Murkmire.esp:EncCrocodileBlackMarsh02"
+   ],
+   "why": "crocodiles from three mods",
+   "levels": [
+    1,
+    1,
+    12,
+    2000,
+    2000
+   ]
+  },
+  "giant-snake": {
+   "records": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSerpent",
+    "King of the Murkmire.esp:GiantSnakeBlue01",
+    "King of the Murkmire.esp:GiantSnakeBrown01",
+    "King of the Murkmire.esp:GiantSnakeBrown02",
+    "King of the Murkmire.esp:GiantSnakeGreen01",
+    "King of the Murkmire.esp:GiantSnakeGreen02",
+    "King of the Murkmire.esp:GiantSnakeRed01"
+   ],
+   "why": "King of the Murkmire giant snakes; mostly templated",
+   "levels": [
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000
+   ]
+  },
+  "tree-viper": {
+   "records": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSnake1",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSnake2",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSnake3",
+    "Here There Be Monsters - Curse of Cipactli.esp:mihailsnakeVIPER",
+    "Black Marsh.esm:Viper2"
+   ],
+   "why": "HTBM small snakes",
+   "levels": [
+    1,
+    1,
+    1,
+    1,
+    1200
+   ]
+  },
+  "moon-adder": {
+   "records": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSnake1",
+    "Here There Be Monsters - Curse of Cipactli.esp:mihailsnakeVIPER"
+   ],
+   "why": "nearest: small venomous snakes",
+   "levels": [
+    1,
+    1
+   ]
+  },
+  "spitting-lizard": {
+   "records": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMLizard",
+    "Black Marsh.esm:bluelizard",
+    "Black Marsh.esm:HornedLizard"
+   ],
+   "why": "small lizards (Dragling)",
+   "levels": [
+    3,
+    2000,
+    2800
+   ]
+  },
+  "alit": {
+   "records": [
+    "King of the Murkmire.esp:ALPAAlit01"
+   ],
+   "why": "King of the Murkmire alit",
+   "levels": [
+    1000
+   ]
+  },
+  "stalker-cat": {
+   "records": [
+    "Black Marsh.esm:Leopard",
+    "Black Marsh.esm:Panther",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMJaguar",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMJaguarBlack"
+   ],
+   "why": "big cats",
+   "levels": [
+    6,
+    6,
+    6,
+    6
+   ]
+  },
+  "marsh-deer": {
+   "records": [
+    "Skyrim.esm:EncDeer"
+   ],
+   "why": "vanilla deer; no marsh deer model",
+   "levels": [
+    1
+   ]
+  },
+  "wild-boar": {
+   "records": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMBrushBoar",
+    "Dragonborn.esm:DLC2EncBoar01",
+    "Dragonborn.esm:DLC2EncBoarWild"
+   ],
+   "why": "boars",
+   "levels": [
+    2,
+    7,
+    7
+   ]
+  },
+  "mountain-goat": {
+   "records": [
+    "Skyrim.esm:EncGoatWild"
+   ],
+   "why": "vanilla wild goat",
+   "levels": [
+    1
+   ]
+  },
+  "marsh-rat": {
+   "records": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSwampRat"
+   ],
+   "why": "HTBM swamp rat",
+   "levels": [
+    1
+   ]
+  },
+  "dragon-frog": {
+   "records": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMFrogBlue",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMFrogRed",
+    "King of the Murkmire.esp:FrogBlue01",
+    "King of the Murkmire.esp:FrogRed01"
+   ],
+   "why": "bright frogs",
+   "levels": [
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  "hist-frog": {
+   "records": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMFrogGreen",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMFrogToad",
+    "King of the Murkmire.esp:FrogBrown01",
+    "King of the Murkmire.esp:FrogGreen01"
+   ],
+   "why": "green and brown frogs; templated in part",
+   "levels": [
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  "netch": {
+   "records": [
+    "Dragonborn.esm:DLC2EncNetchCalf",
+    "Dragonborn.esm:DLC2EncNetchBull",
+    "Dragonborn.esm:DLC2EncNetchBetty"
+   ],
+   "why": "Dragonborn netch",
+   "levels": [
+    25,
+    36,
+    40
+   ]
+  },
+  "marsh-turtle": {
+   "records": [
+    "Black Marsh.esm:Turtle",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMTurtleYoung",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMTurtleFemale"
+   ],
+   "why": "turtles",
+   "levels": [
+    38,
+    100,
+    349
+   ]
+  },
+  "sea-turtle": {
+   "records": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMTurtleFemale",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMTurtleMale"
+   ],
+   "why": "HTBM turtles",
+   "levels": [
+    349,
+    500
+   ]
+  },
+  "great-sea-turtle": {
+   "records": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMTurtleMale"
+   ],
+   "why": "largest turtle",
+   "levels": [
+    500
+   ]
+  },
+  "giant-centipede": {
+   "records": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMCentipede",
+    "Black Marsh.esm:centi",
+    "King of the Murkmire.esp:GiantCentipede01",
+    "King of the Murkmire.esp:GiantCentipede02",
+    "King of the Murkmire.esp:GiantCentipede03"
+   ],
+   "why": "centipedes",
+   "levels": [
+    1,
+    12,
+    1000,
+    1000,
+    1000
+   ]
+  },
+  "giant-spider": {
+   "records": [
+    "Black Marsh.esm:0Forestspidergiant",
+    "Black Marsh.esm:0Forestspider"
+   ],
+   "why": "Black Marsh forest spiders (frostbite spider race, no frost attack)",
+   "levels": [
+    35,
+    1900
+   ]
+  },
+  "giant-wasp": {
+   "records": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMMosquito"
+   ],
+   "why": "nearest: HTBM giant mosquito",
+   "levels": [
+    100
+   ]
+  },
+  "dragonfly": {
+   "records": [
+    "King of the Murkmire.esp:BW21_EncMeganeuraRavenous"
+   ],
+   "why": "nearest: giant dragonfly (meganeura)",
+   "levels": [
+    3
+   ]
+  },
+  "kotu-gava": {
+   "records": [
+    "King of the Murkmire.esp:KotuGava01",
+    "King of the Murkmire.esp:KotuGava02",
+    "King of the Murkmire.esp:KotuGava01Large",
+    "King of the Murkmire.esp:KotuGava02Large"
+   ],
+   "why": "kotu gava",
+   "levels": [
+    5,
+    5,
+    15,
+    15
+   ]
+  },
+  "hackwing": {
+   "records": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMHackwing",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMHackwing2"
+   ],
+   "why": "HTBM hackwing",
+   "levels": [
+    100,
+    100
+   ]
+  },
+  "bog-dog": {
+   "records": [
+    "Black Marsh.esm:0wolfdrake"
+   ],
+   "why": "nearest: Forest Drake wolf-form",
+   "levels": [
+    10
+   ]
+  },
+  "red-wolf": {
+   "records": [
+    "Skyrim.esm:EncWolfRed"
+   ],
+   "why": "vanilla red wolf; templated",
+   "levels": [
+    2
+   ]
+  },
+  "restless-dead": {
+   "records": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSkeletonNaga1",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSkeletonNaga3",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSkeletonXan1",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSkeletonXan3",
+    "King of the Murkmire.esp:EncArgonianSkeletonMelee1H",
+    "King of the Murkmire.esp:EncArgonianSkeletonMelee2H"
+   ],
+   "why": "Argonian and Naga skeletons",
+   "levels": [
+    1,
+    1,
+    1,
+    1,
+    15,
+    15
+   ]
+  },
+  "river-naga-beast": {
+   "records": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMBehemothNaga"
+   ],
+   "why": "nearest: HTBM naga behemoth",
+   "levels": [
+    100
+   ]
+  },
+  "spiny-behemoth": {
+   "records": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMBehemoth",
+    "King of the Murkmire.esp:ArgonianBehemoth01"
+   ],
+   "why": "behemoths",
+   "levels": [
+    100,
+    3000
+   ]
+  },
+  "haj-mota": {
+   "records": [
+    "King of the Murkmire.esp:ArgonianBrute01",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMBehemoth"
+   ],
+   "why": "nearest: large Argonian brute and behemoth",
+   "levels": [
+    25,
+    100
+   ]
+  },
+  "elder-haj-mota": {
+   "records": [
+    "King of the Murkmire.esp:ArgonianBehemoth01"
+   ],
+   "why": "nearest: Argonian behemoth",
+   "levels": [
+    3000
+   ]
+  },
+  "marsh-giant": {
+   "records": [
+    "King of the Murkmire.esp:EncRiverTroll"
+   ],
+   "why": "nearest: river troll (not the frost troll); templated",
+   "levels": [
+    26
+   ]
+  },
+  "treant-grove-guardian": {
+   "records": [
+    "Black Marsh.esm:0ForestGuardian",
+    "Black Marsh.esm:0GuardianNature",
+    "Skyrim.esm:EncSprigganMatron"
+   ],
+   "why": "forest guardians and spriggan matron",
+   "levels": [
+    7,
+    12,
+    18
+   ]
+  },
+  "miregaunt": {
+   "records": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMMireGaunt",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMHistGaunt"
+   ],
+   "why": "HTBM gaunts",
+   "levels": [
+    8,
+    28
+   ]
+  },
+  "voriplasm": {
+   "records": [
+    "King of the Murkmire.esp:Voriplasm04",
+    "Here There Be Monsters - Curse of Cipactli.esp:mihailvoriplasmNPC",
+    "King of the Murkmire.esp:Voriplasm03",
+    "King of the Murkmire.esp:Voriplasm02",
+    "King of the Murkmire.esp:Voriplasm01"
+   ],
+   "why": "voriplasm",
+   "levels": [
+    900,
+    1000,
+    1000,
+    1200,
+    1300
+   ]
+  },
+  "bog-blight": {
+   "records": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMBogBlight",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMBogBlightF"
+   ],
+   "why": "HTBM bog blight; templated",
+   "levels": [
+    6,
+    6
+   ]
+  },
+  "fellrunner": {
+   "records": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMGallimimus"
+   ],
+   "why": "nearest: fast verminous stalker runner",
+   "levels": [
+    2
+   ]
+  },
+  "swamp-jelly": {
+   "records": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSwampJellyCalf",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSwampJellyBull",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSwampJellyBetty"
+   ],
+   "why": "HTBM swamp jelly",
+   "levels": [
+    25,
+    36,
+    40
+   ]
+  },
+  "stinging-jelly": {
+   "records": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSwampJellyCalf"
+   ],
+   "why": "nearest: swamp jelly",
+   "levels": [
+    25
+   ]
+  },
+  "wisp": {
+   "records": [
+    "Skyrim.esm:EncWisp",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMShine"
+   ],
+   "why": "wisps",
+   "levels": [
+    1,
+    800
+   ]
+  },
+  "fleshfly": {
+   "dropped": "no actor; effect only",
+   "nearest": null
+  },
+  "gnat-cloud": {
+   "dropped": "no actor; effect only",
+   "nearest": null
+  },
+  "salt-midge": {
+   "dropped": "no actor; effect only",
+   "nearest": null
+  },
+  "fleshfly-larvae": {
+   "dropped": "no actor; effect only",
+   "nearest": null
+  },
+  "torchbug": {
+   "dropped": "critter is an activator, not an actor",
+   "nearest": null
+  },
+  "cicada-chorus": {
+   "dropped": "critter is an activator, not an actor",
+   "nearest": null
+  },
+  "sea-skater": {
+   "dropped": "critter is an activator, not an actor",
+   "nearest": null
+  },
+  "mist-moth": {
+   "dropped": "critter is an activator, not an actor",
+   "nearest": null
+  },
+  "reed-borer": {
+   "dropped": "critter is an activator, not an actor",
+   "nearest": null
+  },
+  "fire-beetle": {
+   "dropped": "critter is an activator, not an actor",
+   "nearest": null
+  },
+  "dreugh": {
+   "dropped": "no crustacean-humanoid actor in the mods",
+   "nearest": null
+  },
+  "great-whale": {
+   "dropped": "no whale actor; the nearest are leviathans and Iku-Turso, which are sea monsters",
+   "nearest": null
+  },
+  "sea-lion": {
+   "dropped": "no sea mammal actor",
+   "nearest": null
+  },
+  "manta-ray": {
+   "dropped": "no ray actor",
+   "nearest": null
+  },
+  "flying-fish": {
+   "dropped": "no flying fish actor",
+   "nearest": null
+  },
+  "mudskipper": {
+   "dropped": "no amphibious fish actor",
+   "nearest": null
+  },
+  "cave-bat": {
+   "dropped": "no bat actor",
+   "nearest": null
+  },
+  "river-otter": {
+   "dropped": "no otter actor",
+   "nearest": null
+  },
+  "kagouti": {
+   "dropped": "no kagouti actor; no fitting plain quadruped",
+   "nearest": null
+  },
+  "osheeja-gar": {
+   "dropped": "no matching actor",
+   "nearest": null
+  },
+  "death-hopper": {
+   "dropped": "no matching actor",
+   "nearest": null
+  },
+  "lamia": {
+   "dropped": "no lamia actor (Naga are humanoid, not wild creatures)",
+   "nearest": null
+  },
+  "medusa": {
+   "dropped": "no medusa actor",
+   "nearest": null
+  },
+  "ancient-lamia-queen": {
+   "dropped": "no lamia actor",
+   "nearest": null
+  },
+  "feather-serpent": {
+   "dropped": "no feathered serpent actor",
+   "nearest": null
+  },
+  "giant-leech": {
+   "dropped": "no leech actor",
+   "nearest": null
+  },
+  "hoarvor": {
+   "dropped": "no matching actor",
+   "nearest": null
+  },
+  "kaj-thux": {
+   "dropped": "no matching actor",
+   "nearest": null
+  }
+ },
+ "npc_groups": {
+  "althii-archipelago|bandits in the burnt forts": {
+   "dropped": "only Skyrim templated humanoids fit, whose lists give Nords and Nord gear (decision 0006)"
+  },
+  "cape-percar|bandits in the burned mines and quarries": {
+   "dropped": "only Skyrim templated humanoids fit, whose lists give Nords and Nord gear (decision 0006)"
+  },
+  "tulmek-washes|bandits": {
+   "dropped": "only Skyrim templated humanoids fit, whose lists give Nords and Nord gear (decision 0006)"
+  },
+  "tulmek-washes|Blackguards' heirs from Blackrose Prison": {
+   "dropped": "only Skyrim templated humanoids fit, whose lists give Nords and Nord gear (decision 0006)"
+  },
+  "valley-of-storms|Morrowind border bandits": {
+   "dropped": "only Skyrim templated humanoids fit, whose lists give Nords and Nord gear (decision 0006)"
+  },
+  "lake-ulaish|toll-fort bandits on the shore roads": {
+   "dropped": "only Skyrim templated humanoids fit, whose lists give Nords and Nord gear (decision 0006)"
+  },
+  "barsaebica|frontier raiders at Slough Point": {
+   "dropped": "only Skyrim templated humanoids fit, whose lists give Nords and Nord gear (decision 0006)"
+  },
+  "cape-percar|Imperial deserter bands from Soulrest": {
+   "dropped": "only Skyrim templated humanoids fit, whose lists give Nords and Nord gear (decision 0006)"
+  },
+  "aphon-isle|smugglers working the cave": {
+   "dropped": "only Skyrim templated humanoids fit, whose lists give Nords and Nord gear (decision 0006)"
+  },
+  "hatandros-bight|smugglers at landings": {
+   "dropped": "only Skyrim templated humanoids fit, whose lists give Nords and Nord gear (decision 0006)"
+  },
+  "nushara-bayou|smugglers using the back-water routes": {
+   "dropped": "only Skyrim templated humanoids fit, whose lists give Nords and Nord gear (decision 0006)"
+  },
+  "okuwun-rahei|smuggler landings": {
+   "dropped": "only Skyrim templated humanoids fit, whose lists give Nords and Nord gear (decision 0006)"
+  },
+  "kotherra-mangroves|pirates of the eastern Topal Bay shore": {
+   "dropped": "only Skyrim templated humanoids fit, whose lists give Nords and Nord gear (decision 0006)"
+  },
+  "topal-bay|pirates of the eastern shore": {
+   "dropped": "only Skyrim templated humanoids fit, whose lists give Nords and Nord gear (decision 0006)"
+  },
+  "padomaic-ocean|Skeith Isle pirates": {
+   "dropped": "only Skyrim templated humanoids fit, whose lists give Nords and Nord gear (decision 0006)"
+  },
+  "skeith-isle|Skeith Isle pirates and smugglers": {
+   "dropped": "only Skyrim templated humanoids fit, whose lists give Nords and Nord gear (decision 0006)"
+  },
+  "sea-of-mists|wreckers and pirates working the sandbars": {
+   "dropped": "only Skyrim templated humanoids fit, whose lists give Nords and Nord gear (decision 0006)"
+  },
+  "benthic-yobesh|Bell Station divers' rivals (salvagers)": {
+   "dropped": "only Skyrim templated humanoids fit, whose lists give Nords and Nord gear (decision 0006)"
+  },
+  "valley-of-storms|Stormhold crystal-seekers": {
+   "dropped": "only Skyrim templated humanoids fit, whose lists give Nords and Nord gear (decision 0006)"
+  },
+  "arnesian-jungle|Dunmer slavers working the Morrowind border": {
+   "dropped": "no fixed-race Dunmer slaver NPC; Skyrim bandit templates may give Nords"
+  },
+  "padomaic-ocean|Dunmer slavers (the wreck of a slaver lies on the shelf)": {
+   "dropped": "no fixed-race Dunmer slaver NPC"
+  },
+  "aunike-ridge|Naga raiders": {
+   "records": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNaga1M",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNaga1F",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNaga2M",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNaga2F",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaHeavy1M",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaHeavy1F",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaElite1M",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaElite1F"
+   ],
+   "race": "naga",
+   "why": "King of the Murkmire Naga",
+   "levels": [
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000
+   ],
+   "looks": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNaga1M",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNaga1F",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNaga2M",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNaga2F",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaHeavy1M",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaHeavy1F",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaElite1M",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaElite1F"
+   ],
+   "gear": {
+    "low": [
+     {
+      "outfit": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaOutfit1",
+      "value": 6
+     },
+     {
+      "outfit": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaOutfit2",
+      "value": 31
+     }
+    ],
+    "mid": [
+     {
+      "outfit": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaHeavyOutfit",
+      "value": 295
+     },
+     {
+      "outfit": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaLightOutfit",
+      "value": 525
+     },
+     {
+      "outfit": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaEliteOutfit3",
+      "value": 355
+     }
+    ],
+    "high": [
+     {
+      "outfit": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaEliteOutfit4",
+      "value": 830
+     },
+     {
+      "outfit": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaPriestOutfit1",
+      "value": 995
+     },
+     {
+      "outfit": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaPriestOutfit2",
+      "value": 995
+     }
+    ]
+   }
+  },
+  "kotherra-mangroves|Tribeless Naga highwaymen on the Blackwood Road": {
+   "records": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNaga1M",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNaga1F",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNaga2M",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNaga2F",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaHeavy1M",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaHeavy1F",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaElite1M",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaElite1F"
+   ],
+   "race": "naga",
+   "why": "King of the Murkmire Naga",
+   "levels": [
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000
+   ],
+   "looks": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNaga1M",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNaga1F",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNaga2M",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNaga2F",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaHeavy1M",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaHeavy1F",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaElite1M",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaElite1F"
+   ],
+   "gear": {
+    "low": [
+     {
+      "outfit": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaOutfit1",
+      "value": 6
+     },
+     {
+      "outfit": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaOutfit2",
+      "value": 31
+     }
+    ],
+    "mid": [
+     {
+      "outfit": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaHeavyOutfit",
+      "value": 295
+     },
+     {
+      "outfit": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaLightOutfit",
+      "value": 525
+     },
+     {
+      "outfit": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaEliteOutfit3",
+      "value": 355
+     }
+    ],
+    "high": [
+     {
+      "outfit": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaEliteOutfit4",
+      "value": 830
+     },
+     {
+      "outfit": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaPriestOutfit1",
+      "value": 995
+     },
+     {
+      "outfit": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaPriestOutfit2",
+      "value": 995
+     }
+    ]
+   }
+  },
+  "lake-ulaish|Tribeless Naga highwaymen": {
+   "records": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNaga1M",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNaga1F",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNaga2M",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNaga2F",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaHeavy1M",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaHeavy1F",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaElite1M",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaElite1F"
+   ],
+   "race": "naga",
+   "why": "King of the Murkmire Naga",
+   "levels": [
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000
+   ],
+   "looks": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNaga1M",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNaga1F",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNaga2M",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNaga2F",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaHeavy1M",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaHeavy1F",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaElite1M",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaElite1F"
+   ],
+   "gear": {
+    "low": [
+     {
+      "outfit": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaOutfit1",
+      "value": 6
+     },
+     {
+      "outfit": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaOutfit2",
+      "value": 31
+     }
+    ],
+    "mid": [
+     {
+      "outfit": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaHeavyOutfit",
+      "value": 295
+     },
+     {
+      "outfit": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaLightOutfit",
+      "value": 525
+     },
+     {
+      "outfit": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaEliteOutfit3",
+      "value": 355
+     }
+    ],
+    "high": [
+     {
+      "outfit": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaEliteOutfit4",
+      "value": 830
+     },
+     {
+      "outfit": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaPriestOutfit1",
+      "value": 995
+     },
+     {
+      "outfit": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaPriestOutfit2",
+      "value": 995
+     }
+    ]
+   }
+  },
+  "nha-enasa|Tribeless Naga highwaymen near the river stations": {
+   "records": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNaga1M",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNaga1F",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNaga2M",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNaga2F",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaHeavy1M",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaHeavy1F",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaElite1M",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaElite1F"
+   ],
+   "race": "naga",
+   "why": "King of the Murkmire Naga",
+   "levels": [
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000
+   ],
+   "looks": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNaga1M",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNaga1F",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNaga2M",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNaga2F",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaHeavy1M",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaHeavy1F",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaElite1M",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaElite1F"
+   ],
+   "gear": {
+    "low": [
+     {
+      "outfit": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaOutfit1",
+      "value": 6
+     },
+     {
+      "outfit": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaOutfit2",
+      "value": 31
+     }
+    ],
+    "mid": [
+     {
+      "outfit": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaHeavyOutfit",
+      "value": 295
+     },
+     {
+      "outfit": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaLightOutfit",
+      "value": 525
+     },
+     {
+      "outfit": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaEliteOutfit3",
+      "value": 355
+     }
+    ],
+    "high": [
+     {
+      "outfit": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaEliteOutfit4",
+      "value": 830
+     },
+     {
+      "outfit": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaPriestOutfit1",
+      "value": 995
+     },
+     {
+      "outfit": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaPriestOutfit2",
+      "value": 995
+     }
+    ]
+   }
+  },
+  "murkwood|Naga-Kur patrols": {
+   "records": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNaga1M",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNaga1F",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNaga2M",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNaga2F",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaHeavy1M",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaHeavy1F",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaElite1M",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaElite1F"
+   ],
+   "race": "naga",
+   "why": "King of the Murkmire Naga",
+   "levels": [
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000
+   ],
+   "looks": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNaga1M",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNaga1F",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNaga2M",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNaga2F",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaHeavy1M",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaHeavy1F",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaElite1M",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaElite1F"
+   ],
+   "gear": {
+    "low": [
+     {
+      "outfit": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaOutfit1",
+      "value": 6
+     },
+     {
+      "outfit": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaOutfit2",
+      "value": 31
+     }
+    ],
+    "mid": [
+     {
+      "outfit": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaHeavyOutfit",
+      "value": 295
+     },
+     {
+      "outfit": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaLightOutfit",
+      "value": 525
+     },
+     {
+      "outfit": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaEliteOutfit3",
+      "value": 355
+     }
+    ],
+    "high": [
+     {
+      "outfit": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaEliteOutfit4",
+      "value": 830
+     },
+     {
+      "outfit": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaPriestOutfit1",
+      "value": 995
+     },
+     {
+      "outfit": "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMNagaPriestOutfit2",
+      "value": 995
+     }
+    ]
+   }
+  },
+  "aunike-ridge|Paatru raiders": {
+   "records": [
+    "King of the Murkmire.esp:LilmothBandit03",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit01",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit02",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit03",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit04",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit05"
+   ],
+   "race": "argonian",
+   "why": "Tum-Taleel Argonian warriors and hunters, nearest tribal raiders",
+   "levels": [
+    1000,
+    1200,
+    1200,
+    1200,
+    1200,
+    1200
+   ],
+   "looks": [
+    "King of the Murkmire.esp:LilmothBandit03",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit01",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit02",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit03",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit04",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit05"
+   ],
+   "gear": {
+    "low": [
+     {
+      "outfit": "King of the Murkmire.esp:SaxhleelLeatherOutfit01",
+      "value": 150
+     },
+     {
+      "outfit": "King of the Murkmire.esp:SaxhleelLeatherOutfit02",
+      "value": 175
+     }
+    ],
+    "mid": [
+     {
+      "outfit": "King of the Murkmire.esp:SaxhleelLeatherHeavyOutfit01",
+      "value": 200
+     },
+     {
+      "outfit": "King of the Murkmire.esp:AnXileelOutfit02",
+      "value": 875
+     }
+    ],
+    "high": [
+     {
+      "outfit": "King of the Murkmire.esp:AnXileelHeavyOutfit",
+      "value": 935
+     },
+     {
+      "outfit": "King of the Murkmire.esp:AnXileelOutfit01",
+      "value": 963
+     }
+    ]
+   }
+  },
+  "banujha-basin|Mine-Burner tribesmen who hold the basin against outsiders": {
+   "records": [
+    "King of the Murkmire.esp:LilmothBandit03",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit01",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit02",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit03",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit04",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit05"
+   ],
+   "race": "argonian",
+   "why": "Tum-Taleel Argonian warriors and hunters, nearest tribal raiders",
+   "levels": [
+    1000,
+    1200,
+    1200,
+    1200,
+    1200,
+    1200
+   ],
+   "looks": [
+    "King of the Murkmire.esp:LilmothBandit03",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit01",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit02",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit03",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit04",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit05"
+   ],
+   "gear": {
+    "low": [
+     {
+      "outfit": "King of the Murkmire.esp:SaxhleelLeatherOutfit01",
+      "value": 150
+     },
+     {
+      "outfit": "King of the Murkmire.esp:SaxhleelLeatherOutfit02",
+      "value": 175
+     }
+    ],
+    "mid": [
+     {
+      "outfit": "King of the Murkmire.esp:SaxhleelLeatherHeavyOutfit01",
+      "value": 200
+     },
+     {
+      "outfit": "King of the Murkmire.esp:AnXileelOutfit02",
+      "value": 875
+     }
+    ],
+    "high": [
+     {
+      "outfit": "King of the Murkmire.esp:AnXileelHeavyOutfit",
+      "value": 935
+     },
+     {
+      "outfit": "King of the Murkmire.esp:AnXileelOutfit01",
+      "value": 963
+     }
+    ]
+   }
+  },
+  "blackwood|Sul-Xan raiders": {
+   "records": [
+    "King of the Murkmire.esp:LilmothBandit03",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit01",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit02",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit03",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit04",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit05"
+   ],
+   "race": "argonian",
+   "why": "Tum-Taleel Argonian warriors and hunters, nearest tribal raiders",
+   "levels": [
+    1000,
+    1200,
+    1200,
+    1200,
+    1200,
+    1200
+   ],
+   "looks": [
+    "King of the Murkmire.esp:LilmothBandit03",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit01",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit02",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit03",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit04",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit05"
+   ],
+   "gear": {
+    "low": [
+     {
+      "outfit": "King of the Murkmire.esp:SaxhleelLeatherOutfit01",
+      "value": 150
+     },
+     {
+      "outfit": "King of the Murkmire.esp:SaxhleelLeatherOutfit02",
+      "value": 175
+     }
+    ],
+    "mid": [
+     {
+      "outfit": "King of the Murkmire.esp:SaxhleelLeatherHeavyOutfit01",
+      "value": 200
+     },
+     {
+      "outfit": "King of the Murkmire.esp:AnXileelOutfit02",
+      "value": 875
+     }
+    ],
+    "high": [
+     {
+      "outfit": "King of the Murkmire.esp:AnXileelHeavyOutfit",
+      "value": 935
+     },
+     {
+      "outfit": "King of the Murkmire.esp:AnXileelOutfit01",
+      "value": 963
+     }
+    ]
+   }
+  },
+  "blackwood|Lut-Eileel warbands": {
+   "records": [
+    "King of the Murkmire.esp:LilmothBandit03",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit01",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit02",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit03",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit04",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit05"
+   ],
+   "race": "argonian",
+   "why": "Tum-Taleel Argonian warriors and hunters, nearest tribal raiders",
+   "levels": [
+    1000,
+    1200,
+    1200,
+    1200,
+    1200,
+    1200
+   ],
+   "looks": [
+    "King of the Murkmire.esp:LilmothBandit03",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit01",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit02",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit03",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit04",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit05"
+   ],
+   "gear": {
+    "low": [
+     {
+      "outfit": "King of the Murkmire.esp:SaxhleelLeatherOutfit01",
+      "value": 150
+     },
+     {
+      "outfit": "King of the Murkmire.esp:SaxhleelLeatherOutfit02",
+      "value": 175
+     }
+    ],
+    "mid": [
+     {
+      "outfit": "King of the Murkmire.esp:SaxhleelLeatherHeavyOutfit01",
+      "value": 200
+     },
+     {
+      "outfit": "King of the Murkmire.esp:AnXileelOutfit02",
+      "value": 875
+     }
+    ],
+    "high": [
+     {
+      "outfit": "King of the Murkmire.esp:AnXileelHeavyOutfit",
+      "value": 935
+     },
+     {
+      "outfit": "King of the Murkmire.esp:AnXileelOutfit01",
+      "value": 963
+     }
+    ]
+   }
+  },
+  "blackwood|Hutan-Tzel outposts hostile to trespass": {
+   "records": [
+    "King of the Murkmire.esp:LilmothBandit03",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit01",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit02",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit03",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit04",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit05"
+   ],
+   "race": "argonian",
+   "why": "Tum-Taleel Argonian warriors and hunters, nearest tribal raiders",
+   "levels": [
+    1000,
+    1200,
+    1200,
+    1200,
+    1200,
+    1200
+   ],
+   "looks": [
+    "King of the Murkmire.esp:LilmothBandit03",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit01",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit02",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit03",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit04",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit05"
+   ],
+   "gear": {
+    "low": [
+     {
+      "outfit": "King of the Murkmire.esp:SaxhleelLeatherOutfit01",
+      "value": 150
+     },
+     {
+      "outfit": "King of the Murkmire.esp:SaxhleelLeatherOutfit02",
+      "value": 175
+     }
+    ],
+    "mid": [
+     {
+      "outfit": "King of the Murkmire.esp:SaxhleelLeatherHeavyOutfit01",
+      "value": 200
+     },
+     {
+      "outfit": "King of the Murkmire.esp:AnXileelOutfit02",
+      "value": 875
+     }
+    ],
+    "high": [
+     {
+      "outfit": "King of the Murkmire.esp:AnXileelHeavyOutfit",
+      "value": 935
+     },
+     {
+      "outfit": "King of the Murkmire.esp:AnXileelOutfit01",
+      "value": 963
+     }
+    ]
+   }
+  },
+  "chixathe-mesa|Sarpa raiders": {
+   "records": [
+    "King of the Murkmire.esp:LilmothBandit03",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit01",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit02",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit03",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit04",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit05"
+   ],
+   "race": "argonian",
+   "why": "Tum-Taleel Argonian warriors and hunters, nearest tribal raiders",
+   "levels": [
+    1000,
+    1200,
+    1200,
+    1200,
+    1200,
+    1200
+   ],
+   "looks": [
+    "King of the Murkmire.esp:LilmothBandit03",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit01",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit02",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit03",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit04",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit05"
+   ],
+   "gear": {
+    "low": [
+     {
+      "outfit": "King of the Murkmire.esp:SaxhleelLeatherOutfit01",
+      "value": 150
+     },
+     {
+      "outfit": "King of the Murkmire.esp:SaxhleelLeatherOutfit02",
+      "value": 175
+     }
+    ],
+    "mid": [
+     {
+      "outfit": "King of the Murkmire.esp:SaxhleelLeatherHeavyOutfit01",
+      "value": 200
+     },
+     {
+      "outfit": "King of the Murkmire.esp:AnXileelOutfit02",
+      "value": 875
+     }
+    ],
+    "high": [
+     {
+      "outfit": "King of the Murkmire.esp:AnXileelHeavyOutfit",
+      "value": 935
+     },
+     {
+      "outfit": "King of the Murkmire.esp:AnXileelOutfit01",
+      "value": 963
+     }
+    ]
+   }
+  },
+  "hatandros-bight|Sarpa raiders on the inland margin": {
+   "records": [
+    "King of the Murkmire.esp:LilmothBandit03",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit01",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit02",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit03",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit04",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit05"
+   ],
+   "race": "argonian",
+   "why": "Tum-Taleel Argonian warriors and hunters, nearest tribal raiders",
+   "levels": [
+    1000,
+    1200,
+    1200,
+    1200,
+    1200,
+    1200
+   ],
+   "looks": [
+    "King of the Murkmire.esp:LilmothBandit03",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit01",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit02",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit03",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit04",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit05"
+   ],
+   "gear": {
+    "low": [
+     {
+      "outfit": "King of the Murkmire.esp:SaxhleelLeatherOutfit01",
+      "value": 150
+     },
+     {
+      "outfit": "King of the Murkmire.esp:SaxhleelLeatherOutfit02",
+      "value": 175
+     }
+    ],
+    "mid": [
+     {
+      "outfit": "King of the Murkmire.esp:SaxhleelLeatherHeavyOutfit01",
+      "value": 200
+     },
+     {
+      "outfit": "King of the Murkmire.esp:AnXileelOutfit02",
+      "value": 875
+     }
+    ],
+    "high": [
+     {
+      "outfit": "King of the Murkmire.esp:AnXileelHeavyOutfit",
+      "value": 935
+     },
+     {
+      "outfit": "King of the Murkmire.esp:AnXileelOutfit01",
+      "value": 963
+     }
+    ]
+   }
+  },
+  "okuwun-rahei|Sarpa raiders": {
+   "records": [
+    "King of the Murkmire.esp:LilmothBandit03",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit01",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit02",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit03",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit04",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit05"
+   ],
+   "race": "argonian",
+   "why": "Tum-Taleel Argonian warriors and hunters, nearest tribal raiders",
+   "levels": [
+    1000,
+    1200,
+    1200,
+    1200,
+    1200,
+    1200
+   ],
+   "looks": [
+    "King of the Murkmire.esp:LilmothBandit03",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit01",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit02",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit03",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit04",
+    "King of the Murkmire.esp:KeelSakkaBridgeBandit05"
+   ],
+   "gear": {
+    "low": [
+     {
+      "outfit": "King of the Murkmire.esp:SaxhleelLeatherOutfit01",
+      "value": 150
+     },
+     {
+      "outfit": "King of the Murkmire.esp:SaxhleelLeatherOutfit02",
+      "value": 175
+     }
+    ],
+    "mid": [
+     {
+      "outfit": "King of the Murkmire.esp:SaxhleelLeatherHeavyOutfit01",
+      "value": 200
+     },
+     {
+      "outfit": "King of the Murkmire.esp:AnXileelOutfit02",
+      "value": 875
+     }
+    ],
+    "high": [
+     {
+      "outfit": "King of the Murkmire.esp:AnXileelHeavyOutfit",
+      "value": 935
+     },
+     {
+      "outfit": "King of the Murkmire.esp:AnXileelOutfit01",
+      "value": 963
+     }
+    ]
+   }
+  },
+  "barsaebica|Fenlord undead guarding Barsaebic ruins": {
+   "records": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSkeletonNaga1",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSkeletonNaga2",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSkeletonNaga3",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSkeletonNaga4",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSkeletonXan1",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSkeletonXan4",
+    "King of the Murkmire.esp:EncArgonianSkeletonMelee1H",
+    "King of the Murkmire.esp:EncArgonianSkeletonMelee2H"
+   ],
+   "race": "undead argonian/naga",
+   "why": "Argonian and Naga skeletons",
+   "levels": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    15,
+    15
+   ],
+   "looks": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSkeletonNaga1",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSkeletonNaga2",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSkeletonNaga3",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSkeletonNaga4",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSkeletonXan1",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSkeletonXan4",
+    "King of the Murkmire.esp:EncArgonianSkeletonMelee1H",
+    "King of the Murkmire.esp:EncArgonianSkeletonMelee2H"
+   ],
+   "gear": [],
+   "gear_note": "undead: the skeleton race is the look; each skeleton carries its own helmet or mask outfit from its record"
+  },
+  "nha-enasa|Kothringi ruin undead": {
+   "records": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSkeletonNaga1",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSkeletonNaga2",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSkeletonNaga3",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSkeletonNaga4",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSkeletonXan1",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSkeletonXan4",
+    "King of the Murkmire.esp:EncArgonianSkeletonMelee1H",
+    "King of the Murkmire.esp:EncArgonianSkeletonMelee2H"
+   ],
+   "race": "undead argonian/naga",
+   "why": "Argonian and Naga skeletons",
+   "levels": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    15,
+    15
+   ],
+   "looks": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSkeletonNaga1",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSkeletonNaga2",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSkeletonNaga3",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSkeletonNaga4",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSkeletonXan1",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSkeletonXan4",
+    "King of the Murkmire.esp:EncArgonianSkeletonMelee1H",
+    "King of the Murkmire.esp:EncArgonianSkeletonMelee2H"
+   ],
+   "gear": [],
+   "gear_note": "undead: the skeleton race is the look; each skeleton carries its own helmet or mask outfit from its record"
+  },
+  "chixathe-mesa|Velothi undead": {
+   "dropped": "no Dunmer undead actor"
+  },
+  "murkwood|Veeskhleel (Ghost People)": {
+   "records": [
+    "King of the Murkmire.esp:MugsumpVeeskhleel01",
+    "King of the Murkmire.esp:MugsumpVeeskhleel04",
+    "King of the Murkmire.esp:MugsumpVeeskhleel02",
+    "King of the Murkmire.esp:MugsumpVeeskhleel03",
+    "King of the Murkmire.esp:MugsumpVeeskhleel05",
+    "King of the Murkmire.esp:MugsumpVeeskhleel06",
+    "King of the Murkmire.esp:EncVeeskhleelNecromancer01"
+   ],
+   "race": "argonian",
+   "why": "Veeskhleel necromancer",
+   "levels": [
+    900,
+    900,
+    1000,
+    1000,
+    1200,
+    1200,
+    1200
+   ],
+   "looks": [
+    "King of the Murkmire.esp:MugsumpVeeskhleel01",
+    "King of the Murkmire.esp:MugsumpVeeskhleel04",
+    "King of the Murkmire.esp:MugsumpVeeskhleel02",
+    "King of the Murkmire.esp:MugsumpVeeskhleel03",
+    "King of the Murkmire.esp:MugsumpVeeskhleel05",
+    "King of the Murkmire.esp:MugsumpVeeskhleel06",
+    "King of the Murkmire.esp:EncVeeskhleelNecromancer01"
+   ],
+   "gear": {
+    "low": [
+     {
+      "items": [
+       "King of the Murkmire.esp:SaxhleelTribalRobes",
+       "King of the Murkmire.esp:SaxhleelTribalBoots",
+       "King of the Murkmire.esp:SaxhleelTribalBracers"
+      ],
+      "value": 140
+     },
+     {
+      "outfit": "King of the Murkmire.esp:SaxhleelLeatherOutfit01",
+      "value": 150
+     }
+    ],
+    "mid": [
+     {
+      "items": [
+       "King of the Murkmire.esp:SaxhleelTunicGrey01Mage",
+       "King of the Murkmire.esp:SaxhleelTribalBoots",
+       "King of the Murkmire.esp:SaxhleelTribalBracers",
+       "King of the Murkmire.esp:SaxhleelTribalCirclet"
+      ],
+      "value": 340
+     },
+     {
+      "outfit": "King of the Murkmire.esp:SaxhleelLeatherHeavyOutfit01",
+      "value": 200
+     }
+    ],
+    "high": [
+     {
+      "outfit": "King of the Murkmire.esp:VeeskhleelMugsumpBossOutfit",
+      "value": 1340
+     },
+     {
+      "items": [
+       "King of the Murkmire.esp:MugsumpNecromancerMask01",
+       "King of the Murkmire.esp:SaxhleelTunicPurple01Mage",
+       "King of the Murkmire.esp:SaxhleelTribalBoots",
+       "King of the Murkmire.esp:SaxhleelTribalBracers",
+       "King of the Murkmire.esp:SaxhleelAmulet01"
+      ],
+      "value": 1690
+     }
+    ]
+   }
+  },
+  "murkwood|Hist-root zealots who kill outsiders without leave": {
+   "records": [
+    "King of the Murkmire.esp:TOSAnXileelAlchemist01",
+    "King of the Murkmire.esp:TOSAnXileelLibrarian01",
+    "King of the Murkmire.esp:TOSAnXileelGardener03",
+    "King of the Murkmire.esp:TOSAnXileelAlchemist02",
+    "King of the Murkmire.esp:TOSAnXileelGardener01",
+    "King of the Murkmire.esp:TOSAnXileelStairs01Guard01",
+    "King of the Murkmire.esp:TOSAnXileelStairs01Guard02",
+    "King of the Murkmire.esp:TOSAnXileelEnchanter01"
+   ],
+   "race": "argonian",
+   "why": "An-Xileel mages",
+   "levels": [
+    2000,
+    2000,
+    2000,
+    2000,
+    2000,
+    3000,
+    3000,
+    4000
+   ],
+   "looks": [
+    "King of the Murkmire.esp:TOSAnXileelAlchemist01",
+    "King of the Murkmire.esp:TOSAnXileelLibrarian01",
+    "King of the Murkmire.esp:TOSAnXileelGardener03",
+    "King of the Murkmire.esp:TOSAnXileelAlchemist02",
+    "King of the Murkmire.esp:TOSAnXileelGardener01",
+    "King of the Murkmire.esp:TOSAnXileelStairs01Guard01",
+    "King of the Murkmire.esp:TOSAnXileelStairs01Guard02",
+    "King of the Murkmire.esp:TOSAnXileelEnchanter01"
+   ],
+   "gear": {
+    "low": [
+     {
+      "items": [
+       "King of the Murkmire.esp:SaxhleelTribalRobes",
+       "King of the Murkmire.esp:SaxhleelTribalBoots",
+       "King of the Murkmire.esp:SaxhleelTribalBracers"
+      ],
+      "value": 140
+     },
+     {
+      "items": [
+       "King of the Murkmire.esp:AnWamasuRobe",
+       "King of the Murkmire.esp:AnWamasuHood",
+       "King of the Murkmire.esp:AnWamasuBoots"
+      ],
+      "value": 163
+     }
+    ],
+    "mid": [
+     {
+      "items": [
+       "King of the Murkmire.esp:SaxhleelTunicGrey01Mage",
+       "King of the Murkmire.esp:ArgonianWarriorBoots",
+       "King of the Murkmire.esp:ArgonianWarriorBracers"
+      ],
+      "value": 500
+     },
+     {
+      "outfit": "King of the Murkmire.esp:AnXileelXulneihavuOutfit",
+      "value": 550
+     }
+    ],
+    "high": [
+     {
+      "items": [
+       "King of the Murkmire.esp:SaxhleelTunicPurple01Mage",
+       "King of the Murkmire.esp:ArgonianWarriorBoots",
+       "King of the Murkmire.esp:ArgonianWarriorBracers",
+       "King of the Murkmire.esp:KoTMQuest05RewardMask",
+       "King of the Murkmire.esp:SaxhleelAmulet02"
+      ],
+      "value": 1000
+     },
+     {
+      "items": [
+       "King of the Murkmire.esp:SaxhleelTunicGrey01Mage",
+       "King of the Murkmire.esp:ArgonianWarriorBoots",
+       "King of the Murkmire.esp:ArgonianWarriorBracers",
+       "King of the Murkmire.esp:ArgonianWarriorMaskNPC",
+       "King of the Murkmire.esp:SaxhleelAmulet03",
+       "King of the Murkmire.esp:StaffTemplateSaxhleel"
+      ],
+      "value": 1260
+     }
+    ]
+   }
+  }
+ }
+}

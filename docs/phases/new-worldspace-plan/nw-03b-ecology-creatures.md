@@ -32,4 +32,10 @@ DO NOT change the terrain or trees or scatter or groundcover. Do not do anything
 - Harvestables already in the world: 31 King of the Murkmire FLOR bases with ingredients, 35,343 refs, placed by the flora stage.
 - Pad route: a lesser power "Argonia Travel" (nested menus, data in `newworld/sources/travel/menu.json`, scripts in `papyrus/ANW_Travel*.psc`); built at the next world rebuild, compiled by deploy.
 
-Owed: the ecology stage (creature and NPC refs by band and habitat, new harvestables), its checks and readback, the rebuild and deploy, docs/design/ecology.md, the skill recipe, and the owner's walk (nw-03b-walk.md).
+# Delivered (round 2: the ecology stage)
+
+- Every creature kind bound to real records or dropped with its reason (`newworld/sources/ecology/bindings.json`: 68 of 96 kinds, 167 records); each lore-backed hostile group bound to varied looks and band gear tiers.
+- The rebuild stage `ecology` (`tools/newworld/ecology/place.py`), its check and its readback rows; band actors at fixed levels written as ACHR by the world writer; green on the small world (91 actors). The recipe: [ecology](../../design/ecology.md).
+- Harvestables measured per region against Skyrim and the region tables (ecology.md, Harvestables); none added.
+
+Owed: the full rebuild and deploy, binding the regions' lore harvestables to FLOR and INGR records where a region lacks them (the sea first), and the owner's walk (nw-03b-walk.md).

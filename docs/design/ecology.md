@@ -47,6 +47,13 @@ A cell (never a margin cell, a held cell of a built place, or a teleport landing
    Variety comes by chance in direct placement, as Skyrim's fixed placements do.
 5. Hostile people: in D2 and over, a land cell holds a roaming group of its region's bound lore groups with chance
    1% (D2) to 4% (D5), 2 to 6 strong by band, on open dry ground, at the band's foe level.
+   Each member's look is a flat draw from its people's looks (at least 4 existing NPC_ records of the lore's race
+   and both sexes, their own faces; no FaceGen work), and its kit a flat draw from its band's gear tier (low D2,
+   mid D3, high D4 and D5; at least 2 sets each): a flat outfit of a plugin we hold, or our own outfit of listed
+   armour and weapons, never a levelled list. Kit is what that people would own, its value rising with the band:
+   Naga from Naga hide to Naga elite (mean value 18, 392, 940); tribal Argonians from Saxhleel leather to An-Xileel
+   reel armour (162, 538, 949); Veeskhleel and Hist zealots their robes, mage kit and masks; undead their own bones.
+   Nothing Nordic. The check holds each group to 4 looks and 2 sets a tier, its mean value rising tier on tier.
 
 Every draw is seeded by the cell, so a rerun writes the same bytes. Each actor's id is in the `ecology` range of
 tools/newworld/idspace.py (0xF00000..0xFDFFFF), its identity's digest (cell, kind, ordinal), probed on a collision.

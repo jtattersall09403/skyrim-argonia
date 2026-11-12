@@ -301,13 +301,13 @@ def build(out: Path) -> dict:
                 row = {"habitat": "open", "size_class": "npc"}
                 kind = "npc:" + re.sub(r"[^a-z]+", "-", gb.get("race", "people").lower()).strip("-")
                 looks = gb.get("looks") or gb["records"]
-                tier = gb.get("gear", {}).get(GEAR_TIER[band]) or []
+                tier = (gb.get("gear") or {}).get(GEAR_TIER[band]) or []
                 for _ in range(int(rng.integers(lo, hi + 1))):
                     look = looks[int(rng.integers(len(looks)))]          # a flat draw: any face of the people
-                    g = int(rng.integers(len(tier))) if tier else -1      # a flat draw from the band's gear tier
+                    gi = int(rng.integers(len(tier))) if tier else -1      # a flat draw from the band's gear tier
                     placed += spot(cv, row, 1, band, True, rng, cx, cy, kind=kind, size="npc",
-                                   rec=look + (f"~{GEAR_TIER[band]}{g}" if g >= 0 else ""), people=True,
-                                   gear=tier[g] if g >= 0 else None)
+                                   rec=look + (f"~{GEAR_TIER[band]}{gi}" if gi >= 0 else ""), people=True,
+                                   gear=tier[gi] if gi >= 0 else None)
             ordinal = Counter()
             for p in placed[:CAP[band]]:
                 ident = f"{cx},{cy}/{p['kind']}/{ordinal[p['kind']]}"
@@ -443,7 +443,7 @@ def check(out: Path) -> int:
         if not gb.get("records"):
             continue
         looks = gb.get("looks") or gb["records"]
-        tiers = gb.get("gear", {})
+        tiers = gb.get("gear") or {}
         mean = {t: (sum(e["value"] for e in tiers[t]) / len(tiers[t]) if tiers.get(t) else None) for t in ("low", "mid", "high")}
         variety[gk] = {"looks": len(set(looks)), "gear": {t: len(tiers.get(t, [])) for t in ("low", "mid", "high")}, "mean_value": mean}
         if len(set(looks)) < MIN_LOOKS:
