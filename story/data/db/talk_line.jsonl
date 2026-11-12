@@ -554,15 +554,15 @@
 {"talker":"08D5F1:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Weesa-Nur lives just south-south-east of here. Be careful, buyer. She is a busybody who will count your coin before you do. Hah."}
 {"talker":"08D5F1:Black Marsh North.esp","topic":"talk.trade","ord":1,"text":"I trade by boat. Okan-Zish and Wuleen-Taza work the landing, a fair way south of here. They tell every customer I cheat them. I say they should buy a boat of their own. Hah."}
 {"talker":"08D5F1:Black Marsh North.esp","topic":"talk.trade","ord":2,"text":"Out in the deep interior food, tools and safe passage are worth more than coin. Remember that, buyer, when you are hungry and a boat is the only road. Hah."}
-{"talker":"0934BA:Black Marsh North.esp","topic":"talk.directions","ord":1,"text":"Thorn, civilian? Go north, a hundred and ninety-odd paces, and you're in the town's centre square."}
+{"talker":"0934BA:Black Marsh North.esp","topic":"talk.directions","ord":1,"text":"Thorn, civilian? It lies north of here, a short walk. Don't dawdle."}
 {"talker":"0934BA:Black Marsh North.esp","topic":"talk.greet-friend","ord":1,"text":"Stand easy. The ship's quiet and the men are paid."}
 {"talker":"0934BA:Black Marsh North.esp","topic":"talk.greet-stranger","ord":1,"text":"State your business, civilian. I've men to pay and a ship to mind."}
 {"talker":"0934BA:Black Marsh North.esp","topic":"talk.greet-stranger","ord":2,"text":"Well, civilian? Say it plainly, I haven't the time for talk."}
-{"talker":"0934BA:Black Marsh North.esp","topic":"talk.here","ord":1,"text":"These are the south docks. The big ship is about a dozen paces east of here, and I'd keep clear of it."}
+{"talker":"0934BA:Black Marsh North.esp","topic":"talk.here","ord":1,"text":"These are the south docks. The big ship is just east of here, and I'd keep clear of it."}
 {"talker":"0934BA:Black Marsh North.esp","topic":"talk.lore","ord":1,"text":"Thorn's name? Ask Bites-The-Coin, civilian. I keep my men paid and in order, and I've no more to say about the town."}
-{"talker":"0934BA:Black Marsh North.esp","topic":"talk.secret","ord":1,"text":"That's not for a stranger. I'll say it once, civilian. There's cargo behind the ship's door, twenty paces east, that's on no tally. Repeat it and you'll answer to me."}
+{"talker":"0934BA:Black Marsh North.esp","topic":"talk.secret","ord":1,"text":"That's not for a stranger. I'll say it once, civilian. There's cargo behind the ship's door, just east of here, that's on no tally. Repeat it and you'll answer to me."}
 {"talker":"0934BA:Black Marsh North.esp","topic":"talk.self","ord":1,"text":"Aulus Varrenius, sergeant. I lead a company that came on the big ship and hires out to the field-owners hereabouts. We serve no Empire; there's been none here for two centuries."}
-{"talker":"0934BA:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Decimus Pell, archer of my company, is three paces south-south-east. Ask him what you like, civilian. Keep it short."}
+{"talker":"0934BA:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Decimus Pell, archer of my company, is just south-south-east of here. Ask him what you like, civilian. Keep it short."}
 {"talker":"0934BB:Black Marsh North.esp","topic":"talk.greet-friend","ord":1,"text":"It's you. Good. Stand where I can see the wind on you and tell me what you need."}
 {"talker":"0934BB:Black Marsh North.esp","topic":"talk.greet-stranger","ord":1,"text":"Stranger. State your business, and keep your hands where I can see them."}
 {"talker":"0934BB:Black Marsh North.esp","topic":"talk.here","ord":1,"text":"You want the dock, stranger? It's about twenty paces north-east of here."}
