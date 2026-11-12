@@ -36,7 +36,7 @@ possible, rich and alive", and exits 1 on any failure. Per region:
 - b. On land, a benign and a hostile kind among the tiny, the small and the game (defensive counts as hostile: it
   fights back); predators and monsters are hostile by the lore.
 - c. At least 4 kinds no bordering region has (borders: 3 or more shared cell edges in `cell_region.json`), and no
-  two regions sharing more than half their kinds (Jaccard, the stage's own bound).
+  two neighbouring regions sharing more than half their kinds (Jaccard, the stage's own bound).
 - d. Each water kind of the region (fresh, brackish, salt; 20,000 m2 or more in `water_classified.json`) has a
   swimmer of that water.
 - e. Every kind bound to a true model: records or a critter base; never dropped, never a `why` that says nearest or
@@ -166,7 +166,7 @@ weapon value rises, and no actor carries a player-level multiplier, template or 
 ## Checks
 
 The stage's check (fails the stage): every actor on ground or water of its kind; none in a held, landing or margin
-cell; no cell over its band's cap; no hostile in D0; levels as the band's; ids in range and once; no two regions
+cell; no cell over its band's cap; no hostile in D0; levels as the band's; ids in range and once; no two neighbouring regions
 sharing more than half their kinds; creatures per class within 0.5 to 1.6 of Skyrim's measure times band density
 where 20 or more are expected. For critters: every spawner on ground or water of its kind, on the base its kind
 binds, a night or day kind on a spawner of that time, outside held cells, ids once and in range, at most 8 a cell,

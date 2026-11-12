@@ -175,7 +175,7 @@
    "kind": "restless-dead",
    "size_class": "predator",
    "hostility": "hostile",
-   "habitat": "rock",
+   "habitat": "any",
    "time": "night",
    "group": [
     1,
@@ -183,7 +183,7 @@
    ],
    "signature": true,
    "asset": "vanilla",
-   "extrapolation": "ruin ghosts and undead named in region dangers of the Velothi ruin country"
+   "extrapolation": "ruin ghosts and undead named in region dangers of the Velothi ruin country; on any dry ground, since the channel country holds no rock outcrop for them"
   },
   {
    "kind": "fleshfly",

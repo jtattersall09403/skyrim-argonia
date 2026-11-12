@@ -531,7 +531,12 @@ def check(out: Path) -> int:
         if b and k > CAP[b]:
             faults.append(f"cell {cx},{cy}: {k} actors over the cap {CAP[b]} of {b}")
     kr = {r: set(k for k in v if not k.startswith("npc:")) for r, v in res["kinds_by_region"].items()}
-    jac = {f"{a}~{b}": round(len(kr[a] & kr[b]) / len(kr[a] | kr[b]), 2) for a in kr for b in kr if a < b and kr[a] | kr[b]}
+    # neighbours only, as the roster check and the identity sheets judge them: walking from one region into the next
+    # must change what lives there; two seas on opposite coasts may share the open sea's few kinds
+    from tools.newworld.ecology import roster_check
+    nbr = roster_check.neighbours(json.loads(roster_check.CELL_REGION.read_text())) if roster_check.CELL_REGION.exists() else {}
+    jac = {f"{a}~{b}": round(len(kr[a] & kr[b]) / len(kr[a] | kr[b]), 2) for a in kr for b in kr
+           if a < b and kr[a] | kr[b] and (not nbr or b in nbr.get(a, ()))}
     worst = max(jac.values(), default=0.0)
     if worst > 0.5:
         faults.append(f"regions too alike: {max(jac, key=jac.get)} share {worst} of their kinds")
