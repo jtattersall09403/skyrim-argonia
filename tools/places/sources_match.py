@@ -166,16 +166,22 @@ def classify(c: dict) -> tuple[str, str]:
     tags = c.get("tags") or {}
     res, en = c.get("residents", 0), c.get("enemies", 0)
     kind, why = None, ""
+    own = f"{cand_name(c)} {c.get('edid') or ''}"
+    if re.search(r"cave|grotto|cavern", own, re.I) and ("LocSetCave" in kws or (c.get("marker") or {}).get("type") == "Cave"):
+        return "cave", "a cave by its name and keyword"
+    if re.search(r"hrothgar|monastery", own, re.I):
+        return "shrine", "a monastery by its name"
     for kw, k in KW_KIND:
         if kw in kws:
             kind, why = k, kw
             break
     if kind is None and c.get("marker") and MARKER_KIND.get(c["marker"]["type"]):
         kind, why = MARKER_KIND[c["marker"]["type"]], f"marker {c['marker']['type']}"
-    text = f"{cand_name(c)} {c.get('edid') or ''} {' '.join(c.get('interior_names') or [])}"
     if kind in (None, "landmark", "village"):
-        for rx, k in NAME_KIND:
-            if re.search(rx, text, re.I):
+        inner = " ".join(c.get("interior_names") or [])
+        hit = next(((rx, k) for rx, k in NAME_KIND if re.search(rx, own, re.I)), None) \
+            or next(((rx, k) for rx, k in NAME_KIND if re.search(rx, inner, re.I)), None)
+        for rx, k in [hit] if hit else []:
                 if kind == "village" and k not in ("town", "city", "farm", "dock", "estate"):
                     break
                 kind, why = k, f"name '{rx}'"
@@ -250,6 +256,10 @@ def load_candidates() -> tuple[list[dict], dict]:
             if not c.get("cells") or not c.get("worldspace"):
                 dropped["no exterior"] += 1
                 continue
+            if {"LocTypeHold", "LocTypeHoldMajor", "LocTypeHoldCapital"} & set(c.get("keywords") or []) \
+                    or re.search(r"Hold(Location)?$|Apocrypha|Worldspace|Region", c.get("edid") or ""):
+                dropped["a hold or a whole worldspace"] += 1
+                continue
             if c["counts"].get("refs", 0) < 15:
                 dropped["under 15 refs"] += 1
                 continue
@@ -267,7 +277,89 @@ def load_candidates() -> tuple[list[dict], dict]:
             c["kind"], c["kind_why"] = classify(c)
             c["description"] = description(c)
             out.append(c)
-    return out, dict(dropped)
+    reps = physical_groups(out)
+    dropped["aliases of one physical place"] = len(out) - len(reps)
+    name_unnamed(reps)
+    return reps, dict(dropped)
+
+
+OVERHAULS = {"dawnofskyrim", "greyquarter", "dosgq"}   # mods that rebuild a vanilla town in its own cells
+UNNAMED = re.compile(r"^\S+ -?\d+,-?\d+$")
+
+
+CITY_WORLD = re.compile(r"^(Whiterun|Solitude|Markarth|Riften|Windhelm)World$")
+
+
+def footprint(c: dict) -> set:
+    """The cells that stand for a candidate when telling places apart: a bare map marker's own cell, else all;
+    a walled city's own worldspace is one place whatever cells of it a candidate holds."""
+    m = CITY_WORLD.match(c.get("worldspace_edid") or "") or re.match(
+        r"^(Whiterun|Solitude|Markarth|Riften|Windhelm)Location$", c.get("edid") or "")
+    if m:
+        return {("city", m.group(1))}
+    if c.get("marker") and not c.get("location") and "cluster" not in (c.get("keywords") or []):
+        return {(c["worldspace"], *c["marker"]["cell"])}
+    if c.get("group") in OVERHAULS:  # an overhaul's cluster belongs to the town it extends, a cell beyond it included
+        return {(c["worldspace"], x + dx, y + dy) for x, y in c["cells"] for dx in (-1, 0, 1) for dy in (-1, 0, 1)}
+    return {(c["worldspace"], x, y) for x, y in c["cells"]}
+
+
+def physical_groups(cands: list[dict]) -> list[dict]:
+    """One row per physical place: candidates whose cells overlap in one worldspace
+    are one place (a location and its map marker, a mod's overhaul of a vanilla town). The richest (most refs)
+    stands for the group; the rest are its aliases."""
+    parent = list(range(len(cands)))
+
+    def find(i):
+        while parent[i] != i:
+            parent[i] = parent[parent[i]]
+            i = parent[i]
+        return i
+    owner: dict = {}
+    for i, c in enumerate(cands):
+        for k in footprint(c):
+            if k in owner:
+                parent[find(i)] = find(owner[k])
+            else:
+                owner[k] = i
+    groups = defaultdict(list)
+    for i in range(len(cands)):
+        groups[find(i)].append(cands[i])
+    reps = []
+    for members in groups.values():
+        members.sort(key=lambda c: -c["counts"].get("refs", 0))
+        rep = dict(members[0])
+        rep["aliases"] = [m["source_id"] for m in members[1:]]
+        town = next((m for m in members if m["group"] == "skyrim" and m.get("location")), None)
+        if rep["group"] in OVERHAULS and town:  # an overhauled town keeps the town's name
+            rep["name"] = f"{town['name']} ({rep['credit']})"
+            rep["description"] = description(rep)
+        if UNNAMED.match(rep["name"]):
+            rep["name"] = next((m["name"] for m in members if not UNNAMED.match(m["name"])), rep["name"])
+        reps.append(rep)
+    return reps
+
+
+def name_unnamed(reps: list[dict]) -> None:
+    named = [(r["worldspace"], r["cells"][0], r["name"]) for r in reps if not UNNAMED.match(r["name"])]
+    for r in reps:
+        if not UNNAMED.match(r["name"]):
+            continue
+        x, y = r["cells"][0]
+        near = min(((abs(cx - x) + abs(cy - y), n) for ws, (cx, cy), n in named if ws == r["worldspace"]), default=None)
+        if near and near[0] <= 3:
+            r["name"] = f"near {near[1]}"
+            r["description"] = description(r)
+
+
+def check_unique(srcs: list[dict]) -> None:
+    """No two allocated sources stand on one cell of one worldspace."""
+    seen: dict = {}
+    for c in srcs:
+        for k in footprint(c):
+            if k in seen and seen[k] != c["source_id"]:
+                raise AssertionError(f"allocated sources {seen[k]} and {c['source_id']} share cell {k}")
+            seen[k] = c["source_id"]
 
 
 def place_features() -> tuple[list[dict], dict]:
@@ -392,7 +484,8 @@ def main(argv: list[str]) -> int:
     # fixed allocations leave the pool first
     fixed = {}
     for place_id, (source_id, rx) in FIXED.items():
-        j = next((j for j, c in enumerate(cands) if rx.search(c["source_id"])), None)
+        j = next((j for j, c in enumerate(cands) if rx.search(c["source_id"])
+                  or any(rx.search(a) for a in c.get("aliases") or [])), None)
         fixed[place_id] = (source_id, j)
     cost = np.empty_like(total)
     for i, p in enumerate(places):
@@ -405,6 +498,7 @@ def main(argv: list[str]) -> int:
             cost[pid[place_id], j] = 0
     rows, cols = linear_sum_assignment(cost)
     alloc = dict(zip(rows.tolist(), cols.tolist()))
+    check_unique([cands[j] for j in alloc.values()])
     MATCH.mkdir(parents=True, exist_ok=True)
     used: dict[str, dict] = {}
     match_rows, ranked = [], {}
@@ -440,6 +534,7 @@ def main(argv: list[str]) -> int:
             "enemies": c.get("enemies", 0), "buildings": c["counts"].get("building", 0), "refs": c["counts"].get("refs", 0),
             "footprint_m": max(c["footprint_m"]) if c.get("footprint_m") else None,
             "wet_share": round(c.get("wet_cells", 0) / max(1, c.get("land_cells", 0)), 2),
+            "aliases": ",".join(c.get("aliases") or []) or None,
             "culture_tags": ",".join(k for k, _ in sorted(culture_tags(c).items(), key=lambda x: -x[1])[:3]) or None,
             "description": c["description"],
         })

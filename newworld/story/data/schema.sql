@@ -1057,6 +1057,7 @@ CREATE TABLE "source_place" (
   "refs" INTEGER NOT NULL,
   "footprint_m" REAL,
   "wet_share" REAL NOT NULL,             -- share of its land cells with ground under water
+  "aliases" TEXT,                        -- other mined rows of the same physical place, comma-separated
   "culture_tags" TEXT,                   -- its tilesets' cultures, commonest first
   "description" TEXT NOT NULL
 );

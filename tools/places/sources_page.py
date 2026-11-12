@@ -83,13 +83,36 @@ def main(argv: list[str]) -> int:
              (f"{pb} → {pa}", "total population, before → after")]
     w("<div class=tiles>" + "".join(f"<div class=tile><b>{e(v)}</b><span>{e(t)}</span></div>" for v, t in tiles) + "</div>")
 
+    nordic = sorted(f"{places[r['place_id']]['name']} ({src[r['source_place_id']]['name']})" for r in a0
+                    if src[r["source_place_id"]]["mined_group"] == "skyrim" and src[r["source_place_id"]]["kind"] in ("city", "town")
+                    and places[r["place_id"]]["place_kind_id"] in ("city", "town"))
+    weak = Counter(places[r["place_id"]]["place_kind_id"] for r in a0
+                   if places[r["place_id"]]["place_kind_id"] in ("ayleid-ruin", "velothi-ruin", "kothringi-ruin", "lilmothiit-ruin", "sunken-ruin")
+                   and not src[r["source_place_id"]]["kind"].startswith("ruin-argonian")
+                   and src[r["source_place_id"]]["kind"] not in ("ruin-ayleid", "ruin-dunmer"))
+    w("<h2>Calls for you</h2><ol>"
+      f"<li><b>Skyrim's Nordic towns as layouts.</b> {len(nordic)} of our cities and towns take their street plan and "
+      f"buildings from a Skyrim town: {e('; '.join(nordic))}. Every Nordic piece would be swapped for a Black Marsh one "
+      "when the place is drafted, but the shape of the town stays Skyrim's. Is that acceptable, or should these wait "
+      "for a better source?</li>"
+      f"<li><b>Too few ruins of the right cultures.</b> {sum(weak.values())} of our ruins ("
+      + e(", ".join(f"{v} {k}" for k, v in weak.most_common()))
+      + ") got a ruin of another culture (mostly Dwemer ruins or caves), because the plugins we hold have few "
+      "Ayleid, Velothi or Argonian ruins. Do you want us to look for more ruin mods to mine?</li></ol>"
+      "<p class=muted>Reply on the owner check, or edit any place's source later in the studio.</p>")
     w("<h2>How similar, by importance</h2><p class=muted>Importance 5 shapes the province, 1 is local colour. The "
       "allocation weighs a major place six times a minor one, so the major places should score highest.</p>")
     w("<div class=scroll><table><tr><th>Importance</th><th class=n>Places</th><th class=n>Mean</th><th class=n>Lowest</th>"
-      "<th class=n>Median</th><th>Spread (each bar a place)</th></tr>")
+      "<th class=n>Median</th><th>Spread (tenths, 0 to 1)</th></tr>")
     for i in (5, 4, 3, 2, 1):
         s = sorted(r["score"] for r in a0 if imp[r["place_id"]] == i)
-        bars = "".join(f"<span class=bar title='{x:.2f}' style='width:3px;height:{max(2, round(x * 26))}px;margin-right:1px'></span>" for x in s)
+        bins = [0] * 10
+        for x in s:
+            bins[min(9, int(x * 10))] += 1
+        top = max(bins)
+        bars = ("<svg viewBox='0 0 100 24' width=150 height=24 role=img aria-label='scores 0 to 1 in tenths'>"
+                + "".join(f"<rect x={b * 10 + 1} y={24 - 22 * n / top:.1f} width=8 height={22 * n / top:.1f} fill='var(--bar)'/>"
+                          for b, n in enumerate(bins) if n) + "</svg>")
         w(f"<tr><td>{i}</td><td class=n>{len(s)}</td><td class=n>{statistics.mean(s):.2f}</td><td class=n>{s[0]:.2f}</td>"
           f"<td class=n>{statistics.median(s):.2f}</td><td style='white-space:nowrap'>{bars}</td></tr>")
     w("</table></div>")
@@ -123,20 +146,21 @@ def main(argv: list[str]) -> int:
           f"<div class=muted>Population {r0.get('population_before')} → {r0.get('population_after')}: {e(r0.get('population_why'))}</div>"
           f"<ol class=alts>" + "".join(f"<li>{srcline(by[p['id']][k])}</li>" for k in (1, 2, 3) if k in by[p["id"]]) + "</ol></div>")
 
-    def table(rows, title, note):
+    def table(rows, title, note, why=True):
         w(f"<h2>{title}</h2><p class=muted>{note}</p><div class=scroll><table><tr><th>Our place</th><th>Kind</th><th class=n>Imp.</th>"
-          "<th>Source</th><th>Source kind</th><th class=n>Score</th><th>Why</th></tr>")
+          "<th>Source</th><th>Source kind</th><th class=n>Score</th>" + ("<th>Why</th>" if why else "") + "</tr>")
         for r in rows:
             p, s = places[r["place_id"]], src[r["source_place_id"]]
             w(f"<tr><td>{e(p['name'])}</td><td>{e(p['place_kind_id'])}</td><td class=n>{p['importance']}</td>"
               f"<td>{e(s['name'])} <span class=muted>({e(s['plugin'])})</span></td><td>{e(s['kind'])}</td>"
-              f"<td class=n>{r['score']:.2f}</td><td class=muted>{e(r['why'])}</td></tr>")
+              f"<td class=n>{r['score']:.2f}</td>" + (f"<td class=muted>{e(r['why'])}</td>" if why else "") + "</tr>")
         w("</table></div>")
 
     table(sorted(a0, key=lambda r: r["score"])[:25], "The 25 weakest matches",
           "Where the best unique source we hold is still a poor fit; a better source would need a plugin we do not mine.")
     table(sorted(mism, key=lambda r: (-imp[r["place_id"]], r["score"])), f"Source of another family ({len(mism)})",
-          "Our place is one family (settlement, camp, military, ruin, underground, water, landmark) and its source another.")
+          "Our place is one family (settlement, camp, military, ruin, underground, water, landmark) and its source another.",
+          why=False)
 
     w("<h2>Population</h2>")
     ch = Counter()
