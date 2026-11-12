@@ -95,8 +95,8 @@
     "extrapolation": "a small thing the region's named life or history would leave"
    },
    "creature": {
-    "kind": "glowgill-guar",
-    "cite": "story/lore/topics/fauna-hazards.md#Domesticated and useful animals"
+    "kind": "sea-drake",
+    "cite": "story/lore/topics/fauna-hazards.md#Apex and set-piece creatures"
    }
   },
   "aphon-isle": {
@@ -153,7 +153,7 @@
     "extrapolation": "a small thing the region's named life or history would leave"
    },
    "creature": {
-    "kind": "sea-lion",
+    "kind": "lurker-shark",
     "cite": "newworld/sources/ecology/regions/aphon-isle.json"
    }
   },
@@ -211,7 +211,7 @@
     "extrapolation": "a small thing the region's named life or history would leave"
    },
    "creature": {
-    "kind": "parrot",
+    "kind": "stalker-cat",
     "cite": "newworld/sources/ecology/regions/arnesian-jungle.json"
    }
   },
@@ -327,8 +327,8 @@
     "extrapolation": "a small thing the region's named life or history would leave"
    },
    "creature": {
-    "kind": "osheeja-gar",
-    "cite": "story/lore/topics/fauna-hazards.md#Domesticated and useful animals ; newworld/story/data/db/region_note.jsonl#banujha-basin/ecology"
+    "kind": "hackwing",
+    "cite": "story/lore/topics/fauna-hazards.md#Everyday hazards ; newworld/story/data/db/region_note.jsonl#banujha-basin/ecology"
    }
   },
   "barsaebica": {
@@ -733,8 +733,8 @@
     "extrapolation": "a small thing the region's named life or history would leave"
    },
    "creature": {
-    "kind": "mangrove-crab",
-    "cite": "newworld/sources/ecology/regions/kotherra-mangroves.json"
+    "kind": "ripper-eel",
+    "cite": "story/lore/topics/ecology-encounters-loot.md#Creature notes that change how a fight plays"
    }
   },
   "lake-ulaish": {
@@ -791,7 +791,7 @@
     "extrapolation": "a small thing the region's named life or history would leave"
    },
    "creature": {
-    "kind": "reed-heron",
+    "kind": "river-otter",
     "cite": "newworld/sources/ecology/regions/lake-ulaish.json"
    }
   },
@@ -828,7 +828,7 @@
    },
    "sound": {
     "day": "cicadas",
-    "night": "frog-chorus",
+    "night": "night-crickets",
     "cite": "newworld/story/data/db/region_note.jsonl#murkwood/ecology",
     "extrapolation": "the beds the region's named animals, water and weather would make"
    },
@@ -907,7 +907,7 @@
     "extrapolation": "a small thing the region's named life or history would leave"
    },
    "creature": {
-    "kind": "dragonfly",
+    "kind": "reed-borer",
     "cite": "newworld/sources/ecology/regions/nha-enasa.json"
    }
   },
@@ -1197,7 +1197,7 @@
     "extrapolation": "a small thing the region's named life or history would leave"
    },
    "creature": {
-    "kind": "hermit-crab",
+    "kind": "fire-beetle",
     "cite": "newworld/sources/ecology/regions/skeith-isle.json"
    }
   },
@@ -1255,7 +1255,7 @@
     "extrapolation": "a small thing the region's named life or history would leave"
    },
    "creature": {
-    "kind": "manta-ray",
+    "kind": "great-sea-turtle",
     "cite": "newworld/sources/ecology/regions/topal-bay.json"
    }
   },
