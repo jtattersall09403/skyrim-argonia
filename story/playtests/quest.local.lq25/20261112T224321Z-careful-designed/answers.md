@@ -1,0 +1,7 @@
+1. I'm not sure there is anything left. My last journal check was after reporting to Sells-Dear, and as far as I remember it showed no active objective. If anything is next, it would be seeing whether the rafters face consequences or whether Sells-Dear gives me more work. I would check the journal and look around once more, but I don't have a clear lead.
+
+2. Nobody formally. I did the crocodile job for Okan-Zish, and then I took the evidence to Sells-Dear, the captain, because the crew had put people in danger and hurt a rival. He paid me 60 gold, so I am a freelancer who did a job for him, not someone on his payroll. I have no real loyalty to either side.
+
+3. The "[not yet written; the gist]" placeholder lines were the most confusing. They broke the flow of conversations and I had to guess what was actually said. Next to that, the crocodile fight resolved as a single win/lose choice with nothing to do, so I had no sense of the danger. I also wasn't sure at first why Okan left out the bait detail that Wuleen-Taza gave me.
+
+4. The setup is good: the crocodile hides a cover-up, and I get to choose between exposing it and keeping quiet. Fill in the placeholder dialogue, since it hurts the most. Give the ending some consequence, such as the rafters being punished or reacting to me, so the choice feels like it mattered. Make the fight and the world feel bigger. I'd also like a clearer signal of whether the quest chain is over or something follows.

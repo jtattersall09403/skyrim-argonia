@@ -133,19 +133,11 @@
    "placement",
    "start"
   ],
-  "quest.local.lq25": [
-   "placement"
-  ],
   "quest.local.lq29": [
    "objective target",
    "objective text",
    "placement",
    "start"
-  ],
-  "quest.local.lq30": [
-   "inZone",
-   "moveRef",
-   "placement"
   ],
   "quest.local.lr03": [
    "objective target",

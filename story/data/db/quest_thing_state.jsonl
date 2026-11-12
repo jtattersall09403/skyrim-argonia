@@ -39,20 +39,11 @@
 {"quest_id":"quest.local.lh38","things_ord":8,"state":"after-70","value":"recovering"}
 {"quest_id":"quest.local.lh38","things_ord":8,"state":"before-70","value":"feverish; say they ate at the fire stand"}
 {"quest_id":"quest.local.lh38","things_ord":9,"state":"all","value":"Tsono-Ra's work spot"}
-{"quest_id":"quest.local.lq25","things_ord":0,"state":"after-20","value":"dead"}
-{"quest_id":"quest.local.lq25","things_ord":0,"state":"before-20","value":"absent"}
-{"quest_id":"quest.local.lq25","things_ord":0,"state":"during","value":"in its lair under the plank walk"}
-{"quest_id":"quest.local.lq25","things_ord":1,"state":"after-40","value":"taken or left"}
-{"quest_id":"quest.local.lq25","things_ord":1,"state":"before-20","value":"absent"}
-{"quest_id":"quest.local.lq25","things_ord":1,"state":"during","value":"by the pilings in the lair"}
+{"quest_id":"quest.local.lq25","things_ord":0,"state":"all","value":"in its lair off the end of the plank walk until killed"}
+{"quest_id":"quest.local.lq25","things_ord":1,"state":"all","value":"in the shallows until taken; Sells-Dear keeps it at 91"}
 {"quest_id":"quest.local.lq25","things_ord":2,"state":"all","value":"present"}
-{"quest_id":"quest.local.lq30","things_ord":0,"state":"after-30","value":"dead"}
-{"quest_id":"quest.local.lq30","things_ord":0,"state":"before-30","value":"absent"}
-{"quest_id":"quest.local.lq30","things_ord":0,"state":"during","value":"among the roots in the shallows of 0D7883"}
-{"quest_id":"quest.local.lq30","things_ord":1,"state":"after-90","value":"Sei-Wan at the gate"}
-{"quest_id":"quest.local.lq30","things_ord":1,"state":"before-30","value":"Haj-Wan by the gate, Sei-Wan absent"}
-{"quest_id":"quest.local.lq30","things_ord":1,"state":"during","value":"Sei-Wan among the roots and Haj-Wan by the gate"}
-{"quest_id":"quest.local.lq30","things_ord":2,"state":"all","value":"present"}
+{"quest_id":"quest.local.lq30","things_ord":0,"state":"all","value":"in the roots between Sei-Wan and the gate until killed"}
+{"quest_id":"quest.local.lq30","things_ord":1,"state":"all","value":"Haj-Wan by the gate, Sei-Wan among the roots"}
 {"quest_id":"quest.main.mq01","things_ord":0,"state":"all","value":"as BM&V has it, with the three of the gang standing in it"}
 {"quest_id":"quest.main.mq01","things_ord":1,"state":"all","value":"standing in the hold"}
 {"quest_id":"quest.main.mq01","things_ord":2,"state":"all","value":"standing at the pier beside the ship"}

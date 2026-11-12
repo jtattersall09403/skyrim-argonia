@@ -124,6 +124,7 @@ def test_compiles_a_record_once_its_people_are_placed():
     from tools.argonia_world import db
     w = db.load()
     qid = "quest.local.lq25"
+    w.delete("quest_placement", quest_id=qid)
     c = qc.Compiler(w, qid)
     c.compile()
     assert {t for t, _, _ in c.refused} == {"placement"}
@@ -140,10 +141,15 @@ def test_compiles_a_record_once_its_people_are_placed():
 
 
 def test_an_objective_may_name_several_targets():
+    """A record objective's `target` "a, b" is one marker on each (the form's targets list)."""
     from tools.argonia_world import db
     w = db.load()
-    c = qc.Compiler(w, "quest.local.lq25")
-    st = next(s for s in c.rec["stages"] if s.get("objectives"))
-    st["objectives"][0]["target"] = "npc.a, thing.b"
+    qid = "quest.local.lq25"
+    two = "npc.hist-heartland.helstrom.lq25-crew-poler, npc.hist-heartland.helstrom.boat-captain"
+    c = qc.Compiler(w, qid)
+    obj = next(o for s in c.rec["stages"] for o in s.get("objectives") or [])
+    obj["target"] = two
     form = c.compile()
-    assert form is None and {"npc.a", "thing.b"} <= set(c.used_refs)
+    assert {"npc.hist-heartland.helstrom.lq25-crew-poler", "npc.hist-heartland.helstrom.boat-captain"} <= set(c.used_refs)
+    if form is not None:
+        assert form["objectives"][0]["targets"] == [t.strip() for t in two.split(",")]

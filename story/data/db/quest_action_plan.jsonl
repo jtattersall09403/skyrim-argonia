@@ -22,13 +22,12 @@
 {"quest_id":"quest.local.lh38","ord":6,"skill":"sneak","use":"pickpocket","reason":"the satchel"}
 {"quest_id":"quest.local.lh38","ord":7,"skill":"speechcraft","use":"accuse","reason":"the close of a MURDER"}
 {"quest_id":"quest.local.lh38","ord":8,"skill":"any-weapon","use":"fight","reason":"if she runs for the landing"}
-{"quest_id":"quest.local.lq25","ord":0,"skill":"oneHanded","use":"fight","reason":"the crocodile is fought in its lair under the plank walk"}
-{"quest_id":"quest.local.lq25","ord":1,"skill":"marksman","use":"snipe","reason":"the crocodile is shot from the planks"}
-{"quest_id":"quest.local.lq25","ord":2,"skill":"destruction","use":"kill-from-range","reason":"the crocodile is burnt or frozen from the planks"}
-{"quest_id":"quest.local.lq25","ord":3,"skill":"speechcraft","use":"present-evidence","reason":"the crew's bait bucket is put to the boat captain or to the crew"}
-{"quest_id":"quest.local.lq30","ord":0,"skill":"marksman","use":"snipe","reason":"the viper is shot from cover so the youth never sees who did it"}
+{"quest_id":"quest.local.lq25","ord":0,"skill":"oneHanded","use":"fight","reason":"the crocodile is fought in its lair off the end of the plank walk"}
+{"quest_id":"quest.local.lq25","ord":1,"skill":"marksman","use":"snipe","reason":"the crocodile is shot from the shore"}
+{"quest_id":"quest.local.lq25","ord":2,"skill":"destruction","use":"kill-from-range","reason":"the crocodile is burnt or frozen from the shore"}
+{"quest_id":"quest.local.lq30","ord":0,"skill":"marksman","use":"snipe","reason":"the viper is shot from the shallows before it can close"}
 {"quest_id":"quest.local.lq30","ord":1,"skill":"oneHanded","use":"fight","reason":"the viper is fought among the roots in the shallows of 0D7883"}
-{"quest_id":"quest.local.lq30","ord":2,"skill":"speechcraft","use":"persuade","reason":"the youth is talked into coming back"}
+{"quest_id":"quest.local.lq30","ord":2,"skill":"speechcraft","use":"persuade","reason":"Sei-Wan is talked into coming home (Speech 25)"}
 {"quest_id":"quest.main.mq03","ord":0,"skill":"Lockpicking","use":"pick-a-lock","reason":"Dives-Without-A-Rope keeps the jar in a lockbox locked (Novice), and lockpicks lie on the hold's floor beside it"}
 {"quest_id":"quest.main.mq03","ord":1,"skill":"Speechcraft","use":"persuade","reason":"she gives up the key to someone who can tell her the Reed means to find who cut her tree (Speechcraft 25)"}
 {"quest_id":"quest.main.mq03","ord":2,"skill":"Pickpocket","use":"lift","reason":"the key is on her"}

@@ -295,9 +295,10 @@ class Compiler:
                                 "its marker points at")
                 if not o.get("objectiveText"):
                     self.refuse("objective text", ow, "write the objective's words (objectiveText)")
-                targets = [t.strip() for t in target.split(",")] if target and target != "none" else []
+                # several targets are one comma-separated `target` (the record's column holds one string)
+                targets = [t.strip() for t in target.split(",") if t.strip()] if target and target != "none" else []
                 objectives.append({"number": n + i, "text": o.get("objectiveText") or o["id"], "shown_at": [n],
-                                   "completed_at": done, "targets": [self.use(t, ow) for t in targets if t]})
+                                   "completed_at": done, "targets": [self.use(t, ow) for t in targets]})
         for npc in sorted(self.death_moves & set(self.must_live)):
             self.refuse("death both ways", f"ref {npc}", "a person's death either fails the quest (who must live) "
                         "or moves it on, at every stage alike")

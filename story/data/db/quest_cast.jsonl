@@ -20,8 +20,8 @@
 {"quest_id":"quest.local.lh38","ord":4,"id":"npc.hist-heartland.greenspring.spring-keeper","wants":"to keep the spring's good name (culture.settlement.greenspring dissent)","fears":"that the spring could sour for good"}
 {"quest_id":"quest.local.lh38","ord":5,"id":"npc.hist-heartland.greenspring.tree-minder","wants":"the Hist and the tribe kept well (culture.group.greenspring.office-holders)","fears":"the dead left without their story"}
 {"quest_id":"quest.local.lq25","ord":0,"id":"npc.hist-heartland.helstrom.lq25-crew-poler","wants":"the beast dead, so he can take his raft out again","fears":"the beast, and the bait being found out"}
-{"quest_id":"quest.local.lq25","ord":1,"id":"npc.hist-heartland.helstrom.lq25-crew-steerer","wants":"the crew's trade kept, and the bait never spoken of","fears":"the boat captain hearing of the bait"}
-{"quest_id":"quest.local.lq25","ord":2,"id":"npc.hist-heartland.helstrom.boat-captain","wants":"her trade back on the river","fears":"losing her boat to the beast"}
+{"quest_id":"quest.local.lq25","ord":1,"id":"npc.hist-heartland.helstrom.lq25-crew-steerer","wants":"the crew's trade kept, and the bait never spoken of","fears":"Sells-Dear hearing of the bait"}
+{"quest_id":"quest.local.lq25","ord":2,"id":"npc.hist-heartland.helstrom.boat-captain","wants":"the landing's river trade, all of it","fears":"losing her boat to the beast"}
 {"quest_id":"quest.local.lq30","ord":0,"id":"npc.hist-heartland.helstrom.lq30-kin","wants":"Sei-Wan home alive, and his walk-out his own if it can be","fears":"losing him to the basin"}
 {"quest_id":"quest.local.lq30","ord":1,"id":"npc.hist-heartland.helstrom.levy-warden-01","wants":"the custom kept","fears":"a levy that follows every youth out"}
 {"quest_id":"quest.local.lq30","ord":2,"id":"npc.hist-heartland.helstrom.lq30-youth","wants":"to finish the walk-out and come home on his own feet","fears":"the viper, and being brought home"}
