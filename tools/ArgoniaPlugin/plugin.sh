@@ -74,7 +74,7 @@ case "${1:-}" in
     cp plugin/questform-formids.json "$tmp/ids.json"
     QUESTFORM_DIRS=tools/questform/blocktest:tools/tests/data/questform QUESTFORM_IDS="$tmp/ids.json" tool seed "$tmp/Argonia.esp" "${lo[@]}" | grep -E "^questform|^mortality"
     tool questform-read "$tmp/Argonia.esp" "$tmp/read" "${lo[@]}"
-    for f in tools/questform/blocktest/*.json tools/tests/data/questform/*.json; do "$py" -m tools.questform diff "$f" "$tmp/read/$("$py" -c "import json,sys; print(json.load(open(sys.argv[1]))[\"quest\"][\"id\"])" "$f").json"; done
+    for f in tools/questform/blocktest/*.json tools/tests/data/questform/*.json; do "$py" -m tools.questform diff "$f" "$tmp/read/$("$py" -c "import json,sys; print(json.load(open(sys.argv[1]))[\"quest\"][\"id\"])" "$f").json" || diffs=1; done; [ -z "${diffs:-}" ] || echo "questform-test: the designed and built forms differ (above)"
     "$py" -m tools.questform check "$tmp"/read/*.json
     tool questcheck "$tmp/Argonia.esp" papyrus "${lo[@]}" | tail -3 ;;
   seed)
