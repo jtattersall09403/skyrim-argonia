@@ -57,7 +57,26 @@ def test_an_excerpt_is_cut_from_another_slot_with_clean_fades():
     for p in PIECES["pieces"]:
         for ex in [p["excerpt"], *p.get("excerpt_alternatives", [])] if "excerpt" in p else []:
             assert ex["of"] in SLOTS and ex["of"] != p["id"] and "excerpt" not in next(q for q in PIECES["pieces"] if q["id"] == ex["of"])
-            assert 17.5 <= ex["end_s"] - ex["start_s"] <= 20.5 and 0.03 <= ex["fade_in_s"] <= 0.08 and 2 <= ex["fade_out_s"] <= 4.5  # Skyrim's: 18.7-19.3 s
-    args = soundtrack.excerpt_filter({"of": "theme", "start_s": 119.6, "end_s": 138.6, "fade_in_s": 0.05, "fade_out_s": 3.5})
-    assert args[:4] == ["-ss", "119.6", "-t", "19.0"]
-    assert "afade=t=in:st=0:d=0.05" in args[5] and "afade=t=out:st=15.5:d=3.5" in args[5] and "loudnorm" in args[5]
+            assert 7 <= ex["end_s"] - ex["start_s"] <= 9 and 0.03 <= ex["fade_in_s"] <= 0.08 and 3 <= ex["fade_out_s"] <= 5  # Skyrim's heard sting: 4 s + 4 s
+    args = soundtrack.excerpt_filter({"of": "theme", "start_s": 129.5, "end_s": 137.5, "fade_in_s": 0.05, "fade_out_s": 4.0})
+    assert args[1] .startswith("afade=t=in:st=0:d=0.05,afade=t=out:st=4.0:d=4.0,loudnorm")
+    assert soundtrack.excerpt_input({"start_s": 129.5, "end_s": 137.5}) == ["-ss", "129.5", "-t", "8.0"]
+
+
+def test_a_cut_excerpt_is_audible_and_silence_is_refused(tmp_path):
+    """The seek is on the input, so the fades run on the cut's own clock; an output-side seek came out silent."""
+    import shutil
+    import subprocess
+    import sys
+    import pytest
+    sys.path.insert(0, str(REPO / "tools/newworld/music"))
+    import soundtrack
+    if not shutil.which(soundtrack.FFMPEG):
+        pytest.skip("no ffmpeg")
+    src = tmp_path / "src.wav"
+    subprocess.run([soundtrack.FFMPEG, "-v", "error", "-f", "lavfi", "-i", "anoisesrc=color=pink:duration=30",
+                    str(src)], check=True)
+    out = tmp_path / "cut.wav"
+    soundtrack.convert(src, out, None, {"start_s": 20, "end_s": 28, "fade_in_s": 0.05, "fade_out_s": 4})
+    assert soundtrack.audible(*soundtrack.loudness(out))
+    assert not soundtrack.audible(-70.0, -200.0)

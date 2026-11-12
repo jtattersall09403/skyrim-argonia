@@ -8,10 +8,11 @@ fills slot `of` (the way a game cuts its level-up sting from its main theme); it
 Generated audio is never committed (decision 0003).
 
   soundtrack.py keep <slot> <file>   put our kept take of a slot into the bucket (ours/)
-  soundtrack.py check                list every slot and which source fills it; red on an empty slot
+  soundtrack.py check                list every slot and which source fills it; red on an empty slot; measure every
+                                     slot of the built pack (target loudness within 3 LU, peak above -10 dBFS)
   soundtrack.py build                convert each slot to 44.1 kHz 16-bit stereo WAV at the target loudness (stings
                                      cut to their length with a fade), tar as music/argonia/<slot>.wav, put the tar in
-                                     the private mod cache as built-argonia-soundtrack.tar with its sha256, and write
+                                     the private mod cache (only when every slot measures audible) as built-argonia-soundtrack.tar with its sha256, and write
                                      that sha256 and size into the mods/dependencies.json row; then `stack.py stage`.
 FFMPEG names the ffmpeg binary (default: ffmpeg on PATH).
 """
@@ -81,11 +82,17 @@ def check():
     return 1 if bad else 0
 
 
+def excerpt_input(ex):
+    """ffmpeg input options that cut an excerpt: seeking on the input restarts the timeline at 0, so the fades below
+    are relative to the cut (an output-side -ss runs the filters on the source's own clock: the fade-out lands
+    before the cut and the excerpt comes out silent)."""
+    return ["-ss", str(ex["start_s"]), "-t", str(round(ex["end_s"] - ex["start_s"], 3))]
+
+
 def excerpt_filter(ex):
-    """ffmpeg args that cut an excerpt: start, length, a short fade in, the fade out ending at the cut."""
+    """ffmpeg output args for an excerpt: a short fade in, the fade out ending at the cut, then the loudness."""
     d = round(ex["end_s"] - ex["start_s"], 3)
-    return ["-ss", str(ex["start_s"]), "-t", str(d), "-af",
-            f"afade=t=in:st=0:d={ex['fade_in_s']},afade=t=out:st={round(d - ex['fade_out_s'], 3)}:d={ex['fade_out_s']},"
+    return ["-af", f"afade=t=in:st=0:d={ex['fade_in_s']},afade=t=out:st={round(d - ex['fade_out_s'], 3)}:d={ex['fade_out_s']},"
             f"loudnorm=I={TARGET_LUFS}:TP={TRUE_PEAK}:LRA=11"]
 
 
@@ -93,8 +100,46 @@ def convert(src, dst, sting, ex=None):
     cut = excerpt_filter(ex) if ex else ["-t", str(sting), "-af",
            f"afade=t=out:st={sting - FADE}:d={FADE},loudnorm=I={TARGET_LUFS}:TP={TRUE_PEAK}:LRA=11"] if sting \
         else ["-af", f"loudnorm=I={TARGET_LUFS}:TP={TRUE_PEAK}:LRA=11"]
-    subprocess.run([FFMPEG, "-v", "error", "-y", "-i", str(src), *cut, "-ar", "44100", "-ac", "2",
-                    "-c:a", "pcm_s16le", str(dst)], check=True)
+    subprocess.run([FFMPEG, "-v", "error", "-y", *(excerpt_input(ex) if ex else []), "-i", str(src), *cut,
+                    "-ar", "44100", "-ac", "2", "-c:a", "pcm_s16le", str(dst)], check=True)
+
+
+def loudness(path):
+    """(integrated LUFS, true peak dBFS) of one audio file, by ffmpeg's ebur128."""
+    r = subprocess.run([FFMPEG, "-hide_banner", "-nostats", "-i", str(path), "-af", "ebur128=peak=true", "-f", "null",
+                        "-"], capture_output=True, text=True)
+    tail = r.stderr[r.stderr.rfind("Summary:"):]
+    num = lambda key: float(tail.split(key, 1)[1].split()[0].replace("-inf", "-200"))
+    return num("I:"), num("Peak:")
+
+
+def audible(lufs, peak):
+    """A built slot is at the target loudness (within 3 LU) with a real peak: no silent or near-silent file ships."""
+    return abs(lufs - TARGET_LUFS) <= 3 and peak > -10  # sting-death, a soft piece at target, peaks at -6.3
+
+
+def verify(folder):
+    bad = []
+    for f in sorted(Path(folder).glob("*.wav")):
+        lufs, peak = loudness(f)
+        ok = audible(lufs, peak)
+        bad += [] if ok else [f.stem]
+        print(f"  {f.stem:18} {lufs:6.1f} LUFS peak {peak:6.1f} dBFS {'ok' if ok else 'NOT AUDIBLE'}")
+    return bad
+
+
+def check_pack():
+    """Measure every slot in the built pack (the local mod cache's tar)."""
+    tar = Path.home() / ".argonia/mods" / TAR
+    if not tar.exists():
+        print(f"no built pack at {tar}")
+        return 0
+    with tempfile.TemporaryDirectory() as t:
+        with tarfile.open(tar) as tf:
+            tf.extractall(t, filter="data")
+        bad = verify(Path(t) / "music/argonia")
+    print(f"pack: {len(bad)} slot(s) not audible {bad}" if bad else "pack: every slot audible")
+    return 1 if bad else 0
 
 
 def build():
@@ -111,6 +156,9 @@ def build():
                 sys.exit(f"cannot fetch {src[sid][1]}")
             convert(raw, out / f"{sid}.wav", cuts()[sid] if role.startswith("sting") else None, excerpts().get(sid))
             raw.unlink()
+        bad = verify(out)
+        if bad:
+            sys.exit(f"not audible, nothing shipped: {bad}")
         tar = Path.home() / ".argonia/mods" / TAR
         tar.parent.mkdir(parents=True, exist_ok=True)
         with tarfile.open(tar, "w") as tf:
@@ -141,7 +189,7 @@ def keep(sid, f):
 if __name__ == "__main__":
     cmd = sys.argv[1:] or ["check"]
     if cmd[0] == "check":
-        sys.exit(check())
+        sys.exit(check() | check_pack())
     elif cmd[0] == "build":
         build()
     elif cmd[0] == "keep" and len(cmd) == 3:
