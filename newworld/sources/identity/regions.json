@@ -1,0 +1,1437 @@
+{
+ "about": "The regions' identity sheets (docs/design/identity.md): one row per region, its light, sight, weather, sound, ground colour, water look, one small signature thing and one signature creature, each cited to the region's research (newworld/story/data/db/region_note.jsonl, the ecology files) or stated as an extrapolation (decision 0032). `slot` is the region's fixed place in the atmosphere's id formula (never renumbered). Light: haze is the day haze's mood colour; brightness, saturation and night scale Skyrim's source weather's light, colour strength and night level. Sight: visibility is the fraction of Skyrim's base fog distances. tools/newworld/identity.py checks it; atmosphere.py, water_types.py and the sound read it.",
+ "sound_beds": [
+  "frog-chorus",
+  "cicadas",
+  "surf-gulls",
+  "sea-swell",
+  "reed-wind",
+  "rainforest-birds",
+  "deep-hush",
+  "dusk-insects",
+  "rain-drip",
+  "upland-wind",
+  "marsh-birds",
+  "night-crickets",
+  "fly-drone",
+  "owls"
+ ],
+ "ground_families": [
+  "red",
+  "red-ochre",
+  "rust-brown",
+  "orange",
+  "yellow",
+  "pale-chalk",
+  "white",
+  "pink",
+  "violet",
+  "blue",
+  "deep-green"
+ ],
+ "water_looks": [
+  "black",
+  "tea-brown",
+  "silt-brown",
+  "algae-green",
+  "reed-green",
+  "pale-silt-grey",
+  "turquoise",
+  "sea-green-grey",
+  "slate-blue"
+ ],
+ "regions": {
+  "althii-archipelago": {
+   "slot": 0,
+   "light": {
+    "haze": [
+     190,
+     195,
+     150
+    ],
+    "mood": "warm green-gold sea light over paddies",
+    "brightness": 1.1,
+    "saturation": 1.1,
+    "night": 0.85,
+    "cite": "newworld/story/data/db/region_note.jsonl#althii-archipelago/climate",
+    "extrapolation": "the haze colour and levels are the mood the research's words give, set within Skyrim's measured range"
+   },
+   "sight": {
+    "visibility": 0.75,
+    "cite": "newworld/story/data/db/region_note.jsonl#althii-archipelago/climate"
+   },
+   "weather": {
+    "chances": {
+     "fair": 25,
+     "cloudy": 20,
+     "mist": 8,
+     "rain": 30,
+     "storm": 7,
+     "steam": 10
+    },
+    "character": "a steady sea wind and warm rain, often bright between showers",
+    "cite": "newworld/story/data/db/region_note.jsonl#althii-archipelago/climate"
+   },
+   "sound": {
+    "day": "cicadas",
+    "night": "frog-chorus",
+    "cite": "newworld/story/data/db/region_note.jsonl#althii-archipelago/ecology",
+    "extrapolation": "the beds the region's named animals, water and weather would make"
+   },
+   "ground": {
+    "family": "orange",
+    "flowers": "orange paddy-margin flowers",
+    "cite": "newworld/story/data/db/region_note.jsonl#althii-archipelago/look",
+    "extrapolation": "the dominant flower colour, chosen from the region's named plants and colours"
+   },
+   "water": {
+    "look": "turquoise",
+    "words": "clear turquoise coastal shallows",
+    "cite": "newworld/story/data/db/region_note.jsonl#althii-archipelago/look"
+   },
+   "signature": {
+    "thing": "mangrove-crab burrow mounds on the mud",
+    "cite": "newworld/story/data/db/region_note.jsonl#althii-archipelago/ecology",
+    "extrapolation": "a small thing the region's named life or history would leave"
+   },
+   "creature": {
+    "kind": "glowgill-guar",
+    "cite": "story/lore/topics/fauna-hazards.md#Domesticated and useful animals"
+   }
+  },
+  "aphon-isle": {
+   "slot": 1,
+   "light": {
+    "haze": [
+     190,
+     195,
+     200
+    ],
+    "mood": "salt-white grey of spray and sea mist",
+    "brightness": 1.15,
+    "saturation": 0.8,
+    "night": 0.85,
+    "cite": "newworld/story/data/db/region_note.jsonl#aphon-isle/climate",
+    "extrapolation": "the haze colour and levels are the mood the research's words give, set within Skyrim's measured range"
+   },
+   "sight": {
+    "visibility": 0.55,
+    "cite": "newworld/story/data/db/region_note.jsonl#aphon-isle/climate"
+   },
+   "weather": {
+    "chances": {
+     "fair": 20,
+     "cloudy": 22,
+     "mist": 32,
+     "rain": 14,
+     "storm": 6,
+     "steam": 6
+    },
+    "character": "sea mist blown in off Topal Bay, breezy between",
+    "cite": "newworld/story/data/db/region_note.jsonl#aphon-isle/climate"
+   },
+   "sound": {
+    "day": "surf-gulls",
+    "night": "sea-swell",
+    "cite": "newworld/story/data/db/region_note.jsonl#aphon-isle/ecology",
+    "extrapolation": "the beds the region's named animals, water and weather would make"
+   },
+   "ground": {
+    "family": "white",
+    "flowers": "white sea-campion on grey hills",
+    "cite": "newworld/story/data/db/region_note.jsonl#aphon-isle/look",
+    "extrapolation": "the dominant flower colour, chosen from the region's named plants and colours"
+   },
+   "water": {
+    "look": "slate-blue",
+    "words": "cold slate-blue water off a rocky shore",
+    "cite": "newworld/story/data/db/region_note.jsonl#aphon-isle/look"
+   },
+   "signature": {
+    "thing": "kelp wrack on the rocks",
+    "cite": "newworld/story/data/db/region_note.jsonl#aphon-isle/ecology",
+    "extrapolation": "a small thing the region's named life or history would leave"
+   },
+   "creature": {
+    "kind": "sea-lion",
+    "cite": "newworld/sources/ecology/regions/aphon-isle.json"
+   }
+  },
+  "arnesian-jungle": {
+   "slot": 2,
+   "light": {
+    "haze": [
+     140,
+     175,
+     120
+    ],
+    "mood": "humid jungle green",
+    "brightness": 0.95,
+    "saturation": 1.2,
+    "night": 0.7,
+    "cite": "newworld/story/data/db/region_note.jsonl#arnesian-jungle/climate",
+    "extrapolation": "the haze colour and levels are the mood the research's words give, set within Skyrim's measured range"
+   },
+   "sight": {
+    "visibility": 0.55,
+    "cite": "newworld/story/data/db/region_note.jsonl#arnesian-jungle/climate"
+   },
+   "weather": {
+    "chances": {
+     "fair": 18,
+     "cloudy": 15,
+     "mist": 22,
+     "rain": 26,
+     "storm": 9,
+     "steam": 10
+    },
+    "character": "rain and fog, clear spells by chance",
+    "cite": "newworld/story/data/db/region_note.jsonl#arnesian-jungle/climate"
+   },
+   "sound": {
+    "day": "rainforest-birds",
+    "night": "dusk-insects",
+    "cite": "newworld/story/data/db/region_note.jsonl#arnesian-jungle/ecology",
+    "extrapolation": "the beds the region's named animals, water and weather would make"
+   },
+   "ground": {
+    "family": "orange",
+    "flowers": "bright orange fungus and flowers",
+    "cite": "newworld/story/data/db/region_note.jsonl#arnesian-jungle/look",
+    "extrapolation": "the dominant flower colour, chosen from the region's named plants and colours"
+   },
+   "water": {
+    "look": "reed-green",
+    "words": "green inlet water with muddy banks",
+    "cite": "newworld/story/data/db/region_note.jsonl#arnesian-jungle/look"
+   },
+   "signature": {
+    "thing": "glowing fungi on fallen hardwood",
+    "cite": "newworld/story/data/db/region_note.jsonl#arnesian-jungle/ecology",
+    "extrapolation": "a small thing the region's named life or history would leave"
+   },
+   "creature": {
+    "kind": "parrot",
+    "cite": "newworld/sources/ecology/regions/arnesian-jungle.json"
+   }
+  },
+  "aunike-ridge": {
+   "slot": 3,
+   "light": {
+    "haze": [
+     195,
+     200,
+     205
+    ],
+    "mood": "clear cool air with wide views",
+    "brightness": 1.15,
+    "saturation": 0.9,
+    "night": 0.8,
+    "cite": "newworld/story/data/db/region_note.jsonl#aunike-ridge/climate",
+    "extrapolation": "the haze colour and levels are the mood the research's words give, set within Skyrim's measured range"
+   },
+   "sight": {
+    "visibility": 1.0,
+    "cite": "newworld/story/data/db/region_note.jsonl#aunike-ridge/climate"
+   },
+   "weather": {
+    "chances": {
+     "fair": 28,
+     "cloudy": 20,
+     "mist": 24,
+     "rain": 20,
+     "storm": 5,
+     "steam": 3
+    },
+    "character": "breezy and drier: fair days, morning mist and rain",
+    "cite": "newworld/story/data/db/region_note.jsonl#aunike-ridge/climate"
+   },
+   "sound": {
+    "day": "upland-wind",
+    "night": "night-crickets",
+    "cite": "newworld/story/data/db/region_note.jsonl#aunike-ridge/ecology",
+    "extrapolation": "the beds the region's named animals, water and weather would make"
+   },
+   "ground": {
+    "family": "pink",
+    "flowers": "pink scrub-flowers above the reeds",
+    "cite": "newworld/story/data/db/region_note.jsonl#aunike-ridge/look",
+    "extrapolation": "the dominant flower colour, chosen from the region's named plants and colours"
+   },
+   "water": {
+    "look": "turquoise",
+    "words": "clear stream water over rock",
+    "cite": "newworld/story/data/db/region_note.jsonl#aunike-ridge/look"
+   },
+   "signature": {
+    "thing": "pollen drifts blown off the scrub",
+    "cite": "newworld/story/data/db/region_note.jsonl#aunike-ridge/ecology",
+    "extrapolation": "a small thing the region's named life or history would leave"
+   },
+   "creature": {
+    "kind": "mountain-goat",
+    "cite": "newworld/sources/ecology/regions/aunike-ridge.json"
+   }
+  },
+  "banujha-basin": {
+   "slot": 4,
+   "light": {
+    "haze": [
+     185,
+     145,
+     90
+    ],
+    "mood": "tea-amber steam after rain",
+    "brightness": 0.9,
+    "saturation": 1.0,
+    "night": 0.8,
+    "cite": "newworld/story/data/db/region_note.jsonl#banujha-basin/climate",
+    "extrapolation": "the haze colour and levels are the mood the research's words give, set within Skyrim's measured range"
+   },
+   "sight": {
+    "visibility": 0.45,
+    "cite": "newworld/story/data/db/region_note.jsonl#banujha-basin/climate"
+   },
+   "weather": {
+    "chances": {
+     "fair": 8,
+     "cloudy": 15,
+     "mist": 10,
+     "rain": 25,
+     "storm": 10,
+     "steam": 32
+    },
+    "character": "heavy rain, then steam rising off the water",
+    "cite": "newworld/story/data/db/region_note.jsonl#banujha-basin/climate"
+   },
+   "sound": {
+    "day": "fly-drone",
+    "night": "frog-chorus",
+    "cite": "newworld/story/data/db/region_note.jsonl#banujha-basin/ecology",
+    "extrapolation": "the beds the region's named animals, water and weather would make"
+   },
+   "ground": {
+    "family": "rust-brown",
+    "flowers": "rust-brown sedge heads",
+    "cite": "newworld/story/data/db/region_note.jsonl#banujha-basin/look",
+    "extrapolation": "the dominant flower colour, chosen from the region's named plants and colours"
+   },
+   "water": {
+    "look": "tea-brown",
+    "words": "dark tea-brown water between islets",
+    "cite": "newworld/story/data/db/region_note.jsonl#banujha-basin/look"
+   },
+   "signature": {
+    "thing": "gar egg clutches in the reed margins",
+    "cite": "newworld/story/data/db/region_note.jsonl#banujha-basin/ecology",
+    "extrapolation": "a small thing the region's named life or history would leave"
+   },
+   "creature": {
+    "kind": "osheeja-gar",
+    "cite": "story/lore/topics/fauna-hazards.md#Domesticated and useful animals ; newworld/story/data/db/region_note.jsonl#banujha-basin/ecology"
+   }
+  },
+  "barsaebica": {
+   "slot": 5,
+   "light": {
+    "haze": [
+     150,
+     165,
+     160
+    ],
+    "mood": "cool grey-green fen light",
+    "brightness": 0.95,
+    "saturation": 0.85,
+    "night": 0.7,
+    "cite": "newworld/story/data/db/region_note.jsonl#barsaebica/climate",
+    "extrapolation": "the haze colour and levels are the mood the research's words give, set within Skyrim's measured range"
+   },
+   "sight": {
+    "visibility": 0.6,
+    "cite": "newworld/story/data/db/region_note.jsonl#barsaebica/climate"
+   },
+   "weather": {
+    "chances": {
+     "fair": 10,
+     "cloudy": 25,
+     "mist": 12,
+     "rain": 35,
+     "storm": 8,
+     "steam": 10
+    },
+    "character": "humid, rain frequent",
+    "cite": "newworld/story/data/db/region_note.jsonl#barsaebica/climate"
+   },
+   "sound": {
+    "day": "reed-wind",
+    "night": "owls",
+    "cite": "newworld/story/data/db/region_note.jsonl#barsaebica/ecology",
+    "extrapolation": "the beds the region's named animals, water and weather would make"
+   },
+   "ground": {
+    "family": "white",
+    "flowers": "white sedge and reed-flower",
+    "cite": "newworld/story/data/db/region_note.jsonl#barsaebica/look",
+    "extrapolation": "the dominant flower colour, chosen from the region's named plants and colours"
+   },
+   "water": {
+    "look": "black",
+    "words": "black tidal river water",
+    "cite": "newworld/story/data/db/region_note.jsonl#barsaebica/look"
+   },
+   "signature": {
+    "thing": "bone piles by the Ayleid stones",
+    "cite": "newworld/story/data/db/region_note.jsonl#barsaebica/ecology",
+    "extrapolation": "a small thing the region's named life or history would leave"
+   },
+   "creature": {
+    "kind": "lamia",
+    "cite": "story/lore/topics/fauna-hazards.md#Apex and set-piece creatures ; newworld/story/data/db/region_note.jsonl#barsaebica/ecology"
+   }
+  },
+  "benthic-yobesh": {
+   "slot": 6,
+   "light": {
+    "haze": [
+     125,
+     140,
+     150
+    ],
+    "mood": "fixed grey overcast over the swell",
+    "brightness": 0.75,
+    "saturation": 0.7,
+    "night": 0.7,
+    "cite": "newworld/story/data/db/region_note.jsonl#benthic-yobesh/climate",
+    "extrapolation": "the haze colour and levels are the mood the research's words give, set within Skyrim's measured range"
+   },
+   "sight": {
+    "visibility": 0.6,
+    "cite": "newworld/story/data/db/region_note.jsonl#benthic-yobesh/climate"
+   },
+   "weather": {
+    "chances": {
+     "fair": 5,
+     "cloudy": 45,
+     "mist": 20,
+     "rain": 18,
+     "storm": 7,
+     "steam": 5
+    },
+    "character": "a fixed grey overcast and a steady swell",
+    "cite": "newworld/story/data/db/region_note.jsonl#benthic-yobesh/climate"
+   },
+   "sound": {
+    "day": "sea-swell",
+    "night": "deep-hush",
+    "cite": "newworld/story/data/db/region_note.jsonl#benthic-yobesh/ecology",
+    "extrapolation": "the beds the region's named animals, water and weather would make"
+   },
+   "ground": {
+    "family": "blue",
+    "flowers": "blue sea-holly on the islets",
+    "cite": "newworld/story/data/db/region_note.jsonl#benthic-yobesh/look",
+    "extrapolation": "the dominant flower colour, chosen from the region's named plants and colours"
+   },
+   "water": {
+    "look": "slate-blue",
+    "words": "deep slate-blue water over a black trench",
+    "cite": "newworld/story/data/db/region_note.jsonl#benthic-yobesh/look"
+   },
+   "signature": {
+    "thing": "coral and kelp drifts on the shore",
+    "cite": "newworld/story/data/db/region_note.jsonl#benthic-yobesh/ecology",
+    "extrapolation": "a small thing the region's named life or history would leave"
+   },
+   "creature": {
+    "kind": "giant-squid",
+    "cite": "newworld/sources/ecology/regions/benthic-yobesh.json"
+   }
+  },
+  "blackwood": {
+   "slot": 7,
+   "light": {
+    "haze": [
+     70,
+     85,
+     72
+    ],
+    "mood": "dark grey-green gloom over the bogs",
+    "brightness": 0.7,
+    "saturation": 0.8,
+    "night": 0.55,
+    "cite": "newworld/story/data/db/region_note.jsonl#blackwood/climate",
+    "extrapolation": "the haze colour and levels are the mood the research's words give, set within Skyrim's measured range"
+   },
+   "sight": {
+    "visibility": 0.35,
+    "cite": "newworld/story/data/db/region_note.jsonl#blackwood/climate"
+   },
+   "weather": {
+    "chances": {
+     "fair": 5,
+     "cloudy": 15,
+     "mist": 34,
+     "rain": 28,
+     "storm": 8,
+     "steam": 10
+    },
+    "character": "long rains and fog lying over the bogs",
+    "cite": "newworld/story/data/db/region_note.jsonl#blackwood/climate"
+   },
+   "sound": {
+    "day": "rain-drip",
+    "night": "owls",
+    "cite": "newworld/story/data/db/region_note.jsonl#blackwood/ecology",
+    "extrapolation": "the beds the region's named animals, water and weather would make"
+   },
+   "ground": {
+    "family": "violet",
+    "flowers": "violet bog-flowers",
+    "cite": "newworld/story/data/db/region_note.jsonl#blackwood/look",
+    "extrapolation": "the dominant flower colour, chosen from the region's named plants and colours"
+   },
+   "water": {
+    "look": "tea-brown",
+    "words": "bog water stained tea-brown",
+    "cite": "newworld/story/data/db/region_note.jsonl#blackwood/look"
+   },
+   "signature": {
+    "thing": "bone piles in the cairn-fields",
+    "cite": "newworld/story/data/db/region_note.jsonl#blackwood/ecology",
+    "extrapolation": "a small thing the region's named life or history would leave"
+   },
+   "creature": {
+    "kind": "bog-blight",
+    "cite": "story/lore/topics/fauna-hazards.md#Apex and set-piece creatures"
+   }
+  },
+  "cape-percar": {
+   "slot": 8,
+   "light": {
+    "haze": [
+     200,
+     140,
+     110
+    ],
+    "mood": "smoky rust light of red-gum and burn-scar",
+    "brightness": 0.95,
+    "saturation": 1.05,
+    "night": 0.75,
+    "cite": "newworld/story/data/db/region_note.jsonl#cape-percar/look",
+    "extrapolation": "the haze colour and levels are the mood the research's words give, set within Skyrim's measured range"
+   },
+   "sight": {
+    "visibility": 0.6,
+    "cite": "newworld/story/data/db/region_note.jsonl#cape-percar/climate"
+   },
+   "weather": {
+    "chances": {
+     "fair": 15,
+     "cloudy": 20,
+     "mist": 15,
+     "rain": 30,
+     "storm": 8,
+     "steam": 12
+    },
+    "character": "sea mist on the coast, frequent rain",
+    "cite": "newworld/story/data/db/region_note.jsonl#cape-percar/climate"
+   },
+   "sound": {
+    "day": "cicadas",
+    "night": "dusk-insects",
+    "cite": "newworld/story/data/db/region_note.jsonl#cape-percar/ecology",
+    "extrapolation": "the beds the region's named animals, water and weather would make"
+   },
+   "ground": {
+    "family": "red-ochre",
+    "flowers": "red-gum blossom",
+    "cite": "newworld/story/data/db/region_note.jsonl#cape-percar/look",
+    "extrapolation": "the dominant flower colour, chosen from the region's named plants and colours"
+   },
+   "water": {
+    "look": "reed-green",
+    "words": "clear green creeks standing full",
+    "cite": "newworld/story/data/db/region_note.jsonl#cape-percar/look"
+   },
+   "signature": {
+    "thing": "ash and charcoal drifts on the burn-scar",
+    "cite": "newworld/story/data/db/region_note.jsonl#cape-percar/ecology",
+    "extrapolation": "a small thing the region's named life or history would leave"
+   },
+   "creature": {
+    "kind": "fire-beetle",
+    "cite": "newworld/sources/ecology/regions/cape-percar.json"
+   }
+  },
+  "chixathe-mesa": {
+   "slot": 9,
+   "light": {
+    "haze": [
+     225,
+     220,
+     200
+    ],
+    "mood": "clear bright air on the mesa",
+    "brightness": 1.25,
+    "saturation": 1.0,
+    "night": 0.55,
+    "cite": "newworld/story/data/db/region_note.jsonl#chixathe-mesa/climate",
+    "extrapolation": "the haze colour and levels are the mood the research's words give, set within Skyrim's measured range"
+   },
+   "sight": {
+    "visibility": 1.2,
+    "cite": "newworld/story/data/db/region_note.jsonl#chixathe-mesa/climate"
+   },
+   "weather": {
+    "chances": {
+     "fair": 50,
+     "cloudy": 25,
+     "mist": 5,
+     "rain": 10,
+     "storm": 7,
+     "steam": 3
+    },
+    "character": "drier: hot clear days and cold nights",
+    "cite": "newworld/story/data/db/region_note.jsonl#chixathe-mesa/climate"
+   },
+   "sound": {
+    "day": "upland-wind",
+    "night": "night-crickets",
+    "cite": "newworld/story/data/db/region_note.jsonl#chixathe-mesa/ecology",
+    "extrapolation": "the beds the region's named animals, water and weather would make"
+   },
+   "ground": {
+    "family": "pale-chalk",
+    "flowers": "pale chalk-white thorn flowers",
+    "cite": "newworld/story/data/db/region_note.jsonl#chixathe-mesa/look",
+    "extrapolation": "the dominant flower colour, chosen from the region's named plants and colours"
+   },
+   "water": {
+    "look": "turquoise",
+    "words": "clear water in green gorges",
+    "cite": "newworld/story/data/db/region_note.jsonl#chixathe-mesa/look"
+   },
+   "signature": {
+    "thing": "kagouti bone piles in the gorges",
+    "cite": "newworld/story/data/db/region_note.jsonl#chixathe-mesa/ecology",
+    "extrapolation": "a small thing the region's named life or history would leave"
+   },
+   "creature": {
+    "kind": "kagouti",
+    "cite": "story/lore/topics/ecology-encounters-loot.md#2. Regional encounter composition"
+   }
+  },
+  "hatandros-bight": {
+   "slot": 10,
+   "light": {
+    "haze": [
+     175,
+     180,
+     185
+    ],
+    "mood": "pearly sea fog over grey mud-flats",
+    "brightness": 1.0,
+    "saturation": 0.8,
+    "night": 0.85,
+    "cite": "newworld/story/data/db/region_note.jsonl#hatandros-bight/climate",
+    "extrapolation": "the haze colour and levels are the mood the research's words give, set within Skyrim's measured range"
+   },
+   "sight": {
+    "visibility": 0.5,
+    "cite": "newworld/story/data/db/region_note.jsonl#hatandros-bight/climate"
+   },
+   "weather": {
+    "chances": {
+     "fair": 12,
+     "cloudy": 20,
+     "mist": 35,
+     "rain": 22,
+     "storm": 6,
+     "steam": 5
+    },
+    "character": "fog and frequent rain, milder than the interior",
+    "cite": "newworld/story/data/db/region_note.jsonl#hatandros-bight/climate"
+   },
+   "sound": {
+    "day": "surf-gulls",
+    "night": "reed-wind",
+    "cite": "newworld/story/data/db/region_note.jsonl#hatandros-bight/ecology",
+    "extrapolation": "the beds the region's named animals, water and weather would make"
+   },
+   "ground": {
+    "family": "pink",
+    "flowers": "sea-pinks in the shore grass",
+    "cite": "newworld/story/data/db/region_note.jsonl#hatandros-bight/look",
+    "extrapolation": "the dominant flower colour, chosen from the region's named plants and colours"
+   },
+   "water": {
+    "look": "pale-silt-grey",
+    "words": "pale grey silt over the mud-flats",
+    "cite": "newworld/story/data/db/region_note.jsonl#hatandros-bight/look"
+   },
+   "signature": {
+    "thing": "mudskipper burrows and crab shells",
+    "cite": "newworld/story/data/db/region_note.jsonl#hatandros-bight/ecology",
+    "extrapolation": "a small thing the region's named life or history would leave"
+   },
+   "creature": {
+    "kind": "mudskipper",
+    "cite": "newworld/sources/ecology/regions/hatandros-bight.json"
+   }
+  },
+  "kotherra-mangroves": {
+   "slot": 11,
+   "light": {
+    "haze": [
+     95,
+     105,
+     80
+    ],
+    "mood": "dark mangrove olive",
+    "brightness": 0.75,
+    "saturation": 0.95,
+    "night": 0.6,
+    "cite": "newworld/story/data/db/region_note.jsonl#kotherra-mangroves/climate",
+    "extrapolation": "the haze colour and levels are the mood the research's words give, set within Skyrim's measured range"
+   },
+   "sight": {
+    "visibility": 0.45,
+    "cite": "newworld/story/data/db/region_note.jsonl#kotherra-mangroves/climate"
+   },
+   "weather": {
+    "chances": {
+     "fair": 5,
+     "cloudy": 15,
+     "mist": 25,
+     "rain": 35,
+     "storm": 8,
+     "steam": 12
+    },
+    "character": "frequent heavy rain, estuary fog at dawn",
+    "cite": "newworld/story/data/db/region_note.jsonl#kotherra-mangroves/climate"
+   },
+   "sound": {
+    "day": "marsh-birds",
+    "night": "frog-chorus",
+    "cite": "newworld/story/data/db/region_note.jsonl#kotherra-mangroves/ecology",
+    "extrapolation": "the beds the region's named animals, water and weather would make"
+   },
+   "ground": {
+    "family": "red-ochre",
+    "flowers": "red mud and red mangrove flowers",
+    "cite": "newworld/story/data/db/region_note.jsonl#kotherra-mangroves/look",
+    "extrapolation": "the dominant flower colour, chosen from the region's named plants and colours"
+   },
+   "water": {
+    "look": "black",
+    "words": "black water between the roots",
+    "cite": "newworld/story/data/db/region_note.jsonl#kotherra-mangroves/look"
+   },
+   "signature": {
+    "thing": "crab burrow mounds in the red mud",
+    "cite": "newworld/story/data/db/region_note.jsonl#kotherra-mangroves/ecology",
+    "extrapolation": "a small thing the region's named life or history would leave"
+   },
+   "creature": {
+    "kind": "mangrove-crab",
+    "cite": "newworld/sources/ecology/regions/kotherra-mangroves.json"
+   }
+  },
+  "lake-ulaish": {
+   "slot": 12,
+   "light": {
+    "haze": [
+     175,
+     185,
+     190
+    ],
+    "mood": "pale silver-blue lake light",
+    "brightness": 1.1,
+    "saturation": 0.85,
+    "night": 0.9,
+    "cite": "newworld/story/data/db/region_note.jsonl#lake-ulaish/climate",
+    "extrapolation": "the haze colour and levels are the mood the research's words give, set within Skyrim's measured range"
+   },
+   "sight": {
+    "visibility": 0.8,
+    "cite": "newworld/story/data/db/region_note.jsonl#lake-ulaish/climate"
+   },
+   "weather": {
+    "chances": {
+     "fair": 15,
+     "cloudy": 20,
+     "mist": 15,
+     "rain": 15,
+     "storm": 25,
+     "steam": 10
+    },
+    "character": "rain squalls over open water, fog on the shores",
+    "cite": "newworld/story/data/db/region_note.jsonl#lake-ulaish/climate"
+   },
+   "sound": {
+    "day": "marsh-birds",
+    "night": "night-crickets",
+    "cite": "newworld/story/data/db/region_note.jsonl#lake-ulaish/ecology",
+    "extrapolation": "the beds the region's named animals, water and weather would make"
+   },
+   "ground": {
+    "family": "blue",
+    "flowers": "blue water-lilies and reed flowers",
+    "cite": "newworld/story/data/db/region_note.jsonl#lake-ulaish/look",
+    "extrapolation": "the dominant flower colour, chosen from the region's named plants and colours"
+   },
+   "water": {
+    "look": "pale-silt-grey",
+    "words": "wide pale grey lake water",
+    "cite": "newworld/story/data/db/region_note.jsonl#lake-ulaish/look"
+   },
+   "signature": {
+    "thing": "water-bird egg clutches in the reed beds",
+    "cite": "newworld/story/data/db/region_note.jsonl#lake-ulaish/ecology",
+    "extrapolation": "a small thing the region's named life or history would leave"
+   },
+   "creature": {
+    "kind": "reed-heron",
+    "cite": "newworld/sources/ecology/regions/lake-ulaish.json"
+   }
+  },
+  "murkwood": {
+   "slot": 13,
+   "light": {
+    "haze": [
+     55,
+     80,
+     45
+    ],
+    "mood": "black-green gloom under the canopy",
+    "brightness": 0.6,
+    "saturation": 1.1,
+    "night": 0.5,
+    "cite": "newworld/story/data/db/region_note.jsonl#murkwood/look",
+    "extrapolation": "the haze colour and levels are the mood the research's words give, set within Skyrim's measured range"
+   },
+   "sight": {
+    "visibility": 0.3,
+    "cite": "newworld/story/data/db/region_note.jsonl#murkwood/climate"
+   },
+   "weather": {
+    "chances": {
+     "fair": 3,
+     "cloudy": 15,
+     "mist": 30,
+     "rain": 40,
+     "storm": 4,
+     "steam": 8
+    },
+    "character": "hot, wet and still: heavy rain and morning fog, clear days rare",
+    "cite": "newworld/story/data/db/region_note.jsonl#murkwood/climate"
+   },
+   "sound": {
+    "day": "cicadas",
+    "night": "frog-chorus",
+    "cite": "newworld/story/data/db/region_note.jsonl#murkwood/ecology",
+    "extrapolation": "the beds the region's named animals, water and weather would make"
+   },
+   "ground": {
+    "family": "deep-green",
+    "flowers": "deep green moss and fern, few flowers",
+    "cite": "newworld/story/data/db/region_note.jsonl#murkwood/look",
+    "extrapolation": "the dominant flower colour, chosen from the region's named plants and colours"
+   },
+   "water": {
+    "look": "black",
+    "words": "black water among the roots",
+    "cite": "newworld/story/data/db/region_note.jsonl#murkwood/look"
+   },
+   "signature": {
+    "thing": "torchbug fireflies at dusk",
+    "cite": "newworld/story/data/db/region_note.jsonl#murkwood/ecology",
+    "extrapolation": "a small thing the region's named life or history would leave"
+   },
+   "creature": {
+    "kind": "fellrunner",
+    "cite": "story/lore/topics/fauna-hazards.md#Domesticated and useful animals"
+   }
+  },
+  "nha-enasa": {
+   "slot": 14,
+   "light": {
+    "haze": [
+     135,
+     140,
+     150
+    ],
+    "mood": "low slate cloud over the channels",
+    "brightness": 0.8,
+    "saturation": 0.85,
+    "night": 0.7,
+    "cite": "newworld/story/data/db/region_note.jsonl#nha-enasa/climate",
+    "extrapolation": "the haze colour and levels are the mood the research's words give, set within Skyrim's measured range"
+   },
+   "sight": {
+    "visibility": 0.5,
+    "cite": "newworld/story/data/db/region_note.jsonl#nha-enasa/climate"
+   },
+   "weather": {
+    "chances": {
+     "fair": 8,
+     "cloudy": 40,
+     "mist": 12,
+     "rain": 25,
+     "storm": 7,
+     "steam": 8
+    },
+    "character": "heavy rain and low cloud over the channels",
+    "cite": "newworld/story/data/db/region_note.jsonl#nha-enasa/climate"
+   },
+   "sound": {
+    "day": "reed-wind",
+    "night": "frog-chorus",
+    "cite": "newworld/story/data/db/region_note.jsonl#nha-enasa/ecology",
+    "extrapolation": "the beds the region's named animals, water and weather would make"
+   },
+   "ground": {
+    "family": "yellow",
+    "flowers": "yellow reed-bank flowers",
+    "cite": "newworld/story/data/db/region_note.jsonl#nha-enasa/look",
+    "extrapolation": "the dominant flower colour, chosen from the region's named plants and colours"
+   },
+   "water": {
+    "look": "black",
+    "words": "black river water",
+    "cite": "newworld/story/data/db/region_note.jsonl#nha-enasa/look"
+   },
+   "signature": {
+    "thing": "dragonfly swarms over the reed banks",
+    "cite": "newworld/story/data/db/region_note.jsonl#nha-enasa/ecology",
+    "extrapolation": "a small thing the region's named life or history would leave"
+   },
+   "creature": {
+    "kind": "dragonfly",
+    "cite": "newworld/sources/ecology/regions/nha-enasa.json"
+   }
+  },
+  "nushara-bayou": {
+   "slot": 15,
+   "light": {
+    "haze": [
+     165,
+     175,
+     130
+    ],
+    "mood": "olive bayou light through warm rain",
+    "brightness": 0.85,
+    "saturation": 0.9,
+    "night": 0.75,
+    "cite": "newworld/story/data/db/region_note.jsonl#nushara-bayou/climate",
+    "extrapolation": "the haze colour and levels are the mood the research's words give, set within Skyrim's measured range"
+   },
+   "sight": {
+    "visibility": 0.45,
+    "cite": "newworld/story/data/db/region_note.jsonl#nushara-bayou/climate"
+   },
+   "weather": {
+    "chances": {
+     "fair": 5,
+     "cloudy": 15,
+     "mist": 20,
+     "rain": 42,
+     "storm": 8,
+     "steam": 10
+    },
+    "character": "heavy warm rain and low mist over the water",
+    "cite": "newworld/story/data/db/region_note.jsonl#nushara-bayou/climate"
+   },
+   "sound": {
+    "day": "reed-wind",
+    "night": "dusk-insects",
+    "cite": "newworld/story/data/db/region_note.jsonl#nushara-bayou/ecology",
+    "extrapolation": "the beds the region's named animals, water and weather would make"
+   },
+   "ground": {
+    "family": "white",
+    "flowers": "white heron-flower in the reeds",
+    "cite": "newworld/story/data/db/region_note.jsonl#nushara-bayou/look",
+    "extrapolation": "the dominant flower colour, chosen from the region's named plants and colours"
+   },
+   "water": {
+    "look": "tea-brown",
+    "words": "sheets of brown water",
+    "cite": "newworld/story/data/db/region_note.jsonl#nushara-bayou/look"
+   },
+   "signature": {
+    "thing": "pollen and spore drifts on the still water",
+    "cite": "newworld/story/data/db/region_note.jsonl#nushara-bayou/ecology",
+    "extrapolation": "a small thing the region's named life or history would leave"
+   },
+   "creature": {
+    "kind": "swamp-jelly",
+    "cite": "story/lore/topics/ecology-encounters-loot.md#Creature notes that change how a fight plays"
+   }
+  },
+  "okuwun-rahei": {
+   "slot": 16,
+   "light": {
+    "haze": [
+     205,
+     150,
+     120
+    ],
+    "mood": "red-ochre warmth of the mounds",
+    "brightness": 1.05,
+    "saturation": 1.15,
+    "night": 0.85,
+    "cite": "newworld/story/data/db/region_note.jsonl#okuwun-rahei/look",
+    "extrapolation": "the haze colour and levels are the mood the research's words give, set within Skyrim's measured range"
+   },
+   "sight": {
+    "visibility": 0.75,
+    "cite": "newworld/story/data/db/region_note.jsonl#okuwun-rahei/climate"
+   },
+   "weather": {
+    "chances": {
+     "fair": 20,
+     "cloudy": 32,
+     "mist": 8,
+     "rain": 28,
+     "storm": 6,
+     "steam": 6
+    },
+    "character": "hot, humid and rainy, the mounds dry above the marsh",
+    "cite": "newworld/story/data/db/region_note.jsonl#okuwun-rahei/climate"
+   },
+   "sound": {
+    "day": "cicadas",
+    "night": "frog-chorus",
+    "cite": "newworld/story/data/db/region_note.jsonl#okuwun-rahei/ecology",
+    "extrapolation": "the beds the region's named animals, water and weather would make"
+   },
+   "ground": {
+    "family": "red-ochre",
+    "flowers": "red madder and ochre-stained marsh flowers",
+    "cite": "newworld/story/data/db/region_note.jsonl#okuwun-rahei/look",
+    "extrapolation": "the dominant flower colour, chosen from the region's named plants and colours"
+   },
+   "water": {
+    "look": "silt-brown",
+    "words": "brown creeks",
+    "cite": "newworld/story/data/db/region_note.jsonl#okuwun-rahei/look"
+   },
+   "signature": {
+    "thing": "hist-frog spawn in the pools",
+    "cite": "newworld/story/data/db/region_note.jsonl#okuwun-rahei/ecology",
+    "extrapolation": "a small thing the region's named life or history would leave"
+   },
+   "creature": {
+    "kind": "hist-frog",
+    "cite": "story/lore/topics/fauna-hazards.md#Domesticated and useful animals"
+   }
+  },
+  "padomaic-ocean": {
+   "slot": 17,
+   "light": {
+    "haze": [
+     140,
+     160,
+     170
+    ],
+    "mood": "grey-green sea light, bright on clear days",
+    "brightness": 1.0,
+    "saturation": 0.85,
+    "night": 0.8,
+    "cite": "newworld/story/data/db/region_note.jsonl#padomaic-ocean/climate",
+    "extrapolation": "the haze colour and levels are the mood the research's words give, set within Skyrim's measured range"
+   },
+   "sight": {
+    "visibility": 0.9,
+    "cite": "newworld/story/data/db/region_note.jsonl#padomaic-ocean/climate"
+   },
+   "weather": {
+    "chances": {
+     "fair": 15,
+     "cloudy": 28,
+     "mist": 15,
+     "rain": 30,
+     "storm": 8,
+     "steam": 4
+    },
+    "character": "overcast and rainy with sea-mist",
+    "cite": "newworld/story/data/db/region_note.jsonl#padomaic-ocean/climate"
+   },
+   "sound": {
+    "day": "surf-gulls",
+    "night": "sea-swell",
+    "cite": "newworld/story/data/db/region_note.jsonl#padomaic-ocean/ecology",
+    "extrapolation": "the beds the region's named animals, water and weather would make"
+   },
+   "ground": {
+    "family": "deep-green",
+    "flowers": "dark kelp green",
+    "cite": "newworld/story/data/db/region_note.jsonl#padomaic-ocean/look",
+    "extrapolation": "the dominant flower colour, chosen from the region's named plants and colours"
+   },
+   "water": {
+    "look": "sea-green-grey",
+    "words": "grey-green water with long swell",
+    "cite": "newworld/story/data/db/region_note.jsonl#padomaic-ocean/look"
+   },
+   "signature": {
+    "thing": "kelp drifts on the shore",
+    "cite": "newworld/story/data/db/region_note.jsonl#padomaic-ocean/ecology",
+    "extrapolation": "a small thing the region's named life or history would leave"
+   },
+   "creature": {
+    "kind": "great-whale",
+    "cite": "newworld/sources/ecology/regions/padomaic-ocean.json"
+   }
+  },
+  "sea-of-mists": {
+   "slot": 18,
+   "light": {
+    "haze": [
+     170,
+     185,
+     195
+    ],
+    "mood": "cold blue-grey sea mist",
+    "brightness": 0.9,
+    "saturation": 0.75,
+    "night": 0.75,
+    "cite": "newworld/story/data/db/region_note.jsonl#sea-of-mists/climate",
+    "extrapolation": "the haze colour and levels are the mood the research's words give, set within Skyrim's measured range"
+   },
+   "sight": {
+    "visibility": 0.35,
+    "cite": "newworld/story/data/db/region_note.jsonl#sea-of-mists/climate"
+   },
+   "weather": {
+    "chances": {
+     "fair": 5,
+     "cloudy": 12,
+     "mist": 35,
+     "rain": 20,
+     "storm": 20,
+     "steam": 8
+    },
+    "character": "mist most mornings; rain and thunderstorms common",
+    "cite": "newworld/story/data/db/region_note.jsonl#sea-of-mists/climate"
+   },
+   "sound": {
+    "day": "surf-gulls",
+    "night": "sea-swell",
+    "cite": "newworld/story/data/db/region_note.jsonl#sea-of-mists/ecology",
+    "extrapolation": "the beds the region's named animals, water and weather would make"
+   },
+   "ground": {
+    "family": "white",
+    "flowers": "white spray-flowers on the islets",
+    "cite": "newworld/story/data/db/region_note.jsonl#sea-of-mists/look",
+    "extrapolation": "the dominant flower colour, chosen from the region's named plants and colours"
+   },
+   "water": {
+    "look": "sea-green-grey",
+    "words": "grey-green water under mist banks",
+    "cite": "newworld/story/data/db/region_note.jsonl#sea-of-mists/look"
+   },
+   "signature": {
+    "thing": "luminous mist-moth swarms",
+    "cite": "newworld/story/data/db/region_note.jsonl#sea-of-mists/ecology",
+    "extrapolation": "a small thing the region's named life or history would leave"
+   },
+   "creature": {
+    "kind": "mist-moth",
+    "cite": "newworld/sources/ecology/regions/sea-of-mists.json"
+   }
+  },
+  "skeith-isle": {
+   "slot": 19,
+   "light": {
+    "haze": [
+     130,
+     140,
+     140
+    ],
+    "mood": "dark slate of sea-worn crags",
+    "brightness": 0.85,
+    "saturation": 0.75,
+    "night": 0.65,
+    "cite": "newworld/story/data/db/region_note.jsonl#skeith-isle/look",
+    "extrapolation": "the haze colour and levels are the mood the research's words give, set within Skyrim's measured range"
+   },
+   "sight": {
+    "visibility": 0.5,
+    "cite": "newworld/story/data/db/region_note.jsonl#skeith-isle/climate"
+   },
+   "weather": {
+    "chances": {
+     "fair": 18,
+     "cloudy": 30,
+     "mist": 20,
+     "rain": 22,
+     "storm": 6,
+     "steam": 4
+    },
+    "character": "windy and salt-laden: sea-fog and rain",
+    "cite": "newworld/story/data/db/region_note.jsonl#skeith-isle/climate"
+   },
+   "sound": {
+    "day": "upland-wind",
+    "night": "sea-swell",
+    "cite": "newworld/story/data/db/region_note.jsonl#skeith-isle/ecology",
+    "extrapolation": "the beds the region's named animals, water and weather would make"
+   },
+   "ground": {
+    "family": "yellow",
+    "flowers": "yellow wind-bent scrub-flowers",
+    "cite": "newworld/story/data/db/region_note.jsonl#skeith-isle/look",
+    "extrapolation": "the dominant flower colour, chosen from the region's named plants and colours"
+   },
+   "water": {
+    "look": "slate-blue",
+    "words": "cold slate-blue water off shingle",
+    "cite": "newworld/story/data/db/region_note.jsonl#skeith-isle/look"
+   },
+   "signature": {
+    "thing": "feral goat bones among the crags",
+    "cite": "newworld/story/data/db/region_note.jsonl#skeith-isle/ecology",
+    "extrapolation": "a small thing the region's named life or history would leave"
+   },
+   "creature": {
+    "kind": "hermit-crab",
+    "cite": "newworld/sources/ecology/regions/skeith-isle.json"
+   }
+  },
+  "topal-bay": {
+   "slot": 20,
+   "light": {
+    "haze": [
+     150,
+     190,
+     185
+    ],
+    "mood": "bright teal sea light",
+    "brightness": 1.1,
+    "saturation": 1.05,
+    "night": 0.85,
+    "cite": "newworld/story/data/db/region_note.jsonl#topal-bay/climate",
+    "extrapolation": "the haze colour and levels are the mood the research's words give, set within Skyrim's measured range"
+   },
+   "sight": {
+    "visibility": 0.9,
+    "cite": "newworld/story/data/db/region_note.jsonl#topal-bay/climate"
+   },
+   "weather": {
+    "chances": {
+     "fair": 30,
+     "cloudy": 20,
+     "mist": 15,
+     "rain": 12,
+     "storm": 18,
+     "steam": 5
+    },
+    "character": "warm sea breezes, sea fog and passing storms",
+    "cite": "newworld/story/data/db/region_note.jsonl#topal-bay/climate"
+   },
+   "sound": {
+    "day": "surf-gulls",
+    "night": "night-crickets",
+    "cite": "newworld/story/data/db/region_note.jsonl#topal-bay/ecology",
+    "extrapolation": "the beds the region's named animals, water and weather would make"
+   },
+   "ground": {
+    "family": "pink",
+    "flowers": "pink beach-morning-glory",
+    "cite": "newworld/story/data/db/region_note.jsonl#topal-bay/look",
+    "extrapolation": "the dominant flower colour, chosen from the region's named plants and colours"
+   },
+   "water": {
+    "look": "turquoise",
+    "words": "clear turquoise bay over sandbars",
+    "cite": "newworld/story/data/db/region_note.jsonl#topal-bay/look"
+   },
+   "signature": {
+    "thing": "shell piles on the sandbars",
+    "cite": "newworld/story/data/db/region_note.jsonl#topal-bay/ecology",
+    "extrapolation": "a small thing the region's named life or history would leave"
+   },
+   "creature": {
+    "kind": "manta-ray",
+    "cite": "newworld/sources/ecology/regions/topal-bay.json"
+   }
+  },
+  "tulmek-washes": {
+   "slot": 21,
+   "light": {
+    "haze": [
+     150,
+     150,
+     138
+    ],
+    "mood": "rain-grey dripping lowland",
+    "brightness": 0.75,
+    "saturation": 0.75,
+    "night": 0.75,
+    "cite": "newworld/story/data/db/region_note.jsonl#tulmek-washes/climate",
+    "extrapolation": "the haze colour and levels are the mood the research's words give, set within Skyrim's measured range"
+   },
+   "sight": {
+    "visibility": 0.6,
+    "cite": "newworld/story/data/db/region_note.jsonl#tulmek-washes/climate"
+   },
+   "weather": {
+    "chances": {
+     "fair": 5,
+     "cloudy": 22,
+     "mist": 15,
+     "rain": 40,
+     "storm": 6,
+     "steam": 12
+    },
+    "character": "still, rain most days, the water standing across the lowland",
+    "cite": "newworld/story/data/db/region_note.jsonl#tulmek-washes/climate"
+   },
+   "sound": {
+    "day": "marsh-birds",
+    "night": "frog-chorus",
+    "cite": "newworld/story/data/db/region_note.jsonl#tulmek-washes/ecology",
+    "extrapolation": "the beds the region's named animals, water and weather would make"
+   },
+   "ground": {
+    "family": "yellow",
+    "flowers": "yellow cypress-swamp flowers",
+    "cite": "newworld/story/data/db/region_note.jsonl#tulmek-washes/look",
+    "extrapolation": "the dominant flower colour, chosen from the region's named plants and colours"
+   },
+   "water": {
+    "look": "silt-brown",
+    "words": "brown standing water",
+    "cite": "newworld/story/data/db/region_note.jsonl#tulmek-washes/look"
+   },
+   "signature": {
+    "thing": "crocodile egg clutches",
+    "cite": "newworld/story/data/db/region_note.jsonl#tulmek-washes/ecology",
+    "extrapolation": "a small thing the region's named life or history would leave"
+   },
+   "creature": {
+    "kind": "crocodile",
+    "cite": "story/lore/topics/fauna-hazards.md#Apex and set-piece creatures"
+   }
+  },
+  "ultherus-swamp": {
+   "slot": 22,
+   "light": {
+    "haze": [
+     118,
+     140,
+     105
+    ],
+    "mood": "grey-green warm fog on the channels",
+    "brightness": 0.8,
+    "saturation": 0.8,
+    "night": 0.7,
+    "cite": "newworld/story/data/db/region_note.jsonl#ultherus-swamp/climate",
+    "extrapolation": "the haze colour and levels are the mood the research's words give, set within Skyrim's measured range"
+   },
+   "sight": {
+    "visibility": 0.3,
+    "cite": "newworld/story/data/db/region_note.jsonl#ultherus-swamp/climate"
+   },
+   "weather": {
+    "chances": {
+     "fair": 5,
+     "cloudy": 15,
+     "mist": 38,
+     "rain": 22,
+     "storm": 5,
+     "steam": 15
+    },
+    "character": "hot and heavy: rain and warm fog on the channels",
+    "cite": "newworld/story/data/db/region_note.jsonl#ultherus-swamp/climate"
+   },
+   "sound": {
+    "day": "fly-drone",
+    "night": "deep-hush",
+    "cite": "newworld/story/data/db/region_note.jsonl#ultherus-swamp/ecology",
+    "extrapolation": "the beds the region's named animals, water and weather would make"
+   },
+   "ground": {
+    "family": "red",
+    "flowers": "red dragon's-tongue",
+    "cite": "newworld/story/data/db/region_note.jsonl#ultherus-swamp/look",
+    "extrapolation": "the dominant flower colour, chosen from the region's named plants and colours"
+   },
+   "water": {
+    "look": "black",
+    "words": "black water in a cattail maze",
+    "cite": "newworld/story/data/db/region_note.jsonl#ultherus-swamp/look"
+   },
+   "signature": {
+    "thing": "flesh-fly swarms over the channels",
+    "cite": "newworld/story/data/db/region_note.jsonl#ultherus-swamp/ecology",
+    "extrapolation": "a small thing the region's named life or history would leave"
+   },
+   "creature": {
+    "kind": "dragon-frog",
+    "cite": "newworld/sources/ecology/regions/ultherus-swamp.json"
+   }
+  },
+  "valley-of-storms": {
+   "slot": 23,
+   "light": {
+    "haze": [
+     115,
+     110,
+     145
+    ],
+    "mood": "violet storm light",
+    "brightness": 0.8,
+    "saturation": 0.9,
+    "night": 0.65,
+    "cite": "newworld/story/data/db/region_note.jsonl#valley-of-storms/climate",
+    "extrapolation": "the haze colour and levels are the mood the research's words give, set within Skyrim's measured range"
+   },
+   "sight": {
+    "visibility": 0.7,
+    "cite": "newworld/story/data/db/region_note.jsonl#valley-of-storms/climate"
+   },
+   "weather": {
+    "chances": {
+     "fair": 8,
+     "cloudy": 20,
+     "mist": 8,
+     "rain": 22,
+     "storm": 34,
+     "steam": 8
+    },
+    "character": "heavy rain and thunder",
+    "cite": "newworld/story/data/db/region_note.jsonl#valley-of-storms/climate"
+   },
+   "sound": {
+    "day": "rain-drip",
+    "night": "owls",
+    "cite": "newworld/story/data/db/region_note.jsonl#valley-of-storms/ecology",
+    "extrapolation": "the beds the region's named animals, water and weather would make"
+   },
+   "ground": {
+    "family": "violet",
+    "flowers": "violet storm-flowers on the mounds",
+    "cite": "newworld/story/data/db/region_note.jsonl#valley-of-storms/look",
+    "extrapolation": "the dominant flower colour, chosen from the region's named plants and colours"
+   },
+   "water": {
+    "look": "silt-brown",
+    "words": "brown river water over the causeways",
+    "cite": "newworld/story/data/db/region_note.jsonl#valley-of-storms/look"
+   },
+   "signature": {
+    "thing": "will-o'-the-wisps on the flooded causeways",
+    "cite": "newworld/story/data/db/region_note.jsonl#valley-of-storms/ecology",
+    "extrapolation": "a small thing the region's named life or history would leave"
+   },
+   "creature": {
+    "kind": "storm-wamasu",
+    "cite": "newworld/sources/ecology/regions/valley-of-storms.json"
+   }
+  }
+ }
+}
