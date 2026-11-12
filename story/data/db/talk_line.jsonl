@@ -184,11 +184,11 @@
 {"talker":"01CCFC:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Counts-The-Bars watches the cage doors on the west side, a short way east-north-east of here. Visitor, he is a nag: he reports every key I lose."}
 {"talker":"01CCFE:Black Marsh North.esp","topic":"talk.greet-friend","ord":1,"text":"A known face. That is rare enough to welcome. Stand easy; the houses are quiet and I have time to talk."}
 {"talker":"01CCFE:Black Marsh North.esp","topic":"talk.greet-stranger","ord":1,"text":"Outlander. I guard these houses. State your business and keep to the path."}
-{"talker":"01CCFE:Black Marsh North.esp","topic":"talk.here","ord":1,"text":"These are the north-west houses, with the cages behind them. I keep watch over both. The house is ten paces north-north-east of here."}
+{"talker":"01CCFE:Black Marsh North.esp","topic":"talk.here","ord":1,"text":"These are the north-west houses, with the cages behind them. I keep watch over both. The house stands just north-north-east of here."}
 {"talker":"01CCFE:Black Marsh North.esp","topic":"talk.lore","ord":1,"text":"The Barsaebic Ayleids founded Thorn, before any Dunmer or Argonian held it. Since then it has had too many masters, outlander. I would see it ruled by people born in it."}
-{"talker":"01CCFE:Black Marsh North.esp","topic":"talk.secret","ord":1,"text":"I do not tell this to strangers, so earn my trust before you ask for more. The far cage door, thirty-five paces south-south-east of here, is the one nobody checks at night."}
+{"talker":"01CCFE:Black Marsh North.esp","topic":"talk.secret","ord":1,"text":"I do not tell this to strangers, so earn my trust before you ask for more. The far cage door, just south-south-east of here, is the one nobody checks at night."}
 {"talker":"01CCFE:Black Marsh North.esp","topic":"talk.self","ord":1,"text":"I am Ma-Veesk. I guard the north-west houses and the cages behind them. At home I speak Jel, and I have little else to say of myself."}
-{"talker":"01CCFE:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Two-Bells guards the north-west houses with me. You will find Two-Bells five paces south-south-west of here."}
+{"talker":"01CCFE:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Two-Bells guards the north-west houses with me. You will find Two-Bells just south-south-west of here."}
 {"talker":"01CD01:Black Marsh North.esp","topic":"talk.directions","ord":1,"text":"The stone tower? Ha! Climb north a hundred and ninety-five paces or so, and there is your stone tower."}
 {"talker":"01CD01:Black Marsh North.esp","topic":"talk.greet-friend","ord":1,"text":"Ho, there is my favourite traveller! Come, stand by me and tell me everything. What news do you bring from the road?"}
 {"talker":"01CD01:Black Marsh North.esp","topic":"talk.greet-stranger","ord":1,"text":"Ho, traveller! You heard my bells coming, did you not? Everyone does. What news do you bring?"}
