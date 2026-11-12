@@ -851,13 +851,13 @@
 {"talker":"0C72A7:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is the north landing, where I gut and sell the catch. The house is just south-south-west of here."}
 {"talker":"0C72A7:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Heshra. I gut and sell Okeemu's catch here. I run my family. I watch the prices. A buyer does not bargain with me twice."}
 {"talker":"0C72A7:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Okeemu is usually just east of here. Okeemu is too soft to ask what a catch is worth, so I do the selling."}
-{"talker":"0C72A8:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The cooking fire is south of here. Walk past the house, about three hundred paces. You will find it."}
+{"talker":"0C72A8:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Go south, past the house. It is a fair way. The cooking fire is there."}
 {"talker":"0C72A8:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"It is you, my friend. I practised with my stick today. Nobody laughed."}
 {"talker":"0C72A8:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Oh. Hello. I am helping with the nets, so I cannot talk for long."}
 {"talker":"0C72A8:Black Marsh.esm","topic":"talk.greet-stranger","ord":2,"text":"I do not know you. What do you want?"}
-{"talker":"0C72A8:Black Marsh.esm","topic":"talk.here","ord":1,"text":"The boat is just there, a little east of north. It is only thirty-odd paces from here."}
+{"talker":"0C72A8:Black Marsh.esm","topic":"talk.here","ord":1,"text":"The boat is just there, north-north-east of here. You can see it."}
 {"talker":"0C72A8:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Pip. Okeemu and Heshra are my parents. I help them with the nets. I am going to be a guard. I practise with this stick."}
-{"talker":"0C72A8:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Raxa-Tum is the guard at the north landing. You will usually find Raxa-Tum about twenty-five paces north-east of here. Raxa-Tum is the best guard."}
+{"talker":"0C72A8:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"I watch the guards. Raxa-Tum, the guard at the north landing, is usually just north-east of here. Raxa-Tum is the best guard."}
 {"talker":"130773:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Walk north, two hundred paces or near it. Black Rose Jail is there."}
 {"talker":"130773:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"You again, my friend. Good. The path is quiet, so stay a while."}
 {"talker":"130773:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Keep your hand clear of your weapon. Then say what you want."}
