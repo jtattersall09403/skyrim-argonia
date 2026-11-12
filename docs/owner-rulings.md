@@ -530,3 +530,11 @@ added here the day they are made, with the date and the issue.
   all readers' findings first (players and the deliverability reader), the author makes one set of changes that
   answers them together inside the ceiling, and the next round checks that set whole; a reader's persona is honest
   and a little hard to please, never hostile.
+- 2026-11-12 (in session, nw-05, the story rewrite's vibe): "remember our golden rule about the vibe of Argonia,
+  about minimising bureaucracy, and avoiding 'tallies' and 'rolls' and ledgers and paperwork and bureaucracy and
+  process generally. Lean towards activity and action (of various kinds, I don't just mean combat, use your
+  imagination and anchor on the variety of in game skills) over processes and procedures and records. And remember
+  about different builds being able to complete main; factions have their own build leanings". For the rewrite: no
+  quest turns on a document, a count, a hearing or a procedure; each turns on something the player does with a
+  skill; the main quest can be finished by any build (each main quest offers ways through for different skills);
+  each faction's line leans on that faction's own skills.
