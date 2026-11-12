@@ -366,7 +366,7 @@ STAGES: tuple[Stage, ...] = (
           checks=((PY, "-m", "tools.newworld.ecology.place", "check", "--out", PLUGIN),),
           reads=(LAND, LANDCOVER, "out:newworld/landcover/legend.json", FLORA, "out:newworld/plugin/map/teleports.json",
                  "db:cell", "db:danger_band", "src:newworld/sources/ecology/**/*", "src:newworld/sources/terrain_held.json",
-                 "src:tools/newworld/ecology/place.py", IDSPACE_ECOLOGY),
+                 "src:tools/newworld/ecology/place.py", "src:tools/newworld/ecology/toughness.py", IDSPACE_ECOLOGY),
           writes=("out:newworld/plugin/ecology/manifest.json", "out:newworld/plugin/ecology/actors.json",
                   "out:newworld/plugin/ecology/check.json"),
           agree=(("out:newworld/plugin/ecology/manifest.json#build_id", "out:newworld/plugin/land/manifest.json#build_id", "eq"),),

@@ -47,6 +47,8 @@ from pathlib import Path
 
 import numpy as np
 
+from tools.newworld.ecology import toughness
+
 REPO = Path(__file__).resolve().parents[3]
 LC = REPO / "out/newworld/landcover"
 DB = REPO / "newworld/story/data/db"
@@ -63,7 +65,7 @@ BAND_HEALTH = {"D0": 0.6, "D1": 0.8, "D2": 1.0, "D3": 1.4, "D4": 2.0, "D5": 2.8}
 SIZE_LEVEL = {"insect": 0.4, "small": 0.6, "game": 0.8, "predator": 1.0, "giant": 1.25, "npc": 1.0}
 SIZE_WEIGHT = {  # band -> size class -> weight of a row of that size
     "D0": {"insect": 3, "small": 3, "game": 1, "predator": 0, "giant": 0},
-    "D1": {"insect": 3, "small": 3, "game": 2, "predator": 0.5, "giant": 0},
+    "D1": {"insect": 3, "small": 3, "game": 2, "predator": 0, "giant": 0},
     "D2": {"insect": 2, "small": 2, "game": 2, "predator": 1.5, "giant": 0},
     "D3": {"insect": 1.5, "small": 1.5, "game": 2, "predator": 2, "giant": 0.4},
     "D4": {"insect": 1, "small": 1, "game": 1.5, "predator": 2.5, "giant": 1},
@@ -238,6 +240,7 @@ def build(out: Path) -> dict:
     rows, bind, meas, enc = load_sources()
     per100 = meas["creature_density"]["refs_per_100_cells_by_class"]
     foe = {r["id"]: r["foe_level"] for r in jsonl("danger_band")}
+    tough = toughness.load()
     cells = {(c["x"], c["y"]): c for c in jsonl("cell")}
     held = held_cells(out)
     flora = flora_near(out)
@@ -316,7 +319,8 @@ def build(out: Path) -> dict:
                 lvl = band_level(band, p["size"], foe)
                 gear = p.pop("gear", None)
                 actors[name] = {"name": name, "src": name.rsplit("@", 1)[0].split("~")[0], "band": band, "level": lvl,
-                                "health_mult": BAND_HEALTH[band], "kind": p["kind"]}
+                                "health_mult": BAND_HEALTH[band], "kind": p["kind"], "size": p["size"],
+                                "damage_bonus": toughness.bonus(p["size"], band, tough)}
                 if gear:
                     actors[name]["gear"] = gear
                 p.update(actor=name, region=reg, band=band, cell=[cx, cy], cls=cl, id=ident, fid=f"{fid_of(ident, given):06X}")
@@ -448,6 +452,14 @@ def check(out: Path) -> int:
         variety[gk] = {"looks": len(set(looks)), "gear": {t: len(tiers.get(t, [])) for t in ("low", "mid", "high")}, "mean_value": mean}
         if len(set(looks)) < MIN_LOOKS:
             faults.append(f"{gk}: {len(set(looks))} looks, fewer than {MIN_LOOKS}")
+        for ref, v in (gb.get("look_voices") or {}).items():
+            if toughness.NORD_VOICE.search(v):
+                faults.append(f"{gk}: look {ref} speaks with a Nord voice {v}")
+        for t, sets in tiers.items():
+            for e in sets:
+                bad = [i for i in e.get("items", []) + e.get("weapons", []) if toughness.NORDIC_GEAR.search(i.split(":")[1])]
+                if bad or toughness.NORDIC_GEAR.search(e.get("outfit", "").split(":")[-1]):
+                    faults.append(f"{gk}: {t} kit with Nordic gear {bad or e['outfit']}")
         if not gb.get("gear_note"):
             if any(len(tiers.get(t, [])) < MIN_GEAR for t in ("low", "mid", "high")):
                 faults.append(f"{gk}: a gear tier with fewer than {MIN_GEAR} sets")
@@ -458,6 +470,12 @@ def check(out: Path) -> int:
         if a.get("gear"):
             worn[a["band"]].append(a["gear"]["value"])
     worn_mean = {b: round(sum(v) / len(v)) for b, v in sorted(worn.items())}
+    wield = defaultdict(list)
+    for a in acts.values():
+        if (a.get("gear") or {}).get("weapon_value"):
+            wield[a["band"]].append(a["gear"]["weapon_value"])
+    tfaults, tough_doc = toughness.check(acts, bind, toughness.load(), wield)
+    faults += tfaults
     density = {}
     for cl, e in res["expected_by_class"].items():
         got = res["by_class"].get(cl, 0)
@@ -465,7 +483,7 @@ def check(out: Path) -> int:
         if e >= 20 and not TOLERANCE[0] <= got / e <= TOLERANCE[1]:
             faults.append(f"density of {cl}: {got} placed against {e} by Skyrim's measure, outside {TOLERANCE}")
     out_doc = {"build_id": res["build_id"], "refs": n, "faults": faults[:50], "fault_count": len(faults),
-               "max_region_overlap": worst, "density": density, "people_variety": variety, "gear_value_by_band": worn_mean, "by_band": res["by_band"]}
+               "max_region_overlap": worst, "density": density, "people_variety": variety, "gear_value_by_band": worn_mean, "toughness": tough_doc, "by_band": res["by_band"]}
     (d / "check.json").write_text(json.dumps(out_doc, indent=1, sort_keys=True))
     print(f"ecology check: {n} actors, {len(faults)} faults; worst region overlap {worst}; density {density}")
     for x in faults[:20]:

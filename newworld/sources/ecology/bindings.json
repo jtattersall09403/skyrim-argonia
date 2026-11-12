@@ -926,67 +926,4497 @@
  },
  "npc_groups": {
   "althii-archipelago|bandits in the burnt forts": {
-   "dropped": "only Skyrim templated humanoids fit, whose lists give Nords and Nord gear (decision 0006)"
+   "records": [
+    "Skyrim.esm:EncBandit03MissileImperialM",
+    "Skyrim.esm:EncBandit01Melee1HImperialF",
+    "Skyrim.esm:EncBandit06Boss2HImperialM",
+    "Skyrim.esm:EncBandit06Boss2HRedguardM",
+    "Skyrim.esm:EncBandit05Melee1HRedguardF",
+    "Skyrim.esm:EncBandit06MissileRedguardM",
+    "Skyrim.esm:EncBandit04MagicBretonM",
+    "Skyrim.esm:WE17Bandit2",
+    "Skyrim.esm:EncBandit01MissileWoodElfM",
+    "Skyrim.esm:EncBandit06MissileWoodElfM",
+    "Skyrim.esm:EncBandit01MissileWoodElfF",
+    "Skyrim.esm:EncBandit05MagicArgonianM",
+    "Skyrim.esm:EncBandit06MagicArgonianM"
+   ],
+   "race": "imperial/redguard/breton/bosmer/argonian",
+   "why": "outlaw people of the lore's races: whole bandit-faction records of the held plugins, never Nord",
+   "levels": [
+    9,
+    1,
+    28,
+    28,
+    19,
+    25,
+    14,
+    1,
+    1,
+    25,
+    1,
+    19,
+    25
+   ],
+   "looks": [
+    "Skyrim.esm:EncBandit03MissileImperialM",
+    "Skyrim.esm:EncBandit01Melee1HImperialF",
+    "Skyrim.esm:EncBandit06Boss2HImperialM",
+    "Skyrim.esm:EncBandit06Boss2HRedguardM",
+    "Skyrim.esm:EncBandit05Melee1HRedguardF",
+    "Skyrim.esm:EncBandit06MissileRedguardM",
+    "Skyrim.esm:EncBandit04MagicBretonM",
+    "Skyrim.esm:WE17Bandit2",
+    "Skyrim.esm:EncBandit01MissileWoodElfM",
+    "Skyrim.esm:EncBandit06MissileWoodElfM",
+    "Skyrim.esm:EncBandit01MissileWoodElfF",
+    "Skyrim.esm:EncBandit05MagicArgonianM",
+    "Skyrim.esm:EncBandit06MagicArgonianM"
+   ],
+   "look_voices": {
+    "Skyrim.esm:EncBandit03MissileImperialM": "MaleCommoner",
+    "Skyrim.esm:EncBandit01Melee1HImperialF": "FemaleCommoner",
+    "Skyrim.esm:EncBandit06Boss2HImperialM": "MaleCommoner",
+    "Skyrim.esm:EncBandit06Boss2HRedguardM": "MaleBandit",
+    "Skyrim.esm:EncBandit05Melee1HRedguardF": "FemaleEvenToned",
+    "Skyrim.esm:EncBandit06MissileRedguardM": "MaleBandit",
+    "Skyrim.esm:EncBandit04MagicBretonM": "MaleCommoner",
+    "Skyrim.esm:WE17Bandit2": "FemaleCommoner",
+    "Skyrim.esm:EncBandit01MissileWoodElfM": "MaleBandit",
+    "Skyrim.esm:EncBandit06MissileWoodElfM": "MaleBandit",
+    "Skyrim.esm:EncBandit01MissileWoodElfF": "FemaleEvenToned",
+    "Skyrim.esm:EncBandit05MagicArgonianM": "MaleArgonian",
+    "Skyrim.esm:EncBandit06MagicArgonianM": "MaleArgonian"
+   },
+   "gear": {
+    "low": [
+     {
+      "set": "hide + IronSword",
+      "items": [
+       "Skyrim.esm:ArmorHideCuirass",
+       "Skyrim.esm:ArmorHideBoots",
+       "Skyrim.esm:ArmorHideGauntlets",
+       "Skyrim.esm:ArmorHideHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronSword"
+      ],
+      "value": 120,
+      "weapon_value": 25
+     },
+     {
+      "set": "leather + IronWarAxe",
+      "items": [
+       "Skyrim.esm:ArmorLeatherCuirass",
+       "Skyrim.esm:ArmorLeatherBoots",
+       "Skyrim.esm:ArmorLeatherGauntlets",
+       "Skyrim.esm:ArmorLeatherHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronWarAxe"
+      ],
+      "value": 265,
+      "weapon_value": 30
+     },
+     {
+      "set": "iron + IronMace",
+      "items": [
+       "Skyrim.esm:ArmorIronCuirass",
+       "Skyrim.esm:ArmorIronBoots",
+       "Skyrim.esm:ArmorIronGauntlets",
+       "Skyrim.esm:ArmorIronHelmet",
+       "Skyrim.esm:ArmorIronShield"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronMace"
+      ],
+      "value": 330,
+      "weapon_value": 35
+     },
+     {
+      "set": "hide + HuntingBow + IronArrow",
+      "items": [
+       "Skyrim.esm:ArmorHideCuirass",
+       "Skyrim.esm:ArmorHideBoots",
+       "Skyrim.esm:ArmorHideGauntlets",
+       "Skyrim.esm:ArmorHideHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:HuntingBow"
+      ],
+      "value": 145,
+      "weapon_value": 50,
+      "ammo": "Skyrim.esm:IronArrow"
+     }
+    ],
+    "mid": [
+     {
+      "set": "steel + SteelSword",
+      "items": [
+       "Skyrim.esm:ArmorSteelCuirassA",
+       "Skyrim.esm:ArmorSteelBootsA",
+       "Skyrim.esm:ArmorSteelGauntletsA",
+       "Skyrim.esm:ArmorSteelHelmetA",
+       "Skyrim.esm:ArmorSteelShield"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelSword"
+      ],
+      "value": 705,
+      "weapon_value": 45
+     },
+     {
+      "set": "banded + SteelWarAxe",
+      "items": [
+       "Skyrim.esm:ArmorIronBandedCuirass",
+       "Skyrim.esm:ArmorIronBoots",
+       "Skyrim.esm:ArmorIronGauntlets",
+       "Skyrim.esm:ArmorIronHelmet",
+       "Skyrim.esm:ArmorIronBandedShield"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelWarAxe"
+      ],
+      "value": 465,
+      "weapon_value": 55
+     },
+     {
+      "set": "scaled + SteelMace",
+      "items": [
+       "Skyrim.esm:ArmorScaledCuirass",
+       "Skyrim.esm:ArmorScaledBoots",
+       "Skyrim.esm:ArmorScaledGauntlets",
+       "Skyrim.esm:ArmorScaledHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelMace"
+      ],
+      "value": 730,
+      "weapon_value": 65
+     },
+     {
+      "set": "leather + LongBow + SteelArrow",
+      "items": [
+       "Skyrim.esm:ArmorLeatherCuirass",
+       "Skyrim.esm:ArmorLeatherBoots",
+       "Skyrim.esm:ArmorLeatherGauntlets",
+       "Skyrim.esm:ArmorLeatherHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:LongBow"
+      ],
+      "value": 265,
+      "weapon_value": 30,
+      "ammo": "Skyrim.esm:SteelArrow"
+     }
+    ],
+    "high": [
+     {
+      "set": "plate + SteelGreatsword",
+      "items": [
+       "Skyrim.esm:ArmorSteelPlateCuirass",
+       "Skyrim.esm:ArmorSteelPlateBoots",
+       "Skyrim.esm:ArmorSteelPlateGauntlets",
+       "Skyrim.esm:ArmorSteelPlateHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelGreatsword"
+      ],
+      "value": 1265,
+      "weapon_value": 90
+     },
+     {
+      "set": "scaled + SteelBattleaxe",
+      "items": [
+       "Skyrim.esm:ArmorScaledCuirass",
+       "Skyrim.esm:ArmorScaledBoots",
+       "Skyrim.esm:ArmorScaledGauntlets",
+       "Skyrim.esm:ArmorScaledHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelBattleaxe"
+      ],
+      "value": 765,
+      "weapon_value": 100
+     },
+     {
+      "set": "plate + SteelWarhammer",
+      "items": [
+       "Skyrim.esm:ArmorSteelPlateCuirass",
+       "Skyrim.esm:ArmorSteelPlateBoots",
+       "Skyrim.esm:ArmorSteelPlateGauntlets",
+       "Skyrim.esm:ArmorSteelPlateHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelWarhammer"
+      ],
+      "value": 1285,
+      "weapon_value": 110
+     },
+     {
+      "set": "steel + ElvenBow + ElvenArrow",
+      "items": [
+       "Skyrim.esm:ArmorSteelCuirassA",
+       "Skyrim.esm:ArmorSteelBootsA",
+       "Skyrim.esm:ArmorSteelGauntletsA",
+       "Skyrim.esm:ArmorSteelHelmetA"
+      ],
+      "weapons": [
+       "Skyrim.esm:ElvenBow"
+      ],
+      "value": 980,
+      "weapon_value": 470,
+      "ammo": "Skyrim.esm:ElvenArrow"
+     }
+    ]
+   }
   },
   "cape-percar|bandits in the burned mines and quarries": {
-   "dropped": "only Skyrim templated humanoids fit, whose lists give Nords and Nord gear (decision 0006)"
+   "records": [
+    "Skyrim.esm:EncOrcHunter06M",
+    "Skyrim.esm:WE17Bandit1",
+    "Skyrim.esm:EncBandit04Boss2HOrcM",
+    "Skyrim.esm:EncBandit02MissileRedguardM",
+    "Skyrim.esm:EncBandit04Boss1HRedguardF",
+    "Skyrim.esm:EncBandit01Melee1HRedguardM",
+    "Skyrim.esm:EncBandit02Melee1HImperialM",
+    "Skyrim.esm:EncBandit03Boss1HImperialF",
+    "Dragonborn.esm:DLC2EncBandit05MagicDarkElf02M",
+    "Skyrim.esm:EncBandit06MagicDarkElfF",
+    "Dragonborn.esm:DLC2EncBandit05Melee1HDarkElf03M",
+    "Skyrim.esm:EncBandit03MagicBretonM",
+    "Skyrim.esm:WE17Bandit2"
+   ],
+   "race": "orc/redguard/imperial/dunmer/breton",
+   "why": "outlaw people of the lore's races: whole bandit-faction records of the held plugins, never Nord",
+   "levels": [
+    1,
+    1,
+    16,
+    5,
+    16,
+    1,
+    5,
+    10,
+    19,
+    25,
+    19,
+    9,
+    1
+   ],
+   "looks": [
+    "Skyrim.esm:EncOrcHunter06M",
+    "Skyrim.esm:WE17Bandit1",
+    "Skyrim.esm:EncBandit04Boss2HOrcM",
+    "Skyrim.esm:EncBandit02MissileRedguardM",
+    "Skyrim.esm:EncBandit04Boss1HRedguardF",
+    "Skyrim.esm:EncBandit01Melee1HRedguardM",
+    "Skyrim.esm:EncBandit02Melee1HImperialM",
+    "Skyrim.esm:EncBandit03Boss1HImperialF",
+    "Dragonborn.esm:DLC2EncBandit05MagicDarkElf02M",
+    "Skyrim.esm:EncBandit06MagicDarkElfF",
+    "Dragonborn.esm:DLC2EncBandit05Melee1HDarkElf03M",
+    "Skyrim.esm:EncBandit03MagicBretonM",
+    "Skyrim.esm:WE17Bandit2"
+   ],
+   "look_voices": {
+    "Skyrim.esm:EncOrcHunter06M": "MaleOrc",
+    "Skyrim.esm:WE17Bandit1": "MaleOrc",
+    "Skyrim.esm:EncBandit04Boss2HOrcM": "MaleOrc",
+    "Skyrim.esm:EncBandit02MissileRedguardM": "MaleBandit",
+    "Skyrim.esm:EncBandit04Boss1HRedguardF": "FemaleEvenToned",
+    "Skyrim.esm:EncBandit01Melee1HRedguardM": "MaleBandit",
+    "Skyrim.esm:EncBandit02Melee1HImperialM": "MaleCommoner",
+    "Skyrim.esm:EncBandit03Boss1HImperialF": "FemaleCommoner",
+    "Dragonborn.esm:DLC2EncBandit05MagicDarkElf02M": "MaleDarkElf",
+    "Skyrim.esm:EncBandit06MagicDarkElfF": "FemaleEvenToned",
+    "Dragonborn.esm:DLC2EncBandit05Melee1HDarkElf03M": "DLC2MaleDarkElfCynical",
+    "Skyrim.esm:EncBandit03MagicBretonM": "MaleCommoner",
+    "Skyrim.esm:WE17Bandit2": "FemaleCommoner"
+   },
+   "gear": {
+    "low": [
+     {
+      "set": "hide + IronSword",
+      "items": [
+       "Skyrim.esm:ArmorHideCuirass",
+       "Skyrim.esm:ArmorHideBoots",
+       "Skyrim.esm:ArmorHideGauntlets",
+       "Skyrim.esm:ArmorHideHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronSword"
+      ],
+      "value": 120,
+      "weapon_value": 25
+     },
+     {
+      "set": "leather + IronWarAxe",
+      "items": [
+       "Skyrim.esm:ArmorLeatherCuirass",
+       "Skyrim.esm:ArmorLeatherBoots",
+       "Skyrim.esm:ArmorLeatherGauntlets",
+       "Skyrim.esm:ArmorLeatherHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronWarAxe"
+      ],
+      "value": 265,
+      "weapon_value": 30
+     },
+     {
+      "set": "iron + IronMace",
+      "items": [
+       "Skyrim.esm:ArmorIronCuirass",
+       "Skyrim.esm:ArmorIronBoots",
+       "Skyrim.esm:ArmorIronGauntlets",
+       "Skyrim.esm:ArmorIronHelmet",
+       "Skyrim.esm:ArmorIronShield"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronMace"
+      ],
+      "value": 330,
+      "weapon_value": 35
+     },
+     {
+      "set": "hide + HuntingBow + IronArrow",
+      "items": [
+       "Skyrim.esm:ArmorHideCuirass",
+       "Skyrim.esm:ArmorHideBoots",
+       "Skyrim.esm:ArmorHideGauntlets",
+       "Skyrim.esm:ArmorHideHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:HuntingBow"
+      ],
+      "value": 145,
+      "weapon_value": 50,
+      "ammo": "Skyrim.esm:IronArrow"
+     }
+    ],
+    "mid": [
+     {
+      "set": "steel + SteelSword",
+      "items": [
+       "Skyrim.esm:ArmorSteelCuirassA",
+       "Skyrim.esm:ArmorSteelBootsA",
+       "Skyrim.esm:ArmorSteelGauntletsA",
+       "Skyrim.esm:ArmorSteelHelmetA",
+       "Skyrim.esm:ArmorSteelShield"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelSword"
+      ],
+      "value": 705,
+      "weapon_value": 45
+     },
+     {
+      "set": "banded + SteelWarAxe",
+      "items": [
+       "Skyrim.esm:ArmorIronBandedCuirass",
+       "Skyrim.esm:ArmorIronBoots",
+       "Skyrim.esm:ArmorIronGauntlets",
+       "Skyrim.esm:ArmorIronHelmet",
+       "Skyrim.esm:ArmorIronBandedShield"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelWarAxe"
+      ],
+      "value": 465,
+      "weapon_value": 55
+     },
+     {
+      "set": "scaled + SteelMace",
+      "items": [
+       "Skyrim.esm:ArmorScaledCuirass",
+       "Skyrim.esm:ArmorScaledBoots",
+       "Skyrim.esm:ArmorScaledGauntlets",
+       "Skyrim.esm:ArmorScaledHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelMace"
+      ],
+      "value": 730,
+      "weapon_value": 65
+     },
+     {
+      "set": "leather + LongBow + SteelArrow",
+      "items": [
+       "Skyrim.esm:ArmorLeatherCuirass",
+       "Skyrim.esm:ArmorLeatherBoots",
+       "Skyrim.esm:ArmorLeatherGauntlets",
+       "Skyrim.esm:ArmorLeatherHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:LongBow"
+      ],
+      "value": 265,
+      "weapon_value": 30,
+      "ammo": "Skyrim.esm:SteelArrow"
+     }
+    ],
+    "high": [
+     {
+      "set": "plate + SteelGreatsword",
+      "items": [
+       "Skyrim.esm:ArmorSteelPlateCuirass",
+       "Skyrim.esm:ArmorSteelPlateBoots",
+       "Skyrim.esm:ArmorSteelPlateGauntlets",
+       "Skyrim.esm:ArmorSteelPlateHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelGreatsword"
+      ],
+      "value": 1265,
+      "weapon_value": 90
+     },
+     {
+      "set": "scaled + SteelBattleaxe",
+      "items": [
+       "Skyrim.esm:ArmorScaledCuirass",
+       "Skyrim.esm:ArmorScaledBoots",
+       "Skyrim.esm:ArmorScaledGauntlets",
+       "Skyrim.esm:ArmorScaledHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelBattleaxe"
+      ],
+      "value": 765,
+      "weapon_value": 100
+     },
+     {
+      "set": "plate + SteelWarhammer",
+      "items": [
+       "Skyrim.esm:ArmorSteelPlateCuirass",
+       "Skyrim.esm:ArmorSteelPlateBoots",
+       "Skyrim.esm:ArmorSteelPlateGauntlets",
+       "Skyrim.esm:ArmorSteelPlateHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelWarhammer"
+      ],
+      "value": 1285,
+      "weapon_value": 110
+     },
+     {
+      "set": "steel + ElvenBow + ElvenArrow",
+      "items": [
+       "Skyrim.esm:ArmorSteelCuirassA",
+       "Skyrim.esm:ArmorSteelBootsA",
+       "Skyrim.esm:ArmorSteelGauntletsA",
+       "Skyrim.esm:ArmorSteelHelmetA"
+      ],
+      "weapons": [
+       "Skyrim.esm:ElvenBow"
+      ],
+      "value": 980,
+      "weapon_value": 470,
+      "ammo": "Skyrim.esm:ElvenArrow"
+     }
+    ]
+   }
   },
   "tulmek-washes|bandits": {
-   "dropped": "only Skyrim templated humanoids fit, whose lists give Nords and Nord gear (decision 0006)"
+   "records": [
+    "Skyrim.esm:EncBandit02Boss2HImperialM",
+    "Skyrim.esm:EncBandit03MissileImperialF",
+    "Skyrim.esm:EncBandit05Melee1HImperialM",
+    "Skyrim.esm:EncBandit03Melee1HRedguardM",
+    "Skyrim.esm:EncBandit03MissileRedguardF",
+    "Skyrim.esm:EncBandit02Boss2HRedguardM",
+    "Dragonborn.esm:DLC2EncBandit06Melee1HDarkElf03M",
+    "Dragonborn.esm:DLC2EncBandit04MagicDarkElf03F",
+    "Dragonborn.esm:DLC2EncBandit06MissileDarkElf04M",
+    "Skyrim.esm:EncBandit01MagicArgonianM",
+    "Skyrim.esm:EncBandit04MagicArgonianM",
+    "Skyrim.esm:EncBandit05MagicBretonM",
+    "Skyrim.esm:WE17Bandit2"
+   ],
+   "race": "imperial/redguard/dunmer/argonian/breton",
+   "why": "outlaw people of the lore's races: whole bandit-faction records of the held plugins, never Nord",
+   "levels": [
+    6,
+    9,
+    19,
+    9,
+    9,
+    6,
+    25,
+    14,
+    25,
+    1,
+    14,
+    19,
+    1
+   ],
+   "looks": [
+    "Skyrim.esm:EncBandit02Boss2HImperialM",
+    "Skyrim.esm:EncBandit03MissileImperialF",
+    "Skyrim.esm:EncBandit05Melee1HImperialM",
+    "Skyrim.esm:EncBandit03Melee1HRedguardM",
+    "Skyrim.esm:EncBandit03MissileRedguardF",
+    "Skyrim.esm:EncBandit02Boss2HRedguardM",
+    "Dragonborn.esm:DLC2EncBandit06Melee1HDarkElf03M",
+    "Dragonborn.esm:DLC2EncBandit04MagicDarkElf03F",
+    "Dragonborn.esm:DLC2EncBandit06MissileDarkElf04M",
+    "Skyrim.esm:EncBandit01MagicArgonianM",
+    "Skyrim.esm:EncBandit04MagicArgonianM",
+    "Skyrim.esm:EncBandit05MagicBretonM",
+    "Skyrim.esm:WE17Bandit2"
+   ],
+   "look_voices": {
+    "Skyrim.esm:EncBandit02Boss2HImperialM": "MaleCommoner",
+    "Skyrim.esm:EncBandit03MissileImperialF": "FemaleCommoner",
+    "Skyrim.esm:EncBandit05Melee1HImperialM": "MaleCommoner",
+    "Skyrim.esm:EncBandit03Melee1HRedguardM": "MaleBandit",
+    "Skyrim.esm:EncBandit03MissileRedguardF": "FemaleEvenToned",
+    "Skyrim.esm:EncBandit02Boss2HRedguardM": "MaleBandit",
+    "Dragonborn.esm:DLC2EncBandit06Melee1HDarkElf03M": "DLC2MaleDarkElfCynical",
+    "Dragonborn.esm:DLC2EncBandit04MagicDarkElf03F": "DLC2FemaleDarkElfCommoner",
+    "Dragonborn.esm:DLC2EncBandit06MissileDarkElf04M": "DLC2MaleDarkElfCynical",
+    "Skyrim.esm:EncBandit01MagicArgonianM": "MaleArgonian",
+    "Skyrim.esm:EncBandit04MagicArgonianM": "MaleArgonian",
+    "Skyrim.esm:EncBandit05MagicBretonM": "MaleCommoner",
+    "Skyrim.esm:WE17Bandit2": "FemaleCommoner"
+   },
+   "gear": {
+    "low": [
+     {
+      "set": "hide + IronSword",
+      "items": [
+       "Skyrim.esm:ArmorHideCuirass",
+       "Skyrim.esm:ArmorHideBoots",
+       "Skyrim.esm:ArmorHideGauntlets",
+       "Skyrim.esm:ArmorHideHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronSword"
+      ],
+      "value": 120,
+      "weapon_value": 25
+     },
+     {
+      "set": "leather + IronWarAxe",
+      "items": [
+       "Skyrim.esm:ArmorLeatherCuirass",
+       "Skyrim.esm:ArmorLeatherBoots",
+       "Skyrim.esm:ArmorLeatherGauntlets",
+       "Skyrim.esm:ArmorLeatherHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronWarAxe"
+      ],
+      "value": 265,
+      "weapon_value": 30
+     },
+     {
+      "set": "iron + IronMace",
+      "items": [
+       "Skyrim.esm:ArmorIronCuirass",
+       "Skyrim.esm:ArmorIronBoots",
+       "Skyrim.esm:ArmorIronGauntlets",
+       "Skyrim.esm:ArmorIronHelmet",
+       "Skyrim.esm:ArmorIronShield"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronMace"
+      ],
+      "value": 330,
+      "weapon_value": 35
+     },
+     {
+      "set": "hide + HuntingBow + IronArrow",
+      "items": [
+       "Skyrim.esm:ArmorHideCuirass",
+       "Skyrim.esm:ArmorHideBoots",
+       "Skyrim.esm:ArmorHideGauntlets",
+       "Skyrim.esm:ArmorHideHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:HuntingBow"
+      ],
+      "value": 145,
+      "weapon_value": 50,
+      "ammo": "Skyrim.esm:IronArrow"
+     }
+    ],
+    "mid": [
+     {
+      "set": "steel + SteelSword",
+      "items": [
+       "Skyrim.esm:ArmorSteelCuirassA",
+       "Skyrim.esm:ArmorSteelBootsA",
+       "Skyrim.esm:ArmorSteelGauntletsA",
+       "Skyrim.esm:ArmorSteelHelmetA",
+       "Skyrim.esm:ArmorSteelShield"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelSword"
+      ],
+      "value": 705,
+      "weapon_value": 45
+     },
+     {
+      "set": "banded + SteelWarAxe",
+      "items": [
+       "Skyrim.esm:ArmorIronBandedCuirass",
+       "Skyrim.esm:ArmorIronBoots",
+       "Skyrim.esm:ArmorIronGauntlets",
+       "Skyrim.esm:ArmorIronHelmet",
+       "Skyrim.esm:ArmorIronBandedShield"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelWarAxe"
+      ],
+      "value": 465,
+      "weapon_value": 55
+     },
+     {
+      "set": "scaled + SteelMace",
+      "items": [
+       "Skyrim.esm:ArmorScaledCuirass",
+       "Skyrim.esm:ArmorScaledBoots",
+       "Skyrim.esm:ArmorScaledGauntlets",
+       "Skyrim.esm:ArmorScaledHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelMace"
+      ],
+      "value": 730,
+      "weapon_value": 65
+     },
+     {
+      "set": "leather + LongBow + SteelArrow",
+      "items": [
+       "Skyrim.esm:ArmorLeatherCuirass",
+       "Skyrim.esm:ArmorLeatherBoots",
+       "Skyrim.esm:ArmorLeatherGauntlets",
+       "Skyrim.esm:ArmorLeatherHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:LongBow"
+      ],
+      "value": 265,
+      "weapon_value": 30,
+      "ammo": "Skyrim.esm:SteelArrow"
+     }
+    ],
+    "high": [
+     {
+      "set": "plate + SteelGreatsword",
+      "items": [
+       "Skyrim.esm:ArmorSteelPlateCuirass",
+       "Skyrim.esm:ArmorSteelPlateBoots",
+       "Skyrim.esm:ArmorSteelPlateGauntlets",
+       "Skyrim.esm:ArmorSteelPlateHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelGreatsword"
+      ],
+      "value": 1265,
+      "weapon_value": 90
+     },
+     {
+      "set": "scaled + SteelBattleaxe",
+      "items": [
+       "Skyrim.esm:ArmorScaledCuirass",
+       "Skyrim.esm:ArmorScaledBoots",
+       "Skyrim.esm:ArmorScaledGauntlets",
+       "Skyrim.esm:ArmorScaledHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelBattleaxe"
+      ],
+      "value": 765,
+      "weapon_value": 100
+     },
+     {
+      "set": "plate + SteelWarhammer",
+      "items": [
+       "Skyrim.esm:ArmorSteelPlateCuirass",
+       "Skyrim.esm:ArmorSteelPlateBoots",
+       "Skyrim.esm:ArmorSteelPlateGauntlets",
+       "Skyrim.esm:ArmorSteelPlateHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelWarhammer"
+      ],
+      "value": 1285,
+      "weapon_value": 110
+     },
+     {
+      "set": "steel + ElvenBow + ElvenArrow",
+      "items": [
+       "Skyrim.esm:ArmorSteelCuirassA",
+       "Skyrim.esm:ArmorSteelBootsA",
+       "Skyrim.esm:ArmorSteelGauntletsA",
+       "Skyrim.esm:ArmorSteelHelmetA"
+      ],
+      "weapons": [
+       "Skyrim.esm:ElvenBow"
+      ],
+      "value": 980,
+      "weapon_value": 470,
+      "ammo": "Skyrim.esm:ElvenArrow"
+     }
+    ]
+   }
   },
   "tulmek-washes|Blackguards' heirs from Blackrose Prison": {
-   "dropped": "only Skyrim templated humanoids fit, whose lists give Nords and Nord gear (decision 0006)"
+   "records": [
+    "Skyrim.esm:EncBandit02MissileImperialM",
+    "Skyrim.esm:EncBandit06Melee1HImperialF",
+    "Skyrim.esm:EncBandit02Boss2HImperialM",
+    "Skyrim.esm:EncBandit01Melee1HImperialM",
+    "Skyrim.esm:EncBandit05Boss1HRedguardM",
+    "Skyrim.esm:EncBandit02Melee1HRedguardF",
+    "Skyrim.esm:EncBandit04MissileRedguardM",
+    "Skyrim.esm:EncBandit03MagicBretonM",
+    "Skyrim.esm:WE17Bandit2",
+    "Skyrim.esm:WarehouseNPCWebActorSit",
+    "Skyrim.esm:EncOrcHunter06M",
+    "Skyrim.esm:EncBandit04Boss2HOrcM"
+   ],
+   "race": "imperial/redguard/breton/orc",
+   "why": "outlaw people of the lore's races: whole bandit-faction records of the held plugins, never Nord",
+   "levels": [
+    5,
+    25,
+    6,
+    1,
+    21,
+    5,
+    14,
+    9,
+    1,
+    1,
+    1,
+    16
+   ],
+   "looks": [
+    "Skyrim.esm:EncBandit02MissileImperialM",
+    "Skyrim.esm:EncBandit06Melee1HImperialF",
+    "Skyrim.esm:EncBandit02Boss2HImperialM",
+    "Skyrim.esm:EncBandit01Melee1HImperialM",
+    "Skyrim.esm:EncBandit05Boss1HRedguardM",
+    "Skyrim.esm:EncBandit02Melee1HRedguardF",
+    "Skyrim.esm:EncBandit04MissileRedguardM",
+    "Skyrim.esm:EncBandit03MagicBretonM",
+    "Skyrim.esm:WE17Bandit2",
+    "Skyrim.esm:WarehouseNPCWebActorSit",
+    "Skyrim.esm:EncOrcHunter06M",
+    "Skyrim.esm:EncBandit04Boss2HOrcM"
+   ],
+   "look_voices": {
+    "Skyrim.esm:EncBandit02MissileImperialM": "MaleCommoner",
+    "Skyrim.esm:EncBandit06Melee1HImperialF": "FemaleCommoner",
+    "Skyrim.esm:EncBandit02Boss2HImperialM": "MaleCommoner",
+    "Skyrim.esm:EncBandit01Melee1HImperialM": "MaleCommoner",
+    "Skyrim.esm:EncBandit05Boss1HRedguardM": "MaleBandit",
+    "Skyrim.esm:EncBandit02Melee1HRedguardF": "FemaleEvenToned",
+    "Skyrim.esm:EncBandit04MissileRedguardM": "MaleBandit",
+    "Skyrim.esm:EncBandit03MagicBretonM": "MaleCommoner",
+    "Skyrim.esm:WE17Bandit2": "FemaleCommoner",
+    "Skyrim.esm:WarehouseNPCWebActorSit": "MaleCommoner",
+    "Skyrim.esm:EncOrcHunter06M": "MaleOrc",
+    "Skyrim.esm:EncBandit04Boss2HOrcM": "MaleOrc"
+   },
+   "gear": {
+    "low": [
+     {
+      "set": "hide + IronSword",
+      "items": [
+       "Skyrim.esm:ArmorHideCuirass",
+       "Skyrim.esm:ArmorHideBoots",
+       "Skyrim.esm:ArmorHideGauntlets",
+       "Skyrim.esm:ArmorHideHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronSword"
+      ],
+      "value": 120,
+      "weapon_value": 25
+     },
+     {
+      "set": "leather + IronWarAxe",
+      "items": [
+       "Skyrim.esm:ArmorLeatherCuirass",
+       "Skyrim.esm:ArmorLeatherBoots",
+       "Skyrim.esm:ArmorLeatherGauntlets",
+       "Skyrim.esm:ArmorLeatherHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronWarAxe"
+      ],
+      "value": 265,
+      "weapon_value": 30
+     },
+     {
+      "set": "iron + IronMace",
+      "items": [
+       "Skyrim.esm:ArmorIronCuirass",
+       "Skyrim.esm:ArmorIronBoots",
+       "Skyrim.esm:ArmorIronGauntlets",
+       "Skyrim.esm:ArmorIronHelmet",
+       "Skyrim.esm:ArmorIronShield"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronMace"
+      ],
+      "value": 330,
+      "weapon_value": 35
+     },
+     {
+      "set": "hide + HuntingBow + IronArrow",
+      "items": [
+       "Skyrim.esm:ArmorHideCuirass",
+       "Skyrim.esm:ArmorHideBoots",
+       "Skyrim.esm:ArmorHideGauntlets",
+       "Skyrim.esm:ArmorHideHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:HuntingBow"
+      ],
+      "value": 145,
+      "weapon_value": 50,
+      "ammo": "Skyrim.esm:IronArrow"
+     }
+    ],
+    "mid": [
+     {
+      "set": "steel + SteelSword",
+      "items": [
+       "Skyrim.esm:ArmorSteelCuirassA",
+       "Skyrim.esm:ArmorSteelBootsA",
+       "Skyrim.esm:ArmorSteelGauntletsA",
+       "Skyrim.esm:ArmorSteelHelmetA",
+       "Skyrim.esm:ArmorSteelShield"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelSword"
+      ],
+      "value": 705,
+      "weapon_value": 45
+     },
+     {
+      "set": "banded + SteelWarAxe",
+      "items": [
+       "Skyrim.esm:ArmorIronBandedCuirass",
+       "Skyrim.esm:ArmorIronBoots",
+       "Skyrim.esm:ArmorIronGauntlets",
+       "Skyrim.esm:ArmorIronHelmet",
+       "Skyrim.esm:ArmorIronBandedShield"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelWarAxe"
+      ],
+      "value": 465,
+      "weapon_value": 55
+     },
+     {
+      "set": "scaled + SteelMace",
+      "items": [
+       "Skyrim.esm:ArmorScaledCuirass",
+       "Skyrim.esm:ArmorScaledBoots",
+       "Skyrim.esm:ArmorScaledGauntlets",
+       "Skyrim.esm:ArmorScaledHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelMace"
+      ],
+      "value": 730,
+      "weapon_value": 65
+     },
+     {
+      "set": "leather + LongBow + SteelArrow",
+      "items": [
+       "Skyrim.esm:ArmorLeatherCuirass",
+       "Skyrim.esm:ArmorLeatherBoots",
+       "Skyrim.esm:ArmorLeatherGauntlets",
+       "Skyrim.esm:ArmorLeatherHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:LongBow"
+      ],
+      "value": 265,
+      "weapon_value": 30,
+      "ammo": "Skyrim.esm:SteelArrow"
+     }
+    ],
+    "high": [
+     {
+      "set": "plate + SteelGreatsword",
+      "items": [
+       "Skyrim.esm:ArmorSteelPlateCuirass",
+       "Skyrim.esm:ArmorSteelPlateBoots",
+       "Skyrim.esm:ArmorSteelPlateGauntlets",
+       "Skyrim.esm:ArmorSteelPlateHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelGreatsword"
+      ],
+      "value": 1265,
+      "weapon_value": 90
+     },
+     {
+      "set": "scaled + SteelBattleaxe",
+      "items": [
+       "Skyrim.esm:ArmorScaledCuirass",
+       "Skyrim.esm:ArmorScaledBoots",
+       "Skyrim.esm:ArmorScaledGauntlets",
+       "Skyrim.esm:ArmorScaledHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelBattleaxe"
+      ],
+      "value": 765,
+      "weapon_value": 100
+     },
+     {
+      "set": "plate + SteelWarhammer",
+      "items": [
+       "Skyrim.esm:ArmorSteelPlateCuirass",
+       "Skyrim.esm:ArmorSteelPlateBoots",
+       "Skyrim.esm:ArmorSteelPlateGauntlets",
+       "Skyrim.esm:ArmorSteelPlateHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelWarhammer"
+      ],
+      "value": 1285,
+      "weapon_value": 110
+     },
+     {
+      "set": "steel + ElvenBow + ElvenArrow",
+      "items": [
+       "Skyrim.esm:ArmorSteelCuirassA",
+       "Skyrim.esm:ArmorSteelBootsA",
+       "Skyrim.esm:ArmorSteelGauntletsA",
+       "Skyrim.esm:ArmorSteelHelmetA"
+      ],
+      "weapons": [
+       "Skyrim.esm:ElvenBow"
+      ],
+      "value": 980,
+      "weapon_value": 470,
+      "ammo": "Skyrim.esm:ElvenArrow"
+     }
+    ]
+   }
   },
   "valley-of-storms|Morrowind border bandits": {
-   "dropped": "only Skyrim templated humanoids fit, whose lists give Nords and Nord gear (decision 0006)"
+   "records": [
+    "Dragonborn.esm:DLC2EncBandit02MissileDarkElf03M",
+    "Dragonborn.esm:DLC2EncBandit01Melee1HDarkElf01F",
+    "Skyrim.esm:EncBandit03MagicDarkElfM",
+    "Dragonborn.esm:DLC2EncBandit01MagicDarkElf02F",
+    "Dragonborn.esm:DLC2EncBandit03MagicDarkELl04M",
+    "Dragonborn.esm:DLC2EncBandit03MissileDarkELf03F",
+    "Skyrim.esm:EncBandit04MagicArgonianM",
+    "Skyrim.esm:EncBandit01MagicArgonianM",
+    "Skyrim.esm:EncBandit05Boss2HImperialM",
+    "Skyrim.esm:EncBandit04Melee1HImperialF",
+    "Skyrim.esm:EncBandit06MissileImperialM"
+   ],
+   "race": "dunmer/argonian/imperial",
+   "why": "outlaw people of the lore's races: whole bandit-faction records of the held plugins, never Nord",
+   "levels": [
+    5,
+    1,
+    9,
+    1,
+    9,
+    9,
+    14,
+    1,
+    21,
+    0,
+    25
+   ],
+   "looks": [
+    "Dragonborn.esm:DLC2EncBandit02MissileDarkElf03M",
+    "Dragonborn.esm:DLC2EncBandit01Melee1HDarkElf01F",
+    "Skyrim.esm:EncBandit03MagicDarkElfM",
+    "Dragonborn.esm:DLC2EncBandit01MagicDarkElf02F",
+    "Dragonborn.esm:DLC2EncBandit03MagicDarkELl04M",
+    "Dragonborn.esm:DLC2EncBandit03MissileDarkELf03F",
+    "Skyrim.esm:EncBandit04MagicArgonianM",
+    "Skyrim.esm:EncBandit01MagicArgonianM",
+    "Skyrim.esm:EncBandit05Boss2HImperialM",
+    "Skyrim.esm:EncBandit04Melee1HImperialF",
+    "Skyrim.esm:EncBandit06MissileImperialM"
+   ],
+   "look_voices": {
+    "Dragonborn.esm:DLC2EncBandit02MissileDarkElf03M": "DLC2MaleDarkElfCynical",
+    "Dragonborn.esm:DLC2EncBandit01Melee1HDarkElf01F": "DLC2FemaleDarkElfCommoner",
+    "Skyrim.esm:EncBandit03MagicDarkElfM": "MaleBandit",
+    "Dragonborn.esm:DLC2EncBandit01MagicDarkElf02F": "FemaleDarkElf",
+    "Dragonborn.esm:DLC2EncBandit03MagicDarkELl04M": "DLC2MaleDarkElfCynical",
+    "Dragonborn.esm:DLC2EncBandit03MissileDarkELf03F": "DLC2FemaleDarkElfCommoner",
+    "Skyrim.esm:EncBandit04MagicArgonianM": "MaleArgonian",
+    "Skyrim.esm:EncBandit01MagicArgonianM": "MaleArgonian",
+    "Skyrim.esm:EncBandit05Boss2HImperialM": "MaleCommoner",
+    "Skyrim.esm:EncBandit04Melee1HImperialF": "FemaleCommoner",
+    "Skyrim.esm:EncBandit06MissileImperialM": "MaleCommoner"
+   },
+   "gear": {
+    "low": [
+     {
+      "set": "hide + IronSword",
+      "items": [
+       "Skyrim.esm:ArmorHideCuirass",
+       "Skyrim.esm:ArmorHideBoots",
+       "Skyrim.esm:ArmorHideGauntlets",
+       "Skyrim.esm:ArmorHideHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronSword"
+      ],
+      "value": 120,
+      "weapon_value": 25
+     },
+     {
+      "set": "leather + IronWarAxe",
+      "items": [
+       "Skyrim.esm:ArmorLeatherCuirass",
+       "Skyrim.esm:ArmorLeatherBoots",
+       "Skyrim.esm:ArmorLeatherGauntlets",
+       "Skyrim.esm:ArmorLeatherHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronWarAxe"
+      ],
+      "value": 265,
+      "weapon_value": 30
+     },
+     {
+      "set": "iron + IronMace",
+      "items": [
+       "Skyrim.esm:ArmorIronCuirass",
+       "Skyrim.esm:ArmorIronBoots",
+       "Skyrim.esm:ArmorIronGauntlets",
+       "Skyrim.esm:ArmorIronHelmet",
+       "Skyrim.esm:ArmorIronShield"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronMace"
+      ],
+      "value": 330,
+      "weapon_value": 35
+     },
+     {
+      "set": "hide + HuntingBow + IronArrow",
+      "items": [
+       "Skyrim.esm:ArmorHideCuirass",
+       "Skyrim.esm:ArmorHideBoots",
+       "Skyrim.esm:ArmorHideGauntlets",
+       "Skyrim.esm:ArmorHideHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:HuntingBow"
+      ],
+      "value": 145,
+      "weapon_value": 50,
+      "ammo": "Skyrim.esm:IronArrow"
+     }
+    ],
+    "mid": [
+     {
+      "set": "steel + SteelSword",
+      "items": [
+       "Skyrim.esm:ArmorSteelCuirassA",
+       "Skyrim.esm:ArmorSteelBootsA",
+       "Skyrim.esm:ArmorSteelGauntletsA",
+       "Skyrim.esm:ArmorSteelHelmetA",
+       "Skyrim.esm:ArmorSteelShield"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelSword"
+      ],
+      "value": 705,
+      "weapon_value": 45
+     },
+     {
+      "set": "banded + SteelWarAxe",
+      "items": [
+       "Skyrim.esm:ArmorIronBandedCuirass",
+       "Skyrim.esm:ArmorIronBoots",
+       "Skyrim.esm:ArmorIronGauntlets",
+       "Skyrim.esm:ArmorIronHelmet",
+       "Skyrim.esm:ArmorIronBandedShield"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelWarAxe"
+      ],
+      "value": 465,
+      "weapon_value": 55
+     },
+     {
+      "set": "scaled + SteelMace",
+      "items": [
+       "Skyrim.esm:ArmorScaledCuirass",
+       "Skyrim.esm:ArmorScaledBoots",
+       "Skyrim.esm:ArmorScaledGauntlets",
+       "Skyrim.esm:ArmorScaledHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelMace"
+      ],
+      "value": 730,
+      "weapon_value": 65
+     },
+     {
+      "set": "leather + LongBow + SteelArrow",
+      "items": [
+       "Skyrim.esm:ArmorLeatherCuirass",
+       "Skyrim.esm:ArmorLeatherBoots",
+       "Skyrim.esm:ArmorLeatherGauntlets",
+       "Skyrim.esm:ArmorLeatherHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:LongBow"
+      ],
+      "value": 265,
+      "weapon_value": 30,
+      "ammo": "Skyrim.esm:SteelArrow"
+     }
+    ],
+    "high": [
+     {
+      "set": "plate + SteelGreatsword",
+      "items": [
+       "Skyrim.esm:ArmorSteelPlateCuirass",
+       "Skyrim.esm:ArmorSteelPlateBoots",
+       "Skyrim.esm:ArmorSteelPlateGauntlets",
+       "Skyrim.esm:ArmorSteelPlateHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelGreatsword"
+      ],
+      "value": 1265,
+      "weapon_value": 90
+     },
+     {
+      "set": "scaled + SteelBattleaxe",
+      "items": [
+       "Skyrim.esm:ArmorScaledCuirass",
+       "Skyrim.esm:ArmorScaledBoots",
+       "Skyrim.esm:ArmorScaledGauntlets",
+       "Skyrim.esm:ArmorScaledHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelBattleaxe"
+      ],
+      "value": 765,
+      "weapon_value": 100
+     },
+     {
+      "set": "plate + SteelWarhammer",
+      "items": [
+       "Skyrim.esm:ArmorSteelPlateCuirass",
+       "Skyrim.esm:ArmorSteelPlateBoots",
+       "Skyrim.esm:ArmorSteelPlateGauntlets",
+       "Skyrim.esm:ArmorSteelPlateHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelWarhammer"
+      ],
+      "value": 1285,
+      "weapon_value": 110
+     },
+     {
+      "set": "steel + ElvenBow + ElvenArrow",
+      "items": [
+       "Skyrim.esm:ArmorSteelCuirassA",
+       "Skyrim.esm:ArmorSteelBootsA",
+       "Skyrim.esm:ArmorSteelGauntletsA",
+       "Skyrim.esm:ArmorSteelHelmetA"
+      ],
+      "weapons": [
+       "Skyrim.esm:ElvenBow"
+      ],
+      "value": 980,
+      "weapon_value": 470,
+      "ammo": "Skyrim.esm:ElvenArrow"
+     }
+    ]
+   }
   },
   "lake-ulaish|toll-fort bandits on the shore roads": {
-   "dropped": "only Skyrim templated humanoids fit, whose lists give Nords and Nord gear (decision 0006)"
+   "records": [
+    "Skyrim.esm:EncBandit04Boss2HImperialM",
+    "Skyrim.esm:EncBandit05Melee1HImperialF",
+    "Skyrim.esm:EncBandit03MissileImperialM",
+    "Skyrim.esm:EncBandit06Boss1HImperialM",
+    "Skyrim.esm:EncBandit01MissileRedguardM",
+    "Skyrim.esm:EncBandit06Boss1HRedguardF",
+    "Skyrim.esm:EncBandit05Melee1HRedguardM",
+    "Skyrim.esm:EncBandit05MagicBretonM",
+    "Skyrim.esm:WE17Bandit2",
+    "Skyrim.esm:WarehouseNPCWebActorSit",
+    "Skyrim.esm:EncBandit04Melee1HOrcM",
+    "Skyrim.esm:EncOrcHunter03M"
+   ],
+   "race": "imperial/redguard/breton/orc",
+   "why": "outlaw people of the lore's races: whole bandit-faction records of the held plugins, never Nord",
+   "levels": [
+    16,
+    19,
+    9,
+    28,
+    1,
+    28,
+    19,
+    19,
+    1,
+    1,
+    0,
+    1
+   ],
+   "looks": [
+    "Skyrim.esm:EncBandit04Boss2HImperialM",
+    "Skyrim.esm:EncBandit05Melee1HImperialF",
+    "Skyrim.esm:EncBandit03MissileImperialM",
+    "Skyrim.esm:EncBandit06Boss1HImperialM",
+    "Skyrim.esm:EncBandit01MissileRedguardM",
+    "Skyrim.esm:EncBandit06Boss1HRedguardF",
+    "Skyrim.esm:EncBandit05Melee1HRedguardM",
+    "Skyrim.esm:EncBandit05MagicBretonM",
+    "Skyrim.esm:WE17Bandit2",
+    "Skyrim.esm:WarehouseNPCWebActorSit",
+    "Skyrim.esm:EncBandit04Melee1HOrcM",
+    "Skyrim.esm:EncOrcHunter03M"
+   ],
+   "look_voices": {
+    "Skyrim.esm:EncBandit04Boss2HImperialM": "MaleCommoner",
+    "Skyrim.esm:EncBandit05Melee1HImperialF": "FemaleCommoner",
+    "Skyrim.esm:EncBandit03MissileImperialM": "MaleCommoner",
+    "Skyrim.esm:EncBandit06Boss1HImperialM": "MaleCommoner",
+    "Skyrim.esm:EncBandit01MissileRedguardM": "MaleBandit",
+    "Skyrim.esm:EncBandit06Boss1HRedguardF": "FemaleEvenToned",
+    "Skyrim.esm:EncBandit05Melee1HRedguardM": "MaleBandit",
+    "Skyrim.esm:EncBandit05MagicBretonM": "MaleCommoner",
+    "Skyrim.esm:WE17Bandit2": "FemaleCommoner",
+    "Skyrim.esm:WarehouseNPCWebActorSit": "MaleCommoner",
+    "Skyrim.esm:EncBandit04Melee1HOrcM": "MaleOrc",
+    "Skyrim.esm:EncOrcHunter03M": "MaleOrc"
+   },
+   "gear": {
+    "low": [
+     {
+      "set": "hide + IronSword",
+      "items": [
+       "Skyrim.esm:ArmorHideCuirass",
+       "Skyrim.esm:ArmorHideBoots",
+       "Skyrim.esm:ArmorHideGauntlets",
+       "Skyrim.esm:ArmorHideHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronSword"
+      ],
+      "value": 120,
+      "weapon_value": 25
+     },
+     {
+      "set": "leather + IronWarAxe",
+      "items": [
+       "Skyrim.esm:ArmorLeatherCuirass",
+       "Skyrim.esm:ArmorLeatherBoots",
+       "Skyrim.esm:ArmorLeatherGauntlets",
+       "Skyrim.esm:ArmorLeatherHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronWarAxe"
+      ],
+      "value": 265,
+      "weapon_value": 30
+     },
+     {
+      "set": "iron + IronMace",
+      "items": [
+       "Skyrim.esm:ArmorIronCuirass",
+       "Skyrim.esm:ArmorIronBoots",
+       "Skyrim.esm:ArmorIronGauntlets",
+       "Skyrim.esm:ArmorIronHelmet",
+       "Skyrim.esm:ArmorIronShield"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronMace"
+      ],
+      "value": 330,
+      "weapon_value": 35
+     },
+     {
+      "set": "hide + HuntingBow + IronArrow",
+      "items": [
+       "Skyrim.esm:ArmorHideCuirass",
+       "Skyrim.esm:ArmorHideBoots",
+       "Skyrim.esm:ArmorHideGauntlets",
+       "Skyrim.esm:ArmorHideHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:HuntingBow"
+      ],
+      "value": 145,
+      "weapon_value": 50,
+      "ammo": "Skyrim.esm:IronArrow"
+     }
+    ],
+    "mid": [
+     {
+      "set": "steel + SteelSword",
+      "items": [
+       "Skyrim.esm:ArmorSteelCuirassA",
+       "Skyrim.esm:ArmorSteelBootsA",
+       "Skyrim.esm:ArmorSteelGauntletsA",
+       "Skyrim.esm:ArmorSteelHelmetA",
+       "Skyrim.esm:ArmorSteelShield"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelSword"
+      ],
+      "value": 705,
+      "weapon_value": 45
+     },
+     {
+      "set": "banded + SteelWarAxe",
+      "items": [
+       "Skyrim.esm:ArmorIronBandedCuirass",
+       "Skyrim.esm:ArmorIronBoots",
+       "Skyrim.esm:ArmorIronGauntlets",
+       "Skyrim.esm:ArmorIronHelmet",
+       "Skyrim.esm:ArmorIronBandedShield"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelWarAxe"
+      ],
+      "value": 465,
+      "weapon_value": 55
+     },
+     {
+      "set": "scaled + SteelMace",
+      "items": [
+       "Skyrim.esm:ArmorScaledCuirass",
+       "Skyrim.esm:ArmorScaledBoots",
+       "Skyrim.esm:ArmorScaledGauntlets",
+       "Skyrim.esm:ArmorScaledHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelMace"
+      ],
+      "value": 730,
+      "weapon_value": 65
+     },
+     {
+      "set": "leather + LongBow + SteelArrow",
+      "items": [
+       "Skyrim.esm:ArmorLeatherCuirass",
+       "Skyrim.esm:ArmorLeatherBoots",
+       "Skyrim.esm:ArmorLeatherGauntlets",
+       "Skyrim.esm:ArmorLeatherHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:LongBow"
+      ],
+      "value": 265,
+      "weapon_value": 30,
+      "ammo": "Skyrim.esm:SteelArrow"
+     }
+    ],
+    "high": [
+     {
+      "set": "plate + SteelGreatsword",
+      "items": [
+       "Skyrim.esm:ArmorSteelPlateCuirass",
+       "Skyrim.esm:ArmorSteelPlateBoots",
+       "Skyrim.esm:ArmorSteelPlateGauntlets",
+       "Skyrim.esm:ArmorSteelPlateHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelGreatsword"
+      ],
+      "value": 1265,
+      "weapon_value": 90
+     },
+     {
+      "set": "scaled + SteelBattleaxe",
+      "items": [
+       "Skyrim.esm:ArmorScaledCuirass",
+       "Skyrim.esm:ArmorScaledBoots",
+       "Skyrim.esm:ArmorScaledGauntlets",
+       "Skyrim.esm:ArmorScaledHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelBattleaxe"
+      ],
+      "value": 765,
+      "weapon_value": 100
+     },
+     {
+      "set": "plate + SteelWarhammer",
+      "items": [
+       "Skyrim.esm:ArmorSteelPlateCuirass",
+       "Skyrim.esm:ArmorSteelPlateBoots",
+       "Skyrim.esm:ArmorSteelPlateGauntlets",
+       "Skyrim.esm:ArmorSteelPlateHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelWarhammer"
+      ],
+      "value": 1285,
+      "weapon_value": 110
+     },
+     {
+      "set": "steel + ElvenBow + ElvenArrow",
+      "items": [
+       "Skyrim.esm:ArmorSteelCuirassA",
+       "Skyrim.esm:ArmorSteelBootsA",
+       "Skyrim.esm:ArmorSteelGauntletsA",
+       "Skyrim.esm:ArmorSteelHelmetA"
+      ],
+      "weapons": [
+       "Skyrim.esm:ElvenBow"
+      ],
+      "value": 980,
+      "weapon_value": 470,
+      "ammo": "Skyrim.esm:ElvenArrow"
+     }
+    ]
+   }
   },
   "barsaebica|frontier raiders at Slough Point": {
-   "dropped": "only Skyrim templated humanoids fit, whose lists give Nords and Nord gear (decision 0006)"
+   "records": [
+    "Skyrim.esm:EncBandit03Melee1HOrcM",
+    "Skyrim.esm:EncOrcHunter02M",
+    "Skyrim.esm:EncBandit02Boss2HOrcM",
+    "Skyrim.esm:WE17Bandit1",
+    "Skyrim.esm:EncBandit05MissileImperialM",
+    "Skyrim.esm:EncBandit04Boss1HImperialF",
+    "Skyrim.esm:EncBandit05Melee1HImperialM",
+    "Skyrim.esm:EncBandit06Boss2HRedguardM",
+    "Skyrim.esm:EncBandit02Melee1HRedguardF",
+    "Skyrim.esm:EncBandit02MissileRedguardM",
+    "Skyrim.esm:EncBandit02MagicBretonM",
+    "Skyrim.esm:WE17Bandit2",
+    "Skyrim.esm:EncBandit06MagicArgonianM",
+    "Skyrim.esm:EncBandit03MagicArgonianM"
+   ],
+   "race": "orc/imperial/redguard/breton/argonian",
+   "why": "frontier people of the lore's races: whole bandit-faction records of the held plugins, never Nord",
+   "levels": [
+    9,
+    1,
+    6,
+    1,
+    19,
+    16,
+    19,
+    28,
+    5,
+    5,
+    5,
+    1,
+    25,
+    9
+   ],
+   "looks": [
+    "Skyrim.esm:EncBandit03Melee1HOrcM",
+    "Skyrim.esm:EncOrcHunter02M",
+    "Skyrim.esm:EncBandit02Boss2HOrcM",
+    "Skyrim.esm:WE17Bandit1",
+    "Skyrim.esm:EncBandit05MissileImperialM",
+    "Skyrim.esm:EncBandit04Boss1HImperialF",
+    "Skyrim.esm:EncBandit05Melee1HImperialM",
+    "Skyrim.esm:EncBandit06Boss2HRedguardM",
+    "Skyrim.esm:EncBandit02Melee1HRedguardF",
+    "Skyrim.esm:EncBandit02MissileRedguardM",
+    "Skyrim.esm:EncBandit02MagicBretonM",
+    "Skyrim.esm:WE17Bandit2",
+    "Skyrim.esm:EncBandit06MagicArgonianM",
+    "Skyrim.esm:EncBandit03MagicArgonianM"
+   ],
+   "look_voices": {
+    "Skyrim.esm:EncBandit03Melee1HOrcM": "MaleOrc",
+    "Skyrim.esm:EncOrcHunter02M": "MaleOrc",
+    "Skyrim.esm:EncBandit02Boss2HOrcM": "MaleOrc",
+    "Skyrim.esm:WE17Bandit1": "MaleOrc",
+    "Skyrim.esm:EncBandit05MissileImperialM": "MaleCommoner",
+    "Skyrim.esm:EncBandit04Boss1HImperialF": "FemaleCommoner",
+    "Skyrim.esm:EncBandit05Melee1HImperialM": "MaleCommoner",
+    "Skyrim.esm:EncBandit06Boss2HRedguardM": "MaleBandit",
+    "Skyrim.esm:EncBandit02Melee1HRedguardF": "FemaleEvenToned",
+    "Skyrim.esm:EncBandit02MissileRedguardM": "MaleBandit",
+    "Skyrim.esm:EncBandit02MagicBretonM": "MaleCommoner",
+    "Skyrim.esm:WE17Bandit2": "FemaleCommoner",
+    "Skyrim.esm:EncBandit06MagicArgonianM": "MaleArgonian",
+    "Skyrim.esm:EncBandit03MagicArgonianM": "MaleArgonian"
+   },
+   "gear": {
+    "low": [
+     {
+      "set": "iron + IronGreatsword",
+      "items": [
+       "Skyrim.esm:ArmorIronCuirass",
+       "Skyrim.esm:ArmorIronBoots",
+       "Skyrim.esm:ArmorIronGauntlets",
+       "Skyrim.esm:ArmorIronHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronGreatsword"
+      ],
+      "value": 285,
+      "weapon_value": 50
+     },
+     {
+      "set": "hide + IronBattleaxe",
+      "items": [
+       "Skyrim.esm:ArmorHideCuirass",
+       "Skyrim.esm:ArmorHideBoots",
+       "Skyrim.esm:ArmorHideGauntlets",
+       "Skyrim.esm:ArmorHideHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronBattleaxe"
+      ],
+      "value": 150,
+      "weapon_value": 55
+     },
+     {
+      "set": "leather + IronWarAxe",
+      "items": [
+       "Skyrim.esm:ArmorLeatherCuirass",
+       "Skyrim.esm:ArmorLeatherBoots",
+       "Skyrim.esm:ArmorLeatherGauntlets",
+       "Skyrim.esm:ArmorLeatherHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronWarAxe"
+      ],
+      "value": 265,
+      "weapon_value": 30
+     }
+    ],
+    "mid": [
+     {
+      "set": "banded + OrcishSword",
+      "items": [
+       "Skyrim.esm:ArmorIronBandedCuirass",
+       "Skyrim.esm:ArmorIronBoots",
+       "Skyrim.esm:ArmorIronGauntlets",
+       "Skyrim.esm:ArmorIronHelmet",
+       "Skyrim.esm:ArmorIronBandedShield"
+      ],
+      "weapons": [
+       "Skyrim.esm:OrcishSword"
+      ],
+      "value": 485,
+      "weapon_value": 75
+     },
+     {
+      "set": "scaled + OrcishWarAxe",
+      "items": [
+       "Skyrim.esm:ArmorScaledCuirass",
+       "Skyrim.esm:ArmorScaledBoots",
+       "Skyrim.esm:ArmorScaledGauntlets",
+       "Skyrim.esm:ArmorScaledHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:OrcishWarAxe"
+      ],
+      "value": 755,
+      "weapon_value": 90
+     },
+     {
+      "set": "steel + SteelSword",
+      "items": [
+       "Skyrim.esm:ArmorSteelCuirassA",
+       "Skyrim.esm:ArmorSteelBootsA",
+       "Skyrim.esm:ArmorSteelGauntletsA",
+       "Skyrim.esm:ArmorSteelHelmetA",
+       "Skyrim.esm:ArmorSteelShield"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelSword"
+      ],
+      "value": 705,
+      "weapon_value": 45
+     }
+    ],
+    "high": [
+     {
+      "set": "orcish + OrcishGreatsword",
+      "items": [
+       "Skyrim.esm:ArmorOrcishCuirass",
+       "Skyrim.esm:ArmorOrcishBoots",
+       "Skyrim.esm:ArmorOrcishGauntlets",
+       "Skyrim.esm:ArmorOrcishHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:OrcishGreatsword"
+      ],
+      "value": 1975,
+      "weapon_value": 75
+     },
+     {
+      "set": "orcish + OrcishBattleaxe",
+      "items": [
+       "Skyrim.esm:ArmorOrcishCuirass",
+       "Skyrim.esm:ArmorOrcishBoots",
+       "Skyrim.esm:ArmorOrcishGauntlets",
+       "Skyrim.esm:ArmorOrcishHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:OrcishBattleaxe"
+      ],
+      "value": 2065,
+      "weapon_value": 165
+     },
+     {
+      "set": "orcish + OrcishWarhammer",
+      "items": [
+       "Skyrim.esm:ArmorOrcishCuirass",
+       "Skyrim.esm:ArmorOrcishBoots",
+       "Skyrim.esm:ArmorOrcishGauntlets",
+       "Skyrim.esm:ArmorOrcishHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:OrcishWarhammer"
+      ],
+      "value": 2080,
+      "weapon_value": 180
+     }
+    ]
+   }
   },
   "cape-percar|Imperial deserter bands from Soulrest": {
-   "dropped": "only Skyrim templated humanoids fit, whose lists give Nords and Nord gear (decision 0006)"
+   "records": [
+    "Skyrim.esm:EncBandit01Melee1HImperialM",
+    "Skyrim.esm:EncBandit02Boss1HImperialF",
+    "Skyrim.esm:EncBandit01MissileImperialM",
+    "Skyrim.esm:EncBandit03Melee1HImperialM",
+    "Skyrim.esm:EncBandit04Melee1HImperialF",
+    "Skyrim.esm:EncBandit06Boss1HImperialM",
+    "Skyrim.esm:EncBandit04MagicBretonM",
+    "Skyrim.esm:WE17Bandit2",
+    "Skyrim.esm:WarehouseNPCWebActorSit",
+    "Skyrim.esm:EncBandit03Melee1HRedguardM",
+    "Skyrim.esm:EncBandit02Boss1HRedguardF",
+    "Skyrim.esm:EncBandit01MissileRedguardM"
+   ],
+   "race": "imperial/breton/redguard",
+   "why": "imperial people of the lore's races: whole bandit-faction records of the held plugins, never Nord",
+   "levels": [
+    1,
+    6,
+    1,
+    9,
+    0,
+    28,
+    14,
+    1,
+    1,
+    9,
+    6,
+    1
+   ],
+   "looks": [
+    "Skyrim.esm:EncBandit01Melee1HImperialM",
+    "Skyrim.esm:EncBandit02Boss1HImperialF",
+    "Skyrim.esm:EncBandit01MissileImperialM",
+    "Skyrim.esm:EncBandit03Melee1HImperialM",
+    "Skyrim.esm:EncBandit04Melee1HImperialF",
+    "Skyrim.esm:EncBandit06Boss1HImperialM",
+    "Skyrim.esm:EncBandit04MagicBretonM",
+    "Skyrim.esm:WE17Bandit2",
+    "Skyrim.esm:WarehouseNPCWebActorSit",
+    "Skyrim.esm:EncBandit03Melee1HRedguardM",
+    "Skyrim.esm:EncBandit02Boss1HRedguardF",
+    "Skyrim.esm:EncBandit01MissileRedguardM"
+   ],
+   "look_voices": {
+    "Skyrim.esm:EncBandit01Melee1HImperialM": "MaleCommoner",
+    "Skyrim.esm:EncBandit02Boss1HImperialF": "FemaleCommoner",
+    "Skyrim.esm:EncBandit01MissileImperialM": "MaleCommoner",
+    "Skyrim.esm:EncBandit03Melee1HImperialM": "MaleCommoner",
+    "Skyrim.esm:EncBandit04Melee1HImperialF": "FemaleCommoner",
+    "Skyrim.esm:EncBandit06Boss1HImperialM": "MaleCommoner",
+    "Skyrim.esm:EncBandit04MagicBretonM": "MaleCommoner",
+    "Skyrim.esm:WE17Bandit2": "FemaleCommoner",
+    "Skyrim.esm:WarehouseNPCWebActorSit": "MaleCommoner",
+    "Skyrim.esm:EncBandit03Melee1HRedguardM": "MaleBandit",
+    "Skyrim.esm:EncBandit02Boss1HRedguardF": "FemaleEvenToned",
+    "Skyrim.esm:EncBandit01MissileRedguardM": "MaleBandit"
+   },
+   "gear": {
+    "low": [
+     {
+      "set": "imperial-light + IronSword",
+      "items": [
+       "Skyrim.esm:ArmorImperialLightCuirass",
+       "Skyrim.esm:ArmorImperialLightBoots",
+       "Skyrim.esm:ArmorImperialLightGauntlets",
+       "Skyrim.esm:ArmorImperialLightHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronSword"
+      ],
+      "value": 165,
+      "weapon_value": 25
+     },
+     {
+      "set": "studded + IronWarAxe",
+      "items": [
+       "Skyrim.esm:ArmorImperialStuddedCuirass",
+       "Skyrim.esm:ArmorLeatherBoots",
+       "Skyrim.esm:ArmorLeatherGauntlets"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronWarAxe"
+      ],
+      "value": 205,
+      "weapon_value": 30
+     },
+     {
+      "set": "imperial-light + IronMace",
+      "items": [
+       "Skyrim.esm:ArmorImperialLightCuirass",
+       "Skyrim.esm:ArmorImperialLightBoots",
+       "Skyrim.esm:ArmorImperialLightGauntlets",
+       "Skyrim.esm:ArmorImperialLightHelmet",
+       "Skyrim.esm:ArmorImperialLightShield"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronMace"
+      ],
+      "value": 215,
+      "weapon_value": 35
+     }
+    ],
+    "mid": [
+     {
+      "set": "imperial + SteelSword",
+      "items": [
+       "Skyrim.esm:ArmorImperialCuirass",
+       "Skyrim.esm:ArmorImperialBoots",
+       "Skyrim.esm:ArmorImperialGauntlets",
+       "Skyrim.esm:ArmorImperialHelmet",
+       "Skyrim.esm:ArmorImperialShield"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelSword"
+      ],
+      "value": 280,
+      "weapon_value": 45
+     },
+     {
+      "set": "imperial + SteelWarAxe",
+      "items": [
+       "Skyrim.esm:ArmorImperialCuirass",
+       "Skyrim.esm:ArmorImperialBoots",
+       "Skyrim.esm:ArmorImperialGauntlets",
+       "Skyrim.esm:ArmorImperialHelmet",
+       "Skyrim.esm:ArmorImperialShield"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelWarAxe"
+      ],
+      "value": 290,
+      "weapon_value": 55
+     },
+     {
+      "set": "imperial-light + ImperialBow + SteelArrow",
+      "items": [
+       "Skyrim.esm:ArmorImperialLightCuirass",
+       "Skyrim.esm:ArmorImperialLightBoots",
+       "Skyrim.esm:ArmorImperialLightGauntlets",
+       "Skyrim.esm:ArmorImperialLightHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:ImperialBow"
+      ],
+      "value": 230,
+      "weapon_value": 90,
+      "ammo": "Skyrim.esm:SteelArrow"
+     }
+    ],
+    "high": [
+     {
+      "set": "imperial-officer + SteelGreatsword",
+      "items": [
+       "Skyrim.esm:ArmorImperialCuirass",
+       "Skyrim.esm:ArmorSteelPlateBoots",
+       "Skyrim.esm:ArmorSteelPlateGauntlets",
+       "Skyrim.esm:ArmorSteelPlateHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelGreatsword"
+      ],
+      "value": 740,
+      "weapon_value": 90
+     },
+     {
+      "set": "imperial-officer + SteelBattleaxe",
+      "items": [
+       "Skyrim.esm:ArmorImperialCuirass",
+       "Skyrim.esm:ArmorSteelPlateBoots",
+       "Skyrim.esm:ArmorSteelPlateGauntlets",
+       "Skyrim.esm:ArmorSteelPlateHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelBattleaxe"
+      ],
+      "value": 750,
+      "weapon_value": 100
+     },
+     {
+      "set": "imperial-officer + SteelSword",
+      "items": [
+       "Skyrim.esm:ArmorImperialCuirass",
+       "Skyrim.esm:ArmorSteelPlateBoots",
+       "Skyrim.esm:ArmorSteelPlateGauntlets",
+       "Skyrim.esm:ArmorSteelPlateHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelSword"
+      ],
+      "value": 695,
+      "weapon_value": 45
+     }
+    ]
+   }
   },
   "aphon-isle|smugglers working the cave": {
-   "dropped": "only Skyrim templated humanoids fit, whose lists give Nords and Nord gear (decision 0006)"
+   "records": [
+    "Skyrim.esm:EncBandit03MissileKhajiitM",
+    "Skyrim.esm:EncBandit05Melee1HKhajiitM",
+    "Skyrim.esm:EncBandit01Melee1HKhajiitM",
+    "Skyrim.esm:EncBandit01Melee1HRedguardM",
+    "Skyrim.esm:EncBandit03MissileRedguardF",
+    "Skyrim.esm:EncBandit06Boss1HRedguardM",
+    "Dragonborn.esm:DLC2EncBandit04MagicDarkElf04M",
+    "Dragonborn.esm:DLC2EncBandit05MissileDarkElf03F",
+    "Dragonborn.esm:DLC2EncBandit04Melee1HDarkElf02M",
+    "Skyrim.esm:EncBandit03Boss1HImperialM",
+    "Skyrim.esm:EncBandit03MissileImperialF",
+    "Skyrim.esm:EncBandit04MissileWoodElfM",
+    "Skyrim.esm:EncBandit03MissileWoodElfM"
+   ],
+   "race": "khajiit/redguard/dunmer/imperial/bosmer",
+   "why": "smuggler people of the lore's races: whole bandit-faction records of the held plugins, never Nord",
+   "levels": [
+    9,
+    19,
+    1,
+    1,
+    9,
+    28,
+    14,
+    19,
+    0,
+    10,
+    9,
+    14,
+    9
+   ],
+   "looks": [
+    "Skyrim.esm:EncBandit03MissileKhajiitM",
+    "Skyrim.esm:EncBandit05Melee1HKhajiitM",
+    "Skyrim.esm:EncBandit01Melee1HKhajiitM",
+    "Skyrim.esm:EncBandit01Melee1HRedguardM",
+    "Skyrim.esm:EncBandit03MissileRedguardF",
+    "Skyrim.esm:EncBandit06Boss1HRedguardM",
+    "Dragonborn.esm:DLC2EncBandit04MagicDarkElf04M",
+    "Dragonborn.esm:DLC2EncBandit05MissileDarkElf03F",
+    "Dragonborn.esm:DLC2EncBandit04Melee1HDarkElf02M",
+    "Skyrim.esm:EncBandit03Boss1HImperialM",
+    "Skyrim.esm:EncBandit03MissileImperialF",
+    "Skyrim.esm:EncBandit04MissileWoodElfM",
+    "Skyrim.esm:EncBandit03MissileWoodElfM"
+   ],
+   "look_voices": {
+    "Skyrim.esm:EncBandit03MissileKhajiitM": "MaleKhajiit",
+    "Skyrim.esm:EncBandit05Melee1HKhajiitM": "MaleKhajiit",
+    "Skyrim.esm:EncBandit01Melee1HKhajiitM": "MaleKhajiit",
+    "Skyrim.esm:EncBandit01Melee1HRedguardM": "MaleBandit",
+    "Skyrim.esm:EncBandit03MissileRedguardF": "FemaleEvenToned",
+    "Skyrim.esm:EncBandit06Boss1HRedguardM": "MaleBandit",
+    "Dragonborn.esm:DLC2EncBandit04MagicDarkElf04M": "DLC2MaleDarkElfCynical",
+    "Dragonborn.esm:DLC2EncBandit05MissileDarkElf03F": "DLC2FemaleDarkElfCommoner",
+    "Dragonborn.esm:DLC2EncBandit04Melee1HDarkElf02M": "MaleDarkElf",
+    "Skyrim.esm:EncBandit03Boss1HImperialM": "MaleCommoner",
+    "Skyrim.esm:EncBandit03MissileImperialF": "FemaleCommoner",
+    "Skyrim.esm:EncBandit04MissileWoodElfM": "MaleBandit",
+    "Skyrim.esm:EncBandit03MissileWoodElfM": "MaleBandit"
+   },
+   "gear": {
+    "low": [
+     {
+      "set": "leather + IronDagger",
+      "items": [
+       "Skyrim.esm:ArmorLeatherCuirass",
+       "Skyrim.esm:ArmorLeatherBoots",
+       "Skyrim.esm:ArmorLeatherGauntlets",
+       "Skyrim.esm:ArmorLeatherHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronDagger"
+      ],
+      "value": 245,
+      "weapon_value": 10
+     },
+     {
+      "set": "hide + IronSword",
+      "items": [
+       "Skyrim.esm:ArmorHideCuirass",
+       "Skyrim.esm:ArmorHideBoots",
+       "Skyrim.esm:ArmorHideGauntlets",
+       "Skyrim.esm:ArmorHideHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronSword"
+      ],
+      "value": 120,
+      "weapon_value": 25
+     },
+     {
+      "set": "studded + IronWarAxe",
+      "items": [
+       "Skyrim.esm:ArmorImperialStuddedCuirass",
+       "Skyrim.esm:ArmorLeatherBoots",
+       "Skyrim.esm:ArmorLeatherGauntlets"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronWarAxe"
+      ],
+      "value": 205,
+      "weapon_value": 30
+     }
+    ],
+    "mid": [
+     {
+      "set": "elven-light + SteelSword",
+      "items": [
+       "Skyrim.esm:ArmorElvenLightCuirass",
+       "Skyrim.esm:ArmorElvenLightBoots",
+       "Skyrim.esm:ArmorElvenLightGauntlets",
+       "Skyrim.esm:ArmorElvenLightHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelSword"
+      ],
+      "value": 280,
+      "weapon_value": 45
+     },
+     {
+      "set": "studded + SteelWarAxe",
+      "items": [
+       "Skyrim.esm:ArmorImperialStuddedCuirass",
+       "Skyrim.esm:ArmorLeatherBoots",
+       "Skyrim.esm:ArmorLeatherGauntlets"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelWarAxe"
+      ],
+      "value": 230,
+      "weapon_value": 55
+     },
+     {
+      "set": "imperial-light + SteelSword",
+      "items": [
+       "Skyrim.esm:ArmorImperialLightCuirass",
+       "Skyrim.esm:ArmorImperialLightBoots",
+       "Skyrim.esm:ArmorImperialLightGauntlets",
+       "Skyrim.esm:ArmorImperialLightHelmet",
+       "Skyrim.esm:ArmorImperialLightShield"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelSword"
+      ],
+      "value": 225,
+      "weapon_value": 45
+     }
+    ],
+    "high": [
+     {
+      "set": "elven + ElvenSword",
+      "items": [
+       "Skyrim.esm:ArmorElvenCuirass",
+       "Skyrim.esm:ArmorElvenBoots",
+       "Skyrim.esm:ArmorElvenGauntlets",
+       "Skyrim.esm:ArmorElvenHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:ElvenSword"
+      ],
+      "value": 660,
+      "weapon_value": 235
+     },
+     {
+      "set": "elven + ElvenBow + ElvenArrow",
+      "items": [
+       "Skyrim.esm:ArmorElvenCuirass",
+       "Skyrim.esm:ArmorElvenBoots",
+       "Skyrim.esm:ArmorElvenGauntlets",
+       "Skyrim.esm:ArmorElvenHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:ElvenBow"
+      ],
+      "value": 895,
+      "weapon_value": 470,
+      "ammo": "Skyrim.esm:ElvenArrow"
+     },
+     {
+      "set": "scaled + ElvenWarAxe",
+      "items": [
+       "Skyrim.esm:ArmorScaledCuirass",
+       "Skyrim.esm:ArmorScaledBoots",
+       "Skyrim.esm:ArmorScaledGauntlets",
+       "Skyrim.esm:ArmorScaledHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:ElvenWarAxe"
+      ],
+      "value": 945,
+      "weapon_value": 280
+     }
+    ]
+   }
   },
   "hatandros-bight|smugglers at landings": {
-   "dropped": "only Skyrim templated humanoids fit, whose lists give Nords and Nord gear (decision 0006)"
+   "records": [
+    "Skyrim.esm:EncBandit04Melee1HKhajiitM",
+    "Skyrim.esm:EncBandit06MissileKhajiitM",
+    "Skyrim.esm:EncBandit05MissileKhajiitM",
+    "Skyrim.esm:EncBandit02MissileWoodElfM",
+    "Skyrim.esm:EncBandit04MissileWoodElfM",
+    "Skyrim.esm:EncBandit03MissileWoodElfF",
+    "Skyrim.esm:EncBandit03MagicArgonianM",
+    "Skyrim.esm:EncBandit01MagicArgonianM",
+    "Skyrim.esm:WarehouseNPCWebActorSit",
+    "Skyrim.esm:EncBandit01MagicBretonF",
+    "Skyrim.esm:WE17Bandit2",
+    "Skyrim.esm:EncBandit05Boss2HRedguardM",
+    "Skyrim.esm:EncBandit06Melee1HRedguardF"
+   ],
+   "race": "khajiit/bosmer/argonian/breton/redguard",
+   "why": "smuggler people of the lore's races: whole bandit-faction records of the held plugins, never Nord",
+   "levels": [
+    0,
+    25,
+    19,
+    5,
+    14,
+    9,
+    9,
+    1,
+    1,
+    1,
+    1,
+    21,
+    25
+   ],
+   "looks": [
+    "Skyrim.esm:EncBandit04Melee1HKhajiitM",
+    "Skyrim.esm:EncBandit06MissileKhajiitM",
+    "Skyrim.esm:EncBandit05MissileKhajiitM",
+    "Skyrim.esm:EncBandit02MissileWoodElfM",
+    "Skyrim.esm:EncBandit04MissileWoodElfM",
+    "Skyrim.esm:EncBandit03MissileWoodElfF",
+    "Skyrim.esm:EncBandit03MagicArgonianM",
+    "Skyrim.esm:EncBandit01MagicArgonianM",
+    "Skyrim.esm:WarehouseNPCWebActorSit",
+    "Skyrim.esm:EncBandit01MagicBretonF",
+    "Skyrim.esm:WE17Bandit2",
+    "Skyrim.esm:EncBandit05Boss2HRedguardM",
+    "Skyrim.esm:EncBandit06Melee1HRedguardF"
+   ],
+   "look_voices": {
+    "Skyrim.esm:EncBandit04Melee1HKhajiitM": "MaleKhajiit",
+    "Skyrim.esm:EncBandit06MissileKhajiitM": "MaleKhajiit",
+    "Skyrim.esm:EncBandit05MissileKhajiitM": "MaleKhajiit",
+    "Skyrim.esm:EncBandit02MissileWoodElfM": "MaleBandit",
+    "Skyrim.esm:EncBandit04MissileWoodElfM": "MaleBandit",
+    "Skyrim.esm:EncBandit03MissileWoodElfF": "FemaleEvenToned",
+    "Skyrim.esm:EncBandit03MagicArgonianM": "MaleArgonian",
+    "Skyrim.esm:EncBandit01MagicArgonianM": "MaleArgonian",
+    "Skyrim.esm:WarehouseNPCWebActorSit": "MaleCommoner",
+    "Skyrim.esm:EncBandit01MagicBretonF": "FemaleCommoner",
+    "Skyrim.esm:WE17Bandit2": "FemaleCommoner",
+    "Skyrim.esm:EncBandit05Boss2HRedguardM": "MaleBandit",
+    "Skyrim.esm:EncBandit06Melee1HRedguardF": "FemaleEvenToned"
+   },
+   "gear": {
+    "low": [
+     {
+      "set": "leather + IronDagger",
+      "items": [
+       "Skyrim.esm:ArmorLeatherCuirass",
+       "Skyrim.esm:ArmorLeatherBoots",
+       "Skyrim.esm:ArmorLeatherGauntlets",
+       "Skyrim.esm:ArmorLeatherHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronDagger"
+      ],
+      "value": 245,
+      "weapon_value": 10
+     },
+     {
+      "set": "hide + IronSword",
+      "items": [
+       "Skyrim.esm:ArmorHideCuirass",
+       "Skyrim.esm:ArmorHideBoots",
+       "Skyrim.esm:ArmorHideGauntlets",
+       "Skyrim.esm:ArmorHideHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronSword"
+      ],
+      "value": 120,
+      "weapon_value": 25
+     },
+     {
+      "set": "studded + IronWarAxe",
+      "items": [
+       "Skyrim.esm:ArmorImperialStuddedCuirass",
+       "Skyrim.esm:ArmorLeatherBoots",
+       "Skyrim.esm:ArmorLeatherGauntlets"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronWarAxe"
+      ],
+      "value": 205,
+      "weapon_value": 30
+     }
+    ],
+    "mid": [
+     {
+      "set": "elven-light + SteelSword",
+      "items": [
+       "Skyrim.esm:ArmorElvenLightCuirass",
+       "Skyrim.esm:ArmorElvenLightBoots",
+       "Skyrim.esm:ArmorElvenLightGauntlets",
+       "Skyrim.esm:ArmorElvenLightHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelSword"
+      ],
+      "value": 280,
+      "weapon_value": 45
+     },
+     {
+      "set": "studded + SteelWarAxe",
+      "items": [
+       "Skyrim.esm:ArmorImperialStuddedCuirass",
+       "Skyrim.esm:ArmorLeatherBoots",
+       "Skyrim.esm:ArmorLeatherGauntlets"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelWarAxe"
+      ],
+      "value": 230,
+      "weapon_value": 55
+     },
+     {
+      "set": "imperial-light + SteelSword",
+      "items": [
+       "Skyrim.esm:ArmorImperialLightCuirass",
+       "Skyrim.esm:ArmorImperialLightBoots",
+       "Skyrim.esm:ArmorImperialLightGauntlets",
+       "Skyrim.esm:ArmorImperialLightHelmet",
+       "Skyrim.esm:ArmorImperialLightShield"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelSword"
+      ],
+      "value": 225,
+      "weapon_value": 45
+     }
+    ],
+    "high": [
+     {
+      "set": "elven + ElvenSword",
+      "items": [
+       "Skyrim.esm:ArmorElvenCuirass",
+       "Skyrim.esm:ArmorElvenBoots",
+       "Skyrim.esm:ArmorElvenGauntlets",
+       "Skyrim.esm:ArmorElvenHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:ElvenSword"
+      ],
+      "value": 660,
+      "weapon_value": 235
+     },
+     {
+      "set": "elven + ElvenBow + ElvenArrow",
+      "items": [
+       "Skyrim.esm:ArmorElvenCuirass",
+       "Skyrim.esm:ArmorElvenBoots",
+       "Skyrim.esm:ArmorElvenGauntlets",
+       "Skyrim.esm:ArmorElvenHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:ElvenBow"
+      ],
+      "value": 895,
+      "weapon_value": 470,
+      "ammo": "Skyrim.esm:ElvenArrow"
+     },
+     {
+      "set": "scaled + ElvenWarAxe",
+      "items": [
+       "Skyrim.esm:ArmorScaledCuirass",
+       "Skyrim.esm:ArmorScaledBoots",
+       "Skyrim.esm:ArmorScaledGauntlets",
+       "Skyrim.esm:ArmorScaledHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:ElvenWarAxe"
+      ],
+      "value": 945,
+      "weapon_value": 280
+     }
+    ]
+   }
   },
   "nushara-bayou|smugglers using the back-water routes": {
-   "dropped": "only Skyrim templated humanoids fit, whose lists give Nords and Nord gear (decision 0006)"
+   "records": [
+    "Skyrim.esm:EncBandit02MagicArgonianM",
+    "Skyrim.esm:EncBandit05MagicArgonianM",
+    "Skyrim.esm:EncBandit04MagicArgonianM",
+    "Dragonborn.esm:DLC2EncBandit05Melee1HDarkElf02M",
+    "Dragonborn.esm:DLC2EncBandit03MagicDarkElf01F",
+    "Dragonborn.esm:DLC2EncBandit03MissileDarkElf04M",
+    "Skyrim.esm:EncBandit02Melee1HKhajiitM",
+    "Skyrim.esm:EncBandit04MissileKhajiitM",
+    "Skyrim.esm:EncBandit04Melee1HKhajiitM",
+    "Skyrim.esm:EncBandit01MissileWoodElfM",
+    "Skyrim.esm:EncBandit04MissileWoodElfM",
+    "Skyrim.esm:EncBandit03MissileWoodElfF"
+   ],
+   "race": "argonian/dunmer/khajiit/bosmer",
+   "why": "smuggler people of the lore's races: whole bandit-faction records of the held plugins, never Nord",
+   "levels": [
+    5,
+    19,
+    14,
+    19,
+    9,
+    9,
+    5,
+    14,
+    0,
+    1,
+    14,
+    9
+   ],
+   "looks": [
+    "Skyrim.esm:EncBandit02MagicArgonianM",
+    "Skyrim.esm:EncBandit05MagicArgonianM",
+    "Skyrim.esm:EncBandit04MagicArgonianM",
+    "Dragonborn.esm:DLC2EncBandit05Melee1HDarkElf02M",
+    "Dragonborn.esm:DLC2EncBandit03MagicDarkElf01F",
+    "Dragonborn.esm:DLC2EncBandit03MissileDarkElf04M",
+    "Skyrim.esm:EncBandit02Melee1HKhajiitM",
+    "Skyrim.esm:EncBandit04MissileKhajiitM",
+    "Skyrim.esm:EncBandit04Melee1HKhajiitM",
+    "Skyrim.esm:EncBandit01MissileWoodElfM",
+    "Skyrim.esm:EncBandit04MissileWoodElfM",
+    "Skyrim.esm:EncBandit03MissileWoodElfF"
+   ],
+   "look_voices": {
+    "Skyrim.esm:EncBandit02MagicArgonianM": "MaleArgonian",
+    "Skyrim.esm:EncBandit05MagicArgonianM": "MaleArgonian",
+    "Skyrim.esm:EncBandit04MagicArgonianM": "MaleArgonian",
+    "Dragonborn.esm:DLC2EncBandit05Melee1HDarkElf02M": "MaleDarkElf",
+    "Dragonborn.esm:DLC2EncBandit03MagicDarkElf01F": "DLC2FemaleDarkElfCommoner",
+    "Dragonborn.esm:DLC2EncBandit03MissileDarkElf04M": "DLC2MaleDarkElfCynical",
+    "Skyrim.esm:EncBandit02Melee1HKhajiitM": "MaleKhajiit",
+    "Skyrim.esm:EncBandit04MissileKhajiitM": "MaleKhajiit",
+    "Skyrim.esm:EncBandit04Melee1HKhajiitM": "MaleKhajiit",
+    "Skyrim.esm:EncBandit01MissileWoodElfM": "MaleBandit",
+    "Skyrim.esm:EncBandit04MissileWoodElfM": "MaleBandit",
+    "Skyrim.esm:EncBandit03MissileWoodElfF": "FemaleEvenToned"
+   },
+   "gear": {
+    "low": [
+     {
+      "set": "leather + IronDagger",
+      "items": [
+       "Skyrim.esm:ArmorLeatherCuirass",
+       "Skyrim.esm:ArmorLeatherBoots",
+       "Skyrim.esm:ArmorLeatherGauntlets",
+       "Skyrim.esm:ArmorLeatherHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronDagger"
+      ],
+      "value": 245,
+      "weapon_value": 10
+     },
+     {
+      "set": "hide + IronSword",
+      "items": [
+       "Skyrim.esm:ArmorHideCuirass",
+       "Skyrim.esm:ArmorHideBoots",
+       "Skyrim.esm:ArmorHideGauntlets",
+       "Skyrim.esm:ArmorHideHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronSword"
+      ],
+      "value": 120,
+      "weapon_value": 25
+     },
+     {
+      "set": "studded + IronWarAxe",
+      "items": [
+       "Skyrim.esm:ArmorImperialStuddedCuirass",
+       "Skyrim.esm:ArmorLeatherBoots",
+       "Skyrim.esm:ArmorLeatherGauntlets"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronWarAxe"
+      ],
+      "value": 205,
+      "weapon_value": 30
+     }
+    ],
+    "mid": [
+     {
+      "set": "elven-light + SteelSword",
+      "items": [
+       "Skyrim.esm:ArmorElvenLightCuirass",
+       "Skyrim.esm:ArmorElvenLightBoots",
+       "Skyrim.esm:ArmorElvenLightGauntlets",
+       "Skyrim.esm:ArmorElvenLightHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelSword"
+      ],
+      "value": 280,
+      "weapon_value": 45
+     },
+     {
+      "set": "studded + SteelWarAxe",
+      "items": [
+       "Skyrim.esm:ArmorImperialStuddedCuirass",
+       "Skyrim.esm:ArmorLeatherBoots",
+       "Skyrim.esm:ArmorLeatherGauntlets"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelWarAxe"
+      ],
+      "value": 230,
+      "weapon_value": 55
+     },
+     {
+      "set": "imperial-light + SteelSword",
+      "items": [
+       "Skyrim.esm:ArmorImperialLightCuirass",
+       "Skyrim.esm:ArmorImperialLightBoots",
+       "Skyrim.esm:ArmorImperialLightGauntlets",
+       "Skyrim.esm:ArmorImperialLightHelmet",
+       "Skyrim.esm:ArmorImperialLightShield"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelSword"
+      ],
+      "value": 225,
+      "weapon_value": 45
+     }
+    ],
+    "high": [
+     {
+      "set": "elven + ElvenSword",
+      "items": [
+       "Skyrim.esm:ArmorElvenCuirass",
+       "Skyrim.esm:ArmorElvenBoots",
+       "Skyrim.esm:ArmorElvenGauntlets",
+       "Skyrim.esm:ArmorElvenHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:ElvenSword"
+      ],
+      "value": 660,
+      "weapon_value": 235
+     },
+     {
+      "set": "elven + ElvenBow + ElvenArrow",
+      "items": [
+       "Skyrim.esm:ArmorElvenCuirass",
+       "Skyrim.esm:ArmorElvenBoots",
+       "Skyrim.esm:ArmorElvenGauntlets",
+       "Skyrim.esm:ArmorElvenHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:ElvenBow"
+      ],
+      "value": 895,
+      "weapon_value": 470,
+      "ammo": "Skyrim.esm:ElvenArrow"
+     },
+     {
+      "set": "scaled + ElvenWarAxe",
+      "items": [
+       "Skyrim.esm:ArmorScaledCuirass",
+       "Skyrim.esm:ArmorScaledBoots",
+       "Skyrim.esm:ArmorScaledGauntlets",
+       "Skyrim.esm:ArmorScaledHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:ElvenWarAxe"
+      ],
+      "value": 945,
+      "weapon_value": 280
+     }
+    ]
+   }
   },
   "okuwun-rahei|smuggler landings": {
-   "dropped": "only Skyrim templated humanoids fit, whose lists give Nords and Nord gear (decision 0006)"
+   "records": [
+    "Skyrim.esm:EncBandit04Melee1HKhajiitM",
+    "Skyrim.esm:EncBandit02MissileKhajiitM",
+    "Skyrim.esm:EncBandit01Melee1HKhajiitM",
+    "Skyrim.esm:EncBandit03Boss2HRedguardM",
+    "Skyrim.esm:EncBandit03MissileRedguardF",
+    "Skyrim.esm:EncBandit06Melee1HRedguardM",
+    "Skyrim.esm:EncBandit04MissileWoodElfM",
+    "Skyrim.esm:EncBandit05MissileWoodElfM",
+    "Skyrim.esm:EncBandit03MissileWoodElfF",
+    "Skyrim.esm:EncBandit03Boss2HImperialM",
+    "Skyrim.esm:EncBandit05Melee1HImperialF",
+    "Dragonborn.esm:DLC2EncBandit02Melee1HDarkElf04M",
+    "Dragonborn.esm:DLC2EncBandit06MissileDarkElf01F"
+   ],
+   "race": "khajiit/redguard/bosmer/imperial/dunmer",
+   "why": "smuggler people of the lore's races: whole bandit-faction records of the held plugins, never Nord",
+   "levels": [
+    0,
+    5,
+    1,
+    10,
+    9,
+    25,
+    14,
+    19,
+    9,
+    10,
+    19,
+    5,
+    25
+   ],
+   "looks": [
+    "Skyrim.esm:EncBandit04Melee1HKhajiitM",
+    "Skyrim.esm:EncBandit02MissileKhajiitM",
+    "Skyrim.esm:EncBandit01Melee1HKhajiitM",
+    "Skyrim.esm:EncBandit03Boss2HRedguardM",
+    "Skyrim.esm:EncBandit03MissileRedguardF",
+    "Skyrim.esm:EncBandit06Melee1HRedguardM",
+    "Skyrim.esm:EncBandit04MissileWoodElfM",
+    "Skyrim.esm:EncBandit05MissileWoodElfM",
+    "Skyrim.esm:EncBandit03MissileWoodElfF",
+    "Skyrim.esm:EncBandit03Boss2HImperialM",
+    "Skyrim.esm:EncBandit05Melee1HImperialF",
+    "Dragonborn.esm:DLC2EncBandit02Melee1HDarkElf04M",
+    "Dragonborn.esm:DLC2EncBandit06MissileDarkElf01F"
+   ],
+   "look_voices": {
+    "Skyrim.esm:EncBandit04Melee1HKhajiitM": "MaleKhajiit",
+    "Skyrim.esm:EncBandit02MissileKhajiitM": "MaleKhajiit",
+    "Skyrim.esm:EncBandit01Melee1HKhajiitM": "MaleKhajiit",
+    "Skyrim.esm:EncBandit03Boss2HRedguardM": "MaleBandit",
+    "Skyrim.esm:EncBandit03MissileRedguardF": "FemaleEvenToned",
+    "Skyrim.esm:EncBandit06Melee1HRedguardM": "MaleBandit",
+    "Skyrim.esm:EncBandit04MissileWoodElfM": "MaleBandit",
+    "Skyrim.esm:EncBandit05MissileWoodElfM": "MaleBandit",
+    "Skyrim.esm:EncBandit03MissileWoodElfF": "FemaleEvenToned",
+    "Skyrim.esm:EncBandit03Boss2HImperialM": "MaleCommoner",
+    "Skyrim.esm:EncBandit05Melee1HImperialF": "FemaleCommoner",
+    "Dragonborn.esm:DLC2EncBandit02Melee1HDarkElf04M": "MaleDarkElf",
+    "Dragonborn.esm:DLC2EncBandit06MissileDarkElf01F": "DLC2FemaleDarkElfCommoner"
+   },
+   "gear": {
+    "low": [
+     {
+      "set": "leather + IronDagger",
+      "items": [
+       "Skyrim.esm:ArmorLeatherCuirass",
+       "Skyrim.esm:ArmorLeatherBoots",
+       "Skyrim.esm:ArmorLeatherGauntlets",
+       "Skyrim.esm:ArmorLeatherHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronDagger"
+      ],
+      "value": 245,
+      "weapon_value": 10
+     },
+     {
+      "set": "hide + IronSword",
+      "items": [
+       "Skyrim.esm:ArmorHideCuirass",
+       "Skyrim.esm:ArmorHideBoots",
+       "Skyrim.esm:ArmorHideGauntlets",
+       "Skyrim.esm:ArmorHideHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronSword"
+      ],
+      "value": 120,
+      "weapon_value": 25
+     },
+     {
+      "set": "studded + IronWarAxe",
+      "items": [
+       "Skyrim.esm:ArmorImperialStuddedCuirass",
+       "Skyrim.esm:ArmorLeatherBoots",
+       "Skyrim.esm:ArmorLeatherGauntlets"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronWarAxe"
+      ],
+      "value": 205,
+      "weapon_value": 30
+     }
+    ],
+    "mid": [
+     {
+      "set": "elven-light + SteelSword",
+      "items": [
+       "Skyrim.esm:ArmorElvenLightCuirass",
+       "Skyrim.esm:ArmorElvenLightBoots",
+       "Skyrim.esm:ArmorElvenLightGauntlets",
+       "Skyrim.esm:ArmorElvenLightHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelSword"
+      ],
+      "value": 280,
+      "weapon_value": 45
+     },
+     {
+      "set": "studded + SteelWarAxe",
+      "items": [
+       "Skyrim.esm:ArmorImperialStuddedCuirass",
+       "Skyrim.esm:ArmorLeatherBoots",
+       "Skyrim.esm:ArmorLeatherGauntlets"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelWarAxe"
+      ],
+      "value": 230,
+      "weapon_value": 55
+     },
+     {
+      "set": "imperial-light + SteelSword",
+      "items": [
+       "Skyrim.esm:ArmorImperialLightCuirass",
+       "Skyrim.esm:ArmorImperialLightBoots",
+       "Skyrim.esm:ArmorImperialLightGauntlets",
+       "Skyrim.esm:ArmorImperialLightHelmet",
+       "Skyrim.esm:ArmorImperialLightShield"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelSword"
+      ],
+      "value": 225,
+      "weapon_value": 45
+     }
+    ],
+    "high": [
+     {
+      "set": "elven + ElvenSword",
+      "items": [
+       "Skyrim.esm:ArmorElvenCuirass",
+       "Skyrim.esm:ArmorElvenBoots",
+       "Skyrim.esm:ArmorElvenGauntlets",
+       "Skyrim.esm:ArmorElvenHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:ElvenSword"
+      ],
+      "value": 660,
+      "weapon_value": 235
+     },
+     {
+      "set": "elven + ElvenBow + ElvenArrow",
+      "items": [
+       "Skyrim.esm:ArmorElvenCuirass",
+       "Skyrim.esm:ArmorElvenBoots",
+       "Skyrim.esm:ArmorElvenGauntlets",
+       "Skyrim.esm:ArmorElvenHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:ElvenBow"
+      ],
+      "value": 895,
+      "weapon_value": 470,
+      "ammo": "Skyrim.esm:ElvenArrow"
+     },
+     {
+      "set": "scaled + ElvenWarAxe",
+      "items": [
+       "Skyrim.esm:ArmorScaledCuirass",
+       "Skyrim.esm:ArmorScaledBoots",
+       "Skyrim.esm:ArmorScaledGauntlets",
+       "Skyrim.esm:ArmorScaledHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:ElvenWarAxe"
+      ],
+      "value": 945,
+      "weapon_value": 280
+     }
+    ]
+   }
   },
   "kotherra-mangroves|pirates of the eastern Topal Bay shore": {
-   "dropped": "only Skyrim templated humanoids fit, whose lists give Nords and Nord gear (decision 0006)"
+   "records": [
+    "Skyrim.esm:EncBandit05Boss2HRedguardM",
+    "Skyrim.esm:EncBandit03MissileRedguardF",
+    "Skyrim.esm:EncBandit01Melee1HRedguardM",
+    "Skyrim.esm:MS10Haldyn",
+    "Skyrim.esm:EncBandit01MagicBretonM",
+    "Skyrim.esm:WE17Bandit2",
+    "Skyrim.esm:WarehouseNPCWebActorSit",
+    "Skyrim.esm:EncBandit02MissileWoodElfM",
+    "Skyrim.esm:EncBandit05MissileWoodElfM",
+    "Skyrim.esm:EncBandit03MissileWoodElfF",
+    "Skyrim.esm:EncBandit06MissileKhajiitM",
+    "Skyrim.esm:EncBandit04Melee1HKhajiitM",
+    "Skyrim.esm:EncBandit05Boss1HImperialM",
+    "Skyrim.esm:EncBandit05Melee1HImperialF"
+   ],
+   "race": "redguard/breton/bosmer/khajiit/imperial",
+   "why": "pirate people of the lore's races: whole bandit-faction records of the held plugins, never Nord",
+   "levels": [
+    21,
+    9,
+    1,
+    1,
+    1,
+    1,
+    1,
+    5,
+    19,
+    9,
+    25,
+    0,
+    21,
+    19
+   ],
+   "looks": [
+    "Skyrim.esm:EncBandit05Boss2HRedguardM",
+    "Skyrim.esm:EncBandit03MissileRedguardF",
+    "Skyrim.esm:EncBandit01Melee1HRedguardM",
+    "Skyrim.esm:MS10Haldyn",
+    "Skyrim.esm:EncBandit01MagicBretonM",
+    "Skyrim.esm:WE17Bandit2",
+    "Skyrim.esm:WarehouseNPCWebActorSit",
+    "Skyrim.esm:EncBandit02MissileWoodElfM",
+    "Skyrim.esm:EncBandit05MissileWoodElfM",
+    "Skyrim.esm:EncBandit03MissileWoodElfF",
+    "Skyrim.esm:EncBandit06MissileKhajiitM",
+    "Skyrim.esm:EncBandit04Melee1HKhajiitM",
+    "Skyrim.esm:EncBandit05Boss1HImperialM",
+    "Skyrim.esm:EncBandit05Melee1HImperialF"
+   ],
+   "look_voices": {
+    "Skyrim.esm:EncBandit05Boss2HRedguardM": "MaleBandit",
+    "Skyrim.esm:EncBandit03MissileRedguardF": "FemaleEvenToned",
+    "Skyrim.esm:EncBandit01Melee1HRedguardM": "MaleBandit",
+    "Skyrim.esm:MS10Haldyn": "MaleCommoner",
+    "Skyrim.esm:EncBandit01MagicBretonM": "MaleCommoner",
+    "Skyrim.esm:WE17Bandit2": "FemaleCommoner",
+    "Skyrim.esm:WarehouseNPCWebActorSit": "MaleCommoner",
+    "Skyrim.esm:EncBandit02MissileWoodElfM": "MaleBandit",
+    "Skyrim.esm:EncBandit05MissileWoodElfM": "MaleBandit",
+    "Skyrim.esm:EncBandit03MissileWoodElfF": "FemaleEvenToned",
+    "Skyrim.esm:EncBandit06MissileKhajiitM": "MaleKhajiit",
+    "Skyrim.esm:EncBandit04Melee1HKhajiitM": "MaleKhajiit",
+    "Skyrim.esm:EncBandit05Boss1HImperialM": "MaleCommoner",
+    "Skyrim.esm:EncBandit05Melee1HImperialF": "FemaleCommoner"
+   },
+   "gear": {
+    "low": [
+     {
+      "set": "leather + IronSword",
+      "items": [
+       "Skyrim.esm:ArmorLeatherCuirass",
+       "Skyrim.esm:ArmorLeatherBoots",
+       "Skyrim.esm:ArmorLeatherGauntlets",
+       "Skyrim.esm:ArmorLeatherHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronSword"
+      ],
+      "value": 260,
+      "weapon_value": 25
+     },
+     {
+      "set": "hide + IronDagger",
+      "items": [
+       "Skyrim.esm:ArmorHideCuirass",
+       "Skyrim.esm:ArmorHideBoots",
+       "Skyrim.esm:ArmorHideGauntlets",
+       "Skyrim.esm:ArmorHideHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronDagger"
+      ],
+      "value": 105,
+      "weapon_value": 10
+     },
+     {
+      "set": "leather + IronWarAxe",
+      "items": [
+       "Skyrim.esm:ArmorLeatherCuirass",
+       "Skyrim.esm:ArmorLeatherBoots",
+       "Skyrim.esm:ArmorLeatherGauntlets",
+       "Skyrim.esm:ArmorLeatherHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronWarAxe"
+      ],
+      "value": 265,
+      "weapon_value": 30
+     }
+    ],
+    "mid": [
+     {
+      "set": "imperial-light + SteelSword",
+      "items": [
+       "Skyrim.esm:ArmorImperialLightCuirass",
+       "Skyrim.esm:ArmorImperialLightBoots",
+       "Skyrim.esm:ArmorImperialLightGauntlets",
+       "Skyrim.esm:ArmorImperialLightHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelSword"
+      ],
+      "value": 185,
+      "weapon_value": 45
+     },
+     {
+      "set": "scaled + SteelWarAxe",
+      "items": [
+       "Skyrim.esm:ArmorScaledCuirass",
+       "Skyrim.esm:ArmorScaledBoots",
+       "Skyrim.esm:ArmorScaledGauntlets",
+       "Skyrim.esm:ArmorScaledHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelWarAxe"
+      ],
+      "value": 720,
+      "weapon_value": 55
+     },
+     {
+      "set": "elven-light + SteelSword",
+      "items": [
+       "Skyrim.esm:ArmorElvenLightCuirass",
+       "Skyrim.esm:ArmorElvenLightBoots",
+       "Skyrim.esm:ArmorElvenLightGauntlets",
+       "Skyrim.esm:ArmorElvenLightHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelSword"
+      ],
+      "value": 280,
+      "weapon_value": 45
+     }
+    ],
+    "high": [
+     {
+      "set": "scaled + SteelBattleaxe",
+      "items": [
+       "Skyrim.esm:ArmorScaledCuirass",
+       "Skyrim.esm:ArmorScaledBoots",
+       "Skyrim.esm:ArmorScaledGauntlets",
+       "Skyrim.esm:ArmorScaledHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelBattleaxe"
+      ],
+      "value": 765,
+      "weapon_value": 100
+     },
+     {
+      "set": "elven + ElvenSword",
+      "items": [
+       "Skyrim.esm:ArmorElvenCuirass",
+       "Skyrim.esm:ArmorElvenBoots",
+       "Skyrim.esm:ArmorElvenGauntlets",
+       "Skyrim.esm:ArmorElvenHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:ElvenSword"
+      ],
+      "value": 660,
+      "weapon_value": 235
+     },
+     {
+      "set": "elven + ElvenWarAxe",
+      "items": [
+       "Skyrim.esm:ArmorElvenCuirass",
+       "Skyrim.esm:ArmorElvenBoots",
+       "Skyrim.esm:ArmorElvenGauntlets",
+       "Skyrim.esm:ArmorElvenHelmet",
+       "Skyrim.esm:ArmorElvenShield"
+      ],
+      "weapons": [
+       "Skyrim.esm:ElvenWarAxe"
+      ],
+      "value": 820,
+      "weapon_value": 280
+     }
+    ]
+   }
   },
   "topal-bay|pirates of the eastern shore": {
-   "dropped": "only Skyrim templated humanoids fit, whose lists give Nords and Nord gear (decision 0006)"
+   "records": [
+    "Skyrim.esm:EncBandit01MissileRedguardM",
+    "Skyrim.esm:EncBandit05Boss1HRedguardF",
+    "Skyrim.esm:EncBandit04Melee1HRedguardM",
+    "Skyrim.esm:MS10Haldyn",
+    "Skyrim.esm:EncBandit01MagicBretonM",
+    "Skyrim.esm:WE17Bandit2",
+    "Skyrim.esm:WarehouseNPCWebActorSit",
+    "Skyrim.esm:EncBandit04MissileWoodElfM",
+    "Skyrim.esm:EncBandit05MissileWoodElfM",
+    "Skyrim.esm:EncBandit05MissileWoodElfF",
+    "Skyrim.esm:EncBandit04Boss1HImperialM",
+    "Skyrim.esm:EncBandit06Melee1HImperialF",
+    "Skyrim.esm:EncBandit01Melee1HOrcM",
+    "Skyrim.esm:EncOrcHunter01M"
+   ],
+   "race": "redguard/breton/bosmer/imperial/orc",
+   "why": "pirate people of the lore's races: whole bandit-faction records of the held plugins, never Nord",
+   "levels": [
+    1,
+    21,
+    0,
+    1,
+    1,
+    1,
+    1,
+    14,
+    19,
+    19,
+    16,
+    25,
+    1,
+    1
+   ],
+   "looks": [
+    "Skyrim.esm:EncBandit01MissileRedguardM",
+    "Skyrim.esm:EncBandit05Boss1HRedguardF",
+    "Skyrim.esm:EncBandit04Melee1HRedguardM",
+    "Skyrim.esm:MS10Haldyn",
+    "Skyrim.esm:EncBandit01MagicBretonM",
+    "Skyrim.esm:WE17Bandit2",
+    "Skyrim.esm:WarehouseNPCWebActorSit",
+    "Skyrim.esm:EncBandit04MissileWoodElfM",
+    "Skyrim.esm:EncBandit05MissileWoodElfM",
+    "Skyrim.esm:EncBandit05MissileWoodElfF",
+    "Skyrim.esm:EncBandit04Boss1HImperialM",
+    "Skyrim.esm:EncBandit06Melee1HImperialF",
+    "Skyrim.esm:EncBandit01Melee1HOrcM",
+    "Skyrim.esm:EncOrcHunter01M"
+   ],
+   "look_voices": {
+    "Skyrim.esm:EncBandit01MissileRedguardM": "MaleBandit",
+    "Skyrim.esm:EncBandit05Boss1HRedguardF": "FemaleEvenToned",
+    "Skyrim.esm:EncBandit04Melee1HRedguardM": "MaleBandit",
+    "Skyrim.esm:MS10Haldyn": "MaleCommoner",
+    "Skyrim.esm:EncBandit01MagicBretonM": "MaleCommoner",
+    "Skyrim.esm:WE17Bandit2": "FemaleCommoner",
+    "Skyrim.esm:WarehouseNPCWebActorSit": "MaleCommoner",
+    "Skyrim.esm:EncBandit04MissileWoodElfM": "MaleBandit",
+    "Skyrim.esm:EncBandit05MissileWoodElfM": "MaleBandit",
+    "Skyrim.esm:EncBandit05MissileWoodElfF": "FemaleEvenToned",
+    "Skyrim.esm:EncBandit04Boss1HImperialM": "MaleCommoner",
+    "Skyrim.esm:EncBandit06Melee1HImperialF": "FemaleCommoner",
+    "Skyrim.esm:EncBandit01Melee1HOrcM": "MaleOrc",
+    "Skyrim.esm:EncOrcHunter01M": "MaleOrc"
+   },
+   "gear": {
+    "low": [
+     {
+      "set": "leather + IronSword",
+      "items": [
+       "Skyrim.esm:ArmorLeatherCuirass",
+       "Skyrim.esm:ArmorLeatherBoots",
+       "Skyrim.esm:ArmorLeatherGauntlets",
+       "Skyrim.esm:ArmorLeatherHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronSword"
+      ],
+      "value": 260,
+      "weapon_value": 25
+     },
+     {
+      "set": "hide + IronDagger",
+      "items": [
+       "Skyrim.esm:ArmorHideCuirass",
+       "Skyrim.esm:ArmorHideBoots",
+       "Skyrim.esm:ArmorHideGauntlets",
+       "Skyrim.esm:ArmorHideHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronDagger"
+      ],
+      "value": 105,
+      "weapon_value": 10
+     },
+     {
+      "set": "leather + IronWarAxe",
+      "items": [
+       "Skyrim.esm:ArmorLeatherCuirass",
+       "Skyrim.esm:ArmorLeatherBoots",
+       "Skyrim.esm:ArmorLeatherGauntlets",
+       "Skyrim.esm:ArmorLeatherHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronWarAxe"
+      ],
+      "value": 265,
+      "weapon_value": 30
+     }
+    ],
+    "mid": [
+     {
+      "set": "imperial-light + SteelSword",
+      "items": [
+       "Skyrim.esm:ArmorImperialLightCuirass",
+       "Skyrim.esm:ArmorImperialLightBoots",
+       "Skyrim.esm:ArmorImperialLightGauntlets",
+       "Skyrim.esm:ArmorImperialLightHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelSword"
+      ],
+      "value": 185,
+      "weapon_value": 45
+     },
+     {
+      "set": "scaled + SteelWarAxe",
+      "items": [
+       "Skyrim.esm:ArmorScaledCuirass",
+       "Skyrim.esm:ArmorScaledBoots",
+       "Skyrim.esm:ArmorScaledGauntlets",
+       "Skyrim.esm:ArmorScaledHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelWarAxe"
+      ],
+      "value": 720,
+      "weapon_value": 55
+     },
+     {
+      "set": "elven-light + SteelSword",
+      "items": [
+       "Skyrim.esm:ArmorElvenLightCuirass",
+       "Skyrim.esm:ArmorElvenLightBoots",
+       "Skyrim.esm:ArmorElvenLightGauntlets",
+       "Skyrim.esm:ArmorElvenLightHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelSword"
+      ],
+      "value": 280,
+      "weapon_value": 45
+     }
+    ],
+    "high": [
+     {
+      "set": "scaled + SteelBattleaxe",
+      "items": [
+       "Skyrim.esm:ArmorScaledCuirass",
+       "Skyrim.esm:ArmorScaledBoots",
+       "Skyrim.esm:ArmorScaledGauntlets",
+       "Skyrim.esm:ArmorScaledHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelBattleaxe"
+      ],
+      "value": 765,
+      "weapon_value": 100
+     },
+     {
+      "set": "elven + ElvenSword",
+      "items": [
+       "Skyrim.esm:ArmorElvenCuirass",
+       "Skyrim.esm:ArmorElvenBoots",
+       "Skyrim.esm:ArmorElvenGauntlets",
+       "Skyrim.esm:ArmorElvenHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:ElvenSword"
+      ],
+      "value": 660,
+      "weapon_value": 235
+     },
+     {
+      "set": "elven + ElvenWarAxe",
+      "items": [
+       "Skyrim.esm:ArmorElvenCuirass",
+       "Skyrim.esm:ArmorElvenBoots",
+       "Skyrim.esm:ArmorElvenGauntlets",
+       "Skyrim.esm:ArmorElvenHelmet",
+       "Skyrim.esm:ArmorElvenShield"
+      ],
+      "weapons": [
+       "Skyrim.esm:ElvenWarAxe"
+      ],
+      "value": 820,
+      "weapon_value": 280
+     }
+    ]
+   }
   },
   "padomaic-ocean|Skeith Isle pirates": {
-   "dropped": "only Skyrim templated humanoids fit, whose lists give Nords and Nord gear (decision 0006)"
+   "records": [
+    "Skyrim.esm:EncBandit04MissileRedguardM",
+    "Skyrim.esm:EncBandit03Boss1HRedguardF",
+    "Skyrim.esm:EncBandit01Melee1HRedguardM",
+    "Skyrim.esm:MS10Haldyn",
+    "Skyrim.esm:EncBandit06MagicBretonM",
+    "Skyrim.esm:WE17Bandit2",
+    "Skyrim.esm:WarehouseNPCWebActorSit",
+    "Skyrim.esm:EncBandit01Melee1HKhajiitM",
+    "Skyrim.esm:EncBandit01MissileKhajiitM",
+    "Skyrim.esm:EncBandit04Melee1HKhajiitM",
+    "Dragonborn.esm:DLC2EncBandit02MissileDarkElf03M",
+    "Dragonborn.esm:DLC2EncBandit06MagicDarkElf03F",
+    "Skyrim.esm:EncBandit05Melee1HImperialM",
+    "Skyrim.esm:EncBandit03Boss1HImperialF"
+   ],
+   "race": "redguard/breton/khajiit/dunmer/imperial",
+   "why": "pirate people of the lore's races: whole bandit-faction records of the held plugins, never Nord",
+   "levels": [
+    14,
+    10,
+    1,
+    1,
+    25,
+    1,
+    1,
+    1,
+    1,
+    0,
+    5,
+    25,
+    19,
+    10
+   ],
+   "looks": [
+    "Skyrim.esm:EncBandit04MissileRedguardM",
+    "Skyrim.esm:EncBandit03Boss1HRedguardF",
+    "Skyrim.esm:EncBandit01Melee1HRedguardM",
+    "Skyrim.esm:MS10Haldyn",
+    "Skyrim.esm:EncBandit06MagicBretonM",
+    "Skyrim.esm:WE17Bandit2",
+    "Skyrim.esm:WarehouseNPCWebActorSit",
+    "Skyrim.esm:EncBandit01Melee1HKhajiitM",
+    "Skyrim.esm:EncBandit01MissileKhajiitM",
+    "Skyrim.esm:EncBandit04Melee1HKhajiitM",
+    "Dragonborn.esm:DLC2EncBandit02MissileDarkElf03M",
+    "Dragonborn.esm:DLC2EncBandit06MagicDarkElf03F",
+    "Skyrim.esm:EncBandit05Melee1HImperialM",
+    "Skyrim.esm:EncBandit03Boss1HImperialF"
+   ],
+   "look_voices": {
+    "Skyrim.esm:EncBandit04MissileRedguardM": "MaleBandit",
+    "Skyrim.esm:EncBandit03Boss1HRedguardF": "FemaleEvenToned",
+    "Skyrim.esm:EncBandit01Melee1HRedguardM": "MaleBandit",
+    "Skyrim.esm:MS10Haldyn": "MaleCommoner",
+    "Skyrim.esm:EncBandit06MagicBretonM": "MaleCommoner",
+    "Skyrim.esm:WE17Bandit2": "FemaleCommoner",
+    "Skyrim.esm:WarehouseNPCWebActorSit": "MaleCommoner",
+    "Skyrim.esm:EncBandit01Melee1HKhajiitM": "MaleKhajiit",
+    "Skyrim.esm:EncBandit01MissileKhajiitM": "MaleKhajiit",
+    "Skyrim.esm:EncBandit04Melee1HKhajiitM": "MaleKhajiit",
+    "Dragonborn.esm:DLC2EncBandit02MissileDarkElf03M": "DLC2MaleDarkElfCynical",
+    "Dragonborn.esm:DLC2EncBandit06MagicDarkElf03F": "DLC2FemaleDarkElfCommoner",
+    "Skyrim.esm:EncBandit05Melee1HImperialM": "MaleCommoner",
+    "Skyrim.esm:EncBandit03Boss1HImperialF": "FemaleCommoner"
+   },
+   "gear": {
+    "low": [
+     {
+      "set": "leather + IronSword",
+      "items": [
+       "Skyrim.esm:ArmorLeatherCuirass",
+       "Skyrim.esm:ArmorLeatherBoots",
+       "Skyrim.esm:ArmorLeatherGauntlets",
+       "Skyrim.esm:ArmorLeatherHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronSword"
+      ],
+      "value": 260,
+      "weapon_value": 25
+     },
+     {
+      "set": "hide + IronDagger",
+      "items": [
+       "Skyrim.esm:ArmorHideCuirass",
+       "Skyrim.esm:ArmorHideBoots",
+       "Skyrim.esm:ArmorHideGauntlets",
+       "Skyrim.esm:ArmorHideHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronDagger"
+      ],
+      "value": 105,
+      "weapon_value": 10
+     },
+     {
+      "set": "leather + IronWarAxe",
+      "items": [
+       "Skyrim.esm:ArmorLeatherCuirass",
+       "Skyrim.esm:ArmorLeatherBoots",
+       "Skyrim.esm:ArmorLeatherGauntlets",
+       "Skyrim.esm:ArmorLeatherHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronWarAxe"
+      ],
+      "value": 265,
+      "weapon_value": 30
+     }
+    ],
+    "mid": [
+     {
+      "set": "imperial-light + SteelSword",
+      "items": [
+       "Skyrim.esm:ArmorImperialLightCuirass",
+       "Skyrim.esm:ArmorImperialLightBoots",
+       "Skyrim.esm:ArmorImperialLightGauntlets",
+       "Skyrim.esm:ArmorImperialLightHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelSword"
+      ],
+      "value": 185,
+      "weapon_value": 45
+     },
+     {
+      "set": "scaled + SteelWarAxe",
+      "items": [
+       "Skyrim.esm:ArmorScaledCuirass",
+       "Skyrim.esm:ArmorScaledBoots",
+       "Skyrim.esm:ArmorScaledGauntlets",
+       "Skyrim.esm:ArmorScaledHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelWarAxe"
+      ],
+      "value": 720,
+      "weapon_value": 55
+     },
+     {
+      "set": "elven-light + SteelSword",
+      "items": [
+       "Skyrim.esm:ArmorElvenLightCuirass",
+       "Skyrim.esm:ArmorElvenLightBoots",
+       "Skyrim.esm:ArmorElvenLightGauntlets",
+       "Skyrim.esm:ArmorElvenLightHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelSword"
+      ],
+      "value": 280,
+      "weapon_value": 45
+     }
+    ],
+    "high": [
+     {
+      "set": "scaled + SteelBattleaxe",
+      "items": [
+       "Skyrim.esm:ArmorScaledCuirass",
+       "Skyrim.esm:ArmorScaledBoots",
+       "Skyrim.esm:ArmorScaledGauntlets",
+       "Skyrim.esm:ArmorScaledHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelBattleaxe"
+      ],
+      "value": 765,
+      "weapon_value": 100
+     },
+     {
+      "set": "elven + ElvenSword",
+      "items": [
+       "Skyrim.esm:ArmorElvenCuirass",
+       "Skyrim.esm:ArmorElvenBoots",
+       "Skyrim.esm:ArmorElvenGauntlets",
+       "Skyrim.esm:ArmorElvenHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:ElvenSword"
+      ],
+      "value": 660,
+      "weapon_value": 235
+     },
+     {
+      "set": "elven + ElvenWarAxe",
+      "items": [
+       "Skyrim.esm:ArmorElvenCuirass",
+       "Skyrim.esm:ArmorElvenBoots",
+       "Skyrim.esm:ArmorElvenGauntlets",
+       "Skyrim.esm:ArmorElvenHelmet",
+       "Skyrim.esm:ArmorElvenShield"
+      ],
+      "weapons": [
+       "Skyrim.esm:ElvenWarAxe"
+      ],
+      "value": 820,
+      "weapon_value": 280
+     }
+    ]
+   }
   },
   "skeith-isle|Skeith Isle pirates and smugglers": {
-   "dropped": "only Skyrim templated humanoids fit, whose lists give Nords and Nord gear (decision 0006)"
+   "records": [
+    "Skyrim.esm:EncBandit06Boss1HRedguardM",
+    "Skyrim.esm:EncBandit04MissileRedguardF",
+    "Skyrim.esm:MS10Haldyn",
+    "Skyrim.esm:EncBandit02MagicBretonM",
+    "Skyrim.esm:WE17Bandit2",
+    "Skyrim.esm:WarehouseNPCWebActorSit",
+    "Skyrim.esm:EncBandit04Melee1HKhajiitM",
+    "Skyrim.esm:EncBandit06MissileKhajiitM",
+    "Skyrim.esm:EncBandit01Melee1HKhajiitM",
+    "Skyrim.esm:EncBandit02MissileWoodElfM",
+    "Skyrim.esm:EncBandit01MissileWoodElfM",
+    "Skyrim.esm:EncBandit04MissileWoodElfF",
+    "Dragonborn.esm:DLC2EncBandit05Melee1HDarkElf01M",
+    "Dragonborn.esm:DLC2EncBandit02MagicDarkElf01F"
+   ],
+   "race": "redguard/breton/khajiit/bosmer/dunmer",
+   "why": "pirate people of the lore's races: whole bandit-faction records of the held plugins, never Nord",
+   "levels": [
+    28,
+    14,
+    1,
+    5,
+    1,
+    1,
+    0,
+    25,
+    1,
+    5,
+    1,
+    14,
+    19,
+    5
+   ],
+   "looks": [
+    "Skyrim.esm:EncBandit06Boss1HRedguardM",
+    "Skyrim.esm:EncBandit04MissileRedguardF",
+    "Skyrim.esm:MS10Haldyn",
+    "Skyrim.esm:EncBandit02MagicBretonM",
+    "Skyrim.esm:WE17Bandit2",
+    "Skyrim.esm:WarehouseNPCWebActorSit",
+    "Skyrim.esm:EncBandit04Melee1HKhajiitM",
+    "Skyrim.esm:EncBandit06MissileKhajiitM",
+    "Skyrim.esm:EncBandit01Melee1HKhajiitM",
+    "Skyrim.esm:EncBandit02MissileWoodElfM",
+    "Skyrim.esm:EncBandit01MissileWoodElfM",
+    "Skyrim.esm:EncBandit04MissileWoodElfF",
+    "Dragonborn.esm:DLC2EncBandit05Melee1HDarkElf01M",
+    "Dragonborn.esm:DLC2EncBandit02MagicDarkElf01F"
+   ],
+   "look_voices": {
+    "Skyrim.esm:EncBandit06Boss1HRedguardM": "MaleBandit",
+    "Skyrim.esm:EncBandit04MissileRedguardF": "FemaleEvenToned",
+    "Skyrim.esm:MS10Haldyn": "MaleCommoner",
+    "Skyrim.esm:EncBandit02MagicBretonM": "MaleCommoner",
+    "Skyrim.esm:WE17Bandit2": "FemaleCommoner",
+    "Skyrim.esm:WarehouseNPCWebActorSit": "MaleCommoner",
+    "Skyrim.esm:EncBandit04Melee1HKhajiitM": "MaleKhajiit",
+    "Skyrim.esm:EncBandit06MissileKhajiitM": "MaleKhajiit",
+    "Skyrim.esm:EncBandit01Melee1HKhajiitM": "MaleKhajiit",
+    "Skyrim.esm:EncBandit02MissileWoodElfM": "MaleBandit",
+    "Skyrim.esm:EncBandit01MissileWoodElfM": "MaleBandit",
+    "Skyrim.esm:EncBandit04MissileWoodElfF": "FemaleEvenToned",
+    "Dragonborn.esm:DLC2EncBandit05Melee1HDarkElf01M": "DLC2MaleDarkElfCommoner",
+    "Dragonborn.esm:DLC2EncBandit02MagicDarkElf01F": "DLC2FemaleDarkElfCommoner"
+   },
+   "gear": {
+    "low": [
+     {
+      "set": "leather + IronSword",
+      "items": [
+       "Skyrim.esm:ArmorLeatherCuirass",
+       "Skyrim.esm:ArmorLeatherBoots",
+       "Skyrim.esm:ArmorLeatherGauntlets",
+       "Skyrim.esm:ArmorLeatherHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronSword"
+      ],
+      "value": 260,
+      "weapon_value": 25
+     },
+     {
+      "set": "hide + IronDagger",
+      "items": [
+       "Skyrim.esm:ArmorHideCuirass",
+       "Skyrim.esm:ArmorHideBoots",
+       "Skyrim.esm:ArmorHideGauntlets",
+       "Skyrim.esm:ArmorHideHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronDagger"
+      ],
+      "value": 105,
+      "weapon_value": 10
+     },
+     {
+      "set": "leather + IronWarAxe",
+      "items": [
+       "Skyrim.esm:ArmorLeatherCuirass",
+       "Skyrim.esm:ArmorLeatherBoots",
+       "Skyrim.esm:ArmorLeatherGauntlets",
+       "Skyrim.esm:ArmorLeatherHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronWarAxe"
+      ],
+      "value": 265,
+      "weapon_value": 30
+     }
+    ],
+    "mid": [
+     {
+      "set": "imperial-light + SteelSword",
+      "items": [
+       "Skyrim.esm:ArmorImperialLightCuirass",
+       "Skyrim.esm:ArmorImperialLightBoots",
+       "Skyrim.esm:ArmorImperialLightGauntlets",
+       "Skyrim.esm:ArmorImperialLightHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelSword"
+      ],
+      "value": 185,
+      "weapon_value": 45
+     },
+     {
+      "set": "scaled + SteelWarAxe",
+      "items": [
+       "Skyrim.esm:ArmorScaledCuirass",
+       "Skyrim.esm:ArmorScaledBoots",
+       "Skyrim.esm:ArmorScaledGauntlets",
+       "Skyrim.esm:ArmorScaledHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelWarAxe"
+      ],
+      "value": 720,
+      "weapon_value": 55
+     },
+     {
+      "set": "elven-light + SteelSword",
+      "items": [
+       "Skyrim.esm:ArmorElvenLightCuirass",
+       "Skyrim.esm:ArmorElvenLightBoots",
+       "Skyrim.esm:ArmorElvenLightGauntlets",
+       "Skyrim.esm:ArmorElvenLightHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelSword"
+      ],
+      "value": 280,
+      "weapon_value": 45
+     }
+    ],
+    "high": [
+     {
+      "set": "scaled + SteelBattleaxe",
+      "items": [
+       "Skyrim.esm:ArmorScaledCuirass",
+       "Skyrim.esm:ArmorScaledBoots",
+       "Skyrim.esm:ArmorScaledGauntlets",
+       "Skyrim.esm:ArmorScaledHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelBattleaxe"
+      ],
+      "value": 765,
+      "weapon_value": 100
+     },
+     {
+      "set": "elven + ElvenSword",
+      "items": [
+       "Skyrim.esm:ArmorElvenCuirass",
+       "Skyrim.esm:ArmorElvenBoots",
+       "Skyrim.esm:ArmorElvenGauntlets",
+       "Skyrim.esm:ArmorElvenHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:ElvenSword"
+      ],
+      "value": 660,
+      "weapon_value": 235
+     },
+     {
+      "set": "elven + ElvenWarAxe",
+      "items": [
+       "Skyrim.esm:ArmorElvenCuirass",
+       "Skyrim.esm:ArmorElvenBoots",
+       "Skyrim.esm:ArmorElvenGauntlets",
+       "Skyrim.esm:ArmorElvenHelmet",
+       "Skyrim.esm:ArmorElvenShield"
+      ],
+      "weapons": [
+       "Skyrim.esm:ElvenWarAxe"
+      ],
+      "value": 820,
+      "weapon_value": 280
+     }
+    ]
+   }
   },
   "sea-of-mists|wreckers and pirates working the sandbars": {
-   "dropped": "only Skyrim templated humanoids fit, whose lists give Nords and Nord gear (decision 0006)"
+   "records": [
+    "Skyrim.esm:EncBandit02Boss1HRedguardM",
+    "Skyrim.esm:EncBandit01Melee1HRedguardF",
+    "Skyrim.esm:EncBandit06MissileRedguardM",
+    "Skyrim.esm:EncBandit04MagicBretonM",
+    "Skyrim.esm:WE17Bandit2",
+    "Skyrim.esm:WarehouseNPCWebActorSit",
+    "Skyrim.esm:EncBandit06Boss2HImperialM",
+    "Skyrim.esm:EncBandit05MissileImperialF",
+    "Skyrim.esm:EncBandit03Melee1HImperialM",
+    "Skyrim.esm:EncBandit05MagicArgonianM",
+    "Skyrim.esm:EncBandit04MagicArgonianM",
+    "Skyrim.esm:EncBandit02MissileKhajiitM",
+    "Skyrim.esm:EncBandit02Melee1HKhajiitM"
+   ],
+   "race": "redguard/breton/imperial/argonian/khajiit",
+   "why": "pirate people of the lore's races: whole bandit-faction records of the held plugins, never Nord",
+   "levels": [
+    6,
+    1,
+    25,
+    14,
+    1,
+    1,
+    28,
+    19,
+    9,
+    19,
+    14,
+    5,
+    5
+   ],
+   "looks": [
+    "Skyrim.esm:EncBandit02Boss1HRedguardM",
+    "Skyrim.esm:EncBandit01Melee1HRedguardF",
+    "Skyrim.esm:EncBandit06MissileRedguardM",
+    "Skyrim.esm:EncBandit04MagicBretonM",
+    "Skyrim.esm:WE17Bandit2",
+    "Skyrim.esm:WarehouseNPCWebActorSit",
+    "Skyrim.esm:EncBandit06Boss2HImperialM",
+    "Skyrim.esm:EncBandit05MissileImperialF",
+    "Skyrim.esm:EncBandit03Melee1HImperialM",
+    "Skyrim.esm:EncBandit05MagicArgonianM",
+    "Skyrim.esm:EncBandit04MagicArgonianM",
+    "Skyrim.esm:EncBandit02MissileKhajiitM",
+    "Skyrim.esm:EncBandit02Melee1HKhajiitM"
+   ],
+   "look_voices": {
+    "Skyrim.esm:EncBandit02Boss1HRedguardM": "MaleBandit",
+    "Skyrim.esm:EncBandit01Melee1HRedguardF": "FemaleEvenToned",
+    "Skyrim.esm:EncBandit06MissileRedguardM": "MaleBandit",
+    "Skyrim.esm:EncBandit04MagicBretonM": "MaleCommoner",
+    "Skyrim.esm:WE17Bandit2": "FemaleCommoner",
+    "Skyrim.esm:WarehouseNPCWebActorSit": "MaleCommoner",
+    "Skyrim.esm:EncBandit06Boss2HImperialM": "MaleCommoner",
+    "Skyrim.esm:EncBandit05MissileImperialF": "FemaleCommoner",
+    "Skyrim.esm:EncBandit03Melee1HImperialM": "MaleCommoner",
+    "Skyrim.esm:EncBandit05MagicArgonianM": "MaleArgonian",
+    "Skyrim.esm:EncBandit04MagicArgonianM": "MaleArgonian",
+    "Skyrim.esm:EncBandit02MissileKhajiitM": "MaleKhajiit",
+    "Skyrim.esm:EncBandit02Melee1HKhajiitM": "MaleKhajiit"
+   },
+   "gear": {
+    "low": [
+     {
+      "set": "leather + IronSword",
+      "items": [
+       "Skyrim.esm:ArmorLeatherCuirass",
+       "Skyrim.esm:ArmorLeatherBoots",
+       "Skyrim.esm:ArmorLeatherGauntlets",
+       "Skyrim.esm:ArmorLeatherHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronSword"
+      ],
+      "value": 260,
+      "weapon_value": 25
+     },
+     {
+      "set": "hide + IronDagger",
+      "items": [
+       "Skyrim.esm:ArmorHideCuirass",
+       "Skyrim.esm:ArmorHideBoots",
+       "Skyrim.esm:ArmorHideGauntlets",
+       "Skyrim.esm:ArmorHideHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronDagger"
+      ],
+      "value": 105,
+      "weapon_value": 10
+     },
+     {
+      "set": "leather + IronWarAxe",
+      "items": [
+       "Skyrim.esm:ArmorLeatherCuirass",
+       "Skyrim.esm:ArmorLeatherBoots",
+       "Skyrim.esm:ArmorLeatherGauntlets",
+       "Skyrim.esm:ArmorLeatherHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronWarAxe"
+      ],
+      "value": 265,
+      "weapon_value": 30
+     }
+    ],
+    "mid": [
+     {
+      "set": "imperial-light + SteelSword",
+      "items": [
+       "Skyrim.esm:ArmorImperialLightCuirass",
+       "Skyrim.esm:ArmorImperialLightBoots",
+       "Skyrim.esm:ArmorImperialLightGauntlets",
+       "Skyrim.esm:ArmorImperialLightHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelSword"
+      ],
+      "value": 185,
+      "weapon_value": 45
+     },
+     {
+      "set": "scaled + SteelWarAxe",
+      "items": [
+       "Skyrim.esm:ArmorScaledCuirass",
+       "Skyrim.esm:ArmorScaledBoots",
+       "Skyrim.esm:ArmorScaledGauntlets",
+       "Skyrim.esm:ArmorScaledHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelWarAxe"
+      ],
+      "value": 720,
+      "weapon_value": 55
+     },
+     {
+      "set": "elven-light + SteelSword",
+      "items": [
+       "Skyrim.esm:ArmorElvenLightCuirass",
+       "Skyrim.esm:ArmorElvenLightBoots",
+       "Skyrim.esm:ArmorElvenLightGauntlets",
+       "Skyrim.esm:ArmorElvenLightHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelSword"
+      ],
+      "value": 280,
+      "weapon_value": 45
+     }
+    ],
+    "high": [
+     {
+      "set": "scaled + SteelBattleaxe",
+      "items": [
+       "Skyrim.esm:ArmorScaledCuirass",
+       "Skyrim.esm:ArmorScaledBoots",
+       "Skyrim.esm:ArmorScaledGauntlets",
+       "Skyrim.esm:ArmorScaledHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelBattleaxe"
+      ],
+      "value": 765,
+      "weapon_value": 100
+     },
+     {
+      "set": "elven + ElvenSword",
+      "items": [
+       "Skyrim.esm:ArmorElvenCuirass",
+       "Skyrim.esm:ArmorElvenBoots",
+       "Skyrim.esm:ArmorElvenGauntlets",
+       "Skyrim.esm:ArmorElvenHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:ElvenSword"
+      ],
+      "value": 660,
+      "weapon_value": 235
+     },
+     {
+      "set": "elven + ElvenWarAxe",
+      "items": [
+       "Skyrim.esm:ArmorElvenCuirass",
+       "Skyrim.esm:ArmorElvenBoots",
+       "Skyrim.esm:ArmorElvenGauntlets",
+       "Skyrim.esm:ArmorElvenHelmet",
+       "Skyrim.esm:ArmorElvenShield"
+      ],
+      "weapons": [
+       "Skyrim.esm:ElvenWarAxe"
+      ],
+      "value": 820,
+      "weapon_value": 280
+     }
+    ]
+   }
   },
   "benthic-yobesh|Bell Station divers' rivals (salvagers)": {
-   "dropped": "only Skyrim templated humanoids fit, whose lists give Nords and Nord gear (decision 0006)"
+   "records": [
+    "Skyrim.esm:WarehouseNPCWebActorSit",
+    "Skyrim.esm:WE17Bandit2",
+    "Skyrim.esm:EncBandit05MagicBretonM",
+    "Skyrim.esm:EncBandit05MissileImperialM",
+    "Skyrim.esm:EncBandit02Melee1HImperialF",
+    "Skyrim.esm:EncBandit03Boss1HImperialM",
+    "Skyrim.esm:EncBandit02Boss1HRedguardM",
+    "Skyrim.esm:EncBandit02Melee1HRedguardF",
+    "Skyrim.esm:MS10Haldyn",
+    "Skyrim.esm:EncBandit06MissileKhajiitM",
+    "Skyrim.esm:EncBandit03Melee1HKhajiitM",
+    "Skyrim.esm:EncBandit02MagicArgonianM",
+    "Skyrim.esm:EncBandit01MagicArgonianM"
+   ],
+   "race": "breton/imperial/redguard/khajiit/argonian",
+   "why": "pirate people of the lore's races: whole bandit-faction records of the held plugins, never Nord",
+   "levels": [
+    1,
+    1,
+    19,
+    19,
+    5,
+    10,
+    6,
+    5,
+    1,
+    25,
+    9,
+    5,
+    1
+   ],
+   "looks": [
+    "Skyrim.esm:WarehouseNPCWebActorSit",
+    "Skyrim.esm:WE17Bandit2",
+    "Skyrim.esm:EncBandit05MagicBretonM",
+    "Skyrim.esm:EncBandit05MissileImperialM",
+    "Skyrim.esm:EncBandit02Melee1HImperialF",
+    "Skyrim.esm:EncBandit03Boss1HImperialM",
+    "Skyrim.esm:EncBandit02Boss1HRedguardM",
+    "Skyrim.esm:EncBandit02Melee1HRedguardF",
+    "Skyrim.esm:MS10Haldyn",
+    "Skyrim.esm:EncBandit06MissileKhajiitM",
+    "Skyrim.esm:EncBandit03Melee1HKhajiitM",
+    "Skyrim.esm:EncBandit02MagicArgonianM",
+    "Skyrim.esm:EncBandit01MagicArgonianM"
+   ],
+   "look_voices": {
+    "Skyrim.esm:WarehouseNPCWebActorSit": "MaleCommoner",
+    "Skyrim.esm:WE17Bandit2": "FemaleCommoner",
+    "Skyrim.esm:EncBandit05MagicBretonM": "MaleCommoner",
+    "Skyrim.esm:EncBandit05MissileImperialM": "MaleCommoner",
+    "Skyrim.esm:EncBandit02Melee1HImperialF": "FemaleCommoner",
+    "Skyrim.esm:EncBandit03Boss1HImperialM": "MaleCommoner",
+    "Skyrim.esm:EncBandit02Boss1HRedguardM": "MaleBandit",
+    "Skyrim.esm:EncBandit02Melee1HRedguardF": "FemaleEvenToned",
+    "Skyrim.esm:MS10Haldyn": "MaleCommoner",
+    "Skyrim.esm:EncBandit06MissileKhajiitM": "MaleKhajiit",
+    "Skyrim.esm:EncBandit03Melee1HKhajiitM": "MaleKhajiit",
+    "Skyrim.esm:EncBandit02MagicArgonianM": "MaleArgonian",
+    "Skyrim.esm:EncBandit01MagicArgonianM": "MaleArgonian"
+   },
+   "gear": {
+    "low": [
+     {
+      "set": "leather + IronSword",
+      "items": [
+       "Skyrim.esm:ArmorLeatherCuirass",
+       "Skyrim.esm:ArmorLeatherBoots",
+       "Skyrim.esm:ArmorLeatherGauntlets",
+       "Skyrim.esm:ArmorLeatherHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronSword"
+      ],
+      "value": 260,
+      "weapon_value": 25
+     },
+     {
+      "set": "hide + IronDagger",
+      "items": [
+       "Skyrim.esm:ArmorHideCuirass",
+       "Skyrim.esm:ArmorHideBoots",
+       "Skyrim.esm:ArmorHideGauntlets",
+       "Skyrim.esm:ArmorHideHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronDagger"
+      ],
+      "value": 105,
+      "weapon_value": 10
+     },
+     {
+      "set": "leather + IronWarAxe",
+      "items": [
+       "Skyrim.esm:ArmorLeatherCuirass",
+       "Skyrim.esm:ArmorLeatherBoots",
+       "Skyrim.esm:ArmorLeatherGauntlets",
+       "Skyrim.esm:ArmorLeatherHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronWarAxe"
+      ],
+      "value": 265,
+      "weapon_value": 30
+     }
+    ],
+    "mid": [
+     {
+      "set": "imperial-light + SteelSword",
+      "items": [
+       "Skyrim.esm:ArmorImperialLightCuirass",
+       "Skyrim.esm:ArmorImperialLightBoots",
+       "Skyrim.esm:ArmorImperialLightGauntlets",
+       "Skyrim.esm:ArmorImperialLightHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelSword"
+      ],
+      "value": 185,
+      "weapon_value": 45
+     },
+     {
+      "set": "scaled + SteelWarAxe",
+      "items": [
+       "Skyrim.esm:ArmorScaledCuirass",
+       "Skyrim.esm:ArmorScaledBoots",
+       "Skyrim.esm:ArmorScaledGauntlets",
+       "Skyrim.esm:ArmorScaledHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelWarAxe"
+      ],
+      "value": 720,
+      "weapon_value": 55
+     },
+     {
+      "set": "elven-light + SteelSword",
+      "items": [
+       "Skyrim.esm:ArmorElvenLightCuirass",
+       "Skyrim.esm:ArmorElvenLightBoots",
+       "Skyrim.esm:ArmorElvenLightGauntlets",
+       "Skyrim.esm:ArmorElvenLightHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelSword"
+      ],
+      "value": 280,
+      "weapon_value": 45
+     }
+    ],
+    "high": [
+     {
+      "set": "scaled + SteelBattleaxe",
+      "items": [
+       "Skyrim.esm:ArmorScaledCuirass",
+       "Skyrim.esm:ArmorScaledBoots",
+       "Skyrim.esm:ArmorScaledGauntlets",
+       "Skyrim.esm:ArmorScaledHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelBattleaxe"
+      ],
+      "value": 765,
+      "weapon_value": 100
+     },
+     {
+      "set": "elven + ElvenSword",
+      "items": [
+       "Skyrim.esm:ArmorElvenCuirass",
+       "Skyrim.esm:ArmorElvenBoots",
+       "Skyrim.esm:ArmorElvenGauntlets",
+       "Skyrim.esm:ArmorElvenHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:ElvenSword"
+      ],
+      "value": 660,
+      "weapon_value": 235
+     },
+     {
+      "set": "elven + ElvenWarAxe",
+      "items": [
+       "Skyrim.esm:ArmorElvenCuirass",
+       "Skyrim.esm:ArmorElvenBoots",
+       "Skyrim.esm:ArmorElvenGauntlets",
+       "Skyrim.esm:ArmorElvenHelmet",
+       "Skyrim.esm:ArmorElvenShield"
+      ],
+      "weapons": [
+       "Skyrim.esm:ElvenWarAxe"
+      ],
+      "value": 820,
+      "weapon_value": 280
+     }
+    ]
+   }
   },
   "valley-of-storms|Stormhold crystal-seekers": {
-   "dropped": "only Skyrim templated humanoids fit, whose lists give Nords and Nord gear (decision 0006)"
+   "records": [
+    "Dragonborn.esm:DLC2EncBandit03MissileDarkElf03M",
+    "Dragonborn.esm:DLC2EncBandit05Melee1HDarkElf02F",
+    "Dragonborn.esm:DLC2EncBandit04MagicDarkElf03M",
+    "Skyrim.esm:EncBandit04MagicDarkElfF",
+    "Skyrim.esm:EncBandit03MissileImperialM",
+    "Skyrim.esm:EncBandit03Melee1HImperialF",
+    "Skyrim.esm:EncBandit06Boss2HImperialM",
+    "Skyrim.esm:EncBandit06MagicBretonM",
+    "Skyrim.esm:WE17Bandit2",
+    "Skyrim.esm:WarehouseNPCWebActorSit",
+    "Skyrim.esm:EncBandit02MagicArgonianM",
+    "Skyrim.esm:EncBandit06MagicArgonianM"
+   ],
+   "race": "dunmer/imperial/breton/argonian",
+   "why": "outlaw people of the lore's races: whole bandit-faction records of the held plugins, never Nord",
+   "levels": [
+    9,
+    19,
+    14,
+    14,
+    9,
+    9,
+    28,
+    25,
+    1,
+    1,
+    5,
+    25
+   ],
+   "looks": [
+    "Dragonborn.esm:DLC2EncBandit03MissileDarkElf03M",
+    "Dragonborn.esm:DLC2EncBandit05Melee1HDarkElf02F",
+    "Dragonborn.esm:DLC2EncBandit04MagicDarkElf03M",
+    "Skyrim.esm:EncBandit04MagicDarkElfF",
+    "Skyrim.esm:EncBandit03MissileImperialM",
+    "Skyrim.esm:EncBandit03Melee1HImperialF",
+    "Skyrim.esm:EncBandit06Boss2HImperialM",
+    "Skyrim.esm:EncBandit06MagicBretonM",
+    "Skyrim.esm:WE17Bandit2",
+    "Skyrim.esm:WarehouseNPCWebActorSit",
+    "Skyrim.esm:EncBandit02MagicArgonianM",
+    "Skyrim.esm:EncBandit06MagicArgonianM"
+   ],
+   "look_voices": {
+    "Dragonborn.esm:DLC2EncBandit03MissileDarkElf03M": "DLC2MaleDarkElfCynical",
+    "Dragonborn.esm:DLC2EncBandit05Melee1HDarkElf02F": "FemaleDarkElf",
+    "Dragonborn.esm:DLC2EncBandit04MagicDarkElf03M": "DLC2MaleDarkElfCynical",
+    "Skyrim.esm:EncBandit04MagicDarkElfF": "FemaleEvenToned",
+    "Skyrim.esm:EncBandit03MissileImperialM": "MaleCommoner",
+    "Skyrim.esm:EncBandit03Melee1HImperialF": "FemaleCommoner",
+    "Skyrim.esm:EncBandit06Boss2HImperialM": "MaleCommoner",
+    "Skyrim.esm:EncBandit06MagicBretonM": "MaleCommoner",
+    "Skyrim.esm:WE17Bandit2": "FemaleCommoner",
+    "Skyrim.esm:WarehouseNPCWebActorSit": "MaleCommoner",
+    "Skyrim.esm:EncBandit02MagicArgonianM": "MaleArgonian",
+    "Skyrim.esm:EncBandit06MagicArgonianM": "MaleArgonian"
+   },
+   "gear": {
+    "low": [
+     {
+      "set": "hide + IronSword",
+      "items": [
+       "Skyrim.esm:ArmorHideCuirass",
+       "Skyrim.esm:ArmorHideBoots",
+       "Skyrim.esm:ArmorHideGauntlets",
+       "Skyrim.esm:ArmorHideHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronSword"
+      ],
+      "value": 120,
+      "weapon_value": 25
+     },
+     {
+      "set": "leather + IronWarAxe",
+      "items": [
+       "Skyrim.esm:ArmorLeatherCuirass",
+       "Skyrim.esm:ArmorLeatherBoots",
+       "Skyrim.esm:ArmorLeatherGauntlets",
+       "Skyrim.esm:ArmorLeatherHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronWarAxe"
+      ],
+      "value": 265,
+      "weapon_value": 30
+     },
+     {
+      "set": "iron + IronMace",
+      "items": [
+       "Skyrim.esm:ArmorIronCuirass",
+       "Skyrim.esm:ArmorIronBoots",
+       "Skyrim.esm:ArmorIronGauntlets",
+       "Skyrim.esm:ArmorIronHelmet",
+       "Skyrim.esm:ArmorIronShield"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronMace"
+      ],
+      "value": 330,
+      "weapon_value": 35
+     },
+     {
+      "set": "hide + HuntingBow + IronArrow",
+      "items": [
+       "Skyrim.esm:ArmorHideCuirass",
+       "Skyrim.esm:ArmorHideBoots",
+       "Skyrim.esm:ArmorHideGauntlets",
+       "Skyrim.esm:ArmorHideHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:HuntingBow"
+      ],
+      "value": 145,
+      "weapon_value": 50,
+      "ammo": "Skyrim.esm:IronArrow"
+     }
+    ],
+    "mid": [
+     {
+      "set": "steel + SteelSword",
+      "items": [
+       "Skyrim.esm:ArmorSteelCuirassA",
+       "Skyrim.esm:ArmorSteelBootsA",
+       "Skyrim.esm:ArmorSteelGauntletsA",
+       "Skyrim.esm:ArmorSteelHelmetA",
+       "Skyrim.esm:ArmorSteelShield"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelSword"
+      ],
+      "value": 705,
+      "weapon_value": 45
+     },
+     {
+      "set": "banded + SteelWarAxe",
+      "items": [
+       "Skyrim.esm:ArmorIronBandedCuirass",
+       "Skyrim.esm:ArmorIronBoots",
+       "Skyrim.esm:ArmorIronGauntlets",
+       "Skyrim.esm:ArmorIronHelmet",
+       "Skyrim.esm:ArmorIronBandedShield"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelWarAxe"
+      ],
+      "value": 465,
+      "weapon_value": 55
+     },
+     {
+      "set": "scaled + SteelMace",
+      "items": [
+       "Skyrim.esm:ArmorScaledCuirass",
+       "Skyrim.esm:ArmorScaledBoots",
+       "Skyrim.esm:ArmorScaledGauntlets",
+       "Skyrim.esm:ArmorScaledHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelMace"
+      ],
+      "value": 730,
+      "weapon_value": 65
+     },
+     {
+      "set": "leather + LongBow + SteelArrow",
+      "items": [
+       "Skyrim.esm:ArmorLeatherCuirass",
+       "Skyrim.esm:ArmorLeatherBoots",
+       "Skyrim.esm:ArmorLeatherGauntlets",
+       "Skyrim.esm:ArmorLeatherHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:LongBow"
+      ],
+      "value": 265,
+      "weapon_value": 30,
+      "ammo": "Skyrim.esm:SteelArrow"
+     }
+    ],
+    "high": [
+     {
+      "set": "plate + SteelGreatsword",
+      "items": [
+       "Skyrim.esm:ArmorSteelPlateCuirass",
+       "Skyrim.esm:ArmorSteelPlateBoots",
+       "Skyrim.esm:ArmorSteelPlateGauntlets",
+       "Skyrim.esm:ArmorSteelPlateHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelGreatsword"
+      ],
+      "value": 1265,
+      "weapon_value": 90
+     },
+     {
+      "set": "scaled + SteelBattleaxe",
+      "items": [
+       "Skyrim.esm:ArmorScaledCuirass",
+       "Skyrim.esm:ArmorScaledBoots",
+       "Skyrim.esm:ArmorScaledGauntlets",
+       "Skyrim.esm:ArmorScaledHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelBattleaxe"
+      ],
+      "value": 765,
+      "weapon_value": 100
+     },
+     {
+      "set": "plate + SteelWarhammer",
+      "items": [
+       "Skyrim.esm:ArmorSteelPlateCuirass",
+       "Skyrim.esm:ArmorSteelPlateBoots",
+       "Skyrim.esm:ArmorSteelPlateGauntlets",
+       "Skyrim.esm:ArmorSteelPlateHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelWarhammer"
+      ],
+      "value": 1285,
+      "weapon_value": 110
+     },
+     {
+      "set": "steel + ElvenBow + ElvenArrow",
+      "items": [
+       "Skyrim.esm:ArmorSteelCuirassA",
+       "Skyrim.esm:ArmorSteelBootsA",
+       "Skyrim.esm:ArmorSteelGauntletsA",
+       "Skyrim.esm:ArmorSteelHelmetA"
+      ],
+      "weapons": [
+       "Skyrim.esm:ElvenBow"
+      ],
+      "value": 980,
+      "weapon_value": 470,
+      "ammo": "Skyrim.esm:ElvenArrow"
+     }
+    ]
+   }
   },
   "arnesian-jungle|Dunmer slavers working the Morrowind border": {
-   "dropped": "no fixed-race Dunmer slaver NPC; Skyrim bandit templates may give Nords"
+   "records": [
+    "Dragonborn.esm:DLC2EncBandit01MagicDarkElf03M",
+    "Dragonborn.esm:DLC2EncBandit05Melee1HDarkElf02F",
+    "Dragonborn.esm:DLC2DamphallMine01Boss",
+    "Skyrim.esm:EncBandit05MagicDarkElfF",
+    "Dragonborn.esm:DLC2EncBandit04MissileDarkElf02M",
+    "Dragonborn.esm:DLC2EncBandit03MissileDarkELf03F",
+    "Dragonborn.esm:DLC2EncBandit02MagicDarkELf04M",
+    "Dragonborn.esm:DLC2EncBandit03MagicDarkELl04M",
+    "Skyrim.esm:WE17Bandit3",
+    "Dragonborn.esm:DLC2EncBandit06MagicDarkElf04M",
+    "Dragonborn.esm:DLC2EncBandit02MagicDarkElf03F",
+    "Dragonborn.esm:DLC2EncBandit05Melee1HDarkElf04M"
+   ],
+   "race": "dunmer",
+   "why": "slaver people of the lore's races: whole bandit-faction records of the held plugins, never Nord",
+   "levels": [
+    1,
+    19,
+    25,
+    19,
+    14,
+    9,
+    5,
+    9,
+    1,
+    25,
+    5,
+    19
+   ],
+   "looks": [
+    "Dragonborn.esm:DLC2EncBandit01MagicDarkElf03M",
+    "Dragonborn.esm:DLC2EncBandit05Melee1HDarkElf02F",
+    "Dragonborn.esm:DLC2DamphallMine01Boss",
+    "Skyrim.esm:EncBandit05MagicDarkElfF",
+    "Dragonborn.esm:DLC2EncBandit04MissileDarkElf02M",
+    "Dragonborn.esm:DLC2EncBandit03MissileDarkELf03F",
+    "Dragonborn.esm:DLC2EncBandit02MagicDarkELf04M",
+    "Dragonborn.esm:DLC2EncBandit03MagicDarkELl04M",
+    "Skyrim.esm:WE17Bandit3",
+    "Dragonborn.esm:DLC2EncBandit06MagicDarkElf04M",
+    "Dragonborn.esm:DLC2EncBandit02MagicDarkElf03F",
+    "Dragonborn.esm:DLC2EncBandit05Melee1HDarkElf04M"
+   ],
+   "look_voices": {
+    "Dragonborn.esm:DLC2EncBandit01MagicDarkElf03M": "DLC2MaleDarkElfCynical",
+    "Dragonborn.esm:DLC2EncBandit05Melee1HDarkElf02F": "FemaleDarkElf",
+    "Dragonborn.esm:DLC2DamphallMine01Boss": "DLC2MaleDarkElfCommoner",
+    "Skyrim.esm:EncBandit05MagicDarkElfF": "FemaleEvenToned",
+    "Dragonborn.esm:DLC2EncBandit04MissileDarkElf02M": "MaleDarkElf",
+    "Dragonborn.esm:DLC2EncBandit03MissileDarkELf03F": "DLC2FemaleDarkElfCommoner",
+    "Dragonborn.esm:DLC2EncBandit02MagicDarkELf04M": "DLC2MaleDarkElfCynical",
+    "Dragonborn.esm:DLC2EncBandit03MagicDarkELl04M": "DLC2MaleDarkElfCynical",
+    "Skyrim.esm:WE17Bandit3": "MaleCommoner",
+    "Dragonborn.esm:DLC2EncBandit06MagicDarkElf04M": "DLC2MaleDarkElfCynical",
+    "Dragonborn.esm:DLC2EncBandit02MagicDarkElf03F": "DLC2FemaleDarkElfCommoner",
+    "Dragonborn.esm:DLC2EncBandit05Melee1HDarkElf04M": "MaleDarkElf"
+   },
+   "gear": {
+    "low": [
+     {
+      "set": "leather + IronSword",
+      "items": [
+       "Skyrim.esm:ArmorLeatherCuirass",
+       "Skyrim.esm:ArmorLeatherBoots",
+       "Skyrim.esm:ArmorLeatherGauntlets",
+       "Skyrim.esm:ArmorLeatherHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronSword"
+      ],
+      "value": 260,
+      "weapon_value": 25
+     },
+     {
+      "set": "hide + IronWarAxe",
+      "items": [
+       "Skyrim.esm:ArmorHideCuirass",
+       "Skyrim.esm:ArmorHideBoots",
+       "Skyrim.esm:ArmorHideGauntlets",
+       "Skyrim.esm:ArmorHideHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronWarAxe"
+      ],
+      "value": 125,
+      "weapon_value": 30
+     },
+     {
+      "set": "bonemold + IronMace",
+      "items": [
+       "Dragonborn.esm:DLC2ArmorBonemoldCuirassVariant01",
+       "Dragonborn.esm:DLC2ArmorBonemoldBoots",
+       "Dragonborn.esm:DLC2ArmorBonemoldGauntlets",
+       "Dragonborn.esm:DLC2ArmorBonemoldHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronMace"
+      ],
+      "value": 580,
+      "weapon_value": 35
+     }
+    ],
+    "mid": [
+     {
+      "set": "chitin-light + SteelSword",
+      "items": [
+       "Dragonborn.esm:DLC2ArmorChitinLightCuirass",
+       "Dragonborn.esm:DLC2ArmorChitinLightBoots",
+       "Dragonborn.esm:DLC2ArmorChitinLightGauntlets",
+       "Dragonborn.esm:DLC2ArmorChitinLightHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelSword"
+      ],
+      "value": 510,
+      "weapon_value": 45
+     },
+     {
+      "set": "bonemold + SteelWarAxe",
+      "items": [
+       "Dragonborn.esm:DLC2ArmorBonemoldCuirassVariant01",
+       "Dragonborn.esm:DLC2ArmorBonemoldBoots",
+       "Dragonborn.esm:DLC2ArmorBonemoldGauntlets",
+       "Dragonborn.esm:DLC2ArmorBonemoldHelmet",
+       "Dragonborn.esm:DLC2ArmorBonemoldShield"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelWarAxe"
+      ],
+      "value": 695,
+      "weapon_value": 55
+     },
+     {
+      "set": "chitin-light + SteelMace",
+      "items": [
+       "Dragonborn.esm:DLC2ArmorChitinLightCuirass",
+       "Dragonborn.esm:DLC2ArmorChitinLightBoots",
+       "Dragonborn.esm:DLC2ArmorChitinLightGauntlets",
+       "Dragonborn.esm:DLC2ArmorChitinLightHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelMace"
+      ],
+      "value": 530,
+      "weapon_value": 65
+     }
+    ],
+    "high": [
+     {
+      "set": "chitin-heavy + SteelGreatsword",
+      "items": [
+       "Dragonborn.esm:DLC2ArmorChitinHeavyCuirass",
+       "Dragonborn.esm:DLC2ArmorChitinHeavyBoots",
+       "Dragonborn.esm:DLC2ArmorChitinHeavyGauntlets",
+       "Dragonborn.esm:DLC2ArmorChitinHeavyHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelGreatsword"
+      ],
+      "value": 1145,
+      "weapon_value": 90
+     },
+     {
+      "set": "bonemold-improved + ElvenSword",
+      "items": [
+       "Dragonborn.esm:DLC2ArmorBonemoldImprovedCuirass",
+       "Dragonborn.esm:DLC2ArmorBonemoldImprovedBoots",
+       "Dragonborn.esm:DLC2ArmorBonemoldImprovedGauntlets",
+       "Dragonborn.esm:DLC2ArmorBonemoldImprovedHelmet",
+       "Dragonborn.esm:DLC2ArmorBonemoldImprovedShield"
+      ],
+      "weapons": [
+       "Skyrim.esm:ElvenSword"
+      ],
+      "value": 875,
+      "weapon_value": 235
+     },
+     {
+      "set": "chitin-heavy + SteelBattleaxe",
+      "items": [
+       "Dragonborn.esm:DLC2ArmorChitinHeavyCuirass",
+       "Dragonborn.esm:DLC2ArmorChitinHeavyBoots",
+       "Dragonborn.esm:DLC2ArmorChitinHeavyGauntlets",
+       "Dragonborn.esm:DLC2ArmorChitinHeavyHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelBattleaxe"
+      ],
+      "value": 1155,
+      "weapon_value": 100
+     }
+    ]
+   }
   },
   "padomaic-ocean|Dunmer slavers (the wreck of a slaver lies on the shelf)": {
-   "dropped": "no fixed-race Dunmer slaver NPC"
+   "records": [
+    "Dragonborn.esm:DLC2EncBandit01Melee1HDarkElf03M",
+    "Dragonborn.esm:DLC2EncBandit04MissileDarkElf01F",
+    "Skyrim.esm:WE17Bandit3",
+    "Dragonborn.esm:DLC2EncBandit03MagicDarkElf02F",
+    "Dragonborn.esm:DLC2DamphallMine01Boss",
+    "Dragonborn.esm:DLC2EncBandit03MissileDarkELf03F",
+    "Skyrim.esm:EncBandit03MagicDarkElfM",
+    "Dragonborn.esm:DLC2EncBandit03MagicDarkELl04M",
+    "Dragonborn.esm:DLC2EncBandit02MagicDarkELf04M",
+    "Dragonborn.esm:DLC2EncBandit02Melee1HDarkElf01M",
+    "Dragonborn.esm:DLC2EncBandit06Melee1HDarkElf03F",
+    "Dragonborn.esm:DLC2EncBandit06MissileDarkElf04M"
+   ],
+   "race": "dunmer",
+   "why": "slaver people of the lore's races: whole bandit-faction records of the held plugins, never Nord",
+   "levels": [
+    1,
+    14,
+    1,
+    9,
+    25,
+    9,
+    9,
+    9,
+    5,
+    5,
+    25,
+    25
+   ],
+   "looks": [
+    "Dragonborn.esm:DLC2EncBandit01Melee1HDarkElf03M",
+    "Dragonborn.esm:DLC2EncBandit04MissileDarkElf01F",
+    "Skyrim.esm:WE17Bandit3",
+    "Dragonborn.esm:DLC2EncBandit03MagicDarkElf02F",
+    "Dragonborn.esm:DLC2DamphallMine01Boss",
+    "Dragonborn.esm:DLC2EncBandit03MissileDarkELf03F",
+    "Skyrim.esm:EncBandit03MagicDarkElfM",
+    "Dragonborn.esm:DLC2EncBandit03MagicDarkELl04M",
+    "Dragonborn.esm:DLC2EncBandit02MagicDarkELf04M",
+    "Dragonborn.esm:DLC2EncBandit02Melee1HDarkElf01M",
+    "Dragonborn.esm:DLC2EncBandit06Melee1HDarkElf03F",
+    "Dragonborn.esm:DLC2EncBandit06MissileDarkElf04M"
+   ],
+   "look_voices": {
+    "Dragonborn.esm:DLC2EncBandit01Melee1HDarkElf03M": "DLC2MaleDarkElfCynical",
+    "Dragonborn.esm:DLC2EncBandit04MissileDarkElf01F": "DLC2FemaleDarkElfCommoner",
+    "Skyrim.esm:WE17Bandit3": "MaleCommoner",
+    "Dragonborn.esm:DLC2EncBandit03MagicDarkElf02F": "FemaleDarkElf",
+    "Dragonborn.esm:DLC2DamphallMine01Boss": "DLC2MaleDarkElfCommoner",
+    "Dragonborn.esm:DLC2EncBandit03MissileDarkELf03F": "DLC2FemaleDarkElfCommoner",
+    "Skyrim.esm:EncBandit03MagicDarkElfM": "MaleBandit",
+    "Dragonborn.esm:DLC2EncBandit03MagicDarkELl04M": "DLC2MaleDarkElfCynical",
+    "Dragonborn.esm:DLC2EncBandit02MagicDarkELf04M": "DLC2MaleDarkElfCynical",
+    "Dragonborn.esm:DLC2EncBandit02Melee1HDarkElf01M": "DLC2MaleDarkElfCommoner",
+    "Dragonborn.esm:DLC2EncBandit06Melee1HDarkElf03F": "DLC2FemaleDarkElfCommoner",
+    "Dragonborn.esm:DLC2EncBandit06MissileDarkElf04M": "DLC2MaleDarkElfCynical"
+   },
+   "gear": {
+    "low": [
+     {
+      "set": "leather + IronSword",
+      "items": [
+       "Skyrim.esm:ArmorLeatherCuirass",
+       "Skyrim.esm:ArmorLeatherBoots",
+       "Skyrim.esm:ArmorLeatherGauntlets",
+       "Skyrim.esm:ArmorLeatherHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronSword"
+      ],
+      "value": 260,
+      "weapon_value": 25
+     },
+     {
+      "set": "hide + IronWarAxe",
+      "items": [
+       "Skyrim.esm:ArmorHideCuirass",
+       "Skyrim.esm:ArmorHideBoots",
+       "Skyrim.esm:ArmorHideGauntlets",
+       "Skyrim.esm:ArmorHideHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronWarAxe"
+      ],
+      "value": 125,
+      "weapon_value": 30
+     },
+     {
+      "set": "bonemold + IronMace",
+      "items": [
+       "Dragonborn.esm:DLC2ArmorBonemoldCuirassVariant01",
+       "Dragonborn.esm:DLC2ArmorBonemoldBoots",
+       "Dragonborn.esm:DLC2ArmorBonemoldGauntlets",
+       "Dragonborn.esm:DLC2ArmorBonemoldHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:IronMace"
+      ],
+      "value": 580,
+      "weapon_value": 35
+     }
+    ],
+    "mid": [
+     {
+      "set": "chitin-light + SteelSword",
+      "items": [
+       "Dragonborn.esm:DLC2ArmorChitinLightCuirass",
+       "Dragonborn.esm:DLC2ArmorChitinLightBoots",
+       "Dragonborn.esm:DLC2ArmorChitinLightGauntlets",
+       "Dragonborn.esm:DLC2ArmorChitinLightHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelSword"
+      ],
+      "value": 510,
+      "weapon_value": 45
+     },
+     {
+      "set": "bonemold + SteelWarAxe",
+      "items": [
+       "Dragonborn.esm:DLC2ArmorBonemoldCuirassVariant01",
+       "Dragonborn.esm:DLC2ArmorBonemoldBoots",
+       "Dragonborn.esm:DLC2ArmorBonemoldGauntlets",
+       "Dragonborn.esm:DLC2ArmorBonemoldHelmet",
+       "Dragonborn.esm:DLC2ArmorBonemoldShield"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelWarAxe"
+      ],
+      "value": 695,
+      "weapon_value": 55
+     },
+     {
+      "set": "chitin-light + SteelMace",
+      "items": [
+       "Dragonborn.esm:DLC2ArmorChitinLightCuirass",
+       "Dragonborn.esm:DLC2ArmorChitinLightBoots",
+       "Dragonborn.esm:DLC2ArmorChitinLightGauntlets",
+       "Dragonborn.esm:DLC2ArmorChitinLightHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelMace"
+      ],
+      "value": 530,
+      "weapon_value": 65
+     }
+    ],
+    "high": [
+     {
+      "set": "chitin-heavy + SteelGreatsword",
+      "items": [
+       "Dragonborn.esm:DLC2ArmorChitinHeavyCuirass",
+       "Dragonborn.esm:DLC2ArmorChitinHeavyBoots",
+       "Dragonborn.esm:DLC2ArmorChitinHeavyGauntlets",
+       "Dragonborn.esm:DLC2ArmorChitinHeavyHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelGreatsword"
+      ],
+      "value": 1145,
+      "weapon_value": 90
+     },
+     {
+      "set": "bonemold-improved + ElvenSword",
+      "items": [
+       "Dragonborn.esm:DLC2ArmorBonemoldImprovedCuirass",
+       "Dragonborn.esm:DLC2ArmorBonemoldImprovedBoots",
+       "Dragonborn.esm:DLC2ArmorBonemoldImprovedGauntlets",
+       "Dragonborn.esm:DLC2ArmorBonemoldImprovedHelmet",
+       "Dragonborn.esm:DLC2ArmorBonemoldImprovedShield"
+      ],
+      "weapons": [
+       "Skyrim.esm:ElvenSword"
+      ],
+      "value": 875,
+      "weapon_value": 235
+     },
+     {
+      "set": "chitin-heavy + SteelBattleaxe",
+      "items": [
+       "Dragonborn.esm:DLC2ArmorChitinHeavyCuirass",
+       "Dragonborn.esm:DLC2ArmorChitinHeavyBoots",
+       "Dragonborn.esm:DLC2ArmorChitinHeavyGauntlets",
+       "Dragonborn.esm:DLC2ArmorChitinHeavyHelmet"
+      ],
+      "weapons": [
+       "Skyrim.esm:SteelBattleaxe"
+      ],
+      "value": 1155,
+      "weapon_value": 100
+     }
+    ]
+   }
   },
   "aunike-ridge|Naga raiders": {
    "records": [
@@ -1911,7 +6341,7 @@
    "gear_note": "undead: the skeleton race is the look; each skeleton carries its own helmet or mask outfit from its record"
   },
   "chixathe-mesa|Velothi undead": {
-   "dropped": "no Dunmer undead actor"
+   "dropped": "no Dunmer undead actor; the Dunmer dead of the held plugins are unique ghosts"
   },
   "murkwood|Veeskhleel (Ghost People)": {
    "records": [

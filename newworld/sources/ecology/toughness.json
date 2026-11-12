@@ -1,0 +1,30 @@
+{
+ "source": "Skyrim.esm RACE DATA: unarmed damage",
+ "races": {
+  "FrostbiteSpiderRace": 5.0,
+  "SkeeverRace": 5.0,
+  "MudcrabRace": 5.0,
+  "FoxRace": 5.0,
+  "WolfRace": 5.0,
+  "GoatDomesticsRace": 5.0,
+  "GoatRace": 7.5,
+  "HorkerRace": 15.0,
+  "DeerRace": 5.0,
+  "BearBrownRace": 30.0,
+  "SabreCatRace": 35.0,
+  "BearBlackRace": 35.0,
+  "TrollRace": 35.0,
+  "SabreCatSnowyRace": 45.0,
+  "GiantRace": 60.0,
+  "TrollFrostRace": 65.0,
+  "MammothRace": 65.0
+ },
+ "unarmed_by_size": {
+  "insect": 5.0,
+  "small": 5.0,
+  "game": 11.25,
+  "predator": 35.0,
+  "giant": 65.0
+ },
+ "ability": "AbFortifyUnarmedDamage magnitudes by variant: dragon tiers 25/75/125/175, werewolf 5-25, vampire 5-20, mudcrab 15/20"
+}

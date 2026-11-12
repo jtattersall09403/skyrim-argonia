@@ -327,6 +327,7 @@ static class NewWorld
         var aj = Path.Combine(dir, "actors.json");
         if (!File.Exists(aj)) return res;
         var actor = new Dictionary<string, FormKey>();
+        var dmg = new Dictionary<int, FormKey>();
         foreach (var a in JsonDocument.Parse(File.ReadAllText(aj)).RootElement.GetProperty("actors").EnumerateArray())
         {
             var name = a.GetProperty("name").GetString()!;
@@ -356,6 +357,38 @@ static class NewWorld
                     mod.Outfits.Add(o);
                     n.DefaultOutfit = new FormLinkNullable<IOutfitGetter>(o.FormKey);
                 }
+            }
+            // the kit's hands: weapons (and ammunition) are items, not outfit targets, so the record's own items go and the
+            // band tier's weapons come in; Skyrim's NPCs wield the best weapon they carry
+            if (a.TryGetProperty("gear", out var hands) && hands.TryGetProperty("weapons", out var ws))
+            {
+                FormKey W(string r) { var q = r.Split(':', 2); return fc.Get(q[0], q[1]); }
+                n.Items = new ExtendedList<ContainerEntry>();
+                foreach (var w in ws.EnumerateArray())
+                    n.Items.Add(new ContainerEntry { Item = new ContainerItem { Item = new FormLink<IItemGetter>(W(w.GetString()!)), Count = 1 } });
+                if (hands.TryGetProperty("ammo", out var am))
+                    n.Items.Add(new ContainerEntry { Item = new ContainerItem { Item = new FormLink<IItemGetter>(W(am.GetString()!)), Count = 40 } });
+            }
+            // the band's blow, as Skyrim scales a stronger variant of a creature (the dragons' and werewolves' tiers): an
+            // ability that adds to the unarmed damage its race gives (AbFortifyUnarmedDamage), one per magnitude
+            if (a.TryGetProperty("damage_bonus", out var db) && db.GetInt32() > 0)
+            {
+                var mag = db.GetInt32();
+                if (!dmg.TryGetValue(mag, out var sk))
+                {
+                    var ab = new Spell(new FormKey(mod.ModKey, ids.Take("base", "eco-damage:" + mag)), Rel)
+                    {
+                        EditorID = $"ANW_Eco_UnarmedDamage{mag:D3}", Name = new TranslatedString(Language.English, "Band blow"),
+                        Type = SpellType.Ability, CastType = CastType.ConstantEffect, TargetType = TargetType.Self,
+                    };
+                    ab.EquipmentType.SetTo(FormKey.Factory("013F44:Skyrim.esm"));   // EitherHand, as vanilla abilities
+                    ab.Effects.Add(new Effect { BaseEffect = new FormLinkNullable<IMagicEffectGetter>(FormKey.Factory("0424E2:Skyrim.esm")),
+                                                Data = new EffectData { Magnitude = mag, Area = 0, Duration = 0 } });
+                    mod.Spells.Add(ab);
+                    dmg[mag] = sk = ab.FormKey;
+                }
+                n.ActorEffect ??= new();
+                n.ActorEffect.Add(new FormLink<ISpellRecordGetter>(sk));
             }
             mod.Npcs.Add(n);
             actor[name] = n.FormKey;

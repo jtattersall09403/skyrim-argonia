@@ -34,7 +34,7 @@ DO NOT change the terrain or trees or scatter or groundcover. Do not do anything
 
 # Delivered (round 2: the ecology stage)
 
-- Every creature kind bound to real records or dropped with its reason (`newworld/sources/ecology/bindings.json`: 68 of 96 kinds, 167 records); each lore-backed hostile group bound to varied looks and band gear tiers.
+- Every creature kind bound to real records or dropped with its reason (`newworld/sources/ecology/bindings.json`: 68 of 96 kinds, 167 records); each lore-backed hostile group bound to varied non-Nord looks and band gear tiers (38 of 39; the Velothi undead have no actor); damage by band through our per-band unarmed-damage abilities and kit weapons, its check in the ecology stage's check.
 - The rebuild stage `ecology` (`tools/newworld/ecology/place.py`), its check and its readback rows; band actors at fixed levels written as ACHR by the world writer; green on the small world (91 actors). The recipe: [ecology](../../design/ecology.md).
 - Harvestables measured per region against Skyrim and the region tables (ecology.md, Harvestables); none added.
 
