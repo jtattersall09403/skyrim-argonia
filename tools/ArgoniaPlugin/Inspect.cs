@@ -41,6 +41,7 @@ static class Inspect
             {
                 var pos = r.Placement!.Position;
                 Console.WriteLine($"REF {k} in {m.ModKey}: base={bases.GetValueOrDefault(r.Base.FormKey)} pos={pos}");
+                if (r.TeleportDestination is { } td) Console.WriteLine($"  teleport: door {td.Door.FormKey} arrival {td.Position}");
                 foreach (var o in mods.Where(mm => mm.ModKey.FileName.String.StartsWith("Black Marsh")).SelectMany(mm => mm.EnumerateMajorRecords<IPlacedObjectGetter>()))
                     if (o.Placement is { } op && Math.Abs(op.Position.X - pos.X) < 600 && Math.Abs(op.Position.Y - pos.Y) < 600 && Math.Abs(op.Position.Z - pos.Z) < 600)
                         Console.WriteLine($"  near: {o.FormKey} {bases.GetValueOrDefault(o.Base.FormKey)} pos={op.Position}");

@@ -26,7 +26,6 @@ switch (args.FirstOrDefault())
     case "inspect": Inspect.Run(args[1], args[2..]); break;
     case "quests": Study2.Run(args[1], args[2..]); break;
     case "nightreed": NightReedStudy.Run(args[1..]); break;
-    case "mainquestcheck": return MainQuestCheck.Run(args[1], args[2], args[3..]);
     case "newworld": return NewWorld.Run(args[1..]);
     case "formids": return FormIds.Run(args[1..]);
     case "atmos": return NewWorldAtmosphere.Run(args[1..]);
@@ -34,6 +33,7 @@ switch (args.FirstOrDefault())
     case "nwmap": return NewWorldMap.Run(args[1..]);
     case "placecheck": return PlaceCheck.Run(args[1], args[2..]);
     case "questcheck": return args.Length > 1 && args[1] == "--selftest" ? QuestCheck.SelfTest() : QuestCheck.Run(args[1], args[2], args[3..]);
+    case "questform": return QuestFormTest.Run(args[1..]);
     case "questform-read": return QuestFormRead.Run(args[1], args[2], args[3..]);
     case "nightreedcheck": return NightReedCheck.Run(args[1], args[2], args[3..]);
     default: Console.Error.WriteLine("ArgoniaPlugin seed <out.esp> <plugins...> | list <esp> <md> | survey <plugins...> | study|quests|cell|find ..."); return 2;

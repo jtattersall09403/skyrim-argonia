@@ -30,7 +30,6 @@ static class Generate
         ("Chainbreakers", ["quest.bc.bc01", "quest.bc.bc02", "quest.bc.bc03"]),
         ("MQ04", ["quest.main.mq04"]),
         ("MQ05", ["quest.main.mq05"]),
-        ("MainQuest", ["quest.main.mq01", "quest.main.mq03"]),
     ];
     // The retired Phase 3 block test (now a quest form) held 0x803..0x832; they stay unused, so no later id moves.
     const int RetiredBlockTestIds = 0x30;
@@ -119,9 +118,8 @@ static class Generate
             },
         };
 
-        // MQ101, the engine's new-game quest: the Helgen intro replaced by one stage-0 fragment that starts ours
-        // (LAL's method: MQ101's stage-0 fragment moves the player to the start marker and starts the next quest; here
-        // nothing of Helgen is kept).
+        // MQ101, the engine's new-game quest: the Helgen intro replaced by one stage-0 fragment that moves the player to
+        // the start marker and runs character creation (LAL's method; nothing of Helgen is kept). MQ01 starts with the new game.
         var mq101 = new Quest(FormKey.Factory("03372B:Skyrim.esm"), SkyrimRelease.SkyrimSE)
         {
             EditorID = "MQ101", Flags = Quest.Flag.RunOnce, Priority = 80, Type = Quest.TypeEnum.MainQuest,
@@ -134,7 +132,7 @@ static class Generate
                     new ScriptEntry
                     {
                         Name = "ARG_QF_MQ101",
-                        // StartQuest and StartMarker are set below once ARG_MQ01 is allocated (MainQuest.cs).
+                        // StartMarker, Tunic and Footwraps are set below (Opening.cs).
                     },
                 },
                 Fragments = { new QuestScriptFragment { Stage = 0, StageIndex = 0, ScriptName = "ARG_QF_MQ101", FragmentName = "Fragment_0" } },
@@ -211,19 +209,16 @@ static class Generate
             MQ04.Add(mod, mods, mq04, mq05);
             MQ05.Add(mod, mods, mq05);
         }
-        // The opening act's MQ01 and MQ03 (MainQuest.cs): allocated after NightReed. MQ101's override starts ARG_MQ01 in the
-        // barge hold; ARG_Opening keeps its forms (ids never move) and never starts: nothing starts it and its script is gone.
-        if (Old("MainQuest"))
-        {
-            MainQuest.Add(mod, mods);
-            if (Old("MQ05")) MQ05.AddNesh(mod); // MQ05's Nesh-Deeka topic and alias need her ref, placed by MainQuest
-            if (Old("LocalQuests") && Old("MQ05")) LocalQuests.Finish(mod); // LQ25's MQ05 >= 40 gate, once ARG_MQ05 exists
-            MainQuest.WritePsc("papyrus/generated");
-            mq101.VirtualMachineAdapter!.Scripts[0].Properties.AddRange([
-                new ScriptObjectProperty { Name = "StartQuest", Object = MainQuest.Mq01.ToLink() },
-                new ScriptObjectProperty { Name = "StartMarker", Object = MainQuest.StartMarker.ToLink() }]);
-            MainQuest.Finish(mod);
-        }
+        // MQ05's end, and LQ25's MQ05 >= 40 gate once ARG_MQ05 exists.
+        if (Old("MQ05")) MQ05.Finish();
+        if (Old("LocalQuests") && Old("MQ05")) LocalQuests.Finish(mod);
+        // The new game's world (Opening.cs): the barge hold, the start marker and the stair door to the pier. MQ01 and MQ03 are
+        // quest forms; MQ01 starts with the new game, and ARG_Opening keeps its forms (ids never move) and never starts.
+        Opening.Add(mod, mods, world);
+        mq101.VirtualMachineAdapter!.Scripts[0].Properties.AddRange([
+            new ScriptObjectProperty { Name = "StartMarker", Object = Opening.StartMarker.ToLink() },
+            new ScriptObjectProperty { Name = "Tunic", Object = new FormLink<ISkyrimMajorRecordGetter>(Opening.Tunic) },
+            new ScriptObjectProperty { Name = "Footwraps", Object = new FormLink<ISkyrimMajorRecordGetter>(Opening.Footwraps) }]);
         opening.VirtualMachineAdapter = null;
         // Quest rumours (Talk.cs): talkers' rumours of a quest that can start, gated as its giver's opening; after every quest.
         Talk.Rumours(mod);

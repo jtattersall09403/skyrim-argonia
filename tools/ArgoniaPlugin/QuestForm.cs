@@ -175,6 +175,10 @@ static class QuestForm
         foreach (var (k, w) in c.Wheres.ToList())
             if (!w.Interior && w.Cell.IsNull) c.Wheres[k] = w with { Cell = CellAt(c, w.World, w.Pos) };
     }
+    static bool Arrival(Ctx c, string key)
+    {
+        try { return c.Arrivals.ContainsKey(FormKey.Factory(key)); } catch (Exception) { return false; }
+    }
     static bool Arrive(Ctx c, IMajorRecordGetter r)
     {
         if (r is IPlacedObjectGetter o && o.TeleportDestination is { } t && !t.Door.IsNull) c.Arrivals[t.Door.FormKey] = t.Position;
@@ -250,7 +254,7 @@ static class QuestForm
         foreach (var s in stages.Where(s => S(s, "ending") != "none"))
         {
             var n = I(s, "number"); var done = S(s, "ending") == "completed";
-            foreach (var o in objs) Add(b.Tail, n, new Row(done ? Op.CompleteObjective : Op.FailObjective, FormKey.Null, I(o, "number")));
+            foreach (var o in objs.OrderBy(o => I(o, "number"))) Add(b.Tail, n, new Row(done ? Op.CompleteObjective : Op.FailObjective, FormKey.Null, I(o, "number")));
             if (done && b.Kind != "main") Add(b.Tail, n, new Row(Op.IncSideQuests, Achievements, 0));
         }
         b.Labels.Add("quest=" + b.Qid);
@@ -590,7 +594,9 @@ static class QuestForm
     {
         var rule = S(anchor, "rule");
         FormKey cell, world; bool interior; P3Float p;
-        if (r.Json.TryGetProperty("at", out var at))
+        // a load door as the anchor: where the player comes out of it, whatever `at` says (the door decides the spot)
+        var nearDoor = anchor.TryGetProperty("near", out var nd) && Arrival(c, nd.GetString()!);
+        if (!nearDoor && r.Json.TryGetProperty("at", out var at))
         {
             interior = B(at, "interior");
             try { cell = FormKey.Factory(S(at, "cell")); } catch (Exception) { throw c.No("placement", $"{r.Id}: at.cell {S(at, "cell")} is no form key"); }

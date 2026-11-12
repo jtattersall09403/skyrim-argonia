@@ -61,7 +61,6 @@ case "${1:-}" in
   cleancheck) build; tool cleancheck "$esp" "${lo[@]}" ;;
   inspect) loadorder; [ -f "$esp" ] && lo+=("$esp"); tool inspect "$2" "${lo[@]}" ;;  # the load order, our built ESP last
   musicprobe) loadorder; tool musicprobe "${lo[@]}" ;;
-  mainquestcheck) build; tool mainquestcheck "$esp" out/gpu/papyrus "${lo[@]}" ;;
   localcheck) build; tool localcheck "$esp" out/gpu/papyrus "${lo[@]}" ;;
   bccheck) build; tool bccheck "$esp" out/gpu/papyrus "${lo[@]}" ;;
   mqcheck) build; tool mqcheck "$esp" out/gpu/papyrus "${lo[@]}" ;;
@@ -75,7 +74,7 @@ case "${1:-}" in
     cp plugin/questform-formids.json "$tmp/ids.json"
     QUESTFORM_DIRS=tools/questform/blocktest:tools/tests/data/questform QUESTFORM_IDS="$tmp/ids.json" tool seed "$tmp/Argonia.esp" "${lo[@]}" | grep -E "^questform|^mortality"
     tool questform-read "$tmp/Argonia.esp" "$tmp/read" "${lo[@]}"
-    "$py" -m tools.questform same tools/questform/blocktest/*.json tools/tests/data/questform/*.json --read "$tmp/read"
+    for f in tools/questform/blocktest/*.json tools/tests/data/questform/*.json; do "$py" -m tools.questform diff "$f" "$tmp/read/$("$py" -c "import json,sys; print(json.load(open(sys.argv[1]))[\"quest\"][\"id\"])" "$f").json"; done
     "$py" -m tools.questform check "$tmp"/read/*.json
     tool questcheck "$tmp/Argonia.esp" papyrus "${lo[@]}" | tail -3 ;;
   seed)

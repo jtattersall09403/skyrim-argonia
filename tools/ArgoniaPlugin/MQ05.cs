@@ -19,8 +19,7 @@ static class MQ05
     public static readonly FormKey World2 = K("0D6960:Black Marsh.esm"), Ship = K("0AA665:Black Marsh.esm"), ShipNav = K("0AA666:Black Marsh.esm"),
         Hall = K("2076BB:Black Marsh.esm"), WardenRef = K("08D5E9:Black Marsh North.esp"), Grove = K("1FAE2D:Black Marsh.esm"), WayNav = K("1FAE21:Black Marsh.esm"),
         ArgDoor = K("1DE5DF:Black Marsh.esm");
-    public const string NeshRefId = "ARG_NeshDeekaRef"; // agreed with the MQ01/MQ03 lane: her placed ref's editor id
-    public const uint AKaska = 0, AEiTuja = 1, AZone = 2, ANesh = 3;
+    public const uint AKaska = 0, AEiTuja = 1, AZone = 2;
     public static readonly int[] FragmentStages = [10, 20, 40, 91, 92];
 
     public static void Add(SkyrimMod mod, List<ISkyrimModGetter> mods, Quest q)
@@ -110,22 +109,16 @@ static class MQ05
     }
 
     static QuestKit? Kit; static Quest? Q;
-    // Nesh-Deeka's part of MQ05: called from Generate.cs after MainQuest.Add, which places ARG_NeshDeekaRef.
-    public static void AddNesh(SkyrimMod mod)
+    // MQ05's end, called from Generate.cs: its objective targets and the close. Nesh-Deeka's topic and alias are not built:
+    // her ref was MQ01/MQ03's, and those quests are quest forms now.
+    public static void Finish()
     {
-        var k = Kit!; var q = Q!;
-        var neshRef = mod.EnumerateMajorRecords<IPlacedNpcGetter>().FirstOrDefault(r => r.EditorID == NeshRefId)
-            ?? throw new InvalidOperationException($"MQ05: no {NeshRefId} in the plugin (MainQuest places it, MQ01/MQ03's lane)");
-        // The word: one INFO at stage 10, no skill or gold check, the speech gate's lines (the record's other gates are not built).
-        k.Topic("Word", Label("topic.mq05-the-word"),
-            k.Info(Lines("topic.mq05-the-word", Nesh, "speech"), "TIF_ARG_MQ05_20", IsRef(neshRef.FormKey), k.StageIs(10)));
-        k.Forced(ANesh, "NeshDeeka", neshRef, QuestAlias.Flag.Optional);
-        q.VirtualMachineAdapter!.Aliases.Add(DeathSets(k, ANesh, 10, 20)); // fail-forward: Nesh-Deeka dead
-        // Objective targets, from the record's target column: Nesh-Deeka (10), the grove, where Kaska-Meen stands (20), the two
-        // tellers (40).
+        var k = Kit!;
+        // Objective targets, from the record's target column: Nesh-Deeka (10) has no ref now, so her objective points at the grove,
+        // where Kaska-Meen stands (20, and the two tellers at 40).
         k.TargetsFromRecord(Id, new()
         {
-            ["npc.nesh-deeka"] = [ANesh], ["thing.mq05.grove"] = [AKaska],
+            ["npc.nesh-deeka"] = [AKaska], ["thing.mq05.grove"] = [AKaska],
             ["npc.hist-heartland.helstrom.grove-s-senior-tree"] = [AKaska], ["npc.hist-heartland.helstrom.nisswo-interpreter-debating-house"] = [AEiTuja],
         });
         k.Finish();

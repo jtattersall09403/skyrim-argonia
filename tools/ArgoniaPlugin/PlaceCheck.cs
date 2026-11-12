@@ -29,7 +29,7 @@ using Noggog;
 static class PlaceCheck
 {
     // Actors placed where the host has no navmesh (the Reed's house: BM&V's sinking cabin has none in its rooms).
-    public static readonly HashSet<string> Standing = ["ARG_NeshDeekaRef", "ARG_MQ03_SaltsTheCatchRef", "ARG_BC_NeverSoldRef"];
+    public static readonly HashSet<string> Standing = ["ARG_BC_NeverSoldRef"];
 
     sealed record Nav(FormKey Parent, List<(P3Float a, P3Float b, P3Float c)> Tris);
     public sealed record Result(FormKey Ref, string Where, string? EditorId, P3Float At, string? Fail, string Detail, float? FixZ, bool Warn, P3Float? MoveTo = null);

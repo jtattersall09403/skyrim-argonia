@@ -69,7 +69,7 @@ static class Listing
             sb.AppendLine($"| {g.Name} | quest | Start Game Enabled off | {Row(rs)} |");
         }
         // MQ01's held quests (we.mq01.no-valenwood, we.mq01.no-welcome): Start Game Enabled off, started by MQ03's ending.
-        var held = MainQuest.Valenwood.Select(v => FormKey.Factory(v)).Append(MainQuest.Welcome).ToHashSet();
+        var held = Opening.Valenwood.Select(v => FormKey.Factory(v)).Append(Opening.Welcome).ToHashSet();
         var heldRows = new List<(string, FormKey)>();
         foreach (var q in quests.Values.Where(q => held.Contains(q.FormKey)))
         {
