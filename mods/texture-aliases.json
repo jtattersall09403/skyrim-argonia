@@ -1,0 +1,18 @@
+{
+ "about": "A file a mod ships at one path, laid again at the path that mod's own mesh names (infra/gpu-box/stack.py lay_aliases, the folder argonia-texture-aliases; nothing here is a game file). Found by tools/newworld/assets_audit.py. gkbjunglebranch10 is shipped by no mod: its own family's gkbjunglebranch3 stands in.",
+ "aliases": {
+  "textures\\plants\\groundplants1\\fern2.dds": ["bmv", "textures\\landscape\\plants\\fern2.dds"],
+  "textures\\plants\\groundplants1\\fern2_n.dds": ["bmv", "textures\\landscape\\plants\\fern2_n.dds"],
+  "textures\\plants\\grplants2\\leafcol.dds": ["bmv", "textures\\landscape\\plants\\leafcol.dds"],
+  "textures\\plants\\grplants2\\leafcol_n.dds": ["bmv", "textures\\landscape\\plants\\leafcol_n.dds"],
+  "textures\\landscape\\trees\\treeoaktrunk_n.dds": ["bmv", "textures\\landscape\\trees\\ethas\\treeoaktrunk_n.dds"],
+  "textures\\landscape\\gkbbranch1.dds.dds": ["bmv", "textures\\landscape\\trees\\gkbbranch1.dds"],
+  "textures\\landscape\\trees\\gkbjunglebranch10.dds": ["bmv", "textures\\landscape\\trees\\gkbjunglebranch3.dds"],
+  "textures\\0manor house\\sfloorhouse01.dds": ["bmv", "textures\\textures\\0manor house\\sfloorhouse01.dds"],
+  "textures\\0manor house\\sfloorhouse01_n.dds": ["bmv", "textures\\textures\\0manor house\\sfloorhouse01_n.dds"],
+  "textures\\0manor house\\sintcoloumn02.dds": ["bmv", "textures\\textures\\0manor house\\sintcoloumn02.dds"],
+  "textures\\0manor house\\sintcoloumn02_n.dds": ["bmv", "textures\\textures\\0manor house\\sintcoloumn02_n.dds"],
+  "textures\\breticshipside01_n.dds": ["bmv", "textures\\breticships\\breticshipside01_n.dds"],
+  "meshes\\actors\\dragon\\character assets\\bones\\cobraskull.nif": ["king-of-the-murkmire", "meshes\\mihail monsters and animals\\dragon\\giant snake\\bones\\cobraskull.nif"]
+ }
+}

@@ -55,3 +55,15 @@ def test_run_ranks_missing_by_placed_uses():
     rep = A.Audit(R).run([p])
     assert [(m["path"], m["uses"]) for m in rep["missing"]] == [("textures\\gone.dds", 3), ("meshes\\s.nif", 1)]
     assert rep["missing_meshes"] == 1 and rep["missing_textures"] == 1
+
+
+def test_aliased_and_allowed_paths_do_not_gate():
+    p = Plugin("W.esm", [], [])
+    for r in (Record("STAT", 0, 0x13, [("EDID", b"S\0"), ("MODL", b"s.nif\0")]),
+              Record("STAT", 0, 0x14, [("EDID", b"T\0"), ("MODL", b"t.nif\0")])):
+        r.plugin = p
+        p._records.append(r)
+    R = FakeR({"meshes\\s.nif": s(b"textures\\a.dds") + s(b"textures\\b_n.dds")})
+    rep = A.Audit(R, aliases={"textures/A.dds": ["mod", "x.dds"]}, allowed={"textures\\b_n.dds": "why"}).run([p])
+    assert [m["path"] for m in rep["missing"] if not m["allowed"]] == ["meshes\\t.nif"]
+    assert rep["missing_meshes"] == 1 and rep["missing_textures"] == 0 and rep["allowed"] == 1

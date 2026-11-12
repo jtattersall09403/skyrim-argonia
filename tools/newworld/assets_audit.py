@@ -22,6 +22,8 @@ from collections import Counter
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[2]
+ALIASES = REPO / "mods/texture-aliases.json"          # laid by the stack at stage time (stack.py lay_aliases)
+ALLOWED = REPO / "newworld/sources/assets_missing_allowed.json"  # path -> why it may stay missing
 PLUGINS = [REPO / "out/newworld/plugin/ArgoniaNewWorld.esm", REPO / "out/places/plugin/ArgoniaNWPlaces.esp"]
 ROOTS = {".nif": "meshes", ".dds": "textures", ".wav": "sound", ".xwm": "sound", ".fuz": "sound"}
 # path-bearing sub-records that are not plain zstrings ending in an extension are none in SSE; the scan is generic
@@ -81,8 +83,10 @@ def loaded_archive(name: str, active: set[str]) -> bool:
 
 
 class Audit:
-    def __init__(self, resolver, active: set[str] | None = None, masters=(), vanilla_named=b""):
+    def __init__(self, resolver, active: set[str] | None = None, masters=(), vanilla_named=b"", aliases=None, allowed=None):
         self.R, self.masters, self.vanilla = resolver, list(masters), vanilla_named.lower()
+        self.aliases = {k.replace("/", "\\").lower(): v for k, v in (aliases or {}).items()}  # wanted -> [mod, path]
+        self.allowed = {k.replace("/", "\\").lower(): v for k, v in (allowed or {}).items()}
         if active is not None:
             self.R._arcs = [(n, a) for n, a in resolver.archives() if loaded_archive(n, active)]
         self._nif: dict[str, list[str] | None] = {}
@@ -90,6 +94,9 @@ class Audit:
     def nif(self, key: str) -> list[str] | None:
         if key not in self._nif:
             b = self.R.read(key)
+            if b is None and key in self.aliases:      # an aliased mesh: the mod's own file at its real path
+                f = self.R._find(self.R.stack / "MO2" / "mods" / self.aliases[key][0], self.aliases[key][1].lower())
+                b = f.read_bytes() if f else None
             self._nif[key] = None if b is None else nif_textures(b)
         return self._nif[key]
 
@@ -144,17 +151,20 @@ class Audit:
                         want(norm_asset(t), r, key)
         missing = []
         for key, e in need.items():
-            if self.R.where(key) is None:
+            if key not in self.aliases and self.R.where(key) is None:
                 missing.append({"path": key, "kind": ROOTS.get(Path(key).suffix, "?"), "records": sorted(e["records"]),
                                 "uses": e["uses"], "via": sorted(e["via"])})
         for m in missing:                      # a path Skyrim.esm itself names and the game lacks is vanilla's own
             name = m["path"].split("\\", 1)[1].encode()
             m["vanilla_too"] = bool(self.vanilla) and name in self.vanilla
-        missing.sort(key=lambda m: (m["vanilla_too"], -m["uses"], m["path"]))
+            m["allowed"] = self.allowed.get(m["path"])
+        missing.sort(key=lambda m: (m["vanilla_too"] or bool(m["allowed"]), -m["uses"], m["path"]))
+        gate = [m for m in missing if not m["vanilla_too"] and not m["allowed"]]
         return {"records": len(recs), "assets": len(need), "missing": missing,
-                "missing_meshes": sum(m["kind"] == "meshes" and not m["vanilla_too"] for m in missing),
-                "missing_textures": sum(m["kind"] == "textures" and not m["vanilla_too"] for m in missing),
-                "vanilla_too": sum(m["vanilla_too"] for m in missing)}
+                "missing_meshes": sum(m["kind"] == "meshes" for m in gate),
+                "missing_textures": sum(m["kind"] == "textures" for m in gate),
+                "vanilla_too": sum(m["vanilla_too"] for m in missing),
+                "allowed": sum(bool(m["allowed"]) and not m["vanilla_too"] for m in missing)}
 
 
 def active_plugins(profile_dir: Path) -> set[str]:
@@ -179,11 +189,15 @@ def main(argv=None) -> int:
     names = {m for p in plugins for m in p.masters} - {p.name for p in plugins}
     masters = [Plugin.read(DATA / n, MODEL_SIGS) for n in sorted(names) if (DATA / n).exists()]
     vanilla = (DATA / "Skyrim.esm").read_bytes() if (DATA / "Skyrim.esm").exists() else b""
-    rep = Audit(Resolver(), active_plugins(STACK / "MO2/profiles/NewWorld"), masters, vanilla).run(plugins)
+    aliases = json.loads(ALIASES.read_text())["aliases"] if ALIASES.exists() else {}
+    allowed = json.loads(ALLOWED.read_text())["allowed"] if ALLOWED.exists() else {}
+    rep = Audit(Resolver(), active_plugins(STACK / "MO2/profiles/NewWorld"), masters, vanilla, aliases, allowed).run(plugins)
     print(f"assets audit: {rep['records']} records, {rep['assets']} asset paths; missing "
           f"{rep['missing_meshes']} meshes, {rep['missing_textures']} textures")
-    for m in rep["missing"][:60]:
+    for m in [m for m in rep["missing"] if not m["vanilla_too"] and not m["allowed"]][:60]:
         print(f"  {m['uses']:>8}  {m['path']}  <- {', '.join(m['records'][:4])}{' ...' if len(m['records']) > 4 else ''}")
+    if rep["allowed"]:
+        print(f"  (+{rep['allowed']} on the allow-list with their reasons: {ALLOWED.relative_to(REPO)})")
     if rep["vanilla_too"]:
         print(f"  (+{rep['vanilla_too']} paths Skyrim.esm also names and the game lacks: vanilla's own, not gating)")
     if a.json:

@@ -806,7 +806,7 @@ def cmd_stage(a):
         if (STACK / installed_name(profile)).exists():
             prev.update(json.loads((STACK / installed_name(profile)).read_text())["files"])
     for d in list(mods.iterdir()):
-        if d.name not in ids and d.name not in ("pandora-output", LODS):
+        if d.name not in ids and d.name not in ("pandora-output", LODS, ALIASES):
             shutil.rmtree(d)
     for d in list(tools.iterdir()):  # a tool no row names any more
         if d.is_dir() and d.name not in ids:
@@ -866,6 +866,11 @@ def cmd_stage(a):
     shutil.rmtree(tmp, ignore_errors=True)
     if (mods / LODS).exists():
         names.append(LODS)
+    # the texture aliases: a file a mod ships at one path, laid again at the path its own mesh names
+    if lay_aliases(mods, mods / ALIASES):
+        restaged.add(ALIASES)
+    if (mods / ALIASES).exists():
+        names.append(ALIASES)
     names.append("pandora-output")  # filled when Pandora runs on the machine; highest priority
     (mods / "pandora-output").mkdir(exist_ok=True)
     all_names = names
@@ -1174,6 +1179,50 @@ def cmd_install(a):
 
 
 LODS = "argonia-lodsettings"  # derived in cmd_stage, never a row
+ALIASES = "argonia-texture-aliases"  # derived in cmd_stage from ALIAS_TABLE, never a row
+ALIAS_TABLE = REPO / "mods" / "texture-aliases.json"
+
+
+def lay_aliases(mods, out) -> bool:
+    """mods/texture-aliases.json: {wanted data path: [mod, the mod's own data path]}: a mesh of that mod names a
+    texture at a path the mod does not ship it at (BM&V's fern names textures\\plants\\groundplants1\\fern2.dds; the
+    mod holds textures\\landscape\\plants\\fern2.dds). Each is copied from the staged mod to the wanted path, in a
+    folder of its own (decision 0003: derived at stage time, never committed). Returns whether the folder changed."""
+    table = json.loads(ALIAS_TABLE.read_text())["aliases"] if ALIAS_TABLE.exists() else {}
+    want = {}
+    for dst, (mod, src) in table.items():
+        f = ci_file(mods / mod, src)
+        if f is None:
+            raise SystemExit(f"texture alias {dst}: {mod} holds no {src}")
+        want[dst.replace("\\", "/").lower()] = f
+    have = {str(f.relative_to(out)).lower(): f for f in out.rglob("*") if f.is_file()} if out.exists() else {}
+    changed = False
+    for rel, f in have.items():
+        if rel not in want:
+            f.unlink()
+            changed = True
+    for rel, f in want.items():
+        o = out / rel
+        if not o.exists() or o.stat().st_size != f.stat().st_size or sha256(o) != sha256(f):
+            o.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(f, o)
+            changed = True
+    if changed:
+        print(f"  {ALIASES}: {len(want)} texture aliases laid")
+    return changed
+
+
+def ci_file(root, rel):
+    """The file a data path names under a folder, matching each part's case as the game does."""
+    p = root
+    for part in rel.replace("\\", "/").split("/"):
+        if not p.is_dir():
+            return None
+        hit = next((c for c in p.iterdir() if c.name.lower() == part.lower()), None)
+        if hit is None:
+            return None
+        p = hit
+    return p if p.is_file() else None
 ANIMDATA = r"meshes\animationdatasinglefile.txt"
 
 
