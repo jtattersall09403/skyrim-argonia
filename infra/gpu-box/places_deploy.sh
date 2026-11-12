@@ -42,7 +42,7 @@ sys.exit(1 if bad else 0)
 PY
 export DOTNET_ROOT="$HOME/.dotnet" PATH="$HOME/.dotnet:$PATH" DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_NOLOGO=1
 bin=out/tools/ArgoniaPlugin
-dotnet build -c Release -o "$bin" tools/ArgoniaPlugin >/dev/null
+mkdir -p "$HOME/.argonia"; flock -o "$HOME/.argonia/dotnet-build.lock" dotnet build -c Release -o "$bin" tools/ArgoniaPlugin >/dev/null
 dotnet "$bin/ArgoniaPlugin.dll" seq "$esp" "$seq" || { echo "no start-game quest in $esp: no SEQ needed"; rm -f "$seq"; }
 echo "stage: $esp ($(stat -c %s "$esp") bytes), ${seq} ($( [ -f "$seq" ] && stat -c %s "$seq" || echo none)), ${pex[*]}"
 [ $dry = 1 ] && { echo "dry run: nothing sent"; exit 0; }

@@ -105,7 +105,7 @@ do_models() {  # the far-off models, then the plan that names them
   "$PY" -m tools.newworld.world.lodmodels build --plugin "$plug" --out "$lm"
 }
 do_map() {
-  dotnet build -c Release -o "$bin" tools/ArgoniaPlugin >/dev/null
+  mkdir -p "$HOME/.argonia"; flock -o "$HOME/.argonia/dotnet-build.lock" dotnet build -c Release -o "$bin" tools/ArgoniaPlugin >/dev/null
   "$PY" -m tools.newworld.world.mapdata build --plugin "$plug"
   do_models
   "$PY" -m tools.newworld.world.lodplan build --plugin "$plug" --lodmodels "$lm/manifest.json" >/dev/null
@@ -223,7 +223,7 @@ do_preflight() {  # every check that needs no long step; one FAULT line per faul
     local why
     while IFS= read -r why; do [ -z "$why" ] || fault "the world file is not settled: $why"; done < <(tools/newworld/rebuild.sh settled | grep -v '^settled:' || true)
   fi
-  [ -f "$bin/ArgoniaPlugin.dll" ] || dotnet build -c Release -o "$bin" tools/ArgoniaPlugin >/dev/null
+  [ -f "$bin/ArgoniaPlugin.dll" ] || flock -o "$HOME/.argonia/dotnet-build.lock" dotnet build -c Release -o "$bin" tools/ArgoniaPlugin >/dev/null
   dotnet "$bin/ArgoniaPlugin.dll" nwmap check "$src/ArgoniaNewWorld.esm" "$src/map" > "$out/map-check.txt" 2>&1 || fault "the map and plan against the world file: $(tail -3 "$out/map-check.txt" | tr '\n' ' ') (lod.sh map)"
   "$PY" -m tools.newworld.world.lodplan preflight --plugin "$src" --lodmodels "$lm/manifest.json" | tee -a "$f" || bad=1
   keys || fault "the step keys cannot be computed"
