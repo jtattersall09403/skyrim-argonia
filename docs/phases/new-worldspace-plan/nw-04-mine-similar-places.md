@@ -8,5 +8,8 @@ After all collected, use an optimisation/matching algorithm to match up places i
 
 Record results in the database in whatever way will make it very fast and easy to load up any place's source place (including its full 3D layout and build and its local terrain in the game/mod where it was placed and all assets etc). Also record in the database 3 more other 'most similar places' for each of our places in the same way (it's OK for these other ones to be shared between our places, unlike with the optimised/allocated top 'source place').
 
+Also update the place records in the DB for population: should be baselined on population of the source place, and adjusted up or down depending on what the place record promises (overwriting its original estimated population field).
+
+Think of a sensible way to present the results to me so I can sense check in a useful way that doesn't require me to go through and check every match individually.
 
 Do not rebuild LOD at this point.
