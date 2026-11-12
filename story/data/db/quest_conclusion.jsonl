@@ -1,4 +1,5 @@
 {"quest_id":"quest.bc.bc01","ord":0,"id":"c1","statement":"The Owing is true at every line and still unjust."}
+{"quest_id":"quest.bc.bc02","ord":0,"id":"c1","statement":"Only one of the three can be freed, and the player decides which."}
 {"quest_id":"quest.bc.bc03","ord":0,"id":"c1","statement":"Ussa-Rekh freed them and holds them still."}
 {"quest_id":"quest.local.lf83","ord":0,"id":"c1","statement":"The well keeps failing because stone cannot hold in the moving clay bank: its lining has cracked and been mended every year, and the ford seeps in through the new crack."}
 {"quest_id":"quest.local.lf83","ord":1,"id":"c2","statement":"Clay, the landing's own craft, would hold the well where stone cracks, so the landing could mend it without building in stone."}
@@ -16,6 +17,5 @@
 {"quest_id":"quest.mr.mr01","ord":0,"id":"c1","statement":"The salt works are not the cause."}
 {"quest_id":"quest.mr.mr01","ord":1,"id":"c2","statement":"The salt comes up from a breach below the village."}
 {"quest_id":"quest.mr.mr01","ord":2,"id":"c3","statement":"The founders cut the breach to kill a rival grove."}
-{"quest_id":"quest.tg.tg01","ord":0,"id":"c1","statement":"The necklace can be had without harm, lifted off Keeps-What-Floats by day or while he sleeps, or talked off him."}
+{"quest_id":"quest.tg.tg01","ord":0,"id":"c1","statement":"The necklace can be had with no harm to Keeps-What-Floats, out of his strongbox or off him by talk or coin."}
 {"quest_id":"quest.tg.tg02","ord":0,"id":"c1","statement":"All three clients lied about what the box holds for them."}
-{"quest_id":"quest.bc.bc02","ord":0,"id":"c1","statement":"Only one of the three can be freed, and the player decides which."}

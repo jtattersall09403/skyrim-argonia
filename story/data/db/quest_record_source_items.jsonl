@@ -6,7 +6,15 @@
 {"quest_id":"quest.bc.bc01","source":"lore","ord":5,"value":"story/design/province-vibe.md §5"}
 {"quest_id":"quest.bc.bc01","source":"lore","ord":6,"value":"§9"}
 {"quest_id":"quest.bc.bc01","source":"lore","ord":7,"value":"story/design/quests/40-factions.md §39"}
+{"quest_id":"quest.bc.bc01","source":"lore","ord":8,"value":"story/lore/topics/hist-and-sap.md (the tree and home)"}
 {"quest_id":"quest.bc.bc02","source":"lore","ord":0,"value":"story/lore/topics/prisons.md (the Rose in 4E 201; the heirs; a day's march from the city)"}
+{"quest_id":"quest.bc.bc02","source":"lore","ord":1,"value":"story/lore/topics/labour-and-bondage.md §3 (the Rose's own hierarchy; newcomers owe the prison-born)"}
+{"quest_id":"quest.bc.bc02","source":"lore","ord":2,"value":"story/lore/blackrose.md"}
+{"quest_id":"quest.bc.bc02","source":"lore","ord":3,"value":"story/lore/extrapolation/gap-register.md §8 QA4, QA20"}
+{"quest_id":"quest.bc.bc02","source":"lore","ord":4,"value":"story/design/province-vibe.md §5"}
+{"quest_id":"quest.bc.bc02","source":"lore","ord":5,"value":"§9"}
+{"quest_id":"quest.bc.bc02","source":"lore","ord":6,"value":"story/design/quests/40-factions.md §39 (the Rose's fire-damaged registers; the Rose implicated"}
+{"quest_id":"quest.bc.bc02","source":"lore","ord":7,"value":"not the villain)"}
 {"quest_id":"quest.bc.bc03","source":"lore","ord":0,"value":"story/lore/topics/labour-and-bondage.md §2 (the Owing ends and is not mentioned again)"}
 {"quest_id":"quest.bc.bc03","source":"lore","ord":1,"value":"story/lore/topics/labour-and-bondage.md §3 (Soulrest's indentured crews)"}
 {"quest_id":"quest.bc.bc03","source":"lore","ord":2,"value":"story/lore/soulrest.md"}
@@ -14,6 +22,7 @@
 {"quest_id":"quest.bc.bc03","source":"lore","ord":4,"value":"story/design/province-vibe.md §5"}
 {"quest_id":"quest.bc.bc03","source":"lore","ord":5,"value":"§9"}
 {"quest_id":"quest.bc.bc03","source":"lore","ord":6,"value":"story/design/quests/40-factions.md §39"}
+{"quest_id":"quest.bc.bc03","source":"lore","ord":7,"value":"story/design/quests/36-cast-roster.md §56 (the Chainbreakers' desks)"}
 {"quest_id":"quest.local.lf83","source":"cultureSheets","ord":0,"value":"culture.settlement.claywater-station"}
 {"quest_id":"quest.local.lf83","source":"cultureSheets","ord":1,"value":"culture.group.claywater-station.station-half"}
 {"quest_id":"quest.local.lf83","source":"cultureSheets","ord":2,"value":"culture.group.claywater-station.landing-half"}
@@ -90,22 +99,12 @@
 {"quest_id":"quest.tg.tg01","source":"lore","ord":7,"value":"§9"}
 {"quest_id":"quest.tg.tg01","source":"lore","ord":8,"value":"story/design/quests/40-factions.md §32"}
 {"quest_id":"quest.tg.tg02","source":"culture","ord":0,"value":"culture.faction.night-reed-chapter (value Skill and restraint; taboo Blackmail as a trade; norm Take from those who can bear it)"}
-{"quest_id":"quest.tg.tg02","source":"lore","ord":0,"value":"story/lore/lilmoth.md (merchant city; stilts; Pusbottom repopulated)"}
-{"quest_id":"quest.tg.tg02","source":"lore","ord":1,"value":"story/lore/topics/ecology-encounters-loot.md (ripper eels in the Lilmoth canals)"}
-{"quest_id":"quest.tg.tg02","source":"lore","ord":2,"value":"story/lore/topics/guilds-and-orders.md §3 (ripper eels; the Chapter)"}
-{"quest_id":"quest.tg.tg02","source":"lore","ord":3,"value":"story/lore/topics/material-culture.md (bone-workers"}
-{"quest_id":"quest.tg.tg02","source":"lore","ord":4,"value":"figurines"}
-{"quest_id":"quest.tg.tg02","source":"lore","ord":5,"value":"Neesak of Scrying"}
-{"quest_id":"quest.tg.tg02","source":"lore","ord":6,"value":"silver"}
-{"quest_id":"quest.tg.tg02","source":"lore","ord":7,"value":"glass)"}
-{"quest_id":"quest.tg.tg02","source":"lore","ord":8,"value":"story/design/province-vibe.md §5"}
-{"quest_id":"quest.tg.tg02","source":"lore","ord":9,"value":"§9"}
-{"quest_id":"quest.bc.bc01","source":"lore","ord":8,"value":"story/lore/topics/hist-and-sap.md (the tree and home)"}
-{"quest_id":"quest.bc.bc02","source":"lore","ord":1,"value":"story/lore/topics/labour-and-bondage.md §3 (the Rose's own hierarchy; newcomers owe the prison-born)"}
-{"quest_id":"quest.bc.bc02","source":"lore","ord":2,"value":"story/lore/blackrose.md"}
-{"quest_id":"quest.bc.bc02","source":"lore","ord":3,"value":"story/lore/extrapolation/gap-register.md §8 QA4, QA20"}
-{"quest_id":"quest.bc.bc02","source":"lore","ord":4,"value":"story/design/province-vibe.md §5"}
-{"quest_id":"quest.bc.bc02","source":"lore","ord":5,"value":"§9"}
-{"quest_id":"quest.bc.bc02","source":"lore","ord":6,"value":"story/design/quests/40-factions.md §39 (the Rose's fire-damaged registers; the Rose implicated"}
-{"quest_id":"quest.bc.bc02","source":"lore","ord":7,"value":"not the villain)"}
-{"quest_id":"quest.bc.bc03","source":"lore","ord":7,"value":"story/design/quests/36-cast-roster.md §56 (the Chainbreakers' desks)"}
+{"quest_id":"quest.tg.tg02","source":"lore","ord":0,"value":"story/lore/lilmoth.md (merchant city; stilts and canals; Pusbottom repopulated)"}
+{"quest_id":"quest.tg.tg02","source":"lore","ord":1,"value":"story/lore/topics/guilds-and-orders.md §3 (the Chapter)"}
+{"quest_id":"quest.tg.tg02","source":"lore","ord":2,"value":"story/lore/topics/material-culture.md (bone-workers"}
+{"quest_id":"quest.tg.tg02","source":"lore","ord":3,"value":"figurines"}
+{"quest_id":"quest.tg.tg02","source":"lore","ord":4,"value":"Neesak of Scrying"}
+{"quest_id":"quest.tg.tg02","source":"lore","ord":5,"value":"silver"}
+{"quest_id":"quest.tg.tg02","source":"lore","ord":6,"value":"glass)"}
+{"quest_id":"quest.tg.tg02","source":"lore","ord":7,"value":"story/design/province-vibe.md §5"}
+{"quest_id":"quest.tg.tg02","source":"lore","ord":8,"value":"§9"}

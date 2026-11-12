@@ -1,14 +1,14 @@
+{"quest":"quest.bc.bc02","target":"0AFE4F:Black Marsh.esm","what":"the stone house 1307CF (01Swamphousestone, navmesh 0ACC91, one room) as the heirs' outer post; Tsaxi stands at its west side"}
 {"quest":"quest.local.lq25","target":"0D7723:Black Marsh.esm","what":"the dive under the landing pier to the pilings, where the crocodile lairs, is deep enough to swim: measured at build"}
 {"quest":"quest.local.lq30","target":"08D5E9:Black Marsh North.esp","what":"Helstrom's soldier at the gate who will not follow"}
 {"quest":"quest.local.lq30","target":"0D7883:Black Marsh.esm","what":"the basin east of the gate along the cut reeds is swimmable and its Heart-Mud lies where the trail runs: measured at build"}
+{"quest":"quest.main.mq01","target":"082193:Black Marsh North.esp","what":"the map marker Lilmoth Dock, the name the map gives the place above the house"}
+{"quest":"quest.main.mq01","target":"0F9178:Black Marsh.esm","what":"the ship interior at Lilmoth's dock as the barge's hold, with its one door to the deck and the plank"}
+{"quest":"quest.main.mq01","target":"0FE7F7:Black Marsh.esm","what":"the House interior (01CabinIntsining1) as Salts-The-Catch's house, door 0FE95A"}
+{"quest":"quest.main.mq03","target":"0F9178:Black Marsh.esm","what":"the barge's hold, where the sack stands"}
+{"quest":"quest.main.mq03","target":"0FE7F7:Black Marsh.esm","what":"Salts-The-Catch's house, where Nesh-Deeka stands"}
 {"quest":"quest.main.mq05","target":"0AA665:Black Marsh.esm","what":"the coast ship's door at Lilmoth (7,-1) and its door to Helstrom's landing (-10,12)"}
 {"quest":"quest.main.mq05","target":"166381:Black Marsh.esm","what":"the cell on the way that holds the wasps, from we.mq05.way's placement of BM&V's Giant Wasp: measured at build"}
 {"quest":"quest.main.mq05","target":"166BBE:Black Marsh North.esp","what":"One Who Has Fire Hands, selling in the hall's outer room"}
 {"quest":"quest.main.mq05","target":"166BBF:Black Marsh North.esp","what":"the weapons dealer in the hall's outer room"}
-{"quest":"quest.tg.tg02","target":"005A0B:Black Marsh.esm","what":"the water depth of the Pusbottom canal at the fallen house, checked at build: deep enough to dive"}
-{"quest":"quest.main.mq01","target":"0F9178:Black Marsh.esm","what":"the ship interior at Lilmoth's dock as the barge's hold, with its one door to the deck and the plank"}
-{"quest":"quest.main.mq01","target":"0FE7F7:Black Marsh.esm","what":"the House interior (01CabinIntsining1) as Salts-The-Catch's house, door 0FE95A"}
-{"quest":"quest.main.mq01","target":"082193:Black Marsh North.esp","what":"the map marker Lilmoth Dock, the name the map gives the place above the house"}
-{"quest":"quest.main.mq03","target":"0F9178:Black Marsh.esm","what":"the barge's hold, where the sack stands"}
-{"quest":"quest.main.mq03","target":"0FE7F7:Black Marsh.esm","what":"Salts-The-Catch's house, where Nesh-Deeka stands"}
-{"quest":"quest.bc.bc02","target":"0AFE4F:Black Marsh.esm","what":"the stone house 1307CF (01Swamphousestone, navmesh 0ACC91, one room) as the heirs' outer post; Tsaxi stands at its west side"}
+{"quest":"quest.tg.tg02","target":"0059FB:Black Marsh.esm","what":"the deep water north of Pusbottom by the trapdoor: deep enough to dive, the floor about -700"}

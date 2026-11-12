@@ -10,6 +10,6 @@
 {"quest_id":"quest.mr.mr01","cast_ord":0,"ord":0,"at_stage":50,"fact":"fact.mr01.breach","to":"knows"}
 {"quest_id":"quest.mr.mr01","cast_ord":1,"ord":0,"at_stage":40,"fact":"fact.mr01.founders-stakes","to":"knows"}
 {"quest_id":"quest.mr.mr01","cast_ord":2,"ord":0,"at_stage":50,"fact":"fact.mr01.breach","to":"knows"}
-{"quest_id":"quest.tg.tg02","cast_ord":1,"ord":0,"at_stage":40,"fact":"fact.tg02.figurine-old","to":"knows"}
-{"quest_id":"quest.tg.tg02","cast_ord":2,"ord":0,"at_stage":40,"fact":"fact.tg02.charm-remounted","to":"knows"}
-{"quest_id":"quest.tg.tg02","cast_ord":3,"ord":0,"at_stage":40,"fact":"fact.tg02.beads-kothringi","to":"knows"}
+{"quest_id":"quest.tg.tg02","cast_ord":1,"ord":0,"at_stage":30,"fact":"fact.tg02.figurine-old","to":"knows"}
+{"quest_id":"quest.tg.tg02","cast_ord":2,"ord":0,"at_stage":30,"fact":"fact.tg02.charm-remounted","to":"knows"}
+{"quest_id":"quest.tg.tg02","cast_ord":3,"ord":0,"at_stage":30,"fact":"fact.tg02.beads-kothringi","to":"knows"}

@@ -22,6 +22,9 @@
 {"quest_id":"quest.mr.mr01","stages_ord":2,"ord":1,"id":"a-swarm"}
 {"quest_id":"quest.mr.mr01","stages_ord":4,"ord":0,"id":"a-evidence"}
 {"quest_id":"quest.mr.mr01","stages_ord":4,"ord":1,"id":"a-bargain"}
-{"quest_id":"quest.tg.tg01","stages_ord":0,"ord":0,"id":"a-friend"}
-{"quest_id":"quest.tg.tg01","stages_ord":1,"ord":0,"id":"a-sleep"}
-{"quest_id":"quest.tg.tg01","stages_ord":1,"ord":1,"id":"a-talk"}
+{"quest_id":"quest.tg.tg01","stages_ord":2,"ord":0,"id":"a-box"}
+{"quest_id":"quest.tg.tg01","stages_ord":2,"ord":1,"id":"a-talk"}
+{"quest_id":"quest.tg.tg02","stages_ord":3,"ord":0,"id":"a-sell"}
+{"quest_id":"quest.tg.tg02","stages_ord":4,"ord":0,"id":"a-full"}
+{"quest_id":"quest.tg.tg02","stages_ord":5,"ord":0,"id":"a-full"}
+{"quest_id":"quest.tg.tg02","stages_ord":6,"ord":0,"id":"a-full"}

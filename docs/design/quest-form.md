@@ -81,7 +81,7 @@ hint.
 | `startWhen` another quest's stage; or no `startWhen` and another quest's `setStage` of it | `{by: quest_stage}` |
 | no `startWhen`, a `start`, nothing that starts it | `{by: game, stage: start}` |
 | stage `journalText`, `hidden`, `ending`; its `onEnter` and its ending's `world` and `rewards` | stage `journal`, `shown`, `ending`, `results` |
-| objective `objectiveText`, `target`; the stage's successors | objective `text`, `targets`, `shown_at`, `completed_at` |
+| objective `objectiveText`, `target` (one ref, or several separated by commas); the stage's successors | objective `text`, `targets`, `shown_at`, `completed_at` |
 | successor or fail-forward `topicHeardFrom` (with gates under `all`) | a line at that stage that sets the stage |
 | `hasItem`; `not npcAlive`; `questStage`/`stageEverReached`; a `flag` a `thing_hook` sets | take, death, quest-stage, use trigger |
 | `not npcAlive` to a failed ending | a who-must-live row (`main_message` for the main and faction groups) |

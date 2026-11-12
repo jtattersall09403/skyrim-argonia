@@ -228,14 +228,6 @@
    "placement",
    "start"
   ],
-  "quest.tg.tg01": [
-   "inZone",
-   "placement"
-  ],
-  "quest.tg.tg02": [
-   "all",
-   "placement"
-  ],
   "quest.tg.tg04": [
    "objective target",
    "objective text",

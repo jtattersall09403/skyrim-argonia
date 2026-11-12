@@ -137,3 +137,13 @@ def test_compiles_a_record_once_its_people_are_placed():
     assert refused == [] and form is not None
     assert validate.errors(form) == []
     assert form["quest"]["editor_id"] == "ARG_LQ25"
+
+
+def test_an_objective_may_name_several_targets():
+    from tools.argonia_world import db
+    w = db.load()
+    c = qc.Compiler(w, "quest.local.lq25")
+    st = next(s for s in c.rec["stages"] if s.get("objectives"))
+    st["objectives"][0]["target"] = "npc.a, thing.b"
+    form = c.compile()
+    assert form is None and {"npc.a", "thing.b"} <= set(c.used_refs)

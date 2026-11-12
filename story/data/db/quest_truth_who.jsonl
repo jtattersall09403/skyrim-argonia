@@ -6,6 +6,7 @@
 {"quest_id":"quest.bc.bc02","truth_ord":1,"ord":1,"value":"npc.imperial-penal-south.blackrose.held-killer"}
 {"quest_id":"quest.bc.bc02","truth_ord":1,"ord":2,"value":"npc.imperial-penal-south.blackrose.held-mother"}
 {"quest_id":"quest.bc.bc02","truth_ord":2,"ord":0,"value":"npc.imperial-penal-south.blackrose.post-gatekeeper"}
+{"quest_id":"quest.bc.bc02","truth_ord":3,"ord":0,"value":"npc.imperial-penal-south.blackrose.chainbreaker-patron"}
 {"quest_id":"quest.bc.bc03","truth_ord":0,"ord":0,"value":"npc.imperial-penal-south.blackrose-prison.chainbreaker-envoy-camped-causeway"}
 {"quest_id":"quest.bc.bc03","truth_ord":1,"ord":0,"value":"npc.mercantile-coast.soulrest.crew-boss"}
 {"quest_id":"quest.local.lf83","truth_ord":0,"ord":0,"value":"npc.imperial-fringe.claywater-station.landing-s-poler"}
@@ -85,4 +86,3 @@
 {"quest_id":"quest.tg.tg02","truth_ord":2,"ord":0,"value":"npc.mercantile-coast.lilmoth.tg02-clutch-client"}
 {"quest_id":"quest.tg.tg02","truth_ord":2,"ord":1,"value":"npc.mercantile-coast.lilmoth.tg02-charm-client"}
 {"quest_id":"quest.tg.tg02","truth_ord":2,"ord":2,"value":"npc.mercantile-coast.lilmoth.tg02-beads-client"}
-{"quest_id":"quest.bc.bc02","truth_ord":3,"ord":0,"value":"npc.imperial-penal-south.blackrose.chainbreaker-patron"}

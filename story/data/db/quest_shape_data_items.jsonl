@@ -81,29 +81,29 @@
 {"quest_id":"quest.mr.mr01","section":"ladder","ord":1,"value":"from stage 20: the spring tastes of salt"}
 {"quest_id":"quest.mr.mr01","section":"ladder","ord":2,"value":"from stage 40: the sap stops at the naming bowl"}
 {"quest_id":"quest.tg.tg01","section":"leverage","ord":0,"value":"he is a coward and runs from a fight"}
-{"quest_id":"quest.tg.tg01","section":"leverage","ord":1,"value":"his friend does not think much of him"}
-{"quest_id":"quest.tg.tg01","section":"leverage","ord":2,"value":"a few coins buy what he cannot sell yet"}
+{"quest_id":"quest.tg.tg01","section":"leverage","ord":1,"value":"he has no buyer for it yet"}
+{"quest_id":"quest.tg.tg01","section":"leverage","ord":2,"value":"sixty gold buys it"}
 {"quest_id":"quest.tg.tg01","section":"objections","ord":0,"value":"he says it was left lying"}
 {"quest_id":"quest.tg.tg01","section":"objections","ord":1,"value":"he says he has a buyer"}
-{"quest_id":"quest.tg.tg01","section":"planTexts","ord":0,"value":"lift it off him on the dock by day"}
-{"quest_id":"quest.tg.tg01","section":"planTexts","ord":1,"value":"lift it off him while he sleeps"}
-{"quest_id":"quest.tg.tg01","section":"planTexts","ord":2,"value":"talk or buy it off him at the bench by the water"}
-{"quest_id":"quest.tg.tg01","section":"routes","ord":0,"value":"Pickpocket on the dock by day"}
-{"quest_id":"quest.tg.tg01","section":"routes","ord":1,"value":"Pickpocket while he sleeps at night"}
-{"quest_id":"quest.tg.tg01","section":"routes","ord":2,"value":"Speechcraft or gold at the bench by the water"}
+{"quest_id":"quest.tg.tg01","section":"planTexts","ord":0,"value":"pick the strongbox's lock while he stands on the dock"}
+{"quest_id":"quest.tg.tg01","section":"planTexts","ord":1,"value":"talk him into handing over his key"}
+{"quest_id":"quest.tg.tg01","section":"planTexts","ord":2,"value":"buy his key for sixty gold"}
+{"quest_id":"quest.tg.tg01","section":"routes","ord":0,"value":"Lockpicking on his strongbox (Novice, three picks from Tilts-The-Jug)"}
+{"quest_id":"quest.tg.tg01","section":"routes","ord":1,"value":"Speech 35 with him for his key"}
+{"quest_id":"quest.tg.tg01","section":"routes","ord":2,"value":"60 gold to him for his key"}
 {"quest_id":"quest.tg.tg01","section":"sides","ord":0,"value":"Keeps-What-Floats"}
 {"quest_id":"quest.tg.tg01","section":"sides","ord":1,"value":"who wants to keep it"}
 {"quest_id":"quest.tg.tg01","section":"sides","ord":2,"value":"and the player"}
 {"quest_id":"quest.tg.tg01","section":"sides","ord":3,"value":"who wants it back"}
-{"quest_id":"quest.tg.tg01","section":"sources","ord":0,"value":"Tilts-The-Jug names the thief and the necklace"}
-{"quest_id":"quest.tg.tg01","section":"sources","ord":1,"value":"Sits-By-The-Water tells where he sleeps"}
-{"quest_id":"quest.tg.tg01","section":"sources","ord":2,"value":"following his round shows it"}
+{"quest_id":"quest.tg.tg01","section":"sources","ord":0,"value":"Tilts-The-Jug names the thief"}
+{"quest_id":"quest.tg.tg01","section":"sources","ord":1,"value":"the necklace and the strongbox"}
+{"quest_id":"quest.tg.tg01","section":"sources","ord":2,"value":"Sits-By-The-Water tells he runs from a fight and would sell it"}
 {"quest_id":"quest.tg.tg02","section":"planTexts","ord":0,"value":"dive to the floor of the deep water"}
-{"quest_id":"quest.tg.tg02","section":"planTexts","ord":1,"value":"slip past the eels"}
-{"quest_id":"quest.tg.tg02","section":"planTexts","ord":2,"value":"open the box where it lies"}
-{"quest_id":"quest.tg.tg02","section":"planTexts","ord":3,"value":"swim out"}
-{"quest_id":"quest.tg.tg02","section":"routes","ord":0,"value":"Swimming to the floor of the deep water"}
-{"quest_id":"quest.tg.tg02","section":"routes","ord":1,"value":"Sneak and timing past the eels"}
-{"quest_id":"quest.tg.tg02","section":"routes","ord":2,"value":"Lockpicking on the box; fighting the eels is open to any build"}
+{"quest_id":"quest.tg.tg02","section":"planTexts","ord":1,"value":"open the box where it lies"}
+{"quest_id":"quest.tg.tg02","section":"planTexts","ord":2,"value":"swim out"}
+{"quest_id":"quest.tg.tg02","section":"planTexts","ord":3,"value":"settle the pledges on the bank"}
+{"quest_id":"quest.tg.tg02","section":"routes","ord":0,"value":"Lockpicking on the box"}
+{"quest_id":"quest.tg.tg02","section":"routes","ord":1,"value":"Speech 30 to sell the pledges at full price, or haggled down without it"}
+{"quest_id":"quest.tg.tg02","section":"routes","ord":2,"value":"no skill to hand all three to one client"}
 {"quest_id":"quest.tg.tg02","section":"sources","ord":0,"value":"Bent-Spine names the box and where it lies"}
 {"quest_id":"quest.tg.tg02","section":"sources","ord":1,"value":"the three clients each claim one thing in it"}

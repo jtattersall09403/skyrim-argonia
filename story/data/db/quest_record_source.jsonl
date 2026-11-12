@@ -1,7 +1,13 @@
+{"quest_id":"quest.bc.bc01","source":"bmv","value":"bmv_cell 15635D:Black Marsh.esm (House; door 15643F inside, 15647F outside); 095465:Black Marsh.esm (the channel bank, navmesh, the old build's snapped spots)"}
+{"quest_id":"quest.bc.bc01","source":"ledger","value":"we.bc01.never-sold, we.bc01.estate"}
 {"quest_id":"quest.bc.bc01","source":"lore"}
 {"quest_id":"quest.bc.bc01","source":"roster","value":"story/design/quests/36-cast-roster.md §56 (Blackrose Chainbreakers; Never-Sold)"}
+{"quest_id":"quest.bc.bc02","source":"bmv","value":"bmv_cell 15635D:Black Marsh.esm (House; door 15643F inside); bmv_shell row 1307CF (01Swamphousestone, class A, in cell 0AFE4F:Black Marsh.esm, navmesh inside joined to the shore)"}
+{"quest_id":"quest.bc.bc02","source":"ledger","value":"we.bc02.people"}
 {"quest_id":"quest.bc.bc02","source":"lore"}
 {"quest_id":"quest.bc.bc02","source":"roster","value":"story/design/quests/36-cast-roster.md §56 (Blackrose Chainbreakers; Never-Sold)"}
+{"quest_id":"quest.bc.bc03","source":"bmv","value":"bmv_cell 02F35A:Black Marsh.esm (Dock2, navmesh); bmv_shell 03457C:Black Marsh.esm (DLC2RRDock01, the dock); map marker 082194:Black Marsh North.esp (Docks); bmv_cell 15635D:Black Marsh.esm (House)"}
+{"quest_id":"quest.bc.bc03","source":"ledger","value":"we.bc03.people"}
 {"quest_id":"quest.bc.bc03","source":"lore"}
 {"quest_id":"quest.bc.bc03","source":"roster","value":"story/design/quests/36-cast-roster.md §56 (Blackrose Chainbreakers; Ussa-Rekh)"}
 {"quest_id":"quest.local.lf83","source":"cultureSheets"}
@@ -42,19 +48,11 @@
 {"quest_id":"quest.mr.mr01","source":"placeFacts","value":"world/sources/placement/facts/place.hist-heartland.greenspring.json"}
 {"quest_id":"quest.mr.mr01","source":"roster","value":"docs/design/quests/36-cast-roster.md §56 (The Many-Root Conclave)"}
 {"quest_id":"quest.mr.mr01","source":"stance","value":"world/sources/dialogue/stance/greenspring.json"}
-{"quest_id":"quest.tg.tg01","source":"bmv","value":"bmv_cell 0E96A9:Black Marsh.esm (the house), 16BF81:Black Marsh North.esp (the Chapter), 005A0B:Black Marsh.esm (Pusbottom); doors 120E93/0E971F (the house), 039827/0AA6C9 (Soulrest to the ship), 0AA837/0AA664 (the ship to Lilmoth's stop), 16BF7F/16C05B (the trapdoor); map marker 082193:Black Marsh North.esp (Lilmoth Dock)"}
+{"quest_id":"quest.tg.tg01","source":"bmv","value":"bmv_cell 0E96A9:Black Marsh.esm (the house), 02F364:Black Marsh.esm (Soulrest's dock), 16BF81:Black Marsh North.esp (the Chapter), 0059FB:Black Marsh.esm (the trapdoor's cell, north of Pusbottom); doors 120E93/0E971F (the house), 039827/0AA6C9 (Soulrest to the ship), 0AA837/0AA664 (the ship to Lilmoth's dock), 16BF7F/16C05B (the trapdoor)"}
 {"quest_id":"quest.tg.tg01","source":"culture"}
-{"quest_id":"quest.tg.tg01","source":"ledger","value":"we.tg01.fence, we.tg01.trader, we.tg01.thief, we.tg01.dock, we.tg01.round, we.tg01.doors, we.tg01.trapdoor, we.tg01.chapter, we.tg01.pusbottom, we.name.soulrest, we.clean.dock2, we.clean.lilmoth"}
 {"quest_id":"quest.tg.tg01","source":"lore"}
 {"quest_id":"quest.tg.tg01","source":"roster","value":"story/design/quests/36-cast-roster.md §56 (Tilts-The-Jug, the Soulrest desk)"}
-{"quest_id":"quest.tg.tg02","source":"bmv","value":"bmv_cell 16BF81:Black Marsh North.esp (the Chapter), the deep water north of Pusbottom (cell 5,0; its south bank's navmesh 07EDF2); doors 16C05B/16BF7F (the trapdoor); Slaughterfish 023AB8:Skyrim.esm (the eels)"}
+{"quest_id":"quest.tg.tg02","source":"bmv","value":"bmv_cell 16BF81:Black Marsh North.esp (the Chapter), 0059FB:Black Marsh.esm (the deep water north of Pusbottom and its south bank); doors 16C05B/16BF7F (the trapdoor)"}
 {"quest_id":"quest.tg.tg02","source":"culture"}
-{"quest_id":"quest.tg.tg02","source":"ledger","value":"we.tg01.chapter, we.tg02.house, we.tg02.clients, we.tg02.eels, we.clean.lilmoth"}
 {"quest_id":"quest.tg.tg02","source":"lore"}
 {"quest_id":"quest.tg.tg02","source":"roster","value":"story/design/quests/36-cast-roster.md §56 (the Lilmoth desk); npc row Bent-Spine (the Chapter's fence)"}
-{"quest_id":"quest.bc.bc01","source":"bmv","value":"bmv_cell 15635D:Black Marsh.esm (House; door 15643F inside, 15647F outside); 095465:Black Marsh.esm (the channel bank, navmesh, the old build's snapped spots)"}
-{"quest_id":"quest.bc.bc01","source":"ledger","value":"we.bc01.never-sold, we.bc01.estate"}
-{"quest_id":"quest.bc.bc02","source":"bmv","value":"bmv_cell 15635D:Black Marsh.esm (House; door 15643F inside); bmv_shell row 1307CF (01Swamphousestone, class A, in cell 0AFE4F:Black Marsh.esm, navmesh inside joined to the shore)"}
-{"quest_id":"quest.bc.bc02","source":"ledger","value":"we.bc02.people"}
-{"quest_id":"quest.bc.bc03","source":"bmv","value":"bmv_cell 02F35A:Black Marsh.esm (Dock2, navmesh); bmv_shell 03457C:Black Marsh.esm (DLC2RRDock01, the dock); map marker 082194:Black Marsh North.esp (Docks); bmv_cell 15635D:Black Marsh.esm (House)"}
-{"quest_id":"quest.bc.bc03","source":"ledger","value":"we.bc03.people"}
