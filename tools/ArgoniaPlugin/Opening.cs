@@ -18,7 +18,7 @@ static class Opening
 
     public static void Add(SkyrimMod mod, List<ISkyrimModGetter> mods, Worldspace world)
     {
-        var kit = new QuestKit(mod, mods, null, "ARG_Opening_");
+        var kit = new QuestKit(mod, mods, "ARG_Opening_");
         // The start marker, on the hold's main deck; the hold cell's location 'Dainty Sload' cleared.
         StartMarker = kit.Marker("StartMarker", kit.Snap(HoldNav, 2750, 3900, 7010));
         var hold = kit.Interior(HoldCell);

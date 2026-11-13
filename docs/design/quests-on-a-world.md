@@ -43,8 +43,12 @@ The work runs in this order; each part names the skill or tool that carries it.
   books, corpses, hostile placements, quests the world already has.
 - **Read the winner:** a record's live version is the last plugin in the load order that overrides it, never the
   master alone; every override copies the winner.
-- **Ground truth for placement:** a spot is usable for people only where the winning navmesh covers it, and for things
-  only on a modelled surface (the surface reader gives the mesh top). A cell with no navmesh hosts no people.
+- **Ground truth for placement:** a spot is usable for a person who walks or is fought only where the winning navmesh
+  covers it; a person who does neither may stand on a modelled floor with no navmesh (a house left without one, or the
+  deck a step from the door the player comes out of). A thing rests only on a modelled surface or the land (the surface
+  reader gives the mesh top; it does not read trees, so a thing never goes on a giant tree's roots, where the navmesh
+  stands over land the reader sees below). Every spot is measured (`plugin.sh inspect navnear`, `cellat`, `cellgrid`,
+  `surface`), never taken from a record's guess.
 - **The census is complete** when a miner and a critical reviewer agree nothing in the world is unrecorded that the
   quests could need.
 

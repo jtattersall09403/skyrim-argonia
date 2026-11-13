@@ -17,7 +17,8 @@
 #   plugin.sh seed [--refused-ok]  regenerate plugin/Argonia from shutdown.json, the load order's winners and the quest forms (every
 #                      quest record that fits, compiled fresh to out/questform, and tools/questform/blocktest); game data
 #                      needed: $ARGONIA_GAME_ROOT/Data or ~/games/skyrimse/Data, the staged profile ~/.argonia/stack/MO2;
-#                      --refused-ok leaves each form the builder refuses out, lists it and seeds the rest
+#                      a form the builder refuses is left out and listed only when its quest is on $rewriting (quests being
+#                      rewritten whole), any other refusal fails the seed; --refused-ok leaves out every refused form
 set -euo pipefail
 repo=$(cd "$(dirname "$0")/../.." && pwd); cd "$repo"
 export DOTNET_ROOT="$HOME/.dotnet" PATH="$HOME/.dotnet:$PATH" DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_NOLOGO=1
@@ -25,6 +26,7 @@ spriggit=("$HOME/.argonia/spriggit/0.41.0/Spriggit.CLI")  # pinned in infra/buil
 spr=(-p Spriggit.Yaml -v 0.41.0)
 yaml=plugin/Argonia; esp=out/Argonia.esp; bin=out/tools/ArgoniaPlugin
 py=$(ls "$HOME/.argonia/venv/bin/python" 2>/dev/null || echo python3)
+rewriting=quest.bc.bc01,quest.bc.bc02,quest.bc.bc03  # quests being rewritten whole (the Chainbreakers, 2026-11-13): the seed may leave these out
 forms() { rm -rf out/questform; "$py" -m tools.questform compile --all --out out/questform --owed-ok >/dev/null; }  # every record that fits
 tool() { mkdir -p "$HOME/.argonia"; flock -o "$HOME/.argonia/dotnet-build.lock" dotnet build -c Release -o "$bin" tools/ArgoniaPlugin >/dev/null && dotnet "$bin/ArgoniaPlugin.dll" "$@"; }
 build() {
@@ -74,7 +76,7 @@ case "${1:-}" in
   seed)
     forms; loadorder
     tmp=$(mktemp -d); trap 'rm -rf "$tmp"' EXIT
-    [ "${2:-}" = --refused-ok ] && export QUESTFORM_REFUSED_OK=1
+    export QUESTFORM_REFUSED_OK="$rewriting"; [ "${2:-}" = --refused-ok ] && export QUESTFORM_REFUSED_OK=1
     tool seed "$tmp/Argonia.esp" "${lo[@]}"
     "${spriggit[@]}" serialize -i "$tmp/Argonia.esp" -o "$tmp/y" -g SkyrimSE "${spr[@]}" >/dev/null
     rm -rf "$yaml"; mkdir -p plugin; mv "$tmp/y" "$yaml"; echo "seeded $yaml" ;;

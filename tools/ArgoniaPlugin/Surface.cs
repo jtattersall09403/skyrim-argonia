@@ -286,7 +286,7 @@ static class Surface
     public static float? On(List<Hit> hits, string what, float lift) =>
         hits.FirstOrDefault(h => (h.EditorId ?? "").Contains(what, StringComparison.OrdinalIgnoreCase) || h.Model.Contains(what, StringComparison.OrdinalIgnoreCase)) is { } h ? MathF.Round(h.Top + lift) : null;
 
-    static IEnumerable<float> NavZ(List<INavigationMeshGetter> navs, float x, float y)
+    internal static IEnumerable<float> NavZ(List<INavigationMeshGetter> navs, float x, float y)
     {
         foreach (var n in navs)
         {

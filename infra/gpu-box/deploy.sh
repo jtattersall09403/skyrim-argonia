@@ -10,9 +10,11 @@ for a in "$@"; do case "$a" in --no-papyrus) papyrus=0 ;; *) sed -n '2,6p' "$0";
 run="$here/run.sh"; t0=$SECONDS
 step() { local s=$SECONDS; echo "== $1"; shift; "$@"; echo "== $(( SECONDS - s )) s"; }
 [ $papyrus = 1 ] && step "papyrus" "$here/records_jobs.sh" papyrus
-plugins=(out/*.esm out/*.esp out/Argonia.ini); pex=(out/gpu/papyrus/*.pex)
+plugins=(out/*.esm out/*.esp out/Argonia.ini)
 plugins=($(printf '%s\n' "${plugins[@]}" | while read -r f; do [ -f "$f" ] && echo "$f"; done)) || true
-[ -f "${pex[0]:-}" ] || pex=()
+# only the compiled scripts whose source we still have (papyrus/ and papyrus/generated/, the scripts the plugin's records
+# name, as questcheck checks): a retired quest's .pex left in out/gpu/papyrus is never sent
+pex=(); for f in out/gpu/papyrus/*.pex; do s=$(basename "$f" .pex); { [ -f "papyrus/$s.psc" ] || [ -f "papyrus/generated/$s.psc" ]; } && pex+=("$f"); done
 [ ${#plugins[@]} -gt 0 ] || [ ${#pex[@]} -gt 0 ] || { echo "nothing to send: no out/*.esp|esm and no out/gpu/papyrus/*.pex" >&2; exit 1; }
 seq=(out/SEQ/*.seq); [ -f "${seq[0]:-}" ] || seq=()  # Seq.cs: the start-game quests a new game starts first
 key=$({ [ ${#plugins[@]} -gt 0 ] && sha256sum "${plugins[@]}"; [ ${#seq[@]} -gt 0 ] && sha256sum "${seq[@]}"; [ ${#pex[@]} -gt 0 ] && sha256sum "${pex[@]}"; true; } | sha256sum | cut -c1-12)

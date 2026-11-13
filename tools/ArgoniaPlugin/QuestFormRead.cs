@@ -348,14 +348,29 @@ static class QuestFormRead
                         (kindT, pre, sets) = ("death", ints["preReqStage"], ints["StageToSet"]); break;
                     case QuestForm.AliasScript:
                         Only("Op", "What", "Num");
-                        minorDeaths[an] = Death(Arrays(s.Properties, e), q.FormKey) ?? throw No($"{QuestForm.AliasScript} on {an} is no who-must-live death");
+                        var dr = Death(Arrays(s.Properties, e), q.FormKey) ?? throw No($"{QuestForm.AliasScript} on {an} is no who-must-live death");
+                        // a death trigger with an `until` (QuestForm.Triggers): its label names it
+                        if (dr.from is { } uf && dr.to is { } ut2 && trigLabels.FirstOrDefault(p => p[1] == "death" && p[2] == an && p.Length > 6 && p[3] == $"until={ut2 + 1}"
+                                && p[^3] == uf.ToString() && p[^2] == dr.fail.ToString()) is { } ul)
+                        {
+                            var tu = new JsonObject { ["id"] = ul[0], ["kind"] = "death", ["ref"] = an, ["prerequisite"] = uf, ["sets"] = dr.fail, ["until"] = ut2 + 1 };
+                            if (ul[^1] == "choice") tu["choice"] = true;
+                            triggers.Add(tu);
+                        }
+                        else minorDeaths[an] = dr;
                         continue;
                     default: throw No($"alias {an} carries {s.Name}, which no form says");
                 }
-                // a take script stands for every take of its thing to its stage from its prerequisite on (QuestForm.Triggers)
-                if (kindT == "take")
-                    foreach (var p in trigLabels.Where(p => p[1] == "take" && p[2] == an && p[^2] == sets.ToString() && int.Parse(p[^3]) > pre))
-                        triggers.Add(new JsonObject { ["id"] = p[0], ["kind"] = "take", ["ref"] = an, ["prerequisite"] = int.Parse(p[^3]), ["sets"] = sets });
+                // a take or death script stands for every take of its thing, or death of its person, to its stage from its
+                // prerequisite on (QuestForm.Triggers)
+                if (kindT is "take" or "death")
+                    foreach (var p in trigLabels.Where(p => p[1] == kindT && p[2] == an && p[^2] == sets.ToString() && int.Parse(p[^3]) > pre))
+                    {
+                        var tl = new JsonObject { ["id"] = p[0], ["kind"] = kindT, ["ref"] = an, ["prerequisite"] = int.Parse(p[^3]), ["sets"] = sets };
+                        if (p.Length > 6 && p[3].StartsWith("until=")) tl["until"] = int.Parse(p[3][6..]);
+                        if (p[^1] == "choice") tl["choice"] = true;
+                        triggers.Add(tl);
+                    }
                 var id = TrigId(kindT, an, pre, sets, out var choice);
                 var t = new JsonObject { ["id"] = id, ["kind"] = kindT, ["ref"] = an, ["prerequisite"] = pre, ["sets"] = sets };
                 if (choice) t["choice"] = true;

@@ -53,6 +53,7 @@ static class QuestForm
     }
     public sealed record Row(int Op, FormKey What, float Num);
     public const int MaxRows = 128;
+    public const int DoorStand = 150;    // a person placed by a load door stands within this many units of where the player comes out
     public const int GreetReach = 500;   // a speaks-first person greets a player within this many units   // a Papyrus array made by `new` holds 128; no vanilla property array exceeds 35
 
     public static readonly FormKey XMarker = FormKey.Factory("00003B:Skyrim.esm"), Player = FormKey.Factory("000014:Skyrim.esm"),
@@ -126,7 +127,6 @@ static class QuestForm
         public Dictionary<FormKey, (ICellGetter rec, ModKey from)>? CellWin;
         public List<P3Float> Stood = [];   // where the people placed on navmesh stand, so no two share a spot
         public Dictionary<string, (string Quest, string Same, FormKey Placed, FormKey Base, bool Npc, bool Created)> Shared = [];   // a load door: where the player comes out of it
-        public QuestKit? Kit;
         public FormKey Key(string name) => new(Mod.ModKey, Ids.Take(Kind, name));
         public string Q = ""; public Built? Cur;
         public Refused No(string rule, string what) => new(Q, rule, what);
@@ -141,7 +141,6 @@ static class QuestForm
         c.Placed = Survey.Winners<IPlacedGetter>(mods);
         c.Npcs = Survey.Winners<INpcGetter>(mods);
         Index(c);
-        c.Kit = new QuestKit(mod, mods);
         foreach (var (path, f) in forms)
         {
             var b = new Built { F = f, Qid = QuestIdOf(f), Edid = S(f.GetProperty("quest"), "editor_id"), Kind = S(f.GetProperty("quest"), "kind") };
@@ -731,13 +730,22 @@ static class QuestForm
             // outdoors the form's height is the ground's: the surface under the spot nearest it (a record gives no height)
             if (!nearDoor && !interior && Surfaces(c, cell, world, interior, p) is { Count: > 0 } ground)
                 p = new P3Float(p.X, p.Y, ground.MinBy(h => MathF.Abs(h.Top - p.Z))!.Top);
+            // by a load door with no navmesh at the player's level within DoorStand of the spot: on the surface there, so
+            // he stands a step from where the player comes out and need not walk to greet
+            if (nearDoor && NearestOn(c, Neighbours(c.Grid, cell, world, interior, p), p, 100, take: false) is not { dist: <= DoorStand })
+            {
+                var deck = Surfaces(c, cell, world, interior, p).Where(h => MathF.Abs(h.Top - p.Z) <= 100).MinBy(h => MathF.Abs(h.Top - p.Z))
+                    ?? throw c.No("placement", $"{r.Id}: no navmesh and no surface at the player's level within {DoorStand} of where the player comes out of {r.Door!.Value.door}");
+                r.Standing = true;
+                var at3 = new P3Float(MathF.Round(p.X), MathF.Round(p.Y), MathF.Ceiling(deck.Top) + 1);
+                Console.WriteLine($"questform {c.Q}: {r.Id} stands on {deck.EditorId ?? deck.Kind} at {at3.X:F0},{at3.Y:F0},{at3.Z:F0}, a step from where the player comes out of {r.Door!.Value.door}: no navmesh at that level within {DoorStand}");
+                return (interior ? cell : CellAt(c, world, at3), world, interior, at3);
+            }
             var on = NearestOn(c, Neighbours(c.Grid, cell, world, interior, p), p, nearDoor ? 100 : 200);
-            if (on is { } o && (o.dist <= 300 || nearDoor))
+            if (on is { } o && o.dist <= 300)
             {
                 // a unit over the navmesh, never under it
                 var at2 = new P3Float(MathF.Round(o.at.X), MathF.Round(o.at.Y), MathF.Ceiling(o.at.Z) + 1);
-                if (nearDoor && o.dist > 300)
-                    Console.WriteLine($"questform {c.Q}: {r.Id}: no navmesh within 300 of where the player comes out of {r.Door!.Value.door}; the nearest at that level is {o.dist:F0} units on, at {at2.X:F0},{at2.Y:F0},{at2.Z:F0}");
                 return (interior ? cell : CellAt(c, world, at2), world, interior, at2);
             }
             // no navmesh where the form puts a person: one who is not fought stands at the form's exact spot and will not
@@ -1127,17 +1135,26 @@ static class QuestForm
         if (r.A.PackageData.Count > 0) throw c.No("speaks-first", $"{r.Id} speaks first twice");
         // he walks up to the player: he stands on navmesh, and by a load door within the greeting's reach of where the player
         // comes out of it, with a walk over navmesh between
-        if (r.Standing) throw c.No("speaks-first", $"{r.Id} stands where there is no navmesh, so cannot walk up to the player");
+        // one standing where there is no navmesh greets only from a step from where the player comes out of a load door
+        if (r.Standing && r.Door == null) throw c.No("speaks-first", $"{r.Id} stands where there is no navmesh, so cannot walk up to the player");
         if (r.Fresh && r.Door is { } dr && c.Wheres.TryGetValue(r.Placed, out var wh))
         {
             var dist = MathF.Sqrt((wh.Pos.X - dr.arrival.X) * (wh.Pos.X - dr.arrival.X) + (wh.Pos.Y - dr.arrival.Y) * (wh.Pos.Y - dr.arrival.Y));
-            // the player's arrival on navmesh: then a walk must join it to him; with no navmesh there, he stands on the
-            // nearest navmesh at that level (Spot) and greets once the player has walked within reach
-            var arrivalOn = NearestOn(c, Neighbours(c.Grid, wh.Cell, wh.World, wh.Interior, dr.arrival), dr.arrival, 100, take: false) is { dist: <= 150 };
-            if (arrivalOn && !Walk(c, (wh.World, wh.Cell, wh.Interior), dr.arrival, wh.Pos)) throw c.No("speaks-first", $"{r.Id}: no walk over navmesh from where the player comes out of {dr.door} to his spot");
-            if (arrivalOn && dist > GreetReach) throw c.No("speaks-first", $"{r.Id} stands {dist:F0} units from where the player comes out of {dr.door}, beyond the greeting's {GreetReach}");
-            Console.WriteLine($"questform {c.Q}: {r.Id} speaks first from {wh.Pos.X:F0},{wh.Pos.Y:F0},{wh.Pos.Z:F0}, {dist:F0} units from where the player comes out of {dr.door} ({dr.arrival.X:F0},{dr.arrival.Y:F0},{dr.arrival.Z:F0}), facing it; "
-                + (arrivalOn ? "a walk over navmesh joins them" : $"no navmesh where the player comes out, so he greets once the player is within {GreetReach} of him"));
+            if (r.Standing)
+            {
+                if (dist > DoorStand) throw c.No("speaks-first", $"{r.Id} stands where there is no navmesh, {dist:F0} units from where the player comes out of {dr.door}, beyond {DoorStand}");
+                Console.WriteLine($"questform {c.Q}: {r.Id} speaks first from {wh.Pos.X:F0},{wh.Pos.Y:F0},{wh.Pos.Z:F0}, {dist:F0} units from where the player comes out of {dr.door} ({dr.arrival.X:F0},{dr.arrival.Y:F0},{dr.arrival.Z:F0}), facing it; no navmesh there, so he greets without walking");
+            }
+            else
+            {
+                // the player's arrival on navmesh: then a walk must join it to him; with no navmesh there, he stands on the
+                // nearest navmesh at that level (Spot) and greets once the player has walked within reach
+                var arrivalOn = NearestOn(c, Neighbours(c.Grid, wh.Cell, wh.World, wh.Interior, dr.arrival), dr.arrival, 100, take: false) is { dist: <= 150 };
+                if (arrivalOn && !Walk(c, (wh.World, wh.Cell, wh.Interior), dr.arrival, wh.Pos)) throw c.No("speaks-first", $"{r.Id}: no walk over navmesh from where the player comes out of {dr.door} to his spot");
+                if (arrivalOn && dist > GreetReach) throw c.No("speaks-first", $"{r.Id} stands {dist:F0} units from where the player comes out of {dr.door}, beyond the greeting's {GreetReach}");
+                Console.WriteLine($"questform {c.Q}: {r.Id} speaks first from {wh.Pos.X:F0},{wh.Pos.Y:F0},{wh.Pos.Z:F0}, {dist:F0} units from where the player comes out of {dr.door} ({dr.arrival.X:F0},{dr.arrival.Y:F0},{dr.arrival.Z:F0}), facing it; "
+                    + (arrivalOn ? "a walk over navmesh joins them" : $"no navmesh where the player comes out, so he greets once the player is within {GreetReach} of him"));
+            }
         }
         var src = c.Mods[0].Packages.FirstOrDefault(p => p.FormKey == ForceGreetCopy) ?? throw c.No("speaks-first", "vanilla MS05InductionForcegreet is not in the load order");
         var p = src.Duplicate(c.Key($"pack:{b.Qid}:{S(l, "id")}"));
@@ -1228,11 +1245,27 @@ static class QuestForm
                 continue;
             }
             var r = RefOf(c, b, S(t, "ref"), $"trigger {id}");
-            // takes of one thing that set one stage from several stages are one script, from the lowest of them (a later
-            // one is reached through it: the script's prerequisite is then done)
-            if (kind == "take" && A(b.F, "triggers").Any(o => S(o, "kind") == "take" && S(o, "ref") == r.Id && I(o, "sets") == sets && I(o, "prerequisite") < pre))
+            // takes of one thing, or deaths of one person, that set one stage from several stages are one script, from the
+            // lowest of them (a later one is reached through it: the script's prerequisite is then done)
+            int? until = t.TryGetProperty("until", out var ut) ? ut.GetInt32() : null;
+            if (until != null && kind != "death") throw c.No("trigger", $"{id}: only a death trigger has an `until`");
+            var untilLabel = until is { } u0 ? $"until={u0}|" : "";
+            if (kind is "take" or "death" && A(b.F, "triggers").Any(o => S(o, "kind") == kind && S(o, "ref") == r.Id && I(o, "sets") == sets && I(o, "prerequisite") < pre
+                && (o.TryGetProperty("until", out var ou) ? ou.GetInt32() : (int?)null) == until))
             {
-                b.Labels.Add($"trigger={id}|{kind}|{r.Id}|{pre}|{sets}|");
+                b.Labels.Add($"trigger={id}|{kind}|{r.Id}|{untilLabel}{pre}|{sets}|{(B(t, "choice") ? "choice" : "")}");
+                continue;
+            }
+            // a death with an `until`: it moves the quest only while the quest's stage is below that stage (ARG_AliasEffects:
+            // IfStageDone the prerequisite, IfStageAtMost until - 1, then the stage, set while the quest runs)
+            if (until is { } u)
+            {
+                if (!r.Npc) throw c.No("trigger", $"{id}: only a person dies");
+                if (u <= pre) throw c.No("trigger", $"{id}: its until {u} is not after its prerequisite {pre}");
+                var ue = new ScriptEntry { Name = AliasScript };
+                ue.Properties.AddRange(Arrays([new Row(Op.IfStageDone, b.Q.FormKey, pre), new Row(Op.IfStageAtMost, b.Q.FormKey, u - 1), new Row(Op.SetStageIfRunning, b.Q.FormKey, sets)]));
+                AddAliasScript(c, b, r, ue, id);
+                b.Labels.Add($"trigger={id}|{kind}|{r.Id}|{untilLabel}{pre}|{sets}|{(B(t, "choice") ? "choice" : "")}");
                 continue;
             }
             ScriptEntry s = kind switch
@@ -1370,7 +1403,10 @@ static class QuestForm
             stages.Add(s); from.Add(rows.Count); rows.AddRange(all); to.Add(rows.Count);
         }
         foreach (var s in b.From.Keys.Concat(b.Own.Keys).Concat(b.Tail.Keys)) if (!b.Q.Stages.Any(x => x.Index == s)) throw c.No("stages-exist", $"rows for stage {s}, which is not a stage");
-        if (rows.Count > MaxRows) throw c.No("result-limits", $"the stages hold {rows.Count} rows once built, over {MaxRows}");
+        // counted as rules.built_rows (the form's own rows) and check_set (with the rows other forms add) count them
+        var added = b.From.Values.Sum(l => l.Count);
+        if (rows.Count - added > MaxRows) throw c.No("result-limits", $"the stages hold {rows.Count - added} rows once built, over {MaxRows}");
+        if (rows.Count > MaxRows) throw c.No("result-limits", $"its stages hold {rows.Count} rows once built with the rows other forms add, over {MaxRows}");
         var script = new ScriptEntry { Name = StagesScript };
         script.Properties.AddRange(Arrays(rows));
         script.Properties.Add(new ScriptIntListProperty { Name = "Stages", Data = stages.ToExtendedList() });

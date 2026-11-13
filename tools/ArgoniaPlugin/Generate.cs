@@ -188,10 +188,12 @@ static class Generate
         opening.VirtualMachineAdapter = null;
         // Every quest with a quest form (QuestForm.cs): its form ids from the registry, so its place in this order moves none.
         // QUESTFORM_REFUSED_OK=1: a form the builder refuses is left out and listed (with every form that then fails for
-        // want of it), each found by a trial build on a copy of the plugin; otherwise the first refusal stops the seed.
+        // want of it), each found by a trial build on a copy of the plugin; QUESTFORM_REFUSED_OK=<quest,...>: the same, but
+        // the seed fails when a quest off that list is refused; unset, the first refusal stops the seed.
         var refused = new List<string>();
         var forms = all;
-        if (Environment.GetEnvironmentVariable("QUESTFORM_REFUSED_OK") == "1")
+        var refusedOk = Environment.GetEnvironmentVariable("QUESTFORM_REFUSED_OK");
+        if (!string.IsNullOrEmpty(refusedOk))
             for (var (kit, masters) = (QuestKit.Taken(), Overrides.Masters.ToList()); ; QuestKit.Taken(kit), Overrides.Masters.Clear(), Overrides.Masters.AddRange(masters))
             {
                 forms = [.. all.Where(f => !refused.Contains(QuestForm.QuestIdOf(f.form)))];
@@ -205,6 +207,8 @@ static class Generate
                 }
                 finally { Console.SetOut(outw); }
             }
+        if (refusedOk is { Length: > 0 } and not "1" && refused.Except(refusedOk.Split(',')).ToList() is { Count: > 0 } off)
+            throw new InvalidOperationException($"questform: refused and not on the list of quests being rewritten ({refusedOk}): {string.Join(", ", off)}");
         var ids = FormIds.Load(QuestForm.FormIdsPath);
         var built = QuestForm.Build(mod, mods, forms, ids);
         if (refused.Count > 0) Console.WriteLine($"questform: {refused.Count} quests refused, not built ({string.Join(", ", refused)})");

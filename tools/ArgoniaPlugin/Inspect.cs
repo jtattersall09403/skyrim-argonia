@@ -6,7 +6,13 @@ using Noggog;
 //   player   who overrides the Player NPC and the playable races, with outfit, skin and default items
 //   movt     every plugin's movement types and their speeds
 //   ref:<formkey>   a placed object's position in each plugin, and the objects near it there
-//   navnear:<x>:<y>:<r>   winning navmesh triangle centres within r units of x,y (worldspace cell grid shown)
+//   navnear:<x>:<y>:<z>[;...]   per spot, the winning navmeshes near it (NAVNEAR_IN=<text> keeps those whose world or cell
+//            names it), with the nearest triangle's centre and height
+//   near:<x>:<y>:<z>:<r>   every placed object and actor of the Black Marsh and Valenwood plugins within r of a spot
+//   items:<regex>   winning items (misc, armour, key, book, ingredient, potion) whose form key, editor id, name or model match
+//   cellrefs:<cell>, cellat:<cell>:<x>,<y>[;...], cellgrid:<cell>:<x>:<y>:<z>:<step>   an interior's references and
+//            navmeshes, the surfaces under points, a 13 x 13 map of the surface nearest z and the navmesh's height
+//   the rest are named at their branch below
 static class Inspect
 {
     public static void Run(string what, string[] paths)
@@ -100,22 +106,118 @@ static class Inspect
                 Console.WriteLine($"NAVSTAT {g.Key}: {g.Count()} navmeshes, {g.Count(w => w.Value.rec.Data?.EdgeLinks.Count > 0)} with edge links");
             return;
         }
-        if (what.StartsWith("navnear:"))  // navnear:<x>:<y>:<z>: the winning navmeshes with a triangle within 1500 of the spot (exterior), nearest first
+        if (what.StartsWith("navnear:"))  // navnear:<x>:<y>:<z>[;...]: per spot, the winning navmeshes with a triangle within 1500 of it and 1000 of its height, nearest first (the nearest triangle's centre and the navmesh's world or cell)
         {
-            var p = what[8..].Split(':').Select(float.Parse).ToArray();
-            var near = new List<(float d, float z, FormKey m, int tris)>();
-            foreach (var (k, (nv, _)) in Survey.Winners<INavigationMeshGetter>(mods))
+            var navs = Survey.Winners<INavigationMeshGetter>(mods);
+            foreach (var spot in what[8..].Split(';'))
             {
-                if (nv.Data is not { } d || d.Triangles.Count == 0) continue;
-                var v = d.Vertices; var best = (dist: float.MaxValue, z: 0f);
-                foreach (var t in d.Triangles)
+                var p = spot.Split(':').Select(float.Parse).ToArray();
+                var near = new List<(float d, float x, float y, float z, FormKey m, string parent)>();
+                foreach (var (k, (nv, _)) in navs)
                 {
-                    var r = PlaceCheck.Nearest2D(v[t.Vertices.X], v[t.Vertices.Y], v[t.Vertices.Z], p[0], p[1]);
-                    if (MathF.Abs(r.z - p[2]) < 1000 && r.dist < best.dist) best = r;
+                    if (nv.Data is not { } d || d.Triangles.Count == 0) continue;
+                    var v = d.Vertices; var best = (dist: float.MaxValue, z: 0f, x: 0f, y: 0f);
+                    foreach (var t in d.Triangles)
+                    {
+                        P3Float va = v[t.Vertices.X], vb = v[t.Vertices.Y], vc = v[t.Vertices.Z];
+                        var r = PlaceCheck.Nearest2D(va, vb, vc, p[0], p[1]);
+                        if (MathF.Abs(r.z - p[2]) < 1000 && r.dist < best.dist) best = (r.dist, r.z, (va.X + vb.X + vc.X) / 3, (va.Y + vb.Y + vc.Y) / 3);
+                    }
+                    var parent = d.Parent switch { IWorldspaceNavmeshParentGetter w => $"world {w.Parent.FormKey} {w.Coordinates.X},{w.Coordinates.Y}", ICellNavmeshParentGetter cp => $"cell {cp.Parent.FormKey}", _ => "?" };
+                    if (best.dist < 1500 && (Environment.GetEnvironmentVariable("NAVNEAR_IN") is not { } only || parent.Contains(only))) near.Add((best.dist, best.x, best.y, best.z, k, parent));
                 }
-                if (best.dist < 1500) near.Add((best.dist, best.z, k, d.Triangles.Count));
+                Console.WriteLine($"{spot}:");
+                foreach (var n in near.OrderBy(n => n.d).Take(6)) Console.WriteLine($"  NAVNEAR {n.m}: {n.d:F0} off, z {n.z:F0}, triangle centre {n.x:F0},{n.y:F0}, {n.parent}");
             }
-            foreach (var n in near.OrderBy(n => n.d)) Console.WriteLine($"NAVNEAR {n.m}: {n.d:F0} off, z {n.z:F0}, {n.tris} triangles");
+            return;
+        }
+        if (what.StartsWith("cellrefs:"))  // cellrefs:<interior cell>: its placed references (base, position) and its navmeshes' extent
+        {
+            var ck = FormKey.Factory(what[9..]);
+            var bases = mods.SelectMany(m => m.EnumerateMajorRecords()).Where(r => r is not IPlacedGetter && r.EditorID != null).GroupBy(r => r.FormKey).ToDictionary(g => g.Key, g => g.Last().EditorID);
+            var cells = mods.SelectMany(m => m.Cells.Records.SelectMany(b => b.SubBlocks).SelectMany(s => s.Cells)).Where(x => x.FormKey == ck).ToList();
+            foreach (var r in cells.SelectMany(x => x.Persistent.Concat(x.Temporary)).GroupBy(r => r.FormKey).Select(g => g.Last()))
+            {
+                var (bk, pos) = r switch { IPlacedObjectGetter o => (o.Base.FormKey, o.Placement?.Position), IPlacedNpcGetter n => (n.Base.FormKey, n.Placement?.Position), _ => (FormKey.Null, null) };
+                Console.WriteLine($"CELLREF {r.FormKey} {bases.GetValueOrDefault(bk) ?? bk.ToString()} pos={pos}");
+            }
+            var navs = Survey.Winners<INavigationMeshGetter>(mods);
+            foreach (var nk in cells.SelectMany(x => x.NavigationMeshes.Select(n => n.FormKey)).Distinct())
+                if (navs.TryGetValue(nk, out var nv) && nv.rec.Data is { } d && d.Vertices.Count > 0)
+                    Console.WriteLine($"CELLNAV {nk} from {nv.from}: {d.Triangles.Count} tris, x {d.Vertices.Min(v => v.X):F0}..{d.Vertices.Max(v => v.X):F0} y {d.Vertices.Min(v => v.Y):F0}..{d.Vertices.Max(v => v.Y):F0} z {d.Vertices.Min(v => v.Z):F0}..{d.Vertices.Max(v => v.Z):F0}");
+            return;
+        }
+        if (what.StartsWith("items:"))  // items:<regex>: every winning misc item, armour, key, book, ingredient and potion whose editor id, name or model matches (case ignored)
+        {
+            var rx = new System.Text.RegularExpressions.Regex(what[6..], System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+            var seen = new Dictionary<FormKey, string>();
+            foreach (var m in mods)
+                foreach (var r in m.EnumerateMajorRecords().Where(r => r is IMiscItemGetter or IArmorGetter or IKeyGetter or IBookGetter or IIngredientGetter or IIngestibleGetter))
+                {
+                    var name = (r as Mutagen.Bethesda.Plugins.Aspects.ITranslatedNamedGetter)?.Name?.String ?? "";
+                    var model = r switch { IMiscItemGetter it => it.Model?.File.DataRelativePath.Path, IKeyGetter it => it.Model?.File.DataRelativePath.Path, IBookGetter it => it.Model?.File.DataRelativePath.Path,
+                        IIngredientGetter it => it.Model?.File.DataRelativePath.Path, IIngestibleGetter it => it.Model?.File.DataRelativePath.Path, IArmorGetter it => it.WorldModel?.Male?.Model?.File.DataRelativePath.Path, _ => null } ?? "";
+                    var line = $"{r.GetType().Name.Replace("BinaryOverlay", "")} {r.FormKey} {r.EditorID} '{name}' {model} (from {m.ModKey})";
+                    if (rx.IsMatch(r.FormKey.ToString()) || rx.IsMatch(r.EditorID ?? "") || rx.IsMatch(name) || rx.IsMatch(model)) seen[r.FormKey] = line; else seen.Remove(r.FormKey);
+                }
+            foreach (var l in seen.Values) Console.WriteLine($"ITEM {l}");
+            return;
+        }
+        if (what.StartsWith("near:"))  // near:<x>:<y>:<z>:<r>: every placed object and actor of the Black Marsh and Valenwood plugins within r of the spot (x, y and z), nearest first
+        {
+            var p = what[5..].Split(':').Select(float.Parse).ToArray();
+            var bases = mods.SelectMany(m => m.EnumerateMajorRecords()).Where(r => r is not IPlacedGetter && r.EditorID != null).GroupBy(r => r.FormKey).ToDictionary(g => g.Key, g => g.Last().EditorID);
+            var hits = new Dictionary<FormKey, (float d, string what)>();
+            foreach (var m in mods.Where(mm => mm.ModKey.FileName.String.StartsWith("Black Marsh") || mm.ModKey.FileName.String.StartsWith("Valenwood")))
+                foreach (var r in m.EnumerateMajorRecords<IPlacedGetter>())
+                {
+                    var (bk, pos) = r switch { IPlacedObjectGetter o => (o.Base.FormKey, o.Placement?.Position), IPlacedNpcGetter n => (n.Base.FormKey, n.Placement?.Position), _ => (FormKey.Null, null) };
+                    if (pos is not { } q || MathF.Abs(q.X - p[0]) > p[3] || MathF.Abs(q.Y - p[1]) > p[3] || MathF.Abs(q.Z - p[2]) > p[3]) continue;
+                    var d = MathF.Sqrt((q.X - p[0]) * (q.X - p[0]) + (q.Y - p[1]) * (q.Y - p[1]));
+                    hits[r.FormKey] = (d, $"{r.FormKey} {bases.GetValueOrDefault(bk) ?? bk.ToString()} pos={q.X:F0},{q.Y:F0},{q.Z:F0}");
+                }
+            foreach (var h in hits.Values.OrderBy(h => h.d)) Console.WriteLine($"NEAR {h.d,6:F0}  {h.what}");
+            return;
+        }
+        if (what.StartsWith("cellat:"))  // cellat:<interior cell>:<x>,<y>[;<x>,<y>...]: every surface under each point, highest first
+        {
+            var p = what[7..].Split(':');
+            var ck = FormKey.Factory(p[0] + ":" + p[1]);
+            var assets = new Surface.Assets(paths); Surface.Bases(mods);
+            var refs = mods.SelectMany(m => m.Cells.Records.SelectMany(b => b.SubBlocks).SelectMany(s => s.Cells)).Where(x => x.FormKey == ck)
+                .SelectMany(x => x.Persistent.Concat(x.Temporary)).OfType<IPlacedObjectGetter>().GroupBy(o => o.FormKey).Select(g => g.Last()).Where(o => o.Placement != null).ToList();
+            foreach (var pt in p[2].Split(';'))
+            {
+                var xy = pt.Split(',').Select(float.Parse).ToArray();
+                Console.WriteLine($"{xy[0]:F0},{xy[1]:F0}:");
+                foreach (var h in Surface.UnderRefs(refs, assets, xy[0], xy[1], everyCrossing: true).Where(h => !h.Model.Contains("Effects", StringComparison.OrdinalIgnoreCase)).OrderByDescending(h => h.Top))
+                    Console.WriteLine($"  {h.Kind,-6} top z {h.Top,8:F1}  {h.EditorId ?? "-"}  ref {h.Ref.IDString()}");
+            }
+            return;
+        }
+        if (what.StartsWith("cellgrid:"))  // cellgrid:<interior cell>:<x>:<y>:<z>:<step>: 13 x 13 map round x,y: the surface nearest z / the navmesh z
+        {
+            var p = what[9..].Split(':');
+            var ck = FormKey.Factory(p[0] + ":" + p[1]);
+            float x0 = float.Parse(p[2]), y0 = float.Parse(p[3]), z0 = float.Parse(p[4]), st = float.Parse(p[5]);
+            var assets = new Surface.Assets(paths); Surface.Bases(mods);
+            var cells = mods.SelectMany(m => m.Cells.Records.SelectMany(b => b.SubBlocks).SelectMany(s => s.Cells)).Where(x => x.FormKey == ck).ToList();
+            var refs = cells.SelectMany(x => x.Persistent.Concat(x.Temporary)).OfType<IPlacedObjectGetter>().GroupBy(o => o.FormKey).Select(g => g.Last()).Where(o => o.Placement != null).ToList();
+            var navs = Survey.Winners<INavigationMeshGetter>(mods);
+            var mine = cells.SelectMany(x => x.NavigationMeshes.Select(n => n.FormKey)).Distinct().Where(navs.ContainsKey).Select(k => navs[k].rec).ToList();
+            for (var gy = 6; gy >= -6; gy--)
+            {
+                var line = new System.Text.StringBuilder($"{y0 + gy * st,7:F0} ");
+                for (var gx = -6; gx <= 6; gx++)
+                {
+                    float px = x0 + gx * st, py = y0 + gy * st;
+                    var top = Surface.UnderRefs(refs, assets, px, py, everyCrossing: true).Where(h => !h.Model.Contains("Effects", StringComparison.OrdinalIgnoreCase)).MinBy(h => MathF.Abs(h.Top - z0));
+                    var nav = Surface.NavZ(mine, px, py).Where(z => MathF.Abs(z - z0) < 300).DefaultIfEmpty(float.NaN).Max();
+                    line.Append($"{(top == null ? "    ." : $"{top.Top,5:F0}")}/{(float.IsNaN(nav) ? "    ." : $"{nav,5:F0}")} ");
+                }
+                Console.WriteLine(line);
+            }
+            Console.WriteLine($"        x from {x0 - 6 * st:F0} to {x0 + 6 * st:F0} by {st:F0}");
             return;
         }
         if (what.StartsWith("navpath:"))  // navpath:<navmesh>:<x>:<y>:<navmesh>:<x>:<y>: is there a walk over winning navmesh between two spots

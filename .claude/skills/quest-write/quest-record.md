@@ -74,7 +74,7 @@ One row per person, thing, door and marker, keyed by `ref` (the id the record us
 |---|---|
 | `ref`, `kind` | the id; `person` (a creature too), `thing`, `door` or `marker` |
 | `formKey` | an existing reference; or else `base` and one of `anchor`, `container`, `carriedBy` for a new one |
-| `base` | `{kind, id}`: `template_person` (a person or creature of ours on a template), `template_item` (a new item of ours on a template item: it needs a `name`), `item` (a stock item such as gold or lockpicks, or an item whose id is the thing's own), `existing_base` (a container, a static) |
+| `base` | `{kind, id}`: `template_person` (a person or creature of ours on a template), `template_item` (a new item of ours on a template item whose model reads as what the thing is called, a lidded jar for a jar of sap, a bucket, a necklace, never a Nordic-specific model: it needs a `name`), `item` (a stock item such as gold or lockpicks, or a key or note whose id is the thing's own), `existing_base` (a container, a static) |
 | `anchor` | `{near: <form key>, rule}` or `{place: <census place>, rule}`, `rule` `surface` or `navmesh` |
 | `container`, `carriedBy` | a thing's ref it lies in; a person's ref whose pocket it is in (the key on its owner) |
 | `name`, `level` | what the player sees for a new person, creature or item when the cast or the thing has no name; a new person's or creature's fixed level (decision 0035) |
