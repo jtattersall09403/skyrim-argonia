@@ -97,6 +97,14 @@ static class NewWorldVerify
             {
                 edid = r.EditorID, weathers = r.Weather?.Weathers?.Select(w => Ed(w.Weather.FormKey)).ToList(),
                 map_name = r.Map?.Name?.ToString(),
+                music = r.Sounds is { } rs && !rs.Music.IsNull ? Ed(rs.Music.FormKey) : null,
+            }).ToList(),
+            // every music type of the load (later wins) with its tracks as the game reads them: the file and each
+            // condition's function, run-on and reference (verify.py: a cell's music plays; combat plays in the world)
+            ["music_types"] = MusicTypes(mods),
+            ["locations"] = mod.Locations.Select(l => new
+            {
+                edid = l.EditorID, name = l.Name?.String, parent = l.ParentLocation.IsNull ? null : Ed(l.ParentLocation.FormKey),
             }).ToList(),
             ["waters"] = mod.Waters.Select(w => new { edid = w.EditorID }).ToList(),
             ["navi"] = mod.NavigationMeshInfoMaps.Sum(n => n.MapInfos.Count),
@@ -115,10 +123,12 @@ static class NewWorldVerify
             map_se = ws.MapData is { } m2 ? new[] { m2.SoutheastCellCoords.X, m2.SoutheastCellCoords.Y } : null,
             // map markers live in the world's persistent cell (NewWorldMap.cs), which the cell walk below never reads
             map_markers = ws.TopCell?.Persistent.OfType<IPlacedObjectGetter>().Count(r => r.MapMarker is not null) ?? 0,
+            music = ws.Music.IsNull ? null : Ed(ws.Music.FormKey),
+            form_key = ws.FormKey.ToString(),
         };
         object? marker = null; int startCells = 0;
         using var cw = new StreamWriter(Path.Combine(outDir, "cells.tsv"));
-        cw.WriteLine("x\ty\tedid\tland\twater\twater_h\tregion\trefs\tnavm\tnavm_tris\tland_quads\tgrass_quads\th_min\th_max\th_mean");
+        cw.WriteLine("x\ty\tedid\tland\twater\twater_h\tregion\trefs\tnavm\tnavm_tris\tland_quads\tgrass_quads\th_min\th_max\th_mean\tlocation");
         using var gz = new GZipStream(File.Create(Path.Combine(outDir, "refs.tsv.gz")), CompressionLevel.Fastest);
         using var rw = new StreamWriter(gz);
         // placed actors (ecology): one row each, and every NPC_ record of our file with the level it carries
@@ -205,7 +215,7 @@ static class NewWorldVerify
                 var wn = c.Water.IsNull ? "" : Ed(c.Water.FormKey);
                 var reg = c.Regions?.FirstOrDefault(); var rn = reg is null ? "" : Ed(reg.FormKey);
                 string hs = dec is null ? "\t\t" : $"{dec.Min():F0}\t{dec.Max():F0}\t{dec.Average():F0}";
-                cw.WriteLine($"{x}\t{y}\t{c.EditorID}\t{(dec is null ? 0 : 1)}\t{wn}\t{(c.Flags.HasFlag(Cell.Flag.HasWater) ? c.WaterHeight : null)}\t{rn}\t{nref}\t{navs.Count}\t{tris}\t{landQ}\t{grassQ}\t{hs}");
+                cw.WriteLine($"{x}\t{y}\t{c.EditorID}\t{(dec is null ? 0 : 1)}\t{wn}\t{(c.Flags.HasFlag(Cell.Flag.HasWater) ? c.WaterHeight : null)}\t{rn}\t{nref}\t{navs.Count}\t{tris}\t{landQ}\t{grassQ}\t{hs}\t{(c.Location.IsNull ? "" : Ed(c.Location.FormKey))}");
             }
             catch (Exception e) { Err($"cell {c.FormKey}: {e.GetType().Name} {e.Message}"); }
         }
@@ -215,5 +225,29 @@ static class NewWorldVerify
         File.WriteAllText(Path.Combine(outDir, "header.json"), JsonSerializer.Serialize(header, new JsonSerializerOptions { WriteIndented = true }));
         Console.WriteLine($"nwverify dump: {records} records, {links} links, {errors.Count} errors -> {outDir}");
         return 0;
+    }
+
+    // Music types and tracks as the load resolves them (the last plugin's record wins), keyed by editor id.
+    static Dictionary<string, object> MusicTypes(List<ISkyrimModGetter> mods)
+    {
+        var tracks = new Dictionary<FormKey, IMusicTrackGetter>();
+        var types = new Dictionary<FormKey, IMusicTypeGetter>();
+        foreach (var m in mods) { foreach (var t in m.MusicTracks) tracks[t.FormKey] = t; foreach (var t in m.MusicTypes) types[t.FormKey] = t; }
+        object Track(FormKey k) => tracks.TryGetValue(k, out var t) ? new
+        {
+            edid = t.EditorID, type = t.Type.ToString(), file = t.TrackFilename?.ToString(),
+            conds = (t.Conditions ?? []).Select(c => new
+            {
+                fn = c.Data.GetType().Name.Replace("BinaryOverlay", "").Replace("ConditionData", ""), runon = c.Data.RunOnType.ToString(),
+                reference = c.Data.RunOnType == Condition.RunOnType.Reference ? c.Data.Reference.FormKey.ToString() : null,
+                world = c.Data is IGetInWorldspaceConditionDataGetter gw ? gw.WorldspaceOrList.Link.FormKey.ToString() : null,
+                op = c.CompareOperator.ToString(), or = c.Flags.HasFlag(Condition.Flag.OR),
+                value = c is IConditionFloatGetter f ? f.ComparisonValue : (float?)null,
+            }).ToList(),
+        } : new { edid = (string?)k.ToString(), type = "missing" };
+        return types.Values.Where(t => t.EditorID != null).GroupBy(t => t.EditorID!).ToDictionary(g => g.Key, g => (object)new
+        {
+            priority = g.Last().Data?.Priority, tracks = (g.Last().Tracks ?? []).Select(k => Track(k.FormKey)).ToList(),
+        });
     }
 }

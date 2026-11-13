@@ -148,6 +148,13 @@ static class NewWorld
         var (climKey, regionWeather) = NewWorldAtmosphere.Build(mod, fc, plugDir);  // atmosphere.json (tools/newworld/atmosphere.py)
         ws.Climate = new FormLinkNullable<IClimateGetter>(climKey);
         var regionKey = new Dictionary<string, FormKey>();
+        // Where the player is, Skyrim's way: a location (LCTN) named for the place, its parent the larger area (Skyrim.esm
+        // WhiteRunLocation -> WhiterunHoldLocation "Whiterun Hold" -> TamrielLocation), set on the cell (XLCN); the
+        // location's name is what the map menu, the save list and the journal show for "here". One location per region,
+        // its parent the world's location, set on every exterior cell of the region.
+        var worldLoc = new Location(K(ids.Take("region", "location:world")), Rel) { EditorID = "ANW_Loc_World", Name = ws.Name?.String?.Split(" (")[0] ?? "Black Marsh" };
+        mod.Locations.Add(worldLoc);
+        var regionLoc = new Dictionary<FormKey, FormKey>();
         foreach (var r in cj.GetProperty("regions").EnumerateObject())
         {
             var reg = new Region(K(ids.Take("region", "region:" + r.Name)), Rel)
@@ -161,6 +168,14 @@ static class NewWorld
             };
             mod.Regions.Add(reg);
             regionKey[r.Name] = reg.FormKey;
+            var loc = new Location(K(ids.Take("region", "location:" + r.Name)), Rel)
+            {
+                EditorID = "ANW_Loc_" + r.Name.Replace("-", "_"),
+                Name = r.Value.GetProperty("name").GetString(),
+                ParentLocation = new FormLinkNullable<ILocationGetter>(worldLoc.FormKey),
+            };
+            mod.Locations.Add(loc);
+            regionLoc[reg.FormKey] = loc.FormKey;
         }
         var cellInfo = cj.GetProperty("cells");
         // seams between water types graded over a band of cells (WaterBlend.cs)
@@ -227,7 +242,9 @@ static class NewWorld
                 if (cellInfo.TryGetProperty($"{cx},{cy}", out var ci))
                 {
                     if (cellWater.TryGetValue((cx, cy), out var wfk)) c.Water = new FormLinkNullable<IWaterGetter>(wfk);
-                    c.Regions = new ExtendedList<IFormLinkGetter<IRegionGetter>> { new FormLink<IRegionGetter>(regionKey[ci.GetProperty("region").GetString()!]) };
+                    var rk = regionKey[ci.GetProperty("region").GetString()!];
+                    c.Regions = new ExtendedList<IFormLinkGetter<IRegionGetter>> { new FormLink<IRegionGetter>(rk) };
+                    c.Location = new FormLinkNullable<ILocationGetter>(regionLoc[rk]);
                 }
                 if (refsByCell.TryGetValue((cx, cy), out var rl))
                     foreach (var (bk, pos, rot, sc, fid) in rl)

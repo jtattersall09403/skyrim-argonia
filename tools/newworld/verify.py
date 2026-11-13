@@ -66,7 +66,7 @@ MIST = re.compile(r"^FXMist", re.I)
 # group -> whose output it reads: the terrain build, the written ESM, or work done after it on other machines
 GROUPS = {"plugin": "esm", "land": "esm", "textures": "esm", "water": "esm", "refs": "esm", "ecology": "esm", "mist": "esm",
           "atmosphere": "esm", "height fog": "esm", "relief": "terrain", "navmesh": "esm", "lod": "lod", "map": "esm",
-          "start": "esm", "deploy": "deploy", "places": "places"}
+          "start": "esm", "deploy": "deploy", "places": "places", "music": "esm", "location": "esm"}
 
 
 class Report:
@@ -386,6 +386,18 @@ def run(plugin: Path, out: Path, do_dump: bool = True, only: set | None = None, 
         from tools.newworld import atmosphere  # our weathers read back: fields, region lists, climate, distinct, warm
         for req, v, ok, det in atmosphere.rows(plugin):
             rep.row("atmosphere", req, v, ok, det)
+
+    @section(rep, "music", want)
+    def _music():
+        from tools.newworld.music import readback  # what plays where, and combat in the world (walk 2 L9, L14)
+        for req, v, ok, det in readback.music_rows(H, cells, assets().has):
+            rep.row("music", req, v, ok, det)
+
+    @section(rep, "location", want)
+    def _location():
+        from tools.newworld.music import readback  # the region's name where the player is told it (walk 2 L29)
+        for req, v, ok, det in readback.location_rows(H, cells):
+            rep.row("location", req, v, ok, det)
 
     @section(rep, "height fog", want)
     def _cs_fog():

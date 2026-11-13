@@ -57,7 +57,7 @@ STAGES = ("tools", "land", "landcover", "cells", "place", "edits", "paint", "mis
 # the block's own edits of single placed things (the province's name cells the block does not hold): a file beside
 # the block, absent until a test of the edits writes rows to it (`small tool tools.newworld.place edit ... --edits <it>`)
 EDITS = "out/newworld-small/placed_edits.jsonl"
-READBACK = "plugin,land,textures,water,refs,ecology,mist,navmesh"
+READBACK = "plugin,land,textures,water,refs,ecology,mist,navmesh,music,location"
 # the read-back's rows that count the whole province, by the start of their requirement, each with why
 READBACK_OFF = (
     ("water kinds against the accepted classification", "the province's accepted classification"),

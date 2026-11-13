@@ -69,3 +69,26 @@ def test_aliased_and_allowed_paths_do_not_gate():
     rep = A.Audit(R, aliases={"textures/A.dds": ["mod", "x.dds"]}, allowed={"textures\\b_n.dds": "why"}).run([p])
     assert [m["path"] for m in rep["missing"] if not m["allowed"]] == ["meshes\\t.nif"]
     assert rep["missing_meshes"] == 1 and rep["missing_textures"] == 0 and rep["allowed"] == 1
+
+
+def test_engine_effect_mesh_a_mod_lays_with_a_missing_texture_gates_unless_dropped(tmp_path):
+    """BM&V's watersplash.nif over the engine's water splash named water_ring.dds, which nothing ships (walk 2 L10)."""
+    sky = Plugin("Skyrim.esm", [], [])
+    for r in (Record("IPCT", 0, 0x452D6, [("EDID", b"PHYWaterSplashImpact\0"), ("MODL", b"Effects\\waterSplash.nif\0")]),
+              Record("ADDN", 0, 0xF3A90, [("EDID", b"MPSWaterSplash\0"), ("MODL", b"MPS\\MPSWaterSplash.nif\0")])):
+        r.plugin = sky
+        sky._records.append(r)
+    nif = tmp_path / "watersplash.nif"
+    nif.write_bytes(s(b"textures\\effects\\water_ring.dds") + s(b"textures\\effects\\fluiddrops02.dds"))
+
+    class R(FakeR):
+        loose = {"meshes\\effects\\watersplash.nif": "bmv"}
+
+        def loose_file(self, k):
+            return nif if k in self.loose else None
+    r = R({"textures\\effects\\fluiddrops02.dds": b"", "meshes\\mps\\mpswatersplash.nif": b""})
+    got = A.engine_overrides(r, sky, set())
+    assert [(e["path"], e["mod"], e["missing"]) for e in got] == [
+        ("meshes\\effects\\watersplash.nif", "bmv", ["textures\\effects\\water_ring.dds"])]
+    deps = {"mods": [{"id": "bmv", "drop": ["meshes/effects/watersplash.nif", "meshes/x/*.nif"]}]}
+    assert A.engine_overrides(r, sky, A.dropped(deps)) == []

@@ -993,9 +993,10 @@
     "meshes/architecture/whiterun/wrbuildings/wrhousewind04.nif",
     "meshes/architecture/whiterun/wrbuildings/wrjorvaskr01.nif",
     "meshes/architecture/whiterun/wrbuildings/wrtempleofk01.nif",
-    "meshes/furniture/smallcookingpot.nif"
+    "meshes/furniture/smallcookingpot.nif",
+    "meshes/effects/watersplash.nif"
    ],
-   "drop_note": "BM&V's meshes edited for Enhanced Lighting (ELFX) at vanilla paths: their windows and glows name textures\\effects\\ELFX\\* that nothing staged holds (flat blue panes, owner walk 2026-11-07, Lilmoth); each path listed is also in the game's own archives, so the vanilla mesh draws (docs/phases/1-stack-in-bmv.md)",
+   "drop_note": "BM&V's meshes at vanilla paths that name textures nothing staged holds; each path listed is also in the game's own archives, so the vanilla mesh draws. The buildings: edited for Enhanced Lighting (ELFX), their windows and glows name textures\\effects\\ELFX\\* (flat blue panes, owner walk 2026-11-07, Lilmoth; docs/phases/1-stack-in-bmv.md). The water splash (the model of Skyrim.esm's IPCT PHYWaterSplashImpact, every water of every world): BM&V's names textures\\effects\\water_ring.dds where vanilla's names FXEnergyImpacRing.dds, so its ring drew dark in every water (owner walk 2 L10, 2026-11-13; docs/phases/new-worldspace-plan/walk2/air.md)",
    "note": "the vault part holds the ModDB download as Data1.rar and Data2.rar; everything is laid: Black Marsh.esm, Black Marsh North.esp, Valenwood.esp, BosmerArmorMaty743.esm, all meshes, textures and LOD settings (2026-11-05: the old keep and drop lists, made for the generated world, had left out three plugins and almost all the art)",
    "licence": "none stated",
    "permission_summary": "ModDB page states no permissions and no credits, and bundles third-party resources; the audit records it as 'available for this project', but using its contents in our mod without the author's written grant is unconfirmed.",

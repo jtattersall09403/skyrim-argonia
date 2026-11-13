@@ -30,7 +30,7 @@ SCOPE = (214, 180)  # the province's grid in cells (the scope stage: the land ma
 # (allocator, first, last, how an id is given, the province's count: the grid's by formula, the rest as built 2026-11-11)
 RANGES = (
     ("world", 0x000800, 0x000802, "the world, its persistent cell, the start marker (NewWorld.cs)", 3),
-    ("region", 0x000880, 0x0008FF, "registry block: one per region", 24),
+    ("region", 0x000880, 0x0008FF, "registry block: one per region, its location, and the world's location", 49),
     ("seeded", 0x000900, 0x00FFFF, "registry: the ids the first world file held, kept as they were (ground, base and water names)", 7265),
     ("ground", 0x010000, 0x01FFFF, "registry block: land textures, their texture sets, grass, registered since", 0),
     ("base", 0x020000, 0x07FFFF, "registry block: placed bases and what they link to, and the travel menu's records, registered since", 0),

@@ -163,7 +163,10 @@ Ours (`tools/ArgoniaPlugin/NewWorldMusic.cs`, data `newworld/sources/music/recor
 - the battle pieces join MUSCombat (battle-last and battle-deep also MUSCombatBoss), the death sting joins
   MUSSpecialDeath and the discovery sting the four MUSDiscovery types, each with `GetInWorldspace(new world) == 1`; every Skyrim track in those
   types gets `GetInWorldspace(new world) == 0` put first, so Skyrim's music is not heard
-  in the new world and is unchanged everywhere else. No plugin of the NewWorld profile overrides these records, so
+  in the new world and is unchanged everywhere else. A music track has no subject, so these conditions run on the
+  player reference (PlayerRef 000014), as every actor condition on a track of Skyrim.esm, Dawnguard and Dragonborn
+  does (MUSCombat01-06: ActorTypeDragon on PlayerRef); run on the subject they never hold and the type is silent.
+  The read-back's `music` rows judge it from the written file. No plugin of the NewWorld profile overrides these records, so
   Skyrim.esm's are the load order's winners and the templates;
 - level-up, in Skyrim's two parts: the UI sound UILevelUp (SNDR 057B44; Skyrim.esm is the load order's winner),
   heard when the level-up notice appears, plays the short slot sting-levelup from

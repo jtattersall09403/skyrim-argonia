@@ -12,7 +12,8 @@ using Mutagen.Bethesda.Skyrim;
 //     GetCurrentTime >= 22 OR <= 5 (MUSExploreDay01, MUSExploreNight01); ours use 6..20 and 20..6, so no hour is silent;
 //   - combat, death and level-up music are the default object types (DOBJ SMTB MUSCombat, SMTD MUSSpecialDeath,
 //     SMCS/SMUL MUSSpecialSuccess) and discovery the four MUSDiscovery* types; none can be set per world, so our
-//     tracks are added to them with GetInWorldspace == ours, and each of Skyrim's tracks in them is overridden with
+//     tracks are added to them with GetInWorldspace == ours (run on PlayerRef, as Skyrim runs its tracks' actor
+//     conditions), and each of Skyrim's tracks in them is overridden with
 //     GetInWorldspace != ours put first (an AND ahead of its own conditions). No plugin of the NewWorld profile
 //     (Update.esm, the DLCs, USSEP and the rest) overrides any of these records (measured 2026-11-12), so Skyrim.esm's
 //     record is the load order's winner and the template.
@@ -139,9 +140,15 @@ static class NewWorldMusic
     static ConditionFloat Hour(CompareOperator op, float h, bool or = false) =>
         new() { Data = new GetCurrentTimeConditionData(), CompareOperator = op, ComparisonValue = h, Flags = or ? Condition.Flag.OR : 0 };
 
+    // A music track has no subject: an actor condition on it is run on the player reference, as Skyrim's own combat
+    // tracks run theirs (MUSCombat01..06 CTDA 707 ActorTypeDragon, run on Reference PlayerRef 000014; measured
+    // 2026-11-13: every actor condition on a MUST of Skyrim.esm, Dawnguard and Dragonborn is so). Run on the subject
+    // it never holds, and a track it gates never plays.
+    static readonly FormKey PlayerRef = FormKey.Factory("000014:Skyrim.esm");
     static ConditionFloat InWorld(FormKey world, bool inside)
     {
-        var d = new GetInWorldspaceConditionData();
+        var d = new GetInWorldspaceConditionData { RunOnType = Condition.RunOnType.Reference };
+        d.Reference.SetTo(PlayerRef);
         d.WorldspaceOrList.Link.SetTo(world);
         return new() { Data = d, CompareOperator = CompareOperator.EqualTo, ComparisonValue = inside ? 1 : 0 };
     }

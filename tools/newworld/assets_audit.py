@@ -169,6 +169,35 @@ class Audit:
                 "allowed": sum(bool(m["allowed"]) and not m["vanilla_too"] for m in missing)}
 
 
+ENGINE_SIGS = {"IPCT", "ADDN"}   # the engine's own effects (impacts, addon nodes: the water splash), drawn in every world
+DEPENDENCIES = REPO / "mods/dependencies.json"
+
+
+def dropped(deps: dict) -> set[tuple[str, str]]:
+    """(mod, data path) of every file a dependency row drops at staging (its `drop` list, exact paths)."""
+    return {(m["id"], p.replace("/", "\\").lower()) for m in deps.get("mods", []) for p in m.get("drop", []) if "*" not in p}
+
+
+def engine_overrides(resolver, skyrim, drops: set[tuple[str, str]]) -> list[dict]:
+    """Every model of Skyrim.esm's engine effects (IPCT, ADDN: the water splash among them) that a staged mod lays
+    loose over the game's own, and that names a texture nothing staged holds: drawn in every water of every world
+    (BM&V's watersplash.nif naming water_ring.dds was the black splash). A path its mod's row drops is not laid."""
+    out = []
+    for r in skyrim.records():
+        if r.sig not in ENGINE_SIGS:
+            continue
+        for _sig, path in asset_paths(r.subs):
+            key = norm_asset(path)
+            mod = resolver.loose.get(key)
+            if not key.endswith(".nif") or not mod or (mod, key) in drops:
+                continue
+            f = resolver.loose_file(key)
+            gone = [t for t in nif_textures(f.read_bytes()) if resolver.where(norm_asset(t)) is None] if f else []
+            if gone:
+                out.append({"path": key, "mod": mod, "record": r.edid, "missing": gone})
+    return out
+
+
 def active_plugins(profile_dir: Path) -> set[str]:
     f = profile_dir / "plugins.txt"
     names = {"skyrim", "update", "dawnguard", "hearthfires", "dragonborn", "argonianewworld", "argonianwplaces"}
@@ -193,9 +222,15 @@ def main(argv=None) -> int:
     vanilla = (DATA / "Skyrim.esm").read_bytes() if (DATA / "Skyrim.esm").exists() else b""
     aliases = json.loads(ALIASES.read_text())["aliases"] if ALIASES.exists() else {}
     allowed = json.loads(ALLOWED.read_text())["allowed"] if ALLOWED.exists() else {}
-    rep = Audit(Resolver(), active_plugins(STACK / "MO2/profiles/NewWorld"), masters, vanilla, aliases, allowed).run(plugins)
+    R = Resolver()
+    rep = Audit(R, active_plugins(STACK / "MO2/profiles/NewWorld"), masters, vanilla, aliases, allowed).run(plugins)
+    sky = Plugin.read(DATA / "Skyrim.esm", ENGINE_SIGS) if (DATA / "Skyrim.esm").exists() else None
+    rep["engine_overrides"] = engine_overrides(R, sky, dropped(json.loads(DEPENDENCIES.read_text()))) if sky else []
     print(f"assets audit: {rep['records']} records, {rep['assets']} asset paths; missing "
-          f"{rep['missing_meshes']} meshes, {rep['missing_textures']} textures")
+          f"{rep['missing_meshes']} meshes, {rep['missing_textures']} textures; "
+          f"{len(rep['engine_overrides'])} engine effect meshes a mod lays naming a missing texture")
+    for e in rep["engine_overrides"]:
+        print(f"  {e['path']} ({e['mod']}, {e['record']}) names {', '.join(e['missing'])}")
     for m in [m for m in rep["missing"] if not m["vanilla_too"] and not m["allowed"]][:60]:
         print(f"  {m['uses']:>8}  {m['path']}  <- {', '.join(m['records'][:4])}{' ...' if len(m['records']) > 4 else ''}")
     if rep["allowed"]:
@@ -204,7 +239,7 @@ def main(argv=None) -> int:
         print(f"  (+{rep['vanilla_too']} paths Skyrim.esm also names and the game lacks: vanilla's own, not gating)")
     if a.json:
         a.json.write_text(json.dumps(rep, indent=1))
-    return 1 if rep["missing_meshes"] or rep["missing_textures"] else 0
+    return 1 if rep["missing_meshes"] or rep["missing_textures"] or rep["engine_overrides"] else 0
 
 
 if __name__ == "__main__":
