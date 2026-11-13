@@ -135,10 +135,20 @@ def compass(dx: float, dy: float) -> str:
     return COMPASS[round(math.degrees(math.atan2(dy, dx)) % 360 / 45) % 8]
 
 
+# Words for how far (Skyrim units; 70 a metre), never a count. A quest's sheet reads close detail; a talker's sheet
+# reads the talk's own bands (talk_route.BANDS: "just" under 60 m, "a short way" under 200 m, "a fair way" under
+# 600 m, "a long walk" under 2 km), so a line's distance word and the sheet's are the same words.
+NEAR_BANDS = ((150, "right here"), (500, "a few steps"), (1200, "close by"), (3000, "a short walk"),
+              (6000, "a fair way"))
+TALK_BANDS = ((150, "right here"), (1200, "a few steps"), (4200, "just"), (14000, "a short way"),
+              (42000, "a fair way"), (140000, "a long walk"))
+TALK_RADIUS = 14000.0     # a talker's sheet reaches every thing a line may call "just" or "a short way"
+_bands = NEAR_BANDS
+
+
 def how_far(d: float) -> str:
-    """A word for how far (Skyrim units; 70 a metre), never a count."""
-    for lim, w in ((150, "right here"), (500, "a few steps"), (1200, "close by"), (3000, "a short walk"),
-                   (6000, "a fair way")):
+    """A word for how far, never a count."""
+    for lim, w in _bands:
         if d < lim:
             return w
     return "far"
@@ -364,8 +374,17 @@ def person_line(p: dict, x0: float, y0: float, z0: float, me: bool) -> tuple[str
     return fm, f"{who}: {at}; {how}"
 
 
-def sheet(d: dict, title: str | None = None, names: dict | None = None) -> str:
-    """The sheet in words; every fact marked [fixed] or [moving]."""
+def sheet(d: dict, title: str | None = None, names: dict | None = None, bands=None) -> str:
+    """The sheet in words; every fact marked [fixed] or [moving]; `bands` the distance words (NEAR_BANDS)."""
+    global _bands
+    _bands, keep = bands or NEAR_BANDS, _bands
+    try:
+        return _sheet(d, title, names)
+    finally:
+        _bands = keep
+
+
+def _sheet(d: dict, title: str | None, names: dict | None) -> str:
     if d.get("error"):
         return f"## {title or d['spot']}\n- error: {d['error']}\n"
     x0, y0, z0 = d["at"]
@@ -381,7 +400,7 @@ def sheet(d: dict, title: str | None = None, names: dict | None = None) -> str:
     L.append(f"- Underfoot [fixed]: {underfoot(d)}.")
     L += [f"- Water [fixed]: {w}" for w in water_round(d)]
     told, loose, doors, unk, fire = things_round(d)
-    L.append(f"- Built things within {how_far(d['radius'])} [fixed], nearest first:")
+    L.append(f"- Built things within {how_far(d['radius'] - 1)} (nothing further is listed) [fixed], nearest first:")
     L += [f"  - {t}" for t in told] or ["  - none"]
     if doors:
         L.append("- Doors [fixed]:")
@@ -394,7 +413,7 @@ def sheet(d: dict, title: str | None = None, names: dict | None = None) -> str:
     L.append("- People and creatures near:")
     me_at = lambda p: abs(p["x"] - x0) < 2 and abs(p["y"] - y0) < 2  # noqa: E731
     ppl = sorted(d.get("people") or [], key=lambda p: p["d"])
-    for p in ppl[:14]:
+    for p in ppl[:24]:
         fm, line = person_line(p, x0, y0, z0, me_at(p))
         L.append(f"  - [{fm}] {line}")
     if not ppl:

@@ -3,6 +3,7 @@ every line and the stated trade of each talker of a settlement, beside the surro
 each person or thing it names (tools/argonia_world/surroundings.py), from the forms read back from the built plugin.
 
     python3 -m tools.argonia_world.truth_brief <quest id | code | settlement id> [--built DIR] [--out FILE]
+        [--part i/n]
         a quest (quest.main.mq01, or mq01) reads its read-back form (DIR, default out/questform-read);
         a settlement (bmv.helstrom) reads its talkers from the story data
 """
@@ -122,14 +123,26 @@ def build_quest(qid: str, built: str | None, report: str) -> str:
     return "\n".join(L) + "\n"
 
 
-def build_settlement(sid: str, report: str) -> str:
+TALKERS = """A talker's sheet reaches a short way round them, in the talk's own distance words ("just", "a short way").
+"Here" in a talker's line is the spot the sheet is taken at: it stands when the speaker keeps to that spot (wanders
+about it) and the thing is told no nearer than it is; it is a finding when the speaker follows a routine across the
+day or the place, or when the thing is called "just" or "beside" while the speaker strays further than that.
+
+"""
+
+
+def build_settlement(sid: str, report: str, part: str | None = None) -> str:
     w = db.open()
     talkers = w.query("SELECT t.id, t.known_as, t.trade, t.spot, t.backstory FROM talker t JOIN bmv_talker b "
                       "ON b.id = t.id WHERE b.settlement = ? ORDER BY t.id", sid)
     if not talkers:
         raise SystemExit(f"truth_brief: no talkers in {sid}")
-    raws = su.raw([f"{t['id']}@{su.RADIUS:g}" for t in talkers])
-    L = [ASK.format(title=f"the talkers of {sid}", report=report), "## The rows\n",
+    if part:    # "i/n": the i-th of n even slices, for a settlement too big for one reader
+        i, n = (int(x) for x in part.split("/"))
+        talkers = talkers[(i - 1) * len(talkers) // n:i * len(talkers) // n]
+    raws = su.raw([f"{t['id']}@{su.TALK_RADIUS:g}" for t in talkers])
+    L = [ASK.format(title=f"the talkers of {sid}" + (f", part {part}" if part else ""), report=report), TALKERS,
+         "## The rows\n",
          "| row id | speaker | kind | prompt | text | sheet |\n|---|---|---|---|---|---|"]
     for t in talkers:
         L.append(f"| {t['id']}#trade | {t['known_as']} | stated trade and spot | | {t['trade']}; {t['spot']}; "
@@ -139,7 +152,7 @@ def build_settlement(sid: str, report: str) -> str:
             L.append(f"| {t['id']}#{ln['topic']}#{ln['ord']} | {t['known_as']} | line | {ln['prompt']} | "
                      f"{ln['text']} | {t['id']} |")
     L.append("\n# The sheets\n")
-    L += [su.sheet(r, f"{t['known_as']} ({t['id']})") for t, r in zip(talkers, raws)]
+    L += [su.sheet(r, f"{t['known_as']} ({t['id']})", bands=su.TALK_BANDS) for t, r in zip(talkers, raws)]
     return "\n".join(L) + "\n"
 
 
@@ -149,11 +162,12 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--built")
     ap.add_argument("--out")
     ap.add_argument("--report", help="where the reader writes its findings (named in the brief)")
+    ap.add_argument("--part", help="i/n: a settlement's i-th of n slices of talkers (one reader each)")
     a = ap.parse_args(argv)
     key = a.what.rsplit(".", 1)[-1]
     report = a.report or (f"story/design/quests/review/truth/{key}.md" if not a.what.startswith("bmv.")
                           else f"story/design/quests/review/truth/talkers-{key}.md")
-    text = build_settlement(a.what, report) if a.what.startswith("bmv.") else build_quest(a.what, a.built, report)
+    text = build_settlement(a.what, report, a.part) if a.what.startswith("bmv.") else build_quest(a.what, a.built, report)
     if a.out:
         Path(a.out).write_text(text)
         print(f"wrote {a.out} ({len(text)} characters)")

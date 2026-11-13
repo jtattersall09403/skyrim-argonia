@@ -75,7 +75,7 @@ LANDMARK = [
     ("bigtree", r"giantredwood|treegiant|giant.?tree|bigtree", "the giant tree", 7, 1200),
     ("bigtree", r"vurt_deadtree|deadtree|treepineforestdead", "the dead tree", 6, 600),
     ("ruinhouse", r"destroyed|burnt|burned", "the burnt-out house", 7, 900),
-    ("ruin", r"dwemer|dwespecial|dweruin", "the Dwemer ruin", 9, 900),
+    ("ruin", r"dwemer(?!\\roads\\)|dwespecial|dweruin", "the Dwemer ruin", 9, 900),   # a Dwemer road piece is a road
     ("ruin", r"ayleid|arcolumn", "the old stone columns", 8, 600),
     ("ruin", r"xanmeer|ziggurat", "the stepped ruin", 9, 900),
     ("ruin", r"ruins?", "the ruin", 8, 900),
