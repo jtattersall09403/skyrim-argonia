@@ -58,7 +58,7 @@ Sheet-wide note: only Nuxi-Ra shows a work faction (street vendor); every other 
 - event: 2 (1 unsure)
 - system: 2
 
-Outcome: fixed 30, queued for a writer 0, stand 14.
+Outcome: fixed 31, queued for a writer 0, stand 13 (counted from the outcome column).
 
 ## Truth reading: talkers of bmv.blackrose, part 2/2
 
@@ -102,4 +102,4 @@ Outcome: fixed 30, queued for a writer 0, stand 14.
 - event: 3
 - system: 1
 
-Outcome: fixed 25, queued for a writer 0, stand 5.
+Outcome: fixed 26, queued for a writer 0, stand 4 (counted from the outcome column).

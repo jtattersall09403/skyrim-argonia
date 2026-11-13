@@ -17,7 +17,7 @@
 {"talker":"00FF4F:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"You want something from me? Mind the goats. I stand by the sacks, so speak."}
 {"talker":"00FF4F:Black Marsh.esm","topic":"talk.here","ord":1,"text":"The plantation lies just south of here. Goats and chickens wander round here, and I mind the sacks. Ha."}
 {"talker":"00FF4F:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"A debt in Black Marsh is paid in work. An arbitrator turns the loss into months of labour, which we count in nushmeekos. When the months are worked, it is over. A holder owed months can also sell them to a man who needs hands. The worker goes with them. I do not say that to be pitied. Ha."}
-{"talker":"00FF4F:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Lifts-The-Sacks. I stand by the sacks. My uncle ran up a debt, and I am working it off. Ha."}
+{"talker":"00FF4F:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Lifts-The-Sacks. I stand by the sacks. My uncle ran up a debt. I am working it off. Ha."}
 {"talker":"00FF4F:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Reads-The-Shallows is the boat captain. You will find her just north of here. She thanks a hand for the work. Few do. Ha."}
 {"talker":"01512B:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"There you are, my friend. You are thinner than last time. Sit by the campfire and eat something."}
 {"talker":"01512B:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Well, hatchling, you look hungry. Eat something."}
@@ -25,12 +25,12 @@
 {"talker":"01512B:Black Marsh.esm","topic":"talk.here","ord":1,"text":"The campfire is just north of where I stand. I stand near it because hungry people buy, hatchling."}
 {"talker":"01512B:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Salith. I came up from Lilmoth to sell food to the hands, and I stayed because the plantation has no other seller."}
 {"talker":"01512B:Black Marsh.esm","topic":"talk.services","ord":1,"text":"I sell food and small goods, hatchling. The hands come here hungry, so I feed them."}
-{"talker":"01512B:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Okan-Wul is usually about the campfire. I make sure he eats. Tumeesh is about it too, sweet and lazy. Uleesh fishes the open water west of Lilmoth, far east of here, and sells me my fish. There is no more honest man on that water."}
+{"talker":"01512B:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Okan-Wul is usually about the campfire. I make sure he eats. Tumeesh is about it too and is sweet and lazy. Uleesh fishes the open water west of Lilmoth, far east of here, and sells me my fish. There is no more honest man on that water."}
 {"talker":"01512C:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Ah, it is you, my friend. What if I showed you the huts? I would like to build one that outlasts the rains."}
 {"talker":"01512C:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Stranger. What do you want?"}
 {"talker":"01512C:Black Marsh.esm","topic":"talk.here","ord":1,"text":"The plantation lies just south-west of here. The hands' huts stand just north-west of here. The wall is just south. Few people look at it, but I do."}
 {"talker":"01512C:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"What if a quarrel could be settled with a good wall instead of an argument? In Lilmoth it is settled by the elders instead. People take their quarrels to them, retired Shadowscales among them, not to any court."}
-{"talker":"01512C:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Okan-Wul. I keep near the huts north-west of here, and I wait near Salith. I want to build something that will not rot in a season."}
+{"talker":"01512C:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Okan-Wul. I keep near the huts north-west of here. I wait near Salith. I want to build something that will not rot in a season."}
 {"talker":"01512C:Black Marsh.esm","topic":"talk.trade","ord":1,"text":"Joints and roofs are what I know. The carpenter's workbench stands just south-west of here, and the armour workbench just south-south-west."}
 {"talker":"01512D:Black Marsh.esm","topic":"talk.danger","ord":1,"text":"Slaughterfish swim in the water just north of here, and more just south-west. They take the catch off my line. A big mudcrab wanders the shore just south-west, so keep out of the water, dry-foot."}
 {"talker":"01512D:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Lilmoth? Follow the shore east a fair way and Lilmoth is there. Keep to the dock and out of the water, dry-foot."}
@@ -38,7 +38,7 @@
 {"talker":"01512D:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Ah, you came back, my friend. Sit on the dock and watch the water with me."}
 {"talker":"01512D:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Dry-foot. Keep to the dock and do not splash. The fish are feeding."}
 {"talker":"01512D:Black Marsh.esm","topic":"talk.harvest","ord":1,"text":"Two plants and a mushroom grow a short way south-west of here. Take them from there and keep your hands out of the water, dry-foot."}
-{"talker":"01512D:Black Marsh.esm","topic":"talk.secret","ord":1,"text":"A big crab wanders the shore a short way south-west of here, and he is called Old Salty. I will say no more about him to a dry-foot I do not know."}
+{"talker":"01512D:Black Marsh.esm","topic":"talk.secret","ord":1,"text":"A big crab called Old Salty wanders the shore a short way south-west of here. I will say no more about him to a dry-foot I do not know."}
 {"talker":"01512D:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Uleesh. I fish the open water west of Lilmoth. The rent in the city is more than I can get for fish, so I stay out here. Twenty years on the same water now."}
 {"talker":"01512E:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Lilmoth. Follow the shore north, a short way, until you come to the dead tree on your left. Then walk south-east, a short way. Lilmoth is there."}
 {"talker":"01512E:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"You came back, my friend. I was watching the water and the clouds, too. Tell me what the sky was like on your road."}
@@ -54,7 +54,7 @@
 {"talker":"015193:Black Marsh.esm","topic":"talk.here","ord":1,"text":"The plantation lies east of the barrels, guest. The tables stand just west of the barrels, and a bed south-west of them. Touch nothing with muddy hands."}
 {"talker":"015193:Black Marsh.esm","topic":"talk.secret","ord":1,"text":"A chest stands just west of the barrels, guest. That is all I will say of it to a stranger."}
 {"talker":"015193:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Neeta-Lei. I am a servant of the plantation, and I keep near it in case I am called. We take some pride in it."}
-{"talker":"015193:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Looks-At-Books stands by the tables, just west of the barrels. She is the only person here worth talking to, guest. Hurz-Weel is about the barrels. He tramps mud about the place, and I do not forgive it."}
+{"talker":"015193:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Looks-At-Books stands by the tables, just west of the barrels. She is the only person here with whom a talk is worth having, guest. Hurz-Weel is about the barrels. He tramps mud about the place, and I do not forgive it."}
 {"talker":"015195:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The dock, rider? Go east a fair way, until Lilmoth is on your right. Keep on east a short way, to the burnt-out house on your left. Then turn south-east a short way, and there is Lilmoth Dock."}
 {"talker":"015195:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Hm, it is you. Come and stand with me, friend."}
 {"talker":"015195:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Hm. Yes, rider? Speak up."}
@@ -218,7 +218,7 @@
 {"talker":"01CD0A:Black Marsh North.esp","topic":"talk.self","ord":2,"text":"Most call me a slave, outlander. I have heard the name of Heita-Meen. I no longer think about walking away."}
 {"talker":"01CD0A:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Ukka-Meesh is the guard at the town's centre, outlander, just south-south-east of here."}
 {"talker":"01CD0A:Black Marsh North.esp","topic":"talk.trade","ord":1,"text":"In a labourer's account the days of food outnumber the days of work, outlander. They always do."}
-{"talker":"01CD0A:Black Marsh North.esp","topic":"talk.trade","ord":2,"text":"I am held under my Owing. In my account the days I eat always outnumber the days I work."}
+{"talker":"01CD0A:Black Marsh North.esp","topic":"talk.trade","ord":2,"text":"I am held under my Owing. In my account the days on which I eat always outnumber the days on which I work."}
 {"talker":"02A1E7:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Lilmoth Dock, walker. Go north-east a fair way. The burnt-out house stands on the way, and the dock lies past it."}
 {"talker":"02A1E7:Black Marsh.esm","topic":"talk.directions","ord":2,"text":"Lilmoth lies north, walker. It is a fair way on foot. We stay clear of its rents."}
 {"talker":"02A1E7:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Walker, my friend, welcome. Sit by the spit. There is always a place here for you."}
@@ -231,14 +231,14 @@
 {"talker":"02A1E7:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Tseeta has her stall just north of this spit. She haggles too hard, and the village is better for her anyway. Okeeh-Jas sells from hers, just south-south-west."}
 {"talker":"02A1E9:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"It is you, it is you! Did you see the boats come in? Huge, the big one, huge!"}
 {"talker":"02A1E9:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Who are you, big one? Where did you come from? What are you carrying? Is any of it shiny?"}
-{"talker":"02A1E9:Black Marsh.esm","topic":"talk.harvest","ord":1,"text":"Leeks? Wild leeks grow just north-west of here. The fish barrels are just north-east, and I hate them because they smell. Emperor Parasol Moss hangs a short way north, big one. I have not been told what it is for."}
+{"talker":"02A1E9:Black Marsh.esm","topic":"talk.harvest","ord":1,"text":"Leeks? Wild leeks grow just north-west of here. The fish barrels are just north-east. I hate them because they smell. Emperor Parasol Moss hangs a short way north, big one. I have not been told what it is for."}
 {"talker":"02A1E9:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is our village, big one. Look, a rowboat, drawn up just east-north-east of here. It is a huge boat. I am not going to ask you for a ride."}
 {"talker":"02A1E9:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Peeks-Under-Boats. I look at everything. One day I will be a boat captain, big one. The boats do not obey me yet."}
 {"talker":"02A1E9:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Flaa Heet, the headman, is usually by the cooking spit, just south of here. He knows a great deal, big one. Hums-To-The-Rain is just south-south-west, on the west side of the village. Hums-To-The-Rain sings too much."}
 {"talker":"02A1ED:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Soulrest, buyer? That is where the real coin is. Follow the shore north-east, a short way past the rowing boat, until the burnt-out house is on your right. Walk north-east a short way to the big ship, then follow the shore north-east a short way until Lilmoth Dock is on your right. From there climb south-east a fair way. Soulrest is there. Good trade."}
 {"talker":"02A1ED:Black Marsh.esm","topic":"talk.directions","ord":2,"text":"Hereguard? Walk north-west a fair way until Lilmoth is on your right. Then follow the shore west a short way until you reach the dead tree on your right. Walk south-west a short way from the tree, and Hereguard Plantation is there."}
 {"talker":"02A1ED:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Good trade comes back. Come closer and I will set aside the best of the day for you before anyone else sees it. Okeeh-Jas does not need to hear about it."}
-{"talker":"02A1ED:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Buyer. Whoever comes in from the dock meets mine first. Look here before you look anywhere else."}
+{"talker":"02A1ED:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Buyer. Whoever comes in from the dock meets my stall first. Look here before you look anywhere else."}
 {"talker":"02A1ED:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Tseeta. I sell the village's surplus to whoever walks in from the dock. I took the north side so that I meet buyers before Okeeh-Jas does."}
 {"talker":"02A1ED:Black Marsh.esm","topic":"talk.services","ord":1,"text":"Food and small goods, buyer. Show me your coin and I will name a price. Good trade."}
 {"talker":"02A1ED:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Okeeh-Jas has the other stall, just south of mine. You can see it from here. Watch how she smiles when she names her price, buyer."}
@@ -258,12 +258,12 @@
 {"talker":"02A1F2:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Okeeh-Jas. This is my stall, south side, by the rowboat. I married into this village and I still talk like the city, they tell me. I trade with anyone who lands. I like the gossip as much as the coin."}
 {"talker":"02A1F2:Black Marsh.esm","topic":"talk.services","ord":1,"text":"I sell food and small goods from this stall, and the fish is fresh, whatever you may have heard. Look all you like. I will laugh at my own prices with you."}
 {"talker":"02A204:Black Marsh.esm","topic":"talk.advice","ord":1,"text":"Wet, customer? A short way east of our bedrolls there is a door that leads indoors. A fighter should get out of the rain."}
-{"talker":"02A204:Black Marsh.esm","topic":"talk.danger","ord":1,"text":"Ripper eels, customer. They swim in the water a short way north-west of our bedrolls, and they bite. Keep your guard up."}
+{"talker":"02A204:Black Marsh.esm","topic":"talk.danger","ord":1,"text":"Watch for ripper eels, customer. They swim in the water a short way north-west of our bedrolls, and they bite. Keep your guard up."}
 {"talker":"02A204:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Lilmoth Dock, customer? Follow the boards east, just until the burnt-out house is on your right. Then go north-east a short way, and you will see the dock."}
 {"talker":"02A204:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Ha! Look who it is, my friend. Sit by the fire. I am glad of a face that I trust."}
 {"talker":"02A204:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Well, customer. Got coin, or just questions?"}
 {"talker":"02A204:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Haxal-Tei. I fight for whoever pays the band. I talk the terms, so if you want a job done, you talk to me."}
-{"talker":"02A204:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"The band is camped here. Keeps-Both-Edges is just west of these bedrolls, and Heem-Tsal, the fire mage, is just past him. I trust Keeps-Both-Edges with my purse."}
+{"talker":"02A204:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"The band is camped here. Keeps-Both-Edges is just west of these bedrolls. Heem-Tsal, the fire mage, is just past him. I trust Keeps-Both-Edges with my purse."}
 {"talker":"02A205:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"You mean the Dwemer ruin, ojel. Walk north-east a short way until the big ship is on your left, then follow the shore south-east just until you reach the burnt-out house, also on your left. From there climb east over open ground a fair way until you reach Soulrest on your left, then climb east a short way more, and the ruin is there."}
 {"talker":"02A205:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Ah, I am glad of you. Sit by me and ask whatever you like. I will answer it properly."}
 {"talker":"02A205:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Yes, ojel? If you want something, say it plainly."}
@@ -333,7 +333,7 @@
 {"talker":"03E415:Black Marsh North.esp","topic":"talk.advice","ord":1,"text":"If your gear needs tightening, boss, there is an armour workbench just north-north-east of here. Use it before you go wandering, not after."}
 {"talker":"03E415:Black Marsh North.esp","topic":"talk.danger","ord":1,"text":"Mind the mushroom south-east of here, boss. You do not want to eat it."}
 {"talker":"03E415:Black Marsh North.esp","topic":"talk.greet-friend","ord":1,"text":"Well, look who it is. Come over, my friend. There is shade here and Hard-Scale is not looking. Sit a while."}
-{"talker":"03E415:Black Marsh North.esp","topic":"talk.greet-stranger","ord":1,"text":"Hm. New face, boss. Whatever you want, make it quick. Hard-Scale likes to count."}
+{"talker":"03E415:Black Marsh North.esp","topic":"talk.greet-stranger","ord":1,"text":"Hm. New face, boss. Whatever you want, make it quick. Hard-Scale likes to count anything that moves."}
 {"talker":"03E415:Black Marsh North.esp","topic":"talk.loot","ord":1,"text":"There is a ship a short way south of here. Weapons, a plate and a captain's journal lie by it. I am only saying, boss."}
 {"talker":"03E415:Black Marsh North.esp","topic":"talk.loot","ord":2,"text":"A passage door near that ship leads in, a short way south of here. Do not tell Hard-Scale you heard it from me."}
 {"talker":"03E415:Black Marsh North.esp","topic":"talk.self","ord":1,"text":"Rakhee-Tul. The Lilmoth council pays me to stand by the benches here, east of the plantation. I took the post for the pay. I will not pretend otherwise."}
@@ -350,11 +350,11 @@
 {"talker":"05D7C8:Black Marsh.esm","topic":"talk.directions","ord":3,"text":"Lilmoth Dock, traveller? Walk west a short way, until the big ship is on your left, and then climb west a fair way. The dock is there."}
 {"talker":"05D7C8:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Easy water, my friend! Sit by me a while. There is room on the benches. I chose Soulrest over Lilmoth Dock because there is no licence to be shown here. Now I have good company besides."}
 {"talker":"05D7C8:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Easy water, traveller. This is Soulrest, and I am a boat captain here. Where are you going, and do you need a boat to get there?"}
-{"talker":"05D7C8:Black Marsh.esm","topic":"talk.here","ord":1,"text":"Soulrest keeps its docks just west of here, traveller. A large ship lies a short way to the west-south-west, with a door aboard if you want to look inside."}
+{"talker":"05D7C8:Black Marsh.esm","topic":"talk.here","ord":1,"text":"The docks of Soulrest lie just west of here, traveller. A large ship lies a short way to the west-south-west, with a door aboard if you want to look inside."}
 {"talker":"05D7C8:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"Lilmoth fell, traveller. The outside traders went elsewhere after that. Alten Merihall's merchants have taken much of the bay's trade since then. That is where the money is now. I would carry you there gladly."}
 {"talker":"05D7C8:Black Marsh.esm","topic":"talk.rumours","ord":1,"text":"I hear Heavy-Rope leads a crew on Soulrest's dock. The crew want their season ended early, traveller. The broker who hires them out will not hear of it. I only watch from the docks, so go and ask Heavy-Rope yourself."}
 {"talker":"05D7C8:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Seeks-The-Channel, a boat captain who puts in at Soulrest, east of Lilmoth Dock. I keep by the docks, west of the fire. I chose this place because no licence is asked for here."}
-{"talker":"05D7C9:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"You are back, my friend. Come over. I will sell you what I have at last season's price, and not a coin more."}
+{"talker":"05D7C9:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"You are back, my friend. Come over. I will sell you what I have at last season's price and charge not a coin more."}
 {"talker":"05D7C9:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Outsider. Buy something or move along. Do not touch the goods."}
 {"talker":"05D7C9:Black Marsh.esm","topic":"talk.harvest","ord":1,"text":"You will find creep cluster a short way south of here. Pick your own. Mine are for sale."}
 {"talker":"05D7C9:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is Soulrest. Houses open onto it, one just south of me and another just south-east. Keep your hands off the doors, outsider."}
@@ -364,7 +364,7 @@
 {"talker":"05D7CA:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Hello again! Sit by the fire with me, and I will tell you what the grown-ups said today."}
 {"talker":"05D7CA:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Hello, sir. Or miss. Please, do you smile?"}
 {"talker":"05D7CA:Black Marsh.esm","topic":"talk.harvest","ord":1,"text":"Creep cluster grows in a patch, miss. It is a short way south of here."}
-{"talker":"05D7CA:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is Soulrest, sir. A deer stands just north-west of here."}
+{"talker":"05D7CA:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is Soulrest, miss. A deer stands just north-west of here."}
 {"talker":"05D7CA:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Little-Gecko. I sit in the middle, sir, where the grown-ups talk, so I hear everything. One day I will be a boat captain."}
 {"talker":"05D7CA:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Seeks-The-Channel, the boat captain, is the best captain there is. Feldril Nethri, the Dunmer, is kind to me, miss."}
 {"talker":"05D7CB:Black Marsh.esm","topic":"talk.danger","ord":1,"text":"A Tree Mother lives a short way south-south-east of here, child. I would not go looking for it."}
@@ -372,7 +372,7 @@
 {"talker":"05D7CB:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Mind your step, child."}
 {"talker":"05D7CB:Black Marsh.esm","topic":"talk.harvest","ord":1,"text":"Creep cluster grows a short way south of here, child. I do not go that far now."}
 {"talker":"05D7CB:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"An Argonian kept long from the Hist grows pale, child. The colour thins and the markings go soft. When they go home, it all comes back."}
-{"talker":"05D7CB:Black Marsh.esm","topic":"talk.rumours","ord":1,"text":"Careful hands are sometimes of use to Tilts-The-Jug, child. Inside one of the houses here, I am told. I always look at a stranger's hands first. Let me see yours."}
+{"talker":"05D7CB:Black Marsh.esm","topic":"talk.rumours","ord":1,"text":"Careful hands are sometimes of use to Tilts-The-Jug, child. I am told that Tilts-The-Jug is inside one of the houses here. I always look at a stranger's hands first. Let me see yours."}
 {"talker":"05D7CB:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Plaits-The-Reed. I used to weave mats and baskets for the families here, and for the boats. My husband is out fishing, child. He will be back soon."}
 {"talker":"05D7CB:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Xeeh-Nah keeps near the benches. Xeeh-Nah should marry, I always say. Go and see, child."}
 {"talker":"05D7CC:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Warrior! You are here! Did you bring the sword? Show me, show me, I will not touch it."}
@@ -391,9 +391,9 @@
 {"talker":"05D7CD:Black Marsh.esm","topic":"talk.trade","ord":1,"text":"I am a hand about the docks. The big ship lies a short way west of here. Its door leads aboard."}
 {"talker":"0616E8:Black Marsh North.esp","topic":"talk.greet-friend","ord":1,"text":"Ah, it is you. Few people trouble to cross to this end of Soulrest. I do not forget the ones who do. Stay a while, friend."}
 {"talker":"0616E8:Black Marsh North.esp","topic":"talk.greet-stranger","ord":1,"text":"Well, outlander. You have found the corner of Soulrest where visitors do not come by choice. State your business and I shall tell you whether I can oblige."}
-{"talker":"0616E8:Black Marsh North.esp","topic":"talk.here","ord":1,"text":"This is Soulrest, outlander. I am not permitted by the fire with the families, so I am put at this end. A house door is just west of me and another just east-south-east. The fire burns just south-east, though I would not say I am welcome to it."}
+{"talker":"0616E8:Black Marsh North.esp","topic":"talk.here","ord":1,"text":"This is Soulrest, outlander. The families do not allow me by the fire, so I sit at this end. A house door is just west of me and another just east-south-east. The fire burns just south-east, though I would not say I am welcome to it."}
 {"talker":"0616E8:Black Marsh North.esp","topic":"talk.lore","ord":1,"text":"Here a debt is paid in work, outlander. An arbitrator turns the loss into months of labour that are counted in nushmeekos. When the months are worked the matter is over, so they say. Once, foreigners without a licence were kept to the docks at Lilmoth and barred from the city."}
-{"talker":"0616E8:Black Marsh North.esp","topic":"talk.rumours","ord":1,"text":"I hear the crew that Heavy-Rope leads works Soulrest's dock, outlander. They want their season ended early. The broker who hires out their labour refuses. I was a trader once, and I know a broker's terms win over a man's wishes. Ask for Heavy-Rope there."}
+{"talker":"0616E8:Black Marsh North.esp","topic":"talk.rumours","ord":1,"text":"I hear the crew led by Heavy-Rope works Soulrest's dock, outlander. The crew wish the season ended early. The broker who hires out their labour refuses. I was a trader once, and I know a broker's terms win over a man's wishes. Ask for Heavy-Rope there."}
 {"talker":"0616E8:Black Marsh North.esp","topic":"talk.self","ord":1,"text":"I am Feldril Nethri, a Dunmer. For now I am a guest of this marsh, though the hospitality has terms. I came to trade. I lost a cargo and was assessed months of labour. I cannot see when they will end, outlander."}
 {"talker":"0616E8:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"There is a child called Little-Gecko. She is kind to me, which is more than I can say for most under this sky. I would thank you not to trouble her."}
 {"talker":"084A85:Black Marsh.esm","topic":"talk.advice","ord":1,"text":"Sit on the bench, tall one. It is just south-east of here. Your feet must be tired."}
@@ -402,7 +402,7 @@
 {"talker":"084A85:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"You, tall one. Who are you? Where did you come from? Did you walk through the water? I saw your feet."}
 {"talker":"084A85:Black Marsh.esm","topic":"talk.harvest","ord":1,"text":"Lily pads? They float on the water just west of here. More float just west-south-west."}
 {"talker":"084A85:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is Low-Reed Village. I know every face in it. The rowing boat lies on the water just west of here. Do not touch it, tall one."}
-{"talker":"084A85:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Ree-Nakka. I am a hatchling of this village. Who are you?"}
+{"talker":"084A85:Black Marsh.esm","topic":"talk.self","ord":1,"text":"Ree-Nakka is my name, a hatchling of this village. Who are you?"}
 {"talker":"084A85:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Mends-The-Nets keeps by the benches just south-east of here. That is the cleverest person in the village. Ixa-Mee keeps near the huts just north-east. Ixa-Mee is a tattler. Keep your secrets from that one."}
 {"talker":"084A86:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Stranger. Go east round the cliffs a short way, until you reach the giant tree. Then go west over open ground a fair way, until the burnt-out house is on your left. Go west a fair way more, and you will find the Dwemer ruin."}
 {"talker":"084A86:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"It is you. I am glad, my friend. I will not whisper this time."}
@@ -484,18 +484,18 @@
 {"talker":"08D5E9:Black Marsh North.esp","topic":"talk.here","ord":1,"text":"This is the road to Helstrom, outlander. Dwemer ruins stand just south-west of me. A stone tower stands just east-south-east, and houses just north-west."}
 {"talker":"08D5E9:Black Marsh North.esp","topic":"talk.here","ord":2,"text":"Shallow water lies just south-west of here, with bridges just south-south-west and just south-west. Do not wander far from the path."}
 {"talker":"08D5E9:Black Marsh North.esp","topic":"talk.lore","ord":1,"text":"Helstrom has never been taken by an army. After the Battle of Argonia the Empire never tried. The Imperial historians call our guard brutes. I do not care what they write."}
-{"talker":"08D5E9:Black Marsh North.esp","topic":"talk.self","ord":1,"text":"I am Gih-Xaleel, a warden of Helstrom's levy. I keep this road and I decide who walks it. Helstrom has never been taken, and I mean to see it stays so."}
+{"talker":"08D5E9:Black Marsh North.esp","topic":"talk.self","ord":1,"text":"I am Gih-Xaleel, a warden of Helstrom's levy. I keep this road and I decide who walks it. Helstrom has never been taken. I mean to see that it stays so."}
 {"talker":"08D5E9:Black Marsh North.esp","topic":"talk.services","ord":1,"text":"I sell nothing. I keep the gate. An iron door just north-north-west of here leads into a hall where a soldier of the levy stands guard."}
 {"talker":"08D5E9:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Sells-Dear the boat captain is a short way west of here. Weesa-Nur is a short way west-south-west. Sells-Dear is sharp but honest."}
 {"talker":"08D5EA:Black Marsh North.esp","topic":"talk.directions","ord":1,"text":"Helstrom? Walk south-west a short way, and the bridge is on your left. Go on along the shore south-west a short way, and you reach the old stone columns on your left. Then keep to the shore south a short way more. Helstrom is there."}
 {"talker":"08D5EA:Black Marsh North.esp","topic":"talk.directions","ord":2,"text":"Gih-Xaleel keeps his post. Go along the shore north a short way. He is there."}
-{"talker":"08D5EA:Black Marsh North.esp","topic":"talk.greet-friend","ord":1,"text":"You are back, my friend. I have kept my count since you left. The count is better with you here. What do you carry today?"}
+{"talker":"08D5EA:Black Marsh North.esp","topic":"talk.greet-friend","ord":1,"text":"You are back, my friend. I have kept watch on the crates since you left, and I am glad you are here. What do you carry today?"}
 {"talker":"08D5EA:Black Marsh North.esp","topic":"talk.greet-stranger","ord":1,"text":"Newcomer. I count what I can. I also count who walks off with it. What do you carry, and how heavy is it?"}
 {"talker":"08D5EA:Black Marsh North.esp","topic":"talk.here","ord":1,"text":"Look at the ruin below, just north-east of here. An iron door just south-south-east leads indoors, and a house stands just south-south-west. That is all I count in this spot."}
 {"talker":"08D5EA:Black Marsh North.esp","topic":"talk.rumours","ord":1,"text":"Newcomer. A beast in the shallows took one of the landing crew, and no raft has gone out since. I count nothing off the rafts until one does. Okan-Zish of that crew is on the rock roots by the bridge, and he wants it dealt with."}
 {"talker":"08D5EA:Black Marsh North.esp","topic":"talk.self","ord":1,"text":"I am Counts-Every-Crate. I took a city name for city work. I was born in the interior. There a sack of food is worth more to me than a purse. How many sacks do you carry, newcomer?"}
 {"talker":"08D5EA:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Gih-Xaleel, the levy warden, keeps his post a short way north of here. He is exact. I respect that. Go to him if you need a man who keeps order."}
-{"talker":"08D5EA:Black Marsh North.esp","topic":"talk.trade","ord":1,"text":"I count what folk carry past the dock. It is just west-north-west of here. In the deep interior food, tools and safe passage are worth more than coin. I still think so."}
+{"talker":"08D5EA:Black Marsh North.esp","topic":"talk.trade","ord":1,"text":"I count what folk carry past the dock, which is just west-north-west of here. In the deep interior, food, tools and safe passage are worth more than coin. I still think that is true."}
 {"talker":"08D5EB:Black Marsh North.esp","topic":"talk.directions","ord":1,"text":"Helstrom, walker. Go south-west, just as far as the bridge, and keep it on your left. Follow the shore on south-west a short way, until you reach the old stone columns on your left. Then keep to the shore south a short way more, and you are there."}
 {"talker":"08D5EB:Black Marsh North.esp","topic":"talk.greet-friend","ord":1,"text":"Sit, my friend. The bench is long enough for two. The bridges are quiet."}
 {"talker":"08D5EB:Black Marsh North.esp","topic":"talk.greet-stranger","ord":1,"text":"Well, walker. What brings you to my bridges?"}
@@ -521,7 +521,7 @@
 {"talker":"08D5EC:Black Marsh North.esp","topic":"talk.trade","ord":2,"text":"I serve the levy at this bridge, just north of where we stand. Benches stand near, one just south-east of here and one just west."}
 {"talker":"08D5EE:Black Marsh North.esp","topic":"talk.directions","ord":1,"text":"Helstrom, dry-foot? I know that shore better than any boat captain. Follow the shore south a short way, and Helstrom is there."}
 {"talker":"08D5EE:Black Marsh North.esp","topic":"talk.greet-friend","ord":1,"text":"Good, a face I know. Stay a while and watch the water with me, friend. Trade is slow, but the company is better."}
-{"talker":"08D5EE:Black Marsh North.esp","topic":"talk.greet-stranger","ord":1,"text":"Dry-foot. I know this water better than anyone. Nothing bigger than a raft for one is worth the trust."}
+{"talker":"08D5EE:Black Marsh North.esp","topic":"talk.greet-stranger","ord":1,"text":"Dry-foot. I know this water better than anyone. I trust no craft bigger than a raft for one."}
 {"talker":"08D5EE:Black Marsh North.esp","topic":"talk.here","ord":1,"text":"This is the shallows by the bridge. An iron door just west-south-west of here leads indoors. Houses with doors stand just south-west, and a bridge crosses just north-east."}
 {"talker":"08D5EE:Black Marsh North.esp","topic":"talk.lore","ord":1,"text":"My people, the Agaceph, travel on thin rafts made for one, pushed along by the tail. I have never trusted anything bigger. For Helstrom and the Empire, ask Teeka-Xul."}
 {"talker":"08D5EE:Black Marsh North.esp","topic":"talk.self","ord":1,"text":"I am Okan-Zish, an Agaceph rafter. Wuleen-Taza is of my crew."}
@@ -549,7 +549,7 @@
 {"talker":"08D5F1:Black Marsh North.esp","topic":"talk.greet-stranger","ord":1,"text":"Buyer! You look like you carry coin. Tell me what you need. I will tell you what it costs. Hah."}
 {"talker":"08D5F1:Black Marsh North.esp","topic":"talk.here","ord":1,"text":"See the door close by, just west-north-west? That is a house, just north-west of here. A second door is just east. Hah."}
 {"talker":"08D5F1:Black Marsh North.esp","topic":"talk.here","ord":2,"text":"A Dwemer ruin rises just north-north-east of here. Keep clear of it, buyer, unless you can pay for the trouble. Hah."}
-{"talker":"08D5F1:Black Marsh North.esp","topic":"talk.self","ord":1,"text":"I am Sells-Dear. I trade, and I took a city name. I took a city name, because city buyers pay a city price to a city name. Hah."}
+{"talker":"08D5F1:Black Marsh North.esp","topic":"talk.self","ord":1,"text":"I am Sells-Dear. I trade. I took a city name because city buyers pay a city price for a city name. Hah."}
 {"talker":"08D5F1:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Weesa-Nur lives just south-south-east of here. Be careful, buyer. She is a busybody who will count your coin before you do. Hah."}
 {"talker":"08D5F1:Black Marsh North.esp","topic":"talk.trade","ord":1,"text":"I trade, buyer. Okan-Zish and Wuleen-Taza work the landing, a fair way south of here. They tell every customer I cheat them. I say they should buy a boat of their own. Hah."}
 {"talker":"08D5F1:Black Marsh North.esp","topic":"talk.trade","ord":2,"text":"Out in the deep interior food, tools and safe passage are worth more than coin. Remember that, buyer, when you are hungry and a boat is the only road. Hah."}
@@ -567,7 +567,7 @@
 {"talker":"0934BB:Black Marsh North.esp","topic":"talk.here","ord":1,"text":"The dock is just north-east of here, stranger. You won't miss it."}
 {"talker":"0934BB:Black Marsh North.esp","topic":"talk.lore","ord":1,"text":"The Owing? Its defenders say it is theirs by right. It came out of their own arbitration. It ends. A prison does not. I'd call that fair."}
 {"talker":"0934BB:Black Marsh North.esp","topic":"talk.self","ord":1,"text":"Decimus Pell. I came with Aulus Varrenius's company, and I guard the ship with a bow. I keep to myself, stranger."}
-{"talker":"0934BB:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Quintus Albero. Young soldier of our company. He keeps about the ship and the dock. You'll hear him before you reach him."}
+{"talker":"0934BB:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Quintus Albero is a young soldier of our company. He keeps about the ship and the dock. You'll hear him before you reach him."}
 {"talker":"0934BB:Black Marsh North.esp","topic":"talk.trade","ord":1,"text":"I'm an archer. The company guards whoever pays it, and the field-owners pay now. That's the whole of it, stranger."}
 {"talker":"0934BC:Black Marsh North.esp","topic":"talk.greet-friend","ord":1,"text":"Oh, I was hoping you'd come by! It's good to talk to someone who isn't in the company. I'll tell you, I've been thinking of home all morning."}
 {"talker":"0934BC:Black Marsh North.esp","topic":"talk.greet-stranger","ord":1,"text":"Good day, sir or madam. Is there something I can do for you? I'm only one of the soldiers, mind, so I may not know much."}
@@ -581,7 +581,7 @@
 {"talker":"0934BD:Black Marsh North.esp","topic":"talk.directions","ord":1,"text":"Thorn? Follow the boards north-west a short way and you're there. Hard to miss, traveller."}
 {"talker":"0934BD:Black Marsh North.esp","topic":"talk.greet-friend","ord":1,"text":"Well, you know the dock by now. Mind the boards. I've a minute, if you want it."}
 {"talker":"0934BD:Black Marsh North.esp","topic":"talk.greet-stranger","ord":1,"text":"Traveller. What can I do for you? Quickly, if you can; I've my rounds to make."}
-{"talker":"0934BD:Black Marsh North.esp","topic":"talk.greet-stranger","ord":2,"text":"Well, traveller. State your business, or let me get on. I cannot stop my rounds for either of us."}
+{"talker":"0934BD:Black Marsh North.esp","topic":"talk.greet-stranger","ord":2,"text":"Traveller, say what you want or let me get on. I have my rounds to make."}
 {"talker":"0934BD:Black Marsh North.esp","topic":"talk.here","ord":1,"text":"The dock? It runs along the big ship, traveller. Watch the planks."}
 {"talker":"0934BD:Black Marsh North.esp","topic":"talk.lore","ord":1,"text":"The Empire? Quintus Albero is the one to ask, traveller. I know it's gone and I don't miss it."}
 {"talker":"0934BD:Black Marsh North.esp","topic":"talk.self","ord":1,"text":"Marius Lentulo, corporal in Aulus Varrenius's company. My grandfather was a Legion man. I'm a hired man, traveller. I carry no flag."}
@@ -593,7 +593,7 @@
 {"talker":"0934BE:Black Marsh North.esp","topic":"talk.greet-friend","ord":2,"text":"Come and stand with me a moment; there's no hurry. I'm glad of the talk."}
 {"talker":"0934BE:Black Marsh North.esp","topic":"talk.greet-stranger","ord":1,"text":"Good day, traveller. That's an accent I can't quite place. What can I do for you?"}
 {"talker":"0934BE:Black Marsh North.esp","topic":"talk.greet-stranger","ord":2,"text":"Traveller. Keep to the boards and you'll come to no harm. Something I can help with?"}
-{"talker":"0934BE:Black Marsh North.esp","topic":"talk.here","ord":1,"text":"Not much to it, traveller. The docks lie south of town, by the big ship."}
+{"talker":"0934BE:Black Marsh North.esp","topic":"talk.here","ord":1,"text":"There's not much to it, traveller. The docks lie south of town, by the big ship."}
 {"talker":"0934BE:Black Marsh North.esp","topic":"talk.lore","ord":1,"text":"Ask Quintus Albero about the Empire, traveller; I can't tell you much of it. I was born here. Black Marsh is the only home I know."}
 {"talker":"0934BE:Black Marsh North.esp","topic":"talk.self","ord":1,"text":"Gaius Fennic, traveller. I was born in Black Marsh of Imperial parents, and I speak a little Jel besides. I've never seen the Empire, so I count myself as from here."}
 {"talker":"0934BE:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"That's Holds-The-Tally, the guard at the south dock. I like him; he's a good sort, and he'll tell you straight."}
@@ -619,7 +619,7 @@
 {"talker":"0934C1:Black Marsh North.esp","topic":"talk.here","ord":1,"text":"There are signposts on the west side of town, civilian. Read them before you go wandering about."}
 {"talker":"0934C1:Black Marsh North.esp","topic":"talk.lore","ord":1,"text":"Ask Decimus Pell why the Owing is defended, civilian. I hold that it is fair, and I keep order on that footing."}
 {"talker":"0934C1:Black Marsh North.esp","topic":"talk.self","ord":1,"text":"Rufio Casca, soldier of the company. I guard the west cages with the Argonian guards, and I say the Owing is fair to anyone who asks."}
-{"talker":"0934C1:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Wazei-Ru is a guard of the west side, civilian. Soft on the prisoners, and I've told Wazei-Ru so."}
+{"talker":"0934C1:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Wazei-Ru is a guard of the west side, civilian. He is soft on the prisoners, and I've told him so."}
 {"talker":"0934C1:Black Marsh North.esp","topic":"talk.trade","ord":1,"text":"The company keeps watch on the west cages for the field-owners, civilian. We keep the doors shut and the prisoners where they belong."}
 {"talker":"0934C2:Black Marsh North.esp","topic":"talk.directions","ord":1,"text":"Temple Pass, traveller? Follow the path north a short way, until you reach the stone tower on your left. Then walk north over open ground a fair way, and you are there. Go steady."}
 {"talker":"0934C2:Black Marsh North.esp","topic":"talk.greet-friend","ord":1,"text":"Sit a moment if you like. My feet are glad of the excuse."}
@@ -643,13 +643,13 @@
 {"talker":"0934C4:Black Marsh North.esp","topic":"talk.here","ord":1,"text":"This is the north side, party, near the houses. A house stands just south-east of here."}
 {"talker":"0934C4:Black Marsh North.esp","topic":"talk.lore","ord":1,"text":"Ask Mils Ganthis about the charges on an Owing, party. I check every sum I write twice."}
 {"talker":"0934C4:Black Marsh North.esp","topic":"talk.lore","ord":2,"text":"Decimus Pell is the one to ask about the Owing, party. I say it is fair because it ends."}
-{"talker":"0934C4:Black Marsh North.esp","topic":"talk.self","ord":1,"text":"I am Tallies-Twice. I am a Tax Heel of the north side, and I face the rising. I want it gone from this side."}
+{"talker":"0934C4:Black Marsh North.esp","topic":"talk.self","ord":1,"text":"I am Tallies-Twice. I am a Tax Heel of the north side, and I face the rising. I want the rising gone from this side."}
 {"talker":"0934C4:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Breaks-The-Ledger is a soldier of the rising against the Owings. He is just west of here, party. Keep your weapon near when you go; I say he will strike."}
-{"talker":"0934C4:Black Marsh North.esp","topic":"talk.trade","ord":1,"text":"I am a Tax Heel, party. I check every sum twice. Twice, always."}
+{"talker":"0934C4:Black Marsh North.esp","topic":"talk.trade","ord":1,"text":"I am a Tax Heel, party. I check every sum twice, every time."}
 {"talker":"0934C5:Black Marsh North.esp","topic":"talk.greet-friend","ord":1,"text":"Stand with us, then. A sharp blade is always welcome here."}
 {"talker":"0934C5:Black Marsh North.esp","topic":"talk.greet-stranger","ord":1,"text":"Outlander. Say what you want, or leave me."}
 {"talker":"0934C5:Black Marsh North.esp","topic":"talk.greet-stranger","ord":2,"text":"Why do you interrupt me, outlander? I have work to do."}
-{"talker":"0934C5:Black Marsh North.esp","topic":"talk.here","ord":1,"text":"Open ground and burnt-out houses, outlander. A house stands just south of here."}
+{"talker":"0934C5:Black Marsh North.esp","topic":"talk.here","ord":1,"text":"This is open ground with burnt-out houses, outlander. A house stands just south of here."}
 {"talker":"0934C5:Black Marsh North.esp","topic":"talk.lore","ord":1,"text":"Ask Fendyl Omoren about Heita-Meen, outlander. I know the story, and I mean to finish it."}
 {"talker":"0934C5:Black Marsh North.esp","topic":"talk.lore","ord":2,"text":"Ask Nalvos Brenur about the families of Thorn, outlander. Mine is a mixed one, and I will say no more of it."}
 {"talker":"0934C5:Black Marsh North.esp","topic":"talk.self","ord":1,"text":"I am Breaks-The-Ledger. I fight for the rising, outlander. That is all you need to know."}
@@ -666,7 +666,7 @@
 {"talker":"0C7250:Black Marsh.esm","topic":"talk.directions","ord":2,"text":"Haven. Walk south-east a short way, round the cliffs, to the boat on its rack. Then walk south-west a short way, past the stone tower. Haven is there."}
 {"talker":"0C7250:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"It is you. Stand by me a while, my friend. It is quiet here and I am glad of the company."}
 {"talker":"0C7250:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Stop there. State your business. Let me see what you carry."}
-{"talker":"0C7250:Black Marsh.esm","topic":"talk.here","ord":1,"text":"The tower is a short way north-north-west of here. Ahkeeh smokes fish in this town. It is the best thing in Black Rose. I stand at the edge of Black Rose and count who comes by."}
+{"talker":"0C7250:Black Marsh.esm","topic":"talk.here","ord":1,"text":"The tower is a short way north-north-west of here. Ahkeeh smokes fish in this town. The fish is the best thing in Black Rose. I stand at the edge of Black Rose and count who comes by."}
 {"talker":"0C7250:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"People say many go into Black Rose and few ever leave. Old prison staff, freed prisoners, deserters and runaways all came here and stayed. I have counted a good many of them in at the edge of town."}
 {"talker":"0C7250:Black Marsh.esm","topic":"talk.rumours","ord":1,"text":"The dead lie on the road toward Haven. They are Imperials, with an elf among them. The people of Black Rose have not gone to bury them."}
 {"talker":"0C7250:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Tzeel-Vaa, guard where Black Rose ends. I have stood here longer than the two beside me have been alive. My father guarded this same post for the same pay."}
@@ -684,7 +684,7 @@
 {"talker":"0C7252:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is Black Rose, traveller. The tower stands a short way north-north-west of here."}
 {"talker":"0C7252:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"The people of Black Rose once sent an envoy to the Imperial court. Emperor Pelagius answered him in grunts and squeaks. I do not enjoy telling it, traveller."}
 {"talker":"0C7252:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Quintel, a guard at the edge of Black Rose. I carry the name of the Imperial jailer who raised my grandmother. I answer to no other. My family has worn a uniform in Black Rose for three generations."}
-{"talker":"0C7252:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Ahkeeh, the fish smoker, keeps the fire at the edge of the town. You will usually find Ahkeeh just north-west of here."}
+{"talker":"0C7252:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Ahkeeh, the fish smoker, keeps the fire at the edge of the town, just north-west of here."}
 {"talker":"0C7253:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Black Rose Jail. Go north-east a short way, until the statue with the sword is on your left. Then north, just a little further. The jail stands there."}
 {"talker":"0C7253:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"I know your step now. Stand with me a while, if you wish."}
 {"talker":"0C7253:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Speak quietly here. I keep this stone bird as a shrine. I do not know you yet."}
@@ -703,7 +703,7 @@
 {"talker":"0C7258:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Ah, it is you. I am glad of it. Stand by me a while, it is quiet here."}
 {"talker":"0C7258:Black Marsh.esm","topic":"talk.greet-friend","ord":2,"text":"You again. Good. Stay here with me and ask what you like."}
 {"talker":"0C7258:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Hm. What do you want? Be quick about it."}
-{"talker":"0C7258:Black Marsh.esm","topic":"talk.greet-stranger","ord":2,"text":"Mind where you walk, stranger. I am watching it."}
+{"talker":"0C7258:Black Marsh.esm","topic":"talk.greet-stranger","ord":2,"text":"Mind where you walk, stranger. I am watching where you walk."}
 {"talker":"0C7258:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is below the jail. You will find a house just to the south-east."}
 {"talker":"0C7258:Black Marsh.esm","topic":"talk.here","ord":2,"text":"There is a house just south-east of us. I keep watch near it."}
 {"talker":"0C7258:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"Hm. I know little of Black Marsh, but I know the Rose. Its families are three generations deep. A newcomer owes the prison-born for shelter. The ledger is kept by people who were born owing."}
@@ -738,7 +738,7 @@
 {"talker":"0C725D:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The cooking fire? Go south, a short way. The fire is there."}
 {"talker":"0C725D:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Keep your voice low, and stand by me a while. I will not mind the company."}
 {"talker":"0C725D:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Move along, if you please. I am on watch."}
-{"talker":"0C725D:Black Marsh.esm","topic":"talk.here","ord":1,"text":"The statue with the sword is just north-west of here. The jail is there too, just beside it. I would not look at it for long."}
+{"talker":"0C725D:Black Marsh.esm","topic":"talk.here","ord":1,"text":"The statue with the sword is just north-west of here, and the jail is just beside the statue. I would not look at the statue for long."}
 {"talker":"0C725D:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"Ask Wazei about what the families call the Rose. I would rather not say it myself. He is a danger to us all, so keep your voice low when you ask."}
 {"talker":"0C725D:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am a guard. I stand nearest the jail and keep my post. That is all there is to say."}
 {"talker":"0C725D:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Pays-In-Reeds is a reed-weaver. She is kind. You will usually find her just north-north-west of here, working off her owing in mats. Ask her, not me."}
@@ -775,7 +775,7 @@
 {"talker":"0C7264:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"What do you want?"}
 {"talker":"0C7264:Black Marsh.esm","topic":"talk.greet-stranger","ord":2,"text":"Speak quickly."}
 {"talker":"0C7264:Black Marsh.esm","topic":"talk.here","ord":1,"text":"My house is just north-east of here. The dock is just east-north-east, where the small boats tie up."}
-{"talker":"0C7264:Black Marsh.esm","topic":"talk.here","ord":2,"text":"Just north-east is my house. Just east-north-east is the dock."}
+{"talker":"0C7264:Black Marsh.esm","topic":"talk.here","ord":2,"text":"My house is just north-east of here. The dock is just east-north-east."}
 {"talker":"0C7264:Black Marsh.esm","topic":"talk.rumours","ord":1,"text":"If you want something to do, Never-Sold needs a hand. The money is ready to buy a woman out of her Owing on the estate north of Blackrose. Ask at the Chainbreakers' house in the north district."}
 {"talker":"0C7264:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Mends-The-Hulls. I patch the small boats at the north-east dock, cheap and fast. My mother taught me the trade. She learned it working off an owing."}
 {"talker":"0C7264:Black Marsh.esm","topic":"talk.self","ord":2,"text":"I mend hulls. Pitch-Pot says my work is careless, but Pitch-Pot is slow and expensive. My patches hold."}
@@ -799,7 +799,7 @@
 {"talker":"0C7267:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Rows-Against-It captains a boat from the market dock, and is usually just south-south-west of here. Of all the captains, that is the one who pays on time."}
 {"talker":"0C7268:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Follow the boards north-east a short way, and you will find the longboat."}
 {"talker":"0C7268:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Calm water today, and a fare I know. My boat is yours if you need her."}
-{"talker":"0C7268:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"You want a crossing, say where."}
+{"talker":"0C7268:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"If you want a crossing, say where."}
 {"talker":"0C7268:Black Marsh.esm","topic":"talk.here","ord":1,"text":"My boat is just south of here. The dock is just south-east, so mind your feet."}
 {"talker":"0C7268:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"Ask Okaw-Sei about the last of the Lilmothiit. I carry fares, not old stories. If you want a crossing, say where."}
 {"talker":"0C7268:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Rows-Against-It. I run this boat from the market dock to wherever a fare will go. I paid off my owing on the water and kept the boat. No crossing-keeper gives me orders now."}
@@ -826,7 +826,7 @@
 {"talker":"0C72A3:Black Marsh.esm","topic":"talk.here","ord":1,"text":"A boat lies just north-north-west of here. A rowing boat lies just north."}
 {"talker":"0C72A3:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"Black Rose and Lilmoth have been rivals for as long as anyone has kept count. I am a guard, not a teller of old tales."}
 {"talker":"0C72A3:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Raxa-Tum. I guard the north edge of Black Rose, where the boats lie. I was a fisher myself once."}
-{"talker":"0C72A3:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Okeemu is the best fisher in town. You will usually find Okeemu just south-west of here, at the north edge of Black Rose."}
+{"talker":"0C72A3:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Okeemu is the best fisher in town. Okeemu stands just south-west of here, at the north edge of Black Rose."}
 {"talker":"0C72A4:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The jail. Walk south-west a short way. Black Rose Jail is there."}
 {"talker":"0C72A4:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Here you are. I keep watch, as ever. Speak if you wish."}
 {"talker":"0C72A4:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"State your business here."}
@@ -939,7 +939,7 @@
 {"talker":"1454F5:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Did you see the ship? Is it still there? I kept watch while you were gone."}
 {"talker":"1454F5:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Who are you? Are you here to see the ships? Did you drop a coin? I will look for it if you did."}
 {"talker":"1454F5:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is the east docks. The longboat is just west-north-west of here, in plain sight. The dock is just north-west. I know every board of it."}
-{"talker":"1454F5:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Tadpole. I play between the big ships and tell the crews I run their errands. One day I will sail on one. Then you will hear of me. What is your name?"}
+{"talker":"1454F5:Black Marsh.esm","topic":"talk.self","ord":1,"text":"Tadpole is my name. I play between the big ships and tell the crews I run their errands. One day I will sail on one. Then you will hear of me. What is your name?"}
 {"talker":"1454F5:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Ojeel? He unloads the big ship. He is usually just north of here. He chases me off the ship every time, so do not say I sent you."}
 {"talker":"1454FC:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Haven? Walk south-east a short way, until you reach the stone tower. Then walk south-west a short way. Haven is there."}
 {"talker":"1454FC:Black Marsh.esm","topic":"talk.directions","ord":2,"text":"The cooking fire? Walk east a fair way. You will find it there."}
