@@ -61,7 +61,7 @@ quest.local.lq25` (local).
 | 9 | `shapeData` | the sections each shape requires (`shapes.yaml`) | truth + clues |
 | 10 | `stages` | as §1, with actions, learns and directions | conclusions + clues |
 | 11 | `endings` | `{id, when, world (actions, may be left out), seen, rewards (actions)}`: two or more with real costs | stages |
-| 12 | `topics` | `{id: topic.<slug>, label, person, kind, stages, essential, when, intent, fallback, uses, hides, grants}`; the id is an existing `topic` row or `new`; `kind` is left out for a topic the player picks, `greeting`, or `speaks-first` (the person walks up and says it; it stays open as a topic too). `when` gates every line of the topic (a hand-in that moves no stage: `hasItem`); `fallback` is what the person says when the line's check fails, its gist until the lines are written. See "Checks and their fallbacks" below | cast + stages |
+| 12 | `topics` | `{id: topic.<slug>, label, person, kind, stages, essential, when, intent, fallback, uses, hides, grants}`; the id is an existing `topic` row or `new`; `kind` is left out for a topic the player picks, `greeting`, or `speaks-first` (the quest's one force-greet: placed a step from the door the player arrives through, the person greets them there; it stays open as a topic too). `when` gates every line of the topic (a hand-in that moves no stage: `hasItem`); `fallback` is what the person says when the line's check fails, its gist until the lines are written. See "Checks and their fallbacks" below | cast + stages |
 | 13 | `review` | the `quest-review` findings and how each was answered; first the writer's lore-check entries (`id: L<n>`, `severity: lore`, quest-write §5), then the reviewer's (`severity: blocking` for a quest-review §1 blocking item, otherwise `high`, `medium`, `low`) | quest-write §5, quest-review |
 
 A **line record** (faction, main, Daedric) comes before its quests: `principles/questlines.md` lists its sections.
@@ -87,6 +87,15 @@ One row per person, thing, door and marker, keyed by `ref` (the id the record us
 **One id for one thing.** A condition or action names a unique quest thing by its `ref` (`hasItem: [thing.mq03.sap-jar, 1]`),
 and a stock item by its item id (`item.lockpick`); never a unique thing's template, which would count every item of that
 base. A thing two quests place (MQ01 puts out the lockbox MQ03 uses) is stated alike in both.
+
+### The lines file
+
+The written words of a quest's topics live in `story/data/quest_lines/<code>.json` (the code in lower case), one
+entry per topic id: `{"speaker": <npc id>, "infos": [{"variant": "main" | "fail", "prompt": ..., "lines": [...],
+"facts": [<fact ids stated>]}]}`. `main` is said when the line's conditions hold; `fail` is its fallback, said when its
+check fails. Words said under another condition are a topic of their own with that condition. Until a topic has an
+entry, the compiler shows its intent as a gist. The lane that runs the dialogue writers writes this file from their
+returns; `python3 -m tools.argonia_world.echoes check` then reads it.
 
 ### Checks and their fallbacks
 

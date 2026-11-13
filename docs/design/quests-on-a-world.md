@@ -107,7 +107,7 @@ Morrowind lines as the model; the brief holding that speaker's sourced facts, th
 stand, each line's stage window, check and result, and what the others in the same place say. Then
 [text-review](../../.claude/skills/text-review/SKILL.md) by another agent: a style reader, and a truth reader who sets
 each line beside its speaker's measured surroundings and lists every claim the facts do not support. Then the paper
-players play the written quest. Lines live in the story database and nowhere else. A line tells; a question is a
+players play the written quest. Lines live in the story data (`story/data/quest_lines/<code>.json` beside the record) and nowhere else. A line tells; a question is a
 choice with a topic per reply; a line offers only what its result delivers, and a line that moves a stage never
 refuses. A prompt is a sentence the player would say with what they know. Journal entries tell one step each, in the
 first person and the past tense, only what the player has done; objectives are imperatives with a target.

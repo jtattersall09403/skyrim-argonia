@@ -6,7 +6,8 @@ description: Write the overall story of Argonia's main quest or of one faction's
 # Writing a story line
 
 The story of a whole line is written and read before any of its quests becomes a record, so a line that does not
-hold together is caught while changing it costs a page. Before this: [quest-system](../quest-system/SKILL.md) (the
+hold together is caught while changing it costs a page. A minor quest (one place's people, no line) skips this skill
+and starts at quest-write. Before this: [quest-system](../quest-system/SKILL.md) (the
 ceiling and the order of work). After this: [quest-write](../quest-write/SKILL.md), one quest at a time, from the
 outlines this skill leaves. The worked example is the Chainbreakers' line,
 [chainbreakers](../../../story/design/quests/lines/chainbreakers.md): its four sections are the shape of every line

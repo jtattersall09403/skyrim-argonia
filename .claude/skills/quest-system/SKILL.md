@@ -25,7 +25,7 @@ It is a closed list, and the form has no field for anything outside it:
 |---|---|
 | What moves a stage | a line the player picks (a topic, or an answer to a question); taking a named thing; using or reading a named thing (a door, a container, a book, a body); a named person or creature dying; another quest reaching a stage |
 | What gates a line or a stage | a quest's stage; a stored number; faction and rank; a thing held, or gold; a skill; a person alive or dead; a person's regard for the player; the player's race or sex; who is speaking; whether they have spoken before |
-| What a line or a stage does | the next stage, its journal entry and its objectives with markers; give or take things and gold; change a stored number, a faction or rank, a regard; switch a named person or thing on or off away from the player; lock or unlock a door; give the player a container's contents; show a message box; start a quest; (a line only) turn its speaker hostile |
+| What a line or a stage does | the next stage, its journal entry and its objectives with markers; give or take things and gold; change a stored number, a faction or rank, a regard; switch a named person or thing on or off away from the player (in another cell from the line's speaker or the thing taken or used, or 18,000 units from it outdoors); lock or unlock a door; give the player a container's contents; show a message box; start a quest; (a line only) turn its speaker hostile |
 | A person speaking first | one person per quest, standing a step from where the player arrives, with a marker on them and the same line open as a topic |
 | The world per quest | people placed standing where they are needed, at fixed levels; things on a measured surface or in a container (with a lock, a key and an owner where the play needs them); doors locked or unlocked |
 
@@ -53,7 +53,7 @@ describe only what stands there and what the game's systems do; a place's thing 
 | 2 | Each quest as a record that compiles to the form | [quest-write](../quest-write/SKILL.md) | the record in the database; its form passing `check` and `reach` |
 | 3 | A fresh review of the record | [quest-review](../quest-review/SKILL.md) | findings; nothing blocking left |
 | 4 | The designed quest played on paper | [quest-playtest](../quest-playtest/SKILL.md), moment 1 | runs kept; findings answered in the record |
-| 5 | The quest's dialogue, then its review | [dialogue-write](../dialogue-write/SKILL.md), [text-review](../text-review/SKILL.md) (style and truth readers) | lines in `story/data/quest_lines/`; review hits applied |
+| 5 | The quest's dialogue, then its review | [dialogue-write](../dialogue-write/SKILL.md), [text-review](../text-review/SKILL.md) (its style reader, and its truth reader against the speaker's measured surroundings) | lines in `story/data/quest_lines/`; review hits applied |
 | 6 | The written quest played on paper | quest-playtest, moment 2 | runs kept; findings answered |
 | 7 | Records into the game | [quest-build](../quest-build/SKILL.md) | the plugin seeded, read back, compared to zero, checked |
 | 8 | The built quest played on paper | quest-playtest, moment 3 | runs kept |

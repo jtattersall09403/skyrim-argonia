@@ -93,8 +93,9 @@ longer lost, bored or misled at that point. A finding a change did not clear sta
 ## 7. Keep and report
 
 - Commit every run folder; never delete one.
-- Write in the quest's review notes (`story/design/quests/review/<lane>.md`) what each round's players said, what
-  changed as one set, and which findings cleared.
+- Write in the lane's review notes (`story/design/quests/review/<lane>.md`) what each round's players said, what
+  changed as one set, and which findings cleared; a change to the record is also answered in its `review` section
+  like a reviewer's finding.
 - `python3 -m tools.playtest page` rebuilds the owner's page (`out/playtest/index.html`, every quest's stages with
   each run drawn along them, takes side by side) from the kept runs; republish it to its artifact after new runs.
 - **For the skills**: a cleared finding is recorded with its class of fault and the change that cleared it, for the

@@ -40,8 +40,8 @@ true of the built world and buildable inside the ceiling, while changing it is c
 Nothing else is blocking: write it as a note with its weight (`high`, `low`), ranked by what a player would notice.
 
 - A failed check that stays closed until the player returns stronger is allowed.
-- **Settled is settled**: never re-raise what `review.settled` holds, or a variant of it, unless a change reopens it
-  (say how).
+- **Settled is settled**: never re-raise a finding the record's `review` already answers with a reason, or a
+  variant of it, unless a change reopens it (say how).
 - **Prefer subtraction**: a fix cuts, or rewrites a step with [principles/general.md](../quest-write/principles/general.md)'s
   table of dramatic jobs; it never adds a stage, branch, ending or mechanism a cut would answer.
 - **Rounds.** Round 1 reads the whole record. A later round reads only the rows changed since the last review
@@ -116,11 +116,12 @@ Endings and rewards
 
 Lore and vibe (blocking, c)
 18. Check every person, role, job, place, institution, object and custom against `story/lore/` (first
-    `extrapolation/argonia-4e201-state.md`, `settlement-register.md`, `gap-register.md`, the place's dossier) and
+    `extrapolation/argonia-4e201-state.md`, `settlement-register.md`, `gap-register.md`, the place's region file in
+    `story/lore/regions/`) and
     province-vibe. Blocking where the quest contradicts canon or the extrapolation; rests on a claim with no `L<n>`
     entry or on a `QA<n>` gap row that is not the least inventive reading of its anchor; gives a person a role the
     settlement does not have in 4E 201 (§3 and §4); moves information, law, trade or debt against §5; or uses a §9
-    motif where §9 does not put it. Run `python3 .claude/skills/dialogue-write/lint.py` over the journal texts and
+    motif where §9 does not put it. Run `python3 .claude/skills/dialogue-write/lint.py <file> --race argonian` over the journal texts and
     justify or flag every B10 warning. For a long record, split the lore reading across cheap subagents, each given
     the claims and the files to check them in.
 19. Does the quest add to the vibe (province-vibe §10) rather than only avoid jarring with it?

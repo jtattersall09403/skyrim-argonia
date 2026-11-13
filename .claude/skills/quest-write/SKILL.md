@@ -26,10 +26,16 @@ dispute, an induction) is what the drama turns on, which the shape routing in se
 - **A quest of a line** starts from its outline in `story/design/quests/lines/<line>.md`: its people, places, things,
   ways through, stages, choice and endings are given. Build them; invent nothing the outline does not give. A gap goes
   back to the story's author (story-line §5).
-- **A minor quest** starts from its premise and its old design: `python3 -m tools.argonia_world.quest_record export
-  <quest id> -o <quest>.yaml`, the quest's entry in `story/design/quests/50-side-quests.md`, and its row in
-  `story/design/quests/review/walk6-ceiling.md`. Keep its premise, cast and beats; say in `foundation` what changed
-  and why.
+- **A minor quest with a row** (most places already hold quests as premises: `db query "SELECT id, code, premise
+  FROM quest WHERE settlement = '<place id>'"`) starts from it: `python3 -m tools.argonia_world.quest_record export
+  <quest id> -o <quest>.yaml`, its entry in `story/design/quests/50-side-quests.md`, its row in
+  `story/design/quests/review/walk6-ceiling.md`. Keep its premise, cast and beats.
+- **A new premise** with no row: export a small worked quest of the same group (`quest.local.lq25`) as the shape to
+  fill, and give it a new id and code: `quest.<line-slug>.<code>`, the code two capitals and two digits, the
+  place's prefix with the next number free in the `quest` table (a code or id is never reused); its title and every
+  name it adds are checked against `story/design/quests/86-never-reuse-names.md`.
+- **`foundation`** says in the present tense what the quest is built on (the outline, the old design, or the premise
+  alone) and what it keeps.
 - **Read the world it stands on**: the place's facts (`fact` by `place_id`, in `ord` order), its people
   (`place_person`, `npc`, `npc_faction`), their stance (`stance*`), the culture sheets they chain (`culture_*`), the
   other quests at the place and its neighbours (`quest` by `settlement`), the lore in `story/lore/` and
@@ -37,7 +43,7 @@ dispute, an induction) is what the drama turns on, which the shape routing in se
   `bmv_shell` (by `settlement`, class A first).
 - **Cast**: a recurring person from `story/design/quests/36-cast-roster.md` under `35-cast.md`; a placed person is
   an `npc` row; a person in neither, nor placed by Black Marsh & Valenwood, is an `invented` persona to add.
-- **Novelty**: scan `story/design/quests/index/coverage.md`. The quest collides if it shares its primary shape with
+- **Novelty**: scan `story/design/quests/index/coverage.md` and the other quests at the place. The quest collides if it shares its primary shape with
   a quest of the same region packet, faction line, reversal or resolution; then differentiate it, merge it or drop it.
   Declare `touches` (shared people, places, numbers, things). No primary shape over about a fifth of a line, nor in
   consecutive larger quests (a departure goes in `budgetExceptions` with its reason).
@@ -47,7 +53,8 @@ dispute, an induction) is what the drama turns on, which the shape routing in se
 Read [shapes.yaml](shapes.yaml): always [principles/general.md](principles/general.md) and
 [principles/actions.md](principles/actions.md), the group's file, each shape's file (primary first). The principle
 files are the quest design research (`docs/research/writing/`) and the owner's bar distilled at the ceiling; each
-principle ends with its source tag (general.md holds the key). Every principle binds this record.
+principle ends with its source tag (general.md holds the key). Every principle binds this record; a minor quest
+reads only the "Local quests" part of questlines.md.
 
 | File | What it holds |
 |---|---|
@@ -69,14 +76,20 @@ skill, what goes wrong, who pays afterwards).
 Every step uses only what [quest-system](../quest-system/SKILL.md) lists; a step that needs more is rewritten with
 general.md's table of dramatic jobs, never scripted.
 
-1. **Skills win the steps.** Each stage that asks something of the player names the skills it uses (One-Handed,
-   Two-Handed, Archery, Block, Heavy and Light Armor, Destruction, Restoration, Alteration, Conjuration, Illusion,
-   Alchemy, Sneak, Lockpicking, Pickpocket, Speech, Mysticism); climbing and swimming are movement, not skills. A way
+1. **Skills win the steps.** Each stage that asks something of the player names the skills it uses (the list is
+   general.md's principle 1); climbing and swimming are movement, not skills. A way
    through can go wrong as Skyrim's own systems make it go wrong: a check with a fixed threshold, a lock level, a
    theft or pickpocket the crime system sees, a fight that can be lost. A main quest has at least two ways through on
    different skills; a faction quest leans on its faction's skills (`profiles.yaml`). Hearing the task, handing over
-   and reporting carry no check; every way forward a check guards has another way on a different skill, a price or a
-   fight, and the refusal line names it. A failed check may stay closed until the player returns stronger.
+   and reporting carry no check; every way forward a check guards has at least one other way on a different skill, a
+   price or a fight (general.md principle 20 aims at three), and the refusal line names it. A failed check may stay
+   closed until the player returns stronger.
+1b. **How the quest begins.** One of three ways. *A giver*: the record's `start` is 0, stage 0 is `hidden`, and the
+   giver's opening topic, open at stage 0 and gated on the giver alive, sets the first shown stage (the build makes
+   the quest run from a new game, waiting at stage 0, and starts it with the game; nothing is listed by hand).
+   *Another quest*: `startWhen` names that quest's stage. *Speaking first*: the giver's opening line is the quest's
+   one speaks-first line (rule 8). The settlement's talkers point at a quest that can start through their rumours,
+   which the build gates on the quest's start window.
 2. **A stage moves only by an allowed trigger**: a line the player picks, a named thing taken, a named thing used or
    read, a named person dying, another quest's stage. To have the player find a place, put a named thing there to
    use, read or take, or a person there to speak to. A person who must be elsewhere next is switched off while the
@@ -95,12 +108,14 @@ general.md's table of dramatic jobs, never scripted.
    with a reward in proportion), a who-must-live person, or a killing marked the player's choice. A confrontation is a
    line whose result turns its speaker hostile, or a person placed hostile.
 7. **Switching a person or thing on or off** is the result of a line, a take or a use only, for a reference in
-   another cell from the player or 18,000 units away outdoors; nothing appears or vanishes in view.
-8. **One person may speak first**, placed by the door the player arrives through, with a marker on them and the same
-   line open as a topic.
+   another cell from the speaker or the thing (an interior other than theirs, or across the line between interior and
+   exterior), or, both outdoors, at least 18,000 units from it; nothing appears or vanishes in view.
+8. **One person may speak first**: placed a step from the door the player arrives through, they greet the player
+   there (the quest's one force-greet), with a marker on them and the same line open as a topic.
 9. **Every check is its own line with its fallback**: the line that passes, then the line said when the check fails,
-   gated on everything but the check; a refusal names what would change it. The compiler labels the prompt
-   (`(Persuade)`, `(Alchemy)`, `(20 gold)`); never write a threshold in a prompt.
+   gated on everything but the check; a refusal names what would change it. The compiler adds the check's label to
+   the prompt (`(Persuade)`, `(Alchemy)`, `(20 gold)`); a label written by hand must be that one, and never a
+   threshold.
 10. **One stage, one step.** Every shown stage has an objective with one or more targets switched on at it, and the
     entry says, first person and past tense, what the player has just done and "I'm to ..." for the one step owed,
     with the place by a name the player can see; never a later step, never an event that did not happen. Objectives
@@ -125,7 +140,9 @@ general.md's table of dramatic jobs, never scripted.
 The sections are those of [quest-record.md](quest-record.md) §2.
 
 1. **Action plan**: `python3 .claude/skills/quest-write/action_plan.py --profile <line key> --shapes <SHAPE,...>
-   --band <D0..D5> --line <dir of the line's records>`; choose or adapt the uses the quest is built round
+   --band <D0..D5> --line <dir of the line's records>` (the band is the place's danger, D0 a safe town to D5 the
+   worst country, `story/design/quests/20-world-provisions.md`; for a first or minor quest `--line` is an empty
+   folder); choose or adapt the uses the quest is built round
    ([skill-uses.yaml](skill-uses.yaml), weighted by [profiles.yaml](profiles.yaml)) and the `centrepiece` tag.
 2. **Premise** and **truth**: numbered physical events, written so the planned actions follow from them; then the
    plausibility pass, person by person (change the truth, never the person).
@@ -139,7 +156,9 @@ The sections are those of [quest-record.md](quest-record.md) §2.
    opening line. Conditions and actions only from the vocabulary (`condition_term` rows;
    `story/design/quests/85-condition-vocabulary.md`); a term the compiler refuses is outside the ceiling.
 9. **Endings**: two or more with real costs, each saying where the player will see it; fixed rewards.
-10. **Topics**, per person and stage window, in the order the player meets them:
+10. **Journal text** is each stage's `journalText` in the record, its one home; a rewrite from the journal brief is
+    written back there.
+11. **Topics**, per person and stage window, in the order the player meets them:
     - the prompt is a sentence the player would say with only the names and facts they have then, never a bare label;
     - a line that sets a stage the journal relies on never refuses;
     - a question the speaker asks has one answer topic per reply; otherwise the speaker tells;
@@ -183,10 +202,12 @@ Run until all pass, before anyone else reads the quest:
 1. [quest-review](../quest-review/SKILL.md) by a `quest-reviewer` agent that has not seen your reasoning. Answer
    every finding in the record's `review` (fixed, or why it stands); set `recordStatus: reviewed`.
 2. [quest-playtest](../quest-playtest/SKILL.md), moment 1, on the designed form; its findings come back here.
-3. The briefs: `python3 .claude/skills/quest-write/brief.py <quest id> <out dir>` writes one brief per person, one
-   per quest person with no topic of their own, and a journal brief. It writes nothing while the record is not whole
+3. The briefs: `python3 .claude/skills/quest-write/brief.py <quest id> <out dir>` writes one brief per person with
+   topics in the record (every person the quest places has at least "Who are you?") and a journal brief. It writes nothing while the record is not whole
    (a missing reference, vocabulary term, `shapeData` section or ending, a step with no skill, a form that fails its
-   rules). Then [dialogue-write](../dialogue-write/SKILL.md) per brief. A writer's fact request comes back here: add
-   the fact to the record and rebuild the briefs.
+   rules). Then [dialogue-write](../dialogue-write/SKILL.md) per brief, by one `dialogue-writer` agent per person
+   that this lane starts itself (a writer starts its own find agents, which an agent started through another cannot).
+   The lane puts the returned lines into the quest's lines file (quest-record.md "The lines file") and compiles
+   again: the lines replace the gists. A writer's fact request comes back here: add the fact to the record and rebuild the briefs.
 4. **A fact lives in one row; a cut is a search.** To change or cut a thing, `grep -rn` its id, name and words over
    `story/data/` and change every hit in the same commit.

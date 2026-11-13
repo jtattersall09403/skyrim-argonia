@@ -26,6 +26,9 @@ one quest. Every step runs on the build VM; the seed and the deploy run under `t
 The seed compiles every record that fits, builds every form and the block test into `plugin/Argonia` (Spriggit YAML,
 our source), and makes every person of ours and of Black Marsh & Valenwood killable.
 
+- **The seed builds the whole tree**, so a lane seeds in its own worktree (main's quests and its own) and a lead
+  seeds once more on the merged tree before deploy. Quests the lead has named as being rewritten whole (`rewriting`
+  in `plugin.sh`) are left out when refused; every other quest's refusal fails the seed.
 - **A refusal** is one line, `questform <quest>: <rule>: <what>`, and fails the seed (the
   [quest-form](../../../docs/design/quest-form.md) "refusals" list says what each rule means). Fix it in the record:
   a spot with no navmesh within 300 units is moved to a measured one (`bash tools/ArgoniaPlugin/plugin.sh inspect
