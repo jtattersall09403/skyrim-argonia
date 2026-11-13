@@ -192,3 +192,19 @@ def test_a_triggers_until_is_compared():
     del b["triggers"][0]["until"]
     out = run(d, b)
     assert len(out) == 1 and "trigger t.until: designed 20, built null" in out[0]
+
+
+def test_a_dropped_name_is_a_difference():
+    """The form's `names` and a thing's `name` are what the player sees: the reader dropping one is a difference."""
+    d = copy.deepcopy(EXAMPLE)
+    d["names"] = {"item.lockpick": "Lockpick"}
+    d["refs"].append({"id": "thing.example.mace", "kind": "thing", "enabled": True, "name": "Steel Mace",
+                      "placement": {"base": {"kind": "item", "id": "item.steel-mace"},
+                                    "carried_by": "npc.example.contact"}})
+    assert run(d, built_from(d)) == []
+    b = built_from(d)
+    b["names"] = {}
+    del b["refs"][-1]["name"]
+    out = run(d, b)
+    assert any("names.item.lockpick: designed \"Lockpick\", built null" in x for x in out), out
+    assert any("ref thing.example.mace.name: designed \"Steel Mace\", built null" in x for x in out), out

@@ -471,7 +471,17 @@ static class QuestForm
         var copy = (IItemGetter)((IMajorRecordGetter)src).Duplicate(k);
         var rec = (IMajorRecord)copy;
         rec.EditorID = $"ARG_I_{Slug(id)}";
-        if (copy is Mutagen.Bethesda.Plugins.Aspects.INamed nm) nm.Name = name;
+        // the name the player sees, set on each kind's own name (the shared name interfaces miss a key's)
+        var full = new Mutagen.Bethesda.Strings.TranslatedString(Mutagen.Bethesda.Strings.Language.English, name);
+        switch (copy)
+        {
+            case Key x: x.Name = full; break; case Book x: x.Name = full; break; case MiscItem x: x.Name = full; break;
+            case Armor x: x.Name = full; break; case Weapon x: x.Name = full; break; case Ingredient x: x.Name = full; break;
+            case Ingestible x: x.Name = full; break;
+        }
+        var got = copy switch { Key x => x.Name?.String, Book x => x.Name?.String, MiscItem x => x.Name?.String, Armor x => x.Name?.String,
+            Weapon x => x.Name?.String, Ingredient x => x.Name?.String, Ingestible x => x.Name?.String, _ => null };
+        if (got != name) throw c.No("item", $"{id}: its copy of {tk} took the name '{got}', not '{name}'");
         if (copy is Book bk2)
         {
             if (text != null) bk2.BookText = text;

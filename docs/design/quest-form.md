@@ -82,7 +82,7 @@ failure is one line naming its rule.
 | `journal-text` | a shown stage has no journal text; an ending does not show |
 | `way-out` | a stage that is not an ending has no line, trigger or result that moves the quest on |
 | `reachable` | a stage cannot be reached from the start (a who-must-live death reaches its failed ending) |
-| `objective-target-on` | a shown stage that is not an ending has no active objective with a target switched on at it |
+| `objective-target-on` | a shown stage that is not an ending has no active objective, or a target of an active objective is not on there: on means enabled, switched on by a stage at or before it, or left on by every stage of another quest that starts this one (its `quest_stage` start or a `start_quest` result); the forms checked together are where that stage is read from, so a quest started by another is checked with that quest's form. `questcheck`'s `target-on` judges the built plugin by the same rule |
 | `asked-is-target` | a thing to take or use is not a target at its prerequisite stage; a person whose line moves the quest is not a target at that stage |
 | `completes-on-target` | the line (its speaker, or a thing its conditions or results name) or the take or use trigger that completes an objective concerns none of its targets |
 | `hand-in` | a line that takes a thing is not gated on holding it, or is not open from the stage a take trigger of that thing opens to the stage the trigger sets (holding it early still works; the take moves only an in-between stage) |

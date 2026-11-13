@@ -17,8 +17,9 @@ using Mutagen.Bethesda.Skyrim;
 //   package      the quest's aliases carry at most one package in all, and it has the ForceGreet template (03C1C4:Skyrim.esm)
 //   zones-scenes no placed reference of ours carries defaultSetStageTrigScript, and no scene has the quest as its quest
 //   target-on    for each stage that shows an objective (op 2), each target alias's forced reference is on there: enabled
-//                from the start, or switched on (op 29) at or below the stage with no later switch off (op 30) at or below it;
-//                a create-in-container target counts as on
+//                from the start, or left on by every stage of another quest that starts this one (its StartOnStage or
+//                StartQuest row), or switched on (op 29) at or below the stage with no later switch off (op 30) at or below
+//                it; a create-in-container target counts as on (the form's rule objective-target-on, tools/questform/rules.py)
 //   mortal       (whole plugin) no base of a person placed by us or by Black Marsh & Valenwood (through Use Base Data
 //                templates) is Essential or Protected in its winning record, and no alias of a quest of ours is either
 sealed class FA
@@ -28,10 +29,11 @@ sealed class FA
 }
 sealed class FQ
 {
-    public string Edid = ""; public bool Watch, RunOnce; public List<string> Scripts = []; public List<FA> Aliases = [];
+    public string Edid = "", Key = ""; public bool Watch, RunOnce; public List<string> Scripts = []; public List<FA> Aliases = [];
     public List<(int op, string what, float num)> Rows = []; public Dictionary<int, (int from, int to)> StageRows = [];
     public Dictionary<int, List<int>> Targets = []; // objective index -> target alias ids
     public List<(string topic, List<string> scripts)> Responses = []; public int Scenes; public List<string> ZoneRefs = [];
+    public HashSet<string> StartOn = []; // references left on by every stage of another quest that starts this one
 }
 static partial class QuestCheck
 {
@@ -82,7 +84,7 @@ static partial class QuestCheck
     static bool OnAt(FQ q, FA a, int stage)
     {
         if (a.Forced == null) return a.Create;
-        var on = a.On;
+        var on = a.On || q.StartOn.Contains(a.Forced);
         foreach (var (_, (from, to)) in q.StageRows.Where(kv => kv.Key <= stage).OrderBy(kv => kv.Key))
             for (var i = from; i < to && i < q.Rows.Count; i++)
             {
@@ -106,6 +108,27 @@ static partial class QuestCheck
             }
     }
 
+    // Each quest's StartOn: the references every stage that starts it (a StartOnStage or StartQuest row naming it) leaves on,
+    // reading that stage's switch rows in order.
+    public static void SetStartOn(List<FQ> qs)
+    {
+        var found = new Dictionary<string, List<HashSet<string>>>();
+        foreach (var q in qs)
+            foreach (var (_, (from, to)) in q.StageRows)
+            {
+                var rows = q.Rows.Skip(from).Take(Math.Max(0, Math.Min(to, q.Rows.Count) - from)).ToList();
+                var starts = rows.Where(r => r.op == QuestForm.Op.StartOnStage || r.op == QuestForm.Op.StartQuest).Select(r => r.what).Distinct().ToList();
+                if (starts.Count == 0) continue;
+                var on = new Dictionary<string, bool>();
+                foreach (var r in rows)
+                    if (r.op == QuestForm.Op.SwitchOn) on[r.what] = true; else if (r.op == QuestForm.Op.SwitchOff) on[r.what] = false;
+                var set = on.Where(kv => kv.Value).Select(kv => kv.Key).ToHashSet();
+                foreach (var w in starts) (found.TryGetValue(w, out var l) ? l : found[w] = []).Add(set);
+            }
+        foreach (var q in qs)
+            q.StartOn = found.TryGetValue(q.Key, out var l) ? l.Aggregate((a, b) => a.Intersect(b).ToHashSet()) : [];
+    }
+
     public static IEnumerable<string> FormRules(FQ q) =>
         new[] { FRunOnce(q), FAliases(q), FScripts(q), FPackage(q), FZonesScenes(q), FTargetOn(q) }.SelectMany(x => x);
 
@@ -124,11 +147,11 @@ static partial class QuestCheck
         var placed = Survey.Winners<IPlacedGetter>(mods);
         var packs = Survey.Winners<IPackageGetter>(mods);
         var npcs = Survey.Winners<INpcGetter>(mods);
-        var fails = new List<string>(); quests = 0;
+        var fails = new List<string>(); quests = 0; var fqs = new List<FQ>();
         foreach (var q in mine.Quests.Where(IsFormBuilt))
         {
             quests++;
-            var fq = new FQ { Edid = q.EditorID ?? q.FormKey.ToString(), Watch = q.EditorID == QuestForm.WatchId, RunOnce = q.Flags.HasFlag(Quest.Flag.RunOnce) };
+            var fq = new FQ { Key = q.FormKey.ToString(), Edid = q.EditorID ?? q.FormKey.ToString(), Watch = q.EditorID == QuestForm.WatchId, RunOnce = q.Flags.HasFlag(Quest.Flag.RunOnce) };
             var vm = q.VirtualMachineAdapter;
             var stages = vm?.Scripts.FirstOrDefault(s => s.Name == QuestForm.StagesScript);
             fq.Scripts = vm?.Scripts.Select(s => s.Name).ToList() ?? [];
@@ -171,8 +194,10 @@ static partial class QuestCheck
                 if (r.VirtualMachineAdapter?.Scripts.Any(s => s.Name.Equals("defaultSetStageTrigScript", StringComparison.OrdinalIgnoreCase)
                     && s.Properties.OfType<IScriptObjectPropertyGetter>().Any(p => p.Object.FormKey == q.FormKey)) == true)
                     fq.ZoneRefs.Add(r.EditorID ?? r.FormKey.ToString());
-            fails.AddRange(FormRules(fq));
+            fqs.Add(fq);
         }
+        SetStartOn(fqs);
+        foreach (var fq in fqs) fails.AddRange(FormRules(fq));
         // mortal, over the whole plugin
         var ours = mine.ModKey;
         INpcGetter? Npc(FormKey k) => npcs.TryGetValue(k, out var w) ? w.rec : null;
@@ -216,6 +241,14 @@ static partial class QuestCheck
         T("target-on fail: never switched on", true, FTargetOn, q => q.Rows[0] = (0, "", 0));
         T("target-on fail: switched on after the stage", true, FTargetOn, q => { q.Rows = [(QuestForm.Op.ShowObjective, "", 10), (QuestForm.Op.SwitchOn, "r1", 0)]; q.StageRows = new() { [10] = (0, 1), [20] = (1, 2) }; });
         T("target-on fail: switched off again", true, FTargetOn, q => { q.Rows.Insert(1, (QuestForm.Op.SwitchOff, "r1", 0)); q.StageRows[10] = (0, 3); });
+        // switched on by the stage of another quest that starts this one (MQ01's ending starting MQ03)
+        FQ Starter(params (int op, string what, float num)[] rows) => new FQ { Edid = "ARG_S", Key = "S", Rows = [.. rows], StageRows = new() { [90] = (0, rows.Length) } };
+        T("target-on pass: switched on by the starting stage", false, FTargetOn, q => { q.Key = "Q"; q.Rows[0] = (0, "", 0);
+            SetStartOn([Starter((QuestForm.Op.SwitchOn, "r1", 0), (QuestForm.Op.StartOnStage, "Q", 10)), q]); });
+        T("target-on fail: the starting stage switches it off again", true, FTargetOn, q => { q.Key = "Q"; q.Rows[0] = (0, "", 0);
+            SetStartOn([Starter((QuestForm.Op.SwitchOn, "r1", 0), (QuestForm.Op.SwitchOff, "r1", 0), (QuestForm.Op.StartQuest, "Q", 10)), q]); });
+        T("target-on fail: a stage that starts another quest", true, FTargetOn, q => { q.Key = "Q"; q.Rows[0] = (0, "", 0);
+            SetStartOn([Starter((QuestForm.Op.SwitchOn, "r1", 0), (QuestForm.Op.StartOnStage, "X", 10)), q]); });
         T("scripts pass", false, FScripts, q => { q.Aliases[0].Scripts.Add("defaultSetStageOnPlayerAcquire"); q.Responses.Add(("T", [QuestForm.LineScript])); });
         T("scripts fail: a second quest script", true, FScripts, q => q.Scripts.Add("QF_Old"));
         T("scripts fail: alias script not allowed", true, FScripts, q => q.Aliases[0].Scripts.Add("SomethingElse"));

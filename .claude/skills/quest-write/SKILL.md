@@ -201,8 +201,8 @@ Run until all pass, before anyone else reads the quest:
    the whole record on any unknown field, wrong type, dangling key or unknown lookup value.
 2. `python3 -m tools.questform compile <quest id> --out out/<lane>/questform`: each refused term is printed with where
    it stands and a hint; re-author it, never work round it.
-3. `python3 -m tools.questform check out/<lane>/questform/<quest id>.json` (and `check --set` with the quests it
-   chains to): each failed rule is one line naming the rule ([quest-form](../../../docs/design/quest-form.md) "The
+3. `python3 -m tools.questform check --set out/<lane>/questform/<quest id>.json` with the forms of the quests it
+   chains to (a quest another starts is judged with its starter's form): each failed rule is one line naming the rule ([quest-form](../../../docs/design/quest-form.md) "The
    rules" says what each means).
 4. `python3 -m tools.playtest reach out/<lane>/questform/<quest id>.json` (with the forms of the quests it waits on):
    every stage and ending reached.

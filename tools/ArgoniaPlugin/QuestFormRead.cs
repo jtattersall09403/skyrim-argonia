@@ -60,6 +60,7 @@ static class QuestFormRead
         public readonly Dictionary<FormKey, (List<Rw> rows, Dictionary<int, (int from, int to)> stages, string qid)> Rows = [];
         public readonly IQuestGetter? Watch;
         public readonly Dictionary<FormKey, IMajorRecordGetter> Recs = [];
+        public readonly List<string> Labels = [];   // every form-built quest's labels, in the plugin's order
         public Ctx(ISkyrimModGetter mod, List<ISkyrimModGetter> all, List<IQuestGetter> formed, List<ISkyrimModGetter> loaded)
         {
             Mod = mod; All = all; Formed = formed;
@@ -91,6 +92,7 @@ static class QuestFormRead
                 var map = new Dictionary<int, (int, int)>();
                 for (var i = 0; i < st.Count; i++) map[st[i]] = (fr[i], to[i]);
                 Rows[q.FormKey] = (rows, map, Str(s, "QuestId"));
+                Labels.AddRange(s.Properties.OfType<IScriptStringListPropertyGetter>().FirstOrDefault(p => p.Name == "Labels")?.Data ?? []);
             }
         }
     }
@@ -157,7 +159,7 @@ static class QuestFormRead
                 j["placement"] = new JsonObject { ["base"] = ItemBase(cr.Object.FormKey),
                     [personIds.Contains((uint)cr.AliasID) ? "carried_by" : "container"] = aliasName.TryGetValue((uint)cr.AliasID, out var cn) ? cn : throw No($"alias {a.Name}'s container alias {cr.AliasID}") };
                 j["enabled"] = true;
-                if (Full(c, cr.Object.FormKey) is { } cnm) j["name"] = cnm;
+                if (ItemName(c, cr.Object.FormKey) is { } cnm) j["name"] = cnm;
                 if (c.Recs.GetValueOrDefault(cr.Object.FormKey) is IBookGetter cbk && cbk.BookText?.String is { } cbt) j["text"] = cbt;
                 refs.Add(j);
                 continue;
@@ -204,7 +206,7 @@ static class QuestFormRead
             }
             if (npc && labels.Contains($"level={a.Name}") && c.Mod.Npcs.FirstOrDefault(n => n.FormKey == baseKey)?.Configuration.Level is INpcLevelGetter lvl) j["level"] = (int)lvl.Level;
             // what the player sees: a person's or thing's name, a marker's place, a door's name and where it leads, a book's text
-            var shown = npc ? PersonName(c, baseKey) : j["kind"]!.GetValue<string>() == "marker" ? Full(c, CellOf(c, k, rec)) : Full(c, baseKey);
+            var shown = npc ? PersonName(c, baseKey) : j["kind"]!.GetValue<string>() == "marker" ? Full(c, CellOf(c, k, rec)) : ItemName(c, baseKey);
             if (shown != null) j["name"] = shown;
             if (rec is IPlacedObjectGetter po && po.TeleportDestination is { } td && !td.Door.IsNull && c.Where.TryGetValue(td.Door.FormKey, out var dw))
             {
@@ -503,10 +505,27 @@ static class QuestFormRead
         }
         if (speaksFirst.Count != aliases.Count(a => a.PackageData.Count > 0)) throw No("a speaks-first line without its force-greet");
 
-        // the names of the items the form names, as the player sees them
+        // the names of the items the form names that are not its refs (a result's, a condition's, a stock thing's base, a
+        // lock's key), as the player sees them: each word's record by its label (this quest's, else the quest that built it)
+        var keyOf = names.Where(n => n.Key.Item1 is "item" or "thing").GroupBy(n => n.Value).ToDictionary(g => g.Key, g => FormKey.Factory(g.First().Key.Item2));
+        foreach (var l in c.Labels.Where(l => l.StartsWith("name=item|") || l.StartsWith("name=thing|")).Select(l => l[5..].Split('|', 3)))
+            keyOf.TryAdd(l[2], FormKey.Factory(l[1]));
+        var words = new SortedSet<string>(StringComparer.Ordinal);
+        void Words(JsonNode? rows) { foreach (var r in rows?.AsArray() ?? []) foreach (var f in new[] { "item", "if_held" }) if (r?[f] is JsonValue v) words.Add(v.GetValue<string>()); }
+        foreach (var s in stages) Words(s?["results"]);
+        foreach (var l in lines) { Words(l?["results"]); Words(l?["conditions"]); }
+        foreach (var r in refs)
+        {
+            if (r?["placement"]?["base"] is JsonObject b && (string?)b["kind"] == "item") words.Add((string)b["id"]!);
+            if (r?["lock"]?["key"] is JsonValue kv) words.Add(kv.GetValue<string>());
+        }
+        words.ExceptWith(refs.Select(r => (string)r!["id"]!));
         var itemNames = new JsonObject();
-        foreach (var (kk, given) in names.Where(n => n.Key.Item1 == "item").Select(n => (n.Key.Item2, n.Value)))
-            if (Full(c, FormKey.Factory(kk)) is { } inm) itemNames[given] = inm;
+        foreach (var wd in words)
+        {
+            var key = keyOf.TryGetValue(wd, out var kk) ? kk : wd.Contains(':') ? FormKey.Factory(wd) : FormKey.Null;
+            if (!key.IsNull && ItemName(c, key) is { } inm) itemNames[wd] = inm;
+        }
         return new JsonObject
         {
             ["version"] = 1,
@@ -517,12 +536,28 @@ static class QuestFormRead
     }
 
     // A record's name as the plugins hold it (none for a localized master's: its strings are never read, decision 0003).
+    // A key's own name first: the shared name interfaces give a key's as empty.
     static string? Full(Ctx c, FormKey k) => c.Recs.GetValueOrDefault(k) switch
     {
+        IKeyGetter x => string.IsNullOrEmpty(x.Name?.String) ? null : x.Name!.String,
         ITranslatedNamedGetter t => string.IsNullOrEmpty(t.Name?.String) ? null : t.Name!.String,
         INamedGetter n => string.IsNullOrEmpty(n.Name) ? null : n.Name,
         _ => null,
     };
+    // An item's name as the player sees it: its record's own, else, for a stock item of a localized master (whose strings
+    // are never read), the story database's name for the item whose Skyrim record (item_asset_record) is that base.
+    static string? ItemName(Ctx c, FormKey k) => Full(c, k) ?? (c.Recs.GetValueOrDefault(k)?.EditorID is { } e && StockNames.TryGetValue(e, out var n) ? n : null);
+    static Dictionary<string, string>? stockNames;
+    static Dictionary<string, string> StockNames => stockNames ??= Stock();
+    static Dictionary<string, string> Stock()
+    {
+        var name = QuestKit.Rows("item").Where(r => r.TryGetProperty("name", out var n) && n.ValueKind == JsonValueKind.String)
+            .GroupBy(r => r.GetProperty("id").GetString()!).ToDictionary(g => g.Key, g => g.First().GetProperty("name").GetString()!);
+        var out_ = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+        foreach (var r in QuestKit.Rows("item_asset_record").Where(x => x.GetProperty("ord").GetInt32() == 0).OrderBy(x => x.GetProperty("item_id").GetString(), StringComparer.Ordinal))
+            if (r.GetProperty("value").GetString() is { } edid && name.TryGetValue(r.GetProperty("item_id").GetString()!, out var nm)) out_.TryAdd(edid, nm);
+        return out_;
+    }
     // A person's name: our base's own, or its template's when it takes the base data from it.
     static string? PersonName(Ctx c, FormKey k)
     {

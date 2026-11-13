@@ -38,9 +38,9 @@ def ref(form, rid):
 
 
 # -- the eleven fit, alone and as a set ---------------------------------------------------------------------------
-def test_the_eleven_compile_and_pass_alone_and_as_a_set(forms):
+def test_the_eleven_compile_and_pass_with_each_other_and_as_a_set(forms):
     for q, f in forms.items():
-        assert rules.check(f) == [], q
+        assert rules.check(f, list(forms.values())) == [], q
     assert rules.check_set(list(forms.values())) == []
 
 

@@ -1,5 +1,6 @@
 {
  "version": 1,
+ "names": {"00000A:Skyrim.esm": "Lockpick"},
  "quest": {
   "id": "quest.test.blocktest",
   "editor_id": "ARG_BlockTest",

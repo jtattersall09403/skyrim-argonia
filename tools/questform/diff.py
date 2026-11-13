@@ -19,9 +19,10 @@ anchor is not compared. A new placement's `base`, `container` and `carried_by` a
 reference against a designed new placement is a difference. An existing ref's `at` (an actor's or a door's, from the
 census) is compared within POS_UNITS.
 
-Every field of the form is compared except: the form-level `names`, `texts` and `places` (what the paper game shows;
-the reader writes back the names it finds) and a ref's `name`, `destination` and `text` (display strings the builder
-takes from the form's `names`, `places` and `texts`, whose own refusals cover them).
+Every field of the form is compared, the form-level `names` (each item the form names that is not one of its refs, by
+the name the player sees) and a thing's `name` among them, so a name the build or the reader drops is a difference;
+except the form-level `texts` and `places` and a person's, door's or marker's `name`, a ref's `destination` and `text`
+(display strings the builder takes from the world and the form's `places` and `texts`, whose own refusals cover them).
 """
 from __future__ import annotations
 
@@ -165,6 +166,9 @@ def diff_form(d: dict, b: dict, res: Resolver) -> list[str]:
     out = [f"{q}: quest.{k}: designed {_show(d['quest'].get(k))}, built {_show(b['quest'].get(k))}"
            for k in ("id", "editor_id", "name", "kind", "start") if d["quest"].get(k) != b["quest"].get(k)]
     out += [f"{q}: version: designed {d.get('version')}, built {b.get('version')}"] * (d.get("version") != b.get("version"))
+    dn, bn = d.get("names", {}), b.get("names", {})
+    out += [f"{q}: names.{k}: designed {_show(dn.get(k))}, built {_show(bn.get(k))}"
+            for k in sorted(set(dn) | set(bn)) if dn.get(k) != bn.get(k)]
 
     def keyed(what, dl, bl, key, fallback, fn):
         pairs, od, ob = _pair(dl, bl, key, fallback)
@@ -182,7 +186,8 @@ def diff_form(d: dict, b: dict, res: Resolver) -> list[str]:
 
     def ref_fn(w, x, y):
         r = _fields(w, {**x, "hostile": bool(x.get("hostile"))}, {**y, "hostile": bool(y.get("hostile"))},
-                    ("kind", "enabled", "hostile", "lock", "owner", "contents", "count", "level"))
+                    ("kind", "enabled", "hostile", "lock", "owner", "contents", "count", "level")
+                    + (("name",) if x.get("kind") == "thing" else ()))
         px, py = x["placement"], y["placement"]
         if "anchor" in px:
             for k in ("base", "container", "carried_by"):

@@ -406,3 +406,37 @@ def test_the_row_limit_counts_rows_as_the_builder_does():
     assert n == 1 + 1 + 6 + 1 + 2 + 2
     stage(f, 20)["results"] = [{"do": "give_gold", "amount": 1}] * (rules.MAX_STAGE_RESULTS - n + 1)
     assert "result-limits" in failed_rules(f)
+
+
+def _started_later(contact_on_by_starter: bool | None):
+    """The example started by another quest's stage 90, its contact off until that stage switches it on (as MQ01's
+    ending switches on the lockbox MQ03's objectives point at)."""
+    f = example()
+    f["quest"]["start"] = {"by": "quest_stage", "quest": "quest.example.starter", "quest_stage": 90, "stage": 10}
+    next(r for r in f["refs"] if r["id"] == "npc.example.contact")["enabled"] = False
+    starter = {"quest": {"id": "quest.example.starter"}, "stages": [{"number": 90, "results": []}]}
+    if contact_on_by_starter is not None:
+        starter["stages"][0]["results"] = [{"do": "switch_on", "ref": "npc.example.contact"}] + (
+            [] if contact_on_by_starter else [{"do": "switch_off", "ref": "npc.example.contact"}])
+    return f, starter
+
+
+def test_every_target_of_a_shown_objective_is_on():
+    """As questcheck's target-on: each target of an active objective is on, not only one of them."""
+    f = example()
+    f["refs"].append({**next(r for r in f["refs"] if r["id"] == "npc.example.contact"), "id": "npc.example.off",
+                      "enabled": False})
+    f["objectives"][1]["targets"].append("npc.example.off")
+    assert "objective-target-on" in failed_rules(f)
+
+
+def test_a_target_switched_on_by_the_starting_stage_is_on():
+    """As questcheck's target-on: a target the stage that starts the quest leaves on is on from its start; alone, a
+    form whose starter is not among the forms checked cannot pass on that target."""
+    f, starter = _started_later(True)
+    assert rules.check(f, [starter]) == []
+    alone = [m for r, m in rules.check(f) if r == "objective-target-on"]
+    assert alone and "not among the forms checked" in alone[0]
+    for how in (False, None):
+        g, starter = _started_later(how)
+        assert "objective-target-on" in {r for r, _ in rules.check(g, [starter])}

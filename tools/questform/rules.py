@@ -109,9 +109,37 @@ def _stage_sets(results) -> list[int]:
     return [r["stage"] for r in results if r["do"] == "set_stage"]
 
 
+def start_on(form: dict, others: list[dict] | None) -> set[str] | None:
+    """The refs on as the quest begins because the stages that start it switched them on: a stage of another form
+    that is its `quest_stage` start or holds a `start_quest` result for it, its switches read in order; a ref counts
+    when every such stage leaves it on. None when the quest is started by another quest and no starting stage is
+    among `others` (the quest cannot be judged alone); an empty set for a quest a new game starts."""
+    q = form["quest"]
+    if q["start"]["by"] == "game":
+        return set()
+    stages = []
+    for f in others or []:
+        for s in f["stages"]:
+            if (q["start"]["by"] == "quest_stage" and f["quest"]["id"] == q["start"]["quest"]
+                    and s["number"] == q["start"]["quest_stage"]) or any(
+                    r["do"] == "start_quest" and r["quest"] == q["id"] for r in s["results"]):
+                stages.append(s)
+    if not stages:
+        return None
+    ons = []
+    for s in stages:
+        on: dict[str, bool] = {}
+        for r in s["results"]:
+            if r["do"] in ("switch_on", "switch_off"):
+                on[r["ref"]] = r["do"] == "switch_on"
+        ons.append({ref for ref, v in on.items() if v})
+    return set.intersection(*ons)
+
+
 class Form:
-    def __init__(self, f: dict):
+    def __init__(self, f: dict, start_on: set[str] | None = frozenset()):
         self.f = f
+        self.start_on = start_on        # refs on as the quest begins (start_on()); None: its starter is not known
         self.qid = f["quest"]["id"]
         self.stages = {s["number"]: s for s in f["stages"]}
         self.numbers = sorted(self.stages)
@@ -182,7 +210,7 @@ class Form:
         r = self.refs.get(ref_id)
         if r is None:
             return False
-        state = r["enabled"]
+        state = r["enabled"] or ref_id in (self.start_on or ())
         for at, ref, on in sorted((s for s in self.switches() if s[1] == ref_id), key=lambda s: (s[0], s[2])):
             if at <= n:
                 state = on
@@ -258,11 +286,13 @@ def _named_refs(fm: Form):
                 yield f"ref {r['id']}", box
 
 
-def check(form) -> list[tuple[str, str]]:
+def check(form, others: list[dict] | None = None) -> list[tuple[str, str]]:
+    """Every rule over one form. `others`: the forms it is played with, from which the stage that starts it is read
+    (what that stage switches on is on as the quest begins)."""
     out = _schema(form)
     if out:
         return out
-    fm = Form(form)
+    fm = Form(form, start_on(form, others))
     out += _unique(fm)
     out += [("stages-exist", f"{w} names stage {n}, which the quest does not have")
             for w, n in _named_stages(fm) if n not in fm.stages]
@@ -708,8 +738,18 @@ def _objectives(fm: Form):
         objs = fm.active_objectives(n)
         if not objs:
             out.append(("objective-target-on", f"stage {n} shows in the journal and has no objective active at it"))
-        elif not any(fm.on_at(t, n) for o in objs for t in o["targets"]):
-            out.append(("objective-target-on", f"stage {n}: no objective active at it has a target switched on"))
+        for o in objs:
+            for t in o["targets"]:
+                if fm.on_at(t, n):
+                    continue
+                if fm.start_on is None:
+                    out.append(("objective-target-on", f"stage {n}: objective {o['number']}'s target {t} is not on "
+                                "by this form's own switches, and the stage that starts the quest is not among the "
+                                "forms checked: check it with that quest's form"))
+                else:
+                    out.append(("objective-target-on", f"stage {n}: objective {o['number']}'s target {t} is not "
+                                "switched on there (enabled, switched on by a stage at or before it, or by the stage "
+                                "that starts the quest)"))
     return out
 
 

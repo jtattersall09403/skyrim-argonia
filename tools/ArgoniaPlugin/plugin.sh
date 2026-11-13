@@ -18,7 +18,8 @@
 #                      quest record that fits, compiled fresh to out/questform, and tools/questform/blocktest); game data
 #                      needed: $ARGONIA_GAME_ROOT/Data or ~/games/skyrimse/Data, the staged profile ~/.argonia/stack/MO2;
 #                      a form the builder refuses is left out and listed only when its quest is on $rewriting (quests being
-#                      rewritten whole), any other refusal fails the seed; --refused-ok leaves out every refused form
+#                      rewritten whole), any other refusal fails the seed; --refused-ok leaves out every refused form;
+#                      then builds the seeded plugin and runs questcheck and placecheck: either failing fails the seed
 set -euo pipefail
 repo=$(cd "$(dirname "$0")/../.." && pwd); cd "$repo"
 export DOTNET_ROOT="$HOME/.dotnet" PATH="$HOME/.dotnet:$PATH" DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_NOLOGO=1
@@ -79,6 +80,10 @@ case "${1:-}" in
     export QUESTFORM_REFUSED_OK="$rewriting"; [ "${2:-}" = --refused-ok ] && export QUESTFORM_REFUSED_OK=1
     tool seed "$tmp/Argonia.esp" "${lo[@]}"
     "${spriggit[@]}" serialize -i "$tmp/Argonia.esp" -o "$tmp/y" -g SkyrimSE "${spr[@]}" >/dev/null
-    rm -rf "$yaml"; mkdir -p plugin; mv "$tmp/y" "$yaml"; echo "seeded $yaml" ;;
+    rm -rf "$yaml"; mkdir -p plugin; mv "$tmp/y" "$yaml"; echo "seeded $yaml"
+    build; ok=0  # a seed is done only when the built plugin's quest and placement checks find nothing
+    tool questcheck "$esp" papyrus "${lo[@]}" | grep -E "^(FAIL|questcheck|mortal)" || ok=1
+    tool placecheck "$esp" "${lo[@]}" | grep -E "^(FAIL|placecheck)" || ok=1
+    [ "$ok" = 0 ] || { echo "seed: questcheck or placecheck failed (above): the seed is not done" >&2; exit 1; } ;;
   *) sed -n '2,10p' "$0"; exit 2 ;;
 esac

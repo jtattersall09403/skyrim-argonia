@@ -1,6 +1,6 @@
 """The quest form's command line (docs/design/quest-form.md).
 
-    python3 -m tools.questform check <form.json...>              # the schema and every structural rule
+    python3 -m tools.questform check <form.json...>              # the schema and every rule, each form with the others
     python3 -m tools.questform check --set <dir|form.json...>    # also the rules over the forms as one set
     python3 -m tools.questform compile <quest id...|--all> [--out dir] [--owed-ok]   # quest record -> form
         (default out/questform; --owed-ok: a quest on the owed list that does not fit is not a failure; the seed's way)
@@ -25,12 +25,23 @@ BLOCKTEST = Path(__file__).with_name("blocktest")
 OUT = db.REPO / "out/questform"
 
 
-def check_file(p: Path) -> list[tuple[str, str]]:
+def check_file(p: Path, others: list[dict] | None = None) -> list[tuple[str, str]]:
+    """The rules over one form file; `others`: the forms checked with it (the quest that starts it among them)."""
     try:
         form = json.loads(Path(p).read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as e:
         return [("schema", f"{p}: not readable JSON ({e})")]
-    return rules.check(form)
+    return rules.check(form, others)
+
+
+_ALL: dict[int, list[dict]] = {}
+
+
+def all_forms(w: db.World) -> list[dict]:
+    """Every staged quest record compiled (fitting or not), once per world: the forms a quest is checked with."""
+    if id(w) not in _ALL:
+        _ALL[id(w)] = [f for f in (qc.compile_quest(w, q)[0] for q in qc.staged_quests(w)) if f is not None]
+    return _ALL[id(w)]
 
 
 def terms_of(w: db.World, qid: str) -> tuple[dict | None, list[str], list[str]]:
@@ -39,7 +50,7 @@ def terms_of(w: db.World, qid: str) -> tuple[dict | None, list[str], list[str]]:
     lines = [f"{t} at {where}: {hint}" for t, where, hint in refused]
     terms = {t for t, _, _ in refused}
     if form is not None:
-        fails = rules.check(form)
+        fails = rules.check(form, all_forms(w))
         terms |= {f"check:{r}" for r, _ in fails}
         lines += [f"check:{r}: {m}" for r, m in fails]
     return form, sorted(terms), lines
@@ -60,8 +71,9 @@ def save_owed(quests: dict[str, list[str]]) -> None:
 
 def gate(w: db.World) -> list[str]:
     errs = []
-    for p in sorted(EXAMPLES.glob("*.json")) + sorted(BLOCKTEST.glob("*.json")):
-        errs += [f"example {p.name}: {r}: {m}" for r, m in check_file(p)]
+    for d in (EXAMPLES, BLOCKTEST):
+        for p in sorted(d.glob("*.json")):
+            errs += [f"example {p.name}: {r}: {m}" for r, m in check_file(p, load_forms([d]))]
     errs += [f"blocktest set: {r}: {m}" for r, m in rules.check_set(load_forms([BLOCKTEST]))]
     owed = load_owed()
     staged = qc.staged_quests(w)
@@ -119,8 +131,12 @@ def main(argv: list[str] | None = None) -> int:
     if a.cmd == "check":
         bad = 0
         files = [str(f) for p in map(Path, a.files) for f in (sorted(p.glob("*.json")) if p.is_dir() else [p])]
+        try:
+            together = load_forms(files)
+        except (OSError, json.JSONDecodeError):
+            together = None
         for f in files:
-            fails = check_file(Path(f))
+            fails = check_file(Path(f), together)
             bad += bool(fails)
             print(f"{f}: " + ("passes" if not fails else f"{len(fails)} failure(s)"))
             for r, m in fails:

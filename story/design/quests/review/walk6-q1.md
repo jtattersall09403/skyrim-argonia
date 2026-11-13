@@ -127,7 +127,7 @@ fish-trader's house" are untrue now. The new topics are gists in the records.
 
 ## Paper playtests (designed forms; `--know` from MQ01's, MQ03's and, for MQ05, MQ04's journals)
 
-Runs under `story/playtests/quest.main.mq04/` and `quest.main.mq05/`, names in `story/playtests/walk6-q1.names.json`.
+Runs under `story/playtests/quest.main.mq04/` and `quest.main.mq05/`; their names now come from the forms (the names file is gone).
 All four finished with no stall and no harness error (MQ04 runs played on into MQ05).
 
 - MQ04 careful: clear chain, liked the cut-tree mystery and the jars choice; leaning on Pays-Late "felt grimy"; the
