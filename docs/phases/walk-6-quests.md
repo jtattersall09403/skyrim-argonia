@@ -167,6 +167,14 @@ streams.
   confused or bored at that point), the class of fault is written into the recipe that produced it, as a plain
   instruction of how to do it right; a finding that is not yet cleared changes nothing in a skill. The findings and
   what each became are listed in "Measured" below until they are folded in.
+- **The quest design research is part of the set, visibly.** Ten research notes on quest design (open-world RPGs,
+  the Elder Scrolls, quest lines, actions and skills, five quest shapes: `docs/research/writing/`) are distilled
+  into `quest-write/principles/` and routed by quest shape (`shapes.yaml`); quest-review reads the same files. Found
+  2026-11-13: only one principle file names its research; nothing at the level of a whole story line pointed to it;
+  the principles predate the ceiling (a `deadline`, an `escape`, `checkpoints`); and the sections `shapes.yaml`
+  makes a record hold are themselves bureaucratic (`ledger`, `voteLedger`, `records`, `bondageSheet`), which pushes
+  every writer towards ledgers. Lane W re-distils each principle file against its research note, the ceiling and
+  [owner-bar](../../story/design/owner-bar.md), links each to its source, and renames or drops those sections.
 - **The skill set, restructured** (lane W, after the builder and the first built playtests): the quest skills become
   a connected set, each a clean recipe that names the skill before it and after it, so an agent entering at any
   point knows the whole path. Planned shape, to be settled by what this phase teaches: `quest-system` (the map of the
