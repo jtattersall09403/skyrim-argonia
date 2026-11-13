@@ -101,7 +101,9 @@ locked or not.
   place with the existing model it is built from.
 - *Make a crime where nothing is owned.* Picking a lock or taking a thing is a crime only where it is owned: a
   container's owner is in the sketch; a door's crime comes from its place being owned, which is a need of the place
-  (the mine's rooms owned by the mine's people). Write no warning of a crime the place does not make one.
+  (the mine's rooms owned by the mine's people). Write no warning of a crime the place does not make one, and
+  remember that in an owned room everything without an owner of its own takes the room's owner: a thing meant to be
+  nobody's stands in a room nobody owns.
 - *Give what a person carries, or what lies in a chest.* A thing placed in the world is got by taking it; a stage
   can only give a thing nobody has placed (a letter written for the player, a second copy of its own).
 
@@ -146,7 +148,10 @@ locked or not.
     (about 260 metres) in a straight line from every place whose line or thing switches something in it. Say so in
     the needs of places in those words; a track's length or "out of sight" is not enough. Where the places are
     closer, make the switch from indoors instead.
-16. **Talk before the job carries the job's gates.** A line open at the hidden stage 0 is heard by every player:
+16. **Every line is true for every player who can hear it.** A line said after an ending, or at a later stage, that
+    speaks of a person is gated on them alive, with its twin for them dead; one that speaks of a way is gated on the
+    stage or number that way set.
+17. **Talk before the job carries the job's gates.** A line open at the hidden stage 0 is heard by every player:
     what it says must be true before the offer, or it carries the offer's gates (an earlier quest done).
 
 ## 4. The sketch
@@ -553,7 +558,10 @@ must-live giver fails 96
 - "If named, he is gone": a stage for named and a stage for not named, each with its own switches.
 - "A lesson from the trainer as the reward": a skill book.
 - "Eleven grave-stakes raised": eleven references, or one piece that reads as the row, a need of the place.
-- "Picking that door is a crime": only if the place's rooms are owned; ask for it in the needs of places.
+- "Picking that door is a crime": only if the place's rooms are owned; ask for it in the needs of places. "The
+  bones are nobody's" in that owned room: they are the room's owner's; put them where nobody owns.
+- "Afterwards she says he paid for the wood" when he may be dead: gate it on him alive, and give her a line for him
+  dead.
 - "The place's own crab, at level 12": a creature the world holds keeps its level; a fixed level is a creature of
   ours.
 
