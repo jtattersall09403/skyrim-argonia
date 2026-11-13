@@ -588,3 +588,10 @@ added here the day they are made, with the date and the issue.
   instructions should clearly say how to design something buildable." The story-line skill tells the writer how to
   design a buildable quest and gives a mechanical check to run before any reader sees it; a reader finding an
   outline unbuildable is then a fault in the skill, fixed there.
+- 2026-11-13 (in session, the place studio and the story): "stuff about the story may affect decisions I make about
+  whether and how to edit places. It must always be mindful of the fact that I won't have the story in my head or
+  know who people are etc, generally won't have much context for any of it." And: "I'm going to be editing and
+  building Helstrom now as the first place before the slices so surely we need something now?" The studio shows, for
+  any place and first for Helstrom, what the stories need of it in plain words that assume no knowledge of the
+  story, who each person is to a player, and a warning (never a block) when an edit touches something a quest
+  needs; the owner's edit stands and the story is changed to fit the place. Built now, in nw-05, not left to nw-06.

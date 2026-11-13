@@ -104,6 +104,16 @@ the stories are posted, and nothing waits on the answer.
 9. **The second slice** (four faction openings; Stormhold's source is Markarth, a large build) stands as proposed
    and is the owner's to cut when nw-08 is planned.
 
+### The studio knows what the story needs (owner, 2026-11-13)
+
+The owner edits and builds Helstrom before any slice, without the story in his head. So now, not in nw-06: the
+stories' needs of a place are rows in the new world's database, each in a plain sentence, judged met or not met
+from the player's side; the studio shows them, says who each person is to a player, and warns (never blocks) when
+an edit touches something a quest needs. The owner's edit stands and the story changes to fit the place. No lane
+builds, moves or renames anything in Helstrom to meet a need: an unmet need is shown as unmet. Helstrom's needs come
+from first-draft stories (the main quest's fourth quest, Many-Root; the Waykeepers' line is not written yet) and
+are marked so.
+
 ### Buildable first time (owner, 2026-11-13)
 
 The first four stories' deliverability readers found most full outlines unbuildable as first written, and each was
