@@ -71,14 +71,14 @@ a culprit fought.
 
 ## The fairness test (run before review)
 
-1. For each conclusion: three clues, distinct channels, not one person.
-2. For each node: three leads from different sources.
+1. For each conclusion: three clues, distinct channels, not one person [IN M8].
+2. For each node: three leads from different sources [IN M8].
 3. Three blind routes reach an ending: one that misses the first clue everywhere, one that skips the richest person,
-   one that starts at the last node.
-4. No single clue bypasses steps by accident; the player does not grasp it all early and then stall on a detail.
-5. The journal holds whatever the player must remember beyond a handful of facts.
-6. A paper player who did not write the case reads only the journal and names each open question.
-[IN M8; IN P10]
+   one that starts at the last node [IN M8].
+4. No single clue bypasses steps by accident; the player does not grasp it all early and then stall on a detail
+   [IN M8; IN P10].
+5. The journal holds whatever the player must remember beyond a handful of facts [IN M8].
+6. A paper player who did not write the case reads only the journal and names each open question [IN M8; OB made].
 
 ## Record additions (`shapeData`)
 
