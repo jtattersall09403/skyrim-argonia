@@ -12,6 +12,13 @@ owner has not edited it yet, and his words go above this line when he does.
   read once on paper (`story/design/quests/lines/`); the story skill's "designing a quest that can be built" and the
   sketch check; the research on choices and what a quest can give, with thirteen new results a quest can use; the
   studio's story panel, batch notes and machine start; Helstrom's rooms named and its needs loaded.
+- **The main quest's plot is done** (`story/design/quests/lines/main-plot.md`): three rounds with four Sonnet
+  readers each and a plot-level deliverability reader; in the last two every reader could retell it and wanted to go
+  on, and the last raised nothing new the writer agreed with. Of twelve players nine chose MEND, three CLAIM and
+  none CUT, which stands (readers splitting is weighed, not a bar). It withdrew the old eleventh quest, so the main
+  quest is fourteen quests. Owed because of it: one line each in `province-plan.md` section 2 and the main quest's
+  rows of `consistency.md`, which still name Aunike Crown and the retired Shadowscale. The Act I outlines were not
+  re-tested by this.
 - **Second round done** (the ledger applied, an outcome table on every ending, sketches passing, three readers who
   value different things on three models): the main quest, the Marsh Charter, the Lamp-Bearers, the Sunken Archive,
   Many-Root. In none of them was the stop rule met: each lists what a third round must check.
