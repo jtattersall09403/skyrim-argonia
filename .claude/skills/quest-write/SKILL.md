@@ -29,13 +29,14 @@ dispute, an induction) is what the drama turns on, which the shape routing in se
 - **A minor quest with a row** (most places already hold quests as premises: `db query "SELECT id, code, premise
   FROM quest WHERE settlement = '<place id>'"`) starts from it: `python3 -m tools.argonia_world.quest_record export
   <quest id> -o <quest>.yaml`, its entry in `story/design/quests/50-side-quests.md`, its row in
-  `story/design/quests/review/walk6-ceiling.md`. Keep its premise, cast and beats.
+  `story/design/quests/review/walk6-ceiling.md` where it has one. Keep its premise, cast and beats.
 - **A new premise** with no row: export a small worked quest of the same group (`quest.local.lq25`) as the shape to
   fill, and give it a new id and code. The code is two capitals and two digits: take the prefix the place's quests
   already use (`db query "SELECT code FROM quest WHERE settlement = '<place id>' ORDER BY code"`; the longest run
   of one prefix) and the next number free in the whole `quest` table (`... WHERE code = '<code>'` returns nothing); a
   local quest's id is `quest.local.<code in lower case>`, its `line` `quest.line.local`. A code or id is never
-  reused; the title and every name the quest adds are checked against
+  reused (look again just before the commit, since other lanes take codes too); the title and every name the
+  quest adds are checked against
   `story/design/quests/86-never-reuse-names.md`.
 - **Shapes**: the primary shape is what the player's central act is (a cure to find is CONTAMINATION, a quarrel to
   settle is DISPUTE); up to two more are secondary, from the sixteen in `story/design/quests/index/README.md`.
@@ -59,7 +60,7 @@ Read [shapes.yaml](shapes.yaml): always [principles/general.md](principles/gener
 [principles/actions.md](principles/actions.md), the group's file, each shape's file (primary first). The principle
 files are the quest design research (`docs/research/writing/`) and the owner's bar distilled at the ceiling; each
 principle ends with its source tag (general.md holds the key). Every principle binds this record; a minor quest
-reads only the "Local quests" part of questlines.md.
+reads only the "Local quests" bullet under "Line types" in questlines.md.
 
 | File | What it holds |
 |---|---|
@@ -130,7 +131,10 @@ general.md's table of dramatic jobs, never scripted.
     `placements` row: an existing reference by its form key from the census, or a new one with its base, its anchor
     and an `at` measured with `bash tools/ArgoniaPlugin/plugin.sh inspect navnear:<x>:<y>:<z>`, `near:...`,
     `cellrefs:<cell>`, `cellat:<cell>:<x>,<y>` or `cellgrid:...` (a person on navmesh, a thing on a modelled surface).
-    A new thing is a `template_item` on an item whose model reads as what it is called (a lidded jar, a bucket, a
+    A body to be found is one the world already holds (an existing reference from the census's corpses) or a
+    person the quest places hostile and the player kills; a dead stranger the story needs is told, and what the
+    player examines is a thing at the spot (a satchel, a cut net, a note) to take or read. A new thing is a
+    `template_item` on an item whose model reads as what it is called (a lidded jar, a bucket, a
     necklace; never a Nordic-specific model: `inspect items:<regex>` finds one). A container carries its lock level,
     key and owner where the play needs them; a person carries a thing to be pickpocketed (`carriedBy`). Where an owner
     means to give a container's contents, the giving line's stage carries `giveOwnership` of it.
@@ -148,7 +152,8 @@ The sections are those of [quest-record.md](quest-record.md) §2.
 1. **Action plan**: `python3 .claude/skills/quest-write/action_plan.py --profile <line key> --shapes <SHAPE,...>
    --band <D0..D5> --line <dir of the line's records>` (the band is the place's danger, D0 a safe town to D5 the
    worst country, `story/design/quests/20-world-provisions.md`; for a first or minor quest `--line` is an empty
-   folder); choose or adapt the uses the quest is built round
+   folder); drop any proposed use the place cannot host (a creature it has no ground for), then choose or adapt
+   the uses the quest is built round
    ([skill-uses.yaml](skill-uses.yaml), weighted by [profiles.yaml](profiles.yaml)) and the `centrepiece` tag.
 2. **Premise** and **truth**: numbered physical events, written so the planned actions follow from them; then the
    plausibility pass, person by person (change the truth, never the person).

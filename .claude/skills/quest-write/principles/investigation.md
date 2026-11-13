@@ -31,6 +31,11 @@ a culprit fought.
 10. **Facts are fixed; the reading is the player's.** Identity comes from what people wear, carry and say, never from a
     label handed over [IN P16].
 
+11a. **A minor case** (one place, about eight stages) keeps the same rules at the least size: one conclusion that
+    decides the ending, three clues to it in two forms, four to six nodes, two suspects and one red herring, three
+    endings at most (right; wrong culprit; unsolved), and each required `shapeData` section as short as its content
+    [IN P1; OB shape].
+
 ## The player's side
 
 11. **The journal carries the case**: each entry holds what the player has learnt as facts said by named people

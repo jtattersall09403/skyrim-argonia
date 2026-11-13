@@ -46,7 +46,7 @@ and is never read as "no path". `make reach` runs it over every compiled quest.
 - **A later quest of a line** runs with `--after` the quests before it, their forms loaded beside it: the game first
   plays each to a completed ending along a shortest path, so the player starts with the state, things, gold and rank
   they leave and knows what those journal entries said. `--know` adds a short text of its own.
-- **Names.** A ref, item or place the player would see must have a name in the form or the world database; a names
+- **Names.** At moment 1 a new thing or person may still lack a name the player would see. A ref, item or place the player would see must have a name in the form or the world database; a names
   file (`<quest>.names.json`) is the stop-gap, and each id it had to give (`names_from_file` in `run.json`) is owed
   to the record.
 - **A harness error** (an unknown word, a quest not loaded, a thing without a name) stops the run: fix its cause in
