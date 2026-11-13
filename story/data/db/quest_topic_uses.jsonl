@@ -315,9 +315,9 @@
 {"quest_id":"quest.tg.tg01","topics_ord":4,"ord":0,"value":"fact.tg01.price"}
 {"quest_id":"quest.tg.tg01","topics_ord":5,"ord":0,"value":"fact.tg01.chapter-way"}
 {"quest_id":"quest.tg.tg01","topics_ord":6,"ord":0,"value":"fact.tg01.chapter-way"}
-{"quest_id":"quest.tg.tg01","topics_ord":8,"ord":0,"value":"fact.tg01.strongbox"}
-{"quest_id":"quest.tg.tg01","topics_ord":9,"ord":0,"value":"fact.tg01.chapter-way"}
-{"quest_id":"quest.tg.tg01","topics_ord":10,"ord":0,"value":"fact.tg01.chapter-way"}
+{"quest_id":"quest.tg.tg01","topics_ord":10,"ord":0,"value":"fact.tg01.strongbox"}
+{"quest_id":"quest.tg.tg01","topics_ord":11,"ord":0,"value":"fact.tg01.chapter-way"}
+{"quest_id":"quest.tg.tg01","topics_ord":12,"ord":0,"value":"fact.tg01.chapter-way"}
 {"quest_id":"quest.tg.tg02","topics_ord":0,"ord":0,"value":"fact.tg02.job"}
 {"quest_id":"quest.tg.tg02","topics_ord":0,"ord":1,"value":"fact.tg02.box"}
 {"quest_id":"quest.tg.tg02","topics_ord":0,"ord":2,"value":"fact.tg02.clients"}

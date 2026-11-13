@@ -3,8 +3,9 @@ each a function of the game, the quest, the row and the speaker. A word not here
 """
 from __future__ import annotations
 
-# A person's regard for the player before any change.
-REGARD_START = 0
+# A person's regard for the player before any change, and its bounds: Skyrim's relationship rank, kept between -4
+# and 4 (ARG_Effects ChangeRegard).
+REGARD_START, REGARD_MIN, REGARD_MAX = 0, -4, 4
 
 
 class HarnessError(Exception):
@@ -120,7 +121,7 @@ def _r_number(add):
 
 def _r_regard(g, q, r, _):
     k = _c_ref(g, r)
-    g.s["regard"][k] = g.s["regard"].get(k, REGARD_START) + r["by"]
+    g.s["regard"][k] = max(REGARD_MIN, min(REGARD_MAX, g.s["regard"].get(k, REGARD_START) + r["by"]))
     return []
 
 

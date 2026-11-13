@@ -21,10 +21,14 @@ UNITS_PER_M = 70.0
 NEAR = 1500.0
 SPEAKS_FIRST_NEAR = 1500.0
 MAX_COMMANDS = 60
-# The main quest's message on a must-live death (docs/research/morrowind-level-scripting.md section 5, the
-# recommended text; the builder's message box carries the same words).
-MAIN_MESSAGE = ("With this death the root of what was to come is cut: the main story can no longer be finished. "
-                "Load an earlier save to let it grow again, or go on in the marsh as it now is.")
+# The message on a must-live death, by the quest's kind (docs/research/morrowind-level-scripting.md section 5, the
+# recommended text; the builder's message boxes carry the same words).
+MESSAGES = {
+    "main": "With this death the root of what was to come is cut: the main story can no longer be finished. Load an "
+            "earlier save to let it grow again, or go on in the marsh as it now is.",
+    "faction": "With this death the root of what was to come is cut: this faction's story can no longer be finished. "
+               "Load an earlier save to let it grow again, or go on in the marsh as it now is.",
+}
 SKILLS = ("Alchemy", "Alteration", "Archery", "Block", "Conjuration", "Destruction", "Enchanting", "Heavy Armor",
           "Illusion", "Light Armor", "Lockpicking", "One-handed", "Pickpocket", "Restoration", "Smithing", "Sneak",
           "Speech", "Two-handed")
@@ -110,6 +114,10 @@ class Game:
                 raise HarnessError(f"form {f.get('quest', {}).get('id')}: not a quest form: {'; '.join(errs[:5])}")
             self._scan(f)
         self.ents = self._entities()
+        for f in forms:                     # a door a result unlocks and the form does not lock starts locked, key only
+            for r in [r for s in f["stages"] for r in s["results"]] + [r for ln in f["lines"] for r in ln["results"]]:
+                if r["do"] == "unlock_door" and r["ref"] in self.ents and not self.ents[r["ref"]]["lock"]:
+                    self.ents[r["ref"]]["lock"] = {"level": "key"}
         self.holders = {e["container"] for e in self.ents.values() if e["container"]} | \
             {e["carried_by"] for e in self.ents.values() if e["carried_by"]} | \
             {k for k, e in self.ents.items() if e["contents"] or (e["lock"] and e["kind"] == "thing")}
@@ -162,7 +170,7 @@ class Game:
                                               "hostile": bool(r.get("hostile")), "at": r.get("at"),
                                               "container": r["placement"].get("container"),
                                               "carried_by": r["placement"].get("carried_by"),
-                                              "item": item, "lock": r.get("lock"), "owner": r.get("owner"),
+                                              "item": item, "count": r.get("count") or 1, "lock": r.get("lock"), "owner": r.get("owner"),
                                               "contents": r.get("contents") or [], "text": r.get("text"),
                                               "talker": None, "quest": f["quest"]["id"]})
                 for k in ("lock", "owner", "contents", "text", "container", "carried_by"):      # a ref two
@@ -173,7 +181,7 @@ class Game:
         for t in talkers.values():
             ents[t["id"]] = {"id": t["id"], "kind": "person", "enabled": True, "hostile": False,
                              "at": {"cell": t["cell"], "interior": t["interior"], "x": t["x"], "y": t["y"], "z": 0.0},
-                             "container": None, "carried_by": None, "item": None, "lock": None, "owner": None,
+                             "container": None, "carried_by": None, "item": None, "count": 1, "lock": None, "owner": None,
                              "contents": [], "text": None, "talker": t, "quest": None}
         return ents
 
@@ -195,7 +203,7 @@ class Game:
     def _fresh(self, sheet) -> dict:
         return {"quests": {}, "order": [], "items": {}, "gold": 0, "numbers": {}, "factions": {}, "regard": {},
                 "dead": [], "switched": {}, "locked": {}, "taken": [], "pos": None, "visited": [], "spoken": [],
-                "fired": [], "talking": None, "question": None, "message_shown": False, "hostile": [],
+                "fired": [], "talking": None, "question": None, "hostile": [],
                 "opened": [], "contents": {k: {c["item"]: c["count"] for c in e["contents"]}
                                            for k, e in self.ents.items() if e["contents"]},
                 "crimes": [], "sheet": sheet, "commands": 0, "ended": False}
@@ -348,8 +356,10 @@ class Game:
 
     # -- quest state ---------------------------------------------------------------------------------------------
     def stage(self, q):
+        """The quest's stage as a line's window reads it: the highest stage done (nothing sets a stage below one done:
+        the `stage-order` rule); None before it starts."""
         st = self.s["quests"].get(q)
-        return None if st is None else st["stage"]
+        return max(st["done"]) if st and st["done"] else None
 
     def _active(self, q):
         st = self.s["quests"].get(q)
@@ -365,15 +375,13 @@ class Game:
         st = self.s["quests"].get(q)
         out = []
         if st is None:
-            st = self.s["quests"][q] = {"stage": None, "done": [], "shown": [], "done_obj": [], "ended": None}
+            st = self.s["quests"][q] = {"done": [], "shown": [], "done_obj": [], "ended": None}
             self.s["order"].append(q)
-        if st["ended"]:
-            return []
+        if st["ended"] or n in st["done"]:
+            return []               # as the engine: a stage already done is never set again, nor its results run
         first_shown = stage["shown"] and not any(
             s["shown"] for s in f["stages"] if s["number"] in st["done"])
-        st["stage"] = n
-        if n not in st["done"]:
-            st["done"].append(n)
+        st["done"].append(n)
         if first_shown and stage["ending"] == "none":
             out.append(f"Quest started: {f['quest']['name']}")
         for o in f["objectives"]:
@@ -382,7 +390,17 @@ class Game:
                 out.append(f"Objective completed: {o['text']}")
         if stage["shown"]:
             out.append(f"Journal entry ({f['quest']['name']}): {stage['journal']}")
-        if stage["ending"] != "none":
+        if n == f["quest"]["start"]["stage"]:    # the start check: a who-must-live person, or a death trigger's, dead
+            for ref, to in [(m["ref"], m["fail_stage"]) for m in f["must_live"] if self._within(q, m, n)] + \
+                    [(t["ref"], t["sets"]) for t in f["triggers"] if t["kind"] == "death" and t["prerequisite"] == n]:
+                if not self._alive(ref):
+                    return out + self._set_stage(q, to, None)       # the rest of the start stage is skipped
+        if stage["ending"] != "none":            # an ending closes every objective still shown
+            word = "completed" if stage["ending"] == "completed" else "failed"
+            for o in f["objectives"]:
+                if o["number"] in st["shown"] and o["number"] not in st["done_obj"]:
+                    st["done_obj"].append(o["number"])
+                    out.append(f"Objective {word}: {o['text']}")
             st["ended"] = stage["ending"]
             out.append(f"Quest {stage['ending']}: {f['quest']['name']}")
         else:
@@ -403,10 +421,18 @@ class Game:
         return out
 
     def _trig_open(self, q, t) -> bool:
-        n = self.stage(q)
-        if n is None or self.s["quests"][q]["ended"]:
-            return False
-        return t["prerequisite"] <= n < t["sets"] or t["sets"] <= t["prerequisite"] == n
+        """As the vanilla trigger scripts: the quest runs, its prerequisite stage is done and the stage it sets is not."""
+        st = self.s["quests"].get(q)
+        return bool(st) and not st["ended"] and t["prerequisite"] in st["done"] and t["sets"] not in st["done"]
+
+    def _within(self, q, m, n=None) -> bool:
+        """A who-must-live row's window as the builder guards it: its `from` stage done (or beginning: `n`, for the
+        start check) and the stage at most its `to`."""
+        st = self.s["quests"].get(q)
+        done = st["done"] if st else []
+        stage = n if n is not None else (self.stage(q) or 0)
+        return (m.get("from") is None or m["from"] in done or m["from"] == n) and \
+            (m.get("to") is None or stage <= m["to"])
 
     def _apply(self, q, results, speaker) -> list[str]:
         out = []
@@ -418,27 +444,33 @@ class Game:
         return out
 
     def holds(self, q, conds, speaker) -> bool:
+        """Every condition holds; `not: true` turns a condition round."""
         for c in conds:
             fn = CONDITIONS.get(c["is"])
             if fn is None:
                 raise HarnessError(f"{q}: condition word '{c['is']}' is not one the paper game knows")
-            if not fn(self, q, c, speaker):
+            if bool(fn(self, q, c, speaker)) == bool(c.get("not")):
                 return False
         return True
 
-    def _lines_of(self, speaker, kinds, skip_skill=False):
-        """(quest, line) open now for this speaker, in form order: the stage window and every condition hold (with
-        `skip_skill`, every condition but a skill threshold: a persuasion is offered and checked when said)."""
+    def _can_say(self, q, ln, speaker) -> bool:
+        """A line can be said now: its quest's stage is within its window and every condition holds."""
+        n = self.stage(q)
+        return n is not None and ln["first_stage"] <= n <= ln["last_stage"] and self.holds(q, ln["conditions"], speaker)
+
+    def _lines_of(self, speaker, kinds):
+        """(quest, line) that can be said now by this speaker, in form order."""
+        return [(q, ln) for q, f in self.forms.items() for ln in f["lines"]
+                if ln["speaker"] == speaker and ln["kind"] in kinds and self._can_say(q, ln, speaker)]
+
+    @staticmethod
+    def _first_per_prompt(pairs) -> list[tuple[str, str, object]]:
+        """One entry per prompt, holding the first line that can be said (the engine tries a topic's lines in order)."""
         out = []
-        for q, f in self.forms.items():
-            n = self.stage(q)
-            if n is None:
-                continue
-            for ln in f["lines"]:
-                if ln["speaker"] == speaker and ln["kind"] in kinds and ln["first_stage"] <= n <= ln["last_stage"] \
-                        and self.holds(q, [c for c in ln["conditions"]
-                                           if not (skip_skill and c["is"] == "skill_at_least")], speaker):
-                    out.append((q, ln))
+        for q, ln in pairs:
+            label = ln["prompt"] or "(no prompt)"
+            if label not in [m[0] for m in out]:
+                out.append((label, "line", (q, ln)))
         return out
 
     # -- dialogue ------------------------------------------------------------------------------------------------
@@ -469,16 +501,7 @@ class Game:
 
     def _menu(self, who) -> list[tuple[str, str, object]]:
         """The topics on screen: (label, kind, payload); quest topics first, then the person's own."""
-        out = []
-        for q, ln in self._lines_of(who, ("topic",), skip_skill=True):
-            label = ln["prompt"] or "(no prompt)"
-            if any(c["is"] == "skill_at_least" and SKILL_ALIASES.get(c["skill"].lower(), c["skill"].lower()) == "speech"
-                   for c in ln["conditions"]):
-                label = f"(Persuade) {label}"
-            elif not self.holds(q, [c for c in ln["conditions"] if c["is"] == "skill_at_least"], who):
-                continue
-            if label not in [m[0] for m in out]:
-                out.append((label, "line", (q, ln)))
+        out = self._first_per_prompt(self._lines_of(who, ("topic",)))
         t = self.ents[who]["talker"]
         if t:
             out += [(tp["prompt"], "talk", tp) for tp in self._talk_open(t)]
@@ -496,8 +519,7 @@ class Game:
         q, ids = self.s["question"]["quest"], self.s["question"]["answers"]
         who = self.s["talking"]
         lines = {ln["id"]: ln for ln in self.forms[q]["lines"]}
-        return [(lines[i]["prompt"] or "(no prompt)", "line", (q, lines[i])) for i in ids
-                if i in lines and self.holds(q, lines[i]["conditions"], who)]
+        return self._first_per_prompt([(q, lines[i]) for i in ids if i in lines and self._can_say(q, lines[i], who)])
 
     def _say_line(self, q, ln, who) -> list[str]:
         out = [f'{self.name(who)}: "{self._spoken(ln)}"']
@@ -510,18 +532,17 @@ class Game:
     def _speaks_first(self) -> list[str]:
         out = []
         for q, f in self.forms.items():
-            n = self.stage(q)
-            if n is None or self.s["quests"][q]["ended"]:
+            if self.stage(q) is None or self.s["quests"][q]["ended"]:
                 continue
             for ln in f["lines"]:
                 who = ln["speaker"]
-                if ln["kind"] != "speaks_first" or ln["id"] in self.s["fired"] or not ln["first_stage"] <= n <= ln["last_stage"]:
+                if ln["kind"] != "speaks_first" or ln["id"] in self.s["fired"]:
                     continue
                 p = self._pos(who)
                 d = _dist(self.s["pos"], p) if p else None
                 if d is None or d > SPEAKS_FIRST_NEAR or not self._alive(who) or not self._on(who):
                     continue
-                if not self.holds(q, ln["conditions"], who):
+                if not self._can_say(q, ln, who):
                     continue
                 self.s["fired"].append(ln["id"])
                 self.s["talking"] = who
@@ -534,17 +555,18 @@ class Game:
         if self.s["ended"]:
             return "The session has ended."
         words = command.strip().split()
+        self.s["commands"] += 1             # every command counts towards the limit, one the game refuses too
+        self.s.pop("travel", None)
         if not words:
-            return "Type a command: look, journal, map, go, talk, say, take, use, fight, pick, pickpocket, persuade, wait."
+            return "Type a command: look, journal, map, go, talk, say, take, use, fight, pick, pickpocket, wait."
         verb, arg = words[0].lower(), " ".join(words[1:])
         fn = {"look": self.look, "journal": self.journal, "map": self.map, "go": self.go, "talk": self.talk,
               "say": self.say, "take": self.take, "use": self.use, "fight": self.fight, "pick": self.pick,
-              "pickpocket": self.pickpocket, "persuade": self.persuade, "wait": self.wait}.get(verb)
+              "pickpocket": self.pickpocket, "wait": self.wait}.get(verb)
         if fn is None:
             return f"'{verb}' is not something you can do here. Commands: look, journal, map, go, talk, say, take, " \
-                   "use, fight, pick, pickpocket, persuade, wait."
-        self.s["commands"] += 1
-        if verb not in ("say", "persuade", "journal", "map"):
+                   "use, fight, pick, pickpocket, wait."
+        if verb not in ("say", "journal", "map"):
             if verb != "look":
                 self.s["talking"] = None
                 self.s["question"] = None
@@ -619,7 +641,7 @@ class Game:
         return "\n".join(out)
 
     def _locked(self, e) -> bool:
-        return self.s["locked"].get(e, self.world.get("locked", {}).get(e, bool(self.ents[e]["lock"])))
+        return self.s["locked"].get(e, bool(self.ents[e]["lock"]))
 
     def _lock_word(self, e) -> str:
         lk = self.ents[e]["lock"]
@@ -704,12 +726,12 @@ class Game:
     def go(self, arg) -> str:
         a = arg.lower().strip()
         marks = self._markers()
-        target = None
+        target, travel = None, None
         if a.removeprefix("marker").strip().isdigit():
             i = int(a.removeprefix("marker").strip())
             if not 1 <= i <= len(marks):
                 return f"There is no marker {i} on your map."
-            target = self._pos(marks[i - 1][2])
+            target, travel = self._pos(marks[i - 1][2]), "marker"
         if target is None:
             pool = [e for e in self.ents if self.ents[e]["kind"] != "marker" and self._on(e) and e not in self.s["taken"]
                     and self._pos(e)]
@@ -718,13 +740,21 @@ class Game:
                 return err
             if e:
                 target = self._pos(e)
+                travel = "marker" if e in [t for _, _, t in marks] else "in sight" if e in self._visible() else \
+                    "known place" if target["cell"] in self.s["visited"] else "name only"
         if target is None:
             c = self._places().get(a.removeprefix("to ").strip())
             if c:
                 target = next(self._pos(e) for e in self.ents if self._pos(e) and self._pos(e)["cell"] == c)
+                travel = "known place" if c in self.s["visited"] or c in [self._pos(t)["cell"] for _, _, t in marks] \
+                    else "name only"
         if target is None:
             return f"You know of no person, thing or place called '{arg}'."
         here = self.s["pos"]
+        shut = self._shut(target)
+        if shut:
+            return shut
+        self.s["travel"] = travel
         if here["cell"] == target["cell"] and here["interior"]:
             how = "It is here, in this place."
         else:
@@ -743,6 +773,21 @@ class Game:
         self.s["opened"] = []
         self._visit()
         return "\n".join([how, self.look()] + self._speaks_first())
+
+    def _shut(self, target) -> str | None:
+        """Going into another interior: when every door of the run that leads there is locked and no key of one is
+        held, the way is shut (go to the door to pick it, or find what opens it). A held key opens its door."""
+        here = self.s["pos"]
+        if not target["interior"] or (here["interior"] and here["cell"] == target["cell"]):
+            return None
+        doors = [d for d, to in self.world.get("doors", {}).items() if d in self.ents and to["cell"] == target["cell"]]
+        if not doors or not all(self._locked(d) for d in doors):
+            return None
+        for d in doors:
+            if self._has_key(d):
+                self.s["locked"][d] = False
+                return None
+        return f"The way in is shut: {self._locked_text(doors[0])}"
 
     def talk(self, arg) -> str:
         people = [e for e in self._visible() if self.ents[e]["kind"] == "person"]
@@ -766,6 +811,8 @@ class Game:
             out.append(f'{self.name(e)}: "{" ".join(tp["lines"])}"')
         else:
             out.append(f"{self.name(e)} looks at you and waits.")
+        if e not in self.s["spoken"]:           # the first conversation makes "spoken before" true
+            self.s["spoken"].append(e)
         out.append(self._menu_text(e))
         return "\n".join(out)
 
@@ -780,8 +827,7 @@ class Game:
             pick = menu[int(a) - 1]
         else:
             low = a.lower()
-            for test in (lambda m: m.lower() == low, lambda m: m.lower().removeprefix("(persuade) ") == low,
-                         lambda m: low in m.lower()):
+            for test in (lambda m: m.lower() == low, lambda m: low in m.lower()):
                 hits = [m for m in menu if test(m[0])]
                 if len(hits) == 1:
                     pick = hits[0]
@@ -795,20 +841,10 @@ class Game:
                 self.s["spoken"].append(who)
             return "\n".join(out + [self._menu_text(who)])
         q, ln = payload
-        need = [c for c in ln["conditions"] if c["is"] == "skill_at_least"]
-        if need and not self.holds(q, need, who):
-            c = need[0]
-            have = self._skill(c["skill"])
-            self.s["question"] = None
-            return "\n".join([f"{self.name(who)} is not persuaded. (Your {c['skill']} is {have}; this needed "
-                              f"{c['value']}.)", self._menu_text(who)])
         out = self._say_line(q, ln, who)
         if self.s["talking"] == who:
             out.append(self._menu_text(who))
         return "\n".join(out)
-
-    def persuade(self, arg) -> str:
-        return self.say(arg)
 
     # -- things: taking, containers, locks, theft, reading -----------------------------------------------------
     def _held_refs(self) -> list[str]:
@@ -892,16 +928,18 @@ class Game:
                 return self._ask("take", text, f"Taking from {self.name(pocket)} is pickpocketing." if pocket
                                  else f"{name} is not yours: taking it is stealing.")
             out += self._crime(owner, f"take {name}", choice)
-        if "|" in key:
-            self.s["contents"][holder][item] -= 1
-        else:
+        if "|" in key:                      # a container's or a body's row: the whole stack
+            n = self.s["contents"][holder][item]
+            self.s["contents"][holder][item] = 0
+        else:                               # a placed reference: its count
+            n = self.ents[key]["count"]
             self.s["taken"].append(key)
         if item == GOLD:
-            self.s["gold"] += 1
-            out.append("1 gold added")
+            self.s["gold"] += n
+            out.append(f"{n} gold added")
         else:
-            self.s["items"][item] = self.s["items"].get(item, 0) + 1
-            out.append(f"Added: {name}")
+            self.s["items"][item] = self.s["items"].get(item, 0) + n
+            out.append(f"Added: {name}" + (f" x{n}" if n > 1 else ""))
         return "\n".join(out + self._fire("take", item if "|" in key else key))
 
     def _open(self, e) -> list[str]:
@@ -986,25 +1024,20 @@ class Game:
         return "\n".join([f"{self.name(e)} is dead."] + self.kill(e))
 
     def kill(self, e) -> list[str]:
+        """A death: the death triggers open now; each who-must-live row within its window shows its kind's message
+        (a main or faction quest that has not ended, started or not, as the mortal watch) and fails its quest if it
+        runs."""
         self.s["dead"].append(e)
         out = self._fire("death", e)
-        message = False
         for q, f in self.forms.items():
             for m in f["must_live"]:
-                if m["ref"] != e:
+                if m["ref"] != e or not self._within(q, m):
                     continue
                 st = self.s["quests"].get(q)
-                n = None if st is None else st["stage"]
-                if (m.get("from") is not None and (n is None or n < m["from"])) or \
-                        (m.get("to") is not None and n is not None and n > m["to"]):
-                    continue                            # outside the row's window: the death does not fail it
+                if m["main_message"] and f["quest"]["kind"] in MESSAGES and not (st and st["ended"]):
+                    out.append(f"[Message box] {MESSAGES[f['quest']['kind']]}")
                 if st is not None and not st["ended"]:
                     out += self._set_stage(q, m["fail_stage"], None)
-                message |= m["main_message"] and f["quest"]["kind"] in ("main", "faction") and \
-                    not (st is not None and st["ended"] == "completed")
-        if message and not self.s["message_shown"]:
-            self.s["message_shown"] = True
-            out.append(f"[Message box] {MAIN_MESSAGE}")
         return out
 
     def pick(self, arg) -> str:
@@ -1069,11 +1102,13 @@ class Game:
 
     # -- what the transcript keeps ---------------------------------------------------------------------------
     def summary(self) -> dict:
-        return {"stages": {q: self.s["quests"][q]["stage"] for q in self.s["order"]},
+        return {"stages": {q: self.stage(q) for q in self.s["order"]},
                 "ended": {q: self.s["quests"][q]["ended"] for q in self.s["order"] if self.s["quests"][q]["ended"]},
                 "position": {"cell": self.s["pos"]["cell"], "place": self.place_name(self.s["pos"]),
                              "x": round(self.s["pos"]["x"]), "y": round(self.s["pos"]["y"])},
-                "markers": [t for _, _, t in self._markers()], "talking": self.s["talking"]}
+                "markers": [t for _, _, t in self._markers()], "talking": self.s["talking"],
+                **({"travel": self.s["travel"]} if self.s.get("travel") else {})}
+
 
     def all_ended(self) -> bool:
         return bool(self.s["order"]) and all(self.s["quests"][q]["ended"] for q in self.s["order"])

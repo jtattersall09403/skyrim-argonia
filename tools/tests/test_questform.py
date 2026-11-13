@@ -249,3 +249,66 @@ def test_the_compiler_names_what_the_player_sees():
     form = {"refs": [{"id": "r", "placement": {"base": {"kind": "item", "id": "item.alto-wine"}}}], "stages": [],
             "lines": [{"results": [{"do": "give_item", "item": "item.alto-wine", "count": 1}], "conditions": []}]}
     assert c.item_names(form) == ({"item.alto-wine": "Alto Wine"}, {})
+
+
+# -- the builder's refusals and the engine's facts, as rules (code review C1) --------------------------------------
+
+def _set_lower(f):
+    line(f, "contact.ask")["results"] = [{"do": "set_stage", "stage": 20}]
+
+
+def _two_deaths(f):
+    f["triggers"] = [{"id": f"death.c.{p}", "kind": "death", "ref": "npc.example.contact", "prerequisite": p,
+                      "sets": 40, "choice": True} for p in (20, 30)]
+
+
+def _two_speak_first(f):
+    f["lines"].append({**line(f, "roll-man.first"), "id": "roll-man.first.2"})
+
+
+def _orphan_answer(f):
+    line(f, "contact.ask")["answers"] = ["contact.yes"]
+
+
+def _no_prompt(f):
+    line(f, "contact.work")["prompt"] = None
+
+
+def _door_speaks(f):
+    line(f, "contact.after")["speaker"] = "door.example.hold"
+
+
+def _hostile_existing(f):
+    next(r for r in f["refs"] if r["id"] == "door.example.hold")["hostile"] = True
+
+
+def _shadowed(f):
+    f["lines"].insert(3, {**line(f, "contact.work"), "id": "contact.work.2", "text": "Never said."})
+
+
+def _regard(f):
+    line(f, "contact.work")["results"].append({"do": "change_regard", "ref": "npc.example.contact", "by": 10})
+
+
+def _left(f):
+    f["objectives"][1]["completed_at"] = []
+
+
+@pytest.mark.parametrize("breaks,rule", [(_set_lower, "stage-order"), (_two_deaths, "trigger"),
+                                         (_two_speak_first, "speaks-first"), (_orphan_answer, "answer"),
+                                         (_no_prompt, "prompt"), (_door_speaks, "speaker"),
+                                         (_hostile_existing, "hostile"), (_shadowed, "line-said"),
+                                         (_regard, "regard-range"), (_left, "objective-left")])
+def test_each_builder_and_engine_rule(breaks, rule):
+    f = example()
+    breaks(f)
+    assert rule in failed_rules(f)
+
+
+def test_the_row_limit_counts_rows_as_the_builder_does():
+    f = example()
+    n = rules.built_rows(rules.Form(f))
+    # the start check 1; results 1; objectives completed 3 and shown 3; SetActive 1; each ending: closing, Stop
+    assert n == 1 + 1 + 6 + 1 + 2 + 2
+    stage(f, 20)["results"] = [{"do": "give_gold", "amount": 1}] * (rules.MAX_STAGE_RESULTS - n + 1)
+    assert "result-limits" in failed_rules(f)

@@ -5,18 +5,23 @@
 Names every difference between a designed form (compiled from the quest record) and the form read back from the
 built plugin, field by field, one line each; exits 1 on any. Stages, objectives, refs and who-must-live rows pair by
 their number or id; lines and triggers pair by id, then by what they are (speaker, kind, prompt and window; kind,
-subject and stages). Lists that are sets in the game (an objective's stages and targets, a line's conditions and
-results) compare as sets.
+subject and stages). A stage's and a line's `results` compare as ordered lists (the builder keeps the form's order, so
+a reorder or a dropped duplicate is a difference). The lists that are sets in the game (a line's conditions, an
+objective's shown_at, completed_at and targets) compare as sets.
 
-A ref the design places by an anchor is built at a position the design could not know. It is equal when the built
-position satisfies the anchor: within NEAR_UNITS of the anchor reference (`near`), or in a cell of the anchor place,
-or within PLACE_UNITS of the place's position (`place`). The anchor reference's position comes from a ref of the
-designed form with that existing form key, else the world database (an actor, a door or a house shell), else the
-design's own `at`; with none of them the anchor is not compared. A place's cells and position come from the database.
-An existing ref's `at` (an actor's or a door's, from the census) is compared within POS_UNITS.
+A ref the design places by an anchor is built at a position the design may not have known exactly. When the designed
+ref has an `at`, the built ref must stand in the same cell within PLACED_UNITS of it, horizontally (x, y): the
+builder's 300-unit navmesh tolerance plus the 100-unit door step. Only when the design has no `at` is the anchor
+itself tested: within NEAR_UNITS of the anchor reference (`near`), or in a cell of the anchor place, or within
+PLACE_UNITS of the place's position (`place`). The anchor reference's position comes from a ref of the designed form
+with that existing form key, else the world database (an actor, a door or a house shell), else none, and then the
+anchor is not compared. A new placement's `base`, `container` and `carried_by` are always compared; a built existing
+reference against a designed new placement is a difference. An existing ref's `at` (an actor's or a door's, from the
+census) is compared within POS_UNITS.
 
-Not compared: the form-level `names`, `texts` and `places` (what the paper game shows; the reader writes back the
-names it finds) and a ref's `name`, `destination` and `text`, which the builder's own refusals cover.
+Every field of the form is compared except: the form-level `names`, `texts` and `places` (what the paper game shows;
+the reader writes back the names it finds) and a ref's `name`, `destination` and `text` (display strings the builder
+takes from the form's `names`, `places` and `texts`, whose own refusals cover them).
 """
 from __future__ import annotations
 
@@ -26,6 +31,7 @@ from pathlib import Path
 
 NEAR_UNITS = 1024.0       # a placement "near" a reference stands within this of it (about 15 m)
 PLACE_UNITS = 8192.0      # a placement "at" a place stands within this of the place's position (two cells)
+PLACED_UNITS = 400.0      # an anchored ref stands within this of its designed `at` (navmesh 300 plus the door step 100)
 POS_UNITS = 1.0           # an existing ref's designed and built positions agree within this
 
 
@@ -169,7 +175,7 @@ def diff_form(d: dict, b: dict, res: Resolver) -> list[str]:
         return r
 
     out += keyed("stage", d["stages"], b["stages"], lambda s: s["number"], lambda s: s["number"],
-                 lambda w, x, y: _fields(w, x, y, ("shown", "journal", "ending", "results"), sets=("results",)))
+                 lambda w, x, y: _fields(w, x, y, ("shown", "journal", "ending", "results"), sets=()))
     out += keyed("objective", d["objectives"], b["objectives"], lambda o: o["number"], lambda o: o["number"],
                  lambda w, x, y: _fields(w, x, y, ("text", "shown_at", "completed_at", "targets"),
                                          sets=("shown_at", "completed_at", "targets")))
@@ -178,12 +184,23 @@ def diff_form(d: dict, b: dict, res: Resolver) -> list[str]:
         r = _fields(w, {**x, "hostile": bool(x.get("hostile"))}, {**y, "hostile": bool(y.get("hostile"))},
                     ("kind", "enabled", "hostile", "lock", "owner", "contents", "count", "level"))
         px, py = x["placement"], y["placement"]
-        if "anchor" in px and py != px:
-            if "base" in py and px["base"] != py["base"]:
-                r.append(f"{w}.placement.base: designed {_show(px['base'])}, built {_show(py['base'])}")
-            why = res.anchor_ok(px["anchor"], y.get("at"), x.get("at"))
-            if why:
-                r.append(f"{w}.placement.anchor {_show(px['anchor'])} not satisfied: {why}")
+        if "anchor" in px:
+            for k in ("base", "container", "carried_by"):
+                if px.get(k) != py.get(k):
+                    r.append(f"{w}.placement.{k}: designed {_show(px.get(k))}, built {_show(py.get(k))}")
+            ax, ay = x.get("at"), y.get("at")
+            if ax is None:
+                why = res.anchor_ok(px["anchor"], ay, None)
+                if why:
+                    r.append(f"{w}.placement.anchor {_show(px['anchor'])} not satisfied: {why}")
+            elif ay is None:
+                r.append(f"{w}.at: designed {_show(ax)}, built none")
+            elif ax["cell"] != ay["cell"]:
+                r.append(f"{w}.at: designed in cell {ax['cell']}, built in {ay['cell']}")
+            else:
+                d = math.dist((ax["x"], ax["y"]), (ay["x"], ay["y"]))
+                if d > PLACED_UNITS:
+                    r.append(f"{w}.at: built {d:.0f} units from the designed spot (allowed {PLACED_UNITS:.0f})")
         else:
             r += _fields(w, x, y, ("placement",))
             ax, ay = x.get("at"), y.get("at")
@@ -203,14 +220,14 @@ def diff_form(d: dict, b: dict, res: Resolver) -> list[str]:
         x = {**x, "answers": [ids.get(a, a) for a in x["answers"]]}
         out += [f"{q}: {line}" for line in _fields(
             f"line {x['id']}", x, y, ("speaker", "kind", "prompt", "text", "written", "conditions", "results",
-                                      "first_stage", "last_stage", "answers"), sets=("conditions", "results"))]
+                                      "first_stage", "last_stage", "answers"), sets=("conditions",))]
     out += keyed("trigger", d["triggers"], b["triggers"], lambda t: t["id"],
                  lambda t: (t["kind"], t.get("ref") or t.get("quest"), t.get("quest_stage"), t["prerequisite"],
                             t["sets"]),
                  lambda w, x, y: _fields(w, {**x, "choice": bool(x.get("choice"))}, {**y, "choice": bool(y.get("choice"))},
                                          ("kind", "ref", "quest", "quest_stage", "prerequisite", "sets", "choice")))
     out += keyed("who-must-live", d["must_live"], b["must_live"], lambda m: m["ref"], lambda m: m["ref"],
-                 lambda w, x, y: _fields(w, x, y, ("fail_stage", "main_message", "from", "to")))
+                 lambda w, x, y: _fields(w, x, y, ("fail_stage", "main_message", "message", "from", "to")))
     return out
 
 

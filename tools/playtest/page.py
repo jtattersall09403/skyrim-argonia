@@ -2,7 +2,7 @@
 
     python3 -m tools.playtest page [--out out/playtest/index.html] [--runs story/playtests]
 
-Reads the runs folder's index.json (or every */*/run.json when there is none) and each run's transcript, take,
+Reads every */*/run.json of the runs folder and each run's transcript, take,
 answers, brief and session, and writes one self-contained HTML file: the data embedded as JSON, the code inline
 (page.html beside this file). Nothing is fetched when the page is viewed; rerunning this is the only step.
 """
@@ -176,6 +176,8 @@ def steps(rows: list[dict], quest: str) -> list[dict]:
             flags.append("placeholder")
         if any(x["k"] == "refused" for x in lines):
             flags.append("refused")
+        if s.get("travel") == "name only":
+            flags.append("unguided")
         pos = s.get("position") or None
         out.append({
             "i": i, "time": r.get("time"), "think": r.get("think"), "cmd": r.get("command"),
@@ -201,8 +203,10 @@ def answers(text: str | None) -> list[dict]:
     """Numbered answers matched to the standing questions; one unnumbered answer when they are not numbered."""
     if not text:
         return []
-    parts = re.split(r"(?:^|\s)([1-9])\.\s+", text.strip())
-    found = {int(parts[k]): parts[k + 1].strip() for k in range(1, len(parts) - 1, 2)}
+    parts = re.split(r"(?:^|\n)[ \t]*([1-9])\.\s+", text.strip())
+    found = {}
+    for k in range(1, len(parts) - 1, 2):
+        found.setdefault(int(parts[k]), parts[k + 1].strip())
     if not found:
         return [{"q": None, "a": text.strip()}]
     head = parts[0].strip()

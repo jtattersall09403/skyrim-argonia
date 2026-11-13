@@ -37,7 +37,7 @@
  ],
  "objectives": [
   {"number": 10, "text": "Speak to the Dock Keeper.", "shown_at": [10], "completed_at": [20], "targets": ["person.test.keeper"]},
-  {"number": 20, "text": "Find the token in the barrel on the dock.", "shown_at": [20], "completed_at": [30],
+  {"number": 20, "text": "Find the token in the barrel on the dock.", "shown_at": [20], "completed_at": [30, 40],
    "targets": ["thing.test.token", "person.test.keeper"]},
   {"number": 30, "text": "Bring the token to the Dock Keeper.", "shown_at": [30], "completed_at": [40], "targets": ["person.test.keeper"]},
   {"number": 40, "text": "Ask the Dock Keeper to make you a senior hand.", "shown_at": [40], "completed_at": [50],

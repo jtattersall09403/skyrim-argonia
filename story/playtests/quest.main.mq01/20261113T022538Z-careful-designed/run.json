@@ -1,0 +1,47 @@
+{
+ "quest": "quest.main.mq01",
+ "player": "careful",
+ "source": "designed",
+ "model": "sonnet",
+ "form_files": [
+  "out/c1f/p1/quest.main.mq01.json",
+  "out/c1f/p1/quest.main.mq03.json"
+ ],
+ "forms_hash": "f44e5fa64ce590f5",
+ "created": "20261113T022538Z",
+ "counts": {
+  "commands": 32,
+  "stalls": 0,
+  "harness_errors": 0
+ },
+ "stages": {
+  "quest.main.mq01": [
+   10,
+   20,
+   30,
+   90
+  ],
+  "quest.main.mq03": [
+   10,
+   16,
+   90
+  ]
+ },
+ "ended": "all quests ended (quest.main.mq01 completed, quest.main.mq03 completed)",
+ "after": [],
+ "names_from_file": [],
+ "take": false,
+ "answers": false,
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.1504364,
+ "minutes": 1.1,
+ "turns": 38,
+ "tokens": {
+  "input_tokens": 70,
+  "output_tokens": 5305,
+  "cache_read_input_tokens": 353664,
+  "cache_creation_input_tokens": 15470
+ }
+}

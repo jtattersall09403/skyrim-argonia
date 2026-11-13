@@ -3095,6 +3095,8 @@
 {"id":"quest_fail_forward:quest.main.mq05|2|0:when.0","parent_id":"quest_fail_forward:quest.main.mq05|2|0:when","ord":0,"term":"npcAlive"}
 {"id":"quest_fail_forward:quest.main.mq05|2|1:when","term":"not"}
 {"id":"quest_fail_forward:quest.main.mq05|2|1:when.0","parent_id":"quest_fail_forward:quest.main.mq05|2|1:when","ord":0,"term":"npcAlive"}
+{"id":"quest_fail_forward:quest.main.mq05|2|2:when","term":"not"}
+{"id":"quest_fail_forward:quest.main.mq05|2|2:when.0","parent_id":"quest_fail_forward:quest.main.mq05|2|2:when","ord":0,"term":"npcAlive"}
 {"id":"quest_fail_forward:quest.main.mq05|3|0:when","term":"not"}
 {"id":"quest_fail_forward:quest.main.mq05|3|0:when.0","parent_id":"quest_fail_forward:quest.main.mq05|3|0:when","ord":0,"term":"npcAlive"}
 {"id":"quest_fail_forward:quest.main.mq05|3|1:when","term":"not"}
@@ -3769,3 +3771,6 @@
 {"id":"quest_successor:quest.tg.tg04|1|0:when.0","parent_id":"quest_successor:quest.tg.tg04|1|0:when","ord":0,"term":"topicHeardFrom"}
 {"id":"quest_successor:quest.tg.tg04|1|0:when.1","parent_id":"quest_successor:quest.tg.tg04|1|0:when","ord":1,"term":"hasItem"}
 {"id":"quest_topic:quest.main.mq03|8:when","term":"hasItem"}
+{"id":"quest_topic:quest.tg.tg01|7:when","term":"npcAlive"}
+{"id":"quest_topic:quest.tg.tg01|8:when","term":"not"}
+{"id":"quest_topic:quest.tg.tg01|8:when.0","parent_id":"quest_topic:quest.tg.tg01|8:when","ord":0,"term":"npcAlive"}

@@ -69,10 +69,25 @@ def test_a_chained_run_is_shown_under_every_quest_it_played():
     assert P._played({"stages": {"q1": [10, 90], "q2": [0, 10], "q3": [0], "q4": [10]}}, rows, "q1") == ["q1", "q2", "q4"]
 
 
+def test_a_go_by_name_alone_is_flagged():
+    rows = [{"think": "x", "command": "go keeper", "result": "You arrive.", "summary": {"travel": "name only"}},
+            {"think": "y", "command": "go marker 1", "result": "You arrive.", "summary": {"travel": "marker"}}]
+    st = P.steps(rows, "quest.x")
+    assert "unguided" in st[0]["flags"] and "unguided" not in st[1]["flags"]
+
+
 def test_answers_are_matched_to_the_questions():
-    rows = P.answers("1. Go on. 2. The Reed, because I agreed. 3. The placeholder. 4. Write the lines.")
+    rows = P.answers("1. Go on.\n2. The Reed, because I agreed.\n3. The placeholder.\n4. Write the lines.")
     assert [r["n"] for r in rows] == [1, 2, 3, 4] and rows[1]["q"] == S.QUESTIONS[1]
     assert P.outcome("stopped by the player (q1 completed, q2 active)", "q1")[:1] == ("completed",)
     assert P.outcome("command limit (q1 active)", "q1")[0] == "cutoff"
     assert P.outcome("quest failed", "q1")[0] == "failed"
     assert P.answers("I would not go on.") == [{"q": None, "a": "I would not go on."}]
+
+
+def test_an_answer_keeps_a_number_that_is_not_at_a_line_start():
+    rows = P.answers("1. Go on.\n2. Meet.\n3. When the jar was in box 2. I did not know which.\n4. Write.")
+    assert [r["n"] for r in rows] == [1, 2, 3, 4]
+    assert rows[2]["a"] == "When the jar was in box 2. I did not know which."
+    rows = P.answers("1. First.\n1. Again.")
+    assert rows[0]["a"] == "First."

@@ -27,9 +27,14 @@ throughout). Ids, form keys, editor ids and positions are plain strings and numb
 A **speaks-first** line is the one package a quest has: the person stands where `at` says, walks up and says it.
 The form says nothing more about it.
 
-**Windows.** A line is open at every stage numbered from its first stage to its last. A trigger is open from its
-prerequisite up to, not including, the stage it sets. An objective is active at a stage it is shown at and not
-completed at.
+**Stages are by done.** As in the engine, setting a stage that is already done does nothing (its journal entry and
+results never come twice), and a quest's stage as a line's window reads it is the highest stage done: `stage-order`
+keeps every stage set above the stage it is set from, so nothing rests on what the engine reports after a lower stage
+is set (never measured).
+
+**Windows.** A line is open while the quest's stage is from its first stage to its last. A trigger is open while its
+prerequisite stage is done and the stage it sets is not (the vanilla scripts' test), so it can still fire after the
+quest has moved past its prerequisite. An objective is active at a stage it is shown at and not completed at.
 
 ## The vocabularies
 
@@ -65,18 +70,26 @@ failure is one line naming its rule.
 | `reachable` | a stage cannot be reached from the start (a who-must-live death reaches its failed ending) |
 | `objective-target-on` | a shown stage that is not an ending has no active objective with a target switched on at it |
 | `asked-is-target` | a thing to take or use is not a target at its prerequisite stage; a person whose line moves the quest is not a target at that stage |
-| `completes-on-target` | the line or trigger that completes an objective concerns none of its targets |
+| `completes-on-target` | the line (its speaker, or a thing its conditions or results name) or the take or use trigger that completes an objective concerns none of its targets |
 | `hand-in` | a line that takes a thing is not gated on holding it, or is not open from the stage a take trigger of that thing opens to the stage the trigger sets (holding it early still works; the take moves only an in-between stage) |
 | `held-take` | a take trigger's prerequisite stage does not set the trigger's stage `if_held` its item (a thing taken before the stage began would move nothing) |
 | `line-window` | a first stage is after the last; a line offered before the first ending stays open into it |
 | `switch-cause` | a stage that switches a reference can be set by a death, another quest's stage, the start or another stage (the player could be anywhere) |
 | `away` | a switched reference is in the same cell as the speaker or the taken or used thing, or, both outdoors, under `AWAY_UNITS` (18,000) from it; a position is missing (another interior, or across the interior/exterior line, is away) |
-| `result-limits` | the stages hold more than `MAX_STAGE_RESULTS` (128) results in all, or a line more than `MAX_LINE_RESULTS` (128) |
+| `result-limits` | the stages hold more than `MAX_STAGE_RESULTS` (128) rows once built, counted as the builder writes them (`rules.built_rows`: the start checks, every result with `if_held` as two, each objective completed and shown, SetActive, and on each ending its closing row, the side-quest count and Stop; `check --set` adds the rows other forms put on its stages), or a line more than `MAX_LINE_RESULTS` (128) |
 | `must-live-fails` | a who-must-live row's stage is not a failed ending |
 | `must-live-window` | a who-must-live row holds before the quest's first shown stage (its death would fail a quest the player has not begun), or its `from` is after its `to` |
 | `main-message` | a minor quest's who-must-live row shows the message |
 | `death-hostile` | a death trigger names a person neither hostile nor who-must-live, and the kill is not marked the player's choice |
 | `speaks-first-has-line` | a speaks-first line has no topic or greeting line with the same speaker, words, results and window |
+| `stage-order` | a stage's result sets a stage not above it, a line's not above its last stage, a trigger's not above its prerequisite, or a who-must-live row's failed ending is not above every stage of its window |
+| `trigger` | a ref carries two death or two use triggers (a who-must-live row without the message is a death script too), or a thing is taken towards more stages than the builder can watch (two for a new placement of ours, one for any other) |
+| `speaks-first` | more than one speaks-first line |
+| `answer`, `prompt`, `speaker` | an answer line is no topic's answer, or a line's answer is not an answer line; a topic or answer has no prompt; a line's speaker is not a person |
+| `hostile`, `created` | a hostile ref is not a new person; a thing made in a container starts off, or is switched, locked or used |
+| `line-said` | a line has every condition of an earlier line of the same speaker, kind and prompt whose window covers its own: the engine says the first that holds, so it is never said |
+| `regard-range` | a `change_regard` step is 0 or beyond 4 either way, or a `regard_at_least` value is outside -4 to 4 (regard is Skyrim's relationship rank, kept between -4 and 4) |
+| `objective-left` | the quest can move from a stage an objective is shown at (by the stage's results, a line open there or a trigger whose prerequisite it is) to a stage that is not an ending and does not complete it |
 
 **The set.** `python3 -m tools.questform check --set <dir or forms...>` also checks the forms as the quests one game
 holds (`rules.check_set`):
@@ -271,18 +284,18 @@ hint.
 | no `startWhen` and another quest's `setStage` of it | `{by: start_quest}` (that quest's stage carries the `start_quest` result) |
 | no `startWhen`, a `start`, nothing that starts it | `{by: game, stage: start}` |
 | stage `journalText`, `hidden`, `ending`; its `onEnter` and its ending's `world` and `rewards` | stage `journal`, `shown`, `ending`, `results` |
-| objective `objectiveText`, `target` (one ref, or several separated by commas); the stage's successors | objective `text`, `targets`, `shown_at`, `completed_at` |
-| successor or fail-forward `topicHeardFrom` (with gates under `all`) | a line at that stage that sets the stage, with those gates; when every line of the stage is gated and one checks skill or gold that no other line catches, the fallback line (the topic's written `fail` info, else its `fallback` gist; refused as `fallback` without one), gated on the rest of the gates; never an ungated copy |
+| objective `objectiveText`, `target` (one ref, or several separated by commas); the stages its stage moves to by a successor or a fail-forward, but an ending (which closes every objective) | objective `text`, `targets`, `shown_at`, `completed_at`; objectives of the same words, targets and completion at several stages are one, shown at each |
+| successor or fail-forward `topicHeardFrom` (with gates under `all`) | a line at that stage that sets the stage, with those gates; when every line of the stage is gated, the fallback line after them (the topic's written `fail` info, else its `fallback` gist; refused as `fallback` without one when a skill or gold check no other line catches has none), gated on every gate but the check it can fail: the skill or gold check, or, with neither, the thing it asks the player to hold; never an ungated copy; a fallback left with every gate of the line before it is refused as `unsaid line` |
 | a topic's `when` | a gate on every line of the topic |
-| `hasItem`; `not npcAlive`; `questStage`/`stageEverReached`; a `flag` a `thing_hook` sets | take, death, quest-stage, use trigger; a take also gives its prerequisite stage the result `set_stage` to the trigger's stage `if_held` the item |
+| `hasItem`; `not npcAlive`; `questStage`/`stageEverReached`; a `flag` a `thing_hook` sets | take, death, quest-stage, use trigger; a take also gives its prerequisite stage the result `set_stage` to the trigger's stage `if_held` the item; two triggers of a kind on one ref that set one stage are one, from the lower prerequisite, when every way to the other passes it; any other pair (but a placed thing's takes towards two stages) is refused as `trigger` |
 | `not npcAlive` to a failed ending | a who-must-live row (`main_message` for the main and faction groups), its `from` and `to` the first and last stage whose fail-forwards name the person, `from` raised to the first shown stage; while the quest waits at a hidden start stage, every line that moves it on is gated on that person alive (a death before the quest is shown leaves it unable to start, saying nothing) |
 | `hasItem`, `giveItem`, `takeItem` of a ref | the ref's item id (a unique thing's ref id, a stock thing's base); naming a unique thing's base is refused (`item id`) |
 | `objectiveComplete` | the objective's own completion test |
 | gates: `questStage`, `stageEverReached`, `flag`, `counterAtLeast`, standings, `factionRankAtLeast`, `hasItem`, `goldAtLeast`, `skillAtLeast`, `npcAlive`, `dispositionAtLeast`, `raceIs`, `sexIs` | the matching condition |
 | `setFlag`, `addCounter`, `changeStanding`, `changeSettlementStanding` | `set_number`, `add_number` |
-| `changeDisposition`, `enableRef`/`disableRef`, `setDoorAccess`, `give`/`take` `Item`/`Gold`, `setFactionRank`, `setStage` | `change_regard`, `switch_on`/`off`, `lock_door`/`unlock_door`, the item and gold results, `set_rank`, `set_stage` or `start_quest` |
+| `changeDisposition`, `enableRef`/`disableRef`, `setDoorAccess`, `give`/`take` `Item`/`Gold`, `setFactionRank`, `setStage` | `change_regard` (a step of 1 to 4 either way, and `dispositionAtLeast` -3 to 4: regard is Skyrim's relationship rank; refused otherwise), `switch_on`/`off`, `lock_door`/`unlock_door`, the item and gold results, `set_rank`, `set_stage` or `start_quest` |
 | `grantTopic`, `removeTopic` | dropped: a line's window opens and closes it |
-| the record's `topics` (`kind` greeting or speaks-first; an answer is a reply of a written question) | lines; words from `story/data/quest_lines/<code>.json` (a topic's `infos`, or one info written as `prompt` and `lines`; variant `main` for the line, `fail` for its fallback), else the written `dialogue_line` rows, else the `intent` as a gist |
+| the record's `topics` (`kind` greeting or speaks-first; an answer is a reply of a written question) | lines, in the record's order (the engine says the first that holds); words from `story/data/quest_lines/<code>.json` (a topic's `infos`, or one info written as `prompt` and `lines`; variant `main` for the line, `fail` for its fallback; any other variant is refused as `variant`: words said under another condition are a topic of their own with that condition), else the written `dialogue_line` rows, else the `intent` as a gist; a speaks-first topic's first line is also its one speaks-first line |
 | every row of the record's `placements` | `refs`, with its `lock`, `owner`, `count`, `level`, `carriedBy`; an existing actor's or door's `at` from the census; the `name` the player sees (the row's, else the thing's, else the cast's, else the census's) |
 | the record's things' `name` and `text` for items that are not refs | `names`, `texts` |
 | the cells the refs stand in and the doors lead to | `places`: the census's name (a cell's own, else its settlement's: the designed place it lands as, else BM&V's map marker, else the settlement), a row's `placeName` over it; a door into a worldspace's persistent cell is named by the grid square it opens on; refused as `place name` when nothing names it |
@@ -293,7 +306,9 @@ Refused, each with its hint: walking into or standing in a place (`inZone`, `inS
 moved (`npcAtMark`, `setSchedule`, `moveRef`, the player included); `knowsTopic`; `placeCleared`; local variants;
 an `any` or a `not` as a gate; an `all` around a trigger; a flag moving a stage; any other term; and missing data:
 `placement` (a named ref without a placements row), `objective target`, `objective text`, `start`, `death both
-ways` (a death that both fails and moves the quest), `fallback`, `item id`, `place name`.
+ways` (a death that both fails and moves the quest), `fallback`, `unsaid line`, `variant`, `trigger`, `item id`,
+`place name`, and a regard step or gate outside Skyrim's (`changeDisposition`, `dispositionAtLeast`).
+
 
 ## The gate
 

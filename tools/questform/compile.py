@@ -37,6 +37,9 @@ CUT = {
 HINT_OTHER = "not in the form's vocabulary: re-author it with the form's conditions and results"
 DROPPED = {"grantTopic", "removeTopic"}       # a line's first and last stage open and close it
 HARD = ("skill_at_least", "gold_at_least")    # a check the player can fail in front of the speaker: it has a fallback
+FAILS = HARD + ("item_count_at_least",)       # with no skill or gold check, a thing held is the check that fails
+VARIANTS = ("main", "fail")                   # the written infos a topic carries: its line and its fallback
+REGARD = 4                                    # regard is Skyrim's relationship rank, -4 to 4
 
 
 # The skills a record names, as Skyrim's actor value names (the form holds only these; blocks.md, "How record terms map
@@ -225,6 +228,9 @@ class Compiler:
         if term == "npcAlive":
             return [{"is": "alive", "ref": self.use(a[0], where)}]
         if term == "dispositionAtLeast":
+            if not -REGARD < int(a[1]) <= REGARD:
+                self.refuse("dispositionAtLeast", where, f"regard is Skyrim's relationship rank, -{REGARD} to "
+                            f"{REGARD}: ask for 1 to {REGARD}")
             return [{"is": "regard_at_least", "ref": self.use(a[0], where), "value": int(a[1])}]
         if term in ("raceIs", "sexIs"):
             return [{"is": "race_is" if term == "raceIs" else "sex_is", "value": a[0]}]
@@ -317,6 +323,9 @@ class Compiler:
             elif term in ("changeStanding", "changeSettlementStanding"):
                 out.append({"do": "add_number", "number": f"standing.{a[0]}", "value": int(a[1])})
             elif term == "changeDisposition":
+                if not 0 < abs(int(a[1])) <= REGARD:
+                    self.refuse("changeDisposition", where, f"regard is Skyrim's relationship rank, -{REGARD} to "
+                                f"{REGARD}: change it by 1 to {REGARD} (4 is as far as it goes)")
                 out.append({"do": "change_regard", "ref": self.use(a[0], where), "by": int(a[1])})
             elif term in ("enableRef", "disableRef"):
                 out.append({"do": "switch_on" if term == "enableRef" else "switch_off", "ref": self.use(a[0], where)})
@@ -397,7 +406,10 @@ class Compiler:
                 self.mover(succ["when"], n, succ["to"], f"{where} successor to {succ['to']}")
             for ff in s.get("failForward") or []:
                 self.mover(ff["when"], n, ff["to"], f"{where} fail-forward to {ff['to']}", fail=True)
-            done = sorted({x["to"] for x in s.get("successors") or []})
+            # an objective is done when the quest leaves its stage, by a successor or a fail-forward; an ending is
+            # never named (it closes every objective)
+            done = sorted({x["to"] for x in (s.get("successors") or []) + (s.get("failForward") or [])
+                           if self.stage_of.get(x["to"], {}).get("ending") not in ("complete", "failed")})
             for i, o in enumerate(s.get("objectives") or []):
                 ow = f"{where} objective {o['id']}"
                 self.scan(o.get("completeWhen") or {"all": []}, ow)
@@ -410,13 +422,14 @@ class Compiler:
                 targets = [t.strip() for t in (target or "").split(",") if t.strip() and t.strip() != "none"]
                 objectives.append({"number": n + i, "text": o.get("objectiveText") or o["id"], "shown_at": [n],
                                    "completed_at": done, "targets": [self.use(t, ow) for t in targets]})
+        objectives = _merged(objectives)
         for npc in sorted(self.death_moves & set(self.must_live)):
             self.refuse("death both ways", f"ref {npc}", "a person's death either fails the quest (who must live) "
                         "or moves it on, at every stage alike")
         self._held(stages)
         lines = self.lines(q)
         triggers = [{"id": f"{t['kind']}.{t.get('ref') or t['quest']}.{t['prerequisite']}-{t['sets']}", **t}
-                    for t in self.triggers]
+                    for t in self._one_per_ref(start)]
         kind = q["group"] if q["group"] in ("main", "faction") else "minor"
         must_live = self.windows(stages, start, kind)
         self._unable_to_start(lines, must_live, start, stages)
@@ -455,6 +468,48 @@ class Compiler:
                 row = {"do": "set_stage", "stage": t["sets"], "if_held": item}
                 if row not in by[t["prerequisite"]]["results"]:
                     by[t["prerequisite"]]["results"].append(row)
+
+    # -- one trigger of a kind on a ref ------------------------------------------------------------------------
+    def _one_per_ref(self, start) -> list[dict]:
+        """A ref carries one trigger of a kind (a placed thing may also be taken towards a second stage: the builder
+        puts that take on the thing itself). Two that set one stage are one trigger: the one with the lower
+        prerequisite, when every way to the other's passes it (it is open whenever either is); otherwise refused, as
+        any other pair is: the record must say it one way."""
+        succ = {}
+        for s in self.rec["stages"]:
+            succ[s["id"]] = {x["to"] for x in (s.get("successors") or []) + (s.get("failForward") or [])}
+        if start["stage"] not in succ:
+            succ[start["stage"]] = {t["sets"] for t in self.triggers if t["prerequisite"] == start["stage"]}
+
+        def passes(lo, hi) -> bool:       # every way from the start to `hi` passes `lo`
+            if lo == start["stage"]:
+                return True
+            seen, todo = {start["stage"]}, [start["stage"]]
+            while todo:
+                n = todo.pop()
+                for m in succ.get(n, ()):
+                    if m != lo and m not in seen:
+                        seen.add(m)
+                        todo.append(m)
+            return hi not in seen
+        out = []
+        for t in self.triggers:
+            same = [x for x in out if x["kind"] == t["kind"] and x.get("ref") is not None and x.get("ref") == t.get("ref")
+                    and (t["kind"] != "take" or x["sets"] == t["sets"])]
+            if not same:
+                out.append(t)
+                continue
+            x = same[0]
+
+            lo, hi = sorted((x, t), key=lambda y: y["prerequisite"])
+            if x["sets"] == t["sets"] and passes(lo["prerequisite"], hi["prerequisite"]):
+                out[out.index(x)] = lo
+            else:
+                self.refuse("trigger", f"ref {t['ref']}", f"two {t['kind']} triggers (stage {x['prerequisite']} to "
+                            f"{x['sets']}, stage {t['prerequisite']} to {t['sets']}): a ref carries one trigger of a "
+                            "kind; let one take, use or death move the quest, and the stage it sets decide the rest")
+                out.append(t)
+        return out
 
     # -- who must live, and when -------------------------------------------------------------------------------
     def windows(self, stages, start, kind) -> list[dict]:
@@ -550,13 +605,21 @@ class Compiler:
                         self.refuse("fallback", where, "a check of skill or gold has a line for when it fails: write "
                                     "its `fail` info, or the topic's `fallback` gist")
                     continue
-                soft = [g for g in gate_sets[0] if g["is"] not in HARD
+                # said when the line's check fails: every gate but its skill or gold check, or, with neither, but
+                # the thing it asks the player to hold
+                fails = HARD if any(g["is"] in HARD for gs in gate_sets for g in gs) else FAILS
+                soft = [g for g in gate_sets[0] if g["is"] not in fails
                         and all(_key(g) in {_key(x) for x in gs} for gs in gate_sets)]
+                if any({_key(g) for g in soft} == {_key(g) for g in gs} for gs in gate_sets):
+                    self.refuse("unsaid line", f"{where} fallback at stage {a}", "the fallback has every gate of the "
+                                "line before it, so it is never said: gate the line on a check the player can fail "
+                                "(skill, gold, a thing held), or drop the fallback")
+                    continue
                 ftext, fprompt, fok, fanswers = fb
                 made.append({**base, "text": ftext, "written": fok, "answers": fanswers, "prompt": base["prompt"],
                              "conditions": soft, "results": [], "first_stage": a, "last_stage": b})
-            if t.get("kind") == "speaks-first":
-                made += [{**m, "kind": "speaks_first", "prompt": None} for m in list(made)]
+            if t.get("kind") == "speaks-first" and made:     # a quest has one speaks-first line: the first
+                made.append({**made[0], "kind": "speaks_first", "prompt": None})
             for i, m in enumerate(made):
                 m["id"] = f"{topic}@{npc}#{m['first_stage']}-{m['last_stage']}" + (f".{i}" if len(made) > 1 else "")
                 ids_of.setdefault(topic, []).append(m)
@@ -572,6 +635,14 @@ class Compiler:
         """(words, prompt, written, answers) of a topic's line, or of its fallback (None when the record has none)."""
         w = written.get(t["id"])
         if w and (w.get("speaker") == t["person"] or len(self.people.get(t["id"], ())) == 1):
+            if not fail:
+                for i in w["infos"]:
+                    if i.get("variant", "main") not in VARIANTS:
+                        self.refuse("variant", f"topic {t['id']}", f"the written variant `{i['variant']}` is never "
+                                    "said: the form carries a topic's line and its fallback only; give these words "
+                                    "a topic of their own with the condition that says when (spoken before, "
+                                    "regard, a death)")
+
             infos = [i for i in w["infos"] if (i.get("variant", "main") == "fail") == fail]
             if infos:
                 info = infos[0]
@@ -764,7 +835,22 @@ class Compiler:
         return None
 
 
+def _merged(objectives) -> list[dict]:
+    """One objective for the same words, targets and completion shown at several stages (a branch's twin stages):
+    the engine closes each objective on every ending, so each one costs rows."""
+    out = []
+    for o in objectives:
+        twin = next((x for x in out if (x["text"], x["targets"], x["completed_at"]) ==
+                     (o["text"], o["targets"], o["completed_at"])), None)
+        if twin is None:
+            out.append(o)
+        else:
+            twin["shown_at"] = sorted(set(twin["shown_at"]) | set(o["shown_at"]))
+    return out
+
+
 def _bare_hard(gates, gate_sets) -> bool:
+
     """A line gated on skill or gold whose failure no other line of the stage catches: no other line's gates are all
     among its own without the skill or gold (the line that haggles when the persuasion fails)."""
     if not any(g["is"] in HARD for g in gates):

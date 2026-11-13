@@ -64,6 +64,32 @@
    }
   ]
  },
+ "topic.tg01-after-warm": {
+  "speaker": "npc.mercantile-coast.soulrest.keeper-harbour-den",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": null,
+    "lines": [
+     "Welcome back, Lookout. Keeps-What-Floats lives, and the Lookout he robbed has the necklace again. Your hands are the kind the Chapter wants. I am glad I sent you down, and I will hear you here."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.tg01-after-cool": {
+  "speaker": "npc.mercantile-coast.soulrest.keeper-harbour-den",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": null,
+    "lines": [
+     "Lookout. Keeps-What-Floats is dead, and no necklace is worth that. Mind your hands."
+    ],
+    "facts": []
+   }
+  ]
+ },
  "topic.tg01-after": {
   "speaker": "npc.mercantile-coast.soulrest.keeper-harbour-den",
   "infos": [
@@ -72,22 +98,6 @@
     "prompt": null,
     "lines": [
      "You are a Lookout of the Chapter now. Keep to its ways and do your work with care. I keep this desk, and I will hear you here."
-    ],
-    "facts": []
-   },
-   {
-    "variant": "warm",
-    "prompt": null,
-    "lines": [
-     "Welcome back, Lookout. Keeps-What-Floats lives, and the Lookout he robbed has the necklace again. Your hands are the kind the Chapter wants. I am glad I sent you down, and I will hear you here."
-    ],
-    "facts": []
-   },
-   {
-    "variant": "cool",
-    "prompt": null,
-    "lines": [
-     "Lookout. Keeps-What-Floats is dead, and no necklace is worth that. Mind your hands."
     ],
     "facts": []
    }

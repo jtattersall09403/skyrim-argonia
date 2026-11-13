@@ -8,7 +8,6 @@
     python3 -m tools.playtest end <session> --take "<open take>" | --answers "<answers>"
     python3 -m tools.playtest run --forms ... --player careful|impatient|wanderer [--model sonnet] [--know ...]
     python3 -m tools.playtest probe [--model haiku]      # proves the player cannot read the repo
-    python3 -m tools.playtest index                      # rebuild story/playtests/index.json
     python3 -m tools.playtest reach <forms...> | --compiled [--gate]   # each ending reachable? its shortest path
     python3 -m tools.playtest page [--out <html>] [--runs <dir>]   # the owner's page for exploring the runs
 """
@@ -52,6 +51,7 @@ def main(argv=None) -> int:
     e.add_argument("--take")
     e.add_argument("--answers")
     e.add_argument("--ask-later", action="store_true", help="the runner asks the standing questions itself")
+    e.add_argument("--think", help="accepted and not kept: a take needs no think")
     r = sub.add_parser("run")
     _common(r)
     r.add_argument("--player", required=True)
@@ -59,7 +59,6 @@ def main(argv=None) -> int:
     r.add_argument("--max-commands", type=int, default=40)
     pr = sub.add_parser("probe")
     pr.add_argument("--model", default="haiku")
-    sub.add_parser("index")
     rc = sub.add_parser("reach")
     rc.add_argument("forms", nargs="*")
     rc.add_argument("--compiled", action="store_true", help="every staged quest that fits the form, compiled now")
@@ -99,7 +98,8 @@ def main(argv=None) -> int:
         for b in bad:
             print(f"reach: {b}")
         if a.gate and not bad:
-            print(f"reach: {len(rows)} quests, every one not owed reaches a completed ending")
+            print(f"reach: {len({r['quest'] for r in rows})} quests, {len(rows)} ways through: every stage and ending "
+                  f"reached by a character of {', '.join(walk.SHEETS)}, and each completes every quest not owed")
         return 1 if bad else 0
     if a.cmd == "do":
         code, screen = S.do(a.session, a.command, a.think)
@@ -119,8 +119,7 @@ def main(argv=None) -> int:
         out, n, size = page.write(Path(a.out) if a.out else page.DEFAULT_OUT, Path(a.runs))
         print(f"page: {out} ({n} runs, {size / 1024:.0f} KB)")
         return 0
-    print(f"index: {S.index()}")
-    return 0
+    return 2
 
 
 if __name__ == "__main__":

@@ -1,0 +1,7 @@
+1. Next I should talk to Dar-Zeel, the last of the three clients holding the pledges from the Drowned Merchant's lockbox. I would hear her claim, probably sell the item back for whatever price I can get, and then report to Bent-Spine. After that I expect the next chapter to begin.
+
+2. I work for the thieves' guild, with Tilts-The-Jug and Bent-Spine as my contacts. S'Tabi pointed me to Tilts-The-Jug for work, and she gave me the necklace job. Bent-Spine, the fence, then sent me on the lockbox job. I work for them because they are the only ones offering me work. Their code also appeals to me: take from people who can bear the loss and don't hurt anyone.
+
+3. The most confusing moment was the "seen" crime. I picked Keeps-What-Floats's strongbox and the game said I was seen, then it seemed to drop the matter with no consequence. I couldn't tell if I was in trouble or if anyone would respond. The failed persuasion checks were also confusing, because the game never said why they failed or what I would have needed. I couldn't see my gold or my Speech skill either.
+
+4. I would tell the writer that the tone and the world are good, and the quest chain is clear. Please show what makes a persuasion check hard and let me see my gold and skills, so I can make informed choices. Make crimes have visible results, or don't flag them. If the three clients are all lying, give small clues in the dialogue so I can work that out instead of guessing. Please also keep the journal's record of my choices, as it makes my decisions feel like they matter.

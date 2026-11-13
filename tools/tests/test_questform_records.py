@@ -8,8 +8,8 @@ from tools.argonia_world import db
 from tools.questform import compile as qc
 from tools.questform import rules
 
-ELEVEN = ["quest.main.mq01", "quest.main.mq03", "quest.main.mq04", "quest.main.mq05", "quest.bc.bc01", "quest.bc.bc02",
-          "quest.bc.bc03", "quest.tg.tg01", "quest.tg.tg02", "quest.local.lq25", "quest.local.lq30"]
+ELEVEN = ["quest.main.mq01", "quest.main.mq03", "quest.main.mq04", "quest.main.mq05",
+          "quest.tg.tg01", "quest.tg.tg02", "quest.local.lq25", "quest.local.lq30"]   # BC01 to BC03: being rewritten
 DIVES = "npc.pirate-freeholds.opening-work-camp.n1-2"
 
 
@@ -53,9 +53,40 @@ def test_a_failed_check_says_its_own_words_and_a_gated_line_has_no_ungated_twin(
     assert {"is": "skill_at_least", "skill": "Speech", "value": 25} in passed[0]["conditions"]
     assert failed[0]["conditions"] == [] and failed[0]["text"].startswith("Words cost nothing")
     assert failed[0]["text"] != passed[0]["text"] and failed[0]["prompt"] == passed[0]["prompt"]
-    for q, topic in (("quest.bc.bc02", "topic.bc02-the-fire"), ("quest.bc.bc03", "topic.bc03-soulrest")):
-        at0 = lines_of(forms[q], topic, 0)
-        assert at0 and all(ln["conditions"] for ln in at0), (q, "an ungated copy of a gated start line")
+
+
+def test_a_hand_in_with_no_other_check_falls_back_without_the_thing(forms):
+    """A line whose only check is a thing held: its fallback is said without it (else it could never be said)."""
+    ret = lines_of(forms["quest.tg.tg01"], "topic.tg01-return", 30)
+    fallback = [ln for ln in ret if not ln["results"]]
+    assert len(fallback) == 1 and not any(c["is"] == "item_count_at_least" for c in fallback[0]["conditions"])
+    assert not [f for f in rules.check(forms["quest.tg.tg01"]) if f[0] == "line-said"]
+
+
+def test_a_variant_the_form_does_not_carry_is_refused(world):
+    c = qc.Compiler(world, "quest.tg.tg01")
+    written = qc.written_lines("tg01")
+    written["topic.tg01-after"]["infos"].append({"variant": "again", "lines": ["Back again."]})
+    c._written = lambda code: written
+    c.compile()
+    assert any(t == "variant" and "topic.tg01-after" in w for t, w, _ in c.refused)
+
+
+def test_a_fallback_that_could_never_be_said_is_refused(world):
+    c = qc.Compiler(world, "quest.tg.tg01")
+    for t in c.rec["topics"]:
+        if t["id"] == "topic.tg01-his-habits":
+            t["when"] = {"npcAlive": "npc.mercantile-coast.soulrest.tg01-thief"}
+            t["fallback"] = "Not now."
+    c.compile()
+    assert any(t == "unsaid line" and "topic.tg01-his-habits" in w for t, w, _ in c.refused)
+
+
+def test_an_objective_is_closed_when_a_fail_forward_moves_the_quest(forms):
+    f = forms["quest.main.mq01"]
+    first = next(o for o in f["objectives"] if o["shown_at"] == [10])
+    assert 21 in first["completed_at"] and 20 in first["completed_at"]
+
 
 
 def test_a_hand_in_fallback_keeps_holding_the_thing(forms):

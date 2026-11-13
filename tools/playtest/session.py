@@ -3,7 +3,7 @@
 A session is a run folder `story/playtests/<quest id>/<utc>-<player>-<designed|built>/` holding:
 session.json (the forms played, their hash, the world snapshot, the state), transcript.jsonl (one line per command:
 time, think, command, result, a state summary), take.md and answers.md (the player's words), stream.jsonl (the
-runner's raw model stream) and run.json (what the index lists). `index` rebuilds story/playtests/index.json.
+runner's raw model stream) and run.json (the run's counts, cost and how it ended).
 """
 from __future__ import annotations
 
@@ -139,17 +139,29 @@ def _append(folder: Path, row: dict) -> None:
 
 def do(folder, command: str, think: str) -> tuple[int, str]:
     """Apply one command; (exit code, the screen). 0 played, 2 refused, 3 a harness error (the run stops)."""
-    if not (think or "").strip():
-        return 2, "Refused: every command needs --think: say what you believe is going on and why you do this."
     sess = _load(folder)
+
+    def refuse(text, count=False):
+        """A refused command: its transcript row carries the refusal text; `count` takes it from the commands left."""
+        if count:
+            sess["state"]["commands"] += 1
+            _save(folder, sess)
+        _append(folder, {"time": utc_stamp(), "think": think or "", "command": command, "result": text,
+                         "summary": None, "refused": True})
+        return 2, text
+
     if sess["broken"]:
         return 3, f"HARNESS ERROR (the run has stopped): {sess['broken']}"
     if sess["take"] is not None:
         return 2, "You have given your take; the game is over."
     st = sess["state"]
     if st["commands"] >= sess["max_commands"]:
-        return 2, (f"You have used all {sess['max_commands']} commands. Stop playing now and give your take: "
-                   "play end --take '...'")
+        return refuse(f"You have used all {sess['max_commands']} commands. Stop playing now and give your take: "
+                      "play end --take '...'")
+    if not (think or "").strip():
+        return refuse("Refused: every command needs --think: say what you believe is going on and why you do this.",
+                      count=True)
+    n = st["commands"] + 1
     try:
         g = G.Game(sess["forms"], sess["world"], state=st)
         screen = g.do(command)
@@ -160,6 +172,7 @@ def do(folder, command: str, think: str) -> tuple[int, str]:
         screen, summary, code = f"HARNESS ERROR (the run has stopped): {e}", None, 3
     else:
         sess["state"] = g.s
+    sess["state"]["commands"] = n
     _save(folder, sess)
     _append(folder, {"time": utc_stamp(), "think": think, "command": command, "result": screen,
                      "summary": summary})
@@ -216,7 +229,7 @@ def stalls(rows: list[dict]) -> int:
     not a repeat), the third journal-or-map view running, or a think that says stuck."""
     n, prev, views = 0, None, 0
     for r in rows:
-        if r["think"] is None:
+        if r["think"] is None or r.get("refused"):
             continue
         cmd = (" ".join(r["command"].lower().split()), r["result"])
         views = views + 1 if cmd[0].split(" ")[0] in STALL_VIEWS else 0
@@ -257,7 +270,7 @@ def run_record(folder, extra: dict | None = None) -> dict:
     return {**old, "quest": sess["quest"], "player": sess["player"], "source": sess["source"],
             "model": sess.get("model"), "form_files": [_rel(f) for f in sess["form_files"]],
             "forms_hash": sess["forms_hash"], "created": sess["created"],
-            "counts": {"commands": sum(1 for r in rows if r["think"] is not None), "stalls": stalls(rows),
+            "counts": {"commands": sum(1 for r in rows if r["think"] is not None and not r.get("refused")), "stalls": stalls(rows),
                        "harness_errors": sum(1 for r in rows if r["result"].startswith("HARNESS ERROR"))},
             "stages": {q: v["done"] for q, v in st["quests"].items()}, "ended": how,
             "after": sess.get("after") or [],
@@ -276,21 +289,3 @@ def _rel(p: str) -> str:
         return str(Path(p).resolve().relative_to(REPO))
     except ValueError:
         return p
-
-
-def index(root: Path = RUNS) -> Path:
-    """Write index.json only: each kept run's counts and ending recomputed from its transcript and state, in the
-    index; no run's own files are touched."""
-    runs = []
-    for p in sorted(Path(root).glob("*/*/run.json")):
-        if (p.parent / "session.json").exists():
-            r = run_record(p.parent)
-        else:
-            r = json.loads(p.read_text(encoding="utf-8"))
-        runs.append({"path": str(p.parent.relative_to(root)), **{k: r.get(k) for k in (
-            "quest", "player", "source", "model", "created", "forms_hash", "counts", "ended", "cost_usd",
-            "minutes")}})
-    out = Path(root) / "index.json"
-    out.write_text(json.dumps({"_about": "Every paper playtest run (python3 -m tools.playtest index rebuilds this)",
-                               "runs": runs}, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
-    return out

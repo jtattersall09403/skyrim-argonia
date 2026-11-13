@@ -20,7 +20,7 @@
  ],
  "objectives": [
   {"number": 10, "text": "Speak to the walker on the dock.", "shown_at": [10], "completed_at": [20], "targets": ["person.test.walker"]},
-  {"number": 20, "text": "Wait by the bollard for the Dock Keeper's word.", "shown_at": [20], "completed_at": [100],
+  {"number": 20, "text": "Wait by the bollard for the Dock Keeper's word.", "shown_at": [20], "completed_at": [30, 100],
    "targets": ["marker.test.bollard", "person.test.walker"]}
  ],
  "refs": [

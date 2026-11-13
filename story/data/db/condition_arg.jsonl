@@ -2048,8 +2048,9 @@
 {"condition_id":"quest_fail_forward:quest.main.mq05|0|1:when.0","ord":0,"value":"npc.nesh-deeka"}
 {"condition_id":"quest_fail_forward:quest.main.mq05|1|0:when.0","ord":0,"value":"npc.hist-heartland.helstrom.nisswo-interpreter-debating-house"}
 {"condition_id":"quest_fail_forward:quest.main.mq05|1|1:when.0","ord":0,"value":"npc.nesh-deeka"}
-{"condition_id":"quest_fail_forward:quest.main.mq05|2|0:when.0","ord":0,"value":"npc.hist-heartland.helstrom.nisswo-interpreter-debating-house"}
-{"condition_id":"quest_fail_forward:quest.main.mq05|2|1:when.0","ord":0,"value":"npc.nesh-deeka"}
+{"condition_id":"quest_fail_forward:quest.main.mq05|2|0:when.0","ord":0,"value":"npc.hist-heartland.helstrom.grove-s-senior-tree"}
+{"condition_id":"quest_fail_forward:quest.main.mq05|2|1:when.0","ord":0,"value":"npc.hist-heartland.helstrom.nisswo-interpreter-debating-house"}
+{"condition_id":"quest_fail_forward:quest.main.mq05|2|2:when.0","ord":0,"value":"npc.nesh-deeka"}
 {"condition_id":"quest_fail_forward:quest.main.mq05|3|0:when.0","ord":0,"value":"npc.hist-heartland.helstrom.grove-s-senior-tree"}
 {"condition_id":"quest_fail_forward:quest.main.mq05|3|1:when.0","ord":0,"value":"npc.hist-heartland.helstrom.nisswo-interpreter-debating-house"}
 {"condition_id":"quest_fail_forward:quest.main.mq05|3|2:when.0","ord":0,"value":"npc.nesh-deeka"}
@@ -2972,3 +2973,5 @@
 {"condition_id":"quest_successor:quest.tg.tg04|1|0:when.1","ord":0,"value":"item.flotilla-hull-tally"}
 {"condition_id":"quest_topic:quest.main.mq03|8:when","ord":0,"value":"thing.mq03.sap-jar"}
 {"condition_id":"quest_topic:quest.main.mq03|8:when","ord":1,"value":1}
+{"condition_id":"quest_topic:quest.tg.tg01|7:when","ord":0,"value":"npc.mercantile-coast.soulrest.tg01-thief"}
+{"condition_id":"quest_topic:quest.tg.tg01|8:when.0","ord":0,"value":"npc.mercantile-coast.soulrest.tg01-thief"}

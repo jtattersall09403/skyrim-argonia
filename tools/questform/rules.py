@@ -1,10 +1,16 @@
 """The quest form's structural checks: what the schema alone cannot say (docs/design/quest-form.md, "The rules").
 
 `check(form)` returns every failure as (rule, one line). The schema runs first; a form that breaks it gets no
-structural check (its shape is not known). Stage windows, as the paper game and the builder read them:
-- a line is open at every stage numbered from its first stage to its last;
-- a trigger is open at every stage numbered from its prerequisite up to, not including, the stage it sets;
+structural check (its shape is not known). Stages are by "done", as the engine has them: setting a stage already done
+does nothing, and a quest's stage as a line's window reads it is the highest stage done (`stage-order` keeps every
+stage set above the stage it is set from). Windows:
+- a line is open while the quest's stage is from its first stage to its last;
+- a trigger is open while its prerequisite stage is done and the stage it sets is not (the graph below takes it as
+  open at every stage from its prerequisite on, an over-reach that `reach` in the paper game does not make);
 - an objective is active at a stage it is shown at and is not completed at.
+
+Every refusal of the builder (tools/ArgoniaPlugin/QuestForm.cs) that a form alone can show is a rule here, so a form
+that passes `check` (and `check_set`) builds.
 """
 from __future__ import annotations
 
@@ -17,17 +23,20 @@ from tools.questform import validate
 # the speaker or thing that causes it, or across the interior/exterior line from it, or, both outdoors, at least this
 # many units from it (docs/research/skyrim/quest-form-engine-facts.md).
 AWAY_UNITS = 18000.0
-# The engine's limits on result rows: all of a quest's stages together, and one line.
+# The engine's limits on result rows, as the builder counts them: all of a quest's stage rows together, and one line.
 MAX_STAGE_RESULTS = 128
 MAX_LINE_RESULTS = 128
+# Regard is Skyrim's relationship rank, kept between these by the engine (ARG_Effects ChangeRegard).
+REGARD_MIN, REGARD_MAX = -4, 4
 
 RULES = ("schema", "vocabulary", "unique-ids", "stages-exist", "refs-exist", "placement", "lock", "owner", "contents",
          "item-id", "journal-text",
          "way-out", "reachable", "objective-target-on", "asked-is-target", "completes-on-target", "hand-in", "held-take",
          "line-window", "switch-cause", "away", "must-live-fails", "must-live-window", "main-message", "death-hostile",
-         "result-limits", "speaks-first-has-line")
+         "result-limits", "speaks-first-has-line", "stage-order", "trigger", "speaks-first", "answer", "prompt",
+         "speaker", "hostile", "created", "line-said", "regard-range", "objective-left")
 # The rules over a set of forms played together (check_set).
-SET_RULES = ("set-start", "set-stages")
+SET_RULES = ("set-start", "set-stages", "result-limits")
 
 
 def _schema(form) -> list[tuple[str, str]]:
@@ -58,8 +67,7 @@ class Form:
         return [ln for ln in self.lines if ln["first_stage"] <= n <= ln["last_stage"]]
 
     def open_triggers(self, n):
-        return [t for t in self.triggers
-                if (t["prerequisite"] <= n < t["sets"]) or (t["sets"] <= t["prerequisite"] == n)]
+        return [t for t in self.triggers if t["prerequisite"] <= n and t["sets"] != n]
 
     def edges(self, n) -> set[int]:
         out = set(_stage_sets(self.stages[n]["results"]))
@@ -229,6 +237,176 @@ def check(form) -> list[tuple[str, str]]:
     out += _death_hostile(fm)
     out += _limits(fm)
     out += _speaks_first(fm)
+    out += _stage_order(fm)
+    out += _builder(fm)
+    out += _said(fm)
+    out += _regard(fm)
+    out += _left(fm)
+    return out
+
+
+def _stage_order(fm: Form):
+    """No result or trigger sets a stage at or below a stage that must already be done for it to fire: a stage's
+    results set stages above it, a line's above its last stage, a trigger's above its prerequisite, a who-must-live
+    row's failed ending above every stage of its window. What the engine reports after a lower stage is set was never
+    measured, and nothing rests on it."""
+    out = []
+    for s in fm.f["stages"]:
+        out += [("stage-order", f"stage {s['number']} sets stage {n}, not above it") for n in _stage_sets(s["results"])
+                if n <= s["number"]]
+    for ln in fm.lines:
+        out += [("stage-order", f"line {ln['id']} (open to stage {ln['last_stage']}) sets stage {n}, not above its "
+                 "window") for n in _stage_sets(ln["results"]) if n <= ln["last_stage"]]
+    out += [("stage-order", f"trigger {t['id']} sets stage {t['sets']}, not above its prerequisite {t['prerequisite']}")
+            for t in fm.triggers if t["sets"] <= t["prerequisite"]]
+    live = [n for n in fm.numbers if fm.stages[n]["ending"] == "none"]
+    for m in fm.f["must_live"]:
+        top = max([n for n in live if n <= m.get("to", n)] or [0])
+        if m["fail_stage"] <= top:
+            out.append(("stage-order", f"who-must-live {m['ref']}: its failed ending {m['fail_stage']} is not above "
+                        f"stage {top} of its window"))
+    return out
+
+
+def built_rows(fm: Form) -> int:
+    """The quest's stage rows as the builder writes them (QuestForm.cs, "The stage rows"), without the rows other
+    forms add (check_set counts those): the start checks, every result (a set_stage `if_held` is two), each objective
+    completed and shown, the one SetActive, and on each ending the one row closing every objective, the side-quest
+    count (not on a main quest) and Stop."""
+    f, start = fm.f, fm.f["quest"]["start"]["stage"]
+    n = sum(1 for m in f["must_live"] if m.get("from", start) <= start <= m.get("to", start))
+    n += sum(1 for t in fm.triggers if t["kind"] == "death" and t["prerequisite"] == start)
+    n += sum(1 + ("if_held" in r) for s in f["stages"] for r in s["results"])
+    objs = f["objectives"]
+    n += sum(len([x for x in o["completed_at"] if x in fm.stages]) + len([x for x in o["shown_at"] if x in fm.stages])
+             for o in objs)
+    n += 1 if objs else 0
+    for s in f["stages"]:
+        if s["ending"] != "none":
+            n += bool(objs) + (s["ending"] == "completed" and f["quest"]["kind"] != "main") + 1
+    return n
+
+
+def added_rows(forms: list[dict]) -> dict[str, int]:
+    """The rows each quest's stages carry for other forms: a quest started by its stage (one), another form's
+    quest-stage trigger on it (two)."""
+    out = defaultdict(int)
+    for f in forms:
+        st = f["quest"]["start"]
+        if st["by"] == "quest_stage":
+            out[st["quest"]] += 1
+        for t in f["triggers"]:
+            if t["kind"] == "quest_stage":
+                out[t["quest"]] += 2
+    return out
+
+
+def _builder(fm: Form):
+    """The builder's refusals a form alone shows (QuestForm.cs): one trigger script of a kind per ref (a who-must-live
+    row without the message and without a window is a death script too); one speaks-first line in a quest; an answer
+    line is some topic's answer, a topic or an answer has a prompt; a line's speaker is a person; only a new person is
+    hostile; a thing made in a container is on from the start and is never switched, locked or used. (The builder's
+    refusals that need the load order, an owner sharing a base or a lock that states what the reference has, are
+    not here.)"""
+    out, seen = [], defaultdict(list)
+    for t in fm.triggers:
+        if t.get("ref"):
+            seen[(t["ref"], t["kind"])].append(t)
+    for m in fm.f["must_live"]:
+        if not m["main_message"]:
+            seen[(m["ref"], "death")].append({"id": f"who-must-live {m['ref']}", "sets": None})
+    for (ref, kind), ts in seen.items():
+        names = ", ".join(t["id"] for t in ts)
+        if kind == "take":          # takes setting one stage are one script; a new placement takes a second stage
+            stages = {t["sets"] for t in ts}
+            fresh = "existing" not in fm.refs[ref]["placement"] and not fm.refs[ref]["placement"].get("container")
+            if len(stages) > (2 if fresh else 1):
+                out.append(("trigger", f"{ref} is taken towards {len(stages)} stages ({names}): a placed thing of "
+                            "ours is taken towards two at most, any other thing one"))
+        elif len(ts) > 1:
+            out.append(("trigger", f"{ref} carries {len(ts)} {kind} scripts ({names}): one trigger of a kind per "
+                        "ref; make them one"))
+
+    first = [ln["id"] for ln in fm.lines if ln["kind"] == "speaks_first"]
+    if len(first) > 1:
+        out.append(("speaks-first", f"{len(first)} speaks-first lines ({', '.join(first)}): a quest has one"))
+    asked = {a for ln in fm.lines if ln["kind"] == "topic" for a in ln["answers"]}
+    by_id = {ln["id"]: ln for ln in fm.lines}
+    out += [("answer", f"answer line {ln['id']} is no topic's answer") for ln in fm.lines
+            if ln["kind"] == "answer" and ln["id"] not in asked]
+    out += [("answer", f"line {ln['id']} answers with {a}, which is not an answer line") for ln in fm.lines
+            for a in ln["answers"] if a in by_id and by_id[a]["kind"] != "answer"]
+    out += [("prompt", f"{ln['kind']} line {ln['id']} has no prompt") for ln in fm.lines
+            if ln["kind"] in ("topic", "answer") and not ln["prompt"]]
+    out += [("speaker", f"line {ln['id']}: {ln['speaker']} is not a person") for ln in fm.lines
+            if fm.refs[ln["speaker"]]["kind"] != "person"]
+    for r in fm.f["refs"]:
+        p = r["placement"]
+        if r.get("hostile") and (r["kind"] != "person" or "existing" in p):
+            out.append(("hostile", f"ref {r['id']}: only a new person is hostile (its base of ours is made "
+                        "aggressive)"))
+        if p.get("container") and not r["enabled"]:
+            out.append(("created", f"ref {r['id']}: a thing made in a container is there from the start (enabled)"))
+    made = {r["id"] for r in fm.f["refs"] if r["placement"].get("container")}
+    for where, res in _all_results(fm):
+        out += [("created", f"{where} {x['do']} {x['ref']}, a thing made in a container, which has no reference")
+                for x in res if x.get("ref") in made and x["do"] in ("switch_on", "switch_off", "lock_door",
+                                                                     "unlock_door")]
+    out += [("created", f"trigger {t['id']}: a thing made in a container is taken, not used") for t in fm.triggers
+            if t["kind"] == "use" and t.get("ref") in made]
+    return out
+
+
+def _said(fm: Form):
+    """Every line can be said: no line has all the conditions of an earlier line of the same speaker, kind and prompt
+    whose window covers its own (the engine says the first that holds, so the later never would)."""
+    out = []
+    for i, ln in enumerate(fm.lines):
+        mine = {_ck(c) for c in ln["conditions"]}
+        for e in fm.lines[:i]:
+            if e["speaker"] == ln["speaker"] and e["kind"] == ln["kind"] and e["prompt"] == ln["prompt"] and \
+                    e["first_stage"] <= ln["first_stage"] and ln["last_stage"] <= e["last_stage"] and \
+                    {_ck(c) for c in e["conditions"]} <= mine:
+                out.append(("line-said", f"line {ln['id']} can never be said: line {e['id']} before it holds whenever "
+                            "it does"))
+                break
+    return out
+
+
+def _ck(c) -> str:
+    import json
+    return json.dumps(c, sort_keys=True)
+
+
+def _regard(fm: Form):
+    out = []
+    for where, res in _all_results(fm):
+        out += [("regard-range", f"{where} changes regard by {x['by']}: regard is Skyrim's relationship rank, "
+                 f"{REGARD_MIN} to {REGARD_MAX}; a step is 1 to 4") for x in res
+                if x["do"] == "change_regard" and not 0 < abs(x["by"]) <= REGARD_MAX]
+    out += [("regard-range", f"line {ln['id']} asks regard at least {c['value']}, outside {REGARD_MIN} to "
+             f"{REGARD_MAX}") for ln in fm.lines for c in ln["conditions"]
+            if c["is"] == "regard_at_least" and not REGARD_MIN < c["value"] <= REGARD_MAX]
+    return out
+
+
+def _left(fm: Form):
+    """Leaving a stage completes every objective shown at it: each stage the quest moves to from a stage an
+    objective is shown at (by the stage's results, a line open there or a trigger whose prerequisite it is; an ending
+    closes every objective) is one of its `completed_at`."""
+    out = []
+    for o in fm.f["objectives"]:
+        for s in o["shown_at"]:
+            if s not in fm.stages:
+                continue
+            nxt = set(_stage_sets(fm.stages[s]["results"])) | {t["sets"] for t in fm.triggers if t["prerequisite"] == s}
+            nxt |= {n for ln in fm.open_lines(s) for n in _stage_sets(ln["results"])}
+
+            for t in sorted(nxt):
+                if t in fm.stages and fm.stages[t]["ending"] == "none" and t not in o["completed_at"] and \
+                        t not in o["shown_at"]:
+                    out.append(("objective-left", f"objective {o['number']} shown at {s} stays shown when the quest "
+                                f"moves to {t}: add {t} to its completed_at"))
     return out
 
 
@@ -425,9 +603,10 @@ def _away_one(fm: Form, cause, ref, where):
 
 def _limits(fm: Form):
     out = []
-    n = sum(len(s["results"]) for s in fm.f["stages"])
+    n = built_rows(fm)
     if n > MAX_STAGE_RESULTS:
-        out.append(("result-limits", f"the stages hold {n} results in all, over {MAX_STAGE_RESULTS}"))
+        out.append(("result-limits", f"the stages hold {n} rows once built, over {MAX_STAGE_RESULTS}"))
+
     out += [("result-limits", f"line {ln['id']} holds {len(ln['results'])} results, over {MAX_LINE_RESULTS}")
             for ln in fm.lines if len(ln["results"]) > MAX_LINE_RESULTS]
     return out
@@ -470,11 +649,12 @@ def _completes(fm: Form):
         for s in o["shown_at"]:
             for t in o["completed_at"]:
                 for ln in fm.open_lines(s):
-                    if t in _stage_sets(ln["results"]) and ln["speaker"] not in o["targets"]:
+                    concerns = {ln["speaker"]} | {x["item"] for x in ln["conditions"] + ln["results"] if "item" in x}
+                    if t in _stage_sets(ln["results"]) and not concerns & set(o["targets"]):
                         out.append(("completes-on-target", f"objective {o['number']} is completed by line "
                                     f"{ln['id']}, whose speaker {ln['speaker']} is not one of its targets"))
                 for tr in fm.open_triggers(s):
-                    if tr["sets"] == t and tr.get("ref") not in o["targets"]:
+                    if tr["sets"] == t and tr["kind"] in ("take", "use") and tr.get("ref") not in o["targets"]:
                         out.append(("completes-on-target", f"objective {o['number']} is completed by trigger "
                                     f"{tr['id']}, which concerns none of its targets"))
     return out
@@ -627,6 +807,12 @@ def check_set(forms: list[dict]) -> list[tuple[str, str]]:
             for c in ln["conditions"]:
                 if c["is"].startswith("stage_") and c["quest"] != q:
                     named(q, f"line {ln['id']}", c["quest"], c["stage"])
+    extra = added_rows(forms)
+    for q, f in sorted(by_id.items()):
+        n = built_rows(Form(f)) + extra.get(q, 0)
+        if extra.get(q) and n > MAX_STAGE_RESULTS:
+            out.append(("result-limits", f"{q}: its stages hold {n} rows once built with the rows other forms add, "
+                        f"over {MAX_STAGE_RESULTS}"))
     for target, got in sorted(starters.items()):
         for frm, where, n, _ in got:
             named(frm, where, target, n)

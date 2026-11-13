@@ -3,14 +3,17 @@ player could give, so the first path found to a state is a shortest one. Determi
 paths.
 
 - `complete(game, quest)` plays one quest to a completed ending along a shortest path (for `--after`), or raises a
-  HarnessError naming the stages every path stops at;
-- `reach(forms)` reports, for each quest of a set, each ending: reached by which shortest path from a new game (the
-  quests it waits on first played to a completed ending), or the stages every path stops at.
+  HarnessError saying what was found;
+- `reach(forms)` proves, for each quest of a set, every stage and every ending reachable, for each character of
+  `SHEETS`, from each completed ending of the quests it waits on; each one not reached is named, and a search cut at
+  its limit says so (never that no path exists).
 
-It tries what the quest could ask of a player: say every quest line on offer, talk to everyone, take and use every
-thing, open containers, pick locks with lockpicks held, pickpocket and search bodies (always unseen), fight a person
-who is hostile, who-must-live or watched by a death trigger (always won), and go to every person, thing and door. A
-person's own topics outside the forms move nothing and are not tried.
+It tries what the quest could ask of a player: say every quest line on offer, talk to everyone, take every thing that
+is not a container, use every door, container, readable or used thing, open containers, pick locks with lockpicks
+held, pickpocket and search bodies (always unseen), fight a person who is hostile, who-must-live, watched by a death
+trigger or named by an `alive` or `dead` condition (always won), and go to every person, thing and door. It acts on
+the walked quest's own refs first, and on every loaded ref only when that leaves a goal unreached. A person's own
+topics outside the forms move nothing and are not tried.
 """
 from __future__ import annotations
 
@@ -22,8 +25,13 @@ from tools.playtest import game as G
 from tools.playtest.vocab import HarnessError
 
 MAX_STATES = 20000
-# `reach` asks whether any character can reach an ending: its default player has every skill at 100.
+# A search over every loaded ref, after the walked quest's own leave a goal unreached, looks this much less far: a
+# quest of the form names every ref it needs, so the wider search seldom finds more and costs most of the time.
+FALLBACK_SHARE = 10
+# The characters `reach` plays, each with this much gold: one able in every skill, and a new character.
+GOLD = 1000
 ABLE = G.new_sheet("Argonian", "female", **{s.replace(" ", "").replace("-", ""): 100 for s in G.SKILLS})
+SHEETS = {"able": ABLE, "new": G.new_sheet("Argonian", "female")}
 
 
 def _copy(s: dict) -> dict:
@@ -34,7 +42,7 @@ def _key(s: dict, spoken: bool) -> str:
     """A state as far as what can happen next goes: lists as sets; who was spoken to only when a condition asks; who
     the player is talking to only while a question waits (any topic is one `talk` away); where the player stands only
     while a container is open or a question waits (any person, thing or door is one `go` away)."""
-    drop = {"commands", "visited", "crimes"} | (set() if spoken else {"spoken"}) | \
+    drop = {"commands", "visited", "crimes", "travel"} | (set() if spoken else {"spoken"}) | \
         (set() if s["question"] else {"talking"}) | (set() if s["opened"] or s["question"] else {"pos"})
     return json.dumps({k: sorted(v) if k in ("taken", "dead", "fired", "spoken", "opened", "hostile") else v
                        for k, v in s.items() if k not in drop}, sort_keys=True)
@@ -50,6 +58,7 @@ def _fightable(g) -> set[str]:
     for f in g.forms.values():
         out |= {m["ref"] for m in f["must_live"]}
         out |= {t["ref"] for t in f["triggers"] if t["kind"] == "death"}
+        out |= {c["ref"] for ln in f["lines"] for c in ln["conditions"] if c["is"] in ("alive", "dead")}
     return out
 
 
@@ -69,29 +78,31 @@ def _at(g, e, fightable, used, picks) -> list[tuple]:
         return out
     if x["kind"] == "door" or e in g.holders or g._text(e) or e in used:
         out.append(("use", e, "unseen"))
-    elif x["kind"] == "thing":
+    if x["kind"] == "thing" and e not in g.holders:
         out.append(("take", e, "unseen"))
     if picks and g._locked(e) and (x["lock"] or {}).get("level") != "key":
         out.append(("pick", e, "win unseen"))
     return out
 
 
-def actions(g, fightable: set[str], speakers: set[str]) -> list[tuple]:
-    """Every move worth trying now, each a tuple of steps. Going somewhere is never a move of its own (but to a
-    person who speaks first): it is the first step of doing something there, so only the places acted at count."""
+def actions(g, fightable: set[str], speakers: set[str], refs: set[str] | None = None) -> list[tuple]:
+    """Every move worth trying now, each a tuple of steps, on `refs` only when given. Going somewhere is never a move
+    of its own (but to a person who speaks first): it is the first step of doing something there, so only the places
+    acted at count."""
     s, out = g.s, []
     if s["talking"] and s["question"]:
         out += [(("say", None, str(i), m[0]),) for i, m in enumerate(g._answers(), 1) if m[1] == "line"]
     used = {t["ref"] for f in g.forms.values() for t in f["triggers"] if t["kind"] == "use"}
     picks = s["items"].get(G.LOCKPICK, 0) > 0
-    here = g._visible()
+    here = [e for e in g._visible() if refs is None or e in refs]
     for e in here:
         out += [(step,) for step in _at(g, e, fightable, used, picks)]
     for h in s["opened"]:
         if h in g.ents and g._near(h):
             out += [(("take", k, "unseen"),) for _, k in g._inside(h)]
     for e, x in g.ents.items():
-        if e in here or x["kind"] == "marker" or not g._loose(e) or not g._on(e) or g._pos(e) is None:
+        if e in here or x["kind"] == "marker" or not g._loose(e) or not g._on(e) or g._pos(e) is None or \
+                (refs is not None and e not in refs):
             continue
         go = ("go", e, "")
         if e in speakers:
@@ -114,10 +125,19 @@ def shown(g, step) -> str:
     return " ".join(w for w in (verb, name, rest.replace("unseen", "").strip()) if w)
 
 
-def search(g, goals: dict, over=None, max_states: int = MAX_STATES) -> dict:
-    """Breadth first from the game's state. `goals` {name: test(state)}; a state `over(state)` holds for is not
-    played on. Talking to someone is followed at once by each quest line on offer. Returns {"paths": {name: [step...]},
-    "stages": {quest: stages seen}, "states": n, "cut": the search hit max_states, "errors": harness errors met}."""
+def search(g, goals: dict, over=None, max_states: int = MAX_STATES, refs: set[str] | None = None) -> dict:
+    """Breadth first from the game's state, acting on `refs` first (when given) and on every ref only when that
+    leaves a goal unreached. `goals` {name: test(state)}; a state `over(state)` holds for is not played on. Talking to
+    someone is followed at once by each quest line on offer. Returns {"paths": {name: [step...]}, "stages": {quest:
+    stages seen}, "states": n, "cut": the search hit max_states, "errors": harness errors met}."""
+    if refs is not None:
+        res = _search(g, goals, over, max_states, refs)
+        if len(res["paths"]) == len(goals) or res["cut"]:      # a cut search would only be cut again
+            return res
+    return _search(g, goals, over, max_states // FALLBACK_SHARE if refs is not None else max_states, None)
+
+
+def _search(g, goals, over, max_states, refs) -> dict:
     start = _copy(g.s)
     fightable = _fightable(g)
     speakers = {ln["speaker"] for f in g.forms.values() for ln in f["lines"] if ln["kind"] == "speaks_first"}
@@ -157,7 +177,7 @@ def search(g, goals: dict, over=None, max_states: int = MAX_STATES) -> dict:
         if over and over(s):
             continue
         g.s = s
-        for a in actions(g, fightable, speakers):
+        for a in actions(g, fightable, speakers, refs):
             s1 = run(s, a)
             if s1 is None:
                 continue
@@ -178,14 +198,11 @@ def search(g, goals: dict, over=None, max_states: int = MAX_STATES) -> dict:
 
 
 def _stops(res, q, g) -> str:
+    """What the search found, truthfully: not found within its limit when cut, else that no path reaches it."""
     st = res["stages"].get(q)
-    ends = {s["number"] for s in g.forms[q]["stages"] if s["ending"] != "none"}
-    last = max([n for n in st or [] if n not in ends] or [None], key=lambda n: -1 if n is None else n)
-    where = ("the quest never starts" if not st else
-             f"every path stops by stage {last} (stages reached: {', '.join(map(str, st))})" if last is not None
-             else f"stages reached: {', '.join(map(str, st))}")
-    if res["cut"]:
-        where += f"; search cut at {res['states']} states"
+    where = (f"not found within {res['states']} states (the search was cut)" if res["cut"] else
+             "no path reaches it") + ("; the quest never starts" if not st else
+                                     f"; stages reached: {', '.join(map(str, st))}")
     if res["errors"]:
         where += f"; harness error: {res['errors'][0]}"
     return where
@@ -196,15 +213,20 @@ def _ended(q):
     return lambda s: bool((s["quests"].get(q) or {}).get("ended"))
 
 
-def complete(g, q: str, max_states: int = MAX_STATES) -> list[tuple[str, str]]:
-    """Play quest `q` to a completed ending along a shortest path; the game keeps the state it leaves. Returns the
-    (command as typed, what it showed) of each step."""
+def own_refs(g, q: str) -> set[str]:
+    return {r["id"] for r in g.forms[q]["refs"]}
+
+
+def complete(g, q: str, max_states: int = MAX_STATES, ending: int | None = None) -> list[tuple[str, str]]:
+    """Play quest `q` to a completed ending (or to the stage `ending`) along a shortest path; the game keeps the state
+    it leaves. Returns the (command as typed, what it showed) of each step."""
     def done(s):
         st = s["quests"].get(q)
-        return st is not None and st["ended"] == "completed"
-    res = search(g, {"done": done}, _ended(q), max_states)
+        return st is not None and (st["ended"] == "completed" if ending is None else ending in st["done"])
+    res = search(g, {"done": done}, _ended(q), max_states, own_refs(g, q))
     if "done" not in res["paths"]:
-        raise HarnessError(f"--after {q}: no completed ending can be reached from here: {_stops(res, q, g)}")
+        raise HarnessError(f"--after {q}: {'no completed ending' if ending is None else f'stage {ending}'} reached "
+                           f"from here: {_stops(res, q, g)}")
     return [(shown(g, a), g.do(command(a))) for a in res["paths"]["done"]]
 
 
@@ -285,21 +307,24 @@ def game_on(forms: dict, qs: list[str], world: dict, state: dict | None, sheet=N
 
 
 def play_after(forms: dict, after: list[str], world: dict, sheet=None, strict=False, max_states=MAX_STATES,
-               memo: dict | None = None) -> tuple[dict, list[tuple[str, str]]]:
-    """Play each quest of `after` in turn to a completed ending, each in a game of only the quests it and those
-    before it name (a small space to search); (the state left, the steps shown). Raises a HarnessError when one
-    cannot be completed."""
+               memo: dict | None = None, endings: tuple = (), gold: int = 0) -> tuple[dict, list[tuple[str, str]]]:
+    """Play each quest of `after` in turn to a completed ending (the i-th to `endings[i]` where given), each in a game
+    of only the quests it and those before it name (a small space to search); (the state left, the steps shown).
+    Raises a HarnessError when one cannot be completed."""
     state, steps = None, []
     for i, d in enumerate(after):
-        key = tuple(after[:i + 1])
+        end = endings[i] if i < len(endings) else None
+        key = (tuple(after[:i + 1]), tuple(endings[:i + 1]), json.dumps(sheet, sort_keys=True))
         if memo is not None and key in memo:
             state, steps = memo[key]
             if isinstance(state, HarnessError):
                 raise state
             continue
         g = game_on(forms, list(after[:i + 1]), world, state, sheet, strict)
+        if state is None:
+            g.s["gold"] = gold
         try:
-            steps = steps + complete(g, d, max_states)
+            steps = steps + complete(g, d, max_states, end)
         except HarnessError as e:
             if memo is not None:
                 memo[key] = (e, steps)
@@ -310,69 +335,112 @@ def play_after(forms: dict, after: list[str], world: dict, sheet=None, strict=Fa
     return state, steps
 
 
-def reach(forms: list[dict], world: dict | None = None, sheet: dict | None = None,
+def _completed(f) -> list[int]:
+    return [s["number"] for s in f["stages"] if s["ending"] == "completed"]
+
+
+def reach(forms: list[dict], world: dict | None = None, sheets: dict | None = None,
           max_states: int = MAX_STATES) -> list[dict]:
-    """For each quest of the set: {quest, name, after, endings: [{stage, ending, path or None, why}]}."""
+    """For each quest of the set and each way through the quests it waits on (each a completed ending of each), a
+    row: {quest, name, after: [[quest, ending]...], stages: [{stage, ending, by: {sheet: path or None}, why}],
+    completes: {sheet: bool}, blocked: {sheet: why}}. Every stage and ending is searched for by each sheet of
+    `sheets` (default SHEETS), each starting with GOLD gold."""
+    from itertools import product
+
     from tools.playtest import world as W
     by_id = {f["quest"]["id"]: f for f in forms}
     world = world or W.snapshot(forms, use_db=False)
-    sheet = sheet or ABLE
+    sheets = sheets or SHEETS
     out, memo = [], {}
     for q, f in by_id.items():
         chain = order(q, by_id)
-        row = {"quest": q, "name": f["quest"]["name"], "after": chain[:-1], "endings": []}
-        out.append(row)
-        try:
-            state, _ = play_after(by_id, chain[:-1], world, sheet, max_states=max_states, memo=memo)
-            g = game_on(by_id, chain, world, state, sheet)
-        except HarnessError as e:
-            row["blocked"] = str(e)
-            continue
-        ends = {s["number"]: s["ending"] for s in f["stages"] if s["ending"] != "none"}
-        res = search(g, {n: (lambda s, n=n: n in (s["quests"].get(q) or {}).get("done", [])) for n in ends},
-                     _ended(q), max_states)
-        for n, kind in ends.items():
-            p = res["paths"].get(n)
-            row["endings"].append({"stage": n, "ending": kind, "path": None if p is None else [shown(g, a) for a in p],
-                                   "why": None if p is not None else _stops(res, q, g)})
+        before = chain[:-1]
+        for ends in product(*[_completed(by_id[d]) for d in before]):
+            row = {"quest": q, "name": f["quest"]["name"], "after": [list(x) for x in zip(before, ends)],
+                   "stages": [{"stage": s["number"], "ending": s["ending"], "by": {}, "why": {}} for s in f["stages"]],
+                   "completes": {}, "blocked": {}}
+            out.append(row)
+            for name, sheet in sheets.items():
+                try:
+                    state, _ = play_after(by_id, before, world, sheet, max_states=max_states, memo=memo,
+                                          endings=ends, gold=GOLD)
+                    g = game_on(by_id, chain, world, state, sheet)
+                    if state is None:
+                        g.s["gold"] = GOLD
+                except HarnessError as e:
+                    row["blocked"][name] = str(e)
+                    continue
+                # each stage no character before has reached, and a completed ending
+                wanted = [s["stage"] for s in row["stages"] if not any(p is not None for p in s["by"].values())]
+                goals = {n: (lambda st, n=n: n in (st["quests"].get(q) or {}).get("done", [])) for n in wanted}
+                goals["completed"] = lambda st: (st["quests"].get(q) or {}).get("ended") == "completed"
+                res = search(g, goals, _ended(q), max_states, own_refs(g, q))
+                for s in row["stages"]:
+                    if s["stage"] not in wanted:
+                        continue
+                    p = res["paths"].get(s["stage"])
+                    s["by"][name] = None if p is None else [shown(g, a) for a in p]
+                    if p is None:
+                        s["why"][name] = _stops(res, q, g)
+                row["completes"][name] = "completed" in res["paths"]
     return out
 
 
+def _after(r) -> str:
+    return f", after {', '.join(f'{q} {n}' for q, n in r['after'])}" if r["after"] else ""
+
+
 def report(rows: list[dict]) -> str:
+    """Each quest's endings by the shortest path any sheet found, and what no sheet reached."""
     lines = []
     for r in rows:
-        after = f", after {', '.join(r['after'])}" if r["after"] else ""
-        lines.append(f"{r['quest']} ({r['name']}){after}:")
-        if r.get("blocked"):
-            lines.append(f"  blocked: {r['blocked']}")
-        for e in r["endings"]:
-            if e["path"] is not None:
-                lines.append(f"  {e['stage']} {e['ending']}: reached in {len(e['path'])}: " + "; ".join(e["path"]))
-            else:
-                lines.append(f"  {e['stage']} {e['ending']}: NOT REACHED: {e['why']}")
+        lines.append(f"{r['quest']} ({r['name']}){_after(r)}:")
+        for name, why in r["blocked"].items():
+            lines.append(f"  blocked for the {name} character: {why}")
+        for s in r["stages"]:
+            paths = [(n, p) for n, p in s["by"].items() if p is not None]
+            if paths:
+                if s["ending"] != "none":
+                    n, p = min(paths, key=lambda x: len(x[1]))
+                    lines.append(f"  {s['stage']} {s['ending']}: reached in {len(p)} ({n}): " + "; ".join(p))
+            elif s["by"]:
+                lines.append(f"  {s['stage']}{' ' + s['ending'] if s['ending'] != 'none' else ''}: NOT REACHED: "
+                             + "; ".join(f"{n}: {w}" for n, w in s["why"].items()))
     return "\n".join(lines)
 
 
 def unreached(rows: list[dict]) -> list[str]:
-    """What the gate fails on: a quest blocked, or one whose every completed ending is out of reach."""
+    """What the gate fails on: a way through the earlier quests that no character can take; a stage or ending that
+    no character reaches; a character who takes the way through and cannot complete the quest. A way one character
+    cannot take (an earlier ending only a skill opens) is that character's limit, not a fault."""
     bad = []
     for r in rows:
-        if r.get("blocked"):
-            bad.append(f"{r['quest']}: {r['blocked']}")
-        elif not any(e["path"] is not None for e in r["endings"] if e["ending"] == "completed"):
-            bad.append(f"{r['quest']}: no completed ending can be reached")
+        head = f"{r['quest']}{_after(r)}"
+        if r["blocked"] and not r["completes"]:
+            bad += [f"{head}: blocked for the {n} character: {w}" for n, w in r["blocked"].items()]
+        for s in r["stages"]:
+            if s["by"] and all(p is None for p in s["by"].values()):
+                what = "ending" if s["ending"] != "none" else "stage"
+                bad.append(f"{head}: {what} {s['stage']} not reached: {next(iter(s['why'].values()))}")
+        bad += [f"{head}: the {n} character reaches no completed ending" for n, ok in r["completes"].items()
+                if not ok]
     return bad
 
 
+
 OWED = Path(__file__).with_name("reach_owed.json")
+
+
+def _qid(bad: str) -> str:
+    return bad.split(":")[0].split(",")[0]
 
 
 def gate(bad: list[str]) -> list[str]:
     """make check's view: a quest out of reach that is not on reach_owed.json, or one on it that now reaches a
     completed ending (take it off: the list only shrinks)."""
     owed = json.loads(OWED.read_text(encoding="utf-8"))["quests"]
-    out = [b + " (and it is not on tools/playtest/reach_owed.json)" for b in bad if b.split(":")[0] not in owed]
-    now = {b.split(":")[0] for b in bad}
+    out = [b + " (and it is not on tools/playtest/reach_owed.json)" for b in bad if _qid(b) not in owed]
+    now = {_qid(b) for b in bad}
     out += [f"{q} now reaches a completed ending: take it off tools/playtest/reach_owed.json" for q in owed
             if q not in now]
     return out

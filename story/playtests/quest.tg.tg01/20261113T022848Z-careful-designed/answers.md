@@ -1,0 +1,7 @@
+1. **Next:** I'm meant to finish the remaining sales from the drowned merchant's lockbox. Neeta-Haj is settled at twenty gold. Okan-Tei still wants the charm, and Dar-Zeel has a claim on the third item. Then I report back to Bent-Spine, and probably to Tilts-The-Jug or the Night-Reed Chapter, to be paid and see how the job turns out.
+
+2. **Who I work for:** Bent-Spine, on the ship job. Tilts-The-Jug pointed me to him after I returned her necklace. I did that favor first, so she vouches for me. The Night-Reed Chapter sits behind both of them. They steal from people who can bear the loss and harm no one. I'm doing this to earn standing and coin. I'm not fully sure I trust any of them, since the clients were already calling each other liars.
+
+3. **Most confusing moment:** Persuading Neeta-Haj. It failed with no sign of why or how to improve it. I took the half-price deal, and the journal then said I hadn't pressed her. A close second was the lockpicking prompt that asked me to pick "seen" or "unseen" and then said no bounty would follow. I couldn't tell what the choice meant.
+
+4. **To the writer:** The quests are clear and the characters are distinct, so keep that. Let me work out who is lying instead of telling me up front. Show what a Persuade check depends on, such as gold, a skill or a clue I could find. Make crime choices have visible consequences, or don't offer them. The journal should also warn me when a choice closes off a better outcome. I want to see how the charm sale ends.

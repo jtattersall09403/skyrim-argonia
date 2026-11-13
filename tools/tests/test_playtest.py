@@ -1,5 +1,5 @@
 """The paper game (tools/playtest): the example opening played to its end through `playtest do`, every condition and
-result word of the quest form handled, the harness errors, deaths and fights, talk, stalls and the index."""
+result word of the quest form handled, the harness errors, deaths and fights, talk, stalls."""
 import json
 from pathlib import Path
 
@@ -60,15 +60,14 @@ def test_example_played_to_its_ending_through_do(tmp_path):
     run = json.loads((folder / "run.json").read_text())
     assert run["ended"] == "all quests ended (quest.example.opening completed)" and run["counts"] == {"commands": 7, "stalls": 0, "harness_errors": 0}
     assert (folder / "take.md").read_text().startswith("It was short")
-    idx = json.loads(S.index(tmp_path / "runs").read_text())
-    assert idx["runs"][0]["quest"] == "quest.example.opening"
 
 
 def test_a_command_without_think_is_refused(tmp_path):
     folder, _ = new_session(tmp_path)
     assert S.do(folder, "look", think="")[0] == 2
     assert S.do(folder, "look", think=None)[0] == 2
-    assert len(S.transcript(folder)) == 1
+    assert [r["command"] for r in S.transcript(folder)] == ["(new game)", "look", "look"]      # each refusal has a row
+    assert S.transcript(folder)[1]["result"].startswith("Refused")
 
 
 def test_command_limit(tmp_path):
@@ -106,7 +105,7 @@ RESULT_ARGS = {
     "set_stage": {"stage": 20}, "give_item": {"item": "item.x", "count": 2}, "take_item": {"item": "item.x", "count": 1},
     "give_gold": {"amount": 5}, "take_gold": {"amount": 5}, "set_number": {"number": "n", "value": 3},
     "add_number": {"number": "n", "value": 1}, "join_faction": {"faction": "f"}, "set_rank": {"faction": "f", "rank": 2},
-    "change_regard": {"ref": CONTACT, "by": 5}, "switch_on": {"ref": CONTACT}, "switch_off": {"ref": CONTACT},
+    "change_regard": {"ref": CONTACT, "by": 3}, "switch_on": {"ref": CONTACT}, "switch_off": {"ref": CONTACT},
     "lock_door": {"ref": DOOR}, "unlock_door": {"ref": DOOR}, "show_message": {"text": "A box."},
     "speaker_hostile": {}, "start_quest": {"quest": Q, "stage": 20},
 }
@@ -146,7 +145,7 @@ def test_each_result_is_said_from_a_line(word):
     st = g.s
     assert {"give_gold": st["gold"] == 5, "take_gold": st["gold"] == 0, "set_number": st["numbers"].get("n") == 3,
             "add_number": st["numbers"].get("n") == 1, "join_faction": "f" in st["factions"],
-            "set_rank": st["factions"].get("f") == 2, "change_regard": st["regard"].get(CONTACT) == 5,
+            "set_rank": st["factions"].get("f") == 2, "change_regard": st["regard"].get(CONTACT) == 3,
             "switch_on": st["switched"].get(CONTACT) is True, "switch_off": st["switched"].get(CONTACT) is False,
             "lock_door": st["locked"].get(DOOR) is True, "unlock_door": st["locked"].get(DOOR) is False}.get(word, True)
 
@@ -186,7 +185,7 @@ def test_a_must_live_death_fails_the_quest_and_shows_the_message():
     assert g._alive(CONTACT)
     out = g.do("fight sample-contact win")
     assert "Sample-Contact is dead." in out and "Quest failed: Off the Pier" in out
-    assert f"[Message box] {G.MAIN_MESSAGE}" in out
+    assert f"[Message box] {G.MESSAGES['main']}" in out
     assert "Sample-Contact is dead. Nobody else" in g.journal()
     assert g.do("talk sample-contact") == "Sample-Contact is dead."
 
@@ -227,13 +226,19 @@ def test_locks_and_doors():
     assert g.do("use barge hold door") == "You open Barge Hold Door."
 
 
-def test_persuade_checks_the_sheet():
+def test_a_skill_check_speaks_the_first_line_that_holds():
+    """One entry per prompt; saying it speaks the first line whose conditions hold: the check when the sheet meets
+    it, else the record's own fallback words. No threshold is shown."""
     f = form()
     f["lines"][2]["conditions"] = [{"is": "skill_at_least", "skill": "Speech", "value": 40}]
+    f["lines"].insert(3, {**f["lines"][2], "id": "contact.work.fail", "text": "Words will not do it.", "written": True,
+                          "conditions": [], "results": []})
     g = game(f)
     g.do("go sample-contact")
-    assert "(Persuade) I was told you have work." in g.do("talk sample-contact")
-    assert "not persuaded. (Your Speech is 15; this needed 40.)" in g.do("persuade 1")
+    out = g.do("talk sample-contact")
+    assert out.count("I was told you have work.") == 1 and "Persuade" not in out
+    out = g.do("say 1")
+    assert 'Sample-Contact: "Words will not do it."' in out and "needed" not in out
     g.s["sheet"]["skills"]["Speech"] = 50
     assert "I found Sample-Contact" in g.do("say 1")
 
@@ -241,13 +246,9 @@ def test_persuade_checks_the_sheet():
 def test_the_story_vocabularys_skill_names_read_as_skyrims():
     """A form holds Skyrim's skill names only (the compiler maps the records' older words); the sheet still reads
     an older word asked of it as Skyrim's skill."""
-    f = form()
-    f["lines"][2]["conditions"] = [{"is": "skill_at_least", "skill": "Speech", "value": 40}]
-    g = game(f)
-    g.do("go sample-contact")
-    assert "(Persuade) I was told you have work." in g.do("talk sample-contact")
-    assert "this needed 40" in g.do("persuade 1")
+    g = game()
     assert g._skill("Security") == g.s["sheet"]["skills"]["Lockpicking"]
+    assert g._skill("Speechcraft") == g.s["sheet"]["skills"]["Speech"]
 
 
 def test_talkers_show_their_topics_and_rumours_by_stage():
@@ -262,8 +263,9 @@ def test_talkers_show_their_topics_and_rumours_by_stage():
     out = g.do("talk reads")
     assert 'Reads-The-Shallows: "Stranger."' in out and "Yourself" in out and "Latest rumours" not in out
     assert 'Reads-The-Shallows: "I carry crops. For coin."' in g.do("say yourself")
-    g.s["quests"][Q]["stage"] = 30
+    g.s["quests"][Q]["done"].append(30)
     assert "Latest rumours" in g.do("talk reads")
+
 
 
 def test_new_sheet_race_skills():
@@ -328,18 +330,11 @@ def test_a_run_over_chained_quests_is_not_over_when_the_first_ends(tmp_path):
     assert S.how_ended(sess, st).startswith("command limit")
 
 
-def test_counts_are_filled_on_every_path_and_the_index_recomputes_them(tmp_path):
+def test_counts_are_filled_on_every_path(tmp_path):
     folder, _ = new_session(tmp_path)
     S.do(folder, "look", think="I look around")
     run = S.write_run(folder, {"cost_usd": 0.1, "minutes": 1.0})      # the runner's path
     assert run["counts"] == {"commands": 1, "stalls": 0, "harness_errors": 0}
-    p = folder / "run.json"
-    kept = json.loads(p.read_text())
-    kept["counts"] = {"commands": None, "stalls": None, "harness_errors": None}
-    p.write_text(json.dumps(kept))
-    idx = json.loads(S.index(tmp_path / "runs").read_text())
-    assert idx["runs"][0]["counts"] == {"commands": 1, "stalls": 0, "harness_errors": 0}
-    assert json.loads(p.read_text())["counts"]["commands"] is None        # the index never rewrites a run
 
 
 def templated(**extra):
@@ -578,19 +573,6 @@ def test_the_world_database_says_who_a_person_is():
     assert snap["people"]["npc.nesh-deeka"] == {"race": "argonian", "sex": "female"}
 
 
-def test_the_index_never_rewrites_a_kept_run(tmp_path):
-    folder, _ = new_session(tmp_path)
-    S.do(folder, "look", think="I look around")
-    S.write_run(folder)
-    p = folder / "run.json"
-    kept = json.loads(p.read_text())
-    kept["counts"] = {"commands": 99, "stalls": 0, "harness_errors": 0}
-    p.write_text(json.dumps(kept))
-    before = p.read_bytes()
-    idx = json.loads(S.index(tmp_path / "runs").read_text())
-    assert p.read_bytes() == before and idx["runs"][0]["counts"]["commands"] == 1
-
-
 def test_a_forms_name_wins_and_the_names_file_ids_are_listed(tmp_path):
     from tools.playtest import world as W
     f = tmp_path / "n.json"
@@ -619,16 +601,15 @@ def second_form():
 def test_reach_reports_each_ending_and_where_paths_stop():
     from tools.playtest import walk
     rows = walk.reach([jar_form()], world=jar_world(jar_form()))
-    ends = {e["stage"]: e for e in rows[0]["endings"]}
-    assert ends[95]["path"] == ["fight Nesh-Deeka win"]
-    assert ends[90]["path"] == ["take Lockpick", "pick Lockbox win", "take Sap Jar", "talk Nesh-Deeka",
-                                "say Here is the jar."]
+    ends = {s["stage"]: s["by"]["able"] for s in rows[0]["stages"]}
+    assert ends[95] == ["fight Nesh-Deeka win"]
+    assert ends[90] == ["take Lockpick", "pick Lockbox win", "take Sap Jar", "talk Nesh-Deeka", "say Here is the jar."]
     assert walk.unreached(rows) == []
     f = jar_form()
     f["refs"][2]["contents"] = []                       # the jar is gone: nothing reaches the ending
     rows = walk.reach([f], world=jar_world(f))
-    assert "90 completed: NOT REACHED: every path stops by stage 10" in walk.report(rows)
-    assert walk.unreached(rows) == [f"{JQ}: no completed ending can be reached"]
+    assert "90 completed: NOT REACHED: able: no path reaches it; stages reached: 10" in walk.report(rows)
+    assert any("ending 90 not reached" in b for b in walk.unreached(rows))
 
 
 def test_the_reach_gate_holds_to_its_owed_list(tmp_path, monkeypatch):
@@ -741,5 +722,91 @@ def test_a_session_starts_after_earlier_quests_with_their_state(tmp_path):
     bad["refs"][2]["contents"] = []
     p = tmp_path / "bad.json"
     p.write_text(json.dumps(bad))
-    with pytest.raises(G.HarnessError, match="no completed ending can be reached"):
+    with pytest.raises(G.HarnessError, match="no completed ending reached"):
+
         S.new([str(p)], use_db=False, root=tmp_path / "runs", after=[JQ])
+
+
+def test_every_command_counts_toward_the_limit_and_a_refusal_has_a_row(tmp_path):
+    folder, _ = new_session(tmp_path)
+    sess = json.loads((folder / "session.json").read_text())
+    sess["max_commands"] = 3
+    (folder / "session.json").write_text(json.dumps(sess))
+    assert S.do(folder, "frobnicate", think="what happens")[0] == 0
+    assert S.do(folder, "look", think="")[0] == 2                  # refused for a missing think: still counted
+    assert S.do(folder, "look", think="I look")[0] == 0
+    code, text = S.do(folder, "look", think="again")               # the limit
+    assert code == 2 and "used all 3 commands" in text
+    assert json.loads((folder / "session.json").read_text())["state"]["commands"] == 3
+    rows = S.transcript(folder)
+    assert [r["command"] for r in rows] == ["(new game)", "frobnicate", "look", "look", "look"]
+    assert rows[2]["result"].startswith("Refused: every command needs --think")
+    assert rows[4]["result"].startswith("You have used all 3 commands")
+    assert S.write_run(folder)["counts"]["commands"] == 2
+
+
+def _stream(n_tool_calls, extra=""):
+    rows = [{"type": "assistant", "message": {"content": [{"type": "tool_use", "name": "Bash"}]}}
+            for _ in range(n_tool_calls)]
+    rows.append({"type": "result", "result": extra or "done"})
+    return "\n".join(json.dumps(r) for r in rows)
+
+
+def test_the_probe_needs_five_tries_and_no_repo_text():
+    from tools.playtest import runner
+    assert runner.judge_probe(_stream(7))[0] is True
+    ok, why = runner.judge_probe(_stream(4))
+    assert ok is False and "4 tool calls" in why
+    ok, why = runner.judge_probe(_stream(7, "Binding rules: ..."))
+    assert ok is False and "repo" in why
+
+
+def test_the_wrapper_passes_an_argument_through_as_one_literal():
+    from tools.playtest import runner
+    got = runner.wrapper_argv(["go $(cat /etc/hostname)"], "/s", py="py")
+    assert got == ["py", "-m", "tools.playtest", "do", "/s", "go $(cat /etc/hostname)"]
+    assert runner.wrapper_argv(["end", "--take", "x"], "/s", py="py")[3:] == ["end", "/s", "--ask-later", "--take", "x"]
+    assert runner.wrapper_argv(["answers", "1. a", "2. b"], "/s", py="py")[-2:] == ["--answers", "1. a 2. b"]
+    # `play 'end --take ...'` quoted whole is a take, its words split as text and never run
+    assert runner.wrapper_argv(["end --take 'It was $(fun)'", "--think", "done"], "/s", py="py")[3:] == [
+        "end", "/s", "--ask-later", "--take", "It was $(fun)", "--think", "done"]
+
+
+def test_the_wrapper_script_is_python_without_a_shell(tmp_path):
+    from tools.playtest import runner
+    text = runner.wrapper(tmp_path).read_text()
+    assert text.startswith("#!") and "/bin/sh" not in text and "os.execv" in text and '"$@"' not in text
+
+
+def _fake(tmp_path, code, timeout=30):
+    import sys
+
+    from tools.playtest import runner
+    return runner.run_claude([sys.executable, "-c", code], tmp_path / "s.jsonl", tmp_path, timeout=timeout)
+
+
+def test_run_claude_says_why_it_stopped(tmp_path):
+    ok = _fake(tmp_path, 'import json;print(json.dumps({"type":"result","subtype":"success","result":"fine"}))')
+    assert ok["stopped"] == "result" and ok["subtype"] == "success"
+    bad = _fake(tmp_path, 'import json;print(json.dumps({"type":"result","is_error":True,"result":"x"}))')
+    assert bad["stopped"] == "error"
+    api = _fake(tmp_path, 'import json;print(json.dumps({"type":"result","result":"API Error: 529"}))')
+    assert api["stopped"] == "error"
+    assert _fake(tmp_path, 'print("no json")')["stopped"] == "no result"
+    assert _fake(tmp_path, "import time;time.sleep(60)", timeout=1)["stopped"] == "timeout"
+
+
+def test_a_run_that_is_always_refused_keeps_its_last_attempt(tmp_path, monkeypatch):
+    from tools.playtest import runner
+    folders = []
+
+    def attempt(*a):
+        f = tmp_path / f"a{len(folders)}"
+        f.mkdir()
+        folders.append(f)
+        return f, False
+
+    monkeypatch.setattr(runner, "_attempt", attempt)
+    got = runner.run([], "careful")
+    assert got == folders[-1] and got.exists()
+    assert len(folders) == runner.ATTEMPTS and not any(f.exists() for f in folders[:-1])
