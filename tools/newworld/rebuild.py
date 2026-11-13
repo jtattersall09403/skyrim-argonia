@@ -158,7 +158,7 @@ DB_SOURCES = (*MAPS, "src:newworld/sources/road_corrections.json", PLACE_PEOPLE,
               "out:newworld/raster/water.png", "out:newworld/raster/foreign.png", "out:newworld/roads.json",
               "out:newworld/borders.json",
               "src:tools/newworld/build_db.py", "src:tools/newworld/danger.py", "src:tools/newworld/place_danger.py",
-              "src:tools/newworld/stockdb.py", "src:tools/newworld/wealth.py", "src:tools/newworld/travel.py",
+              "src:tools/newworld/stockdb.py", "src:tools/newworld/needsdb.py", "src:newworld/sources/needs/**/*", "src:tools/newworld/wealth.py", "src:tools/newworld/travel.py",
               "src:tools/newworld/place_law.py", "src:tools/newworld/flora.py", "src:tools/newworld/atmosphere.py",
               "src:tools/newworld/terrain_beyond.py", "src:tools/argonia_world/db.py")
 # what the map extraction (the phase before this one) left under out/newworld: read here, built by its own tools
