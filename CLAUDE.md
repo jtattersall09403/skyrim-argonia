@@ -26,15 +26,16 @@ world with minimal tweaks ([PLAN](docs/PLAN.md), [0038](docs/decisions/0038-the-
 
 ## How we build
 
-- Reuse first: a mod or a record before a script; Papyrus only where a record cannot do it; our own SKSE plugin where no mod, record or script does the job (owner, #51, 2026-11-06).
-- Prove each kind of change once as a building block (PLAN Phase 3; the block set is derived from the written act in Phase 2), then copy the block; a new kind of change is a new block.
+- Reuse first: a mod or a record before a script; a quest is data in the one quest form, built by the one generic builder and its generic scripts, never code of its own (owner, walk 6, 2026-11-12); Papyrus only for those scripts or where a record cannot do it; our own SKSE plugin where no mod, record or script does the job (owner, #51, 2026-11-06).
+- Prove each kind of change once as a building block, then copy the block; a quest's blocks are the quest form's vocabulary ([blocks](docs/design/blocks.md)), proven once by the block test; a new kind of change is a new block.
 - Records are Spriggit YAML in `plugin/`, built to the ESP on the build VM; xEdit and houseCARL on the play machine are the checkers; the Creation Kit only for the Papyrus compiler and FaceGen ([0018](docs/decisions/0018-the-creation-kit-is-a-tool-not-the-workflow.md)).
-- Story, people and quest calls cite the lore (`story/lore/`) or the extrapolation ([0032](docs/decisions/0032-every-world-call-is-grounded-in-the-lore.md)); quests and dialogue are written through the skills ([0024](docs/decisions/0024-content-is-written-from-one-source-of-truth.md)).
+- Story, people and quest calls cite the lore (`story/lore/`) or the extrapolation ([0032](docs/decisions/0032-every-world-call-is-grounded-in-the-lore.md)); story lines, quests and dialogue are made through the quest skills, entered at `quest-system`, inside the Morrowind-level ceiling ([quest-form](docs/design/quest-form.md)) and to the owner's bar ([owner-bar](story/design/owner-bar.md), read whole before any quest, story or dialogue work) ([0024](docs/decisions/0024-content-is-written-from-one-source-of-truth.md)).
 - Before inventing a rule, ask how Bethesda did it and do the same ([0034](docs/decisions/0034-ask-how-bethesda-did-it-and-do-the-same.md)).
 - Every mod is a row in `mods/dependencies.json` and a credit in `mods/sourcing-register.json` at first use.
 - A place is changed narrowly: apply the step that needs changing to the committed place files and keep every other row as it is; never redraft a whole place to change one part, and never regenerate over the owner's studio edits; a whole redraft only when a narrow change cannot be correct, said why, once (owner, 2026-11-10).
 - The new world is changed and rebuilt by the skill `world-build`: `tools/newworld/rebuild.sh` runs only the stages a change made stale, each check straight after its stage; no stage tool is run by hand to move the build on (owner, 2026-11-11).
-- A change to how quests are put onto the world updates [quests-on-a-world](docs/design/quests-on-a-world.md) in the same commit, written as the clean recipe, never as history.
+- A change to how quests are put onto the world updates [quests-on-a-world](docs/design/quests-on-a-world.md) and the quest skill it touches in the same commit, written as the clean recipe, never as history.
+- A ruling of the owner's on what quests, story or writing should be like is added to [owner-bar](story/design/owner-bar.md) the day it is made, as well as to owner-rulings.
 
 ## Agents
 
