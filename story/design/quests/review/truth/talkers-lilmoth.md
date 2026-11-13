@@ -43,7 +43,7 @@
 | 02A209#talk.danger#1 | place | "Walking Dead ... outside the city walls ... north-west" | none on sheet; no walls | cut | Fixed: Walking Dead not on his sheet: 'A mudcrab wanders the shore by the dock, just north-east'; fact corrected |
 | 02A209#talk.harvest#1 | position | "Gourds ... west-south-west" | no plants on sheet. Unsure | cut | Stands: many plants on his sheet, nearest south-west, a short way; gourds told west-south-west, a short way |
 | 02A209#talk.loot#1 | place | "Below the walls there is a door ... west-north-west" | no door on sheet; no walls | cut | Stands: his sheet shows a door to 01LilmothDungeon, locked, north-west, a short way, and walls north-west |
-| 02A209#talk.secret#2 | place | "graves ... a trapdoor ... a chest beside it" | none on sheet | cut | Fixed (writer): queued |
+| 02A209#talk.secret#2 | place | "graves ... a trapdoor ... a chest beside it" | none on sheet | cut | Fixed: "That door below the walls leads down under the city, into the old dungeon. It is locked, and I have never found the key." (the locked door to the dungeon, north-west, a short way, below the walls) |
 
 Counts: place 14, position 15, work 5, event 5, system 1 (rows listed: 40; unsure flagged within several).
-Outcome: fixed 29, queued for a writer 1, stand 12.
+Outcome: fixed 30, queued for a writer 0, stand 12.
