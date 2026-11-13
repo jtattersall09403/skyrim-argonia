@@ -2515,6 +2515,13 @@
      "set": {
       "Entry": "Y"
      }
+    },
+    {
+     "file": "SKSE/Plugins/FreeClimb.ini",
+     "section": "General",
+     "set": {
+      "Diagnostics": "1"
+     }
     }
    ],
    "settings_why": "Climbing starts by jumping at a wall: W+Space, or the pad's Y (our jump), instead of FreeClimb's default W+A+D+Space / LB+Y chords, which the owner could not find in play test 2 (1.12). Proved in game 2026-10-31 before the change: the default chord reached FreeClimb (\"Entry input: phase=begin\") and a grab was refused only for the slope (\"surface layer, slope or facing rejected\"); its 31 clips commit and its hooks install on 1.7.104."
