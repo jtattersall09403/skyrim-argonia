@@ -774,3 +774,380 @@ and then the old woman says to take her anyway.
 | kill the gate-keeper | a weapon skill or Destruction | a death, the player's choice, sets a stage |
 | choose who goes | none: the decision | one line per person, gated on that person alive, each to its own stage; a stage gives a key |
 | they go | none | Never-Sold's line indoors sets an ending, which switches people outdoors |
+
+### BC03. The Broker's Mercy
+
+Offered once BC02 has ended completed.
+
+**What a new player is told, and when.** Never-Sold's briefing: who Ussa-Rekh is to the quays (he bought hundreds
+out and now hires them out), what a carved token is, and where he is: at Soulrest, the port at the end of the boat
+road from Blackrose's landing, on the harbour quay. She gives the house's whole purse, 600 gold, "in case the old
+man will only let them go for coin. It is everything this house has. I would rather you brought it back." She asks
+for a bound book from his shelf and does not say what he is to her. Heavy-Rope's briefing is the plan: where the
+tokens are, who has the key, who bars the door, who has paid for the season. Ussa-Rekh explains himself to anyone
+who asks, and need not be asked.
+
+**The hidden truth.** For thirty years Ussa-Rekh bought Owings out and carved a token for each person, kept until
+they had worked one season's hire for him, which paid for the next person bought (X, gap QA21,
+`extrapolation/gap-register.md:155`). One year a berth-master offered him coin for a whole freed crew's season, and
+it bought twenty people out at once; he can name the year. Since then the seasons have had a way of becoming two.
+He keeps nothing for himself. Heavy-Rope's crew have worked their season and one more, and their tokens are still
+in his chest. The hire of this last season, which the berth-master Ra'Jhan pays when it is sailed, is promised to
+the coin for eleven people held in Thorn's saltrice fields, where it is worst
+(`topics/labour-and-bondage.md:132`): their names are on a list on his table. On his shelf, among the bound counts
+of people he freed, is one that was refused when he offered it: Never-Sold's. She wants the crew's tokens. She also
+wants that book.
+
+**The people.**
+
+| Who | Where they stand | What they want | If they die |
+|---|---|---|---|
+| Never-Sold | inside her house, Blackrose | the tokens in the crew's hands, and her book off his shelf | the quest fails |
+| Heavy-Rope, boss of a freed crew (man) | on the harbour quay, Soulrest | the tokens, now; his crew are out on the boats | the quest fails, until the crew's end is settled |
+| Ussa-Rekh, the Broker, old, plainly dressed (man) | outside the door of his house on the timber wharves, Soulrest | the season sailed, for the eleven; to be thought well of by the people he freed | his word can release nobody; the tokens and the book can still be taken |
+| Ra'Jhan, berth-master, Khajiit (`soulrest.md:54`; D cape-percar, Soulrest: "a large Khajiit share among seafarers") (man), one hard fixed fighter | on the harbour quay, by the moored boat | the season he is to pay for | the hire is void, and the eleven's price with it |
+| Dralas, a Dunmer dock hand held on the same terms as the crew (`topics/labour-and-bondage.md:132`) (man) | beside the Broker's door | to be left out of it; he bars the Broker's door | nothing; his two lines close |
+| Keel-Tar, the Broker's door-ward, an armed Argonian (man) | inside the Broker's house | he is who sees a theft indoors | nothing |
+
+Found afterwards, switched on by one ending: **Ussa-Rekh** on the quay, a hand due aboard.
+
+**The things.**
+
+| Thing | Where | Lock, key, owner | Holds or says |
+|---|---|---|---|
+| the house's purse | given by Never-Sold | 600 gold | the season's hire, to the coin |
+| the Broker's house | on the timber wharves, Soulrest | the door Adept-locked; the Broker's key; unlocked by the stage a line of Dralas's or Ussa-Rekh's sets, and by every stage that settles the crew | a poor bed, a table, a shelf, a chest |
+| the Broker's key | carried by Ussa-Rekh | pickpocketed, or from his body | opens the door and the chest |
+| the token chest | inside the house | Expert lock; the Broker's key; owned by Ussa-Rekh | the crew's tokens; 40 gold, which is all he has |
+| the crew's tokens | in the chest | one string | nine carved tokens on a cord |
+| the list of eleven | on the table | a readable note, the room's owner's | eleven names at Thorn, a price beside each, and the sum, which is the season's hire |
+| Never-Sold's count | on the Broker's shelf | a readable book; the shelf is his | its name is seen on taking it: "Bound Count: Never-Sold, Keeper at Reedfall". Inside: "Keeper of the count, Reedfall ground, nine years. Bought out for the price of a boat. Refused this book." The first leaf copied into it, in a small exact hand, is Rows-For-Another's |
+| Ra'Jhan's kit | on him | from his body | a scimitar: the fight's reward |
+
+**The ways through.**
+
+- *The count: the break-in (Pickpocket, Lockpicking, Sneak).* The plan is Heavy-Rope's and it can be bettered on
+  the spot: Dralas will leave the door unbarred for Speech 25 or 30 gold (each a stage that unlocks it); the key on
+  the Broker's belt opens door and chest alike; without either it is an Adept door and an Expert chest. Keel-Tar
+  inside is who sees, and seen it goes as theft goes under Soulrest's law, which has cells. Inside, the plan meets
+  what nobody told the player: a poor man's room, the list of eleven, and the book.
+- *The word (Speech, or the purse).* Ussa-Rekh releases the crew himself at Speech 50: "Then Ra'Jhan is still short
+  of hands and Thorn is still short of its price. I have two hands." He signs his own season to the berth-master.
+  Refused, he asks the player to carry his case to the crew. He also releases them for the season's hire, 600 gold,
+  which is Never-Sold's whole purse. Either way he hands nothing over: his stage unlocks the house and makes the
+  chest and the shelf the player's to take from.
+- *The hand (Speech, coin or a fight).* Ra'Jhan gives up the season for Speech 40 or 600 gold, each a stage. The
+  player may attack him instead: he is a hard fight on an open quay under the city's guard, and his death is the
+  player's choice. Dead or bought, the hire is void.
+- *The Broker's side.* The player can ask Heavy-Rope to sail the season: he agrees at Speech 30, or, with no check,
+  when the list of eleven is put in his hand, and then he chooses it himself, bitterly.
+- *The book.* Whatever ends the crew's matter, the report waits on the book. It is stolen from the shelf, or taken
+  with the Broker's leave where he has released the crew, or asked for: told that Never-Sold sent for it, he says it
+  was always hers and to take it.
+
+**The stages.**
+
+| Stage | What moves it | Journal gist | Objective and its marker |
+|---|---|---|---|
+| 0 | hidden start; offered once BC02 has ended completed and while Never-Sold and Heavy-Rope live | | |
+| 10 | Never-Sold's line (gives 600 gold) | Never-Sold sent me to Soulrest's quay, where the Broker holds a freed crew's tokens for one season more. She wants the tokens in the crew's hands, and a bound book from his shelf. | Speak to Heavy-Rope on the harbour quay (him) |
+| 20 | Heavy-Rope's line "Where are the tokens?" | Heavy-Rope told me the tokens are in the Broker's chest, the key is on the Broker, a dock hand bars his door, and the berth-master Ra'Jhan is to pay for the season. | Free the crew of the last season (the tokens; Ussa-Rekh; Ra'Jhan; Dralas; the door; Heavy-Rope) |
+| 21, 22 | Dralas's line: Speech 25 (21), or 30 gold (22, taken). Each unlocks the door (at 20) | Dralas left the Broker's door unbarred. | as at 20 |
+| 40, 41 | Ussa-Rekh's line: Speech 50 (40), or 600 gold (41, taken). Each unlocks the door and gives ownership of the chest and the shelf (at 20 to 22) | Ussa-Rekh let the crew go, and told me to fetch their tokens and the book. | Tell Heavy-Rope (him; the tokens) |
+| 45, 46, 47 | Ra'Jhan's line: Speech 40 (45), or 600 gold (46, taken) (at 20 to 22); Ra'Jhan dead (47; the player's choice; open from 10; or, killed before, Heavy-Rope's line saying so) | The hire is void, and so is the price it was to pay. | Tell Heavy-Rope (him; the tokens) |
+| 60 | Heavy-Rope's line "Here are your tokens", the tokens held (at 20 to 47; takes them; gives 150 gold) | I put the crew's tokens in Heavy-Rope's hand. | Bring Never-Sold the book from the Broker's shelf (the book; her; Ussa-Rekh) |
+| 61 | Heavy-Rope's line at 40, 41 (gives 150 gold) | I told Heavy-Rope the Broker has let the crew go. | as at 60 |
+| 63 | Heavy-Rope's line at 45 to 47 (gives 150 gold) | I told Heavy-Rope the hire is void. | as at 60 |
+| 62, 64 | Heavy-Rope's line "Sail the season" at 20 to 22, with Ussa-Rekh and Ra'Jhan alive: Speech 30 (62); the list held and given (64, taken) | Heavy-Rope will sail the last season. | as at 60 |
+| 65 | Ussa-Rekh's line "Never-Sold sent me for a bound book on your shelf" (at 60 to 64; gives ownership of the shelf) | Ussa-Rekh said the book is hers and always was, and that I may take it. | as at 60 |
+| 70, 71 | Never-Sold's question about the book, the book held (at 60 to 65), and its two answers: "Here is your book" (70); "You wrote the first lines of her Owing" (71). Each takes the book | I gave her the book and said nothing (70); or I told her what I know, and she answered (71). | Tell Never-Sold how it ended for the crew (her) |
+| 90, 91, 92 | Never-Sold's line at 70, 71, by how the crew's matter ended | **Broken off**, **Released**, **The season worked**: I told Never-Sold how it ended. | ends, completed |
+| 95, 96 | Never-Sold dead (95); Heavy-Rope dead before the crew's matter is settled (96) | The crew have nobody to speak for them now. | ends, failed |
+
+Heavy-Rope's lines are tried in this order: tokens held; released; hire void; sail the season. Every stage from 60
+to 64 unlocks the Broker's door, because with the crew's matter settled Dralas has nothing left to bar it for, so
+the book can always be reached; it is still a theft from the shelf unless the Broker has given leave.
+
+```sketch
+quest BC03 faction "The Broker's Mercy"
+start game 0
+
+place seat indoors "Never-Sold's House, Blackrose"
+place quay outdoors "the harbour quay, Soulrest"
+place wharf outdoors "the Broker's door on the timber wharves, Soulrest"
+place house indoors "the Broker's House, Soulrest"
+
+person neversold at seat "Never-Sold"
+person rope at quay "Heavy-Rope"
+person rajhan at quay level 22 "Ra'Jhan"
+person ussa at wharf "Ussa-Rekh"
+person dralas at wharf "Dralas"
+person ward at house level 15 "Keel-Tar"
+person ussaquay at quay off "Ussa-Rekh"
+thing brokerkey on ussa "Broker's Key"
+door housedoor at wharf locked adept key brokerkey "Door to the Broker's House"
+thing chest at house container locked expert key brokerkey owner ussa holds gold 40 "Token Chest"
+thing tokens in chest "Crew's Tokens (Nine on a Cord)"
+thing list at house readable "List of Eleven at Thorn"
+thing shelf at house container owner ussa "Broker's Shelf"
+thing book in shelf readable "Bound Count: Never-Sold, Keeper at Reedfall"
+thing scimitar on rajhan "Ra'Jhan's Scimitar"
+item sneakring "Ring of Minor Sneaking"
+item housekey "Key to the Broker's House"
+
+stage 0 hidden
+stage 10 "Never-Sold sent me to Soulrest, to the harbour quay. A man called Ussa-Rekh, the Broker, bought a crew out of their Owings and holds their carved tokens for one season's hire more. She wants the tokens in the crew's hands. She also asked for a bound book from his shelf, and did not say why. She gave me 600 gold, which is all her house has, in case he will only let them go for coin." do give-gold 600
+stage 20 "Heavy-Rope, the crew's boss, told me the tokens are in a chest in the Broker's house on the timber wharves. The key is on the Broker, a dock hand called Dralas bars his door, and the berth-master Ra'Jhan is to pay for the season."
+stage 21 "I talked Dralas into leaving the Broker's door unbarred." do unlock housedoor
+stage 22 "I paid Dralas 30 gold to leave the Broker's door unbarred." do take-gold 30, unlock housedoor
+stage 40 "I talked Ussa-Rekh into letting the crew go. He will sign his own hands to the berth-master for the season, so that the price for eleven people held at Thorn is still earned. He told me to fetch the crew's tokens from his chest, and the book." do unlock housedoor, own chest, own shelf
+stage 41 "I paid Ussa-Rekh the season's hire, 600 gold, and he let the crew go. The price for eleven people held at Thorn is paid out of the Chainbreakers' purse. He told me to fetch the crew's tokens from his chest, and the book." do take-gold 600, unlock housedoor, own chest, own shelf
+stage 45 "I talked Ra'Jhan into giving up the crew's season. The hire is void, and so is the price it was to pay."
+stage 46 "I paid Ra'Jhan 600 gold to give up the crew's season. The hire is void, and so is the price it was to pay." do take-gold 600
+stage 47 "Ra'Jhan the berth-master is dead. Nobody will pay for the crew's season, or for what it was to buy."
+stage 60 "I put the crew's tokens in Heavy-Rope's hand. The crew are free of the last season." do take tokens, give-gold 150, set bc03.crew 1, unlock housedoor
+stage 61 "I told Heavy-Rope the Broker has let the crew go." do give-gold 150, set bc03.crew 2
+stage 62 "I talked Heavy-Rope into sailing the last season, for the eleven at Thorn." do set bc03.crew 3, unlock housedoor
+stage 63 "I told Heavy-Rope the hire is void. The crew are free of the last season." do give-gold 150, set bc03.crew 1, unlock housedoor
+stage 64 "I put the Broker's list of eleven in Heavy-Rope's hand. He read it, and said the crew would sail the last season." do take list, set bc03.crew 3, unlock housedoor
+stage 65 "Ussa-Rekh said the bound book is hers and always was, that he offered it to her once and she refused it, and that I may take it from his shelf." do unlock housedoor, own shelf
+stage 70 "I gave Never-Sold the bound book from the Broker's shelf and said nothing of it. Her name is on its spine: she kept the count at Reedfall Farm before the Broker bought her out." do take book
+stage 71 "I told Never-Sold I know she wrote the first lines of Rows-For-Another's Owing. She said: four months, then the food, then the fever; that she wrote small and wrote true; and that she has been striking that leaf out ever since, and could not do it with her own hand." do take book, set bc03.told 1
+stage 90 completed "Broken off. I told Never-Sold the crew are free, and that nobody will buy the eleven at Thorn." do give sneakring, rank chainbreakers 2, set bc03.settled 1
+stage 91 completed "Released. I told Never-Sold the Broker let the crew go himself." do give sneakring, give housekey, rank chainbreakers 2, set bc03.settled 2, off ussa, on ussaquay
+stage 92 completed "The season worked. I told Never-Sold the crew will sail one season more, and that eleven at Thorn will be bought out with it." do rank chainbreakers 2, set bc03.settled 3, regard ussa 2, regard rope -2
+stage 95 failed "Never-Sold is dead. The Chainbreakers have nobody to send me anywhere."
+stage 96 failed "Heavy-Rope is dead. The crew have nobody to speak for them."
+
+objective 10 at 10 "Speak to Heavy-Rope on the harbour quay at Soulrest" -> rope
+objective 20 at 20, 21, 22 "Free the crew of the last season: their tokens in the Broker's chest, the Broker's word, or the berth-master's hire" -> tokens, ussa, rajhan, dralas, rope, housedoor
+objective 40 at 40, 41 "Tell Heavy-Rope the Broker has let them go" -> rope, tokens
+objective 45 at 45, 46, 47 "Tell Heavy-Rope the hire is void" -> rope, tokens
+objective 60 at 60, 61, 62, 63, 64, 65 "Bring Never-Sold the bound book from the Broker's shelf" -> book, neversold, ussa
+objective 70 at 70, 71 "Tell Never-Sold how it ended for the crew" -> neversold
+
+line job1 neversold at 0 ask "Where next?" if done BC02 91 -> 10 says "the Broker at Soulrest's quay; a crew's tokens; and a book from his shelf"
+line job2 neversold at 0 ask "Where next?" if done BC02 92 -> 10 says "the Broker at Soulrest's quay; a crew's tokens; and a book from his shelf"
+line job3 neversold at 0 ask "Where next?" if done BC02 93 -> 10 says "the Broker at Soulrest's quay; a crew's tokens; and a book from his shelf"
+line job4 neversold at 0 ask "Where next?" if done BC02 94 -> 10 says "the Broker at Soulrest's quay; a crew's tokens; and a book from his shelf"
+line plan rope at 10 ask "Where are the tokens?" -> 20 says "the chest, the key, the door, the berth-master"
+line whyussa ussa at 10-47 ask "Why do you hold their tokens?" says "one season pays for the next people bought; this one is promised to eleven at Thorn; he takes none of it"
+line unbar dralas at 20 ask "Leave his door unbarred." if skill Speech 25 -> 21 else "He bought me too. I bar his door." says "he will be looking at the boats"
+line unbarpay dralas at 20 ask "Thirty, and you saw nothing." if gold 30 -> 22 else "Thirty. I owe more than that for my supper." says "he takes it"
+line release ussa at 20-22 ask "Let them go. You promised them an ending." if skill Speech 50 -> 40 else "Carry my case to the crew. Eleven names. Ask them which they would leave at Thorn." says "then Ra'Jhan is short of hands and Thorn of its price; I have two hands"
+line releasepay ussa at 20-22 ask "I will pay the season myself." if gold 600 -> 41 else "The hire is six hundred. I will not take less for eleven lives." says "he takes it for Thorn"
+line hire rajhan at 20-22 ask "Give up the season. The crew are done." if skill Speech 40 -> 45 else "This one has a ship and no hands. Words do not row." says "he gives it up"
+line hirepay rajhan at 20-22 ask "What is the season worth to you?" if gold 600 -> 46 else "Six hundred, and this one finds other hands." says "he takes it"
+line handtokens rope at 20-47 ask "Here are your tokens." if holds tokens -> 60 says "nine on a cord; the crew's thanks"
+line released rope at 40-41 ask "The Broker has let you go." -> 61 says "the crew's thanks; he would"
+line void rope at 45-47 ask "Nobody will pay for the season now." -> 63 says "the crew's thanks"
+line sail rope at 20-22 ask "Sail the season. It buys eleven out of Thorn." if skill Speech 30, alive ussa, alive rajhan -> 62 else "We were promised an ending. Show me these eleven." says "bitterly, he will"
+line saillist rope at 20-22 ask "Read this. It was on his table." if holds list, alive ussa, alive rajhan -> 64 says "he reads eleven names and chooses it himself"
+line askbook ussa at 60-64 ask "Never-Sold sent me for a bound book on your shelf." if alive ussa -> 65 says "it is hers; he offered it once and she refused it; take it"
+line bookask neversold at 60-65 ask "About the book from his shelf." if holds book asks givebook, toldher says "she holds out her hand"
+line givebook neversold answer at 60-65 ask "Here is your book." if holds book -> 70 says "she takes it and says nothing"
+line toldher neversold answer at 60-65 ask "You wrote the first lines of her Owing. I saw the shack he lives in, the eleven on his table and your name in his book." if holds book -> 71 says "four months, then the food, then the fever"
+line whose ussa at 20-65 ask "Whose book is this?" if holds book, alive ussa says "she was the best keeper that farm had; I bought her for the price of a boat; ask her whose boat"
+line r1 neversold at 70-71 ask "The crew are free." if number bc03.crew = 1 -> 90 says "satisfied"
+line r2 neversold at 70-71 ask "The Broker let them go himself." if number bc03.crew = 2 -> 91 says "he would; that is the worst of him"
+line r3 neversold at 70-71 ask "The crew will sail the season." if number bc03.crew = 3 -> 92 says "eleven; I cannot tell you that you were wrong; he will ask again"
+line after1 ussa at 90 ask "What of the eleven?" if alive ussa says "he says their names"
+line after2 ussaquay at 91 ask "You are going aboard." says "a hand due aboard; proud of her"
+line after3 rope at 92 ask "You sailed." if alive rope says "coldly"
+
+line voiddead rope at 10-22 ask "The berth-master Ra'Jhan is dead." if dead rajhan -> 47 says "then nobody pays for the season"
+
+death rajhan from 10 -> 47 choice
+must-live neversold fails 95
+must-live rope fails 96 to 64
+```
+
+**The choice, and each side's honest case.** *For the crew*, Heavy-Rope: "A last season that becomes two is an
+Owing with a new name. We were promised an ending." *For the Broker*, Ussa-Rekh: "Eleven people at Thorn have no
+other buyer. The promise is real, and I take none of it." *What makes it hard:* the theft works, nobody is hurt in
+the room, and the cost falls on eleven strangers the player will never meet. Only a great talker or the house's
+whole purse spares both, and then the old man or the Chainbreakers pay.
+
+**The book.** The report waits on the book, so the turn is never missed. With it in hand the player asks Never-Sold
+about it and picks one of two answers: "Here is your book", or "You wrote the first lines of her Owing. I saw the
+shack he lives in, the eleven on his table and your name in his book." To the second she answers once, plainly:
+"Four months, then the food, then the fever. I wrote small, and I wrote true. I have been striking that leaf out
+ever since, and I could not do it with my own hand." Its stage sets `bc03.told`, which the line's finale reads.
+Holding the book also opens a line of Ussa-Rekh's: "She was the best keeper that farm had. I bought her for the
+price of a boat. Ask her whose boat."
+
+**The endings and what each leaves.** Each sets `bc03.settled` and gives the rank of Key.
+
+| Ending | What it leaves, and where it is seen | What the player gains and can use | What it costs the player |
+|---|---|---|---|
+| Broken off (90): the tokens taken, or the hire void | Heavy-Rope gives the crew's thanks on the quay. Ussa-Rekh, at his door, says the eleven's names. Never-Sold is satisfied | 150 gold from the crew; a Ring of Minor Sneaking; whatever of the house's 600 was not spent, which she does not ask back: "You will need a price again"; Ra'Jhan's scimitar, if he was killed | the 600, if Ra'Jhan was paid; a theft or a killing seen is answered with Soulrest's cells |
+| Released (91) | Ussa-Rekh is gone from his door and stands on the quay, a hand due aboard, and for the first time speaks of Never-Sold with pride. She goes quiet: "He would. That is the worst of him." | 150 gold from the crew; the ring; the key to the Broker's house, which is the player's while he is at sea: a bed, a chest and a door in Soulrest | the 600, if it was the purse that moved him |
+| The season worked (92) | Heavy-Rope greets coldly. Never-Sold gives the rank and no gift: "Eleven. I cannot tell you that you were wrong. I can tell you he will ask again." | the house's 600, unspent; Ussa-Rekh as a friend, whose bed and table can be used | the ring; the crew's 150 gold; Heavy-Rope's regard |
+
+**The moment a player retells.** Breaking into the slaver's house and finding a poor man's room, a list of eleven
+names his "slaving" was going to buy free, and the patron's own name on the spine of a book.
+
+| Step | Skill | Ceiling block |
+|---|---|---|
+| hear the job; hear the plan | none (the two briefings) | lines set stages; a stage gives gold |
+| get the door unbarred | Speech 25 or 30 gold | one stage per way; the stage unlocks a door |
+| get the Broker's key | Pickpocket | a key carried by a person |
+| door and chest | Lockpicking (Adept, Expert), Sneak | a locked door; an owned, locked container with fixed contents |
+| take the tokens | Sneak (theft) | a thing held gates a line; the line's stage takes it |
+| read the list; take the book | none (the find) | readable things; a thing held gates lines |
+| the Broker releases them | Speech 50 or 600 gold | one stage per way; the stage gives ownership of two containers |
+| the berth-master | Speech 40, 600 gold, or a weapon skill or Destruction | one stage per way; a death, the player's choice, sets a stage |
+| the crew sail the season | Speech 30, or the list held | one stage per way; the stage takes an item |
+| the book and what is said of it | none: the decision | a question whose two answers are lines, each to its own stage; a stage sets a number |
+| report | none | lines gated on a stored number set an ending; the ending gives a key, switches a person and changes regard |
+
+## 4. What each quest needs of its places
+
+Every physical thing the outlines and the arc rely on that the place's record does not already promise, in words
+its buildings can be built to, with how a player who has read none of this will know what it is. What a record
+already promises is used as promised: Blackrose's boardwalk tavern and the landing of the island core; Reedfall
+Farm's stilted house, rice shed and boat landing; Lujei's cookhouse and fish-drying racks; Lujei Ferry's landing,
+waiting shelter, landing post, two crocodiles and drowned traveller's purse; the Rose's forge in the yard; Soulrest's
+harbour quay and timber wharves; Khariton's watch post and its captain; Sheh-Ara's minder's platform and its large
+crocodile; Oru-Neel's salt paddy and wamasu; Zul-Etha's drowned street and bull crocodile; Mereweather's rice-barn,
+sentries and dogs. Blackrose, Reedfall Farm, Lujei, Lujei Ferry and the Rose's gate are the second slice's (province
+plan §5); Soulrest and the rest are for nw-09.
+
+No switch in the three full outlines relies on distance: each is made by a line spoken inside Never-Sold's house,
+of people and things that stand outdoors. So no place here is promised to lie any number of units from another.
+
+**Blackrose** (D tulmek-washes).
+
+| The thing | Quest | What happens there | How the player knows it |
+|---|---|---|---|
+| a plain house on the north side, an inside behind a door, with a standing place inside (the province plan's row) | all | Never-Sold stands inside; every briefing, report and switch | the door shows "Never-Sold's House"; the tavern's keeper and the canoe-men at the core's landing both name her and say "on the north side"; she is marked when a stage names her |
+| a back room in that house behind a door that locks, holding a bed and a chest that nobody owns | BC01 on | unlocked by every completed ending of BC01: the player's bed and chest in Blackrose | the door shows "Door to the Back Room"; Never-Sold says "the back room is yours" at each of those endings |
+| two standing places outside the boardwalk tavern | BC01, BC02; BC04 | Hulm-Tei after one ending; Walks-Far after two; the three askers of BC04 | by their names when looked at, and by what they say; the tavern is the record's, with its rooms and its keeper |
+| a standing place at the landing of the island core | BC05 | the core's canoe-warden, who holds a bundle back | by his name, "Canoe-Warden of the Core"; the landing is the record's boat stop |
+
+**Reedfall Farm** (D tulmek-washes).
+
+| The thing | Quest | What happens there | How the player knows it |
+|---|---|---|---|
+| the rice shed as a shed that is walked into, with a locked box in it, and a standing place at its mouth | BC01 | Hulm-Tei stands at the mouth; the count-box is opened inside | the record's "rice shed beside" the stilted house, the one building on the farm that is stored in and not lived in, with rice sacks in it; Rows-For-Another says "the shed by the house, and he stands at its mouth"; the box shows "Count-Box of Reedfall Farm" and is marked |
+| the shed and the box owned by the farm's people, the box by Hulm-Tei | BC01 | taking from the box is a theft the household can see | Never-Sold says so before the job: "caught at a holder's box, you will be owing them yourself" |
+| a standing place at the boat landing, and the farm's boat there as one thing that can be switched off | BC01 | Rows-For-Another stands there; the boat is gone after two endings | the landing is the record's; the boat shows "Reedfall Farm's Boat"; she is marked |
+| a standing place by the stilted house | BC01 | Meema Tulm-Varo, the elder among the record's five | by her name |
+| a standing place on the Tei-Kur track where it leaves the farm's last paddy, out of sight of the house, on ground a person can fight on; and a spot there where a crocodile of ours can lie | BC01 | Brings-Them-Back stands there; a crocodile after one ending | Rows-For-Another says "on the track to Tei-Kur, past the last paddy"; the track is the record's road; he is marked |
+| a bed at the rice shed that is Hulm-Tei's, and the family's beds in the stilted house | BC01 | a friend's bed, after two endings | the beds are in the buildings the record gives; the people who own them say so when greeted as friends |
+
+**Lujei Ferry** (D tulmek-washes).
+
+| The thing | Quest | What happens there | How the player knows it |
+|---|---|---|---|
+| a standing place under the waiting shelter, and a bedroll there that can be switched on | BC01 on | Rows-For-Another, after every ending; her spare bedroll after most | the record's "thatched shelter on stilts"; by her name; the bedroll shows "Rows-For-Another's Spare Bedroll" and she says it is the player's to use |
+| a standing place at the landing | BC02 | Nuleem-Ei, the ferry-keeper | by her name; the landing is the record's boat stop |
+| below the landing, in sight of it, a raft run aground in the reeds on ground a person can stand on, with a locked chest on it; the record's purse in the same reeds; the record's two crocodiles lying between the raft and the open channel, and far enough from the landing that they do not come up to Nuleem-Ei | BC02 | the sealed chest is opened and the leaves taken | Tsaxi says "at Lujei Ferry"; Nuleem-Ei points it out by the landing: "below the landing, in the reeds; you can see its pole from here"; the chest shows "Sealed Chest on the Stranded Raft" and the leaves are marked |
+| the cable shown cut: one cable end hanging from the landing's winch | BC02 | nothing; it is what Nuleem-Ei speaks of | she says "look at the winch: it did not fray" |
+| a standing place at the landing post | BC06 | Nisswo Okeeh-Ra | by the name; the post is the record's, with its eel-skin knot |
+
+**Lujei** (D tulmek-washes).
+
+| The thing | Quest | What happens there | How the player knows it |
+|---|---|---|---|
+| a standing place at the fish-drying racks, and one at the cookhouse | BC02 | Mends-Nets, or Seven-Floods, after an ending | both are the record's; each freed person says where they will go before they go, and is known by name |
+| a standing place for the tree-minder at the pole-boat yard | BC05, BC06 | Grave-Singer Ossu | by the name; the record's minder "carries the dead out by boat" |
+| a standing place for an elder of the Sheh-Ara families | BC04 | the egg-stone is brought to her | by her name; the asker in Blackrose names her |
+
+**Blackrose Prison, the Rose** (D tulmek-washes; the main quest's needs of it are in [main](main.md) §4).
+
+| The thing | Quest | What happens there | How the player knows it |
+|---|---|---|---|
+| a gate that locks and a gatehouse outside the wall, out of reach of the archers on the wall, with one heir at it who speaks and is not hostile (the province plan's row; shared with the main quest) | BC02, BC04, BC06 | Third-Born Tsaxi stands there; her lines; her death | the track from Reedfall Farm ends at it; the map names the place; Never-Sold says "the gatehouse, outside the wall, and no further"; Tsaxi is marked and is the one person there who does not draw |
+| in the gatehouse, a lock-up with a barred front and a door that locks, whose three people can be spoken to through the bars | BC02 | the three stand in it; the door is opened | the door shows "Lock-Up Door" and is marked; three people behind bars read as held on sight |
+| a strongbox in the gatehouse with a Master lock | BC02 | opened with Otheel's key after one ending | it shows "Shelter-Reckoner's Strongbox"; Mends-Nets says "his strongbox is in the gatehouse" when she gives the key |
+| a second standing place at the gate | BC02; BC06 | Third-Born Okaw after one ending; whoever the finale puts beside the gate-keeper | by the name |
+| in the yard: a locked box by the forge, a standing place for its keeper among the heirs, a standing place for Third-Born Xeekh, and an iron hatch in the ground that is never opened | BC06 | the hatch key is taken; the key is handed to Xeekh | the forge is the record's, with its anvil; the box shows "Hatch-Key Box"; the hatch shows "Hatch to the Drowned Cells"; Walks-Far talks of "the hatch in the yard" from BC02 on |
+
+**Soulrest** (D cape-percar).
+
+| The thing | Quest | What happens there | How the player knows it |
+|---|---|---|---|
+| three standing places on the harbour quay, one of them by a moored boat | BC03 | Heavy-Rope; Ra'Jhan; Ussa-Rekh after one ending | the quay is the record's boat stop, where the player lands from Blackrose; by their names; Never-Sold says "ask on the quay for Heavy-Rope" and he is marked |
+| a small house on the timber wharves below the stone quarter, an inside behind a door that locks, with two standing places outside the door and one inside | BC03 | Ussa-Rekh and Dralas outside; Keel-Tar inside; the break-in | the door shows "Door to the Broker's House"; Heavy-Rope says "the poorest door on the wharves, and he stands at it"; Ussa-Rekh and the door are marked |
+| inside it, owned by Ussa-Rekh: a poor bed, a table with a note on it, a shelf that is searched like a box, and a chest with an Expert lock | BC03 | the tokens, the list and the book are found | the chest shows "Token Chest", the shelf "Broker's Shelf"; the tokens and the book are marked; the room is one room, seen whole on entering |
+
+**Khariton, Sheh-Ara, Oru-Neel, Zul-Etha** (D tulmek-washes) **and Mereweather Estate** (D althii-archipelago), for
+the later quests.
+
+| The thing | Quest | What happens there | How the player knows it |
+|---|---|---|---|
+| Khariton: a chest of blades at the watch post, apart from the captain's own chest, reachable from the silted channel side without crossing the post | BC04 | the captain killed, or the chest emptied behind his back | the asker says "the old chime town on the silted channel"; the chest shows "Chest of Landed Blades" |
+| Sheh-Ara: the egg-stone as a thing that can be carried, on the leaning minder's platform, reached from the Lujei road side; a locked net-chest on the dry platform | BC04; BC02's gift | the stone is taken; the net-chest is opened with Seven-Floods' key | the stone shows "Egg-Stone of Sheh-Ara"; the platform is the one that leans toward the lake (the record's); the chest shows "Net-Chest of Sheh-Ara" |
+| Oru-Neel and Zul-Etha: one carved grave-stake each that can be drawn and carried, in the salt paddy and in the drowned street | BC05 | each stake is taken | each shows "Grave-Stake of" and a name; Ossu names both places, which the map names |
+| Mereweather: a door on the rice-barn that locks, and inside a wrapped bundle that can be carried | BC05 | the dead runaway is carried out | the barn is the record's; the steward at the landing says "in the barn loft"; the bundle shows a name |
+
+**Forms.** The leaves, the tokens, the bound book, the bundles and the stakes are existing readable or carried forms
+the record writer names; the rings and gloves are Skyrim's own Ring of Minor Lockpicking, Ring of Minor Sneaking and
+Gloves of Minor Pickpocketing, whose forms the build lane owes to the item lists
+([walk6-q2b](../review/walk6-q2b.md)). Nothing new is modelled.
+
+**Sources.** The Rose's source has one interior and the main quest takes it for the old warden's office; the
+gatehouse, its lock-up and the yard here are all outdoors. Reedfall Farm and Lujei Ferry need no interior. Blackrose's
+source has two interiors, of which this line needs one house with two rooms.
+
+## 5. Read on paper
+
+ROUND-TO-BE-RECORDED
+
+## 6. For the other lines
+
+- **The main quest** (province-plan §4; [main](main.md) "For the other lines"). The heir at the Rose's gate is
+  **Third-Born Tsaxi**, a woman, a fighter of the Deadly band who speaks and is not hostile; she calls the
+  Chainbreakers "the Broker's children" and greets one of their rank more coldly than a stranger. She can die: by
+  the player's hand at any time, and by design in BC02's fourth ending, after which her brother **Third-Born Okaw**
+  keeps the gate and will not treat with a Chainbreaker. MQ07 should read with Tsaxi dead (its break-in by the
+  bastion and its fight stand; its bargain is Okaw's to refuse or carry, as that writer rules). This line keeps to
+  the gatehouse and, in BC06 only, the yard: the forge, a box beside it, a hatch in the ground that is never opened.
+  It asks for nothing in the old warden's office, the vault or the raj-kaal's hall, and never meets the raj-kaal,
+  whom it names Druxeth. BC06 makes a Chainbreaker the Rose's guest by a line of the gate-keeper's: it should be
+  the same guest faction MQ07's bargain sets, so that either line's leave serves both. The heirs hold the Rose after
+  every ending of this line.
+- **The Thorn Ash-Reed.** BC01's first stage joins the player to the Chainbreakers and each of its completed endings
+  gives rank 1, which is what Uxa-Meen's cold greeting reads. The eleven on the Broker's list are named only on that
+  list, by this line's quest writer, and are not the Gei line; nobody is brought out of Thorn in view, and no quest
+  of this line is set on Thorn's ground.
+- **The League.** The Broker's house, its door on the timber wharves and five people at Soulrest are this line's:
+  Ussa-Rekh, Heavy-Rope, Ra'Jhan, Dralas and Keel-Tar. None holds an office. A theft there is answered by Soulrest's
+  own guard and cells, which are the League's to name.
+- **The Waykeepers.** Lujei Ferry's cut cable is a crossing's matter and no light or post of theirs. No boatman of
+  Blackrose is named or met here.
+- **The Nisswo.** BC06's Nisswo is Okeeh-Ra, named here, who walks the lake villages and is none of that line's
+  four.
+- **The Shadowscales.** The kinsman hidden at Mereweather is dead of fever in the rice-barn when BC05 finds him, a
+  runaway of the Broker's hired crews, and is not Marcan Jeel.
+- **The Night-Reed.** Talk only, as their section 1 has it.
+- **Local quests.** Taken by this line: Reedfall Farm's two hooks; Lujei Ferry's two; of Lujei's, the missing
+  ferryman and the night crossing with a sealed chest; Sheh-Ara's egg-stone; Khariton's watch post; the grave-stakes
+  of Oru-Neel and Zul-Etha; Mereweather's hidden kinsman. Left to the places: Lujei's toll quarrel with the island
+  core; Sheh-Ara's bead string; Oru-Neel's granary; Khariton's chimes; everything at Ka-Asei, Kit Mounds, Tarak
+  Shan and Mudmoth.
+- **The island core and the raj-kaal** are named here for every line (X): Toll-Holder Nomu-Tei and Raj-Kaal
+  Druxeth. Neither is met in the first three quests.
+
+## 7. Changes to places' notes
+
+| Place | The note as it stands | What it should say |
+|---|---|---|
+| Reedfall Farm | "One Argonian family runs the whole farm, working the paddies" | one family, the Tulm-Varo, holds the farm; its far paddies toward Tei-Kur are worked by hands bound to it, and a keeper hatched owing on the farm keeps their count in a box in the rice shed |
+| Reedfall Farm | "The family's boat has gone missing from the landing" | eleven years ago a boat-hand holed the family's boat and has owed for it since; the boat that replaced it goes missing only if she is cut loose |
+| Reedfall Farm | "One paddy is failing for no clear reason" | the same; it is why the elder forgives no Owing |
+| Reedfall Farm | "the family keeps watch at night" | the family's watchman, who also fetches back its runaways, stands on the Tei-Kur track past the last paddy |
+| Lujei Ferry | "A passenger who must not be seen, or a raft cable that has been cut" | the cable was cut under a passenger from the Rose, and the raft lies aground in the reeds below the landing with his sealed chest on it; a runaway of Reedfall's may be hidden in the waiting shelter |
+| Lujei Ferry | "a drowned traveller's purse in the reeds" | the same; the traveller was the Rose's reckoner, and the purse holds the key of his chest |
+| Lujei Ferry | "A crew of two families keep the raft" | the same; add: one of the two came from Sheh-Ara when the Rose's raiders emptied it |
+| Lujei | "A missing ferryman, a toll quarrel with the island core, a night crossing with a passenger's sealed chest" | the ferryman who cut the cable has not come home; the toll quarrel stands; the night crossing was the Rose's reckoner's, coming back from a family in Lujei that still writes |
+| Blackrose Prison | "2 people live there" | add: a gatehouse outside the wall, with one heir who speaks, a lock-up holding three people since a fire in the upper cells, and a shelter-reckoner's strongbox |
+| Blackrose Prison | "the risen inmates in the drowned lower cells" | the same; add: an iron hatch in the yard is the way down, and it is kept shut |
+| Blackrose | (add) | the Chainbreakers' house, Never-Sold's, is on the north side |
+| Sheh-Ara | "a Lujei elder wants the egg-stone from the minder's platform ... carried to Lujei" | the same; add: the people who want it most are the Sheh-Ara families now owing for shelter inside the Rose |
+| Khariton | "a Blackguard watch post that has been seen at night" | its captain lands blades on the silted channel for sale inside the Rose |
+| Oru-Neel | "A Tei-Kur farmer wants his grandmother's grave-stake pulled from the salt paddy and set again at Tei-Kur" | she was a bound field-hand of the lake, and Lujei's tree-minder wants her stake carried to the drowned tree |
+| Zul-Etha | "a Mir-Xal family wants its ancestor's stake raised before the eels have it" | the same; the ancestor was an overseer of bound carters on the old concession road |
+| Mereweather Estate | "The steward hides a kinsman who ran from Fort Reedmoth's keepers and wants him gone before they ask" | the kinsman, a hired oarsman of the Broker's crews, has died of fever in the rice-barn, and the steward cannot carry him out |
+| Soulrest | (add) | the Broker's house is the poorest door on the timber wharves |
