@@ -47,8 +47,13 @@
 | 03E418#trade, #here, #trade#1 | place | "tables on the west side of the plantation house, under cover... out of the rain" | Plantation lies east a fair way; she stands on a fullinterior.nif model; tables west a few steps; no roof shown | "I sell from the tables west of here." | Fixed: "the tables just west of the plantation"; under cover and out of the rain cut |
 | 03E418#someone#1 | position | "Neeta-Lei keeps the house, just east of here" | Neeta-Lei is moving (Travel routine), east close by | "Neeta-Lei is about, east of the tables." | Fixed: "Neeta-Lei is about, east of the tables"; fact corrected |
 | 03E418#self, #trade | unsure | "the steward buys paper for the ledgers" | No steward or ledger shown | look; else leave as belief | Stands: her stated reason for coming, a belief; the sheet neither shows nor denies it |
+| 00AC8E#trade, #spot, #backstory | place | "whose boats stand at the plantation shore", "near her boats", "her boats stand east of her spot" | corrected sheet: one longboat south a short way, six piers south just, three big ships south; the "boats" east were workbenches | "whose longboat lies at the piers", "just north of the piers", "her longboat lies at the piers, a short way south" | Fixed: "whose longboat lies at the piers of the plantation shore"; "just north of the piers"; "her longboat lies at the piers, a short way south of her spot by the goats" |
+| 00AC8E#talk.self#1 | place | "a flat boat among those just east of here" | longboat south a short way; nothing east | "a boat at the piers a short way south of here" | Fixed: "I keep a boat at the piers a short way south of here" |
+| 00FF4F#talk.someone#1 (fact lilmoth.00ff4f.someone.captain) | position | "about the boats, just east of here" | no boat east (a workbench); Reads-The-Shallows wanders north, a few steps | "just north of here" | Fixed: "You will find her just north of here" |
+| 015195#talk.someone#1 (fact lilmoth.015195.someone.lifts) | position | "He is about the boats." | no boat; Lifts-The-Sacks is east, just | "just east of here" | Fixed: "He is just east of here." |
 
 ## Count per kind
 place 13, position 10, work 8, system 2, event 0, unsure 6 (41 rows; a row naming several lines counts once)
 
 Outcome: fixed 39, queued for a writer 0, stand 6.
+Recheck (corrected kinds table): 4 rows added, all fixed.

@@ -44,6 +44,9 @@
 | 02A209#talk.harvest#1 | position | "Gourds ... west-south-west" | no plants on sheet. Unsure | cut | Stands: many plants on his sheet, nearest south-west, a short way; gourds told west-south-west, a short way |
 | 02A209#talk.loot#1 | place | "Below the walls there is a door ... west-north-west" | no door on sheet; no walls | cut | Stands: his sheet shows a door to 01LilmothDungeon, locked, north-west, a short way, and walls north-west |
 | 02A209#talk.secret#2 | place | "graves ... a trapdoor ... a chest beside it" | none on sheet | cut | Fixed: "That door below the walls leads down under the city, into the old dungeon. It is locked, and I have never found the key." (the locked door to the dungeon, north-west, a short way, below the walls) |
+| 02A1F2#spot, #backstory | place | "near the boat landing", "where the rowboat comes in" | no landing on her sheet; three rowing boats south a few steps | "near the rowing boat", "by the rowboat" | Fixed: "near the rowing boat"; "by the rowboat" |
+| 02A1F2#talk.self#1 | place | "where the rowboat comes in" | no landing; rowing boats south a few steps | "by the rowboat" | Fixed: "my stall, south side, by the rowboat" |
 
 Counts: place 14, position 15, work 5, event 5, system 1 (rows listed: 40; unsure flagged within several).
 Outcome: fixed 30, queued for a writer 0, stand 12.
+Recheck (corrected kinds table): 2 rows added, all fixed.

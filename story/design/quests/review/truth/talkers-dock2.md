@@ -38,8 +38,16 @@ Ids are shortened: S = Seeks-The-Channel 05D7C8, U = Ushaa-Mei 05D7C9, LG = Litt
 | F#talk.greet-friend#1, #talk.someone#1 | place | "this end of the room", "under this roof" | outdoors in Black Marsh; no room, no roof | "this end of the village", "under this sky" | Fixed: "this end of Soulrest", "under this sky" |
 | F#talk.here#1 | place | "The cooking pot stands just south-east" | a fire burns SE a short walk, a barrel SE close; no pot | "The fire burns just south-east" | Fixed: "The fire burns just south-east"; fact rewritten with the sheet's fire |
 | F#talk.someone#1 | position | "Little-Gecko, sitting just south-west of here" | she is moving, wandering | "There is a child called Little-Gecko." | Fixed: "There is a child called Little-Gecko."; fact reworded |
+| S#spot, #backstory | place | "by the boats ... where boats tie up", "whose boat is one of those tied up ... She keeps by the boats" | Soulrest sheet: three docks just west, a big ship west a short way; no boat or rowing boat | "by the docks, west of the fire"; "who ties up at the docks of Soulrest ... She keeps by the docks" | Fixed: "by the docks, west of the fire"; "who ties up at the docks of Soulrest" |
+| S#talk.here#1 | place | "Soulrest is where the boats tie up ... Mine is one of them." | no boat on the sheet; docks just west | "Soulrest keeps its docks just west of here" | Fixed: "Soulrest keeps its docks just west of here, traveller" |
+| S#talk.rumours#1 | place | "I only watch from the boats" | no boat on the sheet | "from the docks" | Fixed: "I only watch from the docks" |
+| S#talk.self#1 | place | "with my boat at Soulrest ... I keep by the boats, west of the fire" | no boat on the sheet | "who puts in at Soulrest ... I keep by the docks" | Fixed: "a boat captain who puts in at Soulrest ... I keep by the docks, west of the fire" |
+| X#trade, #backstory | place | "a hand for the boats at Soulrest" | no boat at Soulrest; docks just west | "a hand about the docks" | Fixed: "a hand about the docks at Soulrest" |
+| X#talk.self#1 | place | "a hand for the boats here at Soulrest" | no boat on the sheet | "a hand about the docks" | Fixed: "a hand about the docks here at Soulrest" |
+| X#talk.trade#1 | place | "I am a hand for the boats." | no boat on the sheet | "a hand about the docks" | Fixed: "I am a hand about the docks." |
 
 ## Count per kind
 place: 22 (6 unsure); position: 5; work: 4; event: 3; system: 0
 
 Outcome: fixed 28, queued for a writer 0, stand 6.
+Recheck (corrected kinds table): 7 rows added, all fixed.
