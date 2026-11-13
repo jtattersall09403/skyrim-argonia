@@ -23,7 +23,7 @@ import yaml
 
 HERE = pathlib.Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parents[2]))
-from tools.argonia_world import db, echoes, quest_record, records, talk_route  # noqa: E402
+from tools.argonia_world import db, echoes, quest_record, records, surroundings, talk_route  # noqa: E402
 from tools.questform.__main__ import terms_of  # noqa: E402
 VOICES = HERE.parent / "dialogue-write" / "voices.md"
 WEAPONS = ["one-handed", "two-handed", "archery"]   # what a record's `any-weapon` means
@@ -96,6 +96,20 @@ def check_actions(acts, verbs, where, out):
     for x in acts or []:
         if not isinstance(x, dict) or len(x) != 1 or next(iter(x)) not in verbs:
             out.append(f"{where}: {x!r} is not an action of the vocabulary (condition_term)")
+
+
+def surroundings_section(person_id):
+    """The speaker's surroundings sheet from the built world (the forms read back into out/questform-read); before
+    the quest is built, the rule alone."""
+    rule = ("Describe only what this sheet holds; say the speaker works at only what it shows them doing; place a "
+            "thing only by things marked [fixed], never by the speaker, \"us\" or \"here\" (the speaker moves).")
+    refs = surroundings.forms(None)
+    if person_id not in refs:
+        return ["", "## Surroundings", "- Not yet built: no measured surroundings. Describe nothing physical beyond "
+                "the place facts above; the truth pass checks the lines once the quest is built.", ""]
+    d = surroundings.raw([surroundings.spot_of(person_id, refs)])[0]
+    body = surroundings.sheet(d, refs[person_id][0].get("name") or person_id).splitlines()[1:]
+    return ["", "## Surroundings (measured from the built world)", f"- {rule}"] + body + [""]
 
 
 def load_world(w, q, extra):
@@ -353,6 +367,7 @@ def main() -> int:
             L += [f"- The player already knows at stage {first} (anything else is explained when first named):"]
             L += [f"  - `{f}`: {claims[f]}" for f in knows_at(first)]
             L.append("")
+        L += surroundings_section(c["id"])
         L += echoes.brief_section(said, p["name"], all_claims)
         name = re.sub(r"[^a-z0-9]+", "-", p["name"].lower()).strip("-")
         path = out / f"{q['code'].lower()}-{name}.md"

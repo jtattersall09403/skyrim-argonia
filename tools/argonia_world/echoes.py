@@ -369,7 +369,7 @@ def brief_section(items: list[Speech], speaker: str, claims: dict[str, str] | No
     for name, ss in others.items():
         shared = sorted({x for s in ss for x in s.windows & here})
         fs = sorted({f for s in ss for f in s.facts for x in shared if own.get((x, f)) in ss})
-        row = f"- {name} ({compact(shared)}): answers {', '.join(sorted({s.topic for s in ss}))}"
+        row = f"- {name} ({compact(shared)}): answers {', '.join(sorted({s.topic for s in ss if s.topic}))}"
         if fs:
             row += "; owns " + "; ".join(f"`{f}`" + (f" ({_short(claims[f])})" if f in claims else "") for f in fs)
         L.append(row)

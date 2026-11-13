@@ -24,6 +24,7 @@ import sys
 HERE = pathlib.Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parents[2]))
 from tools.argonia_world import db, echoes  # noqa: E402
+from tools.argonia_world import surroundings as sur  # noqa: E402
 from tools.argonia_world import talk_route as tr  # noqa: E402
 
 told = tr.in_words  # a fact's claim as the writer gets it: measured distances as words, no count
@@ -114,6 +115,10 @@ def brief(w, who: str, out: pathlib.Path) -> int:
         L.append("")
     L += echoes.brief_section(echoes.speech(w), t.known_as,
                                 {k: told(v or "") for k, v in echoes.claims(w).items()}, {tt.topic for tt in tts})
+    sheet = sur.sheet(sur.raw([f"{who}@{sur.RADIUS:g}"])[0], t.known_as).splitlines()[1:]
+    L += ["## Surroundings (measured from the built world)", "",
+          "Describe only what this sheet holds; say the person works at only what it shows them doing; place a thing "
+          "only by things marked [fixed], never by the speaker, \"us\" or \"here\" (the speaker moves).", ""] + sheet + [""]
     L += ["## Output", "", "A TSV file, one reply per line: `<topic id>` TAB `<text>`. Every topic above once or "
           "twice; nothing else."]
     out.write_text("\n".join(L) + "\n")

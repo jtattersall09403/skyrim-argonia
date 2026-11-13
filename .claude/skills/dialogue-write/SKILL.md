@@ -31,6 +31,15 @@ never-mentions); the culture chain; the others the player may be sent to; the th
 and per topic the intent or opinion, the facts it may state and hide, the speaker's knowledge, the links it
 grants, and what the player already knows.
 
+**Where the speaker stands.** Once the quest's people are placed in the built plugin, each quest brief carries the
+speaker's **Surroundings** (`python3 -m tools.argonia_world.surroundings <ref or id>`, from the forms read back into
+`out/questform-read`): the place, the ground underfoot, the water, the built things near by what they read as with
+a direction and a word for how far, the doors, who stands near and whether they move, and what the game does not
+do there (no tides, no seasons, no called weather, no fire without a fire object). Each fact is marked fixed or
+moving. A line describes only what the sheet holds, says someone works at only what the sheet shows them doing, and
+places a thing only by fixed things ("by the stone tower's door"), never by the speaker or anything marked moving
+("next to us", "here beside me"): the speaker wanders with their routine.
+
 The imported written lines (`dialogue_line` rows) are reference only and never models; the
 facts (`fact`), topics (`topic`), glossary (`glossary_term`) and culture sheets are the source. Read them only
 through the database (`python3 -m tools.argonia_world.db query "SELECT ..."`).
