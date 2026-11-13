@@ -16,21 +16,6 @@
    "extrapolation": "burn-scar and peat-fire ground (burning ground hazard) draws heat-loving beetles"
   },
   {
-   "kind": "swamp-wyvern",
-   "size_class": "predator",
-   "hostility": "hostile",
-   "habitat": "rock",
-   "time": "any",
-   "group": [
-    1,
-    1
-   ],
-   "signature": true,
-   "asset": "bmv",
-   "extrapolation": "Black Marsh mod lists dragling and forest drake lizards; fire-scarred ground suits a drake",
-   "cite": "Black Marsh.esm places this swamp wyvern in Black Marsh; extrapolation: the old row's drake"
-  },
-  {
    "kind": "hackwing",
    "size_class": "predator",
    "hostility": "hostile",

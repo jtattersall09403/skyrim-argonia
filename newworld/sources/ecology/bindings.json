@@ -58,28 +58,12 @@
    ]
   },
   "sea-gull": {
-   "records": [
-    "Tropical Skyrim -- Birds.esp:01BOSActorSeagull",
-    "Tropical Skyrim -- Birds.esp:01BOSActorSeagull2"
-   ],
-   "why": "Tropical Skyrim seagulls",
-   "levels": [
-    1,
-    1
-   ]
+   "dropped": "a flying bird is a critter, as Skyrim's are: Tropical Skyrim's bird actors walk on a chicken's skeleton and flutter through the land when they flee",
+   "nearest": null
   },
   "crow": {
-   "records": [
-    "Tropical Skyrim -- Birds.esp:01BOSActorRaven",
-    "Tropical Skyrim -- Birds.esp:01BOSCrow1",
-    "Tropical Skyrim -- Birds.esp:01BOSGreycrow"
-   ],
-   "why": "Tropical Skyrim crows and raven",
-   "levels": [
-    1,
-    1,
-    1
-   ]
+   "dropped": "a flying bird is a critter, as Skyrim's are: Tropical Skyrim's bird actors walk on a chicken's skeleton and flutter through the land when they flee",
+   "nearest": null
   },
   "slaughterfish": {
    "records": [
@@ -238,23 +222,11 @@
   },
   "giant-snake": {
    "records": [
-    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSerpent",
-    "King of the Murkmire.esp:GiantSnakeBlue01",
-    "King of the Murkmire.esp:GiantSnakeBrown01",
-    "King of the Murkmire.esp:GiantSnakeBrown02",
-    "King of the Murkmire.esp:GiantSnakeGreen01",
-    "King of the Murkmire.esp:GiantSnakeGreen02",
-    "King of the Murkmire.esp:GiantSnakeRed01"
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSerpent"
    ],
-   "why": "King of the Murkmire giant snakes; mostly templated",
+   "why": "Curse of Cipactli's feathered serpent: its race drives its snake skeleton with the dragon behaviour (anim_audit ok); King of the Murkmire's giant snakes name the ice wraith's behaviour for a skeleton it cannot move, so they glide rigid (anim_audit fail)",
    "levels": [
-    1000,
-    1000,
-    1000,
-    1000,
-    1000,
-    1000,
-    1000
+    100
    ]
   },
   "tree-viper": {
@@ -441,15 +413,13 @@
   "giant-centipede": {
    "records": [
     "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMCentipede",
-    "Black Marsh.esm:centi",
     "King of the Murkmire.esp:GiantCentipede01",
     "King of the Murkmire.esp:GiantCentipede02",
     "King of the Murkmire.esp:GiantCentipede03"
    ],
-   "why": "centipedes",
+   "why": "centipedes (Black Marsh.esm's own centipede names a body mesh, siligonder.nif, no laid mod holds: anim_audit)",
    "levels": [
     1,
-    12,
     1000,
     1000,
     1000
@@ -663,13 +633,11 @@
   },
   "wisp": {
    "records": [
-    "Skyrim.esm:EncWisp",
-    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMShine"
+    "Skyrim.esm:EncWisp"
    ],
-   "why": "wisps",
+   "why": "Skyrim's wisp, skinned; Curse of Cipactli's shine has an unskinned body that moves as one piece (anim_audit)",
    "levels": [
-    1,
-    800
+    1
    ]
   },
   "fleshfly": {
@@ -829,15 +797,11 @@
   },
   "kaj-thux": {
    "records": [
-    "King of the Murkmire.esp:GiantSnakeBlue01",
-    "King of the Murkmire.esp:GiantSnakeBrown01",
-    "King of the Murkmire.esp:GiantSnakeGreen01"
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSerpent"
    ],
-   "why": "kaj-thux is the lore's own name for the giant snakes (Ample Serpents): King of the Murkmire's giant snakes",
+   "why": "kaj-thux is the lore's name for the giant snakes: the feathered serpent, the one giant snake whose animations drive it (anim_audit)",
    "levels": [
-    1000,
-    1000,
-    1000
+    100
    ]
   },
   "giant-spider-crab": {
@@ -972,24 +936,12 @@
    ]
   },
   "kingfisher": {
-   "records": [
-    "Tropical Skyrim -- Birds.esp:01BOSActorKingfisher"
-   ],
-   "why": "Tropical Skyrim's kingfisher",
-   "levels": [
-    1
-   ]
+   "dropped": "a flying bird is a critter, as Skyrim's are: Tropical Skyrim's bird actors walk on a chicken's skeleton and flutter through the land when they flee",
+   "nearest": null
   },
   "shorebird": {
-   "records": [
-    "Tropical Skyrim -- Birds.esp:01BOSOystercatcher",
-    "Tropical Skyrim -- Birds.esp:01BOSPectoralSandpiper"
-   ],
-   "why": "Tropical Skyrim's oystercatcher and sandpiper, wading shorebirds",
-   "levels": [
-    1,
-    1
-   ]
+   "dropped": "a flying bird is a critter, as Skyrim's are: Tropical Skyrim's bird actors walk on a chicken's skeleton and flutter through the land when they flee",
+   "nearest": null
   },
   "meganeura": {
    "records": [
@@ -1010,13 +962,8 @@
    ]
   },
   "swamp-wyvern": {
-   "records": [
-    "Black Marsh.esm:0SwampWyvern"
-   ],
-   "why": "Black Marsh's own swamp wyvern",
-   "levels": [
-    30
-   ]
+   "dropped": "Black Marsh.esm's swamp wyvern names a body mesh (FatDragonBlack.nif) that no laid mod holds: it would be invisible (anim_audit)",
+   "nearest": null
   },
   "sea-otter": {
    "records": [
@@ -6676,6 +6623,11 @@
   ],
   "bats": [
    "FXbatGroupACT"
+  ],
+  "birds": [
+   "FXbirdOPreyNoNestACT",
+   "FXbirdOPreyACT",
+   "FXBirdFlockFleePineACT"
   ]
  },
  "critter_kinds": {
@@ -6750,6 +6702,30 @@
    "function": "bats",
    "time": "none",
    "why": "Skyrim's own bat colony activator (FXbatGroupACT, a bat group that flies from its roost and scatters when scared); it carries no spawn hours, so the kind's night is dropped; placed on the kind's rock ground at Skyrim's rate per class"
+  },
+  "crow": {
+   "critter": "Skyrim.esm:FXbirdOPreyNoNestACT",
+   "function": "birds",
+   "time": "none",
+   "why": "Skyrim's own flying bird (FXbirdOPreyNoNestACT, its FXfakeCritterScript flies a path above the ground and scatters when the player comes near); a fixed critter with no hours"
+  },
+  "sea-gull": {
+   "critter": "Skyrim.esm:FXbirdOPreyNoNestACT",
+   "function": "birds",
+   "time": "none",
+   "why": "Skyrim's own flying bird (FXbirdOPreyNoNestACT, its FXfakeCritterScript flies a path above the ground and scatters when the player comes near); a fixed critter with no hours"
+  },
+  "shorebird": {
+   "critter": "Skyrim.esm:FXbirdOPreyNoNestACT",
+   "function": "birds",
+   "time": "none",
+   "why": "Skyrim's own flying bird (FXbirdOPreyNoNestACT, its FXfakeCritterScript flies a path above the ground and scatters when the player comes near); a fixed critter with no hours"
+  },
+  "kingfisher": {
+   "critter": "Skyrim.esm:FXbirdOPreyNoNestACT",
+   "function": "birds",
+   "time": "none",
+   "why": "Skyrim's own flying bird (FXbirdOPreyNoNestACT, its FXfakeCritterScript flies a path above the ground and scatters when the player comes near); a fixed critter with no hours"
   }
  }
 }

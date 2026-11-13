@@ -1,0 +1,1144 @@
+{
+ "blow_by_size": {
+  "game": 18.75,
+  "giant": 97.5,
+  "insect": 7.5,
+  "predator": 52.5,
+  "small": 7.5
+ },
+ "lowest_band_blow": 7.5,
+ "records": {
+  "BirbWalker21_Leeches.esp:BW21_EncLeechGiant0": {
+   "blow": 30.0,
+   "mult": 1.5,
+   "race": "BW21_GiantLeechRace",
+   "unarmed": 20.0
+  },
+  "BirbWalker21_Leeches.esp:BW21_EncLeechLarge0": {
+   "blow": 22.5,
+   "mult": 1.5,
+   "race": "BW21_LargeLeechRace",
+   "unarmed": 15.0
+  },
+  "BirbWalker21_Leeches.esp:BW21_EncLeechMedium0": {
+   "blow": 15.0,
+   "mult": 1.5,
+   "race": "BW21_MediumLeechRace",
+   "unarmed": 10.0
+  },
+  "BirbWalker21_Leeches.esp:BW21_EncLeechSmall0": {
+   "blow": 7.5,
+   "mult": 1.5,
+   "race": "BW21_SmallLeechRace",
+   "unarmed": 5.0
+  },
+  "BirbWalker21_Leeches.esp:BW21_EncLeechSmall1": {
+   "blow": 7.5,
+   "mult": 1.5,
+   "race": "BW21_SmallLeechRace",
+   "unarmed": 5.0
+  },
+  "BirbWalker21_Leeches.esp:BW21_EncLeechSmall2": {
+   "blow": 7.5,
+   "mult": 1.5,
+   "race": "BW21_SmallLeechRace",
+   "unarmed": 5.0
+  },
+  "BirbWalker21_Leeches.esp:BW21_EncLeechSmall3": {
+   "blow": 7.5,
+   "mult": 1.5,
+   "race": "BW21_SmallLeechRace",
+   "unarmed": 5.0
+  },
+  "BirbWalker21_Megalania.esp:BW21_EncMegalania": {
+   "blow": 32.0,
+   "mult": 1.6,
+   "race": "BW21_MegalaniaRace",
+   "unarmed": 20.0
+  },
+  "Black Marsh.esm:01Wamasu1": {
+   "blow": 7.5,
+   "mult": 1.5,
+   "race": "WolfRace",
+   "unarmed": 5.0
+  },
+  "Black Marsh.esm:0ForestGuardian": {
+   "blow": 7.5,
+   "mult": 1.5,
+   "race": "AtronachFlameRace",
+   "unarmed": 5.0
+  },
+  "Black Marsh.esm:0Forestspider": {
+   "blow": 7.5,
+   "mult": 1.5,
+   "race": "FrostbiteSpiderRace",
+   "unarmed": 5.0
+  },
+  "Black Marsh.esm:0Forestspidergiant": {
+   "blow": 7.5,
+   "mult": 1.5,
+   "race": "FrostbiteSpiderRace",
+   "unarmed": 5.0
+  },
+  "Black Marsh.esm:0GuardianNature": {
+   "blow": 7.5,
+   "mult": 1.5,
+   "race": "AtronachFlameRace",
+   "unarmed": 5.0
+  },
+  "Black Marsh.esm:1Crocodile": {
+   "blow": 7.5,
+   "mult": 1.5,
+   "race": "WolfRace",
+   "unarmed": 5.0
+  },
+  "Black Marsh.esm:HornedLizard": {
+   "blow": 7.5,
+   "mult": 1.5,
+   "race": "SkeeverRace",
+   "unarmed": 5.0
+  },
+  "Black Marsh.esm:Leopard": {
+   "blow": 52.5,
+   "mult": 1.5,
+   "race": "SabreCatRace",
+   "unarmed": 35.0
+  },
+  "Black Marsh.esm:Panther": {
+   "blow": 52.5,
+   "mult": 1.5,
+   "race": "SabreCatRace",
+   "unarmed": 35.0
+  },
+  "Black Marsh.esm:Turtle": {
+   "blow": 97.5,
+   "mult": 1.5,
+   "race": "MammothRace",
+   "unarmed": 65.0
+  },
+  "Black Marsh.esm:Viper2": {
+   "blow": 30.0,
+   "mult": 1.5,
+   "race": "ChaurusRace",
+   "unarmed": 20.0
+  },
+  "Black Marsh.esm:bluelizard": {
+   "blow": 7.5,
+   "mult": 1.5,
+   "race": "SkeeverRace",
+   "unarmed": 5.0
+  },
+  "Blue Whales.esp:EncBlueWhale": {
+   "blow": 5.0,
+   "mult": 1.0,
+   "race": "BlueWhaleRace",
+   "unarmed": 5.0
+  },
+  "Dawnguard.esm:DLC1EncSprigganEarthMother": {
+   "blow": 45.0,
+   "mult": 1.5,
+   "race": "SprigganEarthMotherRace",
+   "unarmed": 30.0
+  },
+  "Dragonborn.esm:DLC2EncBoar01": {
+   "blow": 62.5,
+   "mult": 2.5,
+   "race": "DLC2BoarRace",
+   "unarmed": 25.0
+  },
+  "Dragonborn.esm:DLC2EncBoarWild": {
+   "blow": 62.5,
+   "mult": 2.5,
+   "race": "DLC2BoarRace",
+   "unarmed": 25.0
+  },
+  "Dragonborn.esm:DLC2EncNetchBetty": {
+   "blow": 67.5,
+   "mult": 1.5,
+   "race": "DLC2NetchRace",
+   "unarmed": 45.0
+  },
+  "Dragonborn.esm:DLC2EncNetchBull": {
+   "blow": 67.5,
+   "mult": 1.5,
+   "race": "DLC2NetchRace",
+   "unarmed": 45.0
+  },
+  "Dragonborn.esm:DLC2EncNetchCalf": {
+   "blow": 52.5,
+   "mult": 1.5,
+   "race": "DLC2NetchCalfRace",
+   "unarmed": 35.0
+  },
+  "FA06Anglerfish.esp:FA06AnglerfishBase": {
+   "blow": 25.0,
+   "mult": 1.0,
+   "race": "FA06AnglerfishRace",
+   "unarmed": 25.0
+  },
+  "GoliathGrouper.esp:EncGoliathGrouper": {
+   "blow": 35.0,
+   "mult": 1.0,
+   "race": "GoliathGrouperRace",
+   "unarmed": 35.0
+  },
+  "GoliathGrouper.esp:EncGoliathGrouperBlue": {
+   "blow": 35.0,
+   "mult": 1.0,
+   "race": "GoliathGrouperRace",
+   "unarmed": 35.0
+  },
+  "GoliathGrouper.esp:EncGoliathGrouperGreen": {
+   "blow": 35.0,
+   "mult": 1.0,
+   "race": "GoliathGrouperRace",
+   "unarmed": 35.0
+  },
+  "GoliathGrouper.esp:EncGoliathGrouperRed": {
+   "blow": 35.0,
+   "mult": 1.0,
+   "race": "GoliathGrouperRace",
+   "unarmed": 35.0
+  },
+  "GoliathGrouper.esp:EncGoliathGrouperYellow": {
+   "blow": 35.0,
+   "mult": 1.0,
+   "race": "GoliathGrouperRace",
+   "unarmed": 35.0
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMBantamGuar": {
+   "blow": 10.0,
+   "mult": 1.0,
+   "race": "CIPHTBMBantamGuarRace",
+   "unarmed": 10.0
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMBehemoth": {
+   "blow": 40.0,
+   "mult": 2.0,
+   "race": "CIPHTBMBehemothRace",
+   "unarmed": 20.0
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMBehemothNaga": {
+   "blow": 40.0,
+   "mult": 2.0,
+   "race": "CIPHTBMBehemothRace",
+   "unarmed": 20.0
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMBogBlight": {
+   "blow": 1.5,
+   "mult": 1.5,
+   "race": "CIPHTBMBogBlightRace",
+   "unarmed": 1.0
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMBogBlightF": {
+   "blow": 1.5,
+   "mult": 1.5,
+   "race": "CIPHTBMBogBlightRace",
+   "unarmed": 1.0
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMBrushBoar": {
+   "blow": 62.5,
+   "mult": 2.5,
+   "race": "CIPHTBMBrushBoarRace",
+   "unarmed": 25.0
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMCentipede": {
+   "blow": 60.0,
+   "mult": 1.5,
+   "race": "CIPHTBMCentipedeRace",
+   "unarmed": 40.0
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMCrocodile": {
+   "blow": 5.0,
+   "mult": 1.0,
+   "race": "CIPHTBMCrocodileRace",
+   "unarmed": 5.0
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMCrocodileSalt": {
+   "blow": 5.0,
+   "mult": 1.0,
+   "race": "CIPHTBMCrocodileRace",
+   "unarmed": 5.0
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMDuckbill": {
+   "blow": 10.0,
+   "mult": 2.0,
+   "race": "CIPHTBMDuckbillRace",
+   "unarmed": 5.0
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMDuckbillBaby": {
+   "blow": 7.5,
+   "mult": 1.5,
+   "race": "CIPHTBMDuckbillBabyRace",
+   "unarmed": 5.0
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMFrogBlue": {
+   "blow": 10.0,
+   "mult": 1.0,
+   "race": "CIPHTBMFrogRace",
+   "unarmed": 10.0
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMFrogGreen": {
+   "blow": 10.0,
+   "mult": 1.0,
+   "race": "CIPHTBMFrogRace",
+   "unarmed": 10.0
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMFrogRed": {
+   "blow": 10.0,
+   "mult": 1.0,
+   "race": "CIPHTBMFrogRace",
+   "unarmed": 10.0
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMFrogToad": {
+   "blow": 10.0,
+   "mult": 1.0,
+   "race": "CIPHTBMFrogRace",
+   "unarmed": 10.0
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMGallimimus": {
+   "blow": 7.5,
+   "mult": 1.5,
+   "race": "CIPHTBMGallimimusRace",
+   "unarmed": 5.0
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMHackwing": {
+   "blow": 60.0,
+   "mult": 1.5,
+   "race": "CIPHTBMHackwing2Race",
+   "unarmed": 40.0
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMHackwing2": {
+   "blow": 60.0,
+   "mult": 1.5,
+   "race": "CIPHTBMHackwing2Race",
+   "unarmed": 40.0
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMHistGaunt": {
+   "blow": 75.0,
+   "mult": 1.5,
+   "race": "CIPHTBMHistGauntRace",
+   "unarmed": 50.0
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMJaguar": {
+   "blow": 52.5,
+   "mult": 1.5,
+   "race": "CIPHTBMJaguarRace",
+   "unarmed": 35.0
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMJaguarBlack": {
+   "blow": 52.5,
+   "mult": 1.5,
+   "race": "CIPHTBMJaguarRace",
+   "unarmed": 35.0
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMLizard": {
+   "blow": 52.5,
+   "mult": 1.5,
+   "race": "CIPHTBMLizardRace",
+   "unarmed": 35.0
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMMireGaunt": {
+   "blow": 37.5,
+   "mult": 1.5,
+   "race": "CIPHTBMMireGauntRace",
+   "unarmed": 25.0
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMMosquito": {
+   "blow": 60.0,
+   "mult": 1.5,
+   "race": "CIPHTBMMosquitoRace",
+   "unarmed": 40.0
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMMudRunner": {
+   "blow": 10.0,
+   "mult": 2.0,
+   "race": "CIPHTBMMudRunnerRace",
+   "unarmed": 5.0
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMMudShark": {
+   "blow": 5.0,
+   "mult": 1.0,
+   "race": "CIPHTBMMudSharkRace",
+   "unarmed": 5.0
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMRipperEel": {
+   "blow": 5.0,
+   "mult": 1.0,
+   "race": "CIPHTBMRipperEelRace",
+   "unarmed": 5.0
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMRootworm2": {
+   "blow": 30.0,
+   "mult": 1.5,
+   "race": "CIPHTBMRootworm2Race",
+   "unarmed": 20.0
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSeaDrake": {
+   "blow": 5.0,
+   "mult": 1.0,
+   "race": "CIPHTBMSeaDrakeRace",
+   "unarmed": 5.0
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSerpent": {
+   "blow": 300.0,
+   "mult": 1.5,
+   "race": "CIPHTBMSerpentRace",
+   "unarmed": 200.0
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSkeletonNaga1": {
+   "blow": 1.5,
+   "mult": 1.5,
+   "race": "CIPHTBMSkeletonArgRace",
+   "unarmed": 1.0
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSkeletonNaga3": {
+   "blow": 1.5,
+   "mult": 1.5,
+   "race": "CIPHTBMSkeletonArgRace",
+   "unarmed": 1.0
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSkeletonXan1": {
+   "blow": 1.5,
+   "mult": 1.5,
+   "race": "CIPHTBMSkeletonArgRace",
+   "unarmed": 1.0
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSkeletonXan3": {
+   "blow": 1.5,
+   "mult": 1.5,
+   "race": "CIPHTBMSkeletonArgRace",
+   "unarmed": 1.0
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSnake1": {
+   "blow": 60.0,
+   "mult": 1.5,
+   "race": "mihailsnakerace",
+   "unarmed": 40.0
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSnake2": {
+   "blow": 60.0,
+   "mult": 1.5,
+   "race": "mihailsnakeraceRATTLE",
+   "unarmed": 40.0
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSnake3": {
+   "blow": 60.0,
+   "mult": 1.5,
+   "race": "mihailsnakeraceVIPER",
+   "unarmed": 40.0
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSwampJellyBetty": {
+   "blow": 67.5,
+   "mult": 1.5,
+   "race": "CIPHTBMSwampJellyRace",
+   "unarmed": 45.0
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSwampJellyBull": {
+   "blow": 67.5,
+   "mult": 1.5,
+   "race": "CIPHTBMSwampJellyRace",
+   "unarmed": 45.0
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSwampJellyCalf": {
+   "blow": 52.5,
+   "mult": 1.5,
+   "race": "CIPHTBMSwampJellyCalfRace",
+   "unarmed": 35.0
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMSwampRat": {
+   "blow": 7.5,
+   "mult": 1.5,
+   "race": "CIPHTBMSwampRatRace",
+   "unarmed": 5.0
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMTrike": {
+   "blow": 97.5,
+   "mult": 1.5,
+   "race": "CIPHTBMTrike2Race",
+   "unarmed": 65.0
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMTrikeBaby": {
+   "blow": 7.5,
+   "mult": 1.5,
+   "race": "CIPHTBMTrikeRace",
+   "unarmed": 5.0
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMTurtleFemale": {
+   "blow": 97.5,
+   "mult": 1.5,
+   "race": "CIPHTBMTurtleRace",
+   "unarmed": 65.0
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMTurtleMale": {
+   "blow": 97.5,
+   "mult": 1.5,
+   "race": "CIPHTBMTurtleRace",
+   "unarmed": 65.0
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMTurtleYoung": {
+   "blow": 97.5,
+   "mult": 1.5,
+   "race": "CIPHTBMTurtleRace",
+   "unarmed": 65.0
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMWamasu": {
+   "blow": 30.0,
+   "mult": 1.5,
+   "race": "CIPHTBMWamasuRace",
+   "unarmed": 20.0
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMWamasuAlpha": {
+   "blow": 30.0,
+   "mult": 1.5,
+   "race": "CIPHTBMWamasuRace",
+   "unarmed": 20.0
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp:mihailsnakeVIPER": {
+   "blow": 60.0,
+   "mult": 1.5,
+   "race": "mihailsnakeraceVIPER",
+   "unarmed": 40.0
+  },
+  "Here There Be Monsters - Curse of Cipactli.esp:mihailvoriplasmNPC": {
+   "blow": 13.5,
+   "mult": 0.9,
+   "race": "mihailvoriplasmrace",
+   "unarmed": 15.0
+  },
+  "Here There Be Monsters.esp:HTBMKARKINOSSPAWN": {
+   "blow": 30.0,
+   "mult": 1.5,
+   "race": "HTBMKarkinosSpawnRace",
+   "unarmed": 20.0
+  },
+  "Here There Be Monsters.esp:HTBMKraken2": {
+   "blow": 67.5,
+   "mult": 1.5,
+   "race": "HTBMKraken2Race",
+   "unarmed": 45.0
+  },
+  "Here There Be Monsters.esp:HTBMKraken2NOEYE": {
+   "blow": 67.5,
+   "mult": 1.5,
+   "race": "HTBMKraken2Race",
+   "unarmed": 45.0
+  },
+  "Here There Be Monsters.esp:HTBMLEVIATHANSPAWN": {
+   "blow": 5.0,
+   "mult": 1.0,
+   "race": "HTBMLeviathanSpawnRace",
+   "unarmed": 5.0
+  },
+  "Here There Be Monsters.esp:HTBMSharkCarcharodon1": {
+   "blow": 5.0,
+   "mult": 1.0,
+   "race": "HTBMSharkCarcharodonRace",
+   "unarmed": 5.0
+  },
+  "Here There Be Monsters.esp:HTBMSharkCarcharodon2": {
+   "blow": 5.0,
+   "mult": 1.0,
+   "race": "HTBMSharkCarcharodonRace",
+   "unarmed": 5.0
+  },
+  "Here There Be Monsters.esp:HTBMSharkEnc": {
+   "blow": 5.0,
+   "mult": 1.0,
+   "race": "HTBMSharkRace",
+   "unarmed": 5.0
+  },
+  "Here There Be Monsters.esp:HTBMSharkEncPhorcys": {
+   "blow": 5.0,
+   "mult": 1.0,
+   "race": "HTBMSharkRace",
+   "unarmed": 5.0
+  },
+  "Here There Be Monsters.esp:HTBMSharkLargeEnc": {
+   "blow": 5.0,
+   "mult": 1.0,
+   "race": "HTBMSharkRace",
+   "unarmed": 5.0
+  },
+  "Here There Be Monsters.esp:HTBMSharkLargeEncPhorcys": {
+   "blow": 5.0,
+   "mult": 1.0,
+   "race": "HTBMSharkRace",
+   "unarmed": 5.0
+  },
+  "King of the Murkmire.esp:ALPAAlit01": {
+   "blow": 32.5,
+   "mult": 3.25,
+   "race": "AlitRace",
+   "unarmed": 10.0
+  },
+  "King of the Murkmire.esp:ALPAGwar01": {
+   "blow": 32.0,
+   "mult": 3.2,
+   "race": "mihailguar_race",
+   "unarmed": 10.0
+  },
+  "King of the Murkmire.esp:ALPAGwar01Mount": {
+   "blow": 32.0,
+   "mult": 3.2,
+   "race": "mihailguar_race",
+   "unarmed": 10.0
+  },
+  "King of the Murkmire.esp:ALPAGwar02": {
+   "blow": 32.0,
+   "mult": 3.2,
+   "race": "mihailguar_race",
+   "unarmed": 10.0
+  },
+  "King of the Murkmire.esp:ALPAGwar03": {
+   "blow": 32.0,
+   "mult": 3.2,
+   "race": "mihailguar_race",
+   "unarmed": 10.0
+  },
+  "King of the Murkmire.esp:ALPAGwarWild01": {
+   "blow": 32.0,
+   "mult": 3.2,
+   "race": "mihailguar_race",
+   "unarmed": 10.0
+  },
+  "King of the Murkmire.esp:ArgoniaEncGiantSnailBase": {
+   "blow": 37.5,
+   "mult": 1.5,
+   "race": "BW21GiantSnailRace",
+   "unarmed": 25.0
+  },
+  "King of the Murkmire.esp:ArgoniaEncLargeSnailBase": {
+   "blow": 18.0,
+   "mult": 1.5,
+   "race": "BW21LargeSnailRace",
+   "unarmed": 12.0
+  },
+  "King of the Murkmire.esp:ArgoniaEncSnailBase": {
+   "blow": 6.0,
+   "mult": 1.5,
+   "race": "BW21SnailRace",
+   "unarmed": 4.0
+  },
+  "King of the Murkmire.esp:ArgonianBehemoth01": {
+   "blow": 40.0,
+   "mult": 2.0,
+   "race": "ArgonianBehemothRace",
+   "unarmed": 20.0
+  },
+  "King of the Murkmire.esp:BW21_EncMeganeuraRavenous": {
+   "blow": 15.0,
+   "mult": 1.5,
+   "race": "KotuGavaRace",
+   "unarmed": 10.0
+  },
+  "King of the Murkmire.esp:EncArgonianSkeletonMelee1H": {
+   "blow": 1.5,
+   "mult": 1.5,
+   "race": "ArgonianSkeletonRace",
+   "unarmed": 1.0
+  },
+  "King of the Murkmire.esp:EncArgonianSkeletonMelee2H": {
+   "blow": 1.5,
+   "mult": 1.5,
+   "race": "ArgonianSkeletonRace",
+   "unarmed": 1.0
+  },
+  "King of the Murkmire.esp:EncCrocodileBlackMarsh01": {
+   "blow": 50.0,
+   "mult": 10.0,
+   "race": "CrocodileWaterRace",
+   "unarmed": 5.0
+  },
+  "King of the Murkmire.esp:EncCrocodileBlackMarsh02": {
+   "blow": 50.0,
+   "mult": 10.0,
+   "race": "CrocodileWaterRace",
+   "unarmed": 5.0
+  },
+  "King of the Murkmire.esp:FrogBlue01": {
+   "blow": 0.0,
+   "mult": 1.0,
+   "race": "mihailfrog_race",
+   "unarmed": 0.0
+  },
+  "King of the Murkmire.esp:FrogBrown01": {
+   "blow": 0.0,
+   "mult": 1.0,
+   "race": "mihailfrog_race",
+   "unarmed": 0.0
+  },
+  "King of the Murkmire.esp:FrogGreen01": {
+   "blow": 0.0,
+   "mult": 1.0,
+   "race": "mihailfrog_race",
+   "unarmed": 0.0
+  },
+  "King of the Murkmire.esp:FrogRed01": {
+   "blow": 0.0,
+   "mult": 1.0,
+   "race": "mihailfrog_race",
+   "unarmed": 0.0
+  },
+  "King of the Murkmire.esp:GiantCentipede01": {
+   "blow": 50.0,
+   "mult": 2.5,
+   "race": "mihailgiantcentipede_race",
+   "unarmed": 20.0
+  },
+  "King of the Murkmire.esp:GiantCentipede02": {
+   "blow": 50.0,
+   "mult": 2.5,
+   "race": "mihailgiantcentipede_race",
+   "unarmed": 20.0
+  },
+  "King of the Murkmire.esp:GiantCentipede03": {
+   "blow": 62.5,
+   "mult": 2.5,
+   "race": "mihailgiantcentipede_race2",
+   "unarmed": 25.0
+  },
+  "King of the Murkmire.esp:KotuGava01": {
+   "blow": 15.0,
+   "mult": 1.5,
+   "race": "KotuGavaRace",
+   "unarmed": 10.0
+  },
+  "King of the Murkmire.esp:KotuGava01Large": {
+   "blow": 22.5,
+   "mult": 1.5,
+   "race": "KotuGavaGiantRace",
+   "unarmed": 15.0
+  },
+  "King of the Murkmire.esp:KotuGava02": {
+   "blow": 15.0,
+   "mult": 1.5,
+   "race": "KotuGavaRace",
+   "unarmed": 10.0
+  },
+  "King of the Murkmire.esp:KotuGava02Large": {
+   "blow": 22.5,
+   "mult": 1.5,
+   "race": "KotuGavaGiantRace",
+   "unarmed": 15.0
+  },
+  "King of the Murkmire.esp:SwampLeviathan": {
+   "blow": 120.0,
+   "mult": 2.0,
+   "race": "SwampLeviathanRace",
+   "unarmed": 60.0
+  },
+  "King of the Murkmire.esp:Voriplasm01": {
+   "blow": 15.0,
+   "mult": 1.0,
+   "race": "VoriplasmRace01",
+   "unarmed": 15.0
+  },
+  "King of the Murkmire.esp:Voriplasm02": {
+   "blow": 15.0,
+   "mult": 1.0,
+   "race": "VoriplasmRace01",
+   "unarmed": 15.0
+  },
+  "King of the Murkmire.esp:Voriplasm03": {
+   "blow": 15.0,
+   "mult": 1.0,
+   "race": "VoriplasmRace01",
+   "unarmed": 15.0
+  },
+  "King of the Murkmire.esp:Voriplasm04": {
+   "blow": 13.5,
+   "mult": 0.9,
+   "race": "VoriplasmRace02",
+   "unarmed": 15.0
+  },
+  "King of the Murkmire.esp:Wamasu01": {
+   "blow": 80.0,
+   "mult": 1.6,
+   "race": "WamasuRace",
+   "unarmed": 50.0
+  },
+  "LamiaEnemies.esp:zzzM150LE_Lamia_Actor_005": {
+   "blow": 5.0,
+   "mult": 1.0,
+   "race": "zzzM150LE_Lamia_Race",
+   "unarmed": 5.0
+  },
+  "LamiaEnemies.esp:zzzM150LE_Lamia_Actor_Template": {
+   "blow": 5.0,
+   "mult": 1.0,
+   "race": "zzzM150LE_Lamia_Race",
+   "unarmed": 5.0
+  },
+  "LamiaEnemies.esp:zzzM150LE_Lamia_Actor_Template02": {
+   "blow": 5.0,
+   "mult": 1.0,
+   "race": "zzzM150LE_Lamia_Race",
+   "unarmed": 5.0
+  },
+  "LamiaEnemies.esp:zzzM150LE_Lamia_Actor_Template03": {
+   "blow": 5.0,
+   "mult": 1.0,
+   "race": "zzzM150LE_Lamia_Race",
+   "unarmed": 5.0
+  },
+  "LamiaEnemies.esp:zzzM150LE_Lamia_Actor_Template04": {
+   "blow": 5.0,
+   "mult": 1.0,
+   "race": "zzzM150LE_Lamia_Race",
+   "unarmed": 5.0
+  },
+  "Medusas ENG.esp:EncGorgon": {
+   "blow": 22.0,
+   "mult": 2.2,
+   "race": "GorgonRace",
+   "unarmed": 10.0
+  },
+  "Medusas ENG.esp:EncMedusa": {
+   "blow": 22.0,
+   "mult": 2.2,
+   "race": "GorgonRace",
+   "unarmed": 10.0
+  },
+  "Megalodon.esp:EncMegalodonbase": {
+   "blow": 300.0,
+   "mult": 1.0,
+   "race": "MegalodonRace",
+   "unarmed": 300.0
+  },
+  "Otters.esp:EncOtter": {
+   "blow": 33.0,
+   "mult": 1.5,
+   "race": "OtterRace",
+   "unarmed": 22.0
+  },
+  "Otters.esp:EncOtter2": {
+   "blow": 33.0,
+   "mult": 1.5,
+   "race": "OtterRace",
+   "unarmed": 22.0
+  },
+  "Otters.esp:EncOtter3": {
+   "blow": 33.0,
+   "mult": 1.5,
+   "race": "OtterRace",
+   "unarmed": 22.0
+  },
+  "Otters.esp:EncOtter4": {
+   "blow": 33.0,
+   "mult": 1.5,
+   "race": "OtterRace",
+   "unarmed": 22.0
+  },
+  "Sabertooth Salmon.esp:EncSabertoothSalmonBase": {
+   "blow": 25.0,
+   "mult": 1.0,
+   "race": "SabertoothSalmonRace",
+   "unarmed": 25.0
+  },
+  "Sabertooth Salmon.esp:EncSabertoothSalmonBase2": {
+   "blow": 25.0,
+   "mult": 1.0,
+   "race": "SabertoothSalmonRace",
+   "unarmed": 25.0
+  },
+  "Sabertooth Salmon.esp:EncSabertoothSalmonBase3": {
+   "blow": 25.0,
+   "mult": 1.0,
+   "race": "SabertoothSalmonRace",
+   "unarmed": 25.0
+  },
+  "Shroom Beetles.esp:EncShroomBeetleBlue": {
+   "blow": 7.5,
+   "mult": 1.5,
+   "race": "ShroomBeetleRace",
+   "unarmed": 5.0
+  },
+  "Shroom Beetles.esp:EncShroomBeetleRed": {
+   "blow": 7.5,
+   "mult": 1.5,
+   "race": "ShroomBeetleRace",
+   "unarmed": 5.0
+  },
+  "Shroom Beetles.esp:EncShroomBeetleYellow": {
+   "blow": 7.5,
+   "mult": 1.5,
+   "race": "ShroomBeetleRace",
+   "unarmed": 5.0
+  },
+  "Skyrim.esm:EncDeer": {
+   "blow": 10.0,
+   "mult": 2.0,
+   "race": "DeerRace",
+   "unarmed": 5.0
+  },
+  "Skyrim.esm:EncGoatWild": {
+   "blow": 15.0,
+   "mult": 2.0,
+   "race": "GoatRace",
+   "unarmed": 7.5
+  },
+  "Skyrim.esm:EncMudcrabGiant": {
+   "blow": 37.5,
+   "mult": 1.5,
+   "race": "MudcrabRace",
+   "unarmed": 25.0
+  },
+  "Skyrim.esm:EncMudcrabLarge": {
+   "blow": 30.0,
+   "mult": 1.5,
+   "race": "MudcrabRace",
+   "unarmed": 20.0
+  },
+  "Skyrim.esm:EncMudcrabMedium": {
+   "blow": 7.5,
+   "mult": 1.5,
+   "race": "MudcrabRace",
+   "unarmed": 5.0
+  },
+  "Skyrim.esm:EncSlaughterfish": {
+   "blow": 5.0,
+   "mult": 1.0,
+   "race": "SlaughterfishRace",
+   "unarmed": 5.0
+  },
+  "Skyrim.esm:EncSprigganMatron": {
+   "blow": 30.0,
+   "mult": 1.5,
+   "race": "SprigganMatronRace",
+   "unarmed": 20.0
+  },
+  "Skyrim.esm:EncWisp": {
+   "blow": 10.0,
+   "mult": 1.0,
+   "race": "WitchlightRace",
+   "unarmed": 10.0
+  },
+  "Skyrim.esm:EncWolfRed": {
+   "blow": 40.0,
+   "mult": 2.0,
+   "race": "RaptorRace",
+   "unarmed": 20.0
+  },
+  "Spider Crabs.esp:EncKingSpiderCrab": {
+   "blow": 67.5,
+   "mult": 1.5,
+   "race": "SpidercrabRace",
+   "unarmed": 45.0
+  },
+  "Spider Crabs.esp:EncSpiderCrab": {
+   "blow": 67.5,
+   "mult": 1.5,
+   "race": "SpidercrabRace",
+   "unarmed": 45.0
+  },
+  "Tropical Skyrim -- Birds.esp:01BOSActorKingfisher": {
+   "blow": 10.0,
+   "mult": 1.0,
+   "race": "01BOSKingfisherRace",
+   "unarmed": 10.0
+  },
+  "Tropical Skyrim -- Birds.esp:01BOSActorMagpie": {
+   "blow": 10.0,
+   "mult": 1.0,
+   "race": "01BOSMagpie",
+   "unarmed": 10.0
+  },
+  "Tropical Skyrim -- Birds.esp:01BOSActorPigeonWood": {
+   "blow": 10.0,
+   "mult": 1.0,
+   "race": "01BOSPigeonWoodRace",
+   "unarmed": 10.0
+  },
+  "Tropical Skyrim -- Birds.esp:01BOSActorStarling": {
+   "blow": 10.0,
+   "mult": 1.0,
+   "race": "01BOSStarling",
+   "unarmed": 10.0
+  },
+  "Tropical Skyrim -- Birds.esp:01BOSActorStarlingSpotted": {
+   "blow": 10.0,
+   "mult": 1.0,
+   "race": "01BOSStarlingSpotted",
+   "unarmed": 10.0
+  },
+  "Tropical Skyrim -- Birds.esp:01BOSActorWillowTit": {
+   "blow": 10.0,
+   "mult": 1.0,
+   "race": "01BOSWillowTitRace",
+   "unarmed": 10.0
+  },
+  "Tuna.esp:BW21EncBluefinTunaBasee": {
+   "blow": 7.0,
+   "mult": 1.0,
+   "race": "BW21BlueFinTunaRace",
+   "unarmed": 7.0
+  },
+  "Tuna.esp:BW21EncPacificBluefinTunaBase": {
+   "blow": 7.0,
+   "mult": 1.0,
+   "race": "BW21BlueFinTunaRace",
+   "unarmed": 7.0
+  },
+  "Tuna.esp:BW21EncYellowfinTunaBase": {
+   "blow": 7.0,
+   "mult": 1.0,
+   "race": "BW21YellowFinTunaRace",
+   "unarmed": 7.0
+  },
+  "ccBGSSSE001-Fish.esm:ccBGSSSE001_EncMudcrabGiantAggressive": {
+   "blow": 52.5,
+   "mult": 1.5,
+   "race": "ccBGSSSE001_MudcrabRaceFrenzied",
+   "unarmed": 35.0
+  },
+  "ccBGSSSE001-Fish.esm:ccBGSSSE001_EncMudcrabLargeAggressive": {
+   "blow": 45.0,
+   "mult": 1.5,
+   "race": "ccBGSSSE001_MudcrabRaceFrenzied",
+   "unarmed": 30.0
+  },
+  "ccBGSSSE001-Fish.esm:ccBGSSSE001_EncMudcrabLargeFlamingPot": {
+   "blow": 30.0,
+   "mult": 1.5,
+   "race": "ccBGSSSE001_MudcrabRaceFlamingPot",
+   "unarmed": 20.0
+  },
+  "ccBGSSSE001-Fish.esm:ccBGSSSE001_EncMudcrabMediumAggressive": {
+   "blow": 22.5,
+   "mult": 1.5,
+   "race": "ccBGSSSE001_MudcrabRaceFrenzied",
+   "unarmed": 15.0
+  },
+  "mihaildreughbundle.esp:mihaillanddreugh_NPC_green": {
+   "blow": 120.0,
+   "mult": 2.0,
+   "race": "mihaillanddreugh_race3",
+   "unarmed": 60.0
+  },
+  "mihaildreughbundle.esp:mihaillanddreugh_NPC_orange": {
+   "blow": 67.5,
+   "mult": 1.5,
+   "race": "mihaillanddreugh_race",
+   "unarmed": 45.0
+  },
+  "mihaildreughbundle.esp:mihaillanddreugh_NPC_red": {
+   "blow": 67.5,
+   "mult": 1.5,
+   "race": "mihaillanddreugh_race",
+   "unarmed": 45.0
+  },
+  "mihailhummingbird.esp:mihailhummingbird": {
+   "blow": 0.0,
+   "mult": 1.5,
+   "race": "mihailhummingbirdrace",
+   "unarmed": 0.0
+  },
+  "mihailkagouti.esp:mihailkagouti": {
+   "blow": 40.0,
+   "mult": 4.0,
+   "race": "mihailkagoutirace",
+   "unarmed": 10.0
+  },
+  "mihailkagouti.esp:mihailkagoutiBIG": {
+   "blow": 40.0,
+   "mult": 4.0,
+   "race": "mihailkagoutirace",
+   "unarmed": 10.0
+  },
+  "mihailnixcreatures.esp:mihailnixhound_NPC": {
+   "blow": 40.0,
+   "mult": 2.0,
+   "race": "mihailnixhound_race",
+   "unarmed": 20.0
+  }
+ },
+ "skyrim": {
+  "BearBlackRace": {
+   "blow": 52.5,
+   "mult": 1.5,
+   "unarmed": 35.0
+  },
+  "BearBrownRace": {
+   "blow": 45.0,
+   "mult": 1.5,
+   "unarmed": 30.0
+  },
+  "DeerRace": {
+   "blow": 10.0,
+   "mult": 2.0,
+   "unarmed": 5.0
+  },
+  "FoxRace": {
+   "blow": 10.0,
+   "mult": 2.0,
+   "unarmed": 5.0
+  },
+  "FrostbiteSpiderRace": {
+   "blow": 7.5,
+   "mult": 1.5,
+   "unarmed": 5.0
+  },
+  "GiantRace": {
+   "blow": 90.0,
+   "mult": 1.5,
+   "unarmed": 60.0
+  },
+  "GoatDomesticsRace": {
+   "blow": 5.0,
+   "mult": 1.0,
+   "unarmed": 5.0
+  },
+  "GoatRace": {
+   "blow": 15.0,
+   "mult": 2.0,
+   "unarmed": 7.5
+  },
+  "HorkerRace": {
+   "blow": 22.5,
+   "mult": 1.5,
+   "unarmed": 15.0
+  },
+  "MammothRace": {
+   "blow": 97.5,
+   "mult": 1.5,
+   "unarmed": 65.0
+  },
+  "MudcrabRace": {
+   "blow": 7.5,
+   "mult": 1.5,
+   "unarmed": 5.0
+  },
+  "SabreCatRace": {
+   "blow": 52.5,
+   "mult": 1.5,
+   "unarmed": 35.0
+  },
+  "SabreCatSnowyRace": {
+   "blow": 90.0,
+   "mult": 2.0,
+   "unarmed": 45.0
+  },
+  "SkeeverRace": {
+   "blow": 7.5,
+   "mult": 1.5,
+   "unarmed": 5.0
+  },
+  "TrollFrostRace": {
+   "blow": 97.5,
+   "mult": 1.5,
+   "unarmed": 65.0
+  },
+  "TrollRace": {
+   "blow": 52.5,
+   "mult": 1.5,
+   "unarmed": 35.0
+  },
+  "WolfRace": {
+   "blow": 7.5,
+   "mult": 1.5,
+   "unarmed": 5.0
+  }
+ },
+ "source": "RACE DATA unarmed damage (offset 96) plus the record's own fortify-unarmed abilities, times the largest ATKD damage multiplier; the NPC_'s race by RNAM or its traits template; Skyrim's races the same way, a size class's blow the median of its races, the lowest band's the median of Skyrim's first animals (wolf, skeever, mudcrab)"
+}

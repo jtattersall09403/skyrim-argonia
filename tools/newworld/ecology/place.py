@@ -16,12 +16,12 @@ no obstacle. The world writer (NewWorld.cs) reads `ecology/` as ACHR of our own 
 
 How a cell is filled (decision 0034: Skyrim's own numbers; decision 0035: nothing levelled to the player):
 - The cell's class, as Skyrim's measure classed its cells: water (most samples water), shore (some water), mountain
-  (rock habitats most), forest (canopy), open. Its creatures per cell are Skyrim's for that class, times the band's
-  density (BAND_DENSITY); groups are drawn by Poisson with Skyrim's mean group, sizes from the row's range, larger
-  in high bands.
-- A group is hostile with the band's share (HOSTILE_SHARE: Skyrim's 0.38 at D2); D0 has none. The kind is drawn
-  from the region's rows of that temper whose habitat holds ground in the cell, weighted by the region's
-  signature and by the band's weight for the size class (giants from D3).
+  (rock habitats most), forest (canopy), open. Its benign creatures per cell are Skyrim's benign creatures per
+  navmeshed cell of that class in every band (the high baseline); its hostile ones Skyrim's hostile per navmeshed
+  cell of the class times the band's factor (HOSTILE_DENSITY: none in D0, half in D1, Skyrim's in D2, rising to two
+  and a half times in D5). Each is a Poisson count; groups are drawn until it is met, sizes from the row's range,
+  larger in high bands. The kind is drawn from the region's rows of that temper whose habitat holds ground in the
+  cell, weighted by the region's signature and by the band's weight for the size class (giants from D3).
 - Habitat: walkers on dry ground under 35 degrees, never on a road surface or a place pad; marsh kinds on marsh
   habitats; bush kinds within BUSH_M of a placed understorey, fern or reed; canopy kinds under canopy; rock kinds
   on rock habitats; shore kinds on shore habitats or within SHORE_M of water; swimmers in water of their kind
@@ -31,6 +31,8 @@ How a cell is filled (decision 0034: Skyrim's own numbers; decision 0035: nothin
   (danger_band.foe_level times the size class's share) and health (BAND_HEALTH).
 - Hostile people: the region's lore-backed groups (npc_encounters.json, bound in bindings.json), a roaming group in
   open dry ground with NPC_CHANCE by band, NPC_SIZE members, the band's foe level.
+- The walk's promises (walk_spots.json): every kind the owner's walk names at a travel-menu spot stands within its
+  distance of the landing; what the draw left short is placed in the nearest cells that hold the kind's ground.
 Every draw is seeded by the cell, so a rerun writes the same bytes. A ref's id is ECO_FIRST + its identity's digest
 (cell, kind, ordinal) in the ecology range, probed on a collision.
 """
@@ -59,8 +61,8 @@ PLUGIN = REPO / "out/newworld/plugin"
 ECO_FIRST, ECO_LAST = 0xF00000, 0xFDFFFF   # tools/newworld/idspace.py row `ecology`
 SAMPLE = 128.0
 BANDS = ("D0", "D1", "D2", "D3", "D4", "D5")
-BAND_DENSITY = {"D0": 0.5, "D1": 0.8, "D2": 1.0, "D3": 1.25, "D4": 1.6, "D5": 2.0}
-HOSTILE_SHARE = {"D0": 0.0, "D1": 0.15, "D2": 0.38, "D3": 0.5, "D4": 0.65, "D5": 0.8}
+HOSTILE_DENSITY = {"D0": 0.0, "D1": 0.5, "D2": 1.0, "D3": 1.5, "D4": 2.0, "D5": 2.5}   # of Skyrim's hostile per cell
+PROMISE_GROUPS = 2       # a promised creature kind short at a spot gets this many groups; a critter kind, spawners
 BAND_HEALTH = {"D0": 0.6, "D1": 0.8, "D2": 1.0, "D3": 1.4, "D4": 2.0, "D5": 2.8}
 SIZE_LEVEL = {"insect": 0.4, "small": 0.6, "game": 0.8, "predator": 1.0, "giant": 1.25, "npc": 1.0}
 SIZE_WEIGHT = {  # band -> size class -> weight of a row of that size
@@ -130,6 +132,23 @@ def critter_rates(bind: dict, meas: dict) -> dict:
 
 def jsonl(name: str) -> list[dict]:
     return [json.loads(l) for l in (DB / f"{name}.jsonl").read_text().splitlines() if l.strip()]
+
+
+def landings(out: Path) -> dict:
+    """Travel-menu spot name -> (x, y) of its landing (map/teleports.json)."""
+    tp = out / "map/teleports.json"
+    if not tp.exists():
+        return {}
+    return {t["coc"]: (t["x"], t["y"]) for t in json.loads(tp.read_text()).get("teleports", [])}
+
+
+def promises() -> tuple[float, dict]:
+    """(walking distance in units, spot -> promised kinds) from walk_spots.json."""
+    f = SRC / "walk_spots.json"
+    if not f.exists():
+        return 0.0, {}
+    d = json.loads(f.read_text())
+    return d["within_m"] * 70.0, d["spots"]
 
 
 def held_cells(out: Path) -> set:
@@ -220,6 +239,12 @@ class Cellview:
             m[j0:j1 + 1, i0:i1 + 1] = True
         return m
 
+    def within(self, x: float, y: float, reach: float) -> np.ndarray:
+        """The cell's samples (32 x 32) within reach of (x, y)."""
+        jj, ii = np.mgrid[0:32, 0:32]
+        wx, wy = self.world(jj + 0.5, ii + 0.5)
+        return np.hypot(wx - x, wy - y) <= reach
+
     def cls(self) -> str:
         """The cell's class as Skyrim's measure classed its cells."""
         w = self.water.mean()
@@ -263,7 +288,8 @@ def build(out: Path) -> dict:
         raise RuntimeError("landcover is another terrain build: rerun landcover")
     g = man["grid"]
     rows, bind, meas, enc = load_sources()
-    per100 = meas["creature_density"]["refs_per_100_cells_by_class"]
+    wild = meas["wild"]
+    benign100, hostile100 = wild["benign_per_100_cells_by_class"], wild["hostile_per_100_cells_by_class"]
     foe = {r["id"]: r["foe_level"] for r in jsonl("danger_band")}
     tough = toughness.load()
     cells = {(c["x"], c["y"]): c for c in jsonl("cell")}
@@ -290,13 +316,35 @@ def build(out: Path) -> dict:
     actors: dict = {}
     tally = Counter()
     expect = Counter()
-    for cy in range(g["cy_top"], g["cy_bottom"] - 1, -1):
+    def row_slice(cy: int) -> tuple[dict, int]:
         north = (g["cy_top"] - cy) * 32
         rs = slice(north, north + 33)
-        sl = {"hm": np.asarray(hm[rs]), "flags": np.asarray(arr["flags"][rs]), "hab": np.asarray(arr["habitat"][rs]),
-              "kind": np.asarray(arr["kind"][rs]), "canopy": np.asarray(arr["canopy"][rs]), "slope": np.asarray(arr["slope"][rs]),
-              "shore": np.asarray(arr["shore"][rs]), "road": np.asarray(arr["road"][rs])}
-        lines, clines = [], []
+        return ({"hm": np.asarray(hm[rs]), "flags": np.asarray(arr["flags"][rs]), "hab": np.asarray(arr["habitat"][rs]),
+                 "kind": np.asarray(arr["kind"][rs]), "canopy": np.asarray(arr["canopy"][rs]), "slope": np.asarray(arr["slope"][rs]),
+                 "shore": np.asarray(arr["shore"][rs]), "road": np.asarray(arr["road"][rs])}, north)
+
+    def actor_line(p: dict, band: str, reg: str, cl: str, cx: int, cy: int, ident: str) -> str:
+        name = f"{p.pop('rec')}@{band}"
+        src = name.rsplit("@", 1)[0].split("~")[0]
+        lvl = band_level(band, p["size"], foe)
+        if name in actors and actors[name]["level"] != lvl:   # one record serving kinds of two sizes: an actor a size
+            name += f"/{p['size']}"
+        gear = p.pop("gear", None)
+        actors[name] = {"name": name, "src": src, "band": band, "level": lvl,
+                        "health_mult": BAND_HEALTH[band], "kind": p["kind"], "size": p["size"],
+                        "damage_bonus": 0 if p["people"] else toughness.bonus(src, p["size"], band, tough)}
+        if gear:
+            actors[name]["gear"] = gear
+        p.update(actor=name, region=reg, band=band, cell=[cx, cy], cls=cl, id=ident, fid=f"{fid_of(ident, given):06X}")
+        tally[(reg, band, p["kind"], p["hostile"], cl)] += 1
+        return json.dumps(p, sort_keys=True)
+
+    out_lines: dict = defaultdict(list)
+    out_clines: dict = defaultdict(list)
+    per_cell: Counter = Counter()
+    for cy in range(g["cy_top"], g["cy_bottom"] - 1, -1):
+        sl, north = row_slice(cy)
+        lines, clines = out_lines[cy], out_clines[cy]
         for i in range(g["cells_x"]):
             cx = g["cx0"] + i
             c = cells.get((cx // 2, cy // 2))   # the database cell is a map (Morrowind) cell, two Skyrim cells a side
@@ -306,29 +354,31 @@ def build(out: Path) -> dict:
             rng = np.random.default_rng((0xEC0, cx & 0xFFFF, cy & 0xFFFF))
             cv = Cellview(sl, i, legend, flora[(cx, cy)], origin, north)
             cl = cv.cls()
-            rate = per100[cl] / 100 * BAND_DENSITY[band]
-            expect[(reg, band, cl)] += rate
             placed = []
-            target = int(rng.poisson(rate))     # Skyrim's creatures for the class; groups are drawn until it is met
-            for _ in range(4 * target):
-                if len(placed) >= target:
-                    break
-                hostile = rng.random() < HOSTILE_SHARE[band]
-                cand, wts = [], []
-                for r in rows.get(reg, []):
-                    if (r["hostility"] == "hostile") != hostile:
-                        continue
-                    w = SIZE_WEIGHT[band][r["size_class"]] * (2 if r.get("signature") else 1)
-                    if w > 0 and cv.mask(r).any():
-                        cand.append(r)
-                        wts.append(w)
-                if not cand:
-                    continue
-                r = cand[int(rng.choice(len(cand), p=np.array(wts) / sum(wts)))]
-                lo, hi = r["group"]
-                n = min(int(lo + round((hi - lo) * rng.beta(1 + BANDS.index(band) / 2, 2))), target - len(placed))
-                placed += spot(cv, r, n, band, hostile, rng, cx, cy, kind=r["kind"], size=r["size_class"],
+            for hostile, rate in ((False, benign100[cl] / 100), (True, hostile100[cl] / 100 * HOSTILE_DENSITY[band])):
+                expect[(reg, band, cl)] += rate
+                target = int(rng.poisson(rate))   # Skyrim's creatures of the temper for the class; groups until it is met
+                drawn = 0
+                for _ in range(4 * target):
+                    if drawn >= target:
+                        break
+                    cand, wts = [], []
+                    for r in rows.get(reg, []):
+                        if (r["hostility"] == "hostile") != hostile:
+                            continue
+                        w = SIZE_WEIGHT[band][r["size_class"]] * (2 if r.get("signature") else 1)
+                        if w > 0 and cv.mask(r).any():
+                            cand.append(r)
+                            wts.append(w)
+                    if not cand:
+                        break
+                    r = cand[int(rng.choice(len(cand), p=np.array(wts) / sum(wts)))]
+                    lo, hi = r["group"]
+                    n = min(int(lo + round((hi - lo) * rng.beta(1 + BANDS.index(band) / 2, 2))), target - drawn)
+                    got = spot(cv, r, n, band, hostile, rng, cx, cy, kind=r["kind"], size=r["size_class"],
                                rec=pick_record(bind["kinds"][r["kind"]]["records"], band, rng))
+                    placed += got
+                    drawn += max(1, len(got))
             if groups.get(reg) and band in NPC_SIZE and rng.random() < NPC_CHANCE[band]:
                 gb = groups[reg][int(rng.integers(len(groups[reg])))]
                 lo, hi = NPC_SIZE[band]
@@ -344,29 +394,44 @@ def build(out: Path) -> dict:
                                    gear=tier[gi] if gi >= 0 else None)
             for p in critters(cv, cl, crow.get(reg, []), crate, bind, np.random.default_rng((0xEC1, cx & 0xFFFF, cy & 0xFFFF)),
                               g["water"], cexpect, ckind_expect, reg):
-                ident = f"{cx},{cy}/critter/{p['kind']}/{len(clines)}"
-                p.update(region=reg, cell=[cx, cy], cls=cl, id=ident, fid=f"{fid_of(ident, given):06X}")
+                p.update(region=reg, cell=[cx, cy], cls=cl, id=f"{cx},{cy}/critter/{p['kind']}/{len(clines)}")
                 clines.append(json.dumps(p, sort_keys=True))
                 ctally[(reg, p["kind"], cl)] += 1
             ordinal = Counter()
             for p in placed[:CAP[band]]:
                 ident = f"{cx},{cy}/{p['kind']}/{ordinal[p['kind']]}"
                 ordinal[p["kind"]] += 1
-                name = f"{p.pop('rec')}@{band}"
-                lvl = band_level(band, p["size"], foe)
-                if name in actors and actors[name]["level"] != lvl:   # one record serving kinds of two sizes: an actor a size
-                    name += f"/{p['size']}"
-                gear = p.pop("gear", None)
-                actors[name] = {"name": name, "src": name.rsplit("@", 1)[0].split("~")[0], "band": band, "level": lvl,
-                                "health_mult": BAND_HEALTH[band], "kind": p["kind"], "size": p["size"],
-                                "damage_bonus": toughness.bonus(p["size"], band, tough)}
-                if gear:
-                    actors[name]["gear"] = gear
-                p.update(actor=name, region=reg, band=band, cell=[cx, cy], cls=cl, id=ident, fid=f"{fid_of(ident, given):06X}")
-                lines.append(json.dumps(p, sort_keys=True))
-                tally[(reg, band, p["kind"], p["hostile"], cl)] += 1
-        (d / f"cy{cy:+04d}.jsonl").write_text("\n".join(lines) + ("\n" if lines else ""))
-        (cdir / f"cy{cy:+04d}.jsonl").write_text("\n".join(clines) + ("\n" if clines else ""))
+                lines.append(actor_line(p, band, reg, cl, cx, cy, ident))
+                per_cell[(cx, cy)] += 1
+    # the walk's promises: a kind the owner is told to find at a spot, short within its distance, is placed there
+    reach, spots = promises()
+    land = landings(out)
+    have = [(json.loads(x)["kind"], json.loads(x)["x"], json.loads(x)["y"]) for v in (*out_lines.values(), *out_clines.values()) for x in v]
+    for name, kinds in sorted(spots.items()):
+        if name not in land:
+            continue
+        sx, sy = land[name]
+        for kind in kinds:
+            if any(k == kind and math.hypot(x - sx, y - sy) <= reach for k, x, y in have):
+                continue
+            for p, line, crit in promise_kind(kind, sx, sy, reach, g, cells, held, rows, crow, groups, bind, row_slice,
+                                              legend, flora, origin, per_cell, cexpect, ckind_expect):
+                cx, cy = p["cell"]
+                if crit:
+                    out_clines[cy].append(line)
+                    ctally[(p["region"], p["kind"], p["cls"])] += 1
+                else:
+                    c = cells[(cx // 2, cy // 2)]
+                    ident = f"{cx},{cy}/spot/{p['kind']}/{per_cell[(cx, cy)]}"
+                    out_lines[cy].append(actor_line(p, c["danger_band_id"], c["region_id"], p.pop("cls"), cx, cy, ident))
+                    per_cell[(cx, cy)] += 1
+                have.append((kind, p["x"], p["y"]))
+    for cy in range(g["cy_top"], g["cy_bottom"] - 1, -1):
+        for folder, src in ((d, out_lines), (cdir, out_clines)):
+            ls = src.get(cy, [])
+            if folder is cdir:   # a critter's id is given here, in file order, so a promise's spawner takes the next one
+                ls = [critter_id(x, given) for x in ls]
+            (folder / f"cy{cy:+04d}.jsonl").write_text("\n".join(ls) + ("\n" if ls else ""))
     (d / "actors.json").write_text(json.dumps({"build_id": man["build_id"], "actors": sorted(actors.values(), key=lambda a: a["name"])}, indent=1))
     res = summary(tally, expect, man["build_id"])
     res["critters"] = critter_summary(ctally, cexpect, ckind_expect)
@@ -414,6 +479,81 @@ def critters(cv: Cellview, cl: str, rows: list, rates: dict, bind: dict, rng, wa
     return out
 
 
+def critter_id(line: str, given: set) -> str:
+    p = json.loads(line)
+    p["fid"] = f"{fid_of(p['id'], given):06X}"
+    return json.dumps(p, sort_keys=True)
+
+
+def promise_kind(kind: str, sx: float, sy: float, reach: float, g: dict, cells: dict, held: set, rows: dict, crow: dict,
+                 groups: dict, bind: dict, row_slice, legend: dict, flora: dict, origin: tuple, per_cell: Counter,
+                 cexpect: Counter, ckind_expect: Counter) -> list:
+    """A promised kind short at a spot: PROMISE_GROUPS groups (or spawners) in the nearest cells within reach that hold
+    its ground, by the cell's own region rows and band rules. -> [(ref, line or None, is critter)]."""
+    res: list = []
+    r_cells = int(reach // 4096) + 1
+    c0x, c0y = math.floor(sx / 4096), math.floor(sy / 4096)
+    order = sorted(((math.hypot((c0x + dx + 0.5) * 4096 - sx, (c0y + dy + 0.5) * 4096 - sy), c0x + dx, c0y + dy)
+                    for dx in range(-r_cells, r_cells + 1) for dy in range(-r_cells, r_cells + 1)))
+    for _, cx, cy in order:
+        if len(res) >= PROMISE_GROUPS:
+            break
+        c = cells.get((cx // 2, cy // 2))
+        if not c or c.get("margin") or not c.get("danger_band_id") or (cx, cy) in held or not g["cx0"] <= cx < g["cx0"] + g["cells_x"]:
+            continue
+        band, reg = c["danger_band_id"], c["region_id"]
+        crit_row = next((r for r in crow.get(reg, []) if r["kind"] == kind), None)
+        row = next((r for r in rows.get(reg, []) if r["kind"] == kind), None)
+        sl, north = row_slice(cy)
+        cv = Cellview(sl, cx - g["cx0"], legend, flora[(cx, cy)], origin, north)
+        near = cv.within(sx, sy, reach)
+        rng = np.random.default_rng((0xEC2, cx & 0xFFFF, cy & 0xFFFF, int(hashlib.sha256(kind.encode()).hexdigest()[:6], 16)))
+        cl = cv.cls()
+        if kind == "people":
+            if not groups.get(reg) or band not in NPC_SIZE or per_cell[(cx, cy)] >= CAP[band]:
+                continue
+            gb = groups[reg][int(rng.integers(len(groups[reg])))]
+            row = {"habitat": "open", "size_class": "npc"}
+            pk = "npc:" + re.sub(r"[^a-z]+", "-", gb.get("race", "people").lower()).strip("-")
+            looks = gb.get("looks") or gb["records"]
+            tier = (gb.get("gear") or {}).get(GEAR_TIER[band]) or []
+            got = []
+            for _ in range(NPC_SIZE[band][0]):
+                look = looks[int(rng.integers(len(looks)))]
+                gi = int(rng.integers(len(tier))) if tier else -1
+                got += spot(cv, row, 1, band, True, rng, cx, cy, kind=pk, size="npc", allow=near,
+                            rec=look + (f"~{GEAR_TIER[band]}{gi}" if gi >= 0 else ""), people=True, gear=tier[gi] if gi >= 0 else None)
+            if got:
+                res += [(dict(p, cell=[cx, cy], cls=cl), None, False) for p in got]
+                break
+            continue
+        if crit_row:
+            b = bind["critter_kinds"][kind]
+            m = cv.mask(crit_row) & near
+            ys, xs = np.nonzero(m)
+            for _ in range(min(PROMISE_GROUPS, len(ys))):
+                k = int(rng.integers(len(ys)))
+                ry, rx = float(ys[k] + rng.random()), float(xs[k] + rng.random())
+                x, y = cv.world(ry, rx)
+                z = g["water"] if crit_row["habitat"].startswith("water") and crit_row["size_class"] != "insect" else z_for(cv, crit_row, ry, rx)
+                p = {"base": b["critter"], "kind": kind, "fn": b["function"], "time": b["time"], "row_time": crit_row["time"],
+                     "hab": crit_row["habitat"], "x": round(x, 1), "y": round(y, 1), "z": round(z, 1),
+                     "rz": round(float(rng.uniform(0, 2 * math.pi)), 3), "region": reg, "cell": [cx, cy], "cls": cl,
+                     "id": f"{cx},{cy}/spot-critter/{kind}/{len(res)}"}
+                res.append((p, json.dumps(p, sort_keys=True), True))
+            continue
+        if not row or per_cell[(cx, cy)] >= CAP[band] or not SIZE_WEIGHT[band][row["size_class"]]:
+            continue   # a promise never puts a size class where its band holds none (no giant below D3)
+        hostile = row["hostility"] == "hostile"
+        if hostile and band == "D0":
+            continue
+        n = row["group"][0]
+        got = spot(cv, row, n, band, hostile, rng, cx, cy, kind=kind, size=row["size_class"], allow=near,
+                   rec=pick_record(bind["kinds"][kind]["records"], band, rng))
+        res += [(dict(p, cell=[cx, cy], cls=cl), None, False) for p in got[:CAP[band] - per_cell[(cx, cy)]]]
+    return res
+
+
 def critter_summary(tally: Counter, expect: Counter, kind_expect: Counter) -> dict:
     by_region, by_kind, by_cls, kinds = Counter(), Counter(), Counter(), defaultdict(Counter)
     for (reg, kind, cl), n in tally.items():
@@ -433,9 +573,11 @@ def critter_summary(tally: Counter, expect: Counter, kind_expect: Counter) -> di
 
 
 def spot(cv: Cellview, row: dict, n: int, band: str, hostile: bool, rng, cx: int, cy: int, *, kind: str, size: str,
-         rec: str, people: bool = False, gear: dict | None = None) -> list[dict]:
-    """n members of one group on the row's ground in the cell, the first at a random sample of its mask."""
+         rec: str, people: bool = False, gear: dict | None = None, allow: np.ndarray | None = None) -> list[dict]:
+    """n members of one group on the row's ground in the cell (and in `allow`), the first at a random sample of it."""
     m = cv.mask(row).copy()
+    if allow is not None:
+        m &= allow
     if hostile:
         m &= cv.road[:32, :32] >= HOSTILE_ROAD_M
     ys, xs = np.nonzero(m)
@@ -493,6 +635,7 @@ def check(out: Path) -> int:
     arr = {k: np.load(LC / f"{k}.npy", mmap_mode="r") for k in ("flags", "kind", "slope")}
     kinds = legend["kinds"]
     faults, seen, per_cell = [], set(), Counter()
+    found: list = []
     n = 0
     for f in sorted(d.glob("cy*.jsonl")):
         for line in f.read_text().splitlines():
@@ -500,6 +643,7 @@ def check(out: Path) -> int:
                 continue
             o = json.loads(line)
             n += 1
+            found.append(("people" if o["people"] else o["kind"], o["x"], o["y"]))
             cx, cy = o["cell"]
             per_cell[(cx, cy)] += 1
             fid = int(o["fid"], 16)
@@ -582,14 +726,39 @@ def check(out: Path) -> int:
         if e >= 20 and not TOLERANCE[0] <= got / e <= TOLERANCE[1]:
             faults.append(f"density of {cl}: {got} placed against {e} by Skyrim's measure, outside {TOLERANCE}")
     cres = check_critters(d, res, bind, seen, held, cells, arr, kinds, g, faults)
+    for f in sorted((d / "critters").glob("cy*.jsonl")):
+        found += [(o["kind"], o["x"], o["y"]) for o in map(json.loads, filter(None, f.read_text().splitlines()))]
+    walk = check_promises(out, cells, found, faults)
     out_doc = {"build_id": res["build_id"], "refs": n, "critters": cres, "faults": faults[:50], "fault_count": len(faults),
-               "max_region_overlap": worst, "density": density, "people_variety": variety, "gear_value_by_band": worn_mean, "toughness": tough_doc, "by_band": res["by_band"]}
+               "max_region_overlap": worst, "density": density, "people_variety": variety, "gear_value_by_band": worn_mean, "toughness": tough_doc, "by_band": res["by_band"], "walk_spots": walk}
     (d / "check.json").write_text(json.dumps(out_doc, indent=1, sort_keys=True))
     print(f"ecology check: {n} actors, {len(faults)} faults; worst region overlap {worst}; density {density}")
     print(f"  critters: {cres['refs']} spawners; by region {cres['by_region']}; by class {cres['by_class']} against {cres['expected_by_class']}")
     for x in faults[:20]:
         print("  " + x)
     return 1 if faults else 0
+
+
+def check_promises(out: Path, cells: dict, found: list, faults: list) -> dict:
+    """Every kind the walk promises at a spot stands within the promised distance of the spot's landing, and every
+    spot lands in a cell the stage fills (banded, not the margin). -> spot -> kind -> metres to the nearest."""
+    reach, spots = promises()
+    land = landings(out)
+    res: dict = {}
+    for name, want in sorted(spots.items()):
+        if name not in land:   # a spot outside this build (the small world); the teleports' own check holds the province
+            continue
+        sx, sy = land[name]
+        c = cells.get((math.floor(sx / 4096) // 2, math.floor(sy / 4096) // 2), {})
+        if c.get("margin") or not c.get("danger_band_id"):
+            faults.append(f"walk spot {name}: lands in a cell with no band (margin or past the map), where nothing lives")
+        res[name] = {}
+        for kind in want:
+            d = min((math.hypot(x - sx, y - sy) for k, x, y in found if k == kind), default=None)
+            res[name][kind] = None if d is None else round(d / 70.0)
+            if d is None or d > reach:
+                faults.append(f"walk spot {name}: no {kind} within {reach / 70:.0f} m (nearest {res[name][kind]} m)")
+    return res
 
 
 def check_critters(d: Path, res: dict, bind: dict, seen: set, held: set, cells: dict, arr: dict, kinds: list, g: dict,

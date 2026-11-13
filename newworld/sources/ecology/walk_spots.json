@@ -1,0 +1,21 @@
+{
+ "schema": "What the owner's walk check promises at each travel-menu spot (tools/newworld/teleports.py SPOTS, landed at out/newworld/plugin/map/teleports.json): every kind listed stands within `within_m` metres of the landing, on its own ground, at the spot's own band and region rules. A creature kind is an actor of the region's rows; a critter kind a spawner of its binding (it shows at its base's hours); `people` a roaming band of the region's lore groups. The ecology stage places what the draw left short; its check fails a spot that lacks one.",
+ "within_m": 200,
+ "spots": {
+  "ANWSpotD1CapePercar": ["mudcrab", "burglar-crab", "guar", "marsh-rat", "torchbug"],
+  "ANWSpotD5Murkwood": ["medusa", "bog-blight", "stalker-cat", "fellrunner", "hist-frog", "torchbug", "fleshfly"],
+  "ANWSpotFreshWater": ["giant-leech", "crocodile", "swamp-jelly", "sabretooth-salmon", "hist-frog", "marsh-turtle", "torchbug"],
+  "ANWSpotSaltWater": ["dreugh", "sea-otter", "reef-slaughterfish", "sea-turtle", "giant-spider-crab", "sea-gull", "salt-midge"],
+  "ANWSpotCanopy": ["hummingbird", "giant-spider", "tree-viper", "marsh-deer", "cicada-chorus"],
+  "ANWSpotOpen": ["marsh-deer", "wild-boar", "alit", "mudcrab"],
+  "ANWSpotDusk": ["torchbug", "gnat-cloud", "marsh-turtle", "death-hopper"],
+  "ANWSpotHostileNpcs": ["people", "lamia", "kagouti", "netch", "mountain-goat"],
+  "ANWSpotSwampHarvest": ["giant-leech", "marsh-turtle", "hist-frog", "torchbug", "fleshfly"],
+  "ANWSpotDry": ["mountain-goat", "spitting-lizard", "marsh-deer", "fire-beetle"],
+  "ANWSpotSeaShore": ["kagouti", "sea-otter", "mudcrab", "sea-gull", "mudskipper"],
+  "ANWSpotLakeUlaish": ["river-otter", "megalania", "medusa", "giant-leech", "kingfisher", "gnat-cloud"],
+  "ANWSpotBarsaebica": ["lamia", "medusa", "marsh-turtle", "giant-snail"],
+  "ANWSpotKotherra": ["megalania", "giant-spider-crab", "mudcrab", "mudskipper"],
+  "ANWSpotValleyOfStorms": ["wisp", "marsh-turtle", "marsh-bird", "torchbug"]
+ }
+}

@@ -86,11 +86,14 @@ key, and an actor is no obstacle; nothing of it reaches the LOD.
 A cell (never a margin cell, a held cell of a built place, or a teleport landing's cell) is filled so:
 
 1. Its class as Skyrim classed its cells: water (most samples water), shore (some water), mountain (rock habitats
-   most), forest (canopy), open. It takes a Poisson draw of Skyrim's creatures for that class, times its band's
-   density: D0 0.5, D1 0.8, D2 1, D3 1.25, D4 1.6, D5 2.
-2. Groups are drawn until that number is met. A group is hostile with its band's share (D0 none, D1 0.15, D2 0.38 as
-   Skyrim, D3 0.5, D4 0.65, D5 0.8). Its kind is drawn from the region's rows of that temper whose ground the cell
-   holds, signature rows twice as likely, weighted by the band's size weights: low bands mostly insects and small
+   most), forest (canopy), open. Skyrim's density is measured where the player walks: the Tamriel cells that carry a
+   navmesh (`skyrim_measures.json` `wild`; 5,585 cells). Per 100 such cells Skyrim holds benign creatures forest 41.5,
+   mountain 32.2, open 19.8, shore 51.6, water 7.9, and hostile ones forest 21.7, mountain 16.4, open 14.5, shore 32.5,
+   water 12.3. A cell takes a Poisson draw of Skyrim's benign creatures for its class in every band (the high
+   baseline of prey and small life), and of Skyrim's hostile ones times its band's factor: D0 none, D1 0.5, D2 1,
+   D3 1.5, D4 2, D5 2.5.
+2. Groups are drawn until each number is met. A group's kind is drawn from the region's rows of that temper whose
+   ground the cell holds, signature rows twice as likely, weighted by the band's size weights: low bands mostly insects and small
    animals, giants only from D3, predators and giants most of D5. Group size from the row's range, larger in high
    bands. A cell holds at most 4 (D0) to 18 (D5) actors.
 3. Ground by habitat: walkers on dry ground under 35 degrees, off road surfaces and place pads; marsh kinds on marsh
@@ -142,30 +145,46 @@ The world writer (NewWorld.cs `Ecology`) copies each band actor's record whole i
 race, skin, armour addons, spells, factions and sounds follow; a link into the source plugin's world or story,
 placed references, cells, quests or dialogue, is nulled) and writes each actor as an ACHR.
 
+7. The walk's promises (`walk_spots.json`): every kind the owner's walk names at a travel-menu spot stands within 200 m
+   of the spot's landing. Where the draw left one short, two groups (or two spawners) of it go in the nearest cells
+   within reach that hold its ground, by those cells' own region, band and cap. A spot never lands in a margin cell or
+   past the map, where nothing lives.
+
+Flying birds are critters, as Skyrim's are: Skyrim's `FXbirdOPreyNoNestACT` (its script flies a path above the ground
+and scatters near the player), function `birds`, at Skyrim's rates. Tropical Skyrim's bird actors walk on a chicken's
+skeleton and flutter through the land, so only its walking marsh birds are actors.
+
 ## Toughness by band
 
-Damage rises with the band as health and level do, as Skyrim scales its fixed-level variants. Skyrim's creatures hit
-by their race's unarmed damage (`toughness.json`, measured from Skyrim.esm: skeever, wolf, fox, mudcrab and spider 5;
-goat 7.5; horker 15; brown and black bear 30 and 35; troll and sabre cat 35; snowy sabre cat 45; giant 60; frost troll
-and mammoth 65; by size class insect 5, small 5, game 11.25, predator 35, giant 65), and a stronger variant of a kind
-is its own record carrying an ability that adds to that damage (`AbFortifyUnarmedDamage`: the dragons' tiers +25,
-+75, +125, +175, werewolves +5 to +25, vampires +5 to +20, the large and giant mudcrabs +15 and +20). Each band copy
-of a creature carries our ability of that kind (`ANW_Eco_UnarmedDamage<magnitude>`, one per magnitude, written by the
-world writer) adding size class base times (band factor - 1), factors D0 to D2 1, D3 1.4, D4 2, D5 2.8: a predator's
-blow 35, 35, 35, 49, 70, 98 and a giant's 65, 65, 65, 91, 130, 182. D0 to D2 take no ability: their weakness is the
-low level, the low health and the weakest record of the kind first. Bands D0 and D1 hold no predator or giant (size
-weights), and a D1 hostile never lands more than 15 in one blow, so nothing of the first band can kill an early
-character; a D5 predator or giant lands 98 to 182, lethal to an early character's 100 health, trivial to a
-strong one. People hit with the weapons of their kit tier (iron or hide, steel, steel two-handed, elven or orcish), so
-their damage rises with the band through the kit's weapon value. Nothing reads the player's level: a creature's
-damage is a function of its band and size class alone, its level fixed, no level multiplier, template or list.
-The check asserts all of it (`toughness.py check`): each actor's bonus is its band's, no D1 hostile over 15, the peak
-and mean blow rise with the band, the table's D5 blow is lethal to 100 health and at least twice D2's, the people's
-weapon value rises, and no actor carries a player-level multiplier, template or list.
+A creature's hardest blow is its race's unarmed damage (plus any fortify-unarmed ability its record carries) times the
+largest damage multiplier of its race's attacks (`toughness.py measure` -> `blows.json`, numbers only). Measured from
+Skyrim.esm: wolf, skeever and mudcrab 7.5, so a level 1 character's 100 health loses 7.5 a blow to what it meets first;
+fox and deer 10, goat 15, horker 22.5, bears 45 and 52.5, sabre cat and troll 52.5, giant 90, mammoth and frost troll
+97.5. A size class's blow is the median of its Skyrim races: insect and small 7.5, game 18.75, predator 52.5, giant
+97.5. The mods' records hit far harder (the hackwing 60, the otter 33, the dreugh 67.5, the megalodon 300), so their own
+numbers never stand: each band copy carries our ability on the unarmed damage (`ANW_Eco_UnarmedDamage<n>`, or
+`...M<n>` for a negative magnitude, on the effect of Skyrim's `AbFortifyUnarmedDamage`), sized so its hardest blow is
+its band's: in D0 and D1 Skyrim's first animals' 7.5 whatever the kind, above them its size class's blow times the
+band's factor (D2 1, D3 1.4, D4 2, D5 2.8: a D5 predator lands 147, a giant 273). Health rises with the band by
+BAND_HEALTH. People hit with the weapons of their kit tier; a copy given a kit no longer takes its inventory from a
+template, so the kit is what it carries and drops. Nothing reads the player's level.
+The check (`toughness.py check`, in the stage's check) recomputes each actor's blow from its record's measured
+numbers: every record measured, its ability its band's, its blow within one attack multiplier of its band's, no D1
+creature over 15, blows rising band on band, D5 lethal to 100 health, no player-level multiplier, template or list.
+
+## Animations
+
+`tools/newworld/ecology/anim_audit.py` (in the stage's check) follows every placed record to its race and resolves on
+the New World card what the game needs to move it: the skeleton, the behaviour project and its clips, a skinned body
+mesh whose bones the skeleton names, the rig's bones against the skeleton's, the source plugin and masters laid, and
+the world file's race copy unchanged. A placed kind that fails fails the stage. Bound away for it: King of the
+Murkmire's giant snakes (a snake skeleton under the ice wraith's behaviour, so they glided rigid) for Curse of
+Cipactli's serpent; Black Marsh's swamp wyvern and centipede (body meshes no laid mod holds); Curse of Cipactli's shine
+(an unskinned body) for Skyrim's wisp.
 
 ## Checks
 
-The stage's check (fails the stage): every actor on ground or water of its kind; none in a held, landing or margin
+The stage's check (fails the stage): every walk spot's promised kinds within its distance; every actor on ground or water of its kind; none in a held, landing or margin
 cell; no cell over its band's cap; no hostile in D0; levels as the band's; ids in range and once; no two neighbouring regions
 sharing more than half their kinds; creatures per class within 0.5 to 1.6 of Skyrim's measure times band density
 where 20 or more are expected. For critters: every spawner on ground or water of its kind, on the base its kind

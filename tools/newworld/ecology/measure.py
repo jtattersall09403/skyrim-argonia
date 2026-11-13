@@ -72,7 +72,7 @@ def heights(vhgt: bytes) -> np.ndarray:
 def scan(path: Path) -> dict:
     blob = path.read_bytes()
     o = {"npc": {}, "lvln": {}, "race": {}, "eczn": {}, "cells": {}, "flor": {}, "tree": {}, "achr": [], "refr": [],
-         "world": {}, "acti": {}}
+         "world": {}, "acti": {}, "navm": set()}
     cur = {"cell": None, "interior": False}
 
     def body(i, size, flags):
@@ -92,6 +92,8 @@ def scan(path: Path) -> dict:
                 i += size
                 continue
             flags, fid = struct.unpack_from("<II", blob, i + 8)
+            if sig == b"NAVM" and wrld == TAMRIEL and cur["cell"] is not None:
+                o["navm"].add(cur["cell"])
             if sig in KEEP or (sig in (b"ACHR", b"REFR", b"LAND") and wrld == TAMRIEL):
                 sb = subs(body(i, size, flags))
                 d = dict(sb)
@@ -262,6 +264,34 @@ def measure_critters(o: dict, cls: dict, cells: dict, world_water: float, land: 
                       "15 m; spawn_hours = the start and end hour and most critters of each critterspawn script of the base"}
 
 
+def measure_wild(o: dict, cls: dict, rows: list) -> dict:
+    """Skyrim's density where the player walks: per 100 cells of each class among the Tamriel cells that carry a
+    navmesh (the playable land; the LAND beyond the border has none), the creature refs split by temper (benign:
+    every resolved record's aggression 0; hostile: any above) and the critter spawner refs (ACTI critters)."""
+    nav = {xy: cls[xy] for xy in o["navm"] if xy in cls}
+    land = Counter(nav.values())
+    benign, hostile, crit = Counter(), Counter(), Counter()
+    for r in rows:
+        if r["cell"] in nav:
+            (hostile if r["hostile"] else benign)[nav[r["cell"]]] += 1
+    for fid, x, y, _, _ in o["refr"]:
+        if fid in o["acti"] and cell_of(x, y) in nav:
+            crit[nav[cell_of(x, y)]] += 1
+
+    def per100(c):
+        return {k: round(100 * c[k] / land[k], 2) for k in sorted(land)}
+
+    n = sum(land.values())
+    return {"navmesh_cells": n, "by_class": dict(sorted(land.items())),
+            "benign_per_100_cells_by_class": per100(benign), "hostile_per_100_cells_by_class": per100(hostile),
+            "critters_per_100_cells_by_class": per100(crit),
+            "benign_per_100_cells_all": round(100 * sum(benign.values()) / n, 2),
+            "hostile_per_100_cells_all": round(100 * sum(hostile.values()) / n, 2),
+            "critters_per_100_cells_all": round(100 * sum(crit.values()) / n, 2),
+            "method": "Tamriel exterior cells holding a NAVM record (Skyrim navmeshes only the land the player can walk); "
+                      "classes and creature rows as creature_density; critters as the critters section's bases"}
+
+
 def measure(o: dict) -> dict:
     cells, world_water = o["cells"], o["world"]["water"]
     trees = Counter()
@@ -381,6 +411,7 @@ def measure(o: dict) -> dict:
     for xy in cls:
         kcls[cls[xy]].append(len(kinds_cell.get(xy, ())))
     critters = measure_critters(o, cls, cells, world_water, land)
+    wild = measure_wild(o, cls, rows)
     ez = o["eczn"]
     cell_zone = [xy for xy, c in cells.items() if c["zone"]]
     return {
@@ -432,6 +463,7 @@ def measure(o: dict) -> dict:
                       "cell from the ref's position; a kind is a distinct PFIG form; per-cell figures divide by all "
                       "cells of the class including cells with none; near water = water plus shore classes"},
         "critters": critters,
+        "wild": wild,
         "encounter_zones": {
             "eczn_records": len(ez),
             "min_level_min_max": [min(z["min"] for z in ez.values()), max(z["min"] for z in ez.values())],

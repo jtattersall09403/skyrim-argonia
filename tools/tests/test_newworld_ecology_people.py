@@ -8,7 +8,8 @@ from tools.newworld.ecology import people as P
 from tools.newworld.ecology import toughness as T
 
 REPO = Path(__file__).resolve().parents[2]
-BASE = {"insect": 5.0, "small": 5.0, "game": 11.25, "predator": 35.0, "giant": 65.0}
+BASE = {"blow_by_size": {"insect": 7.5, "small": 7.5, "game": 18.75, "predator": 52.5, "giant": 97.5}, "lowest": 7.5,
+        "records": {"m:hard": {"unarmed": 40.0, "mult": 1.5}, "m:soft": {"unarmed": 5.0, "mult": 1.5}}}
 
 
 def npc(edid, race="R1", female=False, voice="V1", fact=("F1",), **kw):
@@ -53,22 +54,27 @@ def test_every_kit_style_is_not_nordic_and_has_three_tiers():
                 assert not P.NORDIC.search(" ".join(P.ARMOUR[s["armour"]] + s["weapons"])), (style, s)
 
 
-def act(band, size, kind="x", **kw):
-    return {"band": band, "size": size, "kind": kind, "level": 5, "damage_bonus": T.bonus(size, band, BASE), **kw}
+def act(band, size, kind="x", src="m:hard", **kw):
+    return {"band": band, "size": size, "kind": kind, "src": src, "level": 5,
+            "damage_bonus": T.bonus(src, size, band, BASE), **kw}
+
+
+def test_a_hard_hitting_record_is_brought_down_to_its_band():
+    # the hackwing's own 60 (40 x 1.5) lands Skyrim's first animals' 7.5 in D1, a predator's band blow in D5
+    assert T.bonus("m:hard", "predator", "D1", BASE) == -35 and T.hit("m:hard", "predator", "D1", BASE) == 7.5
+    assert T.hit("m:hard", "predator", "D5", BASE) == 147.0 and T.bonus("m:soft", "small", "D2", BASE) == 0
 
 
 def test_damage_rises_with_band_and_d5_is_lethal_d1_is_not():
-    assert [T.bonus("predator", b, BASE) for b in T.BAND_ORDER] == [0, 0, 0, 14, 35, 63]
-    assert T.hit("giant", "D5", BASE) >= T.D5_LETHAL_HIT and T.hit("predator", "D5", BASE) < 100
-    acts = {f"{b}{s}": act(b, s) for b in ("D1", "D2", "D3", "D5") for s in ("small", "game")}
+    acts = {f"{b}{s}{r}": act(b, s, src=r) for b in ("D1", "D2", "D3", "D5") for s in ("small", "game") for r in ("m:hard", "m:soft")}
     faults, doc = T.check(acts, {}, BASE, {"D2": [100], "D4": [500]})
     assert faults == [] and doc["peak_hit_by_band"]["D5"] > doc["peak_hit_by_band"]["D2"]
+    assert doc["peak_hit_by_band"]["D1"] <= T.D1_MAX_HIT
 
 
 def test_toughness_faults():
-    base = {"D1": act("D1", "predator")}
-    assert any("D1 hostile" in f for f in T.check(base, {}, BASE, {})[0])                       # a D1 player-killer
-    assert any("damage bonus" in f for f in T.check({"a": act("D3", "predator") | {"damage_bonus": 1}}, {}, BASE, {})[0])
+    assert any("damage bonus" in f for f in T.check({"a": act("D1", "predator") | {"damage_bonus": 0}}, {}, BASE, {})[0])
+    assert any("not measured" in f for f in T.check({"a": act("D2", "small", src="m:none")}, {}, BASE, {})[0])
     assert any("not fixed" in f for f in T.check({"a": act("D2", "small") | {"level_mult": True}}, {}, BASE, {})[0])
     assert any("not fixed" in f for f in T.check({"a": act("D2", "small") | {"template": "x"}}, {}, BASE, {})[0])
     assert any("weapon" in f for f in T.check({}, {}, BASE, {"D2": [500], "D4": [100]})[0])      # kit falling with the band

@@ -269,20 +269,6 @@
    "signature": false,
    "asset": "mod",
    "cite": "story/lore/topics/fauna-hazards.md#Everyday hazards"
-  },
-  {
-   "kind": "swamp-wyvern",
-   "size_class": "predator",
-   "hostility": "hostile",
-   "habitat": "rock",
-   "time": "any",
-   "group": [
-    1,
-    1
-   ],
-   "signature": false,
-   "asset": "bmv",
-   "cite": "Black Marsh.esm places this swamp wyvern in Black Marsh"
   }
  ],
  "harvestables": [

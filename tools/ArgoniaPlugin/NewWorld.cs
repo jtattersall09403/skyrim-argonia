@@ -421,6 +421,8 @@ static class NewWorld
             // of the listed armour and weapons; never a levelled list
             if (a.TryGetProperty("gear", out var gear))
             {
+                // a record that takes its inventory from a template (Skyrim's bandits) would ignore our outfit and items
+                cfg.TemplateFlags &= ~NpcConfiguration.TemplateFlag.Inventory;
                 FormKey G(string r) { var q = r.Split(':', 2); return fc.Get(q[0], q[1]); }
                 if (gear.TryGetProperty("outfit", out var ot)) n.DefaultOutfit = new FormLinkNullable<IOutfitGetter>(G(ot.GetString()!));
                 else
@@ -444,15 +446,16 @@ static class NewWorld
                     n.Items.Add(new ContainerEntry { Item = new ContainerItem { Item = new FormLink<IItemGetter>(W(am.GetString()!)), Count = 40 } });
             }
             // the band's blow, as Skyrim scales a stronger variant of a creature (the dragons' and werewolves' tiers): an
-            // ability that adds to the unarmed damage its race gives (AbFortifyUnarmedDamage), one per magnitude
-            if (a.TryGetProperty("damage_bonus", out var db) && db.GetInt32() > 0)
+            // ability on the unarmed damage its race gives (AbFortifyUnarmedDamage's effect), one per magnitude; a
+            // negative magnitude weakens a mod's creature that hits harder than its band (ecology/toughness.py)
+            if (a.TryGetProperty("damage_bonus", out var db) && db.GetInt32() != 0)
             {
                 var mag = db.GetInt32();
                 if (!dmg.TryGetValue(mag, out var sk))
                 {
                     var ab = new Spell(new FormKey(mod.ModKey, ids.Take("base", "eco-damage:" + mag)), Rel)
                     {
-                        EditorID = $"ANW_Eco_UnarmedDamage{mag:D3}", Name = new TranslatedString(Language.English, "Band blow"),
+                        EditorID = mag > 0 ? $"ANW_Eco_UnarmedDamage{mag:D3}" : $"ANW_Eco_UnarmedDamageM{-mag:D3}", Name = new TranslatedString(Language.English, "Band blow"),
                         Type = SpellType.Ability, CastType = CastType.ConstantEffect, TargetType = TargetType.Self,
                     };
                     ab.EquipmentType.SetTo(FormKey.Factory("013F44:Skyrim.esm"));   // EitherHand, as vanilla abilities

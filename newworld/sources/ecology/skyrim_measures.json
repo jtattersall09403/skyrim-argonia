@@ -566,5 +566,40 @@
    "method": "REFR of the plugin placed by x, y into 4096-unit cells; the cells counted are those holding any ref of it; spawners are bases named critterSpawn* or ArgoniaCritterSpawn*"
   },
   "method": "REFR in Tamriel whose base ACTI is a critter spawner or critter (editor id starting critter, DragonFly, Fish, Firefly, Moth, FXbird, FCAmb; not dummies, triggers, furniture or tanks), in a cell with LAND; per 100 cells = refs / cells of the class * 100; over water = ground under the cell's water height at the ref, on the edge = within 2 m above it; near a harvestable = a FLOR with an ingredient within 15 m; spawn_hours = the start and end hour and most critters of each critterspawn script of the base"
+ },
+ "wild": {
+  "navmesh_cells": 5585,
+  "by_class": {
+   "forest": 2045,
+   "mountain": 946,
+   "open": 620,
+   "shore": 752,
+   "water": 1222
+  },
+  "benign_per_100_cells_by_class": {
+   "forest": 41.47,
+   "mountain": 32.24,
+   "open": 19.84,
+   "shore": 51.6,
+   "water": 7.86
+  },
+  "hostile_per_100_cells_by_class": {
+   "forest": 21.66,
+   "mountain": 16.38,
+   "open": 14.52,
+   "shore": 32.45,
+   "water": 12.27
+  },
+  "critters_per_100_cells_by_class": {
+   "forest": 17.8,
+   "mountain": 11.84,
+   "open": 2.42,
+   "shore": 92.95,
+   "water": 56.3
+  },
+  "benign_per_100_cells_all": 31.51,
+  "hostile_per_100_cells_all": 19.37,
+  "critters_per_100_cells_all": 33.63,
+  "method": "Tamriel exterior cells holding a NAVM record (Skyrim navmeshes only the land the player can walk); classes and creature rows as creature_density; critters as the critters section's bases"
  }
 }
