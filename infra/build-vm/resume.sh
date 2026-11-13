@@ -8,9 +8,15 @@
 #   marker + a new owner comment woken by a reply: read the owner's comments and act on them
 #   marker, nothing new          the owner started the machine: Claude waits at its prompt, nothing resumes
 #
+# A studio start never resumes: the play switch tags the instance argonia-studio-start=<time> just before it starts
+# it for the owner opening the studio's address, and a boot within 10 minutes of that tag is a studio start. Work a
+# resume was owed is kept in state/resume-owed and resumed at the next start that is not the studio's. An owner
+# comment still wakes the agent (wake), as it would through owner-wake.sh a minute later.
+#
 # An agent that stops on purpose writes the marker with tooling/agent_stop.sh; idle-stop.sh writes it when the
 # machine goes idle; the UserPromptSubmit hook in .claude/settings.json clears it when any work starts.
 #   resume.sh --dry   print the mode it would choose, start nothing
+#   STUDIO_TAG=<utc>  the tag's value instead of asking AWS (tests)
 set -euo pipefail
 DRY=0; [ "${1:-}" = "--dry" ] && DRY=1
 
@@ -61,14 +67,47 @@ if [ -f "$STATE/clean-stop" ] && [ "$mode" != resume ]; then
   fi
 fi
 
+# Did the studio's address start this machine? Its tag's time, at most 10 minutes before this boot (tagged, then
+# started; a minute of clock skew allowed).
+studio_start() {
+  local t tok id region ts boot
+  t=${STUDIO_TAG-}
+  if [ -z "${STUDIO_TAG+x}" ]; then
+    tok=$(curl -sf -m 3 -X PUT http://169.254.169.254/latest/api/token -H 'X-aws-ec2-metadata-token-ttl-seconds: 60') || return 1
+    id=$(curl -sf -m 3 -H "X-aws-ec2-metadata-token: $tok" http://169.254.169.254/latest/meta-data/instance-id) || return 1
+    region=$(curl -sf -m 3 -H "X-aws-ec2-metadata-token: $tok" http://169.254.169.254/latest/meta-data/placement/region) || return 1
+    for _ in 1 2 3 4 5 6; do
+      t=$(aws ec2 describe-tags --region "$region" --filters "Name=resource-id,Values=$id" Name=key,Values=argonia-studio-start \
+        --query 'Tags[0].Value' --output text 2>/dev/null) && break
+      sleep 5
+    done
+  fi
+  [ -n "$t" ] && [ "$t" != None ] || return 1
+  ts=$(date -u -d "$t" +%s 2>/dev/null) || return 1
+  boot=$(date -d "$(uptime -s)" +%s)
+  [ $(( boot - ts )) -le 600 ] && [ $(( ts - boot )) -le 60 ]
+}
+start=agent
+if studio_start; then
+  start=studio
+  if [ "$mode" = resume ]; then
+    mode=idle
+    [ $DRY = 1 ] || printf '{"at": "%s", "reason": "a studio start found part-way work and did not resume it"}\n' \
+      "$(date -u +%FT%TZ)" > "$STATE/resume-owed"
+  fi
+elif [ "$mode" = idle ] && [ -f "$STATE/resume-owed" ]; then
+  mode=resume
+fi
+[ $DRY = 1 ] || [ "$mode" = idle ] || rm -f "$STATE/resume-owed"
+
 case "$mode" in
   resume) cmd="$CLAUDE --continue \"\$(cat infra/build-vm/prompts/resume.md)\" || $CLAUDE \"\$(cat infra/build-vm/prompts/resume.md)\"" ;;
   wake)   cmd="$CLAUDE --continue \"\$(cat infra/build-vm/prompts/wake.md)\" || $CLAUDE \"\$(cat infra/build-vm/prompts/wake.md)\"" ;;
   idle)   cmd="$CLAUDE" ;;
 esac
-if [ $DRY = 1 ]; then echo "mode: $mode"; exit 0; fi
-printf '%s %s\n' "$(date -u +%FT%TZ)" "$mode" >> "$STATE/boots.log"
-logger -t argonia-resume "boot mode: $mode"
+if [ $DRY = 1 ]; then echo "start: $start"; echo "mode: $mode"; exit 0; fi
+printf '%s %s %s\n' "$(date -u +%FT%TZ)" "$mode" "$start" >> "$STATE/boots.log"
+logger -t argonia-resume "boot mode: $mode ($start start)"
 tmux new-session -d -s argonia -c "$REPO" "bash -lc '$cmd; exec bash'"
 
 # Parallel lanes (owner, 2026-10-29): --continue resumes only the newest session. Every other session that wrote
