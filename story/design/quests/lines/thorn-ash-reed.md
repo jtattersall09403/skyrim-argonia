@@ -312,7 +312,7 @@ in there I should know, I want to hear it before she does."
 
 **The hidden truth.**
 
-1. In the East Empire Company's time bonded labour cut Coldbrine's salt (D hatandros-bight, Coldbrine Mine,
+1. In the East Empire Company's last years bonded labour cut Coldbrine's salt (D hatandros-bight, Coldbrine Mine,
    history). Brine broke into a side gallery of the old shaft where five were cutting. The overseer of the day, a
    Haleem, dropped the bar on the gallery's door from the outside with the five alive behind it, to keep the
    brine out of the lower shaft, where forty were at work. The Company wrote it down as a fall of rock and walled
@@ -387,14 +387,14 @@ avoided.
 | Stage | What moves it | Journal gist | Objective and its marker |
 |---|---|---|---|
 | 0 | hidden start; offered while Uxa-Meen lives | | |
-| 10 | Uxa-Meen's line "What needs fetching?" | Uxa-Meen of the Ash-Reed asked me to go behind the barred door in the old shaft of Coldbrine Mine and bring her the hatching-stones of the bonded labourers who died there, before their kinswoman Wudan-Jei breaks the door with a crowd. The overseer, Quintus Haleem, keeps the key. | Bring out the hatching-stones of the dead (the bones; Haleem) |
-| 20 | Haleem's line, Speech 35 | I told Quintus Haleem I would kill what is digging behind his wall, and he unlocked the barred door. | Bring out the hatching-stones of the dead (the bones) |
+| 10 | Uxa-Meen's line "What needs fetching?" | Uxa-Meen of the Ash-Reed asked me to go behind the barred door in the old shaft of Coldbrine Mine and bring her the hatching-stones of the bonded labourers who died there, before their kinswoman Wudan-Jei breaks the door with a crowd. The overseer, Quintus Haleem, keeps the key. | Bring out the hatching-stones of the dead (the stones; Haleem) |
+| 20 | Haleem's line, Speech 35 | I told Quintus Haleem I would kill what is digging behind his wall, and he unlocked the barred door. | Bring out the hatching-stones of the dead (the stones) |
 | 25 | Haleem's line, 200 gold | I paid Quintus Haleem his surety and he unlocked the barred door. | the same |
-| 40 | taking the hatching-stones (open from 10) | I took the hatching-stones of the five dead from the Old Gallery. Their bones lay against the inner face of the barred door, which is hacked a hand deep, with their picks under them. | Take the stones to Uxa-Meen at the Old Guild Hall, or to Wudan-Jei at the mine (both) |
-| 45 | Haleem's answer line "What is this pick worth to you?" (holding the pick) | I sold Quintus Haleem the pick I found at his door. | the same |
+| 40 | taking the hatching-stones (open from 10) | I took the hatching-stones of the five dead from the Old Gallery. Their bones lay against the inner face of the barred door, which is hacked a hand deep, with their picks under them. | Take the stones to Uxa-Meen at the Old Guild Hall or to Wudan-Jei at the mine; Haleem can be faced with what lay at his door (all three) |
+| 45 | Haleem's answer line "What is this pick worth to you?" (holding the pick) | I sold Quintus Haleem the pick I found at his door. | Take the stones to Uxa-Meen or to Wudan-Jei (both) |
 | 60 | Wudan-Jei's line "They died at the door" (holding stones and pick) | I gave Wudan-Jei the hatching-stones and the pick, and told her the five died at a door that was barred on them. | Tell Uxa-Meen (her) |
 | 65 | Wudan-Jei's line "Here are your dead" (holding the stones) | I gave Wudan-Jei the hatching-stones of her dead and said nothing of the door. | Tell Uxa-Meen (her) |
-| 90 | Uxa-Meen's line "Here are the hatching-stones" (at 40 or 45, holding them) | I gave Uxa-Meen the hatching-stones. She will see the five staked. | ends, completed |
+| 90 | Uxa-Meen's line "Here are the hatching-stones" (at 40 or 45, holding them) | I gave Uxa-Meen the hatching-stones. She said nothing of the door, and I did not. | ends, completed |
 | 91 | Uxa-Meen's line at 65 | I told Uxa-Meen that Wudan-Jei has her dead and does not know how they died. | ends, completed |
 | 92 | Uxa-Meen's line at 60, Haleem alive | I told Uxa-Meen that Wudan-Jei knows the door was barred on her dead. | ends, completed |
 | 93 | Uxa-Meen's line at 60, Haleem dead | the same words | ends, completed |
@@ -436,26 +436,26 @@ stage 40 "I took the hatching-stones of the five dead from the Old Gallery. Thei
 stage 45 "I sold Quintus Haleem the pick I found at his door." do take pick, give-gold 150
 stage 60 "I gave Wudan-Jei the hatching-stones and the pick, and told her the five died at a door that was barred on them." do take stones, take pick
 stage 65 "I gave Wudan-Jei the hatching-stones of her dead and said nothing of the door." do take stones
-stage 90 completed "I gave Uxa-Meen the hatching-stones. She will see the five staked." do take stones, give-gold 150, join ashreed, rank ashreed 1, own ricebin, set ta01.end 1
+stage 90 completed "I gave Uxa-Meen the hatching-stones. She said nothing of the door, and I did not." do take stones, give-gold 150, join ashreed, rank ashreed 1, own ricebin, set ta01.end 1
 stage 91 completed "I told Uxa-Meen that Wudan-Jei has her dead and does not know how they died." do give-gold 100, join ashreed, rank ashreed 1, own ricebin, set ta01.end 2
 stage 92 completed "I told Uxa-Meen that Wudan-Jei knows the door was barred on her dead." do give-gold 50, join ashreed, rank ashreed 1, regard uxa -1, off haleem, on haleemfort, set ta01.end 3
 stage 93 completed "I told Uxa-Meen that Wudan-Jei knows the door was barred on her dead." do give-gold 50, join ashreed, rank ashreed 1, regard uxa -1, set ta01.end 4
 stage 95 failed "Uxa-Meen is dead, and the Ash-Reed has nobody to fetch for."
 
-objective 10 at 10 "Bring out the hatching-stones of the dead from behind the barred door at Coldbrine Mine" -> bones, haleem
-objective 20 at 20, 25 "Go through the barred door and bring out the hatching-stones of the dead" -> bones
-objective 40 at 40, 45 "Take the hatching-stones to Uxa-Meen at the Old Guild Hall, or to Wudan-Jei at the mine" -> uxa, wudan
+objective 10 at 10 "Bring out the hatching-stones of the dead from behind the barred door at Coldbrine Mine" -> stones, haleem
+objective 20 at 20, 25 "Go through the barred door and bring out the hatching-stones of the dead" -> stones
+objective 40 at 40 "Take the hatching-stones to Uxa-Meen at the Old Guild Hall or to Wudan-Jei at the mine; Quintus Haleem can be faced with what lay at his door" -> uxa, wudan, haleem
+objective 45 at 45 "Take the hatching-stones to Uxa-Meen at the Old Guild Hall or to Wudan-Jei at the mine" -> uxa, wudan
 objective 60 at 60, 65 "Tell Uxa-Meen what I did with the stones" -> uxa
 
 line house uxa at 0 ask "What is this house?" says "the rice store both peoples use; what the Ash-Reed is, what it pays, why to hesitate"
-line cold uxa greeting at 0 if rank chainbreakers 1 says "she knows what the player does in the south, and says not here, and why"
 line job uxa at 0 ask "What needs fetching?" -> 10 says "the dead behind the barred door, the kinswoman, the overseer; bring the stones to me and leave the rest"
 line knock wudan at 10-25 ask "What is behind the door?" says "her foremother's brother and four more; they knock; the pools run round behind"
 line digging haleem at 10-25 ask "What is knocking in your shaft?" says "no ghost; something digging from the far side"
 line talk haleem at 10 ask "Let me through alone, today, and I will kill what is digging." if skill Speech 35 -> 20 else "It has been behind that wall longer than you have been alive." says "he unlocks the door himself"
 line surety haleem at 10 ask "What would a surety cost, for one stranger and one hour?" if gold 200 -> 25 else "Two hundred, and you carry nothing out but claws." says "he takes the coin and unlocks the door"
 line face haleem at 40 ask "Five picks worn to the eye, at the inner face of your door." if holds pick asks sellpick, keeppick says "the bar, the brine and the forty below: his forebear could count"
-line sellpick haleem answer at 40 ask "What is this pick worth to you?" -> 45 says "a hundred and fifty, and his thanks"
+line sellpick haleem answer at 40 ask "What is this pick worth to you?" if holds pick -> 45 says "a hundred and fifty, and his thanks"
 line keeppick haleem answer at 40 ask "It goes where the stones go." says "then you are counting too"
 line truth wudan at 40 ask "They died at the door. It was barred on them." if holds stones, holds pick -> 60 says "she takes the stones and the pick and says what she will carve"
 line quiet wudan at 40-45 ask "Here are your dead." if holds stones -> 65 says "she takes the stones"
@@ -524,7 +524,9 @@ The job, in four sentences: the fort's quartermaster pulled a Dunmer carter's ca
 sugar on top and a long crate under it, heavier than sugar; it sits unopened in the fort's locked store room.
 Captain Ruleem has sent word, round the gate and not through it, that if she opens it she must act on what is in
 it, and she has twelve men. "She cannot give it to me and she cannot keep it. So it will be stolen. Thorn is full
-of thieves; ask anyone. Bring me what is in it." Before the player goes, optional lines: *the fort* ("Wardens'
+of thieves; ask anyone. The quartermaster has the key. The gate-warden, Teeus, is the one who never looks in the sugar cart, and he has
+a price for most things.
+Bring me what is in it." Before the player goes, optional lines: *the fort* ("Wardens'
 law, not ours: they have cells, and they use them"); *the captain* ("Archein. She dines with the Vicecanons and
 she is still the best friend this house has in a uniform"); *the sugar* ("Has gone through that gate every few
 days since before the Legion left. Leave it"); *who it is for* ("A Dunmer drove it. Draw the line yourself; the
@@ -560,7 +562,7 @@ twist*: they were going to Argonian hands, to be used on Argonian holders, and t
 | Captain Cassia Ruleem (woman) | the yard of Fort Thornmoth | never to have seen it | her lines close; nobody can be handed the blades for the law |
 | Nevena Orvel, quartermaster (woman) | the yard of Fort Thornmoth, at her trade | her store kept; she carries its key | the key is on her body |
 | Varro Teeus, gate-warden (man) | the toll bar of Fort Thornmoth | his arrangement unspoken | his two ways close; the others stand |
-| Dovyn Mareth, carter (man) | the toll bar, by his cart | his load back, either part of it | nobody says whose the blades are; Okan-Shei still answers for them |
+| Dovyn Mareth, carter (man) | the toll bar, by his cart | his load back, either part of it | nobody says whose the blades are, and the dyke's hand-in closes with him; the other three stand |
 | Okan-Shei (man) | the paddy dyke outside Thorn's walls | what the hands paid for | the dyke's hand-in closes |
 | Mirvasa Nethril (woman) | the shrine of Saint Roris | to say what she thinks of keeping | her line closes |
 
@@ -570,7 +572,7 @@ twist*: they were going to Argonian hands, to be used on Argonian holders, and t
 |---|---|---|---|
 | the store room door | off the yard of Fort Thornmoth | Expert lock; the store room key; the fort is the garrison's, so the lock and the room are a crime under Warden law, with cells | the way into the store room |
 | the store room key | on Nevena Orvel | hers | |
-| the seaward shutter | the store room's far wall, reached along the shore under the fort's wall | unlocked; opens only from outside | a second way in, out of the yard's sight |
+| the seaward shutter | the store room's far wall, reached along the shore under the fort's wall | unlocked | a second way in, out of the yard's sight |
 | the long crate | in the store room | a container; the quartermaster's | the bundle of blades |
 | a bundle of twelve chitin blades | in the long crate | one thing | the name is what the player learns on the spot |
 | sacks of moon sugar, smugglers' purses | in the store room | the quartermaster's; the record's own treasure | a thief's temptation, and a theft of its own |
@@ -602,10 +604,10 @@ twist*: they were going to Argonian hands, to be used on Argonian holders, and t
 | Stage | What moves it | Journal gist | Objective and its marker |
 |---|---|---|---|
 | 0 | hidden; offered once TA01 is done, while Uxa-Meen lives | | |
-| 10 | Uxa-Meen's line "What needs fetching now?" | Uxa-Meen asked me to steal what is in an unopened crate in the locked store room of Fort Thornmoth and bring it to her. The quartermaster carries the store's key. Captain Ruleem wants it gone and cannot be seen to help. | Take what is in the long crate (the crate; the quartermaster; the captain) |
-| 20 | Teeus's line, Speech 40 | I told the gate-warden Varro Teeus I knew which cart he does not search, and he opened the store room. | Take what is in the long crate (the crate) |
+| 10 | Uxa-Meen's line "What needs fetching now?" | Uxa-Meen asked me to steal what is in an unopened crate in the locked store room of Fort Thornmoth and bring it to her. The quartermaster carries the store's key, and the gate-warden Varro Teeus is said to take coin. Captain Ruleem wants it gone and cannot be seen to help. | Take what is in the long crate (the bundle; the quartermaster; the captain; the gate-warden) |
+| 20 | Teeus's line, Speech 40 | I told the gate-warden Varro Teeus I knew which cart he does not search, and he opened the store room. | Take what is in the long crate (the bundle) |
 | 25 | Teeus's line, 250 gold | I paid the gate-warden Varro Teeus and he opened the store room. | the same |
-| 40 | taking the bundle (open from 10) | I opened the long crate in the store room of Fort Thornmoth. It held twelve chitin blades from Tear, and I took them. | Bring the blades to Uxa-Meen (her). Ask the carter at the toll bar whose they were (Mareth) |
+| 40 | taking the bundle (open from 10) | I opened the long crate in the store room of Fort Thornmoth. It held twelve chitin blades from Tear, and I took them. | Bring the blades to Uxa-Meen (her), lay them before the captain (her), or ask the carter at the toll bar whose they were (Mareth) |
 | 45 | Mareth's line, holding the bundle | Dovyn Mareth, the carter, says the blades were never for the Dunmer quarter. Okan-Shei, who speaks for the saltrice gangs at the paddy dyke, bought them. | Decide whose hands the blades go to (Uxa-Meen; Okan-Shei; Mareth; the captain) |
 | 60 | Okan-Shei's line (at 45, holding them) | I gave the twelve blades to Okan-Shei at the dyke. | Tell Uxa-Meen (her) |
 | 62 | Captain Ruleem's line (at 40 or 45, holding them) | I laid the twelve blades in front of Captain Ruleem. | Tell Uxa-Meen (her) |
@@ -643,11 +645,11 @@ thing blades in crate "a bundle of twelve chitin blades"
 item oneblade "a chitin shortblade from the dyke's twelve"
 
 stage 0 hidden
-stage 10 "Uxa-Meen asked me to steal what is in an unopened crate in the locked store room of Fort Thornmoth and bring it to her. The quartermaster carries the store's key. Captain Ruleem wants it gone and cannot be seen to help."
+stage 10 "Uxa-Meen asked me to steal what is in an unopened crate in the locked store room of Fort Thornmoth and bring it to her. The quartermaster carries the store's key, and the gate-warden Varro Teeus is said to take coin. Captain Ruleem wants it gone and cannot be seen to help."
 stage 20 "I told the gate-warden Varro Teeus I knew which cart he does not search, and he opened the store room." do unlock storedoor
 stage 25 "I paid the gate-warden Varro Teeus and he opened the store room." do take-gold 250, unlock storedoor
 stage 40 "I opened the long crate in the store room of Fort Thornmoth. It held twelve chitin blades from Tear, and I took them."
-stage 45 "Dovyn Mareth, the carter, says the blades were never for the Dunmer quarter. Okan-Shei, who speaks for the saltrice gangs at the paddy dyke, bought them."
+stage 45 "Dovyn Mareth, the carter, told me the blades were never for the Dunmer quarter. Okan-Shei, who speaks for the saltrice gangs at the paddy dyke, bought them."
 stage 60 "I gave the twelve blades to Okan-Shei at the dyke." do take blades, give oneblade, set ta02.hands 2
 stage 62 "I laid the twelve blades in front of Captain Ruleem." do take blades, set ta02.hands 3
 stage 64 "I sold the twelve blades back to the carter Dovyn Mareth." do take blades, give-gold 300, set ta02.hands 4
@@ -657,9 +659,9 @@ stage 92 completed "I told Uxa-Meen the captain has seen the blades." do give-go
 stage 93 completed "I told Uxa-Meen the carter has the blades again." do rank ashreed 2, regard uxa -1
 stage 95 failed "Uxa-Meen is dead, and the Ash-Reed has nobody to fetch for."
 
-objective 10 at 10 "Take what is in the long crate in the store room of Fort Thornmoth" -> crate, orvel, captain
-objective 20 at 20, 25 "Take what is in the long crate" -> crate
-objective 40 at 40 "Bring the blades to Uxa-Meen, or ask the carter at the toll bar whose they were" -> uxa, mareth
+objective 10 at 10 "Take what is in the long crate in the store room of Fort Thornmoth" -> blades, orvel, captain, teeus
+objective 20 at 20, 25 "Take what is in the long crate" -> blades
+objective 40 at 40 "Bring the blades to Uxa-Meen, lay them before Captain Ruleem, or ask the carter at the toll bar whose they were" -> uxa, captain, mareth
 objective 45 at 45 "Decide whose hands the blades go to" -> uxa, okan, mareth, captain
 objective 60 at 60, 62, 64 "Tell Uxa-Meen where the blades went" -> uxa
 
@@ -689,7 +691,8 @@ must-live uxa fails 95
 After an ending these lines are open, each gated on `ta02.hands` and on its speaker being alive:
 
 - Okan-Shei, 2: the hands greet the player by name. 1, 3 or 4: "The old woman's broom."
-- Captain Ruleem, 3: the carter is in her cells (he is gone from the toll bar), she has searched the Dunmer
+- Captain Ruleem, 3, in two forms: if Mareth was alive when the blades were shown, the carter is in her cells (he
+  is gone from the toll bar); if the player had killed him, she has nobody to hold. In both, she has searched the Dunmer
   quarter as the law told her and found nothing, and she gives the player the barracks bunk her record promises
   "once the captain trusts the player" (D arnesian-jungle, Fort Thornmoth, gives). She does not thank them.
 - Vaneth Sareloth in the market, 3: "They turned out my store-room for blades. Yours, I hear."
@@ -767,7 +770,7 @@ the outlines and not repeated.
 | The thing | Quest | What happens there | How the player knows it |
 |---|---|---|---|
 | The record's locked store room as a room of its own off the yard, with a door that locks; the fort owned by its garrison | TA02 | the break-in | the door reads "Store Room"; the quartermaster's bench stands by it |
-| A shutter on the store room's seaward wall, reached along the shore under the fort's wall and out of the yard's sight, that opens from outside | TA02 | the sneak's way in | its name when looked at, "Seaward Shutter"; the captain tells of it |
+| A shutter on the store room's seaward wall, reached along the shore under the fort's wall and out of the yard's sight, that is not locked | TA02 | the sneak's way in | its name when looked at, "Seaward Shutter"; the captain tells of it |
 | A long crate in the store room among the sugar sacks | TA02 | the bundle is taken from it | its name, "Long Crate"; it is the only crate that is long |
 | Places for the captain in the yard, the quartermaster at a bench by the store, the gate-warden at the toll bar and a carter with a cart beside the bar | TA02 | the ways in; two hand-ins | the toll bar across the road is the record's; a cart and an ox; names shown on each person |
 | A place in the yard where Overseer Haleem stands when switched on | TA01 | the truth's aftermath, seen | his name; Uxa-Meen says the fort has him |
