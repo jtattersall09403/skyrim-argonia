@@ -17,6 +17,7 @@ VirtualMachineAdapter:
       Name: What
     - MutagenObjectType: ScriptBoolProperty
       Name: Written
+      Data: True
 Flags: {}
 Responses:
 - ResponseNumber: 1
@@ -24,7 +25,23 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Bent-Spine has heard the pledges went to one client; the choice was the player's, and the Chapter has the box off its hands
+    Value: I heard how it ended. All three pledges went to one client, and the other two have nothing to show for theirs.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: They are sore, and they will remember who chose. It was your choice, and I will not call it wrong.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 3
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: The box is off the Chapter's hands, and we cannot be said to have made a trade of what was in it. The other two are out of pocket because of you.
   ScriptNotes: ''
   Edits: ''
 Conditions:

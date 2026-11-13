@@ -17,6 +17,7 @@ VirtualMachineAdapter:
       Name: What
     - MutagenObjectType: ScriptBoolProperty
       Name: Written
+      Data: True
 Flags: {}
 Responses:
 - ResponseNumber: 1
@@ -24,7 +25,23 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Sits-By-The-Water, standing beside him, says he runs from any fight, has no buyer for what he took, and would let it go to someone who talks well or puts sixty gold in his hand
+    Value: Keeps-What-Floats is a friend of mine, and he is a poor thief. He runs from any fight.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: He has no buyer for what he took, so he will let it go to anyone who talks well, or for coin. Do not hurt him.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 3
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I would rather he lost it than his skin.
   ScriptNotes: ''
   Edits: ''
 Conditions:

@@ -17,6 +17,7 @@ VirtualMachineAdapter:
       Name: What
     - MutagenObjectType: ScriptBoolProperty
       Name: Written
+      Data: True
 Flags: {}
 Responses:
 - ResponseNumber: 1
@@ -24,7 +25,23 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Bent-Spine has heard each client bought back their own pledge at a fair price; a sale, not silence sold, and the Chapter's way
+    Value: I heard how it ended. Each of the three bought back their own pledge, and none of them can say they were robbed.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: That is a sale, and it is the Chapter's way. None of them thanks you for it. But each has their own again, and I sold no silence.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 3
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: That is the better end for us.
   ScriptNotes: ''
   Edits: ''
 Conditions:

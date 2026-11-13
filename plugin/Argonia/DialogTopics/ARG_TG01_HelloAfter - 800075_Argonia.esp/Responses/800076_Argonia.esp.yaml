@@ -17,6 +17,7 @@ VirtualMachineAdapter:
       Name: What
     - MutagenObjectType: ScriptBoolProperty
       Name: Written
+      Data: True
 Flags: {}
 Responses:
 - ResponseNumber: 1
@@ -24,7 +25,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Tilts-The-Jug greets the player as one of the Chapter, warmly if Keeps-What-Floats lived, coolly if he died (her regard changed at the hand-in)
+    Value: You are a Lookout of the Chapter now. Keep to its ways and do your work with care. I keep this desk, and I will hear you here.
   ScriptNotes: ''
   Edits: ''
 Conditions:

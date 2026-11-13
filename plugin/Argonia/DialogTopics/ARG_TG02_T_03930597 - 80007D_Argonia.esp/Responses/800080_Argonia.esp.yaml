@@ -17,6 +17,7 @@ VirtualMachineAdapter:
       Name: What
     - MutagenObjectType: ScriptBoolProperty
       Name: Written
+      Data: True
 Flags: {}
 Responses:
 - ResponseNumber: 1
@@ -24,7 +25,31 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: the Neesak charm was only pledged, never sold, he says
+    Value: I never sold the Neesak charm. I pledged it to the merchant against a loan, and a pledge is not a sale. It is a green crystal, and it was my mother's.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: She scried with it, and I will not see it go to a stranger.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 3
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I am afraid of what the others on this bank would say of a man who let it out of his hands. I will not pay for it.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 4
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: A man does not buy back what was only lent.
   ScriptNotes: ''
   Edits: ''
 Conditions:

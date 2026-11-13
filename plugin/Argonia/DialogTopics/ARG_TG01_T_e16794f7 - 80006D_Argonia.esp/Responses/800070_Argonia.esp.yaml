@@ -8,27 +8,16 @@ VirtualMachineAdapter:
       Data: topic.tg01-return@npc.mercantile-coast.soulrest.keeper-harbour-den#30-30.1
     - MutagenObjectType: ScriptFloatListProperty
       Name: Num
-      Data:
-      - 51
     - MutagenObjectType: ScriptIntListProperty
       Name: Op
-      Data:
-      - 1
     - MutagenObjectType: ScriptObjectProperty
       Name: Owner
       Object: 800002:Argonia.esp
     - MutagenObjectType: ScriptObjectListProperty
       Name: What
-      Objects:
-      - Name: ''
     - MutagenObjectType: ScriptBoolProperty
       Name: Written
-  ScriptFragments:
-    MutagenObjectType: ScriptFragments
-    FileName: ARG_LineEffects
-    OnEnd:
-      ScriptName: ARG_LineEffects
-      FragmentName: Fragment_End
+      Data: True
 Flags: {}
 Responses:
 - ResponseNumber: 1
@@ -36,7 +25,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: shown with the necklace in hand; she takes it.
+    Value: You have no necklace in your hands.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -44,7 +33,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: If Keeps-What-Floats lives she pays a hundred gold; if he is dead she says the Chapter wanted the necklace without a body and pays nothing.
+    Value: Take the Blue Jasper Necklace from Keeps-What-Floats's strongbox under the eaves north-west of the house, and do him no harm.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 3
@@ -52,15 +41,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Either way she tells the player the Chapter meets under Lilmoth, down the trapdoor north of Pusbottom at the edge of the deep water, reached by the coast ship, and to speak to Bent-Spine below.
-  ScriptNotes: ''
-  Edits: ''
-- ResponseNumber: 4
-  Unknown2: 0x000000
-  Unknown3: 0x000000
-  Text:
-    TargetLanguage: English
-    Value: Without the necklace she says to come back when they have it
+    Value: Come back to me when you have it.
   ScriptNotes: ''
   Edits: ''
 Conditions:
@@ -94,4 +75,3 @@ Conditions:
     MutagenObjectType: GetDeadConditionData
     RunOnType: Reference
     Reference: 80001A:Argonia.esp
-  ComparisonValue: 1

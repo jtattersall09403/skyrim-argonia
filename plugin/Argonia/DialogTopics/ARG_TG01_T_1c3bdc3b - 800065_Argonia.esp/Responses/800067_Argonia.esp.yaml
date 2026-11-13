@@ -23,6 +23,7 @@ VirtualMachineAdapter:
       - Name: ''
     - MutagenObjectType: ScriptBoolProperty
       Name: Written
+      Data: True
   ScriptFragments:
     MutagenObjectType: ScriptFragments
     FileName: ARG_LineEffects
@@ -36,7 +37,23 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: on a Speech check of 35 he hands over the key to his strongbox; otherwise he refuses and says words will not do it, though sixty gold might
+    Value: You talk well, and I am tired of arguing. Here is the key to my strongbox. The box is under the eaves north-west of the house.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Open it yourself, and take what you came for. I will not touch it. I meant to sell those jaspers.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 3
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I have lived on this dock since I hatched, and nothing I take stays with me. I wanted to keep this one until it paid. Take it, but do not hurt me.
   ScriptNotes: ''
   Edits: ''
 Conditions:

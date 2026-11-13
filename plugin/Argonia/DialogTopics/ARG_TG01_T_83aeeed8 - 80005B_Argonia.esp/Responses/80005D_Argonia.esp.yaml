@@ -23,6 +23,7 @@ VirtualMachineAdapter:
       - Name: ''
     - MutagenObjectType: ScriptBoolProperty
       Name: Written
+      Data: True
   ScriptFragments:
     MutagenObjectType: ScriptFragments
     FileName: ARG_LineEffects
@@ -36,7 +37,15 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: S'Tabi does not sell quiet work himself, but sends the player to ask for Tilts-The-Jug inside the house on the dock behind him
+    Value: Quiet work? This one does not sell it, but Khajiit knows who does. Go into the house on the dock behind this Khajiit and ask for Tilts-The-Jug.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: She sometimes has use for careful hands.
   ScriptNotes: ''
   Edits: ''
 Conditions:

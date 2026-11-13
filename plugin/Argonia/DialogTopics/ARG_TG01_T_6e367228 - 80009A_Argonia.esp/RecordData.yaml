@@ -1,0 +1,8 @@
+FormKey: 80009A:Argonia.esp
+EditorID: ARG_TG01_T_6e367228
+Name:
+  TargetLanguage: English
+  Value: I will pay you sixty gold for the key to your strongbox. (60 gold)
+Branch: 80009B:Argonia.esp
+Quest: 800002:Argonia.esp
+SubtypeName: CUST

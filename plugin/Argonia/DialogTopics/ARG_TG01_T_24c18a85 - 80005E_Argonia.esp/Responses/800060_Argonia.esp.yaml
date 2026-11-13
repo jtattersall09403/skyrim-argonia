@@ -23,6 +23,7 @@ VirtualMachineAdapter:
       - Name: ''
     - MutagenObjectType: ScriptBoolProperty
       Name: Written
+      Data: True
   ScriptFragments:
     MutagenObjectType: ScriptFragments
     FileName: ARG_LineEffects
@@ -36,7 +37,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Tilts-The-Jug keeps the Chapter's desk; before it takes the player in she wants to see how they work.
+    Value: There is, if the hands are careful enough. The Chapter takes from those who can bear the loss. It takes no more than that.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -44,7 +45,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Keeps-What-Floats, who stands on the dock west of the door, took a necklace of blue jaspers from a sleeping Lookout of the Chapter and keeps it in his strongbox under the eaves north-west of the house.
+    Value: A hand that breaks what it touches is no use to us, so I must see how yours work. Keeps-What-Floats stands on the dock just west of this door.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 3
@@ -52,7 +53,39 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Bring it back so the Lookout has it again, and do him no harm, or there is no pay. She hands over three lockpicks
+    Value: He took a necklace of polished blue jaspers from a Lookout of ours, one of the Chapter, while that Lookout slept.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 4
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: He keeps it in a locked strongbox under the eaves north-west of the house. Bring the necklace back, so that the Lookout has it again.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 5
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Do Keeps-What-Floats no harm. If he is hurt, there is no pay and no place with us. Here are three lockpicks. There are three ways open.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 6
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: You can open his strongbox with the picks, or you can take his key, which he may give for good talk or sell for coin.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 7
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Sits-By-The-Water drinks with him on the dock. Ask her about his habits, because I will not tell them.
   ScriptNotes: ''
   Edits: ''
 Conditions:

@@ -23,6 +23,7 @@ VirtualMachineAdapter:
       - Name: ''
     - MutagenObjectType: ScriptBoolProperty
       Name: Written
+      Data: True
   ScriptFragments:
     MutagenObjectType: ScriptFragments
     FileName: ARG_LineEffects
@@ -36,7 +37,15 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Bent-Spine gives three more lockpicks, once, and says there will be no others
+    Value: I have seen picks break in a lock like that. Here are three more. There are no others after these, so use them with care.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: The lockbox lies on the floor of the deep water just south of the trapdoor, below the south bank where the three clients stand.
   ScriptNotes: ''
   Edits: ''
 Conditions:

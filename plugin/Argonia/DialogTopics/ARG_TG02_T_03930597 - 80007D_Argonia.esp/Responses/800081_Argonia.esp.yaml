@@ -17,6 +17,7 @@ VirtualMachineAdapter:
       Name: What
     - MutagenObjectType: ScriptBoolProperty
       Name: Written
+      Data: True
 Flags: {}
 Responses:
 - ResponseNumber: 1
@@ -24,7 +25,15 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: the glass beads are old family work, he says
+    Value: The glass beads are old family work. My family strung beads for the river markets, and this strand is the last of their work that I hold.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: They are worth nothing to a buyer. I paid the merchant dearly to keep them for me, and I will not stand by and lose what I paid for.
   ScriptNotes: ''
   Edits: ''
 Conditions:

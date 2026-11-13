@@ -1,0 +1,8 @@
+FormKey: 8000B5:Argonia.esp
+EditorID: ARG_TG02_T_a3f46ce4
+Name:
+  TargetLanguage: English
+  Value: Take the figurine back for twenty gold. I will not argue the price.
+Branch: 8000B6:Argonia.esp
+Quest: 800003:Argonia.esp
+SubtypeName: CUST

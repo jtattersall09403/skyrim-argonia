@@ -17,6 +17,7 @@ VirtualMachineAdapter:
       Name: What
     - MutagenObjectType: ScriptBoolProperty
       Name: Written
+      Data: True
 Flags: {}
 Responses:
 - ResponseNumber: 1
@@ -24,7 +25,23 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: the bone figurine was carved for her clutch, she says
+    Value: The bone figurine the merchant held is mine. It was carved for my clutch. My clutch is scattered now.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: The figurine is the last thing I have from my clutch. It should come back to me. I wait here for a diver.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 3
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Okan-Tei and Dar-Zeel, the other two clients on this bank, speak for their own claims.
   ScriptNotes: ''
   Edits: ''
 Conditions:

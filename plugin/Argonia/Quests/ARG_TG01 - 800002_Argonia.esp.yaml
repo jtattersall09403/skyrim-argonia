@@ -272,50 +272,50 @@ Stages:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: S'Tabi, a Khajiit trader on Soulrest's dock, told me that if I want quiet work I should ask for Tilts-The-Jug inside the house behind him. I'm to speak to her.
+      Value: S'Tabi, the Khajiit trader on Soulrest's dock, told me that if I want quiet work I should ask for Tilts-The-Jug, who keeps the Night-Reed Chapter's desk in the house behind him. I'm to speak to her inside the house on Soulrest's dock, behind the door beside S'Tabi.
 - Index: 20
   LogEntries:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: Tilts-The-Jug, who keeps the Night-Reed Chapter's desk, wants to see how I work, and gave me three lockpicks. A dock thief, Keeps-What-Floats, took a Chapter Lookout's necklace of blue jaspers and keeps it in his strongbox under the eaves north-west of the house. I'm to bring it back with no harm to him.
+      Value: Tilts-The-Jug, who keeps the Night-Reed Chapter's desk, gave me three lockpicks to see how I work. Keeps-What-Floats, a dock thief west of her door, took a sleeping Lookout's necklace of blue jaspers and keeps it in a strongbox under the eaves north-west of the house. I'm to take it back without harming him; Sits-By-The-Water knows his habits.
 - Index: 21
   LogEntries:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: I talked Keeps-What-Floats round, and he gave me the key to his strongbox. I'm to take the necklace out of it, under the eaves north-west of the house.
+      Value: I talked Keeps-What-Floats round, and he gave me the key to his strongbox. I'm to open it and take the Blue Jasper Necklace, under the eaves north-west of the house.
 - Index: 22
   LogEntries:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: I paid Keeps-What-Floats sixty gold, and he gave me the key to his strongbox. I'm to take the necklace out of it, under the eaves north-west of the house.
+      Value: I paid Keeps-What-Floats sixty gold, and he gave me the key to his strongbox. I'm to open it and take the Blue Jasper Necklace, under the eaves north-west of the house.
 - Index: 30
   LogEntries:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: I took the necklace of blue jaspers out of Keeps-What-Floats's strongbox. I'm to bring it to Tilts-The-Jug inside the house on Soulrest's dock, behind the door beside S'Tabi.
+      Value: I took the Blue Jasper Necklace out of Keeps-What-Floats's strongbox. I'm to bring it to Tilts-The-Jug inside the house on Soulrest's dock, behind the door beside S'Tabi.
 - Index: 50
   LogEntries:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: I gave Tilts-The-Jug the necklace, and since Keeps-What-Floats came to no harm I was paid a hundred gold. I'm to take the coast ship from Soulrest's dock to Lilmoth, go down the trapdoor north of Pusbottom at the edge of the deep water, and speak to Bent-Spine below.
+      Value: I gave Tilts-The-Jug the Blue Jasper Necklace, and because Keeps-What-Floats came to no harm, she paid me a hundred gold. I'm to take the coast ship from Soulrest's dock to Lilmoth, go down the trapdoor north of Pusbottom at the edge of the deep water and speak to Bent-Spine.
 - Index: 51
   LogEntries:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: I gave Tilts-The-Jug the necklace, but Keeps-What-Floats is dead, and the Chapter wanted no killing for it, so I was paid nothing. I'm to take the coast ship to Lilmoth, go down the trapdoor north of Pusbottom at the edge of the deep water, and speak to Bent-Spine below.
+      Value: I gave Tilts-The-Jug the Blue Jasper Necklace, but Keeps-What-Floats is dead, and the Chapter wanted it back without a body, so she paid me nothing. I'm to take the coast ship from Soulrest's dock to Lilmoth, go down the trapdoor north of Pusbottom at the edge of the deep water and speak to Bent-Spine.
 - Index: 90
   LogEntries:
   - Flags:
     - CompleteQuest
     Entry:
       TargetLanguage: English
-      Value: I went down through the trapdoor north of Pusbottom to the Night-Reed Chapter under Lilmoth, and Bent-Spine, the Chapter's fence, took me in as a Lookout.
+      Value: I went down through the trapdoor north of Pusbottom to the Night-Reed Chapter under Lilmoth, and Bent-Spine, the Chapter's fence, took me in as a Lookout. Tilts-The-Jug had set me to take a stolen necklace back from Keeps-What-Floats without harming him, and what became of him is now part of how she and the Chapter think of me.
 - Index: 97
   LogEntries:
   - Flags:

@@ -23,6 +23,7 @@ VirtualMachineAdapter:
       - Name: ''
     - MutagenObjectType: ScriptBoolProperty
       Name: Written
+      Data: True
   ScriptFragments:
     MutagenObjectType: ScriptFragments
     FileName: ARG_LineEffects
@@ -36,7 +37,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: shown with the necklace in hand; she takes it.
+    Value: That is the one. Keeps-What-Floats lives, so you took without breaking, and that is what the Chapter wants.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -44,7 +45,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: If Keeps-What-Floats lives she pays a hundred gold; if he is dead she says the Chapter wanted the necklace without a body and pays nothing.
+    Value: Here are a hundred gold, and the necklace goes back to the Lookout it was taken from. Now hear the way. The Chapter meets under Lilmoth.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 3
@@ -52,7 +53,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Either way she tells the player the Chapter meets under Lilmoth, down the trapdoor north of Pusbottom at the edge of the deep water, reached by the coast ship, and to speak to Bent-Spine below.
+    Value: Take the coast ship from Soulrest's dock, east of this house, to Lilmoth.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 4
@@ -60,7 +61,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Without the necklace she says to come back when they have it
+    Value: North of Pusbottom, at the edge of the deep water, there is a trapdoor in the ground. Go down it and speak to Bent-Spine, our fence. Say I sent you.
   ScriptNotes: ''
   Edits: ''
 Conditions:

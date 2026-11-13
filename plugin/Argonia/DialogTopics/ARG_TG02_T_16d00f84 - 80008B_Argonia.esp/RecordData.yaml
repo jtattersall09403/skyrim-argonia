@@ -1,8 +1,0 @@
-FormKey: 80008B:Argonia.esp
-EditorID: ARG_TG02_T_16d00f84
-Name:
-  TargetLanguage: English
-  Value: You say this charm was only pledged, yet it sits in a new silver mount. Buy it back at a fair price.
-Branch: 80008C:Argonia.esp
-Quest: 800003:Argonia.esp
-SubtypeName: CUST

@@ -17,6 +17,7 @@ VirtualMachineAdapter:
       Name: What
     - MutagenObjectType: ScriptBoolProperty
       Name: Written
+      Data: True
 Flags: {}
 Responses:
 - ResponseNumber: 1
@@ -24,7 +25,15 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: he refuses and says words will not do it, though sixty gold might
+    Value: No. Talk will not move me. The strongbox is the only thing I own that I can lock, and I do not give up its key for a few kind words.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Put sixty gold in my hand and I will think again.
   ScriptNotes: ''
   Edits: ''
 Conditions:

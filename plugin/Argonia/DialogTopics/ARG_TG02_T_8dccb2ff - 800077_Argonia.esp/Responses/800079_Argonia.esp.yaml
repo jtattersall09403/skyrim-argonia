@@ -23,6 +23,7 @@ VirtualMachineAdapter:
       - Name: ''
     - MutagenObjectType: ScriptBoolProperty
       Name: Written
+      Data: True
   ScriptFragments:
     MutagenObjectType: ScriptFragments
     FileName: ARG_LineEffects
@@ -36,7 +37,55 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: a merchant drowned in the deep water north of Pusbottom, just south of the trapdoor, and his lockbox of pledges lies locked on the floor where he went down; three of his clients wait on the bank for a diver; get what is in the box before they find one, and what becomes of it is the player's to say; he hands over three lockpicks for its Novice lock
+    Value: A merchant drowned in the deep water just south of the trapdoor you came down. His lockbox of pledges lies locked on the floor, where he went down.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: A pledge is a thing a client left with him against a loan.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 3
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Three of his clients wait on the south bank of the deep water for a diver, and each says one thing in the box is theirs.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 4
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I want the box emptied before they find one. Dive down, open it and take what is inside. What becomes of what you take is yours to say.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 5
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I will not tell you whom to give it to. The Chapter takes from those who can bear the loss, and these pledges are other people's.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 6
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Whoever holds them can sell them back, or can sell silence about them. Blackmail is no trade of ours, and I will not have a Lookout of mine in it.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 7
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: The lock is a Novice lock. Here are three lockpicks. Go up through the trapdoor, and the deep water lies just south of it.
   ScriptNotes: ''
   Edits: ''
 Conditions:

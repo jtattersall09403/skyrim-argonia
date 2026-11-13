@@ -58,15 +58,21 @@ VirtualMachineAdapter:
       - 21
       - 30
       - 1
+      - 20
+      - 30
+      - 40
+      - 1
       - 40
       - 30
       - 41
       - 1
       - 90
+      - 40
       - 41
       - 42
       - 1
       - 45
+      - 40
       - 41
       - 43
       - 1
@@ -172,6 +178,12 @@ VirtualMachineAdapter:
       - 21
       - 22
       - 3
+      - 3
+      - 2
+      - 21
+      - 22
+      - 3
+      - 3
       - 2
       - 21
       - 21
@@ -247,13 +259,14 @@ VirtualMachineAdapter:
       - 28
       - 32
       - 36
-      - 40
-      - 51
-      - 62
-      - 73
-      - 84
-      - 95
-      - 98
+      - 41
+      - 46
+      - 57
+      - 68
+      - 79
+      - 90
+      - 101
+      - 104
     - MutagenObjectType: ScriptIntListProperty
       Name: Stages
       Data:
@@ -261,6 +274,7 @@ VirtualMachineAdapter:
       - 20
       - 21
       - 30
+      - 40
       - 41
       - 42
       - 43
@@ -280,14 +294,15 @@ VirtualMachineAdapter:
       - 28
       - 32
       - 36
-      - 40
-      - 51
-      - 62
-      - 73
-      - 84
-      - 95
-      - 98
+      - 41
+      - 46
+      - 57
+      - 68
+      - 79
+      - 90
       - 101
+      - 104
+      - 107
     - MutagenObjectType: ScriptObjectListProperty
       Name: What
       Objects:
@@ -339,7 +354,7 @@ VirtualMachineAdapter:
       - Name: ''
       - Name: ''
       - Name: ''
-        Object: 800022:Argonia.esp
+        Object: 800021:Argonia.esp
       - Name: ''
         Object: 00000F:Skyrim.esm
       - Name: ''
@@ -348,6 +363,14 @@ VirtualMachineAdapter:
         Object: 800022:Argonia.esp
       - Name: ''
         Object: 00000F:Skyrim.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 800022:Argonia.esp
+      - Name: ''
+        Object: 00000F:Skyrim.esm
+      - Name: ''
       - Name: ''
       - Name: ''
       - Name: ''
@@ -465,6 +488,9 @@ VirtualMachineAdapter:
   - Stage: 30
     ScriptName: ARG_QuestStages
     FragmentName: Fragment_30
+  - Stage: 40
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_40
   - Stage: 41
     ScriptName: ARG_QuestStages
     FragmentName: Fragment_41
@@ -557,92 +583,98 @@ Stages:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: Bent-Spine, the Night-Reed Chapter's fence, has work for me now that I am a Lookout. I'm to ask him about it, in the Chapter's inner room under Lilmoth.
+      Value: Bent-Spine, the Night-Reed Chapter's fence, has work for me now that I am a Lookout. I'm to ask him about it, in the Night-Reed Chapter under Lilmoth, down the trapdoor north of Pusbottom.
 - Index: 20
   LogEntries:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: A merchant drowned in the deep water north of Pusbottom, and his locked lockbox of pledges lies on the floor. Bent-Spine wants what is in it before three clients on the bank find a diver, and leaves the rest to me; he gave me three lockpicks. I'm to dive to the lockbox, pick its lock and take what is inside.
+      Value: Bent-Spine told me a merchant drowned in the deep water south of the trapdoor north of Pusbottom, and his lockbox of pledges lies on the floor. He wants it emptied before its three clients on the south bank find a diver, and gave me three lockpicks. I'm to dive to the lockbox, pick its lock and take what is inside.
 - Index: 21
   LogEntries:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: I went back to Bent-Spine for more lockpicks; he gave me three more and said there would be no others. I'm to dive to the lockbox in the deep water north of Pusbottom, pick its lock and take what is inside.
+      Value: Bent-Spine gave me three more lockpicks and said there would be no others. The lockbox lies on the floor of the deep water just south of the trapdoor north of Pusbottom, below the south bank where the three clients wait. I'm to dive to it, pick its lock and take what is inside.
 - Index: 30
   LogEntries:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: I opened the drowned merchant's lockbox. In it were a worn bone figurine, a Neesak charm (a green scrying crystal in a new silver mount) and Kothringi glass beads, each claimed by one of the three clients on the bank. I'm to give all three to one client, or sell each to the one who claims it.
+      Value: In the drowned merchant's lockbox were a worn bone figurine, a Neesak charm in new silver and Kothringi glass beads. Neeta-Haj, Okan-Tei and Dar-Zeel on the south bank each claim one, and each claim is a lie. I'm to give all three to one client, leaving the other two nothing, or sell each back the thing they lied about.
+- Index: 40
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: Neeta-Haj said the bone figurine was carved for her clutch, but it is worn smooth, far older than any clutch of hers. I did not press her on it, and I sold it back to her for twenty gold, half its fair price. I'm to sell Okan-Tei the Newly Mounted Neesak Charm he claims, on the south bank.
 - Index: 41
   LogEntries:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: Neeta-Haj said the bone figurine was carved for her clutch, but it is older than any clutch of hers. When I said so, she bought it for forty gold, its fair price. I'm to sell Okan-Tei the Neesak charm he claims.
+      Value: Neeta-Haj said the bone figurine was carved for her clutch, but it is worn smooth, far older than any clutch of hers. When I said so, she bought it for forty gold, its fair price. I'm to sell Okan-Tei the Newly Mounted Neesak Charm he claims, on the south bank.
 - Index: 42
   LogEntries:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: Okan-Tei said the Neesak charm was only pledged, but no one sets a pledge in a new silver mount. When I said so, he bought it for ninety gold, its fair price. I'm to sell Dar-Zeel the glass beads he claims.
+      Value: Okan-Tei said the charm was only pledged, but no one sets a pledge in a new silver mount. When I said so, he bought it for ninety gold, its fair price. I'm to sell Dar-Zeel the Kothringi Glass Beads he claims, on the south bank.
 - Index: 43
   LogEntries:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: Okan-Tei said the Neesak charm was only pledged, but no one sets a pledge in a new silver mount. He haggled, and bought it back for forty-five gold. I'm to sell Dar-Zeel the glass beads he claims.
+      Value: Okan-Tei said the charm was only pledged, but no one sets a pledge in a new silver mount. I did not press him on it, and I sold it back to him for forty-five gold, half its fair price. I'm to sell Dar-Zeel the Kothringi Glass Beads he claims, on the south bank.
 - Index: 90
   LogEntries:
   - Flags:
     - CompleteQuest
     Entry:
       TargetLanguage: English
-      Value: I brought up the drowned merchant's figurine, charm and beads from the deep water north of Pusbottom and gave all three to Neeta-Haj on the bank, who paid me a hundred and twenty gold. Okan-Tei and Dar-Zeel will not forget it.
+      Value: I brought up the drowned merchant's figurine, charm and beads from the deep water north of Pusbottom and gave all three to Neeta-Haj on the bank, who paid me a hundred and twenty gold. She gained all three, and Okan-Tei and Dar-Zeel lost theirs and will not forget who took them. The Chapter has the box off its hands.
 - Index: 91
   LogEntries:
   - Flags:
     - CompleteQuest
     Entry:
       TargetLanguage: English
-      Value: I brought up the drowned merchant's figurine, charm and beads from the deep water north of Pusbottom and gave all three to Okan-Tei on the bank, who paid me a hundred and twenty gold. Neeta-Haj and Dar-Zeel will not forget it.
+      Value: I brought up the drowned merchant's figurine, charm and beads from the deep water north of Pusbottom and gave all three to Okan-Tei on the bank, who paid me a hundred and twenty gold. He gained all three, and Neeta-Haj and Dar-Zeel lost theirs and will not forget who took them. The Chapter has the box off its hands.
 - Index: 92
   LogEntries:
   - Flags:
     - CompleteQuest
     Entry:
       TargetLanguage: English
-      Value: I brought up the drowned merchant's figurine, charm and beads from the deep water north of Pusbottom and gave all three to Dar-Zeel on the bank, who paid me a hundred and twenty gold. Neeta-Haj and Okan-Tei will not forget it.
+      Value: I brought up the drowned merchant's figurine, charm and beads from the deep water north of Pusbottom and gave all three to Dar-Zeel on the bank, who paid me a hundred and twenty gold. He gained all three, and Neeta-Haj and Okan-Tei lost theirs and will not forget who took them. The Chapter has the box off its hands.
 - Index: 95
   LogEntries:
   - Flags:
     - CompleteQuest
     Entry:
       TargetLanguage: English
-      Value: Dar-Zeel said the beads were old family work, but they are Kothringi glass of the kind the old cairns hold. He bought them for fifty-five gold, their fair price. Each of the drowned merchant's three clients has bought back the pledge they lied about, and none of them is pleased with me.
+      Value: Dar-Zeel said the beads were old family work, but they are Kothringi glass of the kind the old cairns hold. When I said so, he bought them for fifty-five gold, their fair price. Neeta-Haj, Okan-Tei and Dar-Zeel each have their own pledge again, and none was ruined. None of them thanks me for it, but I sold no one's silence.
 - Index: 96
   LogEntries:
   - Flags:
     - CompleteQuest
     Entry:
       TargetLanguage: English
-      Value: Dar-Zeel said the beads were old family work, but they are Kothringi glass of the kind the old cairns hold. He haggled, and bought them back for thirty gold. Each of the drowned merchant's three clients has bought back the pledge they lied about, and none of them is pleased with me.
+      Value: Dar-Zeel said the beads were old family work, but they are Kothringi glass of the kind the old cairns hold. I did not press him on it, and I sold them back to him for thirty gold. Neeta-Haj, Okan-Tei and Dar-Zeel each have their own pledge again, and none was ruined. None of them thanks me for it, but I sold no one's silence.
 - Index: 97
   LogEntries:
   - Flags:
     - FailQuest
     Entry:
       TargetLanguage: English
-      Value: Bent-Spine, the Night-Reed Chapter's fence, is dead, and the job he gave me died with him.
+      Value: Bent-Spine is dead. He was the Night-Reed Chapter's fence, and the job he gave me ended with him. I will not be paid for the lockbox in the deep water north of Pusbottom.
 - Index: 98
   LogEntries:
   - Flags:
     - FailQuest
     Entry:
       TargetLanguage: English
-      Value: One of the drowned merchant's three clients, Neeta-Haj, Okan-Tei or Dar-Zeel, is dead, and the pledges cannot be settled now. The job for Bent-Spine has come to nothing.
+      Value: One of the drowned merchant's three clients on the bank is dead, and the pledges cannot be settled now. The job for Bent-Spine has come to nothing, and I will not be paid for it.
 Objectives:
 - Index: 10
   DisplayText:
@@ -672,12 +704,18 @@ Objectives:
 - Index: 30
   DisplayText:
     TargetLanguage: English
-    Value: Give all three pledges to one client on the bank, or sell Neeta-Haj the figurine she claims (Speech 30).
+    Value: Give all three pledges to one client on the bank, or sell Neeta-Haj the figurine she claims (Speech 30 for its full price).
   Targets:
   - AliasID: 6
   - AliasID: 5
   - AliasID: 4
   - AliasID: 7
+- Index: 40
+  DisplayText:
+    TargetLanguage: English
+    Value: Sell Okan-Tei the Newly Mounted Neesak Charm (Speech 30 for its full price).
+  Targets:
+  - AliasID: 5
 - Index: 41
   DisplayText:
     TargetLanguage: English
