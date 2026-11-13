@@ -12,12 +12,14 @@ using Noggog;
 //   items:<regex>   winning items (misc, armour, key, book, ingredient, potion) whose form key, editor id, name or model match
 //   cellrefs:<cell>, cellat:<cell>:<x>,<y>[;...], cellgrid:<cell>:<x>:<y>:<z>:<step>   an interior's references and
 //            navmeshes, the surfaces under points, a 13 x 13 map of the surface nearest z and the navmesh's height
+//   surroundings:<spot>[;...]   the raw facts round a spot as JSON, put into words by tools/argonia_world/surroundings.py
 //   the rest are named at their branch below
 static class Inspect
 {
     public static void Run(string what, string[] paths)
     {
         var mods = Survey.Load(paths);
+        if (what.StartsWith("surroundings:")) { Surroundings.Run(what[13..], mods, paths); return; }  // Surroundings.cs
         if (what == "player")
         {
             foreach (var m in mods)

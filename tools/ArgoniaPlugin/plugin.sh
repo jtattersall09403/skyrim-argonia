@@ -24,7 +24,7 @@ repo=$(cd "$(dirname "$0")/../.." && pwd); cd "$repo"
 export DOTNET_ROOT="$HOME/.dotnet" PATH="$HOME/.dotnet:$PATH" DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_NOLOGO=1
 spriggit=("$HOME/.argonia/spriggit/0.41.0/Spriggit.CLI")  # pinned in infra/build-vm/toolchain.lock
 spr=(-p Spriggit.Yaml -v 0.41.0)
-yaml=plugin/Argonia; esp=out/Argonia.esp; bin=out/tools/ArgoniaPlugin
+yaml=plugin/Argonia; esp=${ARGONIA_ESP:-out/Argonia.esp}; bin=out/tools/ArgoniaPlugin
 py=$(ls "$HOME/.argonia/venv/bin/python" 2>/dev/null || echo python3)
 rewriting=quest.bc.bc01,quest.bc.bc02,quest.bc.bc03  # quests being rewritten whole (the Chainbreakers, 2026-11-13): the seed may leave these out
 forms() { rm -rf out/questform; "$py" -m tools.questform compile --all --out out/questform --owed-ok >/dev/null; }  # every record that fits
