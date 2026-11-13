@@ -96,6 +96,9 @@ reads this first; a new ruling is added here the day it is made, as well as to o
   - a place is named for what it is only if something built clearly reads as that (no "hatching sheds" without a
     building that reads as one);
   - a person's stated work is work they are seen to do (no "lifting crates" from someone who never does).
+- That consistency is "not just ... a check but somehow built into how quests are created in the first place"
+  (OR 2026-11-13): a story lists what it needs of each place; the place is built to those needs; a quest's record
+  and words are written only on the built place, from what is measured there.
 - No Nordic element reaches the player through what we add (decision 0006).
 - A native Argonian place has no jail; the Owing is the sentence; resisting arrest is a fight to the death
   (OR 2026-11-10).

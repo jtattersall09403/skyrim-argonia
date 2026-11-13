@@ -26,10 +26,14 @@ story.
   people in `36-cast-roster.md` under the rules of `35-cast.md`.
 - The lore: `story/lore/` (topics, regions, settlements) and the agreed extrapolation
   (`story/lore/extrapolation/argonia-4e201-state.md`, `settlement-register.md`, `gap-register.md`).
-- The world the game loads: the census ([census](../../../docs/research/bmv/census.md); the database's `bmv_*`
-  tables through `python3 -m tools.argonia_world.db query "SELECT ..."`), and for a place you mean to use, its cells,
-  doors, people and containers (`bash tools/ArgoniaPlugin/plugin.sh inspect cellrefs:<cell>`, `near:<x>:<y>:<z>:<r>`).
-  A quest is set in a place that exists and reads as what the story calls it.
+- The world the story is for. For a built world, what the game loads: the census
+  ([census](../../../docs/research/bmv/census.md); the database's `bmv_*` tables through
+  `python3 -m tools.argonia_world.db query "SELECT ..."`), and for a place you mean to use, its cells, doors, people
+  and containers (`bash tools/ArgoniaPlugin/plugin.sh inspect cellrefs:<cell>`, `near:<x>:<y>:<z>:<r>`). For a world
+  whose places are not built yet, its digest (`story/design/world/`: the province, each region, each place with what
+  its record says it is, gives and promises) and each place's source place, which shows what kind of buildings and
+  things it can be built with. A quest is set in a place that exists, or is recorded to be built, and reads as what
+  the story calls it.
 - The line's skill leaning: its key in [profiles.yaml](../quest-write/profiles.yaml).
 
 ## 2. What to write
@@ -66,7 +70,15 @@ their form keys.
    - *the moment a player retells*;
    - *a table of step, skill and ceiling block*: every step's mechanism named from quest-system's list, so the quest
      writer never has to invent one.
-4. **Read on paper**: each round's readers, what they said, what changed as one set, and what the next round checks.
+4. **What each quest needs of its places.** A table per place: every physical thing an outline relies on that the
+   world's data does not already hold (a house with a door that locks, a chest in it, a shrine, a pen, a wreck, a
+   person's post), named plainly by what a player would call it on sight, with the quest that needs it and what the
+   quest does there. Each row is a promise the place's record will carry and its build must keep, so write only what
+   a place of that culture and source could hold, in words its buildings can read as (a "stilt hut", not a
+   "hatching shed", unless a building that reads as a hatching shed exists to build with). The outlines themselves
+   place people and things only by the place and by these needs, never by description of surroundings: where things
+   stand, what is beside what, and every spoken word about the place are written later, on the built place.
+5. **Read on paper**: each round's readers, what they said, what changed as one set, and what the next round checks.
 
 ## 3. The bar
 

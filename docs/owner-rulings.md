@@ -562,3 +562,12 @@ added here the day they are made, with the date and the issue.
   built: what exists and reads as what it is called, where things are relative to things that do not move, what
   the world's systems do (no tides), and what the speaker is actually seen to do. It is built into the skills and
   checked, and kept to.
+- 2026-11-13 (in session, truth of the world built into how quests are made): "behind quests I never play needs to
+  be the thing about quests and dialogue consistent with the real game world. Not just as a check but somehow built
+  into how quests are created in the first place. The built places aren't in yet though so bear that in mind (see
+  the nw phase plan for the proposed sequencing regarding story authoring, place building and quest implementing)".
+  The method (quest-system): a story names places by what the world's data says they are and lists anything
+  physical it needs as a need of that place; the place's record carries the needs as promises and the place is
+  built to them; a quest's record and its words are written only on a built place, from measured spots and the
+  speaker's surroundings sheet; the truth reader is the last check, not the method. This follows the new world
+  plan's order: story (nw-05), places (nw-06, nw-08, nw-09), quests on them (nw-07, nw-08, nw-10, nw-12).

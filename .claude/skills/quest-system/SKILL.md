@@ -42,8 +42,23 @@ kind's message once (load an earlier save, or go on in the world as it now is).
 **Every objective has a marker.** Every shown stage has an objective with a target switched on; the quest becomes
 the tracked one with its first objective. Directions in words are given as well, never instead.
 
-**Everything said is true of the built world.** Journal entries say only what the player has just done; lines
-describe only what stands there and what the game's systems do; a place's thing is told by fixed landmarks.
+**Everything said is true of the built world, by how it is made.** A quest never describes a world; it is written
+onto one. Each step takes its facts from what exists at that step and passes on only what the next can keep:
+
+- *A story* names places by what the world's data says they are. Anything physical it needs that the data does not
+  hold (a locked house, a shrine, a wreck, a pen of beasts) is not written into the story as fact: it is listed as a
+  **need of that place**, in words a place can be built to (story-line, "What each quest needs of its places").
+- *A place's record* takes those needs as promises, and the place is built to them; the build checks each promise
+  is there and reads as what it is called (`place-build`). A need the place cannot meet goes back to the story,
+  which changes.
+- *A quest record* is written only for places that are built, with every person and thing placed at a spot measured
+  from the built place.
+- *Dialogue* is written from the surroundings sheet of each speaker (what stands around them in the built place,
+  each fact fixed or moving): lines describe only what the sheet holds and place things by what does not move.
+- *The truth reader* (text-review) and the paper player's `look` are the last check, not the method.
+
+So a story may be written before its places are built; a quest's record and its words may not. Journal entries say
+only what the player has just done; nothing is said that the game's systems do not do.
 
 ## The order of work
 

@@ -40,6 +40,11 @@ Broad brush strokes, a first pass, nothing built in game, no LOD.
    the detectives, the League of Open Water, Many-Root, the Marsh Charter, the Night-Reed, the Nisswo, the Reed-Sail,
    the Rootworm Waykeepers, the Shadowscales, the Sunken Archive, the Thorn Ash-Reed and the Umbriel Witness. Each
    writer has the province plan and the main quest's outline, so the lines fit one world and one timeline.
+   **Every story ends with what each quest needs of its places** (owner, 2026-11-13: truth of the world is built
+   into how quests are made, and the places are not built yet). A story names a place by what the digest says it is;
+   anything physical it relies on that the place's data does not hold is a row in the story's needs table, in words
+   that place's source could be built to. No story describes surroundings or writes lines about a place: that is
+   done on the built place, in nw-07, nw-08 and nw-10.
 5. **One consistency pass over all fourteen** (Fable): shared people, places and events agree; no two lines use a
    person or a place in ways that cannot both be true; the timeline is one; then one coherent set of changes.
 6. **The roster, in the database, in third normal form**: every person the stories name and every person the slice
@@ -48,6 +53,10 @@ Broad brush strokes, a first pass, nothing built in game, no LOD.
    quest tables that exist. The quests of every line get their rows (premise, host places in the new world, the
    skills they use, their place in the line). The old Black Marsh & Valenwood rows stay as they are, marked as that
    world's.
+   **The needs become promises of the places**: every row of every story's needs table is written onto its place's
+   record as a promise (the place records already carry promises that `place-build` and `place-stock` must keep), so
+   nw-06, nw-08 and nw-09 build each place knowing what the quests will ask of it, and a need a place cannot meet
+   comes back to the story before any quest is written.
 7. **Minor quests, lightly**: the roughly 560 local quest premises are not rewritten now; each slice place gets the
    two or three local premises that suit what it is, re-homed, as rows. The rest wait for nw-12.
 8. **Helstrom's people**: backstories for everyone in built Helstrom go into the roster now; their talk is written
