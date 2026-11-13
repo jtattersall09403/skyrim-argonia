@@ -2,9 +2,9 @@
 PY := $(firstword $(wildcard $(HOME)/.argonia/venv/bin/python) python3)
 RUFF := $(firstword $(wildcard $(HOME)/.argonia/venv/bin/ruff) $(shell command -v ruff) python3 -m ruff)
 
-.PHONY: check guard lint unit adaptation questtext questform reach hooks deploy plugin plugin-check plugin-seed map
+.PHONY: storyexplorer check guard lint unit adaptation questtext questform reach hooks deploy plugin plugin-check plugin-seed map
 
-check: guard lint unit adaptation questtext questform reach
+check: guard lint unit adaptation questtext questform reach storyexplorer
 	@echo "CHECK GREEN"
 
 guard:
@@ -34,6 +34,10 @@ questform:
 # but the quests parked on tools/playtest/reach_owed.json, each skipped with a line (docs/design/paper-playtest.md).
 reach:
 	@$(PY) -m tools.playtest reach --compiled --gate
+
+# The owner's story explorer is published from the current story sources (tools/newworld/story_explorer.py).
+storyexplorer:
+	@$(PY) -m tools.newworld.story_explorer check
 
 hooks:
 	@bash tooling/guards/install_hooks.sh

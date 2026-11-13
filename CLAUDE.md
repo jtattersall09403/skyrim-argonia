@@ -14,6 +14,7 @@ world with minimal tweaks ([PLAN](docs/PLAN.md), [0038](docs/decisions/0038-the-
 - Read the owner inbox (`tooling/owner_inbox.py --list`); an owner reply is acknowledged before anything else.
 - Read [skill-fixes](docs/skill-fixes.md): lessons owed to the skills once the owner verifies a fix.
 - Read the owner's studio notes (`python -m tools.places notes`); each is answered with a change and closed with `notes done`.
+- Read the story explorer's submitted note batches and answer them by the skill `story-feedback`.
 
 ## Never
 
@@ -34,6 +35,7 @@ world with minimal tweaks ([PLAN](docs/PLAN.md), [0038](docs/decisions/0038-the-
 - Every mod is a row in `mods/dependencies.json` and a credit in `mods/sourcing-register.json` at first use.
 - A place is changed narrowly: apply the step that needs changing to the committed place files and keep every other row as it is; never redraft a whole place to change one part, and never regenerate over the owner's studio edits; a whole redraft only when a narrow change cannot be correct, said why, once (owner, 2026-11-10).
 - The new world is changed and rebuilt by the skill `world-build`: `tools/newworld/rebuild.sh` runs only the stages a change made stale, each check straight after its stage; no stage tool is run by hand to move the build on (owner, 2026-11-11).
+- A commit that changes the new world's story regenerates the story explorer and republishes it to the same url (`tools/newworld/story_explorer.py`; `make check` fails until it does).
 - A change to how quests are put onto the world updates [quests-on-a-world](docs/design/quests-on-a-world.md) and the quest skill it touches in the same commit, written as the clean recipe, never as history.
 - A ruling of the owner's on what quests, story or writing should be like is added to [owner-bar](story/design/owner-bar.md) the day it is made, as well as to owner-rulings.
 

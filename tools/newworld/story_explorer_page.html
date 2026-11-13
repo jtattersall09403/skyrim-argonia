@@ -1,0 +1,659 @@
+<title>Argonia Story Explorer</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Instrument+Sans:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: one reading column (about 66 characters) under a sticky bar; notes live in a bottom tray. */
+:root{
+  --bg:#f5f5f3; --paper:#ffffff; --ink:#17181c; --muted:#62656e; --line:#e2e2df;
+  --accent:#3451d1; --accent-ink:#ffffff; --mark:#ffe8a3; --mark-ink:#2e2400;
+  --warn:#b4540a; --ok:#18794e; --info:#3451d1; --chip:#eeeeeb; --glow:#3451d1; --new:#d9480f;
+  --serif:"Literata",Georgia,"Times New Roman",serif; --sans:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#121316; --paper:#1b1c20; --ink:#ececef; --muted:#a0a3ab; --line:#2d2f35;
+  --accent:#93a8ff; --accent-ink:#0f1430; --mark:#5b4b12; --mark-ink:#fff3c9;
+  --warn:#f0a35a; --ok:#5cd29b; --info:#93a8ff; --chip:#26272c; --glow:#93a8ff; --new:#ff8a4c; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121316; --paper:#1b1c20; --ink:#ececef; --muted:#a0a3ab; --line:#2d2f35;
+  --accent:#93a8ff; --accent-ink:#0f1430; --mark:#5b4b12; --mark-ink:#fff3c9;
+  --warn:#f0a35a; --ok:#5cd29b; --info:#93a8ff; --chip:#26272c; --glow:#93a8ff; --new:#ff8a4c; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.5;-webkit-text-size-adjust:100%}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+a{color:var(--accent)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);border-bottom:1px solid var(--line);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:10px}
+.bar-in{max-width:980px;margin:0 auto;display:flex;gap:6px 10px;align-items:center;flex-wrap:wrap}
+@media (max-width:600px){.brand small{display:none!important}}
+@media (min-width:760px){.nav{order:0;flex:0 1 auto}}
+.brand{font-weight:700;letter-spacing:.01em;text-decoration:none;color:var(--ink);white-space:nowrap}
+.brand{font-weight:700;font-size:1.05rem}.brand small{display:block;font-weight:500;color:var(--muted);font-size:.8rem}
+.nav{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;order:3;flex:1 1 100%;min-width:0}
+.nav a{padding:6px 10px;border-radius:8px;text-decoration:none;color:var(--muted);font-weight:600;font-size:.92rem}
+.nav a.on{background:var(--chip);color:var(--ink)}
+.tray-btn{margin-left:auto;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:7px 14px;font-weight:600;cursor:pointer;min-height:40px}
+.tray-btn b{background:var(--accent);color:var(--accent-ink);border-radius:999px;padding:0 8px;margin-left:6px;font-size:.85rem}
+main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 160px}
+.wrap{max-width:980px;margin:0 auto;display:flex;flex-direction:column;gap:22px}
+.read{max-width:40rem}
+h1,h2,h3{text-wrap:balance;line-height:1.2;margin:0}
+h1{font-family:var(--sans);font-weight:700;font-size:clamp(1.8rem,5.5vw,2.6rem);letter-spacing:-.02em}
+h2{font-size:1.15rem;font-weight:700}
+.eyebrow{font-size:.9rem;color:var(--muted);font-weight:600}
+.lede{color:var(--muted);max-width:40rem;margin:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr));gap:12px}
+.card{--lc:var(--accent);background:var(--paper);box-shadow:inset 4px 0 0 var(--lc);border:1px solid var(--line);border-radius:12px;padding:14px 16px;text-decoration:none;color:var(--ink);display:flex;flex-direction:column;gap:6px;min-width:0}
+.card:hover{border-color:var(--ink)}
+.prog{height:4px;border-radius:2px;background:var(--chip);overflow:hidden}.prog i{display:block;height:100%;background:var(--accent)}
+.upd{color:var(--new)}
+.card p{margin:0;color:var(--muted);font-size:.92rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.pill{font-size:.75rem;font-weight:700;letter-spacing:.03em;border-radius:999px;padding:2px 9px;border:1px solid currentColor;white-space:nowrap}
+.st-outlined{color:var(--muted)} .st-written{color:var(--info)} .st-reviewed{color:var(--ok)} .st-built{color:var(--warn)}
+.chip{background:var(--chip);border-radius:999px;padding:4px 10px;font-size:.85rem;text-decoration:none;color:var(--ink);max-width:100%;overflow-wrap:anywhere}
+.tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+input[type=search],select,textarea{font:inherit;background:var(--paper);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:9px 12px;min-height:42px;max-width:100%}
+input[type=search]{flex:1 1 220px}
+textarea{width:100%;min-height:96px;resize:vertical;font-family:var(--sans)}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg button{border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:6px 12px;cursor:pointer;min-height:36px;font-size:.9rem}
+.seg button[aria-pressed=true]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.list{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.li{display:flex;gap:12px;align-items:baseline;padding:12px 2px;border-bottom:1px solid var(--line);text-decoration:none;color:var(--ink);min-width:0}
+.li .id{font-family:var(--mono);font-size:.82rem;color:var(--muted);min-width:3.2em}
+.li .t{flex:1;min-width:0}
+.li .sub{display:block;color:var(--muted);font-size:.86rem}
+/* reading */
+.doc{font-family:var(--serif);font-size:1.06rem;line-height:1.68}
+.blk{position:relative;border-radius:6px;margin:0 -8px;padding:2px 8px;cursor:text;-webkit-tap-highlight-color:transparent}
+.blk.active{background:var(--chip)}
+.blk.noted::before{content:"";position:absolute;left:-4px;top:8px;bottom:8px;width:3px;border-radius:2px;background:var(--mark)}
+.blk p{margin:.55em 0}
+.blk h2,.blk h3,.blk h4{font-family:var(--sans);margin:1.3em 0 .3em}
+.blk h3{font-size:1.05rem} .blk h4{font-size:.98rem}
+.blk ul,.blk ol{padding-left:1.3em;margin:.5em 0}
+.blk li{margin:.3em 0}
+.blk code{font-family:var(--mono);font-size:.84em;background:var(--chip);padding:1px 4px;border-radius:4px}
+.tbl{overflow-x:auto;margin:.6em 0;border:1px solid var(--line);border-radius:8px}
+.tbl table{border-collapse:collapse;font-family:var(--sans);font-size:.9rem;line-height:1.45;min-width:100%}
+.tbl th,.tbl td{text-align:left;vertical-align:top;padding:8px 10px;border-bottom:1px solid var(--line)}
+.tbl th{background:var(--chip);font-weight:700}
+.tbl tr.active td{background:var(--mark);color:var(--mark-ink)}
+pre{font-family:var(--mono);font-size:.82rem;line-height:1.5;overflow-x:auto;background:var(--chip);padding:12px;border-radius:8px;margin:.6em 0}
+.field-h{font-family:var(--sans);font-size:1rem;color:var(--accent);font-weight:700;margin:1.6em 0 .2em;display:flex;gap:8px;align-items:center}
+.notebtn{border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:4px 10px;font-size:.8rem;font-weight:600;cursor:pointer;min-height:32px;letter-spacing:0;text-transform:none;color:var(--ink)}
+.toc{font-family:var(--sans)}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px}
+.fact{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:12px 14px;min-width:0}
+.fact h3{font-size:.9rem;color:var(--muted);margin-bottom:8px}
+.empty{color:var(--muted);font-style:italic}
+.hl{background:var(--mark);color:var(--mark-ink);border-radius:3px;box-shadow:0 0 0 2px var(--mark);cursor:pointer}
+.hero{display:flex;flex-direction:column;gap:12px;padding-block:8px}
+
+.swatch{display:inline-block;width:12px;height:12px;border-radius:50%;background:var(--lc);flex:none}
+.lchips{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;scrollbar-width:thin}
+.lchips button{--lc:var(--muted);display:flex;gap:6px;align-items:center;border:2px solid var(--lc);background:var(--paper);border-radius:999px;padding:6px 12px;cursor:pointer;white-space:nowrap;min-height:40px;font-weight:600}
+.lchips button[aria-pressed=true]{background:var(--lc);color:#fff}
+.mapbox{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:8px;touch-action:manipulation}
+.mapbox svg{width:100%;height:auto;display:block;max-height:78vh}
+.mapbox text{font-family:var(--sans);font-size:11px;font-weight:700;fill:var(--ink);pointer-events:none}
+.edge{fill:none;stroke:var(--muted);stroke-linecap:round;opacity:.45;transition:opacity .15s,stroke .15s}
+.edge.on{stroke:var(--glow);opacity:1}
+.edge.off{opacity:.07}
+.hit{fill:none;stroke:transparent;stroke-width:16;cursor:pointer}
+.node{cursor:pointer}
+.node circle{stroke:var(--paper);stroke-width:3}
+.node.off{opacity:.3}
+.node.on circle{stroke:var(--glow);stroke-width:4}
+.kinds{display:flex;flex-wrap:wrap;gap:6px}
+.link{border:1px solid var(--line);border-radius:12px;padding:10px 12px;display:flex;flex-direction:column;gap:6px}
+.link .k{font-size:.82rem;font-weight:700;color:var(--muted)}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(80px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:999px;z-index:40;font-weight:600}
+mark{background:var(--mark);color:var(--mark-ink);border-radius:3px;padding:0 2px}
+/* action bar, sheets */
+.act{position:fixed;left:0;right:0;bottom:0;z-index:20;display:flex;justify-content:center;pointer-events:none;
+  padding:0 max(16px,env(safe-area-inset-right,0px)) calc(12px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.act button{pointer-events:auto;background:var(--accent);color:var(--accent-ink);border:0;border-radius:999px;padding:12px 20px;font-weight:700;box-shadow:0 6px 20px rgba(0,0,0,.18);cursor:pointer;min-height:48px}
+.sheet-bg{position:fixed;inset:0;background:rgba(10,14,12,.45);z-index:30}
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:31;background:var(--paper);border-radius:16px 16px 0 0;max-height:88vh;overflow:auto;
+  padding:18px max(16px,env(safe-area-inset-right,0px)) calc(18px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));box-shadow:0 -8px 30px rgba(0,0,0,.2)}
+.sheet-in{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+.sheet-h{display:flex;align-items:center;gap:10px}
+.sheet-h h2{flex:1}
+.x{border:0;background:var(--chip);border-radius:999px;width:40px;height:40px;cursor:pointer;font-size:1.1rem}
+.quote{font-family:var(--serif);border-left:3px solid var(--mark);padding:4px 0 4px 12px;color:var(--ink);margin:0;font-size:.98rem;max-height:9em;overflow:auto}
+.anchor{font-size:.82rem;color:var(--muted)}
+.btn{border:1px solid var(--line);background:var(--paper);border-radius:10px;padding:10px 16px;font-weight:600;cursor:pointer;min-height:44px}
+.btn.pri{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.btn.dan{color:var(--warn)}
+.btn:disabled{opacity:.5;cursor:default}
+.note{border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.reply{background:var(--chip);border-radius:8px;padding:8px 10px;font-size:.92rem}
+.msg{font-size:.9rem;color:var(--muted)}
+.fhit{padding:10px 0;border-bottom:1px solid var(--line)}
+.fhit a{text-decoration:none;color:var(--ink)}
+.fhit .s{font-family:var(--serif);color:var(--muted);font-size:.95rem}
+@media (prefers-reduced-motion:no-preference){.hl{animation:pop .35s ease-out}@keyframes pop{from{box-shadow:0 0 0 6px var(--mark)}}
+.blk.changed{animation:fl 1.2s ease-out}@keyframes fl{from{background:var(--chip)}}}
+.xr{font:inherit;color:inherit;background:none;border:0;padding:0;border-bottom:1.5px dotted var(--accent);cursor:pointer;text-align:inherit}
+.blk.changed::after{content:"Changed";position:absolute;right:-4px;top:4px;font:600 .7rem var(--sans);color:var(--new);background:var(--paper);padding:0 4px;border-radius:4px}
+.blk.changed{box-shadow:inset 3px 0 0 var(--new)}
+.banner{display:flex;gap:10px;align-items:center;flex-wrap:wrap;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:10px 14px}
+.actin{pointer-events:auto;display:flex;gap:4px;align-items:center;background:var(--ink);border-radius:999px;padding:5px;box-shadow:0 10px 30px rgba(0,0,0,.25);max-width:100%;overflow-x:auto}
+.act .actin button{background:transparent;color:var(--paper);box-shadow:none;padding:9px 12px;min-height:40px;border-radius:999px;font-weight:600;white-space:nowrap}
+.act .actin button#actBtn{background:var(--accent);color:var(--accent-ink)}
+.readbar{position:fixed;left:0;top:env(safe-area-inset-top,0px);height:3px;background:var(--accent);z-index:6;width:0}
+.thread{display:flex;flex-direction:column;gap:8px}
+@media (prefers-reduced-motion:no-preference){.sheet{animation:up .18s ease-out}@keyframes up{from{transform:translateY(24px);opacity:.6}}}
+</style>
+
+<header class="bar"><div class="bar-in">
+  <a class="brand" href="#home">Argonia Story Explorer<small>The new world's story and quests</small></a>
+  <nav class="nav" aria-label="Sections">
+    <a href="#home" data-nav="home">Lines</a><a href="#quests" data-nav="quests">Quests</a>
+    <a href="#people" data-nav="people">People</a><a href="#places" data-nav="places">Places</a><a href="#map" data-nav="map">Map</a><a href="#world" data-nav="world">World</a>
+  </nav>
+  <button class="tray-btn" id="trayBtn" type="button">Notes<b id="trayCount">0</b></button>
+</div></header>
+<main><div class="wrap" id="view"><p class="msg">Loading the story…</p></div></main>
+<div class="act" id="act" hidden><div class="actin" role="toolbar" aria-label="Note on the selection"><button type="button" id="actBtn">Add a note</button>
+<button type="button" data-react="Love this">Love this</button><button type="button" data-react="Unclear">Unclear</button><button type="button" data-react="Change this">Change</button><button type="button" data-react="Cut this">Cut</button></div></div>
+<div class="readbar" id="readbar"></div>
+<div id="sheetRoot"></div>
+
+<script>
+(() => {
+const $ = (s, el = document) => el.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const STATUS = {outlined:"Outlined", written:"Written", reviewed:"Reviewed", built:"Built"};
+const STATUS_HELP = {outlined:"Told at arc level in its line's story; not yet written out stage by stage.",
+  written:"Written out in full: people, stages, endings.", reviewed:"Written in full and read on paper by fresh readers.",
+  built:"A record of this quest is in our plugin."};
+const KIND = {plot:"Main quest plot", line:"Line story", ledger:"Ledger", world:"Province digest", region:"Region"};
+let CAT = null; const DOCS = {}; let db = null, dbState = "connecting", batches = [];
+const DKEY = "story-explorer-drafts";
+let drafts = []; try { drafts = JSON.parse(localStorage.getItem(DKEY) || "[]"); } catch (e) { drafts = []; }
+const saveDrafts = () => { try { localStorage.setItem(DKEY, JSON.stringify(drafts)); } catch (e) {} paintCount(); };
+const quest = id => CAT.quests.find(q => q.id === id);
+const qsort = (a, b) => a.id.localeCompare(b.id);
+const pill = s => `<span class="pill st-${s}" title="${esc(STATUS_HELP[s])}">${STATUS[s]}</span>`;
+const hashId = s => s.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+const personById = id => CAT.people.find(p => p.id === id), placeById = id => CAT.places.find(p => p.id === id);
+const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60);
+const PAL = ["#0f7a5c","#c2410c","#3156a8","#8a3ffc","#b8860b","#0e7490","#be185d","#4d7c0f","#9a3412","#6d28d9","#047857","#a16207","#1d4ed8","#b91c1c","#0369a1","#7c3aed"];
+const lineColor = id => { const i = CAT.lines.findIndex(l => l.id === id); return i < 0 ? "var(--muted)" : PAL[i % PAL.length]; };
+const shortLine = l => l.title.split(":")[0].replace(/^The /, "").replace(/ in the new world$/i, "").replace(/^Blackrose /, "");
+let CUR = {item: "home", label: "The story home page"};
+let toastT; function toast(m) { let el = $(".toast"); if (!el) { el = document.createElement("div"); el.className = "toast"; el.setAttribute("role", "status"); document.body.append(el); } el.textContent = m; clearTimeout(toastT); toastT = setTimeout(() => el.remove(), 2200); }
+async function loadDoc(id) { if (!DOCS[id]) DOCS[id] = await (await fetch(`data/doc-${id}.json`)).json(); return DOCS[id]; }
+
+function blockHtml(b, item, field) {
+  const noted = drafts.some(d => d.block === b.id) ? " noted" : "";
+  let inner = "";
+  if (b.t === "p") inner = `<p>${b.html}</p>`;
+  else if (b.t === "h") { const l = Math.min(4, Math.max(2, b.level)); inner = `<h${l}>${b.html}</h${l}>`; }
+  else if (b.t === "list") inner = `<${b.ordered ? "ol" : "ul"}>${b.items.map(i => `<li>${i}</li>`).join("")}</${b.ordered ? "ol" : "ul"}>`;
+  else if (b.t === "table") inner = `<div class="tbl"><table><thead><tr>${b.head.map(h => `<th>${h}</th>`).join("")}</tr></thead><tbody>${
+      b.rows.map(r => `<tr>${r.map(c => `<td>${c}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+  else inner = `<pre>${esc(b.text)}</pre>`;
+  return `<div class="blk${noted}" data-block="${esc(b.id)}" data-item="${esc(item)}" data-field="${esc(field || b.section)}">${inner}</div>`;
+}
+
+/* ---------- views ---------- */
+function setNav(n) { document.querySelectorAll("[data-nav]").forEach(a => a.classList.toggle("on", a.dataset.nav === n)); }
+function stamp() { return `<p class="msg">Story data version ${esc(CAT.version)}, generated ${esc(CAT.generated)}. Select any passage, or tap a paragraph or a table row, to leave a note.</p>`; }
+
+function viewHome() {
+  setNav("home");
+  const plot = CAT.lines.find(l => l.kind === "plot"), main = CAT.lines.find(l => l.id === "main");
+  const others = CAT.lines.filter(l => l.kind === "line" && l.id !== "main");
+  const counts = Object.fromEntries(Object.keys(STATUS).map(s => [s, CAT.quests.filter(q => q.status === s).length]));
+  CUR = {item: "home", label: "The story home page"};
+  return `<div class="read"><p class="eyebrow">Elder Souls: Argonia, the new world</p>
+    <h1>The story, all of it</h1>
+    <p class="lede">Every story line written for the new world: the main quest and the fourteen faction lines, each quest in them,
+    and the people and places they use. ${CAT.quests.length} quests: ${Object.entries(counts).map(([s, n]) => `${n} ${STATUS[s].toLowerCase()}`).join(", ")}.</p></div>
+    <p class="lede">Highlight any words to note or react to them; tap an underlined name to see who or what it is. Notes gather in the tray at the top until you send them as one batch. <a href="#map">The link map</a> shows how the lines meet.</p>
+    ${stamp()}
+    <section class="wrap" style="gap:12px"><h2>The main quest</h2><div class="grid">
+      ${plot ? lineCard(plot, "The plot, whole, at the length of one sitting.") : ""}
+      ${main ? lineCard(main) : ""}</div></section>
+    <section class="wrap" style="gap:12px"><h2>The faction lines</h2><div class="grid">${others.map(l => lineCard(l)).join("")}</div></section>
+    <section class="wrap" style="gap:12px"><h2>Ledgers</h2><p class="lede">The rulings that make the stories one province.</p><div class="grid">
+      ${CAT.docs.filter(d => d.kind === "ledger").map(d => `<a class="card" href="#d-${d.id}"><span class="eyebrow">${KIND[d.kind]}</span><b>${esc(d.title)}</b></a>`).join("")}</div></section>`;
+}
+function lineCard(l, sub) {
+  const qs = l.quests.map(quest).filter(Boolean);
+  const by = s => qs.filter(q => q.status === s).length; const m = readMem()[l.id], dm = CAT.docs.find(d => d.id === l.id);
+  const upd = m && dm && m.hash !== dm.hash;
+  return `<a class="card" style="--lc:${lineColor(l.id)}" href="#d-${l.id}"><span class="eyebrow">${l.kind === "plot" ? "Plot" : `${qs.length} quests`}${l.readOnPaper ? " · read on paper" : ""}</span>
+    <b>${esc(l.title)}</b><p>${esc(sub || l.summary)}</p>
+    ${m ? `<span class="row"><span class="prog" style="flex:1"><i style="width:${Math.round((m.progress || 0) * 100)}%"></i></span>${upd ? `<span class="msg upd">Changed since you read it</span>` : ""}</span>` : ""}
+    ${qs.length ? `<span class="row">${Object.keys(STATUS).filter(by).map(s => `<span class="pill st-${s}">${by(s)} ${STATUS[s].toLowerCase()}</span>`).join("")}</span>` : ""}</a>`;
+}
+
+let F = {q: "", line: "", status: ""};
+function viewQuests() {
+  setNav("quests"); CUR = {item: "quests", label: "The quest list"};
+  const lines = CAT.lines.filter(l => l.quests.length);
+  return `<h1>Quests</h1>${stamp()}<div class="tools">
+    <input type="search" id="qq" placeholder="Search quests, people, places" value="${esc(F.q)}" aria-label="Search quests">
+</div>
+    <div class="lchips" role="group" aria-label="Quest line"><button type="button" data-ln="" aria-pressed="${!F.line}">Every line</button>${lines.map(l => `<button type="button" data-ln="${l.id}" style="--lc:${lineColor(l.id)}" aria-pressed="${F.line === l.id}"><span class="swatch"></span>${esc(shortLine(l))}</button>`).join("")}</div>
+    <div class="seg" role="group" aria-label="Status">${["", ...Object.keys(STATUS)].map(s => `<button type="button" data-st="${s}" aria-pressed="${F.status === s}">${s ? STATUS[s] : "All"}</button>`).join("")}</div>
+    <div class="list" id="qlist"></div>
+    <section class="wrap" style="gap:8px"><h2>Search the full text</h2><p class="msg">Searches every story, ledger and region file for the words above.</p>
+      <div><button class="btn" type="button" id="fts">Search all the text</button></div><div id="ftsOut"></div></section>`;
+}
+function fillQuests() {
+  const t = F.q.toLowerCase();
+  const rows = CAT.quests.filter(q => (!F.line || q.line === F.line) && (!F.status || q.status === F.status) &&
+    (!t || [q.id, q.title, q.lineTitle, ...q.cast.map(c => c.name), ...q.sketch.places.map(p => p.name)].join(" ").toLowerCase().includes(t))).sort(qsort);
+  $("#qlist").innerHTML = rows.length ? rows.map(q => `<a class="li" href="#q-${hashId(q.id)}"><span class="swatch" style="--lc:${lineColor(q.line)}"></span><span class="id">${q.id}</span>
+    <span class="t">${esc(q.title)}<span class="sub">${esc(q.lineTitle)}</span></span>${pill(q.status)}</a>`).join("") : `<p class="empty">No quest matches.</p>`;
+}
+async function fullText() {
+  const t = F.q.trim().toLowerCase(), out = $("#ftsOut");
+  if (t.length < 3) { out.innerHTML = `<p class="msg">Type at least three letters first.</p>`; return; }
+  out.innerHTML = `<p class="msg">Reading ${CAT.docs.length} files…</p>`;
+  await Promise.all(CAT.docs.map(d => loadDoc(d.id)));
+  const hits = [];
+  for (const d of CAT.docs) for (const b of DOCS[d.id].blocks) {
+    const txt = (b.html || (b.items || []).join(" ") || (b.rows || []).flat().join(" ") || b.text || "").replace(/<[^>]+>/g, "");
+    const i = txt.toLowerCase().indexOf(t);
+    if (i >= 0) hits.push({d, b, s: esc(txt.slice(Math.max(0, i - 70), i)) + "<mark>" + esc(txt.substr(i, t.length)) + "</mark>" + esc(txt.slice(i + t.length, i + t.length + 90))});
+    if (hits.length > 200) break;
+  }
+  out.innerHTML = hits.length ? `<p class="msg">${hits.length > 200 ? "The first 200" : hits.length} matches.</p>` + hits.map(h => `<div class="fhit"><a href="#d-${h.d.id}" data-jump="${esc(h.b.id)}"><b>${esc(h.d.title)}</b> <span class="msg">${esc(h.b.section)}</span><div class="s">…${h.s}…</div></a></div>`).join("") : `<p class="empty">Nothing found.</p>`;
+}
+
+async function viewDoc(id) {
+  const meta = CAT.docs.find(d => d.id === id); if (!meta) return notFound();
+  setNav(meta.kind === "world" || meta.kind === "region" ? "world" : "home");
+  const d = await loadDoc(id), line = CAT.lines.find(l => l.id === id); CUR = {item: id, label: d.title};
+  const heads = d.blocks.filter(b => b.t === "h" && b.level === 2);
+  const qs = line ? line.quests.map(quest).filter(Boolean).sort(qsort) : [];
+  return `<div class="read"><p class="eyebrow">${KIND[d.kind]} · <code>${esc(d.path)}</code></p><h1>${esc(d.title)}</h1></div>
+    <div class="tools"><button class="notebtn" type="button" data-whole="${esc(id)}" data-label="${esc(d.title)}">Note on this whole ${d.kind === "line" ? "line" : "document"}</button>
+    ${heads.length ? `<select class="toc" id="toc" aria-label="Jump to section"><option value="">Jump to a section…</option>${heads.map(h => `<option value="${esc(h.id)}">${h.html.replace(/<[^>]+>/g, "")}</option>`).join("")}</select>` : ""}</div>
+    ${qs.length ? `<div class="list">${qs.map(q => `<a class="li" href="#q-${hashId(q.id)}"><span class="id">${q.id}</span><span class="t">${esc(q.title)}</span>${pill(q.status)}</a>`).join("")}</div>` : ""}
+    <div id="changes"></div>
+    <article class="doc read">${d.blocks.filter(b => !(b.t === "h" && b.level === 1)).map(b => blockHtml(b, id, b.section)).join("")}</article>`;
+}
+
+async function viewQuest(hid) {
+  const q = CAT.quests.find(x => hashId(x.id) === hid); if (!q) return notFound();
+  setNav("quests"); CUR = {item: q.id, label: `${q.id} ${q.title}`};
+  const d = await loadDoc(q.line), byId = Object.fromEntries(d.blocks.map(b => [b.id, b]));
+  const pLink = n => { const p = personById(slug(n)); return p ? `<a class="chip" href="#p-${p.id}">${esc(n)}</a>` : `<span class="chip">${esc(n)}</span>`; };
+  const plLink = n => { const p = placeById(slug(n.replace(/\s*\(.*$/, ""))); return p ? `<a class="chip" href="#pl-${p.id}">${esc(n)}</a>` : `<span class="chip">${esc(n)}</span>`; };
+  const cast = q.cast.length ? q.cast.map(c => c.name.split(",")[0]) : q.sketch.people.map(p => p.name);
+  const line = CAT.lines.find(l => l.id === q.line), sib = line.quests.slice().sort(), i = sib.indexOf(q.id);
+  return `<div class="read"><p class="eyebrow"><a href="#d-${q.line}">${esc(q.lineTitle)}</a> · ${q.id}</p><h1>${esc(q.title)}</h1></div>
+    <div class="row">${pill(q.status)}<span class="msg">${esc(STATUS_HELP[q.status])}</span></div>
+    <div class="tools"><button class="notebtn" type="button" data-whole="${esc(q.id)}" data-label="${esc(q.id + " " + q.title)}">Note on this whole quest</button>
+      ${i > 0 ? `<a class="chip" href="#q-${hashId(sib[i - 1])}">← ${sib[i - 1]}</a>` : ""}${i < sib.length - 1 ? `<a class="chip" href="#q-${hashId(sib[i + 1])}">${sib[i + 1]} →</a>` : ""}</div>
+    <div class="facts">
+      <div class="fact"><h3>People</h3><div class="row">${cast.length ? cast.map(pLink).join("") : `<span class="empty">Named in the outline below.</span>`}</div></div>
+      <div class="fact"><h3>Places</h3><div class="row">${q.sketch.places.length ? q.sketch.places.map(p => plLink(p.name)).join("") : `<span class="empty">Named in the outline below.</span>`}</div></div>
+      <div class="fact"><h3>Stages</h3>${q.stages.length ? `<span>${q.stages.length} stages, from ${esc(q.stages[0].stage)} to ${esc(q.stages[q.stages.length - 1].stage)}</span>` : `<span class="empty">Not staged yet.</span>`}</div>
+    </div>
+    <div id="changes"></div>${threadHtml(q)}
+    <article class="doc read">${q.fields.map(f => `<div class="field-h">${esc(f.name)}<button class="notebtn" type="button" data-whole="${esc(q.id)}" data-field="${esc(f.name)}" data-label="${esc(q.id + ": " + f.name)}">Note</button></div>` +
+      f.blocks.map(id => byId[id] ? blockHtml(byId[id], q.id, f.name) : "").join("")).join("")}</article>`;
+}
+
+function viewPeople(kind) {
+  setNav(kind); CUR = {item: kind, label: kind === "people" ? "The people list" : "The places list"};
+  const rows = kind === "people" ? CAT.people : CAT.places;
+  return `<h1>${kind === "people" ? "People" : "Places"}</h1>${stamp()}
+    <div class="tools"><input type="search" id="pq" placeholder="Search ${kind}" aria-label="Search ${kind}" value="${esc(F.p || "")}">
+    <div class="seg" role="group"><button type="button" id="inq" aria-pressed="${!!F.inQuests}">Only those in a quest</button></div></div>
+    <p class="msg" id="pcount"></p><div class="list" id="plist" data-kind="${kind}"></div>`;
+}
+function fillPeople() {
+  const el = $("#plist"), kind = el.dataset.kind, t = (F.p || "").toLowerCase();
+  const rows = (kind === "people" ? CAT.people : CAT.places).filter(p => (!F.inQuests || p.quests.length) && (!t || (p.name + " " + (p.region || "")).toLowerCase().includes(t)));
+  $("#pcount").textContent = `${rows.length} shown.`;
+  el.innerHTML = rows.slice(0, 400).map(p => `<a class="li" href="#${kind === "people" ? "p" : "pl"}-${p.id}"><span class="t">${esc(p.name)}<span class="sub">${esc(kind === "people" ? (p.about[0] || "") : (p.region || ""))}</span></span>
+    ${p.quests.length ? `<span class="msg">${p.quests.length} quest${p.quests.length > 1 ? "s" : ""}</span>` : ""}</a>`).join("");
+}
+async function viewEntity(kind, id) {
+  const p = kind === "p" ? personById(id) : placeById(id); if (!p) return notFound();
+  setNav(kind === "p" ? "people" : "places"); CUR = {item: `${kind}-${p.id}`, label: p.name};
+  let block = "";
+  if (p.block) { const docId = p.block.split("/")[0]; const d = await loadDoc(docId); const at = d.blocks.findIndex(b => b.id === p.block);
+    block = d.blocks.slice(at + 1, at + 6).filter((b, j, a) => !a.slice(0, j + 1).some(x => x.t === "h")).map(b => blockHtml(b, docId, p.name)).join(""); }
+  const about = kind === "p" ? p.about : (p.about ? [p.about] : []);
+  return `<div class="read"><p class="eyebrow">${kind === "p" ? "Person" : "Place"}${p.region ? " · " + esc(p.region) : ""}</p><h1>${esc(p.name)}</h1></div>
+    <div class="tools"><button class="notebtn" type="button" data-whole="${kind}-${esc(p.id)}" data-label="${esc(p.name)}">Note on ${esc(p.name)}</button></div>
+    ${about.length && !block ? `<div class="doc read">${about.map(a => `<p>${esc(a)}</p>`).join("")}</div>` : ""}
+    ${block ? `<article class="doc read">${block}</article>` : ""}
+    <section class="wrap" style="gap:8px"><h2>In the quests</h2>${p.quests.length ? `<div class="list">${p.quests.map(quest).filter(Boolean).map(q => `<a class="li" href="#q-${hashId(q.id)}"><span class="id">${q.id}</span><span class="t">${esc(q.title)}<span class="sub">${esc(q.lineTitle)}</span></span>${pill(q.status)}</a>`).join("")}</div>` : `<p class="empty">No quest names ${esc(p.name)} yet.</p>`}</section>
+    <section class="wrap" style="gap:8px"><h2>Named in</h2><div class="row">${p.docs.map(d => { const m = CAT.docs.find(x => x.id === d); return m ? `<a class="chip" href="#d-${d}">${esc(m.title)}</a>` : ""; }).join("")}</div></section>`;
+}
+function viewWorld() {
+  setNav("world"); CUR = {item: "world", label: "The province"};
+  const g = k => CAT.docs.filter(d => d.kind === k);
+  return `<div class="read"><h1>The province</h1><p class="lede">The digest of the new world as the stories see it: the province, its named people, and each region with its places.</p></div>
+    <div class="grid">${g("world").map(d => `<a class="card" href="#d-${d.id}"><span class="eyebrow">Province digest</span><b>${esc(d.title)}</b></a>`).join("")}</div>
+    <h2>Regions</h2><div class="grid">${g("region").map(d => `<a class="card" href="#d-${d.id}"><span class="eyebrow">Region · ${CAT.places.filter(p => p.region === d.title).length} places</span><b>${esc(d.title)}</b></a>`).join("")}</div>`;
+}
+const notFound = () => `<h1>Not found</h1><p class="lede">This item is not in the current story data. It may have been renamed. <a href="#home">Back to the lines.</a></p>`;
+
+async function route() {
+  const h = location.hash.slice(1) || "home"; const v = $("#view"); let html;
+  try {
+    if (h === "home") html = viewHome();
+    else if (h === "quests") html = viewQuests();
+    else if (h === "people" || h === "places") html = viewPeople(h);
+    else if (h === "world") html = viewWorld();
+    else if (h === "map" || h.startsWith("map-")) html = viewMap();
+    else if (h === "notes") { html = viewHome(); setTimeout(openTray); }
+    else if (h.startsWith("q-")) html = await viewQuest(h.slice(2));
+    else if (h.startsWith("d-")) html = await viewDoc(h.slice(2));
+    else if (h.startsWith("pl-")) html = await viewEntity("pl", h.slice(3));
+    else if (h.startsWith("p-")) html = await viewEntity("p", h.slice(2));
+    else html = notFound();
+  } catch (e) { html = `<h1>Could not load this</h1><p class="lede">${esc(e.message)}. Reload the page to try again.</p>`; }
+  v.innerHTML = html; window.scrollTo(0, 0); clearActive();
+  if ($("#qlist")) { fillQuests();
+    $("#qq").oninput = e => { F.q = e.target.value; fillQuests(); };
+    document.querySelectorAll("[data-ln]").forEach(b => b.onclick = () => { F.line = b.dataset.ln; document.querySelectorAll("[data-ln]").forEach(x => x.setAttribute("aria-pressed", x === b)); fillQuests(); });
+    document.querySelectorAll("[data-st]").forEach(b => b.onclick = () => { F.status = b.dataset.st; document.querySelectorAll("[data-st]").forEach(x => x.setAttribute("aria-pressed", x === b)); fillQuests(); });
+    $("#fts").onclick = fullText; }
+  if ($("#plist")) { fillPeople(); $("#pq").oninput = e => { F.p = e.target.value; fillPeople(); };
+    $("#inq").onclick = e => { F.inQuests = !F.inQuests; e.target.setAttribute("aria-pressed", F.inQuests); fillPeople(); }; }
+  if ($("#toc")) $("#toc").onchange = e => { const el = document.querySelector(`[data-block="${CSS.escape(e.target.value)}"]`); if (el) el.scrollIntoView({block: "start"}); };
+  if ($("#map")) wireMap(h.startsWith("map-") ? h.slice(4) : "");
+  xray(); readMemory(h); paintHighlights();
+  if (pendingJump) { const el = document.querySelector(`[data-block="${CSS.escape(pendingJump)}"]`); pendingJump = null; if (el) { el.scrollIntoView({block: "center"}); el.classList.add("active"); } }
+}
+let pendingJump = null;
+
+/* ---------- selecting and noting ---------- */
+let target = null; // {item, field, block, quote, label}
+const act = $("#act"), actBtn = $("#actBtn");
+function itemLabel(item) { const q = quest(item); if (q) return `${q.id} ${q.title}`; const d = CAT.docs.find(x => x.id === item); return d ? d.title : item; }
+function clearActive() { document.querySelectorAll(".blk.active,tr.active").forEach(e => e.classList.remove("active")); target = null; act.hidden = true; }
+function showAct(t, text) { target = t; actBtn.textContent = text; act.hidden = false; }
+document.addEventListener("selectionchange", () => {
+  const sel = getSelection(); if (!sel || sel.isCollapsed) { if (target && target.fromSel) { target = null; act.hidden = true; } return; }
+  const node = sel.anchorNode && (sel.anchorNode.nodeType === 1 ? sel.anchorNode : sel.anchorNode.parentElement);
+  if (!node || node.closest(".sheet,.bar,.act,input,textarea")) return;
+  const quote = sel.toString().trim(); if (!quote) return;
+  const blk = node.closest(".blk"), lk = node.closest("[data-link]");
+  const head = blk ? null : [...document.querySelectorAll("#view h1,#view h2")].filter(h => h.compareDocumentPosition(node) & Node.DOCUMENT_POSITION_FOLLOWING).pop();
+  const t = blk ? {item: blk.dataset.item, field: blk.dataset.field, block: blk.dataset.block}
+    : lk ? {item: lk.dataset.link, field: "link", block: null, label: lk.dataset.label, kind: "link"}
+    : {item: CUR.item, field: head ? head.textContent.trim() : "page", block: null, label: CUR.label};
+  showAct({...t, quote: quote.slice(0, 1200), view: location.hash || "#home", fromSel: true}, "Note on the highlighted words");
+});
+document.addEventListener("click", e => {
+  const xr = e.target.closest("[data-xr]"); if (xr) { openXray(xr.dataset.xr); return; }
+  const whole = e.target.closest("[data-whole]");
+  if (whole) { openComposer({item: whole.dataset.whole, field: whole.dataset.field || "whole", block: null, quote: whole.dataset.quote || "", label: whole.dataset.label, kind: whole.dataset.kind || null, view: location.hash || "#home"}); return; }
+  const hl = e.target.closest(".hl"); if (hl && !(getSelection() && !getSelection().isCollapsed)) { openComposer(null, hl.dataset.note); return; }
+  const jump = e.target.closest("[data-jump]"); if (jump) pendingJump = jump.dataset.jump;
+  if (e.target.closest("a,button,select,input,textarea,.sheet,.act")) return;
+  const sel = getSelection(); if (sel && !sel.isCollapsed) return;
+  const blk = e.target.closest(".blk");
+  if (!blk) { clearActive(); return; }
+  const tr = e.target.closest("tbody tr"); const was = blk.classList.contains("active") && !tr;
+  clearActive(); if (was) return;
+  if (tr) { tr.classList.add("active"); const head = [...blk.querySelectorAll("th")].map(t => t.textContent.trim());
+    const cellsT = [...tr.children].map(c => c.textContent.trim());
+    const rowName = /stage/i.test(head[0] || "") ? `Stage ${cellsT[0]}` : cellsT[0];
+    showAct({item: blk.dataset.item, field: `${blk.dataset.field} / ${rowName}`, block: blk.dataset.block, quote: cellsT.join(" | ").slice(0, 1200)}, `Add a note on ${rowName.length > 28 ? "this row" : rowName}`); return; }
+  blk.classList.add("active");
+  showAct({item: blk.dataset.item, field: blk.dataset.field, block: blk.dataset.block, quote: blk.innerText.trim().slice(0, 1200), view: location.hash || "#home"}, "Note on this paragraph");
+});
+actBtn.addEventListener("click", () => { if (target) openComposer(target); });
+document.querySelectorAll("[data-react]").forEach(b => b.addEventListener("click", () => {
+  if (!target) return; const a = {...target, label: target.label || itemLabel(target.item)};
+  drafts.push({id: "n" + Date.now().toString(36) + Math.random().toString(36).slice(2, 6), item: a.item, label: a.label, field: a.field, block: a.block,
+    quote: a.quote, note: `Reaction: ${b.dataset.react}.`, version: CAT.version, at: new Date().toISOString(), view: a.view || location.hash || "#home", kind: "reaction"});
+  saveDrafts(); clearActive(); getSelection()?.removeAllRanges(); paintHighlights(); toast(`${b.dataset.react}: added to the tray`);
+}));
+
+function sheet(html, onClose) {
+  const root = $("#sheetRoot");
+  root.innerHTML = `<div class="sheet-bg" data-close></div><div class="sheet" role="dialog" aria-modal="true"><div class="sheet-in">${html}</div></div>`;
+  root.querySelectorAll("[data-close]").forEach(b => b.onclick = () => { closeSheet(); onClose && onClose(); });
+  return root;
+}
+const closeSheet = () => { $("#sheetRoot").innerHTML = ""; };
+function openComposer(t, editId) {
+  const ex = editId ? drafts.find(d => d.id === editId) : null;
+  if (!ex && !t) return;
+  const a = ex || {...t, label: t.label || itemLabel(t.item)};
+  const root = sheet(`<div class="sheet-h"><h2>${ex ? "Edit note" : "New note"}</h2><button class="x" type="button" data-close aria-label="Close">✕</button></div>
+    <div class="anchor">On <b>${esc(a.label)}</b>${a.field && a.field !== "whole" ? `, ${esc(a.field)}` : ""}</div>
+    ${a.quote ? `<blockquote class="quote">${esc(a.quote)}</blockquote>` : ""}
+    <label for="noteText" class="eyebrow">Your note for the agent</label>
+    <textarea id="noteText" placeholder="What should change, and why">${esc(ex ? ex.note : "")}</textarea>
+    <div class="row"><button class="btn pri" type="button" id="noteSave">${ex ? "Save changes" : "Add to the tray"}</button><button class="btn" type="button" data-close>Cancel</button>${ex ? `<button class="btn dan" type="button" id="noteDel">Remove</button>` : ""}</div>`);
+  if (ex) $("#noteDel", root).onclick = () => { drafts = drafts.filter(d => d.id !== ex.id); saveDrafts(); closeSheet(); paintHighlights(); toast("Note removed"); };
+  const ta = $("#noteText", root); setTimeout(() => ta.focus(), 50);
+  $("#noteSave", root).onclick = () => {
+    const note = ta.value.trim(); if (!note) { ta.focus(); return; }
+    if (ex) ex.note = note;
+    else drafts.push({id: "n" + Date.now().toString(36) + Math.random().toString(36).slice(2, 6), item: a.item, label: a.label, field: a.field,
+      block: a.block, quote: a.quote, note, version: CAT.version, at: new Date().toISOString(), view: a.view || location.hash || "#home", kind: a.kind || "text"});
+    saveDrafts(); closeSheet(); clearActive(); getSelection()?.removeAllRanges(); paintHighlights(); toast(ex ? "Note saved" : "Note added to the tray");
+    if (a.block) document.querySelector(`[data-block="${CSS.escape(a.block)}"]`)?.classList.add("noted");
+    if (editId) openTray();
+  };
+}
+
+function paintCount() { $("#trayCount").textContent = drafts.length; }
+const BST = {submitted: "Submitted", "picked up": "Picked up", actioned: "Actioned"};
+function openTray(msg) {
+  const past = batches.slice().sort((a, b) => (b.submittedAt || "").localeCompare(a.submittedAt || ""));
+  const root = sheet(`<div class="sheet-h"><h2>Notes</h2><button class="x" type="button" data-close aria-label="Close">✕</button></div>
+    <p class="msg">Drafts stay on this device until you submit them. A submitted batch goes to the agents, who mark it picked up and answer each note here.</p>
+    ${msg ? `<p class="msg"><b>${esc(msg)}</b></p>` : ""}
+    <h3 class="eyebrow">Drafts (${drafts.length})</h3>
+    ${drafts.length ? drafts.map(d => `<div class="note"><div class="anchor"><b>${esc(d.label)}</b>${d.field && d.field !== "whole" ? ` · ${esc(d.field)}` : ""}${d.version !== CAT.version ? " · made on an older version of the story" : ""}</div>
+      ${d.quote ? `<blockquote class="quote">${esc(d.quote)}</blockquote>` : ""}<div>${esc(d.note)}</div>
+      <div class="row"><button class="btn" type="button" data-edit="${d.id}">Edit</button><button class="btn dan" type="button" data-del="${d.id}">Remove</button></div></div>`).join("")
+      : `<p class="empty">No drafts. Select words in any story, or tap a paragraph, then add a note.</p>`}
+    <div class="row"><button class="btn pri" type="button" id="submitB" ${drafts.length && db ? "" : "disabled"}>Submit ${drafts.length || ""} note${drafts.length === 1 ? "" : "s"} as a batch</button>
+      <span class="msg">${db ? "" : dbState === "connecting" ? "Connecting to the shared store…" : "Submitting needs you signed in to claude.ai; drafts are kept here meanwhile."}</span></div>
+    <h3 class="eyebrow">Submitted batches</h3>
+    ${past.length ? past.map(b => `<div class="note"><div class="row"><b>${esc((b.submittedAt || "").slice(0, 16).replace("T", " "))}</b><span class="pill ${b.status === "actioned" ? "st-reviewed" : b.status === "picked up" ? "st-written" : "st-outlined"}">${BST[b.status] || esc(b.status)}</span><span class="msg">${(b.notes || []).length} notes${b.pickedUpBy ? " · " + esc(b.pickedUpBy) : ""}</span></div>
+      ${b.reply ? `<div class="reply">${esc(b.reply)}</div>` : ""}
+      ${(b.notes || []).map(n => `<div class="note"><div class="anchor"><b>${esc(n.label)}</b>${n.field && n.field !== "whole" ? ` · ${esc(n.field)}` : ""}</div>${n.quote ? `<blockquote class="quote">${esc(n.quote)}</blockquote>` : ""}<div>${esc(n.note)}</div>
+        ${n.reply ? `<div class="reply"><b>Agent:</b> ${esc(n.reply)}</div>` : ""}</div>`).join("")}</div>`).join("")
+      : `<p class="empty">${db ? "No batches yet." : "Past batches show here once the shared store is reachable."}</p>`}`);
+  root.querySelectorAll("[data-del]").forEach(b => b.onclick = () => { drafts = drafts.filter(d => d.id !== b.dataset.del); saveDrafts(); paintHighlights(); openTray(); });
+  root.querySelectorAll("[data-edit]").forEach(b => b.onclick = () => openComposer(null, b.dataset.edit));
+  const sb = $("#submitB", root); if (sb) sb.onclick = async () => {
+    sb.disabled = true; sb.textContent = "Submitting…";
+    const id = "b" + new Date().toISOString().replace(/[^0-9]/g, "").slice(0, 14) + Math.random().toString(36).slice(2, 5);
+    try {
+      await db.collection("batches").doc(id).set({status: "submitted", submittedAt: new Date().toISOString(), dataVersion: CAT.version,
+        notes: drafts.map(d => ({id: d.id, kind: d.kind || "text", item: d.item, label: d.label, field: d.field, block: d.block || null, view: d.view || null, quote: d.quote || "", note: d.note, version: d.version, reply: null}))});
+      drafts = []; saveDrafts(); openTray("Submitted. The batch is waiting for an agent.");
+    } catch (e) { openTray(`Could not submit: ${e.message || e.code}. Your drafts are kept; try again.`); }
+  };
+}
+$("#trayBtn").onclick = () => openTray();
+
+/* ---------- highlights that stay ---------- */
+function unmark() { document.querySelectorAll("#view .hl").forEach(m => { m.replaceWith(...m.childNodes); }); document.querySelectorAll("#view .noted").forEach(b => b.classList.remove("noted")); }
+function markQuote(root, quote, noteId) {
+  const tw = document.createTreeWalker(root, NodeFilter.SHOW_TEXT); const nodes = []; let txt = "", n;
+  while ((n = tw.nextNode())) { if (n.parentElement.closest(".act,.sheet,button,select,svg")) continue; nodes.push([n, txt.length]); txt += n.data; }
+  let at = txt.indexOf(quote), len = quote.length;
+  if (at < 0) { const norm = quote.replace(/\s+/g, " "); at = txt.replace(/\s/g, " ").indexOf(norm); len = norm.length; }
+  if (at < 0) return false;
+  const end = at + len;
+  for (const [node, off] of nodes) {
+    const s0 = Math.max(at, off), e0 = Math.min(end, off + node.data.length);
+    if (s0 >= e0 || !node.data.slice(s0 - off, e0 - off).trim()) continue;
+    const r = document.createRange(); r.setStart(node, s0 - off); r.setEnd(node, e0 - off);
+    const m = document.createElement("mark"); m.className = "hl"; m.dataset.note = noteId; m.title = "Your note: tap to edit"; r.surroundContents(m);
+  }
+  return true;
+}
+function paintHighlights() {
+  const v = $("#view"); if (!v || !CAT) return; unmark(); const here = location.hash || "#home";
+  for (const d of drafts) {
+    const blk = d.block ? v.querySelector(`[data-block="${CSS.escape(d.block)}"]`) : null;
+    if (blk) blk.classList.add("noted");
+    if (!d.quote || d.kind === "link") continue;
+    if (blk && blk.innerText.trim().slice(0, 1200) === d.quote) continue;
+    if (blk) markQuote(blk, d.quote, d.id); else if (d.view === here) markQuote(v, d.quote, d.id);
+  }
+}
+
+/* ---------- the root map ---------- */
+const KINDS = {crossing: "Crossings the ledger rules on", person: "Shared people", place: "Shared places", reference: "One quest names another's"};
+const MK = {crossing: true, person: true, place: false, reference: true};
+function viewMap() {
+  setNav("map"); CUR = {item: "map", label: "The link map"};
+  return `<div class="read"><h1>Link map</h1><p class="lede">The main quest sits in the middle, the faction lines around it. A line between two lines means they share something: a crossing the consistency ledger rules on, a person, a place, or a quest that names another line's quest. Tap a quest line to see what it connects to; tap a connection to read its links and leave a note on any of them.</p></div>
+    <div class="kinds" role="group" aria-label="Kinds of link">${Object.entries(KINDS).map(([k, t]) => `<button type="button" class="chip" data-mk="${k}" aria-pressed="${MK[k]}" style="cursor:pointer;border:2px solid ${MK[k] ? "var(--accent)" : "var(--line)"}">${MK[k] ? "Showing" : "Show"} ${t.toLowerCase()} (${CAT.links.filter(e => e.kind === k).length})</button>`).join("")}</div>
+    <div class="mapbox"><svg id="map" viewBox="0 0 420 420" role="img" aria-label="Map of the links between quest lines"></svg></div>
+    <section id="mapPanel" class="wrap" style="gap:10px"></section>`;
+}
+function wireMap(focus) {
+  const svg = $("#map"), lines = CAT.lines.filter(l => l.kind === "line"), C = 210;
+  const others = lines.filter(l => l.id !== "main");
+  const pos = {main: [C, C]};
+  others.forEach((l, i) => { const a = -Math.PI / 2 + i * 2 * Math.PI / others.length; pos[l.id] = [C + 160 * Math.cos(a), C + 160 * Math.sin(a)]; });
+  const es = CAT.links.filter(e => MK[e.kind] && pos[e.a] && pos[e.b]);
+  const pairs = {}; es.forEach(e => (pairs[e.a + "|" + e.b] ||= []).push(e));
+  const curve = (a, b) => { const [x1, y1] = pos[a], [x2, y2] = pos[b]; const mx = (x1 + x2) / 2, my = (y1 + y2) / 2; const k = a === "main" || b === "main" ? 0.15 : 0.6;
+    return `M${x1.toFixed(1)},${y1.toFixed(1)} Q${(mx + (C - mx) * k).toFixed(1)},${(my + (C - my) * k).toFixed(1)} ${x2.toFixed(1)},${y2.toFixed(1)}`; };
+  let g = `<defs><radialGradient id="glow"><stop offset="0" stop-color="var(--glow)" stop-opacity=".35"/><stop offset="1" stop-color="var(--glow)" stop-opacity="0"/></radialGradient></defs>
+    `;
+  for (const [k, list] of Object.entries(pairs)) { const [a, b] = k.split("|"); const w = Math.min(10, 1.5 + list.length * 0.9);
+    g += `<path class="edge" data-pair="${k}" d="${curve(a, b)}" stroke-width="${w}"/><path class="hit" data-pair="${k}" d="${curve(a, b)}"><title>${list.length} links</title></path>`; }
+  for (const l of lines) { const [x, y] = pos[l.id]; const r = l.id === "main" ? 30 : 16; const below = y >= C - 5;
+    g += `<g class="node" data-node="${l.id}" tabindex="0" role="button" aria-label="${esc(shortLine(l))}"><circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r}" fill="${lineColor(l.id)}"/>
+      <text x="${x.toFixed(1)}" y="${(l.id === "main" ? y + 4 : below ? y + r + 13 : y - r - 6).toFixed(1)}" text-anchor="middle"${l.id === "main" ? ' style="fill:#fff"' : ""}>${esc(l.id === "main" ? "Main quest" : shortLine(l))}</text></g>`; }
+  svg.innerHTML = g;
+  const panel = $("#mapPanel"), L = id => CAT.lines.find(l => l.id === id);
+  const linkCard = e => { const lbl = `Link: ${shortLine(L(e.a))} and ${shortLine(L(e.b))}, ${e.label}`; const q = id => id ? `<a class="chip" href="#q-${hashId(id)}">${id}</a>` : "";
+    return `<div class="link" data-link="${esc(e.id)}" data-label="${esc(lbl)}"><span class="k">${esc(KINDS[e.kind])}</span><b>${esc(e.label)}</b>${e.why ? `<span class="msg">${esc(e.why)}</span>` : ""}
+      <div class="row">${q(e.qa)}${q(e.qb)}${e.block ? `<a class="chip" href="#d-${e.block.split("/")[0]}" data-jump="${esc(e.block)}">Read it in the ledger</a>` : ""}
+      <button class="notebtn" type="button" data-whole="${esc(e.id)}" data-kind="link" data-field="${e.kind}" data-quote="${esc(e.label)}" data-label="${esc(lbl)}">Note on this link</button></div></div>`; };
+  const showPair = k => { const list = pairs[k] || []; const [a, b] = k.split("|");
+    svg.querySelectorAll(".edge").forEach(p => { p.classList.toggle("on", p.dataset.pair === k); p.classList.toggle("off", p.dataset.pair !== k); });
+    svg.querySelectorAll(".node").forEach(n => { n.classList.toggle("on", false); n.classList.toggle("off", n.dataset.node !== a && n.dataset.node !== b); });
+    panel.innerHTML = `<h2>${esc(shortLine(L(a)))} and ${esc(shortLine(L(b)))}</h2><p class="msg">${list.length} link${list.length === 1 ? "" : "s"} of the kinds shown.</p>
+      <div><button class="notebtn" type="button" data-whole="pair:${esc(a)}:${esc(b)}" data-kind="link" data-field="pair" data-label="${esc(`Link: ${shortLine(L(a))} and ${shortLine(L(b))}, all of it`)}">Note on how these two lines meet</button></div>${list.map(linkCard).join("")}`;
+    panel.scrollIntoView({behavior: "smooth", block: "nearest"}); };
+  const showNode = id => { const l = L(id);
+    const mine = Object.entries(pairs).filter(([k]) => k.split("|").includes(id)).sort((x, y) => y[1].length - x[1].length);
+    svg.querySelectorAll(".edge").forEach(p => { const on = p.dataset.pair.split("|").includes(id); p.classList.toggle("on", on); p.classList.toggle("off", !on); });
+    svg.querySelectorAll(".node").forEach(n => { n.classList.toggle("on", n.dataset.node === id); n.classList.toggle("off", n.dataset.node !== id && !mine.some(([k]) => k.split("|").includes(n.dataset.node))); });
+    panel.innerHTML = `<h2 style="color:${lineColor(id)}">${esc(l.title.split(":")[0])}</h2><div class="row"><a class="chip" href="#d-${id}">Read its story</a>${l.quests.slice().sort().map(q => `<a class="chip" href="#q-${hashId(q)}">${q}</a>`).join("")}</div>
+      ${mine.length ? `<div class="list">${mine.map(([k, list]) => { const o = k.split("|").find(x => x !== id); return `<button type="button" class="li" style="width:100%;background:none;border:0;border-bottom:1px solid var(--line);cursor:pointer;text-align:left" data-openpair="${k}"><span class="swatch" style="--lc:${lineColor(o)}"></span><span class="t">${esc(shortLine(L(o)))}<span class="sub">${[...new Set(list.map(e => KINDS[e.kind]))].join(", ")}</span></span><span class="msg">${list.length}</span></button>`; }).join("")}</div>`
+        : `<p class="empty">No links of the kinds shown.</p>`}`;
+    panel.querySelectorAll("[data-openpair]").forEach(b => b.onclick = () => showPair(b.dataset.openpair)); };
+  svg.querySelectorAll(".hit").forEach(p => p.onclick = () => showPair(p.dataset.pair));
+  svg.querySelectorAll(".node").forEach(n => { n.onclick = () => showNode(n.dataset.node); n.onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); showNode(n.dataset.node); } }; });
+  document.querySelectorAll("[data-mk]").forEach(b => b.onclick = () => { MK[b.dataset.mk] = !MK[b.dataset.mk]; route(); });
+  showNode(focus && pos[focus] ? focus : "main");
+}
+
+
+/* ---------- X-ray: tap a name ---------- */
+let NAMES = null;
+function xray() {
+  const art = $("#view .doc"); if (!art) return;
+  if (!NAMES) {
+    const all = [...CAT.people.map(p => ["p", p]), ...CAT.places.map(p => ["pl", p])].filter(([, p]) => p.quests.length && p.name.length >= 4 && /^[A-Z]/.test(p.name));
+    NAMES = {map: Object.fromEntries(all.map(([k, p]) => [p.name, `${k}:${p.id}`])),
+      re: new RegExp(`(?<![\\w-])(${all.map(([, p]) => p.name).sort((a, b) => b.length - a.length).map(n => n.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|")})(?![\\w-])`, "g")};
+  }
+  const tw = document.createTreeWalker(art, NodeFilter.SHOW_TEXT); const nodes = []; let n;
+  while ((n = tw.nextNode())) if (!n.parentElement.closest("a,button,code,pre,th,.xr,mark")) nodes.push(n);
+  for (const node of nodes) {
+    NAMES.re.lastIndex = 0; if (!NAMES.re.test(node.data)) continue;
+    const frag = document.createDocumentFragment(); let last = 0; NAMES.re.lastIndex = 0; let m;
+    while ((m = NAMES.re.exec(node.data))) {
+      frag.append(node.data.slice(last, m.index));
+      const b = document.createElement("button"); b.type = "button"; b.className = "xr"; b.dataset.xr = NAMES.map[m[1]]; b.textContent = m[1]; frag.append(b);
+      last = m.index + m[1].length;
+    }
+    frag.append(node.data.slice(last)); node.replaceWith(frag);
+  }
+}
+function openXray(key) {
+  const [k, id] = key.split(":"); const p = k === "p" ? personById(id) : placeById(id); if (!p) return;
+  const about = k === "p" ? p.about.slice(0, 3) : [p.about].filter(Boolean);
+  const qs = p.quests.map(quest).filter(Boolean);
+  sheet(`<div class="sheet-h"><h2>${esc(p.name)}</h2><button class="x" type="button" data-close aria-label="Close">✕</button></div>
+    <p class="msg">${k === "p" ? "Person" : "Place"}${p.region ? ` in ${esc(p.region)}` : ""}, in ${qs.length} quest${qs.length === 1 ? "" : "s"}</p>
+    ${about.map(a => `<p style="margin:0">${esc(a)}</p>`).join("")}
+    <div class="list">${qs.map(q => `<a class="li" data-close href="#q-${hashId(q.id)}"><span class="swatch" style="--lc:${lineColor(q.line)}"></span><span class="id">${q.id}</span><span class="t">${esc(q.title)}<span class="sub">${esc(q.lineTitle.split(":")[0])}</span></span></a>`).join("")}</div>
+    <div class="row"><a class="btn" data-close href="#${k}-${p.id}">Open ${esc(p.name)}</a><button class="btn" type="button" data-whole="${k}-${esc(p.id)}" data-label="${esc(p.name)}">Note on ${esc(p.name)}</button></div>`);
+}
+
+/* ---------- follow the thread ---------- */
+function threadHtml(q) {
+  const mine = CAT.links.filter(e => e.qa === q.id || e.qb === q.id);
+  const line = CAT.lines.find(l => l.id === q.line), sib = line.quests.slice().sort(), i = sib.indexOf(q.id);
+  if (!mine.length && sib.length < 2) return "";
+  const row = (qid, why, e) => { const o = quest(qid); if (!o) return "";
+    return `<div class="row" ${e ? `data-link="${esc(e.id)}" data-label="${esc(`Link: ${q.id} and ${qid}, ${e.label}`)}"` : ""}><a class="li" style="flex:1;border:0;padding:6px 0" href="#q-${hashId(qid)}"><span class="swatch" style="--lc:${lineColor(o.line)}"></span><span class="id">${qid}</span><span class="t">${esc(o.title)}<span class="sub">${esc(why)}</span></span></a>
+      ${e ? `<button class="notebtn" type="button" data-whole="${esc(e.id)}" data-kind="link" data-field="${e.kind}" data-quote="${esc(e.label)}" data-label="${esc(`Link: ${q.id} and ${qid}, ${e.label}`)}">Note on link</button>` : ""}</div>`; };
+  return `<details class="fact thread" ${mine.length ? "open" : ""}><summary style="cursor:pointer;font-weight:600">Follow the thread (${mine.length + (i > 0) + (i < sib.length - 1)})</summary>
+    ${i > 0 ? row(sib[i - 1], "Before this, in the same line") : ""}${i < sib.length - 1 ? row(sib[i + 1], "Next in the same line") : ""}
+    ${mine.map(e => row(e.qa === q.id ? e.qb : e.qa, `${KINDS[e.kind]}: ${e.label}`, e)).join("")}</details>`;
+}
+
+/* ---------- reading memory: progress and what changed ---------- */
+const RKEY = "story-explorer-read";
+function readMem() { try { return JSON.parse(localStorage.getItem(RKEY) || "{}"); } catch (e) { return {}; } }
+function writeMem(m) { try { localStorage.setItem(RKEY, JSON.stringify(m)); } catch (e) {} }
+let memDoc = null;
+function readMemory(h) {
+  memDoc = null; $("#readbar").style.width = "0";
+  const art = $("#view .doc"); if (!art || !(h.startsWith("d-") || h.startsWith("q-"))) return;
+  const key = h.startsWith("d-") ? h.slice(2) : (CAT.quests.find(x => hashId(x.id) === h.slice(2)) || {}).line;
+  const d = DOCS[key]; if (!d) return;
+  const mem = readMem(), old = mem[key], hs = Object.fromEntries(d.blocks.map(b => [b.id, b.h]));
+  const els = [...art.querySelectorAll(".blk")];
+  const changed = old && old.blocks ? els.filter(el => old.blocks[el.dataset.block] !== hs[el.dataset.block]) : [];
+  changed.forEach(el => el.classList.add("changed"));
+  const box = $("#changes");
+  if (box && changed.length) {
+    let k = 0;
+    box.innerHTML = `<div class="banner"><span><b>${changed.length}</b> passage${changed.length === 1 ? "" : "s"} changed since you last read this.</span><button class="btn" type="button" id="nextChange">Next change</button><button class="btn" type="button" id="seenChange">Mark all read</button></div>`;
+    $("#nextChange").onclick = () => { changed[k % changed.length].scrollIntoView({behavior: "smooth", block: "center"}); k++; };
+    $("#seenChange").onclick = () => { changed.forEach(el => el.classList.remove("changed")); box.innerHTML = ""; };
+  }
+  mem[key] = {hash: (CAT.docs.find(x => x.id === key) || {}).hash, blocks: hs, progress: old ? old.progress || 0 : 0, at: new Date().toISOString()};
+  writeMem(mem); memDoc = key;
+}
+let scrollT;
+addEventListener("scroll", () => {
+  const art = $("#view .doc"); if (!art || !memDoc) return;
+  const r = art.getBoundingClientRect(); const f = Math.min(1, Math.max(0, (innerHeight - r.top) / r.height));
+  $("#readbar").style.width = (f * 100).toFixed(1) + "%";
+  clearTimeout(scrollT); scrollT = setTimeout(() => { const m = readMem(); if (m[memDoc] && f > (m[memDoc].progress || 0)) { m[memDoc].progress = f; writeMem(m); } }, 400);
+}, {passive: true});
+
+/* ---------- start ---------- */
+paintCount();
+fetch("data/catalog.json").then(r => { if (!r.ok) throw new Error("the story data did not load"); return r.json(); })
+  .then(c => { CAT = c; addEventListener("hashchange", route); route(); })
+  .catch(e => { $("#view").innerHTML = `<h1>Could not load the story</h1><p class="lede">${esc(e.message)}. Reload the page to try again.</p>`; });
+const t = setTimeout(() => { if (!db) dbState = "absent"; }, 10000);
+(async () => {
+  try { db = window.claude ? await window.claude.use("db") : null; } catch (e) { db = null; }
+  clearTimeout(t); dbState = db ? "ready" : "absent";
+  if (db) db.collection("batches").onSnapshot(s => { batches = s.docs.map(d => ({id: d.id, ...d.data()})); if ($(".sheet") && $("#submitB")) openTray(); },
+    () => { dbState = "absent"; });
+})();
+})();
+</script>
