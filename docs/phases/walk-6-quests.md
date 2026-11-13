@@ -143,7 +143,7 @@ Delivery lanes are Opus 5.5 at medium effort; code review is Fable 5.2 at medium
 worktree and is landed by the lead. Nothing is tested in game by an agent; nothing is deployed while the owner
 streams.
 
-| Lane | What | State (2026-11-13 00:40 UTC) |
+| Lane | What | State (2026-11-13) |
 |---|---|---|
 | R1 | Research: Morrowind-level scripting in practice | done: [morrowind-level-scripting](../research/morrowind-level-scripting.md) |
 | R2 | The post-mortem of walk 6 | done: [walk-6-post-mortem](../research/walk-6-post-mortem.md) |
@@ -154,12 +154,13 @@ streams.
 | S | The 38 unbuilt staged records rowed back; the lines-and-factions review | done: story/design/quests/review/walk6-ceiling.md |
 | K | The generic builder, generic scripts (68 of 68 compiled), reader, mortality, markers on, the block test as forms | done |
 | H, H2, H3 | The paper game, the runner, the comparison, the owner's page | done: [paper-playtest](../design/paper-playtest.md), https://claude.ai/artifact/QjrYTSBXYjMrCvz56V5uDP |
-| D2a to D2c | Dialogue for the other nine quests, played on paper | running |
-| I1 | Compiler and record gaps the eleven quests found (locks, owners, carried things, a failed check's own words, the chain) | running |
-| I2 | Old per-quest builders retired; every quest built from its form; read-back and comparison at zero | running |
-| H4 | The paper game: containers, locks, theft, starting a later quest from true state, a reach check | running |
-| C | Code review of the new tools (Fable 5.2) and its fixes | todo |
-| W | The skills restructured as one set with the cleared findings; the owner's walk check posted; deploy when no stream is live | todo |
+| D2a to D2c, D3 | Dialogue for the other nine quests and the rewritten Chainbreakers, played on paper | done |
+| I1 to I3, X1, Z1, Z2 | The compiler and record gaps; the old builders retired; every quest built from its form with zero differences; the last faults | done |
+| H4, C1, C1f, C2f | The paper game's locks, theft, starting from true state and the reach check; the Fable code review and its fixes | done |
+| F1, Q2b | The Chainbreakers' story by Fable and its three quests rebuilt from it | done |
+| T1, T2 | The surroundings sheet and the truth reader; every quest line and all 119 talkers read against the built world | done |
+| W1, W2 | The principles re-distilled from the research; the quest skills as one set | done |
+| Z3, deploy | The block test out of the owner's game; the walk check as real quests; deployed 2026-11-13 with no stream live; posted as #69 | done: owed, the owner's walk |
 
 ## The skills as one system, learning from the paper players (owner, 2026-11-12)
 

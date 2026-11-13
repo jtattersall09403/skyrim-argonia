@@ -250,7 +250,7 @@ way", "a long walk") instead of counting paces.
       directions, and should never give a number of paces or metres. Then follow one route from each person: you
       should arrive where they said. Reply here with any answer that sends you the wrong way or still gives a number.
 
-## 12. Walk 6: our quests, played from a new game (built 2026-11-13, not yet posted)
+## 12. Walk 6: our quests, played from a new game (built and deployed 2026-11-13; posted as issue #69)
 
 Every quest of ours is now written as one short form and built into the game by one builder, and everything a quest
 does (move to its next step, give or take gold and things, start the next quest, show a message) is carried out by
