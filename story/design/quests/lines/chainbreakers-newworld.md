@@ -44,7 +44,7 @@ gather. Their seat is a plain house on the city's north side, and their patron i
 and discharged it ([cast roster](../36-cast-roster.md) §56). Their oath is three words, "Bones go home", and it
 covers the living and the dead alike: the burial work and the freeing are one work
 (`topics/labour-and-bondage.md:122`). Nobody above them cares. The island core's guard keeps the toll and the core's
-own walls, and treats a theft as a theft whoever is robbed; the lake villages keep their own elders; the Rose is "a
+own walls, and treats a theft as a theft whoever is robbed; each lake village is kept by its own elders; the Rose is "a
 day's march off and not theirs" and has no law at all (D tulmek-washes, Blackrose; Blackrose Prison).
 
 **How they work (X).** Never-Sold teaches that an Owing stands on three legs, and that it falls when any one is
@@ -254,7 +254,7 @@ Common to all three.
   tulmek-washes, Blackrose) each have a line for a stranger who asks after work or after someone held: it names
   Never-Sold, says her house is on the north side, and that its door bears her name.
 - **One working stage.** After its briefing each quest sits at a stage at which every way through is open. A way
-  ends in a thing held, a person dead, a thing used, or a line that sets the stage which finishes the step. Where a
+  ends in a thing held, a person dead, a thing used or a line that sets the stage which finishes the step. Where a
   way's result has to be remembered (the watchman bought, the door unbarred, the Broker's word), it is a stage of
   its own, numbered below the stages it can still lead to.
 - **A line only moves the quest to a stage.** Whatever is given, taken, set, unlocked or switched is done by that
@@ -330,7 +330,7 @@ at Blackrose's boardwalk tavern; a crocodile on the Tei-Kur track at the far pad
   the find, and has its own journal entry. Either leaf can then be taken. It goes wrong as Skyrim's own law does:
   seen, the player is a thief on the family's ground under native law; a bungled pickpocket turns the keeper on the
   player.
-- *The word (Speech, the purse, or what the box gave).* Hulm-Tei declares the Owing closed before the household,
+- *The word (Speech, the purse or what the box gave).* Hulm-Tei declares the Owing closed before the household,
   which by custom ends it, in one of three ways, each a line of his that sets its own stage:
   1. *persuaded* (Speech 50, and the first price in hand): he closes it and writes the eleven years onto his own
      leaf with his eyes open. "I have carried worse than a boat-hand." Refused: "A true count is the only thing
@@ -342,10 +342,10 @@ at Blackrose's boardwalk tavern; a crocodile on the Tei-Kur track at the far pad
      Refused: "A thousand, to the coin. The Varo do not round down."
 - *The hand (Speech, coin or a fight).* Brings-Them-Back agrees to be watching the paddies and not the water for
   Speech 35 or 150 gold, each a stage. The player may attack him instead: he is alone and hard, and his death is
-  the player's choice. Bought, he still knows where her kin are. Dead, nobody does, and nobody watches the paddies.
+  the player's choice. Bought, he still knows where her kin are. Dead, nobody does and nobody watches the paddies.
   With her way open, Rows-For-Another is told so, and says where she will go.
 - *Meema Tulm-Varo* argues the farm's side to anyone who asks, and adds, to a player sent by Never-Sold: "Ask the
-  one who sent you who taught my keeper his letters." Asked, Never-Sold says only: "I was owing on that ground
+  one who sent you who taught my keeper his letters." Asked what she was to Reedfall, Never-Sold says only: "I was owing on that ground
   once. So were many."
 
 **The stages.**
@@ -354,7 +354,7 @@ at Blackrose's boardwalk tavern; a crocodile on the Tei-Kur track at the far pad
 |---|---|---|---|
 | 0 | hidden start; the job is offered while Never-Sold and Rows-For-Another live | | |
 | 10 | Never-Sold's line "What is the job?" (joins the Chainbreakers; gives 100 gold) | Never-Sold asked me to end an eleven-year Owing at Reedfall Farm, and gave me its first price. | Speak to Rows-For-Another at the boat landing of Reedfall Farm (her) |
-| 20 | Rows-For-Another's line "Tell me how you are held" | She told me the three things that hold her: her leaf in the count-box in the rice shed, the keeper's word, and the watchman on the Tei-Kur track. | End her Owing (the count-box and her leaf; Hulm-Tei; Brings-Them-Back; her; Never-Sold) |
+| 20 | Rows-For-Another's line "Tell me how you are held" | She told me the three things that hold her: her leaf in the count-box in the rice shed, the keeper's word and the watchman on the Tei-Kur track. | End her Owing (the count-box and her leaf; Hulm-Tei; Brings-Them-Back; her; Never-Sold) |
 | 25 | opening the count-box (open at 20) | I opened the count-box. Her leaf is in it, and under it, the last in the box, a leaf with the keeper's own name. | as at 20 |
 | 30, 31 | Brings-Them-Back's line: Speech 35 (30), or 150 gold (31, taken) (open at 20 and 25) | I talked him, or paid him, into watching the paddies and not the water when she goes. | Tell Rows-For-Another her way is open; or end her Owing by the leaf or the keeper's word (her; her leaf; Hulm-Tei; Never-Sold) |
 | 35 | Brings-Them-Back dead (the player's choice; open from 10); or, killed before the job, Rows-For-Another's line saying so | Brings-Them-Back is dead. Nobody is left to fetch her back. | as at 30 |
@@ -425,7 +425,7 @@ stage 96 failed "Never-Sold is dead. The Chainbreakers have nobody to send me an
 stage 97 failed "Rows-For-Another is dead. Her Owing cannot be ended now."
 
 objective 10 at 10 "Speak to Rows-For-Another at the boat landing of Reedfall Farm" -> rows
-objective 20 at 20, 25 "End her Owing: her leaf in the count-box, the keeper's word, or the watchman on the track" -> box, herleaf, hulm, fetcher, rows, neversold
+objective 20 at 20, 25 "End her Owing: her leaf in the count-box, the keeper's word or the watchman on the track" -> box, herleaf, hulm, fetcher, rows, neversold
 objective 30 at 30, 31, 35 "Tell Rows-For-Another her way is open; or end her Owing by the leaf or the keeper's word" -> rows, herleaf, hulm, neversold
 objective 40 at 40, 41, 42 "Tell Never-Sold" -> neversold
 objective 60 at 60, 61 "Tell Never-Sold" -> neversold
@@ -436,14 +436,14 @@ line held rows at 10 ask "Tell me how you are held." -> 20 says "the leaf in the
 line gone rows at 10-25 ask "A man with a mace is dead on the Tei-Kur track." if dead fetcher -> 35 says "then nobody is left to come after her"
 line case meema at 10-35 ask "Why is she still owing?" says "the boat was real and the rice she ate was real; one paddy is failing and the buyers at Lilmoth forgive nothing"
 line taught meema at 10-35 ask "You know who sent me." says "ask the one who sent you who taught my keeper his letters"
-line asked neversold at 10-61 ask "Meema Tulm-Varo says you taught her keeper his letters." says "I was owing on that ground once. So were many."
+line asked neversold at 10-61 ask "What were you to Reedfall Farm?" says "I was owing on that ground once. So were many."
 line smaller hulm at 10-35 ask "Who keeps the count?" if alive hulm says "he does; the keeper before him wrote smaller than he does"
 line look fetcher at 20-25 ask "Be watching the paddies when she goes." if skill Speech 35 -> 30 else "I am paid by the head, not by the word." says "he will watch the paddies"
 line pay fetcher at 20-25 ask "What is her head worth to you?" if gold 150 -> 31 else "A hundred and fifty. That is what the Varo pay me to bring one back." says "he takes it"
 line open rows at 30-31 ask "The watchman will not see you go." if alive rows -> 60 says "the boat; the shelter at Lujei Ferry; hidden while he lives"
 line opend rows at 35 ask "Nobody will come after you." if alive rows -> 61 says "the boat; home to the ferry"
 line persuade hulm at 20-35 ask "Take her first price and close it." if skill Speech 50, gold 100 -> 40 else "A true count is the only thing between me and the mud." says "he closes it and carries it: I have carried worse than a boat-hand"
-line hisleaf hulm at 20-35 ask "I have your leaf." if holds keeperleaf -> 41 says "he takes it, closes hers, and will be gone tonight"
+line hisleaf hulm at 20-35 ask "I have your leaf." if holds keeperleaf -> 41 says "he takes it, closes hers and will be gone tonight"
 line purse hulm at 20-35 ask "What has it grown to? I will pay all of it." if gold 1000 -> 42 else "A thousand, to the coin. The Varo do not round down." says "he counts it and closes it"
 line told rows at 40-42 ask "It is closed." says "she will go to her kin at Lujei Ferry when I have gone"
 line lifted neversold at 20-35 ask "Here is her leaf." if holds herleaf -> 90 says "tonight she reads it aloud and burns it"
@@ -459,8 +459,6 @@ line home rowsahead at 88-93 ask "You are among your own." says "she poles with 
 line home95 rowsahead at 95 ask "You are among your own." says "nobody followed; the bedroll is mine to use"
 line hide rowsahead at 94 ask "Why do you keep out of sight?" if alive fetcher says "a passenger who must not be seen, until a night dark enough"
 line hided rowsahead at 94 ask "The watchman is dead." if dead fetcher says "then she will stand up when nobody is by"
-line mother rowsahead at 88-95 ask "Your mother is out of the Rose." if number bc02.out = 3 says "she has seen her; she will take her out to the water"
-line motherstays rowsahead at 88-95 ask "Your mother is still in the Rose." if number bc02.out = 1 says "she asked not to be chosen; that is her all over"
 line short hulm at 88-90 ask "Is the count short?" if alive hulm says "eleven years I cannot account for, and they are written on me"
 line carried hulm at 91 ask "You carry her years." if alive hulm says "with my eyes open"
 line paid hulm at 93 ask "The count is whole." if alive hulm says "short of nothing, for once"
@@ -520,7 +518,7 @@ the Rose's gatehouse, outside its wall, by the families who run it; the Rose is 
 track that runs south past Reedfall Farm, "and you go no further than its gatehouse: past it the heirs kill
 strangers on sight, and they are better at it than you"; one of the three can be got out; she wants the one held
 for words. Everything else is Tsaxi's to tell on the spot, in answers the player picks: who she is, what "put under"
-means, why only one, and where the Rose's reckoner went. The ferry-keeper at Lujei Ferry tells the rest of that.
+means, why only one and where the Rose's reckoner went. The ferry-keeper at Lujei Ferry tells the rest of that.
 
 **The hidden truth.** Before the player came to Blackrose a fire went through the Rose's upper cells
 ([40-factions](../40-factions.md) §39). The heirs moved three of their held out to the gatehouse lock-up under one
@@ -635,6 +633,7 @@ place reeds outdoors "the reeds below the landing, Lujei Ferry"
 place boardwalk outdoors "the boardwalk tavern, Blackrose"
 place racks outdoors "the fish-drying racks, Lujei"
 place cookhouse outdoors "the cookhouse, Lujei"
+place shelter outdoors "the waiting shelter, Lujei Ferry"
 
 person neversold at seat "Never-Sold"
 person tsaxi at gate level 30 "Third-Born Tsaxi"
@@ -643,6 +642,7 @@ person walks at gate "Walks-Far"
 person mends at gate "Mends-Nets"
 person floods at gate "Old Seven-Floods"
 person nuleem at landing "Nuleem-Ei"
+person rowsahead at shelter existing "Rows-For-Another"
 person croc1 at reeds existing "Crocodile"
 person croc2 at reeds existing "Channel Crocodile"
 person walksout at boardwalk off "Walks-Far"
@@ -667,7 +667,7 @@ stage 33 "Tsaxi agreed to count one of the three lost to the smoke, and unlocked
 stage 34 "Tsaxi took 100 gold to count one of the three lost to the smoke, and unlocked the lock-up. I have only to say which." do take-gold 100, unlock lockup
 stage 35 "I gave Tsaxi the singed leaves and told her nobody is coming to read them. She said the count is hers now, and that one died. She unlocked the lock-up. I have only to say which." do take leaves, unlock lockup
 stage 36 "I opened the lock-up of the Rose's gatehouse without the gate-keeper's leave."
-stage 38 "Third-Born Tsaxi is dead. Nobody is left at the gatehouse to swear to any count."
+stage 38 "Third-Born Tsaxi is dead. Nobody is left at the gatehouse to swear to any count, or to keep its lock-up shut." do unlock lockup
 stage 41 "I told Walks-Far he is the one, and to go when I am gone. He said he would go to Blackrose, to the boardwalk tavern. The other two stay."
 stage 42 "I told Mends-Nets she is the one, and to go when I am gone. She said she would go to Lujei, to the fish-drying racks, where nets are mended and nobody asks. She gave me a key she took from the man she drowned, and said his strongbox is in the gatehouse. The other two stay." do give otheelkey
 stage 43 "I told Seven-Floods she is the one, and to go when I am gone. She said she would go to Lujei, to the cookhouse, near the lake. She gave me the key to her family's net-chest at Sheh-Ara. The other two stay." do give netkey
@@ -724,6 +724,8 @@ line stay1 mends at 91 ask "You stayed." if alive mends says "then I am put unde
 line stay1b mends at 93 ask "You stayed." if alive mends says "she is out; that is what I did it for"
 line stay2 walks at 92-93 ask "You stayed." if alive walks says "three seasons; I have talked through worse"
 line stay3 floods at 91-92 ask "You stayed." if alive floods says "I asked not to be chosen"
+line mother rowsahead at 93-94 ask "Seven-Floods is out of the Rose." if alive rowsahead says "her mother; she has seen her, and will take her out to the water"
+line motherstays rowsahead at 91-92 ask "An old woman called Seven-Floods is held at the gatehouse of the Rose." if alive rowsahead says "her mother; she will have asked not to be chosen, that is her all over"
 line tsaxiafter tsaxi at 91-93 ask "How is your count?" if alive tsaxi says "one died of the smoke; the reckoner will come when he comes"
 
 take leaves from 20 -> 30
@@ -911,7 +913,7 @@ stage 62 "I talked Heavy-Rope into sailing the last season, for the eleven at Th
 stage 63 "I told Heavy-Rope the hire is void. The crew are free of the last season." do give-gold 150, set bc03.crew 1, unlock housedoor
 stage 64 "I put the Broker's list of eleven in Heavy-Rope's hand. He read it, and said the crew would sail the last season." do take list, set bc03.crew 3, unlock housedoor
 stage 65 "Ussa-Rekh said the bound book is hers and always was, that he offered it to her once and she refused it, and that I may take it from his shelf." do unlock housedoor, own shelf
-stage 70 "I gave Never-Sold the bound book from the Broker's shelf and said nothing of it. Her name is on its spine: she kept the count at Reedfall Farm before the Broker bought her out." do take book
+stage 70 "I gave Never-Sold the bound book from the Broker's shelf and said nothing of it. Its spine names her keeper of the count at Reedfall Farm." do take book
 stage 71 "I told Never-Sold I know she wrote the first lines of Rows-For-Another's Owing. She said: four months, then the food, then the fever; that she wrote small and wrote true; and that she has been striking that leaf out ever since, and could not do it with her own hand." do take book, set bc03.told 1
 stage 90 completed "Broken off. I told Never-Sold the crew are free, and that nobody will buy the eleven at Thorn." do give sneakring, rank chainbreakers 2, set bc03.settled 1
 stage 91 completed "Released. I told Never-Sold the Broker let the crew go himself." do give sneakring, give housekey, rank chainbreakers 2, set bc03.settled 2, off ussa, on ussaquay
@@ -920,7 +922,7 @@ stage 95 failed "Never-Sold is dead. The Chainbreakers have nobody to send me an
 stage 96 failed "Heavy-Rope is dead. The crew have nobody to speak for them."
 
 objective 10 at 10 "Speak to Heavy-Rope on the harbour quay at Soulrest" -> rope
-objective 20 at 20, 21, 22 "Free the crew of the last season: their tokens in the Broker's chest, the Broker's word, or the berth-master's hire" -> tokens, ussa, rajhan, dralas, rope, housedoor
+objective 20 at 20, 21, 22 "Free the crew of the last season: their tokens in the Broker's chest, the Broker's word or the berth-master's hire" -> tokens, ussa, rajhan, dralas, rope, housedoor
 objective 40 at 40, 41 "Tell Heavy-Rope the Broker has let them go" -> rope, tokens
 objective 45 at 45, 46, 47 "Tell Heavy-Rope the hire is void" -> rope, tokens
 objective 60 at 60, 61, 62, 63, 64, 65 "Bring Never-Sold the bound book from the Broker's shelf" -> book, neversold, ussa
@@ -1058,7 +1060,7 @@ of people and things that stand outdoors. So no place here is promised to lie an
 
 | The thing | Quest | What happens there | How the player knows it |
 |---|---|---|---|
-| a gate that locks and a gatehouse outside the wall, out of reach of the archers on the wall, with one heir at it who speaks and is not hostile (the province plan's row; shared with the main quest) | BC02, BC04, BC06 | Third-Born Tsaxi stands there; her lines; her death | the track from Reedfall Farm ends at it; the map names the place; Never-Sold says "the gatehouse, outside the wall, and no further"; Tsaxi is marked and is the one person there who does not draw |
+| a gate that locks and a gatehouse outside the wall, out of reach of the archers on the wall, with one heir at it who speaks and is not hostile (the province plan's row; shared with the main quest) | BC02, BC04, BC06 | Third-Born Tsaxi stands there; her lines; her death | the track from Reedfall Farm ends at it; the map names the place; Never-Sold says "the gatehouse, outside the wall and no further"; Tsaxi is marked and is the one person there who does not draw |
 | in the gatehouse, a lock-up with a barred front and a door that locks, whose three people can be spoken to through the bars | BC02 | the three stand in it; the door is opened | the door shows "Lock-Up Door" and is marked; three people behind bars read as held on sight |
 | a strongbox in the gatehouse with a Master lock | BC02 | opened with Otheel's key after one ending | it shows "Shelter-Reckoner's Strongbox"; Mends-Nets says "his strongbox is in the gatehouse" when she gives the key |
 | a second standing place at the gate | BC02; BC06 | Third-Born Okaw after one ending; whoever the finale puts beside the gate-keeper | by the name |
