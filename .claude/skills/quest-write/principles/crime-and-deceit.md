@@ -30,8 +30,8 @@ Read with `general.md` (which holds the source tags' key). A theft the player mu
 
 ## THEFT the player solves
 
-1. **The true sequence first**: who, when, how, what moved, where it is now; with any staged layer on top (the
-   visible scene is a cover) [CD MD].
+1. **The true sequence first**: who, when, how, what moved, where it is now; with any staged layer on top (what
+   the player first sees is a cover) [CD MD].
 2. **The suspects**: for each, what points at them, what clears them, and a secret they hide that is not the crime;
    four to seven clues; each conclusion rests on two independent clues, a thing and a witness where possible
    [CD MD].

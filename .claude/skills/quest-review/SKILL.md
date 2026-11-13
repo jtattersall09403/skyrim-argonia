@@ -1,175 +1,141 @@
 ---
 name: quest-review
-description: Review an Argonia quest record before dialogue is written, as a player and as a designer, and return findings the quest writer can act on. Use after quest-write produces or revises a record.
+description: A fresh reader's review of one Argonia quest record (or a line's record) against the quest ceiling, the owner's bar and the design principles' checklists, as a player and as a designer, with one shared bar for what is blocking. Use after quest-write produces or revises a record, before the paper playtest and before any dialogue is written; run by a quest-reviewer agent that has not seen the author's reasoning.
 ---
 
 # Reviewing a quest
 
-The review is design critique of the record (`../quest-write/quest-record.md`: the imported quest object plus the
-record's sections), run before any dialogue exists, so problems are fixed where they start. It judges whether the
-quest is good, believable and buildable from the proven blocks as written.
+Before this: [quest-write](../quest-write/SKILL.md) leaves a record whose form passes `check` and `reach`. After
+this: the writer answers every finding, then [quest-playtest](../quest-playtest/SKILL.md) plays the designed form.
+The path is in [quest-system](../quest-system/SKILL.md). The review judges whether the quest is good, believable,
+true of the built world and buildable inside the ceiling, while changing it is cheap.
 
-## 0. The bar
+## 1. The bar
 
-- **Blocking means only:**
-  (a) a path the player cannot finish, a stage that cannot be left, or a stage on the only way forward that a new
-  character (skills at racial start, no gold) cannot pass, including a check on a hand-over from an ally;
-  (b) a contradiction inside the record, or with the world data (census, story data);
-  (c) a contradiction with canon lore or the extrapolation;
-  (d) a Nordic element we add, or anything levelled against the player;
-  (e) a breach of the skill rule (quest-write §3 item 3, program-checked): a stage (a pure choice stage excepted) not
-  won by a skill route that can fail, a main quest without two ways through on different skills, a faction quest
-  ignoring its faction's skills, a stage with no entry, objective and target saying what to do and where, a route that climbs a tree,
-  or a fail-forward demanded for an essential person;
-  (f) a stage outside the proven block shapes (quest-write §4): a start on entering a cell or area, a trigger area
-  carrying a check beyond its prerequisite stage, an escort without a follow package and a destination area, a kind
-  of item instead of one named item, an "all of" without hidden stages, a person removed by killing in a fragment, a
-  fight without a fixed-level enemy or a Speech or gold route, standing kept other than as a global, a speaker not
-  picked by their placed reference;
-  (g) a place, person or thing that is not a real reference or a ledger edit; a people spot off the winning navmesh
-  or without a real floor; a thing not on a read surface; a model missing from the load order; a person or place the
-  player cannot reach on some path into the stage (a locked door without its key on that path);
-  (h) harder to script than an average Skyrim side quest (stages, aliases, conditions, timers, bespoke scripts);
-  (i) a climax or resolution that is a procedure (an arbitration, hearing, trial, ruling, witnessed or spoken
-  release, negotiation at a table); procedure may colour a quest, never resolve it.
-  Nothing else is blocking: write it as a `note` with its weight (`high`, `low`).
-- A failed check that stays closed until the player returns stronger is allowed; so is a quest with no fail-forward
-  where failure should not matter. A spot that fails placement is fixed by moving it within its settlement (a row
-  edit), not by redesigning the quest.
-- **Settled is settled:** never re-raise what `review.settled` holds, or a variant, unless a change reopens it (say how).
-- **Prefer subtraction:** a fix cuts or rewrites into a proven shape; it never adds a stage, branch, ending or
-  mechanism a cut would answer.
-- **Report every finding.** Round 1 reads the whole record. Every later round is a delta: only the rows changed
-  since the last review (`git diff <last reviewed sha> -- story/data/db/` read against the export) and every row that
-  cites them; the loop ends when a delta round raises nothing blocking. A line outline or premise-level record is
-  judged at its own level (spirit, beats, lore, motifs, branching, clashes); place fit (g) is checked on a full record.
-- The planner decides which findings are fixed and when the loop ends.
+**Blocking** means only:
 
-## 1. Set-up
+- **(a) Cannot be finished**: a stage that cannot be reached or left; a way forward that a new character cannot take
+  and that has no other way on a different skill, a price or a fight; a check on hearing a task, a hand-over or a
+  report; a death that leaves the quest stuck with no failed ending.
+- **(b) Contradiction**: inside the record, with the world data (census, story data), or between the record and its
+  compiled form.
+- **(c) Lore**: against canon or the extrapolation, or resting on an unsourced claim (checklist 18).
+- **(d) A Nordic element** we add, or anything levelled against the player.
+- **(e) The skill rule**: a step that asks something of the player and names no skill, or whose only way cannot go
+  wrong; a main quest without two ways through on different skills; a faction quest that ignores its faction's
+  skills; a step whose entry, objective and target do not say what to do and where.
+- **(f) Outside the ceiling**: anything [quest-system](../quest-system/SKILL.md) does not list, even where the form
+  would compile it (a line or journal entry that implies a person walks for the quest, an event staged in view, a
+  stage that waits on the player reaching a place); a switch on or off not away from the player; more than one person
+  speaking first.
+- **(g) Untrue of the built world**: a place, person or thing that is neither a placement row nor in the census; a
+  spot not measured; a line, prompt or journal entry that describes what is not there, work the person is not seen
+  to do, or something the game's systems do not do; a place named for what nothing built reads as.
+- **(h) A procedure as the play**: a climax or resolution that is a hearing, ruling, trial, witnessed release or
+  negotiation at a table; a central action of delivering, filing, counting or reading a record.
+- **(i) A new player cannot tell what is going on**: a name or local word used before it is given; a choice whose
+  options are not named before it is made; a join with nothing said of what it is, whom it serves, what it wants,
+  what it pays and why to hesitate.
 
-- Run as a fresh agent given only the quest record, the world records it cites and this skill; never the author's
-  reasoning. For a quest already built, read the built quest and topics as well (`plugin/Argonia/Quests`,
-  `DialogTopics`) and report any difference from the record as blocking (b). Read the record with `python3 -m tools.argonia_world.quest_record export <quest id>` and the world with
+Nothing else is blocking: write it as a note with its weight (`high`, `low`), ranked by what a player would notice.
+
+- A failed check that stays closed until the player returns stronger is allowed.
+- **Settled is settled**: never re-raise what `review.settled` holds, or a variant of it, unless a change reopens it
+  (say how).
+- **Prefer subtraction**: a fix cuts, or rewrites a step with [principles/general.md](../quest-write/principles/general.md)'s
+  table of dramatic jobs; it never adds a stage, branch, ending or mechanism a cut would answer.
+- **Rounds.** Round 1 reads the whole record. A later round reads only the rows changed since the last review
+  (`git diff <last reviewed sha> -- story/data/` read against the export) and every row that cites them; the loop
+  ends when a round raises nothing blocking. A line record or outline is judged at its own level (spirit, arc, lore,
+  motifs, branching, clashes); placements (g) are checked on a full record.
+- The lead decides which notes are acted on and when the loop ends.
+
+## 2. Set-up
+
+- You are a fresh agent given only the quest id, the world data and this skill; never the author's reasoning.
+- The record: `python3 -m tools.argonia_world.quest_record export <quest id>`. The world:
   `python3 -m tools.argonia_world.db query "SELECT ..."` (`fact` by `place_id`, `npc`, `npc_faction`, `stance*`,
-  `culture_*`, the place's other quests). The lore: `../../../story/lore/`. Judge the quest against the BM&V place
-  it names in `foundation`.
-- First run `python3 -m tools.argonia_world.adaptation_check`. Its `record` lines (an id not in the census, an
-  unplaced speaker, a needed person neither essential, protected nor failed forward from, an edit to a shared base,
-  a vanilla door model, a skill gate walked round, a fact a speaker cannot know) and `wiring` lines (a start on
-  entering a place, a trigger area with an extra check, an unreachable stage, no start, a hasItem trigger for an
-  item already held, a person or item present before the start, a topicHeardFrom speaker with no topic row) are
-  findings already; copy them, do not re-judge them.
-- Also binding: the quest index rules and coverage (`../../../story/design/quests/index/README.md` §47b–c,
-  `index/coverage.md`), 00-overview §4, the condition vocabulary (`condition_term` rows;
-  `../../../story/design/quests/85-condition-vocabulary.md`), the style guide's journal register
-  (`../../../story/design/text/style-guide.md`), and the block set (`docs/design/blocks.md`, the rewrite table in
-  `docs/design/quests-on-a-world.md` part 5).
-- Read the principle files the record routes to (`../quest-write/shapes.yaml`: `principles/general.md`,
-  `principles/actions.md`, the group's file, each shape's file). Each principle is part of this review: a record
-  that breaks one is a finding, citing the principle's source tag (`principles/general.md` holds the key), and the
-  owner's bar items 1 to 3 in `general.md` are the skill rule, blocking under (e). The skill catalogue and each line's leaning are
-  `../quest-write/skill-uses.yaml` and `../quest-write/profiles.yaml`.
+  `culture_*`, `bmv_*`, the place's other quests). The lore: `story/lore/`; the vibe:
+  [province-vibe](../../../story/design/province-vibe.md); the bar: [owner-bar](../../../story/design/owner-bar.md).
+- Run first, and copy every line about this quest as a finding without re-judging it:
+  `python3 -m tools.questform compile <quest id> --out out/<review dir>`, then `python3 -m tools.questform check`
+  on the form (each failed rule is blocking (a) or (f)); `python3 -m tools.playtest reach` on it (each unreached
+  stage is blocking (a)); `python3 -m tools.argonia_world.adaptation_check` (its `record` and `wiring` lines).
+- A built quest: also read it back (`bash tools/ArgoniaPlugin/plugin.sh questform-read <dir>`) and run
+  `python3 -m tools.questform diff <designed> <built>`; every difference is blocking (b).
+- Read the principle files the record routes to ([shapes.yaml](../quest-write/shapes.yaml): `general.md`,
+  `actions.md`, the group's file, each shape's file). Each principle is part of this review: a record that breaks one
+  is a finding, citing the principle's source tag. The skill catalogue and each line's leaning:
+  [skill-uses.yaml](../quest-write/skill-uses.yaml), [profiles.yaml](../quest-write/profiles.yaml).
+- A quest of a line: read its outline in `story/design/quests/lines/<line>.md`; a difference from it is a finding.
 
-## 2. Read it twice
+## 3. Read it twice
 
-1. **As the player**, knowing only `playerStart` and each stage's `learns`: from dialogue and the journal alone, can
-   I tell what to do next and where? Where would I be lost, bored or unrewarded?
-2. **As the designer**, below.
+1. **As a new player**, knowing only `playerStart` and each stage's `learns`, the entries, objectives and the
+   topics' intents: what do I think is going on, what do I do next and where, whom do I trust? Where would I be lost,
+   bored or unrewarded? What would I retell?
+2. **As a designer**, with the checklist below.
 
-## 3. Checklist (yes or no, with the record ids that show it; then each routed principle file's checklist)
+## 4. Checklist (yes or no, with the record ids that show it; then each routed principle file's checklist)
 
 Premise and truth
 1. Can the premise be said in one sentence, and would a sensible person in Black Marsh act as it requires?
 2. Is the truth a timeline of physical events, and does every clue, rumour and lie follow from it?
 3. Does each person's every action pass the plausibility test given their wants, fears and knowledge?
 
-Investigation
+The trail
 4. Does each conclusion have at least three clues in at least two forms?
-5. Can the player finish after missing any one clue, failing any one check (or coming back stronger), or going in
-   another order?
+5. Can the player finish after missing any one clue, failing any one check, or going in another order?
 6. Does the player find out or decide something, rather than being told?
-7. Where the shape is an investigation, can the player present evidence and accuse, each written as a stage
-   condition?
 
 Play
-8. Is each thing the player must do next its own stage, with an entry that tells that step only, one objective and a
-   target (every visible objective names a person, door, container or marker)? Can the step also be followed from
-   the entry's words alone (landmark, direction, distance)?
-8b. Does any entry, objective or topic intent tell something the build does not show or place (a scene with no
-    lines, a prop not in `things`, a host that was replaced)?
-8c. Can the player say each prompt with what they know at that stage, and is each a sentence, not a bare label? Does
-    every question a speaker asks have reply topics? Does every offer ("here is", "take this", "I will follow") have
-    the action that delivers it? Does any line refuse while its fragment advances the stage?
-8d. Does every topic have a last stage before the first ending, and does anyone still offer or describe the task
-    after an ending?
-8e. Is any fact given to two speakers in one place and stage window?
-8f. Does each ending leave its people a greeting that is true of that ending and no other?
-8g. Does an opening, or any sequence the player must finish, keep the player where they are, with no long
-    unescorted walk? Does a person the player follows set off only once the player can see them, and walk on one
-    navmesh island?
-9. Is there more than one approach somewhere, with different costs?
-10. Is it long enough beside comparable quests from Morrowind, Oblivion and Skyrim?
-11. Does every `journalText` follow the journal register (first person, "I'm to" for one step, the next step and
-    not the whole chain, names as the game shows them, failure entries flat) and every `objectiveText` the objective
-    form (imperative, full stop, its requirement in numbers)?
+7. Is each thing to do next its own stage, with an entry that tells that step only (first person, past tense, "I'm
+   to ..."), an objective in the imperative and a target switched on at it? Can the step also be followed from the
+   entry's words (landmark, direction, a word for how far)?
+8. Can the player say each prompt with what they know at that stage, and is each a sentence? Does every question a
+   speaker asks have reply topics, and every offer the result that delivers it? Does any line refuse while it moves
+   the quest?
+9. Is every hand-in gated on the thing held, however it was got, and does a thing held early still move the quest?
+10. Does each check have its own fallback line naming what would change it, and is no threshold written in a prompt?
+11. Is any task still offered or described after the quest has ended? Does each ending leave its people a greeting
+    true of that ending, and does a line shared by several endings say only what is true of all?
+12. Is any fact given to two speakers in one place and stage window?
+13. Is there more than one approach somewhere, with different costs, and is the quest long enough beside comparable
+    Morrowind, Oblivion and Skyrim quests?
+
+Who can die
+14. Does every line read sensibly with each named person dead, or is that person a who-must-live row with a window
+    and a failed ending that says so? Does a main or faction quest's row show its message, and a minor quest's not?
+15. Does each death that moves the quest belong to a hostile person (fixed level, a reward in proportion), a
+    who-must-live person or a killing marked the player's choice?
 
 Endings and rewards
-12. Does a standalone quest, or a quest line as a whole, have at least two endings with different costs and rewards
-    the player will feel in play (a quest inside a line may have one)?
-13. Is every reward concrete, fixed, proportionate and tied to the story?
+16. Does a standalone quest, or a line as a whole, have at least two endings with different costs the player will
+    feel? Does each ending say where the player sees it?
+17. Is every reward concrete, fixed, proportionate and tied to the story?
 
-Skills (blocking, item e)
-14. Name the skills each stage uses. Does every stage that asks something have a route that can fail; does a main
-    quest have two ways through on different skills, a faction quest its faction's skills? Is each fail-forward
-    where failure should matter, and is no essential person given one?
-
-Build shapes (blocking, item f)
-15. Is every stage in a proven shape: started by an opening line or a chain; trigger areas gated only by their
-    prerequisite stage; escorts as a follow package and a destination area; one named item; hidden stages for
-    "all of"; disabling, not killing; fixed-level fights or Speech or gold routes; standing as a global; speakers
-    picked by their placed reference?
-
-Places (blocking, item g)
-16. Is every place, person and thing a real reference or a ledger edit linked to the quest; people spots on the
-    winning navmesh with a real floor; things on a read surface; every model in the load order? Does every `new`
-    thing have its where and state per stage, and every change to the world written as a row?
-
-Lore and vibe (blocking, item c)
-17. Read `../../../story/design/province-vibe.md` and the lore the record names, and check every person, role, job,
-    place, institution, object and custom against the lore and the extrapolation (`../../../story/lore/`, first
-    `extrapolation/argonia-4e201-state.md`, `settlement-register.md`, `gap-register.md`, the place's dossier). It is
-    blocking when the quest:
-    - contradicts canon or the extrapolation (a Nordic element, a vanilla Skyrim reference, the wrong era, an office
-      the lore says is gone, absent or elsewhere);
-    - rests on a claim with no `L<n>` entry, or on a `QA<n>` gap row that is not the least inventive reading of its
-      anchor, contradicts the lore, or puts a §9 motif where §9 does not (read every `QA<n>` row cited);
-    - gives a person a role the settlement and culture do not have in 4E 201 (`province-vibe.md` §3–4);
-    - moves information, authority, law, trade or debt in a way that does not fit the place (§5);
-    - uses a §9 motif where §9 does not put it, has more than a third of its stages hollow (quest-write §6b.3), or
-      has a central action of delivering, filing, counting or reading a record;
-    - otherwise jars with `province-vibe.md`.
-    Run `python3 ../dialogue-write/lint.py` over the stages' `journalText` and justify or flag every B10 warning.
-    Name the source file and section for each finding. For a long record, split the lore reading across cheap
-    subagents, each given the claims and the files to check them in.
-17b. Does the quest add to the vibe (`province-vibe.md` §10) rather than only avoid jarring with it?
+Lore and vibe (blocking, c)
+18. Check every person, role, job, place, institution, object and custom against `story/lore/` (first
+    `extrapolation/argonia-4e201-state.md`, `settlement-register.md`, `gap-register.md`, the place's dossier) and
+    province-vibe. Blocking where the quest contradicts canon or the extrapolation; rests on a claim with no `L<n>`
+    entry or on a `QA<n>` gap row that is not the least inventive reading of its anchor; gives a person a role the
+    settlement does not have in 4E 201 (§3 and §4); moves information, law, trade or debt against §5; or uses a §9
+    motif where §9 does not put it. Run `python3 .claude/skills/dialogue-write/lint.py` over the journal texts and
+    justify or flag every B10 warning. For a long record, split the lore reading across cheap subagents, each given
+    the claims and the files to check them in.
+19. Does the quest add to the vibe (province-vibe §10) rather than only avoid jarring with it?
 
 Fit
-18. Do the actions follow from the truth and the place, lean to the line's or faction's profile, and vary from the
-    quests around it?
-19. Does the record keep every principle of its shapes' files, and is every required `shapeData` section real (what
-    the drama turns on, never a register of records)?
-20. Is the quest built on its old design (`foundation`), and is each change from it an improvement?
-21. Does it pass the novelty rule (index README §47c), and share no reversal with another quest at the same place?
+20. Do the actions follow from the truth and the place, lean to the line's profile, and vary from the quests around
+    it? Is each `shapeData` section real (what the drama turns on, never a register of records)?
+21. Is the quest built on its foundation or its outline, and is each change an improvement?
 22. Do the cast match their `npc` rows (race, sex, role) and the roster, with any difference marked `invented`?
+23. Will the player understand every name and thing when first met?
 
-Text
-23. Will the player understand every name and thing when first met? What needs spelling out?
-24. Does each topic's intent only rephrase its listed facts?
+## 5. Report
 
-## 4. Report
-
-Return every finding, most serious first, blocking ones at the top with `severity: blocking`, each with the record
-ids, what is wrong, what the player would experience and a proposed fix (a rewrite into a proven shape, a moved
-spot, a cut); in a delta round, only findings on the changed rows and the rows citing them. End with one line of ids
-per failed checklist item, marking blocking items `(B)`. The quest writer copies the findings into the record's
-`review` section with how each was answered.
+Return every finding, most serious first, blocking ones at the top with `severity: blocking` and their letter, each
+with the record ids, what is wrong, what the player would meet and a proposed fix (a cut, a rewrite with a dramatic
+job from general.md, a measured spot); in a later round, only findings on the changed rows and the rows citing them.
+End with one line of ids per failed checklist item, marking blocking ones `(B)`. The writer copies the findings into
+the record's `review` section with how each was answered.

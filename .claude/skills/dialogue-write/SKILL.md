@@ -5,6 +5,8 @@ description: Write topic dialogue in Morrowind's voice, built as Skyrim topics, 
 
 # Writing dialogue for one person
 
+In the quest path ([quest-system](../quest-system/SKILL.md)) this comes after quest-write's briefs and the designed quest's paper playtest, and before text-review and the paper playtest of the written quest.
+
 The goal: lines that read as if they were Morrowind's, about our people
 and places in Black Marsh & Valenwood's (BM&V's) world; the lines become Creation Kit dialogue records on top of BM&V. Bans are in `bans.yaml`, voice evidence in
 `voices.md`, deliberate echoes in `echoes.yaml`.

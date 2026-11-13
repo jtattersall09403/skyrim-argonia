@@ -24,7 +24,7 @@ quest.local.lq25` (local).
 | `region`, `settlement`, `anchorPlaces` | catalogue region; a live settlement `place.` id, also in `anchorPlaces` |
 | `premise` | one clause the player could say back afterwards |
 | `costTier`, `milestone` | `S`/`M`/`L` (00-overview, cost tiers); 1 or 2 |
-| `touches`, `sockets`, `essentialTopics`, `sources` | shared ids read or written; placed sockets; topics never gated on disposition; the docs the row came from |
+| `touches`, `sockets`, `essentialTopics`, `sources` | shared ids read or written; placed sockets; topics never gated on regard (the column's name); the docs the row came from |
 | `startWhen`, `start` | optional: a condition that enters the quest at `start` (85 §D) |
 | `stages` | the stage graph below |
 
@@ -35,8 +35,8 @@ quest.local.lq25` (local).
 | `id` | 10, 20…; 90+ for endings and fail-forward |
 | `place` | the `place.` id the stage happens at |
 | `journal` | the text key `text.journal.<code>.<id>`; + `journalText`: the entry's draft, in the style guide's `journal` register (§4 below) |
-| `onEnter` | actions (85 §B), e.g. `{grantTopic: topic.x}`, `{setFlag: [flag.x, true]}` |
-| `objectives` | `{id, text: text.objective.<code>.<id>, target, completeWhen: <condition>}`; + `objectiveText`: an imperative with a full stop; `target`: the cast, thing or ref id the compass marker points at (`none` only for a choice between several) |
+| `onEnter` | actions (85 §B) applied as the stage begins, e.g. `{giveItem: [thing.x, 1]}`, `{setFlag: [flag.x, true]}` |
+| `objectives` | `{id, text: text.objective.<code>.<id>, target, completeWhen: <condition>}`; + `objectiveText`: an imperative with a full stop; `target`: the placement ref the compass marker points at, or several separated by commas where the step can be done at several people or things |
 | + `hidden` | `1` for a stage the build needs and the player never reads (the stage 0 a quest waits at for its opening line); it has no journal or objective |
 | `successors`, `failForward` | `{to, when: <condition>, until}`. A death, take or use that stands for one step (the broker's death in place of talking to him) applies only while that step is open: the compiler closes it at the lowest other stage its stage moves to; `until` (a stage) is written only where that is not the right stage. A fail-forward on a person's death to a failed ending names someone the quest cannot go on without (who must live): it holds over the stages that carry it, never before the quest's first shown stage, and a person dead before then leaves the quest unable to start. A main-quest record names at least one |
 | `ending` | `complete` or `failed` on an end stage; + `endingId`: the `endings` row it plays |
@@ -50,7 +50,7 @@ quest.local.lq25` (local).
 | # | Section | What it holds | Built from |
 |---|---|---|---|
 | 1 | `recordStatus`, `foundation` | `design`, `reviewed`, `briefed`, `written`; which imported design it rebuilds (the row, its 40-factions or 50-side-quests entry) and what changed | the import |
-| 2 | `recordSources` | the place facts file, culture sheets, stance file, roster section read, by path or id; `lore`: each lore file and section checked (quest-write §6b) | world data |
+| 2 | `recordSources` | the place facts file, culture sheets, stance file, roster section read, by path or id; `lore`: each lore file and section checked (quest-write §5) | world data |
 | 3 | `actionPlan`, `centrepiece` | the skill uses the quest is built round (`skill`, `use`, reason), from `action_plan.py`; `centrepiece`: one verb tag (`skill-uses.yaml` verbTags; 00-overview §4) | profile, place, shapes |
 | 4 | `truth` | numbered physical events: `id`, `when`, `who`, `where`, `what` (and why) | premise + cast motives |
 | 5 | `playerStart`, `facts` | facts any player has on arrival; the quest's new facts `{id, claim, from}`, `from` a truth event, a place fact or `culture.*#field` | truth |
@@ -62,7 +62,7 @@ quest.local.lq25` (local).
 | 10 | `stages` | as §1, with actions, learns and directions | conclusions + clues |
 | 11 | `endings` | `{id, when, world (actions, may be left out), seen, rewards (actions)}`: two or more with real costs | stages |
 | 12 | `topics` | `{id: topic.<slug>, label, person, kind, stages, essential, when, intent, fallback, uses, hides, grants}`; the id is an existing `topic` row or `new`; `kind` is left out for a topic the player picks, `greeting`, or `speaks-first` (the person walks up and says it; it stays open as a topic too). `when` gates every line of the topic (a hand-in that moves no stage: `hasItem`); `fallback` is what the person says when the line's check fails, its gist until the lines are written. See "Checks and their fallbacks" below | cast + stages |
-| 13 | `review` | the `quest-review` findings and how each was answered; first the writer's lore-check entries (`id: L<n>`, `severity: lore`, quest-write §6b), then the reviewer's (`severity: blocking` for a quest-review §0 blocking item, otherwise `high`, `medium`, `low`) | quest-write §6b, quest-review |
+| 13 | `review` | the `quest-review` findings and how each was answered; first the writer's lore-check entries (`id: L<n>`, `severity: lore`, quest-write §5), then the reviewer's (`severity: blocking` for a quest-review §1 blocking item, otherwise `high`, `medium`, `low`) | quest-write §5, quest-review |
 
 A **line record** (faction, main, Daedric) comes before its quests: `principles/questlines.md` lists its sections.
 
@@ -101,27 +101,25 @@ A key opens a lock, but what an owned container holds stays its owner's: taking 
 player have it (she gives or sells the key and means the jar to go), the stage that gives the key also carries
 `giveOwnership: <the container's ref>`.
 
-## 3. The engine mapping: the built shapes
+## 3. How the record becomes the game
 
-A record is built through its quest form (`python3 -m tools.questform compile <quest id>`;
-[quest-form](../../../docs/design/quest-form.md) maps each record term to the form and lists the terms it refuses).
+`python3 -m tools.questform compile <quest id>` turns the record into its quest form; the
+[quest-form](../../../docs/design/quest-form.md) table "Compiling a quest record" maps each record term to the form and
+lists the terms it refuses (each outside the ceiling). The generic builder then makes the same shape of records for
+every form ("How a form becomes records" there).
 
-| Record field | Built as |
+| Record field | In the form |
 |---|---|
-| `id`, `code`, `stages[].id` | one QUST per quest, its editor id from `code`; stage indices from the ids |
-| `journal`, `journalText` | the stage's QUST log entry |
-| `objectives`, `target` | a QOBJ with a QSTA on a forced-ref alias of the target |
-| `successors`, `failForward`, `ending`, `onEnter`, `endings[].world`, `endings[].rewards` | begin fragments that set stages and apply actions (85 §B), native where Skyrim has one (SetStage, AddItem) |
-| any condition (`completeWhen`, `when`, `startWhen`, topic gates) | a native condition (85 §A) |
-| topic lines | a DIAL and INFO with GetIsID or GetIsReference, the stage window and the check as conditions |
-| `sets` of a line | the INFO's fragment |
-| a choice | linked topics in the question's branch |
-| a greeting after an ending | a Hello topic gated on the ending stage |
-| `facts[]` | `fact` rows (`quest_id`) |
-| `things[]` with `source: new` | a provision row the world-builder places at `where`; `states` become enable and disable references or local variants per stage |
-| `cast[].changes` | a per-stage variant of the person's topic |
-| `touches`, `sockets`, `tier` | the validator's checks and tier protection |
-| `actionPlan`, `actions`, `approaches`, `truth`, `conclusions`, `clues`, `shapeData`, `playerStart`, `learns`, `centrepiece`, `review` | design only: read by `brief.py`, `quest-review` and the ledger; not built |
+| `id`, `code`, `stages[].id`, `group` | the quest, its editor id `ARG_<code>`, its stage numbers, its kind (`main`, `faction`, `minor`) |
+| `journalText`, `hidden`, `ending` | each stage's journal text, whether it shows, its ending |
+| `objectives`, `objectiveText`, `target` | objectives with their words and targets, shown and completed at stages |
+| `successors`, `failForward` | lines that set stages (a `topicHeardFrom` with its gates), and take, use, death and quest-stage triggers |
+| `onEnter`, `endings[].world`, `endings[].rewards` | the stage's results |
+| a `failForward` on a person's death to a failed ending | a who-must-live row with its window |
+| `placements` | refs: existing, or placed by anchor, in a container or carried, with lock, owner, level and `at` |
+| `topics` and the written lines (`story/data/quest_lines/<code>.json`) | lines in the record's order, with conditions, results, windows; a gist until written |
+| `things[].name`, `text` for items that are not refs | `names`, `texts` |
+| `actionPlan`, `actions`, `approaches`, `truth`, `facts`, `cast`, `conclusions`, `clues`, `shapeData`, `playerStart`, `learns`, `centrepiece`, `review` | design only: read by `brief.py` and `quest-review`; not built |
 
 ## 4. Journal rules
 
@@ -138,6 +136,6 @@ flat entry with its consequence. Directions are landmark prose in the entry besi
 - **People come from the registry.** Race, sex, role and home are the `npc` row's; voice is the `stance` row's. A record
   that needs a different value marks it `invented` and adds it to the `npc` or `stance` row; it never silently differs.
 - **Motives cite the sheets.** Each `wants`, `fears` and hidden reason cites a culture-sheet or registry entry, or is flagged `invented`.
-- **The world is built from the record.** A `new` thing is a provision row; dialogue names a thing only by its id here.
+- **The world is built from the record.** Every placed person and thing is a `placements` row; dialogue names a thing only by its id here.
 - **Player knowledge is computed** from `playerStart` and each earlier stage's `learns`.
 - **New facts flow up, not sideways.** A writer who needs a fact asks; it is added here and the briefs are rebuilt.

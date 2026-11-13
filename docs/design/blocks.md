@@ -1,143 +1,96 @@
-# The block set: every engine mechanic the first story slice uses
+# The block set: the quest form's vocabulary
 
-Phase 2 ([brief](../phases/2-first-act-on-paper.md)). Derived from the act's quest records (`quest.main.mq01`,
-`mq03`, `mq04`, `mq05`; adaptation in [adaptation](../../story/design/quests/adaptation.md) §5). A quest is QUST stages
-joined by connectors: a **trigger** moves a stage, a **condition** gates a trigger or a line, an **effect** is what a
-stage does, and a **world edit** is the record under them. Each block has one record shape (Spriggit YAML under
-`plugin/Argonia`, built by `tools/ArgoniaPlugin`) and at most one Papyrus shape (a stage fragment, `QF_`, or a
-dialogue fragment, `TIF_`). Precedent is counted in Skyrim.esm (decision 0034; the counts and how they were taken:
-[quest-block-precedent](../research/skyrim/quest-block-precedent.md)). No block needs SKSE.
+A quest is data in one fixed form ([quest-form](quest-form.md)); the blocks are the words that form may use. Each
+block has one engine shape, made by the one generic builder (`tools/ArgoniaPlugin/QuestForm.cs`) from one of three
+things: our generic scripts (`papyrus/ARG_QuestStages.psc`, `ARG_Effects.psc`, `ARG_LineEffects.psc`,
+`ARG_AliasEffects.psc`), Skyrim's own default scripts, or the one force-greet package. Each block's Skyrim precedent
+is counted in Skyrim.esm where [quest-block-precedent](../research/skyrim/quest-block-precedent.md) or
+[quest-form-engine-facts](../research/skyrim/quest-form-engine-facts.md) gives it (decision 0034).
 
-## Triggers (what moves a stage)
+Because every quest is built from the same blocks by the same builder, a block proven once in game is proven for every
+quest. The block test (`tools/questform/blocktest/`, two forms that use every trigger, condition and result) is built
+by every seed, read back, compared with its forms, and walked once in game by the owner. A quest needing anything
+outside these blocks is rewritten (the dramatic jobs table in
+[principles/general.md](../../.claude/skills/quest-write/principles/general.md)); a new block is a change to the
+form, the builder, the reader, the paper game and the block test together, proven once by an owner check.
 
-| Block | Record shape | Papyrus shape | Skyrim.esm precedent |
-|---|---|---|---|
-| **TR-topic**: a dialogue topic or choice | DIAL in the quest's branch; INFO with conditions; the choice is one INFO per answer | TIF_ `GetOwningQuest().SetStage(n)` | 5,540 INFOs with a fragment, in 475 quests |
-| **TR-zone**: entering an area | ACTI trigger box (XPRM primitive) placed as REFR with the vanilla `defaultSetStageTrigScript` (quest, stage, prerequisite stage). It fires when the player walks in after the prerequisite is done, so it stands where the player is not when that stage is set, clear of the zone before it; the quest's ending disables it | none of ours | 327 refs carry it; 2,966 refs of 256 *Trig* bases |
-| **TR-activate**: using or reading a thing | the thing is a forced-ref alias | the vanilla `defaultSetStageAliasScript` / `defaultSetStageActScript` | 119 quests use the alias set-stage family; 178 activate-script records; 6 read-book set-stage |
-| **TR-acquire**: picking up an item | the item is a forced-ref alias | the vanilla `defaultSetStageOnPlayerAcquire` | 16 quests |
-| **TR-death**: a death, or a group cleared | the actor (or each of the group) is a forced-ref alias | the vanilla `defaultSetStageOnDeathRefAlias`; for a group, `defaultCounterIncrementOnDeath` | 20 and 47 |
-| **TR-chain**: another quest's stage | the next quest's QUST (not Start Game Enabled) | QF_ `NextQuest.Start()` / `SetStage(10)` at the ending stage | 86 quests read another quest's stage; 1,596 INFOs do |
-| **TR-choice**: an answer to a question | each answer a DIAL in the question's own branch (not top level), the question's INFO linking to them (TCLT) | TIF_ on the answer's INFO | Skyrim's question-and-answer pairs; MQ01's roll and its three answers |
-| **TR-scene**: a scene finishing | SCEN owned by the quest | SCEN end fragment `SetStage(n)` | 577 scenes have fragments; 1,706 scenes in 1,378 quests |
+## Triggers: what moves a stage
 
-## Conditions (what gates a trigger or a line), all CTDA on INFO, QUST or PACK
-
-| Block | Function | Precedent (uses in QUST, INFO, PACK, SCEN) |
+| Block (form) | Engine shape | Skyrim precedent |
 |---|---|---|
-| **C-stage** | GetStage / GetStageDone (own quest or another's) | 8,029 / 4,175 |
-| **C-global** | GetGlobalValue (settlement standing, owings) | 1,579 |
-| **C-faction** | GetInFaction / GetFactionRank | 6,904 / 259 |
-| **C-item** | GetItemCount | 678 |
-| **C-skill** | GetActorValue on a skill (speech, sneak, alchemy...) | 150 on skills, of 543 |
-| **C-time** | GetCurrentTime | 518 |
-| **C-alive** | GetDead | 1,028 |
-| **C-detected** | GetDetected, on the condition term `detectedBy` (sneak that must go unseen) | 36 (QUST 4, INFO 5, PACK 16, SCEN 11), in 20 records |
+| a line (`lines[]` with a `set_stage` result): a topic, an answer, a greeting | a topic and its responses with the speaker, the stage window and the form's conditions; `ARG_LineEffects` on each response runs the line's rows as it ends | 5,540 INFOs with a fragment, in 475 quests |
+| an answer to a question (`answer`) | a topic in the question's own branch, the question's response linking to it | Skyrim's question-and-answer pairs |
+| taking a thing (`take`) | `defaultSetStageOnPlayerAcquire` on the thing's alias; a second take of a placed thing: `defaultSetStageOnPlayerAcquireItem` on the reference; a thing held before the take opens: the prerequisite stage's IfHolds then SetStage | 16 quests |
+| using or reading a thing (`use`) | `defaultSetStageOnCloseBook` for a book, else `defaultSetStageAliasScript` (activate) on the alias | 119 quests use the alias set-stage family; 6 read-book set-stage |
+| a death (`death`) | `defaultSetStageOnDeathRefAlias` on the person's alias; with `until`, `ARG_AliasEffects` with the window's guards | 20 quests |
+| another quest's stage (`quest_stage`) | two rows on that quest's stage: IfStageDone (prerequisite), SetStageIfRunning | 86 quests read another quest's stage; 1,596 INFOs do |
+| a person speaking first (`speaks_first`) | the quest's one package, a copy of vanilla's `MS05InductionForcegreet` (template ForceGreet), held while the line's window is open, plus the same line under the quest's Hello | 302 packages use the ForceGreet template, 214 of them alias packages in 124 quests |
 
-Flags in the records (`flag.mq*`) are not a block of their own: each is a stage done (C-stage) or a global
-(C-global), whichever the record writes it as.
+## Conditions: what gates a line or a stage
 
-## Effects (what a stage does)
+All are conditions on the response (or the start check's rows); `not` inverts the comparison.
 
-| Block | Record shape | Papyrus shape | Precedent |
-|---|---|---|---|
-| **E-stage**: the next stage, its journal entry and objective | QUST stage with log entry (CNAM) and QOBJ objective with at least one target (QSTA) naming a forced-ref alias (a person, door, zone marker or thing) that is enabled at that stage; the kit refuses an objective without a target. The ending: the completing stage holds a log entry with text and the Complete Quest flag, and the quest is Run Once | QF_ `SetStage`, `SetObjectiveDisplayed/Completed`; an ending's fragment holds the guard, completes the shown objectives, disarms every zone of the quest (`DisarmZones()`), calls `IncSideQuests()` for a side quest, and calls `Stop()` last | 726 log stages in 203 quests; 1,452 objectives in 396, each pointing at an alias (MQ01's stages 10, 20, 30) |
-| **E-enable**: show or hide a set of things | each set's refs carry XESP to one XMarker parent; the parent starts disabled or enabled | QF_ `Parent.Enable()` / `Disable()` | 23,239 refs with XESP; 911 initially disabled with one |
-| **E-item**: give or take an item or gold | the item is a MISC/BOOK/WEAP record (fixed, never a levelled list) | QF_/TIF_ `Game.GetPlayer().AddItem/RemoveItem` | every vanilla reward; fragment bodies not counted (compiled) |
-| **E-move**: place or move an actor or the player | an XMarker as the destination | QF_ `Ref.MoveTo(Marker)` | MQ101 and the vanilla dream quest DA16 do this; not counted |
-| **E-faction**: join a faction or change rank | alias faction list (ALFC) on the alias, or a fragment | QF_ `AddToFaction/SetFactionRank` | 1,215 alias factions in 140 quests |
-| **E-scene**: start a scene | SCEN owned by the quest, actors as aliases | QF_ `Scene.Start()` | 1,706 scenes |
-| **E-package**: give an actor new behaviour | alias package list: the kit's Travel (to a marker on the actor's navmesh), Follow (the player) or a schedule; each a copy of a vanilla package of type Package (never a template type), owner quest set, conditions on the stage. Start and destination lie on one winning navmesh. A walk is gated on a hidden stage set once the walker's 3D is loaded | that stage's fragment: `Alias.GetActorRef().EvaluatePackage()` per walker; a follow (started by the person's own line) or a schedule needs none | 4,125 alias packages in 365 quests, none template-type |
-| **E-global**: change standing, owings, a remembered choice | GLOB record | QF_/TIF_ `Global.SetValue/Mod` | backs the 1,579 GetGlobalValue uses |
-| **E-regard**: a person likes the player more or less | none | TIF_ `Actor.SetRelationshipRank(Player, n)` | the vanilla favour quests' `favorNPCDeathScript` set (46 quests) stand on it; not counted |
-
-## World edits (the records under the blocks)
-
-| Block | Record shape | Precedent |
+| Block (form) | Function | Uses in Skyrim.esm (QUST, INFO, PACK, SCEN) |
 |---|---|---|
-| **W-npc**: a new person from a template, on existing navmesh | NPC_ with TPLT to a BM&V or vanilla base, our name, placed ACHR, persistent | 3,651 of 5,118 NPC_ have a template |
-| **W-fixed**: a creature or enemy at a fixed level | NPC_ with the PC-level-mult flag off, a fixed level for its band (decision 0035) | 4,664 of 5,118 NPC_ are fixed level |
-| **W-ref**: a new, moved or removed reference | REFR in a BM&V cell (our override of the cell's persistent/temporary group), placed by the placement method below; a removal is the ref's own override set initially disabled (record flag 0x800), or a set under an enable parent that stays off, never a delete | 4,072 placements start disabled (2,682 REFR, 1,390 ACHR); 23,239 carry an enable parent (XESP) |
-| **W-navmesh**: navmesh for a room that has none, so placed people can walk | NAVM in the interior CELL's group, made in the Creation Kit from the room's geometry | 583 of 590 interiors carry navmesh (1,519 NAVM); the seven without are test, preload or maze cells |
-| **W-name**: a name for a place (an interior cell, or a map marker) | CELL FULL, or a map-marker REFR (XMRK) with FULL, overriding BM&V's | 583 CELLs carry FULL (all interiors); 397 map markers, every one named |
-| **W-override**: a changed BM&V record (a lock, a door, a container) | the BM&V record overridden in Argonia.esp (Argonia.esp already does this for MQ101 and 182 others) | Update.esm overrides Skyrim.esm the same way; not counted |
+| `stage_is`, `stage_at_least`, `stage_done` | GetStage, GetStageDone | 8,029 / 4,175 |
+| `number_compare` | GetGlobalValue on one of our globals (`ARG_N_<id>`) | 1,579 |
+| `in_faction`, `rank_at_least` | GetInFaction, GetFactionRank | 6,904 / 259 |
+| `item_count_at_least`, `gold_at_least` | GetItemCount (gold as Gold001) | 678 |
+| `skill_at_least` | GetActorValue on the skill | 150 on skills |
+| `alive`, `dead` | GetDead | 1,028 |
+| `speaker_is` | GetIsReference on the placed person (every line also carries its speaker this way) | GetIsID: 19,169 uses |
+| `regard_at_least` | GetRelationshipRank with the player (-4 to 4) | not counted |
+| `race_is`, `sex_is` | GetIsRace, GetIsSex on the player | not counted |
+| `spoken_before`, `not_spoken_before` | GetTalkedToPC | not counted |
 
-**The completion rule** (every quest, measured in Skyrim.esm 2026-11-08 with `ArgoniaPlugin blockstudy`): a quest
-the player should see in the journal is type **Side Quest** (or Main Quest for the act's line), never Misc: Skyrim.esm's
-104 completing misc quests carry text on the completing entry in 7 (they are objective lists, and a completed misc quest
-leaves the journal; owner walk 2026-11-07: a Misc test quest left no entry and counted no completed quest), against 21
-of 23 side quests. The completing stage holds a log entry with text and the Complete Quest flag; its fragment completes
-the last objective and calls `Stop()`, never `CompleteQuest()` (vanilla's QF_dunVolunruudQST Fragment_16 is exactly
-SetObjectiveCompleted, IncSideQuests, Stop). No quest completes in its start-up stage (0 of 300 do); the start-up stage
-is an empty entry, and a chained quest is started by `NextQuest.SetStage(10)`. **The Stats page**: the engine counts "Quests Completed" when a Side Quest
-completes (no vanilla script names that stat), but "Side Quests Completed" is explicit: 21 of the 23 completing side
-quests' last fragments call `AchievementsQuest.IncSideQuests()` (an `AchievementsScript` property on Skyrim.esm's
-`AchievementsQuest` 0FC85D; it runs `Game.IncrementStat("Side Quests Completed")`) before `Stop()`, and so does each of ours.
+## Results: what a line or a stage does
 
-Aliases are a rule of the blocks, not a block: every alias in an act quest is a **forced reference** to a persistent
-ref we placed or a BM&V ref (2,687 forced-ref aliases in 425 vanilla quests), never "find matching".
+Every result is a row (`Op`, `What`, `Num`) that `ARG_Effects.Run` carries out; the numbered list is in
+[quest-form](quest-form.md) "The operations". Each operation is safe to repeat.
 
-**The placement method** (W-ref; every placement from Phase 3 on). Navmesh says where an actor can walk, not what is
-there: one navmesh covers land and dock alike, so a spot snapped to a navmesh triangle "between the marker and the
-keeper" was land (owner walk 2026-11-07). A placer names the surface, and the helper finds it:
-`ArgoniaPlugin surface <worldspace> <x,y[;x,y...]> <load order...>` (`tools/ArgoniaPlugin/Surface.cs`) lists every
-surface under each point, highest first: each winning placed static, moveable static, activator or furniture of the
-worldspace near the point, its base's model read from the load order's archives and loose files (later wins), a
-vertical ray through the model's triangles under the ref's rotation and scale (Skyrim's rotation order, checked against
-the dock's own navmesh), and the land's height from the cell's LAND. `SURFACE_GRID=<step>` prints a 13 x 13 map of
-mesh top / navmesh height around a point, to see where a surface runs. In code, `Surface.On(Surface.Under(...),
-"<editor id or model fragment>", lift)` gives the z for a spot on the named surface (null when it is not under that x,y,
-so a build fails rather than placing on the wrong thing). A loose item rests on the surface (within 10, `plugin.sh placecheck`); an actor or marker at the surface, on the navmesh that covers it. Effects meshes (fog) are skipped. The model's
-render geometry stands in for its collision (the two match on planks, floors and decks); the read-back check
-re-runs the helper on every placed thing it names. Game files are read and never written or committed (decision 0003).
-
-## Dropped, and why
-
-- **Waiting or sleeping as a trigger.** Vanilla has no alias script for it (0 quests) and only 10 records with a sleep
-  script. MQ01's dawn was cut (ruling #50), and MQ03's dream (build round 2, 2026-11-08) follows the answer to
-  Nesh-Deeka's offer: the answer's topic fragment (TR-topic) sets stage 40, whose fragment moves the player into the
-  dream (E-move) and starts its scene.
-- **Change Location story-manager starts.** 135 vanilla quests use them, but no act quest needs one: every quest
-  starts from the one before (TR-chain), and arrival is a TR-zone at the settlement's edge.
-- **Location conditions** (GetInCurrentLoc). BM&V has no LCTN records of its own (census), so a location condition
-  has nothing to test; zones do the work.
-
-## The induction note
-
-**Why the base cases and one composite prove any quest built from the set.** A quest built from these blocks is a
-graph of QUST stages; every edge is one trigger, gated by conditions, and every node fires effects over world edits.
-The engine joins them only through the quest's stage: a trigger's whole output is `SetStage(n)`, an effect's whole
-input is "stage n began", a condition's whole input is engine state (stage, global, faction, item, actor value,
-clock, death). So a block proven once (the **base case**: it fires, or holds, in a quest of its own) behaves the same in
-any quest, provided the joint is proven too. The **inductive step** is one composite quest in which every trigger
-type moves a stage that fires every effect type, each trigger gated by every condition type. If a quest of k stages
-works, adding a stage adds one edge of proven kinds through the proven joint, so the quest of k+1 stages works.
-
-**Where the argument fails on this engine, and the guard for each.**
-
-| Failure | Why it breaks | Guard (a rule of the block or a case in the composite) |
+| Block (form) | Operation | Skyrim precedent |
 |---|---|---|
-| Two triggers racing for one stage | MQ01 stage 40: two zones (the shed, the dock) could both fire. `defaultSetStageTrigScript` checks `GetStageDone(stage)` and then calls `SetStage`, a call to the quest between check and set, so two boxes entered in one frame both pass (owner walk 2026-11-07: both 71 and 72 done; a fragment disabling the other box came too late) | Rule of TR-zone and TR-topic (Bethesda's shape: 22 (quest, stage) pairs in Skyrim.esm are set by 2 to 6 boxes): every trigger carries a prerequisite (the trigger script's prereq property, or `GetStage == n`); triggers for one outcome all set **one** stage; that stage's fragment guards itself by reading and setting a script variable with no call between them (Papyrus runs one function at a time on a script object and yields only at a call), then does its work. Two different outcomes are two stages only when the story needs both to differ, and then the second fragment checks the first's stage with `GetStageDone` before its work. The test proves it with run counters read from the console. |
-| Alias filling at quest start | a forced alias whose ref is disabled or in an unloaded cell fails to fill, and the quest refuses to start | Rule: forced refs only, every aliased ref persistent, aliases that may be gone marked Optional; no find-matching. The composite starts while its aliased refs are disabled and two cells away. |
-| Persistent references | a non-persistent ref in an unloaded cell cannot be enabled, moved or filled | Rule of W-ref and W-npc: every ref a block names is persistent (in the cell's persistent group); the build check lists any quest-named ref that is not. |
-| AI package priority | an alias package can lose to the actor's own (BM&V or template) package, or to combat | Rule of E-package: alias packages sit on the alias (which outranks the actor's own) and each has its conditions on the stage; a scene's actors are aliases of the scene's quest. The composite runs an escort while a hostile is enabled. |
-| A package starting unseen | conditions that turn true while the actor's cell is not loaded make the actor do the whole trip unloaded, and the player finds them at the far end | Rule of E-package: a walk's stage is set only when the walker's 3D is loaded (a once-a-second update in game mode, bounded at 60 checks), and its fragment evaluates the package; a schedule or clock-gated package may start unseen and says so; the quest check fails a walk that can start unseen |
-| A walk across navmeshes | a walker whose destination is on another navmesh island stands at the edge of its own for ever (5 link entries in 17,591 navmeshes, none on a route a quest uses; we author no navmesh and no edge links in BM&V's worlds) | Rule of E-package: start and destination on one winning navmesh, proved off game by `plugin.sh inspect navpath` and `plugin.sh questcheck`; a quest whose people would cross islands is hosted where they need not, or moves the person by a stage's fragment while the player sees neither spot |
-| A finished quest set going again | a zone left enabled with its prerequisite done calls SetStage on the stopped quest, which starts it | Rule of E-stage: Run Once, and the ending disables the quest's zones |
-| Save and reload mid-quest | a fragment running at the save is cut short; a trigger box that fired once may fire again; a scene in progress restarts | Rule of E-stage: fragments are short and idempotent (enable what should be enabled, never toggle); triggers carry the stage prerequisite so a refire does nothing; scenes are written to restart from their beginning. The composite is saved and reloaded at every stage. |
+| the next stage, its journal entry, its objectives with targets | the stage's log entry; SetStage, ShowObjective, CompleteObjective, SetActive; objectives target a forced-reference alias | 726 log stages in 203 quests; 1,452 objectives in 396 quests, each on an alias |
+| an ending | the stage's Complete Quest or Fail Quest flag; CompleteAll or FailAll, IncSideQuests for a completed side or faction quest, Stop last | QF_dunVolunruudQST: SetObjectiveCompleted, IncSideQuests, Stop; 21 of 23 completing side quests count the stat |
+| `give_item`, `take_item`, `give_gold`, `take_gold` | AddItem, RemoveItem on the player | every vanilla reward |
+| `set_number`, `add_number` | a global's SetValue, Mod | backs the 1,579 GetGlobalValue uses |
+| `join_faction`, `set_rank` | AddToFaction, SetFactionRank | 1,215 alias factions in 140 quests |
+| `change_regard` | SetRelationshipRank with the player | the favour quests' death scripts (46 quests) |
+| `switch_on`, `switch_off` (away from the player) | Enable, Disable on a persistent reference | 4,072 placements start disabled |
+| `lock_door`, `unlock_door` | Lock, Unlock on the door | 762 locked door refs, 398 naming a key; 43 quests' scripts take a locked door or key |
+| `give_ownership` | the container's owner set to the player | not counted |
+| `show_message` | a message box of ours, `Show()` | DA06FailMessage from QF_DA06 |
+| `start_quest` | Start, then SetStage | a chained quest started at its first stage |
+| `speaker_hostile` (a line's only) | the speaker attacks the player | common in Morrowind (the smuggler who draws a blade when refused) |
+
+## World edits: what a quest may place
+
+| Block (form) | Record shape | Skyrim precedent |
+|---|---|---|
+| a person or creature of ours (`template_person`) | our base templated on a load-order base, with the ref's name and a fixed level; placed persistent at a measured spot; a `hostile` one takes aggressive AI | 3,651 of 5,118 NPC_ have a template; 4,664 are fixed level |
+| an existing person, thing or door (`existing`) | made persistent in our plugin with its starting state | forced-reference aliases: 2,687 in 425 quests |
+| a thing of ours (`template_item`, `item`) | our item copied from a load-order item whose model reads as the thing; placed on a measured surface, in a container or carried | every vanilla quest item |
+| a container's lock, key, owner, contents | the reference's lock level and key, its owner, its items | 762 locked doors; owned containers throughout |
+| a door locked or unlocked | the door's lock; a door a result unlocks starts locked | as above |
+| who must live; the message | `ARG_MortalWatch`, one always-running quest with an alias per person, running `ARG_AliasEffects` on the death | Morrowind's death message; DA06's failure box |
+| nobody unkillable | the seed takes Essential and Protected off every base we or Black Marsh & Valenwood place, and off every alias of ours | the flags live on the base, through Use Base Data templates, and on the alias ([quest-form-engine-facts](../research/skyrim/quest-form-engine-facts.md) §3) |
+
+Every alias is a forced reference to a persistent placed reference, never "find matching". A spot is measured, never
+typed: a person on the winning navmesh (`plugin.sh inspect navnear`), a thing on the modelled surface under it
+(`plugin.sh surface`, `inspect cellat`); `plugin.sh placecheck` reads every placement back.
+
+## Where the argument could fail, and the guard for each
+
+| Failure | Why it breaks | Guard |
+|---|---|---|
+| Two triggers racing for one stage | two takes, uses or deaths that set one stage can fire in one frame | stages are by done: setting a done stage does nothing, so a stage's rows run once; a trigger is open only while its prerequisite is done and its stage is not (`until` closes it at a later step), and `late-trigger` refuses one that can fire after the quest has moved past it |
+| Forced persistent aliases | a forced alias whose reference is not persistent, or is in an unloaded cell, fails to fill and the quest will not start | every reference a form names is made persistent by the builder; an existing reference on an enable parent is refused; `questcheck` reads every alias back |
+| Save and reload | a script running at the save is cut short; a trigger may fire again | every operation is safe to repeat; triggers carry their prerequisite, so a refire on a done stage does nothing; property values bind when the instance is made, so a changed quest needs a new game |
+| A death before the quest starts | a person the quest needs, or whose death it waits for, is already dead when it starts | the start stage carries FailIfDead for each who-must-live row whose window holds it, and a death trigger open from the start adds its own start check, so the quest moves at once |
+| Arrays past their limit | Papyrus arrays hold 128 entries | `result-limits` refuses a quest whose stage rows or a line's rows pass 128, counted as the builder writes them |
 
 ## How record terms map to blocks
 
-Every stage of a quest record maps to the blocks above. Record terms map to blocks so:
-`topicHeardFrom` is TR-topic; `inZone` and `inSettlement` are TR-zone; `hasItem` as a trigger is TR-acquire, as a gate
-C-item; `npcAlive` failing is TR-death; `counterAtLeast` and `placeCleared` are TR-death's counter; `questStage` and
-`stageEverReached` are C-stage; `timeOfDay` is C-time; a record `flag` is C-stage or C-global; `npcAtMark` is
-E-package (the actor's alias package puts them there) plus C-time; `grantTopic` is the topic's own C-stage condition;
-`setFactionRank` and `grantServiceAccess` are E-faction; `changeStanding` and `changeSettlementStanding` are E-global;
-`changeDisposition` is E-regard; `enableRef`/`disableRef`/`applyLocalVariant` are E-enable; `giveItem`/`takeItem`/
-`giveGold`/`takeGold` are E-item; `moveRef` is E-move; `startScene` is E-scene. `goldAtLeast` is C-item (GetItemCount on Gold001, within the 678 GetItemCount uses counted in quest-block-precedent.md); `grantHistStep` is E-global (the hist-hearing GLOB raised by SetValue, never lowered; backs the 1,579 GetGlobalValue uses); `setDoorAccess` is E-item (the door locked to a key in its XLOC and the key given by AddItem, as Bethesda's bought houses are: the steward's house-purchase fragments hand the key; measured 2026-11-06 by the method of quest-block-precedent.md: of Skyrim.esm's 762 locked door refs, 398 name a key, and 36 quests' stage-fragment scripts (QF_) take a locked door or a key as a property, 22 a door and 18 a key, HousePurchase among them, while 25 dialogue fragments (TIF_) in 13 quests do, 43 quests in all; which stage of a quest runs it is in the compiled fragment and not counted). Skill uses named with Morrowind skills
-in the vocabulary map to Skyrim actor values for C-skill (speechcraft and mercantile to Speech, security to
-Lockpicking, sneak to Sneak or Pickpocket, marksman to Archery, the blades and spear to One-Handed or Two-Handed); swim,
-dive and climb are movement (FreeClimb, water), never a check.
-
-`python3 -m tools.argonia_world.quest_record export quest.main.<id>` prints a quest's current stages, triggers, conditions and effects; map each to the blocks by the terms above.
+The compiler maps every record term to the form's blocks, and refuses each term outside them, in
+[quest-form](quest-form.md) "Compiling a quest record". `python3 -m tools.argonia_world.quest_record export <quest id>`
+prints a quest's record; `python3 -m tools.questform compile <quest id>` shows the blocks it becomes.

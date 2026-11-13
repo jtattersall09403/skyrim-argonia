@@ -5,6 +5,8 @@ description: Review player-visible or world-record prose (place records, quest r
 
 # Text review
 
+In the quest path ([quest-system](../quest-system/SKILL.md)) this follows dialogue-write and comes before the paper playtest of the written quest.
+
 One review per change set: one `reader` pass, then the linter. The writer never reviews its own text.
 
 1. **Reader pass.** Spawn ONE `reader` over every changed prose file. Its brief (from `tooling/brief_template.py`)
