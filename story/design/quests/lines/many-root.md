@@ -100,8 +100,8 @@ ranks open things in the hall:
 
 | Rank | Earned | What it opens that the player can go and use |
 |---|---|---|
-| Root-Hand | taking the first job (MR01) | the **Walkers' Chest** in the hall is the player's to take from: salves, a few draughts and gathered herbs, fixed; Taleeka-Ma's healing for nothing |
-| Walker | MR03 ended | Wujeel sells the player sap at the hall's price, half his price to anyone else (two lines, two fixed prices); Okeeh-Ja gives two measures of released sap |
+| Root-Hand | taking the first job (MR01) | the **Walkers' Chest** in the hall is the player's to take from: salves, a few draughts and gathered herbs, fixed |
+| Walker | MR03 ended | Okeeh-Ja gives two measures of released sap (not where the stone was sold), and the next road |
 | Walking Minder | MR05 ended | a skill book of Restoration from Taleeka-Ma; the hall's stilling draught can be had from Okeeh-Ja for the asking, once |
 | Named Walker | one ending of MR06 only | the **Listener's Chest** in the hall and his teaching (section 2, MR06) |
 
@@ -155,10 +155,12 @@ never only a report.
 5. Aojee-Dar went. Jarecai's tree-minder of that day heard him out and said, "Cut. A tree says yes, and so will I.
    We will bury the shells." She asked nobody else, and she died within a few seasons without telling her people
    what she had promised. He came home with her word and the Listener's knife, and could not use either: a graft
-   cut by a hand that does not know the cut kills both trees, and only a walker knows it. He sent word to Helstrom
-   by the last family to leave, that a walker should come to the root-hut. The family got as far as Jal-Resh Post
-   and waited for a walker to pass. None ever did: Okeeh-Ja, who led the hall by then, had forbidden the Banujha to
-   his walkers, so that none of them would see what he had left.
+   cut by a hand that does not know the cut kills both trees, and only a walker knows it. He gave his word for a walker's
+   own ear, and for no other, to the last family to leave, since the hall had lied to the village once already.
+   The family got as far as Jal-Resh Post, with a clutch to carry, and twice sent north by the salt boats that a
+   walker was wanted there. Okeeh-Ja, who led the hall by then, took it for a dead village's reproach, answered
+   that no walker goes to the Banujha, and forbade the basin to his walkers, so that none of them would see what
+   he had left.
 6. The village's eggs stopped hatching. Its families carried their last clutches to Jarecai and did not come back,
    and the dead of that last year were never staked (D banujha-basin, Meris-Keth). Aojee-Dar stayed with his tree,
    carved his own grave-stake with all of it, and died against the root with the knife in his lap, waiting for the
@@ -172,11 +174,11 @@ never only a report.
 
 | The truth | Where it is seeded | Where it is found |
 |---|---|---|
-| The Listener teaches that villages are told a comfort | MR01: "You will be asked what ails their tree. Tell them what lets them sleep. You will learn." MR02: "Tell her what will let her go on reading", and Xilsa-Jee's "he says that to all of us" | MR04: he asks that the truth of Gideon's tree be brought to him first, and buried |
+| The Listener teaches that villages are told a comfort | MR01: "When a village asks what ails its tree, a walker tells it what lets it sleep. You will learn." MR02: "Tell her what will let her go on reading", and Xilsa-Jee's "he says that to all of us" | MR04: he asks that the truth of Gideon's tree be brought to him first, and buried |
 | The hall once cut a tree for another | MR01: the walker's cord is tied in the walkers' hitch, and he names it. MR02: Taleeka-Ma on cuttings: "A tree is not taken. We know what it costs the tree it is taken from." MR03: the hall keeps the recipe of a draught that stills a tree, "and older things" | MR04: the same hitch on the planting-basket's cord under Gideon's garden; the river folk's riddle; Okeeh-Ja's own word |
 | Okeeh-Ja left Meris-Keth's tree to die | MR01: Korydon's minder says he "stood one day under Meris-Keth's tree and went home". MR02: Xilsa-Jee says the Listener's cutting-knife "has not hung in the hall since before I was hatched; he says he lost it in the Banujha". MR03: Tsonac's minder says the Listener offered the stilling there "the season after Meris-Keth emptied". MR05: the stolen sap goes "to the cats under the dead tree", and Okeeh-Ja forbids the trail | MR06: the knife in a dead minder's lap, and his stake |
 | It could have been saved, at Jarecai's cost | MR04: Okeeh-Ja says what a cutting cost the river folk. MR05: Wujeel says "he will not go south of the ridge" | MR06: the stake says what he carried and what he offered; he says the rest himself |
-| The minder went and asked, was told yes, and waited for a walker who was forbidden to come: the one thing the Listener does not know | MR05: "No walker goes to Meris-Keth", the first trail he refuses. MR06: Marzeel's "my mother carried a word out of that village for a walker of Helstrom, and no walker ever came south of the ridge" | MR06: the last lines of the stake; the player is the only one who can tell him |
+| The minder went and asked, was told yes, and waited for a walker who was forbidden to come: the one thing the Listener does not know | MR05: "No walker goes to Meris-Keth", the first trail he refuses. MR06: Marzeel's "twice she sent up to Helstrom: a walker is wanted at Jal-Resh; twice the answer came back: no walker goes to the Banujha" | MR06: the last lines of the stake; the player is the only one who can tell him |
 
 **The arc.** Six quests, each a different kind of job ending in a different kind of act, so that the line is never
 the same trail walked six times. Danger climbs by the world's bands and nothing is levelled: the first four can be
@@ -226,14 +228,18 @@ about their own trees, and what the player told the elder of Yuva-Goli reads dif
 the stored number: to a player who told her the comfort, "At Yuva-Goli you told her what let her sleep. Now you
 know why I do"; to one who told her the truth, "At Yuva-Goli you told her the truth. Tell me this one is no
 different." **The misjudgement** is in MR04 as well: before the cellar is opened the player can back either
-family's story or the river folk's, each of which is false, and is believed; it shuts the other family's counter
-to the player until the cord is shown, and does not end the line.
+family's story, each of which is false, and is believed; it takes that family's gift, loses the other's for
+good, and does not end the line.
 
 **What carries.** Rank, the journal, stored numbers, who is alive, the things held and what the player knows.
-Earlier choices change greetings, single lines and who will trade, and never a later quest's stages; only the
+Earlier choices change greetings, single lines and what is given, and never a later quest's stages; only the
 finale's choice carries into the world after the line.
 
 ### The later quests, at arc level
+
+In these tables a trader gained is a second placement of that person with their stock, switched on from far away
+by the ending's stage; nobody's barter is shut by a quest, since the game cannot shut it, and no price changes. A
+loss is a thing not given, a person gone, a door locked or a people's leave withdrawn.
 
 **MR03, What the Sleeper Dreams.** *Place*: Tsonac, the Stone-Sleepers' one city, "terraces of squared stone" round
 "a central mound with the Hist and a ring of carved stone steps" (D arnesian-jungle, Tsonac). *The truth (X)*: the
@@ -246,30 +252,36 @@ on the mound's far side and are still there, at the Dangerous band. The welkynd'
 waking the tree, and the town's hatchlings dream what it dreams. *What the player does*: the tree-minder,
 **Druja-Seel**, lets the player take sap at the stone ring, and her line shows the dream as a message: white
 light, and something turning over. She adds, "Your Listener offered us the stilling once before, the season after
-Meris-Keth emptied. We said our tree slept well enough." Okeeh-Ja has given the recipe and three words: "Still
-it. Remember Lilmoth." The draught is a thing given by a line: the player works it at Tsonac's sap-seller's bench
-(Alchemy 40, the gathered parts held) or the sap-seller makes it from the parts for 100 gold. The way down is the
-masons' door (Utadeek's key by Pickpocket or Speech; the lock; or Druja-Seel's own way, a line gated on Alteration
-that unlocks it for one who knows the stone magic) or the quarry cut (Sneak past the diggers, or a fight). In the
-chamber the welkynd stone, whose glow is its own, can be taken from its sconce like any thing, and the root can
-be used once: the draught is poured, and that sets the quest's stage. The ending is then read from what is true
-when the player next speaks to Druja-Seel. *The choice*, argued by those it concerns, each saying what they will
-give: Druja-Seel wants it stilled ("my whole people's peace is its sleep; still it and I will teach you how we
-speak to stone"); her pupil **Pojeel**, who sells the town's tomes, says the tree spoke one word to him through the
-light and that a sleeping elder is a jailed one ("let it wake and my shelf is yours; still it and you will buy
-your tomes at Thorn"); Andrethi will pay 500 gold for the stone and does not care what the tree does.
+Meris-Keth emptied. We said our tree slept well enough, and we have let no walker taste it since." Okeeh-Ja has
+given the recipe and three words: "Still it. Remember Lilmoth." The draught is a thing given by a stage: the
+player works it at Tsonac's sap-seller's bench (Alchemy 40, the gathered parts held) or the sap-seller makes it
+from the parts for 100 gold. The way down is the masons' door (Utadeek's key by Pickpocket or Speech; the lock; or
+Druja-Seel's own way, a line gated on Alteration whose stage unlocks it for one who knows the stone magic) or the
+quarry cut (Sneak past the diggers, or a fight). In the chamber two things can be done, each a stage of its own,
+in either order: the welkynd stone, whose glow is its own, is taken from its sconce; the root is used, and the
+draught is poured. *The choice*, argued before the player goes down by those it concerns, each saying what they
+will give: Druja-Seel wants it stilled and the stone brought up to her to be walled back into the mound ("my whole
+people's peace is its sleep; still it, bring me the stone, and I will teach you how we speak to stone; the stone
+is not yours to sell"); her pupil **Pojeel**, who keeps the town's tomes, says the tree spoke one word to him
+through the light and that a sleeping elder is a jailed one ("leave the stone and pour nothing, and what is on my
+shelf is yours; put it back to sleep and I have nothing for you"); Andrethi will pay 500 gold for the stone and
+does not care what the tree does. The ending is the line the player then says, tried in this order: to
+Druja-Seel, the draught poured and the stone held, which she takes (stilled); to Andrethi, the stone held, which
+he buys (sold: the tree settles if nothing was poured, and is stilled if it was, and either way the minder has
+nothing for a walker who sold the mound's stone); to Pojeel, at the stage where nothing has been taken or poured
+(waking).
 
 | Outcome | What the player gains in play | What the player loses or can no longer get | Who pays, and where the player sees it | The form results that build it |
 |---|---|---|---|---|
-| **Stilled** (the draught poured) | Druja-Seel's teaching: Alteration raised by 3, and a tome of an Alteration spell of the load order from her own hand; the dreams stop; the stone is still the player's to take and sell | Pojeel's counter: he sells the player no tomes again | Pojeel at his shelf ("you put my elder back in its cell"); the tree, which asked not to be | `raise_skill` Alteration 3; `give_item` the tome; `set_number mr03.tree 1`, read by Pojeel's trade lines (shut) |
-| **Settled** (the stone taken, nothing poured) | the welkynd stone (500 gold from Andrethi, or kept); the **stilling draught kept**, which is MR05's sleeping draught ready made; both traders still deal | both teachers: no Alteration from Druja-Seel, no gift from Pojeel; Okeeh-Ja gives no sap at the rank ("A half measure") | Druja-Seel, whose hatchlings dream a season longer | `set_number mr03.tree 2`; the draught stays held and is read by MR05's line; the rank's sap withheld by a line gated on the number |
-| **Waking** (the stone left, nothing poured) | Pojeel's shelf: his chest of tomes is the player's to take from, and he gives the word the tree spoke as a spell tome of the load order (Magic Expanded, Alteration) | Druja-Seel's teaching and her trade: she sells the player nothing and greets with fear; Tsonac's ring gives its blessing no longer (a second, plain state of the ring switched on while the player is in Helstrom) | Druja-Seel and the town's hatchlings; nobody knows what wakes | `give_ownership` Pojeel's chest; `give_item` the tome; `set_number mr03.tree 3`; the ring's two states `switch_off` and `switch_on` from the hall |
+| **Stilled** (poured, and the stone given to Druja-Seel) | Druja-Seel's teaching: Alteration raised by 3, and a tome of an Alteration spell of the load order from her own hand; the dreams stop | the stone and its 500 gold; Pojeel's shelf | Pojeel ("you put my elder back in its cell"); the tree, which he says asked not to be | `take_item` the stone; `raise_skill` Alteration 3; `give_item` the tome; `set_number mr03.tree 1` |
+| **Sold** (the stone to Andrethi, poured or not) | 500 gold; if nothing was poured, the **stilling draught kept**, which Wujeel can lace a sap-skin with in MR05 in place of his own craft and the honey, and he says so when the player reports | both teachers' gifts; Okeeh-Ja gives no sap at the rank ("A half measure. I have let one tree die sooner than wake a harm. You will not understand that yet") | Druja-Seel, whose hatchlings dream a season longer if nothing was poured, and whose mound has lost its stone | `take_item` the stone; `give_gold` 500; `set_number mr03.tree 2`; the draught, if held, is read by MR05's line |
+| **Waking** (the stone left, nothing poured, and Pojeel told so) | Pojeel's shelf: his chest of tomes is the player's to take from, and he gives the word the tree spoke as a spell tome of the load order (Magic Expanded, Alteration) | Druja-Seel's teaching; Tsonac's ring gives its blessing no longer (a second, plain state of the ring switched on from the hall at the report) | Druja-Seel, who greets with fear, and the town's hatchlings; nobody knows what wakes | `give_ownership` Pojeel's chest; `give_item` the tome; `set_number mr03.tree 3`; the ring's two states `switch_off` and `switch_on` from the hall |
 
 Every ending gives the rank of Walker, so the line never strands. *Carried on*: the stored number for the tree;
-the stone held, sold or given; Xilsa-Jee's remark at the sacred tree that the hall keeps "the stilling, and older
-things"; Hixee-Ra, at the sacred tree, now asks the player after each job what the village was told, in a topic of
-her own. *How the player knows the places*: section 4, Tsonac. *Moment*: standing under a city with a bottle that
-will put its god back to sleep, and a young man upstairs who says the god asked not to be.
+Xilsa-Jee's remark at the sacred tree that the hall keeps "the stilling, and older things"; Hixee-Ra, at the
+sacred tree, now asks the player after each job what the village was told, in a topic of her own. *How the player
+knows the places*: section 4, Tsonac. *Moment*: standing under a city with a bottle that will put its god back to
+sleep, and a young man upstairs who says the god asked not to be.
 
 **MR04, The Borrowed Tree.** *Places*: Gideon, whose "Hist garden holds a planted cutting whose ownership is
 disputed", "in the Ayleid gardens that two families both claim", with "a cellar door in the closed Ayleid quarter
@@ -279,30 +291,32 @@ has come to the hall from the river folk, who "love riddles" and are "rumoured t
 Gideon's Hist cutting was taken from them" (D province, Peoples: Naka-Desh); that a claim on a tree is the hall's
 to answer before the Root Talk; and, for the first time, "Bring what you find to me, before you say a word of it
 to anyone." *What the player does*: hears three stories, each believed by its teller. The **Caprenius** family,
-Nibenese-descended, who keep a merchant's counter, say Helstrom gave the cutting to their forebear. The
-**Deep-Wader** family, Lukiul, who keep the garden's herb stall, say their grandmother brought it as a bride-gift
-from the river. The pilot of Teth-Kasa, **Hapu-Jeer**, asks the riddle his people teach every hatchling and none
-of them can answer: "What went out in a basket and came home in sacks, and whom do we not thank?" Backing one
-family's story before the proof is found shuts the other's counter to the player until the cord is shown (the
-misjudgement). A taste of the garden tree's sap (Alchemy 30) refutes the gift from Helstrom: it is not Helstrom's
-water. The proof is below: past the garden's watch and the forced door (Sneak and Lockpicking, with the city's own
-law for a break-in; or the key the garden's tender carries, by Speech or Pickpocket), through cellars whose Ayleid
-guardians are fixed at the Dangerous band and can be fought or passed unseen, to the planting-place under the
-tree: a basket of river weave, salt-sacks with the council's seals, and the basket's carrying-cord, a thing named
-for the walkers' hitch, the same name as on the cord the player has carried since MR01. Someone forced the door
-first: a satchel named as the Caprenius steward's lies among the guardians with lamp-oil and a flint in it, sent
-to burn the proof. *The turn*: taking the cord is the find. Then two things can be done or left undone, in either
-order, each a line, before the cord is brought to Okeeh-Ja, who says who carried the basket ("I was a boy. I
-counted the river folk's dead eggs for twelve seasons. Do not tell me what a cutting costs") and learns from the
-player's own mouth who else now knows. The quest ends at him. *His case for burying it*, said at the briefing and
-again at the end: "If the groves learn a walker's knife took a tree's child for salt, no village opens its tree to
-us again, and trees will die of that. Bring it to me and to nobody, and what the hall keeps for its own is yours."
+Nibenese-descended merchants, say Helstrom gave the cutting to their forebear. The **Deep-Wader** family, Lukiul,
+who gather the garden's herbs, say their grandmother brought it as a bride-gift from the river. The pilot of
+Teth-Kasa, **Hapu-Jeer**, asks the riddle his people teach every hatchling and none of them can answer: "What went
+out in a basket and came home in sacks, and whom do we not thank?" Each family offers a gift for the player's word
+on its side before the council: backing one before the proof is found takes its gift and loses the other's for
+good, and the word is false (the misjudgement). A taste of the garden tree's sap (Alchemy 30) refutes the gift
+from Helstrom: it is not Helstrom's water. The proof is below: past the garden's watch and the forced door (Sneak
+and Lockpicking, with the city's own law for a break-in; or the key the garden's tender carries, by Speech or
+Pickpocket), through cellars whose Ayleid guardians are fixed at the Dangerous band and can be fought or passed
+unseen, to the planting-place under the tree: a basket of river weave, salt-sacks with the council's seals, and
+the basket's carrying-cord, a thing named for the walkers' hitch, the same name as on the cord the player has
+carried since MR01. Someone forced the door first: a satchel named as the Caprenius steward's lies among the
+guardians with lamp-oil and a flint in it, sent to burn the proof. *The turn*: taking the cord is the find. Then
+two things can be done or left undone, in either order, each a line, before the cord is brought to Okeeh-Ja, who
+says who carried the basket ("I was a boy. I counted the river folk's dead eggs for twelve seasons. Do not tell me
+what a cutting costs") and learns from the player's own mouth who else now knows. The quest ends at him. *His
+case for burying it*, said at the briefing and again at the end: "If the groves learn a walker's knife took a
+tree's child for salt, no village opens its tree to us again, and trees will die of that. Tsonac shut its tree to
+us for less. Bring it to me and to nobody, and what the hall keeps for its own is yours." His fear is shown true
+once: the river folk, told, shut their tree to the hall.
 
 | Outcome | What the player gains in play | What the player loses or can no longer get | Who pays, and where the player sees it | The form results that build it |
 |---|---|---|---|---|
-| **The riddle answered** to Hapu-Jeer ("a tree's child, for salt") | the river folk's guest: a bed and a chest at Teth-Kasa Station are the player's, and Hapu-Jeer's canoe-store sells to them | Okeeh-Ja's gift for silence (below) | the Naka-Desh, who learn their own elders sold their clutches: Hapu-Jeer's greeting, and the riddle no longer asked of hatchlings | `give_ownership` the bed and the chest; `set_number mr04.river 1`, read by Hapu-Jeer's trade lines and by Okeeh-Ja's last line |
-| **The cord shown** to Gideon's council merchant | 400 gold from the council, and both families' counters open at the council's price, since the tree is now a thing the city bought and neither family's | Okeeh-Ja's gift for silence; the Garden Cellars Key is taken back, and the cellars' lock is changed | the Caprenius and the Deep-Waders, each of whom loses the story their house stood on; the steward's errand is known | `give_gold` 400; `take_item` the key; `lock_door` the cellars; `set_number mr04.city 1`, read by the two counters' price lines and by Okeeh-Ja's last line |
-| **Neither told** (buried, as he asked) | "what the hall keeps for its own": the hall's stilling recipe opens at a cook pot, and a unique ring of the hall (a load-order ring with a fixed Alchemy enchantment, under our name, the Walker's Seal) | the bed at Teth-Kasa and the council's gold and prices; Xilsa-Jee, told nothing, has nothing to say of Gideon | the river folk, who go on teaching a riddle with no answer; Gideon's families, who go on quarrelling at the garden | `open_recipe` the stilling draught; `give_item` the ring (`template_item`); given by the ending whose line is gated on both numbers being 0 |
+| **The riddle answered** to Hapu-Jeer ("a tree's child, for salt") | the river folk's guest: the Guest's Chest at Teth-Kasa Station is the player's, with a unique thing in it, the Naka-Desh's own (a load-order amulet of water-breathing under our name, the Riddle-Stone) | Okeeh-Ja's gift for silence (below) | the Naka-Desh, who learn their own elders sold their clutches; and the hall, as the Listener feared: Hapu-Jeer says no walker of Helstrom tastes the river folk's tree again, and Taleeka-Ma says so in the hall | `give_ownership` the chest; `set_number mr04.river 1`, read by Hapu-Jeer's, Taleeka-Ma's and Okeeh-Ja's lines |
+| **The cord shown** to Gideon's council merchant | 400 gold from the council and a room of the player's own in Gideon: the council's guest-room by the garden, with its bed and chest | Okeeh-Ja's gift for silence; the Garden Cellars Key is taken back and the cellars are locked for good | the Caprenius and the Deep-Waders, each of whom loses the story their house stood on; the steward's errand is known | `give_gold` 400; `own_room` the guest-room; `take_item` the key; `lock_door` the cellars; `set_number mr04.city 1`, read by Okeeh-Ja's last line |
+| **Neither told** (buried, as he asked) | "what the hall keeps for its own": the hall's stilling recipe opens at a cook pot, and a unique ring of the hall, the Walker's Thumb-Ring (a load-order ring with a fixed Archery enchantment, under our name) | the chest and the Riddle-Stone at Teth-Kasa; the council's gold and room | the river folk, who go on teaching a riddle with no answer; Gideon's families, who go on quarrelling at the garden | `open_recipe` the stilling draught; `give_item` the ring (`template_item`); given by the ending whose line is gated on both numbers being 0 |
 
 Told to one and not the other, the player has that row's gain and has lost the hall's gift; told to both, both
 gains. Okeeh-Ja's last line names it: "You told them. Then the hall owes you nothing but the next road, and you
@@ -327,24 +341,24 @@ key), where Dusha-Wan says she will go by the water once the player has gone. Th
 price, carried by him, is a boat, which the raft-builder Xuhal-Teeus sells by a line, where he stands in Helstrom,
 as a carved mooring-peg (D people, Xuhal-Teeus; 800 gold, or 500 with Speech 50), and Jurr's line, the peg held,
 unlocks the pen and gives the player the band's leave. The knowing way: a skin of sap laced with a sleeping
-draught, a thing given by a line (Alchemy 50 at Wujeel's bench, with a jar of the honey of Wattle-Pool Farm that
+draught, a thing given by a stage (Alchemy 50 at Wujeel's bench, with a jar of the honey of Wattle-Pool Farm that
 "tastes of sap and sends those who eat it to sleep", D althii-archipelago, Wattle-Pool Farm; or, with no skill
 and no honey, the stilling draught kept from MR03), handed to Jurr as the ransom; a line of Wujeel's back in
-Helstrom ("Give it until you have eaten") switches most of the band off, the player being in the city, and the
-camp is found thinly watched. However she was reached, the player's report to Okeeh-Ja, in the hall, switches her
-off in the pen and on at Tseli-Oon. *The lead*: the stolen skins are named for a buyer's mark, and Jurr says where
-the sap goes: to the Khajiit at Meris-Keth, in the Banujha. Okeeh-Ja: "No walker goes to Meris-Keth. There is
-nothing there to tend." It is the first trail he has refused. Two choices, each stated before it is made: Wujeel
-says what each way with the band leaves on the river, and Dusha-Wan, freed, asks not to be named to the hall and
-says what she will do for the player if she is not.
+Helstrom ("Give it until you have eaten") switches most of the band off, Dry-Fang Camp being far more than 18,000
+units from Helstrom, and the camp is found thinly watched. However she was reached, the player's report to
+Okeeh-Ja, in the hall, switches her off in the pen and on where the ending puts her. *The lead*: the stolen skins
+are named for a buyer's mark, and Jurr says where the sap goes: to the Khajiit at Meris-Keth, in the Banujha.
+Okeeh-Ja: "No walker goes to Meris-Keth. There is nothing there to tend." It is the first trail he has refused.
+Two choices, each stated before it is made: Wujeel says what each way with the band leaves on the river, and
+Dusha-Wan, freed, asks not to be named to the hall and says what she will do for the player if she is not.
 
 | Outcome | What the player gains in play | What the player loses or can no longer get | Who pays, and where the player sees it | The form results that build it |
 |---|---|---|---|---|
-| **The boat** (the peg given) | the band's leave while they pack, and their cache: the chest under Thekka's lean-to is the player's (the camp's fixed Lethal-band loot, got without a fight); the camp is empty ground afterwards | 800 gold, or 500 | boatmen on the lower river: Poles-Upriver's greeting names a raft robbed below Julo, and she charges the player her old fare no longer (two lines, two fixed prices) | `take_gold`; `give_ownership` the cache; the band `switch_off` from the hall at the report; `set_number mr05.band 1`, read by Poles-Upriver's fare lines |
-| **The laced skin** | the stolen sap-skins and the camp's loose loot for a thin fight; a raise of 2 in Alchemy for the work | the cache stays locked under a waking leader; the band wakes and stays, hostile, on the north arm | Tseli-Oon, which goes on keeping a spear at each door: the station's gatherers sell the player nothing off the frame | most of the band `switch_off` by Wujeel's line; `raise_skill` Alchemy 2; `set_number mr05.band 2`, read by Tseli-Oon's trade lines |
+| **The boat** (the peg given) | the band's leave while they pack, and their cache: the chest under Thekka's lean-to is the player's (the camp's fixed Lethal-band loot, got without a fight); the camp is empty ground afterwards | 800 gold, or 500 | boatmen on the lower river: Poles-Upriver tells of a raft robbed below Julo by Naga in a new boat | `take_gold`; `give_ownership` the cache; the band `switch_off` from the hall at the report; `set_number mr05.band 1`, read by Poles-Upriver's line |
+| **The laced skin** | the stolen sap-skins and the camp's loose loot for a thin fight; a raise of 2 in Alchemy for the work | the cache stays locked under a waking leader; the band wakes and stays, hostile, on the north arm | Tseli-Oon, which goes on keeping a spear at each door, and says so | most of the band `switch_off` by Wujeel's line; `raise_skill` Alchemy 2; `set_number mr05.band 2` |
 | **The quiet way** | nothing spent and nothing owed; a raise of 2 in Sneak | the cache, the skins and the band's leave | Tseli-Oon, as above | `raise_skill` Sneak 2; `set_number mr05.band 3` |
-| **Dusha-Wan named** to the Listener | the hall's gift for the job: a necklace of the load order enchanted for Alchemy, and the rank's skill book | Dusha-Wan's trade: she is put to an Owing at the hall's root-pools and sells nothing | Dusha-Wan, found at the sacred tree clearing roots beside Xilsa-Jee (a second placement, switched on from the hall); Tseli-Oon's release is cut again | `give_item` the necklace; her placement at the tree `switch_on`, the one at Tseli-Oon left off; `set_number mr05.named 1` |
-| **Not named** (the player lies to the hall for her) | Dusha-Wan at Tseli-Oon sells the player raw sap and marsh poisons that Wujeel does not stock, at a gatherer's price | the necklace: Okeeh-Ja gives only the rank and its book ("Somebody sold it. You know who, and you have decided I should sleep") | the hall, which goes on starving a station that goes on selling | her placement at Tseli-Oon `switch_on`; `set_number mr05.named 0`, read by her trade lines |
+| **Dusha-Wan named** to the Listener | the hall's gift for the job, his own teaching: Restoration raised by 3 | Dusha-Wan's stock (below): she is put to an Owing at Helstrom | Dusha-Wan, found at the sacred tree clearing roots beside Xilsa-Jee (a second placement, switched on from the hall); Tseli-Oon's release is cut again | `raise_skill` Restoration 3; her placement at the tree `switch_on`; `set_number mr05.named 1` |
+| **Not named** (the player lies to the hall for her) | a trader nobody else is: Dusha-Wan at Tseli-Oon, with a gatherer's stock of raw sap and marsh poisons that Wujeel does not sell | the Listener's teaching: he gives only the rank and its book ("Somebody sold it. You know who, and you have decided I should sleep") | the hall, which goes on starving a station that goes on selling | her trading placement at Tseli-Oon `switch_on` from the hall; `set_number mr05.named 0` |
 
 Every ending gives the rank of Walking Minder. *Moment*: the captive, freed, asking the player to lie for her to
 the hall that starved her station; and the Listener, who taught the player to tell people what lets them sleep,
@@ -360,19 +374,21 @@ banujha-basin, Meris-Keth). *What the player does*: at the post, **Marzeel**, th
 was hatched at Meris-Keth; she says what the village was, that the Listener of Helstrom came once and said there
 was no cure, that her people believe the unstaked dead cannot get home to a tree that is gone and so have nowhere
 to go at all (consistency T12), and that she wants them staked. And one thing more: "My mother carried a word out
-of that village for a walker of Helstrom: go to the root-hut, the minder is waiting. She waited at this post until
-she died. No walker ever came south of the ridge. You are thirty years late, and you are the first." Two people
-warn that the village kills. Then three ways to the root-hut. By force: the province's hardest fighting, with the
-smugglers' store as its fixed reward; Restoration turns the dead. By stealth: the walkways, past both (Sneak). By
-leave: one smuggler, **J'Kier**, speaks first at the landing, and the captain's leave is bought through him
-(Speech 60, or 600 gold); his line gives the player the smugglers' leave, and the walkway he stands at the foot of
-is the one the dead do not hold. In the root-hut the tree stands leafless. Against its root are the remains of
-**Aojee-Dar**, the last minder, a named thing that opens like any container. Two things are taken from it: the
-Listener's grafting knife, named for the walkers' hitch on its sheath, and the minder's own grave-stake, which
-reads as a book: "Aojee-Dar, minder of this tree. The Listener of Helstrom tasted the rot and told the village: no
-cure. To me he said: one cure, a graft from Jarecai's heart, and Jarecai's eggs to pay for it. He laid his knife
-before me and said: then you cut it, and tell them why. I went. Jarecai's minder said: cut, we will bury the
-shells. I do not know the cut. I have sent for him. Stake us both."
+of that village, for a walker's own ear and no other, because the hall had lied to us once already. She had a
+clutch to carry and had never been north of the ridge. Twice she sent up to Helstrom by the salt boats: a walker
+is wanted at Jal-Resh. Twice the answer came back: no walker goes to the Banujha. The word was: go to the
+root-hut, the minder is waiting. You are thirty years late, and you are the first." Two people warn that the
+village kills. Then three ways to the root-hut. By force: the province's hardest fighting, with the smugglers'
+store as its fixed reward; Restoration turns the dead. By stealth: the walkways, past both (Sneak). By leave: one
+smuggler, **J'Kier**, speaks first at the landing, and the captain's leave is bought through him (Speech 60, or
+600 gold); his line gives the player the smugglers' leave, and the walkway he stands at the foot of is the one the
+dead do not hold. In the root-hut the tree stands leafless. Against its root are the remains of **Aojee-Dar**, the
+last minder, a named thing that opens like any container. Two things are taken from it: the Listener's grafting
+knife, named for the walkers' hitch on its sheath, and the minder's own grave-stake, which reads as a book:
+"Aojee-Dar, minder of this tree. The Listener of Helstrom tasted the rot and told the village: no cure. To me he
+said: one cure, a graft from Jarecai's heart, and Jarecai's eggs to pay for it. He laid his knife before me and
+said: then you cut it, and tell them why. I went. Jarecai's minder said: cut, we will bury the shells. I do not
+know the cut. I have sent for him. Stake us both."
 
 *The stake* goes to Marzeel, at Jal-Resh Post, in every ending (to Xilsa-Jee if Marzeel is dead). Her line takes
 it and, the post being far from the village, switches a row of grave-stakes on at Meris-Keth's landing; she gives
@@ -380,21 +396,22 @@ the player a Mine-Burner bow from her own rack, the fixed reward of the place. S
 know the truth whatever the player does next, and she carries it nowhere: "It is ours now. Jarecai buried no
 shells for us and owes us none." Then she says the trade the player is about to make, in plain words: "You will
 take that knife home to an old man who thinks my minder sat down and died. Tell him what is cut on this stake and
-you break him: he will send no more walkers, his knife is yours, and that young one who sent you has the roads.
-Tell him he was right and he will sleep, and make you his heir in that hall, while she clears creepers till he
-dies. I know which I would do. I am not the one he pays."
+you break him: he will send no more walkers, his knife is yours, and the healer will let her daughter take the
+roads he shut. Tell him he was right and he will sleep, and make you his heir in that hall, while the young one
+clears creepers till he dies. I know which I would do. I am not the one he pays."
 
 *The ending is the Listener given his own medicine*, in the hall, to his face (consistency S3). Shown the knife,
 he asks where it was, and says his case before the player chooses: Jarecai's tree hatches a tribe and a port; a
 graft would have cost it clutches for a dozen seasons, as the cut cost the river folk. "I asked the tree. A tree
 says yes; it does not count its eggs. It was the people under it I did not ask, because they would have refused
 and hated us for the asking, or agreed and cursed us with every dead shell. I chose, so that nobody else had to
-carry it. I laid it before him, and he could not carry it either. He never went. Did he?" Two answers.
+carry it. I laid it before him to show him that he could not carry it either. Twice they sent north to reproach
+me, and I would not hear it. He never went. Did he?" Two answers.
 
 | Outcome | What the player gains in play | What the player loses or can no longer get | Who pays, and where the player sees it | The form results that build it |
 |---|---|---|---|---|
-| **The truth** ("He went. Jarecai's minder said yes. He waited by the root for you to make the cut.") | **the Listener's Grafting Knife** is the player's: a unique dagger (a load-order dagger with a fixed enchantment under our name; no Nordic make). Taleeka-Ma, who heard it, teaches without holding back: Restoration raised by 5. The Banujha is open to the hall: Xilsa-Jee walks, and is found at Jal-Resh Post, where she sells a walker's salves and draughts | the Listener's Chest, his teaching and the rank of Named Walker; nobody in the hall sends walkers now, so the hall gives no further gift | Okeeh-Ja, who lays down the walking: "Thirty years I shut that road so that nobody would see what I had left. I was the one hand that could have cut it." He is gone from the hall and is found sitting by the row of stakes Marzeel raised | a stage that keeps the knife and gives `raise_skill` Restoration 5, `set_number mr06.told 1`; then Xilsa-Jee's line at the sacred tree completes the quest and, being far from the hall and from the post, does `switch_off` Okeeh-Ja in the hall, `switch_on` Okeeh-Ja at the stakes, `switch_on` Xilsa-Jee at the post (her placement at the tree is switched off by Marzeel's next line, at the post) |
-| **What lets him sleep** ("He never went. He sat down where you left him.") | the rank of **Named Walker**: the Listener's Chest in the hall is the player's (released sap, the stilling draught, the hall's fixed store), and his teaching: Alchemy raised by 5. The hall goes on sending walkers and he goes on giving the player its roads | the knife, which he takes back and hangs in the hall; Xilsa-Jee's trade and trust: she is never let out, and says, "He has named you, and he says there was nothing at Meris-Keth. You were there. I will not ask you again" | Xilsa-Jee, at the sacred tree, clearing creepers; Marzeel, who knows what the player did, greets with one line and sells at a stranger's price | `take_item` the knife; `set_rank` 3; `give_ownership` the Listener's Chest; `raise_skill` Alchemy 5; `set_number mr06.told 2`, read by Xilsa-Jee's and Marzeel's lines; the knife's second placement on the hall's wall `switch_on` by Xilsa-Jee's next line at the tree |
+| **The truth** ("He went. Jarecai's minder said yes. He waited by the root for you to make the cut.") | **the Listener's Grafting Knife** is the player's: a unique dagger (a load-order dagger with a fixed enchantment under our name; no Nordic make). Taleeka-Ma, who heard it, teaches without holding back: Restoration raised by 5. The hall has no Listener now; Taleeka-Ma keeps it and lets her daughter walk: Xilsa-Jee is found at Jal-Resh Post with a walker's stock of salves and draughts to sell | the Listener's Chest, his teaching and the rank of Named Walker: with no Listener, the hall gives the player nothing further | Okeeh-Ja, who lays down the walking: "I told myself I had carried it. I had handed it to him and gone home, and when he sent for me I called it a reproach. I was the one hand that could have cut it." He will not leave at once ("Let me sit a day in this hall first"), and is found afterwards sitting by the row of stakes Marzeel raised | a stage that keeps the knife and gives `raise_skill` Restoration 5, `set_number mr06.told 1`; then Xilsa-Jee's line at the sacred tree completes the quest and, being far from the hall and from the post, does `switch_off` Okeeh-Ja in the hall, `switch_on` Okeeh-Ja at the stakes, `switch_on` Xilsa-Jee's trading placement at the post (her placement at the tree is switched off by Marzeel's next line, at the post) |
+| **What lets him sleep** ("He never went. He sat down where you left him.") | the rank of **Named Walker**: the Listener's Chest in the hall is the player's (released sap, the stilling draught, the hall's fixed store), and his teaching: Alchemy raised by 5. The hall goes on sending walkers and he goes on giving the player its roads | the knife, which he takes back and hangs in the hall; Xilsa-Jee's stock and trust: she is never let out, and says, "He has named you, and he says there was nothing at Meris-Keth. You were there. I will not ask you again" | Xilsa-Jee, at the sacred tree, clearing creepers; Marzeel, who knows what the player did and has one line for it | `take_item` the knife; `set_rank` 3; `give_ownership` the Listener's Chest; `raise_skill` Alchemy 5; `set_number mr06.told 2`, read by Xilsa-Jee's and Marzeel's lines; the knife's second placement on the hall's wall `switch_on` by Xilsa-Jee's next line at the tree |
 
 If Okeeh-Ja is dead when the knife is brought home, Xilsa-Jee takes it at the sacred tree and the line ends with
 nobody told: the knife is hers, the roads open, and the player has neither row. Whatever was told, Xilsa-Jee asks
@@ -453,19 +470,21 @@ roots and a sickness is in one of them first; that is all our craft, and it is w
 held they will ask this hall about every sick tree in the marsh, and I mean to have answers." *Why me*: "A walker
 must be a stranger to the tree. You are the strangest thing that has come into this hall. The tree does not need
 you to hear it; it needs you to taste, look and follow. Taste with the tip of your tongue and spit. Raw from the
-root and swallowed, it maddens anyone who was not hatched under that tree, and you were hatched under none of
-them" (`topics/hist-and-sap.md:37`; consistency T9). *What it pays and why I might not*: "The walkers' chest by
-that wall is yours while you walk for us, and Taleeka-Ma will mend you for nothing. What else you are given
-depends on how you leave a root. And you will be the stranger who touched their tree, in every town where one
-dies." "Not yet" stays open and free. The job is four sentences: Korydon's minder has sent word that his town's
-tree tastes bitter and its clutch lies dull; the rootworm that Cheeval-Xu calls at our sacred tree comes up in
-Korydon's root pool, at the foot of the village tree, and the minder stands there; find which root the bitterness
-comes in by, and if a hand put it there, stop the hand. "You will be asked what ails their tree. Tell them what
-lets them sleep. You will learn." He gives passage money and the walker's cord, and says of it: "Three turns and a
-tuck: the walkers' hitch. Every minder in the marsh knows it. Show it and they will let you near the tree." And
-one warning, which is the ending's trade said first: "If you find a thing in a root that should not be there, do
-not pull it out until you know whose hand put it there and who lives by it. A pulled tap is a closed root, and a
-closed root feeds nobody. This hall pays its walkers for closed roots. Others will pay you for open ones."
+root and swallowed, it maddens anyone who was not hatched under that very tree" (`topics/hist-and-sap.md:37`;
+consistency T9). *What it pays and why I might not*: "The walkers' chest by that wall is yours while you walk for
+us, salves and draughts and all. What else you are given depends on how you leave a root. And you will be the
+stranger who touched their tree, in every town where one dies." "Not yet" stays open and free. The job is five
+sentences: Korydon's minder has sent word that his town's tree tastes bitter and its clutch lies dull; the
+rootworm that Cheeval-Xu calls at our sacred tree comes up in Korydon's root pool, at the foot of the village
+tree, and the minder stands there; find which root the bitterness comes in by, and if a hand put it there, stop
+the hand; if there is a wound, dress it with the hall's salve, which a walker carries; the herb-wife of the
+hunters' camp north of the town is Meer-Zah, and she knows every root in that country. "When a village asks what
+ails its tree, a walker tells it what lets it sleep. You will learn." He gives passage money and the walker's
+cord, and says of it: "Three turns and a tuck: the walkers' hitch. Every minder in the marsh knows it." And one
+warning, which is the ending's trade said first: "If you find a thing in a root that should not be there, do not
+pull it out until you know whose hand put it there and who lives by it. A pulled tap is a closed root, and a
+closed root feeds nobody. This hall pays its walkers for closed roots, and for nothing else. Others will pay you
+for open ones."
 
 **The hidden truth (X).** Korydon is a town of chime-smiths and boat-builders on a ring of dry ground, and its
 village tree's roots run out under the channel (D ultherus-swamp, Korydon). One root surfaces on a hummock north
@@ -488,24 +507,25 @@ spiders and are another people's ground.
 | Who | Where they stand | What they want | If they die |
 |---|---|---|---|
 | Okeeh-Ja, the Listener (man) | inside the Tree-Minders' Hall, Helstrom | the cause found before the Root Talk | the quest fails, with the faction's message |
-| Demeepa-Ru, tree-minder of Korydon (man; the record's tree-minder) | at the village tree, by the root pool | his tree well, and the smelter moved off its side of the ring | before the salve is made, the quest fails; after, nothing |
-| Ruleem, a smelter-hand of the chime-smiths (man) | at the chime-smiths' forge | the forge left alone: "The tree drank our quench-water for six hundred years" | nothing; the forge-root sap still clears the forge |
+| Demeepa-Ru, tree-minder of Korydon (man; the record's tree-minder) | at the village tree, by the root pool | his tree well, and the smelter moved off its side of the ring | before he has shown the tree, the quest fails; after, nothing |
+| Ruleem, a smelter-hand of the chime-smiths (man) | at the chime-smiths' forge | the forge left alone: "The tree drank our quench-water for six hundred years" | nothing |
 | Jaseen, caulker (man) | at the hull on the boatwright's slip, with his pitch-pot | resin, because forty people live by boats that float | his lines close, and the tap cannot be left to the slip |
 | Meer-Zah, herb-wife of the Tumnatu (woman; the record's herb-wife) | at the Tumnatu Cattail Camp | her people's old tap kept; the town's coin for resin | her lines close; the camp has no leave to give, and the tap cannot be left to the camp |
-| two Tumnatu hunters, a bow-hunter and a spear-hunter | at the edge of the beds, in sight of the far root | nobody at the root who has not the camp's leave | nothing; the things at the root are still the camp's |
+| two Tumnatu hunters, a bow-hunter and a spear-hunter | at the camp's edge of the beds, on the way to the far root and out of the spider's notice | nobody in the beds who has not the camp's leave | nothing; the things at the root are still the camp's |
 | a spider, ours, fixed at the Wild band | on the far root, in its web | | nothing |
 | giant spiders (three), the place's own, at the Dangerous band (the record's) | in the dragon's-tongue beds, beyond the far root from the camp | | nothing |
 
 Demeepa-Ru has one line for a player who holds a rank among the keepers of the rootworm ways, since the keepers'
 pool-man stands at the same tree: "You are one of Tulaxi's. He calls the worm into my pool and I have never
-complained of it. Tell him the pool is bitter too" (consistency C56, P7).
+complained of it. Tell him the pool is bitter too" (consistency C56, P7). It is gated on the keepers' rank, which
+their line gives, and so is not in this file's sketch.
 
 **The things.**
 
 | Thing | Where | Lock, key, owner | Holds or says |
 |---|---|---|---|
 | the walker's cord | given by Okeeh-Ja | a plain thing | named "Walker's Cord (the Walkers' Hitch)" |
-| the Walkers' Chest | in the hall | no lock; the hall's, and so a Root-Hand's | salves, three healing draughts and gathered herbs, fixed |
+| the Walkers' Chest | in the hall | no lock; the hall's, and so a Root-Hand's | salves, three healing draughts, two measures of Hist sap and gathered herbs, taproot among them, fixed |
 | three sap-beads | one each on the root at the tree's pool, the root on the forge side of the ring and the root at the ring's north edge | takeable; nobody's | "Sap-Bead (Pool Root)", "Sap-Bead (Forge Root)", "Sap-Bead (North Root)" |
 | the pot of paste | at the foot of the far root | takeable; the camp's | "Pot of Dragon's-Tongue Paste (Tumnatu Clay)": the find |
 | the gourd of resin | at the foot of the far root | takeable; the camp's | "Gourd of Resin (Korydon Tin Stopper, Keel Stamp)" |
@@ -514,8 +534,10 @@ complained of it. Tell him the pool is bitter too" (consistency C56, P7).
 | the slip's chest | beside the hull on the slip | no lock; Jaseen's | pitch, twelve lockpicks, forty arrows and a boat-builder's purse of 120 gold, fixed |
 | the dull clutch, and bright eggs among it | a nest of dull eggs by the tree's pool, which is the place's own; a few bright eggs in it, ours, switched on at the end | not takeable | what is already lost, and what came back |
 
-The things at the root are the camp's. To one who has the camp's leave they are free to take; to anyone else,
-taking them in the hunters' sight is theft, and the camp answers a thief as Skyrim's own law does.
+The things at the root, and the camp's goods on its poles, are the camp's, and the camp keeps Skyrim's own law of
+theft. To one who has the camp's leave they are free to take; to anyone else, taking them in the hunters' sight is
+theft. The hall's salve is no thing in the pack: a walker is taken to carry it, and dressing the wound is a stage,
+so it cannot be lost or sold.
 
 **The ways through.**
 
@@ -527,26 +549,24 @@ taking them in the hunters' sight is theft, and the camp answers a thief as Skyr
   2. *The taste (Alchemy 25, any bead held: one line for each bead).* "There is dragon's-tongue in this." He says
      where it grows and which root lies among it. Refused: "You do not know what you are tasting. Bring me all
      three and I will tell you which is worst."
-  3. *The herb-wife (Speech 30, or 60 gold).* Meer-Zah, whom Okeeh-Ja names at the briefing as the herb-wife of
-     the hunters' camp north of the town, asked about the town's tree: "Their root comes up in our beds. We drew
-     from it before their town had a name. Go and look, since you ask openly; my hunters will know you, and they
-     will shoot what sits on it." Her answer gives the camp's leave. Refused: "Ask your town what it accuses us of
-     this season. Or put sixty on my mat, as a trader would." The same two lines stay open after the way is
-     learned from Demeepa-Ru, until the pot is taken.
-- *Reaching the far root.* Demeepa-Ru and Ruleem both say what is in the beds before the player goes: "nobody
-  gathers there who has not a Tumnatu beside them". Three ways: with the camp's leave, by the camp's own side of
-  the beds, short of the big spiders, where the two hunters stand; unseen past the hunters (Sneak); or round the
-  far side, through the three spiders and out of the hunters' sight (Archery or any weapon, Destruction). On every
-  way one spider sits on the root itself, at the Wild band: it is shot or fought, and the hunters, who stand
-  within bowshot, shoot it too when it rises; or the things are lifted from under it unseen (Sneak).
+  3. *The herb-wife (Speech 30, or 60 gold).* Meer-Zah, asked about the town's tree: "Their root comes up in our
+     beds. We drew from it before their town had a name. Go and look, since you ask openly; my hunters will know
+     you. Something has webbed it, and that is yours to deal with." Her answer gives the camp's leave. Refused:
+     "Ask your town what it accuses us of this season. Or put sixty on my mat, as a trader would." The same two
+     lines stay open after the way is learned from Demeepa-Ru, until the pot is taken.
+- *Reaching the far root.* Demeepa-Ru and Ruleem both say what is in the beds before the player goes: the great
+  spiders, and a lesser one that has webbed the root. Three ways: with the camp's leave, by the camp's own side of
+  the beds, past the two hunters and short of the big spiders; unseen past the hunters (Sneak); or round the far
+  side, through the three spiders and out of the hunters' sight (Archery or any weapon, Destruction). On every way
+  one spider sits on the root itself, at the Wild band, beyond the hunters' notice: it is shot or fought, by the
+  player alone, or the things are lifted from under it unseen (Sneak). A talker with the camp's leave still meets
+  it; it is the smallest fight in that country, and the Walkers' Chest holds three draughts for it.
 - *The find, and the hand.* Taking the pot of paste is the find. The gourd's tin names the town's side of it:
   shown to Jaseen (the gourd held; no skill), he owns it. "I asked for three times the resin. I did not ask how
   she would get it. Then I did not ask again." Shown to Meer-Zah: "The slip paid me. Jaseen. I packed it because
   the town wanted more than a root gives."
-- *The wound.* Demeepa-Ru makes the root-salve from the sweet sap of the forge root, which he draws himself. A
-  player with Alchemy 25 asks for his bowl and works it ("Give me your bowl"), and he says the hall has sent him
-  a minder at last; otherwise he does. Refused: "You would curdle it. Stand back and hold the sap." Using the far root, the salve
-  made, cleans and dresses the wound.
+- *The wound.* Using the far root, the pot found, cuts the paste out and dresses the wound with the hall's salve,
+  there and then; nobody is gone back to.
 - *The tap.* It is still in the root. What is done with it is the ending.
 
 **The stages.**
@@ -554,22 +574,24 @@ taking them in the hunters' sight is theft, and the camp answers a thief as Skyr
 | Stage | What moves it | Journal gist | Objective and its marker |
 |---|---|---|---|
 | 0 | hidden start; the job is offered while Demeepa-Ru lives | | |
-| 10 | Okeeh-Ja's line "What is the job?" (gives the cord and 50 gold; the rank of Root-Hand, which opens the Walkers' Chest) | Okeeh-Ja, the Listener of Helstrom's walkers, sent me to Korydon, where the village tree's sap has turned bitter. I am to find which root the bitterness comes in by. The rootworm at Helstrom's sacred tree goes to Korydon's root pool. | Speak to Demeepa-Ru at Korydon's village tree (him) |
-| 20 | Demeepa-Ru's line "Show me the tree" | Demeepa-Ru showed me the dull clutch by the pool. He blames the smiths' forge; the smiths blame the Tumnatu camp north of the town. The sap beads on three of the tree's roots. | Find where the bitterness comes in (the three sap-beads; Demeepa-Ru; Meer-Zah) |
+| 10 | Okeeh-Ja's line "What is the job?" (gives the cord and 50 gold; the rank of Root-Hand, which opens the Walkers' Chest) | Okeeh-Ja, the Listener of Helstrom's walkers, sent me to Korydon, where the village tree's sap has turned bitter. I am to find which root the bitterness comes in by, and dress any wound I find with the hall's salve. The rootworm at Helstrom's sacred tree goes to Korydon's root pool. | Speak to Demeepa-Ru at Korydon's village tree (him) |
+| 20 | Demeepa-Ru's line "Show me the tree" | Demeepa-Ru showed me the dull clutch by the pool. He blames the smiths' forge, and says the smiths blame the Tumnatu camp north of the town. The sap beads on three of the tree's roots. | Find where the bitterness comes in (the three sap-beads; Demeepa-Ru; Meer-Zah) |
 | 30 | the three beads, or the taste | I learned that the bitterness comes into the tree from the north, by a root that surfaces on the Tumnatu's hummock across the channel. | Find the far root (the pot of paste; Meer-Zah) |
 | 31, 32 | Meer-Zah's line, by Speech (31) or for 60 gold (32); open at 20 and 30; gives the camp's leave | Meer-Zah, the Tumnatu herb-wife, told me that a root of Korydon's tree comes up in her camp's beds, and gave me the camp's leave to walk out to it. (32: I paid her sixty for it.) | Find the far root (the pot of paste) |
-| 40 | taking the pot of paste (open at 30 to 32); or, the pot found before any way was taken, showing it to Demeepa-Ru | At the far root I found a reed tap driven into the wood, and a pot of dragon's-tongue paste at its foot. The wound round the tap is packed with it. | Get a root-salve from Demeepa-Ru (him) |
-| 45 | Demeepa-Ru's salve line, or "Give me your bowl" with Alchemy 25; the salve is carried in the journal and is no thing in the pack, so it cannot be lost | A root-salve was made in Demeepa-Ru's bowl from the forge root's sweet sap. | Dress the wound (the far root) |
-| 50 | using the far root (open once the salve is made; moves on to 60 at once if the tap is already held) | I cut the paste out of the wound and dressed it. The sap ran clean. The tap is still in the root. | Pull the tap (the reed tap), or leave it in and say so to Meer-Zah or to Jaseen (each) |
+| 40 | taking the pot of paste (open at 30 to 32); or, the pot found before any way was taken, showing it to Demeepa-Ru | At the far root I found a reed tap driven into the wood, and a pot of dragon's-tongue paste at its foot. The wound round the tap is packed with it. | Dress the wound with the hall's salve (the far root) |
+| 50 | using the far root (moves on to 60 at once if the tap is already held) | I cut the paste out of the wound and dressed it with the hall's salve. The sap ran clean. | Pull the tap (the reed tap), or tell Meer-Zah or Jaseen that it is theirs (each) |
 | 60 | taking the reed tap (open at 50) | I pulled the tap. The root will close. | Tell Okeeh-Ja (him) |
-| 61 | Meer-Zah's line "It stays in. Draw as your mothers drew" (open at 50; gives the camp's leave, her teaching and three pots of dart-paste) | I left the tap in the root and told Meer-Zah it is the Tumnatu's, at the old measure. She showed me what dragon's-tongue does. | Tell Okeeh-Ja (him) |
-| 62 | Jaseen's line "It stays in, and it is the slip's" (open at 50; gives 300 gold and the slip's chest) | I left the tap in the root and took Jaseen's three hundred for it. What is in the slip's chest is mine. | Tell Okeeh-Ja (him) |
+| 61 | Meer-Zah's line "The tap is yours. Draw as your mothers drew" (open at 50; gives the camp's leave, five pots of dart-paste and its making) | I told Meer-Zah the tap is the Tumnatu's, at the old measure. She gave me her camp's dart-paste and showed me its making. | Tell Okeeh-Ja (him) |
+| 62 | Jaseen's line "The tap is the slip's" (open at 50; gives 500 gold and the slip's chest) | I told Jaseen the tap is the slip's and took his five hundred for it. What is in the slip's chest is mine. | Tell Okeeh-Ja (him) |
 | 90, 91, 92 | Okeeh-Ja's line at 60, 61, 62 | I told the Listener how I left Korydon's root. | ends, completed |
 | 95 | Okeeh-Ja dead | The Listener is dead, and nobody in the hall will answer for Korydon's tree. | ends, failed, with the faction's message |
-| 96 | Demeepa-Ru dead, before the salve is made | Korydon's tree-minder is dead, and nobody can make the salve. | ends, failed |
+| 96 | Demeepa-Ru dead, before he has shown the tree | Korydon's tree-minder is dead, and nobody can show me which roots bead. | ends, failed |
 
 A player who pulled the tap on first reaching the root, against the warning, has closed the root: the quest goes
-to 60 when the wound is dressed, and Meer-Zah and Jaseen say what that cost them.
+to 60 when the wound is dressed, and Meer-Zah and Jaseen say what that cost them. No entry says where the tap is,
+so each is true of that player too. The form has no gate for a thing not held, so a player who pulled the tap
+early and then threw it away could still give the root to the camp or the slip; the two lines are worded as a
+grant ("The tap is yours"), which is true of that player as well.
 
 ```sketch
 quest MR01 faction "The Bitter Root"
@@ -577,8 +599,8 @@ start game 0
 
 place hall indoors "the Tree-Minders' Hall at Helstrom"
 place tree outdoors "the sacred tree of Helstrom"
-place korydon outdoors far "Korydon"
-place camp outdoors far "Tumnatu Cattail Camp"
+place korydon outdoors "Korydon"
+place camp outdoors "Tumnatu Cattail Camp"
 
 person okeeh at hall "Okeeh-Ja"
 person taleeka at hall existing "Taleeka-Ma"
@@ -591,6 +613,7 @@ person bowhunter at camp level 12 "Tumnatu bow-hunter"
 person spearhunter at camp level 12 "Tumnatu spear-hunter"
 person rootspider at camp hostile level 8 "the spider on the root"
 
+# The chests' fixed contents are in the things table; the sketch leaves them out.
 thing walkerschest at hall container owner manyroot "Walkers' Chest"
 thing bead1 at korydon "Sap-Bead (Pool Root)"
 thing bead2 at korydon "Sap-Bead (Forge Root)"
@@ -607,32 +630,31 @@ item alchring "Walker's Ring of Alchemy"
 item minderssalve "Minder's Salve"
 item histsap "Hist Sap"
 item taproot "Taproot"
+item dragonstongue "Dragon's Tongue"
 
 stage 0 hidden
-stage 10 "Okeeh-Ja, the Listener of Helstrom's walkers, sent me to Korydon, where the village tree's sap has turned bitter. I am to find which root the bitterness comes in by. The rootworm at Helstrom's sacred tree goes to Korydon's root pool, where the town's tree-minder Demeepa-Ru stands." do give cord, give-gold 50, join manyroot
-stage 20 "Demeepa-Ru showed me the dull clutch by the pool. He blames the smiths' forge; the smiths blame the Tumnatu camp north of the town. The sap beads on three of the tree's roots."
+stage 10 "Okeeh-Ja, the Listener of Helstrom's walkers, sent me to Korydon, where the village tree's sap has turned bitter. I am to find which root the bitterness comes in by, and dress any wound I find with the hall's salve. The rootworm at Helstrom's sacred tree goes to Korydon's root pool, where the town's tree-minder Demeepa-Ru stands." do give cord, give-gold 50, join manyroot
+stage 20 "Demeepa-Ru showed me the dull clutch by the pool. He blames the smiths' forge, and says the smiths blame the Tumnatu camp north of the town. The sap beads on three of the tree's roots."
 stage 30 "I learned that the bitterness comes into the tree from the north, by a root that surfaces on the Tumnatu's hummock across the channel."
 stage 31 "Meer-Zah, the Tumnatu herb-wife, told me that a root of Korydon's tree comes up in her camp's beds, and gave me the camp's leave to walk out to it." do join tumnatucamp
 stage 32 "I paid Meer-Zah, the Tumnatu herb-wife, sixty. She told me that a root of Korydon's tree comes up in her camp's beds, and gave me the camp's leave to walk out to it." do take-gold 60, join tumnatucamp
 stage 40 "At the far root I found a reed tap driven into the wood, and a pot of dragon's-tongue paste at its foot. The wound round the tap is packed with it."
-stage 45 "A root-salve was made in Demeepa-Ru's bowl from the forge root's sweet sap."
-stage 50 "I cut the paste out of the wound and dressed it. The sap ran clean. The tap is still in the root."
+stage 50 "I cut the paste out of the wound and dressed it with the hall's salve. The sap ran clean."
 stage 60 "I pulled the tap. The root will close."
-stage 61 "I left the tap in the root and told Meer-Zah it is the Tumnatu's, at the old measure. She showed me what dragon's-tongue does." do join tumnatucamp, ingredient 0889A2:Skyrim.esm, give dartpaste 3, set mr01.tap 2
-stage 62 "I left the tap in the root and took Jaseen's three hundred for it. What is in the slip's chest is mine." do give-gold 300, own slipchest, set mr01.tap 3
+stage 61 "I told Meer-Zah the tap is the Tumnatu's, at the old measure. She gave me her camp's dart-paste and showed me its making." do join tumnatucamp, give dartpaste 5, set mr01.tap 2, recipe dartpaste at cookpot needs dragonstongue 2
+stage 62 "I told Jaseen the tap is the slip's and took his five hundred for it. What is in the slip's chest is mine." do give-gold 500, own slipchest, set mr01.tap 3
 stage 90 completed "I told the Listener that I pulled the tap from Korydon's root." do set mr01.tap 1, give-gold 150, give alchring, leave tumnatucamp, on brighteggs, recipe minderssalve at cookpot needs histsap 1 taproot 1
-stage 91 completed "I told the Listener that I left Korydon's root to the Tumnatu." do give-gold 150, on brighteggs
+stage 91 completed "I told the Listener that I left Korydon's root to the Tumnatu." do on brighteggs
 stage 92 completed "I told the Listener that I sold Korydon's root to the slip." do leave tumnatucamp, on brighteggs
 stage 95 failed "The Listener is dead, and nobody in the hall will answer for Korydon's tree."
-stage 96 failed "Korydon's tree-minder is dead, and nobody can make the salve."
+stage 96 failed "Korydon's tree-minder is dead, and nobody can show me which roots bead."
 
 objective 10 at 10 "Speak to Demeepa-Ru at Korydon's village tree" -> demeepa
 objective 20 at 20 "Find where the bitterness comes into Korydon's tree" -> bead1, bead2, bead3, demeepa, meerzah
 objective 30 at 30 "Find the far root on the Tumnatu's hummock" -> paste, meerzah
 objective 31 at 31, 32 "Find the far root in the camp's beds" -> paste
-objective 40 at 40 "Get a root-salve from Demeepa-Ru" -> demeepa
-objective 45 at 45 "Dress the wound in the far root" -> root
-objective 50 at 50 "Pull the reed tap, or leave it in and say so to Meer-Zah or to Jaseen" -> tap, meerzah, jaseen
+objective 40 at 40 "Dress the wound in the far root with the hall's salve" -> root
+objective 50 at 50 "Pull the reed tap, or tell Meer-Zah or Jaseen that it is theirs" -> tap, meerzah, jaseen
 objective 60 at 60, 61, 62 "Tell Okeeh-Ja" -> okeeh
 
 line sicktrees1 wujeel at 0 ask "Sick trees?" if alive okeeh, alive demeepa says "the hall's walkers go out to them; Okeeh-Ja, the Listener, stands inside the Tree-Minders' Hall, the cave by the waterfalls at the north-west edge"
@@ -640,76 +662,78 @@ line sicktrees2 taleeka at 0 ask "Sick trees?" if alive okeeh, alive demeepa say
 line trees okeeh at 0 ask "What is a Hist to a village?" says "its eggs, its blood and its dead"
 line walkers okeeh at 0 ask "Who are the walkers?" says "minders who taste other people's trees; many roots, and the sickness is in one first"
 line roottalk okeeh at 0 ask "What is the Root Talk?" says "the elders come to hear the trees; it is late; they will ask about every sick tree"
-line whyme okeeh at 0 ask "Why a stranger?" says "a walker must be a stranger to the tree; taste and spit, raw sap maddens anyone not hatched under that tree"
-line pays okeeh at 0 ask "What does it pay?" says "the walkers' chest and Taleeka-Ma's mending; the rest depends on how you leave a root; you will be blamed where trees die"
-line job okeeh at 0 ask "What is the job?" -> 10 says "Korydon's tree is bitter; the rootworm, the minder at the pool, the herb-wife Meer-Zah of the hunters' camp north of the town; the cord and the walkers' hitch; do not pull a tap until you know who lives by it; the hall pays for closed roots, others for open ones; tell them what lets them sleep"
-line showtree demeepa at 10 ask "The hall sent me. Show me the tree." -> 20 says "the dull clutch, the three roots, the forge he blames, the root on the Tumnatu's hummock he has never walked to"
+line whyme okeeh at 0 ask "Why a stranger?" says "a walker must be a stranger to the tree; taste and spit, raw sap maddens anyone not hatched under that very tree"
+line pays okeeh at 0 ask "What does it pay?" says "the walkers' chest by that wall; the rest depends on how you leave a root; you will be blamed where trees die"
+line job okeeh at 0 ask "What is the job?" -> 10 says "Korydon's tree is bitter; the rootworm, the minder at the pool, the herb-wife Meer-Zah of the hunters' camp north of the town; the cord and the walkers' hitch; a pot of the hall's salve for any wound; do not pull a tap until you know who lives by it; the hall pays for closed roots, others for open ones; a walker tells a village what lets it sleep"
+line showtree demeepa at 10 ask "The hall sent me. Show me the tree." -> 20 says "the dull clutch, the three roots, the forge he blames, the smiths who blame the Tumnatu, the root on the Tumnatu's hummock he has never walked to"
 # Demeepa-Ru's one line for a keeper of rank (consistency C56) is gated on the Waykeepers' rank, which that line's file gives; the record writer adds it.
 line hallword demeepa at 20-62 ask "What do you know of my hall?" says "the Listener stood one day under Meris-Keth's tree and went home, and that winter its people carried their eggs to Jarecai"
+line hallword2 demeepa at 90-92 ask "What do you know of my hall?" says "the Listener stood one day under Meris-Keth's tree and went home, and that winter its people carried their eggs to Jarecai"
 line beads demeepa at 20 ask "Taste these three for me." if holds bead1, holds bead2, holds bead3 -> 30 else "Bring me a bead from each of the three roots, and I will tell you which is worst." says "the forge root is sweetest, the north root worst; it comes in from the hummock"
 line taste1 demeepa at 20 ask "Let me taste this one myself." if skill Alchemy 25, holds bead1 -> 30 else "You do not know what you are tasting. Bring me all three and I will tell you which is worst." says "dragon's-tongue; it grows on the Tumnatu's hummock, where one root comes up"
 line taste2 demeepa at 20 ask "Let me taste the forge root's myself." if skill Alchemy 25, holds bead2 -> 30 else "You do not know what you are tasting. Bring me all three and I will tell you which is worst." says "sweet, and still a trace of dragon's-tongue; it grows on the Tumnatu's hummock"
 line taste3 demeepa at 20 ask "Let me taste the north root's myself." if skill Alchemy 25, holds bead3 -> 30 else "You do not know what you are tasting. Bring me all three and I will tell you which is worst." says "dragon's-tongue, and strong; the root on the Tumnatu's hummock"
-line foundearly demeepa at 20 ask "I found this pot at a root on the hummock north of the town." if holds paste -> 40 says "dragon's-tongue, in a wound; then that is where it comes in"
-line bedswarn1 demeepa at 20-32 ask "What is out in the beds?" says "spiders as big as a boat's bow; nobody gathers there without a Tumnatu beside them"
+line foundearly demeepa at 20 ask "I found this pot at a root on the hummock north of the town." if holds paste -> 40 says "dragon's-tongue, in a wound; then that is where it comes in; dress it with what your hall gave you"
+line bedswarn1 demeepa at 20-32 ask "What is out in the beds?" says "spiders as big as a boat's bow, and a lesser one that has webbed the root; nobody gathers there without a Tumnatu's leave"
 line bedswarn2 ruleem at 10-32 ask "Is it the forge?" says "the tree drank our quench-water six hundred years; look to the camp, and mind the spiders in their flowers"
-line leaveword meerzah at 20-30 ask "A root of the town's tree is sick. Does one come up here?" if skill Speech 30 -> 31 else "Ask your town what it accuses us of this season. Or put sixty on my mat, as a trader would." says "it comes up in our beds; go and look; my hunters will know you and will shoot what sits on it"
-line leavecoin meerzah at 20-30 ask "Sixty, for a walk in your beds." if gold 60 -> 32 else "Sixty. You have not got it." says "she takes the coin and gives the camp's leave"
+line leaveword meerzah at 20-30 ask "A root of the town's tree is sick. Does one come up here?" if skill Speech 30 -> 31 else "Ask your town what it accuses us of this season. Or put sixty on my mat, as a trader would." says "it comes up in our beds; go and look; my hunters will know you; something has webbed it, and that is yours to deal with"
+line leavecoin meerzah at 20-30 ask "I can pay for a walk in your beds." if gold 60 -> 32 else "Sixty. You have not got it." says "sixty; she takes the coin and gives the camp's leave"
 line jaseengourd jaseen at 40-50 ask "This gourd has your slip's stamp." if holds gourd says "he asked for three times the resin and did not ask how"
 line meerzahgourd meerzah at 40-50 ask "Who paid you for the resin?" if holds gourd says "the slip, Jaseen; she packed the wound because the town wanted more than a root gives"
-line makesalve demeepa at 40 ask "The wound must be dressed." -> 45 says "he draws the forge root's sweet sap and makes the salve"
-line bowl demeepa at 40 ask "Give me your bowl." if skill Alchemy 25 -> 45 else "You would curdle it. Stand back and hold the sap." says "he hands it over, watches, and says the hall has sent him a minder at last"
-line pullcase demeepa at 45-50 ask "What should be done with the tap?" says "pull it; no hand but a minder's belongs on a root; the hall will pay you as its own and the Tumnatu will not have you in their beds again"
-line keepcase meerzah at 45-50 ask "What should be done with the tap?" says "it is our larder; leave it and you are of this camp, I teach you the tongue-flower and give you what we put on our darts; your hall keeps its ring for those who close roots"
-line sellcase jaseen at 45-50 ask "What should be done with the tap?" says "forty people; three hundred and what is in the slip's chest; your hall will give you nothing for it and the camp will know who sold their root"
-line keep meerzah at 50 ask "It stays in. Draw as your mothers drew." -> 61 says "she will not pack it again"
-line sell jaseen at 50 ask "It stays in, and it is the slip's." -> 62 says "he pays, and swears to draw it light"
+line pullcase demeepa at 40-50 ask "What should be done with the tap?" says "pull it; no hand but a minder's belongs on a root; the hall will pay you as its own, its ring and the making of its salve, and the Tumnatu will not have you in their beds again"
+line keepcase meerzah at 40-50 ask "What should be done with the tap?" says "it is our larder; leave it and you are of this camp, what is ours is yours, and I give you what we put on our darts and show you its making; your hall pays nothing for an open root"
+line sellcase jaseen at 40-50 ask "What should be done with the tap?" says "forty people; five hundred and what is in the slip's chest; your hall will give you nothing for it and the camp will know who sold their root"
+line keep meerzah at 50 ask "The tap is yours. Draw as your mothers drew." -> 61 says "she will not pack it again"
+line sell jaseen at 50 ask "The tap is the slip's." -> 62 says "he pays, and swears to draw it light"
 line report1 okeeh at 60 ask "I pulled the tap." -> 90 says "a closed root feeds nobody, and a town's tree is whole; the ring, and how the hall makes its salve"
-line report2 okeeh at 61 ask "I left the tap to the Tumnatu." -> 91 says "you left a town's root with people who have no tree; they will bleed it lightly; I have done worse; the ring is for closed roots"
-line report3 okeeh at 62 ask "I left the tap to the slip." -> 92 says "you sold a tree's vein for three hundred; I have nobody else to send, or I would not send you again"
-line eggs demeepa at 90-92 ask "How is the clutch?" if alive demeepa says "some turned bright; more would have, with the root closed, or as many as could"
-line campshut meerzah at 90 ask "Will you trade?" says "you closed our larder; buy your herbs in the town"
-line campshut2 meerzah at 92 ask "Will you trade?" says "you sold our root to the man who had it poisoned; buy your herbs in the town"
-line camptrade meerzah at 91 ask "Will you trade?" says "she sells dragon's-tongue and dart-paste to one of the camp"
+line report2 okeeh at 61 ask "I left the tap to the Tumnatu." -> 91 says "you left a town's root with people who have no tree; they will bleed it lightly; I have done worse; the hall pays for closed roots"
+line report3 okeeh at 62 ask "I left the tap to the slip." -> 92 says "you sold a tree's vein for five hundred; I have nobody else to send, or I would not send you again"
+line eggs1 demeepa at 90 ask "How is the clutch?" says "a good half turned bright once the root closed"
+line eggs2 demeepa at 91-92 ask "How is the clutch?" says "a few turned bright; more would have, with the root closed"
+line campshut meerzah at 90 ask "Is your camp still open to me?" says "you closed our larder; you are no guest here"
+line campshut2 meerzah at 92 ask "Is your camp still open to me?" says "you sold our root to the man who had it poisoned; you are no guest here"
+line campopen meerzah at 91 ask "Is your camp still open to me?" says "you are of the camp; take what you need from the beds and the poles"
 line slipshort jaseen at 90-91 ask "How is the slip?" says "short of resin, and buying what Helstrom's hall releases"
+line slipfull jaseen at 92 ask "How is the slip?" says "the hulls are tight; he draws it light, as he swore"
 
 take paste from 30 -> 40
-use root from 45 -> 50
+use root from 40 -> 50
 take tap from 50 -> 60
 must-live okeeh fails 95
-must-live demeepa fails 96 to 40
+must-live demeepa fails 96 to 10
 ```
 
 **The choice, each side argued by the person it concerns, each saying the trade before it is made.**
 
 - *Pull it* (60). Demeepa-Ru: "No hand but a minder's belongs on a root. Pull it out and let the root close. Your
-  hall will pay you as it pays its own. The Tumnatu will not have you in their beds again." The tree mends
-  fastest. Cost: the Tumnatu lose a right older than the town, and the slip has no resin but what Helstrom's hall
-  releases.
+  hall will pay you as it pays its own: its ring, and the making of its salve. The Tumnatu will not have you in
+  their beds again." The tree mends fastest. Cost: the Tumnatu lose a right older than the town, and the slip has
+  no resin but what Helstrom's hall releases.
 - *Leave it to the Tumnatu* (61). Meer-Zah: "It is our larder. We bled it lightly for longer than your town has
-  stood. I will not pack it again. Leave it and you are of this camp: I will teach you the tongue-flower and give
-  you what we put on our darts. Your hall keeps its ring for those who close roots." Cost: a root of the town's
-  tree stays in the hands of people who are not of the tree, the tree mends more slowly, and the slip goes short.
-- *Leave it to the slip* (62). Jaseen: "Forty people. I will draw it light, I swear it. Three hundred, and what is
+  stood. I will not pack it again. Leave it and you are of this camp: what is ours is yours, and I give you what
+  we put on our darts and show you its making. Your hall pays nothing for an open root." Cost: a root of the
+  town's tree stays in the hands of people who are not of the tree, the tree mends more slowly, and the slip goes
+  short.
+- *Leave it to the slip* (62). Jaseen: "Forty people. I will draw it light, I swear it. Five hundred, and what is
   in the slip's chest. Your hall will give you nothing for it, and the camp will know who sold their root." Cost:
   the hand that asked for the poison now holds the vein.
 
 | Outcome | What the player gains in play | What the player loses or can no longer get | Who pays, and where the player sees it | The form results that build it |
 |---|---|---|---|---|
-| **Pulled** (60, then 90) | a healer's craft: the Walker's Ring of Alchemy (a load-order ring with a fixed Alchemy enchantment); the making of the **Minder's Salve** opens at any cook pot (a healing salve of the load order under our name, from Hist sap and taproot); 150 gold | the camp: its leave is withdrawn, so its beds and its goods are theft again, and Meer-Zah sells the player nothing; the slip's chest | Meer-Zah at the camp ("you closed our larder"); Jaseen at the slip, short of resin | `give_item` the ring; `open_recipe` the salve at the cook pot; `give_gold` 150; `leave_faction` the camp; `set_number mr01.tap 1`, read by Meer-Zah's trade lines |
-| **The Tumnatu's** (61, then 91) | a hunter's and a poisoner's: the camp's leave for good (its beds and its goods free to the player), every effect of dragon's-tongue known, three pots of Tumnatu dart-paste (a load-order poison under our name) and Meer-Zah's trade in both; 150 gold | the ring and the salve's making, which the hall keeps for closed roots; the slip's chest | Demeepa-Ru, whose clutch turns more slowly, at the nest; Jaseen at the slip, short of resin | `join_faction` the camp; `learn_ingredient` dragon's-tongue; `give_item` the paste, 3; `give_gold` 150; `set_number mr01.tap 2`, read by Meer-Zah's trade lines |
-| **The slip's** (62, then 92) | a purse and a store: 300 gold and the slip's chest (pitch, twelve lockpicks, forty arrows, 120 gold) | everything the hall gives for the job, and the camp: no ring, no salve, no gold from the Listener, and the camp's leave withdrawn | Meer-Zah and the Tumnatu, who lose the root to the man who had it poisoned; the Listener's contempt | `give_gold` 300; `give_ownership` the slip's chest; `leave_faction` the camp; `set_number mr01.tap 3` |
+| **Pulled** (60, then 90) | a healer's craft and the hall's pay: the Walker's Ring of Alchemy (a load-order ring with a fixed Alchemy enchantment); the making of the **Minder's Salve** opens at any cook pot (a healing salve of the load order under our name, from Hist sap and taproot, both in the Walkers' Chest and on Wujeel's stall); 150 gold | the camp: its leave is withdrawn, so its beds' goods and the things on its poles are theft again; the slip's chest and purse | Meer-Zah at the camp ("you closed our larder; you are no guest here"); Jaseen at the slip, short of resin | `give_item` the ring; `open_recipe` the salve at the cook pot; `give_gold` 150; `leave_faction` the camp; `set_number mr01.tap 1` |
+| **The Tumnatu's** (61, then 91) | a hunter's and a poisoner's: the camp's leave for good (the goods on its poles and the things in its beds free to the player), five pots of Tumnatu dart-paste (a load-order poison under our name) and its making at any cook pot from dragon's-tongue | everything the hall pays: no ring, no salve's making, no gold; the slip's chest and purse | Demeepa-Ru, whose clutch turns more slowly ("a few turned bright; more would have, with the root closed"), at the nest; Jaseen at the slip, short of resin | `join_faction` the camp; `give_item` the paste, 5; `open_recipe` the dart-paste at the cook pot; `set_number mr01.tap 2` |
+| **The slip's** (62, then 92) | a purse and a store, the most coin of the three: 500 gold and the slip's chest (pitch, twelve lockpicks, forty arrows, 120 gold) | everything the hall pays, and the camp: its leave withdrawn | Meer-Zah and the Tumnatu, who lose the root to the man who had it poisoned ("you are no guest here"); Demeepa-Ru's clutch, as above; the Listener's contempt | `give_gold` 500; `give_ownership` the slip's chest; `leave_faction` the camp; `set_number mr01.tap 3` |
 
 **The endings and what each leaves.** Found at Korydon afterwards, switched by Okeeh-Ja's closing line while the
 player is in the hall: the nest by the pool holds some bright eggs among the dull, and Demeepa-Ru says how many
-turned, more where the tap was pulled. Greetings carry the rest: Meer-Zah's and Jaseen's, each true of the ending
-it is gated on. Okeeh-Ja's line for each: at 60, "A closed root feeds nobody, and a town's tree is whole. He will
-blame the Tumnatu for his leaking boats." At 61, "You left a town's root with people who have no tree. They will
-bleed it lightly; it is their larder. I have done worse. The ring is for closed roots." At 62: "You sold a tree's
-vein for three hundred. I have nobody else to send, or I would not send you again." Demeepa-Ru, asked about the
-hall at any time after he has shown the tree: "Your Listener stood one day under Meris-Keth's tree and went home,
-and that winter its people carried their eggs to Jarecai. That is why I asked what your hall could do before I
-showed you mine."
+turned: a good half where the tap was pulled, a few where it was not. Meer-Zah and Jaseen each have a line for
+each ending, true of the ending it is gated on. Okeeh-Ja's line for each: at 60, "A closed root feeds nobody, and
+a town's tree is whole. He will blame the Tumnatu for his leaking boats." At 61, "You left a town's root with
+people who have no tree. They will bleed it lightly; it is their larder. I have done worse. The hall pays for
+closed roots." At 62: "You sold a tree's vein for five hundred. I have nobody else to send, or I would not send
+you again." Demeepa-Ru, asked about the hall at any time after he has shown the tree, and after the quest has
+ended: "Your Listener stood one day under Meris-Keth's tree and went home, and that winter its people carried
+their eggs to Jarecai. That is why I asked what your hall could do before I showed you mine."
 
 **The moment a player retells.** Out on a hummock in the fog, shooting a spider off a root of a town's holy tree
 and finding under its web a neat little reed tap, packed with the deadliest herb in the swamp, beside a gourd
@@ -724,10 +748,9 @@ stoppered with the town's own tin.
 | reach the root | Sneak; or Archery, a weapon skill or Destruction | a creature placed at a fixed level; owned things and Skyrim's own law of theft |
 | the find | none | taking a named thing sets a stage |
 | face the caulker | none (the gourd held) | lines gated on a thing held |
-| make the salve | Alchemy 25, or the minder makes it | a line sets a stage; a line gated on a skill sets the same stage |
 | dress the wound | none | using a named thing sets a stage |
 | pull the tap, or leave it | none: the decision | taking a named thing sets a stage; or one line per person |
-| what each ending gives | none | a stage gives things and gold, opens a recipe, makes an ingredient known, gives a container, changes a faction, switches a thing far away |
+| what each ending gives | none | a stage gives things and gold, opens a recipe, gives a container, changes a faction, switches a thing far away |
 
 ### MR02. The Cloudy Jar
 
@@ -758,9 +781,9 @@ captain, called **Salt-Throat**, a sea-raider whose boat belongs to neither of t
 beaches, for a little coin and his silence. He doses his deckhands with it before a raid, and one of them, who was
 hatched under no tree of Helstrom's, has not come out of it (`topics/hist-and-sap.md:37`; consistency T9). Each
 thinned reading has been murkier than the last, and the elder reads murk as "stay": she has refused Ushu-Lan his
-turn home four times, on the word of his own watering. Now the jar is cloudy outright. The keeper **Bun-Zeer**,
-who trades the station's kelp, salt and dye, knows he has not gone home and thinks the elder is hard on him.
-Nothing is wrong with any tree.
+turn home four times, on the word of his own watering. Now the jar is cloudy outright. Another keeper,
+**Bun-Zeer**, a woman who trades the station's kelp, salt and dye, knows that Ushu-Lan has not gone home and
+thinks the elder is hard on him. Nothing is wrong with any tree.
 
 **The people.**
 
@@ -768,58 +791,62 @@ Nothing is wrong with any tree.
 |---|---|---|---|
 | Okeeh-Ja (man) | inside the hall, Helstrom | the cause found; the elder left able to read | the quest fails, with the faction's message |
 | Onuja-Mei, elder of the station, of a tree-minder's standing (woman; the record's eldest) | at the shrine | to know whether her tree is ill | before she is given the new jar, the quest fails |
-| Ushu-Lan, keeper, grey from two years away (man) | at the net line | to go home; not to be the one who broke her | Bun-Zeer or the things speak for him (below) |
-| Bun-Zeer, keeper, the station's trader (woman; the record's general goods trader) | at the canoe landing | her turn home to come round; the elder told plainly | her lead and her trade are lost |
+| Ushu-Lan, keeper, grey from two years away (man) | at the net line | to go home; not to be the one who broke her | Bun-Zeer or the elder, shown the things, speaks for him (below) |
+| Bun-Zeer, keeper, the station's trader (woman; the record's general goods trader) | at the canoe landing | her turn home to come round; the elder told plainly | her leads are lost; the things still speak |
 | Salt-Throat, the outlaw captain (man), ours, fixed at the Wild band, hostile on sight (the record's boss) | in the cove beyond the hamlet, by his beached boat | sap for his crew | his chest's key is on his body; nobody comes for the next jar |
-| a sap-mad deckhand, ours, fixed below the captain, hostile to everyone | by the boat | nothing a person wants | nothing |
+| a sap-mad deckhand, ours, of the captain's one faction, fixed below him, hostile to everyone else | by the boat | nothing a person wants | nothing |
 
 **The things.**
 
 | Thing | Where | Lock, key, owner | Holds or says |
 |---|---|---|---|
 | the fresh jar | given by Okeeh-Ja | a plain thing | "Sealed Jar of Helstrom Sap" |
-| the cloudy jar | on the station's shrine | not takeable; the elder's | "Sap-Jar of Yuva-Goli"; the elder lets it be tasted |
+| the cloudy jar | on the station's shrine; the place's own | not takeable | "Sap-Jar of Yuva-Goli"; the elder lets it be tasted |
 | Ushu-Lan's box | in the keepers' house | Novice lock; his key on him; owned by him | "Pot of Kelp-Dye (Wet)"; a purse of foreign coin, 40 gold |
-| the cove chest | by the beached boat (the record's cove chest) | Apprentice lock; Salt-Throat's key; his | "Gourd of Sap (the Shrine's Cord)"; the captain's takings, 250 gold and a necklace of the Wild band, the fight's fixed reward |
+| the cove chest | by the beached boat (the record's cove chest) | Apprentice lock; Salt-Throat's key; nobody's, as an outlaw's chest is | "Gourd of Sap (the Shrine's Cord)"; the captain's takings, 250 gold and a ring of the Wild band, the fight's fixed reward |
 | the Keepers' Store | a chest by the kelp racks | no lock; the keepers' | dried salt, sea-bird eggs, kelp-dye and the station's trade purse of 150 gold, fixed |
+| the Reader's Bead | given by one ending | a unique thing: a load-order necklace with a fixed Restoration enchantment, under our name | the bead the elder has read by for thirty years |
 
-**The ways through** (all open at the working stages, in any order).
+**The ways through** (all open at the working stage, in any order).
 
 - *What is in the jar.* The elder's line "Let me taste it" tells what the drop tastes of: thin, faintly salt,
   nothing foul. With Alchemy 25 a second line of hers tells more: this is rainwater and kelp-dye; it has been
-  thinned; nothing is wrong with the sap that is left. Neither moves a stage. Refused: "You have a tongue. You have not a minder's
-  tongue." Without the skill, Bun-Zeer says the same thing sideways: "It used to pour like honey."
-- *Who.* Three leads, from three kinds of source. Bun-Zeer: Ushu-Lan has given up his turn home four times, "and
-  the jar told her so each time; ask her". His box, in the keepers' house, which Bun-Zeer points out as the stilt
-  house nearest the net line: the wet dye and the foreign coin, by Lockpicking, or by Pickpocket for his key; it
-  is his, so taking from it is theft, in a house of people who "send word ... to Helstrom" of an unwelcome visitor
-  (D hatandros-bight, Yuva-Goli). The cove chest: the gourd on the shrine's cord.
+  thinned; nothing is wrong with the sap that is left. Neither moves a stage. Refused: "You have a tongue. You
+  have not a minder's tongue." Without the skill, Bun-Zeer says the same thing sideways: "It used to pour like
+  honey."
+- *Who.* Three leads, from three kinds of source. Bun-Zeer: Ushu-Lan has given up his turn home four times, two
+  years now, "and the jar told her so each time; ask her". His box, in the keepers' house, which Bun-Zeer points
+  out as the stilt house nearest the net line: the wet dye and the foreign coin, by Lockpicking, or by Pickpocket
+  for his key; it is his, so taking from it is theft, in a house of people who "send word ... to Helstrom" of an
+  unwelcome visitor (D hatandros-bight, Yuva-Goli). The cove chest: the gourd on the shrine's cord.
 - *His confession* sets the stage. Ushu-Lan tells it all to a player who eases the grey in him first (Restoration
-  25: "Sit. Let me see your hands"), who presses him (Speech 35), who puts coin in the hand that took the outlaws'
+  25: "Sit. Let me see your hands"), who presses him (Speech 35: "Why have you not gone home?"), who offers to pay
   (80 gold: "You are not the first to pay me to talk"), or who shows him the dye pot or the gourd (a thing held;
   no skill). Refused: "I have nets to see to." If he is dead, Bun-Zeer, shown both the pot and the gourd, says
-  whose they are and what he was; if both are dead, the elder herself, shown both.
+  whose they are; if both are dead, the elder herself, shown both. That way has a stage and an entry of its own,
+  which says only what the two things show.
 - *The cove.* Bun-Zeer gives the way, south-east along the shore past the kelp racks, and she and the elder both
-  warn of it. Salt-Throat and his deckhand are one hard fight for a new walker and an easy one for a seasoned one,
-  at levels that never move (Archery, a weapon skill, Destruction), and his chest is the fight's reward. The chest
-  can instead be opened behind his back (Sneak, Lockpicking Apprentice) for the gourd, which proves the sale and
-  stops nothing.
+  warn of it; Bun-Zeer says what made the deckhand mad. Salt-Throat and his deckhand are one hard fight for a new
+  walker and an easy one for a seasoned one, at levels that never move (Archery, a weapon skill, Destruction), and
+  his chest is the fight's reward. The chest can instead be opened behind his back (Sneak, Lockpicking Apprentice)
+  for the gourd, which proves the sale and stops nothing.
 
 **The stages.**
 
 | Stage | What moves it | Journal gist | Objective and its marker |
 |---|---|---|---|
 | 0 | hidden start; offered once MR01 has ended completed and while Onuja-Mei lives | | |
-| 10 | Okeeh-Ja's line "What is the job?" (gives the fresh jar and 60 gold) | The Listener sent me to Yuva-Goli on the east coast with a fresh jar of Helstrom's sap. The station's old jar has gone cloudy. I am to find what was done to it. The way is by rootworm to Aroxhu, east to Arorha, and north-east along the shore. | Speak to Onuja-Mei at Yuva-Goli's shrine (her) |
-| 20 | Onuja-Mei's line "Show me the jar" | Onuja-Mei fears her tree is ill. She will not unseal the new jar until she knows what spoiled the old one. | Find what spoiled the jar (the cloudy jar; Bun-Zeer; Ushu-Lan; Onuja-Mei) |
-| 30, 31 | the confession (30: Ushu-Lan's line; or Bun-Zeer's, he being dead; or the elder's, both dead; 31: bought of him for 80 gold) | I learned that the keeper Ushu-Lan drank from the jar for two years and thinned it with rainwater and dye, and sold from it to the outlaws in the cove. The elder has been reading what he poured. (31: I paid him eighty to say it.) | Give Onuja-Mei the fresh jar, and tell her what I choose (her) |
-| 40, 41 | Onuja-Mei's line, the fresh jar held (the stage takes it): the whole truth (40: the Keepers' Store is the player's); the comfort (41: she reads the new jar for the player) | I gave Onuja-Mei the new jar and told her the truth: her keeper thinned the old one, and she has read rainwater for two years. (41: I gave Onuja-Mei the new jar and told her the old one soured on the road. She unsealed the new one and read it for me.) | Tell Okeeh-Ja (him) |
+| 10 | Okeeh-Ja's line "Is there another tree?" (gives the fresh jar and 60 gold) | The Listener sent me to Yuva-Goli on the east coast with a fresh jar of Helstrom's sap, the only one there is. The station's old jar has gone cloudy. I am to find what was done to it. The way is by rootworm to Aroxhu, east to Arorha, and north-east along the shore. | Speak to Onuja-Mei at Yuva-Goli's shrine (her) |
+| 20 | Onuja-Mei's line "The hall sent a new jar" | Onuja-Mei fears her tree is ill. She will not unseal the new jar until she knows what spoiled the old one. | Find what spoiled the jar (Onuja-Mei; Bun-Zeer; Ushu-Lan) |
+| 30, 31 | Ushu-Lan's confession (30), or bought of him for 80 gold (31) | Ushu-Lan, a keeper of Yuva-Goli, told me that he drank from the jar for two years and thinned it with rainwater and dye, and that the outlaws in the cove take sap from him. The elder has been reading what he poured. (31: I paid him eighty to say it.) | Give Onuja-Mei the fresh jar, and tell her what I choose (her) |
+| 32 | he being dead: Bun-Zeer's line, or the elder's if both are dead, the pot and the gourd held | Ushu-Lan is dead. The dye in his box is from the station's racks and the gourd in the outlaws' chest is tied with the shrine's cord: he thinned the jar and sold from it. | as at 30 |
+| 40, 41 | Onuja-Mei's line, the fresh jar held (the stage takes it): the whole truth (40: her bead and the Keepers' Store are the player's); the comfort (41: she reads the new jar for the player) | I gave Onuja-Mei the new jar and told her the truth: her keeper thinned the old one, and she has read rainwater. She will not unseal the new one. She gave me her reader's bead, and the Keepers' Store is mine to take from. (41: I gave Onuja-Mei the new jar and told her the old one soured on the road. She unsealed the new one and read it for me.) | Tell Okeeh-Ja (him) |
 | 90, 91 | Okeeh-Ja's line at 40, 41 | I told the Listener how it ended at Yuva-Goli. | ends, completed |
 | 95 | Okeeh-Ja dead | The Listener is dead, and nobody in the hall will answer for Yuva-Goli's jar. | ends, failed, with the faction's message |
 | 96 | Onuja-Mei dead, before she is given the jar | Nobody at Yuva-Goli can read a jar now. | ends, failed |
 
-Taking the dye pot or the gourd moves no stage. A player who shows the elder one of them while a keeper lives is
-told, "Whose is it? I will not hear it from a pot." A player who has lost the fresh jar is given no other: the
+Taking the dye pot or the gourd moves no stage. A player who shows the elder either of them while Ushu-Lan lives
+is told, "Whose is it? I will not hear it from a pot." A player who has lost the fresh jar is given no other: the
 telling lines need it held, and Okeeh-Ja's warning at the briefing says so.
 
 ```sketch
@@ -828,9 +855,9 @@ start game 0
 
 place hall indoors "the Tree-Minders' Hall at Helstrom"
 place tree outdoors "the sacred tree of Helstrom"
-place station outdoors far "Yuva-Goli"
+place station outdoors "Yuva-Goli"
 place house indoors "the keepers' house at Yuva-Goli"
-place cove outdoors far "the cove beyond Yuva-Goli"
+place cove outdoors "the cove beyond Yuva-Goli"
 
 person okeeh at hall "Okeeh-Ja"
 person taleeka at hall existing "Taleeka-Ma"
@@ -841,101 +868,110 @@ person bunzeer at station "Bun-Zeer"
 person salt at cove hostile level 10 "Salt-Throat"
 person deckhand at cove hostile level 6 "a sap-mad deckhand"
 
+# The containers' fixed contents are in the things table; the sketch leaves them out.
 thing ukey on ushulan "Ushu-Lan's key"
 thing ubox at house container locked novice key ukey owner ushulan "Ushu-Lan's Box"
 thing dyepot in ubox "Pot of Kelp-Dye (Wet)"
 thing covekey on salt "Salt-Throat's key"
-thing covechest at cove container locked apprentice key covekey owner salt "Cove Chest"
+thing covechest at cove container locked apprentice key covekey "Cove Chest"
 thing gourd in covechest "Gourd of Sap (the Shrine's Cord)"
 thing store at station container owner yuvagoli "Keepers' Store"
 item freshjar "Sealed Jar of Helstrom Sap"
-item restnecklace "Walker's Necklace of Restoration"
+item readersbead "Reader's Bead"
 
 stage 0 hidden
-stage 10 "The Listener sent me to Yuva-Goli on the east coast with a fresh jar of Helstrom's sap. The station's old jar has gone cloudy. I am to find what was done to it. The way is by rootworm to Aroxhu, east to Arorha, and north-east along the shore. The elder, Onuja-Mei, stands at the station's shrine." do give freshjar, give-gold 60
+stage 10 "The Listener sent me to Yuva-Goli on the east coast with a fresh jar of Helstrom's sap, the only one there is. The station's old jar has gone cloudy. I am to find what was done to it. The way is by rootworm to Aroxhu, east to Arorha, and north-east along the shore. The elder, Onuja-Mei, stands at the station's shrine." do give freshjar, give-gold 60
 stage 20 "Onuja-Mei fears her tree is ill. She will not unseal the new jar until she knows what spoiled the old one."
-stage 30 "I learned that the keeper Ushu-Lan drank from the jar for two years and thinned it with rainwater and dye, and sold from it to the outlaws in the cove. The elder has been reading what he poured."
-stage 31 "I paid eighty and learned that the keeper Ushu-Lan drank from the jar for two years and thinned it with rainwater and dye, and sold from it to the outlaws in the cove. The elder has been reading what he poured." do take-gold 80
-stage 40 "I gave Onuja-Mei the new jar and told her the truth: her keeper thinned the old one, and she has read rainwater for two years. She will not unseal the new one. The Keepers' Store is mine to take from." do take freshjar, own store, set mr02.told 1
+stage 30 "Ushu-Lan, a keeper of Yuva-Goli, told me that he drank from the jar for two years and thinned it with rainwater and dye, and that the outlaws in the cove take sap from him. The elder has been reading what he poured."
+stage 31 "I paid Ushu-Lan, a keeper of Yuva-Goli, eighty. He told me that he drank from the jar for two years and thinned it with rainwater and dye, and that the outlaws in the cove take sap from him. The elder has been reading what he poured." do take-gold 80
+stage 32 "Ushu-Lan is dead. The dye in his box is from the station's racks and the gourd in the outlaws' chest is tied with the shrine's cord: he thinned the jar and sold from it."
+stage 40 "I gave Onuja-Mei the new jar and told her the truth: her keeper thinned the old one, and she has read rainwater. She will not unseal the new one. She gave me her reader's bead, and the Keepers' Store is mine to take from." do take freshjar, own store, give readersbead, set mr02.told 1
 stage 41 "I gave Onuja-Mei the new jar and told her the old one soured on the road. She unsealed the new one and read it for me." do take freshjar, teach 0E5F54:Skyrim.esm "The Jar's Counsel", set mr02.told 2
 stage 90 completed "I told the Listener that I told the elder of Yuva-Goli the truth." do give-gold 60, off ushulan
-stage 91 completed "I told the Listener that I told the elder of Yuva-Goli what let her go on reading." do give-gold 200, give restnecklace
+stage 91 completed "I told the Listener that I told the elder of Yuva-Goli what let her go on reading." do give-gold 200
 stage 95 failed "The Listener is dead, and nobody in the hall will answer for Yuva-Goli's jar."
 stage 96 failed "Nobody at Yuva-Goli can read a jar now."
 
 objective 10 at 10 "Speak to Onuja-Mei at Yuva-Goli's shrine" -> onuja
 objective 20 at 20 "Find what spoiled the jar" -> onuja, bunzeer, ushulan
-objective 30 at 30, 31 "Give Onuja-Mei the fresh jar, and tell her what I choose" -> onuja
+objective 30 at 30, 31, 32 "Give Onuja-Mei the fresh jar, and tell her what I choose" -> onuja
 objective 40 at 40, 41 "Tell Okeeh-Ja" -> okeeh
 
-line job1 okeeh at 0 ask "Is there another tree?" if done MR01 90, alive onuja -> 10 says "Yuva-Goli's jar; tell her what lets her go on reading and the hall pays; tell her otherwise and you have what a sea station gives and your fare from me"
-line job2 okeeh at 0 ask "Is there another tree?" if done MR01 91, alive onuja -> 10 says "Yuva-Goli's jar; tell her what lets her go on reading and the hall pays; tell her otherwise and you have what a sea station gives and your fare from me"
-line job3 okeeh at 0 ask "Is there another tree?" if done MR01 92, alive onuja -> 10 says "nobody else to send; Yuva-Goli's jar; tell her what lets her go on reading and the hall pays; tell her otherwise and you have what a sea station gives and your fare from me"
+line job1 okeeh at 0 ask "Is there another tree?" if done MR01 90, alive onuja -> 10 says "Yuva-Goli's jar; the way, by Aroxhu and Arorha; this jar is the only one; tell her what lets her go on reading and the hall pays; tell her otherwise and you have what a sea station gives and your fare from me"
+line job2 okeeh at 0 ask "Is there another tree?" if done MR01 91, alive onuja -> 10 says "Yuva-Goli's jar; the way, by Aroxhu and Arorha; this jar is the only one; tell her what lets her go on reading and the hall pays; tell her otherwise and you have what a sea station gives and your fare from me"
+line job3 okeeh at 0 ask "Is there another tree?" if done MR01 92, alive onuja -> 10 says "nobody else to send; Yuva-Goli's jar; the way, by Aroxhu and Arorha; this jar is the only one; tell her what lets her go on reading and the hall pays; tell her otherwise and you have what a sea station gives and your fare from me"
 line station okeeh at 10-41 ask "What is Yuva-Goli?" says "five of our own on the sea coast, far from any tree, who go home in turns"
 line jar okeeh at 10-41 ask "What is the jar to them?" says "all the tree they have; their elder reads it"
-line showjar onuja at 10 ask "The hall sent a new jar." -> 20 says "she will not unseal it until she knows what spoiled the old one; when it is unsealed she will read it first for whoever brought it"
+line showjar onuja at 10 ask "The hall sent a new jar." -> 20 says "she will not unseal it until she knows what spoiled the old one; a new jar is read first for whoever brought it; she has no other thanks to give but the bead she reads by, and she will need that"
 line taste onuja at 20 ask "Let me taste the old one." says "she lets a drop fall on the player's finger: thin, and faintly salt; nothing foul"
 line tasteskill onuja at 20 ask "Let me taste it as a minder would." if skill Alchemy 25 else "You have a tongue. You have not a minder's tongue." says "a drop on the tongue: rainwater, and the salt of kelp-dye; it has been thinned, and the sap that is left is sound"
 line honey bunzeer at 20 ask "What do you make of the jar?" says "it used to pour like honey"
-line turns bunzeer at 20 ask "Who has been here longest?" if alive ushulan says "Ushu-Lan has given up his turn home four times, and the jar told her so each time; his box is in the keepers' house, the stilt house nearest the net line"
-line coveway bunzeer at 20 ask "Who comes to this shore?" says "outlaws beach a boat in the cove, south-east along the shore past the kelp racks; two of them, and one is mad; do not go alone"
+line turns bunzeer at 20 ask "Who has been here longest?" if alive ushulan says "Ushu-Lan has given up his turn home four times, two years now, and the jar told her so each time; his box is in the keepers' house, the stilt house nearest the net line"
+line turnsdead bunzeer at 20 ask "Who had been here longest?" if dead ushulan says "Ushu-Lan, two years without a turn home; his box is in the keepers' house, the stilt house nearest the net line"
+line coveway bunzeer at 20 ask "Who comes to this shore?" says "outlaws beach a boat in the cove, south-east along the shore past the kelp racks; two of them, and one is mad, which is what sap does in a throat that was not hatched for it; do not go alone"
 line covewarn onuja at 20 ask "Is the cove safe?" says "it is not; we do not speak of who lands there"
-line pot onuja at 20 ask "I found this." if holds dyepot, alive ushulan says "whose is it? she will not hear it from a pot"
+line pot onuja at 20 ask "I found this pot of dye." if holds dyepot, alive ushulan says "whose is it? she will not hear it from a pot"
+line potgourd onuja at 20 ask "I found this gourd." if holds gourd, alive ushulan says "whose hand tied it? she will not hear it from a gourd"
 line ease ushulan at 20 ask "Sit. Let me see your hands." if skill Restoration 25 -> 30 else "I have nets to see to." says "he tells all of it"
-line press ushulan at 20 ask "You have not been home in two years. Why?" if skill Speech 35 -> 30 else "I have nets to see to." says "he tells all of it"
+line press ushulan at 20 ask "Why have you not gone home?" if skill Speech 35 -> 30 else "I have nets to see to." says "he tells all of it"
 line showpot ushulan at 20 ask "This dye pot is wet." if holds dyepot -> 30 says "he tells all of it"
 line showgourd ushulan at 20 ask "This gourd is tied with the shrine's cord." if holds gourd -> 30 says "he tells all of it"
-line buy ushulan at 20 ask "Eighty, to hear why the jar is cloudy." if gold 80 -> 31 else "Eighty. The outlaws pay better than you." says "he is not the first to be paid by this hand; he tells all of it"
-line forhim bunzeer at 20 ask "These were Ushu-Lan's." if dead ushulan, holds dyepot, holds gourd -> 30 says "the dye is from our racks and the cord from our shrine; then it was him, and that is why he never went home"
-line forboth onuja at 20 ask "These were your keeper's." if dead ushulan, dead bunzeer, holds dyepot, holds gourd -> 30 says "she knows the cord; she says his name"
+line buy ushulan at 20 ask "I will pay to hear why the jar is cloudy." if gold 80 -> 31 else "Eighty. The outlaws pay better than you." says "eighty; he is not the first to be paid by this hand; he tells all of it"
+line forhim bunzeer at 20 ask "I found these: a pot of wet dye and a gourd." if dead ushulan, holds dyepot, holds gourd -> 32 says "the dye is from our racks and the cord from our shrine; then it was him, and that is why he never went home"
+line forboth onuja at 20 ask "I found these: a pot of wet dye and a gourd." if dead ushulan, dead bunzeer, holds dyepot, holds gourd -> 32 says "she knows the cord and the dye; she says his name"
 line hiscase ushulan at 30-31 ask "What should she be told?" says "all of it or none; tell her and I go home and she never reads again; lie and she reads and I wait on a jar"
-line hercase bunzeer at 30-31 ask "What should she be told?" says "she would want to know; tell her straight and what is in our store is yours; lie to her and buy your salt at Arorha"
-line truth onuja at 30-31 ask "Your keeper thinned it. You have read rainwater for two years." if holds freshjar, alive ushulan -> 40 says "she sends him home with the next canoe and will not unseal the new jar: she does not know her own eyes"
-line truthdead onuja at 30-31 ask "Your dead keeper thinned it. You have read rainwater for two years." if holds freshjar, dead ushulan -> 40 says "she will not unseal the new jar: she does not know her own eyes"
-line comfort onuja at 30-31 ask "The old jar soured on the road here, two years ago. This one is sound." if holds freshjar -> 41 says "she unseals it and reads it for the player; of Ushu-Lan's turn she says it shall be asked"
-line report1 okeeh at 40 ask "I told her the truth." -> 90 says "you broke a reader to mend a jar; Xilsa-Jee will tell you that you did right; here is your fare"
-line report2 okeeh at 41 ask "I told her what let her go on reading." -> 91 says "good; that is the work"
+line hercase bunzeer at 30-32 ask "What should she be told?" says "she would want to know; tell her straight and what is in our store is yours, and she will have no more use for her bead; lie to her and the hall pays you"
+line truth onuja at 30-31 ask "Your keeper thinned it. You have read rainwater for two years." if holds freshjar, alive ushulan -> 40 says "she sends him home with the next canoe and will not unseal the new jar: she does not know her own eyes; she gives up her bead"
+line truthdead onuja at 30-32 ask "Your dead keeper thinned it. You have read rainwater." if holds freshjar, dead ushulan -> 40 says "she will not unseal the new jar: she does not know her own eyes; she gives up her bead"
+line comfort onuja at 30-31 ask "The old jar soured on the road here. This one is sound." if holds freshjar, alive ushulan -> 41 says "she unseals it and reads it for the player; of Ushu-Lan's turn she says it shall be asked"
+line comfortdead onuja at 30-32 ask "The old jar soured on the road here. This one is sound." if holds freshjar, dead ushulan -> 41 says "she unseals it and reads it for the player"
+line report1 okeeh at 40 ask "I told her the truth." -> 90 says "you broke a reader to mend a jar; the root-tender at the city tree, Xilsa-Jee, will tell you that you did right; here is your fare"
+line report2 okeeh at 41 ask "I told her what let her go on reading." -> 91 says "good; that is the work; the root-tender at the city tree, Xilsa-Jee, will tell you I am wrong; go and hear it"
 line after1 onuja at 90 ask "Do you read the new jar?" says "she has not unsealed it"
-line after2 bunzeer at 90 ask "How is the station?" says "nobody reads now; we watch the sea and guess; the store is yours as I said, and I sell to you at the keepers' price"
-line after3 bunzeer at 91 ask "Will you trade?" says "buy your salt at Arorha"
-line after4 ushulan at 91 ask "Has the new jar been asked about your turn?" if alive ushulan says "not yet"
-line after5 bunzeer at 90-91 ask "Has the boat come again?" if alive salt says "it came, and its captain asked her for a gourd; she has not yet said no"
-line after6 bunzeer at 90-91 ask "Is the cove empty?" if dead salt says "the cove is empty"
-line knife xilsa at 10-41 ask "What does the Listener teach?" says "he told you to lie to an elder; he says that to all of us; his cutting-knife has not hung in the hall since before she was hatched, lost in the Banujha, he says"
+line after2 bunzeer at 90 ask "How is the station?" says "nobody reads now; we watch the sea and guess; the store by the racks is yours"
+line after3 bunzeer at 91 ask "How is the station?" says "she reads again; you lied to her, and I have nothing for you"
+line after4 ushulan at 91 ask "Has the new jar been asked about your turn?" says "not yet"
+line after5 bunzeer at 90-91 ask "What of the cove?" if alive salt says "the boat came again, and its captain asked her for a gourd; she has not yet said no"
+line after6 bunzeer at 90-91 ask "What of the cove?" if dead salt says "the cove is empty"
+line knife xilsa at 10-41 ask "What does the Listener teach?" says "to tell them what lets them sleep; he says that to all of us; his cutting-knife has not hung in the hall since before she was hatched, lost in the Banujha, he says"
+line knife2 xilsa at 90-91 ask "The Listener sent me to hear you." says "he told you to lie to an elder; he says that to all of us; she has never asked what he has told the villages himself; his cutting-knife has not hung in the hall since before she was hatched, lost in the Banujha, he says"
 line cuttings taleeka at 10-41 ask "Why a jar, and not a sapling?" says "a tree is not taken; we know what it costs the tree it is taken from; there are people in Soulrest who call themselves a league and would like us to forget it"
+line cuttings2 taleeka at 90-91 ask "Why a jar, and not a sapling?" says "a tree is not taken; we know what it costs the tree it is taken from; there are people in Soulrest who call themselves a league and would like us to forget it"
 
 must-live okeeh fails 95
-must-live onuja fails 96 to 31
+must-live onuja fails 96 to 32
 ```
 
 **The choice, each side argued by the person it concerns, each saying the trade before it is made.** Stated by
 Ushu-Lan before it is made: "All of it or none of it. Tell her and I go home, and she never reads again. Lie, and
-she reads, and I wait on a jar." The truth has a second wording for a player who comes to it with Ushu-Lan dead.
+she reads, and I wait on a jar." Each telling has a second wording for a player who comes to it with Ushu-Lan
+dead.
 
 - *The whole truth* (40): "Your keeper thinned it. You have read rainwater for two years, and it told you to keep
   him here." Bun-Zeer argues for it: "She would want to know she has been wrong. Tell her straight and what is in
-  our store is yours. Lie to her and buy your salt at Arorha." Cost: the station loses its reader. Onuja-Mei sends
-  Ushu-Lan home with the next canoe and will not unseal the new jar: "I do not know my own eyes."
-- *The comfort* (41): "The old jar soured on the road here, two years ago. This one is sound." The Listener asked
-  for it and pays for it, and the elder has said that she reads a new jar first for whoever brought it. Cost: two
-  years of false readings stand, and Ushu-Lan's turn home waits on the new jar: "It shall be asked." He is still
-  there, greyer in his own words, when the player next comes.
+  our store is yours, and she will have no more use for her bead. Lie to her and the hall pays you." Cost: the
+  station loses its reader. Onuja-Mei sends Ushu-Lan home with the next canoe and will not unseal the new jar: "I
+  do not know my own eyes. Take the bead. It read for a fool."
+- *The comfort* (41): "The old jar soured on the road here. This one is sound." The Listener asked for it and pays
+  for it, and the elder has said that a new jar is read first for whoever brought it. Cost: two years of false
+  readings stand, and Ushu-Lan's turn home waits on the new jar: "It shall be asked." He is still there, greyer in
+  his own words, when the player next comes.
 
 | Outcome | What the player gains in play | What the player loses or can no longer get | Who pays, and where the player sees it | The form results that build it |
 |---|---|---|---|---|
-| **The truth** (40, then 90) | a place on the east coast: the Keepers' Store is the player's (salt, sea-bird eggs, dye, 150 gold), and Bun-Zeer sells the station's goods at the keepers' price; 60 gold from the Listener, the fare and no more | the Jar's Counsel, since nobody reads at Yuva-Goli now; the hall's gold and its necklace | Onuja-Mei at the shrine, beside a jar she will not unseal; Bun-Zeer: "we watch the sea and guess"; Ushu-Lan is gone from the net line, home | `give_ownership` the store; `set_number mr02.told 1`, read by Bun-Zeer's trade lines; `give_gold` 60; Ushu-Lan `switch_off` from the hall |
-| **What lets her sleep** (41, then 91) | **the Jar's Counsel**, a lasting ability no trader sells (the load order's Lady Stone ability under our name: health and stamina come back faster), read into the player by Onuja-Mei; the Walker's Necklace of Restoration (a load-order necklace with a fixed Restoration enchantment) and 200 gold from the Listener | the station's trade and its store: Bun-Zeer sells the player nothing | Ushu-Lan at the net line, greyer, whose turn the new jar has "not yet" granted; Bun-Zeer at the landing | `teach_spell` the ability as "The Jar's Counsel"; `set_number mr02.told 2`, read by Bun-Zeer's lines (shut); `give_item` the necklace; `give_gold` 200 |
+| **The truth** (40, then 90) | a unique thing and a place: **the Reader's Bead** (a necklace with a fixed Restoration enchantment that no trader sells), and the Keepers' Store on the east coast is the player's (salt, sea-bird eggs, dye, 150 gold); 60 gold from the Listener, the fare and no more | the Jar's Counsel, since nobody reads at Yuva-Goli now; the hall's 200 gold | Onuja-Mei at the shrine, who has not unsealed the jar; Bun-Zeer: "we watch the sea and guess"; Ushu-Lan is gone from the net line, home | `give_item` the bead (`template_item`); `give_ownership` the store; `set_number mr02.told 1`; `give_gold` 60; Ushu-Lan `switch_off` from the hall |
+| **What lets her sleep** (41, then 91) | **the Jar's Counsel**, a lasting ability no trader sells (the load order's Lady Stone ability under our name: health and stamina come back faster; it stands beside whatever standing stone the player holds), read into the player by Onuja-Mei; 200 gold from the Listener | the Reader's Bead, which she goes on reading by, and the Keepers' Store | Ushu-Lan at the net line, greyer, whose turn the new jar has "not yet" granted; Bun-Zeer at the landing: "you lied to her, and I have nothing for you" | `teach_spell` the ability as "The Jar's Counsel"; `set_number mr02.told 2`; `give_gold` 200 |
 
 **The endings and what each leaves.** Lines read whether Salt-Throat is dead: if he lives, Bun-Zeer says the boat
 came again and its captain asked her for a gourd, and that she has not yet said no; if he is dead, she says the
-cove is empty. Okeeh-Ja's line for each: at 40, "You broke a reader to mend a jar. Xilsa-Jee will tell you that
-you did right. Here is your fare." At 41, "Good. That is the work." Xilsa-Jee, at the sacred tree, to whom the
-Listener points the player after the first report ("the root-tender at the city tree will tell you I am wrong; go
-and hear it"): "He told you to lie to an elder. He says that to all of us. I have never asked what he has told the
-villages himself." And, asked about the Listener: "His cutting-knife has not hung in the hall since before I was
-hatched. He says he lost it in the Banujha." Taleeka-Ma has a topic, "cuttings", for a player who asks why a far
-station is sent a jar and not a sapling: "A tree is not taken. We know what it costs the tree it is taken from.
-There are people in Soulrest who call themselves a league and would like us to forget it."
+cove is empty. Okeeh-Ja's line for each: at 40, "You broke a reader to mend a jar. The root-tender at the city
+tree, Xilsa-Jee, will tell you that you did right. Here is your fare." At 41, "Good. That is the work. The
+root-tender at the city tree, Xilsa-Jee, will tell you I am wrong; go and hear it." Xilsa-Jee, at the sacred tree,
+during the job and after it: "He told you to lie to an elder. He says that to all of us. I have never asked what
+he has told the villages himself." And: "His cutting-knife has not hung in the hall since before I was hatched. He
+says he lost it in the Banujha." Taleeka-Ma has a topic, "cuttings", for a player who asks why a far station is
+sent a jar and not a sapling: "A tree is not taken. We know what it costs the tree it is taken from. There are
+people in Soulrest who call themselves a league and would like us to forget it."
 
 **The moment a player retells.** Tasting a holy jar and finding rainwater; and then working out that the reading
 which kept a man from home for two years was the elder reading his own watering.
@@ -946,8 +982,8 @@ which kept a man from home for two years was the elder reading his own watering.
 | taste the jar | none; Alchemy 25 to name it | a line; a line gated on a skill |
 | the keeper's box | Lockpicking (Novice), or Pickpocket for the key; Sneak | an owned, locked container with fixed contents; a key carried by a person |
 | the confession | Restoration 25, Speech 35, 80 gold, or a thing held | line conditions: skill, gold, thing held, a person dead; a line sets a stage |
-| the cove | Archery, a weapon skill or Destruction; or Sneak and Lockpicking (Apprentice) | hostile people placed at fixed levels; a locked container; a key on a body |
-| what the elder is told | none: the decision | one line per telling, gated on the thing held, sets a stage; the stage takes the thing, gives a container or teaches an ability |
+| the cove | Archery, a weapon skill or Destruction; or Sneak and Lockpicking (Apprentice) | hostile people of one faction placed at fixed levels; a locked container; a key on a body |
+| what the elder is told | none: the decision | one line per telling, gated on the thing held, sets a stage; the stage takes the thing, gives a thing and a container or teaches an ability |
 | he goes home | none | a stage set in another cell switches a person off |
 
 ## 4. What each quest needs of its places
@@ -981,9 +1017,9 @@ hall, which is indoors, so no outdoor place needs to stand any set distance from
 | The thing | Quest | What happens there | How the player knows it |
 |---|---|---|---|
 | a great Hist root standing out of the hummock on the camp's side of the dragon's-tongue beds, webbed, with a reed tap in it and a clay pot and a stoppered gourd at its foot; one spider of the Wild band on it | MR01 | the find; the dressing; the tap pulled or left | the root's own name, "Root of Korydon's Tree"; the marker on the pot; Demeepa-Ru or Meer-Zah says it is the one root on the hummock north of the camp |
-| two hunters posted at the beds' edge within bowshot of the root, and a way to the root from the far side that they cannot see | MR01 | the camp's leave; the theft; the spider shot | people standing with a bow and a spear at the edge of the flowers, on sight; Meer-Zah says who they are when she gives leave |
+| two hunters posted at the camp's edge of the beds, on the way to the root, in sight of the things at its foot and at least 3,000 units from the spider, which is beyond a creature's notice, as Meer-Zah is too; and a way to the root from the far side that they cannot see | MR01 | the camp's leave; the theft | people standing with a bow and a spear at the edge of the flowers, on sight; Meer-Zah says who they are when she gives leave |
 | the record's three giant spiders kept to the far side of the beds from the camp | MR01 | the fight, for those who come round | Demeepa-Ru and Ruleem warn of them; webbing and the record's dead hunter's pack mark their side |
-| the camp's people, its goods and the things at the root owned by one faction that a stage can make the player one of | MR01 | Meer-Zah's leave | she says so in the line; the things stop showing as theft |
+| the camp's people, its goods on their poles and the things at the root owned by one faction that keeps Skyrim's law of theft and that a stage can make the player one of | MR01 | Meer-Zah's leave; one ending's gift | she says so in the line; the things stop showing as theft |
 
 **Yuva-Goli** (D hatandros-bight).
 
@@ -993,7 +1029,7 @@ hall, which is indoors, so no outdoor place needs to stand any set distance from
 | the shrine with a stoppered jar on it (the record's "stoppered sap-jar ... on a shrine") | MR02 | the tasting; the hand-over | the jar's name, "Sap-Jar of Yuva-Goli"; the elder stands at it |
 | a keepers' house that can be entered, with a locked box in it | MR02 | the dye and the coin | the box's name, "Ushu-Lan's Box"; Bun-Zeer says which house: the stilt house nearest the net line |
 | a chest by the kelp racks | MR02 | one ending's gift | its name, "Keepers' Store"; Bun-Zeer names it when she argues her side |
-| the cove's chest locked, with its key on the captain; one deckhand by the boat | MR02 | the gourd; the fight | the cove has the record's beached boat and the place's own map marker; Bun-Zeer gives the way: south-east along the shore past the kelp racks |
+| the cove's chest locked, nobody's, with its key on the captain; one deckhand by the boat, of the captain's faction; the cove out of sight of the station and, as the record has it, 120 metres from it (about 8,400 units), with the shore's rocks between, so that the pair do not notice the station's people | MR02 | the gourd; the fight | the cove has the record's beached boat and the place's own map marker; Bun-Zeer gives the way: south-east along the shore past the kelp racks |
 
 **Tsonac** (D arnesian-jungle).
 
@@ -1011,8 +1047,8 @@ hall, which is indoors, so no outdoor place needs to stand any set distance from
 |---|---|---|---|
 | the Hist garden's tree with a bead of sap that can be taken, and a tender at it who carries a key | MR04 | the taste; the key | the record's Hist garden, by the rootworm stop; the tender is seen at the tree and says he keeps the cellars shut; the key is named "Garden Cellars Key" |
 | the forced cellar door in the closed Ayleid quarter (the record's), leading to cellars that run under the garden to a planting-place among roots, with a basket, sacks and a cord; guardians at the Dangerous band off a way that can be crept; a satchel on the way | MR04 | the proof | the door is named "Forced Cellar Door"; the cellar's name on entering, "Under the Hist Garden"; the satchel is named "Caprenius Steward's Satchel"; the cord is named for the walkers' hitch |
-| a merchant's counter of the Caprenius and a herb stall of the Deep-Waders, each with its trader | MR04 | the misjudgement; one telling's gain | each trader's own name and goods; the garden's tender names both families and where each sells |
-| a pilot at Teth-Kasa's landing (the record's pilot), with a bed and a chest in the station's hut | MR04 | the riddle; one telling's gain | the station has a marker once Okeeh-Ja names it; he is the one at the boats and speaks first; the chest is named "Guest's Chest" |
+| one person of each family, the Caprenius at a merchant's counter and the Deep-Wader at the garden's herb beds; the council's guest-room by the garden, a room that can be entered, with a bed and a chest | MR04 | the misjudgement; one telling's gain | each person's own name and work; the garden's tender names both families; the room's door shows "Council Guest-Room" |
+| a pilot at Teth-Kasa's landing (the record's pilot), and a chest in the station's hut | MR04 | the riddle; one telling's gain | the station has a marker once Okeeh-Ja names it; he is the one at the boats and speaks first; the chest is named "Guest's Chest" |
 
 **Tseli-Oon and Dry-Fang Camp** (D murkwood).
 
@@ -1020,7 +1056,7 @@ hall, which is indoors, so no outdoor place needs to stand any set distance from
 |---|---|---|---|
 | Tseli-Oon's landing and huts clear of the record's spiders, which keep to the bank roots beyond the drying frame | MR05 | talk at the station; the freed gatherer found there | the record's drying frame of sap-skins; one skin on it is named "Slashed Sap-Skin" |
 | at Dry-Fang, a pen that locks, with its key on one of the band (the plan's row), and a chest under the leader's lean-to | MR05 | Dusha-Wan; one ending's gift | a barred pen with a person in it, on sight, in a camp of lean-tos; the chest is named "Thekka's Cache" |
-| a spot outside the camp, out of its sight and beyond its people's reach, where one of the band stands and speaks | MR05 | Jurr; the bargain | he speaks first, a step from where the track from Ranvos Landing reaches the camp |
+| a spot outside the camp, out of its sight and beyond its people's notice, where one of the band stands and speaks; the camp at least 18,000 units from Helstrom | MR05 | Jurr; the bargain | he speaks first, a step from where the track from Ranvos Landing reaches the camp |
 | the stolen sap-skins (the record's) named for a buyer's mark | MR05 | the lead south | each skin's name, "Sap-Skin (Marked for the South)", and Jurr's word |
 
 **Jal-Resh Post and Meris-Keth** (D banujha-basin).
@@ -1111,11 +1147,94 @@ reader missed the An-Xileel: the province's spine has their successors, and this
 MR02 has the same opening shape as MR01 (taste, three leads): one reader noticed and both rated it the better
 job; MR03 breaks the shape.
 
-**For the second round to check.** Whether MR01 now has its tense moment, and whether a talker can honestly finish
-it with a spider on the root. Whether the three ways of leaving the tap split readers. Whether pulling the tap
-early, against the warning, reads as fair. Whether MR02's comfort is a real temptation or simply the cold choice.
-Whether a fresh deliverability reader passes both tables against the form's checks, and what the route to
-Yuva-Goli costs a low character, which was not measured.
+### The second round
+
+The story was first brought up to the consistency rulings, the outcome tables and the sketches (the version of
+commit 859a26ad), and that one version was read by four fresh readers, each given the sheets one at a time.
+
+**Who read.** Three players who value different things, on three models: *Varo* (Opus), a Dunmer sellsword and
+alchemist who takes what pays best; *Hul-Tei* (Sonnet), an Argonian healer who keeps her word to whoever hired
+her; *Sasha Breakwater* (Fable), a smuggler's daughter who trusts no institution. One deliverability reader, given
+the ceiling, the two outlines with their sketches and what `sketch` had proved.
+
+**What each chose.**
+
+| Choice | Varo | Hul-Tei | Sasha | Split |
+|---|---|---|---|---|
+| MR01, the tap | the Tumnatu | the Tumnatu | the Tumnatu | no: all three; the slip "a trap", "nearly a non-option" |
+| MR02, the elder | the comfort | the comfort, against her liking, because she took the job | the truth | yes; but two said the comfort was simply the better paid |
+| MR03, the sleeper | stilled, and sold the stone as well | stilled | settled | yes; but stilling and selling beat settling outright |
+| MR04, Gideon | told nobody | told nobody | the riddle answered | yes; the council's gold was nobody's and "thin" |
+| MR05, the band | the boat | the quiet way | the laced skin, with the draught kept at Tsonac | yes, three ways |
+| MR05, her name | not named | not named | not named | no: nobody would name her |
+| MR06, the Listener | what lets him sleep | the truth | the truth | yes, each for their own reasons |
+
+**What they said.** All three could retell the line, cared from the cord at Gideon onward, would join, and asked
+for the sealed spring as the next chapter. The hitch on the basket's cord and the dead minder's own stake were the
+moments each would retell; the Listener read as "a coward with a good argument", pitied and blamed at once; his
+answer to a player who lies to him for the gatherer, "you have decided I should sleep", landed with all three.
+Hard to please on: the first job's walk back to Korydon for a salve and out again (all three); the tap, where the
+slip paid least and cost most; rewards that were an Alchemy trinket four times, and a pattern a power player
+learns by the second job, that the lie pays; Marzeel's mother waiting at a post for thirty years when she could
+have sent north (two); who runs the hall once the Listener lays the walking down (two); a fear of his, that
+villages shut their trees to a hall that tells the truth, which nobody is ever shown (one, twice); his leaving the
+hall on one line (one); and his telling the player they "will be asked" what ails a tree when nobody asks.
+
+**The deliverability reader's blocking faults**, all answered below: services no result builds (free healing, a
+trader who sells or refuses, a keepers' price) in both outlines and through the arc's tables; a journal entry
+false for a player who pulled the tap early; one line about the clutch said after three different endings; a
+vanilla ingredient that would show the player a harmless flower where the story says a deadly one; a hostile
+spider placed within notice of two hunters, who would have killed it before the player came; an entry that put a
+dead man's confession in the mouths of those who spoke for him; a prompt that knew he had been two years from
+home before anyone had said so; a pointer to Xilsa-Jee whose line had closed; a line about a dead man's turn
+home; two hostile people not of one faction; the cove within reach of the station; and, in the arc, an ending
+that read what the form cannot (a thing not held), a bed given by a result that gives chests, and a switch made
+outdoors with no distance promised.
+
+**What changed, as one set.**
+
+1. *The tap is three bidders of three kinds, and the hall pays only for closed roots.* Pulled: the ring, the
+   salve's making and the hall's gold. The Tumnatu's: the camp's leave, its dart-paste and the paste's making,
+   and nothing from the hall. The slip's: the most coin of the three, five hundred and the chest. The harmless
+   ingredient went; the paste's making took its place.
+2. *The first job has no fetch.* The walker carries the hall's salve; the wound is dressed where it is found. The
+   spider is the player's own, out of the hunters' notice, on every way.
+3. *At Yuva-Goli the truth gives a thing no trader sells* (the elder's own bead, and the store) *and the comfort a
+   blessing and the hall's gold*; the hall's necklace is gone. Nobody's barter is opened or shut, there or
+   anywhere: a trader gained is a second placement switched on, and a loss is a thing not given, a person gone or
+   a leave withdrawn.
+4. *The sleeper's stone cannot be both sold and counted as stilling*: the minder teaches only for the stone
+   itself, walled back into the mound; the endings are lines tried in a stated order, each gated on what is held
+   and on stages done.
+5. *Gideon's council gives a room of the player's own as well as its gold; the river folk a unique thing.* The
+   hall's gifts are no longer all for Alchemy: a thumb-ring for Archery, teaching in Restoration.
+6. *The Listener's fear is shown once.* Tsonac has let no walker taste its tree since his last visit, and the
+   river folk, told the truth, shut theirs.
+7. *Naming the gatherer earns the Listener's own teaching* and costs a trader nobody else is.
+8. *The word from Meris-Keth was sent north, twice, and he refused to hear it*: it was for a walker's ear alone,
+   and his answer both times was that no walker goes to the Banujha. His shame, not a mother's patience, is what
+   kept it from him.
+9. *After the truth the hall has no Listener*: Taleeka-Ma keeps it and lets her daughter walk; he sits a day in
+   the hall before he goes, and says what he had told himself.
+10. *The tables were made true of every way*: the early puller, the stand-ins' own stage, twins for the dead,
+    lines after each ending for each person, prompts that state nothing unheard, the pair in the cove of one
+    faction and out of the station's notice, distances promised in numbers where a switch is made outdoors.
+
+**Not changed, and why.** The telling to Korydon's elders stays cut: a telling that gives nothing in play is not
+a choice, and the creed's first test is the elder at Yuva-Goli; one reader missed it. A third way at Yuva-Goli
+(tell her without naming him) was asked for by one reader and was the first round's coldest ending; two tellings
+are the creed. Xilsa-Jee's last question stays without a consequence: it is the player's to answer. Salt-Throat
+stays optional. The sealed spring stays the main quest's.
+
+**Judged against the stop rule: not met.** The readers could retell it, wanted the next chapter, and split on five
+of seven choices. But two choices did not split (the tap; the gatherer's name), three had an option that was
+plainly better or plainly worse paid, and the deliverability reader found blocking faults. All of these are
+answered above and `sketch` passes on the answers; none of the answers has been read. A third round must check,
+with fresh readers on this version: whether the tap now divides a player who wants the hall's pay, one who wants
+a people's ground and one who wants coin; whether anyone names Dusha-Wan for the Listener's teaching; whether the
+truth at Yuva-Goli is a fair trade for a player who ignores the story; whether the council at Gideon is anyone's
+choice; whether stilling against selling at Tsonac now holds; and whether a fresh deliverability reader passes
+both outlines and the arc's tables with nothing blocking.
 
 ## 6. For the other lines
 
@@ -1172,4 +1291,4 @@ The notes this story changes or adds, for the step that writes promises onto pla
 | Tseli-Oon | "the young egg-tender wants a clutch carried to Helstrom without the Naga seeing" | dropped from this line and left to a minor quest; add: one of the station's gatherers is missing, held at Dry-Fang Camp |
 | Dry-Fang Camp | "hostile ... attack on sight" | one of the band stands outside the camp and speaks; the captive is a gatherer of Tseli-Oon; the stolen skins are marked for a buyer in the south |
 | Meris-Keth | "around a dying Hist"; smugglers "bring moon sugar up from the coast" | the tree is dead; the smugglers also cook stolen sap with the sugar; one of them speaks at the landing; the last tree-minder's remains are in the root-hut |
-| Jal-Resh Post | "a watcher selling salvaged mine iron and arrows" | she was hatched at Meris-Keth, and her mother waited at the post for a walker of Helstrom who never came |
+| Jal-Resh Post | "a watcher selling salvaged mine iron and arrows" | she was hatched at Meris-Keth, and her mother sent twice to Helstrom for a walker, who never came |
