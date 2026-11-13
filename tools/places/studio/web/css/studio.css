@@ -260,3 +260,24 @@ ul.plain { margin: 4px 0 12px; padding-left: 18px; color: var(--muted); line-hei
 .atlas-note { color: var(--muted); font-size: 14px; }
 .atlas iframe { flex: 1; width: 100%; border: 0; background: var(--bg); }
 #atlas-btn[data-built="0"] { opacity: .6; }
+
+/* What the story needs of this place (js/needs.js) */
+ol.needs { list-style: none; padding: 0; margin: 0 0 12px; display: grid; gap: 10px; }
+ol.needs li { background: var(--panel-2); border-radius: 12px; padding: 10px 12px; border-left: 4px solid var(--line); }
+ol.needs li[data-met="true"] { border-left-color: var(--ok); }
+ol.needs li[data-met="false"] { border-left-color: var(--fault); }
+ol.needs .what { display: grid; gap: 6px; line-height: 1.4; }
+ol.needs .need-line { font-size: 14px; }
+ol.needs .need-line b { display: block; font-size: 12px; color: var(--muted); font-weight: 600; }
+ol.needs .need-line.changed { color: var(--taste); }
+ol.needs .row { margin: 8px 0 0; flex-wrap: wrap; }
+.need-card { background: var(--panel-2); border-radius: 12px; padding: 4px 12px; margin: 8px 0; border-left: 4px solid var(--accent); }
+.need-card p { margin: 8px 0; line-height: 1.4; }
+.needwarn .sheet { max-width: 520px; }
+.needwarn ul.plain { list-style: disc; padding-left: 20px; display: block; margin: 0 0 12px; }
+.needwarn ul.plain li { display: list-item; margin-bottom: 8px; }
+.sketch .game-name { font-size: 13px; font-weight: 700; paint-order: stroke; stroke: var(--panel); stroke-width: 4; fill: var(--ink); }
+.sketch .game-name.door { fill: var(--accent); }
+.sketch .game-name.marker { font-size: 15px; fill: var(--taste); }
+.names-banner { position: absolute; left: 10px; right: 10px; top: 64px; z-index: 3; background: var(--panel); border-radius: 12px; box-shadow: var(--shadow); padding: 6px 12px; font-size: 13px; pointer-events: none; }
+#player-names[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); }

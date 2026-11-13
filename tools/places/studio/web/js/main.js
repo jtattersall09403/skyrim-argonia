@@ -12,6 +12,7 @@ import { setupAtlas } from './atlas.js';
 import { fitPoint, unfitPoint } from './xform.js';
 import { Tools } from './tools.js';
 import { People } from './people.js';
+import { Needs } from './needs.js';
 import { Panels, plainKind } from './panels.js';
 import { segDist, clock } from './geom.js';
 import { Governor } from './governor.js';
@@ -42,7 +43,7 @@ class Studio {
     this.src = { view: new View($('#view-src'), { name: 'Source place', app: this }), space: 'exterior', side: 'src' };
     this.ours.view.side = this.ours; this.src.view.side = this.src;
     for (const s of [this.ours, this.src]) s.view.lighting = new ViewLighting(s.view, () => this.lightSource(s));
-    this.tools = new Tools(this); this.people = new People(this); this.panels = new Panels(this); this.noteBar = new NoteBar(this);
+    this.tools = new Tools(this); this.people = new People(this); this.needs = new Needs(this); this.panels = new Panels(this); this.noteBar = new NoteBar(this);
     this.linked = false; this.dirtySave = false; this.revs = {}; this.loop();
     this.wireChrome();
   }
@@ -113,6 +114,8 @@ class Studio {
     const spaces = {}; for (const [sid, s] of Object.entries(this.draft.spaces)) spaces[sid] = s.refs;
     this.model = modelFromFiles({ spaces, ...this.draft.files, ...this.stockFiles() });
     this.spaceInfo = Object.fromEntries(Object.entries(this.draft.spaces).map(([k, v]) => [k, v.info]));
+    // what the stories need of the place: fetched beside the rest, never waited for
+    this.needs.load(id).then(() => { if (this.place?.place_id === id && this.panels.name === 'needs') this.needs.panel(); });
     if (this.terrain) this.terrain.override = this.model.land;
     this.people.invalidateRoutes(); this.people.setNav(null);
     // the built place's walking mesh, for people's routes: fetched beside the rest, never waited for
@@ -227,7 +230,7 @@ class Studio {
       }
     }
     if (!interior) side.terrainMesh?.update(v.rig.target);
-    this.crumbs(side); this.people.refresh();
+    this.crumbs(side); this.people.refresh(); if (side === this.ours) this.needs.drawNames();
   }
   enter(side, door) {
     const to = door.door?.to_space; if (!to) return;
@@ -397,6 +400,9 @@ class Studio {
     // the selection may point at things that undo took away
     for (const id of [...this.selection]) if (!this.placeRefsById().has(id)) this.selection.delete(id);
     this.tools.selectionChanged();
+    if (this.needs.names) this.needs.drawNames();
+    // a change to something a story needs: a plain warning, never a block (the change stands unless undone)
+    if (kind === 'push') this.needs.afterPush(ops);
   }
   updateUndo() { $('#undo').disabled = !this.log?.canUndo(); $('#redo').disabled = !this.log?.canRedo(); }
   nameOf(keyOrId) {
@@ -465,6 +471,7 @@ class Studio {
     $('#undo').onclick = () => this.log?.undo(); $('#redo').onclick = () => this.log?.redo();
     $('#finalise-btn').onclick = () => this.panels.finalise();
     $('#settings-btn').onclick = () => this.panels.settings();
+    $('#player-names').onclick = () => this.needs.setNames(!this.needs.names);
     setupAtlas({ placeId: () => this.place?.place_id, toast: (t, ms) => this.toast(t, ms) });
     $('#link').onclick = (e) => { this.linked = !this.linked; e.currentTarget.setAttribute('aria-pressed', this.linked); if (this.linked) this.cameraMoved(this.ours.view); };
     // the source place can be put away to make room, and asked back; remembered on this device
@@ -526,7 +533,7 @@ class Studio {
   cameraMoved(view) {
     const side = view === this.ours.view ? this.ours : this.src;
     if (side.space === 'exterior') side.terrainMesh?.update(view.rig.target);
-    this.tools.cameraMoved(view); this.people.cameraMoved(view);
+    this.tools.cameraMoved(view); this.people.cameraMoved(view); this.needs.cameraMoved(view);
     if (!this.linked || this.ours.space !== 'exterior' || this.src.space !== 'exterior') return;
     const [a, b] = view === this.ours.view ? [this.ours, this.src] : [this.src, this.ours];
     const ga = [a.view.rig.target.x + a.origin[0], a.view.rig.target.y + a.origin[1], a.view.rig.target.z + a.origin[2]];

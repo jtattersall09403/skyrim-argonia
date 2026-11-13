@@ -52,6 +52,10 @@ export const api = {
   // the built place's walking mesh (tools/places/navexport.py); null when the place has not been built
   nav: (id) => getJSON(`/place/${id}/nav`, { optional: true }),
   notes: (id) => getJSON(`/place/${id}/notes`),
+  // what the stories need of the place, in plain words; null when the server has none (an older server)
+  needs: (id) => getJSON(`/place/${id}/needs`, { optional: true }),
+  // the owner carried on past a need's warning: {need | person, change, what, save}
+  needChanged: (id, body) => getJSON(`/place/${id}/needs/changed`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) }),
   // who the place's people are and what it holds (the database's sources), with the items' facts and the scale;
   // null when the server has none for the place
   stock: (id) => getJSON(`/place/${id}/stock`, { optional: true }),

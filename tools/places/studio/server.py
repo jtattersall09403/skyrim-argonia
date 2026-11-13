@@ -20,7 +20,7 @@ import warnings
 
 from aiohttp import web
 
-from tools.places import navexport, notes
+from tools.places import navexport, needs, notes
 from tools.places.studio import awake, links
 from tools.places.studio.saves import AUTOSAVE, PLACE_ID, SAVE_ID, Conflict, Saves, atomic_write
 
@@ -438,6 +438,36 @@ async def notes_post(req: web.Request) -> web.Response:
     return jok(note)
 
 
+async def needs_get(req: web.Request) -> web.Response:
+    """What the stories need of the place and what they use its people for (tools/places/needs.py), in plain words."""
+    pid, cfg = req.match_info["place_id"], req.app["cfg"]
+    if not PLACE_ID.match(pid):
+        return jerr(400, "bad place id")
+    out = await asyncio.get_running_loop().run_in_executor(
+        None, lambda: needs.payload(pid, cfg.sources / "needs", cfg.sources / "people"))
+    return jok(out)
+
+
+async def needs_changed_post(req: web.Request) -> web.Response:
+    """The owner carried on past a need's warning ({need | person, change, what, save}): the edit stands as any other,
+    and the need is marked changed by the owner, for the story to be changed to fit the place."""
+    pid, cfg = req.match_info["place_id"], req.app["cfg"]
+    body = await json_capped(req, NOTE_BYTES)
+    try:
+        if not isinstance(body, dict):
+            raise ValueError("body must be a change")
+        row = await asyncio.get_running_loop().run_in_executor(
+            None, lambda: needs.record_change(pid, body, cfg.sources / "needs"))
+    except (ValueError, TypeError) as e:
+        return jerr(400, str(e))
+    p = needs.changes_path(pid, cfg.sources / "needs")
+    if cfg.commit and p.is_relative_to(ROOT):
+        rel = str(p.relative_to(ROOT))
+        req.app["pending"][rel] = True
+        await req.app["commit_q"].put((rel, f"places: the owner changed what a story needs, {pid}"))
+    return jok(row)
+
+
 COMMIT_TRIES, COMMIT_WAIT_S = 6, 5.0
 
 
@@ -709,6 +739,8 @@ def make_app(cfg: Config | None = None) -> web.Application:
     r.add_get("/api/place/{place_id}/stock", stock_get)
     r.add_get("/api/place/{place_id}/items", items_get)
     r.add_post("/api/place/{place_id}/notes", notes_post)
+    r.add_get("/api/place/{place_id}/needs", needs_get)
+    r.add_post("/api/place/{place_id}/needs/changed", needs_changed_post)
     r.add_get("/api/place/{place_id}/runs/{run_id}", run_get)
     r.add_get("/api/place/{place_id}/seat", seat)
     r.add_post("/api/heartbeat", heartbeat)

@@ -74,7 +74,7 @@ export class Panels {
   open(name) {
     this.name = name;
     const f = { select: () => this.selectPanel(), search: () => this.searchPanel(), people: () => this.peoplePanel(), land: () => this.landPanel(),
-      plants: () => this.plantsPanel(), paths: () => this.pathsPanel(), history: () => this.historyPanel(), saves: () => this.savesPanel(), notes: () => this.notesPanel() }[name];
+      plants: () => this.plantsPanel(), paths: () => this.pathsPanel(), history: () => this.historyPanel(), saves: () => this.savesPanel(), notes: () => this.notesPanel(), needs: () => this.app.needs.panel() }[name];
     if (f) f();
   }
   // ---------- selection ----------
@@ -150,6 +150,7 @@ export class Panels {
       const ob = on && (a.bases.get(on.base) || {});
       facts.push(...primFacts(r, base, ob ? ob.name || ob.edid || on.base : null));
     }
+    if (side === 'ours') { const nl = a.needs?.refLine(r); if (nl) w.append(nl); }
     w.append(this.whereEl([r], side));
     if (lit.swatch) w.append(lit.swatch);
     w.append(el(`<dl class="facts">${facts.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl>`));
@@ -280,6 +281,7 @@ export class Panels {
       name.querySelector('input').onchange = (e) => this.contents.rename(p, e.target.value);
       const role = el(`<label class="field">What they do<input type="text" value="${esc(p.role)}"></label>`);
       role.querySelector('input').onchange = (e) => P.edit(p.id, (x) => { x.role = e.target.value; });
+      const nl = a.needs?.personLine(p.id); if (nl) parts.push(nl);
       parts.push(name, role);
       const svc = Array.isArray(p.services) ? p.services.map((v) => v.detail || v.kind || v.give_kind_id).filter(Boolean) : Object.entries(p.services || {}).filter(([, v]) => v).map(([k]) => k);
       if (svc.length) parts.push(el(`<p>Gives: ${esc(svc.join(', '))}</p>`));
