@@ -611,3 +611,11 @@ added here the day they are made, with the date and the issue.
   primarily)". Every choice and every ending says what it gives and costs the player in play (a power, a thing, a
   service or place opened or closed, standing), researched and written into the skills as instructions, with the
   tools able to build it.
+- 2026-11-13 (in session): (a) what a quest can give the player is audited widely: "What else did Morrowind do? What
+  other types of in game impact could quests have? We should have the same, plus any other equally simple ideas you
+  can come up with. You are very welcome to make engine changes or whatever you need." And: "'Standing' by itself
+  doesn't sound like very much ... 'standing' is only as useful as what it unlocks/enables": standing is never an
+  outcome alone; it is named with what it opens or closes. (b) On Helstrom's faults found by the sight test
+  ("presumably you are actioning and fixing these right? What are you expecting me to do vs you?"): the agents fix
+  them (names on rooms and doors, the small things a story needs, the stories fitted to the place); the owner need
+  do nothing for the story and edits Helstrom only for his own reasons.
