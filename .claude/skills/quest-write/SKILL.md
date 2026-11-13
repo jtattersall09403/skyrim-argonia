@@ -74,7 +74,8 @@ reads only the "Local quests" bullet under "Line types" in questlines.md.
 | `principles/otherworldly.md` | HAUNTING, RITE, WONDER, Daedric and oddity quests |
 
 Each shape names the `shapeData` sections the record holds (`shapes.yaml`), each described under "Record additions"
-in its file: what the drama turns on (a theft's prize, where it is kept and who carries the key, the ways in by
+in its file (a THEFT first sets `theftMode`, `commit` when the player steals and `solve` when they find the thief,
+which picks its sections): what the drama turns on (a theft's prize, where it is kept and who carries the key, the ways in by
 skill, what goes wrong, who pays afterwards).
 
 ## 3. Design at the ceiling
@@ -149,7 +150,7 @@ general.md's table of dramatic jobs, never scripted.
 
 The sections are those of [quest-record.md](quest-record.md) §2.
 
-1. **Action plan**: `python3 .claude/skills/quest-write/action_plan.py --profile <line key> --shapes <SHAPE,...>
+1. **Action plan**: `python3 .claude/skills/quest-write/action_plan.py --profile <line key: a faction's key in profiles.yaml, `main`, or `local` for a minor quest> --shapes <SHAPE,...>
    --band <D0..D5> --line <dir of the line's records>` (the band is the place's danger, D0 a safe town to D5 the
    worst country, `story/design/quests/20-world-provisions.md`; for a first or minor quest `--line` is an empty
    folder); drop any proposed use the place cannot host (a creature it has no ground for), then choose or adapt

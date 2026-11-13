@@ -7,7 +7,7 @@
 always: [principles/general.md, principles/actions.md]
 
 lines:   # by the quest row's `group`; `byLine` adds files for one line id
-  local: [principles/questlines.md]
+  local: [principles/questlines.md]   # a minor quest needs only its "Local quests" bullet
   faction: [principles/questlines.md]
   line: [principles/questlines.md]
   main: [principles/questlines.md]
