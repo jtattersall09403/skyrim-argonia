@@ -1,103 +1,274 @@
 {
- "topic.bc03-last-season": {
-  "speaker": "npc.mercantile-coast.soulrest.crew-boss",
-  "prompt": "What is wrong with your crew?",
-  "lines": [
-   "Our crew asked to end its last season early. Ussa-Rekh, the broker, refused us. Ask him yourself. He sits on the long dock with his chest beside him."
-  ],
-  "lines@low": [
-   "We asked to end our last season early. Ussa-Rekh, the broker, said no. Ask him. He sits on the long dock with his chest beside him."
-  ],
-  "lines@high": [
-   "Listen. Our crew asked to end its last season early. Ussa-Rekh, the broker, refused us. Ask him yourself. He keeps his chest beside him on the long dock. Hear his side."
-  ]
- },
- "topic.bc03-the-tokens": {
-  "speaker": "npc.mercantile-coast.soulrest.crew-boss",
-  "prompt": "Your crew is right. What now?",
-  "lines": [
-   "Ussa-Rekh keeps our carved tokens in the chest beside him on the dock. He keeps them until our last season is worked. He promised that a crew who break their tokens before him are done with him. Bring them to me."
-  ],
-  "lines@low": [
-   "Ussa-Rekh keeps our carved tokens in the chest beside him. A crew who break their tokens before him are done with him. He said so himself. Bring them to me."
-  ],
-  "lines@high": [
-   "You have heard us, so hear this. Ussa-Rekh keeps our carved tokens in the chest beside him on the dock. He keeps them until our last season is worked. He promised us himself that a crew who break their tokens before him are done with him. That is how we end it. Bring them to me."
-  ]
- },
- "topic.bc03-break": {
-  "speaker": "npc.mercantile-coast.soulrest.crew-boss",
-  "prompt": "I have your crew's tokens.",
-  "lines": [
-   "You have them. Give them to me. We will break them before Ussa-Rekh."
-  ],
-  "lines@low": [
-   "Those are ours. Give them to me. We will break them before Ussa-Rekh."
-  ],
-  "lines@high": [
-   "You have them. Give them to me. Every one of us will break his own before Ussa-Rekh."
-  ]
- },
  "topic.bc03-brawl": {
   "speaker": "npc.mercantile-coast.soulrest.crew-boss",
-  "prompt": "Accept the refusal. Work the season.",
-  "lines": [
-   "His no, from your mouth? I will not take that from you. Give me a reason worth hearing or keep clear."
-  ],
-  "lines@low": [
-   "Enough! I will not take his word from you. Give me a reason worth hearing, or keep clear."
-  ],
-  "lines@high": [
-   "I think you mean well. But you cannot tell my crew to work on. Give me a reason worth hearing, or something for my crew's lost days."
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Accept the refusal. Work the season.",
+    "lines": [
+     "Ussa-Rekh said no to my face, and I took it from him. I will not take it again from a stranger who speaks for him. Give me a reason worth hearing. Words will do, or coin for my crew's lost days. Otherwise keep clear of me."
+    ],
+    "facts": []
+   }
   ]
  },
  "topic.bc03-yield-talk": {
   "speaker": "npc.mercantile-coast.soulrest.crew-boss",
-  "prompt": "Let this end. Work the season.",
-  "lines": [
-   "Your words hold. I will not fight over a season I cannot end. We will work it."
-  ],
-  "fail": [
-   "Your words are too thin to move my crew. Find better words, or give my crew something for its lost days. Until then I will not take it."
-  ],
-  "lines@low": [
-   "Enough. Your words hold. We will work the season."
-  ],
-  "lines@high": [
-   "You speak plainly. I hear you. We will work the season. I will tell my crew myself."
-  ],
-  "fail@low": [
-   "No. Your words are too thin. Find better words, or give my crew something for its lost days. Until then I will not take it."
-  ],
-  "fail@high": [
-   "I want to hear you, but not like this. Your words do not hold yet. Find better words, or give my crew something for its lost days. Until then I will not take it."
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "(Speechcraft 30) Let this end. Work the season.",
+    "lines": [
+     "You say it plainly. I cannot answer it. Ussa-Rekh freed me. I will not break faith with him over one season. Let the Lilmoth berths go. My crew will work the season."
+    ],
+    "facts": []
+   },
+   {
+    "variant": "fail",
+    "prompt": "(Speechcraft 30) Let this end. Work the season.",
+    "lines": [
+     "That does not move me. Ussa-Rekh said the same, and he has more right to say it. Bring me better words, or fifty gold for my crew's lost days, and I will hear you."
+    ],
+    "facts": []
+   }
   ]
  },
  "topic.bc03-yield-pay": {
   "speaker": "npc.mercantile-coast.soulrest.crew-boss",
-  "prompt": "Here are fifty gold for your crew.",
-  "lines": [
-   "Fifty gold for my crew's lost days. It will do. We will work the season."
-  ],
-  "lines@low": [
-   "Fifty gold. It will do. We will work the season."
-  ],
-  "lines@high": [
-   "Fifty gold, freely given. My crew will be glad of it. We will work the season. I will tell them it was you."
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Here are fifty gold for your crew.",
+    "lines": [
+     "Fifty gold for the lost days. That is what I asked for. My crew will work the season they did not want."
+    ],
+    "facts": []
+   },
+   {
+    "variant": "fail",
+    "prompt": "Here are fifty gold for your crew.",
+    "lines": [
+     "You do not have fifty gold with you. Bring it and I will take it for the crew's lost days. Or bring words that move me, and I will hear those."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.bc03-last-season": {
+  "speaker": "npc.mercantile-coast.soulrest.crew-boss",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "What is wrong with your crew?",
+    "lines": [
+     "Never-Sold has told you what we asked of Ussa-Rekh and what he answered. I will tell you why we asked. A master in Lilmoth, a short way west along the coast, offers my crew berths of our own from the new season, if we come free of Ussa-Rekh first. The master will not hold them for us through another season.",
+     "I owe Ussa-Rekh my freedom. He bought me out of my Owing, and I say so to anyone who asks. That is why this galls me. A man who has seen what a debt does should not hold us to a season we do not want.",
+     "He stands a few steps along the dock. Hear him as well as me."
+    ],
+    "facts": [
+     "fact.bc03.offer"
+    ]
+   }
+  ]
+ },
+ "topic.bc03-the-tokens": {
+  "speaker": "npc.mercantile-coast.soulrest.crew-boss",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Your crew is right. What now?",
+    "lines": [
+     "Ussa-Rekh keeps a crew's carved tokens until the last season is worked. Ours are in his hand. A crew that holds its own tokens owes him nothing more. He knows it.",
+     "I will not tell you he is a bad man. He freed me. I will not forget it. But a man who was freed should not need leave to take a berth of his own.",
+     "Here is the crew's fifty gold for that season. If coin is what moves him, pay him with it. If your words get the tokens from him, keep the gold."
+    ],
+    "facts": [
+     "fact.bc03.tokens",
+     "fact.bc03.break"
+    ]
+   }
+  ]
+ },
+ "topic.bc03-break": {
+  "speaker": "npc.mercantile-coast.soulrest.crew-boss",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "I have your crew's tokens.",
+    "lines": [
+     "These are ours. A crew that holds its own tokens owes Ussa-Rekh nothing more, and I will tell my crew so.",
+     "I will not curse him. I will not work for him again either."
+    ],
+    "facts": [
+     "fact.bc03.break"
+    ]
+   },
+   {
+    "variant": "fail",
+    "prompt": "I have your crew's tokens.",
+    "lines": [
+     "You do not have them. They are small and carved, and Ussa-Rekh keeps them. Bring them to me, and the crew is done with him."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.bc03-after-rope": {
+  "speaker": "npc.mercantile-coast.soulrest.crew-boss",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": null,
+    "lines": [
+     "My crew holds its own tokens now. I still owe Ussa-Rekh my freedom. I say so without bitterness. We are done with him now. That is a lighter load to carry. You have my thanks."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.bc03-after-rope-season": {
+  "speaker": "npc.mercantile-coast.soulrest.crew-boss",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": null,
+    "lines": [
+     "The crew works the season for Ussa-Rekh, as you wished. We will do the work. Do not ask me to thank you for it."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.bc03-soulrest": {
+  "speaker": "npc.imperial-penal-south.blackrose.chainbreaker-patron",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Is there work for me away from Blackrose?",
+    "lines": [
+     "There is. Ussa-Rekh has bought out Owings for thirty years. He is one of the Chainbreakers. Now he hires out the crews that he freed, on the docks at Soulrest.",
+     "Heavy-Rope, a crew boss there, has sent word. The crew asked to end their last season early. They were refused. Go and hear them both.",
+     "Soulrest's docks lie on the coast a short way east of Lilmoth. Heavy-Rope waits at the head of the dock. Ussa-Rekh freed Heavy-Rope from his own Owing. I will not tell you whose side to take."
+    ],
+    "facts": [
+     "fact.bc03.freed-and-hired",
+     "fact.bc03.refused"
+    ]
+   },
+   {
+    "variant": "fail",
+    "prompt": "Is there work for me away from Blackrose?",
+    "lines": [
+     "Not yet. I have nothing to send you out with. Ask me again when the work at hand is finished."
+    ],
+    "facts": []
+   },
+   {
+    "variant": "again",
+    "prompt": "Is there work for me away from Blackrose?",
+    "lines": [
+     "Soulrest, on the coast a short way east of Lilmoth. Heavy-Rope waits at the head of the dock. Hear both of them."
+    ],
+    "facts": []
+   }
   ]
  },
  "topic.bc03-the-season": {
   "speaker": "npc.imperial-penal-south.blackrose-prison.chainbreaker-envoy-camped-causeway",
-  "prompt": "Tell me about the dock crews.",
-  "lines": [
-   "For thirty years I bought out Owings, the debts that bind a person to labour. I freed those crews. Now I hire them out. They work the season as agreed. Heavy-Rope, on this dock, can tell you what the crew asked of me, and of the tokens."
-  ],
-  "lines@low": [
-   "I bought out Owings for thirty years and freed these crews. Now I hire them out. They work the season as agreed.",
-   "Heavy-Rope, on this dock, can tell you what the crew asked of me, and of the tokens."
-  ],
-  "lines@high": [
-   "For thirty years I bought out Owings, the debts that bind a person to labour. I freed these crews. Now I hire them out. The season is worked as agreed. I hold to what was agreed. Heavy-Rope, on this dock, can tell you what the crew asked of me, and of the tokens."
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Tell me about the dock crews.",
+    "lines": [
+     "An Owing is a debt that a person works off in labour. I buy out the people held, one at a time. I pay for the next one with the crews' hire. I will tell you plainly when that stopped working. It stopped the year the berths that I bought for the crews began to cost me more than their hire.",
+     "A crew that goes early leaves me the berth's price to carry. With that price unpaid I can buy out no more Owings. The person held on an estate stays held.",
+     "I hold that a season agreed is a season worked. So do the estates. Heavy-Rope, just along the dock, can tell you what his crew asked of me. I refused it for the reason I have given."
+    ],
+    "facts": [
+     "fact.bc03.turned"
+    ]
+   }
+  ]
+ },
+ "topic.bc03-release": {
+  "speaker": "npc.imperial-penal-south.blackrose-prison.chainbreaker-envoy-camped-causeway",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "(Speechcraft 30) You freed them once. Give them their tokens.",
+    "lines": [
+     "You are right that I freed them. I have always known when that stopped working. I have feared that a crew would put me beside the estates for it.",
+     "You have shown me what my rule about the tokens has become. Take them to Heavy-Rope."
+    ],
+    "facts": [
+     "fact.bc03.tokens"
+    ],
+    "gives": [
+     "item.bc03.tokens"
+    ]
+   },
+   {
+    "variant": "fail",
+    "prompt": "(Speechcraft 30) You freed them once. Give them their tokens.",
+    "lines": [
+     "I did free them once. That does not end a season they agreed to.",
+     "Bring me a better reason than that, or the crew's coin. Fifty gold from the crew would settle it."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.bc03-buy-season": {
+  "speaker": "npc.imperial-penal-south.blackrose-prison.chainbreaker-envoy-camped-causeway",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Here is the crew's coin for the last season, 50 gold.",
+    "lines": [
+     "Fifty gold. That is the right sum. I count the crew's last season as paid.",
+     "A paid season is a worked one to me, so the carved tokens go with you. Carry them to Heavy-Rope."
+    ],
+    "facts": [
+     "fact.bc03.tokens"
+    ],
+    "gives": [
+     "item.bc03.tokens"
+    ]
+   },
+   {
+    "variant": "fail",
+    "prompt": "Here is the crew's coin for the last season, 50 gold.",
+    "lines": [
+     "You do not have fifty gold. Until it is counted out, or the season is worked, the tokens stay with me. Bring the full fifty and we are settled."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.bc03-after-ussa": {
+  "speaker": "npc.imperial-penal-south.blackrose-prison.chainbreaker-envoy-camped-causeway",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": null,
+    "lines": [
+     "The tokens are Heavy-Rope's now. I have berths to see to. Go on."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.bc03-after-ussa-season": {
+  "speaker": "npc.imperial-penal-south.blackrose-prison.chainbreaker-envoy-camped-causeway",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": null,
+    "lines": [
+     "You kept the season. I do not forget who made that so. It was not kind to Heavy-Rope. I know it."
+    ],
+    "facts": []
+   }
   ]
  }
 }

@@ -1,0 +1,7 @@
+1. I think nothing is clearly left for me to do. The journal check after handing over the page was my signal that the quest was done, and I didn't see a new objective start. If something follows, it would probably involve Rows-For-Another or the Chainbreakers, but I wasn't given a marker or a prompt pointing there.
+
+2. Nobody formally, as far as I can tell. I acted as a helper for Never-Sold and Rows-For-Another, who were trying to free a woman from a debt the steward claimed. I helped because the buyout sum seemed unjust and I wanted to see it resolved. I got no rank, no pay, and no pledge to a faction. The Chainbreakers were mentioned, but I never joined them.
+
+3. The most confusing moment was the persuasion menu. Persuasion options showed up twice, once as a Persuade option and once as a plain version, and I wasn't sure whether they were different choices or the same one repeated. A smaller point of confusion was that the world gave me very little to explore, so I couldn't tell whether I'd missed something or the game was just that small.
+
+4. I'd tell the writer the central conflict is strong, and that Hulm-Tei being technically right but unjust is the best part. I'd ask them to fix the duplicated persuasion options and give a clearer sign at the end of what comes next, whether that's a new objective, a hint, or a plain "this is done." Also, if the Chainbreakers are meant to matter, plant a hook for them, since I'm curious but have nothing pulling me forward.

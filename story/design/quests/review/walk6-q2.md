@@ -143,3 +143,50 @@ and `fail` or `day` with theirs) and the keys of `quest_people.json`.
 `-gone`, `-after-patron`, `-after-steward`; `topic.bc02-the-held`, `-pay`, `-free-speaker`, `-free-killer`,
 `-free-mother`, `-held-<speaker|killer|mother>` with their `-going` and `-staying`, `-names-<speaker|killer|mother>`,
 the five `-after-*` greetings; `topic.bc03-soulrest`, `-release`, `-buy-season`, `-after-rope`, `-after-ussa`.
+
+## The dialogue and the paper players (lane D2b)
+
+**Stale lines.** Every id in the table above is gone or rewritten: the old-schema files were replaced by lines in the
+`infos` form, keyed to the record's person ids; `ARG_BC01_EstateMan` and `ARG_BC02_GateKeeper` are out of
+`quest_people.json`. The four kept lines were rewritten to the new windows.
+
+**Written.** 51 topics, 67 infos, per speaker with dialogue-write (briefs from `quest-write/brief.py`, each writer's
+Morrowind find step run): Never-Sold 13 topics (19 infos), Heavy-Rope 8 (11), Tsaxi 7 (9), Ussa-Rekh 5 (7), Hulm-Tei
+4 (6), Says-It-Plain, Hides-In-Reeds and Keeps-The-Old-Count 4 each, Rows-For-Another 2 (3); every journal entry and
+objective. A check or a cost has its own `fail` words; a start line gated on BC01 has its own "not yet". One
+text-review pass (a reader over the lines grouped by place): 46 lines, 5 journal entries, 1 objective and 1 prompt
+rewritten; one rewrite not taken (it added a fact: Hides-In-Reeds's sister still held). Echo check 0; linter 0 hits
+(two B10 warnings on "ledger", the Rose's own word in `labour-and-bondage.md` §3).
+
+**Record changes** (each re-checked with `questform check`):
+
+| Quest | Change | Why |
+|---|---|---|
+| BC01-03 | the old topics marked `new` | the brief generator refused them as neither topic rows nor new |
+| BC02 | facts `speaker-hall`, `killer-sister`, `mother-shelter` (finding L7) | each of the three held argues their own case (the designed player: "I did not learn why the other two were held") |
+| BC03 | facts `turned`, `offer` (finding L6) | Ussa-Rekh's case (the crews' hire buys out the next Owings) and the crew's (berths of their own that will not wait) |
+| BC01-03 | the coin kept when words do the work is said at the hand-out and in its journal entry, not in a hand-in line both routes share | one hand-in text cannot be true of the paid and the talked route |
+| BC01, BC02, BC03 | Never-Sold's, Heavy-Rope's and Ussa-Rekh's after-greetings split into one topic per ending | the compiler shows one text per topic; a greeting must be true of its ending |
+| BC01 | the talked route argues the four months were worked many times over, which by custom closes the Owing | the steward struck the page "on a promise" the player then kept |
+| BC02 | the three held and Tsaxi stand by the stone house, not in its room (lines, entries 30 and 31, directions) | `look` puts them outside on the shore |
+
+**Paper runs after dialogue** (11 kept; BC02 and BC03 from copies of their forms with the `flag.bc01.settled`
+condition dropped and a `--know` text of BC01's journal, the paid route for BC02 and the channel for BC03; careful
+players at Speechcraft 35, impatient at the default 15):
+
+| Quest | Run | Path | What they said |
+|---|---|---|---|
+| BC01 | `20261113T000141Z-impatient` | 10, 20, 31, 90 | clear; liked "true lines can add up to a wrong sum"; never weighed the channel |
+| BC01 | `20261113T000142Z-careful` | 10, 20, 30, 90 | the steward struck the page on a promise of payment the player kept: fixed |
+| BC01 | `20261113T000510Z-careful` | 10, 20, 30, 90 | the payment gap gone; never heard of the channel: Never-Sold now points to the other way |
+| BC01 | `20261113T000806Z-careful` | 10, 20, 30, 90 | sought the channel on Never-Sold's word and weighed it; confused by the compiler's ungated copy of the check line (below) |
+| BC02 | `20261113T000002Z-careful`, `000041Z-impatient` | 30 or 31, 43, 93 | the choice "had real weight"; captives "at the shore, not in the room": fixed |
+| BC02 | `20261113T000510Z-careful` | 10, 30, 43, 93 | "each prisoner gave one clear reason"; no room confusion |
+| BC03 | `20261113T000142Z-careful`, `-impatient` | 0 | run set up wrong (no `--at`; the player began at Soulrest): kept, not read as findings |
+| BC03 | `20261113T000510Z-careful` | 10, 20, 30, 60, 91 | sided with Ussa-Rekh: "a crew gone early leaves no money to buy out the next one held" |
+| BC03 | `20261113T000510Z-impatient` | 10, 20, 30, 60 | sided with Ussa-Rekh on the same argument; the failed pay showed success words (below) |
+
+**Still owed by the tools** (reported, not worked round): the compiler's condition-free copy of a gated line shows
+the success words (a failed check reads as agreed, and every check is listed twice); the BC02 and BC03 start lines show
+before BC01 ends; BC03's broker-side payment needs 50 gold of the player's own. **Still weak:** every BC02 player so far
+(four of four) freed the mother, the one tied to BC01; and the endings show nothing of those left behind.

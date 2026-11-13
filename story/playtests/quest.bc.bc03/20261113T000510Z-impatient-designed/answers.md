@@ -1,0 +1,7 @@
+1. I think I'm meant to go back to Never-Sold and report how Soulrest went, since the objective at Soulrest never closed and Ussa-Rekh has nothing left to say. I didn't actually try that, so it's a guess. If the quest is done, the journal should say so, and it didn't.
+
+2. Nominally the Chainbreakers, through Never-Sold. She buys out Owings and takes the work as repayment, and she sent me to Soulrest. In practice, I sided with Ussa-Rekh, so I acted for the broker's idea that a season agreed gets worked. I'm not sure Never-Sold sees it that way, since she warned me last time that the next person held would pay for it.
+
+3. The most confusing moment was the persuasion and payment sequence. My Speechcraft was 15 against a 30 check, yet one of the two "30" options worked at 15. The 50 gold got a reply but showed no visible change and no journal update. I couldn't tell whether I'd paid, whether the check had succeeded, or whether the quest was resolved. After Heavy-Rope agreed, the objective stayed open.
+
+4. I'd tell the writer that the dilemma is good and ties back to Rows-For-Another, but the resolution needs clear feedback. Show the gold leaving, show the skill check result, and update the journal when someone agrees. If two options look identical but behave differently, label the difference. Also close the objective, or point me to who to report to, so I know whether I'm finished. I'd like to hear Ussa-Rekh's and Never-Sold's reactions, and learn whether the held people benefit.

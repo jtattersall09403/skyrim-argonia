@@ -1,0 +1,38 @@
+{
+ "quest": "quest.bc.bc03",
+ "player": "impatient",
+ "source": "designed",
+ "model": "sonnet",
+ "form_files": [
+  "/tmp/claude-1000/d2b-work/ungated/quest.bc.bc03.json"
+ ],
+ "forms_hash": "d0a2965afc7bb0d6",
+ "created": "20261113T000510Z",
+ "counts": {
+  "commands": 23,
+  "stalls": 0,
+  "harness_errors": 0
+ },
+ "stages": {
+  "quest.bc.bc03": [
+   0,
+   10,
+   20,
+   30,
+   60
+  ]
+ },
+ "ended": "stopped by the player (quest.bc.bc03 active)",
+ "take": true,
+ "answers": true,
+ "player_error": null,
+ "cost_usd": 0.09084979999999998,
+ "minutes": 0.8,
+ "turns": 25,
+ "tokens": {
+  "input_tokens": 46,
+  "output_tokens": 3359,
+  "cache_read_input_tokens": 160438,
+  "cache_creation_input_tokens": 10281
+ }
+}

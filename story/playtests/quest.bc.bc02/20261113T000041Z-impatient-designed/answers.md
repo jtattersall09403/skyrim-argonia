@@ -1,0 +1,7 @@
+1. I think nothing is left. My journal was empty after I reported back to Never-Sold, so I'm not sure what I'm meant to do next. I'd probably go back to her and look around Blackrose for new work, but no marker or objective points anywhere.
+
+2. I work for Never-Sold, who keeps the Chainbreakers' house. She sent me to Rows-For-Another and then gave me the job of hearing the three prisoners. She pays me from her coin and sends me out to free people from debts (Owings). I'm not sure how formal the arrangement is. It feels like I'm her hired hand, not a member of anything.
+
+3. The most confusing moment was the Speechcraft check. I failed it at 15 against 25 and had no idea how I was supposed to raise that, so I just paid the 100 gold. The duplicated persuade and plain dialogue options added to this. I wasn't sure which one counted, and I had to try both before it made sense. I was also a little unsure why freeing only one of three was the outcome, and whether I could have freed more.
+
+4. I'd tell the writer the three prisoners' stories work well, and the hint to hear all three first was a good touch. The choice felt weighty. Please make the dialogue menu cleaner, so there are no duplicate persuade entries and I don't have to re-open talk before every question. Please also show the skill requirement up front, or give a way to improve it, so the check doesn't feel like a dead end. And give some sign at the end of whether more work is coming, because an empty journal left me guessing.

@@ -26,24 +26,6 @@
       ]
     }
   ],
-  "ARG_BC01_EstateMan": [
-    {
-      "when": null,
-      "prompt": "Who are you?",
-      "lines": [
-        "I work for the estate. I walk this landing at night. The landing belongs to the estate. So do the boats tied to it. Keep walking."
-      ]
-    }
-  ],
-  "ARG_BC02_GateKeeper": [
-    {
-      "when": null,
-      "prompt": "Who are you?",
-      "lines": [
-        "I keep this gate for the heirs. The stone house is their outer post. Third-Born Tsaxi says who goes in. Speak to him."
-      ]
-    }
-  ],
   "ARG_TG_ChapterLookout1": [
     {
       "when": null,

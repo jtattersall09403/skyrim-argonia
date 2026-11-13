@@ -1,25 +1,85 @@
 {
-  "_about": "Allow-lists of tools/argonia_world/quest_text_check.py. rhetorical: [{key, text, why}] a spoken line allowed a '?' or a Give/Tell/Show-me opening (key = the topic key or row key; text = a phrase of the line). gives_ok: [{key, text, why}] a line allowed to open 'Here is', 'Here are', 'Take this' with no `gives`. retired: {quest id: [nouns the build cut]} searched word-bounded, case-insensitively, in that quest's lines, entries and objectives. roles: {quest id: {role phrase: person name}} a journal entry or objective naming the role must name the person in the same sentence.",
-  "rhetorical": [
-    {"key": "topic.bc03-brawl", "text": "reason worth hearing", "why": "a refusal of a Speech check that names what would change it; the player answers with the check, not a topic"},
-    {"key": "ARG_TG01_TopicDoor_0", "text": "Quiet work", "why": "the speaker echoes the player's own words back; it asks nothing"}
-  ],
-  "gives_ok": [
-    {"key": "topic.lq25-keep-quiet", "text": "Here are 40 gold", "why": "the fragment pays 40 gold (ARG_QF_LQ25 Fragment_92)"},
-    {"key": "ARG_TG01_TopicReturn_0", "text": "Here are one hundred gold", "why": "the fragment pays 100 gold and three lockpicks (ARG_QF_TG01 Fragment_40)"},
-    {"key": "ARG_TG02_TopicHandOverDar_0", "text": "Here are eighty gold", "why": "the fragment pays 80 gold (ARG_QF_TG02 HandOver)"},
-    {"key": "ARG_TG02_TopicHandOverOkan_0", "text": "Here are eighty gold", "why": "the fragment pays 80 gold (ARG_QF_TG02 HandOver)"},
-    {"key": "ARG_TG02_TopicHandOverNeeta_0", "text": "Here is eighty gold", "why": "the fragment pays 80 gold (ARG_QF_TG02 HandOver)"},
-    {"key": "ARG_TG02_TopicSellBeads_0", "text": "Here are fifty gold", "why": "the fragment pays 50 gold (ARG_QF_TG02 SellBack)"}
-  ],
-  "retired": {
-    "quest.main.mq01": ["paddy", "shore path", "rice dike"],
-    "quest.main.mq03": ["screen", "fog"],
-    "quest.bc.bc02": ["the keep", "cells", "Black Rose Jail"]
+ "_about": "Allow-lists of tools/argonia_world/quest_text_check.py. rhetorical: [{key, text, why}] a spoken line allowed a '?' or a Give/Tell/Show-me opening (key = the topic key or row key; text = a phrase of the line). gives_ok: [{key, text, why}] a line allowed to open 'Here is', 'Here are', 'Take this' with no `gives`. retired: {quest id: [nouns the build cut]} searched word-bounded, case-insensitively, in that quest's lines, entries and objectives. roles: {quest id: {role phrase: person name}} a journal entry or objective naming the role must name the person in the same sentence.",
+ "rhetorical": [
+  {
+   "key": "topic.bc03-brawl",
+   "text": "reason worth hearing",
+   "why": "a refusal of a Speech check that names what would change it; the player answers with the check, not a topic"
   },
-  "roles": {
-    "quest.local.lq25": {"the boat captain": "Sells-Dear"},
-    "quest.local.lq30": {"the levy warden": "Gih-Xaleel", "the warden at the gate": "Gih-Xaleel"},
-    "quest.main.mq04": {"the root-herald": "Hires-By-The-Season"}
+  {
+   "key": "ARG_TG01_TopicDoor_0",
+   "text": "Quiet work",
+   "why": "the speaker echoes the player's own words back; it asks nothing"
   }
+ ],
+ "gives_ok": [
+  {
+   "key": "topic.lq25-keep-quiet",
+   "text": "Here are 40 gold",
+   "why": "the fragment pays 40 gold (ARG_QF_LQ25 Fragment_92)"
+  },
+  {
+   "key": "ARG_TG01_TopicReturn_0",
+   "text": "Here are one hundred gold",
+   "why": "the fragment pays 100 gold and three lockpicks (ARG_QF_TG01 Fragment_40)"
+  },
+  {
+   "key": "ARG_TG02_TopicHandOverDar_0",
+   "text": "Here are eighty gold",
+   "why": "the fragment pays 80 gold (ARG_QF_TG02 HandOver)"
+  },
+  {
+   "key": "ARG_TG02_TopicHandOverOkan_0",
+   "text": "Here are eighty gold",
+   "why": "the fragment pays 80 gold (ARG_QF_TG02 HandOver)"
+  },
+  {
+   "key": "ARG_TG02_TopicHandOverNeeta_0",
+   "text": "Here is eighty gold",
+   "why": "the fragment pays 80 gold (ARG_QF_TG02 HandOver)"
+  },
+  {
+   "key": "ARG_TG02_TopicSellBeads_0",
+   "text": "Here are fifty gold",
+   "why": "the fragment pays 50 gold (ARG_QF_TG02 SellBack)"
+  },
+  {
+   "key": "topic.bc02-the-fire",
+   "text": "Here are a hundred gold",
+   "why": "stage 10 gives 100 gold on entering (quest.bc.bc02 onEnter giveGold)"
+  },
+  {
+   "key": "topic.bc03-the-tokens",
+   "text": "Here is the crew's fifty gold",
+   "why": "stage 40 gives 50 gold on entering (quest.bc.bc03 onEnter giveGold)"
+  }
+ ],
+ "retired": {
+  "quest.main.mq01": [
+   "paddy",
+   "shore path",
+   "rice dike"
+  ],
+  "quest.main.mq03": [
+   "screen",
+   "fog"
+  ],
+  "quest.bc.bc02": [
+   "the keep",
+   "cells",
+   "Black Rose Jail"
+  ]
+ },
+ "roles": {
+  "quest.local.lq25": {
+   "the boat captain": "Sells-Dear"
+  },
+  "quest.local.lq30": {
+   "the levy warden": "Gih-Xaleel",
+   "the warden at the gate": "Gih-Xaleel"
+  },
+  "quest.main.mq04": {
+   "the root-herald": "Hires-By-The-Season"
+  }
+ }
 }

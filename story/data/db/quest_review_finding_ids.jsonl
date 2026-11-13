@@ -54,6 +54,9 @@
 {"quest_id":"quest.bc.bc02","review_findings_ord":15,"ord":0,"value":"stages.41"}
 {"quest_id":"quest.bc.bc02","review_findings_ord":15,"ord":1,"value":"stages.42"}
 {"quest_id":"quest.bc.bc02","review_findings_ord":15,"ord":2,"value":"stages.43"}
+{"quest_id":"quest.bc.bc02","review_findings_ord":16,"ord":0,"value":"facts.fact.bc02.speaker-hall"}
+{"quest_id":"quest.bc.bc02","review_findings_ord":16,"ord":1,"value":"facts.fact.bc02.killer-sister"}
+{"quest_id":"quest.bc.bc02","review_findings_ord":16,"ord":2,"value":"facts.fact.bc02.mother-shelter"}
 {"quest_id":"quest.bc.bc03","review_findings_ord":0,"ord":0,"value":"cast.chainbreaker-envoy-camped-causeway"}
 {"quest_id":"quest.bc.bc03","review_findings_ord":1,"ord":0,"value":"items.item.bc03.tokens"}
 {"quest_id":"quest.bc.bc03","review_findings_ord":1,"ord":1,"value":"facts.fact.bc03.tokens"}
@@ -83,6 +86,8 @@
 {"quest_id":"quest.bc.bc03","review_findings_ord":14,"ord":1,"value":"stages.20"}
 {"quest_id":"quest.bc.bc03","review_findings_ord":14,"ord":2,"value":"stages.45"}
 {"quest_id":"quest.bc.bc03","review_findings_ord":14,"ord":3,"value":"stages.46"}
+{"quest_id":"quest.bc.bc03","review_findings_ord":15,"ord":0,"value":"facts.fact.bc03.turned"}
+{"quest_id":"quest.bc.bc03","review_findings_ord":15,"ord":1,"value":"facts.fact.bc03.offer"}
 {"quest_id":"quest.local.lf83","review_findings_ord":0,"ord":0,"value":"startWhen"}
 {"quest_id":"quest.local.lf83","review_findings_ord":0,"ord":1,"value":"stages.10"}
 {"quest_id":"quest.local.lf83","review_findings_ord":0,"ord":2,"value":"stages.20"}

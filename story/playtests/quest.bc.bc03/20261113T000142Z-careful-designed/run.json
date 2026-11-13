@@ -1,0 +1,34 @@
+{
+ "quest": "quest.bc.bc03",
+ "player": "careful",
+ "source": "designed",
+ "model": "sonnet",
+ "form_files": [
+  "/tmp/claude-1000/d2b-work/ungated/quest.bc.bc03.json"
+ ],
+ "forms_hash": "d0a2965afc7bb0d6",
+ "created": "20261113T000142Z",
+ "counts": {
+  "commands": 36,
+  "stalls": 0,
+  "harness_errors": 0
+ },
+ "stages": {
+  "quest.bc.bc03": [
+   0
+  ]
+ },
+ "ended": "stopped by the player (quest.bc.bc03 active)",
+ "take": true,
+ "answers": true,
+ "player_error": null,
+ "cost_usd": 0.11265940000000006,
+ "minutes": 1.1,
+ "turns": 38,
+ "tokens": {
+  "input_tokens": 66,
+  "output_tokens": 4755,
+  "cache_read_input_tokens": 241134,
+  "cache_creation_input_tokens": 10216
+ }
+}

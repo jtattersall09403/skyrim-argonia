@@ -1,0 +1,7 @@
+1. I think I'm meant to be in Never-Sold's house, taking the next Owing from her, the one she said would cost something after I helped Rows-For-Another slip away. But the game never put me there, so I don't really know. The only leads I had were Tilts-The-Jug and Heavy-Rope's crew, and I couldn't reach either.
+
+2. Nominally the Chainbreakers, through Never-Sold, since they buy out Owings and I work off the debts. In practice I never got an objective, and my journal stayed empty, so in the game as I played it I work for no one. I also never learned why I'd be loyal to them beyond the setup in the prompt.
+
+3. Being dropped at a dock called Dock2 with no journal entries, no markers and no doors, while the setup said I was in Never-Sold's house. After that, the "go" command rejecting every place the NPCs named, so the directions they gave me ("north-west until the dead tree") couldn't be used. I couldn't tell whether I was doing something wrong or the game was broken.
+
+4. The dialogue has some nice character, and Feldril Nethri and Plaits-The-Reed stood out. But the opening needs to match the story it claims: start the player in the house, or give a first objective and marker. Make every place NPCs mention reachable with "go", or give the player a way to follow the directions. Heavy-Rope standing silent as a lead is a dead end. The Rows-For-Another choice and Never-Sold's warning that someone would pay for it is a strong hook, but I never got to see it pay off.

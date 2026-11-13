@@ -46,12 +46,17 @@
 {"id":"fact.bc01.put-by","claim":"Never-Sold has put by the Owing's first price; by custom an Owing paid at its assessed price is closed and never mentioned again.","ord":4,"from_ref":"t3","quest_id":"quest.bc.bc01"}
 {"id":"fact.bc01.washed-out","claim":"She has grown grey from years away from her tree.","ord":3,"from_ref":"t2","quest_id":"quest.bc.bc01"}
 {"id":"fact.bc02.fire","claim":"A fire went through the Rose, and the heirs keep three they brought out of the smoke at their outer post, the stone house on the shore at Blackrose's east edge, under Third-Born Tsaxi.","ord":0,"from_ref":"t1","quest_id":"quest.bc.bc02"}
+{"id":"fact.bc02.killer-sister","claim":"Hides-In-Reeds killed a man of the heirs who had sold her sister's Owing on to the crossings; by native law a killing is worked off for the dead man's household, and she works it.","ord":4,"from_ref":"t2","quest_id":"quest.bc.bc02"}
+{"id":"fact.bc02.mother-shelter","claim":"Keeps-The-Old-Count came to the Rose with nowhere else to go when her daughter was taken onto the estate; what the heirs reckon for her shelter grows each season, and when she dies the heirs will look to her daughter for it.","ord":5,"from_ref":"t2","quest_id":"quest.bc.bc02"}
 {"id":"fact.bc02.one-out","claim":"Tsaxi can count one of the three lost to the smoke; three would be his own neck.","ord":2,"from_ref":"t3","quest_id":"quest.bc.bc02"}
+{"id":"fact.bc02.speaker-hall","claim":"Says-It-Plain said in the Rose's hall that a ledger kept by families born owing is the Blackguards' ledger kept again; native law asks nothing for words, and the heirs reckoned him a season for them.","ord":3,"from_ref":"t2","quest_id":"quest.bc.bc02"}
 {"id":"fact.bc02.three-held","claim":"The three owe the heirs work by the heirs' own reckoning: Says-It-Plain for speaking against them; Hides-In-Reeds for a killing; Keeps-The-Old-Count, Rows-For-Another's mother, for her shelter.","ord":1,"from_ref":"t2","quest_id":"quest.bc.bc02"}
 {"id":"fact.bc03.break","claim":"A crew that holds its own tokens owes Ussa-Rekh nothing more.","ord":3,"from_ref":"t1","quest_id":"quest.bc.bc03"}
 {"id":"fact.bc03.freed-and-hired","claim":"Ussa-Rekh bought out Owings for thirty years, and now hires out the crews he freed.","ord":0,"from_ref":"t1","quest_id":"quest.bc.bc03"}
+{"id":"fact.bc03.offer","claim":"A Lilmoth master has offered Heavy-Rope's crew berths of their own from the new season, if they come free of Ussa-Rekh first; the offer will not wait a season.","ord":5,"from_ref":"t2","quest_id":"quest.bc.bc03"}
 {"id":"fact.bc03.refused","claim":"Heavy-Rope's crew asked to end their last season early and were refused.","ord":2,"from_ref":"t2","quest_id":"quest.bc.bc03"}
 {"id":"fact.bc03.tokens","claim":"He keeps a crew's carved tokens until their last season is worked.","ord":1,"from_ref":"t1","quest_id":"quest.bc.bc03"}
+{"id":"fact.bc03.turned","claim":"Ussa-Rekh buys the next Owings out with the crews' hire; it turned the year the berths he bought for them began to cost more than their hire, and a crew gone early leaves him the berth's price and buys out nobody.","ord":4,"from_ref":"t1","quest_id":"quest.bc.bc03"}
 {"id":"fact.blackguards.brigands","says":"The Blackguards are Argonian pirates and brigands of the south coast."}
 {"id":"fact.blackguards.inmates","says":"The Blackguards descend from the inmates of Blackrose Prison."}
 {"id":"fact.blackguards.largest","says":"The Blackguards are the largest band of criminals in Murkmire."}

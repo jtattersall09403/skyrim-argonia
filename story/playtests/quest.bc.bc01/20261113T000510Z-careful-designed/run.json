@@ -1,0 +1,38 @@
+{
+ "quest": "quest.bc.bc01",
+ "player": "careful",
+ "source": "designed",
+ "model": "sonnet",
+ "form_files": [
+  "/tmp/claude-1000/d2b-work/forms/quest.bc.bc01.json"
+ ],
+ "forms_hash": "8af2f8ec8003b3ec",
+ "created": "20261113T000510Z",
+ "counts": {
+  "commands": 13,
+  "stalls": 0,
+  "harness_errors": 0
+ },
+ "stages": {
+  "quest.bc.bc01": [
+   0,
+   10,
+   20,
+   30,
+   90
+  ]
+ },
+ "ended": "all quests ended (quest.bc.bc01 completed)",
+ "take": true,
+ "answers": true,
+ "player_error": null,
+ "cost_usd": 0.0514722,
+ "minutes": 0.4,
+ "turns": 15,
+ "tokens": {
+  "input_tokens": 28,
+  "output_tokens": 1705,
+  "cache_read_input_tokens": 73982,
+  "cache_creation_input_tokens": 6742
+ }
+}

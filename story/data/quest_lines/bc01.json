@@ -1,65 +1,223 @@
 {
  "topic.bc01-the-book": {
-  "speaker": "hulm-tei",
-  "prompt": "Tell me about the estate's debt book.",
-  "lines": [
-   "Every line of the estate's debt book is true. Rows-For-Another's food is in it. So is the boat's upkeep, and her sick days. I name a buy-out by the book. I am a steward. I am not a slaver."
-  ],
-  "lines@low": [
-   "Every line of the estate's debt book is true. Rows-For-Another's food is in it, and the boat's upkeep, and her sick days. I name a buy-out by the book. I am a steward, not a slaver."
-  ],
-  "lines@high": [
-   "I will speak plainly, because you have listened. Every line of the estate's debt book is true. Rows-For-Another's food is in it. So is the boat's upkeep, and her sick days. I name a buy-out by the book. Nothing else sets it. Some call that slaving. I am a steward. I keep what is true."
+  "speaker": "npc.imperial-penal-south.blackrose.estate-steward",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Tell me about the estate's debt book.",
+    "lines": [
+     "Every line of the estate's debt book is true. We fed Rows-For-Another. We kept the boat she damaged. When she lay sick, we carried her through it. I wrote each of those days down.",
+     "If the sum has grown past her work, it grew with every day she ate and every day she lay sick. I did not invent one of those days. A buy-out costs the whole sum in the book.",
+     "I understand why some look at that sum and say slaving. I do not buy anyone and I do not sell anyone. I am a steward. I keep account of what the estate spent."
+    ],
+    "facts": [
+     "fact.bc01.book-true"
+    ]
+   }
+  ]
+ },
+ "topic.bc01-strike": {
+  "speaker": "npc.imperial-penal-south.blackrose.estate-steward",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "(Speechcraft 25) She has worked her four months many times over. By custom that closes the Owing. Strike her page.",
+    "lines": [
+     "Four months was the first price, and she has worked it many times over in eleven years. I cannot say otherwise. By custom an Owing worked to its first price is closed.",
+     "I strike her page because the custom requires it, though every line in it was true. Here it is. The estate will not raise her Owing again."
+    ],
+    "gives": [
+     "item.bc01.page"
+    ],
+    "facts": [
+     "fact.bc01.put-by"
+    ]
+   },
+   {
+    "variant": "fail",
+    "prompt": "(Speechcraft 25) She has worked her four months many times over. By custom that closes the Owing. Strike her page.",
+    "lines": [
+     "No. The book says what she owes, and every line of it is true. Words that thin do not strike a true page. Make me a better case for the custom, or bring the first price in coin, a hundred gold, and I will strike it."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.bc01-first-price": {
+  "speaker": "npc.imperial-penal-south.blackrose.estate-steward",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Here is the Owing's first price, 100 gold. Strike her page.",
+    "lines": [
+     "That is a hundred gold, the whole price. By custom an Owing paid at its first price is closed, so her page is struck.",
+     "Take it. She owes the estate nothing now. I will not speak of it again."
+    ],
+    "gives": [
+     "item.bc01.page"
+    ],
+    "facts": [
+     "fact.bc01.put-by"
+    ]
+   },
+   {
+    "variant": "fail",
+    "prompt": "Here is the Owing's first price, 100 gold. Strike her page.",
+    "lines": [
+     "I see no gold in your hands. By custom an Owing is closed at its first price in coin. I have no coin to count. Bring a hundred gold and I will strike the page."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.bc01-after-steward": {
+  "speaker": "npc.imperial-penal-south.blackrose.estate-steward",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": null,
+    "lines": [
+     "She is off my bank now. I wrote nothing in the book that was false."
+    ],
+    "facts": []
+   }
   ]
  },
  "topic.bc01-the-estate": {
-  "speaker": "never-sold",
-  "prompt": "What do the Chainbreakers need done?",
-  "lines": [
-   "Rows-For-Another took a boat from the estate north of Blackrose. She took it on an Owing of four months. An Owing is a debt paid in work. That was eleven years ago. She works it still. I have saved enough to buy out the Owing. Hulm-Tei, the steward, keeps the debt book in a locked chest on the landing. Take the swamp road north out of Blackrose. The landing is a short walk on, on the channel side, with boats at the water. I will meet you there. She talks of the channel after dark. It runs from the landing out of the estate's reach. She says she cannot drown in it. Bring me the book."
-  ],
-  "lines@low": [
-   "Rows-For-Another took a boat from the estate north of Blackrose. She owed four months' work. That was eleven years ago. She works it still. I have saved enough to buy out the Owing.",
-   "The steward keeps the debt book in a locked chest on the landing. Take the swamp road north. The landing is a short walk on, at the channel. I will meet you there.",
-   "She talks of the channel after dark. It runs from the landing out of the estate's reach. Bring me the book."
-  ],
-  "lines@high": [
-   "Sit and hear it. Rows-For-Another took a boat from the estate north of Blackrose. She took it on an Owing of four months. An Owing is a debt paid in work. That was eleven years ago. She works it still. I have saved enough to buy out the Owing. Hulm-Tei, the steward, keeps the debt book in a locked chest on the landing. Take the swamp road north out of Blackrose. The landing is a short walk on, on the channel side, with boats at the water. I will meet you there. She talks of the channel after dark. It runs from the landing out of the estate's reach. She says she cannot drown in it. That frightens me. A rash act would fall on her. Bring me the book."
+  "speaker": "npc.imperial-penal-south.blackrose.chainbreaker-patron",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "What do the Chainbreakers need done?",
+    "lines": [
+     "The Chainbreakers buy out Owings, debts paid in work, at what they were first set. There is a woman north of Blackrose called Rows-For-Another. Eleven years ago she damaged one of an estate's boats. The estate's steward assessed her an Owing of four months' work. She works it still.",
+     "I have put by what that Owing was at first: one hundred gold. By custom an Owing paid at its first price is closed. It is never mentioned again. Take the coin. If you can talk the steward round without it, keep it.",
+     "From here take the swamp road north out of Blackrose. The channel bank is a short walk on. The steward Hulm-Tei stands there with his book. Rows-For-Another has looked at that channel for years, and the buy-out is not her only way off the estate. Ask her what the other way would cost. Hear what she wants before you do anything."
+    ],
+    "facts": [
+     "fact.bc01.boat-owing",
+     "fact.bc01.put-by"
+    ]
+   },
+   {
+    "variant": "again",
+    "prompt": "What do the Chainbreakers need done?",
+    "lines": [
+     "Rows-For-Another is on the channel bank, a short walk north of Blackrose along the swamp road. The steward Hulm-Tei stands there with his book. Hear her out first."
+    ],
+    "facts": []
+   }
   ]
  },
  "topic.bc01-bring-down": {
-  "speaker": "never-sold",
-  "prompt": "I have the estate's debt book.",
-  "lines": [
-   "That is the book. I will read her page. I do not argue the entries. I tear out her page and give it to her. Then I leave four months in coin in the steward's chest. That was the first price."
-  ],
-  "lines@low": [
-   "That is the book. Stand back. I tear out her page and give it to her, and I leave four months in coin in the steward's chest. That was the first price."
-  ],
-  "lines@high": [
-   "You have done what I could not. Give me the book. I will read her page. I do not argue the entries. I tear out her page and give it to her. Then I leave four months in coin in the steward's chest. That was the first price. It is paid. Rows-For-Another is free because of you."
+  "speaker": "npc.imperial-penal-south.blackrose.chainbreaker-patron",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "I have Rows-For-Another's page.",
+    "lines": [
+     "That is her page, struck through. I will not argue it. Her food, the boat's upkeep, her sick days: every line is true. I have kept books long enough to know that true lines can add up to a wrong sum.",
+     "The Owing is closed by custom now. It will not be mentioned again. I was born owing. I paid mine off, so I know what that quiet is worth. You did it well, whichever way you did it."
+    ],
+    "facts": [
+     "fact.bc01.book-true"
+    ]
+   },
+   {
+    "variant": "fail",
+    "prompt": "I have Rows-For-Another's page.",
+    "lines": [
+     "I do not see it in your hands. Bring me Rows-For-Another's page, the one struck from the steward's book. I will read it."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.bc01-gone": {
+  "speaker": "npc.imperial-penal-south.blackrose.chainbreaker-patron",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Rows-For-Another won't wait. She's going down the channel.",
+    "lines": [
+     "Rows-For-Another has chosen, then. She told you what her going costs the next one held. I know it is true. I will not pretend it is less.",
+     "I will not undo it. I do not call her wrong for wanting out after eleven years. I keep every name. Hers is one now."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.bc01-after-patron": {
+  "speaker": "npc.imperial-penal-south.blackrose.chainbreaker-patron",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": null,
+    "lines": [
+     "The page is on my shelf, struck through. Rows-For-Another has gone home to her tree. I am glad of your work. I will remember who did it."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.bc01-after-patron-channel": {
+  "speaker": "npc.imperial-penal-south.blackrose.chainbreaker-patron",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": null,
+    "lines": [
+     "Rows-For-Another is in the channel, out of the estate's reach. Whoever the estate's men hold next will answer for it. I keep her name, as I keep all of them."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.bc01-buy-out": {
+  "speaker": "npc.imperial-penal-south.blackrose.estate-debtor",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Never-Sold will buy out your Owing at its first price.",
+    "lines": [
+     "So Never-Sold would do that for me. Then I will take it. Look at my skin. Eleven years away from my tree has turned it grey. I want to go home before it greys further.",
+     "It is slow, and I will not pretend otherwise. Hulm-Tei keeps the book with my page in it. He must be paid the first price or talked round before he will strike it. I will say no more of him, because he is standing there and he can hear us.",
+     "When the page is struck, the old custom closes the Owing for good. It is never spoken of again. It frees me. It does not change how the estate treats the next one held. Hulm-Tei will give you the page. Take it down the swamp road to Never-Sold in Blackrose."
+    ],
+    "facts": [
+     "fact.bc01.book-chest",
+     "fact.bc01.washed-out"
+    ]
+   }
   ]
  },
  "topic.bc01-cut-loose": {
-  "speaker": "rows-for-another",
-  "prompt": "Will you leave with me?",
-  "lines": [
-   "I will not wait on the book. Two estate men walk the landing at night. Past them, the channel runs out of the estate's reach. I cannot drown in it. Go first. I will follow you."
-  ],
-  "day": [
-   "Not while the estate's men can see us. Come to me after dark, when none of them is looking."
-  ],
-  "lines@low": [
-   "Two estate men walk the landing at night. The channel runs out of the estate's reach. I cannot drown in it. I follow you."
-  ],
-  "lines@high": [
-   "I will not wait on the book any longer. Two estate men walk the landing at night. Pass them and the channel is open to us. It runs from the landing out of the estate's reach. I cannot drown in it. Go first. I will follow you."
-  ],
-  "day@low": [
-   "Not while the estate's men can see us. Come after dark, when none of them is looking."
-  ],
-  "day@high": [
-   "I want to go, but not while the estate's men can see us. Come to me after dark, when none of them is looking. I will be ready."
+  "speaker": "npc.imperial-penal-south.blackrose.estate-debtor",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "(Speechcraft 30) Why wait? Leave now.",
+    "lines": [
+     "Speak low. He is only a few steps off. I have said the same to myself for years. I have never said it aloud before.",
+     "The channel runs out of the estate's reach from this bank. I cannot drown in it. I will go once Hulm-Tei has turned his back. I will never set foot on the swamp road again. I have weighed that.",
+     "The estate's men will be rougher with the next one held. I know it. I am going anyway. Tell Never-Sold at her house in Blackrose that I am going, so she does not wait on a page."
+    ],
+    "facts": [
+     "fact.bc01.channel",
+     "fact.bc01.night-men"
+    ]
+   },
+   {
+    "variant": "fail",
+    "prompt": "(Speechcraft 30) Why wait? Leave now.",
+    "lines": [
+     "No. I have looked at that water for years and I am still standing here. Whoever is held after me would pay for my going. That one has done nothing to the estate.",
+     "Come back with better words and ask me again. Until then I will wait on the custom. Hulm-Tei may hear me say so."
+    ],
+    "facts": [
+     "fact.bc01.night-men"
+    ]
+   }
   ]
  }
 }
