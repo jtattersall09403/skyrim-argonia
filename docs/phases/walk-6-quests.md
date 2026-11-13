@@ -201,8 +201,9 @@ and the deliverability reader together), the author gathers all their findings a
 that answers them at once inside the ceiling, and the next round's fresh readers judge that set whole. No change is
 made for one reader alone. Each reader's persona is an honest player who is a little hard to please and says so
 plainly, not a critic paid to find fault.
-The vibe binds the rewrite (owner, 2026-11-12; [province-vibe](../../story/design/province-vibe.md)): no tallies, rolls,
-ledgers, paperwork, hearings or procedure; quests lean on doing things, of many kinds, anchored on the variety of
+The vibe binds the rewrite (owner, 2026-11-12; [province-vibe](../../story/design/province-vibe.md)): tallies, rolls,
+ledgers, paperwork, hearings and procedure are rare, kept for the few people, factions and places they truly belong
+to (the lead's judgement); quests lean on doing things, of many kinds, anchored on the variety of
 the game's skills, not only fighting. Any build can finish the main quest; each faction's line leans on its own
 skills.
 

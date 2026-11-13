@@ -538,3 +538,7 @@ added here the day they are made, with the date and the issue.
   quest turns on a document, a count, a hearing or a procedure; each turns on something the player does with a
   skill; the main quest can be finished by any build (each main quest offers ways through for different skills);
   each faction's line leans on that faction's own skills.
+- 2026-11-13 (in session, the vibe ruling softened): "Doesn't have to be absolutely *no* records or ledgers or
+  whatever, should just be at most a very small amount across the board. Might be some particular people or
+  factions or contexts where it's appropriate. Use your judgment". Records, rolls and paperwork are rare, kept for
+  the people, factions and places they truly belong to; the lead judges case by case.
