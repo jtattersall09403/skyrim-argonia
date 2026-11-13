@@ -1,5 +1,4 @@
 """The echo check and the briefs' 'Already said near you' (tools/argonia_world/echoes.py)."""
-import json
 from types import SimpleNamespace as NS
 
 from tools.argonia_world import echoes
