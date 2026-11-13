@@ -371,7 +371,7 @@ Korydon's channel landing.
 | Myroleon's chime-post | above the roofs, Myroleon (the record's) | used; nobody's | "Myroleon's Chime-Post": using it is striking it |
 | the false chime | on a stake standing in the water at the hummock's edge | takeable; nobody's | "Tin Chime (New Tin, Unstamped, Four Notches on the Tongue)" |
 | the Blackrose boat | at Myroleon's mooring | a locker, unlocked; nobody's | 25 gold and a pilot's small things; nothing of the quest |
-| Sheeva-Jul's draughts | given by the closing stage of one ending | | three of "Sheeva-Jul's Draught of the Still Reed", a vanilla draught of going unseen (the record writer names the form) |
+| Sheeva-Jul's draughts | given by the stage her "silent" line sets | | three of "Sheeva-Jul's Draught of the Still Reed", a vanilla draught of going unseen (the record writer names the form) |
 
 **The ways through.**
 
@@ -395,9 +395,9 @@ Korydon's channel landing.
 |---|---|---|---|
 | 0 | hidden start | | |
 | 10 | Haxara-Tei's line "Is there work for someone who walks?" (joins the order; gives 30 gold) | Haxara-Tei, First Keeper of the Waykeepers at Korydon, sent me to Myroleon, where the chime-post has stopped sounding for boats in the fog. I am to find why, and to see that it sounds again. | Go to Myroleon and find why its chime-post is silent (Sheeva-Jul; the post) |
-| 20 | Sheeva-Jul's line "Why is the post silent?" (moves on at once to 30 if the chime is already held) | Sheeva-Jul told me she stopped striking the post herself. Something struck her four strokes back out of the fog, a boat steered between the two sounds, and its pilot died on the rare-herb hummock, where a spriggan lives. | Find what answered the post, at the rare-herb hummock by Myroleon; or strike the post yourself (the chime; the post) |
+| 20 | Sheeva-Jul's line "Why is the post silent?" (moves on at once to 30 if the chime is already held) | Sheeva-Jul, who tends Myroleon's post, told me she stopped striking it herself. When she last struck her four strokes, something struck four back in the same voice from out in the fog, where there is no post. A boat steered between the two sounds, and its pilot died on the rare-herb hummock, where a spriggan lives. | Find what answered the post, at the rare-herb hummock by Myroleon; or strike the post yourself (the chime; the post) |
 | 30 | taking the false chime (open from 20) | I took a tin chime from a stake at the water's edge of the rare-herb hummock. It is new tin with no smith's stamp, and its tongue is cut with four notches. | Decide what Myroleon's post will do: tell Sheeva-Jul, or strike it yourself (her; the post) |
-| 50 | Sheeva-Jul's line "Keep it silent until we find who hung this" (at 30; she alive) | I told Sheeva-Jul to keep her post silent until whoever hung the false chime is found. | Tell Haxara-Tei (her) |
+| 50 | Sheeva-Jul's line "Keep it silent until we find who hung this" (at 30; she alive; gives three draughts) | I told Sheeva-Jul to keep her post silent until whoever hung the false chime is found. She gave me three of her draughts. | Tell Haxara-Tei (her) |
 | 55 | Sheeva-Jul's line "Strike again, but strike five, so that four is known for a lie" (at 30; she alive) | I told Sheeva-Jul to strike again, and to strike five from now on: a voice that only the keepers will teach. | Tell Haxara-Tei (her) |
 | 60 | using the chime-post (open from 10 until 50) | I took the mallet that hangs on Myroleon's chime-post and struck four strokes myself, as the First Keeper asked. | Tell Haxara-Tei (her) |
 | 90 | Haxara-Tei's line at 60 | I told Haxara-Tei that Myroleon sounds its four strokes again. | ends, completed |
@@ -438,11 +438,11 @@ stage 0 hidden
 stage 10 "Haxara-Tei, First Keeper of the Waykeepers at Korydon, sent me to Myroleon, where the chime-post has stopped sounding for boats in the fog. I am to find why, and to see that it sounds again." do join waykeepers, give-gold 30
 stage 20 "Sheeva-Jul, who tends Myroleon's post, told me she stopped striking it herself. When she last struck her four strokes, something struck four back in the same voice from out in the fog, where there is no post. A boat steered between the two sounds, and its pilot died on the rare-herb hummock, where a spriggan lives."
 stage 30 "I took a tin chime from a stake at the water's edge of the rare-herb hummock. It is new tin with no smith's stamp, and its tongue is cut with four notches."
-stage 50 "I told Sheeva-Jul to keep her post silent until whoever hung the false chime is found."
+stage 50 "I told Sheeva-Jul to keep her post silent until whoever hung the false chime is found. She gave me three of her draughts." do give herbal 3
 stage 55 "I told Sheeva-Jul to strike again, and to strike five from now on: a voice that only the keepers will teach."
 stage 60 "I took the mallet that hangs on Myroleon's chime-post and struck four strokes myself, as the First Keeper asked."
 stage 90 completed "I told Haxara-Tei that Myroleon sounds its four strokes again." do give-gold 150, rank waykeepers 1, set wk01.post 1, on boatman
-stage 91 completed "I told Haxara-Tei that Myroleon stays silent." do give-gold 75, rank waykeepers 1, set wk01.post 2, on stranded, give herbal
+stage 91 completed "I told Haxara-Tei that Myroleon stays silent." do give-gold 75, rank waykeepers 1, set wk01.post 2, on stranded
 stage 92 completed "I told Haxara-Tei that Myroleon strikes five now." do give-gold 150, rank waykeepers 1, set wk01.post 3, on raftmaster, on stranded
 stage 95 failed "Haxara-Tei is dead, and the Waykeepers have nobody to send me anywhere."
 
@@ -489,8 +489,8 @@ must-live haxara fails 95
 
 - *Four (90).* 150 gold. Found at Myroleon afterwards: Dar-Meesei, a Blackrose boatman, at the mooring, who buys
   pelts and sells arrows and says, "We heard four and came through." Sheeva-Jul: "They have my note still."
-- *Silent (91).* 75 gold from Haxara-Tei, and from Sheeva-Jul, through the closing stage, three Draughts of the
-  Still Reed, which is the most useful thing a walker of this line can carry. Found afterwards: nobody at
+- *Silent (91).* 75 gold from Haxara-Tei. Sheeva-Jul has already given three Draughts of the Still Reed, which
+  is the most useful thing a walker of this line can carry. Found afterwards: nobody at
   Myroleon's mooring; at Korydon's landing Okan-Shei, a Blackrose pole-hand whose boat will not go south blind, who
   tells anyone what the silence costs him.
 - *Five (92).* 150 gold. Found afterwards: Geel-Wan of Korydon at Myroleon's mooring, who was told the new count
