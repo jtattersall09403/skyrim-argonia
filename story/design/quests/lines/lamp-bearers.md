@@ -1612,7 +1612,7 @@ Nothing was added to make the word to Maros bite beyond what Asks-Twice says at 
 LB03 split (two names; two endings). LB02 and LB09 did not: every reader took the same option in each, though
 each made the other options' cases without strain. The changes above are aimed at exactly those two, and are
 unread. The deliverability reader found the steps reachable and seventeen faults, all answered but unread by a
-fresh reader. So the rule is not met.
+fresh reader. The answered version passes `sketch` with the reach walk: every stage and ending of the three cases is reached by an able character and by a new one with gold, after each ending of the case before. So the rule is not met.
 
 **For a third round to check.** Whether LB02 now splits among Keema-Tul, the mothers and no name, and LB09 among
 Waleesh, Varon and Asks-Twice. Whether eight cases with LB08 in two places is the right length. Whether the
