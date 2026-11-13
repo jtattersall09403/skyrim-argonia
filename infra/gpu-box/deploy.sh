@@ -54,6 +54,8 @@ step "controls" controls
 # A child powershell's failure (stack.ps1's throw, e.g. "Data is held by ...") does not reach ssh's exit code on its
 # own: the outer shell exits 0 unless it passes $LASTEXITCODE on. Without this the deploy said OK over a failed lay.
 step "stack on" "$run" ps 'powershell -ExecutionPolicy Bypass -File C:\argonia\infra\stack.ps1 on; if ($LASTEXITCODE) { exit $LASTEXITCODE }'
+# The walk's console batches (repro_a, repro_b) beside SkyrimSE.exe, with the laid load order's index; never fails the deploy.
+step "console batches" bash -c '"$0" || echo "console batches: failed; run infra/gpu-box/bodies_repro.sh"' "$here/bodies_repro.sh"
 # Community Shaders' cache for the laid card: laid from the archive of its key when the machine lacks it, archived when
 # the machine holds a compiled one the archive lacks. Never fails the deploy; a world-file-only deploy keeps the key.
 step "shader cache" bash -c '"$0" ensure && "$0" save || echo "shader cache: failed; the next deploy retries"' "$here/shader_cache.sh"

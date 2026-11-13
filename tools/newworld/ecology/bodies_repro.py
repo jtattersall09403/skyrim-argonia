@@ -68,12 +68,27 @@ def batches(found: dict, index: str) -> tuple[str, str]:
     return "\n".join(a + ["scof 0"]) + "\n", "\n".join(b + ["scof 0"]) + "\n"
 
 
+def load_index(lines: list[str], plugin: str = "ArgoniaNewWorld.esm") -> str:
+    """The plugin's load index from the machine's Plugins.txt as `name|header flags` lines: the five base files come
+    first, then every enabled full plugin with the master flag (0x1), then the rest, each group in file order; plugins
+    with the light flag (0x200) take no index."""
+    rows = [l.strip().rsplit("|", 1) for l in lines if "|" in l]
+    full = [(n, int(f)) for n, f in rows if not int(f) & 0x200]
+    order = [n for n, f in full if f & 1] + [n for n, f in full if not f & 1]
+    if plugin not in order:
+        raise SystemExit(f"{plugin} is not an enabled full plugin in the load order")
+    return f"{5 + order.index(plugin):02X}"
+
+
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("--esm", type=Path, default=ESM)
     ap.add_argument("--out", type=Path, default=REPO / "out/newworld/bodies_repro")
     ap.add_argument("--index", default="0A", help="ArgoniaNewWorld.esm's load index on the card (0A at walk 2)")
+    ap.add_argument("--load-order", type=Path, help="the machine's `name|flags` lines for Plugins.txt; sets --index from them")
     o = ap.parse_args(argv)
+    if o.load_order:
+        o.index = load_index(o.load_order.read_text().splitlines())
     found = nearest(o.esm)
     o.out.mkdir(parents=True, exist_ok=True)
     ta, tb = batches(found, o.index)
