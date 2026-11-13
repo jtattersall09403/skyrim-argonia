@@ -304,7 +304,7 @@ A coast voice naming him would make it the Owing. Deekum has told the League onl
 | Thing | Where | Lock, key, owner | Holds or says |
 |---|---|---|---|
 | Acra-Tiin's egg-basket | in the watch-leader's chest | the chest's | "Acra-Tiin's Egg-Basket": the prize |
-| the watch-leader's chest | on the platform (the record's "watch leader's chest on the platform") | Adept; the watch-leader's key; owned by Bimeesh-Tul | the basket, the rail-iron and 60 gold |
+| the watch-leader's chest | on the platform (the record's "watch leader's chest on the platform") | Adept; the watch-leader's key; owned by Bimeesh-Tul | the basket and 60 gold |
 | the watch-leader's key | carried by Bimeesh-Tul | his | opens the chest |
 
 **The ways through**, all open at once from the briefing.
@@ -337,7 +337,7 @@ A coast voice naming him would make it the Owing. Deekum has told the League onl
 | 33 | Bimeesh-Tul's line naming Deekum, Deekum alive | I named Deekum to Bimeesh-Tul. He said the basket in his chest is mine to take, and that his watch will fetch Deekum to work off an Owing. | the same |
 | 50 | taking the basket (open from 10) | I have Acra-Tiin's egg-basket. | Bring the egg-basket to Oshu-Kai (him) |
 | 90 | Oshu-Kai's line, the basket held | I gave Oshu-Kai Acra-Tiin's egg-basket. | ends, completed |
-| 91 | Oshu-Kai's line, the basket held and Deekum named: tried first | I gave Oshu-Kai Acra-Tiin's egg-basket. Deekum has gone to Xal-Tarek to work off his Owing. | ends, completed |
+| 91 | Oshu-Kai's line, the basket held, Deekum named and alive: tried first | I gave Oshu-Kai Acra-Tiin's egg-basket. Deekum has gone to Xal-Tarek to work off his Owing. | ends, completed |
 | 95 | Oshu-Kai dead | Oshu-Kai is dead, and the League of Open Water has nobody to send me. | ends, failed, with the faction's message |
 
 Stages 30 to 33 each give the player ownership of the chest, so the basket is taken without a theft. A player who
@@ -363,13 +363,13 @@ thing basket in chest "Acra-Tiin's egg-basket"
 
 stage 0 hidden
 stage 10 "Oshu-Kai of the League of Open Water asked me to win back Acra-Tiin's egg-basket. The Mine-Burner watch at Xal-Tarek took it from the boat of Deekum, the village's boatman, and keeps it in the watch-leader's chest." do join league
-stage 30 "I closed the wound of Geem-Ra, the hurt watcher. Bimeesh-Tul, the watch-leader, said the basket in his chest is mine to take." do own chest, set lw01.leave 1, regard leader 2
-stage 31 "I talked Bimeesh-Tul round. He said the basket in his chest is mine to take." do own chest, set lw01.leave 1
-stage 32 "I paid Bimeesh-Tul the blood-price for his hurt watcher. He said the basket in his chest is mine to take." do take-gold 250, own chest, set lw01.leave 1
+stage 30 "I closed the wound of Geem-Ra, the hurt watcher. Bimeesh-Tul, the watch-leader, said the basket in his chest is mine to take." do own chest, set lw01.leave 1, set lw01.way 1, regard leader 2
+stage 31 "I talked Bimeesh-Tul round. He said the basket in his chest is mine to take." do own chest, set lw01.leave 1, set lw01.way 2
+stage 32 "I paid Bimeesh-Tul the blood-price for his hurt watcher. He said the basket in his chest is mine to take." do take-gold 250, own chest, set lw01.leave 1, set lw01.way 3
 stage 33 "I named Deekum to Bimeesh-Tul. He said the basket in his chest is mine to take, and that his watch will fetch Deekum to work off an Owing." do own chest, set lw01.leave 1, set lw01.named 1
 stage 50 "I have Acra-Tiin's egg-basket."
-stage 90 completed "I gave Oshu-Kai Acra-Tiin's egg-basket." do take basket, give-gold 150, rank league 1
-stage 91 completed "I gave Oshu-Kai Acra-Tiin's egg-basket. Deekum has gone to Xal-Tarek to work off his Owing." do take basket, give-gold 150, rank league 1, off deekum, on deekum2
+stage 90 completed "I gave Oshu-Kai Acra-Tiin's egg-basket." do take basket, give-gold 150, join league, rank league 1
+stage 91 completed "I gave Oshu-Kai Acra-Tiin's egg-basket. Deekum has gone to Xal-Tarek to work off his Owing." do take basket, give-gold 150, join league, rank league 1, off deekum, on deekum2
 stage 95 failed "Oshu-Kai is dead, and the League of Open Water has nobody to send me."
 
 objective 10 at 10 "Win back Acra-Tiin's egg-basket from the watch at Xal-Tarek" -> leader, hurt, deekum, basket
@@ -386,8 +386,11 @@ line heal hurt at 10 ask "Let me see that wound." if skill Restoration 25, alive
 line talk leader at 10 ask "The eggs dug nothing." if skill Speech 40 -> 31 else "Eggs in a thief's boat are a thief's eggs until someone pays." says "he gives leave"
 line pay leader at 10 ask "What is the blood-price?" if gold 250 -> 32 else "Two hundred and fifty, in coin. We have iron." says "he takes the coin and gives leave"
 line name leader at 10 ask "It was Deekum of Acra-Tiin who carried the eggs." if alive deekum -> 33 says "then the watch will fetch him, and the basket is yours"
-line hand1 oshu at 50 ask "Here is Acra-Tiin's basket." if holds basket, number lw01.named = 1 -> 91 says "he takes it; a boatman for a clutch"
-line hand2 oshu at 50 ask "Here is Acra-Tiin's basket." if holds basket -> 90 says "he takes it, and asks how"
+line hand1 oshu at 50 ask "Here is Acra-Tiin's basket." if holds basket, number lw01.named = 1, alive deekum -> 91 says "he takes it; a boatman for a clutch"
+line hand2 oshu at 50 ask "Here is Acra-Tiin's basket." if holds basket, number lw01.way = 1 -> 90 says "he takes it; they will tell that one at Jarecai"
+line hand3 oshu at 50 ask "Here is Acra-Tiin's basket." if holds basket, number lw01.way = 2 -> 90 says "he takes it; then they can be talked to"
+line hand4 oshu at 50 ask "Here is Acra-Tiin's basket." if holds basket, number lw01.way = 3 -> 90 says "he takes it; we have paid them again"
+line hand5 oshu at 50 ask "Here is Acra-Tiin's basket." if holds basket -> 90 says "he takes it, and does not ask how"
 line owing deekum2 at 91 ask "How long do they keep you?" says "a season, hauling their nets"
 line train leader at 90-91 ask "Will you teach me the bow?" if number lw01.leave = 1 says "he will, to one his post gave leave"
 
@@ -484,9 +487,10 @@ overseer's post: a long one and a short one.
   3. *The gift*: the League's salt, which she takes as the toll of someone who came properly. It is then not
      in the pack at Jarecai.
   4. *No key*: the grate's lock, Adept (Lockpicking). The cut is no one's law.
-- *The shaft*. Oleed-Mei, at the edge, says where the vents flare and that the dead are slow and burn what they
-  touch; with Restoration 25 his burnt hand is eased, and he adds which side of the floor the overseer never
-  leaves. Then down: unseen along the wall (Sneak); with the dead turned (Restoration) or put down (a weapon
+- *The shaft*. Oleed-Mei, at the edge, says that the dead are slow and burn what they touch, that the overseer
+  keeps to the post's side of the floor, and that the dark wall on the other side goes all the way down; with
+  Restoration 25 his burnt hand is eased, and he adds where on that wall the vents flare. A new character has
+  one honest way, the wall (a need of the place), and both he and his mother say so. Then down: unseen along the wall (Sneak); with the dead turned (Restoration) or put down (a weapon
   skill, Destruction; fire does little to them); the overseer stands by the post and need not be fought to
   reach the nails by anyone who can pass him.
 - *The boy's nail*. Oleed-Mei, speaking first: "There are two of my mother's left in that post. You are going
@@ -506,7 +510,7 @@ overseer's post: a long one and a short one.
 | 30 | taking the long nail (open from 20; at once if already held) | I drew a long mine-nail from the overseer's post in the vent shaft of Ashfall Cut. | Bring the nail to Wuleen-Tei (her; Oleed-Mei) |
 | 40 | Oleed-Mei's line, the short nail held (takes it) | I gave Oleed-Mei the short mine-nail from the overseer's post. He will tell his mother he drew it. | Bring the nail to Wuleen-Tei (her) |
 | 90 | Wuleen-Tei's line at 30, the long nail held | Wuleen-Tei knotted my nail with Deshaa Post's cord. I have stood at a burned mouth, and the stakes of Jarecai will open to me. | ends, completed |
-| 91 | her line at 40, the long nail held | Wuleen-Tei knotted my nail with Deshaa Post's cord, and her son's beside it. I have stood at a burned mouth. Oleed-Mei is to stand a watch at the Banu-Veeth chain. | ends, completed |
+| 91 | her line at 40, the long nail held | Wuleen-Tei knotted my nail with Deshaa Post's cord. I have stood at a burned mouth. She says her son came in ahead of me with a nail of his own, and has gone up the channel to stand a watch at the Banu-Veeth chain. | ends, completed |
 | 92 | her line at 30, "Your son is standing at the edge of the cut", the long nail held, Oleed-Mei alive | Wuleen-Tei knotted my nail with Deshaa Post's cord. I have stood at a burned mouth. I told her that her son stands at the edge of the cut and has not gone down. | ends, completed |
 | 95 | Oshu-Kai dead | Oshu-Kai is dead, and the League of Open Water has nobody to send me. | ends, failed, with the faction's message |
 | 96 | Wuleen-Tei dead | Wuleen-Tei is dead, and nobody at Deshaa Post will knot a townsman's nail. | ends, failed |
@@ -546,7 +550,7 @@ stage 27 "I gave Wuleen-Tei the League's salt, and she gave me the key to the gr
 stage 30 "I drew a long mine-nail from the overseer's post in the vent shaft of Ashfall Cut."
 stage 40 "I gave Oleed-Mei the short mine-nail from the overseer's post. He will tell his mother he drew it." do take nail2, set lw02.boy 1
 stage 90 completed "Wuleen-Tei knotted my nail with Deshaa Post's cord. I have stood at a burned mouth, and the stakes of Jarecai will open to me." do take nail, give corded, rank league 2
-stage 91 completed "Wuleen-Tei knotted my nail with Deshaa Post's cord, and her son's beside it. I have stood at a burned mouth. Oleed-Mei is to stand a watch at the Banu-Veeth chain." do take nail, give corded, rank league 2, off boy, on boy2
+stage 91 completed "Wuleen-Tei knotted my nail with Deshaa Post's cord. I have stood at a burned mouth. She says her son came in ahead of me with a nail of his own, and has gone up the channel to stand a watch at the Banu-Veeth chain." do take nail, give corded, rank league 2, off boy, on boy2
 stage 92 completed "Wuleen-Tei knotted my nail with Deshaa Post's cord. I have stood at a burned mouth. I told her that her son stands at the edge of the cut and has not gone down." do take nail, give corded, rank league 2, set lw02.boy 2
 stage 95 failed "Oshu-Kai is dead, and the League of Open Water has nobody to send me."
 stage 96 failed "Wuleen-Tei is dead, and nobody at Deshaa Post will knot a townsman's nail."
@@ -556,15 +560,15 @@ objective 20 at 20, 25, 26, 27 "Draw a long mine-nail from the overseer's post i
 objective 30 at 30, 40 "Bring the nail to Wuleen-Tei" -> keeper, boy
 
 line job1 oshu at 0 ask "What does the League want next?" if done LW01 90 -> 10 says "the gate is shut; the trial; Deshaa Post; the salt"
-line job2 oshu at 0 ask "What does the League want next?" if done LW01 91 -> 10 says "the gate is shut; the trial; Deshaa Post; the salt; they have Deekum's back and still shut the gate"
+line job2 oshu at 0 ask "What does the League want next?" if done LW01 91 -> 10 says "the gate is shut; the trial; Deshaa Post; the salt; you gave them a name and the gate is shut all the same"
 line trial keeper at 10 ask "I have come to stand at a burned mouth." -> 20 says "the cut, the grate, the overseer's post, a long nail of hers; her son is out by the cut"
-line hail boy first at 10-30 ask "What are you doing here?" says "two of his mother's nails are left; bring him the short one and neither saw the other"
-line burn boy at 10-30 ask "Let me see your hand." if skill Restoration 25 else "It is nothing. A vent." says "the hand eased; which side of the floor the overseer never leaves"
+line hail boy first at 10-30 ask "What are you doing here?" says "the dead are slow; the overseer keeps to the post; the dark wall goes all the way down; two of his mother's nails are left: bring him the short one and neither saw the other"
+line burn boy at 10-30 ask "Let me see your hand." if skill Restoration 25 else "It is nothing. A vent." says "the hand eased; where on the dark wall the vents flare"
 line keytalk keeper at 20 ask "Anyone may stand where anyone may burn. Give me the key." if skill Speech 35 -> 25 else "A townsman's tongue. Keep it for the elders." says "she gives the key"
 line keybuy keeper at 20 ask "What is the toll for the key?" if gold 150 -> 26 else "A hundred and fifty. The road has a toll and the cut is on the road." says "she takes the coin and gives the key"
 line keygift keeper at 20 ask "The League sends salt." if holds gift -> 27 says "she takes it as a toll properly paid, and gives the key"
-line give boy at 30 ask "Here is the short nail." if holds nail2 -> 40 says "he takes it and cannot look at it"
-line hand1 keeper at 40 ask "I drew this from the overseer's post." if holds nail -> 91 says "she knots it; her son has come home with his; he goes to the chain"
+line give boy at 30 ask "Here is the short nail." if holds nail2 -> 40 says "he takes it and cannot look at it; he will go home by the reeds, ahead of the envoy"
+line hand1 keeper at 40 ask "I drew this from the overseer's post." if holds nail -> 91 says "she knots it; her son came in ahead with his, and she has sent him to the chain"
 line tell keeper at 30 ask "Here is my nail. Your son is standing at the edge of the cut." if holds nail, alive boy -> 92 says "she knots it and says nothing for a while"
 line hand2 keeper at 30 ask "I drew this from the overseer's post." if holds nail -> 90 says "she knots it"
 line chainboy boy2 at 91 ask "How is the chain?" says "he does not sleep"
@@ -656,6 +660,7 @@ quests' are what their outlines will ask.
 | a standing place by the charred token-post where the cut begins, out of reach of the cut's dead, and at least 18,000 units in a straight line from Wuleen-Tei's place at Deshaa Post | LW02 | Oleed-Mei speaks first; he is switched off from Deshaa in one ending | the charred post with the token is the record's and stands where the road meets the cut; he walks up and speaks |
 | an iron grate that locks, shutting the way into the vent shaft, and the shaft as an inside behind it (the source has one) | LW02 | opened by key or pick; the dead of the shaft are beyond it | the grate shows "Ashfall Cut, Vent Shaft"; Wuleen-Tei names it, and the nail's marker leads through it |
 | at the bottom of the shaft, a thick charred post with a chain on it and nails driven into it, with floor to stand on beside it; the overseer's place two or three paces off | LW02 | the two nails are drawn | the only post in the shaft, bristling with nails; the two that can be taken show "Long Mine-Nail" and "Short Mine-Nail"; the long one is marked |
+| a way down the shaft along one wall, in shadow, by which a careful player can reach the post unseen by the dead on the floor | LW02 | the way a new character draws the nail | Oleed-Mei says "the dark wall, away from the post"; it is the unlit side of the shaft |
 | the shaft and the cut owned by nobody | LW02 | picking the grate and taking the nails are no crime | no warning is shown |
 
 **Banu-Veeth Post**
