@@ -68,7 +68,7 @@ and each also has a plain way (a lock picked, a fight, a run through the fire) t
   neither proves nor needs: sick ground is ground where Argonians were owned ([consistency](consistency.md) T15).
 - **Tedryn Orvayn** (X), the "visiting Dunmer scholar [who] wants to buy the secret of the Agaceph's freezing
   spell" (D okuwun-rahei, Yulca: hooks), of Stormhold's Dunmer, who "keep their ancestors" (D valley-of-storms,
-  Stormhold: faith). He holds that the Velothi halls are his people's graves, lying six hundred years without a
+  Stormhold: faith). He holds that the Velothi halls are his people's graves, lying near a thousand years without a
   rite, and that he is the only living person asking after them.
 - **The buyers.** The Synod has no hall in the province and works "through buyers, commissions and third parties",
   hunting "artefacts of great magical power" (`topics/guilds-and-orders.md:80`, `:100`). Its buyer here is **Livia
@@ -157,8 +157,8 @@ people thinks is its own was learnt in a dead master's house, until the proof is
 
 | Rank | Given at | What it opens that the player can go and use |
 |---|---|---|
-| Borrower | the end of SA01 | membership; the readers sell their tomes; the hall's enchanting table may be used; the Borrower's Shelf, a chest on the hall's landing restocked for a Borrower (in two of SA01's endings at once, in the third from the end of SA03) |
-| Copyist | the end of SA03 | the Borrower's Shelf for everyone; Reader Ocan sells filled soul gems and teaches Enchanting. "Copyist" is the hall's old word for one trusted at the table, and nobody says where the word came from (a seed of the turn) |
+| Borrower | the end of SA01 | membership; the next job; the Borrower's Shelf, a chest on the hall's landing restocked for a Borrower (in two of SA01's endings at once, in the third from the end of SA03) |
+| Copyist | the end of SA03 | the Borrower's Shelf for everyone; two filled soul gems and an Enchanting skill book from Ocan's table; the next job. "Copyist" is the hall's old word for one trusted at the table, and nobody says where the word came from (a seed of the turn) |
 | Reader | the end of SA05 | the first outsider called a reader: one of the two forms of the hall's own spell, by what was done with the founders' tablets; the next job |
 | the mat | one ending of SA06 | the eldest's place: the book hall's inner room as the player's home, with its bed and chest (ruled to stay, [consistency](consistency.md) S15: it is a room the player can use the next day) |
 
@@ -182,8 +182,8 @@ player walks a silent hall. Otherwise the door is a Master lock, and behind it t
 skeletal guards and ancestor ghosts on Deadly ground (D okuwun-rahei, Sethiral: dangers), for Restoration, a
 summoned ally or a weapon. Either way the player finds the inner face of the door scored by hands, the household's
 dead lying at the door and not in their beds, and at the shrine five collars cut for needle necks. The lord stands
-at the shrine and speaks first; he is not placed hostile. He takes the player for the door-ward's hand, come six
-hundred years late with the five; he tells the house's side in his own words (they were fed, lettered and of the
+at the shrine and speaks first; he is not placed hostile. He takes the player for the door-ward's hand, come near a
+thousand years late with the five; he tells the house's side in his own words (they were fed, lettered and of the
 household; five for forty was a fair price), names the Stilling as his house's door-spell, and asks to be let up
 the stair. He says what he will give for it before the player answers. *The turn:* Yaxil-Ca, told, says it
 plainly: "We did not come to empty halls. We emptied one." Everything before reads differently: the kind truth she
@@ -206,10 +206,11 @@ and "an Agaceph rafter has gone missing and the fishers found his raft empty" (D
 Anvadas, whose "sealed vault door opens only to the right family tablet", carried off "into the marsh" (D
 okuwun-rahei, Anvadas: hooks). *What the player does:* reads the prow's bearing with Yaxil-Ca, now that both know
 what it is, and follows it to the stones: a dive to a sunk stone coffer on a drowned stair, crocodiles and
-slaughterfish in the shallows (D okuwun-rahei, Gaweja: gives), and beside it Ocuil's satchel, which holds what his
-body would (a body cannot be placed): the lord's family tablet and his own slate, scratched under water in his last
-hour. The founders set a ward on a stand over the coffer as the Ayleids did at Joxhi; it held him at the lid, and
-an Argonian does not drown. Hecal is the one to whom the slate is carried, and with it in hand she tells what her
+slaughterfish in the shallows (D okuwun-rahei, Gaweja: gives), under a ward on a stand that the founders set over it
+as the Ayleids did at Joxhi. The lord's family tablet is in the coffer, where the founders sank it. Beside the coffer
+lies Ocuil's satchel, which holds what his body would (a body cannot be placed): his own slate, scratched under water
+in his last hour. He never got the lid up: the ward held him at it, and an Argonian does not drown. Hecal is the one
+to whom the slate is carried, and with it in hand she tells what her
 pupil worked out about the founders' locks (free to a player with Enchanting 40, who can follow it, and otherwise
 two scrolls of a ward spell for the asking). On the bank waits the "stranger [who] digs the shallows by night", a
 digger in Tedryn's pay, who is not placed hostile: he is paid off, talked round, walked past under Illusion, or
@@ -227,14 +228,15 @@ there, or it is let fall into the well unread. Reading it closes the well: what 
 Three people have argued the choice before the player ever reaches the vault, and none of them is handed
 anything. Yaxil-Ca wants the five sunk where nobody will read them, and says what she will give for it. Hecal
 wants them read, so that the first names the tribe ever had are said aloud at the next hatching, and says what
-that will cost the player at the hall. Tedryn, if he lives, wants the vault left open: "they were of the household,
-and I would sooner my cousins' house had heirs than none"; the vault stays open either way, and he is found there
-afterwards among his cousins' tablets (a second placement).
+that will cost the player at the hall. Tedryn asks nothing of the choice. He wants only the kin's own tablets, which
+nobody else does: "they were of the household, and I would sooner my cousins' house had heirs than none". The vault
+stays open whatever is done, and if he lives he is found there afterwards among them (a second placement, switched on
+by the report).
 
 | Outcome | What the player gains in play | What they lose or can no longer get | Who pays, and where the player sees it | The form results that build it |
 |---|---|---|---|---|
-| **Read** at the vault | each tablet bears its servant's mark and name, and the five in order are the weave: the player learns **the Door-Ward's Mark** (a copy of Magic Expanded's rune of paralysis, `000A7B:Magic.esp`), the founders' own casting, set on a threshold; Hecal, told the names, raises the player's Restoration by 3 | the Stilling as the hall casts it, which Yaxil-Ca will not now teach: "You have the founders' own. You will not have ours as well" | Yaxil-Ca; the five names are said at the next hatching, and Ocan and Hecal each greet the player by what they heard | a `use` (read) trigger on the bundle sets the stage; `teach_spell`; the report gives the rank of Reader; Hecal's line, gated on the stored number, moves a stage with `raise_skill` Restoration 3 |
-| **Sunk** unread | Yaxil-Ca teaches **the Stilling** (a copy of Paralyze, `05AD5F:Skyrim.esm`), which the hall has never given an outsider, and gives the eldest's own reading-ring, a unique (a `template_item` on a load-order ring of Illusion) | the founders' Mark; Hecal's teaching: she sells and teaches the player nothing from now on, and says why in one line | Hecal, on the hall's landing; the tribe, which will never have its first names | a `use` trigger on the well, open only while the bundle is unread, sets the stage and takes the bundle; `teach_spell`, `give_item` at the report; Hecal's trading lines gated on the stored number |
+| **Read** at the vault | each tablet bears its servant's mark and name, and the five in order are the weave: the player learns **the Door-Ward's Mark** (a copy of Magic Expanded's rune of paralysis, `000A7B:Magic.esp`), the founders' own casting, set on a threshold; Hecal's thanks, given through the report: Restoration raised by 3 | the Stilling as the hall casts it, which Yaxil-Ca will not now teach: "You have the founders' own. You will not have ours as well" | Yaxil-Ca; the five names are said at the next hatching, and Ocan and Hecal each greet the player by what they heard | a `use` (read) trigger on the bundle, open from the stage its take sets, sets the stage; `teach_spell`; the report's ending gives the rank of Reader and `raise_skill` Restoration 3 |
+| **Sunk** unread | Yaxil-Ca teaches **the Stilling** (a copy of Paralyze, `05AD5F:Skyrim.esm`), which the hall has never given an outsider, and gives the eldest's own reading-ring, a unique (a `template_item` on a load-order ring of Illusion) | the founders' Mark; Hecal's thanks and her Restoration; she says why in one line, gated on the stored number | Hecal, on the hall's landing; the tribe, which will never have its first names | a `use` trigger on the well, open from the stage the bundle's take sets and closed by its reading, sets the stage and takes the bundle; `teach_spell`, `give_item` at the report |
 
 *Skills:* Alteration for the dive and the coffer's ward, Enchanting with Hecal, Illusion or Speech on the bank,
 Restoration against the dead, Speech with the steward. *Carries on:* `sa05.five` (read, sunk); the rank of Reader;
@@ -276,16 +278,19 @@ player goes in; so does Xoh-Reesha, in her own words, when she asks for the prom
 
 | Outcome | What the player gains in play | What they lose or can no longer get | Who pays, and where the player sees it | The form results that build it |
 |---|---|---|---|---|
-| **Left on its stand**, and the readers told | the reed people's gate stands unlocked to the player for good; Tuzeel-Ma's weir gives a bed and trades its catch; Xoh-Reesha, if she lives, greets the player as one who kept a word (her Archery teaching, D barsaebica, Jal-Veesa: gives, stays open); Hecal stays on the landing and goes on teaching | the mat and its room; a book of the hall's own; Ocan's school | the hall hears the last leaf, half believes it and goes on borrowing; Ocan says the player threw away the hall's future on a promise to reed-cutters | Yaxil-Ca's line, with no book held; `unlock_door` the gate; `give_ownership` of the weir's bed chest |
-| **Carried home, and the mat taken** | the hall begins to write: a book of the hall's own stands on the landing (switched on from inside the hall); Yaxil-Ca offers her place, and the book hall's inner room becomes the player's home with its bed and chest; Ocan's first pupils come, and he sells the Master tomes he would not stock before (a second placement) | Hecal, who will not sit on the founders' mat beside an outsider: she is found at Icalca afterwards and teaches nobody; the reed people's gate, bed and trade, if a promise was broken or the gate was passed by stealth | Hecal; Xoh-Reesha and Tuzeel-Ma, whose lines to the player are shut by a stored number (never hostile: Jal-Veesa is the main quest's) | Yaxil-Ca's line takes the book; `own_room` the inner room; `switch_on` the landing's book and Ocan's second placement; `switch_off` Hecal at Yulca and `switch_on` at Icalca; `lock_door` the gate |
-| **Carried home, and the mat refused** | the hall writes; Hecal stays and teaches; Yaxil-Ca gives her own table-glass, a unique (a `template_item` on a load-order circlet of Enchanting) | the room; the reed people, as above | the reed people | Yaxil-Ca's second answer; `give_item`; the same switches without Hecal's |
-| **Sold to Maelle Jurard** at the creek | 3,000 gold and **the Fenlord's Leash** (a copy of Magic Expanded's Command Undead, `000A53:Magic.esp`), taught on the spot: what the College does with the dead | the hall, entirely: Yaxil-Ca gives no further work, the Shelf is shut and the readers sell the player nothing; the reed people, as above | everyone at Yulca; the line ends with its patron alive and done with the player | Maelle's line takes the book; `teach_spell`; `leave_faction`; the hall's lines gated on the stored number |
+| **Left on its stand**, and the readers told | the reed people's gate stands unlocked to the player for good, and a bed and its chest on the weir's platform are theirs; Tuzeel-Ma teaches **the Weir-Walk**, how his people cross their own water (a copy of Magic Expanded's water walking, `000A9B:Magic.esp`), Alteration; Hecal stays on the landing | the mat and its room; a book of the hall's own; Ocan's school | the hall hears the last leaf, half believes it and goes on borrowing; Ocan says the player threw away the hall's future on a promise to reed-cutters | Yaxil-Ca's line, with no book held; `unlock_door` the gate; `give_ownership` of the weir's bed chest; `teach_spell` |
+| **Carried home, and the mat taken** | the hall begins to write: a book of the hall's own stands on the landing (switched on from inside the hall); Yaxil-Ca offers her place, and the book hall's inner room becomes the player's home with its bed and chest; the eldest's chest holds two Master tomes of the hall's school, which are the player's with the room | Hecal, who will not sit on the founders' mat beside an outsider: she is found at Icalca afterwards; the reed people's gate, bed and Weir-Walk, if a promise was broken or the gate was passed by stealth | Hecal; Xoh-Reesha and Tuzeel-Ma, whose lines to the player are shut by a stored number (never hostile: Jal-Veesa is the main quest's) | Yaxil-Ca's line takes the book; `own_room` the inner room; `switch_on` the landing's book; `switch_off` Hecal at Yulca and `switch_on` at Icalca; `lock_door` the gate |
+| **Carried home, and the mat refused** | the hall writes; Hecal stays; Yaxil-Ca gives her own table-glass, a unique (a `template_item` on a load-order circlet of Enchanting) | the room; the reed people, as above | the reed people | Yaxil-Ca's second answer; `give_item`; the same switches without Hecal's |
+| **Sold to Maelle Jurard** at the creek | 3,000 gold and a Master tome of Conjuration from her own chest | the hall, entirely: Yaxil-Ca gives no further work and no gift, and the player is put out of the hall; the reed people, as above | everyone at Yulca; the line ends with its patron alive and done with the player | Maelle's line takes the book; `give_gold`, `give_item`; `leave_faction` |
 
-*The Fenlord,* whichever of those is chosen. Ended (a Deadly fixed fight): the reed people's dead go home, and
-their gate, bed and trade are the player's even over a broken promise, which Tuzeel-Ma says in so many words; the
-tomb's hoard, with a unique circlet of the existing Ayleid kind; and Maelle is gone from the creek with her tomes
-(switched off), since what she camped for is dust. Kept: Maelle stays as a seller of Conjuration tomes for as long
-as he walks, and the guardians walk with him. *Skills:* every school of the line in its fullest use, and Speech or
+*The Fenlord,* whichever of those is chosen, is a second choice with its own price, said by Tuzeel-Ma on one side and
+Maelle on the other before the player goes in. **Ended** (a Deadly fixed fight, the hardest in the line): the reed
+people's dead go home; the tomb's hoard, with a unique circlet of the existing Ayleid kind; and Maelle is gone from
+the creek the next time the player reports at Yulca (switched off by that line), since what she camped for is dust. It
+does not mend a broken promise: the gate, the bed and the Weir-Walk are for a word kept. **Kept**, and Maelle told so:
+she teaches **the Fenlord's Leash** (a copy of Magic Expanded's Command Undead, `000A53:Magic.esp`), what the College
+does with the dead, and stays at the creek; the guardians walk on, and Tuzeel-Ma has one line for the player about it.
+*Skills:* every school of the line in its fullest use, and Speech or
 Sneak for the reed people. *Carries on:* what the hall becomes; how the reed people treat the player.
 
 **What the line leaves out of the first design, and keeps.** The Conclave of Baal has left the line and Gemin is
@@ -347,7 +352,8 @@ to Yaxil-Ca in the book hall, before any job, four optional lines, each two or t
   the ones who wrote down how."
 - *the dead halls*: who built in stone here and how each died: the white-stone elves, three thousand years gone,
   who kept our kind as slaves and left one hall in the far north-west "that is said to fetch its own books"; the
-  grey elves, northern cousins of the Dunmer who settled this coast, dead of a flu "that never touched us"; the
+  grey elves, northern cousins of the Dunmer who settled this coast, dead of a flu near a thousand years ago "that
+  never touched us"; the
   priests of Mara "of swamp rot, in a month". "The tree peoples call those halls sick ground and stake them round.
   We call them shelves."
 - *borrowing*: what the readers want of the player and why them: "We read. We do not dig. We send someone who can
@@ -428,7 +434,7 @@ needs neither a fight nor the key held against him.
 | 0 | hidden start; the job is offered while Yaxil-Ca lives | | |
 | 10 | Yaxil-Ca's line "What do you want borrowed?" (gives the tome and a draught of waterbreathing) | the job, the way and the choice to come | Bring the lamp, and whatever lies with it, out of the cell (the lamp, the daybook); Xocin has the key (her) |
 | 12, 13 | Xocin's key lines at 10: Restoration 40 or Speech 30 (12); 100 gold left with her (13) | Xocin gave me the key | as at 10 |
-| 20 | taking the daybook (open from 10) | I took a book wrapped in oilskin; its last line asks that the words be said at the chapel's altar | the lamp; the chapel's altar (it) |
+| 20 | taking the daybook (open from 10) | I took a book wrapped in oilskin: a priest's daybook, with a rite written inside its cover | the lamp; the chapel's altar (it) |
 | 22, 23 | the same key lines at 20, for a player who has no key yet | as 12, 13 | as at 20 |
 | 30 | using the chapel's altar (open from 20 until 40) | I said the words at the altar of his chapel | Bring the lamp to Xocin (her) |
 | 40 | Xocin's line, the lamp held (takes it, gives 150 gold; open from 10) | I gave Xocin the bronze lamp | Report to Yaxil-Ca (her); Xocin, about the daybook (her) |
@@ -445,7 +451,9 @@ The key's stages are doubled (12 and 22, 13 and 23) because a stage only climbs:
 through the bars first can still ask for the key. At 40 Xocin, who knows something else lay by the lamp, asks what
 else was in the cell; the player who holds the daybook hears her case and Yaxil-Ca's before giving it to either.
 A player who says only "The lamp is out of the cell" while holding the daybook keeps it: it is then a book in
-their pack, and nobody asks again. The three endings reached with Xocin alive switch on the lamp, lit, at the door
+their pack, and nobody asks again: it is the default of a player who never looked on the ledge, not a third side. The
+sketch leaves out the fixed contents of the coffer and the shelf, which the things table gives. The three endings
+reached with Xocin alive switch on the lamp, lit, at the door
 of her book house, far from the hall; the two reached with her dead do not, and nothing is said of where the lamp
 is.
 
@@ -483,7 +491,7 @@ stage 0 hidden
 stage 10 "Yaxil-Ca of the book hall asked me to fetch a bronze lamp for Xocin of Hirecan from the cell under the old chapel downriver of that hamlet: down the chapel's stair, through the water, to a barred grille with the last priest behind it. Anything else in the cell is to come to Yaxil-Ca unread. Xocin has the grille's key." do give tktome, give breath
 stage 12 "Xocin gave me the key to the cell under the chapel." do give cellkey, set sa01.key 1
 stage 13 "I left a hundred gold with Xocin against the cell door, and she gave me its key." do take-gold 100, give cellkey, set sa01.key 1
-stage 20 "I took a book wrapped in oilskin from the ledge beside the lamp. Its last line asks that the words inside its cover be said at the chapel's altar, over the cell."
+stage 20 "I took a book wrapped in oilskin from the ledge beside the lamp: a priest's daybook, with a rite written inside its cover."
 stage 22 "Xocin gave me the key to the cell under the chapel." do give cellkey, set sa01.key 1
 stage 23 "I left a hundred gold with Xocin against the cell door, and she gave me its key." do take-gold 100, give cellkey, set sa01.key 1
 stage 30 "I said the words from the priest's daybook at the altar of his chapel." do off aurel, on robe, unlock grille, skill-up Restoration 2, set sa01.rite 1
@@ -509,10 +517,10 @@ line pays yaxil at 0-45 ask "What does it pay, and why might I not?" says "the B
 line job yaxil at 0 ask "What do you want borrowed?" -> 10 says "the lamp for Xocin; the stair, the water, the grille, the priest; whatever else is in the cell comes to her unread; Xocin will ask for it, and each of them will pay in her own coin and shut her own door; a tome of Telekinesis, because there are bars"
 line keyr xocin at 10 ask "I can put the dead down. Give me the key." if skill Restoration 40 -> 12 else "My forebear locked that door from outside. Whatever her reason was, it has not gone away." says "she gives the key"
 line keys xocin at 10 ask "That door will be shut again behind me. Give me the key." if skill Speech 30 -> 12 else "My forebear locked that door from outside. Whatever her reason was, it has not gone away." says "she gives the key"
-line keyg xocin at 10 ask "What would you want left with you against the door?" if gold 100 -> 13 else "A hundred, and it is yours again when the door is shut." says "she takes the coin and gives the key"
+line keyg xocin at 10 ask "What would you want left with you against the door?" if gold 100 -> 13 else "A hundred, and the key is yours." says "she takes the coin and gives the key"
 line keyr2 xocin at 20 ask "I can put the dead down. Give me the key." if skill Restoration 40, number sa01.key = 0 -> 22 else "My forebear locked that door from outside. Whatever her reason was, it has not gone away." says "she gives the key"
 line keys2 xocin at 20 ask "That door will be shut again behind me. Give me the key." if skill Speech 30, number sa01.key = 0 -> 22 else "My forebear locked that door from outside. Whatever her reason was, it has not gone away." says "she gives the key"
-line keyg2 xocin at 20 ask "What would you want left with you against the door?" if gold 100, number sa01.key = 0 -> 23 else "A hundred, and it is yours again when the door is shut." says "she takes the coin and gives the key"
+line keyg2 xocin at 20 ask "What would you want left with you against the door?" if gold 100, number sa01.key = 0 -> 23 else "A hundred, and the key is yours." says "she takes the coin and gives the key"
 line why xocin at 10-30 ask "Why does a lamp matter?" says "her forebear Tuma carried it for the priests and never went back for it, kept the key and never said why; the family tells the joke instead"
 line give xocin at 10-30 ask "Here is your forebear's lamp." if holds lamp -> 40 says "she takes it and pays; she asks what else lay by it"
 line xcase xocin at 40 ask "This lay beside the lamp." if holds daybook says "it is her forebear's name; the eldest will shelve it where the damp is; left with her, it is read at the next hatching, and she gives what Tuma was taught and a tome she would not sell; and the eldest will give the player no gold and keep her shelf shut"
@@ -523,7 +531,7 @@ line aloud yaxil at 45 ask "The daybook stayed at Hirecan." -> 91 says "You were
 line alone yaxil at 40 ask "The lamp is out of the cell." -> 92 says "she asks once whether the player looked on the ledge"
 line dead1 yaxil at 10-30 ask "Xocin is dead. Here is the lamp, and what lay by it." if dead xocin, holds lamp, holds daybook -> 93 says "then the lamp has no taker but this hall"
 line dead2 yaxil at 10-30 ask "Xocin is dead. Here is the lamp." if dead xocin, holds lamp -> 94 says "then the lamp has no taker but this hall"
-line a90x xocin greeting at 90 says "her house is shut to one who carried her forebear's name away to a shelf: no trade, no teaching"
+line a90x xocin greeting at 90 says "she has nothing to say to one who carried her forebear's name away to a shelf, and what she would have given stays in her house"
 line a91x xocin greeting at 91 says "a friend of her house"
 line a90h hecal at 90 ask "Where is that shelf?" says "she has seen it, and what the damp does there; did the player find any sign of Ocuil, who was her pupil"
 line a91o ocan at 91 ask "The eldest was overruled." says "by a hired hand; he has waited years to see it; he has a buyer he would like the player to meet"
@@ -550,7 +558,7 @@ of Waterbreathing, and sets `sa01.book` (1 the eldest, 2 Hirecan, 0 neither).
 
 | Outcome | What the player gains in play | What they lose or can no longer get | Who pays, and where the player sees it | The form results that build it |
 |---|---|---|---|---|
-| **Shelved** (90; 93 with Xocin dead) | **the Raft-Born Stroke**, the swimming every raft-child is taught, a lasting ability (a copy of Magic Expanded's swift-swimming ability, `000959:Magic.esp`): the Borrower's own gift for a line of dives; the Borrower's Shelf at once; 150 gold | Xocin's house: she sells the player no tomes and teaches no Illusion (D chixathe-mesa, Hirecan: gives), and her tome of Pacify and what she knows of the freezing-pod are never given | Xocin, at the door of her book house, whose greeting says why; Hecal says she has seen where that shelf is and what the damp does there | `teach_spell`; `give_ownership` of the Shelf; `give_gold`; `set_number`; Xocin's trading and teaching lines gated on the number |
+| **Shelved** (90; 93 with Xocin dead) | **the Raft-Born Stroke**, the swimming every raft-child is taught, a lasting ability (a copy of Magic Expanded's swift-swimming ability, `000959:Magic.esp`): the Borrower's own gift for a line of dives; the Borrower's Shelf at once; 150 gold | what Xocin would have given: her tome of Pacify and what she knows of the freezing-pod are never the player's, and she has nothing more to say to them | Xocin, at the door of her book house, whose greeting says why; Hecal says she has seen where that shelf is and what the damp does there | `teach_spell`; `give_ownership` of the Shelf; `give_gold`; `set_number`; Xocin's greeting gated on the ending |
 | **Read aloud** (91) | from Xocin, as the book changes hands: the tome of **Pacify** she would not sell (D chixathe-mesa, Hirecan: gives; Mara's own spell, and Expert Illusion in a first quest), and every effect of the **swamp fungal pod** known, which is how "any fisher in this country can freeze a thief": the pod's paralysis for an alchemist (`learn_ingredient` `07E8B7:Skyrim.esm`) | the Stroke, for good; the gold; the Borrower's Shelf until SA03 is done: "You were told" | Yaxil-Ca, in the hall; Ocan says the eldest has just been overruled by a hired hand, and that he has a buyer the player should meet | `give_item`, `learn_ingredient` and `set_number` at stage 45; the ending gives only the rank and the ring |
 | **The lamp alone** (92; 94 with Xocin dead) | the Shelf at once; 100 gold; the daybook, if the player kept it | the Stroke, the tome and the pod's effects alike | nobody; Yaxil-Ca asks once whether the player looked on the ledge | `give_ownership`; `give_gold` |
 | *The words said* (stage 30, in any ending) | Restoration raised by 2; the cell's grille open and the priest laid down, so that his amulet and coffer are had with no fight and no key | nothing | nobody: Xocin says her forebear could not read them in time, and that somebody now has; Yaxil-Ca says only, "A rite. You will be staking them next" | `raise_skill`; `unlock_door`; the switches of stage 30 |
@@ -622,6 +630,7 @@ of the sea-cave, behind the crew, beside the cache.
 | the founders' prow | leaning by the cache in the sea-cave | a quest item, an existing carved-wood item's form (section 4) | five marks and a pattern of reeds and fish |
 | the spell-fire | at the head of the upper tier's hall | the game's own ward on a stand, which throws fire at whoever comes near until its stone is knocked or lifted off | its stone is a stock filled soul gem, the player's to keep |
 | the fisherman's grille | the side room off the stair | Adept lock; the crew's key | |
+| the fisherman's fetter | on the side room's wall, out of reach of the bars | a thing to use | struck off, it frees him (the rider) |
 | the crew's cache | in the sea-cave | Adept lock; the crew's key | 400 gold, six pieces of old Velothi bronze (D okuwun-rahei, Khiar: hooks), a staff of the existing kind: the cave's reward |
 | the hold's own chest | on the upper tier, past the ghosts | unlocked | the place's own boss chest (D okuwun-rahei, Mazurath: gives) |
 
@@ -665,7 +674,7 @@ He asks that the eldest not hear he looked.
 | 0 | hidden start; offered once SA01 has ended and while Yaxil-Ca lives | | |
 | 10 | Yaxil-Ca's line (gives the tomes of Mark and Recall) | the job and the way | Take the prow from the crew's cache (the prow) |
 | 30 | taking the prow (open from 10) | I took the founders' prow | Bring it to Yaxil-Ca (her); or show it to Tedryn Orvayn or Reader Ocan first (them) |
-| 35, 45 | Ocan's line, the prow held, Enchanting 40: before Tedryn's rubbing (35) or after it (45) | Ocan and I read the five marks as a weave, a binding in five parts, of the kind set into a door's bar | as at 30 or 40 |
+| 35, 45 | Ocan's line, the prow held, Enchanting 40: before Tedryn's rubbing (35) or after it (45, if not already read) | Ocan and I read the five marks as a weave, a binding in five parts, of the kind set into a door's bar | as at 30 or 40 |
 | 40 | Tedryn's line "Take them down", the prow held | I let Tedryn Orvayn take a rubbing; he taught me how his people call an ancestor | Bring the prow to Yaxil-Ca (her) |
 | 90 | Yaxil-Ca's line at 30 or 35 | **Brought straight.** | ends, completed |
 | 92 | Yaxil-Ca's line at 30 or 35, Tedryn alive: "Your guest wanted it enough to pay a crew" | **Brought straight**, and the guest named | ends, completed |
@@ -737,7 +746,7 @@ line show tedryn at 30-45 ask "You have asked about this board four times." if h
 line offer tedryn at 30-35 ask "What do you want with it?" if holds prow says "a rubbing of the marks before it goes back; for it he will teach how his people call an ancestor to stand by them, and read the marks at any door that bears them; the eldest will know: chalk stays in the cuts, and she will give no tome for a board that was read"
 line copy tedryn at 30-35 ask "Take them down." if holds prow, alive tedryn -> 40 says "he chalks the cuts and lifts the rubbing; then he teaches, as he said"
 line weave ocan at 30 ask "Look at these marks with me." if holds prow, skill Enchanting 40 -> 35 else "I see a pattern of reeds and fish. So do you." says "between them they read a weave in five parts; he asks that the eldest not hear he looked"
-line weave2 ocan at 40 ask "Look at these marks with me." if holds prow, skill Enchanting 40 -> 45 else "I see a pattern of reeds and fish. So do you." says "between them they read a weave in five parts; he asks that the eldest not hear he looked"
+line weave2 ocan at 40 ask "Look at these marks with me." if holds prow, skill Enchanting 40, number sa02.weave = 0 -> 45 else "I see a pattern of reeds and fish. So do you." says "between them they read a weave in five parts; he asks that the eldest not hear he looked"
 line straight yaxil at 30-35 ask "Here is the prow." if holds prow -> 90 says "she runs a claw over the five marks before she says anything; the gold and a tome of Invisibility"
 line named yaxil at 30-35 ask "Here is the prow. Your guest wanted it enough to pay a crew." if holds prow, alive tedryn -> 92 says "a guest who buys a theft is no guest; he is to be gone from the raft"
 line spoke yaxil at 40-45 ask "Here is the prow. He read it; he is the only one east of the ridge who can." if holds prow, alive tedryn, skill Speech 40 -> 93 else "A guest who buys a theft and reads what he bought is no guest." says "she is silent; then: the next job will tell her whether she was wrong to trust the player; he may stay"
@@ -746,7 +755,7 @@ line readdead yaxil at 40-45 ask "Here is the prow." if holds prow, dead tedryn 
 line noocan hecal at 30-45 ask "Who reads marks at the table now?" if dead ocan says "nobody; Ocan kept the table, and he is dead"
 line marks yaxil at 90-93 ask "What are the five marks?" says "a grey elf sees grey elves in everything; the founders liked the pattern; they took it off a wall, as they took the glass"
 line a9h hecal at 90-93 ask "Any sign of Ocuil?" says "he used to trace that board with his claw as a child, as they all did"
-line a91t tedryn2 greeting at 91-92 says "he greets from the inn at Inoja, without warmth, and still trades"
+line a91t tedryn2 greeting at 91-92 says "he greets from the inn at Inoja, without warmth"
 line a93t tedryn greeting at 93 if alive tedryn says "a colleague"
 line a90t tedryn greeting at 90 if alive tedryn says "somebody's errand-hand"
 
@@ -755,9 +764,11 @@ must-live yaxil fails 95
 ```
 
 **The fisherman, a rider.** Nets-at-Dawn's freedom is a minor quest of its own, so that the prow's stages stay
-few and he can be freed before, during or after the job, or never. He speaks first on the stair. Opening his
-grille (the crew's key, an Adept pick) moves it: he says he will go when the player has gone, and is switched on
-at Khiar, far away; he is switched off behind the bars when the player speaks to him at home. A player who came
+few and he can be freed before, during or after the job, or never. He speaks first on the stair. A fetter holds him to
+the side room's wall, out of reach of the bars: with the grille open (the crew's key, an Adept pick), striking it off
+is the use that moves the quest, since a locked door that is only tried is also "used". He then says he will go when
+the player has gone, and is switched on at Khiar, far away; he is switched off behind the bars when the player speaks
+to him at home. A player who came
 and went by Mark and Recall and took no key can come back for him by the lock.
 
 ```sketch
@@ -773,22 +784,24 @@ person nets2 at khiar off "Nets-at-Dawn"
 person captain at cave hostile level 24 "Skeith Captain"
 thing crewkey on captain "Smugglers' Key"
 door fgrille at tier locked adept key crewkey "Side-Room Grille"
+thing fetter at tier "Fisherman's Fetter"
 item silverring "Silver Ring"
 
 stage 0 hidden
 stage 10 "A fisherman of Khiar, Nets-at-Dawn, is locked behind a grille in a side room of Mazurath's stair. The smugglers' captain, in the sea-cave below, carries the key. He says the hole in the far room's floor drops into the water at the cave's back, beside the crew's cache, and that the drop is one way."
-stage 20 "I opened the grille of the side room. Nets-at-Dawn says he will go home to Khiar when I have gone." do on nets2
+stage 20 "I opened the side room and struck off the fetter that held Nets-at-Dawn to its wall." do on nets2
 stage 90 completed "I found Nets-at-Dawn at home in Khiar." do off nets, give-gold 100, give silverring, map khiarmark
 stage 95 failed "Nets-at-Dawn is dead."
 
 marker khiarmark at khiar "Khiar"
-objective 10 at 10 "Open the side-room grille for Nets-at-Dawn" -> fgrille, crewkey
+objective 10 at 10 "Open the side room and strike off the fisherman's fetter" -> fetter, crewkey
 objective 20 at 20 "Find Nets-at-Dawn at Khiar" -> nets2
 
 line hail nets first at 0 ask "Who are you?" -> 10 says "he is a fisher of Khiar, kept for a ransom nobody will pay; the captain has the one key; the hole in the far room drops to the water at the cave's back, by the cache, and nobody climbs back up it"
+line going nets at 20 ask "You are loose." says "he will go when the player has gone, and not past the ghosts while anyone is watching; Khiar is the village on the next cape"
 line home nets2 at 20 ask "You got home." -> 90 says "a fisher's thanks; Khiar will know what was done on the cliff"
 
-use fgrille from 10 -> 20
+use fetter from 10 -> 20
 must-live nets fails 95 to 20
 must-live nets2 fails 95 from 20
 ```
@@ -809,17 +822,17 @@ telling the truth about the prow, and it costs the player his company at Yulca.
 | Outcome | What the player gains in play | What they lose or can no longer get | Who pays, and where the player sees it | The form results that build it |
 |---|---|---|---|---|
 | **Brought straight** (90) | a tome of **Invisibility** from the hall's own shelf, Expert Illusion: the Agaceph's school, given for faith kept | **Ancestor's Shade** and Tedryn's reading at Sethiral: in SA04 the door wants a skill of the player's own, or it is a Master lock with the dead awake behind it | Tedryn, who greets the player as somebody's errand-hand | `give_item`; `set_number` |
-| **Read on the way** (91; 93 if spoken for, or if he is dead) | **Ancestor's Shade**, taught by Tedryn at stage 40: a summoned ancestor ghost (a copy of Magic Expanded's Conjure Ghost, `00081E:Magic.esp`), Conjuration, in a line that otherwise has little; his reading opens the quiet way at SA04 | the tome of Invisibility; and, unless the player speaks for him (Speech 40), Tedryn's place at Yulca: he trades and talks from the stilted inn at Inoja, a journey off | Yaxil-Ca, whose claw comes away white; Tedryn | `teach_spell`, `set_number` at stage 40; the ending gives gold only; `switch_off` and `switch_on` Tedryn |
-| **Brought straight, and the guest named** (92) | the tome of Invisibility | Ancestor's Shade, his reading, and his place at Yulca besides: the one person on the lake who buys Velothi bronze and reads Velothi stone is a journey off for the rest of the line | Tedryn, who greets coldly from Inoja and still trades | `give_item`; the same switches |
+| **Read on the way** (91; 93 if spoken for, or if he is dead) | **Ancestor's Shade**, taught by Tedryn at stage 40: a summoned ancestor ghost (a copy of Magic Expanded's Conjure Ghost, `00081E:Magic.esp`), Conjuration, in a line that otherwise has little; his reading opens the quiet way at SA04 | the tome of Invisibility; and, unless the player speaks for him (Speech 40), Tedryn's place at Yulca: he is at the stilted inn at Inoja, a journey off, for every later line of his | Yaxil-Ca, whose claw comes away white; Tedryn | `teach_spell`, `set_number` at stage 40; the ending gives gold only; `switch_off` and `switch_on` Tedryn |
+| **Brought straight, and the guest named** (92) | the tome of Invisibility | Ancestor's Shade, his reading, and his place at Yulca besides: the one person on the lake who reads Velothi stone is a journey off for the rest of the line | Tedryn, who greets coldly from Inoja | `give_item`; the same switches |
 | *The weave read with Ocan* (stages 35, 45; Enchanting 40) | Enchanting raised by 1; SA04's door opens the quiet way on the player's own reading | nothing; Ocan asks that the eldest not hear he looked | nobody | `raise_skill`; `set_number` |
 | *The fisherman freed* (the rider) | 100 gold, a silver ring, Khiar shown on the map | nothing | nobody | `give_gold`, `give_item`, `mark_on_map` |
 
 Yaxil-Ca takes the prow and runs a claw over the five marks before she says anything. Asked afterwards "What are
 the five marks?", she answers: "A grey elf sees grey elves in everything. The founders liked the pattern. They took
 it off a wall, as they took the glass." Dives-Shallow is kept on the guest raft for the rest of the line, and says
-so. Hecal asks again after Ocuil, and says he used to trace that board with his claw as a child, as they all did.
+so. Hecal says Ocuil used to trace that board with his claw as a child, as they all did.
 
-**The moment a player retells.** Lifting the stone off a fire that has burned six hundred years, dropping through
+**The moment a player retells.** Lifting the stone off a fire that has burned near a thousand years, dropping through
 a rotten floor into the back of a smugglers' cave behind the crew's backs, taking the board and vanishing; and
 then a grey elf reading the board aloud and telling the player that the hall's one heirloom is a door-lock.
 
@@ -828,7 +841,7 @@ then a grey elf reading the board aloud and telling the player that the hall's o
 | hear the job | none (the briefing) | a line sets a stage and gives items |
 | pass the spell-fire | Alteration (Telekinesis), Restoration (a ward), or run it | the game's own ward on a stand; a stock item taken |
 | pass the ghosts | Restoration (Turn Undead), Sneak, or a weapon or Destruction | hostile people at fixed levels standing where needed |
-| hear the fisherman; free him | Lockpicking (Adept) or the crew's key | one person speaks first; a door with a lock and a key; using a door sets a stage (the rider) |
+| hear the fisherman; free him | Lockpicking (Adept) or the crew's key | one person speaks first; a door with a lock and a key; using a named thing sets a stage (the rider) |
 | the drop, and the way out | Mysticism (Mark and Recall); or the sea | a place built with a one-way drop and a second way out by water |
 | the crew | Illusion (Frenzy, Fear, Calm, Muffle, Invisibility); Sneak; a weapon, Destruction or Conjuration | hostile people at fixed levels; a key carried by a person; a locked container with fixed contents |
 | take the prow | none (the take) | taking a named thing sets a stage |
@@ -877,11 +890,11 @@ whoever carries it.
 |---|---|---|---|
 | Yaxil-Ca | the book hall | word of what is under Joxhi; the stones, for the table, if they come out | the quest fails |
 | Elder Jo-Reesh of Joxhi, once a potter (man; the Marsh Charter's MC02 stands him at the same kiln) | at the village kiln (D okuwun-rahei, Joxhi: look) | to know whether his people can dig on; twenty-three people live on that seam | Ixha-Lei hears the player instead |
-| Ixha-Lei, Joxhi's grave-singer, who "names them at the kiln fire" (D okuwun-rahei, Joxhi: faith) (woman) | at the pit wall where the figures are pressed; a second placement at the breach | the dead named, whoever they are | the truth has nobody to carry it to the fire; with the elder dead too, Yaxil-Ca hears the player and the quest ends Walled |
+| Ixha-Lei, Joxhi's grave-singer, who "names them at the kiln fire" (D okuwun-rahei, Joxhi: faith) (woman) | at the pit wall where the figures are pressed | the dead named, whoever they are | the truth has nobody to carry it to the fire; with the elder dead too, Yaxil-Ca hears the player and the quest ends Walled, with nobody at Joxhi told |
 | Livia Semprone, buyer (woman) | on the pit path at Joxhi; she speaks first | the stone | the stone has no buyer |
 | Gam-Kur, a spear of the Marsh Charter on hire (man) | at the pit head | his day's pay; "I am paid to the door", and what comes up out of it is his to meet | nothing |
 | four Ayleid dead, the overseers, fixed at level 15 | the hall beyond the first gallery, hostile | | nothing: no line reads them |
-| two more overseers, the Rope and the Lash, fixed at level 15 | Joxhi's pit, by the breach, hostile; switched off until a lifted stone is carried out | | the pit is quiet again |
+| two more overseers, the Rope and the Lash, fixed at level 22 | Joxhi's pit, by the breach, hostile; switched off until a lifted stone is carried out | | the pit is quiet again |
 | the pit-master, fixed at level 26 | the undercroft, hostile | | nothing: no line reads him |
 
 **The things.**
@@ -891,7 +904,7 @@ whoever carries it.
 | two ward-stones on stands | the first gallery | the game's own ward on a stand, throwing frost at whoever comes near until its stone is knocked or lifted off | the nearer stand's stone is the inward stone, an item of the story's own if the ward still works with one and a stock filled grand soul gem if not (section 4); the further stone is a stock gem |
 | the overseers' key | on the base of the nearer stand, inside the ward's reach | a key | opens the inner door |
 | the inner door | between the overseers' hall and the undercroft | Expert lock; the overseers' key | |
-| the wall of clay figures | the undercroft | a thing to use | "Hundreds of small clay figures are pressed into this wall in rows, each no longer than a hand. They are the figures Joxhi's diggers press into the pit wall above for their dead. The lowest rows are worn almost smooth." |
+| the wall of clay figures | the undercroft | a thing to use | "Hundreds of small clay figures are pressed into this wall in rows, each no longer than a hand. They are the figures Joxhi's diggers press into the pit wall above for their dead. The lowest rows are worn almost smooth, and a few of the oldest have a ring pressed in at the neck: a collar." |
 | a clay figure | loose at the foot of the wall | takeable | one of the dead, off the wall: what Ixha-Lei is shown |
 | the pit-master's chest | the undercroft | unlocked | 400 gold of old coin, an enchanted Ayleid circlet of the existing kind, a filled soul gem: the hall's reward |
 | a digger's cache | "under the buried hall's door" (D okuwun-rahei, Joxhi: gives) | unlocked | a digger's savings: 60 gold and a pick |
@@ -919,10 +932,11 @@ the loose figure.
 | 10 | Yaxil-Ca's line | the job and the way | See what is in the hall under the clay (the wall of figures); Reader Ocan, about what guards it (him) |
 | 15, 16 | Ocan's line at 10: Enchanting 30 (15, free), or 60 gold (16) | Ocan told me a ward on a stand is its stone, and that a ward facing inward is holding something in; two ward scrolls | as at 10 |
 | 40 | using the wall of clay figures (open from 10) | I found a wall set with hundreds of small clay figures | Tell Joxhi what is under it: the elder (him), or the grave-singer with something she can hold (her, the loose figure); Yaxil-Ca if both are dead |
-| 50 | Jo-Reesh's line "Slaves dug this pit first. Those are their dead." | he asked me to leave the telling to him, for a season | Report to Yaxil-Ca (her); or the grave-singer (her, the figure) |
+| 50 | Jo-Reesh's line "This pit is older than your village. Those are the dead of whoever dug it in collars." | he asked me to leave the telling to him, for a season | Report to Yaxil-Ca (her); or the grave-singer (her, the figure) |
 | 60 | Ixha-Lei's line, the clay figure held (at 40 or 50; takes it, teaches her song) | I put one of the figures in the grave-singer's hand | Report to Yaxil-Ca (her) |
-| 90 | Yaxil-Ca's line at 50, or at 40 with Jo-Reesh and Ixha-Lei both dead (locks the breach) | **Walled.** | ends, completed |
-| 91 | Yaxil-Ca's line at 60 (switches Ixha-Lei from the pit wall to the breach) | **Named.** | ends, completed |
+| 90 | Yaxil-Ca's line at 50 (locks the breach; the guest mound's chest) | **Walled.** | ends, completed |
+| 91 | Yaxil-Ca's line at 60 | **Named.** | ends, completed |
+| 92 | Yaxil-Ca's line at 40 with Jo-Reesh and Ixha-Lei both dead (locks the breach; no guest mound) | **Walled**, with nobody at Joxhi told | ends, completed |
 | 95 | Yaxil-Ca dead | The readers have nobody to send me now. | ends, failed |
 
 With Jo-Reesh dead and Ixha-Lei alive, her line needs the figure, and she tells a player without it to bring
@@ -941,9 +955,9 @@ place undercroft indoors "Buried Hall Undercroft"
 
 person yaxil at hall "Yaxil-Ca"
 person ocan at landing "Ocan"
+person livia at joxhi "Livia Semprone"
 person elder at joxhi "Elder Jo-Reesh"
 person singer at joxhi "Ixha-Lei"
-person singer2 at joxhi off "Ixha-Lei"
 person dead1 at buried hostile level 15 "Overseer of the Seam"
 person dead2 at buried hostile level 15 "Overseer of the Slip"
 person dead3 at buried hostile level 15 "Overseer of the Kiln"
@@ -952,7 +966,9 @@ person master at undercroft hostile level 26 "Pit-Master's Bones"
 
 item wardscroll "Scroll of Steadfast Ward"
 item deadtome "Spell Tome: Detect Dead"
-item charm "Jo-Reesh's Seam-Charm"
+item gem "Common Soul Gem, filled"
+item enchbook "an Enchanting skill book"
+thing guestchest at joxhi container owner elder "Guest-Mound Chest"
 thing okey at buried "Overseers' Key"
 door inner at buried locked expert key okey "Undercroft Door"
 door breach at joxhi "Breach Gate"
@@ -967,8 +983,9 @@ stage 16 "I bought two ward scrolls from Reader Ocan, who told me that a ward on
 stage 40 "In the undercroft of the buried hall I found a wall set with hundreds of small clay figures, the same that Joxhi's diggers press into the pit wall for their dead."
 stage 50 "I told Elder Jo-Reesh what the wall is: the pit is older than his village, and the figures began as slaves' grave-marks. He asked me to leave the telling to him, for a season."
 stage 60 "I put one of the figures from the buried wall in the hand of Ixha-Lei, Joxhi's grave-singer, and told her where it came from. She taught me the song she names the dead with." do take figure, teach 05DD60:Skyrim.esm "The Naming Song"
-stage 90 completed "Walled. I told Yaxil-Ca what is under Joxhi. The elder has shut the breach." do give-gold 300, give deadtome, give charm, rank archive 2, own shelf, set sa03.settled 1, lock breach
-stage 91 completed "Named. I told Yaxil-Ca what is under Joxhi, and that its grave-singer knows." do give-gold 300, give deadtome, rank archive 2, own shelf, set sa03.settled 2, off singer, on singer2
+stage 90 completed "Walled. I told Yaxil-Ca what is under Joxhi. The breach has been shut, and a chest on Joxhi's guest mound is mine." do give-gold 300, give deadtome, give gem 2, give enchbook, rank archive 2, own shelf, own guestchest, set sa03.settled 1, lock breach
+stage 91 completed "Named. I told Yaxil-Ca what is under Joxhi, and that its grave-singer knows." do give-gold 300, give deadtome, give gem 2, give enchbook, rank archive 2, own shelf, set sa03.settled 2
+stage 92 completed "Walled. I told Yaxil-Ca what is under Joxhi. Its elder and its grave-singer being dead, the breach has been shut on it." do give-gold 300, give deadtome, give gem 2, give enchbook, rank archive 2, own shelf, set sa03.settled 3, lock breach
 stage 95 failed "Yaxil-Ca is dead. The readers have nobody to send me now."
 
 objective 10 at 10, 15, 16 "See what is in the hall under Joxhi's clay" -> wall, ocan
@@ -977,18 +994,20 @@ objective 50 at 50 "Report to Yaxil-Ca; or put a clay figure in the grave-singer
 objective 60 at 60 "Report to Yaxil-Ca" -> yaxil
 
 line job yaxil at 0 ask "What is the next job?" if stage SA02 >= 90 -> 10 says "Joxhi, north-west of Inoja; the breach in the west wall of the clay pit; the clay people do not send to the readers, and he has; go and see what is under his village; Ocan keeps the table and knows Ayleid stone, and a buyer of his will be on the pit path"
+line hail livia first at 10-60 ask "Who are you?" says "the readers' new hand; she is Livia Semprone, who buys for the Synod, the Empire's mages; she buys stone that still holds a charge and pays more than they will; Ayleid ward-stones face inward, three thousand years of holding something in; bring her what is lifted"
 line wardfree ocan at 10 ask "What guards an Ayleid hall?" if skill Enchanting 30 -> 15 else "Sixty gold buys you two scrolls and the answer. The table is not a charity." says "he sees the player knows a binding from a ward; the stone is the ward; lift it and the ward dies; facing in, it holds something in; two scrolls, free"
 line wardbuy ocan at 10 ask "Sixty gold, then." if gold 60 -> 16 else "Sixty. The table is not a charity." says "the stone is the ward; lift it and the ward dies; facing in, it holds something in; two scrolls"
-line seam elder at 10-40 ask "What did your diggers see?" says "white stone, they said; four of them, and none will go back down; twenty-three people live on that seam; nothing has come up out of that breach since it was opened, and he would like to go on saying so"
-line tellelder elder at 40 ask "Slaves dug this pit first. Those are their dead." if alive elder -> 50 says "his diggers are proud of the figures; half would leave a pit they knew for a slave-pit, and Thorn's buyers would have the seam inside a year; a season's silence, and he will tell it at the kiln fire himself; for it, his own charm goes down the river to the hall, and the breach is shut for good"
-line scase singer at 40-50 ask "What would you do with dead nobody named?" says "name them: they are older than the village and have waited longer; a custom is not smaller for being begun by people who had nothing else; bring something she can hold, and she will teach the song; the elder will send no charm to one who went round him"
+line seam elder at 10-40 ask "What did your diggers see?" says "white stone, they said; four of them, and none will go back down; twenty-three people live on that seam; nothing had come up out of that breach when he sent to the hall, and he would like to go on saying so"
+line tellelder elder at 40 ask "This pit is older than your village. Those are the dead of whoever dug it in collars." if alive elder -> 50 says "his diggers are proud of the figures; half would leave a pit they knew for a slave-pit, and Thorn's buyers would have the seam inside a year; a season's silence, and he will tell it at the kiln fire himself; for it, a chest and a bed on the guest mound are the player's whenever they pass, and the breach is shut for good"
+line scase singer at 40-50 ask "What would you do with dead nobody named?" says "name them: they are older than the village and have waited longer; a custom is not smaller for being begun by people who had nothing else; bring something she can hold, and she will teach the song; the elder will keep his guest mound from one who went round him"
 line tellsinger singer at 40-50 ask "This came off a wall under your pit." if holds figure, alive singer -> 60 says "she turns it over; she teaches the song before she asks anything"
-line w1 yaxil at 50 ask "I have seen what is under Joxhi." -> 90 says "she is quiet; people keep what their keepers taught them, and forget where they learnt it; do not make too much of it at Joxhi; a charm has come down the river from the elder"
-line n1 yaxil at 60 ask "I have seen what is under Joxhi, and its grave-singer knows." -> 91 says "she is quiet; then the same words; no charm came down the river"
-line b1 yaxil at 40 ask "I have seen what is under Joxhi. Its elder and its grave-singer are dead." if dead elder, dead singer -> 90 says "then there is nobody to tell but her; the charm is one the elder left with the hall's raft before he died"
+line w1 yaxil at 50 ask "I have seen what is under Joxhi." -> 90 says "she is quiet; people keep what their keepers taught them, and forget where they learnt it; do not make too much of it at Joxhi"
+line n1 yaxil at 60 ask "I have seen what is under Joxhi, and its grave-singer knows." -> 91 says "she is quiet; then the same words"
+line b1 yaxil at 40 ask "I have seen what is under Joxhi. Its elder and its grave-singer are dead." if dead elder, dead singer -> 92 says "then there is nobody to tell but her"
 line a90e elder at 90 ask "Is the pit quiet?" if alive elder says "the breach is shut; when his season is up he will tell them at the kiln fire himself, in his own words"
-line a91e elder greeting at 91 if alive elder says "She named four hundred in one night. I have nineteen diggers. I did not say you were wrong."
-line a91s singer2 greeting at 91 if alive singer2 says "she stands at the breach now, and names them by tens"
+line a91e elder greeting at 91 if alive elder, alive singer says "She named four hundred in one night. I have nineteen diggers. I did not say you were wrong."
+line a91d elder greeting at 91 if alive elder, dead singer says "She had the figure in her hand a day. I have nineteen diggers and no singer."
+line a91s singer greeting at 91 if alive singer says "she names them at the kiln fire now, by tens"
 
 use wall from 10 -> 40
 must-live yaxil fails 95
@@ -996,11 +1015,14 @@ must-live yaxil fails 95
 
 **The inward stone, a rider.** The stone is never a stage of SA03, because it can be lifted before the wall is
 found or after, sold before the report or kept through it. It is a minor quest of its own, which begins when the
-stone is lifted and at no other time. Lifting it writes the journal; **carrying it up through the breach** looses
-two of the hall's dead into the pit ahead of the player (they are switched on outdoors as the breach's inner door
+stone is lifted and at no other time. Lifting it writes the journal; **carrying it up through the breach** looses two
+of the hall's dead into the pit ahead of the player, where they attack whoever is there (they are switched on outdoors
+as the breach's inner door
 is used, across the line between inside and outside), and the two endings reached at Yulca do the same for a
-Borrower who left by Recall. Then one of four people has it. Livia Semprone speaks first on the pit path, in one
-breath, whether or not a stone has been lifted, so the choice is named before the player goes down.
+Borrower who left by Recall. Then one of four people has it; the two at Joxhi deal only with a stone that has come up
+through the breach, so the dead are never dodged by a Recall. Livia Semprone's one breath on the pit path is SA03's
+own first line, so the choice is named before the player goes down. And a player who reports with both wards standing
+can say so to Jo-Reesh afterwards: that ends the rider too, with the one gift in Joxhi that restraint earns.
 
 ```sketch
 quest SA03S minor "The Inward Stone"
@@ -1014,44 +1036,48 @@ person ocan at landing "Ocan"
 person livia at joxhi "Livia Semprone"
 person gam at joxhi "Gam-Kur"
 person elder at joxhi "Elder Jo-Reesh"
-person loose1 at joxhi hostile level 15 off "Overseer of the Rope"
-person loose2 at joxhi hostile level 15 off "Overseer of the Lash"
+person loose1 at joxhi hostile level 22 off "Overseer of the Rope"
+person loose2 at joxhi hostile level 22 off "Overseer of the Lash"
 thing stone at buried "Inward Stone"
 door breachin at buried "Breach, to the Pit"
 item circlet "Synod Assayer's Circlet"
-thing bed at joxhi container owner elder "Guest-Mound Chest"
-marker joxhimark at joxhi "Joxhi"
+item charm "Jo-Reesh's Seam-Charm"
+item wardscroll "Scroll of Steadfast Ward"
 
 stage 0 hidden
-stage 20 "I lifted an inward stone off its stand in the first gallery of the hall under Joxhi. The ward it made is dead. Livia Semprone on the pit path will buy the stone; Reader Ocan wants it for the readers' table; Elder Jo-Reesh would sink it in the slip-pit." do set sa03.lifted 1
-stage 25 "I came up through the breach with the inward stone in my pack. Two of the hall's dead had come up into the pit ahead of me." do on loose1, on loose2
+stage 20 "I lifted an inward stone off its stand in the first gallery of the hall under Joxhi. The ward it made is dead." do set sa03.lifted 1
+stage 25 "I came up through the breach after lifting the inward stone. Two of the hall's dead had come up into the pit ahead of me." do on loose1, on loose2
 stage 90 completed "Sold. I sold the inward stone to Livia Semprone, the Synod's buyer." do take stone, give-gold 400, set sa03.stone 1
 stage 91 completed "Sold dear. I told Livia Semprone what the inward stone is, and she paid for a binding." do take stone, give-gold 400, give circlet, set sa03.stone 1
-stage 92 completed "To the table. I gave the inward stone to Reader Ocan, and worked on it with him at the readers' table." do take stone, skill-up Enchanting 3, teach 034837:Dragonborn.esm "The Copyist's Hand", set sa03.stone 2, on loose1, on loose2
-stage 93 completed "Sunk. I gave the inward stone to Elder Jo-Reesh, who put it in the slip-pit." do take stone, own bed, map joxhimark, set sa03.stone 3
+stage 92 completed "To the table. I gave the inward stone to Reader Ocan, and worked on it with him at the readers' table." do take stone, teach 034837:Dragonborn.esm "The Copyist's Hand", set sa03.stone 2, on loose1, on loose2
+stage 93 completed "Sunk. I gave the inward stone to Elder Jo-Reesh, to sink in Joxhi's slip-pit." do take stone, give-gold 150, give wardscroll 4, set sa03.stone 3
 stage 94 completed "Kept. I told Reader Ocan the inward stone stays in my own pack." do skill-up Enchanting 1, set sa03.stone 4, on loose1, on loose2
 
+stage 95 completed "Left standing. I told Elder Jo-Reesh that both wards still stand under Joxhi, and he gave me the charm from his own neck." do give charm, set sa03.stone 5
 objective 20 at 20 "Carry the inward stone out of the hall, and decide who has it" -> breachin, livia, ocan, elder, stone
 objective 25 at 25 "Decide who has the inward stone" -> livia, ocan, elder, stone
 
-line hail livia first at 0-20 ask "Who are you?" says "the readers' new hand; she buys stone that still holds a charge and pays more than they will; Ayleid ward-stones face inward, three thousand years of holding something in; bring her what is lifted"
-line paid gam at 0-25 ask "Do you go down?" says "he is a spear of the Charter on Joxhi's hire, paid to the door; what comes up out of it is his to meet, and what is under it is not"
+line paid gam at 20-25 ask "Do you go down?" says "he is a spear of the Charter on Joxhi's hire, paid to the door; what comes up out of it is his to meet, and what is under it is not"
 line lcase livia at 20-25 ask "What will the Synod do with it?" if holds stone says "learn from it what nobody here can; it is wasted under a clay pit; she has hidden nothing about what it does; 400 gold"
-line sell livia at 20-25 ask "It is yours." if holds stone -> 90 says "she pays 400"
-line dear livia at 20-25 ask "This is no ward. It is a binding, and your house knows what those fetch." if holds stone, skill Enchanting 40 -> 91 else "It is a ward-stone, and I pay for ward-stones." says "she pays 400 and adds an assayer's circlet from her own case, for one who can read stone"
+line sell livia at 25 ask "It is yours." if holds stone -> 90 says "she pays 400"
+line dear livia at 25 ask "This is no ward. It is a binding, and your house knows what those fetch." if holds stone, skill Enchanting 40 -> 91 else "It is a ward-stone, and I pay for ward-stones." says "she pays 400 and adds an assayer's circlet from her own case, for one who can read stone"
 line ocase ocan at 20-25 ask "What would the table do with it?" if holds stone says "what is studied at the readers' table stays in the east; he will show the player the stone's inside and the copyist's way of drawing on a bound thing; no gold"
 line table ocan at 20-25 ask "It is the table's." if holds stone -> 92 says "they work on it together; the readers will not have to read about it in a book they must borrow"
-line ecase elder at 20-25 ask "What would you do with it?" if holds stone says "into the slip-pit, where no buyer will find it; a bed and a chest on the guest mound are the player's whenever they pass"
-line sink elder at 20-25 ask "Sink it." if holds stone -> 93 says "he carries it to the slip-pit himself"
+line ecase elder at 20-25 ask "What would you do with it?" if holds stone says "into the slip-pit, where no buyer will find it; what the village can spare, and the potter's own ward scrolls"
+line sink elder at 25 ask "Sink it." if holds stone -> 93 says "he carries it to the slip-pit himself"
 line keep ocan at 20-25 ask "It stays in my pack." if holds stone -> 94 says "then draw on it at the table and not in a ditch; he shows the player how"
 
+line stands elder at 0 ask "Both stones still stand under your pit." if done SA03 90, alive elder -> 95 says "then nothing of his is owed to any buyer; his own seam-charm, which he has worn forty years"
+line stands2 elder at 0 ask "Both stones still stand under your pit." if done SA03 91, alive elder -> 95 says "he did not say the player was wrong, and he does not say it now; his own seam-charm"
 take stone from 0 -> 20
 use breachin from 20 -> 25
 ```
 
 **The choices, and each side's honest case.** *The stone* is made with a hand out towards a stand, and it is about
-power. Lifted, it is the quick way to the key and a thing of great worth; and it always costs, because what it
-held comes up into Joxhi's pit behind whoever carries it out. Ocan and Livia have both said so before the player
+power. Lifted, it is the quick way to the key and a thing of great worth; and it always costs, because what it held
+comes up into Joxhi's pit ahead of whoever carries it out, and goes for the people there: the grave-singer who could
+have taught the Naming Song, the buyer who would have paid, the spear. Whoever of them dies is dead for the rest of
+the game. Ocan and Livia have both said so before the player
 goes down ("facing in, it holds something in"), and Jo-Reesh has said what he would like to go on saying. Livia's
 case for buying it: the stone is wasted under a clay pit, her house will learn from it what nobody here can, and
 she has hidden nothing about what it does. Ocan's, for the table: what is studied at the readers' table stays in
@@ -1064,29 +1090,30 @@ with the figure in her hand: those are dead who were never named at any fire, th
 have waited longer, and a custom is not smaller for having been begun by people who had nothing else. Each says
 what the other will withhold.
 
-**The endings, and what each gives and costs in play.** Both endings of SA03 give the rank of Copyist (which opens
-Ocan's soul gems and his Enchanting teaching, and the Borrower's Shelf if it was shut), 300 gold and a tome of
-Detect Dead.
+**The endings, and what each gives and costs in play.** Every ending of SA03 gives the rank of Copyist, with two
+filled soul gems and an Enchanting skill book from Ocan's table and the Borrower's Shelf if it was shut, 300 gold and
+a tome of Detect Dead.
 
 | Outcome | What the player gains in play | What they lose or can no longer get | Who pays, and where the player sees it | The form results that build it |
 |---|---|---|---|---|
-| **Walled** (90) | **Jo-Reesh's Seam-Charm**, a unique amulet, sent down the river to the hall (a `template_item` on a load-order amulet of resistance with no god's mark) | the Naming Song; the hall itself: the breach is locked for good, with whatever the player left in it | the dead under Joxhi, who stay unnamed; Ixha-Lei goes on pressing figures into the pit wall | `give_item`; `lock_door` the breach gate |
-| **Named** (91) | **the Naming Song**, taught by Ixha-Lei as she takes the figure: a grave-singer's turning of the restless dead (a copy of Repel Undead, `05DD60:Skyrim.esm`), Restoration; the breach stays open | the Seam-Charm; Jo-Reesh's warmth: "She named four hundred in one night. I have nineteen diggers. I did not say you were wrong" | Jo-Reesh, at the kiln, whose pit has lost diggers; Ixha-Lei stands at the breach now | `teach_spell` at stage 60; `switch_off` and `switch_on` Ixha-Lei |
+| **Walled** (90; 92 with both of Joxhi's speakers dead, which gives no mound) | a chest and a bed on Joxhi's guest mound are the player's: a place to sleep and store on the road north | the Naming Song; the hall itself: the breach is locked for good, with whatever the player left in it | the dead under Joxhi, who stay unnamed; Ixha-Lei goes on pressing figures into the pit wall | `give_ownership`; `lock_door` the breach gate |
+| **Named** (91) | **the Naming Song**, taught by Ixha-Lei as she takes the figure: a grave-singer's turning of the restless dead (a copy of Repel Undead, `05DD60:Skyrim.esm`), Restoration; the breach stays open | the guest mound; Jo-Reesh's warmth: "She named four hundred in one night. I have nineteen diggers. I did not say you were wrong" | Jo-Reesh, at the kiln, whose pit has lost diggers; Ixha-Lei names them at the kiln fire by tens | `teach_spell` at stage 60 |
 
 **The stone** (the rider's endings; each sets `sa03.stone`):
 
 | Outcome | What the player gains in play | What they lose or can no longer get | Who pays, and where the player sees it | The form results that build it |
 |---|---|---|---|---|
-| **Never lifted** | nothing lifted and nothing loosed: the pit is the quietest it has been, and the key came out by Telekinesis, a ward spell held up, a slow Sneak, or not at all | every row below | nobody | no stage |
-| **Lifted**, whoever then has it | the key for the picking up | two of the hall's dead, fixed at level 15, stand in Joxhi's pit until someone ends them: Gam-Kur, the Charter's spear at the pit head, meets them if the player does not, and Ixha-Lei presses her figures a few steps away | Joxhi: whoever at the pit the dead reach before they are put down | `switch_on` the two, as the breach's inner door is used |
-| **Sold** to Livia Semprone (90) | 400 gold | the table's teaching; the stone | the readers, who "will read about it some day in a book they have to borrow" | `give_gold` |
+| **Left standing** (95: said to Jo-Reesh once SA03 has ended) | **Jo-Reesh's Seam-Charm**, the unique amulet he has worn forty years (a `template_item` on a load-order amulet of resistance with no god's mark): the one gift in Joxhi that restraint earns; nothing loosed, and everyone at the pit alive | every row below | nobody | Jo-Reesh's line moves the rider to its ending; `give_item` |
+| **Lifted**, whoever then has it | the key for the picking up | the Seam-Charm; two of the hall's dead, fixed at level 22 and above a turning spell's reach, are in Joxhi's pit and attack whoever is there: Gam-Kur meets them at the pit head, and Ixha-Lei and Livia are a few steps away | Joxhi: whoever at the pit the dead reach before they are put down | `switch_on` the two, as the breach's inner door is used |
+| **Sold** to Livia Semprone (90) | 400 gold | the table's teaching; the stone | the readers, who go without it | `give_gold` |
 | **Sold dear** (91; Enchanting 40: "This is no ward. It is a binding") | 400 gold and **the Synod Assayer's Circlet**, a unique (a `template_item` on a load-order circlet of Enchanting) from her own case, for one who can read stone | as Sold | as Sold | `give_gold`, `give_item` |
-| **To the table** (92) | Enchanting raised by 3, and **the Copyist's Hand**, a lasting ability from working a bound stone with Ocan: the player's enchantments are a tenth stronger (a copy of Dragonborn's `034837:Dragonborn.esm`; its name is one more seed) | the gold; the circlet | Livia, who leaves the pit path with nothing and says the east will stay ignorant | `raise_skill`, `teach_spell` |
-| **Sunk** by Jo-Reesh (93) | a bed and a chest on Joxhi's guest mound are the player's; Joxhi is shown on the map | gold, circlet and ability alike | Ocan, who calls it a soul's worth of study in a ditch | `give_ownership`, `mark_on_map` |
+| **To the table** (92) | **the Copyist's Hand**, a lasting ability from working a bound stone with Ocan: the player's enchantments are a tenth stronger (a copy of Dragonborn's `034837:Dragonborn.esm`; its name is one more seed) | the gold; the circlet | Livia, who goes without it | `teach_spell` |
+| **Sunk** by Jo-Reesh (93) | 150 gold, what the village can spare, and four of the potter's ward scrolls | circlet and ability alike | nobody further | `give_gold`, `give_item` |
 | **Kept** (94) | the stone itself, a filled grand soul gem for the player's own work at the table; Enchanting raised by 1 as Ocan shows how to draw on it | everything the other three offered | nobody | `raise_skill` |
 
-No row is best in every column: gold, a unique thing, a lasting ability, a home on the road, or the charge itself
-for an enchanter's own use; and the only way to pay nothing is to lift nothing.
+No row is best in every column: gold, a unique thing, a lasting ability, or the charge itself for an enchanter's own
+use, each bought with two dead loosed among people the player has met; or a unique charm for lifting nothing. The two
+takers at Joxhi deal only once the stone has come up through the breach.
 
 **The moment a player retells.** Standing in a breach deciding between a small iron key and a humming stone worth
 a year of a village's clay; then, in the dark of the undercroft, a wall of the same small clay figures the diggers
@@ -1103,7 +1130,7 @@ press into the pit above.
 | read the wall; take a figure | none (the find) | using a named thing sets a stage and shows its words; a thing placed on a surface |
 | sell, give, sink or keep the stone | Enchanting 40 for the circlet | lines gated on a thing held move stages that give gold, a thing, a skill, an ability or a chest (the rider) |
 | tell the elder; show the grave-singer | none: the decision | lines set stages; a stage takes the thing and teaches a spell |
-| the report | none | line conditions: people dead; a stage gives a thing, locks a door, and switches a person off and on from another cell |
+| the report | none | line conditions: people dead; a stage gives things and a chest, and locks a door |
 | carry the stone out | none | using a door sets a stage that switches people on across the line between inside and outside (the rider) |
 
 ## 4. What each quest needs of its places
@@ -1137,7 +1164,7 @@ something there.
 
 | The thing | Quest | What happens there | How the player knows it |
 |---|---|---|---|
-| an upper tier as an inside, entered from the landward track: a stair with a barred side room off it that locks, a hall with a ward on a stand at its head that throws fire, and a far room whose floor has fallen through | SA02 | the captive fisherman behind his bars and out of the ghosts' walk; the spell-fire; the ghosts; the drop | the door shows "Mazurath, Upper Tier"; the fire is seen burning from the door; the fisherman speaks first and says what the hole is |
+| an upper tier as an inside, entered from the landward track: a stair with a barred side room off it that locks, a fetter on that room's wall out of reach of the bars, a hall with a ward on a stand at its head that throws fire, and a far room whose floor has fallen through | SA02 | the captive fisherman behind his bars and out of the ghosts' walk; the spell-fire; the ghosts; the drop | the door shows "Mazurath, Upper Tier"; the fire is seen burning from the door; the fisherman speaks first and says what the hole is |
 | under the far room, the sea-cave as a second inside: deep water to fall into, a dry shelf beside it for the cache, and the cave running out to a mouth on the sea that is reached only by swimming | SA02 | the prow and the cache; the crew stand between the cache and the mouth | Yaxil-Ca says "the sea-cave under it, reached from the sea"; the chest shows "Smugglers' Cache"; the prow's marker |
 
 **Khiar** (D okuwun-rahei).
@@ -1150,11 +1177,11 @@ something there.
 
 | The thing | Quest | What happens there | How the player knows it |
 |---|---|---|---|
-| a breach in the west wall of the clay pit that is the door of a buried hall of white stone, with a gate across it that can lock | SA03 | the way in; shut by the elder afterwards | white stone in a wall of red clay; the door shows "Joxhi Buried Hall"; Yaxil-Ca says "the west wall of the pit" |
+| a breach in the west wall of the clay pit that is the door of a buried hall of white stone, with a gate across it that can lock | SA03 | the way in; shut by the elder afterwards | white stone in a wall of red clay; the gate shows "Breach Gate" and the door behind it "Joxhi Buried Hall"; it locks to a key nobody is given; Yaxil-Ca says "the west wall of the pit" |
 | small clay figures pressed into the pit wall near the breach | SA03 | the living custom, seen before the hall is entered; Ixha-Lei stands by them | their look; Ixha-Lei says what they are |
 | inside the hall: a first gallery with two wards on stands that throw frost and a few clay figures in its pit-side wall, a hall beyond it, and an inner door that locks | SA03 | the stone, the key on the nearer stand's base, the overseers | the wards are seen working from the breach; the key's marker; the door shows "Undercroft Door" |
 | an undercroft as a second inside, whose end wall is set with rows of the same small clay figures | SA03 | the pit-master; the find | the wall shows "Wall of Clay Figures"; the quest's marker |
-| a guest mound with a chest and a bed | SA03 | made the player's if the stone is sunk | Jo-Reesh says "the guest mound, first above the landing"; the chest shows its name |
+| a guest mound with a chest and a bed that nobody owns; a pit path, a pit head and a slip-pit as standing places | SA03 | the mound is made the player's if the breach is walled; Livia, Gam-Kur and the elder's word of the slip-pit | Jo-Reesh says "the guest mound, first above the landing"; the chest shows its name |
 
 **Sethiral and Yina** (D okuwun-rahei).
 
@@ -1168,7 +1195,7 @@ something there.
 
 | The thing | Quest | What happens there | How the player knows it |
 |---|---|---|---|
-| black worked stones standing out of the shallows off the point, a drowned stair among them with a sunk stone coffer under a ward on a stand, and a satchel beside it | SA05 | the lord's tablet and Ocuil's slate | the record's cairn on the point; the fishers say "where the nets bring up worked stone"; the satchel shows "Ocuil's Satchel" |
+| black worked stones standing out of the shallows off the point, a drowned stair among them with a sunk stone coffer under a ward on a stand, and a satchel beside it | SA05 | the lord's tablet in the coffer; Ocuil's slate in the satchel | the record's cairn on the point; the fishers say "where the nets bring up worked stone"; the satchel shows "Ocuil's Satchel" |
 | an empty one-person raft hauled up at the landing | SA05 | what is left of Ocuil above water | the fishers at the landing say whose it was |
 | a digger's camp on the lake shore south of the village | SA05 | the stranger who digs | a spade and a sieve by a fire; he speaks |
 
@@ -1213,12 +1240,12 @@ relied on: each has its plain fallback, and nothing else changes if the check fa
 
 | What is not known | Where the story uses it | If it is not so |
 |---|---|---|
-| that Telekinesis draws a small item through a grille's bars, that a hand cannot reach the ledge unaided, and that a dead man shut behind bars stays at them | SA01, the line's first image | the cell is seen across a gap of fallen floor over deep water, and the priest stands on the far side of it; nothing else in SA01 changes |
+| that Telekinesis draws a small item through a grille's bars, that a hand cannot reach the ledge unaided, and that a dead man shut behind bars stays at them | SA01, the line's first image | the cell is seen across a gap of fallen floor over deep water, and the priest stands on the far side of it; the grille, its lock and its key stand as written at the cell's own door, round the gap by the dry way |
 | what Magic Expanded's Telekinetic Grip takes hold of (its record is named for grabbing a person, not a thing) | the first round named it beside Telekinesis as a way to draw things | it is not named as a way anywhere in this document; if it does lift things, it is one more way and costs nothing |
-| that Skyrim's ward on a stand still works with a stone that is an item of the story's own | SA03, the inward stone; SA05 and SA06 by copy | the stones are stock filled grand soul gems; the rider's take and its hand-ins read that stock gem, and one lifted anywhere begins it |
+| that Skyrim's ward on a stand still works with a stone that is an item of the story's own | SA03, the inward stone; SA05 and SA06 by copy | the stone is a stock filled grand soul gem to look at, and the rider still reads the one placed reference on the nearer stand: its take, and a hand-in that takes that reference, never any gem of the kind |
 | the level each school's spells reach in this load order (Skyrim's own: 16 for Repel Undead, 20 for Pacify and Rout, before perks; the combat collection may move them) | every fixed level in section 3 | the quest writer sets each level from what the load order does, keeping one opponent in each place above the reach |
 | that a lasting ability taken from a load-order record works when taught alone: the swift-swimming ability of Magic Expanded, and Dragonborn's stronger-enchantments ability, which may lean on a perk beside it | SA01's Stroke; the rider's Copyist's Hand | the Stroke becomes a taught spell of swift swimming (`00095D:Magic.esp`); the Hand is given as its perk, or as Enchanting raised by 5 |
-| what Magic Expanded's Conjure Ghost, Command Humanoid, Command Undead and rune of paralysis do at their fixed strengths | SA02, SA04, SA05, SA06 gifts | each gift keeps its kind (an ancestor summoned, a living mind commanded, the dead commanded, a held threshold) on the nearest load-order spell that does it |
+| what Magic Expanded's Conjure Ghost, Command Humanoid, Command Undead and rune of paralysis do at their fixed strengths | SA02, SA04, SA05, SA06 gifts; with water walking, SA06 | each gift keeps its kind (an ancestor summoned, a living mind commanded, the dead commanded, a held threshold) on the nearest load-order spell that does it |
 | that a bundle of tablets built on a book's form can be lifted from a container unread, and that reading it from the pack is seen by a use trigger | SA05's choice | the coffer is the thing used to read them and the bundle is taken only to be sunk |
 
 ## 5. Read on paper
@@ -1312,6 +1339,89 @@ still lands with Tedryn's line gone, and whether it is now seeded too thinly for
 and Ocan are known by SA04. Whether SA05 plays as more than a fetch inside a fetch. Whether a fresh deliverability
 reader finds the rebuilt stage tables sound when each named person is killed in turn and each thing is taken
 first.
+
+**Round two**, on the version brought up to the consistency ledger, with outcome tables and sketches (five sketches
+passing `sketch`, walk and all). Three players who value different things, on three models, each given a sheet a
+quest for SA01 to SA03 and then SA04 to SA06 in summary, answering before reading on; and one deliverability
+reader given the ceiling, buildable.md, the outlines with their sketches, and what `sketch` had proved. All four
+read the same version, and nothing was changed until all had finished.
+
+**What they said.**
+
+- *The player who plays to grow powerful* (a battlemage; opus) took the Stroke over the daybook's truth, Tedryn's
+  rubbing for the summon, the stone for Ocan's table, the grave-singer's song, the lord's signet, the tablets read
+  and the book carried home with the mat refused. The story tipped two of those against the better reward, and
+  she said so: the grave-singer, and the names read "for Ocuil's sake". Retold the line whole; would join; wants
+  the next chapter; "We did not come to empty halls. We emptied one" is "a great line". Hard to please on: a slow
+  first sheet; Hecal asking after Ocuil at every job with nothing to tell her; Archery teaching as a reward in a
+  mages' line; not knowing where Ocan's school began; Tedryn's digger arriving from nowhere.
+- *The player who keeps their word to whoever hired them* (a sneaking spellsword; sonnet) shelved the daybook,
+  refused the rubbing, lifted nothing, kept the elder's season, left the lord held, sank the tablets ("close to
+  what I cannot stomach") and left the book on its stand: the patron's side at every turn but the last, where
+  nobody had hired him and he judged for himself. Retold it; would join; wants the next chapter; "the hall was
+  always straight about its price". Hard to please on: too much told before the first dive; and the Stilling
+  given for a destructive act.
+- *The player who trusts no institution* (a mage-scholar; fable) gave Hirecan the daybook, gave Tedryn his
+  rubbing and spoke for him, lifted nothing, named the dead, ended the lord, read the tablets and left the book.
+  Guessed the servitude by SA03 from Yaxil-Ca's "people keep what their keepers taught them" and still did not see
+  the forty shut in or the five collars coming. Would work for the hall and never join it; wants the next chapter.
+  Hard to please on: a date (the Flu is near a thousand years gone, not six hundred); SA05's props (what was in
+  the coffer, how Ocuil came by the tablet, whether Tedryn's wish was a choice); the careful play at Joxhi paying
+  nothing while lifting the stone for Ocan looked simply best, since the loosed dead "just stand there"; every
+  choice a priced menu; Yaxil-Ca's closing aphorism becoming a tic.
+- *The deliverability reader* (opus) found every stage, gate and ending buildable in kind and fourteen things
+  that were not as written. Two were of a kind the method does not yet name: **a trader's or teacher's service
+  opened or shut as a quest's gift or cost**, which no result of the form builds and no line of any sketch
+  carried; and **a use trigger on a locked door**, which a player fires by merely trying the door. The rest: a
+  refusal that promised gold back; a stage that could be read twice; a switch that could bring the grave-singer
+  back from the dead, and her second placement stood where the loosed dead stand; two journal entries false on
+  one way; a prompt that named slaves when nothing shown had; a line false once the dead were loosed; a rider's
+  journal stating three people's wishes before any had spoken; a first line heard by a player who never joined; a
+  prompt that named the Synod unprompted; a way to dodge the loosed dead by Recall; and a fallback for the inward
+  stone that would have let any soul gem begin the rider.
+
+**How the choices split.** Each was meant to divide, and each did: the daybook two to one; the rubbing one to
+two; the stone two for restraint and one for the table; the telling one to two; the lord one held and two ended;
+the tablets one sunk and two read; the book two left and one carried home. Each option not taken had its case
+made without strain by at least one reader, with four exceptions that the changes below answer or accept: the
+lamp alone (a default, not a side, and now said to be one); the lord loosed (one reader found no honest case,
+two made one: it stays, as the line's one plainly dark bargain); the book sold (gold alone: it stays, as the way
+to leave the hall); and the Fenlord, whom all three ended.
+
+**What changed, as one set.**
+
+1. *Gifts are things the form gives.* No ending now opens or shuts a trader or a teacher. Xocin's cost is her
+   gifts withheld and her silence; the rank of Copyist gives soul gems and a skill book; Hecal's thanks is given
+   through the report; the mat's room holds its tomes; nobody "still trades".
+2. *Restraint at Joxhi earns the one unique thing there.* Jo-Reesh's Seam-Charm goes to the player who can tell
+   him both wards still stand; walling the breach gives the guest mound; sinking a lifted stone gives what the
+   village can spare. The table's gift is the ability alone. The loosed dead are above a turning spell's reach
+   and are said to attack the three people at the pit, any of whom then stays dead; the two takers at Joxhi deal
+   only with a stone that came up through the breach.
+3. *The Fenlord is a choice with two prices.* The College's spell is for keeping him; ending him no longer mends
+   a broken promise; the reed people's gift is a spell of the line's own school, the Weir-Walk, and no Archery.
+4. *SA05 is one clear dive and one clear act.* The lord's tablet is in the coffer; Ocuil's satchel holds his
+   slate; Tedryn's wish is not a side of the choice.
+5. *Small truths.* The Flu is near a thousand years gone. Hecal asks after Ocuil once, and says something new
+   each time after. The wall of figures shows collars, so that the player can say what they have seen; Jo-Reesh
+   speaks of the breach as it was when he sent. Ocan's school is said to begin with the book carried home.
+6. *Every blocking fault is rebuilt*: the refusal; the gate on the second reading; a fetter to strike off in
+   place of a door to use; the grave-singer stays at the pit wall and no switch touches her, and the elder's
+   greeting has its twin for her dead; an ending of its own where both of Joxhi's speakers are dead; the rider's
+   journal says only what was done; Livia's first line is SA03's and names the Synod; the fallback for the stone
+   reads the one placed reference.
+
+Not changed: that each trade is said before it is chosen (the owner's bar asks it, and one reader's wish for
+surprise is one reader's); Yaxil-Ca's closing lines (two readers quoted them with pleasure); the Stilling as the
+price of the names sunk (the reader who found it wrong was the one who paid it, which is the point).
+
+**The stop rule, judged.** A round could retell the story, wanted the next chapter and split on every choice
+meant to divide. The deliverability reader did not find every step buildable: all fourteen faults are answered
+here, but by changes no fresh reader has seen, and two of them are new kinds of fault. The Fenlord's choice did
+not split and has been re-priced unread. So the rule is **not met**. A third round must check: that a fresh
+deliverability reader finds the rebuilt SA03 and its rider sound (the Seam-Charm's ending, the takers gated on
+the breach, the dead loosed among people who can die); that restraint and the table now pull against each other
+at Joxhi; that the Fenlord kept is somebody's choice; and that SA05 is followed at a first reading.
 
 ## 6. For the other lines
 
