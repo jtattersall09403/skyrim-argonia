@@ -398,6 +398,9 @@ def statement(sk: Sketch, n: int, toks) -> None:
             else:
                 raise SketchError(f"a person takes level, hostile, existing or off, not {k!r}")
         p["name"] = s.text("the person's name")
+        if p.get("existing") and ("level" in p or p.get("hostile")):
+            sk.errors.append((n, "existing", f"person {pid}: one the world already holds keeps its own level and "
+                              "its own hostility; a fixed level or hostility is a person of ours (drop `existing`)"))
         sk.people[pid] = p
         sk.src[("ref", pid)] = n
     elif w in ("thing", "door"):
@@ -869,7 +872,7 @@ def _broken(form) -> bool:
 
 # -- the design rules: what a writer most often gets wrong that the form's rules do not name ---------------------
 
-DESIGN = ("rank-set", "take-unheld", "give-twice", "hostile-speaks", "hostile-must-live", "death-both-ways", "one-name", "give-placed", "dead-early",
+DESIGN = ("one-ref-many", "rank-set", "take-unheld", "give-twice", "hostile-speaks", "hostile-must-live", "death-both-ways", "one-name", "give-placed", "dead-early",
           "early-death", "needs-living", "number-set", "refusal")
 
 
@@ -913,6 +916,13 @@ def design(form: dict, sk: Sketch, numbers_set: set[str], factions_set: set[str]
             out.append(("one-name", f"ref {bad[0][0]} and {bad[0][1]} are both \"{nm}\": one name for one thing (a "
                         "person met in two places is two placements, one switched off where the other is switched "
                         "on)"))
+    many = re.compile(r"^(the )?(two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|a dozen|\d+|several|"
+                      r"many|a row of|a ring of|a set of|a pile of|a heap of)\b", re.I)
+    for r in form["refs"]:
+        if r["kind"] in ("thing", "person") and many.search(r["name"]) and not r["placement"].get("container") \
+                and not r.get("count"):
+            out.append(("one-ref-many", f"ref {r['id']} is \"{r['name']}\": one reference is one thing or person; "
+                        "several are several references, each switched, or one thing that reads as the group"))
     placed = {r["id"] for r in form["refs"] if r["kind"] == "thing" and fm.item_of(r["id"]) == r["id"]}
     for where, res in rules._all_results(fm):
         for x in res:
@@ -1077,6 +1087,8 @@ GLOSS = {
     "needs-living": "a person the quest cannot go on without, not named",
     "number-set": "a number read that nothing sets",
     "rank-set": "a rank asked for that no quest in the file gives",
+    "one-ref-many": "one reference standing for several things or people",
+    "existing": "a level or hostility set on a person the world already holds",
     "refusal": "a check with no refusal of its own",
     "take-unheld": "a hand-over the player may not be able to make: the stage takes what a way to it never asked for",
     "give-twice": "one thing given and taken: the player would hold two",

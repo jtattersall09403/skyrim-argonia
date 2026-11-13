@@ -96,6 +96,12 @@ locked or not.
 - *Change a price, teach a skill, change a look, build or burn anything in sight.* A gold check on a line is a
   price, and it is fixed; a skill book teaches; a burnt camp is a second set of things switched on far away.
 - *Do something only sometimes.* A stage's results always happen. Two outcomes are two stages.
+- *Switch a group as one.* Eleven stakes, a ring of torches, a crowd: each is a reference of its own, each switched;
+  or one thing that reads as the whole group (a row of stakes the place holds as one piece), named as a need of the
+  place with the existing model it is built from.
+- *Make a crime where nothing is owned.* Picking a lock or taking a thing is a crime only where it is owned: a
+  container's owner is in the sketch; a door's crime comes from its place being owned, which is a need of the place
+  (the mine's rooms owned by the mine's people). Write no warning of a crime the place does not make one.
 - *Give what a person carries, or what lies in a chest.* A thing placed in the world is got by taking it; a stage
   can only give a thing nobody has placed (a letter written for the player, a second copy of its own).
 
@@ -540,6 +546,10 @@ must-live giver fails 96
 - "Teemal is found hauling at the jetty afterwards": a second placement, switched on by a line away from the jetty.
 - "If named, he is gone": a stage for named and a stage for not named, each with its own switches.
 - "A lesson from the trainer as the reward": a skill book.
+- "Eleven grave-stakes raised": eleven references, or one piece that reads as the row, a need of the place.
+- "Picking that door is a crime": only if the place's rooms are owned; ask for it in the needs of places.
+- "The place's own crab, at level 12": a creature the world holds keeps its level; a fixed level is a creature of
+  ours.
 
 **The shape.**
 

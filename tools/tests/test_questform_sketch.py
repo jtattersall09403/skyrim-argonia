@@ -103,6 +103,8 @@ BREAKS = [
      'line hand giver at 30 ask "Here is the purse." if holds purse, number t01.told = 1 -> 90 says "she pays"',
      "number-set"),
     ('if skill Speech 30 -> 20 else "Pay or swim."', 'if skill Speech 30 -> 20', "refusal"),
+    ('thing purse on tollman "the toll purse"', 'thing purse on tollman "the toll purse"\nthing stakes at bridge off "eleven grave-stakes"\nobjective 12 at 30 "See" -> stakes', "one-ref-many"),
+    ('person tollman at bridge level 8 "the tollman"', 'person tollman at bridge existing level 8 "the tollman"', "existing"),
     ('line job giver at 0 ask "Any work?" -> 10', 'line job giver at 0 ask "Any work?" if rank reed 0 -> 10', "rank-set"),
     ('stage 20 "The tollman told me to take the purse."',
      'stage 20 "The tollman told me to take the purse." do off tollman', "away"),
