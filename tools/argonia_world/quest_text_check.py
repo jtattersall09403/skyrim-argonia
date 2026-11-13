@@ -77,11 +77,6 @@ def json_items(ids: dict[str, str], root: pathlib.Path = DATA) -> list[Item]:
     out = []
     for path in sorted((root / "quest_lines").glob("*.json")):
         data = json.loads(path.read_text())
-                q = ids.get(base.split("_")[1].upper())
-                for e in entries if q else []:
-                    out.append(Item(q, base, "prompt", e.get("prompt", "")))
-                    out += [Item(q, base, "spoken", t, e) for t in _texts(e)]
-            continue
         q = ids.get(path.stem.upper())
         if not q:
             continue

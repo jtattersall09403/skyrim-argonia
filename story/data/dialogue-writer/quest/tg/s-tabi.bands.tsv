@@ -1,7 +1,0 @@
-key	variant	band	n	line
-ARG_TG01_TopicDoor_0		low	0	Quiet work. This one does not sell it, but Khajiit knows who does.
-ARG_TG01_TopicDoor_0		low	1	Go into the house on the dock behind this Khajiit. Ask for Tilts-The-Jug.
-ARG_TG01_TopicDoor_0		low	2	She sometimes has use for careful hands. This one says no more.
-ARG_TG01_TopicDoor_0		high	0	Quiet work, friend? This one does not sell it, but Khajiit knows who does.
-ARG_TG01_TopicDoor_0		high	1	Go into the house on the dock behind this Khajiit, and ask for Tilts-The-Jug.
-ARG_TG01_TopicDoor_0		high	2	She sometimes has use for careful hands. Khajiit trusts you to walk softly there.

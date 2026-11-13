@@ -7,11 +7,6 @@
    "why": "a refusal of a Speech check that names what would change it; the player answers with the check, not a topic"
   },
   {
-   "key": "ARG_TG01_TopicDoor_0",
-   "text": "Quiet work",
-   "why": "the speaker echoes the player's own words back; it asks nothing"
-  },
-  {
    "key": "topic.tg01-the-door",
    "text": "Quiet work?",
    "why": "S'Tabi echoes the player's own words back; it asks nothing"
@@ -32,31 +27,6 @@
    "key": "topic.lq25-keep-quiet",
    "text": "Here are 40 gold",
    "why": "the fragment pays 40 gold (ARG_QF_LQ25 Fragment_92)"
-  },
-  {
-   "key": "ARG_TG01_TopicReturn_0",
-   "text": "Here are one hundred gold",
-   "why": "the fragment pays 100 gold and three lockpicks (ARG_QF_TG01 Fragment_40)"
-  },
-  {
-   "key": "ARG_TG02_TopicHandOverDar_0",
-   "text": "Here are eighty gold",
-   "why": "the fragment pays 80 gold (ARG_QF_TG02 HandOver)"
-  },
-  {
-   "key": "ARG_TG02_TopicHandOverOkan_0",
-   "text": "Here are eighty gold",
-   "why": "the fragment pays 80 gold (ARG_QF_TG02 HandOver)"
-  },
-  {
-   "key": "ARG_TG02_TopicHandOverNeeta_0",
-   "text": "Here is eighty gold",
-   "why": "the fragment pays 80 gold (ARG_QF_TG02 HandOver)"
-  },
-  {
-   "key": "ARG_TG02_TopicSellBeads_0",
-   "text": "Here are fifty gold",
-   "why": "the fragment pays 50 gold (ARG_QF_TG02 SellBack)"
   },
   {
    "key": "topic.bc02-the-fire",
