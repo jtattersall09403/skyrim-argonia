@@ -1551,7 +1551,14 @@
     "SmoothCam.esp"
    ],
    "check": "the archive ships SmoothCam.esl and SmoothCam.esp under Release_Package/00 Data (a FOMOD): confirm which the collection installs",
-   "install_note": "Archive ships SmoothCam.esl and SmoothCam.esp in Data/ via a FOMOD; stage takes the FOMOD defaults, which lay SmoothCam.esp only (plugins.txt lists *SmoothCam.esp). Not tested in game."
+   "install_note": "Archive ships SmoothCam.esl and SmoothCam.esp in Data/ via a FOMOD; stage takes the FOMOD defaults, which lay SmoothCam.esp only (plugins.txt lists *SmoothCam.esp). Not tested in game.",
+   "files": [
+    {
+     "path": "SKSE/Plugins/SmoothCam.json",
+     "text": "{\n \"enablePitchZoom\": true,\n \"pitchZoomAfterInterp\": false,\n \"pitchZoomMaxAngle\": 90.0,\n \"pitchZoomMax\": 100.0\n}\n"
+    }
+   ],
+   "settings_note": "SmoothCam.json laid with pitch zoom on (SmoothCam's own defaults for its angle and distance): SmoothCam turns the engine's pitch zoom off by default, so looking up swung the camera down at full distance into the ground; vanilla pulls the camera in as it looks up (walk 2, L19). Keys absent from the file keep SmoothCam's defaults (Config::ReadConfigFile, j.value)."
   },
   {
    "id": "soulslike-smoothcam",

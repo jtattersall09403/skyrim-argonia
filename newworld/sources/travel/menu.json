@@ -2,28 +2,28 @@
  "root": "root",
  "pages": {
   "root": {
-   "title": "Argonia Travel",
+   "title": "Argonia Travel\nThe start: where a new game of the new world begins\nPlaces: every place, by region\nWaters: the walk checks' waters\nWalk spots: the walk checks' spots",
    "buttons": [
     {
-     "label": "The start of the new world",
+     "label": "The start",
      "cell": "ArgoniaNWStart"
     },
     {
-     "label": "Places by region",
+     "label": "Places",
      "page": "regions"
     },
     {
-     "label": "Walk-check waters",
+     "label": "Waters",
      "page": "walk"
     },
     {
-     "label": "Walk-check spots",
+     "label": "Walk spots",
      "page": "spots"
     }
    ]
   },
   "r-althii-archipelago": {
-   "title": "Althii Archipelago (1 of 3)",
+   "title": "Althii Archipelago (1 of 6)",
    "buttons": [
     {
      "label": "Ashiit Den",
@@ -37,6 +37,19 @@
      "label": "Dunhallow Plantation",
      "cell": "ANWDunhallowPlantation"
     },
+    {
+     "label": "More...",
+     "page": "r-althii-archipelago-2"
+    },
+    {
+     "label": "Back",
+     "page": "regions"
+    }
+   ]
+  },
+  "r-althii-archipelago-2": {
+   "title": "Althii Archipelago (2 of 6)",
+   "buttons": [
     {
      "label": "Fort Lowmoth",
      "cell": "ANWFortLowmoth"
@@ -54,22 +67,22 @@
      "cell": "ANWIxaRuuFarm"
     },
     {
-     "label": "Karketa",
-     "cell": "ANWKarketa"
-    },
-    {
-     "label": "More",
-     "page": "r-althii-archipelago-2"
+     "label": "More...",
+     "page": "r-althii-archipelago-3"
     },
     {
      "label": "Back",
-     "page": "regions"
+     "page": "r-althii-archipelago"
     }
    ]
   },
-  "r-althii-archipelago-2": {
-   "title": "Althii Archipelago (2 of 3)",
+  "r-althii-archipelago-3": {
+   "title": "Althii Archipelago (3 of 6)",
    "buttons": [
+    {
+     "label": "Karketa",
+     "cell": "ANWKarketa"
+    },
     {
      "label": "Kitsa Burrow",
      "cell": "ANWKitsaBurrow"
@@ -87,6 +100,19 @@
      "cell": "ANWNundi"
     },
     {
+     "label": "More...",
+     "page": "r-althii-archipelago-4"
+    },
+    {
+     "label": "Back",
+     "page": "r-althii-archipelago-2"
+    }
+   ]
+  },
+  "r-althii-archipelago-4": {
+   "title": "Althii Archipelago (4 of 6)",
+   "buttons": [
+    {
      "label": "Reknaa-iit Mound",
      "cell": "ANWReknaaIitMound"
     },
@@ -103,17 +129,17 @@
      "cell": "ANWSeekuFarm"
     },
     {
-     "label": "More",
-     "page": "r-althii-archipelago-3"
+     "label": "More...",
+     "page": "r-althii-archipelago-5"
     },
     {
      "label": "Back",
-     "page": "r-althii-archipelago"
+     "page": "r-althii-archipelago-3"
     }
    ]
   },
-  "r-althii-archipelago-3": {
-   "title": "Althii Archipelago (3 of 3)",
+  "r-althii-archipelago-5": {
+   "title": "Althii Archipelago (5 of 6)",
    "buttons": [
     {
      "label": "Silt-Orrel Estate",
@@ -132,6 +158,19 @@
      "cell": "ANWTalNeeshFarm"
     },
     {
+     "label": "More...",
+     "page": "r-althii-archipelago-6"
+    },
+    {
+     "label": "Back",
+     "page": "r-althii-archipelago-4"
+    }
+   ]
+  },
+  "r-althii-archipelago-6": {
+   "title": "Althii Archipelago (6 of 6)",
+   "buttons": [
+    {
      "label": "Uluo",
      "cell": "ANWUluo"
     },
@@ -141,12 +180,12 @@
     },
     {
      "label": "Back",
-     "page": "r-althii-archipelago-2"
+     "page": "r-althii-archipelago-5"
     }
    ]
   },
   "r-aphon-isle": {
-   "title": "Aphon Isle",
+   "title": "Aphon Isle (1 of 2)",
    "buttons": [
     {
      "label": "Aphon Belvedere",
@@ -161,12 +200,25 @@
      "cell": "ANWKelpMouthCave"
     },
     {
+     "label": "More...",
+     "page": "r-aphon-isle-2"
+    },
+    {
+     "label": "Back",
+     "page": "regions"
+    }
+   ]
+  },
+  "r-aphon-isle-2": {
+   "title": "Aphon Isle (2 of 2)",
+   "buttons": [
+    {
      "label": "The Sallow Anne",
      "cell": "ANWTheSallowAnne"
     },
     {
      "label": "Back",
-     "page": "regions"
+     "page": "r-aphon-isle"
     }
    ]
   },
@@ -198,15 +250,7 @@
      "cell": "ANWThorn"
     },
     {
-     "label": "Thornway Watch",
-     "cell": "ANWThornwayWatch"
-    },
-    {
-     "label": "Tselan",
-     "cell": "ANWTselan"
-    },
-    {
-     "label": "More",
+     "label": "More...",
      "page": "r-arnesian-jungle-2"
     },
     {
@@ -218,6 +262,14 @@
   "r-arnesian-jungle-2": {
    "title": "Arnesian Jungle (2 of 2)",
    "buttons": [
+    {
+     "label": "Thornway Watch",
+     "cell": "ANWThornwayWatch"
+    },
+    {
+     "label": "Tselan",
+     "cell": "ANWTselan"
+    },
     {
      "label": "Tsonac",
      "cell": "ANWTsonac"
@@ -258,7 +310,7 @@
    ]
   },
   "r-banujha-basin": {
-   "title": "Banujha Basin (1 of 2)",
+   "title": "Banujha Basin (1 of 4)",
    "buttons": [
     {
      "label": "Banu-Veeth Post",
@@ -281,6 +333,19 @@
      "cell": "ANWKharaxos"
     },
     {
+     "label": "More...",
+     "page": "r-banujha-basin-2"
+    },
+    {
+     "label": "Back",
+     "page": "regions"
+    }
+   ]
+  },
+  "r-banujha-basin-2": {
+   "title": "Banujha Basin (2 of 4)",
+   "buttons": [
+    {
      "label": "Kyrenos",
      "cell": "ANWKyrenos"
     },
@@ -293,19 +358,6 @@
      "cell": "ANWOeneas"
     },
     {
-     "label": "More",
-     "page": "r-banujha-basin-2"
-    },
-    {
-     "label": "Back",
-     "page": "regions"
-    }
-   ]
-  },
-  "r-banujha-basin-2": {
-   "title": "Banujha Basin (2 of 2)",
-   "buttons": [
-    {
      "label": "Olaxa Station",
      "cell": "ANWOlaxaStation"
     },
@@ -313,6 +365,19 @@
      "label": "Ra'tal Den",
      "cell": "ANWRatalDen"
     },
+    {
+     "label": "More...",
+     "page": "r-banujha-basin-3"
+    },
+    {
+     "label": "Back",
+     "page": "r-banujha-basin"
+    }
+   ]
+  },
+  "r-banujha-basin-3": {
+   "title": "Banujha Basin (3 of 4)",
+   "buttons": [
     {
      "label": "Redtimber Camp",
      "cell": "ANWRedtimberCamp"
@@ -330,17 +395,30 @@
      "cell": "ANWXulBanuPost"
     },
     {
+     "label": "More...",
+     "page": "r-banujha-basin-4"
+    },
+    {
+     "label": "Back",
+     "page": "r-banujha-basin-2"
+    }
+   ]
+  },
+  "r-banujha-basin-4": {
+   "title": "Banujha Basin (4 of 4)",
+   "buttons": [
+    {
      "label": "Zul-Meeka Station",
      "cell": "ANWZulMeekaStation"
     },
     {
      "label": "Back",
-     "page": "r-banujha-basin"
+     "page": "r-banujha-basin-3"
     }
    ]
   },
   "r-barsaebica": {
-   "title": "Barsaebica (1 of 2)",
+   "title": "Barsaebica (1 of 3)",
    "buttons": [
     {
      "label": "Agia Nero",
@@ -363,6 +441,19 @@
      "cell": "ANWGemin"
     },
     {
+     "label": "More...",
+     "page": "r-barsaebica-2"
+    },
+    {
+     "label": "Back",
+     "page": "regions"
+    }
+   ]
+  },
+  "r-barsaebica-2": {
+   "title": "Barsaebica (2 of 3)",
+   "buttons": [
+    {
      "label": "Loriasel",
      "cell": "ANWLoriasel"
     },
@@ -375,19 +466,6 @@
      "cell": "ANWOrimel"
     },
     {
-     "label": "More",
-     "page": "r-barsaebica-2"
-    },
-    {
-     "label": "Back",
-     "page": "regions"
-    }
-   ]
-  },
-  "r-barsaebica-2": {
-   "title": "Barsaebica (2 of 2)",
-   "buttons": [
-    {
      "label": "Reed-Sill Weir",
      "cell": "ANWReedSillWeir"
     },
@@ -395,6 +473,19 @@
      "label": "Slough Point",
      "cell": "ANWSloughPoint"
     },
+    {
+     "label": "More...",
+     "page": "r-barsaebica-3"
+    },
+    {
+     "label": "Back",
+     "page": "r-barsaebica"
+    }
+   ]
+  },
+  "r-barsaebica-3": {
+   "title": "Barsaebica (3 of 3)",
+   "buttons": [
     {
      "label": "Teel-Fen Weir",
      "cell": "ANWTeelFenWeir"
@@ -413,12 +504,12 @@
     },
     {
      "label": "Back",
-     "page": "r-barsaebica"
+     "page": "r-barsaebica-2"
     }
    ]
   },
   "r-benthic-yobesh": {
-   "title": "Benthic Yobesh (1 of 2)",
+   "title": "Benthic Yobesh (1 of 3)",
    "buttons": [
     {
      "label": "Bell Station",
@@ -437,6 +528,19 @@
      "cell": "ANWNaxiilRuSpire"
     },
     {
+     "label": "More...",
+     "page": "r-benthic-yobesh-2"
+    },
+    {
+     "label": "Back",
+     "page": "regions"
+    }
+   ]
+  },
+  "r-benthic-yobesh-2": {
+   "title": "Benthic Yobesh (2 of 3)",
+   "buttons": [
+    {
      "label": "Okhu-Thteel Spire",
      "cell": "ANWOkhuThteelSpire"
     },
@@ -449,22 +553,22 @@
      "cell": "ANWTheKelpLantern"
     },
     {
-     "label": "Thul-Kesh Spire",
-     "cell": "ANWThulKeshSpire"
-    },
-    {
-     "label": "More",
-     "page": "r-benthic-yobesh-2"
+     "label": "More...",
+     "page": "r-benthic-yobesh-3"
     },
     {
      "label": "Back",
-     "page": "regions"
+     "page": "r-benthic-yobesh"
     }
    ]
   },
-  "r-benthic-yobesh-2": {
-   "title": "Benthic Yobesh (2 of 2)",
+  "r-benthic-yobesh-3": {
+   "title": "Benthic Yobesh (3 of 3)",
    "buttons": [
+    {
+     "label": "Thul-Kesh Spire",
+     "cell": "ANWThulKeshSpire"
+    },
     {
      "label": "Va-Seeth Spire",
      "cell": "ANWBellStation"
@@ -475,12 +579,12 @@
     },
     {
      "label": "Back",
-     "page": "r-benthic-yobesh"
+     "page": "r-benthic-yobesh-2"
     }
    ]
   },
   "r-blackwood": {
-   "title": "Blackwood",
+   "title": "Blackwood (1 of 2)",
    "buttons": [
     {
      "label": "Aithros",
@@ -503,6 +607,19 @@
      "cell": "ANWHutanVeel"
     },
     {
+     "label": "More...",
+     "page": "r-blackwood-2"
+    },
+    {
+     "label": "Back",
+     "page": "regions"
+    }
+   ]
+  },
+  "r-blackwood-2": {
+   "title": "Blackwood (2 of 2)",
+   "buttons": [
+    {
      "label": "Meliton",
      "cell": "ANWMeliton"
     },
@@ -512,12 +629,12 @@
     },
     {
      "label": "Back",
-     "page": "regions"
+     "page": "r-blackwood"
     }
    ]
   },
   "r-cape-percar": {
-   "title": "Cape Percar (1 of 3)",
+   "title": "Cape Percar (1 of 4)",
    "buttons": [
     {
      "label": "Acra-Tiin",
@@ -540,6 +657,19 @@
      "cell": "ANWMistwatch"
     },
     {
+     "label": "More...",
+     "page": "r-cape-percar-2"
+    },
+    {
+     "label": "Back",
+     "page": "regions"
+    }
+   ]
+  },
+  "r-cape-percar-2": {
+   "title": "Cape Percar (2 of 4)",
+   "buttons": [
+    {
      "label": "Naxan",
      "cell": "ANWNaxan"
     },
@@ -552,19 +682,6 @@
      "cell": "ANWOldGoldseam"
     },
     {
-     "label": "More",
-     "page": "r-cape-percar-2"
-    },
-    {
-     "label": "Back",
-     "page": "regions"
-    }
-   ]
-  },
-  "r-cape-percar-2": {
-   "title": "Cape Percar (2 of 3)",
-   "buttons": [
-    {
      "label": "Percar Scar",
      "cell": "ANWPercarScar"
     },
@@ -572,6 +689,19 @@
      "label": "Redbank Quarry",
      "cell": "ANWRedbankQuarry"
     },
+    {
+     "label": "More...",
+     "page": "r-cape-percar-3"
+    },
+    {
+     "label": "Back",
+     "page": "r-cape-percar"
+    }
+   ]
+  },
+  "r-cape-percar-3": {
+   "title": "Cape Percar (3 of 4)",
+   "buttons": [
     {
      "label": "Redgum Camp",
      "cell": "ANWRedgumCamp"
@@ -593,25 +723,8 @@
      "cell": "ANWWrackmoth"
     },
     {
-     "label": "Xal-Tarek",
-     "cell": "ANWXalTarek"
-    },
-    {
-     "label": "More",
-     "page": "r-cape-percar-3"
-    },
-    {
-     "label": "Back",
-     "page": "r-cape-percar"
-    }
-   ]
-  },
-  "r-cape-percar-3": {
-   "title": "Cape Percar (3 of 3)",
-   "buttons": [
-    {
-     "label": "Zeh-Orun",
-     "cell": "ANWZehOrun"
+     "label": "More...",
+     "page": "r-cape-percar-4"
     },
     {
      "label": "Back",
@@ -619,8 +732,25 @@
     }
    ]
   },
+  "r-cape-percar-4": {
+   "title": "Cape Percar (4 of 4)",
+   "buttons": [
+    {
+     "label": "Xal-Tarek",
+     "cell": "ANWXalTarek"
+    },
+    {
+     "label": "Zeh-Orun",
+     "cell": "ANWZehOrun"
+    },
+    {
+     "label": "Back",
+     "page": "r-cape-percar-3"
+    }
+   ]
+  },
   "r-chixathe-mesa": {
-   "title": "Chixathe Mesa (1 of 2)",
+   "title": "Chixathe Mesa (1 of 3)",
    "buttons": [
     {
      "label": "Ayiin",
@@ -643,6 +773,19 @@
      "cell": "ANWHanaxiRoost"
     },
     {
+     "label": "More...",
+     "page": "r-chixathe-mesa-2"
+    },
+    {
+     "label": "Back",
+     "page": "regions"
+    }
+   ]
+  },
+  "r-chixathe-mesa-2": {
+   "title": "Chixathe Mesa (2 of 3)",
+   "buttons": [
+    {
      "label": "Hirecan",
      "cell": "ANWHirecan"
     },
@@ -655,19 +798,6 @@
      "cell": "ANWKaochalit"
     },
     {
-     "label": "More",
-     "page": "r-chixathe-mesa-2"
-    },
-    {
-     "label": "Back",
-     "page": "regions"
-    }
-   ]
-  },
-  "r-chixathe-mesa-2": {
-   "title": "Chixathe Mesa (2 of 2)",
-   "buttons": [
-    {
      "label": "Noota Nara",
      "cell": "ANWNootaNara"
     },
@@ -679,6 +809,19 @@
      "label": "Oxayo",
      "cell": "ANWOxayo"
     },
+    {
+     "label": "More...",
+     "page": "r-chixathe-mesa-3"
+    },
+    {
+     "label": "Back",
+     "page": "r-chixathe-mesa"
+    }
+   ]
+  },
+  "r-chixathe-mesa-3": {
+   "title": "Chixathe Mesa (3 of 3)",
+   "buttons": [
     {
      "label": "Reeka-Veesa",
      "cell": "ANWReekaVeesa"
@@ -701,7 +844,7 @@
     },
     {
      "label": "Back",
-     "page": "r-chixathe-mesa"
+     "page": "r-chixathe-mesa-2"
     }
    ]
   },
@@ -729,19 +872,7 @@
      "cell": "ANWMarshgateWatch"
     },
     {
-     "label": "Virtluush",
-     "cell": "ANWVirtluush"
-    },
-    {
-     "label": "Wreck of the Pale Harvest",
-     "cell": "ANWWreckOfThePaleHarvest"
-    },
-    {
-     "label": "Ysan",
-     "cell": "ANWYsan"
-    },
-    {
-     "label": "More",
+     "label": "More...",
      "page": "r-hatandros-bight-2"
     },
     {
@@ -751,8 +882,21 @@
    ]
   },
   "r-hatandros-bight-2": {
-   "title": "Hatandros Bight (2 of 2)",
+   "title": "Hatandros Bight (2 of 2)\nPale Harvest wreck: Wreck of the Pale Harvest",
    "buttons": [
+    {
+     "label": "Pale Harvest wreck",
+     "cell": "ANWWreckOfThePaleHarvest",
+     "about": "Wreck of the Pale Harvest"
+    },
+    {
+     "label": "Virtluush",
+     "cell": "ANWVirtluush"
+    },
+    {
+     "label": "Ysan",
+     "cell": "ANWYsan"
+    },
     {
      "label": "Yuva-Goli",
      "cell": "ANWYuvaGoli"
@@ -791,19 +935,7 @@
      "cell": "ANWGideonSouthWatch"
     },
     {
-     "label": "Giovesse",
-     "cell": "ANWGiovesse"
-    },
-    {
-     "label": "Hixinoag",
-     "cell": "ANWHixinoag"
-    },
-    {
-     "label": "Olvani",
-     "cell": "ANWOlvani"
-    },
-    {
-     "label": "More",
+     "label": "More...",
      "page": "r-kotherra-mangroves-2"
     },
     {
@@ -815,6 +947,18 @@
   "r-kotherra-mangroves-2": {
    "title": "Kotherra Mangroves (2 of 2)",
    "buttons": [
+    {
+     "label": "Giovesse",
+     "cell": "ANWGiovesse"
+    },
+    {
+     "label": "Hixinoag",
+     "cell": "ANWHixinoag"
+    },
+    {
+     "label": "Olvani",
+     "cell": "ANWOlvani"
+    },
     {
      "label": "Teth-Kasa Station",
      "cell": "ANWTethKasaStation"
@@ -853,15 +997,7 @@
      "cell": "ANWTruowa"
     },
     {
-     "label": "Tumnatu Reed Camp",
-     "cell": "ANWTumnatuReedCamp"
-    },
-    {
-     "label": "Uzu-Tegh",
-     "cell": "ANWUzuTegh"
-    },
-    {
-     "label": "More",
+     "label": "More...",
      "page": "r-lake-ulaish-2"
     },
     {
@@ -874,6 +1010,14 @@
    "title": "Lake Ulaish (2 of 2)",
    "buttons": [
     {
+     "label": "Tumnatu Reed Camp",
+     "cell": "ANWTumnatuReedCamp"
+    },
+    {
+     "label": "Uzu-Tegh",
+     "cell": "ANWUzuTegh"
+    },
+    {
      "label": "Yalugo",
      "cell": "ANWYalugo"
     },
@@ -884,7 +1028,7 @@
    ]
   },
   "r-murkwood": {
-   "title": "Murkwood (1 of 2)",
+   "title": "Murkwood (1 of 3)",
    "buttons": [
     {
      "label": "Dry-Fang Camp",
@@ -907,6 +1051,19 @@
      "cell": "ANWHokalUsh"
     },
     {
+     "label": "More...",
+     "page": "r-murkwood-2"
+    },
+    {
+     "label": "Back",
+     "page": "regions"
+    }
+   ]
+  },
+  "r-murkwood-2": {
+   "title": "Murkwood (2 of 3)",
+   "buttons": [
+    {
      "label": "Hutan-Ketu",
      "cell": "ANWHutanKetu"
     },
@@ -919,19 +1076,6 @@
      "cell": "ANWMudCroakCamp"
     },
     {
-     "label": "More",
-     "page": "r-murkwood-2"
-    },
-    {
-     "label": "Back",
-     "page": "regions"
-    }
-   ]
-  },
-  "r-murkwood-2": {
-   "title": "Murkwood (2 of 2)",
-   "buttons": [
-    {
      "label": "Nemeon",
      "cell": "ANWNemeon"
     },
@@ -939,6 +1083,19 @@
      "label": "Salt-Tooth Camp",
      "cell": "ANWSaltToothCamp"
     },
+    {
+     "label": "More...",
+     "page": "r-murkwood-3"
+    },
+    {
+     "label": "Back",
+     "page": "r-murkwood"
+    }
+   ]
+  },
+  "r-murkwood-3": {
+   "title": "Murkwood (3 of 3)",
+   "buttons": [
     {
      "label": "Tseli-Oon",
      "cell": "ANWTseliOon"
@@ -953,12 +1110,12 @@
     },
     {
      "label": "Back",
-     "page": "r-murkwood"
+     "page": "r-murkwood-2"
     }
    ]
   },
   "r-nha-enasa": {
-   "title": "Nha Enasa (1 of 2)",
+   "title": "Nha Enasa (1 of 3)",
    "buttons": [
     {
      "label": "Armanias",
@@ -981,6 +1138,19 @@
      "cell": "ANWMnemosa"
     },
     {
+     "label": "More...",
+     "page": "r-nha-enasa-2"
+    },
+    {
+     "label": "Back",
+     "page": "regions"
+    }
+   ]
+  },
+  "r-nha-enasa-2": {
+   "title": "Nha Enasa (2 of 3)",
+   "buttons": [
+    {
      "label": "Nahk-Zeel Station",
      "cell": "ANWNahkZeelStation"
     },
@@ -993,22 +1163,22 @@
      "cell": "ANWNulSakeeshCamp"
     },
     {
-     "label": "More",
-     "page": "r-nha-enasa-2"
-    },
-    {
-     "label": "Back",
-     "page": "regions"
-    }
-   ]
-  },
-  "r-nha-enasa-2": {
-   "title": "Nha Enasa (2 of 2)",
-   "buttons": [
-    {
      "label": "Pelaxis",
      "cell": "ANWPelaxis"
     },
+    {
+     "label": "More...",
+     "page": "r-nha-enasa-3"
+    },
+    {
+     "label": "Back",
+     "page": "r-nha-enasa"
+    }
+   ]
+  },
+  "r-nha-enasa-3": {
+   "title": "Nha Enasa (3 of 3)",
+   "buttons": [
     {
      "label": "Sakeepa Station",
      "cell": "ANWSakeepaStation"
@@ -1019,12 +1189,12 @@
     },
     {
      "label": "Back",
-     "page": "r-nha-enasa"
+     "page": "r-nha-enasa-2"
     }
    ]
   },
   "r-nushara-bayou": {
-   "title": "Nushara Bayou (1 of 2)",
+   "title": "Nushara Bayou (1 of 2)\nRuined Velothi...: Ruined Velothi Shrine of Nyrath-Ven",
    "buttons": [
     {
      "label": "Archon",
@@ -1047,19 +1217,12 @@
      "cell": "ANWOju"
     },
     {
-     "label": "Ruined Velothi Shrine of Nyrath-Ven",
-     "cell": "ANWRuinedVelothiShrineOfNyrathVen"
+     "label": "Ruined Velothi...",
+     "cell": "ANWRuinedVelothiShrineOfNyrathVen",
+     "about": "Ruined Velothi Shrine of Nyrath-Ven"
     },
     {
-     "label": "Shalaia",
-     "cell": "ANWShalaia"
-    },
-    {
-     "label": "Siluo",
-     "cell": "ANWSiluo"
-    },
-    {
-     "label": "More",
+     "label": "More...",
      "page": "r-nushara-bayou-2"
     },
     {
@@ -1071,6 +1234,14 @@
   "r-nushara-bayou-2": {
    "title": "Nushara Bayou (2 of 2)",
    "buttons": [
+    {
+     "label": "Shalaia",
+     "cell": "ANWShalaia"
+    },
+    {
+     "label": "Siluo",
+     "cell": "ANWSiluo"
+    },
     {
      "label": "Tapauo",
      "cell": "ANWTapauo"
@@ -1090,7 +1261,7 @@
    ]
   },
   "r-okuwun-rahei": {
-   "title": "Okuwun Rahei (1 of 3)",
+   "title": "Okuwun Rahei (1 of 4)",
    "buttons": [
     {
      "label": "Anvadas",
@@ -1121,11 +1292,7 @@
      "cell": "ANWJoxhi"
     },
     {
-     "label": "Khiar",
-     "cell": "ANWKhiar"
-    },
-    {
-     "label": "More",
+     "label": "More...",
      "page": "r-okuwun-rahei-2"
     },
     {
@@ -1135,8 +1302,12 @@
    ]
   },
   "r-okuwun-rahei-2": {
-   "title": "Okuwun Rahei (2 of 3)",
+   "title": "Okuwun Rahei (2 of 4)",
    "buttons": [
+    {
+     "label": "Khiar",
+     "cell": "ANWKhiar"
+    },
     {
      "label": "Mazurath",
      "cell": "ANWMazurath"
@@ -1154,6 +1325,19 @@
      "cell": "ANWSaltmeadowFarm"
     },
     {
+     "label": "More...",
+     "page": "r-okuwun-rahei-3"
+    },
+    {
+     "label": "Back",
+     "page": "r-okuwun-rahei"
+    }
+   ]
+  },
+  "r-okuwun-rahei-3": {
+   "title": "Okuwun Rahei (3 of 4)",
+   "buttons": [
+    {
      "label": "Seafalls",
      "cell": "ANWSeafalls"
     },
@@ -1170,22 +1354,22 @@
      "cell": "ANWSethiral"
     },
     {
-     "label": "More",
-     "page": "r-okuwun-rahei-3"
-    },
-    {
-     "label": "Back",
-     "page": "r-okuwun-rahei"
-    }
-   ]
-  },
-  "r-okuwun-rahei-3": {
-   "title": "Okuwun Rahei (3 of 3)",
-   "buttons": [
-    {
      "label": "Tazhul",
      "cell": "ANWTazhul"
     },
+    {
+     "label": "More...",
+     "page": "r-okuwun-rahei-4"
+    },
+    {
+     "label": "Back",
+     "page": "r-okuwun-rahei-2"
+    }
+   ]
+  },
+  "r-okuwun-rahei-4": {
+   "title": "Okuwun Rahei (4 of 4)",
+   "buttons": [
     {
      "label": "Tidewatch Homestead",
      "cell": "ANWTidewatchHomestead"
@@ -1208,20 +1392,22 @@
     },
     {
      "label": "Back",
-     "page": "r-okuwun-rahei-2"
+     "page": "r-okuwun-rahei-3"
     }
    ]
   },
   "r-padomaic-ocean": {
-   "title": "Padomaic Ocean",
+   "title": "Padomaic Ocean\nBrindle Gull wreck: Wreck of the Brindle Gull\nResolute Crest wreck: Wreck of the Resolute Crest",
    "buttons": [
     {
-     "label": "Wreck of the Brindle Gull",
-     "cell": "ANWWreckOfTheBrindleGull"
+     "label": "Brindle Gull wreck",
+     "cell": "ANWWreckOfTheBrindleGull",
+     "about": "Wreck of the Brindle Gull"
     },
     {
-     "label": "Wreck of the Resolute Crest",
-     "cell": "ANWWreckOfTheResoluteCrest"
+     "label": "Resolute Crest wreck",
+     "cell": "ANWWreckOfTheResoluteCrest",
+     "about": "Wreck of the Resolute Crest"
     },
     {
      "label": "Wreck of the Silt Bride",
@@ -1251,7 +1437,7 @@
    ]
   },
   "r-skeith-isle": {
-   "title": "Skeith Isle",
+   "title": "Skeith Isle (1 of 2)",
    "buttons": [
     {
      "label": "Hollow Tide Camp",
@@ -1270,12 +1456,25 @@
      "cell": "ANWTheGreyTooth"
     },
     {
+     "label": "More...",
+     "page": "r-skeith-isle-2"
+    },
+    {
+     "label": "Back",
+     "page": "regions"
+    }
+   ]
+  },
+  "r-skeith-isle-2": {
+   "title": "Skeith Isle (2 of 2)",
+   "buttons": [
+    {
      "label": "Wreck of the Stormwidow",
      "cell": "ANWWreckOfTheStormwidow"
     },
     {
      "label": "Back",
-     "page": "regions"
+     "page": "r-skeith-isle"
     }
    ]
   },
@@ -1297,7 +1496,7 @@
    ]
   },
   "r-tulmek-washes": {
-   "title": "Tulmek Washes (1 of 3)",
+   "title": "Tulmek Washes (1 of 5)",
    "buttons": [
     {
      "label": "Amalaja",
@@ -1320,6 +1519,19 @@
      "cell": "ANWBucalos"
     },
     {
+     "label": "More...",
+     "page": "r-tulmek-washes-2"
+    },
+    {
+     "label": "Back",
+     "page": "regions"
+    }
+   ]
+  },
+  "r-tulmek-washes-2": {
+   "title": "Tulmek Washes (2 of 5)",
+   "buttons": [
+    {
      "label": "Delta Ferry",
      "cell": "ANWDeltaFerry"
     },
@@ -1332,19 +1544,6 @@
      "cell": "ANWKhariton"
     },
     {
-     "label": "More",
-     "page": "r-tulmek-washes-2"
-    },
-    {
-     "label": "Back",
-     "page": "regions"
-    }
-   ]
-  },
-  "r-tulmek-washes-2": {
-   "title": "Tulmek Washes (2 of 3)",
-   "buttons": [
-    {
      "label": "Kit Mounds",
      "cell": "ANWKitMounds"
     },
@@ -1356,6 +1555,19 @@
      "label": "Lujei Ferry",
      "cell": "ANWLujeiFerry"
     },
+    {
+     "label": "More...",
+     "page": "r-tulmek-washes-3"
+    },
+    {
+     "label": "Back",
+     "page": "r-tulmek-washes"
+    }
+   ]
+  },
+  "r-tulmek-washes-3": {
+   "title": "Tulmek Washes (3 of 5)",
+   "buttons": [
     {
      "label": "Mir-Xal",
      "cell": "ANWMirXal"
@@ -1377,22 +1589,22 @@
      "cell": "ANWReedfallFarm"
     },
     {
-     "label": "More",
-     "page": "r-tulmek-washes-3"
-    },
-    {
-     "label": "Back",
-     "page": "r-tulmek-washes"
-    }
-   ]
-  },
-  "r-tulmek-washes-3": {
-   "title": "Tulmek Washes (3 of 3)",
-   "buttons": [
-    {
      "label": "Salaxul",
      "cell": "ANWSalaxul"
     },
+    {
+     "label": "More...",
+     "page": "r-tulmek-washes-4"
+    },
+    {
+     "label": "Back",
+     "page": "r-tulmek-washes-2"
+    }
+   ]
+  },
+  "r-tulmek-washes-4": {
+   "title": "Tulmek Washes (4 of 5)",
+   "buttons": [
     {
      "label": "Sheh-Ara",
      "cell": "ANWShehAra"
@@ -1414,6 +1626,19 @@
      "cell": "ANWToklea"
     },
     {
+     "label": "More...",
+     "page": "r-tulmek-washes-5"
+    },
+    {
+     "label": "Back",
+     "page": "r-tulmek-washes-3"
+    }
+   ]
+  },
+  "r-tulmek-washes-5": {
+   "title": "Tulmek Washes (5 of 5)",
+   "buttons": [
+    {
      "label": "Wreck of the Salt Heron",
      "cell": "ANWWreckOfTheSaltHeron"
     },
@@ -1423,7 +1648,7 @@
     },
     {
      "label": "Back",
-     "page": "r-tulmek-washes-2"
+     "page": "r-tulmek-washes-4"
     }
    ]
   },
@@ -1453,7 +1678,7 @@
    ]
   },
   "r-valley-of-storms": {
-   "title": "Valley of Storms (1 of 2)",
+   "title": "Valley of Storms (1 of 4)",
    "buttons": [
     {
      "label": "Calvian Waystation",
@@ -1472,6 +1697,19 @@
      "cell": "ANWJalVeesa"
     },
     {
+     "label": "More...",
+     "page": "r-valley-of-storms-2"
+    },
+    {
+     "label": "Back",
+     "page": "regions"
+    }
+   ]
+  },
+  "r-valley-of-storms-2": {
+   "title": "Valley of Storms (2 of 4)",
+   "buttons": [
+    {
      "label": "Karsh-Naal Camp",
      "cell": "ANWKarshNaalCamp"
     },
@@ -1488,17 +1726,17 @@
      "cell": "ANWSedgeKalCamp"
     },
     {
-     "label": "More",
-     "page": "r-valley-of-storms-2"
+     "label": "More...",
+     "page": "r-valley-of-storms-3"
     },
     {
      "label": "Back",
-     "page": "regions"
+     "page": "r-valley-of-storms"
     }
    ]
   },
-  "r-valley-of-storms-2": {
-   "title": "Valley of Storms (2 of 2)",
+  "r-valley-of-storms-3": {
+   "title": "Valley of Storms (3 of 4)",
    "buttons": [
     {
      "label": "Sedgeweir",
@@ -1521,17 +1759,30 @@
      "cell": "ANWTenmalPits"
     },
     {
+     "label": "More...",
+     "page": "r-valley-of-storms-4"
+    },
+    {
+     "label": "Back",
+     "page": "r-valley-of-storms-2"
+    }
+   ]
+  },
+  "r-valley-of-storms-4": {
+   "title": "Valley of Storms (4 of 4)",
+   "buttons": [
+    {
      "label": "Vandrel Farm",
      "cell": "ANWVandrelFarm"
     },
     {
      "label": "Back",
-     "page": "r-valley-of-storms"
+     "page": "r-valley-of-storms-3"
     }
    ]
   },
   "regions": {
-   "title": "Places by region (1 of 3)",
+   "title": "Places by region (1 of 6)",
    "buttons": [
     {
      "label": "Althii Archipelago",
@@ -1550,6 +1801,19 @@
      "page": "r-aunike-ridge"
     },
     {
+     "label": "More...",
+     "page": "regions-2"
+    },
+    {
+     "label": "Back",
+     "page": "root"
+    }
+   ]
+  },
+  "regions-2": {
+   "title": "Places by region (2 of 6)",
+   "buttons": [
+    {
      "label": "Banujha Basin",
      "page": "r-banujha-basin"
     },
@@ -1566,22 +1830,22 @@
      "page": "r-blackwood"
     },
     {
-     "label": "More",
-     "page": "regions-2"
-    },
-    {
-     "label": "Back",
-     "page": "root"
-    }
-   ]
-  },
-  "regions-2": {
-   "title": "Places by region (2 of 3)",
-   "buttons": [
-    {
      "label": "Cape Percar",
      "page": "r-cape-percar"
     },
+    {
+     "label": "More...",
+     "page": "regions-3"
+    },
+    {
+     "label": "Back",
+     "page": "regions"
+    }
+   ]
+  },
+  "regions-3": {
+   "title": "Places by region (3 of 6)",
+   "buttons": [
     {
      "label": "Chixathe Mesa",
      "page": "r-chixathe-mesa"
@@ -1599,6 +1863,19 @@
      "page": "r-lake-ulaish"
     },
     {
+     "label": "More...",
+     "page": "regions-4"
+    },
+    {
+     "label": "Back",
+     "page": "regions-2"
+    }
+   ]
+  },
+  "regions-4": {
+   "title": "Places by region (4 of 6)",
+   "buttons": [
+    {
      "label": "Murkwood",
      "page": "r-murkwood"
     },
@@ -1611,19 +1888,6 @@
      "page": "r-nushara-bayou"
     },
     {
-     "label": "More",
-     "page": "regions-3"
-    },
-    {
-     "label": "Back",
-     "page": "regions"
-    }
-   ]
-  },
-  "regions-3": {
-   "title": "Places by region (3 of 3)",
-   "buttons": [
-    {
      "label": "Okuwun Rahei",
      "page": "r-okuwun-rahei"
     },
@@ -1631,6 +1895,19 @@
      "label": "Padomaic Ocean",
      "page": "r-padomaic-ocean"
     },
+    {
+     "label": "More...",
+     "page": "regions-5"
+    },
+    {
+     "label": "Back",
+     "page": "regions-3"
+    }
+   ]
+  },
+  "regions-5": {
+   "title": "Places by region (5 of 6)",
+   "buttons": [
     {
      "label": "Sea of Mists",
      "page": "r-sea-of-mists"
@@ -1648,6 +1925,19 @@
      "page": "r-tulmek-washes"
     },
     {
+     "label": "More...",
+     "page": "regions-6"
+    },
+    {
+     "label": "Back",
+     "page": "regions-4"
+    }
+   ]
+  },
+  "regions-6": {
+   "title": "Places by region (6 of 6)",
+   "buttons": [
+    {
      "label": "Ultherus Swamp",
      "page": "r-ultherus-swamp"
     },
@@ -1657,47 +1947,40 @@
     },
     {
      "label": "Back",
-     "page": "regions-2"
+     "page": "regions-5"
     }
    ]
   },
   "spots": {
-   "title": "Walk-check spots (1 of 2)",
+   "title": "Walk-check spots (1 of 4)\nD1 Cape Percar: D1, the lowest danger: Cape Percar open coast\nD5 Murkwood: D5, the highest danger: Murkwood cypress swamp\nFresh water: Fresh black water creatures: Banujha Basin\nSalt water: Salt water creatures: Aphon Isle coast\nCanopy: Under the canopy: Arnesian Jungle",
    "buttons": [
     {
-     "label": "D1, the lowest danger: Cape Percar open coast",
-     "cell": "ANWSpotD1CapePercar"
+     "label": "D1 Cape Percar",
+     "cell": "ANWSpotD1CapePercar",
+     "about": "D1, the lowest danger: Cape Percar open coast"
     },
     {
-     "label": "D5, the highest danger: Murkwood cypress swamp",
-     "cell": "ANWSpotD5Murkwood"
+     "label": "D5 Murkwood",
+     "cell": "ANWSpotD5Murkwood",
+     "about": "D5, the highest danger: Murkwood cypress swamp"
     },
     {
-     "label": "Fresh black water creatures: Banujha Basin",
-     "cell": "ANWSpotFreshWater"
+     "label": "Fresh water",
+     "cell": "ANWSpotFreshWater",
+     "about": "Fresh black water creatures: Banujha Basin"
     },
     {
-     "label": "Salt water creatures: Aphon Isle coast",
-     "cell": "ANWSpotSaltWater"
+     "label": "Salt water",
+     "cell": "ANWSpotSaltWater",
+     "about": "Salt water creatures: Aphon Isle coast"
     },
     {
-     "label": "Under the canopy: Arnesian Jungle",
-     "cell": "ANWSpotCanopy"
+     "label": "Canopy",
+     "cell": "ANWSpotCanopy",
+     "about": "Under the canopy: Arnesian Jungle"
     },
     {
-     "label": "In the open: Arnesian Jungle grassland",
-     "cell": "ANWSpotOpen"
-    },
-    {
-     "label": "Night insects at dusk: Nushara Bayou reeds",
-     "cell": "ANWSpotDusk"
-    },
-    {
-     "label": "A hostile people band: Chixathe Mesa",
-     "cell": "ANWSpotHostileNpcs"
-    },
-    {
-     "label": "More",
+     "label": "More...",
      "page": "spots-2"
     },
     {
@@ -1707,35 +1990,31 @@
    ]
   },
   "spots-2": {
-   "title": "Walk-check spots (2 of 2)",
+   "title": "Walk-check spots (2 of 4)\nOpen ground: In the open: Arnesian Jungle grassland\nDusk insects: Night insects at dusk: Nushara Bayou reeds\nHostile band: A hostile people band: Chixathe Mesa\nHarvest plants: Harvestable plants: Ultherus Swamp",
    "buttons": [
     {
-     "label": "Harvestable plants: Ultherus Swamp",
-     "cell": "ANWSpotSwampHarvest"
+     "label": "Open ground",
+     "cell": "ANWSpotOpen",
+     "about": "In the open: Arnesian Jungle grassland"
     },
     {
-     "label": "A dry region: Aunike Ridge scrub",
-     "cell": "ANWSpotDry"
+     "label": "Dusk insects",
+     "cell": "ANWSpotDusk",
+     "about": "Night insects at dusk: Nushara Bayou reeds"
     },
     {
-     "label": "A sea shore: Hatandros Bight beach",
-     "cell": "ANWSpotSeaShore"
+     "label": "Hostile band",
+     "cell": "ANWSpotHostileNpcs",
+     "about": "A hostile people band: Chixathe Mesa"
     },
     {
-     "label": "A lake shore: Lake Ulaish",
-     "cell": "ANWSpotLakeUlaish"
+     "label": "Harvest plants",
+     "cell": "ANWSpotSwampHarvest",
+     "about": "Harvestable plants: Ultherus Swamp"
     },
     {
-     "label": "A cool fen: Barsaebica",
-     "cell": "ANWSpotBarsaebica"
-    },
-    {
-     "label": "Red mud mangroves: Kotherra Mangroves",
-     "cell": "ANWSpotKotherra"
-    },
-    {
-     "label": "Storm light: Valley of Storms",
-     "cell": "ANWSpotValleyOfStorms"
+     "label": "More...",
+     "page": "spots-3"
     },
     {
      "label": "Back",
@@ -1743,44 +2022,117 @@
     }
    ]
   },
-  "walk": {
-   "title": "Walk checks",
+  "spots-3": {
+   "title": "Walk-check spots (3 of 4)\nDry scrub: A dry region: Aunike Ridge scrub\nSea shore: A sea shore: Hatandros Bight beach\nLake shore: A lake shore: Lake Ulaish\nCool fen: A cool fen: Barsaebica\nRed mangroves: Red mud mangroves: Kotherra Mangroves",
    "buttons": [
     {
-     "label": "Black swamp water in the Banujha Basin",
-     "cell": "ANWWalkSwamp"
+     "label": "Dry scrub",
+     "cell": "ANWSpotDry",
+     "about": "A dry region: Aunike Ridge scrub"
     },
     {
-     "label": "Green marsh water in Okuwun-Rahei",
-     "cell": "ANWWalkMarsh"
+     "label": "Sea shore",
+     "cell": "ANWSpotSeaShore",
+     "about": "A sea shore: Hatandros Bight beach"
     },
     {
-     "label": "A river in the Tulmek Washes",
-     "cell": "ANWWalkRiver"
+     "label": "Lake shore",
+     "cell": "ANWSpotLakeUlaish",
+     "about": "A lake shore: Lake Ulaish"
     },
     {
-     "label": "A stream in the Kotherra mangroves",
-     "cell": "ANWWalkStream"
+     "label": "Cool fen",
+     "cell": "ANWSpotBarsaebica",
+     "about": "A cool fen: Barsaebica"
     },
     {
-     "label": "A pond in Blackwood",
-     "cell": "ANWWalkPond"
+     "label": "Red mangroves",
+     "cell": "ANWSpotKotherra",
+     "about": "Red mud mangroves: Kotherra Mangroves"
     },
     {
-     "label": "An estuary on the Arnesian coast",
-     "cell": "ANWWalkEstuary"
+     "label": "More...",
+     "page": "spots-4"
     },
     {
-     "label": "The open sea, from its shore",
-     "cell": "ANWWalkSea"
+     "label": "Back",
+     "page": "spots-2"
+    }
+   ]
+  },
+  "spots-4": {
+   "title": "Walk-check spots (4 of 4)\nStorm light: Storm light: Valley of Storms",
+   "buttons": [
+    {
+     "label": "Storm light",
+     "cell": "ANWSpotValleyOfStorms",
+     "about": "Storm light: Valley of Storms"
     },
     {
-     "label": "The river south-west of Helstrom",
-     "cell": "ANWWalkHelstromRiver"
+     "label": "Back",
+     "page": "spots-3"
+    }
+   ]
+  },
+  "walk": {
+   "title": "Walk-check waters (1 of 2)\nBlack swamp: Black swamp water in the Banujha Basin\nGreen marsh: Green marsh water in Okuwun-Rahei\nRiver: A river in the Tulmek Washes\nStream: A stream in the Kotherra mangroves\nPond: A pond in Blackwood\nEstuary: An estuary on the Arnesian coast",
+   "buttons": [
+    {
+     "label": "Black swamp",
+     "cell": "ANWWalkSwamp",
+     "about": "Black swamp water in the Banujha Basin"
+    },
+    {
+     "label": "Green marsh",
+     "cell": "ANWWalkMarsh",
+     "about": "Green marsh water in Okuwun-Rahei"
+    },
+    {
+     "label": "River",
+     "cell": "ANWWalkRiver",
+     "about": "A river in the Tulmek Washes"
+    },
+    {
+     "label": "Stream",
+     "cell": "ANWWalkStream",
+     "about": "A stream in the Kotherra mangroves"
+    },
+    {
+     "label": "Pond",
+     "cell": "ANWWalkPond",
+     "about": "A pond in Blackwood"
+    },
+    {
+     "label": "Estuary",
+     "cell": "ANWWalkEstuary",
+     "about": "An estuary on the Arnesian coast"
+    },
+    {
+     "label": "More...",
+     "page": "walk-2"
     },
     {
      "label": "Back",
      "page": "root"
+    }
+   ]
+  },
+  "walk-2": {
+   "title": "Walk-check waters (2 of 2)\nOpen sea: The open sea, from its shore\nHelstrom river: The river south-west of Helstrom",
+   "buttons": [
+    {
+     "label": "Open sea",
+     "cell": "ANWWalkSea",
+     "about": "The open sea, from its shore"
+    },
+    {
+     "label": "Helstrom river",
+     "cell": "ANWWalkHelstromRiver",
+     "about": "The river south-west of Helstrom"
+    },
+    {
+     "label": "Back",
+     "page": "walk"
     }
    ]
   }

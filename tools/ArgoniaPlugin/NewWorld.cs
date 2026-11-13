@@ -307,9 +307,12 @@ static class NewWorld
                 if ((cx, cy) == mCell)
                 {
                     c.EditorID = StartCell;
-                    c.Temporary.Add(new PlacedObject(K(IdMarker), Rel)
+                    // persistent, in the world's persistent cell, as Argonia.esp's ARG_OpeningMarker (Generate.cs) and
+                    // Skyrim.esm's MoveTo targets: a new game's MQ101 finds it by GetFormFromFile with no cell loaded
+                    ws.TopCell!.Persistent.Add(new PlacedObject(K(IdMarker), Rel)
                     {
                         EditorID = StartMarker,
+                        MajorRecordFlagsRaw = 0x400,
                         Base = new FormLinkNullable<IPlaceableObjectGetter>(XMarkerHeading),
                         Placement = new Placement
                         {
@@ -699,14 +702,17 @@ static class NewWorld
         if (ws.Parent is not null && !ws.Parent.Worldspace.IsNull) Fail("WRLD has a parent");
         var heights = new Dictionary<(int, int), float[]>();
         double maxErr = 0; (int, int) maxAt = default; long over4 = 0, verts = 0, wrongWater = 0, noNormals = 0;
-        IPlacedObjectGetter? marker = null; ICellGetter? markerCell = null; int startCells = 0;
+        // the start marker lives persistent in the world's persistent cell (a new game's MoveTo reaches it unloaded)
+        IPlacedObjectGetter? marker = ws.TopCell?.Persistent.OfType<IPlacedObjectGetter>().FirstOrDefault(r => r.EditorID == StartMarker);
+        if (marker is not null && (marker.MajorRecordFlagsRaw & 0x400) == 0) Fail("start marker not persistent");
+        ICellGetter? markerCell = null; int startCells = 0;
         foreach (var b in ws.SubCells) foreach (var sb in b.Items) foreach (var c in sb.Items)
         {
             if (c.Grid is null) { Fail($"cell {c.FormKey} without grid"); continue; }
             var (x, y) = (c.Grid.Point.X, c.Grid.Point.Y);
-            if (c.EditorID == StartCell) startCells++;
+            if (c.EditorID == StartCell) { startCells++; markerCell = c; }
             foreach (var r in c.Temporary.Concat(c.Persistent))
-                if (r.EditorID == StartMarker && r is IPlacedObjectGetter po) { marker = po; markerCell = c; }
+                if (r.EditorID == StartMarker) Fail($"start marker in cell {x},{y}'s own refs: it belongs in the persistent cell");
             if (c.WaterHeight != water || !c.Flags.HasFlag(Cell.Flag.HasWater)) wrongWater++;
             var l = c.Landscape;
             if (l?.VertexHeightMap is null) { Fail($"cell {x},{y} without VHGT"); continue; }

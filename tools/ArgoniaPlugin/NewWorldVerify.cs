@@ -127,6 +127,13 @@ static class NewWorldVerify
             form_key = ws.FormKey.ToString(),
         };
         object? marker = null; int startCells = 0;
+        // the start marker: persistent in the world's persistent cell (a new game's MQ101 reaches it with no cell loaded)
+        var smk = ws.TopCell?.Persistent.OfType<IPlacedObjectGetter>().FirstOrDefault(r => r.EditorID == "ArgoniaNWStartMarker")
+            ?? ws.SubCells.SelectMany(b => b.Items).SelectMany(sb => sb.Items).SelectMany(c => c.Temporary.Concat(c.Persistent))
+                .OfType<IPlacedObjectGetter>().FirstOrDefault(r => r.EditorID == "ArgoniaNWStartMarker");
+        bool smkPersistent = smk is not null && (smk.MajorRecordFlagsRaw & 0x400) != 0
+            && ws.TopCell?.Persistent.Any(r => r.FormKey == smk.FormKey) == true;
+        var smkCell = smk?.Placement is { } sp ? ((int)Math.Floor(sp.Position.X / CELL), (int)Math.Floor(sp.Position.Y / CELL)) : (int.MinValue, int.MinValue);
         using var cw = new StreamWriter(Path.Combine(outDir, "cells.tsv"));
         cw.WriteLine("x\ty\tedid\tland\twater\twater_h\tregion\trefs\tnavm\tnavm_tris\tland_quads\tgrass_quads\th_min\th_max\th_mean\tlocation");
         using var gz = new GZipStream(File.Create(Path.Combine(outDir, "refs.tsv.gz")), CompressionLevel.Fastest);
@@ -181,6 +188,11 @@ static class NewWorldVerify
                         landQ++;
                         if (g.Any(q => grassy.Contains(q.Header!.Texture.FormKey))) grassQ++;
                     }
+                if ((x, y) == smkCell && smk!.Placement is { } smp)
+                {
+                    var gm = Ground(smp.Position.X, smp.Position.Y);
+                    marker = new { cell = new[] { x, y }, cell_edid = c.EditorID, pos = new[] { smp.Position.X, smp.Position.Y, smp.Position.Z }, ground = gm.g, water, persistent = smkPersistent };
+                }
                 int nref = 0;
                 foreach (var r in c.Temporary.Concat(c.Persistent))
                 {
@@ -192,12 +204,7 @@ static class NewWorldVerify
                     }
                     if (r is not IPlacedObjectGetter po || po.Placement is null) continue;
                     var pos = po.Placement.Position; var rot = po.Placement.Rotation;
-                    if (po.EditorID == "ArgoniaNWStartMarker")
-                    {
-                        var gm = Ground(pos.X, pos.Y);
-                        marker = new { cell = new[] { x, y }, cell_edid = c.EditorID, pos = new[] { pos.X, pos.Y, pos.Z }, ground = gm.g, water };
-                        continue;
-                    }
+                    if (po.EditorID == "ArgoniaNWStartMarker") continue;
                     if (po.FormKey.ID is >= 0xF00000 and <= 0xFDFFFF)    // an ecology critter: with the actors, not the placed refs
                     {
                         recs.TryGetValue(po.Base.FormKey, out var cb);

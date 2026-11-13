@@ -495,6 +495,10 @@ def run(plugin: Path, out: Path, do_dump: bool = True, only: set | None = None, 
         ok = m["ground"] > m["water"] and m["ground"] <= m["pos"][2] <= m["ground"] + 64
         rep.row("start", "start marker on dry ground, within 64 units above it", f"z {m['pos'][2]:.0f}, ground {m['ground']:.0f}", ok,
                 f"cell {m['cell']}")
+        # a temporary marker is not loaded at a new game: MQ101's GetFormFromFile finds nothing and the player goes to
+        # the main card's start in the barge hold
+        rep.row("start", "start marker persistent in the world's persistent cell (a new game's MoveTo reaches it)",
+                m.get("persistent"), m.get("persistent") is True)
 
     @section(rep, "deploy", want)
     def _deploy():

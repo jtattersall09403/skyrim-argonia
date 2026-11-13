@@ -27,3 +27,21 @@ def test_every_walk_spot_is_a_menu_button_and_the_start_ids_agree():
     cs = (T.REPO / "tools/ArgoniaPlugin/NewWorldTravel.cs").read_text()
     psc = (T.REPO / "papyrus/ARG_QF_MQ101.psc").read_text()
     assert idspace.SPAN["travel-give"][0] == 0x090000 and "GiveId = 0x090000" in cs and "NWGiveId = 0x90000" in psc
+
+
+def test_a_row_wider_than_the_screen_and_a_page_without_back_are_named():
+    wide = [{"label": "x" * 24, "cell": "C"} for _ in range(5)]
+    doc = {"root": "a", "pages": {"a": {"title": "A", "buttons": [{"label": "B", "page": "b"}]},
+                                  "b": {"title": "B", "buttons": wide}}}
+    bad = "\n".join(T.faults(doc))
+    assert "characters wide" in bad and "b: no Back button" in bad and "share a label" in bad
+
+
+def test_pager_fits_every_item_and_each_page_but_the_last_has_more():
+    items = [{"label": f"Place number {i}", "cell": f"C{i}"} for i in range(30)]
+    pages = T._chunks("p", "Places", items, "root")
+    doc = {"root": "root", "pages": {"root": {"title": "R", "buttons": [{"label": "Places", "page": "p"}]}, **pages}}
+    assert T.faults(doc) == []
+    got = [b["cell"] for p in pages.values() for b in p["buttons"] if "cell" in b]
+    assert sorted(got) == sorted(i["cell"] for i in items)
+    assert all(any(b["label"] == T.MORE for b in p["buttons"]) for k, p in pages.items() if k != f"p-{len(pages)}")

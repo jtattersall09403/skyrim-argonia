@@ -64,6 +64,34 @@ def terrain_image(scale: float = SCALE) -> tuple[Image.Image, str]:
     return Image.fromarray(masks_rgb(water, foreign)), "masks"
 
 
+RELIEF_STEP = 8      # the height read-out's grid: every 8th heightmap sample (1024 units, a quarter of a game cell)
+
+
+def relief_data() -> dict | None:
+    """The relief the page shows, named: the terrain build's id and date, its heightmap's checksum (refused when the
+    heightmap on disk is not the build's own), and a coarse height grid in metres for the pointer's read-out."""
+    import base64
+    import hashlib
+    tb = f.OUT / "terrain" / "build.json"
+    if not tb.exists():
+        return None
+    b = json.loads(tb.read_text())
+    npy = f.OUT / "terrain" / "heightmap.npy"
+    h = hashlib.sha256()
+    with npy.open("rb") as fh:
+        for chunk in iter(lambda: fh.read(1 << 24), b""):
+            h.update(chunk)
+    if h.hexdigest() != b["sha256"]:
+        raise SystemExit(f"map_page: {npy} is not terrain build {b['id']}'s heightmap (checksum differs): rebuild the terrain stage first")
+    hm = np.load(npy, mmap_mode="r")[::RELIEF_STEP, ::RELIEF_STEP]
+    m = np.round((np.asarray(hm, np.float32) - b["water_level_units"]) / f.UNITS_PER_METRE).astype("<i2")
+    i = b["id"]
+    return {"id": i, "date": f"{i[0:4]}-{i[4:6]}-{i[6:8]} {i[9:11]}:{i[11:13]} UTC", "sha": b["sha256"][:12],
+            "x0": b["origin_world_x"], "y0": b["origin_world_y"], "step": b["sample_units"] * RELIEF_STEP,
+            "w": int(m.shape[1]), "h": int(m.shape[0]), "m": base64.b64encode(m.tobytes()).decode(),
+            "px": {"x0": f.X0_PX, "y0": f.Y0_PX, "upp": f.UNITS_PER_PX, "scale": SCALE}}
+
+
 KIND_LABEL = {"ocean": "Open sea", "shallow-coast": "Shallow coast", "bay": "Bay", "estuary": "Estuary",
               "river": "River", "stream": "Stream", "lake": "Lake", "pond": "Pond", "green-marsh": "Green marsh",
               "blackwater-swamp": "Blackwater swamp"}
@@ -289,6 +317,7 @@ def main() -> None:
     tiles["pt"] = pyramid(pt, 1.0, "pt", 78)
     d = data(w)
     d["terrainKind"] = kind
+    d["relief"] = relief_data() if kind == "terrain" else None
     d["size"] = [int(f.WIDTH_PX * SCALE), int(f.HEIGHT_PX * SCALE)]
     d["tiles"] = tiles
     html = TEMPLATE.read_text()
@@ -309,7 +338,8 @@ def main() -> None:
     html = html.replace("/*__DATA__*/null", json.dumps(d, separators=(",", ":")))
     (OUT / "index.html").write_text(html)
     files = sorted(p.relative_to(OUT).as_posix() for p in OUT.rglob("*") if p.is_file() and p.name != "index.html")
-    print(f"{OUT / 'index.html'}: {len(html) / 1e6:.1f} MB; terrain layer from {kind}; {len(files)} supporting files")
+    rel = f"terrain build {d['relief']['id']}" if d["relief"] else kind
+    print(f"{OUT / 'index.html'}: {len(html) / 1e6:.1f} MB; terrain layer from {rel}; {len(files)} supporting files")
 
 
 if __name__ == "__main__":

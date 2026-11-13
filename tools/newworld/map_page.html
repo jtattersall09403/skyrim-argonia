@@ -178,6 +178,15 @@ function fit() {
 }
 const toScreen = (x, y) => [x * view.s + view.x, y * view.s + view.y];
 const toMap = (sx, sy) => [(sx - view.x) / view.s, (sy - view.y) / view.s];
+// the built relief's height under the pointer, in metres from the water level (D.relief: the terrain build's grid)
+const RELIEF = D.relief ? new Int16Array(Uint8Array.from(atob(D.relief.m), c => c.charCodeAt(0)).buffer) : null;
+function reliefAt(mx, my) {
+  if (!RELIEF) return null;
+  const R = D.relief, p = R.px;
+  const wx = (mx / p.scale - p.x0) * p.upp, wy = -(my / p.scale - p.y0) * p.upp;
+  const c = Math.round((wx - R.x0) / R.step), r = Math.round((R.y0 - wy) / R.step);
+  return c < 0 || r < 0 || c >= R.w || r >= R.h ? null : RELIEF[r * R.w + c];
+}
 const F = D.frame;
 const cellOf = (x, y) => [Math.floor((x - F.x0) / F.cell), -Math.floor((y - F.y0) / F.cell) - 1];
 const cellBox = (cx, cy) => [F.x0 + cx * F.cell, F.y0 - (cy + 1) * F.cell];
@@ -308,7 +317,8 @@ cv.addEventListener("pointerdown", e => { if (toolDown(e)) return; cv.setPointer
 cv.addEventListener("pointermove", e => {
   if (toolMove(e)) return;
   const [mx, my] = toMap(e.offsetX, e.offsetY); const [cx, cy] = cellOf(mx, my);
-  $("#coord").textContent = `Morrowind cell ${cx}, ${cy}` + (cellRegion.get(cx + "," + cy) ? " · " + D.regionNames[cellRegion.get(cx + "," + cy)[2]] : "");
+  const hgt = reliefAt(mx, my);
+  $("#coord").textContent = `Morrowind cell ${cx}, ${cy}` + (cellRegion.get(cx + "," + cy) ? " · " + D.regionNames[cellRegion.get(cx + "," + cy)[2]] : "") + (hgt === null ? "" : ` · ground ${Math.abs(hgt)} m ${hgt >= 0 ? "above" : "below"} the water`);
   if (!ptrs.has(e.pointerId)) { hover(e); return; }
   const prev = ptrs.get(e.pointerId); ptrs.set(e.pointerId, [e.offsetX, e.offsetY]);
   if (ptrs.size === 1) { const dx = e.offsetX - prev[0], dy = e.offsetY - prev[1]; if (Math.abs(dx) + Math.abs(dy) > 2) dragged = true; view.x += dx; view.y += dy; draw(); }
@@ -374,7 +384,7 @@ function home() {
   <p>Drag to move, pinch or scroll to zoom. Tap a place to read about it; tap open ground to read about its region. Switch layers above: <i>Original map</i> shows Project Tamriel's drawing, <i>Danger</i> colours each cell by its ground danger, and a ring round a place says how it meets you.</p>
   <p><button class="chip" data-key>The map key: what every symbol means</button> ${WB.length ? `<button class="chip" data-water>Water: kinds and flow, and the water editor</button>` : ""}</p>
   <h3>Regions</h3><div class="list">${D.regions.map(r => `<button data-region="${r.id}">${esc(r.n)}</button>`).join("")}</div>${legend}
-  <p class="sub" style="margin-top:16px;color:var(--muted);font-size:.86rem">Terrain layer: ${D.terrainKind === "terrain" ? "shaded from the generated heightmap" : "land and water from the map (the heightmap is not built yet)"}.</p>`, "home");
+  <p class="sub" style="margin-top:16px;color:var(--muted);font-size:.86rem">Terrain layer: ${D.terrainKind === "terrain" ? "shaded from the generated heightmap" : "land and water from the map (the heightmap is not built yet)"}.${D.relief ? ` Relief: terrain build ${esc(D.relief.id)}, made ${esc(D.relief.date)} (heightmap ${esc(D.relief.sha)}); the bar at the foot gives the height under the pointer.` : ""}</p>`, "home");
 }
 function showKey() {
   setBody(`<button class="back" data-home>← Overview</button><h2>The map key</h2><p>What each symbol on Project Tamriel's Black Marsh map means in our world, and why.</p>${D.symbols.map(s => `<div class="note"><h3>${esc(s.label)}</h3><p><i>${esc(s.glyph)}</i>${s.pt ? ` · Project Tamriel's key: ${esc(s.pt)}` : " · not in Project Tamriel's key"}</p><p>${esc(s.meaning)}</p><p style="color:var(--muted)">${esc(s.why)}</p><div class="meta">${tierTag(s.tier)} · ${D.places.filter(p => p.symid === s.id).length} on the map</div></div>`).join("")}`, "key");
