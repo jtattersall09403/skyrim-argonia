@@ -1,0 +1,7 @@
+1. I don't know for certain, because I never saw what the last journal check showed. I think the quest is finished and nothing is obviously left. If anything remains, it would be to talk to Sells-Dear again, or to Okan-Zish or Wuleen-Taza to see how they react to my choice. Otherwise I'd explore the wider Black Marsh and look for new leads.
+
+2. Nobody, formally. I did a job for Okan-Zish by killing the crocodile. Then I sided with Sells-Dear by giving her the bait bucket. I did that because I didn't want to take hush money from people who put travelers in danger. She paid me, but I'm not in her service, and no faction or ongoing employer has claimed me.
+
+3. The most confusing moment was the setup around the bucket. I had to work out who was responsible for what and how the rafters and the rival captain related to each other. I also wasn't sure at first whether the crocodile kill was the whole quest or just the opening. Choosing between the two sides on limited information felt abrupt. I took the bucket to Sells-Dear without hearing Wuleen-Taza's full offer, so I made the call without knowing the price.
+
+4. I'd tell the writer the moral setup is good: the characters' motives were clear, and I cared about the choice. Add a middle option, such as a warning, a fine, or making the rafters fix the problem, so the outcome isn't so harsh. Let players hear every side before the decision point. Give some hint of what comes next, so the world doesn't feel like it ends when the quest does. The journal and the text-only format were clear and easy to follow.

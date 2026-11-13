@@ -164,12 +164,15 @@
 {"quest_id":"quest.tg.tg02","stages_ord":3,"ord":1,"to":91,"when":"quest_successor:quest.tg.tg02|3|1:when"}
 {"quest_id":"quest.tg.tg02","stages_ord":3,"ord":2,"to":92,"when":"quest_successor:quest.tg.tg02|3|2:when"}
 {"quest_id":"quest.tg.tg02","stages_ord":3,"ord":3,"to":41,"when":"quest_successor:quest.tg.tg02|3|3:when"}
+{"quest_id":"quest.tg.tg02","stages_ord":3,"ord":4,"to":40,"when":"quest_successor:quest.tg.tg02|3|4:when"}
 {"quest_id":"quest.tg.tg02","stages_ord":4,"ord":0,"to":42,"when":"quest_successor:quest.tg.tg02|4|0:when"}
 {"quest_id":"quest.tg.tg02","stages_ord":4,"ord":1,"to":43,"when":"quest_successor:quest.tg.tg02|4|1:when"}
-{"quest_id":"quest.tg.tg02","stages_ord":5,"ord":0,"to":95,"when":"quest_successor:quest.tg.tg02|5|0:when"}
-{"quest_id":"quest.tg.tg02","stages_ord":5,"ord":1,"to":96,"when":"quest_successor:quest.tg.tg02|5|1:when"}
+{"quest_id":"quest.tg.tg02","stages_ord":5,"ord":0,"to":42,"when":"quest_successor:quest.tg.tg02|5|0:when"}
+{"quest_id":"quest.tg.tg02","stages_ord":5,"ord":1,"to":43,"when":"quest_successor:quest.tg.tg02|5|1:when"}
 {"quest_id":"quest.tg.tg02","stages_ord":6,"ord":0,"to":95,"when":"quest_successor:quest.tg.tg02|6|0:when"}
 {"quest_id":"quest.tg.tg02","stages_ord":6,"ord":1,"to":96,"when":"quest_successor:quest.tg.tg02|6|1:when"}
+{"quest_id":"quest.tg.tg02","stages_ord":7,"ord":0,"to":95,"when":"quest_successor:quest.tg.tg02|7|0:when"}
+{"quest_id":"quest.tg.tg02","stages_ord":7,"ord":1,"to":96,"when":"quest_successor:quest.tg.tg02|7|1:when"}
 {"quest_id":"quest.tg.tg04","stages_ord":0,"ord":0,"to":20,"when":"quest_successor:quest.tg.tg04|0|0:when"}
 {"quest_id":"quest.tg.tg04","stages_ord":0,"ord":1,"to":30,"when":"quest_successor:quest.tg.tg04|0|1:when"}
 {"quest_id":"quest.tg.tg04","stages_ord":1,"ord":0,"to":30,"when":"quest_successor:quest.tg.tg04|1|0:when"}

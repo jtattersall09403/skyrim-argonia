@@ -1,0 +1,38 @@
+{
+ "quest": "quest.local.lq30",
+ "player": "wanderer",
+ "source": "designed",
+ "model": "sonnet",
+ "form_files": [
+  "out/d2c/form/quest.local.lq30.json"
+ ],
+ "forms_hash": "8cad0c101e450f56",
+ "created": "20261113T000633Z",
+ "counts": {
+  "commands": 18,
+  "stalls": 0,
+  "harness_errors": 0
+ },
+ "stages": {
+  "quest.local.lq30": [
+   0,
+   30,
+   35,
+   40,
+   91
+  ]
+ },
+ "ended": "all quests ended (quest.local.lq30 completed)",
+ "take": true,
+ "answers": true,
+ "player_error": null,
+ "cost_usd": 0.059496,
+ "minutes": 0.4,
+ "turns": 20,
+ "tokens": {
+  "input_tokens": 34,
+  "output_tokens": 2129,
+  "cache_read_input_tokens": 96460,
+  "cache_creation_input_tokens": 7123
+ }
+}

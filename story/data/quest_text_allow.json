@@ -10,6 +10,21 @@
    "key": "ARG_TG01_TopicDoor_0",
    "text": "Quiet work",
    "why": "the speaker echoes the player's own words back; it asks nothing"
+  },
+  {
+   "key": "topic.tg01-the-door",
+   "text": "Quiet work?",
+   "why": "S'Tabi echoes the player's own words back; it asks nothing"
+  },
+  {
+   "key": "topic.lq25-the-beast",
+   "text": "Under it?",
+   "why": "Okan-Zish echoes the player's prompt to correct it; it asks nothing"
+  },
+  {
+   "key": "topic.lq25-beast-dead",
+   "text": "Dead? Truly dead?",
+   "why": "Okan-Zish's disbelief at the player's news; it asks nothing"
   }
  ],
  "gives_ok": [

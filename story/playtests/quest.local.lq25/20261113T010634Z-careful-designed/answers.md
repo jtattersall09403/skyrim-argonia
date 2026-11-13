@@ -1,0 +1,7 @@
+1. I think the quest is essentially done. The last thing I did was show Sells-Dear the bucket and then check the journal, so unless it lists a new objective, there's nothing left except to look around for a follow-up. If one appeared, I'd follow it. If not, I'd wrap up.
+
+2. Nobody formally, as far as I can tell. I did the job for Okan-Zish, who asked me to deal with the crocodile. After I learned the monster was staged, I sided with Sells-Dear and the traders instead, since the crew's trick nearly got people killed. I took the bucket to her as evidence rather than accept hush money. So I'm loosely working for Sells-Dear, but it's more that I chose her side than that I was hired.
+
+3. The most confusing moment was the bucket. I had to "go" to it before I could "take" it, and then Sells-Dear's marker only showed up on the map once I needed it. It wasn't clear where I should be looking or who she was until that point. I also wasn't sure the fight had actually happened, since a single command resolved it.
+
+4. I'd tell the writer the setup and the twist work well: the staged monster is a good reveal, and the choice between hush money and turning them in feels real. But show more of the consequences. Let me hear Wuleen-Taza and Sells-Dear argue their sides, show what happens to the crew, and make the fight feel like more than one command. Also name the key people and places on the map earlier so the player isn't guessing.

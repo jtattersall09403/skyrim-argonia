@@ -1,0 +1,7 @@
+1. I don't think anything is left for me to do. The journal showed no active objective after I let Sei-Wan walk home on his own, and nothing new started. If there is more, I'd guess it comes from going back to Haj-Wan, or from the Agaceph and Helstrom hooks I never followed. I didn't check either, and I should have before I stopped.
+
+2. Nobody, really. I helped Haj-Wan, who was worried and waiting at the gate, and I helped Sei-Wan on his walk-out. The levy warden is just the local authority who stays out of it. I have no employer or faction. I did it because it was the quest in front of me and I was curious about these people.
+
+3. The most confusing moment was the ending choice. I picked "keep quiet" based on one line from Haj-Wan, and I wasn't sure what that choice would change or whether the game would register it. Nothing in the journal confirmed an outcome, so I couldn't tell whether the quest was properly finished. The one-command viper fight was also odd. It had no tension and I wasn't sure it counted as a real fight.
+
+4. I'd tell the writer the characters and the dilemma work well, and the dialogue is good. Letting him walk alone has a real cost, and that is what made the quest stick. But give clearer closure: a journal entry that says the quest is done and what my choice meant, maybe a short scene with Haj-Wan afterward. Also point toward what comes next, so I know whether to stop or keep going.

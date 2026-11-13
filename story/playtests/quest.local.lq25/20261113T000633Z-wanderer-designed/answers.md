@@ -1,0 +1,7 @@
+1. I'm not sure there is a next step. My journal came back with no active objective after I took Wuleen-Taza's 60 gold. If I had to guess, I'd go find Sells-Dear, or just wander Helstrom and talk to people to see whether anything new starts. Nothing pointed me there, though.
+
+2. Nobody, strictly speaking. I did the job for Okan-Zish by killing the crocodile. Then I took Wuleen-Taza's hush money, so in practice I'm bought by the raft crew. That's a loose arrangement and not a real employer. I took it because the gold was a sure thing and the other option meant selling the crew out to a rival I'd never met.
+
+3. The bait bucket. I picked it up at the very start, so I thought it would matter later as proof. When the choice came, the game never mentioned it, and I couldn't use it. I didn't know whether the game had noticed I had it, or whether I'd missed a step. The quest also ended abruptly. I expected more to follow and found an empty journal instead.
+
+4. The setup is good: a crocodile that the crew baited themselves, and a choice between hush money and betrayal. Let the player's actions count. If I pick up the bucket, let me use it as evidence, or have someone comment on it. Make the choice weigh more, perhaps by letting me meet Sells-Dear before I commit, so the other side is a real person. Give the fight some tension. When a quest ends, point toward something next, even a small lead, so the player doesn't hit a dead end.

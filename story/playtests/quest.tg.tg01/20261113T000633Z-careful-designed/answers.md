@@ -1,0 +1,1 @@
+I've already answered the four questions above. I also submitted my final take with the `end` command. The call ran twice by mistake and I never saw its output, so I can't confirm it registered. My last journal check showed nothing new, so there is nothing left for me to do in this game.

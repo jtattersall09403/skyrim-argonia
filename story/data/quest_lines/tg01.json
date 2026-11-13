@@ -1,0 +1,233 @@
+{
+ "topic.tg01-the-door": {
+  "speaker": "npc.mercantile-coast.soulrest.khajiit-caravan-factor",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Is there quiet work on this dock?",
+    "lines": [
+     "Quiet work? This one does not sell it, but Khajiit knows who does. Go into the house on the dock behind this Khajiit and ask for Tilts-The-Jug. She sometimes has use for careful hands."
+    ],
+    "facts": [
+     "fact.tg01.desk-door"
+    ]
+   }
+  ]
+ },
+ "topic.tg01-the-test": {
+  "speaker": "npc.mercantile-coast.soulrest.keeper-harbour-den",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Is there work here for careful hands?",
+    "lines": [
+     "There is, if the hands are careful enough. The Chapter takes from those who can bear the loss. It takes no more than that. A hand that breaks what it touches is no use to us, so I must see how yours work.",
+     "Keeps-What-Floats stands on the dock just west of this door. He took a necklace of polished blue jaspers from a Lookout of ours, one of the Chapter, while that Lookout slept. He keeps it in a locked strongbox under the eaves north-west of the house.",
+     "Bring the necklace back, so that the Lookout has it again. Do Keeps-What-Floats no harm. If he is hurt, there is no pay and no place with us. Here are three lockpicks.",
+     "There are three ways open. You can open his strongbox with the picks, or you can take his key, which he may give for good talk or sell for coin. Sits-By-The-Water drinks with him on the dock. Ask her about his habits, because I will not tell them."
+    ],
+    "facts": [
+     "fact.tg01.test",
+     "fact.tg01.necklace",
+     "fact.tg01.strongbox"
+    ],
+    "gives": [
+     "item.lockpick"
+    ]
+   }
+  ]
+ },
+ "topic.tg01-return": {
+  "speaker": "npc.mercantile-coast.soulrest.keeper-harbour-den",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "I have the necklace.",
+    "lines": [
+     "That is the one. Keeps-What-Floats lives, so you took without breaking, and that is what the Chapter wants. Here are a hundred gold, and the necklace goes back to the Lookout it was taken from.",
+     "Now hear the way. The Chapter meets under Lilmoth. Take the coast ship from Soulrest's dock, east of this house, to Lilmoth. North of Pusbottom, at the edge of the deep water, there is a trapdoor in the ground. Go down it and speak to Bent-Spine, our fence. Say I sent you."
+    ],
+    "facts": [
+     "fact.tg01.chapter-way"
+    ],
+    "gives": [
+     "gold:100"
+    ]
+   },
+   {
+    "variant": "fail",
+    "prompt": "I have the necklace.",
+    "lines": [
+     "You have no necklace in your hands. Take the Blue Jasper Necklace from Keeps-What-Floats's strongbox under the eaves north-west of the house, and do him no harm. Come back to me when you have it."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.tg01-after": {
+  "speaker": "npc.mercantile-coast.soulrest.keeper-harbour-den",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": null,
+    "lines": [
+     "You are a Lookout of the Chapter now. Keep to its ways and do your work with care. I keep this desk, and I will hear you here."
+    ],
+    "facts": []
+   },
+   {
+    "variant": "warm",
+    "prompt": null,
+    "lines": [
+     "Welcome back, Lookout. Keeps-What-Floats lives, and the Lookout he robbed has the necklace again. Your hands are the kind the Chapter wants. I am glad I sent you down, and I will hear you here."
+    ],
+    "facts": []
+   },
+   {
+    "variant": "cool",
+    "prompt": null,
+    "lines": [
+     "Lookout. Keeps-What-Floats is dead, and no necklace is worth that. Mind your hands."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.tg01-give-it-back": {
+  "speaker": "npc.mercantile-coast.soulrest.tg01-thief",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "(Persuade) Give me the key to your strongbox.",
+    "lines": [
+     "You talk well, and I am tired of arguing. Here is the key to my strongbox. The box is under the eaves north-west of the house. Open it yourself, and take what you came for. I will not touch it.",
+     "I meant to sell those jaspers. I have lived on this dock since I hatched, and nothing I take stays with me. I wanted to keep this one until it paid. Take it, but do not hurt me."
+    ],
+    "facts": [
+     "fact.tg01.strongbox"
+    ],
+    "gives": [
+     "item.tg01.strongbox-key"
+    ]
+   },
+   {
+    "variant": "fail",
+    "prompt": "(Persuade) Give me the key to your strongbox.",
+    "lines": [
+     "No. Talk will not move me. The strongbox is the only thing I own that I can lock, and I do not give up its key for a few kind words. Put sixty gold in my hand and I will think again."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.tg01-buy-it": {
+  "speaker": "npc.mercantile-coast.soulrest.tg01-thief",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "I will pay you sixty gold for the key to your strongbox. (60 gold)",
+    "lines": [
+     "Sixty gold. Yes, that is the price. Give it here. Now take the key to my strongbox. What lies in the box you take yourself. I will not stand in your way.",
+     "Gold I can spend. The jaspers I could only look at."
+    ],
+    "facts": [
+     "fact.tg01.strongbox"
+    ],
+    "gives": [
+     "item.tg01.strongbox-key"
+    ]
+   },
+   {
+    "variant": "fail",
+    "prompt": "I will pay you sixty gold for the key to your strongbox. (60 gold)",
+    "lines": [
+     "That is not sixty gold. I know what sixty is when it is in my hand. Come back with the whole of it, and the key is yours. I will not take less."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.tg01-thief-after": {
+  "speaker": "npc.mercantile-coast.soulrest.tg01-thief",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": null,
+    "lines": [
+     "My strongbox under the eaves is empty. The jaspers are gone. I took them from a Lookout of the Chapter who was asleep, and they were never mine.",
+     "I do not fight, and I will not fight over them. I am whole, and I know how this could have gone for a thief who robs the Chapter. I will not keep anything of the Chapter's again."
+    ],
+    "facts": [
+     "fact.tg01.strongbox",
+     "fact.tg01.necklace"
+    ]
+   }
+  ]
+ },
+ "topic.tg01-his-habits": {
+  "speaker": "npc.mercantile-coast.soulrest.tg01-friend",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "What is Keeps-What-Floats like?",
+    "lines": [
+     "Keeps-What-Floats is a friend of mine, and he is a poor thief. He runs from any fight. He has no buyer for what he took, so he will let it go to anyone who talks well, or for coin. Do not hurt him. I would rather he lost it than his skin."
+    ],
+    "facts": [
+     "fact.tg01.he-runs",
+     "fact.tg01.price"
+    ]
+   }
+  ]
+ },
+ "topic.tg01-welcome": {
+  "speaker": "npc.mercantile-coast.lilmoth-divers-yard.night-reed-fence",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Tilts-The-Jug sent me.",
+    "lines": [
+     "Then you found the trapdoor north of Pusbottom and came down it, and Tilts-The-Jug has vouched for you. I am Bent-Spine, the Chapter's fence. What our people take, I buy and sell on.",
+     "The Chapter takes from those who can bear the loss, and it harms no one in the taking. That is why Tilts-The-Jug tests every hand first. You are a Lookout now, reed. A Lookout keeps watch and does the jobs the Chapter hands out.",
+     "I have a job for you. Ask me about it when you are ready."
+    ],
+    "facts": [
+     "fact.tg01.chapter-way"
+    ]
+   }
+  ]
+ },
+ "topic.tg01-return-dead": {
+  "speaker": "npc.mercantile-coast.soulrest.keeper-harbour-den",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "I have the necklace.",
+    "lines": [
+     "That is the one, and Keeps-What-Floats is dead. The Chapter wanted the necklace back without a body. I take it. You are paid nothing.",
+     "You may still go below. Our people gather under Lilmoth. The coast ship leaves from Soulrest's dock, east of this house; ride it to Lilmoth. There is a trapdoor north of Pusbottom, where the deep water begins. Bent-Spine fences the goods we take, and he waits below it. Tell him I sent you."
+    ],
+    "facts": [
+     "fact.tg01.chapter-way"
+    ]
+   }
+  ]
+ },
+ "topic.tg01-welcome-dead": {
+  "speaker": "npc.mercantile-coast.lilmoth-divers-yard.night-reed-fence",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Tilts-The-Jug sent me.",
+    "lines": [
+     "Tilts-The-Jug sent you, and Keeps-What-Floats is dead. The Chapter wanted the necklace back without a body, and you left one. I do not overrule her choice, but I have seen how your hands work.",
+     "I am Bent-Spine, the Chapter's fence. What our people take, I buy and sell on. The Chapter takes from those who can bear the loss, and it harms no one in the taking. You are a Lookout, and a Lookout keeps watch and does the jobs the Chapter hands out.",
+     "I have a job for you. Ask me about it, and do this one without a death."
+    ],
+    "facts": [
+     "fact.tg01.chapter-way"
+    ]
+   }
+  ]
+ }
+}

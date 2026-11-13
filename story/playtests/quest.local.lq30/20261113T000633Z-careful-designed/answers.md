@@ -1,0 +1,7 @@
+1. Nothing is pointing me anywhere. My journal had no active objective after the Sei-Wan quest, so I think the game expects me to explore on my own. I would probably go back to the gate and talk to Gih-Xaleel or Haj-Wan again to see if anything new opens, then head into Helstrom or the surrounding marsh to look for another quest.
+
+2. Nobody, as far as I can tell. I helped Sei-Wan because Haj-Wan was worried and it seemed like the decent thing to do, not because anyone hired me or put me on a payroll. I don't belong to a faction, and no one gave me a formal job or reward. I did the work out of curiosity and goodwill.
+
+3. The final choice was the most confusing moment. I was not sure what my options meant, or whether letting Sei-Wan walk home himself would count as finishing the task for Haj-Wan. I picked option 4 based on her earlier hint, but the game never confirmed what happened as a result. The quest simply ended, and the journal went quiet. I also did not know why I was at the gate at the start, since my first few questions about myself did not give me much of an answer.
+
+4. I would tell the writer that the small quest is clear and has good characters, and the dilemma at the end is a nice touch. But I would like some feedback after the choice: a line from Haj-Wan, or a journal entry that shows the consequence. I would also give a nudge toward what to do next, such as a rumor, a marker, or a line pointing to Helstrom, so a new player is not left with an empty journal. A bit more on who I am and why I am here would help too.

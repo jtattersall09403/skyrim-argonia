@@ -1,0 +1,7 @@
+1. I don't think I'm meant to do anything specific next. My last journal check showed the Sei-Wan quest finished with no follow-up, so I'd go back to Helstrom and talk to people again, or head toward Stormhold, to see whether another thread opens. I have no marker or objective pointing anywhere.
+
+2. Nobody, formally. I took Haj-Wan's request because she asked and I wanted to help, not because of a faction or a payment. I'm a wanderer who did a favour for a woman at the gate. I haven't joined anyone, and I don't know who the major powers in Helstrom are.
+
+3. The opening. I woke up beside a hostile viper with no quest, no objective and no hint of who I was or why I was there. I had to cross the settlement talking to every NPC before anything started. The duplicated persuade option was also odd, and I wasn't sure what it was for. Afterward I wasn't sure the viper I'd killed at the start was the one Haj-Wan meant. It seemed to be, so I stayed silent, but that was partly a guess.
+
+4. The Sei-Wan dilemma is good. It pits her wish to have him home against his pride, and it lets the player choose with restraint. Please give the start a nudge, such as a journal entry, a marker or an NPC who approaches me, so players don't have to exhaust every dialogue to find the first quest. Make the generic topics more specific, and end quests with a pointer to what's next. I'd like to see more of Helstrom and Stormhold.

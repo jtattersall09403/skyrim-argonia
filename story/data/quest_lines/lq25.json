@@ -1,68 +1,193 @@
 {
- "topic.lq25-the-beast": {
+ "topic.lq25-greet-idle": {
   "speaker": "npc.hist-heartland.helstrom.lq25-crew-poler",
-  "prompt": "Why is the crew not out on the river?",
-  "lines": [
-   "A crocodile lairs in the shallows under our plank walk. It took one of our rafts. Now no crew member will take a raft out.",
-   "The plank walk runs along the shore beside our houses. The beast lies in the water beneath it.",
-   "Kill it for us. Then we can work the river again."
-  ],
-  "facts": [
-   "fact.lq25.beast-real"
-  ],
-  "lines@low": [
-   "A crocodile lairs in the shallows under our plank walk. It took a raft. No one on the crew will take a raft out now.",
-   "The plank walk runs along the shore beside our houses. The beast lies in the water beneath it.",
-   "Kill it. Then we can work the river again. I ask no more of you than that."
-  ],
-  "lines@high": [
-   "I am glad you asked, friend. A crocodile lairs in the shallows under our plank walk. It took one of our rafts.",
-   "Now no one on the crew will take a raft out. The walk runs along the shore beside our houses. The beast lies in the water beneath it.",
-   "Kill it for us, and we can work the river again. I trust you with this."
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": null,
+    "lines": [
+     "I pole rafts at this landing, and I am the best hand on the current here. Our rafts are tied up, every one.",
+     "No raft goes out while that thing lives in the water by our walk. I stand here by the tower all day and I can think of nothing else."
+    ],
+    "facts": []
+   }
   ]
  },
- "topic.lq25-tell-captain": {
-  "speaker": "npc.hist-heartland.helstrom.boat-captain",
-  "prompt": "I found this bucket under the crew's plank walk.",
-  "lines": [
-   "That is the landing crew's bucket. It is full of offal. I believed the beast had always been there. This proves it was not.",
-   "You have done me a great service. Take 60 gold for it.",
-   "Now I will take my trade back on the river."
-  ],
-  "facts": [],
-  "lines@low": [
-   "That is the landing crew's bucket. Full of offal. I thought the beast was always there. This proves it was not.",
-   "You did a service. Take 60 gold for it.",
-   "Now I take my trade back on the river."
-  ],
-  "lines@high": [
-   "That is the landing crew's bucket. It is full of offal. I believed the beast had always been there.",
-   "This proves it was not. You have done me a great service, friend. Please take 60 gold for it, with my thanks.",
-   "Now I will take my trade back on the river. I am glad it was you who found this."
+ "topic.lq25-the-beast": {
+  "speaker": "npc.hist-heartland.helstrom.lq25-crew-poler",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "What lives under your walk?",
+    "lines": [
+     "Under it? Not under, off the end of it. A crocodile lairs in the shallows past the last plank of our walk, and it has taken one of our rafts.",
+     "It was a raft, not a person. I thank the Hist for that. No raft of this crew goes out while the beast lives, so we have no work at all.",
+     "I would end it myself, but my hands are for the current, not the blade. Follow the plank walk east along the shore, beside this tower, to its end. Kill it with a blade if you can stand in the shallows, or with a bow or a spell from the shore, by day, when you can see it plainly. I do not care how, only that it dies."
+    ],
+    "facts": [
+     "fact.lq25.beast-real"
+    ]
+   }
+  ]
+ },
+ "topic.lq25-beast-dead": {
+  "speaker": "npc.hist-heartland.helstrom.lq25-crew-poler",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "The crocodile off the end of your plank walk is dead.",
+    "lines": [
+     "Dead? Truly dead? Then my raft goes back on the water and I can breathe again, and I must tell you everything now, quickly, before I think better of it.",
+     "It was our doing. Wuleen-Taza, who rafts with me, dumped fish offal from our bait bucket off the end of the walk, night after night, so that traders would think a beast lived there and keep away from Sells-Dear's boat. And it drew in a real one, a true crocodile, the one you killed.",
+     "The bucket was left in the shallows off the end of the walk; none of us dared go down for it. Sells-Dear, the boat captain, must not see it. I beg you to say nothing, because she would take the whole river trade from us if she heard.",
+     "I will say it plainly, so that you choose with open eyes. Wuleen-Taza will pay you to keep quiet, and you will find her by the bridge near this tower. Sells-Dear will pay to see the bucket, and she stands north of the landing, by a house door on the west side of Helstrom's street.",
+     "Fetch it for her and the river trade is hers and the crew is finished. Leave it, and we keep our rafts. I am asking you to leave it."
+    ],
+    "facts": [
+     "fact.lq25.bait",
+     "fact.lq25.crew-baited",
+     "fact.lq25.bait-drew-it"
+    ]
+   }
+  ]
+ },
+ "topic.lq25-after-exposed-poler": {
+  "speaker": "npc.hist-heartland.helstrom.lq25-crew-poler",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": null,
+    "lines": [
+     "So the bucket went to Sells-Dear. Every trader takes her boat now, and no trader hires a raft of this crew. Mine lies tied up and dry.",
+     "I blame my own mouth as much as I blame you. I told you the whole of it, and I should have kept it behind my teeth. The crew are owed nothing better, because we dumped the offal and we drew the beast."
+    ],
+    "facts": [
+     "fact.lq25.crew-baited"
+    ]
+   }
+  ]
+ },
+ "topic.lq25-after-quiet-poler": {
+  "speaker": "npc.hist-heartland.helstrom.lq25-crew-poler",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": null,
+    "lines": [
+     "The rafts are on the river again, mine with them. I know Wuleen-Taza paid you to say nothing of the bucket, and I owe my trade to you and to her coin.",
+     "I am grateful, and I do not like it. Our own trick drew that crocodile and cost us a raft, and now we float on the river as if it never happened. Sells-Dear has heard nothing of the bucket, so far as I know.",
+     "I hope she never hears of it."
+    ],
+    "facts": [
+     "fact.lq25.crew-baited"
+    ]
+   }
   ]
  },
  "topic.lq25-keep-quiet": {
   "speaker": "npc.hist-heartland.helstrom.lq25-crew-steerer",
-  "prompt": "I know about the offal under your plank walk.",
-  "lines": [
-   "Yes. We dumped it there to draw a beast and scare the boat captain's trade off the river.",
-   "If the boat captain hears of this, she will take all the river trade for herself. Say nothing to her.",
-   "Here are 40 gold. It is a small price, but it is what we can pay."
-  ],
-  "facts": [
-   "fact.lq25.crew-baited"
-  ],
-  "lines@low": [
-   "Yes. We dumped the offal under the plank walk to draw a beast.",
-   "We meant to scare the boat captain's trade off the river.",
-   "If she hears of it, she takes all the river trade. Say nothing to her.",
-   "Take 40 gold. It is small. It is all we can pay. I do not give more."
-  ],
-  "lines@high": [
-   "Yes. You have found us out and I will not lie to you. We dumped the offal under the plank walk.",
-   "We wanted a beast to scare the boat captain's trade off the river.",
-   "If she hears of it, she will take all the river trade for herself. Please, say nothing to her.",
-   "Here are 40 gold. It is a small price, friend, but it is what we can pay. I trust you."
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "I know about the offal off the end of your plank walk. Pay me, and I will say nothing to Sells-Dear.",
+    "lines": [
+     "Yes. I tipped the offal off the end of our walk myself, so that the traders would believe in a beast and keep away from Sells-Dear's boat.",
+     "Hear my reason before you judge me. Sells-Dear carries many travellers on her boat at once. They used to hire our rafts, one traveller to a raft. We have no other work. We were losing the landing to her. I thought it a fair fight, because she has a boat and we have our poles and a bucket of scraps.",
+     "I never meant a real beast. I wanted a story. A real crocodile came. It took one of our own rafts. You have killed it and I am glad, but the fault is mine.",
+     "Here are 60 gold, all the crew has put by. Say nothing to Sells-Dear. Then we keep the landing and our rafts. I am asking you to weigh us against her."
+    ],
+    "facts": [
+     "fact.lq25.crew-baited"
+    ],
+    "gives": [
+     "gold:60"
+    ]
+   }
+  ]
+ },
+ "topic.lq25-after-exposed-crew": {
+  "speaker": "npc.hist-heartland.helstrom.lq25-crew-steerer",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": null,
+    "lines": [
+     "You gave Sells-Dear the bucket and she paid you for it. She has all the travellers now. Our rafts lie dry beside the plank walk.",
+     "I laid the bait, so I carry my share of this. But Okan-Zish asked you to leave it. You went to her anyway. I will not forget it. I have nothing more to say to you."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.lq25-after-quiet": {
+  "speaker": "npc.hist-heartland.helstrom.lq25-crew-steerer",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": null,
+    "lines": [
+     "Our rafts are poled out again and the crew eat this week. That is your doing. It was bought with 60 gold of ours.",
+     "I do not like what we bought with it. We lost a raft to a crocodile that we drew in ourselves. Sells-Dear still knows nothing of it. If she learns it from you, the crew lose everything and you will have had our coin first."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.lq25-tell-captain": {
+  "speaker": "npc.hist-heartland.helstrom.boat-captain",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "I found this bucket off the end of the crew's plank walk.",
+    "lines": [
+     "Let me see it. Fish offal, left to sour. So this is what the crew tipped off the end of their walk.",
+     "Ha. The beast was no luck of the river. The rafters made it themselves with a bucket of scraps, and it cost them a raft. The crew did my work for me.",
+     "I keep the bucket. Here are 60 gold for it. Every trader will hear of this before the day is out, and the river trade is mine now."
+    ],
+    "facts": [],
+    "gives": [
+     "gold:60"
+    ]
+   },
+   {
+    "variant": "fail",
+    "prompt": "I found this bucket off the end of the crew's plank walk.",
+    "lines": [
+     "You found a bucket, you say. I see no bucket in your hands.",
+     "A rafter's tale is worth nothing to me until I see it, and the crew have told me tales for a year. Bring it here with the offal still in it. Then I will pay you for the sight of it."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.lq25-after-exposed": {
+  "speaker": "npc.hist-heartland.helstrom.boat-captain",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": null,
+    "lines": [
+     "The traders take my boat now, every one of them, and the pole-rafts go unhired. The rafters fed a crocodile with their own scraps, and I still laugh when I think of it.",
+     "I will tell you what I did not tell the crew. For a year I sold below cost on the landing side. I lost coin every week to starve the rafters out of their trade. Now I need not, and I will charge what a crossing is worth.",
+     "I was not the only one playing a dirty game on this landing. I only played it where the traders could see the price. Wuleen-Taza will have to find other work, and I will not be hiring."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.lq25-after-quiet-captain": {
+  "speaker": "npc.hist-heartland.helstrom.boat-captain",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": null,
+    "lines": [
+     "The beast is dead and the river is open. My boat goes out at first light with a full load, the way it did before the crocodile came.",
+     "I feared for my boat all those weeks. It is all I own. A beast came up the river by itself and sat in my way, and I thank you for ending it.",
+     "The rafters pole their travellers again as well. I will not fight them over it. I carry more than they do, and I will take back every fare the beast cost me."
+    ],
+    "facts": []
+   }
   ]
  }
 }

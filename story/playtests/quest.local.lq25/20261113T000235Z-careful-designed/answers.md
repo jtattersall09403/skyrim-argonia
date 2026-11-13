@@ -1,0 +1,7 @@
+1. I think nothing more is required of me. My journal was empty after the bribe, so the quest looks finished. If the game continues, it would probably be a follow-up at the landing, such as the raft crew's offal problem coming back or someone reacting to what I did. I have no marker or objective telling me that, so this is a guess.
+
+2. Nobody, really. I started out reporting to Okan-Zish, so I was effectively working for him. Then I took 60 gold from Wuleen-Taza, which put me on her side, at least for the moment. I never agreed to work for her. The money was a payoff to keep quiet. I'm not sure Okan-Zish knows I changed sides, and I never talked to Sells-Dear, so I can't say whether anyone else has a claim on me.
+
+3. The most confusing moment was when I asked Wuleen-Taza about the offal and the game treated it as accepting her bribe. I had only picked a topic to hear her out. I expected an explicit "take the gold / refuse" choice, and instead the quest closed and I had her money. It felt like the game decided for me.
+
+4. I'd tell the writer the setup is good. The croc, the bait and the two sympathetic sides make a real dilemma, and the characters have voices. But the choice needs to be a clear, deliberate step. Dialogue options should say what they will do, such as "Take the 60 gold" and "Refuse." Let the player talk to everyone involved before the decision is locked in. Also give some sign of what comes next, like a journal line or a marker, so the player knows if the story continues. Right now the world feels empty and the ending feels abrupt.

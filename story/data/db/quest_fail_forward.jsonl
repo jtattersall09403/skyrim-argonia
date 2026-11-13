@@ -150,5 +150,7 @@
 {"quest_id":"quest.tg.tg02","stages_ord":5,"ord":1,"to":98,"when":"quest_fail_forward:quest.tg.tg02|5|1:when"}
 {"quest_id":"quest.tg.tg02","stages_ord":6,"ord":0,"to":97,"when":"quest_fail_forward:quest.tg.tg02|6|0:when"}
 {"quest_id":"quest.tg.tg02","stages_ord":6,"ord":1,"to":98,"when":"quest_fail_forward:quest.tg.tg02|6|1:when"}
+{"quest_id":"quest.tg.tg02","stages_ord":7,"ord":0,"to":97,"when":"quest_fail_forward:quest.tg.tg02|7|0:when"}
+{"quest_id":"quest.tg.tg02","stages_ord":7,"ord":1,"to":98,"when":"quest_fail_forward:quest.tg.tg02|7|1:when"}
 {"quest_id":"quest.tg.tg04","stages_ord":0,"ord":0,"to":90,"when":"quest_fail_forward:quest.tg.tg04|0|0:when"}
 {"quest_id":"quest.tg.tg04","stages_ord":1,"ord":0,"to":90,"when":"quest_fail_forward:quest.tg.tg04|1|0:when"}

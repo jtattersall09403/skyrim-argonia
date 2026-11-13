@@ -1,0 +1,38 @@
+{
+ "quest": "quest.local.lq25",
+ "player": "careful",
+ "source": "designed",
+ "model": "sonnet",
+ "form_files": [
+  "out/d2c/form/quest.local.lq25.json"
+ ],
+ "forms_hash": "61c64eaa7be5fdc2",
+ "created": "20261113T000906Z",
+ "counts": {
+  "commands": 15,
+  "stalls": 0,
+  "harness_errors": 0
+ },
+ "stages": {
+  "quest.local.lq25": [
+   0,
+   30,
+   40,
+   50,
+   91
+  ]
+ },
+ "ended": "all quests ended (quest.local.lq25 completed)",
+ "take": true,
+ "answers": true,
+ "player_error": null,
+ "cost_usd": 0.0584944,
+ "minutes": 0.5,
+ "turns": 17,
+ "tokens": {
+  "input_tokens": 32,
+  "output_tokens": 2198,
+  "cache_read_input_tokens": 86144,
+  "cache_creation_input_tokens": 6959
+ }
+}

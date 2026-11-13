@@ -1,0 +1,49 @@
+{
+ "quest": "quest.tg.tg01",
+ "player": "careful",
+ "source": "designed",
+ "model": "sonnet",
+ "form_files": [
+  "out/d2cr/forms/quest.tg.tg01.json",
+  "out/d2cr/forms/quest.tg.tg02.json"
+ ],
+ "forms_hash": "b3d32f7011f377b8",
+ "created": "20261113T011254Z",
+ "counts": {
+  "commands": 40,
+  "stalls": 0,
+  "harness_errors": 0
+ },
+ "stages": {
+  "quest.tg.tg01": [
+   0,
+   10,
+   20,
+   30,
+   50,
+   90
+  ],
+  "quest.tg.tg02": [
+   10,
+   20,
+   30,
+   40,
+   43
+  ]
+ },
+ "ended": "command limit (quest.tg.tg01 completed, quest.tg.tg02 active)",
+ "after": [],
+ "names_from_file": [],
+ "take": true,
+ "answers": true,
+ "player_error": null,
+ "cost_usd": 0.1421458,
+ "minutes": 1.0,
+ "turns": 43,
+ "tokens": {
+  "input_tokens": 78,
+  "output_tokens": 4818,
+  "cache_read_input_tokens": 358618,
+  "cache_creation_input_tokens": 14487
+ }
+}

@@ -1,0 +1,132 @@
+{
+ "_about": "What the player sees for the people, items and places of TG01, TG02, LQ25 and LQ30 (walk 6 lane D2c): the quests' own placements and items have no row in the world database yet, and BM&V's cells carry editor ids.",
+ "names": {
+  "npc.mercantile-coast.lilmoth-divers-yard.night-reed-fence": "Bent-Spine",
+  "npc.mercantile-coast.soulrest.keeper-harbour-den": "Tilts-The-Jug",
+  "npc.mercantile-coast.soulrest.tg01-friend": "Sits-By-The-Water",
+  "npc.mercantile-coast.soulrest.tg01-thief": "Keeps-What-Floats",
+  "thing.tg01.ship-door": "Coast Ship Door",
+  "thing.tg01.trapdoor": "Trapdoor",
+  "npc.mercantile-coast.lilmoth.tg02-beads-client": "Dar-Zeel",
+  "npc.mercantile-coast.lilmoth.tg02-charm-client": "Okan-Tei",
+  "npc.mercantile-coast.lilmoth.tg02-clutch-client": "Neeta-Haj",
+  "npc.mercantile-coast.soulrest.khajiit-caravan-factor": "S'Tabi",
+  "item.glass-bead-strand": "Kothringi Glass Beads",
+  "item.lockpick": "Lockpick",
+  "item.tg01.jasper-necklace": "Blue Jasper Necklace",
+  "item.tg01.strongbox-key": "Keeps-What-Floats's Strongbox Key",
+  "item.tg02.bone-figurine": "Worn Bone Figurine",
+  "item.tg02.neesak-charm": "Newly Mounted Neesak Charm",
+  "thing.tg01.strongbox": "Strongbox",
+  "thing.tg02.lockbox": "Merchant's Lockbox",
+  "creature-at.hist-heartland.helstrom.lq25-river-beast": "Crocodile",
+  "npc.hist-heartland.helstrom.boat-captain": "Sells-Dear",
+  "npc.hist-heartland.helstrom.lq25-crew-poler": "Okan-Zish",
+  "npc.hist-heartland.helstrom.lq25-crew-steerer": "Wuleen-Taza",
+  "thing.lq25.bait": "Bait Bucket",
+  "ARG_LQ25_BaitBucket": "Bait Bucket",
+  "creature-at.hist-heartland.helstrom.lq30-basin-beast": "Viper",
+  "npc.hist-heartland.helstrom.levy-warden-01": "Gih-Xaleel",
+  "npc.hist-heartland.helstrom.lq30-kin": "Haj-Wan",
+  "npc.hist-heartland.helstrom.lq30-youth": "Sei-Wan"
+ },
+ "places": {
+  "005A17:Black Marsh.esm": {
+   "name": "Lilmoth",
+   "interior": false
+  },
+  "005A0D:Black Marsh.esm": {
+   "name": "Lilmoth",
+   "interior": false
+  },
+  "005A11:Black Marsh.esm": {
+   "name": "Lilmoth",
+   "interior": false
+  },
+  "00592B:Black Marsh.esm": {
+   "name": "Lilmoth",
+   "interior": false
+  },
+  "0396AF:Black Marsh.esm": {
+   "name": "Soulrest Dock, the coast ship",
+   "interior": false
+  },
+  "02F364:Black Marsh.esm": {
+   "name": "Soulrest Dock",
+   "interior": false
+  },
+  "0E96A9:Black Marsh.esm": {
+   "name": "House, Soulrest",
+   "interior": true,
+   "entrance": {
+    "x": 50560.0,
+    "y": -7424.0
+   }
+  },
+  "005A1F:Black Marsh.esm": {
+   "name": "Lilmoth",
+   "interior": false
+  },
+  "0059FB:Black Marsh.esm": {
+   "name": "Lilmoth, north of Pusbottom",
+   "interior": false
+  },
+  "16BF81:Black Marsh North.esp": {
+   "name": "Lilmoth Dungeon (the Night-Reed Chapter)",
+   "interior": true,
+   "entrance": {
+    "x": 21469.7,
+    "y": 2400.7
+   }
+  },
+  "0AA665:Black Marsh.esm": {
+   "name": "Coast Ship",
+   "interior": true,
+   "entrance": {"x": 32176.3, "y": -2430.5}
+  },
+  "0D78BF:Black Marsh.esm": {
+   "name": "Helstrom",
+   "interior": false
+  },
+  "0D7839:Black Marsh.esm": {
+   "name": "Helstrom's landing",
+   "interior": false
+  },
+  "0D7907:Black Marsh.esm": {
+   "name": "Helstrom",
+   "interior": false
+  },
+  "0D77AD:Black Marsh.esm": {
+   "name": "Helstrom's landing",
+   "interior": false
+  },
+  "0D77AF:Black Marsh.esm": {
+   "name": "Helstrom's landing",
+   "interior": false
+  },
+  "0D794B:Black Marsh.esm": {
+   "name": "Helstrom",
+   "interior": false
+  },
+  "0D798F:Black Marsh.esm": {
+   "name": "Helstrom",
+   "interior": false
+  },
+  "0D787F:Black Marsh.esm": {
+   "name": "Helstrom's gate",
+   "interior": false
+  },
+  "0D77F3:Black Marsh.esm": {
+   "name": "Helstrom's landing",
+   "interior": false
+  },
+  "0D787B:Black Marsh.esm": {
+   "name": "Helstrom",
+   "interior": false
+  },
+  "0D7883:Black Marsh.esm": {
+   "name": "the basin shallows east of Helstrom",
+   "interior": false
+  }
+ }
+}

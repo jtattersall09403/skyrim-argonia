@@ -283,6 +283,8 @@
 {"list_id":"quest_stage:quest.tg.tg02|5:on_enter","ord":1,"term":"giveGold"}
 {"list_id":"quest_stage:quest.tg.tg02|6:on_enter","ord":0,"term":"takeItem"}
 {"list_id":"quest_stage:quest.tg.tg02|6:on_enter","ord":1,"term":"giveGold"}
+{"list_id":"quest_stage:quest.tg.tg02|7:on_enter","ord":0,"term":"takeItem"}
+{"list_id":"quest_stage:quest.tg.tg02|7:on_enter","ord":1,"term":"giveGold"}
 {"list_id":"quest_stage:quest.tg.tg04|1:on_enter","ord":0,"term":"grantTopic"}
 {"list_id":"quest_stage:quest.tg.tg04|2:on_enter","ord":0,"term":"takeItem"}
 {"list_id":"quest_stage:quest.tg.tg04|2:on_enter","ord":1,"term":"setFlag"}

@@ -1,0 +1,46 @@
+{
+ "quest": "quest.tg.tg01",
+ "player": "wanderer",
+ "source": "designed",
+ "model": "sonnet",
+ "form_files": [
+  "out/d2c/form/quest.tg.tg01.json",
+  "out/d2c/form/quest.tg.tg02.json"
+ ],
+ "forms_hash": "0f6d6d61d7f6061a",
+ "created": "20261113T000235Z",
+ "counts": {
+  "commands": 52,
+  "stalls": 0,
+  "harness_errors": 0
+ },
+ "stages": {
+  "quest.tg.tg01": [
+   0,
+   10,
+   20,
+   30,
+   50,
+   90
+  ],
+  "quest.tg.tg02": [
+   10,
+   20,
+   30,
+   90
+  ]
+ },
+ "ended": "all quests ended (quest.tg.tg01 completed, quest.tg.tg02 completed)",
+ "take": true,
+ "answers": true,
+ "player_error": null,
+ "cost_usd": 0.16812160000000004,
+ "minutes": 1.3,
+ "turns": 44,
+ "tokens": {
+  "input_tokens": 78,
+  "output_tokens": 5430,
+  "cache_read_input_tokens": 403216,
+  "cache_creation_input_tokens": 18336
+ }
+}

@@ -160,3 +160,27 @@ after the choice, which the after-ending greetings give once written. Nothing in
 - `quest_ending.world` cannot be empty, so a failed ending can carry no ending row.
 - The new union merge on rebase kept both the old and the new rows of each record changed on both sides, and the
   database did not load. The fix was a re-import on `origin/main`.
+
+## Dialogue (lane D2c, 2026-11-13)
+
+The lines are in `story/data/quest_lines/lq25.json` and `lq30.json`, rewritten into the `infos` shape the compiler
+reads; every stale row listed above is replaced. One `dialogue-writer` per speaker with its Morrowind find step,
+one `text-review` pass over all four quests. The band and after TSVs under `story/data/dialogue-writer/quest/lq25/`
+and `lq30/` stay only while `tools/ArgoniaPlugin/LocalQuests.cs` (the old builder) reads them. The two talk rumours
+of item 6 are not quest lines and were not touched here.
+
+Record changes made with the dialogue:
+- LQ25: Okan-Zish greets the player after each ending (`topic.lq25-after-exposed-poler`, `-after-quiet-poler`), so
+  the man who asked for help says what the choice cost the crew.
+- LQ30: Haj-Wan greets the player at stage 0 with the hook (`topic.lq30-greet-waiting`); a wanderer who never asked
+  her found no quest.
+
+Fixes from the paper runs, each confirmed by a later careful player:
+- LQ25: the bribe prompt now names the deal ("Pay me, and I will say nothing to Sells-Dear"); a careful player had
+  asked about the offal only to hear Wuleen-Taza out and found the quest ended with her coin.
+- LQ25: the bucket is "left in the shallows", not "still lies" there; two players had already picked it up.
+- LQ25 stage 91 and LQ30's walk-home prompt say the consequence in words (the crew have no work at the landing;
+  "not even to Haj-Wan").
+Ten runs after dialogue (careful and wanderer twice, then a confirming careful each); all LQ25 runs and four of five
+LQ30 runs complete. The first LQ30 wanderer started beside the hostile viper (the default start is the first
+marker's target) and stopped without a quest; later LQ30 runs start at the gate warden.

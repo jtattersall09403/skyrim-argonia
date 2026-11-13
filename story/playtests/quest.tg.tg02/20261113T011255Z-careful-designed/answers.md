@@ -1,0 +1,7 @@
+1. Next, I think I'm meant to go back to Bent-Spine and report on the lockbox job, then wait for whatever the Chapter hands me next. The last journal check was meant to show a follow-up, and I can't say for sure what it said. Tilts-The-Jug is also still in the background, so I expect my record with her to matter later.
+
+2. I work for the Night-Reed Chapter, through Bent-Spine, its fence under Lilmoth, who took me in as a Lookout. Tilts-The-Jug, who runs the desk on Soulrest's dock, started me with the necklace job. I joined because it was the way forward in the story. I also liked that the Chapter treats harming people and blackmail as things it won't do, which gave me a reason to trust it.
+
+3. The most confusing moment was selling Neeta-Haj's figurine by accident. I picked "what will you give me" expecting an offer I could weigh, and it closed the sale at once. The menu gave me no hint that it would. It also wasn't clear why my Speech of 15 capped every sale at half price, since I never saw that requirement until I tried persuading.
+
+4. To the writer: the premise is good. Three clients each lied about one pledge, and the choice about who gets what felt like a real moral decision. But label the dialogue options that commit me to something, and show the Speech requirement before I pick. Also, skipping the dive made the job feel thin, because travel took me straight to the box. I'd like more of the lockbox scene, and a clear line afterwards saying what the Chapter thought of my choices.

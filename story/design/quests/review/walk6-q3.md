@@ -227,3 +227,29 @@ which are still true.**
   several targets to pass `asked-is-target` and `completes-on-target`.
 - `adaptation_check`'s `helgen` rule still asks for essential or protected people. The records state, person by
   person, that nobody is either (the ceiling), and that wording satisfies the rule's text test.
+
+## Dialogue (lane D2c, 2026-11-13)
+
+The lines are in `story/data/quest_lines/tg01.json` and `tg02.json` (topic, speaker, `infos` by variant: `main` when
+the conditions hold, `fail` or `nothing` for a refusal, `dead` or `haggle` for a second outcome). One
+`dialogue-writer` per speaker from the generated briefs, each with its Morrowind find step, then one `text-review`
+pass over all four quests' lines by place, journals and objectives included. S'Tabi's door line was still true and
+is kept word for word. Every one of the 110 stale keys of `nightreed.lines.tsv` is replaced by these files; the TSV
+files under `story/data/dialogue-writer/quest/tg/` and the old briefs in `tg01/`, `tg02/` stay only because
+`tools/ArgoniaPlugin/NightReed.cs` (the old builder) still reads them, and go with it.
+
+Record changes made with the dialogue:
+- TG02: the hand-over and the sale were one topic id shared by three clients, and the compiler takes one speaker's
+  words per topic id. Each client now has their own (`topic.tg02-hand-over-neeta`, `-okan`, `-dar`;
+  `topic.tg02-sell-figurine`, `-charm`, `-beads`).
+- TG02: Neeta-Haj's sale was the only fair route and stood on a failing Speech 30 check; both first players had 15
+  and were pushed into the hand-over. She now haggles like the other two (new stage 40, twenty gold), and the
+  objective says Speech 30 is for the full price.
+- TG01: Keeps-What-Floats has a greeting once his strongbox is empty (stages 30 to 51), so the "no harm" rule has a
+  face.
+
+Paper runs after dialogue: five chained TG01 then TG02 runs (careful and wanderer, then a confirming careful), all
+completing both quests with no harness errors. Players could say who the Chapter is (take from those who can bear
+it, harm no one, sell no silence), what each client lied about, and how the box was settled. Left for the tool lanes:
+the paper game shows the `main` words for every condition copy of a line, so a haggled sale reads as a full-price
+one while the journal and the gold say half; the locks show as open; two copies of a persuade prompt are listed.
