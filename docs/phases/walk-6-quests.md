@@ -175,6 +175,14 @@ streams.
   makes a record hold are themselves bureaucratic (`ledger`, `voteLedger`, `records`, `bondageSheet`), which pushes
   every writer towards ledgers. Lane W re-distils each principle file against its research note, the ceiling and
   [owner-bar](../../story/design/owner-bar.md), links each to its source, and renames or drops those sections.
+- **Lines true of the built world** (owner, 2026-11-13; lane T, with lane W). Three guards, each in the recipe:
+  the writer's brief holds only facts measured from the built world around the speaker (what stands there and what
+  it reads as, by fixed landmarks; what the speaker's routine actually has them doing; what the game's systems do),
+  each marked as fixed or as moving with someone's routine, and a line may place a thing only by fixed things; a
+  truth reader, separate from the style reader, is given each line beside the measured facts of its speaker's
+  surroundings from the read-back of the built plugin and lists every claim about the world the facts do not
+  support; and the paper game's `look` shows the player what is really there, so a line that describes something
+  absent is caught by the player too.
 - **The skill set, restructured** (lane W, after the builder and the first built playtests): the quest skills become
   a connected set, each a clean recipe that names the skill before it and after it, so an agent entering at any
   point knows the whole path. Planned shape, to be settled by what this phase teaches: `quest-system` (the map of the

@@ -87,6 +87,15 @@ reads this first; a new ruling is added here the day it is made, as well as to o
 - Nothing invented from nothing: what the lore does not give is derived from it by logical extrapolation, as one
   consistent story and timeline (OR 2026-11-09).
 - Every fact a person tells is true of the world the player is standing in (OR 2026-11-07, 2026-11-08).
+- "The actual game world and built places and dialogue and quests all need to be completely consistent with each
+  other. This is super important" (OR 2026-11-13). In practice:
+  - nothing is said that the world's systems do not do (no tides in a province that has none);
+  - a thing's place is told relative to things that do not move, never "next to us", since a speaker moves with
+    their routine;
+  - nobody speaks of an event that is not there to see (a house on fire with no fire);
+  - a place is named for what it is only if something built clearly reads as that (no "hatching sheds" without a
+    building that reads as one);
+  - a person's stated work is work they are seen to do (no "lifting crates" from someone who never does).
 - No Nordic element reaches the player through what we add (decision 0006).
 - A native Argonian place has no jail; the Owing is the sentence; resisting arrest is a fight to the death
   (OR 2026-11-10).

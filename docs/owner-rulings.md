@@ -550,3 +550,15 @@ added here the day they are made, with the date and the issue.
   goes for all the factions. They should be fun and intriguing and exciting and have drama and tension, all of
   their own". Every faction's line has drama, tension and intrigue of its own kind; a faction's premise (buying
   people out) may stay as background, but each quest is something daring the player does.
+- 2026-11-13 (in session, lines true of the built world): "quests and dialogue must be consistent with the actual
+  world and the context in which they are spoken. There's no point someone talking about tides when our province
+  has none. We can't have someone saying 'there's a spear in the grass next to us' at a time of day when they are in
+  a different part of their routine and they're not next to the spear (so the dialogue should instead say the
+  spear's location relative to things that don't move). We can't have people talking about a house that's on fire
+  if there's no house on fire; we can't have people talking about 'hatching sheds' if there is no building that
+  clearly reads as a hatching shed; or talking about how their job is lifting crates if they don't actually do any
+  crate lifting ... The actual game world and built places and dialogue and quests all need to be completely
+  consistent with each other. This is super important". Every line, journal entry and record is true of what is
+  built: what exists and reads as what it is called, where things are relative to things that do not move, what
+  the world's systems do (no tides), and what the speaker is actually seen to do. It is built into the skills and
+  checked, and kept to.
