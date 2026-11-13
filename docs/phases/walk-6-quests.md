@@ -237,3 +237,21 @@ one re-authored quest of each line. Everything else rests on the gate, the compa
   MQ03; placements nothing named were dropped (MQ05's wasps).
 - **Skills lost for now, to be restored once the form carries locks and owners:** the Chainbreakers' three quests
   turn only on Speech or gold (their thefts were cut because the form had no owner or lock).
+
+### Cleared findings waiting to be folded into the skills (lane W)
+
+Each was raised by a paper player, fixed, and not raised by the next player.
+
+- (MQ01) Before a player is asked to join anything, lines they can choose tell them what it is, whom it serves, what
+  it wants of them and why them, what it pays, and one true reason to hesitate; "not yet" stays open and free.
+- (MQ01) The first person to speak tells a new player where they are and what the local words mean, in their own
+  voice and a few sentences.
+- (MQ04, MQ05) After an ending, a person greets with their own view of it and its cost, never "I have nothing to add".
+- (MQ04, MQ05) A choice between people is named before it is made: the brief or journal says what each does.
+- (MQ04) A line that points to a topic ("ask me who...") uses the words the next topic answers.
+- (MQ04, MQ05) Only the name the player already has is used in lines, prompts and journal (the player says "the
+  cutters" until told otherwise).
+- (MQ04, MQ05) Each person's first line says who they are in a clause and glosses our words the first time.
+- (all) A speaker's brief gives every person's sex.
+- (tools) A lane keeps its scratch in a folder of its own and deletes only that; lanes share the session's scratchpad.
+
