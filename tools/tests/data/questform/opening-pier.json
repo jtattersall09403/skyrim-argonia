@@ -115,7 +115,8 @@
    "enabled": true,
    "placement": {
     "existing": "005AB4:Black Marsh.esm"
-   }
+   },
+   "at": {"cell": "005943:Black Marsh.esm", "interior": false, "x": 5688.0, "y": -9382.0, "z": 178.0}
   },
   {
    "id": "npc.example.contact",

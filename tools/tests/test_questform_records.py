@@ -8,8 +8,8 @@ from tools.argonia_world import db
 from tools.questform import compile as qc
 from tools.questform import rules
 
-ELEVEN = ["quest.main.mq01", "quest.main.mq03", "quest.main.mq04", "quest.main.mq05",
-          "quest.tg.tg01", "quest.tg.tg02", "quest.local.lq25", "quest.local.lq30"]   # BC01 to BC03: being rewritten
+ELEVEN = ["quest.main.mq01", "quest.main.mq03", "quest.main.mq04", "quest.main.mq05", "quest.bc.bc01", "quest.bc.bc02",
+          "quest.bc.bc03", "quest.tg.tg01", "quest.tg.tg02", "quest.local.lq25", "quest.local.lq30"]
 DIVES = "npc.pirate-freeholds.opening-work-camp.n1-2"
 
 
@@ -53,6 +53,9 @@ def test_a_failed_check_says_its_own_words_and_a_gated_line_has_no_ungated_twin(
     assert {"is": "skill_at_least", "skill": "Speech", "value": 25} in passed[0]["conditions"]
     assert failed[0]["conditions"] == [] and failed[0]["text"].startswith("Words cost nothing")
     assert failed[0]["text"] != passed[0]["text"] and failed[0]["prompt"] == passed[0]["prompt"]
+    for q, topic in (("quest.bc.bc02", "topic.bc02-more"), ("quest.bc.bc03", "topic.bc03-more")):
+        at0 = lines_of(forms[q], topic, 0)
+        assert at0 and all(ln["conditions"] for ln in at0), (q, "an ungated copy of a gated start line")
 
 
 def test_a_hand_in_with_no_other_check_falls_back_without_the_thing(forms):
@@ -254,7 +257,7 @@ def test_a_death_that_would_come_late_closes_with_the_step_it_replaces(forms):
                    "death.npc.mercantile-coast.lilmoth.broker-buys-the-months.10-21")["until"] == 20
     assert trigger(forms["quest.main.mq04"], "death.npc.mercantile-coast.low-reed-village.root-herald.10-21")["until"] == 20
     assert trigger(forms["quest.main.mq03"], f"death.{DIVES}.10-13")["until"] == 12   # her talk, sale or refusal
-    with_until = {"quest.main.mq01", "quest.main.mq03", "quest.main.mq04"}
+    with_until = {"quest.main.mq01", "quest.main.mq03", "quest.main.mq04", "quest.bc.bc01", "quest.bc.bc02", "quest.bc.bc03"}
     for q, f in forms.items():
         assert rules.late_triggers(rules.Form(f)) == {}, q
         assert q in with_until or all("until" not in t for t in f["triggers"]), q

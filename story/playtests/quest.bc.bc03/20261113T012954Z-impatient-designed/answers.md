@@ -1,0 +1,7 @@
+1. Nothing, as far as I can tell. The journal is empty and no new objective appeared after I reported to Never-Sold. I would guess more Chainbreaker work turns up with her later, but the game has not said so.
+
+2. I work for Never-Sold, who keeps the Chainbreakers' house in Blackrose. She pays me to end Owings, which are debts that hold people, and she named me one of the Chainbreakers. I took the work for the gold and because the jobs were clear. I'm not sure I'd call it loyalty.
+
+3. The most confusing moment was the Broker's house. I tried to take Never-Sold's Count and Names at Thorn, and the game reacted differently depending on whether anyone was watching. I could not tell which items mattered or why. I also never found out what Never-Sold is to the Broker, so I didn't know what the book meant to her. The placeholder lines marked "[not yet written; the gist:]" were confusing too, since I couldn't tell whether they were missing content or part of the game.
+
+4. Your choices and consequences are the best part. Killing Brings-Them-Back and Third-Born Tsaxi left things worse in ways Never-Sold pointed out. Keep that up. Give the player a reason to ask about people, since I skipped the optional questions and came away not knowing who most of them were. Fill in the placeholder lines. Don't let the quest chain end on an empty journal. A short hint about what Never-Sold wants next, or what happened to Rows-For-Another, would make me want to keep going.

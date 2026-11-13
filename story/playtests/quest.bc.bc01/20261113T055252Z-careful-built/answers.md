@@ -1,0 +1,7 @@
+1. I don't think there is a clear next step. The journal showed no active objective after I reported to Never-Sold, and my last "say 1" was just me checking whether she had more work. She said to come back for more, so I'd guess the Chainbreakers will hand out another job later. For now I'd go back to her or look around Argonia for another lead.
+
+2. I work for Never-Sold and the Chainbreakers, loosely. She hired me for the job of freeing Rows-For-Another, and I did it for the pay and because debt-bondage bothered me. I wouldn't call it a deep loyalty yet. She withheld information from me, so I trust her only partly.
+
+3. The most confusing moment was that I never told Rows-For-Another she was free, and the game didn't prompt me to. I closed her Owing by handing Hulm-Tei his leaf and the gold, but I never saw how that reached her. The bystanders' generic dialogue also confused me, because I'd hoped they would give me real information about Hulm-Tei and they didn't. The choice about the leaf was also hard to read at first, since I couldn't tell who would pay for the shortage.
+
+4. I'd tell the writer the setup and the three routes are excellent, and that the moral weight of the leaf choice landed. Never-Sold's reaction stung in a good way. But close the loop with the person you freed, give the bystanders something specific to say, and make the end of the quest show clearly what comes next. When the journal went empty I wasn't sure whether the game was finished or just paused.

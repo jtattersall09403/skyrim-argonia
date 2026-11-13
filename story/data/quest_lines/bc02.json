@@ -1,196 +1,621 @@
 {
- "topic.bc02-held-killer": {
-  "speaker": "npc.imperial-penal-south.blackrose.held-killer",
-  "infos": [
-   {
-    "variant": "main",
-    "prompt": "Why do the heirs hold you?",
-    "lines": [
-     "I killed a man of the heirs. He had sold my sister's Owing on to the crossings, and I do not deny what I did.",
-     "By our law a killing is worked off for the dead man's household. I work it for them as it is owed, and I do not ask you to call it small.",
-     "The two beside me have their own reasons. Ask them."
-    ],
-    "facts": [
-     "fact.bc02.killer-sister"
-    ]
-   }
-  ]
- },
- "topic.bc02-held-killer-going": {
-  "speaker": "npc.imperial-penal-south.blackrose.held-killer",
-  "infos": [
-   {
-    "variant": "main",
-    "prompt": "Tsaxi will let you go.",
-    "lines": [
-     "Then I go once Tsaxi has turned his back.",
-     "Go back north-west through Blackrose to the Chainbreakers' house. Tell Never-Sold the name Hides-In-Reeds, and that I came out."
-    ],
-    "facts": []
-   }
-  ]
- },
- "topic.bc02-held-killer-staying": {
-  "speaker": "npc.imperial-penal-south.blackrose.held-killer",
-  "infos": [
-   {
-    "variant": "main",
-    "prompt": "Tsaxi will let one of the others go.",
-    "lines": [
-     "Then that is the right of it. I killed. The heirs hold me for it. It sits hard to be the one who is left, but I do not ask to be chosen.",
-     "Whoever goes out should take the name to Never-Sold, in her house on the far side of the town."
-    ],
-    "facts": []
-   }
-  ]
- },
- "topic.bc02-after-killer": {
-  "speaker": "npc.imperial-penal-south.blackrose.held-killer",
-  "infos": [
-   {
-    "variant": "main",
-    "prompt": null,
-    "lines": [
-     "I am still here. I do not blame you for it. One went out and I did not. I would have chosen the same.",
-     "I killed and the heirs hold me for it. That has not changed."
-    ],
-    "facts": []
-   }
-  ]
- },
- "topic.bc02-held-mother": {
-  "speaker": "npc.imperial-penal-south.blackrose.held-mother",
-  "infos": [
-   {
-    "variant": "main",
-    "prompt": "Why do the heirs hold you?",
-    "lines": [
-     "I came to the Rose with nowhere else to go, the season my daughter was taken onto the estate. The heirs gave me a place by their fire. I ate what they gave me and was glad of it.",
-     "They have counted that shelter ever since. The count is larger with each season. When I die, the heirs will look to my daughter for what I ate. That is a debt she never sat down to.",
-     "I will not tell you mine is the better case. The two beside me were held for what they did or said, and I am old, with fewer years to give. I have not seen my daughter since the season she was taken, and I would see her again."
-    ],
-    "facts": [
-     "fact.bc02.mother-shelter"
-    ]
-   }
-  ]
- },
- "topic.bc02-held-mother-going": {
-  "speaker": "npc.imperial-penal-south.blackrose.held-mother",
-  "infos": [
-   {
-    "variant": "main",
-    "prompt": "Tsaxi will let you go.",
-    "lines": [
-     "Then I walk out when Tsaxi looks away. I did not look for it. I will not say I earned it more than the two that I leave behind.",
-     "Give my name to Never-Sold: Keeps-The-Old-Count. Let her hear that it was I who walked out alive.",
-     "The way back is north-west through Blackrose, to the Chainbreakers' house. When I am free of this shore, I will go looking for my daughter."
-    ],
-    "facts": []
-   }
-  ]
- },
- "topic.bc02-held-mother-staying": {
-  "speaker": "npc.imperial-penal-south.blackrose.held-mother",
-  "infos": [
-   {
-    "variant": "main",
-    "prompt": "Tsaxi will let one of the others go.",
-    "lines": [
-     "Then one of the others walks out. I keep my place here. I am old. I have only my years to give the heirs, so I will go on giving them.",
-     "I ask one thing of you. If you meet my daughter, do not tell her I am still held. She would try to carry my count. The heirs would let her.",
-     "Never-Sold keeps the Chainbreakers' house. Go back to her, north-west across the town."
-    ],
-    "facts": []
-   }
-  ]
- },
- "topic.bc02-after-mother": {
-  "speaker": "npc.imperial-penal-south.blackrose.held-mother",
-  "infos": [
-   {
-    "variant": "main",
-    "prompt": null,
-    "lines": [
-     "I am still here at the heirs' post. One of us has gone out, and the one beside me stays. I would sooner it was a younger case that was answered.",
-     "If you have any word of my daughter, Rows-For-Another, good or bad, I would take it. I ask only that she is not told where I am."
-    ],
-    "facts": []
-   }
-  ]
- },
- "topic.bc02-the-fire": {
+ "topic.bc02-more": {
   "speaker": "npc.imperial-penal-south.blackrose.chainbreaker-patron",
   "infos": [
    {
     "variant": "main",
-    "prompt": "Is there more to do?",
+    "prompt": "Is there more work?",
     "lines": [
-     "There is. A fire went through Blackrose Prison, which the families born there call the Rose. The heirs of those families brought three held there out of the smoke. They keep them at their stone house on the east shore of Blackrose.",
-     "The three are Says-It-Plain, Hides-In-Reeds and Keeps-The-Old-Count, who is Rows-For-Another's mother. The keeper, Third-Born Tsaxi, might count one of them lost to the smoke for good words or for coin, I think. Here are a hundred gold for him. They are yours to keep if words do the work.",
-     "From here go south-east through Blackrose to the shore. The stone house stands at the water's edge. Tsaxi stands outside its west wall, on the town side. I will not say which one should go. Hear all three first. They stand with him by the stone house."
+     "Three people are held at the heirs' post on the east shore, in the town. The families who hold the Rose, its heirs, hold them. The Rose is the old prison, far to the north, and you are not going there.",
+     "One of the three can be got out. I want the one held for words, the one we can stand beside in daylight.",
+     "Tsaxi, the heirs' gate-keeper, stands on the water by the nearest houses, and he will want 300 gold. I will not pay it to loose a stranger I cannot name. If I loose the wrong one, we become the people who loose killers.",
+     "So find out which is which first, and read whatever proof you can find before you choose. Until you do, the count is whatever Tsaxi says, and he can say the smoke killed one of the three. Not two.",
+     "Go out of my house and south through the town to the east shore, where the heirs' post stands."
     ],
     "facts": [
-     "fact.bc02.fire"
+     "fact.bc02.one-lost"
+    ]
+   }
+  ]
+ },
+ "topic.bc02-again": {
+  "speaker": "npc.imperial-penal-south.blackrose.chainbreaker-patron",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Tell me the job again.",
+    "lines": [
+     "I want the one held for words out of the heirs' post on the east shore, and I want no killer loosed beside him.",
+     "What is written on the Rose's own leaves shows which of the three is which. Ask Tsaxi who reads them and where he is, and when they are in your hands, read them before you choose.",
+     "If Tsaxi sends you into the western swamp, it is full of teeth. Go armed or go quiet.",
+     "Come back to me when it is done, and tell me who came out."
+    ],
+    "facts": [
+     "fact.bc02.one-lost"
+    ]
+   }
+  ]
+ },
+ "topic.bc02-children": {
+  "speaker": "npc.imperial-penal-south.blackrose.chainbreaker-patron",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Tsaxi called the Chainbreakers the Broker's children. Why?",
+    "lines": [
+     "I will not say why. That is mine, and I keep it.",
+     "The Broker is an old man at Soulrest's dock. That is all I will give you.",
+     "Do not ask me twice. Do what I sent you to do, and let Tsaxi's words stay Tsaxi's."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.bc02-report-walks": {
+  "speaker": "npc.imperial-penal-south.blackrose.chainbreaker-patron",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "It's done at the post. Walks-Far is out.",
+    "lines": [
+     "Walks-Far, then. I am pleased, and I am uneasy. He said in the yard that the gate to the dead levels should be opened, and he owes three seasons for it.",
+     "Mends-Nets and Seven-Floods are still held at the heirs' post, and they lost what he gained. Here are 150 gold and ten lockpicks. If you carry the leaves, give them here. I keep all three names.",
+     "Come to me when you want more work."
+    ],
+    "facts": [
+     "fact.bc02.walks-far"
+    ],
+    "gives": [
+     "gold:150",
+     "item.lockpick"
+    ]
+   }
+  ]
+ },
+ "topic.bc02-report-mends": {
+  "speaker": "npc.imperial-penal-south.blackrose.chainbreaker-patron",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "It's done at the post. Mends-Nets is out.",
+    "lines": [
+     "Mends-Nets. Then I am cold. We will be called the people who loose killers, and it will be true.",
+     "Walks-Far, the one I asked for, and Seven-Floods are still held at the heirs' post. Here are 150 gold and ten lockpicks. If you carry the leaves, give them here. I keep all three names.",
+     "Come to me when you want more work."
+    ],
+    "facts": [],
+    "gives": [
+     "gold:150",
+     "item.lockpick"
+    ]
+   }
+  ]
+ },
+ "topic.bc02-report-seven": {
+  "speaker": "npc.imperial-penal-south.blackrose.chainbreaker-patron",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "It's done at the post. Seven-Floods is out.",
+    "lines": [
+     "Seven-Floods. I have nothing to say to that, and then I have one word. Kind.",
+     "Walks-Far, the one I asked for, and Mends-Nets are still held at the heirs' post. Here are 150 gold and ten lockpicks. If you carry the leaves, give them here. I keep all three names.",
+     "Come to me when you want more work."
+    ],
+    "facts": [],
+    "gives": [
+     "gold:150",
+     "item.lockpick"
+    ]
+   }
+  ]
+ },
+ "topic.bc02-report-all": {
+  "speaker": "npc.imperial-penal-south.blackrose.chainbreaker-patron",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "It's done at the post. All three are gone.",
+    "lines": [
+     "All three. Then I pay nothing, and the post is empty.",
+     "The Rose's hunters are three short, and they will take a clutch-brother of Walks-Far's in their place. The heirs will not treat with the Chainbreakers again. That loss is ours and his, and I will not hide it.",
+     "Come to me when you want more work, and we will do better by the next one."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.bc02-seven-keeper-dead": {
+  "speaker": "npc.imperial-penal-south.blackrose.held-mother",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "The keeper is dead. Who are you three?",
+    "lines": [
+     "If that is so, you have done what nobody at this post could do. I will not thank you for it, and I will not weep for him.",
+     "I am Seven-Floods. The man is Walks-Far. The younger woman, who nurses my cough, is Mends-Nets. The Rose's heirs hold us, and a fire in the Rose, the old prison where they keep their held, is why they brought us north to this post.",
+     "Tsaxi counted us each day, and his word was the only count. Now nobody can swear how many we are. Any one of us could walk out of here. So could all three of us. No one is left to say it was wrong.",
+     "Ask Never-Sold, who keeps the Chainbreakers' house on the north side of the town. She knows what that count is worth."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.bc02-tsaxi-who": {
+  "speaker": "npc.imperial-penal-south.blackrose.post-gatekeeper",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Who are you?",
+    "lines": [
+     "I am Third-Born Tsaxi, gate-keeper of the Rose's outer post. The Rose is the old prison, far to the north of here. The heirs hold it now as their home, and they set me to watch these three.",
+     "I was born in the Rose, and the heirs fed me and raised me. They keep the gate shut on the dead levels below it, and they set me to watch the three at their post. I have never been further from the Rose than this shore.",
+     "I cannot read a leaf or a mark, so I know these three by looking, and I say what I see to the heirs without a mistake.",
+     "If my count is wrong, my neck answers for it. Ask what you want to know, and ask it plain. I answer plain."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.bc02-tsaxi-three": {
+  "speaker": "npc.imperial-penal-south.blackrose.post-gatekeeper",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Who are the three you keep here?",
+    "lines": [
+     "You come from the north house. I know the Broker's children when I see them, and I say that once and no more. I will not explain it. Ask the woman who sent you.",
+     "A fire went through the upper floors of the Rose. The heirs sent three of their held up to me, to keep until the Rose's leaves came after them. The leaves are the pages that say what each person is held for. I cannot read them, so a reckoner was to carry them and read them out. A reckoner is the one who reads the Rose's leaves and keeps its count.",
+     "The three are a young man, a young woman and an old woman. The old woman is held for a roof: she owes the heirs for the shelter they gave her. One of the two young ones is held for words said in the yard. The other is held for a killing, and when the leaf is read that one will be put under. To be put under is to be sent down below the Rose, past the gate, where the dead still walk. Nobody comes up.",
+     "Which of the two young ones is which, I do not know. Both say they are the one held for words. Both can say the words. I was given them at this post, and I did not count what their hands had done.",
+     "Hear what I can do. I can lose one of the three to the smoke, and the heirs will believe it, because people die in fires. I cannot lose two. Two is a hunt, and the hunt ends at my neck. So only one can leave this post, and it is for you to say which.",
+     "The reckoner came north by the wet road round the west of the lake. He had four with him, and none came back. His camp is the hut in the swamp, far west of the town, round the lake by the wet road. I do not say what is in that swamp. I say five men went into it and none came back, so go armed or do not go. If you find his leaves, read them before you choose. I cannot, and no one here can."
+    ],
+    "facts": [
+     "fact.bc02.reckoner",
+     "fact.bc02.put-under",
+     "fact.bc02.brokers-children"
+    ]
+   }
+  ]
+ },
+ "topic.bc02-tsaxi-otheel": {
+  "speaker": "npc.imperial-penal-south.blackrose.post-gatekeeper",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "How did the dead man die?",
+    "lines": [
+     "His name was Otheel. He was a shelter-reckoner of the Rose, one who reckoned what a household owes the heirs for its roof.",
+     "He was drowned in a net in the wash-pool, the pool in the Rose where the held wash. I say how he died. I do not say who did it.",
+     "Whoever reads the leaves will know who. I can say who stands before me, and I cannot say what their hands did.",
+     "The three are east of me, on the water's edge. Speak to them, and think about what you hear."
+    ],
+    "facts": [
+     "fact.bc02.otheel"
+    ]
+   }
+  ]
+ },
+ "topic.bc02-tsaxi-persuade": {
+  "speaker": "npc.imperial-penal-south.blackrose.post-gatekeeper",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Count one of them lost to the smoke.",
+    "lines": [
+     "You say it plain, and you argue it well enough. I am tired of carrying the whole count on my own neck.",
+     "One is smoke. I will swear it before the heirs, and I will swear it to anyone who asks. If you ask me for a second, I will say you lie.",
+     "Now choose which, and tell the one you choose. The other two stay as the heirs set them, and I will keep them on this shore.",
+     "If you have found my reckoner's leaves, read them before you choose. I cannot read them, so I cannot tell you if you are wrong. Do not send out the wrong one because you were in a hurry."
+    ],
+    "facts": []
+   },
+   {
+    "variant": "fail",
+    "prompt": "Count one of them lost to the smoke.",
+    "lines": [
+     "That is a thin reason to set against my neck. If the heirs ask who told me to count one dead, I have nothing to show them.",
+     "A better talker might give me words I could say again to the heirs without shame. Or bring gold, or my reckoner's leaves, and I need no words."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.bc02-tsaxi-pay": {
+  "speaker": "npc.imperial-penal-south.blackrose.post-gatekeeper",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Here is the gold you want. Count one lost to the smoke.",
+    "lines": [
+     "That is near the weight of my neck. I take it.",
+     "One is smoke. I swear it to the heirs and to anyone who asks. I do not say what I took, and you do not say it either.",
+     "Now choose which, and tell the one you choose. Any leaves you carry, look at them first. I would not know a wrong choice from a right one.",
+     "Understand what you bought. I have put my neck on one lie, and it is the only lie I can carry. A second would be two."
+    ],
+    "facts": []
+   },
+   {
+    "variant": "fail",
+    "prompt": "Here is the gold you want. Count one lost to the smoke.",
+    "lines": [
+     "That is not enough. My neck is worth more than that purse, and I will not risk it for less than it is worth.",
+     "Come back with a heavier purse, and I will take it. Or come with my reckoner's leaves in your hand, and I will want no coin."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.bc02-tsaxi-leaves": {
+  "speaker": "npc.imperial-penal-south.blackrose.post-gatekeeper",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Your reckoner's hut is empty and a lamia keeps it. Here are his leaves.",
+    "lines": [
+     "Empty, and a lamia keeps it. Then he is not coming, and no one is coming after him. I told myself he was only slow.",
+     "Give them here. I cannot read them, so I will not know what you read. If you have not read them, you should have, because they will not be yours after this.",
+     "Then the count is mine, and I say one died. One of the three is smoke, and I will say so to the heirs. Choose which, and tell the one you choose.",
+     "I ask one thing. Do not tell the Rose he is dead. A man no one has seen dead may still come in."
+    ],
+    "facts": [
+     "fact.bc02.reckoner"
+    ]
+   }
+  ]
+ },
+ "topic.bc02-walks-who": {
+  "speaker": "npc.imperial-penal-south.blackrose.held-speaker",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Who are you?",
+    "lines": [
+     "I am Walks-Far. I am the one the heirs hold for words. They run the Rose, the old prison far to the north of here, and they hold me at this post.",
+     "I said it in the Rose's yard, and I say it again. \"The gate to the dead levels should be opened, and the Rose left.\" The dead levels are the floors below the Rose, where the dead still walk.",
+     "I said it loud, so everyone would hear. Three seasons. That is what I owe for it, and I will not take back one word.",
+     "The woman here says she is the one held for words. She stood in the yard. She can say it as well as I can. Saying a thing is not the same as saying it first.",
+     "I heard Tsaxi talk, so I know one of us may go. If you take her, a woman who said nothing walks out under my name. I stay, the gate stays shut, and the next man who says it will know what it earns. Take me. I am sick of this water."
+    ],
+    "facts": [
+     "fact.bc02.walks-far"
+    ]
+   }
+  ]
+ },
+ "topic.bc02-mends-who": {
+  "speaker": "npc.imperial-penal-south.blackrose.held-killer",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Who are you?",
+    "lines": [
+     "I am Mends-Nets. I was set to mend the heirs' nets, and at night I sit with the old woman, because she coughs through the night with the smoke in her chest. Forgive me if I speak low. She sleeps badly.",
+     "I am the one they hold for words. I said them in the yard, and the words are these. \"Open the gate to the dead levels, and leave the Rose.\"",
+     "The whole yard heard it, so I have them by heart. The man here says they are his. I do not argue with him. He is frightened, and a frightened man holds hard to what he has.",
+     "Think of what is lost if he goes. He is loud, and he cannot keep still. He will say it again at the first wall he finds, and the heirs will hear him, and the hunt will follow the sound to the old woman's tree. I know how to be quiet. I have been quiet at this post a long time.",
+     "If he goes, I stay. I sit with her until she is gone, and then I sit alone. I do not ask for pity. I ask you to think about it."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.bc02-seven-who": {
+  "speaker": "npc.imperial-penal-south.blackrose.held-mother",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Who are you?",
+    "lines": [
+     "I am Seven-Floods, an old woman who owes the Rose's heirs for a roof, and always will. An Owing is the work a debt sets on you, and mine will outlast me.",
+     "The smoke from the Rose's fire is in my chest, and it does not leave. I cough through the night, and the younger woman here sits up with me.",
+     "I want one thing, to die near my Hist. That is the tree I was hatched under, and a woman who dies in the heirs' hands dies far from it.",
+     "My daughter is Rows-For-Another. She works off an Owing of her own on the land north of the town. About that Owing I will tell you this much: the girl who kept the count wept when she wrote my daughter down, and then she wrote it.",
+     "If you have come to take one of us out, I ask that you do not choose me."
+    ],
+    "facts": [
+     "fact.bc02.seven-floods",
+     "fact.bc02.keeper-wept"
+    ]
+   }
+  ]
+ },
+ "topic.bc02-seven-ease": {
+  "speaker": "npc.imperial-penal-south.blackrose.held-mother",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Let me ease your breathing.",
+    "lines": [
+     "That is a kind hand. The weight lifts a little, and I can say three words without coughing. I will use them well.",
+     "Speak low. The younger woman who nurses me is close by, and I will say this once.",
+     "Mends-Nets drowned Otheel. He was the Rose's shelter-reckoner, the man who sets down what each roof owes. He wrote a third winter on mine, and she drowned him for it.",
+     "Take her first, if you take anyone. When the reckoner's leaves are read, the heirs will put her under, down beneath the Rose, and no one is seen again after that."
+    ],
+    "facts": [
+     "fact.bc02.mends-nets"
     ]
    },
    {
     "variant": "fail",
-    "prompt": "Is there more to do?",
+    "prompt": "Let me ease your breathing.",
     "lines": [
-     "I have nothing more for you yet. Come back when the first matter is closed."
+     "That is a little warmth and no more. The smoke sits too deep for a hand as new to healing as yours. A surer healer might reach it, and then I would speak.",
+     "Do not ask me whom I would give up. Ask me which of my daughters I would drown. I will not answer that, not for any hand.",
+     "If I will not tell you, the Rose's reckoner will. He wrote it all in his leaves, and they would tell you without me."
     ],
     "facts": []
+   }
+  ]
+ },
+ "topic.bc02-seven-herbs": {
+  "speaker": "npc.imperial-penal-south.blackrose.held-mother",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Let me tell you what eases a smoke-chest.",
+    "lines": [
+     "You speak like one who has sat by a bed like mine. Say it slowly. Nobody who has sat with me has known what to give.",
+     "Yes. That is what I wanted, and nobody here had it for me. I owe you for that, and I will pay with something I did not mean to say.",
+     "The younger woman here, Mends-Nets, has no skill with a chest, only patience. She put Otheel, the Rose's shelter-reckoner, under the water because he wrote a third winter onto my roof.",
+     "The heirs will put her under when his leaves are read, down beneath the Rose where nobody is seen again. Take her out of here before any of us."
+    ],
+    "facts": [
+     "fact.bc02.mends-nets"
+    ]
    },
    {
-    "variant": "again",
-    "prompt": "Is there more to do?",
+    "variant": "fail",
+    "prompt": "Let me tell you what eases a smoke-chest.",
     "lines": [
-     "The stone house is on the east shore, south-east through Blackrose from here. Tsaxi stands outside its west wall, on the town side. Hear all three before you choose."
+     "Strangers who come here give me cures. I have been told of roots and steam and prayers, and I am still coughing.",
+     "You know less of herbs than the women of the Rose did. Someone who knew a smoke-chest truly would have my ear.",
+     "I will not name a daughter to a seller of cures. If I am silent, the leaves the Rose's reckoner carried say it as well as I could."
     ],
     "facts": []
    }
   ]
  },
- "topic.bc02-names-speaker": {
-  "speaker": "npc.imperial-penal-south.blackrose.chainbreaker-patron",
+ "topic.bc02-seven-press": {
+  "speaker": "npc.imperial-penal-south.blackrose.held-mother",
   "infos": [
    {
     "variant": "main",
-    "prompt": "Tsaxi will let Says-It-Plain go.",
+    "prompt": "You know which of them killed him. Tell me, gently.",
     "lines": [
-     "Says-It-Plain goes, then. I say the three names back to you so that all three are kept: Says-It-Plain, Hides-In-Reeds, Keeps-The-Old-Count. The heirs will take the last two back to the Rose. I will not tell you that costs nothing.",
-     "Ask Tsaxi, not me, what the heirs hold against each of them. I would not say it for him."
+     "You ask it gently. Nobody has asked me anything gently at this post, and I am too tired to hold myself against it.",
+     "It was Mends-Nets. Otheel wrote a third winter on my roof, and I am old, and I could not pay for the first two. She did it in a night, and then she came back to me and held the cup to my mouth. She has never spoken of it.",
+     "I did not ask it of her. I did not need to.",
+     "She is not a hard woman. She is the gentlest hand I have had. When the reckoner's leaves are read, she is put under for it. Take her before me, if you take any."
+    ],
+    "facts": [
+     "fact.bc02.mends-nets"
+    ]
+   },
+   {
+    "variant": "fail",
+    "prompt": "You know which of them killed him. Tell me, gently.",
+    "lines": [
+     "I do not give a daughter to a stranger because the stranger has a soft voice. You would need gentler words than you have, and more of them, to open me.",
+     "You are asking me to name the daughter I would give to the water. I will not do it. The Rose's reckoner set it down in his leaves, and you can read it there."
     ],
     "facts": []
    }
   ]
  },
- "topic.bc02-names-killer": {
-  "speaker": "npc.imperial-penal-south.blackrose.chainbreaker-patron",
+ "topic.bc02-seven-leaves": {
+  "speaker": "npc.imperial-penal-south.blackrose.held-mother",
   "infos": [
    {
     "variant": "main",
-    "prompt": "Tsaxi will let Hides-In-Reeds go.",
+    "prompt": "I've read the reckoner's leaves. Mends-Nets drowned Otheel.",
     "lines": [
-     "Hides-In-Reeds goes. I hold the three names: Hides-In-Reeds, Says-It-Plain, Keeps-The-Old-Count. The heirs will take the other two back to the Rose.",
-     "I cannot call what you did clean or foul. I have kept all three names."
+     "Then you know it, and I will not tell you it was not so. Mends-Nets drowned Otheel, and she did it for me.",
+     "Otheel put one more winter on what I owed. I was old and coughing, and I owed more than I could ever work off, and that third winter was one more to die inside. She took him at the wash-pool with a net. He did not come out.",
+     "If those leaves reach the Rose, she is put under, down where nobody comes up. You have read that too.",
+     "Take her anyway. Take her before me. I am an old woman with smoke in my chest, and I will be dead soon wherever I am. She is young, and she did it for me.",
+     "Do not mistake me. I want to die near my Hist, and I would give much to lie under it at the end. I will not buy it with her."
+    ],
+    "facts": [
+     "fact.bc02.mends-nets",
+     "fact.bc02.take-her-first"
+    ]
+   }
+  ]
+ },
+ "topic.bc02-go-walks": {
+  "speaker": "npc.imperial-penal-south.blackrose.held-speaker",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "You are the one. Go when I am gone.",
+    "lines": [
+     "Good. You chose the man who said it. I will not thank you for what is owed to me.",
+     "I go when you have gone. Not before.",
+     "The other two will not follow. One is smoke. Two is a hunt, and the hunt goes to our homes. They know it, and so do I.",
+     "Three seasons I owed. I owe none now. The two I leave still do, and I leave them to it."
+    ],
+    "facts": [
+     "fact.bc02.walks-far"
+    ]
+   }
+  ]
+ },
+ "topic.bc02-go-mends": {
+  "speaker": "npc.imperial-penal-south.blackrose.held-killer",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "You are the one. Go when I am gone.",
+    "lines": [
+     "You chose me. If you have read the reckoner's leaves, you know what they say of me, and you chose me knowing. I will not tell you they are wrong.",
+     "I said his words to you, and I said them well. They were never mine. I am sorry for that lie, and not for the rest.",
+     "I do not thank you. You could have chosen the old woman, and she asked you not to. And I do thank you. I did not think anyone would choose me.",
+     "I go when you have gone from this water. Neither of the others will follow. Three on the road leaves three trails, and every trail ends at somebody's home."
     ],
     "facts": []
    }
   ]
  },
- "topic.bc02-names-mother": {
-  "speaker": "npc.imperial-penal-south.blackrose.chainbreaker-patron",
+ "topic.bc02-go-seven": {
+  "speaker": "npc.imperial-penal-south.blackrose.held-mother",
   "infos": [
    {
     "variant": "main",
-    "prompt": "Tsaxi will let Keeps-The-Old-Count go.",
+    "prompt": "You are the one. Go when I am gone.",
     "lines": [
-     "Keeps-The-Old-Count goes. Her name first, then Says-It-Plain and Hides-In-Reeds. I keep all three. The heirs will take those two back to the Rose.",
-     "I will see that what the heirs reckon she owes is never put on Rows-For-Another, her daughter. I give you that as my own promise."
+     "I asked you not to choose me. You have, and I will not make you say it twice.",
+     "I go to my daughter, if she is still where they keep her. Tell her I am coming, if you pass that way. After her, if I am let, I go home to my Hist, though the smoke may not let me reach it.",
+     "I go when you have gone from here. I leave two behind me at this post, and I have not told you all there is to tell of either. I will carry that with me, and it will not ease my chest."
+    ],
+    "facts": [
+     "fact.bc02.seven-floods"
+    ]
+   }
+  ]
+ },
+ "topic.bc02-go-walks-known": {
+  "speaker": "npc.imperial-penal-south.blackrose.held-speaker",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "You were held for words, nothing worse. You are the one. Go when I am gone.",
+    "lines": [
+     "Good. You chose the man who said it. I will not thank you for what is owed to me.",
+     "I go when you have gone. Not before.",
+     "The other two will not follow. One is smoke. Two is a hunt, and the hunt goes to our homes. They know it, and so do I.",
+     "Three seasons I owed. I owe none now. The two I leave still do, and I leave them to it."
+    ],
+    "facts": [
+     "fact.bc02.walks-far"
+    ]
+   }
+  ]
+ },
+ "topic.bc02-go-mends-known": {
+  "speaker": "npc.imperial-penal-south.blackrose.held-killer",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "You drowned Otheel, and Seven-Floods asks for you anyway. Go when I am gone.",
+    "lines": [
+     "You chose me, and you know what the reckoner's leaves say of me. I will not tell you they are wrong.",
+     "I said his words to you, and I said them well. They were never mine. I am sorry for that lie, and not for the rest.",
+     "I do not thank you. You could have chosen the old woman, and she asked you not to. And I do thank you. I did not think anyone would choose me.",
+     "I go when you have gone from this water. Neither of the others will follow. Three on the road leaves three trails, and every trail ends at somebody's home."
     ],
     "facts": []
+   }
+  ]
+ },
+ "topic.bc02-go-seven-known": {
+  "speaker": "npc.imperial-penal-south.blackrose.held-mother",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "You asked me to take Mends-Nets. I am taking you. Go when I am gone.",
+    "lines": [
+     "I asked you to take Mends-Nets, not me. You have chosen me all the same, and I will not make you say it twice.",
+     "I go to my daughter, if she is still where they keep her. Tell her I am coming, if you pass that way. After her, if I am let, I go home to my Hist, though the smoke may not let me reach it.",
+     "I go when you have gone from here. I leave two behind me at this post, and I have not told you all there is to tell of either. I will carry that with me, and it will not ease my chest."
+    ],
+    "facts": [
+     "fact.bc02.seven-floods"
+    ]
+   }
+  ]
+ },
+ "topic.bc02-all-walks": {
+  "speaker": "npc.imperial-penal-south.blackrose.held-speaker",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "The keeper is dead. All of you, go.",
+    "lines": [
+     "So the keeper is dead. I did not wish it, and I do not weep for it. He counted us every morning, and now nobody is left to count.",
+     "All three go, then, when you have gone. Do not take it for a gift. The heirs will find an empty house and a dead man, and they will hunt. The hunt goes to our homes.",
+     "I will not run to mine. I go where the hunters would not think to look.",
+     "Ask Never-Sold, in the Chainbreakers' house on the north side of the town, what a dead keeper's count is worth. She will tell you."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.bc02-all-mends": {
+  "speaker": "npc.imperial-penal-south.blackrose.held-killer",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "The keeper is dead. All of you, go.",
+    "lines": [
+     "Tsaxi is dead. I am sorry for him. He was afraid for his neck, and he was not cruel to us.",
+     "All three of us go, then, when you have gone. The old woman will need an arm on the road, and I have one.",
+     "Go to Never-Sold, on the north side of the town. She will know what the keeper's word was worth."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.bc02-all-seven": {
+  "speaker": "npc.imperial-penal-south.blackrose.held-mother",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "The keeper is dead. All of you, go.",
+    "lines": [
+     "Then there is no one left to swear to a count, and nobody here will swear to a lie for him. We go, all three, when you have gone from here.",
+     "I go to my daughter first. Tell her I am coming, if you pass that way."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.bc02-stay-walks": {
+  "speaker": "npc.imperial-penal-south.blackrose.held-speaker",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": null,
+    "lines": [
+     "You chose, and it was not me. I do not say it was wrong. I say I am still here, with three seasons ahead of me and the gate shut.",
+     "Take it to your Chainbreakers. They sent you."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.bc02-stay-mends": {
+  "speaker": "npc.imperial-penal-south.blackrose.held-killer",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": null,
+    "lines": [
+     "You are back. One of us is gone from this post, and I am not that one. I stay.",
+     "I drowned Otheel in a net, because he wrote a third winter on Seven-Floods' roof. When the leaf is read, I will be put under, down below the Rose, where nobody comes up. I do not ask you to call it right.",
+     "I will not run. If I run, the hunt comes after me, and it comes to the old woman's tree. I will not do that to her.",
+     "Never-Sold is waiting for you in her house on the north side of the town."
+    ],
+    "facts": [
+     "fact.bc02.mends-nets"
+    ]
+   }
+  ]
+ },
+ "topic.bc02-stay-seven": {
+  "speaker": "npc.imperial-penal-south.blackrose.held-mother",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": null,
+    "lines": [
+     "I asked not to be chosen, and I was not. I am glad of it, or I say so. I still owe for the roof, and the smoke is still in my chest.",
+     "The one who went is off this post. The one left beside me has lost the way out. Tell Never-Sold what you have done. She will want to know which of us you chose."
+    ],
+    "facts": [
+     "fact.bc02.seven-floods"
+    ]
    }
   ]
  },
@@ -201,200 +626,8 @@
     "variant": "main",
     "prompt": null,
     "lines": [
-     "Says-It-Plain is out of the heirs' reach. Hides-In-Reeds and Keeps-The-Old-Count are still held. The heirs will take them back to the Rose. I keep the cost of it."
-    ],
-    "facts": []
-   }
-  ]
- },
- "topic.bc02-after-patron-killer": {
-  "speaker": "npc.imperial-penal-south.blackrose.chainbreaker-patron",
-  "infos": [
-   {
-    "variant": "main",
-    "prompt": null,
-    "lines": [
-     "Hides-In-Reeds is beyond the heirs now. Says-It-Plain and Keeps-The-Old-Count are still held. They will go back to the Rose. I keep all three names."
-    ],
-    "facts": []
-   }
-  ]
- },
- "topic.bc02-after-patron-mother": {
-  "speaker": "npc.imperial-penal-south.blackrose.chainbreaker-patron",
-  "infos": [
-   {
-    "variant": "main",
-    "prompt": null,
-    "lines": [
-     "Keeps-The-Old-Count is clear of the heirs. What they reckon she owes will not fall on her daughter. Says-It-Plain and Hides-In-Reeds are still held. Their names stay with me."
-    ],
-    "facts": []
-   }
-  ]
- },
- "topic.bc02-held-speaker": {
-  "speaker": "npc.imperial-penal-south.blackrose.held-speaker",
-  "infos": [
-   {
-    "variant": "main",
-    "prompt": "Why do the heirs hold you?",
-    "lines": [
-     "I said it in the Rose's hall, to the families' faces. A ledger kept by families born owing is the Blackguards' ledger kept again.",
-     "Under native law, words cost nothing. The heirs reckoned me a season for them all the same, so I stand here at their post.",
-     "I say things plainly. I know I say them too plainly. The other two have heard me do it often enough. I would say it again."
-    ],
-    "facts": [
-     "fact.bc02.speaker-hall"
-    ]
-   }
-  ]
- },
- "topic.bc02-held-speaker-going": {
-  "speaker": "npc.imperial-penal-south.blackrose.held-speaker",
-  "infos": [
-   {
-    "variant": "main",
-    "prompt": "Tsaxi will let you go.",
-    "lines": [
-     "Then I go once his back is turned. He lets me go because it suits him. It is not just, and I will not thank him for it.",
-     "Say my name to Never-Sold in the Chainbreakers' house: Says-It-Plain. I want it spoken aloud there, so that it is not lost.",
-     "The other two stay. I do not pretend I like that. Go back north-west through the town to her house."
-    ],
-    "facts": []
-   }
-  ]
- },
- "topic.bc02-held-speaker-staying": {
-  "speaker": "npc.imperial-penal-south.blackrose.held-speaker",
-  "infos": [
-   {
-    "variant": "main",
-    "prompt": "Tsaxi will let one of the others go.",
-    "lines": [
-     "Then one of the others goes. I stay. I will not say I am glad of it. I said my piece in the Rose's hall. I am still the one kept.",
-     "Say my name to Never-Sold in the Chainbreakers' house: Says-It-Plain, held for words. I would not die with it unsaid.",
-     "Go back north-west through the town to her house. Do not let my name go quiet."
-    ],
-    "facts": []
-   }
-  ]
- },
- "topic.bc02-after-speaker": {
-  "speaker": "npc.imperial-penal-south.blackrose.held-speaker",
-  "infos": [
-   {
-    "variant": "main",
-    "prompt": null,
-    "lines": [
-     "One of us has gone from here. I am still held. I do not blame you for that.",
-     "Keep my name. It is Says-It-Plain. Say it where it will be heard. I know I am poor company. I would sooner be remembered than quiet."
-    ],
-    "facts": []
-   }
-  ]
- },
- "topic.bc02-the-held": {
-  "speaker": "npc.imperial-penal-south.blackrose.post-gatekeeper",
-  "infos": [
-   {
-    "variant": "main",
-    "prompt": "Who are you, and who are these three?",
-    "lines": [
-     "I am Third-Born Tsaxi, one of the heirs. The heirs keep this post on the shore. I keep the count of those held here. Outsiders call the Rose a prison. We were born there. What is owed there is how the heirs keep order.",
-     "After the fire, three of our held were brought here to the post, a man and two women. Each of them will give you a name and tell you why the heirs hold them. Speak to them where they stand. For the fire itself, ask Never-Sold."
-    ],
-    "facts": [
-     "fact.bc02.three-held"
-    ]
-   }
-  ]
- },
- "topic.bc02-the-gate": {
-  "speaker": "npc.imperial-penal-south.blackrose.post-gatekeeper",
-  "infos": [
-   {
-    "variant": "main",
-    "prompt": "(Speechcraft 25) Let one of them go. Count them lost to the smoke.",
-    "lines": [
-     "Your words are not thin. I have thought on this since the fire. When the heirs come to count, I can tell them one died in the smoke. I cannot say three, because three would be my own neck.",
-     "Name the one who goes: Says-It-Plain, Hides-In-Reeds or Keeps-The-Old-Count. Each of them will tell you why the heirs hold them. The choice is yours."
-    ],
-    "facts": [
-     "fact.bc02.one-out",
-     "fact.bc02.three-held"
-    ]
-   },
-   {
-    "variant": "fail",
-    "prompt": "(Speechcraft 25) Let one of them go. Count them lost to the smoke.",
-    "lines": [
-     "Those words are too thin to put a head short on my neck. Find better ones, or bring a hundred in coin, and I will hear you again."
-    ],
-    "facts": []
-   }
-  ]
- },
- "topic.bc02-pay": {
-  "speaker": "npc.imperial-penal-south.blackrose.post-gatekeeper",
-  "infos": [
-   {
-    "variant": "main",
-    "prompt": "Here are 100 gold. Let one of them go.",
-    "lines": [
-     "That is a hundred, all of it. I take it. I will not say where it came from.",
-     "I can tell the heirs that one died in the smoke. Three would be my own neck.",
-     "Name the one you want gone from here: the man held for his words, the woman held for a killing or the old mother held for her shelter."
-    ],
-    "facts": [
-     "fact.bc02.one-out",
-     "fact.bc02.three-held"
-    ]
-   },
-   {
-    "variant": "fail",
-    "prompt": "Here are 100 gold. Let one of them go.",
-    "lines": [
-     "Coin first. I need a hundred in my hand before we talk of the count. Until I have it, I will not speak of one head short."
-    ],
-    "facts": []
-   }
-  ]
- },
- "topic.bc02-free-speaker": {
-  "speaker": "npc.imperial-penal-south.blackrose.post-gatekeeper",
-  "infos": [
-   {
-    "variant": "main",
-    "prompt": "Let Says-It-Plain go.",
-    "lines": [
-     "Says-It-Plain, then. I will turn my back while he goes. I will tell the heirs he died in the smoke. The other two stay held here, as the heirs ordered. The heirs were angry at his words. I will not say they had no cause."
-    ],
-    "facts": []
-   }
-  ]
- },
- "topic.bc02-free-killer": {
-  "speaker": "npc.imperial-penal-south.blackrose.post-gatekeeper",
-  "infos": [
-   {
-    "variant": "main",
-    "prompt": "Let Hides-In-Reeds go.",
-    "lines": [
-     "Hides-In-Reeds, then. The heirs will take that hard. I will carry it. When they come to count, I will say she died in the smoke. I will not look when she goes. Says-It-Plain and Keeps-The-Old-Count I keep."
-    ],
-    "facts": []
-   }
-  ]
- },
- "topic.bc02-free-mother": {
-  "speaker": "npc.imperial-penal-south.blackrose.post-gatekeeper",
-  "infos": [
-   {
-    "variant": "main",
-    "prompt": "Let Keeps-The-Old-Count go.",
-    "lines": [
-     "Keeps-The-Old-Count, then. She is old. The heirs will believe the smoke was too much for her. I will not watch the door when she goes. The other two stay held here, and I will not speak of what the heirs reckon for her daughter."
+     "Whoever left that post, or whoever stayed in it, the heirs are reckoning what they lost, and I reckon it with them. I do not call it clean.",
+     "Ask me for more work when you are ready."
     ],
     "facts": []
    }
@@ -407,8 +640,90 @@
     "variant": "main",
     "prompt": null,
     "lines": [
-     "Keep your voice low. When the heirs come to count, I say that one died in the smoke and I say no more.",
-     "Two remain here until the damage in the Rose is mended. I keep them as I was told. I will not be blamed for a head I counted lost."
+     "One of the three is dead of the smoke. The heirs have that from my mouth, and my mouth stays on it.",
+     "As for my reckoner, I have decided he turned off the wet road and went home to the Rose another way. Whatever is said of a camp in the swamp, I choose to believe he lives. I need to believe it, because I have no one else to believe in.",
+     "The two who are left are still on this shore, and the post is lighter by one. That is the cost, and it is mine. If the heirs ride up, my neck answers for it."
+    ],
+    "facts": [
+     "fact.bc02.reckoner"
+    ]
+   }
+  ]
+ },
+ "topic.bc02-after-walks": {
+  "speaker": "npc.imperial-penal-south.blackrose.held-speaker",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": null,
+    "lines": [
+     "Three seasons. I count them as I did before you came. The gate is still shut, and I have not changed my mind.",
+     "The one who went is out of the smoke. I do not hate them for it. I hate that I said true words, and they were not enough to open one door for me.",
+     "Do not pity me. Pity is no use to me at this post."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.bc02-after-mends": {
+  "speaker": "npc.imperial-penal-south.blackrose.held-killer",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": null,
+    "lines": [
+     "The Rose's leaves are not read yet. When they are, the heirs will hear what I did, and I will be put under. I do not know the day, and I stopped counting.",
+     "The one who went is off this post. I am glad of it, and I mind it. Both are true, and I do not hide either."
+    ],
+    "facts": [
+     "fact.bc02.mends-nets"
+    ]
+   }
+  ]
+ },
+ "topic.bc02-after-seven": {
+  "speaker": "npc.imperial-penal-south.blackrose.held-mother",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": null,
+    "lines": [
+     "The smoke in my chest is deeper than when you last stood here. I am where I asked to be left, and I would not call it a mercy.",
+     "I have had no word of my daughter, Rows-For-Another, on the land north of the town. If you pass that way, tell her I am alive. I still owe for the roof, and I will die owing it."
+    ],
+    "facts": [
+     "fact.bc02.seven-floods"
+    ]
+   }
+  ]
+ },
+ "topic.bc02-rows-coming": {
+  "speaker": "npc.imperial-penal-south.blackrose.estate-debtor",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": null,
+    "lines": [
+     "I am told my mother is coming to me. She is Seven-Floods, and I have not seen her in eleven years.",
+     "She is old, and the smoke has got into her chest. She wants to die near the Hist at home, and I mean to get her to it in time, for I fear above all that she dies far from it.",
+     "I thank you for getting her out. I will not forget it."
+    ],
+    "facts": [
+     "fact.bc02.seven-floods"
+    ]
+   }
+  ]
+ },
+ "topic.bc02-rows-stayed": {
+  "speaker": "npc.imperial-penal-south.blackrose.estate-debtor",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": null,
+    "lines": [
+     "I am told Seven-Floods stayed at the post. I will not ask you why, and I will not ask her.",
+     "Somebody else came out in her place. I thank you for that one, and I say it without warmth, because I have none to spare today.",
+     "If she dies there, she dies far from the Hist at home."
     ],
     "facts": []
    }

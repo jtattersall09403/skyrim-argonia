@@ -26,7 +26,8 @@ as any change to the method; the quest skills carry it step by step, and their m
   that would reach the player are switched off (Start Game Enabled off, text stripped), listed in one shutdown file and
   read back. The world's own start-game quests are held back until the story releases them.
 - **The world works as a world:** its map has a pan box from its measured land; its regions have music; its marker
-  and cell names are spelled right.
+  and cell names are spelled right; a cell has one name, so one that more than one quest uses takes a neutral name
+  true of all of it in each record ("Dock Houses, Soulrest").
 - **The mod stack** is a list of rows (source, version, why, credit), fetched and staged from the player's own copies;
   a mod's files are changed only at stage time on the player's copy, never committed.
 - **Gameplay settings** (HUD, quest markers on the compass and the map, combat, movement) live in the plugin or the

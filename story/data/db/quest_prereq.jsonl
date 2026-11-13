@@ -1,5 +1,5 @@
-{"quest":"quest.bc.bc02","needs":"quest.bc.bc01","why":"the estate woman's mother"}
-{"quest":"quest.bc.bc03","needs":"quest.bc.bc01","why":"the crew know the player as the Chainbreakers' since BC01"}
+{"quest":"quest.bc.bc02","needs":"quest.bc.bc01","why":"BC02 is offered once BC01 has ended (flag.bc01.settled); Seven-Floods is Rows-For-Another's mother"}
+{"quest":"quest.bc.bc03","needs":"quest.bc.bc02","why":"BC03 is offered once BC02 has ended (flag.bc02.settled)"}
 {"quest":"quest.local.lq25","needs":"quest.main.mq05","why":"the player first meets the landing on MQ05's way in"}
 {"quest":"quest.main.mq03","needs":"quest.main.mq01","why":"Act I's order"}
 {"quest":"quest.main.mq04","needs":"quest.main.mq03","why":"the Reed sends the player"}

@@ -1,18 +1,36 @@
-{"quest_id":"quest.bc.bc01","section":"afterwards","value":"Bought down, Never-Sold greets the player as the one who brought the book; slipped away, she greets them coolly. Rows-For-Another is gone from the landing either way."}
-{"quest_id":"quest.bc.bc01","section":"costToTheBound","value":"Bought down, she owes nothing but the estate keeps the boat; slipped away, she can never go back to the swamp road, and the estate's men are rougher with the next one held."}
-{"quest_id":"quest.bc.bc01","section":"revealOrder","value":"Her grey and her own account first (k3), then the steward's true account (k1), then the page itself (k2)."}
-{"quest_id":"quest.bc.bc01","section":"theBond","value":"The debt: four months for a damaged boat. The holder: the estate and its steward Hulm-Tei. The terms: her food, the boat's upkeep and sick days are added to it. The exit in law: worked off. The exit by custom: the first price paid closes it. The exit in practice: the page struck, or gone down the channel. What she wants: to go home to her tree."}
-{"quest_id":"quest.bc.bc01","section":"whyNow","value":"none: the Owing runs on."}
-{"quest_id":"quest.bc.bc02","section":"afterwards","value":"The one freed is gone from the stone house; the other two stay held there, and greet the player by what they asked of them."}
-{"quest_id":"quest.bc.bc02","section":"costToTheBound","value":"Two of the three stay held and go back to the Rose whichever the player chooses; the one freed can never go back to the heirs."}
-{"quest_id":"quest.bc.bc02","section":"revealOrder","value":"The fire and the three (k3, from Never-Sold), the gate-keeper's count (k1), then each held person's own account (k2)."}
-{"quest_id":"quest.bc.bc02","section":"theBond","value":"The debt: Keeps-The-Old-Count's Owing as the heirs reckon it; Says-It-Plain held for words; Hides-In-Reeds for a killing. The holder: the heirs of the Rose. The exit in law: none they own to. The exit in practice: one counted lost to the smoke. What each wants: out."}
-{"quest_id":"quest.bc.bc02","section":"whyNow","value":"none: the heirs take them back once the Rose's fire damage is mended, which the quest never reaches."}
-{"quest_id":"quest.bc.bc03","section":"afterwards","value":"Both men's greetings on the docks change; nothing later turns on it."}
-{"quest_id":"quest.bc.bc03","section":"costToTheBound","value":"With the crew, they lose his hire and must find their own on the docks; with him, they work the season out under him."}
-{"quest_id":"quest.bc.bc03","section":"revealOrder","value":"The refusal (k2), his thirty years (k1), the tokens themselves (k3)."}
-{"quest_id":"quest.bc.bc03","section":"theBond","value":"The debt: the crew's last season of hire, owed for the Owings he bought. The holder: Ussa-Rekh. The terms: he hires them out until it is worked. The exit in law: the season's end. The exit in practice: breaking the tokens before him. What they want: done a season early."}
-{"quest_id":"quest.bc.bc03","section":"whyNow","value":"none: the season runs on."}
+{"quest_id":"quest.bc.bc01","section":"afterwards","value":"Lifted: Rows-For-Another stays on the bank, free and clean, and greets the player as one going home; Hulm-Tei greets with eleven years he cannot account for. Struck: Hulm-Tei carries it knowingly, leaves at the reckoning, or is paid in full. Cut loose: she is gone from the bank; her leaf grows on the keeper."}
+{"quest_id":"quest.bc.bc01","section":"costToTheBound","value":"Lifted: eleven years fall on Hulm-Tei, hatched owing. Struck with his own leaf: the shortfall is shared among a dozen hands. Persuaded: he carries it with his eyes open. Paid in full: the player's purse. Cut loose: she can never go home while the fetcher lives; dead, he paid for it."}
+{"quest_id":"quest.bc.bc01","section":"escape","value":"the box stands in a walk-in house; the player walks out with the leaf"}
+{"quest_id":"quest.bc.bc01","section":"goesWrong","value":"a bungled pickpocket turns Hulm-Tei on the player; a theft seen is a theft on the estate's ground (Skyrim's own crime); a failed persuasion leaves the other ways open"}
+{"quest_id":"quest.bc.bc01","section":"kept","value":"the keeper's own leaf lies under hers, and the first two years of hers are in a smaller hand"}
+{"quest_id":"quest.bc.bc01","section":"planTexts","value":"Rows-For-Another's \"Tell me how you are held\""}
+{"quest_id":"quest.bc.bc01","section":"prize","value":"Rows-For-Another's leaf out of the keeper's count-box in the estate house"}
+{"quest_id":"quest.bc.bc01","section":"tellers","value":"Never-Sold (the job and the false leaf); Rows-For-Another (the three things that hold her)"}
+{"quest_id":"quest.bc.bc01","section":"theBond","value":"The debt: four nushmeekos for a holed boat, eleven years ago. The holder: the Tulm-Varo estate, through its keeper of the count. The terms: food, breakage and sickness written onto the leaf. The exit by custom: the first price paid, which the keeper alone can take. The exit in practice: the leaf stolen, the keeper's word, or the channel."}
+{"quest_id":"quest.bc.bc01","section":"theftMode","value":"commit"}
+{"quest_id":"quest.bc.bc01","section":"waysIn","value":"the key lifted from Hulm-Tei's belt (Pickpocket); the Adept lock picked (Lockpicking); either under the fishers' eyes (Sneak); or not stealing at all: Hulm-Tei's word (Speech 50, his own leaf held, or 1,000 gold), or the channel cleared (Speech 35, 150 gold, or a fight)"}
+{"quest_id":"quest.bc.bc02","section":"afterwards","value":"the one freed is gone from the post; the two left greet the player with what staying means; Tsaxi greets with what he has decided to believe about his reckoner"}
+{"quest_id":"quest.bc.bc02","section":"costToTheBound","value":"Walks-Far left: three seasons. Mends-Nets left: put under. Seven-Floods left: she dies far from her Hist. All three gone: the hunters take a clutch-brother of Walks-Far's in their place."}
+{"quest_id":"quest.bc.bc02","section":"gate","value":"the lamia at the tent and the Soul Scoungers near it"}
+{"quest_id":"quest.bc.bc02","section":"nonLethalFailure","value":"the leaves are not needed; Seven-Floods or Tsaxi's word does without them"}
+{"quest_id":"quest.bc.bc02","section":"pointOfNoReturn","value":"none; the player may turn back and use another way"}
+{"quest_id":"quest.bc.bc02","section":"prepHints","value":"Tsaxi: \"he had four with him and none came in\"; the objective names the western swamp's camp; BM&V's guard at the post (Sleeps-Standing) has no quest line yet"}
+{"quest_id":"quest.bc.bc02","section":"prize","value":"the singed leaves, and the reckoner's ring and dagger"}
+{"quest_id":"quest.bc.bc02","section":"return","value":"back to the post on the east shore with the leaves"}
+{"quest_id":"quest.bc.bc02","section":"route","value":"west from Blackrose round the lake by the wet road to the swamp tent; bears, leeches, lamias and crocodiles on the way"}
+{"quest_id":"quest.bc.bc02","section":"rumour","value":"Tsaxi's reckoner never came in from the western swamp; he had four with him and none came in"}
+{"quest_id":"quest.bc.bc02","section":"theBond","value":"The debt: three seasons for words (Walks-Far); a killing, to be put under (Mends-Nets); a roof, standing (Seven-Floods). The holder: the heirs of the Rose. The terms: the singed leaves, read only by the reckoner. The exit in practice: Tsaxi counts one lost to the smoke."}
+{"quest_id":"quest.bc.bc03","section":"afterwards","value":"Broken off: the crew's thanks, the Broker greets with the eleven's names. Released: the Broker due aboard as a hand. The season worked: Heavy-Rope cold."}
+{"quest_id":"quest.bc.bc03","section":"costToTheBound","value":"Tokens stolen or hire voided: eleven at Thorn lose their price. Released by the Broker: an old man works the season himself. Paid by the player: 1,000 gold. Sailed: the crew row a third season."}
+{"quest_id":"quest.bc.bc03","section":"escape","value":"out of the north door onto the dock"}
+{"quest_id":"quest.bc.bc03","section":"goesWrong","value":"a bungled lift turns the Broker on the player; a theft seen is a theft (Skyrim's own crime); a failed persuasion leaves the other ways open"}
+{"quest_id":"quest.bc.bc03","section":"kept","value":"the old man's room; the eleven names at Thorn; Never-Sold's own book on the shelf"}
+{"quest_id":"quest.bc.bc03","section":"planTexts","value":"Heavy-Rope's \"Where are the tokens?\""}
+{"quest_id":"quest.bc.bc03","section":"prize","value":"the crew's tokens out of the Broker's chest"}
+{"quest_id":"quest.bc.bc03","section":"tellers","value":"Never-Sold (the job, the book); Heavy-Rope (the plan)"}
+{"quest_id":"quest.bc.bc03","section":"theBond","value":"The debt: one season's hire that became two. The holder: Ussa-Rekh, who freed them. The terms: a carved token kept until the season is worked. The exit in practice: the tokens stolen, the Broker's word, or the hire voided."}
+{"quest_id":"quest.bc.bc03","section":"theftMode","value":"commit"}
+{"quest_id":"quest.bc.bc03","section":"waysIn","value":"Feldril Nethri unbars the door (Speech 25 or 30 gold); the key lifted from the Broker's belt (Pickpocket) opens door and chest; or an Adept door and an Expert chest (Lockpicking); the old man in the room is who sees (Sneak); or the Broker's word (Speech 50 or 1,000 gold); or the berth-master bought (Speech 40 or 1,000 gold) or killed"}
 {"quest_id":"quest.local.lf83","section":"afterwards"}
 {"quest_id":"quest.local.lf83","section":"leverage"}
 {"quest_id":"quest.local.lf83","section":"objections"}

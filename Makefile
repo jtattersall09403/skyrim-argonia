@@ -31,7 +31,7 @@ questform:
 	@$(PY) -m tools.questform gate
 
 # Those compiled forms played by the paper game's walker: every quest reaches a completed ending from a new game,
-# against tools/playtest/reach_owed.json (docs/design/paper-playtest.md).
+# but the quests parked on tools/playtest/reach_owed.json, each skipped with a line (docs/design/paper-playtest.md).
 reach:
 	@$(PY) -m tools.playtest reach --compiled --gate
 

@@ -1,149 +1,513 @@
 {
- "topic.bc01-the-book": {
-  "speaker": "npc.imperial-penal-south.blackrose.estate-steward",
+ "topic.bc01-owing": {
+  "speaker": "npc.imperial-penal-south.blackrose.chainbreaker-patron",
   "infos": [
    {
     "variant": "main",
-    "prompt": "Tell me about the estate's debt book.",
+    "prompt": "What is an Owing?",
     "lines": [
-     "Every line of the estate's debt book is true. We fed Rows-For-Another. We kept the boat she damaged. When she lay sick, we carried her through it. I wrote each of those days down.",
-     "If the sum has grown past her work, it grew with every day she ate and every day she lay sick. I did not invent one of those days. A buy-out costs the whole sum in the book.",
-     "I understand why some look at that sum and say slaving. I do not buy anyone and I do not sell anyone. I am a steward. I keep account of what the estate spent."
+     "There are no jails in Black Marsh. When a person does a wrong, they pay it in work, in nushmeekos. A nushmeeko is one month of work that nobody thanks you for, and once it is worked off nobody mentions it again.",
+     "In the south that has gone bad. Whoever holds the estate or the landing does the reckoning, and he writes food, breakage and sickness onto the months until they never end.",
+     "A person can be born owing and die owing. I was born owing, and I got out. That is why I do what I do."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.bc01-grey": {
+  "speaker": "npc.imperial-penal-south.blackrose.chainbreaker-patron",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Why do the held go grey?",
+    "lines": [
+     "The Hist is the tree a tribe is hatched under. Our colour comes from it, and so does the way home when we die.",
+     "A person held for years far from their Hist loses that colour. It fades, and they go grey.",
+     "Rows-For-Another has been eleven years away from hers. She is afraid of going grey, and she is right to be."
     ],
     "facts": [
-     "fact.bc01.book-true"
+     "fact.bc01.grey"
     ]
    }
   ]
  },
- "topic.bc01-strike": {
-  "speaker": "npc.imperial-penal-south.blackrose.estate-steward",
+ "topic.bc01-who": {
+  "speaker": "npc.imperial-penal-south.blackrose.chainbreaker-patron",
   "infos": [
    {
     "variant": "main",
-    "prompt": "(Speechcraft 25) She has worked her four months many times over. By custom that closes the Owing. Strike her page.",
+    "prompt": "Who are the Chainbreakers?",
     "lines": [
-     "Four months was the first price, and she has worked it many times over in eleven years. I cannot say otherwise. By custom an Owing worked to its first price is closed.",
-     "I strike her page because the custom requires it, though every line in it was true. Here it is. The estate will not raise her Owing again."
+     "We are a few dozen, in Blackrose and round it, and we get the held out. Our oath is three words. Bones go home.",
+     "An Owing stands on three legs. The first is the count, which the holder keeps under lock. The second is the word that says it stands. The third is the hand, someone paid to fetch a runaway back.",
+     "Take one leg away and the whole Owing falls. We take them with a key lifted off a belt, a lock opened in the dark, a keeper faced down at his own door and a fetcher met on a channel bank. Nobody else is going to do it."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.bc01-pay": {
+  "speaker": "npc.imperial-penal-south.blackrose.chainbreaker-patron",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "What does the Chainbreakers' work pay, and why might I not want it?",
+    "lines": [
+     "It pays a thief's share in coin, and picks from my own store.",
+     "Understand what you would be. A Chainbreaker caught at a holder's box is a thief under the marsh's law, and the sentence for a thief is an Owing of their own.",
+     "So you would be owing, as the people we free are owing. Think on that before you say yes. If you would rather not, walk away. It costs you nothing."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.bc01-the-job": {
+  "speaker": "npc.imperial-penal-south.blackrose.chainbreaker-patron",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "What is the job?",
+    "lines": [
+     "Her name is Rows-For-Another. Eleven years ago she holed a boat on the Tulm-Varo estate north of town, and the estate's keeper set her four nushmeekos, four months of work. She owes more now than she did then.",
+     "I give you a leaf in my own hand, five picks and 100 gold. Her leaf lies in the estate's count-box: take it, and leave mine in its place. The gold is the first price. By custom an Owing paid at its first price is closed for good, and Hulm-Tei, the keeper, has refused it from me twice. He may not refuse it from someone who brings more than coin.",
+     "There are three doors, and any one will do: rob the box, make Hulm-Tei strike her leaf himself, or get past Brings-Them-Back, the fetcher on the channel. Each door costs. Seen at the box, you are a thief on the estate's ground. Kill the fetcher and you have a death on you.",
+     "Go north past the farm with its cattle and its big house, to the channel bank beyond. Hear from Rows-For-Another how she is held."
+    ],
+    "facts": [
+     "fact.bc01.boat",
+     "fact.bc01.first-price"
     ],
     "gives": [
-     "item.bc01.page"
-    ],
-    "facts": [
-     "fact.bc01.put-by"
+     "gold:100",
+     "item.lockpick",
+     "thing.bc01.false-leaf"
     ]
-   },
-   {
-    "variant": "fail",
-    "prompt": "(Speechcraft 25) She has worked her four months many times over. By custom that closes the Owing. Strike her page.",
-    "lines": [
-     "No. The book says what she owes, and every line of it is true. Words that thin do not strike a true page. Make me a better case for the custom, or bring the first price in coin, a hundred gold, and I will strike it."
-    ],
-    "facts": []
    }
   ]
  },
- "topic.bc01-first-price": {
-  "speaker": "npc.imperial-penal-south.blackrose.estate-steward",
+ "topic.bc01-leaf-first": {
+  "speaker": "npc.imperial-penal-south.blackrose.chainbreaker-patron",
   "infos": [
    {
     "variant": "main",
-    "prompt": "Here is the Owing's first price, 100 gold. Strike her page.",
+    "prompt": "I already have Rows-For-Another's leaf. I took it from the estate's count-box.",
     "lines": [
-     "That is a hundred gold, the whole price. By custom an Owing paid at its first price is closed, so her page is struck.",
-     "Take it. She owes the estate nothing now. I will not speak of it again."
+     "Then you have run ahead of me, and the work is done. Give it here.",
+     "Tonight I read every line of it aloud and burn it. Rows-For-Another's four months and the eleven years after them end in that fire.",
+     "A leaf does not leave a box for nothing. Someone on that farm will answer for it, and I will not say who tonight.",
+     "I pay you for it, and you are one of the Chainbreakers now. Bones go home."
+    ],
+    "facts": [
+     "fact.bc01.boat"
     ],
     "gives": [
-     "item.bc01.page"
-    ],
-    "facts": [
-     "fact.bc01.put-by"
+     "gold:100",
+     "item.lockpick"
     ]
-   },
+   }
+  ]
+ },
+ "topic.bc01-again": {
+  "speaker": "npc.imperial-penal-south.blackrose.chainbreaker-patron",
+  "infos": [
    {
-    "variant": "fail",
-    "prompt": "Here is the Owing's first price, 100 gold. Strike her page.",
+    "variant": "main",
+    "prompt": "Tell me the job again.",
     "lines": [
-     "I see no gold in your hands. By custom an Owing is closed at its first price in coin. I have no coin to count. Bring a hundred gold and I will strike the page."
+     "Rows-For-Another's Owing is to be ended, by the count-box, by Hulm-Tei's word or by the channel. Whichever you have done, come to me with her leaf if you hold it, or with word that she is free or gone.",
+     "The estate house is the big house on the farm at the town's north edge, by the cattle. Hulm-Tei stands inside it. Brings-Them-Back stands where the channel runs on north of the bank, and Rows-For-Another stands on the bank itself.",
+     "Back south past the farm to my house when you have news."
     ],
     "facts": []
    }
   ]
  },
- "topic.bc01-after-steward": {
+ "topic.bc01-rows-who": {
+  "speaker": "npc.imperial-penal-south.blackrose.estate-debtor",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Who are you?",
+    "lines": [
+     "I am Rows-For-Another, who was a boat-hand of the Tulm-Varo, and I wait on this bank. A boat I holed put me in an Owing, which is the work a debt sets on you, and that was eleven years ago.",
+     "I do not ask strangers for anything. I will say that I have not stood under my Hist, the tree I was hatched under, in all those years, and I am afraid of going grey before I do.",
+     "The big house on the farm south of this bank is the estate house, and its keeper stands inside it, by the cattle. The man who fetches runaways keeps to the channel where it runs on north of here.",
+     "If you want the rest, go back south past the farm to the Chainbreakers' house on the town's north side. The woman who keeps it can tell you my debt."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.bc01-how-held": {
+  "speaker": "npc.imperial-penal-south.blackrose.estate-debtor",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Never-Sold sent me. Tell me how you are held.",
+    "lines": [
+     "I holed a Tulm-Varo boat eleven years ago, and the Owing for it, the work I must do to pay, is not ended yet. The tree my tribe is hatched under is the Hist, and I have not stood under mine in all that time.",
+     "Look at my arms. My colour is still mine, but every morning I look for the day it fades, and I think of walking home grey, with my own kin asking whose child I am.",
+     "Three things hold me. The keeper, Hulm-Tei, stands in the big house on the farm by the cattle and carries the key to the count-box in it, where my leaf lies, the page that says what I owe. His word is the second: by custom he may take the first price and close an Owing for good, and he has refused it.",
+     "The third is Brings-Them-Back. He fetches runaways on this channel for a head-price, and he stands where it runs on north of this bank. He knows the way to my tree, so if I run while he lives, I can never go home.",
+     "Each way out has its cost, as far as I know it. Lift my leaf from the box and my Owing goes with it. What that costs the keeper I cannot say. Ask for his word and you must move him, and he will tell you every line on my leaf is true: four months, then my food, then a fever. He is right. It has outgrown me.",
+     "The channel costs most: buy the fetcher and he looks away, yet still knows my tree; kill him and I may go home, with a man dead for my sake. That is why I want my Owing closed, not fled. When the channel is clear, because he is dead or has agreed to look away, come and tell me."
+    ],
+    "facts": [
+     "fact.bc01.leaf-grew",
+     "fact.bc01.box",
+     "fact.bc01.fetcher"
+    ]
+   }
+  ]
+ },
+ "topic.bc01-fetcher-dead": {
+  "speaker": "npc.imperial-penal-south.blackrose.estate-debtor",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Brings-Them-Back is dead. The channel is clear.",
+    "lines": [
+     "Dead. Then nobody knows the way to my tree but me.",
+     "I did not ask for his death, and I will not call it a pity. Every runaway he turned back was a head-price to him, and I would have been one more.",
+     "I will go when you have gone from the bank. I have been watched for eleven years, and I will not be watched leaving.",
+     "Take a word to Never-Sold: the leaf can stay in its box and rot. I am going home, and nothing written on this farm will reach me."
+    ],
+    "facts": [
+     "fact.bc01.fetcher"
+    ]
+   }
+  ]
+ },
+ "topic.bc01-channel-clear": {
+  "speaker": "npc.imperial-penal-south.blackrose.estate-debtor",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Brings-Them-Back will look the other way. The channel is clear.",
+    "lines": [
+     "He looks away. Then he is bought or talked round, and either way he is still alive.",
+     "He still knows the way to my tree, and he will know it all my life. I can leave this bank, and I cannot go home while he lives.",
+     "I said I wanted it closed, not fled. I do not blame you for this. You did what could be done.",
+     "Go now, and I will be on the water when you are out of sight. Tell Never-Sold I have gone by the channel, and that the road home is shut to me."
+    ],
+    "facts": [
+     "fact.bc01.fetcher"
+    ]
+   }
+  ]
+ },
+ "topic.bc01-hulm-who": {
   "speaker": "npc.imperial-penal-south.blackrose.estate-steward",
   "infos": [
    {
     "variant": "main",
-    "prompt": null,
+    "prompt": "Who are you?",
     "lines": [
-     "She is off my bank now. I wrote nothing in the book that was false."
-    ],
-    "facts": []
-   }
-  ]
- },
- "topic.bc01-the-estate": {
-  "speaker": "npc.imperial-penal-south.blackrose.chainbreaker-patron",
-  "infos": [
-   {
-    "variant": "main",
-    "prompt": "What do the Chainbreakers need done?",
-    "lines": [
-     "The Chainbreakers buy out Owings, debts paid in work, at what they were first set. There is a woman north of Blackrose called Rows-For-Another. Eleven years ago she damaged one of an estate's boats. The estate's steward assessed her an Owing of four months' work. She works it still.",
-     "I have put by what that Owing was at first: one hundred gold. By custom an Owing paid at its first price is closed. It is never mentioned again. Take the coin. If you can talk the steward round without it, keep it.",
-     "From here take the swamp road north out of Blackrose. The channel bank is a short walk on. The steward Hulm-Tei stands there with his book. Rows-For-Another has looked at that channel for years, and the buy-out is not her only way off the estate. Ask her what the other way would cost. Hear what she wants before you do anything."
+     "I am Hulm-Tei, keeper of the count for the Tulm-Varo, who hold this farm. The count is the written account of what each hand on this farm owes. My mistress, who winters in Gideon, far from here, leaves it to me.",
+     "I was hatched owing on this ground. A debt came with my egg, and the work that pays a debt is called an Owing. Every line I write on a hand's leaf, the page that holds the debt, is true.",
+     "Forty people eat because the boats go out, and the hands are the ones who row them. When the count is short at the reckoning, when the season's count is closed, the shortage is written on me. So I am hard about a line, and I will not be shamed for it.",
+     "The keeper before me wrote smaller than I do, and more exactly. You will see it in the first lines of the oldest leaves in the count-box. I stand in this house, the big one on the farm by the cattle, because the box is in it."
     ],
     "facts": [
-     "fact.bc01.boat-owing",
-     "fact.bc01.put-by"
+     "fact.bc01.smaller-hand"
     ]
-   },
-   {
-    "variant": "again",
-    "prompt": "What do the Chainbreakers need done?",
-    "lines": [
-     "Rows-For-Another is on the channel bank, a short walk north of Blackrose along the swamp road. The steward Hulm-Tei stands there with his book. Hear her out first."
-    ],
-    "facts": []
    }
   ]
  },
- "topic.bc01-bring-down": {
-  "speaker": "npc.imperial-penal-south.blackrose.chainbreaker-patron",
+ "topic.bc01-hulm-persuade": {
+  "speaker": "npc.imperial-penal-south.blackrose.estate-steward",
   "infos": [
    {
     "variant": "main",
-    "prompt": "I have Rows-For-Another's page.",
+    "prompt": "Take the first price and strike her leaf. You have carried worse.",
     "lines": [
-     "That is her page, struck through. I will not argue it. Her food, the boat's upkeep, her sick days: every line is true. I have kept books long enough to know that true lines can add up to a wrong sum.",
-     "The Owing is closed by custom now. It will not be mentioned again. I was born owing. I paid mine off, so I know what that quiet is worth. You did it well, whichever way you did it."
+     "I have carried worse than a boat-hand. I have carried it since I was hatched, and I am still on my feet.",
+     "Then I will take the hundred, and I will strike her leaf with my own hand. Every line on it was true, and I strike it all the same. The eleven years I write onto my own leaf, with my eyes open.",
+     "Hear what that costs, so that you do not think it nothing. Whatever any leaf is short at the reckoning is written onto the keeper's own, and I am the keeper. If my leaf were ever lost, the hands would share it between them, and I will keep mine where it is.",
+     "You argued it fairly, and I do not say that often. Go and tell her on the channel bank."
     ],
     "facts": [
-     "fact.bc01.book-true"
+     "fact.bc01.keeper-leaf"
     ]
    },
    {
     "variant": "fail",
-    "prompt": "I have Rows-For-Another's page.",
+    "prompt": "Take the first price and strike her leaf. You have carried worse.",
     "lines": [
-     "I do not see it in your hands. Bring me Rows-For-Another's page, the one struck from the steward's book. I will read it."
+     "I do not doubt I have carried worse. That is no line I can write in the count.",
+     "A true count is the only thing between me and the mud. It would take a better speaker than you to talk me off it.",
+     "Or pay the whole of what her leaf has grown to, and nobody needs to talk at all."
     ],
     "facts": []
    }
   ]
  },
- "topic.bc01-gone": {
+ "topic.bc01-hulm-his-leaf": {
+  "speaker": "npc.imperial-penal-south.blackrose.estate-steward",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "I have your leaf. Take it back with the first price and strike hers.",
+    "lines": [
+     "My leaf. Then you have been in the box, and you know what is written on it. I will not ask how.",
+     "Give it here, and the price with it. Hers I strike now, in front of you. If anyone asks where mine went, the damp had it, and that is all I will say.",
+     "I will not be on this ground at the reckoning. Whatever any leaf is short is written onto the keeper's own, and there will be no keeper's leaf to take it. The dozen hands who stay will share it between them. They have done nothing to you, and that is the price of this.",
+     "They are good hands. They will row it, and not one of them will know whose months they rowed. Go and tell the boat-hand on the bank she owes nothing."
+    ],
+    "facts": [
+     "fact.bc01.keeper-leaf"
+    ]
+   },
+   {
+    "variant": "fail",
+    "prompt": "I have your leaf. Take it back with the first price and strike hers.",
+    "lines": [
+     "That is not the whole of it. I strike nothing for half, and I take nothing on a promise.",
+     "Bring my own leaf and the first price together in your hand. Then I will take both, and I will strike hers."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.bc01-hulm-purse": {
+  "speaker": "npc.imperial-penal-south.blackrose.estate-steward",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "I will pay the whole of what her leaf has grown to. Take it and strike her leaf.",
+    "lines": [
+     "The whole of it, and no first price. Then hear how I wrote it. Every line on her leaf is true: the four months for the boat, then her food, then a fever. It has outgrown her. I could not have written it smaller and written it true.",
+     "Pay it, and I strike it. The estate is paid to the last line, and nobody is short of anything. Nobody carries a month of it, neither I nor the hands. That has not happened on this ground in my time.",
+     "The cost is yours, and it is a great deal for a stranger to set down for a boat-hand. I take it because the count is true and it is paid.",
+     "Tell her it is struck. She stands on the channel bank north of the farm."
+    ],
+    "facts": [
+     "fact.bc01.leaf-grew"
+    ]
+   },
+   {
+    "variant": "fail",
+    "prompt": "I will pay the whole of what her leaf has grown to. Take it and strike her leaf.",
+    "lines": [
+     "That is not the whole of it. A part of a debt is not a payment, and I will not strike a leaf on a part.",
+     "Coin short of the whole is only coin. Bring all of it in your hand, and I will strike her leaf. I will not take a promise, because a promise is not a line I can write."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.bc01-fetcher-who": {
+  "speaker": "npc.imperial-penal-south.blackrose.estate-fetcher",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Who are you?",
+    "lines": [
+     "I am Brings-Them-Back. I fetch runaways for the Tulm-Varo, who hold the farm south of here, and for each one I bring home they pay me a head-price, which is a fee for every head. It is 150 gold.",
+     "Every hand on that farm has a home tree, the Hist their tribe was hatched under, and I alone know the way to each one. A runaway who gets past me can never walk home.",
+     "I call fetching the kind part of this trade. The Tulm-Varo punish the hands left behind when one runs. The runaway I bring back they treat more kindly, and I would sooner bring one home than watch the others pay for it.",
+     "I stand where the channel runs on north of the bank, and I keep to it. Rows-For-Another, on the bank just south of here, can tell you what I am to her."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.bc01-fetcher-persuade": {
+  "speaker": "npc.imperial-penal-south.blackrose.estate-fetcher",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Look the other way when Rows-For-Another goes.",
+    "lines": [
+     "I have fetched her back twice already, in my head, on nights I could not sleep. I never meant to, either time.",
+     "You have given me a reason I can carry. I will be looking at the water when she goes, and a man cannot fetch what he does not see.",
+     "Hear what I keep. I still know the way to her tree, and no word of yours takes it out of me. I look away. I do not lead her home.",
+     "Go to her, and be quick, before I think better of it."
+    ],
+    "facts": []
+   },
+   {
+    "variant": "fail",
+    "prompt": "Look the other way when Rows-For-Another goes.",
+    "lines": [
+     "No. It is a fair plea, and it does not weigh enough. If she runs, the Tulm-Varo take it out on the hands left behind, and I am the one who answers for a head I let go.",
+     "A smoother tongue than yours might show me what becomes of those hands. Or pay me my head-price, and I need no showing."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.bc01-fetcher-pay": {
+  "speaker": "npc.imperial-penal-south.blackrose.estate-fetcher",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Take your head-price from me and look away.",
+    "lines": [
+     "Paid is paid. A head-price is what I live on, and I do not ask where a runaway's price came from.",
+     "Give it here. I will be looking at the water, and I will not see her go.",
+     "I keep one thing back. I still know the way to her tree, and nobody can buy that with coin. I sell my eyes. I do not sell the road."
+    ],
+    "facts": []
+   },
+   {
+    "variant": "fail",
+    "prompt": "Take your head-price from me and look away.",
+    "lines": [
+     "This is short. A head-price is the whole worth of a head, and I will not sell one for less than I am paid to bring it in.",
+     "Bring me the whole price and I will look away. Or bring me a reason better than coin. If you bring short coin and no reason, I take nothing."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.bc01-fetcher-threat": {
+  "speaker": "npc.imperial-penal-south.blackrose.estate-fetcher",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "And if I go through you?",
+    "lines": [
+     "Then nobody living knows the way to her tree, and she can go home. I have thought it through longer than you have.",
+     "I carry a mace and a shield, and I have used both. I will not move from this channel, and I will not strike first. If you come at me, I answer.",
+     "Know the cost either way. If I fall, you have killed a man who brings runaways home alive, and she goes home with that on her. If you fall, nobody is helped and the channel stays shut.",
+     "I would sooner you walked away. I do not want to bury you, and I do not want to be buried."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.bc01-her-leaf": {
   "speaker": "npc.imperial-penal-south.blackrose.chainbreaker-patron",
   "infos": [
    {
     "variant": "main",
-    "prompt": "Rows-For-Another won't wait. She's going down the channel.",
+    "prompt": "I have Rows-For-Another's leaf.",
     "lines": [
-     "Rows-For-Another has chosen, then. She told you what her going costs the next one held. I know it is true. I will not pretend it is less.",
-     "I will not undo it. I do not call her wrong for wanting out after eleven years. I keep every name. Hers is one now."
+     "Give it here.",
+     "Tonight I read it aloud and burn it. If you took the keeper's leaf out of the box with it, that is mine to take as well. If you want to know what her eleven years came to, ask Hulm-Tei.",
+     "Here are 100 gold and ten lockpicks. You are one of the Chainbreakers now, and you have earned the name. Bones go home."
     ],
-    "facts": []
+    "facts": [],
+    "gives": [
+     "gold:100",
+     "item.lockpick"
+    ]
+   }
+  ]
+ },
+ "topic.bc01-she-goes-dead": {
+  "speaker": "npc.imperial-penal-south.blackrose.chainbreaker-patron",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Rows-For-Another is going by the channel. Brings-Them-Back is dead.",
+    "lines": [
+     "Then she is going, and nobody can follow her home. She will get her colour back. I do not thank you for how.",
+     "Her years stay on the estate and fall on Hulm-Tei, and the fetcher has lost his life. That is what it cost, and I do not call it clean.",
+     "Here are 100 gold and ten lockpicks, and the first rank. You are one of the Chainbreakers. Come to me when you want more work."
+    ],
+    "facts": [],
+    "gives": [
+     "gold:100",
+     "item.lockpick"
+    ]
+   }
+  ]
+ },
+ "topic.bc01-she-goes-bought": {
+  "speaker": "npc.imperial-penal-south.blackrose.chainbreaker-patron",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Rows-For-Another is going by the channel. Brings-Them-Back will look away.",
+    "lines": [
+     "Then she is going, and her leaf stays in the box and grows on the keeper. That is a head start, not a freeing.",
+     "Brings-Them-Back still lives, and he still knows the way to her tree, so she can never go home. Hulm-Tei carries her years, and she carries her exile.",
+     "I pay half for half a freeing. Here are 50 gold and the first rank. Come to me when you want more work, and we will do better by the next one."
+    ],
+    "facts": [],
+    "gives": [
+     "gold:50"
+    ]
+   }
+  ]
+ },
+ "topic.bc01-struck-talked": {
+  "speaker": "npc.imperial-penal-south.blackrose.chainbreaker-patron",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Hulm-Tei struck Rows-For-Another's leaf himself. I talked him round.",
+    "lines": [
+     "Then he carries it, and he knows it. Whatever any leaf is short at the reckoning is written onto the keeper's own, so Hulm-Tei has her eleven years on his leaf now, and he took them with his eyes open.",
+     "Rows-For-Another is free. Here are 100 gold and ten lockpicks, and the first rank. You are one of the Chainbreakers.",
+     "Hulm-Tei lost the most, and he chose it. Come to me when you want more work."
+    ],
+    "facts": [
+     "fact.bc01.keeper-leaf"
+    ],
+    "gives": [
+     "gold:100",
+     "item.lockpick"
+    ]
+   }
+  ]
+ },
+ "topic.bc01-struck-leaf": {
+  "speaker": "npc.imperial-penal-south.blackrose.chainbreaker-patron",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Hulm-Tei struck Rows-For-Another's leaf himself. I gave him back his own leaf.",
+    "lines": [
+     "Then his own leaf is lost, and the shortfall is shared among all the estate's hands. A dozen hands will each row a season for her, and they will never know why. I would have chosen the keeper.",
+     "Rows-For-Another is free all the same. Here are 100 gold and ten lockpicks, and the first rank. You are one of the Chainbreakers.",
+     "The hands on that farm lost the most, and they will never be told. Come to me when you want more work."
+    ],
+    "facts": [
+     "fact.bc01.keeper-leaf"
+    ],
+    "gives": [
+     "gold:100",
+     "item.lockpick"
+    ]
+   }
+  ]
+ },
+ "topic.bc01-struck-paid": {
+  "speaker": "npc.imperial-penal-south.blackrose.chainbreaker-patron",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Hulm-Tei struck Rows-For-Another's leaf himself. I paid the whole of it.",
+    "lines": [
+     "Then nobody carries it, for once. Your purse did what mine could not.",
+     "Rows-For-Another is free. Here are 100 gold and ten lockpicks, and the first rank. You are one of the Chainbreakers.",
+     "You paid for this, and nobody else did. Come to me when you want more work."
+    ],
+    "facts": [],
+    "gives": [
+     "gold:100",
+     "item.lockpick"
+    ]
+   }
+  ]
+ },
+ "topic.bc01-knew": {
+  "speaker": "npc.imperial-penal-south.blackrose.chainbreaker-patron",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "You knew about the keeper's leaf.",
+    "lines": [
+     "Yes. I knew before I sent you.",
+     "Every count has a last leaf. If I had told you, you would have stood in that estate house weighing a jailer against a boat-hand, with the box open. I wanted her out, and I did not want you to stop.",
+     "Do not ask me how I knew the shape of a keeper's leaf. I knew it, and I kept it from you for the reason I have given."
+    ],
+    "facts": [
+     "fact.bc01.she-knew"
+    ]
    }
   ]
  },
@@ -154,69 +518,70 @@
     "variant": "main",
     "prompt": null,
     "lines": [
-     "The page is on my shelf, struck through. Rows-For-Another has gone home to her tree. I am glad of your work. I will remember who did it."
+     "You are one of us, and Rows-For-Another's Owing is closed. Do not tell me it cost nothing. The rule of the box is that whatever a leaf is short is written onto the keeper's own, so ask who carried it for you, and you will know what your way cost.",
+     "Ask me for more work when you are ready."
     ],
-    "facts": []
+    "facts": [
+     "fact.bc01.keeper-leaf"
+    ]
    }
   ]
  },
- "topic.bc01-after-patron-channel": {
+ "topic.bc01-after-patron-cut": {
   "speaker": "npc.imperial-penal-south.blackrose.chainbreaker-patron",
   "infos": [
    {
     "variant": "main",
     "prompt": null,
     "lines": [
-     "Rows-For-Another is in the channel, out of the estate's reach. Whoever the estate's men hold next will answer for it. I keep her name, as I keep all of them."
+     "Rows-For-Another went by the water, and her years fell on the keeper. Whether she ever stands under her Hist was settled on the channel, by your hand. I do not forget how.",
+     "Ask me for more work when you are ready, and we will do better by the next one."
     ],
     "facts": []
    }
   ]
  },
- "topic.bc01-buy-out": {
+ "topic.bc01-after-rows": {
   "speaker": "npc.imperial-penal-south.blackrose.estate-debtor",
   "infos": [
    {
     "variant": "main",
-    "prompt": "Never-Sold will buy out your Owing at its first price.",
+    "prompt": null,
     "lines": [
-     "So Never-Sold would do that for me. Then I will take it. Look at my skin. Eleven years away from my tree has turned it grey. I want to go home before it greys further.",
-     "It is slow, and I will not pretend otherwise. Hulm-Tei keeps the book with my page in it. He must be paid the first price or talked round before he will strike it. I will say no more of him, because he is standing there and he can hear us.",
-     "When the page is struck, the old custom closes the Owing for good. It is never spoken of again. It frees me. It does not change how the estate treats the next one held. Hulm-Tei will give you the page. Take it down the swamp road to Never-Sold in Blackrose."
+     "I did not believe I was free, not for a breath. Then I did, and it is a strange weight, to have nothing to row.",
+     "I go to my tree when the rains ease. Go well, you who send the held home, and may you get home yourself.",
+     "Somebody paid for my going, in coin or in worse. I did not ask which, and I am not proud of that."
     ],
-    "facts": [
-     "fact.bc01.book-chest",
-     "fact.bc01.washed-out"
-    ]
+    "facts": []
    }
   ]
  },
- "topic.bc01-cut-loose": {
-  "speaker": "npc.imperial-penal-south.blackrose.estate-debtor",
+ "topic.bc01-after-hulm-lifted": {
+  "speaker": "npc.imperial-penal-south.blackrose.estate-steward",
   "infos": [
    {
     "variant": "main",
-    "prompt": "(Speechcraft 30) Why wait? Leave now.",
+    "prompt": null,
     "lines": [
-     "Speak low. He is only a few steps off. I have said the same to myself for years. I have never said it aloud before.",
-     "The channel runs out of the estate's reach from this bank. I cannot drown in it. I will go once Hulm-Tei has turned his back. I will never set foot on the swamp road again. I have weighed that.",
-     "The estate's men will be rougher with the next one held. I know it. I am going anyway. Tell Never-Sold at her house in Blackrose that I am going, so she does not wait on a page."
+     "Eleven years of Rows-For-Another's work stand owed on this farm, and I cannot show them paid or struck. At the reckoning someone must answer for it, and I am the keeper.",
+     "I do not know who was at my box. I say that plainly, and you know why I say it so.",
+     "Never-Sold offered me the first price twice, and I refused it twice. Ask her what falls on a keeper when the count is short. She knows it better than I do."
     ],
-    "facts": [
-     "fact.bc01.channel",
-     "fact.bc01.night-men"
-    ]
-   },
+    "facts": []
+   }
+  ]
+ },
+ "topic.bc01-after-hulm-struck": {
+  "speaker": "npc.imperial-penal-south.blackrose.estate-steward",
+  "infos": [
    {
-    "variant": "fail",
-    "prompt": "(Speechcraft 30) Why wait? Leave now.",
+    "variant": "main",
+    "prompt": null,
     "lines": [
-     "No. I have looked at that water for years and I am still standing here. Whoever is held after me would pay for my going. That one has done nothing to the estate.",
-     "Come back with better words and ask me again. Until then I will wait on the custom. Hulm-Tei may hear me say so."
+     "I struck Rows-For-Another's leaf with my own hand. Nobody took that choice from me, and I would not have it taken.",
+     "Whatever it costs, I knew it when I did it. The boats are still the estate's, and forty people eat."
     ],
-    "facts": [
-     "fact.bc01.night-men"
-    ]
+    "facts": []
    }
   ]
  }

@@ -8,7 +8,7 @@
     python3 -m tools.playtest end <session> --take "<open take>" | --answers "<answers>"
     python3 -m tools.playtest run --forms ... --player careful|impatient|wanderer [--model sonnet] [--know ...]
     python3 -m tools.playtest probe [--model haiku]      # proves the player cannot read the repo
-    python3 -m tools.playtest reach <forms...> | --compiled [--gate]   # each ending reachable? its shortest path
+    python3 -m tools.playtest reach <forms...> | --compiled [--gate | --ratchet]   # each ending reachable? its path
     python3 -m tools.playtest page [--out <html>] [--runs <dir>]   # the owner's page for exploring the runs
 """
 from __future__ import annotations
@@ -63,7 +63,8 @@ def main(argv=None) -> int:
     rc.add_argument("forms", nargs="*")
     rc.add_argument("--compiled", action="store_true", help="every staged quest that fits the form, compiled now")
     rc.add_argument("--max-states", type=int, default=None)
-    rc.add_argument("--gate", action="store_true", help="make check: only what is wrong against the owed list")
+    rc.add_argument("--gate", action="store_true", help="make check: only what is wrong; the owed quests skipped")
+    rc.add_argument("--ratchet", action="store_true", help="walk only the owed quests; take off each now in reach")
     pg = sub.add_parser("page")
     pg.add_argument("--out", default=None, help="the HTML file (default out/playtest/index.html)")
     pg.add_argument("--runs", default=str(S.RUNS), help="the runs folder (default story/playtests)")
@@ -87,19 +88,31 @@ def main(argv=None) -> int:
         print(f"HARNESS ERROR: {ex}")
         return 3
     if a.cmd == "reach":
+        import time
+
         from tools.playtest import walk
         forms = walk.compiled() if a.compiled else S.load_forms(a.forms)[0]
-        rows = walk.reach(forms, **({"max_states": a.max_states} if a.max_states else {}))
+        owed = walk.owed() if a.gate or a.ratchet else {}
+        for q, why in owed.items():
+            if not a.ratchet:
+                print(f"reach: skipped {q}, on tools/playtest/reach_owed.json: {why}")
+        t0 = time.monotonic()
+        rows = walk.reach(forms, **({"max_states": a.max_states} if a.max_states else {}),
+                          **({"only": set(owed)} if a.ratchet else {"skip": set(owed)}))
+        took = time.monotonic() - t0
+        if a.ratchet:
+            for q in walk.ratchet(rows):
+                print(f"reach: {q} now reaches every stage and ending: taken off tools/playtest/reach_owed.json")
+            return 0
         bad = walk.unreached(rows)
-        if a.gate:
-            bad = walk.gate(bad)
-        else:
+        if not a.gate:
             print(walk.report(rows))
         for b in bad:
             print(f"reach: {b}")
-        if a.gate and not bad:
-            print(f"reach: {len({r['quest'] for r in rows})} quests, {len(rows)} ways through: every stage and ending "
-                  f"reached by a character of {', '.join(walk.SHEETS)}, and each completes every quest not owed")
+        starts = walk.starts(rows)
+        print(f"reach: {len(starts)} quests, {len(rows)} ways through, {sum(starts.values())} starts (one per distinct "
+              f"carried state and character), {took:.1f} s" + ("" if bad else f": every stage and ending reached by "
+                                                             f"a character of {', '.join(walk.SHEETS)}"))
         return 1 if bad else 0
     if a.cmd == "do":
         code, screen = S.do(a.session, a.command, a.think)

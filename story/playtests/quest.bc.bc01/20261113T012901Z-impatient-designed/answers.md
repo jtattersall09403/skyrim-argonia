@@ -1,0 +1,7 @@
+1. I don't know what's next. My last journal check was meant to show whether anything new had started, and the summary I have doesn't say it did. If the quest is closed, I'd guess the Chainbreakers have more work for me, and Never-Sold is the person to go back to. If the journal is empty, I'm done for now.
+
+2. I work for Never-Sold and the Chainbreakers. She gave me the job of freeing Rows-For-Another from her Owing and paid me when I reported back. I took it because it was the clear thread in the game, and I could see I was being paid for it. I don't know much more about the group's goals than that.
+
+3. The most confusing moment was the false leaf. I was handed it as if it mattered, but nothing ever used it. The Hulm-Tei key and count-box route was similar: it was set up as an option, and then I found I couldn't use it without picks or enough Speech. I also wasn't sure at the lock whether "win" meant I would actually succeed or was just a tool option, so I wasn't sure what the game wanted from me there.
+
+4. I'd tell the writer to finish the placeholder lines, because "not yet written; the gist" pulled me right out of the game. I'd also give the kill route some weight. It was one click, and the only consequence was Never-Sold's comment. Make the false leaf and the other routes pay off, or drop them. Add some Black Marsh flavor too, so the place feels like more than a setup for a quest. The structure is good, and I'd want to see where it goes.

@@ -678,7 +678,7 @@ class Compiler:
             infos = [i for i in w["infos"] if (i.get("variant", "main") == "fail") == fail]
             if infos:
                 info = infos[0]
-                return " ".join(info.get("lines") or []) or t["intent"], info.get("prompt") or t["label"], True, \
+                return " ".join(x.strip() for x in info.get("lines") or []).strip() or t["intent"], info.get("prompt") or t["label"], True, \
                     list(info.get("replies") or [])
         if fail:
             return (t["fallback"], t["label"], False, []) if t.get("fallback") else None

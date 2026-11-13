@@ -38,25 +38,30 @@
 {"id":"fact.battle-of-argonia.last","says":"The Battle of Argonia broke the last organised Argonian army."}
 {"id":"fact.battle-of-argonia.settled","says":"The survivors of the battle settled at Helstrom."}
 {"id":"fact.battle-of-argonia.soldiers","says":"The Emperor would not send soldiers into the interior after the survivors."}
-{"id":"fact.bc01.boat-owing","claim":"Rows-For-Another damaged an estate boat and was assessed an Owing of four months, eleven years ago.","ord":0,"from_ref":"t1","quest_id":"quest.bc.bc01"}
-{"id":"fact.bc01.book-chest","claim":"The steward keeps the estate's book, with her page in it, by him on the bank.","ord":2,"from_ref":"t2","quest_id":"quest.bc.bc01"}
-{"id":"fact.bc01.book-true","claim":"Every line of the estate's debt book is true: her food, the boat's upkeep, her sick days.","ord":1,"from_ref":"t2","quest_id":"quest.bc.bc01"}
-{"id":"fact.bc01.channel","claim":"The channel runs from the landing out of the estate's reach, and she cannot drown in it.","ord":6,"from_ref":"t4","quest_id":"quest.bc.bc01"}
-{"id":"fact.bc01.night-men","claim":"If one held on the estate runs, the estate's men are rougher with the next one held.","ord":5,"from_ref":"t4","quest_id":"quest.bc.bc01"}
-{"id":"fact.bc01.put-by","claim":"Never-Sold has put by the Owing's first price; by custom an Owing paid at its assessed price is closed and never mentioned again.","ord":4,"from_ref":"t3","quest_id":"quest.bc.bc01"}
-{"id":"fact.bc01.washed-out","claim":"She has grown grey from years away from her tree.","ord":3,"from_ref":"t2","quest_id":"quest.bc.bc01"}
-{"id":"fact.bc02.fire","claim":"A fire went through the Rose, and the heirs keep three they brought out of the smoke at their outer post, the stone house on the shore at Blackrose's east edge, under Third-Born Tsaxi.","ord":0,"from_ref":"t1","quest_id":"quest.bc.bc02"}
-{"id":"fact.bc02.killer-sister","claim":"Hides-In-Reeds killed a man of the heirs who had sold her sister's Owing on to the crossings; by native law a killing is worked off for the dead man's household, and she works it.","ord":4,"from_ref":"t2","quest_id":"quest.bc.bc02"}
-{"id":"fact.bc02.mother-shelter","claim":"Keeps-The-Old-Count came to the Rose with nowhere else to go when her daughter was taken onto the estate; what the heirs reckon for her shelter grows each season, and when she dies the heirs will look to her daughter for it.","ord":5,"from_ref":"t2","quest_id":"quest.bc.bc02"}
-{"id":"fact.bc02.one-out","claim":"Tsaxi can count one of the three lost to the smoke; three would be his own neck.","ord":2,"from_ref":"t3","quest_id":"quest.bc.bc02"}
-{"id":"fact.bc02.speaker-hall","claim":"Says-It-Plain said in the Rose's hall that a ledger kept by families born owing is the Blackguards' ledger kept again; native law asks nothing for words, and the heirs reckoned him a season for them.","ord":3,"from_ref":"t2","quest_id":"quest.bc.bc02"}
-{"id":"fact.bc02.three-held","claim":"The three owe the heirs work by the heirs' own reckoning: Says-It-Plain for speaking against them; Hides-In-Reeds for a killing; Keeps-The-Old-Count, Rows-For-Another's mother, for her shelter.","ord":1,"from_ref":"t2","quest_id":"quest.bc.bc02"}
-{"id":"fact.bc03.break","claim":"A crew that holds its own tokens owes Ussa-Rekh nothing more.","ord":3,"from_ref":"t1","quest_id":"quest.bc.bc03"}
-{"id":"fact.bc03.freed-and-hired","claim":"Ussa-Rekh bought out Owings for thirty years, and now hires out the crews he freed.","ord":0,"from_ref":"t1","quest_id":"quest.bc.bc03"}
-{"id":"fact.bc03.offer","claim":"A Lilmoth master has offered Heavy-Rope's crew berths of their own from the new season, if they come free of Ussa-Rekh first; the offer will not wait a season.","ord":5,"from_ref":"t2","quest_id":"quest.bc.bc03"}
-{"id":"fact.bc03.refused","claim":"Heavy-Rope's crew asked to end their last season early and were refused.","ord":2,"from_ref":"t2","quest_id":"quest.bc.bc03"}
-{"id":"fact.bc03.tokens","claim":"He keeps a crew's carved tokens until their last season is worked.","ord":1,"from_ref":"t1","quest_id":"quest.bc.bc03"}
-{"id":"fact.bc03.turned","claim":"Ussa-Rekh buys the next Owings out with the crews' hire; it turned the year the berths he bought for them began to cost more than their hire, and a crew gone early leaves him the berth's price and buys out nobody.","ord":4,"from_ref":"t1","quest_id":"quest.bc.bc03"}
+{"id":"fact.bc01.boat","claim":"Rows-For-Another holed an estate boat eleven years ago and was assessed four nushmeekos, four months of work.","ord":0,"from_ref":"t1","quest_id":"quest.bc.bc01"}
+{"id":"fact.bc01.box","claim":"The count-box stands inside the estate house on the farm north of town, under an Adept lock; the keeper Hulm-Tei carries its key.","ord":2,"from_ref":"t3","quest_id":"quest.bc.bc01"}
+{"id":"fact.bc01.fetcher","claim":"Brings-Them-Back watches the channel north of the bank for a head-price, and while he lives a runaway can never go back to her home tree.","ord":4,"from_ref":"t4","quest_id":"quest.bc.bc01"}
+{"id":"fact.bc01.first-price","claim":"By custom an Owing paid at its first price is closed and never mentioned again; Never-Sold's 100 gold is that price.","ord":5,"from_ref":"t5","quest_id":"quest.bc.bc01"}
+{"id":"fact.bc01.grey","claim":"Rows-For-Another has been eleven years away from her Hist and fears going grey","ord":7,"from_ref":"t1","quest_id":"quest.bc.bc01"}
+{"id":"fact.bc01.keeper-leaf","claim":"Whatever any leaf is short at the reckoning is written onto the keeper's own leaf; if his leaf is lost, the shortfall is shared among all the estate's hands.","ord":3,"from_ref":"t3","quest_id":"quest.bc.bc01"}
+{"id":"fact.bc01.leaf-grew","claim":"Every line on her leaf is true: the four months, then her food, then a fever, and it has outgrown her.","ord":1,"from_ref":"t3","quest_id":"quest.bc.bc01"}
+{"id":"fact.bc01.she-knew","claim":"Never-Sold knew of the keeper's leaf before she sent the player.","ord":8,"from_ref":"t5","quest_id":"quest.bc.bc01"}
+{"id":"fact.bc01.smaller-hand","claim":"The first two years of Rows-For-Another's leaf are in a smaller, more exact hand than the rest.","ord":6,"from_ref":"t2","quest_id":"quest.bc.bc01"}
+{"id":"fact.bc02.brokers-children","claim":"Tsaxi calls the Chainbreakers the Broker's children.","ord":8,"from_ref":"t1","quest_id":"quest.bc.bc02"}
+{"id":"fact.bc02.keeper-wept","claim":"The girl who kept the Tulm-Varo count wept when she wrote Rows-For-Another down, and then wrote it.","ord":7,"from_ref":"t5","quest_id":"quest.bc.bc02"}
+{"id":"fact.bc02.mends-nets","claim":"Mends-Nets drowned Otheel for adding a winter to Seven-Floods' roof-owing, and will be put under when the leaf is read.","ord":3,"from_ref":"t3","quest_id":"quest.bc.bc02"}
+{"id":"fact.bc02.one-lost","claim":"Until the leaves are read, the count is whatever Tsaxi says, and he can say one of three died of the smoke; not two.","ord":0,"from_ref":"t1","quest_id":"quest.bc.bc02"}
+{"id":"fact.bc02.otheel","claim":"Otheel the shelter-reckoner was drowned in a net in the Rose's wash-pool.","ord":2,"from_ref":"t3","quest_id":"quest.bc.bc02"}
+{"id":"fact.bc02.put-under","claim":"To be put under is to be sent down below the Rose, where the dead still walk; nobody comes up.","ord":5,"from_ref":"t3","quest_id":"quest.bc.bc02"}
+{"id":"fact.bc02.reckoner","claim":"The Rose's reckoner never came in from the western swamp; he had four with him and none came in; his leaves say which of the three killed a man.","ord":1,"from_ref":"t2","quest_id":"quest.bc.bc02"}
+{"id":"fact.bc02.seven-floods","claim":"Seven-Floods owes the heirs for a roof, has smoke in her chest, and wants to die near her Hist; she is Rows-For-Another's mother.","ord":6,"from_ref":"t5","quest_id":"quest.bc.bc02"}
+{"id":"fact.bc02.take-her-first","claim":"Seven-Floods wants Mends-Nets got out before her, because Mends-Nets killed for her; she will die soon wherever she is.","ord":9,"from_ref":"t5","quest_id":"quest.bc.bc02"}
+{"id":"fact.bc02.walks-far","claim":"Walks-Far said in the yard that the gate to the dead levels should be opened; he owes three seasons.","ord":4,"from_ref":"t4","quest_id":"quest.bc.bc02"}
+{"id":"fact.bc03.eleven","claim":"The season's hire is promised to the price of eleven people held at Thorn, whose names he keeps.","ord":2,"from_ref":"t2","quest_id":"quest.bc.bc03"}
+{"id":"fact.bc03.founder","claim":"Ussa-Rekh bought people out for thirty years and keeps nothing for himself; one year a berth-master's coin turned a season into two.","ord":3,"from_ref":"t1","quest_id":"quest.bc.bc03"}
+{"id":"fact.bc03.her-book","claim":"Never-Sold was the Tulm-Varo estate's keeper of the count; Ussa-Rekh bought her out for the price of a boat; she wrote the first lines of Rows-For-Another's Owing.","ord":4,"from_ref":"t3","quest_id":"quest.bc.bc03"}
+{"id":"fact.bc03.season","claim":"The crew have worked their season and one more; Ra'Jhan pays the season's hire when it is sailed.","ord":1,"from_ref":"t2","quest_id":"quest.bc.bc03"}
+{"id":"fact.bc03.tokens","claim":"The crew's tokens are in the Broker's chest in his house, the north house of Soulrest; the old man keeps the key on him; Feldril Nethri keeps about outside the locked north door.","ord":0,"from_ref":"t2","quest_id":"quest.bc.bc03"}
 {"id":"fact.blackguards.brigands","says":"The Blackguards are Argonian pirates and brigands of the south coast."}
 {"id":"fact.blackguards.inmates","says":"The Blackguards descend from the inmates of Blackrose Prison."}
 {"id":"fact.blackguards.largest","says":"The Blackguards are the largest band of criminals in Murkmire."}

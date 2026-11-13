@@ -5,13 +5,13 @@ paths.
 - `complete(game, quest)` plays one quest to a completed ending along a shortest path (for `--after`), or raises a
   HarnessError saying what was found;
 - `reach(forms)` proves, for each quest of a set, every stage and every ending reachable, for each character of
-  `SHEETS`, from each completed ending of the quests it waits on; each one not reached is named, and a search cut at
-  its limit says so (never that no path exists).
+  `SHEETS`, from each distinct state the completed endings of the quests it waits on can leave (`Reads`); each one
+  not reached is named, and a search cut at its limit says so (never that no path exists).
 
 It tries what the quest could ask of a player: say every quest line on offer, talk to everyone, take every thing that
 is not a container, use every door, container, readable or used thing, open containers, pick locks with lockpicks
 held, pickpocket and search bodies (always unseen), fight a person who is hostile, who-must-live, watched by a death
-trigger or named by an `alive` or `dead` condition (always won), and go to every person, thing and door. It acts on
+trigger or needed dead by a condition (always won), and go to every person, thing and door. It acts on
 the walked quest's own refs first, and on every loaded ref only when that leaves a goal unreached. A person's own
 topics outside the forms move nothing and are not tried.
 """
@@ -35,7 +35,17 @@ SHEETS = {"able": ABLE, "new": G.new_sheet("Argonian", "female")}
 
 
 def _copy(s: dict) -> dict:
-    return json.loads(json.dumps(s))      # the state is plain JSON; this is several times quicker than deepcopy
+    """A state copied as deep as the game changes it in place: its lists, its tables (a quest's own lists, a
+    container's rows); the sheet, the position and a waiting question are only ever replaced whole."""
+    out = dict(s)
+    for k, v in s.items():
+        if type(v) is list:
+            out[k] = list(v)
+        elif k == "quests":
+            out[k] = {q: {a: list(x) if type(x) is list else x for a, x in st.items()} for q, st in v.items()}
+        elif type(v) is dict and k not in ("sheet", "pos", "question"):
+            out[k] = {a: dict(x) if type(x) is dict else list(x) if type(x) is list else x for a, x in v.items()}
+    return out
 
 
 def _key(s: dict, spoken: bool) -> str:
@@ -54,11 +64,16 @@ def _asks_spoken(g) -> bool:
 
 
 def _fightable(g) -> set[str]:
+    """Who a fight can help against: the hostile, who must live, a death trigger's (of a quest not ended), and a person
+    a line needs dead. A death that could only shut a line needing them alive is never tried (what they carry is
+    pickpocketed)."""
     out = {e for e, x in g.ents.items() if x["hostile"]}
-    for f in g.forms.values():
-        out |= {m["ref"] for m in f["must_live"]}
-        out |= {t["ref"] for t in f["triggers"] if t["kind"] == "death"}
-        out |= {c["ref"] for ln in f["lines"] for c in ln["conditions"] if c["is"] in ("alive", "dead")}
+    for q, f in g.forms.items():
+        if not (g.s["quests"].get(q) or {}).get("ended"):
+            out |= {m["ref"] for m in f["must_live"]}
+            out |= {t["ref"] for t in f["triggers"] if t["kind"] == "death"}
+        out |= {c["ref"] for ln in f["lines"] for c in ln["conditions"]
+                if (c["is"] == "dead") != bool(c.get("not")) and c["is"] in ("alive", "dead")}
     return out
 
 
@@ -125,27 +140,30 @@ def shown(g, step) -> str:
     return " ".join(w for w in (verb, name, rest.replace("unseen", "").strip()) if w)
 
 
-def search(g, goals: dict, over=None, max_states: int = MAX_STATES, refs: set[str] | None = None) -> dict:
+def search(g, goals: dict, over=None, max_states: int = MAX_STATES, refs: set[str] | None = None, key=None) -> dict:
     """Breadth first from the game's state, acting on `refs` first (when given) and on every ref only when that
     leaves a goal unreached. `goals` {name: test(state)}; a state `over(state)` holds for is not played on. Talking to
     someone is followed at once by each quest line on offer. Returns {"paths": {name: [step...]}, "stages": {quest:
-    stages seen}, "states": n, "cut": the search hit max_states, "errors": harness errors met}."""
+    stages seen}, "states": n, "cut": the search hit max_states, "errors": harness errors met}. `key(state)` says
+    which states are one (default `_key`; `Reads.key` for a quest whose goals are its own stages)."""
     if refs is not None:
-        res = _search(g, goals, over, max_states, refs)
+        res = _search(g, goals, over, max_states, refs, key)
         if len(res["paths"]) == len(goals) or res["cut"]:      # a cut search would only be cut again
             return res
-    return _search(g, goals, over, max_states // FALLBACK_SHARE if refs is not None else max_states, None)
+    return _search(g, goals, over, max_states // FALLBACK_SHARE if refs is not None else max_states, None, key)
 
 
-def _search(g, goals, over, max_states, refs) -> dict:
+def _search(g, goals, over, max_states, refs, key=None) -> dict:
     start = _copy(g.s)
     fightable = _fightable(g)
     speakers = {ln["speaker"] for f in g.forms.values() for ln in f["lines"] if ln["kind"] == "speaks_first"}
     paths, stages, errors = {}, {}, []
     spoken = _asks_spoken(g)
-    seen = {_key(start, spoken)}
+    key = key or (lambda s: _key(s, spoken))
+    seen = {key(start)}
     todo = deque([(start, [])])
     cut = False
+    quiet, g.quiet = g.quiet, True
 
     def run(s, steps):
         g.s = _copy(s)
@@ -159,7 +177,7 @@ def _search(g, goals, over, max_states, refs) -> dict:
         return g.s
 
     def push(s, path) -> bool:
-        k = _key(s, spoken)
+        k = key(s)
         if k not in seen:
             seen.add(k)
             todo.append((s, path))
@@ -192,7 +210,7 @@ def _search(g, goals, over, max_states, refs) -> dict:
             if cut or push(s1, path + list(a)):
                 cut = True
                 break
-    g.s = start
+    g.s, g.quiet = start, quiet
     return {"paths": paths, "stages": {q: sorted(v) for q, v in stages.items()}, "states": len(seen), "cut": cut,
             "errors": errors}
 
@@ -217,13 +235,13 @@ def own_refs(g, q: str) -> set[str]:
     return {r["id"] for r in g.forms[q]["refs"]}
 
 
-def complete(g, q: str, max_states: int = MAX_STATES, ending: int | None = None) -> list[tuple[str, str]]:
+def complete(g, q: str, max_states: int = MAX_STATES, ending: int | None = None, key=None) -> list[tuple[str, str]]:
     """Play quest `q` to a completed ending (or to the stage `ending`) along a shortest path; the game keeps the state
     it leaves. Returns the (command as typed, what it showed) of each step."""
     def done(s):
         st = s["quests"].get(q)
         return st is not None and (st["ended"] == "completed" if ending is None else ending in st["done"])
-    res = search(g, {"done": done}, _ended(q), max_states, own_refs(g, q))
+    res = search(g, {"done": done}, _ended(q), max_states, own_refs(g, q), key)
     if "done" not in res["paths"]:
         raise HarnessError(f"--after {q}: {'no completed ending' if ending is None else f'stage {ending}'} reached "
                            f"from here: {_stops(res, q, g)}")
@@ -339,50 +357,293 @@ def _completed(f) -> list[int]:
     return [s["number"] for s in f["stages"] if s["ending"] == "completed"]
 
 
+# -- the carried state: what a later quest can read of what the earlier ones left ----------------------------------
+
+def _results(f, lines=None) -> list[dict]:
+    lines = f["lines"] if lines is None else lines
+    return ([r for s in f["stages"] for r in s["results"]] if lines is f["lines"] else []) + \
+        [r for ln in lines for r in ln["results"]]
+
+
+def _lingering(f) -> list[dict]:
+    """A quest's lines still said once it has ended (its stage at an ending within their window) that change
+    something: an ended quest acts through nothing else."""
+    ends = [s["number"] for s in f["stages"] if s["ending"] != "none"]
+    return [ln for ln in f["lines"] if ends and ln["last_stage"] >= min(ends) and (ln["results"] or ln["answers"])]
+
+
+class Reads:
+    """Everything the rest of a chain can read or change: the whole forms of the quests still to play (and every
+    loaded quest not yet played), and the lingering lines of the quests already ended. A field of the state none of
+    them names cannot change what happens next, so two states equal on what they name are one carried state.
+
+    Gold and a held count are read only against thresholds (a condition's, a take's, a key's or a lockpick's), and
+    change only by results (a stage's runs once) and by things taken: two amounts no threshold tells apart after any
+    set of those changes are one (a count a line's result changes, which may come again, is kept exact)."""
+
+    def __init__(self, forms: dict, rest: list[str], ended: list[str]):
+        self.refs, self.numbers, self.factions, self.lines, self.triggered = set(), set(), set(), set(), set()
+        self.quests, self.stages, self.staged = set(rest), {}, set()   # whole entries; done stages read; stage read
+        self.spoken, self._at, self._by, self._exact, self._g, self._negated = False, [], [], set(), None, set()
+        parts = [(forms[x], None) for x in rest] + [(forms[d], _lingering(forms[d])) for d in ended]
+        for f, lines in parts:
+            whole = lines is None
+            lines = f["lines"] if whole else lines
+            q = f["quest"]["id"]
+            if not whole and lines:
+                self.staged.add(q)                  # the window of its lingering lines is read
+            if whole:
+                self.refs |= {r["id"] for r in f["refs"]} | {m["ref"] for m in f["must_live"]} | \
+                    {t["ref"] for t in f["triggers"] if t.get("ref")} | {t for o in f["objectives"] for t in o["targets"]}
+                self.triggered |= {t["ref"] for t in f["triggers"] if t.get("ref")}
+                for t in f["triggers"]:
+                    if t["kind"] == "quest_stage":
+                        self.stages.setdefault(t["quest"], set()).add(t["quest_stage"])
+                st = f["quest"]["start"]
+                if st["by"] == "quest_stage":
+                    self.stages.setdefault(st["quest"], set()).add(st["quest_stage"])
+                for s in f["stages"]:
+                    self._results(s["results"], once=True)
+            self.lines |= {ln["id"] for ln in lines}
+            self.refs |= {ln["speaker"] for ln in lines}
+            for c in [c for ln in lines for c in ln["conditions"]]:
+                self.refs |= {c["ref"]} if "ref" in c else set()
+                if c["is"] == "stage_done":
+                    self.stages.setdefault(c["quest"], set()).add(c["stage"])
+                elif "quest" in c:
+                    self.staged.add(c["quest"])
+                if c["is"] == "number_compare":
+                    self.numbers.add(c["number"])
+                if "faction" in c:
+                    self.factions.add(c["faction"])
+                if c["is"] in ("item_count_at_least", "gold_at_least"):
+                    what = c["item"] if "item" in c else G.GOLD
+                    self._at.append((what, c["count"] if "item" in c else c["gold"]))
+                    if c.get("not"):
+                        self._negated.add(what)     # more of it can shut a line: no richer state is covered
+                if c["is"] in ("spoken_before", "not_spoken_before"):
+                    self.spoken = True
+            for ln in lines:
+                self._results(ln["results"], once=False)
+
+    def _results(self, rs, once: bool):
+        for r in rs:
+            self.refs |= {r["ref"]} if "ref" in r else set()
+            if "if_held" in r:
+                self._at.append((r["if_held"], 1))
+            if r["do"] in ("set_number", "add_number"):
+                self.numbers.add(r["number"])
+            if "faction" in r:
+                self.factions.add(r["faction"])
+            if r["do"] == "start_quest":
+                self.quests.add(r["quest"])
+            if r["do"] in ("give_item", "take_item", "give_gold", "take_gold"):
+                what, n = (r["item"], r["count"]) if "item" in r else (G.GOLD, r["amount"])
+                if r["do"].startswith("take"):
+                    self._at.append((what, n))      # a take of more than is held takes what there is
+                    n = -n
+                if once:
+                    self._by.append((what, n))
+                else:
+                    self._exact.add(what)
+
+    def _prepare(self, g):
+        """The refs the rest reads (with their holders and keys), and each read count's thresholds as amounts held
+        now: the points no amount can cross without a threshold telling it after some set of changes."""
+        refs = set(self.refs)
+        for _ in range(2):
+            for r in list(refs):
+                e = g.ents.get(r)
+                if e:
+                    refs |= {x for x in (e["container"], e["carried_by"]) if x}
+            refs |= {(g.ents[r]["lock"] or {}).get("key") for r in refs if r in g.ents} - {None}
+        keys = {(g.ents[r]["lock"] or {}).get("key") for r in refs if r in g.ents} - {None}
+        at = [(g.item_of(i), n) for i, n in self._at] + [(g.item_of(k), 1) for k in keys] + \
+            [(k, 1) for k in keys] + [(G.LOCKPICK, 1)]
+        by = [(g.item_of(i), n) for i, n in self._by]
+        by += [(e["item"], e["count"]) for e in g.ents.values() if e["kind"] == "thing" and e["item"]]
+        by += [(c["item"], c["count"]) for e in g.ents.values() for c in e["contents"]]
+        self._refs, self._exact_ids = refs, {g.item_of(i) for i in self._exact}
+        # a thing taken matters only when something reads it: its item's count, a trigger on it, what it holds, a lock
+        self._kept = {r for r in refs if r in g.ents and (g.ents[r]["kind"] != "thing" or r in self.triggered or
+                                                           r in g.holders or r in keys or g.ents[r]["item"] in
+                                                           {i for i, _ in at})}
+        negated = {g.item_of(i) for i in self._negated}
+        self._points = {}
+        for i in {i for i, _ in at}:
+            sums = {0}
+            for j, n in by:
+                if j == i:
+                    sums |= {s + n for s in sums}
+            self._points[i] = sorted({t - d for j, t in at if j == i for d in sums})
+        # an amount read only as "at least" (more never shuts a line, and a take of more than is held takes what
+        # there is): a state with more of it, and all else the same, reaches all a poorer one does
+        self._more = sorted(i for i in self._points if i not in negated and i not in self._exact_ids)
+        self._g = g
+
+    def _amount(self, i, n):
+        from bisect import bisect_right
+        return n if i in self._exact_ids else bisect_right(self._points[i], n)
+
+    def key(self, g, s: dict) -> tuple[str, tuple]:
+        """The state as the rest of the chain sees it (`g` a game over the whole chain, for its refs and items): (all
+        but the amounts where more is never worse, those amounts in order)."""
+        if self._g is not g:
+            self._prepare(g)
+        refs = self._refs
+        quests = {}
+        for x, st in s["quests"].items():
+            if x in self.quests:
+                quests[x] = {k: sorted(v) if isinstance(v, list) else v for k, v in st.items()}
+            elif x in self.stages or x in self.staged:
+                quests[x] = {"done": sorted(set(st["done"]) & self.stages.get(x, set())), "ended": st["ended"],
+                             "stage": max(st["done"]) if x in self.staged and st["done"] else None}
+        opened = sorted(set(s["opened"]) & refs)
+        amount = {i: self._amount(i, s["gold"] if i == G.GOLD else s["items"].get(i, 0)) for i in self._points}
+        out = {"quests": quests, "amounts": {i: n for i, n in amount.items() if i not in self._more},
+               "numbers": {n: v for n, v in s["numbers"].items() if n in self.numbers},
+               "factions": {f: v for f, v in s["factions"].items() if f in self.factions},
+               "regard": {r: v for r, v in s["regard"].items() if r in refs},
+               "switched": {r: v for r, v in s["switched"].items() if r in refs},
+               "locked": {r: v for r, v in s["locked"].items() if r in refs},
+               "contents": {h: c for h, c in s["contents"].items() if h in refs or set(c) & set(self._points)},
+               "fired": sorted(set(s["fired"]) & self.lines), "opened": opened, "ended": s["ended"],
+               "sheet": s["sheet"]}
+        for k in ("dead", "hostile", "owned"):
+            out[k] = sorted(set(s[k]) & refs)
+        out["taken"] = sorted(set(s["taken"]) & self._kept)
+        if self.spoken:
+            out["spoken"] = sorted(set(s["spoken"]) & refs)
+        if s["question"]:
+            out.update(question=s["question"], talking=s["talking"])
+        if opened or s["question"]:
+            out["pos"] = s["pos"]
+        return json.dumps(out, sort_keys=True), tuple(amount[i] for i in self._more)
+
+
+def _covers(a: tuple, b: tuple) -> bool:
+    """Amounts `a` no more than `b` in every place: what is reached from a is reached from b."""
+    return all(x <= y for x, y in zip(a, b))
+
+
 def reach(forms: list[dict], world: dict | None = None, sheets: dict | None = None,
-          max_states: int = MAX_STATES) -> list[dict]:
-    """For each quest of the set and each way through the quests it waits on (each a completed ending of each), a
-    row: {quest, name, after: [[quest, ending]...], stages: [{stage, ending, by: {sheet: path or None}, why}],
-    completes: {sheet: bool}, blocked: {sheet: why}}. Every stage and ending is searched for by each sheet of
-    `sheets` (default SHEETS), each starting with GOLD gold."""
+          max_states: int = MAX_STATES, skip: set[str] = frozenset(), only: set[str] | None = None) -> list[dict]:
+    """For each quest of the set (but `skip`, or only those of `only`) and each way through the quests it waits on
+    (each a completed ending of each), a row: {quest, name, after: [[quest, ending]...], stages: [{stage, ending, by:
+    {sheet: path or None}, why}], completes: {sheet: bool}, blocked: {sheet: why}, walked: {sheet: the way through
+    whose carried state was searched for this row}}. Every stage and ending is searched for by each sheet of `sheets`
+    (default SHEETS), each starting with GOLD gold.
+
+    The earlier quests are played one at a time, each from every distinct state the ones before it can leave (`Reads`:
+    states the rest of the chain cannot tell apart are one). Of states that differ only in amounts the rest reads as
+    "at least" (gold, a count held), the poorest is played on: what it reaches, a richer one reaches by the same
+    steps; a richer one is played on itself only where the poorest is blocked or misses a goal. So the walked quest
+    starts once per distinct carried state that is not covered so, never once per way through."""
     from itertools import product
 
     from tools.playtest import world as W
     by_id = {f["quest"]["id"]: f for f in forms}
     world = world or W.snapshot(forms, use_db=False)
     sheets = sheets or SHEETS
-    out, memo = [], {}
+    out, plays = [], {}
+
+    def play(before, i, end, state, sheet):
+        """Quest before[i] played to `end` from `state`, in a game of only the quests it and those before it name."""
+        k = (before[i], end, json.dumps(state, sort_keys=True) if state else json.dumps(sheet, sort_keys=True))
+        if k not in plays:
+            g = game_on(by_id, list(before[:i + 1]), world, state, sheet)
+            if state is None:
+                g.s["gold"] = GOLD
+            try:
+                ahead = Reads(by_id, [x for x in named(list(before[:i + 1]), by_id) if x not in before[:i]], before[:i])
+                complete(g, before[i], max_states, end, lambda s: ahead.key(g, s))
+                plays[k] = g.s
+            except HarnessError as e:
+                plays[k] = e
+        return plays[k]
+
+    def groups(classes):
+        """Each group of carried states alike but for amounts, poorest first."""
+        by: dict[str, list] = {}
+        for (base, more), v in classes.items():
+            by.setdefault(base, []).append((more, *v))
+        return [sorted(g, key=lambda m: (sum(m[0]), m[0])) for g in by.values()]
+
     for q, f in by_id.items():
+        if q in skip or (only is not None and q not in only):
+            continue
         chain = order(q, by_id)
         before = chain[:-1]
+        loaded = named(chain, by_id)
+        whole = G.Game([by_id[x] for x in loaded], world, strict=False)
+        reads = [Reads(by_id, [x for x in loaded if x not in before[:i]], before[:i]) for i in range(len(before) + 1)]
+        rows = {}
         for ends in product(*[_completed(by_id[d]) for d in before]):
-            row = {"quest": q, "name": f["quest"]["name"], "after": [list(x) for x in zip(before, ends)],
-                   "stages": [{"stage": s["number"], "ending": s["ending"], "by": {}, "why": {}} for s in f["stages"]],
-                   "completes": {}, "blocked": {}}
-            out.append(row)
-            for name, sheet in sheets.items():
-                try:
-                    state, _ = play_after(by_id, before, world, sheet, max_states=max_states, memo=memo,
-                                          endings=ends, gold=GOLD)
-                    g = game_on(by_id, chain, world, state, sheet)
-                    if state is None:
-                        g.s["gold"] = GOLD
-                except HarnessError as e:
-                    row["blocked"][name] = str(e)
-                    continue
-                # each stage no character before has reached, and a completed ending
-                wanted = [s["stage"] for s in row["stages"] if not any(p is not None for p in s["by"].values())]
-                goals = {n: (lambda st, n=n: n in (st["quests"].get(q) or {}).get("done", [])) for n in wanted}
-                goals["completed"] = lambda st: (st["quests"].get(q) or {}).get("ended") == "completed"
-                res = search(g, goals, _ended(q), max_states, own_refs(g, q))
-                for s in row["stages"]:
-                    if s["stage"] not in wanted:
-                        continue
-                    p = res["paths"].get(s["stage"])
-                    s["by"][name] = None if p is None else [shown(g, a) for a in p]
-                    if p is None:
-                        s["why"][name] = _stops(res, q, g)
-                row["completes"][name] = "completed" in res["paths"]
+            rows[ends] = {"quest": q, "name": f["quest"]["name"], "after": [list(x) for x in zip(before, ends)],
+                          "stages": [{"stage": s["number"], "ending": s["ending"], "by": {}, "why": {}}
+                                     for s in f["stages"]], "completes": {}, "blocked": {}, "walked": {}}
+        out += rows.values()
+        for name, sheet in sheets.items():
+            classes = {("", ()): (None, [()])}      # carried state -> (a state that carries it, the ways to it)
+            for i, d in enumerate(before):
+                new: dict = {}
+                for group in groups(classes):
+                    for end in _completed(by_id[d]):
+                        done = []                   # (amounts, the class its result went to) of each one played
+                        for more, state, ways in group:
+                            ways1 = [w + (end,) for w in ways]
+                            hit = next((ck for m, ck in done if _covers(m, more)), None)
+                            if hit is not None:
+                                new[hit][1].extend(ways1)
+                                continue
+                            s1 = play(before, i, end, state, sheet)
+                            if isinstance(s1, HarnessError):
+                                for ends, row in rows.items():
+                                    if ends[:i + 1] in ways1:
+                                        row["blocked"][name] = str(s1)
+                                continue
+                            ck = reads[i + 1].key(whole, s1)
+                            new.setdefault(ck, (s1, []))[1].extend(ways1)
+                            done.append((more, ck))
+                classes = new
+            for group in groups(classes):
+                done = []                           # (amounts, wanted, result) of each searched and found whole
+                for more, state, ways in group:
+                    # each stage no character before has reached on one of these ways, and a completed ending
+                    wanted = tuple(s["number"] for j, s in enumerate(f["stages"])
+                                   if any(not any(p is not None for p in rows[w]["stages"][j]["by"].values())
+                                          for w in ways))
+                    hit = next((r for m, wt, r in done if _covers(m, more) and set(wanted) <= set(wt)), None)
+                    if hit is None:
+                        g = game_on(by_id, chain, world, state, sheet)
+                        if state is None:
+                            g.s["gold"] = GOLD
+                        goals = {n: (lambda st, n=n: n in (st["quests"].get(q) or {}).get("done", [])) for n in wanted}
+                        goals["completed"] = lambda st: (st["quests"].get(q) or {}).get("ended") == "completed"
+                        res = search(g, goals, _ended(q), max_states, own_refs(g, q), lambda s: reads[-1].key(g, s))
+                        hit = (ways[0], {n: [shown(g, a) for a in p] for n, p in res["paths"].items()},
+                               _stops(res, q, g))
+                        if len(res["paths"]) == len(goals):
+                            done.append((more, wanted, hit))
+                    first, paths, why = hit
+                    for w in ways:
+                        row = rows[w]
+                        row["walked"][name] = [list(x) for x in zip(before, first)]
+                        for s in row["stages"]:
+                            if s["stage"] in wanted and not any(p is not None for p in s["by"].values()):
+                                s["by"][name] = paths.get(s["stage"])
+                                if s["by"][name] is None:
+                                    s["why"][name] = why
+                        row["completes"][name] = "completed" in paths
+    return out
+
+
+def starts(rows: list[dict]) -> dict[str, int]:
+    """How many times each quest was started and searched, over every character: once per distinct carried state."""
+    out: dict[str, int] = {}
+    for r in rows:
+        out.setdefault(r["quest"], 0)
+        out[r["quest"]] += sum(1 for w in r["walked"].values() if [list(x) for x in w] == r["after"])
     return out
 
 
@@ -435,15 +696,21 @@ def _qid(bad: str) -> str:
     return bad.split(":")[0].split(",")[0]
 
 
-def gate(bad: list[str]) -> list[str]:
-    """make check's view: a quest out of reach that is not on reach_owed.json, or one on it that now reaches a
-    completed ending (take it off: the list only shrinks)."""
-    owed = json.loads(OWED.read_text(encoding="utf-8"))["quests"]
-    out = [b + " (and it is not on tools/playtest/reach_owed.json)" for b in bad if _qid(b) not in owed]
-    now = {_qid(b) for b in bad}
-    out += [f"{q} now reaches a completed ending: take it off tools/playtest/reach_owed.json" for q in owed
-            if q not in now]
-    return out
+def owed() -> dict[str, str]:
+    """The quests parked on reach_owed.json, each with why: `make check` does not walk them."""
+    return json.loads(OWED.read_text(encoding="utf-8"))["quests"]
+
+
+def ratchet(rows: list[dict]) -> list[str]:
+    """The owed quests the rows (walked with `only=` the owed list) now find wholly in reach: each is taken off
+    reach_owed.json (the list only shrinks); returns them."""
+    data = json.loads(OWED.read_text(encoding="utf-8"))
+    bad = {_qid(b) for b in unreached(rows)}
+    done = sorted(q for q in data["quests"] if q in {r["quest"] for r in rows} and q not in bad)
+    if done:
+        data["quests"] = {q: w for q, w in data["quests"].items() if q not in done}
+        OWED.write_text(json.dumps(data, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
+    return done
 
 
 def compiled() -> list[dict]:

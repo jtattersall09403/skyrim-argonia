@@ -1,4 +1,4 @@
 {
- "_about": "Compiled quest forms from which no completed ending can be reached today, each with why (python3 -m tools.playtest reach --compiled). make check fails on a quest out of reach that is not listed, and on a listed quest that now reaches a completed ending; the list only shrinks.",
+ "_about": "Compiled quest forms parked out of `make reach`, each with why: the gate skips each with a printed line; `python3 -m tools.playtest reach --compiled --ratchet` walks only these and takes off each that now reaches every stage and ending. The list only shrinks.",
  "quests": {}
 }

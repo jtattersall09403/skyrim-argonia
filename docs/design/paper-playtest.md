@@ -32,8 +32,9 @@ with a harness error naming it. Fix the cause (the form, or the names file); nev
 
 Run again only when what the player meets has changed. The playtest is never part of `make check`: it is slow and
 not deterministic. The game's unit tests, the comparison's and `reach` are: `make check` compiles every staged quest
-that fits the form and plays it with `reach` (below), unless it is listed with its reason in
-`tools/playtest/reach_owed.json` (a list that only shrinks).
+that fits the form and plays it with `reach` (below), but a quest parked with its reason in
+`tools/playtest/reach_owed.json`, which the gate skips with a printed line. `reach --compiled --ratchet` walks only
+the parked quests and takes off each that is now wholly in reach: the list only shrinks.
 
 ## What the player sees
 
@@ -95,8 +96,18 @@ one of two characters, each with 1,000 gold: one able in every skill and a new c
 who can take that way through completes the quest. It names each stage or ending no character reaches, with the
 stages reached; a search cut at its limit (`MAX_STATES`) says so and is never read as "no path". The walker acts on
 the walked quest's own references first (every loaded one only when that leaves something unreached), takes and uses
-everything, and can fight anyone a condition, a trigger or a who-must-live row names. `make reach` takes about 12
-seconds for the eight quests that fit the form today.
+everything, and can fight anyone hostile, who must live, watched by a death trigger or needed dead by a line (a death
+that could only shut a line needing the person alive is never tried; what they carry is pickpocketed).
+
+The earlier quests are played one at a time, and a later quest starts once per distinct state they can leave, not
+once per way through: what matters to it is what it can read (`walk.Reads`: the stored numbers, flags, stages, things
+and gold held, rank, who is alive, what is switched on, unlocked, taken or owned, as its conditions, triggers and
+results name them, and the lines an ended quest still says). Gold and a count are read only against thresholds, so
+two amounts no threshold tells apart after any set of the rest's changes are one; and of states alike but for amounts
+read only as "at least", the poorest is played on, a richer one only where the poorest is blocked or misses a goal
+(what the poorer reaches, the richer reaches by the same steps). The same reading makes the search's states: two that
+the walked quest cannot tell apart are visited once. `make reach` prints its starts and its time: about 25 seconds for
+the eleven quests that fit the form today.
 
 The player runs from a new empty folder with its own system prompt, the project's setting sources only, no MCP
 servers and one tool: Bash allowed only to run the run's `play` wrapper, a Python script that passes the player's

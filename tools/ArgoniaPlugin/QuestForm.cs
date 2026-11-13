@@ -70,6 +70,8 @@ static class QuestForm
     public const string TakeRefScript = "defaultSetStageOnPlayerAcquireItem";
     public const string TakeScript = "defaultSetStageOnPlayerAcquire", UseScript = "defaultSetStageAliasScript",
         ReadScript = "defaultSetStageOnCloseBook", DeathScript = "defaultSetStageOnDeathRefAlias";
+    // ARG_AliasEffects's On: the event its rows run on (its death when left out); a take, use or read with an `until`
+    public const int AliasOnTake = 1, AliasOnActivate = 2, AliasOnRead = 3;
 
     // ---- the forms
     /// Every quest form (*.json) of the directories, by file name; a directory not there holds none.
@@ -126,6 +128,7 @@ static class QuestForm
         public Dictionary<FormKey, P3Float> Arrivals = [];
         public Dictionary<FormKey, INavigationMeshGetter> NavWin = [];
         public Dictionary<FormKey, (ICellGetter rec, ModKey from)>? CellWin;
+        public Dictionary<FormKey, (string Quest, string Name)> CellNames = [];   // an interior's name, by the first form to name it
         public List<P3Float> Stood = [];   // where the people placed on navmesh stand, so no two share a spot
         public Dictionary<string, (string Quest, string Same, FormKey Placed, FormKey Base, bool Npc, bool Created)> Shared = [];   // a load door: where the player comes out of it
         public FormKey Key(string name) => new(Mod.ModKey, Ids.Take(Kind, name));
@@ -545,12 +548,13 @@ static class QuestForm
         var j = r.Json; var p = j.GetProperty("placement");
         if (r.Hostile && r.Kind != "person") throw c.No("hostile", $"{r.Id} is hostile and not a person");
         // a ref another form names too is the same reference: one placement, which both forms must state alike
-        var same = $"{r.Kind}|{p.GetRawText()}|{r.Enabled}|{r.Hostile}|{(j.TryGetProperty("lock", out var l1) ? l1.GetRawText() : "")}|{So(j, "owner")}|{(j.TryGetProperty("contents", out var c1) ? c1.GetRawText() : "")}";
+        var same = $"{r.Kind}|{p.GetRawText()}|{r.Enabled}|{r.Hostile}|{(j.TryGetProperty("lock", out var l1) ? l1.GetRawText() : "")}|{So(j, "owner")}|{(j.TryGetProperty("contents", out var c1) ? c1.GetRawText() : "")}|{(j.TryGetProperty("level", out var lv1) ? lv1.GetInt32() : null)}";
         if (c.Shared.TryGetValue(r.Id, out var had))
         {
             if (had.Same != same) throw c.No("shared-ref", $"{r.Id} is placed otherwise by {had.Quest}");
             if (had.Created) throw c.No("shared-ref", $"{r.Id} is made in a container for {had.Quest}; a made thing belongs to one quest");
             (r.Placed, r.Base, r.Npc) = (had.Placed, had.Base, had.Npc);
+            if (r.Npc && j.TryGetProperty("level", out _)) Label(c, $"level={r.Id}");   // its fixed level, for this quest's reader
             if (p.TryGetProperty("base", out var sb) && S(sb, "kind") == "item" && S(sb, "id") != r.Id) Item(c, b, S(sb, "id"));   // its item word, for this quest's reader
             return;
         }
@@ -1264,7 +1268,6 @@ static class QuestForm
             // takes of one thing, or deaths of one person, that set one stage from several stages are one script, from the
             // lowest of them (a later one is reached through it: the script's prerequisite is then done)
             int? until = t.TryGetProperty("until", out var ut) ? ut.GetInt32() : null;
-            if (until != null && kind != "death") throw c.No("trigger", $"{id}: an `until` on a {kind} is not built yet (ARG_AliasEffects runs its rows on a death only)");
             var untilLabel = until is { } u0 ? $"until={u0}|" : "";
             if (kind is "take" or "death" && A(b.F, "triggers").Any(o => S(o, "kind") == kind && S(o, "ref") == r.Id && I(o, "sets") == sets && I(o, "prerequisite") < pre
                 && (o.TryGetProperty("until", out var ou) ? ou.GetInt32() : (int?)null) == until))
@@ -1272,14 +1275,23 @@ static class QuestForm
                 b.Labels.Add($"trigger={id}|{kind}|{r.Id}|{untilLabel}{pre}|{sets}|{(B(t, "choice") ? "choice" : "")}");
                 continue;
             }
-            // a death with an `until`: it moves the quest only while the quest's stage is below that stage (ARG_AliasEffects:
-            // IfStageDone the prerequisite, IfStageAtMost until - 1, then the stage, set while the quest runs)
+            // a take, use or death with an `until`: it moves the quest only while the quest's stage is below that stage
+            // (ARG_AliasEffects on the event vanilla's script for the kind hooks: IfStageDone the prerequisite,
+            // IfStageAtMost until - 1, then the stage, set while the quest runs)
             if (until is { } u)
             {
-                if (!r.Npc) throw c.No("trigger", $"{id}: only a person dies");
                 if (u <= pre) throw c.No("trigger", $"{id}: its until {u} is not after its prerequisite {pre}");
+                var on = kind switch
+                {
+                    "death" => r.Npc ? 0 : throw c.No("trigger", $"{id}: only a person dies"),
+                    "take" => r.Kind == "thing" ? AliasOnTake : throw c.No("trigger", $"{id}: only a thing is taken"),
+                    "use" => r.Created ? throw c.No("trigger", $"{id}: a thing made in a container is taken, not used")
+                        : c.Mods.Any(m => m.Books.Any(x => x.FormKey == r.Base)) ? AliasOnRead : AliasOnActivate,
+                    _ => throw c.No("vocabulary", $"no trigger kind {kind}"),
+                };
                 var ue = new ScriptEntry { Name = AliasScript };
                 ue.Properties.AddRange(Arrays([new Row(Op.IfStageDone, b.Q.FormKey, pre), new Row(Op.IfStageAtMost, b.Q.FormKey, u - 1), new Row(Op.SetStageIfRunning, b.Q.FormKey, sets)]));
+                if (on != 0) ue.Properties.Add(QuestKit.Int("On", on));
                 AddAliasScript(c, b, r, ue, id);
                 b.Labels.Add($"trigger={id}|{kind}|{r.Id}|{untilLabel}{pre}|{sets}|{(B(t, "choice") ? "choice" : "")}");
                 continue;
@@ -1351,6 +1363,10 @@ static class QuestForm
         {
             if (!B(pl.Value, "interior")) continue;
             var key = FormKey.Factory(pl.Name); var name = S(pl.Value, "name");
+            // one cell, one name: a cell two quests name takes one neutral name true of all of it, in both records
+            if (c.CellNames.TryGetValue(key, out var had) && had.Name != name)
+                throw c.No("place", $"cell {pl.Name} is \"{name}\" here and \"{had.Name}\" in {had.Quest}: give both records one name for it");
+            c.CellNames.TryAdd(key, (c.Q, name));
             c.CellWin ??= Survey.Winners<ICellGetter>(c.Mods);
             var win = c.CellWin.TryGetValue(key, out var w) ? w.rec : throw c.No("place", $"{pl.Name} is no cell of the load order");
             var mine = c.Mod.Cells.Records.SelectMany(x => x.SubBlocks).SelectMany(x => x.Cells).FirstOrDefault(x => x.FormKey == key);

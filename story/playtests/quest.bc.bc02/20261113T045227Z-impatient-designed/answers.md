@@ -1,0 +1,7 @@
+1. I'm not sure. After the last report I checked the journal and talked to Never-Sold again, and I didn't see a new objective. If I had to guess, I'd go back to Tsaxi or Never-Sold for the next job, or follow the loose threads: what happens to Mends-Nets, and the gate to the dead levels. The game didn't point me at any of them.
+
+2. I work for Never-Sold and the Chainbreakers. She named me one of them and paid me. I took the work because it paid and involved stabbing and lockpicking, not because I believe in freeing people. The job did leave a killer and a debtor behind, so I'm not sure I like what the Chainbreakers actually do.
+
+3. The most confusing moment was Never-Sold still talking about Rows-For-Another and the fetcher as if I hadn't finished that job. I had already killed Brings-Them-Back and reported back, so it felt like the game had lost track of what I'd done. The long speeches full of in-world terms like leaves, Owing and put under were a close second. I skimmed them and had to work out the meaning from context.
+
+4. I'd tell the writer the leaves and the choice at the end were good. Having the proof name the killer, then making me decide who walks, gave the quest a shape. But the fight was a single click with no tension, and the lock was trivial. Make people say plainly what the terms mean in fewer lines. Keep quest states consistent, so NPCs don't talk about finished jobs as if they're open. And when a quest ends, give me an objective or at least a clear hint about where the next job is.

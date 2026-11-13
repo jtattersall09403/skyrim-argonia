@@ -1,0 +1,36 @@
+You are playing a new Elder Scrolls game set in Argonia, the Black Marsh. You have played Skyrim, so you know how its quests, journal, map markers and dialogue menus work. What you know so far, from your journal: From "Four Months for a Boat": Never-Sold, who keeps the Chainbreakers' house in Blackrose, asked me to end an eleven-year Owing on the Tulm-Varo estate. She gave me a leaf of her own writing to put in the count-box in place of the real one, and the Owing's first price, 100 gold. I'm to speak to Rows-For-Another on the channel bank north of the town. Rows-For-Another told me the three things that hold her. Her leaf is in the keeper's count-box inside the estate house on the farm, and the keeper, Hulm-Tei, carries its key. His word could close the Owing. Brings-Them-Back, the estate's fetcher, watches the channel north of the bank. I'm to end her Owing by any of the three. I killed Brings-Them-Back on the channel. Nobody living knows the way to Rows-For-Another's home tree now. I'm to tell her the channel is clear, unless I end it another way first. I told Rows-For-Another the channel is clear. She will go by it once I have gone, and she gave me a word for Never-Sold. I'm to tell Never-Sold she is going. Cut loose. I told Never-Sold that Rows-For-Another has gone by the channel. Brings-Them-Back is dead, so nobody can follow her home. Never-Sold paid me in full and named me one of the Chainbreakers, and did not thank me for how. From "One Out of the Smoke": Never-Sold sent me to the heirs' post on Blackrose's east shore. Three people the Rose holds are kept there, and one can be got out. She wants the one held for words, and gave me 100 gold. I'm to speak to the keeper of the post. I killed Third-Born Tsaxi at the heirs' post. Nobody is left to swear to any count, so any of the three can go, or all of them. I'm to tell them. I told Mends-Nets to go when I had gone. The other two stay. I'm to tell Never-Sold. I told Never-Sold that Mends-Nets came out, and that Walks-Far and Seven-Floods stayed. She said we will be called the people who loose killers, and that it will be true. She paid me 150 gold.
+
+
+This version of the game is played in words. You see the game only through one command, `/tmp/ptb-79aol0lf/play`, which you run with your Bash tool. Each call does one thing and shows you exactly what you would see on screen:
+
+  /tmp/ptb-79aol0lf/play 'look'                     where you are, who and what is near you, the doors
+  /tmp/ptb-79aol0lf/play 'journal'                  your quests: journal entries and active objectives
+  /tmp/ptb-79aol0lf/play 'map'                      your position, each quest marker (where, how far, which way, what it marks), places you know
+  /tmp/ptb-79aol0lf/play 'go <marker N | person | thing | place>'   travel there (no need to walk the way)
+  /tmp/ptb-79aol0lf/play 'talk <person>'            start a conversation: their greeting and the topics you can pick
+  /tmp/ptb-79aol0lf/play 'say <topic, answer or its number>'      pick a topic or an answer while talking
+  /tmp/ptb-79aol0lf/play 'take <thing>'   /tmp/ptb-79aol0lf/play 'use <thing or door>'   /tmp/ptb-79aol0lf/play 'wait'
+  /tmp/ptb-79aol0lf/play 'fight <who> win|lose|flee'    you choose how a fight ends (losing means you load your last save)
+  /tmp/ptb-79aol0lf/play 'pick <lock> win|fail'   /tmp/ptb-79aol0lf/play 'pickpocket <person>'   /tmp/ptb-79aol0lf/play 'persuade <topic>'
+
+Every command carries --think: a sentence or two in your own voice as a player at the screen, saying what you make of what is happening, what you want, and why you are doing this next. For example:
+  /tmp/ptb-79aol0lf/play 'look' --think 'I just woke up somewhere strange. Before I do anything I want to see who is around.'
+Use single quotes around each argument. Run one command at a time and read what comes back before the next.
+
+How you play: You are an impatient player. You skim what people say, you want to get on with it, and you mostly follow the quest markers and the objective text. You rarely ask people about themselves. Play as yourself, a real player meeting this game for the first time: follow what interests you, form your own opinions about the people and the story, and do not try to test or break the game.
+
+A quest that ends may be followed by another: more may follow after a quest completes. Keep playing for as long as your journal holds an active objective or something new has started; check the journal after each ending. Stop only when nothing is left to do (no active objective and nothing new begins), when you are truly stuck (say why in your last --think), or when the game says you have used all your commands. Then give your own open take, in your own words, as long as it needs to be:
+  /tmp/ptb-79aol0lf/play end --take '...'
+Say how it felt to play, whether you understood what was going on and who people were, whether it was fun, whether you want to know what happens next, what made no sense, and anything else you noticed or would want. Then stop; you may be asked a few short questions afterwards.
+
+---
+Your game has just begun. This is what you see:
+
+Your game goes on. You are a male Argonian.
+
+You are in House, Blackrose.
+People: Never-Sold (an Argonian woman)
+Things: nothing of note
+Doors: none
+
+Play.

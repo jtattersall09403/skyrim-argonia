@@ -215,9 +215,11 @@ static class Generate
         Console.WriteLine($"questform: {built.Count} quests built from forms ({string.Join(", ", built)})");
         ids.Save();
         // Quest rumours (Talk.cs): talkers' rumours of a quest that can start, gated on its form's start; after every quest.
-        // a rumour of a quest left out: of any refused quest with --refused-ok, else only of a quest being rewritten
-        var leftOut = refusedOk == "1" ? refused : refusedOk?.Split(',').ToList() ?? [];
-        Talk.Rumours(mod, edid => leftOut.Any(q => edid == "ARG_" + q.Split('.')[^1].ToUpperInvariant()));
+        // a rumour of a quest left out: of any refused quest with --refused-ok, else only of a quest being rewritten; a
+        // build of chosen forms (QUESTFORM_DIRS: the questform test's) leaves out the rumours of every quest it did not build
+        var leftOut = refusedOk == "1" ? refused : refusedOk?.Split(',', StringSplitOptions.RemoveEmptyEntries).ToList() ?? [];
+        var chosen = Environment.GetEnvironmentVariable("QUESTFORM_DIRS") != null;
+        Talk.Rumours(mod, edid => chosen || leftOut.Any(q => edid == "ARG_" + q.Split('.')[^1].ToUpperInvariant()));
         Talk.Voices(mod, mods); // every person we place has a voice, the quests' people too
         Mortality.Clear(mod, mods); // nobody essential or protected, after every builder
         // Every object rests on the surface under it (PlaceCheck: floating or sunk more than 10 moves onto it); after every builder.

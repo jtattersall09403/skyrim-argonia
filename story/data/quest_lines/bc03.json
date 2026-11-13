@@ -1,115 +1,540 @@
 {
- "topic.bc03-brawl": {
-  "speaker": "npc.mercantile-coast.soulrest.crew-boss",
+ "topic.bc03-more": {
+  "speaker": "npc.imperial-penal-south.blackrose.chainbreaker-patron",
   "infos": [
    {
     "variant": "main",
-    "prompt": "Accept the refusal. Work the season.",
+    "prompt": "Is there more work?",
     "lines": [
-     "Ussa-Rekh said no to my face, and I took it from him. I will not take it again from a stranger who speaks for him. Give me a reason worth hearing. Words will do, or coin for my crew's lost days. Otherwise keep clear of me."
-    ],
-    "facts": []
-   }
-  ]
- },
- "topic.bc03-yield-talk": {
-  "speaker": "npc.mercantile-coast.soulrest.crew-boss",
-  "infos": [
-   {
-    "variant": "main",
-    "prompt": "(Speechcraft 30) Let this end. Work the season.",
-    "lines": [
-     "You say it plainly. I cannot answer it. Ussa-Rekh freed me. I will not break faith with him over one season. Let the Lilmoth berths go. My crew will work the season."
-    ],
-    "facts": []
-   },
-   {
-    "variant": "fail",
-    "prompt": "(Speechcraft 30) Let this end. Work the season.",
-    "lines": [
-     "That does not move me. Ussa-Rekh said the same, and he has more right to say it. Bring me better words, or fifty gold for my crew's lost days, and I will hear you."
-    ],
-    "facts": []
-   }
-  ]
- },
- "topic.bc03-yield-pay": {
-  "speaker": "npc.mercantile-coast.soulrest.crew-boss",
-  "infos": [
-   {
-    "variant": "main",
-    "prompt": "Here are fifty gold for your crew.",
-    "lines": [
-     "Fifty gold for the lost days. That is what I asked for. My crew will work the season they did not want."
-    ],
-    "facts": []
-   },
-   {
-    "variant": "fail",
-    "prompt": "Here are fifty gold for your crew.",
-    "lines": [
-     "You do not have fifty gold with you. Bring it and I will take it for the crew's lost days. Or bring words that move me, and I will hear those."
-    ],
-    "facts": []
-   }
-  ]
- },
- "topic.bc03-last-season": {
-  "speaker": "npc.mercantile-coast.soulrest.crew-boss",
-  "infos": [
-   {
-    "variant": "main",
-    "prompt": "What is wrong with your crew?",
-    "lines": [
-     "Never-Sold has told you what we asked of Ussa-Rekh and what he answered. I will tell you why we asked. A master in Lilmoth, a short way west along the coast, offers my crew berths of our own from the new season, if we come free of Ussa-Rekh first. The master will not hold them for us through another season.",
-     "I owe Ussa-Rekh my freedom. He bought me out of my Owing, and I say so to anyone who asks. That is why this galls me. A man who has seen what a debt does should not hold us to a season we do not want.",
-     "He stands a few steps along the dock. Hear him as well as me."
-    ],
-    "facts": [
-     "fact.bc03.offer"
-    ]
-   }
-  ]
- },
- "topic.bc03-the-tokens": {
-  "speaker": "npc.mercantile-coast.soulrest.crew-boss",
-  "infos": [
-   {
-    "variant": "main",
-    "prompt": "Your crew is right. What now?",
-    "lines": [
-     "Ussa-Rekh keeps a crew's carved tokens until the last season is worked. Ours are in his hand. A crew that holds its own tokens owes him nothing more. He knows it.",
-     "I will not tell you he is a bad man. He freed me. I will not forget it. But a man who was freed should not need leave to take a berth of his own.",
-     "Here is the crew's fifty gold for that season. If coin is what moves him, pay him with it. If your words get the tokens from him, keep the gold."
+     "Ussa-Rekh, the Broker, bought hundreds of people out of their Owings on Soulrest's dock, on the shore a short way east of Lilmoth, and now he hires them out, and each freed person's carved token stays in his chest until they have worked a season for him. Heavy-Rope's crew have worked theirs and one more, and I want their tokens in their hands. There is also a bound book on his shelf with my name on it, and I want that too.",
+     "The tokens lie in his chest in his house, the north house of Soulrest. The old man keeps the key on him, so I am told, and Feldril Nethri keeps about outside the locked north door.",
+     "You have three ways in. You can lift the key and open the chest. You can talk Feldril Nethri into leaving the door unbarred, or the old man himself into letting the crew go.",
+     "Or you can go to the berth-master, the man who finds hands for the boats and pays their hire. Heavy-Rope keeps about the shore by the docks, and he has the plan. Hear it, and better it if you can.",
+     "Know what each way costs. The old man is usually in his room, near the chest, so every way through that house is under his eye, and seen, you are a thief.",
+     "And remember what he is. He bought people out for thirty years and keeps nothing for himself, though one year a berth-master paid coin and a season became two. I do not ask you to hate him. I ask you for the tokens."
     ],
     "facts": [
      "fact.bc03.tokens",
-     "fact.bc03.break"
+     "fact.bc03.founder"
     ]
    }
   ]
  },
- "topic.bc03-break": {
+ "topic.bc03-again": {
+  "speaker": "npc.imperial-penal-south.blackrose.chainbreaker-patron",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Tell me the job again.",
+    "lines": [
+     "The tokens into the crew's hands, and my book off his shelf.",
+     "The Broker's house is the north house of Soulrest, up from the shore by the docks. Ussa-Rekh is usually inside it, and Feldril Nethri keeps about outside its locked door. Heavy-Rope keeps about the shore by the docks, and the Khajiit berth-master Ra'Jhan stands on the bare shore where the dock meets the land.",
+     "Lift the key and pick the chest, or talk the old man or the berth-master round. I want the crew free of the season, one way or another."
+    ],
+    "facts": [
+     "fact.bc03.tokens"
+    ]
+   }
+  ]
+ },
+ "topic.bc03-who-to-you": {
+  "speaker": "npc.imperial-penal-south.blackrose.chainbreaker-patron",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Who is the Broker to you?",
+    "lines": [
+     "He is an old man who began the work I do. He bought people out for thirty years and keeps nothing for himself.",
+     "I will not say what else he is to me. That is a true answer, and it is the whole of it.",
+     "If you stand in front of him, ask him. He will tell it more kindly than I would."
+    ],
+    "facts": [
+     "fact.bc03.founder"
+    ]
+   }
+  ]
+ },
+ "topic.bc03-rope-who": {
   "speaker": "npc.mercantile-coast.soulrest.crew-boss",
   "infos": [
    {
     "variant": "main",
-    "prompt": "I have your crew's tokens.",
+    "prompt": "Who are you?",
     "lines": [
-     "These are ours. A crew that holds its own tokens owes Ussa-Rekh nothing more, and I will tell my crew so.",
-     "I will not curse him. I will not work for him again either."
+     "Heavy-Rope. I was boss of a crew the Broker bought out of their Owings, the work a person owes for a debt. We worked the season we owed him, and one more. The crew are the hands for those boats.",
+     "Ussa-Rekh is the Broker. His dock is Soulrest's, on the shore a short way east of Lilmoth. His dock lies west of this shore, and his house is the north one of the Dock Houses, the locked door up to the north-east.",
+     "I want my crew's tokens in their hands, and I want them now. I do not want a third season."
     ],
     "facts": [
-     "fact.bc03.break"
+     "fact.bc03.season"
+    ]
+   }
+  ]
+ },
+ "topic.bc03-where-tokens": {
+  "speaker": "npc.mercantile-coast.soulrest.crew-boss",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Never-Sold sent me. Where are your tokens?",
+    "lines": [
+     "Then hear the plan, and better it if you can. When the Broker bought a person out of an Owing, he carved a token for them and kept it in his chest. A person has it back when they have worked a season's hire for him. My crew worked theirs and another. The tokens are still in the chest.",
+     "The chest is in the north one of the three Dock Houses, up from the shore by Soulrest's docks. The old man is usually in his room near it, and he keeps the key on him, so I am told. Feldril Nethri, a Dunmer who says he works off his own months, keeps about outside the north door, which is locked. He might leave it unbarred for coin or a good word.",
+     "A season is paid for by Ra'Jhan, the Khajiit berth-master, who keeps the shore at the landward end of the dock. He pays when it is sailed. Without him there is no season. The old man says the hire is promised to the price of eleven people held at Thorn, where it is worst.",
+     "Hear my side. A last season that becomes two is an Owing with a new name, and we were promised an ending. If the old man wins, my crew row again and I do not know where it stops.",
+     "Hear his. If we win, the eleven stay at Thorn. I will not tell you he is a bad man. He freed me.",
+     "Lift the key or talk the door open, or go to Ra'Jhan. Whatever you do in that house, the old man is in the room, and if he sees you, you are a thief."
+    ],
+    "facts": [
+     "fact.bc03.season",
+     "fact.bc03.eleven"
+    ]
+   }
+  ]
+ },
+ "topic.bc03-tokens": {
+  "speaker": "npc.mercantile-coast.soulrest.crew-boss",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Here are your crew's tokens.",
+    "lines": [
+     "These are them. I know the carving of every one.",
+     "The crew are done, and I will tell them so myself. Take this, 150 gold, the crew's thanks. It is little beside what you did.",
+     "The hire was promised to the eleven, and they lose it. I will carry that, and the old man will too. Tell Never-Sold it is finished here."
+    ],
+    "facts": [],
+    "gives": [
+     "gold:150"
+    ]
+   }
+  ]
+ },
+ "topic.bc03-void": {
+  "speaker": "npc.mercantile-coast.soulrest.crew-boss",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "The hire is void. Ra'Jhan will not pay for the season.",
+    "lines": [
+     "No hire, no season. Then the crew are done, whatever the old man keeps in his chest. Let him keep the carved wood.",
+     "Take 150 gold, the crew's thanks. I will not ask how you did it.",
+     "The price of the eleven goes with the hire. I will not pretend that is nothing. Tell Never-Sold it is finished."
+    ],
+    "facts": [
+     "fact.bc03.season"
+    ],
+    "gives": [
+     "gold:150"
+    ]
+   }
+  ]
+ },
+ "topic.bc03-released": {
+  "speaker": "npc.mercantile-coast.soulrest.crew-boss",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "The Broker has let your crew go. Here are your tokens.",
+    "lines": [
+     "I did not think the old man would. Not once in all my seasons did I think it.",
+     "Take 150 gold, the crew's thanks. Someone paid for my crew's ending, him or you. I do not ask which.",
+     "Ask Never-Sold what she makes of him. She knows him better than I do. Tell her the crew are free."
+    ],
+    "facts": [],
+    "gives": [
+     "gold:150"
+    ]
+   }
+  ]
+ },
+ "topic.bc03-sail": {
+  "speaker": "npc.mercantile-coast.soulrest.crew-boss",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Sail the season, for the eleven at Thorn.",
+    "lines": [
+     "Eleven at Thorn, where it is worst, and the hire is all that stands between them and their price. You have put it plainly, and I have no answer to it.",
+     "Hear me. This is not the old man taking it from me. I choose it. One more season for eleven I have never met, and I will row it with a bad grace.",
+     "I will tell my crew myself. They will ask me why. Tell Never-Sold what I chose, and let her carry it."
+    ],
+    "facts": [
+     "fact.bc03.eleven"
     ]
    },
    {
     "variant": "fail",
-    "prompt": "I have your crew's tokens.",
+    "prompt": "Sail the season, for the eleven at Thorn.",
     "lines": [
-     "You do not have them. They are small and carved, and Ussa-Rekh keeps them. Bring them to me, and the crew is done with him."
+     "I have heard the old man's reasons and I have heard yours, and my crew have worked under both. It is not enough.",
+     "Somebody who argues better than you might move me. Or put the names of the eleven in my hand, the names he keeps, and I will read them myself."
     ],
     "facts": []
+   }
+  ]
+ },
+ "topic.bc03-sail-list": {
+  "speaker": "npc.mercantile-coast.soulrest.crew-boss",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Read this list. Then tell me you won't sail.",
+    "lines": [
+     "I read it slowly. Eleven names, and a price beside each.",
+     "I know two of them. I will not say how.",
+     "I cannot tell you I will not sail. I will sail the season for these names, and I will hate every stroke. Tell Never-Sold I said so."
+    ],
+    "facts": [
+     "fact.bc03.eleven"
+    ]
+   }
+  ]
+ },
+ "topic.bc03-ussa-who": {
+  "speaker": "npc.imperial-penal-south.blackrose-prison.chainbreaker-envoy-camped-causeway",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Who are you?",
+    "lines": [
+     "I am Ussa-Rekh, and on this dock they call me the Broker. Ask me what you like. I would rather you heard it from me than from someone who dislikes me.",
+     "An Owing is a debt that a person works off, and for thirty years I have bought Owings out from those who held them. For each person I carve a token, and I keep it until they have worked one season's hire for me. That season's hire buys the next person out.",
+     "One year a berth-master paid me for the whole season of a freed crew, and it bought twenty people out at once. A berth-master is the man who finds hands for the ships at a dock. I remember that year. Since then the seasons have grown to two, and I let them, and I will not tell you otherwise.",
+     "I keep nothing. Look round this room: my chest, and the shelf by it. What I earn goes to those I have not yet bought.",
+     "The best keeper of the count the Tulm-Varo estate ever had cost me what a boat costs. A keeper of the count is the one who sets down each person's months on an estate. She keeps a house of her own in Blackrose now, and she would not take the book I kept of her. Whoever sent you knows her. Ask her whose boat."
+    ],
+    "facts": [
+     "fact.bc03.her-book"
+    ]
+   }
+  ]
+ },
+ "topic.bc03-ussa-case": {
+  "speaker": "npc.imperial-penal-south.blackrose-prison.chainbreaker-envoy-camped-causeway",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Why do you still hold their tokens?",
+    "lines": [
+     "Because the last season is not mine to spend. Ra'Jhan, the berth-master, pays this season's hire when it is sailed, and all of it is promised to the price of eleven people held at Thorn.",
+     "Thorn is the saltrice country in the north-east of Black Marsh, and it is where an Owing is held hardest. I keep their names. I know of no other buyer for them, and I fear there is none.",
+     "Heavy-Rope's crew have worked their season and one more. I know what that is, and I will not call it just. If they are freed now, the eleven stay at Thorn, and I do not know who else will ever pay for them.",
+     "Carry that to the crew. Heavy-Rope keeps about the shore by the docks. I would have him hear it from you."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.bc03-ussa-persuade": {
+  "speaker": "npc.imperial-penal-south.blackrose-prison.chainbreaker-envoy-camped-causeway",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Let the crew go. You can find another way for the eleven.",
+    "lines": [
+     "Another way for the eleven. I have looked for one, and I have found none. But you speak as if there were one to find, and I find I cannot say you are wrong.",
+     "Then Ra'Jhan is still short of hands and Thorn is still short of its price. I have two hands.",
+     "I will sign my own season to Ra'Jhan, and the crew are done with me. The eleven will wait longer than they would have, and that cost is on my hands and on yours.",
+     "Take this key. It opens the door and the chest. The crew's tokens are in it, so put them in Heavy-Rope's hand."
+    ],
+    "facts": [],
+    "gives": [
+     "thing.bc03.key"
+    ]
+   },
+   {
+    "variant": "fail",
+    "prompt": "Let the crew go. You can find another way for the eleven.",
+    "lines": [
+     "Another way. You say it, and you cannot show it to me. I have eleven names and no one else who will buy them.",
+     "It would take a better speaker than you to make me believe another buyer will come. Or pay the season's hire yourself, and the eleven need no other."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.bc03-ussa-pay": {
+  "speaker": "npc.imperial-penal-south.blackrose-prison.chainbreaker-envoy-camped-causeway",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "I'll pay the season's hire myself.",
+    "lines": [
+     "You offer the season's hire in full, from your own purse. Then the price of the eleven is met, and I do not need the crew's season for it.",
+     "I take it for them and not for myself. Not one coin of it stays with me.",
+     "The crew are done with me. You have paid what a crew and an old man would have paid, and it is an honest price. I thank you for it.",
+     "Here is my key. It opens the door and the chest, and the crew's tokens are in it."
+    ],
+    "facts": [],
+    "gives": [
+     "thing.bc03.key"
+    ]
+   },
+   {
+    "variant": "fail",
+    "prompt": "I'll pay the season's hire myself.",
+    "lines": [
+     "That is not the season's hire. What I promised is the price of eleven people, and I will not take part of it and let the crew go, because some of the eleven would stay at Thorn for it.",
+     "Bring me the whole of it, or an argument I cannot answer, and I will give you the key."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.bc03-ussa-book": {
+  "speaker": "npc.imperial-penal-south.blackrose-prison.chainbreaker-envoy-camped-causeway",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "I found Never-Sold's book on your shelf.",
+    "lines": [
+     "Then it is in your hand, and I will not ask you to put it back. I kept a book of each person I bought out. I offered her this one, and she refused it.",
+     "She was the best keeper that estate had. I bought her for the price of a boat. Ask her whose boat.",
+     "Read the first leaf before you go, and then ask her about it. It is hers to tell, not mine.",
+     "She is in the Chainbreakers' house on the north side of Blackrose, east along the coast and south through the marsh."
+    ],
+    "facts": [
+     "fact.bc03.her-book"
+    ]
+   }
+  ]
+ },
+ "topic.bc03-rajhan-who": {
+  "speaker": "npc.mercantile-coast.soulrest.berth-master",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Who are you?",
+    "lines": [
+     "Ra'Jhan. This one says he is berth-master on this dock, friend. When a crew sails a season, Khajiit pays the hire for it, and a crew that is paid for is a crew that is his to put on the boats.",
+     "Heavy-Rope's crew have been this one's hands this season. Ask Heavy-Rope how he tells it. He is somewhere on this shore, and he will tell it his way.",
+     "This one tells it so. A berth-master who pays for a season wants his season sailed. A deal is a deal, and the boats must have hands."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.bc03-rajhan-persuade": {
+  "speaker": "npc.mercantile-coast.soulrest.berth-master",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Give up the season. Find other hands.",
+    "lines": [
+     "You argue as a trader does. This one listens. A deal is a deal, and Khajiit does not like to break one. But the crew are tired, and there are other crews on this coast for coin.",
+     "Very well. This one gives up the season. Khajiit will not pay the hire for it, and the crew are not his to put on the boats.",
+     "Tell Heavy-Rope this one said so. Do not think it is for love of the crew. It is because you were right: hands can be found, and this one will find them."
+    ],
+    "facts": []
+   },
+   {
+    "variant": "fail",
+    "prompt": "Give up the season. Find other hands.",
+    "lines": [
+     "You talk well, but this one has paid for a season, and a berth-master who gives up a season for a fair word soon has no berth. Other hands are not found in a day, and the boats stand idle while this one looks.",
+     "A smoother tongue than yours might talk this one out of it. Or put back in Khajiit's hand what the season cost him. This one will hear that."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.bc03-rajhan-pay": {
+  "speaker": "npc.mercantile-coast.soulrest.berth-master",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Here is the gold. Give up the season.",
+    "lines": [
+     "That is a purse. This one counts it once, slowly. It covers the hire Khajiit laid out, and a little over.",
+     "This one has no love of the season, only of what it pays. A deal is a deal, and a better deal is a better one. The season is given up.",
+     "Khajiit will not pay a coin of hire for it, and Heavy-Rope may take his crew off the work. Say that this one was paid, and the crew bought their ending with your coin."
+    ],
+    "facts": []
+   },
+   {
+    "variant": "fail",
+    "prompt": "Here is the gold. Give up the season.",
+    "lines": [
+     "This one hears the words, but sees no purse of that weight in your hand. Khajiit does not hire on promises, and does not unhire on them.",
+     "Come back with the coin you speak of, and this one will count it. Or talk to this one as a trader and give a better reason."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.bc03-rajhan-threat": {
+  "speaker": "npc.mercantile-coast.soulrest.berth-master",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "The crew are done. Step aside or be put aside.",
+    "lines": [
+     "Put aside. You speak boldly, friend. This one does not mean to run.",
+     "Hear the price, then, whichever way you take it. This one will not draw first. If you draw, you start it. Khajiit will finish it. If this one falls, the hire is void, and whoever the old man promised it to goes without. If you fall, the crew row on, and nobody asks where you went.",
+     "This one has lost hands before and does not mean to lose the rest. Ask this one to give up the season, with a reason or with coin, and Khajiit will listen. A trader is a trader before he is a fighter."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.bc03-feldril-persuade": {
+  "speaker": "npc.mercantile-coast.soulrest.feldril-nethri",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Leave the Broker's door unbarred for me.",
+    "lines": [
+     "I'm a guest in this marsh, outlander, no more than you, and a door is only a door. I bar it because I'm told to. I hold nothing behind it.",
+     "I'll say this once. I am held here on the same terms as the crew, months owing and worked off, and I want to be left out of it. Leave my name out and I leave the bar off.",
+     "It is off. Go in, and mind yourself. The old man is usually in his room near his chest, and he is old, not blind. Do not say who let you in."
+    ],
+    "facts": []
+   },
+   {
+    "variant": "fail",
+    "prompt": "Leave the Broker's door unbarred for me.",
+    "lines": [
+     "That is fair talk, outlander, but it isn't enough. I'm one bad word from the Broker's displeasure, and I have months still to work.",
+     "Someone with a better way of putting it might move me. Or coin: I am not too proud to take it."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.bc03-feldril-pay": {
+  "speaker": "npc.mercantile-coast.soulrest.feldril-nethri",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Here is the gold. Leave the Broker's door unbarred.",
+    "lines": [
+     "It is little, outlander, but I have little, and I'll take it. Do not tell me what I should have asked.",
+     "The bar is off. Go in, quietly. The old man is usually in his room, near his chest. Keep your feet soft.",
+     "I did not see you. I was about this shore, and I saw nothing."
+    ],
+    "facts": []
+   },
+   {
+    "variant": "fail",
+    "prompt": "Here is the gold. Leave the Broker's door unbarred.",
+    "lines": [
+     "I see no such coin in your hand. I take coin, outlander, not promises. Come back with it.",
+     "Or talk me round instead. I'm easier to talk to than you might think, and I want only to be left out of it."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.bc03-report": {
+  "speaker": "npc.imperial-penal-south.blackrose.chainbreaker-patron",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "It's done at the dock.",
+    "lines": [
+     "I have my book, and I will not speak of it again. Hear what the rest of it was worth.",
+     "If you broke the hire and freed the crew, I am satisfied. The eleven people held at Thorn, whose names he keeps, are the cost. Here are ten lockpicks, and you are a full Chainbreaker.",
+     "If the old man let them go himself, I will say only this. He would. That is the worst of him. Here are ten lockpicks, and you are a full Chainbreaker.",
+     "If the season is to be sailed, the hire goes to the price of the eleven. Eleven. I cannot tell you that you were wrong, and I can tell you he will ask again.",
+     "I name you a full Chainbreaker and give you nothing else.",
+     "Come to me when you want more work."
+    ],
+    "facts": [
+     "fact.bc03.eleven"
+    ],
+    "gives": [
+     "item.lockpick"
+    ]
+   }
+  ]
+ },
+ "topic.bc03-report-broken": {
+  "speaker": "npc.imperial-penal-south.blackrose.chainbreaker-patron",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "It's done at the dock. The crew are free.",
+    "lines": [
+     "Then the crew are free of the season, and I am satisfied.",
+     "The cost is the eleven. The season's hire was promised to the price of eleven people held at Thorn, whose names he keeps, and that price is lost. I carry them.",
+     "Here are ten lockpicks, and you are a full Chainbreaker now. Come to me when you want more work."
+    ],
+    "facts": [
+     "fact.bc03.eleven"
+    ],
+    "gives": [
+     "item.lockpick"
+    ]
+   }
+  ]
+ },
+ "topic.bc03-report-released": {
+  "speaker": "npc.imperial-penal-south.blackrose.chainbreaker-patron",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "It's done at the dock. The Broker let them go himself.",
+    "lines": [
+     "He did. He would. That is the worst of him.",
+     "The hire was promised to eleven people held at Thorn, and I do not know who pays it now. The crew are free, and the eleven may not be.",
+     "Here are ten lockpicks, and you are a full Chainbreaker now. Come to me when you want more work."
+    ],
+    "facts": [
+     "fact.bc03.eleven"
+    ],
+    "gives": [
+     "item.lockpick"
+    ]
+   }
+  ]
+ },
+ "topic.bc03-report-season": {
+  "speaker": "npc.imperial-penal-south.blackrose.chainbreaker-patron",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "It's done at the dock. Heavy-Rope will sail the season.",
+    "lines": [
+     "Then the season is sailed, and the hire goes to the price of eleven people held at Thorn,, whose names he keeps. Eleven. I cannot tell you that you were wrong. I can tell you he will ask again.",
+     "The crew lose another season, and they will not thank you. I name you a full Chainbreaker, and I give you nothing else.",
+     "Come to me when you want more work."
+    ],
+    "facts": [
+     "fact.bc03.eleven"
+    ]
+   }
+  ]
+ },
+ "topic.bc03-confess": {
+  "speaker": "npc.imperial-penal-south.blackrose.chainbreaker-patron",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Your name is on the Broker's book: keeper of the count at Tulm-Varo. You wrote Rows-For-Another's first leaf.",
+    "lines": [
+     "Yes. I was the Tulm-Varo estate's keeper of the count, and Ussa-Rekh bought me out for the price of a boat. He tells it kindly, and it is true.",
+     "Four months, then the food, then the fever. I wrote small, and I wrote true.",
+     "I have been striking that leaf out ever since, and I could not do it with my own hand.",
+     "I will not say it twice."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.bc03-after-patron": {
+  "speaker": "npc.imperial-penal-south.blackrose.chainbreaker-patron",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": null,
+    "lines": [
+     "That is the Broker settled, one way or another. I keep both halves of him, the man who bought people out for thirty years and kept nothing, and the man whose seasons became two.",
+     "Someone always pays for a freeing. Ask me for more work when you are ready."
+    ],
+    "facts": [
+     "fact.bc03.founder"
+    ]
    }
   ]
  },
@@ -120,7 +545,8 @@
     "variant": "main",
     "prompt": null,
     "lines": [
-     "My crew holds its own tokens now. I still owe Ussa-Rekh my freedom. I say so without bitterness. We are done with him now. That is a lighter load to carry. You have my thanks."
+     "My crew are free of the season. Someone paid for that, the eleven or the old man or you, and I do not ask which. I thank you for it.",
+     "Never-Sold has more work, if you want it."
     ],
     "facts": []
    }
@@ -133,115 +559,12 @@
     "variant": "main",
     "prompt": null,
     "lines": [
-     "The crew works the season for Ussa-Rekh, as you wished. We will do the work. Do not ask me to thank you for it."
-    ],
-    "facts": []
-   }
-  ]
- },
- "topic.bc03-soulrest": {
-  "speaker": "npc.imperial-penal-south.blackrose.chainbreaker-patron",
-  "infos": [
-   {
-    "variant": "main",
-    "prompt": "Is there work for me away from Blackrose?",
-    "lines": [
-     "There is. Ussa-Rekh has bought out Owings for thirty years. He is one of the Chainbreakers. Now he hires out the crews that he freed, on the docks at Soulrest.",
-     "Heavy-Rope, a crew boss there, has sent word. The crew asked to end their last season early. They were refused. Go and hear them both.",
-     "Soulrest's docks lie on the coast a short way east of Lilmoth. Heavy-Rope waits at the head of the dock. Ussa-Rekh freed Heavy-Rope from his own Owing. I will not tell you whose side to take."
+     "I am rowing for eleven strangers. I chose it, so say nothing to me of mercy.",
+     "Go to Never-Sold. She has other work, and she will not look at me."
     ],
     "facts": [
-     "fact.bc03.freed-and-hired",
-     "fact.bc03.refused"
+     "fact.bc03.eleven"
     ]
-   },
-   {
-    "variant": "fail",
-    "prompt": "Is there work for me away from Blackrose?",
-    "lines": [
-     "Not yet. I have nothing to send you out with. Ask me again when the work at hand is finished."
-    ],
-    "facts": []
-   },
-   {
-    "variant": "again",
-    "prompt": "Is there work for me away from Blackrose?",
-    "lines": [
-     "Soulrest, on the coast a short way east of Lilmoth. Heavy-Rope waits at the head of the dock. Hear both of them."
-    ],
-    "facts": []
-   }
-  ]
- },
- "topic.bc03-the-season": {
-  "speaker": "npc.imperial-penal-south.blackrose-prison.chainbreaker-envoy-camped-causeway",
-  "infos": [
-   {
-    "variant": "main",
-    "prompt": "Tell me about the dock crews.",
-    "lines": [
-     "An Owing is a debt that a person works off in labour. I buy out the people held, one at a time. I pay for the next one with the crews' hire. I will tell you plainly when that stopped working. It stopped the year the berths that I bought for the crews began to cost me more than their hire.",
-     "A crew that goes early leaves me the berth's price to carry. With that price unpaid I can buy out no more Owings. The person held on an estate stays held.",
-     "I hold that a season agreed is a season worked. So do the estates. Heavy-Rope, just along the dock, can tell you what his crew asked of me. I refused it for the reason I have given."
-    ],
-    "facts": [
-     "fact.bc03.turned"
-    ]
-   }
-  ]
- },
- "topic.bc03-release": {
-  "speaker": "npc.imperial-penal-south.blackrose-prison.chainbreaker-envoy-camped-causeway",
-  "infos": [
-   {
-    "variant": "main",
-    "prompt": "(Speechcraft 30) You freed them once. Give them their tokens.",
-    "lines": [
-     "You are right that I freed them. I have always known when that stopped working. I have feared that a crew would put me beside the estates for it.",
-     "You have shown me what my rule about the tokens has become. Take them to Heavy-Rope."
-    ],
-    "facts": [
-     "fact.bc03.tokens"
-    ],
-    "gives": [
-     "item.bc03.tokens"
-    ]
-   },
-   {
-    "variant": "fail",
-    "prompt": "(Speechcraft 30) You freed them once. Give them their tokens.",
-    "lines": [
-     "I did free them once. That does not end a season they agreed to.",
-     "Bring me a better reason than that, or the crew's coin. Fifty gold from the crew would settle it."
-    ],
-    "facts": []
-   }
-  ]
- },
- "topic.bc03-buy-season": {
-  "speaker": "npc.imperial-penal-south.blackrose-prison.chainbreaker-envoy-camped-causeway",
-  "infos": [
-   {
-    "variant": "main",
-    "prompt": "Here is the crew's coin for the last season, 50 gold.",
-    "lines": [
-     "Fifty gold. That is the right sum. I count the crew's last season as paid.",
-     "A paid season is a worked one to me, so the carved tokens go with you. Carry them to Heavy-Rope."
-    ],
-    "facts": [
-     "fact.bc03.tokens"
-    ],
-    "gives": [
-     "item.bc03.tokens"
-    ]
-   },
-   {
-    "variant": "fail",
-    "prompt": "Here is the crew's coin for the last season, 50 gold.",
-    "lines": [
-     "You do not have fifty gold. Until it is counted out, or the season is worked, the tokens stay with me. Bring the full fifty and we are settled."
-    ],
-    "facts": []
    }
   ]
  },
@@ -252,22 +575,28 @@
     "variant": "main",
     "prompt": null,
     "lines": [
-     "The tokens are Heavy-Rope's now. I have berths to see to. Go on."
+     "The crew are out of my hands, and I will not say I am sorry for them. I carved those tokens myself.",
+     "I know each of the eleven at Thorn by name. If the hire was not paid, they wait and no one else will buy them. If it was paid, they are bought and you have my thanks.",
+     "If Ra'Jhan lies dead, no berth-master on this dock will hire a freed crew of mine again, and that cost falls on every crew I free after. Never-Sold will have more for you, if you ask her."
     ],
     "facts": []
    }
   ]
  },
- "topic.bc03-after-ussa-season": {
+ "topic.bc03-after-ussa-released": {
   "speaker": "npc.imperial-penal-south.blackrose-prison.chainbreaker-envoy-camped-causeway",
   "infos": [
    {
     "variant": "main",
     "prompt": null,
     "lines": [
-     "You kept the season. I do not forget who made that so. It was not kind to Heavy-Rope. I know it."
+     "The crew are free of me. How they came to be free decides what I am now.",
+     "If I signed my season to Ra'Jhan, I am a hand due aboard his ship, and the eleven at Thorn wait longer for their price. If you paid, the eleven are bought, and I owe you for it.",
+     "And if I signed, I will say now what I have not said before. Never-Sold was the best keeper the Tulm-Varo estate had, and she is the best of what I did. I bought her out for what a boat costs, and I am proud of it. Go to her, for she will have more work for you."
     ],
-    "facts": []
+    "facts": [
+     "fact.bc03.her-book"
+    ]
    }
   ]
  }

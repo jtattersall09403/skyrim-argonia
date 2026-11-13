@@ -351,17 +351,20 @@ static class QuestFormRead
                         if (ints["preReqStage"] == -1) { minorDeaths[an] = (ints["StageToSet"], null, null); continue; }
                         (kindT, pre, sets) = ("death", ints["preReqStage"], ints["StageToSet"]); break;
                     case QuestForm.AliasScript:
-                        Only("Op", "What", "Num");
-                        var dr = Death(Arrays(s.Properties, e), q.FormKey) ?? throw No($"{QuestForm.AliasScript} on {an} is no who-must-live death");
-                        // a death trigger with an `until` (QuestForm.Triggers): its label names it
-                        if (dr.from is { } uf && dr.to is { } ut2 && trigLabels.FirstOrDefault(p => p[1] == "death" && p[2] == an && p.Length > 6 && p[3] == $"until={ut2 + 1}"
+                        Only("Op", "What", "Num", "On");
+                        var on = ints.GetValueOrDefault("On", 0);
+                        var uk = on switch { 0 => "death", QuestForm.AliasOnTake => "take", QuestForm.AliasOnActivate or QuestForm.AliasOnRead => "use", _ => throw No($"{QuestForm.AliasScript} on {an}: On {on}") };
+                        var dr = Death(Arrays(s.Properties, e), q.FormKey) ?? throw No($"{QuestForm.AliasScript} on {an} is no who-must-live death nor a trigger's rows");
+                        // a trigger with an `until` (QuestForm.Triggers): its label names it
+                        if (dr.from is { } uf && dr.to is { } ut2 && trigLabels.FirstOrDefault(p => p[1] == uk && p[2] == an && p.Length > 6 && p[3] == $"until={ut2 + 1}"
                                 && p[^3] == uf.ToString() && p[^2] == dr.fail.ToString()) is { } ul)
                         {
-                            var tu = new JsonObject { ["id"] = ul[0], ["kind"] = "death", ["ref"] = an, ["prerequisite"] = uf, ["sets"] = dr.fail, ["until"] = ut2 + 1 };
+                            var tu = new JsonObject { ["id"] = ul[0], ["kind"] = uk, ["ref"] = an, ["prerequisite"] = uf, ["sets"] = dr.fail, ["until"] = ut2 + 1 };
                             if (ul[^1] == "choice") tu["choice"] = true;
                             triggers.Add(tu);
                         }
-                        else minorDeaths[an] = dr;
+                        else if (on == 0) minorDeaths[an] = dr;
+                        else throw No($"{QuestForm.AliasScript} on {an} runs on a {uk} and no {uk} trigger with an until names it");
                         continue;
                     default: throw No($"alias {an} carries {s.Name}, which no form says");
                 }

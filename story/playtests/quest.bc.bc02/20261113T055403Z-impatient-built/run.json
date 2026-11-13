@@ -1,0 +1,77 @@
+{
+ "quest": "quest.bc.bc02",
+ "player": "impatient",
+ "source": "built",
+ "model": "sonnet",
+ "form_files": [
+  "out/z1/built/quest.bc.bc01.json",
+  "out/z1/built/quest.bc.bc02.json",
+  "out/z1/built/quest.bc.bc03.json"
+ ],
+ "forms_hash": "a43e746d074dbf20",
+ "created": "20261113T055403Z",
+ "counts": {
+  "commands": 40,
+  "stalls": 0,
+  "harness_errors": 0
+ },
+ "stages": {
+  "quest.bc.bc01": [
+   0,
+   10,
+   20,
+   45,
+   50,
+   93
+  ],
+  "quest.bc.bc02": [
+   0,
+   10,
+   20,
+   30,
+   32,
+   41,
+   91
+  ],
+  "quest.bc.bc03": [
+   0,
+   10,
+   20,
+   22
+  ]
+ },
+ "ended": "command limit (quest.bc.bc01 completed, quest.bc.bc02 completed, quest.bc.bc03 active)",
+ "after": [
+  "quest.bc.bc01"
+ ],
+ "names_from_file": [
+  "item.elven-dagger",
+  "item.gold-ring",
+  "item.lockpick",
+  "item.silver-ring",
+  "item.steel-mace",
+  "item.steel-scimitar",
+  "thing.bc01.key",
+  "thing.bc01.mace",
+  "thing.bc01.ring",
+  "thing.bc02.dagger",
+  "thing.bc02.mace",
+  "thing.bc02.ring",
+  "thing.bc03.key",
+  "thing.bc03.scimitar"
+ ],
+ "take": true,
+ "answers": true,
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.175792,
+ "minutes": 1.0,
+ "turns": 43,
+ "tokens": {
+  "input_tokens": 72,
+  "output_tokens": 4622,
+  "cache_read_input_tokens": 411285,
+  "cache_creation_input_tokens": 16866
+ }
+}

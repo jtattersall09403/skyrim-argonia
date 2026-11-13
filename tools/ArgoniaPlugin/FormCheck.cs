@@ -186,7 +186,9 @@ static partial class QuestCheck
         foreach (var q in mine.Quests.Where(q => q.FormKey.ModKey == ours))
             foreach (var a in q.Aliases)
                 flags.Add(($"{q.EditorID} alias {a.Name}", a.Flags?.HasFlag(QuestAlias.Flag.Essential) == true, a.Flags?.HasFlag(QuestAlias.Flag.Protected) == true));
-        fails.AddRange(MortalRule(flags));
+        var mortal = MortalRule(flags).ToList();
+        Console.WriteLine($"mortal: {flags.Count} people's bases and aliases checked, {mortal.Count} Essential or Protected");
+        fails.AddRange(mortal);
         return fails;
     }
 

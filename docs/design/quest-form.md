@@ -235,7 +235,7 @@ first stage; at most the last stage; then the form's conditions (`not` inverts t
   quest, because a stopped quest's topics are never offered; such a line may not be open before the first ending and
   into it, and cannot speak first.
 
-**The triggers.** Each is a vanilla script on the ref's alias, never ours:
+**The triggers.** Each is a vanilla script on the ref's alias, but one with `until`:
 - `take` (a thing): `defaultSetStageOnPlayerAcquire` with the prerequisite and the stage to set. Takes of one thing that
   set one stage from several stages are one script, from the lowest of them (deaths of one person likewise). A second take of a placed thing that sets
   another stage is vanilla's reference script `defaultSetStageOnPlayerAcquireItem` on the thing itself. A thing held
@@ -244,9 +244,11 @@ first stage; at most the last stage; then the form's conditions (`not` inverts t
   door; a made thing is taken, not used;
 - `death` (a person): `defaultSetStageOnDeathRefAlias`; one open from the start also adds the start check, so a death
   before the quest began moves it as it starts;
-- a death with `until` is `ARG_AliasEffects` on the person's alias instead, its rows guarded as a who-must-live window
-  is: IfStageDone(prerequisite), IfStageAtMost(until - 1), then SetStageIfRunning(sets), its label carrying
-  `until=<stage>`; an `until` on a take or a use is refused for now (`ARG_AliasEffects` runs its rows on a death only);
+- a take, use or death with `until` is `ARG_AliasEffects` on the ref's alias instead, its rows guarded as a
+  who-must-live window is: IfStageDone(prerequisite), IfStageAtMost(until - 1), then SetStageIfRunning(sets), its label
+  carrying `until=<stage>`. Its `On` names the event the vanilla script of the kind hooks: left out for a death
+  (OnDeath), 1 for a take (OnContainerChanged into the player), 2 for a use (OnActivate by the player), 3 for a book's
+  use (OnRead);
 - `quest_stage` (another form's quest): two guarded rows on that quest's stage, IfStageDone(prerequisite) then
   SetStageIfRunning(sets).
 
@@ -328,7 +330,7 @@ hint.
 | the record's `topics` (`kind` greeting or speaks-first; an answer is a reply of a written question) | lines, in the record's order (the engine says the first that holds); words from `story/data/quest_lines/<code>.json` (a topic's `infos`, or one info written as `prompt` and `lines`; variant `main` for the line, `fail` for its fallback; any other variant is refused as `variant`: words said under another condition are a topic of their own with that condition), else the written `dialogue_line` rows, else the `intent` as a gist; a speaks-first topic's first line is also its one speaks-first line |
 | every row of the record's `placements` | `refs`, with its `lock`, `owner`, `count`, `level`, `carriedBy`; an existing actor's or door's `at` from the census; the `name` the player sees (the row's, else the thing's, else the cast's, else the census's) |
 | the record's things' `name` and `text` for items that are not refs | `names`, `texts` |
-| the cells the refs stand in and the doors lead to | `places`: the census's name (a cell's own, else its settlement's: the designed place it lands as, else BM&V's map marker, else the settlement), a row's `placeName` over it; a door into a worldspace's persistent cell is named by the grid square it opens on; refused as `place name` when nothing names it |
+| the cells the refs stand in and the doors lead to | `places`: the census's name (a cell's own, else its settlement's: the designed place it lands as, else BM&V's map marker, else the settlement), a row's `placeName` over it; a door into a worldspace's persistent cell is named by the grid square it opens on; refused as `place name` when nothing names it. A cell more than one quest names takes one neutral name true of all of it, as a `placeName` in each record (the builder refuses two forms naming one interior differently) |
 
 Refused, each with its hint: walking into or standing in a place (`inZone`, `inSettlement`, `inCell`, `inRegion`,
 `discovered`); the clock (`timeOfDay`, `daysSince`, dates, seasons, weather, tide, `startTimer`); being seen

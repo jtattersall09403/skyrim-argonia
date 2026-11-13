@@ -1,0 +1,7 @@
+1. Nothing is active in my journal, and Never-Sold has no more work for now. I think the game wants me to come back later for another Chainbreakers job, or to go looking for the dead levels I heard about. As far as I can tell, there is nothing left to do right now.
+
+2. I work for the Chainbreakers, and Never-Sold in particular. She named me one of them and paid me in full. I took the jobs because they paid and because ending an Owing seemed a decent cause. After the first job, though, I'm not sure how clean that cause is. She admitted herself that how I did it wasn't something to thank me for.
+
+3. The most confusing stretch was early on, when the vocabulary came at me all at once: Owing, leaves, count-box, put under, the Rose. I had to piece it together from several conversations. The other confusing part was the Restoration and Alchemy options with Seven-Floods. They looked like real choices, but nothing I tried worked, and I got no hint about what would have worked or why.
+
+4. I'd tell the writer the moral weight and the whodunit are the best parts. Making the gentle-sounding prisoner the killer was a good twist. Seven-Floods turning out to be Rows-For-Another's mother, right after I'd sent her daughter away, hurt in the right way. Two things I'd fix. Give a failed skill or dialogue option some feedback, such as a line about what she needs, so it doesn't feel like a dead button. And explain the Owing terms earlier and more plainly. I'd also like to see Mends-Nets face some consequence, since I left that hanging.

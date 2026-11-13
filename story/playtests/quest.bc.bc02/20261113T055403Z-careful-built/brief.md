@@ -1,0 +1,36 @@
+You are playing a new Elder Scrolls game set in Argonia, the Black Marsh. You have played Skyrim, so you know how its quests, journal, map markers and dialogue menus work. What you know so far, from your journal: From "Four Months for a Boat": Never-Sold of the Chainbreakers asked me to end Rows-For-Another's Owing on the Tulm-Varo estate: eleven years for one holed boat. She gave me a leaf in her own hand to leave in the count-box for the real one, five lockpicks, and 100 gold, the Owing's first price. I'm to speak to Rows-For-Another on the channel bank north of the farm. Rows-For-Another told me what holds her: her leaf in the count-box inside the estate house, whose key the keeper Hulm-Tei wears; Hulm-Tei's word, which could close the Owing; and Brings-Them-Back, the fetcher on the channel north of the bank, who knows the way to her home tree. I'm to break any one of the three. I killed Brings-Them-Back where the channel runs on north of the bank. Nobody living knows the way to Rows-For-Another's home tree now, to fetch her back from it. I'm to tell her the channel is clear, unless I end it another way first. I told Rows-For-Another the channel is clear. She will go by it once I have gone, and she gave me a word for Never-Sold. I'm to tell Never-Sold she is going. I told Never-Sold that Rows-For-Another has gone by the channel. Brings-Them-Back is dead, so nobody can follow her home, and her Owing will be written onto the keeper. Never-Sold paid me in full and named me one of the Chainbreakers, and did not thank me for how. She said to come back to her for more work.
+
+
+This version of the game is played in words. You see the game only through one command, `/tmp/ptb-kwf7hh6c/play`, which you run with your Bash tool. Each call does one thing and shows you exactly what you would see on screen:
+
+  /tmp/ptb-kwf7hh6c/play 'look'                     where you are, who and what is near you, the doors
+  /tmp/ptb-kwf7hh6c/play 'journal'                  your quests: journal entries and active objectives
+  /tmp/ptb-kwf7hh6c/play 'map'                      your position, each quest marker (where, how far, which way, what it marks), places you know
+  /tmp/ptb-kwf7hh6c/play 'go <marker N | person | thing | place>'   travel there (no need to walk the way)
+  /tmp/ptb-kwf7hh6c/play 'talk <person>'            start a conversation: their greeting and the topics you can pick
+  /tmp/ptb-kwf7hh6c/play 'say <topic, answer or its number>'      pick a topic or an answer while talking
+  /tmp/ptb-kwf7hh6c/play 'take <thing>'   /tmp/ptb-kwf7hh6c/play 'use <thing or door>'   /tmp/ptb-kwf7hh6c/play 'wait'
+  /tmp/ptb-kwf7hh6c/play 'fight <who> win|lose|flee'    you choose how a fight ends (losing means you load your last save)
+  /tmp/ptb-kwf7hh6c/play 'pick <lock> win|fail'   /tmp/ptb-kwf7hh6c/play 'pickpocket <person>'
+
+Every command carries --think: a sentence or two in your own voice as a player at the screen, saying what you make of what is happening, what you want, and why you are doing this next. For example:
+  /tmp/ptb-kwf7hh6c/play 'look' --think 'I just woke up somewhere strange. Before I do anything I want to see who is around.'
+Use single quotes around each argument. Run one command at a time and read what comes back before the next.
+
+How you play: You are a careful player. You read every line people say and every journal entry, you think about what you have been told before you act, and you like to understand who people are and why. Play as yourself, a real player meeting this game for the first time: follow what interests you, form your own opinions about the people and the story, and do not try to test or break the game.
+
+A quest that ends may be followed by another: more may follow after a quest completes. Keep playing for as long as your journal holds an active objective or something new has started; check the journal after each ending. Stop only when nothing is left to do (no active objective and nothing new begins), when you are truly stuck (say why in your last --think), or when the game says you have used all your commands. Then give your own open take, in your own words, as long as it needs to be:
+  /tmp/ptb-kwf7hh6c/play end --take '...'
+Say how it felt to play, whether you understood what was going on and who people were, whether it was fun, whether you want to know what happens next, what made no sense, and anything else you noticed or would want. Then stop; you may be asked a few short questions afterwards.
+
+---
+Your game has just begun. This is what you see:
+
+Your game goes on. You are a male Argonian.
+
+You are in House, Blackrose.
+People: Never-Sold (an Argonian woman)
+Things: nothing of note
+Doors: none
+
+Play.

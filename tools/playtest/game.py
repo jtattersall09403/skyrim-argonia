@@ -108,6 +108,7 @@ class Game:
         self.by_editor = {f["quest"]["editor_id"]: f["quest"]["id"] for f in forms}
         self.world = world
         self.strict = strict
+        self.quiet = False                  # the walker's: a move shows no `look` (it reads states, not screens)
         for f in forms:
             errs = validate.errors(f)
             if errs:
@@ -576,6 +577,9 @@ class Game:
 
     def _find(self, text, pool) -> tuple[str | None, str | None]:
         """An entity among `pool` by the name the player typed: exact, then a unique start, then a unique part."""
+        t = text.lower().strip().removeprefix("the ").strip()
+        if t.startswith("#"):                # the walker's way: the key itself, no names needed
+            return next((k for k in pool if k.lower() == t[1:]), None), None
         return self._find_in(text, [(self.label(e, pool), e) for e in pool])
 
     def label(self, e, pool) -> str:
@@ -735,8 +739,8 @@ class Game:
                 return f"There is no marker {i} on your map."
             target, travel = self._pos(marks[i - 1][2]), "marker"
         if target is None:
-            pool = [e for e in self.ents if self.ents[e]["kind"] != "marker" and self._on(e) and e not in self.s["taken"]
-                    and self._pos(e)]
+            pool = [k for k in self.ents if (not a.startswith("#") or k.lower() == a[1:]) and
+                    self.ents[k]["kind"] != "marker" and self._on(k) and k not in self.s["taken"] and self._pos(k)]
             e, err = self._find(arg, pool)
             if err:
                 return err
@@ -774,7 +778,7 @@ class Game:
         self.s["pos"] = dict(target)
         self.s["opened"] = []
         self._visit()
-        return "\n".join([how, self.look()] + self._speaks_first())
+        return "\n".join([how] + ([] if self.quiet else [self.look()]) + self._speaks_first())
 
     def _shut(self, target) -> str | None:
         """Going into another interior: when every door of the run that leads there is locked and no key of one is
@@ -989,7 +993,7 @@ class Game:
                 self.s["pos"] = dict(dest)
                 self.s["opened"] = []
                 self._visit()
-                out += [f"You go through {self.name(e)}.", self.look()]
+                out += [f"You go through {self.name(e)}."] + ([] if self.quiet else [self.look()])
             else:
                 out.append(f"You open {self.name(e)}.")
         elif e in self.holders:             # opening an owned container is no crime; taking from it is

@@ -1,6 +1,9 @@
-{"quest_id":"quest.bc.bc01","ord":0,"value":"BONDAGE"}
-{"quest_id":"quest.bc.bc02","ord":0,"value":"BONDAGE"}
-{"quest_id":"quest.bc.bc03","ord":0,"value":"BONDAGE"}
+{"quest_id":"quest.bc.bc01","ord":0,"value":"THEFT"}
+{"quest_id":"quest.bc.bc01","ord":1,"value":"BONDAGE"}
+{"quest_id":"quest.bc.bc02","ord":0,"value":"EXPEDITION"}
+{"quest_id":"quest.bc.bc02","ord":1,"value":"BONDAGE"}
+{"quest_id":"quest.bc.bc03","ord":0,"value":"THEFT"}
+{"quest_id":"quest.bc.bc03","ord":1,"value":"BONDAGE"}
 {"quest_id":"quest.bc.bc04","ord":0,"value":"DISPUTE"}
 {"quest_id":"quest.bc.bc04","ord":1,"value":"BONDAGE"}
 {"quest_id":"quest.bc.bc05","ord":0,"value":"RITE"}

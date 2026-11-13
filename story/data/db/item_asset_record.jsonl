@@ -58,6 +58,7 @@
 {"item_id":"item.ebony-ingot","ord":0,"value":"IngotEbony"}
 {"item_id":"item.ectoplasm","ord":0,"value":"Ectoplasm"}
 {"item_id":"item.eidar-cheese-wheel","ord":0,"value":"FoodCheeseWheel02A"}
+{"item_id":"item.elven-dagger","ord":0,"value":"ElvenDagger"}
 {"item_id":"item.fine-boots","ord":0,"value":"ClothesFineBoots01"}
 {"item_id":"item.fine-bowl","ord":0,"value":"GlazedBowl02"}
 {"item_id":"item.fine-clothes","ord":0,"value":"ClothesFineClothes01"}
@@ -104,6 +105,7 @@
 {"item_id":"item.iron-dagger","ord":0,"value":"DummyDagger"}
 {"item_id":"item.iron-dagger","ord":1,"value":"IronDagger"}
 {"item_id":"item.iron-mace","ord":0,"value":"IronMace"}
+{"item_id":"item.iron-shield","ord":0,"value":"ArmorIronShield"}
 {"item_id":"item.iron-sword","ord":0,"value":"IronSword"}
 {"item_id":"item.iron-waraxe","ord":0,"value":"IronWarAxe"}
 {"item_id":"item.jazbay-grapes","ord":0,"value":"JazBay"}
@@ -149,7 +151,6 @@
 {"item_id":"item.rock-warbler-egg","ord":0,"value":"BirdEgg01"}
 {"item_id":"item.roll-of-paper","ord":0,"value":"PaperRoll"}
 {"item_id":"item.salt-pile","ord":0,"value":"SaltPile"}
-
 {"item_id":"item.saltrice-flatbread","ord":0,"value":"SaltriceFlatbread"}
 {"item_id":"item.saltrice-noodles","ord":0,"value":"SaltriceNoodles"}
 {"item_id":"item.saxhleel-axe","ord":0,"value":"EnchSaxhleelWarAxeSparks04"}
@@ -202,6 +203,7 @@
 {"item_id":"item.steel-greatsword","ord":0,"value":"SteelGreatsword"}
 {"item_id":"item.steel-ingot","ord":0,"value":"IngotSteel"}
 {"item_id":"item.steel-mace","ord":0,"value":"SteelMace"}
+{"item_id":"item.steel-scimitar","ord":0,"value":"Scimitar"}
 {"item_id":"item.tankard","ord":0,"value":"BasicTankard01"}
 {"item_id":"item.taproot","ord":0,"value":"Taproot"}
 {"item_id":"item.tee-lel","ord":0,"value":"TeeLel"}

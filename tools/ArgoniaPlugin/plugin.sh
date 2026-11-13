@@ -26,7 +26,7 @@ spriggit=("$HOME/.argonia/spriggit/0.41.0/Spriggit.CLI")  # pinned in infra/buil
 spr=(-p Spriggit.Yaml -v 0.41.0)
 yaml=plugin/Argonia; esp=${ARGONIA_ESP:-out/Argonia.esp}; bin=out/tools/ArgoniaPlugin
 py=$(ls "$HOME/.argonia/venv/bin/python" 2>/dev/null || echo python3)
-rewriting=quest.bc.bc01,quest.bc.bc02,quest.bc.bc03  # quests being rewritten whole (the Chainbreakers, 2026-11-13): the seed may leave these out
+rewriting=  # quests being rewritten whole (comma-separated ids): the seed may leave these out
 forms() { rm -rf out/questform; "$py" -m tools.questform compile --all --out out/questform --owed-ok >/dev/null; }  # every record that fits
 tool() { mkdir -p "$HOME/.argonia"; flock -o "$HOME/.argonia/dotnet-build.lock" dotnet build -c Release -o "$bin" tools/ArgoniaPlugin >/dev/null && dotnet "$bin/ArgoniaPlugin.dll" "$@"; }
 build() {

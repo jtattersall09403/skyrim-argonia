@@ -1,0 +1,7 @@
+1. Nothing, as far as I can tell. My journal had no active objective and the map showed no new markers after Never-Sold paid me, so the quest looks finished. If the game continues, I'd expect the Chainbreakers to give me another job, since she named me one of them.
+
+2. The Chainbreakers, and in practice Never-Sold, who keeps their house in Blackrose. She hired me, paid me in full, and named me one of them. I did the work for the pay, and I ended up working for the group the same way. I don't know much about what they want beyond ending Owings, and I never asked.
+
+3. Not knowing what the "three things that hold her" meant in practice. Rows-For-Another listed them, and I picked the one that was quickest to follow on the marker, which was killing Brings-Them-Back. I didn't understand the other options well enough to weigh them. I also wasn't sure why the line about Never-Sold not thanking me for how I did it landed the way it did, until I realized the quiet disapproval was the game's comment on my choice.
+
+4. The ending line is strong, so keep it. But the game moved me toward the violent route with very little friction. The marker took me straight to the fetcher, and the count-box leaf and Hulm-Tei's word felt like background. If you want the choice to matter, make the alternatives more visible in the objective text, or let characters react to them before I commit. I'd also like some hint of what comes next once the quest closes, so the end doesn't feel like a dead stop.

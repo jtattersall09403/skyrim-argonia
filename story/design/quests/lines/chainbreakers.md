@@ -236,7 +236,7 @@ every other hand on the estate. Never-Sold knows this, because she was that keep
      have carried worse than a boat-hand." Below 50: "A true count is the only thing between me and the mud."
   2. *his leaf held*: "I have your leaf." He takes it back, strikes hers and says the damp had his. He is free of
      the estate tonight, and the shortfall will be shared among the dozen hands who stay.
-  3. *the long purse*: the whole of what it has grown to, 1,500 gold and no first price. The estate is paid and
+  3. *the long purse*: the whole of what it has grown to, 1,000 gold and no first price. The estate is paid and
      nobody carries anything.
 - *The hand (Speech, coin or a fight).* Brings-Them-Back looks away for Speech 35 or 150 gold (a number). Told
   "Then I go through you", he attacks, alone and hard. Bought, he will still know the way to her tree. Dead, nobody
@@ -293,7 +293,7 @@ afterwards working out that the patron knew.
 | get the keeper's key | Pickpocket | a key carried by a person; Skyrim's own pickpocket |
 | open the count-box | Lockpicking (Adept), Sneak | a container with a lock level, a key and an owner; fixed contents |
 | take her leaf | Sneak (theft, seen or not) | taking a named thing sets a stage; the stage takes an item |
-| close it by the keeper's word | Speech 50, or the keeper's leaf held, or 1,500 gold | line conditions: skill, thing held, gold; results: take gold and items, set a number and a stage |
+| close it by the keeper's word | Speech 50, or the keeper's leaf held, or 1,000 gold | line conditions: skill, thing held, gold; results: take gold and items, set a number and a stage |
 | clear the channel | Speech 35, 150 gold, or a weapon skill or Destruction | line conditions; a line sets a number; a line turns its speaker hostile; a line checks he is dead |
 | she goes | none | a line in another cell switches a person off |
 
@@ -554,7 +554,7 @@ step, and one reader given the ceiling and the outlines.
    reckoner's satchel in a swamp of beasts, so the line runs box, swamp, house. That one change answers the single
    skeleton, the talking room, the fighter with nothing to do and part of the thin rewards.
 2. *Nobody gets out free, and a death buys something.* The keeper's-leaf way in BC01 now spreads the shortfall over
-   the hands who stay; the persuaded keeper carries it knowingly; the purse is 1,500. A dead fetcher lets
+   the hands who stay; the persuaded keeper carries it knowingly; the purse is 1,000. A dead fetcher lets
    Rows-For-Another go home, which a bought one does not. BC03's purse is 1,000 and the Broker's chest holds almost
    nothing. Section 1 says it as the faction's rule.
 3. *BC02's mystery no longer solves itself.* Both of the young held can recite the speech; the free clue is how the
@@ -572,6 +572,6 @@ step, and one reader given the ceiling and the outlines.
 
 **For a second round to check.** Whether BC02 now plays as an expedition with a judgement at the end, and whether a
 player who skips the swamp still feels they did something. Whether the leaf-held way in BC01 reads as a real cost
-or as a penalty for cleverness. Whether 1,000 and 1,500 gold read as "possible, and dear". Whether the opening
+or as a penalty for cleverness. Whether 1,000 gold reads as "possible, and dear". Whether the opening
 topics are now short enough for the impatient. Whether the working-stage tables hold when a fresh deliverability
 reader tries each order of legs. Whether readers still split three ways on whom to free.

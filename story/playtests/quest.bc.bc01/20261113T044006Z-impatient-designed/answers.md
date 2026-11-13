@@ -1,0 +1,7 @@
+1. Nothing, as far as I can tell. My journal showed no active objective after I handed the leaf to Never-Sold and got paid. If anything, I could go back to Rows-For-Another to see how she took the swap, or ask Never-Sold whether she has another job. Neither is marked, so I'd just wander and see what turns up.
+
+2. Never-Sold, in a loose sense. She gave me the job and paid me, so she's the closest thing to an employer I have. I don't feel tied to her, though. It was a one-off errand, and I don't really know why she wanted the leaf taken or what she gets out of it.
+
+3. The Owing and Hist lore in the setup talk. It was a big wall of text, I skimmed it, and I never understood how Rows-For-Another was "held" or what that meant for the people involved. The leaf twist confused me too. I knew what to do, but I didn't grasp what the swap meant to the people in it. I didn't ask, so that's partly on me.
+
+4. The quest structure is good: a clear job, a marker, a key, a box, a payoff. But the theft was too easy. "Unseen" worked on the first try, and the Adept lock never mattered, so there was no tension. Give the stealth some risk. Cut the opening exposition down, or let me get it in small pieces during play. And give the swap a consequence I can see, such as Rows-For-Another reacting, so the choice feels like it mattered. Then tell me what comes next, with a new marker or hook, so I'm not left with an empty journal.

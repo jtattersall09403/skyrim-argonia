@@ -1,0 +1,7 @@
+1. Nothing, as far as I can tell. The journal showed no active objective after I gave Never-Sold the leaf, so I assumed the quest was done. If there is more, I guess it would come from talking to Never-Sold again or looking around for other Chainbreakers work, but the game gave me no marker or hint.
+
+2. Probably the Chainbreakers, through Never-Sold, who gave me the job of freeing Rows-For-Another from her Owing. I did it because it was the only quest on offer and the markers led straight there. I never learned much about why the Chainbreakers do this, so I was never sure what they want from me beyond that job.
+
+3. The theft prompt and the missing option. The game asked me to choose seen or unseen as if I were deciding the outcome, which felt strange. Then I expected a way to hand back Hulm-Tei's leaf along with the 100 gold, but that choice never appeared in his dialogue. I had to guess what would happen to the debt, and I only realised it had landed on him after I'd already done it.
+
+4. The ideas are good, especially that freeing one person shifts the debt onto someone else. Make that cost visible before the player commits, perhaps through a line from Rows-For-Another or Hulm-Tei, or a journal note. If you mention a way to repay or hand back, make sure it shows up in the menu. Remove or explain the seen/unseen prompt, and give a short plain explanation of Owing, leaf and held going grey early on. Finally, tell the player at the end whether the quest is finished and whether there is more to come, because I was left unsure.

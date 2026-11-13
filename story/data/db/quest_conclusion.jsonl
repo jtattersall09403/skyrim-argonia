@@ -1,6 +1,7 @@
-{"quest_id":"quest.bc.bc01","ord":0,"id":"c1","statement":"The Owing is true at every line and still unjust."}
-{"quest_id":"quest.bc.bc02","ord":0,"id":"c1","statement":"Only one of the three can be freed, and the player decides which."}
-{"quest_id":"quest.bc.bc03","ord":0,"id":"c1","statement":"Ussa-Rekh freed them and holds them still."}
+{"quest_id":"quest.bc.bc01","ord":0,"id":"c1","statement":"The keeper who holds the count is held by it too, and whatever the player takes from the box lands on someone."}
+{"quest_id":"quest.bc.bc01","ord":1,"id":"c2","statement":"Never-Sold knew the estate's box from the inside."}
+{"quest_id":"quest.bc.bc02","ord":0,"id":"c1","statement":"The gentle one nursing the old woman is the killer, and the old woman wants her taken anyway."}
+{"quest_id":"quest.bc.bc03","ord":0,"id":"c1","statement":"The slaver is a poor old man whose hiring buys the next eleven free, and Never-Sold was what he bought."}
 {"quest_id":"quest.local.lf83","ord":0,"id":"c1","statement":"The well keeps failing because stone cannot hold in the moving clay bank: its lining has cracked and been mended every year, and the ford seeps in through the new crack."}
 {"quest_id":"quest.local.lf83","ord":1,"id":"c2","statement":"Clay, the landing's own craft, would hold the well where stone cracks, so the landing could mend it without building in stone."}
 {"quest_id":"quest.local.lf83","ord":2,"id":"c3","statement":"The landing's charge was set in answer to the station's rise, and the two together are driving travellers to wade at the crocodile's pool at night."}

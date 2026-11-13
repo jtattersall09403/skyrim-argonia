@@ -616,15 +616,82 @@ def test_reach_reports_each_ending_and_where_paths_stop():
     assert any("ending 90 not reached" in b for b in walk.unreached(rows))
 
 
-def test_the_reach_gate_holds_to_its_owed_list(tmp_path, monkeypatch):
+def test_the_reach_ratchet_takes_off_an_owed_quest_now_in_reach(tmp_path, monkeypatch):
     from tools.playtest import walk
     owed = tmp_path / "owed.json"
-    owed.write_text(json.dumps({"quests": {"quest.a": "why"}}))
+    owed.write_text(json.dumps({"_about": "x", "quests": {JQ: "why", "quest.other": "why"}}))
     monkeypatch.setattr(walk, "OWED", owed)
-    assert walk.gate(["quest.a: no completed ending can be reached"]) == []
-    assert walk.gate(["quest.b: no completed ending can be reached"]) == [
-        "quest.b: no completed ending can be reached (and it is not on tools/playtest/reach_owed.json)",
-        "quest.a now reaches a completed ending: take it off tools/playtest/reach_owed.json"]
+    assert walk.owed() == {JQ: "why", "quest.other": "why"}
+    rows = walk.reach([jar_form()], world=jar_world(jar_form()), only=set(walk.owed()))
+    assert walk.ratchet(rows) == [JQ]
+    assert walk.owed() == {"quest.other": "why"}
+    assert walk.reach([jar_form()], world=jar_world(jar_form()), skip={JQ}) == []
+
+
+def chain_quest(qid, who, lines, endings, start_conditions=()):
+    """A quest of one person: stage 10 from a new game, each line (prompt, conditions, results) said at 10 setting
+    its ending."""
+    return {
+        "version": 1,
+        "quest": {"id": qid, "editor_id": "ARG_" + qid.split(".")[-1], "name": qid.split(".")[-1].upper(),
+                  "kind": "minor", "start": {"by": "game", "stage": 10}},
+        "stages": [{"number": 10, "shown": True, "journal": "Begun.", "ending": "none", "results": []}] +
+                  [{"number": n, "shown": True, "journal": "Ended.", "ending": "completed", "results": rs}
+                   for n, rs in endings.items()],
+        "objectives": [{"number": 10, "text": "Speak to them.", "shown_at": [10], "completed_at": list(endings),
+                        "targets": [who]}],
+        "refs": [{"id": who, "kind": "person", "enabled": True, "name": who.split(".")[-1].capitalize(),
+                  "at": dict(AT), "placement": {"base": {"kind": "template_person", "id": "160E6A:Black Marsh.esm"}}}],
+        "lines": [{"id": f"{who}.{i}", "speaker": who, "kind": "topic", "prompt": p, "text": "So.", "written": True,
+                   "conditions": list(start_conditions) + list(cs), "results": [{"do": "set_stage", "stage": n}],
+                   "first_stage": 10, "last_stage": 10, "answers": []}
+                  for i, (p, cs, n) in enumerate(lines)],
+        "triggers": [], "must_live": []}
+
+
+def test_a_later_quest_starts_once_per_distinct_state_the_earlier_ones_leave():
+    """B's four endings leave two states C can tell apart (its flag 1 or 2; the gold differs, which C never reads):
+    C is walked twice, not four times, and every way through still reaches all of C."""
+    from tools.playtest import walk
+    a = chain_quest("quest.test.a", "npc.ada", [("Done.", [], 90)], {90: [{"do": "give_gold", "amount": 5}]})
+    b = chain_quest("quest.test.b", "npc.bel", [(f"End {n}.", [], n) for n in (91, 92, 93, 94)],
+                    {n: [{"do": "set_number", "number": "flag.test.b", "value": 1 if n < 93 else 2},
+                         {"do": "give_gold", "amount": n}] for n in (91, 92, 93, 94)},
+                    start_conditions=[{"is": "stage_done", "quest": "quest.test.a", "stage": 90}])
+    c = chain_quest("quest.test.c", "npc.cal",
+                    [("One.", [{"is": "number_compare", "number": "flag.test.b", "op": "=", "value": 1}], 90),
+                     ("Two.", [{"is": "number_compare", "number": "flag.test.b", "op": "=", "value": 2}], 91)],
+                    {90: [], 91: []})
+    forms = [a, b, c]
+    assert walk.order("quest.test.c", {f["quest"]["id"]: f for f in forms}) == ["quest.test.a", "quest.test.b",
+                                                                              "quest.test.c"]
+    rows = walk.reach(forms, world=jar_world(*forms), sheets={"able": walk.ABLE})
+    assert walk.starts(rows) == {"quest.test.a": 1, "quest.test.b": 1, "quest.test.c": 2}
+    # each state opens one of C's endings: the other is named as not reached from it, on each of its ways through
+    assert sorted(x.split(": ending")[0][-2:] + x.split(": ending")[1][:3] for x in walk.unreached(rows)) == [
+        "91 91", "92 91", "93 90", "94 90"]
+    c_rows = [r for r in rows if r["quest"] == "quest.test.c"]
+    assert len(c_rows) == 4 and all(r["completes"]["able"] for r in c_rows)
+    assert {tuple(map(tuple, r["walked"]["able"])) for r in c_rows} == {
+        (("quest.test.a", 90), ("quest.test.b", 91)), (("quest.test.a", 90), ("quest.test.b", 93))}
+
+
+def test_a_richer_state_is_covered_by_the_poorer_one_that_reaches_all():
+    """Two endings of B leave only more or less gold, which C reads as "at least": the poorer is walked; when it
+    reaches everything the richer is not walked again."""
+    from tools.playtest import walk
+    a = chain_quest("quest.test.b", "npc.bel", [("Poor.", [], 91), ("Rich.", [], 92)],
+                    {91: [{"do": "give_gold", "amount": 10}, {"do": "set_number", "number": "flag.test.b", "value": 1}],
+                     92: [{"do": "give_gold", "amount": 500}, {"do": "set_number", "number": "flag.test.b", "value": 1}]})
+    c = chain_quest("quest.test.c", "npc.cal",
+                    [("Pay.", [{"is": "gold_at_least", "gold": 1005},
+                               {"is": "number_compare", "number": "flag.test.b", "op": "=", "value": 1}], 90)], {90: []})
+    rows = walk.reach([a, c], world=jar_world(a, c), sheets={"able": walk.ABLE})
+    assert walk.starts(rows)["quest.test.c"] == 1 and walk.unreached(rows) == []
+    c["lines"][0]["conditions"][0]["gold"] = 1200        # only the richer can pay: both are walked, the poorer fails
+    rows = walk.reach([a, c], world=jar_world(a, c), sheets={"able": walk.ABLE})
+    assert walk.starts(rows)["quest.test.c"] == 2
+    assert [b.split(":")[0] for b in walk.unreached(rows)] == ["quest.test.c, after quest.test.b 91"] * 2
 
 
 # -- what a compiled form carries: places, texts, item ids, if_held, start_quest ------------------------------------

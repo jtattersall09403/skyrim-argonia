@@ -311,14 +311,16 @@ any check that did not happen as written.
       the marsh as it now is." and the first quest's journal says "The Dock Keeper is dead. Nobody else can finish the
       block test with me." and it is listed as failed. The message appears once, not again if you load nothing and wait.
 - [ ] **12.12 The opening from a new game** (the game of 12.1 is fine). Make your character in the barge's hold, then go
-      up the stairs and through the door at the top. You come out on the deck of a big ship moored at a pier. Pass: a
-      broker, Buys-The-Months, stands on the deck a step from you (about a metre and a half), facing you, with a quest
-      marker over him, and he speaks first without being asked: your name is not on his work roll, you owe him nothing,
-      and he wants you off his pier. If he does not speak first, speak to him: the same words are there as his first
-      topic. Then the quest has three steps, each with its own marker on the compass at the top of the screen and on the
-      map (M): speak to him; find Nesh-Deeka in Salts-The-Catch's house in Lilmoth (east along the shore, south of the
-      second big ship off Lilmoth's dock; she stands at the far end of the room); hear her out and say you will work for
-      the Veiled Reed. Reply with the step whose marker you could not follow.
+      up the stairs and through the door at the top. You come out on the deck of a big ship moored below Hereguard
+      Plantation, west of Lilmoth. Pass: a broker, Buys-The-Months, stands on the deck a step from the door (about a
+      metre and a half), facing it, with a quest marker over him, and he speaks first without being asked and without
+      walking (there is no walkable ground on the deck, so he stays where he stands): your name is not on his work
+      roll, you owe him nothing, and he does not keep you. If he does not speak first, speak to him: the same words
+      are there as his first topic. Then the quest has three steps, each with its own marker on the compass at the top
+      of the screen and on the map (M): speak to him; find Nesh-Deeka in Salts-The-Catch's house in Lilmoth (east along
+      the shore; the house stands below Lilmoth's dock, south of the second big ship anchored off it, and Nesh-Deeka
+      stands upstairs in it); hear her out and say you will work for the Veiled Reed. Reply with the step whose marker
+      you could not follow.
 - [ ] **12.13 A marker on a thing to fetch** (any game that has reached the main quest's third quest, "The Tree That
       Turned Its Face", or use the console: `setstage ARG_MQ04 30`). Pass: the objective "Take the jars of sap from the
       camp on the dry rise north of the leech water" puts a marker on the compass and the map, and following it brings
@@ -332,12 +334,16 @@ any check that did not happen as written.
       me."
 - [ ] **12.15 One quest of the Night-Reed: "A Dry Hand in a Wet City"** (a new game; walk or take a boat to Soulrest's
       dock). Ask S'Tabi, the Khajiit trader on the dock, "Is there quiet work on this dock?"; he sends you to
-      Tilts-The-Jug inside the house behind him (marked). She gives you three lockpicks and asks for a necklace from a dock
-      thief's strongbox, under the eaves north-west of the house. Pick the lock, or talk the thief round, or pay him
-      sixty gold for the key, and take the necklace (it now looks like a silver necklace with a blue stone). Pass: each
-      step's journal entry says only what you just did, each step has a marker you can follow (the necklace is marked
-      while it is still in the strongbox), and bringing her the necklace pays a hundred gold and sends you to a trapdoor
-      in Lilmoth, whose place is named "The Night-Reed Chapter, Lilmoth" on its door.
+      Tilts-The-Jug inside the house just west of him (marked). She gives you three lockpicks and asks for the Blue
+      Jasper Necklace from the strongbox of a dock thief, Keeps-What-Floats, by the houses at the water's edge. The box
+      is now named "Keeps-What-Floats's Strongbox" when you look at it (no longer a plain "Strong Box") and holds only
+      the necklace. Pick the lock, or talk the thief round, or pay him sixty gold for the key, and take the necklace (a
+      silver necklace with a blue stone). Pass: each step's journal entry says only what you just did, each step has a
+      marker you can follow (the necklace is marked while it is still in the strongbox), and bringing her the necklace
+      pays a hundred gold and sends you on the coast ship to Lilmoth and down the trapdoor on the ruin east of Lilmoth,
+      whose place is named "The Night-Reed Chapter, Lilmoth" on its door. (The Night-Reed's second quest, "The Drowned
+      Lockbox", now names its chest "Drowned Merchant's Lockbox", and the keepsake in it is a small bee statue, no
+      longer a bone figurine.)
 - [ ] **12.16 One local quest: "The River Monster"** (a new game; travel to Helstrom, the walled city in the north of
       Black Marsh, and its river landing). Speak to Okan-Zish, a rafter who stands by the landing's stone tower. Pass:
       he tells you of a crocodile that took a raft, the quest starts with a marker on the crocodile, and the crocodile is
@@ -345,8 +351,30 @@ any check that did not happen as written.
       tells you the crew's own bait drew it, and a bait bucket (a wooden bucket) lies in the shallows beside where the
       crocodile was, with its own marker. Say whether the crocodile went for the crew before you reached it.
 
-The Chainbreakers' three quests are being rewritten and are not in this build; their check follows when they are
-built.
+- [ ] **12.17 The Chainbreakers' first quest, "Four Months for a Boat", by the break-in** (a new game; about half an
+      hour). The Chainbreakers are a small band in Blackrose who free people from an Owing (work owed for a debt).
+      Their leader, Never-Sold, an Argonian woman, stands just inside the door of the Chainbreakers' house on the north
+      side of Blackrose, the walled town in the south-east of Black Marsh (its name is on the map, M). Travel there as
+      you like; with the console, `player.moveto XX80021D` puts you beside her, where XX is Argonia.esp's place in
+      your load order (two hex digits). Ask her "What is the job?". Pass, step by step, each step with a marker on the
+      compass at the top of the screen and on the map:
+      1. She gives you a leaf in her own hand, five lockpicks and 100 gold, and the journal (J) shows "Four Months for
+         a Boat" with "Never-Sold of the Chainbreakers asked me to end Rows-For-Another's Owing...". The marker points
+         to Rows-For-Another on the channel bank north of the farm at the town's north edge.
+      2. Speak to Rows-For-Another. The journal now names three ways (her leaf in the count-box inside the estate
+         house, the keeper Hulm-Tei's word, the fetcher on the channel), and the markers point at her leaf, Hulm-Tei
+         and the fetcher.
+      3. The break-in: Hulm-Tei stands in the estate house on the farm, with his count-box ("Hulm-Tei's Count-Box", an
+         Adept lock) a few steps from him. Lift his key from him (Pickpocket), or pick the box's lock with him and the
+         farm's people about (crouch to sneak: a theft that is seen is a crime). Take Rows-For-Another's Leaf from the
+         box. Pass: Never-Sold's leaf leaves your inventory (you have swapped it for hers), and the journal says that
+         under her leaf lay the keeper's own, with Hulm-Tei's name on it: whatever any leaf comes up short is written
+         onto his, so if you hand hers in, her eleven years fall on him. The marker now points back to Never-Sold.
+      4. Hand her leaf to Never-Sold. Pass: she takes it, pays you and gives you lockpicks, you join the Chainbreakers,
+         and the quest completes with "I gave Never-Sold Rows-For-Another's leaf, and she will read it aloud and burn
+         it. Rows-For-Another is free; her eleven years fall on Hulm-Tei's leaf...", ending "said to come back to her
+         for more work". Asking her "Is there more work?" then starts the second quest, "One Out of the Smoke".
+      Reply with the step that did not happen as written, and whether anyone saw you take the leaf.
 
 ## Done
 
