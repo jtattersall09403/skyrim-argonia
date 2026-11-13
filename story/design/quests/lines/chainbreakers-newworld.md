@@ -569,7 +569,7 @@ killing was done for her.
 
 Found afterwards, each switched on by an ending: **Walks-Far** at Blackrose's boardwalk tavern; **Mends-Nets** at
 Lujei's fish-drying racks; **Seven-Floods** at Lujei's cookhouse. **Nisswo Okeeh-Ra** stands at the ferry's landing post
-throughout, with one line, and moves nothing.
+throughout, with one line and moves nothing.
 
 **The things.**
 
@@ -701,6 +701,7 @@ objective 33 at 33, 34, 35, 36, 38 "Tell one of the three to go" -> walks, mends
 objective 41 at 41, 42, 43, 44 "Tell Never-Sold" -> neversold
 
 line job1 neversold at 0 ask "Is there more work?" if done BC01 88 -> 10 says "three in the lock-up of the Rose's gatehouse; one can be got out; she wants the one held for words; go no further than the gatehouse"
+line job0 neversold at 0 ask "Is there more work?" if done BC01 89 -> 10 says "three in the lock-up of the Rose's gatehouse; one can be got out; she wants the one held for words; go no further than the gatehouse"
 line job2 neversold at 0 ask "Is there more work?" if done BC01 90 -> 10 says "three in the lock-up of the Rose's gatehouse; one can be got out; she wants the one held for words; go no further than the gatehouse"
 line job3 neversold at 0 ask "Is there more work?" if done BC01 91 -> 10 says "three in the lock-up of the Rose's gatehouse; one can be got out; she wants the one held for words; go no further than the gatehouse"
 line job4 neversold at 0 ask "Is there more work?" if done BC01 92 -> 10 says "three in the lock-up of the Rose's gatehouse; one can be got out; she wants the one held for words; go no further than the gatehouse"
@@ -1138,7 +1139,7 @@ deliverability reader was given the ceiling, buildable.md and the outlines with 
 
 - *The player who loves the lore* found it native to the world ("Morrowind's slavery questions rethought for
   Argonians"), caught every seed of the patron's secret by BC02, cared about Seven-Floods, Hulm-Tei, Tsaxi and,
-  after her answer, Never-Sold, and would retell the jailer's own leaf, "Ask me which of my daughters I would
+  after her answer, Never-Sold and would retell the jailer's own leaf, "Ask me which of my daughters I would
   drown" and the book's name appearing. They took the leaf unread, Walks-Far and the Broker's word, and argued
   Mends-Nets and the season worked without strain. Hard to please on: BC01's brief pulling two ways (a leaf to
   steal, a price to pay); not knowing what happens to the two left at the Rose, on which the whole choice hung;
@@ -1148,7 +1149,7 @@ deliverability reader was given the ceiling, buildable.md and the outlines with 
   word and muscle three times, with the killing always dead weight.
 - *The impatient player* skipped the opening topics, went straight to the box and the crocodiles, took the killer
   because she paid best and kept the 600, and would retell the box's last leaf, the crocodile chest and the boss's
-  name in the book. Would join, for the rooms and the rings. Hard to please on: three or four talks before each job
+  name in the book. Would join, because the rooms and the rings are worth having. Hard to please on: three or four talks before each job
   can be touched; in all three quests the fight being the worst-paid and most-scolded way, and Speech gating the
   good endings; the greedy pick being repeatedly the best paid, so that "the moral weight never touched my purse";
   the costs falling on people never met; a rank with no perk; and the local words.
@@ -1205,7 +1206,7 @@ Seven-Floods" because `sketch` reads a name beginning with a number word as seve
   Chainbreakers "the Broker's children" and greets one of their rank more coldly than a stranger. She can die: by
   the player's hand at any time, and by design in BC02's fourth ending. From BC04's offer on, if she is dead, her
   brother **Third-Born Okaw** keeps the gate and will not treat with a Chainbreaker; between her death and that
-  offer nobody at the gate speaks. MQ07 should read with Tsaxi dead (its break-in by the
+  offer the gate has nobody who will talk. MQ07 should read with Tsaxi dead (its break-in by the
   bastion and its fight stand; its bargain is Okaw's to refuse or carry, as that writer rules). This line keeps to
   the gatehouse and, in BC06 only, the yard: the forge, a box beside it, a hatch in the ground that is never opened.
   It asks for nothing in the old warden's office, the vault or the raj-kaal's hall, and never meets the raj-kaal,
