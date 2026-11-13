@@ -31,9 +31,14 @@ dispute, an induction) is what the drama turns on, which the shape routing in se
   <quest id> -o <quest>.yaml`, its entry in `story/design/quests/50-side-quests.md`, its row in
   `story/design/quests/review/walk6-ceiling.md`. Keep its premise, cast and beats.
 - **A new premise** with no row: export a small worked quest of the same group (`quest.local.lq25`) as the shape to
-  fill, and give it a new id and code: `quest.<line-slug>.<code>`, the code two capitals and two digits, the
-  place's prefix with the next number free in the `quest` table (a code or id is never reused); its title and every
-  name it adds are checked against `story/design/quests/86-never-reuse-names.md`.
+  fill, and give it a new id and code. The code is two capitals and two digits: take the prefix the place's quests
+  already use (`db query "SELECT code FROM quest WHERE settlement = '<place id>' ORDER BY code"`; the longest run
+  of one prefix) and the next number free in the whole `quest` table (`... WHERE code = '<code>'` returns nothing); a
+  local quest's id is `quest.local.<code in lower case>`, its `line` `quest.line.local`. A code or id is never
+  reused; the title and every name the quest adds are checked against
+  `story/design/quests/86-never-reuse-names.md`.
+- **Shapes**: the primary shape is what the player's central act is (a cure to find is CONTAMINATION, a quarrel to
+  settle is DISPUTE); up to two more are secondary, from the sixteen in `story/design/quests/index/README.md`.
 - **`foundation`** says in the present tense what the quest is built on (the outline, the old design, or the premise
   alone) and what it keeps.
 - **Read the world it stands on**: the place's facts (`fact` by `place_id`, in `ord` order), its people
@@ -108,8 +113,9 @@ general.md's table of dramatic jobs, never scripted.
    with a reward in proportion), a who-must-live person, or a killing marked the player's choice. A confrontation is a
    line whose result turns its speaker hostile, or a person placed hostile.
 7. **Switching a person or thing on or off** is the result of a line, a take or a use only, for a reference in
-   another cell from the speaker or the thing (an interior other than theirs, or across the line between interior and
-   exterior), or, both outdoors, at least 18,000 units from it; nothing appears or vanishes in view.
+   an interior other than the speaker's or the thing's, or across the line between interior and exterior, or, both
+   outdoors, at least 18,000 units from it (a town's streets are one exterior: a person who "went ahead" waits in an
+   interior); nothing appears or vanishes in view.
 8. **One person may speak first**: placed a step from the door the player arrives through, they greet the player
    there (the quest's one force-greet), with a marker on them and the same line open as a topic.
 9. **Every check is its own line with its fallback**: the line that passes, then the line said when the check fails,
@@ -153,8 +159,8 @@ The sections are those of [quest-record.md](quest-record.md) §2.
 7. **`shapeData`** for each shape.
 8. **Stages**: journal, objectives with targets, `successors` and `failForward` with their gates, `onEnter`,
    `ending`, `actions` or `approaches`, `learns`, `directions`, `hidden` for the stage the quest waits at before its
-   opening line. Conditions and actions only from the vocabulary (`condition_term` rows;
-   `story/design/quests/85-condition-vocabulary.md`); a term the compiler refuses is outside the ceiling.
+   opening line. Conditions and actions only in the terms the compiler accepts (quest-record.md §intro; a use or a
+   read is a `thing_hook` row there); a term the compiler refuses is outside the ceiling.
 9. **Endings**: two or more with real costs, each saying where the player will see it; fixed rewards.
 10. **Journal text** is each stage's `journalText` in the record, its one home; a rewrite from the journal brief is
     written back there.
@@ -194,7 +200,8 @@ Run until all pass, before anyone else reads the quest:
    rules" says what each means).
 4. `python3 -m tools.playtest reach out/<lane>/questform/<quest id>.json` (with the forms of the quests it waits on):
    every stage and ending reached.
-5. `python3 -m tools.argonia_world.adaptation_check`: no `record` or `wiring` line for this quest.
+5. `python3 -m tools.argonia_world.adaptation_check | grep <quest id>` and `make questtext`: no line for this
+   quest (the hidden stage 0 a quest waits at is expected).
 6. A quest listed in `story/data/questform_owed.json` that now fits: `python3 -m tools.questform owed --write`.
 
 ## 7. Hand on

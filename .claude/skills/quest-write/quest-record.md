@@ -8,9 +8,14 @@ format and no second copy: `python3 -m tools.argonia_world.quest_record import Q
 record rows with the view's (refusing the whole record on any unknown field, wrong type, dangling key, unknown
 lookup value or failing named check), and `quest_record export <quest id>` rebuilds the view from the rows.
 Every YAML path maps to one column or child table (`tools/argonia_world/quest_view.json`). Conditions and actions
-are written only in the condition vocabulary (`condition_term` rows with their argument shapes;
-`story/design/quests/85-condition-vocabulary.md` explains each); a term it lacks is added first, never written
-in prose. Worked records: `quest_record export quest.main.mq03` (main) and `quest_record export
+are written only in the terms the compiler accepts: [quest-form](../../../docs/design/quest-form.md) "Compiling a
+quest record" lists each with what it becomes, and every other term (`condition_term` holds more, explained in
+`story/design/quests/85-condition-vocabulary.md`) is refused as outside the ceiling. A gate on a person dead is
+`{not: {npcAlive: <npc>}}`, the one `not` a gate may carry.
+
+**Using or reading a thing** moves a stage through a hook: a row in `story/data/db/thing_hook.jsonl`
+(`quest_id`, `thing_id`, `hook` `activate` or `read`, `sets_flag`), and a successor whose `when` is that `flag`; the
+compiler makes it a use trigger on the thing. `python3 -m tools.argonia_world.db check` validates the row. Worked records: `quest_record export quest.main.mq03` (main) and `quest_record export
 quest.local.lq25` (local).
 
 ## 1. The imported quest object (field names as in the import)
@@ -92,7 +97,7 @@ base. A thing two quests place (MQ01 puts out the lockbox MQ03 uses) is stated a
 
 The written words of a quest's topics live in `story/data/quest_lines/<code>.json` (the code in lower case), one
 entry per topic id: `{"speaker": <npc id>, "infos": [{"variant": "main" | "fail", "prompt": ..., "lines": [...],
-"facts": [<fact ids stated>]}]}`. `main` is said when the line's conditions hold; `fail` is its fallback, said when its
+"facts": [<fact ids stated>], "replies": [<topic ids>]}]}`. A question lists its answers under `replies`: each is a topic of the record (with its own prompt and results) that the compiler makes an answer in the question's branch. `main` is said when the line's conditions hold; `fail` is its fallback, said when its
 check fails. Words said under another condition are a topic of their own with that condition. Until a topic has an
 entry, the compiler shows its intent as a gist. The lane that runs the dialogue writers writes this file from their
 returns; `python3 -m tools.argonia_world.echoes check` then reads it.

@@ -9,7 +9,8 @@ Before this: [quest-playtest](../quest-playtest/SKILL.md) after dialogue. After 
 plugin, then the owner's walk. The path is in [quest-system](../quest-system/SKILL.md); how a form becomes records is
 [quest-form](../../../docs/design/quest-form.md) "How a form becomes records". No quest has a builder or a script of
 its own: what goes wrong in a build is fixed in the record, or reported to the builder's lane, never worked round in
-one quest. Every step runs on the build VM; the seed and the deploy run under `tooling/job_guard.sh`.
+one quest. Every step runs on the build VM, the machine the agents work on, where the game data and the staged
+load order are; the seed and the deploy run under `tooling/job_guard.sh`.
 
 ## 1. The forms, as one game
 

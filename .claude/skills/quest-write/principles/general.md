@@ -44,7 +44,7 @@ player can see it, music and weather [MW §3; MW §4.4; MW §4.5]. Each dramatic
 | a deadline, pressure, "before it is too late" | a state the player finds already true (the boat half sunk, the eggs already dead), said by the people who live with it; and a choice whose cost is named before it is made [ES P13; TJ P6] |
 | suspense in a theft or a break-in | an owned, locked thing whose key a person carries: Skyrim's own crime system supplies being seen, the bounty and the guard, and the quest never checks it [CD P11; MW §6.3] |
 | a chase, a fight that "breaks out" | a hostile person or creature standing where the player must go, whose death moves the quest; or a line whose result makes its speaker attack [MW §4.6; MW §6.7] |
-| an escort, someone who must come along | the person says they will go ahead and is found there; they are switched off while the player is in another cell and on at the destination; the road's danger is a fight on the way [MW §4.5] |
+| an escort, someone who must come along | the person says they will go ahead and is found there; they are switched off where they stood and on at the destination, each away from the player (another interior, or 18,000 units outdoors); the road's danger is a fight on the way [MW §4.5] |
 | "find the place" | a named thing at the place that the player uses, reads or takes (a body, a marker stone, a note) [MW §4.4] |
 | an event the story needs (a fire, a rising, a raid) | it has already happened and is found, it is told by a witness, or it happens where the player is not and its aftermath is found [MW §6.8] |
 | a hand-over, a fetch, a report | a line gated on the thing being held, however it was got [MW §6.3] |
