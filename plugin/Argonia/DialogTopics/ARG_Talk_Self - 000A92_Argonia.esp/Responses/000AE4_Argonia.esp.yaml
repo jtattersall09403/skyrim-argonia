@@ -1,0 +1,21 @@
+FormKey: 000AE4:Argonia.esp
+Flags: {}
+PreviousDialog: 000AE3:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I am Tzeel-Vaa, guard where Black Rose ends. I have stood here longer than the two beside me have been alive. My father guarded this same post for the same pay.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 0C7250:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Yourself

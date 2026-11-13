@@ -1,0 +1,8 @@
+FormKey: 80027A:Argonia.esp
+EditorID: ARG_BC01_T_3bf6c1fc
+Name:
+  TargetLanguage: English
+  Value: I have your leaf. Take it back with the first price and strike hers. (100 gold)
+Branch: 80027B:Argonia.esp
+Quest: 80021A:Argonia.esp
+SubtypeName: CUST

@@ -1,0 +1,8 @@
+FormKey: 80035E:Argonia.esp
+EditorID: ARG_BC03_T_b73068ed
+Name:
+  TargetLanguage: English
+  Value: Why do you still hold their tokens?
+Branch: 80035F:Argonia.esp
+Quest: 80021C:Argonia.esp
+SubtypeName: CUST

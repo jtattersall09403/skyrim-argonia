@@ -1,0 +1,29 @@
+FormKey: 000B93:Argonia.esp
+Flags: {}
+PreviousDialog: 000B92:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I am a soldier of the levy. The bridge crosses just north of here, and I keep its watch. Benches stand near, one just south-east of here and one just west.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I serve the levy at this bridge, just north of where we stand. Benches stand near, one just south-east of here and one just west.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 08D5EC:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: My trade

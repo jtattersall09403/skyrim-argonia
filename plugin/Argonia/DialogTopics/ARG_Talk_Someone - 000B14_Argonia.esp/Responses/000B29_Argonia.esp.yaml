@@ -1,0 +1,21 @@
+FormKey: 000B29:Argonia.esp
+Flags: {}
+PreviousDialog: 000B28:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Ma-Veesk? Ma-Veesk stands guard at the north-west houses too, just north-north-east of here. Far too serious for my taste, traveller.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 01CD01:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Someone in particular

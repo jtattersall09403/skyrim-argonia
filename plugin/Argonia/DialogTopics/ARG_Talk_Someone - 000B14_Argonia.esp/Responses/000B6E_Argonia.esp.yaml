@@ -1,0 +1,21 @@
+FormKey: 000B6E:Argonia.esp
+Flags: {}
+PreviousDialog: 000B6D:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Shaleem is the person you want. Shaleem is a guard in the north district. He is the best guard in the town. You will usually find Shaleem just south-south-east of here.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 0C729E:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Someone in particular

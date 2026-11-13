@@ -1,0 +1,21 @@
+FormKey: 000AB0:Argonia.esp
+Flags: {}
+PreviousDialog: 000AAF:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I am Tseeta. I sell the village's surplus to whoever walks in from the dock. I took the north side so that I meet buyers before Okeeh-Jas does.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 02A1ED:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Yourself

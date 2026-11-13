@@ -1,0 +1,21 @@
+FormKey: 000B41:Argonia.esp
+Flags: {}
+PreviousDialog: 000B40:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Jaa-Kur keeps to the water's edge south-east of my hut. Xeech-Utsei keeps to the water north-north-east of here. You will find Xeech-Utsei idle.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 084A90:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Someone in particular

@@ -1,0 +1,21 @@
+FormKey: 000AD1:Argonia.esp
+Flags: {}
+PreviousDialog: 000AD0:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I am a soldier of Helstrom's levy, walker. I came out of the marsh to serve. I will go back to it. Until then I watch the bridges from here.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 08D5EB:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Yourself

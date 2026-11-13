@@ -1,0 +1,8 @@
+FormKey: 8002E0:Argonia.esp
+EditorID: ARG_BC02_T_ab1fc3b1
+Name:
+  TargetLanguage: English
+  Value: Who are the three you keep here?
+Branch: 8002E1:Argonia.esp
+Quest: 80021B:Argonia.esp
+SubtypeName: CUST

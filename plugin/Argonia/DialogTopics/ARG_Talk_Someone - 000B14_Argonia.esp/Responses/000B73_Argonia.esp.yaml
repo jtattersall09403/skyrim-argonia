@@ -1,0 +1,21 @@
+FormKey: 000B73:Argonia.esp
+Flags: {}
+PreviousDialog: 000B72:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I watch the guards. Raxa-Tum, the guard at the north edge of Black Rose, is usually just north-east of here. Raxa-Tum is the best guard.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 0C72A8:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Someone in particular

@@ -1,0 +1,21 @@
+FormKey: 000B59:Argonia.esp
+Flags: {}
+PreviousDialog: 000B58:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Owes-Nothing is a soldier of the rising, like me. You will find him just south-east of here. He is slower than I would like.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 0934C5:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Someone in particular

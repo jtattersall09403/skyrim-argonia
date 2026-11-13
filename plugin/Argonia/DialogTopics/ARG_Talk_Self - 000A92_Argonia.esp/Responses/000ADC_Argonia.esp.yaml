@@ -1,0 +1,21 @@
+FormKey: 000ADC:Argonia.esp
+Flags: {}
+PreviousDialog: 000ADB:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Lucan Sevro, archer, hired by the Imperial company. I keep my post south-west of the centre with my bow, and I'm the best shot in Thorn. Ask anyone. Or better, bet on it.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 0934BF:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Yourself

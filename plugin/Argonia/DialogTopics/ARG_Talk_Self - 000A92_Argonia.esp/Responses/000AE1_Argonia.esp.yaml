@@ -1,0 +1,21 @@
+FormKey: 000AE1:Argonia.esp
+Flags: {}
+PreviousDialog: 000AE0:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I am Tallies-Twice. I am a Tax Heel of the north side, and I face the rising. I want the rising gone from this side.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 0934C4:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Yourself

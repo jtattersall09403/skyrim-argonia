@@ -1,0 +1,21 @@
+FormKey: 000A9A:Argonia.esp
+Flags: {}
+PreviousDialog: 000A99:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I am Neeta-Lei. I am a servant of the plantation, and I keep near it in case I am called. We take some pride in it.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 015193:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Yourself

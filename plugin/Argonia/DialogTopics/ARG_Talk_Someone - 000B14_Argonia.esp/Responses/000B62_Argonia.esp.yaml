@@ -1,0 +1,21 @@
+FormKey: 000B62:Argonia.esp
+Flags: {}
+PreviousDialog: 000B61:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Mends-The-Hulls mends boats at the north-east dock. She is usually just north-east of here. I think she is courting someone. Ask her yourself.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 0C725A:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Someone in particular

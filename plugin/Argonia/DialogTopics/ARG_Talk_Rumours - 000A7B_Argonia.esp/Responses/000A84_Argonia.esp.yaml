@@ -7,14 +7,14 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Ask Namorine about Stormhold. I say the Stormhold folk are soft. I say it to anyone who asks.
+    Value: Hnn. The Rose's heirs keep three of their held in the stone house west-north-west of here. Third-Born Tsaxi stands over them. It is their business, so long as nobody bleeds in my town.
   ScriptNotes: ''
   Edits: ''
 Conditions:
 - MutagenObjectType: ConditionFloat
   Data:
     MutagenObjectType: GetIsReferenceConditionData
-    Target: 166BC1:Black Marsh North.esp
+    Target: 1454F3:Black Marsh.esm
   ComparisonValue: 1
 Prompt:
   TargetLanguage: English

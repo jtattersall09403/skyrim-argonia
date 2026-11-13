@@ -1,0 +1,8 @@
+FormKey: 800350:Argonia.esp
+EditorID: ARG_BC03_T_fe0f680a
+Name:
+  TargetLanguage: English
+  Value: Sail the season, for the eleven at Thorn. (Persuade)
+Branch: 800351:Argonia.esp
+Quest: 80021C:Argonia.esp
+SubtypeName: CUST

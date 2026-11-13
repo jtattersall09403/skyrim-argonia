@@ -1,0 +1,21 @@
+FormKey: 000B32:Argonia.esp
+Flags: {}
+PreviousDialog: 000B31:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Deep-In-His-Cups sits just south-south-east of here. He sees everything at the dock and remembers half of it. He is a better source than I am.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 02A208:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Someone in particular

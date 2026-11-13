@@ -8,7 +8,7 @@ WaterHeight: 3.4028235E+38
 Temporary:
 - MutagenObjectType: PlacedNpc
   FormKey: 08D5E3:Black Marsh North.esp
-  Base: 000BD8:Argonia.esp
+  Base: 000BDA:Argonia.esp
   Placement:
     Position: -26733.545, 91333.055, -3.0517578E-05
 - MutagenObjectType: PlacedNpc

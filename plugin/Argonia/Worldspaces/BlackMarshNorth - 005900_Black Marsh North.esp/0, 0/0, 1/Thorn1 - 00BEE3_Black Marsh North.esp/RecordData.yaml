@@ -9,7 +9,7 @@ WaterHeight: 3.4028235E+38
 Temporary:
 - MutagenObjectType: PlacedNpc
   FormKey: 01CCE9:Black Marsh North.esp
-  Base: 000BAC:Argonia.esp
+  Base: 000BAE:Argonia.esp
   LinkedReferences:
   - Reference: 01CCE7:Black Marsh North.esp
   ActivateParents:
@@ -19,7 +19,7 @@ Temporary:
     Position: 23000.36, 64612.598, 121.38588
 - MutagenObjectType: PlacedNpc
   FormKey: 01CCF2:Black Marsh North.esp
-  Base: 000BB0:Argonia.esp
+  Base: 000BB2:Argonia.esp
   LinkedReferences:
   - Reference: 01CCF3:Black Marsh North.esp
   ActivateParents:
@@ -30,7 +30,7 @@ Temporary:
     Rotation: 0, 0, 3.6831903
 - MutagenObjectType: PlacedNpc
   FormKey: 01CCF4:Black Marsh North.esp
-  Base: 000BB1:Argonia.esp
+  Base: 000BB3:Argonia.esp
   LinkedReferences:
   - Reference: 01CCF5:Black Marsh North.esp
   ActivateParents:
@@ -41,7 +41,7 @@ Temporary:
     Rotation: 0, 0, 6.0831904
 - MutagenObjectType: PlacedNpc
   FormKey: 01CD0A:Black Marsh North.esp
-  Base: 000BB8:Argonia.esp
+  Base: 000BBA:Argonia.esp
   LinkedReferences:
   - Reference: 01CD09:Black Marsh North.esp
   ActivateParents:
@@ -51,12 +51,12 @@ Temporary:
     Position: 22302.605, 62973.938, 139.23698
 - MutagenObjectType: PlacedNpc
   FormKey: 037DFE:Black Marsh North.esp
-  Base: 000BC2:Argonia.esp
+  Base: 000BC4:Argonia.esp
   Placement:
     Position: 22477.814, 61443.824, 190.44418
     Rotation: 0, 0, 2.8
 - MutagenObjectType: PlacedNpc
   FormKey: 0934C1:Black Marsh North.esp
-  Base: 000BE9:Argonia.esp
+  Base: 000BEB:Argonia.esp
   Placement:
     Position: 22108.871, 64866.277, 139.3963

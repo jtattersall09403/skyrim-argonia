@@ -1,0 +1,21 @@
+FormKey: 000AC5:Argonia.esp
+Flags: {}
+PreviousDialog: 000AC4:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I am Feldril Nethri, a Dunmer. For now I am a guest of this marsh, though the hospitality has terms. I came to trade. I lost a cargo and was assessed months of labour. I cannot see when they will end, outlander.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 0616E8:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Yourself

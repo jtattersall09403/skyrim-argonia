@@ -1,0 +1,21 @@
+FormKey: 000A95:Argonia.esp
+Flags: {}
+PreviousDialog: 000A94:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I am Lifts-The-Sacks. I stand by the sacks. My uncle ran up a debt. I am working it off. Ha.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 00FF4F:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Yourself

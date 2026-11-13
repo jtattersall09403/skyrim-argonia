@@ -1,0 +1,21 @@
+FormKey: 000B5C:Argonia.esp
+Flags: {}
+PreviousDialog: 000B5B:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Tzeel-Vaa is the oldest of the three guards at this post. He is usually just south-south-east of here. He watches my hands at every cart. He should have retired years ago. Speak to him if you must.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 0C7251:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Someone in particular

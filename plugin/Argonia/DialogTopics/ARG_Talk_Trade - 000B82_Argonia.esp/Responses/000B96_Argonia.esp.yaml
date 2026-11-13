@@ -1,0 +1,29 @@
+FormKey: 000B96:Argonia.esp
+Flags: {}
+PreviousDialog: 000B95:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I trade, buyer. Okan-Zish and Wuleen-Taza work the landing, a fair way south of here. They tell every customer I cheat them. I say they should buy a boat of their own. Hah.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Out in the deep interior food, tools and safe passage are worth more than coin. Remember that, buyer, when you are hungry and a boat is the only road. Hah.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 08D5F1:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: My trade

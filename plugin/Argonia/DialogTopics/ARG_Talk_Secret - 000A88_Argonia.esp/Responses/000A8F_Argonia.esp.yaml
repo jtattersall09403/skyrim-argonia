@@ -1,0 +1,29 @@
+FormKey: 000A8F:Argonia.esp
+Flags: {}
+PreviousDialog: 000A8E:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: There is a thing I know. I do not give it to a stranger, honoured guest. Come back when I have had cause to trust you. Perhaps I will speak then.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: That door below the walls leads down under the city, into the old dungeon. It is locked, and I have never found the key.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 02A209:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Little secret

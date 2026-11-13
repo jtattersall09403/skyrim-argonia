@@ -45,12 +45,12 @@ TopCell:
     Placement:
       Position: 30901, -2903, 3
   - MutagenObjectType: PlacedObject
-    FormKey: 000BCA:Argonia.esp
+    FormKey: 000BCC:Argonia.esp
     MajorRecordFlagsRaw: 1024
     EditorID: ARG_VendorLooksAtBooksChestRef
     SkyrimMajorRecordFlags:
     - 0x400
-    Base: 000BC9:Argonia.esp
+    Base: 000BCB:Argonia.esp
     Placement:
       Position: 1646.1263, -3525.361, -1986.3772
   - MutagenObjectType: PlacedNpc
@@ -299,6 +299,157 @@ TopCell:
     Base: 8000F2:Argonia.esp
     Placement:
       Position: 91720, -7450, 8
+  - MutagenObjectType: PlacedNpc
+    FormKey: 80021F:Argonia.esp
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_R_npc_imperial_penal_south_blackrose_estate_debtor
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 800220:Argonia.esp
+    Placement:
+      Position: 128916, -46222, 48
+    MajorFlags:
+    - Persistent
+  - MutagenObjectType: PlacedNpc
+    FormKey: 800221:Argonia.esp
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_R_npc_imperial_penal_south_blackrose_estate_fetcher
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 800222:Argonia.esp
+    Placement:
+      Position: 128600, -43400, -15
+    MajorFlags:
+    - Persistent
+  - MutagenObjectType: PlacedNpc
+    FormKey: 800223:Argonia.esp
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_R_npc_imperial_penal_south_blackrose_estate_steward
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 800224:Argonia.esp
+    Placement:
+      Position: 133550, -52150, 1
+    MajorFlags:
+    - Persistent
+  - MutagenObjectType: PlacedObject
+    FormKey: 800225:Argonia.esp
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_R_thing_bc01_count_box
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 800226:Argonia.esp
+    Lock:
+      Level: Adept
+      Unused: 0x000000
+      Key: 800229:Argonia.esp
+      Unused2: 0x0000000000000000000000
+    Owner: 800224:Argonia.esp
+    Placement:
+      Position: 133177, -52028, 4
+  - MutagenObjectType: PlacedNpc
+    FormKey: 80022D:Argonia.esp
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_R_creature_bc02_lamia
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 80022E:Argonia.esp
+    Placement:
+      Position: 107400, -46300, 27
+    MajorFlags:
+    - Persistent
+  - MutagenObjectType: PlacedNpc
+    FormKey: 80022F:Argonia.esp
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_R_npc_imperial_penal_south_blackrose_held_killer
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 800230:Argonia.esp
+    Placement:
+      Position: 140931, -63454, -15
+    MajorFlags:
+    - Persistent
+  - MutagenObjectType: PlacedNpc
+    FormKey: 800231:Argonia.esp
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_R_npc_imperial_penal_south_blackrose_held_mother
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 800232:Argonia.esp
+    Placement:
+      Position: 140731, -63854, -15
+    MajorFlags:
+    - Persistent
+  - MutagenObjectType: PlacedNpc
+    FormKey: 800233:Argonia.esp
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_R_npc_imperial_penal_south_blackrose_held_speaker
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 800234:Argonia.esp
+    Placement:
+      Position: 140850, -63800, -15
+    MajorFlags:
+    - Persistent
+  - MutagenObjectType: PlacedNpc
+    FormKey: 800235:Argonia.esp
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_R_npc_imperial_penal_south_blackrose_post_gatekeeper
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 800236:Argonia.esp
+    Placement:
+      Position: 139631, -63604, -11
+    MajorFlags:
+    - Persistent
+  - MutagenObjectType: PlacedObject
+    FormKey: 800238:Argonia.esp
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_R_thing_bc02_strongbox
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 800239:Argonia.esp
+    Lock:
+      Level: Apprentice
+      Unused: 0x000000
+      Unused2: 0x0000000000000000000000
+    Placement:
+      Position: 107048, -45947, 20
+  - MutagenObjectType: PlacedNpc
+    FormKey: 80023D:Argonia.esp
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_R_npc_mercantile_coast_soulrest_berth_master
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 80023E:Argonia.esp
+    Placement:
+      Position: 48100, -6150, 1
+    MajorFlags:
+    - Persistent
+  - MutagenObjectType: PlacedNpc
+    FormKey: 80023F:Argonia.esp
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_R_npc_mercantile_coast_soulrest_crew_boss
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 800240:Argonia.esp
+    Placement:
+      Position: 48700, -6100, 1
+    MajorFlags:
+    - Persistent
+  - MutagenObjectType: PlacedNpc
+    FormKey: 0616E8:Black Marsh North.esp
+    MajorRecordFlagsRaw: 1024
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000BD3:Argonia.esp
+    LinkedReferences:
+    - Reference: 0616E9:Black Marsh North.esp
+    Placement:
+      Position: 50299.5, -5135.118, 29.056875
+      Rotation: 0, 0, 3.2
+    MajorFlags:
+    - Persistent
   - MutagenObjectType: PlacedObject
     FormKey: 0934A4:Black Marsh North.esp
     MajorRecordFlagsRaw: 1024
@@ -328,6 +479,23 @@ TopCell:
     Placement:
       Position: 5687.6074, -9381.743, 177.92078
       Rotation: 0, 0, 4.8831882
+  - MutagenObjectType: PlacedObject
+    FormKey: 120E95:Black Marsh.esm
+    MajorRecordFlagsRaw: 1024
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 094025:Skyrim.esm
+    TeleportDestination:
+      Door: 11ABF3:Black Marsh North.esp
+      Position: 417.479, 2803.6538, 7516.3047
+      Rotation: 0, 0, 0.17079888
+    Lock:
+      Level: Adept
+      Unused: 0x000000
+      Key: 800245:Argonia.esp
+      Unused2: 0x0000000000000000000000
+    Placement:
+      Position: 49742.8, -5196.2407, 42.67453
   MajorFlags:
   - Persistent
   - 0x40000

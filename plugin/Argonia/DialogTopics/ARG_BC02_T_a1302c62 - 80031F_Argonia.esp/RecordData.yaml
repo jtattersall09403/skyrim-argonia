@@ -1,0 +1,8 @@
+FormKey: 80031F:Argonia.esp
+EditorID: ARG_BC02_T_a1302c62
+Name:
+  TargetLanguage: English
+  Value: The keeper is dead. All of you, go.
+Branch: 800320:Argonia.esp
+Quest: 80021B:Argonia.esp
+SubtypeName: CUST

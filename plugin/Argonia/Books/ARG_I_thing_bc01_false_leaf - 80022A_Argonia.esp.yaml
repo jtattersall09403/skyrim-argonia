@@ -1,0 +1,24 @@
+FormKey: 80022A:Argonia.esp
+EditorID: ARG_I_thing_bc01_false_leaf
+ObjectBounds:
+  First: -8, -5, 0
+  Second: 8, 5, 0
+Name:
+  TargetLanguage: English
+  Value: Never-Sold's Leaf
+Model:
+  File: Clutter\Books\Note02.nif
+  Data: 0x020000000200000000000000C5D74C9464647300B5139F09AD43553B64647300B5139F09
+BookText:
+  TargetLanguage: English
+  Value: '[In a small, exact hand:] Rows-For-Another. Four nushmeekos for a boat. Worked. Struck.'
+PickUpSound: 0C7A54:Skyrim.esm
+Keywords:
+- 0937A2:Skyrim.esm
+Teaches:
+  MutagenObjectType: BookTeachesNothing
+  RawContent: 0
+InventoryArt: 01541B:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''

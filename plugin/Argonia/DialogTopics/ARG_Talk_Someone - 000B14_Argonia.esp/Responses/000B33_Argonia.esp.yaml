@@ -1,0 +1,21 @@
+FormKey: 000B33:Argonia.esp
+Flags: {}
+PreviousDialog: 000B32:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Ukka-Meesh, the guard at the centre, stands just east of here, traveller. I think he knows everything, and he tells me his stories when the watch is quiet.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 037DFE:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Someone in particular

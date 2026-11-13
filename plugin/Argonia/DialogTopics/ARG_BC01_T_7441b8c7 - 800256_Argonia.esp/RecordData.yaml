@@ -1,0 +1,8 @@
+FormKey: 800256:Argonia.esp
+EditorID: ARG_BC01_T_7441b8c7
+Name:
+  TargetLanguage: English
+  Value: What is the job?
+Branch: 800257:Argonia.esp
+Quest: 80021A:Argonia.esp
+SubtypeName: CUST

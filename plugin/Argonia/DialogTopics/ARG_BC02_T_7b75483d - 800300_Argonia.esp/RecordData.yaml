@@ -1,0 +1,8 @@
+FormKey: 800300:Argonia.esp
+EditorID: ARG_BC02_T_7b75483d
+Name:
+  TargetLanguage: English
+  Value: You know which of them killed him. Tell me, gently. (Persuade)
+Branch: 800301:Argonia.esp
+Quest: 80021B:Argonia.esp
+SubtypeName: CUST

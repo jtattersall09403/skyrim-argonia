@@ -1,0 +1,21 @@
+FormKey: 000B65:Argonia.esp
+Flags: {}
+PreviousDialog: 000B64:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Talks-To-Water is a boat captain in the north district. You will usually find her just east-south-east of here. She should take more care with her boat.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 0C725E:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Someone in particular

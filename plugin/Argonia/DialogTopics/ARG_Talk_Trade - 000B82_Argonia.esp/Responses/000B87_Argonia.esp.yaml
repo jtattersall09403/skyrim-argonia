@@ -1,0 +1,21 @@
+FormKey: 000B87:Argonia.esp
+Flags: {}
+PreviousDialog: 000B86:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: 'I sell what the village has left over, buyer: fish, roots and small goods. The fish is in the barrels just north-north-west of my stall, in sight, if you want to look before you buy.'
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 02A1ED:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: My trade

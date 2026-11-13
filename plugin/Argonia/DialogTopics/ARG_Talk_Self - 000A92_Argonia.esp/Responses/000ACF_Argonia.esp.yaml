@@ -1,0 +1,21 @@
+FormKey: 000ACF:Argonia.esp
+Flags: {}
+PreviousDialog: 000ACE:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I am Gih-Xaleel, a warden of Helstrom's levy. I keep this road and I decide who walks it. Helstrom has never been taken. I mean to see that it stays so.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 08D5E9:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Yourself

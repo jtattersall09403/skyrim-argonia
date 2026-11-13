@@ -1,0 +1,8 @@
+FormKey: 800262:Argonia.esp
+EditorID: ARG_BC01_T_901a2612
+Name:
+  TargetLanguage: English
+  Value: Never-Sold sent me. Tell me how you are held.
+Branch: 800263:Argonia.esp
+Quest: 80021A:Argonia.esp
+SubtypeName: CUST

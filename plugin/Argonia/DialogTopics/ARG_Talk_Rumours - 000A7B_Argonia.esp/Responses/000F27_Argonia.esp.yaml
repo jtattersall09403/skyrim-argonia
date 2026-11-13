@@ -7,19 +7,19 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Haj-Wan waits at Helstrom's gate, visitor. Her kin Sei-Wan went into the basin by himself. She asks for an outsider to follow him. I patch walls and cannot leave them, but I hope an outsider goes.
+    Value: I hear the crew led by Heavy-Rope works Soulrest's dock, outlander. The crew wish the season ended early. The broker who hires out their labour refuses. I was a trader once, and I know a broker's terms win over a man's wishes. Ask for Heavy-Rope there.
   ScriptNotes: ''
   Edits: ''
 Conditions:
 - MutagenObjectType: ConditionFloat
   Data:
     MutagenObjectType: GetIsReferenceConditionData
-    Target: 08D5E8:Black Marsh North.esp
+    Target: 0616E8:Black Marsh North.esp
   ComparisonValue: 1
 - MutagenObjectType: ConditionFloat
   Data:
     MutagenObjectType: GetStageConditionData
-    Quest: 8000C1:Argonia.esp
+    Quest: 80021C:Argonia.esp
 Prompt:
   TargetLanguage: English
   Value: Latest rumours

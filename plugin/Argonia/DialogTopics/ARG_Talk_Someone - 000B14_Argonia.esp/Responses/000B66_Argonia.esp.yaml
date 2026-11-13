@@ -1,0 +1,21 @@
+FormKey: 000B66:Argonia.esp
+Flags: {}
+PreviousDialog: 000B65:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Talks-To-Water, the boat captain? That is the best captain there is. You will usually find the captain just west-south-west of here. One day I will have a place on that boat.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 0C725F:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Someone in particular

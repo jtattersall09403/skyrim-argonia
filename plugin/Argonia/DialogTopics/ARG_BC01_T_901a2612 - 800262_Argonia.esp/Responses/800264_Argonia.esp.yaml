@@ -1,0 +1,156 @@
+FormKey: 800264:Argonia.esp
+VirtualMachineAdapter:
+  Scripts:
+  - Name: ARG_LineEffects
+    Properties:
+    - MutagenObjectType: ScriptStringProperty
+      Name: Line
+      Data: topic.bc01-how-held@npc.imperial-penal-south.blackrose.estate-debtor#10-10
+    - MutagenObjectType: ScriptFloatListProperty
+      Name: Num
+      Data:
+      - 20
+    - MutagenObjectType: ScriptIntListProperty
+      Name: Op
+      Data:
+      - 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Owner
+      Object: 80021A:Argonia.esp
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: What
+      Objects:
+      - Name: ''
+    - MutagenObjectType: ScriptBoolProperty
+      Name: Written
+      Data: True
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: ARG_LineEffects
+    OnEnd:
+      ScriptName: ARG_LineEffects
+      FragmentName: Fragment_End
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I holed a Tulm-Varo boat eleven years ago, and the Owing for it, the work I must do to pay, is not ended yet.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: The tree my tribe is hatched under is the Hist, and I have not stood under mine in all that time. Look at my arms.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 3
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: My colour is still mine, but every morning I look for the day it fades, and I think of walking home grey, with my own kin asking whose child I am.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 4
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Three things hold me.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 5
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: The keeper, Hulm-Tei, stands in the big house on the farm by the cattle and carries the key to the count-box in it, where my leaf lies, the page that says what I owe.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 6
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: 'His word is the second: by custom he may take the first price and close an Owing for good, and he has refused it. The third is Brings-Them-Back.'
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 7
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: He fetches runaways on this channel for a head-price, and he stands where it runs on north of this bank.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 8
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: He knows the way to my tree, so if I run while he lives, I can never go home. Each way out has its cost, as far as I know it.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 9
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Lift my leaf from the box and my Owing goes with it. What that costs the keeper I cannot say.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 10
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: 'Ask for his word and you must move him, and he will tell you every line on my leaf is true: four months, then my food, then a fever. He is right.'
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 11
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: It has outgrown me.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 12
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: 'The channel costs most: buy the fetcher and he looks away, yet still knows my tree; kill him and I may go home, with a man dead for my sake.'
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 13
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: That is why I want my Owing closed, not fled. When the channel is clear, because he is dead or has agreed to look away, come and tell me.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 80021F:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  CompareOperator: GreaterThanOrEqualTo
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 80021A:Argonia.esp
+  ComparisonValue: 10
+- MutagenObjectType: ConditionFloat
+  CompareOperator: LessThanOrEqualTo
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 80021A:Argonia.esp
+  ComparisonValue: 10

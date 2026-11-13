@@ -1,0 +1,21 @@
+FormKey: 000B91:Argonia.esp
+Flags: {}
+PreviousDialog: 000B90:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I count what folk carry past the dock, which is just west-north-west of here. In the deep interior, food, tools and safe passage are worth more than coin. I still think that is true.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 08D5EA:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: My trade

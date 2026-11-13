@@ -1,0 +1,21 @@
+FormKey: 000B1C:Argonia.esp
+Flags: {}
+PreviousDialog: 000B1B:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Nalvos Brenur is just north-north-east of where I stand. He is a labourer under an Owing, the same as me. He hates me and he is right to, though I would rather not say why. If you want sense, ask Doveth Aralen, the wisest man in Thorn. Severan Otho is kind, I will say that for him.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 01CCE0:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Someone in particular

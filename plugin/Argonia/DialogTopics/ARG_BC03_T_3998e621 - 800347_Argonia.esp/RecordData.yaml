@@ -1,0 +1,8 @@
+FormKey: 800347:Argonia.esp
+EditorID: ARG_BC03_T_3998e621
+Name:
+  TargetLanguage: English
+  Value: The hire is void. Ra'Jhan will not pay for the season.
+Branch: 800348:Argonia.esp
+Quest: 80021C:Argonia.esp
+SubtypeName: CUST

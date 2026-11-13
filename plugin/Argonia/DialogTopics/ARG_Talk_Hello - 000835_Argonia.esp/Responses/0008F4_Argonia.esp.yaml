@@ -7,7 +7,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: What do you want? I have hulls to patch.
+    Value: What do you want?
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -15,7 +15,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Speak quickly. I am in the middle of a hull.
+    Value: Speak quickly.
   ScriptNotes: ''
   Edits: ''
 Conditions:

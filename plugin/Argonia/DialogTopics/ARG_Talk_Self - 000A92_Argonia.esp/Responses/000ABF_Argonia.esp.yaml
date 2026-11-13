@@ -1,0 +1,21 @@
+FormKey: 000ABF:Argonia.esp
+Flags: {}
+PreviousDialog: 000ABE:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I am Seeks-The-Channel, a boat captain who puts in at Soulrest, east of Lilmoth Dock. I keep by the docks, west of the fire. I chose this place because no licence is asked for here.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 05D7C8:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Yourself

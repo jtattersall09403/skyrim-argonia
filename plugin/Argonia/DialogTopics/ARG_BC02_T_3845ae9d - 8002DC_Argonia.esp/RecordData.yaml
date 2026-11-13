@@ -1,0 +1,8 @@
+FormKey: 8002DC:Argonia.esp
+EditorID: ARG_BC02_T_3845ae9d
+Name:
+  TargetLanguage: English
+  Value: Who are you?
+Branch: 8002DD:Argonia.esp
+Quest: 80021B:Argonia.esp
+SubtypeName: CUST

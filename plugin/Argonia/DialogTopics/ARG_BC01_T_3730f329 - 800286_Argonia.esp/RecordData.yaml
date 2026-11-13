@@ -1,0 +1,8 @@
+FormKey: 800286:Argonia.esp
+EditorID: ARG_BC01_T_3730f329
+Name:
+  TargetLanguage: English
+  Value: I will pay the whole of what her leaf has grown to. Take it and strike her leaf. (1000 gold)
+Branch: 800287:Argonia.esp
+Quest: 80021A:Argonia.esp
+SubtypeName: CUST

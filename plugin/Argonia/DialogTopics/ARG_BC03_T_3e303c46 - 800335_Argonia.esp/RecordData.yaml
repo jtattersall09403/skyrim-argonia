@@ -1,0 +1,8 @@
+FormKey: 800335:Argonia.esp
+EditorID: ARG_BC03_T_3e303c46
+Name:
+  TargetLanguage: English
+  Value: Tell me the job again.
+Branch: 800336:Argonia.esp
+Quest: 80021C:Argonia.esp
+SubtypeName: CUST

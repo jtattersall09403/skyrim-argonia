@@ -1,0 +1,21 @@
+FormKey: 000AAA:Argonia.esp
+Flags: {}
+PreviousDialog: 000AA9:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I am Ma-Veesk. I guard the north-west houses and the cage doors south of them. At home I speak Jel, and I have little else to say of myself.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 01CCFE:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Yourself

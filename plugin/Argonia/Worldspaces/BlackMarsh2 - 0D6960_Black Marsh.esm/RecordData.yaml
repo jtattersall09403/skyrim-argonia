@@ -137,7 +137,7 @@ TopCell:
     MajorRecordFlagsRaw: 1024
     SkyrimMajorRecordFlags:
     - 0x400
-    Base: 000BDA:Argonia.esp
+    Base: 000BDC:Argonia.esp
     Placement:
       Position: -27857.562, 77814.81, 20.184082
     MajorFlags:
@@ -147,7 +147,7 @@ TopCell:
     MajorRecordFlagsRaw: 1024
     SkyrimMajorRecordFlags:
     - 0x400
-    Base: 000BDE:Argonia.esp
+    Base: 000BE0:Argonia.esp
     Placement:
       Position: -37269.316, 63904.95, 161.9195
     MajorFlags:
@@ -157,7 +157,7 @@ TopCell:
     MajorRecordFlagsRaw: 1024
     SkyrimMajorRecordFlags:
     - 0x400
-    Base: 000BDF:Argonia.esp
+    Base: 000BE1:Argonia.esp
     Placement:
       Position: -36824.04, 64087.633, 194.38165
     MajorFlags:
@@ -167,7 +167,7 @@ TopCell:
     MajorRecordFlagsRaw: 1024
     SkyrimMajorRecordFlags:
     - 0x400
-    Base: 000BE1:Argonia.esp
+    Base: 000BE3:Argonia.esp
     Placement:
       Position: -35963.996, 78367.34, 788.00397
     MajorFlags:

@@ -1,0 +1,21 @@
+FormKey: 000B07:Argonia.esp
+Flags: {}
+PreviousDialog: 000B06:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Tadpole is my name. I play between the big ships and tell the crews I run their errands. One day I will sail on one. Then you will hear of me. What is your name?
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 1454F5:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Yourself

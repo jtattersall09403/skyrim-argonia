@@ -1,0 +1,21 @@
+FormKey: 000AAF:Argonia.esp
+Flags: {}
+PreviousDialog: 000AAE:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I am Peeks-Under-Boats. I look at everything. One day I will be a boat captain, big one. The boats do not obey me yet.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 02A1E9:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Yourself

@@ -1,0 +1,21 @@
+FormKey: 000B42:Argonia.esp
+Flags: {}
+PreviousDialog: 000B41:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Hulee-Tah keeps by his hut, which stands just north-west of here. He is the best of all of us and I want to be just like him.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 084A91:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Someone in particular

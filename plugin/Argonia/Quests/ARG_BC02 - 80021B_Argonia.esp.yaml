@@ -1,0 +1,682 @@
+FormKey: 80021B:Argonia.esp
+EditorID: ARG_BC02
+VirtualMachineAdapter:
+  Scripts:
+  - Name: ARG_QuestStages
+    Properties:
+    - MutagenObjectType: ScriptStringProperty
+      Name: Kind
+      Data: faction
+    - MutagenObjectType: ScriptStringListProperty
+      Name: Labels
+      Data:
+      - level=creature.bc02.lamia
+      - level=npc.imperial-penal-south.blackrose.chainbreaker-patron
+      - level=npc.imperial-penal-south.blackrose.estate-debtor
+      - level=npc.imperial-penal-south.blackrose.held-killer
+      - level=npc.imperial-penal-south.blackrose.held-mother
+      - level=npc.imperial-penal-south.blackrose.held-speaker
+      - level=npc.imperial-penal-south.blackrose.post-gatekeeper
+      - name=item|01399E:Skyrim.esm|item.elven-dagger
+      - name=template|800237:Argonia.esp|0A0F46:Skyrim.esm
+      - name=item|800237:Argonia.esp|thing.bc02.leaves
+      - name=item|013988:Skyrim.esm|item.steel-mace
+      - name=item|01CF2B:Skyrim.esm|item.gold-ring
+      - name=base|800239:Argonia.esp|09424C:Skyrim.esm
+      - name=thing|800237:Argonia.esp|thing.bc02.leaves
+      - name=number|80023A:Argonia.esp|flag.bc02.settled
+      - name=item|00000A:Skyrim.esm|item.lockpick
+      - quest=quest.bc.bc02
+      - kind=faction
+      - name=number|80022B:Argonia.esp|flag.bc01.settled
+      - trigger=death.npc.imperial-penal-south.blackrose.post-gatekeeper.10-38|death|npc.imperial-penal-south.blackrose.post-gatekeeper|until=41|10|38|choice
+      - trigger=take.thing.bc02.leaves.20-30|take|thing.bc02.leaves|until=35|20|30|
+    - MutagenObjectType: ScriptFloatListProperty
+      Name: Num
+      Data:
+      - 10
+      - 0
+      - 1
+      - 30
+      - 10
+      - 20
+      - 20
+      - 30
+      - 30
+      - 32
+      - 20
+      - 32
+      - 35
+      - 300
+      - 20
+      - 32
+      - 35
+      - 1
+      - 32
+      - 35
+      - 10
+      - 38
+      - 32
+      - 35
+      - 38
+      - 41
+      - 32
+      - 35
+      - 38
+      - 41
+      - 32
+      - 35
+      - 38
+      - 41
+      - 38
+      - 44
+      - 1
+      - 0
+      - 1
+      - 150
+      - 10
+      - 44
+      - 0
+      - 0
+      - 1
+      - 0
+      - 1
+      - 150
+      - 10
+      - 44
+      - 0
+      - 0
+      - 1
+      - 0
+      - 1
+      - 150
+      - 10
+      - 44
+      - 0
+      - 0
+      - 1
+      - 0
+      - 0
+      - 0
+      - 1
+      - 44
+      - 0
+      - 0
+      - 44
+      - 0
+    - MutagenObjectType: ScriptIntListProperty
+      Name: Op
+      Data:
+      - 2
+      - 5
+      - 14
+      - 1
+      - 3
+      - 2
+      - 3
+      - 2
+      - 3
+      - 2
+      - 3
+      - 3
+      - 2
+      - 23
+      - 3
+      - 3
+      - 2
+      - 21
+      - 3
+      - 2
+      - 3
+      - 2
+      - 3
+      - 3
+      - 3
+      - 2
+      - 3
+      - 3
+      - 3
+      - 2
+      - 3
+      - 3
+      - 3
+      - 2
+      - 3
+      - 2
+      - 21
+      - 30
+      - 24
+      - 22
+      - 20
+      - 15
+      - 7
+      - 6
+      - 21
+      - 30
+      - 24
+      - 22
+      - 20
+      - 15
+      - 7
+      - 6
+      - 21
+      - 30
+      - 24
+      - 22
+      - 20
+      - 15
+      - 7
+      - 6
+      - 21
+      - 30
+      - 30
+      - 30
+      - 24
+      - 15
+      - 7
+      - 6
+      - 16
+      - 6
+    - MutagenObjectType: ScriptStringProperty
+      Name: QuestId
+      Data: quest.bc.bc02
+    - MutagenObjectType: ScriptIntListProperty
+      Name: StageFrom
+      Data:
+      - 0
+      - 2
+      - 6
+      - 8
+      - 10
+      - 13
+      - 17
+      - 20
+      - 22
+      - 26
+      - 30
+      - 34
+      - 36
+      - 44
+      - 52
+      - 60
+      - 68
+    - MutagenObjectType: ScriptIntListProperty
+      Name: Stages
+      Data:
+      - 10
+      - 20
+      - 30
+      - 32
+      - 35
+      - 36
+      - 37
+      - 38
+      - 41
+      - 42
+      - 43
+      - 44
+      - 91
+      - 92
+      - 93
+      - 94
+      - 95
+    - MutagenObjectType: ScriptIntListProperty
+      Name: StageTo
+      Data:
+      - 2
+      - 6
+      - 8
+      - 10
+      - 13
+      - 17
+      - 20
+      - 22
+      - 26
+      - 30
+      - 34
+      - 36
+      - 44
+      - 52
+      - 60
+      - 68
+      - 70
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: What
+      Objects:
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 800237:Argonia.esp
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 00000F:Skyrim.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 800237:Argonia.esp
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 800237:Argonia.esp
+      - Name: ''
+        Object: 800233:Argonia.esp
+      - Name: ''
+        Object: 80023A:Argonia.esp
+      - Name: ''
+        Object: 00000F:Skyrim.esm
+      - Name: ''
+        Object: 00000A:Skyrim.esm
+      - Name: ''
+      - Name: ''
+        Object: 0FC85D:Skyrim.esm
+      - Name: ''
+      - Name: ''
+        Object: 800237:Argonia.esp
+      - Name: ''
+        Object: 80022F:Argonia.esp
+      - Name: ''
+        Object: 80023A:Argonia.esp
+      - Name: ''
+        Object: 00000F:Skyrim.esm
+      - Name: ''
+        Object: 00000A:Skyrim.esm
+      - Name: ''
+      - Name: ''
+        Object: 0FC85D:Skyrim.esm
+      - Name: ''
+      - Name: ''
+        Object: 800237:Argonia.esp
+      - Name: ''
+        Object: 800231:Argonia.esp
+      - Name: ''
+        Object: 80023A:Argonia.esp
+      - Name: ''
+        Object: 00000F:Skyrim.esm
+      - Name: ''
+        Object: 00000A:Skyrim.esm
+      - Name: ''
+      - Name: ''
+        Object: 0FC85D:Skyrim.esm
+      - Name: ''
+      - Name: ''
+        Object: 800237:Argonia.esp
+      - Name: ''
+        Object: 800233:Argonia.esp
+      - Name: ''
+        Object: 80022F:Argonia.esp
+      - Name: ''
+        Object: 800231:Argonia.esp
+      - Name: ''
+        Object: 80023A:Argonia.esp
+      - Name: ''
+      - Name: ''
+        Object: 0FC85D:Skyrim.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+  FileName: ARG_QuestStages
+  Fragments:
+  - Stage: 10
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_10
+  - Stage: 20
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_20
+  - Stage: 30
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_30
+  - Stage: 32
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_32
+  - Stage: 35
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_35
+  - Stage: 36
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_36
+  - Stage: 37
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_37
+  - Stage: 38
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_38
+  - Stage: 41
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_41
+  - Stage: 42
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_42
+  - Stage: 43
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_43
+  - Stage: 44
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_44
+  - Stage: 91
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_91
+  - Stage: 92
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_92
+  - Stage: 93
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_93
+  - Stage: 94
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_94
+  - Stage: 95
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_95
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 80021B:Argonia.esp
+      Alias: 6
+    Scripts:
+    - Name: ARG_AliasEffects
+      Properties:
+      - MutagenObjectType: ScriptFloatListProperty
+        Name: Num
+        Data:
+        - 10
+        - 40
+        - 38
+      - MutagenObjectType: ScriptIntListProperty
+        Name: Op
+        Data:
+        - 10
+        - 13
+        - 9
+      - MutagenObjectType: ScriptObjectListProperty
+        Name: What
+        Objects:
+        - Name: ''
+          Object: 80021B:Argonia.esp
+        - Name: ''
+          Object: 80021B:Argonia.esp
+        - Name: ''
+          Object: 80021B:Argonia.esp
+  - Property:
+      Name: ''
+      Object: 80021B:Argonia.esp
+      Alias: 8
+    Scripts:
+    - Name: ARG_AliasEffects
+      Properties:
+      - MutagenObjectType: ScriptFloatListProperty
+        Name: Num
+        Data:
+        - 20
+        - 34
+        - 30
+      - MutagenObjectType: ScriptIntProperty
+        Name: On
+        Data: 1
+      - MutagenObjectType: ScriptIntListProperty
+        Name: Op
+        Data:
+        - 10
+        - 13
+        - 9
+      - MutagenObjectType: ScriptObjectListProperty
+        Name: What
+        Objects:
+        - Name: ''
+          Object: 80021B:Argonia.esp
+        - Name: ''
+          Object: 80021B:Argonia.esp
+        - Name: ''
+          Object: 80021B:Argonia.esp
+Name:
+  TargetLanguage: English
+  Value: One Out of the Smoke
+Flags:
+- StartGameEnabled
+- RunOnce
+Priority: 50
+Type: SideQuest
+Stages:
+- Flags:
+  - StartUpStage
+  LogEntries:
+  - Flags: []
+- Index: 10
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: Never-Sold sent me to the heirs' post on Blackrose's east shore, where the heirs of the Rose keep three of their held. One of the three can be got out. She wants the one held for words, not the one held for a killing. I'm to speak to Third-Born Tsaxi, who keeps the post.
+- Index: 20
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: Tsaxi can count one of the three lost to the Rose's fire, and no more. Walks-Far and Mends-Nets each claim to be held for words; one killed a man. The leaves that say which are with the Rose's reckoner, lost in the western swamp. I'm to learn who is who, and read the leaves if I find them.
+- Index: 30
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: I took the singed leaves from the reckoner's strongbox in the western swamp and read them. Walks-Far is held for words; Mends-Nets drowned Reckoner Otheel and is to be put under, sent down below the Rose where the dead walk; Seven-Floods owes for a roof. Before I choose who goes, I'm to tell Seven-Floods what I read.
+- Index: 32
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: I told Seven-Floods what the leaves say. Mends-Nets drowned Otheel for her, after Otheel wrote a third winter on her roof, and Seven-Floods asks me to take Mends-Nets out anyway, before her. Now I'm to choose who goes.
+- Index: 35
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: I talked Tsaxi round. He will count one of the three lost to the smoke. I'm to tell the one I choose to go.
+- Index: 36
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: I paid Tsaxi 300 gold. He will count one of the three lost to the smoke. I'm to tell the one I choose to go.
+- Index: 37
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: I gave Tsaxi the reckoner's leaves and told him his hut was empty but for a lamia. He kept them. The count is his now, and he will say one died of the smoke. I'm to tell the one I choose to go.
+- Index: 38
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: I killed Third-Born Tsaxi at the heirs' post. Nobody is left to keep the three, so any of them can go, or all of them. I'm to tell them.
+- Index: 41
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: I told Walks-Far to go when I had gone. The other two stay. I'm to tell Never-Sold.
+- Index: 42
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: I told Mends-Nets to go when I had gone. The other two stay. I'm to tell Never-Sold.
+- Index: 43
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: I told Seven-Floods to go when I had gone. She will go to her daughter first. The other two stay. I'm to tell Never-Sold.
+- Index: 44
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: I told all three to go. I'm to tell Never-Sold the post is empty.
+- Index: 91
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+    Entry:
+      TargetLanguage: English
+      Value: I told Never-Sold that Walks-Far came out. Mends-Nets stays, to be put under if her leaf is ever read, and Seven-Floods stays far from her Hist. Never-Sold was pleased and uneasy, paid me 150 gold and said to come back to her for more work.
+- Index: 92
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+    Entry:
+      TargetLanguage: English
+      Value: I told Never-Sold that Mends-Nets came out. Walks-Far stays to work his three seasons, and Seven-Floods stays far from her Hist. Never-Sold said we will be called the people who loose killers, and that it will be true. She paid me 150 gold and said to come back to her for more work.
+- Index: 93
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+    Entry:
+      TargetLanguage: English
+      Value: I told Never-Sold that Seven-Floods came out, to go to her daughter. Walks-Far stays to work his three seasons, and Mends-Nets stays, to be put under if her leaf is ever read. Never-Sold was silent a while, then kind, paid me 150 gold and said to come back to her for more work.
+- Index: 94
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+    Entry:
+      TargetLanguage: English
+      Value: "I told Never-Sold the post is empty. She paid me nothing: the Rose's hunters, short three, will take a clutch-brother of Walks-Far's in their place, and the heirs will not treat with the Chainbreakers again. She said to come back to her for more work all the same."
+- Index: 95
+  LogEntries:
+  - Flags:
+    - FailQuest
+    Entry:
+      TargetLanguage: English
+      Value: Never-Sold is dead. Nobody will take word of who came out of the post.
+Objectives:
+- Index: 10
+  DisplayText:
+    TargetLanguage: English
+    Value: Speak to Third-Born Tsaxi, keeper of the heirs' post on Blackrose's east shore.
+  Targets:
+  - AliasID: 6
+  - AliasID: 4
+- Index: 20
+  DisplayText:
+    TargetLanguage: English
+    Value: "Learn which of the two killed: bring back the reckoner's leaves from his camp in the western swamp, or win the truth from Seven-Floods. Or pay Tsaxi to count one lost without knowing which."
+  Targets:
+  - AliasID: 8
+  - AliasID: 6
+  - AliasID: 4
+- Index: 30
+  DisplayText:
+    TargetLanguage: English
+    Value: Tell Seven-Floods at the heirs' post what the leaves say, before choosing who goes.
+  Targets:
+  - AliasID: 4
+- Index: 32
+  DisplayText:
+    TargetLanguage: English
+    Value: "Choose who goes, knowing Mends-Nets is the killer and Seven-Floods asks for her: tell one of the three to go while holding the leaves, or first give Tsaxi the leaves or win Tsaxi's word."
+  Targets:
+  - AliasID: 5
+  - AliasID: 3
+  - AliasID: 4
+  - AliasID: 6
+- Index: 35
+  DisplayText:
+    TargetLanguage: English
+    Value: Tell one of the three at the post to go.
+  Targets:
+  - AliasID: 5
+  - AliasID: 3
+  - AliasID: 4
+- Index: 38
+  DisplayText:
+    TargetLanguage: English
+    Value: Tell one of the three at the post to go, or all of them.
+  Targets:
+  - AliasID: 5
+  - AliasID: 3
+  - AliasID: 4
+- Index: 41
+  DisplayText:
+    TargetLanguage: English
+    Value: Tell Never-Sold in the Chainbreakers' house who came out.
+  Targets:
+  - AliasID: 1
+- Index: 44
+  DisplayText:
+    TargetLanguage: English
+    Value: Tell Never-Sold in the Chainbreakers' house that the post is empty.
+  Targets:
+  - AliasID: 1
+Aliases:
+- Name: creature.bc02.lamia
+  ForcedReference: 80022D:Argonia.esp
+- ID: 1
+  Name: npc.imperial-penal-south.blackrose.chainbreaker-patron
+  ForcedReference: 80021D:Argonia.esp
+- ID: 2
+  Name: npc.imperial-penal-south.blackrose.estate-debtor
+  ForcedReference: 80021F:Argonia.esp
+- ID: 3
+  Name: npc.imperial-penal-south.blackrose.held-killer
+  ForcedReference: 80022F:Argonia.esp
+- ID: 4
+  Name: npc.imperial-penal-south.blackrose.held-mother
+  ForcedReference: 800231:Argonia.esp
+- ID: 5
+  Name: npc.imperial-penal-south.blackrose.held-speaker
+  ForcedReference: 800233:Argonia.esp
+- ID: 6
+  Name: npc.imperial-penal-south.blackrose.post-gatekeeper
+  ForcedReference: 800235:Argonia.esp
+- ID: 7
+  Name: thing.bc02.dagger
+  CreateReferenceToObject:
+    Object: 01399E:Skyrim.esm
+    AliasID: 11
+    Create: In
+- ID: 8
+  Name: thing.bc02.leaves
+  CreateReferenceToObject:
+    Object: 800237:Argonia.esp
+    AliasID: 11
+    Create: In
+- ID: 9
+  Name: thing.bc02.mace
+  CreateReferenceToObject:
+    Object: 013988:Skyrim.esm
+    AliasID: 6
+    Create: In
+- ID: 10
+  Name: thing.bc02.ring
+  CreateReferenceToObject:
+    Object: 01CF2B:Skyrim.esm
+    AliasID: 11
+    Create: In
+- ID: 11
+  Name: thing.bc02.strongbox
+  ForcedReference: 800238:Argonia.esp

@@ -1,0 +1,21 @@
+FormKey: 000B1B:Argonia.esp
+Flags: {}
+PreviousDialog: 000B1A:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Mils Ganthis? Another Dunmer under an Owing. Look just south-south-west of here and listen; you will hear him before you see him. That man never could keep his mouth shut.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 01CCDE:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Someone in particular

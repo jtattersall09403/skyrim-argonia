@@ -1,0 +1,21 @@
+FormKey: 000AC8:Argonia.esp
+Flags: {}
+PreviousDialog: 000AC7:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I am Mends-The-Nets. Nets and knots are what I know, and I have known them since I was small. Half the villagers learned their knots from me.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 084A87:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Yourself

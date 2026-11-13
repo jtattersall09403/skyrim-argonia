@@ -7,14 +7,6 @@ Grid:
 WaterHeight: 3.4028235E+38
 Temporary:
 - MutagenObjectType: PlacedNpc
-  FormKey: 0616E8:Black Marsh North.esp
-  Base: 000BD1:Argonia.esp
-  LinkedReferences:
-  - Reference: 0616E9:Black Marsh North.esp
-  Placement:
-    Position: 50299.5, -5135.118, 29.056875
-    Rotation: 0, 0, 3.2
-- MutagenObjectType: PlacedNpc
   FormKey: 05D7C6:Black Marsh.esm
   MajorRecordFlagsRaw: 2048
   SkyrimMajorRecordFlags:
@@ -37,34 +29,34 @@ Temporary:
   - InitiallyDisabled
 - MutagenObjectType: PlacedNpc
   FormKey: 05D7C8:Black Marsh.esm
-  Base: 000BCB:Argonia.esp
+  Base: 000BCD:Argonia.esp
   Placement:
     Position: 50119.01, -5827.914, 0
 - MutagenObjectType: PlacedNpc
   FormKey: 05D7C9:Black Marsh.esm
-  Base: 000BCC:Argonia.esp
+  Base: 000BCE:Argonia.esp
   Placement:
     Position: 49550.17, -6304.2207, 0
     Rotation: 0, 0, 3.4831905
 - MutagenObjectType: PlacedNpc
   FormKey: 05D7CA:Black Marsh.esm
-  Base: 000BCD:Argonia.esp
+  Base: 000BCF:Argonia.esp
   Placement:
     Position: 49433.117, -5945.0874, 0
     Rotation: 0, 0, 5.6831865
 - MutagenObjectType: PlacedNpc
   FormKey: 05D7CB:Black Marsh.esm
-  Base: 000BCE:Argonia.esp
+  Base: 000BD0:Argonia.esp
   Placement:
     Position: 49245.14, -6306.804, 0
 - MutagenObjectType: PlacedNpc
   FormKey: 05D7CC:Black Marsh.esm
-  Base: 000BCF:Argonia.esp
+  Base: 000BD1:Argonia.esp
   Placement:
     Position: 49970.727, -5609.9243, 3.0517578E-05
     Rotation: 0, 0, 2.683192
 - MutagenObjectType: PlacedNpc
   FormKey: 05D7CD:Black Marsh.esm
-  Base: 000BD0:Argonia.esp
+  Base: 000BD2:Argonia.esp
   Placement:
     Position: 50146.617, -6530.093, 0

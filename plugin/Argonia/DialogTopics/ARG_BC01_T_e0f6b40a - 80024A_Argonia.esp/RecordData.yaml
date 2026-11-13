@@ -1,0 +1,8 @@
+FormKey: 80024A:Argonia.esp
+EditorID: ARG_BC01_T_e0f6b40a
+Name:
+  TargetLanguage: English
+  Value: What is an Owing?
+Branch: 80024B:Argonia.esp
+Quest: 80021A:Argonia.esp
+SubtypeName: CUST

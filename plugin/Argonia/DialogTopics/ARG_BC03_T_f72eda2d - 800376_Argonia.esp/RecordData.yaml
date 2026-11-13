@@ -1,0 +1,8 @@
+FormKey: 800376:Argonia.esp
+EditorID: ARG_BC03_T_f72eda2d
+Name:
+  TargetLanguage: English
+  Value: Give up the season. Find other hands. (Persuade)
+Branch: 800377:Argonia.esp
+Quest: 80021C:Argonia.esp
+SubtypeName: CUST

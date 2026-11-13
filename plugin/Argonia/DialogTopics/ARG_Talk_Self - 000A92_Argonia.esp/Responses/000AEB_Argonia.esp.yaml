@@ -1,0 +1,21 @@
+FormKey: 000AEB:Argonia.esp
+Flags: {}
+PreviousDialog: 000AEA:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I am Tuh-Weem. I guard this dock. Everything said on it reaches my ears. I am rarely wrong about what I hear.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 0C725A:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Yourself

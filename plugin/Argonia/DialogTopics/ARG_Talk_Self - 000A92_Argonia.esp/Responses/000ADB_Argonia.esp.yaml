@@ -1,0 +1,21 @@
+FormKey: 000ADB:Argonia.esp
+Flags: {}
+PreviousDialog: 000ADA:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Gaius Fennic, traveller. I was born in Black Marsh of Imperial parents, and I speak a little Jel besides. I've never seen the Empire, so I count myself as from here.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 0934BE:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Yourself

@@ -1,0 +1,8 @@
+FormKey: 80034C:Argonia.esp
+EditorID: ARG_BC03_T_f33f4595
+Name:
+  TargetLanguage: English
+  Value: The Broker has let your crew go. Here are your tokens.
+Branch: 80034D:Argonia.esp
+Quest: 80021C:Argonia.esp
+SubtypeName: CUST

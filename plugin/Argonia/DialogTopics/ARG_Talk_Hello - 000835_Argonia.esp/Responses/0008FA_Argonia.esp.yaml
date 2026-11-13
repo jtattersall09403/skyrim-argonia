@@ -7,7 +7,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: You want a crossing, say where. If not, I have rope to mend.
+    Value: If you want a crossing, say where.
   ScriptNotes: ''
   Edits: ''
 Conditions:

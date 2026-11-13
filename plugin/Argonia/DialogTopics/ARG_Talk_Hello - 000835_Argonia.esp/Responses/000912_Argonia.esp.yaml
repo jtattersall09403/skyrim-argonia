@@ -7,7 +7,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Mind your feet. The pitch is hot. You will smell me before you see me.
+    Value: Mind your feet. You will smell me before you see me.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -15,7 +15,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Stand back from the pot or you will be burned. What do you want?
+    Value: Stand back, I smell of pitch. What do you want?
   ScriptNotes: ''
   Edits: ''
 Conditions:

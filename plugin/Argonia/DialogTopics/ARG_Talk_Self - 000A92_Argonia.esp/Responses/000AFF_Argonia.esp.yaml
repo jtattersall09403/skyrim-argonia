@@ -1,0 +1,21 @@
+FormKey: 000AFF:Argonia.esp
+Flags: {}
+PreviousDialog: 000AFE:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I am Ten-Coins. The name is the price of looking away. Everyone knows it at the docks. I call it a fee, and I call it a fair one.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 130789:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Yourself

@@ -1,0 +1,27 @@
+FormKey: 000BB7:Argonia.esp
+EditorID: ARG_Talker_01CCFE
+Configuration:
+  Flags:
+  - AutoCalcStats
+  - Unique
+  Level:
+    MutagenObjectType: NpcLevel
+    Level: 5
+  TemplateFlags:
+  - Traits
+  - Factions
+  - SpellList
+  - AIData
+  - AIPackages
+  - ModelAnimation
+  - Inventory
+  - Script
+  - DefPackList
+  - AttackData
+  - Keywords
+Template: 01CCE4:Black Marsh North.esp
+Race: 013740:Skyrim.esm
+Class: 017008:Skyrim.esm
+Name:
+  TargetLanguage: English
+  Value: Ma-Veesk

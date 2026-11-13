@@ -1,0 +1,21 @@
+FormKey: 000AF0:Argonia.esp
+Flags: {}
+PreviousDialog: 000AEF:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I am Skink. I play by the statue, where the other children do not come. I have no family. I hear things at the jail. I tell them for a sweet.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 0C7260:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Yourself

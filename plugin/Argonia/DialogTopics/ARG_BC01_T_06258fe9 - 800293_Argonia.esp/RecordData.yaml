@@ -1,0 +1,8 @@
+FormKey: 800293:Argonia.esp
+EditorID: ARG_BC01_T_06258fe9
+Name:
+  TargetLanguage: English
+  Value: Look the other way when Rows-For-Another goes. (Persuade)
+Branch: 800294:Argonia.esp
+Quest: 80021A:Argonia.esp
+SubtypeName: CUST

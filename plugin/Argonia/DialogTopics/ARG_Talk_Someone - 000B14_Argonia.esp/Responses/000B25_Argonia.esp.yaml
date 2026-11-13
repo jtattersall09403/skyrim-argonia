@@ -1,0 +1,21 @@
+FormKey: 000B25:Argonia.esp
+Flags: {}
+PreviousDialog: 000B24:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: 'Quill-Teeth is a Tax Heel, traveller: the one who collects the Owings. You will find Quill-Teeth just south-south-west of here.'
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 01CCF6:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Someone in particular

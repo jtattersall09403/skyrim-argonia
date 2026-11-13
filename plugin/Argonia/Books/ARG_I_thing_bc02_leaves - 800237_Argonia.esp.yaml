@@ -1,0 +1,24 @@
+FormKey: 800237:Argonia.esp
+EditorID: ARG_I_thing_bc02_leaves
+ObjectBounds:
+  First: -8, -5, 0
+  Second: 8, 5, 0
+Name:
+  TargetLanguage: English
+  Value: Singed Leaves
+Model:
+  File: Clutter\Books\Note02.nif
+  Data: 0x020000000200000000000000C5D74C9464647300B5139F09AD43553B64647300B5139F09
+BookText:
+  TargetLanguage: English
+  Value: "Three leaves in the Rose's hand, singed at the edges. \"Walks-Far. Words in the yard. Three seasons.\" \"Mends-Nets. Drowned Reckoner Otheel in a net. To be put under.\" \"Seven-Floods. A roof. Standing.\" Under each, where the held one was hatched, and the same line: by this the hunters know where to look."
+PickUpSound: 0C7A54:Skyrim.esm
+Keywords:
+- 0937A2:Skyrim.esm
+Teaches:
+  MutagenObjectType: BookTeachesNothing
+  RawContent: 0
+InventoryArt: 01541B:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''

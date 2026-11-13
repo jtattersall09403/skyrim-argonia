@@ -1,0 +1,21 @@
+FormKey: 000B79:Argonia.esp
+Flags: {}
+PreviousDialog: 000B78:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Skink is the child who plays by the jail's statue. You will find that child just west-north-west of here. That child should be in a home, not out by a jail.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 141561:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Someone in particular

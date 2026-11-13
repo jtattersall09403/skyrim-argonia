@@ -1,0 +1,21 @@
+FormKey: 000AD4:Argonia.esp
+Flags: {}
+PreviousDialog: 000AD3:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I am Wuleen-Taza, Agaceph, from the deep interior. Okan-Zish is of my crew, and a poor bargainer.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 08D5EF:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Yourself

@@ -1,8 +1,0 @@
-FormKey: 000A86:Argonia.esp
-EditorID: ARG_Talk_Secret
-Name:
-  TargetLanguage: English
-  Value: Little secret
-Branch: 000A85:Argonia.esp
-Quest: 000833:Argonia.esp
-SubtypeName: CUST

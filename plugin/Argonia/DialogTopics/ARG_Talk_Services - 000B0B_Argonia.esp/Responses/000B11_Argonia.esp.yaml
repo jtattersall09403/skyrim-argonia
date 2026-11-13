@@ -1,0 +1,21 @@
+FormKey: 000B11:Argonia.esp
+Flags: {}
+PreviousDialog: 000B10:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I sell nothing. I keep the gate. An iron door just north-north-west of here leads into a hall where a soldier of the levy stands guard.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 08D5E9:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Services

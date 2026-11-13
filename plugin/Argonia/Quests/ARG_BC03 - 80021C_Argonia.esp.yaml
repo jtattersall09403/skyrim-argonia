@@ -1,0 +1,706 @@
+FormKey: 80021C:Argonia.esp
+EditorID: ARG_BC03
+VirtualMachineAdapter:
+  Scripts:
+  - Name: ARG_QuestStages
+    Properties:
+    - MutagenObjectType: ScriptStringProperty
+      Name: Kind
+      Data: faction
+    - MutagenObjectType: ScriptStringListProperty
+      Name: Labels
+      Data:
+      - level=npc.imperial-penal-south.blackrose-prison.chainbreaker-envoy-camped-causeway
+      - level=npc.imperial-penal-south.blackrose.chainbreaker-patron
+      - level=npc.mercantile-coast.soulrest.berth-master
+      - level=npc.mercantile-coast.soulrest.crew-boss
+      - name=template|800242:Argonia.esp|077536:Skyrim.esm
+      - name=item|800242:Argonia.esp|thing.bc03.book
+      - name=base|800244:Argonia.esp|09424C:Skyrim.esm
+      - name=item|800245:Argonia.esp|thing.bc03.key
+      - name=thing|800245:Argonia.esp|thing.bc03.key
+      - name=template|800247:Argonia.esp|0A0F46:Skyrim.esm
+      - name=item|800247:Argonia.esp|thing.bc03.list
+      - name=item|07A91A:Skyrim.esm|item.steel-scimitar
+      - name=template|800248:Argonia.esp|09171B:Skyrim.esm
+      - name=item|800248:Argonia.esp|thing.bc03.tokens
+      - name=thing|800248:Argonia.esp|thing.bc03.tokens
+      - name=thing|800247:Argonia.esp|thing.bc03.list
+      - name=thing|800242:Argonia.esp|thing.bc03.book
+      - name=number|800249:Argonia.esp|flag.bc03.settled
+      - name=item|00000A:Skyrim.esm|item.lockpick
+      - name=faction|80022C:Argonia.esp|faction.chainbreakers
+      - quest=quest.bc.bc03
+      - kind=faction
+      - name=number|80023A:Argonia.esp|flag.bc02.settled
+      - trigger=take.thing.bc03.tokens.20-30|take|thing.bc03.tokens|until=40|20|30|
+      - trigger=death.npc.mercantile-coast.soulrest.berth-master.20-45|death|npc.mercantile-coast.soulrest.berth-master|until=30|20|45|choice
+    - MutagenObjectType: ScriptFloatListProperty
+      Name: Num
+      Data:
+      - 10
+      - 0
+      - 1
+      - 30
+      - 10
+      - 20
+      - 0
+      - 20
+      - 21
+      - 30
+      - 0
+      - 20
+      - 21
+      - 20
+      - 30
+      - 20
+      - 21
+      - 40
+      - 1000
+      - 20
+      - 21
+      - 40
+      - 20
+      - 40
+      - 1
+      - 20
+      - 21
+      - 50
+      - 1000
+      - 1
+      - 20
+      - 21
+      - 50
+      - 1
+      - 150
+      - 30
+      - 40
+      - 60
+      - 1
+      - 150
+      - 50
+      - 60
+      - 1
+      - 1
+      - 20
+      - 21
+      - 60
+      - 1
+      - 60
+      - 70
+      - 1
+      - 1
+      - 10
+      - 2
+      - 70
+      - 0
+      - 0
+      - 1
+      - 1
+      - 10
+      - 2
+      - 70
+      - 0
+      - 0
+      - 1
+      - 1
+      - 2
+      - 70
+      - 0
+      - 0
+      - 70
+      - 0
+    - MutagenObjectType: ScriptIntListProperty
+      Name: Op
+      Data:
+      - 2
+      - 5
+      - 14
+      - 1
+      - 3
+      - 2
+      - 32
+      - 3
+      - 2
+      - 23
+      - 32
+      - 3
+      - 2
+      - 3
+      - 2
+      - 3
+      - 3
+      - 2
+      - 23
+      - 3
+      - 3
+      - 2
+      - 3
+      - 2
+      - 20
+      - 3
+      - 3
+      - 2
+      - 23
+      - 20
+      - 3
+      - 3
+      - 2
+      - 21
+      - 22
+      - 3
+      - 3
+      - 2
+      - 21
+      - 22
+      - 3
+      - 2
+      - 21
+      - 21
+      - 3
+      - 3
+      - 2
+      - 21
+      - 3
+      - 2
+      - 21
+      - 24
+      - 20
+      - 27
+      - 15
+      - 7
+      - 6
+      - 21
+      - 24
+      - 20
+      - 27
+      - 15
+      - 7
+      - 6
+      - 21
+      - 24
+      - 27
+      - 15
+      - 7
+      - 6
+      - 16
+      - 6
+    - MutagenObjectType: ScriptStringProperty
+      Name: QuestId
+      Data: quest.bc.bc03
+    - MutagenObjectType: ScriptIntListProperty
+      Name: StageFrom
+      Data:
+      - 0
+      - 2
+      - 6
+      - 9
+      - 13
+      - 15
+      - 18
+      - 22
+      - 24
+      - 28
+      - 33
+      - 38
+      - 42
+      - 47
+      - 50
+      - 57
+      - 64
+      - 70
+    - MutagenObjectType: ScriptIntListProperty
+      Name: Stages
+      Data:
+      - 10
+      - 20
+      - 21
+      - 22
+      - 30
+      - 40
+      - 41
+      - 45
+      - 50
+      - 51
+      - 60
+      - 61
+      - 62
+      - 70
+      - 90
+      - 91
+      - 92
+      - 95
+    - MutagenObjectType: ScriptIntListProperty
+      Name: StageTo
+      Data:
+      - 2
+      - 6
+      - 9
+      - 13
+      - 15
+      - 18
+      - 22
+      - 24
+      - 28
+      - 33
+      - 38
+      - 42
+      - 47
+      - 50
+      - 57
+      - 64
+      - 70
+      - 72
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: What
+      Objects:
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 800248:Argonia.esp
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 120E95:Black Marsh.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 00000F:Skyrim.esm
+      - Name: ''
+        Object: 120E95:Black Marsh.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 00000F:Skyrim.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 800245:Argonia.esp
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 00000F:Skyrim.esm
+      - Name: ''
+        Object: 800245:Argonia.esp
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 800248:Argonia.esp
+      - Name: ''
+        Object: 00000F:Skyrim.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 800248:Argonia.esp
+      - Name: ''
+        Object: 00000F:Skyrim.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 800247:Argonia.esp
+      - Name: ''
+        Object: 800248:Argonia.esp
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 800242:Argonia.esp
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 800242:Argonia.esp
+      - Name: ''
+        Object: 800249:Argonia.esp
+      - Name: ''
+        Object: 00000A:Skyrim.esm
+      - Name: ''
+        Object: 80022C:Argonia.esp
+      - Name: ''
+      - Name: ''
+        Object: 0FC85D:Skyrim.esm
+      - Name: ''
+      - Name: ''
+        Object: 800242:Argonia.esp
+      - Name: ''
+        Object: 800249:Argonia.esp
+      - Name: ''
+        Object: 00000A:Skyrim.esm
+      - Name: ''
+        Object: 80022C:Argonia.esp
+      - Name: ''
+      - Name: ''
+        Object: 0FC85D:Skyrim.esm
+      - Name: ''
+      - Name: ''
+        Object: 800242:Argonia.esp
+      - Name: ''
+        Object: 800249:Argonia.esp
+      - Name: ''
+        Object: 80022C:Argonia.esp
+      - Name: ''
+      - Name: ''
+        Object: 0FC85D:Skyrim.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+  FileName: ARG_QuestStages
+  Fragments:
+  - Stage: 10
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_10
+  - Stage: 20
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_20
+  - Stage: 21
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_21
+  - Stage: 22
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_22
+  - Stage: 30
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_30
+  - Stage: 40
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_40
+  - Stage: 41
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_41
+  - Stage: 45
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_45
+  - Stage: 50
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_50
+  - Stage: 51
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_51
+  - Stage: 60
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_60
+  - Stage: 61
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_61
+  - Stage: 62
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_62
+  - Stage: 70
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_70
+  - Stage: 90
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_90
+  - Stage: 91
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_91
+  - Stage: 92
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_92
+  - Stage: 95
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_95
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 80021C:Argonia.esp
+      Alias: 3
+    Scripts:
+    - Name: ARG_AliasEffects
+      Properties:
+      - MutagenObjectType: ScriptFloatListProperty
+        Name: Num
+        Data:
+        - 20
+        - 29
+        - 45
+      - MutagenObjectType: ScriptIntListProperty
+        Name: Op
+        Data:
+        - 10
+        - 13
+        - 9
+      - MutagenObjectType: ScriptObjectListProperty
+        Name: What
+        Objects:
+        - Name: ''
+          Object: 80021C:Argonia.esp
+        - Name: ''
+          Object: 80021C:Argonia.esp
+        - Name: ''
+          Object: 80021C:Argonia.esp
+  - Property:
+      Name: ''
+      Object: 80021C:Argonia.esp
+      Alias: 11
+    Scripts:
+    - Name: ARG_AliasEffects
+      Properties:
+      - MutagenObjectType: ScriptFloatListProperty
+        Name: Num
+        Data:
+        - 20
+        - 39
+        - 30
+      - MutagenObjectType: ScriptIntProperty
+        Name: On
+        Data: 1
+      - MutagenObjectType: ScriptIntListProperty
+        Name: Op
+        Data:
+        - 10
+        - 13
+        - 9
+      - MutagenObjectType: ScriptObjectListProperty
+        Name: What
+        Objects:
+        - Name: ''
+          Object: 80021C:Argonia.esp
+        - Name: ''
+          Object: 80021C:Argonia.esp
+        - Name: ''
+          Object: 80021C:Argonia.esp
+Name:
+  TargetLanguage: English
+  Value: The Broker's Mercy
+Flags:
+- StartGameEnabled
+- RunOnce
+Priority: 50
+Type: SideQuest
+Stages:
+- Flags:
+  - StartUpStage
+  LogEntries:
+  - Flags: []
+- Index: 10
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: Never-Sold sent me to Soulrest's dock. The Broker, Ussa-Rekh, bought a crew free and keeps a carved token for each until they work a season for him; he has kept them a season more. Never-Sold wants the tokens, and the book on the Broker's shelf with Never-Sold on its spine. I'm to speak to Heavy-Rope by the docks.
+- Index: 20
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: Heavy-Rope told me the tokens are in the Broker's chest, in the north one of the three houses by the dock. The old man keeps the key on him, and Feldril Nethri keeps about outside the locked door. The berth-master Ra'Jhan pays for the season when it is sailed. I'm to free the crew by one of the three.
+- Index: 21
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: I talked Feldril Nethri round. He unbarred the Broker's door for me. I'm to free the crew by the chest, the Broker or the berth-master.
+- Index: 22
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: I paid Feldril Nethri 30 gold. He unbarred the Broker's door for me. I'm to free the crew by the chest, the Broker or the berth-master.
+- Index: 30
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: I took the crew's tokens from Ussa-Rekh's chest. His room was lit and cluttered, a chest, a shelf and a bed or two, and a book with Never-Sold's name on its spine stood on the shelf. He keeps the eleven names at Thorn, a price beside each. I'm to bring the tokens to Heavy-Rope.
+- Index: 40
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: I talked Ra'Jhan into giving up the season. The hire is void. I'm to tell Heavy-Rope.
+- Index: 41
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: I paid Ra'Jhan 1,000 gold to give up the season. The hire is void. I'm to tell Heavy-Rope.
+- Index: 45
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: Ra'Jhan is dead. With the berth-master dead, the hire is void. I'm to tell Heavy-Rope.
+- Index: 50
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: I talked Ussa-Rekh round. He let the crew go and will sign his own season to the berth-master. He gave me his key, for the tokens are in his chest. I'm to bring them to Heavy-Rope.
+- Index: 51
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: I paid Ussa-Rekh the season's hire, 1,000 gold, out of my own purse. He let the crew go. He gave me his key, for the tokens are in his chest. I'm to bring them to Heavy-Rope.
+- Index: 60
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: The crew are free of the last season. Heavy-Rope gave me 150 gold of the crew's thanks. I'm to tell Never-Sold how it ended, and bring her the book from the Broker's shelf with her name on its spine.
+- Index: 61
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: I gave Heavy-Rope the crew's tokens and told him the Broker let them go. He gave me 150 gold of the crew's thanks. I'm to tell Never-Sold how it ended, and bring her the book from the Broker's shelf with her name on its spine.
+- Index: 62
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: Heavy-Rope will sail the last season, for the eleven at Thorn. He chose it himself, and bitterly. I'm to tell Never-Sold how it ended, and bring her the book from the Broker's shelf with her name on its spine.
+- Index: 70
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: I told Never-Sold she wrote the first lines of Rows-For-Another's Owing. She took the book and answered once, plainly. I'm to tell her how it ended at the dock.
+- Index: 90
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+    Entry:
+      TargetLanguage: English
+      Value: I told Never-Sold the crew are free of the season. The eleven at Thorn have lost the hire that was to buy them out. She gave me lockpicks, named me a full Chainbreaker and said to come back to her for more work.
+- Index: 91
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+    Entry:
+      TargetLanguage: English
+      Value: I told Never-Sold that Ussa-Rekh let the crew go himself, and that somebody paid for it, the old man or my own purse. She went quiet, then said, "He would. That is the worst of him." She gave me lockpicks, named me a full Chainbreaker and said to come back to her for more work.
+- Index: 92
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+    Entry:
+      TargetLanguage: English
+      Value: 'I told Never-Sold that Heavy-Rope will sail the last season for the eleven at Thorn. The crew lose the ending they were promised. She named me a full Chainbreaker and gave me nothing else: "Eleven. I cannot tell you that you were wrong. I can tell you he will ask again." She said to come back to her for more work.'
+- Index: 95
+  LogEntries:
+  - Flags:
+    - FailQuest
+    Entry:
+      TargetLanguage: English
+      Value: Never-Sold or Heavy-Rope is dead. The crew have nobody to speak for them now.
+Objectives:
+- Index: 10
+  DisplayText:
+    TargetLanguage: English
+    Value: Speak to Heavy-Rope at the shore by Soulrest's docks.
+  Targets:
+  - AliasID: 4
+- Index: 20
+  DisplayText:
+    TargetLanguage: English
+    Value: "Free the crew: take the tokens from Ussa-Rekh's chest (his key, or the lock; Feldril Nethri keeps his door), or win Ussa-Rekh's word, or end Ra'Jhan's hire. Bring Never-Sold the book from Ussa-Rekh's shelf that has Never-Sold on its spine."
+  Targets:
+  - AliasID: 11
+  - AliasID: 1
+  - AliasID: 3
+  - AliasID: 5
+  - AliasID: 4
+  - AliasID: 6
+- Index: 21
+  DisplayText:
+    TargetLanguage: English
+    Value: "Free the crew: take the tokens from Ussa-Rekh's chest (his key, or the lock), or win Ussa-Rekh's word, or end Ra'Jhan's hire. Bring Never-Sold the book from Ussa-Rekh's shelf that has Never-Sold on its spine."
+  Targets:
+  - AliasID: 11
+  - AliasID: 1
+  - AliasID: 3
+  - AliasID: 4
+  - AliasID: 6
+- Index: 30
+  DisplayText:
+    TargetLanguage: English
+    Value: Give the crew's tokens to Heavy-Rope on the shore by the docks, and take the book with Never-Sold on its spine from the Broker's shelf.
+  Targets:
+  - AliasID: 4
+  - AliasID: 6
+- Index: 40
+  DisplayText:
+    TargetLanguage: English
+    Value: Tell Heavy-Rope on the shore by the docks that the hire is void, and fetch the book with Never-Sold on its spine from the Broker's shelf.
+  Targets:
+  - AliasID: 4
+  - AliasID: 6
+- Index: 50
+  DisplayText:
+    TargetLanguage: English
+    Value: Open Ussa-Rekh's chest with his key and bring the crew's tokens to Heavy-Rope. Take the book with Never-Sold on its spine from the shelf there.
+  Targets:
+  - AliasID: 11
+  - AliasID: 4
+  - AliasID: 6
+- Index: 60
+  DisplayText:
+    TargetLanguage: English
+    Value: Bring Never-Sold the book from the Broker's shelf with her name on its spine, and tell her in the Chainbreakers' house in Blackrose how it ended.
+  Targets:
+  - AliasID: 2
+  - AliasID: 6
+- Index: 70
+  DisplayText:
+    TargetLanguage: English
+    Value: Tell Never-Sold how it ended at Soulrest's dock.
+  Targets:
+  - AliasID: 2
+Aliases:
+- Name: door.bc03.broker-door
+  ForcedReference: 120E95:Black Marsh.esm
+- ID: 1
+  Name: npc.imperial-penal-south.blackrose-prison.chainbreaker-envoy-camped-causeway
+  ForcedReference: 80023B:Argonia.esp
+- ID: 2
+  Name: npc.imperial-penal-south.blackrose.chainbreaker-patron
+  ForcedReference: 80021D:Argonia.esp
+- ID: 3
+  Name: npc.mercantile-coast.soulrest.berth-master
+  ForcedReference: 80023D:Argonia.esp
+- ID: 4
+  Name: npc.mercantile-coast.soulrest.crew-boss
+  ForcedReference: 80023F:Argonia.esp
+- ID: 5
+  Name: npc.mercantile-coast.soulrest.feldril-nethri
+  ForcedReference: 0616E8:Black Marsh North.esp
+- ID: 6
+  Name: thing.bc03.book
+  ForcedReference: 800241:Argonia.esp
+- ID: 7
+  Name: thing.bc03.chest
+  ForcedReference: 800243:Argonia.esp
+- ID: 8
+  Name: thing.bc03.key
+  CreateReferenceToObject:
+    Object: 800245:Argonia.esp
+    AliasID: 1
+    Create: In
+- ID: 9
+  Name: thing.bc03.list
+  ForcedReference: 800246:Argonia.esp
+- ID: 10
+  Name: thing.bc03.scimitar
+  CreateReferenceToObject:
+    Object: 07A91A:Skyrim.esm
+    AliasID: 3
+    Create: In
+- ID: 11
+  Name: thing.bc03.tokens
+  CreateReferenceToObject:
+    Object: 800248:Argonia.esp
+    AliasID: 7
+    Create: In

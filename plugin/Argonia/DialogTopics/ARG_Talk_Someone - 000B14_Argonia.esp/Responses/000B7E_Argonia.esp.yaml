@@ -1,0 +1,21 @@
+FormKey: 000B7E:Argonia.esp
+Flags: {}
+PreviousDialog: 000B7D:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Ojeel? He unloads the big ship. He is usually just north of here. He chases me off the ship every time, so do not say I sent you.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 1454F5:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Someone in particular

@@ -7,7 +7,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: This is the gate of Helstrom, outlander. Dwemer ruins stand just south of me and just north-north-west. A stone tower stands just east-south-east.
+    Value: This is the road to Helstrom, outlander. Dwemer ruins stand just south-west of me. A stone tower stands just east-south-east, and houses just north-west.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -15,7 +15,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: A waterfall falls just south-west of here. Two bridges cross the water beside it, one just south-south-west and one just south-west. Do not wander far from the path.
+    Value: Shallow water lies just south-west of here, with bridges just south-south-west and just south-west. Do not wander far from the path.
   ScriptNotes: ''
   Edits: ''
 Conditions:

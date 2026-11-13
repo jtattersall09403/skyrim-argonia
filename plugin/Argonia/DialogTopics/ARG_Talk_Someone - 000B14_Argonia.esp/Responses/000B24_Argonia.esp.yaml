@@ -1,0 +1,21 @@
+FormKey: 000B24:Argonia.esp
+Flags: {}
+PreviousDialog: 000B23:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: If you are looking for a sellsword, traveller, try Tertius Vallo. He serves with the Imperial sellswords, and he patrols from the docks up to the centre.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 01CCF4:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Someone in particular

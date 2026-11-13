@@ -7,14 +7,14 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Tilts-The-Jug sometimes wants careful hands, ojel. Mine are for hauling. Try the house on the dock.
+    Value: Careful hands are sometimes of use to Tilts-The-Jug, child. I am told that Tilts-The-Jug is inside one of the houses here. I always look at a stranger's hands first. Let me see yours.
   ScriptNotes: ''
   Edits: ''
 Conditions:
 - MutagenObjectType: ConditionFloat
   Data:
     MutagenObjectType: GetIsReferenceConditionData
-    Target: 05D7CD:Black Marsh.esm
+    Target: 05D7CB:Black Marsh.esm
   ComparisonValue: 1
 - MutagenObjectType: ConditionFloat
   Data:

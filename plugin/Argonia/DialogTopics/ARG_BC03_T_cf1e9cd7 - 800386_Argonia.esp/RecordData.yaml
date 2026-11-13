@@ -1,0 +1,8 @@
+FormKey: 800386:Argonia.esp
+EditorID: ARG_BC03_T_cf1e9cd7
+Name:
+  TargetLanguage: English
+  Value: The crew are done. Step aside or be put aside.
+Branch: 800387:Argonia.esp
+Quest: 80021C:Argonia.esp
+SubtypeName: CUST

@@ -1,0 +1,27 @@
+FormKey: 800220:Argonia.esp
+EditorID: ARG_R_npc_imperial_penal_south_blackrose_estate_debtor_Base
+Configuration:
+  Flags:
+  - Female
+  - AutoCalcStats
+  Level:
+    MutagenObjectType: NpcLevel
+    Level: 6
+  TemplateFlags:
+  - Traits
+  - Factions
+  - SpellList
+  - AIData
+  - AIPackages
+  - ModelAnimation
+  - Inventory
+  - Script
+  - DefPackList
+  - AttackData
+  - Keywords
+Template: 02A1EE:Black Marsh.esm
+Race: 013740:Skyrim.esm
+Class: 013176:Skyrim.esm
+Name:
+  TargetLanguage: English
+  Value: Rows-For-Another

@@ -1,0 +1,21 @@
+FormKey: 000ADD:Argonia.esp
+Flags: {}
+PreviousDialog: 000ADC:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I'm Tertius Vallo, a soldier of the hired Imperial company. I walk my post and watch the town; that's most of the work.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 0934C0:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Yourself

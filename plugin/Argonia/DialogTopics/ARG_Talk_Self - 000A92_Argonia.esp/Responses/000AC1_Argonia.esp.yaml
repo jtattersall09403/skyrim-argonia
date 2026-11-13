@@ -1,0 +1,21 @@
+FormKey: 000AC1:Argonia.esp
+Flags: {}
+PreviousDialog: 000AC0:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I am Little-Gecko. I sit in the middle, sir, where the grown-ups talk, so I hear everything. One day I will be a boat captain.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 05D7CA:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Yourself

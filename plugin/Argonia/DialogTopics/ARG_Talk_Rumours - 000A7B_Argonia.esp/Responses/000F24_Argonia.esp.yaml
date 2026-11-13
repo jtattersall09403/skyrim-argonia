@@ -1,25 +1,25 @@
 FormKey: 000F24:Argonia.esp
 Flags: {}
-PreviousDialog: 000A84:Argonia.esp
+PreviousDialog: 000A86:Argonia.esp
 Responses:
 - ResponseNumber: 1
   Unknown2: 0x000000
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Careful hands are sometimes of use to Tilts-The-Jug, child. Inside the house on Soulrest's dock, I am told. I always look at a stranger's hands first. Let me see yours.
+    Value: I hear Heavy-Rope leads a crew on Soulrest's dock. The crew want their season ended early, traveller. The broker who hires them out will not hear of it. I only watch from the docks, so go and ask Heavy-Rope yourself.
   ScriptNotes: ''
   Edits: ''
 Conditions:
 - MutagenObjectType: ConditionFloat
   Data:
     MutagenObjectType: GetIsReferenceConditionData
-    Target: 05D7CB:Black Marsh.esm
+    Target: 05D7C8:Black Marsh.esm
   ComparisonValue: 1
 - MutagenObjectType: ConditionFloat
   Data:
     MutagenObjectType: GetStageConditionData
-    Quest: 800002:Argonia.esp
+    Quest: 80021C:Argonia.esp
 Prompt:
   TargetLanguage: English
   Value: Latest rumours

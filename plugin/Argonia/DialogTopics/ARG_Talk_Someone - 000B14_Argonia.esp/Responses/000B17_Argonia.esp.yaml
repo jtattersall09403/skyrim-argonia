@@ -1,0 +1,21 @@
+FormKey: 000B17:Argonia.esp
+Flags: {}
+PreviousDialog: 000B16:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Okan-Wul is usually about the campfire. I make sure he eats. Tumeesh is about it too and is sweet and lazy. Uleesh fishes the open water west of Lilmoth, far east of here, and sells me my fish. There is no more honest man on that water.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 01512B:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Someone in particular

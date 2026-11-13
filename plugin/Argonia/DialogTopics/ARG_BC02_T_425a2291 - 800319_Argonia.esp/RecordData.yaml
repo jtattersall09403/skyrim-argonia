@@ -1,0 +1,8 @@
+FormKey: 800319:Argonia.esp
+EditorID: ARG_BC02_T_425a2291
+Name:
+  TargetLanguage: English
+  Value: You drowned Otheel, and Seven-Floods asks for you anyway. Go when I am gone.
+Branch: 80031A:Argonia.esp
+Quest: 80021B:Argonia.esp
+SubtypeName: CUST

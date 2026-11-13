@@ -1,0 +1,21 @@
+FormKey: 000ADF:Argonia.esp
+Flags: {}
+PreviousDialog: 000ADE:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Severan Otho, soldier of the hired company. I walk the east houses, where Jeelus-Vax keeps the guard. It's honest work, traveller, though I'll be glad to go home.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 0934C2:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Yourself

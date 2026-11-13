@@ -7,7 +7,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Traveller. What can I do for you? Quickly, if you can; I've stores to see to.
+    Value: Traveller. What can I do for you? Quickly, if you can; I've my rounds to make.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -15,7 +15,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Well, traveller. State your business, or let me get on. I cannot stop the tide for either of us.
+    Value: Traveller, say what you want or let me get on. I have my rounds to make.
   ScriptNotes: ''
   Edits: ''
 Conditions:

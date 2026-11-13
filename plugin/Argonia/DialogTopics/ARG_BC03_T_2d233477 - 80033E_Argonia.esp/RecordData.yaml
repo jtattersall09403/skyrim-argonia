@@ -1,0 +1,8 @@
+FormKey: 80033E:Argonia.esp
+EditorID: ARG_BC03_T_2d233477
+Name:
+  TargetLanguage: English
+  Value: Never-Sold sent me. Where are your tokens?
+Branch: 80033F:Argonia.esp
+Quest: 80021C:Argonia.esp
+SubtypeName: CUST

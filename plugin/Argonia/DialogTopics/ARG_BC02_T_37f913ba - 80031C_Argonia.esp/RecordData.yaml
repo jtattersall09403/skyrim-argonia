@@ -1,0 +1,8 @@
+FormKey: 80031C:Argonia.esp
+EditorID: ARG_BC02_T_37f913ba
+Name:
+  TargetLanguage: English
+  Value: You asked me to take Mends-Nets. I am taking you. Go when I am gone.
+Branch: 80031D:Argonia.esp
+Quest: 80021B:Argonia.esp
+SubtypeName: CUST

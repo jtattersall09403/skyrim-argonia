@@ -1,0 +1,180 @@
+FormKey: 8002E2:Argonia.esp
+VirtualMachineAdapter:
+  Scripts:
+  - Name: ARG_LineEffects
+    Properties:
+    - MutagenObjectType: ScriptStringProperty
+      Name: Line
+      Data: topic.bc02-tsaxi-three@npc.imperial-penal-south.blackrose.post-gatekeeper#10-10
+    - MutagenObjectType: ScriptFloatListProperty
+      Name: Num
+      Data:
+      - 20
+    - MutagenObjectType: ScriptIntListProperty
+      Name: Op
+      Data:
+      - 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Owner
+      Object: 80021B:Argonia.esp
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: What
+      Objects:
+      - Name: ''
+    - MutagenObjectType: ScriptBoolProperty
+      Name: Written
+      Data: True
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: ARG_LineEffects
+    OnEnd:
+      ScriptName: ARG_LineEffects
+      FragmentName: Fragment_End
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: You come from the north house. I know the Broker's children when I see them, and I say that once and no more. I will not explain it.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Ask the woman who sent you. A fire went through the upper floors of the Rose.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 3
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: The heirs sent three of their held up to me, to keep until the Rose's leaves came after them.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 4
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: The leaves are the pages that say what each person is held for. I cannot read them, so a reckoner was to carry them and read them out.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 5
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: A reckoner is the one who reads the Rose's leaves and keeps its count. The three are a young man, a young woman and an old woman.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 6
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: 'The old woman is held for a roof: she owes the heirs for the shelter they gave her. One of the two young ones is held for words said in the yard.'
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 7
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: The other is held for a killing, and when the leaf is read that one will be put under.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 8
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: To be put under is to be sent down below the Rose, past the gate, where the dead still walk. Nobody comes up.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 9
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Which of the two young ones is which, I do not know. Both say they are the one held for words. Both can say the words.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 10
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I was given them at this post, and I did not count what their hands had done. Hear what I can do.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 11
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I can lose one of the three to the smoke, and the heirs will believe it, because people die in fires. I cannot lose two.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 12
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Two is a hunt, and the hunt ends at my neck. So only one can leave this post, and it is for you to say which.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 13
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: The reckoner came north by the wet road round the west of the lake. He had four with him, and none came back.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 14
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: His camp is the hut in the swamp, far west of the town, round the lake by the wet road. I do not say what is in that swamp.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 15
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I say five men went into it and none came back, so go armed or do not go. If you find his leaves, read them before you choose.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 16
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I cannot, and no one here can.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 800235:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  CompareOperator: GreaterThanOrEqualTo
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 80021B:Argonia.esp
+  ComparisonValue: 10
+- MutagenObjectType: ConditionFloat
+  CompareOperator: LessThanOrEqualTo
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 80021B:Argonia.esp
+  ComparisonValue: 10

@@ -1,0 +1,21 @@
+FormKey: 000A9D:Argonia.esp
+Flags: {}
+PreviousDialog: 000A9C:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Myself? I came to Thorn a free man, outlander, to trade. Then I lost a wager I could not pay, and my Owing has been sold once already. As for the rest, my grandmother was Argonian on one side, and I could not tell you which side I am on.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 01CCDE:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Yourself

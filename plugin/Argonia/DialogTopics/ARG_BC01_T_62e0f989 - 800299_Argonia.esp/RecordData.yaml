@@ -1,0 +1,8 @@
+FormKey: 800299:Argonia.esp
+EditorID: ARG_BC01_T_62e0f989
+Name:
+  TargetLanguage: English
+  Value: Take your head-price from me and look away. (150 gold)
+Branch: 80029A:Argonia.esp
+Quest: 80021A:Argonia.esp
+SubtypeName: CUST

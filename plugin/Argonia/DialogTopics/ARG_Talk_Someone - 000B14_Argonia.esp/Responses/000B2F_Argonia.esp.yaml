@@ -1,0 +1,21 @@
+FormKey: 000B2F:Argonia.esp
+Flags: {}
+PreviousDialog: 000B2E:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: The band is camped here. Keeps-Both-Edges is just west of these bedrolls. Heem-Tsal, the fire mage, is just past him. I trust Keeps-Both-Edges with my purse.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 02A204:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Someone in particular

@@ -1,0 +1,8 @@
+FormKey: 000B14:Argonia.esp
+EditorID: ARG_Talk_Someone
+Name:
+  TargetLanguage: English
+  Value: Someone in particular
+Branch: 000B13:Argonia.esp
+Quest: 000833:Argonia.esp
+SubtypeName: CUST

@@ -1,0 +1,21 @@
+FormKey: 000B57:Argonia.esp
+Flags: {}
+PreviousDialog: 000B56:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Doveth Aralen is a Dunmer held under an Owing, and the eldest of the house's labourers. You will find Doveth just south-south-east of here. Doveth is slow, party, so ask and then wait.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 0934C3:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Someone in particular

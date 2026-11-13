@@ -1,0 +1,21 @@
+FormKey: 000AE8:Argonia.esp
+Flags: {}
+PreviousDialog: 000AE7:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I am Okaw-Sei, guard at the dock. I keep watch here, above it. I was told to watch for anything unusual. I am newly hatched to the guard, but I mean to serve it well.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 0C7255:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Yourself

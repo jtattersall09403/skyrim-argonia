@@ -1,0 +1,8 @@
+FormKey: 80026E:Argonia.esp
+EditorID: ARG_BC01_T_49af4ccf
+Name:
+  TargetLanguage: English
+  Value: Take the first price and strike her leaf. You have carried worse. (Persuade) (100 gold)
+Branch: 80026F:Argonia.esp
+Quest: 80021A:Argonia.esp
+SubtypeName: CUST

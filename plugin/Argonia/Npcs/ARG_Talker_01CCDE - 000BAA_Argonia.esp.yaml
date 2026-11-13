@@ -1,0 +1,27 @@
+FormKey: 000BAA:Argonia.esp
+EditorID: ARG_Talker_01CCDE
+Configuration:
+  Flags:
+  - AutoCalcStats
+  - Unique
+  Level:
+    MutagenObjectType: NpcLevel
+    Level: 1
+  TemplateFlags:
+  - Traits
+  - Factions
+  - SpellList
+  - AIData
+  - AIPackages
+  - ModelAnimation
+  - Inventory
+  - Script
+  - DefPackList
+  - AttackData
+  - Keywords
+Template: 01CCD8:Black Marsh North.esp
+Race: 013742:Skyrim.esm
+Class: 01326C:Skyrim.esm
+Name:
+  TargetLanguage: English
+  Value: Nalvos Brenur

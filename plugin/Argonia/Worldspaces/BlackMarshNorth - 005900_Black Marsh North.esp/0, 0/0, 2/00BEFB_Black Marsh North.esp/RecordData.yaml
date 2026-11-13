@@ -8,7 +8,7 @@ WaterHeight: 3.4028235E+38
 Temporary:
 - MutagenObjectType: PlacedNpc
   FormKey: 01CCFA:Black Marsh North.esp
-  Base: 000BB3:Argonia.esp
+  Base: 000BB5:Argonia.esp
   LinkedReferences:
   - Reference: 01CCFB:Black Marsh North.esp
   ActivateParents:
@@ -19,7 +19,7 @@ Temporary:
     Rotation: 0, 0, 3.6831903
 - MutagenObjectType: PlacedNpc
   FormKey: 01CD04:Black Marsh North.esp
-  Base: 000BB7:Argonia.esp
+  Base: 000BB9:Argonia.esp
   LinkedReferences:
   - Reference: 01CD07:Black Marsh North.esp
   ActivateParents:

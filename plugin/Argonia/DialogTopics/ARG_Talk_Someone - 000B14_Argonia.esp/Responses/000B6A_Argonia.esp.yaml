@@ -1,0 +1,21 @@
+FormKey: 000B6A:Argonia.esp
+Flags: {}
+PreviousDialog: 000B69:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Lux Ha, the net-mender, is usually just south-south-west of here. Lux Ha works too hard. I doubt that one has eaten.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 0C7266:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Someone in particular

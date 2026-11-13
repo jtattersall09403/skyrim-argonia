@@ -1,0 +1,21 @@
+FormKey: 000B4F:Argonia.esp
+Flags: {}
+PreviousDialog: 000B4E:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Quintus Albero is a young soldier of our company. He keeps about the ship and the dock. You'll hear him before you reach him.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 0934BB:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Someone in particular

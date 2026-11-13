@@ -1,0 +1,21 @@
+FormKey: 000B18:Argonia.esp
+Flags: {}
+PreviousDialog: 000B17:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Looks-At-Books stands by the tables, just west of the barrels. She is the only person here with whom a talk is worth having, guest. Hurz-Weel is about the barrels. He tramps mud about the place, and I do not forgive it.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 015193:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Someone in particular

@@ -1,0 +1,21 @@
+FormKey: 000B99:Argonia.esp
+Flags: {}
+PreviousDialog: 000B98:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I'm a corporal of the company, traveller. We keep our stores on the ship. All I ask is that the pay comes on time.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 0934BD:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: My trade

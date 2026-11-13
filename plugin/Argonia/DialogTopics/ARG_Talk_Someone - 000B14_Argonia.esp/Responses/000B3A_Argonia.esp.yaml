@@ -1,0 +1,21 @@
+FormKey: 000B3A:Argonia.esp
+Flags: {}
+PreviousDialog: 000B39:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Xeeh-Nah keeps near the benches. Xeeh-Nah should marry, I always say. Go and see, child.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 05D7CB:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Someone in particular

@@ -1,0 +1,21 @@
+FormKey: 000B40:Argonia.esp
+Flags: {}
+PreviousDialog: 000B3F:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Hulee-Tah keeps by his hut south-south-west of here, not far off. He is loud. Keep him away from my water.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 084A8F:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Someone in particular

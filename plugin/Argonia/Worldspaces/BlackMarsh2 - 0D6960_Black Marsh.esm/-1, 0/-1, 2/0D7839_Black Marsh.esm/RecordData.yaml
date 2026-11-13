@@ -30,6 +30,6 @@ Temporary:
   - InitiallyDisabled
 - MutagenObjectType: PlacedNpc
   FormKey: 08D5EA:Black Marsh North.esp
-  Base: 000BDB:Argonia.esp
+  Base: 000BDD:Argonia.esp
   Placement:
     Position: -28973.684, 70298.836, 2.8552246

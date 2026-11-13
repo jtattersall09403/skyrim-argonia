@@ -1,0 +1,8 @@
+FormKey: 800399:Argonia.esp
+EditorID: ARG_BC03_T_0219476b
+Name:
+  TargetLanguage: English
+  Value: It's done at the dock. The Broker let them go himself.
+Branch: 80039A:Argonia.esp
+Quest: 80021C:Argonia.esp
+SubtypeName: CUST

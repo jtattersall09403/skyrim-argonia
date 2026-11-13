@@ -1,0 +1,21 @@
+FormKey: 000B6D:Argonia.esp
+Flags: {}
+PreviousDialog: 000B6C:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Lux Ha works the nets on the market dock. Usually just east-south-east of here. Lux Ha should be paid more.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 0C7269:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Someone in particular

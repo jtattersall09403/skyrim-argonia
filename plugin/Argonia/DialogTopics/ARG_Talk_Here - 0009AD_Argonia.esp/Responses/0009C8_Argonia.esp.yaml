@@ -7,7 +7,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: This is our village, walker. A few families live on the marsh outside Lilmoth. The cooking spit stands in the middle of the village. From the spit, the carpenter's bench is just south-south-east and a food barrel just east-south-east.
+    Value: This is our village, walker. A few families live on the marsh outside Lilmoth. The cooking spit stands in the middle of the village. From the spit, a table and a food barrel stand just east.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -15,7 +15,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: We keep a second hearth just west of this spit, on the west edge of the village. It has food barrels, a cooking pot and a bed. They belong to the families.
+    Value: We keep a second hearth just west of this spit, on the west edge of the village. It has food barrels and a bed. They belong to the families.
   ScriptNotes: ''
   Edits: ''
 Conditions:

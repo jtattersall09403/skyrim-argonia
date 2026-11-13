@@ -1,0 +1,21 @@
+FormKey: 000A85:Argonia.esp
+Flags: {}
+PreviousDialog: 000A84:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: For news of the road toward Haven, ask Tzeel-Vaa. He is the only honest guard at the town's edge, so he will tell it straight.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 1454FC:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Latest rumours

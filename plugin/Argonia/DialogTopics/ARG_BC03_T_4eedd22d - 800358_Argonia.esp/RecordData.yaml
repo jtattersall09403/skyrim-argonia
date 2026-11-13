@@ -1,0 +1,8 @@
+FormKey: 800358:Argonia.esp
+EditorID: ARG_BC03_T_4eedd22d
+Name:
+  TargetLanguage: English
+  Value: Read this list. Then tell me you won't sail.
+Branch: 800359:Argonia.esp
+Quest: 80021C:Argonia.esp
+SubtypeName: CUST

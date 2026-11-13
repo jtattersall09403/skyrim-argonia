@@ -1,0 +1,26 @@
+FormKey: 80023C:Argonia.esp
+EditorID: ARG_R_npc_imperial_penal_south_blackrose_prison_chainbreaker_envoy_camped_causeway_Base
+Configuration:
+  Flags:
+  - AutoCalcStats
+  Level:
+    MutagenObjectType: NpcLevel
+    Level: 8
+  TemplateFlags:
+  - Traits
+  - Factions
+  - SpellList
+  - AIData
+  - AIPackages
+  - ModelAnimation
+  - Inventory
+  - Script
+  - DefPackList
+  - AttackData
+  - Keywords
+Template: 043E58:Skyrim.esm
+Race: 013740:Skyrim.esm
+Class: 013176:Skyrim.esm
+Name:
+  TargetLanguage: English
+  Value: Ussa-Rekh

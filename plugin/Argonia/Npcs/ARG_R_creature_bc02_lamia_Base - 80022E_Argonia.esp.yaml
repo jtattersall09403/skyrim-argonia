@@ -1,0 +1,30 @@
+FormKey: 80022E:Argonia.esp
+EditorID: ARG_R_creature_bc02_lamia_Base
+Configuration:
+  Flags:
+  - AutoCalcStats
+  Level:
+    MutagenObjectType: NpcLevel
+    Level: 14
+  TemplateFlags:
+  - Traits
+  - Factions
+  - SpellList
+  - AIPackages
+  - ModelAnimation
+  - Inventory
+  - Script
+  - DefPackList
+  - AttackData
+  - Keywords
+Template: 04F26C:Black Marsh North.esp
+Race: 0131F5:Skyrim.esm
+AIData:
+  Aggression: VeryAggressive
+  Confidence: Brave
+  Responsibility: NoCrime
+  Assistance: HelpsAllies
+Class: 039D30:Skyrim.esm
+Name:
+  TargetLanguage: English
+  Value: Swamp Lamia

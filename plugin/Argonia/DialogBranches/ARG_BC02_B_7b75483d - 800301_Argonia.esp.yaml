@@ -1,0 +1,7 @@
+FormKey: 800301:Argonia.esp
+EditorID: ARG_BC02_B_7b75483d
+Quest: 80021B:Argonia.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 800300:Argonia.esp

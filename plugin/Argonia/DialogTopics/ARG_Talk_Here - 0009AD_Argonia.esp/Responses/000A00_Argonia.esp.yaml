@@ -15,7 +15,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Just north-east is my house. Just east-north-east is the dock. I patch the boats there.
+    Value: My house is just north-east of here. The dock is just east-north-east.
   ScriptNotes: ''
   Edits: ''
 Conditions:

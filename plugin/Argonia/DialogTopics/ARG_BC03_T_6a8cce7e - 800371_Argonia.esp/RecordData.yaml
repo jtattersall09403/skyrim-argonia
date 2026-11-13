@@ -1,0 +1,8 @@
+FormKey: 800371:Argonia.esp
+EditorID: ARG_BC03_T_6a8cce7e
+Name:
+  TargetLanguage: English
+  Value: I found Never-Sold's book on your shelf.
+Branch: 800372:Argonia.esp
+Quest: 80021C:Argonia.esp
+SubtypeName: CUST

@@ -1,0 +1,8 @@
+FormKey: 8002EC:Argonia.esp
+EditorID: ARG_BC02_T_769b24d5
+Name:
+  TargetLanguage: English
+  Value: Here is the gold you want. Count one lost to the smoke. (300 gold)
+Branch: 8002ED:Argonia.esp
+Quest: 80021B:Argonia.esp
+SubtypeName: CUST

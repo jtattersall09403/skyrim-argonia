@@ -6,7 +6,7 @@ SkyrimMajorRecordFlags:
 - Compressed
 Name:
   TargetLanguage: English
-  Value: House
+  Value: Dock Houses, Soulrest
 Flags:
 - IsInteriorCell
 - PublicArea
@@ -55,6 +55,52 @@ Persistent:
     Position: 2300, 1150, 7530
   MajorFlags:
   - Persistent
+- MutagenObjectType: PlacedNpc
+  FormKey: 80023B:Argonia.esp
+  MajorRecordFlagsRaw: 1024
+  EditorID: ARG_R_npc_imperial_penal_south_blackrose_prison_chainbreaker_envoy_camped_causeway
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 80023C:Argonia.esp
+  Placement:
+    Position: 380, 2950, 7520
+  MajorFlags:
+  - Persistent
+- MutagenObjectType: PlacedObject
+  FormKey: 800241:Argonia.esp
+  MajorRecordFlagsRaw: 1024
+  EditorID: ARG_R_thing_bc03_book
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 800242:Argonia.esp
+  Owner: 80023C:Argonia.esp
+  Placement:
+    Position: 97, 2800, 7585
+- MutagenObjectType: PlacedObject
+  FormKey: 800243:Argonia.esp
+  MajorRecordFlagsRaw: 1024
+  EditorID: ARG_R_thing_bc03_chest
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 800244:Argonia.esp
+  Lock:
+    Level: Expert
+    Unused: 0x000000
+    Key: 800245:Argonia.esp
+    Unused2: 0x0000000000000000000000
+  Owner: 80023C:Argonia.esp
+  Placement:
+    Position: 300, 2900, 7520
+- MutagenObjectType: PlacedObject
+  FormKey: 800246:Argonia.esp
+  MajorRecordFlagsRaw: 1024
+  EditorID: ARG_R_thing_bc03_list
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 800247:Argonia.esp
+  Owner: 80023C:Argonia.esp
+  Placement:
+    Position: 950, 3230, 7583
 Temporary:
 - MutagenObjectType: PlacedNpc
   FormKey: 059BF3:Black Marsh North.esp

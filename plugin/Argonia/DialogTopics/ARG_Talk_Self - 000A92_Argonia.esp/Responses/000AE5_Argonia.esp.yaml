@@ -1,0 +1,21 @@
+FormKey: 000AE5:Argonia.esp
+Flags: {}
+PreviousDialog: 000AE4:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I am Counts-The-Tolls, guard at this post. I was a debtor once, working off an owing on the water. I took this post as the way out. I know how that sounds, but the post is paid work and the water was not.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 0C7251:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Yourself

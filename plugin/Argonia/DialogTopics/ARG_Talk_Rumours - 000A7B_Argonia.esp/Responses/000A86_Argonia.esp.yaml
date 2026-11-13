@@ -1,0 +1,21 @@
+FormKey: 000A86:Argonia.esp
+Flags: {}
+PreviousDialog: 000A85:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Ask Namorine about Stormhold. I say the Stormhold folk are soft. I say it to anyone who asks.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 166BC1:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Latest rumours

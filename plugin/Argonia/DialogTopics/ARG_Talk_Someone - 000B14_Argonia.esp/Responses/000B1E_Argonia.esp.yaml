@@ -1,0 +1,21 @@
+FormKey: 000B1E:Argonia.esp
+Flags: {}
+PreviousDialog: 000B1D:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Quill-Teeth, the Tax Heel collector of Owings, is just north of here. Quill-Teeth pushes too hard, in my view. Go carefully.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 01CCE5:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Someone in particular

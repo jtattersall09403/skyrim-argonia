@@ -1,0 +1,21 @@
+FormKey: 000B77:Argonia.esp
+Flags: {}
+PreviousDialog: 000B76:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Pitch-Pot seals the boats at this dock. He works harder than anyone on the docks. You will usually find him just east-south-east of me.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 141539:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Someone in particular

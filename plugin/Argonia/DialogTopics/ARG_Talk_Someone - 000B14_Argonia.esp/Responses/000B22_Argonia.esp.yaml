@@ -1,0 +1,21 @@
+FormKey: 000B22:Argonia.esp
+Flags: {}
+PreviousDialog: 000B21:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Look just north-east of my corner. Lucan Sevro, the archer of the hired Imperial company, is there. He is reckless with his bow, stranger. Keep clear of him.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 01CCF0:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Someone in particular

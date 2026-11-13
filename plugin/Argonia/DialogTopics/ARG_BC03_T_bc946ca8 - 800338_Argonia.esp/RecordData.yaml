@@ -1,0 +1,8 @@
+FormKey: 800338:Argonia.esp
+EditorID: ARG_BC03_T_bc946ca8
+Name:
+  TargetLanguage: English
+  Value: Who is the Broker to you?
+Branch: 800339:Argonia.esp
+Quest: 80021C:Argonia.esp
+SubtypeName: CUST

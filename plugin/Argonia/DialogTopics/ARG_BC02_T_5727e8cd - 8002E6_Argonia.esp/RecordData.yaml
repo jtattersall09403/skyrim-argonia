@@ -1,0 +1,8 @@
+FormKey: 8002E6:Argonia.esp
+EditorID: ARG_BC02_T_5727e8cd
+Name:
+  TargetLanguage: English
+  Value: Count one of them lost to the smoke. (Persuade)
+Branch: 8002E7:Argonia.esp
+Quest: 80021B:Argonia.esp
+SubtypeName: CUST

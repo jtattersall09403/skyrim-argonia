@@ -1,0 +1,10 @@
+FormKey: 000C16:Argonia.esp
+EditorID: ARG_NoHealthRegenEffect
+Flags:
+- Recover
+- Detrimental
+- NoArea
+- HideInUI
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: HealRateMult

@@ -6,14 +6,6 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Past the bodies at the dock's east end there is a chest, a short way east-north-east of here. Look in it before anyone else does.
-  ScriptNotes: ''
-  Edits: ''
-- ResponseNumber: 2
-  Unknown2: 0x000000
-  Unknown3: 0x000000
-  Text:
-    TargetLanguage: English
     Value: Dunmer lie just north-east of here, and they have not been searched. Whoever gets to their pockets first keeps what is in them, so go quietly.
   ScriptNotes: ''
   Edits: ''

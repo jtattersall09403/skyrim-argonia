@@ -1,0 +1,21 @@
+FormKey: 000B5B:Argonia.esp
+Flags: {}
+PreviousDialog: 000B5A:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Quintel is the other guard at this gate, grandson of an Imperial jailer. He is usually just north-north-east of here. He is too soft for the work.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 0C7250:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Someone in particular

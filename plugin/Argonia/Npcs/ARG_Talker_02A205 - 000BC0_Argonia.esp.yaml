@@ -1,0 +1,26 @@
+FormKey: 000BC0:Argonia.esp
+EditorID: ARG_Talker_02A205
+Configuration:
+  Flags:
+  - AutoCalcStats
+  Level:
+    MutagenObjectType: NpcLevel
+    Level: 5
+  TemplateFlags:
+  - Traits
+  - Factions
+  - SpellList
+  - AIData
+  - AIPackages
+  - ModelAnimation
+  - Inventory
+  - Script
+  - DefPackList
+  - AttackData
+  - Keywords
+Template: 10612D:Skyrim.esm
+Race: 013740:Skyrim.esm
+Class: 013179:Skyrim.esm
+Name:
+  TargetLanguage: English
+  Value: Heem-Tsal

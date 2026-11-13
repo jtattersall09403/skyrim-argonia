@@ -1,0 +1,21 @@
+FormKey: 000B3D:Argonia.esp
+Flags: {}
+PreviousDialog: 000B3C:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Mends-The-Nets keeps by the benches just south-east of here. That is the cleverest person in the village. Ixa-Mee keeps near the huts just north-east. Ixa-Mee is a tattler. Keep your secrets from that one.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 084A85:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Someone in particular

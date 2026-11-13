@@ -1,0 +1,8 @@
+FormKey: 8002F2:Argonia.esp
+EditorID: ARG_BC02_T_5f22f242
+Name:
+  TargetLanguage: English
+  Value: Your reckoner's hut is empty and a lamia keeps it. Here are his leaves.
+Branch: 8002F3:Argonia.esp
+Quest: 80021B:Argonia.esp
+SubtypeName: CUST

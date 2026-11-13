@@ -17,7 +17,7 @@ VirtualMachineAdapter:
       - name=race|013740:Skyrim.esm|ArgonianRace
       - trigger=take.thing.test.token.20-30|take|thing.test.token|20|30|
       - trigger=death.person.test.crab.50-60|death|person.test.crab|50|60|
-      - trigger=use.door.test.ship-inside.60-70|use|door.test.ship-inside|60|70|
+      - trigger=use.door.test.ship-inside.60-70|use|door.test.ship-inside|until=70|60|70|
     - MutagenObjectType: ScriptFloatListProperty
       Name: Num
       Data:
@@ -252,16 +252,32 @@ VirtualMachineAdapter:
       Object: 800001:Argonia.esp
       Alias: 5
     Scripts:
-    - Name: defaultSetStageAliasScript
+    - Name: ARG_AliasEffects
       Properties:
+      - MutagenObjectType: ScriptFloatListProperty
+        Name: Num
+        Data:
+        - 60
+        - 69
+        - 70
       - MutagenObjectType: ScriptIntProperty
-        Name: prereqStageOPT
-        Data: 60
-      - MutagenObjectType: ScriptIntProperty
-        Name: stage
-        Data: 70
-      - MutagenObjectType: ScriptIntProperty
-        Name: TriggerType
+        Name: On
+        Data: 2
+      - MutagenObjectType: ScriptIntListProperty
+        Name: Op
+        Data:
+        - 10
+        - 13
+        - 9
+      - MutagenObjectType: ScriptObjectListProperty
+        Name: What
+        Objects:
+        - Name: ''
+          Object: 800001:Argonia.esp
+        - Name: ''
+          Object: 800001:Argonia.esp
+        - Name: ''
+          Object: 800001:Argonia.esp
 Name:
   TargetLanguage: English
   Value: Block Test

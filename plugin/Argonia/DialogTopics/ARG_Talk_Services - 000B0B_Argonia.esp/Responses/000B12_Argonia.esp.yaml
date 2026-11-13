@@ -1,0 +1,21 @@
+FormKey: 000B12:Argonia.esp
+Flags: {}
+PreviousDialog: 000B11:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I buy and I sell. I trade at the market, by the cooking fire. My stock is whatever the boats bring in. Show me what you have and I will name a price.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 0C7267:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Services

@@ -1,0 +1,748 @@
+FormKey: 80021A:Argonia.esp
+EditorID: ARG_BC01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: ARG_QuestStages
+    Properties:
+    - MutagenObjectType: ScriptStringProperty
+      Name: Kind
+      Data: faction
+    - MutagenObjectType: ScriptStringListProperty
+      Name: Labels
+      Data:
+      - level=npc.imperial-penal-south.blackrose.chainbreaker-patron
+      - level=npc.imperial-penal-south.blackrose.estate-debtor
+      - level=npc.imperial-penal-south.blackrose.estate-fetcher
+      - level=npc.imperial-penal-south.blackrose.estate-steward
+      - name=base|800226:Argonia.esp|09424C:Skyrim.esm
+      - name=template|800227:Argonia.esp|0A0F46:Skyrim.esm
+      - name=item|800227:Argonia.esp|thing.bc01.her-leaf
+      - name=template|800228:Argonia.esp|0A0F46:Skyrim.esm
+      - name=item|800228:Argonia.esp|thing.bc01.keeper-leaf
+      - name=item|800229:Argonia.esp|thing.bc01.key
+      - name=thing|800229:Argonia.esp|thing.bc01.key
+      - name=item|013988:Skyrim.esm|item.steel-mace
+      - name=item|03B97C:Skyrim.esm|item.silver-ring
+      - name=item|012EB6:Skyrim.esm|item.iron-shield
+      - name=item|80022A:Argonia.esp|thing.bc01.false-leaf
+      - name=item|00000A:Skyrim.esm|item.lockpick
+      - name=thing|800227:Argonia.esp|thing.bc01.her-leaf
+      - name=thing|800228:Argonia.esp|thing.bc01.keeper-leaf
+      - name=number|80022B:Argonia.esp|flag.bc01.settled
+      - name=faction|80022C:Argonia.esp|faction.chainbreakers
+      - quest=quest.bc.bc01
+      - kind=faction
+      - trigger=take.thing.bc01.her-leaf.20-30|take|thing.bc01.her-leaf|until=40|20|30|
+      - trigger=death.npc.imperial-penal-south.blackrose.estate-fetcher.20-45|death|npc.imperial-penal-south.blackrose.estate-fetcher|until=40|20|45|choice
+    - MutagenObjectType: ScriptFloatListProperty
+      Name: Num
+      Data:
+      - 1
+      - 5
+      - 100
+      - 10
+      - 0
+      - 1
+      - 30
+      - 10
+      - 20
+      - 1
+      - 20
+      - 30
+      - 20
+      - 30
+      - 40
+      - 150
+      - 20
+      - 30
+      - 40
+      - 20
+      - 40
+      - 20
+      - 40
+      - 50
+      - 100
+      - 1
+      - 1
+      - 20
+      - 30
+      - 40
+      - 60
+      - 100
+      - 1
+      - 1
+      - 20
+      - 30
+      - 40
+      - 60
+      - 1000
+      - 1
+      - 20
+      - 30
+      - 40
+      - 60
+      - 1
+      - 1
+      - 1
+      - 100
+      - 10
+      - 1
+      - 60
+      - 0
+      - 0
+      - 1
+      - 1
+      - 1
+      - 100
+      - 10
+      - 1
+      - 60
+      - 0
+      - 0
+      - 1
+      - 1
+      - 0
+      - 1
+      - 50
+      - 1
+      - 60
+      - 0
+      - 0
+      - 1
+      - 1
+      - 0
+      - 1
+      - 100
+      - 10
+      - 1
+      - 60
+      - 0
+      - 0
+      - 1
+      - 1
+      - 100
+      - 10
+      - 1
+      - 60
+      - 0
+      - 0
+      - 60
+      - 0
+    - MutagenObjectType: ScriptIntListProperty
+      Name: Op
+      Data:
+      - 20
+      - 20
+      - 22
+      - 2
+      - 5
+      - 14
+      - 1
+      - 3
+      - 2
+      - 21
+      - 3
+      - 2
+      - 3
+      - 3
+      - 2
+      - 23
+      - 3
+      - 3
+      - 2
+      - 3
+      - 2
+      - 3
+      - 3
+      - 2
+      - 23
+      - 21
+      - 21
+      - 3
+      - 3
+      - 3
+      - 2
+      - 23
+      - 21
+      - 21
+      - 3
+      - 3
+      - 3
+      - 2
+      - 23
+      - 21
+      - 3
+      - 3
+      - 3
+      - 2
+      - 21
+      - 21
+      - 24
+      - 22
+      - 20
+      - 27
+      - 15
+      - 7
+      - 6
+      - 21
+      - 21
+      - 24
+      - 22
+      - 20
+      - 27
+      - 15
+      - 7
+      - 6
+      - 21
+      - 21
+      - 30
+      - 24
+      - 22
+      - 27
+      - 15
+      - 7
+      - 6
+      - 21
+      - 21
+      - 30
+      - 24
+      - 22
+      - 20
+      - 27
+      - 15
+      - 7
+      - 6
+      - 21
+      - 24
+      - 22
+      - 20
+      - 27
+      - 15
+      - 7
+      - 6
+      - 16
+      - 6
+    - MutagenObjectType: ScriptStringProperty
+      Name: QuestId
+      Data: quest.bc.bc01
+    - MutagenObjectType: ScriptIntListProperty
+      Name: StageFrom
+      Data:
+      - 0
+      - 5
+      - 9
+      - 12
+      - 15
+      - 19
+      - 21
+      - 24
+      - 31
+      - 38
+      - 44
+      - 53
+      - 62
+      - 71
+      - 81
+      - 89
+    - MutagenObjectType: ScriptIntListProperty
+      Name: Stages
+      Data:
+      - 10
+      - 20
+      - 30
+      - 40
+      - 41
+      - 45
+      - 50
+      - 60
+      - 61
+      - 62
+      - 90
+      - 91
+      - 92
+      - 93
+      - 94
+      - 95
+    - MutagenObjectType: ScriptIntListProperty
+      Name: StageTo
+      Data:
+      - 5
+      - 9
+      - 12
+      - 15
+      - 19
+      - 21
+      - 24
+      - 31
+      - 38
+      - 44
+      - 53
+      - 62
+      - 71
+      - 81
+      - 89
+      - 91
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: What
+      Objects:
+      - Name: ''
+        Object: 80022A:Argonia.esp
+      - Name: ''
+        Object: 00000A:Skyrim.esm
+      - Name: ''
+        Object: 00000F:Skyrim.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 800227:Argonia.esp
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 80022A:Argonia.esp
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 00000F:Skyrim.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 00000F:Skyrim.esm
+      - Name: ''
+        Object: 800227:Argonia.esp
+      - Name: ''
+        Object: 800228:Argonia.esp
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 00000F:Skyrim.esm
+      - Name: ''
+        Object: 800227:Argonia.esp
+      - Name: ''
+        Object: 800228:Argonia.esp
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 00000F:Skyrim.esm
+      - Name: ''
+        Object: 800227:Argonia.esp
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 80022A:Argonia.esp
+      - Name: ''
+        Object: 800227:Argonia.esp
+      - Name: ''
+        Object: 80022B:Argonia.esp
+      - Name: ''
+        Object: 00000F:Skyrim.esm
+      - Name: ''
+        Object: 00000A:Skyrim.esm
+      - Name: ''
+        Object: 80022C:Argonia.esp
+      - Name: ''
+      - Name: ''
+        Object: 0FC85D:Skyrim.esm
+      - Name: ''
+      - Name: ''
+        Object: 800227:Argonia.esp
+      - Name: ''
+        Object: 80022A:Argonia.esp
+      - Name: ''
+        Object: 80022B:Argonia.esp
+      - Name: ''
+        Object: 00000F:Skyrim.esm
+      - Name: ''
+        Object: 00000A:Skyrim.esm
+      - Name: ''
+        Object: 80022C:Argonia.esp
+      - Name: ''
+      - Name: ''
+        Object: 0FC85D:Skyrim.esm
+      - Name: ''
+      - Name: ''
+        Object: 800227:Argonia.esp
+      - Name: ''
+        Object: 80022A:Argonia.esp
+      - Name: ''
+        Object: 80021F:Argonia.esp
+      - Name: ''
+        Object: 80022B:Argonia.esp
+      - Name: ''
+        Object: 00000F:Skyrim.esm
+      - Name: ''
+        Object: 80022C:Argonia.esp
+      - Name: ''
+      - Name: ''
+        Object: 0FC85D:Skyrim.esm
+      - Name: ''
+      - Name: ''
+        Object: 800227:Argonia.esp
+      - Name: ''
+        Object: 80022A:Argonia.esp
+      - Name: ''
+        Object: 80021F:Argonia.esp
+      - Name: ''
+        Object: 80022B:Argonia.esp
+      - Name: ''
+        Object: 00000F:Skyrim.esm
+      - Name: ''
+        Object: 00000A:Skyrim.esm
+      - Name: ''
+        Object: 80022C:Argonia.esp
+      - Name: ''
+      - Name: ''
+        Object: 0FC85D:Skyrim.esm
+      - Name: ''
+      - Name: ''
+        Object: 800227:Argonia.esp
+      - Name: ''
+        Object: 80022B:Argonia.esp
+      - Name: ''
+        Object: 00000F:Skyrim.esm
+      - Name: ''
+        Object: 00000A:Skyrim.esm
+      - Name: ''
+        Object: 80022C:Argonia.esp
+      - Name: ''
+      - Name: ''
+        Object: 0FC85D:Skyrim.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+  FileName: ARG_QuestStages
+  Fragments:
+  - Stage: 10
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_10
+  - Stage: 20
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_20
+  - Stage: 30
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_30
+  - Stage: 40
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_40
+  - Stage: 41
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_41
+  - Stage: 45
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_45
+  - Stage: 50
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_50
+  - Stage: 60
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_60
+  - Stage: 61
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_61
+  - Stage: 62
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_62
+  - Stage: 90
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_90
+  - Stage: 91
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_91
+  - Stage: 92
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_92
+  - Stage: 93
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_93
+  - Stage: 94
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_94
+  - Stage: 95
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_95
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 80021A:Argonia.esp
+      Alias: 2
+    Scripts:
+    - Name: ARG_AliasEffects
+      Properties:
+      - MutagenObjectType: ScriptFloatListProperty
+        Name: Num
+        Data:
+        - 20
+        - 39
+        - 45
+      - MutagenObjectType: ScriptIntListProperty
+        Name: Op
+        Data:
+        - 10
+        - 13
+        - 9
+      - MutagenObjectType: ScriptObjectListProperty
+        Name: What
+        Objects:
+        - Name: ''
+          Object: 80021A:Argonia.esp
+        - Name: ''
+          Object: 80021A:Argonia.esp
+        - Name: ''
+          Object: 80021A:Argonia.esp
+  - Property:
+      Name: ''
+      Object: 80021A:Argonia.esp
+      Alias: 5
+    Scripts:
+    - Name: ARG_AliasEffects
+      Properties:
+      - MutagenObjectType: ScriptFloatListProperty
+        Name: Num
+        Data:
+        - 20
+        - 39
+        - 30
+      - MutagenObjectType: ScriptIntProperty
+        Name: On
+        Data: 1
+      - MutagenObjectType: ScriptIntListProperty
+        Name: Op
+        Data:
+        - 10
+        - 13
+        - 9
+      - MutagenObjectType: ScriptObjectListProperty
+        Name: What
+        Objects:
+        - Name: ''
+          Object: 80021A:Argonia.esp
+        - Name: ''
+          Object: 80021A:Argonia.esp
+        - Name: ''
+          Object: 80021A:Argonia.esp
+Name:
+  TargetLanguage: English
+  Value: Four Months for a Boat
+Flags:
+- StartGameEnabled
+- RunOnce
+Priority: 50
+Type: SideQuest
+Stages:
+- Flags:
+  - StartUpStage
+  LogEntries:
+  - Flags: []
+- Index: 10
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: "Never-Sold of the Chainbreakers asked me to end Rows-For-Another's Owing on the Tulm-Varo estate: eleven years for one holed boat. She gave me a leaf in her own hand to leave in the count-box for the real one, five lockpicks, and 100 gold, the Owing's first price. I'm to speak to Rows-For-Another on the channel bank north of the farm."
+- Index: 20
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: "Rows-For-Another told me what holds her: her leaf in the count-box inside the estate house, whose key the keeper Hulm-Tei wears; Hulm-Tei's word, which could close the Owing; and Brings-Them-Back, the fetcher on the channel north of the bank, who knows the way to her home tree. I'm to break any one of the three."
+- Index: 30
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: "I took Rows-For-Another's leaf from the count-box and left Never-Sold's in its place. Under it lay the keeper's own leaf, with Hulm-Tei's name on it: whatever any leaf comes up short is written onto his. If I hand hers in, her eleven years fall on him. I'm to bring hers to Never-Sold, or give Hulm-Tei back his own."
+- Index: 40
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: I talked Brings-Them-Back round. He will look the other way when Rows-For-Another goes by the channel, but he still knows the way to her home tree. I'm to tell her the channel is clear, unless I end it another way first.
+- Index: 41
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: I paid Brings-Them-Back 150 gold, his head-price. He will look the other way when Rows-For-Another goes by the channel, but he still knows the way to her home tree. I'm to tell her the channel is clear, unless I end it another way first.
+- Index: 45
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: I killed Brings-Them-Back where the channel runs on north of the bank. Nobody living knows the way to Rows-For-Another's home tree now, to fetch her back from it. I'm to tell her the channel is clear, unless I end it another way first.
+- Index: 50
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: I told Rows-For-Another the channel is clear. She will go by it once I have gone, and she gave me a word for Never-Sold. I'm to tell Never-Sold she is going.
+- Index: 60
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: I talked Hulm-Tei round. He took the first price, struck Rows-For-Another's leaf and wrote her eleven years onto his own, knowing what he did. I'm to tell Never-Sold.
+- Index: 61
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: I gave Hulm-Tei back his own leaf with the first price. He struck Rows-For-Another's leaf and said the damp had taken his. He leaves the estate at the reckoning, and what she owed will be shared among the hands who stay. I'm to tell Never-Sold.
+- Index: 62
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: I paid Hulm-Tei the whole of what Rows-For-Another's leaf had grown to, 1,000 gold. He struck her leaf, and nobody carries anything for it. I'm to tell Never-Sold.
+- Index: 90
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+    Entry:
+      TargetLanguage: English
+      Value: I gave Never-Sold Rows-For-Another's leaf, and she will read it aloud and burn it. Rows-For-Another is free; her eleven years fall on Hulm-Tei's leaf, or on every hand of the estate if his leaf is gone too. Never-Sold paid me, named me one of the Chainbreakers and said to come back to her for more work.
+- Index: 91
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+    Entry:
+      TargetLanguage: English
+      Value: I told Never-Sold that Hulm-Tei struck Rows-For-Another's leaf with his own hand. She is free, and what it cost fell where his word put it. Never-Sold paid me, named me one of the Chainbreakers and said to come back to her for more work.
+- Index: 92
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+    Entry:
+      TargetLanguage: English
+      Value: 'I told Never-Sold that Rows-For-Another has gone by the channel. Her Owing was never closed: it will be written onto the keeper, and the fetcher still knows the way to her home tree, so she can never go back to it. Never-Sold paid me half, named me one of the Chainbreakers and said to come back to her for more work.'
+- Index: 93
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+    Entry:
+      TargetLanguage: English
+      Value: I told Never-Sold that Rows-For-Another has gone by the channel. Brings-Them-Back is dead, so nobody can follow her home, and her Owing will be written onto the keeper. Never-Sold paid me in full and named me one of the Chainbreakers, and did not thank me for how. She said to come back to her for more work.
+- Index: 94
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+    Entry:
+      TargetLanguage: English
+      Value: I gave Never-Sold Rows-For-Another's leaf, which I had taken from the estate's count-box before she asked me. She will read it aloud and burn it, and the eleven years fall on the estate's keeper. Never-Sold paid me, named me one of the Chainbreakers and said to come back to her for more work.
+- Index: 95
+  LogEntries:
+  - Flags:
+    - FailQuest
+    Entry:
+      TargetLanguage: English
+      Value: Never-Sold or Rows-For-Another is dead. The Owing cannot be ended now.
+Objectives:
+- Index: 10
+  DisplayText:
+    TargetLanguage: English
+    Value: Speak to Rows-For-Another on the channel bank north of Blackrose.
+  Targets:
+  - AliasID: 1
+- Index: 20
+  DisplayText:
+    TargetLanguage: English
+    Value: "End Rows-For-Another's Owing: take her leaf from the count-box (lift Hulm-Tei's key, or pick the lock); or win Hulm-Tei's word; or clear the channel of Brings-Them-Back."
+  Targets:
+  - AliasID: 5
+  - AliasID: 3
+  - AliasID: 2
+  - AliasID: 1
+- Index: 30
+  DisplayText:
+    TargetLanguage: English
+    Value: Bring Rows-For-Another's leaf to Never-Sold in the Chainbreakers' house; or give Hulm-Tei back his own leaf with the first price; or clear the channel of Brings-Them-Back.
+  Targets:
+  - {}
+  - AliasID: 3
+  - AliasID: 2
+  - AliasID: 1
+- Index: 40
+  DisplayText:
+    TargetLanguage: English
+    Value: Tell Rows-For-Another the channel is clear; or bring her leaf to Never-Sold, or win Hulm-Tei's word.
+  Targets:
+  - AliasID: 1
+  - {}
+  - AliasID: 3
+- Index: 50
+  DisplayText:
+    TargetLanguage: English
+    Value: Tell Never-Sold in the Chainbreakers' house that Rows-For-Another is going by the channel.
+  Targets:
+  - {}
+- Index: 60
+  DisplayText:
+    TargetLanguage: English
+    Value: Tell Never-Sold in the Chainbreakers' house that Hulm-Tei struck the leaf.
+  Targets:
+  - {}
+Aliases:
+- Name: npc.imperial-penal-south.blackrose.chainbreaker-patron
+  ForcedReference: 80021D:Argonia.esp
+- ID: 1
+  Name: npc.imperial-penal-south.blackrose.estate-debtor
+  ForcedReference: 80021F:Argonia.esp
+- ID: 2
+  Name: npc.imperial-penal-south.blackrose.estate-fetcher
+  ForcedReference: 800221:Argonia.esp
+- ID: 3
+  Name: npc.imperial-penal-south.blackrose.estate-steward
+  ForcedReference: 800223:Argonia.esp
+- ID: 4
+  Name: thing.bc01.count-box
+  ForcedReference: 800225:Argonia.esp
+- ID: 5
+  Name: thing.bc01.her-leaf
+  CreateReferenceToObject:
+    Object: 800227:Argonia.esp
+    AliasID: 4
+    Create: In
+- ID: 6
+  Name: thing.bc01.keeper-leaf
+  CreateReferenceToObject:
+    Object: 800228:Argonia.esp
+    AliasID: 4
+    Create: In
+- ID: 7
+  Name: thing.bc01.key
+  CreateReferenceToObject:
+    Object: 800229:Argonia.esp
+    AliasID: 3
+    Create: In
+- ID: 8
+  Name: thing.bc01.mace
+  CreateReferenceToObject:
+    Object: 013988:Skyrim.esm
+    AliasID: 2
+    Create: In
+- ID: 9
+  Name: thing.bc01.ring
+  CreateReferenceToObject:
+    Object: 03B97C:Skyrim.esm
+    AliasID: 4
+    Create: In
+- ID: 10
+  Name: thing.bc01.shield
+  CreateReferenceToObject:
+    Object: 012EB6:Skyrim.esm
+    AliasID: 2
+    Create: In

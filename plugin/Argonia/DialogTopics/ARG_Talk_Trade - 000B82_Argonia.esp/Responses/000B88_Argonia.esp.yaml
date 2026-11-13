@@ -1,0 +1,21 @@
+FormKey: 000B88:Argonia.esp
+Flags: {}
+PreviousDialog: 000B87:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I am a guard at the town's centre, traveller. New guards are posted to the centre until someone trusts them. I would rather be on the south dock.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 037DFE:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: My trade
