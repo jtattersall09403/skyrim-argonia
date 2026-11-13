@@ -280,5 +280,8 @@ ol.needs .row { margin: 8px 0 0; flex-wrap: wrap; }
 .sketch .game-name.door { fill: var(--accent); }
 .sketch .game-name.marker { font-size: 15px; fill: var(--taste); }
 .names-banner { position: absolute; left: 10px; right: 10px; top: 64px; z-index: 3; background: var(--panel); border-radius: 12px; box-shadow: var(--shadow); padding: 6px 12px; font-size: 13px; pointer-events: none; }
+/* the Player's view button keeps its whole label: in a narrow view of ours the bar wraps to a second row instead of squeezing it */
+#player-names { flex: none; }
 #player-names span { white-space: nowrap; }
+#view-ours .view-bar { flex-wrap: wrap; row-gap: 8px; }
 #player-names[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); }
