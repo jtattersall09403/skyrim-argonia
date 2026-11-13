@@ -1,8 +1,0 @@
-FormKey: 000DF1:Argonia.esp
-EditorID: ARG_MQ04_VillageTopic
-Name:
-  TargetLanguage: English
-  Value: May I see the Hist?
-Branch: 000DF0:Argonia.esp
-Quest: 000DBD:Argonia.esp
-SubtypeName: CUST

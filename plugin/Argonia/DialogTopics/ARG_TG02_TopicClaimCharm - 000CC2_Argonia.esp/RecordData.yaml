@@ -1,8 +1,0 @@
-FormKey: 000CC2:Argonia.esp
-EditorID: ARG_TG02_TopicClaimCharm
-Name:
-  TargetLanguage: English
-  Value: (Persuade) What do you claim from the lockbox?
-Branch: 000CC1:Argonia.esp
-Quest: 000C58:Argonia.esp
-SubtypeName: CUST

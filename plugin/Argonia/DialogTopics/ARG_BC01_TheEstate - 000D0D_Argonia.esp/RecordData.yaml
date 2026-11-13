@@ -1,8 +1,0 @@
-FormKey: 000D0D:Argonia.esp
-EditorID: ARG_BC01_TheEstate
-Name:
-  TargetLanguage: English
-  Value: What do the Chainbreakers need done?
-Branch: 000D0C:Argonia.esp
-Quest: 000CFF:Argonia.esp
-SubtypeName: CUST

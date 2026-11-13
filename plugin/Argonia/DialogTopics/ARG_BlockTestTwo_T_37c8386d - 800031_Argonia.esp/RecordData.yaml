@@ -1,0 +1,8 @@
+FormKey: 800031:Argonia.esp
+EditorID: ARG_BlockTestTwo_T_37c8386d
+Name:
+  TargetLanguage: English
+  Value: Has the keeper given his word?
+Branch: 800032:Argonia.esp
+Quest: 800000:Argonia.esp
+SubtypeName: CUST

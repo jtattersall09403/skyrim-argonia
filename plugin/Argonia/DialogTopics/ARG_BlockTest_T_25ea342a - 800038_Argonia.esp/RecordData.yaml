@@ -1,0 +1,8 @@
+FormKey: 800038:Argonia.esp
+EditorID: ARG_BlockTest_T_25ea342a
+Name:
+  TargetLanguage: English
+  Value: Have we spoken before?
+Branch: 800039:Argonia.esp
+Quest: 800001:Argonia.esp
+SubtypeName: CUST

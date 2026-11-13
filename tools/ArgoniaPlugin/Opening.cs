@@ -41,5 +41,13 @@ static class Opening
         pierDoor.TeleportDestination.Door.SetTo(HoldDoor);
         hold.Persistent.AddRange([stairDoor, farDoor]);
         world.TopCell!.Persistent.Add(pierDoor);
+        // BM&V's own openings (the captain's welcome, Valenwood's two start quests) never start with a new game of ours
+        var quests = Survey.Winners<IQuestGetter>(mods);
+        foreach (var k in Valenwood.Select(v => FormKey.Factory(v)).Append(Welcome))
+        {
+            var q = quests[k].rec.DeepCopy();
+            q.Flags &= ~Quest.Flag.StartGameEnabled;
+            mod.Quests.Add(q);
+        }
     }
 }

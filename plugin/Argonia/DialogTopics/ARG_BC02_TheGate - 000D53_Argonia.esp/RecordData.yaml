@@ -1,8 +1,0 @@
-FormKey: 000D53:Argonia.esp
-EditorID: ARG_BC02_TheGate
-Name:
-  TargetLanguage: English
-  Value: Let me into the stone house.
-Branch: 000D52:Argonia.esp
-Quest: 000D30:Argonia.esp
-SubtypeName: CUST

@@ -1,0 +1,397 @@
+FormKey: 800001:Argonia.esp
+EditorID: ARG_BlockTest
+VirtualMachineAdapter:
+  Scripts:
+  - Name: ARG_QuestStages
+    Properties:
+    - MutagenObjectType: ScriptStringProperty
+      Name: Kind
+      Data: faction
+    - MutagenObjectType: ScriptStringListProperty
+      Name: Labels
+      Data:
+      - quest=quest.test.blocktest
+      - kind=faction
+      - name=number|80003F:Argonia.esp|number.test.counter
+      - name=faction|800040:Argonia.esp|faction.test.dock-hands
+      - name=race|013740:Skyrim.esm|ArgonianRace
+      - trigger=take.thing.test.token.20-30|take|thing.test.token|20|30|
+      - trigger=death.person.test.crab.50-60|death|person.test.crab|50|60|
+      - trigger=use.door.test.ship-inside.60-70|use|door.test.ship-inside|60|70|
+    - MutagenObjectType: ScriptFloatListProperty
+      Name: Num
+      Data:
+      - 90
+      - 10
+      - 0
+      - 1
+      - 30
+      - 10
+      - 20
+      - 0
+      - 20
+      - 30
+      - 30
+      - 40
+      - 0
+      - 0
+      - 40
+      - 50
+      - 0
+      - 50
+      - 60
+      - 0
+      - 10
+      - 60
+      - 70
+      - 70
+      - 0
+      - 0
+      - 0
+      - 0
+      - 70
+      - 20
+      - 30
+      - 70
+      - 0
+      - 0
+    - MutagenObjectType: ScriptIntListProperty
+      Name: Op
+      Data:
+      - 8
+      - 2
+      - 5
+      - 14
+      - 1
+      - 3
+      - 2
+      - 33
+      - 3
+      - 2
+      - 3
+      - 2
+      - 32
+      - 29
+      - 3
+      - 2
+      - 33
+      - 3
+      - 2
+      - 33
+      - 35
+      - 3
+      - 2
+      - 16
+      - 6
+      - 31
+      - 30
+      - 33
+      - 3
+      - 10
+      - 9
+      - 15
+      - 7
+      - 6
+    - MutagenObjectType: ScriptStringProperty
+      Name: QuestId
+      Data: quest.test.blocktest
+    - MutagenObjectType: ScriptIntListProperty
+      Name: StageFrom
+      Data:
+      - 0
+      - 3
+      - 7
+      - 10
+      - 12
+      - 16
+      - 19
+      - 23
+      - 25
+    - MutagenObjectType: ScriptIntListProperty
+      Name: Stages
+      Data:
+      - 10
+      - 20
+      - 30
+      - 40
+      - 50
+      - 60
+      - 70
+      - 90
+      - 100
+    - MutagenObjectType: ScriptIntListProperty
+      Name: StageTo
+      Data:
+      - 3
+      - 7
+      - 10
+      - 12
+      - 16
+      - 19
+      - 23
+      - 25
+      - 34
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: What
+      Objects:
+      - Name: ''
+        Object: 800007:Argonia.esp
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 03199A:Skyrim.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 80000C:Argonia.esp
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 0AA664:Black Marsh.esm
+      - Name: ''
+        Object: 80000A:Argonia.esp
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 80000D:Argonia.esp
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 80000E:Argonia.esp
+      - Name: ''
+        Object: 800000:Argonia.esp
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 0AA664:Black Marsh.esm
+      - Name: ''
+        Object: 80000A:Argonia.esp
+      - Name: ''
+        Object: 80000F:Argonia.esp
+      - Name: ''
+      - Name: ''
+        Object: 800000:Argonia.esp
+      - Name: ''
+        Object: 800000:Argonia.esp
+      - Name: ''
+      - Name: ''
+        Object: 0FC85D:Skyrim.esm
+      - Name: ''
+  FileName: ARG_QuestStages
+  Fragments:
+  - Stage: 10
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_10
+  - Stage: 20
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_20
+  - Stage: 30
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_30
+  - Stage: 40
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_40
+  - Stage: 50
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_50
+  - Stage: 60
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_60
+  - Stage: 70
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_70
+  - Stage: 90
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_90
+  - Stage: 100
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_100
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 800001:Argonia.esp
+      Alias: 2
+    Scripts:
+    - Name: defaultSetStageOnPlayerAcquire
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: myQST
+        Object: 800001:Argonia.esp
+      - MutagenObjectType: ScriptIntProperty
+        Name: preReqStage
+        Data: 20
+      - MutagenObjectType: ScriptIntProperty
+        Name: StageToSet
+        Data: 30
+  - Property:
+      Name: ''
+      Object: 800001:Argonia.esp
+      Alias: 3
+    Scripts:
+    - Name: defaultSetStageOnDeathRefAlias
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: myQST
+        Object: 800001:Argonia.esp
+      - MutagenObjectType: ScriptIntProperty
+        Name: preReqStage
+        Data: 50
+      - MutagenObjectType: ScriptIntProperty
+        Name: StageToSet
+        Data: 60
+  - Property:
+      Name: ''
+      Object: 800001:Argonia.esp
+      Alias: 5
+    Scripts:
+    - Name: defaultSetStageAliasScript
+      Properties:
+      - MutagenObjectType: ScriptIntProperty
+        Name: prereqStageOPT
+        Data: 60
+      - MutagenObjectType: ScriptIntProperty
+        Name: stage
+        Data: 70
+      - MutagenObjectType: ScriptIntProperty
+        Name: TriggerType
+Name:
+  TargetLanguage: English
+  Value: Block Test
+Flags:
+- StartGameEnabled
+- RunOnce
+Priority: 50
+Type: SideQuest
+Stages:
+- Index: 10
+  Flags:
+  - StartUpStage
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: I am to take the block test on Lilmoth's dock. The Dock Keeper wants a word with me.
+- Index: 20
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: The Dock Keeper gave me ten gold and a lockpick, and sent me for the token in the barrel on the dock.
+- Index: 30
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: I have the token from the barrel. The Dock Keeper will want it.
+- Index: 40
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: I gave the Dock Keeper the token. I am one of the dock hands now.
+- Index: 50
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: I am a senior hand. The Dock Keeper says a mudcrab got into the ship, and he has unlocked its door.
+- Index: 60
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: I killed the mudcrab in the ship.
+- Index: 70
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: I came out of the ship by its door. The Dock Keeper will want to hear the crab is dead.
+- Index: 90
+  LogEntries:
+  - Flags:
+    - FailQuest
+    Entry:
+      TargetLanguage: English
+      Value: The Dock Keeper is dead. Nobody else can finish the block test with me.
+- Index: 100
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+    Entry:
+      TargetLanguage: English
+      Value: I told the Dock Keeper the crab is dead. I passed the block test.
+Objectives:
+- Index: 10
+  DisplayText:
+    TargetLanguage: English
+    Value: Speak to the Dock Keeper.
+  Targets:
+  - {}
+- Index: 20
+  DisplayText:
+    TargetLanguage: English
+    Value: Find the token in the barrel on the dock.
+  Targets:
+  - AliasID: 2
+  - {}
+- Index: 30
+  DisplayText:
+    TargetLanguage: English
+    Value: Bring the token to the Dock Keeper.
+  Targets:
+  - {}
+- Index: 40
+  DisplayText:
+    TargetLanguage: English
+    Value: Ask the Dock Keeper to make you a senior hand.
+  Targets:
+  - {}
+- Index: 50
+  DisplayText:
+    TargetLanguage: English
+    Value: Kill the mudcrab in the ship.
+  Targets:
+  - AliasID: 3
+- Index: 60
+  DisplayText:
+    TargetLanguage: English
+    Value: Leave the ship by its door.
+  Targets:
+  - AliasID: 5
+- Index: 70
+  DisplayText:
+    TargetLanguage: English
+    Value: Tell the Dock Keeper the crab is dead.
+  Targets:
+  - {}
+Aliases:
+- Name: person.test.keeper
+  ForcedReference: 800007:Argonia.esp
+  PackageData:
+  - 800058:Argonia.esp
+- ID: 1
+  Name: thing.test.barrel
+  ForcedReference: 800009:Argonia.esp
+- ID: 2
+  Name: thing.test.token
+  CreateReferenceToObject:
+    Object: 03199A:Skyrim.esm
+    AliasID: 1
+    Create: In
+- ID: 3
+  Name: person.test.crab
+  Flags:
+  - AllowDisabled
+  ForcedReference: 80000A:Argonia.esp
+- ID: 4
+  Name: door.test.ship
+  ForcedReference: 0AA664:Black Marsh.esm
+- ID: 5
+  Name: door.test.ship-inside
+  ForcedReference: 0AA837:Black Marsh.esm

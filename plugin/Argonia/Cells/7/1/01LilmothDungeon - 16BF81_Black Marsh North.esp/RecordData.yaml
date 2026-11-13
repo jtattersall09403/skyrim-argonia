@@ -4,6 +4,9 @@ MajorRecordFlagsRaw: 262144
 EditorID: 01LilmothDungeon
 SkyrimMajorRecordFlags:
 - Compressed
+Name:
+  TargetLanguage: English
+  Value: The Night-Reed Chapter, Lilmoth
 Flags:
 - IsInteriorCell
 - HasWater
@@ -37,46 +40,15 @@ LightingTemplate: 08810C:Skyrim.esm
 WaterHeight: 0
 Persistent:
 - MutagenObjectType: PlacedNpc
-  FormKey: 000C70:Argonia.esp
+  FormKey: 800012:Argonia.esp
   MajorRecordFlagsRaw: 1024
-  EditorID: ARG_TG_BentSpineRef
+  EditorID: ARG_R_npc_mercantile_coast_lilmoth_divers_yard_night_reed_fence
   SkyrimMajorRecordFlags:
   - 0x400
-  Base: 000C5E:Argonia.esp
-  EnableParent:
-    Reference: 000C6A:Argonia.esp
-    Unknown: 0x000000
+  Base: 800013:Argonia.esp
   Scale: 0.526
   Placement:
-    Position: 1487, 2048, 5
-  MajorFlags:
-  - Persistent
-- MutagenObjectType: PlacedNpc
-  FormKey: 000C71:Argonia.esp
-  MajorRecordFlagsRaw: 1024
-  EditorID: ARG_TG_ChapterLookout1Ref
-  SkyrimMajorRecordFlags:
-  - 0x400
-  Base: 000C5F:Argonia.esp
-  EnableParent:
-    Reference: 000C6A:Argonia.esp
-    Unknown: 0x000000
-  Placement:
-    Position: 1901, 2600, 5
-  MajorFlags:
-  - Persistent
-- MutagenObjectType: PlacedNpc
-  FormKey: 000C72:Argonia.esp
-  MajorRecordFlagsRaw: 1024
-  EditorID: ARG_TG_ChapterLookout2Ref
-  SkyrimMajorRecordFlags:
-  - 0x400
-  Base: 000C60:Argonia.esp
-  EnableParent:
-    Reference: 000C6A:Argonia.esp
-    Unknown: 0x000000
-  Placement:
-    Position: 1469, 2198, 5
+    Position: 1500, 2000, 6
   MajorFlags:
   - Persistent
 Temporary:

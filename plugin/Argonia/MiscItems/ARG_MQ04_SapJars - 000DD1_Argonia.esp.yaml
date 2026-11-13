@@ -1,8 +1,0 @@
-FormKey: 000DD1:Argonia.esp
-EditorID: ARG_MQ04_SapJars
-Name:
-  TargetLanguage: English
-  Value: Jars of Hist Sap
-Model:
-  File: Meshes/architecture/clutter and containers/potionbasket.nif
-Weight: 4

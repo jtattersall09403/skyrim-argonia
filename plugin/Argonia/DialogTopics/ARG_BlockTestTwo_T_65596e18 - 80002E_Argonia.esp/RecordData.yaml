@@ -1,0 +1,8 @@
+FormKey: 80002E:Argonia.esp
+EditorID: ARG_BlockTestTwo_T_65596e18
+Name:
+  TargetLanguage: English
+  Value: Fight me.
+Branch: 80002F:Argonia.esp
+Quest: 800000:Argonia.esp
+SubtypeName: CUST

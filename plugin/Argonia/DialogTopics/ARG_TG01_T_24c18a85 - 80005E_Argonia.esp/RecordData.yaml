@@ -1,0 +1,8 @@
+FormKey: 80005E:Argonia.esp
+EditorID: ARG_TG01_T_24c18a85
+Name:
+  TargetLanguage: English
+  Value: Is there work here for careful hands?
+Branch: 80005F:Argonia.esp
+Quest: 800002:Argonia.esp
+SubtypeName: CUST

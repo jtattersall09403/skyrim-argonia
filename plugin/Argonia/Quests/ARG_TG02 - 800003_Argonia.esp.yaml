@@ -1,0 +1,739 @@
+FormKey: 800003:Argonia.esp
+EditorID: ARG_TG02
+VirtualMachineAdapter:
+  Scripts:
+  - Name: ARG_QuestStages
+    Properties:
+    - MutagenObjectType: ScriptStringProperty
+      Name: Kind
+      Data: faction
+    - MutagenObjectType: ScriptStringListProperty
+      Name: Labels
+      Data:
+      - name=item|800020:Argonia.esp|item.glass-bead-strand
+      - name=thing|800020:Argonia.esp|item.glass-bead-strand
+      - name=item|800021:Argonia.esp|item.tg02.bone-figurine
+      - name=thing|800021:Argonia.esp|item.tg02.bone-figurine
+      - name=item|800022:Argonia.esp|item.tg02.neesak-charm
+      - name=thing|800022:Argonia.esp|item.tg02.neesak-charm
+      - name=item|00000A:Skyrim.esm|item.lockpick
+      - name=number|80002A:Argonia.esp|flag.tg02.fence-dead
+      - quest=quest.tg.tg02
+      - kind=faction
+      - trigger=take.item.tg02.bone-figurine.20-30|take|item.tg02.bone-figurine|20|30|
+      - trigger=take.item.tg02.neesak-charm.20-30|take|item.tg02.neesak-charm|20|30|
+      - trigger=take.item.glass-bead-strand.20-30|take|item.glass-bead-strand|20|30|
+      - trigger=take.item.tg02.bone-figurine.21-30|take|item.tg02.bone-figurine|21|30|
+      - trigger=take.item.tg02.neesak-charm.21-30|take|item.tg02.neesak-charm|21|30|
+      - trigger=take.item.glass-bead-strand.21-30|take|item.glass-bead-strand|21|30|
+    - MutagenObjectType: ScriptFloatListProperty
+      Name: Num
+      Data:
+      - 97
+      - 10
+      - 0
+      - 3
+      - 0
+      - 0
+      - 0
+      - 0
+      - 1
+      - 30
+      - 1
+      - 30
+      - 1
+      - 30
+      - 10
+      - 20
+      - 3
+      - 1
+      - 30
+      - 1
+      - 30
+      - 1
+      - 30
+      - 20
+      - 21
+      - 20
+      - 21
+      - 30
+      - 1
+      - 40
+      - 30
+      - 41
+      - 1
+      - 90
+      - 41
+      - 42
+      - 1
+      - 45
+      - 41
+      - 43
+      - 1
+      - 1
+      - 1
+      - 120
+      - 15
+      - -15
+      - -15
+      - 30
+      - 43
+      - 0
+      - 0
+      - 1
+      - 1
+      - 1
+      - 120
+      - 15
+      - -15
+      - -15
+      - 30
+      - 43
+      - 0
+      - 0
+      - 1
+      - 1
+      - 1
+      - 120
+      - 15
+      - -15
+      - -15
+      - 30
+      - 43
+      - 0
+      - 0
+      - 1
+      - 5
+      - 55
+      - -5
+      - -5
+      - -5
+      - 42
+      - 43
+      - 43
+      - 0
+      - 0
+      - 1
+      - 5
+      - 30
+      - -5
+      - -5
+      - -5
+      - 42
+      - 43
+      - 43
+      - 0
+      - 0
+      - 1
+      - 43
+      - 0
+      - -10
+      - 43
+      - 0
+    - MutagenObjectType: ScriptIntListProperty
+      Name: Op
+      Data:
+      - 8
+      - 2
+      - 5
+      - 20
+      - 29
+      - 29
+      - 29
+      - 29
+      - 14
+      - 1
+      - 14
+      - 1
+      - 14
+      - 1
+      - 3
+      - 2
+      - 20
+      - 14
+      - 1
+      - 14
+      - 1
+      - 14
+      - 1
+      - 3
+      - 2
+      - 3
+      - 3
+      - 2
+      - 21
+      - 22
+      - 3
+      - 2
+      - 21
+      - 22
+      - 3
+      - 2
+      - 21
+      - 22
+      - 3
+      - 2
+      - 21
+      - 21
+      - 21
+      - 22
+      - 28
+      - 28
+      - 28
+      - 3
+      - 15
+      - 7
+      - 6
+      - 21
+      - 21
+      - 21
+      - 22
+      - 28
+      - 28
+      - 28
+      - 3
+      - 15
+      - 7
+      - 6
+      - 21
+      - 21
+      - 21
+      - 22
+      - 28
+      - 28
+      - 28
+      - 3
+      - 15
+      - 7
+      - 6
+      - 21
+      - 28
+      - 22
+      - 28
+      - 28
+      - 28
+      - 3
+      - 3
+      - 15
+      - 7
+      - 6
+      - 21
+      - 28
+      - 22
+      - 28
+      - 28
+      - 28
+      - 3
+      - 3
+      - 15
+      - 7
+      - 6
+      - 24
+      - 16
+      - 6
+      - 28
+      - 16
+      - 6
+    - MutagenObjectType: ScriptStringProperty
+      Name: QuestId
+      Data: quest.tg.tg02
+    - MutagenObjectType: ScriptIntListProperty
+      Name: StageFrom
+      Data:
+      - 0
+      - 3
+      - 16
+      - 25
+      - 28
+      - 32
+      - 36
+      - 40
+      - 51
+      - 62
+      - 73
+      - 84
+      - 95
+      - 98
+    - MutagenObjectType: ScriptIntListProperty
+      Name: Stages
+      Data:
+      - 10
+      - 20
+      - 21
+      - 30
+      - 41
+      - 42
+      - 43
+      - 90
+      - 91
+      - 92
+      - 95
+      - 96
+      - 97
+      - 98
+    - MutagenObjectType: ScriptIntListProperty
+      Name: StageTo
+      Data:
+      - 3
+      - 16
+      - 25
+      - 28
+      - 32
+      - 36
+      - 40
+      - 51
+      - 62
+      - 73
+      - 84
+      - 95
+      - 98
+      - 101
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: What
+      Objects:
+      - Name: ''
+        Object: 800012:Argonia.esp
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 00000A:Skyrim.esm
+      - Name: ''
+        Object: 800029:Argonia.esp
+      - Name: ''
+        Object: 800027:Argonia.esp
+      - Name: ''
+        Object: 800025:Argonia.esp
+      - Name: ''
+        Object: 800023:Argonia.esp
+      - Name: ''
+        Object: 800021:Argonia.esp
+      - Name: ''
+      - Name: ''
+        Object: 800022:Argonia.esp
+      - Name: ''
+      - Name: ''
+        Object: 800020:Argonia.esp
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 00000A:Skyrim.esm
+      - Name: ''
+        Object: 800021:Argonia.esp
+      - Name: ''
+      - Name: ''
+        Object: 800022:Argonia.esp
+      - Name: ''
+      - Name: ''
+        Object: 800020:Argonia.esp
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 800021:Argonia.esp
+      - Name: ''
+        Object: 00000F:Skyrim.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 800022:Argonia.esp
+      - Name: ''
+        Object: 00000F:Skyrim.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 800022:Argonia.esp
+      - Name: ''
+        Object: 00000F:Skyrim.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 800021:Argonia.esp
+      - Name: ''
+        Object: 800022:Argonia.esp
+      - Name: ''
+        Object: 800020:Argonia.esp
+      - Name: ''
+        Object: 00000F:Skyrim.esm
+      - Name: ''
+        Object: 800027:Argonia.esp
+      - Name: ''
+        Object: 800025:Argonia.esp
+      - Name: ''
+        Object: 800023:Argonia.esp
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 0FC85D:Skyrim.esm
+      - Name: ''
+      - Name: ''
+        Object: 800021:Argonia.esp
+      - Name: ''
+        Object: 800022:Argonia.esp
+      - Name: ''
+        Object: 800020:Argonia.esp
+      - Name: ''
+        Object: 00000F:Skyrim.esm
+      - Name: ''
+        Object: 800025:Argonia.esp
+      - Name: ''
+        Object: 800027:Argonia.esp
+      - Name: ''
+        Object: 800023:Argonia.esp
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 0FC85D:Skyrim.esm
+      - Name: ''
+      - Name: ''
+        Object: 800021:Argonia.esp
+      - Name: ''
+        Object: 800022:Argonia.esp
+      - Name: ''
+        Object: 800020:Argonia.esp
+      - Name: ''
+        Object: 00000F:Skyrim.esm
+      - Name: ''
+        Object: 800023:Argonia.esp
+      - Name: ''
+        Object: 800027:Argonia.esp
+      - Name: ''
+        Object: 800025:Argonia.esp
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 0FC85D:Skyrim.esm
+      - Name: ''
+      - Name: ''
+        Object: 800020:Argonia.esp
+      - Name: ''
+        Object: 800012:Argonia.esp
+      - Name: ''
+        Object: 00000F:Skyrim.esm
+      - Name: ''
+        Object: 800027:Argonia.esp
+      - Name: ''
+        Object: 800025:Argonia.esp
+      - Name: ''
+        Object: 800023:Argonia.esp
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 0FC85D:Skyrim.esm
+      - Name: ''
+      - Name: ''
+        Object: 800020:Argonia.esp
+      - Name: ''
+        Object: 800012:Argonia.esp
+      - Name: ''
+        Object: 00000F:Skyrim.esm
+      - Name: ''
+        Object: 800027:Argonia.esp
+      - Name: ''
+        Object: 800025:Argonia.esp
+      - Name: ''
+        Object: 800023:Argonia.esp
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 0FC85D:Skyrim.esm
+      - Name: ''
+      - Name: ''
+        Object: 80002A:Argonia.esp
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 800012:Argonia.esp
+      - Name: ''
+      - Name: ''
+  FileName: ARG_QuestStages
+  Fragments:
+  - Stage: 10
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_10
+  - Stage: 20
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_20
+  - Stage: 21
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_21
+  - Stage: 30
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_30
+  - Stage: 41
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_41
+  - Stage: 42
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_42
+  - Stage: 43
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_43
+  - Stage: 90
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_90
+  - Stage: 91
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_91
+  - Stage: 92
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_92
+  - Stage: 95
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_95
+  - Stage: 96
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_96
+  - Stage: 97
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_97
+  - Stage: 98
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_98
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 800003:Argonia.esp
+      Alias: 0
+    Scripts:
+    - Name: defaultSetStageOnPlayerAcquire
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: myQST
+        Object: 800003:Argonia.esp
+      - MutagenObjectType: ScriptIntProperty
+        Name: preReqStage
+        Data: 20
+      - MutagenObjectType: ScriptIntProperty
+        Name: StageToSet
+        Data: 30
+  - Property:
+      Name: ''
+      Object: 800003:Argonia.esp
+      Alias: 1
+    Scripts:
+    - Name: defaultSetStageOnPlayerAcquire
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: myQST
+        Object: 800003:Argonia.esp
+      - MutagenObjectType: ScriptIntProperty
+        Name: preReqStage
+        Data: 20
+      - MutagenObjectType: ScriptIntProperty
+        Name: StageToSet
+        Data: 30
+  - Property:
+      Name: ''
+      Object: 800003:Argonia.esp
+      Alias: 2
+    Scripts:
+    - Name: defaultSetStageOnPlayerAcquire
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: myQST
+        Object: 800003:Argonia.esp
+      - MutagenObjectType: ScriptIntProperty
+        Name: preReqStage
+        Data: 20
+      - MutagenObjectType: ScriptIntProperty
+        Name: StageToSet
+        Data: 30
+Name:
+  TargetLanguage: English
+  Value: The Drowned Lockbox
+Flags:
+- RunOnce
+Priority: 50
+Type: SideQuest
+Stages:
+- Index: 10
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: Bent-Spine, the Night-Reed Chapter's fence, has work for me now that I am a Lookout. I'm to ask him about it, in the Chapter's inner room under Lilmoth.
+- Index: 20
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: A merchant drowned in the deep water north of Pusbottom, and his locked lockbox of pledges lies on the floor. Bent-Spine wants what is in it before three clients on the bank find a diver, and leaves the rest to me; he gave me three lockpicks. I'm to dive to the lockbox, pick its lock and take what is inside.
+- Index: 21
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: I went back to Bent-Spine for more lockpicks; he gave me three more and said there would be no others. I'm to dive to the lockbox in the deep water north of Pusbottom, pick its lock and take what is inside.
+- Index: 30
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: I opened the drowned merchant's lockbox. In it were a worn bone figurine, a Neesak charm (a green scrying crystal in a new silver mount) and Kothringi glass beads, each claimed by one of the three clients on the bank. I'm to give all three to one client, or sell each to the one who claims it.
+- Index: 41
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: Neeta-Haj said the bone figurine was carved for her clutch, but it is older than any clutch of hers. When I said so, she bought it for forty gold, its fair price. I'm to sell Okan-Tei the Neesak charm he claims.
+- Index: 42
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: Okan-Tei said the Neesak charm was only pledged, but no one sets a pledge in a new silver mount. When I said so, he bought it for ninety gold, its fair price. I'm to sell Dar-Zeel the glass beads he claims.
+- Index: 43
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: Okan-Tei said the Neesak charm was only pledged, but no one sets a pledge in a new silver mount. He haggled, and bought it back for forty-five gold. I'm to sell Dar-Zeel the glass beads he claims.
+- Index: 90
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+    Entry:
+      TargetLanguage: English
+      Value: I brought up the drowned merchant's figurine, charm and beads from the deep water north of Pusbottom and gave all three to Neeta-Haj on the bank, who paid me a hundred and twenty gold. Okan-Tei and Dar-Zeel will not forget it.
+- Index: 91
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+    Entry:
+      TargetLanguage: English
+      Value: I brought up the drowned merchant's figurine, charm and beads from the deep water north of Pusbottom and gave all three to Okan-Tei on the bank, who paid me a hundred and twenty gold. Neeta-Haj and Dar-Zeel will not forget it.
+- Index: 92
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+    Entry:
+      TargetLanguage: English
+      Value: I brought up the drowned merchant's figurine, charm and beads from the deep water north of Pusbottom and gave all three to Dar-Zeel on the bank, who paid me a hundred and twenty gold. Neeta-Haj and Okan-Tei will not forget it.
+- Index: 95
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+    Entry:
+      TargetLanguage: English
+      Value: Dar-Zeel said the beads were old family work, but they are Kothringi glass of the kind the old cairns hold. He bought them for fifty-five gold, their fair price. Each of the drowned merchant's three clients has bought back the pledge they lied about, and none of them is pleased with me.
+- Index: 96
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+    Entry:
+      TargetLanguage: English
+      Value: Dar-Zeel said the beads were old family work, but they are Kothringi glass of the kind the old cairns hold. He haggled, and bought them back for thirty gold. Each of the drowned merchant's three clients has bought back the pledge they lied about, and none of them is pleased with me.
+- Index: 97
+  LogEntries:
+  - Flags:
+    - FailQuest
+    Entry:
+      TargetLanguage: English
+      Value: Bent-Spine, the Night-Reed Chapter's fence, is dead, and the job he gave me died with him.
+- Index: 98
+  LogEntries:
+  - Flags:
+    - FailQuest
+    Entry:
+      TargetLanguage: English
+      Value: One of the drowned merchant's three clients, Neeta-Haj, Okan-Tei or Dar-Zeel, is dead, and the pledges cannot be settled now. The job for Bent-Spine has come to nothing.
+Objectives:
+- Index: 10
+  DisplayText:
+    TargetLanguage: English
+    Value: Ask Bent-Spine about the work he has.
+  Targets:
+  - AliasID: 3
+- Index: 20
+  DisplayText:
+    TargetLanguage: English
+    Value: Dive to the lockbox in the deep water north of Pusbottom, pick its lock and take what is inside.
+  Targets:
+  - AliasID: 7
+  - AliasID: 1
+  - AliasID: 2
+  - {}
+  - AliasID: 3
+- Index: 21
+  DisplayText:
+    TargetLanguage: English
+    Value: Dive to the lockbox in the deep water north of Pusbottom, pick its lock and take what is inside.
+  Targets:
+  - AliasID: 7
+  - AliasID: 1
+  - AliasID: 2
+  - {}
+- Index: 30
+  DisplayText:
+    TargetLanguage: English
+    Value: Give all three pledges to one client on the bank, or sell Neeta-Haj the figurine she claims (Speech 30).
+  Targets:
+  - AliasID: 6
+  - AliasID: 5
+  - AliasID: 4
+  - AliasID: 7
+- Index: 41
+  DisplayText:
+    TargetLanguage: English
+    Value: Sell Okan-Tei the Newly Mounted Neesak Charm (Speech 30 for its full price).
+  Targets:
+  - AliasID: 5
+- Index: 42
+  DisplayText:
+    TargetLanguage: English
+    Value: Sell Dar-Zeel the Kothringi Glass Beads (Speech 30 for their full price).
+  Targets:
+  - AliasID: 4
+- Index: 43
+  DisplayText:
+    TargetLanguage: English
+    Value: Sell Dar-Zeel the Kothringi Glass Beads (Speech 30 for their full price).
+  Targets:
+  - AliasID: 4
+Aliases:
+- Name: item.glass-bead-strand
+  CreateReferenceToObject:
+    Object: 800020:Argonia.esp
+    AliasID: 7
+    Create: In
+- ID: 1
+  Name: item.tg02.bone-figurine
+  CreateReferenceToObject:
+    Object: 800021:Argonia.esp
+    AliasID: 7
+    Create: In
+- ID: 2
+  Name: item.tg02.neesak-charm
+  CreateReferenceToObject:
+    Object: 800022:Argonia.esp
+    AliasID: 7
+    Create: In
+- ID: 3
+  Name: npc.mercantile-coast.lilmoth-divers-yard.night-reed-fence
+  ForcedReference: 800012:Argonia.esp
+- ID: 4
+  Name: npc.mercantile-coast.lilmoth.tg02-beads-client
+  Flags:
+  - AllowDisabled
+  ForcedReference: 800023:Argonia.esp
+- ID: 5
+  Name: npc.mercantile-coast.lilmoth.tg02-charm-client
+  Flags:
+  - AllowDisabled
+  ForcedReference: 800025:Argonia.esp
+- ID: 6
+  Name: npc.mercantile-coast.lilmoth.tg02-clutch-client
+  Flags:
+  - AllowDisabled
+  ForcedReference: 800027:Argonia.esp
+- ID: 7
+  Name: thing.tg02.lockbox
+  Flags:
+  - AllowDisabled
+  ForcedReference: 800029:Argonia.esp

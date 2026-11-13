@@ -1,8 +1,0 @@
-FormKey: 000E01:Argonia.esp
-EditorID: ARG_MQ04_CutTopic
-Name:
-  TargetLanguage: English
-  Value: This is your gum pot. Who cut the root?
-Branch: 000E00:Argonia.esp
-Quest: 000DBD:Argonia.esp
-SubtypeName: CUST

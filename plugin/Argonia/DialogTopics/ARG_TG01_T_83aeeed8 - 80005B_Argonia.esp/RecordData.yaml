@@ -1,0 +1,8 @@
+FormKey: 80005B:Argonia.esp
+EditorID: ARG_TG01_T_83aeeed8
+Name:
+  TargetLanguage: English
+  Value: Is there quiet work on this dock?
+Branch: 80005C:Argonia.esp
+Quest: 800002:Argonia.esp
+SubtypeName: CUST

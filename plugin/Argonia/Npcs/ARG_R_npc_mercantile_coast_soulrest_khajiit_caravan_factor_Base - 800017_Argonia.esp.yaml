@@ -1,0 +1,26 @@
+FormKey: 800017:Argonia.esp
+EditorID: ARG_R_npc_mercantile_coast_soulrest_khajiit_caravan_factor_Base
+Configuration:
+  Flags:
+  - AutoCalcStats
+  Level:
+    MutagenObjectType: NpcLevel
+    Level: 5
+  TemplateFlags:
+  - Traits
+  - Factions
+  - SpellList
+  - AIData
+  - AIPackages
+  - ModelAnimation
+  - Inventory
+  - Script
+  - DefPackList
+  - AttackData
+  - Keywords
+Template: 01B1DB:Skyrim.esm
+Race: 013745:Skyrim.esm
+Class: 01325B:Skyrim.esm
+Name:
+  TargetLanguage: English
+  Value: S'Tabi

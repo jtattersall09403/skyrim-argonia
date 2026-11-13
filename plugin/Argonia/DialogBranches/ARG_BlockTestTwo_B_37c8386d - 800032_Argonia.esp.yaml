@@ -1,0 +1,7 @@
+FormKey: 800032:Argonia.esp
+EditorID: ARG_BlockTestTwo_B_37c8386d
+Quest: 800000:Argonia.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 800031:Argonia.esp

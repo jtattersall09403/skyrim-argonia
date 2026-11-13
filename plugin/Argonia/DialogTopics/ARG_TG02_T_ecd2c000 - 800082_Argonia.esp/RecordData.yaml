@@ -1,0 +1,8 @@
+FormKey: 800082:Argonia.esp
+EditorID: ARG_TG02_T_ecd2c000
+Name:
+  TargetLanguage: English
+  Value: Take all three of the merchant's pledges.
+Branch: 800083:Argonia.esp
+Quest: 800003:Argonia.esp
+SubtypeName: CUST

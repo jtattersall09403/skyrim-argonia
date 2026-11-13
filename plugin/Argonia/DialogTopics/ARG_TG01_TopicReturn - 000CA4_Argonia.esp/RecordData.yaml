@@ -1,8 +1,0 @@
-FormKey: 000CA4:Argonia.esp
-EditorID: ARG_TG01_TopicReturn
-Name:
-  TargetLanguage: English
-  Value: I have the necklace.
-Branch: 000CA3:Argonia.esp
-Quest: 000C57:Argonia.esp
-SubtypeName: CUST

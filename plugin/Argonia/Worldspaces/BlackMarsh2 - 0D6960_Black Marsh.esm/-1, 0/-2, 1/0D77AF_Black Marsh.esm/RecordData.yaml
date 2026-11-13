@@ -21,3 +21,8 @@ Temporary:
     Position: -36503.93, 64020.91, 68.564255
   MajorFlags:
   - InitiallyDisabled
+- MutagenObjectType: PlacedNpc
+  FormKey: 08D5EF:Black Marsh North.esp
+  Base: 000BDF:Argonia.esp
+  Placement:
+    Position: -36824.04, 64087.633, 194.38165

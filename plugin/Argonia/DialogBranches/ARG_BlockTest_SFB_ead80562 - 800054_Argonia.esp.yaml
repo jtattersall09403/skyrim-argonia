@@ -1,0 +1,7 @@
+FormKey: 800054:Argonia.esp
+EditorID: ARG_BlockTest_SFB_ead80562
+Quest: 800001:Argonia.esp
+Category: Player
+Flags:
+- Blocking
+StartingTopic: 800053:Argonia.esp

@@ -1,0 +1,8 @@
+FormKey: 80000C:Argonia.esp
+EditorID: ARG_BlockTest_Msg_063e07
+Description:
+  TargetLanguage: English
+  Value: 'Block test: taking the token from the barrel set stage 30 (a take trigger).'
+INAM: '[]'
+Flags:
+- MessageBox

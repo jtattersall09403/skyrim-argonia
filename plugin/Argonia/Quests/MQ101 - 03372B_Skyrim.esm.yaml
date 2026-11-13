@@ -5,11 +5,14 @@ VirtualMachineAdapter:
   - Name: ARG_QF_MQ101
     Properties:
     - MutagenObjectType: ScriptObjectProperty
-      Name: StartMarker
-      Object: 000E48:Argonia.esp
+      Name: Footwraps
+      Object: 03CA00:Skyrim.esm
     - MutagenObjectType: ScriptObjectProperty
-      Name: StartQuest
-      Object: 000E2D:Argonia.esp
+      Name: StartMarker
+      Object: 000F23:Argonia.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Tunic
+      Object: 03C9FE:Skyrim.esm
   FileName: ARG_QF_MQ101
   Fragments:
   - ScriptName: ARG_QF_MQ101

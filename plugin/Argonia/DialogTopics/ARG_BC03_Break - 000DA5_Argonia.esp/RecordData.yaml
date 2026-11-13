@@ -1,8 +1,0 @@
-FormKey: 000DA5:Argonia.esp
-EditorID: ARG_BC03_Break
-Name:
-  TargetLanguage: English
-  Value: I have your crew's tokens.
-Branch: 000DA4:Argonia.esp
-Quest: 000D85:Argonia.esp
-SubtypeName: CUST

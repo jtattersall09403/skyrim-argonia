@@ -1,0 +1,8 @@
+FormKey: 80008F:Argonia.esp
+EditorID: ARG_TG02_T_89cb2537
+Name:
+  TargetLanguage: English
+  Value: You say these beads are family work, but they are Kothringi glass. Buy them back at a fair price.
+Branch: 800090:Argonia.esp
+Quest: 800003:Argonia.esp
+SubtypeName: CUST

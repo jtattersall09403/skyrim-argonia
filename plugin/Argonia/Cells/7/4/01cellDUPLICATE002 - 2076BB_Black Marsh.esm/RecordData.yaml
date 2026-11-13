@@ -4,9 +4,6 @@ MajorRecordFlagsRaw: 262144
 EditorID: 01cellDUPLICATE002
 SkyrimMajorRecordFlags:
 - Compressed
-Name:
-  TargetLanguage: English
-  Value: Hall of the Scalded Throne
 Flags:
 - IsInteriorCell
 Lighting:
@@ -36,29 +33,10 @@ Lighting:
   - FogMax
   - LightFadeDistances
 WaterHeight: 0
-Persistent:
-- MutagenObjectType: PlacedObject
-  FormKey: 000E10:Argonia.esp
-  MajorRecordFlagsRaw: 1024
-  EditorID: ARG_MQ05_Seat
-  SkyrimMajorRecordFlags:
-  - 0x400
-  Base: 1E44EC:Black Marsh.esm
-  Placement:
-    Position: 354, 2419, -402
-- MutagenObjectType: PlacedObject
-  FormKey: 000E11:Argonia.esp
-  MajorRecordFlagsRaw: 1024
-  EditorID: ARG_MQ05_Broom
-  SkyrimMajorRecordFlags:
-  - 0x400
-  Base: 06717F:Skyrim.esm
-  Placement:
-    Position: 434, 2419, -448
 Temporary:
 - MutagenObjectType: PlacedNpc
   FormKey: 166BC1:Black Marsh North.esp
-  Base: 000C11:Argonia.esp
+  Base: 000C13:Argonia.esp
   Placement:
     Position: 196.5548, 843.61505, -1016.2035
 MajorFlags:

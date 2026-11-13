@@ -3,7 +3,6 @@ EditorID: ARG_Talker_00AC8E
 Configuration:
   Flags:
   - Female
-  - Essential
   - AutoCalcStats
   Level:
     MutagenObjectType: NpcLevel

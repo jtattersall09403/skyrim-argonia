@@ -1,8 +1,0 @@
-FormKey: 000E8F:Argonia.esp
-EditorID: ARG_MQ01_TheHire
-Name:
-  TargetLanguage: English
-  Value: Whose gang is this?
-Branch: 000E8E:Argonia.esp
-Quest: 000E2D:Argonia.esp
-SubtypeName: CUST

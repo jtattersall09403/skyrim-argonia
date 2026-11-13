@@ -1,0 +1,8 @@
+FormKey: 80007A:Argonia.esp
+EditorID: ARG_TG02_T_1bc650ae
+Name:
+  TargetLanguage: English
+  Value: I need more lockpicks for the lockbox.
+Branch: 80007B:Argonia.esp
+Quest: 800003:Argonia.esp
+SubtypeName: CUST

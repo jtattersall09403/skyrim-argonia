@@ -1,8 +1,0 @@
-FormKey: 000CE7:Argonia.esp
-EditorID: ARG_TG02_TopicSellCharm
-Name:
-  TargetLanguage: English
-  Value: (Persuade) No one remounts a charm that was only pledged.
-Branch: 000CE6:Argonia.esp
-Quest: 000C58:Argonia.esp
-SubtypeName: CUST

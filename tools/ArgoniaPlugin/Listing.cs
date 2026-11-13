@@ -68,7 +68,7 @@ static class Listing
             }
             sb.AppendLine($"| {g.Name} | quest | Start Game Enabled off | {Row(rs)} |");
         }
-        // MQ01's held quests (we.mq01.no-valenwood, we.mq01.no-welcome): Start Game Enabled off, started by MQ03's ending.
+        // BM&V's openings held off (Opening.cs): Start Game Enabled off, nothing starts them.
         var held = Opening.Valenwood.Select(v => FormKey.Factory(v)).Append(Opening.Welcome).ToHashSet();
         var heldRows = new List<(string, FormKey)>();
         foreach (var q in quests.Values.Where(q => held.Contains(q.FormKey)))
@@ -76,8 +76,8 @@ static class Listing
             seen.Add(q.EditorID ?? ""); heldRows.Add((q.EditorID ?? q.FormKey.ToString(), q.FormKey));
             if (q.Flags.HasFlag(Quest.Flag.StartGameEnabled)) errs.Add($"{q.EditorID}: still Start Game Enabled");
         }
-        if (heldRows.Count != held.Count) errs.Add($"MQ01's held quests: {heldRows.Count} of {held.Count} overridden");
-        sb.AppendLine($"| mq01-held | quest | Start Game Enabled off, started by MQ03's ending | {Row(heldRows)} |");
+        if (heldRows.Count != held.Count) errs.Add($"BM&V's openings held off: {heldRows.Count} of {held.Count} overridden");
+        sb.AppendLine($"| openings-held | quest | Start Game Enabled off | {Row(heldRows)} |");
         foreach (var q in quests.Values.Where(q => q.FormKey.ModKey != mod.ModKey && !seen.Contains(q.EditorID ?? "")))
             errs.Add($"{q.EditorID}: a quest override no group names");
         var byId = nodes.ToDictionary(n => n.EditorID ?? n.FormKey.ToString());

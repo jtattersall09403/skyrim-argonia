@@ -1,0 +1,8 @@
+FormKey: 80007D:Argonia.esp
+EditorID: ARG_TG02_T_03930597
+Name:
+  TargetLanguage: English
+  Value: What do you want from the merchant's lockbox?
+Branch: 80007E:Argonia.esp
+Quest: 800003:Argonia.esp
+SubtypeName: CUST

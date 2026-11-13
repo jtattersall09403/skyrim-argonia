@@ -45,55 +45,16 @@ Music: 01BA72:Skyrim.esm
 ImageSpace: 0CE16C:Skyrim.esm
 Persistent:
 - MutagenObjectType: PlacedNpc
-  FormKey: 000C6C:Argonia.esp
+  FormKey: 800014:Argonia.esp
   MajorRecordFlagsRaw: 1024
-  EditorID: ARG_TG_TiltsRef
+  EditorID: ARG_R_npc_mercantile_coast_soulrest_keeper_harbour_den
   SkyrimMajorRecordFlags:
   - 0x400
-  Base: 000C5A:Argonia.esp
+  Base: 800015:Argonia.esp
   Placement:
-    Position: 2306, 1073, 7526
+    Position: 2300, 1150, 7530
   MajorFlags:
   - Persistent
-- MutagenObjectType: PlacedObject
-  FormKey: 11ABF3:Black Marsh North.esp
-  MajorRecordFlagsRaw: 1024
-  EditorID: AbandonedShackInteriorDoorRef005
-  SkyrimMajorRecordFlags:
-  - 0x400
-  Base: 024E26:Skyrim.esm
-  TeleportDestination:
-    Door: 120E95:Black Marsh.esm
-    Position: 49745.906, -5262.704, 42.67453
-    Rotation: 0, 0, -2.9999945
-  Scale: 0.85
-  Lock:
-    Level: 255
-    Unused: 0x000000
-    Unused2: 0x0000000000000000000000
-  Owner: 01BDB4:Skyrim.esm
-  Placement:
-    Position: 410.30347, 2722.7285, 7584.728
-    Rotation: 0, 0, 1.5707964
-- MutagenObjectType: PlacedObject
-  FormKey: 11ACA1:Black Marsh North.esp
-  MajorRecordFlagsRaw: 1024
-  EditorID: AbandonedShackInteriorDoorRef006
-  SkyrimMajorRecordFlags:
-  - 0x400
-  Base: 024E26:Skyrim.esm
-  TeleportDestination:
-    Door: 11ACD3:Black Marsh North.esp
-    Position: 49432.043, -7250.3594, 82.72332
-  Scale: 0.85
-  Lock:
-    Level: 255
-    Unused: 0x000000
-    Unused2: 0x0000000000000000000000
-  Owner: 01BDB4:Skyrim.esm
-  Placement:
-    Position: 87.4491, 578.8512, 7584.728
-    Rotation: 0, 0, 1.5707964
 Temporary:
 - MutagenObjectType: PlacedNpc
   FormKey: 059BF3:Black Marsh North.esp

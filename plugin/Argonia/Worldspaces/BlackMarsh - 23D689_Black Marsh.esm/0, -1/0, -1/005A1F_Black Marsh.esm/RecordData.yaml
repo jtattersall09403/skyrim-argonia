@@ -7,6 +7,16 @@ Grid:
 WaterHeight: 3.4028235E+38
 Temporary:
 - MutagenObjectType: PlacedNpc
+  FormKey: 03E40C:Black Marsh North.esp
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 03286D:Black Marsh North.esp
+  Placement:
+    Position: 29694.676, -4512.001, 110.52588
+  MajorFlags:
+  - InitiallyDisabled
+- MutagenObjectType: PlacedNpc
   FormKey: 02A209:Black Marsh.esm
   Base: 000BC1:Argonia.esp
   Placement:

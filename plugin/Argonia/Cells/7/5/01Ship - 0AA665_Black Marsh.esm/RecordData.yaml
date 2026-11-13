@@ -6,7 +6,7 @@ SkyrimMajorRecordFlags:
 - Compressed
 Name:
   TargetLanguage: English
-  Value: Test Ship
+  Value: Ship
 Flags:
 - IsInteriorCell
 - HasWater
@@ -45,42 +45,18 @@ Music: 0B9DCE:Skyrim.esm
 ImageSpace: 000167:Skyrim.esm
 Persistent:
 - MutagenObjectType: PlacedNpc
-  FormKey: 00080B:Argonia.esp
+  FormKey: 80000A:Argonia.esp
   MajorRecordFlagsRaw: 3072
-  EditorID: ARG_BT_WalkerRef
+  EditorID: ARG_R_person_test_crab
   SkyrimMajorRecordFlags:
   - 0x400
   - InitiallyDisabled
-  Base: 000806:Argonia.esp
+  Base: 80000B:Argonia.esp
   Placement:
-    Position: 2907, 5107, 7046
+    Position: 2923, 5000, 6987
   MajorFlags:
   - Persistent
   - InitiallyDisabled
-- MutagenObjectType: PlacedObject
-  FormKey: 000E0E:Argonia.esp
-  MajorRecordFlagsRaw: 1024
-  EditorID: ARG_MQ05_ShipDoorA
-  SkyrimMajorRecordFlags:
-  - 0x400
-  Base: 1DE5DF:Black Marsh.esm
-  TeleportDestination:
-    Door: 000E0F:Argonia.esp
-    Position: 5870, 5825, 8054
-  Placement:
-    Position: 3326, 5254, 7066
-- MutagenObjectType: PlacedObject
-  FormKey: 000E0F:Argonia.esp
-  MajorRecordFlagsRaw: 1024
-  EditorID: ARG_MQ05_ShipDoorB
-  SkyrimMajorRecordFlags:
-  - 0x400
-  Base: 1DE5DF:Black Marsh.esm
-  TeleportDestination:
-    Door: 000E0E:Argonia.esp
-    Position: 3206, 5254, 7066
-  Placement:
-    Position: 5990, 5825, 8054
 Temporary:
 - MutagenObjectType: PlacedNpc
   FormKey: 03E40E:Black Marsh North.esp

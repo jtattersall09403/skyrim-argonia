@@ -1,0 +1,8 @@
+FormKey: 800044:Argonia.esp
+EditorID: ARG_BlockTest_T_a52b437c
+Name:
+  TargetLanguage: English
+  Value: Do you know my kind?
+Branch: 800045:Argonia.esp
+Quest: 800001:Argonia.esp
+SubtypeName: CUST

@@ -1,8 +1,0 @@
-FormKey: 000DAA:Argonia.esp
-EditorID: ARG_BC03_YieldTalk
-Name:
-  TargetLanguage: English
-  Value: Let this end. Work the season.
-Branch: 000DA9:Argonia.esp
-Quest: 000D85:Argonia.esp
-SubtypeName: CUST

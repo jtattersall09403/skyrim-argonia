@@ -57,6 +57,6 @@ Temporary:
     Rotation: 0, 0, 2.8
 - MutagenObjectType: PlacedNpc
   FormKey: 0934C1:Black Marsh North.esp
-  Base: 000BE7:Argonia.esp
+  Base: 000BE9:Argonia.esp
   Placement:
     Position: 22108.871, 64866.277, 139.3963

@@ -1,8 +1,0 @@
-FormKey: 000CE1:Argonia.esp
-EditorID: ARG_TG02_TopicSellFigurine
-Name:
-  TargetLanguage: English
-  Value: (Persuade) This figurine is older than any clutch of yours.
-Branch: 000CE0:Argonia.esp
-Quest: 000C58:Argonia.esp
-SubtypeName: CUST

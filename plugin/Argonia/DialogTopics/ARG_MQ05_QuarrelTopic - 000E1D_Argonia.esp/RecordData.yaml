@@ -1,8 +1,0 @@
-FormKey: 000E1D:Argonia.esp
-EditorID: ARG_MQ05_QuarrelTopic
-Name:
-  TargetLanguage: English
-  Value: What do you and Kaska-Meen quarrel over?
-Branch: 000E1C:Argonia.esp
-Quest: 000DBE:Argonia.esp
-SubtypeName: CUST
