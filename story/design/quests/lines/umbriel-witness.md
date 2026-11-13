@@ -361,7 +361,7 @@ door drain at dunhallow "Dyke Drain"
 thing strongbox at cellar container holds gold 60 "Planters' Strongbox"
 thing tallies in strongbox "Six Passage Tallies (Three Knots)"
 thing chest at stakehouse container locked expert owner neexa holds gold 40 "Divers' Chest"
-thing sixstakes at stakeground off "Six New Stakes"
+thing sixstake at stakeground off "Stake of the Six of Dunhallow"
 thing firststake at stakeground readable "The First Stake"
 item tome "Spell Tome: Raise Zombie"
 
@@ -370,7 +370,7 @@ stage 10 "Neexa-Tul of the Umbriel Witness asked me to bring her what names six 
 stage 20 "Tseeba-Mei unlocked the cellar hatch for me." do unlock hatch
 stage 25 "I paid Tseeba-Mei for the mason, and she unlocked the cellar hatch." do take-gold 200, unlock hatch
 stage 30 "I took six lead tallies from the planters' strongbox in Dunhallow's cellar. Each is scratched with a Breton name and stamped with three knots."
-stage 90 completed "Staked. I gave Neexa-Tul the six tallies." do take tallies, give-gold 100, join witness, rank witness 1, set uw01.way 1, on sixstakes, own chest
+stage 90 completed "Staked. I gave Neexa-Tul the six tallies." do take tallies, give-gold 100, join witness, rank witness 1, set uw01.way 1, on sixstake, own chest
 stage 91 completed "Sold. I sold the six tallies to Odile Marric on the foreigners' dock." do take tallies, give-gold 300, give tome, set uw01.way 2, add uw.college 1
 stage 92 completed "Walled. I gave the six tallies back to Tseeba-Mei." do take tallies, give-gold 250, set uw01.way 3, lock hatch
 stage 95 failed "Neexa-Tul is dead. Nobody will carve them now."
@@ -392,10 +392,10 @@ line lay tseeba at 10 ask "I can lay the dead, not only count them." if skill Re
 line pay tseeba at 10 ask "What would it cost to open it?" if gold 200 -> 25 else "Two hundred, for the mason who walls it again after you." says "she takes the coin"
 line want odile at 10-30 ask "Why do you ask after Dunhallow's cellar?" says "they were Bretons; who is a lizard's grave-post for; and three hundred, more than a carver pays"
 line toneexa neexa at 30 ask "Here are six names." if holds tallies -> 90 says "she reads the names, then the mark: three knots; say nothing on the walks until she has thought"
-line toodile odile at 30 ask "Three hundred, you said." if holds tallies -> 91 says "she pays, gives a tome, and asks nothing about how"
+line toodile odile at 30 ask "You wanted what was in Dunhallow's cellar." if holds tallies -> 91 says "she pays three hundred, gives a tome, and asks nothing about how"
 line totseeba tseeba at 30 ask "Take them. Put them back in the wall." if holds tallies -> 92 says "she will say the six names over the wall at every planting, which is more than Lilmoth did"
 line a90 neexa at 90 ask "Whose mark is three knots?" says "the oldest lighters on the harbour; a house that sits on the council"
-line a91 neexa at 91 ask "I sold the tallies to Odile Marric." says "six stakes she had cut are firewood; go down for her again and bring that one to her"
+line a91 neexa at 91 ask "I sold the tallies to Odile Marric." says "the stake she had cut for them is firewood; go down for her again and bring that one to her"
 line a92 neexa at 92 ask "I gave the tallies back to Dunhallow." says "then they have a wall and a woman who says their names; she has carved worse"
 line o91 odile at 91 ask "What will you do with the three in the cellar?" if alive chandler says "send for them before a mason does"
 line o91d odile at 91 ask "What will you do with the three in the cellar?" if dead chandler says "nothing now; a pity; ended, they are only bones"
@@ -418,7 +418,7 @@ live off her cellar and neither sleeps over it.
 
 | Ending | What the player sees | Gains | Costs |
 |---|---|---|---|
-| *Staked (90)* | six new stakes at the Stake-Ground, switched on while the player is indoors | the rank of Breath-Holder; 100 gold; the Divers' Chest and what is in it | Tseeba-Mei greets coldly; Odile Marric prices nothing kindly |
+| *Staked (90)* | one new stake at the Stake-Ground with six foreign names on it, switched on while the player is indoors ("One post for a household of strangers. I do not know six stories") | the rank of Breath-Holder; 100 gold; the Divers' Chest and what is in it | Tseeba-Mei greets coldly; Odile Marric prices nothing kindly |
 | *Sold (91)* | no stakes; Odile Marric says what she will do with the three, if they stand | 300 gold; a Conjuration tome | no rank and no chest yet; `uw.college` +1, which tells in UW05; Neexa-Tul says so plainly and still gives work |
 | *Walled (92)* | the hatch locked again for good | 250 gold | no rank and no chest yet; whatever else was in the strongbox is behind the wall |
 
@@ -479,7 +479,7 @@ under water and its upper floor is dry.
 
 - *Down and in (Alteration, a draught, the sap, gills).* Through the drowned door and up the inner stair. The
   quarter's own slaughterfish (D) are swum past.
-- *The quiet hand (Sneak, Pickpocket).* He stands with his back to the stair. The charm, the gourd and the key can
+- *The quiet hand (Sneak, Pickpocket).* The charm, the gourd and the key can
   each be lifted from a dead man who has not moved in a hundred and fifty years; a bungled lift wakes him.
 - *The hard fight (any weapon skill or Destruction; Restoration to turn him; Conjuration for something to stand
   between).* One opponent, fixed at level 18, in a room with one way out. Two warnings come first: Old Nusa ("No
@@ -492,8 +492,8 @@ under water and its upper floor is dry.
 | Stage | What moves it | Journal gist | Objective and its markers |
 |---|---|---|---|
 | 0 | hidden start | | |
-| 10 | Neexa-Tul's offer, after any ending of UW01 | Neexa-Tul sent me into the drowned quarter for the name-charm of Ajum-Shei, a rope-merchant who died in his villa in 4E 48 with his household. His kin Meenus-Lei has paid for his stake. Old Nusa at the Divers' Stair knows the house. | Bring up Ajum-Shei's name-charm (the villa's door, him; Old Nusa) |
-| 30 | taking the name-charm (open from 10) | I took Ajum-Shei's name-charm from him in the upper hall of his villa. | Bring the name-charm to Neexa-Tul (her) |
+| 10 | Neexa-Tul's offer, after any ending of UW01 | Neexa-Tul sent me into the drowned quarter for the name-charm of Ajum-Shei, a rope-merchant who died in his villa in 4E 48 with his household. His kin Meenus-Lei has paid for his stake. Old Nusa at the Divers' Stair knows the house. | Bring up Ajum-Shei's name-charm (the charm, the villa's door, Old Nusa) |
+| 30 | taking the name-charm (open from 10) | I took Ajum-Shei's name-charm from him in the upper hall of his villa. | Bring the name-charm to Neexa-Tul; or hear Carves-Twice or Odile Marric about what else he wore (all three) |
 | 40 | Odile Marric's line at 30, a gourd held (takes it) | I sold Odile Marric a singer's gourd. | Bring the name-charm to Neexa-Tul (her) |
 | 90 | Neexa-Tul's line at 30, charm and gourd held, Meenus-Lei alive | **Told.** I gave Neexa-Tul the name-charm and the singer's gourd Ajum-Shei wore. She will put both into Meenus-Lei's hands. | ends, completed |
 | 91 | Carves-Twice's line at 30, charm and gourd held | **Carved among the victims.** I gave Carves-Twice the name-charm and the singer's gourd. | ends, completed |
@@ -547,8 +547,9 @@ stage 92 completed "Carved, and sold. I gave Neexa-Tul the name-charm and said n
 stage 93 completed "Carved as asked. I gave Neexa-Tul Ajum-Shei's name-charm and nothing else." do take charm, give-gold 100, rank witness 2, set uw02.way 4, on ajumstake
 stage 95 failed "Neexa-Tul is dead. Nobody will carve him now."
 
-objective 10 at 10 "Bring up Ajum-Shei's name-charm from his villa in the drowned quarter" -> villadoor, ajum, nusa
-objective 30 at 30, 40 "Bring the name-charm to Neexa-Tul" -> neexa
+objective 10 at 10 "Bring up Ajum-Shei's name-charm from his villa in the drowned quarter" -> charm, villadoor, nusa
+objective 30 at 30 "Bring the name-charm to Neexa-Tul; or hear Carves-Twice or Odile Marric about what else he wore" -> neexa, carver, odile
+objective 40 at 40 "Bring the name-charm to Neexa-Tul" -> neexa
 
 line job1 neexa at 0 ask "Is there another name to bring up?" if done UW01 90 -> 10 says "Meenus-Lei's forebear; the villa nearest the stair; divers say he is still in it"
 line job2 neexa at 0 ask "Is there another name to bring up?" if done UW01 91 -> 10 says "the same job; and: bring this one to me"
@@ -558,18 +559,18 @@ line door nusa at 10-40 ask "Which house is Ajum-Shei's?" says "the nearest the 
 line gourd neexa at 30 ask "He wore this on the same cord. What is it?" if holds singergourd says "what the tree's singers drank from; he sang; whoever drank was the tree's, not their own; his kin should decide; Carves-Twice would carve him a victim and sink it; the Breton would pay"
 line cut carver at 30 ask "What do you carve for a man who sang?" if holds singergourd says "a ridden man is a victim; she has paid; her house has had its name from him for five generations; give both to him and nobody need be shamed"
 line buy odile at 30 ask "What would you give for something a singer wore?" if holds singergourd says "four hundred and a tome; it is the one thing the dead of that year ever answered"
-line sell odile at 30 ask "Four hundred, then." if holds singergourd -> 40 says "she takes it in both hands"
+line sell odile at 30 ask "Take it. I will sell what a singer wore." if holds singergourd -> 40 says "four hundred and a tome; she takes it in both hands"
 line whole neexa at 30 ask "Here is his name-charm. And he wore this." if holds charm, holds singergourd, alive meenus -> 90 says "she takes both; they go to Meenus-Lei today, and Meenus-Lei chooses"
 line plain neexa at 30 ask "Here is his name-charm." if holds charm -> 93 says "she reads the name and sends for the carver"
 line plainsold neexa at 40 ask "Here is his name-charm." if holds charm -> 92 says "she reads the name and sends for the carver"
-line quiet carver at 30 ask "Carve him as she paid for. Sink this." if holds charm, holds singergourd -> 91 says "he takes both and pays from the council's purse"
+line quiet carver at 30 ask "Carve him as she paid for, and put this out of sight." if holds charm, holds singergourd -> 91 says "he takes both and pays from the council's purse"
 line a90 meenus at 90 ask "Neexa-Tul has spoken to you." says "she will carve it herself, on her own ground, where it is her house's business; she does not thank me, and gives back nothing she owes"
 line a91 meenus at 91 ask "His stake is up." says "among them, where he belongs; the hatchlings will be named under it"
 line a92 meenus at 92-93 ask "His stake is up." says "among them, where he belongs; the hatchlings will be named under it"
 line n91 neexa at 91 ask "Carves-Twice has carved Ajum-Shei." says "so I see; nobody brought me his charm; ask him what else he was brought"
 line pantry neexa at 90-93 ask "There was writing in his pantry." if holds scrap says "she reads it twice; at 'the Fisher's house' she folds it and will not say why"
-line s40 nusa at 40-93 ask "What did you see in his hall?" if alive ajum says "you came up lighter than he went down; and he is still standing"
-line s40d nusa at 40-93 ask "What did you see in his hall?" if dead ajum says "then that house is only a house now"
+line s90 nusa at 90-93 ask "What did you see in his hall?" if alive ajum says "you came up lighter than he went down; and he is still standing"
+line s90d nusa at 90-93 ask "What did you see in his hall?" if dead ajum says "then that house is only a house now"
 
 take charm from 10 -> 30
 must-live neexa fails 95
@@ -616,7 +617,7 @@ squatters, armoury and water-filled cellar; Karketa's prayer-post) is cited in t
 
 | The thing | Quest | What happens there | How the player knows it |
 |---|---|---|---|
-| a field of carved grave-stakes on dry ground at the edge of the drowned quarter, with room for two people to stand among them and for six more stakes and then one more, each able to be switched on | all | Meenus-Lei stands there; stakes appear after endings | rows of carved posts with black water behind them read as a grave-ground on sight; Neexa-Tul and Old Nusa call it the Stake-Ground |
+| a field of carved grave-stakes on dry ground at the edge of the drowned quarter, with room for two people to stand among them and for two more stakes, each able to be switched on | all | Meenus-Lei stands there; stakes appear after endings | rows of carved posts with black water behind them read as a grave-ground on sight; Neexa-Tul and Old Nusa call it the Stake-Ground |
 | one stake taller than the rest, standing apart, that can be read | UW01 on | the First Stake's telling | its name, "The First Stake", shows when it is looked at; Old Nusa points it out as "the tall one" |
 | a stilt house beside the stakes, an inside behind a door, with a standing place, a bed and a chest that locks | all | Neexa-Tul stands inside; every briefing and hand-in; the Divers' Chest | the door shows "Stake-House"; diving gear dries outside it |
 | a small shed by the stakes, an inside behind a door | UW02 on | Carves-Twice stands inside | the door shows "Carving Shed"; half-cut stakes stand in it |
