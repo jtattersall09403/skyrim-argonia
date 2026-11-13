@@ -55,7 +55,7 @@
 {"talker":"015195:Black Marsh.esm","topic":"talk.directions","facts":"fact.lilmoth.015195.dir.dock"}
 {"talker":"015195:Black Marsh.esm","topic":"talk.greet-friend","facts":""}
 {"talker":"015195:Black Marsh.esm","topic":"talk.greet-stranger","facts":""}
-{"talker":"015195:Black Marsh.esm","topic":"talk.here","facts":"fact.lilmoth.015195.here.horses, fact.lilmoth.015195.here.cows"}
+{"talker":"015195:Black Marsh.esm","topic":"talk.here","facts":"fact.lilmoth.015195.here.cows"}
 {"talker":"015195:Black Marsh.esm","topic":"talk.self","facts":""}
 {"talker":"015195:Black Marsh.esm","topic":"talk.someone","facts":"fact.lilmoth.015195.someone.lifts"}
 {"talker":"01CCD9:Black Marsh North.esp","topic":"talk.directions","facts":"fact.thorn.01ccd9.directions.thorn"}
@@ -284,7 +284,7 @@
 {"talker":"037E04:Black Marsh North.esp","topic":"talk.self","facts":""}
 {"talker":"037E04:Black Marsh North.esp","topic":"talk.someone","facts":"fact.thorn.037e04.someone.tallies"}
 {"talker":"037E04:Black Marsh North.esp","topic":"talk.trade","facts":"fact.thorn.037e04.trade.work"}
-{"talker":"03E413:Black Marsh North.esp","topic":"talk.danger","facts":"fact.lilmoth.03e413.danger.salty, fact.lilmoth.03e413.danger.crabs"}
+{"talker":"03E413:Black Marsh North.esp","topic":"talk.danger","facts":"fact.lilmoth.03e413.danger.crabs"}
 {"talker":"03E413:Black Marsh North.esp","topic":"talk.directions","facts":"fact.lilmoth.03e413.dir.docks"}
 {"talker":"03E413:Black Marsh North.esp","topic":"talk.greet-friend","facts":""}
 {"talker":"03E413:Black Marsh North.esp","topic":"talk.greet-stranger","facts":""}
@@ -303,7 +303,7 @@
 {"talker":"03E418:Black Marsh North.esp","topic":"talk.services","facts":"fact.lilmoth.03e418.services.stock"}
 {"talker":"03E418:Black Marsh North.esp","topic":"talk.someone","facts":"fact.lilmoth.03e418.someone.linen"}
 {"talker":"03E418:Black Marsh North.esp","topic":"talk.trade","facts":"fact.lilmoth.03e418.trade.table"}
-{"talker":"05D7C8:Black Marsh.esm","topic":"talk.danger","facts":"fact.lilmoth.05d7c8.danger.bears, fact.lilmoth.05d7c8.danger.treemother"}
+{"talker":"05D7C8:Black Marsh.esm","topic":"talk.danger","facts":"fact.lilmoth.05d7c8.danger.treemother"}
 {"talker":"05D7C8:Black Marsh.esm","topic":"talk.directions","facts":"fact.lilmoth.05d7c8.dir.dwemer, fact.lilmoth.05d7c8.dir.alten, fact.lilmoth.05d7c8.dir.dock"}
 {"talker":"05D7C8:Black Marsh.esm","topic":"talk.greet-friend","facts":""}
 {"talker":"05D7C8:Black Marsh.esm","topic":"talk.greet-stranger","facts":""}
