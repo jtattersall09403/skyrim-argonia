@@ -37,10 +37,12 @@ the province plan; "D" is the digest ([province](../../world/province.md), [peop
 Rulings are numbered so that section 8 can point at them: N for names, P for places, H for Helstrom, C for
 crossings, T for the timeline and the map, G for notes and hooks, S for shapes, K for skills.
 
-**Counts.** 318 people are named (267 by the stories, and the 51 of Helstrom's 58 that no story uses); 42 clashes of
-name are ruled (N1 to N42). 171 places are used, 31 of them by more than one line; 24 clashes of place are ruled
-(P1 to P24), and Helstrom's fit is H1 to H9. 62 crossings were asked: 44 are granted as asked, 14 granted changed
-and 4 refused. 19 contradictions of time, power and belief are ruled (T1 to T19).
+**Counts.** 318 people are named: 267 by the stories, and the 51 of Helstrom's 58 that no story had used. 53
+rulings are made on names (N1 to N53): 14 on one name carried by two people, 9 on one person given two names, 19
+on families of names too alike, 11 on words for groups, offices and ranks. 142 places are used, 31 of them by more
+than one line; 24 clashes of place are ruled (P1 to P24) and Helstrom's fit is H1 to H9. 62 crossings were asked:
+48 are granted as asked, 10 granted changed, 3 refused and 1 passed to the owner. 19 contradictions of time, power
+and belief are ruled (T1 to T19). 17 rulings are made on shape (S1 to S17) and 5 on skills (K1 to K5).
 
 ## 1. Everyone named
 
@@ -439,8 +441,863 @@ Wujeel's: Ajum-Teel, Heeshu, Lieshu, Sakka-Zuul. Taleeka-Ma's: Heetaxi, Jeenaxi,
 Cheeval-Xu's: Kassa-Weel, Nuxeeka, Ohanga-Tsei, Taxeel-Wan, Tsiraxi. Nolu-Jeel's: Nolu-Jeel, Deetsa-Hul,
 Juxee-Meen, Oleeka-Tsun, Paxu-Lei, Weeruk-Ta. Ixtul-Bei's: Jeetsa-Rin, Peeshal-Ru, Raxeela-Hut, Ulaxeen,
 Wexa-Dun. Kuxeesh's: Kuxeesh, Eleexa-Bur, Huzeel-Tan, Lumeexa, Weesha-Lun. Sleeps-Last. Tzalun's: Tzalun,
-Gahzeel, Nine-Teeth (LB's Nine-Knots, the tanner of Stormhold, is near and is allowed: N-rule 1.4).
+Gahzeel, Nine-Teeth (LB's Nine-Knots, the tanner of Stormhold, is near and is allowed).
 
 New people the stories add to Helstrom: Nesh-Deeka, Never-Writes-Twice and Haj-Deesh (MQ); Okeeh-Ja (MR); the
 Nameless Traveller, for one quest (WK).
 
+## 2. Every place used
+
+The stories use 142 of the digest's 258 places: 111 by one line alone and 31 by more than one. A place one line
+alone uses has no clash to rule; its needs are that line's §4 table as written, and are loaded from there (section
+9). Places more than one line uses are merged here, one row for each needed thing.
+
+### 2.1 Places one line alone uses
+
+| Line | Places, by the digest's names | Reserved by the plan |
+|---|---|---|
+| MQ | Sedge-Kal Camp, Nenria, Vel-Sapha Stand, Gideon South Watch, Bell Station, the Kelp Lantern, Thul-Kesh Spire, Fort Swiftmoth, Gemin, Ushaan Camp, Echo Deep; passed on the road: Urvyn Farm, Reed-Sill Weir, Ashgate Post (MQ §3, §4) | all but the three passed |
+| BC | Reedfall Farm, Lujei Ferry, Lujei, Khariton, Sheh-Ara, Oru-Neel, Zul-Etha, Mereweather Estate (BC §4) | none; the Rose's gate and yard are in 2.3 |
+| LB | Stormhold, Surkina, Vandrel Farm, Tenmal, Sedgeweir, Julo, Gaxu-Reet (LB §4) | Surkina's hook |
+| LW | Acra-Tiin, Xal-Tarek, Deshaa Post, Ashfall Cut, Banu-Veeth Post, Reek-Anu; told of: Redtimber Camp, Ninth Shaft (LW §4) | Jarecai's hatching ground (2.3) |
+| MR | Yuva-Goli, Tsonac, Teth-Kasa Station, Tseli-Oon, Dry-Fang Camp, Jal-Resh Post, Meris-Keth (MR §4) | Meris-Keth, Dry-Fang Camp |
+| MC | Noota Nara, Fort Chalkmoth, Chalkmoth Pit, Seth-Alaxh Roost, Tazhul, Oxayo, Sahlpesh Cave, Reeka-Veesa, Vorannuhl, Hanaxi Roost, Kaochalit, Percar Scar; told of: Xanuc Diggings (MC §4) | Hanaxi Roost, Sahlpesh Cave |
+| NR | Silt-Orrel Estate, Brackwater Waystation, Nundi, Southwatch Keep, Fort Lowmoth (NR §4) | none here; the customs strongroom is in 2.3 |
+| NI | Giovesse with Castle Giovesse, Olvani, Umpholo, Calyphe, Mnemosa, Nul-Sakeesh Camp, Nyrath-Ven, Meliton, Hutan-Aru, Ashiit Den, Reknaa-iit Mound (NI §4) | none |
+| RS | Uluo, Shalaia, Marshgate Watch, Seafalls Lighthouse, Wreck of the Brindle Gull, Kornakim, Wreck of the Stormwidow, the Grey Tooth, Marque Landing, Hollow Tide Camp, Rainbreaker Keep (RS §4) | Skeith Isle |
+| SS | Wreck of the Tidewarden, Sal-Axan, Tailfall Mound, Inoio (SS §4) | the sealed school (2.3) |
+| SA | Yulca, Hirecan, Mazurath, Khiar, Sethiral, Yina, Gaweja, Anvadas, Icalca, Gandranen, Teel-Fen Weir (SA §4) | Gandranen, Sethiral, Anvadas |
+| TA | Coldbrine Mine, Kharraluhl, Wreck of the Silt Bride (TA §4) | Coldbrine Mine, the wreck |
+| UW | Dunhallow Plantation, Seeku Farm, Karketa (UW §4) | none |
+| WK | Myroleon, Tydeos, Uzu-Tegh, Luntoc, Vesh-Aneel; told of: Nemeon (WK §4) | none |
+
+No line sets a quest in a place the plan reserves to another, with one use to rule (P9, the Rose's yard). The
+main quest has given up Salt-Tooth Camp, Vesh-Aneel, Hokal-Ush and the Lost City (MQ §6); the Waykeepers take
+Vesh-Aneel (WK §3), and the other three are free. No two lines seat in one place without the plan's leave: the
+two exceptions it names stand (Helstrom: the Reed's household, Many-Root's hall and the keepers' second post;
+Lilmoth: the Night-Reed and the Witness), and every other shared city has one seat and visitors (2.3).
+
+### 2.2 Helstrom, exactly
+
+What drafted Helstrom has, from the player's side (helstrom-needs; `python3 -m tools.places needs show helstrom`):
+
+- **The Tree-Minders' Hall** is the cave at the north-west edge, by the waterfalls, beside the arcane enchanter. Its
+  door and its inside show that name. Taleeka-Ma heals and sells tomes inside; two of the levy stand at its mouth.
+  It is about 520 metres from the sacred tree.
+- **The sacred tree** stands at the middle of the town. The rootworm landing is there, and Cheeval-Xu, who offers
+  rootworm travel when spoken to; no hut or sign marks a post. About thirty townsfolk stand round the tree by day,
+  among them Hixee-Ra and Ooxa-Leet (the two naheesh of the assembly), Xilsa-Jee and Ruxa-Neel.
+- **The Sealed Spring** is a lidded clay urn at the foot of the tree, five metres east of the trunk, which the game
+  names "Sealed Spring": locked at Novice and owned by the town. There is no wicker door, no hatch, no dipper and
+  no guard's post. The nearest guard stands about 98 metres away.
+- **Ixtul-Bei's House** is the house nearest the city landing, about 50 metres from where the raft-master stands.
+  Its door shows that name. Inside is one room and a locked chest (Novice) the household owns. Ixtul-Bei is the
+  tally-keeper of goods landed; five of his household live there. There is no back room.
+- **The boatmen's lodge** is a moored ship whose door shows "Ship", 76 metres from the landing; Sleeps-Last keeps it.
+- No creature is placed in the town. People stand where they are drafted.
+
+| # | Line | What its story says | What it is rewritten to |
+|---|---|---|---|
+| H1 | MQ | The Reed's household is "a boatman's house" near the city landing with a locked back room, behind which a dreamer is kept and never seen (MQ §1, §3 MQ04, §4). | The household lodges in **Ixtul-Bei's House**: Nesh-Deeka and Never-Writes-Twice are the tally-keeper's lodgers, who pass as boat people. The man who writes down everything landed at the river fork is the Reed's third pair of eyes, which also answers "three of us in this house" (MQ §3) with two named. No dreamer is in Helstrom: the dreamers are at Fort Swiftmoth, where MQ10 finds them. What the house hides is in its **locked chest**: the jar the player carried in Act I, or its empty fellows. The player finds the house by the name on its door and by the root-herald, who sends them to "the tally-keeper's house by the landing". |
+| H2 | MQ | The spring is behind a hatch or low wicker door with an Adept lock; Haj-Deesh, a spear of the levy, stands at it with the key; a dipper hangs there (MQ §3 MQ04, §4). | The spring is the **Sealed Spring**, the lidded urn at the foot of the tree, locked at Novice and the town's. The lock is no longer the difficulty: taking from it is theft in front of the thirty who stand there by day, so the quiet way is Sneak by night or a turned back. Haj-Deesh is a new person and may be placed beside the urn (helstrom-needs allows one spear of the levy there); his key, his Speech check and his pocket stand. No dipper: the draught is taken from the urn as a thing. |
+| H3 | MQ | One crocodile lies on the mud below the city landing for its gall (MQ §3 MQ04, §4). | The gall comes from a crocodile in the wild ground outside the town. Wujeel says where. |
+| H4 | MQ | In the endings the hatch is gone and the naheesh stand by the spring (MQ §2). | The urn stands unsealed, a second placed state switched while the player is away, and the two naheesh are named where they already stand, at the tree: Hixee-Ra and Ooxa-Leet. |
+| H5 | MQ | Wujeel's stall and Ruxa-Neel's line (MQ §3 MQ04). | As drafted; nothing changes. The rootworm sets the player down at the tree, beside Cheeval-Xu and the Sealed Spring, so MQ04 opens within sight of its object. |
+| H6 | MR | The hall is a hall, with Xilsa-Jee "among the roots by the hall's door" and Hixee-Ra beside her from MR03; the hall names itself by its door (MR §1, §4). | The hall is the cave, named as above; Okeeh-Ja, a new person, stands inside it with Taleeka-Ma. Xilsa-Jee and Hixee-Ra are met **at the sacred tree**, whose roots Xilsa-Jee tends, 520 metres from the cave. Okeeh-Ja sends the player "to the root-tender at the city tree"; every line that has either woman at the hall's door moves there, and Xilsa-Jee offers MR06 at the tree. Taleeka-Ma and Wujeel place the hall "by the waterfalls at the north-west edge". |
+| H7 | MR | The spring is "shut behind a wicker door with a spear of the levy" (MR §1). "The Wardens' boat people" are the "boatmen's houses by the landing", who ask what walkers hear (MR §1). | The spring is the sealed urn at the foot of the tree, and the hall's silence about it stands word for word otherwise. The boat people are **the tally-keeper's lodgers**; the contempt and the price of fish stand. |
+| H8 | MR | Wujeel's stall and bench; Xuhal-Teeus sells a boat as a mooring-peg (MR §2 MR05). | As drafted: each is used where he stands. MR may name Poles-Upriver for its raft journeys. |
+| H9 | WK | The keeper's post is Cheeval-Xu "where he stands by the sacred tree, as drafted, with no hut and no sign"; one person of ours, the Nameless Traveller, is switched on beside him in WK02 (WK §4). | Nothing to rewrite: this line was written to the drafted town. The traveller stands a few steps from the Sealed Spring and says nothing of it. |
+
+Other lines touch Helstrom only in words. SA06 passes through by boat and rootworm (SA §2). LW has "a walker of
+Helstrom" make Gideon's cut (LW §2). LB says Helstrom's Root-Folk owe a lamp nothing (LB §1). RS says Fort
+Reedmoth "has not been paid from Helstrom in living memory" (RS §1), which T3 changes.
+
+### 2.3 Places more than one line uses
+
+| Place | The needed thing | Lines and quests | Ruling |
+|---|---|---|---|
+| **Lilmoth** | The Witness's ground on dry land at the drowned quarter's edge: Stake-Ground, Stake-House, Carving Shed, Divers' Stair | UW all (UW §4) | Stands (lead's ruling 5). |
+| | A spot on dry ground by the quarter's edge for the Nisswo Jeer-Tei | NI06 and talk (NI §4); UW talk (UW §4); SS06 (SS §6) | One spot, NI's need, in sight of the Stake-Ground. |
+| | One drowned villa and the sunken shrine of Xhon-Mehl, each one drowned building | UW02, UW05 (UW §4) | Stands. The shrine is a note of Lilmoth's made a place by this need. |
+| | Pawnshop on the lowest walk of Pusbottom, and the den under it | NR all (NR §4) | Stands. |
+| | Harbour landing; a spot by the lighters; the stilt-hall tavern's end room | NR01 (NR §4) | Stands. |
+| | The foreigners' dock, a spot for the Breton dock mage | UW all (UW §4) | Stands; it is not NR's harbour landing. |
+| | The upper walks: a councillor and his factor by the Lighter-Masters' Hall; a council matriarch with her lighters below | NR03, NR05, NR06 (NR §4); UW06 (UW §4) | Both, as two members of one council: P4. |
+| | The retired Shadowscale's room with a chest | MQ11 (MQ §4) | Stands; no other line touches Xil-Veeka (NR §6, UW §6, SS §6). |
+| | A small house on the walkways with a brass medallion by its door; a brew-shop that reads as the Black-Tongues' | SS06, SS07 (SS §4) | Stands. |
+| | The young tree, whose sap gives breath | MQ06, UW, NR for breath (D) | Used for breath only by all three. |
+| **Archon** | The sealed school, its land door, the hut against its wall, the Cradle and the Teaching Hall behind the water door | SS all (SS §4); LB08 reaches the door and the water stairs and does not go in (LB §4) | Stands. |
+| | Water stairs under the school's seaward wall with a locking grille and moss baskets | SS all; LB08 | One stair, named for the offerings: P3. |
+| | The customs post on the quay; the harbour office | SS02 on (SS §4) | Stand. |
+| | The Company's old counting-house with a cage and a strongroom; a second water stair beside it with a grille to a flooded dock | NR06 (NR §4) | Stands, as a second building of the Company's row and a second stair: P3. |
+| | The landward Hist tree and its keeper | SS04, SS08; LB08; NR and RS for its blessing | One tree: P3. |
+| | Sloop, coaster, pilots' stair, boat shed, bookseller's shop (SS); the fence's den on the lower wharves (NR; LB08 meets the fence); a lighter at the lower wharves (LB08) | as given | Stand. The fence is Sails-by-Morning in LB08 too. |
+| **Soulrest** | The League's hall, its court, the civil office, the Factor's counting-house on the wharf | LW all (LW §4) | Stand. |
+| | A small house in the government quarter by the shrine of the Nine | NR06 (NR §4) | Stands; LW agrees (LW §6). |
+| | The Broker's house on the timber wharves; three places on the harbour quay | BC03 (BC §4) | Stands; LW names nobody there (LW §6). |
+| **Thorn** | The Old Guild Hall, its cellar, the shrine of Saint Roris, the dyke, the long field | TA all (TA §4) | Stand, on another source (lead's ruling 4). |
+| | Two spots in the dockside tavern for a paymaster and his clerk; the purse-cutter | NR06 (NR §4); TA01 uses the purse-cutter as an informant (TA §3) | Shared; each line uses him for talk only. |
+| **Fort Thornmoth** | Store room, shutter, toll bar, yard posts | TA01, TA02 (TA §4) | Stand. RS04 only speaks of its cells (RS §6). The garrison is P14. |
+| **Korydon** | The Keepers' House beside the root pool at the village tree; the great chime at its door; three spots at the pool; a spot by the chime-smiths' forge | WK all (WK §4) | Stand. |
+| | A nest of eggs by the root pool in two states; three roots above ground; a hull on the boatwright's slip | MR01 (MR §4) | Stand beside WK's: P7. |
+| **Blackrose** | Never-Sold's House with a back room; two spots outside the boardwalk tavern; a spot at the island core's landing | BC (BC §4) | Stand. |
+| | The Blackguard deserter on the boardwalks | MQ07 (MQ §6) | The record's trainer; one line of his. |
+| **Blackrose Prison** | A gate that locks and a gatehouse outside the wall, out of the archers' reach, with one heir who speaks | BC02, BC04, BC06; MQ07 | One gate, one heir: P9. |
+| | The gatehouse lock-up and strongbox; in the yard a locked box by the forge and an iron hatch never opened | BC02, BC06 (BC §4) | Stand; all outdoors. |
+| | The old warden's office off the yard with a locked case; a second way in by a bastion; one champion | MQ07 (MQ §4) | Stands; the office is the source's one inside (BC §4 agrees). |
+| **Xi-Inou** | The lantern house as an inside, its keeper | SS01; RS01 | One house, one widow: P1. |
+| | The night quay below the landing, room for four, in bowshot | SS01 | Stands. |
+| | A spot on the plank landing clear of the night quay | RS01 | Stands. |
+| **Fort Reedmoth** | Toll store with a yard door and a water door; a gatehouse with a chest; the captain's place; a guard at the gate | RS01, RS07 (RS §4) | Stand. |
+| | The quartermaster's stall in the yard; cells | SS03 (SS §4) | The quartermaster is RS's Dessan Juul: P2. |
+| | A Charter spear at the gate | MC talk; RS01; NR passes (plan, "The fort's charter") | Weedum-Ja, as MC named him. |
+| **Fort Sallowmoth** | The armoury cage with a named sword; a way along the wall past the squatters' lookout | NR06 (NR §4) | One armoury: P5. |
+| | A spot on the road for one squatter; the cellar under the armoury floor; a drain out; a barred door | UW04 (UW §4) | Stand. |
+| **Joxhi** | The elder at the village kiln | MC02; SA03 | One elder: N17. |
+| | Three Sarpa in the pit scrub, wary; a body at the river mouth; the stalls' picks | MC02 (MC §4) | Stand; SA03 reads with them alive or dead (SA §6). |
+| | The breach, the buried hall, the clay figures; a guard's spot at the pit head | SA03 (SA §4); MC02 for the guard | Stand; the guard is Gam-Kur (N22). |
+| **Inoja** | Two spots on the market ground | MC02, MC03 (MC §4) | Stand. |
+| | The stilted inn, a second place for Tedryn Orvayn | SA02 (SA §3) | Stands. |
+| **Seafalls** | A platform for a preacher and listeners; a lodging with a locked chest | MQ09 (MQ §4) | Stand; RS never mentions the preacher (RS §6). |
+| | The pilot-elder's house; a mooring with a coaster that can be there or not; spots on the landing | RS02, RS07 (RS §4) | Stand. Whose raiders are on the landing is P10. |
+| **Aunike Crown** | The carved stone by the fire-basket; a second path from Nacydes; a Naga scout who speaks | MQ11 (MQ §4) | Stand. |
+| | The fire-basket in two states, a satchel, the snakes' den, two hired spears below the path from Tydeos | WK03, WK06 (WK §4) | Stand; WK never names the stone and keeps its spears off the Nacydes path (WK §6). |
+| **Jal-Veesa** | The root-herald's house; the weir-keeper's post; a place by the Hist pool for a clutch | MQ01 to MQ03 (MQ §4) | Stand. |
+| | The stake-keeper's standing place | MQ02; SA06 (SA §4) | One woman, Xoh-Reesha: N18. |
+| **Gideon** | The relic dealer's stall | MQ05 | Stands. |
+| | The Hist garden's tree and tender; the forced cellar door and the cellars under the garden | MR04 (MR §4) | Stand; LB leaves the cellar hook free (LB §6). |
+| | The north gate, which the Nisswo's hamlet faces | NI (Giovesse) | No quest of NI's enters Gideon (NI §6). |
+| **Truowa** | Three spots on the quay | RS03 (RS §4) | Stand. |
+| | A tin-caster's stall with a locked box; two spots by it, apart from RS's three | WK04, WK06 (WK §4) | Stand. LB06 only speaks of the council's factor. |
+| **Yalugo** | The village tree with a nest beside it; the old cook's house | LB06 (LB §4) | Granted: P12. |
+| | A stake with a lamp, a canoe with two dead, a mooring with two chests, on the south bank out of the hamlet's sight | RS03 (RS §4) | Stands. |
+| | The spare boat to Luntoc | WK04 (WK §2) | Stands. |
+| **Uluo** | The raft-masters' hall, the landing, the lamp rack | RS all | Stand. SS03 only lands there. |
+| **Tumnatu Cattail Camp** | The root in the beds, the hunters, the herb-wife | MR01 (MR §4) | Stand; WK speaks of the camp and uses MR's names (WK §6). |
+| **Jarecai** | Gate, rack, hatching ground, root-hut, council hall | LW03, LW06 (LW §4) | Stand. MR sets nothing there (MR §6). |
+
+Places a second line only speaks of, with no clash: Fort Gysilla (LB06; RS and WK keep off its islet), Luntoc (WK04;
+RS and LB leave its lantern to WK), Sal-Axan (SS03; NR and RS name it), Arorha and Aroxhu (RS and MC; MR passes
+through), Ranvos Landing (LB05; MR05 passes its track), Nacydes (MQ11 and WK06 use two different paths), Karketa
+(UW04; NR names its fishers), Umpholo (NI03; SA leaves it untouched, as NI relies on).
+
+### 2.4 Clashes of place, and the rulings
+
+| # | Place | The clash | Ruling |
+|---|---|---|---|
+| P1 | Xi-Inou | Two lines give its lantern-house keeper two names, and SS calls the hamlet "ten people, all Nuleem-Ja's kin" (SS §2) where the digest has three. SS01 may leave the night quay's smugglers dead and SS05 may leave the raft-master dead or gone to Inoio; RS01 stands a buyer on the plank landing. | The widow is Seewul-Ei (N16). SS says "her kin" and gives no number. RS01 never uses the raft-master or the night quay's men, so each line is true whatever the other left; RS says so in a line of its §6. |
+| P2 | Fort Reedmoth | RS names its captain and quartermaster and gives it ten men (RS §1); SS03 has an unnamed quartermaster "him" at a stall (SS §3); BC speaks of its "keepers" (BC §2); the digest has six. RS and NR each leave the toll chest to the other (RS §6, NR §6). | The quartermaster is Dessan Juul in SS03; the captain is Varia Okeel wherever she is spoken of; either may be dead (RS §6). No story gives the garrison a number. The toll chest is nobody's quest thing and stays the place's own. BC says "the fort's garrison". |
+| P3 | Archon | (a) Two heads of customs (N15). (b) SS puts the harbour office "in the old Company building" and NR the strongroom in "the Company's old counting-house on the waterfront": one building under two names, or two. (c) Two water stairs, each with a locked grille: under the school (SS, LB08) and beside the counting-house (NR06). (d) LB08 speaks of "the keeper of Archon's landward tree" and of "the harbour families' tree" that gives breath (LB §2), as if of two trees. | (a) One Receiver. (b) Two buildings of the Company's old row, which the digest gives in the plural: the **Harbour Office** (Three-Ropes) and the **Company Counting-House** (the strongroom), with the **Customs Post** on the quay between them. (c) Two stairs with two names on sight: the **Offering Stairs** with the grille "Water Door" (SS's, which LB08 uses), and the **Company Stairs** with the grille NR06 picks. (d) Archon has one tree, the landward tree; its keeper is Deesh-Meeus; its blessing gives breath. |
+| P4 | Lilmoth | (a) NR names Councillor Meer-Tulo, master of a third of the harbour's lighters (NR §1); UW names Shuvu-Meen, matriarch of the Three-Knot lighters, as the council's voice, and offers to fold her house into his (UW §6). (b) UW06's carved ending names "three council houses" as the old party's (UW §2); NR's Meer-Tulo says the town was killed "by the party whose heirs now tax it". (c) NR says its old pot came "out of drowned Pusbottom" (NR §6); the drowned quarter is the old Imperial quarter and Pusbottom is lived in (D; UW §1; NR §1). | (a) Both stand: a council has more than one member, and both are lighter-masters on the upper walks. Not merged, because each line may leave its own councillor ruined. (b) Meer-Tulo's house is not one of UW's three, so nothing UW06 does changes a line of his; his words are the public face of what UW finds, and a player of both lines hears them differently. (c) NR says the pot was dug out of the drowned quarter and carried up through Pusbottom. |
+| P5 | Fort Sallowmoth | NR06 takes a sword from "the armoury cage" past squatters who attack on sight (NR §2); UW04 drops "through the holes by the old armoury" to the cellar, and one of its endings leaves the squatters no longer hostile to the player (UW §2). | One armoury: the cage stands on the floor whose holes UW04 uses, and neither line takes the other's thing (UW §6). The squatters' peace is a faction the player may hold; NR06 is then only easier. NR adds the sharing to its §6. |
+| P6 | Joxhi | Two full outlines stand the same elder at the same kiln; MC02 may empty the scrub of Sarpa and SA03 may leave the breach open or shut. | One elder (N17). Neither line's stages read the other's: MC asks that the three be wary and not hostile on sight, and SA needs nothing else of them (MC §6, SA §6). |
+| P7 | Korydon | MR01 leaves a nest "bright" or "dull", may put a caulker under an Owing at the forge, and has the elders "talk of moving the smelter" (MR §3). WK06's Broken ending melts the voice-string in that smelter (WK §2). | No clash in what is built: the smelter is never moved, only talked of (MR §6, WK §6). The tree-minder Demeepa-Ru and the keepers' pool-man Tulaxi stand at the same tree and each has one line about the other (WK §6). |
+| P8 | Helstrom | Three lines; see 2.2. | H1 to H9. |
+| P9 | The Rose | (a) BC02's fourth ending kills the heir at the gate, and BC says the gate is then opened by no word of hers "in this line or the main quest" (BC §3). MQ07's first way is a bargain carried by her (MQ §2). (b) The plan reserves the gate and the yard to BC and sends the main quest "beyond it"; MQ07 stands a champion in the yard and enters the office from it. (c) BC says four hundred people live in the Rose (BC §1); the place holds two (D). | (a) The heir's death shuts one door, which the plan allows: her brother carries no bargain for whoever killed her, and MQ07's other two ways (the bastion by Sneak and Lockpicking; the fight) stand. With her alive, MQ07's bargain and BC06's leave set **one guest faction**, so either serves both (BC §6). (b) The yard is shared for passage; the champion stands by the office door, and BC06's people stand at the forge and the hatch. (c) No story numbers the Rose's people; what a player sees is who is placed. |
+| P10 | Seafalls | MQ09 has Skeith raiders on the landing to be driven off (MQ §2); RS02 stands Vasha-Lo, the privateers' shore man, on the same landing, not hostile, and says only that the lighthouse's three are the privateers' (RS §6). The pilot-elder may be dead in RS (RS §3). | The landing's three are a crew of no charter, not Vasha-Lo's; MQ says so in a word. Vasha-Lo stands at the mooring end and is switched on only by RS02's briefing. If Reads-the-White-Water is dead, Nomu gives MQ09's mark as he holds her lines in RS. |
+| P11 | Aunike Crown | Two lines on one bare summit. | None: each wrote to the other (MQ §6, WK §6). A player there for MQ11 before WK03 may take the satchel's string early, and WK03 notices. |
+| P12 | Yalugo | LB06 puts a living clutch at Yalugo's "small village tree", which the plan's list of settlements with a tree lacks (LB §6). LB06 has two dead boatmen in Fort Gysilla's cellar; RS03 has two dead Truowa boatmen in a canoe on Yalugo's south bank. WK and LB each explain "uncut stones" on the lake. | The tree is granted: a small village tree with no shrine blessing, which is why the gives-based list missed it; MR has no view of it (MR §6). The two pairs of dead are two boats; LB calls its dead "the egg-boat's two hands" so that nobody takes them for RS's. Yalugo's hook of the stranger who left a pouch of uncut stones is WK's (the trader's pathfinder); LB's pilot pays in "rough purple crystal" and never in "uncut stones". |
+| P13 | Thorn | The law ending of TA05 shuts every Dunmer trader's door (TA §2). NR06's optional job is in the dockside tavern; MR03's buyer is "from Thorn". | No clash: neither depends on a Dunmer trader of Thorn being open. |
+| P14 | The forts' garrisons | Fort Thornmoth has "twelve men" and four named posts (TA §3) where the digest has three people; Fort Chalkmoth "a dozen" (MC §1) for ten; Fort Reedmoth "ten" (RS §1) for six. | A place's number is its source's residents and the roster's to settle. No story states a count; each names the posts it needs, and those are added to the roster (section 9). |
+| P15 | Sedgeweir | LB05 has people working a Stormhold Owing on the bank of a weir of the reed people, who "refuse the Vicecanons' courts" (LB §1, §2). | Stands, with one line added: the weir-keepers take Owing hands from the reeve for stake-work and answer to no court for it. MQ01's Owing gang at Sedge-Kal Camp is the same arrangement (MQ §3). |
+| P16 | Stormhold | LB02 hangs a named man in "the cage on the arch", in one ending "to the end of the line" (LB §3); LB05 and LB09 put others in the one cage. A native place has no jail (owner-bar). | The cage holds a person for the Vicecanon's word, not for a sentence: a named person is in it from a naming to the next case's start and no longer, so it is never asked to hold two. See "For the owner". |
+| P17 | Tenmal | LB04 is at "Tenmal's wayhouse"; the slice builds Tenmal Pits. | Two places (D): the village and the mine. LB04's need stays provisional, as LB marks it. |
+| P18 | Soulrest | BC asks who answers a theft at the Broker's house: "Soulrest's guard and cells, which are the League's to name" (BC §6). | LW names the guard in a line of its §6: the merchant council's quay guard, with the cells the digest gives. |
+| P19 | Blackrose | MR has Korydon selling boats to Blackrose and orders doubled "two seasons ago" (MR §3); WK has Blackrose's boats wrecked on the channels (WK §1); BC names no boatman (BC §6). | No clash. |
+| P20 | Lujei Ferry | BC's cut cable could be taken for one of WK's failing posts. | BC says it is a crossing's matter and no post of the keepers (BC §6). Stands. |
+| P21 | The reed-water (MC03) | MC asks for a wallow that "needs a small place of its own or a home in Seth-Alaxh's" (MC §4). | No place is invented (lead's ruling 1 in spirit): the wallow is a need of Seth-Alaxh Roost's ground. |
+| P22 | Mereweather Estate and Sal-Axan | Two runaways from Fort Reedmoth: BC05's dead kinsman and SS03's hidden sergeant. | Two men, as both lines say (BC §6, SS §6). |
+| P23 | Calyphe and Gideon | NI04 lowers the regard of Gideon's priestess of Dibella, whom "another writer names" (NI §6). Nobody does. | NI names her, as a person of Gideon's roster. |
+| P24 | Ruins on "sick ground" | SA calls every dead people's hall sick ground and adds a reason (SA §1); MQ02 stands on Nenria's sick ground (MQ §3). | T15 gives the one account. |
+
+### 2.5 Needs a source cannot hold
+
+The lead has ruled that Thorn, Giovesse and the Rose get another source for what their own cannot give (ruling 4).
+The stories ask the same of more places than those three, and each names it in its own §4:
+
+| Place | What is asked | Its source | Ruling |
+|---|---|---|---|
+| Fort Reedmoth | a toll store and a gatehouse as rooms (RS01) | no inside | The story changes if no second source is allotted: the store is a locked lean-to against the yard wall, entered from the water by the same stair. RS writes that fallback in. |
+| Fort Gysilla | a cellar under the keep (LB06) | no inside | LB06 is the cellar; it has no fallback. For the owner. |
+| Jarecai | a council hall and a root-hut as rooms (LW03, LW06) | one inside, a ship | The council sits at an open hearth; the root-hut is a locked wicker door on a root-hollow. LW writes that fallback in. |
+| Seafalls | a ship's hold (RS02) | no ship's inside | The cargo is on deck under a locked hatch-cover, which is a container. RS writes it in. |
+| Sethiral | two insides (SA04) | one | For the owner, with Gysilla. |
+| Hirecan, Gaweja, Mazurath | a cell, a drowned stair, a cave shelf (SA01, SA05, SA02) | none stated | SA lists them already; they wait on nw-09's allotment. |
+| Coldbrine Mine | a second inside for the Old Gallery (TA01) | one | TA names its own fallback (TA §4). |
+| Wreck of the Brindle Gull | a deckhouse to stand in (RS05) | an empty source | For the owner, with Gysilla. |
+| Sedge-Kal Camp | the barge's hold, the game's first room (MQ01) | a camp with no inside | Already in the plan (section 5). |
+| Blackrose | a house of two rooms (BC) | two insides in all | Fits; the boardwalk tavern is the other. |
+
+## 3. Every crossing between lines
+
+A crossing is granted only in the forms the plan allows: a greeting, a rumour, a price, a person's attitude, a gate
+on rank, at most one door. "Honoured" says whether the other line's story, as written, already does what was
+asked. A = granted as asked; C = granted changed; R = refused.
+
+### 3.1 The plan's seven deliberate crossings
+
+| # | Crossing | What each side wrote | Honoured | Ruling |
+|---|---|---|---|---|
+| C1 | The stolen clutches (LB, SS) | LB: a Vicecanon of Stormhold bargained two years ago with "whoever now keeps a door at Archon"; an Archon pilot carries the clutches; LB08 reaches the school's door and water stairs and carries one clutch out (LB §1, §6). SS: Ux-Teeba made the bargain through the pilot Olik-Tei "and meant it"; the egg-keeper fills the cradle; the watcher will take LB08's clutch (SS §1, §6). | Yes, both | A. One pilot, Olik-Tei (N21); LB08 uses SS's names for the watcher and the tree's keeper (N23); the school is never entered by a lamp. Long Lamp and Writ-Keeper are refused to each other's seniors, a gate on rank. |
+| C2 | The bought lights (WK, RS) | WK: Luntoc's lantern is shown to the knot's night boats for silver; no keeper names a pilot; keepers greet a Reed-Sail pilot coolly (WK §6). RS: the elder buys lights through Starless; RS03's third light is a paid keeper's lantern, never said which; Uluo greets a keeper coolly (RS §6). | Yes, both | A, with S5: the keeper who is paid is Luntoc's tender, Old Skeeju, alone. |
+| C3 | Lilmoth's grave (UW, NI) | Talk only; Jeer-Tei stands by the quarter's edge and each patron speaks of the other (UW §6, NI §6). | Yes, both | A. |
+| C4 | The saltrice Owings (BC, TA) | TA: Uxa-Meen greets any rank of Chainbreaker coldly (TA §1). BC: rank 1 comes with BC01; the Broker's eleven at Thorn are a list, never seen, and are not the Gei line (BC §6). | Yes, both | A. |
+| C5 | A tree for a city (LW, MR) | Both tell Gideon's cutting the same way: sold by the river folk's elders for salt and iron, cut by a walker of Helstrom, twelve wet seasons of failed clutches (LW §2, MR §2). MR's hall refuses the League in words (MR §1). | Yes, both | A. T10 states it once. |
+| C6 | The fort's charter (MC, RS, NR) | MC: Weedum-Ja, a spear of the Post in a fort's pay, stands at Fort Reedmoth's gate (MC §6). RS01 uses him as the gate's hardest fighter (RS §3); NR passes the gate (NR §6). | Yes, all | A. He may be dead when MC's kaal speaks of him (RS §6); her line reads either way. |
+| C7 | Whose ruin (SA, the reed people, MQ) | SA06 passes the reed people's gate at Teel-Fen Weir by leave of Jal-Veesa's stake-keeper, by stealth, or by a gift (SA §2). MQ02 names that stake-keeper and may leave her dead (MQ §6). | In part | C. SA06 uses Xoh-Reesha by name and as a woman (N18), says stake-keeper (N43), and its way by leave is shut if she is dead. |
+
+### 3.2 What the main quest asks of the lines
+
+| # | Asked (MQ §6) | Of | Honoured | Ruling |
+|---|---|---|---|---|
+| C8 | Helstrom's spring stays shut to the end of the main quest and nobody else says why it is sour | MR, WK | Yes (MR §1; WK §6) | A; the words change to the sealed urn (H7). |
+| C9 | The Root Talk is spoken of as late and never dated | all | Yes; MR alone leans on it, in one ending "when the Root Talk is held" | A. S3 removes MR's leaning. |
+| C10 | The Chainbreakers name the heir at the Rose's gate | BC | Yes | A, with N33. |
+| C11 | The Blackguard deserter on Blackrose's boardwalks has one line about a bastion | BC, the roster | Not written by BC, and not theirs to write | A: it is the main quest's line on the record's trainer. |
+| C12 | Xil-Veeka joins nothing; Lilmoth's young tree is used for breath only | NR, UW, SS | Yes, all | A. |
+| C13 | Bell Station, the Kelp Lantern, Thul-Kesh Spire and Echo Deep are the main quest's alone | all | Yes | A. |
+| C14 | Seafalls: the pilot-elder is Reads-the-White-Water; MQ09 uses the raiders on the landing | RS | Yes | C: P10 says whose the raiders are and who speaks if she is dead. |
+| C15 | Aunike Crown: the stone is the main quest's; the dead stranger is the keepers' | WK | Yes | A. |
+| C16 | Others say "weir-keeper" and "stake-keeper", and read with Xoh-Reesha dead | SA, all | SA does not yet | C: C7. |
+| C17 | No line says the Unbound is behind any sick tree but Vel-Sapha's | all | Yes. NI has a rumour in a priest's mouth: "cutters who call their knives Sithis's work" (NI §6) | C: the rumour is reworded from what the main quest gives the cult, which says nothing of Sithis (T16). |
+
+### 3.3 What each line asks of the main quest
+
+| # | Asked | By | Honoured | Ruling |
+|---|---|---|---|---|
+| C18 | MQ07 reads with the heir at the gate dead; one guest faction serves both lines | BC §6 | Not yet | A, as P9 words it. |
+| C19 | "A Vicecanon of Stormhold" in the main quest reads with either Vicecanon dead or gone | LB §6 | MQ01 speaks of "the judges' counter of Stormhold" and "the Vicecanons' Owing gang" | A. MQ says "the Vicecanons' counter", since Stormhold has no judges but them (T7), and names neither. |
+| C20 | helstrom-needs says the keepers' line is written and its need is met | WK §6 | Not yet | A; for the database lane. |
+| C21 | A name for Jal-Veesa's teacher of the bow and for a keeper at Teel-Fen Weir | SA §6 | MQ names the first | C: Xoh-Reesha; the weir's keeper is SA's to name. |
+| C22 | The keeper of Echo Deep has a second way, which departs from the plan | MQ §3, to the lead | Open | A: the plan asked two ways through every main quest; this is one. |
+
+Nothing else is asked of the main quest. LW, MC, NR, TA, UW, NI, RS, SS and MR only state what they keep clear of,
+and each does: none touches the Eye, the Unbound, Vel-Sapha or a place reserved to the main quest.
+
+### 3.4 What the lines ask of each other
+
+| # | Asked | By, of | Honoured | Ruling |
+|---|---|---|---|---|
+| C23 | The egg-thieves' pilot has one name; both lines read with him dead | LB of SS | Yes | A (N21). |
+| C24 | A townswoman at the school's door and water stairs with a grille, for LB08 | LB of SS | Yes | A (N23, P3). |
+| C25 | Archon's fence serves a known Night-Reed and refuses a Long Lamp | LB of NR | Yes (NR §6) | A. LB's own text says "a lamp of rank" in one place and "a Long Lamp" in another: it is the Long Lamp. |
+| C26 | A rumour that "boats under a purple stone are not to be robbed" | LB of NR | Yes: NR03 and NR06 say it | A. |
+| C27 | Neither line raises the other's senior to its own senior rank | LB of NR, SS; NR of LB | Yes | A. |
+| C28 | A ruling on Yalugo's tree | LB of MR and the lead | MR has no view | A (P12). |
+| C29 | The quest form gains a Mysticism gate, or the detectives' profile drops the skill | LB of the lead | Open | R: the form does not change for it. K2 drops Mysticism from every line's checks, as SA §6 already says. |
+| C30 | The Tumnatu herb-wife is Meer-Zah in both lines | MR of WK | Yes | A. |
+| C31 | A minder is cold to a known envoy of the League, as a greeting gated on League rank | LW of MR | MR refuses the League in words, with no gate | A: MR adds one greeting of Taleeka-Ma's, gated on League rank. |
+| C32 | A tree that has been asked may put up a shoot at its heart-root, and taking it costs what a cutting costs | LW of MR | MR's own lore has the heart-root graft (MR §2) | A. T10. |
+| C33 | The dismissed Receiver "was hers to dismiss", of Soulrest's civil secretary | LW to NR | Offered | R: Lucan Teeus was Receiver at Archon before Xeen (N15) and was dismissed by the Archwardens' paymaster, not by Soulrest. |
+| C34 | "Reed-Sail carry for the League at a price", in talk | LW of RS | Yes: the elder has a line | A. |
+| C35 | Soulrest's guard and cells are named | BC of LW | Not yet | A (P18). |
+| C36 | BC06's travelling Nisswo is one of NI's or none | BC and NI | NI offers Neema-Luh; BC named its own | C: under S7 the Nisswo is no longer a claimant; if BC keeps one in talk, it is its own person, renamed (N32). |
+| C37 | The Charter ending of SS08 shuts the Night-Reed's leadership | SS of NR | NR has no rank of leader (NR §1) | R: there is nothing to shut. NR's keeper has one cold greeting for a chartered Shadowscale. |
+| C38 | The Nisswo at Lilmoth extends his protection to an old woman in SS06 | SS of NI | Yes: Jeer-Tei will, if asked rightly (NI §6) | A. If he is dead that way is shut; SS drops its fallback Nisswo at Oju. |
+| C39 | Whoever names Archon's harbour authority names who sealed the Stormwidow's commission | RS of SS | SS names Three-Ropes | A: her office sealed it, years ago. SS02's privateer is Archon's own and not of Marque Landing (SS §6). |
+| C40 | Each line greets the other's ranks coolly | RS of WK; WK of RS | Yes, both | A. |
+| C41 | The knot's doors shut to a keeper who keeps the voice-string | WK of RS | RS has the cool greeting, no door | C: a greeting and a price at Uluo, no door: WK06's ending may not shut RS's hall. |
+| C42 | Tibur may be used; the robbers' bank is 120 m south of Yalugo if LB06 needs quiet | RS to LB | LB does not need him | A. |
+| C43 | Fort Reedmoth's captain and quartermaster may be dead when others come | RS of NR, SS | Yes | A. |
+| C44 | Uluo's fence: whether he refuses a known Night-Reed | RS to NR | NR has him a rival in talk only | A: no refusal is written. |
+| C45 | The Mazurath crew has left Hollow Tide's bluff; RS has no use for its captain | RS to SA | SA kills or passes him | A. |
+| C46 | Ilas Teem in Fort Thornmoth's cells is spoken of and not seen | RS and TA | Yes, both | A. |
+| C47 | The hired spear at Joxhi may be named; the three Sarpa are wary and not hostile | SA and MC | Yes, both | A (N22). |
+| C48 | The College's leader in the south is Scaeva; Maelle Jurard answers to him and says "colleagues" | UW and SA | Yes, both | A. |
+| C49 | The Agaceph at Umpholo is a Hirecan man and no reader of the hall; SA01 leaves Umpholo alone | NI and SA | Yes, both | A. |
+| C50 | Fort Sallowmoth is shared: the cage to NR, the cellar to UW | UW of NR | NR is silent | A (P5). |
+| C51 | Dunhallow's cellar, dead and strongbox are UW's | UW and NR | Yes: NR gave them up | A. |
+| C52 | One councillor or two at Lilmoth | UW of NR | Open | C (P4): two. |
+| C53 | One line and a fall in regard from Gideon's priestess of Dibella | NI of whoever names her | Nobody names her | C (P23): NI names her. |
+| C54 | NR06's two side jobs touch neither Thorn's nor Soulrest's quarrels | NR, TA, LW | Yes, all | A. |
+| C55 | The kinsman at Mereweather is not Marcan Jeel | BC and SS | Yes, both | A. |
+| C56 | Keepers and Korydon's people: Demeepa-Ru has one line for a keeper; Ruleem takes the elder's last line if the elder is dead | WK of MR | MR leaves the elders to WK | A. |
+| C57 | Golis Andrethi is of no house Thorn's story names | MR and TA | Yes, both | A. |
+| C58 | The Skeith captain in Yuva-Goli's cove may be dead | MR to RS | RS does not use him | C: MR renames him. "Brine-Eye" sits beside RS's one-eyed Blind-Side; his is a boat of neither camp. |
+| C59 | A keeper's free passage on the worm, as a gate on rank | WK of the travel lane | Open | A, as a price of nothing for the rank. |
+| C60 | Set-acrosses: Yulca to Gaweja; Arorha to Skeith | SA, RS of the travel lane | Open | For the owner. |
+| C61 | Mirvasa Nethril is an elf old enough to have seen the Red Year | TA of the lore lane | Open | A: the Red Year is 4E 5 and she is some 210 years old, which a Dunmer may be. |
+| C62 | Named for every line: Soulrest's holders (LW); Blackrose's Toll-Holder and the Rose's raj-kaal (BC); Thorn's Vicecanons and houses (TA); Lilmoth's councillor, the customs men, Southwatch's captain (NR); the forts' people (RS, TA, MC, LB) | each, of all | Used by nobody else yet | A, each under its ruling in section 1. T2 is the one map. |
+
+## 4. One timeline and one political map
+
+It is 4E 201. The lore's spine is [the state of Argonia in 4E 201](../../../lore/extrapolation/argonia-4e201-state.md);
+"X" marks what a story adds to it.
+
+### 4.1 The facts the stories state, in order
+
+| When | The fact, as the province holds it | Stated by |
+|---|---|---|
+| Before memory | The first land sank; each tree gave a root freely, and that joining is the Root of Accord. The priest-kings of the xanmeers chained it with the Eye; the order that became the Shadowscales kept the wards (X). | MQ §2 |
+| About three thousand years ago | The Barsaebic Ayleids kept Argonians as slaves and raised some as undead guards; their halls are sick ground. | SA §1, §3 |
+| Six hundred years ago | The Knahaten Flu killed the Kothringi and the Cantemiric Velothi; chimes and black halls are what they left. | NI §1; SA §1; WK §1 |
+| Second Era | Stormhold was the Dres slavers' foothold and Thorn their field. Heita-Meen, a field slave of Thorn, killed a Dres councillor there and began the freeing; as Vicecanon at Stormhold she tried the slavers and hung them in cages on the Ayleid arches. | LB §1; TA §1 (T7) |
+| 3E 427 | The basin tribes burned the Soulrest concession's mines and timber. The Empire's grant did not burn. | LW §1, §2 |
+| Late Third Era | Morrowind's king banned the trade; it ran on in Arnesia. The brig Silt Bride sank on the shelf with captives in her hold. The Company's bonded labour cut Coldbrine's salt. | TA §1, §2 |
+| 4E 5, the Red Year, and after | The Dres left Thorn; the An-Xileel's levies went up the Tear road. Thorn's fields "passed to whoever was standing in them". The Legion left the forts and the province left the Empire. | TA §1; MQ §2; LB §2; NR §2 |
+| 4E 48 | Lilmoth's tree, mad, called the flying city Umbriel down on its own town; everyone under it died and rose. Gideon's Lukiul were killed the same year and its dead overran the town. Nobody alive saw either. The An-Xileel as a movement broke; what governs now inherited its offices and its name (T1). | UW §1, §2; NR §1; MQ §2; NI §1, §2 |
+| After 4E 48 | The Nisswo lit a fire at Gideon's north gate that has burned under five keepers (X). Lilmoth was rebuilt smaller, over its dead; its council was made again by houses that came back (X). The Veiled Reed has been kept since (X). | NI §2; UW §2; MQ §1 |
+| Within living memory | A walker of Helstrom cut the river folk's tree for Gideon's council (T10). Meris-Keth's tree sickened and the village emptied. | MR §2; LW §2 |
+| 4E 187 | The Shadowscales' school at Archon shut and was sealed. For fourteen years the tribes have had nowhere to send a clutch born under the Shadow. | SS §1; LB §2; D |
+| Twelve to three years ago | The Reed took a sap-speaker of the lake country, kept her nine years in Fort Swiftmoth's cellar, and three years ago she was freed and reported dead (X). | MQ §2 |
+| Eleven years ago | Luntoc's lantern was first shown for the knot's silver (X). Rows-For-Another began to owe at Reedfall Farm (X). | WK §2; BC §3 |
+| Three years ago | Fort Chalkmoth's captain sealed the Marsh Charter (X). | MC §1 |
+| Two years ago | A Vicecanon of Stormhold and the last serving Shadowscale agreed that the north's Shadow clutches should go south again; Archon's tree has been restless since (X). The Night-Reed's third began to go to the band at Fort Lowmoth (X). | LB §2; SS §2; NR §2 |
+| Two seasons ago | The keepers' seven voices were sold on Truowa's quay (X). | WK §2 |
+| Last season | The Brindle Gull was wrecked on the Kornakim shoals (X). Jarecai's tree put up a shoot and the gate was shut to the coast (X). | RS §2; LW §2 |
+| This year | Vel-Sapha's young tree bled. Helstrom's spring went sour and was sealed; the Root Talk is late. | MQ §2, §3 |
+| Three days before the player reaches Archon | The last serving Shadowscale, Ux-Teeba, died in his hut by the school, and is found so. | SS §2; plan, section 4 |
+| The night before the game | The Owing gang's huts at Sedge-Kal Camp were fired. | MQ §3 |
+
+### 4.2 The political map
+
+The plan's table of who rules each region stands. The stories add these people to it; a name in brackets is to
+change under section 1.
+
+| Place | Who holds it, and who speaks for it | Stated by | Can they be dead? |
+|---|---|---|---|
+| Helstrom | The assembly of naheesh and tree-minders (Hixee-Ra and Ooxa-Leet are its two naheesh); the levy, whose day watch Tzalun leads. The state's formal seat is here and the city ignores it. | D; MQ §3; MR §1 | yes |
+| Stormhold | Two Vicecanons, one for each people: Keema-Tul of the west quarter and Arvys Hleran of the Dunmer families (X). | LB §1 | Hleran dies before LB09; Keema-Tul may |
+| Thorn | Two Vicecanons: Teegla-Ru, and [Arvys] Tereval of a mixed house (X); the field-holders; the houses Nethril and Sareloth. | TA §6 | yes |
+| Lilmoth | The merchant council: Meer-Tulo and Shuvu-Meen among its members (X). | NR §1; UW §1 | yes |
+| Archon | The harbour authority under the harbourmaster Three-Ropes; the Archwardens' customs under Receiver Lartius Xeen, with the paymaster Nerva Shulm on his round (X). | SS §1; NR §1 | yes |
+| Soulrest | The merchant council (Factor Tsabhira); the civil office (Secretary Aulia Pontanian); the river interests, unnamed (X). | LW §6 | yes |
+| Gideon | The civic council; two families, Caprenius and Deep-Wader, quarrel over the Hist garden (X). | D; MR §2 | n/a |
+| Blackrose | The island core under its Toll-Holder [Nomu-Tei] (X). | BC §1 | never met |
+| The Rose | The heirs under the Naga raj-kaal Druxeth (X); the gate is kept by the Third-Born [Tsaxi], then by her brother [Okaw]. They hold it after every line. | BC §1, §6; MQ §2 | she may be |
+| Jarecai | The Mine-Burner elders: Xeech-Tul, the war-leader Jaxa-Reem, the tree-minder Neeta-Xi (X). | LW §6 | not said |
+| Korydon | The chime-smiths' elder Naxil-Wo; the First Keeper Haxara-Tei; the tree-minder Demeepa-Ru (X). | WK §1; MR §3 | yes |
+| Uluo | The elder Ukka-Tei and the raft-masters (X). | RS §1 | yes |
+| Yulca | Five readers, the eldest Yaxil-Ca (X). | SA §1 | she must live |
+| Noota Nara | Kaal Nakuma-Tei, keeper of the Post (X). | MC §1 | she must live |
+| Seafalls | The pilot-elder Reads-the-White-Water; her successor Nomu (X). | MQ §6; RS §3 | yes |
+| Truowa | A merchant council allied to Lilmoth's; it wants Fort Gysilla's garrison gone. | D; RS §3; LB §2 | n/a |
+| Skeith Isle | Two camps: the chartered crews of Marque Landing and Rainbreaker Keep under Blind-Side; the outlaws of Hollow Tide Camp under Names-the-Quay (X). | RS §1 | yes |
+| Fort Willowmoth | The Archwardens' frontier screen; nobody named. A Dunmer raft of shackles is held at its gate. | D; LB §2 | n/a |
+| Fort Gysilla | Captain Peradus Xil; toll rowers who are grandchildren of freed labourers (X). | LB §2; RS §6 | keeps the fort in every ending |
+| Fort Chalkmoth | Captain [Marius Otumeel] (X). | MC §1 | yes |
+| Fort Thornmoth | Captain [Cassia Ruleem]; quartermaster Nevena Orvel; a gate-man [Varro Teeus] (X). Marshgate Watch is its detachment under Sergeant Hadrus Neel. | TA §6; RS §2 | yes |
+| Fort Reedmoth | Captain Varia Okeel; quartermaster Dessan Juul (X). | RS §1 | yes |
+| Southwatch Keep | Captain Cassia Deemeel (X). | NR §1 | not said |
+| Fort Swiftmoth | Said to be empty since the Legion left; held in fact by the Reed's gaolers (X). To everyone but the main quest it is a crew that "buys nothing and sells nothing". | MQ §2; RS §6 | n/a |
+| Fort Lowmoth, Fort Sallowmoth | Burnt and roofless; a bandit band, and squatters. | NR §2; UW §2 | n/a |
+
+No ending of any line changes who holds a fort (NR §6, RS §2, LB §6). That stands as a rule of the province.
+
+### 4.3 Contradictions, and the rulings
+
+| # | What | Who says what | Ruling: the province's version |
+|---|---|---|---|
+| T1 | The state's name | "The Wardens" in seven files, "the Archwardens" in four and in the digest, both in SS. | N43. Officially it is still the An-Xileel; people say the Archwardens, or the Wardens (lore). |
+| T2 | Who captains what | Each fort named by one line only, but two captains share a given name and one a family name with another line's person. | The table above, after N5, N6, N8. |
+| T3 | Who pays the forts | RS: Fort Reedmoth "has not been paid from Helstrom in living memory" and Marshgate Watch "in two years" (RS §1, §2). NR: the customs strongroom at Archon is "the state's one real purse", a paymaster carries its key round the ports, and Southwatch has a pay day to rob (NR §1, §2). | The forts are paid from Archon's customs by the paymaster's round, late and thin, and keep themselves on their tolls between. Helstrom holds the empty seat and no purse. RS says "from Archon" and "in years". |
+| T4 | Lilmoth's trees | UW: the mad tree is "the second tree, dead since 4E 48", and there is a "young tree" now (UW §6). MQ, NR: "the young tree". NR's Receiver: "the last time there was none, the tree at Lilmoth ruled". | Three trees in turn (lore): the first; the second, grown from its root, which went mad and died in 4E 48; and the young tree that stands now with two minders. UW says "second" once and explains it. |
+| T5 | The last Shadowscale | Plan: "the last serving Shadowscale has just died". SS: "people everywhere say the last of them is gone". MQ, NR, SS: two retired Shadowscales live openly at Lilmoth as elders (D gives them). | The last who served is dead. The retired are elders who settle quarrels and are not counted, and every line says "the last serving" or "the last who judged" where it means Ux-Teeba. |
+| T6 | How long Ux-Teeba has been dead | SS: three days in two places, "four days" in one (SS §3). | Three. |
+| T7 | Stormhold's courts | MQ01: "the judges' counter of Stormhold" (MQ §3). LB: no court above the tribe but Gideon's courthouse and the Vicecanons (LB §1). LB and TA each claim Heita-Meen for their own city's founding. | Stormhold has no judges but its two Vicecanons. Heita-Meen's story is one story in two cities, as 4.1 gives it; each line tells its half. |
+| T8 | What the Owing is | Nine files: "the native sentence, months of owed work instead of a cell", which ends. BC: in the south the holder assesses it, it is sold on, grows and passes with a household (BC §1). TA: "round Thorn" it is sold on, grows and is inherited (TA §1). MQ01: the player's is "sold on" by a carter to a gang-master near Stormhold (MQ §3). SS03: one "lasts until her hands stop" (SS §3). | The Owing is a season's work and it ends. In three countries it has gone bad (X): Thorn's fields, where it is worst; the lake round Blackrose and the Rose; and the gang-masters on Stormhold's border, who buy the Owings of people with no tribe to speak for them. Nowhere else is it sold. SS03's is the old sentence for a killing, work for the dead man's kin for the kin's lifetime, and says so. |
+| T9 | Whether Hist sap harms an outsider | MR: "sap in an outsider brings a killing rage" (MR §1). MQ, UW, NR: the sap of Lilmoth's young tree is given to any race for breath (D). LB09: thickened sap is the poison (LB §2). | Sap a minder gives (a sip, a blessing) is safe to anyone. Raw sap drawn from the root is madness or death to one not hatched under that tree, and thickened it kills anyone (X on the lore). MR and LB say which they mean. |
+| T10 | Cuttings | LW and MR tell Gideon's the same (C5). LW adds the shoot (C32). Both carry the sentence "a tree asked for a cutting gives it; a tree does not count its own eggs". | One account: a cutting is cut at the heart-root; for some years after, fewer of the mother tree's eggs turn; a tree that is asked gives, and may put up a shoot of itself; "no tree is cut for another" is Many-Root's rule and its shame. Gideon had no tree in living memory until its council bought one. |
+| T11 | What a tree knows of its eggs | LW, MR: "a tree does not count its own eggs". SS: Archon's tree is restless "as a tender is who has counted her nests and come out one over" (SS §2). LB: Stormhold's tree "is not grieving. Wherever they are, it has not lost them" (LB §3). | A tree does not count, and it knows its own. LB's line is the province's; SS drops the counting and keeps the unrest: the tree is uneasy over eggs near it that are not its own. |
+| T12 | Where the dead go | NI, BC, TA, SA: an unstaked soul "cannot go home" to its tree. MR: the unstaked dead "cannot go to Sithis while the tree is sick" (MR §2). | Home is the Hist. MR says so. Sithis is change itself, "the first maker and the last unmaker" (NI §3), and to the Brotherhood alone the Dread Father (SS §3). |
+| T13 | Mirvasa Nethril's year | TA: the mask was hidden "in the year her house was stood for", when she was fourteen, and "in the year after the Red Year" (TA §2, §7). | The Red Year, 4E 5. One wording. |
+| T14 | Which trees are sick, and why | MQ alone states Vel-Sapha's dying and Helstrom's sour spring. MR: Korydon's is poisoned by a tap, Tsonac's sleeps, Meris-Keth's is dead of heart-root rot, Yuva-Goli's jar is tampered and "nothing is wrong with any tree" (MR §2). SS: Archon's is restless (T11). LW: Jarecai's "is well" (LW §6). | All stand, and none explains another: "every sick tree in this line was made sick by somebody" (MR §1) is true of Many-Root's trees and is never said of Helstrom's or Vel-Sapha's. The plan's list of settlements with a tree gains Yalugo (small, no blessing) and Noota Nara is confirmed. |
+| T15 | Sick ground | MQ: Nenria is sick ground ringed with ward-stakes. SA: all the dead peoples' halls are, and "sick ground is ground where Argonians were owned" (X, SA §1). | SA's reason stands as one reader's saying, Hecal's, not as the province's fact: the main quest needs Nenria's sickness unexplained in Act I. |
+| T16 | What the Unbound believe | MQ gives the cult no word of Sithis. NI has a priest say the cutters "call their knives Sithis's work". | The cult speaks of unbinding roots. NI's rumour becomes: "There is talk of cutters who say the trees must be unbound. We have a nearer heresy." |
+| T17 | Lilmoth's council and the old party | NR's councillor: the town was killed "by the party whose heirs now tax it" (NR §1). UW: the council's own houses were the party's chosen (UW §2). | Both, on purpose (P4): the first is what the council says and the second is what the Witness find. |
+| T18 | Dates inside the Lamp-Bearers' cases | The clutch is taken "five nights ago" in LB02, yet LB01 already has every lamp on it; the barn is rented "eight" and "twelve" nights ago (LB §3). | LB counts each from its own case's start and makes LB01's days earlier than LB02's. |
+| T19 | Who put Southwatch's beacon out | NR: the garrison man paid to do it has been home all game, yet it is dark again after NR04 (NR §2). | NR says who does it now, or lets it be dark once. |
+
+### 4.4 Extrapolations more than one line leans on
+
+Stated once here; each line cites this section in place of its own wording.
+
+1. **The Archein keep the forts.** Old assimilated landholding families, with Cyrodilic given names and Argonian
+   family names, hold the old Legion forts and the customs in the Archwardens' name, with the Empire's law and its
+   cells (MC, NR, RS, SS, TA, LB).
+2. **The state has one tax and no navy:** tolls at crossings and customs at ports. It charters privateers at
+   Archon because it has no ships (RS, SS, NR, WK).
+3. **Every city under native law has two or more voices and no ruler:** two Vicecanons at Stormhold and at Thorn,
+   one for each people (LB, TA); councils at Lilmoth, Soulrest and Gideon (NR, UW, LW, MR).
+4. **Grave-stakes.** The dead are staked and sung home; an unstaked soul does not get home; a person held far from
+   their tree goes grey (BC, NI, UW, TA, MR, SA, LB, MC).
+5. **A clutch born under the Shadow** was given to the school at Archon; the tribes paid pilots to carry it (LB, SS).
+6. **The College of Whispers** works in the south under Praeceptor Hadrian Scaeva; the Synod only through buyers
+   (UW, SA).
+7. **Breath under water** is had by any race from the sap of Lilmoth's young tree, the blessing of Archon's tree,
+   the shrine at Umpholo, a potion, or the Alteration spell (MQ, UW, NR, RS, TA, SA, NI, LB).
+8. **The Owing gone bad** (T8); **sap** (T9); **cuttings** (T10).
+
+## 5. Hooks and place notes
+
+Ten stories end with a list of the notes they change (their §7): BC, LW, MR, NR, NI, RS, SS, TA, UW, WK. Four have
+none and owe one in the second round: MQ, LB, MC and SA (LB's "records to change" in its §6 and SA's "asked of the
+build" in its §4 hold the matter). Where one line alone changes a place's notes, its §7 row stands as written,
+after the names of section 1, and is not repeated here. The places below have notes changed by more than one line,
+or by a ruling.
+
+### 5.1 Notes two lines change, merged
+
+| # | Place | Each line's change | The merged note |
+|---|---|---|---|
+| G1 | Xi-Inou | SS §7: drop the families' debt; the lost raft was the *Mud-Hen*; the night quay has a headman. RS §7: beside the night quay's men, a shore buyer who is not hostile; "the lantern-house widow is Seewul-Ei and buys for Uluo". | Both, with one widow (N16) and SS's renamed pilot (N1). |
+| G2 | Archon | SS §7: four changes (the dead judge in his hut; the offering stairs under the school; the privateer's refused prize; who sealed the school). NR §7: the customs strongroom is in the Company's old counting-house, its keys kept away from Archon. | Both, with one Receiver (N15), two named buildings and two named stairs (P3), and the privateer called Fair-Prize (N38). |
+| G3 | Lilmoth | NR §7: the fence is Bent-Spine under the pawnshop; the thieves are the house; add Councillor Meer-Tulo. UW §7: the Unstaked; the shrine's dry vault; the dock mage is Odile Marric; add the Witness's ground. SS §7: add that the retired Shadowscale Geh-Meema keeps her brass by her door. | All three; SS's elder under her new name (N27); a second councillor, Shuvu-Meen, added to the people note (P4). MQ adds Xil-Veeka's room to the same note. |
+| G4 | Luntoc | WK §7: the old pilot is the lantern's tender and shows it for the knot's night boats; the hidden passage is dropped. RS §7: the hidden passage is dropped, "the passage is the Reed-Sail's from Shalaia". | WK's wording, and the passage is dropped; RS's passage is a note of Shalaia's. |
+| G5 | Korydon | MR §7: add that the sap is bitter and the clutch dull, the minder blames the smelter, the slip is short of resin. WK §7: the cord of copper tongues at the Keepers' House; the elder wants every chime stamped; a nameless traveller at the pool. | Both. MR's addition is true only before MR01 ends and is worded as a present trouble, not a standing fact. |
+| G6 | Truowa | WK §7: the Lilmoth trader is Buys-by-Daylight and bought the keepers' voices; the tin-caster keeps the patterns. RS §7: the cloth missing from the quay was lost in the passage with two boatmen. | Both. |
+| G7 | Yalugo | RS §7: the south bank's smugglers are boat-robbers under Pike; the dry store is dropped. WK takes the stranger and his uncut stones (WK §2). LB06 needs the village tree to have a nest and the old cook a house (LB §4). | All three (P12). |
+| G8 | Soulrest | LW §7: the contest for the council stays as background; the factor bought the grant. BC §7: the Broker's house is the poorest door on the timber wharves. NR06 needs Lucan Teeus's house (NR §4). | All three. |
+| G9 | Blackrose Prison | BC §7: a gatehouse outside the wall, one heir who speaks, a lock-up, a strongbox; an iron hatch in the yard. MQ §4: the old warden's office off the yard, a bastion the marsh has crept into, one champion. | Both; the heir under her new name (N33); "2 people live there" is left to the roster (P9). |
+| G10 | Fort Reedmoth | RS §7: the tips come from Uluo; the toll store's forgotten water door; a Charter spear at the gate; the captain and quartermaster named. SS03: the drowning at its chain is a year old and its sergeant gone (SS §6). | Both. |
+| G11 | Fort Sallowmoth | NR §7: the sword is the last Legion commander's, an ancestor of Archon's Receiver. UW §7: the squatter's kinsman went down through the armoury floor; the cellar's dead are Lilmoth's runaways of 4E 48. | Both; the Receiver is Xeen (N15). |
+| G12 | Dunhallow Plantation | NR §7: its strongbox is left to the Witness. UW §7: the dead are Bretons of the docks who hid there in 4E 48; a hatch and a drain reach the cellar. | UW's. |
+| G13 | Seafalls | RS §7: the ship is the *Ash Petrel* of Tear; the successor is Nomu. MQ needs the preacher's platform and the raiders on the landing (MQ §4). | Both, with P10. |
+| G14 | Gideon | MR §7: the cellar door was forced by a steward of one of two families; cellars under the garden. NI names the priestess of Dibella (P23). LB04's dead clerk came from its courthouse (LB §2). | All three. |
+| G15 | Jal-Veesa | MQ names the root-herald, the tree-minder, the weir-keeper and the stake-keeper (MQ §3). SA06 uses the stake-keeper (N18). | One set of names, after N26. |
+
+### 5.2 Hooks two lines took
+
+| # | Hook (D) | Who took it | Who keeps it |
+|---|---|---|---|
+| G16 | Dunhallow's planters' strongbox | The plan gave it to NR; UW wrote it | UW; NR has already let it go (NR §6). |
+| G17 | Luntoc's old pilot | RS first, then WK | WK; RS dropped him (RS §6). |
+| G18 | Yalugo: the stranger with uncut stones; the smugglers on the south bank | WK the first, RS the second; LB's crystal sits near the first | As P12. |
+| G19 | Fort Reedmoth's toll chest | RS and NR each leave it to the other | Neither: it is the place's own. |
+| G20 | The Tumnatu's stolen chime | MR and WK both use it as background | Neither settles it; it is free to a local quest (MR §6, WK §6). |
+| G21 | Gideon's forced cellar door; Fort Willowmoth's held raft | LB speaks of both and plays neither; MR plays the first | MR keeps the cellar; the raft is free, and suits the slice's local quests. |
+| G22 | Thorn's two field-holding families, and the Silt Bride's log | TA; LB leaves both (LB §6) | TA. |
+| G23 | Seafalls' Skeith raiders | MQ09 the landing's, RS02 the lighthouse's | Each its own three (P10). |
+| G24 | Joxhi's Sarpa in the scrub; its buried hall | MC the first, SA the second | Each its own (P6). |
+| G25 | Archon's privateer with a refused prize; Skeith's chartered crews | SS02 the first, RS the second | Each its own; the tie between them is C39 and nothing more. |
+
+Hooks the stories give back, for the local quests: Guxal's unhatched clutch and false coin, Uluo's pool families,
+Ixu-Maan's egg-tender and signal, Wattle-Pool Farm's stranger (MR §6); Marzai's lantern, the lights at Nacydes
+and Nacydes Watch (WK §6); Cutbank Camp, Eurydike, Dorianth, Aithros, Hixinoag (NI §6); Tazhul's eggs, Xanuc's
+lost hand, Kalaxo Cut, Nuxhal, Yuvexa, Balormaak, Fort Chalkmoth's hollow wall (MC §6); Lujei's toll quarrel,
+Sheh-Ara's bead string, Khariton's chimes, Ka-Asei, Kit Mounds, Tarak Shan, Mudmoth (BC §6); the Resolute Crest's
+captive (RS §7); Salt-Tooth Camp, Hokal-Ush (MQ §6).
+
+## 6. The same shape too often
+
+Each story was read alone and each is good alone. Side by side, fourteen writers reached for the same four
+things. A player who joins three factions will meet the same story three times unless some of them change. The
+rulings here keep each shape for the lines that own it and give every other line the kind of ending the plan
+already asked of it (plan, section 3.14, "How the lines end").
+
+### 6.1 The four shapes
+
+**The finale is "carry the thing to one of several people".** Eleven of fourteen:
+
+| Line | The thing | Handed to one of | Cited |
+|---|---|---|---|
+| BC | the hatch key | four: an heir, Never-Sold, the grave-singer, a Nisswo | BC §2 |
+| LB | the guilty name | four: Waleesh, Varon, Asks-Twice, the culprit herself | LB §2 |
+| MR | the Listener's knife | three: the Listener, a watcher of the wronged, a naheesh of Helstrom | MR §2 |
+| NR | the customs silver | three: the planner, the keeper, a fence | NR §2 |
+| NI | the urn | three: two priests and a renegade | NI §2 |
+| RS | the commission (and a lamp to one of two) | five: two captains, the hall, the pilot-elder, a fort captain | RS §2 |
+| WK | the voice-string | three: the First Keeper, the seller, the chime-smiths' elder | WK §2 |
+| SS | the brass and the water key | four, or kept | SS §2 |
+| TA | the ship's log (and a ring) | five: two Vicecanons, the keeper, the wronged line, the gangs | TA §2 |
+| UW | the jar, the cup and the bar | four: the keeper, the young diver, the council, the College | UW §2 |
+| SA | the tablets (SA05), then a book carried home or left | three, then none | SA §2 |
+
+The other three end otherwise: MQ by using one of three things at the Root, LW by a deed (take the shoot, burn
+the paper, or neither), MC by a deed and whom it is told to. The same hand-over ends most of the middle quests too:
+TA01 to TA03, NR02 and NR03, RS01, RS04, RS05, UW01 to UW03, SA01, SA03, SA05, NI03, MC05, LW05, BC03.
+
+**The quest ends on "who is told".** MQ01, MQ02, MQ03, MQ13; every case of LB; MR01, MR02, MR04; every hunt of MC;
+LW01, LW02, LW04; NR05; WK01, WK04; UW04; SA02, SA03; BC03; SS04. The plan's reader counted eleven promises of it
+before a line was written.
+
+**The patron keeps the secret of the faction's founding, the player finds it at the turn, and one ending offers
+the patron's seat.** All fourteen have the first part. The seat is offered in BC, LB, MR, MC, NI, TA, UW and SA,
+each as "the only way the player comes to lead".
+
+**The one who gives the jobs is an older Argonian woman who stands in one room for the whole line.** Never-Sold
+(BC), Asks-Twice (LB), Okeeh-Ja (MR), Kaal Nakuma-Tei (MC), Tilts-the-Jug (NR), Weaves-to-Burn (NI), Haxara-Tei
+(WK), Waits-at-Stairs (SS), Yaxil-Ca (SA), Uxa-Meen (TA), Neexa-Tul (UW), and the root-herald and the handler of
+MQ. Only LW and RS are given their work by a man.
+
+A fifth, smaller: **a boat is wrecked by a false or darkened light** in four lines (SS01's shifted lantern, RS05's
+second lamp, NR's beacon put out, and all of WK).
+
+### 6.2 Who keeps each shape, and what the others become
+
+| # | Line | Ruling |
+|---|---|---|
+| S1 | TA | **Keeps the hand-over, in the middle and at the end.** The line is about custody: its people fetch the dangerous thing first and the question is always whose hands. It is the one line where carrying a thing to a claimant is the play. |
+| S2 | LB | **Keeps "who is told", and owns it.** A detective's work ends in a name given to somebody; LB09 is that at its largest. Every other line gives the shape up except where a row below keeps it. LB04's roll goes to the mortuary or the Lamp House by the player's own act of laying it down, not to one of four. |
+| S3 | MR | **Owns "the truth, or what lets them sleep"**, which is its patron's creed, for its middle quests. Its finale is no longer a knife carried to one of three. MR06 ends with the player giving the Listener her own medicine, to her face, in the hall: the truth of Meris-Keth, at which she lays down the walking, or what lets her sleep, at which she keeps it and names the player to walk after her. The last minder's stake goes to Marzeel either way. Nothing waits on the Root Talk and nothing is carried to Jarecai. |
+| S4 | MC | **Owns "whose spear were you"**, the telling that claims a kill for an asker. Its finale by deed stands. Its secret changes kind: the kaal does not know that the dragon was half the Sarpa's kill. Nobody alive knows; it is cut on the first kaal's stake in Vorannuhl, and the player brings it to a proud woman who is honestly wrong. MC05 ends on the stake pulled or left where it stands, not handed to one of three. |
+| S5 | WK | **The seller faced.** WK06 is decided on the summit by what the player does with the man, not by where a string is carried: send him down to answer to the First Keeper (the voices are remade), let him go on to Truowa with the string (the voices are sold), or kill him and take the string to the forge (the voices are broken up). The First Keeper is clean and rigid and wrong about her pupil; she has sold nothing. Luntoc's showings are its tender's own trade, which keeps the plan's crossing (C2). And the two change places in age: the seller is the old roundsman passed over, the First Keeper the younger one set above him. |
+| S6 | NR | **The last lock.** The finale's choice is made inside the strongroom by what is lifted, since one pair of hands carries one load: the season's silver (the planner's war), the shelf of pledges (the pot, and every pledge sent home), or the bell alone (gone by morning with a fence's price). Who it goes to follows from what it is. NR02 and NR03 keep their claimants, which are the code at work. |
+| S7 | BC | **Keeps a choice among people, with three and not four.** The hatch key goes to the heirs, to Never-Sold or to the grave-singer; the travelling Nisswo leaves the finale (C36). The line's last lock, the key's box among armed heirs, is what the quest is; the hand-over is its last line. BC03's "tell her you know" becomes a thing put on her table, the bound count itself, and no line of telling. |
+| S8 | NI | **A thing of the player's own given up.** One act at the stake-ground: the player lays their own onyx, their place among the priests and their bed at the hearth, on Ah-Mota's stake and drives it; or keeps all three and the urn goes back under the stone. The renegade's way is what happens if the urn is left at Meliton. No priest is handed anything. |
+| S9 | RS | **A camp chosen.** The commission names "whoever holds this letter", so the player holds it and chooses a camp by which stronghold they break: the outlaws' bluff or the cells under the privateers' keep; or they drop the letter into the falls. The fort captain and the hall leave the list of takers. The lamp stays as one line before the raft-masters. |
+| S10 | SS | **A master chosen or none, by the stakes driven.** This is the assassins' line and its end is decided as its quests are: each bidder names another for a stake, and who is left alive holds the school. Nobody dead is the End or Alone, as written. Nothing is handed across a counter. |
+| S11 | UW | **A race lost or won.** The line ends in UW05, where what the player sold the College earlier decides who reaches the vault first. UW06 becomes one act at the Stake-Ground: cut the First Stake again with the truth, the bar in hand, or leave it standing. Selling the jar or the cup stays a sale like every earlier sale, and the council and the College are buyers, not judges. |
+| S12 | SA | **A hard place and a promise kept or broken** stands. SA05's tablets are sunk or read by the player's own choice at the vault, not carried to one of three; SA01 and SA03 keep their small hand-overs. |
+| S13 | LW | **A temptation taken or refused** stands. LW05 ends on the kit sunk or carried home, by deed. LW01 and LW04 lose their "who is told": what the tribe knows follows from how the thing was done. |
+| S14 | MQ | The Root stands. Of Act I's three tellings MQ01's stays, as the game's first small choice, and MQ03's stays (it is MR's creed met before MR is, and the seed of it). MQ02's telling of the youth's name goes: what becomes of him follows from whether the player used his father's charm. MQ13's stays: informing or not is what a spy story is. |
+| S15 | all | **The seat.** One ending offering the patron's place stays in BC, UW, SA and TA, where the place is a house, a ground or a store the player can use the next day. It goes from LB, MR, MC and NI, where it is a title: there the player ends as the one who knows, which is the better ending for a line about a secret. |
+| S16 | all | **Who gives the work.** The keepers of BC, NI, UW, TA and SA stay as written: each is the old design's, or her age is the story. Three change at no cost to their stories: MR's Listener is an old man (her sex is the story's own X, MR §1); LB's Asks-Twice is an old man of the west quarter; WK's pair change as S5 says. MC's kaal stays, and is written hard, not kindly. |
+| S17 | SS, RS, NR, WK | **False lights.** All four stay, as four tricks of the one crime the province has on the water, and no two the same: a lantern shifted on the shore (SS01), a second lamp hung to seaward (RS05), a beacon put out (NR), a chime answered from the fog (WK). WK owns the subject: its people are the ones who can say what was done, and a keeper of rank has one line of knowing talk at each of the other three places. None of the four says its trick is new. |
+
+After these, the fourteen end in fourteen ways: a thing used (MQ), a key among peoples (BC), a name given (LB), a
+temptation (LW), a truth told to the one who taught lying (MR), a deed and its credit (MC), a load chosen in a
+vault (NR), a sacrifice (NI), a stronghold broken (RS), the dead and the living bidders (SS), a book read or
+taken (SA), whose hands (TA), a race and a chisel (UW), a man's fate on a hill (WK).
+
+## 7. Skills across the province
+
+Skyrim's eighteen skills, and Mysticism from Magic Expanded. **L** is a skill the line leans on as written (one of
+its first skills, named in most of its quests); **w** is a skill that is a way through at least one of its quests.
+"A weapon skill" in a story is counted under One-Handed, Two-Handed and Archery alike. Taken from each story's
+§2 table of quests and the step tables of its full outlines.
+
+| Line | One-H | Two-H | Arch | Block | Smith | Heavy | Light | Pickp | Lockp | Sneak | Alch | Speech | Illus | Conj | Destr | Restor | Alter | Ench | Myst |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| MQ | w | w | w | w | | | | w | w | w | w | w | | w | w | w | w | | |
+| BC | w | w | w | | | | | L | L | L | w | w | | | w | w | | | |
+| LB | w | w | w | | | | | w | w | L | L | L | w | | w | w | w | | |
+| LW | w | w | w | | | | | | w | L | | L | | | w | L | | | |
+| MR | w | w | L | | | | | w | w | w | L | w | | | w | L | w | | |
+| MC | L | L | L | L | L | | | | | w | | w | | | | w | | | |
+| NR | w | w | w | | | | | L | L | L | | w | w | | | | w | | |
+| NI | w | w | w | | | | | w | w | w | | L | w | w | w | L | w | | |
+| RS | w | | L | w | | | | w | w | L | | L | | | | | w | | |
+| SS | L | | w | w | | | | w | w | L | w | w | L | | w | w | | | |
+| SA | w | w | w | | | | | | w | w | | w | L | w | w | L | L | w | L |
+| TA | L | | w | w | | | | w | w | L | w | L | w | | | | w | | |
+| UW | w | w | w | | | | | w | w | w | w | w | | L | w | L | L | | w |
+| WK | w | w | L | | | | | w | w | L | w | w | L | | w | | | | |
+| Lines leaning | 3 | 1 | 4 | 1 | 1 | 0 | 0 | 2 | 2 | 8 | 2 | 5 | 3 | 1 | 0 | 5 | 2 | 0 | 1 |
+
+### 7.1 What the table shows, and the rulings
+
+| # | Finding | Ruling |
+|---|---|---|
+| K1 | **No line leans on Destruction.** It appears in ten lines only as "or Destruction" beside a weapon. Heavy Armor and Light Armor have no line at all, and Enchanting is one price check in SA03. Two-Handed, Block and Smithing have the Charter alone; Conjuration the Witness alone. | The owner's list of the skills quests are played with (owner-bar) leaves the two armours out, and no quest step can use them: that gap stands. **Destruction goes to the Nisswo**, whose keeper is named Weaves-to-Burn and whose rite is an ending by fire: its third skill, in place of the Mysticism the plan gave it. **Enchanting goes to the Archive** as a real leaning (its ward-stones and its scholars' table), where it is now one price check. |
+| K2 | **Mysticism cannot be checked.** The quest form gates on Skyrim's skills; Mysticism's spells sit under other schools (SA §6; LB §6). The plan gave it to the Nisswo, the Archive and the Witness. | No line names Mysticism as a check. A line may ask for one of its spells by name (Mark and Recall, Telekinetic Grip) as a way, and counts the school the spell sits under. |
+| K3 | **Sneak is a first skill of eight lines**, and Speech of five. Two lines have the same three: BC and NR (Lockpicking, Pickpocket, Sneak). SS and WK share Sneak and Illusion; LB, LW, TA and RS are each "Speech, Sneak and one more". | Sneak stays first for the three whose work it is: NR, SS and WK. In the others it stays a way and leaves the leaning. The ruled leanings are below. |
+| K4 | **Can any build finish the main quest?** Every main quest has two ways by different skills (MQ §2, §3). A fighter (any weapon), a mage (Destruction, with Restoration, Alteration or Conjuration where named) and a thief (Sneak, Lockpicking, Pickpocket) each have a way through all fifteen. A talker who relies on Speech and gold has a way at twelve, and none at MQ08's attendants (Sneak or a fight), MQ12 (force or Sneak) or the keeper of MQ14 (a fight or Sneak). | It passes the owner's bar as it stands. MQ may add a bought or spoken way at one of the three if it comes free. |
+| K5 | **Does any required step pass a faction's gate?** No. MQ02 and MQ04 set the Reed's own rank. MQ07's bargain sets a guest faction it shares with BC (P9), and is one of three ways. MQ04's Speech way uses a thing, the root-knot. MQ09's mark comes from Seafalls' pilot-elder, whom RS may leave dead, and then from her successor (P10). MQ11's ward-words come from Xil-Veeka, whom no line touches, or from his chest. | Stands. |
+
+### 7.2 The leanings as ruled
+
+| Line | Leans on | Change from what is written |
+|---|---|---|
+| MQ | any build, two ways each | none |
+| BC | Pickpocket, Speech, and one hard fixed fight met with Block and a weapon | Its own method is the count, the word and the hand: Pickpocket and Lockpicking for the count, Speech for the word, the fight for the hand. Lockpicking and Sneak stay as ways. This parts it from NR. |
+| LB | Speech, Alchemy, Lockpicking | Sneak becomes a way. A detective reads a body and opens a room. |
+| LW | Speech, Restoration | Sneak becomes a way; the line has two first skills and says so. |
+| MR | Alchemy, Restoration, Archery | none |
+| MC | One-Handed or Two-Handed, Block, Smithing; Archery beside them | none |
+| NR | Lockpicking, Sneak, Pickpocket | none |
+| NI | Speech, Restoration, Destruction | Destruction for Mysticism (K1). |
+| RS | Archery, Speech, Alteration | As the plan had it; Sneak becomes a way, and RS05 and RS06 gain the spoken or bought way the line promises every quest (RS §1). |
+| SS | Sneak, Illusion, One-Handed | none |
+| SA | Alteration, Illusion, Enchanting | Enchanting for Restoration, which stays a way (K1). |
+| TA | Speech, One-Handed, Pickpocket | Sneak becomes a way. |
+| UW | Alteration, Conjuration, Restoration | As written; the plan's Mysticism and Alchemy become ways (K2). |
+| WK | Sneak, Archery, Alchemy | Alchemy for Illusion, which stays a way: the line already makes draughts and snake-smoke in three quests, and this parts it from SS. |
+
+## 8. Per line, the list to act on
+
+For each line's second round, in order of importance. Each item points at the ruling above. A renamed person is
+renamed everywhere in the file, its sketches and its needs and notes tables; a new name is chosen by the rules of
+1.1 and checked against 1.6. Every line also does three small things, not repeated below: it glosses the state
+once as "the Archwardens (the Wardens)" and uses "the Wardens" for nothing else (N43); it uses the everyday names
+of N44 to N46 for other lines' people; and it cites 4.4 for an extrapolation it shares.
+
+### The main quest (MQ)
+
+1. **Helstrom, rewritten to the drafted town**: the household lodges in Ixtul-Bei's House, whose locked chest holds
+   what the back room held, and no dreamer is in Helstrom (H1); the spring is the Sealed Spring, a locked urn at
+   the foot of the tree in front of the crowd, with Haj-Deesh beside it (H2); the gall comes from outside the
+   town (H3); in the endings the urn is unsealed and Hixee-Ra and Ooxa-Leet are named at the tree (H4).
+2. **The Rose**: MQ07 reads with the heir at the gate dead: her brother carries no bargain for her killer, and the
+   bastion and the fight stand; the bargain and BC's leave set one guest faction; the champion stands by the
+   office door (P9, C18). Use BC's new name for her (N33).
+3. Rename the root-herald Neeva-Tul (N26) and the watcher Okan-Jei (N25).
+4. Words: the cult is "the Unbound" in speech and its mark is a cord cut through (N45, N49); the Reed's "keepers"
+   at Fort Swiftmoth are its gaolers (N46); the people of Jal-Veesa are the reed people and Okan-Jei's successor
+   is their watcher, not "the Sedge-Wardens'" (N43); "the Vicecanons' counter", not "the judges'" (C19, T7).
+5. Seafalls: the landing's raiders are a crew of no charter; if the pilot-elder is dead, Nomu gives the mark
+   (P10, C14).
+6. MQ02 loses its telling of the youth's name; what becomes of him follows from the way taken (S14).
+7. Add a "Changes to places' notes" list (section 5): Jal-Veesa, Nenria, Vel-Sapha Stand, Helstrom, Gideon,
+   Gideon South Watch, Lilmoth, Bell Station, Blackrose Prison, Seafalls, Fort Swiftmoth, Aunike Crown, Gemin,
+   Ushaan Camp, Echo Deep.
+8. Small: Gemin's greeters are not Jal-Veesa's stake-keepers; Jal-Veesa's house is listed for MQ13 and not used;
+   say who speaks in the endings if Asheem-Lei or Heem-Jasa is dead.
+
+### The Blackrose Chainbreakers (BC)
+
+1. **The gate after the heir's death**: BC02's fourth ending kills her, yet BC04 lifts a key from her belt and BC06
+   takes the Rose's leave from her line. Write her brother's part in both, and the one guest faction shared with
+   MQ07 (P9, C18).
+2. Rename both heirs at the gate (N33), the ferry-keeper Nuleem-Ei and the Toll-Holder Nomu-Tei (N34), the dock
+   hand Dralas (N29), and the first rank, Hand (N48). The Canoe-Warden is a canoe-master; "Fort Reedmoth's
+   keepers" are its garrison (N43, N46).
+3. **The finale has three claimants**: the Nisswo leaves it (S7, C36, N32). BC03's "tell her you know" becomes
+   the bound count put on her table (S7).
+4. Lean on Pickpocket, Speech and the one hard fight; Lockpicking and Sneak stay as ways (K3).
+5. Give the Rose's people no number (P9); cite T8 for the Owing gone bad.
+6. BC02's three held people all carry translated names in one quest: record the one-line reason (the Rose's
+   reckoners write the names they give) or rename two (1.1).
+7. Small: two standing places at the tavern for up to five people; the gatehouse's inner door has no need row;
+   stage 88 gives a rank without joining.
+
+### The Lamp-Bearers (LB)
+
+1. Rename Otumei (N28), Dral Savani (N29) and the clerk Lucan Teegla (N12); the digger is Stone-Cough (N25).
+   Use the names other lines gave: Olik-Tei the pilot (N21), Waits-at-Stairs and Deesh-Meeus (N23),
+   Sails-by-Morning the fence. The last rank is Lamp-Keeper (N46).
+2. **The cage** holds a named person from a naming to the next case's start and never two (P16).
+3. LB04's roll is laid down by the player's own act, not handed to one of four (S2); the Keeper's seat leaves the
+   finale (S15); Asks-Twice is an old man (S16).
+4. Lean on Speech, Alchemy and Lockpicking; no check names Mysticism (K3, K2, C29).
+5. Count each case's days from its own start, LB01's before LB02's (T18). Say "the last serving Shadowscale" (T5).
+   Say which sap kills (T9). Archon has one tree (P3).
+6. Yalugo: the tree is granted; the cellar's dead are "the egg-boat's two hands" and the pilot pays in "rough
+   purple crystal" (P12). Sedgeweir: one line on why Owing hands work a reed people's weir (P15).
+7. Add a "Changes to places' notes" list (section 5): Stormhold (the dead of the sunken hall), Surkina, Vandrel
+   Farm, Tenmal, Sedgeweir, Ranvos Landing, Julo and Gaxu-Reet (one who can be spoken to at each), Fort Gysilla,
+   Yalugo, Archon.
+
+### The League of Open Water (LW)
+
+1. Rename the toll-keeper Wuleen-Tei (N3) and the hurt watcher Geem-Ra (N35).
+2. Name Soulrest's guard in §6 (P18, C35). Withdraw the offer about the dismissed Receiver (C33).
+3. LW05 ends on the kit sunk or carried home, by deed; LW01 and LW04 lose their "who is told" (S13).
+4. Say the line has two first skills, Speech and Restoration (K3).
+5. Write the fallbacks for Jarecai: an open council hearth and a root-hollow behind a locked wicker door (2.5).
+6. Small: one cask of salt cannot be both laid before the elders and still in the pack; say that Soulrest is the
+   old capital where "the civil office of the old capital" is first met.
+
+### Many-Root (MR)
+
+1. **Helstrom, rewritten to the drafted town**: the hall is the cave by the waterfalls; Xilsa-Jee and Hixee-Ra are
+   met at the sacred tree, 520 metres away, and never at the hall's door; the spring is the sealed urn; the boat
+   people are the tally-keeper's lodgers (H6 to H8).
+2. **The finale**: the truth or what lets her sleep, told to the Listener herself; no knife carried to one of
+   three; nothing waits on the Root Talk (S3, C9). The Listener's place is no longer offered (S15). The Listener
+   is an old man (S16).
+3. Rename the pupil Ah-Mota (N4), the elder Haxal-Mei (N36), the mason Mazeeh (N39) and the cove's captain
+   Brine-Eye, whose boat is of neither Skeith camp (C58). The hall's knot is the walkers' hitch (N49).
+4. The unstaked dead cannot get home to the tree, not "to Sithis" (T12). Say which sap maddens (T9).
+5. Add Taleeka-Ma's greeting gated on League rank (C31); give Demeepa-Ru his one line for a keeper (C56).
+6. Korydon's note is worded as a present trouble that MR01 ends (G5).
+
+### The Marsh Charter (MC)
+
+1. **The secret changes kind**: the kaal does not know the dragon was half the Sarpa's kill; it is on the first
+   kaal's stake and the player brings it to her (S4). MC05 ends on the stake pulled or left (S4). The post is no
+   longer offered (S15).
+2. Give Fort Chalkmoth's captain a new name whole (N5, N20). Give the Sarpa one form of name (N41) and write it
+   into the culture row asked of the roster. Give the dead driver a given name (N39). Drop "Twice-Paid" (N30).
+3. Give the fort no number of men (P14). The wallow is a need of Seth-Alaxh Roost's ground (P21).
+4. Add a "Changes to places' notes" list (section 5): Noota Nara, Fort Chalkmoth, Chalkmoth Pit (Dangerous,
+   not Deadly), Inoja, Joxhi, Seth-Alaxh Roost, Oxayo, Sahlpesh Cave, Reeka-Veesa, Vorannuhl, Hanaxi Roost,
+   Kaochalit.
+5. Small: say whether the quarry gate is Oxayo's or Xanuc's; name the lock skill MC05's vault allows.
+
+### The Night-Reed (NR)
+
+1. **One Receiver**: Hadrus Otheel becomes Receiver Lartius Xeen, the Shadowscales' customs chief, with the
+   sword and the descent NR gave him; Lucan Teeus was Receiver before him (N15, C33).
+2. **The finale** is chosen in the strongroom by what is carried out (S6).
+3. Archon: the strongroom is in the Company Counting-House, beside the Customs Post; the stair with the grille is
+   the Company Stairs (P3).
+4. Lilmoth: the pot was dug out of the drowned quarter and carried up through Pusbottom; the council has a second
+   named member (P4). Add the sharing of Fort Sallowmoth's armoury to §6 (P5).
+5. Write Tilts-the-Jug and Sails-by-Morning; find a word that is not "tellings" for a job's informants (N52).
+6. Say who puts the beacon out now, or let it be dark once (T19). The keeper has one cold greeting for a
+   chartered Shadowscale (C37).
+
+### The Nisswo (NI)
+
+1. **The finale** is one act, the player's own onyx laid on the stake or kept (S8); the Keeper's seat leaves it
+   (S15).
+2. Destruction is the third skill, for Mysticism (K1): an ending by fire is a way through at least NI01, NI04
+   and NI07.
+3. Reword the rumour of the cutters (T16, C17).
+4. Rename Dralsi Rethan (N29). Name Gideon's priestess of Dibella (P23).
+5. Jeer-Tei's protection in SS06 covers the old woman under her new name (C38, N27).
+6. Small: "Tavia's old cell" beside Old Tavi; the failed stage numbered 95 in one quest and 96 in another.
+
+### The Reed-Sail (RS)
+
+1. **The finale**: the player holds the commission and chooses a camp by which stronghold they break, or drops
+   it in the falls (S9).
+2. The forts are paid from Archon, late and thin; drop "from Helstrom" and "in living memory" (T3). Give Fort
+   Reedmoth no number (P2).
+3. Rename Xal-Meema (N27) and Dralen Vathri (N29).
+4. RS05 and RS06 gain a spoken or bought way; the leaning is Archery, Speech, Alteration (K3).
+5. Xi-Inou: a line in §6 that RS01 stands whatever the Shadowscales left there (P1). Seafalls: Vasha-Lo stands
+   at the mooring end (P10). The commission was sealed by Archon's harbourmaster's office (C39).
+6. A keeper who keeps the voice-string meets a cool greeting and a price at Uluo, not a shut door (C41).
+7. Write the fallbacks for the toll store and the coaster's hold (2.5).
+
+### The Shadowscales (SS)
+
+1. **The finale** is decided by the stakes driven: who is left alive holds the school (S10).
+2. **One Receiver**: the customs chief's title is Receiver, not Collector (N15, N50). He is also NR06's man and
+   may be dead when either line comes.
+3. Rename the pilot Sounds-Twice (N1), the mother Bimeesh (N14), the retired elder Geh-Meema (N27) and the
+   drowned Okan-Ru (N25). The widow is Seewul-Ei (N16); the privateer is Fair-Prize alone (N38); Fort
+   Reedmoth's quartermaster is Dessan Juul (P2).
+4. Say "the last serving Shadowscale"; three days, not four (T5, T6). The tree is uneasy over eggs that are not
+   its own, with no counting (T11). A stake is a grave-stake cut for the living, said once (N53). SS03's Owing
+   is the old sentence for a killing (T8).
+5. The stairs are the Offering Stairs (P3). Xi-Inou is "her kin", with no number (P1).
+6. Drop the request of the Night-Reed (C37) and the fallback Nisswo at Oju (C38).
+
+### The Sunken Archive (SA)
+
+1. Use the names other lines gave: Elder Jo-Reesh for Meer-Wan (N17), Gam-Kur (N22), Xoh-Reesha the
+   stake-keeper, a woman, who may be dead (N18, C7). Rename the grave-singer Nema-Lah (N27) and the Synod's
+   buyer Varia Semprone (N11). The reed people, never "the Sedge-Wardens" in a mouth; the ghost at Anvadas is
+   the household's steward (N43).
+2. SA05's tablets are sunk or read by the player's own act at the vault (S12).
+3. Enchanting is a leaning: more than one price check (K1).
+4. "Sick ground is ground where Argonians were owned" is Hecal's saying, not the province's fact (T15).
+5. Add a "Changes to places' notes" list (section 5): Yulca, Hirecan, Mazurath, Khiar, Joxhi, Sethiral, Yina,
+   Gaweja, Anvadas, Icalca, Teel-Fen Weir, Gandranen.
+6. Small: name the second and third ranks; the guest raft's third standing place; a need row for Icalca.
+
+### The Thorn Ash-Reed (TA)
+
+1. Rename Fort Thornmoth's captain whole (N6, N8, N19), the gate-man Varro Teeus (N13), who is a gate sergeant
+   (N43), the young hand Meer-Tulm (N24), and give Vicecanon Tereval another given name (N7). Rename the last
+   rank, Keeper's Hand (N48).
+2. The hand-over stands, in the middle and at the end (S1).
+3. Give the fort no number of men (P14). Lean on Speech, One-Handed and Pickpocket (K3).
+4. One wording for the year the mask was hidden (T13); cite 4.1 for Heita-Meen (T7) and T8 for the Owing.
+5. Small: Vaneth Sareloth keeps a store and is placed in the market square; a rank that "only a thing brought
+   to Uxa-Meen raises" is raised twice otherwise.
+
+### The Umbriel Witness (UW)
+
+1. **The line ends on the race** of UW05 and one act at the Stake-Ground; UW06 is no longer a hand-over to one
+   of four (S11).
+2. The council house takes a mark that is not a knot, on its lighters, its cup and its tokens (N49). Rename
+   Carves-Twice (N30) and Half-Roof (N31).
+3. Lilmoth has two named councillors, and Meer-Tulo's house is not one of the three the carving names (P4). Say
+   "the second tree" once and why (T4).
+4. Lean on Alteration, Conjuration and Restoration; Mark and Recall is a way by name (K2, K3).
+5. Say how a player hears of the Witness before reaching the Stake-House.
+6. Small: the dock mage's price for the gourd is 300 in three places and 400 in two; where Scaeva stands when
+   the vault's door was never opened.
+
+### The Rootworm Waykeepers (WK)
+
+1. **The finale** is decided on the summit by what is done with the man; the First Keeper is clean, and is the
+   younger of the two (S5, S16).
+2. Rename the pole-hand Okan-Shei (N2), the raft-master Geel-Wan (N35) and the herb-seller Jeer-Tan (N37). The
+   man who walks the round is the roundsman, and the last rank follows (N47).
+3. Lean on Sneak, Archery and Alchemy (K3).
+4. Keeping the voice-string costs a greeting and a price at Uluo, not the knot's doors (C41).
+5. Small: who sold Myroleon's count to the robbers, a keeper or a lake pilot; whether the string is worn or
+   hangs on its peg; ten years or eleven.
+6. Helstrom needs nothing (H9).
+
+## 9. For the database lane
+
+**Peoples needing a culture row.** Each with who they are, what they believe, how they meet a stranger, and the
+form their names take (N41):
+
+| People | Asked by | From |
+|---|---|---|
+| The tribeless Naga | MQ §4 (before nw-07), MR §4, WK | lore; MQ §2, MR §1 |
+| The Sarpa | MC §6 | lore, and MC's X: a roost has a chief, fighters and elders who keep its eggs and its dead |
+| The Sul-Xan | NI §4 | lore; NI §3 |
+| The Paatru | NI §4 | NI §2 |
+| The Tumnatu | MR §4 | D; MR §3 |
+| The Black-Tongues | SS §4 | SS's X: one keeper and a brew-shop; no country in this world |
+| Skeith's two crews, as two factions | RS §6 | RS's X |
+| The Agaceph's kin at Hirecan, Yina, Gaweja and Icalca | SA | covered by the Agaceph's row |
+
+The culture named "The Sedge-Wardens of Jal-Veesa (Veesa-Teeleel)" is called the reed people in every story
+(N43). Renaming its display name is for the owner.
+
+**Place notes to change.** Every row of the ten §7 lists, after the names of section 1; the fifteen merged notes
+of 5.1; the four lists still owed (MQ, LB, MC, SA, in section 8). Yalugo gains a small tree with no blessing and
+Archon is confirmed as having one tree (P12, P3). Then regenerate the digest.
+
+**People to add to the roster, by place.** The names are those that stand after section 1; a name in brackets is
+to change, and its line's second round gives the new one.
+
+| Place | People |
+|---|---|
+| Helstrom | Nesh-Deeka, Never-Writes-Twice (lodgers in Ixtul-Bei's House), Haj-Deesh (the levy, by the Sealed Spring), Okeeh-Ja (in the Tree-Minders' Hall), the Nameless Traveller (WK02 only) |
+| Jal-Veesa | [Neeva-Tul], Asheem-Lei, Geel-Masu, Xoh-Reesha, Teemal |
+| Sedge-Kal Camp, Vel-Sapha Stand, Nenria, Ushaan Camp | Dralin Uveran, Counts-His-Luck, Tarries (dead), [Okan-Jei], Tsuna; Heem-Jasa, Wuleen-Tei, Rask; Kharzal, Ushk, Deshra; Sesk |
+| Stormhold | Asks-Twice, Varon Sedrys, Old Menas, Keema-Tul, Arvys Hleran, Shuxal, Jeetum-Lah, Tuleem, Waleesh, Galos, Nine-Knots, Stone-Cough, Gall, Rilas (dead) |
+| Surkina, Vandrel Farm | Mopakuz, Chuna, [Dral Savani], Milva Savani, Pegareem; Maros, Sheeja and Ilver Vandrel, [Otumei], Tallow |
+| Fort Gysilla, Truowa, Yalugo | Peradus Xil; Starless, [Xal-Meema], Tibur, Buys-by-Daylight; Pike |
+| Korydon, Myroleon, Tydeos, Luntoc, Vesh-Aneel | Haxara-Tei, Mereesh, Naxil-Wo, Tulaxi, Ruxheel, Demeepa-Ru, Ruleem, Jaseen; Sheeva-Jul, [Jeer-Tan], Weeja; Beem-Wazei, Chalureel; Skeeju; Tikaasi, Paheel (dead) |
+| Tumnatu Cattail Camp, Yuva-Goli, Tsonac, Teth-Kasa, Tseli-Oon, Dry-Fang Camp, Jal-Resh Post, Meris-Keth | Meer-Zah; [Haxal-Mei], Ushu-Lan, Bun-Zeer; Druja-Seel, [Ah-Mota], [Mazeeh], Golis Andrethi; Hapu-Jeer; Dusha-Wan; Thekka, Jurr; Marzeel; J'Kier, Aojee-Dar (dead) |
+| Blackrose, Reedfall Farm, Lujei Ferry, Lujei, the Rose | Never-Sold; Rows-For-Another, Hulm-Tei, Meema Tulm-Varo, Brings-Them-Back; [Nuleem-Ei]; Ossu, Walks-Far, Mends-Nets, Seven-Floods; the Third-Born [Tsaxi], [Okaw] and Xeekh, Raj-Kaal Druxeth |
+| Soulrest | Oshu-Kai, Hisska, Martius Calvo, Sharp-Oar, Factor Tsabhira, Aulia Pontanian; Lucan Teeus; Ussa-Rekh, Heavy-Rope, Ra'Jhan, [Dralas], Keel-Tar |
+| Jarecai and the basin posts | Xeech-Tul, Jaxa-Reem, Neeta-Xi; Deekum; Bimeesh-Tul, [Geem-Ra]; [Wuleen-Tei] the toll-keeper, Oleed-Mei; Otumi-Lar |
+| Lilmoth | Tilts-the-Jug, Half-Rent, Bent-Spine, Silt, Meer-Tulo, Geem-Shah, Yves Renoit, Beek-Losh; Neexa-Tul, Old Nusa, [Carves-Twice], Dives-Without-Asking, Odile Marric, Shuvu-Meen, Meenus-Lei, Hadrian Scaeva; Jeer-Tei; Xil-Veeka; [Geh-Meema] |
+| Round Lilmoth | Wumeek-Dar, Kud-Lai (Silt-Orrel); Cassia Deemeel (Southwatch Keep); Tseeba-Mei (Dunhallow); [Half-Roof] (Fort Sallowmoth); Chiss-Ra (Tailfall Mound) |
+| Archon | Waits-at-Stairs, Iiran-Vekh, Ohl-Katta, Tirele Sadryn, Three-Ropes, Receiver Lartius Xeen, the pilot [Sounds-Twice], Fair-Prize, Aleel, Dry Reesh, Juleem, Reemha, Deesh-Meeus, Ux-Teeba (dead), Sheer-Tulan (dead); Sails-by-Morning, Nerva Shulm (on his round; met at Thorn); Olik-Tei (never in port) |
+| Xi-Inou, Sal-Axan, Fort Reedmoth, Uluo | Seewul-Ei, Nuleem-Ja, False-Lantern, Half-Share; [Bimeesh], Marcan Jeel; Varia Okeel, Dessan Juul, Weedum-Ja; Ukka-Tei, Sounds-Twice, Otul-Zan |
+| Seafalls, Skeith Isle, Marshgate Watch | Reads-the-White-Water, Nomu, Vasha-Lo, [Dralen Vathri], Little Glass; Blind-Side, Names-the-Quay; Hadrus Neel, Ilas Teem |
+| Thorn, Fort Thornmoth, Coldbrine Mine | Uxa-Meen, Mirvasa Nethril, Okan-Shei, Vaneth Sareloth, Teegla-Ru, [Arvys] Tereval, Jasa-Gei; [Cassia Ruleem], Nevena Orvel, [Varro Teeus], Dovyn Mareth; Quintus Haleem, Wudan-Jei, [Meer-Tulm] |
+| Noota Nara, Fort Chalkmoth, Chalkmoth Pit, Inoja, Joxhi, Oxayo, the roosts | Kaal Nakuma-Tei, Deesha; [Marius Otumeel], Meesei Varo-Lei; Olank-Nu, Beem-Ra; Raj-Deel, Tohl-Meen; Jo-Reesh, Dob-Mei, Gam-Kur; Kaleen; the Sarpa, under their new names |
+| Yulca, Hirecan, the Archive's halls | Yaxil-Ca, Ocan, Hecal, Tedryn Orvayn, Dives-Shallow, Maelle Jurard; Xocin; Ayaca; Nets-at-Dawn; [Varia Semprone], [Nema-Lah] |
+| Giovesse, Olvani, the Nisswo's places | Weaves-to-Burn, Otumeel, Neema-Luh, Old Tavi, Tsathra-Jei; Tullo and Sila Mereo; [Dralsi Rethan]; the priestess of Dibella at Gideon, to be named |
+| Bell Station, Seafalls, the Rose | Sabina Lentus; Ennodius Vanin; the Rose's champion |
+
+**Needs to load onto each place.** Each story's §4 table is loaded row by row onto its place once the second
+round is done, with these changes from this ledger:
+
+- A place in 2.3 gets one row for each needed thing, naming every line and quest that shares it.
+- **Helstrom**: the need for a boatman's house with a back room becomes "the tally-keeper's house by the landing,
+  where two lodgers stand, and its locked chest", met by Ixtul-Bei's House; the spring's need is met as the Sealed
+  Spring, with a second, unsealed state and one new guard beside it; the crocodile's need is withdrawn; the elders'
+  need is met by naming the two naheesh; the hall's need is met by the cave, with Okeeh-Ja to place inside; the
+  root-tender's need is met at the sacred tree; the keepers' need is met, their story is written, and it adds one
+  person for one quest (H1 to H9, C20).
+- Needs refused, or changed to a fallback, are in 2.5; a wallow for MC03 is a need of Seth-Alaxh Roost's (P21).
+- No place's number of people is set by a story (P14); the roster sets it from the people listed above.
+
+**For the lead**, from the stories' own §6, outside this ledger's reach: the Nisswo's writer found that `sketch`
+refuses a stage that takes a thing on a use, and that `own <container>` does not unlock it, a hole the worked
+example in `buildable.md` shares (NI §6); the Chainbreakers' story had not been read on paper when this ledger
+was written (its §5 is empty), so its items in section 8 are from its first draft; the Lamp-Bearers', the Marsh
+Charter's, the main quest's and the Archive's missing lists of note changes are in section 8.
+
+## For the owner
+
+In plain words, the calls that are yours, each with what the ledger recommends. None of them holds up the second
+round of writing.
+
+1. **Seven finales change their kind, and five more lines change in part.** Eleven of the fourteen stories ended by
+   carrying one object to one of several people. Section 6 keeps that ending for two of them (the Thorn Ash-Reed
+   and the Chainbreakers) and gives each of the others the ending the province plan first asked of it. This is the
+   largest ruling in the ledger. Recommended: read 6.2, which is one page, before the writers start.
+2. **Rooms that some places' source places do not have.** The stories ask for a room where the place they are
+   built from has none: a cellar under Fort Gysilla, a second inside at Sethiral, a deckhouse on the wreck of the
+   Brindle Gull, and the others in 2.5. You allowed a second source place for Thorn, Giovesse and the Rose.
+   Recommended: allow the same for these three, since each is the whole of its quest; the rest have a fallback
+   written in.
+3. **A cage in Stormhold.** The detectives' story hangs a named person in an iron cage on an arch in the town
+   square. You ruled that a native place has no jail. Recommended: allow it as a place where one person is shown
+   to the town while the Vicecanon decides, never as a sentence and never for long (P16).
+4. **Two short boat crossings that the travel network does not have**: from Yulca's landing to Gaweja, and from
+   Arorha's quay to Skeith Isle (C60). Without them a player swims among crocodiles to reach two quests.
+   Recommended: add both.
+5. **Helstrom gets five new people and one new state of a thing, and nothing else.** Two spies lodge in
+   Ixtul-Bei's House, one guard stands by the Sealed Spring, the healers' leader stands in the Tree-Minders' Hall,
+   a traveller stands by the rootworm handler for one quest, and the sealed urn has an unsealed twin for the end
+   of the main story. Nothing is built, moved or renamed (2.2). This is for you to know while you edit the town.
+6. **The people of Jal-Veesa are called "the Sedge-Wardens" in the world's data** and the state is called "the
+   Wardens" by everyone. Readers could not tell them apart. The stories now say "the reed people". Recommended:
+   change the culture's name in the data to match.
