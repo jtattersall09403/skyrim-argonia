@@ -133,7 +133,7 @@ enemy's preacher told the truth. The young tree was left to die on purpose. The 
 prisoner here for nine years, and the handler the player trusted is the one who freed her. The player then makes
 the story's first heavy choice, argued from both sides in the cellar: open the gate (some dreamers will drown in
 the marsh with the sap still in them; a dreamer's parting gift is a spell that shows the living through walls;
-Nesh-Deeka walks free and becomes the player's teacher of Speech; the gaolers hunt the player for good), or leave
+Nesh-Deeka walks free and becomes the player's teacher of Speech; the gaolers are the player's enemies for good), or leave
 it shut (the fort becomes the player's own house of the Reed, with its strongroom, its quartermaster and the maps
 to the Reed's three hidden stores; the dreamers are still there each time the player goes down, and Nesh-Deeka says
 no more). After this nobody gives orders. Nesh-Deeka, freed or not, gives the last lead: every dreamer who dreams
@@ -163,24 +163,24 @@ people for ransom. *Why they go on:* the Egg is already at the door, the sour ru
 last king left it, and the only hand that can open it is the player's.
 
 **Act V, the door** (the trench). The divers will not lower below the rim. The player swims down the wrecked
-sphere's cable past hunting dreugh into the sealed spire, whose outer door stands open, into air and the hardest
+sphere's cable past hunting dreugh into the sealed spire, whose outer door stands open (it is unlocked by the stage that begins the act), into air and the hardest
 ground in the province: the Unbound's rearguard (fought, passed unseen, or talked past by a sentry sick of the
 dark), then the Root's guardian, the last thing sworn to the first gift. It stands and speaks, like any person the player
 may talk to or attack, and it will not unlock its hall's far door for the kings' jewel. It is answered (Speech, by
 one who has read the stone at Gemin), attacked and killed for its heart, or left alone by way of a drowned
-root-channel that comes up beyond its hall. At the door from the dream stand Cuts-the-Old-Knot, with the Egg, and
-the Collector. She gives the last piece of the player's own story, and it is smaller and worse than a plan: "I did
+root-channel that comes up beyond its hall. In the hall before the door from the dream stand Cuts-the-Old-Knot, with the Egg,
+and, apart from her, the Collector. She gives the last piece of the player's own story, and it is smaller and worse than a plan: "I did
 not choose you. I lit that fire, and there was somebody in the gang-master's hut that nobody had written down. I
 was nine years in a room. I do not leave people in rooms. It was afterwards I saw what a hand on nobody's roll was
 worth to me, and had you watched." She does not bargain for the Egg. It is no use to her on this side of a door
 that only the bearer opens, so she puts it in the player's hands and stakes everything on what she says next: pour
-it. (A player may also attack her, and take it from her body after a hard fight.) Egg and Eye together open the door, and once open it stands open to anyone. Inside are three things, and using one
-ends the story. The Collector is found inside, already at the walls (he is placed there when the door unlocks; he
-is never seen to walk). He says what each thing is, does, gives and costs, and then, out of her hearing, what he
-has kept from the woman he preached for: he came to read the first wood, and if the Egg is poured it stops
-singing and there is nothing left to read. He has wanted the door open for twenty years and has never wanted it
-cut. He asks for nothing and will not stop the player. He does not come up again: after MEND or CLAIM he is found
-there reading, and after CUT he is found there in front of a silent wall, with what he helped to do.
+it. (A player may also attack her, and take it from her body after a hard fight.) Egg and Eye together open the door. Beyond it is the Root, a chamber of its own, with three things in it, and
+using one ends the story. The Collector does not go in. Standing where he stands, he says what each thing is, does,
+gives and costs, which he has pieced together over twenty years, and then what he has kept from the woman he
+preached for: he came to hear and read the first wood, and if the Egg is poured it stops singing and there is
+nothing left to read. He has wanted the door open for twenty years and has never wanted it cut. He asks for
+nothing and will not stop the player. He never leaves that hall: after MEND or CLAIM he is found there at the open
+door, reading what is cut round it, and after CUT he is found there in a silence he helped to make.
 
 ## 5. The three endings
 
@@ -219,7 +219,7 @@ closes wounds; and every trader, house and blessing as it was, except the first 
 where the player will see it:* nothing is stopped by force. The tree of the first town leaves the joining, and its
 pool blesses nobody. Helstrom's tree stays and its spring stays sour. The Reed is not ended: if the cellar's gate
 was left shut its dreamers are still in it, and dreams are still bought. Cuts-the-Old-Knot is gone from the door
-when the player comes out, her people hunt the player, and she goes on persuading trees to leave, one at a time,
+when the player comes out, her people are the player's enemies wherever they are met, and she goes on persuading trees to leave, one at a time,
 which is now any tree's right. The seed goes to the Root and not home. The trees may now do again what made the
 kings chain them. *It leaves:* a Root Talk held with empty places, and nobody able to say how many more there will
 be next year. Its advocate is Nesh-Deeka, who opened one door on principle and made the marsh an
@@ -292,3 +292,23 @@ thing: the Collector could not follow the player in. *Changed:* the Collector is
 kept from the Unbound: the pouring silences what he came to read. *Not changed:* the three hunts of Act II (one
 reader in each round called them fetching; the rest named them among the best of it, and they are the old line's
 treasure hunt); the length of the stone's reading, which is the outline's to keep short.
+
+**Round three** (on commit `1e2905a1`; new readers: a heavy fighter who wants to rule, a tribeless Naga loyal to
+the people at the bottom, a mage who distrusts clean answers, an Argonian lore-lover). All four retold it and
+wanted to go on at every act break; three called the cellar or the stone the best of it. Before the door they
+leant three ways (the fighter to the kings' seat, the Naga to the pouring, two to a third way) and none was sure.
+*The fighter* left the gate shut for the fort, lied for the fence, and chose CLAIM, where story and pay agreed for
+him. *The Naga*, *the mage* and *the lore-lover* opened the gate, lied, and chose MEND; all three called CUT the
+strongest temptation and one "nearly took it for her sake"; each ending was somebody's best pay. Single readers
+wished the Egg were bargained for, found the Collector convenient, or the pool's leaving arbitrary; none of these
+was shared, and the first is the opposite of round one's finding. The deliverability reader found one thing left
+over from round two's change: the Collector stood both at the door and inside. *Changed:* he stands in the hall
+before the door and never goes in. Nothing else.
+
+**Where it stopped.** After three rounds: every reader of the last two rounds could retell the plot and wanted to
+go on at every act break; each ending has an honest case that readers who refused it argued without strain, and a
+gain of its own that somebody ranked best; round three raised nothing new that was agreed with; and a fresh
+deliverability reader of the final text found nothing that needed the plot changed (its one doubt, how the trench
+spire's outer door comes to be open, is a door unlocked by a stage, now said). Across twelve players the endings fell MEND
+nine, CLAIM three, CUT none, with CUT the close second of most. That is recorded and not answered further: CUT
+is the ending every reader felt and none could bring themselves to make permanent, which is what it is for.
