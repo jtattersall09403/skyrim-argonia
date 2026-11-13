@@ -25,7 +25,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: No. I keep this gate, and what a tribe does with its own young is for that tribe to do.
+    Value: No. I keep watch here, and what a tribe does with its own young is for that tribe to do.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -41,7 +41,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Haj-Wan, who waits beside me, will tell you why he went. If you go after him, I will not stop you. But hear this.
+    Value: Haj-Wan, who waits near this road, will tell you why he went. If you go after him, I will not stop you. But hear this.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 4
@@ -49,7 +49,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: What lies in the reed roots bites, and what it bites dies. The levy will not come in after you, so you go alone. I do not like what the rite costs.
+    Value: What lies out among the trees bites, and what it bites dies. The levy will not come in after you, so you go alone. I do not like what the rite costs.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 5
@@ -57,7 +57,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: I watch young ones walk out here and I do not follow, because the levy keeps to the gate. When one does not come back, I have stood here and watched.
+    Value: I watch young ones walk out here and I do not follow, because the levy keeps to this road. When one does not come back, I have stood here and watched.
   ScriptNotes: ''
   Edits: ''
 Conditions:

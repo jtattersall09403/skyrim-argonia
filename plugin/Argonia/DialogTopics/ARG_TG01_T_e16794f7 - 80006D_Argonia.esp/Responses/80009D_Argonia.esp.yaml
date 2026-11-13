@@ -46,7 +46,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: You may still go below. Our people gather under Lilmoth. The coast ship leaves from Soulrest's dock, east of this house; ride it to Lilmoth.
+    Value: You may still go below. Our people gather under Lilmoth. The coast ship leaves from Soulrest's dock, west of this house; ride it to Lilmoth.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 3
@@ -54,7 +54,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: There is a trapdoor north of Pusbottom, where the deep water begins. Bent-Spine fences the goods we take, and he waits below it. Tell him I sent you.
+    Value: There is a trapdoor on a ruin in the deep water east of Lilmoth. Bent-Spine, our fence, waits below it. Tell him I sent you.
   ScriptNotes: ''
   Edits: ''
 Conditions:

@@ -197,7 +197,7 @@ Stages:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: I woke in the hold of a ship, moored at a pier west of Lilmoth in Black Marsh, among a gang of Argonians I do not know. I'm to go up the stairs and out of the door to the pier, and speak to the man who stands there.
+      Value: I woke in the hold of a ship, moored below Hereguard Plantation, west of Lilmoth in Black Marsh, among a gang of Argonians I do not know. I'm to go up the stairs and out of the door to the deck, and speak to the man who stands there.
 - Index: 20
   LogEntries:
   - Flags: []
@@ -209,7 +209,7 @@ Stages:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: Buys-The-Months, the broker, died on the pier before he had said a word to me. The others on the pier have no help for a stranger. I'm to look for work in Lilmoth, east along the shore.
+      Value: Buys-The-Months, the broker, died on the deck before he had said a word to me. The others on the deck have no help for a stranger. I'm to look for work in Lilmoth, east along the shore.
 - Index: 30
   LogEntries:
   - Flags: []
@@ -234,7 +234,7 @@ Objectives:
 - Index: 10
   DisplayText:
     TargetLanguage: English
-    Value: Speak to Buys-The-Months on the pier beside the ship.
+    Value: Speak to Buys-The-Months on the deck of the ship.
   Targets:
   - {}
 - Index: 21

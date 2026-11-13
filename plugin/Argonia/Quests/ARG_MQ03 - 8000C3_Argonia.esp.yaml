@@ -278,18 +278,21 @@ Objectives:
     TargetLanguage: English
     Value: Bring the jar from Dives-Without-A-Rope's lockbox to Nesh-Deeka (a Novice lock, or the key on her body).
   Targets:
+  - AliasID: 6
   - AliasID: 1
 - Index: 12
   DisplayText:
     TargetLanguage: English
     Value: Bring the jar from Dives-Without-A-Rope's lockbox to Nesh-Deeka (a Novice lock, or her key).
   Targets:
+  - AliasID: 6
   - AliasID: 1
 - Index: 15
   DisplayText:
     TargetLanguage: English
     Value: Bring the jar from Dives-Without-A-Rope's lockbox to Nesh-Deeka.
   Targets:
+  - AliasID: 6
   - AliasID: 1
 Aliases:
 - Name: npc.mercantile-coast.lilmoth.fish-trader-house

@@ -1,0 +1,8 @@
+FormKey: 800205:Argonia.esp
+EditorID: ARG_LQ25_T_a6231052
+Name:
+  TargetLanguage: English
+  Value: What lives in the water here?
+Branch: 800206:Argonia.esp
+Quest: 8000C0:Argonia.esp
+SubtypeName: CUST

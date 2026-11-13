@@ -6,7 +6,7 @@
     "variant": "main",
     "prompt": null,
     "lines": [
-     "I am watching the shallows east of this gate. One of mine walked out into the basin, and he has not come back."
+     "I am watching the shallows by this road. One of mine walked out into the basin, and he has not come back."
     ],
     "facts": [
      "fact.lq30.walked-out"
@@ -22,8 +22,8 @@
     "prompt": "What are you waiting for here?",
     "lines": [
      "I wait for Sei-Wan, my kin. He walked out into the basin alone, to prove himself to the Agaceph, and he has not come back.",
-     "I am Agaceph too. By our custom none of us may follow a walk-out, so I stay at this gate. An outsider may follow him.",
-     "He went east from the gate through the shallows, and he is up among the roots there. Vipers lie in the roots, and the mud holds anyone who stands still. Nothing that walks in the basin lives long. Gih-Xaleel, the levy warden beside me, will say the same.",
+     "I am Agaceph too. By our custom none of us may follow a walk-out, so I stay by this road. An outsider may follow him.",
+     "He went out east, a long way past the houses, and he is out among the trees there. Vipers lie out there. Nothing that walks in the basin lives long. Gih-Xaleel, the levy warden, keeps watch near this road and will say the same.",
      "I want him alive. He wants the walk-out to count, and it counts only if he comes home on his own feet. If another brings him in, the Agaceph will say he did not finish.",
      "I would have him alive and shamed sooner than proud and dead. Bring him home if you must. But if he can walk, let the walk-out be his own."
     ],
@@ -43,7 +43,7 @@
     "variant": "main",
     "prompt": "Sei-Wan is alive. He is coming home.",
     "lines": [
-     "Alive. Then I can breathe again. I have stood at this gate for days, and I asked for nothing more than that.",
+     "Alive. Then I can breathe again. I have stood by this road for days, and I asked for nothing more than that.",
      "I am sorry that he has lost his walk-out. He went into the basin for it, and now he has lost it. He will not thank me, and I will bear that.",
      "Here is sixty gold. It is not a price for him, only what I have."
     ],
@@ -61,7 +61,7 @@
     "variant": "main",
     "prompt": null,
     "lines": [
-     "No word of Sei-Wan yet. I stand at this gate and watch the shallows.",
+     "No word of Sei-Wan yet. I stand by this road and watch the shallows.",
      "By our custom I may not follow him, so I wait. He walked out alone, and he will come when he comes, on his own feet. I have to believe that."
     ],
     "facts": []
@@ -90,7 +90,7 @@
     "prompt": "Haj-Wan sent me to find you.",
     "lines": [
      "So Haj-Wan sent an outsider. I am Sei-Wan. I walked out alone, and I was on my way home when a viper struck at me.",
-     "It lies in the roots west of me, between me and the gate. I climbed up here, and I carry nothing that can reach it.",
+     "It lies out among the trees south-west of me. I climbed up here, and I carry nothing that can reach it.",
      "I will not come down while it lives. I will not run past it, and I will not call for help.",
      "If you can deal with the viper, I can walk."
     ],
@@ -129,11 +129,11 @@
   "infos": [
    {
     "variant": "main",
-    "prompt": "The viper is dead. Walk home on your own feet when you choose; I will say nothing of you at the gate, not even to Haj-Wan.",
+    "prompt": "The viper is dead. Walk home on your own feet when you choose; I will say nothing of you, not even to Haj-Wan.",
     "lines": [
      "Then the walk-out is still mine. I did not think an outsider would leave it to me. I am glad of it, and I am proud.",
-     "I will come in through the gate on my own feet when I choose. My tribe will see me do it.",
-     "I ask one thing. Say nothing at the gate, not of the viper and not of the roots. I know Haj-Wan will watch the shallows a little longer for me, and I am sorry for that."
+     "I will walk in on my own feet when I choose. My tribe will see me do it.",
+     "I ask one thing. Say nothing to the others, not of the viper and not of the trees. I know Haj-Wan will watch the shallows a little longer for me, and I am sorry for that."
     ],
     "facts": []
    }
@@ -174,10 +174,10 @@
     "variant": "main",
     "prompt": "Will you stop me going out into the basin?",
     "lines": [
-     "No. I keep this gate, and what a tribe does with its own young is for that tribe to do. The levy has never stood in the way of a rite, and I will not stand in your way.",
-     "Sei-Wan went out into the basin days ago, and he is not back. Haj-Wan, who waits beside me, will tell you why he went.",
-     "If you go after him, I will not stop you. But hear this. What lies in the reed roots bites, and what it bites dies. The levy will not come in after you, so you go alone.",
-     "I do not like what the rite costs. I watch young ones walk out here and I do not follow, because the levy keeps to the gate. When one does not come back, I have stood here and watched."
+     "No. I keep watch here, and what a tribe does with its own young is for that tribe to do. The levy has never stood in the way of a rite, and I will not stand in your way.",
+     "Sei-Wan went out into the basin days ago, and he is not back. Haj-Wan, who waits near this road, will tell you why he went.",
+     "If you go after him, I will not stop you. But hear this. What lies out among the trees bites, and what it bites dies. The levy will not come in after you, so you go alone.",
+     "I do not like what the rite costs. I watch young ones walk out here and I do not follow, because the levy keeps to this road. When one does not come back, I have stood here and watched."
     ],
     "facts": []
    }
@@ -190,8 +190,8 @@
     "variant": "main",
     "prompt": "Haj-Wan sent me to find you.",
     "lines": [
-     "So Haj-Wan sent you, and the viper lies dead in the roots. It does not move. I would not have believed it.",
-     "My legs are stiff from the roots, but they will carry me now. I can walk.",
+     "So Haj-Wan sent you, and the viper lies dead among the trees. It does not move. I would not have believed it.",
+     "My legs are stiff from the climb, but they will carry me now. I can walk.",
      "Haj-Wan wants me home, and I will not guess what you want. What do you mean to do with me?"
     ],
     "facts": [],

@@ -8,7 +8,7 @@
     "lines": [
      "I want one thing learned there. At the burnt camp the cutters cut the gang's Hist cutting, the slip of sacred tree they kept. I need to know whether they cut the Hist of Low-Reed Village as well.",
      "Follow the shore east out of Lilmoth until you reach the village. It stands on stilts over fresh water.",
-     "Hires-By-The-Season is its root-herald, the one who speaks for the village to strangers. She stands on the raised ground at the village's middle.",
+     "Hires-By-The-Season is its root-herald, the one who speaks for the village to strangers. She stands on the bare ground by the first house, not far from the stilts.",
      "Do not name the Reed there. You are a stranger who heard that the tree turned its face, and that is all you need be.",
      "I fear the cutters did not stop at the cutting. I would be glad if you proved me wrong."
     ],
@@ -53,10 +53,10 @@
     "prompt": "I've come from Lilmoth about your Hist.",
     "lines": [
      "I am Hires-By-The-Season, the root-herald of Low-Reed Village. I speak for our people to strangers, and I have little reason to trust anyone from Lilmoth.",
-     "The Hist is the great tree our people hold sacred. Its eggs hatch in the pool at its roots.",
+     "The Hist is the great tree our people hold sacred. Its eggs hatch in the pool under our stilts.",
      "Eleven nights ago its light went out and its leaves shut. The eggs in the pool died.",
      "Our people say the leeches came up the roots. Then the tree shut. They blame Pays-Late too, the tree-minder who keeps the tree, because he let the leeches in.",
-     "He stands by the roots under the stilts on the south side of the village, day and night. He will not say why.",
+     "He stands on the bank under the stilts on the south side of the village, day and night. He will not say why.",
      "If a stranger can get the truth out of him, let the stranger try."
     ],
     "facts": [
@@ -74,7 +74,7 @@
     "prompt": "Who are you?",
     "lines": [
      "I am Hires-By-The-Season, the root-herald. When strangers come to Low-Reed Village, I am the one who answers them.",
-     "Our sacred tree, the Hist, is shut. We wait. Pays-Late, who keeps the tree, stands by its roots on the south side."
+     "Our sacred tree, the Hist, is shut. We wait. Pays-Late, who keeps the tree, stands on the bank under the stilts on the south side."
     ],
     "facts": []
    }
@@ -99,10 +99,10 @@
   "infos": [
    {
     "variant": "main",
-    "prompt": "Why do you stand by the roots?",
+    "prompt": "Why do you stand on the bank?",
     "lines": [
-     "I am Pays-Late, the tree-minder of this village. I tend the Hist, our sacred tree. The pool where the eggs lie at its roots is mine to tend as well.",
-     "I wash the roots where the leeches crowd. That is my work, and I do it alone.",
+     "I am Pays-Late, the tree-minder of this village. I tend the Hist, our sacred tree. The pool where the eggs lie is mine to watch as well.",
+     "I keep watch here on the bank. That is my work, and I do it alone.",
      "A face from Lilmoth will get no more from me. I do not speak for the villagers. Their root-herald does that.",
      "The box at my feet is my gum box, where I keep the black gum for the roots. It is locked, and it stays so."
     ],
@@ -118,7 +118,7 @@
     "prompt": "The village blames you whatever you say. Tell me what happened to your tree.",
     "lines": [
      "You do not shout it to the village. You ask me quietly. I have carried this alone too long.",
-     "A root of the Hist was cut under the stilts, and its sap was drawn off. The cut was sealed with black gum from the sap-workshop. It was my gum, and my knife was gone from the workshop.",
+     "A root of the Hist was cut under the stilts, and its sap was drawn off. The cut was sealed with black gum made here in the village. It was my gum, and my knife was gone from my things.",
      "I knew how it would look, so I hid the cut and told only Turns-The-Clutch, who tends the eggs in the pool. The drips led north to the leech water, and there I lost them.",
      "A boat came in from the north reeds that night and went back out. She saw it too. If you want to know where the sap went, ask me."
     ],
@@ -132,7 +132,7 @@
     "variant": "fail",
     "prompt": "The village blames you whatever you say. Tell me what happened to your tree.",
     "lines": [
-     "Soft words from a stranger are not enough. I have work at the roots.",
+     "Soft words from a stranger are not enough. I have my watch to keep.",
      "Come back better spoken, and I may listen. Or come with something of mine in your hand to show me."
     ],
     "facts": []
@@ -147,8 +147,8 @@
     "prompt": "This is your gum pot. The cut on your tree is sealed with this gum.",
     "lines": [
      "That is my pot. Then you know already, and there is no use in my hiding it.",
-     "I found the cut sealed with that gum, and my knife missing from the sap-workshop. I knew it would be called my work, so I hid it. I followed the sap's drips north as far as the leech water before I lost them.",
-     "That night a boat slipped in from the north reeds and out again. Turns-The-Clutch saw it from the egg pool. Ask me where the sap went, and I will tell you where to look."
+     "I found the cut sealed with that gum, and my knife gone from my things. I knew it would be called my work, so I hid it. I followed the sap's drips north as far as the leech water before I lost them.",
+     "That night a boat slipped in from the north reeds and out again. Turns-The-Clutch saw it from the water's edge. Ask me where the sap went, and I will tell you where to look."
     ],
     "facts": [
      "fact.mq04.root-cut",
@@ -175,7 +175,7 @@
     "prompt": "Tell me, or the whole village hears that you would not.",
     "lines": [
      "Enough. You know I cannot bear the whole village looking at me, and you use it.",
-     "My own black gum sealed the cut on that root, and my knife had vanished from the workshop. I hid the cut, because I knew it would be called my work.",
+     "My own black gum sealed the cut on that root, and my knife had vanished from my things. I hid the cut, because I knew it would be called my work.",
      "That same night a boat came down out of the north reeds and away again. That is all I know, and you have it now.",
      "I will not forget who leaned on me. Ask what else you must, and then leave me."
     ],
@@ -195,9 +195,9 @@
     "prompt": "Where did the sap go?",
     "lines": [
      "North, in the boat that came from the north reeds. I cannot give you a name for whoever was in it.",
-     "North of the village the reeds end at the leech water, where the leeches breed. Cross it and go past the last stilt house. There is a dry rise standing in the reeds. The villagers do not go there.",
+     "North of the village the reeds end at the leech water, where the leeches breed. Cross it and go past the last stilt house. There is a giant tree standing in the reeds, and its roots rise out of the water. The villagers do not go there.",
      "Whoever keeps the jars will not give them up for words. Go ready, and take care in the water.",
-     "Bring the sap back to me here at the roots, and I will see it goes back where it was taken from."
+     "Bring the sap back to me here under the stilts, and I will see it goes back where it was taken from."
     ],
     "facts": []
    }
@@ -293,7 +293,7 @@
     "variant": "main",
     "prompt": "Who are you?",
     "lines": [
-     "I am Turns-The-Clutch, the egg-tender of Low-Reed Village. I keep the village's eggs here, in the pool at the roots of the Hist, our great tree.",
+     "I am Turns-The-Clutch, the egg-tender of Low-Reed Village. I keep the village's eggs here, by this pool under the stilts.",
      "The eggs that lay in this pool are dead. They died the night the Hist shut its leaves, and I could do nothing for them.",
      "The next clutch will be laid in time, and I want the Hist open when it is."
     ],
@@ -311,8 +311,8 @@
      "I saw a boat. I will tell you, though it shames me.",
      "It came in from the north reeds the night the tree shut, and it went back out again. I took it for a netter's boat and gave it no more thought.",
      "I stood by this pool and did not go to look. I did not even call out. That is mine to carry.",
-     "Whoever cut the root closed the cut with black gum. That gum is made in our own sap-workshop, and Pays-Late, who minds the tree, keeps it in the box at his feet. If you would know more, look in that box.",
-     "He stands on the bank by the roots, under the stilts on the village's south side. I will say no more of him. If you want more of him, ask him."
+     "Whoever cut the root closed the cut with black gum. That gum is made here in the village, and Pays-Late, who minds the tree, keeps it in the box at his feet. If you would know more, look in that box.",
+     "He stands on the bank under the stilts on the village's south side. I will say no more of him. If you want more of him, ask him."
     ],
     "facts": []
    }
@@ -340,7 +340,7 @@
     "variant": "main",
     "prompt": "Who are you?",
     "lines": [
-     "I am Counts-The-Jars. I count every jar on this rise, and I know the number. Leave now, or I will kill you."
+     "I am Counts-The-Jars. I count every jar at this tree, and I know the number. Leave now, or I will kill you."
     ],
     "facts": []
    }

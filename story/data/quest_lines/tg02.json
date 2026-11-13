@@ -6,11 +6,11 @@
     "variant": "main",
     "prompt": "What work do you have for me?",
     "lines": [
-     "A merchant drowned in the deep water just south of the trapdoor you came down. His lockbox of pledges lies locked on the floor, where he went down. A pledge is a thing a client left with him against a loan.",
-     "Three of his clients wait on the south bank of the deep water for a diver, and each says one thing in the box is theirs. I want the box emptied before they find one. Dive down, open it and take what is inside.",
+     "A merchant drowned in the deep water a short walk south-east of the trapdoor you came down. His lockbox of pledges lies locked on the floor, where he went down. A pledge is a thing a client left with him against a loan.",
+     "Three of his clients are on the south bank of the deep water, and each says one thing in the box is theirs. I want the box emptied before they find one. Dive down, open it and take what is inside.",
      "What becomes of what you take is yours to say. I will not tell you whom to give it to.",
      "The Chapter takes from those who can bear the loss, and these pledges are other people's. Whoever holds them can sell them back, or can sell silence about them. Blackmail is no trade of ours, and I will not have a Lookout of mine in it.",
-     "The lock is a Novice lock. Here are three lockpicks. Go up through the trapdoor, and the deep water lies just south of it."
+     "The lock is a Novice lock. Here are three lockpicks. Go up through the trapdoor, and the deep water lies south-east of it."
     ],
     "facts": [
      "fact.tg02.job",
@@ -31,7 +31,7 @@
     "prompt": "I need more lockpicks for the lockbox.",
     "lines": [
      "I have seen picks break in a lock like that. Here are three more.",
-     "There are no others after these, so use them with care. The lockbox lies on the floor of the deep water just south of the trapdoor, below the south bank where the three clients stand."
+     "There are no others after these, so use them with care. The lockbox lies on the floor of the deep water a short walk south-east of the trapdoor, below the south bank."
     ],
     "facts": [],
     "gives": [
@@ -75,9 +75,9 @@
     "variant": "main",
     "prompt": "What do you want from the merchant's lockbox?",
     "lines": [
-     "The bone figurine the merchant held is mine. It was carved for my clutch.",
-     "My clutch is scattered now. The figurine is the last thing I have from my clutch. It should come back to me.",
-     "I wait here for a diver. Okan-Tei and Dar-Zeel, the other two clients on this bank, speak for their own claims."
+     "The bee statue the merchant held is mine. It was made for my clutch.",
+     "My clutch is scattered now. The statue is the last thing I have from my clutch. It should come back to me.",
+     "I want it back. I will take it from a diver. Okan-Tei and Dar-Zeel, the other two clients, speak for their own claims."
     ],
     "facts": [
      "fact.tg02.claim-figurine"
@@ -92,7 +92,7 @@
     "variant": "main",
     "prompt": "Take all three of the merchant's pledges.",
     "lines": [
-     "The figurine, the Neesak charm and the strand of Kothringi glass beads. All three are here. Take a hundred and twenty gold for them.",
+     "The statue, the Neesak charm and the strand of Kothringi glass beads. All three are here. Take a hundred and twenty gold for them.",
      "Okan-Tei and Dar-Zeel came for one thing each and have none. They will curse my name, and they will have cause. A pledge goes to the one whom the diver picks, and you picked me."
     ],
     "facts": [],
@@ -104,7 +104,7 @@
     "variant": "fail",
     "prompt": "Take all three of the merchant's pledges.",
     "lines": [
-     "You have not brought all three. I want the figurine, the Neesak charm and the strand of glass beads together, in your hands.",
+     "You have not brought all three. I want the statue, the Neesak charm and the strand of glass beads together, in your hands.",
      "Bring all three. I pay a hundred and twenty gold for the lot and nothing for fewer."
     ],
     "facts": []
@@ -116,7 +116,7 @@
   "infos": [
    {
     "variant": "main",
-    "prompt": "(Persuade) You say this figurine was carved for your clutch, but it is older than any clutch of yours. Buy it at its fair price, forty gold.",
+    "prompt": "(Persuade) You say this statue was carved for your clutch, but it is older than any clutch of yours. Buy it at its fair price, forty gold.",
     "lines": [
      "Yes. It is worn smooth by many hands, and it is older than my clutch.",
      "I said it was carved for us because I wanted it. Forty gold is a fair price. I will pay it.",
@@ -131,7 +131,7 @@
    },
    {
     "variant": "fail",
-    "prompt": "(Persuade) You say this figurine was carved for your clutch, but it is older than any clutch of yours. Buy it at its fair price, forty gold.",
+    "prompt": "(Persuade) You say this statue was carved for your clutch, but it is older than any clutch of yours. Buy it at its fair price, forty gold.",
     "lines": [
      "You say it is older than my clutch. I do not say so, and I will not pay forty gold for a thing on your word alone.",
      "Make me a better case, one that I believe. Then I will hear it again.",
@@ -149,7 +149,7 @@
     "prompt": "What do you want from the merchant's lockbox?",
     "lines": [
      "I never sold the Neesak charm. I pledged it to the merchant against a loan, and a pledge is not a sale.",
-     "It is a green crystal, and it was my mother's. She scried with it, and I will not see it go to a stranger. I am afraid of what the others on this bank would say of a man who let it out of his hands.",
+     "It is a green crystal, and it was my mother's. She scried with it, and I will not see it go to a stranger. I am afraid of what the others would say of a man who let it out of his hands.",
      "I will not pay for it. A man does not buy back what was only lent."
     ],
     "facts": [
@@ -165,7 +165,7 @@
     "variant": "main",
     "prompt": "Take all three of the merchant's pledges.",
     "lines": [
-     "The charm is the one I came for. The figurine and the beads I did not ask for, and now I hold them too. Here are a hundred and twenty gold.",
+     "The charm is the one I came for. The statue and the beads I did not ask for, and now I hold them too. Here are a hundred and twenty gold.",
      "Neeta-Haj and Dar-Zeel have nothing in their hands. I will not pretend that sits well with me, but I will not give back what you put in mine."
     ],
     "facts": [],
@@ -177,7 +177,7 @@
     "variant": "fail",
     "prompt": "Take all three of the merchant's pledges.",
     "lines": [
-     "That is not all three. I want the figurine, the charm and the beads, and I want them together.",
+     "That is not all three. I want the statue, the charm and the beads, and I want them together.",
      "I pay one price, a hundred and twenty gold, and only for the three. Bring them all, and I will pay."
     ],
     "facts": []
@@ -237,8 +237,8 @@
     "variant": "main",
     "prompt": "Take all three of the merchant's pledges.",
     "lines": [
-     "I came for the strand of beads. The figurine and the charm come with it, and I will not give them back. Here are a hundred and twenty gold.",
-     "Neeta-Haj and Okan-Tei waited on this bank as long as I did, and now they leave it empty-handed. They will say I was favoured, and I cannot answer them, because it was you who chose."
+     "I came for the strand of beads. The statue and the charm come with it, and I will not give them back. Here are a hundred and twenty gold.",
+     "Neeta-Haj and Okan-Tei waited as long as I did, and now they go empty-handed. They will say I was favoured, and I cannot answer them, because it was you who chose."
     ],
     "facts": [],
     "gives": [
@@ -249,8 +249,8 @@
     "variant": "fail",
     "prompt": "Take all three of the merchant's pledges.",
     "lines": [
-     "You have not brought all three. I will not take the beads alone, and I will not take the figurine or the charm alone.",
-     "Bring the figurine, the charm and the beads together. For the three I pay a hundred and twenty gold."
+     "You have not brought all three. I will not take the beads alone, and I will not take the statue or the charm alone.",
+     "Bring the statue, the charm and the beads together. For the three I pay a hundred and twenty gold."
     ],
     "facts": []
    }
@@ -265,7 +265,7 @@
     "lines": [
      "Yes. It is Kothringi glass out of an old cairn. I bought the strand from the robbers who broke it out, and I paid them too much.",
      "I called it family work because I had nothing to show that I came by it honestly. Buyers do not ask a family for proof of its own work. Fifty-five gold is what it is worth, and I will pay that.",
-     "Neeta-Haj lied about her figurine, and Okan-Tei about his charm, and now I have owned my lie as they did. Each of us has our own again, and none of us will speak well of you on this bank."
+     "Neeta-Haj lied about her statue, and Okan-Tei about his charm, and now I have owned my lie as they did. Each of us has our own again, and none of us will speak well of you."
     ],
     "facts": [
      "fact.tg02.beads-kothringi"
@@ -291,10 +291,10 @@
   "infos": [
    {
     "variant": "main",
-    "prompt": "Take the figurine back for twenty gold. I will not argue the price.",
+    "prompt": "Take the statue back for twenty gold. I will not argue the price.",
     "lines": [
      "I want it back. I will not stand on this bank and argue about it.",
-     "I give you twenty gold. I take the figurine. That is what it is worth to me as it is."
+     "I give you twenty gold. I take the statue. That is what it is worth to me as it is."
     ],
     "facts": [],
     "gives": [

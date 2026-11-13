@@ -49,7 +49,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: That gum is made in our own sap-workshop, and Pays-Late, who minds the tree, keeps it in the box at his feet.
+    Value: That gum is made here in the village, and Pays-Late, who minds the tree, keeps it in the box at his feet. If you would know more, look in that box.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 5
@@ -57,15 +57,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: If you would know more, look in that box. He stands on the bank by the roots, under the stilts on the village's south side. I will say no more of him.
-  ScriptNotes: ''
-  Edits: ''
-- ResponseNumber: 6
-  Unknown2: 0x000000
-  Unknown3: 0x000000
-  Text:
-    TargetLanguage: English
-    Value: If you want more of him, ask him.
+    Value: He stands on the bank under the stilts on the village's south side. I will say no more of him. If you want more of him, ask him.
   ScriptNotes: ''
   Edits: ''
 Conditions:

@@ -6,10 +6,10 @@
     "variant": "main",
     "prompt": "Who are you?",
     "lines": [
-     "I am Buys-The-Months, a broker. This is my pier, below Hereguard Plantation. Lilmoth lies a fair way east along the shore. That ship is mine.",
+     "I am Buys-The-Months, a broker. This is my ship, moored below Hereguard Plantation. Lilmoth lies a fair way east along the shore.",
      "The water at Lilmoth is too shallow for a ship her size, so she lies here. The Argonians in her hold are an Owing gang. Each of them works off months of work owed for a debt or a wrong.",
      "I keep those months written on my work roll, and I hire the gang out to unload the lighters, the cargo boats, at Lilmoth's dock. You came down the estuary with them, but you are on no line of my roll.",
-     "You owe me nothing, so I cannot hire you out. You are no affair of mine. Get off my pier."
+     "You owe me nothing, so I cannot hire you out. You are no affair of mine. Get off my ship."
     ],
     "facts": [
      "fact.mq01.owing-roll",
@@ -25,7 +25,7 @@
     "variant": "main",
     "prompt": "Where can I find work, then?",
     "lines": [
-     "I have no work for you. Salts-The-Catch is a fish-trader who sells me my gang's food. She asked at the pier for anyone off my ship who saw the camp burn.",
+     "I have no work for you. Salts-The-Catch keeps a house in Lilmoth. She asked me for anyone off my ship who saw the camp burn.",
      "A guest of hers, Nesh-Deeka, pays for work. Go to Nesh-Deeka. Keep to the shore going east, a fair way. You pass the old lighthouse, and then you are in Lilmoth.",
      "Keep on until you reach the second of the big ships, the one at anchor off Lilmoth's own dock. Salts-The-Catch's house is south of that ship, beside a wooden walkway."
     ],
@@ -42,7 +42,7 @@
     "variant": "main",
     "prompt": "Who are you?",
     "lines": [
-     "I am Buys-The-Months. I have said all I will. You are on no line of my roll, so leave my pier.",
+     "I am Buys-The-Months. I have said all I will. You are on no line of my roll, so leave my ship.",
      "Salts-The-Catch keeps her house south of the second big ship, below Lilmoth Dock, beside a wooden walkway. Nesh-Deeka is in there."
     ],
     "facts": [
@@ -58,7 +58,7 @@
     "variant": "main",
     "prompt": null,
     "lines": [
-     "You again. You are on no line of my roll. Leave my pier."
+     "You again. You are on no line of my roll. Leave my ship."
     ],
     "facts": [
      "fact.mq01.no-name"
@@ -74,7 +74,7 @@
     "prompt": "Who are you?",
     "lines": [
      "I am Dives-Without-A-Rope. My family belongs to Nine Bends, a Hist, one of the great sacred trees of my people. I have been years away from it. Look at my colour. It has thinned for want of the tree.",
-     "Here I work, I eat and I sleep. If you want to know about the camp, ask Wuleen-Sei."
+     "Here I eat and I sleep. If you want to know about the camp, ask Wuleen-Sei."
     ],
     "facts": [
      "fact.mq01.washed-out"
@@ -93,7 +93,7 @@
      "A woman with a knotted cord at her wrist killed the courier who walked with the gang. She took his satchel. The satchel was mine.",
      "Her people also cut the camp's Hist cutting, a slip of the sacred tree from which the families draw their lives. They cut it away from the eggs at its roots. The eggs died.",
      "The gang say she looked at you lying by the fire and let you live. I serve the Veiled Reed, the quiet service of the An-Xileel, the state that rules Black Marsh. Do not say that name to a stranger.",
-     "Not here, not on the pier. I have work for a hand whose name is on no roll. Ask me whatever you like about it before you answer. I will tell you what I can, and where I am holding back."
+     "Not here, not where others can hear. I have work for a hand whose name is on no roll. Ask me whatever you like about it before you answer. I will tell you what I can, and where I am holding back."
     ],
     "facts": [
      "fact.mq01.camp-burned",
@@ -275,7 +275,7 @@
     "variant": "main",
     "prompt": "Who are you?",
     "lines": [
-     "I am Salts-The-Catch. I sell fish, and I keep this house below Lilmoth Dock. People come and go here. I ask nothing of them. Nesh-Deeka sits at the far end of the room."
+     "I am Salts-The-Catch. I keep this house below Lilmoth Dock. I ask nothing of my guests. Nesh-Deeka is in this house."
     ],
     "facts": [
      "fact.mq01.salts-house"
@@ -290,7 +290,7 @@
     "variant": "main",
     "prompt": "Who are you?",
     "lines": [
-     "I am Ux-Xeek, the broker's port hand. I read out the roll, the list of the gang's names, and call the gang out to the lighters, the flat boats that carry cargo to the ships.",
+     "I am Ux-Xeek, the broker's port hand.",
      "You are not on my roll, so I have no time for you."
     ],
     "facts": [
@@ -306,9 +306,9 @@
     "variant": "main",
     "prompt": "Where am I?",
     "lines": [
-     "You are in the hold of a ship. It belongs to Buys-The-Months, a broker who hires out the work of others. The ship is moored at the pier at Hereguard Plantation, west of Lilmoth.",
+     "You are in the hold of a ship. It belongs to Buys-The-Months, a broker who hires out the work of others. The ship is moored below Hereguard Plantation, west of Lilmoth.",
      "I am Wuleen-Sei, his overseer. My gang carried you aboard, hurt, from the bank by the fire at our camp, the night it burned. We brought you down the estuary in our longboat.",
-     "Go up the stairs and out of the door onto the deck. Buys-The-Months waits on the pier. Ask him what is owed in this hold, and why. That is for him to say, not me."
+     "Go up the stairs and out of the door onto the deck. Buys-The-Months waits there. Ask him what is owed in this hold, and why. That is for him to say, not me."
     ],
     "facts": [
      "fact.mq01.pulled-aboard"

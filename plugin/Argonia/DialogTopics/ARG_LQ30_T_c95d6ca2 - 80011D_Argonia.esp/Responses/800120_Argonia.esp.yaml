@@ -34,7 +34,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: By our custom none of us may follow a walk-out, so I stay at this gate. An outsider may follow him.
+    Value: By our custom none of us may follow a walk-out, so I stay by this road. An outsider may follow him.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 3
@@ -42,7 +42,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: He went east from the gate through the shallows, and he is up among the roots there.
+    Value: He went out east, a long way past the houses, and he is out among the trees there. Vipers lie out there. Nothing that walks in the basin lives long.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 4
@@ -50,7 +50,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Vipers lie in the roots, and the mud holds anyone who stands still. Nothing that walks in the basin lives long.
+    Value: Gih-Xaleel, the levy warden, keeps watch near this road and will say the same. I want him alive.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 5
@@ -58,18 +58,10 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Gih-Xaleel, the levy warden beside me, will say the same. I want him alive.
-  ScriptNotes: ''
-  Edits: ''
-- ResponseNumber: 6
-  Unknown2: 0x000000
-  Unknown3: 0x000000
-  Text:
-    TargetLanguage: English
     Value: He wants the walk-out to count, and it counts only if he comes home on his own feet. If another brings him in, the Agaceph will say he did not finish.
   ScriptNotes: ''
   Edits: ''
-- ResponseNumber: 7
+- ResponseNumber: 6
   Unknown2: 0x000000
   Unknown3: 0x000000
   Text:

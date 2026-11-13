@@ -242,19 +242,19 @@ Stages:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: I came ashore at Helstrom's river landing. In the grove inside the gate, Ei-Tuja, a Nisswo, would preach my word in every village; Kaska-Meen, a tree-minder who hears few strangers, would carry it to the tree-minders alone. I'm to tell Ei-Tuja what I saw at Low-Reed Village, or ask him about Kaska-Meen.
+      Value: I came ashore at Helstrom's river landing. Among the trees by the stone towers west of the paved road, Ei-Tuja, a Nisswo, would preach my word in every village; Kaska-Meen, a tree-minder who hears few strangers, would carry it to the tree-minders alone. I'm to tell Ei-Tuja what I saw at Low-Reed Village, or ask him about Kaska-Meen.
 - Index: 45
   LogEntries:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: Ei-Tuja says Kaska-Meen hears few strangers, and he will not speak for me. I'm to talk her round myself, in the grove just inside Helstrom's gate, and tell her what I saw at Low-Reed Village.
+      Value: Ei-Tuja says Kaska-Meen hears few strangers, and he will not speak for me. I'm to talk her round myself, among the trees by the stone towers, and tell her what I saw at Low-Reed Village.
 - Index: 46
   LogEntries:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: What I saw at Low-Reed Village will not reach Kaska-Meen through me. Ei-Tuja, the Nisswo, hears anyone. I'm to tell him, in the grove just inside Helstrom's gate.
+      Value: What I saw at Low-Reed Village will not reach Kaska-Meen through me. Ei-Tuja, the Nisswo, hears anyone. I'm to tell him, among the trees by the stone towers.
 - Index: 91
   LogEntries:
   - Flags:
@@ -299,7 +299,7 @@ Objectives:
 - Index: 40
   DisplayText:
     TargetLanguage: English
-    Value: Tell Ei-Tuja, in the grove past Helstrom's gate, what you saw at Low-Reed Village.
+    Value: Tell Ei-Tuja, among the trees by the stone towers west of the paved road, what you saw at Low-Reed Village.
   Targets:
   - AliasID: 3
 - Index: 45
@@ -311,7 +311,7 @@ Objectives:
 - Index: 46
   DisplayText:
     TargetLanguage: English
-    Value: Tell Ei-Tuja, in the grove past Helstrom's gate, what you saw at Low-Reed Village.
+    Value: Tell Ei-Tuja, among the trees by the stone towers west of the paved road, what you saw at Low-Reed Village.
   Targets:
   - AliasID: 3
 Aliases:

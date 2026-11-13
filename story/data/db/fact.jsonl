@@ -558,13 +558,13 @@
 {"id":"fact.lots.lot-four","says":"A diver came up dead on lot four. She had no right to work that lot."}
 {"id":"fact.lots.numbered","says":"The Counted Lots are numbered pearl beds."}
 {"id":"fact.lots.tally","says":"The pay and the deaths are written in the tally book."}
-{"id":"fact.lq25.bait","claim":"Offal has been dumped off the end of the plank walk, night after night, from the crew's bait bucket.","ord":1,"from_ref":"t1","quest_id":"quest.local.lq25"}
+{"id":"fact.lq25.bait","claim":"Offal has been dumped in the shallows east of the scaffold, night after night, from the crew's bait bucket.","ord":1,"from_ref":"t1","quest_id":"quest.local.lq25"}
 {"id":"fact.lq25.bait-drew-it","claim":"The bait drew the crocodile in.","ord":3,"from_ref":"t2","quest_id":"quest.local.lq25"}
-{"id":"fact.lq25.beast-real","claim":"A crocodile lairs in the shallows off the end of the plank walk at Helstrom's landing and has taken a raft.","ord":0,"from_ref":"t2","quest_id":"quest.local.lq25"}
+{"id":"fact.lq25.beast-real","claim":"A crocodile lairs in the shallows east of the scaffold at Helstrom's landing and has taken a raft.","ord":0,"from_ref":"t2","quest_id":"quest.local.lq25"}
 {"id":"fact.lq25.crew-baited","claim":"The landing crew dumped the offal to fake a beast and scare the boat captain's trade off the river.","ord":2,"from_ref":"t1","quest_id":"quest.local.lq25"}
-{"id":"fact.lq30.cornered","claim":"A viper in the roots west of Sei-Wan, between him and the gate, keeps him up on the roots.","ord":3,"from_ref":"t2","quest_id":"quest.local.lq30"}
+{"id":"fact.lq30.cornered","claim":"A viper south-west of Sei-Wan, a short walk off, keeps him from coming home.","ord":3,"from_ref":"t2","quest_id":"quest.local.lq30"}
 {"id":"fact.lq30.custom","claim":"The custom of Sei-Wan's tribe, the Agaceph, forbids its own to follow a walk-out; it does not bind an outsider, and Helstrom's levy leaves a tribe's rite to that tribe.","ord":1,"from_ref":"t3","quest_id":"quest.local.lq30"}
-{"id":"fact.lq30.trail","claim":"Sei-Wan went east from the gate, through the basin's shallows.","ord":2,"from_ref":"t1","quest_id":"quest.local.lq30"}
+{"id":"fact.lq30.trail","claim":"Sei-Wan went east from the road, a long way past the houses, out into the basin.","ord":2,"from_ref":"t1","quest_id":"quest.local.lq30"}
 {"id":"fact.lq30.walked-out","claim":"Sei-Wan walked out into the basin alone to prove himself to his tribe, the Agaceph, and has not come back.","ord":0,"from_ref":"t1","quest_id":"quest.local.lq30"}
 {"id":"fact.lukiul.assimilated","says":"A lukiul is an assimilated Argonian who took on Imperial ways."}
 {"id":"fact.lukiul.deaf","says":"Argonians hatched outside Black Marsh cannot hear the Hist."}
@@ -587,17 +587,17 @@
 {"id":"fact.mq01.courier-unclaimed","claim":"Mee-Tuja, the courier killed at the camp, was the Reed's hand, walking with the gang as cover; the Reed claims neither his body nor his name.","ord":18,"from_ref":"t6","quest_id":"quest.main.mq01"}
 {"id":"fact.mq01.cutting-cut","claim":"The woman's people cut the camp's Hist cutting, a slip of the sacred tree the families' lives come from, from the eggs at its roots, and the eggs died.","ord":7,"from_ref":"t2","quest_id":"quest.main.mq01"}
 {"id":"fact.mq01.deniable","claim":"The Reed wants me because nobody can claim me: my name is on no roll, and if I am taken, the Reed never knew me; and the woman who spared me is the one the Reed is after.","ord":16,"from_ref":"t6","quest_id":"quest.main.mq01"}
-{"id":"fact.mq01.guest-pays","claim":"Salts-The-Catch, the fish-trader who sells the broker his gang's food, asked at the pier for anyone off the ship who saw the camp burn; her guest, Nesh-Deeka, pays for work.","ord":3,"from_ref":"t4","quest_id":"quest.main.mq01"}
+{"id":"fact.mq01.guest-pays","claim":"Salts-The-Catch, who keeps a house in Lilmoth, asked the broker for anyone off the ship who saw the camp burn; her guest, Nesh-Deeka, pays for work.","ord":3,"from_ref":"t4","quest_id":"quest.main.mq01"}
 {"id":"fact.mq01.jar","claim":"Dives-Without-A-Rope carried aboard a jar one of the cutters dropped by the fire, and will not let it go.","ord":11,"from_ref":"t3","quest_id":"quest.main.mq01"}
-{"id":"fact.mq01.no-name","claim":"No line of the broker's work roll is mine: I owe him nothing, so he cannot hire me out, and he wants me off his pier.","ord":2,"from_ref":"t5","quest_id":"quest.main.mq01"}
+{"id":"fact.mq01.no-name","claim":"No line of the broker's work roll is mine: I owe him nothing, so he cannot hire me out, and he wants me off his ship.","ord":2,"from_ref":"t5","quest_id":"quest.main.mq01"}
 {"id":"fact.mq01.owing-roll","claim":"Everyone in the ship's hold works off an Owing, months of work owed for a debt or a wrong, and the broker Buys-The-Months holds their months on his work roll.","ord":0,"from_ref":"t0","quest_id":"quest.main.mq01"}
 {"id":"fact.mq01.pay","claim":"The Reed puts fifty gold in a new hand's palm when they say yes, and Nesh-Deeka's door here stays open to them.","ord":17,"from_ref":"t6","quest_id":"quest.main.mq01"}
-{"id":"fact.mq01.port-hand","claim":"Ux-Xeek is the broker's port hand, who calls the gang out to the lighters.","ord":4,"from_ref":"t0","quest_id":"quest.main.mq01"}
+{"id":"fact.mq01.port-hand","claim":"Ux-Xeek is the broker's port hand.","ord":4,"from_ref":"t0","quest_id":"quest.main.mq01"}
 {"id":"fact.mq01.pulled-aboard","claim":"The gang carried me aboard, hurt, from the bank by the fire at their camp the night it burned, and brought me down the estuary in their longboat to the broker's ship.","ord":1,"from_ref":"t3","quest_id":"quest.main.mq01"}
 {"id":"fact.mq01.reed","claim":"Nesh-Deeka serves the Veiled Reed, the quiet service of the An-Xileel, the state that rules Black Marsh, and wants a hand nobody can claim.","ord":9,"from_ref":"t4","quest_id":"quest.main.mq01"}
 {"id":"fact.mq01.reed-answers","claim":"The Veiled Reed answers to the An-Xileel's offices at Stormhold, the state's city in the north-west, not to any tree, village or court, and none of them sees what it does.","ord":15,"from_ref":"t6","quest_id":"quest.main.mq01"}
 {"id":"fact.mq01.reed-work","claim":"The Veiled Reed watches for cults, smugglers and killers who would harm the state or the trees; it works through houses like Salts-The-Catch's and wears no mark.","ord":14,"from_ref":"t6","quest_id":"quest.main.mq01"}
-{"id":"fact.mq01.salts-house","claim":"Salts-The-Catch sells fish, keeps the house below Lilmoth Dock and asks nothing of who comes to it.","ord":13,"from_ref":"t4","quest_id":"quest.main.mq01"}
+{"id":"fact.mq01.salts-house","claim":"Salts-The-Catch keeps the house below Lilmoth Dock and asks nothing of who comes to it.","ord":13,"from_ref":"t4","quest_id":"quest.main.mq01"}
 {"id":"fact.mq01.sap-cell","claim":"The Reed has word of a cell that cuts a Hist's roots and draws its sap into jars; the camp is the first of its work the Reed has seen.","ord":10,"from_ref":"t2","quest_id":"quest.main.mq01"}
 {"id":"fact.mq01.spared","claim":"The gang say the woman with the knotted cord looked at me lying by the fire and let me live.","ord":8,"from_ref":"t2","quest_id":"quest.main.mq01"}
 {"id":"fact.mq01.two-things","claim":"Nesh-Deeka keeps two things from me and says so, and names neither.","ord":19,"from_ref":"t6","quest_id":"quest.main.mq01"}
@@ -614,15 +614,15 @@
 {"id":"fact.mq03.sap-fresh","claim":"The sap is fresh, drawn from cut roots, and the stopper and the jar's neck carry the rings of other jars filled beside it.","ord":4,"from_ref":"t1","quest_id":"quest.main.mq03"}
 {"id":"fact.mq03.spare-picks","claim":"The lockpicks on the hold's floor by the lockbox are Ux-Xeek's spares for the lighters' padlocks.","ord":10,"from_ref":"t2","quest_id":"quest.main.mq03"}
 {"id":"fact.mq03.taster","claim":"Sap shows a taster visions, and shows a stranger something different; Nesh-Deeka wants the player to taste it while she writes.","ord":5,"from_ref":"t3","quest_id":"quest.main.mq03"}
-{"id":"fact.mq04.camp-jars","claim":"Two men of the cell keep the jars of the tree's sap on a dry rise in the north reeds, past the leech water.","ord":6,"from_ref":"t6","quest_id":"quest.main.mq04"}
-{"id":"fact.mq04.cell-cord","claim":"The two men at the camp wear the knotted cord at the wrist, as the woman who burned the gang's camp did.","ord":7,"from_ref":"t1","quest_id":"quest.main.mq04"}
+{"id":"fact.mq04.camp-jars","claim":"Two men of the cell keep the jars of the tree's sap at the roots of a giant tree in the north reeds, past the leech water.","ord":6,"from_ref":"t6","quest_id":"quest.main.mq04"}
+{"id":"fact.mq04.cell-cord","claim":"The two men with the jars wear the knotted cord at the wrist, as the woman who burned the gang's camp did.","ord":7,"from_ref":"t1","quest_id":"quest.main.mq04"}
 {"id":"fact.mq04.cell-known","claim":"The cell that burned the gang's camp cut the cutting's roots and drew its sap into jars it brought.","ord":0,"from_ref":"t1","quest_id":"quest.main.mq04"}
 {"id":"fact.mq04.minder-hid","claim":"Pays-Late found the cut and hid it, because the gum was his and his knife gone, and it would look like his work.","ord":4,"from_ref":"t4","quest_id":"quest.main.mq04"}
-{"id":"fact.mq04.root-cut","claim":"A root of the Hist was cut under the stilts and its sap drawn off, and the cut was sealed with black gum from the village's sap-workshop.","ord":3,"from_ref":"t2","quest_id":"quest.main.mq04"}
+{"id":"fact.mq04.root-cut","claim":"A root of the Hist was cut under the stilts and its sap drawn off, and the cut was sealed with black gum made in the village.","ord":3,"from_ref":"t2","quest_id":"quest.main.mq04"}
 {"id":"fact.mq04.strangers-seen","claim":"A boat came in from the north reeds the night the tree shut and went back out.","ord":5,"from_ref":"t2","quest_id":"quest.main.mq04"}
 {"id":"fact.mq04.tree-closed","claim":"The Hist's light is out and its leaves are shut; the cut severed the eggs in its pool, and they died.","ord":1,"from_ref":"t3","quest_id":"quest.main.mq04"}
 {"id":"fact.mq04.village-blames","claim":"The village blames the leeches at the roots, and Pays-Late, who let them in.","ord":2,"from_ref":"t5","quest_id":"quest.main.mq04"}
-{"id":"fact.mq05.basin-lethal","claim":"What walks in the basin round Helstrom dies, and the levy at the gate says so.","ord":1,"from_ref":"t5","quest_id":"quest.main.mq05"}
+{"id":"fact.mq05.basin-lethal","claim":"What walks in the basin round Helstrom dies, and the levy warden by the paved road says so.","ord":1,"from_ref":"t5","quest_id":"quest.main.mq05"}
 {"id":"fact.mq05.eituja-view","claim":"Ei-Tuja holds that a Hist's silence is its own act, to be read and not clamped.","ord":5,"from_ref":"t4","quest_id":"quest.main.mq05"}
 {"id":"fact.mq05.kaska-view","claim":"Kaska-Meen holds that a Hist that falls silent must be watched by tree-minders alone.","ord":4,"from_ref":"t4","quest_id":"quest.main.mq05"}
 {"id":"fact.mq05.mnemic-egg","claim":"A Hist that dies leaves a Mnemic Egg, a seed of its sap holding all its memories; the Dominion once used one to stop a generation of eggs hatching.","ord":0,"from_ref":"t6","quest_id":"quest.main.mq05"}
@@ -986,22 +986,22 @@
 {"id":"fact.tender.moored","says":"The tenders are moored over the lots."}
 {"id":"fact.tender.never-enters","says":"The tender never enters the water."}
 {"id":"fact.tender.shared","says":"The diver families share the tenders."}
-{"id":"fact.tg01.chapter-way","claim":"The Chapter meets under Lilmoth, down a trapdoor in the ground north of Pusbottom at the edge of the deep water.","ord":6,"from_ref":"t4","quest_id":"quest.tg.tg01"}
+{"id":"fact.tg01.chapter-way","claim":"The Chapter meets under Lilmoth, down a trapdoor on a ruin standing in the deep water east of Lilmoth.","ord":6,"from_ref":"t4","quest_id":"quest.tg.tg01"}
 {"id":"fact.tg01.desk-door","claim":"Tilts-The-Jug keeps the Chapter's desk inside Soulrest's house.","ord":0,"from_ref":"t0","quest_id":"quest.tg.tg01"}
 {"id":"fact.tg01.he-runs","claim":"Caught, Keeps-What-Floats runs rather than fights.","ord":4,"from_ref":"t1","quest_id":"quest.tg.tg01"}
 {"id":"fact.tg01.necklace","claim":"Keeps-What-Floats took a necklace of polished blue jaspers from a sleeping Lookout of the Chapter.","ord":2,"from_ref":"t1","quest_id":"quest.tg.tg01"}
 {"id":"fact.tg01.price","claim":"Keeps-What-Floats has no buyer for the necklace and would let it go to a good talker, or for sixty gold.","ord":5,"from_ref":"t1","quest_id":"quest.tg.tg01"}
-{"id":"fact.tg01.strongbox","claim":"Keeps-What-Floats keeps his takings in a locked strongbox under the eaves north-west of the house.","ord":3,"from_ref":"t1","quest_id":"quest.tg.tg01"}
+{"id":"fact.tg01.strongbox","claim":"Keeps-What-Floats keeps his takings in a locked strongbox by the houses at the water's edge.","ord":3,"from_ref":"t1","quest_id":"quest.tg.tg01"}
 {"id":"fact.tg01.test","claim":"The Chapter wants the keepsake back from the one who took it, with no harm done to him, to see how I work.","ord":1,"from_ref":"t2","quest_id":"quest.tg.tg01"}
 {"id":"fact.tg02.beads-kothringi","claim":"The beads are Kothringi glass, the kind the old cairns hold, no Argonian family's work.","ord":8,"from_ref":"t4","quest_id":"quest.tg.tg02"}
-{"id":"fact.tg02.box","claim":"A locked lockbox of pledged things lies on the floor of the deep water north of Pusbottom: a bone figurine, a Neesak charm and a strand of Kothringi Glass Beads.","ord":1,"from_ref":"t1","quest_id":"quest.tg.tg02"}
+{"id":"fact.tg02.box","claim":"A locked lockbox of pledged things lies on the floor of the deep water east of Lilmoth: a bee statue, a Neesak charm and a strand of Kothringi Glass Beads.","ord":1,"from_ref":"t1","quest_id":"quest.tg.tg02"}
 {"id":"fact.tg02.charm-remounted","claim":"The charm sits in a new silver mount the merchant put on it, as no one does to a thing only pledged.","ord":7,"from_ref":"t4","quest_id":"quest.tg.tg02"}
 {"id":"fact.tg02.claim-beads","claim":"Dar-Zeel says the beads are old family work.","ord":5,"from_ref":"t3","quest_id":"quest.tg.tg02"}
 {"id":"fact.tg02.claim-charm","claim":"Okan-Tei says the charm was only pledged and never sold.","ord":4,"from_ref":"t3","quest_id":"quest.tg.tg02"}
-{"id":"fact.tg02.claim-figurine","claim":"Neeta-Haj says the bone figurine was carved for her clutch.","ord":3,"from_ref":"t3","quest_id":"quest.tg.tg02"}
-{"id":"fact.tg02.clients","claim":"Three of the merchant's clients wait on the south bank of the deep water, each claiming one thing in the box.","ord":2,"from_ref":"t3","quest_id":"quest.tg.tg02"}
-{"id":"fact.tg02.figurine-old","claim":"The figurine is worn smooth by many years of handling, older than any clutch of Neeta-Haj's.","ord":6,"from_ref":"t4","quest_id":"quest.tg.tg02"}
-{"id":"fact.tg02.job","claim":"Bent-Spine wants what is in a drowned merchant's lockbox on the floor of the deep water north of Pusbottom, and leaves to me what becomes of it.","ord":0,"from_ref":"t2","quest_id":"quest.tg.tg02"}
+{"id":"fact.tg02.claim-figurine","claim":"Neeta-Haj says the bee statue was made for her clutch.","ord":3,"from_ref":"t3","quest_id":"quest.tg.tg02"}
+{"id":"fact.tg02.clients","claim":"Three of the merchant's clients are on the south bank of the deep water, each claiming one thing in the box.","ord":2,"from_ref":"t3","quest_id":"quest.tg.tg02"}
+{"id":"fact.tg02.figurine-old","claim":"The statue is worn smooth by many years of handling, older than any clutch of Neeta-Haj's.","ord":6,"from_ref":"t4","quest_id":"quest.tg.tg02"}
+{"id":"fact.tg02.job","claim":"Bent-Spine wants what is in a drowned merchant's lockbox on the floor of the deep water east of Lilmoth, and leaves to me what becomes of it.","ord":0,"from_ref":"t2","quest_id":"quest.tg.tg02"}
 {"id":"fact.the-broke-column.contents-loot-l1-1","claim":"A strongroom holds gear: Legion issue kept in fighting order.","source_field":"contents.loot.l1","kind":"cache","carrier_built_uid":"socket.the-broke-column.container-barrel","carrier_built_type":"container","place_id":"place.imperial-fringe.the-broke-column","ord":27}
 {"id":"fact.the-broke-column.contents-loot-l2-1","claim":"A ledger or document holds a lore fragment: the pay book, with the last entry in it.","source_field":"contents.loot.l2","kind":"cache","carrier_built_uid":"socket.the-broke-column.container-sack","carrier_built_type":"container","place_id":"place.imperial-fringe.the-broke-column","ord":28}
 {"id":"fact.the-broke-column.playerPurpose-hook-1","claim":"The camp holds a track junction off the Gideon road.","source_field":"playerPurpose.hook","kind":"feature","carrier_built_uid":"socket.the-broke-column.sign-track-way","carrier_built_type":"sign","place_id":"place.imperial-fringe.the-broke-column","ord":24}

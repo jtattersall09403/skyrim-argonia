@@ -12,11 +12,12 @@ VirtualMachineAdapter:
       Data:
       - name=template|800020:Argonia.esp|087834:Skyrim.esm
       - name=item|800020:Argonia.esp|item.glass-bead-strand
+      - name=template|800021:Argonia.esp|019958:Skyrim.esm
       - name=item|800021:Argonia.esp|item.tg02.bone-figurine
-      - name=thing|800021:Argonia.esp|item.tg02.bone-figurine
       - name=template|800022:Argonia.esp|087833:Skyrim.esm
       - name=item|800022:Argonia.esp|item.tg02.neesak-charm
       - name=item|00000A:Skyrim.esm|item.lockpick
+      - name=thing|800021:Argonia.esp|item.tg02.bone-figurine
       - name=thing|800022:Argonia.esp|item.tg02.neesak-charm
       - name=thing|800020:Argonia.esp|item.glass-bead-strand
       - name=number|80002A:Argonia.esp|flag.tg02.fence-dead
@@ -555,37 +556,37 @@ Stages:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: Bent-Spine, the Night-Reed Chapter's fence, has work for me now that I am a Lookout. I'm to ask him about it, in the Night-Reed Chapter under Lilmoth, down the trapdoor north of Pusbottom.
+      Value: Bent-Spine, the Night-Reed Chapter's fence, has work for me now that I am a Lookout. I'm to ask him about it, in the Night-Reed Chapter under Lilmoth, down the trapdoor east of Lilmoth.
 - Index: 20
   LogEntries:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: Bent-Spine told me a merchant drowned in the deep water south of the trapdoor north of Pusbottom, and his lockbox of pledges lies on the floor. He wants it emptied before its three clients on the south bank find a diver, and gave me three lockpicks. I'm to dive to the lockbox, pick its lock and take what is inside.
+      Value: Bent-Spine told me a merchant drowned in the deep water south-east of the trapdoor east of Lilmoth, and his lockbox of pledges lies on the floor. He wants it emptied before its three clients find a diver, and gave me three lockpicks. I'm to dive to the lockbox, pick its lock and take what is inside.
 - Index: 21
   LogEntries:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: Bent-Spine gave me three more lockpicks and said there would be no others. The lockbox lies on the floor of the deep water just south of the trapdoor north of Pusbottom, below the south bank where the three clients wait. I'm to dive to it, pick its lock and take what is inside.
+      Value: Bent-Spine gave me three more lockpicks and said there would be no others. The lockbox lies on the floor of the deep water a short walk south-east of the trapdoor east of Lilmoth, below the south bank. I'm to dive to it, pick its lock and take what is inside.
 - Index: 30
   LogEntries:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: In the drowned merchant's lockbox were a worn bone figurine, a Neesak charm in new silver and Kothringi glass beads. Neeta-Haj, Okan-Tei and Dar-Zeel on the south bank each claim one, and each claim is a lie. I'm to give all three to one client, leaving the other two nothing, or sell each back the thing they lied about.
+      Value: In the drowned merchant's lockbox were a small bee statue, a Neesak charm in new silver and Kothringi glass beads. Neeta-Haj, Okan-Tei and Dar-Zeel each claim one, and each claim is a lie. I'm to give all three to one client, leaving the other two nothing, or sell each back the thing they lied about.
 - Index: 40
   LogEntries:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: Neeta-Haj said the bone figurine was carved for her clutch, but it is worn smooth, far older than any clutch of hers. I did not press her on it, and I sold it back to her for twenty gold, half its fair price. I'm to sell Okan-Tei the Newly Mounted Neesak Charm he claims, on the south bank.
+      Value: Neeta-Haj said the bee statue was made for her clutch, but it is worn smooth, far older than any clutch of hers. I did not press her on it, and I sold it back to her for twenty gold, half its fair price. I'm to sell Okan-Tei the Newly Mounted Neesak Charm he claims, on the south bank.
 - Index: 41
   LogEntries:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: Neeta-Haj said the bone figurine was carved for her clutch, but it is worn smooth, far older than any clutch of hers. When I said so, she bought it for forty gold, its fair price. I'm to sell Okan-Tei the Newly Mounted Neesak Charm he claims, on the south bank.
+      Value: Neeta-Haj said the bee statue was made for her clutch, but it is worn smooth, far older than any clutch of hers. When I said so, she bought it for forty gold, its fair price. I'm to sell Okan-Tei the Newly Mounted Neesak Charm he claims, on the south bank.
 - Index: 42
   LogEntries:
   - Flags: []
@@ -604,21 +605,21 @@ Stages:
     - CompleteQuest
     Entry:
       TargetLanguage: English
-      Value: I brought up the drowned merchant's figurine, charm and beads from the deep water north of Pusbottom and gave all three to Neeta-Haj on the bank, who paid me a hundred and twenty gold. She gained all three, and Okan-Tei and Dar-Zeel lost theirs and will not forget who took them. The Chapter has the box off its hands.
+      Value: I brought up the drowned merchant's statue, charm and beads from the deep water east of Lilmoth and gave all three to Neeta-Haj on the bank, who paid me a hundred and twenty gold. She gained all three, and Okan-Tei and Dar-Zeel lost theirs and will not forget who took them. The Chapter has the box off its hands.
 - Index: 91
   LogEntries:
   - Flags:
     - CompleteQuest
     Entry:
       TargetLanguage: English
-      Value: I brought up the drowned merchant's figurine, charm and beads from the deep water north of Pusbottom and gave all three to Okan-Tei on the bank, who paid me a hundred and twenty gold. He gained all three, and Neeta-Haj and Dar-Zeel lost theirs and will not forget who took them. The Chapter has the box off its hands.
+      Value: I brought up the drowned merchant's statue, charm and beads from the deep water east of Lilmoth and gave all three to Okan-Tei on the bank, who paid me a hundred and twenty gold. He gained all three, and Neeta-Haj and Dar-Zeel lost theirs and will not forget who took them. The Chapter has the box off its hands.
 - Index: 92
   LogEntries:
   - Flags:
     - CompleteQuest
     Entry:
       TargetLanguage: English
-      Value: I brought up the drowned merchant's figurine, charm and beads from the deep water north of Pusbottom and gave all three to Dar-Zeel on the bank, who paid me a hundred and twenty gold. He gained all three, and Neeta-Haj and Okan-Tei lost theirs and will not forget who took them. The Chapter has the box off its hands.
+      Value: I brought up the drowned merchant's statue, charm and beads from the deep water east of Lilmoth and gave all three to Dar-Zeel on the bank, who paid me a hundred and twenty gold. He gained all three, and Neeta-Haj and Okan-Tei lost theirs and will not forget who took them. The Chapter has the box off its hands.
 - Index: 95
   LogEntries:
   - Flags:
@@ -639,7 +640,7 @@ Stages:
     - FailQuest
     Entry:
       TargetLanguage: English
-      Value: Bent-Spine is dead. He was the Night-Reed Chapter's fence, and the job he gave me ended with him. I will not be paid for the lockbox in the deep water north of Pusbottom.
+      Value: Bent-Spine is dead. He was the Night-Reed Chapter's fence, and the job he gave me ended with him. I will not be paid for the lockbox in the deep water east of Lilmoth.
 - Index: 98
   LogEntries:
   - Flags:
@@ -657,7 +658,7 @@ Objectives:
 - Index: 20
   DisplayText:
     TargetLanguage: English
-    Value: Dive to the lockbox in the deep water north of Pusbottom, pick its lock and take what is inside.
+    Value: Dive to the lockbox in the deep water east of Lilmoth, pick its lock and take what is inside.
   Targets:
   - AliasID: 7
   - AliasID: 1
@@ -667,7 +668,7 @@ Objectives:
 - Index: 21
   DisplayText:
     TargetLanguage: English
-    Value: Dive to the lockbox in the deep water north of Pusbottom, pick its lock and take what is inside.
+    Value: Dive to the lockbox in the deep water east of Lilmoth, pick its lock and take what is inside.
   Targets:
   - AliasID: 7
   - AliasID: 1
@@ -676,7 +677,7 @@ Objectives:
 - Index: 30
   DisplayText:
     TargetLanguage: English
-    Value: Give all three pledges to one client on the bank, or sell Neeta-Haj the figurine she claims (Speech 30 for its full price).
+    Value: Give all three pledges to one client on the bank, or sell Neeta-Haj the statue she claims (Speech 30 for its full price).
   Targets:
   - AliasID: 6
   - AliasID: 5

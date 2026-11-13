@@ -62,7 +62,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Neeta-Haj lied about her figurine, and Okan-Tei about his charm, and now I have owned my lie as they did.
+    Value: Neeta-Haj lied about her statue, and Okan-Tei about his charm, and now I have owned my lie as they did.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 5
@@ -70,7 +70,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Each of us has our own again, and none of us will speak well of you on this bank.
+    Value: Each of us has our own again, and none of us will speak well of you.
   ScriptNotes: ''
   Edits: ''
 Conditions:

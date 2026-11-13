@@ -1,0 +1,8 @@
+FormKey: 800210:Argonia.esp
+EditorID: ARG_MQ05_T_27b6f161
+Name:
+  TargetLanguage: English
+  Value: What is your place here?
+Branch: 800211:Argonia.esp
+Quest: 8000C5:Argonia.esp
+SubtypeName: CUST

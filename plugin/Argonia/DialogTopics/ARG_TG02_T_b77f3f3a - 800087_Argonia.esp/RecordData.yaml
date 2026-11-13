@@ -1,8 +1,0 @@
-FormKey: 800087:Argonia.esp
-EditorID: ARG_TG02_T_b77f3f3a
-Name:
-  TargetLanguage: English
-  Value: (Persuade) You say this figurine was carved for your clutch, but it is older than any clutch of yours. Buy it at its fair price, forty gold.
-Branch: 800088:Argonia.esp
-Quest: 800003:Argonia.esp
-SubtypeName: CUST

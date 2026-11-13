@@ -210,9 +210,9 @@
 {"id":"topic.mq04-the-village","topic_class":"quest","label":"May I see the Hist?","keys_quest":"quest.main.mq04"}
 {"id":"topic.mq05-tell-minder","topic_class":"quest","label":"I saw a Hist cut at the root. It is not the same as a silent one.","keys_quest":"quest.main.mq05"}
 {"id":"topic.mq05-tell-nisswo","topic_class":"quest","label":"I saw a Hist cut at the root. It is not the same as a silent one.","keys_quest":"quest.main.mq05"}
-{"id":"topic.mq05-the-basin","topic_class":"quest","label":"What is the warning at this gate?","keys_quest":"quest.main.mq05"}
+{"id":"topic.mq05-the-basin","topic_class":"quest","label":"What is the warning here?","keys_quest":"quest.main.mq05"}
 {"id":"topic.mq05-the-quarrel","topic_class":"quest","label":"What do you and Kaska-Meen quarrel over?","keys_quest":"quest.main.mq05"}
-{"id":"topic.mq05-the-watch","topic_class":"quest","label":"What is your watch here?","keys_quest":"quest.main.mq05"}
+{"id":"topic.mq05-the-watch","topic_class":"quest","label":"What is your place here?","keys_quest":"quest.main.mq05"}
 {"id":"topic.mq05-the-word","topic_class":"quest","label":"I saw the cut root at Low-Reed Village.","keys_quest":"quest.main.mq05"}
 {"id":"topic.naga-highway-camp-active-north","topic_class":"local","label":"the North Cut Camp","keys_place":"place.naga-kur-deeps.naga-highway-camp-active-north","keys_aspect":"place"}
 {"id":"topic.naga-highway-camp-active-north-danger","topic_class":"local","label":"danger near the North Cut Camp","keys_place":"place.naga-kur-deeps.naga-highway-camp-active-north","keys_aspect":"danger"}

@@ -227,7 +227,7 @@ VirtualMachineAdapter:
           Object: 8000C1:Argonia.esp
 Name:
   TargetLanguage: English
-  Value: The Gates of Helstrom
+  Value: The Walk-Out
 Flags:
 - StartGameEnabled
 - RunOnce
@@ -243,39 +243,39 @@ Stages:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: Haj-Wan, waiting beside Gih-Xaleel, the levy warden at Helstrom's gate, told me her kin Sei-Wan walked out into the basin alone to prove himself to the Agaceph and has not come back. Their custom forbids his own to follow, but not an outsider. I'm to find him up among the roots east of the gate.
+      Value: Haj-Wan, who waits near Gih-Xaleel, the levy warden, by the paved road at Helstrom, told me her kin Sei-Wan walked out into the basin alone to prove himself to the Agaceph and has not come back. Their custom forbids his own to follow, but not an outsider. I'm to find him out among the trees, a long way east past the houses.
 - Index: 35
   LogEntries:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: I found Sei-Wan up on the roots in the shallows east of Helstrom's gate. A viper lies in the roots west of him, between him and the gate, and he will not come down while it lives. I'm to kill the viper.
+      Value: I found Sei-Wan on dry ground out among the trees, a long way east of Helstrom's road. A viper lies south-west of him, a short walk off, and he will not come home while it lives. I'm to kill the viper.
 - Index: 40
   LogEntries:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: "The viper in the roots east of Helstrom's gate is dead, and Sei-Wan can come down. Haj-Wan wants him home alive; he wants the walk-out to be his own. I'm to speak to him and choose: talk him home, which costs him the walk-out, or tell him to walk home alone and say nothing at the gate."
+      Value: "The viper among the trees is dead, and Sei-Wan can walk home. Haj-Wan wants him home alive; he wants the walk-out to be his own. I'm to speak to him and choose: talk him home, which costs him the walk-out, or tell him to walk home alone and say nothing at the road."
 - Index: 50
   LogEntries:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: Sei-Wan gave in and said he will come home, though not at my heels, and he will not count the walk-out as his own. Haj-Wan has waited for him since he left. I'm to tell her at Helstrom's gate, back west through the shallows, beside Gih-Xaleel, the levy warden.
+      Value: Sei-Wan gave in and said he will come home, though not at my heels, and he will not count the walk-out as his own. Haj-Wan has waited for him since he left. I'm to tell her by the paved road, back west past the houses, near Gih-Xaleel, the levy warden.
 - Index: 91
   LogEntries:
   - Flags:
     - CompleteQuest
     Entry:
       TargetLanguage: English
-      Value: I told Sei-Wan to walk home on his own feet and left him among the roots in the shallows east of Helstrom's gate, and I said nothing of it to Haj-Wan. His walk-out stays his own. Haj-Wan keeps waiting at the gate and knows nothing.
+      Value: I told Sei-Wan to walk home on his own feet and left him on dry ground out in the basin, and I said nothing of it to Haj-Wan. His walk-out stays his own. Haj-Wan keeps waiting by the road and knows nothing.
 - Index: 92
   LogEntries:
   - Flags:
     - CompleteQuest
     Entry:
       TargetLanguage: English
-      Value: I told Haj-Wan at Helstrom's gate that Sei-Wan is coming home, and she paid me 60 gold. She is glad he lives, and sorry that he lost the walk-out he went into the basin to win. I talked him out of it, and he will not thank me.
+      Value: I told Haj-Wan by the road that Sei-Wan is coming home, and she paid me 60 gold. She is glad he lives, and sorry that he lost the walk-out he went into the basin to win. I talked him out of it, and he will not thank me.
 - Index: 93
   LogEntries:
   - Flags:
@@ -289,30 +289,30 @@ Stages:
     - FailQuest
     Entry:
       TargetLanguage: English
-      Value: Haj-Wan, who waited at Helstrom's gate for her kin Sei-Wan, is dead. Whatever she wanted of me ends with her.
+      Value: Haj-Wan, who waited by Helstrom's road for her kin Sei-Wan, is dead. Whatever she wanted of me ends with her.
 Objectives:
 - Index: 30
   DisplayText:
     TargetLanguage: English
-    Value: Find Sei-Wan in the shallows east of Helstrom's gate.
+    Value: Find Sei-Wan out in the basin, a long way east of Haj-Wan.
   Targets:
   - AliasID: 3
 - Index: 35
   DisplayText:
     TargetLanguage: English
-    Value: Kill the viper in the roots west of Sei-Wan.
+    Value: Kill the viper south-west of Sei-Wan.
   Targets:
   - {}
 - Index: 40
   DisplayText:
     TargetLanguage: English
-    Value: Speak to Sei-Wan among the roots east of Helstrom's gate.
+    Value: Speak to Sei-Wan on the dry ground out in the basin.
   Targets:
   - AliasID: 3
 - Index: 50
   DisplayText:
     TargetLanguage: English
-    Value: Tell Haj-Wan at Helstrom's gate that Sei-Wan is coming home.
+    Value: Tell Haj-Wan by the paved road at Helstrom that Sei-Wan is coming home.
   Targets:
   - AliasID: 2
 Aliases:

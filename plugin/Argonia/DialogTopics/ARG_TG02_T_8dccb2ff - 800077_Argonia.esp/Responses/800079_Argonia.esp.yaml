@@ -37,7 +37,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: A merchant drowned in the deep water just south of the trapdoor you came down. His lockbox of pledges lies locked on the floor, where he went down.
+    Value: A merchant drowned in the deep water a short walk south-east of the trapdoor you came down.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -45,7 +45,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: A pledge is a thing a client left with him against a loan.
+    Value: His lockbox of pledges lies locked on the floor, where he went down. A pledge is a thing a client left with him against a loan.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 3
@@ -53,7 +53,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Three of his clients wait on the south bank of the deep water for a diver, and each says one thing in the box is theirs.
+    Value: Three of his clients are on the south bank of the deep water, and each says one thing in the box is theirs.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 4
@@ -85,7 +85,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: The lock is a Novice lock. Here are three lockpicks. Go up through the trapdoor, and the deep water lies just south of it.
+    Value: The lock is a Novice lock. Here are three lockpicks. Go up through the trapdoor, and the deep water lies south-east of it.
   ScriptNotes: ''
   Edits: ''
 Conditions:

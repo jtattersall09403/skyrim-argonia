@@ -21,13 +21,13 @@
 {"quest_id":"quest.local.lh38","source":"people","value":"world/sources/registries/npcs.json"}
 {"quest_id":"quest.local.lh38","source":"placeFacts","value":"world/sources/placement/facts/place.hist-heartland.greenspring.json"}
 {"quest_id":"quest.local.lh38","source":"stance","value":"world/sources/dialogue/stance/greenspring.json"}
-{"quest_id":"quest.local.lq25","source":"bmv","value":"bmv_placement 08D5EE, 08D5EF (the crew), 08D5EC (the levy soldier Azum-Kai at the stone tower), 08D5F1 (Sells-Dear); bmv_npc 0BCB00 (the crocodile's base); bmv_cell 0D77AF (the landing), 0D78BF (Sells-Dear's); bmv_settlement bmv.dock5; talker 08D5EE, 08D5EF, 08D5F1 (names, spots, temperaments)"}
+{"quest_id":"quest.local.lq25","source":"bmv","value":"bmv_placement 08D5EE, 08D5EF (the crew), 08D5EC (the levy soldier Azum-Kai), 08D5F1 (Sells-Dear); bmv_npc 0BCB00 (the crocodile's base); bmv_cell 0D77AF (the landing), 0D78BF (Sells-Dear's); bmv_settlement bmv.dock5; talker 08D5EE, 08D5EF, 08D5F1 (names, spots, temperaments)"}
 {"quest_id":"quest.local.lq25","source":"ledger","value":"we.lq25.beast, we.lq25.crew"}
 {"quest_id":"quest.local.lq25","source":"lore"}
-{"quest_id":"quest.local.lq30","source":"bmv","value":"bmv_placement 08D5E9 (the gate soldier, the levy warden Gih-Xaleel); bmv_npc 17BC83 (the viper's base), 02A1EE and 00FF4D (the villager bases Haj-Wan and Sei-Wan are templated on); bmv_cell 0D787F:Black Marsh.esm (the gate), 0D7883:Black Marsh.esm (the roots in the shallows); bmv_settlement_cell bmv.helstrom (both cells); talker 08D5E9"}
+{"quest_id":"quest.local.lq30","source":"bmv","value":"bmv_placement 08D5E9 (the road soldier, the levy warden Gih-Xaleel); bmv_npc 17BC83 (the viper's base), 02A1EE and 00FF4D (the villager bases Haj-Wan and Sei-Wan are templated on); bmv_cell 0D787F:Black Marsh.esm (the road), 0D7883:Black Marsh.esm (the dry ground in the basin); bmv_settlement_cell bmv.helstrom (both cells); talker 08D5E9"}
 {"quest_id":"quest.local.lq30","source":"ledger","value":"we.lq30.beast, we.lq30.youth"}
 {"quest_id":"quest.local.lq30","source":"lore"}
-{"quest_id":"quest.main.mq01","source":"bmv","value":"bmv_cell 0F9178:Black Marsh.esm (01ShipDUPLICATE001, the hold; door 0F9399 to deck door 005AB4); 00591F:Black Marsh.esm (Dock1, the pier, navmesh 079823; the pier beside the ship at 5350,-7800); 0FE7F7:Black Marsh.esm (01CabinIntsining1, \"House\"; door 0FE95A at 31553,-7639, inner side 0FE832); map marker 082193:Black Marsh North.esp (Lilmoth Dock, 30909,-2852); the old lighthouse ImpExtLighthouse01 shell (7717,-4443); the sailing ship 0ShipImperial (31851,-2027) with its door 0AA664"}
+{"quest_id":"quest.main.mq01","source":"bmv","value":"bmv_cell 0F9178:Black Marsh.esm (01ShipDUPLICATE001, the hold; door 0F9399 to deck door 005AB4); 00591F:Black Marsh.esm (Dock1, the ship's deck, navmesh 079823; the deck at 5350,-7800); 0FE7F7:Black Marsh.esm (01CabinIntsining1, \"House\"; door 0FE95A at 31553,-7639, inner side 0FE832); map marker 082193:Black Marsh North.esp (Lilmoth Dock, 30909,-2852); the old lighthouse ImpExtLighthouse01 shell (7717,-4443); the sailing ship 0ShipImperial (31851,-2027) with its door 0AA664"}
 {"quest_id":"quest.main.mq01","source":"ledger","value":"we.mq01.start, we.mq01.hold-location, we.mq01.no-valenwood, we.mq01.no-welcome, we.mq01.gang, we.mq01.broker, we.mq03.house, we.mq03.door, we.clean.lilmoth, we.clean.hereguardplantation"}
 {"quest_id":"quest.main.mq01","source":"lore"}
 {"quest_id":"quest.main.mq01","source":"roster","value":"story/design/quests/36-cast-roster.md §55 (Nesh-Deeka; Cuts-the-Old-Knot)"}
@@ -35,7 +35,7 @@
 {"quest_id":"quest.main.mq03","source":"ledger","value":"we.mq03.sack, we.mq01.gang, we.mq03.house, we.mq03.door, we.mq01.hold-location, we.clean.lilmoth"}
 {"quest_id":"quest.main.mq03","source":"lore"}
 {"quest_id":"quest.main.mq03","source":"roster","value":"story/design/quests/36-cast-roster.md §55 (Nesh-Deeka; Cuts-the-Old-Knot)"}
-{"quest_id":"quest.main.mq04","source":"bmv","value":"bmv_settlement bmv.village; bmv_cell 03978F:Black Marsh.esm (the village), 039793:Black Marsh.esm (the dry rise); bmv_placement 084A84, 084A87, 084A7B, 084A8E (BM&V's villagers the people stand near)"}
+{"quest_id":"quest.main.mq04","source":"bmv","value":"bmv_settlement bmv.village; bmv_cell 03978F:Black Marsh.esm (the village), 039793:Black Marsh.esm (the giant tree's roots); bmv_placement 084A84, 084A87, 084A7B, 084A8E (BM&V's villagers the people stand near)"}
 {"quest_id":"quest.main.mq04","source":"ledger","value":"we.mq04.name, we.mq04.people, we.mq04.cell, we.mq04.items, we.clean.village"}
 {"quest_id":"quest.main.mq04","source":"lore"}
 {"quest_id":"quest.main.mq04","source":"roster","value":"story/design/quests/36-cast-roster.md §55 (Nesh-Deeka)"}
@@ -48,11 +48,11 @@
 {"quest_id":"quest.mr.mr01","source":"placeFacts","value":"world/sources/placement/facts/place.hist-heartland.greenspring.json"}
 {"quest_id":"quest.mr.mr01","source":"roster","value":"docs/design/quests/36-cast-roster.md §56 (The Many-Root Conclave)"}
 {"quest_id":"quest.mr.mr01","source":"stance","value":"world/sources/dialogue/stance/greenspring.json"}
-{"quest_id":"quest.tg.tg01","source":"bmv","value":"bmv_cell 0E96A9:Black Marsh.esm (the house), 02F364:Black Marsh.esm (Soulrest's dock), 16BF81:Black Marsh North.esp (the Chapter), 0059FB:Black Marsh.esm (the trapdoor's cell, north of Pusbottom); doors 120E93/0E971F (the house), 039827/0AA6C9 (Soulrest to the ship), 0AA837/0AA664 (the ship to Lilmoth's dock), 16BF7F/16C05B (the trapdoor)"}
+{"quest_id":"quest.tg.tg01","source":"bmv","value":"bmv_cell 0E96A9:Black Marsh.esm (the house), 02F364:Black Marsh.esm (Soulrest's dock), 16BF81:Black Marsh North.esp (the Chapter), 0059FB:Black Marsh.esm (the trapdoor's cell, on a ruin east of Lilmoth); doors 120E93/0E971F (the house), 039827/0AA6C9 (Soulrest to the ship), 0AA837/0AA664 (the ship to Lilmoth's dock), 16BF7F/16C05B (the trapdoor)"}
 {"quest_id":"quest.tg.tg01","source":"culture"}
 {"quest_id":"quest.tg.tg01","source":"lore"}
 {"quest_id":"quest.tg.tg01","source":"roster","value":"story/design/quests/36-cast-roster.md §56 (Tilts-The-Jug, the Soulrest desk)"}
-{"quest_id":"quest.tg.tg02","source":"bmv","value":"bmv_cell 16BF81:Black Marsh North.esp (the Chapter), 0059FB:Black Marsh.esm (the deep water north of Pusbottom and its south bank); doors 16C05B/16BF7F (the trapdoor)"}
+{"quest_id":"quest.tg.tg02","source":"bmv","value":"bmv_cell 16BF81:Black Marsh North.esp (the Chapter), 0059FB:Black Marsh.esm (the deep water east of Lilmoth and its south bank); doors 16C05B/16BF7F (the trapdoor)"}
 {"quest_id":"quest.tg.tg02","source":"culture"}
 {"quest_id":"quest.tg.tg02","source":"lore"}
 {"quest_id":"quest.tg.tg02","source":"roster","value":"story/design/quests/36-cast-roster.md §56 (the Lilmoth desk); npc row Bent-Spine (the Chapter's fence)"}

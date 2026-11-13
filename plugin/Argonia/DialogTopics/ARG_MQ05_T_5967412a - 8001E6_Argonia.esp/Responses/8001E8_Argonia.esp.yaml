@@ -49,7 +49,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Where it bends, two giant wasps keep the root, unless they have been cleared since. Past them you come to a soldier at the city's gate.
+    Value: Where it bends, two giant wasps keep the root, unless they have been cleared since. Past them you come to a soldier on the paved road.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 5
@@ -57,7 +57,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: The grove is just inside, to the west. Ei-Tuja the Nisswo and Kaska-Meen the tree-minder are there. Go alone, and do not name the Reed.
+    Value: The trees by the stone towers lie west of the road. Ei-Tuja the Nisswo and Kaska-Meen the tree-minder are there. Go alone, and do not name the Reed.
   ScriptNotes: ''
   Edits: ''
 Conditions:

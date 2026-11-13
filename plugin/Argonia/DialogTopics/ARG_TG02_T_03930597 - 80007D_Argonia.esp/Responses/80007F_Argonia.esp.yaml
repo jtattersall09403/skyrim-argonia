@@ -25,7 +25,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: The bone figurine the merchant held is mine. It was carved for my clutch. My clutch is scattered now.
+    Value: The bee statue the merchant held is mine. It was made for my clutch. My clutch is scattered now. The statue is the last thing I have from my clutch.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -33,15 +33,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: The figurine is the last thing I have from my clutch. It should come back to me. I wait here for a diver.
-  ScriptNotes: ''
-  Edits: ''
-- ResponseNumber: 3
-  Unknown2: 0x000000
-  Unknown3: 0x000000
-  Text:
-    TargetLanguage: English
-    Value: Okan-Tei and Dar-Zeel, the other two clients on this bank, speak for their own claims.
+    Value: It should come back to me. I want it back. I will take it from a diver. Okan-Tei and Dar-Zeel, the other two clients, speak for their own claims.
   ScriptNotes: ''
   Edits: ''
 Conditions:

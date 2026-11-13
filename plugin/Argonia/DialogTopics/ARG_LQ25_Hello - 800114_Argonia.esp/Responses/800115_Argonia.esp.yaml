@@ -25,7 +25,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: I pole rafts at this landing, and I am the best hand on the current here. Our rafts are tied up, every one.
+    Value: I poled rafts at this landing before the beast came, and I was the best hand on the current here. Our rafts are not on the water.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -33,7 +33,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: No raft goes out while that thing lives in the water by our walk. I stand here by the tower all day and I can think of nothing else.
+    Value: No raft goes out while that thing lives in the shallows east of here. I stand here on the rock roots all day and I can think of nothing else.
   ScriptNotes: ''
   Edits: ''
 Conditions:

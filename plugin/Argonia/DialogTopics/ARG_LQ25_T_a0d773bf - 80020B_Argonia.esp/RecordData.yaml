@@ -1,0 +1,8 @@
+FormKey: 80020B:Argonia.esp
+EditorID: ARG_LQ25_T_a0d773bf
+Name:
+  TargetLanguage: English
+  Value: I know about the offal in the shallows by your scaffold. Pay me, and I will say nothing to Sells-Dear.
+Branch: 80020C:Argonia.esp
+Quest: 8000C0:Argonia.esp
+SubtypeName: CUST

@@ -22,14 +22,14 @@ Flags: {}
 PreviousDialog: 80012B:Argonia.esp
 LinkTo:
 - 80012F:Argonia.esp
-- 800132:Argonia.esp
+- 80020D:Argonia.esp
 Responses:
 - ResponseNumber: 1
   Unknown2: 0x000000
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: So Haj-Wan sent you, and the viper lies dead in the roots. It does not move. I would not have believed it.
+    Value: So Haj-Wan sent you, and the viper lies dead among the trees. It does not move. I would not have believed it.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -37,7 +37,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: My legs are stiff from the roots, but they will carry me now. I can walk. Haj-Wan wants me home, and I will not guess what you want.
+    Value: My legs are stiff from the climb, but they will carry me now. I can walk. Haj-Wan wants me home, and I will not guess what you want.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 3

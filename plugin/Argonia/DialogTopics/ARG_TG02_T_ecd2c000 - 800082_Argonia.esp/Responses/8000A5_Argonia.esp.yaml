@@ -38,7 +38,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: I came for the strand of beads. The figurine and the charm come with it, and I will not give them back. Here are a hundred and twenty gold.
+    Value: I came for the strand of beads. The statue and the charm come with it, and I will not give them back. Here are a hundred and twenty gold.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -46,7 +46,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Neeta-Haj and Okan-Tei waited on this bank as long as I did, and now they leave it empty-handed.
+    Value: Neeta-Haj and Okan-Tei waited as long as I did, and now they go empty-handed.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 3

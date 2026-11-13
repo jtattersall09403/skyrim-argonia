@@ -35,20 +35,20 @@
 {"quest_id":"quest.local.lh38","section":"stakes"}
 {"quest_id":"quest.local.lh38","section":"timeline"}
 {"quest_id":"quest.local.lq25","section":"clueChoices"}
-{"quest_id":"quest.local.lq25","section":"habit","value":"One crocodile (band 1) lairs in the shallows off the end of the crew's plank walk, where the offal is dumped."}
+{"quest_id":"quest.local.lq25","section":"habit","value":"One crocodile (band 1) lairs in the shallows east of the scaffold, where the offal is dumped."}
 {"quest_id":"quest.local.lq25","section":"nonCombat","value":"none needed (band 1): it is shot or burnt from the shore"}
 {"quest_id":"quest.local.lq25","section":"twist","value":"The beast was a lie the landing crew told with offal, and the offal brought a real one."}
 {"quest_id":"quest.local.lq25","section":"weakSample","value":"none: one crocodile at the landing's band 1"}
-{"quest_id":"quest.local.lq25","section":"whyUnsolved","value":"The levy soldier at the stone tower guards the town, not the river; the crew who know why it stays will not say, and the rest of the landing will not take a raft out near it."}
+{"quest_id":"quest.local.lq25","section":"whyUnsolved","value":"The levy soldier on the landing guards the town, not the river; the crew who know why it stays will not say, and the rest of the landing will not take a raft out near it."}
 {"quest_id":"quest.local.lq30","section":"beats"}
 {"quest_id":"quest.local.lq30","section":"breakPoints"}
-{"quest_id":"quest.local.lq30","section":"fate","value":"Alive, pinned among the roots in the basin's shallows by a viper between him and the gate."}
+{"quest_id":"quest.local.lq30","section":"fate","value":"Alive, held on dry ground in the basin by a viper south-west of him."}
 {"quest_id":"quest.local.lq30","section":"leads"}
 {"quest_id":"quest.local.lq30","section":"nodes"}
 {"quest_id":"quest.local.lq30","section":"openQuestions"}
-{"quest_id":"quest.local.lq30","section":"rite","value":"A walk-out into the basin alone, which ends when the walker comes back through the gate on their own feet; the Agaceph of Helstrom may not follow, and an outsider may (QA5)."}
-{"quest_id":"quest.local.lq30","section":"trail","value":"East from the gate through the shallows to the roots in cell 0D7883."}
-{"quest_id":"quest.main.mq01","section":"afterwards","value":"Nothing in the world changes: the gang stays in the hold and the broker on his pier; the player leaves the dock as a hand of the Veiled Reed with fifty gold, and the burnt camp stays a thing told."}
+{"quest_id":"quest.local.lq30","section":"rite","value":"A walk-out into the basin alone, which ends when the walker comes back through the road on their own feet; the Agaceph of Helstrom may not follow, and an outsider may (QA5)."}
+{"quest_id":"quest.local.lq30","section":"trail","value":"East from the road, past the houses, to the dry ground in cell 0D7883."}
+{"quest_id":"quest.main.mq01","section":"afterwards","value":"Nothing in the world changes: the gang stays in the hold and the broker on his ship; the player leaves the dock as a hand of the Veiled Reed with fifty gold, and the burnt camp stays a thing told."}
 {"quest_id":"quest.main.mq01","section":"costToTheBound","value":"Dives-Without-A-Rope is visibly washed out from years away from Nine Bends; the gang's families lost their camp, their cutting and their clutch, and the broker's roll still counts every month."}
 {"quest_id":"quest.main.mq01","section":"theBond","value":"The Owing (labour-and-bondage §1-2): owed work for a debt or a wrong, drifted here into bondage that is sold on and extended. The holder is Buys-The-Months, a Lilmoth debt-labour broker who bought the gang's months and hires the gang to the lighters (QA7); the overseer, Wuleen-Sei, keeps them at it. The exit in law is working the months off; in practice the months for food outrun the work. The player is the one person aboard on no line: free of the Owing, and for that reason of no use to the broker."}
 {"quest_id":"quest.main.mq03","section":"answer","value":"a dry voice speaks in the dream but makes no words; whose it is, and what it says, is left to the later quests (§18d, QA18)"}
@@ -60,9 +60,9 @@
 {"quest_id":"quest.main.mq03","section":"rule","value":"the dream comes to whoever tastes the cell's sap (QA18)"}
 {"quest_id":"quest.main.mq03","section":"timeline","value":"two nights before: the cutters fill their jars at the cut roots and one jar is left by the fire; Dives-Without-A-Rope carries it aboard. The day the game opens: the player joins the Reed (MQ01); the jar comes out of the lockbox; at Nesh-Deeka's table the player tastes it and she writes down the dream."}
 {"quest_id":"quest.main.mq04","section":"cure","value":"the sap in the jars poured back at the cut root (QA11), if the jars go to Pays-Late or the root-herald"}
-{"quest_id":"quest.main.mq04","section":"fate","value":"the sap was drawn into jars and waits on a dry rise in the north reeds for the cell's larger boat"}
+{"quest_id":"quest.main.mq04","section":"fate","value":"the sap was drawn into jars and waits at a giant tree's roots in the north reeds for the cell's larger boat"}
 {"quest_id":"quest.main.mq04","section":"firstIllLastWell","value":"the eggs first; the tree itself is shut, not sick"}
-{"quest_id":"quest.main.mq04","section":"leads","value":"the root-herald points at Pays-Late; Pays-Late (talked round or shown his gum pot) or Turns-The-Clutch tells of the cut and the boat from the north reeds; the north reeds lead across the leech water to the dry rise"}
+{"quest_id":"quest.main.mq04","section":"leads","value":"the root-herald points at Pays-Late; Pays-Late (talked round or shown his gum pot) or Turns-The-Clutch tells of the cut and the boat from the north reeds; the north reeds lead across the leech water to the giant tree's roots"}
 {"quest_id":"quest.main.mq04","section":"misdiagnosis","wrong":"leeches let in by a tree-minder who failed his keeping","test":"Pays-Late's own gum on the cut, his knife gone, and a boat from the north reeds"}
 {"quest_id":"quest.main.mq04","section":"nodes"}
 {"quest_id":"quest.main.mq04","section":"openQuestions"}
@@ -77,7 +77,7 @@
 {"quest_id":"quest.main.mq05","section":"prepHints"}
 {"quest_id":"quest.main.mq05","section":"prize","value":"the word carried inland: by the tree-minders, who will close their trees to strangers, or by the Nisswo, who will preach it openly"}
 {"quest_id":"quest.main.mq05","section":"return","value":"the player stands in Helstrom, which the main line keeps as its seat"}
-{"quest_id":"quest.main.mq05","section":"route","value":"Salts-The-Catch's house; the coast ship's door at Lilmoth's stop; inside the ship, its door to Helstrom's river landing; from the landing the marsh way, root and shallows, past the wasps at the far bend, to the gate and the grove past it."}
+{"quest_id":"quest.main.mq05","section":"route","value":"Salts-The-Catch's house; the coast ship's door at Lilmoth's stop; inside the ship, its door to Helstrom's river landing; from the landing the marsh way, root and shallows, past the wasps at the far bend, to the paved road and the trees by the stone towers beyond it."}
 {"quest_id":"quest.main.mq05","section":"rumour","value":"Nesh-Deeka says the interior's tree-minders and Nisswo gather at Helstrom and carry news home, and that the Reed cannot say a cut Hist's story there itself."}
 {"quest_id":"quest.mr.mr01","section":"cure","value":"seal the cut (costs the roots it runs through), or reopen it downstream (floods the dead grove's land, where the founders' rival's descendants now fish)"}
 {"quest_id":"quest.mr.mr01","section":"firstIllLastWell","value":"the Hist's lowest roots first, then the spring, then the river landing last"}
@@ -95,9 +95,9 @@
 {"quest_id":"quest.mr.mr01","section":"spread","value":"brine up the taproots from the drowned stair, worst after each flood"}
 {"quest_id":"quest.mr.mr01","section":"stakes"}
 {"quest_id":"quest.tg.tg01","section":"afterwards","value":"Tilts-The-Jug pays a hundred gold if he lives and nothing if he died, and either way sends the player down to the Chapter."}
-{"quest_id":"quest.tg.tg01","section":"escape","value":"none needed; the dock is open and he does not fight"}
+{"quest_id":"quest.tg.tg01","section":"escape","value":"none needed; the shore is open and he does not fight"}
 {"quest_id":"quest.tg.tg01","section":"goesWrong","value":"A broken pick is another try at the strongbox; a failed talk leaves the coin route and the strongbox. If Keeps-What-Floats dies, the necklace is still in the strongbox, and the quest goes on without the pay."}
-{"quest_id":"quest.tg.tg01","section":"kept","value":"The necklace is in his strongbox under the eaves north-west of the house; he stands on the dock west of the house door."}
+{"quest_id":"quest.tg.tg01","section":"kept","value":"The necklace is in his strongbox by the houses at the water's edge; he keeps to the shore by the houses."}
 {"quest_id":"quest.tg.tg01","section":"leverage"}
 {"quest_id":"quest.tg.tg01","section":"objections"}
 {"quest_id":"quest.tg.tg01","section":"planTexts"}
@@ -109,9 +109,9 @@
 {"quest_id":"quest.tg.tg02","section":"afterwards","value":"The things go to one client, or each client is sold the thing they claimed for a fixed sum; the clients the player passed over, or sold to, turn cold."}
 {"quest_id":"quest.tg.tg02","section":"escape","value":"swim up and out onto the bank"}
 {"quest_id":"quest.tg.tg02","section":"goesWrong","value":"A broken pick is another try; the lock is Novice, Bent-Spine gave three picks and gives three more once. Without Speech 30 the first sale is closed and the hand-over stays open; the later two sales go through at a haggled price."}
-{"quest_id":"quest.tg.tg02","section":"kept","value":"The box lies locked on the floor of the deep water below the bank where the three clients wait."}
+{"quest_id":"quest.tg.tg02","section":"kept","value":"The box lies locked on the floor of the deep water below the bank ."}
 {"quest_id":"quest.tg.tg02","section":"planTexts"}
-{"quest_id":"quest.tg.tg02","section":"prize","value":"The drowned merchant's lockbox of pledges, from the floor of the deep water north of Pusbottom."}
+{"quest_id":"quest.tg.tg02","section":"prize","value":"The drowned merchant's lockbox of pledges, from the floor of the deep water east of Lilmoth."}
 {"quest_id":"quest.tg.tg02","section":"tellers"}
 {"quest_id":"quest.tg.tg02","section":"theftMode","value":"commit"}
 {"quest_id":"quest.tg.tg02","section":"waysIn"}

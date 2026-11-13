@@ -25,7 +25,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: I am Ei-Tuja, a Nisswo, a wanderer who reads what the Hist tell us. I read for anyone who asks and take nothing for it.
+    Value: I am Ei-Tuja, a Nisswo, a wanderer who reads what the Hist tell us. I will hear anyone who asks.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -33,7 +33,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: I hold that a Hist that goes quiet is telling us something, and its tree-minders must not clamp it shut.
+    Value: I hold that a Hist that goes quiet is telling us something, and its tree-minders must not clamp it shut. Kaska-Meen, the tree-minder, disagrees.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 3
@@ -41,7 +41,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Kaska-Meen, the tree-minder who keeps the watch here, disagrees. Ask her for her own reasons.
+    Value: Ask her for her own reasons.
   ScriptNotes: ''
   Edits: ''
 Conditions:

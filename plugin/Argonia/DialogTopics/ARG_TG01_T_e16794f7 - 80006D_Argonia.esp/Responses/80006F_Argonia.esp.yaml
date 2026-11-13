@@ -53,7 +53,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Take the coast ship from Soulrest's dock, east of this house, to Lilmoth.
+    Value: Take the coast ship from Soulrest's dock, a fair way west of this house, to Lilmoth.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 4
@@ -61,7 +61,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: North of Pusbottom, at the edge of the deep water, there is a trapdoor in the ground. Go down it and speak to Bent-Spine, our fence. Say I sent you.
+    Value: East of Lilmoth there is a trapdoor on a ruin that stands in the deep water. Go down it and speak to Bent-Spine, our fence. Say I sent you.
   ScriptNotes: ''
   Edits: ''
 Conditions:

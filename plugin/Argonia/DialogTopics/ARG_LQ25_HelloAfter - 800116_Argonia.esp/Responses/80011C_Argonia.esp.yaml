@@ -26,7 +26,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: The rafts are on the river again, mine with them. I know Wuleen-Taza paid you to say nothing of the bucket, and I owe my trade to you and to her coin.
+    Value: The crew eat this week. I know Wuleen-Taza paid you to say nothing of the bucket, and I owe that to you and to her coin.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -34,7 +34,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: I am grateful, and I do not like it. Our own trick drew that crocodile and cost us a raft, and now we float on the river as if it never happened.
+    Value: I am grateful, and I do not like it. Our own trick drew that crocodile and cost us a raft, and now we carry on as if it never happened.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 3

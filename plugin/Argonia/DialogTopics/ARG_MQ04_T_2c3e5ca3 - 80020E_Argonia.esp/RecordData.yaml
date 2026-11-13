@@ -1,0 +1,8 @@
+FormKey: 80020E:Argonia.esp
+EditorID: ARG_MQ04_T_2c3e5ca3
+Name:
+  TargetLanguage: English
+  Value: Why do you stand on the bank?
+Branch: 80020F:Argonia.esp
+Quest: 8000C4:Argonia.esp
+SubtypeName: CUST

@@ -39,14 +39,14 @@
 {"quest_id":"quest.local.lh38","things_ord":8,"state":"after-70","value":"recovering"}
 {"quest_id":"quest.local.lh38","things_ord":8,"state":"before-70","value":"feverish; say they ate at the fire stand"}
 {"quest_id":"quest.local.lh38","things_ord":9,"state":"all","value":"Tsono-Ra's work spot"}
-{"quest_id":"quest.local.lq25","things_ord":0,"state":"all","value":"in its lair off the end of the plank walk until killed"}
+{"quest_id":"quest.local.lq25","things_ord":0,"state":"all","value":"in its lair in the shallows east of the scaffold until killed"}
 {"quest_id":"quest.local.lq25","things_ord":1,"state":"all","value":"in the shallows until taken; Sells-Dear keeps it at 91"}
 {"quest_id":"quest.local.lq25","things_ord":2,"state":"all","value":"present"}
-{"quest_id":"quest.local.lq30","things_ord":0,"state":"all","value":"in the roots between Sei-Wan and the gate until killed"}
-{"quest_id":"quest.local.lq30","things_ord":1,"state":"all","value":"Haj-Wan by the gate, Sei-Wan among the roots"}
+{"quest_id":"quest.local.lq30","things_ord":0,"state":"all","value":"south-west of Sei-Wan until killed"}
+{"quest_id":"quest.local.lq30","things_ord":1,"state":"all","value":"Haj-Wan by the road, Sei-Wan on dry ground in the basin"}
 {"quest_id":"quest.main.mq01","things_ord":0,"state":"all","value":"as BM&V has it, with the three of the gang standing in it"}
 {"quest_id":"quest.main.mq01","things_ord":1,"state":"all","value":"standing in the hold"}
-{"quest_id":"quest.main.mq01","things_ord":2,"state":"all","value":"standing at the pier beside the ship"}
+{"quest_id":"quest.main.mq01","things_ord":2,"state":"all","value":"standing on the ship's deck"}
 {"quest_id":"quest.main.mq01","things_ord":3,"state":"all","value":"as BM&V has it, with Salts-The-Catch and Nesh-Deeka standing in it"}
 {"quest_id":"quest.main.mq01","things_ord":4,"state":"all","value":"standing in the house"}
 {"quest_id":"quest.main.mq01","things_ord":5,"state":"all","value":"as the ledger says"}
@@ -57,7 +57,7 @@
 {"quest_id":"quest.main.mq03","things_ord":2,"state":"all","value":"on Dives-Without-A-Rope, or carried"}
 {"quest_id":"quest.main.mq03","things_ord":3,"state":"all","value":"on the floor until taken"}
 {"quest_id":"quest.main.mq03","things_ord":4,"state":"after-90","value":"carried"}
-{"quest_id":"quest.main.mq04","things_ord":0,"state":"all","value":"on the dry rise until taken; then carried; taken by whichever hand-in ends the quest"}
+{"quest_id":"quest.main.mq04","things_ord":0,"state":"all","value":"at the giant tree's roots until taken; then carried; taken by whichever hand-in ends the quest"}
 {"quest_id":"quest.main.mq04","things_ord":1,"state":"all","value":"locked, at his feet"}
 {"quest_id":"quest.main.mq04","things_ord":2,"state":"all","value":"in the gum box until taken"}
 {"quest_id":"quest.main.mq05","things_ord":0,"state":"all","value":"present"}

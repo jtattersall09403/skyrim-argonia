@@ -34,7 +34,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: The ship is moored at the pier at Hereguard Plantation, west of Lilmoth. I am Wuleen-Sei, his overseer.
+    Value: The ship is moored below Hereguard Plantation, west of Lilmoth. I am Wuleen-Sei, his overseer.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 3
@@ -50,7 +50,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Go up the stairs and out of the door onto the deck. Buys-The-Months waits on the pier. Ask him what is owed in this hold, and why.
+    Value: Go up the stairs and out of the door onto the deck. Buys-The-Months waits there. Ask him what is owed in this hold, and why.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 5

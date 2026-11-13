@@ -26,7 +26,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: The beast is dead and the river is open. My boat goes out at first light with a full load, the way it did before the crocodile came.
+    Value: The beast is dead and the river is open. My trade comes to me again, the way it did before the crocodile came. I feared for my boat all those weeks.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -34,7 +34,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: I feared for my boat all those weeks. It is all I own. A beast came up the river by itself and sat in my way, and I thank you for ending it.
+    Value: It is all I own. A beast came up the river by itself and sat in my way, and I thank you for ending it.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 3
@@ -42,7 +42,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: The rafters pole their travellers again as well. I will not fight them over it.
+    Value: The rafters will want their travellers again as well. I will not fight them over it.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 4

@@ -53,7 +53,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Its eggs hatch in the pool at its roots. Eleven nights ago its light went out and its leaves shut. The eggs in the pool died.
+    Value: Its eggs hatch in the pool under our stilts. Eleven nights ago its light went out and its leaves shut. The eggs in the pool died.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 4
@@ -77,7 +77,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: He stands by the roots under the stilts on the south side of the village, day and night. He will not say why.
+    Value: He stands on the bank under the stilts on the south side of the village, day and night. He will not say why.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 7

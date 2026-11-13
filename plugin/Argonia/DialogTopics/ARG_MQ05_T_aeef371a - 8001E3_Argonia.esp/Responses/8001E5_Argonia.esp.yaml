@@ -109,7 +109,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Two giant wasps keep the far bend of it, short of the gate. Just inside the gate, to the west, is the grove.
+    Value: Two giant wasps keep the far bend of it, short of the paved road. West of the paved road, past the houses, the trees stand thick by the stone towers.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 11
@@ -117,7 +117,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Ei-Tuja stands there, a Nisswo who reads for anyone.
+    Value: Ei-Tuja is a Nisswo, and he will hear anyone. Kaska-Meen is a tree-minder, and she hears few strangers. Whoever you tell decides how the word travels.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 12
@@ -125,7 +125,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Kaska-Meen is a tree-minder who sits in the city's assembly and keeps the grove's watch, and she hears few strangers.
+    Value: A Nisswo preaches it in every village, where the cutters will hear it too. A tree-minder carries it only to those who keep trees.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 13
@@ -133,15 +133,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Whoever you tell decides how the word travels. A Nisswo preaches it in every village, where the cutters will hear it too.
-  ScriptNotes: ''
-  Edits: ''
-- ResponseNumber: 14
-  Unknown2: 0x000000
-  Unknown3: 0x000000
-  Text:
-    TargetLanguage: English
-    Value: A tree-minder carries it only to those who keep trees. Go and tell one of them what you saw. Say only that, as a stranger who saw it.
+    Value: Go and tell one of them what you saw. Say only that, as a stranger who saw it.
   ScriptNotes: ''
   Edits: ''
 Conditions:

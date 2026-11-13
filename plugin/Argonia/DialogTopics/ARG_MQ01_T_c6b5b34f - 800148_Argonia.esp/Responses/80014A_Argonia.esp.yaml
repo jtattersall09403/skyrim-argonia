@@ -37,7 +37,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: I have no work for you. Salts-The-Catch is a fish-trader who sells me my gang's food.
+    Value: I have no work for you. Salts-The-Catch keeps a house in Lilmoth. She asked me for anyone off my ship who saw the camp burn.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -45,7 +45,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: She asked at the pier for anyone off my ship who saw the camp burn. A guest of hers, Nesh-Deeka, pays for work. Go to Nesh-Deeka.
+    Value: A guest of hers, Nesh-Deeka, pays for work. Go to Nesh-Deeka. Keep to the shore going east, a fair way.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 3
@@ -53,7 +53,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Keep to the shore going east, a fair way. You pass the old lighthouse, and then you are in Lilmoth.
+    Value: You pass the old lighthouse, and then you are in Lilmoth.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 4

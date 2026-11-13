@@ -26,7 +26,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: You have not brought all three. I will not take the beads alone, and I will not take the figurine or the charm alone.
+    Value: You have not brought all three. I will not take the beads alone, and I will not take the statue or the charm alone.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -34,7 +34,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Bring the figurine, the charm and the beads together. For the three I pay a hundred and twenty gold.
+    Value: Bring the statue, the charm and the beads together. For the three I pay a hundred and twenty gold.
   ScriptNotes: ''
   Edits: ''
 Conditions:

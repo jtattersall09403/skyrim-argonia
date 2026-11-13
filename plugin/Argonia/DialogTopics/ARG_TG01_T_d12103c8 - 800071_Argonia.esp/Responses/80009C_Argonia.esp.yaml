@@ -37,7 +37,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Then you found the trapdoor north of Pusbottom and came down it, and Tilts-The-Jug has vouched for you. I am Bent-Spine, the Chapter's fence.
+    Value: Then you found the trapdoor east of Lilmoth and came down it, and Tilts-The-Jug has vouched for you. I am Bent-Spine, the Chapter's fence.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -45,7 +45,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: What our people take, I buy and sell on. The Chapter takes from those who can bear the loss, and it harms no one in the taking.
+    Value: The Chapter's goods pass through my hands. The Chapter takes from those who can bear the loss, and it harms no one in the taking.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 3

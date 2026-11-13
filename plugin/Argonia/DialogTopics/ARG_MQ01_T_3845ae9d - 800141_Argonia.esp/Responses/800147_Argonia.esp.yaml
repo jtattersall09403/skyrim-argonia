@@ -26,7 +26,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: I am Buys-The-Months, a broker. This is my pier, below Hereguard Plantation. Lilmoth lies a fair way east along the shore. That ship is mine.
+    Value: I am Buys-The-Months, a broker. This is my ship, moored below Hereguard Plantation. Lilmoth lies a fair way east along the shore.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -66,7 +66,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Get off my pier.
+    Value: Get off my ship.
   ScriptNotes: ''
   Edits: ''
 Conditions:

@@ -37,7 +37,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: That is my pot. Then you know already, and there is no use in my hiding it.
+    Value: That is my pot. Then you know already, and there is no use in my hiding it. I found the cut sealed with that gum, and my knife gone from my things.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -45,7 +45,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: I found the cut sealed with that gum, and my knife missing from the sap-workshop. I knew it would be called my work, so I hid it.
+    Value: I knew it would be called my work, so I hid it. I followed the sap's drips north as far as the leech water before I lost them.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 3
@@ -53,7 +53,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: I followed the sap's drips north as far as the leech water before I lost them. That night a boat slipped in from the north reeds and out again.
+    Value: That night a boat slipped in from the north reeds and out again. Turns-The-Clutch saw it from the water's edge.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 4
@@ -61,7 +61,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Turns-The-Clutch saw it from the egg pool. Ask me where the sap went, and I will tell you where to look.
+    Value: Ask me where the sap went, and I will tell you where to look.
   ScriptNotes: ''
   Edits: ''
 Conditions:

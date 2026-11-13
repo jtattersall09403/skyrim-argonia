@@ -45,7 +45,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: It lies in the roots west of me, between me and the gate. I climbed up here, and I carry nothing that can reach it.
+    Value: It lies out among the trees south-west of me. I climbed up here, and I carry nothing that can reach it. I will not come down while it lives.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 3
@@ -53,7 +53,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: I will not come down while it lives. I will not run past it, and I will not call for help. If you can deal with the viper, I can walk.
+    Value: I will not run past it, and I will not call for help. If you can deal with the viper, I can walk.
   ScriptNotes: ''
   Edits: ''
 Conditions:

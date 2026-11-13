@@ -25,23 +25,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: I am Ux-Xeek, the broker's port hand.
-  ScriptNotes: ''
-  Edits: ''
-- ResponseNumber: 2
-  Unknown2: 0x000000
-  Unknown3: 0x000000
-  Text:
-    TargetLanguage: English
-    Value: I read out the roll, the list of the gang's names, and call the gang out to the lighters, the flat boats that carry cargo to the ships.
-  ScriptNotes: ''
-  Edits: ''
-- ResponseNumber: 3
-  Unknown2: 0x000000
-  Unknown3: 0x000000
-  Text:
-    TargetLanguage: English
-    Value: You are not on my roll, so I have no time for you.
+    Value: I am Ux-Xeek, the broker's port hand. You are not on my roll, so I have no time for you.
   ScriptNotes: ''
   Edits: ''
 Conditions:

@@ -41,7 +41,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: There is a dry rise standing in the reeds. The villagers do not go there. Whoever keeps the jars will not give them up for words.
+    Value: There is a giant tree standing in the reeds, and its roots rise out of the water. The villagers do not go there.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 4
@@ -49,7 +49,15 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Go ready, and take care in the water. Bring the sap back to me here at the roots, and I will see it goes back where it was taken from.
+    Value: Whoever keeps the jars will not give them up for words. Go ready, and take care in the water.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 5
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Bring the sap back to me here under the stilts, and I will see it goes back where it was taken from.
   ScriptNotes: ''
   Edits: ''
 Conditions:

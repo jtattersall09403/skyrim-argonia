@@ -26,15 +26,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: I am Salts-The-Catch. I sell fish, and I keep this house below Lilmoth Dock. People come and go here. I ask nothing of them.
-  ScriptNotes: ''
-  Edits: ''
-- ResponseNumber: 2
-  Unknown2: 0x000000
-  Unknown3: 0x000000
-  Text:
-    TargetLanguage: English
-    Value: Nesh-Deeka sits at the far end of the room.
+    Value: I am Salts-The-Catch. I keep this house below Lilmoth Dock. I ask nothing of my guests. Nesh-Deeka is in this house.
   ScriptNotes: ''
   Edits: ''
 Conditions:

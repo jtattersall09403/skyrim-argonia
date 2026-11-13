@@ -359,37 +359,37 @@ Stages:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: Hires-By-The-Season, the root-herald, told me the Hist of Low-Reed Village shut eleven nights ago and the eggs in its pool died. The village blames the leeches and Pays-Late, the tree-minder, who will not say why he stands by the roots. I'm to get the truth out of him, on the bank under the stilts.
+      Value: Hires-By-The-Season, the root-herald, told me the Hist of Low-Reed Village shut eleven nights ago and the eggs in its pool died. The village blames the leeches and Pays-Late, the tree-minder, who will not say why he stands on the bank. I'm to get the truth out of him, on the bank under the stilts.
 - Index: 21
   LogEntries:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: Hires-By-The-Season, the root-herald of Low-Reed Village, is dead. Pays-Late, the tree-minder who keeps the village's Hist, stands on the bank by its roots under the stilts. I'm to ask him what happened to the tree.
+      Value: Hires-By-The-Season, the root-herald of Low-Reed Village, is dead. Pays-Late, the tree-minder who keeps the village's Hist, stands on the bank under the stilts. I'm to ask him what happened to the tree.
 - Index: 30
   LogEntries:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: "Pays-Late told me what he hid: the Hist's root was cut, its sap drawn off and the cut sealed with his own black gum. He kept quiet, fearing the villagers' blame. A boat came from the north reeds that night. I'm to cross the leech water to the dry rise past the last stilt house and take the sap back."
+      Value: "Pays-Late told me what he hid: the Hist's root was cut, its sap drawn off and the cut sealed with his own black gum. He kept quiet, fearing the villagers' blame. A boat came from the north reeds that night. I'm to cross the leech water to the giant tree's roots past the last stilt house and take the sap back."
 - Index: 31
   LogEntries:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: I threatened to shame Pays-Late before the whole village, and he told me what he hid; he will not forget it. The Hist's root was cut, its sap drawn off and the cut sealed with his own black gum. I'm to cross the leech water to the dry rise past the last stilt house and take the sap back.
+      Value: I threatened to shame Pays-Late before the whole village, and he told me what he hid; he will not forget it. The Hist's root was cut, its sap drawn off and the cut sealed with his own black gum. I'm to cross the leech water to the giant tree's roots past the last stilt house and take the sap back.
 - Index: 40
   LogEntries:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: I took the jars of Low-Reed Village's sap from two men on the dry rise, jars like the one the cutters dropped at the burnt camp. Pays-Late can pour the sap back at the cut root, or Nesh-Deeka can keep it as proof. I'm to bring the jars to Pays-Late, by the roots under the stilts, and choose.
+      Value: I took the jars of Low-Reed Village's sap from two men at the giant tree's roots, jars like the one the cutters dropped at the burnt camp. Pays-Late can pour the sap back at the cut root, or Nesh-Deeka can keep it as proof. I'm to bring the jars to Pays-Late, on the bank under the stilts, and choose.
 - Index: 41
   LogEntries:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: "I took the jars of Low-Reed Village's sap from two men on the dry rise, jars like the one the cutters dropped at the burnt camp. Since I leaned on Pays-Late, he will not trust me to keep his secret. I'm to bring them to him and choose: back to his tree, or to Nesh-Deeka as proof."
+      Value: "I took the jars of Low-Reed Village's sap from two men at the giant tree's roots, jars like the one the cutters dropped at the burnt camp. Since I leaned on Pays-Late, he will not trust me to keep his secret. I'm to bring them to him and choose: back to his tree, or to Nesh-Deeka as proof."
 - Index: 46
   LogEntries:
   - Flags: []
@@ -441,31 +441,31 @@ Objectives:
 - Index: 20
   DisplayText:
     TargetLanguage: English
-    Value: Get the truth about the Hist out of Pays-Late, by the roots under the stilts (Speech 25, his gum pot, or a threat).
+    Value: Get the truth about the Hist out of Pays-Late, on the bank under the stilts (Speech 25, his gum pot, or a threat).
   Targets:
   - AliasID: 2
 - Index: 21
   DisplayText:
     TargetLanguage: English
-    Value: Ask Pays-Late, by the roots under the stilts, what happened to the Hist (Speech 25, his gum pot, or a threat).
+    Value: Ask Pays-Late, on the bank under the stilts, what happened to the Hist (Speech 25, his gum pot, or a threat).
   Targets:
   - AliasID: 2
 - Index: 30
   DisplayText:
     TargetLanguage: English
-    Value: Take the jars of sap from the camp on the dry rise north of the leech water.
+    Value: Take the jars of sap from the two men at the giant tree's roots north of the leech water.
   Targets:
   - AliasID: 8
 - Index: 31
   DisplayText:
     TargetLanguage: English
-    Value: Take the jars of sap from the camp on the dry rise north of the leech water.
+    Value: Take the jars of sap from the two men at the giant tree's roots north of the leech water.
   Targets:
   - AliasID: 8
 - Index: 40
   DisplayText:
     TargetLanguage: English
-    Value: Bring the jars of sap to Pays-Late, by the roots under the stilts.
+    Value: Bring the jars of sap to Pays-Late, on the bank under the stilts.
   Targets:
   - AliasID: 2
 - Index: 46

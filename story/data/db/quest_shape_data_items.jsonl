@@ -48,15 +48,15 @@
 {"quest_id":"quest.local.lh38","section":"timeline","ord":4,"value":"t6"}
 {"quest_id":"quest.local.lh38","section":"timeline","ord":5,"value":"t7"}
 {"quest_id":"quest.local.lq25","section":"clueChoices","ord":0,"value":"Okan-Zish owns the bait once the beast is dead; the crew's bait bucket lies in the lair"}
-{"quest_id":"quest.local.lq30","section":"beats","ord":0,"value":"Haj-Wan at the gate"}
-{"quest_id":"quest.local.lq30","section":"beats","ord":1,"value":"the shallows east of the gate"}
-{"quest_id":"quest.local.lq30","section":"beats","ord":2,"value":"the viper in the roots"}
+{"quest_id":"quest.local.lq30","section":"beats","ord":0,"value":"Haj-Wan by the road"}
+{"quest_id":"quest.local.lq30","section":"beats","ord":1,"value":"the dry ground far east of Haj-Wan"}
+{"quest_id":"quest.local.lq30","section":"beats","ord":2,"value":"the viper south-west of Sei-Wan"}
 {"quest_id":"quest.local.lq30","section":"beats","ord":3,"value":"Sei-Wan's choice"}
 {"quest_id":"quest.local.lq30","section":"breakPoints","ord":0,"value":"Sei-Wan is talked into coming home (Speech 25)"}
-{"quest_id":"quest.local.lq30","section":"leads","ord":0,"value":"Haj-Wan says he went east through the shallows"}
-{"quest_id":"quest.local.lq30","section":"nodes","ord":0,"value":"the gate"}
-{"quest_id":"quest.local.lq30","section":"nodes","ord":1,"value":"the shallows east of the gate"}
-{"quest_id":"quest.local.lq30","section":"nodes","ord":2,"value":"the roots where Sei-Wan is pinned"}
+{"quest_id":"quest.local.lq30","section":"leads","ord":0,"value":"Haj-Wan says he went east past the houses"}
+{"quest_id":"quest.local.lq30","section":"nodes","ord":0,"value":"the road"}
+{"quest_id":"quest.local.lq30","section":"nodes","ord":1,"value":"the dry ground far east of Haj-Wan"}
+{"quest_id":"quest.local.lq30","section":"nodes","ord":2,"value":"the dry ground where Sei-Wan is held"}
 {"quest_id":"quest.local.lq30","section":"openQuestions","ord":0,"value":"whether to leave the walk-out his own or talk him home"}
 {"quest_id":"quest.main.mq03","section":"nodes","ord":0,"value":"the jar in Dives-Without-A-Rope's lockbox"}
 {"quest_id":"quest.main.mq03","section":"nodes","ord":1,"value":"Dives-Without-A-Rope"}
@@ -66,17 +66,17 @@
 {"quest_id":"quest.main.mq04","section":"nodes","ord":1,"value":"Pays-Late at the cut root"}
 {"quest_id":"quest.main.mq04","section":"nodes","ord":2,"value":"his gum box"}
 {"quest_id":"quest.main.mq04","section":"nodes","ord":3,"value":"Turns-The-Clutch at the egg pool"}
-{"quest_id":"quest.main.mq04","section":"nodes","ord":4,"value":"the dry rise and its jars"}
+{"quest_id":"quest.main.mq04","section":"nodes","ord":4,"value":"the giant tree's roots and its jars"}
 {"quest_id":"quest.main.mq04","section":"openQuestions","ord":0,"value":"what the cell wants with jars of a living Hist's sap (MQ05 and Act II)"}
 {"quest_id":"quest.main.mq04","section":"stakes","ord":0,"value":"eleven nights ago: the root cut, the eggs dead"}
 {"quest_id":"quest.main.mq04","section":"stakes","ord":1,"value":"until the sap comes back the tree stays shut"}
 {"quest_id":"quest.main.mq04","section":"trail","ord":0,"value":"the root-herald"}
 {"quest_id":"quest.main.mq04","section":"trail","ord":1,"value":"Pays-Late or Turns-The-Clutch"}
 {"quest_id":"quest.main.mq04","section":"trail","ord":2,"value":"the north reeds across the leech water"}
-{"quest_id":"quest.main.mq04","section":"trail","ord":3,"value":"the dry rise"}
+{"quest_id":"quest.main.mq04","section":"trail","ord":3,"value":"the giant tree's roots"}
 {"quest_id":"quest.main.mq05","section":"prepHints","ord":0,"value":"Nesh-Deeka names the wasps and the way in"}
 {"quest_id":"quest.main.mq05","section":"prepHints","ord":1,"value":"the landing's crew (LQ25)"}
-{"quest_id":"quest.main.mq05","section":"prepHints","ord":2,"value":"the levy at the gate (LQ30)"}
+{"quest_id":"quest.main.mq05","section":"prepHints","ord":2,"value":"the levy warden by the paved road (LQ30)"}
 {"quest_id":"quest.mr.mr01","section":"stakes","ord":0,"value":"at the start: leaves falling out of season"}
 {"quest_id":"quest.mr.mr01","section":"stakes","ord":1,"value":"from stage 20: the spring tastes of salt"}
 {"quest_id":"quest.mr.mr01","section":"stakes","ord":2,"value":"from stage 40: the sap stops at the naming bowl"}
@@ -85,7 +85,7 @@
 {"quest_id":"quest.tg.tg01","section":"leverage","ord":2,"value":"sixty gold buys it"}
 {"quest_id":"quest.tg.tg01","section":"objections","ord":0,"value":"he says it was left lying"}
 {"quest_id":"quest.tg.tg01","section":"objections","ord":1,"value":"he says he has a buyer"}
-{"quest_id":"quest.tg.tg01","section":"planTexts","ord":0,"value":"pick the strongbox's lock while he stands on the dock"}
+{"quest_id":"quest.tg.tg01","section":"planTexts","ord":0,"value":"pick the strongbox's lock while he keeps to the shore"}
 {"quest_id":"quest.tg.tg01","section":"planTexts","ord":1,"value":"talk him into handing over his key"}
 {"quest_id":"quest.tg.tg01","section":"planTexts","ord":2,"value":"buy his key for sixty gold"}
 {"quest_id":"quest.tg.tg01","section":"sides","ord":0,"value":"Keeps-What-Floats"}

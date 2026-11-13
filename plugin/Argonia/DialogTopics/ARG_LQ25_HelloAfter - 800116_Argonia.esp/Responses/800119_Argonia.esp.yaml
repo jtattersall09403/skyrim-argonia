@@ -26,7 +26,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Our rafts are poled out again and the crew eat this week. That is your doing. It was bought with 60 gold of ours.
+    Value: The crew eat this week. That is your doing. It was bought with 60 gold of ours. I do not like what we bought with it.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -34,7 +34,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: I do not like what we bought with it. We lost a raft to a crocodile that we drew in ourselves. Sells-Dear still knows nothing of it.
+    Value: We lost a raft to a crocodile that we drew in ourselves. Sells-Dear still knows nothing of it.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 3

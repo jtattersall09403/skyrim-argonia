@@ -46,7 +46,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: A root of the Hist was cut under the stilts, and its sap was drawn off. The cut was sealed with black gum from the sap-workshop.
+    Value: A root of the Hist was cut under the stilts, and its sap was drawn off. The cut was sealed with black gum made here in the village.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 3
@@ -54,7 +54,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: It was my gum, and my knife was gone from the workshop.
+    Value: It was my gum, and my knife was gone from my things.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 4
