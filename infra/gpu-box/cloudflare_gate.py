@@ -8,7 +8,9 @@ the game machine, fronted by Cloudflare Access so only the owner's email gets in
                                  CLOUDFLARE_TUNNEL_TOKEN_<LABEL>; install one on its machine with `tunnel <machine>`
   cloudflare_gate.py tunnel M    install machine M's own tunnel connector (cloudflared service) over run.sh
   cloudflare_gate.py worker      deploy the play switch (infra/cloudflare/play-switch.js) on play., dcv. and sunshine.
-                                 with the machine and its schedules; needs AWS_SWITCH_KEY_ID / AWS_SWITCH_SECRET
+                                 with the machine and its schedules, and on the studio's page (studio.<domain>/ and
+                                 /argonia/*), where it starts the build machine for the owner; needs
+                                 AWS_SWITCH_KEY_ID / AWS_SWITCH_SECRET
 
 Reads CLOUDFLARE_API_TOKEN, CLOUDFLARE_ACCOUNT_ID, CLOUDFLARE_DOMAIN and GATE_EMAIL from ~/.argonia/secrets.env and
 writes CLOUDFLARE_TUNNEL_TOKEN back there; nothing secret is printed. The machine opens no web port: cloudflared
@@ -200,7 +202,8 @@ def worker():
         {"type": "plain_text", "name": "CF_ZONE", "text": zone_id()},
         {"type": "plain_text", "name": "HOST_NAME", "text": f"{HOST_RECORD}.{DOMAIN}"},
         {"type": "secret_text", "name": "CF_ACCESS_ID", "text": env["CF_HEARTBEAT_ID"]},
-        {"type": "secret_text", "name": "CF_ACCESS_SECRET", "text": env["CF_HEARTBEAT_SECRET"]}]}
+        {"type": "secret_text", "name": "CF_ACCESS_SECRET", "text": env["CF_HEARTBEAT_SECRET"]},
+        *studio_bindings()]}
     b = uuid.uuid4().hex
     body = (f"--{b}\r\nContent-Disposition: form-data; name=\"metadata\"\r\nContent-Type: application/json\r\n\r\n"
             f"{json.dumps(meta)}\r\n--{b}\r\nContent-Disposition: form-data; name=\"play-switch.js\"; "
@@ -217,11 +220,33 @@ def worker():
        [{"cron": "*/10 * * * *"}, {"cron": NIGHT_STOP}])
     zid = zone_id()
     have = {r["pattern"] for r in cf("GET", f"/zones/{zid}/workers/routes")}
-    for prefix in ("play", "dcv"):
-        pattern = f"{prefix}.{DOMAIN}/*"
+    for pattern in [f"{prefix}.{DOMAIN}/*" for prefix in ("play", "dcv")] + STUDIO_ROUTES:
         if pattern not in have:
             cf("POST", f"/zones/{zid}/workers/routes", {"pattern": pattern, "script": "argonia-play-switch"})
     print("play switch deployed on", ", ".join(f"{p}.{DOMAIN}" for p in ROUTES), "with schedules every 10 min and", NIGHT_STOP)
+    print("and on the studio's address:", ", ".join(STUDIO_ROUTES))
+
+
+# The studio's address (infra/build-vm/studio_gate.py: the build machine's tunnel behind its own Access app): only its
+# page and /argonia/* pass through the Worker, which starts the build machine for the owner when it is stopped; the
+# studio's own requests (assets, the API) go straight to the tunnel and never count against the Worker.
+STUDIO_HOST = f"studio.{DOMAIN}"
+STUDIO_ROUTES = [f"{STUDIO_HOST}/", f"{STUDIO_HOST}/argonia/*"]
+
+
+def studio_bindings() -> list[dict]:
+    """The Worker's studio settings: the host, the build machine, and what checks the owner's Access sign-in (the
+    team's domain, the studio app's audience tag, the owner's email)."""
+    app = next((a for a in cf("GET", f"/accounts/{ACCT}/access/apps") if a.get("domain") == STUDIO_HOST), None)
+    if not app:
+        raise SystemExit(f"no Access app for {STUDIO_HOST}: run infra/build-vm/studio_gate.py apply first")
+    team = cf("GET", f"/accounts/{ACCT}/access/organizations")["auth_domain"]
+    return [{"type": "plain_text", "name": "STUDIO_HOST", "text": STUDIO_HOST},
+            {"type": "plain_text", "name": "STUDIO_NAME", "text": "argonia-build"},
+            {"type": "plain_text", "name": "STUDIO_REGION", "text": "eu-west-2"},
+            {"type": "plain_text", "name": "ACCESS_TEAM", "text": team},
+            {"type": "plain_text", "name": "STUDIO_AUD", "text": app["aud"]},
+            {"type": "secret_text", "name": "OWNER_EMAIL", "text": EMAIL}]
 
 
 def install_tunnel():

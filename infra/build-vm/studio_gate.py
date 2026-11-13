@@ -6,7 +6,9 @@ play machine's gate (infra/gpu-box/cloudflare_gate.py), whose API helper, zone a
   studio_gate.py apply    create or update the tunnel, its route, the DNS record and the Access app (idempotent);
                           the connector token goes to secrets.env as CLOUDFLARE_TUNNEL_TOKEN_STUDIO
   studio_gate.py prove    a stranger gets the Access login; a short-lived service token gets the studio's index
-                          page; the token and its policy are deleted again before it returns
+                          page, through the play switch (infra/cloudflare/play-switch.js, which starts the build
+                          machine for the owner when it is stopped), and is refused the switch's owner-only status;
+                          the token and its policy are deleted again before it returns
   studio_gate.py url      print the studio's address
 
 Nothing secret is printed. The VM opens no port: cloudflared dials out (infra/build-vm/studio-tunnel.service)."""
@@ -75,9 +77,9 @@ class NoRedirect(urllib.request.HTTPRedirectHandler):
         return None
 
 
-def fetch(headers: dict | None = None):
+def fetch(headers: dict | None = None, path: str = "/"):
     op = urllib.request.build_opener(NoRedirect)
-    req = urllib.request.Request(f"https://{HOST}/", headers={"User-Agent": "argonia-studio-gate"} | (headers or {}))
+    req = urllib.request.Request(f"https://{HOST}{path}", headers={"User-Agent": "argonia-studio-gate"} | (headers or {}))
     try:
         with op.open(req, timeout=30) as r:
             return r.status, dict(r.headers), r.read(4096).decode(errors="replace")
@@ -97,7 +99,7 @@ def prove() -> int:
                   {"name": "argonia-studio-prove", "decision": "non_identity",
                    "include": [{"service_token": {"token_id": tok["id"]}}]})
     app = find_app()
-    ok = False
+    ok = switch = refused = False
     try:
         gate.cf("PUT", f"/accounts/{acct}/access/apps/{app['id']}",
                 app_body([{"id": owner_policy(), "precedence": 1}, {"id": pol["id"], "precedence": 2}]))
@@ -109,15 +111,22 @@ def prove() -> int:
                 break
             time.sleep(10)
         title = body.split("<title>")[1].split("</title>")[0] if "<title>" in body else body[:60]
-        print(f"signed-in (service token): HTTP {code}, page title {title!r}")
+        switch = {k.lower(): v for k, v in hdr.items()}.get("x-argonia-switch") == "studio"
+        print(f"signed-in (service token): HTTP {code}, page title {title!r}, "
+              f"{'through the play switch' if switch else 'NOT through the play switch'}")
+        scode, _, sbody = fetch({"CF-Access-Client-Id": tok["client_id"], "CF-Access-Client-Secret": tok["client_secret"]},
+                                "/argonia/status")
+        refused = scode == 403 and "only the owner" in sbody
+        print(f"the switch's status, not the owner: HTTP {scode}: {'refused' if refused else 'NOT REFUSED'}")
     finally:
         gate.cf("PUT", f"/accounts/{acct}/access/apps/{app['id']}", app_body([{"id": owner_policy(), "precedence": 1}]))
         gate.cf("DELETE", f"/accounts/{acct}/access/policies/{pol['id']}")
         gate.cf("DELETE", f"/accounts/{acct}/access/service_tokens/{tok['id']}")
         left = [t for t in gate.cf("GET", f"/accounts/{acct}/access/service_tokens") if t["name"] == "argonia-studio-prove"]
         print("prove token removed" if not left else "WARNING: prove token still present")
-    print(json.dumps({"stranger_gets_login": stranger, "token_gets_studio": ok}))
-    return 0 if stranger and ok else 1
+    print(json.dumps({"stranger_gets_login": stranger, "token_gets_studio": ok, "through_switch": switch,
+                      "switch_refuses_others": refused}))
+    return 0 if stranger and ok and switch and refused else 1
 
 
 if __name__ == "__main__":
