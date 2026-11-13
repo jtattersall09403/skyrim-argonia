@@ -69,7 +69,7 @@ and each also has a plain way (a lock picked, a fight, a run through the fire) t
   Stormhold: faith). He holds that the Velothi halls are his people's graves, lying six hundred years without a
   rite, and that he is the only living person asking after them.
 - **The buyers.** The Synod has no hall in the province and works "through buyers, commissions and third parties",
-  hunting "artefacts of great magical power" (`topics/guilds-and-orders.md:80`, `:100`). Its buyer here is **Varia
+  hunting "artefacts of great magical power" (`topics/guilds-and-orders.md:80`, `:100`). Its buyer here is **Livia
   Semprone** (X), who pays for stone that still holds a charge and says so plainly. The College of Whispers
   "summons Daedra and practises necromancy" (`topics/guilds-and-orders.md:106`); its scholar **Maelle Jurard** (X)
   offers the readers a way to ask the dead directly, which tempts people who love books and horrifies everyone
@@ -559,7 +559,7 @@ Offered once SA02 has ended completed.
 a walk north-west of the market town of Inoja; its diggers "have broken through into a buried stone hall of old
 Ayleid make and will not go back down; the elder wants someone to look" (D okuwun-rahei, Joxhi: hooks). The way in
 is a breach in the west wall of the clay pit. "The clay people do not send to us. He has. Go and see what is under
-his village." At Joxhi one person speaks first, in one breath, on the path to the pit: Varia Semprone. "You are
+his village." At Joxhi one person speaks first, in one breath, on the path to the pit: Livia Semprone. "You are
 the readers' new hand. I buy stone that still holds a charge, and I pay more than they will. Ayleid ward-stones
 face inward: three thousand years of holding something in. Bring me what you lift." Reader Ocan named her to the
 player after SA01 or SA02 as the buyer he would like them to meet. So the choice is named before the player goes
@@ -587,10 +587,10 @@ hall of the dead under a living village has one ward the fewer.
 | Who | Where they stand | What they want | If they die |
 |---|---|---|---|
 | Yaxil-Ca | the book hall | word of what is under Joxhi; the stones, for the table, if they come out | the quest fails |
-| Meer-Wan, elder of Joxhi, once a potter (man) | at the village kiln (D okuwun-rahei, Joxhi: look) | to know whether his people can dig on; twenty-three people live on that seam | Nema-Lah hears the player instead |
-| Nema-Lah, Joxhi's grave-singer, who "names them at the kiln fire" (D okuwun-rahei, Joxhi: faith) (woman) | at the pit wall where the figures are pressed; a second placement at the breach | the dead named, whoever they are | the truth has nobody to carry it to the fire; with the elder dead too, Yaxil-Ca hears the player and the quest ends Walled |
-| Varia Semprone, buyer (woman) | on the pit path at Joxhi; she speaks first | the stones | the stones have no buyer |
-| a hired spear of the Marsh Charter (man) | at the pit head | his day's pay; "I am paid to the door" | nothing |
+| Elder Jo-Reesh of Joxhi, once a potter (man; the Marsh Charter's MC02 stands him at the same kiln) | at the village kiln (D okuwun-rahei, Joxhi: look) | to know whether his people can dig on; twenty-three people live on that seam | Ixha-Lei hears the player instead |
+| Ixha-Lei, Joxhi's grave-singer, who "names them at the kiln fire" (D okuwun-rahei, Joxhi: faith) (woman) | at the pit wall where the figures are pressed; a second placement at the breach | the dead named, whoever they are | the truth has nobody to carry it to the fire; with the elder dead too, Yaxil-Ca hears the player and the quest ends Walled |
+| Livia Semprone, buyer (woman) | on the pit path at Joxhi; she speaks first | the stones | the stones have no buyer |
+| Gam-Kur, a spear of the Marsh Charter on hire (man) | at the pit head | his day's pay; "I am paid to the door" | nothing |
 | four Ayleid dead, the overseers, fixed at level 15 | the hall beyond the first gallery, hostile; a second placement of two of them in the first gallery, switched off | | each is checked dead or alive by the ending lines |
 | their warden, fixed at level 26 | the undercroft, hostile | | checked by the ending lines |
 
@@ -602,7 +602,7 @@ hall of the dead under a living village has one ward the fewer.
 | the overseers' key | on the base of the nearer stand, inside the ward's reach | a key | opens the inner door |
 | the inner door | between the overseers' hall and the undercroft | Expert lock; the overseers' key | |
 | the wall of clay figures | the undercroft | a thing to use | "Hundreds of small clay figures are pressed into this wall in rows, each no longer than a hand. They are the figures Joxhi's diggers press into the pit wall above for their dead. The lowest rows are worn almost smooth." |
-| a clay figure | loose at the foot of the wall | takeable | one of the dead, off the wall: what Nema-Lah is shown |
+| a clay figure | loose at the foot of the wall | takeable | one of the dead, off the wall: what Ixha-Lei is shown |
 | the warden's chest | the undercroft | unlocked | 400 gold of old coin, an enchanted Ayleid circlet of the existing kind, a filled soul gem: the hall's reward |
 | a digger's cache | "under the buried hall's door" (D okuwun-rahei, Joxhi: gives) | unlocked | a digger's savings: 60 gold and a pick |
 
@@ -627,32 +627,32 @@ the loose figure.
 |---|---|---|---|
 | 0 | hidden start; offered once SA02 has ended completed and while Yaxil-Ca lives | | |
 | 10 | Yaxil-Ca's line | Yaxil-Ca sent me to Joxhi, the clay village north-west of Inoja, whose diggers have broken into a buried Ayleid hall through the west wall of their pit and will not go back down. The elder wants to know what is under his village. | See what is in the hall under the clay (the wall of figures) |
-| 40 | using the wall of clay figures (open from 10) | In the undercroft of the buried hall I found a wall set with hundreds of small clay figures, the same that Joxhi's diggers press into the pit wall for their dead. | Tell the elder what is under Joxhi (Meer-Wan; Nema-Lah; Yaxil-Ca if both are dead) |
-| 50 | Meer-Wan's line "Slaves dug this pit first. Those are their dead." | I told Meer-Wan what the wall is: the pit is older than his village and the figures began as slaves' grave-marks. He asked me to leave the telling to him, for a season. | Report to Yaxil-Ca (her); Nema-Lah, while the clay figure is held (her) |
-| 60 | Nema-Lah's line, the clay figure held: "This came off a wall under your pit" (takes it; at 40 or 50) | I put one of the figures from the buried wall in the hand of Nema-Lah, the grave-singer, and told her where it came from. | Report to Yaxil-Ca (her) |
-| 90 | Yaxil-Ca's line at 50, or at 40 with Meer-Wan and Nema-Lah both dead (locks the breach) | **Walled.** I told Yaxil-Ca what is under Joxhi. | ends, completed |
-| 91 | Yaxil-Ca's line at 60 (switches Nema-Lah from the pit wall to the breach, if she lives; switches off two of the diggers) | **Named.** I told Yaxil-Ca what is under Joxhi, and that its grave-singer knows. | ends, completed |
+| 40 | using the wall of clay figures (open from 10) | In the undercroft of the buried hall I found a wall set with hundreds of small clay figures, the same that Joxhi's diggers press into the pit wall for their dead. | Tell the elder what is under Joxhi (Jo-Reesh; Ixha-Lei; Yaxil-Ca if both are dead) |
+| 50 | Jo-Reesh's line "Slaves dug this pit first. Those are their dead." | I told Jo-Reesh what the wall is: the pit is older than his village and the figures began as slaves' grave-marks. He asked me to leave the telling to him, for a season. | Report to Yaxil-Ca (her); Ixha-Lei, while the clay figure is held (her) |
+| 60 | Ixha-Lei's line, the clay figure held: "This came off a wall under your pit" (takes it; at 40 or 50) | I put one of the figures from the buried wall in the hand of Ixha-Lei, the grave-singer, and told her where it came from. | Report to Yaxil-Ca (her) |
+| 90 | Yaxil-Ca's line at 50, or at 40 with Jo-Reesh and Ixha-Lei both dead (locks the breach) | **Walled.** I told Yaxil-Ca what is under Joxhi. | ends, completed |
+| 91 | Yaxil-Ca's line at 60 (switches Ixha-Lei from the pit wall to the breach, if she lives; switches off two of the diggers) | **Named.** I told Yaxil-Ca what is under Joxhi, and that its grave-singer knows. | ends, completed |
 | 95 | Yaxil-Ca dead | The readers have nobody to send me now. | ends, failed |
 
-With Meer-Wan dead and Nema-Lah alive, her line at 40 needs the figure; a player without it is told by her to
+With Jo-Reesh dead and Ixha-Lei alive, her line at 40 needs the figure; a player without it is told by her to
 bring something she can hold. The stones are things held, never a stage. Three people take them, each by a line
-gated on a stone held, and each sets a number of their own: Varia (`sa03.sold`: 300 gold a stone, and 600 to a
+gated on a stone held, and each sets a number of their own: Livia (`sa03.sold`: 300 gold a stone, and 600 to a
 player who names what she has left unsaid, an Enchanting 40 check: "This is no ward. It is a binding, and your
-house knows what those fetch"); Yaxil-Ca, at the report (`sa03.table`); Meer-Wan (`sa03.sunk`: "Into the slip-pit,
+house knows what those fetch"); Yaxil-Ca, at the report (`sa03.table`); Jo-Reesh (`sa03.sunk`: "Into the slip-pit,
 where no buyer will find them"). Yaxil-Ca's ending lines read whether a stone was lifted (any of the three
 numbers, or a stone still in the pack) and whether all five of the hall's dead are dead. A stone knocked off and
 left lying in the gallery reads as never lifted; nothing said afterwards claims otherwise.
 
 **The choice, and each side's honest case.** *The stones* are the choice, and it is made with a hand out towards a
-stand; it is about power, not about who is told. Lifted, they are the quick way in and a small fortune. Varia's
+stand; it is about power, not about who is told. Lifted, they are the quick way in and a small fortune. Livia's
 case: the stones are wasted under a clay pit, her house will learn from them what nobody here can, and she has
-hidden nothing about what they do. Meer-Wan's: nothing has come up out of that breach in the weeks since it was
+hidden nothing about what they do. Jo-Reesh's: nothing has come up out of that breach in the weeks since it was
 opened, and he would like to go on saying so. Yaxil-Ca's: what is studied at the readers' table stays in the east.
 Left standing, they keep the hall shut on its dead and leave the player a small key to draw out by spell, or an
 Expert lock. Only a player who ends all five of the dead lifts the stones at no cost to anybody. *The telling* is
-smaller and has no lie in it. Meer-Wan asks for a season's silence: his diggers are proud of the figures, half of
+smaller and has no lie in it. Jo-Reesh asks for a season's silence: his diggers are proud of the figures, half of
 them would leave a pit they knew for a slave-pit, and Thorn's buyers "who offer too much" (D okuwun-rahei, Joxhi:
-present) would have the seam inside a year. Nema-Lah, with the figure in her hand: those are dead who were never
+present) would have the seam inside a year. Ixha-Lei, with the figure in her hand: those are dead who were never
 named at any fire, they are older than the village and have waited longer, and a custom is not smaller for having
 been begun by people who had nothing else.
 
@@ -660,22 +660,22 @@ been begun by people who had nothing else.
 
 - *A stone lifted and any of the dead still walking.* Yaxil-Ca's ending line switches on the two overseers who
   wait in the first gallery, far from her hall: with the ward down they have come as far as the breach. If the
-  ending is Walled they stand behind the elder's locked door, heard and not seen, and the Charter spear is still
-  at the pit head on Joxhi's pay. Meer-Wan then has one line for the player, which names its cost before it is
+  ending is Walled they stand behind the elder's locked door, heard and not seen, and Gam-Kur is still
+  at the pit head on Joxhi's pay. Jo-Reesh then has one line for the player, which names its cost before it is
   chosen: "A spear's season is 300 gold. You lifted it. Pay it, or every mound on this river will hear what a
   Borrower is." Paid, he says no more of it. Unpaid, the traders of Joxhi and Inoja shut their trading lines to
   the player (a stored number those lines read). If the ending is Named the breach is open, and the two stand in
   it for whoever comes back.
 - *No stone lifted, or all five dead.* The spear is gone from the pit head (switched off by the ending line) and
   the elder says the pit is the quietest it has been.
-- *Walled (90).* The breach is locked. Nema-Lah goes on pressing figures into the pit wall. At the end of the
-  line Meer-Wan, asked, says his season is up and that he told them at the kiln fire himself, in his own words.
-- *Named (91).* Two of Joxhi's diggers are gone from the village, and Nema-Lah stands at the breach, not the pit
-  wall. Meer-Wan greets the player without warmth and without a lie: "She named four hundred in one night. I have
+- *Walled (90).* The breach is locked. Ixha-Lei goes on pressing figures into the pit wall. At the end of the
+  line Jo-Reesh, asked, says his season is up and that he told them at the kiln fire himself, in his own words.
+- *Named (91).* Two of Joxhi's diggers are gone from the village, and Ixha-Lei stands at the breach, not the pit
+  wall. Jo-Reesh greets the player without warmth and without a lie: "She named four hundred in one night. I have
   nineteen diggers. I did not say you were wrong."
 - In both, Yaxil-Ca gives the second rank, 300 gold and a tome of Detect Dead. Told of the wall of figures, she is
   quiet, and then: "People keep what their keepers taught them, and forget where they learnt it. Do not make too
-  much of it at Joxhi." If Varia has the stones she adds only that the readers will read about them some day in a
+  much of it at Joxhi." If Livia has the stones she adds only that the readers will read about them some day in a
   book they have to borrow; Ocan, on the landing, is pleased, and says a hall with a purse is a hall that lasts.
   Hecal says Ocuil would have left the stones where they stood.
 
@@ -685,7 +685,7 @@ press into the pit above.
 
 | Step | Skill | Ceiling block |
 |---|---|---|
-| hear the job; hear Varia | none (the briefings) | a line sets a stage; one person speaks first |
+| hear the job; hear Livia | none (the briefings) | a line sets a stage; one person speaks first |
 | draw the key, or lift a stone | Alteration (Telekinesis); Restoration (a ward spell); Sneak | the game's own ward on a stand; a key placed on a surface; things taken are things held |
 | pass the overseers | Restoration (Turn Undead); Sneak; a weapon, Destruction or Conjuration | hostile people at fixed levels |
 | the inner door | the key; or Lockpicking (Expert) | a door with a lock level and a key |
@@ -756,7 +756,7 @@ the outlines. All three read the same version, and nothing was changed until all
 
 **What they said.**
 
-- *The player who loves the lore* (a mage) cared most about Brother Aurel and his lamp-carrier, Meer-Wan with his
+- *The player who loves the lore* (a mage) cared most about Brother Aurel and his lamp-carrier, Jo-Reesh with his
   nineteen diggers, and Yaxil-Ca, whom she began by distrusting and ended by pitying; found Tedryn's "I would
   sooner my cousins' house had heirs than none" wonderful and appalling at once; could retell the line in three
   sentences; would join and wants SA04 above all. She guessed the outline of the turn at SA02 from "held, by
@@ -801,7 +801,7 @@ the outlines. All three read the same version, and nothing was changed until all
    if they lift it and leave the dead walking. The lie to the elder is gone, and the grave-singer is told by the
    clay figure put in her hand.
 3. *Out of the hall in three sentences.* Each briefing gives the place and the way and the marker; nobody else
-   must be spoken to. Dives-Shallow, Xocin and Meer-Wan are optional before the place; Varia speaks one breath;
+   must be spoken to. Dives-Shallow, Xocin and Jo-Reesh are optional before the place; Livia speaks one breath;
    Tedryn's reading is two sentences.
 4. *Tools before the job.* Telekinesis is given with SA01 and Mark and Recall with SA02; the cache and the
    rewards hold other things (a staff, a tome of Invisibility, a Ring of Waterbreathing, a tome of Detect Dead).
