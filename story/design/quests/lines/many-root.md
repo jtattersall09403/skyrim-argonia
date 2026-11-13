@@ -512,7 +512,7 @@ complained of it. Tell him the pool is bitter too" (consistency C56, P7).
 | the reed tap | in the far root | takeable; the camp's | "Reed Tap": pulled, the root closes |
 | the far root | on the hummock north of the camp | a thing that is used | "Root of Korydon's Tree" |
 | the slip's chest | beside the hull on the slip | no lock; Jaseen's | pitch, twelve lockpicks, forty arrows and a boat-builder's purse of 120 gold, fixed |
-| the dull clutch, and the same nest with some eggs bright | a nest of eggs by the tree's pool, in two states | not takeable | what is already lost, and what came back |
+| the dull clutch, and bright eggs among it | a nest of dull eggs by the tree's pool, which is the place's own; a few bright eggs in it, ours, switched on at the end | not takeable | what is already lost, and what came back |
 
 The things at the root are the camp's. To one who has the camp's leave they are free to take; to anyone else,
 taking them in the hunters' sight is theft, and the camp answers a thief as Skyrim's own law does.
@@ -544,8 +544,8 @@ taking them in the hunters' sight is theft, and the camp answers a thief as Skyr
   she would get it. Then I did not ask again." Shown to Meer-Zah: "The slip paid me. Jaseen. I packed it because
   the town wanted more than a root gives."
 - *The wound.* Demeepa-Ru makes the root-salve from the sweet sap of the forge root, which he draws himself. A
-  player with Alchemy 25 asks for his bowl and works it ("Give me your bowl"), and learns something by it;
-  otherwise he does. Refused: "You would curdle it. Stand back and hold the sap." Using the far root, the salve
+  player with Alchemy 25 asks for his bowl and works it ("Give me your bowl"), and he says the hall has sent him
+  a minder at last; otherwise he does. Refused: "You would curdle it. Stand back and hold the sap." Using the far root, the salve
   made, cleans and dresses the wound.
 - *The tap.* It is still in the root. What is done with it is the ending.
 
@@ -559,7 +559,7 @@ taking them in the hunters' sight is theft, and the camp answers a thief as Skyr
 | 30 | the three beads, or the taste | I learned that the bitterness comes into the tree from the north, by a root that surfaces on the Tumnatu's hummock across the channel. | Find the far root (the pot of paste; Meer-Zah) |
 | 31, 32 | Meer-Zah's line, by Speech (31) or for 60 gold (32); open at 20 and 30; gives the camp's leave | Meer-Zah, the Tumnatu herb-wife, told me that a root of Korydon's tree comes up in her camp's beds, and gave me the camp's leave to walk out to it. (32: I paid her sixty for it.) | Find the far root (the pot of paste) |
 | 40 | taking the pot of paste (open at 30 to 32); or, the pot found before any way was taken, showing it to Demeepa-Ru | At the far root I found a reed tap driven into the wood, and a pot of dragon's-tongue paste at its foot. The wound round the tap is packed with it. | Get a root-salve from Demeepa-Ru (him) |
-| 45, 46 | Demeepa-Ru's salve line (45), or "Give me your bowl" with Alchemy 25 (46: Alchemy raised by 1); the salve is carried in the journal and is no thing in the pack, so it cannot be lost | Demeepa-Ru made a root-salve from the forge root's sweet sap. (46: I worked a root-salve in Demeepa-Ru's bowl from the forge root's sweet sap.) | Dress the wound (the far root) |
+| 45 | Demeepa-Ru's salve line, or "Give me your bowl" with Alchemy 25; the salve is carried in the journal and is no thing in the pack, so it cannot be lost | A root-salve was made in Demeepa-Ru's bowl from the forge root's sweet sap. | Dress the wound (the far root) |
 | 50 | using the far root (open once the salve is made; moves on to 60 at once if the tap is already held) | I cut the paste out of the wound and dressed it. The sap ran clean. The tap is still in the root. | Pull the tap (the reed tap), or leave it in and say so to Meer-Zah or to Jaseen (each) |
 | 60 | taking the reed tap (open at 50) | I pulled the tap. The root will close. | Tell Okeeh-Ja (him) |
 | 61 | Meer-Zah's line "It stays in. Draw as your mothers drew" (open at 50; gives the camp's leave, her teaching and three pots of dart-paste) | I left the tap in the root and told Meer-Zah it is the Tumnatu's, at the old measure. She showed me what dragon's-tongue does. | Tell Okeeh-Ja (him) |
@@ -591,13 +591,12 @@ person bowhunter at camp level 12 "Tumnatu bow-hunter"
 person spearhunter at camp level 12 "Tumnatu spear-hunter"
 person rootspider at camp hostile level 8 "the spider on the root"
 
-thing walkerschest at hall container owner manyroot holds gold 30 "Walkers' Chest"
+thing walkerschest at hall container owner manyroot "Walkers' Chest"
 thing bead1 at korydon "Sap-Bead (Pool Root)"
 thing bead2 at korydon "Sap-Bead (Forge Root)"
 thing bead3 at korydon "Sap-Bead (North Root)"
-thing dullnest at korydon "Nest of Dull Eggs"
-thing brightnest at korydon off "Nest with Bright Eggs"
-thing slipchest at korydon container owner jaseen holds gold 120, lockpick 12 "Slip's Chest"
+thing brighteggs at korydon off "Bright Eggs in the Nest"
+thing slipchest at korydon container owner jaseen "Slip's Chest"
 thing root at camp "Root of Korydon's Tree"
 thing paste at camp owner tumnatucamp "Pot of Dragon's-Tongue Paste (Tumnatu Clay)"
 thing gourd at camp owner tumnatucamp "Gourd of Resin (Korydon Tin Stopper, Keel Stamp)"
@@ -616,15 +615,14 @@ stage 30 "I learned that the bitterness comes into the tree from the north, by a
 stage 31 "Meer-Zah, the Tumnatu herb-wife, told me that a root of Korydon's tree comes up in her camp's beds, and gave me the camp's leave to walk out to it." do join tumnatucamp
 stage 32 "I paid Meer-Zah, the Tumnatu herb-wife, sixty. She told me that a root of Korydon's tree comes up in her camp's beds, and gave me the camp's leave to walk out to it." do take-gold 60, join tumnatucamp
 stage 40 "At the far root I found a reed tap driven into the wood, and a pot of dragon's-tongue paste at its foot. The wound round the tap is packed with it."
-stage 45 "Demeepa-Ru made a root-salve from the forge root's sweet sap."
-stage 46 "I worked a root-salve in Demeepa-Ru's bowl from the forge root's sweet sap." do skill-up Alchemy 1
+stage 45 "A root-salve was made in Demeepa-Ru's bowl from the forge root's sweet sap."
 stage 50 "I cut the paste out of the wound and dressed it. The sap ran clean. The tap is still in the root."
 stage 60 "I pulled the tap. The root will close."
 stage 61 "I left the tap in the root and told Meer-Zah it is the Tumnatu's, at the old measure. She showed me what dragon's-tongue does." do join tumnatucamp, ingredient 0889A2:Skyrim.esm, give dartpaste 3, set mr01.tap 2
 stage 62 "I left the tap in the root and took Jaseen's three hundred for it. What is in the slip's chest is mine." do give-gold 300, own slipchest, set mr01.tap 3
-stage 90 completed "I told the Listener that I pulled the tap from Korydon's root." do set mr01.tap 1, give-gold 150, give alchring, leave tumnatucamp, off dullnest, on brightnest, recipe minderssalve at cookpot needs histsap 1 taproot 1
-stage 91 completed "I told the Listener that I left Korydon's root to the Tumnatu." do give-gold 150, off dullnest, on brightnest
-stage 92 completed "I told the Listener that I sold Korydon's root to the slip." do leave tumnatucamp, off dullnest, on brightnest
+stage 90 completed "I told the Listener that I pulled the tap from Korydon's root." do set mr01.tap 1, give-gold 150, give alchring, leave tumnatucamp, on brighteggs, recipe minderssalve at cookpot needs histsap 1 taproot 1
+stage 91 completed "I told the Listener that I left Korydon's root to the Tumnatu." do give-gold 150, on brighteggs
+stage 92 completed "I told the Listener that I sold Korydon's root to the slip." do leave tumnatucamp, on brighteggs
 stage 95 failed "The Listener is dead, and nobody in the hall will answer for Korydon's tree."
 stage 96 failed "Korydon's tree-minder is dead, and nobody can make the salve."
 
@@ -633,7 +631,7 @@ objective 20 at 20 "Find where the bitterness comes into Korydon's tree" -> bead
 objective 30 at 30 "Find the far root on the Tumnatu's hummock" -> paste, meerzah
 objective 31 at 31, 32 "Find the far root in the camp's beds" -> paste
 objective 40 at 40 "Get a root-salve from Demeepa-Ru" -> demeepa
-objective 45 at 45, 46 "Dress the wound in the far root" -> root
+objective 45 at 45 "Dress the wound in the far root" -> root
 objective 50 at 50 "Pull the reed tap, or leave it in and say so to Meer-Zah or to Jaseen" -> tap, meerzah, jaseen
 objective 60 at 60, 61, 62 "Tell Okeeh-Ja" -> okeeh
 
@@ -660,7 +658,7 @@ line leavecoin meerzah at 20-30 ask "Sixty, for a walk in your beds." if gold 60
 line jaseengourd jaseen at 40-50 ask "This gourd has your slip's stamp." if holds gourd says "he asked for three times the resin and did not ask how"
 line meerzahgourd meerzah at 40-50 ask "Who paid you for the resin?" if holds gourd says "the slip, Jaseen; she packed the wound because the town wanted more than a root gives"
 line makesalve demeepa at 40 ask "The wound must be dressed." -> 45 says "he draws the forge root's sweet sap and makes the salve"
-line bowl demeepa at 40 ask "Give me your bowl." if skill Alchemy 25 -> 46 else "You would curdle it. Stand back and hold the sap." says "he hands it over and watches"
+line bowl demeepa at 40 ask "Give me your bowl." if skill Alchemy 25 -> 45 else "You would curdle it. Stand back and hold the sap." says "he hands it over, watches, and says the hall has sent him a minder at last"
 line pullcase demeepa at 45-50 ask "What should be done with the tap?" says "pull it; no hand but a minder's belongs on a root; the hall will pay you as its own and the Tumnatu will not have you in their beds again"
 line keepcase meerzah at 45-50 ask "What should be done with the tap?" says "it is our larder; leave it and you are of this camp, I teach you the tongue-flower and give you what we put on our darts; your hall keeps its ring for those who close roots"
 line sellcase jaseen at 45-50 ask "What should be done with the tap?" says "forty people; three hundred and what is in the slip's chest; your hall will give you nothing for it and the camp will know who sold their root"
@@ -726,7 +724,7 @@ stoppered with the town's own tin.
 | reach the root | Sneak; or Archery, a weapon skill or Destruction | a creature placed at a fixed level; owned things and Skyrim's own law of theft |
 | the find | none | taking a named thing sets a stage |
 | face the caulker | none (the gourd held) | lines gated on a thing held |
-| make the salve | Alchemy 25, or the minder makes it | a line sets a stage; a line gated on a skill sets a stage that raises a skill |
+| make the salve | Alchemy 25, or the minder makes it | a line sets a stage; a line gated on a skill sets the same stage |
 | dress the wound | none | using a named thing sets a stage |
 | pull the tap, or leave it | none: the decision | taking a named thing sets a stage; or one line per person |
 | what each ending gives | none | a stage gives things and gold, opens a recipe, makes an ingredient known, gives a container, changes a faction, switches a thing far away |
@@ -787,9 +785,9 @@ Nothing is wrong with any tree.
 
 **The ways through** (all open at the working stages, in any order).
 
-- *What is in the jar.* The elder's line "Let me taste it" shows a message: thin, faintly salt, nothing foul. With
-  Alchemy 25 a second line of hers shows a fuller one, to the player alone: this is rainwater and kelp-dye; it has
-  been thinned; nothing is wrong with the sap that is left. Refused: "You have a tongue. You have not a minder's
+- *What is in the jar.* The elder's line "Let me taste it" tells what the drop tastes of: thin, faintly salt,
+  nothing foul. With Alchemy 25 a second line of hers tells more: this is rainwater and kelp-dye; it has been
+  thinned; nothing is wrong with the sap that is left. Neither moves a stage. Refused: "You have a tongue. You have not a minder's
   tongue." Without the skill, Bun-Zeer says the same thing sideways: "It used to pour like honey."
 - *Who.* Three leads, from three kinds of source. Bun-Zeer: Ushu-Lan has given up his turn home four times, "and
   the jar told her so each time; ask her". His box, in the keepers' house, which Bun-Zeer points out as the stilt
@@ -814,7 +812,6 @@ Nothing is wrong with any tree.
 | 0 | hidden start; offered once MR01 has ended completed and while Onuja-Mei lives | | |
 | 10 | Okeeh-Ja's line "What is the job?" (gives the fresh jar and 60 gold) | The Listener sent me to Yuva-Goli on the east coast with a fresh jar of Helstrom's sap. The station's old jar has gone cloudy. I am to find what was done to it. The way is by rootworm to Aroxhu, east to Arorha, and north-east along the shore. | Speak to Onuja-Mei at Yuva-Goli's shrine (her) |
 | 20 | Onuja-Mei's line "Show me the jar" | Onuja-Mei fears her tree is ill. She will not unseal the new jar until she knows what spoiled the old one. | Find what spoiled the jar (the cloudy jar; Bun-Zeer; Ushu-Lan; Onuja-Mei) |
-| 22, 24 | Onuja-Mei's line "Let me taste it" (22), or the same with Alchemy 25 (24); each shows its message | I tasted the old jar. It is thin and faintly salt. (24: I tasted the old jar. It has been thinned with rainwater and kelp-dye; the sap that is left is sound.) | as at 20 |
 | 30, 31 | the confession (30: Ushu-Lan's line; or Bun-Zeer's, he being dead; or the elder's, both dead; 31: bought of him for 80 gold) | I learned that the keeper Ushu-Lan drank from the jar for two years and thinned it with rainwater and dye, and sold from it to the outlaws in the cove. The elder has been reading what he poured. (31: I paid him eighty to say it.) | Give Onuja-Mei the fresh jar, and tell her what I choose (her) |
 | 40, 41 | Onuja-Mei's line, the fresh jar held (the stage takes it): the whole truth (40: the Keepers' Store is the player's); the comfort (41: she reads the new jar for the player) | I gave Onuja-Mei the new jar and told her the truth: her keeper thinned the old one, and she has read rainwater for two years. (41: I gave Onuja-Mei the new jar and told her the old one soured on the road. She unsealed the new one and read it for me.) | Tell Okeeh-Ja (him) |
 | 90, 91 | Okeeh-Ja's line at 40, 41 | I told the Listener how it ended at Yuva-Goli. | ends, completed |
@@ -844,22 +841,19 @@ person bunzeer at station "Bun-Zeer"
 person salt at cove hostile level 10 "Salt-Throat"
 person deckhand at cove hostile level 6 "a sap-mad deckhand"
 
-thing cloudyjar at station "Sap-Jar of Yuva-Goli"
 thing ukey on ushulan "Ushu-Lan's key"
-thing ubox at house container locked novice key ukey owner ushulan holds gold 40 "Ushu-Lan's Box"
+thing ubox at house container locked novice key ukey owner ushulan "Ushu-Lan's Box"
 thing dyepot in ubox "Pot of Kelp-Dye (Wet)"
 thing covekey on salt "Salt-Throat's key"
-thing covechest at cove container locked apprentice key covekey owner salt holds gold 250 "Cove Chest"
+thing covechest at cove container locked apprentice key covekey owner salt "Cove Chest"
 thing gourd in covechest "Gourd of Sap (the Shrine's Cord)"
-thing store at station container owner yuvagoli holds gold 150 "Keepers' Store"
+thing store at station container owner yuvagoli "Keepers' Store"
 item freshjar "Sealed Jar of Helstrom Sap"
 item restnecklace "Walker's Necklace of Restoration"
 
 stage 0 hidden
 stage 10 "The Listener sent me to Yuva-Goli on the east coast with a fresh jar of Helstrom's sap. The station's old jar has gone cloudy. I am to find what was done to it. The way is by rootworm to Aroxhu, east to Arorha, and north-east along the shore. The elder, Onuja-Mei, stands at the station's shrine." do give freshjar, give-gold 60
 stage 20 "Onuja-Mei fears her tree is ill. She will not unseal the new jar until she knows what spoiled the old one."
-stage 22 "I tasted the old jar. It is thin and faintly salt." do message "Thin, and faintly salt. Nothing foul."
-stage 24 "I tasted the old jar. It has been thinned with rainwater and kelp-dye; the sap that is left is sound." do message "Rainwater, and the salt of kelp-dye. It has been thinned. The sap that is left is sound."
 stage 30 "I learned that the keeper Ushu-Lan drank from the jar for two years and thinned it with rainwater and dye, and sold from it to the outlaws in the cove. The elder has been reading what he poured."
 stage 31 "I paid eighty and learned that the keeper Ushu-Lan drank from the jar for two years and thinned it with rainwater and dye, and sold from it to the outlaws in the cove. The elder has been reading what he poured." do take-gold 80
 stage 40 "I gave Onuja-Mei the new jar and told her the truth: her keeper thinned the old one, and she has read rainwater for two years. She will not unseal the new one. The Keepers' Store is mine to take from." do take freshjar, own store, set mr02.told 1
@@ -870,7 +864,7 @@ stage 95 failed "The Listener is dead, and nobody in the hall will answer for Yu
 stage 96 failed "Nobody at Yuva-Goli can read a jar now."
 
 objective 10 at 10 "Speak to Onuja-Mei at Yuva-Goli's shrine" -> onuja
-objective 20 at 20, 22, 24 "Find what spoiled the jar" -> cloudyjar, bunzeer, ushulan, onuja
+objective 20 at 20 "Find what spoiled the jar" -> onuja, bunzeer, ushulan
 objective 30 at 30, 31 "Give Onuja-Mei the fresh jar, and tell her what I choose" -> onuja
 objective 40 at 40, 41 "Tell Okeeh-Ja" -> okeeh
 
@@ -880,20 +874,20 @@ line job3 okeeh at 0 ask "Is there another tree?" if done MR01 92, alive onuja -
 line station okeeh at 10-41 ask "What is Yuva-Goli?" says "five of our own on the sea coast, far from any tree, who go home in turns"
 line jar okeeh at 10-41 ask "What is the jar to them?" says "all the tree they have; their elder reads it"
 line showjar onuja at 10 ask "The hall sent a new jar." -> 20 says "she will not unseal it until she knows what spoiled the old one; when it is unsealed she will read it first for whoever brought it"
-line taste onuja at 20 ask "Let me taste the old one." -> 22 says "she lets a drop fall on the player's finger"
-line tasteskill onuja at 20-22 ask "Let me taste it as a minder would." if skill Alchemy 25 -> 24 else "You have a tongue. You have not a minder's tongue." says "she lets a drop fall on the player's tongue"
-line honey bunzeer at 20-24 ask "What do you make of the jar?" says "it used to pour like honey"
-line turns bunzeer at 20-24 ask "Who has been here longest?" if alive ushulan says "Ushu-Lan has given up his turn home four times, and the jar told her so each time; his box is in the keepers' house, the stilt house nearest the net line"
-line coveway bunzeer at 20-24 ask "Who comes to this shore?" says "outlaws beach a boat in the cove, south-east along the shore past the kelp racks; two of them, and one is mad; do not go alone"
-line covewarn onuja at 20-24 ask "Is the cove safe?" says "it is not; we do not speak of who lands there"
-line pot onuja at 20-24 ask "I found this." if holds dyepot, alive ushulan says "whose is it? she will not hear it from a pot"
-line ease ushulan at 20-24 ask "Sit. Let me see your hands." if skill Restoration 25 -> 30 else "I have nets to see to." says "he tells all of it"
-line press ushulan at 20-24 ask "You have not been home in two years. Why?" if skill Speech 35 -> 30 else "I have nets to see to." says "he tells all of it"
-line showpot ushulan at 20-24 ask "This dye pot is wet." if holds dyepot -> 30 says "he tells all of it"
-line showgourd ushulan at 20-24 ask "This gourd is tied with the shrine's cord." if holds gourd -> 30 says "he tells all of it"
-line buy ushulan at 20-24 ask "Eighty, to hear why the jar is cloudy." if gold 80 -> 31 else "Eighty. The outlaws pay better than you." says "he is not the first to be paid by this hand; he tells all of it"
-line forhim bunzeer at 20-24 ask "These were Ushu-Lan's." if dead ushulan, holds dyepot, holds gourd -> 30 says "the dye is from our racks and the cord from our shrine; then it was him, and that is why he never went home"
-line forboth onuja at 20-24 ask "These were your keeper's." if dead ushulan, dead bunzeer, holds dyepot, holds gourd -> 30 says "she knows the cord; she says his name"
+line taste onuja at 20 ask "Let me taste the old one." says "she lets a drop fall on the player's finger: thin, and faintly salt; nothing foul"
+line tasteskill onuja at 20 ask "Let me taste it as a minder would." if skill Alchemy 25 else "You have a tongue. You have not a minder's tongue." says "a drop on the tongue: rainwater, and the salt of kelp-dye; it has been thinned, and the sap that is left is sound"
+line honey bunzeer at 20 ask "What do you make of the jar?" says "it used to pour like honey"
+line turns bunzeer at 20 ask "Who has been here longest?" if alive ushulan says "Ushu-Lan has given up his turn home four times, and the jar told her so each time; his box is in the keepers' house, the stilt house nearest the net line"
+line coveway bunzeer at 20 ask "Who comes to this shore?" says "outlaws beach a boat in the cove, south-east along the shore past the kelp racks; two of them, and one is mad; do not go alone"
+line covewarn onuja at 20 ask "Is the cove safe?" says "it is not; we do not speak of who lands there"
+line pot onuja at 20 ask "I found this." if holds dyepot, alive ushulan says "whose is it? she will not hear it from a pot"
+line ease ushulan at 20 ask "Sit. Let me see your hands." if skill Restoration 25 -> 30 else "I have nets to see to." says "he tells all of it"
+line press ushulan at 20 ask "You have not been home in two years. Why?" if skill Speech 35 -> 30 else "I have nets to see to." says "he tells all of it"
+line showpot ushulan at 20 ask "This dye pot is wet." if holds dyepot -> 30 says "he tells all of it"
+line showgourd ushulan at 20 ask "This gourd is tied with the shrine's cord." if holds gourd -> 30 says "he tells all of it"
+line buy ushulan at 20 ask "Eighty, to hear why the jar is cloudy." if gold 80 -> 31 else "Eighty. The outlaws pay better than you." says "he is not the first to be paid by this hand; he tells all of it"
+line forhim bunzeer at 20 ask "These were Ushu-Lan's." if dead ushulan, holds dyepot, holds gourd -> 30 says "the dye is from our racks and the cord from our shrine; then it was him, and that is why he never went home"
+line forboth onuja at 20 ask "These were your keeper's." if dead ushulan, dead bunzeer, holds dyepot, holds gourd -> 30 says "she knows the cord; she says his name"
 line hiscase ushulan at 30-31 ask "What should she be told?" says "all of it or none; tell her and I go home and she never reads again; lie and she reads and I wait on a jar"
 line hercase bunzeer at 30-31 ask "What should she be told?" says "she would want to know; tell her straight and what is in our store is yours; lie to her and buy your salt at Arorha"
 line truth onuja at 30-31 ask "Your keeper thinned it. You have read rainwater for two years." if holds freshjar, alive ushulan -> 40 says "she sends him home with the next canoe and will not unseal the new jar: she does not know her own eyes"
@@ -949,7 +943,7 @@ which kept a man from home for two years was the elder reading his own watering.
 | Step | Skill | Ceiling block |
 |---|---|---|
 | take the job; hear the elder | none (the briefings) | lines set stages; a stage gives a thing and gold |
-| taste the jar | none; Alchemy 25 to name it | a line sets a stage that shows a message; a line gated on a skill |
+| taste the jar | none; Alchemy 25 to name it | a line; a line gated on a skill |
 | the keeper's box | Lockpicking (Novice), or Pickpocket for the key; Sneak | an owned, locked container with fixed contents; a key carried by a person |
 | the confession | Restoration 25, Speech 35, 80 gold, or a thing held | line conditions: skill, gold, thing held, a person dead; a line sets a stage |
 | the cove | Archery, a weapon skill or Destruction; or Sneak and Lockpicking (Apprentice) | hostile people placed at fixed levels; a locked container; a key on a body |
@@ -978,7 +972,7 @@ hall, which is indoors, so no outdoor place needs to stand any set distance from
 
 | The thing | Quest | What happens there | How the player knows it |
 |---|---|---|---|
-| a nest of eggs beside the root pool at the village tree, in a dull state and a second state with some bright eggs | MR01 | the dull clutch; what is found afterwards | eggs in a nest, on sight, named "Nest of Dull Eggs"; Demeepa-Ru stands by it and speaks of it; the rootworm sets the player down at this pool |
+| a nest of dull eggs beside the root pool at the village tree, with room in it for a few bright eggs that are switched on later | MR01 | the dull clutch; what is found afterwards | eggs in a nest, on sight; Demeepa-Ru stands by it and speaks of it; the rootworm sets the player down at this pool |
 | three roots of the village tree showing above ground: at the pool, on the side of the ring towards the chime-smiths' forge, and at the ring's north edge, each with a small takeable bead of sap | MR01 | the tasting | each bead's own name gives its root; all three carry markers; the forge is known by its smelter and anvil |
 | a hull on a slip at the channel landing, with a pitch-pot and a chest beside it | MR01 | Jaseen stands and works there; one ending's gift | a boat out of the water being caulked, on sight; the gourd's name gives the keel stamp, and the slip is where keels are; the chest is named "Slip's Chest" |
 
