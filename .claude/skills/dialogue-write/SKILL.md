@@ -105,8 +105,10 @@ refuses a person with no finds. Never paste Morrowind lines into the repo.
 - **The prompt is the player's sentence.** A full sentence the player would say with what the brief lists under "the
   player already knows", never a bare label ("the boat"; "Did you see who came to the tree?" is a prompt). The compiler
   adds a check's label; never write a threshold. A prompt that commits the player names the deal.
-- **Every skill or gold check has its own refusal** in the speaker's voice, which says what would change their mind
-  without naming a number.
+- **Every skill or gold check has its own refusal** in the speaker's voice, which names the kind of thing that would
+  move them (a better tongue, a surer hand, coin, the thing itself in hand), never a number. No failing check stands
+  alone on the honest way through: the low-skill player gets a lesser outcome that still moves on.
+- **A talked route is an argument that settles the matter itself**, never a promise the player must then keep.
 - **People by the name the game shows.** A person the player can meet is named as their base is named, with the role
   beside it once; pronouns follow the brief's sex for that person.
 - **One speaker, one fact, per place.** The brief lists what the others in the same place and stage window say. Do
@@ -140,6 +142,17 @@ refuses a person with no finds. Never paste Morrowind lines into the repo.
 - **A line places its speaker only as the player sees them**: no room, wall or building the placement lacks.
 - **A line shared by several routes or endings** says only what is true of all of them; after an ending each person
   greets with their own view of it and its cost, never "I have nothing to add".
+- **A choice is named before it is made.** The quest-giver says what each way would do and cost; a choice offered
+  by a later person is named by the giver first, or players never find it. Each option is argued by the person it
+  concerns, with a reason of their own, and each side says what the other side winning would cost.
+- **An ending names who lost what.** Its last words and the greetings after it speak of the job as settled, say what
+  it cost whom, and send the player back to whoever gave it.
+- **Evidence the player must read** is pointed to by the journal and the objective, is short, and is handed on to
+  the person it concerns; the turn of a quest never rests on an optional line.
+- **A giver who only waits** has a greeting before the quest starts that states the hook unasked.
+- **A thing that was there from the start may already be taken**: "it was left there", never "it still lies there".
+- **The briefing is four short paragraphs at most**; the rest is told by the people on the spot.
+- **One topic per speaker**: a line several people share is one topic each.
 
 ## 5. Process
 

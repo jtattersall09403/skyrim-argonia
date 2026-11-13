@@ -255,28 +255,10 @@ one re-authored quest of each line. Everything else rests on the gate, the compa
 - **Skills lost for now, to be restored once the form carries locks and owners:** the Chainbreakers' three quests
   turn only on Speech or gold (their thefts were cut because the form had no owner or lock).
 
-### Cleared findings waiting to be folded into the skills (lane W)
+### Cleared findings
 
-Each was raised by a paper player, fixed, and not raised by the next player.
-
-- (MQ01) Before a player is asked to join anything, lines they can choose tell them what it is, whom it serves, what
-  it wants of them and why them, what it pays, and one true reason to hesitate; "not yet" stays open and free.
-- (MQ01) The first person to speak tells a new player where they are and what the local words mean, in their own
-  voice and a few sentences.
-- (MQ04, MQ05) After an ending, a person greets with their own view of it and its cost, never "I have nothing to add".
-- (MQ04, MQ05) A choice between people is named before it is made: the brief or journal says what each does.
-- (MQ04) A line that points to a topic ("ask me who...") uses the words the next topic answers.
-- (MQ04, MQ05) Only the name the player already has is used in lines, prompts and journal (the player says "the
-  cutters" until told otherwise).
-- (MQ04, MQ05) Each person's first line says who they are in a clause and glosses our words the first time.
-- (all) A speaker's brief gives every person's sex.
-- (tools) A lane keeps its scratch in a folder of its own and deletes only that; lanes share the session's scratchpad.
-- (BC01) A talked route is an argument that settles the matter itself, never a promise the player must then keep.
-- (BC01, BC02) A line names only where its speaker stands as the player sees it: no room or wall the placement lacks.
-- (BC02, BC03) Each option of a choice is argued by the person it concerns, with a reason of their own, held as a
-  record fact before the lines are written; each side states what the other side winning would cost.
-- (BC01) A choice offered by a later person is named by the quest-giver first, or players never find it.
-- (BC01 to BC03) A hand-in or greeting shared by several routes or endings says only what is true of all of them.
-- (not cleared, held open) Four of four players made the same choice in BC02: a choice everyone makes one way is not
-  yet a choice. The Chainbreakers' rewrite owes it.
-
+Every finding a paper player raised that a later player no longer raised is now a plain instruction in the skill that
+produced the fault: the quest-design ones in `quest-write/principles/general.md`, the wording ones in
+`dialogue-write` section 4, the method ones in `quest-system` and `quest-playtest`. Held open, not folded: in BC02
+four of four early players made the same choice, and BC03's turn was missed by players who never opened the book;
+both quests were changed for it and are judged again by the confirming players of the last lane.
