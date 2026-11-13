@@ -54,7 +54,7 @@ def test_kinds_are_read_from_the_file_name_and_unknown_models_are_not_guessed():
 
 
 def test_a_talkers_sheet_tells_distance_in_the_talks_own_words():
-    assert su.how_far(3000) == "a short walk"
+    assert su.how_far(2000) == "a short walk"
     su._bands = su.TALK_BANDS
     try:
         assert su.how_far(3000) == "just" and su.how_far(9000) == "a short way" and su.how_far(20000) == "a fair way"

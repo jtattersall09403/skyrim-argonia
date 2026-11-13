@@ -41,7 +41,7 @@ KINDS = [
     ("ship's stairs", "ship's stairs", r"shipstair"),
     ("longboat", "longboats", r"shiplongboat"),
     ("rowing boat", "rowing boats", r"rowboat"),
-    ("boat", "boats", r"(?<![a-z])boat|canoe|raft"),
+    ("boat", "boats", r"(?<![a-z])boat|canoe|(?<!c)raft"),
     ("bridge", "bridges", r"bridge"),
     ("paved road", "paved roads", r"road|cobble|paving|pathstone"),
     ("plank walkway", "plank walkways", r"walkway|boardwalk|plank|catwalk"),
