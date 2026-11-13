@@ -127,8 +127,9 @@ static class Talk
     // Each quest rumour, one INFO under ARG_Talk_Rumours gated to the talker's ref (as Add). A start rumour holds while its
     // quest can start: the window of its quest form's start (QuestForm.StartWindow: the start stage not yet passed, the
     // quest that starts it at its stage, and the other quests' stages every opening line asks for). A running rumour
-    // (stages A-B) holds while the quest's stage is from A to B. After QuestForm.Build: every quest is a form's.
-    public static void Rumours(SkyrimMod mod, bool skipUnbuilt = false)
+    // (stages A-B) holds while the quest's stage is from A to B. After QuestForm.Build: every quest is a form's; a rumour of
+    // a quest not built is left out (and logged) only when `skipUnbuilt` says so of its editor id.
+    public static void Rumours(SkyrimMod mod, Func<string, bool> skipUnbuilt)
     {
         var want = QuestRumours();
         if (want.Count == 0) return;
@@ -138,7 +139,7 @@ static class Talk
         {
             var (edid, stage, hi) = want[(who.Key, "talk.rumours")];
             var q = mod.Quests.FirstOrDefault(x => x.EditorID == edid);
-            if (q == null && skipUnbuilt) { Console.WriteLine($"talk rumours: {who.Key} left out ({edid} is not built)"); continue; }
+            if (q == null && skipUnbuilt(edid)) { Console.WriteLine($"talk rumours: {who.Key} left out ({edid} is not built)"); continue; }
             if (q == null) throw new Exception($"talk rumours: {edid} not in the plugin");
             var info = new DialogResponses(mod.GetNextFormKey(), SkyrimRelease.SkyrimSE) { Flags = new DialogResponseFlags(), Prompt = t.Name };
             byte n = 1;

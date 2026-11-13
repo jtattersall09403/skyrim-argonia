@@ -310,35 +310,43 @@ any check that did not happen as written.
       to come is cut: this faction's story can no longer be finished. Load an earlier save to let it grow again, or go on in
       the marsh as it now is." and the first quest's journal says "The Dock Keeper is dead. Nobody else can finish the
       block test with me." and it is listed as failed. The message appears once, not again if you load nothing and wait.
-- [ ] **12.12 The opening from a new game** (the game of 12.1 is fine; *waits on the build: two positions in the story
-      data, below*). Make your character in the barge's hold, then go up the stairs and through the door onto the pier.
-      Pass: a broker, Buys-The-Months, stands on the pier about 17 m from that door, facing it, with a quest marker
-      on him; when you walk towards him he comes up and speaks first (your name is not on his work roll; he wants you
-      off his pier; he names a person in Lilmoth who may have work). The quest has three steps, each with its own marker
-      on the compass and the map: speak to him, find the person he names (Nesh-Deeka, in a house in Lilmoth), and be
-      taken in by her.
-- [ ] **12.13 A marker for a thing to fetch** (the game of 12.1). In the block test at 12.2 the barrel's token is
-      marked on the compass, on the map and over the barrel; in the Night-Reed's first quest (12.15) the necklace in the
-      strongbox is marked the same way. Pass: in both, the marker leads you to the thing itself, not only to a person.
-- [ ] **12.14 Killing Nesh-Deeka shows the message** (*waits on the build, as 12.12*; save first and load afterwards).
-      Once the opening has named her, find Nesh-Deeka in her house in Lilmoth and kill her. Pass: one message box reads
-      "With this death the root of what was to come is cut: the main story can no longer be finished. Load an earlier
-      save to let it grow again, or go on in the marsh as it now is.", and the main quest's journal says it has failed.
+- [ ] **12.12 The opening from a new game** (the game of 12.1 is fine). Make your character in the barge's hold, then go
+      up the stairs and through the door at the top. You come out on the deck of a big ship moored at a pier. Pass: a
+      broker, Buys-The-Months, stands on the deck a step from you (about a metre and a half), facing you, with a quest
+      marker over him, and he speaks first without being asked: your name is not on his work roll, you owe him nothing,
+      and he wants you off his pier. If he does not speak first, speak to him: the same words are there as his first
+      topic. Then the quest has three steps, each with its own marker on the compass at the top of the screen and on the
+      map (M): speak to him; find Nesh-Deeka in Salts-The-Catch's house in Lilmoth (east along the shore, south of the
+      second big ship off Lilmoth's dock; she stands at the far end of the room); hear her out and say you will work for
+      the Veiled Reed. Reply with the step whose marker you could not follow.
+- [ ] **12.13 A marker on a thing to fetch** (any game that has reached the main quest's third quest, "The Tree That
+      Turned Its Face", or use the console: `setstage ARG_MQ04 30`). Pass: the objective "Take the jars of sap from the
+      camp on the dry rise north of the leech water" puts a marker on the compass and the map, and following it brings
+      you to the jars themselves (a lidded clay jar on the ground at the foot of a giant tree, north of Low-Reed
+      Village), not to a person. Two men stand guard there and attack.
+- [ ] **12.14 Killing Nesh-Deeka shows the message** (save first and load afterwards). Once the opening has named her,
+      find Nesh-Deeka in Salts-The-Catch's house and kill her. Pass: one message box reads "With this death the root of
+      what was to come is cut: the main story can no longer be finished. Load an earlier save to let it grow again, or
+      go on in the marsh as it now is.", and the journal (J) then lists the opening, "No Name on the Work Roll", as failed, with
+      the entry "Nesh-Deeka, who led the Veiled Reed's work in Lilmoth, is dead. The Reed has nothing more to ask of
+      me."
 - [ ] **12.15 One quest of the Night-Reed: "A Dry Hand in a Wet City"** (a new game; walk or take a boat to Soulrest's
       dock). Ask S'Tabi, the Khajiit trader on the dock, "Is there quiet work on this dock?"; he sends you to
       Tilts-The-Jug inside the house behind him (marked). She gives you three lockpicks and asks for a necklace from a dock
       thief's strongbox, under the eaves north-west of the house. Pick the lock, or talk the thief round, or pay him
-      sixty gold for the key, and take the necklace. Pass: each step's journal entry says only what you just did, each
-      step has a marker you can follow, and bringing her the necklace pays a hundred gold and sends you to a trapdoor in
-      Lilmoth, whose place is now named "The Night-Reed Chapter, Lilmoth" on its door.
-- [ ] **12.16 One quest of the Chainbreakers (BC01) and one local quest (LQ25)** (*wait on the build: their people's
-      looks and one creature's spot, below*). To be written as 12.15 once they are built.
+      sixty gold for the key, and take the necklace (it now looks like a silver necklace with a blue stone). Pass: each
+      step's journal entry says only what you just did, each step has a marker you can follow (the necklace is marked
+      while it is still in the strongbox), and bringing her the necklace pays a hundred gold and sends you to a trapdoor
+      in Lilmoth, whose place is named "The Night-Reed Chapter, Lilmoth" on its door.
+- [ ] **12.16 One local quest: "The River Monster"** (a new game; travel to Helstrom, the walled city in the north of
+      Black Marsh, and its river landing). Speak to Okan-Zish, a rafter who stands by the landing's stone tower. Pass:
+      he tells you of a crocodile that took a raft, the quest starts with a marker on the crocodile, and the crocodile is
+      in the shallows a short walk east of him along the shore; killing it moves the quest on and marks him; he then
+      tells you the crew's own bait drew it, and a bait bucket (a wooden bucket) lies in the shallows beside where the
+      crocodile was, with its own marker. Say whether the crocodile went for the crew before you reached it.
 
-Not in this build yet, and why (none is a fault of the scripts): the opening and the rest of the main quest wait on
-two positions in the story data (Nesh-Deeka and Salts-The-Catch stand where their house has no floor); the
-Chainbreakers' three quests wait on their people's looks (each names a story person where the build needs a game
-template); the river beast of LQ25 stands in water more than 1,800 units from any ground it can walk on, and LQ30's
-viper's position lies outside the cell it names.
+The Chainbreakers' three quests are being rewritten and are not in this build; their check follows when they are
+built.
 
 ## Done
 

@@ -42,13 +42,14 @@ static class QuestForm
             CompleteAll = 15, FailAll = 16,
             GiveItem = 20, TakeItem = 21, GiveGold = 22, TakeGold = 23, SetNumber = 24, AddNumber = 25, JoinFaction = 26,
             SetRank = 27, ChangeRegard = 28, SwitchOn = 29, SwitchOff = 30, LockDoor = 31, UnlockDoor = 32, ShowMessage = 33,
-            SpeakerHostile = 34, StartQuest = 35;
+            SpeakerHostile = 34, StartQuest = 35, GiveOwnership = 36;
         public static readonly Dictionary<string, int> OfResult = new()
         {
             ["set_stage"] = SetStage, ["give_item"] = GiveItem, ["take_item"] = TakeItem, ["give_gold"] = GiveGold, ["take_gold"] = TakeGold,
             ["set_number"] = SetNumber, ["add_number"] = AddNumber, ["join_faction"] = JoinFaction, ["set_rank"] = SetRank,
             ["change_regard"] = ChangeRegard, ["switch_on"] = SwitchOn, ["switch_off"] = SwitchOff, ["lock_door"] = LockDoor,
             ["unlock_door"] = UnlockDoor, ["show_message"] = ShowMessage, ["speaker_hostile"] = SpeakerHostile, ["start_quest"] = StartQuest,
+            ["give_ownership"] = GiveOwnership,
         };
     }
     public sealed record Row(int Op, FormKey What, float Num);
@@ -316,6 +317,7 @@ static class QuestForm
             "change_regard" => [new Row(op, PersonRef(c, b, S(res, "ref"), w), I(res, "by"))],
             "switch_on" or "switch_off" => [new Row(op, PlacedRef(c, b, S(res, "ref"), w), 0)],
             "lock_door" or "unlock_door" => [new Row(op, DoorRef(c, b, S(res, "ref"), w == "unlock_door"), 0)],
+            "give_ownership" => [new Row(op, OwnedRef(c, b, S(res, "ref")), 0)],
             "show_message" => [new Row(op, Message(c, b, S(res, "text")), 0)],
             "speaker_hostile" => [new Row(op, FormKey.Null, 0)],
             "start_quest" => [new Row(op, QuestKey(c, S(res, "quest")), I(res, "stage"))],
@@ -331,6 +333,13 @@ static class QuestForm
     {
         var r = RefOf(c, b, id, what);
         return r.Npc ? r.Placed : throw c.No("person", $"{what} names {id}, which is not a person");
+    }
+    // A thing a result gives the player: a placed thing of the form with an owner (a container another owns).
+    static FormKey OwnedRef(Ctx c, Built b, string id)
+    {
+        var r = RefOf(c, b, id, "give_ownership");
+        if (r.Kind != "thing" || !r.Json.TryGetProperty("owner", out _)) throw c.No("owner", $"give_ownership names {id}, which is no thing with an owner");
+        return PlacedRef(c, b, id, "give_ownership");
     }
     // A door a result locks or unlocks; one that is unlocked starts locked (requires a key, none given), as vanilla's quest doors.
     static FormKey DoorRef(Ctx c, Built b, string id, bool unlocked)
@@ -728,7 +737,10 @@ static class QuestForm
             // the nearest point of a navmesh at the spot's level: by a load door, at the player's feet (within 100 up or
             // down, so never the water's navmesh under a pier); else within 200 of the form's height
             // outdoors the form's height is the ground's: the surface under the spot nearest it (a record gives no height)
-            if (!nearDoor && !interior && Surfaces(c, cell, world, interior, p) is { Count: > 0 } ground)
+            // (unless a navmesh lies right under the spot at the form's own height: one over a surface the reader does not
+            // see, such as a giant tree's roots)
+            if (!nearDoor && !interior && Surfaces(c, cell, world, interior, p) is { Count: > 0 } ground
+                && NearestOn(c, Neighbours(c.Grid, cell, world, interior, p), p, 200, take: false) is not { dist: <= 1 })
                 p = new P3Float(p.X, p.Y, ground.MinBy(h => MathF.Abs(h.Top - p.Z))!.Top);
             // by a load door with no navmesh at the player's level within DoorStand of the spot: on the surface there, so
             // he stands a step from where the player comes out and need not walk to greet
@@ -1248,7 +1260,7 @@ static class QuestForm
             // takes of one thing, or deaths of one person, that set one stage from several stages are one script, from the
             // lowest of them (a later one is reached through it: the script's prerequisite is then done)
             int? until = t.TryGetProperty("until", out var ut) ? ut.GetInt32() : null;
-            if (until != null && kind != "death") throw c.No("trigger", $"{id}: only a death trigger has an `until`");
+            if (until != null && kind != "death") throw c.No("trigger", $"{id}: an `until` on a {kind} is not built yet (ARG_AliasEffects runs its rows on a death only)");
             var untilLabel = until is { } u0 ? $"until={u0}|" : "";
             if (kind is "take" or "death" && A(b.F, "triggers").Any(o => S(o, "kind") == kind && S(o, "ref") == r.Id && I(o, "sets") == sets && I(o, "prerequisite") < pre
                 && (o.TryGetProperty("until", out var ou) ? ou.GetInt32() : (int?)null) == until))

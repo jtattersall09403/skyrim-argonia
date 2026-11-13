@@ -35,6 +35,7 @@ The operation numbers are QuestForm.cs's (tools/ArgoniaPlugin); a number not lis
 ; 33 ShowMessage             What: the message box
 ; 34 SpeakerHostile          the person speaking the line attacks the player
 ; 35 StartQuest              What: the quest; Num: the stage it is set to
+; 36 GiveOwnership           What: the reference (a container another owns); it and what it holds become the player's
 
 Function Run(Int[] op, Form[] what, Float[] num, Int from, Int to, Quest q, ObjectReference speaker = None) Global
 	Actor player = Game.GetPlayer()
@@ -143,6 +144,8 @@ Function Run(Int[] op, Form[] what, Float[] num, Int from, Int to, Quest q, Obje
 			(w as ObjectReference).Lock(false)
 		ElseIf o == 33
 			(w as Message).Show()
+		ElseIf o == 36
+			(w as ObjectReference).SetActorOwner(player.GetActorBase())
 		ElseIf o == 34
 			a = speaker as Actor
 			If a && !a.IsDead()

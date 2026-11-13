@@ -215,16 +215,35 @@ static class Generate
         Console.WriteLine($"questform: {built.Count} quests built from forms ({string.Join(", ", built)})");
         ids.Save();
         // Quest rumours (Talk.cs): talkers' rumours of a quest that can start, gated on its form's start; after every quest.
-        Talk.Rumours(mod, refused.Count > 0);
+        // a rumour of a quest left out: of any refused quest with --refused-ok, else only of a quest being rewritten
+        var leftOut = refusedOk == "1" ? refused : refusedOk?.Split(',').ToList() ?? [];
+        Talk.Rumours(mod, edid => leftOut.Any(q => edid == "ARG_" + q.Split('.')[^1].ToUpperInvariant()));
         Talk.Voices(mod, mods); // every person we place has a voice, the quests' people too
         Mortality.Clear(mod, mods); // nobody essential or protected, after every builder
         // Every object rests on the surface under it (PlaceCheck: floating or sunk more than 10 moves onto it); after every builder.
         Heights.Fix(mod, mods); // people at their race's height (Heights.cs)
         PlaceCheck.Settle(mod, mods, Surface.Paths);
+        InfoOrder(mod);
         var order = mods.Select(m => m.ModKey).Append(Ours).ToList();
         // The plugin whose worldspace record we override is a master even when no form of it is referenced, so ours
         // always loads after it.
         mod.BeginWrite.ToPath(outPath).WithLoadOrder(order).WithNoDataFolder().WithExtraIncludedMasters([worldFrom, .. Overrides.Masters]).Write();
         Console.WriteLine($"wrote {outPath}: {mod.EnumerateMajorRecords().Count()} records");
+    }
+
+    /// The order a topic's lines are tried in, written into the records: each response of ours names the one before it
+    /// (PNAM, Previous INFO), as the Creation Kit writes it, so the order survives the YAML round trip, whose files carry
+    /// none, and the reader reads it back from the records.
+    public static void InfoOrder(SkyrimMod mod)
+    {
+        foreach (var t in mod.DialogTopics)
+        {
+            DialogResponses? before = null;
+            foreach (var r in t.Responses.Where(r => r.FormKey.ModKey == mod.ModKey))
+            {
+                if (before == null) r.PreviousDialog.Clear(); else r.PreviousDialog.SetTo(before.FormKey);
+                before = r;
+            }
+        }
     }
 }

@@ -141,8 +141,10 @@ persistent placed reference (flagged disabled when it starts off) at the spot it
   of it, a step (100 units) further on, so the spot is in
   front of the door and clear of the arrival point;
 - then the rule: `navmesh` takes the centre of the nearest free triangle of the cell's navmeshes (an exterior spot also
-  looks in the eight cells round it) and is refused when that is over 300 units from the spot; `surface` takes the
-  modelled surface or land under the spot nearest its height;
+  looks in the eight cells round it, at the height of the ground under the spot nearest the form's, or at the form's
+  own height when a navmesh lies right under the spot there, as on a giant tree's roots the surface reader does not see)
+  and is refused when that is over 300 units from the spot; `surface` takes the modelled surface or land under the spot
+  nearest its height;
 - by a load door, the navmesh must lie within 150 units (`DoorStand`) of that spot at the player's height; where none
   does, the person stands on the surface there (a deck, a floor), a step from the player, and will not walk (the build
   log says so); no surface at that height is refused;

@@ -405,7 +405,8 @@ static class QuestFormRead
             var m = new JsonObject { ["ref"] = who, ["fail_stage"] = d.fail, ["main_message"] = main };
             if (d.from is { } f) m["from"] = f;
             if (d.to is { } t) m["to"] = t;
-            if (main && WatchMessage(c, q.FormKey, who) is { } mt) m["message"] = mt;
+            // a message is the kind's own words: the form gives it only when it is not (which the builder refuses)
+            if (main && WatchMessage(c, q.FormKey, who) is { } mt && mt is not (QuestForm.MainMessage or QuestForm.FactionMessage)) m["message"] = mt;
             var within = (d.from is not { } f2 || start >= f2) && (d.to is not { } t2 || start <= t2);
             var checkedAt = starts.Where(x => x.who == who).ToList();
             if (within != (checkedAt.Count == 1 && checkedAt[0].at == d.fail)) throw No($"{who}: the start check does not match the death's window");
@@ -423,7 +424,7 @@ static class QuestFormRead
         foreach (var t in c.Mod.DialogTopics)
         {
             var br = c.Mod.DialogBranches.FirstOrDefault(b => b.FormKey == t.Branch.FormKey);
-            foreach (var info in t.Responses)
+            foreach (var info in Ordered(t.Responses, No))
             {
                 var ad = info.VirtualMachineAdapter;
                 var ls = ad?.Scripts.FirstOrDefault(s => s.Name == QuestForm.LineScript);
@@ -483,7 +484,7 @@ static class QuestFormRead
             foreach (var link in info.LinkTo)
             {
                 var at = c.Mod.DialogTopics.FirstOrDefault(t => t.FormKey == link.FormKey) ?? throw No($"line {j["id"]} links to {link.FormKey}");
-                foreach (var ai in at.Responses) ((JsonArray)j["answers"]!).Add(lineOfInfo.TryGetValue(ai.FormKey, out var aid) ? aid : throw No($"line {j["id"]}'s answer {ai.FormKey} is no line"));
+                foreach (var ai in Ordered(at.Responses, No)) ((JsonArray)j["answers"]!).Add(lineOfInfo.TryGetValue(ai.FormKey, out var aid) ? aid : throw No($"line {j["id"]}'s answer {ai.FormKey} is no line"));
             }
         // the force-greet: its topic is the speaks-first line's
         foreach (var a in aliases.Where(a => a.PackageData.Count > 0))
@@ -583,6 +584,22 @@ static class QuestFormRead
         var after = Death(rows.GetRange(show + 1, rows.Count - show - 1), q);
         return before == after ? after : null;
     }
+    /// A topic's responses in the order they are tried: the chain of each one's Previous INFO (Generate.InfoOrder), the
+    /// first naming none; a topic whose chain is broken fails the read.
+    static List<IDialogResponsesGetter> Ordered(IReadOnlyList<IDialogResponsesGetter> rs, Func<string, Bad> no)
+    {
+        var next = new Dictionary<FormKey, IDialogResponsesGetter>(); IDialogResponsesGetter? first = null;
+        foreach (var r in rs)
+        {
+            var p = r.PreviousDialog.FormKeyNullable;
+            if (p is not { } pk || pk.IsNull || !rs.Any(x => x.FormKey == pk)) { if (first != null) throw no($"responses {first.FormKey} and {r.FormKey} both come first"); first = r; }
+            else if (!next.TryAdd(pk, r)) throw no($"two responses follow {pk}");
+        }
+        var l = new List<IDialogResponsesGetter>();
+        for (var r = first; r != null; r = next.GetValueOrDefault(r.FormKey)) l.Add(r);
+        if (l.Count != rs.Count) throw no($"the responses of a topic ({rs.Count}) are not one chain of Previous INFO");
+        return l;
+    }
     // A who-must-live death's rows: the window's guards, then the failed ending set while the quest runs.
     static (int fail, int? from, int? to)? Death(List<Rw> rows, FormKey q)
     {
@@ -611,7 +628,7 @@ static class QuestFormRead
             case "join_faction": j["faction"] = name("faction", r.What); break;
             case "set_rank": j["faction"] = name("faction", r.What); j["rank"] = (int)r.Num; break;
             case "change_regard": j["ref"] = refName(r.What, where); j["by"] = (int)r.Num; break;
-            case "switch_on" or "switch_off" or "lock_door" or "unlock_door": j["ref"] = refName(r.What, where); break;
+            case "switch_on" or "switch_off" or "lock_door" or "unlock_door" or "give_ownership": j["ref"] = refName(r.What, where); break;
             case "show_message":
                 j["text"] = c.Mod.Messages.FirstOrDefault(m => m.FormKey == r.What)?.Description?.String ?? throw no($"{where}: message {r.What} is not ours"); break;
             case "speaker_hostile": break;
