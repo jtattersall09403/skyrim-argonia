@@ -177,7 +177,55 @@ const KIND = {plot:"Main quest plot", line:"Line story", ledger:"Ledger", world:
 let CAT = null; const DOCS = {}; let db = null, dbState = "connecting", batches = [];
 const DKEY = "story-explorer-drafts";
 let drafts = []; try { drafts = JSON.parse(localStorage.getItem(DKEY) || "[]"); } catch (e) { drafts = []; }
-const saveDrafts = () => { try { localStorage.setItem(DKEY, JSON.stringify(drafts)); } catch (e) {} paintCount(); };
+const GKEY = "story-explorer-drafts-gone";
+let gone = {}; try { gone = JSON.parse(localStorage.getItem(GKEY) || "{}") || {}; } catch (e) { gone = {}; }
+/* merge:start (tested by tools/tests/test_newworld_story_explorer.py) */
+/* Merge this device's drafts and removals with the account's drafts collection, by note id, newest change wins.
+   local: notes [{id, ..., updatedAt?}]; gone: {id: removedAt}; remote: docs [{id, ..., updatedAt, deleted}].
+   Returns the drafts to keep, the removals to remember, the notes to upload and the ids to mark removed there. */
+function mergeDrafts(local, gone, remote) {
+  const L = new Map(local.map(d => [d.id, d])), R = new Map(remote.map(d => [d.id, d]));
+  const keep = [], upload = [], tomb = [], g = {...gone};
+  const strip = r => { const {by, deleted, ...n} = r; return n; };
+  for (const id of new Set([...L.keys(), ...R.keys(), ...Object.keys(gone)])) {
+    const l = L.get(id), r = R.get(id), lt = l ? (l.updatedAt || 0) : (g[id] || 0), rt = r ? (r.updatedAt || 0) : -1;
+    if (!r) { if (l) { keep.push(l); upload.push(l); } else tomb.push(id); continue; }
+    if (r.deleted) {
+      if (l && lt > rt) { keep.push(l); upload.push(l); delete g[id]; } else g[id] = Math.max(g[id] || 0, rt);
+      continue;
+    }
+    if (!l && g[id] !== undefined && g[id] >= rt) { tomb.push(id); continue; }
+    if (l && lt > rt) { keep.push(l); upload.push(l); continue; }
+    keep.push(strip(r)); delete g[id];
+  }
+  keep.sort((a, b) => (a.at || "").localeCompare(b.at || ""));
+  return {drafts: keep, gone: g, upload, tomb};
+}
+/* merge:end */
+let uid = null, synced = false, syncT = null;
+const saveLocal = () => { try { localStorage.setItem(DKEY, JSON.stringify(drafts)); localStorage.setItem(GKEY, JSON.stringify(gone)); } catch (e) {} paintCount(); };
+const saveDrafts = () => { const now = Date.now(); for (const d of drafts) if (d._dirty) { d.updatedAt = now; delete d._dirty; } saveLocal(); queueSync(); };
+const removeDraft = id => { drafts = drafts.filter(d => d.id !== id); gone[id] = Date.now(); saveDrafts(); };
+const queueSync = () => { clearTimeout(syncT); syncT = setTimeout(syncDrafts, 400); };
+let syncing = false;
+async function syncDrafts() {
+  if (!db || syncing) { if (syncing) queueSync(); return; }
+  syncing = true;
+  try {
+    const col = db.collection("drafts"), snap = await col.get();
+    const remote = snap.docs.map(d => ({id: d.id, ...d.data()})).filter(r => !uid || r.by === uid);
+    const m = mergeDrafts(drafts, gone, remote);
+    const write = async (id, data) => col.doc(id).set({...data, by: uid});
+    for (const n of m.upload) await write(n.id, {...n, updatedAt: n.updatedAt || Date.now(), deleted: false});
+    for (const id of m.tomb) await write(id, {updatedAt: gone[id] || Date.now(), deleted: true});
+    const before = JSON.stringify(drafts.map(d => d.id + d.note));
+    drafts = m.drafts; gone = m.gone; for (const n of drafts) if (!n.updatedAt) n.updatedAt = Date.now();
+    saveLocal(); synced = true;
+    if (JSON.stringify(drafts.map(d => d.id + d.note)) !== before) paintHighlights();
+  } catch (e) { synced = false; setTimeout(queueSync, 60000); }
+  finally { syncing = false; if ($(".sheet") && $("#submitB")) openTray(); }
+}
+addEventListener("online", queueSync);
 const quest = id => CAT.quests.find(q => q.id === id);
 const qsort = (a, b) => a.id.localeCompare(b.id);
 const pill = s => `<span class="pill st-${s}" title="${esc(STATUS_HELP[s])}">${STATUS[s]}</span>`;
@@ -416,7 +464,7 @@ actBtn.addEventListener("click", () => { if (target) openComposer(target); });
 document.querySelectorAll("[data-react]").forEach(b => b.addEventListener("click", () => {
   if (!target) return; const a = {...target, label: target.label || itemLabel(target.item)};
   drafts.push({id: "n" + Date.now().toString(36) + Math.random().toString(36).slice(2, 6), item: a.item, label: a.label, field: a.field, block: a.block,
-    quote: a.quote, note: `Reaction: ${b.dataset.react}.`, version: CAT.version, at: new Date().toISOString(), view: a.view || location.hash || "#home", kind: "reaction"});
+    quote: a.quote, note: `Reaction: ${b.dataset.react}.`, version: CAT.version, at: new Date().toISOString(), view: a.view || location.hash || "#home", kind: "reaction", _dirty: true});
   saveDrafts(); clearActive(); getSelection()?.removeAllRanges(); paintHighlights(); toast(`${b.dataset.react}: added to the tray`);
 }));
 
@@ -437,13 +485,13 @@ function openComposer(t, editId) {
     <label for="noteText" class="eyebrow">Your note for the agent</label>
     <textarea id="noteText" placeholder="What should change, and why">${esc(ex ? ex.note : "")}</textarea>
     <div class="row"><button class="btn pri" type="button" id="noteSave">${ex ? "Save changes" : "Add to the tray"}</button><button class="btn" type="button" data-close>Cancel</button>${ex ? `<button class="btn dan" type="button" id="noteDel">Remove</button>` : ""}</div>`);
-  if (ex) $("#noteDel", root).onclick = () => { drafts = drafts.filter(d => d.id !== ex.id); saveDrafts(); closeSheet(); paintHighlights(); toast("Note removed"); };
+  if (ex) $("#noteDel", root).onclick = () => { removeDraft(ex.id); closeSheet(); paintHighlights(); toast("Note removed"); };
   const ta = $("#noteText", root); setTimeout(() => ta.focus(), 50);
   $("#noteSave", root).onclick = () => {
     const note = ta.value.trim(); if (!note) { ta.focus(); return; }
-    if (ex) ex.note = note;
+    if (ex) { ex.note = note; ex._dirty = true; }
     else drafts.push({id: "n" + Date.now().toString(36) + Math.random().toString(36).slice(2, 6), item: a.item, label: a.label, field: a.field,
-      block: a.block, quote: a.quote, note, version: CAT.version, at: new Date().toISOString(), view: a.view || location.hash || "#home", kind: a.kind || "text"});
+      block: a.block, quote: a.quote, note, version: CAT.version, at: new Date().toISOString(), view: a.view || location.hash || "#home", kind: a.kind || "text", _dirty: true});
     saveDrafts(); closeSheet(); clearActive(); getSelection()?.removeAllRanges(); paintHighlights(); toast(ex ? "Note saved" : "Note added to the tray");
     if (a.block) document.querySelector(`[data-block="${CSS.escape(a.block)}"]`)?.classList.add("noted");
     if (editId) openTray();
@@ -455,7 +503,7 @@ const BST = {submitted: "Submitted", "picked up": "Picked up", actioned: "Action
 function openTray(msg) {
   const past = batches.slice().sort((a, b) => (b.submittedAt || "").localeCompare(a.submittedAt || ""));
   const root = sheet(`<div class="sheet-h"><h2>Notes</h2><button class="x" type="button" data-close aria-label="Close">✕</button></div>
-    <p class="msg">Drafts stay on this device until you submit them. A submitted batch goes to the agents, who mark it picked up and answer each note here.</p>
+    <p class="msg">${db && synced ? "Your drafts are saved to your account, so they follow you to any device." : "Your drafts are saved on this device only for now; they go to your account when it can be reached."} A submitted batch goes to the agents, who mark it picked up and answer each note here.</p>
     ${msg ? `<p class="msg"><b>${esc(msg)}</b></p>` : ""}
     <h3 class="eyebrow">Drafts (${drafts.length})</h3>
     ${drafts.length ? drafts.map(d => `<div class="note"><div class="anchor"><b>${esc(d.label)}</b>${d.field && d.field !== "whole" ? ` · ${esc(d.field)}` : ""}${d.version !== CAT.version ? " · made on an older version of the story" : ""}</div>
@@ -470,7 +518,7 @@ function openTray(msg) {
       ${(b.notes || []).map(n => `<div class="note"><div class="anchor"><b>${esc(n.label)}</b>${n.field && n.field !== "whole" ? ` · ${esc(n.field)}` : ""}</div>${n.quote ? `<blockquote class="quote">${esc(n.quote)}</blockquote>` : ""}<div>${esc(n.note)}</div>
         ${n.reply ? `<div class="reply"><b>Agent:</b> ${esc(n.reply)}</div>` : ""}</div>`).join("")}</div>`).join("")
       : `<p class="empty">${db ? "No batches yet." : "Past batches show here once the shared store is reachable."}</p>`}`);
-  root.querySelectorAll("[data-del]").forEach(b => b.onclick = () => { drafts = drafts.filter(d => d.id !== b.dataset.del); saveDrafts(); paintHighlights(); openTray(); });
+  root.querySelectorAll("[data-del]").forEach(b => b.onclick = () => { removeDraft(b.dataset.del); paintHighlights(); openTray(); });
   root.querySelectorAll("[data-edit]").forEach(b => b.onclick = () => openComposer(null, b.dataset.edit));
   const sb = $("#submitB", root); if (sb) sb.onclick = async () => {
     sb.disabled = true; sb.textContent = "Submitting…";
@@ -478,7 +526,9 @@ function openTray(msg) {
     try {
       await db.collection("batches").doc(id).set({status: "submitted", submittedAt: new Date().toISOString(), dataVersion: CAT.version,
         notes: drafts.map(d => ({id: d.id, kind: d.kind || "text", item: d.item, label: d.label, field: d.field, block: d.block || null, view: d.view || null, quote: d.quote || "", note: d.note, version: d.version, reply: null}))});
-      drafts = []; saveDrafts(); openTray("Submitted. The batch is waiting for an agent.");
+      const now = Date.now(), sent = drafts.map(d => d.id); drafts = []; for (const i of sent) gone[i] = now; saveLocal();
+      for (const i of sent) { try { await db.collection("drafts").doc(i).set({by: uid, updatedAt: now, deleted: true}); } catch (e) { queueSync(); } }
+      openTray("Submitted. The batch is waiting for an agent.");
     } catch (e) { openTray(`Could not submit: ${e.message || e.code}. Your drafts are kept; try again.`); }
   };
 }
@@ -652,6 +702,7 @@ const t = setTimeout(() => { if (!db) dbState = "absent"; }, 10000);
 (async () => {
   try { db = window.claude ? await window.claude.use("db") : null; } catch (e) { db = null; }
   clearTimeout(t); dbState = db ? "ready" : "absent";
+  if (db) { try { const u = window.claude ? await window.claude.use("user") : null; uid = u ? await u.id() : null; } catch (e) { uid = null; } syncDrafts(); }
   if (db) db.collection("batches").onSnapshot(s => { batches = s.docs.map(d => ({id: d.id, ...d.data()})); if ($(".sheet") && $("#submitB")) openTray(); },
     () => { dbState = "absent"; });
 })();

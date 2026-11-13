@@ -25,6 +25,16 @@ Each batch is one document of the page's database, collection `batches`:
   `note`, `version`, `view` (the page it was made on), and `reply` (null until answered).
 - Optional, written by the agent: `pickedUpAt`, `pickedUpBy`, and `reply` on the batch.
 
+## Drafts are not notes
+
+The page also keeps the owner's unsent drafts in the collection `drafts`, so they follow him across devices: one
+document per draft, keyed by the note's id, with the note's fields plus `by` (the viewer's id), `updatedAt` and
+`deleted` (true once removed or submitted; a removed draft is kept as that marker so another device does not bring
+it back). Drafts are work in progress: never act on, answer, edit or delete one. Only a `batches` document is a
+submitted note. The page also holds the same drafts in the browser's `localStorage` (`story-explorer-drafts`, the
+notes; `story-explorer-drafts-gone`, removals by id and time) and merges the two by note id, newest change winning
+(`mergeDrafts` in `tools/newworld/story_explorer_page.html`, tested beside the generator).
+
 ## Picking up
 
 1. Read the waiting batches with the ArtifactData tool: `action: "query"`, the url, `collection: "batches"`,

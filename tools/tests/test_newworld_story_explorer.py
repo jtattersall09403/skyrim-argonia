@@ -1,6 +1,10 @@
 """The story explorer's generator, on a small made-up story tree."""
 import json
+import shutil
+import subprocess
 from pathlib import Path
+
+import pytest
 
 from tools.newworld import story_explorer as se
 
@@ -96,3 +100,38 @@ def test_check_follows_sources(tmp_path):
     assert se.check(root, rec) is None
     (root / se.LINES / "many-root.md").write_text(LINE + "\nChanged.\n")
     assert "behind" in se.check(root, rec)
+
+
+def _merge(local, gone, remote):
+    """Run the page's own mergeDrafts in node on one case."""
+    node = shutil.which("node")
+    if not node:
+        pytest.skip("node not installed")
+    page = se.PAGE.read_text()
+    fn = page.split("/* merge:start")[1].split("/* merge:end */")[0].split("*/", 1)[1]
+    js = fn + f"\nconsole.log(JSON.stringify(mergeDrafts({json.dumps(local)}, {json.dumps(gone)}, {json.dumps(remote)})));"
+    return json.loads(subprocess.run([node, "-e", js], capture_output=True, text=True, check=True).stdout)
+
+
+def test_merge_uploads_local_only_drafts_and_keeps_old_shape():
+    m = _merge([{"id": "n1", "note": "old draft"}], {}, [])
+    assert [d["id"] for d in m["drafts"]] == ["n1"] and [d["id"] for d in m["upload"]] == ["n1"]
+
+
+def test_merge_loads_drafts_from_the_store():
+    m = _merge([], {}, [{"id": "n2", "note": "from phone", "updatedAt": 5, "deleted": False, "by": "u"}])
+    assert m["drafts"] == [{"id": "n2", "note": "from phone", "updatedAt": 5}] and not m["upload"]
+
+
+def test_merge_removed_stays_removed_both_ways():
+    gone_here = _merge([], {"n3": 9}, [{"id": "n3", "note": "x", "updatedAt": 4, "deleted": False}])
+    assert gone_here["drafts"] == [] and gone_here["tomb"] == ["n3"]
+    gone_there = _merge([{"id": "n4", "note": "x", "updatedAt": 3}], {}, [{"id": "n4", "updatedAt": 8, "deleted": True}])
+    assert gone_there["drafts"] == [] and gone_there["gone"] == {"n4": 8}
+
+
+def test_merge_newest_edit_wins():
+    m = _merge([{"id": "n5", "note": "new", "updatedAt": 9}], {}, [{"id": "n5", "note": "old", "updatedAt": 2, "deleted": False}])
+    assert m["drafts"][0]["note"] == "new" and m["upload"][0]["note"] == "new"
+    m = _merge([{"id": "n5", "note": "old", "updatedAt": 2}], {}, [{"id": "n5", "note": "new", "updatedAt": 9, "deleted": False}])
+    assert m["drafts"][0]["note"] == "new" and not m["upload"]
