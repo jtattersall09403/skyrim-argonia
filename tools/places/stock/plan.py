@@ -13,6 +13,8 @@ place's bases come from. It changes the planned refs and people in place and ret
     key) and owner (a person's actor base, a household faction of ours whose members are the household's people at
     rank 0, or the named faction);
   - a container the split calls significant with no row: a copy of ours holding its set dressing alone;
+  - a container whose placed ref carries a `name` (a thing the place names, place-studio.md, Place files): a copy of
+    ours with that name, holding its row's items and gold alone (a new thing keeps none of its base's contents);
   - `person_item` rows: the person's actor base carries exactly the non-worn rows plus the base's own set dressing,
     and wears an outfit of ours of the worn rows plus the base outfit's set dressing in the slots they leave free; a
     death item that would give a significant thing is cleared;
@@ -167,11 +169,12 @@ def plan(P: dict, S: dict, people: dict, ids, problem, notes: list[str], st: "St
             c = rec.cont(base)
             row = st.containers.get((r["space"], sref))
             source_sig = sig_of(c["items"])
-            if row is None and not source_sig and not split.container_kind(c, rules)[1]:
+            named = r.get("name")
+            if row is None and not source_sig and not named and not split.container_kind(c, rules)[1]:
                 continue                                # set dressing: built as the source has it
             seen_rows.add((r["space"], sref))
             n_cont += 1
-            items = dressing(c["items"])
+            items = [] if named else dressing(c["items"])
             if row is not None:
                 items += [{"item": i.item_id, "count": i.count} for i in st.container_items.get(sref, [])]
                 if row.gold:
@@ -181,10 +184,13 @@ def plan(P: dict, S: dict, people: dict, ids, problem, notes: list[str], st: "St
                 r["owner"] = owner(row.owner_person_id, row.owner_household_id, row.owner_faction, where)
             fk = ids(f"cont:stock:{r['space']}:{sref}")
             out["containers"].append({"fk": fk, "edid": f"ANP_{pid}_Stock{n_cont:03d}", "from": base, "items": items,
-                                      "ref": r["fk"], "row": row is not None})
+                                      "ref": r["fk"], "row": row is not None, **({"name": named} if named else {})})
             out["taken_out"] += [{"holder": sref, "item": x} for x in source_sig]
             r["base"] = fk
             r["stock_base_from"] = base
+        elif r.get("name"):
+            problem(f"stock: {sref} in {r['space']}: named {r['name']!r}, but only a container carries a name of ours "
+                    f"(its base {base} is a {sig})")
         elif (sig in ITEM_SIGS or sig == "LVLI") and r.get("kind") != "container":
             row = st.loose.get(sref)
             if row is None:

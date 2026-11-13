@@ -192,7 +192,8 @@ export class Needs {
     if (!r) for (const s of Object.values(a.model.spaces)) r = s.refs.get(id) || r;
     const b = r ? a.bases.get(r.base) || {} : {};
     const leads = r?.door?.to_space ? a.spaceInfo?.[r.door.to_space]?.name : null;
-    return leads ? `the door into "${leads}"` : (b.name ? `the ${b.name.toLowerCase()}` : 'a thing');
+    const nm = r?.name || b.name;
+    return leads ? `the door into "${leads}"` : (nm ? `the ${r?.name ? nm : nm.toLowerCase()}` : 'a thing');
   }
   // ---------- as the player sees it: the names the game shows ----------
   setNames(on) {
@@ -219,6 +220,7 @@ export class Needs {
       if (r.map_marker?.Name) { text = `Map: ${r.map_marker.Name}`; cls = 'marker'; }
       else if (r.door?.to_space && r.door.to_space !== 'exterior') { text = `Door: ${a.spaceInfo?.[r.door.to_space]?.name || '(shows no name)'}`; cls = 'door'; }
       else if (r.door?.to_space === 'exterior' && S !== 'exterior') { text = 'Door: Outside'; cls = 'door'; }
+      else if (r.name && near(r.pos)) text = r.name;   // a thing the place names (its own `name`)
       else if (base.name && NAMED_KINDS.has(r.kind || base.kind) && near(r.pos)) text = base.name;
       if (!text) continue;
       if (cls !== 'marker' && !near(r.pos)) continue;

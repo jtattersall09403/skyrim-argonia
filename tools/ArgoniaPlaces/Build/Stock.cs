@@ -1,6 +1,7 @@
 // Stock: the containers and outfits a place's stock rows make (tools/places/stock/plan.py decides every item; the
 // contract is docs/design/place-studio.md, Stock). A container of ours is a copy of the ref's source base holding
-// exactly the plan's items (set dressing kept from the source, the stock row's items and gold), never respawning;
+// exactly the plan's items (set dressing kept from the source, the stock row's items and gold), never respawning, under
+// the plan's name where the place names the thing;
 // an outfit of ours is the worn rows plus the base outfit's set dressing. Nothing levelled: every item is fixed.
 using System.Text.Json;
 using Mutagen.Bethesda.Plugins;
@@ -26,6 +27,8 @@ static class Stock
             o.EditorID = c.GetProperty("edid").GetString();
             o.Flags &= ~Container.Flag.Respawns;  // an authored container never respawns
             o.Items = new ExtendedList<ContainerEntry>(c.GetProperty("items").EnumerateArray().Select(e => Entry(ctx, e)));
+            if (c.TryGetProperty("name", out var nm) && nm.GetString() is { } name)
+                o.Name = new Mutagen.Bethesda.Strings.TranslatedString(Mutagen.Bethesda.Strings.Language.English, name);  // a thing the place names
             ctx.Localize(o);
             ctx.Mod.Containers.Add(o);
         }

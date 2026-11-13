@@ -58,14 +58,13 @@ def space_rows(pid: str, sid: str, places: Path, out: Path) -> list[dict]:
     info = N._json(sdir / "space.json")
     if not info or not info.get("copy_of"):
         return rows
-    if info.get("room"):
-        return []   # one room of a shared cell: read only by the build's room rule (not here)
     src = out / "bundles" / f"src.{info['copy_of'].split('/', 1)[0]}"
     from tools.places.draft_bundle import copy_space
     return copy_space(info, rows, src)
 
 
-def _what(rows: list[dict], bases: dict, spaces: dict, x0: float, y0: float, radius: float | None) -> tuple:
+def _what(rows: list[dict], bases: dict, spaces: dict, x0: float, y0: float, radius: float | None,
+          locks: dict | None = None) -> tuple:
     kinds, labels = Counter(), []
     for r in rows:
         if radius is not None and math.hypot(r["pos"][0] - x0, r["pos"][1] - y0) > radius:
@@ -80,8 +79,14 @@ def _what(rows: list[dict], bases: dict, spaces: dict, x0: float, y0: float, rad
             labels.append(f"a door; looking at it, the game shows \"{nm}\"" if nm else
                           "a door; looking at it, the game shows no name")
             continue
+        if r.get("name"):                       # a thing the place names: the build gives it that name
+            lock = (locks or {}).get(r["id"])
+            labels.append(f"a thing the game names \"{r['name']}\"" + (f", locked ({lock})" if lock else ""))
+            continue
         if b.get("type") in NAMED_TYPES and b.get("name"):
-            labels.append(f"a {b['type'] == 'DOOR' and 'door' or 'thing'} the game names \"{b['name']}\"")
+            lock = (locks or {}).get(r.get("src") or r["id"]) or (locks or {}).get(r["id"])
+            labels.append(f"a {b['type'] == 'DOOR' and 'door' or 'thing'} the game names \"{b['name']}\""
+                          + (f", locked ({lock})" if lock else ""))
             continue
         k = kind_of(f"{(b.get('model') or '').lower()} {(b.get('edid') or '').lower()}")
         if k and k[0] == "skip":
@@ -149,6 +154,8 @@ def sheet(pid: str, radius: float = 2000.0, places: Path = N.PLACES, root: Path 
             keys |= {r["base"] for r in rooms[sp["room"]]}
     bases = bases_for(keys, out / "catalogue" / "bases.jsonl")
     names = N.place_names(pid)
+    stock = N._json(N.SOURCES / "stock" / "places" / f"{pid}.json") or {}
+    locks = {c["ref"]: c["lock"] for c in stock.get("containers", []) if c.get("lock")}   # the lock the game shows
     markers = [r for r in ext if (r.get("map_marker") or {}).get("Name")]
     mark = next((r for r in markers if r["map_marker"]["Name"].lower() in names), markers[0] if markers else None)
     centre = mark["pos"] if mark else (ext[0]["pos"] if ext else [0, 0])
@@ -164,7 +171,7 @@ def sheet(pid: str, radius: float = 2000.0, places: Path = N.PLACES, root: Path 
         lines.append(f"## Spot {letter}")
         lines.append(f"Where: {how_far(math.hypot(dx, dy))} {compass(dx, dy)} of the town's map marker." if math.hypot(dx, dy) > 300
                      else "Where: at the town's map marker.")
-        things, labels = _what(ext, bases, spaces, x, y, radius)
+        things, labels = _what(ext, bases, spaces, x, y, radius, locks)
         lines.append(f"Within about {round(radius / 70)} metres: " + ("; ".join(things) or "nothing standing") + ".")
         for lab, c in labels:
             lines.append(f"- {lab}" + (f" (x{c})" if c > 1 else ""))
@@ -181,7 +188,7 @@ def sheet(pid: str, radius: float = 2000.0, places: Path = N.PLACES, root: Path 
             lines.append(f"A door here leads inside. Through it, the game names the place \"{nm}\"." if nm else
                          "A door here leads inside. Through it, the game shows no name for the place.")
             if rrows:
-                t, labs = _what(rrows, bases, spaces, 0, 0, None)
+                t, labs = _what(rrows, bases, spaces, 0, 0, None, locks)
                 lines.append("Inside: " + ("; ".join(t) or "nothing standing") + ".")
                 lines += [f"- {lab}" + (f" (x{c})" if c > 1 else "") for lab, c in labs]
             inside = [p for p in people if (p.get("work") or {}).get("space") == sp["room"]]

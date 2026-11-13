@@ -379,6 +379,39 @@
    "cites": [
     "place_wealth:helstrom"
    ]
+  },
+  {
+   "ref": "helstrom.4BT72PN2KW23D2FN72FPPS8FMG",
+   "space": "exterior",
+   "kind": "urn",
+   "owner_faction": "helstrom.town",
+   "lock": "Novice",
+   "security": "S2",
+   "tier": "T1",
+   "gold": 0,
+   "items": [],
+   "why": "the city tree's sealed spring: the town shut it away, so the town owns it and it is locked (Novice, the lock of the open tier); it holds nothing of the stock's, its water is the main story's to give",
+   "cites": [
+    "place_wealth:helstrom",
+    "story/design/quests/lines/main.md"
+   ]
+  },
+  {
+   "ref": "helstrom.XJYPRMWPC20D47GC846FZFYMC6",
+   "space": "01ArgonianHouseinside.8",
+   "kind": "chest",
+   "owner_household": "helstrom.household.01ArgonianHouseinside.8",
+   "lock": "Novice",
+   "security": "S2",
+   "tier": "T1",
+   "gold": 0,
+   "items": [],
+   "why": "Ixtul-Bei's household's locked chest, in the house nearest the city landing: empty and locked at Novice so the main story can keep a secret in it in place of a back room; the household's store stays its dresser",
+   "cites": [
+    "place_wealth:helstrom",
+    "person:helstrom.TA28STYJ3XNYJ9FPVMQEYJVQQ4",
+    "story/design/quests/lines/main.md"
+   ]
   }
  ],
  "loose": [
