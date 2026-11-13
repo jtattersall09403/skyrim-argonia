@@ -235,7 +235,7 @@ same ranks "lance" and a number.
 
   | Outcome | What the player gains in play | What the player loses or can no longer get | Who pays, and where the player sees it | The form results that build it |
   |---|---|---|---|---|
-  | *The beast took all* (the spine shown, the arrow and the spearhead kept back) | 600 gold from Tohl-Meen; the roost at peace with the player, so its bank, its perch caches' fishing stage and its fish-seller are open | the arrow and spearhead prove nothing later; Ves-Tal's gift | the netter's and the fisher's kin at Tazhul, who are told a beast did it; one line there | `give_gold` 600; `make_peace` Seth-Alaxh's faction; the fish-seller's placement `switch_on` |
+  | *The beast took all* (the spine shown, the arrow and the spearhead kept back) | 600 gold from Tohl-Meen; the roost at peace with the player, so its bank and its fishing stage are safe ground and its fish-seller trades | the arrow and spearhead prove nothing later; Ves-Tal's gift | the netter's and the fisher's kin at Tazhul, who are told a beast did it; one line there | `give_gold` 600; `make_peace` Seth-Alaxh's faction; the fish-seller's placement `switch_on` |
   | *One killing each* (both shown to both) | 200 gold from the council, not from Tohl-Meen; peace as above; **the Perch-Spear**, Ves-Tal's own (a `template_item` on a load-order spear with a fixed enchantment), given for "showing both hands" | Tohl-Meen's 400 and his house's smith at Inoja, who will not sell to the player again | Tohl-Meen, whose kinsman forged that spearhead: he greets the player ever after as the one who cost his house its standing | `give_gold` 200; `make_peace`; `give_item` the Perch-Spear; the house smith's placement `switch_off`; `set_number mc03.shown 2` |
   | *One side's proof* (only the arrow shown to Tohl-Meen, or only the spearhead to Ves-Tal) | the wronged side's blood-price paid to its envoy: 900 gold from Aroxhu, or the roost's perch cache made the player's | there is no peace: the other side stays as it was (the roost hostile; or Tohl-Meen's purse shut), and its gift is lost | the reed-water's fishers, who still do not go out; Tazhul's people say so | `give_gold` 900, or `give_ownership` of a perch cache; `set_number mc03.shown 1` |
 
@@ -1072,7 +1072,7 @@ the later four quests in summary, and one reader given the ceiling, the quest fo
    the whole Pact stand at the foot of a bank or a shelf; the yard's warriors are called home by a line; the child
    goes home by another person's line elsewhere.
 7. *The stage tables were rebuilt* on the form: deaths open from the briefing, with a second form of the giver's
-   line for a kill made early; three deaths read by a line; the elder's death a stage of its own; Zixa's terms a
+   line for a kill made early; three deaths read by a line; the elder's death a stage of its own; the speaker's terms a
    stage with its objectives; no notes; the cart an objective from the first stage; the lime clue spoken by the
    kiln-master beside a dead snake; the storeroom one room with a gallery; costs as greetings, regard and gifts.
 8. *Plain words and fewer look-alike names.* The Sarpa people were renamed, the words list grew, the custom is
@@ -1094,33 +1094,76 @@ now stay apart.
 
 ## 6. For the other lines
 
-- **The Sarpa have no culture row** (province-plan, section 6; the lead's second ruling). This line takes them from
+- **The Sarpa have no culture row** (province-plan, section 6; consistency, section 9). This line takes them from
   the lore: winged Argonians found in Middle Argonia alone, among the inner tribes less kind to outsiders than the
   Agaceph (`tribes.md:94`; `topics/loading-facts.md:293`, `:296`), their looks matched to the ground round their
   own Hist (`topics/loading-facts.md:941`). From the digest: they keep the Hist of High-Flower beyond the mesa's
   edge, carry eggs to it, read omens in the wind and mark ground with feathers. X, for the roster lane to add as a
   row: a roost has a chief and fighters, and elders who keep its eggs and its dead and do not always agree with
-  him; kin carry a dead Sarpa's crest-knot home; a roost trades fish openly where it is owed nothing, and collects
-  where it is owed. Whether the built Sarpa show wings is the roster lane's: the story says they "drew the dragon
-  down" among towers and never that anyone is seen to fly.
-- **The fort's charter** (the plan's crossing). The Charter spear at a toll gate is **Weedum-Ja**, the first of
-  the Post to take the chalk, sent within a season to stand at Fort Reedmoth's gate. To Reed-Sail and the
-  Night-Reed he is only a guard. If asked, one line: "I was a spear of Noota Nara. Now I count boats." No quest of
-  this line goes there; he is spoken of at the hub. If the other two lines want him at another gate, this line
-  follows.
-- **The Sunken Archive.** Gam-Kur, a spear of the Post, stands on hire outside the mouth of the buried hall at
-  Joxhi, and the kaal says two of her spears are "out with the readers". This line never enters the hall. If the
-  Archive's writer places the hired guards elsewhere, Gam-Kur moves with them and MC02 loses one of four
-  witnesses. MC02 may leave Joxhi's scrub empty of Sarpa before or after the Archive's quest there, and asks that
-  those three be wary and not hostile on sight; this line assumes the Archive needs nothing else of them.
+  him; kin carry a dead Sarpa's crest-knot home; the dead are kept on feathered bone-poles in a bone-ground; a
+  roost trades fish openly where it is owed nothing, and collects where it is owed. **The form of their names**
+  (consistency, N41): two short parts joined, each of one syllable or two, hard at the front (Ilu-Sei, Meh-Ilu,
+  Zik-Aru, Hes-Ruu, Raal-Ti, Ves-Tal, Kor-Ahk, Tzen-Karr, Suk-Rei); never the Naga's single hard word. Whether the
+  built Sarpa show wings is the roster lane's: the story says they "drew the dragon down" among towers and never
+  that anyone is seen to fly.
+- **The fort's charter** (the plan's crossing; consistency, C6). The Charter spear at a toll gate is **Weedum-Ja**,
+  the first of the Post to take the chalk, sent within a season to stand at Fort Reedmoth's gate. To Reed-Sail and
+  the Night-Reed he is only a guard. If asked, one line: "I was a spear of Noota Nara. Now I count boats." No quest
+  of this line goes there; he is spoken of at the hub, in words that read whether he lives or not.
+- **The Sunken Archive** (consistency, P6, N17, N22). Elder Jo-Reesh is one man in both lines, and both read with
+  him dead. Gam-Kur, a spear of the Post, stands on hire outside the mouth of the buried hall at Joxhi, and the
+  kaal says two of her spears are "out with the readers". This line never enters the hall. MC02 may leave Joxhi's
+  scrub empty of Sarpa before or after the Archive's quest there, and asks that those three be wary and not
+  hostile on sight.
+- **Fort Chalkmoth's posts** (consistency, P14). The story states no number for the garrison. It names the posts
+  it needs, for the roster: the captain, the armourer at the workbench, the Dunmer quartermaster (the record's
+  own), and the record's wall captain, who trains Archery.
 - **Reserved places.** Hanaxi Roost and Sahlpesh Cave are used as the plan reserves them. Vorannuhl's lord and
   Seth-Alaxh's envoy are this line's hooks. This line also takes two hooks the plan lists under nobody: the child
   of Reeka-Veesa who slipped off to the cave, and the Sarpa feather in Tazhul's trap. Tazhul's unhatched eggs,
-  Xanuc's lost hand, Kalaxo Cut, Nuxhal, Yuvexa, Balormaak and the fort's hollow cellar wall are left to the local
-  quests.
+  Xanuc's lost hand, Kalaxo Cut, Nuxhal, Yuvexa, Balormaak, Vorannuhl's silent bell and the fort's hollow cellar
+  wall are left to the local quests.
 - **Xanuc Diggings and Oxayo.** The story holds that Xanuc's cutting brought down a ledge in Sahlpesh Cave, that
-  the feathers on the quarry gate are a warning to stop, and that Oxayo's egg-tender was killed when its clutch
-  was taken. A local quest at either place should not contradict that.
-- **Named here**: the captain of Fort Chalkmoth (Marius Otumeel), as the plan asks; the spear-captain of Aroxhu
-  (Tohl-Meen) and the wing-chief of Seth-Alaxh (Ves-Tal), whom no other line seats.
-- **The timeline.** Nothing here is dated. Nothing touches the Root Talk, the trees' sickness or Vel-Sapha.
+  the feathers on the gate of Xanuc Diggings are a warning to stop, that Oxayo's egg-tender was killed when its
+  clutch was taken, and that two of Oxayo's quarry hands are killed at that gate before MC06. A local quest at
+  either place should not contradict that.
+- **Named here**: the captain of Fort Chalkmoth (Vibius Arkeem), as the plan asks and as consistency N5 and N20
+  rule; his dead driver (Cato Varo-Lei, N39) and the driver's sister (Meesei Varo-Lei); the spear-captain of
+  Aroxhu (Tohl-Meen) and the wing-chief of Seth-Alaxh (Ves-Tal), whom no other line seats. Raj-Deel has no
+  nickname (N30).
+- **The timeline.** The charter was sealed three years ago (consistency, 4.1). Nothing else here is dated. Nothing
+  touches the Root Talk, the trees' sickness or Vel-Sapha.
+
+## 7. Changes to places' notes
+
+The hooks in the places' data are raw material. These are the notes this story changes, drops or adds; everything
+else in each record stands.
+
+| Place | The note as it stands | What it should say |
+|---|---|---|
+| Noota Nara | "A spear-smith's apprentice says she can make the dragonfire spear-tips again if someone brings her fire salts" | The same; she is Deesha, she asks six, and the offer is made to a spear of the Post. |
+| Noota Nara | "Long ago, in the legend the villagers tell, a dragon burned the village's walls to the ground. The villagers heated their spear-tips in the dragonfire, took the enchantment and pierced it" | The same, as the villagers tell it. Not in their telling, and known to nobody alive: the Sarpa of the mesa drew the dragon down among Vorannuhl's towers, and the village's first keeper promised them the first fish of the river each season. |
+| Noota Nara | (new) | Eight spears and a keeper, Kaal Nakuma-Tei, go out when a neighbour asks: the Post, in a spear-hall by the burned post. Three of the eight have put their mark to the fort's charter. |
+| Fort Chalkmoth | "A garrison captain whose chalk cart and its driver vanished on the western road" | Captain Vibius Arkeem, whose chalk cart stands empty at the old chalk face by Chalkmoth Pit; his driver, Cato Varo-Lei, died there, and not on the western road. |
+| Fort Chalkmoth | "A dozen at most man it" | No number (consistency, P14). Its posts: the captain, a wall captain, the Dunmer quartermaster, an armourer (Meesei Varo-Lei, the driver's sister). |
+| Fort Chalkmoth | (new) | Three years ago its captain sealed a charter for Noota Nara's spears in the Wardens' name. The quartermaster keeps a better stock for those on it. A prefect's order against "tribute to raiders" on the western road hangs by the captain's place. |
+| Chalkmoth Pit | "Dangerous wildlife: skeevers in the opened Imperial storeroom (x3)"; fights "deadly (band 4 of 5, foes about level 35)" | One great snake on the storeroom's warm floor, at the Dangerous band (level 20); no skeevers in that room. |
+| Chalkmoth Pit | "Lesser treasure: the Imperial storeroom: an old strongbox and steel tools" | The same; the strongbox stands forced and holds a sack of Legion pay and a prefect's lead-sealed slate. The storeroom lies behind an old, worked-out face a short way west of the working face, fallen open in the rains, with quicklime slaking in it. |
+| Inoja | (new) | Raj-Deel, a spear of Noota Nara in the fort's pay, takes the Marsh Charter's contracts on the market ground. Aroxhu's spear-captain, Tohl-Meen, stands there looking for an envoy to Seth-Alaxh Roost. |
+| Joxhi | its three hostile Sarpa in the pit scrub | Three Sarpa who sit at the scrub's edge and attack nobody unless struck: Zik-Aru, Hes-Ruu and Raal-Ti, waiting for four picks and their dead sister's crest-knot. They are gone, or dead, after the Charter's hunt there. |
+| Joxhi | (new) | The elder is Jo-Reesh, once a potter. A Sarpa woman who came to trade was killed by a digger of sixteen a week ago; her carrying-net lies on the bank at the river mouth. A spear of the Post, Gam-Kur, stands on hire at the mouth of the buried hall. |
+| Seth-Alaxh Roost | "led by a wing-chief with a scarred crest"; "Boss fight: the wing-chief with the scarred crest" | The wing-chief, Ves-Tal, fishes from a stage on the reed-water below the bank and will speak to a stranger who carries the roost's perch-pole. The fight on the bank's crown is his war-second's. |
+| Seth-Alaxh Roost | its hook: Aroxhu's spear-captain "wants peace and needs an envoy" | The same; the envoy is a spear of the Post, and what takes both peoples' fishers is a spiny behemoth in a wallow on the roost's side of the reed-water. |
+| Tazhul | its hook: a Sarpa feather found in a hunter's trap, taken for theft | The same; the feather came down the water from the behemoth's larder. |
+| Oxayo | "a watch-elder who keeps the signal horn and has lost an eye to a Sarpa arrow" | The same; she is Kaleen. Oxayo's clutch was taken to Sahlpesh Cave and its egg-tender killed. After the hunt at Vorannuhl two new cairns stand by the hamlet's cairn. |
+| Oxayo, Xanuc Diggings | the feathers on the quarry gate, which the watch-elder "knows from her own youth" | The gate is the gate of Xanuc Diggings. The feathers are the roost's warning to stop cutting west: the quarry's fall crushed a nest ledge in Sahlpesh Cave. |
+| Sahlpesh Cave | "every visitor since has had to fight to go in" | By the mouth, yes. A cleft on the mesa side, past the spider's web on the path from Reeka-Veesa, comes out in a back chamber where an elder of the roost, Ilu-Sei, sits and does not fight. |
+| Sahlpesh Cave | "Boss fight: the Sarpa war-leader in the nest gallery" | The same; he is Kor-Ahk, who took Oxayo's clutch against his elders' word. An egg-tender's sling lies in his larder. A fallen ledge of crushed nests lies off the back chamber. |
+| Reeka-Veesa | its hook: one of the post's children has slipped off to the cave | The child is in the cave's back chamber, fed by the roost's elder, and comes home when Oxayo's eggs do. |
+| Reeka-Veesa | "Dangerous wildlife: a giant spider nesting on the cave path" | The same; the cave path is the path to the cleft. |
+| Vorannuhl | "A Sarpa warband sometimes shelters in its outer yard and leaves bones there" | The outer yard is Hanaxi Roost's bone-ground: its dead on feathered poles, round the headless bones of a dragon that lie across a broken tower, with Noota Nara grave-stakes among the poles. Four of the warband keep it. |
+| Vorannuhl | "A Noota Nara scout went into the outer yard and was found dead with a key of Velothi bronze in his hand" | He was the sister's son of the keeper of the Post, who has the key. The roost shot him for a robber. |
+| Vorannuhl | "the vault the bronze key opens" | The same; its door has a Master lock. |
+| Hanaxi Roost | "They hunt, raid and take what they need; they trade nothing" | The same, and why: Hanaxi holds it is owed the first fish of the river by Noota Nara, and trades nothing with a debtor. |
+| Hanaxi Roost | its hook: the elders "will parley for a gift of fresh fish" | The same; an elder sits at the first feather pole on the path from Noota Nara, below the mesa's shoulder and out of sight of the shelf. The chief is Tzen-Karr. |
+| Kaochalit | "Apothecary: the Dunmer herbalist in the outer tomb" | The same; her stock includes fire salts, dear. |
