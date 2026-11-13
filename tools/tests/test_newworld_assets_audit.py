@@ -92,3 +92,16 @@ def test_engine_effect_mesh_a_mod_lays_with_a_missing_texture_gates_unless_dropp
         ("meshes\\effects\\watersplash.nif", "bmv", ["textures\\effects\\water_ring.dds"])]
     deps = {"mods": [{"id": "bmv", "drop": ["meshes/effects/watersplash.nif", "meshes/x/*.nif"]}]}
     assert A.engine_overrides(r, sky, A.dropped(deps)) == []
+
+
+def test_an_item_with_an_unshipped_texture_is_dropped_from_copies_not_allowed_as_missing():
+    import json
+    import re
+
+    from tools.newworld import assets_audit
+
+    cs = (assets_audit.REPO / "tools/ArgoniaPlugin/ForeignCopy.cs").read_text()
+    assert re.search(r'Unshowable\s*=\s*\{[^}]*"CIPHTBMBambooStaff2"', cs, re.S)
+    assert "DropUnshowable(dup, file);" in cs
+    allowed = json.loads(assets_audit.ALLOWED.read_text())["allowed"]
+    assert "textures\\weapons\\bamboostaff\\bamboostaffyellow.dds" not in allowed
