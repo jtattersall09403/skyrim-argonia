@@ -131,10 +131,16 @@ We could not find the cause of these two in the files, so we need a little more 
 - **Searching bodies (line 25).** At "Hostile band" (Chixathe Mesa), kill one bandit; at "Salt water" (Aphon Isle),
   kill one orange spider crab. Then go up to each body. Reply ok if both can be searched, and say what the bandit
   carried. For a fault, say where it happened, whether the body could be seen above the ground or lay half in it, and
-  what the prompt on the body said when you looked at it (for example "Search", a name only, or nothing).
+  what the prompt on the body said when you looked at it (for example "Search", a name only, or nothing). Then open the
+  console (the ~ key), click the body so its name shows at the top, and type `getdead` and then `getpos z`; send us the
+  two numbers it prints, and the number `player.getpos z` prints. These tell us whether the game counts the body as
+  dead and whether it lies under the ground's surface, which are the two causes left once the plugin's records were
+  ruled out.
 - **Walking into the land (line 22).** At "Salt water" (Aphon Isle coast), watch any person or creature walk. Reply
-  fault if one sinks into the ground, and say where it was (a steep bank, a beach or flat ground) and whether its body
-  could still be seen above the ground.
+  fault if one sinks into the ground, and say where it was (a steep bank, a beach or flat ground), whether there was
+  shallow water over the ground there, and whether its body could still be seen above the ground. If one sinks, open
+  the console (the ~ key), click it, and type `isswimming`; send us the number it prints (1 means the game has it
+  swimming in water too shallow to swim in, which is what we expect on a beach).
 
 ## Music, water and the region's name
 
