@@ -236,7 +236,7 @@
 {"talker":"02A205:Black Marsh.esm","topic":"talk.lore","facts":"fact.lilmoth.lore.council.ask-02a205"}
 {"talker":"02A205:Black Marsh.esm","topic":"talk.self","facts":""}
 {"talker":"02A205:Black Marsh.esm","topic":"talk.someone","facts":"fact.lilmoth.02a205.someone.books"}
-{"talker":"02A206:Black Marsh.esm","topic":"talk.danger","facts":"fact.lilmoth.02a206.danger.graves, fact.lilmoth.02a206.danger.croc"}
+{"talker":"02A206:Black Marsh.esm","topic":"talk.danger","facts":"fact.lilmoth.02a206.danger.croc"}
 {"talker":"02A206:Black Marsh.esm","topic":"talk.greet-friend","facts":""}
 {"talker":"02A206:Black Marsh.esm","topic":"talk.greet-stranger","facts":""}
 {"talker":"02A206:Black Marsh.esm","topic":"talk.here","facts":"fact.lilmoth.02a206.here.withered"}
@@ -251,7 +251,7 @@
 {"talker":"02A208:Black Marsh.esm","topic":"talk.greet-friend","facts":""}
 {"talker":"02A208:Black Marsh.esm","topic":"talk.greet-stranger","facts":""}
 {"talker":"02A208:Black Marsh.esm","topic":"talk.harvest","facts":"fact.lilmoth.02a208.harvest.leek"}
-{"talker":"02A208:Black Marsh.esm","topic":"talk.loot","facts":"fact.lilmoth.02a208.loot.dead-chest, fact.lilmoth.02a208.loot.dead-dunmer"}
+{"talker":"02A208:Black Marsh.esm","topic":"talk.loot","facts":"fact.lilmoth.02a208.loot.dead-dunmer"}
 {"talker":"02A208:Black Marsh.esm","topic":"talk.self","facts":""}
 {"talker":"02A208:Black Marsh.esm","topic":"talk.someone","facts":"fact.lilmoth.02a208.someone.drinker"}
 {"talker":"02A209:Black Marsh.esm","topic":"talk.danger","facts":"fact.lilmoth.02a209.danger.dead"}
