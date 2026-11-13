@@ -25,7 +25,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: I am Wuleen-Sei, the broker's overseer in this hold. The gang answers to me, and I answer to Buys-The-Months.
+    Value: I am Wuleen-Sei, the broker's overseer. I answer to Buys-The-Months. Since the camp, none of the gang will touch Dives-Without-A-Rope's lockbox.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -33,15 +33,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Since the camp, my gang will not touch Dives-Without-A-Rope's lockbox. I will not make them. The gang has lost enough.
-  ScriptNotes: ''
-  Edits: ''
-- ResponseNumber: 3
-  Unknown2: 0x000000
-  Unknown3: 0x000000
-  Text:
-    TargetLanguage: English
-    Value: Ask Dives-Without-A-Rope what she keeps in it.
+    Value: I will not make them. The gang has lost enough. Ask Dives-Without-A-Rope what she keeps in it.
   ScriptNotes: ''
   Edits: ''
 Conditions:

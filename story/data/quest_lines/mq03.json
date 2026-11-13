@@ -7,7 +7,7 @@
     "prompt": "Nesh-Deeka wants the jar you carried off the camp.",
     "lines": [
      "No. That jar holds sap of Nine Bends, my own tree. It is not for Nesh-Deeka to take. If you lick the sap, the Hist shows you a vision.",
-     "I mean to lick it and hear my tree once, before anyone takes it from me. The jar is locked in my lockbox on the far side of the hold. I keep the key on me. So what are you to me?",
+     "I mean to lick it and hear my tree once, before anyone takes it from me. The jar is locked in my lockbox among the crates under the lanterns. I keep the key on me. So what are you to me?",
      "A reason, a price or a fight?"
     ],
     "facts": [
@@ -47,7 +47,7 @@
     "prompt": "(Persuade) The one I work for means to find who cut your tree. We can learn it from the jar.",
     "lines": [
      "You speak as if you mean it. I wanted one taste of my tree before the jar was taken from me. I wanted it badly. But I want more to know who cut Nine Bends. Find who did it. That is all I ask of you.",
-     "Here is the key. The jar is in my lockbox, on the far side of the hold. I go back to my months with empty hands. Do not make me sorry."
+     "Here is the key. The jar is in my lockbox, among the crates under the lanterns. I go back to my months with empty hands. Do not make me sorry."
     ],
     "facts": [
      "fact.mq03.hear-tree"
@@ -76,7 +76,7 @@
     "prompt": "I will give you twenty gold for the key. (20 gold)",
     "lines": [
      "Twenty gold is a month off my roll, so I will take it. It is not a fair price for Nine Bends. It is what I can spare. Here is the key.",
-     "My lockbox is on the far side of the hold, and the jar is inside it. Do not tell me what you will do with it. I would rather not hear."
+     "My lockbox is among the crates under the lanterns, and the jar is inside it. Do not tell me what you will do with it. I would rather not hear."
     ],
     "facts": [
      "fact.mq03.jar-kept"
@@ -245,7 +245,7 @@
     "variant": "main",
     "prompt": "Who are you?",
     "lines": [
-     "Salts-The-Catch. Fish is my trade, and this is my house. I ask nothing of whoever comes through the door. Nesh-Deeka waits at the far end of the room."
+     "Salts-The-Catch. I keep this house below Lilmoth Dock. I ask nothing of whoever comes through the door. Nesh-Deeka is in this house."
     ],
     "facts": [
      "fact.mq03.salts-door"
@@ -260,8 +260,8 @@
     "variant": "main",
     "prompt": "Who are you?",
     "lines": [
-     "I am Ux-Xeek, the broker's port hand. I call the gang out to the lighters, the flat boats that carry cargo to the ships, and they must be there on time.",
-     "The lockpicks on the floor by Dives-Without-A-Rope's lockbox are mine. They are my spares for the lighters' padlocks. I have not counted them today. Now I have work to do."
+     "I am Ux-Xeek, the broker's port hand.",
+     "The lockpicks on the floor by Dives-Without-A-Rope's lockbox are mine. They are my spares. I have not counted them today. Now I have work to do."
     ],
     "facts": [
      "fact.mq03.spare-picks"
@@ -276,7 +276,7 @@
     "variant": "main",
     "prompt": "Who are you?",
     "lines": [
-     "I am Wuleen-Sei, the broker's overseer in this hold. The gang answers to me, and I answer to Buys-The-Months. Since the camp, my gang will not touch Dives-Without-A-Rope's lockbox.",
+     "I am Wuleen-Sei, the broker's overseer. I answer to Buys-The-Months. Since the camp, none of the gang will touch Dives-Without-A-Rope's lockbox.",
      "I will not make them. The gang has lost enough. Ask Dives-Without-A-Rope what she keeps in it."
     ],
     "facts": [

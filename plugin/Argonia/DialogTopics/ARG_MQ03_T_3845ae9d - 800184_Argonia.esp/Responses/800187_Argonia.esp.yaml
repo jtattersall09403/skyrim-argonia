@@ -26,7 +26,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: I am Ux-Xeek, the broker's port hand.
+    Value: I am Ux-Xeek, the broker's port hand. The lockpicks on the floor by Dives-Without-A-Rope's lockbox are mine. They are my spares.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -34,23 +34,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: I call the gang out to the lighters, the flat boats that carry cargo to the ships, and they must be there on time.
-  ScriptNotes: ''
-  Edits: ''
-- ResponseNumber: 3
-  Unknown2: 0x000000
-  Unknown3: 0x000000
-  Text:
-    TargetLanguage: English
-    Value: The lockpicks on the floor by Dives-Without-A-Rope's lockbox are mine. They are my spares for the lighters' padlocks. I have not counted them today.
-  ScriptNotes: ''
-  Edits: ''
-- ResponseNumber: 4
-  Unknown2: 0x000000
-  Unknown3: 0x000000
-  Text:
-    TargetLanguage: English
-    Value: Now I have work to do.
+    Value: I have not counted them today. Now I have work to do.
   ScriptNotes: ''
   Edits: ''
 Conditions:

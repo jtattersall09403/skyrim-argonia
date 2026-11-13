@@ -233,13 +233,13 @@ Stages:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: Dives-Without-A-Rope will not give up the jar. It is sap of her own tree, and she keeps it in her lockbox at the far side of the ship's hold, with the key on her. I'm to take the jar by picking the lock or by taking her key, and bring it to Nesh-Deeka.
+      Value: Dives-Without-A-Rope will not give up the jar. It is sap of her own tree, and she keeps it in her lockbox among the crates under the lanterns in the ship's hold, with the key on her. I'm to take the jar by picking the lock or by taking her key, and bring it to Nesh-Deeka.
 - Index: 13
   LogEntries:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: Dives-Without-A-Rope is dead. Her lockbox is at the far side of the ship's hold, and the key is on her body. I'm to take the jar from the lockbox and bring it to Nesh-Deeka.
+      Value: Dives-Without-A-Rope is dead. Her lockbox is among the crates under the lanterns in the ship's hold, and the key is on her body. I'm to take the jar from the lockbox and bring it to Nesh-Deeka.
 - Index: 15
   LogEntries:
   - Flags: []
