@@ -176,8 +176,11 @@ class Explorer:
     state's quests (`state["quests"]`), the one part of each state met that is kept. The explorer plays on its game
     `g`, whose state is the start again after each answer."""
 
-    def __init__(self, g, over, max_states, refs, key=None, deadline: float | None = None):
+    def __init__(self, g, over, max_states, refs, key=None, deadline: float | None = None, reads=()):
+        """`reads`: the fields of a state `key` reads (pos and talking only while a container is open or a question
+        waits): a state equal to the one it was reached from in them is that state again."""
         self.g, self.over, self.max_states, self.refs, self.deadline = g, over, max_states, refs, deadline
+        self.reads = reads
         self.start = _copy(g.s)
         self.fightable = _fightable(g)
         self.speakers = {ln["speaker"] for f in g.forms.values() for ln in f["lines"] if ln["kind"] == "speaks_first"}
@@ -210,7 +213,11 @@ class Explorer:
             return None
         return g.s
 
-    def _push(self, s, i, steps) -> bool:
+    def _push(self, s, i, steps, parent=None) -> bool:
+        if parent is not None and self.reads and all(s[f] == parent[f] for f in self.reads) and \
+                (not (parent["opened"] or parent["question"]) or
+                 (s["pos"] == parent["pos"] and s["talking"] == parent["talking"])):
+            return False                    # the state it came from, met already
         k = self.key(s)
         if k not in self.seen:
             self.seen.add(k)
@@ -238,10 +245,10 @@ class Explorer:
                          if m[1] == "line"]
                 for say in lines:
                     s2 = self._run(s1, say)
-                    if s2 is not None and self._push(s2, i, a + say):
+                    if s2 is not None and self._push(s2, i, a + say, s):
                         self.cut = True
                         return
-            if self._push(s1, i, a):
+            if self._push(s1, i, a, s):
                 self.cut = True
                 return
 
@@ -299,9 +306,9 @@ class Search:
     """`search` kept for more goals: an explorer over `refs`, and (made only when needed) one over every ref, both
     from the state `g` holds now."""
 
-    def __init__(self, g, over, max_states, refs, key=None):
-        self.args, self.start = (over, max_states, refs, key), _copy(g.s)
-        self.first = Explorer(g, over, max_states, refs, key)
+    def __init__(self, g, over, max_states, refs, key=None, reads=()):
+        self.args, self.start, self.reads = (over, max_states, refs, key), _copy(g.s), reads
+        self.first = Explorer(g, over, max_states, refs, key, reads=reads)
         self.wide = None
 
     def answer(self, goals: dict, deadline: float | None = None) -> dict:
@@ -317,7 +324,7 @@ class Search:
             if self.wide is None:
                 g = self.first.g
                 g.s = _copy(self.start)
-                self.wide = Explorer(g, over, max_states // FALLBACK_SHARE, None, key, deadline)
+                self.wide = Explorer(g, over, max_states // FALLBACK_SHARE, None, key, deadline, self.reads)
             return self.wide.answer(goals)
         return self.first.answer(goals)
 
@@ -547,6 +554,14 @@ class Reads:
             for ln in lines:
                 self._results(ln["results"], once=False)
 
+    @property
+    def fields(self) -> tuple[str, ...]:
+        """The fields of a state `key` reads, but pos and talking (read only while a container is open or a question
+        waits)."""
+        return ("quests", "gold", "items", "numbers", "factions", "regard", "switched", "locked", "contents", "fired",
+                "opened", "ended", "sheet", "dead", "hostile", "owned", "taken", "question") + \
+            (("spoken",) if self.spoken else ())
+
     def _results(self, rs, once: bool):
         for r in rs:
             self.refs |= {r["ref"]} if "ref" in r else set()
@@ -735,7 +750,8 @@ def reach(forms: list[dict], world: dict | None = None, sheets: dict | None = No
             if state is None:
                 g.s["gold"] = GOLD
             reads = Reads(by_id, [x for x in named(list(qids), by_id) if x not in ended], list(ended))
-            searches[k] = Search(g, _ended(q), max_states, own_refs(g, q), lambda s, g=g: reads.key(g, s))
+            searches[k] = Search(g, _ended(q), max_states, own_refs(g, q), lambda s, g=g: reads.key(g, s),
+                                 reads.fields)
         return searches[k]
 
     def play(before, i, end, state, sheet):

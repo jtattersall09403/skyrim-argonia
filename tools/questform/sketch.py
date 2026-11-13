@@ -1253,8 +1253,8 @@ def _where(msg: str, src: dict) -> int | None:
 def check(path, quest: str | None = None, walk: bool = True, max_states: int | None = None,
           cache: Path | None = None, time_limit: float = TIME_LIMIT) -> list[dict]:
     """Every fault of the sketches in `path` (or of the one quest `quest`, the others loaded with it), each {line,
-    quest, rule, message, gloss}. The reach walk keeps its results in `cache` (None: walk everything again) and gives
-    each quest `time_limit` seconds."""
+    quest, rule, message, gloss}. The reach walk keeps its results in the folder `cache` (None keeps nothing) and
+    gives each quest `time_limit` seconds."""
     path = Path(path)
     faults = []
     sketches = read(path)

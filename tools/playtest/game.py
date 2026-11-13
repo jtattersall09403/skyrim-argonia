@@ -327,7 +327,8 @@ class Game:
         """The character sheet's skill raised by `by` (Game.IncrementSkillBy); its sheet name."""
         k = self._skill_key(skill)
         name = next(s for s in self.s["sheet"]["skills"] if s.lower().replace("-", "").replace(" ", "") == k)
-        self.s["sheet"]["skills"][name] += by
+        sh = self.s["sheet"]                # replaced whole: a state the walker copied shares its sheet
+        self.s["sheet"] = {**sh, "skills": {**sh["skills"], name: sh["skills"][name] + by}}
         return name
 
     def magic(self) -> str:
@@ -627,8 +628,20 @@ class Game:
         """An entity among `pool` by the name the player typed: exact, then a unique start, then a unique part."""
         t = text.lower().strip().removeprefix("the ").strip()
         if t.startswith("#"):                # the walker's way: the key itself, no names needed
+            keys = self._keys().get(t[1:], ())
+            if len(keys) == 1:
+                return (keys[0] if keys[0] in pool else None), None
             return next((k for k in pool if k.lower() == t[1:]), None), None
         return self._find_in(text, [(self.label(e, pool), e) for e in pool])
+
+    def _keys(self) -> dict[str, list[str]]:
+        """Each entity's key as the walker types it (lower case): the entities it names, in order."""
+        keys = self.__dict__.get("_by_key")
+        if keys is None:
+            keys = self._by_key = {}
+            for k in self.ents:
+                keys.setdefault(k.lower(), []).append(k)
+        return keys
 
     def label(self, e, pool) -> str:
         """A name as the player tells it from others near: two people or things of one name are "<name> 1" and
@@ -803,7 +816,7 @@ class Game:
                 return f"There is no marker {i} on your map."
             target, travel = self._pos(marks[i - 1][2]), "marker"
         if target is None:
-            keys = [k for k in self.ents if k.lower() == a[1:]] if a.startswith("#") else self.ents
+            keys = self._keys().get(a[1:], ()) if a.startswith("#") else self.ents
             pool = [k for k in keys if self.ents[k]["kind"] != "marker" and self._on(k) and k not in self.s["taken"]
                     and self._pos(k)]
             e, err = self._find(arg, pool)
