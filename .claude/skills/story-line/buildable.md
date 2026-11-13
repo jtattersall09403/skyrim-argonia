@@ -142,8 +142,12 @@ locked or not.
     holds every earlier quest's sketch, so the walk plays them first. The offer is a line at hidden stage 0 gated
     `done <earlier quest> <ending>`, one per ending that changes what is said; a `when` trigger fires only as that
     stage is set while this quest runs, never for one done before.
-15. **What `far` promises is a need of the place.** A place marked `far` in the sketch is out of sight of the others:
-    say so in the outline's needs of places (the camp is a long walk from the shrine), or the switch is not away.
+15. **What `far` promises is a need of the place, in a number.** A place marked `far` is at least 18,000 units
+    (about 260 metres) in a straight line from every place whose line or thing switches something in it. Say so in
+    the needs of places in those words; a track's length or "out of sight" is not enough. Where the places are
+    closer, make the switch from indoors instead.
+16. **Talk before the job carries the job's gates.** A line open at the hidden stage 0 is heard by every player:
+    what it says must be true before the offer, or it carries the offer's gates (an earlier quest done).
 
 ## 4. The sketch
 

@@ -872,7 +872,7 @@ def _broken(form) -> bool:
 
 # -- the design rules: what a writer most often gets wrong that the form's rules do not name ---------------------
 
-DESIGN = ("one-ref-many", "rank-set", "take-unheld", "give-twice", "hostile-speaks", "hostile-must-live", "death-both-ways", "one-name", "give-placed", "dead-early",
+DESIGN = ("before-offer", "one-ref-many", "rank-set", "take-unheld", "give-twice", "hostile-speaks", "hostile-must-live", "death-both-ways", "one-name", "give-placed", "dead-early",
           "early-death", "needs-living", "number-set", "refusal")
 
 
@@ -946,6 +946,21 @@ def design(form: dict, sk: Sketch, numbers_set: set[str], factions_set: set[str]
                 out.append(("dead-early", f"trigger {t['id']}: if {t['ref']} is killed before stage "
                             f"{t['prerequisite']}, their death moves nothing: add a line open at "
                             f"{t['prerequisite']} gated on `dead {t['ref']}`"))
+    # talk offered at the hidden start stage is heard by a player not yet offered the job: it carries every gate the
+    # speaker's offer at that stage carries (an earlier quest done, who is alive)
+    if not fm.stages.get(start, {}).get("shown", True):
+        for ln in form["lines"]:
+            if ln["results"] or not ln["first_stage"] <= start <= ln["last_stage"]:
+                continue
+            offers = [o for o in form["lines"] if o["speaker"] == ln["speaker"] and o["results"]
+                      and o["first_stage"] <= start <= o["last_stage"]]
+            mine = {_key(c) for c in ln["conditions"]}
+            common = set.intersection(*[{_key(c) for c in o["conditions"] if c["is"] not in FAILS + ("alive", "dead")} for o in offers]) \
+                if offers else set()
+            if offers and not common <= mine:
+                out.append(("before-offer", f"line {ln['id']} is open at stage {start}, before the job is offered, "
+                            "without the gates of the offer: a player who cannot yet be offered it hears it (open it "
+                            "from the first stage the player reads, or give it the offer's gates)"))
     # nobody the quest cannot go on without, unless named: a person whose death leaves a stage with no way on
     endings = {s["number"] for s in form["stages"] if s["ending"] == "completed"}
     reach = _reachable(fm, None)
@@ -1088,6 +1103,7 @@ GLOSS = {
     "number-set": "a number read that nothing sets",
     "rank-set": "a rank asked for that no quest in the file gives",
     "one-ref-many": "one reference standing for several things or people",
+    "before-offer": "talk about the job heard before the job can be offered",
     "existing": "a level or hostility set on a person the world already holds",
     "refusal": "a check with no refusal of its own",
     "take-unheld": "a hand-over the player may not be able to make: the stage takes what a way to it never asked for",
