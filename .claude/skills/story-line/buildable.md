@@ -581,7 +581,8 @@ must-live giver fails 96
 
 ## 7. What `sketch` cannot see
 
-These stay the deliverability reader's to check, on the outline and its sketch together:
+Check these yourself once `sketch` passes; they stay the deliverability reader's to check, on the outline and its
+sketch together:
 
 - that each step of the outline is in the sketch, and each line of the sketch says what the outline says;
 - that a journal entry is true of every way that reaches its stage, and names the person who truly spoke;
