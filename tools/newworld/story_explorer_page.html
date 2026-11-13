@@ -174,7 +174,7 @@ const STATUS_HELP = {outlined:"Told at arc level in its line's story; not yet wr
   written:"Written out in full: people, stages, endings.", reviewed:"Written in full and read on paper by fresh readers.",
   built:"A record of this quest is in our plugin."};
 const KIND = {plot:"Main quest plot", line:"Line story", ledger:"Ledger", world:"Province digest", region:"Region"};
-let CAT = null; const DOCS = {}; let db = null, dbState = "connecting", batches = [];
+let CAT = null; const DOCS = {}; let db = null, dbState = "connecting", batches = [], dreplies = {};
 const DKEY = "story-explorer-drafts";
 let drafts = []; try { drafts = JSON.parse(localStorage.getItem(DKEY) || "[]"); } catch (e) { drafts = []; }
 const GKEY = "story-explorer-drafts-gone";
@@ -508,6 +508,7 @@ function openTray(msg) {
     <h3 class="eyebrow">Drafts (${drafts.length})</h3>
     ${drafts.length ? drafts.map(d => `<div class="note"><div class="anchor"><b>${esc(d.label)}</b>${d.field && d.field !== "whole" ? ` · ${esc(d.field)}` : ""}${d.version !== CAT.version ? " · made on an older version of the story" : ""}</div>
       ${d.quote ? `<blockquote class="quote">${esc(d.quote)}</blockquote>` : ""}<div>${esc(d.note)}</div>
+      ${dreplies[d.id] ? `<div class="reply"><b>Agent:</b> ${esc(dreplies[d.id])}</div>` : ""}
       <div class="row"><button class="btn" type="button" data-edit="${d.id}">Edit</button><button class="btn dan" type="button" data-del="${d.id}">Remove</button></div></div>`).join("")
       : `<p class="empty">No drafts. Select words in any story, or tap a paragraph, then add a note.</p>`}
     <div class="row"><button class="btn pri" type="button" id="submitB" ${drafts.length && db ? "" : "disabled"}>Submit ${drafts.length || ""} note${drafts.length === 1 ? "" : "s"} as a batch</button>
@@ -705,6 +706,7 @@ const t = setTimeout(() => { if (!db) dbState = "absent"; }, 10000);
   if (db) { try { const u = window.claude ? await window.claude.use("user") : null; uid = u ? await u.id() : null; } catch (e) { uid = null; } syncDrafts(); }
   if (db) db.collection("batches").onSnapshot(s => { batches = s.docs.map(d => ({id: d.id, ...d.data()})); if ($(".sheet") && $("#submitB")) openTray(); },
     () => { dbState = "absent"; });
+  if (db) db.collection("draftReplies").onSnapshot(s => { dreplies = Object.fromEntries(s.docs.map(d => [d.id, d.data().reply || ""])); if ($(".sheet") && $("#submitB")) openTray(); }, () => {});
 })();
 })();
 </script>

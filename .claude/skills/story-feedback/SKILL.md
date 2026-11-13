@@ -30,8 +30,11 @@ Each batch is one document of the page's database, collection `batches`:
 The page also keeps the owner's unsent drafts in the collection `drafts`, so they follow him across devices: one
 document per draft, keyed by the note's id, with the note's fields plus `by` (the viewer's id), `updatedAt` and
 `deleted` (true once removed or submitted; a removed draft is kept as that marker so another device does not bring
-it back). Drafts are work in progress: never act on, answer, edit or delete one. Only a `batches` document is a
-submitted note. The page also holds the same drafts in the browser's `localStorage` (`story-explorer-drafts`, the
+it back). Drafts are work in progress: never act on, answer, edit or delete one, unless the owner says in his own
+words to act on the notes he has left. Then read the live drafts (`deleted` false), act on each as a note, and
+answer each in the collection `draftReplies`: one document per draft, keyed by the draft's id, `{reply}`. The page
+shows that reply under the draft in its tray. The draft itself is never changed. Otherwise only a `batches`
+document is a submitted note. The page also holds the same drafts in the browser's `localStorage` (`story-explorer-drafts`, the
 notes; `story-explorer-drafts-gone`, removals by id and time) and merges the two by note id, newest change winning
 (`mergeDrafts` in `tools/newworld/story_explorer_page.html`, tested beside the generator).
 

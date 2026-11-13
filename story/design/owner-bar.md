@@ -17,6 +17,14 @@ reads this first; a new ruling is added here the day it is made, as well as to o
 - The old main quest, factions and quest designs are the foundation, improved not replaced (OR 2026-10-28). Keep
   the treasure hunt, the spies and the main quest's spirit; make it "more Black Marsh, more exciting, less
   bureaucratic" (OR 2026-11-06, the quest review loop).
+- The main quest's treasure hunt is the main theme of its plot, "like the film National Treasure! But with a better
+  reason for doing the hunt": many quests, some leading one to the next, across most regions and every kind of place
+  (wrecks, mines, caves, forts, outposts, ruins), rising in danger and in the worth of their rewards; "make it fun!"
+  (OR 2026-11-13, story explorer notes).
+- The player is a blank slate drawn into the world's intrigue, never a chosen one, and the plot does not lean on
+  learning about the player's own past (OR 2026-11-13, story explorer notes).
+- A new player is shown early why the story's central thing matters: "I'm an elder scrolls fan and I didn't know
+  about them. I was a bit like... They're just trees?" (OR 2026-11-13, story explorer notes).
 - Every faction is "fun and intriguing and exciting" with "drama and tension, all of their own". A faction's
   premise may stay as background, but each quest is something daring the player does, never chores: "do you have to
   pickpocket somebody to get a key to break into their house to change something on a record about owed months,
@@ -32,6 +40,9 @@ reads this first; a new ruling is added here the day it is made, as well as to o
   (OR 2026-11-06, #50). Swimming and climbing are not skills and do not count (OR 2026-11-06, #53).
 - Every main quest offers at least two ways through, each with different named skills, so different builds can
   finish it (#50). "Different builds being able to complete main" (OR 2026-11-12).
+- A build is a mix of melee (of several kinds), ranged, stealth and magic, or one of them alone; stealth is always
+  paired with another. "Talker" is not a build: "no one is playing Skyrim purely for speechcraft". A few quests may
+  have a Speech way, and no quest assumes a player's main build is Speech (OR 2026-11-13, story explorer notes).
 - Faction quests are tied to the faction's own skills, "for consistency and immersion" (#50); "factions have
   their own build leanings" (OR 2026-11-12).
 - A quest that does not use the player's in-game skills is not fun, and that is a blocking review finding
@@ -44,6 +55,16 @@ reads this first; a new ruling is added here the day it is made, as well as to o
 - A choice or an ending matters in play, "beyond just description and text": "what are the actual gameplay
   impacts? In terms of powers, rewards, abilities, unlocking fun stuff" (OR 2026-11-13). Each outcome says what it
   gives and what it costs the player.
+- Side quests met on the main road are plainly side quests. They give a riddle in place of directions, with no
+  marker until the place is found; the journal then says the player guessed right, and the work there has markers
+  and uses the player's skills. Their rewards are made for the main quest's final fight, so a player who does them
+  all finds it easy (Majora's Mask's Fierce Deity mask) (OR 2026-11-13, story explorer notes; needs the ceiling's
+  every-objective-has-a-marker rule changed, an open call).
+- A faction's ranks bring rewards in proportion, and things unlocked, as Skyrim's guilds do (OR 2026-11-13).
+- A power or rule of the story is explained to the player once, at the point it matters; nobody then needs to say
+  why again (OR 2026-11-13, story explorer notes).
+- Fewer factions overall: the owner could not tell what the League of Open Water is and "could probably cut this
+  one" (OR 2026-11-13, story explorer notes; a leaning, not yet decided).
 
 ## The vibe of Argonia: not a bureaucratic place
 
@@ -79,6 +100,10 @@ reads this first; a new ruling is added here the day it is made, as well as to o
 - Anyone can die. A person the main quest or a faction's line cannot go on without gets our version of
   Morrowind's "thread of prophecy" message; a minor side quest just fails with a journal entry (OR 2026-11-12).
 - A place or a quest promises only what Skyrim's own systems can deliver (OR 2026-11-09).
+- "Everything described in all parts of the story need to be known to be deliverable": while writing, the writer
+  refers to the known deliverable set (the world's places as the data gives them, the meshes, creatures and items
+  our mods hold, and the quest ceiling) and chooses only from it, so no burnt huts without a burnt hut to show, no
+  knotted cords without a cord to hold, no diving sphere without a sphere (OR 2026-11-13, story explorer notes).
 - Nothing is levelled against the player; rewards are fixed (decision 0035).
 - A detectives' faction, rival to the assassins and the thieves (decision 0025).
 
@@ -125,6 +150,14 @@ reads this first; a new ruling is added here the day it is made, as well as to o
   (walk 3, OR 2026-11-08, 2026-11-12).
 - No personification, no verbless fragments, no dangling modifiers, nothing opaque to the player; British
   punctuation (OR "Writing"; walk 4).
+- Every story, quest and line passes through our text rules: the owner finds "a lot of annoying AI writing style"
+  in the stories. A sentence that says nothing a reader can picture ("given back their no, the first thing the trees
+  refused was the sick") is cut. Paragraphs are a few sentences each at most (OR 2026-11-13, story explorer notes).
+- The rules on writing live in: this page; [owner-rulings](../../docs/owner-rulings.md) ("Writing" and the dated
+  entries); [style-core](text/style-core.md), the checklist, and the [style guide](text/style-guide.md) behind it,
+  both brought from the first repo; [culture-registers](text/culture-registers.md); dialogue-write's `bans.yaml`
+  and its linter; the story-line skill's bar and `buildable.md`; quest-write's principles; the ceiling in
+  [quest-form](../../docs/design/quest-form.md); and decision 0032 on grounding in the lore.
 - "My friend" at most once or twice a person; friendly address only where standing warrants it (walk 3).
 - Speakers and players may be any of the ten races; address and manner vary by player race, faction and rank.
 

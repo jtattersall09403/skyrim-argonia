@@ -26,6 +26,19 @@ owner has not edited it yet, and his words go above this line when he does.
   the Shadowscales, the Thorn Ash-Reed, the Umbriel Witness, the Waykeepers. Their stories stand as read once, and do
   not yet carry the ledger's rulings: names, places and seven finales will change.
 
+## The main plot rewritten to the owner's overhaul (2026-11-13)
+
+The owner overhauled the main quest in the story explorer (23 notes, left as drafts) and asked for the overall plot
+alone to be rewritten, with no review round and no faction changes. Done: `main-plot.md` is the new plot (nineteen
+quests; a long treasure hunt as Act II; the Reed's dream cellars as the twist; three endings with play effects),
+written to every writing rule and run through the prose linter; its section 9 lists what it needs of the world,
+five calls for the owner on the ceiling, and every knock-on effect found by checking (the built first-act quests
+mq01, mq03 to mq05, Helstrom's studio needs and place files, place hooks, the roster, the province plan, about forty
+ledger rows, six faction lines, four lore extrapolations). The owner's rulings from the notes are in owner-bar and
+owner-rulings. Each note has a reply in the explorer, shown under the draft (collection `draftReplies`). Owed: the
+ceiling call to the owner; the knock-ons, each when its own work comes up; `main.md` redone from the plot before
+any main quest is written. The rounds below for `main` are void until then.
+
 ## What this phase delivers
 
 1. **The second round for the nine lines above**, by the brief already written

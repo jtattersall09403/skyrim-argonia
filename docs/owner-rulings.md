@@ -637,3 +637,15 @@ added here the day they are made, with the date and the issue.
 - 2026-11-13 (in session): "Don't make 'choices divide the readers' a hard bar". Whether paper readers split on a
   choice is weighed, never required: each option must have an honest case and something of its own to give in play,
   and then the choice stands however the readers chose.
+- 2026-11-13 (story explorer notes on the main plot, read from his drafts): (a) the main quest's plot is
+  overhauled to his outline: freed from an Owing gang by the Reed, which hauls ties-less outsiders out of gangs as
+  disposable spies; sick Hist trees; the Unbound draining sap; a long treasure hunt "like the film National
+  Treasure" for the Eye of Argonia; the Reed's dream cellars as the twist; three endings (take, use, give) with play
+  effects; Opus at medium effort rewrites the overall plot alone, with no review loop and no faction changes yet.
+  (b) Everything in a story must be known to be deliverable, chosen while writing from the known set. (c) "Talker"
+  is not a build; builds are melee, ranged, stealth and magic in their mixes, stealth always paired. (d) Every story
+  and quest passes through the text rules; paragraphs a few sentences at most. (e) Something early "sells" why the
+  trees matter. (f) Riddle side quests with no marker until found, their rewards made for the final fight. (g) Faction
+  ranks with proportionate rewards. (h) A power explained once at the right point needs no "each says why". (i) He
+  leans to fewer factions and could cut the League. (j) Endings as visions with end music, trees shown dying and
+  villages abandoned; post-game hard dungeons with a mark of achievement. Recorded in owner-bar the same day.
