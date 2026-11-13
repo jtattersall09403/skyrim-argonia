@@ -24,3 +24,12 @@ band; items. Each milestone is one owner test.
   ArgoniaNewWorld.esm now copies (mods/sourcing-register.json rows with `permission_condition`) become real masters
   of our world file, their records referenced rather than copied, so their mods are dependencies of ours and none of
   their assets is shipped.
+
+## Spellmaking, later (owner, 2026-11-13)
+
+Morrowind let the player make spells of their own. The owner would like it back, unlocked through the story in a way
+that belongs to Argonia, "later on, with it added to the plan". It needs a plugin of our own (allowed where no mod,
+record or script does the job). The proposal, with what mods have done it and what ours would need, is at the end of
+[choice-and-consequence](../research/writing/choice-and-consequence.md) once that note lands; nothing is built for
+it before the owner picks it up.
+

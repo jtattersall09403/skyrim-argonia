@@ -619,3 +619,11 @@ added here the day they are made, with the date and the issue.
   ("presumably you are actioning and fixing these right? What are you expecting me to do vs you?"): the agents fix
   them (names on rooms and doors, the small things a story needs, the stories fitted to the place); the owner need
   do nothing for the story and edits Helstrom only for his own reasons.
+- 2026-11-13 (in session, the studio): (a) "Opening the studio - make it start the build machine, like how opening
+  the play stream starts the play machine." (b) Notes: those attached to changes travel with the save and are read
+  when the owner finalises, as now. Other notes: "I don't want them acted on immediately, I'd like to be able to
+  write a bunch (however many I want), and for them to travel with the save, and then for me to decide when I want
+  to send them for actioning as a batch." (c) Rewards: items and gold are the simplest and stand first; also
+  "crafting recipes, potions recipes, perhaps some other fun stuff from Morrowind like unlocking spellmaking in an
+  Argonian lore friendly way (we'd need to build a plugin for that presumably but would be cool if we could, later
+  on, with it added to the plan)".
