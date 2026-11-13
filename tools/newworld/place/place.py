@@ -63,6 +63,10 @@ The recipe (numbers from research/nw-02-flora-rules.md, nw-02-ground-water-rules
    (docs/research/nw-02-walk5-navmesh.md), so a wide hull at a large scale is kept off the road by that hull. A
    natural reference that falls short is refused; road dressing is moved straight out from the road by what it
    falls short (its offset is its collision's near side), and dropped only when four moves do not clear it.
+7. Seating by the mesh (audit.py), last, over every placed thing, its x, y and form id kept: a standing tree's or a
+   stump's trunk foot ring at or below the ground all round (slope included), a lying log's bulk resting on the ground
+   along its length, a rock or cliff shell's open rim buried (its yaw turned to the one that needs least burial). A
+   thing that would need burial past EXTRA_SINK_MAX of its height is not placed there. The audit is the stage's check.
 """
 from __future__ import annotations
 
@@ -198,6 +202,8 @@ def shard_line(r: dict, rec: dict) -> str:
     o = {"base": f"{rec['plugin']}:{rec['edid']}", "x": x, "y": y, "z": z, "rx": rx, "ry": ry, "rz": rz,
          "scale": r["scale"], "cell": r["cell"], "cls": r["cls"], "db": r["db"], "key": r["base"],
          "pos": r["pos"], "rot": r["rot"], "model": rec["model"], "id": r["id"], "fid": r["fid"]}
+    if r.get("seated"):  # lowered by its mesh off a float (step 7): its sink is no longer its base's window
+        o["seated"] = True
     return json.dumps(o, separators=(",", ":"))
 
 
@@ -576,6 +582,7 @@ _P: Palette | None = None
 _R: Roads | None = None
 _DRESS: dict | None = None
 _MARGIN: set | None = None
+_PROF = None  # audit.Profiles of a worker: each base's mesh read once
 _FACTOR: dict = {}  # habitat idx -> density factor (calibrate(): the habitat's mean refs/ha hits its target)
 
 
@@ -1023,6 +1030,51 @@ def targets(W: World, P: Palette) -> dict:
             if h in P.hab and P.hab[h].get("density_per_ha")}
 
 
+def _seat_row(args):
+    """Step 7 for one row of cells: each thing seated by its kind's rule from its own mesh (audit.seat); a thing that
+    cannot be seated on its ground is dropped (None in its place, so the form ids of the rest stand)."""
+    from tools.newworld.place import audit
+    global _PROF
+    cy, out = args
+    _init()
+    if _PROF is None:
+        _PROF = audit.Profiles()
+    ground = audit.world_ground(_W)
+    tally, rows = defaultdict(int), []
+    for cx, refs in out:
+        kept = []
+        for r in refs:
+            prof = _PROF(_P.rec[r["base"]]["model"])
+            if prof is None:
+                kept.append(r)
+                continue
+            m = audit.measure_of(r["cls"], prof)
+            got = audit.seat(prof, r["cls"], r["pos"], r["rot"], r["scale"], ground)
+            if got is None:
+                tally[f"seat: refused, no pose seats its {m} on this ground"] += 1
+                kept.append(None)
+                continue
+            z, rot = round(got[0], 1), [round(float(a), 5) for a in got[1]]
+            if z != r["pos"][2] or rot != r["rot"]:
+                tally[f"seat: {m} reseated"] += 1
+                r["seated"] = m == "low"
+            r["pos"] = [r["pos"][0], r["pos"][1], z]
+            r["rot"] = rot
+            kept.append(r)
+        rows.append((cx, kept))
+    return cy, rows, dict(tally)
+
+
+def seat_all(results, workers) -> dict:
+    tally = defaultdict(int)
+    with Pool(workers) as pool:
+        for cy, out, t in pool.imap_unordered(_seat_row, list(results.items())):
+            results[cy] = out
+            for a, b in t.items():
+                tally[a] += b
+    return tally
+
+
 def place_rows(jobs, factor, workers):
     results, tally = {}, defaultdict(int)
     with Pool(workers) as pool:
@@ -1052,7 +1104,7 @@ def calibrate(W: World, P: Palette, jobs, workers) -> dict:
 
 def key() -> str:
     h = hashlib.sha256()
-    for p in [Path(__file__), LC / "legend.json", MANIFEST, *sorted(DB.glob("flora_*.jsonl")), DB / "region_flora.jsonl",
+    for p in [Path(__file__), Path(__file__).with_name("audit.py"), LC / "legend.json", MANIFEST, *sorted(DB.glob("flora_*.jsonl")), DB / "region_flora.jsonl",
               DB / "habitat.jsonl", DB / "road_vertex.jsonl", DB / "place.jsonl"]:
         h.update(p.read_bytes())
     h.update((LC / "key.txt").read_bytes())
@@ -1101,12 +1153,15 @@ def run(force: bool = False, workers: int = 3) -> dict:
             for r in refs:
                 r["id"] = ident(r["base"], r["pos"][0], r["pos"][1], r["cell"])
     fids = form_ids([r["id"] for out in results.values() for _, refs in out for r in refs])
+    for k2, v in seat_all(results, workers).items():  # after the form ids: a thing dropped here moves no other's id
+        tally[k2] += v
     per_cell = {}
     total = 0
     h = hashlib.sha256()
     for cy in rows:
         lines = []
         for cx, refs in results[cy]:
+            refs = [r for r in refs if r is not None]
             per_cell[(cx, cy)] = sum(1 for r in refs if not r["cls"].startswith("road_"))
             for r in refs:
                 r.pop("_r", None); r.pop("_h", None)

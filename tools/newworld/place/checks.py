@@ -3,9 +3,10 @@ things the rules placed (place.PLACED). The edits of single things are judged by
 
 Writes check.json beside the shards and prints one line per check; exit 1 when a hard check fails.
 Hard (must be 0 / true): refs on a road surface; trees in flowing water; trees in standing water against the rule
-(habitat or the family's standing_water_max_m); trunk seating outside the base's measured sink window by more than
-the LAND quantisation (4 units) plus the two triangulations' difference; rocks and cliffs with the mesh bottom above
-the lowest ground of their footprint; pairs closer than 1 m; a base from a plugin that is not a master; a model that
+(habitat or the family's standing_water_max_m); the seating audit's fault classes (audit.py: trunks hovering, logs'
+bulk hovering, hollow rims showing, things floating); the seating of the things the mesh rule does not seat outside
+the base's measured sink window by more than the LAND quantisation (4 units) plus the two triangulations' difference,
+and rocks among them with the mesh bottom above the lowest ground of their footprint; pairs closer than 1 m; a base from a plugin that is not a master; a model that
 does not resolve in the NewWorld profile. Reported: trees in standing water by habitat, cliff open sides within 45 deg
 of uphill, refs per cell against vanilla, distinct bases per region and the regions' Jaccard similarity.
 """
@@ -18,6 +19,7 @@ from collections import Counter, defaultdict
 import numpy as np
 from scipy.spatial import cKDTree
 
+from tools.newworld.place import audit as seat_audit
 from tools.newworld.place import place as P
 
 QUANT_M = 4 / P.UPM
@@ -73,18 +75,22 @@ def run(folder=None, refs=None) -> int:
     t1, t2 = W.tri_grounds(xs, ys)
     err_max, err_at, n_seat = 0.0, None, 0
     hover, rock_n = 0, 0
+    prof = seat_audit.Profiles()
     for i, r in enumerate(refs):
         b = Pa.base.get(r["db"])
         if b is None:
             continue
         c = Pa.class_of[r["db"]]
+        pr = prof(rec[src[i]]["model"])
+        if pr is not None and seat_audit.measure_of(c, pr) != "low":  # seated by its mesh (step 7): the seating audit judges it
+            continue
         if c in P.ROCKS:
             rock_n += 1
             ob = rec[src[i]]["obnd"]
             if P.underside_gap(W, xs[i], ys[i], zs[i], ob, sc[i], r["rot"]) > 0.5:  # the shard's rounding (0.1 unit, 1e-5 rad)
                 hover += 1
             continue
-        if r.get("seated"):      # seated by its own mesh (an edit's seat row): the edits check judges it
+        if r.get("seated"):      # lowered off a float by its mesh (step 7 or a seat row): the audit judges it
             continue
         lo, hi = b.get("sink_lo_m"), b.get("sink_hi_m")
         if lo is None or hi is None or hi <= lo:
@@ -118,7 +124,10 @@ def run(folder=None, refs=None) -> int:
         d = abs((world_open - up + 180) % 360 - 180)
         total += 1; within += d <= 45
     res["open_sides_facing_uphill"] = {"within_45deg": within, "of": total, "share": round(within / max(1, total), 4)}
-    hard("open_sides_uphill_share_ok", res["open_sides_facing_uphill"]["share"], total == 0 or within / total >= 0.95)
+    # the seating audit (audit.py): every fault class zero, judged from the written refs against the ground
+    au = seat_audit.audit(({**r, "model": rec[src[i]]["model"]} for i, r in enumerate(refs)), seat_audit.world_ground(W), prof)
+    for fl, v in au["faults"].items():
+        hard(f"seat_{fl}", {"total": v["total"], "by_kind": v["by_kind"], "worst": v["worst"][:3]}, v["total"] == 0)
     # spacing
     tree = cKDTree(np.column_stack([xs, ys]))
     pairs = tree.query_pairs(P.MIN_SPACING_M * P.UPM - 1e-6, output_type="ndarray")

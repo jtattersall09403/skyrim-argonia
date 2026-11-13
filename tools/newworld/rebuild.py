@@ -287,7 +287,7 @@ STAGES: tuple[Stage, ...] = (
                  "db:flora_base", "db:flora_class", "db:flora_family", "db:flora_guild", "db:flora_guild_member",
                  "db:region_flora", "db:habitat", "db:road", "db:road_class", "db:road_node", "db:road_vertex", PLACE_MAP,
                  "db:water_kind", "db:region", "src:tools/newworld/place/__init__.py", "src:tools/newworld/place/__main__.py",
-                 "src:tools/newworld/place/place.py",
+                 "src:tools/newworld/place/place.py", "src:tools/newworld/place/audit.py",
                  "src:tools/newworld/place/texsets.py", IDSPACE_PLACE),
           check_reads=("src:tools/newworld/place/checks.py",),
           writes=("out:newworld/plugin/placed/flora/manifest.json", "out:newworld/plugin/placed/flora/bases.json"),

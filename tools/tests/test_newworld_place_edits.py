@@ -292,8 +292,8 @@ def test_an_edit_makes_stale_only_the_stages_after_the_placement():
 def test_a_seat_row_lowers_every_thing_of_its_base_and_nothing_else(world, monkeypatch):
     import numpy as np
     from tools.newworld.place import seat as S
-    pts = np.array([[0.0, 0.0, 70.0], [10.0, 0.0, 200.0]])     # the mesh's lowest vertex 1 m over its pivot
-    monkeypatch.setattr(S, "mesh_points", lambda model, resolver=None: pts)
+    monkeypatch.setattr(S.A, "profile", lambda model, resolver=None: {"model": model})
+    monkeypatch.setattr(S.A, "seat", lambda p, kind, pos, rot, sc, ground: (pos[2] - 87.0, rot[2]))  # the rule: 87 down
     monkeypatch.setattr(S.Seater, "ground", lambda self, xs, ys: np.zeros(len(xs)))
     world["edits"].write_text(json.dumps({"n": 1, "op": "seat", "base": "Trees.esp:TreeOak", "to": {"embed_m": 0.1},
                                           "by": "agent", "at": "2026-11-12T00:00:00Z", "tier": "AGENT_INVENTED"}) + "\n")
@@ -302,18 +302,9 @@ def test_a_seat_row_lowers_every_thing_of_its_base_and_nothing_else(world, monke
     for (base, x, y), r in world["by"].items():
         o = got[r["id"]]
         assert o["fid"] == r["fid"] and o["pos"][:2] == [x, y] and o["rot"] == r["rot"]
-        assert o["pos"][2] == (-77.0 if base == OAK else 10.0)  # lowest vertex at 80: down 80 + 7
+        assert o["pos"][2] == (-77.0 if base == OAK else 10.0)
     assert rec["seated"] == {"Trees.esp:TreeOak": 4}
     assert E.load(world["edits"]) == [] and E.seat_rows(world["edits"]) == {"Trees.esp:TreeOak": 0.1}
-
-
-def test_seat_clearance_poses_the_mesh():
-    import numpy as np
-    from tools.newworld.place import seat as S
-    pts = np.array([[100.0, 0.0, 0.0], [0.0, 0.0, 50.0]])
-    # tipped 90 degrees about y: the vertex 100 units along x goes 100 units down
-    c = S.clearance(pts, [0.0, 0.0, 500.0], [0.0, np.pi / 2, 0.0], 1.0, lambda xs, ys: np.zeros(len(xs)))
-    assert abs(c - 400.0) < 1e-6
 
 
 def test_a_drop_row_takes_away_every_thing_of_its_base_and_nothing_else(world):
