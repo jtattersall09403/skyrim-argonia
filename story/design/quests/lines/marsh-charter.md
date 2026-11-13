@@ -21,7 +21,10 @@ question "Whose spear were you?". *Sarpa*: the winged people of the mesa's weste
 Sarpa camp. *Oxhu*: the Clay-Mound people, whose council sits at the mound-town of Aroxhu. *Archein*: the
 assimilated landholding families of Imperial times, who now keep the forts (consistency, 4.4). *The Archwardens*:
 the thin successor state, which holds the old forts and little else; in everyone's mouth, *the Wardens*.
-*Grave-stake*: the carved post a dead Argonian is sung home by (consistency, 4.4). *Danger bands*: fixed in the
+*Grave-stake*: the carved post a dead Argonian is sung home by (consistency, 4.4). *Raft-stage*: one leg of the river rafts, from one landing to the next. *Hanaxi*: the Sarpa roost on the mesa's
+western edge. *Bone-ground*: where a roost keeps its dead on feathered poles; *bone-tenders* keep it. *The
+flu-dead*: the Dark Elves of the mesa's ruined towns, killed by the Knahaten Flu long ago, who do not lie still.
+*The eleven*: the spears the kaal has buried. *Danger bands*: fixed in the
 world, never set against the player (D province, Danger; decision 0035).
 
 ## 1. The faction in a page
@@ -230,14 +233,16 @@ same ranks "lance" and a number.
   its larder. It is the line's big fight, and no way through the quest goes round it; the ground has a dry spit for
   a blade and a low mound for a bow. In the larder heap the clay beads and the crest-feathers lie together, and
   among them are two things that are not the beast's work: a Sarpa arrow snapped off in a netter's float-vest, and
-  an Oxhu spearhead through a fisher's wing-harness, which Smithing 40 reads as one named smith's work. The player
+  an Oxhu spearhead through a fisher's wing-harness. Both can be taken. A line with Tohl-Meen, gated on the
+  spearhead held and Smithing 40, names its maker as his own kinsman, with a refusal for the unskilled ("A
+  spearhead. We make a thousand"). The player
   carries the beast's spine to both sides and chooses what else to show.
 
   | Outcome | What the player gains in play | What the player loses or can no longer get | Who pays, and where the player sees it | The form results that build it |
   |---|---|---|---|---|
-  | *The beast took all* (the spine shown, the arrow and the spearhead kept back) | 600 gold from Tohl-Meen; the roost at peace with the player, so its bank and its fishing stage are safe ground and its fish-seller trades | the arrow and spearhead prove nothing later; Ves-Tal's gift | the netter's and the fisher's kin at Tazhul, who are told a beast did it; one line there | `give_gold` 600; `make_peace` Seth-Alaxh's faction; the fish-seller's placement `switch_on` |
-  | *One killing each* (both shown to both) | 200 gold from the council, not from Tohl-Meen; peace as above; **the Perch-Spear**, Ves-Tal's own (a `template_item` on a load-order spear with a fixed enchantment), given for "showing both hands" | Tohl-Meen's 400 and his house's smith at Inoja, who will not sell to the player again | Tohl-Meen, whose kinsman forged that spearhead: he greets the player ever after as the one who cost his house its standing | `give_gold` 200; `make_peace`; `give_item` the Perch-Spear; the house smith's placement `switch_off`; `set_number mc03.shown 2` |
-  | *One side's proof* (only the arrow shown to Tohl-Meen, or only the spearhead to Ves-Tal) | the wronged side's blood-price paid to its envoy: 900 gold from Aroxhu, or the roost's perch cache made the player's | there is no peace: the other side stays as it was (the roost hostile; or Tohl-Meen's purse shut), and its gift is lost | the reed-water's fishers, who still do not go out; Tazhul's people say so | `give_gold` 900, or `give_ownership` of a perch cache; `set_number mc03.shown 1` |
+  | *The beast took all* (the spine shown, the arrow and the spearhead kept back) | 600 gold from Tohl-Meen; the roost at peace with the player, so its bank and its fishing stage are safe ground and its fish-seller trades | the arrow and spearhead prove nothing later; Ves-Tal's gift | the netter's and the fisher's kin at Tazhul, who are told a beast did it; one line there | `give_gold` 600; `make_peace` Seth-Alaxh's faction; the fish-seller's placement at the fishing stage `switch_on`, by the telling in the hall |
+  | *One killing each* (both shown to both) | 200 gold from the council, not from Tohl-Meen; peace as above; **the Perch-Spear**, Ves-Tal's own (a `template_item` on a load-order spear with a fixed enchantment), given for "showing both hands" | Tohl-Meen's 400 and his house's smith at Inoja, who will not sell to the player again | Tohl-Meen, whose kinsman forged that spearhead: he greets the player ever after as the one who cost his house its standing | `give_gold` 200; `make_peace`; `give_item` the Perch-Spear or, by the player's answer to "What do you carry?", **the Perch-Blade** or **the Perch-Bow** (three answers, three stages); the house smith's placement `switch_off` and the fish-seller's `switch_on`, both by the telling in the hall; `set_number mc03.shown 2` |
+  | *One side's proof* (anything else: one proof shown to either man, or both to one) | the wronged side's blood-price paid to its envoy: 900 gold from Aroxhu, or the roost's perch cache made the player's | there is no peace: the other side stays as it was (the roost hostile; or Tohl-Meen's purse shut), and its gift is lost | the reed-water's fishers, who still do not go out; Tazhul's people say so | `give_gold` 900, or `give_ownership` of a perch cache; `set_number mc03.shown 1` |
 
   The wing-chief's last word in any outcome: "Hanaxi does not trade because Hanaxi is owed. Ask at your burned post
   what a fish is worth." Asked, the kaal gives what she believes (the table above). Carries on: a rank; the stored
@@ -250,7 +255,8 @@ same ranks "lance" and a number.
   Reeka-Veesa, whose lookout faces the cave and one of whose children has slipped off to it (D chixathe-mesa,
   Reeka-Veesa), knows a cleft on the mesa side that the warband does not watch, because a giant spider nests on
   the path to it (the same record: Deadly, and a real fight for anyone who goes that way). The cleft comes out in
-  the back chamber, apart from the warband's fight, where Ilu-Sei sits with the child, whom she has kept fed, and
+  the back chamber, an inside of its own behind its two doors (the cleft, and a low door to the nest gallery's
+  back that nothing of the warband uses), where Ilu-Sei sits with the child, whom she has kept fed, and
   with the Oxayo eggs in a basket, which she moved there when Kor-Ahk wanted them broken. She talks, as the record
   says an elder there will. She shows the crushed ledge, whose shells the player can go and see. She says what the
   roost holds: that the first fish of the river is owed to Hanaxi, sworn at the roost's bone-ground in the dead
@@ -261,9 +267,9 @@ same ranks "lance" and a number.
 
   | Outcome | What the player gains in play | What the player loses or can no longer get | Who pays, and where the player sees it | The form results that build it |
   |---|---|---|---|---|
-  | *The eggs, and Kor-Ahk left to his elders* (in by the cleft, out by the cleft) | Kaleen's price for the eggs, 300 gold; **Ilu-Sei's wind-charm** (a `template_item` on a load-order amulet with a fixed stamina enchantment), given when the eggs are home and Kor-Ahk lives | the fort's bounty and Kaleen's price for the head; the war-leader's chest | Kaleen, who says the head was the half she wanted; Oxayo, where Kor-Ahk's fighters kill again before MC06 | `give_gold` 300; `give_item` the charm, on Ilu-Sei's line gated on Kor-Ahk alive; `set_number mc04.way 1` |
-  | *The eggs, then Kor-Ahk from behind his own trap* (in by the cleft, on through the chamber) | both prices, 300 and 300, and the fort's bounty, 400; the war-leader's chest and his weapon | the wind-charm: "Then you have collected, as he did" | the roost's elders, whose judgement was taken from them; Ilu-Sei's later greetings | `give_gold`; `set_number mc04.way 2` |
-  | *The mouth, and everyone in it* | all three payments; everything the cave holds, the larder's goods and both chests | Ilu-Sei, dead without having fought: no charm, nothing of what the roost holds until MC05, and a younger elder who gives less in MC05 | the child of Reeka-Veesa, found at the end beside a dead woman who fed him; his elder's greeting | `give_gold`; `set_number mc04.way 3` |
+  | *The eggs, and Kor-Ahk left to his elders* (in by the cleft, out by the cleft) | Kaleen's price for the eggs, 300 gold; **High-Flower's Breath**, the elder's mark in the sap of the Sarpa tree: a lasting ability (our copy of a load-order blessing: health and stamina return a quarter faster, always), given by Ilu-Sei's line when the eggs are home, Kor-Ahk lives and the roost's word from Joxhi stands | the fort's bounty and Kaleen's price for the head, 700 gold; the war-leader's chest and weapon | Kaleen, who says the head was the half she wanted; Oxayo, where Kor-Ahk's fighters kill again before MC06 | `give_gold` 300; `teach_spell` the ability, on a stage set by Ilu-Sei's line gated on the eggs' ending done, Kor-Ahk alive and `mc02.spared`; `set_number mc04.way 1` |
+  | *The eggs, then Kor-Ahk from behind his own trap* (in by the cleft, then round to the gallery's back door) | both prices, 300 and 300, and the fort's bounty, 400; the war-leader's chest and his weapon | the blessing, for good: "Then you have collected, as he did. The tree does not mark collectors." She says so before the player goes on | the roost's elders, whose judgement was taken from them; Ilu-Sei's later greetings | `give_gold`; `set_number mc04.way 2` |
+  | *The mouth, and everyone in it* | all three payments; everything the cave holds, the larder's goods and both chests | Ilu-Sei, dead without having fought: no blessing, nothing of what the roost holds until MC05, and a younger elder who gives less in MC05 | the child of Reeka-Veesa, found at the end beside a dead woman who fed him; his elder's greeting | `give_gold`; `set_number mc04.way 3` |
 
   In the nest gallery the egg-tender's sling lies in the larder with Oxayo's clutch-cloth in it. Kaleen's paying
   line at Oxayo is where the child goes home: he is gone from the cave and found at Reeka-Veesa afterwards. Then
@@ -284,8 +290,9 @@ same ranks "lance" and a number.
   where it fell: the headless bones of a dragon across the broken tower, Sarpa bone-poles round them and Noota
   Nara grave-stakes among the poles. One stake is taller and can be read; reading it moves the quest. It is the
   first keeper's, and it says in her own cuts that the winged ones drew the dragon down, that the Post speared it
-  on the ground, and that the first fish of the river goes up each season while the burned post stands. Smithing
-  50 reads the old spearheads lying among the bones as tips "heated twice, the second time in no forge". Below are
+  on the ground, and that the first fish of the river goes up each season while the burned post stands. The old
+  spearheads lying among the bones can be taken; shown to Deesha, a line gated on one held and Smithing 50
+  reads them as tips "heated twice, the second time in no forge". Below are
   the flu-dead, the hardest fighting the line has, and the lord, a Velothi wraith. The kaal gives the bronze key by
   a line when told who is asking, and says what her sister's son wanted in that town; if she refuses the hunt
   outright the vault's door can still be opened with Lockpicking (a Master lock) or the hunt left. The hoard and
@@ -298,8 +305,8 @@ same ranks "lance" and a number.
 
   | Outcome | What the player gains in play | What the player loses or can no longer get | Who pays, and where the player sees it | The form results that build it |
   |---|---|---|---|---|
-  | *Pulled* (the stake taken, and given to the kaal at the telling) | the kaal reads it herself and cannot unread it: she teaches the keeper's guard, the one lesson she gives (Block raised by 5); the master smith reads the cuts about the tips, and the **dragonfire recipe** opens at the forge without the trial of six fire salts (below); in MC06 she can be moved with no check | the roost's gift: the asker sees the pole on the player's back and says "Then you are paid already" | the roost's bone-tenders: there is a gap among the poles in the yard, and Ilu-Sei's greeting names it | `take_item` the stake; `raise_skill` Block 5; `open_recipe` the dragonfire weapons; the stake's second placement by the burned post `switch_on`; `set_number mc05.stake 1` |
-  | *Left* (the stake read and left standing; the kaal has only the player's word) | **High-Flower's Breath**, the elder's mark in the sap of the Sarpa tree: a lasting ability (our copy of a load-order blessing: health and stamina return a quarter faster), given at the parley ground | the kaal's lesson and the smith's reading; in MC06 the kaal is moved only by Speech 60 or by the prefect's slate, if it was kept | the kaal, who is told her village's one deed is half another people's by a spear with nothing in its hand: "You bring me a raider's tale in my own spear's mouth"; she gives nothing for this hunt but the rank | `teach_spell` the ability, on the asker's line gated on the stake not being held at the hand-in stage; `set_number mc05.stake 2` |
+  | *Pulled* (the stake taken, which sets a stage of its own, and given to the kaal at the telling) | the kaal reads it herself and cannot unread it: she teaches the keeper's guard, the one lesson she gives (Block raised by 5); the master smith reads the cuts about the tips, and the **dragonfire recipe** opens at the forge without the trial of six fire salts (below); in MC06 she can be moved with no check | the roost's gift: the asker's paying line has a second form after the taking, "Then you are paid already" | the roost's bone-tenders: there is a gap among the poles in the yard, and Ilu-Sei's greeting names it | a take of the stake sets the stage "pulled"; `take_item` the stake; `raise_skill` Block 5; `open_recipe` the dragonfire weapons; the stake's second placement by the burned post `switch_on`; `set_number mc05.stake 1` |
+  | *Left* (the stake read and left standing; the kaal has only the player's word) | **the bone-tender's charm**, given at the parley ground (a `template_item` on a load-order amulet with a fixed stamina enchantment); the roost's elders sell at the first pole from now on (fish, feathers, hides) | the kaal's lesson and the smith's reading; in MC06 the kaal is moved only by Speech 60, or by Speech 30 with the prefect's slate in hand | the kaal, who is told her village's one deed is half another people's by a spear with nothing in its hand: "You bring me a raider's tale in my own spear's mouth"; she gives nothing for this hunt but the rank | `give_item` the charm, on the asker's line gated on the hunt done and the stage "pulled" not done; the elders' seller `switch_on` by the telling in the hall; `set_number mc05.stake 2` |
 
   The telling's three answers stand as in every hunt ("the roost's", which is the asker's, "my own", and no
   Charter's: the fort has no part in this one). Carries on: a rank; the stake read; where the stake is.
@@ -316,17 +323,19 @@ same ranks "lance" and a number.
 
   | Outcome | What the player gains in play | What the player loses or can no longer get | Who pays, and where the player sees it | The form results that build it |
   |---|---|---|---|---|
-  | **Charter**: the chief is killed and it is told to the captain | 1,500 gold; **the prefect's cuirass** from the fort's strongroom (a `template_item` on a load-order Legion cuirass with a fixed enchantment); the captain's room in the barracks made the player's, with its chest; the quartermaster's whole stock; the Wardens' bounty struck off; everything on the shelf | the Post: the last spears take the chalk and the kaal lays the post down, so the hall's bed, chests and inner room are shut to the player and the master smith sells them nothing; the roost's trade and peace | the kaal, who stands in an empty hall; the elders, gone from the parley ground | `give_gold`; `give_item`; `own_room`; the quartermaster's full placement `switch_on`; `set_bounty` 0; `leave_faction` the Post; the elders `switch_off` |
-  | **Post**: the chief is killed and it is told to the kaal | the rank Old Spear; **the keeper's recipe**: the best the village makes, in each of four kinds, at the forge, with the dragonfire tips' steel for the first; the kaal's own spear; the hall's inner room kept; everything on the shelf | the fort's 1,500 and its cuirass; the quartermaster's chartered stock is shut again and the fort's bunk with it; the roost's trade and peace | the captain, whose paper lapses unsigned and whose fort goes a season unpaid; and, if the stake was read, the first keeper, whose promise the village has now broken twice | `set_rank`; `open_recipe`; `give_item`; the quartermaster's chartered placement `switch_off`; the elders `switch_off` |
-  | **Pact**: the fish is brought, the chief's best fighter is killed alone, and the debt is said | the roost at peace with the player for good: the shelf, its tanning rack and fire, Sahlpesh Cave and the western road are safe ground; **the roost's trader** at the parley ground, the only place in the province that sells Sarpa bows, roost-fletched arrows and feathers; the dead fighter's bow | the chief's chest and everything on the shelf that is now somebody's; the fort's 1,500; the kaal's spear | Kaleen, whose stall is shut to the player and who greets with "My eye, for a fish"; the fort, which returns the carters' coin and sells from a thinner store; the three guards and the two at the gate, never answered for | `take_item` the fish; `make_peace` Hanaxi's faction; the trader's placement `switch_on`; Kaleen's seller `switch_off`; the quartermaster's chartered placement `switch_off`; `set_number mc.ending 3` |
-  | **Half a peace**: the kaal cannot be moved, and the fish is given to Ilu-Sei alone | the elders' trade at the parley ground (fish, feathers and arrows; no bows) | the peace: the shelf stays hostile and the chief goes on raiding; nothing at the fort or the Post is lost or won | the road, as before | `take_item`; the elders' seller `switch_on`; `set_number mc.ending 4` |
+  | **Charter**: the chief is killed and it is told to the captain, in the keep | 1,500 gold; **the prefect's cuirass** from the fort's strongroom (a `template_item` on a load-order heavy Legion cuirass with a fixed enchantment); the captain's room in the barracks made the player's, with its chest; the quartermaster's whole stock, dragonfire arrows among it if the method was sold; everything on the shelf | the Post: the last spears take the chalk and the kaal lays the post down, so the hall's bed and its inner room are shut to the player (the rack-chest stays theirs, behind a door they can no longer pass without trespass) and the master smith sells them nothing; the roost's trade, peace and blessing | the kaal, who stands in an empty hall; the elders, gone from the parley ground | `give_gold`; `give_item`; `own_room`; the quartermaster's full placement in the yard `switch_on`; `set_bounty` 0; `leave_faction` the Post; `lock_door` the hall's inner room; the master smith's selling placement and the elders `switch_off` |
+  | **Post**: the chief is killed and it is told to the kaal | the rank Old Spear; **the keeper's recipe**: the best the village makes, in each of four kinds, at the forge, with the steel for the first; **the keeper's own weapon** in the kind the player names (three answers to "What do you carry?", three stages: her spear, or the great blade or the bow that hang behind her, each a `template_item` with a fixed enchantment); the hall's inner room kept; everything on the shelf | the fort's 1,500 and its cuirass; the quartermaster's chartered stock is shut again; the roost's trade, peace and blessing | the captain, whose paper lapses unsigned and whose fort goes a season unpaid; and, if the stake was read, the first keeper, whose promise the village has now broken twice | `set_rank`; `open_recipe`; `give_item`; the quartermaster's chartered placement `switch_off`; the elders `switch_off` |
+  | **Pact**: the fish is brought, the chief's best fighter is killed alone, and the debt is said; it is then told to the kaal in the hall | the roost at peace with the player for good: the shelf, its tanning rack and fire, Sahlpesh Cave and the western road are safe ground; **the Tried Hand**, the chief's mark on the one who beat his best: a lasting ability (our copy of a load-order blessing: a hundred more carried, and armour that weighs nothing when worn), which a fighter of any weapon uses; **the roost's trader** at the parley ground, the only place in the province that sells Sarpa bows, bone-headed spears, roost-fletched arrows and feathers | the chief's chest and everything on the shelf that is now somebody's; the fort's 1,500; the keeper's weapon and recipe | Kaleen, whose stall is shut to the player and who greets with "My eye, for a fish"; the fort, which returns the carters' coin and sells from a thinner store; the three guards and the two at the gate, never answered for | the chief's line takes the fish and sets the stage that does `make_peace` Hanaxi's faction and `teach_spell`; the telling in the hall then does the switches: the trader's placement `switch_on`, Kaleen's seller and the quartermaster's chartered placement `switch_off`; `set_number mc.ending 3` |
+  | **Half a peace**: the kaal cannot be moved, and the fish is given to Ilu-Sei alone | the elders' trade at the parley ground, and with it Sarpa bows and bone-headed spears, which the elders did not sell before | the peace and the Tried Hand: the shelf stays hostile and the chief goes on raiding; nothing at the fort or the Post is lost or won | the road, as before | `take_item`; the elders' seller's fuller placement `switch_on` by the telling in the hall; `set_number mc.ending 4` |
 
   - **How the Pact is done.** Ilu-Sei takes the fish from anyone. The chief will come down for it only if the one
     who owes it comes too, so the kaal must be moved to go. She is moved only by a player who has read the first
-    stake, and then by one of three things: the stake itself, pulled and already in her hands; Speech 60; or the
-    prefect's slate, if the player still holds it ("even the fort wrote your promise down, to forbid it"). Her line
-    says she will go; she, the chief and his best fighter are then found at the parley ground, and the chief is
-    gone from the shelf. Ilu-Sei says what is coming before the player walks down: the chief does not take a fish
+    stake, and then by one of three things: the stake itself, pulled and already in her hands; Speech 60; or Speech 30
+    with the prefect's slate held ("even the fort wrote your promise down, to forbid it"). Each failed check has
+    her refusal. Her line, said in the hall, says she will go: a second placement of her, the chief's and his best
+    fighter's are switched on at the parley ground, and the chief's first is switched off on the shelf. She is
+    spoken to at the pole from then on; her first placement is switched off by the chief's line, far from the
+    hall; both are named among who must live. Ilu-Sei says what is coming before the player walks down: the chief does not take a fish
     from a hand he has not tried, and his best, Suk-Rei, will come at the player before a word is said; nobody else
     there will lift a hand. It is one Lethal fighter, alone. When he is dead the chief takes the fish and the kaal
     says the debt. The chief lives and is sorry for nothing.
@@ -348,9 +357,8 @@ herbalist in the outer tomb at Kaochalit (D chixathe-mesa, Kaochalit; a need). G
 the heat, the dragonfire recipe opens at the forge: a fire-hardened weapon of any of the four kinds, and two fire
 salts, make its dragonfire twin (a `template_item` on the load order's fire-enchanted weapon of that kind), and a
 sheaf of arrows likewise. The same recipe opens without the six if the first keeper's stake comes home (MC05). The
-quartermaster then offers 500 gold for the method and the master smith forbids it: sold, the quartermaster's
-chartered stock carries dragonfire arrows from then on and the master smith's best stock is shut to the player;
-refused, nothing changes. Built as one stage of a small hub record, with `take_item`, `open_recipe` and a stored
+quartermaster then offers 500 gold for the method and the master smith forbids it: sold, the master smith's best
+stock is shut to the player and a stored number is set, which the Charter ending reads; refused, nothing changes. Built as one stage of a small hub record, with `take_item`, `open_recipe` and a stored
 number.
 
 ## 3. The first two quests
@@ -413,7 +421,7 @@ kills ordinary people." Taking the hunt makes the player a Green Shaft, with a b
 
 **The hidden truth.**
 
-1. During the rains an old, worked-out chalk face a short way west of the working pit fell open onto a storeroom
+1. During the rains an old, worked-out chalk face a short way north of the working pit, off the Kaochalit track fell open onto a storeroom
    the Legion had bricked up (D chixathe-mesa, Chalkmoth Pit, hooks). In it were casks of quicklime, steel tools
    and a strongbox. Rain reached the lime. It has been slaking for weeks and the room is warm day and night.
 2. The mesa's nights are cold (D chixathe-mesa, nature). The warmth drew a great snake up out of the gorge, where
@@ -421,9 +429,10 @@ kills ordinary people." Taking the hunt makes the player a Green Shaft, with a b
    come to the pit's own lime waste; the crew killed one there this week and nailed its skin to the kiln post.
 3. Six days ago Olank-Nu, the pit's carter, driving lime west, was stopped past the fort by the three Sarpa who
    hold its western approach (D chixathe-mesa, Fort Chalkmoth, gives). They cut his ox loose and drove it off,
-   tipped the lime, which is no use to them, and let him walk. Walking home he passed the old face and saw it open.
+   tipped the lime, which is no use to them, and let him walk. He came home the long way, by the Kaochalit track,
+   to keep off the fort's road, passed the old face and saw it open.
    He told both things at the pit.
-4. Four days ago Cato Varo-Lei, the fort's driver, who had heard him, took the fort's chalk cart out empty, stopped
+4. Four days ago Cato Varo-Lei, the fort's driver, who had heard him, took the fort's chalk cart out empty by the same back track, where the fort's wall does not see, stopped
    at the old face and went in for the Legion's strongbox. He had forced it when the snake took him, whole, with the
    fort's seal on his belt. It took his ox out of the yoke after him and snapped the pole doing it.
 5. The strongbox held a sack of Legion pay and a lead-sealed slate: the order of a prefect of Chalkmoth that "no
@@ -443,9 +452,9 @@ everybody blames.
 | Raj-Deel (man) | Inoja, the market ground | to point a likely spear up the river | nobody points the way; the kaal's offer stands |
 | Olank-Nu, the pit's carter (man) | Chalkmoth Pit, by the kiln | not to owe the pit's families an ox and a cart; to be believed | his account is lost; the cart is an objective from the first stage |
 | Kiln-master Beem-Ra (woman) | Chalkmoth Pit, at the working face | whatever the old face holds, for the pit: "we have paid the fort's toll on every cart out of that chalk since my grandmother's time" | the pit's claim closes |
-| Captain Vibius Arkeem (man) | Fort Chalkmoth, the yard | his driver found and not called a thief; the Legion's pay for the driver's sister, since the fort has no other coin to give her | the fort's claim and the fort's telling close |
+| Captain Vibius Arkeem (man) | Fort Chalkmoth, inside the keep | his driver found and not called a thief; the Legion's pay for the driver's sister, since the fort has no other coin to give her | the fort's claim and the fort's telling close |
 | Meesei Varo-Lei, the fort's armourer, the driver's sister (woman) | Fort Chalkmoth, at the workbench in the yard | his seal, to carve his stake under the village's tree | the seal stays with the player |
-| the fort's Dunmer quartermaster (man) | Fort Chalkmoth, the yard | to sell; he keeps a second, better stock for chartered spears | his stock is lost |
+| the fort's Dunmer quartermaster (man) | Fort Chalkmoth, the yard | to sell; he keeps a second, better stock for chartered spears | his stock is lost; the fort's telling then ends at stage 93, which is 91 without the stock |
 | Deesha, the smith's apprentice (woman) | Noota Nara, at the forge | to see what the telling earned made well | her lines are lost; the recipes still open |
 | the great snake | on the storeroom floor; fixed at the Dangerous band, level 20, the mesa's own baseline (D chixathe-mesa, What ranges it) | | its death moves the quest |
 | the three Sarpa | the fort's western approach, as its record places them; Deadly | | nothing of the quest; two people say to keep off that stretch |
@@ -474,7 +483,7 @@ everybody blames.
 
 **How the player knows where to go.** The kaal names the pit and the road west of it; the pit is the white scar
 with the smoking kiln above the village, seen from the landing. Olank-Nu and the quest's marker give the old face:
-"the worked-out face a little west along the track, where the rains brought the wall down". The cart stands at its
+"the worked-out face a little north, off the Kaochalit track, where the rains brought the wall down". The cart stands at its
 mouth with a marker on it. The storeroom is entered through the fall and is named "Legion Storeroom" on entering.
 
 **The ways through.** The storeroom is one room: a gallery along the top, where the fallen face lets the player
@@ -491,14 +500,14 @@ in, the whole floor in view below it, and a way down. There is no way to finish 
 | Stage | What moves it | Journal gist | Objective and its marker |
 |---|---|---|---|
 | 0 | hidden start; offered while the kaal lives | | |
-| 10 | the kaal's line "What is the hunt?" | The keeper of the Post gave me my first hunt. Two carts were lost on the road west of Chalkmoth Pit, the pit's and the fort's. The pit asked the Post; the fort has put coin on the same road. | Hear Olank-Nu, the carter, at Chalkmoth Pit (him); look at the old chalk face west of the pit (the fort's cart) |
+| 10 | the kaal's line "What is the hunt?" | The keeper of the Post gave me my first hunt. Two carts were lost on the road west of Chalkmoth Pit, the pit's and the fort's. The pit asked the Post; the fort has put coin on the same road. | Hear Olank-Nu, the carter, at Chalkmoth Pit (him); look at the old chalk face north of the pit (the fort's cart) |
 | 30 | using the fort's cart (open from 10; shows the cart's message) | I found the fort's chalk cart at the old chalk face: empty and clean, its yoke-pole snapped, no arrow anywhere. | Kill what lies up in the storeroom (the great snake) |
-| 40 | the great snake's death (open from 10), or the kaal's first line in its second form if the snake was already dead | I killed a great snake in a storeroom at the old chalk face west of Chalkmoth Pit. | Search the snake and the storeroom (the strongbox); say whose spear I was (the kaal); the pit and the fort each have a claim (Beem-Ra, the captain) |
+| 40 | the great snake's death (open from 10), or the kaal's first line in its second form if the snake was already dead | I killed a great snake in a storeroom at the old chalk face north of Chalkmoth Pit. | Search the snake and the storeroom (the strongbox); say whose spear I was (the kaal); the pit and the fort each have a claim (Beem-Ra, the captain) |
 | 50 | Beem-Ra's line, the pay-sack held | I gave the Legion's pay-sack to Kiln-master Beem-Ra, for the pit. | the same; Meesei Varo-Lei may be given the seal (her) |
 | 52 | Meesei's line at 50, the seal held | I gave Meesei Varo-Lei her brother's seal. | Say whose spear I was (the kaal) |
 | 55 | the captain's line at 40, the pay-sack and the seal held | I gave Captain Arkeem his driver's seal and the Legion's pay-sack, for the driver's sister. | Say whose spear I was (the kaal) |
 | 90 | the kaal's question "Whose spear were you?", answered "The pit's" (at 40 to 55) | **The pit's spear.** I told it at the Post. | ends, completed |
-| 91 | the same question, answered "The fort's" (while the captain lives) | **The fort's spear.** I told it at the Post. | ends, completed |
+| 91, 93 | the same question, answered "The fort's" (while the captain lives; 93 if the quartermaster is dead) | **The fort's spear.** I told it at the Post. | ends, completed |
 | 92 | the same question, answered "My own" | **My own spear.** I told it at the Post. | ends, completed |
 | 95 | the kaal dead | The keeper of the Post is dead. The hunt has nobody to be told to. | ends, failed |
 
@@ -511,7 +520,11 @@ place village outdoors "Noota Nara"
 place market outdoors far "Inoja's market ground"
 place pit outdoors "Chalkmoth Pit"
 place fort outdoors "the yard of Fort Chalkmoth"
-place oldface outdoors "the old chalk face west of Chalkmoth Pit"
+place keep indoors "the keep of Fort Chalkmoth"
+place oxayo outdoors far "Oxayo"
+place kao outdoors far "Kaochalit"
+place xanuc outdoors far "Xanuc Diggings"
+place oldface outdoors "the old chalk face north of Chalkmoth Pit"
 place storeroom indoors "the Legion storeroom"
 
 person kaal at hall "Kaal Nakuma-Tei"
@@ -519,7 +532,7 @@ person raj at market "Raj-Deel"
 person deesha at village "Deesha"
 person carter at pit "Olank-Nu"
 person kiln at pit "Kiln-master Beem-Ra"
-person captain at fort "Captain Vibius Arkeem"
+person captain at keep "Captain Vibius Arkeem"
 person meesei at fort "Meesei Varo-Lei"
 person qm at fort "the fort's quartermaster"
 person qmchartered at fort off "the fort's quartermaster"
@@ -533,9 +546,9 @@ thing sack in strongbox "Legion pay-sack"
 thing slate in strongbox readable "lead-sealed slate"
 thing prybar at storeroom "pry-bar"
 thing rack at hall container owner post "rack-chest"
-marker mkoxayo at pit "Oxayo"
-marker mkkao at pit "Kaochalit"
-marker mkxanuc at pit "Xanuc Diggings"
+marker mkoxayo at oxayo "Oxayo"
+marker mkkao at kao "Kaochalit"
+marker mkxanuc at xanuc "Xanuc Diggings"
 item steel "steel ingot"
 item strips "leather strips"
 item potion "potion of healing"
@@ -546,45 +559,49 @@ item fhbow "Post-Hardened Bow"
 item bracers "Lime-Snake Bracers"
 
 stage 0 hidden
-stage 10 "The keeper of the Post at Noota Nara gave me my first hunt. Two carts were lost within a week on the road west of Chalkmoth Pit, the pit's and the fort's. The pit asked the Post, and the fort has put coin on the same road. I am to find what took them and kill it." do join post
-stage 30 "I found the fort's chalk cart at the old chalk face west of the pit. Its bed was empty and clean and its yoke-pole snapped. There was no arrow anywhere." do message "The cart bed is empty and clean: it carried nothing out. The yoke-pole is snapped and there is old blood on it. There is no arrow anywhere, and a wide smooth track goes in under the fallen face."
-stage 40 "I killed a great snake in a storeroom at the old chalk face west of Chalkmoth Pit."
+stage 10 "The keeper of the Post at Noota Nara gave me my first hunt. Two carts were lost within a week on the road west of Chalkmoth Pit, the pit's and the fort's, and the fort's driver with his. The pit asked the Post, and the fort has put coin on the same road. I am to find what took them and kill it." do join post
+stage 30 "I found the fort's chalk cart at the old chalk face north of the pit. Its bed was empty and clean and its yoke-pole snapped. There was no arrow anywhere." do message "The cart bed is empty and clean: it carried nothing out. The yoke-pole is snapped and there is old blood on it. There is no arrow anywhere, and a wide smooth track goes in under the fallen face."
+stage 40 "I killed a great snake in a storeroom at the old chalk face north of Chalkmoth Pit." do join post
 stage 50 "I gave the Legion's pay-sack to Kiln-master Beem-Ra, for the pit." do take sack, map mkoxayo, map mkkao, map mkxanuc
 stage 52 "I gave Meesei Varo-Lei her brother's seal." do take seal
 stage 55 "I gave Captain Arkeem his driver's seal and the Legion's pay-sack, for the driver's sister." do take sack, take seal, give-gold 100, give steel 4
 stage 90 completed "The pit's spear. I told it at the Post." do join post, rank post 1, own rack, recipe fhspear at forge needs steel 3, recipe fhgreat at forge needs steel 3, recipe fhblade at forge needs steel 3, recipe fhbow at forge needs steel 3, give steel 3, set mc01.told 1
 stage 91 completed "The fort's spear. I told it at the Post." do join post, rank post 1, own rack, give-gold 250, give potion 3, bounty 00F0C1:Argonia.esp 0, off qm, on qmchartered, set mc01.told 2
+stage 93 completed "The fort's spear. I told it at the Post." do join post, rank post 1, own rack, give-gold 250, give potion 3, bounty 00F0C1:Argonia.esp 0, set mc01.told 2
 stage 92 completed "My own spear. I told it at the Post." do recipe bracers at tanning needs hide 1 strips 2, set mc01.told 3
 stage 95 failed "The keeper of the Post is dead. The hunt has nobody to be told to."
 
-objective 10 at 10 "Hear Olank-Nu, the carter, at Chalkmoth Pit; look at the old chalk face west of the pit" -> carter, cart
+objective 10 at 10 "Hear Olank-Nu, the carter, at Chalkmoth Pit; look at the old chalk face north of the pit" -> carter, cart
 objective 30 at 30 "Kill what lies up in the storeroom at the old chalk face" -> snake
-objective 40 at 40, 50, 52, 55 "Search the snake and the storeroom; say whose spear I was to the keeper of the Post" -> kaal, strongbox, kiln, captain, meesei
+objective 40 at 40, 50, 52, 55 "Search the snake and the storeroom. The pit's kiln-master and the fort's captain each claim what the Legion left; the driver's sister is the fort's armourer. Say whose spear I was to the keeper of the Post" -> kaal, strongbox, kiln, captain, meesei
 
 line way raj at 0 ask "Who are the Marsh Charter?" if alive kaal, alive snake says "the spears of Noota Nara hunt beasts and raiders for whoever asks; the fort above the village has offered them a paper and its pay; a spear is taken up at Noota Nara, one raft-stage up the river"
 line post kaal at 0-55 ask "What is the Post?" says "the dragon, the burned post and the custom of three sentences; kaal means war-captain, which here means she keeps a post and counts who comes back"
 line charter kaal at 0-55 ask "What is the Charter?" says "the fort's paper: coin by the season from the Wardens, who hold the old Legion forts and not much else; three of hers have marked it; the captain tells it better"
 line sarpa kaal at 0-55 ask "Who are the Sarpa?" says "the winged people of the west edge; everything missing on the mesa is laid on them and half of it is true; Kaleen at Oxayo keeps a horn for them"
 line pays kaal at 0-55 ask "What does it pay, and why might I not?" says "told here for the asker: the smiths' work, made by your own hand in the kind you carry, and a place in this hall; told as the fort's: the fort's coin, its stores, and its law off your back; told as your own: nothing from anyone, and the kill is yours to skin; each answer shuts the other two"
-line job kaal at 0 ask "What is the hunt?" if alive snake -> 10 says "two carts lost on the road west of Chalkmoth Pit; the pit asked the Post and the fort put coin on the road; find what took them and kill it; it is the mesa's ordinary size, which kills ordinary people"
-line before kaal at 0 ask "I killed a great snake at the old chalk face by Chalkmoth Pit." if dead snake -> 40 says "then you have done the pit's hunt before it was given; search where it lay, and tell me whose spear you were"
-line road carter at 10-55 ask "What happened to you on the western road?" says "three Sarpa past the fort cut his ox loose, tipped the lime and let him walk; walking home he saw the old face fallen open"
-line lime kiln at 10-55 ask "What do you make of two carts?" says "the snakeskin on the kiln post: they come to slaking lime for the warmth, and if the Legion left lime behind that wall the big ones have found it; the fall left a gallery along the top of the room, and a bow has the whole floor from there; on the floor you want a shield, they strike high and straight"
+line job kaal at 0 ask "What is the hunt?" if alive snake -> 10 says "two carts lost on the western road out of Chalkmoth Pit, the pit's and the fort's, and the fort's driver with his; the pit asked the Post and the fort put coin on the road; find what took them and kill it; it is the mesa's ordinary size, which kills ordinary people"
+line before kaal at 0 ask "I killed a great snake at the old chalk face by Chalkmoth Pit." if dead snake -> 40 says "two carts were lost on the western road, the pit's and the fort's, and the fort's driver; the pit asked the Post and the fort put coin on that road; then you have done the hunt before it was given; search where it lay, and tell me whose spear you were"
+line road carter at 10-55 ask "What happened to you on the western road?" says "three Sarpa past the fort cut his ox loose, tipped the lime and let him walk; he came home the long way, by the Kaochalit track north of the pit, to keep off the fort road, and saw the old face fallen open and cart ruts turning in to it; keep off the stretch past the fort, the three are still on it"
+line lime kiln at 10-55 ask "What do you make of two carts?" says "the snakeskin on the kiln post: they come to slaking lime for the warmth, and if the Legion left lime behind that wall the big ones have found it; the fall left a gallery along the top of the room, and a bow has the whole floor from there; on the floor you want a shield, they strike high and straight; and keep off the road past the fort"
 line driver captain at 10-55 ask "Your driver was lost on the western road." says "only that the cart went out and did not come back; and that if anything of the Legion's is found on that road it is the fort's"
-line topit kiln at 40 ask "This pay came out of your chalk." if holds sack -> 50 says "her case; Olank-Nu has his ox; he marks the mesa's tracks on the map"
+line topit kiln at 40 ask "This pay came out of your chalk." if holds sack -> 50 says "her case; Olank-Nu has his ox and marks the mesa's tracks on the map; the seal is the fort's driver's, and his sister Meesei is the armourer at the bench in the fort's yard"
 line tofort captain at 40 ask "I found your driver. This is his seal, and this is what he died beside." if holds sack, holds seal -> 55 says "his case; the sack goes to the driver's sister with the seal; what he has of his own he gives"
-line empty captain at 40-55 ask "Your driver took an empty cart to that wall." if holds seal says "He did. I would sooner his sister heard he was fetching what was ours."
+line empty captain at 40-52 ask "Your driver took an empty cart to that wall." if done MC01 30, holds seal says "He did. I would sooner his sister heard he was fetching what was ours."
 line sealm meesei at 50 ask "This was your brother's. I cut it out of the snake." if holds seal -> 52 says "she takes it to carve his stake under the village's tree; she asks nothing about the sack"
 line slatec captain at 40-55 ask "What is this slate?" if holds slate says "a prefect's order against tribute to raiders on the western road; the same order hangs on my wall with the keys; keep it shut or burn it"
 line slatek kaal at 40-55 ask "What is this slate?" if holds slate says "Legion fuss about feeding raiders; give it to him or burn it; she will not take it"
-line tell kaal at 40-55 ask "I am back from the old chalk face." asks pits, forts, mine says "Whose spear were you?"
+line tell kaal at 40-55 ask "I am back from the old chalk face." asks pits, forts, fortsq, mine says "Whose spear were you?"
 line pits kaal answer at 40-55 ask "The pit's. They asked the Post." -> 90 says "then the pit gives what it has, which is our smiths' work; go to the forge; the steel is counted out for you"
-line forts kaal answer at 40-55 ask "The fort's. Its coin was on that road." if alive captain -> 91 says "the captain's coin was left on her table; take it; she only counts"
+line forts kaal answer at 40-55 ask "The fort's. Its coin was on that road." if alive captain, alive qm -> 91 says "the captain's coin was left on her table; take it; she only counts; the quartermaster will sell you the paper's steel"
+line fortsq kaal answer at 40-55 ask "The fort's. Its coin was on that road." if alive captain, dead qm -> 93 says "the captain's coin was left on her table; take it; she only counts"
 line mine kaal answer at 40-55 ask "My own." -> 92 says "then nobody asked you and nobody owes you; the kill is yours and so is the skinning; that is also a way to starve"
 line d90 deesha at 90 ask "The keeper sent me to the forge." says "the four makings, and which one will you carry; it is only whose mark is on the shaft"
-line d91 deesha at 91 ask "Is there anything for me at the forge?" says "the captain has paid you; she makes nothing for his spears"
-line c50 carter at 90-92 ask "Is there an ox coming?" if done MC01 50 says "there is; he will not work the kiln two seasons"
-line c55 carter at 90-92 ask "Is there an ox coming?" if done MC01 55 says "there is not; he is at the kiln two seasons"
+line d91 deesha at 91-93 ask "Is there anything for me at the forge?" says "the captain has paid you; she makes nothing for his spears"
+line c50 carter at 90-93 ask "Is there an ox coming?" if done MC01 50 says "there is; he will not work the kiln two seasons"
+line cno carter at 90-93 ask "Is there an ox coming?" says "there is not; he is at the kiln two seasons (tried after the line above, so said only when the pit was not given the sack)"
+line cap90 captain at 90 ask "I told it as the pit's." says "Then the pit hired you and I only lost a driver."
+line cap50 captain at 90-93 ask "What of the driver's sister?" if done MC01 50, alive meesei says "he has paid her out of his own purse"
 
 use cart from 10 -> 30
 death snake from 10 -> 40
@@ -610,20 +627,21 @@ is open, and nobody has to be told.
 | *Kept* (neither line said) | the sack, worth 300 gold to any trader; the seal | the map; the steel | both: the carter at the kiln, the armourer with empty hands and no seal to carve from | nothing: the sack is simply still held |
 
 **The second choice: the telling.** The kaal says the trade before the job, in "What it pays and why I might not",
-and again in the question.
+and again in the question. No answer is a lie and none is checked: both asked, so the player is choosing who is
+owed, not what happened.
 
 | Outcome | What the player gains in play | What the player loses or can no longer get | Who pays, and where the player sees it | The form results that build it |
 |---|---|---|---|---|
 | *The pit's spear* (90) | the rank Hardened and the rack-chest; **the Post's first making**: recipes at the forge for the Post-Hardened Spear, Great Blade, Blade and Bow, three steel ingots each, and three ingots counted out, so the first is made at once in the kind the player carries | the fort's 250 gold, its potions, the chartered stock, the bounty struck off | the captain, whose coin lies uncollected on the kaal's table: "Then the pit hired you and I only lost a driver" | `join_faction`, `set_rank` 1; `give_ownership` the rack-chest; `open_recipe` four; `give_item` steel, 3 |
-| *The fort's spear* (91) | the rank Hardened and the rack-chest; 250 gold; three potions of healing from the fort's stores; **the quartermaster's chartered stock**, sold from then on; any bounty at Fort Chalkmoth struck off | the Post's first making, for good: "The captain has paid you. I only count." Deesha makes nothing | Deesha and the master smith, who had the steel laid out; Deesha's line at the forge | `join_faction`, `set_rank` 1; `give_ownership`; `give_gold` 250; `give_item` potions, 3; `set_bounty` 0; the quartermaster's first placement `switch_off` and his chartered one `switch_on` |
+| *The fort's spear* (91) | the rank Hardened and the rack-chest; 250 gold; three potions of healing from the fort's stores; **the quartermaster's chartered stock**, sold from then on; and, for a spear who needs it, any bounty at Fort Chalkmoth struck off | the Post's first making, for good: "The captain has paid you. I only count." Deesha makes nothing | Deesha and the master smith, who had the steel laid out; Deesha's line at the forge | `join_faction`, `set_rank` 1; `give_ownership`; `give_gold` 250; `give_item` potions, 3; `set_bounty` 0; the quartermaster's first placement `switch_off` and his chartered one `switch_on` |
 | *My own spear* (92) | **the hunter's trophy**: a recipe at the tanning rack for the Lime-Snake Bracers, from the great snake's hide and two leather strips (a `template_item` on plain hide bracers with a small fixed enchantment for the weapon arm) | the rank, the rack-chest, and both patrons' pay for this hunt; the rank comes with the next hunt told for an asker | both patrons, each of whom asked and was told nobody did: "Then nobody asked you and nobody owes you. That is also a way to starve." | `open_recipe` at the tanning rack |
 
 - The kaal, shown the slate at any time: "Legion fuss about feeding raiders. Give it to him or burn it." She will
   not take it, and she means it. The captain, shown it: "The same order hangs on my wall with the keys. Keep it
   shut or burn it." Nobody takes it in this quest: it stays the player's, to keep, sell or lose, and a player who
   still holds it in MC06 has a use for it.
-- After any ending the player can say to the captain, while holding the seal or having given it, "Your driver took
-  an empty cart to that wall." "He did. I would sooner his sister heard he was fetching what was ours."
+- A player who has looked at the cart and holds the seal can say to the captain "Your driver took an empty cart to
+  that wall." "He did. I would sooner his sister heard he was fetching what was ours."
 
 **The moment a player retells.** Everyone said Sarpa. It was a snake asleep on a floor of hot lime beside an open
 strongbox, I cut the fort's own seal out of it, and the Sarpa were the only ones on that road who let anybody walk
@@ -650,8 +668,9 @@ you to the Post*, says it plainly: he took the chalk the season his brother died
 have mended, and he would do it again. The job is three sentences: three winged raiders have sat six days in the
 scrub west of Joxhi's clay pits and come at the diggers' tools; a digger is hurt; Joxhi pays 200 gold for the
 three. He adds the band and one true reason to hesitate: "They are the mesa's ordinary size, and there are three.
-And Sarpa do not sit. They hit and go. I do not know why these sit." He says what he pays before the player goes:
-the fort's road-bounty and its stores for three raiders dead and told to him, and nothing for anything else.
+And Sarpa do not sit. They hit and go. I do not know why these sit." He says whose the job is and what he pays before the
+player goes: "Joxhi asks. The Charter only carries the ask. You are Joxhi's spear, unless you tell it to me as ours;
+and I pay the fort's road-bounty and its stores for three raiders dead, and nothing for anything else."
 Captain Arkeem, if asked about Joxhi, says only that a raider who learns he can sit outside a village will sit
 outside every village.
 
@@ -685,18 +704,20 @@ diggers broke into, and the scrub is not in what they asked.
 | Dob-Mei, a digger (man, sixteen) | Joxhi, the guest mound, his arm bound | not to be sent to the roost; to say it to someone | his account is lost; Zik-Aru, Gam-Kur and the net still tell it |
 | Gam-Kur, a spear of the Post on hire (man) | Joxhi, at the mouth of the buried hall | to keep to what his asker asked; he says what he saw at dusk a week ago, for the asking | his account is lost |
 | Zik-Aru, who speaks for the three, Meh-Ilu's sister (woman) | the edge of the pit scrub, west of the village; Dangerous, level 20 | four picks and her sister's crest-knot | the other two will not speak; only the fight is left (stage 35) |
-| Hes-Ruu and Raal-Ti, the other two (men), archers | in the scrub behind her; Dangerous, level 20 | the same | |
+| Hes-Ruu and Raal-Ti, the other two (men), archers | in the scrub behind her; Dangerous, level 20 | the same | the trade is shut: Zik-Aru's closing line is said only while both live. To strike one is to fight all three |
+| Joxhi's tool-seller (woman) | Joxhi, the diggers' stalls by the pits | to sell picks and spades; four picks are always hers to sell | the picks lie on her stall, and taking them is theft from her kin |
 | two crocodiles | the river mouth, as the place's record gives them; Dangerous | | nothing of the quest; they are what lies between the player and the net |
 
-The three in the scrub do not attack on sight. They fight if any of them is attacked, and then together (a need:
-section 4). The player starts that fight by striking; no line starts it.
+The three in the scrub do not attack on sight, and are no enemy of Joxhi's people or of Gam-Kur, nor they of them. They fight
+if any of them is attacked, and then together (a need: section 4). They cannot fetch the net themselves: it lies
+at the village's own landing, in bowshot of the mounds. The player starts that fight by striking; no line starts it.
 
 **The things.**
 
 | Thing | Where | Lock, key, owner | Holds or says |
 |---|---|---|---|
 | a torn carrying-net | the bank at the river mouth, among the crocodiles | to search; nobody's | Meh-Ilu's crest-knot; a string of dried fish; a string of clay beads |
-| picks | sold at the diggers' stalls in Joxhi (a need: four always in stock); one stock form, and any four held will do | bought, or already carried | four are asked |
+| picks | on the tool-seller's stall by the pits, four always there (a need); one stock form, and any four held will do | hers: bought from her, already carried, or stolen as any owned thing is | four are asked |
 | the three's weapons | on them | taken from their bodies | two hunting bows, roost-fletched arrows, a spear, two picks worn to the eye: the fight's reward |
 | the Post's stores-chest | the spear-hall | the Post's; the player's own from the rank Tipped | ten potions of healing, sixty steel arrows, five steel ingots: what is in it is the gift |
 
@@ -752,26 +773,35 @@ start game 0
 place hall indoors "the spear-hall at Noota Nara"
 place market outdoors far "Inoja's market ground"
 place joxhi outdoors far "Joxhi, its pit scrub and its river mouth"
+place village outdoors "Noota Nara"
+place keep indoors "the keep of Fort Chalkmoth"
 
 person kaal at hall "Kaal Nakuma-Tei"
 person raj at market "Raj-Deel"
 person elder at joxhi "Elder Jo-Reesh"
 person boy at joxhi "Dob-Mei"
 person gam at joxhi "Gam-Kur"
-person deesha at hall "Deesha"
+person deesha at village "Deesha"
+person captain at keep "Captain Vibius Arkeem"
+person seller at joxhi "Joxhi's tool-seller"
 person zik at joxhi level 20 "Zik-Aru"
 person hes at joxhi level 20 "Hes-Ruu"
 person raal at joxhi level 20 "Raal-Ti"
 person croc1 at joxhi existing "a crocodile"
+person croc2 at joxhi existing "a crocodile"
 
 thing net at joxhi container "a torn carrying-net"
 thing knot in net "Meh-Ilu's crest-knot"
-thing picks at joxhi stock pick count 4 "pick"
-thing stores at hall container owner post "the Post's stores-chest"
+thing picks at joxhi stock pick count 4 owner seller "pick"
+thing stores at hall container owner post holds potion 10, steelarrow 60, steel 5 "the Post's stores-chest"
 thing rack at hall container owner post "rack-chest"
 item pick "pick"
 item roostarrows "roost-fletched arrows"
 item fharrows "Post-Hardened Arrows"
+item fhshield "Post-Hardened Shield"
+item fhhood "Post War-Hood"
+item steelarrow "steel arrow"
+item leather "leather"
 item ownarrows "Scrub-Fletched Arrows"
 item steel "steel ingot"
 item firewood "firewood"
@@ -789,7 +819,7 @@ stage 40 "I gave the three Sarpa four picks and their dead sister's crest-knot. 
 stage 42 "Joxhi's elder paid me 80 gold for quiet." do give-gold 80
 stage 45 "I killed the three Sarpa in the scrub at Joxhi." do set mc02.spared 0
 stage 47 "Joxhi's elder paid me 200 gold for the three." do give-gold 200
-stage 90 completed "Joxhi's spear. I told it at the Post." do join post, rank post 2, own rack, own stores, recipe fharrows at forge needs steel 1 firewood 1, give steel 2, give firewood 2, off zik, off hes, off raal, set mc02.told 1
+stage 90 completed "Joxhi's spear. I told it at the Post." do join post, rank post 2, own rack, own stores, recipe fharrows at forge needs steel 1 firewood 1, recipe fhshield at forge needs steel 3 firewood 1, recipe fhhood at forge needs steel 1 leather 2, give steel 4, give firewood 2, give leather 2, off zik, off hes, off raal, set mc02.told 1
 stage 91 completed "The Charter's spear. I told it to Raj-Deel at Inoja." do join post, rank post 2, own rack, own stores, give-gold 150, give potion 4, bounty 00F0C1:Argonia.esp 0, set mc02.told 2
 stage 92 completed "My own spear. I told it at the Post." do recipe ownarrows at forge needs feather 2 firewood 1, off zik, off hes, off raal, set mc02.told 3
 stage 95 failed "The keeper of the Post is dead. The hunt has nobody to be told to."
@@ -803,10 +833,10 @@ objective 40 at 40, 42, 45, 47 "Say whose spear I was, to the keeper of the Post
 
 line clay kaal at 0 ask "Is there another hunt?" if stage MC01 >= 90, alive raj says "the clay country south-east; the Oxhu, whose council sits at Aroxhu; their asks are made at Inoja's market, a raft-stage down; the fort's spear there, Raj-Deel, was hers; take what he gives and tell it to her after, or to him if it is the fort's coin you want"
 line who raj at 0-47 ask "Who are you to the Post?" if stage MC01 >= 90 says "he took the chalk the season his brother died of a wound the fort's stores could have mended; he would do it again"
-line job raj at 0 ask "What does Joxhi ask?" if stage MC01 >= 90, alive zik -> 10 says "three winged raiders six days in the scrub west of Joxhi's clay pits, coming at the diggers' tools; a digger is hurt; 200 gold for the three; they are the mesa's ordinary size, and there are three; and Sarpa do not sit, they hit and go: he does not know why these sit"
-line jobk kaal at 0 ask "Is there another hunt?" if stage MC01 >= 90, dead raj, alive zik -> 11 says "Joxhi's ask came up the river: the same job in her words"
-line done1 raj at 0 ask "I killed three Sarpa in the scrub at Joxhi." if stage MC01 >= 90, dead zik, dead hes, dead raal -> 45 says "then Joxhi's ask is answered before he gave it; the elder pays, and the telling is owed"
-line done2 kaal at 0 ask "I killed three Sarpa in the scrub at Joxhi." if stage MC01 >= 90, dead raj, dead zik, dead hes, dead raal -> 45 says "then Joxhi's ask is answered; tell her whose spear you were"
+line job raj at 0 ask "What does Joxhi ask?" if stage MC01 >= 90 -> 10 says "Joxhi asks, and the Charter only carries the ask: you are Joxhi's spear unless you tell it to him as the Charter's, and he pays the fort's road-bounty and its stores only for three raiders dead; three winged raiders six days in the scrub west of Joxhi's clay pits, coming at the diggers' tools; a digger is hurt; 200 gold for the three; they are the mesa's ordinary size, and there are three; and Sarpa do not sit, they hit and go: he does not know why these sit"
+line jobk kaal at 0 ask "Is there another hunt?" if stage MC01 >= 90, dead raj -> 11 says "Joxhi's ask came up the river: the same job in her words"
+line done1 raj at 0 ask "I killed three Sarpa in the scrub at Joxhi." if stage MC01 >= 90, dead zik, dead hes, dead raal -> 45 says "Joxhi sent to the Charter for a spear against three raiders in its pit scrub, 200 gold for the three; then its ask is answered before he gave it; the elder pays, and the telling is owed"
+line done2 kaal at 0 ask "I killed three Sarpa in the scrub at Joxhi." if stage MC01 >= 90, dead raj, dead zik, dead hes, dead raal -> 45 says "Joxhi sent for a spear against three raiders in its pit scrub, 200 gold for the three; then its ask is answered; its elder pays; tell her whose spear you were"
 line brief elder at 10-11 ask "Tell me about the raiders." -> 20 says "three in the scrub, six days; they come at the tools; a boy of his is hurt; he wants them dead and that the end of it"
 line zdead elder at 20 ask "The one who stood at the scrub's edge is dead." if dead zik -> 35 says "then finish it"
 line edead zik at 10-11 ask "The elder who sent for a spear is dead." if dead elder -> 21 says "then nobody here wants us dead but you; ask why we sit"
@@ -814,23 +844,26 @@ line why zik at 10-21 ask "Why do you sit here?" -> 30 says "four came; their si
 line hands zik at 10-30 ask "Those hands have been cutting rock for weeks." if skill Smithing 30 else "Look at whatever you like." says "rock fell on a ledge of theirs; they dig with their hands; nobody steals a pick to wear it out"
 line mend boy at 10-47 ask "Let me see that arm." if skill Restoration 25 else "Leave it. It is bound." says "he tells all of it: wings among the tools in the dusk, the clay-spade, the fish she was carrying"
 line draught boy at 10-47 ask "I have a healing draught for that arm." if holds potion says "he will not take a spear's draught, and tells all of it anyway"
-line saw gam at 10-47 ask "What did you see, a week ago at dusk?" says "four came and three went back to the scrub; he is the readers' spear this season and the scrub is not in what they asked; ask him again in the rains whose he is"
-line admit elder at 30-47 ask "A fourth came with fish. Your people killed her." if alive elder says "he is sixteen; he saw wings among the tools and hit what he took for a thief; if Aroxhu hears it the council sends red clay to the roost for a year, or sends him; three raiders dead is the end of it"
+line saw gam at 10-47 ask "You stand watch here. What have you seen of the three?" says "four came and three went back to the scrub; he is the readers' spear this season and the scrub is not in what they asked; ask him again in the rains whose he is"
+line admit elder at 30-47 ask "A fourth came with fish. Your people killed her." if done MC02 30, alive elder says "he is sixteen; he saw wings among the tools and hit what he took for a thief; if Aroxhu hears it the council sends red clay to the roost for a year, or sends him; three raiders dead is the end of it"
 line count zik at 30 ask "What do I get if I bring them?" says "she walked in with fish; they have sat six days and killed nobody; count that; and a sheaf of their arrows"
-line trade zik at 30 ask "Four picks, and your sister's crest-knot." if holds pick 4, holds knot -> 40 says "she takes them; a sheaf of roost-fletched arrows; we go when you are gone"
+line trade zik at 30 ask "Four picks, and your sister's crest-knot." if holds pick 4, holds knot, alive hes, alive raal -> 40 says "she takes them; a sheaf of roost-fletched arrows; we go when you are gone"
 line dead3 elder at 10-20 ask "The three are dead." if dead zik, dead hes, dead raal -> 45 says "good; then it is ended"
 line dead3b elder at 30-42 ask "The three are dead." if dead zik, dead hes, dead raal -> 45 says "good; then it is ended"
 line dead3k kaal at 20-42 ask "The three at Joxhi are dead." if dead zik, dead hes, dead raal -> 45 says "three; good"
 line quiet elder at 40 ask "They are going. You asked for an end to it." if alive elder -> 42 says "80 gold, for quiet; and not a word at Aroxhu"
 line paid elder at 45 ask "Joxhi owes 200 for the three." if alive elder -> 47 says "he counts it out"
-line tell kaal at 40-47 ask "I am back from Joxhi." asks joxhis, mine says "Whose spear were you?"
-line joxhis kaal answer at 40-47 ask "Joxhi's. Its elder asked for an end to it." -> 90 says "killed: three, good; traded: you fed them; either way the hall's stores are open to a Tipped spear and the fletchers' making is yours"
+line tell kaal at 40-47 ask "I am back from Joxhi." asks joxhisk, joxhist, mine says "Whose spear were you?"
+line joxhisk kaal answer at 45-47 ask "Joxhi's. Its elder asked for three dead." -> 90 says "three; good; the hall's stores are open to a Tipped spear and the second making is yours"
+line joxhist kaal answer at 40-42 ask "Joxhi's. Its elder asked for an end to it." -> 90 says "you fed them; Joxhi asked for an end and has one; the hall's stores are open to a Tipped spear and the second making is yours"
 line mine kaal answer at 40-47 ask "My own." -> 92 says "then fletch your own; nobody here owes you a shaft"
 line chart raj at 45-47 ask "I was the Charter's spear at Joxhi." -> 91 says "the fort's road-bounty, its stores, and its law off your back"
 line nochart raj at 40-42 ask "I was the Charter's spear at Joxhi." says "The Charter does not pay for raiders fed. The fort has had a rule about that since the Legion. Tell it at the Post."
 line fourth kaal at 90 ask "Joxhi hid a fourth." if done MC02 30 says "then Joxhi asked for one thing and hid another; that is on Joxhi; the spear was true"
+line r90 raj at 90 ask "I told it at the Post." says "Then I took the contract and the Post took the credit."
+line k91 kaal at 91 ask "I told Joxhi to Raj-Deel." says "Three, and for his coin. You could have told me to my face."
+line capj captain at 10-47 ask "What do you make of Joxhi?" says "a raider who learns he can sit outside a village will sit outside every village"
 line four deesha at 90-92 ask "It was about four picks." if done MC02 40 says "she could make four picks in a morning; everyone up here would rather bury somebody"
-line heard boy at 90-92 ask "How is the arm?" if done MC02 30 says "he greets as a boy who was heard"
 
 death elder from 10 -> 21 until 20 choice
 death zik from 10 -> 35 until 40 choice
@@ -851,15 +884,15 @@ player gets (a sheaf of arrows, and three who go home).
 
 | Outcome | What the player gains in play | What the player loses or can no longer get | Who pays, and where the player sees it | The form results that build it |
 |---|---|---|---|---|
-| *Killed* (45, 47) | 200 gold from the elder; the three's weapons: two bows, a spear, their arrows; the Charter's telling stays open, with the fort's 150, its stores and the bounty struck off | the roost's word for the player: in MC04 Ilu-Sei asks her two words carried before she gives up the eggs, and gives no charm to a spear who killed three who had killed nobody | Joxhi, which now has a blood-debt with a roost that had none with it: its people speak of arrows on their roofs. Dob-Mei, kept | `give_gold` 200 |
-| *Traded* (40, 42) | thirty roost-fletched arrows (a `template_item` on the load order's better hunting arrow); 80 gold from the elder, "for quiet"; the roost's word: in MC04 Ilu-Sei's first line is "You are the one who sent Meh-Ilu's knot home", and her terms come without a test | four picks; the crocodiles' fight for the knot; Joxhi's other 120; the Charter's telling and everything Raj-Deel pays: "The Charter does not pay for raiders fed" | Raj-Deel, whose contract comes back unkept; both patrons call it feeding raiders, he because the fort has "an old rule about it", the kaal because she has buried eleven | `take_item` picks, 4, and the knot; `give_item` arrows, 30; `set_number mc02.spared 1`; `give_gold` 80 |
+| *Killed* (45, 47) | 200 gold from the elder; the three's weapons: two bows, a spear, their arrows; the Charter's telling stays open, with the fort's 150 and its stores | the roost's word, and with it the one lasting gift the roost has: in MC04 Ilu-Sei gives no blessing to a spear who killed three who had killed nobody (below). Zik-Aru says it before the fight, if asked what the player gets: "Ilu-Sei will know who sent the knot home, and who did not" | Joxhi, which now has a blood-debt with a roost that had none with it: its people speak of arrows on their roofs. Dob-Mei, kept | `give_gold` 200; `set_number mc02.spared 0` |
+| *Traded* (40, 42) | the roost's word (`mc02.spared`), which MC04's blessing needs; thirty roost-fletched arrows (a `template_item` on the load order's better hunting arrow), to shoot or to sell; 80 gold from the elder, "for quiet" | four picks; the crocodiles' fight for the knot; Joxhi's other 120; the Charter's telling and everything Raj-Deel pays: "The Charter does not pay for raiders fed" | Raj-Deel, whose contract comes back unkept; both patrons call it feeding raiders, he because the fort has "an old rule about it", the kaal because she has buried eleven | `take_item` picks, 4, and the knot; `give_item` arrows, 30; `set_number mc02.spared 1`; `give_gold` 80 |
 
 **The second choice: the telling.**
 
 | Outcome | What the player gains in play | What the player loses or can no longer get | Who pays, and where the player sees it | The form results that build it |
 |---|---|---|---|---|
-| *Joxhi's spear* (90), killed or traded | the rank Tipped; the Post's stores-chest and what is in it; **the fletchers' making**: a recipe at the forge for Post-Hardened Arrows, with steel and wood for the first sheaves; Deesha's fire is open | Raj-Deel's 150, potions and bounty, if they were on offer | Raj-Deel: "Then I took the contract and the Post took the credit." | `set_rank` 2; `give_ownership` the stores-chest and the rack-chest; `open_recipe`; `give_item` |
-| *The Charter's spear* (91), killed only | the rank Tipped and both chests; 150 gold; four potions of healing; any bounty at Fort Chalkmoth struck off | the fletchers' making, for good | the kaal, who hears of it from Raj-Deel's runner and says so: "Three, and for his coin. You could have told me to my face." | `set_rank` 2; `give_ownership`; `give_gold` 150; `give_item` potions, 4; `set_bounty` 0 |
+| *Joxhi's spear* (90), killed or traded | the rank Tipped; the Post's stores-chest and what is in it; **the Post's second making**: recipes at the forge for the Post-Hardened Shield, the Post War-Hood (a `template_item` on a load-order hide helm, for any fighter) and Post-Hardened Arrows, with steel, leather and wood for the first; Deesha's fire is open | Raj-Deel's 150 and potions, if they were on offer | Raj-Deel: "Then I took the contract and the Post took the credit." | `set_rank` 2; `give_ownership` the stores-chest and the rack-chest; `open_recipe` three; `give_item` |
+| *The Charter's spear* (91), killed only | the rank Tipped and both chests; 150 gold; four potions of healing; any bounty at Fort Chalkmoth struck off | the Post's second making, for good | the kaal: "Three, and for his coin. You could have told me to my face." | `set_rank` 2; `give_ownership`; `give_gold` 150; `give_item` potions, 4; `set_bounty` 0 |
 | *My own spear* (92) | **the hunter's trophy**: a recipe at the forge for Scrub-Fletched Arrows, from hawk feathers and firewood, learnt from the roost's own shafts in the hand | the rank and the stores-chest until the next hunt told for an asker; both patrons' pay for this one | both patrons | `open_recipe` |
 
 - The kaal, told "Joxhi's" after the kill: "Three. Good." If the player heard of the fourth, they may tell her that
@@ -868,7 +901,7 @@ player gets (a sheaf of arrows, and three who go home).
   end to it and has one.
 - Deesha, after the trade: "Four picks. I could make four picks in a morning. Everyone up here would rather bury
   somebody."
-- Dob-Mei greets as a boy who was heard, if he was. Gam-Kur is still at the hall's mouth: "I am the readers' spear
+- Gam-Kur is still at the hall's mouth: "I am the readers' spear
   this season. Ask me again in the rains whose I am. If you want what is under here, ask at Yulca."
 
 **The moment a player retells.** The raiders I was paid to kill were waiting for their sister's feathers. She had
@@ -898,6 +931,14 @@ and bunk; the pit's kiln and working face; the roosts' and the cave's fighters a
 and bronze key; Oxayo's horn and watch-elder; Reeka-Veesa's lookout and its spider on the cave path) is cited in
 the outlines and not repeated. Three kinds of need recur and are said once here:
 
+- *Every switch is made from indoors or from far off.* The tellings that switch a seller, a trader or a twin are
+  said in the spear-hall or the keep, both insides. Where a line outdoors switches something, the two places are
+  far apart as defined below: the parley ground from Vorannuhl's yard and from the shelf; Oxayo from Reeka-Veesa
+  (940 m by the track: D chixathe-mesa, Oxayo); Joxhi from Noota Nara and Inoja. Fort Chalkmoth is only some
+  170 m from Noota Nara's landing (D chixathe-mesa, Fort Chalkmoth), so nothing at the fort is ever switched from
+  the village's open ground or the reverse.
+- *A twin is switched on only for the living.* A line that switches a second placement of a person on is gated on
+  that person alive, and has a second form without the switch.
 - *A speaker at a hostile place's edge* stands on ground of their own that the place's fighters neither see nor
   come to: at least 18,000 units (about 260 metres) in a straight line from the nearest of them, with the mesa's
   shoulder or the bank between. The speaker is not of the band, is placed at a fixed low level and does not fight.
@@ -914,13 +955,14 @@ the outlines and not repeated. Three kinds of need recur and are said once here:
 | the burned-black gate post (the record's own), with room beside it for one grave-stake that can be switched on | all; MC05 | where a spear is taken up; the first keeper's stake stands here if it is brought home | a single black post where every other is timber and clay; it shows "The Burned Post" when looked at; the kaal names it in her first line |
 | a standing place for the apprentice at the smiths' forge | hub, MC01, MC02 | Deesha's lines; where the Post's makings are worked | she stands at the forge and her name shows; the kaal says "the apprentice at the forge, Deesha" |
 | the master spear-smith able to sell a second, better stock | Blooded on | what the rank opens | he says so when the rank is given |
+| fresh fish for sale from the potters, and to be caught in the river below the walls (the record's own) | MC06 | the gift | the kaal says "any fish out of this river, fresh; the potters sell them" |
 | a tanning rack by the potters' fire | MC01 | the hunter's trophy is made there | a hide frame beside the cook fire, the game's own "Tanning Rack"; the kaal says "the rack by the potters' fire" |
 
 **Fort Chalkmoth** (D chixathe-mesa).
 
 | The thing | Quest | What happens there | How the player knows it |
 |---|---|---|---|
-| a standing place for the captain in the yard | MC01, MC04, MC06 | hand-overs; the fort's side of every argument | his name shows as "Captain Vibius Arkeem"; the kaal and Raj-Deel say "the captain, in the fort's yard" |
+| a standing place for the captain inside the keep, an inside behind a door | MC01, MC04, MC06 | hand-overs; the fort's side of every argument; what his telling switches is all outside | the door shows "Chalkmoth Keep"; his name shows as "Captain Vibius Arkeem"; the kaal and Raj-Deel say "the captain, in the keep" |
 | a standing place for an armourer at the yard's workbench (the record's own bench) | MC01 | the seal given | she works at the bench and her name shows; the captain names her as the driver's sister |
 | the Dunmer quartermaster able to stand as two placements, the second with the chartered stock | MC01 on | what the Charter's telling opens | one Dunmer in the yard who sells arms; he says the better steel is for spears on the paper |
 | a prefect's order hung on the wall by the captain's place | MC01, MC04 | what the captain points to | a framed slate or sheet on the wall that shows "Prefect's Order" and can be read |
@@ -931,7 +973,7 @@ the outlines and not repeated. Three kinds of need recur and are said once here:
 
 | The thing | Quest | What happens there | How the player knows it |
 |---|---|---|---|
-| the old chalk face, a short way west of the working face along the cart track, fallen open onto the Legion's storeroom (the record's own hook) | MC01 | the way in | a second, older white scar with a fresh fall of rubble and a dark gap in it; Olank-Nu says "the worked-out face a little west along the track, where the rains brought the wall down"; the cart at its mouth carries the marker |
+| the old chalk face, a short way north of the working face, off the Kaochalit track and out of sight of the fort's wall and of the western road, fallen open onto the Legion's storeroom (the record's own hook) | MC01 | the way in | a second, older white scar with a fresh fall of rubble and a dark gap in it; Olank-Nu says "the worked-out face a little north, off the Kaochalit track, where the rains brought the wall down"; the cart at its mouth carries the marker |
 | the storeroom as an inside of its own, apart from where the crew stand: a gallery along the top where the fall lets a person in, the whole floor in view below it with no cover, and a way down; casks and Legion shelving on the floor | MC01 | the lair, and both ways to fight in it | it is named "Legion Storeroom" on entering; Imperial casks, shelving and brick |
 | the storeroom's fight set at the Dangerous band, not the Deadly band the pit's record gives; the record's three skeevers left out of that room | MC01 | a first hunt a new spear can win, with the snake alive when the player arrives | the kaal says the band: "the mesa's ordinary size" |
 | in the storeroom: a strongbox on the floor, open, and a pry-bar by it | MC01 | things to search and take | an Imperial strongbox with its lid up; it shows "Legion Strongbox" |
@@ -952,10 +994,10 @@ the outlines and not repeated. Three kinds of need recur and are said once here:
 
 | The thing | Quest | What happens there | How the player knows it |
 |---|---|---|---|
-| the three Sarpa in the pit scrub made wary (they fight only if one is attacked, and then together), not hostile on sight; one of them standing at the scrub's edge, in the open, who can be spoken to | MC02 | the parley; the fight | winged figures at the edge of thorn scrub west of the pits; the elder points from the kiln; the marker is on the one in front |
+| the three Sarpa in the pit scrub made wary: no enemy of the player, of Joxhi's people or of Gam-Kur, and none of those an enemy of theirs; they fight only if one is attacked, and then together; one of them standing at the scrub's edge, in the open, who can be spoken to | MC02 | the parley; the fight | winged figures at the edge of thorn scrub west of the pits; the elder points from the kiln; the marker is on the one in front |
 | open ground before the scrub's edge and spoil heaps beside it | MC02 | the fight's ground | (the ground itself) |
 | a torn carrying-net on the bank at the river mouth, among the crocodiles, that can be searched | MC02 | the crest-knot found | a net snagged on the bank with feathers in it; it shows "Torn Carrying-Net"; Zik-Aru says "where the pit stream meets the river, where the long-jaws lie" |
-| the diggers' stalls always holding four picks; tools standing in the open by the pits | MC02 | the trade; what the Sarpa came for | stalls with picks and spades on them beside the pits |
+| a tool-seller at the diggers' stalls, whose stall always holds four picks that are hers; tools standing in the open by the pits | MC02 | the trade; what the Sarpa came for | a stall with picks and spades on it beside the pits, and its seller, who trades |
 | standing places for the elder by the village kiln, the boy at the guest mound and a guard outside the mouth of the buried hall | MC02 | their accounts; the Archive's crossing | their names; Raj-Deel says "the elder, Jo-Reesh, by the kiln" |
 | the pit scrub at least 18,000 units from the spear-hall's door and from Inoja's market ground | MC02 | the three switched off | (a distance) |
 
@@ -973,7 +1015,7 @@ the outlines and not repeated. Three kinds of need recur and are said once here:
 | The thing | Quest | What happens there | How the player knows it |
 |---|---|---|---|
 | a second, narrow way in from the mesa side, a door of its own, coming out in the back chamber | MC04 | the way to the elder without the mouth | it shows "Cleft in the Rock"; Reeka-Veesa's elder says "past the spider's web on the cave path, where the wall splits" and the marker is on it |
-| the back chamber apart from the warband's fight, so that nothing in the passage or the gallery sees or comes into it: an elder who does not attack and can be spoken to, a child, and a basket of eggs that can be taken | MC04 | the turn | an old Sarpa sitting by a basket with a child of the reed people beside her; her name shows |
+| the back chamber as an inside of its own, with two doors: the cleft, and a low door to the back of the nest gallery; nothing of the warband comes through either. In it: an elder who does not attack and can be spoken to, a child (a child of the load order's own Argonian children; if it holds none, a youth of the post), and a basket of eggs that can be taken | MC04 | the turn | it is named "Sahlpesh Back Chamber" on entering; an old Sarpa sitting by a basket with a young one of the reed people beside her; her name shows |
 | a fallen ledge with broken shells, reached from the back chamber | MC04 | the proof of the quarry's wrong | a rockfall with eggshell in it; it shows "Crushed Nest Ledge" |
 | an egg-tender's sling in the nest gallery's larder, that can be searched | MC04 | what the war-leader did | a carrying-sling among the larder's goods; it shows "Egg-Tender's Sling" and holds a cloth in Oxayo's weave |
 
@@ -1005,7 +1047,7 @@ the outlines and not repeated. Three kinds of need recur and are said once here:
 
 | The thing | Quest | What happens there | How the player knows it |
 |---|---|---|---|
-| a parley ground on the path up from Noota Nara, a speaker's ground as defined above, marked by the first feather pole, with places for two elders, a trader, the chief, his best fighter and the kaal | MC05, MC06 | the roost's ask; the fish; the bout; the trade | one feather-hung pole standing alone below the mesa's shoulder, with an old Sarpa sitting by it; it shows "The First Pole"; the kaal says "they leave an elder at the first pole, below the shoulder, out of sight of the shelf" |
+| a parley ground on the path up from Noota Nara, a speaker's ground as defined above, marked by the first feather pole, with places for two elders, a trader, the chief, his best fighter and the kaal; at least 18,000 units from Vorannuhl's outer yard and from the fort | MC05, MC06 | the roost's ask; the fish; the bout; the trade | one feather-hung pole standing alone below the mesa's shoulder, with an old Sarpa sitting by it; it shows "The First Pole"; the quest's marker is on the elder; the kaal says "they leave an elder at the first pole, below the shoulder, out of sight of the shelf" |
 | the warband on the shelf in one faction a stage can set at peace | MC06 | the Pact | (after the Pact they no longer attack) |
 | the chief's best fighter in a faction of his own, hostile, so that nobody at the parley ground joins his fight | MC06 | the bout | Ilu-Sei says who will come and that nobody else will lift a hand |
 
