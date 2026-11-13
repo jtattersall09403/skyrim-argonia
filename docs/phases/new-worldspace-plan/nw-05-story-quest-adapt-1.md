@@ -80,6 +80,33 @@ Broad brush strokes, a first pass, nothing built in game, no LOD.
   with. Readers are honest and a little hard to please, and are evidence, not votes.
 - Nothing is built, seeded or deployed. The build machine stops when the lanes are done.
 
+### The lead's rulings on the province plan's open calls (2026-11-13)
+
+The province plan ([province-plan](../../../story/design/quests/lines/province-plan.md), section 6) asked for these
+before the lines are written. They bind every line's writer; the first and the last go to the owner as a call when
+the stories are posted, and nothing waits on the answer.
+
+1. **The main quest ends at a place the world already has.** No place is invented for it: Act V goes down to the
+   sealed spire at the bottom of Echo Deep, which the data holds. A "Lost City" as a new place is the owner's to
+   add if wanted.
+2. **Peoples with no culture row** (the tribeless Naga, the Sarpa, the Sul-Xan, the Paatru, the Tumnatu): a writer
+   takes them from the lore, marks what is extrapolated, and lists what the roster lane must add as rows.
+3. **No fighting in deep water.** A drowned place a quest fights in has floors behind its dive and its guardians on
+   them; the swim is passable without a fight; breath is had by any race.
+4. **A place hostile on sight that a story must speak in** gets one person who can be spoken to, as a need of that
+   place (the Rose's gate, Ushaan Camp's edge, Nenria's approach). The Rose has no lower levels: what the main quest
+   wants there is in the old warden's office its record already promises. Thorn and Giovesse keep their seats and
+   their thin sources are a need (another source allotted in nw-08 or nw-09).
+5. **Lilmoth's drowned quarter**: the Umbriel Witness sit at its edge on dry ground; a dive is into one drowned
+   building, listed as a need.
+6. **The settlements with a tree** are those the plan lists from the gives.
+7. **Water has only the names the notes give**; otherwise it is the water by a named place.
+8. **Helstrom has the 58 people its roster names.**
+9. **The second slice** (four faction openings; Stormhold's source is Markarth, a large build) stands as proposed
+   and is the owner's to cut when nw-08 is planned.
+
 ### Measured
 
-(filled in as it goes)
+- The digest: 258 places, 24 regions, 18 cultures, 645 hooks, 58 named people (`story/design/world/`).
+- The province plan: read once on paper by three readers (one who knows the digest, one Elder Scrolls fan, one for
+  deliverability); nothing merged or dropped; two lines re-scoped and four given work that is done, not heard.
