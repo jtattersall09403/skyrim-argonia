@@ -185,6 +185,26 @@ def _r_room(g, q, r, _):
     return []
 
 
+BENCHES = {"forge": "forge", "cookpot": "cook pot", "tanning": "tanning rack", "smelter": "smelter"}
+
+
+def _r_recipe(g, q, r, _):
+    """A recipe a stage opens: the player is told what they can now make and where; `recipes` holds them."""
+    item = g.item_of(r["item"])
+    if item in g.s["recipes"]:
+        return []
+    g.s["recipes"][item] = {"at": r["at"], "needs": {g.item_of(n["item"]): n["count"] for n in r["needs"]}}
+    return [f"You can now make {g.item_name(item)} at a {BENCHES[r['at']]}."]
+
+
+def _r_ingredient(g, q, r, _):
+    item = g.item_of(r["item"])
+    if item in g.s["ingredients"]:
+        return []
+    g.s["ingredients"].append(item)
+    return [f"You know every effect of {g.item_name(item)}."]
+
+
 def _r_skill(g, q, r, _):
     name = g.raise_skill(r["skill"], r["by"])
     return [f"{name} increased to {g.s['sheet']['skills'][name]}"]
@@ -224,4 +244,6 @@ RESULTS = {
     "set_bounty": _r_bounty,
     "own_room": _r_room,
     "raise_skill": _r_skill,
+    "open_recipe": _r_recipe,
+    "learn_ingredient": _r_ingredient,
 }

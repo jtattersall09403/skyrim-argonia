@@ -512,7 +512,8 @@ static class QuestFormRead
             keyOf.TryAdd(l[2], FormKey.Factory(l[1]));
         foreach (var n in names.Where(n => n.Key.Item1 is "spell" or "perk")) keyOf.TryAdd(n.Value, FormKey.Factory(n.Key.Item2));
         var words = new SortedSet<string>(StringComparer.Ordinal);
-        void Words(JsonNode? rows) { foreach (var r in rows?.AsArray() ?? []) foreach (var f in new[] { "item", "if_held", "spell", "perk" }) if (r?[f] is JsonValue v) words.Add(v.GetValue<string>()); }
+        void Words(JsonNode? rows) { foreach (var r in rows?.AsArray() ?? []) { foreach (var f in new[] { "item", "if_held", "spell", "perk" }) if (r?[f] is JsonValue v) words.Add(v.GetValue<string>());
+            foreach (var n in r?["needs"]?.AsArray() ?? []) if (n?["item"] is JsonValue nv) words.Add(nv.GetValue<string>()); } }
         foreach (var s in stages) Words(s?["results"]);
         foreach (var l in lines) { Words(l?["results"]); Words(l?["conditions"]); }
         foreach (var r in refs)
@@ -682,6 +683,14 @@ static class QuestFormRead
                 var si = (int)r.Num / 100;
                 if (si >= QuestForm.SkillOrder.Length) throw no($"{where}: skill {si} is none of the form's");
                 j["skill"] = QuestForm.SkillOrder[si]; j["by"] = (int)r.Num % 100; break;
+            case "open_recipe":
+                var co = c.Mod.ConstructibleObjects.FirstOrDefault(x => x.FormKey == r.What) ?? throw no($"{where}: recipe {r.What} is not ours");
+                j["item"] = ItemWord(name, co.CreatedObject.FormKeyNullable ?? throw no($"{where}: a recipe that makes nothing"));
+                j["at"] = QuestForm.BenchOf(co.WorkbenchKeyword.FormKeyNullable ?? FormKey.Null) ?? throw no($"{where}: a recipe at a bench that is none of the form's");
+                j["needs"] = new JsonArray([.. (co.Items ?? []).Select(n => (JsonNode)new JsonObject
+                    { ["item"] = ItemWord(name, n.Item.Item.FormKey), ["count"] = n.Item.Count })]);
+                break;
+            case "learn_ingredient": j["item"] = ItemWord(name, r.What); break;
             case "set_rank": j["faction"] = name("faction", r.What); j["rank"] = (int)r.Num; break;
             case "change_regard": j["ref"] = refName(r.What, where); j["by"] = (int)r.Num; break;
             case "switch_on" or "switch_off" or "lock_door" or "unlock_door" or "give_ownership": j["ref"] = refName(r.What, where); break;

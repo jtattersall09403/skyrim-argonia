@@ -44,6 +44,8 @@ The operation numbers are QuestForm.cs's (tools/ArgoniaPlugin); a number not lis
 ; 45 SetBounty                  What: the faction (a crime faction); Num: the bounty the player carries there, 0 clears it
 ; 46 OwnRoom                    What: the interior cell; the room and the unowned things in it become the player's
 ; 47 RaiseSkill                 Num: by + 100 * the skill's index in the form's skill list (see SkillName); the skill rises by `by`
+; 48 OpenRecipe                 What: the recipe (a ConstructibleObject of ours); nothing to do here: its condition (this quest's stage done) opens it
+; 49 LearnIngredient            What: the ingredient; the player learns every effect of it
 
 Function Run(Int[] op, Form[] what, Float[] num, Int from, Int to, Quest q, ObjectReference speaker = None) Global
 	Actor player = Game.GetPlayer()
@@ -174,6 +176,8 @@ Function Run(Int[] op, Form[] what, Float[] num, Int from, Int to, Quest q, Obje
 			(w as Cell).SetActorOwner(player.GetActorBase())
 		ElseIf o == 47
 			Game.IncrementSkillBy(SkillName(n / 100), n % 100)
+		ElseIf o == 49
+			(w as Ingredient).LearnAllEffects()
 		ElseIf o == 34
 			a = speaker as Actor
 			If a && !a.IsDead()

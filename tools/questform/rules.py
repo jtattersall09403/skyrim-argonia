@@ -39,7 +39,7 @@ RULES = ("schema", "vocabulary", "unique-ids", "stages-exist", "refs-exist", "pl
          "line-window", "switch-cause", "away", "must-live-fails", "must-live-window", "main-message", "death-hostile",
          "result-limits", "speaks-first-has-line", "stage-order", "trigger", "speaks-first", "answer", "prompt",
          "speaker", "hostile", "created", "line-said", "regard-range", "objective-left", "late-trigger", "check-label",
-         "spell", "enemy", "perk", "map-marker", "bounty", "room")
+         "spell", "enemy", "perk", "map-marker", "bounty", "room", "recipe")
 
 # A check on a prompt, as Skyrim shows it: in brackets, "(Persuade)" for Speech, the skill's name for any other,
 # "(<n> gold)" for gold; never a threshold.
@@ -307,6 +307,8 @@ def check(form, others: list[dict] | None = None) -> list[tuple[str, str]]:
             for r in [x["ref"]] if r in fm.refs and fm.refs[r]["kind"] != "door"]
     out += [("vocabulary", f"stage {s['number']}: speaker_hostile is a line's result (the speaker turns hostile)")
             for s in form["stages"] if any(r["do"] == "speaker_hostile" for r in s["results"])]
+    out += [("vocabulary", f"line {ln['id']}: open_recipe is a stage's result (a recipe opens when its stage is done)")
+            for ln in fm.lines if any(r["do"] == "open_recipe" for r in ln["results"])]
     out += [("vocabulary", f"line {ln['id']}: if_held is a stage's result (checked as the stage begins)")
             for ln in fm.lines if any("if_held" in r for r in ln["results"])]
     out += _placement(fm)
@@ -622,6 +624,16 @@ def _powers(fm: Form):
             elif do == "set_bounty" and not _form_key(x["faction"]):
                 out.append(("bounty", f"{where} {do} {x['faction']}: a bounty is set on a faction of the load order, "
                             "by its form key"))
+            elif do == "open_recipe":
+                words = [x["item"]] + [n["item"] for n in x["needs"]]
+                if not 1 <= len(x["needs"]) <= 6:
+                    out.append(("recipe", f"{where} {do} {x['item']}: a recipe needs 1 to 6 things, not {len(x['needs'])}"))
+                if len({n["item"] for n in x["needs"]}) < len(x["needs"]):
+                    out.append(("recipe", f"{where} {do} {x['item']}: one thing is named twice in its needs (give one count)"))
+                out += [("recipe", f"{where} {do} {x['item']}: {w} is a {fm.refs[w]['kind']}, not an item")
+                        for w in words if w in fm.refs and fm.refs[w]["kind"] != "thing"]
+            elif do == "learn_ingredient" and x["item"] in fm.refs:
+                out.append(("recipe", f"{where} {do}: {x['item']} is a ref of the form: an ingredient is a form key of the load order"))
             elif do == "own_room" and not _form_key(x["cell"]):
                 out.append(("room", f"{where} {do} {x['cell']}: a home is an interior cell of the load order, by its "
                             "form key"))

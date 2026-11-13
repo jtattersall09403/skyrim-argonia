@@ -498,3 +498,37 @@ def test_the_powers_name_what_the_load_order_holds():
     assert {"perk", "map-marker", "bounty", "room"} <= failed_rules(f)
     stage(f, 30)["results"] += [{"do": "raise_skill", "skill": "Mysticism", "by": 2}]
     assert failed_rules(f) & {"schema", "vocabulary"}
+
+
+def test_the_record_terms_of_recipes_compile_to_their_results():
+    from tools.argonia_world import db
+    c = qc.Compiler(db.load(), "quest.local.lq25")
+    c.rows = {}
+    got = c.results([{"openRecipe": ["064B3A:Skyrim.esm", "cookpot", [["034D22:Skyrim.esm", 1], ["034CDF:Skyrim.esm", 2]]]},
+                     {"learnIngredient": ["04B0BA:Skyrim.esm"]}], "x")
+    assert got == [{"do": "open_recipe", "item": "064B3A:Skyrim.esm", "at": "cookpot",
+                    "needs": [{"item": "034D22:Skyrim.esm", "count": 1}, {"item": "034CDF:Skyrim.esm", "count": 2}]},
+                   {"do": "learn_ingredient", "item": "04B0BA:Skyrim.esm"}]
+    assert not c.refused
+    c.results([{"openRecipe": ["064B3A:Skyrim.esm", "cookpot", []]}], "x")
+    assert [t for t, _, _ in c.refused] == ["openRecipe"]
+
+
+def test_a_recipe_has_one_to_six_needs_at_a_known_bench_and_opens_from_a_stage():
+    f = example()
+    need = {"item": "034D22:Skyrim.esm", "count": 1}
+    ok = {"do": "open_recipe", "item": "064B3A:Skyrim.esm", "at": "cookpot", "needs": [need]}
+    stage(f, 30)["results"] += [ok, {"do": "learn_ingredient", "item": "04B0BA:Skyrim.esm"}]
+    assert not failed_rules(f) & {"schema", "vocabulary", "recipe"}
+    stage(f, 30)["results"].append({**ok, "needs": [{**need, "item": f"0{i}:Skyrim.esm"} for i in range(7)]})
+    assert "recipe" in failed_rules(f)
+    f = example()
+    stage(f, 30)["results"].append({**ok, "needs": [need, need]})
+    assert "recipe" in failed_rules(f)                                  # one thing named twice
+    f = example()
+    stage(f, 30)["results"].append({**ok, "at": "anvil"})
+    assert failed_rules(f) & {"schema", "vocabulary"}
+    f = example()
+    line = next(ln for ln in f["lines"] if ln["results"])
+    line["results"].append(ok)
+    assert "vocabulary" in failed_rules(f)                              # a recipe opens when a stage is done

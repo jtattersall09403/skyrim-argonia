@@ -75,6 +75,8 @@ A line does one thing: it moves the quest to a stage. **Everything else is done 
 | set the bounty the player carries with a crime faction (0 clears it) | a crime faction of the load order |
 | make a room the player's home | an interior cell of the load order: the room and the unowned things in it become theirs |
 | raise one of the player's skills | by 1 to 10 |
+| open a recipe at a forge, cook pot, tanning rack or smelter | a stage's result, not a line's; the item and 1 to 6 things it needs, each with a count |
+| make the player know every effect of an ingredient | an ingredient of the load order |
 | change a person's regard | -4 to 4 |
 | switch a named person or thing on or off | only away from the player |
 | lock or unlock a named door | |
@@ -146,7 +148,9 @@ locked or not.
 13. **Everything the outline says happens is in the sketch**: every line that is gated or moves the quest, the lines
     said after an ending (gated on the stage or the number the ending set), every gift and switch, and each fought
     creature as the place's own or as a person of ours (ours stand where the ground is walkable, so a water creature
-    of ours is a need of the place: a shelf of ground or a navmesh over the water).
+    of ours is a need of the place: a shelf of ground or a navmesh over the water). Every choice and ending carries
+    its outcome table (`.claude/skills/quest-write/principles/choices.md`): the outcome, what the player gains and
+    loses in play, who pays and where, and the result that builds each row.
 14. **A line's later quest is gated on the earlier quest's stage**, not on the rank it gave, and the line's file
     holds every earlier quest's sketch, so the walk plays them first. The offer is a line at hidden stage 0 gated
     `done <earlier quest> <ending>`, one per ending that changes what is said; a `when` trigger fires only as that
@@ -208,6 +212,8 @@ Gates: `stage <quest> is <n>`, `stage <quest> >= <n>`, `done <quest> <n>`, `numb
 `rank <faction> <n>`, `teach <spell form key> "<name>"`, `forget <spell form key>`, `enemy <faction form key>`,
 `peace <faction form key>`, `perk <perk form key> "<name>"`, `unperk <perk form key>`, `map <marker>`,
 `bounty <faction form key> <n>`, `home <interior cell form key>`, `skill-up <skill> <n>`,
+`recipe <item> at <forge|cookpot|tanning|smelter> needs <item> <n> <item> <n> ...` (each need is an item and its
+count, side by side, with no comma between them), `ingredient <ingredient form key>`,
 `regard <person> <n>`, `on <ref>`, `off <ref>`, `lock <door>`, `unlock <door>`, `own <container>`, `message "<words>"`,
 `start <quest> <stage>`, `stage <n>`. A form key whose plugin's name holds a space is quoted
 (`home "0AA665:Black Marsh.esm"`).
@@ -283,7 +289,7 @@ thing tooth on beast "the pen-breaker's tooth"
 stage 0 hidden
 stage 10 "Old Saxhleel asked me to kill the beast that breaks the eel pens, at the drowned pen."
 stage 30 "I killed the pen-breaker."
-stage 90 completed "I told Old Saxhleel the pen-breaker is dead." do give-gold 80
+stage 90 completed "I told Old Saxhleel the pen-breaker is dead." do give-gold 80, skill-up Archery 1
 stage 91 completed "I told Old Saxhleel I had already killed the pen-breaker." do give-gold 80
 stage 95 failed "Old Saxhleel is dead. Nobody will pay for the pen-breaker now."
 
@@ -316,8 +322,8 @@ stage 0 hidden
 stage 10 "Elder Tsleeixth asked me to hear the two who claim the boat and give it to one of them."
 stage 41 "The boat is Ei-Ja's now."
 stage 42 "The boat is Meer-Ra's now."
-stage 91 completed "I told the elder Ei-Ja has the boat." do set p03.boat 1, give-gold 30
-stage 92 completed "I told the elder Meer-Ra has the boat." do set p03.boat 2, give-gold 30
+stage 91 completed "I told the elder Ei-Ja has the boat." do set p03.boat 1, give-gold 30, skill-up Speech 1
+stage 92 completed "I told the elder Meer-Ra has the boat." do set p03.boat 2, give-gold 30, skill-up Sneak 1
 stage 95 failed "Elder Tsleeixth is dead, and nobody else can settle the boat."
 
 objective 10 at 10 "Give the boat to Ei-Ja or Meer-Ra" -> sister, brother
@@ -454,8 +460,8 @@ thing ledger at office readable "the toll ledger"
 stage 0 hidden
 stage 10 "Hesh-Ra says someone has been robbing the toll box, and the toll ledger will show who."
 stage 20 "I read the toll ledger. Two hands wrote in it."
-stage 91 completed "I named Tollkeeper Vel." do set p07.named 1
-stage 92 completed "I named nobody." do set p07.named 2
+stage 91 completed "I named Tollkeeper Vel." do set p07.named 1, skill-up Speech 1
+stage 92 completed "I named nobody." do set p07.named 2, give lockpick 3
 stage 95 failed "Hesh-Ra is dead."
 
 objective 10 at 10 "Read the toll ledger" -> ledger
@@ -602,6 +608,9 @@ must-live giver fails 96
   quest (a death, or a line gated on `dead`), or the objective also points at a thing to take (`marker-dead`).
 - "Two hundred, you said", "Their bowman is coming" in the player's mouth: gate the prompt on the stage at which the
   player heard it, or word it so it needs nothing heard.
+- "The two endings differ in what she says and how much she pays": two completed endings whose results differ only in
+  words, a standing or gold are one ending; give each something the player can use, a thing, a spell, a recipe, a
+  skill, a door opened (`outcome-words`).
 - "She keeps the bracer at her hearth" when a stage only took it from the player: nobody holds it unless a placement
   of it is switched on there; say only what the game shows.
 

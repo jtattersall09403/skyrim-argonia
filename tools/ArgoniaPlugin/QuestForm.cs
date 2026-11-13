@@ -43,7 +43,8 @@ static class QuestForm
             GiveItem = 20, TakeItem = 21, GiveGold = 22, TakeGold = 23, SetNumber = 24, AddNumber = 25, JoinFaction = 26,
             SetRank = 27, ChangeRegard = 28, SwitchOn = 29, SwitchOff = 30, LockDoor = 31, UnlockDoor = 32, ShowMessage = 33,
             SpeakerHostile = 34, StartQuest = 35, GiveOwnership = 36, TeachSpell = 37, ForgetSpell = 38, MakeEnemy = 39, MakePeace = 40,
-            LeaveFaction = 41, AddPerk = 42, RemovePerk = 43, MarkOnMap = 44, SetBounty = 45, OwnRoom = 46, RaiseSkill = 47;
+            LeaveFaction = 41, AddPerk = 42, RemovePerk = 43, MarkOnMap = 44, SetBounty = 45, OwnRoom = 46, RaiseSkill = 47, OpenRecipe = 48,
+            LearnIngredient = 49;
         public static readonly Dictionary<string, int> OfResult = new()
         {
             ["set_stage"] = SetStage, ["give_item"] = GiveItem, ["take_item"] = TakeItem, ["give_gold"] = GiveGold, ["take_gold"] = TakeGold,
@@ -53,6 +54,7 @@ static class QuestForm
             ["give_ownership"] = GiveOwnership, ["teach_spell"] = TeachSpell, ["forget_spell"] = ForgetSpell, ["make_enemy"] = MakeEnemy,
             ["make_peace"] = MakePeace, ["leave_faction"] = LeaveFaction, ["add_perk"] = AddPerk, ["remove_perk"] = RemovePerk,
             ["mark_on_map"] = MarkOnMap, ["set_bounty"] = SetBounty, ["own_room"] = OwnRoom, ["raise_skill"] = RaiseSkill,
+            ["open_recipe"] = OpenRecipe, ["learn_ingredient"] = LearnIngredient,
         };
     }
     public sealed record Row(int Op, FormKey What, float Num);
@@ -283,7 +285,7 @@ static class QuestForm
             foreach (var res in A(s, "results"))
             {
                 if (S(res, "do") == "speaker_hostile") throw c.No("vocabulary", $"stage {I(s, "number")}: speaker_hostile is a line's result");
-                Add(b.Own, I(s, "number"), Result(c, b, res, q.FormKey));
+                Add(b.Own, I(s, "number"), Result(c, b, res, q.FormKey, I(s, "number")));
             }
         // objectives: completed, then shown; the stage that shows the first objective makes the quest the tracked one
         var objs = A(f, "objectives").ToList();
@@ -310,7 +312,7 @@ static class QuestForm
     static Ref RefOf(Ctx c, Built b, string id, string where) => b.Refs.TryGetValue(id, out var r) ? r : throw c.No("refs-exist", $"{where} names {id}, which is not a ref of the form");
 
     // One form result as rows (`self` is the form's quest: a set_stage sets its stage).
-    static Row[] Result(Ctx c, Built b, JsonElement res, FormKey self)
+    static Row[] Result(Ctx c, Built b, JsonElement res, FormKey self, int stage = 0)
     {
         var w = S(res, "do");
         if (!Op.OfResult.TryGetValue(w, out var op)) throw c.No("vocabulary", $"no result {w}");
@@ -328,6 +330,8 @@ static class QuestForm
             "set_bounty" => [new Row(op, LoadOrderFaction(c, S(res, "faction"), w), I(res, "amount"))],
             "own_room" => [new Row(op, Exists<ICellGetter>(c, S(res, "cell"), "cell"), 0)],
             "raise_skill" => [new Row(op, FormKey.Null, I(res, "by") + 100 * Array.IndexOf(SkillOrder, S(res, "skill")))],
+            "open_recipe" => stage > 0 ? [new Row(op, Recipe(c, b, res, self, stage), 0)] : throw c.No("vocabulary", "open_recipe is a stage's result (a recipe opens when its stage is done)"),
+            "learn_ingredient" => [new Row(op, IngredientKey(c, b, S(res, "item")), 0)],
             "set_rank" => [new Row(op, Faction(c, S(res, "faction")), I(res, "rank"))],
             "change_regard" => [new Row(op, PersonRef(c, b, S(res, "ref"), w), I(res, "by"))],
             "switch_on" or "switch_off" => [new Row(op, PlacedRef(c, b, S(res, "ref"), w), 0)],
@@ -421,6 +425,40 @@ static class QuestForm
         copy.Name = new Mutagen.Bethesda.Strings.TranslatedString(Mutagen.Bethesda.Strings.Language.English, name);
         c.Mod.Spells.Add(copy);
         return k;
+    }
+    static readonly Dictionary<string, string> Benches = new()
+    {
+        ["forge"] = "088105:Skyrim.esm", ["cookpot"] = "0A5CB3:Skyrim.esm", ["tanning"] = "07866A:Skyrim.esm", ["smelter"] = "0A5CCE:Skyrim.esm",
+    };
+    /// The workbench word of a crafting keyword (the reader's): Skyrim's own keyword for each.
+    public static string? BenchOf(FormKey k) => Benches.FirstOrDefault(x => FormKey.Factory(x.Value) == k).Key;
+    /// A recipe a stage opens: a ConstructibleObject of ours making the item (one) at the bench from the needs, open
+    /// while this quest's stage is done (the way Skyrim's own gated recipes are: GetStageDone on the quest). One record
+    /// per quest, stage and item.
+    static FormKey Recipe(Ctx c, Built b, JsonElement res, FormKey self, int stage)
+    {
+        var item = S(res, "item");
+        var at = Benches.TryGetValue(S(res, "at"), out var bench) ? FormKey.Factory(bench) : throw c.No("recipe", $"open_recipe at {S(res, "at")}: a recipe is made at forge, cookpot, tanning or smelter");
+        var needs = A(res, "needs").ToList();
+        if (needs.Count is < 1 or > 6) throw c.No("recipe", $"open_recipe {item}: a recipe needs 1 to 6 things, not {needs.Count}");
+        var made = Item(c, b, item);
+        var k = c.Key($"recipe:{b.Qid}:{stage}:{item}");
+        if (c.Mod.ConstructibleObjects.Any(x => x.FormKey == k)) return k;
+        var co = new ConstructibleObject(k, SkyrimRelease.SkyrimSE) { EditorID = $"ARG_C_{Slug(b.Qid + "_" + stage + "_" + item)}", CreatedObjectCount = 1, Items = [] };
+        co.CreatedObject.SetTo(made);
+        co.WorkbenchKeyword.SetTo(at);
+        foreach (var n in needs)
+            co.Items.Add(new ContainerEntry { Item = new ContainerItem { Item = new FormLink<IItemGetter>(Item(c, b, S(n, "item"))), Count = I(n, "count") } });
+        co.Conditions.Add(Cond(Done(self, stage), CompareOperator.EqualTo, 1));
+        c.Mod.ConstructibleObjects.Add(co);
+        return k;
+    }
+    /// An ingredient the player learns every effect of: an item of the load order that is an ingredient.
+    static FormKey IngredientKey(Ctx c, Built b, string id)
+    {
+        var k = Item(c, b, id);
+        return c.Mod.EnumerateMajorRecords<IIngredientGetter>().Any(r => r.FormKey == k) || c.Mods.Any(m => m.EnumerateMajorRecords<IIngredientGetter>().Any(r => r.FormKey == k))
+            ? k : throw c.No("item", $"learn_ingredient {id}: {k} is no ingredient");
     }
     static FormKey Perk(Ctx c, Built b, string id) => Named(c, "perk", id, Perk0(c, b, id));
     /// A perk the player is given or loses: our copy of a perk of the load order (the form key the form names), called

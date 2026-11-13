@@ -1,6 +1,7 @@
 {
  "version": 1,
- "names": {"00000A:Skyrim.esm": "Lockpick", "017122:Skyrim.esm": "Block Test Shadow", "0BE123:Skyrim.esm": "Block Test Agility"},
+ "names": {"00000A:Skyrim.esm": "Lockpick", "017122:Skyrim.esm": "Block Test Shadow", "0BE123:Skyrim.esm": "Block Test Agility",
+  "034D22:Skyrim.esm": "Garlic", "034CDF:Skyrim.esm": "Salt Pile"},
  "quest": {
   "id": "quest.test.blocktest",
   "editor_id": "ARG_BlockTest",
@@ -30,7 +31,9 @@
                {"do": "start_quest", "quest": "quest.test.blocktest-two", "stage": 10},
                {"do": "teach_spell", "spell": "017122:Skyrim.esm"}, {"do": "make_enemy", "faction": "039F26:Skyrim.esm"},
                {"do": "add_perk", "perk": "0BE123:Skyrim.esm"}, {"do": "set_bounty", "faction": "10CEE9:Skyrim.esm", "amount": 0},
-               {"do": "raise_skill", "skill": "Sneak", "by": 1}],
+               {"do": "raise_skill", "skill": "Sneak", "by": 1},
+               {"do": "open_recipe", "item": "064B3A:Skyrim.esm", "at": "cookpot", "needs": [{"item": "034D22:Skyrim.esm", "count": 1}, {"item": "034CDF:Skyrim.esm", "count": 1}]},
+               {"do": "learn_ingredient", "item": "04B0BA:Skyrim.esm"}],
    "journal": "I came out of the ship by its door. The Dock Keeper will want to hear the crab is dead."},
   {"number": 90, "shown": true, "ending": "failed", "results": [],
    "journal": "The Dock Keeper is dead. Nobody else can finish the block test with me."},

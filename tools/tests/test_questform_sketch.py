@@ -213,3 +213,49 @@ def test_a_map_word_names_a_marker_and_a_perk_its_name(tmp_path):
     assert "perk" in rules_of(run(tmp_path, base.format("unperk 0BE123:Skyrim.esm"), walk=False))
     assert "bounty" in rules_of(run(tmp_path, base.format("bounty thalmor 5"), walk=False))
     assert "room" in rules_of(run(tmp_path, base.format("home hall"), walk=False))
+
+
+def test_the_recipe_and_ingredient_words_are_stage_results(tmp_path):
+    text = GOOD.replace('do take purse, give-gold 50', 'do take purse, give-gold 50, '
+                        'recipe 064B3A:Skyrim.esm at cookpot needs 034D22:Skyrim.esm 1 034CDF:Skyrim.esm 2, '
+                        'ingredient 04B0BA:Skyrim.esm')
+    assert rules_of(run(tmp_path, text)) == set()
+    form, _ = sketch.expand(sketch.read(_write(tmp_path, text))[0])
+    st90 = next(s for s in form["stages"] if s["number"] == 90)
+    assert {"do": "open_recipe", "item": "064B3A:Skyrim.esm", "at": "cookpot",
+            "needs": [{"item": "034D22:Skyrim.esm", "count": 1}, {"item": "034CDF:Skyrim.esm", "count": 2}]} in st90["results"]
+    assert {"do": "learn_ingredient", "item": "04B0BA:Skyrim.esm"} in st90["results"]
+
+
+@pytest.mark.parametrize("word", ["recipe 064B3A:Skyrim.esm at anvil needs 034D22:Skyrim.esm 1",
+                                  "recipe 064B3A:Skyrim.esm at forge",
+                                  "recipe 064B3A:Skyrim.esm at forge needs a 1 b 1 c 1 d 1 e 1 f 1 g 1"])
+def test_a_recipe_names_a_bench_and_one_to_six_needs(tmp_path, word):
+    text = GOOD.replace('do take purse, give-gold 50', 'do take purse, give-gold 50, ' + word)
+    assert "sketch" in rules_of(run(tmp_path, text, walk=False))
+
+
+def test_a_recipe_is_not_a_lines_result(tmp_path):
+    form, _ = sketch.expand(sketch.read(_write(tmp_path, GOOD))[0])
+    form["lines"][0]["results"].append({"do": "open_recipe", "item": "064B3A:Skyrim.esm", "at": "forge",
+                                        "needs": [{"item": "034D22:Skyrim.esm", "count": 1}]})
+    from tools.questform import rules
+    form.pop("_errors")
+    assert "vocabulary" in {r for r, _ in rules.check(form)}
+
+
+TWO_ENDINGS = GOOD.replace(
+    'stage 95 failed', 'stage 91 completed "I told Sarel the purse is lost." do take purse, give-gold 50\nstage 95 failed').replace(
+    'line hand giver at 30 ask "Here is the purse." if holds purse -> 90 says "she pays"',
+    'line hand giver at 30 ask "Here is the purse." if holds purse -> 90 says "she pays"\n'
+    'line lost giver at 30 ask "I lost it." -> 91 says "then you owe me"')
+
+
+def test_two_endings_that_differ_only_in_words_or_gold_are_a_fault(tmp_path):
+    assert "outcome-words" in rules_of(run(tmp_path, TWO_ENDINGS, walk=False))
+    both = TWO_ENDINGS.replace('do take purse, give-gold 50\nstage 95', 'do take purse, give-gold 50, set t.lost 1\nstage 95')
+    assert "outcome-words" in rules_of(run(tmp_path, both, walk=False))      # a standing is still only words
+    other = TWO_ENDINGS.replace('do take purse, give-gold 50\nstage 95', 'do take purse, give-gold 50, skill-up Speech 1\nstage 95')
+    assert "outcome-words" not in rules_of(run(tmp_path, other, walk=False))
+    one = TWO_ENDINGS.replace('stage 91 completed', 'stage 91 failed')
+    assert "outcome-words" not in rules_of(run(tmp_path, one, walk=False))     # one completed ending has nothing to match

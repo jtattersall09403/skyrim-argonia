@@ -194,8 +194,10 @@ class Game:
             {e["lock"]["key"] for e in self.ents.values() if e["lock"] and e["lock"].get("key")}
         for f in self.forms.values():
             for r in [r for s in f["stages"] for r in s["results"]] + [r for ln in f["lines"] for r in ln["results"]]:
-                if r["do"] in ("give_item", "take_item"):
+                if r["do"] in ("give_item", "take_item", "learn_ingredient"):
                     items.add(r["item"])
+                if r["do"] == "open_recipe":
+                    items |= {r["item"]} | {n["item"] for n in r["needs"]}
                 if r["do"] in ("teach_spell", "forget_spell") and not names.get(r["spell"]):
                     missing.add(r["spell"])
                 if r["do"] in ("add_perk", "remove_perk") and not names.get(r["perk"]):
@@ -209,7 +211,7 @@ class Game:
         return {"quests": {}, "order": [], "items": {}, "gold": 0, "numbers": {}, "factions": {}, "regard": {},
                 "dead": [], "switched": {}, "locked": {}, "taken": [], "pos": None, "visited": [], "spoken": [],
                 "fired": [], "talking": None, "question": None, "hostile": [],
-                "opened": [], "owned": [], "spells": [], "enemies": [], "perks": [], "mapped": [], "bounty": {}, "rooms": [], "contents": {k: {c["item"]: c["count"] for c in e["contents"]}
+                "opened": [], "owned": [], "spells": [], "enemies": [], "perks": [], "mapped": [], "bounty": {}, "rooms": [], "recipes": {}, "ingredients": [], "contents": {k: {c["item"]: c["count"] for c in e["contents"]}
                                            for k, e in self.ents.items() if e["contents"]},
                 "crimes": [], "sheet": sheet, "commands": 0, "ended": False}
 

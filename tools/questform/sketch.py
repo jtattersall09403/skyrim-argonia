@@ -341,6 +341,21 @@ def result(sk: Sketch, toks) -> dict:
         if sw.lower() not in SKILLS:
             raise SketchError(f"{sw!r} is no skill the game can raise (one of {', '.join(sorted(set(SKILLS.values())))})")
         r = {"do": "raise_skill", "skill": SKILLS[sw.lower()], "by": s.number("a step, 1 to 10")}
+    elif w == "recipe":
+        r = {"do": "open_recipe", "item": _item(sk, s.key("the item made")), "at": "", "needs": []}
+        if not s.take("at"):
+            raise SketchError("a recipe is `recipe <item> at <forge|cookpot|tanning|smelter> needs <item> <n> <item> <n>`")
+        r["at"] = s.word("forge, cookpot, tanning or smelter")
+        if r["at"] not in ("forge", "cookpot", "tanning", "smelter"):
+            raise SketchError(f"{r['at']!r} is no workbench (forge, cookpot, tanning or smelter)")
+        if not s.take("needs"):
+            raise SketchError("a recipe names what it needs: `needs <item> <n> <item> <n>` (1 to 6 things, each with its count)")
+        while s.more():
+            r["needs"].append({"item": _item(sk, s.key("a thing or item needed")), "count": s.number("how many")})
+        if not 1 <= len(r["needs"]) <= 6:
+            raise SketchError(f"a recipe needs 1 to 6 things, not {len(r['needs'])}")
+    elif w == "ingredient":
+        r = {"do": "learn_ingredient", "item": s.key("an ingredient's form key")}
     elif w == "rank":
         r = {"do": "set_rank", "faction": s.word("a faction"), "rank": s.number("a rank")}
     elif w == "regard":
@@ -361,7 +376,7 @@ def result(sk: Sketch, toks) -> dict:
         raise SketchError(f"`{w}` is no result: {CANNOT[w]}")
     else:
         raise SketchError(f"`{w}` is no result the game can do (give, take, give-gold, take-gold, set, add, join, "
-                          "leave, enemy, peace, teach, forget, perk, unperk, map, bounty, home, skill-up, rank, regard, on, "
+                          "leave, enemy, peace, teach, forget, perk, unperk, map, bounty, home, skill-up, recipe, ingredient, rank, regard, on, "
                           "off, lock, unlock, own, message, start, stage; a skill is also taught by giving a skill book)")
     if s.more():
         raise SketchError(f"left over in a result: {' '.join(t[1] for t in s.t[s.i:])!r} (a comma between results?)")
@@ -908,7 +923,12 @@ def _broken(form) -> bool:
 # -- the design rules: what a writer most often gets wrong that the form's rules do not name ---------------------
 
 DESIGN = ("before-offer", "pointer-alive", "marker-dead", "one-ref-many", "rank-set", "take-unheld", "give-twice", "hostile-speaks", "hostile-must-live", "death-both-ways", "one-name", "give-placed", "dead-early",
-          "early-death", "needs-living", "number-set", "refusal")
+          "early-death", "needs-living", "number-set", "refusal", "outcome-words")
+
+
+# the results that are only words, a standing or gold: an ending made of these alone gives the player nothing to use
+WORDS_ONLY = ("set_number", "add_number", "change_regard", "set_rank", "join_faction", "show_message", "give_gold",
+              "take_gold")
 
 
 def design(form: dict, sk: Sketch, numbers_set: set[str], factions_set: set[str] = frozenset()) -> list[tuple[str, str]]:
@@ -1042,6 +1062,18 @@ def design(form: dict, sk: Sketch, numbers_set: set[str], factions_set: set[str]
             if t["kind"] == "take" and fm.item_of(t["ref"]) in gives:
                 out.append(("give-twice", f"stage {n} gives {fm.item_of(t['ref'])} and is reached by taking it "
                             f"(trigger {t['id']}): the player would hold two"))
+    # endings that differ only in words, a standing or gold give the player nothing to choose between
+    seen: list[tuple[int, frozenset]] = []
+    for s in form["stages"]:
+        if s["ending"] != "completed":
+            continue
+        play = frozenset(json.dumps(r, sort_keys=True) for r in s["results"] if r["do"] not in WORDS_ONLY)
+        same = next((n for n, p in seen if p == play), None)
+        if same is not None:
+            out.append(("outcome-words", f"stage {s['number']} and stage {same}: the endings differ only in words, a "
+                        "standing or gold; give each something the player can use (a thing, a spell, a door, a "
+                        "recipe: choices.md)"))
+        seen.append((s["number"], play))
     for ln in form["lines"]:
         for c in ln["conditions"]:
             if c["is"] == "rank_at_least" and c["faction"] not in factions_set:
@@ -1160,6 +1192,7 @@ GLOSS = {
     "enemy": "a group turned against the player that is not a faction of the load order",
     "existing": "a level or hostility set on a person the world already holds",
     "refusal": "a check with no refusal of its own",
+    "outcome-words": "two endings that differ only in words, a standing or gold",
     "take-unheld": "a hand-over the player may not be able to make: the stage takes what a way to it never asked for",
     "give-twice": "one thing given and taken: the player would hold two",
     "line-result": "a line does something besides moving a stage: every result belongs to a stage",

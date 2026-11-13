@@ -57,6 +57,11 @@ static class QuestFormTest
         fx.Perks.Add(perk);
         var mark = new PlacedObject(fx) { Placement = new Placement { Position = new Noggog.P3Float(0, 0, 0) } };
         cell.Persistent.Add(mark);
+        var ingr = new Ingredient(fx) { EditorID = "FxIngr" };
+        fx.Ingredients.Add(ingr);
+        var food = new Ingestible(fx) { EditorID = "FxFood" };
+        fx.Ingestibles.Add(food);
+        string Recipe(string at, int n) => $$"""[{"do":"open_recipe","item":"{{food.FormKey}}","at":"{{at}}","needs":[{{string.Join(",", Enumerable.Range(0, n).Select(i => $$"""{"item":"{{ingr.FormKey}}","count":{{i + 1}}}"""))}}]}]""";
         string Teach(string w, string key) => $$"""[{"do":"{{w}}","spell":"{{key}}"}]""";
 
         JsonNode Form(Action<JsonNode>? tweak = null)
@@ -134,6 +139,14 @@ static class QuestFormTest
             f["stages"]![0]!["results"] = JsonNode.Parse("""[{"do":"own_room","cell":"000001:Nowhere.esm"}]"""));
         R("a skill raised", null, f =>
             f["stages"]![0]!["results"] = JsonNode.Parse("""[{"do":"raise_skill","skill":"Sneak","by":5}]"""));
+        R("a recipe opened at a cook pot", null, f => f["stages"]![0]!["results"] = JsonNode.Parse(Recipe("cookpot", 2)));
+        R("a recipe opened at the forge, with six needs", null, f => f["stages"]![0]!["results"] = JsonNode.Parse(Recipe("forge", 6)));
+        R("a recipe with seven needs", "recipe", f => f["stages"]![0]!["results"] = JsonNode.Parse(Recipe("forge", 7)));
+        R("a recipe with no needs", "recipe", f => f["stages"]![0]!["results"] = JsonNode.Parse(Recipe("forge", 0)));
+        R("a recipe at no bench", "recipe", f => f["stages"]![0]!["results"] = JsonNode.Parse(Recipe("anvil", 1)));
+        R("a recipe opened by a line", "vocabulary", f => f["lines"]![0]!["results"] = JsonNode.Parse(Recipe("forge", 1)));
+        R("an ingredient learned", null, f => f["stages"]![0]!["results"] = JsonNode.Parse($$"""[{"do":"learn_ingredient","item":"{{ingr.FormKey}}"}]"""));
+        R("a food learned as an ingredient", "item", f => f["stages"]![0]!["results"] = JsonNode.Parse($$"""[{"do":"learn_ingredient","item":"{{food.FormKey}}"}]"""));
         Console.WriteLine(bad == 0 ? "questform selftest: PASS" : $"questform selftest: FAIL ({bad} wrong)");
         return bad == 0 ? 0 : 1;
     }

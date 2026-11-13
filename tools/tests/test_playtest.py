@@ -115,6 +115,7 @@ RESULT_ARGS = {
     "teach_spell": {"spell": SPELL}, "forget_spell": {"spell": SPELL},
     "add_perk": {"perk": PERK}, "remove_perk": {"perk": PERK}, "mark_on_map": {"ref": DOOR},
     "set_bounty": {"faction": FAC, "amount": 40}, "own_room": {"cell": CELL}, "raise_skill": {"skill": "Sneak", "by": 4},
+    "open_recipe": {"item": "item.x", "at": "cookpot", "needs": [{"item": "item.y", "count": 2}]}, "learn_ingredient": {"item": "item.y"},
 }
 
 
@@ -130,7 +131,7 @@ def test_each_condition_evaluates(word):
 
 
 EXPECT = {"give_item": "Added: Ring x2", "teach_spell": "Learned: Shadow", "add_perk": "Perk added: Agility",
-          "mark_on_map": "Map updated:", "raise_skill": "Sneak increased to", "show_message": "[Message box] A box.", "speaker_hostile": "attacks you!",
+          "mark_on_map": "Map updated:", "open_recipe": "You can now make Ring at a cook pot.", "learn_ingredient": "You know every effect of Reed.", "raise_skill": "Sneak increased to", "show_message": "[Message box] A box.", "speaker_hostile": "attacks you!",
           "set_stage": "New objective: Find Sample-Contact", "start_quest": "New objective: Find Sample-Contact"}
 
 
@@ -144,7 +145,7 @@ def test_each_result_is_said_from_a_line(word):
     f["lines"][0]["first_stage"] = f["lines"][1]["first_stage"] = 30      # keep the speaks-first line quiet
     f["lines"][0]["last_stage"] = f["lines"][1]["last_stage"] = 30
     f["objectives"][0]["targets"] = ["npc.example.roll-man"]
-    g = game(f, extra_names={"item.x": "Ring", SPELL: "Shadow", PERK: "Agility"})
+    g = game(f, extra_names={"item.x": "Ring", "item.y": "Reed", SPELL: "Shadow", PERK: "Agility"})
     g.do("talk gang boss")
     out = g.do("say probe")
     assert 'Gang Boss: "Probe."' in out
@@ -160,7 +161,8 @@ def test_each_result_is_said_from_a_line(word):
             "forget_spell": st["spells"] == [], "make_enemy": st["enemies"] == [FAC], "make_peace": st["enemies"] == [],
             "leave_faction": "f" not in st["factions"], "add_perk": st["perks"] == [PERK],
             "remove_perk": st["perks"] == [], "mark_on_map": st["mapped"] != [], "set_bounty": st["bounty"] == {FAC: 40},
-            "own_room": st["rooms"] == [CELL], "raise_skill": True}.get(word, True)
+            "own_room": st["rooms"] == [CELL], "raise_skill": True, "open_recipe": list(st["recipes"]) == ["item.x"],
+            "learn_ingredient": st["ingredients"] == ["item.y"]}.get(word, True)
 
 
 def test_an_unknown_word_is_a_named_harness_error():

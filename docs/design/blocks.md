@@ -66,6 +66,8 @@ Every result is a row (`Op`, `What`, `Num`) that `ARG_Effects.Run` carries out; 
 | `mark_on_map` | AddToMap(false) on a marker reference | Morrowind's journal naming a place; the quests that reveal a location |
 | `set_bounty` | SetCrimeGold on a crime faction | forgiving or fining a crime (Morrowind's SetPCCrimeLevel) |
 | `own_room` | SetActorOwner on the interior cell, the player's base | the player's homes (Hearthfires, Breezehome); Morrowind's house purchases |
+| `open_recipe` | a ConstructibleObject of ours at a crafting keyword, open while the stage is done (GetStageDone) | the 38 vanilla recipes gated on a stage or a finished quest: Dragonborn's Stalhrim, Skyrim's armour table |
+| `learn_ingredient` | Ingredient.LearnAllEffects (SKSE) | the alchemy trainers and the ingredient lore books |
 | `raise_skill` | Game.IncrementSkillBy | the skill books and trainers; Morrowind's ModSkill |
 | `show_message` | a message box of ours, `Show()` | DA06FailMessage from QF_DA06 |
 | `start_quest` | Start, then SetStage | a chained quest started at its first stage |

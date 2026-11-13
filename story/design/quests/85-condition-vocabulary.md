@@ -154,7 +154,7 @@ Actions are the only way authored content changes the world. Every one is data.
 
 `giveItem(item, count)` · `takeItem(item, count)` · `giveGold(int)` ·
 `takeGold(int)` · `grantAbility(spell, name)` · `removeAbility(spell, name)` *(a spell, power or lasting ability: its form key and the name the player sees; once-per-day powers, incl. Hist
-communion — 0042 §1)* · `grantPerk(perk, name)` · `removePerk(perk, name)` *(a perk of the load order: its form key and the name the player sees)* · `raiseSkill(skill, n)` *(n from 1 to 10)* · `grantMapMarker(marker)` *(a marker of the quest, shown on the map)* · `giveHome(cell)` *(an interior cell of the load order: the room and the unowned things in it become the player's)* · `setPrice(service, int)` ·
+communion — 0042 §1)* · `grantPerk(perk, name)` · `removePerk(perk, name)` *(a perk of the load order: its form key and the name the player sees)* · `raiseSkill(skill, n)` *(n from 1 to 10)* · `grantMapMarker(marker)` *(a marker of the quest, shown on the map)* · `openRecipe(item, bench, [[item, count], ...])` *(a stage's result: from then the player can make the item at the forge, cookpot, tanning rack or smelter from 1 to 6 things)* · `learnIngredient(item)` *(an ingredient of the load order: every effect known)* · `giveHome(cell)` *(an interior cell of the load order: the room and the unowned things in it become the player's)* · `setPrice(service, int)` ·
 `grantServiceAccess(service)` · `setDoorAccess(door, enum)` · `giveOwnership(ref)` *(an owned container or thing becomes the player's: what it holds is theirs to take, not stolen)*
 
 A favour (decision 0141) needs no verb: `completeQuest(quest)` marks paid

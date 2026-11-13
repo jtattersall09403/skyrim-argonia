@@ -364,6 +364,14 @@ class Compiler:
                 out.append({"do": "mark_on_map", "ref": self.use(a[0], where)})
             elif term == "setBounty":
                 out.append({"do": "set_bounty", "faction": a[0], "amount": int(a[1])})
+            elif term == "openRecipe":
+                if len(a) < 3 or not a[2]:
+                    self.refuse(term, where, "openRecipe is [<item>, <forge|cookpot|tanning|smelter>, [[<item>, <count>], ...]]")
+                else:
+                    out.append({"do": "open_recipe", "item": a[0], "at": a[1],
+                                "needs": [{"item": n[0], "count": int(n[1])} for n in a[2]]})
+            elif term == "learnIngredient":
+                out.append({"do": "learn_ingredient", "item": a[0]})
             elif term == "giveHome":
                 out.append({"do": "own_room", "cell": a[0]})
             elif term == "raiseSkill":
@@ -867,6 +875,7 @@ class Compiler:
         ids = {r["placement"]["base"]["id"] for r in form["refs"]
                if r["placement"].get("base", {}).get("kind") == "item"}
         ids |= {x["item"] for s in form["stages"] for x in s["results"] if "item" in x}
+        ids |= {n["item"] for s in form["stages"] for x in s["results"] for n in x.get("needs", [])}
         ids |= {x["if_held"] for s in form["stages"] for x in s["results"] if "if_held" in x}
         for ln in form["lines"]:
             ids |= {x["item"] for x in ln["results"] + ln["conditions"] if "item" in x}

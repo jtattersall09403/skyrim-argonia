@@ -69,7 +69,7 @@ key, which the form's `names` must name: the player learns or loses it under tha
 under that name); `mark_on_map` {ref} (a ref of kind `marker`: shown on the map, fast travel once visited);
 `set_bounty` {faction, amount} (a crime faction of the load order by its form key; `amount` 0 or more, 0 clears the
 bounty); `own_room` {cell} (an interior cell of the load order by its form key: the room and the unowned things in it
-become the player's); `raise_skill` {skill, by} (one of the schema's skills, `by` 1 to 10); `change_regard` {ref, by};
+become the player's); `raise_skill` {skill, by} (one of the schema's skills, `by` 1 to 10); `open_recipe` {item, at, needs} (a stage's result only: from that stage on the player can make `item` at the workbench `at`, one of `forge`, `cookpot`, `tanning`, `smelter`, from `needs`, 1 to 6 {item, count}); `learn_ingredient` {item} (an ingredient of the load order: the player knows every effect of it); `change_regard` {ref, by};
 `switch_on`, `switch_off` {ref}; `lock_door`, `unlock_door` {ref}; `give_ownership` {ref} (an owned thing, a
 container, becomes the player's: what it holds is theirs to take); `show_message` {text}; `speaker_hostile` (a
 line's only: the speaker attacks); `start_quest` {quest, stage}.
@@ -113,6 +113,7 @@ failure is one line naming its rule.
 | `spell`, `enemy` | a taught or forgotten spell is not named by a form key, or the form's `names` give it no name; a faction made enemy or at peace is not a form key |
 | `perk`, `bounty`, `room` | a given or taken perk is not named by a form key, or the form's `names` give it no name; a bounty's faction, or an owned room's cell, is not a form key |
 | `map-marker` | `mark_on_map` names a ref that is not of kind `marker` |
+| `recipe` | `open_recipe` has no needs or more than six, names one thing twice, names a ref of the form that is not a thing, or `learn_ingredient` names a ref of the form; the builder also refuses an unknown workbench |
 | `regard-range` | a `change_regard` step is 0 or beyond 4 either way, or a `regard_at_least` value is outside -4 to 4 (regard is Skyrim's relationship rank, kept between -4 and 4) |
 | `late-trigger` | a take, use or death trigger can fire while the quest stands at a later stage than the one it sets (not an ending): walked over what is done from the start (`rules.ways`: every result, line and trigger taken as able to fire, but a line asking for a thing a take trigger still waits for), it is open at such a stage; or its `until` is not above its prerequisite |
 | `check-label` | a line's skill or gold check is not labelled on its prompt, or the prompt of a speaker's lines carries a label none of them checks, another amount, or a threshold (`(Speech 25)`) |
@@ -215,11 +216,13 @@ minor or faction quest); and Stop, always last, on an ending.
 | 44 | MarkOnMap | the marker's reference | (`AddToMap(false)`: shown, fast travel once visited) |
 | 45 | SetBounty | the crime faction | the bounty (`SetCrimeGold`; 0 clears it) |
 | 46 | OwnRoom | the interior cell | (`SetActorOwner` with the player's base) |
+| 48 | OpenRecipe | our recipe (a ConstructibleObject) | (nothing: the recipe's own condition, this quest's stage done, opens it) |
+| 49 | LearnIngredient | the ingredient | (`LearnAllEffects`, SKSE) |
 | 47 | RaiseSkill | | `by` + 100 times the skill's index in the schema's skill list (`ARG_Effects.SkillName` names it; `IncrementSkillBy`) |
 | 33 | ShowMessage | the message box | |
 | 34 | SpeakerHostile | | the line's speaker attacks the player |
 
-A `set_stage` result is row 1 (with `if_held`, IfHolds before it); the other form results are rows 20 to 47 by their word. A number is a global
+A `set_stage` result is row 1 (with `if_held`, IfHolds before it); the other form results are rows 20 to 49 by their word. A number is a global
 (`ARG_N_<id>`), a faction (when the form gives no form key) a faction record of ours, a message a message box named by
 the quest and a hash of its words. An item is a form key; a thing of this or another form being built (a stock thing:
 its item; a `template_item` or an item whose id is the ref's own: our new item, below); a page of the form's `texts`;
@@ -229,7 +232,12 @@ the player sees our name on its fixed effects; one copy per spell, and two forms
 (`spell`). A faction made enemy or at peace, or given a bounty, is the load order's own (`faction`: one of ours has no people). A
 given perk is our copy of the load order's perk (`perk:<form key>`, `ARG_P_<name>`, playable as the template is) carrying
 the name the form's `names` give it, one copy per perk, as a spell. A home's cell and a bounty's faction are the load
-order's own, by form key (`form-key` when no plugin holds it); a map marker must be a ref of the form of kind `marker`
+order's own, by form key (`form-key` when no plugin holds it); a recipe is a ConstructibleObject of ours
+(`recipe:<quest>:<stage>:<item>`, `ARG_C_<name>`) making the item, one of it, at Skyrim's own crafting keyword for the bench
+(`CraftingSmithingForge`, `CraftingCookpot`, `CraftingTanningRack`, `CraftingSmelter`) from the needs, open while its stage
+is done (the one condition, `GetStageDone` on this quest), the way Skyrim gates its own recipes; the reader reads the
+recipe back from the order of op 48 and its record (`recipe` when the needs are not 1 to 6 or the bench is none of the
+four; `vocabulary` when a line holds it); a learned ingredient must be an ingredient of the load order (`item`). A map marker must be a ref of the form of kind `marker`
 (`map-marker`).
 
 **New items.** One record of ours per id (`item:<id>`), whichever form names it first: a `template_item` is a copy of
@@ -353,7 +361,7 @@ hint.
 | gates: `questStage`, `stageEverReached`, `flag`, `counterAtLeast`, standings, `factionRankAtLeast`, `hasItem`, `goldAtLeast`, `skillAtLeast`, `npcAlive`, `dispositionAtLeast`, `raceIs`, `sexIs` | the matching condition |
 | `setFlag`, `addCounter`, `changeStanding`, `changeSettlementStanding` | `set_number`, `add_number` |
 | `grantAbility`, `removeAbility` [form key, the name the player sees]; `expel`; `makeEnemy`, `makePeace` | `teach_spell`, `forget_spell` (the name into `names`; refused without one); `leave_faction`; `make_enemy`, `make_peace` |
-| `grantPerk`, `removePerk` [form key, the name the player sees]; `grantMapMarker` [marker]; `setBounty` [faction form key, amount]; `giveHome` [interior cell form key]; `raiseSkill` [skill, 1 to 10] | `add_perk`, `remove_perk` (the name into `names`; refused without one); `mark_on_map`; `set_bounty`; `own_room`; `raise_skill` (the skill through the form's skill names) |
+| `grantPerk`, `removePerk` [form key, the name the player sees]; `grantMapMarker` [marker]; `setBounty` [faction form key, amount]; `giveHome` [interior cell form key]; `raiseSkill` [skill, 1 to 10]; `openRecipe` [item, bench, [[item, count], ...]]; `learnIngredient` [item] | `add_perk`, `remove_perk` (the name into `names`; refused without one); `mark_on_map`; `set_bounty`; `own_room`; `raise_skill` (the skill through the form's skill names); `open_recipe`; `learn_ingredient` |
 | `changeDisposition`, `enableRef`/`disableRef`, `setDoorAccess`, `giveOwnership`, `give`/`take` `Item`/`Gold`, `setFactionRank`, `setStage` | `change_regard` (a step of 1 to 4 either way, and `dispositionAtLeast` -3 to 4: regard is Skyrim's relationship rank; refused otherwise), `switch_on`/`off`, `lock_door`/`unlock_door`, `give_ownership`, the item and gold results, `set_rank`, `set_stage` or `start_quest` |
 | `grantTopic`, `removeTopic` | dropped: a line's window opens and closes it |
 | the record's `topics` (`kind` greeting or speaks-first; an answer is a reply of a written question) | lines, in the record's order (the engine says the first that holds); words from `story/data/quest_lines/<code>.json` (a topic's `infos`, or one info written as `prompt` and `lines`; variant `main` for the line, `fail` for its fallback; any other variant is refused as `variant`: words said under another condition are a topic of their own with that condition), else the written `dialogue_line` rows, else the `intent` as a gist; a speaks-first topic's first line is also its one speaks-first line |
