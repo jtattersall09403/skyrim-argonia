@@ -212,7 +212,7 @@ looser gives up), and sends the player to end three things first and see what th
 any order. At Ashiit Den the wraith at the child's tomb is laid and a fox-tail charm carried out to the shore. At
 Reknaa-iit the chieftain's wraith is laid, or the hoard left and his talisman alone taken and burned at the
 farmers' fire. At Nyrath-Ven the ash-urn is taken from the east niche, which Archon's Dunmer families tend and
-will not give up willingly (Speech, a theft, or their leave bought), and emptied at the shore; the shrine's lower
+will not give up willingly (Speech, a theft or their leave bought), and emptied at the shore; the shrine's lower
 rooms are Deadly and the niche is outside them. Each rite is done before the one who asked for it: a fisher on
 the shore, a farmer at his fire, a boatman at the mooring. Each place offers a keepsake with a real enchantment: a bone
 flute, a fox-bone talisman, a Velothi ash-bowl. Jeer-Tei, at the end: "Three graves, and three things in your pack
@@ -220,7 +220,7 @@ from them. You kept them. So did she." *The crossing* (province plan, section 4)
 he says that a city which dives for its grave every morning will drown in it, and that he respects them more than
 the people who built over it. *Carries*: the keepsakes; what a loosing costs.
 
-**NI07, The Hearth.** Found on return: the hearthstone lifted, the urn gone, and Otumeel's place by the causeway
+**NI07, The Hearth.** Found on return: the hearthstone lifted, the urn gone and Otumeel's place by the causeway
 empty (switched while the player was far away). Weaves-to-Burn says the Sul-Xan came by night and he went after
 them. *Place*: Meliton, the dead town above Hutan-Aru where "Sul-Xan diggers work the south side" under a
 dig-leader and restless dead rise from the oldest cairns, Deadly (D blackwood, Meliton). The urn is in the
@@ -233,7 +233,7 @@ giving up*: the player ends it by putting the urn into one of three pairs of han
   drives it in the stake-ground by the causeway, where it is found standing. The rite asks what the looser kept from the dead: the three keepsakes are
   taken. The hearth is found cold afterwards, Weaves-to-Burn gone on the road, the hut a hut with a bed. The
   player loses three enchanted things and the faction its house; every Nisswo met afterwards knows what was done.
-- **Kept**: to Weaves-to-Burn, who sets it back under the hearthstone. The player is the sixth Keeper, keeps the keepsakes, and is given the
+- **Kept**: to Weaves-to-Burn, who sets it back under the hearthstone. The player is the sixth Keeper, keeps the keepsakes and is given the
   Keeper's onyx and the hut's chest. Neema-Luh is found gone. Jeer-Tei greets a keeper coldly.
 - **Fed**: to Tsathra-Jei at Meliton, who carries it to the snare. The soul is unmade. Tsathra-Jei gives a jade mask of the Sul-Xan
   (*sithis*:51), strong and ugly, and says he thought he would feel something. No Nisswo will speak to the player
@@ -269,8 +269,8 @@ Common to both.
 "You. What are you carrying that is already dead?" His lines, each a sentence or two, before any job: *who are
 you* ("Nisswo. Priests of Sithis, and before you reach for your knife: here Sithis is change, the first maker and
 the last unmaker. Nobody in the marsh calls that evil"); *what do you do* ("We end what has stayed too long. The
-dead who will not go, mostly, and the living who will not let them"); *where* ("The hut with the hearth, under the
-castle. Weaves-to-Burn keeps it. Its door says what it is"). In the hut, Weaves-to-Burn before the job: *what it
+dead who will not go, mostly. And the living who will not let them"); *where* ("The hut with the hearth, under the
+castle. Weaves-to-Burn keeps it. It is named on its door"). In the hut, Weaves-to-Burn before the job: *what it
 wants of me and why me* ("Someone with a strong arm or a steady voice, and no kin here to shame"); *what it pays*
 ("A bed, a stone to think on, and whatever the relieved can spare"); *why I might not* ("Every ending is someone's
 loss. They will know your face"). "Not today" stays open and free. The job, in three sentences: a dead man called
@@ -376,17 +376,18 @@ thing bones at cells "Juvan's bones"
 thing barepost at hamlet "Bare Grave-Stake"
 thing namedstake at hamlet off "Juvan's Grave-Stake"
 item onyx "Nisswo's onyx"
+item mendbook "a grave-singer's book of mending"
 
 stage 0 hidden
-stage 10 "Weaves-to-Burn, a priest of Sithis who keeps a hearth at Giovesse, asked me to go up into Castle Giovesse and hear Juvan, a dead man who stands inside its door. Old Tavi of the hamlet keeps the door's key."
+stage 10 "Weaves-to-Burn, a priest of Sithis who keeps a hearth at Giovesse, asked me to go up into Castle Giovesse and hear Juvan, a dead man who stands inside its door. The door is kept locked, and the way in is sold at the foot of the castle track."
 stage 14 "Old Tavi unlocked the door of Castle Giovesse for me." do unlock castledoor
 stage 15 "I paid Old Tavi for a walk, and she unlocked the door of Castle Giovesse." do take-gold 20, unlock castledoor
 stage 20 "Juvan died in the third cell of the castle's cell block, jailed for a gate-toll, and was never staked. He asked me to bring his bones out and lay them under a stake by the causeway to Gideon's north gate. The cell block is past the stair, where the castle's dead walk."
 stage 30 "I have Juvan's bones."
-stage 40 "Otumeel held the bare grave-stake by the causeway while I laid Juvan's bones at its foot and cut his name on it." do take bones, off shade, message "You press the bones into the mud at the foot of the stake and cut one name into the wood."
+stage 40 "I gave Juvan's bones to Otumeel at the bare grave-stake by the causeway. He will lay them at its foot and cut the name." do take bones, off shade
 stage 41 "Otumeel is dead, so I gave Juvan's bones to Weaves-to-Burn, who will stake them by the causeway herself." do take bones, off shade
-stage 90 completed "I told Weaves-to-Burn that Juvan is staked and the Last Gaoler of Castle Giovesse is ended." do join nisswo, rank nisswo 1, give onyx, give-gold 100, set ni01.way 1, on namedstake, off barepost, regard tavi -2
-stage 91 completed "I told Weaves-to-Burn that Juvan is staked and that the Last Gaoler still keeps his cells." do join nisswo, rank nisswo 1, give onyx, give-gold 100, set ni01.way 2, on namedstake, off barepost
+stage 90 completed "I told Weaves-to-Burn that Juvan's bones are out of the castle for staking and that the Last Gaoler of Castle Giovesse is ended." do join nisswo, rank nisswo 1, give onyx, give-gold 100, set ni01.way 1, on namedstake, off barepost, regard tavi -2, regard hard 1
+stage 91 completed "I told Weaves-to-Burn that Juvan's bones are out of the castle for staking and that the Last Gaoler still keeps his cells." do join nisswo, rank nisswo 1, give onyx, give-gold 100, give mendbook, set ni01.way 2, on namedstake, off barepost, regard tavi 1, regard soft 1
 stage 95 failed "Juvan is gone from the castle's door, and nobody can say now what he wanted."
 stage 96 failed "Weaves-to-Burn is dead. Nobody keeps the hearth at Giovesse."
 
@@ -402,17 +403,14 @@ line talkdoor tavi at 10 ask "Open the castle for me. I am not here for the show
 line paydoor tavi at 10 ask "A walk to the castle, then." if gold 20 -> 15 else "Twenty gold. I have fed nine on that door." says "she takes the coin and unlocks it"
 line name shade at 10-15 ask "What do you want of the living?" if alive gaoler -> 20 says "his name, the toll, the third cell from the stair, the stake by the gate; the gaoler has no visitors on his roll"
 line namequiet shade at 10-15 ask "What do you want of the living?" if dead gaoler -> 20 says "his name, the toll, the third cell from the stair, the stake by the gate; the keys have stopped walking, and still he cannot go"
-line endcase hard at 20-40 ask "What would you end up there?" says "the gaoler: a prison that outlived its kings, shown for coin at a city's gate"
-line sparecase soft at 20-40 ask "What would you end up there?" says "only the one who asked; nine people eat off that door"
-line lay hard at 30 ask "These are Juvan's bones. Hold the post." if holds bones -> 40 says "he holds it, and says the name aloud once"
-line laywith patron at 30 ask "Otumeel is dead. I have Juvan's bones." if holds bones, dead hard -> 41 says "she takes them and will stake them herself"
-line hand1 patron at 40-41 ask "Juvan is staked." if dead gaoler -> 90 says "then the castle is only stone; go and tell Old Tavi yourself"
-line hand2 patron at 40-41 ask "Juvan is staked." if alive gaoler -> 91 says "one went home; the rest keep their hours, and so does Tavi"
-line after1 tavi at 90 ask "The castle is quiet." says "you have emptied my larder, priest's hand"
-line after2 tavi at 91 ask "Juvan is gone from the door." if alive gaoler says "my best show, staked; at least you left me the turnkeys"
-line after3 hard at 91 ask "I left the gaoler." if alive gaoler says "then you staked one and kept a prison"
-line after4 soft at 90 ask "I ended the gaoler." says "it was yours to judge; ask Tavi what it cost before you ask me"
 
+line nojob patron at 0 ask "What would you have me end?" if dead shade says "there was a dead man at the castle door who asked for a stake; someone has unmade him, and I have nothing for the hand that might have"
+line endcase hard at 10-41 ask "What would you end up there?" if alive gaoler says "the gaoler: a prison that outlived its kings, shown for coin at a city's gate; the dead of his roll go when he goes"
+line sparecase soft at 10-41 ask "What would you end up there?" if alive gaoler says "only the one who asked; nine people eat off that door"
+line lay hard at 30 ask "These are Juvan's bones. Stake him." if holds bones -> 40 says "he takes them, and says the name aloud once"
+line laywith patron at 30 ask "Otumeel is dead. I have Juvan's bones." if holds bones, dead hard -> 41 says "she takes them and will stake them herself"
+line hand1 patron at 40-41 ask "It is done with Juvan." if dead gaoler -> 90 says "then the castle is only stone now, and Giovesse will know whose hand it was"
+line hand2 patron at 40-41 ask "It is done with Juvan." if alive gaoler -> 91 says "one goes home; the rest keep their hours"
 take bones from 20 -> 30
 must-live shade fails 95 from 10 to 15
 must-live patron fails 96
@@ -420,7 +418,7 @@ must-live patron fails 96
 
 **The choice.** Whether to end the gaoler. *For ending* (Otumeel): he has kept dead men locked up for longer than
 Gideon has had walls worth the name, and a hamlet teaches its children that the dead are a show. *For leaving*
-(Neema-Luh, and Old Tavi in her own words): Juvan asked; the others did not; and the door feeds nine. Each says
+(Neema-Luh, and Old Tavi in her own words): Juvan asked; the others did not; and nine people eat off that door. Each says
 what the other's way costs: Otumeel, that sparing him is a prison kept; Neema-Luh, that ending him is Giovesse
 ended.
 
@@ -535,55 +533,69 @@ quest NI02 faction "The Stake She Pulled"
 start game 0
 
 place hut indoors "the Nisswo's hearth, Giovesse"
+place hamlet outdoors "Giovesse"
 place olvani outdoors far "Olvani"
 place house indoors "the Mereo house, Olvani"
 place shed indoors "the Mereo smoke-shed, Olvani"
 
 person patron at hut "Weaves-to-Burn"
+person soft at hut "Neema-Luh"
+person hard at hamlet "Otumeel"
 person father at olvani "Tullo Mereo"
 person mother at house level 4 "Sila Mereo"
 person blight at shed hostile level 10 "Caso Mereo"
 thing shedkey on mother "Mereo smoke-shed key"
 door sheddoor at olvani locked adept key shedkey "Smoke-Shed"
-thing chest at house container locked novice key shedkey owner mother "Sila Mereo's Chest"
+thing chest at house container owner mother "Sila Mereo's Chest"
 thing stake in chest "Caso's grave-stake"
 thing hole at olvani "Empty Stake-Hole"
 thing stakeback at olvani off "Caso Mereo's Stake"
 item charm "Caso's net-charm"
+item binding "the binding from Tullo's arm"
+item calmbook "a grave-singer's book of quieting"
 
 stage 0 hidden
-stage 10 "Weaves-to-Burn sent me to Olvani, the fishing village south of Gideon. Tullo Mereo says his drowned son Caso walks in the family's smoke-shed, and that his wife Sila keeps the key and the grave-stake she pulled. Tullo waits at the shrine of the drowned." do set ni02.yield 0
+stage 10 "Weaves-to-Burn told me that Tullo Mereo, a fisher of Olvani south of Gideon, says his drowned son Caso walks in the family's smoke-shed, and that his wife Sila keeps the key and the grave-stake she pulled. Tullo waits at the shrine of the drowned." do set ni02.yield 0
+stage 15 "Tullo Mereo unwound the binding from his torn arm and gave it to me to show his wife." do give binding
 stage 25 "Sila Mereo gave way. She unlocked the smoke-shed, gave me leave to take Caso's grave-stake from her chest, and put his net-charm in my hand." do set ni02.yield 1, unlock sheddoor, own chest, give charm
 stage 40 "Caso Mereo is still."
 stage 45 "Sila Mereo let me take Caso's grave-stake from her chest." do own chest
 stage 50 "I have Caso's grave-stake, and he is still."
-stage 60 "Tullo Mereo held his son's stake while I drove it back into its place among the stakes of the drowned at Olvani." do take stake, message "You set the stake in the old hole and lean on it until the mud takes it."
+stage 60 "I gave Caso's grave-stake to Tullo Mereo at the shrine of the drowned. He will drive it back into its place himself." do take stake
 stage 61 "Tullo Mereo is dead, so I gave Caso's stake to Weaves-to-Burn, who will have it driven at Olvani." do take stake
-stage 90 completed "I told Weaves-to-Burn that Caso Mereo is staked, and that his mother opened the door." do on stakeback, off hole, give-gold 100, set ni02.way 1
-stage 91 completed "I told Weaves-to-Burn that Caso Mereo is staked, and that I did not wait for his mother." do on stakeback, off hole, off mother, give-gold 150, set ni02.way 2
-stage 92 completed "I told Weaves-to-Burn I will not end what Sila Mereo keeps." do set ni02.way 3
+stage 90 completed "I told Weaves-to-Burn that Caso Mereo is laid and his stake given over for driving, and that his mother opened the door." do on stakeback, off hole, give-gold 100, set ni02.way 1, regard soft 1
+stage 91 completed "I told Weaves-to-Burn that Caso Mereo is laid and his stake given over for driving, and that I did not wait for his mother." do on stakeback, off hole, off mother, give-gold 250, set ni02.way 2, regard hard 1
+stage 92 completed "I told Weaves-to-Burn I will not end what Sila Mereo keeps." do set ni02.way 3, give calmbook, regard hard -1
+stage 93 completed "I told Weaves-to-Burn that Caso Mereo is laid and his stake given over for driving, and that Sila Mereo is dead." do on stakeback, off hole, give-gold 250, set ni02.way 4, regard soft -1
 stage 95 failed "Weaves-to-Burn is dead. Nobody keeps the hearth at Giovesse."
 
-objective 10 at 10, 25 "End what walks in the Mereos' smoke-shed, or tell Weaves-to-Burn I will not" -> blight, mother, father, patron
+objective 10 at 10, 15 "End what walks in the Mereos' smoke-shed, or tell Weaves-to-Burn I will not" -> blight, mother, father, patron
+objective 25 at 25 "Lay Caso Mereo in the smoke-shed" -> blight
 objective 40 at 40, 45 "Take Caso's grave-stake from Sila Mereo's chest" -> stake, mother
 objective 50 at 50 "Drive the stake into the empty stake-hole at the shrine of the drowned, with Tullo" -> hole, father, patron
 objective 60 at 60, 61 "Tell Weaves-to-Burn" -> patron
 
-line job patron at 0 ask "Is there another ending owed?" if done NI01 90 -> 10 says "the Mereos of Olvani; a stake pulled is a bog blight; with her leave, without it, or not at all"
+line job patron at 0 ask "Is there another ending owed?" if done NI01 90 -> 10 says "the Mereos of Olvani; a stake pulled is a bog blight; with her leave, without it or not at all"
 line jobb patron at 0 ask "Is there another ending owed?" if done NI01 91 -> 10 says "the Mereos of Olvani; you left a gaoler his cells, so judge this one as carefully"
-line arm father at 10-25 ask "What happened to your arm?" says "he tried to put Caso down himself; he cannot be the one twice"
-line already father at 10-25 ask "Your smoke-shed is quiet." if dead blight -> 40 says "then it is done, and the stake is in her chest"
-line yieldword mother at 10 ask "He does not know your voice, Sila." if skill Speech 40, alive blight -> 25 else "You have a priest's mouth and no child." says "she gives up the key's use and the stake"
-line yieldmend mother at 10 ask "Let me mend what he tore, and then tell me who tore it." if skill Restoration 30, alive blight -> 25 else "Mend who you like. The door stays shut." says "she watches the arm close and unlocks the shed"
-line givestake mother at 40 ask "He is still. Let me have his stake." -> 45 says "she has nothing to keep it for now"
-line leave patron at 10 ask "I will not end what Sila Mereo keeps." if alive blight -> 92 says "then it is kept, and you will hear from Otumeel"
-line drive father at 50 ask "Hold it straight, Tullo." if holds stake -> 60 says "he holds it with his good arm and does not look away"
+line endit hard at 10-25 ask "What would you do at Olvani?" if alive blight says "end it; she has had her month"
+line bringher soft at 10-25 ask "What would you do at Olvani?" if alive blight says "bring her to it or leave her; take it from her and you are a thief with a sermon"
+line arm father at 10 ask "Let me show her what he did to you." if alive blight -> 15 says "he unwinds the binding; tell her I will not come up while it walks"
+line already father at 10-15 ask "Your smoke-shed is quiet." if dead blight -> 40 says "then it is done, and the stake is in her chest"
+line alreadyw patron at 10-15 ask "The thing in the Mereos' shed is already still." if dead blight -> 40 says "then only the stake is owed"
+line hercase mother at 10-15 ask "Why do you keep him?" if alive blight says "the others never came ashore and their mothers have a stake over nothing; I have him"
+line yieldword mother at 10-15 ask "He does not know your voice, Sila." if skill Speech 40, alive blight -> 25 else "You have a priest's mouth and no child." says "she gives up the key's use and the stake"
+line yieldmend mother at 10-15 ask "Give me your hands, Sila." if skill Restoration 30, alive blight -> 25 else "They are my hands. Leave them." says "her hands are torn from feeding him through the door; she watches them close and unlocks the shed"
+line yieldshow mother at 15 ask "This came off Tullo's arm. Look at it." if holds binding, alive blight -> 25 says "she looks a long time, and unlocks the shed"
+line leave patron at 10-15 ask "I will not end what Sila Mereo keeps." if alive blight, alive mother -> 92 says "then it is kept, and you will hear from Otumeel"
+line drive father at 50 ask "Here is his stake, Tullo. He is still." if holds stake -> 60 says "he takes it in his good hand; this much he can be the one for"
 line drivewith patron at 50 ask "Tullo Mereo is dead. I have his son's stake." if holds stake, dead father -> 61 says "she takes it and will have it driven"
-line hand1 patron at 60-61 ask "Caso Mereo is staked." if number ni02.yield = 1 -> 90 says "she opened the door herself; that is the whole of it"
-line hand2 patron at 60-61 ask "Caso Mereo is staked." if number ni02.yield = 0 -> 91 says "then he is home and she is robbed; both are true"
-line after1 mother at 90 ask "He is staked, Sila." says "she will sing the stake-song now; keep the charm, she cannot look at it"
-line after2 father at 91 ask "It is done." if alive father says "she walked up the shore the way the ferry went"
-line after3 father at 92 ask "I left him." if alive father says "then I stand here; I will not go back up to that house"
+line hand1 patron at 60-61 ask "It is done at Olvani." if number ni02.yield = 1 -> 90 says "she opened the door herself; that is the whole of it"
+line hand2 patron at 60-61 ask "It is done at Olvani." if number ni02.yield = 0, alive mother -> 91 says "then he is home and she is robbed; both are true"
+line hand3 patron at 60-61 ask "It is done at Olvani." if number ni02.yield = 0, dead mother -> 93 says "one staked and one to stake; that is not an ending, it is a second death"
+line after1 mother at 90 ask "He is laid, Sila." says "she will sing the stake-song now; keep the charm, she cannot look at it"
+line after2 father at 91 ask "It is done." says "she walked up the shore the way the ferry went"
+line after3 father at 92 ask "I left him." says "then I stand here; I will not go back up to that house"
+line givestake mother at 40 ask "He is still. Let me have his stake." -> 45 says "she has nothing to keep it for now"
 
 death blight from 10 -> 40 choice
 take stake from 40 -> 50
@@ -645,7 +657,7 @@ Nyrath-Ven) is used as promised.
 |---|---|---|---|
 | A stilt house with an inside of its own and a chest in it, and racks of dark meat hung outside where no fish is smoking | NI02 | Tullo stands outside; Sila inside; the stake is in the chest | the door is named "Mereo House"; the racks are seen and Tullo says what they are for; the chest is named "Sila Mereo's Chest" |
 | A small shed behind that house with an inside of its own and a door that locks, the house and the shed owned by the Mereos | NI02 | Caso stands inside | the door is named "Smoke-Shed"; Tullo points to it from the racks |
-| In the row of grave-stakes at the shrine of the drowned, one empty hole, and a stake at the same spot that a quest can switch on | NI02 | the stake is driven; it stands there afterwards | the hole is named "Empty Stake-Hole" when looked at; Tullo says it is his son's |
+| In the row of grave-stakes at the shrine of the drowned, one empty hole and a stake at the same spot that a quest can switch on | NI02 | the stake is driven; it stands there afterwards | the hole is named "Empty Stake-Hole" when looked at; Tullo says it is his son's |
 | Olvani at least 18,000 units (about 260 metres) in a straight line from Giovesse | NI02 | the report at Giovesse switches things at Olvani | not seen by the player |
 
 **Gideon**
