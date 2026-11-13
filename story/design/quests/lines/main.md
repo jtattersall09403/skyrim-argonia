@@ -1,6 +1,11 @@
 # The Eye and the Root: the main quest's story
 
-The story of the main quest's fifteen quests, written inside the quest ceiling
+**The plot's one statement is [main-plot](main-plot.md)**: the premise, the hidden truth, the people, the acts, the
+turn and the three endings at the length of one sitting, read on paper to its stop. This document follows it and
+holds the detail: the citations, the quest-by-quest arc, the outcome tables, Act I's full outlines and what each
+quest needs of its places.
+
+The story of the main quest's fourteen quests, written inside the quest ceiling
 ([quest-form](../../../../docs/design/quest-form.md)) and the owner's bar ([owner-bar](../../owner-bar.md)), on the
 ground the [province plan](province-plan.md) gives it, under the lead's rulings in
 [nw-05](../../../../docs/phases/new-worldspace-plan/nw-05-story-quest-adapt-1.md) and the rulings of the
@@ -53,21 +58,23 @@ Echo Deep) with the door in it.
   of nothing else (C T16), and this story claims the cutting of one tree only (C C17).
 - **The Collector**, Ennodius Vanin, a Nibenese buyer for the Cyrodilic Collections revived at Gideon
   ([province-vibe](../../province-vibe.md) §8), has hunted the Eye for twenty years. The Unbound call him
-  Opens-the-Last-Door and he preaches for them. He no longer cares whom the jewel serves so long as he sees what it
-  opens.
+  Opens-the-Last-Door and he preaches for them. He wants the door open so that he may hear and read what the first
+  wood remembers, and he has not told the Unbound that the pouring they mean to do would silence it.
 - **The Veiled Reed** is the Wardens' one small secret office, kept since 4E 48 to see that no tree turns again
   unnoticed (X; [province-plan](province-plan.md) §2). It has two lodgers in a tally-keeper's house in Helstrom and
   no hall. It wants the cutting stopped quietly and the jewel in the state's hand.
 - **Helstrom's assembly** wants its sour spring unspoken until the Root Talk can be held (D murkwood, Helstrom).
 - **The player** is a nobody off an Owing barge, of any race, on nobody's roll, which is exactly what each of the
-  others can use.
+  others can use. From Act III the player is the Eye's bearer: the jewel keeps to the hand that lifts it from its
+  resting place and opens the door for no other (X), so nobody tries to take it and all three powers court its
+  bearer. In the game the Eye cannot be dropped, sold or lost, and the door opens only at the player's hand.
 
 **How it is played.** A hunt and a spy story on foot, by rootworm, by boat and under water. Every quest is a place
 to get into and a thing to bring out, and every one has at least two ways through on different named skills: the
 quiet way (Sneak, Lockpicking, Pickpocket), the spoken way (Speech, sometimes gold), the armed way (One-Handed,
 Two-Handed, Archery, Block, Destruction, Conjuration), and often a knowing way (Alchemy, Restoration, Alteration,
 Illusion). No quest shuts a build out: a fighter, a mage, a thief and a talker who relies on Speech and gold each
-have a way through all fifteen (the talker's ways at MQ08, MQ12 and MQ14 are named there; C K4). None is won by
+have a way through all fourteen (the talker's ways at MQ08, MQ12 and MQ14 are named there; C K4). None is won by
 reading or carrying a paper. In Acts I and II no step the story requires meets a fight above the Wild band unless
 another way stands beside it, and two people warn of every place above the band around it; from Act III the
 fights are the place's own ([province-plan](province-plan.md) §2). Nothing is levelled (decision 0035). Breath
@@ -79,11 +86,10 @@ under water is had by any race as C 4.4 (7) lists.
 |---|---|---|---|
 | **Nesh-Deeka**, the Reed's handler (woman; kept from the old line) | Ixtul-Bei's House in Helstrom, where she lodges | the cutting stopped; the people she listens to kept from harm | she once let a dreamer go, and the dreamer became the enemy |
 | **Never-Writes-Twice**, the Reed's officer (woman; kept) | the same house, mending nets | the state's hand on the door, so that no tree can ever turn again | she let a young tree die to find the door |
-| **Cuts-the-Old-Knot**, leader of the Unbound (woman; kept) | unseen until the end | every tree free of every other; no more kept dreamers | her cure kills a tree and ends the Root Talk for ever |
-| **Ennodius Vanin**, the Collector, called Opens-the-Last-Door (man; kept) | Seafalls, then the Root | to see the door open | he tells the truth and uses it |
+| **Cuts-the-Old-Knot**, leader of the Unbound (woman; kept) | unseen until the end | every tree free of every other; no more kept dreamers | she lit the fire the player was carried out of, and a man died in it; her cure kills a tree and ends the Root Talk for ever |
+| **Ennodius Vanin**, the Collector, called Opens-the-Last-Door (man; kept) | Seafalls, then the hall before the Root's door | to see the door open and read what the first wood remembers | he tells the truth and uses it; he never wanted the trees cut, and has not told the Unbound so |
 | **Vosh-Leera**, root-herald of Jal-Veesa (woman; X) | her house in Jal-Veesa | news worth selling; her town left alone | she sells what she hears to the Reed and has never asked what becomes of it |
 | **Heem-Jasa**, elder tender of Vel-Sapha Stand (woman; X) | beside the young tree | her tree to live; her clutch to hatch as her people's | she asks a stranger for a truth she may not want |
-| **Xil-Veeka**, a retired Shadowscale who trains at Lilmoth, an elder who settles quarrels (man; X, on D althii-archipelago, Lilmoth; C T5) | Lilmoth | to be left alone; one last use for an old teaching | he knows what the order once guarded and has told nobody |
 | **Sesk**, a Naga of Ushaan Camp (woman; X, on D barsaebica, Ushaan Camp) | outside the camp's stockade | out, with a boat's price | she cut roots too |
 
 **What the Reed lies about.** It says it listens. In truth it buys sap-dreams and keeps the dreamers, at Fort
@@ -109,17 +115,19 @@ outcome tables are in section 2, under MQ15).
   carried the player out of a fire and killed a tree.
 - **CLAIM** sets the Eye in the Root and closes the door to everyone else. The joining holds and one hand can shut
   a sick or mad tree out of it, so the sickness stops, Helstrom's spring runs sweet and the Root Talk is held as it
-  always was. The Egg is not spent, and the player may carry it home to the stand whose tree died. The cost: it is
-  the kings' chain again with the player as king; Helstrom's assembly sets a blood-price on the hand that took the
-  seat; and the trees are still listened to. Its advocate is Never-Writes-Twice, who let a tree die and does not
-  sleep.
+  always was. The hand on the door hears the joining for itself, so the cellar has no use, and Never-Writes-Twice
+  empties it. The Egg is not spent, and the player may carry it home to the stand whose tree died. The cost: it is
+  the kings' chain again with the player as king and the Wardens at the player's shoulder; Helstrom's assembly sets
+  a blood-price on the hand that took the seat; and every tree is heard by one hand that no tree chose. Its
+  advocate is Never-Writes-Twice, who let a tree die and does not sleep.
 - **MEND** gives the Egg back whole and reads the first consent into the Root, so that each tree may again refuse
   the joining. It is the only ending that undoes what the kings did. The cost is paid at once and in the
   player's sight on return: nothing is stopped by force. The tree the player knows best, Jal-Veesa's, leaves, and
   its pool gives no blessing and hears nobody; Helstrom's tree stays and its spring stays sour; the trees may now
-  do again what made the kings chain them; the Unbound are not ended, hunt the player, and go on persuading trees
-  to leave, and cutting; the dead tree's Egg goes to the Root and not home; the dreams the Reed buys are still
-  there to be bought; and the Root Talk is held with empty places. Its advocate is Nesh-Deeka, who opened one door
+  do again what made the kings chain them; the Unbound are not ended, are the player's enemies wherever they are
+  met, and go on persuading trees to leave, which is now any tree's right; the dead tree's Egg goes to the Root and
+  not home; the Reed is not ended, and if the cellar's gate was left shut its dreamers are still in it; and the
+  Root Talk is held with empty places. Its advocate is Nesh-Deeka, who opened one door
   and made an enemy of the marsh by it.
 
 A player who fears another 4E 48, or who has seen the cellar and wants no listener ever again, cuts. A player who
@@ -136,11 +144,11 @@ and pays for it in trees, in a quiet pool and in an enemy left standing.
    could close its root when it chose.
 2. In the age of the xanmeers there came a year when trees closed their roots on a dying neighbour, and its
    people starved unheard. The priest-kings then had a jewel cut, the Eye, that holds the Root's door: with it a
-   king could forbid a tree to close. The joining became a chain. The king's road to the door was marked on a
-   height and on a tablet, and warded; the wards were kept by the ku-vastei, the order that became the Shadowscales
-   (X on *state*:205 to :213). When the kings ended, the last sea-priest of Thul-Kesh shut the jewel in his Hist
+   king could forbid a tree to close. The joining became a chain. The kings had their reason cut over the older
+   words on the tablet that tells where the Root lies, so that the stone carries both hands. When the kings ended, the last sea-priest of Thul-Kesh shut the jewel in his Hist
    chamber and has kept the door since (D benthic-yobesh, Thul-Kesh Spire). The Root stayed as the last king left
-   it: forbidden to close.
+   it: forbidden to close. The jewel keeps to the hand that lifts it from that chamber, and opens the Root's door
+   for no other.
 3. So a bound tree cannot shut out what another sends. In 4E 48 what Lilmoth's second tree called, the others
    could not refuse (`lilmoth.md:84`; C T4). The Wardens afterwards kept the Veiled Reed to listen for the next one.
 4. Twelve years ago the Reed took in a young sap-speaker of the lake country who dreamed the same door every time.
@@ -153,10 +161,13 @@ and pays for it in trees, in a quiet pool and in an enemy left standing.
 6. This year her cutters bled the lone young tree at Vel-Sapha to death for its Egg. Its dying passes down the
    joining to trees that cannot refuse it: Helstrom's spring sours.
 7. At Sedge-Kal Camp she paid two men of an Owing gang to burn the reed along the cutters' path. One asked for
-   more. Her people fired the gang's huts with him inside, and she herself carried a fevered stranger, bought off
-   the roll by the gang-master and lying unwritten in his hut, down to the barge. The stranger is the player.
+   more. Her people fired the gang's huts with him inside. In the gang-master's hut lay a fevered stranger, bought
+   off the roll and unwritten, whom nobody had told her of; she went back into the fire and carried the stranger
+   down to the barge, because she does not leave people in rooms. The stranger is the player. Only afterwards did
+   she see what a hand on nobody's roll was worth to her, and have the player watched.
 8. The Collector lacked three things that say where the jewel lies, so he had a false Eye offered at Gideon to
-   draw out whoever held them (D kotherra-mangroves, Gideon). The player gathers all three, and he lets them.
+   draw out whoever held them (D kotherra-mangroves, Gideon). The player gathers all three, and he lets them: what
+   he needs is a bearer who comes to the door willing.
 9. Never-Writes-Twice, told of Vel-Sapha by the player's own report, sent nobody. A dead tree's Egg would be
    carried to the door, and the Reed's standing purpose is to put the state's hand on that door. Nesh-Deeka argued,
    was found to have freed dreamers, and was put in the cellar.
@@ -165,16 +176,18 @@ and pays for it in trees, in a quiet pool and in an enemy left standing.
 
 | The truth | Where it is seeded | Where it is found |
 |---|---|---|
-| The Unbound's leader carried the player out of the fire | MQ01: a cutter saw "a tall woman with a cut cord at her wrist" carry someone to the barge; the purse holds the same cord. MQ09: the Collector says "she speaks of you" | MQ15: she says why |
+| The Unbound's leader carried the player out of the fire | MQ01: a cutter saw "a tall woman with a cut cord at her wrist" carry someone to the barge; the purse holds the same cord. MQ07: her envoy says she asks after "the one from the fire". MQ09: the Collector says "she speaks of you". MQ13: Sesk says she went back into the fire for a stranger nobody had told her of | MQ15: she says why, and that it was no plan |
 | A rich outsider is behind the cutters | MQ02: a jeweller's glass of Imperial make in the Naga's chest. MQ05: his courteous note. MQ06: his hired diver. MQ07: his Naga envoy in the Rose's yard | MQ09: he is the preacher |
 | The sickness travels from tree to tree | MQ03: the stand's sap has soured since the cut. MQ04: the spring and the jar taste the same | MQ12: the tablet says why no tree can refuse it |
 | The Reed keeps dreamers | MQ02: Vosh-Leera has "never seen what they do with what I sell". MQ04: Never-Writes-Twice says "she talks too much to you"; the jar is locked in the house's chest, among empty jars of the same make. MQ08: Nesh-Deeka says "if I am not here when you come back, ask nobody where I went" | MQ10: the cellar |
 | Cuts-the-Old-Knot was a kept dreamer whom Nesh-Deeka freed | MQ03: the cutters' tally is a cord with a knot for every jar. MQ09: "she learned her knots in a gaoler's hand" | MQ10: a tally cord, cut through, hung above an empty pallet, and Nesh-Deeka's own word |
 | The Reed let Vel-Sapha's tree die | MQ04: "I will ask for wardens to be sent." MQ08: the tree is dead and nobody was sent | MQ10: Nesh-Deeka says it; MQ13: Never-Writes-Twice owns it |
 | The door is under the sea, not in the forest | MQ04: tasting the sour water brings "a singing, far off and under water". MQ06: the sphere's cable runs on past the spires towards the trench. MQ08: the dream on taking the Eye | MQ12: the tablet that "finds Murkwood" finds where the wood is moored |
-| The joining was given freely and chained by kings | MQ08: the sea-priest keeps the jewel "for no king". MQ11: the wards are a king's servants' teaching | MQ12: the fragment read with the Eye in hand |
+| The joining was given freely and chained by kings | MQ06: Lilmoth's grave and its two tenders show what a bound tree could not refuse. MQ08: the sea-priest keeps the jewel "for no king". MQ10: every dreamer dreams a stone cut twice | MQ12: the tablet's two hands, read with the Eye held |
 
-**The acts and their quests.** Fifteen quests. Each is a different kind of thing to do; scale climbs from one gang
+**The acts and their quests.** Fourteen quests, numbered MQ01 to MQ15: MQ11 (the carved stone on Aunike Crown and
+the ward-words of a retired Shadowscale) is withdrawn, its one reading folded into MQ12, and its number is not
+reused. Each is a different kind of thing to do; scale climbs from one gang
 to one tree, a city's spring, three coasts, the state's own house, and the Root. The turn is MQ10, two-thirds
 through. Earlier choices change greetings and single lines, read from stored numbers, and what the choice itself
 gave; they never change what a later quest asks. Only the ending carries into the world.
@@ -207,7 +220,10 @@ which is gentlest and which may kill.*
 - **MQ06 The Kelp Lantern** (Lilmoth; Bell Station; the wreck). Before the secession the Company lowered a brass
   diving sphere to reach the spires, and its "locked brass hatch" has never been opened (D benthic-yobesh, The
   Kelp Lantern). The key came down to Bell Station's winch-master, Sabina Lentus, granddaughter of the Company's
-  salvage master (X), who will not lend it. It is lifted from her locker (Pickpocket or Lockpicking), talked or
+  salvage master (X), who will not lend it. The way to the boats lies through Lilmoth, a city rebuilt over its own
+  grave, where two tenders stand at the young tree because nobody may tend it alone (D province, Peoples:
+  Lilmoth), and whoever is asked for a boat says in a line what the old tree called down in 4E 48 and that no
+  other tree could shut it out: the case for cutting, met in the world long before anyone argues it. It is lifted from her locker (Pickpocket or Lockpicking), talked or
   bought out of her (Speech, gold), or earned by killing the dreugh that has taken the station's lower bell-stage
   (D benthic-yobesh, Bell Station, "a bell hauled up with something clinging to it"; a fight on a floor). Then the
   dive: breath by Alteration, by Alchemy or by the sap of Lilmoth's young tree (D althii-archipelago, Lilmoth), the
@@ -228,7 +244,8 @@ which is gentlest and which may kill.*
   the marsh has crept into, told of by the Blackguard deserter who trains on Blackrose's boardwalks (Sneak, then
   Lockpicking on the office and its case). Fighting the whole garrison is the place's own fight, and two people
   say it will kill. A Naga of the Unbound stands in the yard, come to buy the mask with boats and laughed at; he
-  says his mistress will have the jewel from whoever fetches it. Carried on: the mask.
+  says his mistress will have the jewel from whoever fetches it, and that she asks after "the one from the fire".
+  Carried on: the mask.
 - *The three together.* A line of Nesh-Deeka's, gated on all three held, names the place: Thul-Kesh, the outermost
   of the seven drowned spires. The same line tells the act's news: the young tree at Vel-Sapha is dead, its people
   sing the mourning, and the cutters dug from its root what a dead tree leaves: a Mnemic Egg, which holds all that
@@ -245,12 +262,15 @@ which is gentlest and which may kill.*
   crew into it (Speech, or gold; the bell is a door that her line unlocks). "A drowned sea-priest's ghost keeps
   the sealed door", which "opens only when the ghost is put to rest" (D benthic-yobesh, Thul-Kesh Spire). He
   speaks and does not attack. He asks whose hand comes for the king's jewel, and yields to Lark's mask held ("the
-  thief I turned away sends his face"), to Speech, or to Restoration (a rite to sing him down): the line unlocks
-  the door. Or the player strikes first and puts him to rest by force, and his death unlocks it. Taking the Eye
+  thief I turned away sends his face"), to Speech, or to Restoration (a line for one skilled enough to give the
+  rite of rest): the line unlocks the door. Or the player strikes first and puts him to rest by force, and his
+  death unlocks it. He says the jewel's rule, and if he was struck down it is cut round the setting: the Eye
+  keeps to the hand that lifts it, and opens its door for that hand and no other. Taking the Eye
   from its stone setting shows the dream, as a message: a ring of trees standing in black water, a door nobody
   built, a singing. Carried on: the Eye, which cannot be lost.
-- **MQ09 A Sermon Against Roots** (Seafalls). Nesh-Deeka sends her one deniable hand to the Unbound's own door with
-  the jewel as bait. They gather where no root reaches, among people who "live too far from any tree to hear the
+- **MQ09 A Sermon Against Roots** (Seafalls). Nobody knows where the Egg has gone, and the jewel would open
+  nothing in Nesh-Deeka's hand, so she sends her one deniable hand, jewel and all, to find out at the Unbound's own
+  door. They gather where no root reaches, among people who "live too far from any tree to hear the
   Hist clearly" (D province, Peoples: Spray-Folk). The Collector preaches there, knows whose hand took his three
   pieces, and says nothing of it. The player needs the Unbound's mark, the cut cord that passes their boats: won
   from him in private talk (Speech), taken from the locked chest in his lodging (Pickpocket for the key, or
@@ -272,8 +292,8 @@ which is gentlest and which may kill.*
   to die; she also says, before the player has met it, what she would do with the door under the sea if it were
   hers: give the trees back their no. Then the choice, which ends the quest, and which she and an old dreamer
   argue from either side (table below). Nesh-Deeka, staying or going, gives the last thing she knows: every
-  dreamer dreams a carved stone on a height above lakes, the marks on it are warded, and the wards are Shadowscale
-  teaching. If she has died in the cellar, the old dreamer says the same. Carried on: the gate open or shut;
+  dreamer who dreams the door also dreams a stone under flooded vaults in the north, cut twice, by two hands. If
+  she has died in the cellar, the old dreamer says the same. Carried on: the gate open or shut;
   Nesh-Deeka freed, left or dead; nobody left to report to.
 
   **The cellar's gate.** Nesh-Deeka argues for opening it: "Nobody asked them. Some will die of it, and it will
@@ -283,21 +303,11 @@ which is gentlest and which may kill.*
 
   | Outcome | What the player gains in play | What the player loses or can no longer get | Who pays, and where the player sees it | Form results |
   |---|---|---|---|---|
-  | **Opened** (the player's line to Nesh-Deeka, or to the old dreamer if she is dead). Those who wish to stay keep their pallets: the old dreamer stays | **Sap-Sight**, a spell (the load order's Detect Life under our name), breathed into the player by a young dreamer as she goes; and **Nesh-Deeka's ear**, if she lives: she is found at Lilmoth, teaches Speech and sells what the Reed's listeners hear (maps to three caches of the Reed's, marked on the map) | the fort: its gaolers hunt the player for good, and its strongroom, bed and stores are closed | the dreamers who drown: a dreamer's bundle lies on the bank below the fort; the old dreamer, who stays in an open cellar alone | `teach_spell`; `unlock_door` the gate; `make_enemy` the gaolers' faction; `set_number mq10.gate 1`; Nesh-Deeka's second placement at Lilmoth. The dreamers are switched off, and she and the bundle on, by the first line of MQ11 at Lilmoth, which has a twin for each answer |
-  | **Left shut** (the player's line to the old dreamer) | **the fort as a house of the Reed**: the gaolers stand down for its Hand, the strongroom's chest is the player's, and the gaolers' quartermaster sells (potions, picks, arrows) | Sap-Sight; Nesh-Deeka, if she lives, stays in the cellar and says nothing more to the player | the dreamers, who are still there each time the player comes down; Nesh-Deeka | `make_peace` the gaolers' faction; `give_ownership` the strongroom chest; the quartermaster's second placement `switch_on` (by MQ11's first line); `set_number mq10.gate 2` |
+  | **Opened** (the player's line to Nesh-Deeka, or to the old dreamer if she is dead). Those who wish to stay keep their pallets: the old dreamer stays | **Sap-Sight**, a spell (the load order's Detect Life under our name), breathed into the player by a young dreamer as she goes; and **Nesh-Deeka's ear**, if she lives: she is found at Lilmoth and teaches Speech | the fort: its gaolers are the player's enemies for good, and its strongroom, bed, stores and the maps to the Reed's caches are closed | the dreamers who drown: a dreamer's bundle lies on the bank below the fort; the old dreamer, who stays in an open cellar alone | `teach_spell`; `unlock_door` the gate; `make_enemy` the gaolers' faction; `set_number mq10.gate 1`; Nesh-Deeka's second placement at Lilmoth. The dreamers are switched off, and she and the bundle on, by the first line of MQ12, Selvi Orethan's at Gemin, which has a twin for each answer |
+  | **Left shut** (the player's line to the old dreamer) | **the fort as a house of the Reed**: the gaolers stand down for its Hand, the strongroom's chest is the player's, the gaolers' quartermaster sells (potions, picks, arrows), and the chest holds maps to three caches of the Reed's, marked on the map | Sap-Sight; Nesh-Deeka, if she lives, stays in the cellar and says nothing more to the player | the dreamers, who are still there each time the player comes down; Nesh-Deeka | `make_peace` the gaolers' faction; `give_ownership` the strongroom chest; the quartermaster's second placement `switch_on` (by MQ12's first line); `set_number mq10.gate 2` |
 
-*Act IV, the marks and the root (Lilmoth, the ridge and the north again). Nobody gives orders now.*
+*Act IV, the stone and the camp (the north again, then Helstrom). Nobody gives orders now.*
 
-- **MQ11 Marks Only the Eye Can See** (Lilmoth; Aunike Crown). Xil-Veeka teaches the ward-words by a line of his,
-  which sets the quest's next stage: to one skilled enough to have crossed his floor unheard (a line gated on
-  Sneak), to one who asks well (Speech) or to one who pays (gold). If he is dead, his chest holds them, and taking
-  them sets the same stage. Then the ridge: the Crown is "a bare rock summit" on Deadly ground with "Naga parties
-  out of the northern camps" on its path and giant snakes below the top (D aunike-ridge, Aunike Crown, Nacydes).
-  Up through the pass by force; round it by the lizard-keepers' path from Nacydes (Sneak); or by the one scout
-  below the pass who speaks, placed apart from the parties, bought or talked into showing the goat-track that
-  comes up behind them (Speech, gold; her line unlocks its gate). The carved stone by the fire-basket can be used
-  only from the stage the words set. It shows its marks as a message: where the wood is moored, the tablet under
-  the vaults will say. Carried on: the reading.
 - **MQ12 The Tablet Under the Vaults** (Gemin). The story comes back to the country where it began. At the
   collapsed entrance camps Selvi Orethan, a treasure-seeker of Stormhold (D barsaebica, Gemin, "treasure-seekers
   from Stormhold go down into the flooded ruin on their own account"; X for her), who has lost two partners to
@@ -309,60 +319,75 @@ which is gentlest and which may kill.*
   Selvi's own lock: picked (Lockpicking), her key lifted (Pickpocket), or opened by her for Speech or for gold,
   which is the talker's way. The passage holds nothing that fights, only a long swim: breath by Alteration, by a
   potion (Alchemy, or bought), or by the blessing of Jal-Veesa's pool (D valley-of-storms, Jal-Veesa). The
-  fragment, taken with the Eye held, shows its reading as a message, and it says three things. The forest moves
-  because its heart is not in it: the wood is moored to the first wood, under the sea, at the bottom of the trench
-  beyond the seventh spire. The mooring was a gift, and a tree could close its root. And the kings chained it
-  after a year in which trees closed their roots on a dying neighbour, whose people starved unheard. The
-  Unbound's grievance is real, and so was the kings' fear. Carried on: the fragment, with the first consent on it.
+  fragment is cut twice, by two hands, and taken with the Eye held it shows both as a message, short, the older
+  first. The older hand: the forest moves because its heart is not in it; the wood is moored to the first wood,
+  under the sea, at the bottom of the trench beyond the seventh spire; the mooring was a gift, and a tree could
+  close its root. The later hand, the kings', cut over it and read last: the year the trees closed their roots on
+  a sick neighbour, whose people starved unheard while every other tree chose not to hear, and the jewel cut "that
+  none be left to die unheard". The stone takes no side: the Unbound's grievance is real, and so was the kings'
+  fear, since the first thing free trees refused was the sick. Carried on: the fragment, with the first consent
+  and the kings' reason both on it.
 - **MQ13 The One Who Wants Out** (Ushaan Camp; a line in Helstrom). The sap road's northern end is a Naga camp, and
   "one of the Naga wants out of the camp and will open the stockade at night for a price" (D barsaebica, Ushaan
   Camp). By Sesk (Speech or 400 gold: her line unlocks the gate), by stealth, or by a Deadly fight, the player
   reaches the leader's hut and the empty cradle the Egg was carried in, and learns it went down the creeks to the
-  sea a month ago. The camp also holds a Khajiit trader for ransom, whose pen can be opened. On the road south, in
-  Ixtul-Bei's House, Never-Writes-Twice owns what she did at Vel-Sapha ("One sapling at the edge, against every
-  tree in the marsh the next time one turns. I would do it again, and I do not sleep"), says what she would do
-  with the door ("one hand on it, answerable, and no tree ever turns again; the Wardens would stand behind that
-  hand, and so would I"), and asks one thing: where the cutters camp. This is the line's misjudgement: the player
+  sea a month ago. Sesk also says what happened on the night of the fire: a man of the gang asked for more pay, the
+  huts were fired with him inside, and the Unbound's leader went back into the fire herself for a stranger nobody
+  had told her was there. The camp raids the road and holds a Khajiit trader for ransom, whose pen can be opened.
+  On the road south, in Ixtul-Bei's House, Never-Writes-Twice owns what she did at Vel-Sapha ("One sapling at the
+  edge, against every tree in the marsh the next time one turns. I would do it again, and I do not sleep") and
+  makes her case for the door: "One hand on it: yours, not mine, and answerable. The sickness shut out, the Root
+  Talk held. And no cellar: a hand on the door hears a tree turn without anybody's dreams. Give them back their no
+  and the first thing they say no to is the sick one. The kings saw it. I would sooner be hated for a chain." Then
+  she asks one thing: where the cutters camp. This is the line's misjudgement: the player
   may act on a patron's word after learning what the patron is. If Never-Writes-Twice is dead, nobody asks, the
   camp stands and the Reed's stores are never given. Carried on: the camp burned or standing;
   Sesk and the trader alive or dead.
 
-  **Where the cutters camp.** Never-Writes-Twice argues for the truth: the camp cut the tree and will cut the
-  next. Sesk argued the other side at the stockade: thirty Naga whom no tree claims, most of whom never held a
+  **Where the cutters camp.** Never-Writes-Twice argues for the truth: the camp cut the tree, raids the road and
+  holds people for ransom. Sesk argued the other side at the stockade: thirty Naga whom no tree claims, most of whom never held a
   hook, and nowhere else that would have them.
 
   | Outcome | What the player gains in play | What the player loses or can no longer get | Who pays, and where the player sees it | Form results |
   |---|---|---|---|---|
   | **Told the truth** | **the Reed's last stores**, from her hand: the **Listener's Gill**, a unique amulet (a load-order amulet of waterbreathing under our name) and six draughts of breath | Sesk's trade and her gate; everyone in the camp | Ushaan Camp, found burnt, with everyone in it: Sesk unless she was first told to go and given a boat's price, the Khajiit trader if he was left in his pen | `give_item` the amulet (a `template_item`) and the draughts; the burnt camp's second set `switch_on` and its people `switch_off`, from inside the house, on one stage for each case of Sesk sent away or not and the trader freed or not; `set_number mq13.told 1` |
-  | **Told a lie** | **Sesk at the stockade** stays and deals: she buys what the player has stolen and sells Naga poisons and hooks, and her gate stays unlocked | the Reed's stores and the amulet: the dive is made on bought draughts or the player's own craft; Never-Writes-Twice pays nothing more | whoever the camp cuts next; Never-Writes-Twice, who says "then it stands, and it is yours" | Sesk's trading placement `switch_on` (from the house); `set_number mq13.told 2`, read by Never-Writes-Twice's lines |
+  | **Told a lie** | **Sesk at the stockade** stays and deals: she buys what the player has stolen and sells Naga poisons and hooks, and her gate stays unlocked | the Reed's stores and the amulet: the dive is made on bought draughts or the player's own craft; Never-Writes-Twice pays nothing more | whoever the camp robs or holds next; Never-Writes-Twice, who says "then it stands, and it is yours" | Sesk's trading placement `switch_on` (from the house); `set_number mq13.told 2`, read by Never-Writes-Twice's lines |
 
 *Act V, the door (the trench).*
 
 - **MQ14 What the Old Hist Sings** (Bell Station; Echo Deep). The bell-tenders "refuse to lower below the rim";
   "dreugh hunting along the rim" are swum past, never fought, down the line of the old sphere's cable (D
-  benthic-yobesh, Echo Deep, The Kelp Lantern). The sealed spire's outer door stands open. Inside is air, and the
-  hardest ground in the province. The Unbound's rearguard holds the galleries: fought, or passed by Sneak, or
-  left behind by the side stair that one of them, posted apart at the door and sick of the dark, unlocks for
-  Speech from a player who can say what was done at Ushaan, burned or left standing. Beyond lie the Unbound's own dead and the Root's
-  guardian, the last thing bound to the first consent. It let the Egg pass, as a dead tree coming home. It speaks
-  and does not strike first, and it will not open its hall's far door to whoever carries the kings' jewel. There
-  are three ways on: the talker's, Speech with the fragment from Gemin held ("I carry it to ask, not to forbid"),
-  at which its line unlocks the door; the guardian fought, by the player's own first blow, at the Lethal band,
+  benthic-yobesh, Echo Deep, The Kelp Lantern). The sealed spire's outer door stands open (unlocked by the stage that
+  begins the quest). Inside is air, and the hardest ground in the province. The Unbound's rearguard holds the
+  galleries: fought, or passed by Sneak, or left behind by the side stair that one of them, posted apart at the
+  door and sick of the dark, unlocks for Speech from a player who can say what was done at Ushaan, burned or left
+  standing. Beyond lie the Unbound's own dead and the Root's guardian, the last thing bound to the first consent.
+  It let the Egg pass, as a dead tree coming home. It stands and speaks, as any person does whom the player may
+  talk to or attack, and it will not unlock its hall's far door for whoever carries the kings' jewel. There are
+  three ways on: the talker's, Speech with the fragment from Gemin held ("I carry it to ask, not to forbid"), at
+  which its line unlocks the door; the guardian fought, by the player's own first blow, at the Lethal band,
   whose death unlocks the door and whose heart is the fighter's pay; or the drowned root-channel that runs under
   its hall, a tight swim on held breath (Alteration, or a potion made or bought). Carried on: the way to the Root.
-- **MQ15 The Door Nobody Built** (the Root). Cuts-the-Old-Knot stands at the door from the dreams with the Egg,
-  the Collector beside her. She says who she was, and why she carried the player out of the fire: "You lay
-  unwritten in a gang-master's hut, on nobody's roll and under nobody's tree. I have been that." She asks that
-  the door be opened and the Egg poured, and says what else pouring it ends: "Mend it, claim it, and the trees
-  still talk, and somebody still pays to listen. Ask the ones in the cellar what the trees' talk cost them." She
-  gives up the Egg to one who reads her the tablet's words (the fragment held; no skill), or to Speech alone, or it
-  is taken from her body after a hard, fair fight that the player begins. Holding the Egg and the Eye together
-  opens the door: the stage that the Egg's taking sets unlocks it. The Collector, who has waited twenty years to
-  read what is behind it, says what each of the three things there is, does, gives and costs, and wants nothing
-  else; if he is dead, the fragment's reading has already said what each does, and each thing shows its act in
-  the name the game gives it. Using one ends the story: the basin (CUT), the kings' socket (CLAIM), the first root
-  (MEND). There is a fourth thing a player can do, which is to walk out; the Collector says what that is: "Leave it,
-and the last king's hand is still on it. The sour runs on down the joining, tree by tree." What changed is found afterwards, never watched: at Helstrom's spring, at Jal-Veesa's pool, at Vel-Sapha
+- **MQ15 The Door Nobody Built** (the hall before the door; the Root). In the hall before the door from the
+  dreams stand Cuts-the-Old-Knot, with the Egg, and, apart from her, the Collector. She says who she was, and why
+  she carried the player out of the fire, which was no plan: "I did not choose you. I lit that fire, and there was
+  somebody in the gang-master's hut that nobody had written down. I was nine years in a room. I do not leave
+  people in rooms. It was afterwards I saw what a hand on nobody's roll was worth to me, and had you watched." She
+  does not bargain for the Egg, which is no use to her on this side of a door only the bearer opens: her line
+  gives it, and she stakes everything on what she says next: "Pour it. Mend it, claim it, and the trees still
+  talk, and sooner or later somebody pays to listen. Ask the ones in the cellar what the trees' talk cost them."
+  Or it is taken from her body after a hard, fair fight that the player begins. Holding the Egg and the Eye
+  together opens the door: the stage that the Egg's taking sets unlocks it. The Collector does not go in. Where he
+  stands, he says what each of the three things beyond the door is, does, gives and costs, and then what he has
+  kept from the woman he preached for: he came to hear and read the first wood, the pouring would silence it, and
+  he has wanted the door open for twenty years and never wanted it cut. He asks for nothing and stops nobody. If
+  he is dead, the fragment's reading has already said what each thing does, and each shows its act in the name the
+  game gives it. Using one ends the story: the basin (CUT), the kings' socket (CLAIM), the first root (MEND). There
+  is a fourth thing a player can do, which is to walk out; the Collector says what that is: "Leave it, and the
+  last king's hand is still on it. The sour runs on down the joining, tree by tree." Afterwards he is found in
+  that hall for good, by lines read from the ending's number: after MEND or CLAIM reading what is cut round the
+  open door, after CUT in a silence he helped to make. She is found there too after CUT; after MEND or CLAIM she
+  is switched off while the player is in the Root, and is gone. What changed is found afterwards, never watched: at Helstrom's spring, at Jal-Veesa's pool, at Vel-Sapha
   and at Seafalls, by what people say and by things switched while the player was at the bottom of the sea.
 
 **What each ending gives and costs in play.** The trade is said before the choice by the Collector at the door,
@@ -377,8 +402,8 @@ thing at a price in gold or in a city's peace; knowledge, craft and an open door
 | Outcome | What the player gains in play | What the player loses or can no longer get | Who pays, and where the player sees it | Form results |
 |---|---|---|---|---|
 | **CUT** (the Egg poured into the basin) | **Rootless**, a lasting ability (the load order's Lord Stone ability under our name: armour and resistance to magic): nothing passes between trees, and nothing reaches the player through one. **The Unbound at Seafalls are the player's**: their quartermaster's chest, their healer and their trader | every Hist blessing of ours: the minder at Jal-Veesa's pool and the tenders at Vel-Sapha no longer bless a stranger. The Reed is ended: its two lodgers are gone from Ixtul-Bei's House. The Egg is spent: nothing to carry home | Asheem-Lei, who used to hear Helstrom in her pool; Hixee-Ra and Ooxa-Leet at Helstrom's tree, come for a Root Talk at which each heard only her own tree; Heem-Jasa, whose tree is "in every water now, and nowhere" | `teach_spell` the ability; `make_peace` the Unbound's faction; `give_ownership` their chest; their healer's and trader's second placements `switch_on`; the lodgers `switch_off`; `set_number main.ending 1`, read by the blessing lines |
-| **CLAIM** (the Eye set in the socket) | **The Eye's Shutting**, a power once a day (the load order's Nightingale Subterfuge under our name: those near turn on each other). **The dead tree's seed** carried home: the stand gives the **Seed-Cord**, a unique amulet (a load-order amulet with a fixed enchantment of health and its regrowth), and the stand's blessing is the player's for good | **a blood-price in Helstrom**: 3,000 gold owed to its levy, paid or fought. The Unbound are gone from Seafalls, their healer and trader with them. Asheem-Lei refuses her pool's blessing | Hixee-Ra and Ooxa-Leet, who will not speak to the player at a Root Talk held under a keeper; Asheem-Lei, who asks who gave the player leave to stand between her tree and the rest; whoever is still in the cellar | `teach_spell` the power; `set_bounty` Helstrom's crime faction 3,000; `give_item` the amulet by the stand's line with the Egg held; the Unbound's people `switch_off`; `set_number main.ending 2` |
-| **MEND** (the first consent read into the first root) | **The Root's counsel**: the effects of the marsh's sap and of the sap road's herbs are known, a sap tonic can be made at any cook pot, and Alchemy and Restoration each rise by five. **The Wood's Regard**, a power once a day that no other ending gives (the load order's Histskin under our name: wounds close fast). **Nothing is shut**: no price on the player's head, the Reed's house, the stand, Helstrom and every trader as they were; only Jal-Veesa's pool goes quiet | the pool's blessing, for everyone: Jal-Veesa's tree left the joining. Helstrom's spring is still sour. **The Unbound hunt the player**: Seafalls' listeners are hostile and their healer and trader are never had. No unique thing: the Egg went to the Root | Asheem-Lei, who did not know her tree wanted to leave; Hixee-Ra and Ooxa-Leet, who drink the sour water as their share with empty places beside them; Heem-Jasa ("I am told it was done rightly"); whoever the cutters hurt next | `teach_spell` the power; `learn_ingredient` each named ingredient; `open_recipe` the tonic at the cook pot; `raise_skill` Alchemy 5, Restoration 5; `make_enemy` the Unbound's faction; `set_number main.ending 3`, read by the pool's blessing line |
+| **CLAIM** (the Eye set in the socket) | **The Eye's Shutting**, a power once a day (the load order's Nightingale Subterfuge under our name: those near turn on each other). **The cellar emptied**: the hand on the door hears the joining for itself, and the dreamers are gone from Fort Swiftmoth when the player next comes. **The dead tree's seed** carried home: the stand gives the **Seed-Cord**, a unique amulet (a load-order amulet with a fixed enchantment of health and its regrowth), and the stand's blessing is the player's for good | **a blood-price in Helstrom**: 3,000 gold owed to its levy, paid or fought. The Unbound are gone from Seafalls, their healer and trader with them. Asheem-Lei refuses her pool's blessing | Hixee-Ra and Ooxa-Leet, who will not speak to the player at a Root Talk held under a keeper; Asheem-Lei, who asks who gave the player leave to stand between her tree and the rest; every tree, heard by one hand that none of them chose | `teach_spell` the power; the cellar's dreamers `switch_off`; `set_bounty` Helstrom's crime faction 3,000; `give_item` the amulet by the stand's line with the Egg held; the Unbound's people `switch_off`; `set_number main.ending 2` |
+| **MEND** (the first consent read into the first root) | **The Root's counsel**: the effects of the marsh's sap and of the sap road's herbs are known, a sap tonic can be made at any cook pot, and Alchemy and Restoration each rise by five. **The Wood's Regard**, a power once a day that no other ending gives (the load order's Histskin under our name: wounds close fast). **Nothing is shut**: no price on the player's head, the Reed's house, the stand, Helstrom and every trader as they were; only Jal-Veesa's pool goes quiet | the pool's blessing, for everyone: Jal-Veesa's tree left the joining. Helstrom's spring is still sour. **The Unbound are the player's enemies**: Seafalls' listeners are hostile, their healer and trader are never had, and Cuts-the-Old-Knot is gone from the hall before the door. **The Reed is not ended**: if the cellar's gate was left shut, its dreamers are still in it. No unique thing: the Egg went to the Root | Asheem-Lei, who did not know her tree wanted to leave; Hixee-Ra and Ooxa-Leet, who drink the sour water as their share with empty places beside them; Heem-Jasa ("I am told it was done rightly"); whichever tree is next persuaded to leave, and whoever is still in the cellar | `teach_spell` the power; `learn_ingredient` each named ingredient; `open_recipe` the tonic at the cook pot; `raise_skill` Alchemy 5, Restoration 5; `make_enemy` the Unbound's faction; `set_number main.ending 3`, read by the pool's blessing line |
 
 **What the ending leaves to be found** (switched by the ending's stage, the player being in the trench; found on
 return). Each line is gated on its speaker alive. If Asheem-Lei is dead, Vosh-Leera says the pool's line in her
@@ -392,6 +417,8 @@ by using it, and the Seed-Cord lies there. If either naheesh is dead the other s
 | Jal-Veesa's pool | Asheem-Lei: the pool is clean and quiet, and she used to hear Helstrom in it | Asheem-Lei asks who gave the player leave to stand between her tree and the rest | the pool gives no blessing: her tree left the joining, and she did not know it wanted to |
 | Vel-Sapha Stand | the Egg is spent: "our tree is in every water now, and nowhere" | the Egg may be given to Heem-Jasa, who says she will set it in the dead tree's pool as a seed | the Egg went to the first root: "I am told it was done rightly" |
 | Seafalls | the Unbound's listeners greet the player as their own | they are gone | the listeners are still there, still preaching to trees one at a time, and draw on the player |
+| Fort Swiftmoth's cellar | as the gate left it; the Reed that kept it is ended | emptied: the dreamers are gone | as the gate left it: if it was left shut the dreamers are still there |
+| The hall before the door | Cuts-the-Old-Knot and the Collector, who stands in a silence he helped to make | the Collector alone, reading what is cut round the open door | the Collector alone, reading what is cut round the open door |
 
 **Deaths.** Anyone can die. Each quest names the people it cannot go on without; their death fails it with a
 journal entry and the main quest's message, once. In Act I these are named in each outline. Nesh-Deeka must live
@@ -1290,14 +1317,6 @@ place already holds, and the few things the quest itself places there.
 
 | The thing | Quest | What happens there | How the player knows it |
 |---|---|---|---|
-| a room that is the retired Shadowscale's, with a chest | MQ11 | the ward-words | Nesh-Deeka or the old dreamer names him; the door shows his name; the marker |
-
-**Aunike Crown** (D aunike-ridge).
-
-| The thing | Quest | What happens there | How the player knows it |
-|---|---|---|---|
-| a carved standing stone by the fire-basket | MQ11 | the reading | the stone shows "Carved Stone"; the fire-basket is the summit's own |
-| a second path up from Nacydes that avoids the pass; one Naga scout below the pass, placed apart from the parties, who speaks; a goat-track behind a gate her line unlocks | MQ11 | the ways up | Xil-Veeka tells the Nacydes path; the marker on the scout |
 
 **Gemin** (D barsaebica).
 
@@ -1305,7 +1324,7 @@ place already holds, and the few things the quest itself places there.
 |---|---|---|---|
 | a treasure-seeker's camp at the collapsed entrance, outside the stakes | MQ12 | Selvi Orethan; her warning; her key | a camp's look; the marker on her |
 | a drowned side passage from the entrance pool to the lowest hall, behind a chained grate, free of the record's crocodiles and snakes | MQ12 | the way under the halls | the grate shows "Chained Grate"; she tells it |
-| a lowest hall with a floor behind its swim and the tablet fragment on a plinth | MQ12 | the reading | the fragment shows its name; the marker |
+| a lowest hall with a floor behind its swim and the tablet fragment on a plinth | MQ12 | the reading, in two hands | the fragment shows its name; the marker; Nesh-Deeka or the old dreamer has said "a stone under flooded vaults in the north, cut twice" |
 
 **Ushaan Camp** (D barsaebica).
 
@@ -1323,7 +1342,7 @@ Spire).
 | at the trench's bottom, the sealed spire: an outer door; a way down from the rim that the dreugh do not cover; dry galleries with floors and air | MQ14 | the rearguard | the sphere's cable leads down to it; the marker on the door |
 | one of the rearguard posted apart at the door, who speaks; a side stair behind a door her line unlocks | MQ14 | the spoken way | the marker on her |
 | a guardian's hall with a far door, the guardian on a floor, not hostile, fixed at the Lethal band; a drowned root-channel that passes under the hall | MQ14 | the three ways on | the guardian speaks first; the channel's mouth shows "Root-Channel" |
-| a chamber where Hist roots of the kind the marsh's ground already carries come through worked stone, with a door and, beyond it, a basin, a jewel's socket and a root that can be used | MQ15 | the endings | each shows its act in its name: "Basin: pour the Egg", "Kings' Socket: set the Eye", "First Root: read the first consent"; the Collector says each |
+| a hall before the door, where Cuts-the-Old-Knot and, apart from her, the Collector stand; and beyond the door, as an interior of its own, a chamber where Hist roots of the kind the marsh's ground already carries come through worked stone, with a basin, a jewel's socket and a root that can be used | MQ15 | the endings | each shows its act in its name: "Basin: pour the Egg", "Kings' Socket: set the Eye", "First Root: read the first consent"; the Collector says each |
 
 Dropped from the plan's table: the cell below the Rose's yard, the feather armband at Hokal-Ush, the Lost City,
 and Helstrom's boatman's house, back room, wicker door, dipper and crocodile on the landing mud. For the roster
@@ -1493,6 +1512,19 @@ the charm is now a real choice; that MEND and the open gate are some reader's ch
 principle; that a fresh deliverability reader builds MQ01 to MQ04 without a question; and that CUT, argued by two
 and chosen by none, is somebody's first choice.
 
+### The plot, read by itself
+
+The plot was then written as its own page and read in three rounds of four players and a deliverability reader
+each, to its stop; the rounds, what each reader chose and what changed are recorded in
+[main-plot](main-plot.md) §8. What it changed here: Act IV has one reading, not two (MQ11 is withdrawn; the stone
+at Gemin is cut twice); the Eye keeps to its bearer; CLAIM empties the cellar and MEND does not end the Reed; the
+rescue from the fire was no plan; Cuts-the-Old-Knot hands over the Egg; the Collector has a stake of his own and
+stays in the hall before the door; the maps to the Reed's caches go with the shut gate. Sections 1, 2, 4, 6 and
+7 above and below are brought into line. Act I's four full outlines and their sketches needed no change: nothing
+in them rests on what moved. What the last round of section 5 left for a third round of the outlines (the charm
+as a real choice; a fresh deliverability reader building MQ01 to MQ04) is still owed when the outlines are next
+read; the plot's reading did not test the outlines.
+
 ## 6. For the other lines
 
 What this story needs of shared ground (answered by the consistency ledger, sections 2 and 3).
@@ -1507,15 +1539,17 @@ What this story needs of shared ground (answered by the consistency ledger, sect
   carries a blood-price with Helstrom's levy until it is paid; no other line's door is shut by any ending.
 - **The Rose's gate** (the Chainbreakers): as C P9 rules. This story calls her "the heir at the gate" until the
   Chainbreakers' second round fixes her new name (C N33), and then uses it.
-- **Lilmoth** (the Night-Reed; the Umbriel Witness; the Shadowscales). Xil-Veeka, a retired Shadowscale who
-  trains there, is named here, joins nothing and holds the ward-words. The young tree's sap is used for breath
-  only.
+- **Lilmoth** (the Night-Reed; the Umbriel Witness; the Shadowscales). The main quest passes through on the way
+  to the boats, uses the young tree's sap for breath only, and asks one line of whoever gives a boat: what the old
+  tree called down in 4E 48. Nesh-Deeka stands here if the cellar's gate was opened. The main quest no longer
+  names a retired Shadowscale or uses the order: Xil-Veeka and the ward-words are withdrawn and free to the
+  Shadowscales' line.
 - **Bell Station, the Kelp Lantern, Thul-Kesh Spire and Echo Deep** are the main quest's. Echo Deep replaces
   the Lost City among the reserved places. **Vesh-Aneel, Hokal-Ush and Salt-Tooth Camp leave the main quest** and
   are free to the lines whose range covers them.
 - **Seafalls** (Reed-Sail): as C P10 rules.
-- **Aunike Crown and Nacydes** (the Waykeepers). The Naga parties at the pass may be dead or alive when either
-  line comes; the dead stranger by the fire-basket is the Waykeepers' and this story does not touch him.
+- **Aunike Crown and Nacydes leave the main quest** and are the Waykeepers' alone: no carved stone is needed on
+  the summit.
 - **Jal-Veesa's stake-keepers** (the Sunken Archive). Xoh-Reesha is the one this story names; she can be dead by
   the time the Archive comes.
 - **The cut trees.** This story claims the cutting of one tree only, Vel-Sapha's. It does not say the Unbound are
@@ -1536,14 +1570,12 @@ The hooks in the places' data are raw material. Each note this story changes, dr
 | Helstrom | "will not speak of its sour spring in open session" | kept: the spring is the Sealed Spring urn. Add: the tally-keeper's two lodgers are the Reed. Dropped from this story: a boatman's house with a back room, a wicker door and dipper, a crocodile on the landing mud |
 | Gideon | a dealer who "sold a Kothringi silver mask twice in one week" | kept: he has a glass Eye on offer, the Collector's bait |
 | Gideon South Watch | "the smugglers' cache in the hidden cellar" | kept: it holds the Eye's old setting. Add: one smuggler who speaks to a buyer |
-| Lilmoth | the retired Shadowscales who train there | add: one is Xil-Veeka, who holds the ward-words (C G3 merges this with the other lines' notes) |
 | Bell Station | "a bell hauled up with something clinging to it" | kept: a dreugh on the lower bell-stage. Add: the winch-master is Sabina Lentus and holds the Kelp Lantern's hatch key; a bell goes to Thul-Kesh's upper landing |
 | The Kelp Lantern | the "locked brass hatch" | kept: behind it the lens-frame and a pilot's tag |
 | Thul-Kesh Spire | "a drowned sea-priest's ghost keeps the sealed door" | changed: he speaks and does not attack first; behind the door is the Eye |
 | Blackrose Prison | "to break in, to bargain with the raj-kaal"; "a sanctum path left open to test challengers"; "the old warden's office" | kept; the challenge is one champion by the office door; the office holds Lark's mask (C G9) |
 | Seafalls | "Skeith pirates raiding the landing" | changed: a crew of no charter. Add: the Collector's sermon and lodging; the pilot-elder is Reads-the-White-Water (C G13) |
 | Fort Swiftmoth | "empty since the Legion left"; "a locked cellar door below the old garrison's strongroom" | kept as what the coast believes: the watch is the Reed's gaolers and the cellar holds dreamers |
-| Aunike Crown | "Naga parties out of the northern camps" | kept. Add: a carved stone by the fire-basket; one scout who speaks |
 | Gemin | "treasure-seekers from Stormhold go down into the flooded ruin on their own account"; "a fragment of the Murkwood tablet" | kept: one is Selvi Orethan, camped at the entrance; the fragment is MQ12's |
 | Ushaan Camp | "one of the Naga wants out of the camp and will open the stockade at night for a price" | kept: she is Sesk. Add: the Egg's empty cradle; a Khajiit trader held for ransom; the camp may be found burnt |
 | Echo Deep | "a sealed spire"; "the old Hist sings the drowned down" | kept and answered: the spire holds the Root. After CUT the divers hear nothing |
