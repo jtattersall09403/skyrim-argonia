@@ -2,7 +2,42 @@
  "place_id": "helstrom",
  "source_id": "bmv.helstrom",
  "similar": [],
- "draft": {},
+ "draft": {
+  "room_names": {
+   "01cellDUPLICATE002": {
+    "name": "Market Cave",
+    "why": "the source cell has no name (Black Marsh.esm 01cellDUPLICATE002) and no household or promise of ours is kept in it; what a player finds inside is three market stalls, an armour rack, a weapon rack and food stores in a cave, so it is named for that (AGENT_INVENTED)"
+   }
+  },
+  "add": [
+   {
+    "base": "Dragonborn.esm:03C364",
+    "kind": "container",
+    "pos": [
+     -29776.1,
+     -610423.4
+    ],
+    "name": "Sealed Spring",
+    "need": 1,
+    "tier": "AGENT_INVENTED",
+    "why": "the city tree's spring, shut away (main story, The Sour Spring): a lidded clay urn (Dragonborn's Dunmer urn, nothing Nordic) at the foot of the sacred tree, 350 units east of its trunk, named so a player reads what it is; locked and owned by the town in the stock source"
+   },
+   {
+    "base": "King of the Murkmire.esp:B7F081",
+    "kind": "container",
+    "space": "01ArgonianHouseinside.8",
+    "pos": [
+     -6094.0,
+     19265.0,
+     14790.0
+    ],
+    "rot_z": 0.6,
+    "need": 0,
+    "tier": "AGENT_INVENTED",
+    "why": "a locked chest the main story can use in place of a back room, in the one-room house nearest the city landing (Ixtul-Bei's household): King of the Murkmire's rustic chest beside the household's dresser (Black Marsh.esm:1E4354), against the same wall and turned as it is, at the floor's height there (the dresser's base 14771 plus the chest's 19 below its middle); owned by the household and locked at Novice in the stock source"
+   }
+  ]
+ },
  "fit": {
   "pivot": [
    -31283.1,

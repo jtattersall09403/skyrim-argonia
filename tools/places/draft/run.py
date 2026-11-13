@@ -43,7 +43,7 @@ CLUSTER_NUDGE = [float(v) for v in range(64, 2049, 64)]
 NUDGE_STEPS = [64.0, 128.0, 192.0, 256.0, 320.0, 384.0]
 PATCH_KINDS = {"building", "static", "furniture", "container", "door", "activator"}
 TOOL_FILES = ["run.py", "cluster.py", "fit.py", "seating.py", "paths.py", "clear.py", "interiors.py", "people.py",
-              "geom.py", "io.py", "walk.py", "overlap.py", "lights.py"]
+              "geom.py", "io.py", "walk.py", "overlap.py", "lights.py", "adds.py"]
 
 
 def tool_key() -> str:
@@ -245,18 +245,9 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
             row["linked"] = [{**lk, "ref": our_id.get(lk["ref"], lk["ref"])} for lk in row["linked"]
                              if lk.get("ref") in our_id or lk.get("ref") not in by_src]
     # things the place record promises that the source lacks, added by the agent (draft.add)
-    for k, a in enumerate(dec.get("add") or []):
-        b = bases.get(a["base"]) or {}
-        row = {"id": io.mint(place_id, "add", str(k), a["base"]), "base": a["base"], "kind": a.get("kind", "furniture"),
-               "pos": [float(a["pos"][0]), float(a["pos"][1]), 0.0], "rot": [0.0, 0.0, float(a.get("rot_z", 0.0))],
-               "scale": float(a.get("scale", 1.0)), "layer": "place", "flags": [], "src": None,
-               "seat": {"mode": "ground", "dz": float(a.get("dz", 0.0))}, "why": a.get("why", "")}
-        f = geom.foot(row, bases)
-        if f:
-            row["seat"]["foot"] = f
-        if not b:
-            row["base_unknown"] = True
-        our.append(row)
+    # (the rows for rooms are placed by the `add` stage once the rooms are written)
+    from tools.places.draft import adds
+    our.extend(row for space, row in adds.rows(place_id, dec, bases) if space == "exterior")
     # --- water and land as our world has them: a thing on the wrong side of the waterline after the fit is
     # nudged to the nearest ground of its kind, or dropped; the land is never turned to water or water to land ---
     gone: dict[str, str] = {}

@@ -1,7 +1,7 @@
 {
  "space_id": "01Ship",
  "copy_of": "bmv.helstrom/01Ship",
- "name": "Ship",
+ "name": "Boatmen's Lodge",
  "door_from": "helstrom.PQWZQVN6QW2ZV1GSDP19XSGMEE",
  "parent": "exterior",
  "room": "Black Marsh.esm:23D496"
