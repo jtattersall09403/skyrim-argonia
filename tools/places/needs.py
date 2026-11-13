@@ -37,8 +37,9 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-NEEDS = ROOT / "newworld" / "sources" / "needs"
-PEOPLE = ROOT / "newworld" / "sources" / "people"
+SOURCES = Path(os.environ.get("NEWWORLD_SOURCES") or ROOT / "newworld" / "sources")   # as the studio's server reads it
+NEEDS = SOURCES / "needs"
+PEOPLE = SOURCES / "people"
 PLACES = ROOT / "newworld" / "places"
 LINES = ROOT / "story" / "design" / "quests" / "lines"
 PLACE_ID = re.compile(r"^[a-z0-9][a-z0-9._-]{0,95}$")

@@ -590,6 +590,13 @@ POST /api/place/<id>/notes                    {text, things, view} adds a note; 
 GET  /api/place/<id>/stock                    who the place's people are and what it holds, from the database's
                                               sources (Stock: the studio)
 GET  /api/place/<id>/items?q=&kind=&limit=    item search for a holder: each result allowed or refused, with why
+GET  /api/place/<id>/needs                    what the stories need of the place, in plain words (What the stories
+                                              need of a place, below): {needs: [{seq, thing, line, quests, does,
+                                              first_draft, know, signs, rests, met, why, fit, narrow, sight,
+                                              changed}], people: {person id: {who, name, uses}}}
+POST /api/place/<id>/needs/changed            the owner carried on past a need's warning: {need | person, change:
+                                              removed|moved|renamed, what, save}; appended at OWNER_STATED to
+                                              newworld/sources/needs/<id>.changed.jsonl and committed by path
 POST /api/heartbeat                           an open tab, every 60 s; {held, started, release_after_s}
 GET  /api/status                              {ground_sha, deployed_sha, match, error?, versions:{studio, repo_head,
                                               python, aiohttp, search_model, search_rows}, awake:{job_alive}}
@@ -703,6 +710,61 @@ owner's alarm, which then stops the machine about 30 minutes after the last tab 
 `infra/build-vm/studio-install.sh` installs the pinned cloudflared and the user units `argonia-studio` and
 `argonia-studio-tunnel` (started at boot, restarted on failure); `infra/build-vm/studio_gate.py apply` makes the
 tunnel, DNS and Access app and `prove` checks both sides of the gate.
+
+## What the stories need of a place
+
+A line story lists, per place, the physical things its quests rely on (skill `story-line`, "What each quest needs
+of its places"). Those rows are the place's **needs**, beside its record's promises (`place_give`, `give_delivery`).
+A place is built to both, and a need is **met only from the player's side**: the thing exists in the place files
+and a player who has been told nothing would know it for what it is, by its look, by the game's own label (the name
+its door shows, which is its room's name; a map marker's name; a named thing), by what stands in or by it, or
+because a named person tells them. A house the story calls the hatching shed is "not met: a house stands at X that
+could become it". The stories are fitted to the place, never the place redrafted for a story: every unmet need
+says what the place has that the story could use instead (`fit`) and whether a small narrow addition closes the
+gap (`narrow`: a name on a room, a lock, a thing placed, a person's spot).
+
+| What | Where |
+|---|---|
+| A place's needs and the stories' uses of its people | `newworld/sources/needs/<place_id>.json` (`needs`, `people`, `proposed`, `dismissed`) |
+| The story lines, named for a reader who knows none of them | `newworld/sources/needs/lines.json` |
+| The owner's changes to what a need rests on | `newworld/sources/needs/<place_id>.changed.jsonl` (the studio writes it) |
+| The tables | `story_line`, `need_sign`, `place_need`, `place_need_sign`, `place_need_story`, `person_need`, `need_change` (`tools/newworld/needsdb.py`) |
+
+A need: `{seq, thing (what a player calls it on sight), line, quests, does (one sentence that assumes no story),
+firmness: firm|first-draft, signs: [{sign: look|label|beside|person, detail, person?}], stories: [file:line],
+rests: {space, ref?} | {person} | null, near?: {space, pos} (where the story puts it, when nothing rests yet), met,
+why, fit?, narrow?, sight?: {result: recognised|not recognised, said}}`. A person's use: `{person, seq, line,
+quests, for, keep: reachable|alive|reachable and alive, firmness, story}`. Who each of the place's people is to a
+player (their trade and household) is derived from the people source, never stored.
+
+    python -m tools.places needs propose <place>        the stories' needs tables for the place, as proposals
+    python -m tools.places needs confirm <place> <key> [--into <seq>]    then judge the need by hand
+    python -m tools.places needs dismiss <place> <key> --why "..."
+    python -m tools.places needs check <place>          every rest exists; every need judged; every unmet one fitted
+    python -m tools.places needs show <place>
+    python -m tools.places needs changed [<place>]      the owner's changes: the stories to change to fit
+    python -m tools.places needs load                   the tables from the sources
+    python -m tools.places sight <place>                the sight test's input
+
+**The sight test.** `sight` writes, for each need's spot, only what a player would meet there: what stands within
+about 30 metres in plain kinds (`tools/argonia_world/surroundings.py`'s table over each base's model and editor id),
+the names the game shows (doors by their room's name, map markers, named things), the people there as a player
+sees them (name, race, a guard's kit, what they offer when spoken to), and through a door the room's name and what
+it holds; never our names for things, ids or the story. One fresh `reader` is asked first what each spot is, and
+only then which spot each needed thing is; the need's `sight` records whether the reader said it unprompted.
+
+**The studio.** The rail's **Story** opens "What the story needs of this place": one row per need in its plain
+sentence, not met first, each saying how the player would know it, what is there now, what the story could use
+instead and whether a small change closes the gap; "Show it" (or "Show what could serve") selects and frames the
+thing or person; a not-met row offers a note for the agent (the place's ordinary notes). Selecting a thing or
+person a need rests on, or any of the place's people, adds a line to the Selected or People panel: who this is to
+a player, and "A quest needs this: ...". Removing, moving more than 10 metres or into another cell, re-homing or
+renaming something a need rests on shows a plain warning at that moment ("A quest needs this: ... If you change
+it, that quest will be changed to fit. Carry on?"), never a block: the change has already been made like any
+other; "Undo this change" undoes it, and "Carry on" records the change at `OWNER_STATED` for `needs changed`. The
+view bar's **As the player sees it** shows over the view the names the game shows: door names (the room each
+leads to), the room's own name inside, map markers, and named things near where the view looks; people's names
+show as always.
 
 ## Assets (`tools/places/assets`)
 

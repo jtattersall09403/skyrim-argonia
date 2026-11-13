@@ -289,11 +289,20 @@ The tools lay the network by these rules.
    contract's order. It then builds the draft and runs every check of the build on it (section 8), so a draft that
    passes here passes there. Its `measures` line gives the patched cells and points and the streets' length: keep
    the patches as near nothing as you can.
-2. Render again and look: does it read as the same town sitting naturally on our land? If not, go back to section 2 for a first draft; a place already drafted is changed by section 7.
-3. `python3 -m tools.places seat <place_id>` must report 0 refs moved.
-4. Correct the record's radius to what was built: `place.json` `radius_m` into the place's research record
+2. The stories' needs (`docs/design/place-studio.md`, "What the stories need of a place"): the place is built
+   to its record's promises and to the needs the line stories load onto it. Judge each need from the player's
+   side only: it is met when the thing is in the place files and a player told nothing would know it by its look,
+   the game's own label (its door's room name, a map marker, a named thing), what stands in or by it, or a named
+   person who tells them. A building that could serve is not met: say where it stands, what the story could use
+   instead and whether a narrow addition (a room's name, a lock, a thing placed, a person's spot) closes the gap.
+   Then the sight test: `python3 -m tools.places sight <place_id>` prepares what a player sees at each need's spot
+   (plain kinds and the game's own names, never ours); one fresh `reader` says what each spot is before being shown
+   the list of needs; record each need's `sight`. `python3 -m tools.places needs check <place_id>` must pass.
+3. Render again and look: does it read as the same town sitting naturally on our land? If not, go back to section 2 for a first draft; a place already drafted is changed by section 7.
+4. `python3 -m tools.places seat <place_id>` must report 0 refs moved.
+5. Correct the record's radius to what was built: `place.json` `radius_m` into the place's research record
    (`newworld/sources/research/places/*.json`, `footprint_radius_m`), then `python3 -m tools.newworld.build_db`.
-5. Commit `newworld/places/<place_id>/` and the record change by path. The place is ready for the skill
+6. Commit `newworld/places/<place_id>/` and the record change by path. The place is ready for the skill
    `place-people`.
 
 ## 7. Change a drafted place narrowly

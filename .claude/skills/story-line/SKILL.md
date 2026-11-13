@@ -140,6 +140,12 @@ the deliverability reader finds every step buildable, and nothing new is raised 
 
 ## 5. Hand on
 
+When the story lands, its needs go onto each place it names: `python3 -m tools.places needs propose <place>`
+reads the needs tables (so keep each one a regular table under its place's bold name, with the columns "The thing",
+"Quest", "What happens there" and "How the player knows it"), then each proposal is confirmed, merged into the
+need it repeats or dismissed with its reason, and judged from the player's side (`place-build`, section 6). Where a
+place is already built, a need it does not meet is answered by changing the story to what the place has.
+
 Each full outline goes to [quest-write](../quest-write/SKILL.md); the record's `foundation` names the line document
 and the quest's section. A quest writer who finds a gap asks the story's author, who answers in the document; the
 quest writer never invents a person, place, truth or way through the outline does not give.
