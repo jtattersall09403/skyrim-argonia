@@ -61,7 +61,10 @@ export const api = {
   stock: (id) => getJSON(`/place/${id}/stock`, { optional: true }),
   // items by name for adding to a holder: each says whether this place may hold it, and why not
   items: (id, q) => getJSON(`/place/${id}/items?` + new URLSearchParams(q)),
-  // add a note ({text, things, view, save}) or close or reopen one ({id, done})
+  // add a note ({text, things, view, save}); change ({id, text}) or delete ({id, delete: true}) one not sent yet;
+  // close or reopen a sent one ({id, done})
   note: (id, body) => getJSON(`/place/${id}/notes`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) }),
+  // every unsent note to the agent as one batch, which starts it: {batch, sent, job}
+  sendNotes: (id) => getJSON(`/place/${id}/notes/send`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' }),
   heartbeat: () => fetch(BASE + '/heartbeat', { method: 'POST', credentials: 'same-origin', keepalive: true }).catch(() => {}),
 };

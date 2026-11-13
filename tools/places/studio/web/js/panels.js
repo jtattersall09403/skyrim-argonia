@@ -483,33 +483,57 @@ export class Panels {
   // ---------- saves ----------
   // ---------- notes for the agent ----------
   // What the owner wants changed, in words: about the place, or about the things selected. Kept with the place
-  // (edits/notes.jsonl) where the next agent reads them; an agent's reply shows under the note.
+  // (edits/notes.jsonl), unsent until the owner sends them all as one batch; then an agent makes the changes and its
+  // reply shows under each note.
   async notesPanel(aboutSelection = false) {
     const a = this.app, pid = a.place.place_id, parts = [], sel = this.T.selRefs();
     const nameOf = (r) => { const b = a.bases.get(r.base) || {}; return b.name || b.edid || 'Unnamed'; };
     const text = el('<textarea class="text note-text" rows="4" placeholder="What should change? Say it as you would to a person." aria-label="Your note"></textarea>');
     text.value = this.noteDraft || ''; text.oninput = () => { this.noteDraft = text.value; };
-    parts.push(el('<p>Leave a note for the agent that works on this place. It reads every note before it next touches the place, and answers here.</p>'), text);
+    parts.push(el('<p>Write notes for the agent as you go, as many as you like. They are kept with the place, and no agent reads them until you send them.</p>'), text);
     let about = null;
     if (sel.length) {
       const words = sel.length === 1 ? `About the selected thing: ${nameOf(sel[0])}` : `About the ${sel.length} things selected`;
       about = toggle(words, aboutSelection || this.noteAbout !== false, (v) => { this.noteAbout = v; });
       parts.push(about);
     } else parts.push(el('<p class="tag">About the place as a whole. To make a note about particular things, select them first.</p>'));
-    const send = el('<button class="primary">Leave the note</button>');
-    send.onclick = async () => {
+    const keep = el('<button class="primary">Keep the note</button>');
+    keep.onclick = async () => {
       const words = text.value.trim(); if (!words) { a.toast('Write the note first.'); return; }
       const with_ = about && about.getAttribute('aria-pressed') === 'true' ? sel : [];
       const v = a.ours.view.rig.target, o = a.ours.origin;
-      send.disabled = true;
+      keep.disabled = true;
       try {
         await api.note(pid, { text: words, view: { space: a.ours.space, at: [v.x + o[0], v.y + o[1], v.z + o[2]] },
           things: with_.map((r) => ({ id: r.id, space: a.ours.space, base: r.base, name: nameOf(r), kind: r.kind, pos: r.pos, src: r.src })) });
-        this.noteDraft = ''; a.toast('Note left for the agent.');
+        this.noteDraft = ''; a.toast('Note kept. Send your notes when you are ready.');
       } catch (e) { a.toast(`The note was not kept: ${e.message}. It is still in the box; try again.`, 7000); }
       if (this.name === 'notes') this.notesPanel();
     };
-    parts.push(send);
+    parts.push(keep);
+    let list = [], listErr = null;
+    try { list = await api.notes(pid) || []; } catch (e) { listErr = e; }
+    const unsent = list.filter((n) => !n.done && n.sent === false);
+    // one batch: every unsent note goes at once, after one confirmation that says what will happen
+    const sendBox = el('<div class="send-notes"></div>');
+    const sendBtn = el(`<button class="primary send-notes-btn">Send notes to the agent (${unsent.length})</button>`);
+    sendBtn.disabled = !unsent.length;
+    sendBtn.onclick = () => {
+      const n = unsent.length, count = n <= 10 ? ['no', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'][n] : String(n);
+      const ask = el(`<div class="report confirm-send"><p>An agent will read ${n === 1 ? 'this note' : `these ${count} notes`} and make the changes. You can keep editing.</p></div>`);
+      const go = el('<button class="primary">Send them</button>'), no = el('<button class="quiet">Not yet</button>');
+      no.onclick = () => { if (this.name === 'notes') this.notesPanel(); };
+      go.onclick = async () => {
+        go.disabled = true;
+        try { await api.sendNotes(pid); a.toast('Sent. An agent is reading your notes now; its replies show here.', 6000); }
+        catch (e) { a.toast(`The notes were not sent: ${e.message}. Try again.`, 7000); }
+        if (this.name === 'notes') this.notesPanel();
+      };
+      const row = el('<div class="row"></div>'); row.append(go, no); ask.append(row);
+      sendBox.replaceChildren(ask);
+    };
+    sendBox.append(sendBtn);
+    if (!unsent.length && list.length) sendBox.append(el('<p class="tag">Every note has been sent.</p>'));
     // the notes kept with changes (the note bar under the views, or History): each with the changes it is about
     const groups = groupsOf(a.log?.applied() || [], a.log?.notes);
     if (groups.length) {
@@ -533,19 +557,34 @@ export class Panels {
       }
       parts.push(gl);
     }
-    parts.push(el('<h3>Notes so far</h3>'));
-    let list = [];
-    try { list = await api.notes(pid) || []; } catch (e) { parts.push(el(`<p>The notes could not be listed: ${esc(e.message)}</p>`)); }
+    parts.push(el('<h3>Your notes</h3>'), sendBox);
+    if (listErr) parts.push(el(`<p>The notes could not be listed: ${esc(listErr.message)}</p>`));
     if (!list.length) parts.push(el('<p class="tag">None yet.</p>'));
     const ol = el('<ol class="history notes free-notes"></ol>');
+    const redo = () => { if (this.name === 'notes') this.notesPanel(); };
+    const change = async (body) => { try { await api.note(pid, body); } catch (e) { a.toast(`Not changed: ${e.message}`); } redo(); };
     for (const n of [...list].reverse()) {
+      const st = n.done ? 'done' : n.sent === false ? 'unsent' : 'sent';
+      const said = { unsent: 'not sent yet', sent: 'sent: the agent is working on it', done: 'done' }[st];
       const things = n.things?.length ? (n.things.length === 1 ? `About ${n.things[0].name || 'one thing'}` : `About ${n.things.length} things`) : 'About the place';
-      const li = el(`<li class="${n.done ? 'future' : ''}"><span class="what">${esc(n.text)}<span class="note">${esc(things)} · ${esc(new Date(n.at).toLocaleString())} · ${n.done ? 'answered' : 'waiting for the agent'}</span>${n.reply ? `<span class="note reply">Agent: ${esc(n.reply)}</span>` : ''}</span></li>`);
+      const li = el(`<li class="${st === 'done' ? 'future' : ''}" data-state="${st}"><span class="what">${esc(n.text)}<span class="note">${esc(things)} · ${esc(new Date(n.at).toLocaleString())} · <span class="state">${said}</span></span>${n.reply ? `<span class="note reply">Agent: ${esc(n.reply)}</span>` : ''}</span></li>`);
+      const btns = el('<div class="row"></div>');
       const ids = (n.things || []).filter((t) => t.space === a.ours.space && a.placeRefsById().has(t.id)).map((t) => t.id);
-      if (ids.length) { const b = el('<button class="quiet">Select</button>'); b.onclick = () => { this.T.use('select'); a.selection = new Set(ids); this.T.selectionChanged(); }; li.append(b); }
-      const d = el(`<button class="quiet">${n.done ? 'Reopen' : 'Done'}</button>`);
-      d.onclick = async () => { try { await api.note(pid, { id: n.id, done: !n.done }); } catch (e) { a.toast(`Not changed: ${e.message}`); } if (this.name === 'notes') this.notesPanel(); };
-      li.append(d); ol.append(li);
+      if (ids.length) { const b = el('<button class="quiet">Select</button>'); b.onclick = () => { this.T.use('select'); a.selection = new Set(ids); this.T.selectionChanged(); }; btns.append(b); }
+      if (st === 'unsent') {
+        const ed = el('<button class="quiet">Edit</button>');
+        ed.onclick = () => {
+          const box = el('<textarea class="text" rows="3" aria-label="The words of this note"></textarea>'); box.value = n.text;
+          const ok = el('<button class="primary">Keep</button>'); ok.onclick = () => { const t = box.value.trim(); if (t) change({ id: n.id, text: t }); };
+          const r = el('<div class="row"></div>'); r.append(box, ok); li.append(r); box.focus();
+        };
+        const rm = el('<button class="quiet">Delete</button>'); rm.onclick = () => change({ id: n.id, delete: true });
+        btns.append(ed, rm);
+      } else {
+        const d = el(`<button class="quiet">${n.done ? 'Reopen' : 'Mark done'}</button>`); d.onclick = () => change({ id: n.id, done: !n.done });
+        btns.append(d);
+      }
+      li.append(btns); ol.append(li);
     }
     parts.push(ol);
     // the panel on show was typed into while the list was fetched: its words, and the cursor, carry over

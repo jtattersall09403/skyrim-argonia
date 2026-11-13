@@ -651,26 +651,70 @@ def test_19_missing_texture_fallback(pad):
 
 
 # ---------- saved work is never applied silently ----------
-def test_20_notes_for_the_agent(pad, server):
-    """A note about the place, and one about a selected thing, reach the server with what they are about."""
+def test_20_notes_for_the_agent(pad, browser, server):
+    """Notes about the place, and about a selected thing, are kept unsent with what they are about; they survive the
+    tab closing; one may be changed or deleted; Send sends every unsent note as one batch after one confirmation,
+    and they show as sent, then as done with the agent's reply."""
     pid = pad.ev("studio.place.place_id")
     pad.ev("studio.selection.clear(); studio.tools.selectionChanged(); studio.tools.use('notes')")
     pad.page.wait_for_selector("textarea.note-text")
-    pad.page.fill("textarea.note-text", "More reeds along the bank")
-    pad.page.get_by_role("button", name="Leave the note").click()
-    pad.page.wait_for_function("document.querySelector('ol.free-notes li')", timeout=10000 * SLOW)
+    for words in ("More reeds along the bank", "A note to delete"):
+        pad.page.fill("textarea.note-text", words)
+        pad.page.get_by_role("button", name="Keep the note", exact=True).click()
+        pad.page.wait_for_function(f"document.querySelectorAll('ol.free-notes li').length >= {1 if words.startswith('More') else 2}",
+                                   timeout=10000 * SLOW)
     rid = pad.ev("[...studio.model.spaces.exterior.refs.values()].find((r) => r.kind === 'building').id")
     pad.ev("(id) => { studio.tools.use('select'); studio.selection = new Set([id]); studio.tools.selectionChanged(); }", rid)
     pad.page.get_by_role("button", name="Leave a note about this for the agent").click()
     pad.page.wait_for_selector("textarea.note-text")
     pad.page.fill("textarea.note-text", "Turn this to face the water")
-    pad.page.get_by_role("button", name="Leave the note").click()
-    pad.page.wait_for_function("document.querySelectorAll('ol.free-notes li').length === 2", timeout=10000 * SLOW)
+    pad.page.get_by_role("button", name="Keep the note", exact=True).click()
+    pad.page.wait_for_function("document.querySelectorAll('ol.free-notes li').length === 3", timeout=10000 * SLOW)
     notes = json.load(urllib.request.urlopen(f"{server}/api/place/{pid}/notes"))
-    assert [n["text"] for n in notes] == ["More reeds along the bank", "Turn this to face the water"]
-    assert notes[0]["things"] == [] and [t["id"] for t in notes[1]["things"]] == [rid] and len(notes[1]["view"]["at"]) == 3
-    pad.shot("20-notes")
+    assert [n["text"] for n in notes] == ["More reeds along the bank", "A note to delete", "Turn this to face the water"]
+    assert all(n["sent"] is False for n in notes), "kept, not sent"
+    assert notes[0]["things"] == [] and [t["id"] for t in notes[2]["things"]] == [rid] and len(notes[2]["view"]["at"]) == 3
     pad.ev("studio.selection.clear(); studio.tools.selectionChanged(); studio.panels.close()")
+
+    # the tab closes; a new one (the tablet upright) finds the notes still unsent, and edits, deletes and sends them
+    other = open_pad(browser, server, PORTRAIT, choose=None)
+    if other.ev("!document.getElementById('intro').hidden"):
+        other.page.click("#intro button")
+    if other.page.locator("#start .sheet").is_visible():
+        other.page.get_by_role("button", name="Start from the builder's draft").click()
+    other.ev("studio.tools.use('notes')")
+    other.page.wait_for_selector("ol.free-notes li[data-state=unsent]")
+    assert other.page.locator("ol.free-notes li[data-state=unsent]").count() == 3
+    send = other.page.locator("button.send-notes-btn")
+    assert send.inner_text() == "Send notes to the agent (3)"
+    row = other.page.locator("ol.free-notes li", has_text="A note to delete")
+    row.get_by_role("button", name="Delete").click()
+    other.page.wait_for_function("document.querySelectorAll('ol.free-notes li').length === 2", timeout=10000 * SLOW)
+    row = other.page.locator("ol.free-notes li", has_text="More reeds along the bank")
+    row.get_by_role("button", name="Edit").click()
+    row.locator("textarea").fill("More reeds along the east bank")
+    row.get_by_role("button", name="Keep").click()
+    other.page.wait_for_function("document.querySelector('ol.free-notes').textContent.includes('east bank')", timeout=10000 * SLOW)
+    assert other.page.locator("button.send-notes-btn").inner_text() == "Send notes to the agent (2)"
+    other.page.locator("button.send-notes-btn").click()
+    assert other.page.locator(".confirm-send p").inner_text() == "An agent will read these two notes and make the changes. You can keep editing."
+    other.shot("20-notes-confirm")
+    assert not json.load(urllib.request.urlopen(f"{server}/api/_notes_sent")), "nothing is sent before the confirmation"
+    other.page.get_by_role("button", name="Send them").click()
+    other.page.wait_for_function("document.querySelectorAll('ol.free-notes li[data-state=sent]').length === 2", timeout=10000 * SLOW)
+    assert json.load(urllib.request.urlopen(f"{server}/api/_notes_sent")) == [["n1", "n3"]], "one batch: both notes"
+    assert other.page.locator("button.send-notes-btn").is_disabled()
+    assert other.page.locator("ol.free-notes li[data-state=sent] button", has_text="Edit").count() == 0, "a sent note no longer changes"
+    # the agent answers one: it shows as done with the reply
+    first = json.load(urllib.request.urlopen(f"{server}/api/place/{pid}/notes"))[0]["id"]
+    urllib.request.urlopen(urllib.request.Request(f"{server}/api/place/{pid}/notes", method="POST",
+                                                  data=json.dumps({"id": first, "done": True, "reply": "Added reeds on the east bank."}).encode()))
+    other.ev("studio.tools.use('select'); studio.tools.use('notes')")
+    other.page.wait_for_selector("ol.free-notes li[data-state=done] .reply")
+    assert "Agent: Added reeds on the east bank." in other.page.locator("ol.free-notes li[data-state=done]").inner_text()
+    other.shot("20-notes")
+    assert not other.errors, other.errors
+    other.page.context.close()
     assert not pad.errors, pad.errors
 
 

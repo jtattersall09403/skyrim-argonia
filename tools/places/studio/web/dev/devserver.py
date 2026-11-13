@@ -59,6 +59,7 @@ class State:
         self.bdir, self.pdir, self.web, self.mismatch = Path(bundles), Path(places), Path(web), mismatch
         self.saves, self.real = Path(saves), real
         self.notes = {}
+        self.sent_batches = []   # each Send: the ids it sent (the real server starts the agent on them)
         # the database's sources and the asset catalogue's item rows (Stock): the fixture's copies, or the repo's
         self.sources = REPO / "newworld" / "sources" if real else self.pdir / "sources"
         self.catalogue = (self.bdir.parent if real else self.pdir) / "catalogue" / "bases.jsonl"
@@ -319,6 +320,8 @@ class H(BaseHTTPRequestHandler):
                                    "awake": {"job_alive": st.hb_started is not None}})
         if p == "/api/_heartbeats":
             return self.send(200, {"count": st.heartbeats})
+        if p == "/api/_notes_sent":   # the tests' view of each Send
+            return self.send(200, st.sent_batches)
         m = re.fullmatch(r"/api/place/([^/]+)/notes", p)
         if m:
             return self.send(200, st.notes.get(m[1], []))
@@ -422,12 +425,32 @@ class H(BaseHTTPRequestHandler):
                 rows = self.st.notes.setdefault(m[1], [])
                 if b.get("id"):
                     note = next(r for r in rows if r["id"] == b["id"])
-                    note["done"] = bool(b.get("done", True))
+                    if (b.get("delete") or "text" in b) and note.get("sent"):
+                        return self.send(400, {"error": "this note has been sent to the agent, so it can no longer change"})
+                    if b.get("delete"):
+                        rows.remove(note)
+                    elif "text" in b:
+                        note["text"] = b["text"]
+                    else:   # the owner's Mark done, or the tests standing in for the agent's `notes done --reply`
+                        note["done"] = bool(b.get("done", True))
+                        if b.get("reply"):
+                            note["reply"] = b["reply"]
                 else:
-                    note = {"id": f"n{len(rows) + 1}", "at": now(), "text": b.get("text", ""), "things": b.get("things", []),
-                            "view": b.get("view"), "done": False}
+                    note = {"id": f"n{max((int(r['id'][1:]) for r in rows), default=0) + 1}", "at": now(), "text": b.get("text", ""),
+                            "things": b.get("things", []), "view": b.get("view"), "sent": False, "done": False}
                     rows.append(note)
             return self.send(200, note)
+        m = re.fullmatch(r"/api/place/([^/]+)/notes/send", p)
+        if m:
+            self.body()
+            with self.st.lock:
+                rows = [r for r in self.st.notes.get(m[1], []) if not r.get("sent")]
+                for r in rows:
+                    r.update(sent=True, sent_at=now(), batch="b1")
+                self.st.sent_batches.append([r["id"] for r in rows])
+            if not rows:
+                return self.send(400, {"error": "there are no unsent notes to send"})
+            return self.send(202, {"batch": "b1", "sent": rows, "job": f"notes.{m[1]}.dev"})
         m = re.fullmatch(r"/api/place/([^/]+)/finalise", p)
         if m:
             try:
