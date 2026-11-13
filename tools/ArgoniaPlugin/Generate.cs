@@ -195,12 +195,15 @@ static class Generate
             for (var (kit, masters) = (QuestKit.Taken(), Overrides.Masters.ToList()); ; QuestKit.Taken(kit), Overrides.Masters.Clear(), Overrides.Masters.AddRange(masters))
             {
                 forms = [.. all.Where(f => !refused.Contains(QuestForm.QuestIdOf(f.form)))];
-                try { QuestForm.Build((SkyrimMod)mod.DeepCopy(), mods, forms, FormIds.Load(QuestForm.FormIdsPath)); QuestKit.Taken(kit); Overrides.Masters.Clear(); Overrides.Masters.AddRange(masters); break; }
+                var outw = Console.Out; Console.SetOut(TextWriter.Null);
+                try { QuestForm.Build((SkyrimMod)mod.DeepCopy(), mods, forms, FormIds.Load(QuestForm.FormIdsPath)); Console.SetOut(outw); QuestKit.Taken(kit); Overrides.Masters.Clear(); Overrides.Masters.AddRange(masters); break; }
                 catch (QuestForm.Refused e) when (e.Quest.Length > 0)
                 {
+                    Console.SetOut(outw);
                     Console.WriteLine($"{e.Message} (left out)");
                     refused.Add(e.Quest);
                 }
+                finally { Console.SetOut(outw); }
             }
         var ids = FormIds.Load(QuestForm.FormIdsPath);
         var built = QuestForm.Build(mod, mods, forms, ids);

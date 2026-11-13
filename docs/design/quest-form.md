@@ -107,7 +107,8 @@ has no reference, so no result switches or locks it and no trigger watches it.
 when it hangs on an enable parent or is the wrong kind (a person must be an actor, a door a door). A new ref is a
 persistent placed reference (flagged disabled when it starts off) at the spot its anchor gives:
 - the spot is the form's `at` when it has one, else the anchor ref's own position (`near`); a `place` anchor needs `at`;
-- a load door as the anchor means where the player comes out of it, a step (100 units) further on, so the spot is in
+- a load door as the anchor of the person who speaks first (or of a ref with no `at`) means where the player comes out
+  of it, a step (100 units) further on, so the spot is in
   front of the door and clear of the arrival point;
 - then the rule: `navmesh` takes the centre of the nearest free triangle of the cell's navmeshes (an exterior spot also
   looks in the eight cells round it) and is refused when that is over 300 units from the spot; `surface` takes the

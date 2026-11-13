@@ -121,6 +121,7 @@ static class QuestForm
         public Dictionary<FormKey, FormKey> CellWorld = [];
         public Dictionary<FormKey, P3Float> Arrivals = [];
         public Dictionary<FormKey, INavigationMeshGetter> NavWin = [];
+        public List<P3Float> Stood = [];   // where the people placed on navmesh stand, so no two share a spot
         public Dictionary<string, (string Quest, string Same, FormKey Placed, FormKey Base, bool Npc, bool Created)> Shared = [];   // a load door: where the player comes out of it
         public QuestKit? Kit;
         public FormKey Key(string name) => new(Mod.ModKey, Ids.Take(Kind, name));
@@ -622,8 +623,10 @@ static class QuestForm
     {
         var rule = S(anchor, "rule");
         FormKey cell, world; bool interior; P3Float p;
-        // a load door as the anchor: where the player comes out of it, whatever `at` says (the door decides the spot)
-        var nearDoor = anchor.TryGetProperty("near", out var nd) && Arrival(c, nd.GetString()!);
+        // a load door as the anchor of the person who speaks first, or of a ref with no `at`: where the player comes out of
+        // it, whatever `at` says (the door decides the spot); anyone else stands at `at`
+        var speaksFirst = A(b.F, "lines").Any(l => S(l, "kind") == "speaks_first" && S(l, "speaker") == r.Id);
+        var nearDoor = anchor.TryGetProperty("near", out var nd) && Arrival(c, nd.GetString()!) && (speaksFirst || !r.Json.TryGetProperty("at", out _));
         if (!nearDoor && r.Json.TryGetProperty("at", out var at))
         {
             interior = B(at, "interior");
@@ -651,22 +654,24 @@ static class QuestForm
         else throw c.No("placement", $"{r.Id}: a place anchor needs the form's `at` (where in the place it stands)");
         if (rule == "navmesh")
         {
-            var mesh = NearestMesh(c.Mods, Neighbours(c.Grid, cell, world, interior, p), p);
-            var off = mesh is { } mk ? NearestTriangle(c, mk, p).dist : float.PositiveInfinity;
-            if (off > 300)
+            // the nearest point of a navmesh at the spot's level: by a load door, at the player's feet (within 100 up or
+            // down, so never the water's navmesh under a pier); else within 200 of the form's height
+            var on = NearestOn(c, Neighbours(c.Grid, cell, world, interior, p), p, nearDoor ? 100 : 200);
+            if (on is { } o && (o.dist <= 300 || nearDoor))
             {
-                // no navmesh where the form puts a person: one who is not fought stands at the form's exact spot and will not
-                // walk; a person the player fights, or one placed by a door, needs navmesh
-                var why = mesh == null ? $"no navmesh in or beside cell {cell}" : $"the nearest navmesh of {cell} is {off:F0} units from its spot";
-                if (r.Kind != "person" || r.Hostile || nearDoor || !r.Json.TryGetProperty("at", out _))
-                    throw c.No("placement", $"{r.Id}: {why}{(r.Hostile ? " (a person the player fights must stand on navmesh)" : "")}");
-                r.Standing = true;
-                Console.WriteLine($"questform {c.Q}: {r.Id} stands at its spot {p.X:F0},{p.Y:F0},{p.Z:F0} in {cell}: {why}, so they will not walk");
-                return (cell, world, interior, p);
+                var at2 = new P3Float(MathF.Round(o.at.X), MathF.Round(o.at.Y), MathF.Round(o.at.Z));
+                if (nearDoor && o.dist > 300)
+                    Console.WriteLine($"questform {c.Q}: {r.Id}: no navmesh within 300 of where the player comes out of {r.Door!.Value.door}; the nearest at that level is {o.dist:F0} units on, at {at2.X:F0},{at2.Y:F0},{at2.Z:F0}");
+                return (interior ? cell : CellAt(c, world, at2), world, interior, at2);
             }
-            var s = c.Kit!.Snap(mesh!.Value, p.X, p.Y);
-            if (MathF.Abs(s.X - p.X) > 300 || MathF.Abs(s.Y - p.Y) > 300) throw c.No("placement", $"{r.Id}: the nearest free navmesh of {cell} is {MathF.Sqrt((s.X - p.X) * (s.X - p.X) + (s.Y - p.Y) * (s.Y - p.Y)):F0} units from its spot");
-            return (cell, world, interior, s);
+            // no navmesh where the form puts a person: one who is not fought stands at the form's exact spot and will not
+            // walk; a person the player fights, or one placed by a door, needs navmesh
+            var why = on == null ? $"no navmesh at its level in or beside cell {cell}" : $"the nearest navmesh at its level is {on.Value.dist:F0} units from its spot";
+            if (r.Kind != "person" || r.Hostile || nearDoor || !r.Json.TryGetProperty("at", out _))
+                throw c.No("placement", $"{r.Id}: {why}{(r.Hostile ? " (a person the player fights must stand on navmesh)" : "")}");
+            r.Standing = true;
+            Console.WriteLine($"questform {c.Q}: {r.Id} stands at its spot {p.X:F0},{p.Y:F0},{p.Z:F0} in {cell}: {why}, so they will not walk");
+            return (cell, world, interior, p);
         }
         var assets = new Surface.Assets(Surface.Paths);
         List<Surface.Hit> hits;
@@ -714,6 +719,50 @@ static class QuestForm
         return best;
     }
 
+    /// The nearest point of the winning navmeshes of those cells to the spot in x and y, among triangles whose height
+    /// there is within `dz` of the spot's (a used point, where another placed person stands, is passed over): the
+    /// navmesh, the point and its distance; null when none.
+    static (FormKey mesh, P3Float at, float dist)? NearestOn(Ctx c, List<FormKey> cells, P3Float p, float dz, bool take = true)
+    {
+        var want = cells.ToHashSet();
+        var meshes = c.Mods.SelectMany(m => m.EnumerateMajorRecords<ICellGetter>().Where(x => want.Contains(x.FormKey))).SelectMany(x => x.NavigationMeshes.Select(n => n.FormKey)).ToHashSet();
+        var navs = Navs(c);
+        (FormKey, P3Float, float)? best = null;
+        foreach (var k in meshes)
+        {
+            if (!navs.TryGetValue(k, out var n) || n.Data is not { } d) continue;
+            var v = d.Vertices;
+            foreach (var t in d.Triangles)
+            {
+                P3Float a = v[t.Vertices.X], b = v[t.Vertices.Y], e = v[t.Vertices.Z];
+                var (dist, z) = PlaceCheck.Nearest2D(a, b, e, p.X, p.Y);
+                if (MathF.Abs(z - p.Z) > dz || (best is { } bb && dist >= bb.Item3)) continue;
+                // the point itself: the spot when inside, else the nearest point of the edge (a step in from it)
+                var q = Inward(a, b, e, p, dist);
+                if (take && c.Stood.Any(s0 => (s0.X - q.X) * (s0.X - q.X) + (s0.Y - q.Y) * (s0.Y - q.Y) < 60 * 60)) continue;
+                best = (k, new P3Float(q.X, q.Y, z), dist);
+            }
+        }
+        if (take && best is { } r) c.Stood.Add(r.Item2);
+        return best;
+    }
+    // The point of a triangle nearest x,y: the spot itself when it is inside, else a point 20 units in from the nearest
+    // edge point towards the triangle's centre.
+    static P3Float Inward(P3Float a, P3Float b, P3Float e, P3Float p, float dist)
+    {
+        if (dist <= 0) return p;
+        var best = (d: float.MaxValue, x: 0f, y: 0f);
+        foreach (var (u, w) in new[] { (a, b), (b, e), (e, a) })
+        {
+            float ex = w.X - u.X, ey = w.Y - u.Y, len = ex * ex + ey * ey;
+            var t = len < 1e-6f ? 0 : Math.Clamp(((p.X - u.X) * ex + (p.Y - u.Y) * ey) / len, 0, 1);
+            float px = u.X + t * ex, py = u.Y + t * ey, dd = (p.X - px) * (p.X - px) + (p.Y - py) * (p.Y - py);
+            if (dd < best.d) best = (dd, px, py);
+        }
+        float cx = (a.X + b.X + e.X) / 3, cy = (a.Y + b.Y + e.Y) / 3, l = MathF.Max(1, MathF.Sqrt((cx - best.x) * (cx - best.x) + (cy - best.y) * (cy - best.y)));
+        var step = MathF.Min(20, l);
+        return new P3Float(best.x + step * (cx - best.x) / l, best.y + step * (cy - best.y) / l, p.Z);
+    }
     /// The triangle of a navmesh (the winning copy) whose centre is nearest the spot in x and y, and that distance.
     static (int tri, float dist) NearestTriangle(Ctx c, FormKey mesh, P3Float p)
     {
@@ -980,9 +1029,13 @@ static class QuestForm
         if (r.Fresh && r.Door is { } dr && c.Wheres.TryGetValue(r.Placed, out var wh))
         {
             var dist = MathF.Sqrt((wh.Pos.X - dr.arrival.X) * (wh.Pos.X - dr.arrival.X) + (wh.Pos.Y - dr.arrival.Y) * (wh.Pos.Y - dr.arrival.Y));
-            if (dist > GreetReach) throw c.No("speaks-first", $"{r.Id} stands {dist:F0} units from where the player comes out of {dr.door}, beyond the greeting's {GreetReach}");
-            if (!Walk(c, (wh.World, wh.Cell, wh.Interior), dr.arrival, wh.Pos)) throw c.No("speaks-first", $"{r.Id}: no walk over navmesh from where the player comes out of {dr.door} to his spot");
-            Console.WriteLine($"questform {c.Q}: {r.Id} speaks first from {wh.Pos.X:F0},{wh.Pos.Y:F0},{wh.Pos.Z:F0}, {dist:F0} units from where the player comes out of {dr.door} ({dr.arrival.X:F0},{dr.arrival.Y:F0},{dr.arrival.Z:F0}), facing it; on navmesh joined to it");
+            // the player's arrival on navmesh: then a walk must join it to him; with no navmesh there, he stands on the
+            // nearest navmesh at that level (Spot) and greets once the player has walked within reach
+            var arrivalOn = NearestOn(c, Neighbours(c.Grid, wh.Cell, wh.World, wh.Interior, dr.arrival), dr.arrival, 100, take: false) is { dist: <= 150 };
+            if (arrivalOn && !Walk(c, (wh.World, wh.Cell, wh.Interior), dr.arrival, wh.Pos)) throw c.No("speaks-first", $"{r.Id}: no walk over navmesh from where the player comes out of {dr.door} to his spot");
+            if (arrivalOn && dist > GreetReach) throw c.No("speaks-first", $"{r.Id} stands {dist:F0} units from where the player comes out of {dr.door}, beyond the greeting's {GreetReach}");
+            Console.WriteLine($"questform {c.Q}: {r.Id} speaks first from {wh.Pos.X:F0},{wh.Pos.Y:F0},{wh.Pos.Z:F0}, {dist:F0} units from where the player comes out of {dr.door} ({dr.arrival.X:F0},{dr.arrival.Y:F0},{dr.arrival.Z:F0}), facing it; "
+                + (arrivalOn ? "a walk over navmesh joins them" : $"no navmesh where the player comes out, so he greets once the player is within {GreetReach} of him"));
         }
         var src = c.Mods[0].Packages.FirstOrDefault(p => p.FormKey == ForceGreetCopy) ?? throw c.No("speaks-first", "vanilla MS05InductionForcegreet is not in the load order");
         var p = src.Duplicate(c.Key($"pack:{b.Qid}:{S(l, "id")}"));
