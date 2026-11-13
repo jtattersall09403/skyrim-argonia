@@ -510,3 +510,267 @@ been told by the patron not to look; and afterwards working out how she knew whi
 | clear the track | Speech 35, 150 gold, or a weapon skill or Destruction | line conditions; one stage per way; a death, the player's choice, sets a stage |
 | she says where she will go | none | one line per case, gated on her alive |
 | she is found there | none | Never-Sold's line indoors sets an ending, which switches people and things outdoors, unlocks a door and changes regard |
+
+### BC02. One Out of the Smoke
+
+Offered once BC01 has ended completed.
+
+**What a new player is told, and when.** Never-Sold's briefing is short: three people are held in the lock-up of
+the Rose's gatehouse, outside its wall, by the families who run it; the Rose is the old prison at the end of the
+track that runs south past Reedfall Farm, "and you go no further than its gatehouse: past it the heirs kill
+strangers on sight, and they are better at it than you"; one of the three can be got out; she wants the one held
+for words. Everything else is Tsaxi's to tell on the spot, in answers the player picks: who she is, what "put under"
+means, why only one, and where the Rose's reckoner went. The ferry-keeper at Lujei Ferry tells the rest of that.
+
+**The hidden truth.** Before the player came to Blackrose a fire went through the Rose's upper cells
+([40-factions](../40-factions.md) §39). The heirs moved three of their held out to the gatehouse lock-up under one
+gate-keeper, Third-Born Tsaxi, who counts heads and cannot read. The leaves that say who is held for what were
+singed. The Rose's reckoner, the one heir who reads them, carried them over the channel to Lujei, where a few
+families "descended from the old Imperial prison's inmates" still write (D tulmek-washes, Lujei), to have them
+copied fair before they crumbled (X). He came back by night on the cable raft with the leaves in a sealed chest (D
+tulmek-washes, Lujei: "a night crossing with a passenger's sealed chest"). In mid-channel the cable was cut (D
+tulmek-washes, Lujei Ferry: "a raft cable that has been cut") by the poleman who was taking him over, a man of the
+Sheh-Ara families the Rose's raiders emptied out (X; D tulmek-washes, Lujei: "a missing ferryman"). The raft swung
+down into the reeds below the landing, where the channel's two crocodiles lie (D tulmek-washes, Lujei Ferry). The
+reckoner went into the water; his purse is in the reeds (D: "a drowned traveller's purse in the reeds") and the
+chest is still on the stranded raft, because nobody at the ferry will go down among the crocodiles for something
+that is the Rose's. Until somebody reads those leaves the count is whatever Tsaxi says, and she can say that one of
+three died of the smoke. Not two. Of the two younger held, one is there for words and one for a killing, and the
+killer will be put under when the leaves are read. So both say they are the one held for words, and each can recite
+the words, because the whole yard heard them. The old woman knows which is which and will not say, because the
+killing was done for her.
+
+- **Walks-Far** (man) said in the yard that the hatch over the drowned cells should be opened and the Rose left. He
+  owes three seasons for it.
+- **Mends-Nets** (woman) drowned a prison-born shelter-reckoner, Otheel, in a net in the wash-pool, after he added a
+  third winter to an old woman's roof-owing. She nurses that old woman's cough now, and she still has the key she
+  took off him.
+- **Seven-Floods** (old woman), Rows-For-Another's mother, of Sheh-Ara, owes the heirs for a roof and always will
+  (`topics/labour-and-bondage.md:136`). The smoke is in her chest. She wants to die near the lake, so that she gets
+  home to the drowned tree (`:119`), and she wants Mends-Nets taken first. The game names her "Old Seven-Floods".
+
+**The people.**
+
+| Who | Where they stand | What they want | If they die |
+|---|---|---|---|
+| Never-Sold | inside her house, Blackrose | the one held for words brought out, "the one we can stand beside in daylight" | the quest fails |
+| Third-Born Tsaxi, gate-keeper, prison-born, never further from the Rose than this door (woman), a fighter of the Deadly band; the one heir who speaks, shared with the main quest | at the gatehouse of the Rose, out of reach of the archers on the wall | to answer for her count with her neck still on; her reckoner found | nobody is left to swear to any count: all three can go, at a price; her brother keeps the gate afterwards |
+| Walks-Far, Mends-Nets, Seven-Floods | inside the barred lock-up of the gatehouse, spoken to through its bars | above | the quest fails, until one has been told to go |
+| Nuleem-Ei, ferry-keeper (woman) | at the landing, Lujei Ferry | her cable mended and her poleman home; she will not say what she thinks he did | nothing; the raft can be seen from the landing |
+| two crocodiles | the place's own, in the reeds below the landing, at the place's Dangerous band | | nothing; their deaths move nothing |
+
+Found afterwards, each switched on by an ending: **Walks-Far** at Blackrose's boardwalk tavern; **Mends-Nets** at
+Lujei's fish-drying racks; **Seven-Floods** at Lujei's cookhouse; **Third-Born Okaw**, Tsaxi's brother, at the
+gatehouse if she is dead.
+
+**The things.**
+
+| Thing | Where | Lock, key, owner | Holds or says |
+|---|---|---|---|
+| Never-Sold's coin | given at the start | 100 gold | Tsaxi's price for a blind eye |
+| the lock-up key | carried by Tsaxi | pickpocketed, or taken from her body | opens the lock-up door |
+| the lock-up door | the gatehouse of the Rose | Adept lock; the lock-up key; a line of Tsaxi's unlocks it | the three stand behind it |
+| the drowned traveller's purse | in the reeds below the landing, Lujei Ferry (the record's) | no lock; nobody's | a small brass key; 40 gold; a gold seal ring |
+| the sealed chest | on the stranded raft in the same reeds | Expert lock; the small brass key; nobody's | the singed leaves; 150 gold: the reeds' reward |
+| the singed leaves | in the sealed chest | a readable book, one bundle | three entries in the Rose's hand: "Walks-Far, for words in the yard, three seasons"; "Mends-Nets, for the death of Reckoner Otheel, to be put under"; "Seven-Floods of Sheh-Ara, shelter, standing". Each names the kin: "by this the hunters know where to look" |
+| Otheel's key | given by the stage at which Mends-Nets is told to go | | opens the shelter-reckoner's strongbox |
+| the shelter-reckoner's strongbox | the gatehouse of the Rose | Master lock; Otheel's key; nobody's now | 300 gold of roof-owings |
+| the net-chest key | given by the stage at which Seven-Floods is told to go | | opens her family's net-chest on the dry platform at Sheh-Ara (a need of that place, for when it is built) |
+
+**The ways through.**
+
+- *Who is who* (three ways, any one enough, none required):
+  1. *the leaves* (Sneak or a fight; Lockpicking or the key). The raft lies in the reeds below Lujei Ferry's
+     landing, among two crocodiles of the Dangerous band, warned of twice (Tsaxi: "the lake took him, and the lake
+     has teeth there"; Nuleem-Ei: "nobody goes down below the landing"). A fighter kills them, the quest's hard
+     fight, with their hides and the chest's gold for it; a sneak wades in from the bank side and is not seen. The
+     chest is sealed: an Expert lock, or the small key from the purse in the same reeds.
+  2. *Seven-Floods*: she tells the truth to a player who eases her breathing (Restoration 25), who knows what eases
+     a smoke-chest (Alchemy 25), or who presses her gently (Speech 40). Refused: "Ask me which of my daughters I
+     would drown."
+  3. *thinking*: Tsaxi, asked how the reckoner Otheel died, says he was drowned in a net. One of the two is a
+     net-mender by name and by her hands. No skill, and no certainty.
+- *Getting one out* (the held stay where they stand; the one chosen goes after the player has left):
+  1. *Tsaxi's word*: Speech 35, or the 100 gold, and she will lose one to the smoke and unlocks the lock-up. Each
+     is a stage. Refused: "My count is my neck. Give me a reason I can carry."
+  2. *the leaves given her*, with the news that nobody is coming: the same word with no check, and she takes the
+     leaves. "Then the count is mine, and I say one died."
+  3. *without her leave*: her key lifted from her belt (Pickpocket), or the lock-up's Adept lock picked
+     (Lockpicking), under her eye. Opening the door is the step. She will swear to one death sooner than own that
+     she lost one, and the reckoner who could say otherwise is in the lake.
+  4. *Tsaxi dead*: the player's choice, a fight of the Deadly band and far the hardest thing in these three quests.
+     Then all three can go.
+
+Whichever one is chosen while Tsaxi lives, the other two refuse to follow: "One is smoke. Two is a hunt, and the
+hunt goes to our kin."
+
+**The stages.**
+
+| Stage | What moves it | Journal gist | Objective and its marker |
+|---|---|---|---|
+| 0 | hidden start; offered once BC01 has ended completed and while Never-Sold and the three live | | |
+| 10 | Never-Sold's line (gives 100 gold) | Never-Sold sent me to the gatehouse of the Rose. Three are held in its lock-up and one can be got out. She wants the one held for words. | Speak to the gate-keeper, or to the three (Tsaxi; the three) |
+| 20 | Tsaxi's line "Who are the three?" | Tsaxi told me she can count one lost to the smoke and not two, that one of the two young ones drowned a reckoner, and that the leaves went with the Rose's reckoner, who crossed at Lujei Ferry by night with a sealed chest and did not land. | Learn who is who, if you can; get one of the three out (Tsaxi; the lock-up door; the leaves; Seven-Floods) |
+| 30 | taking the singed leaves (open at 20; noticed at 20 if taken before) | I took the Rose's singed leaves out of the sealed chest on the stranded raft, in the reeds below Lujei Ferry. | as at 20 |
+| 33, 34, 35 | Tsaxi's line: Speech 35 (33); 100 gold (34, taken); the leaves given (35, taken; at 30 only). Each unlocks the lock-up | Tsaxi will count one lost to the smoke. I have only to say which. | Tell one of the three to go (each) |
+| 36 | opening the lock-up door without her word (open at 20 and 30) | I opened the lock-up without the gate-keeper's leave. | Tell one of the three to go (each) |
+| 38 | Tsaxi dead (the player's choice; open from 10); or, killed before the job, Seven-Floods' line saying so | Tsaxi is dead. Nobody is left to swear to any count. | Tell one of the three to go (each) |
+| 41, 42, 43 | a line to Walks-Far, Mends-Nets or Seven-Floods, "You are the one. Go when I am gone." (at 33 to 38; that one alive). 42 gives Otheel's key; 43 gives the net-chest key | I told the one I chose to go, and they said where. The other two stay. | Tell Never-Sold (her) |
+| 44 | Seven-Floods' line "The gate-keeper is dead. All of you, go." (at 38) | I told all three to go. | Tell Never-Sold (her) |
+| 91, 92, 93 | Never-Sold's line at 41, 42, 43 (switches the freed one off at the lock-up and on where they said) | I told Never-Sold who came out, and who did not. | ends, completed |
+| 94 | Never-Sold's line at 44 (switches all three, and Tsaxi's brother on at the gate) | I told Never-Sold the lock-up is empty and the gate-keeper dead. | ends, completed |
+| 95 to 98 | Never-Sold dead (95); before one has been told to go, Walks-Far, Mends-Nets or Seven-Floods dead (96, 97, 98) | Nobody can be brought out now. | ends, failed |
+
+Once one of the three has been told to go (41 to 43), killing Tsaxi frees nobody further: the other two have chosen
+to stay and say so. Leaves taken after Tsaxi has given her word are simply held, and can be read.
+
+```sketch
+quest BC02 faction "One Out of the Smoke"
+start game 0
+
+place seat indoors "Never-Sold's House, Blackrose"
+place gate outdoors "the gatehouse of the Rose"
+place landing outdoors "the landing, Lujei Ferry"
+place reeds outdoors "the reeds below the landing, Lujei Ferry"
+place boardwalk outdoors "the boardwalk tavern, Blackrose"
+place racks outdoors "the fish-drying racks, Lujei"
+place cookhouse outdoors "the cookhouse, Lujei"
+
+person neversold at seat "Never-Sold"
+person tsaxi at gate level 30 "Third-Born Tsaxi"
+person okaw at gate level 30 off "Third-Born Okaw"
+person walks at gate "Walks-Far"
+person mends at gate "Mends-Nets"
+person floods at gate "Old Seven-Floods"
+person nuleem at landing "Nuleem-Ei"
+person croc1 at reeds existing "Crocodile"
+person croc2 at reeds existing "Channel Crocodile"
+person walksout at boardwalk off "Walks-Far"
+person mendsout at racks off "Mends-Nets"
+person floodsout at cookhouse off "Old Seven-Floods"
+thing lockupkey on tsaxi "Lock-Up Key"
+door lockup at gate locked adept key lockupkey "Lock-Up Door"
+thing purse at reeds container holds gold 40 "Drowned Traveller's Purse"
+thing chestkey in purse "Small Brass Key"
+thing raftchest at reeds container locked expert key chestkey holds gold 150 "Sealed Chest on the Stranded Raft"
+thing leaves in raftchest readable "Singed Leaves of the Rose"
+thing strongbox at gate container locked master key otheelkey holds gold 300 "Shelter-Reckoner's Strongbox"
+item otheelkey "Otheel's Key"
+item netkey "Key to a Sheh-Ara Net-Chest"
+item gloves "Gloves of Minor Pickpocketing"
+
+stage 0 hidden
+stage 10 "Never-Sold sent me to the Rose, the old prison at the end of the track south of Reedfall Farm. Since a fire in its upper cells, three people are held in the lock-up of its gatehouse, outside the wall. One of them can be got out, and she wants the one held for words. She gave me 100 gold for the gate-keeper, and told me to go no further than the gatehouse." do give-gold 100
+stage 20 "Third-Born Tsaxi keeps the Rose's gate and counts heads. She told me she can count one of the three lost to the smoke and not two; that one of the two young ones drowned a reckoner and will be put under when the leaves are read; and that the leaves went with the Rose's reckoner, who crossed at Lujei Ferry by night with a sealed chest and did not land."
+stage 30 "I took the Rose's singed leaves out of the sealed chest on the stranded raft, in the reeds below Lujei Ferry."
+stage 33 "Tsaxi agreed to count one of the three lost to the smoke, and unlocked the lock-up. I have only to say which." do unlock lockup
+stage 34 "Tsaxi took 100 gold to count one of the three lost to the smoke, and unlocked the lock-up. I have only to say which." do take-gold 100, unlock lockup
+stage 35 "I gave Tsaxi the singed leaves and told her nobody is coming to read them. She said the count is hers now, and that one died. She unlocked the lock-up. I have only to say which." do take leaves, unlock lockup
+stage 36 "I opened the lock-up of the Rose's gatehouse without the gate-keeper's leave."
+stage 38 "Third-Born Tsaxi is dead. Nobody is left at the gatehouse to swear to any count."
+stage 41 "I told Walks-Far he is the one, and to go when I am gone. He said he would go to Blackrose, to the boardwalk tavern. The other two stay."
+stage 42 "I told Mends-Nets she is the one, and to go when I am gone. She said she would go to Lujei, to the fish-drying racks, where nets are mended and nobody asks. She gave me a key she took from the man she drowned, and said his strongbox is in the gatehouse. The other two stay." do give otheelkey
+stage 43 "I told Seven-Floods she is the one, and to go when I am gone. She said she would go to Lujei, to the cookhouse, near the lake. She gave me the key to her family's net-chest at Sheh-Ara. The other two stay." do give netkey
+stage 44 "I told all three to go when I am gone: Walks-Far to Blackrose's boardwalk tavern, Mends-Nets and Seven-Floods to Lujei."
+stage 91 completed "I told Never-Sold that Walks-Far came out, and who did not." do give-gold 250, give gloves, set bc02.out 1, off walks, on walksout
+stage 92 completed "I told Never-Sold that Mends-Nets came out, and who did not." do give-gold 100, set bc02.out 2, off mends, on mendsout
+stage 93 completed "I told Never-Sold that Seven-Floods came out, and who did not." do give-gold 150, give gloves, set bc02.out 3, off floods, on floodsout
+stage 94 completed "I told Never-Sold that the lock-up is empty and the gate-keeper dead." do set bc02.out 4, off walks, on walksout, off mends, on mendsout, off floods, on floodsout, on okaw
+stage 95 failed "Never-Sold is dead. The Chainbreakers have nobody to send me anywhere."
+stage 96 failed "Walks-Far is dead. Nobody can be brought out of the smoke now."
+stage 97 failed "Mends-Nets is dead. Nobody can be brought out of the smoke now."
+stage 98 failed "Seven-Floods is dead. Nobody can be brought out of the smoke now."
+
+objective 10 at 10 "Speak to the gate-keeper at the gatehouse of the Rose, or to the three in its lock-up" -> tsaxi, walks, mends, floods
+objective 20 at 20, 30 "Learn who is who, if you can; get one of the three out of the lock-up" -> tsaxi, lockup, leaves, floods
+objective 33 at 33, 34, 35, 36, 38 "Tell one of the three to go" -> walks, mends, floods
+objective 41 at 41, 42, 43, 44 "Tell Never-Sold" -> neversold
+
+line job1 neversold at 0 ask "Is there more work?" if done BC01 88 -> 10 says "three in the lock-up of the Rose's gatehouse; one can be got out; she wants the one held for words; go no further than the gatehouse"
+line job2 neversold at 0 ask "Is there more work?" if done BC01 90 -> 10 says "three in the lock-up of the Rose's gatehouse; one can be got out; she wants the one held for words; go no further than the gatehouse"
+line job3 neversold at 0 ask "Is there more work?" if done BC01 91 -> 10 says "three in the lock-up of the Rose's gatehouse; one can be got out; she wants the one held for words; go no further than the gatehouse"
+line job4 neversold at 0 ask "Is there more work?" if done BC01 92 -> 10 says "three in the lock-up of the Rose's gatehouse; one can be got out; she wants the one held for words; go no further than the gatehouse"
+line job5 neversold at 0 ask "Is there more work?" if done BC01 93 -> 10 says "three in the lock-up of the Rose's gatehouse; one can be got out; she wants the one held for words; go no further than the gatehouse"
+line job6 neversold at 0 ask "Is there more work?" if done BC01 94 -> 10 says "three in the lock-up of the Rose's gatehouse; one can be got out; she wants the one held for words; go no further than the gatehouse"
+line job7 neversold at 0 ask "Is there more work?" if done BC01 95 -> 10 says "three in the lock-up of the Rose's gatehouse; one can be got out; she wants the one held for words; go no further than the gatehouse"
+line three tsaxi at 10 ask "Who are the three?" -> 20 says "one can be lost to the smoke, not two; one of the young ones killed; the leaves went with the reckoner, who crossed at Lujei Ferry by night with a sealed chest; the lake took him, and the lake has teeth there"
+line whotsaxi tsaxi at 10-36 ask "Who are you to them?" says "born inside; never further from the Rose than this door; she answers for the count with her neck; Chainbreakers are the Broker's children, and she will not say more"
+line under tsaxi at 20-36 ask "What is put under?" says "sent down to the drowned cells, where the dead still walk; nobody comes up"
+line otheel tsaxi at 20-36 ask "How did the reckoner Otheel die?" says "drowned in the wash-pool, in a net"
+line deadgate floods at 10-36 ask "Who keeps you here?" if dead tsaxi -> 38 says "she did; nobody does now"
+line cable nuleem at 20-36 ask "Did a man of the Rose cross here with a chest?" says "by night; the cable did not fray; the raft swung into the reeds below the landing, where the crocodiles lie, and nobody goes down there; her poleman has not come home"
+line casewalks walks at 20-38 ask "Why are you held?" says "for words in the yard; he recites them"
+line casemends mends at 20-38 ask "Why are you held?" says "for words in the yard; she recites them"
+line casefloods floods at 20-38 ask "Why are you held?" says "for a roof; the girl who kept the count wept when she wrote my daughter down, and then she wrote it; do not choose me"
+line ease floods at 20-38 ask "Let me ease your breathing." if skill Restoration 25 else "Ask me which of my daughters I would drown." says "she tells which of the two killed, and why"
+line herb floods at 20-38 ask "I know what eases a smoke-chest." if skill Alchemy 25 else "Ask me which of my daughters I would drown." says "she tells which of the two killed, and why"
+line press floods at 20-38 ask "You know which of them it was." if skill Speech 40 else "Ask me which of my daughters I would drown." says "she tells which of the two killed, and why"
+line word tsaxi at 20-30 ask "Count one of them lost to the smoke." if skill Speech 35 -> 33 else "My count is my neck. Give me a reason I can carry." says "she will lose one"
+line coin tsaxi at 20-30 ask "A hundred, and one of them died of the smoke." if gold 100 -> 34 else "A hundred. A neck is worth that." says "she takes it"
+line giveleaves tsaxi at 30 ask "Your reckoner is in the lake at Lujei Ferry. Here are his leaves." if holds leaves -> 35 says "then the count is mine, and I say one died"
+line gowalks walks at 33-38 ask "You are the one. Go when I am gone." if alive walks -> 41 says "to Blackrose, the boardwalk tavern"
+line gomends mends at 33-38 ask "You are the one. Go when I am gone." if alive mends -> 42 says "to Lujei's racks; and a dead man's key"
+line gofloods floods at 33-38 ask "You are the one. Go when I am gone." if alive floods -> 43 says "to Lujei's cookhouse; tell my daughter I am coming, if you pass the ferry"
+line goall floods at 38 ask "The gate-keeper is dead. All of you, go." if alive floods -> 44 says "then we go, each our own way"
+line rep1 neversold at 41 ask "Walks-Far came out." -> 91 says "pleased, and uneasy"
+line rep2 neversold at 42 ask "Mends-Nets came out." -> 92 says "we will be called the people who loose killers, and it will be true"
+line rep3 neversold at 43 ask "Seven-Floods came out." -> 93 says "silent, then kind"
+line rep4 neversold at 44 ask "All three are out. The gate-keeper is dead." -> 94 says "the Rose's hunters will take a clutch-brother of his in their place; the heirs will not treat with us again"
+line after1 walksout at 91-94 ask "You got here." says "he talks of the hatch in the yard to anyone who will stand still"
+line after2 mendsout at 92-94 ask "You got here." says "nobody asks a net-mender"
+line after3 floodsout at 93-94 ask "You got here." says "near enough to the tree"
+line after4 okaw at 94 ask "Who keeps the gate now?" says "he does; the Rose does not treat with Chainbreakers"
+line stay1 mends at 91 ask "You stayed." if alive mends says "then I am put under when they find a reader"
+line stay1b mends at 93 ask "You stayed." if alive mends says "she is out; that is what I did it for"
+line stay2 walks at 92-93 ask "You stayed." if alive walks says "three seasons; I have talked through worse"
+line stay3 floods at 91-92 ask "You stayed." if alive floods says "I asked not to be chosen"
+line tsaxiafter tsaxi at 91-93 ask "How is your count?" if alive tsaxi says "one died of the smoke; the reckoner will come when he comes"
+
+take leaves from 20 -> 30
+use lockup from 20 -> 36 until 33
+death tsaxi from 10 -> 38 choice
+must-live neversold fails 95
+must-live walks fails 96 to 38
+must-live mends fails 97 to 38
+must-live floods fails 98 to 38
+```
+
+**The choice, and each side's honest case.** *Walks-Far* is innocent of anything but words, is the one Never-Sold
+asked for, and faces only three seasons if left; what he wants opened could kill everyone in the Rose. *Mends-Nets*
+is guilty, will be put under if left, and killed for someone who was being ground down. *Seven-Floods* owes only for
+a roof, will die soon either way, and it is her way home that is at stake; she asks not to be chosen. Never-Sold's
+order, the law of the Rose and the old woman's wish point three ways. Tsaxi's own case, for leaving all three: "Lose
+me one and I can carry it. Lose me three and they send hunters to the kin, and somebody's clutch-brother sits in
+that lock-up by the next rains."
+
+**The endings and what each leaves.** Each sets `bc02.out`. The one freed is gone from the lock-up and is found
+where they said; the two left greet the player with what staying means for them, and Tsaxi with what she has decided
+to believe about her reckoner.
+
+| Ending | What it leaves, and where it is seen | What the player gains and can use | What it costs the player |
+|---|---|---|---|
+| Walks-Far out (91) | He stands at Blackrose's boardwalk tavern, talking of the hatch in the yard. Mends-Nets, in the lock-up: "Then I am put under when they find a reader." Never-Sold is pleased, and uneasy | 250 gold; Gloves of Minor Pickpocketing | nothing in play |
+| Mends-Nets out (92) | She mends nets at Lujei's racks. Never-Sold, cold: "We will be called the people who loose killers, and it will be true." | 100 gold; Otheel's key, which opens the shelter-reckoner's strongbox in the gatehouse: 300 gold of other people's roof-owings | the gloves |
+| Seven-Floods out (93) | She sits at Lujei's cookhouse, near the lake; her daughter at the ferry has a line for it. Never-Sold is silent, then kind | 150 gold; the gloves; the key to her family's net-chest at Sheh-Ara | nothing in play |
+| The lock-up emptied (94) | All three are found where they said. Tsaxi's brother Okaw keeps the gate: "The Rose does not treat with Chainbreakers." Never-Sold says the Rose's hunters, lacking three, will take a clutch-brother of Walks-Far's in their place | Tsaxi's arms, of the Deadly band, and her key | every reward of Never-Sold's; the gate-keeper who would bargain: the gate is opened to the player by no word of hers again, in this line or the main quest |
+
+In every ending the chest's 150 gold, the purse and its seal ring are the reward of whoever went down into the
+reeds, and the leaves stay with whoever kept them. Seven-Floods, told to go, says: "Tell my daughter I am coming, if
+you pass the ferry." Rows-For-Another has a line for that word, and for the word that her mother stayed.
+
+**The moment a player retells.** Wading out of the reeds with a dead man's sealed chest and a crocodile turning
+behind them, reading the leaves on the landing, and finding that the gentle one nursing the old woman is the killer;
+and then the old woman says to take her anyway.
+
+| Step | Skill | Ceiling block |
+|---|---|---|
+| hear the job; hear Tsaxi | none (the two briefings) | lines set stages; a stage gives gold |
+| reach the stranded raft | a weapon skill or Destruction; or Sneak | the place's own creatures at their fixed band |
+| open the sealed chest | Lockpicking (Expert), or the key from the purse | a locked container with a key in another container |
+| take the leaves; read them | none (the find) | taking a named thing sets a stage; a readable book |
+| learn it from Seven-Floods | Restoration 25, Alchemy 25 or Speech 40 | line conditions on a skill, each with its refusal |
+| Tsaxi loses one | Speech 35, 100 gold, or the leaves given | one stage per way; the stage takes gold or the leaves and unlocks a door |
+| open the lock-up without leave | Pickpocket (her key) or Lockpicking (Adept) | a key carried by a person; a locked door; using a named door sets a stage |
+| kill the gate-keeper | a weapon skill or Destruction | a death, the player's choice, sets a stage |
+| choose who goes | none: the decision | one line per person, gated on that person alive, each to its own stage; a stage gives a key |
+| they go | none | Never-Sold's line indoors sets an ending, which switches people outdoors |
