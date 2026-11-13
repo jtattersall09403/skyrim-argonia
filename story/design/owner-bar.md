@@ -41,6 +41,10 @@ reads this first; a new ruling is added here the day it is made, as well as to o
   skills) over processes and procedures and records" (OR 2026-11-12).
 - Combat is always paired with a reward in proportion to its difficulty (OR 2026-11-09, on what places give).
 
+- A choice or an ending matters in play, "beyond just description and text": "what are the actual gameplay
+  impacts? In terms of powers, rewards, abilities, unlocking fun stuff" (OR 2026-11-13). Each outcome says what it
+  gives and what it costs the player.
+
 ## The vibe of Argonia: not a bureaucratic place
 
 - "Too many ledgers and rolls and tallies. For some reason AI agents are obsessed with these. It's all a bit too

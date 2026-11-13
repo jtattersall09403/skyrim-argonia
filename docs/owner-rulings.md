@@ -603,3 +603,11 @@ added here the day they are made, with the date and the issue.
   is already drafted; only small narrow additions (a lock, a named door, a thing placed) are made where a story
   cannot do without, and nothing larger without asking. (c) The owner does not open the studio until told it is
   ready.
+- 2026-11-13 (in session, what a choice or ending means in play): "what matters here is what the different endings
+  mean for the player. Beyond just description and text I mean. Like, what are the actual gameplay impacts? In terms
+  of powers, rewards, abilities, unlocking fun stuff, etc. there must be some more we can research online about how
+  to make this shape of thing good. Do that and think all of this through and bake it in wherever multiple
+  outcomes/choices are concerned (again, aiming to instruct writers & builders to get it right first time
+  primarily)". Every choice and every ending says what it gives and costs the player in play (a power, a thing, a
+  service or place opened or closed, standing), researched and written into the skills as instructions, with the
+  tools able to build it.
