@@ -54,7 +54,8 @@ def _key(s: dict, spoken: bool) -> str:
     while a container is open or a question waits (any person, thing or door is one `go` away)."""
     drop = {"commands", "visited", "crimes", "travel"} | (set() if spoken else {"spoken"}) | \
         (set() if s["question"] else {"talking"}) | (set() if s["opened"] or s["question"] else {"pos"})
-    return json.dumps({k: sorted(v) if k in ("taken", "dead", "fired", "spoken", "opened", "hostile") else v
+    return json.dumps({k: sorted(v) if k in ("taken", "dead", "fired", "spoken", "opened", "hostile", "spells",
+                                                    "enemies") else v
                        for k, v in s.items() if k not in drop}, sort_keys=True)
 
 

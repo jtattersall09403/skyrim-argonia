@@ -344,7 +344,9 @@
         {"$ref": "#/$defs/r_ref"},
         {"$ref": "#/$defs/r_message"},
         {"$ref": "#/$defs/r_hostile"},
-        {"$ref": "#/$defs/r_start"}
+        {"$ref": "#/$defs/r_start"},
+        {"$ref": "#/$defs/r_spell"},
+        {"$ref": "#/$defs/r_faction"}
       ]
     },
     "r_stage": {
@@ -367,7 +369,15 @@
     },
     "r_join": {
       "type": "object", "additionalProperties": false, "required": ["do", "faction"],
-      "properties": {"do": {"const": "join_faction"}, "faction": {"$ref": "#/$defs/id"}}
+      "properties": {"do": {"enum": ["join_faction", "leave_faction"]}, "faction": {"$ref": "#/$defs/id"}}
+    },
+    "r_faction": {
+      "type": "object", "additionalProperties": false, "required": ["do", "faction"],
+      "properties": {"do": {"enum": ["make_enemy", "make_peace"]}, "faction": {"$ref": "#/$defs/id"}}
+    },
+    "r_spell": {
+      "type": "object", "additionalProperties": false, "required": ["do", "spell"],
+      "properties": {"do": {"enum": ["teach_spell", "forget_spell"]}, "spell": {"$ref": "#/$defs/id"}}
     },
     "r_rank": {
       "type": "object", "additionalProperties": false, "required": ["do", "faction", "rank"],

@@ -508,10 +508,11 @@ static class QuestFormRead
         // the names of the items the form names that are not its refs (a result's, a condition's, a stock thing's base, a
         // lock's key), as the player sees them: each word's record by its label (this quest's, else the quest that built it)
         var keyOf = names.Where(n => n.Key.Item1 is "item" or "thing").GroupBy(n => n.Value).ToDictionary(g => g.Key, g => FormKey.Factory(g.First().Key.Item2));
-        foreach (var l in c.Labels.Where(l => l.StartsWith("name=item|") || l.StartsWith("name=thing|")).Select(l => l[5..].Split('|', 3)))
+        foreach (var l in c.Labels.Where(l => l.StartsWith("name=item|") || l.StartsWith("name=thing|") || l.StartsWith("name=spell|")).Select(l => l[5..].Split('|', 3)))
             keyOf.TryAdd(l[2], FormKey.Factory(l[1]));
+        foreach (var n in names.Where(n => n.Key.Item1 == "spell")) keyOf.TryAdd(n.Value, FormKey.Factory(n.Key.Item2));
         var words = new SortedSet<string>(StringComparer.Ordinal);
-        void Words(JsonNode? rows) { foreach (var r in rows?.AsArray() ?? []) foreach (var f in new[] { "item", "if_held" }) if (r?[f] is JsonValue v) words.Add(v.GetValue<string>()); }
+        void Words(JsonNode? rows) { foreach (var r in rows?.AsArray() ?? []) foreach (var f in new[] { "item", "if_held", "spell" }) if (r?[f] is JsonValue v) words.Add(v.GetValue<string>()); }
         foreach (var s in stages) Words(s?["results"]);
         foreach (var l in lines) { Words(l?["results"]); Words(l?["conditions"]); }
         foreach (var r in refs)
@@ -667,7 +668,10 @@ static class QuestFormRead
             case "give_item" or "take_item": j["item"] = ItemWord(name, r.What); j["count"] = (int)r.Num; break;
             case "give_gold" or "take_gold": if (r.What != QuestForm.Gold) throw no($"{where}: gold that is not Gold001"); j["amount"] = (int)r.Num; break;
             case "set_number" or "add_number": j["number"] = name("number", r.What); j["value"] = r.Num == MathF.Round(r.Num) ? (int)r.Num : r.Num; break;
-            case "join_faction": j["faction"] = name("faction", r.What); break;
+            case "join_faction" or "leave_faction" or "make_enemy" or "make_peace": j["faction"] = name("faction", r.What); break;
+            case "teach_spell" or "forget_spell":
+                if (!c.Mod.Spells.Any(x => x.FormKey == r.What)) throw no($"{where}: spell {r.What} is not ours");
+                j["spell"] = name("spell", r.What); break;
             case "set_rank": j["faction"] = name("faction", r.What); j["rank"] = (int)r.Num; break;
             case "change_regard": j["ref"] = refName(r.What, where); j["by"] = (int)r.Num; break;
             case "switch_on" or "switch_off" or "lock_door" or "unlock_door" or "give_ownership": j["ref"] = refName(r.What, where); break;

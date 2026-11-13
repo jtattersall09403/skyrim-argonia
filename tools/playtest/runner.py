@@ -27,6 +27,9 @@ TEMPERAMENTS = {
                  "follow the quest markers and the objective text. You rarely ask people about themselves.",
     "wanderer": "You are a wandering player. You poke at everything, talk to everyone you meet and ask them about "
                 "anything on offer, and you follow your curiosity as much as the quest.",
+    "gainer": "You play for what the game gives you. When you must choose, you choose by what each side gets you in "
+              "play: a power, a thing, a place, a trader or trainer, standing with people who matter, more than the "
+              "story. You ask what you will get before you choose, and you check what you got afterwards.",
 }
 
 BRIEF = """You are playing a new Elder Scrolls game set in Argonia, the Black Marsh. You have played Skyrim, so you \
@@ -37,6 +40,7 @@ with your Bash tool. Each call does one thing and shows you exactly what you wou
 
   {play} 'look'                     where you are, who and what is near you, the doors
   {play} 'journal'                  your quests: journal entries and active objectives
+  {play} 'magic'                    the spells and powers you have learned on your travels
   {play} 'map'                      your position, each quest marker (where, how far, which way, what it marks), places you know
   {play} 'go <marker N | person | thing | place>'   travel there (no need to walk the way)
   {play} 'talk <person>'            start a conversation: their greeting and the topics you can pick

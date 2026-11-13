@@ -138,7 +138,8 @@ def plain(command: str, menu: list[str] | None, markers: dict[str, str]) -> str:
         if m and m.group(1) in markers:
             return f"Went to marker {m.group(1)}, {markers[m.group(1)]}"
         return f"Went to {arg}"
-    words = {"look": "Looked around", "journal": "Read the journal", "map": "Checked the map",
+    words = {"look": "Looked around", "journal": "Read the journal", "magic": "Looked at their magic",
+             "map": "Checked the map",
              "wait": "Waited"}
     if v in words and not arg:
         return words[v]
@@ -191,7 +192,7 @@ def steps(rows: list[dict], quest: str) -> list[dict]:
         if stage is not None:
             last_stage = stage
         verb = (r.get("command") or "").split(" ")[0].lower()
-        menu = _menu_options(lines) or (menu if verb in ("look", "journal", "map", "wait") else None)
+        menu = _menu_options(lines) or (menu if verb in ("look", "journal", "magic", "map", "wait") else None)
         for line in (r.get("result") or "").splitlines():
             m = _MAP_MARKER.match(line)
             if m:

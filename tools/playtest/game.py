@@ -196,6 +196,8 @@ class Game:
             for r in [r for s in f["stages"] for r in s["results"]] + [r for ln in f["lines"] for r in ln["results"]]:
                 if r["do"] in ("give_item", "take_item"):
                     items.add(r["item"])
+                if r["do"] in ("teach_spell", "forget_spell") and not names.get(r["spell"]):
+                    missing.add(r["spell"])
         missing |= {i for i in items if self._item_name(i) is None}
         if missing:
             raise HarnessError("no name the player would see for: " + ", ".join(sorted(missing)) +
@@ -205,7 +207,7 @@ class Game:
         return {"quests": {}, "order": [], "items": {}, "gold": 0, "numbers": {}, "factions": {}, "regard": {},
                 "dead": [], "switched": {}, "locked": {}, "taken": [], "pos": None, "visited": [], "spoken": [],
                 "fired": [], "talking": None, "question": None, "hostile": [],
-                "opened": [], "owned": [], "contents": {k: {c["item"]: c["count"] for c in e["contents"]}
+                "opened": [], "owned": [], "spells": [], "enemies": [], "contents": {k: {c["item"]: c["count"] for c in e["contents"]}
                                            for k, e in self.ents.items() if e["contents"]},
                 "crimes": [], "sheet": sheet, "commands": 0, "ended": False}
 
@@ -298,6 +300,21 @@ class Game:
                 return item
             raise HarnessError(f"no name the player would see for {item}")
         return n
+
+    def spell_name(self, spell) -> str:
+        """A spell's, power's or ability's name as the player sees it: the form's `names` for its form key."""
+        n = self.world.get("names", {}).get(spell)
+        if n is None:
+            if not self.strict:
+                return spell
+            raise HarnessError(f"no name the player would see for {spell}")
+        return n
+
+    def magic(self) -> str:
+        """The magic menu's own: every spell, power and ability a quest has taught."""
+        known = self.s["spells"]
+        return ("Spells and powers learned: " + "; ".join(self.spell_name(x) for x in known)) if known \
+            else "You have learned no spell or power on your travels."
 
     def who(self, eid) -> str | None:
         """A person in a word, "an Argonian woman", where the form or the world database says race or sex."""
@@ -561,19 +578,20 @@ class Game:
         self.s["commands"] += 1             # every command counts towards the limit, one the game refuses too
         self.s.pop("travel", None)
         if not words:
-            return "Type a command: look, journal, map, go, talk, say, take, use, fight, pick, pickpocket, wait."
+            return "Type a command: look, journal, magic, map, go, talk, say, take, use, fight, pick, pickpocket, " \
+                   "wait."
         verb, arg = words[0].lower(), " ".join(words[1:])
-        fn = {"look": self.look, "journal": self.journal, "map": self.map, "go": self.go, "talk": self.talk,
+        fn = {"look": self.look, "journal": self.journal, "magic": self.magic, "map": self.map, "go": self.go, "talk": self.talk,
               "say": self.say, "take": self.take, "use": self.use, "fight": self.fight, "pick": self.pick,
               "pickpocket": self.pickpocket, "wait": self.wait}.get(verb)
         if fn is None:
-            return f"'{verb}' is not something you can do here. Commands: look, journal, map, go, talk, say, take, " \
+            return f"'{verb}' is not something you can do here. Commands: look, journal, magic, map, go, talk, say, take, " \
                    "use, fight, pick, pickpocket, wait."
-        if verb not in ("say", "journal", "map"):
+        if verb not in ("say", "journal", "magic", "map"):
             if verb != "look":
                 self.s["talking"] = None
                 self.s["question"] = None
-        return fn(arg) if verb not in ("look", "journal", "map", "wait") else fn()
+        return fn(arg) if verb not in ("look", "journal", "magic", "map", "wait") else fn()
 
     def _find(self, text, pool) -> tuple[str | None, str | None]:
         """An entity among `pool` by the name the player typed: exact, then a unique start, then a unique part."""

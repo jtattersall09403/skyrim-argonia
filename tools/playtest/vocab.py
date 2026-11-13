@@ -125,6 +125,31 @@ def _r_regard(g, q, r, _):
     return []
 
 
+def _r_spell(teach):
+    """A spell, power or ability learned or lost: the player is told by its name (the form's `names`), and `magic`
+    lists what is known."""
+    def f(g, q, r, _):
+        known, name = g.s["spells"], g.spell_name(r["spell"])
+        if teach and r["spell"] not in known:
+            known.append(r["spell"])
+            return [f"Learned: {name}"]
+        if not teach and r["spell"] in known:
+            known.remove(r["spell"])
+            return [f"Forgotten: {name}"]
+        return []
+    return f
+
+
+def _r_enemy(on):
+    def f(g, q, r, _):
+        if on and r["faction"] not in g.s["enemies"]:
+            g.s["enemies"].append(r["faction"])
+        elif not on and r["faction"] in g.s["enemies"]:
+            g.s["enemies"].remove(r["faction"])
+        return []
+    return f
+
+
 RESULTS = {
     # `if_held`: a stage's result that moves on only when the player already holds the item as the stage begins
     "set_stage": lambda g, q, r, sp: [] if "if_held" in r and not g.s["items"].get(g.item_of(r["if_held"]), 0)
@@ -147,4 +172,10 @@ RESULTS = {
     "show_message": lambda g, q, r, _: [f"[Message box] {r['text']}"],
     "speaker_hostile": _r_hostile,
     "start_quest": lambda g, q, r, sp: g._set_stage(r["quest"], r["stage"], None),
+    "leave_faction": lambda g, q, r, _: (g.s["factions"].pop(r["faction"], None), [])[1],
+    # a faction's people attack on sight (SetPlayerEnemy): the engine says nothing; who they are, the lines must show
+    "make_enemy": _r_enemy(True),
+    "make_peace": _r_enemy(False),
+    "teach_spell": _r_spell(True),
+    "forget_spell": _r_spell(False),
 }

@@ -13,6 +13,7 @@ switch (args.FirstOrDefault())
     case "waterstudy": return WaterStudy.Run(args[1..]);
     case "survey":Survey.Run(args[1..]); break;
     case "gives": GiveStudy.Run(args[1..]); break;
+    case "spells": return SpellStudy.Run(args[1..]);
     case "seat": Seat.Run(args[1..]); break;
     case "cleancheck": return CleanUp.Check(args[1], args[2..]);
     case "mapprobe": MapFix.Probe(args[1..]); break;

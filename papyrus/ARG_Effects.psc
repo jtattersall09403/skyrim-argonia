@@ -36,6 +36,9 @@ The operation numbers are QuestForm.cs's (tools/ArgoniaPlugin); a number not lis
 ; 34 SpeakerHostile          the person speaking the line attacks the player
 ; 35 StartQuest              What: the quest; Num: the stage it is set to
 ; 36 GiveOwnership           What: the reference (a container another owns); it and what it holds become the player's
+; 37 TeachSpell  38 ForgetSpell  What: the spell (a spell, power or ability); the player learns or loses it
+; 39 MakeEnemy   40 MakePeace    What: the faction; its people attack the player on sight, or no longer do
+; 41 LeaveFaction               What: the faction; the player is no longer of it
 
 Function Run(Int[] op, Form[] what, Float[] num, Int from, Int to, Quest q, ObjectReference speaker = None) Global
 	Actor player = Game.GetPlayer()
@@ -146,6 +149,14 @@ Function Run(Int[] op, Form[] what, Float[] num, Int from, Int to, Quest q, Obje
 			(w as Message).Show()
 		ElseIf o == 36
 			(w as ObjectReference).SetActorOwner(player.GetActorBase())
+		ElseIf o == 37
+			player.AddSpell(w as Spell)
+		ElseIf o == 38
+			player.RemoveSpell(w as Spell)
+		ElseIf o == 39 || o == 40
+			(w as Faction).SetPlayerEnemy(o == 39)
+		ElseIf o == 41
+			player.RemoveFromFaction(w as Faction)
 		ElseIf o == 34
 			a = speaker as Actor
 			If a && !a.IsDead()

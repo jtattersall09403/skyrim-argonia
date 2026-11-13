@@ -6,7 +6,7 @@
                                   [--after <quest id>...]   # those quests played to a completed ending first
     python3 -m tools.playtest do <session> "<command>" --think "<what I believe is going on and why I do this>"
     python3 -m tools.playtest end <session> --take "<open take>" | --answers "<answers>"
-    python3 -m tools.playtest run --forms ... --player careful|impatient|wanderer [--model sonnet] [--know ...]
+    python3 -m tools.playtest run --forms ... --player careful|impatient|wanderer|gainer [--model sonnet] [--know ...]
     python3 -m tools.playtest probe [--model haiku]      # proves the player cannot read the repo
     python3 -m tools.playtest reach <forms...> | --compiled [--gate | --ratchet]   # each ending reachable? its path
     python3 -m tools.playtest page [--out <html>] [--runs <dir>]   # the owner's page for exploring the runs

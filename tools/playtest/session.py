@@ -23,6 +23,8 @@ QUESTIONS = (
     "Who do you work for now, if anyone, and why?",
     "What was the most confusing moment?",
     "What would you tell the writer?",
+    "If you made a choice: what do you think you gained by it, and what did you give up, in what you can now do, "
+    "get or reach? Would you choose differently for the reward?",
 )
 STALL_VIEWS = ("journal", "map")
 

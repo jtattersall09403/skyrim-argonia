@@ -38,7 +38,8 @@ RULES = ("schema", "vocabulary", "unique-ids", "stages-exist", "refs-exist", "pl
          "way-out", "reachable", "objective-target-on", "asked-is-target", "completes-on-target", "hand-in", "held-take",
          "line-window", "switch-cause", "away", "must-live-fails", "must-live-window", "main-message", "death-hostile",
          "result-limits", "speaks-first-has-line", "stage-order", "trigger", "speaks-first", "answer", "prompt",
-         "speaker", "hostile", "created", "line-said", "regard-range", "objective-left", "late-trigger", "check-label")
+         "speaker", "hostile", "created", "line-said", "regard-range", "objective-left", "late-trigger", "check-label",
+         "spell", "enemy")
 
 # A check on a prompt, as Skyrim shows it: in brackets, "(Persuade)" for Speech, the skill's name for any other,
 # "(<n> gold)" for gold; never a threshold.
@@ -331,6 +332,7 @@ def check(form, others: list[dict] | None = None) -> list[tuple[str, str]]:
     out += _builder(fm)
     out += _said(fm)
     out += _regard(fm)
+    out += _gifts(fm)
     out += _left(fm)
     out += _late(fm)
     out += _labels(fm)
@@ -573,6 +575,31 @@ def _regard(fm: Form):
     out += [("regard-range", f"line {ln['id']} asks regard at least {c['value']}, outside {REGARD_MIN} to "
              f"{REGARD_MAX}") for ln in fm.lines for c in ln["conditions"]
             if c["is"] == "regard_at_least" and not REGARD_MIN < c["value"] <= REGARD_MAX]
+    return out
+
+
+def _form_key(x: str) -> bool:
+    """A load order's form key: `<hex id>:<plugin file>`."""
+    k, _, plugin = x.partition(":")
+    return bool(k) and plugin.lower().endswith((".esm", ".esp", ".esl")) and all(c in "0123456789abcdefABCDEF" for c in k)
+
+
+def _gifts(fm: Form):
+    """A spell, power or ability taught or taken is a spell of the load order by its form key, with the name the player
+    sees in the form's `names` (the builder copies it under that name); a group turned against the player or back is a
+    faction of the load order (one of ours has no people)."""
+    out, names = [], fm.f.get("names", {})
+    for where, res in _all_results(fm):
+        for x in res:
+            if x["do"] in ("teach_spell", "forget_spell"):
+                if not _form_key(x["spell"]):
+                    out.append(("spell", f"{where} {x['do']} {x['spell']}: a spell is named by its form key"))
+                elif not names.get(x["spell"]):
+                    out.append(("spell", f"{where} {x['do']} {x['spell']}: the form's names give it no name the "
+                                "player sees"))
+            if x["do"] in ("make_enemy", "make_peace") and not _form_key(x["faction"]):
+                out.append(("enemy", f"{where} {x['do']} {x['faction']}: a group turned against the player is a "
+                            "faction of the load order, by its form key"))
     return out
 
 

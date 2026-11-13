@@ -42,14 +42,16 @@ static class QuestForm
             CompleteAll = 15, FailAll = 16,
             GiveItem = 20, TakeItem = 21, GiveGold = 22, TakeGold = 23, SetNumber = 24, AddNumber = 25, JoinFaction = 26,
             SetRank = 27, ChangeRegard = 28, SwitchOn = 29, SwitchOff = 30, LockDoor = 31, UnlockDoor = 32, ShowMessage = 33,
-            SpeakerHostile = 34, StartQuest = 35, GiveOwnership = 36;
+            SpeakerHostile = 34, StartQuest = 35, GiveOwnership = 36, TeachSpell = 37, ForgetSpell = 38, MakeEnemy = 39, MakePeace = 40,
+            LeaveFaction = 41;
         public static readonly Dictionary<string, int> OfResult = new()
         {
             ["set_stage"] = SetStage, ["give_item"] = GiveItem, ["take_item"] = TakeItem, ["give_gold"] = GiveGold, ["take_gold"] = TakeGold,
             ["set_number"] = SetNumber, ["add_number"] = AddNumber, ["join_faction"] = JoinFaction, ["set_rank"] = SetRank,
             ["change_regard"] = ChangeRegard, ["switch_on"] = SwitchOn, ["switch_off"] = SwitchOff, ["lock_door"] = LockDoor,
             ["unlock_door"] = UnlockDoor, ["show_message"] = ShowMessage, ["speaker_hostile"] = SpeakerHostile, ["start_quest"] = StartQuest,
-            ["give_ownership"] = GiveOwnership,
+            ["give_ownership"] = GiveOwnership, ["teach_spell"] = TeachSpell, ["forget_spell"] = ForgetSpell, ["make_enemy"] = MakeEnemy,
+            ["make_peace"] = MakePeace, ["leave_faction"] = LeaveFaction,
         };
     }
     public sealed record Row(int Op, FormKey What, float Num);
@@ -317,7 +319,9 @@ static class QuestForm
             "give_item" or "take_item" => [new Row(op, Item(c, b, S(res, "item")), I(res, "count"))],
             "give_gold" or "take_gold" => [new Row(op, Gold, I(res, "amount"))],
             "set_number" or "add_number" => [new Row(op, Number(c, S(res, "number")), (float)res.GetProperty("value").GetDouble())],
-            "join_faction" => [new Row(op, Faction(c, S(res, "faction")), 0)],
+            "join_faction" or "leave_faction" => [new Row(op, Faction(c, S(res, "faction")), 0)],
+            "make_enemy" or "make_peace" => [new Row(op, LoadOrderFaction(c, S(res, "faction"), w), 0)],
+            "teach_spell" or "forget_spell" => [new Row(op, Spell(c, b, S(res, "spell")), 0)],
             "set_rank" => [new Row(op, Faction(c, S(res, "faction")), I(res, "rank"))],
             "change_regard" => [new Row(op, PersonRef(c, b, S(res, "ref"), w), I(res, "by"))],
             "switch_on" or "switch_off" => [new Row(op, PlacedRef(c, b, S(res, "ref"), w), 0)],
@@ -384,6 +388,28 @@ static class QuestForm
     static void Label(Ctx c, string l) { if (c.Cur is { } b && !b.Labels.Contains(l)) b.Labels.Add(l); }
     static FormKey Number(Ctx c, string id) => Named(c, "number", id, Number0(c, id));
     static FormKey Faction(Ctx c, string id) => Named(c, "faction", id, Faction0(c, id));
+    // A group turned against the player or back: a faction of the load order by its form key (one of ours has no members).
+    static FormKey LoadOrderFaction(Ctx c, string id, string what) =>
+        id.Contains(':') ? Faction(c, id) : throw c.No("faction", $"{what} names {id}: a group turned against the player is a faction of the load order, by its form key");
+    static FormKey Spell(Ctx c, Built b, string id) => Named(c, "spell", id, Spell0(c, b, id));
+    /// A spell, power or ability the player is taught: our copy of a spell of the load order (the form key the form
+    /// names), called by the form's `names` for that key, so the player sees our name on its fixed effects. One record
+    /// per spell, whichever form names it first; two forms naming one spell differently is refused.
+    static FormKey Spell0(Ctx c, Built b, string id)
+    {
+        var tk = Exists<ISpellGetter>(c, id, "spell");
+        var name = c.Quests.Values.Select(q => q.F).Prepend(b.F).Select(f => f.TryGetProperty("names", out var m) && m.TryGetProperty(id, out var v) ? v.GetString() : null)
+            .FirstOrDefault(x => x != null) ?? throw c.No("spell", $"{id}: a spell taught with no name in the form's names");
+        var k = c.Key("spell:" + id);
+        if (c.Mod.Spells.FirstOrDefault(x => x.FormKey == k) is { } had)
+            return had.Name?.String == name ? k : throw c.No("spell", $"{id}: named '{name}' here and '{had.Name?.String}' by another form");
+        var src = Enumerable.Reverse(c.Mods).SelectMany(m => m.EnumerateMajorRecords<ISpellGetter>()).First(x => x.FormKey == tk);
+        var copy = (Spell)((IMajorRecordGetter)src).Duplicate(k);
+        copy.EditorID = $"ARG_S_{Slug(name)}";
+        copy.Name = new Mutagen.Bethesda.Strings.TranslatedString(Mutagen.Bethesda.Strings.Language.English, name);
+        c.Mod.Spells.Add(copy);
+        return k;
+    }
     // an item named by a thing of the form is labelled "thing" (its base keeps its own word where it is placed)
     static FormKey Item(Ctx c, Built b, string id) => Named(c, b.Refs.ContainsKey(id) ? "thing" : "item", id, Item0(c, b, id));
     static FormKey Race(Ctx c, string v) => Named(c, "race", v, Race0(c, v));
