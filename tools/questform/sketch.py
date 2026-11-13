@@ -955,9 +955,8 @@ def design(form: dict, sk: Sketch, numbers_set: set[str], factions_set: set[str]
             offers = [o for o in form["lines"] if o["speaker"] == ln["speaker"] and o["results"]
                       and o["first_stage"] <= start <= o["last_stage"]]
             mine = {_key(c) for c in ln["conditions"]}
-            common = set.intersection(*[{_key(c) for c in o["conditions"] if c["is"] not in FAILS + ("alive", "dead")} for o in offers]) \
-                if offers else set()
-            if offers and not common <= mine:
+            gates = [{_key(c) for c in o["conditions"] if c["is"] not in FAILS + ("alive", "dead")} for o in offers]
+            if offers and not any(g <= mine for g in gates):
                 out.append(("before-offer", f"line {ln['id']} is open at stage {start}, before the job is offered, "
                             "without the gates of the offer: a player who cannot yet be offered it hears it (open it "
                             "from the first stage the player reads, or give it the offer's gates)"))
