@@ -1474,23 +1474,29 @@ CREATE TABLE "quest_objective" (
 );
 
 -- Home of one row per element of `stages[].successors` of each quest_stage row (ordered by `ord` where it has one).
+-- `until`: where `when` is a death, a take or a use, the stage from which it no longer moves the quest (the quest form's
+-- trigger `until`), stated only where the compiler cannot work it out (docs/design/quest-form.md).
 CREATE TABLE "quest_successor" (
   "quest_id" TEXT NOT NULL,
   "stages_ord" INTEGER NOT NULL,
   "ord" INTEGER NOT NULL,
   "to" INTEGER NOT NULL,
   "when" TEXT NOT NULL REFERENCES "condition"("id"),
+  "until" INTEGER CHECK ("until" BETWEEN 0 AND 255),
   PRIMARY KEY ("quest_id", "stages_ord", "ord"),
   FOREIGN KEY ("quest_id", "stages_ord") REFERENCES "quest_stage" ("quest_id", "ord") ON DELETE CASCADE
 );
 
 -- Home of one row per element of `stages[].failForward` of each quest_stage row (ordered by `ord` where it has one).
+-- `until`: where `when` is a death, a take or a use, the stage from which it no longer moves the quest (the quest form's
+-- trigger `until`), stated only where the compiler cannot work it out (docs/design/quest-form.md).
 CREATE TABLE "quest_fail_forward" (
   "quest_id" TEXT NOT NULL,
   "stages_ord" INTEGER NOT NULL,
   "ord" INTEGER NOT NULL,
   "to" INTEGER NOT NULL,
   "when" TEXT NOT NULL REFERENCES "condition"("id"),
+  "until" INTEGER CHECK ("until" BETWEEN 0 AND 255),
   PRIMARY KEY ("quest_id", "stages_ord", "ord"),
   FOREIGN KEY ("quest_id", "stages_ord") REFERENCES "quest_stage" ("quest_id", "ord") ON DELETE CASCADE
 );

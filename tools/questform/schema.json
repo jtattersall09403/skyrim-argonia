@@ -220,6 +220,7 @@
               "ref": {"$ref": "#/$defs/id"},
               "prerequisite": {"$ref": "#/$defs/stage"},
               "sets": {"$ref": "#/$defs/stage"},
+              "until": {"$ref": "#/$defs/stage"},
               "choice": {"type": "boolean"}
             }
           },
@@ -379,7 +380,7 @@
     },
     "r_ref": {
       "type": "object", "additionalProperties": false, "required": ["do", "ref"],
-      "properties": {"do": {"enum": ["switch_on", "switch_off", "lock_door", "unlock_door"]},
+      "properties": {"do": {"enum": ["switch_on", "switch_off", "lock_door", "unlock_door", "give_ownership"]},
                      "ref": {"$ref": "#/$defs/id"}}
     },
     "r_hostile": {

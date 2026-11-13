@@ -10,6 +10,7 @@ from pathlib import Path
 
 from tools.argonia_world import db
 from tools.argonia_world.quest_record import export
+from tools.questform import rules
 
 QUEST_LINES = db.REPO / "story/data/quest_lines"
 
@@ -238,13 +239,14 @@ class Compiler:
                                          if term == "any" else HINT_OTHER))
         return []
 
-    def mover(self, c, frm: int, to: int, where: str, fail: bool = False):
-        """A successor's or fail-forward's condition: what moves stage `frm` to `to`."""
+    def mover(self, c, frm: int, to: int, where: str, fail: bool = False, until: int | None = None):
+        """A successor's or fail-forward's condition: what moves stage `frm` to `to` (a trigger it makes closes at
+        the record's `until`, when it states one)."""
         term, a = _one(c)
         a = _args(a)
         if term == "any":
             for kid in a:
-                self.mover(kid, frm, to, where, fail)
+                self.mover(kid, frm, to, where, fail, until)
         elif term == "all":
             lines = [k for k in a if _one(k)[0] == "topicHeardFrom"]
             if len(lines) != 1:
@@ -261,7 +263,7 @@ class Compiler:
                 self.refuse("hasItem count", where, "taking one named thing moves a stage; a count is a gate")
                 return
             self.item(a[0], where)
-            self._trigger("take", self.use(a[0], where), frm, to)
+            self._trigger("take", self.use(a[0], where), frm, to, until)
         elif term == "not" and _one(a[0])[0] == "npcAlive":
             npc = self.use(_args(_one(a[0])[1])[0], where)
             if self.stage_of.get(to, {}).get("ending") == "failed":
@@ -269,7 +271,7 @@ class Compiler:
                 self.must_live_at.setdefault(npc, set()).add(frm)
             else:
                 self.death_moves.add(npc)
-                self._trigger("death", npc, frm, to)
+                self._trigger("death", npc, frm, to, until)
         elif term in ("questStage", "stageEverReached"):
             q, n = (a[0], a[2]) if term == "questStage" else (a[0], a[1])
             if term == "questStage" and a[1] not in ("=", "≥"):
@@ -279,13 +281,13 @@ class Compiler:
                                   "prerequisite": frm, "sets": to})
         elif term == "flag" and a[0] in self.hooks and a[1] in (True, 1, "true"):
             thing, _hook = self.hooks[a[0]]
-            self._trigger("use", self.use(thing, where), frm, to)
+            self._trigger("use", self.use(thing, where), frm, to, until)
         elif term == "objectiveComplete" and a[0] == self.qid:
             obj = next((o for s in self.rec["stages"] for o in s.get("objectives") or [] if o["id"] == a[1]), None)
             if obj is None:
                 self.refuse("objectiveComplete", where, f"no objective {a[1]} in the quest")
             else:
-                self.mover(obj["completeWhen"], frm, to, where, fail)
+                self.mover(obj["completeWhen"], frm, to, where, fail, until)
         elif term == "flag":
             self.refuse("flag as a mover", where, "set the stage where the flag is set, by the same line or happening")
         elif term in CUT:
@@ -294,8 +296,9 @@ class Compiler:
             self.refuse(f"{term} as a mover", where, "a gate moves nothing: a line, a take, a use, a death or "
                         "another quest's stage moves a stage")
 
-    def _trigger(self, kind, ref, frm, to):
-        self.triggers.append({"kind": kind, "ref": ref, "prerequisite": frm, "sets": to})
+    def _trigger(self, kind, ref, frm, to, until=None):
+        self.triggers.append({"kind": kind, "ref": ref, "prerequisite": frm, "sets": to}
+                             | ({"until": int(until)} if until is not None else {}))
 
     def scan(self, c, where):
         """Refuse any term of a condition the form never carries (an objective's own completion test)."""
@@ -327,6 +330,8 @@ class Compiler:
                     self.refuse("changeDisposition", where, f"regard is Skyrim's relationship rank, -{REGARD} to "
                                 f"{REGARD}: change it by 1 to {REGARD} (4 is as far as it goes)")
                 out.append({"do": "change_regard", "ref": self.use(a[0], where), "by": int(a[1])})
+            elif term == "giveOwnership":
+                out.append({"do": "give_ownership", "ref": self.use(a[0], where)})
             elif term in ("enableRef", "disableRef"):
                 out.append({"do": "switch_on" if term == "enableRef" else "switch_off", "ref": self.use(a[0], where)})
             elif term == "moveRef":
@@ -403,9 +408,10 @@ class Compiler:
                            "ending": {"complete": "completed", "failed": "failed"}.get(s.get("ending"), "none"),
                            "results": res})
             for i, succ in enumerate(s.get("successors") or []):
-                self.mover(succ["when"], n, succ["to"], f"{where} successor to {succ['to']}")
+                self.mover(succ["when"], n, succ["to"], f"{where} successor to {succ['to']}", until=succ.get("until"))
             for ff in s.get("failForward") or []:
-                self.mover(ff["when"], n, ff["to"], f"{where} fail-forward to {ff['to']}", fail=True)
+                self.mover(ff["when"], n, ff["to"], f"{where} fail-forward to {ff['to']}", fail=True,
+                           until=ff.get("until"))
             # an objective is done when the quest leaves its stage, by a successor or a fail-forward; an ending is
             # never named (it closes every objective)
             done = sorted({x["to"] for x in (s.get("successors") or []) + (s.get("failForward") or [])
@@ -444,6 +450,7 @@ class Compiler:
                           "kind": kind, "start": start},
                 "stages": stages, "objectives": objectives, "refs": refs, "lines": lines, "triggers": triggers,
                 "must_live": must_live}
+        self._until(form)
         names, texts = self.item_names(form)
         if names:
             form["names"] = names
@@ -455,6 +462,26 @@ class Compiler:
         if self.refused:
             return None
         return form
+
+    # -- a trigger that would come late closes when the step it replaces does --------------------------------------
+    def _until(self, form):
+        """A death, take or use trigger the quest can pass while it is still open (rules.late_triggers) applies only
+        while the step it stands for is open: it closes (`until`) at the lowest other stage its prerequisite moves to,
+        unless the record states its own `until`. One that is still late is refused."""
+        late = rules.late_triggers(rules.Form(form))
+        if not late:
+            return
+        exits = {s["id"]: {x["to"] for x in (s.get("successors") or []) + (s.get("failForward") or [])}
+                 for s in self.rec["stages"]}
+        for t in form["triggers"]:
+            if t["id"] in late and "until" not in t:
+                ex = sorted(x for x in exits.get(t["prerequisite"], ()) if x != t["sets"] and x > t["prerequisite"]
+                            and self.stage_of.get(x, {}).get("ending") not in ("complete", "failed"))
+                if ex:
+                    t["until"] = ex[0]
+        for tid, n in sorted(rules.late_triggers(rules.Form(form)).items()):
+            self.refuse("late trigger", f"trigger {tid}", f"it can still fire at stage {n}, after the step it stands "
+                        "for: state the stage from which it no longer fires (`until` on its successor or fail-forward)")
 
     # -- a thing already held: the take trigger's stage checks the count as it begins ----------------------------
     def _held(self, stages):
@@ -618,6 +645,11 @@ class Compiler:
                 ftext, fprompt, fok, fanswers = fb
                 made.append({**base, "text": ftext, "written": fok, "answers": fanswers, "prompt": base["prompt"],
                              "conditions": soft, "results": [], "first_stage": a, "last_stage": b})
+            # a check shows on the prompt as Skyrim's do; its fallback (the same prompt) shares the label
+            want = sorted({c for m in made for c in rules.checks(m["conditions"])}, key=lambda c: (c[0] != "skill", str(c)))
+            for m in made:
+                if m["prompt"]:
+                    m["prompt"] = rules.labelled(m["prompt"], want)
             if t.get("kind") == "speaks-first" and made:     # a quest has one speaks-first line: the first
                 made.append({**made[0], "kind": "speaks_first", "prompt": None})
             for i, m in enumerate(made):

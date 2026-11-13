@@ -115,7 +115,7 @@
   "infos": [
    {
     "variant": "main",
-    "prompt": "The village blames you whatever you say. Tell me what happened to your tree. (Speech 25)",
+    "prompt": "The village blames you whatever you say. Tell me what happened to your tree.",
     "lines": [
      "You do not shout it to the village. You ask me quietly. I have carried this alone too long.",
      "A root of the Hist was cut under the stilts, and its sap was drawn off. The cut was sealed with black gum from the sap-workshop. It was my gum, and my knife was gone from the workshop.",
@@ -130,7 +130,7 @@
    },
    {
     "variant": "fail",
-    "prompt": "The village blames you whatever you say. Tell me what happened to your tree. (Speech 25)",
+    "prompt": "The village blames you whatever you say. Tell me what happened to your tree.",
     "lines": [
      "Soft words from a stranger are not enough. I have work at the roots.",
      "Come back better spoken, and I may listen. Or come with something of mine in your hand to show me."

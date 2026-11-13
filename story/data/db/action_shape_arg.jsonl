@@ -23,6 +23,7 @@
 {"term":"giveGold","ord":0,"kind":"int","optional":false}
 {"term":"giveItem","ord":0,"kind":"id","optional":false}
 {"term":"giveItem","ord":1,"kind":"int","optional":true}
+{"term":"giveOwnership","ord":0,"kind":"id","optional":false}
 {"term":"grantAbility","ord":0,"kind":"id","optional":false}
 {"term":"grantGlossaryTerm","ord":0,"kind":"id","optional":false}
 {"term":"grantHistStep","ord":0,"kind":"id","optional":false}

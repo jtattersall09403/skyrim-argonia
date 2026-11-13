@@ -38,7 +38,7 @@ quest.local.lq25` (local).
 | `onEnter` | actions (85 §B), e.g. `{grantTopic: topic.x}`, `{setFlag: [flag.x, true]}` |
 | `objectives` | `{id, text: text.objective.<code>.<id>, target, completeWhen: <condition>}`; + `objectiveText`: an imperative with a full stop; `target`: the cast, thing or ref id the compass marker points at (`none` only for a choice between several) |
 | + `hidden` | `1` for a stage the build needs and the player never reads (the stage 0 a quest waits at for its opening line); it has no journal or objective |
-| `successors`, `failForward` | `{to, when: <condition>}`. A fail-forward on a person's death to a failed ending names someone the quest cannot go on without (who must live): it holds over the stages that carry it, never before the quest's first shown stage, and a person dead before then leaves the quest unable to start. A main-quest record names at least one |
+| `successors`, `failForward` | `{to, when: <condition>, until}`. A death, take or use that stands for one step (the broker's death in place of talking to him) applies only while that step is open: the compiler closes it at the lowest other stage its stage moves to; `until` (a stage) is written only where that is not the right stage. A fail-forward on a person's death to a failed ending names someone the quest cannot go on without (who must live): it holds over the stages that carry it, never before the quest's first shown stage, and a person dead before then leaves the quest unable to start. A main-quest record names at least one |
 | `ending` | `complete` or `failed` on an end stage; + `endingId`: the `endings` row it plays |
 | `outside` | `{packet}` when the stage is built in a later packet (import field) |
 | + `actions` / `approaches` | `{skill, use, target, setting, note}` from `skill-uses.yaml`; approaches are `{id, actions}` (principles/actions.md). Supporting acts as `{system, use}` |
@@ -94,7 +94,12 @@ A line that moves a stage carries its successor's gates. A check the player can 
 an amount of gold) has a fallback: the written line's `fail` info, or until then the topic's `fallback` gist. Without
 one the quest does not compile. A line whose failure another line already catches (the haggle when the persuasion fails)
 needs none. A gated line never gets an ungated copy: a start topic gated on another quest's stage is simply not offered
-before it.
+before it. The prompt shows the check as Skyrim's do, and the compiler adds it: `(Persuade)` for Speech, the skill's
+name for another, `(<n> gold)`; a label written in the prompt must be that one, and never a threshold.
+
+A key opens a lock, but what an owned container holds stays its owner's: taking it is theft. Where the owner lets the
+player have it (she gives or sells the key and means the jar to go), the stage that gives the key also carries
+`giveOwnership: <the container's ref>`.
 
 ## 3. The engine mapping: the built shapes
 

@@ -241,3 +241,53 @@ def test_every_place_the_player_meets_is_named_in_the_form(forms):
     assert house["interior"] and "entrance" in house
     assert forms["quest.main.mq05"]["places"]["1562F8:Black Marsh.esm"]["name"]   # a door into a persistent cell
     assert ref(forms["quest.main.mq05"], "thing.mq05.landing-door")["at"]["cell"] == "0AA665:Black Marsh.esm"
+
+
+# -- 9. a death that would come late closes with the step it replaces ----------------------------------------------
+def trigger(form, tid):
+    return next(t for t in form["triggers"] if t["id"] == tid)
+
+
+def test_a_death_that_would_come_late_closes_with_the_step_it_replaces(forms):
+    assert trigger(forms["quest.main.mq01"],
+                   "death.npc.mercantile-coast.lilmoth.broker-buys-the-months.10-21")["until"] == 20
+    assert trigger(forms["quest.main.mq04"], "death.npc.mercantile-coast.low-reed-village.root-herald.10-21")["until"] == 20
+    assert trigger(forms["quest.main.mq03"], f"death.{DIVES}.10-13")["until"] == 12   # her talk, sale or refusal
+    with_until = {"quest.main.mq01", "quest.main.mq03", "quest.main.mq04"}
+    for q, f in forms.items():
+        assert rules.late_triggers(rules.Form(f)) == {}, q
+        assert q in with_until or all("until" not in t for t in f["triggers"]), q
+
+
+def test_a_record_states_until_where_it_cannot_be_derived():
+    w = db.load()
+    row = next(r for r in w.rows("quest_fail_forward", quest_id="quest.main.mq01") if r.to == 21)
+    w.update("quest_fail_forward", row.quest_id, row.stages_ord, row.ord, until=30)
+    form, refused = qc.compile_quest(w, "quest.main.mq01")
+    assert refused == []
+    assert trigger(form, "death.npc.mercantile-coast.lilmoth.broker-buys-the-months.10-21")["until"] == 30
+    w.update("quest_fail_forward", row.quest_id, row.stages_ord, row.ord, until=90)       # still open at stage 30
+    form, refused = qc.compile_quest(w, "quest.main.mq01")
+    assert form is None and [t for t, _, _ in refused] == ["late trigger"]
+
+
+# -- 10. a key is not a theft: the giver lets the player have what the box holds -----------------------------------
+def test_a_box_whose_key_is_given_becomes_the_players(forms):
+    for q, box, given in (("quest.main.mq03", "thing.mq03.sack", (15, 16)),
+                          ("quest.tg.tg01", "thing.tg01.strongbox", (21, 22))):
+        for s in forms[q]["stages"]:
+            gives = {"do": "give_ownership", "ref": box} in s["results"]
+            assert gives is (s["number"] in given), (q, s["number"])
+        assert ref(forms[q], box)["owner"]                     # stolen on every other way
+
+
+# -- 11. a check the player can see coming ------------------------------------------------------------------------
+def test_every_check_shows_its_label_and_no_threshold(forms):
+    assert lines_of(forms["quest.main.mq04"], "topic.mq04-persuade", 20)[0]["prompt"].endswith(
+        "Tell me what happened to your tree. (Persuade)")
+    assert lines_of(forms["quest.main.mq05"], "topic.mq05-tell-minder", 45)[0]["prompt"].endswith("(Persuade)")
+    for q, f in forms.items():
+        for ln in f["lines"]:
+            assert not any(k == "threshold" for k, _, _ in rules.prompt_labels(ln["prompt"])), (q, ln["id"])
+            for c in rules.checks(ln["conditions"]):
+                assert c in {(k, v) for k, v, _ in rules.prompt_labels(ln["prompt"])}, (q, ln["id"])

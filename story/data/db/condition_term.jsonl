@@ -35,6 +35,7 @@
 {"id":"flag","kind":"predicate","section":"A2","args":"flag `id`, `bool`","reads":"a named world flag"}
 {"id":"giveGold","kind":"action","section":"B3","args":"int"}
 {"id":"giveItem","kind":"action","section":"B3","args":"item, count"}
+{"id":"giveOwnership","kind":"action","section":"B3","args":"ref"}
 {"id":"goldAtLeast","kind":"predicate","section":"A4","args":"`int`","reads":"prices, bribes, tolls"}
 {"id":"grantAbility","kind":"action","section":"B3","args":"ability"}
 {"id":"grantGlossaryTerm","kind":"action","section":"B2","args":"term"}

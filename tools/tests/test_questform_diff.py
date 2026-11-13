@@ -181,3 +181,14 @@ def test_a_must_live_message_difference_is_named():
     b["must_live"][0]["message"] = "Other."
     out = run(d, b)
     assert len(out) == 1 and "who-must-live npc.example.contact.message" in out[0]
+
+
+def test_a_triggers_until_is_compared():
+    d = copy.deepcopy(EXAMPLE)
+    d["triggers"].append({"id": "t", "kind": "use", "ref": "door.example.hold", "prerequisite": 10, "sets": 20,
+                          "until": 20})
+    b = built_from(d)
+    assert run(d, b) == []
+    del b["triggers"][0]["until"]
+    out = run(d, b)
+    assert len(out) == 1 and "trigger t.until: designed 20, built null" in out[0]

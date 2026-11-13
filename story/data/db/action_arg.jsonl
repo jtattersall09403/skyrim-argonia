@@ -433,9 +433,11 @@
 {"list_id":"quest_stage:quest.local.sx06|2:on_enter","ord":0,"arg_ord":1,"value":1}
 {"list_id":"quest_stage:quest.main.mq03|3:on_enter","ord":0,"arg_ord":0,"value":"thing.mq03.sack-key"}
 {"list_id":"quest_stage:quest.main.mq03|3:on_enter","ord":0,"arg_ord":1,"value":1}
+{"list_id":"quest_stage:quest.main.mq03|3:on_enter","ord":1,"arg_ord":0,"value":"thing.mq03.sack"}
 {"list_id":"quest_stage:quest.main.mq03|4:on_enter","ord":0,"arg_ord":0,"value":20}
 {"list_id":"quest_stage:quest.main.mq03|4:on_enter","ord":1,"arg_ord":0,"value":"thing.mq03.sack-key"}
 {"list_id":"quest_stage:quest.main.mq03|4:on_enter","ord":1,"arg_ord":1,"value":1}
+{"list_id":"quest_stage:quest.main.mq03|4:on_enter","ord":2,"arg_ord":0,"value":"thing.mq03.sack"}
 {"list_id":"quest_stage:quest.main.mq03|5:on_enter","ord":0,"arg_ord":0,"value":"thing.mq03.sap-jar"}
 {"list_id":"quest_stage:quest.main.mq03|5:on_enter","ord":0,"arg_ord":1,"value":1}
 {"list_id":"quest_stage:quest.main.mq03|5:on_enter","ord":1,"arg_ord":0,"value":"thing.mq03.page"}
@@ -460,9 +462,11 @@
 {"list_id":"quest_stage:quest.tg.tg01|2:on_enter","ord":1,"arg_ord":1,"value":3}
 {"list_id":"quest_stage:quest.tg.tg01|3:on_enter","ord":0,"arg_ord":0,"value":"item.tg01.strongbox-key"}
 {"list_id":"quest_stage:quest.tg.tg01|3:on_enter","ord":0,"arg_ord":1,"value":1}
+{"list_id":"quest_stage:quest.tg.tg01|3:on_enter","ord":1,"arg_ord":0,"value":"thing.tg01.strongbox"}
 {"list_id":"quest_stage:quest.tg.tg01|4:on_enter","ord":0,"arg_ord":0,"value":"item.tg01.strongbox-key"}
 {"list_id":"quest_stage:quest.tg.tg01|4:on_enter","ord":0,"arg_ord":1,"value":1}
 {"list_id":"quest_stage:quest.tg.tg01|4:on_enter","ord":1,"arg_ord":0,"value":60}
+{"list_id":"quest_stage:quest.tg.tg01|4:on_enter","ord":2,"arg_ord":0,"value":"thing.tg01.strongbox"}
 {"list_id":"quest_stage:quest.tg.tg01|6:on_enter","ord":0,"arg_ord":0,"value":"item.tg01.jasper-necklace"}
 {"list_id":"quest_stage:quest.tg.tg01|6:on_enter","ord":0,"arg_ord":1,"value":1}
 {"list_id":"quest_stage:quest.tg.tg01|6:on_enter","ord":1,"arg_ord":0,"value":100}

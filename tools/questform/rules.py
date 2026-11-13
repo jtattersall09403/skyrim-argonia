@@ -5,8 +5,9 @@ structural check (its shape is not known). Stages are by "done", as the engine h
 does nothing, and a quest's stage as a line's window reads it is the highest stage done (`stage-order` keeps every
 stage set above the stage it is set from). Windows:
 - a line is open while the quest's stage is from its first stage to its last;
-- a trigger is open while its prerequisite stage is done and the stage it sets is not (the graph below takes it as
-  open at every stage from its prerequisite on, an over-reach that `reach` in the paper game does not make);
+- a trigger is open while its prerequisite stage is done, the stage it sets is not and the quest's stage is below its
+  `until` (the graph below takes it as open at every such stage from its prerequisite on, an over-reach that `reach`
+  in the paper game and `late-trigger`'s walk over what is done do not make);
 - an objective is active at a stage it is shown at and is not completed at.
 
 Every refusal of the builder (tools/ArgoniaPlugin/QuestForm.cs) that a form alone can show is a rule here, so a form
@@ -15,6 +16,7 @@ that passes `check` (and `check_set`) builds.
 from __future__ import annotations
 
 import math
+import re
 from collections import defaultdict
 
 from tools.questform import validate
@@ -28,13 +30,69 @@ MAX_STAGE_RESULTS = 128
 MAX_LINE_RESULTS = 128
 # Regard is Skyrim's relationship rank, kept between these by the engine (ARG_Effects ChangeRegard).
 REGARD_MIN, REGARD_MAX = -4, 4
+# The ways of a quest the late-trigger walk follows at most (each a set of stages done); a quest with more is not walked.
+MAX_WAYS = 50000
 
 RULES = ("schema", "vocabulary", "unique-ids", "stages-exist", "refs-exist", "placement", "lock", "owner", "contents",
          "item-id", "journal-text",
          "way-out", "reachable", "objective-target-on", "asked-is-target", "completes-on-target", "hand-in", "held-take",
          "line-window", "switch-cause", "away", "must-live-fails", "must-live-window", "main-message", "death-hostile",
          "result-limits", "speaks-first-has-line", "stage-order", "trigger", "speaks-first", "answer", "prompt",
-         "speaker", "hostile", "created", "line-said", "regard-range", "objective-left")
+         "speaker", "hostile", "created", "line-said", "regard-range", "objective-left", "late-trigger", "check-label")
+
+# A check on a prompt, as Skyrim shows it: in brackets, "(Persuade)" for Speech, the skill's name for any other,
+# "(<n> gold)" for gold; never a threshold.
+SKILL_LABEL = {"Speech": "Persuade", "OneHanded": "One-handed", "TwoHanded": "Two-handed", "HeavyArmor": "Heavy Armor",
+               "LightArmor": "Light Armor"}
+SPEECH_LABELS = ("Persuade", "Intimidate")
+_SKILLS = ("Speech", "Sneak", "Lockpicking", "Pickpocket", "Alchemy", "OneHanded", "TwoHanded", "Archery", "Block",
+           "HeavyArmor", "LightArmor", "Smithing", "Enchanting", "Alteration", "Conjuration", "Destruction", "Illusion",
+           "Restoration")
+_SKILL_WORDS = {w.lower(): s for s in _SKILLS for w in (s, SKILL_LABEL.get(s, s))} | \
+    {w.lower(): "Speech" for w in SPEECH_LABELS}
+
+
+def checks(conditions) -> list[tuple[str, object]]:
+    """A line's checks the player can fail in front of the speaker: ("skill", skill) and ("gold", amount)."""
+    out = []
+    for c in conditions:
+        if c.get("not"):
+            continue
+        if c["is"] == "skill_at_least":
+            out.append(("skill", c["skill"]))
+        elif c["is"] == "gold_at_least":
+            out.append(("gold", c["gold"]))
+    return out
+
+
+def label_of(check) -> str:
+    kind, v = check
+    return f"{v} gold" if kind == "gold" else SKILL_LABEL.get(v, v)
+
+
+def prompt_labels(prompt: str | None) -> list[tuple[str, object, str]]:
+    """The check labels a prompt carries, as (kind, value, the words in brackets): ("skill", skill), ("gold", n), or
+    ("threshold", skill) for a skill with a number; any other bracketed words are not a label."""
+    out = []
+    for inner in re.findall(r"\(([^()]*)\)", prompt or ""):
+        w = inner.strip()
+        m = re.fullmatch(r"(\d+) gold", w, re.IGNORECASE)
+        if m:
+            out.append(("gold", int(m.group(1)), w))
+        elif w.lower() in _SKILL_WORDS:
+            out.append(("skill", _SKILL_WORDS[w.lower()], w))
+        else:
+            m = re.fullmatch(r"([A-Za-z -]+?)\s+\d+", w)
+            if m and m.group(1).lower() in _SKILL_WORDS:
+                out.append(("threshold", _SKILL_WORDS[m.group(1).lower()], w))
+    return out
+
+
+def labelled(prompt: str, wanted) -> str:
+    """The prompt with the label of every check in `wanted` it does not already carry, appended in brackets."""
+    have = {(k, v) for k, v, _ in prompt_labels(prompt)}
+    add = [label_of(c) for c in wanted if c not in have]
+    return " ".join([prompt] + [f"({a})" for a in add])
 # The rules over a set of forms played together (check_set).
 SET_RULES = ("set-start", "set-stages", "result-limits")
 
@@ -67,7 +125,7 @@ class Form:
         return [ln for ln in self.lines if ln["first_stage"] <= n <= ln["last_stage"]]
 
     def open_triggers(self, n):
-        return [t for t in self.triggers if t["prerequisite"] <= n and t["sets"] != n]
+        return [t for t in self.triggers if t["prerequisite"] <= n and t["sets"] != n and n < t.get("until", 256)]
 
     def edges(self, n) -> set[int]:
         out = set(_stage_sets(self.stages[n]["results"]))
@@ -163,6 +221,8 @@ def _named_stages(fm: Form):
     for t in fm.triggers:
         yield f"trigger {t['id']}", t["prerequisite"]
         yield f"trigger {t['id']}", t["sets"]
+        if "until" in t:
+            yield f"trigger {t['id']}", t["until"]
     for m in fm.f["must_live"]:
         yield f"who-must-live {m['ref']}", m["fail_stage"]
         for k in ("from", "to"):
@@ -242,6 +302,102 @@ def check(form) -> list[tuple[str, str]]:
     out += _said(fm)
     out += _regard(fm)
     out += _left(fm)
+    out += _late(fm)
+    out += _labels(fm)
+    return out
+
+
+def ways(fm: Form, cap: int = MAX_WAYS):
+    """Every way the quest can stand, as (stage, the stages done, the triggers open): walked from the start over what
+    is done, as the engine has it (a trigger is open while its prerequisite is done, its stage is not and the quest's
+    stage is below its `until`); every result, line and trigger that sets a stage is taken as able to fire, but a line
+    that asks the player to hold a thing a take trigger is still waiting for (taking it, or holding it as the
+    trigger's prerequisite began, sets the trigger's stage); no other condition, nor an `if_held`, is read. None when
+    the quest has more than `cap` ways."""
+    start = fm.f["quest"]["start"]["stage"]
+    lines = [(ln["first_stage"], ln["last_stage"], _stage_sets(ln["results"]),
+              {c["item"] for c in ln["conditions"] if c["is"] == "item_count_at_least" and not c.get("not")})
+             for ln in fm.lines]
+    takes = [(fm.item_of(t["ref"]), t) for t in fm.triggers if t["kind"] == "take" and t["ref"] in fm.refs]
+
+    def open_at(n, done):
+        return [t for t in fm.triggers if t["prerequisite"] in done and t["sets"] not in done
+                and n < t.get("until", 256)]
+
+    def held(items, done):
+        return not any(i in items and t["prerequisite"] in done and t["sets"] not in done for i, t in takes)
+    seen, todo, out = {frozenset({start})}, [frozenset({start})], []
+    while todo:
+        done = todo.pop()
+        n = max(done)
+        trig = open_at(n, done)
+        out.append((n, done, trig))
+        if fm.stages[n]["ending"] != "none":
+            continue
+        nxt = set(_stage_sets(fm.stages[n]["results"])) | {t["sets"] for t in trig}
+        nxt |= {m for a, b, sets, items in lines if a <= n <= b and held(items, done) for m in sets}
+        for m in nxt - done:
+            if m not in fm.stages:
+                continue
+            d = done | {m}
+            if d not in seen:
+                if len(seen) >= cap:
+                    return None
+                seen.add(d)
+                todo.append(d)
+    return out
+
+
+def late_triggers(fm: Form) -> dict[str, int]:
+    """Each death, take or use trigger that can fire after the quest has passed the stage it sets (it is open while a
+    later stage, not an ending, is the quest's stage): its journal entry and objectives would come late and be untrue.
+    By trigger id, the highest such stage."""
+    w = ways(fm)
+    out = {}
+    for n, _done, trig in w or []:
+        if fm.stages[n]["ending"] != "none":
+            continue
+        for t in trig:
+            if t["kind"] in ("death", "take", "use") and n > t["sets"] and fm.stages[t["sets"]]["ending"] == "none":
+                out[t["id"]] = max(out.get(t["id"], 0), n)
+    return out
+
+
+def _late(fm: Form):
+    """A death, take or use trigger that sets a stage is open only while that stage can still come next: once the
+    quest can stand at a later stage while it is open, it carries `until`, the stage from which it no longer fires.
+    An `until` is above its prerequisite (else the trigger is never open)."""
+    out = [("late-trigger", f"trigger {t['id']}: until {t['until']} is not above its prerequisite "
+            f"{t['prerequisite']}, so it never fires") for t in fm.triggers
+           if "until" in t and t["until"] <= t["prerequisite"]]
+    for tid, n in sorted(late_triggers(fm).items()):
+        t = next(x for x in fm.triggers if x["id"] == tid)
+        out.append(("late-trigger", f"trigger {tid} can still set stage {t['sets']} once the quest is at stage {n}: "
+                    "give it `until`, the stage from which it no longer fires"))
+    return out
+
+
+def _labels(fm: Form):
+    """Every line with a skill or gold check says so on its prompt, as Skyrim does: "(Persuade)" for Speech, the
+    skill's name for another, "(<n> gold)"; the lines of one speaker and prompt (a check and its fallback) share it.
+    A label no line of the prompt checks, a check of another amount, or a threshold shown is refused."""
+    out, groups = [], defaultdict(list)
+    for ln in fm.lines:
+        if ln["prompt"]:
+            groups[(ln["speaker"], ln["prompt"])].append(ln)
+    for (_who, prompt), lns in groups.items():
+        want = {c for ln in lns for c in checks(ln["conditions"])}
+        have = prompt_labels(prompt)
+        ids = ", ".join(ln["id"] for ln in lns)
+        for kind, v, words in have:
+            if kind == "threshold":
+                out.append(("check-label", f"line {ids}: the prompt shows a threshold ({words}): a check shows only "
+                            f"its label ({label_of(('skill', v))})"))
+            elif (kind, v) not in want:
+                out.append(("check-label", f"line {ids}: the prompt's ({words}) is no check of the line"))
+        got = {(k, v) for k, v, _ in have}
+        out += [("check-label", f"line {ids}: its {c[0]} check {c[1]} is not on its prompt: add "
+                 f"({label_of(c)})") for c in sorted(want - got, key=str)]
     return out
 
 
@@ -351,7 +507,7 @@ def _builder(fm: Form):
     for where, res in _all_results(fm):
         out += [("created", f"{where} {x['do']} {x['ref']}, a thing made in a container, which has no reference")
                 for x in res if x.get("ref") in made and x["do"] in ("switch_on", "switch_off", "lock_door",
-                                                                     "unlock_door")]
+                                                                     "unlock_door", "give_ownership")]
     out += [("created", f"trigger {t['id']}: a thing made in a container is taken, not used") for t in fm.triggers
             if t["kind"] == "use" and t.get("ref") in made]
     return out
@@ -504,6 +660,12 @@ def _lock_owner_contents(fm: Form):
                 out.append(("contents", f"ref {rid}: contents are set on a new container: a thing of an existing base placed by an anchor"))
             out += [("contents", f"ref {rid}: content {c['item']} is a ref of the form: name an item by its own id")
                     for c in r["contents"] if c["item"] in fm.refs]
+    for where, res in _all_results(fm):
+        for x in res:
+            if x["do"] == "give_ownership" and x["ref"] in fm.refs:
+                r = fm.refs[x["ref"]]
+                if r["kind"] != "thing" or "owner" not in r:
+                    out.append(("owner", f"{where} gives the player {x['ref']}, which is not a thing with an owner"))
     return out
 
 

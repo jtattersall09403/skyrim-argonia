@@ -44,18 +44,18 @@ that fits the form and plays it with `reach` (below), unless it is listed with i
 | `map` | the player's position; each active marker: what it marks (a person, thing, door, place), where, how far, which way; the places known |
 | `go <marker N, person, thing, place>` | arrival, roughly how far it was, then the `look`; into another interior only when a door of the run leads there that is unlocked or whose key is held (else the door's locked words). The transcript row says how the player knew the way: `marker`, `in sight`, `known place`, or `name only` (flagged on the page) |
 | `talk <person>` | who they are (Nesh-Deeka, an Argonian woman), the greeting (the first whose conditions hold; the first conversation makes "spoken before" true), then the topics open now |
-| `say <topic, answer or number>` | the spoken words: one entry per prompt, and saying it speaks the first line of that prompt whose stage window and conditions hold, a failed check the record's own fallback words; what comes up (objective started or completed, journal entry, thing added or removed, message box); the topics now open, or the answers to a question (by the same rule) |
-| `use <container>` | its lock and level if locked (it opens with its key held), else what is in it (its `contents` and the things placed in it); an owned one asks `unseen` or `seen` |
+| `say <topic, answer or number>` | the spoken words: one entry per prompt (a prompt with a check carries its label, as the built topic does: "(Persuade)", "(Alchemy)", "(20 gold)"), and saying it speaks the first line of that prompt whose stage window and conditions hold, a failed check the record's own fallback words; what comes up (objective started or completed, journal entry, thing added or removed, message box); the topics now open, or the answers to a question (by the same rule) |
+| `use <container>` | its lock and level if locked (it opens with its key held, no crime), else what is in it (its `contents` and the things placed in it); opening an owned one is no crime, and it says that what is taken from it is stolen |
 | `use <door>` | through it, or locked with its level; its key held unlocks it; a lock with no key and nothing that unlocks it stays shut; a door a result unlocks starts locked, key only |
 | `use <thing>` | a thing with `text` is read as a book or note; a dead person's body is searched |
-| `take <thing> [unseen\|seen]` | one thing from the ground (its whole `count`), an opened container, a pocket or a body (the whole stack), counted by the form's item id; a container cannot be taken; an owned thing or a pocket asks `unseen` or `seen` |
+| `take <thing> [unseen\|seen]` | one thing from the ground (its whole `count`), an opened container, a pocket or a body (the whole stack), counted by the form's item id; a container cannot be taken; an owned thing, a thing from a container another owns, or a pocket asks `unseen` or `seen` (a key does not make a container's things the player's; a `give_ownership` result does) |
 | `pick <lock> win\|fail [unseen\|seen]` | needs lockpicks (a failure breaks one); a key-only lock cannot be picked; a level above `LOCK_SKILL` for the sheet's Lockpicking is beyond the player; a picked container opens |
 | `pickpocket <person>` | what they carry; `take` then takes one |
 | `fight`, `wait` | what happens, as the game shows it |
 
 Every command counts towards the run's limit, one the game refuses too. Stages are by done, as the engine has them
 ([quest-form](quest-form.md)): a stage already done is never set again; a trigger is open while its prerequisite is
-done and its stage is not; a condition's `not: true` turns it round. An ending closes every objective still shown.
+done, its stage is not and the quest's stage is below its `until`; a condition's `not: true` turns it round. An ending closes every objective still shown.
 Regard stays between -4 and 4. A speaks-first line fires when the player arrives near its speaker at its stage. A
 must-live person's death within the row's window (its `from` stage done, the stage at most its `to`) fails the quest if
 it runs, and on a main or faction quest that has not ended shows its kind's message box; a who-must-live person, or a

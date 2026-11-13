@@ -137,7 +137,7 @@
   "infos": [
    {
     "variant": "main",
-    "prompt": "I saw a Hist cut at the root, not gone silent. Hear me out. (Speech 25)",
+    "prompt": "I saw a Hist cut at the root, not gone silent. Hear me out.",
     "lines": [
      "A cut is done to a tree. A silence is the tree's own. I held them to be one thing, and I do not like to be shown I was wrong.",
      "I will carry it to the interior's tree-minders. They will guard their trees and let no stranger near. Some of the strangers they turn away will be honest ones in need. I know that cost, and I pay it.",
@@ -149,7 +149,7 @@
    },
    {
     "variant": "fail",
-    "prompt": "I saw a Hist cut at the root, not gone silent. Hear me out. (Speech 25)",
+    "prompt": "I saw a Hist cut at the root, not gone silent. Hear me out.",
     "lines": [
      "A stranger tells me a tree was cut, and I have only the stranger's word. I do not sit with strangers.",
      "Ei-Tuja, the Nisswo, will hear anyone. Or come back when your words weigh more."

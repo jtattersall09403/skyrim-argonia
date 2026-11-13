@@ -142,6 +142,8 @@ RESULTS = {
     "switch_off": _r_switch(False),
     "lock_door": _r_lock(True),
     "unlock_door": _r_lock(False),
+    # the thing (a container) becomes the player's, as SetActorOwner(the player's base): what it holds is not stolen
+    "give_ownership": lambda g, q, r, _: (g.s["owned"].append(_c_ref(g, r)), [])[1],
     "show_message": lambda g, q, r, _: [f"[Message box] {r['text']}"],
     "speaker_hostile": _r_hostile,
     "start_quest": lambda g, q, r, sp: g._set_stage(r["quest"], r["stage"], None),

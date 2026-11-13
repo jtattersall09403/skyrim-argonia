@@ -247,8 +247,10 @@
 {"list_id":"quest_stage:quest.local.sx06|1:on_enter","ord":0,"term":"grantTopic"}
 {"list_id":"quest_stage:quest.local.sx06|2:on_enter","ord":0,"term":"takeItem"}
 {"list_id":"quest_stage:quest.main.mq03|3:on_enter","ord":0,"term":"giveItem"}
+{"list_id":"quest_stage:quest.main.mq03|3:on_enter","ord":1,"term":"giveOwnership"}
 {"list_id":"quest_stage:quest.main.mq03|4:on_enter","ord":0,"term":"takeGold"}
 {"list_id":"quest_stage:quest.main.mq03|4:on_enter","ord":1,"term":"giveItem"}
+{"list_id":"quest_stage:quest.main.mq03|4:on_enter","ord":2,"term":"giveOwnership"}
 {"list_id":"quest_stage:quest.main.mq03|5:on_enter","ord":0,"term":"takeItem"}
 {"list_id":"quest_stage:quest.main.mq03|5:on_enter","ord":1,"term":"giveItem"}
 {"list_id":"quest_stage:quest.main.mq04|10:on_enter","ord":0,"term":"setStage"}
@@ -263,8 +265,10 @@
 {"list_id":"quest_stage:quest.tg.tg01|2:on_enter","ord":0,"term":"enableRef"}
 {"list_id":"quest_stage:quest.tg.tg01|2:on_enter","ord":1,"term":"giveItem"}
 {"list_id":"quest_stage:quest.tg.tg01|3:on_enter","ord":0,"term":"giveItem"}
+{"list_id":"quest_stage:quest.tg.tg01|3:on_enter","ord":1,"term":"giveOwnership"}
 {"list_id":"quest_stage:quest.tg.tg01|4:on_enter","ord":0,"term":"giveItem"}
 {"list_id":"quest_stage:quest.tg.tg01|4:on_enter","ord":1,"term":"takeGold"}
+{"list_id":"quest_stage:quest.tg.tg01|4:on_enter","ord":2,"term":"giveOwnership"}
 {"list_id":"quest_stage:quest.tg.tg01|6:on_enter","ord":0,"term":"takeItem"}
 {"list_id":"quest_stage:quest.tg.tg01|6:on_enter","ord":1,"term":"giveGold"}
 {"list_id":"quest_stage:quest.tg.tg01|6:on_enter","ord":2,"term":"changeDisposition"}

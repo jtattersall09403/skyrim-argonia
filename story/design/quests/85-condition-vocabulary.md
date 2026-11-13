@@ -155,7 +155,7 @@ Actions are the only way authored content changes the world. Every one is data.
 `giveItem(item, count)` · `takeItem(item, count)` · `giveGold(int)` ·
 `takeGold(int)` · `grantAbility(ability)` *(once-per-day powers, incl. Hist
 communion — 0042 §1)* · `grantMapMarker(marker)` · `setPrice(service, int)` ·
-`grantServiceAccess(service)` · `setDoorAccess(door, enum)`
+`grantServiceAccess(service)` · `setDoorAccess(door, enum)` · `giveOwnership(ref)` *(an owned container or thing becomes the player's: what it holds is theirs to take, not stolen)*
 
 A favour (decision 0141) needs no verb: `completeQuest(quest)` marks paid
 every open favour whose service names that quest as its hook.

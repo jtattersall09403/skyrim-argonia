@@ -106,7 +106,8 @@ RESULT_ARGS = {
     "give_gold": {"amount": 5}, "take_gold": {"amount": 5}, "set_number": {"number": "n", "value": 3},
     "add_number": {"number": "n", "value": 1}, "join_faction": {"faction": "f"}, "set_rank": {"faction": "f", "rank": 2},
     "change_regard": {"ref": CONTACT, "by": 3}, "switch_on": {"ref": CONTACT}, "switch_off": {"ref": CONTACT},
-    "lock_door": {"ref": DOOR}, "unlock_door": {"ref": DOOR}, "show_message": {"text": "A box."},
+    "lock_door": {"ref": DOOR}, "unlock_door": {"ref": DOOR}, "give_ownership": {"ref": DOOR},
+    "show_message": {"text": "A box."},
     "speaker_hostile": {}, "start_quest": {"quest": Q, "stage": 20},
 }
 
@@ -147,7 +148,8 @@ def test_each_result_is_said_from_a_line(word):
             "add_number": st["numbers"].get("n") == 1, "join_faction": "f" in st["factions"],
             "set_rank": st["factions"].get("f") == 2, "change_regard": st["regard"].get(CONTACT) == 3,
             "switch_on": st["switched"].get(CONTACT) is True, "switch_off": st["switched"].get(CONTACT) is False,
-            "lock_door": st["locked"].get(DOOR) is True, "unlock_door": st["locked"].get(DOOR) is False}.get(word, True)
+            "lock_door": st["locked"].get(DOOR) is True, "unlock_door": st["locked"].get(DOOR) is False,
+            "give_ownership": st["owned"] == [DOOR]}.get(word, True)
 
 
 def test_an_unknown_word_is_a_named_harness_error():
@@ -460,14 +462,16 @@ def test_a_container_lists_its_contents_and_cannot_be_taken():
     assert g.do("take lockbox") == "You cannot carry Lockbox. Use it to open it."
     assert g.do("take torn note") == "Torn Note is in Lockbox: open it first."
     g.s["locked"]["thing.box"] = False
-    assert "not yours: opening it is stealing" in g.do("use lockbox")
-    out = g.do("use lockbox unseen")
-    assert "Nobody sees you." in out and "Lockbox holds: Torn Note; Sap Jar." in out
-    out = g.do("take sap jar")
-    assert "Added: Sap Jar" in out and "I have the jar." in out            # counted by the form's item id
+    out = g.do("use lockbox")                    # opening an owned container is no crime; taking from it is
+    assert out == "Lockbox holds: Torn Note; Sap Jar. It is Nesh-Deeka's: what you take from it is stolen."
+    assert g.do("take sap jar") == ("Sap Jar is in Lockbox, which is Nesh-Deeka's: taking it is stealing. Say whether "
+                                    "anyone sees you: take sap jar unseen, or take sap jar seen.")
+    out = g.do("take sap jar unseen")
+    assert "Nobody sees you." in out and "Added: Sap Jar" in out and "I have the jar." in out   # by the item id
+    assert g.s["crimes"] == [{"what": "take Sap Jar", "owner": "npc.keeper", "seen": False}]
     assert g.s["items"]["item.jar"] == 1 and g.s["contents"]["thing.box"]["item.jar"] == 0
     assert g.do("take sap jar") == "There is no 'sap jar' near you."
-    g.do("take torn note")
+    g.do("take torn note unseen")
     assert g.s["items"]["thing.note"] == 1
     g.do("talk nesh-deeka")
     assert "Quest completed: The Jar" in g.do("say here is the jar.")
@@ -542,8 +546,8 @@ def test_owned_things_and_a_dead_persons_body():
 def test_a_readable_thing_shows_its_text():
     g = jar_game()
     g.s["locked"]["thing.box"] = False
-    g.do("use lockbox unseen")
-    g.do("take torn note")
+    g.do("use lockbox")
+    g.do("take torn note unseen")
     assert g.do("use torn note") == "You read Torn Note:\nThe cutters come at dusk."
 
 
@@ -664,8 +668,8 @@ def test_a_compiled_forms_places_texts_and_names_need_no_names_file():
     g = compiled_jar_game()
     assert "You are at Barge Pier." in g.look()
     g.s["locked"]["thing.box"] = False
-    g.do("use lockbox unseen")
-    g.do("take torn note")
+    g.do("use lockbox")
+    g.do("take torn note unseen")
     assert g.do("use torn note") == "You read Torn Note:\nThe cutters come at dusk."
 
 
@@ -673,7 +677,7 @@ def test_takes_and_hand_ins_match_by_the_forms_item_id_and_one_take_fires_once()
     g = compiled_jar_game()
     assert g.do("take lockpick") == "Added: Lockpick" and g.s["items"] == {G.LOCKPICK: 1}     # stock by one id
     g.do("pick lockbox win unseen")
-    out = g.do("take sap jar")
+    out = g.do("take sap jar unseen")
     assert "I have the jar." in out and g.s["items"]["thing.jar"] == 1
     assert g.s["quests"][JQ]["done"] == [10, 20]       # 15-30 opened only by the stage the take itself set
     g.do("talk nesh-deeka")
@@ -713,7 +717,8 @@ def test_a_session_starts_after_earlier_quests_with_their_state(tmp_path):
     st = sess["state"]
     assert st["quests"][JQ]["ended"] == "completed" and "quest.test.after" in st["quests"]
     assert st["commands"] == 0 and st["items"] == {G.LOCKPICK: 1}          # the jar was handed in
-    assert st["crimes"] == [{"what": "pick Lockbox", "owner": "npc.keeper", "seen": False}]
+    assert st["crimes"] == [{"what": "pick Lockbox", "owner": "npc.keeper", "seen": False},
+                            {"what": "take Sap Jar", "owner": "npc.keeper", "seen": False}]
     assert sess["know_text"] == ('What you know so far, from your journal: From "The Jar": Get the jar. I have '
                                  'the jar. She has the jar.')
     assert sess["after_path"][-1]["command"] == "say Here is the jar."
@@ -725,6 +730,42 @@ def test_a_session_starts_after_earlier_quests_with_their_state(tmp_path):
     with pytest.raises(G.HarnessError, match="no completed ending reached"):
 
         S.new([str(p)], use_db=False, root=tmp_path / "runs", after=[JQ])
+
+
+# -- a key is not a theft; a trigger that would come late ------------------------------------------------------------
+
+def test_a_key_opens_an_owned_box_without_a_crime_and_taking_from_it_is_still_theft():
+    g = jar_game()
+    g.s["items"]["thing.key"] = 1
+    out = g.do("use lockbox")
+    assert out.startswith("You unlock Lockbox with Lockbox Key.") and "what you take from it is stolen" in out
+    assert g.s["crimes"] == [] and "taking it is stealing" in g.do("take sap jar")
+
+
+def test_a_box_given_to_the_player_holds_what_is_theirs():
+    g = jar_game()
+    g._apply(JQ, [{"do": "give_ownership", "ref": "thing.box"}], None)
+    assert "Lockbox (locked, Novice);" in g.look()                # no longer "owned"
+    g.s["items"]["thing.key"] = 1
+    assert g.do("use lockbox") == "You unlock Lockbox with Lockbox Key.\nLockbox holds: Torn Note; Sap Jar."
+    out = g.do("take sap jar")
+    assert "Added: Sap Jar" in out and "I have the jar." in out and g.s["crimes"] == []
+
+
+def test_a_trigger_closes_at_its_until():
+    f = jar_form()
+    f["stages"].insert(1, {"number": 15, "shown": True, "journal": "She told me where it is.", "ending": "none",
+                           "results": []})
+    f["triggers"][0]["until"] = 15
+    for until, want in ((15, 15), (None, 20)):
+        if until is None:
+            del f["triggers"][0]["until"]
+        g = jar_game(f)
+        g._set_stage(JQ, 15, None)
+        g.s["locked"]["thing.box"] = False
+        g.do("use lockbox")
+        g.do("take sap jar unseen")
+        assert g.stage(JQ) == want and g.s["items"]["item.jar"] == 1
 
 
 def test_every_command_counts_toward_the_limit_and_a_refusal_has_a_row(tmp_path):

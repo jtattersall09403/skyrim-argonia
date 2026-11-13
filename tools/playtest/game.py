@@ -204,7 +204,7 @@ class Game:
         return {"quests": {}, "order": [], "items": {}, "gold": 0, "numbers": {}, "factions": {}, "regard": {},
                 "dead": [], "switched": {}, "locked": {}, "taken": [], "pos": None, "visited": [], "spoken": [],
                 "fired": [], "talking": None, "question": None, "hostile": [],
-                "opened": [], "contents": {k: {c["item"]: c["count"] for c in e["contents"]}
+                "opened": [], "owned": [], "contents": {k: {c["item"]: c["count"] for c in e["contents"]}
                                            for k, e in self.ents.items() if e["contents"]},
                 "crimes": [], "sheet": sheet, "commands": 0, "ended": False}
 
@@ -421,9 +421,11 @@ class Game:
         return out
 
     def _trig_open(self, q, t) -> bool:
-        """As the vanilla trigger scripts: the quest runs, its prerequisite stage is done and the stage it sets is not."""
+        """As the vanilla trigger scripts: the quest runs, its prerequisite stage is done and the stage it sets is not;
+        with `until`, the quest's stage is below it."""
         st = self.s["quests"].get(q)
-        return bool(st) and not st["ended"] and t["prerequisite"] in st["done"] and t["sets"] not in st["done"]
+        return bool(st) and not st["ended"] and t["prerequisite"] in st["done"] and t["sets"] not in st["done"] and \
+            ("until" not in t or self.stage(q) < t["until"])
 
     def _within(self, q, m, n=None) -> bool:
         """A who-must-live row's window as the builder guards it: its `from` stage done (or beginning: `n`, for the
@@ -630,7 +632,7 @@ class Game:
 
         def marks(e):
             m = ["locked" + (f", {self._lock_word(e)}" if self.ents[e]["lock"] else "")] if self._locked(e) else []
-            m += ["owned"] if self.ents[e]["owner"] else []
+            m += ["owned"] if self._owner(e) else []
             return f" ({'; '.join(m)})" if m else ""
         here = self._visible()
         out.append("People: " + ("; ".join(f"{self.label(e, here)} ({word(e)})" for e in people) if people
@@ -885,6 +887,10 @@ class Game:
     def _ask(verb, text, what) -> str:
         return f"{what} Say whether anyone sees you: {verb} {text} unseen, or {verb} {text} seen."
 
+    def _owner(self, e) -> str | None:
+        """Who owns a thing, as the engine has it: its owner, until a result gave it to the player."""
+        return None if e in self.s["owned"] else self.ents[e]["owner"]
+
     def _crime(self, owner, what, choice) -> list[str]:
         self.s["crimes"].append({"what": what, "owner": owner, "seen": choice == "seen"})
         if choice == "seen":
@@ -922,11 +928,16 @@ class Game:
             name = self.name(key)
         out = []
         pocket = holder if holder and self.ents[holder]["kind"] == "person" and self._alive(holder) else None
-        owner = pocket or (self.ents[key]["owner"] if holder is None else None)
+        # as Skyrim: a thing is stolen when it, or the container it is taken from, is owned by another; a key that
+        # opened the container does not change whose it is
+        box = holder if holder and self.ents[holder]["kind"] == "thing" else None
+        owner = pocket or (self._owner(box) if box else None) or (None if "|" in key else self._owner(key))
         if owner:
             if choice is None:
                 return self._ask("take", text, f"Taking from {self.name(pocket)} is pickpocketing." if pocket
-                                 else f"{name} is not yours: taking it is stealing.")
+                                 else f"{name} is not yours: taking it is stealing." if box is None
+                                 else f"{name} is in {self.name(box)}, which is {self._owner_name(owner)}'s: taking "
+                                 "it is stealing.")
             out += self._crime(owner, f"take {name}", choice)
         if "|" in key:                      # a container's or a body's row: the whole stack
             n = self.s["contents"][holder][item]
@@ -946,7 +957,9 @@ class Game:
         if e not in self.s["opened"]:
             self.s["opened"].append(e)
         inside = self._listing(e)
-        return [f"{self.name(e)} holds: {inside}." if inside else f"{self.name(e)} is empty."]
+        owner = self._owner(e) if self.ents[e]["kind"] == "thing" else None
+        whose = f" It is {self._owner_name(owner)}'s: what you take from it is stolen." if owner and inside else ""
+        return [(f"{self.name(e)} holds: {inside}." if inside else f"{self.name(e)} is empty.") + whose]
 
     def use(self, arg) -> str:
         text, choice = self._choice(arg, CHOICES)
@@ -979,12 +992,7 @@ class Game:
                 out += [f"You go through {self.name(e)}.", self.look()]
             else:
                 out.append(f"You open {self.name(e)}.")
-        elif e in self.holders:
-            owner = self.ents[e]["owner"]
-            if owner:
-                if choice is None:
-                    return self._ask("use", text, f"{self.name(e)} is not yours: opening it is stealing.")
-                out += self._crime(owner, f"open {self.name(e)}", choice)
+        elif e in self.holders:             # opening an owned container is no crime; taking from it is
             out += self._open(e)
         elif self._text(e):
             out += [f"You read {self.name(e)}:", self._text(e)]
@@ -1060,7 +1068,7 @@ class Game:
             return (f"The lock of {self.name(e)} ({self._lock_word(e)}) is beyond your Lockpicking ({have}): you "
                     "would only break your picks.")
         out = []
-        owner = self.ents[e]["owner"]
+        owner = self._owner(e)
         if owner:
             if choice is None:
                 return self._ask("pick", f"{text} {outcome}", f"{self.name(e)} is not yours: picking its lock is "

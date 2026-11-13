@@ -209,9 +209,103 @@ def test_each_broken_new_field_fails_its_rule(make, rule):
 def test_skills_are_skyrims_names_only():
     f = example()
     line(f, "contact.work")["conditions"].append({"is": "skill_at_least", "skill": "Speech", "value": 5})
+    line(f, "contact.work")["prompt"] += " (Persuade)"
     assert rules.check(f) == []
     line(f, "contact.work")["conditions"][-1]["skill"] = "speechcraft"
     assert rules.check(f)
+
+
+# -- a check the player can see coming: its label on the prompt -------------------------------------------------------
+
+def _checked(f, *conds, prompt="I was told you have work."):
+    line(f, "contact.work")["conditions"] = list(conds)
+    line(f, "contact.work")["prompt"] = prompt
+    return f
+
+
+SPEECH = {"is": "skill_at_least", "skill": "Speech", "value": 25}
+ALCHEMY = {"is": "skill_at_least", "skill": "Alchemy", "value": 25}
+GOLD = {"is": "gold_at_least", "gold": 20}
+
+
+@pytest.mark.parametrize("conds, prompt, ok", [
+    ((SPEECH,), "I was told you have work. (Persuade)", True),
+    ((SPEECH,), "(Intimidate) I was told you have work.", True),
+    ((ALCHEMY,), "(Alchemy) I was told you have work.", True),
+    ((SPEECH, GOLD), "I was told you have work. (Persuade) (20 gold)", True),
+    ((), "I was told you have work. (from the docks)", True),          # brackets that are no label
+    ((SPEECH,), "I was told you have work.", False),                   # no label
+    ((SPEECH,), "I was told you have work. (Speech 25)", False),       # a threshold shown
+    ((ALCHEMY,), "I was told you have work. (Persuade)", False),       # another check's label
+    ((GOLD,), "I was told you have work. (30 gold)", False),           # another amount
+    ((), "I was told you have work. (Persuade)", False),               # a label with no check
+])
+def test_a_check_is_labelled_on_its_prompt_as_skyrim_does(conds, prompt, ok):
+    f = _checked(example(), *conds, prompt=prompt)
+    assert (failed_rules(f) == set()) is ok and failed_rules(f) <= {"check-label"}
+
+
+def test_a_fallback_shares_its_checks_label():
+    f = _checked(example(), SPEECH, prompt="I was told you have work. (Persuade)")
+    f["lines"].insert(3, {**line(f, "contact.work"), "id": "contact.work.fail", "conditions": [], "results": [],
+                          "text": "Not for you."})
+    assert rules.check(f) == []
+
+
+def test_the_compiler_appends_a_missing_label_and_keeps_one_written():
+    assert rules.labelled("Hear me out.", [("skill", "Speech")]) == "Hear me out. (Persuade)"
+    assert rules.labelled("(Persuade) Hear me out.", [("skill", "Speech")]) == "(Persuade) Hear me out."
+    assert rules.labelled("Buy it.", [("skill", "Restoration"), ("gold", 50)]) == "Buy it. (Restoration) (50 gold)"
+    assert rules.labelled("Swing.", [("skill", "OneHanded")]) == "Swing. (One-handed)"
+
+
+# -- a trigger that would come late: until --------------------------------------------------------------------------
+
+def _late_death(f, until=None):
+    """The roll-man's death as a step that replaces speaking to him: stage 25, open from stage 10."""
+    f["stages"].insert(2, {"number": 25, "shown": True, "ending": "none", "results": [],
+                           "journal": "The man with the roll is dead. I'm to find Sample-Contact in Lilmoth."})
+    f["objectives"][0]["completed_at"].append(25)
+    f["objectives"][1]["shown_at"].append(25)
+    line(f, "contact.work")["last_stage"] = 25
+    t = {"id": "death.roll-man", "kind": "death", "ref": "npc.example.roll-man", "prerequisite": 10, "sets": 25,
+         "choice": True}
+    f["triggers"].append(t | ({"until": until} if until is not None else {}))
+    return f
+
+
+def test_a_trigger_the_quest_can_pass_while_it_is_open_needs_until():
+    late = rules.check(_late_death(example()))
+    assert [r for r, _ in late] == ["late-trigger"] and "once the quest is at stage 30" in late[0][1]
+    assert rules.check(_late_death(example(), until=20)) == []
+    assert rules.late_triggers(rules.Form(_late_death(example(), until=20))) == {}
+    assert failed_rules(_late_death(example(), until=10)) == {"late-trigger", "reachable"}    # never open
+
+
+def test_a_trigger_whose_stage_still_comes_next_needs_no_until():
+    f = _late_death(example())
+    f["triggers"][0]["sets"] = 20                   # the death sets the step it replaces: always next
+    f["stages"] = [s for s in f["stages"] if s["number"] != 25]
+    f["objectives"][0]["completed_at"].remove(25)
+    f["objectives"][1]["shown_at"].remove(25)
+    line(f, "contact.work")["last_stage"] = 20
+    assert rules.check(f) == []
+
+
+# -- a key is not a theft: what a giver lets the player have ----------------------------------------------------------
+
+def test_give_ownership_names_an_owned_thing_with_a_reference():
+    f = with_refs(chest(owner="npc.example.contact"))
+    stage(f, 30)["results"].append({"do": "give_ownership", "ref": "thing.example.chest"})
+    assert "owner" not in failed_rules(f) and "created" not in failed_rules(f)
+    f = with_refs(chest())
+    stage(f, 30)["results"].append({"do": "give_ownership", "ref": "thing.example.chest"})
+    assert "owner" in failed_rules(f)
+    made = carried(owner="npc.example.contact") | {
+        "placement": {"base": carried()["placement"]["base"], "container": "thing.example.chest"}}
+    f = with_refs(chest(owner="npc.example.contact"), made)
+    stage(f, 30)["results"].append({"do": "give_ownership", "ref": made["id"]})
+    assert "created" in failed_rules(f)
 
 
 @pytest.mark.parametrize("word, skill", [("Speechcraft", "Speech"), ("mercantile", "Speech"), ("security", "Lockpicking"),

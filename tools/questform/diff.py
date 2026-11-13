@@ -225,7 +225,8 @@ def diff_form(d: dict, b: dict, res: Resolver) -> list[str]:
                  lambda t: (t["kind"], t.get("ref") or t.get("quest"), t.get("quest_stage"), t["prerequisite"],
                             t["sets"]),
                  lambda w, x, y: _fields(w, {**x, "choice": bool(x.get("choice"))}, {**y, "choice": bool(y.get("choice"))},
-                                         ("kind", "ref", "quest", "quest_stage", "prerequisite", "sets", "choice")))
+                                         ("kind", "ref", "quest", "quest_stage", "prerequisite", "sets", "until",
+                                          "choice")))
     out += keyed("who-must-live", d["must_live"], b["must_live"], lambda m: m["ref"], lambda m: m["ref"],
                  lambda w, x, y: _fields(w, x, y, ("fail_stage", "main_message", "message", "from", "to")))
     return out
