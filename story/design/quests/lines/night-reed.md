@@ -42,7 +42,7 @@ althii-archipelago, Lilmoth: "Pusbottom's thieves"; "Fence: Pusbottom fence who 
 - **Half-Rent**, who finds the work (woman). She plans every job and has never paid full price for anything,
   including, people say, her name. Generous, quick and funny; she pays the fines of the young ones out of her own
   share. Her egg-brother died in Southwatch's cells over an unpaid toll (X).
-- **Bent-Spine**, the fence (man), in the den's inner room: slow, exact, and paying a little less than he quotes.
+- **Bent-Spine**, the fence (man), in the den's inner room: slow and exact, and paying a little less than he quotes.
 - **Silt**, the young climber (woman): fast, charming, sure she is the best hand in the house. She is not a traitor
   and never becomes one.
 - **Sails-By-Morning**, the fence on Archon's lower wharves (woman, late fifties; D nushara-bayou, Archon: "Fence
@@ -94,7 +94,7 @@ spoons. The Chainbreakers of Blackrose get a thief's respect and no more: "Fine 
 The retired Shadowscale who trains on the walks (named in [main](main.md)) has never come down the stair, and the
 house will not be led by anyone who serves a writ.
 
-**What it pays and what it costs.** The hand's third in coin, fixed per job, and Tilts-The-Jug's gifts: picks and
+**What it pays and what it costs.** The hand's third in coin, fixed per job; and Tilts-The-Jug's gifts: picks and
 plain rings and gloves enchanted for Lockpicking, Pickpocket and Sneak (existing forms). Bent-Spine buys from any
 member. A hand caught in Lilmoth owes as any thief owes under native law, and the pot keeps their kin. A hand
 caught at a fort or at Archon sits in a Warden cell, since those keep foreign law (D althii-archipelago, Southwatch
@@ -267,7 +267,7 @@ sack you stole.
 strongroom is in the Company's old counting-house on the waterfront, with the customs post on the quay beside it
 (D nushara-bayou, Archon).
 
-*The tellings.* Sails-By-Morning, right: a quay door, a cage, a strongroom door, and no key to either inner lock
+*The tellings.* Sails-By-Morning, right: a quay door, a cage and a strongroom door, and no key to either inner lock
 in the whole of Archon. They are Company locks, which nobody living can cut. The cage key went west with a
 Receiver the Wardens dismissed and was never got back; the strongroom key rides with the paymaster on his round
 of the ports, so that nobody at Archon holds the purse alone, as Lilmoth's tree has two minders. She serves a
@@ -373,7 +373,7 @@ A player who never meets Silt can walk into the shop, which trades with anyone, 
 
 In the shop, before any job, Tilts-The-Jug has four optional lines of two or three sentences each: *the
 Night-Reed* (what a night-reed is; "we rob the people who tax the water"); *the three cuts* (the code, in three
-short sentences); *the thirds* (the hand's, the house's, the pot's, and what the pot is for); *why you, and why
+short sentences); *the thirds* (the hand's, the house's and the pot's, with what the pot is for); *why you, and why
 you might not* ("Nobody on these walks knows your face. And a thief caught in Lilmoth owes for it in months, not
 coin: the Owing. The pot will feed your kin; it will not work your months."). "Not yet" stays open and free. Then
 the job, in five sentences. A Breton coaster-master, Yves Renoit, anchored below Southwatch Keep, the Wardens'
@@ -413,7 +413,7 @@ night.
 | the end room's door | the stilt-hall tavern, upstairs | Novice lock; the room key | |
 | the room key | on Geem-Shah | pickpocketed, or from his body; the tavern's keeper unlocks the door instead, by a line, for Speech 40 | |
 | Geem-Shah's Chest (its shown name) | in the end room | Apprentice lock; the chest key; owned by Geem-Shah | the Sealed Toll Purse; a Naming Basket; a spare tunic |
-| the chest key | on Geem-Shah | pickpocketed, from his body, or handed over by his line | |
+| the chest key | on Geem-Shah | pickpocketed, taken from his body or handed over by his line | |
 | the Sealed Toll Purse | in the chest | a named thing; the prize | the keep's week of tolls under Southwatch's lead |
 | the Naming Basket | in the chest | a named thing, of no worth | it is what a thief who never speaks to him sees: the man is here for a naming |
 | the Plain Purse | on Geem-Shah | pickpocketed, or handed over by his line | Renoit's eighty, less the charm's price |
@@ -433,7 +433,7 @@ night.
 *What is learnt only on the spot:* a hand in Geem-Shah's pockets finds a second, plain purse and a Naming Charm;
 the chest holds the sealed purse beside a Naming Basket.
 
-**The ways through** (all open at the working stage, in any order, and mixable).
+**The ways through** (all open at the working stage, in any order and mixable).
 
 - *The keys (Pickpocket, Sneak).* Lift the two keys from Geem-Shah in a full common room; go up; open the door and
   the chest. The player sees everything he carries and chooses what to take. Bungled, he turns on the player in a
@@ -524,7 +524,7 @@ code is supposed to take.
 **What a new player is told, and when.** The first time down the stair, **Half-Rent** has three optional lines:
 *who finds the work* ("Tilts keeps the door. I keep us busy."); *the forts* (Southwatch on the point and Reedmoth
 on the strait, whose they are and who pays them; her brother, in one sentence); *the thirds, from her side* ("The
-hand eats, the pot feeds, and my third is the only one that ever buys us anything."). Then the job, in four
+hand eats and the pot feeds. Mine is the only third that ever buys us anything."). Then the job, in four
 sentences. Silt-Orrel Estate lies up the cart road north of Lilmoth (D althii-archipelago, Lilmoth: "Silt-Orrel
 Estate (cart road, 520 m north)"; the map names it). In its cellar is a chest that came out of the drowned quarter
 when the town was first rebuilt, and the family will not say whose it was. Half-Rent says it was the house's,
@@ -566,9 +566,9 @@ they are the house. She has not mentioned the job to the keeper.
 |---|---|---|---|
 | the Cut Reed | given by Tilts-The-Jug when the den is opened in NR01 | a token of the house, a small named thing | held, it opens Wumeek-Dar's account |
 | the Cellar door (its shown name) | inside the great house, off the hall | Adept lock; the cellar key; or unlocked by Kud-Lai's line | |
-| the cellar key | on Wumeek-Dar | pickpocketed, from his body, or given by his line | |
+| the cellar key | on Wumeek-Dar | pickpocketed, taken from his body or given by his line | |
 | the Salvage Chest (its shown name) | in the cellar (D, Silt-Orrel Estate: "salvage chest from the drowned quarter in the cellar") | Adept lock; the chest key; owned by Wumeek-Dar | the Sealed Jug and nothing else |
-| the chest key | on Wumeek-Dar | pickpocketed, from his body, or given by his line | |
+| the chest key | on Wumeek-Dar | pickpocketed, taken from his body or given by his line | |
 | the Sealed Jug | in the chest | a named thing; the prize; its name reads "Sealed Jug, Marked with a Cut Reed" | the old pot |
 | the Family Box (its shown name) | in the cellar, beside the chest | Novice lock; owned by Wumeek-Dar | Silt-Orrel's Egg-Money, a named sack; a silver bowl |
 | Kud-Lai's purse | on Kud-Lai | pickpocketed only | 90 gold and a lead seal of Southwatch Keep |
@@ -590,7 +590,7 @@ they are the house. She has not mentioned the job to the keeper.
 *What is learnt only on the spot:* the mark on the jug is the house's own, and the family's coin is kept apart
 from it, in a box of its own.
 
-**The ways through** (all open at the working stage, in any order, and mixable).
+**The ways through** (all open at the working stage, in any order and mixable).
 
 - *The burglar's way (Sneak, Lockpicking).* Into the great house past the household; the Cellar door by its Adept
   lock or Kud-Lai's latch; the chest by its Adept lock. Seen, the player is a thief on an estate under native law,
@@ -700,7 +700,7 @@ tavern and purse-cutter, Lilmoth's stilt house for sale) is cited in the outline
 | Place | The thing needed | Quest | What the quest does there | How the player knows what it is |
 |---|---|---|---|---|
 | Lilmoth | a pawnshop on the lowest walk of Pusbottom, with a counter where the keeper stands and pledged things on its shelves that can be switched off together (the plan's row) | all | the keeper's post; every hand-in to her; one ending empties the shelves | the door reads "Tilts-The-Jug's Pledges"; a sign of a tilted jug hangs over it; Silt names it and the walk; the quest's marker is on the keeper |
-| Lilmoth | a den under the pawnshop, an interior of its own, reached by a door behind the counter that locks; an outer room and an inner room | all from NR01's end | Half-Rent's post, Silt's, and Bent-Spine's in the inner room with his lockbox | the door reads "The Den"; the keeper says when it is open; Bent-Spine is the record's fence and trades; his box is named "Bent-Spine's Lockbox" |
+| Lilmoth | a den under the pawnshop, an interior of its own, reached by a door behind the counter that locks; an outer room and an inner room | all from NR01's end | the posts of Half-Rent, Silt and Bent-Spine, his in the inner room with his lockbox | the door reads "The Den"; the keeper says when it is open; Bent-Spine is the record's fence and trades; his box is named "Bent-Spine's Lockbox" |
 | Lilmoth | a high shelf in the pawnshop where a jug can stand | NR02 | the old jug, seen after one ending | the jug carries the name the player carried |
 | Lilmoth | a spot on the harbour landing, a step from where the lighters set passengers down | NR01 | Silt speaks first | she speaks; the marker is on her |
 | Lilmoth | a spot on the harbour by the lighters for a coaster's master | NR01 | Renoit's telling and his hand-over | his name; the marker; Tilts-The-Jug says "on the harbour, by the lighters" |
@@ -789,7 +789,7 @@ and the rest of the line in summary; they were never shown the hidden truth. Tha
    the turn. The keeper says why she wants the last job done: it is her only bloodless way to stop the war.
 6. *The councillor stands on the upper walks* and can be faced after the turn; the factor is his.
 7. *The tellings change form* job by job: three people, a teller who sends the hand to the guards, three clients
-   who lie, a yard walked as a customer, nobody at all, and three at Archon.
+   who lie, a yard walked as a customer, nobody at all, then three at Archon.
 8. *Inside the form.* One key to a lock and one carrier: Kud-Lai unlocks the cellar by a line, and Archon's two
    inner keys are held abroad because nobody can cut a Company key, which also makes the Receiver's shame and the
    reason for the sword. The pay and the silver are each one named thing. Renoit, Geem-Shah and Silt have two
