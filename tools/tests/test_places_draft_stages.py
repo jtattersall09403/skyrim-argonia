@@ -21,7 +21,8 @@ def fx(tmp_path, monkeypatch):
     monkeypatch.setattr(run, "place_record", lambda place_id: (F.RECORD, F.GIVES))
     monkeypatch.setattr(jail, "law", lambda place_id: ("native", "Argonian law, no cell: the fixture's elders"))
     run.draft("fx", root / "bundles", root / "places", record=(F.RECORD, F.GIVES))
-    stages.run("jail", "fx", root / "places", root / "bundles", log=lambda *_: None)   # as a whole draft ends
+    for st_ in ("jail", "add", "names"):   # as a whole draft ends
+        stages.run(st_, "fx", root / "places", root / "bundles", log=lambda *_: None)
     stages.Standing("fx", root / "places", root / "bundles").write()     # the files as a join leaves them: canonical
     return root
 

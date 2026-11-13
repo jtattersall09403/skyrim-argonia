@@ -841,6 +841,12 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
     # every place file in the contract's one order and text (the studio's writer), so a finalise diffs only its edits
     from tools.places import edits
     edits.write_place(pdir, edits.load_place(pdir))
+    # the things added in rooms (those outside are placed above), then each room's name from who lives and works in it
+    from tools.places.draft import names, stages
+    counts["add"] = stages.run("add", place_id, places, bundles, log=lambda *_: None)
+    st = stages.Standing(place_id, places, bundles)
+    names.apply(st, lambda *_: None, gives)
+    st.write()
     return counts
 
 

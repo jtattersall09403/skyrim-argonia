@@ -128,7 +128,8 @@ def build(root: Path) -> Path:
                                         [hx, hy - 540, 0])):
         d = s / "spaces" / sid
         d.mkdir(parents=True, exist_ok=True)
-        (d / "space.json").write_text(json.dumps({"space_id": sid, "type": "interior", "name": sid}))
+        (d / "space.json").write_text(json.dumps({"space_id": sid, "type": "interior",
+                                                 "name": {"HouseInt": "Fisher's House", "HallInt": "Long Hall"}[sid]}))
         rows = [{"id": door, "base": "T.esm:000005", "kind": "door", "pos": [0, 0, 0], "rot": [0, 0, 0], "scale": 1.0,
                  "door": {"to_space": "exterior", "to_ref": back, "to_pos": out}}]
         rows += [{"id": rid, "base": bk, "kind": "furniture", "pos": [100 * i, 200, 0], "rot": [0, 0, 0], "scale": 1.0}

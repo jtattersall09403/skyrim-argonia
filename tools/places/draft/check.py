@@ -55,6 +55,14 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
         for r in sp.refs:
             if (sid, r["id"]) not in seen and not (whole and r.get("kind") != "actor"):
                 bad.append(f"unaccounted source ref {sid}/{r['id']}")
+    # every room a player can enter says what it is: a name on its door, no builder's leftover, no two alike
+    from tools.places import edits
+    from tools.places.draft import names
+    files = edits.load_place(pdir)
+    srcn = {sid: (src.spaces[c].meta.get("name") if c in src.spaces else None) for sid, sp in files["spaces"].items()
+            if sid != "exterior" for c in [((sp.get("space") or {}).get("copy_of") or "").split("/", 1)[-1]]}
+    bad += names.faults(files, names.room_names(place_id, files, place, gives, places, srcn),
+                        people=(places.parent / "sources" / "people" / f"{place_id}.json").exists())
     from tools.places.draft import hang
     if any(r.get("base") in hang.LANTERNS for r in refs):   # each hanging lantern on a limb of the tree it hangs from
         bad += hang.faults(refs, bases, *hang.measurers(bases))

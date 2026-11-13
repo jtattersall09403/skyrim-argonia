@@ -22,7 +22,7 @@
     "ref": "helstrom.XJYPRMWPC20D47GC846FZFYMC6"
    },
    "met": false,
-   "why": "Not met. The house nearest the city landing, about 50 metres from where the raft-master stands, can be entered, but its door shows \"House\" like every house in the town, inside is one room with no back room, and nothing marks it as a boatman's.",
+   "why": "Not met. The house nearest the city landing, about 50 metres from where the raft-master stands, now shows \"Ixtul-Bei's House\" on its door, and inside its one room stands a locked chest (Novice) the household owns, which the story can use in place of a back room. Nothing marks it as a boatman's: Ixtul-Bei is the tally-keeper.",
    "story_know": "",
    "tier": "AGENT_INVENTED",
    "fit": "That house (the tally-keeper Ixtul-Bei's household lives there today) could be the spies' house: the story can meet them in its one room. The boatmen's lodge, a moored ship about 76 metres from the landing whose door shows \"Ship\", is the other building a player would tie to boatmen.",
@@ -30,7 +30,7 @@
    "story_thing": "a boatman's house near the city landing, with a room inside and a locked back room",
    "sight": {
     "result": "not recognised",
-    "said": "none: the boats' spot has no house door, and the one house seen is far from the landing"
+    "said": "none (second reading 2026-11-13, after the rooms were named and the spring and chest placed): a house by name, far from the landing as the reader judged it, not tied to a boatman"
    }
   },
   {
@@ -41,6 +41,10 @@
    "does": "The player gets a drink of water from a spring the town has shut away: by picking its lock, by talking past its guard, or by buying a gourd of it from the sap-seller.",
    "firmness": "first-draft",
    "signs": [
+    {
+     "sign": "label",
+     "detail": "looking at it, the game names it \"Sealed Spring\", locked (Novice)"
+    },
     {
      "sign": "person",
      "detail": "the water-carrier Ruxa-Neel and the sap-seller Wujeel speak of it",
@@ -59,16 +63,16 @@
     "space": "exterior",
     "ref": "helstrom.4BT72PN2KW23D2FN72FPPS8FMG"
    },
-   "met": false,
-   "why": "Not met. The town's sacred tree stands at its middle (a small tree of the sacred kind, where a shrine's blessing is given), but nothing at its foot is a spring: no pool or water, no small door that locks, no dipper and no guard post beside it. The nearest guard stand is about 98 metres away.",
+   "met": true,
+   "why": "Met as a sealed spring. A lidded clay urn the game names \"Sealed Spring\", locked at Novice and owned by the town, stands at the foot of the sacred tree, 5 metres east of its trunk. No wicker door, dipper or guard post is there: the story names what is placed. The nearest guard stand is about 98 metres away.",
    "story_know": "",
    "tier": "AGENT_INVENTED",
    "fit": "The sacred tree itself, where most of the townsfolk stand by day, among them the water-carrier who says the spring is not used. The story could put the shut water at the tree's foot as a sealed basin or a locked water jar, guarded by one of the levy.",
    "narrow": "Yes, as placed things: a basin or small pool piece and a wicker gate that locks at the tree's foot, and one guard's day spot moved beside it. No redraft. If no piece we hold reads as a spring, the story should name what is placed instead (a sealed basin).",
    "story_thing": "the city tree's spring shut behind a low wicker door that locks, with a dipper on its lip and a guard's post beside it",
    "sight": {
-    "result": "not recognised",
-    "said": "none: a sacred tree, but no spring, wicker door, dipper or guard"
+    "result": "recognised",
+    "said": "second reading 2026-11-13, after the rooms were named and the spring and chest placed: the Sealed Spring, locked, beside the Hist tree; no wicker door, dipper or guard seen"
    }
   },
   {
@@ -101,7 +105,7 @@
    "narrow": "Yes, if a place can hold one placed creature (today the place files hold people only); otherwise the story sends the player outside the town for the gall.",
    "sight": {
     "result": "not recognised",
-    "said": "none: no creature anywhere"
+    "said": "none (second reading 2026-11-13, after the rooms were named and the spring and chest placed): no creature anywhere"
    }
   },
   {
@@ -131,7 +135,7 @@
    "story_thing": "a place by the spring where a few elders can stand",
    "sight": {
     "result": "not recognised",
-    "said": "none: no spring is seen; the tree is only a guess"
+    "said": "none (second reading 2026-11-13, after the rooms were named and the spring and chest placed): a crowd at the tree and the spring, but nothing marks elders"
    }
   },
   {
@@ -163,16 +167,16 @@
    "rests": {
     "space": "01BlackRoseJail"
    },
-   "met": false,
-   "why": "Not met. The healer Taleeka-Ma, who heals and sells spell tomes, works inside a cave at the north-west edge of the town beside an arcane enchanter, and two guards stand at its mouth. But its door is a moss-covered cave door, and looking at it the game shows \"Quick Test Cell\" (a leftover test name); nothing names it a hall.",
+   "met": true,
+   "why": "Met. The cave at the north-west edge, by the waterfalls, shows \"Tree-Minders' Hall\" on its door and inside; the healer Taleeka-Ma heals and sells spell tomes there beside the arcane enchanter, and two guards stand at its mouth. The faction's leader is not yet placed inside.",
    "story_know": "its door is named \"Tree-Minders' Hall\"; Taleeka-Ma heals and sells tomes at it; Taleeka-Ma and Wujeel both name it and Okeeh-Ja",
    "tier": "AGENT_INVENTED",
    "fit": "The cave itself: it can be entered, the healer already works there by the enchanter the town promises for its hall, and the faction's leader could stand inside. The story can call it the tree-minders' cave, or keep 'hall' once the name is changed. It is about 520 metres from the sacred tree.",
    "narrow": "Yes: renaming the room (the name its door shows) to \"Tree-Minders' Hall\" is a narrow change, and it also takes away the test name a player would see today; the leader is one person placed inside.",
    "story_thing": "the tree-minders' hall as a building that can be entered, with a place inside where Okeeh-Ja stands",
    "sight": {
-    "result": "not recognised",
-    "said": "a temple or guild hall at best; its door's name 'Quick Test Cell' looks like an unfinished placeholder, and nothing says tree or healing"
+    "result": "recognised",
+    "said": "second reading 2026-11-13, after the rooms were named and the spring and chest placed: Tree-Minders' Hall, a healers' hall; Taleeka-Ma inside read as its leader"
    }
   },
   {
@@ -211,7 +215,7 @@
    "story_thing": "a spot among the roots by the hall's door where Xilsa-Jee stands, and from MR03 a spot beside it for Hixee-Ra",
    "sight": {
     "result": "not recognised",
-    "said": "none: the hall's door has two guards and waterfalls, not roots"
+    "said": "partly (second reading 2026-11-13, after the rooms were named and the spring and chest placed): the tree-and-roots ground in the north-west, but not at the hall's door"
    }
   },
   {
@@ -245,7 +249,7 @@
    "story_thing": "a keeper's post at the root landing",
    "sight": {
     "result": "recognised",
-    "said": "partly: the man there offers rootworm travel, though no post or booth marks a keeper"
+    "said": "partly (second reading 2026-11-13, after the rooms were named and the spring and chest placed): the rootworm man by the Hist tree; nothing marks a post"
    }
   }
  ],

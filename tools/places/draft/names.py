@@ -85,13 +85,17 @@ def room_names(place_id: str, files: dict, place: dict, gives: list[dict], place
     return out
 
 
-def faults(files: dict, names: dict[str, tuple[str | None, str]] | None = None) -> list[str]:
-    """What a player would misread on a room's door: no name, a builder's leftover, two rooms with one name."""
+def faults(files: dict, names: dict[str, tuple[str | None, str]] | None = None, people: bool = True) -> list[str]:
+    """What a player would misread on a room's door: no name, a builder's leftover, two rooms with one name. Before
+    the place's people have identities (`people` false: the skill place-people has not run) its homes still carry the
+    source's one name for a house, so only a missing or leftover name is a fault then."""
     got = {sid: (sp.get("space") or {}).get("name") for sid, sp in files["spaces"].items() if sid != "exterior"}
     out = [f"room {sid}: shows no name" for sid, n in sorted(got.items()) if not n]
     out += [f"room {sid}: shows the builder's leftover name {n!r}" for sid, n in sorted(got.items()) if leftover(n)]
     seen = Counter(n for n in got.values() if n)
-    out += [f"rooms {sorted(s for s, x in got.items() if x == n)}: share the name {n!r}" for n, c in sorted(seen.items()) if c > 1]
+    if people:
+        out += [f"rooms {sorted(s for s, x in got.items() if x == n)}: share the name {n!r}"
+                for n, c in sorted(seen.items()) if c > 1]
     for sid, (want, why) in sorted((names or {}).items()):
         if want and got.get(sid) != want:
             out.append(f"room {sid}: shows {got.get(sid)!r}, its rule gives {want!r} ({why}): run `draft names`")
@@ -108,10 +112,11 @@ def owner_named(pdir: Path) -> set[str]:
     return out
 
 
-def apply(st, log=print) -> None:
+def apply(st, log=print, gives: list[dict] | None = None) -> None:
     """The `names` stage: each room's space.json `name` by the rules above; an owner's room keeps its name."""
-    from tools.places.draft.run import place_record
-    gives = place_record(st.place_id)[1]
+    if gives is None:
+        from tools.places.draft.run import place_record
+        gives = place_record(st.place_id)[1]
     source = {}
     for sid, sp in st.files["spaces"].items():
         info = sp.get("space") or {}
