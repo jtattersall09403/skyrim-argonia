@@ -75,10 +75,10 @@ meet them:
 Gather every finding; make one coherent set of changes that answers them together inside the ceiling (never a change
 for one reader alone; a new fault class the deliverability reader finds is also reported in your return so the
 skill can learn it); run `sketch` again; record the round in "Read on paper" (who read, what each said, what
-changed). Then judge honestly against the stop rule: a round can retell the story, wants the next chapter, splits on
-the choices meant to divide (each option some reader's own choice for their own reasons, or at least arguable
-without strain), the deliverability reader finds every step buildable, and nothing new is raised that you agree
-with. Say plainly in your return whether your line has met it or what a third round must still do; do not start a
+changed). Then judge honestly against the stop rule: a round can retell the story, wants the next chapter,
+the deliverability reader finds every step buildable, and nothing new is raised that you agree with. Whether the
+readers split on a choice is something to weigh, not a bar: if all chose alike, check each option has an honest case
+and something of its own to give in play, and then let the choice stand. Say plainly in your return whether your line has met it or what a third round must still do; do not start a
 third round yourself.
 
 ## Rules

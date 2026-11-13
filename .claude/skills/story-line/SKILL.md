@@ -153,12 +153,13 @@ converge" says.
    told by stand-ins, choices and switches.
 4. **Gather every finding**, then make one set of changes that answers them together, written into the document, and
    record the round in section 4. A change for one reader's taste alone is not made; readers splitting on a conflict
-   meant to be ambiguous is the aim, not a finding.
+   meant to be ambiguous is welcome and is not a finding; readers agreeing is not a failure either.
 5. **Next round, fresh readers** on the changed version.
 
-**Stop** when a round can retell the story, wants the next chapter, splits on the conflicts meant to be ambiguous,
-`sketch` passes, the deliverability reader finds every step buildable, and nothing new is raised that the author
-agrees with.
+**Stop** when a round can retell the story, wants the next chapter, `sketch` passes, the deliverability reader finds
+every step buildable, and nothing new is raised that the author agrees with. Whether readers split on a choice is
+something to weigh, never a bar to pass: readers all choosing alike is a prompt to check that each option has an
+honest case and something of its own to give in play, and once that is so the choice stands however they chose.
 
 ## 5. Hand on
 

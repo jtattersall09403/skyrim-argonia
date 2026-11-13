@@ -634,3 +634,6 @@ added here the day they are made, with the date and the issue.
   cheaper. And you don't have to have done it quest by quest in all the detail. I just want to make sure our overall
   main quest plot is good enough". The main quest's plot is taken to the stop rule as a short treatment
   (story/design/quests/lines/main-plot.md); paper readers are Sonnet 5.5 at medium effort from now on.
+- 2026-11-13 (in session): "Don't make 'choices divide the readers' a hard bar". Whether paper readers split on a
+  choice is weighed, never required: each option must have an honest case and something of its own to give in play,
+  and then the choice stands however the readers chose.

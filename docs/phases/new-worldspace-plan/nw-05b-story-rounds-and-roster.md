@@ -24,7 +24,8 @@ owner has not edited it yet, and his words go above this line when he does.
 1. **The second round for the nine lines above**, by the brief already written
    ([nw-05-round-two-brief](nw-05-round-two-brief.md)), each by Fable.
 2. **A third, narrow round where the second did not meet the stop rule**: a fresh deliverability reader on the full
-   outlines, and players only on the choices that did not split. One set of changes; then stop, whatever the result,
+   outlines, and players only where an option had no honest case or nothing of its own to give (readers choosing alike is not
+   by itself a reason for a round: owner, 2026-11-13). One set of changes; then stop, whatever the result,
    and say what remains.
 3. **The skill learns from the readers**: every new class of fault the deliverability readers found in the second
    round (each story's "Read on paper" section lists them) becomes a check in `sketch` or an instruction in
