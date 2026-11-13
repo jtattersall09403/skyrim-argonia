@@ -1,8 +1,0 @@
-FormKey: 80000E:Argonia.esp
-EditorID: ARG_BlockTest_Msg_fe1380
-Description:
-  TargetLanguage: English
-  Value: "Block test: using the ship's door set stage 70 (a use trigger)."
-INAM: '[]'
-Flags:
-- MessageBox

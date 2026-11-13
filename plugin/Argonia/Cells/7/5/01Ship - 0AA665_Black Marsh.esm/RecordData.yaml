@@ -43,20 +43,6 @@ Location: 07B91A:Skyrim.esm
 AcousticSpace: 0D78B3:Skyrim.esm
 Music: 0B9DCE:Skyrim.esm
 ImageSpace: 000167:Skyrim.esm
-Persistent:
-- MutagenObjectType: PlacedNpc
-  FormKey: 80000A:Argonia.esp
-  MajorRecordFlagsRaw: 3072
-  EditorID: ARG_R_person_test_crab
-  SkyrimMajorRecordFlags:
-  - 0x400
-  - InitiallyDisabled
-  Base: 80000B:Argonia.esp
-  Placement:
-    Position: 2923, 5000, 6987
-  MajorFlags:
-  - Persistent
-  - InitiallyDisabled
 Temporary:
 - MutagenObjectType: PlacedNpc
   FormKey: 03E40E:Black Marsh North.esp

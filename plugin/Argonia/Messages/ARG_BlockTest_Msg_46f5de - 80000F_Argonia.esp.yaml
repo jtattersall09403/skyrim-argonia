@@ -1,8 +1,0 @@
-FormKey: 80000F:Argonia.esp
-EditorID: ARG_BlockTest_Msg_46f5de
-Description:
-  TargetLanguage: English
-  Value: "Block test complete: the ship's door is locked again and every result has run."
-INAM: '[]'
-Flags:
-- MessageBox

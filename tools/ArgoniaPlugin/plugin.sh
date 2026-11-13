@@ -14,8 +14,9 @@
 #   plugin.sh questform-test  the generic builder end to end, off game: the block test's forms and the example opening's
 #                      pier copy (tools/tests/data/questform) seeded into a scratch plugin, read back, compared with the
 #                      forms (apart from resolved positions), the read-back forms checked, questcheck run on it
-#   plugin.sh seed [--refused-ok]  regenerate plugin/Argonia from shutdown.json, the load order's winners and the quest forms (every
-#                      quest record that fits, compiled fresh to out/questform, and tools/questform/blocktest); game data
+#   plugin.sh seed [--refused-ok] [--blocktest]  regenerate plugin/Argonia from shutdown.json, the load order's winners and the
+#                      quest forms (every quest record that fits, compiled fresh to out/questform; --blocktest adds the block
+#                      test's forms, tools/questform/blocktest, the agents' diagnostic, never shipped); game data
 #                      needed: $ARGONIA_GAME_ROOT/Data or ~/games/skyrimse/Data, the staged profile ~/.argonia/stack/MO2;
 #                      a form the builder refuses is left out and listed only when its quest is on $rewriting (quests being
 #                      rewritten whole), any other refusal fails the seed; --refused-ok leaves out every refused form;
@@ -77,7 +78,9 @@ case "${1:-}" in
   seed)
     forms; loadorder
     tmp=$(mktemp -d); trap 'rm -rf "$tmp"' EXIT
-    export QUESTFORM_REFUSED_OK="$rewriting"; [ "${2:-}" = --refused-ok ] && export QUESTFORM_REFUSED_OK=1
+    export QUESTFORM_REFUSED_OK="$rewriting" QUESTFORM_BLOCKTEST=0
+    for a in "${@:2}"; do case "$a" in
+      --refused-ok) QUESTFORM_REFUSED_OK=1 ;; --blocktest) QUESTFORM_BLOCKTEST=1 ;; *) echo "seed: unknown option $a" >&2; exit 2 ;; esac; done
     tool seed "$tmp/Argonia.esp" "${lo[@]}"
     "${spriggit[@]}" serialize -i "$tmp/Argonia.esp" -o "$tmp/y" -g SkyrimSE "${spr[@]}" >/dev/null
     rm -rf "$yaml"; mkdir -p plugin; mv "$tmp/y" "$yaml"; echo "seeded $yaml"
@@ -85,5 +88,5 @@ case "${1:-}" in
     tool questcheck "$esp" papyrus "${lo[@]}" | grep -E "^(FAIL|questcheck|mortal)" || ok=1
     tool placecheck "$esp" "${lo[@]}" | grep -E "^(FAIL|placecheck)" || ok=1
     [ "$ok" = 0 ] || { echo "seed: questcheck or placecheck failed (above): the seed is not done" >&2; exit 1; } ;;
-  *) sed -n '2,10p' "$0"; exit 2 ;;
+  *) sed -n '2,23p' "$0"; exit 2 ;;
 esac

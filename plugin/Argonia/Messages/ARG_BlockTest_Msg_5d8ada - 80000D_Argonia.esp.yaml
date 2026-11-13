@@ -1,8 +1,0 @@
-FormKey: 80000D:Argonia.esp
-EditorID: ARG_BlockTest_Msg_5d8ada
-Description:
-  TargetLanguage: English
-  Value: "Block test: the mudcrab's death set stage 60 (a death trigger)."
-INAM: '[]'
-Flags:
-- MessageBox

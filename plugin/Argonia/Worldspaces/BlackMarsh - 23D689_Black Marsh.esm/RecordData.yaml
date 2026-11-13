@@ -54,46 +54,6 @@ TopCell:
     Placement:
       Position: 1646.1263, -3525.361, -1986.3772
   - MutagenObjectType: PlacedNpc
-    FormKey: 800004:Argonia.esp
-    MajorRecordFlagsRaw: 1024
-    EditorID: ARG_R_person_test_walker
-    SkyrimMajorRecordFlags:
-    - 0x400
-    Base: 800005:Argonia.esp
-    Placement:
-      Position: 30750, -2850, 2
-    MajorFlags:
-    - Persistent
-  - MutagenObjectType: PlacedObject
-    FormKey: 800006:Argonia.esp
-    MajorRecordFlagsRaw: 1024
-    EditorID: ARG_R_marker_test_bollard
-    SkyrimMajorRecordFlags:
-    - 0x400
-    Base: 00003B:Skyrim.esm
-    Placement:
-      Position: 30760, -2950, 2
-  - MutagenObjectType: PlacedNpc
-    FormKey: 800007:Argonia.esp
-    MajorRecordFlagsRaw: 1024
-    EditorID: ARG_R_person_test_keeper
-    SkyrimMajorRecordFlags:
-    - 0x400
-    Base: 800008:Argonia.esp
-    Placement:
-      Position: 31002, -2733, 37
-    MajorFlags:
-    - Persistent
-  - MutagenObjectType: PlacedObject
-    FormKey: 800009:Argonia.esp
-    MajorRecordFlagsRaw: 1024
-    EditorID: ARG_R_thing_test_barrel
-    SkyrimMajorRecordFlags:
-    - 0x400
-    Base: 08771D:Skyrim.esm
-    Placement:
-      Position: 31040, -2700, 20
-  - MutagenObjectType: PlacedNpc
     FormKey: 800016:Argonia.esp
     MajorRecordFlagsRaw: 1024
     EditorID: ARG_R_npc_mercantile_coast_soulrest_khajiit_caravan_factor

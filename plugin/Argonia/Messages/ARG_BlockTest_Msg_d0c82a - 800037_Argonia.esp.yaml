@@ -1,8 +1,0 @@
-FormKey: 800037:Argonia.esp
-EditorID: ARG_BlockTest_Msg_d0c82a
-Description:
-  TargetLanguage: English
-  Value: 'Block test: the Dock Keeper spoke first.'
-INAM: '[]'
-Flags:
-- MessageBox

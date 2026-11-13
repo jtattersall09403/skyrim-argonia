@@ -1,8 +1,0 @@
-FormKey: 800048:Argonia.esp
-EditorID: ARG_BlockTest_T_e3b31068
-Name:
-  TargetLanguage: English
-  Value: What do you call me?
-Branch: 800049:Argonia.esp
-Quest: 800001:Argonia.esp
-SubtypeName: CUST

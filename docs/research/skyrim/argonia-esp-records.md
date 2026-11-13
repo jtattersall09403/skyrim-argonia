@@ -1,13 +1,12 @@
 # Argonia.esp: every record, read back from the built plugin
 
-Written by `make plugin-check` (tools/ArgoniaPlugin `list`) from `out/Argonia.esp`; masters: Skyrim.esm, Update.esm, Dawnguard.esm, HearthFires.esm, Dragonborn.esm, ccBGSSSE001-Fish.esm, ccBGSSSE025-AdvDSGS.esm, unofficial skyrim special edition patch.esp, Black Marsh.esm, Black Marsh North.esp, Valenwood.esp, RimExecutionHitSA.esp. 2525 records. Quest overrides keep the winning record (aliases, stages, scripts) with Start Game Enabled off and their player-visible text removed; story-manager overrides gain a first condition `GetGlobalValue ARG_VanillaStoryManager == 1` (the global is 0), so nothing under the node starts. The why is in `tools/ArgoniaPlugin/shutdown.json` and `mods/allowed-quests.json`.
+Written by `make plugin-check` (tools/ArgoniaPlugin `list`) from `out/Argonia.esp`; masters: Skyrim.esm, Update.esm, Dawnguard.esm, HearthFires.esm, Dragonborn.esm, ccBGSSSE001-Fish.esm, ccBGSSSE025-AdvDSGS.esm, unofficial skyrim special edition patch.esp, Black Marsh.esm, Black Marsh North.esp, Valenwood.esp, RimExecutionHitSA.esp. 2463 records. Quest overrides keep the winning record (aliases, stages, scripts) with Start Game Enabled off and their player-visible text removed; story-manager overrides gain a first condition `GetGlobalValue ARG_VanillaStoryManager == 1` (the global is 0), so nothing under the node starts. The why is in `tools/ArgoniaPlugin/shutdown.json` and `mods/allowed-quests.json`.
 
 | Group | Kind | Change | Records (editor id, form id) |
 |---|---|---|---|
 | ours | global | new | ARG_N_flag_mq03_tasted `8000E4:Argonia.esp` |
 | ours | global | new | ARG_N_flag_tg01_desk_dead `80001E:Argonia.esp` |
 | ours | global | new | ARG_N_flag_mq05_minders_hold `8000FD:Argonia.esp` |
-| ours | global | new | ARG_N_number_test_counter `80003F:Argonia.esp` |
 | ours | global | new | ARG_N_flag_mq01_reed_joined `8000DF:Argonia.esp` |
 | ours | global | new | ARG_N_flag_bc02_settled `80023A:Argonia.esp` |
 | ours | global | new | ARG_N_flag_main_thread_severed `8000E1:Argonia.esp` |
@@ -20,7 +19,6 @@ Written by `make plugin-check` (tools/ArgoniaPlugin `list`) from `out/Argonia.es
 | ours | global | new | ARG_N_flag_tg01_fence_dead `80001F:Argonia.esp` |
 | ours | global | new | ARG_N_flag_mq05_nisswo_read `8000FE:Argonia.esp` |
 | ours | Faction | new | ARG_F_faction_veiled_reed `8000E0:Argonia.esp` |
-| ours | Faction | new | ARG_F_faction_test_dock_hands `800040:Argonia.esp` |
 | ours | Faction | new | ARG_F_faction_chainbreakers `80022C:Argonia.esp` |
 | ours | Faction | new | ARG_VendorLooksAtBooks `000BCA:Argonia.esp` |
 | ours | Faction | new | ARG_F_faction_night_reed_chapter `80001D:Argonia.esp` |
@@ -60,7 +58,6 @@ Written by `make plugin-check` (tools/ArgoniaPlugin `list`) from `out/Argonia.es
 | ours | Npc | new | ARG_Talker_0934C4 `000BEE:Argonia.esp` |
 | ours | Npc | new | ARG_Talker_02A204 `000BBF:Argonia.esp` |
 | ours | Npc | new | ARG_Talker_084A87 `000BD6:Argonia.esp` |
-| ours | Npc | new | ARG_R_person_test_crab_Base `80000B:Argonia.esp` |
 | ours | Npc | new | ARG_Talker_01CCE0 `000BAB:Argonia.esp` |
 | ours | Npc | new | ARG_Talker_166BC1 `000C15:Argonia.esp` |
 | ours | Npc | new | ARG_Talker_0C724F `000BF0:Argonia.esp` |
@@ -142,7 +139,6 @@ Written by `make plugin-check` (tools/ArgoniaPlugin `list`) from `out/Argonia.es
 | ours | Npc | new | ARG_R_npc_imperial_penal_south_blackrose_estate_steward_Base `800224:Argonia.esp` |
 | ours | Npc | new | ARG_Talker_0934BF `000BE9:Argonia.esp` |
 | ours | Npc | new | ARG_Talker_02A1F2 `000BBE:Argonia.esp` |
-| ours | Npc | new | ARG_R_person_test_keeper_Base `800008:Argonia.esp` |
 | ours | Npc | new | ARG_R_creature_at_hist_heartland_helstrom_lq25_river_beast_Base `8000C7:Argonia.esp` |
 | ours | Npc | new | ARG_Talker_01CCD9 `000BA9:Argonia.esp` |
 | ours | Npc | new | ARG_R_creature_at_hist_heartland_helstrom_lq30_basin_beast_Base `8000CB:Argonia.esp` |
@@ -156,7 +152,6 @@ Written by `make plugin-check` (tools/ArgoniaPlugin `list`) from `out/Argonia.es
 | ours | Npc | new | ARG_Talker_037E00 `000BC5:Argonia.esp` |
 | ours | Npc | new | ARG_Talker_0C725E `000BFB:Argonia.esp` |
 | ours | Npc | new | ARG_Talker_01CCE5 `000BAD:Argonia.esp` |
-| ours | Npc | new | ARG_R_person_test_walker_Base `800005:Argonia.esp` |
 | ours | Npc | new | ARG_Talker_0C7252 `000BF3:Argonia.esp` |
 | ours | Npc | new | ARG_Talker_03E415 `000BC8:Argonia.esp` |
 | ours | Npc | new | ARG_Talker_05D7CC `000BD1:Argonia.esp` |
@@ -211,7 +206,6 @@ Written by `make plugin-check` (tools/ArgoniaPlugin `list`) from `out/Argonia.es
 | ours | Key | new | ARG_I_thing_bc01_key `800229:Argonia.esp` |
 | ours | Key | new | ARG_I_thing_bc03_key `800245:Argonia.esp` |
 | ours | Key | new | ARG_I_thing_mq03_sack_key `8000DE:Argonia.esp` |
-| ours | PlacedNpc | new | ARG_R_person_test_crab `80000A:Argonia.esp` |
 | ours | PlacedNpc | new | ARG_R_npc_mercantile_coast_lilmoth_divers_yard_night_reed_fence `800012:Argonia.esp` |
 | ours | XMarker reference | new | ARG_Opening_StartMarker `000F23:Argonia.esp` |
 | ours | PlacedNpc | new | ARG_R_npc_pirate_freeholds_opening_work_barge_npc_opening_overseer `8000D6:Argonia.esp` |
@@ -238,10 +232,6 @@ Written by `make plugin-check` (tools/ArgoniaPlugin `list`) from `out/Argonia.es
 | ours | PlacedNpc | new | ARG_R_npc_hist_heartland_helstrom_nisswo_interpreter_debating_house `8000FB:Argonia.esp` |
 | ours | XMarker reference | new | ARG_OpeningMarker `000802:Argonia.esp` |
 | ours | XMarker reference | new | ARG_VendorLooksAtBooksChestRef `000BCC:Argonia.esp` |
-| ours | PlacedNpc | new | ARG_R_person_test_walker `800004:Argonia.esp` |
-| ours | XMarker reference | new | ARG_R_marker_test_bollard `800006:Argonia.esp` |
-| ours | PlacedNpc | new | ARG_R_person_test_keeper `800007:Argonia.esp` |
-| ours | XMarker reference | new | ARG_R_thing_test_barrel `800009:Argonia.esp` |
 | ours | PlacedNpc | new | ARG_R_npc_mercantile_coast_soulrest_khajiit_caravan_factor `800016:Argonia.esp` |
 | ours | PlacedNpc | new | ARG_R_npc_mercantile_coast_soulrest_tg01_friend `800018:Argonia.esp` |
 | ours | PlacedNpc | new | ARG_R_npc_mercantile_coast_soulrest_tg01_thief `80001A:Argonia.esp` |
@@ -275,8 +265,6 @@ Written by `make plugin-check` (tools/ArgoniaPlugin `list`) from `out/Argonia.es
 | ours | DialogTopic | new | ARG_MQ04_T_d1a5b71c `8001D8:Argonia.esp` |
 | ours | DialogResponses | new |  `8001DA:Argonia.esp` |
 | ours | DialogResponses | new |  `8001DB:Argonia.esp` |
-| ours | DialogTopic | new | ARG_BlockTest_HelloAfter `800059:Argonia.esp` |
-| ours | DialogResponses | new |  `80005A:Argonia.esp` |
 | ours | DialogTopic | new | ARG_MQ01_T_3d3e1113 `800152:Argonia.esp` |
 | ours | DialogResponses | new |  `800154:Argonia.esp` |
 | ours | DialogTopic | new | ARG_LQ30_HelloAfter `800134:Argonia.esp` |
@@ -439,8 +427,6 @@ Written by `make plugin-check` (tools/ArgoniaPlugin `list`) from `out/Argonia.es
 | ours | DialogTopic | new | ARG_MQ03_A_47138b74 `80018C:Argonia.esp` |
 | ours | DialogResponses | new |  `80018E:Argonia.esp` |
 | ours | DialogResponses | new |  `80018D:Argonia.esp` |
-| ours | DialogTopic | new | ARG_BlockTestTwo_T_e0977919 `80002B:Argonia.esp` |
-| ours | DialogResponses | new |  `80002D:Argonia.esp` |
 | ours | DialogTopic | new | ARG_Talk_Harvest `00099A:Argonia.esp` |
 | ours | DialogResponses | new |  `00099D:Argonia.esp` |
 | ours | DialogResponses | new |  `0009A1:Argonia.esp` |
@@ -459,17 +445,12 @@ Written by `make plugin-check` (tools/ArgoniaPlugin `list`) from `out/Argonia.es
 | ours | DialogResponses | new |  `0009A8:Argonia.esp` |
 | ours | DialogResponses | new |  `00099C:Argonia.esp` |
 | ours | DialogResponses | new |  `00099F:Argonia.esp` |
-| ours | DialogTopic | new | ARG_BlockTest_T_25ea342a `800038:Argonia.esp` |
-| ours | DialogResponses | new |  `80003B:Argonia.esp` |
-| ours | DialogResponses | new |  `80003A:Argonia.esp` |
 | ours | DialogTopic | new | ARG_BC03_T_6a8cce7e `800371:Argonia.esp` |
 | ours | DialogResponses | new |  `8003AD:Argonia.esp` |
 | ours | DialogResponses | new |  `8003AE:Argonia.esp` |
 | ours | DialogTopic | new | ARG_MQ01_T_5c207ac9 `80013D:Argonia.esp` |
 | ours | DialogResponses | new |  `800140:Argonia.esp` |
 | ours | DialogResponses | new |  `80013F:Argonia.esp` |
-| ours | DialogTopic | new | ARG_BlockTest_T_84ed37ec `800034:Argonia.esp` |
-| ours | DialogResponses | new |  `800036:Argonia.esp` |
 | ours | DialogTopic | new | ARG_BC03_T_e63801a1 `800389:Argonia.esp` |
 | ours | DialogResponses | new |  `80038C:Argonia.esp` |
 | ours | DialogResponses | new |  `80038B:Argonia.esp` |
@@ -524,8 +505,6 @@ Written by `make plugin-check` (tools/ArgoniaPlugin `list`) from `out/Argonia.es
 | ours | DialogResponses | new |  `8000A4:Argonia.esp` |
 | ours | DialogTopic | new | ARG_MQ01_T_32a136e6 `80014F:Argonia.esp` |
 | ours | DialogResponses | new |  `800151:Argonia.esp` |
-| ours | DialogTopic | new | ARG_BlockTest_T_5b312054 `8000FF:Argonia.esp` |
-| ours | DialogResponses | new |  `800043:Argonia.esp` |
 | ours | DialogTopic | new | ARG_BC02_T_769b24d5 `8002EC:Argonia.esp` |
 | ours | DialogResponses | new |  `8002EF:Argonia.esp` |
 | ours | DialogResponses | new |  `8002F0:Argonia.esp` |
@@ -607,12 +586,6 @@ Written by `make plugin-check` (tools/ArgoniaPlugin `list`) from `out/Argonia.es
 | ours | DialogResponses | new |  `800322:Argonia.esp` |
 | ours | DialogResponses | new |  `800323:Argonia.esp` |
 | ours | DialogResponses | new |  `800321:Argonia.esp` |
-| ours | DialogTopic | new | ARG_BlockTest_T_a52b437c `800044:Argonia.esp` |
-| ours | DialogResponses | new |  `800047:Argonia.esp` |
-| ours | DialogResponses | new |  `800046:Argonia.esp` |
-| ours | DialogTopic | new | ARG_BlockTest_T_e3b31068 `800048:Argonia.esp` |
-| ours | DialogResponses | new |  `80004B:Argonia.esp` |
-| ours | DialogResponses | new |  `80004A:Argonia.esp` |
 | ours | DialogTopic | new | ARG_BC03_T_f72eda2d `800376:Argonia.esp` |
 | ours | DialogResponses | new |  `800379:Argonia.esp` |
 | ours | DialogResponses | new |  `80037C:Argonia.esp` |
@@ -835,9 +808,6 @@ Written by `make plugin-check` (tools/ArgoniaPlugin `list`) from `out/Argonia.es
 | ours | DialogResponses | new |  `8003A7:Argonia.esp` |
 | ours | DialogTopic | new | ARG_MQ01_T_9f2ee7f5 `80015B:Argonia.esp` |
 | ours | DialogResponses | new |  `80015D:Argonia.esp` |
-| ours | DialogTopic | new | ARG_BlockTest_T_cf09a8f9 `80004C:Argonia.esp` |
-| ours | DialogResponses | new |  `80004F:Argonia.esp` |
-| ours | DialogResponses | new |  `80004E:Argonia.esp` |
 | ours | DialogTopic | new | ARG_Talk_Someone `000B14:Argonia.esp` |
 | ours | DialogResponses | new |  `000B40:Argonia.esp` |
 | ours | DialogResponses | new |  `000B24:Argonia.esp` |
@@ -947,8 +917,6 @@ Written by `make plugin-check` (tools/ArgoniaPlugin `list`) from `out/Argonia.es
 | ours | DialogResponses | new |  `000B36:Argonia.esp` |
 | ours | DialogResponses | new |  `000B3C:Argonia.esp` |
 | ours | DialogResponses | new |  `000B72:Argonia.esp` |
-| ours | DialogTopic | new | ARG_BlockTestTwo_T_37c8386d `800031:Argonia.esp` |
-| ours | DialogResponses | new |  `800033:Argonia.esp` |
 | ours | DialogTopic | new | ARG_MQ01_Hello `800173:Argonia.esp` |
 | ours | DialogResponses | new |  `800174:Argonia.esp` |
 | ours | DialogTopic | new | ARG_BC02_T_d7c71ee9 `8002D0:Argonia.esp` |
@@ -976,8 +944,6 @@ Written by `make plugin-check` (tools/ArgoniaPlugin `list`) from `out/Argonia.es
 | ours | DialogResponses | new |  `8002A6:Argonia.esp` |
 | ours | DialogResponses | new |  `8002A7:Argonia.esp` |
 | ours | DialogResponses | new |  `8002A4:Argonia.esp` |
-| ours | DialogTopic | new | ARG_BlockTest_SF_ead80562 `800053:Argonia.esp` |
-| ours | DialogResponses | new |  `800055:Argonia.esp` |
 | ours | DialogTopic | new | ARG_MQ03_A_cd02a9b0 `80018F:Argonia.esp` |
 | ours | DialogResponses | new |  `800190:Argonia.esp` |
 | ours | DialogResponses | new |  `800191:Argonia.esp` |
@@ -1093,8 +1059,6 @@ Written by `make plugin-check` (tools/ArgoniaPlugin `list`) from `out/Argonia.es
 | ours | DialogTopic | new | ARG_BC01_T_7920a4b1 `800265:Argonia.esp` |
 | ours | DialogResponses | new |  `800268:Argonia.esp` |
 | ours | DialogResponses | new |  `800267:Argonia.esp` |
-| ours | DialogTopic | new | ARG_BlockTest_T_58651bd7 `80003C:Argonia.esp` |
-| ours | DialogResponses | new |  `80003E:Argonia.esp` |
 | ours | DialogTopic | new | ARG_MQ05_T_27b6f161 `800210:Argonia.esp` |
 | ours | DialogResponses | new |  `8001F5:Argonia.esp` |
 | ours | DialogTopic | new | ARG_BC01_T_a145d133 `800269:Argonia.esp` |
@@ -1193,8 +1157,6 @@ Written by `make plugin-check` (tools/ArgoniaPlugin `list`) from `out/Argonia.es
 | ours | DialogResponses | new |  `000A89:Argonia.esp` |
 | ours | DialogResponses | new |  `000A8A:Argonia.esp` |
 | ours | DialogResponses | new |  `000A8F:Argonia.esp` |
-| ours | DialogTopic | new | ARG_BlockTest_Hello `800056:Argonia.esp` |
-| ours | DialogResponses | new |  `800057:Argonia.esp` |
 | ours | DialogTopic | new | ARG_MQ04_T_316b9879 `8001C0:Argonia.esp` |
 | ours | DialogResponses | new |  `8001C3:Argonia.esp` |
 | ours | DialogResponses | new |  `8001C2:Argonia.esp` |
@@ -1656,8 +1618,6 @@ Written by `make plugin-check` (tools/ArgoniaPlugin `list`) from `out/Argonia.es
 | ours | DialogResponses | new |  `800326:Argonia.esp` |
 | ours | DialogResponses | new |  `800328:Argonia.esp` |
 | ours | DialogResponses | new |  `800325:Argonia.esp` |
-| ours | DialogTopic | new | ARG_BlockTestTwo_T_65596e18 `80002E:Argonia.esp` |
-| ours | DialogResponses | new |  `800030:Argonia.esp` |
 | ours | DialogTopic | new | ARG_MQ04_T_09915509 `8001B4:Argonia.esp` |
 | ours | DialogResponses | new |  `8001B9:Argonia.esp` |
 | ours | DialogResponses | new |  `8001B6:Argonia.esp` |
@@ -1707,8 +1667,6 @@ Written by `make plugin-check` (tools/ArgoniaPlugin `list`) from `out/Argonia.es
 | ours | DialogResponses | new |  `8003CC:Argonia.esp` |
 | ours | DialogTopic | new | ARG_MQ01_HelloAfter `800176:Argonia.esp` |
 | ours | DialogResponses | new |  `800177:Argonia.esp` |
-| ours | DialogTopic | new | ARG_BlockTest_T_957ac1dd `800101:Argonia.esp` |
-| ours | DialogResponses | new |  `800052:Argonia.esp` |
 | ours | DialogTopic | new | ARG_BC03_T_cf1e9cd7 `800386:Argonia.esp` |
 | ours | DialogResponses | new |  `800388:Argonia.esp` |
 | ours | DialogTopic | new | ARG_MQ01_T_4581b4d8 `80016A:Argonia.esp` |
@@ -1731,10 +1689,8 @@ Written by `make plugin-check` (tools/ArgoniaPlugin `list`) from `out/Argonia.es
 | ours | quest | new | ARG_BC02 `80021B:Argonia.esp` |
 | ours | quest | new | ARG_TG02 `800003:Argonia.esp` |
 | ours | quest | new | ARG_BC01 `80021A:Argonia.esp` |
-| ours | quest | new | ARG_BlockTestTwo `800000:Argonia.esp` |
 | ours | quest | new | ARG_LQ30 `8000C1:Argonia.esp` |
 | ours | quest | new | ARG_MQ04 `8000C4:Argonia.esp` |
-| ours | quest | new | ARG_BlockTest `800001:Argonia.esp` |
 | ours | quest | new | ARG_MortalWatch `800098:Argonia.esp` |
 | ours | quest | new | ARG_MQ03 `8000C3:Argonia.esp` |
 | ours | quest | new | ARG_Opening `000801:Argonia.esp` |
@@ -1744,15 +1700,9 @@ Written by `make plugin-check` (tools/ArgoniaPlugin `list`) from `out/Argonia.es
 | ours | quest | new | ARG_BC03 `80021C:Argonia.esp` |
 | ours | quest | new | ARG_LQ25 `8000C0:Argonia.esp` |
 | ours | quest | new | ARG_TG01 `800002:Argonia.esp` |
-| ours | Package | new | ARG_BlockTest_ForceGreet `800058:Argonia.esp` |
 | ours | Package | new | ARG_MQ01_ForceGreet `800175:Argonia.esp` |
 | ours | VoiceType | new | ARG_TalkSilentVoice `000834:Argonia.esp` |
-| ours | Message | new | ARG_BlockTest_Msg_063e07 `80000C:Argonia.esp` |
-| ours | Message | new | ARG_BlockTest_Msg_5d8ada `80000D:Argonia.esp` |
-| ours | Message | new | ARG_BlockTest_Msg_fe1380 `80000E:Argonia.esp` |
-| ours | Message | new | ARG_BlockTest_Msg_46f5de `80000F:Argonia.esp` |
 | ours | Message | new | ARG_MortalWatchFaction `800099:Argonia.esp` |
-| ours | Message | new | ARG_BlockTest_Msg_d0c82a `800037:Argonia.esp` |
 | ours | Message | new | ARG_MortalWatchMain `800204:Argonia.esp` |
 | ours | DialogBranch | new | ARG_TG02_B_8dccb2ff `800078:Argonia.esp` |
 | ours | DialogBranch | new | ARG_Talk_DangerBranch `000931:Argonia.esp` |
@@ -1768,14 +1718,12 @@ Written by `make plugin-check` (tools/ArgoniaPlugin `list`) from `out/Argonia.es
 | ours | DialogBranch | new | ARG_TG02_B_84516bd8 `8000B9:Argonia.esp` |
 | ours | DialogBranch | new | ARG_LQ25_B_1ed95258 `80020A:Argonia.esp` |
 | ours | DialogBranch | new | ARG_MQ01_B_73b14da4 `800168:Argonia.esp` |
-| ours | DialogBranch | new | ARG_BlockTest_B_58651bd7 `80003D:Argonia.esp` |
 | ours | DialogBranch | new | ARG_Talk_SecretBranch `000A87:Argonia.esp` |
 | ours | DialogBranch | new | ARG_BC03_B_3c081190 `800392:Argonia.esp` |
 | ours | DialogBranch | new | ARG_MQ01_B_f15977f3 `80016E:Argonia.esp` |
 | ours | DialogBranch | new | ARG_BC01_B_55740835 `8002B3:Argonia.esp` |
 | ours | DialogBranch | new | ARG_MQ01_B_3d3e1113 `800153:Argonia.esp` |
 | ours | DialogBranch | new | ARG_LQ30_B_2750ee8b `800125:Argonia.esp` |
-| ours | DialogBranch | new | ARG_BlockTestTwo_B_e0977919 `80002C:Argonia.esp` |
 | ours | DialogBranch | new | ARG_Talk_DirectionsBranch `00093C:Argonia.esp` |
 | ours | DialogBranch | new | ARG_BC03_B_f33f4595 `80034D:Argonia.esp` |
 | ours | DialogBranch | new | ARG_MQ05_B_8b43ea5e `8001F1:Argonia.esp` |
@@ -1795,7 +1743,6 @@ Written by `make plugin-check` (tools/ArgoniaPlugin `list`) from `out/Argonia.es
 | ours | DialogBranch | new | ARG_BC01_B_06258fe9 `800294:Argonia.esp` |
 | ours | DialogBranch | new | ARG_BC03_B_2d233477 `80033F:Argonia.esp` |
 | ours | DialogBranch | new | ARG_BC03_B_fe0f680a `800351:Argonia.esp` |
-| ours | DialogBranch | new | ARG_BlockTest_B_25ea342a `800039:Argonia.esp` |
 | ours | DialogBranch | new | ARG_MQ03_B_52b4b715 `80017F:Argonia.esp` |
 | ours | DialogBranch | new | ARG_MQ01_B_b6b60993 `80015F:Argonia.esp` |
 | ours | DialogBranch | new | ARG_MQ04_B_633300f4 `8001A6:Argonia.esp` |
@@ -1809,7 +1756,6 @@ Written by `make plugin-check` (tools/ArgoniaPlugin `list`) from `out/Argonia.es
 | ours | DialogBranch | new | ARG_MQ01_B_7605f2c4 `800165:Argonia.esp` |
 | ours | DialogBranch | new | ARG_BC02_B_769b24d5 `8002ED:Argonia.esp` |
 | ours | DialogBranch | new | ARG_MQ04_B_f366a7c0 `8001A9:Argonia.esp` |
-| ours | DialogBranch | new | ARG_BlockTestTwo_B_37c8386d `800032:Argonia.esp` |
 | ours | DialogBranch | new | ARG_MQ04_B_744e3fd7 `8001BB:Argonia.esp` |
 | ours | DialogBranch | new | ARG_MQ01_B_c6b5b34f `800149:Argonia.esp` |
 | ours | DialogBranch | new | ARG_BC01_B_a145d133 `80026A:Argonia.esp` |
@@ -1822,13 +1768,10 @@ Written by `make plugin-check` (tools/ArgoniaPlugin `list`) from `out/Argonia.es
 | ours | DialogBranch | new | ARG_BC03_B_8873f82b `80036A:Argonia.esp` |
 | ours | DialogBranch | new | ARG_MQ05_B_ffe2c41a `8001EA:Argonia.esp` |
 | ours | DialogBranch | new | ARG_TG01_B_ca106a9a `800063:Argonia.esp` |
-| ours | DialogBranch | new | ARG_BlockTest_B_84ed37ec `800035:Argonia.esp` |
 | ours | DialogBranch | new | ARG_BC03_B_4eedd22d `800359:Argonia.esp` |
 | ours | DialogBranch | new | ARG_MQ01_B_2d4b48d9 `800162:Argonia.esp` |
 | ours | DialogBranch | new | ARG_BC03_B_bc946ca8 `800339:Argonia.esp` |
-| ours | DialogBranch | new | ARG_BlockTestTwo_B_65596e18 `80002F:Argonia.esp` |
 | ours | DialogBranch | new | ARG_BC02_B_37f913ba `80031D:Argonia.esp` |
-| ours | DialogBranch | new | ARG_BlockTest_SFB_ead80562 `800054:Argonia.esp` |
 | ours | DialogBranch | new | ARG_MQ01_B_4581b4d8 `80016B:Argonia.esp` |
 | ours | DialogBranch | new | ARG_LQ25_B_a6231052 `800206:Argonia.esp` |
 | ours | DialogBranch | new | ARG_MQ04_B_316b9879 `8001C1:Argonia.esp` |
@@ -1840,8 +1783,6 @@ Written by `make plugin-check` (tools/ArgoniaPlugin `list`) from `out/Argonia.es
 | ours | DialogBranch | new | ARG_BC03_B_ebfeb745 `8003C8:Argonia.esp` |
 | ours | DialogBranch | new | ARG_MQ04_B_aef146d9 `8001C5:Argonia.esp` |
 | ours | DialogBranch | new | ARG_Talk_AdviceBranch `000924:Argonia.esp` |
-| ours | DialogBranch | new | ARG_BlockTest_B_e3b31068 `800049:Argonia.esp` |
-| ours | DialogBranch | new | ARG_BlockTest_B_957ac1dd `800102:Argonia.esp` |
 | ours | DialogBranch | new | ARG_BC03_B_07966bc6 `800333:Argonia.esp` |
 | ours | DialogBranch | new | ARG_BC01_B_8aa699ed `80025A:Argonia.esp` |
 | ours | DialogBranch | new | ARG_BC02_B_4431ef00 `8002FD:Argonia.esp` |
@@ -1865,7 +1806,6 @@ Written by `make plugin-check` (tools/ArgoniaPlugin `list`) from `out/Argonia.es
 | ours | DialogBranch | new | ARG_BC03_B_3845ae9d `80033C:Argonia.esp` |
 | ours | DialogBranch | new | ARG_Talk_HereBranch `0009AC:Argonia.esp` |
 | ours | DialogBranch | new | ARG_BC01_B_a561438e `800254:Argonia.esp` |
-| ours | DialogBranch | new | ARG_BlockTest_B_5b312054 `800100:Argonia.esp` |
 | ours | DialogBranch | new | ARG_BC02_B_3e303c46 `8002C8:Argonia.esp` |
 | ours | DialogBranch | new | ARG_LQ30_B_c95d6ca2 `80011E:Argonia.esp` |
 | ours | DialogBranch | new | ARG_BC01_B_62e0f989 `80029A:Argonia.esp` |
@@ -1873,7 +1813,6 @@ Written by `make plugin-check` (tools/ArgoniaPlugin `list`) from `out/Argonia.es
 | ours | DialogBranch | new | ARG_BC02_B_c5be3433 `8002E4:Argonia.esp` |
 | ours | DialogBranch | new | ARG_MQ03_B_3845ae9d `800185:Argonia.esp` |
 | ours | DialogBranch | new | ARG_BC03_B_f72eda2d `800377:Argonia.esp` |
-| ours | DialogBranch | new | ARG_BlockTest_B_a52b437c `800045:Argonia.esp` |
 | ours | DialogBranch | new | ARG_MQ03_B_e017d919 `800179:Argonia.esp` |
 | ours | DialogBranch | new | ARG_BC01_B_a1d959fd `8002AD:Argonia.esp` |
 | ours | DialogBranch | new | ARG_BC03_B_6a8cce7e `800372:Argonia.esp` |
@@ -1883,7 +1822,6 @@ Written by `make plugin-check` (tools/ArgoniaPlugin `list`) from `out/Argonia.es
 | ours | DialogBranch | new | ARG_TG01_B_d12103c8 `800072:Argonia.esp` |
 | ours | DialogBranch | new | ARG_MQ01_B_e043fb1a `800156:Argonia.esp` |
 | ours | DialogBranch | new | ARG_LQ25_B_2e4f6289 `800208:Argonia.esp` |
-| ours | DialogBranch | new | ARG_BlockTest_B_cf09a8f9 `80004D:Argonia.esp` |
 | ours | DialogBranch | new | ARG_BC03_B_95ce292b `800362:Argonia.esp` |
 | ours | DialogBranch | new | ARG_BC01_B_0aca202e `8002A3:Argonia.esp` |
 | ours | DialogBranch | new | ARG_BC01_B_3730f329 `800287:Argonia.esp` |

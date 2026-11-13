@@ -78,8 +78,10 @@ static class QuestForm
     public static List<(string path, JsonElement form)> Load(IEnumerable<string> dirs) =>
         [.. dirs.Where(Directory.Exists).SelectMany(d => Directory.GetFiles(d, "*.json")).OrderBy(Path.GetFileName, StringComparer.Ordinal)
             .Select(p => (p, JsonDocument.Parse(File.ReadAllText(p)).RootElement))];
-    /// The directories the seed reads: QUESTFORM_DIRS (colon-separated), else the compiled forms and the block test's.
-    public static string[] Dirs() => (Environment.GetEnvironmentVariable("QUESTFORM_DIRS") ?? "out/questform:tools/questform/blocktest")
+    /// The directories the seed reads: QUESTFORM_DIRS (colon-separated), else the compiled forms, and the block test's
+    /// only when QUESTFORM_BLOCKTEST=1 (the agents' diagnostic, never in the shipped plugin).
+    public static string[] Dirs() => (Environment.GetEnvironmentVariable("QUESTFORM_DIRS")
+            ?? (Environment.GetEnvironmentVariable("QUESTFORM_BLOCKTEST") == "1" ? "out/questform:tools/questform/blocktest" : "out/questform"))
         .Split(':', StringSplitOptions.RemoveEmptyEntries);
     public static string QuestIdOf(JsonElement f) => f.GetProperty("quest").GetProperty("id").GetString()!;
 
