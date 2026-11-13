@@ -134,7 +134,8 @@ converge" says.
    different people to be, each a real kind of Elder Scrolls player with reasons of their own (one who plays to
    grow powerful and takes what is offered; one who sides with their own tribe or faction against outsiders,
    whatever it costs others; one who keeps their word to whoever hired them; one who distrusts every institution;
-   one who wants the province left as it is), and run them on different models where the tools allow. Then ask
+   one who wants the province left as it is), and run them on Sonnet 5.5 at medium effort (`model: sonnet`, `effort: medium`), which is fast and cheap enough to
+   run several. Then ask
    every reader, after their own choice, to make the strongest honest case for each option they did not take, and
    to say what they think they gained and gave up in play and whether they would choose differently for the reward
    (one reader always plays only for what each side gives). A

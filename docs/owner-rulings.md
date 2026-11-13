@@ -627,3 +627,10 @@ added here the day they are made, with the date and the issue.
   "crafting recipes, potions recipes, perhaps some other fun stuff from Morrowind like unlocking spellmaking in an
   Argonian lore friendly way (we'd need to build a plugin for that presumably but would be cool if we could, later
   on, with it added to the plan)".
+- 2026-11-13 (in session, closing nw-05): the session is drawn to a neat close to save usage ("a smaller amount of
+  high quality output completed ... rather than a large amount partially completed"), the rest split into nw-05b.
+  Then: "I would like the *overall* story shape and plot for the main quest at least done to completion please
+  through as many rounds as necessary ... Try using sonnet 5.5 medium [for the player agents] so they're faster and
+  cheaper. And you don't have to have done it quest by quest in all the detail. I just want to make sure our overall
+  main quest plot is good enough". The main quest's plot is taken to the stop rule as a short treatment
+  (story/design/quests/lines/main-plot.md); paper readers are Sonnet 5.5 at medium effort from now on.

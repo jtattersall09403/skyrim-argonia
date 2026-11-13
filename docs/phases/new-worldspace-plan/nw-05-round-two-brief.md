@@ -59,8 +59,8 @@ Only after the sketch passes. Fresh readers, started by you, all reading the sam
 truth ahead of time, taken through the full outlines quest by quest and the later arc in summary as a player would
 meet them:
 
-- **Three players who value different things**, on different models so they are less alike (pass `model` when you
-  start each: one `opus`, one `sonnet`, one `fable`), each an honest Elder Scrolls player a little hard to please,
+- **Three players who value different things**, each on Sonnet 5.5 at medium effort (pass `model: sonnet` and `effort: medium` when you
+  start each: faster and cheaper; the owner's ruling), each an honest Elder Scrolls player a little hard to please,
   each given a person to be with reasons of their own. Choose the three that will pull your line's choices apart,
   from: one who plays to grow powerful and takes what pays best in play; one loyal to their own people or faction
   above outsiders, whatever it costs others; one who keeps their word to whoever hired them; one who trusts no
