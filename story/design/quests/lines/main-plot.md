@@ -63,7 +63,7 @@ it, and each of them says why.)
 | **Nesh-Deeka**, the Reed's handler, who gives the player their work | the cutting stopped; the people she listens to kept from harm; in the end, the trees given back their right to refuse | she freed a dreamer once, and the dreamer became the enemy; she does not tell the player what the Reed keeps |
 | **Never-Writes-Twice**, the Reed's officer, who mends nets in the same house and seems to be nobody | one answerable hand on the door, so that no tree ever turns on the marsh again | she let the young tree die, because a dead tree's Egg would be carried to the door and show her where it is |
 | **Cuts-the-Old-Knot**, leader of the Unbound, unseen until the end | every tree free of every other; no dreamer ever kept again | she lit the fire the player was carried out of, a man died in it, and her cure kills a tree and ends the Root Talk for ever |
-| **Ennodius Vanin, the Collector**, an Imperial buyer of relics who preaches for the Unbound | to see the door open, after twenty years of hunting the Eye | he tells the truth every time, because the truth is what moves the bearer where he wants |
+| **Ennodius Vanin, the Collector**, an Imperial buyer of relics who preaches for the Unbound | to see the door open and read what the first wood remembers, after twenty years of hunting the Eye | he tells the truth every time, because the truth is what moves the bearer where he wants; and he does not want what the Unbound want: the pouring would silence the thing he came to read |
 | **Heem-Jasa**, tender of the dying young tree | her tree to live; her people's eggs to hatch | she asks a stranger for a truth she may not want; her tree's seed is what all three endings spend or save |
 | **Vosh-Leera**, root-herald of the first town, who brings the player into the Reed | news worth selling; her town left alone | she sells what she hears and has never asked what becomes of it |
 | **Sesk**, a Naga of the cutters' camp | out, with the price of a boat | she cut roots too |
@@ -174,11 +174,13 @@ not choose you. I lit that fire, and there was somebody in the gang-master's hut
 was nine years in a room. I do not leave people in rooms. It was afterwards I saw what a hand on nobody's roll was
 worth to me, and had you watched." She does not bargain for the Egg. It is no use to her on this side of a door
 that only the bearer opens, so she puts it in the player's hands and stakes everything on what she says next: pour
-it. (A player may also attack her, and take it from her body after a hard fight.) The Collector confesses just as
-plainly: he preached for her because she was going to the door, and would have preached for the net-mender. Egg
-and Eye together open the door. Inside are three things, and using one ends the story. He goes in behind the
-player to read the walls, says what each thing is, and does not come up again: whatever is chosen, he is found
-there afterwards, reading.
+it. (A player may also attack her, and take it from her body after a hard fight.) Egg and Eye together open the door, and once open it stands open to anyone. Inside are three things, and using one
+ends the story. The Collector is found inside, already at the walls (he is placed there when the door unlocks; he
+is never seen to walk). He says what each thing is, does, gives and costs, and then, out of her hearing, what he
+has kept from the woman he preached for: he came to read the first wood, and if the Egg is poured it stops
+singing and there is nothing left to read. He has wanted the door open for twenty years and has never wanted it
+cut. He asks for nothing and will not stop the player. He does not come up again: after MEND or CLAIM he is found
+there reading, and after CUT he is found there in front of a silent wall, with what he helped to do.
 
 ## 5. The three endings
 
@@ -278,3 +280,15 @@ read last (Aunike Crown and the retired Shadowscale leave the plot). CLAIM is th
 trees without dreamers and empties the cellar; MEND does not end the Reed. The rescue was not a plan. She hands
 over the Egg and stakes everything on her case. The Collector says why he preached and stays below. The maps to
 the Reed's stores go with the shut gate.
+
+**Round two** (on commit `42f661c2`; new readers of the same four kinds). All four retold it and wanted to go on
+at every act break. Before the door all four were unsure ("about sixty in a hundred"), and they leant three ways.
+*The player for power* told Never-Writes-Twice the truth for the amulet, opened the gate for the spell, and chose
+MEND, calling it the worst paid and CUT the best. *The loyalist* left the gate shut, lied, and chose CLAIM, with
+both others real temptations. *The one who trusts no institution* chose MEND with CUT "at forty in a hundred".
+*The lore-lover* chose MEND. Every ending was argued without strain by those who did not take it, and each was
+somebody's best pay. Two did not believe a Collector who "wants nothing". The deliverability reader found one
+thing: the Collector could not follow the player in. *Changed:* the Collector is found inside, and has a stake he
+kept from the Unbound: the pouring silences what he came to read. *Not changed:* the three hunts of Act II (one
+reader in each round called them fetching; the rest named them among the best of it, and they are the old line's
+treasure hunt); the length of the stone's reading, which is the outline's to keep short.
