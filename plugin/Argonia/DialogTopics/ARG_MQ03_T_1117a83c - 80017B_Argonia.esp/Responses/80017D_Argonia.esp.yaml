@@ -37,7 +37,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: I mean to lick it and hear my tree once, before anyone takes it from me. The jar is locked in my lockbox among the crates under the lanterns.
+    Value: I mean to lick it and hear my tree once, before anyone takes it from me.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 3
@@ -45,7 +45,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: I keep the key on me. So what are you to me? A reason, a price or a fight?
+    Value: The jar is locked away by the crates, where the lanterns hang, and the key stays on me. So what are you to me? A reason, a price or a fight?
   ScriptNotes: ''
   Edits: ''
 Conditions:
