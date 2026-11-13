@@ -3,13 +3,14 @@
   assets:  tools.places.assets.mesh(model, level) / tex(path, size) / thumb(model) / land_table()
   seat:    tools.places.seat.ground_for(place_id).at(x, y)
   ground:  tools.places.ground_check.status() -> {ground_sha, deployed_sha, match, ...}
-  runs:    tools.places.finalise.start(place_id, save_id) / read_run(run_dir)"""
+  runs:    tools.places.finalise.start(place_id, save_id) / read_run(run_dir)
+  notes:   tools.places.notes_batch.start(place_id, places)"""
 from __future__ import annotations
 
 import threading
 from pathlib import Path
 
-from tools.places import assets, finalise, ground_check, seat
+from tools.places import assets, finalise, ground_check, notes_batch, seat
 
 
 def asset(kind: str, *args) -> Path | None:
@@ -48,3 +49,7 @@ def run_start(place_id: str, save_id: str) -> str:
 
 def run_read(run_dir: Path) -> dict:
     return finalise.read_run(run_dir)
+
+
+def notes_start(place_id: str, places: Path) -> str:
+    return notes_batch.start(place_id, places)

@@ -419,23 +419,50 @@ async def notes_get(req: web.Request) -> web.Response:
 
 
 async def notes_post(req: web.Request) -> web.Response:
-    """Add a note ({text, things, view, save}), or close or reopen one ({id, done})."""
+    """Add a note ({text, things, view, save}); change the words of one not sent yet ({id, text}) or delete it ({id,
+    delete: true}); close or reopen a sent one ({id, done})."""
     pid, cfg = req.match_info["place_id"], req.app["cfg"]
     body = await json_capped(req, NOTE_BYTES)
     try:
         if not isinstance(body, dict):
             raise ValueError("body must be a note")
+        nid = str(body["id"]) if body.get("id") else None
         async with req.app["locks"].setdefault(pid, asyncio.Lock()):
-            note = (notes.done(pid, str(body["id"]), places=cfg.places, undo=not body.get("done", True)) if body.get("id")
-                    else notes.add(pid, body, cfg.places))
+            if nid and body.get("delete"):
+                note = notes.delete(pid, nid, cfg.places)
+            elif nid and "text" in body:
+                note = notes.edit(pid, nid, body["text"], cfg.places)
+            elif nid:
+                note = notes.done(pid, nid, places=cfg.places, undo=not body.get("done", True))
+            else:
+                note = notes.add(pid, body, cfg.places)
     except (ValueError, TypeError) as e:
         return jerr(400, str(e))
-    p = notes.path(pid, cfg.places)
+    await commit_notes(req.app, pid, f"places: the owner's studio note {pid}/{note['id']}")
+    return jok(note)
+
+
+async def commit_notes(app: web.Application, pid: str, msg: str) -> None:
+    p, cfg = notes.path(pid, app["cfg"].places), app["cfg"]
     if cfg.commit and p.is_relative_to(ROOT):
         rel = str(p.relative_to(ROOT))
-        req.app["pending"][rel] = True
-        await req.app["commit_q"].put((rel, f"places: the owner's studio note {pid}/{note['id']}"))
-    return jok(note)
+        app["pending"][rel] = True
+        await app["commit_q"].put((rel, msg))
+
+
+async def notes_send(req: web.Request) -> web.Response:
+    """Send every unsent note of the place to the agent as one batch, and start the agent on it
+    (tools/places/notes_batch.py): {batch, sent: [notes], job}."""
+    pid, cfg = req.match_info["place_id"], req.app["cfg"]
+    await body_capped(req, 4096)
+    try:
+        async with req.app["locks"].setdefault(pid, asyncio.Lock()):
+            out = notes.send(pid, cfg.places)
+    except ValueError as e:
+        return jerr(400, str(e))
+    await commit_notes(req.app, pid, f"places: the owner sent {len(out['sent'])} studio note(s) on {pid} ({out['batch']})")
+    job = await asyncio.get_running_loop().run_in_executor(None, links.notes_start, pid, cfg.places)
+    return jok(out | {"job": job}, status=202)
 
 
 async def needs_get(req: web.Request) -> web.Response:
@@ -739,6 +766,7 @@ def make_app(cfg: Config | None = None) -> web.Application:
     r.add_get("/api/place/{place_id}/stock", stock_get)
     r.add_get("/api/place/{place_id}/items", items_get)
     r.add_post("/api/place/{place_id}/notes", notes_post)
+    r.add_post("/api/place/{place_id}/notes/send", notes_send)
     r.add_get("/api/place/{place_id}/needs", needs_get)
     r.add_post("/api/place/{place_id}/needs/changed", needs_changed_post)
     r.add_get("/api/place/{place_id}/runs/{run_id}", run_get)

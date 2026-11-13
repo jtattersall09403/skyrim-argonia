@@ -9,6 +9,7 @@ def test_notes_round_trip(tmp_path):
                         "view": {"space": "exterior", "at": [1, 2, 3]}}, tmp_path)
     assert n["id"] == "n1" and n["text"] == "hi" and n["things"][0]["pos"] == [1, 2, 3.1]
     assert notes.add("x", {"text": "two"}, tmp_path)["id"] == "n2"
+    notes.send("x", tmp_path)
     r = notes.done("x", "n1", "fixed", tmp_path)
     assert r["done"] and r["reply"] == "fixed"
     assert [x["done"] for x in notes.read("x", tmp_path)] == [True, False]

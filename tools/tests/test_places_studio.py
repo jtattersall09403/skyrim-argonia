@@ -318,6 +318,34 @@ def test_small_bodies_bad_ids_and_a_save_being_finalised(env, monkeypatch):
     run(env, body)
 
 
+def test_notes_are_written_freely_and_sent_as_one_batch(env, monkeypatch):
+    """Notes wait unsent (changed or deleted at will) until Send: then every one goes as one batch and one agent
+    run is started for it; a sent note can no longer change."""
+    from tools.places.studio import links
+    started = []
+    monkeypatch.setattr(links, "notes_start", lambda pid, places: started.append(pid) or f"notes.{pid}.t")
+
+    async def body(c):
+        for t in ("raise the jetty", "more reeds", "a typo"):
+            assert (await c.post("/api/place/batchplace/notes", json={"text": t})).status == 200
+        rows = await (await c.get("/api/place/batchplace/notes")).json()
+        assert [(n["text"], n["sent"]) for n in rows] == [("raise the jetty", False), ("more reeds", False), ("a typo", False)]
+        assert (await (await c.post("/api/place/batchplace/notes", json={"id": "n2", "text": "more reeds by the bank"})).json())["text"] == "more reeds by the bank"
+        assert (await c.post("/api/place/batchplace/notes", json={"id": "n3", "delete": True})).status == 200
+        assert started == []
+        r = await c.post("/api/place/batchplace/notes/send")
+        got = await r.json()
+        assert r.status == 202 and [n["id"] for n in got["sent"]] == ["n1", "n2"] and got["job"] == "notes.batchplace.t"
+        assert started == ["batchplace"]
+        rows = await (await c.get("/api/place/batchplace/notes")).json()
+        assert all(n["sent"] and n["batch"] == "b1" for n in rows)
+        r = await c.post("/api/place/batchplace/notes", json={"id": "n1", "text": "changed my mind"})
+        assert r.status == 400 and "sent" in (await r.json())["error"]
+        r = await c.post("/api/place/batchplace/notes/send")
+        assert r.status == 400 and "no unsent notes" in (await r.json())["error"] and started == ["batchplace"]
+    run(env, body)
+
+
 def test_a_texture_that_cannot_be_read_is_the_stand_in(env, monkeypatch):
     from tools.places.studio import links
 
