@@ -113,7 +113,7 @@ the rules of 1.1 and check it against the list in 1.6.
 | N29 | Dral- | Dralin Uveran (MQ01, the first person the player meets); Dral Savani (LB01); Dralas (BC03); Dralen Vathri (RS02); Dralsi Rethan (NI06) | Five Dunmer on one syllable. Dralin Uveran keeps. LB, BC, RS and NI each rename theirs. |
 | N30 | -Twice | Never-Writes-Twice (MQ); Asks-Twice (LB); Sounds-Twice (RS, and SS under N1); Carves-Twice (UW); "Twice-Paid", Raj-Deel's nickname (MC) | Never-Writes-Twice, Asks-Twice and Sounds-Twice keep. UW renames Carves-Twice. MC drops the nickname. |
 | N31 | Half- | Half-Rent (NR, the planner); Half-Share (RS, the shore buyer); Half-Roof (UW04, the squatter) | Half-Rent and Half-Share keep: their cities are apart. UW renames Half-Roof, who stands a walk from Half-Rent's den. |
-| N32 | Okeeh- | Okeeh-Ja (MR, the Listener, a new person of Helstrom); Nisswo Okeeh-Ra (BC06) | Okeeh-Ja keeps. BC renames its Nisswo, if S7 leaves that person in the story. |
+| N32 | Okeeh- | Okeeh-Ja (MR, the Listener, a new person of Helstrom); Nisswo Okeeh-Ra (BC06) | Okeeh-Ja keeps. BC renames its Nisswo. |
 | N33 | Helstrom's own | Tsaxi-Rei, rootworm courier, and Okaw-Neesa, net-maker (D people); Third-Born Tsaxi and Third-Born Okaw, the Rose's gate-keepers (BC §3) | Helstrom's 58 stand as they are (plan, section 5). BC renames both heirs. MQ07 uses the new name of the heir at the gate. |
 | N34 | Nuleem and Nomu | Nuleem-Ja (SS, raft-master of Xi-Inou); Nuleem-Ei (BC02, ferry-keeper of Lujei Ferry); Nomu (RS, the successor at Seafalls); Toll-Holder Nomu-Tei (BC, named and never met) | Nuleem-Ja and Nomu keep. BC renames its two. |
 | N35 | Geel- and Geem- | Geel-Masu (MQ02, weir-keeper); Geel-Wan (WK01); Geem-Shah (NR01, NR04, the toll-taker); Geem-Ra (LW01, the hurt watcher) | Geel-Masu and Geem-Shah keep. WK renames Geel-Wan; LW renames Geem-Ra. |
@@ -691,7 +691,7 @@ and each does: none touches the Eye, the Unbound, Vel-Sapha or a place reserved 
 | C33 | The dismissed Receiver "was hers to dismiss", of Soulrest's civil secretary | LW to NR | Offered | R: Lucan Teeus was Receiver at Archon before Xeen (N15) and was dismissed by the Archwardens' paymaster, not by Soulrest. |
 | C34 | "Reed-Sail carry for the League at a price", in talk | LW of RS | Yes: the elder has a line | A. |
 | C35 | Soulrest's guard and cells are named | BC of LW | Not yet | A (P18). |
-| C36 | BC06's travelling Nisswo is one of NI's or none | BC and NI | NI offers Neema-Luh; BC named its own | C: under S7 the Nisswo is no longer a claimant; if BC keeps one in talk, it is its own person, renamed (N32). |
+| C36 | BC06's travelling Nisswo is one of NI's or none | BC and NI | NI offers Neema-Luh; BC named its own | C: BC's Nisswo is its own person, none of NI's four, and is renamed (N32). NI's priests have no line about her. |
 | C37 | The Charter ending of SS08 shuts the Night-Reed's leadership | SS of NR | NR has no rank of leader (NR §1) | R: there is nothing to shut. NR's keeper has one cold greeting for a chartered Shadowscale. |
 | C38 | The Nisswo at Lilmoth extends his protection to an old woman in SS06 | SS of NI | Yes: Jeer-Tei will, if asked rightly (NI §6) | A. If he is dead that way is shut; SS drops its fallback Nisswo at Oju. |
 | C39 | Whoever names Archon's harbour authority names who sealed the Stormwidow's commission | RS of SS | SS names Three-Ropes | A: her office sealed it, years ago. SS02's privateer is Archon's own and not of Marque Landing (SS §6). |
@@ -933,7 +933,7 @@ second lamp, NR's beacon put out, and all of WK).
 | S4 | MC | **Owns "whose spear were you"**, the telling that claims a kill for an asker. Its finale by deed stands. Its secret changes kind: the kaal does not know that the dragon was half the Sarpa's kill. Nobody alive knows; it is cut on the first kaal's stake in Vorannuhl, and the player brings it to a proud woman who is honestly wrong. MC05 ends on the stake pulled or left where it stands, not handed to one of three. |
 | S5 | WK | **The seller faced.** WK06 is decided on the summit by what the player does with the man, not by where a string is carried: send him down to answer to the First Keeper (the voices are remade), let him go on to Truowa with the string (the voices are sold), or kill him and take the string to the forge (the voices are broken up). The First Keeper is clean and rigid and wrong about her pupil; she has sold nothing. Luntoc's showings are its tender's own trade, which keeps the plan's crossing (C2). And the two change places in age: the seller is the old roundsman passed over, the First Keeper the younger one set above him. |
 | S6 | NR | **The last lock.** The finale's choice is made inside the strongroom by what is lifted, since one pair of hands carries one load: the season's silver (the planner's war), the shelf of pledges (the pot, and every pledge sent home), or the bell alone (gone by morning with a fence's price). Who it goes to follows from what it is. NR02 and NR03 keep their claimants, which are the code at work. |
-| S7 | BC | **Keeps a choice among people, with three and not four.** The hatch key goes to the heirs, to Never-Sold or to the grave-singer; the travelling Nisswo leaves the finale (C36). The line's last lock, the key's box among armed heirs, is what the quest is; the hand-over is its last line. BC03's "tell her you know" becomes a thing put on her table, the bound count itself, and no line of telling. |
+| S7 | BC | **Keeps a choice among people**, as the plan gave it: the hatch key to one of four. It is the second and last line to end on a hand-over, and it earns it by what comes first: the line's last lock, the key's box among armed heirs, is the quest, and the hand-over is its last line. BC03's "tell her you know" becomes a thing put on her table, the bound count itself, and no line of telling. |
 | S8 | NI | **A thing of the player's own given up.** One act at the stake-ground: the player lays their own onyx, their place among the priests and their bed at the hearth, on Ah-Mota's stake and drives it; or keeps all three and the urn goes back under the stone. The renegade's way is what happens if the urn is left at Meliton. No priest is handed anything. |
 | S9 | RS | **A camp chosen.** The commission names "whoever holds this letter", so the player holds it and chooses a camp by which stronghold they break: the outlaws' bluff or the cells under the privateers' keep; or they drop the letter into the falls. The fort captain and the hall leave the list of takers. The lamp stays as one line before the raft-masters. |
 | S10 | SS | **A master chosen or none, by the stakes driven.** This is the assassins' line and its end is decided as its quests are: each bidder names another for a stake, and who is left alive holds the school. Nobody dead is the End or Alone, as written. Nothing is handed across a counter. |
@@ -1036,14 +1036,18 @@ of N44 to N46 for other lines' people; and it cites 4.4 for an extrapolation it 
 
 ### The Blackrose Chainbreakers (BC)
 
+This list was made from the story's draft of 2026-11-13, before it landed and before it was read on paper; an
+item its later draft already answers is struck by its writer.
+
 1. **The gate after the heir's death**: BC02's fourth ending kills her, yet BC04 lifts a key from her belt and BC06
-   takes the Rose's leave from her line. Write her brother's part in both, and the one guest faction shared with
-   MQ07 (P9, C18).
+   takes the Rose's leave from her line. Her brother's part is written in both, and the one guest faction is
+   shared with MQ07 (P9, C18).
 2. Rename both heirs at the gate (N33), the ferry-keeper Nuleem-Ei and the Toll-Holder Nomu-Tei (N34), the dock
-   hand Dralas (N29), and the first rank, Hand (N48). The Canoe-Warden is a canoe-master; "Fort Reedmoth's
-   keepers" are its garrison (N43, N46).
-3. **The finale has three claimants**: the Nisswo leaves it (S7, C36, N32). BC03's "tell her you know" becomes
-   the bound count put on her table (S7).
+   hand Dralas (N29), the Nisswo Okeeh-Ra (N32), and the first rank, Hand (N48). The Canoe-Warden is a
+   canoe-master; "Fort Reedmoth's keepers" are its garrison; the Nisswo is "of the road", not "a walker"
+   (N43, N46, N47).
+3. The finale's four claimants stand (S7). BC03's "tell her you know" becomes the bound count put on her table
+   (S7).
 4. Lean on Pickpocket, Speech and the one hard fight; Lockpicking and Sneak stay as ways (K3).
 5. Give the Rose's people no number (P9); cite T8 for the Owing gone bad.
 6. BC02's three held people all carry translated names in one quest: record the one-line reason (the Rose's
@@ -1241,7 +1245,7 @@ to change, and its line's second round gives the new one.
 | Fort Gysilla, Truowa, Yalugo | Peradus Xil; Starless, [Xal-Meema], Tibur, Buys-by-Daylight; Pike |
 | Korydon, Myroleon, Tydeos, Luntoc, Vesh-Aneel | Haxara-Tei, Mereesh, Naxil-Wo, Tulaxi, Ruxheel, Demeepa-Ru, Ruleem, Jaseen; Sheeva-Jul, [Jeer-Tan], Weeja; Beem-Wazei, Chalureel; Skeeju; Tikaasi, Paheel (dead) |
 | Tumnatu Cattail Camp, Yuva-Goli, Tsonac, Teth-Kasa, Tseli-Oon, Dry-Fang Camp, Jal-Resh Post, Meris-Keth | Meer-Zah; [Haxal-Mei], Ushu-Lan, Bun-Zeer; Druja-Seel, [Ah-Mota], [Mazeeh], Golis Andrethi; Hapu-Jeer; Dusha-Wan; Thekka, Jurr; Marzeel; J'Kier, Aojee-Dar (dead) |
-| Blackrose, Reedfall Farm, Lujei Ferry, Lujei, the Rose | Never-Sold; Rows-For-Another, Hulm-Tei, Meema Tulm-Varo, Brings-Them-Back; [Nuleem-Ei]; Ossu, Walks-Far, Mends-Nets, Seven-Floods; the Third-Born [Tsaxi], [Okaw] and Xeekh, Raj-Kaal Druxeth |
+| Blackrose, Reedfall Farm, Lujei Ferry, Lujei, the Rose | Never-Sold; Rows-For-Another, Hulm-Tei, Meema Tulm-Varo, Brings-Them-Back; [Nuleem-Ei], the Nisswo [Okeeh-Ra]; Ossu, Walks-Far, Mends-Nets, Seven-Floods; the Third-Born [Tsaxi], [Okaw] and Xeekh, Raj-Kaal Druxeth |
 | Soulrest | Oshu-Kai, Hisska, Martius Calvo, Sharp-Oar, Factor Tsabhira, Aulia Pontanian; Lucan Teeus; Ussa-Rekh, Heavy-Rope, Ra'Jhan, [Dralas], Keel-Tar |
 | Jarecai and the basin posts | Xeech-Tul, Jaxa-Reem, Neeta-Xi; Deekum; Bimeesh-Tul, [Geem-Ra]; [Wuleen-Tei] the toll-keeper, Oleed-Mei; Otumi-Lar |
 | Lilmoth | Tilts-the-Jug, Half-Rent, Bent-Spine, Silt, Meer-Tulo, Geem-Shah, Yves Renoit, Beek-Losh; Neexa-Tul, Old Nusa, [Carves-Twice], Dives-Without-Asking, Odile Marric, Shuvu-Meen, Meenus-Lei, Hadrian Scaeva; Jeer-Tei; Xil-Veeka; [Geh-Meema] |
