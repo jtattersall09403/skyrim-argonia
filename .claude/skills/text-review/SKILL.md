@@ -6,8 +6,7 @@ description: Review player-visible or world-record prose (place records, quest r
 # Text review
 
 In the quest path ([quest-system](../quest-system/SKILL.md)) this follows dialogue-write and comes before the paper playtest of the written quest; its truth reader runs again once the quest is built.
-
-One review per change set: one `reader` pass, the truth pass for quest and talker text, then the linter. The writer never reviews its own text.
+One review per change set: one `reader` pass, the truth reader for quest and talker text, then the linter. The writer never reviews its own text.
 
 1. **Reader pass.** Spawn ONE `reader` over every changed prose file. Its brief (from `tooling/brief_template.py`)
    names the file list, the report path, the style guide (`story/design/text/style-guide.md`; the
@@ -26,7 +25,7 @@ One review per change set: one `reader` pass, the truth pass for quest and talke
    Dialogue is reviewed as a table from the database, one row per line with its speaker, place, stage window, prompt,
    reply topics and `sets`, grouped by place, never as bare text files. Split only when the set will not fit one
    context, launching every reader in the same message. It returns `file:line | rule | reason | rewrite` rows.
-2. **Truth pass** (quest and talker text, once the plugin is built). Read the forms back
+2. **The truth reader** (quest and talker text, once the plugin is built). Read the forms back
    (`plugin.sh questform-read out/questform-read`), then per quest or settlement build the input with
    `python3 -m tools.argonia_world.truth_brief <quest id | settlement id> --out BRIEF.md`: every line, journal entry,
    objective (and a talker's stated trade) beside the surroundings sheet of its speaker and of each person or thing

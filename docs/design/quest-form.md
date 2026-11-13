@@ -24,7 +24,7 @@ throughout). Ids, form keys, editor ids and positions are plain strings and numb
 | `triggers[]` | `id`, `kind` (`take`, `use`, `death`: with `ref`; `quest_stage`: with `quest`, `quest_stage`), `prerequisite`, `sets`; a take, use or death may carry `until` (a stage: it no longer fires once the quest's stage is at or above it); a death may carry `choice: true` (killing them is the player's choice) |
 | `must_live[]` | `ref`, `fail_stage` (a failed ending), `main_message` (the death also shows the kind's message once: only on a main or faction quest, where it is true; a minor quest's death only fails it), optional `message` (must be the kind's own words), optional `from` and `to` (stages: the row holds only while the quest's stage is from `from` up to `to`; either may be left out; `from` is never before the quest's first shown stage); the builder makes the quest's start check they are alive when its window holds the start stage |
 
-A **speaks-first** line is the one package a quest has: the person stands where `at` says, walks up and says it.
+A **speaks-first** line is the one package a quest has: the person stands where `at` says, a few steps from where the player appears, and says it; he does not walk.
 The form says nothing more about it.
 
 **Stages are by done.** As in the engine, setting a stage that is already done does nothing (its journal entry and

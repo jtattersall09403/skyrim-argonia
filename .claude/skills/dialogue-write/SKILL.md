@@ -8,7 +8,7 @@ description: Write topic dialogue in Morrowind's voice, built as Skyrim topics, 
 In the quest path ([quest-system](../quest-system/SKILL.md)) this comes after quest-write's briefs and the designed quest's paper playtest, and before text-review and the paper playtest of the written quest.
 
 The goal: lines that read as if they were Morrowind's, about our people
-and places in Black Marsh & Valenwood's (BM&V's) world; the lines become Creation Kit dialogue records on top of BM&V. Bans are in `bans.yaml`, voice evidence in
+and places in Black Marsh & Valenwood's (BM&V's) world; the lines become records made by the generic builder on top of BM&V. Bans are in `bans.yaml`, voice evidence in
 `voices.md`, deliberate echoes in `echoes.yaml`.
 
 ## 1. The brief
@@ -94,8 +94,7 @@ refuses a person with no finds. Never paste Morrowind lines into the repo.
 - **A line tells; a question is a choice.** A speaker asks the player something ("What name?", "Did you see?", "Give
   me a reason", "Are you crossing?") only when the brief lists the reply topics. With none, the speaker says what
   they know or what they need, as a statement.
-- **A line promises only what the brief's `sets` delivers.** "Here is", "take", "I will follow", "I will meet you
-  there", "come back when I know you" are written only where the brief names the item given, the package, the place
+- **A line promises only what the brief's `sets` delivers.** "Here is", "take", "I will meet you there", "come back when I know you" are written only where the brief names the item given, the package, the place
   or the way to earn it.
 - **A line that advances a stage never refuses.** When its fragment sets a stage or a flag the journal then relies
   on, every wording of the line agrees to what the fragment does.
@@ -104,8 +103,10 @@ refuses a person with no finds. Never paste Morrowind lines into the repo.
   covers every reason the pass line failed), or once the clock moves ("four hours ago"). Once a quest has ended, no
   line offers or describes its task; only the greeting for that ending speaks of it.
 - **The prompt is the player's sentence.** A full sentence the player would say with what the brief lists under "the
-  player already knows", never a bare label ("the boat"; "Did you see who came to the tree?" is a prompt); a cost or
-  check is in it ("(Persuade)", "(10 gold)").
+  player already knows", never a bare label ("the boat"; "Did you see who came to the tree?" is a prompt). The compiler
+  adds a check's label; never write a threshold. A prompt that commits the player names the deal.
+- **Every skill or gold check has its own refusal** in the speaker's voice, which says what would change their mind
+  without naming a number.
 - **People by the name the game shows.** A person the player can meet is named as their base is named, with the role
   beside it once; pronouns follow the brief's sex for that person.
 - **One speaker, one fact, per place.** The brief lists what the others in the same place and stage window say. Do
@@ -131,6 +132,14 @@ refuses a person with no finds. Never paste Morrowind lines into the repo.
 - No text macros: Skyrim prints `[player]`, `[player race]` and the like as written. Address the player by a word the
   speaker would use; where the address changes with the player's race, write a variant line for that race (it is built
   as its own line, gated on the player's race).
+- **A person's first line says who they are** in a clause and glosses each of our words (nushmeeko, the Hist, an
+  Owing) the first time this player can meet it; the first person a new player meets also says where they are.
+- **Only the names the player already has**: lines, prompts and journal call a person, group or place by the name
+  the player has been given ("the cutters" until someone names them).
+- **A line that points to a topic uses that topic's words** ("ask me who cut the tree" points to "Who cut the tree?").
+- **A line places its speaker only as the player sees them**: no room, wall or building the placement lacks.
+- **A line shared by several routes or endings** says only what is true of all of them; after an ending each person
+  greets with their own view of it and its cost, never "I have nothing to add".
 
 ## 5. Process
 
