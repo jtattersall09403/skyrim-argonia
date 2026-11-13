@@ -382,10 +382,13 @@ and removed per file; a stage that would write outside what it owns changes noth
 The owner edits the built place in the studio (the browser editor of `docs/design/place-studio.md`), saves, and finalises a save with one tap. Finalise applies the save
 to the place files and sources, builds, checks and runs the lessons agent (the skill `place-lessons`).
 
-1. At the start of a session read the owner's notes: `python3 -m tools.places notes` (every open note, every
-   place). A note about the place or about selected things is answered with a change: the narrow stage of section
-   7, or the narrow change of the skill that owns the fact. Close it with
-   `python3 -m tools.places notes done <place_id> <note id> --reply "<what was done>"`.
+1. The owner writes plain notes in the studio and sends them as a batch when he chooses; sending starts an agent on
+   them. That agent, and any session start, reads them with `python3 -m tools.places notes` (every sent, open note,
+   every place; notes the owner has not sent are his still and are never acted on). A note about the place or about
+   selected things is answered with a change: the narrow stage of section 7, or the narrow change of the skill that
+   owns the fact. Close it with `python3 -m tools.places notes done <place_id> <note id> --reply "<what was done>"`,
+   in plain English. A question for the owner, or a change larger than a narrow one, is closed with a reply that
+   says so and what it would take, and nothing is changed for it.
 2. A note on changes travels in its save with the changes it covers. It is answered when the owner
    finalises that save: the lessons step reads it.
 3. What the owner changed stays as the owner left it. No stage and no later pass moves, renames or removes a row a

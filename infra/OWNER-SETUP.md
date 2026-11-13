@@ -20,6 +20,22 @@ EC2 (London) -> Instances -> `argonia-build` -> Instance state -> Start; wait fo
 ## Cloudflare (the sign-in gate and play switch)
 - [ ] Cloudflare account with the domain; tokens in `secrets.env`. The agent runs `gpu-box/cloudflare_gate.py` to put `play.<domain>` behind Access (your email only) and deploys the Worker `cloudflare/play-switch.js`, which starts the machine when you open the page.
 - [ ] The Access service token and AWS IAM user for the Worker (start/stop of the play machine only) are created once; the agent lists the exact steps in an owner issue.
+- [ ] The studio's address starts the build machine through the same Worker. Its IAM user `argonia-play-switch` needs one more inline policy, `studio-start` (IAM, Users, argonia-play-switch, Add permissions, Create inline policy, JSON): start the build machine and write one tag on it, nothing else. Describing instances it can do already.
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {"Sid": "StartTheBuildMachine", "Effect": "Allow", "Action": "ec2:StartInstances",
+     "Resource": "arn:aws:ec2:eu-west-2:050977237313:instance/i-0aec57899356eb8bc"},
+    {"Sid": "MarkAStudioStart", "Effect": "Allow", "Action": "ec2:CreateTags",
+     "Resource": "arn:aws:ec2:eu-west-2:050977237313:instance/i-0aec57899356eb8bc",
+     "Condition": {"ForAllValues:StringEquals": {"aws:TagKeys": ["argonia-studio-start"]},
+                   "Null": {"aws:TagKeys": "false"}}}
+  ]
+}
+```
+  The agent checks it with `node infra/cloudflare/test/studio_live.mjs` (dry runs; both lines say "would succeed").
 
 ## Keys
 - [x] Nexus API key (above). The agent fetches mods from `~/.argonia/mods`, then `s3://argonia-private-050977237313/mods/`, then Nexus.

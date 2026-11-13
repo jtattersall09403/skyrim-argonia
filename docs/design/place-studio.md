@@ -552,8 +552,9 @@ its words to edit or take away. The Notes panel lists the notes on the applied c
 Select picks the things they touched. Undo and redo leave each op's `note_group` as it is, so a note covers what is
 applied and comes back with its changes; a save writes the notes its applied ops name. A taste op's preference row
 takes its note's words. The agent reads each note with exactly the changes it covers, each said as what changed,
-from what to what, and where (`change_notes.present`): finalise's lessons step (`notes.json`) and
-`python -m tools.places notes`, which lists them for every save not yet finalised.
+from what to what, and where (`change_notes.present`): finalise's lessons step (`notes.json`), and
+`python -m tools.places notes --changes`, which lists them for every save not yet finalised. They are read at
+finalise and never before.
 
 `call` defaults to `fault`. Applying a save to the place files is one function (`tools/places/edits.py: apply`,
 `apply_save` for a whole save), used by load (in memory) and by finalise (to disk). The fixtures in
@@ -600,14 +601,14 @@ GET  /api/place/<id>/nav                      the built place's walking mesh (to
                                               and a stop that stands off it (a chair by a wall) is joined to the
                                               mesh's nearest point; 404 before the first build
 GET  /api/place/<id>/notes                    the owner's notes for the agent, oldest first: [{id, at, text, things:
-                                              [{id, space, base, name, kind, pos, src}], view: {space, at}, done,
-                                              done_at, reply}]
-POST /api/place/<id>/notes                    {text, things, view} adds a note; {id, done} closes or reopens one.
-                                              Kept in the place's edits/notes.jsonl (outside the draft's and the
-                                              build's identity) and committed by path. An agent lists the open
-                                              notes with `python -m tools.places notes`, makes the change, and
-                                              closes each with `notes done <place> <id> --reply "..."`. Notes on
-                                              changes are in the saves (Edits: notes on changes)
+                                              [{id, space, base, name, kind, pos, src}], view: {space, at}, sent,
+                                              sent_at, batch, done, done_at, reply}] (Notes for the agent, below)
+POST /api/place/<id>/notes                    {text, things, view} keeps a new note, unsent; {id, text} changes the
+                                              words of an unsent one, {id, delete: true} deletes it (400 once sent);
+                                              {id, done} closes or reopens a sent one. Notes on changes are in the
+                                              saves (Edits: notes on changes)
+POST /api/place/<id>/notes/send               sends every unsent note as one batch and starts its agent: 202
+                                              {batch, sent: [notes], job}; 400 when none is unsent
 GET  /api/place/<id>/stock                    who the place's people are and what it holds, from the database's
                                               sources (Stock: the studio)
 GET  /api/place/<id>/items?q=&kind=&limit=    item search for a holder: each result allowed or refused, with why
@@ -726,11 +727,54 @@ and prefix boosts, so a typed name always comes first. `scope=source` keeps the 
 next heartbeat starting a fresh one). While it lives the idle-stop sees a job and keep-busy holds the CPU above the
 owner's alarm, which then stops the machine about 30 minutes after the last tab closes. The alarm is never touched.
 
+**Notes for the agent.** Besides the notes on changes, the owner writes plain notes in the Notes panel, about the
+place or about the things selected, as many as he likes. One JSON line each in the place's `edits/notes.jsonl`
+(outside the draft's and the build's identity), written under the edits folder's lock and committed by path as the
+saves are, so a note survives a closed tab and a stopped machine. A note is in one of three states:
+- **unsent** (`sent: false`): the owner's; he may change its words or delete it, and no agent sees it;
+- **sent**: the panel's "Send notes to the agent (n)" sends every unsent note of the place as one batch (`batch`,
+  `sent_at`), after one confirmation in plain words ("An agent will read these three notes and make the changes. You
+  can keep editing."); it can no longer change;
+- **done**: the agent closed it with its reply, shown under the note.
+
+A row without `sent` predates batches and counts as sent. Sending starts the batch's agent at once
+(`tools/places/notes_batch.py: start`): a headless `claude -p` under `tooling/job_guard.sh`, as the finalise chain
+runs its lessons agent (budget $10, 80 turns, edits accepted, its shell limited to `python -m tools.places`, the lane
+commit and git reads). One notes agent runs at a time: each run holds `out/places/notes-runs/agent.lock` for its
+whole length, so a batch sent meanwhile waits and then takes every sent note still open. The prompt names the place
+and the notes and says: read them with `python -m tools.places notes <place>`; answer each with a narrow change to
+the place by the place-build skill's stage for it, never redrafting the whole place nor regenerating over the
+owner's studio edits; close each with `notes done <place> <id> --reply "..."` in plain English; a question for the
+owner, or a change larger than a narrow one, is closed with a reply that says so and what it would take, and not
+done; commit the changed files and the notes file by path. Each run's prompt, cost, turns and the notes it left open
+are kept in `out/places/notes-runs/`.
+
+`python -m tools.places notes` lists the sent, open notes of every place (what a session start answers);
+`--unsent` adds the owner's unsent ones, `--changes` the notes on changes in saves not yet finalised, `--all`
+everything. `notes done` refuses an unsent note.
+
 **Hosting.** `https://studio.<domain>` (the Moonlight gate's zone): the named tunnel `argonia-build` to
 `localhost:8765`, behind Cloudflare Access for the owner's email only; the VM opens no port.
 `infra/build-vm/studio-install.sh` installs the pinned cloudflared and the user units `argonia-studio` and
 `argonia-studio-tunnel` (started at boot, restarted on failure); `infra/build-vm/studio_gate.py apply` makes the
-tunnel, DNS and Access app and `prove` checks both sides of the gate.
+tunnel, DNS and Access app and `prove` checks both sides of the gate and the switch below.
+
+**The address starts the machine.** The play switch Worker (`infra/cloudflare/play-switch.js`, deployed by
+`infra/gpu-box/cloudflare_gate.py worker`) is routed on the studio's page and `/argonia/*` (`studio.<domain>/` and
+`studio.<domain>/argonia/*`); the studio's own requests (assets, the API) go straight to the tunnel. With the build
+machine running, the page's request goes on to the tunnel unchanged (marked `x-argonia-switch: studio`), so the
+owner sees no difference. With it stopped, the Worker checks the owner: the Access sign-in's token (its header, else
+its cookie) verified against the team's signing keys, for the studio app's audience, unexpired, with the owner's
+email; anyone else gets "Only the owner can start the build machine" and nothing starts. For the owner it writes the
+tag `argonia-studio-start=<time>` on the instance, starts it, and shows "Starting the build machine. This takes
+about a minute.", a page that reloads every 4 seconds and so becomes the studio once it answers; a start AWS
+refuses while the machine settles after a stop retries for two minutes, and any other refusal says what AWS said and
+what to do. The Worker's AWS user may describe instances and start, and tag with that one key, only
+`argonia-build` (infra/OWNER-SETUP.md). At boot `infra/build-vm/resume.sh` reads the tag: a boot within 10 minutes
+of it is a studio start, which resumes no agent (Claude waits at its prompt), so opening the studio spends no Claude
+usage; work a resume was owed is kept in `state/resume-owed` for the next start that is not the studio's. The
+machine stops itself as before: the Awake job ends five minutes after the last tab closes and the owner's alarm
+stops it about 30 minutes later.
 
 ## What the stories need of a place
 

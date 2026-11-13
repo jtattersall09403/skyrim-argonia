@@ -24,6 +24,13 @@ Build-VM agents assume frequent interruption: every job is resumable (`tooling/j
 5. `gpu-box/saves-sync.ps1` copies saves to the saves bucket every 5 minutes.
 6. `gpu-box/idle-stop.ps1` stops the machine after 15 minutes idle.
 
+## The owner's studio path
+
+1. `studio.<domain>` sits behind Cloudflare Access (owner's email only; `build-vm/studio_gate.py`), a tunnel to the studio on the build VM.
+2. The same Worker, `cloudflare/play-switch.js`, is routed on the studio's page: if the build VM is stopped it checks the owner's sign-in, tags the instance `argonia-studio-start` and starts it; the page turns into the studio when it answers.
+3. At boot `build-vm/resume.sh` reads that tag and resumes no agent for a studio start.
+4. The VM stops itself as always: the studio's Awake job, then the owner's CPU alarm, about 30 minutes after the last tab closes.
+
 ## Setup scripts
 
 - Build VM: `build-vm/install.sh` installs `idle-stop.sh` (timer, 20 minutes idle), `resume.sh` (at boot), `watchdog.sh` and `owner-wake.sh`; `setup.sh` and `smoke.sh` check it.

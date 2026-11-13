@@ -3,8 +3,8 @@ note with exactly the changes it covers, each change said as what was changed, f
 
 A save lists each note once, `notes: [{id, text, at}]`, and every op the note covers carries its id in
 `note_group`. An older save's per-op `note` reads as a note on that op and on the ops beside it with the same
-words. Finalise hands these to the lessons step (`notes.json` in the run folder); `python -m tools.places notes`
-shows them for the saves not yet finalised.
+words. Finalise hands these to the lessons step (`notes.json` in the run folder); `python -m tools.places notes
+--changes` shows them for the saves not yet finalised.
 
     python -m tools.places change-notes <save.json> [--place <place_id>]   one save's notes, as the agent reads them
 """
