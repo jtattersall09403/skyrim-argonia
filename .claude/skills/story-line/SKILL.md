@@ -75,7 +75,14 @@ their form keys.
    person's post), named plainly by what a player would call it on sight, with the quest that needs it and what the
    quest does there. Each row is a promise the place's record will carry and its build must keep, so write only what
    a place of that culture and source could hold, in words its buildings can read as (a "stilt hut", not a
-   "hatching shed", unless a building that reads as a hatching shed exists to build with). The outlines themselves
+   "hatching shed", unless a building that reads as a hatching shed exists to build with). Each row also says
+   **how the player will know what it is**, from the player's side and nobody else's: a player has never read the
+   record, so a house we have decided is the hatching shed is only a house to them. One or more of: its look on
+   sight (the building or thing itself reads as that to someone who knows nothing); the game's own label (the name
+   on its door when the player looks at it, the name of the room on entering, a map marker's name, the name shown
+   on the thing); what visibly stands in or by it (nests and eggs, nets, a forge); a named person who tells the
+   player, placing it by something fixed, before the player needs it. A need with no such answer is not a need a
+   place can keep: change the story. The outlines themselves
    place people and things only by the place and by these needs, never by description of surroundings: where things
    stand, what is beside what, and every spoken word about the place are written later, on the built place.
 5. **Read on paper**: each round's readers, what they said, what changed as one set, and what the next round checks.

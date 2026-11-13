@@ -571,3 +571,10 @@ added here the day they are made, with the date and the issue.
   built to them; a quest's record and its words are written only on a built place, from measured spots and the
   speaker's surroundings sheet; the truth reader is the last check, not the method. This follows the new world
   plan's order: story (nw-05), places (nw-06, nw-08, nw-09), quests on them (nw-07, nw-08, nw-10, nw-12).
+- 2026-11-13 (in session, what the player can know): "agents will be like 'ok we'll use this house for the hatching
+  shed that the quest needs', but then to the player there's no way to know it's supposed to be a hatching shed, it
+  just looks like a house ... the agent doesn't think about what the player will know or how they'll know. That
+  creates major issues". Whether a place or thing is what a quest calls it is judged only from the player's side:
+  its look, the names the game shows on doors, rooms, markers and things, what stands there, what a person has told
+  them. Every promised place and thing carries how the player will know it, and that is tested by a fresh reader
+  given only what the player would see.

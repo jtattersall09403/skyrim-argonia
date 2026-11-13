@@ -51,6 +51,12 @@ second slice, those quests) and every later quest at arc level with its place, w
 what it carries on; the table of step, skill and ceiling block for the full outlines, with stage tables that only
 climb and use only what the quest form holds; "What each quest needs of its places"; then the reading on paper.
 
+**What the player will know.** In "What each quest needs of its places", every row says how a player who has read
+none of this will know what the thing is: its look on sight, the game's own label (a door's name, a room's name, a
+map marker, the thing's name), what visibly stands in or by it, or a named person who tells them by a fixed
+landmark before they need it. A house we have decided is a hatching shed is only a house to the player. Wherever an
+outline sends the player to a place or thing, say in the outline how they come to know which it is.
+
 **Read it on paper as the skill says, for one round**: fresh readers started by you, taken through the full outlines
 quest by quest and the later arc in summary as a player would meet them, never the hidden truth ahead of time: two
 players of different temperaments, one who loves Elder Scrolls lore and one who is impatient to be doing something,

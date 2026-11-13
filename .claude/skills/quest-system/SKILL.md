@@ -51,6 +51,12 @@ onto one. Each step takes its facts from what exists at that step and passes on 
 - *A place's record* takes those needs as promises, and the place is built to them; the build checks each promise
   is there and reads as what it is called (`place-build`). A need the place cannot meet goes back to the story,
   which changes.
+- *Reads as* is judged from the player's side. The player knows only what the game shows: what a thing looks like,
+  the names the game puts on doors, rooms, map markers and things, what stands there, and what people have told
+  them. Deciding in a record that a house is the hatching shed tells the player nothing. So every promised place
+  and thing carries how the player will know it, and it is tested by sight: a fresh reader given only what the
+  player would see and be told there (the surroundings sheet and the game's labels, never our own names for
+  things) is asked what the place is; if they do not say it, the promise is not kept.
 - *A quest record* is written only for places that are built, with every person and thing placed at a spot measured
   from the built place.
 - *Dialogue* is written from the surroundings sheet of each speaker (what stands around them in the built place,

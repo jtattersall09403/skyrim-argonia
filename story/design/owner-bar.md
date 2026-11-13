@@ -99,6 +99,10 @@ reads this first; a new ruling is added here the day it is made, as well as to o
 - That consistency is "not just ... a check but somehow built into how quests are created in the first place"
   (OR 2026-11-13): a story lists what it needs of each place; the place is built to those needs; a quest's record
   and words are written only on the built place, from what is measured there.
+- What a place or thing is, is judged from the player's side: "to the player there's no way to know it's supposed
+  to be a hatching shed, it just looks like a house" (OR 2026-11-13). The player knows only its look, the names the
+  game shows, what stands there and what they have been told; every promised place and thing says which of those
+  tells them.
 - No Nordic element reaches the player through what we add (decision 0006).
 - A native Argonian place has no jail; the Owing is the sentence; resisting arrest is a fight to the death
   (OR 2026-11-10).
