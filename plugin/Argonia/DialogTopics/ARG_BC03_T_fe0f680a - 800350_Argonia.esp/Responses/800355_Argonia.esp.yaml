@@ -26,7 +26,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: I have heard the old man's reasons and I have heard yours, and my crew have worked under both. It is not enough.
+    Value: I have heard the old man's reasons and I have heard yours, and my crew have worked under both. It is not enough. It is not a thing you can fetch.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -34,7 +34,15 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Somebody who argues better than you might move me. Or put the names of the eleven in my hand, the names he keeps, and I will read them myself.
+    Value: A tongue with more weight than yours might move me to row for strangers.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 3
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Or put their names in my hand, the names he keeps, and I will read them myself.
   ScriptNotes: ''
   Edits: ''
 Conditions:

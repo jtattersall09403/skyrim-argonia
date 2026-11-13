@@ -8,7 +8,7 @@
     "lines": [
      "Three people are held at the heirs' post on the east shore, in the town. The families who hold the Rose, its heirs, hold them. The Rose is the old prison, far to the north, and you are not going there.",
      "One of the three can be got out. I want the one held for words, the one we can stand beside in daylight.",
-     "Tsaxi, the heirs' gate-keeper, stands on the water by the nearest houses, and he will want 300 gold. I will not pay it to loose a stranger I cannot name. If I loose the wrong one, we become the people who loose killers.",
+     "Tsaxi, whom the heirs set to watch them, stands on the water by the nearest houses, and he will want 300 gold. I will not pay it to loose a stranger I cannot name. If I loose the wrong one, we become the people who loose killers.",
      "So find out which is which first, and read whatever proof you can find before you choose. Until you do, the count is whatever Tsaxi says, and he can say the smoke killed one of the three. Not two.",
      "Go out of my house and south through the town to the east shore, where the heirs' post stands."
     ],
@@ -148,7 +148,7 @@
     "variant": "main",
     "prompt": "Who are you?",
     "lines": [
-     "I am Third-Born Tsaxi, gate-keeper of the Rose's outer post. The Rose is the old prison, far to the north of here. The heirs hold it now as their home, and they set me to watch these three.",
+     "I am Third-Born Tsaxi. The Rose is the old prison, far to the north of here. The heirs hold it now as their home, and they set me to watch these three.",
      "I was born in the Rose, and the heirs fed me and raised me. They keep the gate shut on the dead levels below it, and they set me to watch the three at their post. I have never been further from the Rose than this shore.",
      "I cannot read a leaf or a mark, so I know these three by looking, and I say what I see to the heirs without a mistake.",
      "If my count is wrong, my neck answers for it. Ask what you want to know, and ask it plain. I answer plain."
@@ -534,7 +534,7 @@
     "prompt": "The keeper is dead. All of you, go.",
     "lines": [
      "So the keeper is dead. I did not wish it, and I do not weep for it. He counted us every morning, and now nobody is left to count.",
-     "All three go, then, when you have gone. Do not take it for a gift. The heirs will find an empty house and a dead man, and they will hunt. The hunt goes to our homes.",
+     "All three go, then, when you have gone. Do not take it for a gift. The heirs will find the water empty and a dead man. They will hunt. The hunt goes to our homes.",
      "I will not run to mine. I go where the hunters would not think to look.",
      "Ask Never-Sold, in the Chainbreakers' house on the north side of the town, what a dead keeper's count is worth. She will tell you."
     ],

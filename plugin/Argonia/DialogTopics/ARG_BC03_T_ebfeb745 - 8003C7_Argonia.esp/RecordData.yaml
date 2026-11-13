@@ -1,0 +1,8 @@
+FormKey: 8003C7:Argonia.esp
+EditorID: ARG_BC03_T_ebfeb745
+Name:
+  TargetLanguage: English
+  Value: I need to get into the Broker's house.
+Branch: 8003C8:Argonia.esp
+Quest: 80021C:Argonia.esp
+SubtypeName: CUST

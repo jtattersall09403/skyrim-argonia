@@ -34,7 +34,15 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: 'Someone with a better way of putting it might move me. Or coin: I am not too proud to take it.'
+    Value: It is not something you can bring me. Say it better, so I believe my name stays out of it, and the bar comes off.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 3
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: 'Or coin: I am not too proud to take it.'
   ScriptNotes: ''
   Edits: ''
 Conditions:

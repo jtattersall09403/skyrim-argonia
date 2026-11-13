@@ -24,7 +24,7 @@ from pathlib import Path
 from tools.playtest import game as G
 from tools.playtest.vocab import HarnessError
 
-MAX_STATES = 20000
+MAX_STATES = 50000   # the states a search looks through before it is cut (and says so)
 # A search over every loaded ref, after the walked quest's own leave a goal unreached, looks this much less far: a
 # quest of the form names every ref it needs, so the wider search seldom finds more and costs most of the time.
 FALLBACK_SHARE = 10

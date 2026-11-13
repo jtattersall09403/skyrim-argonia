@@ -26,7 +26,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Another way. You say it, and you cannot show it to me. I have eleven names and no one else who will buy them.
+    Value: Another way. You say it, and you cannot show it to me. I have eleven names and no other buyer for them. It is not a thing you can bring me.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -34,7 +34,15 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: It would take a better speaker than you to make me believe another buyer will come. Or pay the season's hire yourself, and the eleven need no other.
+    Value: A surer speaker might show me the eleven bought some other way, as surely as I have told myself the opposite these thirty years.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 3
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Or pay the season's hire yourself, and the eleven need no other buyer.
   ScriptNotes: ''
   Edits: ''
 Conditions:

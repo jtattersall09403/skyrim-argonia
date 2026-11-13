@@ -1,0 +1,7 @@
+1. Nothing is open right now. Never-Sold has no more work and my journal has no active objective. If the game continues, I'd expect it to come back to her later, probably about the eleven at Thorn, whom my pickpocket route left paying for the crew's release. I'd go back to her and check the journal again.
+
+2. I work for Never-Sold and the Chainbreakers. She named me one of them and pays me for each job, and she sends me out to free people held in Owings. I don't do it out of loyalty. I'm doing it for the gold and because the story pulls me along. She keeps saying people will call us killers and that she will remember how I did things, so she knows what I do and keeps using me anyway.
+
+3. The most confusing moment was the Persuade and pickpocket choices. My persuasion attempts failed and the game never told me what would have worked. Then "unseen" versus normal taking felt like a coin flip, because I couldn't tell what made one safer. I also couldn't tell when I took the tokens and the book whether I was getting the right things or what each would cost me later.
+
+4. I'd tell the writer the moral squeezes are strong. Each job has a real cost and each person has a fair side. But show me the consequences. Never-Sold says she will remember how I worked, yet nothing visibly changes. Also give some hint about what a check needs, such as a gold amount, a prior favor, or a skill level, so a failure teaches me something instead of just blocking me. And tell me clearly when a quest chain has ended, so I know whether I'm stuck or done.

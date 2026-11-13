@@ -25,7 +25,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Then nobody living knows the way to her tree, and she can go home. I have thought it through longer than you have.
+    Value: Then nobody living knows the way to her tree, and she can go home. I have thought it through longer than you have. I carry a mace. I have used it.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -33,7 +33,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: I carry a mace and a shield, and I have used both. I will not move from this channel, and I will not strike first. If you come at me, I answer.
+    Value: I will not move from this channel, and I will not strike first. If you come at me, I answer. Know the cost either way.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 3
@@ -41,7 +41,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Know the cost either way. If I fall, you have killed a man who brings runaways home alive, and she goes home with that on her.
+    Value: If I fall, you have killed a man who brings runaways home alive, and she goes home with that on her.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 4

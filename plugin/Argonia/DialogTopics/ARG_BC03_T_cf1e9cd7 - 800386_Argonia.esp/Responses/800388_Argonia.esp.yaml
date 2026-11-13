@@ -25,7 +25,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Put aside. You speak boldly, friend. This one does not mean to run. Hear the price, then, whichever way you take it. This one will not draw first.
+    Value: Put aside. You speak boldly, friend. This one has a scimitar. This one does not mean to run. Hear the price, then, whichever way you take it.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -33,7 +33,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: If you draw, you start it. Khajiit will finish it. If this one falls, the hire is void, and whoever the old man promised it to goes without.
+    Value: This one will not draw first. If you draw, you start it. Khajiit will finish it.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 3
@@ -41,10 +41,18 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: If you fall, the crew row on, and nobody asks where you went. This one has lost hands before and does not mean to lose the rest.
+    Value: If this one falls, the hire is void, and whoever the old man promised it to goes without.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 4
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: If you fall, the crew row on, and nobody asks where you went. This one has lost hands before and does not mean to lose the rest.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 5
   Unknown2: 0x000000
   Unknown3: 0x000000
   Text:

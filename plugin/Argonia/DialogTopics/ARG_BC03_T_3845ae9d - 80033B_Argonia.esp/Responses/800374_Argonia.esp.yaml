@@ -19,7 +19,7 @@ VirtualMachineAdapter:
       Name: Written
       Data: True
 Flags: {}
-PreviousDialog: 80035D:Argonia.esp
+PreviousDialog: 8003AC:Argonia.esp
 Responses:
 - ResponseNumber: 1
   Unknown2: 0x000000
@@ -34,7 +34,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: When a crew sails a season, Khajiit pays the hire for it, and a crew that is paid for is a crew that is his to put on the boats.
+    Value: When a crew sails a season, Khajiit pays the hire for it, and a crew that is paid for is a crew that is his to put to work.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 3
@@ -50,7 +50,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: This one tells it so. A berth-master who pays for a season wants his season sailed. A deal is a deal, and the boats must have hands.
+    Value: This one tells it so. A berth-master who pays for a season wants his season sailed. A deal is a deal, and the dock must have hands.
   ScriptNotes: ''
   Edits: ''
 Conditions:

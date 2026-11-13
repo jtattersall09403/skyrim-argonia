@@ -325,7 +325,12 @@ any check that did not happen as written.
       Turned Its Face", or use the console: `setstage ARG_MQ04 30`). Pass: the objective "Take the jars of sap from the
       camp on the dry rise north of the leech water" puts a marker on the compass and the map, and following it brings
       you to the jars themselves (a lidded clay jar on the ground at the foot of a giant tree, north of Low-Reed
-      Village), not to a person. Two men stand guard there and attack.
+      Village), not to a person. Two men stand guard there and attack. Then the main quest's second quest, "The
+      Cutters' Jar" (or the console: `setstage ARG_MQ03 13`): the objective "Bring the jar from Dives-Without-A-Rope's
+      lockbox to Nesh-Deeka" marks both the lockbox (in the ship's hold where Dives-Without-A-Rope works; it is there
+      from the moment the opening ends) and Nesh-Deeka. Pass: the lockbox's marker is on the compass and the map and
+      sits over the lockbox, and its key, if you take it from Dives-Without-A-Rope, is named "Key to
+      Dives-Without-A-Rope's Lockbox" in your inventory (keys of ours had no name before this build).
 - [ ] **12.14 Killing Nesh-Deeka shows the message** (save first and load afterwards). Once the opening has named her,
       find Nesh-Deeka in Salts-The-Catch's house and kill her. Pass: one message box reads "With this death the root of
       what was to come is cut: the main story can no longer be finished. Load an earlier save to let it grow again, or
@@ -360,7 +365,7 @@ any check that did not happen as written.
       compass at the top of the screen and on the map:
       1. She gives you a leaf in her own hand, five lockpicks and 100 gold, and the journal (J) shows "Four Months for
          a Boat" with "Never-Sold of the Chainbreakers asked me to end Rows-For-Another's Owing...". The marker points
-         to Rows-For-Another on the channel bank north of the farm at the town's north edge.
+         to Rows-For-Another on the channel bank north of the farm, north of the town.
       2. Speak to Rows-For-Another. The journal now names three ways (her leaf in the count-box inside the estate
          house, the keeper Hulm-Tei's word, the fetcher on the channel), and the markers point at her leaf, Hulm-Tei
          and the fetcher.

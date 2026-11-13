@@ -61,7 +61,7 @@
     "variant": "main",
     "prompt": "Who are you?",
     "lines": [
-     "Heavy-Rope. I was boss of a crew the Broker bought out of their Owings, the work a person owes for a debt. We worked the season we owed him, and one more. The crew are the hands for those boats.",
+     "Heavy-Rope. I was boss of a crew the Broker bought out of their Owings, the work a person owes for a debt. We worked the season we owed him, and one more. The crew are the hands for this dock.",
      "Ussa-Rekh is the Broker. His dock is Soulrest's, on the shore a short way east of Lilmoth. His dock lies west of this shore, and his house is the north one of the Dock Houses, the locked door up to the north-east.",
      "I want my crew's tokens in their hands, and I want them now. I do not want a third season."
     ],
@@ -80,7 +80,7 @@
     "lines": [
      "Then hear the plan, and better it if you can. When the Broker bought a person out of an Owing, he carved a token for them and kept it in his chest. A person has it back when they have worked a season's hire for him. My crew worked theirs and another. The tokens are still in the chest.",
      "The chest is in the north one of the three Dock Houses, up from the shore by Soulrest's docks. The old man is usually in his room near it, and he keeps the key on him, so I am told. Feldril Nethri, a Dunmer who says he works off his own months, keeps about outside the north door, which is locked. He might leave it unbarred for coin or a good word.",
-     "A season is paid for by Ra'Jhan, the Khajiit berth-master, who keeps the shore at the landward end of the dock. He pays when it is sailed. Without him there is no season. The old man says the hire is promised to the price of eleven people held at Thorn, where it is worst.",
+     "A season is paid for by Ra'Jhan, the Khajiit berth-master, who keeps the bare shore by the docks. He pays when it is sailed. Without him there is no season. The old man says the hire is promised to the price of eleven people held at Thorn, where it is worst.",
      "Hear my side. A last season that becomes two is an Owing with a new name, and we were promised an ending. If the old man wins, my crew row again and I do not know where it stops.",
      "Hear his. If we win, the eleven stay at Thorn. I will not tell you he is a bad man. He freed me.",
      "Lift the key or talk the door open, or go to Ra'Jhan. Whatever you do in that house, the old man is in the room, and if he sees you, you are a thief."
@@ -168,7 +168,7 @@
     "prompt": "Sail the season, for the eleven at Thorn.",
     "lines": [
      "I have heard the old man's reasons and I have heard yours, and my crew have worked under both. It is not enough.",
-     "Somebody who argues better than you might move me. Or put the names of the eleven in my hand, the names he keeps, and I will read them myself."
+     "It is not a thing you can fetch. A tongue with more weight than yours might move me to row for strangers. Or put their names in my hand, the names he keeps, and I will read them myself."
     ],
     "facts": []
    }
@@ -218,7 +218,7 @@
     "prompt": "Why do you still hold their tokens?",
     "lines": [
      "Because the last season is not mine to spend. Ra'Jhan, the berth-master, pays this season's hire when it is sailed, and all of it is promised to the price of eleven people held at Thorn.",
-     "Thorn is the saltrice country in the north-east of Black Marsh, and it is where an Owing is held hardest. I keep their names. I know of no other buyer for them, and I fear there is none.",
+     "Thorn is the saltrice country in the north-east of Black Marsh, and it is where an Owing is held hardest. I keep their names on my table. I know of no other buyer for them, and I fear there is none.",
      "Heavy-Rope's crew have worked their season and one more. I know what that is, and I will not call it just. If they are freed now, the eleven stay at Thorn, and I do not know who else will ever pay for them.",
      "Carry that to the crew. You will find Heavy-Rope down by the docks. I would have him hear it from you."
     ],
@@ -247,8 +247,8 @@
     "variant": "fail",
     "prompt": "Let the crew go. You can find another way for the eleven.",
     "lines": [
-     "Another way. You say it, and you cannot show it to me. I have eleven names and no one else who will buy them.",
-     "It would take a better speaker than you to make me believe another buyer will come. Or pay the season's hire yourself, and the eleven need no other."
+     "Another way. You say it, and you cannot show it to me. I have eleven names and no other buyer for them.",
+     "It is not a thing you can bring me. A surer speaker might show me the eleven bought some other way, as surely as I have told myself the opposite these thirty years. Or pay the season's hire yourself, and the eleven need no other buyer."
     ],
     "facts": []
    }
@@ -307,9 +307,9 @@
     "variant": "main",
     "prompt": "Who are you?",
     "lines": [
-     "Ra'Jhan. This one says he is berth-master on this dock, friend. When a crew sails a season, Khajiit pays the hire for it, and a crew that is paid for is a crew that is his to put on the boats.",
+     "Ra'Jhan. This one says he is berth-master on this dock, friend. When a crew sails a season, Khajiit pays the hire for it, and a crew that is paid for is a crew that is his to put to work.",
      "Heavy-Rope's crew have been this one's hands this season. Ask Heavy-Rope how he tells it. He is somewhere on this shore, and he will tell it his way.",
-     "This one tells it so. A berth-master who pays for a season wants his season sailed. A deal is a deal, and the boats must have hands."
+     "This one tells it so. A berth-master who pays for a season wants his season sailed. A deal is a deal, and the dock must have hands."
     ],
     "facts": []
    }
@@ -323,7 +323,7 @@
     "prompt": "Give up the season. Find other hands.",
     "lines": [
      "You argue as a trader does. This one listens. A deal is a deal, and Khajiit does not like to break one. But the crew are tired, and there are other crews on this coast for coin.",
-     "Very well. This one gives up the season. Khajiit will not pay the hire for it, and the crew are not his to put on the boats.",
+     "Very well. This one gives up the season. Khajiit will not pay the hire for it, and the crew are not his to put to work.",
      "Tell Heavy-Rope this one said so. Do not think it is for love of the crew. It is because you were right: hands can be found, and this one will find them."
     ],
     "facts": []
@@ -332,8 +332,8 @@
     "variant": "fail",
     "prompt": "Give up the season. Find other hands.",
     "lines": [
-     "You talk well, but this one has paid for a season, and a berth-master who gives up a season for a fair word soon has no berth. Other hands are not found in a day, and the boats stand idle while this one looks.",
-     "A smoother tongue than yours might talk this one out of it. Or put back in Khajiit's hand what the season cost him. This one will hear that."
+     "You talk well, but this one has paid for a season, and a berth-master who gives up a season for a fair word soon has no berth.",
+     "This is not about anything you carry. A tongue that has sold harder bargains than yours could talk this one out of a season. Or put back in Khajiit's hand what the season cost him. This one will hear that."
     ],
     "facts": []
    }
@@ -370,7 +370,7 @@
     "variant": "main",
     "prompt": "The crew are done. Step aside or be put aside.",
     "lines": [
-     "Put aside. You speak boldly, friend. This one does not mean to run.",
+     "Put aside. You speak boldly, friend. This one has a scimitar. This one does not mean to run.",
      "Hear the price, then, whichever way you take it. This one will not draw first. If you draw, you start it. Khajiit will finish it. If this one falls, the hire is void, and whoever the old man promised it to goes without. If you fall, the crew row on, and nobody asks where you went.",
      "This one has lost hands before and does not mean to lose the rest. Ask this one to give up the season, with a reason or with coin, and Khajiit will listen. A trader is a trader before he is a fighter."
     ],
@@ -396,7 +396,7 @@
     "prompt": "Leave the Broker's door unbarred for me.",
     "lines": [
      "That is fair talk, outlander, but it isn't enough. I'm one bad word from the Broker's displeasure, and I have months still to work.",
-     "Someone with a better way of putting it might move me. Or coin: I am not too proud to take it."
+     "It is not something you can bring me. Say it better, so I believe my name stays out of it, and the bar comes off. Or coin: I am not too proud to take it."
     ],
     "facts": []
    }
@@ -410,7 +410,7 @@
     "prompt": "Here is the gold. Leave the Broker's door unbarred.",
     "lines": [
      "It is little, outlander, but I have little, and I'll take it. Do not tell me what I should have asked.",
-     "The bar is off. Go in, quietly. The old man sits upstairs with his chest. Keep your feet soft.",
+     "The bar is off. Go in, quietly. He keeps to his room. Keep your feet soft.",
      "I did not see you. I was about this shore, and I saw nothing."
     ],
     "facts": []
@@ -426,39 +426,16 @@
    }
   ]
  },
- "topic.bc03-report": {
+ "topic.bc03-report-broken": {
   "speaker": "npc.imperial-penal-south.blackrose.chainbreaker-patron",
   "infos": [
    {
     "variant": "main",
     "prompt": "It's done at the dock.",
     "lines": [
-     "I have my book, and I will not speak of it again. Hear what the rest of it was worth.",
-     "If you broke the hire and freed the crew, I am satisfied. The eleven people held at Thorn, whose names he keeps, are the cost. Here are ten lockpicks, and you are a full Chainbreaker.",
-     "If the old man let them go himself, I will say only this. He would. That is the worst of him. Here are ten lockpicks, and you are a full Chainbreaker.",
-     "If the season is to be sailed, the hire goes to the price of the eleven. Eleven. I cannot tell you that you were wrong, and I can tell you he will ask again.",
-     "I name you a full Chainbreaker and give you nothing else.",
-     "Come to me when you want more work."
-    ],
-    "facts": [
-     "fact.bc03.eleven"
-    ],
-    "gives": [
-     "item.lockpick"
-    ]
-   }
-  ]
- },
- "topic.bc03-report-broken": {
-  "speaker": "npc.imperial-penal-south.blackrose.chainbreaker-patron",
-  "infos": [
-   {
-    "variant": "main",
-    "prompt": "It's done at the dock. The crew are free.",
-    "lines": [
      "Then the crew are free of the season, and I am satisfied.",
-     "The cost is the eleven. The season's hire was promised to the price of eleven people held at Thorn, whose names he keeps, and that price is lost. I carry them.",
-     "Here are ten lockpicks, and you are a full Chainbreaker now. Come to me when you want more work."
+     "The cost is the eleven on his table. The hire that was to buy them out of Thorn is lost. I carry them now.",
+     "Here are ten lockpicks. You are a full Chainbreaker. Come to me when you want more work."
     ],
     "facts": [
      "fact.bc03.eleven"
@@ -474,11 +451,11 @@
   "infos": [
    {
     "variant": "main",
-    "prompt": "It's done at the dock. The Broker let them go himself.",
+    "prompt": "It's done at the dock.",
     "lines": [
-     "He did. He would. That is the worst of him.",
-     "The hire was promised to eleven people held at Thorn, and I do not know who pays it now. The crew are free, and the eleven may not be.",
-     "Here are ten lockpicks, and you are a full Chainbreaker now. Come to me when you want more work."
+     "He let them go himself. He would. That is the worst of him.",
+     "The hire was promised to the eleven on his list, and I do not know who pays it now. The crew are free. The eleven may not be.",
+     "Take these ten lockpicks. From today you are a full Chainbreaker. There is more work when you want it."
     ],
     "facts": [
      "fact.bc03.eleven"
@@ -494,11 +471,11 @@
   "infos": [
    {
     "variant": "main",
-    "prompt": "It's done at the dock. Heavy-Rope will sail the season.",
+    "prompt": "It's done at the dock.",
     "lines": [
-     "Then the season is sailed, and the hire goes to the price of eleven people held at Thorn,, whose names he keeps. Eleven. I cannot tell you that you were wrong. I can tell you he will ask again.",
-     "The crew lose another season, and they will not thank you. I name you a full Chainbreaker, and I give you nothing else.",
-     "Come to me when you want more work."
+     "Then the season is sailed. The hire goes to the price of the eleven at Thorn.",
+     "Eleven. I cannot tell you that you were wrong. I can tell you he will ask again.",
+     "The crew lose another season. They will not thank you. I name you a full Chainbreaker. I give you nothing else. Come to me when you want more work."
     ],
     "facts": [
      "fact.bc03.eleven"
@@ -511,12 +488,11 @@
   "infos": [
    {
     "variant": "main",
-    "prompt": "Your name is on the Broker's book: keeper of the count at Tulm-Varo. You wrote Rows-For-Another's first leaf.",
+    "prompt": "His house is a shack, with eleven names at Thorn on his table. And your name is in his book: keeper of the count at Tulm-Varo.",
     "lines": [
-     "Yes. I was the Tulm-Varo estate's keeper of the count, and Ussa-Rekh bought me out for the price of a boat. He tells it kindly, and it is true.",
+     "A shack, eleven names on his table, and mine on his shelf. Yes. I kept the count on the Tulm-Varo estate, and Ussa-Rekh bought me out for the price of a boat. He tells it kindly. It is true.",
      "Four months, then the food, then the fever. I wrote small, and I wrote true.",
-     "I have been striking that leaf out ever since, and I could not do it with my own hand.",
-     "I will not say it twice."
+     "I have been striking that leaf out ever since. I could not do it with my own hand. Give it here. Now tell me how the dock went."
     ],
     "facts": []
    }
@@ -597,6 +573,34 @@
     "facts": [
      "fact.bc03.her-book"
     ]
+   }
+  ]
+ },
+ "topic.bc03-book-first": {
+  "speaker": "npc.imperial-penal-south.blackrose.chainbreaker-patron",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "It's done at the dock.",
+    "lines": [
+     "I will hear how it ended when I have heard what was in his house.",
+     "My book stands on his shelf, in the north house of Soulrest. If it is in your pack, tell me what it says. If it is not, go back for it."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.bc03-feldril-after": {
+  "speaker": "npc.mercantile-coast.soulrest.feldril-nethri",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "I need to get into the Broker's house.",
+    "lines": [
+     "The crew's matter is settled, outlander. What I was put by that door to keep is kept or gone.",
+     "The bar is off. Go in, and leave my name out of whatever you take."
+    ],
+    "facts": []
    }
   ]
  }

@@ -77,7 +77,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: He might leave it unbarred for coin or a good word.
+    Value: He might leave it unbarred for coin or a good word. A season is paid for by Ra'Jhan, the Khajiit berth-master, who keeps the bare shore by the docks.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 7
@@ -85,7 +85,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: A season is paid for by Ra'Jhan, the Khajiit berth-master, who keeps the shore at the landward end of the dock. He pays when it is sailed.
+    Value: He pays when it is sailed. Without him there is no season.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 8
@@ -93,7 +93,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Without him there is no season. The old man says the hire is promised to the price of eleven people held at Thorn, where it is worst. Hear my side.
+    Value: The old man says the hire is promised to the price of eleven people held at Thorn, where it is worst. Hear my side.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 9

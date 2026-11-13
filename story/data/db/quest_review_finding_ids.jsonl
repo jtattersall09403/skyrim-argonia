@@ -22,6 +22,10 @@
 {"quest_id":"quest.bc.bc03","review_findings_ord":3,"ord":0,"value":"things.thing.bc03.list"}
 {"quest_id":"quest.bc.bc03","review_findings_ord":3,"ord":1,"value":"things.thing.bc03.book"}
 {"quest_id":"quest.bc.bc03","review_findings_ord":4,"ord":0,"value":"placements"}
+{"quest_id":"quest.bc.bc03","review_findings_ord":5,"ord":0,"value":"stages.60"}
+{"quest_id":"quest.bc.bc03","review_findings_ord":5,"ord":1,"value":"stages.61"}
+{"quest_id":"quest.bc.bc03","review_findings_ord":5,"ord":2,"value":"stages.62"}
+{"quest_id":"quest.bc.bc03","review_findings_ord":5,"ord":3,"value":"topics.topic.bc03-confess"}
 {"quest_id":"quest.local.lf83","review_findings_ord":0,"ord":0,"value":"startWhen"}
 {"quest_id":"quest.local.lf83","review_findings_ord":0,"ord":1,"value":"stages.10"}
 {"quest_id":"quest.local.lf83","review_findings_ord":0,"ord":2,"value":"stages.20"}

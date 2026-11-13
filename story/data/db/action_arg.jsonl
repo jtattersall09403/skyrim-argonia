@@ -449,8 +449,10 @@
 {"list_id":"quest_stage:quest.bc.bc03|12:on_enter","ord":0,"arg_ord":1,"value":1}
 {"list_id":"quest_stage:quest.bc.bc03|12:on_enter","ord":1,"arg_ord":0,"value":"thing.bc03.tokens"}
 {"list_id":"quest_stage:quest.bc.bc03|12:on_enter","ord":1,"arg_ord":1,"value":1}
-{"list_id":"quest_stage:quest.bc.bc03|13:on_enter","ord":0,"arg_ord":0,"value":"thing.bc03.book"}
-{"list_id":"quest_stage:quest.bc.bc03|13:on_enter","ord":0,"arg_ord":1,"value":1}
+{"list_id":"quest_stage:quest.bc.bc03|13:on_enter","ord":0,"arg_ord":0,"value":"door.bc03.broker-door"}
+{"list_id":"quest_stage:quest.bc.bc03|13:on_enter","ord":0,"arg_ord":1,"value":"unlocked"}
+{"list_id":"quest_stage:quest.bc.bc03|14:on_enter","ord":0,"arg_ord":0,"value":"thing.bc03.book"}
+{"list_id":"quest_stage:quest.bc.bc03|14:on_enter","ord":0,"arg_ord":1,"value":1}
 {"list_id":"quest_stage:quest.bc.bc03|2:on_enter","ord":0,"arg_ord":0,"value":"door.bc03.broker-door"}
 {"list_id":"quest_stage:quest.bc.bc03|2:on_enter","ord":0,"arg_ord":1,"value":"unlocked"}
 {"list_id":"quest_stage:quest.bc.bc03|3:on_enter","ord":0,"arg_ord":0,"value":30}

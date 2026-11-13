@@ -58,6 +58,8 @@
 {"quest_id":"quest.bc.bc03","stages_ord":12,"ord":1,"to":95,"when":"quest_fail_forward:quest.bc.bc03|12|1:when"}
 {"quest_id":"quest.bc.bc03","stages_ord":13,"ord":0,"to":95,"when":"quest_fail_forward:quest.bc.bc03|13|0:when"}
 {"quest_id":"quest.bc.bc03","stages_ord":13,"ord":1,"to":95,"when":"quest_fail_forward:quest.bc.bc03|13|1:when"}
+{"quest_id":"quest.bc.bc03","stages_ord":14,"ord":0,"to":95,"when":"quest_fail_forward:quest.bc.bc03|14|0:when"}
+{"quest_id":"quest.bc.bc03","stages_ord":14,"ord":1,"to":95,"when":"quest_fail_forward:quest.bc.bc03|14|1:when"}
 {"quest_id":"quest.bc.bc05","stages_ord":0,"ord":0,"to":90,"when":"quest_fail_forward:quest.bc.bc05|0|0:when"}
 {"quest_id":"quest.local.ld65","stages_ord":0,"ord":0,"to":90,"when":"quest_fail_forward:quest.local.ld65|0|0:when"}
 {"quest_id":"quest.local.ld65","stages_ord":1,"ord":0,"to":90,"when":"quest_fail_forward:quest.local.ld65|1|0:when"}

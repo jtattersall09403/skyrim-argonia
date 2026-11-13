@@ -247,7 +247,8 @@
 {"list_id":"quest_stage:quest.bc.bc03|11:on_enter","ord":1,"term":"giveGold"}
 {"list_id":"quest_stage:quest.bc.bc03|12:on_enter","ord":0,"term":"takeItem"}
 {"list_id":"quest_stage:quest.bc.bc03|12:on_enter","ord":1,"term":"takeItem"}
-{"list_id":"quest_stage:quest.bc.bc03|13:on_enter","ord":0,"term":"takeItem"}
+{"list_id":"quest_stage:quest.bc.bc03|13:on_enter","ord":0,"term":"setDoorAccess"}
+{"list_id":"quest_stage:quest.bc.bc03|14:on_enter","ord":0,"term":"takeItem"}
 {"list_id":"quest_stage:quest.bc.bc03|2:on_enter","ord":0,"term":"setDoorAccess"}
 {"list_id":"quest_stage:quest.bc.bc03|3:on_enter","ord":0,"term":"takeGold"}
 {"list_id":"quest_stage:quest.bc.bc03|3:on_enter","ord":1,"term":"setDoorAccess"}

@@ -115,7 +115,7 @@
     "prompt": "Tell me the job again.",
     "lines": [
      "Rows-For-Another's Owing is to be ended, by the count-box, by Hulm-Tei's word or by the channel. Whichever you have done, come to me with her leaf if you hold it, or with word that she is free or gone.",
-     "The estate house is the big house on the farm at the town's north edge, by the cattle. Hulm-Tei stands inside it. Brings-Them-Back stands where the channel runs on north of the bank, and Rows-For-Another stands on the bank itself.",
+     "The estate house is the big house on the farm north of the town, by the cattle. Hulm-Tei stands inside it. Brings-Them-Back stands where the channel runs on north of the bank, and Rows-For-Another stands on the bank itself.",
      "Back south past the farm to my house when you have news."
     ],
     "facts": []
@@ -206,7 +206,7 @@
      "I am Hulm-Tei, keeper of the count for the Tulm-Varo, who hold this farm. The count is the written account of what each hand on this farm owes. My mistress, who winters in Gideon, far from here, leaves it to me.",
      "I was hatched owing on this ground. A debt came with my egg, and the work that pays a debt is called an Owing. Every line I write on a hand's leaf, the page that holds the debt, is true.",
      "Forty people eat because the boats go out, and the hands are the ones who row them. When the count is short at the reckoning, when the season's count is closed, the shortage is written on me. So I am hard about a line, and I will not be shamed for it.",
-     "The keeper before me wrote smaller than I do, and more exactly. You will see it in the first lines of the oldest leaves in the count-box. I stand in this house, the big one on the farm by the cattle, because the box is in it."
+     "The keeper before me wrote smaller than I do, and more exactly. You will see it in the first lines of the oldest leaves in the count-box. I keep by the count-box, on the farm by the cattle, because the box is mine to keep."
     ],
     "facts": [
      "fact.bc01.smaller-hand"
@@ -369,7 +369,7 @@
     "prompt": "And if I go through you?",
     "lines": [
      "Then nobody living knows the way to her tree, and she can go home. I have thought it through longer than you have.",
-     "I carry a mace and a shield, and I have used both. I will not move from this channel, and I will not strike first. If you come at me, I answer.",
+     "I carry a mace. I have used it. I will not move from this channel, and I will not strike first. If you come at me, I answer.",
      "Know the cost either way. If I fall, you have killed a man who brings runaways home alive, and she goes home with that on her. If you fall, nobody is helped and the channel stays shut.",
      "I would sooner you walked away. I do not want to bury you, and I do not want to be buried."
     ],

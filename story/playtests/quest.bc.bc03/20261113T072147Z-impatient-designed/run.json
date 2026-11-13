@@ -1,0 +1,64 @@
+{
+ "quest": "quest.bc.bc03",
+ "player": "impatient",
+ "source": "designed",
+ "model": "sonnet",
+ "form_files": [
+  "out/z2/qf3/quest.bc.bc01.json",
+  "out/z2/qf3/quest.bc.bc02.json",
+  "out/z2/qf3/quest.bc.bc03.json"
+ ],
+ "forms_hash": "e847520c54772e3d",
+ "created": "20261113T072147Z",
+ "counts": {
+  "commands": 29,
+  "stalls": 0,
+  "harness_errors": 0
+ },
+ "stages": {
+  "quest.bc.bc01": [
+   0,
+   10,
+   20,
+   45,
+   50,
+   93
+  ],
+  "quest.bc.bc02": [
+   0,
+   10,
+   38,
+   42,
+   92
+  ],
+  "quest.bc.bc03": [
+   0,
+   10,
+   20,
+   30,
+   60,
+   70,
+   90
+  ]
+ },
+ "ended": "all quests ended (quest.bc.bc01 completed, quest.bc.bc02 completed, quest.bc.bc03 completed)",
+ "after": [
+  "quest.bc.bc01",
+  "quest.bc.bc02"
+ ],
+ "names_from_file": [],
+ "take": true,
+ "answers": true,
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.146419,
+ "minutes": 1.0,
+ "turns": 31,
+ "tokens": {
+  "input_tokens": 58,
+  "output_tokens": 3749,
+  "cache_read_input_tokens": 270414,
+  "cache_creation_input_tokens": 15514
+ }
+}

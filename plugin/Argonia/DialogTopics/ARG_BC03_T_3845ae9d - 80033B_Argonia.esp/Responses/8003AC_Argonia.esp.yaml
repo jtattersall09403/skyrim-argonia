@@ -1,0 +1,121 @@
+FormKey: 8003AC:Argonia.esp
+VirtualMachineAdapter:
+  Scripts:
+  - Name: ARG_LineEffects
+    Properties:
+    - MutagenObjectType: ScriptStringProperty
+      Name: Line
+      Data: topic.bc03-ussa-who@npc.imperial-penal-south.blackrose-prison.chainbreaker-envoy-camped-causeway#70-70.1
+    - MutagenObjectType: ScriptFloatListProperty
+      Name: Num
+    - MutagenObjectType: ScriptIntListProperty
+      Name: Op
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Owner
+      Object: 80021C:Argonia.esp
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: What
+    - MutagenObjectType: ScriptBoolProperty
+      Name: Written
+      Data: True
+Flags: {}
+PreviousDialog: 8003AB:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I am Ussa-Rekh, and on this dock they call me the Broker. Ask me what you like. I would rather you heard it from me than from someone who dislikes me.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: An Owing is a debt that a person works off, and for thirty years I have bought Owings out from those who held them.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 3
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: For each person I carve a token, and I keep it until they have worked one season's hire for me. That season's hire buys the next person out.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 4
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: One year a berth-master paid me for the whole season of a freed crew, and it bought twenty people out at once.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 5
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: A berth-master is the man who finds hands for the ships at a dock. I remember that year.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 6
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Since then the seasons have grown to two, and I let them, and I will not tell you otherwise. I keep nothing.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 7
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: 'Look round this room: my chest, and the shelf by it. What I earn goes to those I have not yet bought.'
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 8
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: The best keeper of the count the Tulm-Varo estate ever had cost me what a boat costs.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 9
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: A keeper of the count is the one who sets down each person's months on an estate.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 10
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: She keeps a house of her own in Blackrose now, and she would not take the book I kept of her. Whoever sent you knows her. Ask her whose boat.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 80023B:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  CompareOperator: GreaterThanOrEqualTo
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 80021C:Argonia.esp
+  ComparisonValue: 70
+- MutagenObjectType: ConditionFloat
+  CompareOperator: LessThanOrEqualTo
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 80021C:Argonia.esp
+  ComparisonValue: 70
