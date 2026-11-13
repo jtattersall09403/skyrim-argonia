@@ -599,7 +599,7 @@
 {"talker":"0C7251:Black Marsh.esm","topic":"talk.directions","facts":"fact.blackrose.0c7251.dir.1454dc"}
 {"talker":"0C7251:Black Marsh.esm","topic":"talk.greet-friend","facts":""}
 {"talker":"0C7251:Black Marsh.esm","topic":"talk.greet-stranger","facts":""}
-{"talker":"0C7251:Black Marsh.esm","topic":"talk.here","facts":"fact.blackrose.0c7251.here.0"}
+{"talker":"0C7251:Black Marsh.esm","topic":"talk.here","facts":""}
 {"talker":"0C7251:Black Marsh.esm","topic":"talk.lore","facts":"fact.blackrose.lore.tolls"}
 {"talker":"0C7251:Black Marsh.esm","topic":"talk.self","facts":""}
 {"talker":"0C7251:Black Marsh.esm","topic":"talk.someone","facts":"fact.blackrose.0c7251.someone.0c7250"}
@@ -739,7 +739,7 @@
 {"talker":"0C72A4:Black Marsh.esm","topic":"talk.directions","facts":"fact.blackrose.0c72a4.dir.082198"}
 {"talker":"0C72A4:Black Marsh.esm","topic":"talk.greet-friend","facts":""}
 {"talker":"0C72A4:Black Marsh.esm","topic":"talk.greet-stranger","facts":""}
-{"talker":"0C72A4:Black Marsh.esm","topic":"talk.here","facts":"fact.blackrose.0c72a4.here.0, fact.blackrose.0c72a4.here.1"}
+{"talker":"0C72A4:Black Marsh.esm","topic":"talk.here","facts":"fact.blackrose.0c72a4.here.1"}
 {"talker":"0C72A4:Black Marsh.esm","topic":"talk.lore","facts":"fact.blackrose.lore.rebellion"}
 {"talker":"0C72A4:Black Marsh.esm","topic":"talk.self","facts":""}
 {"talker":"0C72A4:Black Marsh.esm","topic":"talk.someone","facts":"fact.blackrose.0c72a4.someone.0c72a3"}
