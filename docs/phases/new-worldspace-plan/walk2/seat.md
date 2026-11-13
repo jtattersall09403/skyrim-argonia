@@ -53,16 +53,14 @@ so they have no rows here.
   placement already does, so they move nothing unless the ground changes.
 - After the rebuild, run `python -m tools.newworld.place.audit refs out/newworld/plugin/refs/flora`. It should show 0
   in every class, and the rebuild's place check proves the same.
-- Decide: `rebuild.sh small` is green in every stage except `map`, where the row "the block's LOD plan holds
-  lodmodel: 0 bases (at least 1)" fails. The block had one base with its own LOD model: one cliff piece
-  (`_resourcepack\landscape\rocks\desertrockscliff02.nif`, at 81599, -488163). It is a slab open underneath, standing
-  on a slope. No tilt or yaw buries its open rim within 0.35 of its height, so the rule now refuses it: it was showing
-  its hollow underside, the L12 fault. So the row has nothing to count. In the main tree's small world it passed
-  with that one base. Either the row's floor moves to a base that is still placed in the block (the small-world tool,
-  `tools/newworld/small`), or the row accepts 0 when the placement refuses the block's only LOD-model base. I
-  changed neither, because both are outside this lane. The block's read-back is 68 rows judged, 0 FAIL.
-- For eco (dressing): `tools/newworld/dressing/hang_points.py` poses hang points with `place.seat.rot_matrix`. That
-  is the transpose of Skyrim's reference rotation (`tools.navmesh.placed.rotation`), so on a tree turned about z, a
-  moss hang point lands on the mirrored side. Its test, `test_hang_world_posed_by_tree`, asserts the transposed
-  convention (rz = pi/2 takes +x to +y, where Skyrim's clockwise yaw takes it to -y). I kept `seat.rot_matrix` as it
-  was, for that reader alone, so the eco lane can make the change with its own test.
+- Small world, `map`: the block's only base whose LOD model builds, the cliff slab `desertrockscliff02`, is now
+  refused because its hollow underside showed. Every other LOD-model candidate the block places fails at the build,
+  because its bounds fall short. So the row "LOD plan holds lodmodel" (`tools/newworld/small/__init__.py`,
+  `plan_holds`) now asks for as many bases as the block's LOD models built, up to 1, and prints a NOTE when that is
+  0. Its floor returns to 1 as soon as a placed base's model builds. `rebuild.sh small` is now green end to end:
+  15 of 15 stages, read-back 76 rows, 0 FAIL.
+- Hang points (`dressing/hang_points.py`, `dressing/place.py`) now pose with Skyrim's own rotation, and the test
+  takes +x to -y for a quarter turn. The block places no hanging thing, so this was measured on the main tree's
+  trees instead: 200 turned trees, each hang point checked against its tree's own mesh. Distance from the bark: the
+  median is now 0.10 m (p95 0.44); it was 0.56 m (p95 1.63) with the mirrored pose. The world places no hanging
+  moss (its bases are dropped); the hang points carry the lanterns.

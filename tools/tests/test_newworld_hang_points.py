@@ -49,7 +49,7 @@ def test_leaf_cards_told_from_bark():
 def test_hang_world_posed_by_tree():
     t = {"x": 1000.0, "y": 2000.0, "z": -30.0, "rx": 0.0, "ry": 0.0, "rz": math.pi / 2, "scale": 2.0}
     w = dp.hang_world(t, [100.0, 0.0, 300.0])
-    assert np.allclose(w, [1000.0, 2200.0, 570.0], atol=1e-6)
+    assert np.allclose(w, [1000.0, 1800.0, 570.0], atol=1e-6)  # Skyrim's yaw turns clockwise: +x to -y
 
 
 class FlatRaster:

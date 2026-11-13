@@ -122,7 +122,7 @@ def lantern_shape(model: str) -> dict:
 def trees_by_cell(out: Path, bases: dict) -> dict:
     """(cx, cy) -> placed trees (after the edits), each with its bounds' inscribed sphere (the solid core of a tree:
     the bounds' full sphere is mostly the open air under the canopy a lantern hangs in)."""
-    from tools.newworld.place.seat import rot_matrix
+    from tools.navmesh.placed import rotation as rot_matrix  # Skyrim's reference rotation
     obnd = {b["ref"]: b.get("obnd") for b in json.loads((out / "refs/flora/bases.json").read_text())["bases"]}
     res: dict = {}
     for f in sorted((out / "refs/flora").glob("cy*.jsonl")):

@@ -15,12 +15,10 @@ from tools.newworld.place import audit as A
 from tools.newworld.place import place as P
 
 
-def rot_matrix(rx: float, ry: float, rz: float) -> np.ndarray:
-    """Kept for dressing/hang_points.py, its one reader: the transpose of Skyrim's reference rotation
-    (tools.navmesh.placed.rotation, which the seating uses); a turn about z goes the other way."""
-    cx, sx, cy, sy, cz, sz = np.cos(rx), np.sin(rx), np.cos(ry), np.sin(ry), np.cos(rz), np.sin(rz)
-    return (np.array([[cz, -sz, 0], [sz, cz, 0], [0, 0, 1]]) @ np.array([[cy, 0, sy], [0, 1, 0], [-sy, 0, cy]])
-            @ np.array([[1, 0, 0], [0, cx, -sx], [0, sx, cx]]))
+def mesh_points(model: str, resolver=None):
+    """A model's drawable vertices in its own frame (None: no mesh the game would find)."""
+    sf = A.surface(model, resolver)
+    return None if sf is None else sf[0]
 
 
 class Seater:

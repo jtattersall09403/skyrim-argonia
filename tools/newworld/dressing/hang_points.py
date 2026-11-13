@@ -157,7 +157,7 @@ def lantern_shape(model: str) -> dict:
 
 def hang_world(tree: dict, point) -> np.ndarray:
     """A hang point (mesh frame) posed by the placed tree's rotation, scale and final position."""
-    from tools.newworld.place.seat import rot_matrix
+    from tools.navmesh.placed import rotation as rot_matrix  # Skyrim's reference rotation
     return rot_matrix(tree["rx"], tree["ry"], tree["rz"]) @ (np.asarray(point[:3], float) * tree["scale"]) + \
         np.array([tree["x"], tree["y"], tree["z"]], float)
 
