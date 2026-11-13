@@ -10,9 +10,11 @@ Marsh & Valenwood (BM&V, the world mod). The record is the imported quest object
 [quest-record.md](quest-record.md), with the engine-mapping table. The story database (`story/data`: `schema.sql`
 and `db/*.jsonl`, through `db.py`) is the one source of truth: every write and fix goes into its rows (import the
 YAML view, or edit rows through `db.py`), never into a generator, an export or a doc copy. Read it only through
-`python3 -m tools.argonia_world.db query "SELECT ..."` or `db show <table> <id>`. Examples:
-[examples/lh38.yaml](examples/lh38.yaml) (local), [examples/mr01.yaml](examples/mr01.yaml) (faction). The method
-this skill carries is `docs/design/quests-on-a-world.md` (parts 3 to 5) and the block set `docs/design/blocks.md`.
+`python3 -m tools.argonia_world.db query "SELECT ..."` or `db show <table> <id>`. Worked records at the ceiling,
+read from the database so they are always current: `quest_record export quest.main.mq03` (a main quest: a
+reckoning with a wonder, two ways through by Speech, Lockpicking, Pickpocket and Alchemy) and `quest_record export
+quest.local.lq25` (a local predator quest: a fight by three skills, a twist and a choice between people); a line
+written to `principles/questlines.md`: `story/design/quests/lines/chainbreakers.md`. The method this skill carries is `docs/design/quests-on-a-world.md` (parts 3 to 5) and the block set `docs/design/blocks.md`.
 
 ## 1. Start from the foundation
 
@@ -118,16 +120,24 @@ Places, people and things:
 ## 5. Route to the principles
 
 Read `shapes.yaml`: always `principles/general.md` and `principles/actions.md`; the group's file
-(`principles/questlines.md`); each shape's file (primary first). Each shape names the `shapeData` sections the
-record must hold.
+(`principles/questlines.md`); each shape's file (primary first). The principle files are the quest-design research
+(`docs/research/writing/`) and the owner's rules (`story/design/owner-bar.md`) distilled at the ceiling: each
+principle ends with a source tag (`general.md` holds the key), so it can be checked against its note.
 
-| Shapes | File |
+| File | What it holds |
 |---|---|
-| MURDER, MISSING, RECKONING, and THEFT or FRAUD to solve | `principles/investigation.md` |
-| THEFT, FRAUD, SMUGGLING | `principles/crime-and-deceit.md` |
-| DISPUTE, NEGOTIATION, SUCCESSION, BONDAGE | `principles/social.md` |
-| PREDATOR, CONTAMINATION, EXPEDITION | `principles/threat-and-journey.md` |
-| HAUNTING, RITE, WONDER, Daedric | `principles/otherworldly.md` |
+| `principles/general.md` | what a quest may use and how each cut job is done at the ceiling; the owner's bar as craft; truth, trail, world, choices and rewards |
+| `principles/actions.md` | the player's skills, the patterns of uses, drawing the action plan, the profiles |
+| `principles/questlines.md` | a whole line: how it holds together, what carries between quests, the line record |
+| `principles/investigation.md` | MURDER, MISSING, RECKONING, and a THEFT or FRAUD to solve |
+| `principles/crime-and-deceit.md` | THEFT, FRAUD, SMUGGLING |
+| `principles/social.md` | DISPUTE, NEGOTIATION, SUCCESSION, BONDAGE |
+| `principles/threat-and-journey.md` | PREDATOR, CONTAMINATION, EXPEDITION |
+| `principles/otherworldly.md` | HAUNTING, RITE, WONDER, Daedric and oddity quests |
+
+Each shape names the `shapeData` sections the record must hold (`shapes.yaml`), each described under "Record
+additions" in its file: what the drama turns on (a THEFT's `prize`, where it is `kept` and who carries the key, the
+`waysIn` by skill, what `goesWrong`, who pays `afterwards`), never a register of records.
 
 Also binding: 00-overview §4 (cost tiers, register, wonder budget, deliverability tiers, the boredom test) and
 20-world-provisions.
@@ -135,8 +145,9 @@ Also binding: 00-overview §4 (cost tiers, register, wonder budget, deliverabili
 ## 6. Write the record in order
 
 1. **Action plan** (`principles/actions.md`): `python3 .claude/skills/quest-write/action_plan.py --profile
-   <line key> --shapes <SHAPE,...> --band <D0..D5> --ledger <dir of records in the line or packet>`; choose, adapt
-   or write the uses the quest is built round, and the `centrepiece` tag.
+   <line key> --shapes <SHAPE,...> --band <D0..D5> --line <dir of records in the line or packet>`; choose, adapt
+   or write the uses the quest is built round (`skill-uses.yaml`, weighted by the line's profile in
+   `profiles.yaml`), and the `centrepiece` tag.
 2. **Premise** and **truth**: numbered physical events, written so the planned actions follow from them.
 3. **Plausibility pass**, person by person; change the truth, never the person.
 4. **Facts** the truth creates, each `from` a truth event, a place fact or a culture-sheet entry.
@@ -202,8 +213,8 @@ Every lore source read goes in `recordSources.lore` (`"<path> §<section>"`). Ev
    place, the quest people by their stage window, the settlement's talkers): a fact several topics there use is
    said by the first topic in record order and pointed to by the rest, so list topics in the order the player
    meets them and put each fact first on the person whose role it is. It writes nothing while any reference, vocabulary term, stage field, `shapeData` section, catalogue use
-   or ending is missing, or a stage needs someone alive who is neither essential nor protected and has no
-   fail-forward.
+   or ending is missing, a stage that asks something of the player has no skill action, or the record does not
+   compile to a quest form that passes its rules.
 4. `dialogue-write` (the `dialogue-writer` agent) per brief. A fact request comes back here; add the fact and
    rebuild the briefs.
 5. **A fact lives in one row; a cut is a search.** To change or cut a thing, `grep -rn` its id, name and words over

@@ -1,11 +1,11 @@
-# Action-plan weights per questline (decision 0024 §9; principles/actions.md). One entry per line in
-# `quest_line` row (key = the line id's last part), plus the planned detectives' line (0025)
-# and `default`. Each entry is read from the line's section of story/design/quests/40-factions.md (premise,
-# quest table, set pieces) and its faction culture sheet (`culture_sheet` at level faction), cited in
-# `from`. `families` weigh first (shared by their skills), then `skills` within them (1 = default, 3 = strong
-# lean, 0 = never; unlisted = 1). `endure` (armour skills) stays low: a quest uses them through where it sends
-# the player. `targets` and `settings` (keys of skill-uses.yaml) are favoured, never required.
-# A local quest (line `local`) takes `default` and leans by its place (danger band, water, heights, work).
+# Action-plan weights per line (principles/actions.md, "Profiles"). One entry per `quest_line` row (key = the line
+# id's last part), the planned detectives' line (decision 0025), `local` and `default`. Each is read from the line's
+# section of story/design/quests/40-factions.md (or its line story under story/design/quests/lines/) and its faction
+# culture sheet, cited in `from`. `families` weigh first (shared by their skills), then `skills` within them (keys of
+# skill-uses.yaml; 1 = default, 3 = strong lean, 0 = never; unlisted = 1). A line's signature skills are the ones it
+# leans on most; a player should tell the faction from any three of its quests. The armour skills (`endure`) stay low:
+# a quest uses them through the fights it sends the player into. `targets` and `settings` (keys of skill-uses.yaml)
+# are favoured, never required. A local quest takes `local` and leans by its place.
 
 default:
   families: {endure: 0.3}
@@ -15,127 +15,127 @@ local:
   families: {speech: 1.2, endure: 0.3}
 
 main:
-  from: "30-main-quest.md (per-act physical minimum); culture.faction.veiled-reed (nothing written that need not be)"
+  from: "owner-bar (any build finishes the main quest, by two ways on different skills); 30-main-quest.md (per-act physical minimum); culture.faction.veiled-reed"
   faction: faction.veiled-reed
-  families: {stealth: 1.5, traversal: 1.5, speech: 1.2, combat: 1.2, magic: 1, endure: 0.3}
-  skills: {sneak: 2, athletics: 2, speechcraft: 1.5}
-  settings: [underwater, night, boat]
+  families: {stealth: 1.3, speech: 1.2, combat: 1.2, magic: 1.2, craft: 1, endure: 0.3}
+  skills: {sneak: 1.5, lockpicking: 1.3, speech: 1.3, alchemy: 1.2}
+  settings: [household, ruin, underwater]
 
 daedric:
   from: "lines.json quest.line.daedric (the WONDER seam); 00-overview wonder budget"
-  families: {magic: 2.5, traversal: 1.2, speech: 1, combat: 0.8, craft: 1, endure: 0.3}
-  skills: {conjuration: 2, mysticism: 2, enchant: 1.5}
+  families: {magic: 2.5, speech: 1, combat: 0.8, craft: 1, endure: 0.3}
+  skills: {conjuration: 2, mysticism: 2, enchanting: 1.5, illusion: 1.5}
   targets: [daedra, undead-and-spirits]
-  settings: [night, height, underwater]
+  settings: [ruin, height, underwater]
 
 shadowscales:
-  from: "40-factions §31 (writs, bonus conditions reward discovery and restraint, SS06); culture.faction.shadowscales (killing written small; prolonged or cruel kills taboo)"
+  from: "40-factions §31 (writs, bonus conditions reward discovery and restraint); culture.faction.shadowscales (killing written small; prolonged or cruel kills taboo)"
   faction: faction.shadowscales
-  families: {stealth: 3, combat: 2, speech: 1, magic: 1, craft: 1, traversal: 1, endure: 0.3}
-  skills: {short-blade: 3, marksman: 2, sneak: 2, illusion: 2, alchemy: 1.5, hand-to-hand: 0.5, axe: 0.5}
+  families: {stealth: 3, combat: 2, magic: 1.2, craft: 1, speech: 0.8, endure: 0.3}
+  skills: {sneak: 3, one-handed: 2, archery: 2, illusion: 2, alchemy: 1.5, two-handed: 0.3, heavy-armor: 0.2}
   targets: [people]
-  settings: [night, height, crowd, indoors]
+  settings: [household, height, crowd]
 
 night-reed:
-  from: "40-factions §32 (heists by route planning: roofs, sewers, underwater cisterns, forged orders; restraint, no killing the thief TG01); culture.faction.night-reed-chapter (skill and restraint; blackmail taboo)"
+  from: "40-factions §32 (heists by route planning: roofs, cisterns, forged orders; restraint, no killing the thief TG01); culture.faction.night-reed-chapter (skill and restraint; blackmail taboo)"
   faction: faction.night-reed-chapter
-  families: {stealth: 3, traversal: 2, speech: 1.5, magic: 0.8, combat: 0.4, craft: 0.6, endure: 0.2}
-  skills: {security: 3, sneak: 2, acrobatics: 2, athletics: 1.5, mercantile: 2, alteration: 1.5}
+  families: {stealth: 3, speech: 1.5, magic: 1, craft: 0.6, combat: 0.3, endure: 0.2}
+  skills: {lockpicking: 3, pickpocket: 3, sneak: 3, speech: 1.5, alteration: 1.5, illusion: 1.2}
   targets: [people]
-  settings: [night, height, underwater, indoors]
+  settings: [household, height, underwater, crowd]
 
 marsh-charter:
-  from: "40-factions §33 (contracts against creatures and bandits, negligence found by evidence; FG03 options other than killing); culture.faction.marsh-charter (competence, public service; contracts answered for)"
+  from: "40-factions §33 (contracts against creatures and bandits, negligence found by evidence; options other than killing); culture.faction.marsh-charter (competence, public service; contracts answered for)"
   faction: faction.marsh-charter
-  families: {combat: 3, endure: 1, traversal: 1.2, speech: 1, stealth: 0.8, craft: 1, magic: 0.6}
-  skills: {spear: 2, long-blade: 2, block: 1.5, marksman: 1.5, armorer: 1.5, restoration: 1.2}
+  families: {combat: 3, endure: 1, speech: 1, craft: 1, stealth: 0.8, magic: 0.6}
+  skills: {one-handed: 2, two-handed: 2, archery: 1.5, block: 1.5, smithing: 1.2, restoration: 1.2}
   targets: [beasts, people]
-  settings: [open-ground, odds, ally, clock]
+  settings: [open-ground, ruin, odds]
 
 sunken-archive:
   from: "40-factions §34 (submerged texts, field sites, an escaped construct read from its wake; whose ruin it is); culture.faction.sunken-archive (knowing whose ruin it is comes first; copy, return, publish)"
   faction: faction.sunken-archive
-  families: {magic: 3, traversal: 1.5, craft: 1.5, speech: 1.2, stealth: 0.8, combat: 0.6, endure: 0.2}
-  skills: {mysticism: 2.5, alteration: 2, enchant: 2, conjuration: 1.5, athletics: 1.5}
+  families: {magic: 3, craft: 1.5, speech: 1.2, stealth: 0.8, combat: 0.6, endure: 0.2}
+  skills: {mysticism: 2.5, alteration: 2, enchanting: 2, conjuration: 1.5, destruction: 1}
   targets: [daedra, undead-and-spirits]
-  settings: [underwater, indoors, night]
+  settings: [underwater, ruin]
 
 nisswo:
   from: "40-factions §35 (funerals, frauds of faith, a violent sect raid NI05, mercy); culture.faction.nisswo (vastei, mercy; dogma despised)"
   faction: faction.nisswo
-  families: {speech: 2.5, magic: 1.8, stealth: 1, combat: 1, traversal: 1, craft: 0.8, endure: 0.3}
-  skills: {speechcraft: 2.5, restoration: 2, illusion: 1.5, mysticism: 1.5, unarmored: 1.5}
+  families: {speech: 2.5, magic: 2, stealth: 1, combat: 1, craft: 0.8, endure: 0.3}
+  skills: {speech: 2.5, restoration: 2.5, illusion: 1.5, mysticism: 1.5}
   targets: [people, undead-and-spirits]
-  settings: [hearing, night, crowd]
+  settings: [household, crowd, ruin]
 
 many-root:
-  from: "40-factions §36 (discover in danger, decide in council: root-cave dive MR01, storm boat run MR02, night harvest-camp entry MR04, predator den MR05); culture.faction.many-root-conclave (consent and stewardship; sap crews despised)"
+  from: "40-factions §36 (discover in danger: root-cave dive MR01, night harvest-camp entry MR04, predator den MR05; decide afterwards); culture.faction.many-root-conclave (consent and stewardship; sap crews despised)"
   faction: faction.many-root-conclave
-  families: {traversal: 2.5, craft: 1.8, stealth: 1.2, speech: 1.5, magic: 1.2, combat: 1, endure: 0.3}
-  skills: {athletics: 3, alchemy: 2, restoration: 1.5, sneak: 1.2, speechcraft: 1.5, spear: 1.2}
+  families: {craft: 2, magic: 1.5, stealth: 1.3, combat: 1.2, speech: 1, endure: 0.3}
+  skills: {alchemy: 2.5, restoration: 1.5, archery: 1.5, sneak: 1.5, alteration: 1.3}
   targets: [beasts, vermin]
-  settings: [underwater, boat, night, hearing]
+  settings: [underwater, ruin, open-ground]
 
 reed-sail:
-  from: "40-factions §37 (ferry routes, night ferry past watcher boats, boarding, rescue in a storm); culture.faction.reed-sail-compact (the route is shared; a pilot's word on the water is law)"
+  from: "40-factions §37 (ferry routes, boarding, rescue in a storm); culture.faction.reed-sail-compact (the route is shared; a pilot's word on the water is law)"
   faction: faction.reed-sail-compact
-  families: {traversal: 3, combat: 1.2, speech: 1.5, stealth: 1, craft: 0.6, magic: 0.6, endure: 0.4}
-  skills: {athletics: 3, marksman: 1.5, mercantile: 2, speechcraft: 1.2, spear: 1.2}
+  families: {combat: 1.5, speech: 1.5, magic: 1, stealth: 1, craft: 0.6, endure: 0.4}
+  skills: {archery: 2, one-handed: 1.5, speech: 2, alteration: 1.5}
   targets: [people, beasts]
-  settings: [boat, night, clock]
+  settings: [underwater, open-ground, odds]
 
 league-of-open-water:
-  from: "40-factions §38 (civic petitions, a murdered delegate LW04, trial by water LW05, bought votes); culture.faction.league-of-open-water (petition, argue, file)"
+  from: "40-factions §38 (civic petitions, a murdered delegate LW04, trial by water LW05, bought votes); culture.faction.league-of-open-water (petition, argue: a civic faction, one of the few where talk of rights and votes belongs)"
   faction: faction.league-of-open-water
-  families: {speech: 3, stealth: 1.5, traversal: 1, craft: 0.8, combat: 0.8, magic: 0.8, endure: 0.2}
-  skills: {speechcraft: 3, mercantile: 2, sneak: 1.5, athletics: 1.2}
+  families: {speech: 3, stealth: 1.5, combat: 0.8, magic: 0.8, craft: 0.8, endure: 0.2}
+  skills: {speech: 3, sneak: 1.5, pickpocket: 1.5, lockpicking: 1.2}
   targets: [people]
-  settings: [hearing, crowd, indoors, underwater]
+  settings: [crowd, household, underwater]
 
 chainbreakers:
-  from: "40-factions §39 (Owings audited then burned; registers read; the dead carried home from White Rose; a riot inside the Rose); culture.faction.chainbreakers (audit, burn the book, carry the bones home; buying an Owing taboo)"
+  from: "story/design/quests/lines/chainbreakers.md §1 ('The build leaning': Lockpicking, Pickpocket and Sneak, then Speech, with a fight as the honest third way; Restoration and Alchemy small, for the washed-out); 40-factions §39; culture.faction.chainbreakers (bones go home; buying an Owing taboo)"
   faction: faction.chainbreakers
-  families: {speech: 2, stealth: 2, magic: 1.2, combat: 1.2, traversal: 1, craft: 0.6, endure: 0.5}
-  skills: {mercantile: 2, speechcraft: 1.5, sneak: 2, security: 2, conjuration: 1.2, blunt-weapon: 1.2}
-  targets: [undead-and-spirits, people]
-  settings: [indoors, night, hearing]
+  families: {stealth: 3, speech: 2, combat: 1.2, magic: 0.8, craft: 0.6, endure: 0.5}
+  skills: {lockpicking: 3, pickpocket: 3, sneak: 3, speech: 2, one-handed: 1.2, destruction: 1, block: 1, restoration: 0.8, alchemy: 0.8}
+  targets: [people, undead-and-spirits]
+  settings: [household, crowd, ruin]
 
 thorn-ash-reed:
   from: "40-factions §40 (two memorials, a body on the ferry ending as a manhunt, militia lists); culture.faction.thorn-ash-reed-accord (title argued with maps and memory)"
   faction: faction.thorn-ash-reed-accord
-  families: {speech: 2.5, stealth: 1.5, combat: 1.2, traversal: 1.2, magic: 0.8, craft: 0.6, endure: 0.4}
-  skills: {speechcraft: 2.5, sneak: 1.5, athletics: 1.5, marksman: 1.2}
+  families: {speech: 2, combat: 1.5, stealth: 1.5, magic: 0.8, craft: 0.6, endure: 0.4}
+  skills: {speech: 2, archery: 1.5, sneak: 1.5, one-handed: 1.5}
   targets: [people]
-  settings: [hearing, boat, night]
+  settings: [open-ground, crowd, household]
 
 umbriel-witness:
   from: "40-factions §41 (edited witness texts, a sap sample as relic and hazard, a submerged dwelling UW03, the cursed Refuge UW04); culture.faction.umbriel-witness-society (name the dead; witness)"
   faction: faction.umbriel-witness-society
-  families: {magic: 2, traversal: 1.8, speech: 1.8, craft: 1.2, stealth: 1, combat: 0.6, endure: 0.3}
-  skills: {mysticism: 2, alchemy: 1.5, athletics: 1.5, speechcraft: 1.5, conjuration: 1.2}
+  families: {magic: 2, craft: 1.5, speech: 1.5, stealth: 1, combat: 0.6, endure: 0.3}
+  skills: {mysticism: 2, alchemy: 2, restoration: 1.5, conjuration: 1.2, alteration: 1.2}
   targets: [undead-and-spirits]
-  settings: [underwater, indoors, night]
+  settings: [underwater, ruin]
 
 rootworm-waykeepers:
   from: "40-factions §42 (a refusal read from evidence, a sanctuary passenger, a sold shortcut, roots or a settlement); culture.faction.rootworm-waykeepers (the way is kept, never shown; passage is a gift)"
   faction: faction.rootworm-waykeepers
-  families: {traversal: 2.5, stealth: 1.8, speech: 1.5, craft: 1, combat: 0.8, magic: 0.8, endure: 0.3}
-  skills: {athletics: 2.5, acrobatics: 1.5, sneak: 2, speechcraft: 1.2, alchemy: 1.2}
+  families: {stealth: 2.5, magic: 1.3, speech: 1.2, combat: 1, craft: 1, endure: 0.3}
+  skills: {sneak: 2.5, illusion: 1.5, archery: 1.2, alchemy: 1.2, speech: 1.2}
   targets: [beasts, people]
-  settings: [underwater, night, height]
+  settings: [ruin, underwater, height]
 
 salt-teeth:
   from: "40-factions §43 (the Salt-Teeth arc inside the Reed-Sail line); culture.faction.salt-teeth (the hull and the share)"
   faction: faction.salt-teeth
-  families: {traversal: 3, combat: 2, speech: 1, stealth: 1, endure: 0.6, magic: 0.4, craft: 0.6}
-  skills: {athletics: 3, marksman: 2, axe: 1.5, short-blade: 1.5, mercantile: 1.2}
+  families: {combat: 3, stealth: 1.2, speech: 1, endure: 0.6, magic: 0.4, craft: 0.6}
+  skills: {one-handed: 2, archery: 2, two-handed: 1.5, lockpicking: 1.2, speech: 1}
   targets: [people]
-  settings: [boat, night, odds]
+  settings: [open-ground, odds, underwater]
 
 detectives:
-  from: "decision 0025 (cases from petty crime to a grand murder; rival to the Shadowscales and the Night-Reed Chapter); principles/investigation.md. No faction record or culture sheet yet (2.4 §c writes them): reweigh then."
+  from: "decision 0025 (cases from petty crime to a grand murder; rival to the Shadowscales and the Night-Reed Chapter); principles/investigation.md. No faction record or culture sheet yet: reweigh when they are written."
   faction: null
-  families: {speech: 3, stealth: 2, magic: 1.2, craft: 1.5, traversal: 1, combat: 0.7, endure: 0.2}
-  skills: {speechcraft: 3, sneak: 2, mysticism: 2, alchemy: 1.5, security: 1.2}
+  families: {speech: 3, stealth: 2, craft: 1.5, magic: 1.2, combat: 0.7, endure: 0.2}
+  skills: {speech: 3, sneak: 2, pickpocket: 1.5, lockpicking: 1.5, alchemy: 1.5, mysticism: 1.5}
   targets: [people]
-  settings: [hearing, indoors, night, crowd]
+  settings: [household, crowd, ruin]

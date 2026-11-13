@@ -7,10 +7,13 @@ Reads the world database through tools/argonia_world/db.py (decision 0030): the 
 the YAML view by quest_record.py; import a record first), the `npc` rows for each cast member's race, sex, role,
 look and home, the `stance` rows for voice and culture chain, the `culture_sheet` rows named in the chain, the
 place's facts (`fact` rows of the settlement and each anchor place), the `topic` rows and the condition
-vocabulary (`condition_term`). Every reference must resolve and every condition and action must be a vocabulary
-term, or no brief is written.
+vocabulary (`condition_term`). Every reference must resolve, every condition and action must be a vocabulary
+term, the record must hold the `shapeData` sections its shapes require (shapes.yaml), every skill action must be a
+use in skill-uses.yaml, and the record must compile to a quest form that passes its rules (docs/design/quest-form.md),
+or no brief is written.
 """
 import argparse
+import dataclasses
 import json
 import pathlib
 import re
@@ -20,9 +23,10 @@ import yaml
 
 HERE = pathlib.Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parents[2]))
-from tools.argonia_world import adaptation_check, db, echoes, quest_record, records, talk_route  # noqa: E402
+from tools.argonia_world import db, echoes, quest_record, records, talk_route  # noqa: E402
+from tools.questform.__main__ import terms_of  # noqa: E402
 VOICES = HERE.parent / "dialogue-write" / "voices.md"
-WEAPONS = ["long-blade", "short-blade", "axe", "blunt-weapon", "spear", "marksman", "hand-to-hand"]
+WEAPONS = ["one-handed", "two-handed", "archery"]   # what a record's `any-weapon` means
 STAGE_FIELDS = ["id", "place", "journal"]   # onEnter, objectives, successors: no rows is an empty list
 
 
@@ -34,21 +38,44 @@ def voice_row(race: str) -> str:
     return f"no voice card for {race!r}"
 
 
-MOVES = {"inZone", "knowsTopic", "topicHeardFrom", "sceneEnded", "questStage", "all", "any"}
+# A stage needs no skill action of its own when every way on is hearing a line, handing over or taking what is held,
+# using a named door or book (a flag its hook sets), another quest's stage, or a gate on who is alive; but a way on
+# that is only a death is a fight, and the fight is the stage's act (principles/actions.md, "Drawing the plan" 3).
+MOVES = {"topicHeardFrom", "questStage", "stageEverReached", "hasItem", "flag", "npcAlive", "goldAtLeast",
+         "objectiveComplete", "all", "any", "not"}
+DEATH_ONLY = {"npcAlive", "all", "any", "not"}
 
 
-def moves_only(s) -> bool:
-    """A step whose only act is going to a place or hearing someone (quest-write §3 item 3): every way on is a zone,
-    a heard topic or a scene's end."""
-    def terms(c):
-        if isinstance(c, dict):
-            for k, v in c.items():
-                yield k
-                if k in ("all", "any"):
-                    for x in v:
-                        yield from terms(x)
+def terms(c):
+    if isinstance(c, dict):
+        for k, v in c.items():
+            yield k
+            if k in ("all", "any"):
+                for x in v:
+                    yield from terms(x)
+            elif k == "not":
+                yield from terms(v)
+
+
+def moves_only(s, form) -> bool:
     edges = s.get("successors", [])
-    return bool(edges) and all(set(terms(e.get("when"))) <= MOVES for e in edges)
+    if edges:
+        return all(set(terms(e.get("when"))) <= MOVES and not set(terms(e.get("when"))) <= DEATH_ONLY for e in edges)
+    # No successor in the record: the quest form's own ways on from this stage (a take or a use trigger, a line that
+    # sets the stage), none of them a death or a skill check.
+    n = s["id"]
+    ways = [t["kind"] for t in (form or {}).get("triggers", []) if t.get("prerequisite", 0) <= n < t["sets"]]
+    ways += ["skill" if any(c["is"] == "skill_at_least" for c in ln["conditions"]) else "line"
+             for ln in (form or {}).get("lines", []) if ln["first_stage"] <= n <= ln["last_stage"]
+             and any(r["do"] == "set_stage" for r in ln["results"])]
+    return bool(ways) and not {"death", "skill"} & set(ways)
+
+
+def skill_key(cat, skill) -> str:
+    """A record's skill word as the catalogue's key: Skyrim's names in any case or spacing, or an older word through
+    `aliases`."""
+    norm = re.sub("[^a-z]", "", str(skill).lower())
+    return cat["aliases"].get(norm, norm)
 
 
 def check_condition(c, preds, where, out):
@@ -86,7 +113,7 @@ def load_world(w, q, extra):
     sheet_ids = {s_ for st in stance.values() for s_ in st["chain"]}
     sheet_ids |= {f["from"].split("#")[0] for f in q["facts"] if f["from"].startswith("culture.")}
     sheets = {i: sh for i in sorted(sheet_ids) if (sh := records.sheet(w, i)) is not None}
-    return npcs, claims, stance, sheets, records.topic_ids(w)
+    return npcs, claims, stance, sheets
 
 
 def main() -> int:
@@ -107,23 +134,21 @@ def main() -> int:
         q.setdefault(k, [])
     for c in q["cast"]:
         c.setdefault("knowledge", {})
-    npcs, claims, stance, sheets, topic_rows = load_world(w, q, a.place_facts)
+    npcs, claims, stance, sheets = load_world(w, q, a.place_facts)
     # Who else the player hears in each stage's place: this record's topics, the quest people and the talkers there.
-    said = echoes.speech(w, q)
+    # A greeting has no prompt: it is keyed by its topic.
+    said = [s if s.topic is not None else dataclasses.replace(s, topic=s.key.split("#")[0]) for s in echoes.speech(w, q)]
     owner = echoes.owners(said)
     all_claims = echoes.claims(w)
     preds, verbs = records.vocabulary(w)
     routing = yaml.safe_load((HERE / "shapes.yaml").read_text())
     cat = yaml.safe_load((HERE / "skill-uses.yaml").read_text())
     claims.update({f["id"]: f["claim"] for f in q["facts"]})
+    for f, c in all_claims.items():   # a fact another quest established (the player learnt it there) also resolves
+        claims.setdefault(f, c)
     things = {t["id"]: t for t in q["things"]}
     cast = {c["id"]: c for c in q["cast"]}
     truth = {t["id"] for t in q["truth"]}
-    text = f"{q.get('foundation') or ''} {q.get('notes') or ''}"
-
-    def guarded(pid):
-        """An essential or protected person needs no fail-forward: the record's text says so of them."""
-        return any(adaptation_check._guarded(text, n) for n in (pid, npcs.get(pid, {}).get("name")) if n)
     stage_ids = {s["id"] for s in q["stages"]}
     missing = []
 
@@ -157,9 +182,7 @@ def main() -> int:
     for t in q["topics"]:
         if t["person"] not in cast:
             missing.append(f"topic {t['id']}: person {t['person']}")
-        if t["id"] not in topic_rows and not t.get("new"):
-            missing.append(f"topic {t['id']}: not a topic row and not marked new")
-        missing += [f"topic {t['id']}: {g}" for g in t.get("uses", []) + t.get("hides", []) if g not in claims]
+        missing +=[f"topic {t['id']}: {g}" for g in t.get("uses", []) + t.get("hides", []) if g not in claims]
     for e in q.get("essentialTopics", []):
         if not any(t["id"] == e for t in q["topics"]):
             missing.append(f"essentialTopics: {e} has no topic row")
@@ -173,18 +196,25 @@ def main() -> int:
                 missing.append(f"shape {key}: not in shapes.yaml")
                 continue
             missing += [f"shapeData.{r}: required by {key}" for r in routing["shapes"][key]["require"] if r not in data]
+    notes = [f"shapeData.{k}: its job is done elsewhere now ({why})" for k, why in routing.get("cut", {}).items()
+             if k in data]
 
     def stage_actions(s):
         return list(s.get("actions", [])) + [x for ap_ in s.get("approaches", []) for x in ap_.get("actions", [])]
 
+    def skilled(x):
+        """A skill action: not a supporting act, and not movement (swimming and climbing are not skills)."""
+        return "system" not in x and skill_key(cat, x.get("skill")) not in cat["movement"]
+
     used = set()
     for s in q["stages"]:
         for x in stage_actions(s):
-            if "system" in x:
+            if not skilled(x):
                 if x.get("use") not in cat["supporting"]:
                     missing.append(f"stage {s['id']}: supporting {x.get('use')} not in skill-uses.yaml")
+                used.add(x.get("use"))
                 continue
-            skills = WEAPONS if x.get("skill") == "any-weapon" else [cat["aliases"].get(re.sub("[^a-z]", "", str(x.get("skill")).lower()), str(x.get("skill")).lower())]
+            skills = WEAPONS if x.get("skill") == "any-weapon" else [skill_key(cat, x.get("skill"))]
             if not any(sk in cat["skills"] and x.get("use") in cat["skills"][sk]["uses"] for sk in skills):
                 missing.append(f"stage {s['id']}: {x.get('skill')}: {x.get('use')} is not in skill-uses.yaml")
             used.add(x.get("use"))
@@ -196,35 +226,34 @@ def main() -> int:
     elif not used & set(cat["verbTags"][tag]):
         missing.append(f"centrepiece {tag}: no stage action carries it")
 
-    # Stages: the imported fields, vocabulary terms, graph, journal draft.
+    # The stage graph, the ways on, who must live, markers and hand-ins: the quest form's own rules.
+    form, _, form_lines = terms_of(w, q["id"])
+    missing += [f"quest form: {x}" for x in form_lines]
+
+    # Stages: the imported fields, vocabulary terms, journal draft, a skill action where the stage asks one.
     for s in q["stages"]:
-        w = f"stage {s.get('id')}"
+        at = f"stage {s.get('id')}"
         hidden = bool(s.get("hidden"))   # a stage the build needs and the player never reads: no journal, no objective
-        missing += [f"{w}: {k} missing (imported stage shape)" for k in STAGE_FIELDS if k not in s
+        missing += [f"{at}: {k} missing (imported stage shape)" for k in STAGE_FIELDS if k not in s
                     and not (hidden and k == "journal")]
-        check_actions(s.get("onEnter"), verbs, f"{w} onEnter", missing)
+        check_actions(s.get("onEnter"), verbs, f"{at} onEnter", missing)
         for o in s.get("objectives", []):
-            check_condition(o.get("completeWhen"), preds, f"{w} objective {o.get('id')}", missing)
+            check_condition(o.get("completeWhen"), preds, f"{at} objective {o.get('id')}", missing)
         for edge in s.get("successors", []) + s.get("failForward", []):
-            check_condition(edge.get("when"), preds, f"{w} edge to {edge.get('to')}", missing)
+            check_condition(edge.get("when"), preds, f"{at} edge to {edge.get('to')}", missing)
             if edge.get("to") not in stage_ids:
-                missing.append(f"{w}: successor {edge.get('to')} is not a stage")
+                missing.append(f"{at}: successor {edge.get('to')} is not a stage")
         if not s.get("journalText") and not hidden:
-            missing.append(f"{w}: journalText missing (style guide § journal)")
+            missing.append(f"{at}: journalText missing (style guide § journal)")
         if s.get("ending"):
-            if s.get("endingId") not in {e["id"] for e in q["endings"]}:
-                missing.append(f"{w}: endingId {s.get('endingId')!r} is not an endings row")
+            # A played ending names its endings row; a failed ending (a death the quest cannot go on without) may not.
+            if s.get("endingId") not in {e["id"] for e in q["endings"]} and (s.get("endingId") or s["ending"] != "failed"):
+                missing.append(f"{at}: endingId {s.get('endingId')!r} is not an endings row")
         elif not s.get("outside"):
-            if not s.get("successors"):
-                missing.append(f"{w}: no successors and not an ending")
-            named = re.findall(r"npc\.[a-z0-9.-]+", json.dumps({k: v for k, v in s.items() if k != "failForward"}))
-            loose = [n for n in named if not guarded(n)]
-            if loose and not s.get("failForward"):
-                missing.append(f"{w}: needs {loose[0]} alive, who is not essential or protected and has no failForward")
-            if ("WONDER" not in q.get("shapes", []) and not hidden and not moves_only(s)
-                    and not any("startScene" in a for a in s.get("onEnter", [])) and not [x for x in stage_actions(s) if "skill" in x]):
-                missing.append(f"{w}: no skill action (principles/actions.md)")
-            missing += [f"{w}: learns {g}" for g in s.get("learns", []) if g not in claims]
+            if "WONDER" not in q.get("shapes", []) and not hidden and not moves_only(s, form) and not any(
+                    skilled(x) for x in stage_actions(s)):
+                missing.append(f"{at}: no skill action (principles/actions.md)")
+            missing += [f"{at}: learns {g}" for g in s.get("learns", []) if g not in claims]
     if len(q["endings"]) < 1:
         missing.append("endings: none")
     for e in q["endings"]:
@@ -232,6 +261,8 @@ def main() -> int:
         check_actions(e.get("rewards"), verbs, f"ending {e['id']} rewards", missing)
     if q.get("startWhen"):
         check_condition(q["startWhen"], preds, "startWhen", missing)
+    for n in notes:
+        print(f"note: {n}")
     if missing:
         print("record is not whole; no briefs written:\n  " + "\n  ".join(missing))
         return 1

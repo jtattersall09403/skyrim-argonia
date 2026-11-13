@@ -10,8 +10,8 @@ lookup value or failing named check), and `quest_record export <quest id>` rebui
 Every YAML path maps to one column or child table (`tools/argonia_world/quest_view.json`). Conditions and actions
 are written only in the condition vocabulary (`condition_term` rows with their argument shapes;
 `story/design/quests/85-condition-vocabulary.md` explains each); a term it lacks is added first, never written
-in prose. Worked examples, exported from the rows: [examples/lh38.yaml](examples/lh38.yaml) (local),
-[examples/mr01.yaml](examples/mr01.yaml) (faction).
+in prose. Worked records: `quest_record export quest.main.mq03` (main) and `quest_record export
+quest.local.lq25` (local).
 
 ## 1. The imported quest object (field names as in the import)
 

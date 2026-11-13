@@ -65,7 +65,10 @@ quest is good, believable and buildable from the proven blocks as written.
   (`../../../story/design/text/style-guide.md`), and the block set (`docs/design/blocks.md`, the rewrite table in
   `docs/design/quests-on-a-world.md` part 5).
 - Read the principle files the record routes to (`../quest-write/shapes.yaml`: `principles/general.md`,
-  `principles/actions.md`, the group's file, each shape's file); their checklists are part of this review.
+  `principles/actions.md`, the group's file, each shape's file). Each principle is part of this review: a record
+  that breaks one is a finding, citing the principle's source tag (`principles/general.md` holds the key), and the
+  owner's bar items 1 to 3 in `general.md` are the skill rule, blocking under (e). The skill catalogue and each line's leaning are
+  `../quest-write/skill-uses.yaml` and `../quest-write/profiles.yaml`.
 
 ## 2. Read it twice
 
@@ -153,7 +156,8 @@ Lore and vibe (blocking, item c)
 Fit
 18. Do the actions follow from the truth and the place, lean to the line's or faction's profile, and vary from the
     quests around it?
-19. Does each shape's principles checklist pass, and is every required `shapeData` section real?
+19. Does the record keep every principle of its shapes' files, and is every required `shapeData` section real (what
+    the drama turns on, never a register of records)?
 20. Is the quest built on its old design (`foundation`), and is each change from it an improvement?
 21. Does it pass the novelty rule (index README §47c), and share no reversal with another quest at the same place?
 22. Do the cast match their `npc` rows (race, sex, role) and the roster, with any difference marked `invented`?

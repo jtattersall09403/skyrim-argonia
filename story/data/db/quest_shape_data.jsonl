@@ -1,29 +1,28 @@
-{"quest_id":"quest.bc.bc01","section":"aftermath","value":"Bought down, Never-Sold greets the player as the one who brought the book; slipped away, she greets them coolly. Rows-For-Another is gone from the landing either way."}
-{"quest_id":"quest.bc.bc01","section":"bondageSheet","value":"The debt: four months for a damaged boat. The holder: the estate and its steward Hulm-Tei. The terms: her food, the boat's upkeep and sick days are added to it. The exit in law: worked off. The exit by custom: the first price paid closes it. The exit in practice: the page struck, or gone down the channel. What she wants: to go home to her tree."}
+{"quest_id":"quest.bc.bc01","section":"afterwards","value":"Bought down, Never-Sold greets the player as the one who brought the book; slipped away, she greets them coolly. Rows-For-Another is gone from the landing either way."}
 {"quest_id":"quest.bc.bc01","section":"costToTheBound","value":"Bought down, she owes nothing but the estate keeps the boat; slipped away, she can never go back to the swamp road, and the estate's men are rougher with the next one held."}
-{"quest_id":"quest.bc.bc01","section":"deadline","value":"none: the Owing runs on."}
 {"quest_id":"quest.bc.bc01","section":"revealOrder","value":"Her grey and her own account first (k3), then the steward's true account (k1), then the page itself (k2)."}
-{"quest_id":"quest.bc.bc02","section":"aftermath","value":"The one freed is gone from the stone house; the other two stay held there, and greet the player by what they asked of them."}
-{"quest_id":"quest.bc.bc02","section":"bondageSheet","value":"The debt: Keeps-The-Old-Count's Owing as the heirs reckon it; Says-It-Plain held for words; Hides-In-Reeds for a killing. The holder: the heirs of the Rose. The exit in law: none they own to. The exit in practice: one counted lost to the smoke. What each wants: out."}
+{"quest_id":"quest.bc.bc01","section":"theBond","value":"The debt: four months for a damaged boat. The holder: the estate and its steward Hulm-Tei. The terms: her food, the boat's upkeep and sick days are added to it. The exit in law: worked off. The exit by custom: the first price paid closes it. The exit in practice: the page struck, or gone down the channel. What she wants: to go home to her tree."}
+{"quest_id":"quest.bc.bc01","section":"whyNow","value":"none: the Owing runs on."}
+{"quest_id":"quest.bc.bc02","section":"afterwards","value":"The one freed is gone from the stone house; the other two stay held there, and greet the player by what they asked of them."}
 {"quest_id":"quest.bc.bc02","section":"costToTheBound","value":"Two of the three stay held and go back to the Rose whichever the player chooses; the one freed can never go back to the heirs."}
-{"quest_id":"quest.bc.bc02","section":"deadline","value":"none: the heirs take them back once the Rose's fire damage is mended, which the quest never reaches."}
 {"quest_id":"quest.bc.bc02","section":"revealOrder","value":"The fire and the three (k3, from Never-Sold), the gate-keeper's count (k1), then each held person's own account (k2)."}
-{"quest_id":"quest.bc.bc03","section":"aftermath","value":"Both men's greetings on the docks change; nothing later turns on it."}
-{"quest_id":"quest.bc.bc03","section":"bondageSheet","value":"The debt: the crew's last season of hire, owed for the Owings he bought. The holder: Ussa-Rekh. The terms: he hires them out until it is worked. The exit in law: the season's end. The exit in practice: breaking the tokens before him. What they want: done a season early."}
+{"quest_id":"quest.bc.bc02","section":"theBond","value":"The debt: Keeps-The-Old-Count's Owing as the heirs reckon it; Says-It-Plain held for words; Hides-In-Reeds for a killing. The holder: the heirs of the Rose. The exit in law: none they own to. The exit in practice: one counted lost to the smoke. What each wants: out."}
+{"quest_id":"quest.bc.bc02","section":"whyNow","value":"none: the heirs take them back once the Rose's fire damage is mended, which the quest never reaches."}
+{"quest_id":"quest.bc.bc03","section":"afterwards","value":"Both men's greetings on the docks change; nothing later turns on it."}
 {"quest_id":"quest.bc.bc03","section":"costToTheBound","value":"With the crew, they lose his hire and must find their own on the docks; with him, they work the season out under him."}
-{"quest_id":"quest.bc.bc03","section":"deadline","value":"none: the season runs on."}
 {"quest_id":"quest.bc.bc03","section":"revealOrder","value":"The refusal (k2), his thirty years (k1), the tokens themselves (k3)."}
-{"quest_id":"quest.local.lf83","section":"aftermath"}
-{"quest_id":"quest.local.lf83","section":"deadline","value":"none on the clock: Signs-For-The-Cargo and Takes-The-Short-Weight say the rains are close (fact.lf83.rains-close), which raises the landing's stake, but the quest stays open until terms are made or a keeper dies"}
+{"quest_id":"quest.bc.bc03","section":"theBond","value":"The debt: the crew's last season of hire, owed for the Owings he bought. The holder: Ussa-Rekh. The terms: he hires them out until it is worked. The exit in law: the season's end. The exit in practice: breaking the tokens before him. What they want: done a season early."}
+{"quest_id":"quest.bc.bc03","section":"whyNow","value":"none: the season runs on."}
+{"quest_id":"quest.local.lf83","section":"afterwards"}
 {"quest_id":"quest.local.lf83","section":"leverage"}
 {"quest_id":"quest.local.lf83","section":"objections"}
 {"quest_id":"quest.local.lf83","section":"revealOrder"}
 {"quest_id":"quest.local.lf83","section":"sides"}
-{"quest_id":"quest.local.lh38","section":"accusation","needed":2,"too_few":"Reeh-Shaal laughs it off"}
+{"quest_id":"quest.local.lf83","section":"whyNow","value":"none on the clock: Signs-For-The-Cargo and Takes-The-Short-Weight say the rains are close (fact.lf83.rains-close), which raises the landing's stake, but the quest stays open until terms are made or a keeper dies"}
+{"quest_id":"quest.local.lh38","section":"confrontation","needed":2,"too_few":"Reeh-Shaal laughs it off"}
 {"quest_id":"quest.local.lh38","section":"cure","value":"raise the body; Im-Moro says the water will then clear"}
 {"quest_id":"quest.local.lh38","section":"endings","wrong":"e-wrong","right":"e-justice","partial":"e-fight","unsolved":"e-deal"}
 {"quest_id":"quest.local.lh38","section":"firstIllLastWell","value":"guests at the lodge first (they drink most), then the fire stand's customers; the office-holders, who drink from the far side of the pool, last"}
-{"quest_id":"quest.local.lh38","section":"ladder"}
 {"quest_id":"quest.local.lh38","section":"leads"}
 {"quest_id":"quest.local.lh38","section":"lies"}
 {"quest_id":"quest.local.lh38","section":"misdiagnosis","wrong":"the fire stand's food (Im-Moro believes it; Reeh-Shaal spreads it)","test":"alchemy: a sample of pool water clouds a test brew; food cooked in river water does not (k12)"}
@@ -33,6 +32,7 @@
 {"quest_id":"quest.local.lh38","section":"sign","value":"fact.lh38.water-smell"}
 {"quest_id":"quest.local.lh38","section":"source","value":"ref.lh38.courier-body"}
 {"quest_id":"quest.local.lh38","section":"spread","value":"the spring water, drunk and used for cooking"}
+{"quest_id":"quest.local.lh38","section":"stakes"}
 {"quest_id":"quest.local.lh38","section":"timeline"}
 {"quest_id":"quest.local.lq25","section":"clueChoices"}
 {"quest_id":"quest.local.lq25","section":"habit","value":"One crocodile (band 1) lairs in the shallows off the end of the crew's plank walk, where the offal is dumped."}
@@ -48,9 +48,9 @@
 {"quest_id":"quest.local.lq30","section":"openQuestions"}
 {"quest_id":"quest.local.lq30","section":"rite","value":"A walk-out into the basin alone, which ends when the walker comes back through the gate on their own feet; the Agaceph of Helstrom may not follow, and an outsider may (QA5)."}
 {"quest_id":"quest.local.lq30","section":"trail","value":"East from the gate through the shallows to the roots in cell 0D7883."}
-{"quest_id":"quest.main.mq01","section":"aftermath","value":"Nothing in the world changes: the gang stays in the hold and the broker on his pier; the player leaves the dock as a hand of the Veiled Reed with fifty gold, and the burnt camp stays a thing told."}
-{"quest_id":"quest.main.mq01","section":"bondageSheet","value":"The Owing (labour-and-bondage §1-2): owed work for a debt or a wrong, drifted here into bondage that is sold on and extended. The holder is Buys-The-Months, a Lilmoth debt-labour broker who bought the gang's months and hires the gang to the lighters (QA7); the overseer, Wuleen-Sei, keeps them at it. The exit in law is working the months off; in practice the months for food outrun the work. The player is the one person aboard on no line: free of the Owing, and for that reason of no use to the broker."}
+{"quest_id":"quest.main.mq01","section":"afterwards","value":"Nothing in the world changes: the gang stays in the hold and the broker on his pier; the player leaves the dock as a hand of the Veiled Reed with fifty gold, and the burnt camp stays a thing told."}
 {"quest_id":"quest.main.mq01","section":"costToTheBound","value":"Dives-Without-A-Rope is visibly washed out from years away from Nine Bends; the gang's families lost their camp, their cutting and their clutch, and the broker's roll still counts every month."}
+{"quest_id":"quest.main.mq01","section":"theBond","value":"The Owing (labour-and-bondage §1-2): owed work for a debt or a wrong, drifted here into bondage that is sold on and extended. The holder is Buys-The-Months, a Lilmoth debt-labour broker who bought the gang's months and hires the gang to the lighters (QA7); the overseer, Wuleen-Sei, keeps them at it. The exit in law is working the months off; in practice the months for food outrun the work. The player is the one person aboard on no line: free of the Owing, and for that reason of no use to the broker."}
 {"quest_id":"quest.main.mq03","section":"answer","value":"a dry voice speaks in the dream but makes no words; whose it is, and what it says, is left to the later quests (§18d, QA18)"}
 {"quest_id":"quest.main.mq03","section":"familiarGround","value":"the ship's hold where the game began"}
 {"quest_id":"quest.main.mq03","section":"guiltyParties","value":"instigator: Cuts-the-Old-Knot (the woman with the knotted cord, unnamed here); hands: her two cutters; beneficiary: her cell, which keeps the sap; witness: Dives-Without-A-Rope, who took the dropped jar"}
@@ -62,7 +62,6 @@
 {"quest_id":"quest.main.mq04","section":"cure","value":"the sap in the jars poured back at the cut root (QA11), if the jars go to Pays-Late or the root-herald"}
 {"quest_id":"quest.main.mq04","section":"fate","value":"the sap was drawn into jars and waits on a dry rise in the north reeds for the cell's larger boat"}
 {"quest_id":"quest.main.mq04","section":"firstIllLastWell","value":"the eggs first; the tree itself is shut, not sick"}
-{"quest_id":"quest.main.mq04","section":"ladder"}
 {"quest_id":"quest.main.mq04","section":"leads","value":"the root-herald points at Pays-Late; Pays-Late (talked round or shown his gum pot) or Turns-The-Clutch tells of the cut and the boat from the north reeds; the north reeds lead across the leech water to the dry rise"}
 {"quest_id":"quest.main.mq04","section":"misdiagnosis","wrong":"leeches let in by a tree-minder who failed his keeping","test":"Pays-Late's own gum on the cut, his knife gone, and a boat from the north reeds"}
 {"quest_id":"quest.main.mq04","section":"nodes"}
@@ -70,6 +69,7 @@
 {"quest_id":"quest.main.mq04","section":"sign","value":"fact.mq04.tree-closed"}
 {"quest_id":"quest.main.mq04","section":"source","value":"a root of the Hist cut under the stilts and its sap drawn into jars"}
 {"quest_id":"quest.main.mq04","section":"spread","value":"the weeping sap draws the leeches to the root; the eggs died"}
+{"quest_id":"quest.main.mq04","section":"stakes"}
 {"quest_id":"quest.main.mq04","section":"trail"}
 {"quest_id":"quest.main.mq05","section":"gate","value":"the way's far bend, where two giant wasps keep the root, fought or sneaked past"}
 {"quest_id":"quest.main.mq05","section":"nonLethalFailure","value":"driven back by the wasps, the player runs back down the way and tries again, or sneaks past"}
@@ -82,7 +82,6 @@
 {"quest_id":"quest.mr.mr01","section":"cure","value":"seal the cut (costs the roots it runs through), or reopen it downstream (floods the dead grove's land, where the founders' rival's descendants now fish)"}
 {"quest_id":"quest.mr.mr01","section":"firstIllLastWell","value":"the Hist's lowest roots first, then the spring, then the river landing last"}
 {"quest_id":"quest.mr.mr01","section":"gate","value":"the second landing is a full dive"}
-{"quest_id":"quest.mr.mr01","section":"ladder"}
 {"quest_id":"quest.mr.mr01","section":"misdiagnosis","wrong":"salt from the salt works upstream","test":"taste the river above the fork (k1); the herald's ledger (k2)"}
 {"quest_id":"quest.mr.mr01","section":"nonLethalFailure","value":"none; the samples lie where they are and can be taken again after a reload"}
 {"quest_id":"quest.mr.mr01","section":"pointOfNoReturn","value":"the deepest chamber: the player must have breath or water-breathing to come back"}
@@ -94,24 +93,25 @@
 {"quest_id":"quest.mr.mr01","section":"sign","value":"fact.mr01.sap-thin"}
 {"quest_id":"quest.mr.mr01","section":"source","value":"thing.breach"}
 {"quest_id":"quest.mr.mr01","section":"spread","value":"brine up the taproots from the drowned stair, worst after each flood"}
-{"quest_id":"quest.tg.tg01","section":"aftermath","value":"Tilts-The-Jug pays a hundred gold if he lives and nothing if he died, and either way sends the player down to the Chapter."}
+{"quest_id":"quest.mr.mr01","section":"stakes"}
+{"quest_id":"quest.tg.tg01","section":"afterwards","value":"Tilts-The-Jug pays a hundred gold if he lives and nothing if he died, and either way sends the player down to the Chapter."}
 {"quest_id":"quest.tg.tg01","section":"escape","value":"none needed; the dock is open and he does not fight"}
-{"quest_id":"quest.tg.tg01","section":"failureLadder","value":"A broken pick is another try at the strongbox; a failed talk leaves the coin route and the strongbox. If Keeps-What-Floats dies, the necklace is still in the strongbox, and the quest goes on without the pay."}
+{"quest_id":"quest.tg.tg01","section":"goesWrong","value":"A broken pick is another try at the strongbox; a failed talk leaves the coin route and the strongbox. If Keeps-What-Floats dies, the necklace is still in the strongbox, and the quest goes on without the pay."}
+{"quest_id":"quest.tg.tg01","section":"kept","value":"The necklace is in his strongbox under the eaves north-west of the house; he stands on the dock west of the house door."}
 {"quest_id":"quest.tg.tg01","section":"leverage"}
 {"quest_id":"quest.tg.tg01","section":"objections"}
-{"quest_id":"quest.tg.tg01","section":"onSiteFact","value":"The necklace is in his strongbox under the eaves north-west of the house; he stands on the dock west of the house door."}
 {"quest_id":"quest.tg.tg01","section":"planTexts"}
-{"quest_id":"quest.tg.tg01","section":"routes"}
-{"quest_id":"quest.tg.tg01","section":"score","value":"The Blue Jasper Necklace, taken back from Keeps-What-Floats for the Chapter, with no harm to him."}
+{"quest_id":"quest.tg.tg01","section":"prize","value":"The Blue Jasper Necklace, taken back from Keeps-What-Floats for the Chapter, with no harm to him."}
 {"quest_id":"quest.tg.tg01","section":"sides"}
-{"quest_id":"quest.tg.tg01","section":"sources"}
+{"quest_id":"quest.tg.tg01","section":"tellers"}
 {"quest_id":"quest.tg.tg01","section":"theftMode","value":"commit"}
-{"quest_id":"quest.tg.tg02","section":"aftermath","value":"The things go to one client, or each client is sold the thing they claimed for a fixed sum; the clients the player passed over, or sold to, turn cold."}
+{"quest_id":"quest.tg.tg01","section":"waysIn"}
+{"quest_id":"quest.tg.tg02","section":"afterwards","value":"The things go to one client, or each client is sold the thing they claimed for a fixed sum; the clients the player passed over, or sold to, turn cold."}
 {"quest_id":"quest.tg.tg02","section":"escape","value":"swim up and out onto the bank"}
-{"quest_id":"quest.tg.tg02","section":"failureLadder","value":"A broken pick is another try; the lock is Novice, Bent-Spine gave three picks and gives three more once. Without Speech 30 the first sale is closed and the hand-over stays open; the later two sales go through at a haggled price."}
-{"quest_id":"quest.tg.tg02","section":"onSiteFact","value":"The box lies locked on the floor of the deep water below the bank where the three clients wait."}
+{"quest_id":"quest.tg.tg02","section":"goesWrong","value":"A broken pick is another try; the lock is Novice, Bent-Spine gave three picks and gives three more once. Without Speech 30 the first sale is closed and the hand-over stays open; the later two sales go through at a haggled price."}
+{"quest_id":"quest.tg.tg02","section":"kept","value":"The box lies locked on the floor of the deep water below the bank where the three clients wait."}
 {"quest_id":"quest.tg.tg02","section":"planTexts"}
-{"quest_id":"quest.tg.tg02","section":"routes"}
-{"quest_id":"quest.tg.tg02","section":"score","value":"The drowned merchant's lockbox of pledges, from the floor of the deep water north of Pusbottom."}
-{"quest_id":"quest.tg.tg02","section":"sources"}
+{"quest_id":"quest.tg.tg02","section":"prize","value":"The drowned merchant's lockbox of pledges, from the floor of the deep water north of Pusbottom."}
+{"quest_id":"quest.tg.tg02","section":"tellers"}
 {"quest_id":"quest.tg.tg02","section":"theftMode","value":"commit"}
+{"quest_id":"quest.tg.tg02","section":"waysIn"}

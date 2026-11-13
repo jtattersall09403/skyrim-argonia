@@ -1,8 +1,8 @@
-{"quest_id":"quest.local.lf83","section":"aftermath","ord":0,"says":"greeting: Livia Varinius and Signs-For-The-Cargo greet the player as the one who settled the stop; topic: topic.lf83-one-charge answers with the agreed terms; standing: Claywater Station up; impossible: the stone lining (no mason is sent for)","from":"e-shared"}
-{"quest_id":"quest.local.lf83","section":"aftermath","ord":1,"says":"greeting: Takes-The-Short-Weight coldly, Livia Varinius warmly; topic: topic.lf83-ford-charge answers that it is bought for the season; standing: Livia up, Signs-For-The-Cargo and Takes-The-Short-Weight down; delayed: if the crocodile lives, the landing has no clay for its walls; the well keeps silting; impossible: the clay seal","from":"e-station"}
-{"quest_id":"quest.local.lf83","section":"aftermath","ord":2,"says":"greeting: Livia Varinius coldly, Signs-For-The-Cargo and Takes-The-Short-Weight warmly; topic: topic.lf83-stop-charge answers that the station charges only its old drake now; standing: Signs up, Livia down, Claywater Station down with the station half; the walkers' charge dropped in answer; delayed: the well keeps silting and no mason will come; impossible: the one charge","from":"e-landing"}
-{"quest_id":"quest.local.lf83","section":"aftermath","ord":3,"says":"greeting: Signs-For-The-Cargo and Takes-The-Short-Weight subdued; topic: topic.claywater-two-charges answers that the station's charge died with her and the landing's stands; delayed: the well silts with nobody to draw it; impossible: any settlement","from":"e-keeper-dead"}
-{"quest_id":"quest.local.lf83","section":"aftermath","ord":4,"says":"greeting: Livia Varinius and Takes-The-Short-Weight subdued; topic: topic.claywater-two-charges answers that the landing makes no terms while it mourns; delayed: carts wait at the ford with no poler; impossible: any settlement","from":"e-poler-dead"}
+{"quest_id":"quest.local.lf83","section":"afterwards","ord":0,"says":"greeting: Livia Varinius and Signs-For-The-Cargo greet the player as the one who settled the stop; topic: topic.lf83-one-charge answers with the agreed terms; standing: Claywater Station up; impossible: the stone lining (no mason is sent for)","from":"e-shared"}
+{"quest_id":"quest.local.lf83","section":"afterwards","ord":1,"says":"greeting: Takes-The-Short-Weight coldly, Livia Varinius warmly; topic: topic.lf83-ford-charge answers that it is bought for the season; standing: Livia up, Signs-For-The-Cargo and Takes-The-Short-Weight down; delayed: if the crocodile lives, the landing has no clay for its walls; the well keeps silting; impossible: the clay seal","from":"e-station"}
+{"quest_id":"quest.local.lf83","section":"afterwards","ord":2,"says":"greeting: Livia Varinius coldly, Signs-For-The-Cargo and Takes-The-Short-Weight warmly; topic: topic.lf83-stop-charge answers that the station charges only its old drake now; standing: Signs up, Livia down, Claywater Station down with the station half; the walkers' charge dropped in answer; delayed: the well keeps silting and no mason will come; impossible: the one charge","from":"e-landing"}
+{"quest_id":"quest.local.lf83","section":"afterwards","ord":3,"says":"greeting: Signs-For-The-Cargo and Takes-The-Short-Weight subdued; topic: topic.claywater-two-charges answers that the station's charge died with her and the landing's stands; delayed: the well silts with nobody to draw it; impossible: any settlement","from":"e-keeper-dead"}
+{"quest_id":"quest.local.lf83","section":"afterwards","ord":4,"says":"greeting: Livia Varinius and Takes-The-Short-Weight subdued; topic: topic.claywater-two-charges answers that the landing makes no terms while it mourns; delayed: carts wait at the ford with no poler; impossible: any settlement","from":"e-poler-dead"}
 {"quest_id":"quest.local.lf83","section":"leverage","ord":0,"speaker":"npc.imperial-fringe.claywater-station.well-keeper","says":"moves Livia Varinius by exposure: once the player knows the lining has cracked and been mended every year, she cannot ask travellers 2 drakes for a mason's lining that would crack the same way","from":"fact.lf83.remortared"}
 {"quest_id":"quest.local.lf83","section":"leverage","ord":1,"speaker":"npc.imperial-fringe.claywater-station.landing-s-poler","says":"moves Signs-For-The-Cargo, with the crocodile dead: the landing has its clay and its cut back","from":"item.lf83.clay-basket"}
 {"quest_id":"quest.local.lf83","section":"leverage","ord":2,"speaker":"npc.imperial-fringe.claywater-station.n1-3","says":"her testimony, spent once on Signs-For-The-Cargo: the walkers' charge is sending travellers to the crocodile; answers his \"no stone\" objection as well as the evidence does","from":"fact.lf83.takes-doubts"}
@@ -20,9 +20,6 @@
 {"quest_id":"quest.local.lf83","section":"sides","ord":1,"speaker":"npc.imperial-fringe.claywater-station.n1","says":"the station's doubter once placed (not in Part 1): he expects nothing from an Empire that left the well to crack (his empire stance) and would let the landing's clay in"}
 {"quest_id":"quest.local.lf83","section":"sides","ord":2,"speaker":"npc.imperial-fringe.claywater-station.landing-s-poler","says":"wants the station's rise dropped and clay dug before the rains; gives clay and the landing's hands to seal the well, and the walkers' charge folded into one charge; never gives stone hauled or laid by the landing"}
 {"quest_id":"quest.local.lf83","section":"sides","ord":3,"speaker":"npc.imperial-fringe.claywater-station.n1-3","says":"of the landing, its doubter: thinks the walkers' charge is wrong and has told the poler so; wants one fair charge"}
-{"quest_id":"quest.local.lh38","section":"ladder","ord":0,"value":"at the start: two guests lie sick in the lodge"}
-{"quest_id":"quest.local.lh38","section":"ladder","ord":1,"value":"at stage 40: a third guest lies sick"}
-{"quest_id":"quest.local.lh38","section":"ladder","ord":2,"value":"at the endings: the guests are said to be mending"}
 {"quest_id":"quest.local.lh38","section":"leads","ord":0,"from":"npc.hist-heartland.greenspring.n2"}
 {"quest_id":"quest.local.lh38","section":"leads","ord":1,"from":"thing.spring-throat"}
 {"quest_id":"quest.local.lh38","section":"leads","ord":2,"from":"the lodge"}
@@ -41,6 +38,9 @@
 {"quest_id":"quest.local.lh38","section":"openQuestions","ord":2,"value":"___ killed the courier and staked him in the spring because ___."}
 {"quest_id":"quest.local.lh38","section":"redHerrings","ord":0,"refuted_by":"k12","suspect":"the fire stand's food"}
 {"quest_id":"quest.local.lh38","section":"redHerrings","ord":1,"refuted_by":"k8","suspect":"npc.hist-heartland.greenspring.n2-2"}
+{"quest_id":"quest.local.lh38","section":"stakes","ord":0,"value":"at the start: two guests lie sick in the lodge"}
+{"quest_id":"quest.local.lh38","section":"stakes","ord":1,"value":"at stage 40: a third guest lies sick"}
+{"quest_id":"quest.local.lh38","section":"stakes","ord":2,"value":"at the endings: the guests are said to be mending"}
 {"quest_id":"quest.local.lh38","section":"timeline","ord":0,"value":"t1"}
 {"quest_id":"quest.local.lh38","section":"timeline","ord":1,"value":"t2"}
 {"quest_id":"quest.local.lh38","section":"timeline","ord":2,"value":"t3"}
@@ -62,14 +62,14 @@
 {"quest_id":"quest.main.mq03","section":"nodes","ord":1,"value":"Dives-Without-A-Rope"}
 {"quest_id":"quest.main.mq03","section":"nodes","ord":2,"value":"Nesh-Deeka's reading of the sap"}
 {"quest_id":"quest.main.mq03","section":"nodes","ord":3,"value":"the page"}
-{"quest_id":"quest.main.mq04","section":"ladder","ord":0,"value":"eleven nights ago: the root cut, the eggs dead"}
-{"quest_id":"quest.main.mq04","section":"ladder","ord":1,"value":"until the sap comes back the tree stays shut"}
 {"quest_id":"quest.main.mq04","section":"nodes","ord":0,"value":"the root-herald"}
 {"quest_id":"quest.main.mq04","section":"nodes","ord":1,"value":"Pays-Late at the cut root"}
 {"quest_id":"quest.main.mq04","section":"nodes","ord":2,"value":"his gum box"}
 {"quest_id":"quest.main.mq04","section":"nodes","ord":3,"value":"Turns-The-Clutch at the egg pool"}
 {"quest_id":"quest.main.mq04","section":"nodes","ord":4,"value":"the dry rise and its jars"}
 {"quest_id":"quest.main.mq04","section":"openQuestions","ord":0,"value":"what the cell wants with jars of a living Hist's sap (MQ05 and Act II)"}
+{"quest_id":"quest.main.mq04","section":"stakes","ord":0,"value":"eleven nights ago: the root cut, the eggs dead"}
+{"quest_id":"quest.main.mq04","section":"stakes","ord":1,"value":"until the sap comes back the tree stays shut"}
 {"quest_id":"quest.main.mq04","section":"trail","ord":0,"value":"the root-herald"}
 {"quest_id":"quest.main.mq04","section":"trail","ord":1,"value":"Pays-Late or Turns-The-Clutch"}
 {"quest_id":"quest.main.mq04","section":"trail","ord":2,"value":"the north reeds across the leech water"}
@@ -77,9 +77,9 @@
 {"quest_id":"quest.main.mq05","section":"prepHints","ord":0,"value":"Nesh-Deeka names the wasps and the way in"}
 {"quest_id":"quest.main.mq05","section":"prepHints","ord":1,"value":"the landing's crew (LQ25)"}
 {"quest_id":"quest.main.mq05","section":"prepHints","ord":2,"value":"the levy at the gate (LQ30)"}
-{"quest_id":"quest.mr.mr01","section":"ladder","ord":0,"value":"at the start: leaves falling out of season"}
-{"quest_id":"quest.mr.mr01","section":"ladder","ord":1,"value":"from stage 20: the spring tastes of salt"}
-{"quest_id":"quest.mr.mr01","section":"ladder","ord":2,"value":"from stage 40: the sap stops at the naming bowl"}
+{"quest_id":"quest.mr.mr01","section":"stakes","ord":0,"value":"at the start: leaves falling out of season"}
+{"quest_id":"quest.mr.mr01","section":"stakes","ord":1,"value":"from stage 20: the spring tastes of salt"}
+{"quest_id":"quest.mr.mr01","section":"stakes","ord":2,"value":"from stage 40: the sap stops at the naming bowl"}
 {"quest_id":"quest.tg.tg01","section":"leverage","ord":0,"value":"he is a coward and runs from a fight"}
 {"quest_id":"quest.tg.tg01","section":"leverage","ord":1,"value":"he has no buyer for it yet"}
 {"quest_id":"quest.tg.tg01","section":"leverage","ord":2,"value":"sixty gold buys it"}
@@ -88,22 +88,22 @@
 {"quest_id":"quest.tg.tg01","section":"planTexts","ord":0,"value":"pick the strongbox's lock while he stands on the dock"}
 {"quest_id":"quest.tg.tg01","section":"planTexts","ord":1,"value":"talk him into handing over his key"}
 {"quest_id":"quest.tg.tg01","section":"planTexts","ord":2,"value":"buy his key for sixty gold"}
-{"quest_id":"quest.tg.tg01","section":"routes","ord":0,"value":"Lockpicking on his strongbox (Novice, three picks from Tilts-The-Jug)"}
-{"quest_id":"quest.tg.tg01","section":"routes","ord":1,"value":"Speech 35 with him for his key"}
-{"quest_id":"quest.tg.tg01","section":"routes","ord":2,"value":"60 gold to him for his key"}
 {"quest_id":"quest.tg.tg01","section":"sides","ord":0,"value":"Keeps-What-Floats"}
 {"quest_id":"quest.tg.tg01","section":"sides","ord":1,"value":"who wants to keep it"}
 {"quest_id":"quest.tg.tg01","section":"sides","ord":2,"value":"and the player"}
 {"quest_id":"quest.tg.tg01","section":"sides","ord":3,"value":"who wants it back"}
-{"quest_id":"quest.tg.tg01","section":"sources","ord":0,"value":"Tilts-The-Jug names the thief"}
-{"quest_id":"quest.tg.tg01","section":"sources","ord":1,"value":"the necklace and the strongbox"}
-{"quest_id":"quest.tg.tg01","section":"sources","ord":2,"value":"Sits-By-The-Water tells he runs from a fight and would sell it"}
+{"quest_id":"quest.tg.tg01","section":"tellers","ord":0,"value":"Tilts-The-Jug names the thief"}
+{"quest_id":"quest.tg.tg01","section":"tellers","ord":1,"value":"the necklace and the strongbox"}
+{"quest_id":"quest.tg.tg01","section":"tellers","ord":2,"value":"Sits-By-The-Water tells he runs from a fight and would sell it"}
+{"quest_id":"quest.tg.tg01","section":"waysIn","ord":0,"value":"Lockpicking on his strongbox (Novice, three picks from Tilts-The-Jug)"}
+{"quest_id":"quest.tg.tg01","section":"waysIn","ord":1,"value":"Speech 35 with him for his key"}
+{"quest_id":"quest.tg.tg01","section":"waysIn","ord":2,"value":"60 gold to him for his key"}
 {"quest_id":"quest.tg.tg02","section":"planTexts","ord":0,"value":"dive to the floor of the deep water"}
 {"quest_id":"quest.tg.tg02","section":"planTexts","ord":1,"value":"open the box where it lies"}
 {"quest_id":"quest.tg.tg02","section":"planTexts","ord":2,"value":"swim out"}
 {"quest_id":"quest.tg.tg02","section":"planTexts","ord":3,"value":"settle the pledges on the bank"}
-{"quest_id":"quest.tg.tg02","section":"routes","ord":0,"value":"Lockpicking on the box"}
-{"quest_id":"quest.tg.tg02","section":"routes","ord":1,"value":"Speech 30 to sell the pledges at full price, or haggled down without it"}
-{"quest_id":"quest.tg.tg02","section":"routes","ord":2,"value":"no skill to hand all three to one client"}
-{"quest_id":"quest.tg.tg02","section":"sources","ord":0,"value":"Bent-Spine names the box and where it lies"}
-{"quest_id":"quest.tg.tg02","section":"sources","ord":1,"value":"the three clients each claim one thing in it"}
+{"quest_id":"quest.tg.tg02","section":"tellers","ord":0,"value":"Bent-Spine names the box and where it lies"}
+{"quest_id":"quest.tg.tg02","section":"tellers","ord":1,"value":"the three clients each claim one thing in it"}
+{"quest_id":"quest.tg.tg02","section":"waysIn","ord":0,"value":"Lockpicking on the box"}
+{"quest_id":"quest.tg.tg02","section":"waysIn","ord":1,"value":"Speech 30 to sell the pledges at full price, or haggled down without it"}
+{"quest_id":"quest.tg.tg02","section":"waysIn","ord":2,"value":"no skill to hand all three to one client"}

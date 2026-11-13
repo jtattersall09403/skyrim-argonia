@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """Propose action plans for a quest from the skill-use catalogue (principles/actions.md).
 
-Usage: python3 action_plan.py [--profile NAME] [--shapes SHAPE,...] [--band D2] [--ledger DIR]
+Usage: python3 action_plan.py [--profile NAME] [--shapes SHAPE,...] [--band D2] [--line DIR]
                               [--plans 5] [--seed N]
 
 A plan follows the primary shape's beats (find, get there, the crux, resolve; SHAPE_BEATS below): each beat
 draws a skill use from that beat's pool, weighted by the profile (profiles.yaml: a line key such as
 `many-root`, a line id `quest.line.many-root`, or a faction id), the secondary shapes' pools, and against what
-the quest records in --ledger (the line or region packet so far) already use. The crux offers two approaches
+the quest records in --line (the line or region packet so far) already use. The crux offers two approaches
 from different skill families. Settings come from the use's allowed settings (skill-uses.yaml settingsFor),
 the profile's favoured ones first; one target group is kept across the plan where the uses allow it.
 Every plan printed mixes at least two skill families. A proposal, not a rule: the quest writer picks, adapts
@@ -23,71 +23,71 @@ import yaml
 
 HERE = pathlib.Path(__file__).parent
 BEATS = ("find", "get there", "crux", "resolve")
-SHAPE_BEATS = {  # per shape, a pool of uses per beat; the crux is offered as two approaches
-    "MURDER": [["spy", "search-unseen", "dive", "detect-life", "identify-a-poison", "interrogate"],
-               ["follow", "pick-a-lock", "search-unseen", "pickpocket", "interrogate", "swim", "climb"],
-               ["present-evidence", "interrogate", "pickpocket", "spy", "pick-a-lock", "bribe", "intimidate"],
-               ["accuse", "duel", "fight", "subdue", "run-down"]],
-    "THEFT": [["spy", "follow", "bribe", "appraise", "search-unseen"],
-              ["sneak-past", "climb", "dive", "reach-a-roof", "become-invisible", "swim"],
-              ["pick-a-lock", "open-a-strongbox", "disarm-a-trap", "steal", "pickpocket", "telekinesis"],
-              ["outrun", "sell-a-forgery", "bargain", "plant", "lie"]],
-    "FRAUD": [["appraise", "read-an-enchantment", "test-a-sample", "spy"],
-              ["search-unseen", "pick-a-lock", "pickpocket", "follow", "bribe"],
-              ["present-evidence", "interrogate", "sell-a-forgery", "intimidate"],
+SHAPE_BEATS = {  # per shape, a pool of uses per beat (skill-uses.yaml); the crux is offered as two approaches
+    "MURDER": [["interrogate", "detect-life", "identify-a-poison", "test-a-sample"],
+               ["pick-a-lock", "lift-a-key", "sneak-past", "persuade"],
+               ["present-evidence", "interrogate", "pickpocket", "steal", "bribe", "intimidate"],
+               ["accuse", "duel", "fight", "stand-a-hard-fight"]],
+    "THEFT": [["bribe", "interrogate", "persuade", "detect-life"],
+              ["sneak-past", "become-invisible", "water-breathe", "calm"],
+              ["pick-a-lock", "open-a-strongbox", "lift-a-key", "steal", "pickpocket", "telekinesis"],
+              ["bargain", "lie", "persuade", "duel"]],
+    "FRAUD": [["read-an-enchantment", "test-a-sample", "judge-a-weapon", "interrogate"],
+              ["pick-a-lock", "lift-a-key", "steal", "bribe"],
+              ["present-evidence", "interrogate", "intimidate", "pickpocket"],
               ["accuse", "persuade", "bargain", "duel"]],
-    "MISSING": [["interrogate", "spy", "persuade", "detect-life"],
-                ["follow", "swim", "climb", "hunt", "cross-a-flood"],
-                ["dive", "sneak-past", "clear-a-place", "pick-a-lock", "water-breathe"],
-                ["protect", "outrun", "keep-an-ally-alive", "pole-or-sail-a-boat"]],
-    "RECKONING": [["interrogate", "read-an-enchantment", "raise-a-witness", "persuade"],
-                  ["open-a-strongbox", "pick-a-lock", "dive", "search-unseen"],
-                  ["present-evidence", "intimidate", "bribe", "spy"],
-                  ["accuse", "duel", "persuade", "protect"]],
-    "DISPUTE": [["interrogate", "appraise", "spy", "persuade"],
-                ["search-unseen", "climb", "dive", "follow"],
-                ["present-evidence", "intimidate", "bribe", "admire"],
+    "MISSING": [["interrogate", "persuade", "detect-life"],
+                ["hunt", "sneak-past", "water-breathe", "fight"],
+                ["clear-a-place", "pick-a-lock", "sneak-past", "calm"],
+                ["persuade", "stand-a-hard-fight", "buy-out"]],
+    "RECKONING": [["interrogate", "read-an-enchantment", "persuade"],
+                  ["open-a-strongbox", "pick-a-lock", "water-breathe", "lift-a-key"],
+                  ["present-evidence", "intimidate", "bribe", "pickpocket"],
+                  ["accuse", "duel", "persuade"]],
+    "DISPUTE": [["interrogate", "persuade", "detect-life"],
+                ["steal", "pick-a-lock", "sneak-past", "lift-a-key"],
+                ["present-evidence", "intimidate", "bribe"],
                 ["persuade", "duel", "bargain"]],
-    "NEGOTIATION": [["spy", "appraise", "interrogate"],
-                    ["pole-or-sail-a-boat", "sneak-past", "protect", "clear-a-place"],
-                    ["bargain", "bribe", "intimidate", "admire", "persuade"],
-                    ["persuade", "hold-a-line", "duel"]],
-    "SUCCESSION": [["interrogate", "read-an-enchantment", "spy"],
-                   ["search-unseen", "open-a-strongbox", "follow"],
+    "NEGOTIATION": [["interrogate", "bribe"],
+                    ["sneak-past", "clear-a-place", "lift-a-key", "steal"],
+                    ["bargain", "bribe", "intimidate", "persuade"],
+                    ["persuade", "duel", "buy-out"]],
+    "SUCCESSION": [["interrogate", "read-an-enchantment"],
+                   ["open-a-strongbox", "lift-a-key", "steal"],
                    ["present-evidence", "persuade", "bribe", "duel"],
-                   ["protect", "persuade", "accuse"]],
-    "BONDAGE": [["interrogate", "spy", "bribe"],
-                ["sneak-past", "pick-a-lock", "climb", "swim"],
-                ["settle-an-owing", "bribe", "intimidate", "subdue", "open-a-strongbox"],
-                ["outrun", "protect", "pole-or-sail-a-boat", "persuade"]],
-    "PREDATOR": [["hunt", "test-a-sample", "interrogate", "spy", "detect-life"],
-                 ["follow", "swim", "climb", "set-a-trap", "gather-ingredients"],
-                 ["brew-a-poison", "set-a-trap", "snipe", "calm", "burn-a-nest"],
-                 ["fight", "hunt", "protect", "defend"]],
-    "CONTAMINATION": [["heal-the-sick", "test-a-sample", "interrogate", "identify-a-poison"],
-                      ["dive", "swim", "climb", "gather-ingredients", "follow"],
-                      ["test-a-sample", "clear-a-place", "detect-life", "light-a-dark-place", "water-breathe"],
-                      ["brew-a-cure", "cure-disease", "persuade"]],
-    "SMUGGLING": [["spy", "follow", "appraise"],
-                  ["sneak-past", "pole-or-sail-a-boat", "swim", "bribe"],
-                  ["pick-a-lock", "open-a-strongbox", "intimidate", "lie", "plant"],
-                  ["outrun", "ambush", "accuse", "bargain"]],
+                   ["persuade", "accuse", "stand-a-hard-fight"]],
+    "BONDAGE": [["interrogate", "bribe", "persuade"],
+                ["sneak-past", "pick-a-lock", "lift-a-key"],
+                ["buy-out", "bribe", "intimidate", "open-a-strongbox", "steal"],
+                ["duel", "persuade", "stand-a-hard-fight"]],
+    "PREDATOR": [["hunt", "test-a-sample", "interrogate", "detect-life"],
+                 ["sneak-past", "gather-ingredients", "fight"],
+                 ["snipe", "calm", "kill-from-range", "frenzy"],
+                 ["fight", "hunt", "stand-a-hard-fight"]],
+    "CONTAMINATION": [["test-a-sample", "interrogate", "identify-a-poison"],
+                      ["water-breathe", "gather-ingredients", "sneak-past"],
+                      ["test-a-sample", "clear-a-place", "detect-life"],
+                      ["persuade", "bargain", "present-evidence"]],
+    "SMUGGLING": [["interrogate", "bribe"],
+                  ["sneak-past", "become-invisible", "water-breathe", "bribe"],
+                  ["pick-a-lock", "open-a-strongbox", "intimidate", "lie"],
+                  ["accuse", "bargain", "duel"]],
     "EXPEDITION": [["interrogate", "bargain", "gather-ingredients"],
-                   ["pole-or-sail-a-boat", "cross-a-flood", "climb", "swim"],
-                   ["dive", "levitate-to-a-ledge", "clear-a-place", "water-breathe", "disarm-a-trap", "jump-a-gap"],
-                   ["outrun", "fall-safely", "protect", "fight"]],
-    "HAUNTING": [["interrogate", "detect-life", "raise-a-witness"],
-                 ["sneak-past", "dive", "light-a-dark-place", "climb"],
-                 ["bind-a-spirit", "banish", "present-evidence", "persuade"],
-                 ["rite-without-iron", "banish", "fight"]],
-    "RITE": [["gather-ingredients", "interrogate", "admire"],
-             ["climb", "dive", "pole-or-sail-a-boat"],
-             ["rite-without-iron", "make-an-item", "protect", "brew-a-cure"],
-             ["hold-a-line", "persuade", "banish"]],
-    "WONDER": [["spy", "detect-enchantment", "follow"],
-               ["climb", "dive", "levitate-to-a-ledge", "swim"],
-               ["read-an-enchantment", "mark-and-recall", "telekinesis", "detect-life"],
-               ["persuade", "admire"]],
+                   ["sneak-past", "fight", "water-breathe", "calm"],
+                   ["clear-a-place", "water-breathe", "pick-a-lock", "telekinesis"],
+                   ["stand-a-hard-fight", "fight", "persuade"]],
+    "HAUNTING": [["interrogate", "detect-life", "read-an-enchantment"],
+                 ["sneak-past", "pick-a-lock", "water-breathe"],
+                 ["banish", "turn-the-dead", "present-evidence", "persuade"],
+                 ["soul-trap", "turn-the-dead", "fight"]],
+    "RITE": [["gather-ingredients", "interrogate"],
+             ["sneak-past", "water-breathe", "fight"],
+             ["smith-to-order", "gather-ingredients", "persuade"],
+             ["persuade", "banish", "stand-a-hard-fight"]],
+    "WONDER": [["detect-life", "read-an-enchantment"],
+               ["water-breathe", "sneak-past"],
+               ["read-an-enchantment", "telekinesis", "detect-life"],
+               ["persuade", "calm"]],
 }
 GENERIC = 0.04  # weight of a use outside every pool of the beat
 
@@ -96,7 +96,7 @@ def stage_actions(stage):
     return list(stage.get("actions", [])) + [x for a in stage.get("approaches", []) for x in a.get("actions", [])]
 
 
-def ledger_counts(folder):
+def line_counts(folder):
     skills, uses = collections.Counter(), collections.Counter()
     for f in pathlib.Path(folder).glob("*.yaml") if folder else []:
         q = yaml.safe_load(f.read_text()) or {}
@@ -122,7 +122,7 @@ def main() -> int:
     ap.add_argument("--profile", default="local")
     ap.add_argument("--shapes", default="")
     ap.add_argument("--band", default="D2")
-    ap.add_argument("--ledger")
+    ap.add_argument("--line", "--ledger", dest="line", help="a folder of the line's or packet's records so far")
     ap.add_argument("--plans", type=int, default=5)
     ap.add_argument("--seed", type=int)
     a = ap.parse_args()
@@ -138,7 +138,7 @@ def main() -> int:
         print(f"unknown shape(s): {', '.join(unknown)}; one of {', '.join(SHAPE_BEATS)}")
         return 1
     shapes = shapes or ["WONDER"]
-    used_skills, used_uses = ledger_counts(a.ledger)
+    used_skills, used_uses = line_counts(a.line)
     rng = random.Random(a.seed)
 
     fam_w, skill_w = profile.get("families", {}), profile.get("skills", {})

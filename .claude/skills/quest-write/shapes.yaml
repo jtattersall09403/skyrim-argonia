@@ -1,6 +1,8 @@
 # Routing: each quest's primary shape (first in `shapes`) and its `group` pick the principle files to read and
-# the `shapeData` sections the record must hold. Secondary shapes add their files and sections too.
-# brief.py reads this file: a record missing a required section for its shapes is not whole.
+# the `shapeData` sections the record must hold. Secondary shapes add their files and sections too. Each section is
+# described in the shape's principle file under "Record additions".
+# brief.py reads this file: a record missing a required section for its shapes is not whole, and a record holding a
+# section named under `cut` is told what does that job now.
 
 always: [principles/general.md, principles/actions.md]
 
@@ -12,24 +14,30 @@ lines:   # by the quest row's `group`; `byLine` adds files for one line id
   daedric: [principles/questlines.md, principles/otherworldly.md]
   proposed: [principles/questlines.md]
 byLine:
-  quest.line.detectives: [principles/investigation.md]   # decision 0025; the line id is planned (2.4 §c, 4.1 §d)
+  quest.line.detectives: [principles/investigation.md]   # decision 0025
 
 shapes:
-  MURDER:        {read: [principles/investigation.md], require: [timeline, lies, nodes, leads, redHerrings, openQuestions, accusation, endings]}
+  MURDER:        {read: [principles/investigation.md], require: [timeline, lies, nodes, leads, redHerrings, openQuestions, confrontation, endings]}
   MISSING:       {read: [principles/investigation.md], require: [fate, trail, nodes, leads, openQuestions]}
   RECKONING:     {read: [principles/investigation.md], require: [timeline, guiltyParties, nodes, leads]}
   THEFT:         {read: [principles/crime-and-deceit.md], require: [theftMode]}   # theftMode: commit or solve
-  THEFT/commit:  {read: [principles/crime-and-deceit.md], require: [score, sources, onSiteFact, planTexts, routes, failureLadder, escape, aftermath]}
-  THEFT/solve:   {read: [principles/crime-and-deceit.md, principles/investigation.md], require: [ledger, redHerrings, accusation, nodes, leads]}
-  FRAUD:         {read: [principles/crime-and-deceit.md, principles/investigation.md], require: [records, mismatch, victims, ledger, accusation]}
-  SMUGGLING:     {read: [principles/crime-and-deceit.md], require: [cargo, tell, routes, checkpoints, cargoReveal]}
-  DISPUTE:       {read: [principles/social.md], require: [claims, verdicts, revealOrder, aftermath, deadline]}
-  NEGOTIATION:   {read: [principles/social.md], require: [sides, leverage, objections, aftermath]}
-  SUCCESSION:    {read: [principles/social.md], require: [legitimacies, candidates, voteLedger, revealOrder, deadline]}
-  BONDAGE:       {read: [principles/social.md], require: [bondageSheet, costToTheBound, aftermath]}
+  THEFT/commit:  {read: [principles/crime-and-deceit.md], require: [prize, kept, tellers, waysIn, goesWrong, afterwards]}
+  THEFT/solve:   {read: [principles/crime-and-deceit.md, principles/investigation.md], require: [suspects, redHerrings, confrontation, nodes, leads]}
+  FRAUD:         {read: [principles/crime-and-deceit.md, principles/investigation.md], require: [lie, victims, proof, confrontation]}
+  SMUGGLING:     {read: [principles/crime-and-deceit.md], require: [cargo, tell, waysThrough, watchers, cargoTruth]}
+  DISPUTE:       {read: [principles/social.md], require: [claims, outcomes, revealOrder, whyNow, afterwards]}
+  NEGOTIATION:   {read: [principles/social.md], require: [sides, leverage, objections, afterwards]}
+  SUCCESSION:    {read: [principles/social.md], require: [legitimacies, candidates, backers, revealOrder, whyNow, afterwards]}
+  BONDAGE:       {read: [principles/social.md], require: [theBond, costToTheBound, afterwards]}
   PREDATOR:      {read: [principles/threat-and-journey.md], require: [habit, whyUnsolved, twist, clueChoices, nonCombat, weakSample]}
-  CONTAMINATION: {read: [principles/threat-and-journey.md], require: [source, spread, sign, cure, firstIllLastWell, misdiagnosis, ladder]}
+  CONTAMINATION: {read: [principles/threat-and-journey.md], require: [source, spread, sign, cure, firstIllLastWell, misdiagnosis, stakes]}
   EXPEDITION:    {read: [principles/threat-and-journey.md], require: [rumour, route, gate, prize, return, prepHints, pointOfNoReturn, nonLethalFailure]}
   HAUNTING:      {read: [principles/otherworldly.md], require: [theDead, deathTrace, manifestation, resolutions, wishVsNeed]}
   RITE:          {read: [principles/otherworldly.md], require: [rite, beats, breakPoints]}
   WONDER:        {read: [principles/otherworldly.md], require: [image, rule, answer, familiarGround]}
+
+# Sections a record may still hold whose job is done elsewhere now: fold the content into the named section and
+# delete the old one.
+cut:
+  planTexts: "the ways in are told by people (tellers) and listed in waysIn"
+  escape: "nothing is staged after a theft: Skyrim's crime system does the rest; what follows goes in afterwards"
