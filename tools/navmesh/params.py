@@ -48,3 +48,5 @@ def recast() -> dict:
             "detailSampleMaxError": DETAIL_SAMPLE_MAX_ERROR, "waterMaxDepth": WATER_MAX_DEPTH, "weldZ": WELD_Z,
             "borderSamples": BORDER_SAMPLES, "regionMinSize": REGION_MIN_SIZE,
             "regionMergeSize": REGION_MERGE_SIZE, "vertsPerPoly": VERTS_PER_POLY}
+SKYRIM_UNDER_16 = 0.0677  # the share of Skyrim's navmesh (Tamriel, every 20th cell, 685,148 samples on a 64-unit grid)
+# lying more than 16 units under its LAND (python -m tools.navmesh.land_gap); ours never more

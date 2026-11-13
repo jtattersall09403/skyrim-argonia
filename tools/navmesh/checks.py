@@ -173,11 +173,37 @@ def covered(points: np.ndarray, v: np.ndarray, tv: np.ndarray) -> np.ndarray:
     return out
 
 
+def ground_gap(v: np.ndarray, tv: np.ndarray, cx: int, cy: int, ras: "Rasters", step: float = 128.0) -> np.ndarray:
+    """The navmesh's height minus the ground's on a grid over the cell, where a triangle covers it (0 between the
+    quad's two triangulations, else the distance to the nearer, negative under): an actor walking a navmesh that
+    lies under the land sinks into it (tools/navmesh/land_gap.py measures Skyrim's own)."""
+    g = np.arange(step / 2, su.CELL_UNITS, step)
+    px, py = (a.ravel() for a in np.meshgrid(cx * su.CELL_UNITS + g, cy * su.CELL_UNITS + g))
+    t = v[tv]
+    a, b, c = t[:, 0], t[:, 1], t[:, 2]
+    den = (b[:, 1] - c[:, 1]) * (a[:, 0] - c[:, 0]) + (c[:, 0] - b[:, 0]) * (a[:, 1] - c[:, 1])
+    ok = np.abs(den) > 1e-9
+    a, b, c, den = a[ok], b[ok], c[ok], den[ok]
+    l1 = ((b[:, 1] - c[:, 1]) * (px[:, None] - c[:, 0]) + (c[:, 0] - b[:, 0]) * (py[:, None] - c[:, 1])) / den
+    l2 = ((c[:, 1] - a[:, 1]) * (px[:, None] - c[:, 0]) + (a[:, 0] - c[:, 0]) * (py[:, None] - c[:, 1])) / den
+    l3 = 1 - l1 - l2
+    ins = (l1 >= -1e-9) & (l2 >= -1e-9) & (l3 >= -1e-9)
+    hit = ins.any(axis=1)
+    if not hit.any():
+        return np.zeros(0)
+    zs = np.where(ins, l1 * a[:, 2] + l2 * b[:, 2] + l3 * c[:, 2], np.nan)[hit]
+    lo, hi = ras.ground_band(px[hit], py[hit])
+    k = np.nanargmin(np.abs(zs - ((lo + hi) / 2)[:, None]), axis=1)
+    z = zs[np.arange(len(k)), k]
+    gap = np.where(z < lo, z - lo, np.where(z > hi, z - hi, 0.0))
+    return gap[np.abs(gap) <= 256]          # a navmesh on a placed object is not on the ground
+
+
 def run(out: Path) -> dict:
     ras = Rasters(out / "in")
     box = ras.g["cells"]
     cos_max = math.cos(math.radians(params.MAX_SLOPE_DEG))
-    vdev, cdev = [], []
+    vdev, cdev, gaps = [], [], []
     over = 0
     links = set()
     tri_count = {}
@@ -212,6 +238,7 @@ def run(out: Path) -> dict:
         dw = np.where(np.isfinite(wl), np.abs(v[:, 2] - wl), np.inf)
         d = np.minimum(np.minimum(dg, dw), ras.top_dist(v[:, 0], v[:, 1], v[:, 2], params.TOLERANCE_Z))
         vdev.append(d)
+        gaps.append(ground_gap(v, tv, x, y, ras))
         over += int((d > params.TOLERANCE_Z).sum())
         cen = v[tv].mean(axis=1)
         clo, chi = ras.ground_band(cen[:, 0], cen[:, 1])
@@ -306,6 +333,8 @@ def run(out: Path) -> dict:
             navi_err.append(f"{f:06X}: pathing cell {gx},{gy} is not the NVNM's {n.grid_xy}")
     missing = sorted(set(navm_meta) - seen)
     vd = np.concatenate(vdev) if vdev else np.zeros(0)
+    gp = np.concatenate(gaps) if gaps else np.zeros(0)
+    under = float((gp < -16).mean()) if len(gp) else 0.0
     cd = np.concatenate(cdev) if cdev else np.zeros(0)
     res = {
         "box": box, "navm": len(navm_meta), "triangles": int(sum(tri_count.values())), "vertices": int(len(vd)),
@@ -315,6 +344,8 @@ def run(out: Path) -> dict:
                     "centroid_p99": round(float(np.percentile(cd, 99)), 2) if len(cd) else 0,
                     "centroid_max": round(float(cd.max()), 2) if len(cd) else 0},
         "degenerate": {"count": degenerate, "first": degenerate_at},
+        "land_gap": {"samples": int(len(gp)), "under_16": round(under, 4), "skyrim_under_16": params.SKYRIM_UNDER_16,
+                     "p1": round(float(np.percentile(gp, 1)), 1) if len(gp) else 0},
         "links": {"count": len(links), "asymmetric": len(asym), "bad_target": len(bad_target), "bad_geometry": len(bad_geom)},
         "islands": {"components": len(comps), "main_m2": round(comps[0], 1) if comps else 0,
                     "islands": len(islands), "islands_m2": round(sum(islands), 1),
@@ -338,7 +369,7 @@ def run(out: Path) -> dict:
         res["placed"] = {**pl, "green": ok_placed, "hole_min": params.HOLE_MIN,
                          "stands_tall": {"probed": tall[0], "in_a_hole": tall[1], "share": share},
                          "stands_low": {"probed": stand["low"][0], "in_a_hole": stand["low"][1]}}
-    res["green"] = (ok_placed and over == 0 and degenerate == 0 and not asym and not bad_target and not bad_geom and not missing and not navi_err)
+    res["green"] = (ok_placed and under <= params.SKYRIM_UNDER_16 and over == 0 and degenerate == 0 and not asym and not bad_target and not bad_geom and not missing and not navi_err)
     return res
 
 

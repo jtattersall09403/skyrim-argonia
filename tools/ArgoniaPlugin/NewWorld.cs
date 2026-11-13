@@ -413,7 +413,8 @@ static class NewWorld
             var cfg = n.Configuration;
             cfg.Level = new NpcLevel { Level = (short)a.GetProperty("level").GetInt32() };
             cfg.TemplateFlags &= ~NpcConfiguration.TemplateFlag.Stats;
-            cfg.Flags &= ~(NpcConfiguration.Flag.Unique | NpcConfiguration.Flag.Essential | NpcConfiguration.Flag.Protected | NpcConfiguration.Flag.AutoCalcStats);
+            cfg.Flags &= ~(NpcConfiguration.Flag.Unique | NpcConfiguration.Flag.Essential | NpcConfiguration.Flag.Protected | NpcConfiguration.Flag.AutoCalcStats
+                           | NpcConfiguration.Flag.Summonable);   // a placed body stays and is searched; a summoned one vanishes
             var hm = a.GetProperty("health_mult").GetDouble();
             if (n.PlayerSkills is { } ps) ps.Health = (ushort)Math.Clamp(Math.Max((int)ps.Health, 20) * hm, 1, 65535);
             cfg.HealthOffset = (short)Math.Clamp(cfg.HealthOffset * hm, short.MinValue, short.MaxValue);
