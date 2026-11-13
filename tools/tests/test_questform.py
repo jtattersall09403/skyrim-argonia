@@ -248,4 +248,4 @@ def test_the_compiler_names_what_the_player_sees():
     assert o["name"] and o["destination"]
     form = {"refs": [{"id": "r", "placement": {"base": {"kind": "item", "id": "item.alto-wine"}}}], "stages": [],
             "lines": [{"results": [{"do": "give_item", "item": "item.alto-wine", "count": 1}], "conditions": []}]}
-    assert c.item_names(form) == {"item.alto-wine": "Alto Wine"}
+    assert c.item_names(form) == ({"item.alto-wine": "Alto Wine"}, {})

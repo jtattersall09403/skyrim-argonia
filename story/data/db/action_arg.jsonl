@@ -214,7 +214,7 @@
 {"list_id":"quest_ending:quest.local.lh38|3:world","ord":0,"arg_ord":0,"value":"place.hist-heartland.greenspring"}
 {"list_id":"quest_ending:quest.local.lh38|3:world","ord":0,"arg_ord":1,"value":-20}
 {"list_id":"quest_ending:quest.local.lq25|0:rewards","ord":0,"arg_ord":0,"value":60}
-{"list_id":"quest_ending:quest.local.lq25|0:world","ord":0,"arg_ord":0,"value":"ARG_LQ25_BaitBucket"}
+{"list_id":"quest_ending:quest.local.lq25|0:world","ord":0,"arg_ord":0,"value":"thing.lq25.bait"}
 {"list_id":"quest_ending:quest.local.lq25|0:world","ord":0,"arg_ord":1,"value":1}
 {"list_id":"quest_ending:quest.local.lq25|0:world","ord":1,"arg_ord":0,"value":"npc.hist-heartland.helstrom.boat-captain"}
 {"list_id":"quest_ending:quest.local.lq25|0:world","ord":1,"arg_ord":1,"value":20}

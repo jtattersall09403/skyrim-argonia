@@ -5,7 +5,7 @@
   "editor_id": "ARG_BlockTestTwo",
   "name": "Block Test, the Second",
   "kind": "minor",
-  "start": {"by": "quest_stage", "quest": "quest.test.blocktest", "quest_stage": 70, "stage": 10}
+  "start": {"by": "start_quest", "stage": 10}
  },
  "stages": [
   {"number": 10, "shown": true, "ending": "none", "results": [],

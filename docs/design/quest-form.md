@@ -11,15 +11,18 @@ throughout). Ids, form keys, editor ids and positions are plain strings and numb
 | Field | Holds |
 |---|---|
 | `version` | `1` |
-| `names` | optional: a map of ids the records cannot carry (a number's id, a story item's or faction's id, a skill's own word) to the form's word; the reader writes them back |
-| `quest` | `id` (the record's quest id), `editor_id` (`ARG_<code>`), `name`, `kind` (its line: `main`, `faction` for a faction's quest line, `minor` for any other; compiled from the record's group), `start`: `{by: game, stage}` (running from a new game at that stage) or `{by: quest_stage, quest, quest_stage, stage}` (set to `stage` when that quest's stage is set) |
+| `names` | optional: the name the player sees for each item id the form names that is not a ref (a given page, a stock item), and ids the records cannot carry (a number's id, a faction's id); the reader writes them back |
+| `texts` | optional: a readable item's words, by item id, for an item the form names that is not a ref (a page a line gives) |
+| `places` | optional: every cell a ref stands in or a door leads to, as the player knows it: `{cell: {name, interior, entrance}}`, `entrance` an interior's outside door position. The paper game needs no other source of names |
+| `quest` | `id` (the record's quest id), `editor_id` (`ARG_<code>`), `name`, `kind` (its line: `main`, `faction` for a faction's quest line, `minor` for any other; compiled from the record's group), `start`: `{by: game, stage}` (running from a new game at that stage), `{by: quest_stage, quest, quest_stage, stage}` (set to `stage` when that quest's stage is set) or `{by: start_quest, stage}` (started by another form's `start_quest` result) |
 | `stages[]` | `number` (0 to 255); `shown` (it shows in the journal); `journal` (its text, or null when not shown); `ending`: `none`, `completed` or `failed`; `results` (applied as the stage begins) |
 | `objectives[]` | `number`, `text`, `shown_at` and `completed_at` (stage numbers), `targets` (one or more ref ids: the marker points at each; the compiler reads a comma-separated record target as several) |
-| `refs[]` | every person, thing, door or marker the quest names: `id`, `kind` (`person`, `thing`, `door`, `marker`), `placement`, `enabled` (on at the start), `hostile` (a person the quest asks the player to fight: the builder sets aggression from it), `name`, `destination` and `text` (the ref's own name, a door's destination and a book's text, when the form states them; the reader writes back what is built), `at` (where it stands: `cell`, `interior`, `x`, `y`, `z`) |
-| `placement` | `{existing: <form key>}`, or a new placement `{base: {kind, id}, anchor}` with `kind` `template_person`, `item` or `existing_base`, and `anchor` `{near: <existing reference's form key>, rule}` or `{place: <census place id>, rule}`, `rule` `surface` or `navmesh` (the builder resolves the exact spot); a thing may instead sit in `container` (another thing's ref id) |
+| `refs[]` | every person, thing, door or marker of the record's placements: `id`, `kind` (`person`, `thing`, `door`, `marker`), `placement`, `enabled` (on at the start), `hostile` (a person the quest asks the player to fight: the builder sets aggression from it), `lock` (`{level: novice, apprentice, adept, expert, master or key, key: <item id>}` on a container or door), `owner` (a container's: a person ref or a faction id), `contents` (a new container's exact contents, each `{item, count}`), `count` (a stock item's count in one placed reference), `level` (a new person's or creature's fixed level), `name`, `destination` and `text` (what the player sees: the ref's name, a door's destination, a readable's words; the reader writes back what is built), `at` (where it stands: `cell`, `interior`, `x`, `y`, `z`) |
+| `placement` | `{existing: <form key>}`, or a new placement `{base: {kind, id}, anchor}` with `kind` `template_person` (a person or creature of ours on a template), `template_item` (a new item of ours on a template item, called by the ref's `name`), `item` (a stock item, or an item whose id is the ref's own) or `existing_base`, and `anchor` `{near: <existing reference's form key>, rule}` or `{place: <census place id>, rule}`, `rule` `surface` or `navmesh` (the builder resolves the exact spot); a thing may instead sit in `container` (another thing's ref id) or be `carried_by` a person ref |
+| item ids | a condition, a result, an `if_held` and a lock's key name a unique thing (a `template_item`, or an item whose id is the ref's own) by its ref id, and a stock item by its item id; never a unique thing's base |
 | `lines[]` | `id`, `speaker` (ref id), `kind` (`greeting`, `topic`, `answer`, `speaks_first`), `prompt` (the player's words; null for a greeting or speaks-first), `text` (the spoken words, or the gist when `written` is false), `conditions`, `results`, `first_stage`, `last_stage`, `answers` (for a question: its answer lines' ids). Lines of one speaker are tried in order: the first whose conditions hold is said |
 | `triggers[]` | `id`, `kind` (`take`, `use`, `death`: with `ref`; `quest_stage`: with `quest`, `quest_stage`), `prerequisite`, `sets`; a death may carry `choice: true` (killing them is the player's choice) |
-| `must_live[]` | `ref`, `fail_stage` (a failed ending), `main_message` (the death also shows the kind's message once: only on a main or faction quest, where it is true; a minor quest's death only fails it), optional `message` (must be the kind's own words), optional `from` and `to` (stages: the row holds only while the quest's stage is from `from` up to `to`; either may be left out); the builder makes the quest's start check they are alive when its window holds the start stage |
+| `must_live[]` | `ref`, `fail_stage` (a failed ending), `main_message` (the death also shows the kind's message once: only on a main or faction quest, where it is true; a minor quest's death only fails it), optional `message` (must be the kind's own words), optional `from` and `to` (stages: the row holds only while the quest's stage is from `from` up to `to`; either may be left out; `from` is never before the quest's first shown stage); the builder makes the quest's start check they are alive when its window holds the start stage |
 
 A **speaks-first** line is the one package a quest has: the person stands where `at` says, walks up and says it.
 The form says nothing more about it.
@@ -37,7 +40,8 @@ completed at.
 {ref, value}; `race_is`, `sex_is` {value} (the player's); `spoken_before`, `not_spoken_before` (the speaker to the
 player).
 
-**Results** (`do`): `set_stage` {stage} (this quest); `give_item`, `take_item` {item, count}; `give_gold`,
+**Results** (`do`): `set_stage` {stage} (this quest), with optional `if_held` {item} (a stage's result only: set
+the stage as this stage begins if the player already holds the item); `give_item`, `take_item` {item, count}; `give_gold`,
 `take_gold` {amount}; `set_number`, `add_number` {number, value} (a stored number: a flag, a counter, a standing, a
 quest's own liking); `join_faction` {faction}; `set_rank` {faction, rank}; `change_regard` {ref, by};
 `switch_on`, `switch_off` {ref}; `lock_door`, `unlock_door` {ref}; `show_message` {text}; `speaker_hostile` (a
@@ -50,10 +54,12 @@ failure is one line naming its rule.
 
 | Rule | Fails when |
 |---|---|
-| `schema`, `vocabulary` | a field is missing, of the wrong type or not in the form; a condition or result word is not in its vocabulary; `speaker_hostile` is a stage's result; `not` is on `number_compare` |
+| `schema`, `vocabulary` | a field is missing, of the wrong type or not in the form; a condition or result word is not in its vocabulary; `speaker_hostile` is a stage's result; `if_held` is a line's; `not` is on `number_compare` |
 | `unique-ids` | two stages, objectives, refs, lines, triggers or who-must-live rows share an id |
 | `stages-exist`, `refs-exist` | a stage or ref named anywhere is not in the form; an answer is not a line; a locked door is not a door |
-| `placement` | a new placement has neither or both of an anchor and a container; a container holds a non-thing |
+| `placement` | a new placement has not exactly one of an anchor, a container and a carrier; a container holds a non-thing; a carried thing is not an item or its carrier not a person; a `template_item` has no `name`; a `level` is on anything but a new person; a `count` on anything but a stock item placed by an anchor |
+| `lock`, `owner`, `contents` | a lock on anything but a door or a thing, or its key not an item; an owner on anything but a thing, or not a person or faction; contents on anything but a new container, or naming a ref |
+| `item-id` | an item is named by a unique thing's base, or a stock thing by its ref, or a ref that is no item thing |
 | `journal-text` | a shown stage has no journal text; an ending does not show |
 | `way-out` | a stage that is not an ending has no line, trigger or result that moves the quest on |
 | `reachable` | a stage cannot be reached from the start (a who-must-live death reaches its failed ending) |
@@ -61,14 +67,24 @@ failure is one line naming its rule.
 | `asked-is-target` | a thing to take or use is not a target at its prerequisite stage; a person whose line moves the quest is not a target at that stage |
 | `completes-on-target` | the line or trigger that completes an objective concerns none of its targets |
 | `hand-in` | a line that takes a thing is not gated on holding it, or is not open from the stage a take trigger of that thing opens to the stage the trigger sets (holding it early still works; the take moves only an in-between stage) |
+| `held-take` | a take trigger's prerequisite stage does not set the trigger's stage `if_held` its item (a thing taken before the stage began would move nothing) |
 | `line-window` | a first stage is after the last; a line offered before the first ending stays open into it |
 | `switch-cause` | a stage that switches a reference can be set by a death, another quest's stage, the start or another stage (the player could be anywhere) |
 | `away` | a switched reference is in the same cell as the speaker or the taken or used thing, or, both outdoors, under `AWAY_UNITS` (18,000) from it; a position is missing (another interior, or across the interior/exterior line, is away) |
 | `result-limits` | the stages hold more than `MAX_STAGE_RESULTS` (128) results in all, or a line more than `MAX_LINE_RESULTS` (128) |
 | `must-live-fails` | a who-must-live row's stage is not a failed ending |
+| `must-live-window` | a who-must-live row holds before the quest's first shown stage (its death would fail a quest the player has not begun), or its `from` is after its `to` |
 | `main-message` | a minor quest's who-must-live row shows the message |
 | `death-hostile` | a death trigger names a person neither hostile nor who-must-live, and the kill is not marked the player's choice |
 | `speaks-first-has-line` | a speaks-first line has no topic or greeting line with the same speaker, words, results and window |
+
+**The set.** `python3 -m tools.questform check --set <dir or forms...>` also checks the forms as the quests one game
+holds (`rules.check_set`):
+
+| Rule | Fails when |
+|---|---|
+| `set-start` | a quest is started more than one way (its `quest_stage` start and a `start_quest` result, or a new game and a result); a `start_quest` quest has no result that starts it, or results that can both fire in one play (more than one stage, unless each is an ending of one quest); a result starts a quest at another stage than its start |
+| `set-stages` | a form names a quest that is not in the set, or a stage that quest does not have (its start, a quest-stage trigger, a stage condition, a `start_quest` result) |
 
 ## How a form becomes records
 
@@ -223,20 +239,25 @@ hint.
 | Record | Form |
 |---|---|
 | `startWhen` a topic or a take | `{by: game, stage: 0}`, a hidden stage 0, and the line or trigger that sets `start` |
-| `startWhen` another quest's stage; or no `startWhen` and another quest's `setStage` of it | `{by: quest_stage}` |
+| `startWhen` another quest's stage | `{by: quest_stage}` |
+| no `startWhen` and another quest's `setStage` of it | `{by: start_quest}` (that quest's stage carries the `start_quest` result) |
 | no `startWhen`, a `start`, nothing that starts it | `{by: game, stage: start}` |
 | stage `journalText`, `hidden`, `ending`; its `onEnter` and its ending's `world` and `rewards` | stage `journal`, `shown`, `ending`, `results` |
 | objective `objectiveText`, `target` (one ref, or several separated by commas); the stage's successors | objective `text`, `targets`, `shown_at`, `completed_at` |
-| successor or fail-forward `topicHeardFrom` (with gates under `all`) | a line at that stage that sets the stage |
-| `hasItem`; `not npcAlive`; `questStage`/`stageEverReached`; a `flag` a `thing_hook` sets | take, death, quest-stage, use trigger |
-| `not npcAlive` to a failed ending | a who-must-live row (`main_message` for the main and faction groups) |
+| successor or fail-forward `topicHeardFrom` (with gates under `all`) | a line at that stage that sets the stage, with those gates; when every line of the stage is gated and one checks skill or gold that no other line catches, the fallback line (the topic's written `fail` info, else its `fallback` gist; refused as `fallback` without one), gated on the rest of the gates; never an ungated copy |
+| a topic's `when` | a gate on every line of the topic |
+| `hasItem`; `not npcAlive`; `questStage`/`stageEverReached`; a `flag` a `thing_hook` sets | take, death, quest-stage, use trigger; a take also gives its prerequisite stage the result `set_stage` to the trigger's stage `if_held` the item |
+| `not npcAlive` to a failed ending | a who-must-live row (`main_message` for the main and faction groups), its `from` and `to` the first and last stage whose fail-forwards name the person, `from` raised to the first shown stage; while the quest waits at a hidden start stage, every line that moves it on is gated on that person alive (a death before the quest is shown leaves it unable to start, saying nothing) |
+| `hasItem`, `giveItem`, `takeItem` of a ref | the ref's item id (a unique thing's ref id, a stock thing's base); naming a unique thing's base is refused (`item id`) |
 | `objectiveComplete` | the objective's own completion test |
 | gates: `questStage`, `stageEverReached`, `flag`, `counterAtLeast`, standings, `factionRankAtLeast`, `hasItem`, `goldAtLeast`, `skillAtLeast`, `npcAlive`, `dispositionAtLeast`, `raceIs`, `sexIs` | the matching condition |
 | `setFlag`, `addCounter`, `changeStanding`, `changeSettlementStanding` | `set_number`, `add_number` |
 | `changeDisposition`, `enableRef`/`disableRef`, `setDoorAccess`, `give`/`take` `Item`/`Gold`, `setFactionRank`, `setStage` | `change_regard`, `switch_on`/`off`, `lock_door`/`unlock_door`, the item and gold results, `set_rank`, `set_stage` or `start_quest` |
 | `grantTopic`, `removeTopic` | dropped: a line's window opens and closes it |
-| the record's `topics` (`kind` greeting or speaks-first; an answer is a reply of a written question) | lines; words from `story/data/quest_lines/<code>.json`, else the written `dialogue_line` rows, else the `intent` as a gist |
-| the record's `placements` | `refs` (an existing actor's `at` from `bmv_placement`) |
+| the record's `topics` (`kind` greeting or speaks-first; an answer is a reply of a written question) | lines; words from `story/data/quest_lines/<code>.json` (a topic's `infos`, or one info written as `prompt` and `lines`; variant `main` for the line, `fail` for its fallback), else the written `dialogue_line` rows, else the `intent` as a gist |
+| every row of the record's `placements` | `refs`, with its `lock`, `owner`, `count`, `level`, `carriedBy`; an existing actor's or door's `at` from the census; the `name` the player sees (the row's, else the thing's, else the cast's, else the census's) |
+| the record's things' `name` and `text` for items that are not refs | `names`, `texts` |
+| the cells the refs stand in and the doors lead to | `places`: the census's name (a cell's own, else its settlement's: the designed place it lands as, else BM&V's map marker, else the settlement), a row's `placeName` over it; a door into a worldspace's persistent cell is named by the grid square it opens on; refused as `place name` when nothing names it |
 
 Refused, each with its hint: walking into or standing in a place (`inZone`, `inSettlement`, `inCell`, `inRegion`,
 `discovered`); the clock (`timeOfDay`, `daysSince`, dates, seasons, weather, tide, `startTimer`); being seen
@@ -244,12 +265,13 @@ Refused, each with its hint: walking into or standing in a place (`inZone`, `inS
 moved (`npcAtMark`, `setSchedule`, `moveRef`, the player included); `knowsTopic`; `placeCleared`; local variants;
 an `any` or a `not` as a gate; an `all` around a trigger; a flag moving a stage; any other term; and missing data:
 `placement` (a named ref without a placements row), `objective target`, `objective text`, `start`, `death both
-ways` (a death that both fails and moves the quest).
+ways` (a death that both fails and moves the quest), `fallback`, `item id`, `place name`.
 
 ## The gate
 
 `make check` runs the form's unit tests and `python3 -m tools.questform gate`: the example
-(`tools/questform/examples/opening.json`) passes, and every quest record with stages is compiled and checked against
+(`tools/questform/examples/opening.json`) and the block test (`tools/questform/blocktest/`, also as a set) pass, the
+forms of every record that fits pass as a set, and every quest record with stages is compiled and checked against
 `story/data/questform_owed.json`, which lists each quest that does not fit with its refused terms (a failed rule is
 `check:<rule>`). The gate fails on a quest that does not fit and is not listed, on a listed quest that now fits, and
 on a listed quest whose terms changed. The list only shrinks: `python3 -m tools.questform owed --write` rewrites the

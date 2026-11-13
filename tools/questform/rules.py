@@ -22,9 +22,12 @@ MAX_STAGE_RESULTS = 128
 MAX_LINE_RESULTS = 128
 
 RULES = ("schema", "vocabulary", "unique-ids", "stages-exist", "refs-exist", "placement", "lock", "owner", "contents",
-         "journal-text",
-         "way-out", "reachable", "objective-target-on", "asked-is-target", "completes-on-target", "hand-in", "line-window",
-         "switch-cause", "away", "must-live-fails", "main-message", "death-hostile", "result-limits", "speaks-first-has-line")
+         "item-id", "journal-text",
+         "way-out", "reachable", "objective-target-on", "asked-is-target", "completes-on-target", "hand-in", "held-take",
+         "line-window", "switch-cause", "away", "must-live-fails", "must-live-window", "main-message", "death-hostile",
+         "result-limits", "speaks-first-has-line")
+# The rules over a set of forms played together (check_set).
+SET_RULES = ("set-start", "set-stages")
 
 
 def _schema(form) -> list[tuple[str, str]]:
@@ -66,16 +69,33 @@ class Form:
         out.discard(n)
         return out
 
-    def causes(self, n) -> list[tuple[str, str | None]]:
+    def causes(self, n, seen=None) -> list[tuple[str, str | None]]:
         """How stage n can be set, as (kind, reference): a line (its speaker), a take, use or death trigger (its
-        reference), another quest's stage, the quest's start, a who-must-live death, another stage's results."""
+        reference), another quest's stage, the quest's start, a who-must-live death, another stage's results. A
+        stage's `if_held` result happens as that stage begins, so it has that stage's causes."""
+        seen = (seen or set()) | {n}
         out = [("line", ln["speaker"]) for ln in self.lines if n in _stage_sets(ln["results"])]
         out += [(t["kind"], t.get("ref")) for t in self.triggers if t["sets"] == n]
         if self.f["quest"]["start"]["stage"] == n:
             out.append(("start", None))
         out += [("death", m["ref"]) for m in self.f["must_live"] if m["fail_stage"] == n]
-        out += [("stage", None) for s in self.f["stages"] if n in _stage_sets(s["results"])]
+        for s in self.f["stages"]:
+            for r in s["results"]:
+                if r["do"] == "set_stage" and r["stage"] == n:
+                    if "if_held" in r and s["number"] not in seen:
+                        out += self.causes(s["number"], seen)
+                    elif "if_held" not in r:
+                        out.append(("stage", None))
         return out
+
+    def item_of(self, ref_id) -> str:
+        """The form's id for a placed item thing: a unique thing (a template item, or an item whose id is its own) by
+        its ref id; a stock thing (gold, lockpicks) by its base."""
+        r = self.refs[ref_id]
+        base = r["placement"].get("base", {})
+        if base.get("kind") == "item" and base.get("id") != ref_id:
+            return base["id"]
+        return ref_id
 
     def switches(self):
         """(stage from which it holds, ref, on) for every switch: a stage's own at that stage; a line's at the stage
@@ -137,6 +157,9 @@ def _named_stages(fm: Form):
         yield f"trigger {t['id']}", t["sets"]
     for m in fm.f["must_live"]:
         yield f"who-must-live {m['ref']}", m["fail_stage"]
+        for k in ("from", "to"):
+            if k in m:
+                yield f"who-must-live {m['ref']}", m[k]
 
 
 def _named_refs(fm: Form):
@@ -185,16 +208,20 @@ def check(form) -> list[tuple[str, str]]:
             for r in [x["ref"]] if r in fm.refs and fm.refs[r]["kind"] != "door"]
     out += [("vocabulary", f"stage {s['number']}: speaker_hostile is a line's result (the speaker turns hostile)")
             for s in form["stages"] if any(r["do"] == "speaker_hostile" for r in s["results"])]
+    out += [("vocabulary", f"line {ln['id']}: if_held is a stage's result (checked as the stage begins)")
+            for ln in fm.lines if any("if_held" in r for r in ln["results"])]
     out += _placement(fm)
     out += _lock_owner_contents(fm)
     if out:
         return out          # the graph rules below need every named stage and ref to exist
+    out += _item_ids(fm)
     out += _journal(fm)
     out += _graph(fm)
     out += _objectives(fm)
     out += _asked(fm)
     out += _completes(fm)
     out += _hand_in(fm)
+    out += _held_take(fm)
     out += _windows(fm)
     out += _switch_cause(fm)
     out += _away(fm)
@@ -217,10 +244,8 @@ def _hand_in(fm: Form):
     out = []
     taken_bases = defaultdict(list)
     for t in fm.triggers:
-        if t["kind"] == "take":
-            base = fm.refs[t["ref"]]["placement"].get("base", {})
-            if base.get("kind") == "item":
-                taken_bases[base["id"]].append(t)
+        if t["kind"] == "take" and fm.refs[t["ref"]]["placement"].get("base", {}).get("kind") in ("item", "template_item"):
+            taken_bases[fm.item_of(t["ref"])].append(t)
     for ln in fm.lines:
         for r in ln["results"]:
             if r["do"] != "take_item":
@@ -263,8 +288,15 @@ def _placement(fm: Form):
             out.append(("placement", f"ref {r['id']}: a new placement has an anchor, a container or a carrier, exactly one"))
         if box and (r["kind"] != "thing" or fm.refs.get(box, {}).get("kind") != "thing"):
             out.append(("placement", f"ref {r['id']}: only a thing sits in a container, and the container is a thing"))
-        if holder and (r["kind"] != "thing" or p["base"]["kind"] != "item" or fm.refs.get(holder, {}).get("kind") != "person"):
+        if holder and (r["kind"] != "thing" or p["base"]["kind"] not in ("item", "template_item")
+                       or fm.refs.get(holder, {}).get("kind") != "person"):
             out.append(("placement", f"ref {r['id']}: only an item thing is carried, and the carrier is a person"))
+        if p["base"]["kind"] == "template_item" and (r["kind"] != "thing" or not r.get("name")):
+            out.append(("placement", f"ref {r['id']}: a new item of ours is a thing with its own name"))
+        if "level" in r and (r["kind"] != "person" or p["base"]["kind"] != "template_person"):
+            out.append(("placement", f"ref {r['id']}: a fixed level is a new person's or creature's"))
+        if "count" in r and (r["kind"] != "thing" or p["base"]["kind"] != "item" or "anchor" not in p):
+            out.append(("placement", f"ref {r['id']}: a count is on a stock item placed by an anchor"))
     return out
 
 
@@ -459,6 +491,14 @@ def _death_hostile(fm: Form):
 def _must_live(fm: Form):
     out = [("must-live-fails", f"who-must-live {m['ref']}: stage {m['fail_stage']} is not a failed ending")
            for m in fm.f["must_live"] if fm.stages[m["fail_stage"]]["ending"] != "failed"]
+    first = min((n for n, s in fm.stages.items() if s["shown"] and s["ending"] == "none"), default=None)
+    for m in fm.f["must_live"]:
+        lo = m.get("from", fm.f["quest"]["start"]["stage"])
+        if "to" in m and lo > m["to"]:
+            out.append(("must-live-window", f"who-must-live {m['ref']}: from {lo} is after to {m['to']}"))
+        if first is not None and lo < first:
+            out.append(("must-live-window", f"who-must-live {m['ref']} holds from stage {lo}, before the quest's "
+                        f"first shown stage {first}: a death there would fail a quest the player has not begun"))
     if fm.f["quest"]["kind"] == "minor":
         out += [("main-message", f"who-must-live {m['ref']}: a minor quest's death shows no message; it only fails "
                  "the quest") for m in fm.f["must_live"] if m["main_message"]]
@@ -476,6 +516,120 @@ def _speaks_first(fm: Form):
         if not twin:
             out.append(("speaks-first-has-line", f"line {ln['id']} speaks first and has no ordinary line with the "
                         "same speaker, words, results and stages"))
+    return out
+
+
+def _item_ids(fm: Form):
+    """One id for one thing: a condition, a result, an if_held or a lock's key names a unique thing by its ref id and a
+    stock item by its base, never a unique thing's base (it would count every item of that base) nor a stock thing's
+    ref."""
+    out = []
+    unique_base = {}
+    for r in fm.f["refs"]:
+        b = r["placement"].get("base", {})
+        if r["kind"] == "thing" and b.get("kind") in ("item", "template_item") and fm.item_of(r["id"]) == r["id"] \
+                and b["id"] != r["id"]:
+            unique_base[b["id"]] = r["id"]
+
+    def one(where, item):
+        if item in fm.refs:
+            r = fm.refs[item]
+            if r["kind"] != "thing" or r["placement"].get("base", {}).get("kind") not in ("item", "template_item"):
+                out.append(("item-id", f"{where} names {item}, which is no item thing"))
+            elif fm.item_of(item) != item:
+                out.append(("item-id", f"{where} names the stock thing {item}: name its item {fm.item_of(item)}"))
+        elif item in unique_base:
+            out.append(("item-id", f"{where} names {item}, the base of the quest thing {unique_base[item]}: name the "
+                        "thing"))
+    for where, res in _all_results(fm):
+        for x in res:
+            for k in ("item", "if_held"):
+                if k in x:
+                    one(where, x[k])
+    for ln in fm.lines:
+        for c in ln["conditions"]:
+            if "item" in c:
+                one(f"line {ln['id']}", c["item"])
+    for r in fm.f["refs"]:
+        if r.get("lock", {}).get("key"):
+            one(f"ref {r['id']} lock", r["lock"]["key"])
+    return out
+
+
+def _held_take(fm: Form):
+    """A take trigger moves the quest only when the thing is taken while it is open; a thing already held as its
+    prerequisite stage begins moves it by that stage's own result: set_stage to the trigger's stage if_held the item."""
+    out = []
+    for t in fm.triggers:
+        if t["kind"] != "take":
+            continue
+        item = fm.item_of(t["ref"])
+        want = {"do": "set_stage", "stage": t["sets"], "if_held": item}
+        if want not in fm.stages[t["prerequisite"]]["results"]:
+            out.append(("held-take", f"trigger {t['id']}: stage {t['prerequisite']} does not set stage {t['sets']} "
+                        f"as it begins when {item} is already held"))
+    return out
+
+
+def check_set(forms: list[dict]) -> list[tuple[str, str]]:
+    """The rules over forms played together. `set-start`: a quest not running from a new game is started one way
+    only: by its `quest_stage` start (no form's result starts it as well), or by `start_quest` results that all set
+    its start stage and can only fire once in a play (all on one stage, or each on an ending of one quest); a quest
+    running from a new game is started by nothing else. `set-stages`: every other quest's stage a form names (its
+    start, a trigger, a condition, a start_quest result) is a stage of a form of the set."""
+    out = []
+    by_id = {f["quest"]["id"]: f for f in forms}
+    stages = {q: {s["number"]: s for s in f["stages"]} for q, f in by_id.items()}
+    starters = defaultdict(list)          # quest -> [(from quest, where, stage set, the source stage or None)]
+    for f in forms:
+        q = f["quest"]["id"]
+        for s in f["stages"]:
+            for r in s["results"]:
+                if r["do"] == "start_quest":
+                    starters[r["quest"]].append((q, f"stage {s['number']}", r["stage"], s["number"]))
+        for ln in f["lines"]:
+            for r in ln["results"]:
+                if r["do"] == "start_quest":
+                    starters[r["quest"]].append((q, f"line {ln['id']}", r["stage"], None))
+
+    def named(q, where, other, n):
+        if other not in by_id:
+            out.append(("set-stages", f"{q}: {where} names {other}, which is not in the set"))
+        elif n not in stages[other]:
+            out.append(("set-stages", f"{q}: {where} names stage {n} of {other}, which it does not have"))
+    for q, f in sorted(by_id.items()):
+        st = f["quest"]["start"]
+        got = starters.get(q, [])
+        if st["by"] == "quest_stage":
+            named(q, "its start", st["quest"], st["quest_stage"])
+        for frm, where, n, _src in got:
+            if n != st["stage"]:
+                out.append(("set-start", f"{q}: {frm} {where} starts it at stage {n}, not its start stage "
+                            f"{st['stage']}"))
+        if st["by"] in ("game", "quest_stage") and got:
+            how = "a new game" if st["by"] == "game" else f"{st['quest']}'s stage {st['quest_stage']}"
+            out += [("set-start", f"{q}: started by {how} and also by {frm} {where}") for frm, where, _, _ in got]
+        if st["by"] == "start_quest":
+            if not got:
+                out.append(("set-start", f"{q}: started by a start_quest result and no form of the set has one"))
+            else:
+                srcs = {(frm, src) for frm, _, _, src in got}
+                quests = {frm for frm, _ in srcs}
+                once = len(srcs) == 1 or (len(quests) == 1 and all(
+                    src is not None and stages[frm][src]["ending"] != "none" for frm, src in srcs))
+                if not once:
+                    out.append(("set-start", f"{q}: started by {len(got)} results that can fire in one play: "
+                                + ", ".join(f"{frm} {where}" for frm, where, _, _ in got)))
+        for t in f["triggers"]:
+            if t["kind"] == "quest_stage":
+                named(q, f"trigger {t['id']}", t["quest"], t["quest_stage"])
+        for ln in f["lines"]:
+            for c in ln["conditions"]:
+                if c["is"].startswith("stage_") and c["quest"] != q:
+                    named(q, f"line {ln['id']}", c["quest"], c["stage"])
+    for target, got in sorted(starters.items()):
+        for frm, where, n, _ in got:
+            named(frm, where, target, n)
     return out
 
 

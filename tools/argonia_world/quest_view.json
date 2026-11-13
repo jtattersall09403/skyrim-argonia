@@ -1250,6 +1250,18 @@
       [
        "where"
       ]
+     ],
+     [
+      "name",
+      [
+       "name"
+      ]
+     ],
+     [
+      "text",
+      [
+       "text"
+      ]
      ]
     ],
     "conds": [],
@@ -1257,9 +1269,11 @@
     "order": [
      "id",
      "kind",
+     "name",
      "source",
      "states",
-     "where"
+     "where",
+     "text"
     ],
     "children": [
      {
@@ -1423,6 +1437,62 @@
        "at",
        "interior"
       ]
+     ],
+     [
+      "carried_by",
+      [
+       "carriedBy"
+      ]
+     ],
+     [
+      "name",
+      [
+       "name"
+      ]
+     ],
+     [
+      "level",
+      [
+       "level"
+      ]
+     ],
+     [
+      "count",
+      [
+       "count"
+      ]
+     ],
+     [
+      "lock_level",
+      [
+       "lock",
+       "level"
+      ]
+     ],
+     [
+      "lock_key",
+      [
+       "lock",
+       "key"
+      ]
+     ],
+     [
+      "owner",
+      [
+       "owner"
+      ]
+     ],
+     [
+      "text",
+      [
+       "text"
+      ]
+     ],
+     [
+      "place_name",
+      [
+       "placeName"
+      ]
      ]
     ],
     "conds": [],
@@ -1432,12 +1502,20 @@
      "kind",
      "formKey",
      "base",
+     "name",
+     "level",
+     "count",
      "anchor",
      "container",
+     "carriedBy",
      "enabled",
      "hostile",
      "killChoice",
-     "at"
+     "lock",
+     "owner",
+     "text",
+     "at",
+     "placeName"
     ],
     "children": []
    }
@@ -2007,9 +2085,22 @@
       [
        "kind"
       ]
+     ],
+     [
+      "fallback",
+      [
+       "fallback"
+      ]
      ]
     ],
-    "conds": [],
+    "conds": [
+     [
+      "when",
+      [
+       "when"
+      ]
+     ]
+    ],
     "acts": [],
     "order": [
      "id",
@@ -2018,7 +2109,9 @@
      "kind",
      "stages",
      "essential",
+     "when",
      "intent",
+     "fallback",
      "uses",
      "grants",
      "new",

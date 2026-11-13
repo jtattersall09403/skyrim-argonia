@@ -37,8 +37,8 @@ in prose. Worked examples, exported from the rows: [examples/lh38.yaml](examples
 | `journal` | the text key `text.journal.<code>.<id>`; + `journalText`: the entry's draft, in the style guide's `journal` register (§4 below) |
 | `onEnter` | actions (85 §B), e.g. `{grantTopic: topic.x}`, `{setFlag: [flag.x, true]}` |
 | `objectives` | `{id, text: text.objective.<code>.<id>, target, completeWhen: <condition>}`; + `objectiveText`: an imperative with a full stop; `target`: the cast, thing or ref id the compass marker points at (`none` only for a choice between several) |
-| + `hidden` | `true` for a stage the build needs and the player never reads (a zone that moves people, one part of an "all of"); it has no journal or objective |
-| `successors`, `failForward` | `{to, when: <condition>}`; every stage that names a person has a fail-forward for that person's death |
+| + `hidden` | `1` for a stage the build needs and the player never reads (the stage 0 a quest waits at for its opening line); it has no journal or objective |
+| `successors`, `failForward` | `{to, when: <condition>}`. A fail-forward on a person's death to a failed ending names someone the quest cannot go on without (who must live): it holds over the stages that carry it, never before the quest's first shown stage, and a person dead before then leaves the quest unable to start. A main-quest record names at least one |
 | `ending` | `complete` or `failed` on an end stage; + `endingId`: the `endings` row it plays |
 | `outside` | `{packet}` when the stage is built in a later packet (import field) |
 | + `actions` / `approaches` | `{skill, use, target, setting, note}` from `skill-uses.yaml`; approaches are `{id, actions}` (principles/actions.md). Supporting acts as `{system, use}` |
@@ -55,16 +55,46 @@ in prose. Worked examples, exported from the rows: [examples/lh38.yaml](examples
 | 4 | `truth` | numbered physical events: `id`, `when`, `who`, `where`, `what` (and why) | premise + cast motives |
 | 5 | `playerStart`, `facts` | facts any player has on arrival; the quest's new facts `{id, claim, from}`, `from` a truth event, a place fact or `culture.*#field` | truth |
 | 6 | `cast` | each person by `npc` id with `wants`, `fears`, `knowledge` per fact (`knows`, `believes: <false version>`, `suspects`, `hides: <reason>`; absent = ignorant), `changes` per stage; `persona` only for what the registry and stance file lack, marked `invented` | `npc`, `stance`, culture sheets, 36-cast-roster |
-| 7 | `things` | every physical thing: `{id, kind, source: existing <id> | new, where, states}` | truth + clues |
-| 7b | `placements` | where every person, thing, door and marker the quest names stands: `{ref, kind (person, thing, door, marker), formKey}` for an existing reference, or `{ref, kind, base: {kind (template_person, item, existing_base), id}, anchor: {near: <form key> or place: <census place>, rule: surface or navmesh}}` for a new one, or a thing's `container` (a thing's ref); `enabled` (on at the start), `hostile` (the player is to fight them), `killChoice` (killing them is the player's choice), `at: {cell, interior, x, y, z}` (read from the census for an existing actor) | things + cast |
+| 7 | `things` | every physical thing: `{id, kind, name, source: existing <id> | new, where, states, text}`; `name` is what the player sees for a thing of ours (a new item, a container, a page), `text` a readable thing's words | truth + clues |
+| 7b | `placements` | where every person, thing, door and marker of the quest stands; every row is in the quest's form. See "Placements" below | things + cast |
 | 8 | `conclusions`, `clues` | each conclusion with three clues or more; each clue's `form` (line, thing, place, behaviour), `carrier`, `gives`, `supports` | cast knowledge + things |
 | 9 | `shapeData` | the sections each shape requires (`shapes.yaml`) | truth + clues |
 | 10 | `stages` | as §1, with actions, learns and directions | conclusions + clues |
-| 11 | `endings` | `{id, when, world (actions), seen, rewards (actions)}`: two or more with real costs | stages |
-| 12 | `topics` | `{id: topic.<slug>, label, person, kind, stages, essential, intent, uses, hides, grants}`; the id is an existing `topic` row or `new`; `kind` is left out for a topic the player picks, `greeting`, or `speaks-first` (the person walks up and says it; it stays open as a topic too) | cast + stages |
+| 11 | `endings` | `{id, when, world (actions, may be left out), seen, rewards (actions)}`: two or more with real costs | stages |
+| 12 | `topics` | `{id: topic.<slug>, label, person, kind, stages, essential, when, intent, fallback, uses, hides, grants}`; the id is an existing `topic` row or `new`; `kind` is left out for a topic the player picks, `greeting`, or `speaks-first` (the person walks up and says it; it stays open as a topic too). `when` gates every line of the topic (a hand-in that moves no stage: `hasItem`); `fallback` is what the person says when the line's check fails, its gist until the lines are written. See "Checks and their fallbacks" below | cast + stages |
 | 13 | `review` | the `quest-review` findings and how each was answered; first the writer's lore-check entries (`id: L<n>`, `severity: lore`, quest-write §6b), then the reviewer's (`severity: blocking` for a quest-review §0 blocking item, otherwise `high`, `medium`, `low`) | quest-write §6b, quest-review |
 
 A **line record** (faction, main, Daedric) comes before its quests: `principles/questlines.md` lists its sections.
+
+### Placements
+
+One row per person, thing, door and marker, keyed by `ref` (the id the record uses everywhere):
+
+| Field | What it holds |
+|---|---|
+| `ref`, `kind` | the id; `person` (a creature too), `thing`, `door` or `marker` |
+| `formKey` | an existing reference; or else `base` and one of `anchor`, `container`, `carriedBy` for a new one |
+| `base` | `{kind, id}`: `template_person` (a person or creature of ours on a template), `template_item` (a new item of ours on a template item: it needs a `name`), `item` (a stock item such as gold or lockpicks, or an item whose id is the thing's own), `existing_base` (a container, a static) |
+| `anchor` | `{near: <form key>, rule}` or `{place: <census place>, rule}`, `rule` `surface` or `navmesh` |
+| `container`, `carriedBy` | a thing's ref it lies in; a person's ref whose pocket it is in (the key on its owner) |
+| `name`, `level` | what the player sees for a new person, creature or item when the cast or the thing has no name; a new person's or creature's fixed level (decision 0035) |
+| `count` | how many of a stock item lie in one placed reference (five lockpicks) |
+| `lock`, `owner` | `{level: novice to master or key, key: <a thing's ref or an item id>}` on a container or door; the container's owner, a person's ref or a faction |
+| `enabled`, `hostile`, `killChoice` | on at the start; the player is to fight them; killing them is the player's choice |
+| `text` | a readable thing's words (a placed note) |
+| `at`, `placeName` | `{cell, interior, x, y, z}` (read from the census for an existing actor or door); the name the player knows the cell by where the census gives none (on a door: the place it leads to) |
+
+**One id for one thing.** A condition or action names a unique quest thing by its `ref` (`hasItem: [thing.mq03.sap-jar, 1]`),
+and a stock item by its item id (`item.lockpick`); never a unique thing's template, which would count every item of that
+base. A thing two quests place (MQ01 puts out the lockbox MQ03 uses) is stated alike in both.
+
+### Checks and their fallbacks
+
+A line that moves a stage carries its successor's gates. A check the player can fail in front of the speaker (a skill,
+an amount of gold) has a fallback: the written line's `fail` info, or until then the topic's `fallback` gist. Without
+one the quest does not compile. A line whose failure another line already catches (the haggle when the persuasion fails)
+needs none. A gated line never gets an ungated copy: a start topic gated on another quest's stage is simply not offered
+before it.
 
 ## 3. The engine mapping: the built shapes
 

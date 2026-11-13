@@ -149,28 +149,25 @@ def test_census_and_placement():
 
 
 def test_helgen_rule():
+    """Nobody is essential: a main-quest record names who must live; text saying someone is essential counts for
+    nothing, and a quest of another line is not asked."""
     rc = recs()
+    rc.quest_kind = {"q": ("main", None)}
     rc.topics = [("q", "npc.a", True, {10})]
-    assert any(x.startswith("helgen") for x in ac.record_warnings(rc))
     rc.quest_text = {"q": "Build notes: Ana-Tei is essential until stage 40."}
-    assert ac.record_warnings(rc) == []
-    rc.quest_text = {}
+    assert any(x.startswith("helgen") and "names who must live" in x for x in ac.record_warnings(rc))
     rc.stages["q"][10]["ff"] = {"npc.a"}
     assert ac.record_warnings(rc) == []
-
-
-def test_helgen_rule_across_quests():
-    rc = recs()
-    rc.people = [("quest.l.a", "npc.a"), ("quest.l.b", "npc.a")]
-    rc.stages = {"quest.l.a": {10: {"succ": [], "ff": set()}}, "quest.l.b": {10: {"succ": [(20, {"inZone"}, set())], "ff": set()}}}
-    rc.topics = [("quest.l.b", "npc.a", True, {10})]
-    rc.quest_text = {"quest.l.a": "Ana-Tei is in the camp.", "quest.l.b": "Ana-Tei is essential to stage 10."}
-    w = ac.record_warnings(rc)
-    assert any("quest.l.b: stage 10" in x and "quest.l.a first" in x for x in w)
-    rc.quest_text["quest.l.a"] = "Ana-Tei is essential from the start."
+    rc.stages["q"][10]["ff"] = set()
+    rc.quest_kind = {"q": ("local", None)}
     assert ac.record_warnings(rc) == []
-    rc.quest_text["quest.l.a"] = ""
-    rc.stages["quest.l.b"][10]["ff"] = {"npc.a"}
+
+
+def test_a_placements_row_places_a_person():
+    rc = recs()
+    rc.people.append(("q", "npc.b"))
+    assert any(x.startswith("placed") for x in ac.record_warnings(rc))
+    rc.placed = {("q", "npc.b")}
     assert ac.record_warnings(rc) == []
 
 

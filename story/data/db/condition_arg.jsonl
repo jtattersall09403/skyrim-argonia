@@ -2627,13 +2627,13 @@
 {"condition_id":"quest_successor:quest.local.lq25|3|0:when","ord":1,"value":1}
 {"condition_id":"quest_successor:quest.local.lq25|3|1:when.0","ord":0,"value":"topic.lq25-tell-captain"}
 {"condition_id":"quest_successor:quest.local.lq25|3|1:when.0","ord":1,"value":"npc.hist-heartland.helstrom.boat-captain"}
-{"condition_id":"quest_successor:quest.local.lq25|3|1:when.1","ord":0,"value":"ARG_LQ25_BaitBucket"}
+{"condition_id":"quest_successor:quest.local.lq25|3|1:when.1","ord":0,"value":"thing.lq25.bait"}
 {"condition_id":"quest_successor:quest.local.lq25|3|1:when.1","ord":1,"value":1}
 {"condition_id":"quest_successor:quest.local.lq25|3|2:when","ord":0,"value":"topic.lq25-keep-quiet"}
 {"condition_id":"quest_successor:quest.local.lq25|3|2:when","ord":1,"value":"npc.hist-heartland.helstrom.lq25-crew-steerer"}
 {"condition_id":"quest_successor:quest.local.lq25|4|0:when.0","ord":0,"value":"topic.lq25-tell-captain"}
 {"condition_id":"quest_successor:quest.local.lq25|4|0:when.0","ord":1,"value":"npc.hist-heartland.helstrom.boat-captain"}
-{"condition_id":"quest_successor:quest.local.lq25|4|0:when.1","ord":0,"value":"ARG_LQ25_BaitBucket"}
+{"condition_id":"quest_successor:quest.local.lq25|4|0:when.1","ord":0,"value":"thing.lq25.bait"}
 {"condition_id":"quest_successor:quest.local.lq25|4|0:when.1","ord":1,"value":1}
 {"condition_id":"quest_successor:quest.local.lq25|4|1:when","ord":0,"value":"topic.lq25-keep-quiet"}
 {"condition_id":"quest_successor:quest.local.lq25|4|1:when","ord":1,"value":"npc.hist-heartland.helstrom.lq25-crew-steerer"}
@@ -2936,3 +2936,5 @@
 {"condition_id":"quest_successor:quest.tg.tg04|1|0:when.0","ord":0,"value":"topic.flotilla-tally-handover"}
 {"condition_id":"quest_successor:quest.tg.tg04|1|0:when.0","ord":1,"value":"npc.mercantile-coast.lighter-flotilla.purser"}
 {"condition_id":"quest_successor:quest.tg.tg04|1|0:when.1","ord":0,"value":"item.flotilla-hull-tally"}
+{"condition_id":"quest_topic:quest.main.mq03|8:when","ord":0,"value":"thing.mq03.sap-jar"}
+{"condition_id":"quest_topic:quest.main.mq03|8:when","ord":1,"value":1}

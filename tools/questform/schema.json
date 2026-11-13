@@ -8,6 +8,21 @@
   "properties": {
     "version": {"const": 1},
     "names": {"type": "object", "additionalProperties": {"$ref": "#/$defs/text"}},
+    "texts": {"type": "object", "additionalProperties": {"$ref": "#/$defs/text"}},
+    "places": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "interior"],
+        "properties": {
+          "name": {"$ref": "#/$defs/text"},
+          "interior": {"type": "boolean"},
+          "entrance": {"type": "object", "additionalProperties": false, "required": ["x", "y"],
+                       "properties": {"x": {"type": "number"}, "y": {"type": "number"}}}
+        }
+      }
+    },
     "quest": {
       "type": "object",
       "additionalProperties": false,
@@ -35,6 +50,12 @@
                 "quest_stage": {"$ref": "#/$defs/stage"},
                 "stage": {"$ref": "#/$defs/stage"}
               }
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["by", "stage"],
+              "properties": {"by": {"const": "start_quest"}, "stage": {"$ref": "#/$defs/stage"}}
             }
           ]
         }
@@ -98,7 +119,7 @@
                     "additionalProperties": false,
                     "required": ["kind", "id"],
                     "properties": {
-                      "kind": {"enum": ["template_person", "item", "existing_base"]},
+                      "kind": {"enum": ["template_person", "template_item", "item", "existing_base"]},
                       "id": {"$ref": "#/$defs/id"}
                     }
                   },
@@ -143,6 +164,8 @@
               "properties": {"item": {"$ref": "#/$defs/id"}, "count": {"type": "integer", "minimum": 1}}
             }
           },
+          "count": {"type": "integer", "minimum": 1},
+          "level": {"type": "integer", "minimum": 1, "maximum": 81},
           "name": {"$ref": "#/$defs/text"},
           "destination": {"$ref": "#/$defs/text"},
           "text": {"$ref": "#/$defs/text"},
@@ -325,7 +348,7 @@
     },
     "r_stage": {
       "type": "object", "additionalProperties": false, "required": ["do", "stage"],
-      "properties": {"do": {"const": "set_stage"}, "stage": {"$ref": "#/$defs/stage"}}
+      "properties": {"do": {"const": "set_stage"}, "stage": {"$ref": "#/$defs/stage"}, "if_held": {"$ref": "#/$defs/id"}}
     },
     "r_item": {
       "type": "object", "additionalProperties": false, "required": ["do", "item", "count"],

@@ -404,6 +404,7 @@ class Records:
     needs: list = field(default_factory=list)         # (owner, form key) that must be in the census
     names: dict = field(default_factory=dict)         # npc id -> name
     people: list = field(default_factory=list)        # (quest, npc) speakers and cast
+    placed: set = field(default_factory=set)          # (quest, ref) of every row of a record's placements
     placing: str = ""                                 # every text that places someone (edits, actor things, needs)
     quest_text: dict = field(default_factory=dict)    # quest -> foundation and notes
     stages: dict = field(default_factory=dict)        # quest -> {stage: {"succ": [(to, terms, args)], "ff": set}}
@@ -507,6 +508,7 @@ def load_records() -> Records:
         q = r["quest_id"] or (re.search(r"quest\.\w+\.\w+", r["list_id"]) or [None])[0]
         rc.given.setdefault(r["value"], []).append((q, r["id"]))
     rc.names = {r[0]: r[1] for r in w.query("SELECT id, name FROM npc")}
+    rc.placed = {tuple(r) for r in w.query("SELECT quest_id, ref FROM quest_placement")}
     rc.people = sorted({tuple(r) for r in w.query("SELECT quest_id, person FROM quest_topic")} |
                        {tuple(r) for r in w.query("SELECT quest_id, id FROM quest_cast")})
     rc.quest_text = {r[0]: f"{r[1] or ''} {r[2] or ''}" for r in w.query("SELECT id, foundation, notes FROM quest")}
@@ -667,48 +669,28 @@ def rule_census_ids(rc: Records) -> list[str]:
 
 
 def rule_placed(rc: Records) -> list[str]:
-    """A speaker or cast member is placed: some edit, actor thing or BM&V need names them."""
+    """A speaker or cast member is placed: the record's placements, or some edit, actor thing or BM&V need names
+    them."""
     out = []
     for q, p in rc.people:
         name = rc.names.get(p) or ""
+        if (q, p) in rc.placed:
+            continue
         if p not in rc.placing and not (name and name in rc.placing):
-            out.append(f"{q}: {p} ({name}) speaks or acts but no edit, actor thing or need places them")
+            out.append(f"{q}: {p} ({name}) speaks or acts but no placement, edit, actor thing or need places them")
     return out
 
 
-def _guarded(text: str, name: str) -> bool:
-    return any(name in s and re.search(r"\b(essential|protected)\b", s) for s in re.split(r"(?<=[.;])\s", text))
-
-
 def rule_helgen(rc: Records) -> list[str]:
-    """Someone a stage needs (an essential topic's speaker there, or named in its successors) is essential or protected
-    in the record's text, or the stage fails forward on them (Helgen's Hadvar and Ralof). Across quests: from their
-    first appearance in any earlier quest of the line until that stage they are protected in each quest's text."""
-    need = defaultdict(set)
-    for q, p, ess, sts in rc.topics:
-        if ess:
-            for s in sts:
-                need[(q, s)].add(p)
-    for q, sts in rc.stages.items():
-        for s, d in sts.items():
-            for _, _, a in d["succ"]:
-                need[(q, s)] |= {x for x in a if x.startswith("npc.")}
-    appears = defaultdict(set)
-    for q, p in rc.people:
-        appears[p].add(q)
+    """Nobody is essential or protected (the ceiling): a main-quest record names who must live, as a fail-forward on
+    a person's death (Helgen's Hadvar and Ralof, failed instead of saved)."""
     out = []
-    for (q, s), ps in sorted(need.items(), key=str):
-        ff = rc.stages.get(q, {}).get(s, {}).get("ff", set())
-        line = q.rsplit(".", 1)[0]
-        for p in sorted(ps):
-            if p in ff:
-                continue
-            name = rc.names.get(p) or p
-            for e in sorted(x for x in set(rc.quest_text) | appears[p] | {q} if x.rsplit(".", 1)[0] == line and x <= q):
-                here = e == q or e in appears[p] or (rc.names.get(p) and name in rc.quest_text.get(e, ""))
-                if here and not _guarded(rc.quest_text.get(e, ""), name):
-                    where = "" if e == q else f" (it is in {e} first)"
-                    out.append(f"{q}: stage {s} needs {name} alive, who is not essential or protected in {e}{where} and has no fail-forward")
+    for q, sts in sorted(rc.stages.items()):
+        if rc.quest_kind.get(q, (None, None))[0] != "main":
+            continue
+        if not any(x.startswith("npc.") for d in sts.values() for x in d["ff"]):
+            out.append(f"{q}: a main-quest record names who must live (a fail-forward on a person's death to its "
+                       "failed ending), and this one names nobody")
     return out
 
 

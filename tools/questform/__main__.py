@@ -1,6 +1,7 @@
 """The quest form's command line (docs/design/quest-form.md).
 
     python3 -m tools.questform check <form.json...>              # the schema and every structural rule
+    python3 -m tools.questform check --set <dir|form.json...>    # also the rules over the forms as one set
     python3 -m tools.questform compile <quest id...|--all> [--out dir] [--owed-ok]   # quest record -> form
         (default out/questform; --owed-ok: a quest on the owed list that does not fit is not a failure; the seed's way)
     python3 -m tools.questform gate                              # make check: every staged record against the owed list
@@ -20,6 +21,7 @@ from tools.questform import rules
 
 OWED = db.REPO / "story/data/questform_owed.json"
 EXAMPLES = Path(__file__).with_name("examples")
+BLOCKTEST = Path(__file__).with_name("blocktest")
 OUT = db.REPO / "out/questform"
 
 
@@ -58,8 +60,9 @@ def save_owed(quests: dict[str, list[str]]) -> None:
 
 def gate(w: db.World) -> list[str]:
     errs = []
-    for p in sorted(EXAMPLES.glob("*.json")):
+    for p in sorted(EXAMPLES.glob("*.json")) + sorted(BLOCKTEST.glob("*.json")):
         errs += [f"example {p.name}: {r}: {m}" for r, m in check_file(p)]
+    errs += [f"blocktest set: {r}: {m}" for r, m in rules.check_set(load_forms([BLOCKTEST]))]
     owed = load_owed()
     staged = qc.staged_quests(w)
     for qid in staged:
@@ -73,7 +76,23 @@ def gate(w: db.World) -> list[str]:
             errs.append(f"{qid}: its owed terms changed to {', '.join(terms)} (python3 -m tools.questform owed "
                         "--write)")
     errs += [f"{qid} is on {OWED.name} and is not a staged quest record" for qid in owed if qid not in staged]
+    errs += [f"set: {r}: {m}" for r, m in rules.check_set(fitting(w))]
     return errs
+
+
+def fitting(w: db.World) -> list[dict]:
+    """The forms of every staged quest record that fits, compiled together (the set the seed builds)."""
+    out = []
+    for qid in qc.staged_quests(w):
+        form, terms, _ = terms_of(w, qid)
+        if form is not None and not terms:
+            out.append(form)
+    return out
+
+
+def load_forms(paths) -> list[dict]:
+    files = [f for p in map(Path, paths) for f in (sorted(p.glob("*.json")) if p.is_dir() else [p])]
+    return [json.loads(f.read_text(encoding="utf-8")) for f in files]
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -81,6 +100,7 @@ def main(argv: list[str] | None = None) -> int:
     sub = ap.add_subparsers(dest="cmd", required=True)
     c = sub.add_parser("check")
     c.add_argument("files", nargs="+")
+    c.add_argument("--set", action="store_true", help="the files (or directories) are one set: check it whole too")
     k = sub.add_parser("compile")
     k.add_argument("quests", nargs="*")
     k.add_argument("--all", action="store_true")
@@ -98,10 +118,17 @@ def main(argv: list[str] | None = None) -> int:
         return diff.main(a.designed, a.built)
     if a.cmd == "check":
         bad = 0
-        for f in a.files:
+        files = [str(f) for p in map(Path, a.files) for f in (sorted(p.glob("*.json")) if p.is_dir() else [p])]
+        for f in files:
             fails = check_file(Path(f))
             bad += bool(fails)
             print(f"{f}: " + ("passes" if not fails else f"{len(fails)} failure(s)"))
+            for r, m in fails:
+                print(f"  {r}: {m}")
+        if a.set:
+            fails = rules.check_set(load_forms(files))
+            bad += bool(fails)
+            print(f"the set of {len(files)}: " + ("passes" if not fails else f"{len(fails)} failure(s)"))
             for r, m in fails:
                 print(f"  {r}: {m}")
         return 1 if bad else 0

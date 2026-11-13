@@ -64,7 +64,23 @@ SEEDS = [
     (lambda f: f["triggers"].append({"id": "t", "kind": "use", "ref": "door.example.hold", "prerequisite": 10,
                                      "sets": 20}), "trigger t: built only"),
     (lambda f: f["quest"].__setitem__("kind", "minor"), "quest.kind"),
+    (lambda f: f["refs"][1].__setitem__("lock", {"level": "novice"}), "ref door.example.hold.lock"),
+    (lambda f: f["must_live"][0].__setitem__("from", 20), "who-must-live npc.example.contact.from"),
 ]
+
+
+def test_an_anchor_the_census_cannot_place_is_measured_from_the_designs_spot():
+    """A static anchor (no position known) compares the built spot with the design's `at`; with no `at` either, the
+    anchor is not compared."""
+    d = copy.deepcopy(EXAMPLE)
+    man = next(r for r in d["refs"] if r["id"] == "npc.example.roll-man")
+    man["placement"]["anchor"]["near"] = "0FFFFF:Static.esp"
+    b = built_from(d)
+    assert run(d, b) == []
+    next(r for r in b["refs"] if r["id"] == "npc.example.roll-man")["at"]["x"] += D.NEAR_UNITS + 50
+    assert len(run(d, b)) == 1
+    del man["at"]
+    assert run(d, b) == []
 
 
 @pytest.mark.parametrize("seed,want", SEEDS, ids=[w for _, w in SEEDS])

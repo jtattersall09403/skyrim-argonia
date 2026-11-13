@@ -35,6 +35,7 @@
    "start"
   ],
   "quest.local.lf83": [
+   "fallback",
    "objective target",
    "placement"
   ],

@@ -11,7 +11,12 @@ results) compare as sets.
 A ref the design places by an anchor is built at a position the design could not know. It is equal when the built
 position satisfies the anchor: within NEAR_UNITS of the anchor reference (`near`), or in a cell of the anchor place,
 or within PLACE_UNITS of the place's position (`place`). The anchor reference's position comes from a ref of the
-designed form with that existing form key, else the world database; a place's cells and position from the database.
+designed form with that existing form key, else the world database (an actor, a door or a house shell), else the
+design's own `at`; with none of them the anchor is not compared. A place's cells and position come from the database.
+An existing ref's `at` (an actor's or a door's, from the census) is compared within POS_UNITS.
+
+Not compared: the form-level `names`, `texts` and `places` (what the paper game shows; the reader writes back the
+names it finds) and a ref's `name`, `destination` and `text`, which the builder's own refusals cover.
 """
 from __future__ import annotations
 
@@ -66,7 +71,8 @@ class Resolver:
             return None
         for sql in ("SELECT p.cell, c.interior, p.x, p.y, p.z FROM bmv_placement p JOIN bmv_cell c ON c.id = p.cell "
                     "WHERE p.id = ?", "SELECT d.cell, c.interior, d.x, d.y, d.z FROM bmv_door d JOIN bmv_cell c "
-                    "ON c.id = d.cell WHERE d.id = ?"):
+                    "ON c.id = d.cell WHERE d.id = ?", "SELECT s.cell, c.interior, s.x, s.y, s.z FROM bmv_shell s "
+                    "JOIN bmv_cell c ON c.id = s.cell WHERE s.id = ?"):
             got = w.query(sql, key)
             if got:
                 return {**dict(got[0]), "interior": bool(got[0]["interior"])}
@@ -86,14 +92,16 @@ class Resolver:
             return None
         return {"cells": cells, **({"x": mk[0]["x"], "y": mk[0]["y"]} if mk else {})}
 
-    def anchor_ok(self, anchor, at) -> str | None:
-        """None when the built position satisfies the anchor, else why not."""
+    def anchor_ok(self, anchor, at, designed_at=None) -> str | None:
+        """None when the built position satisfies the anchor, else why not. An anchor reference the census cannot
+        place (a static it does not list) is measured from the design's own `at`, the spot the record gives; with
+        neither, the anchor is not compared: the builder has already refused a spot it could not find."""
         if at is None:
             return "the built ref has no position"
         if "near" in anchor:
-            ref = self.position(anchor["near"])
+            ref = self.position(anchor["near"]) or designed_at
             if ref is None:
-                return f"the anchor reference {anchor['near']} has no known position"
+                return None
             if ref["interior"] or at["interior"]:
                 return None if ref["cell"] == at["cell"] else f"built in cell {at['cell']}, the anchor reference " \
                                                               f"stands in {ref['cell']}"
@@ -168,12 +176,12 @@ def diff_form(d: dict, b: dict, res: Resolver) -> list[str]:
 
     def ref_fn(w, x, y):
         r = _fields(w, {**x, "hostile": bool(x.get("hostile"))}, {**y, "hostile": bool(y.get("hostile"))},
-                    ("kind", "enabled", "hostile"))
+                    ("kind", "enabled", "hostile", "lock", "owner", "contents", "count", "level"))
         px, py = x["placement"], y["placement"]
         if "anchor" in px and py != px:
             if "base" in py and px["base"] != py["base"]:
                 r.append(f"{w}.placement.base: designed {_show(px['base'])}, built {_show(py['base'])}")
-            why = res.anchor_ok(px["anchor"], y.get("at"))
+            why = res.anchor_ok(px["anchor"], y.get("at"), x.get("at"))
             if why:
                 r.append(f"{w}.placement.anchor {_show(px['anchor'])} not satisfied: {why}")
         else:
@@ -202,7 +210,7 @@ def diff_form(d: dict, b: dict, res: Resolver) -> list[str]:
                  lambda w, x, y: _fields(w, {**x, "choice": bool(x.get("choice"))}, {**y, "choice": bool(y.get("choice"))},
                                          ("kind", "ref", "quest", "quest_stage", "prerequisite", "sets", "choice")))
     out += keyed("who-must-live", d["must_live"], b["must_live"], lambda m: m["ref"], lambda m: m["ref"],
-                 lambda w, x, y: _fields(w, x, y, ("fail_stage", "main_message")))
+                 lambda w, x, y: _fields(w, x, y, ("fail_stage", "main_message", "from", "to")))
     return out
 
 

@@ -36,6 +36,7 @@ CUT = {
 }
 HINT_OTHER = "not in the form's vocabulary: re-author it with the form's conditions and results"
 DROPPED = {"grantTopic", "removeTopic"}       # a line's first and last stage open and close it
+HARD = ("skill_at_least", "gold_at_least")    # a check the player can fail in front of the speaker: it has a fallback
 
 
 # The skills a record names, as Skyrim's actor value names (the form holds only these; blocks.md, "How record terms map
@@ -61,25 +62,43 @@ def skill_of(word: str) -> str | None:
 
 
 def place(w: db.World, cell: str) -> dict:
-    """A cell as the player sees it: its name (a settlement's for an exterior without one; an interior's with its
-    settlement) and whether it is indoors, and for an interior its door's outside position (`entrance`)."""
+    """A cell as the player sees it: its name and whether it is indoors, and for an interior its door's outside
+    position (`entrance`). An exterior without a name of its own takes its settlement's (`settlement_name`); an
+    interior's name carries that settlement name after it."""
     c = w.query("SELECT name, interior FROM bmv_cell WHERE id = ?", cell)
     if not c:
         return {}
     out = {"name": c[0]["name"], "interior": bool(c[0]["interior"])}
-    s = w.query("SELECT s.name FROM bmv_settlement_cell x JOIN bmv_settlement s ON s.id = x.settlement "
-                "WHERE x.cell = ?", cell)
-    if s and not out["interior"] and not out["name"]:
-        out["name"] = s[0]["name"]
-    elif s and out["interior"] and out["name"] and s[0]["name"] not in out["name"]:
-        out["name"] = f"{out['name']}, {s[0]['name']}"
+    town = settlement_name(w, cell)
+    if town and not out["interior"] and not out["name"]:
+        out["name"] = town
+    elif town and out["interior"] and out["name"] and town not in out["name"]:
+        out["name"] = f"{out['name']}, {town}"
     if out["interior"]:
         e = w.query("SELECT t.x, t.y FROM bmv_interior_exit x JOIN bmv_door d ON d.id = x.door "
                     "JOIN bmv_door t ON t.id = d.target JOIN bmv_cell c ON c.id = t.cell "
-                    "WHERE x.interior = ? AND c.interior = 0", cell)
+                    "WHERE x.interior = ? AND c.interior = 0", cell) or \
+            w.query("SELECT t.x, t.y FROM bmv_door d JOIN bmv_door t ON t.id = d.target JOIN bmv_cell c ON c.id = t.cell "
+                    "WHERE d.cell = ? AND c.interior = 0 ORDER BY d.id", cell)
         if e:
             out["entrance"] = {"x": e[0]["x"], "y": e[0]["y"]}
     return out
+
+
+def settlement_name(w: db.World, cell: str) -> str | None:
+    """The name of the settlement a cell belongs to: the designed place it lands as (place_bmv), else the name of
+    BM&V's map marker there (the last, when it has several), else the settlement's census name."""
+    s = w.query("SELECT s.id, s.name, s.marker_name FROM bmv_settlement_cell x JOIN bmv_settlement s "
+                "ON s.id = x.settlement WHERE x.cell = ? ORDER BY x.role = 'neighbour'", cell)
+    if not s:
+        return None
+    story = w.query("SELECT p.name FROM place_bmv b JOIN place p ON p.id = b.place WHERE b.cell = ? "
+                    "OR b.settlement = ? ORDER BY b.cell = ? DESC", cell, s[0]["id"], cell)
+    if story and story[0]["name"]:
+        return story[0]["name"]
+    if s[0]["marker_name"]:
+        return s[0]["marker_name"].split(";")[-1].strip()
+    return s[0]["name"]
 
 
 class Refusal(Exception):
@@ -95,6 +114,25 @@ def _one(c):
     return term, a
 
 
+def _key(x) -> str:
+    return json.dumps(x, sort_keys=True)
+
+
+def written_lines(code: str) -> dict:
+    """The written lines of a quest (`story/data/quest_lines/<code>.json`), each topic as {speaker, infos}: a topic
+    written as one info (`prompt`, `lines`) is one info of variant `main`; an info's `variant` is `main` (said when
+    the line's conditions hold) or `fail` (its fallback, said when its check fails)."""
+    p = QUEST_LINES / f"{code.lower()}.json"
+    if not p.exists():
+        return {}
+    out = {}
+    for topic, body in json.loads(p.read_text(encoding="utf-8")).items():
+        if topic.startswith("_") or not isinstance(body, dict):
+            continue
+        out[topic] = {"speaker": body.get("speaker"), "infos": body.get("infos", [body])}
+    return out
+
+
 class Compiler:
     def __init__(self, w: db.World, qid: str):
         self.w, self.qid = w, qid
@@ -104,9 +142,13 @@ class Compiler:
         self.stage_of = {s["id"]: s for s in self.rec.get("stages", [])}
         self.hooks = {r["sets_flag"]: (r["thing_id"], r["hook"])
                       for r in w.query("SELECT * FROM thing_hook WHERE quest_id = ?", qid)}
+        self.rows = {r["ref"]: dict(r) for r in w.query("SELECT * FROM quest_placement WHERE quest_id = ? ORDER BY ord",
+                                                         qid)}
+        self.things = {r["id"]: dict(r) for r in w.query("SELECT * FROM quest_thing WHERE quest_id = ? ORDER BY ord", qid)}
         self.movers: dict[tuple[str, str, int], list[tuple[int, list]]] = {}
         self.triggers: list[dict] = []
         self.must_live: dict[str, int] = {}
+        self.must_live_at: dict[str, set[int]] = {}
         self.death_moves: set[str] = set()
         self.used_refs: dict[str, str] = {}
         self.kill_choice: set[str] = set()
@@ -117,6 +159,24 @@ class Compiler:
     def use(self, ref, where):
         self.used_refs.setdefault(ref, where)
         return ref
+
+    # -- items: one id for one thing ----------------------------------------------------------------------------
+    def unique(self, ref) -> bool:
+        """A thing of ours that is one of a kind (a new item on a template, or an item whose id is the thing's own):
+        the form names it by its ref id. Any other placed item (gold, lockpicks) is stock, named by its base."""
+        r = self.rows.get(ref)
+        return r is not None and (r["base_kind"] == "template_item" or (r["base_kind"] == "item" and r["base"] == ref))
+
+    def item(self, x, where) -> str:
+        """The form's id for an item a record names: a unique thing by its ref id, a stock thing by its base, any
+        other item as it is. Naming the base of a unique thing is refused (it would count every item of that base)."""
+        r = self.rows.get(x)
+        if r is not None and r["base_kind"] in ("item", "template_item"):
+            return self.use(x, where) if self.unique(x) else r["base"]
+        owner = [ref for ref, row in self.rows.items() if row["base"] == x and self.unique(ref) and ref != x]
+        if owner:
+            self.refuse("item id", where, f"{x} is the base of the quest thing {owner[0]}: name the thing")
+        return x
 
     # -- conditions --------------------------------------------------------------------------------------------
     def gate(self, c, where) -> list[dict]:
@@ -151,7 +211,8 @@ class Compiler:
         if term == "factionRankAtLeast":
             return [{"is": "rank_at_least", "faction": a[0], "rank": int(a[1])}]
         if term == "hasItem":
-            return [{"is": "item_count_at_least", "item": a[0], "count": int(a[1]) if len(a) > 1 else 1}]
+            return [{"is": "item_count_at_least", "item": self.item(a[0], where),
+                     "count": int(a[1]) if len(a) > 1 else 1}]
         if term == "goldAtLeast":
             return [{"is": "gold_at_least", "gold": int(a[0])}]
         if term == "skillAtLeast":
@@ -193,11 +254,13 @@ class Compiler:
             if len(a) > 1 and int(a[1]) > 1:
                 self.refuse("hasItem count", where, "taking one named thing moves a stage; a count is a gate")
                 return
+            self.item(a[0], where)
             self._trigger("take", self.use(a[0], where), frm, to)
         elif term == "not" and _one(a[0])[0] == "npcAlive":
             npc = self.use(_args(_one(a[0])[1])[0], where)
             if self.stage_of.get(to, {}).get("ending") == "failed":
                 self.must_live.setdefault(npc, to)
+                self.must_live_at.setdefault(npc, set()).add(frm)
             else:
                 self.death_moves.add(npc)
                 self._trigger("death", npc, frm, to)
@@ -265,7 +328,7 @@ class Compiler:
             elif term in ("giveGold", "takeGold"):
                 out.append({"do": "give_gold" if term == "giveGold" else "take_gold", "amount": int(a[0])})
             elif term in ("giveItem", "takeItem"):
-                out.append({"do": "give_item" if term == "giveItem" else "take_item", "item": a[0],
+                out.append({"do": "give_item" if term == "giveItem" else "take_item", "item": self.item(a[0], where),
                             "count": int(a[1]) if len(a) > 1 else 1})
             elif term == "setFactionRank":
                 out.append({"do": "set_rank", "faction": a[0], "rank": int(a[1])})
@@ -283,8 +346,8 @@ class Compiler:
         first = q.get("start") or (self.stage_ids[0] if self.stage_ids else 0)
         sw = q.get("startWhen")
         if sw is None:
-            for qid, sid in self._started_by():
-                return {"by": "quest_stage", "quest": qid, "quest_stage": sid, "stage": first}
+            if any(True for _ in self._started_by()):    # another quest's setStage of it: its start_quest result
+                return {"by": "start_quest", "stage": first}
             if q.get("start") is not None:      # a first stage and nothing that starts it: running from a new game
                 return {"by": "game", "stage": first}
             self.refuse("start", "the quest", "the record does not say how the quest starts: a startWhen, or "
@@ -350,12 +413,13 @@ class Compiler:
         for npc in sorted(self.death_moves & set(self.must_live)):
             self.refuse("death both ways", f"ref {npc}", "a person's death either fails the quest (who must live) "
                         "or moves it on, at every stage alike")
+        self._held(stages)
         lines = self.lines(q)
         triggers = [{"id": f"{t['kind']}.{t.get('ref') or t['quest']}.{t['prerequisite']}-{t['sets']}", **t}
                     for t in self.triggers]
         kind = q["group"] if q["group"] in ("main", "faction") else "minor"
-        must_live = [{"ref": r, "fail_stage": n, "main_message": kind != "minor"}
-                     for r, n in sorted(self.must_live.items())]
+        must_live = self.windows(stages, start, kind)
+        self._unable_to_start(lines, must_live, start, stages)
         refs = self.refs()
         for t in triggers:
             if t["kind"] == "death" and t["ref"] in self.kill_choice:
@@ -367,17 +431,75 @@ class Compiler:
                           "kind": kind, "start": start},
                 "stages": stages, "objectives": objectives, "refs": refs, "lines": lines, "triggers": triggers,
                 "must_live": must_live}
-        names = self.item_names(form)
+        names, texts = self.item_names(form)
         if names:
             form["names"] = names
+        if texts:
+            form["texts"] = texts
+        places = self.places(refs)
+        if places:
+            form["places"] = places
+        if self.refused:
+            return None
         return form
+
+    # -- a thing already held: the take trigger's stage checks the count as it begins ----------------------------
+    def _held(self, stages):
+        """A take trigger moves the quest only when the thing is taken while it is open; a player who already holds it
+        as its prerequisite stage begins is moved on by that stage's own result (set_stage if_held)."""
+        by = {s["number"]: s for s in stages}
+        for t in self.triggers:
+            if t["kind"] == "take" and t["prerequisite"] in by:
+                r = self.rows.get(t["ref"])
+                item = t["ref"] if r is None or self.unique(t["ref"]) else r["base"]
+                row = {"do": "set_stage", "stage": t["sets"], "if_held": item}
+                if row not in by[t["prerequisite"]]["results"]:
+                    by[t["prerequisite"]]["results"].append(row)
+
+    # -- who must live, and when -------------------------------------------------------------------------------
+    def windows(self, stages, start, kind) -> list[dict]:
+        """A who-must-live row holds over the stages whose fail-forwards name the person, never before the quest's
+        first shown stage (a quest still hidden has not begun for the player). `from` and `to` are written only
+        where they narrow the quest's own span."""
+        shown = sorted(s["number"] for s in stages if s["shown"] and s["ending"] == "none")
+        live = sorted(s["number"] for s in stages if s["ending"] == "none")
+        first = shown[0] if shown else (live[0] if live else start["stage"])
+        out = []
+        for r, n in sorted(self.must_live.items()):
+            at = sorted(self.must_live_at.get(r, set()))
+            row = {"ref": r, "fail_stage": n, "main_message": kind != "minor"}
+            lo, hi = max(at[0], first), at[-1]
+            if lo > start["stage"]:
+                row["from"] = lo
+            if live and hi < live[-1]:
+                row["to"] = hi
+            out.append(row)
+        return out
+
+    def _unable_to_start(self, lines, must_live, start, stages):
+        """A who-must-live person dead before the quest is shown leaves it unable to start, saying nothing: every line
+        that moves the quest on from its hidden start stage is gated on that person being alive."""
+        hidden = next((s for s in stages if s["number"] == start["stage"] and not s["shown"]), None)
+        if hidden is None:
+            return
+        for m in must_live:
+            if m.get("from", start["stage"]) <= start["stage"]:
+                continue
+            for ln in lines:
+                if ln["first_stage"] <= start["stage"] <= ln["last_stage"] and \
+                        any(r["do"] == "set_stage" for r in ln["results"]):
+                    g = {"is": "alive", "ref": m["ref"]}
+                    if g not in ln["conditions"]:
+                        ln["conditions"].append(g)
 
     # -- lines -------------------------------------------------------------------------------------------------
     def _written(self, code):
-        p = QUEST_LINES / f"{code.lower()}.json"
-        return json.loads(p.read_text(encoding="utf-8")) if p.exists() else {}
+        return written_lines(code)
 
     def lines(self, q) -> list[dict]:
+        """One line per stage window of each topic: a line that moves a stage carries its successor's gates; a stage
+        whose movers are all gated has no ungated copy, only the record's own fallback (its written `fail` info, else
+        the topic's `fallback` gist), which a check of skill or gold must have. A topic's `when` gates all its lines."""
         written = self._written(q["code"])
         rows = [dict(t) for t in q.get("topics") or []]
         have = {(t["id"], t["person"]) for t in rows}
@@ -391,27 +513,48 @@ class Compiler:
                 row = next(t for t in rows if (t["id"], t["person"]) == (topic, npc))
                 if frm not in (row.get("stages") or []):
                     row["stages"] = sorted(set(row.get("stages") or []) | {frm})
-        replies = {r for v in written.values() for info in v.get("infos", []) for r in info.get("replies", [])}
+        self.people = {}
+        for t in rows:
+            self.people.setdefault(t["id"], set()).add(t["person"])
+        replies = {r for v in written.values() for info in v["infos"] for r in info.get("replies", [])}
         order = sorted(set(self.stage_ids) | {0})
         out, ids_of = [], {}
         for t in rows:
             topic, npc = t["id"], self.use(t["person"], f"topic {t['id']}")
+            where = f"topic {topic} ({npc})"
+            when = self.gate(t["when"], where) if t.get("when") else []
             text, prompt, ok, answers = self._text(written, t)
             kind = "answer" if topic in replies else {"greeting": "greeting", "speaks-first": "topic"}.get(
                 t.get("kind"), "topic")
             base = {"speaker": npc, "kind": kind, "prompt": None if kind == "greeting" else prompt, "text": text,
                     "written": ok, "answers": answers}
-            made = []
+            made, fall = [], []
             st = sorted(t.get("stages") or [])
-            plain = [s for s in st if not any(k[0] == topic and k[1] == npc and k[2] == s for k in self.movers)]
+            plain = [s for s in st if (topic, npc, s) not in self.movers]
             for s in st:
-                for to, gates in self.movers.get((topic, npc, s), []):
-                    made.append({**base, "conditions": gates, "results": [{"do": "set_stage", "stage": to}],
+                moves = self.movers.get((topic, npc, s), [])
+                for to, gates in moves:
+                    made.append({**base, "conditions": when + gates, "results": [{"do": "set_stage", "stage": to}],
                                  "first_stage": s, "last_stage": s})
-                    if gates and not any(not g for _, g in self.movers[(topic, npc, s)]) and s not in plain:
-                        plain.append(s)
+                if moves and all(g for _, g in moves):
+                    fall.append((s, s, [when + g for _, g in moves]))
             for a, b in _runs(sorted(plain), order):
-                made.append({**base, "conditions": [], "results": [], "first_stage": a, "last_stage": b})
+                made.append({**base, "conditions": list(when), "results": [], "first_stage": a, "last_stage": b})
+                if when:
+                    fall.append((a, b, [when]))
+            for a, b, gate_sets in fall:
+                hard = any(_bare_hard(gs, gate_sets) for gs in gate_sets)
+                fb = self._text(written, t, fail=True)
+                if fb is None:
+                    if hard:
+                        self.refuse("fallback", where, "a check of skill or gold has a line for when it fails: write "
+                                    "its `fail` info, or the topic's `fallback` gist")
+                    continue
+                soft = [g for g in gate_sets[0] if g["is"] not in HARD
+                        and all(_key(g) in {_key(x) for x in gs} for gs in gate_sets)]
+                ftext, fprompt, fok, fanswers = fb
+                made.append({**base, "text": ftext, "written": fok, "answers": fanswers, "prompt": base["prompt"],
+                             "conditions": soft, "results": [], "first_stage": a, "last_stage": b})
             if t.get("kind") == "speaks-first":
                 made += [{**m, "kind": "speaks_first", "prompt": None} for m in list(made)]
             for i, m in enumerate(made):
@@ -425,29 +568,33 @@ class Compiler:
         return [{k: m[k] for k in ("id", "speaker", "kind", "prompt", "text", "written", "conditions", "results",
                                    "first_stage", "last_stage", "answers")} for m in out]
 
-    def _text(self, written, t):
+    def _text(self, written, t, fail: bool = False):
+        """(words, prompt, written, answers) of a topic's line, or of its fallback (None when the record has none)."""
         w = written.get(t["id"])
-        if w and w.get("speaker") == t["person"] and w.get("infos"):
-            info = w["infos"][0]
-            return " ".join(info.get("lines") or []) or t["intent"], info.get("prompt") or t["label"], True, \
-                list(info.get("replies") or [])
+        if w and (w.get("speaker") == t["person"] or len(self.people.get(t["id"], ())) == 1):
+            infos = [i for i in w["infos"] if (i.get("variant", "main") == "fail") == fail]
+            if infos:
+                info = infos[0]
+                return " ".join(info.get("lines") or []) or t["intent"], info.get("prompt") or t["label"], True, \
+                    list(info.get("replies") or [])
+        if fail:
+            return (t["fallback"], t["label"], False, []) if t.get("fallback") else None
         rows = self.w.query("SELECT words FROM dialogue_line WHERE keys_topic = ? AND speaker = ? AND status = "
                             "'written' ORDER BY id", t["id"], t["person"])
         if rows:
             return rows[0]["words"], t["label"], True, []
         return t.get("intent") or t["label"], t["label"], False, []
 
-    # -- refs --------------------------------------------------------------------------------------------------
+    # -- refs: every row of the record's placements --------------------------------------------------------------
     def refs(self) -> list[dict]:
-        rows = {r["ref"]: r for r in self.w.query("SELECT * FROM quest_placement WHERE quest_id = ? ORDER BY ord",
-                                                  self.qid)}
+        for ref, where in sorted(self.used_refs.items()):
+            if ref not in self.rows:
+                self.refuse("placement", where, f"{ref}: add a placements row (an existing reference by form key, "
+                            "or a base and an anchor)")
         out = []
-        for ref in sorted(self.used_refs):
-            r = rows.get(ref)
-            if r is None:
-                self.refuse("placement", self.used_refs[ref], f"{ref}: add a placements row (an existing reference "
-                            "by form key, or a base and an anchor)")
-                continue
+        for ref in sorted(self.rows):
+            r = self.rows[ref]
+            where = f"placement {ref}"
             if r["form_key"]:
                 placement = {"existing": r["form_key"]}
             else:
@@ -457,63 +604,173 @@ class Compiler:
                         {"rule": r["rule"]}
                 if r["container"]:
                     placement["container"] = r["container"]
+                if r["carried_by"]:
+                    placement["carried_by"] = r["carried_by"]
+            for box in (r["container"], r["carried_by"], r["owner"] if r["owner"] in self._all_refs() else None):
+                if box and box not in self.rows:
+                    self.refuse("placement", where, f"{box}: add a placements row for it")
             o = {"id": ref, "kind": r["kind"], "placement": placement, "enabled": bool(r["enabled"])}
             if r["hostile"]:
                 o["hostile"] = True
             if r["kill_choice"]:
                 self.kill_choice.add(ref)
+            if r["lock_level"]:
+                o["lock"] = {"level": r["lock_level"]}
+                if r["lock_key"]:
+                    o["lock"]["key"] = self.item(r["lock_key"], where)
+            if r["owner"]:
+                o["owner"] = r["owner"]
+            if r["count"]:
+                o["count"] = r["count"]
+            if r["level"]:
+                o["level"] = r["level"]
             at = self._at(r)
             if at:
                 o["at"] = at
             self._name(o, r)
+            text = r["text"] or (self.things.get(ref) or {}).get("text")
+            if text:
+                o["text"] = text
             out.append(o)
         return out
+
+    def _all_refs(self):
+        return set(self.rows) | set(self.used_refs)
 
     # -- the names the player sees: a person's, a thing's, a door's and where it leads, a marker's place ------------
     def _name(self, o: dict, r) -> None:
         q = self.w.query
         key = r["form_key"] or r["base"]
-        got = None
-        if o["kind"] == "person":
-            got = (q("SELECT known_as AS n FROM talker WHERE id = ?", key)
+        own = r.get("name") or (self.things.get(o["id"]) or {}).get("name") or self._thing_name(o["id"])
+        got = [{"n": own}] if own else None
+        if o["kind"] == "person" and not got:
+            got = (q("SELECT name AS n FROM npc WHERE id = ?", o["id"])
+                   or q("SELECT known_as AS n FROM talker WHERE id = ?", key)
                    or q("SELECT n.name AS n FROM bmv_placement p JOIN bmv_npc n ON n.id = p.npc WHERE p.id = ?", key)
                    or q("SELECT name AS n FROM bmv_npc WHERE id = ?", key))
-        elif o["kind"] == "thing":
+        elif o["kind"] == "thing" and not got:
             got = (q("SELECT name AS n FROM item WHERE id = ?", key) or q("SELECT name AS n FROM bmv_book WHERE id = ?", key))
         elif o["kind"] == "door":
-            got = q("SELECT base_name AS n FROM bmv_door WHERE id = ?", key)
-            to = q("SELECT t.cell AS c FROM bmv_door d JOIN bmv_door t ON t.id = d.target WHERE d.id = ?", key)
-            if to and place(self.w, to[0]["c"]).get("name"):
-                o["destination"] = place(self.w, to[0]["c"])["name"]
-        elif o["kind"] == "marker" and o.get("at"):
-            got = [{"n": place(self.w, o["at"]["cell"]).get("name")}]
+            got = got or q("SELECT base_name AS n FROM bmv_door WHERE id = ?", key)
+            to = self._door_to(key, r)
+            if to and to.get("name"):
+                o["destination"] = to["name"]
+        elif o["kind"] == "marker" and o.get("at") and not got:
+            got = [{"n": self._place(o["at"]["cell"]).get("name")}]
         if got and got[0]["n"]:
             o["name"] = got[0]["n"]
 
-    def item_names(self, form: dict) -> dict:
-        """The story name of every item id the form names (a result, a condition, a thing's base)."""
+    def _thing_name(self, thing_id) -> str | None:
+        """A thing's name as another quest's record gives it (a thing two quests place, like a container MQ01 puts
+        out for MQ03)."""
+        got = self.w.query("SELECT name FROM quest_thing WHERE id = ? AND name IS NOT NULL", thing_id)
+        return got[0]["name"] if got else None
+
+    def _place(self, cell) -> dict:
+        """A cell as the player knows it: the census's place, named by a placement's `place_name` where it gives one
+        (a door's names where it leads)."""
+        out = place(self.w, cell)
+        own = next((r["place_name"] for r in self.rows.values() if r["place_name"] and r["kind"] != "door"
+                    and self._cell(r) == cell), None)
+        if own:
+            out = {**out, "name": own}
+        return out
+
+    def _door_to(self, key, r=None) -> dict | None:
+        """Where a door leads, as a place: {cell, name, interior, entrance}. A door into a worldspace's persistent cell
+        (which has no grid) is named by the cell of the grid square it opens on. The door's own `place_name` names it."""
+        if not key:
+            return None
+        t = self.w.query("SELECT t.cell AS c, t.x, t.y FROM bmv_door d JOIN bmv_door t ON t.id = d.target "
+                         "WHERE d.id = ?", key)
+        if not t:
+            return None
+        cell = t[0]["c"]
+        out = self._place(cell)
+        if out and not out["interior"] and not out.get("name"):
+            ws = self.w.query("SELECT worldspace FROM bmv_cell WHERE id = ? AND grid_x IS NULL", cell)
+            if ws and t[0]["x"] is not None:
+                g = self.w.query("SELECT id FROM bmv_cell WHERE worldspace = ? AND grid_x = ? AND grid_y = ?",
+                                 ws[0]["worldspace"], int(t[0]["x"] // 4096), int(t[0]["y"] // 4096))
+                if g:
+                    out = {**out, "name": self._place(g[0]["id"]).get("name")}
+        if r is not None and r.get("place_name"):
+            out = {**out, "name": r["place_name"]}
+        return {"cell": cell, **out} if out else None
+
+    def _cell(self, r):
+        at = self._at(r)
+        return at["cell"] if at else None
+
+    def places(self, refs) -> dict:
+        """Every cell the form's refs stand in or lead to, as the player knows it: {cell: {name, interior,
+        entrance}}. A cell with no name the player could know is refused."""
+        cells = {r["at"]["cell"] for r in refs if r.get("at")}
+        doors = {}
+        for r in refs:
+            if r["kind"] == "door":
+                to = self._door_to(r["placement"].get("existing"), self.rows[r["id"]])
+                if to:
+                    doors[to.pop("cell")] = to
+        out = {}
+        for c in sorted(cells | set(doors)):
+            p = self._place(c) if c in cells else doors[c]
+            if c in cells and c in doors and not p.get("name"):
+                p = doors[c]
+            if not p:
+                continue
+            if not p.get("name"):
+                self.refuse("place name", f"cell {c}", "the census names no place for it: give a placement standing "
+                            "there its placeName")
+                continue
+            out[c] = p
+        return out
+
+    def item_names(self, form: dict) -> tuple[dict, dict]:
+        """The name (and a readable item's words) of every item id the form names that is not a ref: a result's, a
+        condition's, a stock thing's base, a lock's key. A thing of any quest's record names it first, then the item
+        table."""
         ids = {r["placement"]["base"]["id"] for r in form["refs"]
                if r["placement"].get("base", {}).get("kind") == "item"}
         ids |= {x["item"] for s in form["stages"] for x in s["results"] if "item" in x}
+        ids |= {x["if_held"] for s in form["stages"] for x in s["results"] if "if_held" in x}
         for ln in form["lines"]:
             ids |= {x["item"] for x in ln["results"] + ln["conditions"] if "item" in x}
+        ids |= {r["lock"]["key"] for r in form["refs"] if r.get("lock", {}).get("key")}
         ids -= {r["id"] for r in form["refs"]}
-        out = {}
+        names, texts = {}, {}
         for i in sorted(ids):
+            th = self.w.query("SELECT name, text FROM quest_thing WHERE id = ? AND (name IS NOT NULL OR text IS NOT "
+                              "NULL) ORDER BY quest_id = ? DESC", i, self.qid)
             got = self.w.query("SELECT name FROM item WHERE id = ?", i)
-            if got and got[0]["name"]:
-                out[i] = got[0]["name"]
-        return out
+            n = (th[0]["name"] if th else None) or (got[0]["name"] if got else None)
+            if n:
+                names[i] = n
+            if th and th[0]["text"]:
+                texts[i] = th[0]["text"]
+        return names, texts
 
     def _at(self, r):
         if r["cell"] is not None and r["x"] is not None:
             return {"cell": r["cell"], "interior": bool(r["interior"]), "x": r["x"], "y": r["y"], "z": r["z"]}
         if r["form_key"]:
-            got = self.w.query("SELECT p.cell, c.interior, p.x, p.y, p.z FROM bmv_placement p JOIN bmv_cell c "
-                               "ON c.id = p.cell WHERE p.id = ?", r["form_key"])
-            if got:
-                return {**dict(got[0]), "interior": bool(got[0]["interior"])}
+            for sql in ("SELECT p.cell, c.interior, p.x, p.y, p.z FROM bmv_placement p JOIN bmv_cell c "
+                        "ON c.id = p.cell WHERE p.id = ?",
+                        "SELECT d.cell, c.interior, d.x, d.y, d.z FROM bmv_door d JOIN bmv_cell c "
+                        "ON c.id = d.cell WHERE d.id = ?"):
+                got = self.w.query(sql, r["form_key"])
+                if got:
+                    return {**dict(got[0]), "interior": bool(got[0]["interior"])}
         return None
+
+
+def _bare_hard(gates, gate_sets) -> bool:
+    """A line gated on skill or gold whose failure no other line of the stage catches: no other line's gates are all
+    among its own without the skill or gold (the line that haggles when the persuasion fails)."""
+    if not any(g["is"] in HARD for g in gates):
+        return False
+    soft = {_key(g) for g in gates if g["is"] not in HARD}
+    return not any(gs is not gates and {_key(g) for g in gs} <= soft for gs in gate_sets)
 
 
 def _runs(stages, order):

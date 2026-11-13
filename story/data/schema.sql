@@ -1601,6 +1601,7 @@ CREATE TABLE "quest_cast_change" (
 );
 
 -- Home of one row per element of `things` of each quest row (ordered by `ord` where it has one).
+-- `name`: the name the player sees for a thing of ours (a new item, a container); `text`: a readable thing's words.
 CREATE TABLE "quest_thing" (
   "quest_id" TEXT NOT NULL,
   "ord" INTEGER NOT NULL,
@@ -1608,6 +1609,8 @@ CREATE TABLE "quest_thing" (
   "kind" TEXT NOT NULL,
   "source" TEXT NOT NULL,
   "where" TEXT,
+  "name" TEXT,
+  "text" TEXT,
   PRIMARY KEY ("quest_id", "ord"),
   FOREIGN KEY ("quest_id") REFERENCES "quest" ("id") ON DELETE CASCADE
 );
@@ -1624,17 +1627,24 @@ CREATE TABLE "quest_thing_state" (
 
 -- Home of one row per element of `placements` of each quest row: where each person, thing, door or marker the
 -- quest names stands in the world (the quest form's refs, docs/design/quest-form.md). `ref` is the id the record
--- uses; an existing reference by `form_key`, or a new placement of `base` (`base_kind`) anchored `near` an existing
+-- uses; an existing reference by `form_key`, or a new placement of `base` (`base_kind`: a person of ours on a
+-- template, a new item of ours on a template item, a stock item, an existing base) anchored `near` an existing
 -- reference's form key or at a census `place`, by the surface or navmesh `rule`, or inside a thing's `container`.
 -- `hostile`: a person the quest asks the player to fight; `kill_choice`: killing them is the player's choice.
 -- `cell`, `x`, `y`, `z`, `interior`: where it stands (an existing actor's are read from bmv_placement when left out).
+-- `carried_by`: an item thing in a person's pocket (that person's ref). `name`: the name the player sees for a new
+-- placement of ours (a person's, a creature's, a new item's), when the cast or the item has none; `level`: a new
+-- person's or creature's fixed level (decision 0035). `count`: how many of a stock item lie in one placed reference.
+-- `lock_level` (novice to master, or key) and `lock_key` (the key: a thing ref of the quest or an item id) lock a
+-- container or a door; `owner`: a container's owner (a person ref of the quest, or a faction id). `text`: a readable
+-- thing's words. `place_name`: the name the player knows the cell of `at` by, where the census names it otherwise.
 CREATE TABLE "quest_placement" (
   "quest_id" TEXT NOT NULL,
   "ord" INTEGER NOT NULL,
   "ref" TEXT NOT NULL,
   "kind" TEXT NOT NULL CHECK ("kind" IN ('person', 'thing', 'door', 'marker')),
   "form_key" TEXT,
-  "base_kind" TEXT CHECK ("base_kind" IN ('template_person', 'item', 'existing_base')),
+  "base_kind" TEXT CHECK ("base_kind" IN ('template_person', 'template_item', 'item', 'existing_base')),
   "base" TEXT,
   "near" TEXT,
   "place" TEXT,
@@ -1648,8 +1658,19 @@ CREATE TABLE "quest_placement" (
   "y" REAL,
   "z" REAL,
   "interior" BOOLEAN CHECK ("interior" IN (0, 1)),
+  "carried_by" TEXT,
+  "name" TEXT,
+  "level" INTEGER CHECK ("level" BETWEEN 1 AND 81),
+  "count" INTEGER CHECK ("count" >= 1),
+  "lock_level" TEXT CHECK ("lock_level" IN ('novice', 'apprentice', 'adept', 'expert', 'master', 'key')),
+  "lock_key" TEXT,
+  "owner" TEXT,
+  "text" TEXT,
+  "place_name" TEXT,
   PRIMARY KEY ("quest_id", "ord"),
   UNIQUE ("quest_id", "ref"),
+  CHECK (("lock_key" IS NULL) OR ("lock_level" IS NOT NULL)),
+  CHECK (("container" IS NULL) OR ("carried_by" IS NULL)),
   CHECK (("form_key" IS NULL) <> ("base" IS NULL)),
   CHECK (("base" IS NULL) = ("base_kind" IS NULL)),
   FOREIGN KEY ("quest_id") REFERENCES "quest" ("id") ON DELETE CASCADE
@@ -1809,7 +1830,7 @@ CREATE TABLE "quest_ending" (
   "ord" INTEGER NOT NULL,
   "id" TEXT NOT NULL,
   "when" TEXT NOT NULL,
-  "world" TEXT NOT NULL REFERENCES "action_list"("id"),
+  "world" TEXT REFERENCES "action_list"("id"),
   "seen" TEXT NOT NULL,
   "rewards" TEXT REFERENCES "action_list"("id"),
   PRIMARY KEY ("quest_id", "ord"),
@@ -1829,6 +1850,10 @@ CREATE TABLE "quest_topic" (
   -- how the line opens: null for a topic the player picks; `greeting`; `speaks-first` (the person walks up and
   -- starts it; the same line is also open as a topic)
   "kind" TEXT CHECK ("kind" IN ('greeting', 'speaks-first')),
+  -- `when`: the gate on every line of the topic (a line that moves a stage adds its successor's gates to it);
+  -- `fallback`: what the person says when the line's check fails (its gist until the lines are written)
+  "when" TEXT REFERENCES "condition"("id"),
+  "fallback" TEXT,
   PRIMARY KEY ("quest_id", "ord"),
   FOREIGN KEY ("quest_id") REFERENCES "quest" ("id") ON DELETE CASCADE
 );
