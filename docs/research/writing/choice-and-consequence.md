@@ -161,3 +161,32 @@ Each is something the player can use or notice the next day. [I] Examples from t
     things" names the thing, and that thing is a result row of the form.
 13. **End on a thing the player did.** [V psych-games] Method: the last beat uses the places, people and powers the
     choice touched, not a summary of the world.
+14. **Standing is never an outcome by itself.** [owner, 2026-11-13; S MSFD via outcome-kinds] Method: a rank, a regard
+    or a stored number is written only with what it opens or shuts that the player can use (a trainer, a seller's
+    stock, a bed, a supply chest, a door, a price, the next job, a power), as Morrowind's ranks each opened a service.
+
+What each kind builds as in our game is measured in [outcome-kinds](../skyrim/outcome-kinds.md).
+
+## Spellmaking (SM): a proposal for a later phase
+
+Morrowind let the player buy the making of spells at a spellmaker: choose effects, magnitude, duration and area,
+pay, and keep the spell. [K] Skyrim has no such service. Mods add it two ways: Spell Crafting for Skyrim (SE port)
+lets the player combine over forty effects into saved spells through a menu, in Papyrus with SKSE and SkyUI, without
+concentration or location-targeted spells; Altars of Spellmaking adds an altar where one primary effect takes up to
+three secondary effects; SKSE plugins such as SpellCraft Functions add Papyrus calls to change a spell's effects and
+costs, but no altar or menu. [S Nexus search; the pages refused the fetch]
+
+What a plugin of ours would need [I]: a pool of blank spell records shipped in our plugin (Skyrim cannot create a
+record at run time), each filled when the player makes a spell (its effects, magnitudes, durations, area, cost and
+name set through an SKSE call), saved with the game (the SKSE co-save), and a small menu or a dialogue tree to choose
+effects from the effects the player already knows. It is our own SKSE plugin, which the build rules allow where no
+mod, record or script does the job (owner, #51); a ready mod is reused first if one fits our load order (CLAUDE.md,
+reuse first).
+
+The Argonian way in [I; story/lore/topics/magic-practice.md]: Black Marsh has no robed mages, and Hist-magic does not
+follow ordinary spellcraft; spellmaking is a service a Nisswo or a tree-minder offers. The player learns it in the
+story as a gift of a Hist: a dream-wallow (isolation and potent herbs) at a sap-speaker's tree lets them shape what
+they already know into a spell of their own, and the sap-speaker's hollow, opened by the quest that earns it, is
+where it is done afterwards. In the quest form today that is an ending that unlocks a door and opens a person's
+lines; the making itself waits for the plugin. To add it to the plan: one phase item, "spellmaking at the Hist",
+after the main quest's line is built.

@@ -15,6 +15,8 @@ Binding for `quest-write` and `quest-review`. Each principle ends with its sourc
 | IN | [quest-shape-investigation](../../../../docs/research/writing/quest-shape-investigation.md) | `P` Principles, `M1` to `M8` Methods, `A` Anti-patterns, `D` Notes for the detectives' line |
 | TJ | [quest-shape-threat-and-journey](../../../../docs/research/writing/quest-shape-threat-and-journey.md) | `P` Principles, `M` Methods (by shape), `D` Writing directions, `A` Anti-patterns |
 | OT | [quest-shape-otherworldly](../../../../docs/research/writing/quest-shape-otherworldly.md) | `P` Principles, `M1` to `M7` Methods, `A` Anti-patterns |
+| CC | [choice-and-consequence](../../../../docs/research/writing/choice-and-consequence.md) | `P` Principles, `WS` What the sources establish, `K` The kinds of consequence, `SM` Spellmaking |
+| GK | [outcome-kinds](../../../../docs/research/skyrim/outcome-kinds.md) | the table's rows, by kind |
 
 ## What a quest may use
 
@@ -153,11 +155,13 @@ player can see it, music and weather [MW §3; MW §4.4; MW §4.5]. Each dramatic
 
 ## Choices, consequences, rewards
 
-33. **No single right answer**: at least two endings, each with a virtue and a cost [OW P8].
+33. **No single right answer**: at least two endings, each with a virtue and a cost [OW P8]. A quest with a choice
+    or more than one ending also reads [choices.md](choices.md): what each outcome gives and costs in play.
 34. **Stake the choice before it comes, and offer the obvious option, then make it cost** [OW P10; SO P7].
-35. **Consequences are visible**: every ending says where the player will see it (a greeting, a topic, a person gone,
-    a door, a price). The delayed kind is a later quest's line reading a stored number [OW P9; OW M Choice and
-    consequence table].
+35. **Consequences are things to use**: every ending changes what the player can do or reach (a power, a thing, a
+    trader's stock, a trainer, a door, a bed, the next job) and says where the player will meet it; a greeting or a
+    stored number is how it is shown and kept, never the whole of it. The delayed kind is a later quest's line
+    reading a stored number [OW P9; OW M Choice and consequence table; CC P1].
 36. **After an ending, each person left standing greets with their own view of it and its cost**; a greeting or a
     hand-in shared by several endings says only what is true of all of them [OB bar].
 37. **The player's method is acknowledged**: a later line names how they did it (the lock, the fight, the word)

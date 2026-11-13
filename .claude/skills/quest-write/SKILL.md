@@ -57,7 +57,8 @@ dispute, an induction) is what the drama turns on, which the shape routing in se
 ## 2. Route to the principles
 
 Read [shapes.yaml](shapes.yaml): always [principles/general.md](principles/general.md) and
-[principles/actions.md](principles/actions.md), the group's file, each shape's file (primary first). The principle
+[principles/actions.md](principles/actions.md), the group's file, each shape's file (primary first), and
+[principles/choices.md](principles/choices.md) when the quest has a choice or more than one ending. The principle
 files are the quest design research (`docs/research/writing/`) and the owner's bar distilled at the ceiling; each
 principle ends with its source tag (general.md holds the key). Every principle binds this record; a minor quest
 reads only the "Local quests" bullet under "Line types" in questlines.md.
@@ -72,6 +73,7 @@ reads only the "Local quests" bullet under "Line types" in questlines.md.
 | `principles/social.md` | DISPUTE, NEGOTIATION, SUCCESSION, BONDAGE |
 | `principles/threat-and-journey.md` | PREDATOR, CONTAMINATION, EXPEDITION |
 | `principles/otherworldly.md` | HAUNTING, RITE, WONDER, Daedric and oddity quests |
+| `principles/choices.md` | a choice or several endings: what each outcome gives and costs in play, the outcome table, what builds each kind |
 
 Each shape names the `shapeData` sections the record holds (`shapes.yaml`), each described under "Record additions"
 in its file (a THEFT first sets `theftMode`, `commit` when the player steals and `solve` when they find the thief,
@@ -167,7 +169,9 @@ The sections are those of [quest-record.md](quest-record.md) §2.
    `ending`, `actions` or `approaches`, `learns`, `directions`, `hidden` for the stage the quest waits at before its
    opening line. Conditions and actions only in the terms the compiler accepts (quest-record.md §intro; a use or a
    read is a `thing_hook` row there); a term the compiler refuses is outside the ceiling.
-9. **Endings**: two or more with real costs, each saying where the player will see it; fixed rewards.
+9. **Endings**: two or more, each with its outcome table ([principles/choices.md](principles/choices.md)): what the
+   player gains and loses in play, who pays and where the player sees it, and the record's `world` and `rewards`
+   actions that build each row; fixed rewards.
 10. **Journal text** is each stage's `journalText` in the record, its one home; a rewrite from the journal brief is
     written back there.
 11. **Topics**, per person and stage window, in the order the player meets them:

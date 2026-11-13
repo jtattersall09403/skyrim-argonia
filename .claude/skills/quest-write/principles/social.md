@@ -12,15 +12,17 @@ custom are background; no climax is a hearing or a table [OB vibe; OB skills].
    takes (the Bloody Baron sheltered Ciri before his abuse came out) [SO P4; SO M4].
 3. **The hardest side mirrors something the player is likely to value** [SO P5].
 4. **People are not archetypes**: nobody stands for a whole group [SO P10].
-5. **Standing is plural**: an outcome moves at least two standings in opposite directions (stored numbers, regard)
-   [SO P3].
+5. **An outcome pleases one side and costs with another**, and each side shows it in what it then offers or refuses
+   the player (a trader's stock, a trainer, a door, a bed, the next job); a standing (a stored number, regard, rank)
+   is how that is kept, never the outcome by itself [SO P3; CC P1].
 6. **No hidden meters and no single deciding check or fact.** A failed attempt closes one route with its written
    line and opens another topic [SO P8; SO A].
 7. **Why now is told and found, never timed**: the people say what makes it matter now, and the state the player
    finds shows it; the journal never says who was right [SO P9; ES P13].
 8. **The player stays a participant and owns a consequence they can name** [SO P2].
-9. **Afterwards is found**: each outcome changes a greeting, opens a topic, moves a standing, and takes someone or
-   something away (switched off while the player is elsewhere) [SO P6; SO M12].
+9. **Afterwards is found**: each outcome opens something the player can use (a service, a door, a thing, a power),
+   changes a greeting, and takes someone or something away (switched off while the player is elsewhere)
+   [SO P6; SO M12; CC P7].
 10. **Pace by alternating talk, travel and risk**; too many talking stages together drags, and the purpose is
     restated when play runs long [SO P17].
 11. **Two sides play differently**, and the map changes after the choice [SO P11].

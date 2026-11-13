@@ -19,7 +19,9 @@ story.
   whole (§9 says where ledgers, papers and officials belong, §10 what sings).
 - [principles/questlines.md](../quest-write/principles/questlines.md) (how a line holds together, what carries
   between quests, the line record's fields) and [principles/general.md](../quest-write/principles/general.md)
-  (what a quest may use, the owner's bar as craft, the trail, choices and rewards).
+  (what a quest may use, the owner's bar as craft, the trail, choices and rewards), and
+  [principles/choices.md](../quest-write/principles/choices.md) (what each outcome of a choice or ending gives and
+  costs in play, and the result that builds each kind).
 - The line's old design, which is the foundation, improved and never replaced: the main line in
   `story/design/quests/30-main-quest.md` and `main-line-outline.md`; a faction's section of `40-factions.md`; its
   rows in `story/design/quests/review/walk6-ceiling.md` (each premise already brought under the ceiling); its
@@ -70,6 +72,12 @@ their form keys.
    - *the choice*, each side argued by the person it concerns with a reason of their own, and what the other side
      winning would cost;
    - *the endings and what each leaves*, where the player will see it, and the fixed rewards;
+   - *an outcome table for every choice and every ending* (choices.md): the outcome; what the player gains in play;
+     what they lose or can no longer get; who in the world pays and where the player will see it; the form result
+     that builds each row. Gains and losses are things to use the next day (a power, a thing, a recipe, a trader's
+     stock, a trainer, a door, a bed, a group's peace or hostility, the next job), different in kind from outcome to
+     outcome, none better in every column; a standing is written only with what it opens. A choice with a row that
+     says only what people will say, or only that a standing moves, is not finished;
    - *the moment a player retells*;
    - *a table of step, skill and ceiling block*: every step's mechanism named from quest-system's list, so the quest
      writer never has to invent one;
@@ -127,7 +135,9 @@ converge" says.
    grow powerful and takes what is offered; one who sides with their own tribe or faction against outsiders,
    whatever it costs others; one who keeps their word to whoever hired them; one who distrusts every institution;
    one who wants the province left as it is), and run them on different models where the tools allow. Then ask
-   every reader, after their own choice, to make the strongest honest case for each option they did not take. A
+   every reader, after their own choice, to make the strongest honest case for each option they did not take, and
+   to say what they think they gained and gave up in play and whether they would choose differently for the reward
+   (one reader always plays only for what each side gives). A
    choice is real when each option was some reader's own choice for that reader's own reasons, or at least when
    every option's case can be made without strain; an option nobody chose and nobody could argue is not an option.
    Even then this is a rehearsal: the owner's reading is the test.

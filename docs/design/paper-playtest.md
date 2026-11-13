@@ -42,6 +42,7 @@ the parked quests and takes off each that is now wholly in reach: the list only 
 |---|---|
 | `look` | the place's name; the people near, each as who they are where the form or the world says (an Argonian woman) and hostile or dead; the things on the ground and the containers; the doors; each locked one with its level, each owned one marked; two of one name are told apart as `<name> 1` and `<name> 2` |
 | `journal` | each quest's entries in order and its active objectives |
+| `magic` | the spells, powers and abilities quests have taught, by the names the player sees (a `teach_spell` says `Learned: <name>` as it happens, a `forget_spell` `Forgotten: <name>`) |
 | `map` | the player's position; each active marker: what it marks (a person, thing, door, place), where, how far, which way; the places known |
 | `go <marker N, person, thing, place>` | arrival, roughly how far it was, then the `look`; into another interior only when a door of the run leads there that is unlocked or whose key is held (else the door's locked words). The transcript row says how the player knew the way: `marker`, `in sight`, `known place`, or `name only` (flagged on the page) |
 | `talk <person>` | who they are (Nesh-Deeka, an Argonian woman), the greeting (the first whose conditions hold; the first conversation makes "spoken before" true), then the topics open now |
@@ -79,7 +80,7 @@ never by one the stage it set has just opened.
 
 ## Running it
 
-    python3 -m tools.playtest run --forms <dir|files> --player careful|impatient|wanderer \
+    python3 -m tools.playtest run --forms <dir|files> --player careful|impatient|wanderer|gainer \
         [--model sonnet] [--after <quest id>...] [--know <a text>] [--names <file>] [--at <ref id>] [--source built]
 
 Run the three players on each moment. `--at` is where the player stands when the game begins (default: the first
@@ -116,7 +117,8 @@ proves it cannot read the repo, trying at least five ways (a shell substitution 
 redirection among them; its stream is kept in `story/playtests/probe/`). A silent player is killed at the run's
 timeout; three refused attempts end the run, keeping the last attempt's folder. Its brief is a role, not a checklist: who they are, how to play, the temperament,
 when to stop, and to give an open take in their own words. The standing questions (what next, who they work for,
-the most confusing moment, what they would tell the writer) are asked as a separate final turn after the take is stored,
+the most confusing moment, what they would tell the writer, and after a choice what they gained and gave up in play
+and whether they would choose differently for the reward) are asked as a separate final turn after the take is stored,
 numbered, and whatever comes back is kept as `answers.md`. A run ends when every loaded quest that has started has ended
 and none is waiting to start, or the player is stuck, or the command limit is reached; the player is told more may
 follow after a quest completes.

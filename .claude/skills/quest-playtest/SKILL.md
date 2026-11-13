@@ -36,19 +36,25 @@ and is never read as "no path". `make reach` runs it over every compiled quest.
 
 ## 3. Run the players
 
-    python3 -m tools.playtest run --forms <dir|files> --player careful|impatient|wanderer \
+    python3 -m tools.playtest run --forms <dir|files> --player careful|impatient|wanderer|gainer \
         [--model sonnet] [--after <quest id>...] [--know "<text>"] [--names <file>] [--at <ref id>] [--source built]
 
-- **Three temperaments**, each a fresh headless player with one tool: *careful* reads every line and journal entry;
-  *impatient* skims and follows markers; *wanderer* talks to everyone and pokes at everything. Moments 1 and 2 run all
-  three; moment 3 runs one careful player. Add a second impatient run where a quest opens with much optional talk
+- **The temperaments**, each a fresh headless player with one tool: *careful* reads every line and journal entry;
+  *impatient* skims and follows markers; *wanderer* talks to everyone and pokes at everything; *gainer* (below, for
+  a choice) chooses by what each side gives. Moments 1 and 2 run the first three; moment 3 runs one careful player. Add a second impatient run where a quest opens with much optional talk
   (a join, a briefing), since that player shows whether the step can be found without it.
 - **A choice is tested by players who value different things.** The three temperaments differ in patience, not in
   what they want, and one model's players tend to make one choice. Where a quest turns on a choice, add runs whose
   `--know` text gives the player a person to be with reasons of their own (out for power; loyal to their own people
   above outsiders; true to whoever hired them; trusting no institution), on different models (`--model`), and in the
-  closing questions ask each for the strongest honest case for the option they did not take. Every player choosing
-  alike under one persona is not a finding; an option no persona takes and none can argue is.
+  closing questions ask each for the strongest honest case for the option they did not take. One run is always the
+  *gainer* temperament (`--player gainer`), who chooses purely by what each side gives in play. Every player
+  choosing alike under one persona is not a finding; an option no persona takes and none can argue is, and so is
+  the gainer finding one side better in every way.
+- **After a choice the closing questions ask** what the player thinks they gained and gave up in what they can now
+  do, get or reach (the game's own words for it: `Learned:`, `Added:`, a door, a trader), and whether they would
+  choose differently for the reward. A player who can name no gain, or only what people said, shows an outcome that
+  is only words: a finding for the record (quest-review (j)).
 - **A later quest of a line** runs with `--after` the quests before it, their forms loaded beside it: the game first
   plays each to a completed ending along a shortest path, so the player starts with the state, things, gold and rank
   they leave and knows what those journal entries said. `--know` adds a short text of its own.

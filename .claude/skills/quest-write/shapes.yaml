@@ -5,6 +5,7 @@
 # section named under `cut` is told what does that job now.
 
 always: [principles/general.md, principles/actions.md]
+choices: [principles/choices.md]   # read too by any quest or line with a choice or more than one ending
 
 lines:   # by the quest row's `group`; `byLine` adds files for one line id
   local: [principles/questlines.md]   # a minor quest needs only its "Local quests" bullet

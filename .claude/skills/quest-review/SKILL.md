@@ -19,7 +19,7 @@ true of the built world and buildable inside the ceiling, while changing it is c
   report; a death that leaves the quest stuck with no failed ending.
 - **(b) Contradiction**: inside the record, with the world data (census, story data), or between the record and its
   compiled form.
-- **(c) Lore**: against canon or the extrapolation, or resting on an unsourced claim (checklist 18).
+- **(c) Lore**: against canon or the extrapolation, or resting on an unsourced claim (checklist 19).
 - **(d) A Nordic element** we add, or anything levelled against the player.
 - **(e) The skill rule**: a step that asks something of the player and names no skill, or whose only way cannot go
   wrong; a main quest without two ways through on different skills; a faction quest that ignores its faction's
@@ -36,6 +36,10 @@ true of the built world and buildable inside the ceiling, while changing it is c
 - **(i) A new player cannot tell what is going on**: a name or local word used before it is given; a choice whose
   options are not named before it is made; a join with nothing said of what it is, whom it serves, what it wants,
   what it pays and why to hesitate.
+- **(j) An outcome that is only words**: an ending or a choice's outcome that differs from another only in what is
+  said or in a standing (a stored number, regard, rank) with nothing it opens or shuts that the player can use; one
+  outcome better in play than another in every column of its outcome table; an outcome table row with no form result
+  that builds it ([choices.md](../quest-write/principles/choices.md)).
 
 Nothing else is blocking: write it as a note with its weight (`high`, `low`), ranked by what a player would notice.
 
@@ -64,7 +68,8 @@ Nothing else is blocking: write it as a note with its weight (`high`, `low`), ra
 - A built quest: also read it back (`bash tools/ArgoniaPlugin/plugin.sh questform-read <dir>`) and run
   `python3 -m tools.questform diff <designed> <built>`; every difference is blocking (b).
 - Read the principle files the record routes to ([shapes.yaml](../quest-write/shapes.yaml): `general.md`,
-  `actions.md`, the group's file, each shape's file). Each principle is part of this review: a record that breaks one
+  `actions.md`, the group's file, each shape's file, and `choices.md` for a quest or line with a choice or more than
+  one ending). Each principle is part of this review: a record that breaks one
   is a finding, citing the principle's source tag. The skill catalogue and each line's leaning:
   [skill-uses.yaml](../quest-write/skill-uses.yaml), [profiles.yaml](../quest-write/profiles.yaml).
 - A quest of a line: read its outline in `story/design/quests/lines/<line>.md`; a difference from it is a finding.
@@ -111,11 +116,15 @@ Who can die
 
 Endings and rewards
 16. Does a standalone quest, or a line as a whole, have at least two endings with different costs the player will
-    feel? Does each ending say where the player sees it?
-17. Is every reward concrete, fixed, proportionate and tied to the story?
+    feel? Does each choice and ending carry its outcome table, and does each row give and cost something the player
+    can use the next day (a power, a thing, a recipe, a trader, a trainer, a door, a bed, a group's peace), built by
+    a form result? (j)
+17. Would a player who chooses only for the reward still have a real decision: are the outcomes different in kind,
+    with none better in every column and none that only punishes? Is the trade told before the choice? (j)
+18. Is every reward concrete, fixed, proportionate and tied to the story?
 
 Lore and vibe (blocking, c)
-18. Check every person, role, job, place, institution, object and custom against `story/lore/` (first
+19. Check every person, role, job, place, institution, object and custom against `story/lore/` (first
     `extrapolation/argonia-4e201-state.md`, `settlement-register.md`, `gap-register.md`, the place's region file in
     `story/lore/regions/`) and
     province-vibe. Blocking where the quest contradicts canon or the extrapolation; rests on a claim with no `L<n>`
@@ -124,14 +133,14 @@ Lore and vibe (blocking, c)
     motif where §9 does not put it. Run `python3 .claude/skills/dialogue-write/lint.py <file> --race argonian` over the journal texts and
     justify or flag every B10 warning. For a long record, split the lore reading across cheap subagents, each given
     the claims and the files to check them in.
-19. Does the quest add to the vibe (province-vibe §10) rather than only avoid jarring with it?
+20. Does the quest add to the vibe (province-vibe §10) rather than only avoid jarring with it?
 
 Fit
-20. Do the actions follow from the truth and the place, lean to the line's profile, and vary from the quests around
+21. Do the actions follow from the truth and the place, lean to the line's profile, and vary from the quests around
     it? Is each `shapeData` section real (what the drama turns on, never a register of records)?
-21. Is the quest built on its foundation or its outline, and is each change an improvement?
-22. Do the cast match their `npc` rows (race, sex, role) and the roster, with any difference marked `invented`?
-23. Will the player understand every name and thing when first met?
+22. Is the quest built on its foundation or its outline, and is each change an improvement?
+23. Do the cast match their `npc` rows (race, sex, role) and the roster, with any difference marked `invented`?
+24. Will the player understand every name and thing when first met?
 
 ## 5. Report
 

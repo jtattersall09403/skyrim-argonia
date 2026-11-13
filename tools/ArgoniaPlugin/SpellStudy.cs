@@ -33,6 +33,14 @@ static class SpellStudy
         foreach (var (fk, (w, _)) in Survey.Winners<IWeaponGetter>(mods))
             if (!w.ObjectEffect.IsNull && w.Template.IsNull) Add($"enchanted\t{fk.ModKey.FileName}\tweapon");
         foreach (var (fk, (p, _)) in Survey.Winners<IPerkGetter>(mods)) Add($"perk\t{fk.ModKey.FileName}\t{(p.Playable ? "playable" : "hidden")}");
+        // recipes: what gates a constructible object (its workbench and the functions of its conditions)
+        var kw = Survey.Winners<IKeywordGetter>(mods);
+        foreach (var (fk, (o, _)) in Survey.Winners<IConstructibleObjectGetter>(mods))
+        {
+            var bench = kw.TryGetValue(o.WorkbenchKeyword.FormKey, out var b) ? b.rec.EditorID : "none";
+            var fns = o.Conditions.Select(c => c.Data.GetType().Name.Replace("ConditionData", "")).Distinct().OrderBy(x => x).ToList();
+            Add($"recipe\t{fk.ModKey.FileName}\t{bench}\t{(fns.Count == 0 ? "ungated" : string.Join("+", fns))}");
+        }
         foreach (var (k, n) in counts) Console.WriteLine($"{k}\t{n}");
         return 0;
     }
