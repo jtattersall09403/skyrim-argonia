@@ -66,7 +66,8 @@ The recipe (numbers from research/nw-02-flora-rules.md, nw-02-ground-water-rules
 7. Seating by the mesh (audit.py), last, over every placed thing, its x, y and form id kept: a standing tree's or a
    stump's trunk foot ring at or below the ground all round (slope included), a lying log's bulk resting on the ground
    along its length, a rock or cliff shell's open rim buried (its yaw turned to the one that needs least burial). A
-   thing that would need burial past EXTRA_SINK_MAX of its height is not placed there. The audit is the stage's check.
+   thing that would need burial past EXTRA_SINK_MAX of its height, or whose every seated pose reaches into a road's
+   walking width (step 6 again: a sunk trunk's wider foot, a turned or laid rock), is not placed there. The audit is the stage's check.
 """
 from __future__ import annotations
 
@@ -1049,7 +1050,10 @@ def _seat_row(args):
                 kept.append(r)
                 continue
             m = audit.measure_of(r["cls"], prof)
-            got = audit.seat(prof, r["cls"], r["pos"], r["rot"], r["scale"], ground)
+            def clear(z, rot, r=r):  # a pose is kept only while the road's walking width stays clear (step 6)
+                return road_shortfall(_W, _P, _R, {"base": r["base"], "pos": [r["pos"][0], r["pos"][1], z],
+                                                   "rot": rot, "scale": r["scale"]}) <= 0
+            got = audit.seat(prof, r["cls"], r["pos"], r["rot"], r["scale"], ground, ok=clear)
             if got is None:
                 tally[f"seat: refused, no pose seats its {m} on this ground"] += 1
                 kept.append(None)

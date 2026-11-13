@@ -55,6 +55,10 @@ def test_a_log_is_seated_by_its_bulk_not_its_root_tip(monkeypatch):
     z, _ = A.seat(p, "log", (0, 0, 1.0 * U), (0, 0, 0), 1.0, flat)
     j2 = A.judge(p, "log", (0, 0, z), (0, 0, 0), 1.0, flat)
     assert abs(j2["bulk"] - A.RULE["bulk"]["target"]) < 0.02 and not A.faults(j2)
+    # a pose the placer refuses (its road clear) is passed over for the next yaw; none left, the log is refused
+    z3, r3 = A.seat(p, "log", (0, 0, 1.0 * U), (0, 0, 0), 1.0, flat, ok=lambda z, r: r[2] != 0)
+    assert r3[2] != 0
+    assert A.seat(p, "log", (0, 0, 1.0 * U), (0, 0, 0), 1.0, flat, ok=lambda z, r: False) is None
 
 
 def test_a_tree_on_a_slope_is_sunk_until_its_trunk_foot_is_under_the_ground_all_round(monkeypatch):

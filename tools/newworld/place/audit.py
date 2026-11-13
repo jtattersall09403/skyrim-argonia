@@ -244,22 +244,29 @@ def _plane_tilt(pos, ground, d=2.0 * UPM):
     return P.tilt_rot(min(math.degrees(math.atan(math.hypot(gx, gy))), TILT_MAX_DEG), gx, gy)
 
 
-def seat(prof: dict, kind: str, pos, rot, scale: float, ground) -> tuple[float, tuple] | None:
+def seat(prof: dict, kind: str, pos, rot, scale: float, ground, ok=None) -> tuple[float, tuple] | None:
     """(z, (rx, ry, rz)) that seat the thing by its kind's rule, or None when no pose seats it on this ground (the
-    module's head: the kind is not placed there). A rock's z is never raised above where its own sink set it."""
+    module's head: the kind is not placed there). A rock's z is never raised above where its own sink set it.
+    `ok(z, rot)`, when given, is what else a pose must keep (the placer's: the road's walking width clear); a pose
+    it refuses is passed over for the next, and a thing with no other pose is refused."""
     pos = [float(v) for v in pos]
+    if ok is None:
+        def ok(z, r):
+            return True
     m = measure_of(kind, prof)
     cap = P.EXTRA_SINK_MAX * prof["height"] * float(scale) / UPM
     if m == "low":
         lo = judge(prof, kind, pos, rot, scale, ground)["low"]
-        return pos[2] - (max(lo - 0.1, 0.0) if lo > FLOAT_M else 0.0) * UPM, tuple(rot)
+        z = pos[2] - (max(lo - 0.1, 0.0) if lo > FLOAT_M else 0.0) * UPM
+        return (z, tuple(rot)) if ok(z, tuple(rot)) else None
     M = rotation(*rot) * float(scale)
     if m in ("trunk", "stump"):  # the foot ring's highest point to its target; refused on ground rougher under the
         h = _h(prof["trunk"], M, np.asarray(pos), ground)  # trunk than the tree slope window allows across it
         r = float(np.linalg.norm(prof["trunk"][0, :2] - prof["trunk"][8, :2])) * float(scale) / UPM
         if h.max() - h.min() > 2 * r * math.tan(math.radians(P.SLOPE_MAX["canopy_tree"])) + SPREAD_SLACK_M:
             return None
-        return pos[2] - (float(h.max()) - RULE[m]["target"]) * UPM, tuple(rot)
+        z = pos[2] - (float(h.max()) - RULE[m]["target"]) * UPM
+        return (z, tuple(rot)) if ok(z, tuple(rot)) else None
     tilts = [tuple(rot[:2]), _plane_tilt(pos, ground)]
     if m == "bulk":  # the bulk's median to its target, in the first pose (its own tilt, or laid on the ground's plane,
         for rx, ry in tilts:  # at each of YAWS yaws) where no part of the bulk still spans a hollow; else refused
@@ -268,7 +275,7 @@ def seat(prof: dict, kind: str, pos, rot, scale: float, ground) -> tuple[float, 
                 h = _h(prof["under"], rotation(*r3) * float(scale), np.asarray(pos), ground)
                 h = h[prof["bulk"]] if prof["bulk"].any() else h
                 dz = float(np.median(h)) - RULE[m]["target"]
-                if float(np.percentile(h, 90)) - dz <= BULK_SPAN_M:
+                if float(np.percentile(h, 90)) - dz <= BULK_SPAN_M and ok(pos[2] - dz * UPM, r3):
                     return pos[2] - dz * UPM, r3
         return None
     best = None
@@ -276,13 +283,15 @@ def seat(prof: dict, kind: str, pos, rot, scale: float, ground) -> tuple[float, 
         for k in range(YAWS):
             r3 = (rx, ry, (rot[2] + 2 * math.pi * k / YAWS) % (2 * math.pi))
             dz = max(judge(prof, kind, pos, r3, scale, ground)["rim"] - RULE["rim"]["target"], 0.0)
+            if dz > cap or not ok(pos[2] - dz * UPM, r3):
+                continue
             if best is None or dz < best[0] - 1e-6:
                 best = (dz, r3)
             if dz == 0.0:
                 break
-        if best[0] == 0.0:
+        if best is not None and best[0] == 0.0:
             break
-    if best[0] > cap:
+    if best is None:
         return None
     return pos[2] - best[0] * UPM, best[1]
 
