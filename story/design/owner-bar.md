@@ -17,6 +17,10 @@ reads this first; a new ruling is added here the day it is made, as well as to o
 - The old main quest, factions and quest designs are the foundation, improved not replaced (OR 2026-10-28). Keep
   the treasure hunt, the spies and the main quest's spirit; make it "more Black Marsh, more exciting, less
   bureaucratic" (OR 2026-11-06, the quest review loop).
+- Every faction is "fun and intriguing and exciting" with "drama and tension, all of their own". A faction's
+  premise may stay as background, but each quest is something daring the player does, never chores: "do you have to
+  pickpocket somebody to get a key to break into their house to change something on a record about owed months,
+  for example. Use your imagination, make them fun" (OR 2026-11-13, of the Chainbreakers and "all the factions").
 - A new player with no context must be able to tell what is going on as it happens: the walked quests were
   "incredibly confusing" and "super impenetrable" (walk 6, OR 2026-11-12).
 

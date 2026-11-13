@@ -542,3 +542,11 @@ added here the day they are made, with the date and the issue.
   whatever, should just be at most a very small amount across the board. Might be some particular people or
   factions or contexts where it's appropriate. Use your judgment". Records, rolls and paperwork are rare, kept for
   the people, factions and places they truly belong to; the lead judges case by case.
+- 2026-11-13 (in session, factions must be exciting): "The chainbreakers main thing being about buying people out
+  sounds kind of boring by itself ... that's basically just chores. 'Chainbreakers' sounds like an exciting faction.
+  Make them exciting. I'm not saying you have to get rid of the concept of buying people out entirely, but the
+  quests themselves need some drama to them - do you have to pickpocket somebody to get a key to break into their
+  house to change something on a record about owed months, for example. Use your imagination, make them fun. Same
+  goes for all the factions. They should be fun and intriguing and exciting and have drama and tension, all of
+  their own". Every faction's line has drama, tension and intrigue of its own kind; a faction's premise (buying
+  people out) may stay as background, but each quest is something daring the player does.
