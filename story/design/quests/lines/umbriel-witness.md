@@ -95,10 +95,12 @@ what still stands behind a door, a Mark set at the stair before going under.
 **What it pays and what joining costs.** The diver's share: whatever comes up with no name on it is the diver's
 (the record's own "salvage from the drowned Imperial villas", D, Lilmoth). Neexa-Tul's gifts are divers' things:
 draughts and scrolls from the divers' chest, and vanilla jewellery enchanted for water-breathing, Alteration and
-Restoration (the record writer names the forms). The cost: what the player brings up belongs to someone living, who
-will not always thank them; and the dead down there do not lie still.
+Restoration (the record writer names the forms). A rank is what the Witness trust the player with, and each is given with the thing it means: Breath-Holder, the
+Divers' Chest; Diver, a necklace or a ring; Namer and Carver, the gifts of UW03 and UW04; Witness, the house's bed
+and chest for good. The cost: what the player brings up belongs to someone living, who will not always thank them;
+and the dead down there do not lie still.
 
-**What it lies about.** It says it carves what the water gives. It carves what a family can bear and what the
+**What it lies about.** It says it carves what comes up. It carves what a family can bear and what the
 council will pay for; and its own first stake is a lie (section 2).
 
 **The build leaning.** Alteration and Restoration first (breath, light, turning the dead), Conjuration and Alchemy
@@ -126,14 +128,14 @@ which of Lilmoth's houses did which. That is the line.
    Fisher (`lilmoth.md:53`), whose vault the party had pumped dry and warded as it did the Ixtaxh xanmeer
    (`an-xileel.md:52` to `:54`). The ward opened to a singer's gourd.
 3. On the day, the foreigners were where the party's law had put them, on the docks (`lilmoth.md:79` to `:83`). The
-   master of the Three-Knot lighters sold passage to those who could pay, in lead tallies stamped with his knots,
+   master of the Three-Knot lighters sold passage to those who could pay, in lead tokens stamped with his knots,
    and sent them up the cart road to wait in the cellar of an empty planter's house for a boat that he never sent.
    Then he took his own household down to the Fisher's vault. The dead found the cellar.
 4. A servant of the party, a lukiul woman of Pusbottom, kept the vault's door. Forty of Pusbottom followed her down:
    the party's enemies, who "hid out in the Pusbottom district" (`an-xileel.md:50` to `:51`), and their hatchlings.
    She barred the door from inside. She lived, and so did the houses behind her.
 5. Those who ran west along the road were shut into the cellar of the Legion's empty road post by the people of
-   Karketa, who barred it on the living and the dead together, and so the village "was spared" (D
+   Karketa, who barred it on their neighbours and the dead together, and so the village "was spared" (D
    althii-archipelago, Karketa). Karketa then "sent people to help the town's rebuilding" (the same record), and
    carved what it had done on its own post.
 6. In the generations after, the vault's houses came back as "Karketa folk" and delta kin and made the council
@@ -148,7 +150,7 @@ which of Lilmoth's houses did which. That is the line.
 
 | The truth | Where it is seeded | Where it is found |
 |---|---|---|
-| A living council house sold the dock's foreigners a false passage | UW01: three knots on six lead tallies; Neexa-Tul knows whose boats carry that mark and asks for silence | UW03: the same knots on the College's licence |
+| A living council house sold the dock's foreigners a false passage | UW01: three knots on six lead tokens; Neexa-Tul knows whose boats carry that mark and asks for silence | UW03: the same knots on the College's licence |
 | The singers were ridden, and some were secret party men in lukiul houses | UW01: Old Nusa on "what the singers wore" | UW02: the gourd on Ajum-Shei's neck |
 | The party's houses hid in the Fisher's shrine | UW02: the cook's scrap ("the master said we would all go to the Fisher's house"); Neexa-Tul will not speak of the shrine | UW05: the vault, and the cups with house-marks in it |
 | The council sells the nameless dead to pay for the named | UW01 and UW02: Odile Marric always knows where the Witness are diving next; the stipend arrives in Carves-Twice's hands | UW03: the licence in the barn |
@@ -162,7 +164,7 @@ which of Lilmoth's houses did which. That is the line.
 | **UW01 Six Behind the Wall** | Dunhallow Plantation; Wild | a sealed room under a household | gets into a walled cellar by leave, by a lifted key or by a flooded drain, past three dead, for six names; chooses whose they are | Speech, Restoration, Pickpocket, Lockpicking; Alteration; Sneak or a fight | the first rank; `uw01.way`; the College's count |
 | **UW02 The Master of the House** | Lilmoth, a drowned villa; Dangerous | the first true dive, and one named dead man | swims into a villa, takes a name-charm from a dead man who still stands in his hall, and finds what else he wore | Alteration, Sneak with Pickpocket, Restoration, a hard fight; Speech | the second rank; a gourd kept, sunk or sold; `uw02.way` |
 | **UW03 The Barn at Seeku** (the turn) | Seeku Farm; Dangerous | a raid on the living | breaks the College's workroom and steals its licence | Sneak, Lockpicking, a hard fight, Conjuration, Speech | what the player knows of the stipend; `uw03.way` |
-| **UW04 The Road the Living Took** | Fort Sallowmoth's flooded cellar and Karketa; Deadly | the line's dungeon, with one way in and another out | drops into the cellar, brings out name-charms among the worst dead of the line, and reads who barred the door | Sneak, Restoration, Alteration, Mysticism, a hard fight | charms and gourds held; what Karketa said |
+| **UW04 The Road the Living Took** | Fort Sallowmoth's flooded cellar and Karketa; Deadly | the line's dungeon, with one way in and another out | drops into the cellar, brings out name-charms among the worst dead of the line, and reads who barred the door | Sneak, Restoration, Alteration, Mysticism, a hard fight; Speech | gourds held; what Karketa said; `uw04.way` |
 | **UW05 The Fisher's House** | Lilmoth, the sunken shrine of Xhon-Mehl; Deadly | the longest dive and the last door: the race | reaches the vault before the College or after it, by what was sold earlier | all of the line's | the Song Jar, a council house's cup, the bar |
 | **UW06 What the Stakes Say** | Lilmoth | a hand-over that is a judgement | puts the three things into one of four pairs of hands | none (the choice) | the only ending that reaches the world after the line |
 
@@ -182,13 +184,12 @@ quarter's dead standing roped in a stall. The door key is the farm family's, who
 (Speech, or 150 gold, or Pickpocket); the door picks at Adept (Lockpicking); the blades are fought, crept past
 (Sneak) or drawn off by something conjured. The prize is in a locked travelling chest: **the College's licence**,
 an outsider's paper and the only document in the line, sealed with three knots, giving leave "to take up the
-unnamed dead of the old quarter at forty septims a head, payable through the carver at the Stake-Ground". The dead
+unnamed dead of the old quarter at fifty septims a head, payable through the carver at the Stake-Ground". The dead
 thing in the stall wears the arm-ring. *The turn:* the silver that pays for the stakes is the price of the
 unstaked, and the mark that sold six Bretons a boat in UW01 sells the College their bodies now. *The choice,* each
 argued by the one it concerns: to Neexa-Tul, who asks for silence until the Fisher's shrine is dived, because
 without the council's leave nobody dives it; to Dives-Without-Asking, who will nail it to the First Stake before
-the whole town; or to Carves-Twice, who buys it back. His case is honest in the Witness's own terms: "Forty a head
-staked a hundred with names. I sold what nobody will ever name to bury those we can." *Gains and costs:* Neexa-Tul
+the whole town; or to Carves-Twice, who buys it back. His case is honest in the Witness's own terms: "Fifty a head staked a hundred with names. I sold what nobody will ever name to bury those we can." *Gains and costs:* Neexa-Tul
 gives the third rank and a ring of Restoration; Dives-Without-Asking gives her brother's arm-ring (a fixed
 enchantment for swimming) and the council's guards turn cold for the rest of the line; Carves-Twice pays 600 gold,
 and the paper goes back to the College (`uw.college` +1). *The misjudgement:* a player who kills Carves-Twice for a
@@ -197,21 +198,30 @@ traitor finds in his shed the hundred stakes he paid for and no coin of his own.
 **UW04, The Road the Living Took.** Fort Sallowmoth is roofless, its "cellar holds standing water", "holes in the
 floor by the old armoury drop into the cellar" and "the squatters call the yard unlucky and do not sleep inside"
 (D althii-archipelago, Fort Sallowmoth). Its hook is taken: "a squatter wants a lost kinsman found, last seen
-heading for the fort". Dives-Without-Asking's brother went there looking for the road dead; the squatter's kinsman
-went after salvage. The squatter speaks from the road short of the wall (a need, by the lead's fourth ruling) and
-shows the broken corner. *What the player does:* crosses or creeps the yard (the record's own squatters), drops
-through the floor, which cannot be climbed again, a point of no return said twice, and stands on the cellar's dry
-shelf among the dead of the road: bog blights at fixed level 30 and two singers still wearing their gourds.
-Restoration turns them; Sneak passes them; a fighter earns the armoury's worth below. Five **name-charms** lie
-among them (a counted thing; the hand-in is gated on holding five), with the kinsman's satchel. The way out is the
-flooded sally-drain to the marsh, or a Mark set before the drop and Recall (Mysticism). The cellar's own door is
-barred on the outside with a boat's thwart cut with Karketa's fish. *Then Karketa:* the headwoman does not deny
-it. Her village's "prayer-post carved for the drowned" (D, Karketa) says it, for anyone who reads posts: "We
-barred the road post on forty living and the dead behind them. We are alive. Carve it." A village that never hid
-its guilt, a short walk from a town that hides all of it. She asks one thing back: "Ask your keeper whose charm
-hangs on the Fisher's door." *The choice:* the five stakes say who barred the door, or say only who died. *Gains
-and costs:* the fourth rank; the two gourds (kept, given or sold: `uw.college` +1 if sold); Karketa's boats and
-table open or shut to the player by what the stakes say.
+heading for the fort". Neexa-Tul sends the player for the road dead, whom the Witness have never reached, and
+Dives-Without-Asking says her brother went looking for them before he drowned. The squatter, Half-Roof, speaks from
+the road short of the wall (a need, by the lead's fourth ruling): his sister's son went down through the armoury
+floor after salvage, and he will show the broken corner to anyone who will look for him. *What the player does:*
+crosses or creeps the yard (the record's own squatters), drops through the floor, which cannot be climbed again, a
+point of no return said by Half-Roof and again by a rope hanging cut above the hole, and stands on the cellar's dry
+shelf among the dead of the road: bog blights at fixed level 25 and two singers still wearing their gourds. Three
+warnings come first (Half-Roof, the cut rope, Old Nusa: "Nobody has come up out of Sallowmoth. Set a Mark before
+you drop, if you have the art"). Restoration turns them; Sneak passes them; a fighter earns what lies with them.
+Five **name-charms** lie on the shelf (a counted thing; the hand-in is gated on holding five) and a sixth thing,
+the nephew's satchel, with a charm in it that is new. The way out is the flooded sally-drain to the marsh, or a
+Mark set before the drop and Recall (Mysticism, from Magic Expanded). The cellar's own door is barred on the
+outside with a boat's thwart cut with Karketa's fish. *Then Karketa,* on the way home: the headwoman does not deny
+it, and nobody has to choose whether it is carved, because her village carved it first. Its "prayer-post carved for
+the drowned" (D, Karketa) says, for anyone who reads posts: "We barred the road post on our neighbours and the dead
+behind them. We are alive. Carve it." A village that never hid its guilt, a short walk from a town that hides all
+of it. She asks one thing back: "Ask your keeper whose charm hangs on the Fisher's door." *The choice is the
+nephew's charm,* and it is Half-Roof's to argue: he asks the player to say the boy was not found, because his
+sister can live with a son who ran off and cannot live with one who stands in that cellar. Told the truth, he pays
+what he promised and the sister comes to the Stake-Ground for a stake; told the lie, he gives the player his own
+way through the yard for good, and the Witness's sixth stake is never cut. *Gains and costs:* the fourth rank and
+Neexa-Tul's staff of turning for the five charms; the two gourds, each kept (UW05's door), given to Neexa-Tul or
+sold to Odile Marric (`uw.college` +1 for either or both); Half-Roof's 200 gold, or the yard's squatters no longer
+hostile to the player (a faction and a rank set by the stage).
 
 **UW05, The Fisher's House (the race).** The sunken shrine of Xhon-Mehl, "which a diver reaches only as far as
 breath allows" (D, Lilmoth: hooks), is the longest swim in the line and the council keeps it for itself. Beyond the
@@ -234,14 +244,15 @@ three things, and the hand-over is the ending.
 
 | Whose hands | What it does | What the player gains | What it costs |
 |---|---|---|---|
-| **Neexa-Tul** (kept) | The Witness hold it and tell it kin by kin; the First Stake stands; the council pays on, knowing what is held | the rank of Witness; the Stake-House's chest and bed for good; the First Diver's necklace (water-breathing) | Dives-Without-Asking leaves the stair; the council's quiet enmity, shown in Shuvu-Meen's greeting |
+| **Neexa-Tul** (kept) | The Witness hold it and tell it kin by kin; the First Stake stands; the council pays on, knowing what is held | the rank of Witness; the Stake-House's chest and bed for good; the First Diver's necklace (water-breathing) | Dives-Without-Asking leaves the stair; the council's quiet enmity, shown in Shuvu-Meen's greeting and in her lighter-men's |
 | **Dives-Without-Asking** (carved) | All of it goes onto stakes, the First Stake is cut again, three council houses are named; Neexa-Tul lays down her chisel and offers the player the Stake-House, the only way the player comes to keep it | the Stake-House as the player's own, with its chest; her brother's stake raised; Karketa's regard | the stipend ends: no more gold from the line; Carves-Twice gone; council guards cold |
-| **Shuvu-Meen** (sunk) | The council owns the story; the Stake-Ground becomes the town's memorial outright, richer and tame | 3,000 gold and the council's salvage chest | Neexa-Tul keeps her secret and knows who sold it; Old Nusa will not speak to the player again |
-| **Scaeva, or Odile Marric if he is dead** (sold; they want only the jar, and the rest goes down the stair) | The College leaves Lilmoth with what it came for | a master's Conjuration tome and 2,000 gold | cast out: the Stake-House door is locked to the player and every Witness greets them as a grave-robber |
+| **Shuvu-Meen** (sunk) | The council owns the story; the Stake-Ground becomes the town's memorial outright, richer and tame | 3,000 gold and the council's salvage chest | cast out as surely as by selling: the Stake-House door is locked to the player and the rank is taken; Neexa-Tul keeps her secret and knows who sold it; Old Nusa will not speak to the player again |
+| **Scaeva, or Odile Marric if he is dead** (sold; they want only the jar, and the rest goes down the stair) | The College leaves Lilmoth with what it came for | a master's Conjuration tome, a staff that raises the dead and 4,000 gold, the most the line pays | cast out: the Stake-House door is locked to the player and every Witness greets them as a grave-robber |
 
 Shuvu-Meen's case, said only here: "My house sold six Bretons a boat that did not exist, and hid, and came back,
-and built every walk you are standing on. Carve it. Then tell me who feeds this town the season after, and whose
-harbour it is when the Wardens hear that Lilmoth's council were party men all along." Last, alone with Neexa-Tul,
+and built every walk you are standing on. Carve it. This town has one claim on anyone, that the party killed it. Tell me whose harbour it is the season after the
+Wardens hear that Lilmoth's council were party men all along." Scaeva's case, said only here: "You have seen what
+your keepers do with a truth. I will at least find out whether it is one." Last, alone with Neexa-Tul,
 a player who holds the bar may ask about the charm on it. She answers once: "I was nineteen and I had breath for
 one look. I have carved four hundred true stakes on the strength of one false one. Tell me which you would pull."
 
@@ -258,27 +269,28 @@ Common to both.
   own (slaughterfish, young crocodilians) and can be swum past.
 - **Breath is told before it is needed.** Old Nusa, at the head of the Divers' Stair, says where breath is had: the
   young tree's two minders at the tree's wall, the herb-wife's draughts, a mage's own spell, an Argonian's gills.
-- Every objective has a marker. Journal entries are first person, past tense, and say only what the player has just
+- Every objective has a marker. Journal entries are in the first person and the past tense and say only what the player has just
   done. Thresholds are fixed. Every failed check has its own refusal and leaves another way open. "Night" in
   anyone's mouth is their word only.
 
 ### UW01. Six Behind the Wall
 
 **What a new player is told, and when.** Neexa-Tul, before any job, four optional lines of two or three sentences:
-*4E 48* ("The old tree went mad and called a city out of the sky. Everything under it died and got up again. Nobody
-alive saw it; we have what our great-grandmothers' grandmothers said"); *the Unstaked* ("The drowned quarter. We
+*4E 48* ("The An-Xileel ruled here and sang to the old tree. It went mad and called a city out of the sky. It
+called its own out of the town first; everyone left under it died and got up again. Nobody alive saw it"); *the Unstaked* ("The drowned quarter. We
 are buried under a stake that tells who we were, and it holds us down. Nobody down there has one, and some of them
 have not lain down"); *the Witness* ("We go under for what names them and we carve it. What comes up with no name
 on it is yours"); *why I might not* ("What you bring up belongs to someone living. They will not always thank you.
 And the council pays for my chisels, which you should know before you admire them"). "Not yet" stays open and
 free. The job: "Dunhallow, the rice estate up the cart road north-west. The family walled its cellar in my
 grandmother's day. I think six people are behind that wall who have waited a hundred and fifty years to be called
-something. Bring me what names them. Tseeba-Mei, who holds the place, will not want it opened. And the Breton on
+something. Bring me what names them. Tseeba-Mei, who holds the place, keeps the hatch in her kitchen yard locked and will
+not want it opened; the cellar's old drain comes out under water in the east dyke. And the Breton on
 the foreigners' dock, Odile Marric, has been asking after that cellar. She will offer you money. Hear her if you
 like, and know what she buys."
 
 **The hidden truth (X).** In 4E 48 a Breton chandler of the docks, his wife, two children, a clerk and a maid paid
-the master of the Three-Knot lighters for passage. He gave them six lead tallies stamped with his knots, each
+the master of the Three-Knot lighters for passage. He gave them six lead tokens stamped with his knots, each
 scratched with its bearer's name so that it could not be sold on, and sent them up the cart road to the empty
 planter's house (D althii-archipelago, Dunhallow Plantation: "gone long before the secession, leaving the house to
 rot") to wait in its cellar for a boat on the dyke. No boat came. The dead of the road found them. They put what
@@ -295,7 +307,7 @@ kitchen yard was kept, locked, so that the wall could be looked at. The cellar's
 | Old Nusa, diver (woman) | the head of the Divers' Stair, Lilmoth | to tell a newcomer how not to die of it | her telling is lost; nothing else |
 | Tseeba-Mei, landholder of Dunhallow (woman) | the veranda of Dunhallow's great house | the wall kept and the cellar never spoken of in Lilmoth's market: tenant kin "come for the planting" (D) and would not | her key is on her body; her leave and her ending are closed |
 | Odile Marric, Breton dock mage, the College's buyer (woman) | the foreigners' dock, Lilmoth, where she sells spells (D) | the names, and the three left standing until her people can come for them | her ending is closed |
-| the Risen Chandler and two Walled-In Dead | the cellar floor, between the drain and the strongbox; hostile, fixed at levels 9, 7 and 7 | nothing | nothing of the quest; her after-line differs |
+| the Risen Chandler, the Walled-In Clerk and the Walled-In Maid | the cellar floor, between the drain and the strongbox; hostile, fixed at levels 9, 7 and 7 | nothing | nothing of the quest; her after-line differs |
 
 **The things.**
 
@@ -303,9 +315,9 @@ kitchen yard was kept, locked, so that the wall could be looked at. The cellar's
 |---|---|---|---|
 | the Cellar Hatch | Dunhallow's kitchen yard | Adept; Tseeba-Mei's key; the house is the family's, so picking it is a crime in their sight | the dry way down |
 | the Dyke Drain | under water in the east dyke | none | the wet way in: a short swim past the dyke's own slaughterfish |
-| the Planters' Strongbox | the far end of the cellar | rusted open; the cellar is nobody's | 60 gold in old septims, a silver ring, the tallies |
-| Six Passage Tallies (Three Knots) | in the strongbox | one named thing | six lead tallies, each scratched with a Breton name, each stamped with three knots |
-| the Divers' Chest | the Stake-House | Expert; Neexa-Tul's | two draughts of water-breathing, two scrolls of Turn Undead, a spell tome of Candlelight |
+| the Planters' Strongbox | the far end of the cellar | rusted open; the cellar is nobody's | 60 gold in old septims and the tokens |
+| Six Passage Tokens (Three Knots) | in the strongbox | one named thing | six lead tokens, each scratched with a Breton name, each stamped with three knots |
+| the Divers' Chest | the Stake-House | not locked; Neexa-Tul's, so taking from it is theft until she gives it | two draughts of water-breathing, two scrolls of Turn Undead, a spell tome of Candlelight |
 
 **The ways through** (all open at the working stage).
 
@@ -315,27 +327,26 @@ kitchen yard was kept, locked, so that the wall could be looked at. The cellar's
   have a healer's talk and no healer's hands"), or for the price of the mason who will wall it again.
 - *Her key (Pickpocket), or the hatch itself (Lockpicking, Adept).* Under the household's eyes: seen, the player is
   a thief or a housebreaker on a family's ground, and the family's hunters and dogs (D) answer.
-- *The drain (Alteration, a draught, the tree's sap, or gills).* No lock and nobody's leave. It comes up at the
-  cellar's flooded end with the three dead between the player and the box.
+- *The drain (Alteration, a draught, the tree's sap or gills).* No lock and nobody's leave. It comes up at the cellar's flooded end with the three dead between the player and the box; the hatch's steps
+  come down at the box's end.
 - *The cellar.* Turned (Restoration), crept past (Sneak), held off by something conjured, or fought. They are the
-  line's weak sample of what stands in the quarter, and a new character who has been let in by the hatch can run
-  for the box and the steps.
+  line's weak sample of what stands in the quarter, and a new character let in by the hatch can snatch the tokens and climb out again.
 
 **The stages.**
 
 | Stage | What moves it | Journal gist | Objective and its markers |
 |---|---|---|---|
 | 0 | hidden start | | |
-| 10 | Neexa-Tul's line "Is there work for someone with breath?" | Neexa-Tul of the Umbriel Witness asked me to bring her what names six dead of 4E 48, walled into the cellar of Dunhallow Plantation, north-west of Lilmoth by the cart road. Tseeba-Mei, who holds the estate, keeps the cellar hatch locked. A drain runs to the cellar from the east dyke. | Get into Dunhallow's cellar and take what names the dead (Tseeba-Mei, the hatch, the drain, the tallies) |
-| 20 | Tseeba-Mei's line, Speech 35 or Restoration 25 (unlocks the hatch) | Tseeba-Mei unlocked the cellar hatch for me. | Take what names the dead from the planters' strongbox (the tallies) |
+| 10 | Neexa-Tul's line "Is there work for someone with breath?" | Neexa-Tul of the Umbriel Witness asked me to bring her what names six dead of 4E 48, walled into the cellar of Dunhallow Plantation, north-west of Lilmoth by the cart road. Tseeba-Mei, who holds the estate, keeps the cellar hatch locked. A drain runs to the cellar from the east dyke. | Get into Dunhallow's cellar and take what names the dead (Tseeba-Mei, the hatch, the drain, the tokens) |
+| 20 | Tseeba-Mei's line, Speech 35 or Restoration 25 (unlocks the hatch) | Tseeba-Mei unlocked the cellar hatch for me. | Take what names the dead from the planters' strongbox (the tokens) |
 | 25 | Tseeba-Mei's line, 200 gold (takes it; unlocks the hatch) | I paid Tseeba-Mei for the mason, and she unlocked the cellar hatch. | the same |
-| 30 | taking the tallies (open from 10) | I took six lead tallies from the planters' strongbox in Dunhallow's cellar. Each is scratched with a Breton name and stamped with three knots. | Bring the tallies to Neexa-Tul; or hear Odile Marric or Tseeba-Mei (all three) |
-| 90 | Neexa-Tul's line, the tallies held | **Staked.** I gave Neexa-Tul the six tallies. | ends, completed |
-| 91 | Odile Marric's line at 30, the tallies held | **Sold.** I sold the six tallies to Odile Marric on the foreigners' dock. | ends, completed |
-| 92 | Tseeba-Mei's line at 30, the tallies held | **Walled.** I gave the six tallies back to Tseeba-Mei. | ends, completed |
+| 30 | taking the tokens (open from 10) | I took six lead tokens from the planters' strongbox in Dunhallow's cellar. Each is scratched with a Breton name and stamped with three knots. | Bring the tokens to Neexa-Tul; or hear Odile Marric or Tseeba-Mei (all three) |
+| 90 | Neexa-Tul's line, the tokens held | **Staked.** I gave Neexa-Tul the six tokens. | ends, completed |
+| 91 | Odile Marric's line at 30, the tokens held | **Sold.** I sold the six tokens to Odile Marric on the foreigners' dock. | ends, completed |
+| 92 | Tseeba-Mei's line at 30, the tokens held | **Walled.** I gave the six tokens back to Tseeba-Mei. | ends, completed |
 | 95 | Neexa-Tul dead | Neexa-Tul is dead. Nobody will carve them now. | ends, failed |
 
-A player who holds the tallies before the job tells Neexa-Tul so at the offer and goes to 90.
+A player who holds the tokens before the job tells Neexa-Tul so at the offer and goes to 90.
 
 ```sketch
 quest UW01 faction "Six Behind the Wall"
@@ -353,14 +364,17 @@ person nusa at stair "Old Nusa"
 person odile at docks "Odile Marric"
 person tseeba at dunhallow "Tseeba-Mei"
 person chandler at cellar hostile level 9 "Risen Chandler"
-person dead1 at cellar hostile level 7 "Walled-In Dead"
-person dead2 at cellar hostile level 7 "Walled-In Dead"
+person dead1 at cellar hostile level 7 "Walled-In Clerk"
+person dead2 at cellar hostile level 7 "Walled-In Maid"
 thing hatchkey on tseeba "Dunhallow Cellar Key"
 door hatch at dunhallow locked adept key hatchkey "Cellar Hatch"
 door drain at dunhallow "Dyke Drain"
 thing strongbox at cellar container holds gold 60 "Planters' Strongbox"
-thing tallies in strongbox "Six Passage Tallies (Three Knots)"
-thing chest at stakehouse container locked expert owner neexa holds gold 40 "Divers' Chest"
+thing tokens in strongbox "Six Passage Tokens (Three Knots)"
+thing chest at stakehouse container owner neexa holds breathdraught 2, turnscroll 2, candletome 1 "Divers' Chest"
+item breathdraught "Draught of Waterbreathing"
+item turnscroll "Scroll of Turn Undead"
+item candletome "Spell Tome: Candlelight"
 thing sixstake at stakeground off "Stake of the Six of Dunhallow"
 thing firststake at stakeground readable "The First Stake"
 item tome "Spell Tome: Raise Zombie"
@@ -369,39 +383,43 @@ stage 0 hidden
 stage 10 "Neexa-Tul of the Umbriel Witness asked me to bring her what names six dead of 4E 48, walled into the cellar of Dunhallow Plantation, north-west of Lilmoth by the cart road. Tseeba-Mei, who holds the estate, keeps the cellar hatch locked. A drain runs to the cellar from the east dyke."
 stage 20 "Tseeba-Mei unlocked the cellar hatch for me." do unlock hatch
 stage 25 "I paid Tseeba-Mei for the mason, and she unlocked the cellar hatch." do take-gold 200, unlock hatch
-stage 30 "I took six lead tallies from the planters' strongbox in Dunhallow's cellar. Each is scratched with a Breton name and stamped with three knots."
-stage 90 completed "Staked. I gave Neexa-Tul the six tallies." do take tallies, give-gold 100, join witness, rank witness 1, set uw01.way 1, on sixstake, own chest
-stage 91 completed "Sold. I sold the six tallies to Odile Marric on the foreigners' dock." do take tallies, give-gold 300, give tome, set uw01.way 2, add uw.college 1
-stage 92 completed "Walled. I gave the six tallies back to Tseeba-Mei." do take tallies, give-gold 250, set uw01.way 3, lock hatch
+stage 30 "I took six lead tokens from the planters' strongbox in Dunhallow's cellar. Each is scratched with a Breton name and stamped with three knots."
+stage 90 completed "Staked. I gave Neexa-Tul the six tokens." do take tokens, give-gold 100, join witness, rank witness 1, set uw01.way 1, on sixstake, own chest
+stage 91 completed "Sold. I sold the six tokens to Odile Marric on the foreigners' dock." do take tokens, give-gold 300, give tome, set uw01.way 2, add uw.college 1
+stage 92 completed "Walled. I gave the six tokens back to Tseeba-Mei." do take tokens, give-gold 150, set uw01.way 3, lock hatch
 stage 95 failed "Neexa-Tul is dead. Nobody will carve them now."
 
-objective 10 at 10 "Get into Dunhallow's cellar and take what names the dead" -> tseeba, hatch, drain, tallies
-objective 20 at 20, 25 "Take what names the dead from the planters' strongbox" -> tallies
-objective 30 at 30 "Bring the tallies to Neexa-Tul; or hear Odile Marric or Tseeba-Mei" -> neexa, odile, tseeba
+objective 10 at 10 "Get into Dunhallow's cellar and take what names the dead" -> tseeba, hatch, drain, tokens
+objective 20 at 20, 25 "Take what names the dead from the planters' strongbox" -> tokens
+objective 30 at 30 "Bring the tokens to Neexa-Tul; or hear Odile Marric or Tseeba-Mei" -> neexa, odile, tseeba
 
-line year neexa at 0-30 ask "What happened here in 4E 48?" says "the old tree, the city out of the sky, nobody alive saw it"
+line year neexa at 0-30 ask "What happened here in 4E 48?" says "the An-Xileel, the party that ruled here, sang to the old tree; it went mad and called a city out of the sky; it called its own out of the town first, and the lukiul and the foreigners were left under it; nobody alive saw it"
 line ground neexa at 0-30 ask "What is this ground?" says "the Unstaked; what a stake is; what the Witness do; the diver's share; that the council pays for her chisels"
-line job neexa at 0 ask "Is there work for someone with breath?" -> 10 says "Dunhallow's walled cellar; six names; Tseeba-Mei will not want it; Odile Marric will offer money, and what she buys"
-line early neexa at 0 ask "I have six lead tallies from a cellar at Dunhallow." if holds tallies -> 90 says "she reads the names aloud, and then the mark"
+line job neexa at 0 ask "Is there work for someone with breath?" -> 10 says "Dunhallow's walled cellar; six names; Tseeba-Mei keeps its hatch in the kitchen yard locked and will not want it opened; its old drain comes out under water in the east dyke; Odile Marric will offer money, and what she buys"
+line early neexa at 0 ask "I have six lead tokens from a cellar at Dunhallow." if holds tokens -> 90 says "she reads the names aloud, and then the mark"
 line breath nusa at 0-30 ask "How does anyone go under?" says "breath from the young tree's two minders at the tree's wall, the herb-wife, a spell or gills; the dead stand on floors, so swim past what swims; a prayer turns them and a blade ends them"
 line first nusa at 0-30 ask "What is the tall stake?" says "the First Stake; the story everyone likes; read it yourself"
-line worn nusa at 10-30 ask "What will be on them?" says "rings, charms; and on some, what the singers wore; she will know it when you bring it"
-line wall tseeba at 10-30 ask "Why did your family wall it?" says "her grandmother's year; one came up the steps; hatchlings sleep over it; the tenants would not come for the planting"
+line worn nusa at 10-30 ask "What will be on them?" says "rings, charms; and on some, what the singers wore, which opened what the party shut; she will know it when you bring it"
+line wall tseeba at 10-30 ask "Why did your family wall it?" says "her grandmother's year, when a dead thing climbed the cellar steps; hatchlings sleep over it; the tenants would not come for the planting"
 line leave tseeba at 10 ask "Six people are owed their names. Open it." if skill Speech 35 -> 20 else "They have a wall. It has kept my hatchlings alive." says "Then you end them, or you wall it yourself after."
 line lay tseeba at 10 ask "I can lay the dead, not only count them." if skill Restoration 25 -> 20 else "You have a healer's talk and no healer's hands." says "she unlocks the hatch"
 line pay tseeba at 10 ask "What would it cost to open it?" if gold 200 -> 25 else "Two hundred, for the mason who walls it again after you." says "she takes the coin"
 line want odile at 10-30 ask "Why do you ask after Dunhallow's cellar?" says "they were Bretons; who is a lizard's grave-post for; and three hundred, more than a carver pays"
-line toneexa neexa at 30 ask "Here are six names." if holds tallies -> 90 says "she reads the names, then the mark: three knots; say nothing on the walks until she has thought"
-line toodile odile at 30 ask "You wanted what was in Dunhallow's cellar." if holds tallies -> 91 says "she pays three hundred, gives a tome, and asks nothing about how"
-line totseeba tseeba at 30 ask "Take them. Put them back in the wall." if holds tallies -> 92 says "she will say the six names over the wall at every planting, which is more than Lilmoth did"
+line ncase neexa at 30 ask "What will a stake do for six Bretons?" if holds tokens says "nobody has said these names in a hundred and fifty years; one post for a household of strangers, since she does not know six stories; the Breton cuts the dead open"
+line tcase tseeba at 30 ask "I have what names your six." if holds tokens says "give them to her: she will say them over the wall at every planting; a hundred and fifty gold; staked in Lilmoth, every market-woman knows whose cellar it was"
+line toneexa neexa at 30 ask "Here are six names." if holds tokens -> 90 says "she reads the names, then the mark: three knots; say nothing on the walks until she has thought"
+line toodile odile at 30 ask "You wanted what was in Dunhallow's cellar." if holds tokens -> 91 says "she pays three hundred and gives a tome; she asks nothing about how"
+line totseeba tseeba at 30 ask "Take them. Put them back in the wall." if holds tokens -> 92 says "she will say the six names over the wall at every planting, which is more than Lilmoth did"
 line a90 neexa at 90 ask "Whose mark is three knots?" says "the oldest lighters on the harbour; a house that sits on the council"
-line a91 neexa at 91 ask "I sold the tallies to Odile Marric." says "the stake she had cut for them is firewood; go down for her again and bring that one to her"
-line a92 neexa at 92 ask "I gave the tallies back to Dunhallow." says "then they have a wall and a woman who says their names; she has carved worse"
-line o91 odile at 91 ask "What will you do with the three in the cellar?" if alive chandler says "send for them before a mason does"
-line o91d odile at 91 ask "What will you do with the three in the cellar?" if dead chandler says "nothing now; a pity; ended, they are only bones"
-line t92 tseeba at 92 ask "Is the cellar shut?" says "barred, and it stays barred"
+line a91 neexa at 91 ask "I sold the tokens to Odile Marric." says "the stake she had cut for them is firewood; each thing the Breton buys puts her people a step nearer the Fisher's door, and they are counting; go down again and bring that one to her"
+line a92 neexa at 92 ask "I gave the tokens back to Dunhallow." if alive tseeba says "then they have a wall and a woman who says their names; she has carved worse"
+line a92d neexa at 92 ask "I gave the tokens back to Dunhallow." if dead tseeba says "then they have a wall, and nobody left there who knows what is behind it"
+line o91d odile at 91 ask "What will you do about the cellar?" if dead chandler, dead dead1, dead dead2 says "nothing now; a pity; ended, they are only bones"
+line o91 odile at 91 ask "What will you do about the cellar?" says "send for whatever still stands there before a mason does"
+line t92 tseeba at 92 ask "Is the cellar shut?" says "she locked the hatch again, and she says the six names when she passes it"
+line t90 tseeba at 90 ask "They have a stake at Lilmoth now." says "and her cellar has a name in Lilmoth's market; she sells rice and no more words"
 
-take tallies from 10 -> 30
+take tokens from 10 -> 30
 must-live neexa fails 95
 ```
 
@@ -418,9 +436,9 @@ live off her cellar and neither sleeps over it.
 
 | Ending | What the player sees | Gains | Costs |
 |---|---|---|---|
-| *Staked (90)* | one new stake at the Stake-Ground with six foreign names on it, switched on while the player is indoors ("One post for a household of strangers. I do not know six stories") | the rank of Breath-Holder; 100 gold; the Divers' Chest and what is in it | Tseeba-Mei greets coldly; Odile Marric prices nothing kindly |
-| *Sold (91)* | no stakes; Odile Marric says what she will do with the three, if they stand | 300 gold; a Conjuration tome | no rank and no chest yet; `uw.college` +1, which tells in UW05; Neexa-Tul says so plainly and still gives work |
-| *Walled (92)* | the hatch locked again for good | 250 gold | no rank and no chest yet; whatever else was in the strongbox is behind the wall |
+| *Staked (90)* | one new stake at the Stake-Ground with six foreign names on it, switched on while the player is indoors | the rank of Breath-Holder; 100 gold; the Divers' Chest and what is in it | Tseeba-Mei sells rice and no more words |
+| *Sold (91)* | no stakes; Odile Marric says what she will do with the three, if they stand | 300 gold; a Conjuration tome | no rank and no chest until UW02 is done; `uw.college` +1, and Neexa-Tul says plainly that the College is counting and what it is counting towards |
+| *Walled (92)* | the hatch locked again | 150 gold | no rank and no chest until UW02 is done; the six are named only at Dunhallow |
 
 **The moment a player retells.** Coming up out of a drain into a cellar where three dead people turn round from
 the wall they have faced for a hundred and fifty years; and then being asked, by the woman whose children sleep
@@ -433,7 +451,7 @@ above it, to give the names back to the wall.
 | get in by the key or the lock | Pickpocket; Lockpicking (Adept) | a key carried by a person; a locked door in an owned place; Skyrim's own crime |
 | get in by the drain | Alteration, Alchemy or the tree's blessing (breath) | an unlocked door under water; the place's own blessing |
 | cross the cellar | Restoration, Sneak, Conjuration, a weapon skill or Destruction | hostile people of ours placed at fixed levels |
-| take the tallies | none | taking a named thing sets a stage |
+| take the tokens | none | taking a named thing sets a stage |
 | choose whose they are | Speech (hearing three cases) | lines gated on a thing held; stages take it, give gold and items, set numbers, a rank, a container's ownership, a lock, a switch away from the player |
 
 ### UW02. The Master of the House
@@ -471,9 +489,9 @@ under water and its upper floor is dry.
 | Ajum-Shei's Name-Charm | on him | pickpocketed, or taken from his body | his name, and the tree's leaf-mark every Lilmoth charm had |
 | a Singer's Gourd | on him, on the same cord | pickpocketed, or taken from his body; a counted thing, since UW04 holds more | a thumb-long gourd stopped with wax |
 | the Pantry Key | on his belt | pickpocketed, or taken from his body | opens the pantry |
-| the Pantry | off the upper hall | Adept; his key | four bundles of bedding, and the cook's bundle |
-| a Sailcloth Scrap, Written in Charcoal | in the cook's bundle | readable, and can be carried | "The master came home singing. He has the key. He said we would all go to the Fisher's house and now he does not know us. Xal-Ei is quiet at last." |
-| the table chest | the upper hall | Apprentice; nobody's | 150 gold and a merchant's rings: the fight's or the thief's reward |
+| the Pantry | off the upper hall | Adept; his key | bedding for four, four name-charms hung on one nail, and the cook's bundle |
+| a Sailcloth Scrap, Written in Charcoal | in the cook's bundle | readable, and can be carried | "The master came home singing. He has the key. He said we would all go to the Fisher's house and now he does not know us. The little one is quiet at last." |
+| the table chest | the upper hall | Apprentice; nobody's | 150 gold: the fight's or the thief's reward |
 
 **The ways through.**
 
@@ -483,8 +501,7 @@ under water and its upper floor is dry.
   each be lifted from a dead man who has not moved in a hundred and fifty years; a bungled lift wakes him.
 - *The hard fight (any weapon skill or Destruction; Restoration to turn him; Conjuration for something to stand
   between).* One opponent, fixed at level 18, in a room with one way out. Two warnings come first: Old Nusa ("No
-  diver has gone above his stair and come down to say"), and Meenus-Lei's own family tale that the house "never
-  let him go".
+  diver has gone above his stair and come down to say"), and Meenus-Lei's own family tale that he "never left the house".
 - *The pantry (the key, or Lockpicking, Adept).* Nothing asks the player to open it.
 
 **The stages.**
@@ -493,14 +510,16 @@ under water and its upper floor is dry.
 |---|---|---|---|
 | 0 | hidden start | | |
 | 10 | Neexa-Tul's offer, after any ending of UW01 | Neexa-Tul sent me into the drowned quarter for the name-charm of Ajum-Shei, a rope-merchant who died in his villa in 4E 48 with his household. His kin Meenus-Lei has paid for his stake. Old Nusa at the Divers' Stair knows the house. | Bring up Ajum-Shei's name-charm (the charm, the villa's door, Old Nusa) |
-| 30 | taking the name-charm (open from 10) | I took Ajum-Shei's name-charm from him in the upper hall of his villa. | Bring the name-charm to Neexa-Tul; or hear Carves-Twice or Odile Marric about what else he wore (all three) |
-| 40 | Odile Marric's line at 30, a gourd held (takes it) | I sold Odile Marric a singer's gourd. | Bring the name-charm to Neexa-Tul (her) |
+| 30 | taking the name-charm (open from 10) | I took Ajum-Shei's name-charm from him in his villa. | Bring the name-charm to Neexa-Tul; or hear Carves-Twice or Odile Marric about what else he wore (all three) |
+| 40 | Odile Marric's line at 30, a gourd held (takes it; gives 300 gold and a tome) | I sold Odile Marric a singer's gourd. | Bring the name-charm to Neexa-Tul (her) |
 | 90 | Neexa-Tul's line at 30, charm and gourd held, Meenus-Lei alive | **Told.** I gave Neexa-Tul the name-charm and the singer's gourd Ajum-Shei wore. She will put both into Meenus-Lei's hands. | ends, completed |
 | 91 | Carves-Twice's line at 30, charm and gourd held | **Carved among the victims.** I gave Carves-Twice the name-charm and the singer's gourd. | ends, completed |
 | 92 | Neexa-Tul's line at 40, the charm held | **Carved, and sold.** I gave Neexa-Tul the name-charm and said nothing of the gourd I had sold. | ends, completed |
 | 93 | Neexa-Tul's line at 30, the charm held | **Carved as asked.** I gave Neexa-Tul Ajum-Shei's name-charm and nothing else. | ends, completed |
 | 95 | Neexa-Tul dead | Neexa-Tul is dead. Nobody will carve him now. | ends, failed |
 
+The objective at 30 keeps its markers on Carves-Twice and Odile Marric, because each has a line there that moves
+the quest; to a player who took only the charm they say nothing of it, and Neexa-Tul's is the only hand-in.
 Order where two are true at Neexa-Tul at 30: the player picks the prompt, so "Here is his name-charm. And he wore
 this." (90) and "Here is his name-charm." (93) are both offered to a player who holds both; a player who holds a
 gourd and gives only the charm keeps the gourd, which UW05's door will know.
@@ -532,6 +551,7 @@ thing bundle at villa container "Cook's Bundle"
 thing scrap in bundle readable "Sailcloth Scrap, Written in Charcoal"
 thing tablechest at villa container locked apprentice holds gold 150 "Table Chest"
 thing ajumstake at stakeground off "Stake of Ajum-Shei"
+thing chest at stakehouse container owner neexa "Divers' Chest"
 item singergourd "Singer's Gourd"
 item necklace "Necklace of Waterbreathing"
 item ring "Ring of Alteration"
@@ -539,12 +559,12 @@ item tome2 "Spell Tome: Reanimate Corpse"
 
 stage 0 hidden
 stage 10 "Neexa-Tul sent me into the drowned quarter for the name-charm of Ajum-Shei, a rope-merchant who died in his villa in 4E 48 with his household. His kin Meenus-Lei has paid for his stake. Old Nusa at the Divers' Stair knows the house."
-stage 30 "I took Ajum-Shei's name-charm from him in the upper hall of his villa."
-stage 40 "I sold Odile Marric a singer's gourd." do take singergourd 1, give-gold 400, give tome2, add uw.college 1
-stage 90 completed "Told. I gave Neexa-Tul the name-charm and the singer's gourd Ajum-Shei wore. She will put both into Meenus-Lei's hands." do take charm, take singergourd 1, give necklace, give-gold 100, rank witness 2, set uw02.way 1
-stage 91 completed "Carved among the victims. I gave Carves-Twice the name-charm and the singer's gourd." do take charm, take singergourd 1, give ring, give-gold 400, rank witness 2, set uw02.way 2, on ajumstake
-stage 92 completed "Carved, and sold. I gave Neexa-Tul the name-charm and said nothing of the gourd I had sold." do take charm, give-gold 100, rank witness 2, set uw02.way 3, on ajumstake
-stage 93 completed "Carved as asked. I gave Neexa-Tul Ajum-Shei's name-charm and nothing else." do take charm, give-gold 100, rank witness 2, set uw02.way 4, on ajumstake
+stage 30 "I took Ajum-Shei's name-charm from him in his villa."
+stage 40 "I sold Odile Marric a singer's gourd." do take singergourd 1, give-gold 300, give tome2, add uw.college 1
+stage 90 completed "Told. I gave Neexa-Tul the name-charm and the singer's gourd Ajum-Shei wore. She will put both into Meenus-Lei's hands." do take charm, take singergourd 1, give necklace, give-gold 100, join witness, rank witness 2, own chest, set uw02.way 1
+stage 91 completed "Carved among the victims. I gave Carves-Twice the name-charm and the singer's gourd." do take charm, take singergourd 1, give ring, give-gold 400, join witness, rank witness 2, own chest, set uw02.way 2, on ajumstake
+stage 92 completed "Carved, and sold. I gave Neexa-Tul the name-charm and said nothing of the gourd I had sold." do take charm, join witness, rank witness 2, own chest, set uw02.way 3, on ajumstake
+stage 93 completed "Carved as asked. I gave Neexa-Tul Ajum-Shei's name-charm and nothing else." do take charm, give-gold 100, join witness, rank witness 2, own chest, set uw02.way 4, on ajumstake
 stage 95 failed "Neexa-Tul is dead. Nobody will carve him now."
 
 objective 10 at 10 "Bring up Ajum-Shei's name-charm from his villa in the drowned quarter" -> charm, villadoor, nusa
@@ -554,10 +574,11 @@ objective 40 at 40 "Bring the name-charm to Neexa-Tul" -> neexa
 line job1 neexa at 0 ask "Is there another name to bring up?" if done UW01 90 -> 10 says "Meenus-Lei's forebear; the villa nearest the stair; divers say he is still in it"
 line job2 neexa at 0 ask "Is there another name to bring up?" if done UW01 91 -> 10 says "the same job; and: bring this one to me"
 line job3 neexa at 0 ask "Is there another name to bring up?" if done UW01 92 -> 10 says "the same job; and: this one has no wall to go back to"
-line kin meenus at 10-40 ask "Who was Ajum-Shei?" says "the house's martyr; a lukiul rope-merchant; four years' saving; the naming next season; the family tale that the house never let him go"
+line kin meenus at 10-40 ask "Who was Ajum-Shei?" says "the house's martyr; a lukiul rope-merchant; four years' saving; the naming next season; the family tale that he never left the house"
 line door nusa at 10-40 ask "Which house is Ajum-Shei's?" says "the nearest the stair, its name on the door; no diver has gone above his stair and come down to say; breath, and the floor rule"
-line gourd neexa at 30 ask "He wore this on the same cord. What is it?" if holds singergourd says "what the tree's singers drank from; he sang; whoever drank was the tree's, not their own; his kin should decide; Carves-Twice would carve him a victim and sink it; the Breton would pay"
-line cut carver at 30 ask "What do you carve for a man who sang?" if holds singergourd says "a ridden man is a victim; she has paid; her house has had its name from him for five generations; give both to him and nobody need be shamed"
+line gourdd neexa at 30 ask "He wore this on the same cord. What is it?" if holds singergourd, dead meenus says "what the tree's singers drank from; he sang; his kin is dead and cannot choose; give her the charm alone, or take both to Carves-Twice, who would carve him a victim; the Breton would pay"
+line gourd neexa at 30 ask "He wore this on the same cord. What is it?" if holds singergourd, alive meenus says "what the tree's singers drank from; he sang; whoever drank was the tree's, not their own; his kin should decide; Carves-Twice would carve him a victim and sink it; the Breton would pay"
+line cut carver at 30 ask "He wore this with his charm. What do you carve for him?" if holds singergourd says "a ridden man is a victim; the stake was paid for; a house has had its name from him for five generations; give both to him, he puts the gourd out of sight and nobody is shamed"
 line buy odile at 30 ask "What would you give for something a singer wore?" if holds singergourd says "four hundred and a tome; it is the one thing the dead of that year ever answered"
 line sell odile at 30 ask "Take it. I will sell what a singer wore." if holds singergourd -> 40 says "four hundred and a tome; she takes it in both hands"
 line whole neexa at 30 ask "Here is his name-charm. And he wore this." if holds charm, holds singergourd, alive meenus -> 90 says "she takes both; they go to Meenus-Lei today, and Meenus-Lei chooses"
@@ -565,8 +586,9 @@ line plain neexa at 30 ask "Here is his name-charm." if holds charm -> 93 says "
 line plainsold neexa at 40 ask "Here is his name-charm." if holds charm -> 92 says "she reads the name and sends for the carver"
 line quiet carver at 30 ask "Carve him as she paid for, and put this out of sight." if holds charm, holds singergourd -> 91 says "he takes both and pays from the council's purse"
 line a90 meenus at 90 ask "Neexa-Tul has spoken to you." says "she will carve it herself, on her own ground, where it is her house's business; she does not thank me, and gives back nothing she owes"
-line a91 meenus at 91 ask "His stake is up." says "among them, where he belongs; the hatchlings will be named under it"
-line a92 meenus at 92-93 ask "His stake is up." says "among them, where he belongs; the hatchlings will be named under it"
+line c90 carver at 90 ask "Meenus-Lei has been told." says "then a house has lost its name so that a dead man could have his due; he carves what he is brought"
+line s40 nusa at 40 ask "I sold the Breton what a singer wore." says "that is a thing she could not go and get; her people count what comes off this stair, and when they have enough they will not need us"
+line a92 meenus at 91-93 ask "His stake is up." says "among them, where he belongs; the hatchlings will be named under it"
 line n91 neexa at 91 ask "Carves-Twice has carved Ajum-Shei." says "so I see; nobody brought me his charm; ask him what else he was brought"
 line pantry neexa at 90-93 ask "There was writing in his pantry." if holds scrap says "she reads it twice; at 'the Fisher's house' she folds it and will not say why"
 line s90 nusa at 90-93 ask "What did you see in his hall?" if alive ajum says "you came up lighter than he went down; and he is still standing"
@@ -590,7 +612,7 @@ keep what a singer wore.
 |---|---|---|---|
 | *Told (90)* | no stake at the Stake-Ground; Meenus-Lei carves her own | the rank of Diver; a necklace of water-breathing, which ends the need for the tree's sap; 100 gold | Meenus-Lei does not thank the player; Carves-Twice is cold; the gourd is gone |
 | *Carved among the victims (91)* | his stake among the victims; Neexa-Tul finds out and says so | the rank; 400 gold from the council's purse; a ring of Alteration | the gourd is sunk; Neexa-Tul's trust, heard in her greeting |
-| *Carved, and sold (92)* | his stake among the victims | the rank; 500 gold in all; a Conjuration tome | `uw.college` +1; the College holds a key to the Fisher's door |
+| *Carved, and sold (92)* | his stake among the victims | the rank; 300 gold in all; a Conjuration tome | `uw.college` +1, and Old Nusa says what the College is counting towards; the College holds a key to the Fisher's door |
 | *Carved as asked (93)* | his stake among the victims | the rank; 100 gold; and the gourd, if the player took it and kept it | nothing yet; the truth stays in a drowned hall or in the player's pack |
 
 **The moment a player retells.** Standing behind a dead man at the head of his own table, in a dry room over a
@@ -623,7 +645,7 @@ squatters, armoury and water-filled cellar; Karketa's prayer-post) is cited in t
 | a small shed by the stakes, an inside behind a door | UW02 on | Carves-Twice stands inside | the door shows "Carving Shed"; half-cut stakes stand in it |
 | a stair at the end of the walk that goes down into the quarter's water, with a standing place at its head | all | Old Nusa stands there; the way into the quarter | steps that go down into the water; Neexa-Tul names it "the Divers' Stair, where the walk ends" |
 | a spot on dry ground by the quarter's edge for the Nisswo's Jeer-Tei (the Nisswo's own need) | talk only | he speaks of letting go | his name; the Nisswo's story places him |
-| one drowned villa a short swim from the stair: a door under water, a flooded ground floor, an inner stair, and a dry upper hall with a table, a chest that locks and a pantry behind a door that locks | UW02 | the dive; Ajum-Shei stands in the hall | the door shows "Ajum-Shei's Villa"; the quest's marker; Old Nusa says "the nearest the stair" |
+| one drowned villa a short swim from the stair: a door under water, a flooded ground floor, an inner stair and a dry upper hall with a table, a chest that locks and a pantry behind a door that locks; what stands in the hall cannot follow through the villa's door | UW02 | the dive; Ajum-Shei stands in the hall | the door shows "Ajum-Shei's Villa"; the quest's marker; Old Nusa says "the nearest the stair" |
 | the sunken shrine of Xhon-Mehl as one drowned building: a door under water, a long flooded nave, and beyond a door that locks a dry vault and a dry side room, with standing places | UW05 | the last dive; the vault | the door shows "Shrine of Xhon-Mehl"; Neexa-Tul and the tree-minders speak of "the Fisher's house" |
 | a spot on the foreigners' dock for the record's Breton dock mage | all | Odile Marric sells spells and buys from divers | her name; she trades; Neexa-Tul says "the Breton on the foreigners' dock" |
 | a spot on the upper walks for a council matriarch | UW06 | Shuvu-Meen is faced | her name; three knots on the lighters moored below her; Carves-Twice says where she sits |
@@ -632,9 +654,9 @@ squatters, armoury and water-filled cellar; Karketa's prayer-post) is cited in t
 
 | The thing | Quest | What happens there | How the player knows it |
 |---|---|---|---|
-| a cellar under the great house as an inside of its own that nobody owns, with a dry floor, a flooded end and a strongbox at the dry end | UW01 | three dead stand on the floor; the tallies are taken | the hatch shows "Cellar Hatch"; the room is named "Dunhallow Cellar" on entering |
-| a hatch to it in the kitchen yard, with a door that locks; the yard and house owned by the family | UW01 | the dry way in; picking it is a crime | its name; Tseeba-Mei says "the hatch in the kitchen yard" |
-| a drain mouth under water in the east dyke that leads into the cellar's flooded end | UW01 | the wet way in | it shows "Dyke Drain" when looked at; Neexa-Tul says "the east dyke"; the quest's marker |
+| a cellar under the great house as an inside of its own that nobody owns, with a dry floor, a flooded end and a strongbox at the dry end | UW01 | three dead stand on the floor; the tokens are taken | the hatch shows "Cellar Hatch"; the room is named "Dunhallow Cellar" on entering |
+| a hatch to it in the kitchen yard, with a door that locks and steps that come down at the strongbox's end; the yard and house owned by the family; nothing in the cellar can follow through it | UW01 | the dry way in; picking it is a crime | its name; Tseeba-Mei says "the hatch in the kitchen yard" |
+| the east dyke deep enough to swim under, with a drain mouth below the water that leads into the cellar's flooded end; nothing in the cellar can follow through it | UW01 | the wet way in | it shows "Dyke Drain" when looked at; Neexa-Tul says "the east dyke"; the quest's marker |
 | a wall of newer brick across the cellar's old inner stair | UW01 | nothing; it is what the family built | newer brick across an old stairway reads as a walling-up |
 
 **Seeku Farm** (D althii-archipelago).
@@ -648,8 +670,8 @@ squatters, armoury and water-filled cellar; Karketa's prayer-post) is cited in t
 
 | The thing | Quest | What happens there | How the player knows it |
 |---|---|---|---|
-| a spot on the road short of the wall for one squatter who speaks and is not of the yard's band (the lead's fourth ruling) | UW04 | the kinsman's hook; the way in is told | he hails the player; his name; the quest's marker |
-| in the water-filled cellar, a dry shelf wide enough for a fight, reached by the drop from the armoury floor | UW04 | the road dead stand there; the charms are taken | the room is named "Sallowmoth Cellar"; the squatter says "the holes by the old armoury" |
+| a spot on the road short of the wall, out of the yard's reach, for one squatter who speaks and is not of the yard's band (the lead's fourth ruling) | UW04 | Half-Roof's hook; the way in is told; the choice | he hails the player; his name; the quest's marker |
+| in the water-filled cellar, a dry shelf wide enough for a fight, reached by the drop from the armoury floor, with a cut rope hanging above the hole | UW04 | the road dead stand there; the charms and the satchel are taken | the room is named "Sallowmoth Cellar"; the squatter says "the holes by the old armoury" |
 | a drain under water from the cellar to the marsh outside the wall | UW04 | the way out | it shows "Sally Drain"; the squatter says there is "a way the water goes" |
 | the cellar's own door, barred on the outside with a boat's thwart, and never opened | UW04 | it is read | it shows "Barred Door (A Boat's Thwart, Cut with a Fish)" |
 
@@ -664,7 +686,72 @@ else) are switched by a take inside the shrine, an inside of its own.
 
 ## 5. Read on paper
 
-To be written after the first round.
+**Round 1** (one version, sketches passing). Three fresh readers. Two players were given only what a player meets,
+quest by quest (UW01, UW02, then the later arc in summary), answering each sheet before the next: one who loves the
+lore, plays a mage and sides with a place's people against institutions; one impatient, who plays a thief with a
+blade and takes what is offered. One deliverability reader had quest-system, buildable.md and the two outlines with
+their sketches and `sketch`'s closing lines.
+
+*What they said.*
+
+- **The lore reader** could retell it ("everyone who lived did so by shutting a door: Dunhallow, Karketa, the
+  vault"), would join "because the money is dirty and the line knows it", and called the hundred stakes and no coin
+  the best beat. He guessed the First Stake from the first sheet and found it still landed. He chose Neexa-Tul
+  twice, then Dives-Without-Asking. Faults: the rank and chest tilt UW01; Tseeba-Mei charged 200 and paid 250; why
+  the dead still stand was unsaid; "the party" was coy; Xal-Ei was nobody; the pantry held no dead; UW04 was the
+  weakest (the kinsman a pretext, the choice obvious); "forty" was four different things; "party men all along"
+  needed its sting explained; the novels have the tree calling Argonians out of the town.
+- **The impatient reader** liked the delves most (the pickpocket in the hall, the drop with no way back, the gourd
+  door) and would join "for the diving gear". He chose Neexa-Tul twice for the gear, then Shuvu-Meen for the gold.
+  Faults: selling to Odile Marric was the most loot at no stated cost, and nothing said the sales were counted;
+  keeping the gourd had no hint of a use; Shuvu-Meen's ending cost him nothing, so it was not a choice; Scaeva's
+  was only for a conjurer and paid less than the council; "forty" confused him too; UW04 named no reward, forgot the
+  kinsman and walled a mid-level sneak at level 30; every quest ended in a round of offers; a rank gave nothing he
+  could name.
+- **The two together** split on the last hand-over and on Tseeba-Mei against Neexa-Tul, which is the aim; neither
+  took Odile's offers in UW01 and UW02 by temperament, and each could argue them.
+- **The deliverability reader** found three things false to a player (the journal naming a hatch and a drain the
+  briefing did not; "locked for good" over a lock that picks and a drain that stays open; Odile's after-line gated
+  on one of three dead) and eleven smaller: the chest's contents and the rings missing from the sketch; "no rank
+  yet" with nothing later giving one; Tseeba-Mei's and Neexa-Tul's cases unsketched at the choice; markers on two
+  people with nothing to say to a charm-only player; prompts ahead of what was told; lines untrue with Meenus-Lei or
+  Tseeba-Mei dead; promised greetings unsketched and a price change the game cannot make; the dead following
+  through a door; the dyke's depth and the hatch's steps unlisted; a journal placing the take in a room; one line
+  written twice.
+
+*What changed, as one set.*
+
+1. *Selling is paid for where it is done, and said to count.* Odile Marric's price for the gourd is 300 and the
+   hand-in after it gives no gold; Neexa-Tul (UW01) and Old Nusa (UW02) each say that the College counts what
+   comes off the stair and what it is counting towards; Old Nusa's first telling says what the singers wore "opened
+   what the party shut", which is the hint a kept gourd needed. Shuvu-Meen's hands now cost the Stake-House and the
+   rank; Scaeva's pay the most the line pays, with his own case.
+2. *UW01's sides are level and true.* Tseeba-Mei pays 150, less than her price; every claim about her ending says
+   only that she locked the hatch; the rank and chest come with UW02 whichever way UW01 went; her case and
+   Neexa-Tul's are lines at the choice; the briefing names the hatch and the drain.
+3. *UW04 has a person in it.* The squatter is Half-Roof, the lost man his nephew, found among the road dead; the
+   choice is his to argue and is about a living sister, and Karketa's carving is no longer a choice at all. The dead
+   stand at 25, with three warnings; the rewards are named.
+4. *One forty.* The College pays fifty a head; Karketa barred the post on "our neighbours"; forty is the Fisher's
+   door and the First Stake only.
+5. *The lore said aloud.* Neexa-Tul names the An-Xileel and says the tree called its own out first and the lukiul
+   and foreigners were left; the cook's "little one" replaces a name nobody knew; four name-charms hang in the
+   pantry; Shuvu-Meen says why "party men all along" would end the town's one claim.
+6. *The sketches say what the outlines say.* Chest contents as counted things; the three dead named apart and
+   Odile's line gated on all three; dead twins for lines about Meenus-Lei and Tseeba-Mei; greetings after each
+   ending; prompts that state nothing untold; the take's journal true wherever he fell; needs for the dyke's depth,
+   the hatch's steps and doors the dead cannot follow through.
+
+*Not changed, and why.* The objective at UW02's stage 30 keeps its markers on Carves-Twice and Odile Marric:
+`sketch` requires a marker on anyone whose line moves the quest there. Meenus-Lei is still told by Neexa-Tul and
+not by the player, one reader's wish, since the creed being tested is the keeper's. The necklace stays: it is worth
+most to the builds the line leans on least. That every quest ends in a round of offers was answered only in part:
+UW04 and UW05 now end in one decision and none.
+
+*What the next round must check.* That a greedy player now hesitates over Odile Marric's offers and still takes
+some of them; that Half-Roof's lie is somebody's own choice; that the First Stake, guessed early by both readers,
+still pays when it is confirmed, or needs a decoy meaning in UW02; that a mage or an Argonian finds a reward worth
+having at *Told*; and the three later outlines, UW03 to UW05, when they are written in full with their sketches.
 
 ## 6. For the other lines
 
@@ -672,7 +759,7 @@ To be written after the first round.
   the dry ground by the quarter's edge, which here is near the Stake-Ground; no quest of this line moves a stage by
   him or is set where he stands. What Neexa-Tul and Old Nusa say of him is in section 1.
 - **The Night-Reed.** Silt-Orrel is not used, nor its beams and fittings. Dunhallow's cellar and its dead are taken
-  here; its strongbox holds the tallies. This line names one more council member, **Shuvu-Meen** of the Three-Knot
+  here; its strongbox holds the tokens. This line names one more council member, **Shuvu-Meen** of the Three-Knot
   lighters, keeper of the council's salvage; she and Meer-Tulo need not meet, and if the consistency pass wants one
   councillor, the Three-Knot house can be his. Fort Sallowmoth is used by both lines: theirs is the armoury cage,
   this one's the cellar under it and the drain out, and neither needs the other's thing. The house's opinion of the
