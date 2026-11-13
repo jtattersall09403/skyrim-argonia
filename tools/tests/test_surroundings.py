@@ -49,6 +49,17 @@ def test_kinds_are_read_from_the_file_name_and_unknown_models_are_not_guessed():
     assert su.kind_of("Meshes/Dungeons/NordicRuins/RuinsCeilingRopeShort.nif x")[0] == "rope"
     assert su.kind_of("Meshes/Architecture/BYOH/BYOHWRtowerPostsL01.nif x")[0] == "wooden posts"
     assert su.kind_of("Meshes/Clutter/Something/zzq01.nif zzq01") is None
+    assert su.kind_of("Furniture/BlacksmithWorkbench01.nif CraftingBlacksmithArmorWorkbench")[0] == "anvil or workbench"
+    assert su.kind_of("Effects/FXWaterfallThin2048x128.nif DLC2dunNchardak_FXWaterfallThin2048x128")[0] == "waterfall"
+
+
+def test_a_talkers_sheet_tells_distance_in_the_talks_own_words():
+    assert su.how_far(3000) == "a short walk"
+    su._bands = su.TALK_BANDS
+    try:
+        assert su.how_far(3000) == "just" and su.how_far(9000) == "a short way" and su.how_far(20000) == "a fair way"
+    finally:
+        su._bands = su.NEAR_BANDS
 
 
 def test_words_for_distance_never_count():

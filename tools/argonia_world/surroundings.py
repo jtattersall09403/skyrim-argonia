@@ -34,6 +34,7 @@ FORM_KEY = re.compile(r"^[0-9A-Fa-f]{6}:.+\.(esm|esp|esl)$")
 # What a placed thing reads as: (kind, plural, pattern over the model path and editor id in lower case). First match
 # wins, so the specific comes before the general. "skip" is never told (markers, lights, sounds, effects).
 KINDS = [
+    ("waterfall", "waterfalls", r"fxwaterfall(?!mist)"),
     ("skip", "", r"marker|fxlight|lightbeam|fogvolume|^fx(?!fire)|collision|navcut|portal|window|^light|ambient"),
     ("big ship", "big ships", r"shiplarge|imperialship|shipimperial|caravel|carrack|galleon|dunship"),
     ("wrecked boat", "wrecked boats", r"wreck|sunken"),
@@ -86,7 +87,7 @@ KINDS = [
     ("bedroll", "bedrolls", r"bedroll"),
     ("bed", "beds", r"bed(?!rock)"),
     ("table", "tables", r"table"),
-    ("chair or bench", "chairs and benches", r"chair|bench|stool|throne"),
+    ("chair or bench", "chairs and benches", r"chair|(?<!work)bench|stool|throne"),
     ("chest", "chests", r"chest|strongbox|lockbox"),
     ("barrel", "barrels", r"barrel"),
     ("crate", "crates", r"crate"),
