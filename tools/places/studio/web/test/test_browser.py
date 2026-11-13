@@ -677,11 +677,9 @@ def test_20_notes_for_the_agent(pad, browser, server):
     pad.ev("studio.selection.clear(); studio.tools.selectionChanged(); studio.panels.close()")
 
     # the tab closes; a new one (the tablet upright) finds the notes still unsent, and edits, deletes and sends them
-    other = open_pad(browser, server, PORTRAIT, choose=None)
+    other = open_pad(browser, server, PORTRAIT)   # saved work of earlier tests: the draft, as test 13's second tab
     if other.ev("!document.getElementById('intro').hidden"):
         other.page.click("#intro button")
-    if other.page.locator("#start .sheet").is_visible():
-        other.page.get_by_role("button", name="Start from the builder's draft").click()
     other.ev("studio.tools.use('notes')")
     other.page.wait_for_selector("ol.free-notes li[data-state=unsent]")
     assert other.page.locator("ol.free-notes li[data-state=unsent]").count() == 3
