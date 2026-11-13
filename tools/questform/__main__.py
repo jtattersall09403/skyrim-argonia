@@ -7,8 +7,10 @@
     python3 -m tools.questform gate                              # make check: every staged record against the owed list
     python3 -m tools.questform owed --write                      # rewrite the listed quests' terms (never adds one)
     python3 -m tools.questform diff <designed> <built>           # every difference, designed form against built
-    python3 -m tools.questform sketch <story.md|file.sketch> [--quest ID] [--no-walk] [--paths]
-        # an outline's sketch: the rules a quest can meet before its places are built, then the reach walk
+    python3 -m tools.questform sketch <story.md|file.sketch> [--quest ID] [--no-walk] [--paths] [--no-cache]
+                                      [--time-limit SECONDS]
+        # an outline's sketch: the rules a quest can meet before its places are built, then the reach walk (each
+        # quest's result kept in out/sketch-cache until it or a quest it waits on changes)
 """
 from __future__ import annotations
 
@@ -131,10 +133,13 @@ def main(argv: list[str] | None = None) -> int:
     sk.add_argument("--quest")
     sk.add_argument("--no-walk", action="store_true", help="skip the reach walk (the rules only)")
     sk.add_argument("--paths", action="store_true", help="print the walk's shortest path to each ending")
+    sk.add_argument("--no-cache", action="store_true", help="walk every quest again, keeping nothing")
+    sk.add_argument("--time-limit", type=float, help="seconds each quest's walk may take (default 120)")
     a = ap.parse_args(argv)
     if a.cmd == "sketch":
         from tools.questform import sketch
-        return sketch.main(Path(a.file), a.quest, not a.no_walk, a.paths)
+        return sketch.main(Path(a.file), a.quest, not a.no_walk, a.paths, not a.no_cache,
+                           a.time_limit or sketch.TIME_LIMIT)
     if a.cmd == "diff":
         from tools.questform import diff
         return diff.main(a.designed, a.built)

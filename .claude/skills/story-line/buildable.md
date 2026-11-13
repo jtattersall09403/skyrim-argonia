@@ -177,14 +177,23 @@ marked `far` is out of sight of every other place, so that "away" can be judged.
 
 Check it, and keep checking until it passes:
 
-    python3 -m tools.questform sketch story/design/quests/lines/<line>.md [--quest <id>] [--paths]
+    python3 -m tools.questform sketch story/design/quests/lines/<line>.md --quest <id>   # while writing one quest
+    python3 -m tools.questform sketch story/design/quests/lines/<line>.md                # the whole file, before readers
 
 It reads every block of the file, builds each quest form as the quest writer's record will compile it, and runs the
 form's rules, the design rules below, and the reach walk: every stage and ending reached by an able character and by
 a new one with 1,000 gold, after each completed ending of the quests before it in the same file. Each fault is
 printed as `<file>:<line>: <quest> <rule>: <what>` with a line saying what it means; the last line says `passes` or
-how many faults. `--paths` prints the shortest way to each ending. What only the built place can show (exact spots,
+how many faults. `--paths` prints the way found to each ending. What only the built place can show (exact spots,
 the speaker's spot by the door, the names the game shows, the words) is listed as checked when built.
+
+While writing a quest, check it alone with `--quest <id>`: the rules run over the whole file, and the walk covers that
+quest only, from each state the quests before it can leave. Before the file goes to its readers, check the whole file.
+Each quest's walk is kept (in `out/sketch-cache`) until its sketch, the sketch of a quest it waits on, or the checker
+changes, so a quest unchanged since the last check is not walked again; `--no-cache` walks everything again. A quest's
+walk has a time limit (120 seconds; `--time-limit <seconds>`): a walk that runs past it stops with a `reach-time`
+fault naming the stages and endings it had not reached and how many states it searched. That is not a pass: make the
+quest smaller, or give the walk longer.
 
 **The statements**, one a line; words, "quoted text", commas between list items, `#` starts a comment:
 

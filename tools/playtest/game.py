@@ -108,7 +108,7 @@ class Game:
         self.by_editor = {f["quest"]["editor_id"]: f["quest"]["id"] for f in forms}
         self.world = world
         self.strict = strict
-        self.quiet = False                  # the walker's: a move shows no `look` (it reads states, not screens)
+        self.quiet = False                  # the walker's: no `look` and no menu shown (it reads states, not screens)
         for f in forms:
             errs = validate.errors(f)
             if errs:
@@ -500,8 +500,13 @@ class Game:
 
     def _lines_of(self, speaker, kinds):
         """(quest, line) that can be said now by this speaker, in form order."""
-        return [(q, ln) for q, f in self.forms.items() for ln in f["lines"]
-                if ln["speaker"] == speaker and ln["kind"] in kinds and self._can_say(q, ln, speaker)]
+        by = self.__dict__.get("_by_speaker")
+        if by is None:
+            by = self._by_speaker = {}
+            for q, f in self.forms.items():
+                for ln in f["lines"]:
+                    by.setdefault(ln["speaker"], []).append((q, ln))
+        return [(q, ln) for q, ln in by.get(speaker, ()) if ln["kind"] in kinds and self._can_say(q, ln, speaker)]
 
     @staticmethod
     def _first_per_prompt(pairs) -> list[tuple[str, str, object]]:
@@ -571,12 +576,16 @@ class Game:
 
     def _speaks_first(self) -> list[str]:
         out = []
-        for q, f in self.forms.items():
-            if self.stage(q) is None or self.s["quests"][q]["ended"]:
+        firsts = self.__dict__.get("_firsts")
+        if firsts is None:
+            firsts = self._firsts = [(q, [ln for ln in f["lines"] if ln["kind"] == "speaks_first"])
+                                     for q, f in self.forms.items()]
+        for q, lines in firsts:
+            if not lines or self.stage(q) is None or self.s["quests"][q]["ended"]:
                 continue
-            for ln in f["lines"]:
+            for ln in lines:
                 who = ln["speaker"]
-                if ln["kind"] != "speaks_first" or ln["id"] in self.s["fired"]:
+                if ln["id"] in self.s["fired"]:
                     continue
                 p = self._pos(who)
                 d = _dist(self.s["pos"], p) if p else None
@@ -587,7 +596,8 @@ class Game:
                 self.s["fired"].append(ln["id"])
                 self.s["talking"] = who
                 out += ["", f"{self.name(who)} walks up to you and speaks."] + self._say_line(q, ln, who)
-                out.append(self._menu_text(who))
+                if not self.quiet:
+                    out.append(self._menu_text(who))
         return out
 
     # -- the commands --------------------------------------------------------------------------------------------
@@ -654,8 +664,21 @@ class Game:
 
     def _visible(self):
         """Everyone and everything near and in plain sight (not inside a container or carried)."""
-        return [e for e in self.ents if self.ents[e]["kind"] != "marker" and self._on(e) and self._near(e)
-                and self._loose(e)]
+        pos = self.s["pos"]
+        near = self.__dict__.setdefault("_near_at", {})
+        spot = (pos["cell"], pos["interior"], pos["x"], pos["y"])
+        here = near.get(spot)
+        if here is None:                    # what can stand in plain sight near this spot: placed, neither held nor
+            here = near[spot] = []          # carried
+            for e, x in self.ents.items():
+                p = x["at"]
+                if x["kind"] == "marker" or x["container"] or x["carried_by"] or p is None:
+                    continue
+                d = _dist(pos, p)
+                if d is not None and (p["interior"] or d <= NEAR):
+                    here.append((e, x["enabled"]))
+        taken, switched = self.s["taken"], self.s["switched"]
+        return [e for e, on in here if e not in taken and switched.get(e, on)]
 
     def look(self) -> str:
         pos = self.s["pos"]
@@ -771,24 +794,28 @@ class Game:
 
     def go(self, arg) -> str:
         a = arg.lower().strip()
-        marks = self._markers()
+        marks = None
         target, travel = None, None
         if a.removeprefix("marker").strip().isdigit():
+            marks = self._markers()
             i = int(a.removeprefix("marker").strip())
             if not 1 <= i <= len(marks):
                 return f"There is no marker {i} on your map."
             target, travel = self._pos(marks[i - 1][2]), "marker"
         if target is None:
-            pool = [k for k in self.ents if (not a.startswith("#") or k.lower() == a[1:]) and
-                    self.ents[k]["kind"] != "marker" and self._on(k) and k not in self.s["taken"] and self._pos(k)]
+            keys = [k for k in self.ents if k.lower() == a[1:]] if a.startswith("#") else self.ents
+            pool = [k for k in keys if self.ents[k]["kind"] != "marker" and self._on(k) and k not in self.s["taken"]
+                    and self._pos(k)]
             e, err = self._find(arg, pool)
             if err:
                 return err
             if e:
                 target = self._pos(e)
+                marks = self._markers() if marks is None else marks
                 travel = "marker" if e in [t for _, _, t in marks] else "in sight" if e in self._visible() else \
                     "known place" if target["cell"] in self.s["visited"] else "name only"
         if target is None:
+            marks = self._markers() if marks is None else marks
             c = self._places().get(a.removeprefix("to ").strip())
             if c:
                 target = next(self._pos(e) for e in self.ents if self._pos(e) and self._pos(e)["cell"] == c)
@@ -859,7 +886,8 @@ class Game:
             out.append(f"{self.name(e)} looks at you and waits.")
         if e not in self.s["spoken"]:           # the first conversation makes "spoken before" true
             self.s["spoken"].append(e)
-        out.append(self._menu_text(e))
+        if not self.quiet:                      # the walker reads the menu itself
+            out.append(self._menu_text(e))
         return "\n".join(out)
 
     def say(self, arg) -> str:
@@ -888,7 +916,7 @@ class Game:
             return "\n".join(out + [self._menu_text(who)])
         q, ln = payload
         out = self._say_line(q, ln, who)
-        if self.s["talking"] == who:
+        if self.s["talking"] == who and not self.quiet:
             out.append(self._menu_text(who))
         return "\n".join(out)
 

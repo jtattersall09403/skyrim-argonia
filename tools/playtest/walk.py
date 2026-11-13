@@ -18,6 +18,7 @@ topics outside the forms move nothing and are not tried.
 from __future__ import annotations
 
 import json
+import time
 from collections import deque
 from pathlib import Path
 
@@ -28,6 +29,7 @@ MAX_STATES = 50000   # the states a search looks through before it is cut (and s
 # A search over every loaded ref, after the walked quest's own leave a goal unreached, looks this much less far: a
 # quest of the form names every ref it needs, so the wider search seldom finds more and costs most of the time.
 FALLBACK_SHARE = 10
+PROOFS = 3           # the paths found earlier to one goal that are tried from another state before it is searched
 # The characters `reach` plays, each with this much gold: one able in every skill, and a new character.
 GOLD = 1000
 ABLE = G.new_sheet("Argonian", "female", **{s.replace(" ", "").replace("-", ""): 100 for s in G.SKILLS})
@@ -36,16 +38,25 @@ SHEETS = {"able": ABLE, "new": G.new_sheet("Argonian", "female")}
 
 def _copy(s: dict) -> dict:
     """A state copied as deep as the game changes it in place: its lists, its tables (a quest's own lists, a
-    container's rows); the sheet, the position and a waiting question are only ever replaced whole."""
-    out = dict(s)
+    container's rows); the sheet, the position, a waiting question and an ended quest's own lists are never
+    changed in place."""
+    out = s.copy()
     for k, v in s.items():
-        if type(v) is list:
-            out[k] = list(v)
-        elif k == "quests":
-            out[k] = {q: {a: list(x) if type(x) is list else x for a, x in st.items()} for q, st in v.items()}
-        elif type(v) is dict and k not in ("sheet", "pos", "question"):
-            out[k] = {a: dict(x) if type(x) is dict else list(x) if type(x) is list else x for a, x in v.items()}
+        t = type(v)
+        if t is list:
+            out[k] = v.copy()
+        elif t is dict and v and k not in _WHOLE:
+            if k == "quests":
+                out[k] = {q: st if st["ended"] else {a: x.copy() if type(x) is list else x for a, x in st.items()}
+                          for q, st in v.items()}
+            else:
+                out[k] = {a: x.copy() if type(x) is dict or type(x) is list else x for a, x in v.items()}
+        elif t is dict and k not in _WHOLE:
+            out[k] = {}
     return out
+
+
+_WHOLE = frozenset(("sheet", "pos", "question"))
 
 
 def _key(s: dict, spoken: bool) -> str:
@@ -147,73 +158,168 @@ def search(g, goals: dict, over=None, max_states: int = MAX_STATES, refs: set[st
     someone is followed at once by each quest line on offer. Returns {"paths": {name: [step...]}, "stages": {quest:
     stages seen}, "states": n, "cut": the search hit max_states, "errors": harness errors met}. `key(state)` says
     which states are one (default `_key`; `Reads.key` for a quest whose goals are its own stages)."""
-    if refs is not None:
-        res = _search(g, goals, over, max_states, refs, key)
-        if len(res["paths"]) == len(goals) or res["cut"]:      # a cut search would only be cut again
-            return res
-    return _search(g, goals, over, max_states // FALLBACK_SHARE if refs is not None else max_states, None, key)
+    return Search(g, over, max_states, refs, key).answer(goals)
 
 
-def _search(g, goals, over, max_states, refs, key=None) -> dict:
-    start = _copy(g.s)
-    fightable = _fightable(g)
-    speakers = {ln["speaker"] for f in g.forms.values() for ln in f["lines"] if ln["kind"] == "speaks_first"}
-    paths, stages, errors = {}, {}, []
-    spoken = _asks_spoken(g)
-    key = key or (lambda s: _key(s, spoken))
-    seen = {key(start)}
-    todo = deque([(start, [])])
-    cut = False
-    quiet, g.quiet = g.quiet, True
+class TimeLimit(Exception):
+    """A search ran past its deadline: `states` searched, `missing` the goals not yet found."""
 
-    def run(s, steps):
+    def __init__(self, states: int, missing: list[str]):
+        super().__init__(f"{states} states searched")
+        self.states, self.missing = states, missing
+
+
+class Explorer:
+    """One breadth-first search from one state, kept: the order states are met in does not depend on the goals, so
+    every set of goals asked of it is answered from the states already met, and the search goes on only as far as a
+    goal not yet found needs. Each answer is the one a search for those goals alone would give. A goal reads a
+    state's quests (`state["quests"]`), the one part of each state met that is kept. The explorer plays on its game
+    `g`, whose state is the start again after each answer."""
+
+    def __init__(self, g, over, max_states, refs, key=None, deadline: float | None = None):
+        self.g, self.over, self.max_states, self.refs, self.deadline = g, over, max_states, refs, deadline
+        self.start = _copy(g.s)
+        self.fightable = _fightable(g)
+        self.speakers = {ln["speaker"] for f in g.forms.values() for ln in f["lines"] if ln["kind"] == "speaks_first"}
+        spoken = _asks_spoken(g)
+        self.key = key or (lambda s: _key(s, spoken))
+        self.seen = {self.key(self.start)}
+        self.todo = deque([(self.start, None, ())])     # (state, the met state it was reached from, the steps)
+        self.met: list[tuple] = []      # each state taken from the queue: (its quests, from, steps, seen, errors)
+        self.last = None                # the last state met, while it is not yet played on
+        self.errors: list[str] = []
+        self.cut = False
+
+    def path(self, i: int) -> list:
+        """The steps to the i-th state met."""
+        out = []
+        while i is not None:
+            _, i, steps = self.met[i][:3]
+            out.append(steps)
+        return [step for steps in reversed(out) for step in steps]
+
+    def _run(self, s, steps):
+        g = self.g
         g.s = _copy(s)
         try:
             for step in steps:
                 g.do(command(step))
         except HarnessError as e:
-            if str(e) not in errors:
-                errors.append(str(e))
+            if str(e) not in self.errors:
+                self.errors.append(str(e))
             return None
         return g.s
 
-    def push(s, path) -> bool:
-        k = key(s)
-        if k not in seen:
-            seen.add(k)
-            todo.append((s, path))
-        return len(seen) >= max_states
+    def _push(self, s, i, steps) -> bool:
+        k = self.key(s)
+        if k not in self.seen:
+            self.seen.add(k)
+            self.todo.append((s, i, steps))
+        return len(self.seen) >= self.max_states
 
-    while todo and len(paths) < len(goals) and not cut:
-        s, path = todo.popleft()
-        for q, st in s["quests"].items():
-            stages.setdefault(q, set()).update(st["done"])
-        for name, test in goals.items():
-            if name not in paths and test(s):
-                paths[name] = path
-        if len(paths) == len(goals):
-            break
-        if over and over(s):
-            continue
+    def _play(self, s, i):
+        """Every move from `s` (the i-th state met), each state not met before queued. A move that goes somewhere
+        first goes there once for all that is done there."""
+        g = self.g
         g.s = s
-        for a in actions(g, fightable, speakers, refs):
-            s1 = run(s, a)
+        gone = {}
+        for a in actions(g, self.fightable, self.speakers, self.refs):
+            if len(a) == 2 and a[0][0] == "go":
+                e = a[0][1]
+                if e not in gone:
+                    gone[e] = self._run(s, a[:1])
+                s1 = None if gone[e] is None else self._run(gone[e], a[1:])
+            else:
+                s1 = self._run(s, a)
             if s1 is None:
                 continue
             if a[-1][0] == "talk" and s1["talking"] and not s1["question"]:
-                lines = [(("say", None, str(i), m[0]),) for i, m in enumerate(g._menu(s1["talking"]), 1)
+                lines = [(("say", None, str(n), m[0]),) for n, m in enumerate(g._menu(s1["talking"]), 1)
                          if m[1] == "line"]
                 for say in lines:
-                    s2 = run(s1, say)
-                    if s2 is not None and push(s2, path + list(a) + list(say)):
-                        cut = True
+                    s2 = self._run(s1, say)
+                    if s2 is not None and self._push(s2, i, a + say):
+                        self.cut = True
+                        return
+            if self._push(s1, i, a):
+                self.cut = True
+                return
+
+    def _more(self) -> bool:
+        """Meet the next state: play on the last one met (unless it is over), then take the next from the queue.
+        False when there is none (the search is done, or cut)."""
+        if self.last is not None:
+            s = self.last
+            if not (self.over and self.over(s)):
+                if self.deadline is not None and time.monotonic() > self.deadline:
+                    raise TimeLimit(len(self.seen), [])
+                quiet, self.g.quiet = self.g.quiet, True
+                try:
+                    self._play(s, len(self.met) - 1)
+                finally:
+                    self.g.s, self.g.quiet = _copy(self.start), quiet
+            self.last = None
+        if self.cut or not self.todo:
+            return False
+        s, i, steps = self.todo.popleft()
+        self.met.append((s["quests"], i, steps, len(self.seen), len(self.errors)))
+        self.last = s
+        return True
+
+    def answer(self, goals: dict) -> dict:
+        """As `search` over this explorer's refs alone."""
+        found, stages, i = {}, {}, 0
+        if not goals:
+            return {"paths": {}, "stages": {}, "states": 1, "cut": False, "errors": []}
+        while True:
+            if i == len(self.met):
+                try:
+                    if not self._more():
                         break
-            if cut or push(s1, path + list(a)):
-                cut = True
+                except TimeLimit as e:
+                    raise TimeLimit(e.states, [n for n in goals if n not in found]) from None
+            quests, _, _, n, errs = self.met[i]
+            for q, st in quests.items():
+                stages.setdefault(q, set()).update(st["done"])
+            view = {"quests": quests}
+            for name, test in goals.items():
+                if name not in found and test(view):
+                    found[name] = i
+            if len(found) == len(goals):
                 break
-    g.s, g.quiet = start, quiet
-    return {"paths": paths, "stages": {q: sorted(v) for q, v in stages.items()}, "states": len(seen), "cut": cut,
-            "errors": errors}
+            i += 1
+        out = {"paths": {name: self.path(j) for name, j in found.items()},
+               "stages": {q: sorted(v) for q, v in stages.items()}}
+        if len(found) == len(goals):
+            return {**out, "states": n, "cut": False, "errors": self.errors[:errs]}
+        return {**out, "states": len(self.seen), "cut": self.cut, "errors": list(self.errors)}
+
+
+class Search:
+    """`search` kept for more goals: an explorer over `refs`, and (made only when needed) one over every ref, both
+    from the state `g` holds now."""
+
+    def __init__(self, g, over, max_states, refs, key=None):
+        self.args, self.start = (over, max_states, refs, key), _copy(g.s)
+        self.first = Explorer(g, over, max_states, refs, key)
+        self.wide = None
+
+    def answer(self, goals: dict, deadline: float | None = None) -> dict:
+        """The answer for `goals`; past `deadline` (time.monotonic()) a TimeLimit."""
+        over, max_states, refs, key = self.args
+        for x in (self.first, self.wide):
+            if x is not None:
+                x.deadline = deadline
+        if refs is not None:
+            res = self.first.answer(goals)
+            if len(res["paths"]) == len(goals) or res["cut"]:      # a cut search would only be cut again
+                return res
+            if self.wide is None:
+                g = self.first.g
+                g.s = _copy(self.start)
+                self.wide = Explorer(g, over, max_states // FALLBACK_SHARE, None, key, deadline)
+            return self.wide.answer(goals)
+        return self.first.answer(goals)
 
 
 def _stops(res, q, g) -> str:
@@ -225,6 +331,20 @@ def _stops(res, q, g) -> str:
     if res["errors"]:
         where += f"; harness error: {res['errors'][0]}"
     return where
+
+
+def _replay(g, start: dict, path: list, test) -> list | None:
+    """The steps of `path` played from `start` up to the first state `test` holds for; None when none does."""
+    g.s = _copy(start)
+    try:
+        for j in range(len(path) + 1):
+            if test(g.s):
+                return path[:j]
+            if j < len(path):
+                g.do(command(path[j]))
+    except HarnessError:
+        pass
+    return None
 
 
 def _ended(q):
@@ -480,46 +600,92 @@ class Reads:
         # an amount read only as "at least" (more never shuts a line, and a take of more than is held takes what
         # there is): a state with more of it, and all else the same, reaches all a poorer one does
         self._more = sorted(i for i in self._points if i not in negated and i not in self._exact_ids)
-        self._g = g
+        self._g, self._amounts, self._ended = g, {}, {}
 
     def _amount(self, i, n):
         from bisect import bisect_right
         return n if i in self._exact_ids else bisect_right(self._points[i], n)
 
-    def key(self, g, s: dict) -> tuple[str, tuple]:
+    def key(self, g, s: dict) -> tuple[tuple, tuple]:
         """The state as the rest of the chain sees it (`g` a game over the whole chain, for its refs and items): (all
-        but the amounts where more is never worse, those amounts in order)."""
+        but the amounts where more is never worse, those amounts in order). Lists are read as sets (but a waiting
+        question's answers), tables by their entries."""
         if self._g is not g:
             self._prepare(g)
         refs = self._refs
-        quests = {}
+        quests, ended = [], self._ended
         for x, st in s["quests"].items():
-            if x in self.quests:
-                quests[x] = {k: sorted(v) if isinstance(v, list) else v for k, v in st.items()}
+            if st["ended"] and ended.get(id(st), (None,))[0] is st:     # an ended quest's entry is never changed
+                part = ended[id(st)][1]
+            elif x in self.quests:
+                part = (x, tuple(sorted((k, tuple(sorted(v)) if type(v) is list else v) for k, v in st.items())))
             elif x in self.stages or x in self.staged:
-                quests[x] = {"done": sorted(set(st["done"]) & self.stages.get(x, set())), "ended": st["ended"],
-                             "stage": max(st["done"]) if x in self.staged and st["done"] else None}
-        opened = sorted(set(s["opened"]) & refs)
-        amount = {i: self._amount(i, s["gold"] if i == G.GOLD else s["items"].get(i, 0)) for i in self._points}
-        out = {"quests": quests, "amounts": {i: n for i, n in amount.items() if i not in self._more},
-               "numbers": {n: v for n, v in s["numbers"].items() if n in self.numbers},
-               "factions": {f: v for f, v in s["factions"].items() if f in self.factions},
-               "regard": {r: v for r, v in s["regard"].items() if r in refs},
-               "switched": {r: v for r, v in s["switched"].items() if r in refs},
-               "locked": {r: v for r, v in s["locked"].items() if r in refs},
-               "contents": {h: c for h, c in s["contents"].items() if h in refs or set(c) & set(self._points)},
-               "fired": sorted(set(s["fired"]) & self.lines), "opened": opened, "ended": s["ended"],
-               "sheet": s["sheet"]}
-        for k in ("dead", "hostile", "owned"):
-            out[k] = sorted(set(s[k]) & refs)
-        out["taken"] = sorted(set(s["taken"]) & self._kept)
-        if self.spoken:
-            out["spoken"] = sorted(set(s["spoken"]) & refs)
-        if s["question"]:
-            out.update(question=s["question"], talking=s["talking"])
-        if opened or s["question"]:
-            out["pos"] = s["pos"]
-        return json.dumps(out, sort_keys=True), tuple(amount[i] for i in self._more)
+                part = (x, (tuple(sorted(set(st["done"]) & self.stages.get(x, set()))), st["ended"],
+                            max(st["done"]) if x in self.staged and st["done"] else None))
+            else:
+                part = None
+            if st["ended"]:
+                ended[id(st)] = (st, part)
+            if part is not None:
+                quests.append(part)
+        quests.sort(key=_first)
+        opened = _among(s["opened"], refs)
+        points, more, amounts = self._points, self._more, self._amounts
+        amount = {}
+        for i in points:
+            n = s["gold"] if i == G.GOLD else s["items"].get(i, 0)
+            a = amounts.get((i, n))
+            amount[i] = a if a is not None else amounts.setdefault((i, n), self._amount(i, n))
+        numbers, factions = self.numbers, self.factions
+        question = s["question"]
+        base = (tuple(quests), _rows((i, n) for i, n in amount.items() if i not in more),
+                _rows((n, v) for n, v in s["numbers"].items() if n in numbers) if s["numbers"] else (),
+                _rows((f, v) for f, v in s["factions"].items() if f in factions) if s["factions"] else (),
+                _rows((r, v) for r, v in s["regard"].items() if r in refs) if s["regard"] else (),
+                _rows((r, v) for r, v in s["switched"].items() if r in refs) if s["switched"] else (),
+                _rows((r, v) for r, v in s["locked"].items() if r in refs) if s["locked"] else (),
+                _rows((h, tuple(sorted(c.items()))) for h, c in s["contents"].items()
+                      if h in refs or not points.keys().isdisjoint(c)) if s["contents"] else (),
+                _among(s["fired"], self.lines), opened, s["ended"], _sheet(s["sheet"]),
+                _among(s["dead"], refs), _among(s["hostile"], refs), _among(s["owned"], refs),
+                _among(s["taken"], self._kept), _among(s["spoken"], refs) if self.spoken else None,
+                (_frozen(question), s["talking"]) if question else None,
+                _frozen(s["pos"]) if opened or question else None)
+        return base, tuple(amount[i] for i in more)
+
+
+def _first(x):
+    return x[0]
+
+
+def _rows(pairs) -> tuple:
+    """A table's entries (unique first items) in order."""
+    return tuple(sorted(pairs, key=_first))
+
+
+def _among(xs: list, keep) -> tuple:
+    """The members of `xs` in `keep`, as a set in order."""
+    return tuple(sorted(set(xs) & keep)) if xs else ()
+
+
+_SHEET = {"race", "sex", "skills"}
+
+
+def _sheet(sh):
+    """`_frozen` of a character sheet, the common shape read straight."""
+    if sh.keys() == _SHEET:
+        return ("race", sh["race"]), ("sex", sh["sex"]), ("skills", tuple(sorted(sh["skills"].items())))
+    return _frozen(sh)
+
+
+def _frozen(v):
+    """A value as one that can be told apart from others like it: tables by their entries, lists in order."""
+    t = type(v)
+    if t is dict:
+        return tuple(sorted(((k, _frozen(x)) for k, x in v.items()), key=_first))
+    if t is list or t is tuple:
+        return tuple(_frozen(x) for x in v)
+    return v
 
 
 def _covers(a: tuple, b: tuple) -> bool:
@@ -528,7 +694,8 @@ def _covers(a: tuple, b: tuple) -> bool:
 
 
 def reach(forms: list[dict], world: dict | None = None, sheets: dict | None = None,
-          max_states: int = MAX_STATES, skip: set[str] = frozenset(), only: set[str] | None = None) -> list[dict]:
+          max_states: int = MAX_STATES, skip: set[str] = frozenset(), only: set[str] | None = None,
+          memo: dict | None = None, deadline: float | None = None, store=None) -> list[dict]:
     """For each quest of the set (but `skip`, or only those of `only`) and each way through the quests it waits on
     (each a completed ending of each), a row: {quest, name, after: [[quest, ending]...], stages: [{stage, ending, by:
     {sheet: path or None}, why}], completes: {sheet: bool}, blocked: {sheet: why}, walked: {sheet: the way through
@@ -539,29 +706,88 @@ def reach(forms: list[dict], world: dict | None = None, sheets: dict | None = No
     states the rest of the chain cannot tell apart are one). Of states that differ only in amounts the rest reads as
     "at least" (gold, a count held), the poorest is played on: what it reaches, a richer one reaches by the same
     steps; a richer one is played on itself only where the poorest is blocked or misses a goal. So the walked quest
-    starts once per distinct carried state that is not covered so, never once per way through."""
+    starts once per distinct carried state that is not covered so, never once per way through.
+
+    One search serves every question asked from one state of one game (`Explorer`): a quest's walk and its plays to
+    each of its endings for the quests after it share it. `memo` (a dict) keeps those searches and plays between
+    calls over the same forms, world, sheets and max_states; `store` (get(parts) / put(parts, value)) keeps the plays
+    between runs. Past `deadline` (time.monotonic()) the walk stops with a TimeLimit naming what was not yet reached
+    and how many states were searched."""
     from itertools import product
 
     from tools.playtest import world as W
     by_id = {f["quest"]["id"]: f for f in forms}
     world = world or W.snapshot(forms, use_db=False)
     sheets = sheets or SHEETS
-    out, plays = [], {}
+    memo = {} if memo is None else memo
+    plays, searches = memo.setdefault("plays", {}), memo.setdefault("searches", {})
+    out = []
+
+    def start(state, sheet) -> str:
+        return json.dumps(state, sort_keys=True) if state else json.dumps(sheet, sort_keys=True)
+
+    def searcher(qids, state, sheet, ended, q) -> Search:
+        """The search for quest `q` in a game of `qids` (and what they name) from `state`, its states told apart as
+        the quests not `ended` (whole) and the lingering lines of those `ended` read them."""
+        k = (tuple(qids), start(state, sheet), tuple(ended), q)
+        if k not in searches:
+            g = game_on(by_id, list(qids), world, state, sheet)
+            if state is None:
+                g.s["gold"] = GOLD
+            reads = Reads(by_id, [x for x in named(list(qids), by_id) if x not in ended], list(ended))
+            searches[k] = Search(g, _ended(q), max_states, own_refs(g, q), lambda s, g=g: reads.key(g, s))
+        return searches[k]
 
     def play(before, i, end, state, sheet):
         """Quest before[i] played to `end` from `state`, in a game of only the quests it and those before it name."""
-        k = (before[i], end, json.dumps(state, sort_keys=True) if state else json.dumps(sheet, sort_keys=True))
-        if k not in plays:
+        q = before[i]
+        k = (q, end, start(state, sheet))
+        if k in plays:
+            return plays[k]
+        parts = ["play", list(before[:i + 1]), end, json.loads(k[2]), GOLD, max_states]
+        kept = store.get(parts) if store is not None else None
+        if kept is not None:
+            plays[k] = HarnessError(kept["error"]) if "error" in kept else kept["state"]
+            return plays[k]
+
+        def done(s):
+            st = s["quests"].get(q)
+            return st is not None and end in st["done"]
+        try:
+            res = searcher(before[:i + 1], state, sheet, before[:i], q).answer({"done": done}, deadline)
+        except TimeLimit as e:
+            raise TimeLimit(e.states, [f"{q}'s stage {end}, played to for the quests after it"]) from None
+        if "done" not in res["paths"]:
+            plays[k] = HarnessError(f"--after {q}: stage {end} reached from here: {_stops(res, q, None)}")
+        else:
             g = game_on(by_id, list(before[:i + 1]), world, state, sheet)
             if state is None:
                 g.s["gold"] = GOLD
-            try:
-                ahead = Reads(by_id, [x for x in named(list(before[:i + 1]), by_id) if x not in before[:i]], before[:i])
-                complete(g, before[i], max_states, end, lambda s: ahead.key(g, s))
-                plays[k] = g.s
-            except HarnessError as e:
-                plays[k] = e
+            for a in res["paths"]["done"]:
+                g.do(command(a))
+            plays[k] = g.s
+        if store is not None:
+            store.put(parts, {"error": str(plays[k])} if isinstance(plays[k], HarnessError) else {"state": plays[k]})
         return plays[k]
+
+    def proven(qids, state, sheet, goals, proofs, first, ends):
+        """A walk's result without a search, when for each goal a path an earlier search of the quest found to it
+        (from another carried state, or for another character; for a completed ending, to any of `ends`) reaches it
+        from here as well: each is then reached by those steps, played here. None when one does not."""
+        tries = {n: proofs.get(n, [])[-PROOFS:] + ([p for e in ends for p in proofs.get(e, [])[-1:]]
+                                                   if n == "completed" else []) for n in goals}
+        if not all(tries.values()):
+            return None
+        g = game_on(by_id, list(qids), world, state, sheet)
+        if state is None:
+            g.s["gold"] = GOLD
+        start, g.quiet, paths = _copy(g.s), True, {}
+        for n, test in goals.items():
+            paths[n] = next((r for p in tries[n] if (r := _replay(g, start, p, test)) is not None), None)
+            if paths[n] is None:
+                return None
+        g.s = start
+        return first, {n: [shown(g, a) for a in p] for n, p in paths.items()}, ""
 
     def groups(classes):
         """Each group of carried states alike but for amounts, poorest first."""
@@ -584,6 +810,7 @@ def reach(forms: list[dict], world: dict | None = None, sheets: dict | None = No
                           "stages": [{"stage": s["number"], "ending": s["ending"], "by": {}, "why": {}}
                                      for s in f["stages"]], "completes": {}, "blocked": {}, "walked": {}}
         out += rows.values()
+        proofs: dict = {}                   # each goal: the paths an earlier search of this quest found to it
         for name, sheet in sheets.items():
             classes = {("", ()): (None, [()])}      # carried state -> (a state that carries it, the ways to it)
             for i, d in enumerate(before):
@@ -615,13 +842,25 @@ def reach(forms: list[dict], world: dict | None = None, sheets: dict | None = No
                                    if any(not any(p is not None for p in rows[w]["stages"][j]["by"].values())
                                           for w in ways))
                     hit = next((r for m, wt, r in done if _covers(m, more) and set(wanted) <= set(wt)), None)
+                    goals = {n: (lambda st, n=n: n in (st["quests"].get(q) or {}).get("done", [])) for n in wanted}
+                    goals["completed"] = lambda st: (st["quests"].get(q) or {}).get("ended") == "completed"
                     if hit is None:
-                        g = game_on(by_id, chain, world, state, sheet)
-                        if state is None:
-                            g.s["gold"] = GOLD
-                        goals = {n: (lambda st, n=n: n in (st["quests"].get(q) or {}).get("done", [])) for n in wanted}
-                        goals["completed"] = lambda st: (st["quests"].get(q) or {}).get("ended") == "completed"
-                        res = search(g, goals, _ended(q), max_states, own_refs(g, q), lambda s: reads[-1].key(g, s))
+                        hit = proven(chain, state, sheet, goals, proofs, ways[0], _completed(f))
+                        if hit is not None:
+                            done.append((more, wanted, hit))
+                    if hit is None:
+                        x = searcher(chain, state, sheet, before, q)
+                        try:
+                            res = x.answer(goals, deadline)
+                        except TimeLimit as e:
+                            after = ", ".join(f"{d} {n}" for d, n in zip(before, ways[0]))
+                            raise TimeLimit(e.states, [("the completed ending" if n == "completed" else f"stage {n}") +
+                                                       f" for the {name} character" + (f", after {after}" if after
+                                                                                      else "") for n in e.missing]
+                                            ) from None
+                        g = x.first.g
+                        for n, p in res["paths"].items():
+                            proofs.setdefault(n, []).append(p)
                         hit = (ways[0], {n: [shown(g, a) for a in p] for n, p in res["paths"].items()},
                                _stops(res, q, g))
                         if len(res["paths"]) == len(goals):

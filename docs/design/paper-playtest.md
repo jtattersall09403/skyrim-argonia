@@ -107,7 +107,12 @@ results name them, and the lines an ended quest still says). Gold and a count ar
 two amounts no threshold tells apart after any set of the rest's changes are one; and of states alike but for amounts
 read only as "at least", the poorest is played on, a richer one only where the poorest is blocked or misses a goal
 (what the poorer reaches, the richer reaches by the same steps). The same reading makes the search's states: two that
-the walked quest cannot tell apart are visited once. `make reach` prints its starts and its time: about 25 seconds for
+the walked quest cannot tell apart are visited once. One search serves every question asked from one state of one game
+(`walk.Explorer`): a quest's walk and its plays to each of its endings for the quests after it read the same search.
+A walk from another carried state, or for the other character, first plays the paths an earlier walk of the quest
+found to each goal; only where one of them does not reach its goal from there is that state searched, so a stage
+counts as reached only by steps played to it, and the way printed for it is a way found, not always the shortest.
+`make reach` prints its starts and its time: about 25 seconds for
 the eleven quests that fit the form today.
 
 The player runs from a new empty folder with its own system prompt, the project's setting sources only, no MCP

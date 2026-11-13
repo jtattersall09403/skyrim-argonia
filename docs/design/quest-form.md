@@ -381,13 +381,20 @@ ways` (a death that both fails and moves the quest), `fallback`, `unsaid line`, 
 
 ## The outline's sketch
 
-`python3 -m tools.questform sketch <story file> [--quest <id>] [--paths]` (`tools/questform/sketch.py`) checks a
-story outline before its places are built: each fenced `sketch` block (format in `.claude/skills/story-line/
+`python3 -m tools.questform sketch <story file> [--quest <id>] [--paths] [--no-cache] [--time-limit <s>]`
+(`tools/questform/sketch.py`) checks a story outline before its places are built: each fenced `sketch` block (format in `.claude/skills/story-line/
 buildable.md` §4) is expanded to the form a record would compile to (a line only moves a stage; a take's held check,
 a late trigger's `until`, a check's refusal line and the hidden start's who-must-live gates added as `compile` adds
 them), each reference standing at a stand-in spot per named place (`far` places beyond `AWAY_UNITS`), then checked by
 every rule above, `check_set`, the design rules (`sketch.DESIGN`) and `reach`. It is a relaxed entry to the same
 rules: a built quest is still checked in full.
+
+A writer checks the quest in hand with `--quest <id>` (the rules over the file; the walk of that quest alone, from each
+state the quests before it can leave) and the whole file before it goes to readers. Each quest's walk, and each play of
+an earlier quest to one of its endings, is kept in `out/sketch-cache` under a hash of the forms its game loads, the
+world entries they name, the walk's settings and the walker's code, so only what a change reaches is walked again
+(`--no-cache` keeps nothing; the folder is safe to delete). Each quest's walk stops at a time limit (120 s,
+`--time-limit`) with a `reach-time` fault naming what it had not reached and how many states it searched.
 
 ## The gate
 

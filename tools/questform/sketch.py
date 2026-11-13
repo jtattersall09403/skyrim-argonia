@@ -20,7 +20,9 @@ placement is checked when the quest is built. `check(path)` runs the schema, eve
 """
 from __future__ import annotations
 
+import hashlib
 import json
+import os
 import re
 from collections import defaultdict
 from pathlib import Path
@@ -40,6 +42,8 @@ HARD = ("skill_at_least", "gold_at_least")
 FAILS = HARD + ("item_count_at_least",)
 FAR_STEP = 200000.0           # far places stand this far apart: well beyond rules.AWAY_UNITS
 NEAR_STEP = 1000.0            # near outdoor places stand this far apart: well inside it
+CACHE = Path(__file__).resolve().parents[2] / "out/sketch-cache"   # the walk's kept results (never committed)
+TIME_LIMIT = 120.0            # seconds one quest's walk may take before it stops and says what it has not reached
 
 # The words a writer reaches for that name something the game cannot know or do, each with the nearest thing it can.
 CANNOT = {
@@ -1199,6 +1203,7 @@ GLOSS = {
     "line-hostile": "a person who speaks and then turns hostile by a line",
     "body": "a body placed in the world",
     "reach": "a stage or ending no player reaches",
+    "reach-time": "the walk ran out of time: what it had not reached by then is neither proven nor refuted",
 }
 
 
@@ -1245,9 +1250,11 @@ def _where(msg: str, src: dict) -> int | None:
     return None
 
 
-def check(path, quest: str | None = None, walk: bool = True, max_states: int | None = None) -> list[dict]:
+def check(path, quest: str | None = None, walk: bool = True, max_states: int | None = None,
+          cache: Path | None = None, time_limit: float = TIME_LIMIT) -> list[dict]:
     """Every fault of the sketches in `path` (or of the one quest `quest`, the others loaded with it), each {line,
-    quest, rule, message, gloss}."""
+    quest, rule, message, gloss}. The reach walk keeps its results in `cache` (None: walk everything again) and gives
+    each quest `time_limit` seconds."""
     path = Path(path)
     faults = []
     sketches = read(path)
@@ -1290,7 +1297,7 @@ def check(path, quest: str | None = None, walk: bool = True, max_states: int | N
             walkable = False
             faults.append({"line": srcs.get(q, {}).get(("start",)), "quest": q, "rule": rule, "message": msg})
     if walk and forms and walkable:
-        faults += _reach(every, srcs, quest, max_states)
+        faults += _reach(every, srcs, quest, max_states, cache, time_limit)
     out, seen = [], {}
     for f in faults:          # one fault per rule and story line: a line offered at several stages is one line
         key = (f["quest"], f["rule"], f["line"]) if f["line"] and f["rule"] != "_ok" else id(f)
@@ -1303,13 +1310,106 @@ def check(path, quest: str | None = None, walk: bool = True, max_states: int | N
     return out
 
 
-def _reach(every, srcs, quest, max_states) -> list[dict]:
+class Store:
+    """The walk's results kept between runs, one file each under `folder`: a quest's rows, and the state each earlier
+    quest's play to one of its endings leaves. Each is filed under a hash of what it was made from: the forms of the
+    quests its game loads (the quest, the quests it waits on and those they name), the world's entries those forms
+    name, the walk's settings and the walker's code. A form that changes changes the hash of everything that loads
+    it, so only those are walked again; the folder is safe to delete."""
+
+    KEEP = 2000                     # files kept: past this, the least recently used half is deleted
+
+    def __init__(self, folder: Path, every: list[dict], world: dict, max_states: int):
+        from tools.playtest import walk
+        self.folder, self.walk = Path(folder), walk
+        self.by_id = {f["quest"]["id"]: f for f in every}
+        self.world, self.max_states = world, max_states
+        self.version = code_version()
+
+    def _file(self, parts) -> Path:
+        loaded = self.walk.named(list(parts[1]), self.by_id)
+        forms = [self.by_id[q] for q in loaded]
+        text = json.dumps(forms, sort_keys=True)
+        world = {}
+        for k, v in self.world.items():             # the world's entries these forms name
+            if isinstance(v, dict):
+                world[k] = {x: y for x, y in v.items() if json.dumps(x) in text}
+            elif isinstance(v, list):
+                world[k] = [x for x in v if not isinstance(x, str) or json.dumps(x) in text]
+            else:
+                world[k] = v
+        made = {"code": self.version, "parts": parts, "forms": forms, "world": world, "max_states": self.max_states,
+                "sheets": self.walk.SHEETS, "gold": self.walk.GOLD}
+        digest = hashlib.sha256(json.dumps(made, sort_keys=True).encode()).hexdigest()
+        return self.folder / f"{parts[0]}-{digest}.json"
+
+    def get(self, parts):
+        p = self._file(parts)
+        try:
+            value = json.loads(p.read_text(encoding="utf-8"))
+            os.utime(p)
+            return value
+        except (OSError, ValueError):
+            return None
+
+    def put(self, parts, value) -> None:
+        p = self._file(parts)
+        self.folder.mkdir(parents=True, exist_ok=True)
+        tmp = p.with_suffix(f".{os.getpid()}.tmp")
+        tmp.write_text(json.dumps(value), encoding="utf-8")
+        os.replace(tmp, p)
+
+    def tidy(self) -> None:
+        try:
+            files = sorted(self.folder.glob("*.json"), key=lambda p: p.stat().st_mtime)
+        except OSError:
+            return
+        if len(files) > self.KEEP:
+            for p in files[:len(files) - self.KEEP // 2]:
+                p.unlink(missing_ok=True)
+
+
+def code_version() -> str:
+    """A hash of the code a walk's result depends on: the paper game, its walker and the quest form's tools."""
+    here = Path(__file__).resolve().parent
+    h = hashlib.sha256()
+    for p in sorted(list(here.glob("*.py")) + list((here.parent / "playtest").glob("*.py"))):
+        h.update(p.name.encode() + p.read_bytes())
+    return h.hexdigest()
+
+
+def _reach(every, srcs, quest, max_states, cache: Path | None = None, time_limit: float = TIME_LIMIT) -> list[dict]:
+    """The reach walk of each quest (or of `quest` alone), each within `time_limit` seconds, its rows from `cache`
+    when nothing it was made from has changed."""
+    import time
+
     from tools.playtest import walk
     from tools.playtest import world as W
     world = W.snapshot(every, use_db=False)
-    kw = {"max_states": max_states} if max_states else {}
-    rows = walk.reach(every, world, only={quest} if quest else None, **kw)
-    out = []
+    max_states = max_states or walk.MAX_STATES
+    store = Store(cache, every, world, max_states) if cache else None
+    by_id = {f["quest"]["id"]: f for f in every}
+    memo, rows, out = {}, [], []
+    for q in by_id:
+        if quest and q != quest:
+            continue
+        parts = ["rows", walk.order(q, by_id)]
+        got = store.get(parts) if store else None
+        if got is None:
+            try:
+                got = walk.reach(every, world, max_states=max_states, only={q}, memo=memo, store=store,
+                                 deadline=time.monotonic() + time_limit)
+            except walk.TimeLimit as e:
+                out.append({"line": srcs.get(q, {}).get(("quest",)), "quest": q, "rule": "reach-time",
+                            "message": f"the walk stopped at its limit of {time_limit:g} s, {e.states} states "
+                            f"searched, before it reached: {'; '.join(e.missing)}. Nothing is proven past there: "
+                            "make the quest smaller, or run again with a longer --time-limit"})
+                continue
+            if store:
+                store.put(parts, got)
+        rows += got
+    if store:
+        store.tidy()
     for b in walk.unreached(rows):
         q = b.split(":")[0].split(",")[0]
         m = re.search(r"(?:stage|ending) (\d+) not reached", b)
@@ -1339,9 +1439,9 @@ def report(path, faults: list[dict]) -> tuple[str, int]:
     return "\n".join(out), len(real)
 
 
-def main(path, quest=None, walk=True, show_paths=False) -> int:
+def main(path, quest=None, walk=True, show_paths=False, cache=True, time_limit=TIME_LIMIT) -> int:
     try:
-        faults = check(path, quest, walk)
+        faults = check(path, quest, walk, cache=CACHE if cache else None, time_limit=time_limit)
     except SketchError as e:
         print(f"sketch: {e}")
         return 1
