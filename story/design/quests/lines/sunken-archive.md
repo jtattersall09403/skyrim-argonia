@@ -934,9 +934,9 @@ the loose figure.
 | 40 | using the wall of clay figures (open from 10) | I found a wall set with hundreds of small clay figures | Tell Joxhi what is under it: the elder (him), or the grave-singer with something she can hold (her, the loose figure); Yaxil-Ca if both are dead |
 | 50 | Jo-Reesh's line "This pit is older than your village. Those are the dead of whoever dug it in collars." | he asked me to leave the telling to him, for a season | Report to Yaxil-Ca (her); or the grave-singer (her, the figure) |
 | 60 | Ixha-Lei's line, the clay figure held (at 40 or 50; takes it, teaches her song) | I put one of the figures in the grave-singer's hand | Report to Yaxil-Ca (her) |
-| 90 | Yaxil-Ca's line at 50 (locks the breach; the guest mound's chest) | **Walled.** | ends, completed |
+| 90 | Yaxil-Ca's line at 50 (locks the breach; the elder's charm) | **Walled.** | ends, completed |
 | 91 | Yaxil-Ca's line at 60 | **Named.** | ends, completed |
-| 92 | Yaxil-Ca's line at 40 with Jo-Reesh and Ixha-Lei both dead (locks the breach; no guest mound) | **Walled**, with nobody at Joxhi told | ends, completed |
+| 92 | Yaxil-Ca's line at 40 with Jo-Reesh and Ixha-Lei both dead (locks the breach; no charm) | **Walled**, with nobody at Joxhi told | ends, completed |
 | 95 | Yaxil-Ca dead | The readers have nobody to send me now. | ends, failed |
 
 With Jo-Reesh dead and Ixha-Lei alive, her line needs the figure, and she tells a player without it to bring
@@ -968,7 +968,7 @@ item wardscroll "Scroll of Steadfast Ward"
 item deadtome "Spell Tome: Detect Dead"
 item gem "Common Soul Gem, filled"
 item enchbook "an Enchanting skill book"
-thing guestchest at joxhi container owner elder "Guest-Mound Chest"
+item charm "Jo-Reesh's Seam-Charm"
 thing okey at buried "Overseers' Key"
 door inner at buried locked expert key okey "Undercroft Door"
 door breach at joxhi "Breach Gate"
@@ -983,7 +983,7 @@ stage 16 "I bought two ward scrolls from Reader Ocan, who told me that a ward on
 stage 40 "In the undercroft of the buried hall I found a wall set with hundreds of small clay figures, the same that Joxhi's diggers press into the pit wall for their dead."
 stage 50 "I told Elder Jo-Reesh what the wall is: the pit is older than his village, and the figures began as slaves' grave-marks. He asked me to leave the telling to him, for a season."
 stage 60 "I put one of the figures from the buried wall in the hand of Ixha-Lei, Joxhi's grave-singer, and told her where it came from. She taught me the song she names the dead with." do take figure, teach 05DD60:Skyrim.esm "The Naming Song"
-stage 90 completed "Walled. I told Yaxil-Ca what is under Joxhi. The breach has been shut, and a chest on Joxhi's guest mound is mine." do give-gold 300, give deadtome, give gem 2, give enchbook, rank archive 2, own shelf, own guestchest, set sa03.settled 1, lock breach
+stage 90 completed "Walled. I told Yaxil-Ca what is under Joxhi. The breach has been shut, and Elder Jo-Reesh's own charm came down the river to the hall for me." do give-gold 300, give deadtome, give gem 2, give enchbook, rank archive 2, own shelf, give charm, set sa03.settled 1, lock breach
 stage 91 completed "Named. I told Yaxil-Ca what is under Joxhi, and that its grave-singer knows." do give-gold 300, give deadtome, give gem 2, give enchbook, rank archive 2, own shelf, set sa03.settled 2
 stage 92 completed "Walled. I told Yaxil-Ca what is under Joxhi. Its elder and its grave-singer being dead, the breach has been shut on it." do give-gold 300, give deadtome, give gem 2, give enchbook, rank archive 2, own shelf, set sa03.settled 3, lock breach
 stage 95 failed "Yaxil-Ca is dead. The readers have nobody to send me now."
@@ -998,8 +998,8 @@ line hail livia first at 10-60 ask "Who are you?" says "the readers' new hand; s
 line wardfree ocan at 10 ask "What guards an Ayleid hall?" if skill Enchanting 30 -> 15 else "Sixty gold buys you two scrolls and the answer. The table is not a charity." says "he sees the player knows a binding from a ward; the stone is the ward; lift it and the ward dies; facing in, it holds something in; two scrolls, free"
 line wardbuy ocan at 10 ask "Sixty gold, then." if gold 60 -> 16 else "Sixty. The table is not a charity." says "the stone is the ward; lift it and the ward dies; facing in, it holds something in; two scrolls"
 line seam elder at 10-40 ask "What did your diggers see?" says "white stone, they said; four of them, and none will go back down; twenty-three people live on that seam; nothing had come up out of that breach when he sent to the hall, and he would like to go on saying so"
-line tellelder elder at 40 ask "This pit is older than your village. Those are the dead of whoever dug it in collars." if alive elder -> 50 says "his diggers are proud of the figures; half would leave a pit they knew for a slave-pit, and Thorn's buyers would have the seam inside a year; a season's silence, and he will tell it at the kiln fire himself; for it, a chest and a bed on the guest mound are the player's whenever they pass, and the breach is shut for good"
-line scase singer at 40-50 ask "What would you do with dead nobody named?" says "name them: they are older than the village and have waited longer; a custom is not smaller for being begun by people who had nothing else; bring something she can hold, and she will teach the song; the elder will keep his guest mound from one who went round him"
+line tellelder elder at 40 ask "This pit is older than your village. Those are the dead of whoever dug it in collars." if alive elder -> 50 says "his diggers are proud of the figures; half would leave a pit they knew for a slave-pit, and Thorn's buyers would have the seam inside a year; a season's silence, and he will tell it at the kiln fire himself; for it, his own seam-charm, worn forty years, goes down the river to the hall, and the breach is shut for good"
+line scase singer at 40-50 ask "What would you do with dead nobody named?" says "name them: they are older than the village and have waited longer; a custom is not smaller for being begun by people who had nothing else; bring something she can hold, and she will teach the song; the elder will send no charm to one who went round him"
 line tellsinger singer at 40-50 ask "This came off a wall under your pit." if holds figure, alive singer -> 60 says "she turns it over; she teaches the song before she asks anything"
 line w1 yaxil at 50 ask "I have seen what is under Joxhi." -> 90 says "she is quiet; people keep what their keepers taught them, and forget where they learnt it; do not make too much of it at Joxhi"
 line n1 yaxil at 60 ask "I have seen what is under Joxhi, and its grave-singer knows." -> 91 says "she is quiet; then the same words"
@@ -1021,8 +1021,7 @@ as the breach's inner door
 is used, across the line between inside and outside), and the two endings reached at Yulca do the same for a
 Borrower who left by Recall. Then one of four people has it; the two at Joxhi deal only with a stone that has come up
 through the breach, so the dead are never dodged by a Recall. Livia Semprone's one breath on the pit path is SA03's
-own first line, so the choice is named before the player goes down. And a player who reports with both wards standing
-can say so to Jo-Reesh afterwards: that ends the rider too, with the one gift in Joxhi that restraint earns.
+own first line, so the choice is named before the player goes down.
 
 ```sketch
 quest SA03S minor "The Inward Stone"
@@ -1041,7 +1040,6 @@ person loose2 at joxhi hostile level 22 off "Overseer of the Lash"
 thing stone at buried "Inward Stone"
 door breachin at buried "Breach, to the Pit"
 item circlet "Synod Assayer's Circlet"
-item charm "Jo-Reesh's Seam-Charm"
 item wardscroll "Scroll of Steadfast Ward"
 
 stage 0 hidden
@@ -1053,7 +1051,6 @@ stage 92 completed "To the table. I gave the inward stone to Reader Ocan, and wo
 stage 93 completed "Sunk. I gave the inward stone to Elder Jo-Reesh, to sink in Joxhi's slip-pit." do take stone, give-gold 150, give wardscroll 4, set sa03.stone 3
 stage 94 completed "Kept. I told Reader Ocan the inward stone stays in my own pack." do skill-up Enchanting 1, set sa03.stone 4, on loose1, on loose2
 
-stage 95 completed "Left standing. I told Elder Jo-Reesh that both wards still stand under Joxhi, and he gave me the charm from his own neck." do give charm, set sa03.stone 5
 objective 20 at 20 "Carry the inward stone out of the hall, and decide who has it" -> breachin, livia, ocan, elder, stone
 objective 25 at 25 "Decide who has the inward stone" -> livia, ocan, elder, stone
 
@@ -1067,8 +1064,6 @@ line ecase elder at 20-25 ask "What would you do with it?" if holds stone says "
 line sink elder at 25 ask "Sink it." if holds stone -> 93 says "he carries it to the slip-pit himself"
 line keep ocan at 20-25 ask "It stays in my pack." if holds stone -> 94 says "then draw on it at the table and not in a ditch; he shows the player how"
 
-line stands elder at 0 ask "Both stones still stand under your pit." if done SA03 90, alive elder -> 95 says "then nothing of his is owed to any buyer; his own seam-charm, which he has worn forty years"
-line stands2 elder at 0 ask "Both stones still stand under your pit." if done SA03 91, alive elder -> 95 says "he did not say the player was wrong, and he does not say it now; his own seam-charm"
 take stone from 0 -> 20
 use breachin from 20 -> 25
 ```
@@ -1096,15 +1091,15 @@ a tome of Detect Dead.
 
 | Outcome | What the player gains in play | What they lose or can no longer get | Who pays, and where the player sees it | The form results that build it |
 |---|---|---|---|---|
-| **Walled** (90; 92 with both of Joxhi's speakers dead, which gives no mound) | a chest and a bed on Joxhi's guest mound are the player's: a place to sleep and store on the road north | the Naming Song; the hall itself: the breach is locked for good, with whatever the player left in it | the dead under Joxhi, who stay unnamed; Ixha-Lei goes on pressing figures into the pit wall | `give_ownership`; `lock_door` the breach gate |
-| **Named** (91) | **the Naming Song**, taught by Ixha-Lei as she takes the figure: a grave-singer's turning of the restless dead (a copy of Repel Undead, `05DD60:Skyrim.esm`), Restoration; the breach stays open | the guest mound; Jo-Reesh's warmth: "She named four hundred in one night. I have nineteen diggers. I did not say you were wrong" | Jo-Reesh, at the kiln, whose pit has lost diggers; Ixha-Lei names them at the kiln fire by tens | `teach_spell` at stage 60 |
+| **Walled** (90; 92 with both of Joxhi's speakers dead, which gives no charm) | **Jo-Reesh's Seam-Charm**, the unique amulet he has worn forty years, sent down the river to the hall (a `template_item` on a load-order amulet of resistance with no god's mark) | the Naming Song; the hall itself: the breach is locked for good, with whatever the player left in it | the dead under Joxhi, who stay unnamed; Ixha-Lei goes on pressing figures into the pit wall | `give_item`; `lock_door` the breach gate |
+| **Named** (91) | **the Naming Song**, taught by Ixha-Lei as she takes the figure: a grave-singer's turning of the restless dead (a copy of Repel Undead, `05DD60:Skyrim.esm`), Restoration; the breach stays open | the Seam-Charm; Jo-Reesh's warmth: "She named four hundred in one night. I have nineteen diggers. I did not say you were wrong" | Jo-Reesh, at the kiln, whose pit has lost diggers; Ixha-Lei names them at the kiln fire by tens | `teach_spell` at stage 60 |
 
 **The stone** (the rider's endings; each sets `sa03.stone`):
 
 | Outcome | What the player gains in play | What they lose or can no longer get | Who pays, and where the player sees it | The form results that build it |
 |---|---|---|---|---|
-| **Left standing** (95: said to Jo-Reesh once SA03 has ended) | **Jo-Reesh's Seam-Charm**, the unique amulet he has worn forty years (a `template_item` on a load-order amulet of resistance with no god's mark): the one gift in Joxhi that restraint earns; nothing loosed, and everyone at the pit alive | every row below | nobody | Jo-Reesh's line moves the rider to its ending; `give_item` |
-| **Lifted**, whoever then has it | the key for the picking up | the Seam-Charm; two of the hall's dead, fixed at level 22 and above a turning spell's reach, are in Joxhi's pit and attack whoever is there: Gam-Kur meets them at the pit head, and Ixha-Lei and Livia are a few steps away | Joxhi: whoever at the pit the dead reach before they are put down | `switch_on` the two, as the breach's inner door is used |
+| **Left standing** | nothing loosed: everyone at the pit alive, so the Naming Song and the elder's charm are both still to be had; the key came out by Telekinesis, a ward spell held up, a slow Sneak, or not at all | every row below | nobody | no stage: the rider never begins |
+| **Lifted**, whoever then has it | the key for the picking up | two of the hall's dead, fixed at level 22 and above a turning spell's reach, are in Joxhi's pit and attack whoever is there: Gam-Kur meets them at the pit head, and Ixha-Lei and Livia are a few steps away | Joxhi: whoever at the pit the dead reach before they are put down | `switch_on` the two, as the breach's inner door is used |
 | **Sold** to Livia Semprone (90) | 400 gold | the table's teaching; the stone | the readers, who go without it | `give_gold` |
 | **Sold dear** (91; Enchanting 40: "This is no ward. It is a binding") | 400 gold and **the Synod Assayer's Circlet**, a unique (a `template_item` on a load-order circlet of Enchanting) from her own case, for one who can read stone | as Sold | as Sold | `give_gold`, `give_item` |
 | **To the table** (92) | **the Copyist's Hand**, a lasting ability from working a bound stone with Ocan: the player's enchantments are a tenth stronger (a copy of Dragonborn's `034837:Dragonborn.esm`; its name is one more seed) | the gold; the circlet | Livia, who goes without it | `teach_spell` |
@@ -1112,8 +1107,8 @@ a tome of Detect Dead.
 | **Kept** (94) | the stone itself, a filled grand soul gem for the player's own work at the table; Enchanting raised by 1 as Ocan shows how to draw on it | everything the other three offered | nobody | `raise_skill` |
 
 No row is best in every column: gold, a unique thing, a lasting ability, or the charge itself for an enchanter's own
-use, each bought with two dead loosed among people the player has met; or a unique charm for lifting nothing. The two
-takers at Joxhi deal only once the stone has come up through the breach.
+use, each bought with two dead loosed among people the player has met. Lifting nothing pays nothing and risks nobody.
+The two takers at Joxhi deal only once the stone has come up through the breach.
 
 **The moment a player retells.** Standing in a breach deciding between a small iron key and a humming stone worth
 a year of a village's clay; then, in the dark of the undercroft, a wall of the same small clay figures the diggers
@@ -1181,7 +1176,7 @@ something there.
 | small clay figures pressed into the pit wall near the breach | SA03 | the living custom, seen before the hall is entered; Ixha-Lei stands by them | their look; Ixha-Lei says what they are |
 | inside the hall: a first gallery with two wards on stands that throw frost and a few clay figures in its pit-side wall, a hall beyond it, and an inner door that locks | SA03 | the stone, the key on the nearer stand's base, the overseers | the wards are seen working from the breach; the key's marker; the door shows "Undercroft Door" |
 | an undercroft as a second inside, whose end wall is set with rows of the same small clay figures | SA03 | the pit-master; the find | the wall shows "Wall of Clay Figures"; the quest's marker |
-| a guest mound with a chest and a bed that nobody owns; a pit path, a pit head and a slip-pit as standing places | SA03 | the mound is made the player's if the breach is walled; Livia, Gam-Kur and the elder's word of the slip-pit | Jo-Reesh says "the guest mound, first above the landing"; the chest shows its name |
+| a pit path and a pit head as standing places, and a slip-pit | SA03 | Livia and Gam-Kur stand there; the elder speaks of the slip-pit | the pit is the village's one great hole; each speaks from where they stand; the slip-pit is the wet pit by the kiln that Jo-Reesh names |
 
 **Sethiral and Yina** (D okuwun-rahei).
 
@@ -1393,9 +1388,10 @@ to leave the hall); and the Fenlord, whom all three ended.
 1. *Gifts are things the form gives.* No ending now opens or shuts a trader or a teacher. Xocin's cost is her
    gifts withheld and her silence; the rank of Copyist gives soul gems and a skill book; Hecal's thanks is given
    through the report; the mat's room holds its tomes; nobody "still trades".
-2. *Restraint at Joxhi earns the one unique thing there.* Jo-Reesh's Seam-Charm goes to the player who can tell
-   him both wards still stand; walling the breach gives the guest mound; sinking a lifted stone gives what the
-   village can spare. The table's gift is the ability alone. The loosed dead are above a turning spell's reach
+2. *Lifting the stone is dearer, and restraint keeps what lifting risks.* A gift for leaving the wards standing was
+  tried and could not be built: nothing in the form knows a stone was never lifted without an exploit. So the table's
+  gift is the ability alone, sinking a lifted stone gives what the village can spare, and the loosed dead are above a
+  turning spell's reach
    and are said to attack the three people at the pit, any of whom then stays dead; the two takers at Joxhi deal
    only with a stone that came up through the breach.
 3. *The Fenlord is a choice with two prices.* The College's spell is for keeping him; ending him no longer mends
@@ -1419,9 +1415,9 @@ price of the names sunk (the reader who found it wrong was the one who paid it, 
 meant to divide. The deliverability reader did not find every step buildable: all fourteen faults are answered
 here, but by changes no fresh reader has seen, and two of them are new kinds of fault. The Fenlord's choice did
 not split and has been re-priced unread. So the rule is **not met**. A third round must check: that a fresh
-deliverability reader finds the rebuilt SA03 and its rider sound (the Seam-Charm's ending, the takers gated on
-the breach, the dead loosed among people who can die); that restraint and the table now pull against each other
-at Joxhi; that the Fenlord kept is somebody's choice; and that SA05 is followed at a first reading.
+deliverability reader finds the rebuilt SA03 and its rider sound (the takers gated on the breach, the dead loosed
+among people who can die); whether restraint and the table now pull against each other at Joxhi, with restraint still
+paying nothing of its own; that the Fenlord kept is somebody's choice; and that SA05 is followed at a first reading.
 
 ## 6. For the other lines
 
