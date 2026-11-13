@@ -14,11 +14,11 @@ const cell = (p) => `${Math.floor(p[0] / 4096)},${Math.floor(p[1] / 4096)}`;
 // Which ops touch something a need rests on, and how (pure: tested in test/needs.test.mjs).
 export function needChanges(ops, idx) {
   const out = [];
-  const hit = (key, change, what) => {
-    for (const u of idx.get(key) || []) if (!out.some((o) => o.u === u && o.change === change)) out.push({ u, change, what });
+  const hit = (key, change, what, row = null) => {
+    for (const u of idx.get(key) || []) if (!out.some((o) => o.u === u && o.change === change)) out.push({ u, change, what, key, row });
   };
   for (const o of ops) {
-    if (o.op === 'ref.remove') hit(`ref:${o.id}`, 'removed', 'removed from the place');
+    if (o.op === 'ref.remove') hit(`ref:${o.id}`, 'removed', 'removed from the place', o.before);
     else if (o.op === 'ref.move' && o.before?.pos && o.after?.pos) {
       const d = Math.hypot(o.after.pos[0] - o.before.pos[0], o.after.pos[1] - o.before.pos[1]);
       if (d > MOVED_FAR || cell(o.after.pos) !== cell(o.before.pos)) hit(`ref:${o.id}`, 'moved', `moved about ${Math.round(d / 70)} metres`);
@@ -176,14 +176,23 @@ export class Needs {
       const save = 'autosave';   // the change is in the unsaved edits until a named save
       for (const h of hits) {
         const body = h.u.kind === 'use' ? { person: h.u.pid } : { need: h.u.n.seq };
-        const name = h.u.kind === 'use' ? h.u.person.name : h.u.n.thing;
-        try { await api.needChanged(a.place.place_id, { ...body, change: h.change, what: `${name}: ${h.what}`, save }); } catch (e) { a.toast(`Your change stands, but the note for the story was not kept: ${e.message}`, 7000); return; }
+        try { await api.needChanged(a.place.place_id, { ...body, change: h.change, what: `${this.subject(h.key, h.row)}: ${h.what}`, save }); } catch (e) { a.toast(`Your change stands, but the note for the story was not kept: ${e.message}`, 7000); return; }
       }
       a.toast('Your change stands. The story will be changed to fit it.', 5000);
       await this.load(a.place.place_id);
       if (a.panels.name === 'needs') this.panel();
     };
     o.querySelector('[data-undo]').onclick = () => { o.hidden = true; a.log.undo(); };
+  }
+  // what in the place a change touched, in words: a person's name, or a thing's name and kind
+  subject(key, row = null) {
+    const [kind, id] = key.split(/:(.*)/s), a = this.a;
+    if (kind === 'person') return a.model.people.get(id)?.name || this.data?.people?.[id]?.name || 'a person';
+    let r = row?.base ? row : null;
+    if (!r) for (const s of Object.values(a.model.spaces)) r = s.refs.get(id) || r;
+    const b = r ? a.bases.get(r.base) || {} : {};
+    const leads = r?.door?.to_space ? a.spaceInfo?.[r.door.to_space]?.name : null;
+    return leads ? `the door into "${leads}"` : (b.name ? `the ${b.name.toLowerCase()}` : 'a thing');
   }
   // ---------- as the player sees it: the names the game shows ----------
   setNames(on) {
