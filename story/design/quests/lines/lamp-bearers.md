@@ -110,7 +110,7 @@ plain result of the quest form.
 
 | At | The player has | Built by |
 |---|---|---|
-| Wick (LB01 done) | the Lamp's Chest in the Lamp House and the bed beside it; the brass lamp; Old Menas's shelf and Varon's pack, which sell to lamps only | ownership of the chest; the lamp given; one selling line each, gated on a number the first case's ending stores, which a later ending can set back |
+| Wick (LB01 done) | the Lamp's Chest in the Lamp House and the bed beside it; the brass lamp; Old Menas's shelf and Varon's pack, which sell to lamps only | ownership of the chest; the lamp given; one selling line each, offered from the first case's ending; a later ending shuts one by switching the seller for a placement that does not sell |
 | Lamp-Hand (LB03) | the Lamp-Hand's ring, a unique enchanted for Alchemy | a thing given |
 | Lamp-Bearer (LB04) | the Vicecanons' fee for every later finding is 300 gold | fixed gold on the later cases' stages |
 | Long Lamp (LB06) | the long lamp, a unique enchanted for Lockpicking (template: a vanilla amulet); the trading hall's crystal-cutter and the Dunmer Vicecanon's mage sell their best stock to a Long Lamp | a thing given; selling lines gated on the rank |
@@ -272,7 +272,7 @@ can still happen (LB09).
 | The ferryman killed on his landing | his boat-hook, a unique war axe (template: a vanilla axe enchanted to slow), and his purse of 120 gold | his kin, the weir-keepers of Sedgeweir, will not sell to the lamp, and their word in LB05 costs Speech 50 | the weir-keepers; the pit-boss's wife, who sold by his ferry | his death moves the case; a number LB05's lines read |
 | The ferryman sent to the river | his kin's word: the weir-keepers give LB05's lead for nothing, and one of them sells the lamp reed-people's arrows and fish-poison | his boat-hook and his purse | his pole stands in the mud at the landing; the wayhouse-keeper says who she thinks did it | his line: the boat-chest made the player's; at the report, the ferryman switched off and the pole on; a number LB05's lines read |
 | The roll laid on the shelf of the unclaimed dead, in the mortuary | Old Menas's poison cabinet is the player's (reagents and three strong poisons), and he raises the player's Alchemy by 3: the paper is true and nobody's weapon | Asks-Twice's ring; the roll is out of the player's hands for LB09 | Asks-Twice, who greets as a man whose house rests on a shelf he does not keep | using the shelf with the roll held moves a stage: the roll taken, the cabinet made the player's, Alchemy raised |
-| The roll laid in the founder's lamp-niche, in the Lamp House | Asks-Twice burns it and gives his own ring, a unique enchanted for Lockpicking; the house owes the player its name | Varon's pack is shut to the player ("You held it and you fed it to him"); the roll is ash | Varon, who says it to the player's face; the dead of the roll, unnamed again | using the niche with the roll held moves a stage: the roll taken, the ring given, the number Varon's selling line reads set to 0 |
+| The roll laid in the founder's lamp-niche, in the Lamp House | Asks-Twice burns it and gives his own ring, a unique enchanted for Lockpicking; the house owes the player its name | Varon's pack is shut to the player ("You held it and you fed it to him"); the roll is ash | Varon, who says it to the player's face; the dead of the roll, unnamed again | using the niche with the roll held moves a stage: the roll taken, the ring given; at the next word with Old Menas, Varon switched for his placement that does not sell |
 | The roll kept | in LB09 the roll held opens two lines: Keema-Tul can be spoken for without the Speech check, and Varon, given the name, reads the roll out with it | both gifts; Asks-Twice and Varon each ask for it once and are refused | nobody yet | nothing: the roll held gates the later lines |
 
 Every ending gives the rank of Lamp-Bearer and its fee.
@@ -411,7 +411,7 @@ no court and nobody was named. The journal records what was done and does not ru
 |---|---|---|---|---|
 | The name to Waleesh and the west quarter | Keema-Tul's house in the west quarter is the player's (its door unlocked, its chest theirs), since nobody of the quarter will sleep in it; the quarter goes on paying the Lamp House's rent from its crystal dues; the herbalist's and the tanners' best stock | Varon: exiled by the families, uncleared, and his pack with him; the Dunmer traders of the hall refuse the lamp | Varon, gone up the Morrowind road; Keema-Tul, at the weirs or gone down the river; the pond's wall, empty | Waleesh's line, in the meeting house: the door unlocked, the chest made the player's, Keema-Tul switched off at the wall (and on at the weir, if spoken for), Varon switched off in the cage and the house; numbers the two quarters' selling lines read |
 | The name to Varon and the square | the new Vicecanon sets the player's bounty in Stormhold to nothing and the trading hall's best stock opens; Varon gives the first lamp, a unique (template: a vanilla amulet enchanted for Speech, the strongest fixed one) | the Lamp House: its rent was hers, and the lone Dunmer Vicecanon ends the dues that paid it. The door is locked on the bed and the Lamp's Chest; Varon warns the player to empty the chest first. The west quarter's herbalist and tanners shut to the lamp | Asks-Twice, standing in Old Menas's mortuary, where the lamps now work; Keema-Tul, taken by the families | at the report to Asks-Twice in the Lamp House: bounty set to nothing, the amulet given, the trader's second placement switched on, Varon switched from the cage to the house; when the player next speaks to Varon outdoors, the Lamp House door locked and Asks-Twice switched into the mortuary |
-| The name to Asks-Twice, who holds it | Keema-Tul's pass-stone stays the player's: at Fort Gysilla's chain and Archon's customs post a line with the stone held passes the player unsearched and untolled; her fee for the house's findings is paid to the player once more, 500 gold | Varon: he leaves the house, uncaged and unconvinced, and his pack with him; Old Menas shuts his shelf to the lamp | Varon, met once more on the Surkina track, who will not say where he is going | Asks-Twice's line: gold given, Varon switched off in the cage and the house and on at the track, the number Menas's selling line reads set to 0 |
+| The name to Asks-Twice, who holds it | Keema-Tul's pass-stone stays the player's: at Fort Gysilla's chain and Archon's customs post a line with the stone held passes the player unsearched and untolled; her fee for the house's findings is paid to the player once more, 500 gold | Varon: he leaves the house, uncaged and unconvinced, and his pack with him; Old Menas shuts his shelf to the lamp | Varon, met once more on the Surkina track, who will not say where he is going | Asks-Twice's line: gold given, Varon switched off in the cage and on at the track; at the next word with anyone outdoors, Varon off in the house and Old Menas switched for his placement that does not sell |
 | The name to Keema-Tul herself | her brother's medallion stays the player's, a unique (template: a vanilla amulet that muffles and fortifies Sneak), and her word: the player's bounty in Stormhold is set to nothing | the Lamp House: Asks-Twice puts the player out (the faction left: the Lamp's Chest, Menas's shelf and Varon's pack all shut) | the next mothers, at the next pond; Waleesh, who is never told | her line, at the wall: the bounty cleared; at the next word with Asks-Twice, the player put out of the faction and Varon switched out of the cage |
 | Keema-Tul killed | what she carries: her brother's blade, a unique (template: a vanilla ebony dagger with a fixed poison enchantment); the medallion and the stone stay in the player's pack | every fee, gift and door of the four above; a bounty in Stormhold for a Vicecanon's death, by the game's own law, if it is seen | Varon, whom the families exile uncleared; both quarters, with no court between them | her death moves the case; at the report, Varon switched off |
 
@@ -443,8 +443,9 @@ Common to all three.
   switched on anywhere: a line that leads to a second placement of someone is gated on them alive, with its twin
   for them dead.
 - **A gift is given by the stage its giver's own line moves to.** What the hearer of a name gives is given when
-  the name is given; what Asks-Twice gives, at the report. A trader who opens or shuts to the player is one
-  selling line of theirs, gated on a stored number, or a second placement of them that does not sell.
+  the name is given; what Asks-Twice gives, at the report. A trader who opens to the player is one selling line
+  of theirs, offered from the ending that opens it; one who shuts is switched for a second placement of them
+  that carries every other line of theirs and does not sell.
 - **Nobody is switched where the player stands.** Every switch below is made by a line said indoors (the Lamp
   House, the trading hall) about people who stand outdoors or in another room.
 - Every objective has a marker on its person or thing. Journal entries are first person and past tense; they say
@@ -608,10 +609,10 @@ stage 40 "I named Garyn Savani to the reeve, who paid me the village's fee and g
 stage 41 "I named Weelam, a field hand of Vandrel Farm, to the reeve, and said a stranger paid him. The reeve paid half the village's fee." do give-gold 50
 stage 42 "I told the reeve a stranger off the river had the stones pulled to pass a boat, and is gone. The reeve paid nothing for a gone man."
 stage 43 "I told the reeve that Garyn Savani is dead and that I can name nobody living."
-stage 90 completed "I told Asks-Twice I named Garyn Savani." do join lamp, rank lamp 1, give lamp, own housechest, off garyn, on garynowing, off croc, off milva, on milvashut, set lb01.name 1, set lamp.menas 1, set lamp.varon 1
-stage 91 completed "I told Asks-Twice I named Weelam." do join lamp, rank lamp 1, give lamp, own housechest, give gloves, off weelam, on weelamowing, off croc, set lb01.name 2, set lamp.menas 1, set lamp.varon 1
-stage 92 completed "I told Asks-Twice I named a stranger who is gone." do join lamp, rank lamp 1, give lamp, own housechest, skill-up Speech 1, set lb01.name 3, set lamp.menas 1, set lamp.varon 1
-stage 93 completed "I told Asks-Twice that the one I named, or would have named, is dead, and that nobody lays the stones." do join lamp, rank lamp 1, give lamp, own housechest, set lb01.name 4, set lamp.menas 1, set lamp.varon 1
+stage 90 completed "I told Asks-Twice I named Garyn Savani." do join lamp, rank lamp 1, give lamp, own housechest, off garyn, on garynowing, off croc, off milva, on milvashut, set lb01.name 1
+stage 91 completed "I told Asks-Twice I named Weelam." do join lamp, rank lamp 1, give lamp, own housechest, give gloves, off weelam, on weelamowing, off croc, set lb01.name 2
+stage 92 completed "I told Asks-Twice I named a stranger who is gone." do join lamp, rank lamp 1, give lamp, own housechest, skill-up Speech 1, set lb01.name 3
+stage 93 completed "I told Asks-Twice that the one I named, or would have named, is dead, and that nobody lays the stones." do join lamp, rank lamp 1, give lamp, own housechest, set lb01.name 4
 stage 95 failed "Asks-Twice is dead. There is no Lamp House to answer to."
 stage 96 failed "Reeve Mopakuz is dead. Nobody is left in Surkina to give the name to."
 
@@ -659,8 +660,8 @@ line a90w weelam at 90 ask "They have Savani laying her stones." says "it was me
 line a91w weelamowing at 91 ask "Weelam." says "a season for a stone; ask the one who paid me whether his was fair"
 line a91g garyn at 91 ask "The hand is named." says "he is wary: he knows what else the lamp knows"
 line a92c chuna at 92 ask "The causeway?" says "she pays for her own stones"
-line msell menas at 90-93 ask "What is on your shelf?" if number lamp.menas = 1 else "Nothing, for you." says "he sells what an alchemist needs, to lamps only"
-line vsell varon at 90-93 ask "What is in the pack?" if number lamp.varon = 1 else "Nothing I would hand you." says "he sells picks, oil and a lamp's small tools"
+line msell menas at 90-93 ask "What is on your shelf?" says "he sells what an alchemist needs, to lamps only"
+line vsell varon at 90-93 ask "What is in the pack?" says "he sells picks, oil and a lamp's small tools"
 
 use stones from 20 -> 25
 must-live keeper fails 95
@@ -691,7 +692,7 @@ the fee, and Vandrel's is a hand short. A gone man lays nothing, and the village
 | The named one dead (93) | the rank and what comes with it, and nothing more | everything above | Chuna, as above | at 93: the rank only |
 
 Every completed ending gives the rank of Wick, the brass lamp and the Lamp's Chest, and opens Old Menas's shelf
-and Varon's pack (each a selling line gated on a number the ending stores). A player who takes only what pays
+and Varon's pack (each a selling line offered from any completed ending). A player who takes only what pays
 has three different things to weigh: a purse and a charm at the price of the village's only food stall, a
 thief's tool for half the purse, or a talker's skill for no purse at all.
 
@@ -875,6 +876,9 @@ person galoscaged at arch off "Galos"
 person galosowing at square off "Galos"
 person gristle at dunmerhouses level 14 "Gristle"
 person stonecough at smelter "Stone-Cough"
+person menas at mortuary "Old Menas"
+person menasshut at mortuary off "Old Menas"
+person varonshut at lamphouse off "Varon Sedrys"
 
 thing nest at square "Empty Nest"
 thing galoskey on gristle "Key to Galos's Room"
@@ -897,8 +901,8 @@ stage 27 "Gristle let me unlock the door of Galos's room." do unlock galosdoor
 stage 28 "Galos told me he picked something up that night, and to go and see whose it is. He told me how the back shutter of his room lifts, and gave me leave of his chest." do unlock shutter, own galoschest
 stage 30 "Galos told me the flute is Shuxal's: he saw the egg-tender go out by the west arch at the midnight trimming with a basket, and it fell from her neck."
 stage 35 "Shuxal the egg-tender told me she gave the clutch away herself, to be carried to the Shadowscales' school at Archon, and that she was told to by one she had no right to refuse."
-stage 40 "I named Galos to Vicecanon Hleran and gave him the flute from Galos's room. Galos stands in the families' cage under the arch until Hleran rules." do take flute, give-gold 300, off galos, on galoscaged, off gristle, set lamp.menas 0
-stage 42 "I named Shuxal the egg-tender to Vicecanon Keema-Tul and gave her the flute. She paid me, gave me three of the pond's sap draughts, and said the square will be told the clutch sank." do take flute, give-gold 200, give sapdraught 3, set lamp.varon 0
+stage 40 "I named Galos to Vicecanon Hleran and gave him the flute from Galos's room. Galos stands in the families' cage under the arch until Hleran rules." do take flute, give-gold 300, off galos, on galoscaged, off gristle, off menas, on menasshut
+stage 42 "I named Shuxal the egg-tender to Vicecanon Keema-Tul and gave her the flute. She paid me, gave me three of the pond's sap draughts, and said the square will be told the clutch sank." do take flute, give-gold 200, give sapdraught 3, off varon, on varonshut
 stage 43 completed "I told Asks-Twice I could give no name." do off galos, off gristle, on satchel, on urn, set lb02.name 3
 stage 44 "I told Waleesh, at her tanning rack, that Shuxal gave the clutch away, and put the flute in her hand. She gave me her dead mate's bracers." do take flute, give bracers
 stage 90 completed "I told Asks-Twice I named Galos. Hleran has ruled: Galos is let out of the cage to trim the square's lamps for a year, unpaid." do give necklace, off galoscaged, on galosowing, set lb02.name 1
@@ -948,10 +952,11 @@ line t42 keeper at 42 ask "I named Shuxal, and the square will be told the clutc
 line t44 keeper at 44 ask "I gave Shuxal's name to the mothers." -> 94 says "you gave a name to someone who did not send for the lamp; I have nothing for that, and I will not say it was false"
 line a90s shuxal at 90 ask "Shuxal." if done LB02 35 says "I asked you for one thing"
 line a90v varon at 90-91 ask "Say it." says "you caged the wrong man with a true thing"
+line a90m menasshut at 90-91 ask "What is on your shelf?" says "nothing, for the lamp who caged Galos; the dead he will still read, at his price"
 line a90h hleran at 90-91 ask "Vicecanon." says "he speaks as a man who was made to do it"
 line a90o galosowing at 90 ask "Galos." says "a year for a flute I picked up"
 line a92g galos at 92-94 ask "Galos." says "a nod he does not explain"
-line a92v varon at 92 ask "She has the flute." says "we found it and she drowned it; remember that you watched; I am going to see where that boat went"
+line a92v varonshut at 92 ask "She has the flute." says "we found it and she drowned it; remember that you watched; I am going to see where that boat went"
 line a92w waleesh at 92 ask "Your eggs did not sink." says "she always knew it; who told Shuxal to?"
 line a94k keema at 94 ask "Vicecanon." says "you gave a name in the street, lamp; I have a quarter to quiet"
 line a43t tuleem at 43 ask "What happened to the lamp-lighter?" says "found at the foot of his own lamp at dawn; nobody saw; Old Menas has him"
@@ -1004,8 +1009,8 @@ gives you nothing. Come back with nothing and the only one left who will deal wi
 
 | Outcome | What the player gains in play | What the player loses or can no longer get | Who pays, and where the player sees it | Form results |
 |---|---|---|---|---|
-| Galos named (90, 91) | 300 gold from Hleran, the largest purse of the early cases; Asks-Twice's necklace, enchanted for Speech | Old Menas's shelf is shut to the player for good (the reading of the dead that he sells in later cases stays, at his price) | Galos, in the cage under the arch, who tells the player whose flute it was, too late; then at his post for a year, unpaid | at 40: the flute taken, 300 gold, Galos and Gristle switched from the trading hall, the number Menas's selling line reads set to 0; at 90: the necklace, Galos switched from the cage to his post |
-| Shuxal named to Keema-Tul (92) | 200 gold and three pond-sap draughts from Keema-Tul; the necklace | Varon's pack is shut to the player for good ("Remember that you watched"); the flute, the one thing that says her name, is Keema-Tul's now | Shuxal, gone from the nests to an Owing at the weirs (met at Sedgeweir in LB05); Waleesh, who is told her eggs sank | at 42: the flute taken, gold, the draughts, the number Varon's selling line reads set to 0; at 92: the necklace, Shuxal switched off |
+| Galos named (90, 91) | 300 gold from Hleran, the largest purse of the early cases; Asks-Twice's necklace, enchanted for Speech | Old Menas's shelf is shut to the player for good (the reading of the dead that he sells in later cases stays, at his price) | Galos, in the cage under the arch, who tells the player whose flute it was, too late; then at his post for a year, unpaid | at 40: the flute taken, 300 gold, Galos and Gristle switched from the trading hall, Old Menas switched for his placement that does not sell; at 90: the necklace, Galos switched from the cage to his post |
+| Shuxal named to Keema-Tul (92) | 200 gold and three pond-sap draughts from Keema-Tul; the necklace | Varon's pack is shut to the player for good ("Remember that you watched"); the flute, the one thing that says her name, is Keema-Tul's now | Shuxal, gone from the nests to an Owing at the weirs (met at Sedgeweir in LB05); Waleesh, who is told her eggs sank | at 42: the flute taken, gold, the draughts, Varon switched for his placement that does not sell; at 92: the necklace, Shuxal switched off |
 | Shuxal named to the mothers (94) | Waleesh's bracers, a unique enchanted for one-handed blows; both shelves stay open | both Vicecanons' silver and Asks-Twice's necklace: the house gives nothing for a name nobody sent for | Shuxal, put out of the quarter by the mothers before nightfall; Keema-Tul, with a quarter to quiet, who says so | at 44: the flute taken, the bracers; at 94: Shuxal switched off |
 | No name (43) | Stone-Cough deals with a lamp who handed nobody to a Vicecanon: he is placed as a fence, the only one in Stormhold, and his selling line opens | both Vicecanons' silver, the necklace, the bracers and the draughts | Galos: his satchel at the foot of his post and his urn on Old Menas's shelf | at 43: Galos and Gristle switched off, the satchel and the urn on, from the Lamp House; Stone-Cough's selling line is offered at this ending |
 
