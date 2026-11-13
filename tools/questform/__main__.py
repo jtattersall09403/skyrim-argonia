@@ -7,6 +7,8 @@
     python3 -m tools.questform gate                              # make check: every staged record against the owed list
     python3 -m tools.questform owed --write                      # rewrite the listed quests' terms (never adds one)
     python3 -m tools.questform diff <designed> <built>           # every difference, designed form against built
+    python3 -m tools.questform sketch <story.md|file.sketch> [--quest ID] [--no-walk] [--paths]
+        # an outline's sketch: the rules a quest can meet before its places are built, then the reach walk
 """
 from __future__ import annotations
 
@@ -124,7 +126,15 @@ def main(argv: list[str] | None = None) -> int:
     df = sub.add_parser("diff")
     df.add_argument("designed")
     df.add_argument("built")
+    sk = sub.add_parser("sketch")
+    sk.add_argument("file")
+    sk.add_argument("--quest")
+    sk.add_argument("--no-walk", action="store_true", help="skip the reach walk (the rules only)")
+    sk.add_argument("--paths", action="store_true", help="print the walk's shortest path to each ending")
     a = ap.parse_args(argv)
+    if a.cmd == "sketch":
+        from tools.questform import sketch
+        return sketch.main(Path(a.file), a.quest, not a.no_walk, a.paths)
     if a.cmd == "diff":
         from tools.questform import diff
         return diff.main(a.designed, a.built)

@@ -12,6 +12,8 @@ owner asked that the overall story of each major faction be written by Fable. Yo
 the line document's parts including "What each quest needs of its places", the bar, reading on paper, handing on).
 
 **Read with it, whole:**
+- `.claude/skills/story-line/buildable.md`, before you write any outline: what the game can know and do, the shape
+  that always works, the patterns, and the sketch each full outline carries.
 - `.claude/skills/quest-system/SKILL.md`: what a quest of ours can be made of (the ceiling), and how truth of the
   built world is kept. The places of this world are not built yet, so a story names a place by what the world's data
   says it is and lists anything else it needs as a need of that place.
@@ -49,7 +51,10 @@ by the world's fixed bands, a mid-line turn, a patron with something to hide, a 
 place); **the first two or three quests as full outlines** (where the province plan puts your line's opening in the
 second slice, those quests) and every later quest at arc level with its place, what the player does, the skills and
 what it carries on; the table of step, skill and ceiling block for the full outlines, with stage tables that only
-climb and use only what the quest form holds; "What each quest needs of its places"; then the reading on paper.
+climb and use only what the quest form holds; under each full outline's stage table its sketch, a fenced `sketch`
+block (buildable.md §4); "What each quest needs of its places"; then the reading on paper. Run
+`python3 -m tools.questform sketch story/design/quests/lines/<your file>.md` on every full outline and change the
+outline and its sketch together until it passes, before any reader sees the document.
 
 **The hooks in the places' data are raw material, not canon** (owner, 2026-11-13: they were rough and "not based on
 that much"). Take one, change it or drop it, wherever that makes the story better; where you change or drop a hook,
@@ -66,8 +71,9 @@ outline sends the player to a place or thing, say in the outline how they come t
 quest by quest and the later arc in summary as a player would meet them, never the hidden truth ahead of time: two
 players of different temperaments, one who loves Elder Scrolls lore and one who is impatient to be doing something,
 who say at each step what they think is going on, whom they trust, what they expect and what they would choose, then
-give an open take (was it exciting, did they care, what dragged, would they join this faction); and one
-deliverability reader with the ceiling. All read one version; gather every finding; make one coherent set of changes
+give an open take (was it exciting, did they care, what dragged, would they join this faction); and, once `sketch`
+passes, one deliverability reader given the ceiling, buildable.md and `sketch`'s closing lines, reading for what
+`sketch` cannot see (buildable.md §7). All read one version; gather every finding; make one coherent set of changes
 that answers them together inside the ceiling; record what was found, what changed and what the next round must
 check. Personas honest and a little hard to please, not harsh.
 
@@ -84,5 +90,5 @@ scratch in a folder of your own and delete only that.
 
 **Return** (25 lines at most): worktree path and branch, the sha; the faction's hook in two sentences; the arc in a
 line per quest; the full outlines in two lines each (what the player does, the skills, the moment they would
-retell); the skill leaning; what the readers said in a line each and what you changed as one set; the needs of
-places in brief; what you need of the other lines.
+retell); the skill leaning; the last three lines of `sketch`'s output on your file; what the readers said in a line
+each and what you changed as one set; the needs of places in brief; what you need of the other lines.

@@ -29,7 +29,8 @@ It is a closed list, and the form has no field for anything outside it:
 | A person speaking first | one person per quest, standing a step from where the player arrives, with a marker on them and the same line open as a topic |
 | The world per quest | people placed standing where they are needed, at fixed levels; things on a measured surface or in a container (with a lock, a key and an owner where the play needs them); doors locked or unlocked |
 
-Nothing else exists: no stage moved by walking into an area, the clock, waiting or being seen; no scene; nobody who
+In a quest's record a line only moves a stage, and the stage it moves to does everything else
+([buildable.md](../story-line/buildable.md) §2). Nothing else exists: no stage moved by walking into an area, the clock, waiting or being seen; no scene; nobody who
 walks, follows, leads or keeps a timetable for a quest; nothing appearing, vanishing or moving where the player can
 see it; no music or weather; nothing built or moved in the world; no script of a quest's own. A step that seems to
 need one is rewritten: [principles/general.md](../quest-write/principles/general.md) "What a quest may use" gives
@@ -70,7 +71,7 @@ only what the player has just done; nothing is said that the game's systems do n
 
 | # | Step | Skill | Leaves behind |
 |---|---|---|---|
-| 1 | The story of the main quest or a faction's line | [story-line](../story-line/SKILL.md) | a line story read on paper: each quest an outline |
+| 1 | The story of the main quest or a faction's line | [story-line](../story-line/SKILL.md) | a line story read on paper: each quest an outline with its sketch, passing `python3 -m tools.questform sketch` |
 | 2 | Each quest as a record that compiles to the form | [quest-write](../quest-write/SKILL.md) | the record in the database; its form passing `check` and `reach` |
 | 3 | A fresh review of the record | [quest-review](../quest-review/SKILL.md) | findings; nothing blocking left |
 | 4 | The designed quest played on paper | [quest-playtest](../quest-playtest/SKILL.md), moment 1 | runs kept; findings answered in the record |

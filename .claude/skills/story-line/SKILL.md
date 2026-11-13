@@ -35,6 +35,8 @@ story.
   things it can be built with. A quest is set in a place that exists, or is recorded to be built, and reads as what
   the story calls it.
 - The line's skill leaning: its key in [profiles.yaml](../quest-write/profiles.yaml).
+- [buildable.md](buildable.md), whole, before any outline is written: what the game can know and do, the shape that
+  always works, the patterns, and the sketch every full outline carries.
 
 ## 2. What to write
 
@@ -62,14 +64,18 @@ their form keys.
    - *the ways through*, each by named skills, each able to go wrong as Skyrim's own systems make it go wrong (a theft
      seen, a pickpocket bungled, a fight lost, a check failed with its own refusal and another way left open);
    - *the stages*: what moves each, its journal gist, its objective and the marker's target; one working stage where
-     the ways can be done in any order, results held as stored numbers, things held or people dead; the order in
-     which ending lines are tried where two results are true at once;
+     the ways can be done in any order, each way's result a thing held, a person dead or the stage that finishes
+     the step; the order in which ending lines are tried where two results are true at once
+     ([buildable.md](buildable.md) §3);
    - *the choice*, each side argued by the person it concerns with a reason of their own, and what the other side
      winning would cost;
    - *the endings and what each leaves*, where the player will see it, and the fixed rewards;
    - *the moment a player retells*;
    - *a table of step, skill and ceiling block*: every step's mechanism named from quest-system's list, so the quest
-     writer never has to invent one.
+     writer never has to invent one;
+   - *its sketch*: the stage table as the quest form will hold it, a fenced `sketch` block under the stage table
+     ([buildable.md](buildable.md) §4), passing `python3 -m tools.questform sketch <the line's file>` before the
+     document is read on paper.
 4. **What each quest needs of its places.** A table per place: every physical thing an outline relies on that the
    world's data does not already hold (a house with a door that locks, a chest in it, a shrine, a pen, a wreck, a
    person's post), named plainly by what a player would call it on sight, with the quest that needs it and what the
@@ -125,18 +131,23 @@ converge" says.
    choice is real when each option was some reader's own choice for that reader's own reasons, or at least when
    every option's case can be made without strain; an option nobody chose and nobody could argue is not an option.
    Even then this is a rehearsal: the owner's reading is the test.
-3. **Start the deliverability reader** on the same version: a fresh agent given quest-system, the
-   [quest form](../../../docs/design/quest-form.md) and the outlines in full. It checks every step against the
-   ceiling: each stage moved by an allowed trigger; the ways through done in any order; a death at any moment; a
-   thing taken early; a journal entry that claims what the player might not have done; a dead end; a person who must
-   hand over a thing they do not hold.
+3. **Start the deliverability reader** once `sketch` passes on the same version: a fresh agent given quest-system,
+   [buildable.md](buildable.md) and the outlines in full with their sketches and `sketch`'s closing lines. It is
+   told what `sketch` has proved: every stage moved by an allowed trigger and only upward, a way out of every stage,
+   every gate and result one the game has, every objective's marker on, hand-ins gated on what they take, switches
+   made away from the player, a refusal for every check, nobody unnamed whom the quest cannot lose, takes and deaths
+   early answered, and every stage and ending reached by an able and a new character after each ending before it.
+   It reads for what `sketch` cannot see (buildable.md §7): that the sketch says what the outline says, journal
+   entries true of every way, the needs of places, a hostile band kept from the speaker at its edge, and one story
+   told by stand-ins, choices and switches.
 4. **Gather every finding**, then make one set of changes that answers them together, written into the document, and
    record the round in section 4. A change for one reader's taste alone is not made; readers splitting on a conflict
    meant to be ambiguous is the aim, not a finding.
 5. **Next round, fresh readers** on the changed version.
 
 **Stop** when a round can retell the story, wants the next chapter, splits on the conflicts meant to be ambiguous,
-the deliverability reader finds every step buildable, and nothing new is raised that the author agrees with.
+`sketch` passes, the deliverability reader finds every step buildable, and nothing new is raised that the author
+agrees with.
 
 ## 5. Hand on
 
@@ -146,6 +157,6 @@ reads the needs tables (so keep each one a regular table under its place's bold 
 need it repeats or dismissed with its reason, and judged from the player's side (`place-build`, section 6). Where a
 place is already built, a need it does not meet is answered by changing the story to what the place has.
 
-Each full outline goes to [quest-write](../quest-write/SKILL.md); the record's `foundation` names the line document
-and the quest's section. A quest writer who finds a gap asks the story's author, who answers in the document; the
-quest writer never invents a person, place, truth or way through the outline does not give.
+Each full outline goes to [quest-write](../quest-write/SKILL.md) with its sketch, which the record follows; the
+record's `foundation` names the line document and the quest's section. A quest writer who finds a gap asks the
+story's author, who answers in the document; the quest writer never invents a person, place, truth or way through the outline does not give.
