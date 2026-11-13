@@ -74,8 +74,8 @@ their form keys.
    - *a table of step, skill and ceiling block*: every step's mechanism named from quest-system's list, so the quest
      writer never has to invent one;
    - *its sketch*: the stage table as the quest form will hold it, a fenced `sketch` block under the stage table
-     ([buildable.md](buildable.md) §4), passing `python3 -m tools.questform sketch <the line's file>` before the
-     document is read on paper.
+     ([buildable.md](buildable.md) §4), passing `python3 -m tools.questform sketch <the line's file>`, and then checked by its writer against
+     [buildable.md](buildable.md) §3 and §7, line by line, before the document is read on paper.
 4. **What each quest needs of its places.** A table per place: every physical thing an outline relies on that the
    world's data does not already hold (a house with a door that locks, a chest in it, a shrine, a pen, a wreck, a
    person's post), named plainly by what a player would call it on sight, with the quest that needs it and what the
