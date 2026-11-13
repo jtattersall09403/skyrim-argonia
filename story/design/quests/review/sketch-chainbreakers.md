@@ -42,73 +42,73 @@ book's answer became stage 70. `sketch` names each of them on the outline's line
 
 ## Every fault
 
-- line 139: BC01 `take-unheld`: stage 30 takes falseleaf from the player and is reached by take.herleaf.10-30, which does not ask that it be held: give each way its own stage, or gate the line on holding it
-- line 140: BC01 `take-unheld`: stage 40 takes gold from the player and is reached by persuaded@10, which does not ask that it be held: give each way its own stage, or gate the line on holding it (and 2 more like it from this line)
-- line 142: BC01 `take-unheld`: stage 90 takes keeperleaf from the player and is reached by early@0, which does not ask that it be held: give each way its own stage, or gate the line on holding it
-- line 144: BC01 `take-unheld`: stage 92 takes herleaf from the player and is reached by cut@55, which does not ask that it be held: give each way its own stage, or gate the line on holding it (and 1 more like it from this line)
-- line 160: BC01 `asked-is-target`: line persuaded@10 moves the quest at stage 10 and no objective active there targets its speaker hulm
-- line 160: BC01 `completes-on-target`: objective 10 is completed by line persuaded@10, whose speaker hulm is not one of its targets
-- line 160: BC01 `line-result`: line persuaded: a line only moves a stage (`-> <stage>`); what it gives, takes, sets, switches or unlocks is that stage's `do`
-- line 161: BC01 `asked-is-target`: line leaf@10 moves the quest at stage 10 and no objective active there targets its speaker hulm
-- line 161: BC01 `completes-on-target`: objective 10 is completed by line leaf@10, whose speaker hulm is not one of its targets
-- line 161: BC01 `line-result`: line leaf: a line only moves a stage (`-> <stage>`); what it gives, takes, sets, switches or unlocks is that stage's `do`
-- line 162: BC01 `asked-is-target`: line purse@10 moves the quest at stage 10 and no objective active there targets its speaker hulm
-- line 162: BC01 `completes-on-target`: objective 10 is completed by line purse@10, whose speaker hulm is not one of its targets
-- line 162: BC01 `line-result`: line purse: a line only moves a stage (`-> <stage>`); what it gives, takes, sets, switches or unlocks is that stage's `do`
-- line 162: BC01 `refusal`: line purse@10: its check of skill or gold has no refusal: add `else "..."`, what the speaker says when it fails
-- line 163: BC01 `line-result`: line look: a line only moves a stage (`-> <stage>`); what it gives, takes, sets, switches or unlocks is that stage's `do`
-- line 164: BC01 `line-result`: line pay: a line only moves a stage (`-> <stage>`); what it gives, takes, sets, switches or unlocks is that stage's `do`
-- line 165: BC01 `line-hostile`: line through: a line cannot turn its speaker hostile: a person is placed hostile, or the player starts the fight (mark the death `choice`)
-- line 166: BC01 `asked-is-target`: line openbought@20 moves the quest at stage 20 and no objective active there targets its speaker rows (and 1 more like it from this line)
-- line 166: BC01 `completes-on-target`: objective 20 is completed by line openbought@20, whose speaker rows is not one of its targets (and 1 more like it from this line)
-- line 166: BC01 `number-set`: line openbought@10 reads the number bc01.bought, which no stage of this file sets (and 2 more like it from this line)
-- line 167: BC01 `asked-is-target`: line opendead@20 moves the quest at stage 20 and no objective active there targets its speaker rows (and 1 more like it from this line)
-- line 167: BC01 `completes-on-target`: objective 20 is completed by line opendead@20, whose speaker rows is not one of its targets (and 1 more like it from this line)
-- line 173: BC01 `asked-is-target`: trigger take.herleaf.10-30: herleaf is to be taken at stage 10 and no objective active there targets it
-- line 173: BC01 `completes-on-target`: objective 10 is completed by trigger take.herleaf.10-30, which concerns none of its targets
-- line 194: BC02 `body`: person reckoner: nobody is placed dead: a container that is theirs (a satchel, a strongbox) holds what their body would, or they are alive and killed
-- line 202: BC02 `take-unheld`: stage 35 takes leaves from the player and is reached by lose@20, which does not ask that it be held: give each way its own stage, or gate the line on holding it
-- line 207: BC02 `take-unheld`: stage 91 takes leaves from the player and is reached by rep1@41, which does not ask that it be held: give each way its own stage, or gate the line on holding it
-- line 208: BC02 `take-unheld`: stage 92 takes leaves from the player and is reached by rep2@42, which does not ask that it be held: give each way its own stage, or gate the line on holding it
-- line 209: BC02 `take-unheld`: stage 93 takes leaves from the player and is reached by rep3@43, which does not ask that it be held: give each way its own stage, or gate the line on holding it
-- line 226: BC02 `line-result`: line potion: a line only moves a stage (`-> <stage>`); what it gives, takes, sets, switches or unlocks is that stage's `do`
-- line 228: BC02 `completes-on-target`: objective 20 is completed by line lose@20, whose speaker tsaxi is not one of its targets (and 1 more like it from this line)
-- line 229: BC02 `completes-on-target`: objective 20 is completed by line losegold@20, whose speaker tsaxi is not one of its targets (and 1 more like it from this line)
-- line 230: BC02 `completes-on-target`: objective 20 is completed by line loseleaves@20, whose speaker tsaxi is not one of its targets (and 1 more like it from this line)
-- line 246: BC02 `asked-is-target`: trigger take.leaves.10-30: leaves is to be taken at stage 10 and no objective active there targets it
-- line 246: BC02 `completes-on-target`: objective 10 is completed by trigger take.leaves.10-30, which concerns none of its targets
-- line 280: BC03 `take-unheld`: stage 60 takes tokens from the player and is reached by void@20, which does not ask that it be held: give each way its own stage, or gate the line on holding it
-- line 282: BC03 `take-unheld`: stage 62 takes list from the player and is reached by sail@20, which does not ask that it be held: give each way its own stage, or gate the line on holding it
-- line 283: BC03 `take-unheld`: stage 90 takes book from the player and is reached by r1@60, which does not ask that it be held: give each way its own stage, or gate the line on holding it
-- line 284: BC03 `take-unheld`: stage 91 takes book from the player and is reached by r2@61, which does not ask that it be held: give each way its own stage, or gate the line on holding it
-- line 285: BC03 `take-unheld`: stage 92 takes book from the player and is reached by r3@62, which does not ask that it be held: give each way its own stage, or gate the line on holding it
-- line 296: BC03 `line-result`: line unbar: a line only moves a stage (`-> <stage>`); what it gives, takes, sets, switches or unlocks is that stage's `do`
-- line 297: BC03 `line-result`: line unbarpay: a line only moves a stage (`-> <stage>`); what it gives, takes, sets, switches or unlocks is that stage's `do`
-- line 298: BC03 `line-result`: line release: a line only moves a stage (`-> <stage>`); what it gives, takes, sets, switches or unlocks is that stage's `do`
-- line 299: BC03 `line-result`: line releasepay: a line only moves a stage (`-> <stage>`); what it gives, takes, sets, switches or unlocks is that stage's `do`
-- line 300: BC03 `line-result`: line hire: a line only moves a stage (`-> <stage>`); what it gives, takes, sets, switches or unlocks is that stage's `do`
-- line 301: BC03 `line-result`: line hirepay: a line only moves a stage (`-> <stage>`); what it gives, takes, sets, switches or unlocks is that stage's `do`
-- line 302: BC03 `line-hostile`: line done: a line cannot turn its speaker hostile: a person is placed hostile, or the player starts the fight (mark the death `choice`)
-- line 304: BC03 `asked-is-target`: line tokens@20 moves the quest at stage 20 and no objective active there targets its speaker rope
-- line 304: BC03 `completes-on-target`: objective 20 is completed by line tokens@20, whose speaker rope is not one of its targets (and 2 more like it from this line)
-- line 305: BC03 `asked-is-target`: line released@20 moves the quest at stage 20 and no objective active there targets its speaker rope
-- line 305: BC03 `completes-on-target`: objective 20 is completed by line released@20, whose speaker rope is not one of its targets (and 2 more like it from this line)
-- line 305: BC03 `number-set`: line released@20 reads the number bc03.released, which no stage of this file sets (and 1 more like it from this line)
-- line 306: BC03 `asked-is-target`: line void@20 moves the quest at stage 20 and no objective active there targets its speaker rope
-- line 306: BC03 `completes-on-target`: objective 20 is completed by line void@20, whose speaker rope is not one of its targets (and 2 more like it from this line)
-- line 306: BC03 `number-set`: line void@20 reads the number bc03.void, which no stage of this file sets (and 1 more like it from this line)
-- line 307: BC03 `asked-is-target`: line voiddead@20 moves the quest at stage 20 and no objective active there targets its speaker rope
-- line 307: BC03 `completes-on-target`: objective 20 is completed by line voiddead@20, whose speaker rope is not one of its targets (and 2 more like it from this line)
-- line 308: BC03 `asked-is-target`: line sail@20 moves the quest at stage 20 and no objective active there targets its speaker rope
-- line 308: BC03 `completes-on-target`: objective 20 is completed by line sail@20, whose speaker rope is not one of its targets (and 2 more like it from this line)
-- line 308: BC03 `number-set`: line sail@20 reads the number bc03.void, which no stage of this file sets (and 7 more like it from this line)
-- line 309: BC03 `asked-is-target`: line saillist@20 moves the quest at stage 20 and no objective active there targets its speaker rope
-- line 309: BC03 `completes-on-target`: objective 20 is completed by line saillist@20, whose speaker rope is not one of its targets (and 2 more like it from this line)
-- line 309: BC03 `number-set`: line saillist@20 reads the number bc03.void, which no stage of this file sets (and 3 more like it from this line)
-- line 313: BC03 `line-result`: line yourbook: a line only moves a stage (`-> <stage>`); what it gives, takes, sets, switches or unlocks is that stage's `do`
-- line 314: BC03 `line-result`: line wrote: a line only moves a stage (`-> <stage>`); what it gives, takes, sets, switches or unlocks is that stage's `do`
-- line 316: BC03 `asked-is-target`: trigger take.tokens.10-30: tokens is to be taken at stage 10 and no objective active there targets it
-- line 316: BC03 `completes-on-target`: objective 10 is completed by trigger take.tokens.10-30, which concerns none of its targets
+- line 140: BC01 `take-unheld`: stage 30 takes falseleaf from the player and is reached by take.herleaf.10-30, which does not ask that it be held: give each way its own stage, or gate the line on holding it
+- line 141: BC01 `take-unheld`: stage 40 takes gold from the player and is reached by persuaded@10, which does not ask that it be held: give each way its own stage, or gate the line on holding it (and 2 more like it from this line)
+- line 143: BC01 `take-unheld`: stage 90 takes keeperleaf from the player and is reached by early@0, which does not ask that it be held: give each way its own stage, or gate the line on holding it
+- line 145: BC01 `take-unheld`: stage 92 takes herleaf from the player and is reached by cut@55, which does not ask that it be held: give each way its own stage, or gate the line on holding it (and 1 more like it from this line)
+- line 161: BC01 `asked-is-target`: line persuaded@10 moves the quest at stage 10 and no objective active there targets its speaker hulm
+- line 161: BC01 `completes-on-target`: objective 10 is completed by line persuaded@10, whose speaker hulm is not one of its targets
+- line 161: BC01 `line-result`: line persuaded: a line only moves a stage (`-> <stage>`); what it gives, takes, sets, switches or unlocks is that stage's `do`
+- line 162: BC01 `asked-is-target`: line leaf@10 moves the quest at stage 10 and no objective active there targets its speaker hulm
+- line 162: BC01 `completes-on-target`: objective 10 is completed by line leaf@10, whose speaker hulm is not one of its targets
+- line 162: BC01 `line-result`: line leaf: a line only moves a stage (`-> <stage>`); what it gives, takes, sets, switches or unlocks is that stage's `do`
+- line 163: BC01 `asked-is-target`: line purse@10 moves the quest at stage 10 and no objective active there targets its speaker hulm
+- line 163: BC01 `completes-on-target`: objective 10 is completed by line purse@10, whose speaker hulm is not one of its targets
+- line 163: BC01 `line-result`: line purse: a line only moves a stage (`-> <stage>`); what it gives, takes, sets, switches or unlocks is that stage's `do`
+- line 163: BC01 `refusal`: line purse@10: its check of skill or gold has no refusal: add `else "..."`, what the speaker says when it fails
+- line 164: BC01 `line-result`: line look: a line only moves a stage (`-> <stage>`); what it gives, takes, sets, switches or unlocks is that stage's `do`
+- line 165: BC01 `line-result`: line pay: a line only moves a stage (`-> <stage>`); what it gives, takes, sets, switches or unlocks is that stage's `do`
+- line 166: BC01 `line-hostile`: line through: a line cannot turn its speaker hostile: a person is placed hostile, or the player starts the fight (mark the death `choice`)
+- line 167: BC01 `asked-is-target`: line openbought@20 moves the quest at stage 20 and no objective active there targets its speaker rows (and 1 more like it from this line)
+- line 167: BC01 `completes-on-target`: objective 20 is completed by line openbought@20, whose speaker rows is not one of its targets (and 1 more like it from this line)
+- line 167: BC01 `number-set`: line openbought@10 reads the number bc01.bought, which no stage of this file sets (and 2 more like it from this line)
+- line 168: BC01 `asked-is-target`: line opendead@20 moves the quest at stage 20 and no objective active there targets its speaker rows (and 1 more like it from this line)
+- line 168: BC01 `completes-on-target`: objective 20 is completed by line opendead@20, whose speaker rows is not one of its targets (and 1 more like it from this line)
+- line 174: BC01 `asked-is-target`: trigger take.herleaf.10-30: herleaf is to be taken at stage 10 and no objective active there targets it
+- line 174: BC01 `completes-on-target`: objective 10 is completed by trigger take.herleaf.10-30, which concerns none of its targets
+- line 195: BC02 `body`: person reckoner: nobody is placed dead: a container that is theirs (a satchel, a strongbox) holds what their body would, or they are alive and killed
+- line 203: BC02 `take-unheld`: stage 35 takes leaves from the player and is reached by lose@20, which does not ask that it be held: give each way its own stage, or gate the line on holding it
+- line 208: BC02 `take-unheld`: stage 91 takes leaves from the player and is reached by rep1@41, which does not ask that it be held: give each way its own stage, or gate the line on holding it
+- line 209: BC02 `take-unheld`: stage 92 takes leaves from the player and is reached by rep2@42, which does not ask that it be held: give each way its own stage, or gate the line on holding it
+- line 210: BC02 `take-unheld`: stage 93 takes leaves from the player and is reached by rep3@43, which does not ask that it be held: give each way its own stage, or gate the line on holding it
+- line 227: BC02 `line-result`: line potion: a line only moves a stage (`-> <stage>`); what it gives, takes, sets, switches or unlocks is that stage's `do`
+- line 229: BC02 `completes-on-target`: objective 20 is completed by line lose@20, whose speaker tsaxi is not one of its targets (and 1 more like it from this line)
+- line 230: BC02 `completes-on-target`: objective 20 is completed by line losegold@20, whose speaker tsaxi is not one of its targets (and 1 more like it from this line)
+- line 231: BC02 `completes-on-target`: objective 20 is completed by line loseleaves@20, whose speaker tsaxi is not one of its targets (and 1 more like it from this line)
+- line 247: BC02 `asked-is-target`: trigger take.leaves.10-30: leaves is to be taken at stage 10 and no objective active there targets it
+- line 247: BC02 `completes-on-target`: objective 10 is completed by trigger take.leaves.10-30, which concerns none of its targets
+- line 281: BC03 `take-unheld`: stage 60 takes tokens from the player and is reached by void@20, which does not ask that it be held: give each way its own stage, or gate the line on holding it
+- line 283: BC03 `take-unheld`: stage 62 takes list from the player and is reached by sail@20, which does not ask that it be held: give each way its own stage, or gate the line on holding it
+- line 284: BC03 `take-unheld`: stage 90 takes book from the player and is reached by r1@60, which does not ask that it be held: give each way its own stage, or gate the line on holding it
+- line 285: BC03 `take-unheld`: stage 91 takes book from the player and is reached by r2@61, which does not ask that it be held: give each way its own stage, or gate the line on holding it
+- line 286: BC03 `take-unheld`: stage 92 takes book from the player and is reached by r3@62, which does not ask that it be held: give each way its own stage, or gate the line on holding it
+- line 297: BC03 `line-result`: line unbar: a line only moves a stage (`-> <stage>`); what it gives, takes, sets, switches or unlocks is that stage's `do`
+- line 298: BC03 `line-result`: line unbarpay: a line only moves a stage (`-> <stage>`); what it gives, takes, sets, switches or unlocks is that stage's `do`
+- line 299: BC03 `line-result`: line release: a line only moves a stage (`-> <stage>`); what it gives, takes, sets, switches or unlocks is that stage's `do`
+- line 300: BC03 `line-result`: line releasepay: a line only moves a stage (`-> <stage>`); what it gives, takes, sets, switches or unlocks is that stage's `do`
+- line 301: BC03 `line-result`: line hire: a line only moves a stage (`-> <stage>`); what it gives, takes, sets, switches or unlocks is that stage's `do`
+- line 302: BC03 `line-result`: line hirepay: a line only moves a stage (`-> <stage>`); what it gives, takes, sets, switches or unlocks is that stage's `do`
+- line 303: BC03 `line-hostile`: line done: a line cannot turn its speaker hostile: a person is placed hostile, or the player starts the fight (mark the death `choice`)
+- line 305: BC03 `asked-is-target`: line tokens@20 moves the quest at stage 20 and no objective active there targets its speaker rope
+- line 305: BC03 `completes-on-target`: objective 20 is completed by line tokens@20, whose speaker rope is not one of its targets (and 2 more like it from this line)
+- line 306: BC03 `asked-is-target`: line released@20 moves the quest at stage 20 and no objective active there targets its speaker rope
+- line 306: BC03 `completes-on-target`: objective 20 is completed by line released@20, whose speaker rope is not one of its targets (and 2 more like it from this line)
+- line 306: BC03 `number-set`: line released@20 reads the number bc03.released, which no stage of this file sets (and 1 more like it from this line)
+- line 307: BC03 `asked-is-target`: line void@20 moves the quest at stage 20 and no objective active there targets its speaker rope
+- line 307: BC03 `completes-on-target`: objective 20 is completed by line void@20, whose speaker rope is not one of its targets (and 2 more like it from this line)
+- line 307: BC03 `number-set`: line void@20 reads the number bc03.void, which no stage of this file sets (and 1 more like it from this line)
+- line 308: BC03 `asked-is-target`: line voiddead@20 moves the quest at stage 20 and no objective active there targets its speaker rope
+- line 308: BC03 `completes-on-target`: objective 20 is completed by line voiddead@20, whose speaker rope is not one of its targets (and 2 more like it from this line)
+- line 309: BC03 `asked-is-target`: line sail@20 moves the quest at stage 20 and no objective active there targets its speaker rope
+- line 309: BC03 `completes-on-target`: objective 20 is completed by line sail@20, whose speaker rope is not one of its targets (and 2 more like it from this line)
+- line 309: BC03 `number-set`: line sail@20 reads the number bc03.void, which no stage of this file sets (and 7 more like it from this line)
+- line 310: BC03 `asked-is-target`: line saillist@20 moves the quest at stage 20 and no objective active there targets its speaker rope
+- line 310: BC03 `completes-on-target`: objective 20 is completed by line saillist@20, whose speaker rope is not one of its targets (and 2 more like it from this line)
+- line 310: BC03 `number-set`: line saillist@20 reads the number bc03.void, which no stage of this file sets (and 3 more like it from this line)
+- line 314: BC03 `line-result`: line yourbook: a line only moves a stage (`-> <stage>`); what it gives, takes, sets, switches or unlocks is that stage's `do`
+- line 315: BC03 `line-result`: line wrote: a line only moves a stage (`-> <stage>`); what it gives, takes, sets, switches or unlocks is that stage's `do`
+- line 317: BC03 `asked-is-target`: trigger take.tokens.10-30: tokens is to be taken at stage 10 and no objective active there targets it
+- line 317: BC03 `completes-on-target`: objective 10 is completed by trigger take.tokens.10-30, which concerns none of its targets
 
 ## The sketches
 
