@@ -57,7 +57,7 @@ test('a cell gets the three layer opacities at its grid points; a boardwalk only
   const t = { size: 4096, grid: 33, step: 128, cells: new Map([['0,0', { water: { height: 0 } }]]), h: (c, r) => (r < 16 ? -100 : 50) };
   const p = { style: 'dirt', width: 128, points: [[0, 2048], [4096, 2048]] };
   const ops = cellLayers(p, [0, 0], t);
-  const total = (i) => 1 - (1 - ops[0][i]) * (1 - ops[1][i]) * (1 - ops[2][i]);
+  const total = (i) => ops[0][i] + ops[1][i] + ops[2][i];  // the engine adds the layers
   assert.ok(total(16 * 33 + 5) > 0.97);       // on the line
   assert.ok(total(15 * 33 + 5) > 0.5);        // one grid step (128) off: still mostly path
   assert.ok(total(14 * 33 + 5) > 0.2 && total(14 * 33 + 5) < total(15 * 33 + 5));  // two steps: the ramp

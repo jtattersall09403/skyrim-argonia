@@ -56,7 +56,7 @@ with the ArtifactData tool into a folder, then `python3 -m tools.newworld.water_
 | A change to | Edit | Runs | Follows | Left alone | Beyond this build |
 |---|---|---|---|---|---|
 | Ground materials or painting rules | `tools/newworld/world/texture.py`, `roadpaint.py` | `paint` | `esm`, `upload` | everything before `paint`; `place`, `mist`, `navmesh`, `map` | the terrain LOD's textures; the deploy; each built place's ground bundle and build (it reads the world's ground records by name) |
-| The paint's check | `tools/newworld/world/texcheck.py` | `paint`'s check alone: the shards stand | nothing | all else | nothing |
+| The paint's checks | `tools/newworld/world/texcheck.py`, `grasscheck.py` | `paint`'s check alone: the shards stand | nothing | all else | nothing |
 | Flora sets | `newworld/sources/flora/` | `db` | `place`, then `navmesh`, `mist`, `map`, `esm`, `upload` | `terrain` to `cells`, `paint`, `atmosphere` | tree and object LOD (not terrain LOD); the deploy; each built place's `clearance` |
 | Placement rules | `tools/newworld/place/place.py`, `texsets.py` | `place` | `navmesh` (it is cut round the placed objects), `mist`, `map`, `esm`, `upload` | as flora sets | as flora sets. Run the navmesh's fast test first ([checks.md](checks.md)) |
 | The placement's check | `tools/newworld/place/checks.py` | `place`'s check alone: the refs stand | nothing | all else | nothing |

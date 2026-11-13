@@ -3,8 +3,9 @@
 Measured 2026-11-11 on the build VM. Ours is the whole-world repaint of terrain build 20261111T053723Z by
 `tools/newworld/world/texture.py`, read by `tools/newworld/world/texcheck.py` (every row passes); "the old build" is
 the ground of the ESM the owner walked (terrain build 20261109T204317Z). Skyrim.esm, Black Marsh North.esp and King of the Murkmire.esp are read with a
-Python LAND reader (`tools/argonia_world/esm.py`; BTXT, ATXT, VTXT; layers stacked as the engine stacks them: base 1,
-each alpha layer replaces (1 - o) of what is under it). Every diffuse is read as the NewWorld profile resolves it.
+Python LAND reader (`tools/argonia_world/esm.py`; BTXT, ATXT, VTXT; layers added as the engine adds them: each
+alpha layer's opacity is its weight and the base shows 1 - their sum; Skyrim.esm's opacities sum to 1.00 at a
+vertex at p90 and pass 1.05 at 1.8% of vertices, BM&V's never pass 1.00: measured 2026-11-13, walk2/ground.md). Every diffuse is read as the NewWorld profile resolves it.
 
 Every number is on the engine view: a quadrant shows its first six textures, weights run linearly over each land
 triangle, and a step is the change of a weight between two vertices that share a triangle edge, per vertex spacing

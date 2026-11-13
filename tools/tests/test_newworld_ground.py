@@ -69,13 +69,33 @@ def test_the_core_falls_away_over_three_vertices_or_more_and_the_weights_sum_to_
     assert m.min() >= rp.TRACK_MIN - 1e-9 and m.max() <= 1 - rp.TRACK_MIN + 1e-9
 
 
-def test_the_three_layers_compose_to_the_road_weights():
+def test_the_three_layers_are_the_road_weights_the_engine_adds():
     e = np.linspace(-4, 9, 40)
     ov, ob, oa = rp.layer_opacities(e, 0.8, 0.4)
     p, a, b, v = rp.road_weights(e, 0.8, 0.4)
-    assert np.allclose(oa, a, atol=1e-9)
-    assert np.allclose(ob * (1 - oa), b, atol=1e-9)
-    assert np.allclose(ov * (1 - ob) * (1 - oa), v, atol=1e-9)
+    assert np.allclose(oa, a, atol=1e-9) and np.allclose(ob, b, atol=1e-9) and np.allclose(ov, v, atol=1e-9)
+    assert (ov + ob + oa <= 1 + 1e-9).all()
+
+
+def test_the_engine_adds_the_layers_and_no_vertex_is_overbright():
+    # Skyrim.esm: a vertex's alpha opacities sum to 1.00 (p90); the base shows 1 - their sum. Ours never pass 255.
+    rng = np.random.default_rng(3)
+    w = rng.random((289, tx.NM)) ** 4
+    w[:, 6:] = 0
+    w /= w.sum(1, keepdims=True)
+    order = list(np.argsort(-w.sum(0))[:6])
+    b = tx.quad_bytes(w, order)
+    al = np.frombuffer(b, np.uint8, 5 * 289, 1 + tx.MAXL).reshape(5, 289).astype(int)
+    assert al.sum(0).max() <= 255
+    dense, *_ = tc.decode_row(b, tx.MAXL, tx.NM)
+    assert np.abs(dense[0].sum(-1) - 1).max() <= 3 / 255
+    assert np.abs(dense[0][:, order] - w[:, order]).max() <= 3 / 255
+    # two layers of 0.8 each: the engine shows 1.6 of texture at that vertex (a lit square), and the base nothing
+    a = np.zeros(1 + tx.MAXL + 5 * 289, np.uint8)
+    a[0], a[1:4] = 3, [0, 1, 2]
+    a[1 + tx.MAXL:1 + tx.MAXL + 2 * 289] = 204
+    dense, *_ = tc.decode_row(a.tobytes(), tx.MAXL, 3)
+    assert abs(float(dense[0, 0].sum()) - 1.6) < 1e-6 and dense[0, 0, 0] == 0
 
 
 def test_a_quadrant_carries_six_textures_at_most_and_round_trips():

@@ -72,15 +72,11 @@ def road_weights(edge_m, scale, mix) -> tuple[np.ndarray, np.ndarray, np.ndarray
 
 
 def layer_opacities(edge_m, scale: float, mix=0.0) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
-    """The same weights as three alpha layers laid over any ground, bottom first (verge, track B, track A): the
-    opacities whose composite is road_weights exactly (o_top = w_top, each lower = w / what is left above it)."""
+    """The same weights as three alpha layers laid over any ground (verge, track B, track A): the engine adds a
+    quadrant's alpha layers (texture.py step 8), so each layer's opacity is its weight and the ground under them
+    shows 1 - the road's weight."""
     p, a, b, v = road_weights(edge_m, scale, mix)
-    oa = a
-    left = 1 - oa
-    ob = np.where(left > 1e-9, b / np.maximum(left, 1e-9), 0)
-    left = left * (1 - ob)
-    ov = np.where(left > 1e-9, v / np.maximum(left, 1e-9), 0)
-    return np.clip(ov, 0, 1), np.clip(ob, 0, 1), np.clip(oa, 0, 1)
+    return np.clip(v, 0, 1), np.clip(b, 0, 1), np.clip(a, 0, 1)
 
 
 # Road sets: the two track materials and the verge of a road, by the ground it crosses (texture.py MATERIALS ids).

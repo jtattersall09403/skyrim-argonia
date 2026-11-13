@@ -3,9 +3,10 @@
     python3 -m tools.newworld.world.texcheck [--out out/newworld/plugin] [--crops name:cx,cy,ncx,ncy ...] [--overview]
 
 Reads `<out>/tex/` shards (texture.py; its materials.json names each material's diffuse, grass and road role) and the
-landcover (land/water, road distance, region). Every metric is taken on the ENGINE VIEW: a quadrant shows its base and
-alpha layers stacked (each alpha layer replaces (1 - o) of what is under it), and only its first six textures (the
-landscape shader's six slots, roadpaint.py); a layer past the sixth is not shown. Weights interpolate linearly over
+landcover (land/water, road distance, region). Every metric is taken on the ENGINE VIEW: a quadrant shows its alpha
+layers added, each with its opacity as its weight, and its base with what is left (1 - their sum, none if they pass
+1: then the vertex shows brighter than any of its textures), and only its first six textures (the landscape shader's
+six slots, roadpaint.py); a layer past the sixth is not shown. Weights interpolate linearly over
 each land triangle (the quad split along its SE-NW diagonal), so a step between two neighbouring vertices, the
 diagonal included, is a visible edge whose shape is the triangle's.
 Writes `<out>/tex/check.json` and, with --crops, `<out>/crops/tex_*.png` rendered per triangle from the diffuse
@@ -16,6 +17,9 @@ diagonal's, which is 1.41 spacings long, is divided by 1.41.
 
 Rows (PASS limits; the measured references are in docs/research/nw-02-walk5-ground.md):
   layers: no quadrant over six textures; seams: a vertex shared by quadrants reads the same from each (<= 3/255).
+  overbright: a vertex's alpha opacities sum past 1.05 at most 1.8% of land vertices, p99 <= 1.13 (Skyrim.esm, 3,000
+    LAND sampled; BM&V never past 1.00): past 1 the engine adds more than one whole texture, a lit square that ends
+    hard at the quadrant's edge, near and in the far land built from it.
   edges: per material, the step between neighbouring vertices: p99 <= 0.41 (BM&V), max <= 0.75.
   roads (vertices within a road's reach), against Skyrim.esm's road ground under its straight road pieces in six
     holds: the road weight's step p99 <= 0.31 (the steepest metre of any hold's mean ramp: Whiterun, 0.17 a metre)
@@ -23,7 +27,11 @@ Rows (PASS limits; the measured references are in docs/research/nw-02-walk5-grou
     (both: no harder than the hardest hundredth of BM&V's ground steps, the edges limit); the spine (within 1.5 m of
     a road centre line, clear of the ramp by which a road runs out toward water): at most 2.8% of its vertices under
     0.6 road weight (Whiterun, Skyrim's worst hold) and none under 0.4, at most 1.8% carrying more than 0.1
-    grass-bearing ground (Hjaalmarch, Skyrim's worst hold); no road quadrant over the cap. Skyrim's own road steps
+    grass-bearing ground (Hjaalmarch, Skyrim's worst hold); across the road's walked surface (to 0.45 m inside its edge,
+    3 m from a major spine and 1.55 m from a minor, where the rule holds the road at 0.97 or more) no vertex carries
+    over 0.1 grass-bearing ground (grass grows by its ground's weight: at 0.1 or
+    less a tuft here and there, as on Skyrim's spines, whose grass-bearing share is 0.1 or less at 98.2% or more of
+    their vertices in every hold); no road quadrant over the cap. Skyrim's own road steps
     are harder than these (p90 1.0 in every hold: a hard brush under a road mesh), so the step limits are taken from
     its mean ramp and from BM&V's painted ground: what a road with no mesh over it must show.
   swathes: per land region, the distance from a vertex to the nearest change of its dominant texture (run) p90 <= 12 m
@@ -68,7 +76,7 @@ OLD_DIFFUSE = {
 }
 OLD_ROAD = {"dirt_road", "road_skirt"}
 LIMITS = {"step_p99": 0.41, "step_max": 0.75, "seam_max": 3 / 255 + 1e-6, "road_step_p99": 0.31, "road_step_max": 0.41,
-          "road_join_max": 0.41, "road_spine_min": 0.4, "road_spine_low_share": 0.028, "road_spine_grassy_share": 0.018, "run_tex_p90": 12.0, "run_tex_p99": 35.0, "run_grass_p90": 80.0,
+          "road_join_max": 0.41, "surface_grass_max": 0.1, "over_share": 0.018, "over_p99": 1.13, "road_spine_min": 0.4, "road_spine_low_share": 0.028, "road_spine_grassy_share": 0.018, "run_tex_p90": 12.0, "run_tex_p99": 35.0, "run_grass_p90": 80.0,
           "run_grass_p99": 140.0, "swathe_1km": 0.40, "textures_per_quadrant": 2.5}
 SEA_REGIONS = {"benthic-yobesh", "padomaic-ocean", "sea-of-mists", "topal-bay"}
 
@@ -103,11 +111,9 @@ def decode_row(data: bytes, maxl: int, nm: int, slots: int | None = SLOTS):
 
     def stack(limit):
         W = np.zeros((nq, maxl, Q * Q), np.float32)
-        W[:, 0] = 1
         for k in range(1, maxl):
-            o = alph[:, k - 1] * (k < np.minimum(n, limit))[:, None]
-            W[:, :k] *= (1 - o)[:, None]
-            W[:, k] = o
+            W[:, k] = alph[:, k - 1] * (k < np.minimum(n, limit))[:, None]
+        W[:, 0] = np.clip(1 - W[:, 1:].sum(1), 0, 1)
         return W
 
     full = stack(maxl)
@@ -199,8 +205,11 @@ def check(out: Path, rows: list[int] | None = None) -> dict:
     maxstep, max_at = 0.0, None
     rmax, rmax_at, jmax, jmax_at = 0.0, None, 0.0, None
     spine_min, spine_at, spine_low, spine_grass, spine_n, spine_grassy = 1.0, None, 0, 0.0, 0, 0
+    surf_grass, surf_at, surf_n = 0.0, None, 0
     grassy = np.array([bool(m["grass"]) for m in mats])
     seam_max, seam_at = 0.0, None
+    ohist = np.zeros(301, np.int64)
+    over_max, over_at = 0.0, None
     over_cap = road_cap = 0
     lost_max = 0.0
     road_lost_max, road_lost_at = 0.0, None
@@ -233,6 +242,13 @@ def check(out: Path, rows: list[int] | None = None) -> dict:
         reach = np.where(rcq == 1, rp.HALF_M["major"] + rp.reach_m(1.0), rp.HALF_M["minor"] + rp.reach_m(rp.SCALE["minor"]))
         roadv = (rcq > 0) & (rdq < reach) & land
         spine = (rcq > 0) & (rdq < 1.5) & land & (shq >= tx.ROAD_WATER[1])
+        surface = (rcq > 0) & (rdq < np.where(rcq == 1, rp.HALF_M["major"], rp.HALF_M["minor"]) + rp.PULL_E[0]) & land & (shq >= tx.ROAD_WATER[1])
+        # overbright: the shown weights' sum past 1 on land
+        tot = D.sum(-1)
+        ohist += np.bincount(np.minimum((tot[land] * 100).astype(int), 300), minlength=301)
+        if land.any() and float(tot[land].max()) > over_max:
+            i, q = np.unravel_index(np.argmax(np.where(land, tot, 0).max((2, 3))), (nx, 4))
+            over_max, over_at = float(tot[land].max()), [g["cx0"] + int(i), cy, int(q)]
         # layers
         nlayers += n.tolist()
         oc = n > SLOTS
@@ -272,6 +288,12 @@ def check(out: Path, rows: list[int] | None = None) -> dict:
             if v > jmax:
                 i, q = np.unravel_index(np.argmax(jv.max(-1)), (nx, 4))
                 jmax, jmax_at = v, [g["cx0"] + int(i), cy, int(q)]
+            if surface.any():
+                G = np.where(surface, D[..., grassy].sum(-1), 0)
+                surf_n += int(surface.sum())
+                if float(G.max()) > surf_grass:
+                    i, q = np.unravel_index(np.argmax(G.max((2, 3))), (nx, 4))
+                    surf_grass, surf_at = float(G.max()), [g["cx0"] + int(i), cy, int(q)]
             if spine.any():
                 gv = D[..., grassy].sum(-1)[spine]
                 spine_grass = max(spine_grass, float(gv.max()))
@@ -319,12 +341,15 @@ def check(out: Path, rows: list[int] | None = None) -> dict:
            "quadrants_over_cap": over_cap, "cap_lost_weight_max": round(lost_max, 3),
            "step_p90": pct(hist, 0.90), "step_p99": pct(hist, 0.99), "step_max": round(maxstep, 3), "step_max_at": max_at,
            "seam_max": round(seam_max, 4), "seam_at": seam_at,
+           "over_share": round(float(ohist[105:].sum() / max(ohist.sum(), 1)), 4), "over_p99": pct(ohist, 0.99),
+           "over_max": round(over_max, 3), "over_at": over_at,
            "road_step_p99": pct(rhist, 0.99), "road_step_max": round(rmax, 3), "road_step_max_at": rmax_at,
            "road_join_max": round(jmax, 3), "road_join_at": jmax_at,
            "road_spine_min": round(spine_min, 3), "road_spine_at": spine_at, "road_spine_vertices_low": spine_low,
            "road_spine_grass_max": round(spine_grass, 3), "road_spine_vertices": spine_n,
            "road_spine_low_share": round(spine_low / max(spine_n, 1), 4),
            "road_spine_grassy_share": round(spine_grassy / max(spine_n, 1), 4),
+           "road_surface_grass_max": round(surf_grass, 3), "road_surface_grass_at": surf_at, "road_surface_vertices": surf_n,
            "road_quadrants_over_cap": road_cap, "road_weight_hidden_by_cap_max": round(road_lost_max, 3),
            "road_hidden_at": road_lost_at,
            "layers_per_quadrant_mean": round(float(np.mean(nlayers)), 2),
@@ -338,12 +363,15 @@ def check(out: Path, rows: list[int] | None = None) -> dict:
                          ("step_p99", L["step_p99"], res["step_p99"] <= L["step_p99"]),
                          ("step_max", L["step_max"], res["step_max"] <= L["step_max"]),
                          ("seam_max", L["seam_max"], res["seam_max"] <= L["seam_max"]),
+                         ("over_share", L["over_share"], res["over_share"] <= L["over_share"]),
+                         ("over_p99", L["over_p99"], res["over_p99"] <= L["over_p99"]),
                          ("road_step_p99", L["road_step_p99"], res["road_step_p99"] <= L["road_step_p99"]),
                          ("road_step_max", L["road_step_max"], res["road_step_max"] <= L["road_step_max"]),
                          ("road_join_max", L["road_join_max"], res["road_join_max"] <= L["road_join_max"]),
                          ("road_spine_min", L["road_spine_min"], res["road_spine_min"] >= L["road_spine_min"]),
                          ("road_spine_low_share", L["road_spine_low_share"], res["road_spine_low_share"] <= L["road_spine_low_share"]),
                          ("road_spine_grassy_share", L["road_spine_grassy_share"], res["road_spine_grassy_share"] <= L["road_spine_grassy_share"]),
+                         ("road_surface_grass_max", L["surface_grass_max"], res["road_surface_grass_max"] <= L["surface_grass_max"]),
                          ("road_quadrants_over_cap", 0, res["road_quadrants_over_cap"] == 0),
                          ("run_tex_p90_worst", L["run_tex_p90"], res["run_tex_p90_worst"] <= L["run_tex_p90"]),
                          ("run_tex_p99_worst", L["run_tex_p99"], res["run_tex_p99_worst"] <= L["run_tex_p99"]),

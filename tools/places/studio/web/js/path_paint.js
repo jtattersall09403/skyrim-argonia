@@ -42,14 +42,12 @@ export function roadWeights(e, scale, mix) {
   const p = pull(e, scale), c = Math.min(p, coreWeight(e)), m = trackMix(mix);
   return [p, c * m, c * (1 - m), p - c];
 }
-// the same as three alpha layers over any ground, bottom first: [verge, track B, track A] opacities
+// the same as three alpha layers over any ground, bottom first: [verge, track B, track A] opacities. The engine adds
+// a quadrant's alpha layers (texture.py step 8), so each opacity is the material's own weight.
 export function layerOpacities(e, scale, mix) {
   const [, a, b, v] = roadWeights(e, scale, mix);
-  const oa = a; let left = 1 - oa;
-  const ob = left > 1e-9 ? b / left : 0; left *= 1 - ob;
-  const ov = left > 1e-9 ? v / left : 0;
   const c = (x) => Math.max(0, Math.min(1, x));
-  return [c(ov), c(ob), c(oa)];
+  return [c(v), c(b), c(a)];
 }
 // texture.py vnoise / road_mix, bit for bit: value noise on a hashed lattice at world sample positions
 function hash(i, j, seed) {

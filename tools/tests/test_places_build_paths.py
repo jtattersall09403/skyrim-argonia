@@ -41,15 +41,15 @@ def plan(style, f=None, width=160):
 
 
 def composite(quad):
-    """A planned quadrant -> {texture key: weights [289]} as the engine stacks it."""
-    w = {quad["base"]: np.ones(289)}
+    """A planned quadrant -> {texture key: weights [289]} as the engine adds it (the base 1 - the layers' sum)."""
+    w, tot = {}, np.zeros(289)
     for la in quad["layers"]:
         o = np.zeros(289)
         for i, op in la["alpha"]:
             o[i] = op
-        for k in w:
-            w[k] = w[k] * (1 - o)
         w[la["texture"]] = w.get(la["texture"], np.zeros(289)) + o
+        tot += o
+    w[quad["base"]] = w.get(quad["base"], np.zeros(289)) + np.clip(1 - tot, 0, 1)
     return w
 
 

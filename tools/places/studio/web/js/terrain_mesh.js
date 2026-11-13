@@ -143,11 +143,13 @@ export class TerrainMesh {
     const g = this.t.grid, col = e.geo.attributes.color.array, lt = this.t.ltex, base = new Float32Array(g * g * 3);
     for (let r = 0; r < g; r++) for (let c = 0; c < g; c++) {
       const qi = (r >= 16 ? 2 : 0) + (c >= 16 ? 1 : 0), q = e.c.quadrants[qi];
-      let rgb = hex(this.lt ? this.lt.avg(q.base, lt) : '#4d5a2c');
       const ar = Math.min(16, r - (r >= 16 ? 16 : 0)), ac = Math.min(16, c - (c >= 16 ? 16 : 0));
+      // the engine adds the layers: each alpha its weight, the base 1 - their sum
+      let sum = 0; for (const l of q.layers) sum += l.alpha?.[ar * 17 + ac] || 0;
+      let rgb = hex(this.lt ? this.lt.avg(q.base, lt) : '#4d5a2c').map((v) => v * Math.max(0, 1 - sum));
       for (const l of q.layers) {
         const a = l.alpha?.[ar * 17 + ac] || 0; if (!a) continue;
-        const lc = hex(this.lt ? this.lt.avg(l.tex, lt) : '#6e5a41'); rgb = rgb.map((v, k) => v + (lc[k] - v) * a);
+        const lc = hex(this.lt ? this.lt.avg(l.tex, lt) : '#6e5a41'); rgb = rgb.map((v, k) => v + lc[k] * a);
       }
       const i = (r * g + c) * 3, vc = e.c.vcol;
       for (let k = 0; k < 3; k++) base[i + k] = rgb[k] * (vc ? vc[i + k] / 255 : 1);
@@ -225,16 +227,28 @@ export class TerrainMesh {
       const qx = (qi % 2) * Q, qy = qi < 2 ? Q : 0, q = e.c.quadrants[qi];
       ctx.globalCompositeOperation = 'source-over';
       fillTiled(ctx, img(q.base), qx, qy, Q, Q, this.lt ? this.lt.avg(q.base, lt) : '#4d5a2c');
-      for (const l of q.layers) if (l.alpha) layer((r, c) => l.alpha[r * 17 + c], l.tex, qx, qy, '#6e5a41');
+      // the engine adds the alpha layers (each opacity a weight, the base 1 - their sum); the canvas stacks, so each
+      // layer is drawn over what is under it at weight / (the base's and the layers' up to it)
+      const al = q.layers.filter((l) => l.alpha), under = new Float32Array(289);
+      for (let i = 0; i < 289; i++) { let s = 0; for (const l of al) s += l.alpha[i]; under[i] = Math.max(0, 1 - s); }
+      for (const l of al) {
+        const w = l.alpha, a = new Float32Array(289);
+        for (let i = 0; i < 289; i++) { under[i] += w[i]; a[i] = under[i] > 1e-6 ? w[i] / under[i] : 0; }
+        layer((r, c) => a[r * 17 + c], l.tex, qx, qy, '#6e5a41');
+      }
       const r0 = qi >= 2 ? 16 : 0, c0 = qi % 2 ? 16 : 0;
       for (const [p, ops] of paths) {
         const st = this.pathStyles[p.style] || {};
-        if (st.texs) for (let k = 0; k < 3; k++) layer((r, c) => ops[k][(r0 + r) * g + c0 + c], st.texs[2 - k], qx, qy, '#6e5a41');
+        // the path's weights over the land: verge, track B, track A, each over the ground (1 - the path's weight) and
+        // the path's layers under it
+        const at = (k, r, c) => { const j = (r0 + r) * g + c0 + c, p = ops[0][j] + ops[1][j] + ops[2][j];
+          let u = 1 - p; for (let i = 0; i <= k; i++) u += ops[i][j]; return u > 1e-6 ? ops[k][j] / u : 0; };
+        if (st.texs) for (let k = 0; k < 3; k++) layer((r, c) => at(k, r, c), st.texs[2 - k], qx, qy, '#6e5a41');
         else { // no land texture for the style: its colour, on the same ramp (the three layers' total)
           const data = mctx.createImageData(17, 17), rgb = hex(st.colour || '#7a6446').map((v) => Math.round(v * 255));
           for (let r = 0; r < 17; r++) for (let c = 0; c < 17; c++) {
             const i = ((16 - r) * 17 + c) * 4, j = (r0 + r) * g + c0 + c;
-            data.data.set(rgb, i); data.data[i + 3] = (1 - (1 - ops[0][j]) * (1 - ops[1][j]) * (1 - ops[2][j])) * 255;
+            data.data.set(rgb, i); data.data[i + 3] = Math.min(1, ops[0][j] + ops[1][j] + ops[2][j]) * 255;
           }
           mctx.putImageData(data, 0, 0); ctx.imageSmoothingEnabled = true; ctx.drawImage(mask, 0, 0, 17, 17, qx, qy, Q, Q);
         }

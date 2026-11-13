@@ -42,8 +42,11 @@ The recipe (numbers from research/nw-02-ground-water-rules.md and docs/research/
    any quadrant that does not keep it (closed squares, so a shared vertex reads the same from every quadrant); what
    the fade takes from a road material goes to the road materials kept there and what it takes from the ground to the
    ground kept there, so the cut never opens a hole in a road nor lays road over ground.
-8. Layers: base = the quadrant's heaviest; alpha layers in falling coverage; opacities inverted from the weights
-   (top down: o = w / what is left), so the composite is the painted weights exactly (to 1/255).
+8. Layers: base = the quadrant's heaviest; alpha layers in falling coverage. The engine adds a quadrant's layers:
+   each alpha layer shows with its opacity as its weight and the base takes what is left (1 - their sum), as the
+   Creation Kit writes them (Skyrim.esm: a vertex's alpha opacities sum to 1.00 at p90, over 1.05 at 1.8% of
+   vertices; BM&V never over 1.00). So an alpha layer's opacity is its painted weight, written so a vertex's
+   opacities never sum past 255/255, and the composite is the painted weights exactly (to 1/255).
 Interrupt-proof: keyed on the land key + landcover key + this code; resumes by row; 3 worker processes.
 """
 from __future__ import annotations
@@ -81,8 +84,8 @@ MATERIALS = {
     "forest_floor": ("Skyrim.esm:LPineForest03", [f"{TS}:FernGrass01", f"{TS}:TropicalGrass01"], "Landscape\\PineForest03.dds"),
     "moss": ("Black Marsh North.esp:LPineForest05", [f"{TS}:FernGrass01"], "TEXTUREPACK\\landscape\\tundramoss01.dds"),
     "wet_rock_moss": ("Black Marsh.esm:LPineForestDUPLICATE004", [f"{SK}:FernGrass01"], "TEXTUREPACK\\landscape\\grass\\rocksgrasswater01.dds"),
-    "swamp_mud": ("Black Marsh North.esp:LFieldGrassDUPLICATE003", [f"{KM}:ALPAGrassLong03B"], "TEXTUREPACK\\landscape\\rivermud.dds"),
-    "mud_reeds": (f"{KM}:LALPAMud01Reeds", [f"{KM}:ALPAGrassReeds01", f"{KM}:ALPAGrassReeds02", f"{KM}:ALPAGrassReeds03", f"{KM}:ALPAGrassReeds04"], "argonia\\landscape\\rivermud.dds"),
+    "swamp_mud": ("Black Marsh North.esp:LFieldGrassDUPLICATE003", [f"{KM}:ALPAGrassReeds02"], "TEXTUREPACK\\landscape\\rivermud.dds"),
+    "mud_reeds": (f"{KM}:LALPAMud01Reeds", [f"{KM}:ALPAGrassReeds01", f"{KM}:ALPAGrassReeds02", f"{KM}:ALPAGrassReeds02", f"{KM}:ALPAGrassReeds01"], "argonia\\landscape\\rivermud.dds"),
     "marsh_grass": (f"{KM}:LALPAMarshGrass", [f"{KM}:ALPAGrassFern01", f"{KM}:ALPAGrassRams01", f"{KM}:ALPAGrassNettles01"], "argonia\\landscape\\CTQ_Grass_Lush01.dds"),
     "rainforest": (f"{KM}:LALPARainforest", [f"{TS}:ForestGrass01", f"{TS}:ReachGrass01", f"{KM}:ALPAGrassFern02"], "argonia\\landscape\\CTQ_Undergrowth_01.dds"),
     "rainforest_low": (f"{KM}:LALPARainforestLow", [f"{TS}:ForestGrass01", f"{KM}:ALPAGrassFern01", f"{TS}:TropicalGrassPlant01"], "argonia\\landscape\\CTQ_JungleGrass01_d.dds"),
@@ -172,8 +175,8 @@ PROVINCES = {
         "road": "marsh",
         "accent": {"wet": {"marsh_tufts": .45, "grey_mud": .2, "dark_moss": .35}, "forest": {"dark_moss": .5, "leaf_litter": .5},
                    "open": {"marsh_tufts": .6, "beach_grass": .4}, "rock": {"black_gravel": .5, "wet_rock_moss": .5}},
-        "grass": {"marsh_grass": [f"{KM}:ALPAGrassReeds01", f"{KM}:ALPAGrassReeds03", f"{KM}:ALPAGrassWildSaltrice01", f"{KM}:ALPAGrassWildSaltrice03"],
-                  "meadow": [f"{KM}:ALPAGrassMarsh01", f"{KM}:ALPAGrassMarsh02", f"{KM}:ALPAGrassLong03A"],
+        "grass": {"marsh_grass": [f"{KM}:ALPAGrassReeds01", f"{KM}:ALPAGrassReeds02", f"{KM}:ALPAGrassWildSaltrice01", f"{KM}:ALPAGrassWildSaltrice02"],
+                  "meadow": [f"{KM}:ALPAGrassMarsh01", f"{KM}:ALPAGrassMarsh02", f"{KM}:ALPAGrassReeds02"],
                   "forest_floor": [f"{KM}:ALPAGrassFern01", f"{SK}:FernGrass01"]}},
     "darkwood": {  # Hist groves, huge roots, hanging moss and black heart-mud; cairn-fields on steep hills
         "regions": ["murkwood", "blackwood"],
@@ -181,7 +184,7 @@ PROVINCES = {
         "accent": {"wet": {"dark_moss": .5, "black_gravel": .2, "marsh_mud": .3}, "forest": {"dark_moss": .4, "fern_floor": .3, "twig_floor": .3},
                    "open": {"dark_moss": .5, "leafy_ground": .5}, "rock": {"black_gravel": .5, "rock2": .5}},
         "grass": {"forest_floor": [f"{KM}:ALPAGrassFern04", f"{SK}:FernGrass01"], "moss": [f"{KM}:ALPAGrassFern03"],
-                  "marsh_grass": [f"{KM}:ALPAGrassLong03B", f"{KM}:ALPAGrassMarsh01"]}},
+                  "marsh_grass": [f"{KM}:ALPAGrassReeds02", f"{KM}:ALPAGrassMarsh01"]}},
     "jungle": {  # jungle hardwood, tree-ferns and bright fungus; green gorges under pale cliffs
         "regions": ["arnesian-jungle", "chixathe-mesa"],
         "road": "forest",
@@ -194,7 +197,7 @@ PROVINCES = {
         "road": "marsh",
         "accent": {"wet": {"marsh_tufts": .4, "grey_mud": .3, "leafy_ground": .3}, "forest": {"twig_floor": .5, "fern_floor": .5},
                    "open": {"meadow": .4, "marsh_tufts": .3, "leafy_ground": .3}, "rock": {"pebble_earth": .5, "grey_gravel": .5}},
-        "grass": {"marsh_grass": [f"{KM}:ALPAGrassReeds03", f"{KM}:ALPAGrassMarsh02"],
+        "grass": {"marsh_grass": [f"{KM}:ALPAGrassReeds02", f"{KM}:ALPAGrassMarsh02"],
                   "meadow": [f"{SK}:FieldGrass01", f"{KM}:ALPAGrassMarsh02"], "forest_floor": [f"{SK}:FernGrass01"]}},
     "redclay": {  # low red clay mounds, ochre-stained marsh, red-gum hills and a burn-scar regrowing
         "regions": ["okuwun-rahei", "cape-percar"],
@@ -210,7 +213,7 @@ PROVINCES = {
         "accent": {"wet": {"grey_mud": .5, "marsh_tufts": .5}, "forest": {"leafy_ground": .5, "twig_floor": .5},
                    "open": {"beach_grass": .4, "meadow": .3, "grey_mud": .3}, "rock": {"pale_rock": .5, "grey_gravel": .5}},
         "grass": {"meadow": [f"{SK}:ForestGrass01", f"{KM}:ALPAGrassMarsh02"],
-                  "marsh_grass": [f"{KM}:ALPAGrassWildSaltrice01", f"{KM}:ALPAGrassWildSaltrice02", f"{KM}:ALPAGrassWildSaltrice03", f"{KM}:ALPAGrassWildSaltrice04"],
+                  "marsh_grass": [f"{KM}:ALPAGrassWildSaltrice01", f"{KM}:ALPAGrassWildSaltrice02", f"{KM}:ALPAGrassWildSaltrice02", f"{KM}:ALPAGrassWildSaltrice01"],
                   "forest_floor": [f"{SK}:ForestGrass01"]}},
     "isles": {  # scrub on the hills, sea-worn crags, shingle beaches, wind-cut grass
         "regions": ["aphon-isle", "skeith-isle", "aunike-ridge"],
@@ -230,21 +233,21 @@ ROLE = {"moss": "moss", "wet_rock_moss": "moss", "dark_moss": "moss", "mud_reeds
         "marsh_grass": "reeds", "beach_grass": "beach"}
 ROLES = {
     "delta": {"moss": [f"{SK}:FernGrass01", f"{KM}:ALPAGrassFern01"], "reeds": [f"{KM}:ALPAGrassReeds01", f"{KM}:ALPAGrassReeds02", f"{TS}:CattailGrass01"],
-              "forest": [f"{KM}:ALPAGrassFern01", f"{KM}:ALPAGrassMarsh01"], "dry": [f"{KM}:ALPAGrassLong03A", f"{KM}:ALPAGrassMarsh02"],
-              "beach": [f"{KM}:ALPAGrassWildSaltrice03", f"{SK}:BeachGrass02"]},
-    "darkwood": {"moss": [f"{KM}:ALPAGrassFern04"], "reeds": [f"{KM}:ALPAGrassLong03B", f"{SK}:FrozenMarshGrass01"],
+              "forest": [f"{KM}:ALPAGrassFern01", f"{KM}:ALPAGrassMarsh01"], "dry": [f"{KM}:ALPAGrassReeds02", f"{KM}:ALPAGrassMarsh02"],
+              "beach": [f"{KM}:ALPAGrassWildSaltrice02", f"{SK}:BeachGrass02"]},
+    "darkwood": {"moss": [f"{KM}:ALPAGrassFern04"], "reeds": [f"{KM}:ALPAGrassReeds02", f"{SK}:FrozenMarshGrass01"],
                  "forest": [f"{KM}:ALPAGrassFern03", f"{KM}:ALPAGrassFern04"], "dry": [f"{SK}:FrozenMarshGrass01", f"{KM}:ALPAGrassFern04"],
-                 "beach": [f"{KM}:ALPAGrassLong03B"]},
+                 "beach": [f"{KM}:ALPAGrassReeds02"]},
     "jungle": {"moss": [f"{KM}:ALPAGrassFern02"], "reeds": [f"{KM}:ALPAGrassNettles01", f"{KM}:ALPAGrassRams01"],
                "forest": [f"{TS}:TropicalGrassPlant01", f"{TS}:TropicalGrass01", f"{KM}:ALPAGrassFern02"],
                "dry": [f"{TS}:TropicalGrassPlant02", f"{SK}:ReachGrass02"], "beach": [f"{TS}:TropicalGrass01"]},
-    "riverlands": {"moss": [f"{KM}:ALPAGrassMarsh02"], "reeds": [f"{KM}:ALPAGrassReeds03", f"{KM}:ALPAGrassReeds04"],
-                   "forest": [f"{SK}:FieldGrass01", f"{SK}:ForestGrass02"], "dry": [f"{SK}:FieldGrass01", f"{KM}:ALPAGrassMarsh02"], "beach": [f"{KM}:ALPAGrassReeds04"]},
+    "riverlands": {"moss": [f"{KM}:ALPAGrassMarsh02"], "reeds": [f"{KM}:ALPAGrassReeds02", f"{KM}:ALPAGrassReeds01"],
+                   "forest": [f"{SK}:FieldGrass01", f"{SK}:ForestGrass02"], "dry": [f"{SK}:FieldGrass01", f"{KM}:ALPAGrassMarsh02"], "beach": [f"{KM}:ALPAGrassReeds01"]},
     "redclay": {"moss": [f"{SK}:FallForestGrass02"], "reeds": [f"{KM}:ALPAGrassWildSaltrice02", f"{SK}:FallForestGrass01"],
                 "forest": [f"{SK}:ReachGrass01", f"{SK}:FallForestGrass01"], "dry": [f"{SK}:TundraGrass01", f"{SK}:FallForestGrass02"],
                 "beach": [f"{KM}:ALPAGrassWildSaltrice02"]},
-    "coast": {"moss": [f"{SK}:ForestGrass01"], "reeds": [f"{KM}:ALPAGrassWildSaltrice01", f"{KM}:ALPAGrassWildSaltrice04"],
-              "forest": [f"{SK}:ForestGrass01"], "dry": [f"{SK}:ForestGrass01", f"{KM}:ALPAGrassWildSaltrice04"],
+    "coast": {"moss": [f"{SK}:ForestGrass01"], "reeds": [f"{KM}:ALPAGrassWildSaltrice01", f"{KM}:ALPAGrassWildSaltrice01"],
+              "forest": [f"{SK}:ForestGrass01"], "dry": [f"{SK}:ForestGrass01", f"{KM}:ALPAGrassWildSaltrice01"],
               "beach": [f"{SK}:BeachGrass02", f"{KM}:ALPAGrassWildSaltrice01"]},
     "isles": {"moss": [f"{SK}:RockGrass01"], "reeds": [f"{SK}:TundraGrass01"], "forest": [f"{SK}:TundraGrass03"],
               "dry": [f"{SK}:RockGrass01", f"{SK}:TundraGrass03"], "beach": [f"{SK}:BeachGrass01"]},
@@ -255,26 +258,26 @@ for _p, _v in PROVINCES.items():
 # Each region's own signature on top of its province, from its research's look notes: one ground it shows more of
 # (at least SIG of every classed habitat's palette) and its own grass list on one grassy material.
 REGIONS = {
-    "ultherus-swamp": {"look": "dark_moss", "grass": {"marsh_grass": ["FlowerFields.esp:ESuColumbine01Red", "FlowerFields.esp:ESpPasqueflower01red", f"{TS}:CattailGrass01", f"{KM}:ALPAGrassReeds02", f"{KM}:ALPAGrassReeds04"], "meadow": ["FlowerFields.esp:ESuColumbine01Red", "FlowerFields.esp:ESpPasqueflower01red", f"{KM}:ALPAGrassMarsh01", f"{KM}:ALPAGrassLong03B"], "forest_floor": ["FlowerFields.esp:ESuColumbine01Red", "FlowerFields.esp:ESpPasqueflower01red", f"{KM}:ALPAGrassFern01", f"{SK}:FrozenMarshGrass01"]}},
-    "nushara-bayou": {"look": "river_mud", "grass": {"marsh_grass": ["FlowerFields.esp:ESuOxeyeDaisy01", f"{KM}:ALPAGrassWildSaltrice02", f"{KM}:ALPAGrassWildSaltrice04", f"{KM}:ALPAGrassFern03"], "meadow": ["FlowerFields.esp:ESuOxeyeDaisy01", f"{KM}:ALPAGrassFern03", f"{KM}:ALPAGrassNettles01"], "forest_floor": ["FlowerFields.esp:ESuOxeyeDaisy01", f"{KM}:ALPAGrassFern01", f"{SK}:FernGrass01"]}},
-    "tulmek-washes": {"look": "silt", "grass": {"meadow": [f"{SK}:FieldGrass02", f"{SK}:TundraGrass01"], "marsh_grass": [f"{KM}:ALPAGrassLong03A", f"{KM}:ALPAGrassMarsh02"], "forest_floor": [f"{SK}:FieldGrass02", f"{SK}:FernGrass01"], "dirt_slopes": ["FlowerFields.esp:ESuClover02leaves"]}},
-    "banujha-basin": {"look": "marsh_mud", "grass": {"marsh_grass": ["FlowerFields.esp:ESpTulip02Orange1", f"{KM}:ALPAGrassReeds01", f"{KM}:ALPAGrassReeds03", f"{KM}:ALPAGrassMarsh01"], "meadow": ["FlowerFields.esp:ESpTulip02Orange1", f"{KM}:ALPAGrassMarsh02", f"{KM}:ALPAGrassLong03A"], "forest_floor": ["FlowerFields.esp:ESpTulip02Orange1", f"{KM}:ALPAGrassFern01", f"{KM}:ALPAGrassReeds01"], "mud_reeds": ["FlowerFields.esp:ESpIris01Leaves", "FlowerFields.esp:ESpSiberianIris01"], "swamp_mud": ["FlowerFields.esp:ESpSiberianIris01"]}},
-    "kotherra-mangroves": {"look": "wet_sand", "grass": {"forest_floor": ["FlowerFields.esp:ESuPoppy02Red", f"{KM}:ALPAGrassFern03", f"{KM}:ALPAGrassFern01"], "marsh_grass": ["FlowerFields.esp:ESuPoppy02Red", f"{KM}:ALPAGrassReeds02", f"{KM}:ALPAGrassFern01"], "meadow": ["FlowerFields.esp:ESuPoppy02Red", f"{KM}:ALPAGrassFern03", f"{KM}:ALPAGrassWildSaltrice03"]}},
-    "murkwood": {"look": "wet_rock_moss", "grass": {"moss": [f"{KM}:ALPAGrassFern04", f"{SK}:FernGrass01"], "forest_floor": [f"{KM}:ALPAGrassFern04", f"{SK}:FernGrass01"], "marsh_grass": [f"{KM}:ALPAGrassLong03B", f"{KM}:ALPAGrassFern04"], "marsh_tufts": ["FlowerFields.esp:ESpLiverleaf01leaves"]}},
-    "blackwood": {"look": "rock2", "grass": {"marsh_grass": [f"{KM}:ALPAGrassLupin02", f"{SK}:FrozenMarshGrass01", f"{KM}:ALPAGrassLong03B"], "meadow": [f"{KM}:ALPAGrassLupin02", f"{KM}:ALPAGrassFern04"], "forest_floor": [f"{KM}:ALPAGrassLupin02", f"{SK}:FernGrass01"], "moss": ["FlowerFields.esp:ESpLadysMantle01"], "wet_rock_moss": ["FlowerFields.esp:ESpLadysMantle01"], "dark_moss": ["FlowerFields.esp:ESpLadysMantle01", f"{KM}:ALPAGrassFern03"], "fern_floor": ["FlowerFields.esp:ESpPacificbleedingheart01leaves"]}},
+    "ultherus-swamp": {"look": "dark_moss", "grass": {"marsh_grass": ["FlowerFields.esp:ESuColumbine01Red", "FlowerFields.esp:ESpPasqueflower01red", f"{TS}:CattailGrass01", f"{KM}:ALPAGrassReeds02", f"{KM}:ALPAGrassReeds01"], "meadow": ["FlowerFields.esp:ESuColumbine01Red", "FlowerFields.esp:ESpPasqueflower01red", f"{KM}:ALPAGrassMarsh01", f"{KM}:ALPAGrassReeds02"], "forest_floor": ["FlowerFields.esp:ESuColumbine01Red", "FlowerFields.esp:ESpPasqueflower01red", f"{KM}:ALPAGrassFern01", f"{SK}:FrozenMarshGrass01"]}},
+    "nushara-bayou": {"look": "river_mud", "grass": {"marsh_grass": ["FlowerFields.esp:ESuOxeyeDaisy01", f"{KM}:ALPAGrassWildSaltrice02", f"{KM}:ALPAGrassWildSaltrice01", f"{KM}:ALPAGrassFern03"], "meadow": ["FlowerFields.esp:ESuOxeyeDaisy01", f"{KM}:ALPAGrassFern03", f"{KM}:ALPAGrassNettles01"], "forest_floor": ["FlowerFields.esp:ESuOxeyeDaisy01", f"{KM}:ALPAGrassFern01", f"{SK}:FernGrass01"]}},
+    "tulmek-washes": {"look": "silt", "grass": {"meadow": [f"{SK}:FieldGrass02", f"{SK}:TundraGrass01"], "marsh_grass": [f"{KM}:ALPAGrassReeds02", f"{KM}:ALPAGrassMarsh02"], "forest_floor": [f"{SK}:FieldGrass02", f"{SK}:FernGrass01"], "dirt_slopes": ["FlowerFields.esp:ESuClover02leaves"]}},
+    "banujha-basin": {"look": "marsh_mud", "grass": {"marsh_grass": ["FlowerFields.esp:ESpTulip02Orange1", f"{KM}:ALPAGrassReeds01", f"{KM}:ALPAGrassReeds02", f"{KM}:ALPAGrassMarsh01"], "meadow": ["FlowerFields.esp:ESpTulip02Orange1", f"{KM}:ALPAGrassMarsh02", f"{KM}:ALPAGrassReeds02"], "forest_floor": ["FlowerFields.esp:ESpTulip02Orange1", f"{KM}:ALPAGrassFern01", f"{KM}:ALPAGrassReeds01"], "mud_reeds": ["FlowerFields.esp:ESpIris01Leaves", "FlowerFields.esp:ESpSiberianIris01"], "swamp_mud": ["FlowerFields.esp:ESpSiberianIris01"]}},
+    "kotherra-mangroves": {"look": "wet_sand", "grass": {"forest_floor": ["FlowerFields.esp:ESuPoppy02Red", f"{KM}:ALPAGrassFern03", f"{KM}:ALPAGrassFern01"], "marsh_grass": ["FlowerFields.esp:ESuPoppy02Red", f"{KM}:ALPAGrassReeds02", f"{KM}:ALPAGrassFern01"], "meadow": ["FlowerFields.esp:ESuPoppy02Red", f"{KM}:ALPAGrassFern03", f"{KM}:ALPAGrassWildSaltrice02"]}},
+    "murkwood": {"look": "wet_rock_moss", "grass": {"moss": [f"{KM}:ALPAGrassFern04", f"{SK}:FernGrass01"], "forest_floor": [f"{KM}:ALPAGrassFern04", f"{SK}:FernGrass01"], "marsh_grass": [f"{KM}:ALPAGrassReeds02", f"{KM}:ALPAGrassFern04"], "marsh_tufts": ["FlowerFields.esp:ESpLiverleaf01leaves"]}},
+    "blackwood": {"look": "rock2", "grass": {"marsh_grass": [f"{KM}:ALPAGrassLupin02", f"{SK}:FrozenMarshGrass01", f"{KM}:ALPAGrassReeds02"], "meadow": [f"{KM}:ALPAGrassLupin02", f"{KM}:ALPAGrassFern04"], "forest_floor": [f"{KM}:ALPAGrassLupin02", f"{SK}:FernGrass01"], "moss": ["FlowerFields.esp:ESpLadysMantle01"], "wet_rock_moss": ["FlowerFields.esp:ESpLadysMantle01"], "dark_moss": ["FlowerFields.esp:ESpLadysMantle01", f"{KM}:ALPAGrassFern03"], "fern_floor": ["FlowerFields.esp:ESpPacificbleedingheart01leaves"]}},
     "arnesian-jungle": {"look": "rainforest_low", "grass": {"rainforest": ["FlowerFields.esp:ESuWelshPoppy01Orange", "FlowerFields.esp:ESpTulipOrange", f"{TS}:TropicalGrassPlant02", f"{KM}:ALPAGrassFern02", f"{TS}:TropicalGrass01"], "forest_floor": ["FlowerFields.esp:ESuWelshPoppy01Orange", "FlowerFields.esp:ESpTulipOrange", f"{TS}:TropicalGrass01", f"{KM}:ALPAGrassFern02", f"{TS}:TropicalGrassPlant01"], "marsh_grass": ["FlowerFields.esp:ESuWelshPoppy01Orange", "FlowerFields.esp:ESpTulipOrange", f"{KM}:ALPAGrassRams01", f"{KM}:ALPAGrassNettles01"]}},
     "chixathe-mesa": {"look": "pebble_earth", "grass": {"meadow": ["FlowerFields.esp:ESpPasqueflower01white", f"{SK}:TundraGrass03", f"{SK}:ReachGrass01"], "forest_floor": ["FlowerFields.esp:ESpPasqueflower01white", f"{SK}:ReachGrass01", f"{KM}:ALPAGrassFern02"], "marsh_grass": ["FlowerFields.esp:ESpPasqueflower01white", f"{SK}:TundraGrass03", f"{KM}:ALPAGrassRams01"]}},
-    "nha-enasa": {"look": "grey_gravel", "grass": {"marsh_grass": [f"{KM}:ALPAGrassButtercup01", f"{KM}:ALPAGrassReeds03"], "meadow": [f"{KM}:ALPAGrassButtercup01", f"{KM}:ALPAGrassMarsh02"], "forest_floor": [f"{KM}:ALPAGrassButtercup01", f"{SK}:FernGrass01"]}},
+    "nha-enasa": {"look": "grey_gravel", "grass": {"marsh_grass": [f"{KM}:ALPAGrassButtercup01", f"{KM}:ALPAGrassReeds02"], "meadow": [f"{KM}:ALPAGrassButtercup01", f"{KM}:ALPAGrassMarsh02"], "forest_floor": [f"{KM}:ALPAGrassButtercup01", f"{SK}:FernGrass01"]}},
     "valley-of-storms": {"look": "dirt_slopes", "grass": {"meadow": [f"{KM}:ALPAGrassLupin01", f"{SK}:ReachGrass02"], "marsh_grass": [f"{KM}:ALPAGrassLupin01", f"{KM}:ALPAGrassMarsh02"], "forest_floor": [f"{SK}:FernGrass01", f"{SK}:ReachGrass02"]}},
-    "lake-ulaish": {"look": "silt", "grass": {"marsh_grass": ["FlowerFields.esp:ESpLiverleaf02AGblue", "FlowerFields.esp:ESuColumbine01Blue", f"{KM}:ALPAGrassReeds03", f"{KM}:ALPAGrassReeds04", f"{KM}:ALPAGrassWildSaltrice03"], "meadow": ["FlowerFields.esp:ESpLiverleaf02AGblue", "FlowerFields.esp:ESuColumbine01Blue", f"{KM}:ALPAGrassReeds03", f"{KM}:ALPAGrassMarsh01"], "forest_floor": ["FlowerFields.esp:ESpLiverleaf02AGblue", "FlowerFields.esp:ESuColumbine01Blue", f"{KM}:ALPAGrassReeds03", f"{KM}:ALPAGrassFern01"]}},
+    "lake-ulaish": {"look": "silt", "grass": {"marsh_grass": ["FlowerFields.esp:ESpLiverleaf02AGblue", "FlowerFields.esp:ESuColumbine01Blue", f"{KM}:ALPAGrassReeds02", f"{KM}:ALPAGrassReeds01", f"{KM}:ALPAGrassWildSaltrice02"], "meadow": ["FlowerFields.esp:ESpLiverleaf02AGblue", "FlowerFields.esp:ESuColumbine01Blue", f"{KM}:ALPAGrassReeds02", f"{KM}:ALPAGrassMarsh01"], "forest_floor": ["FlowerFields.esp:ESpLiverleaf02AGblue", "FlowerFields.esp:ESuColumbine01Blue", f"{KM}:ALPAGrassReeds02", f"{KM}:ALPAGrassFern01"]}},
     "okuwun-rahei": {"look": "rock_grass", "grass": {"meadow": ["FlowerFields.esp:ESuWelshPoppy01Red", f"{SK}:VolcanicGrass02", "Dragonborn.esm:DLC02VolcanicAshGrass01"], "marsh_grass": ["FlowerFields.esp:ESuWelshPoppy01Red", f"{KM}:ALPAGrassWildSaltrice01", f"{SK}:VolcanicGrass02", f"{KM}:ALPAGrassRams01"], "forest_floor": ["FlowerFields.esp:ESuWelshPoppy01Red", f"{SK}:VolcanicGrass02", f"{SK}:FallForestGrass02"]}},
     "cape-percar": {"look": "twig_floor", "grass": {"meadow": ["FlowerFields.esp:ESpTulipRed", f"{KM}:ALPAGrassRams01", f"{SK}:FallForestGrass02"], "marsh_grass": ["FlowerFields.esp:ESpTulipRed", f"{KM}:ALPAGrassRams01", f"{KM}:ALPAGrassWildSaltrice02"], "forest_floor": ["FlowerFields.esp:ESpTulipRed", f"{KM}:ALPAGrassRams01", f"{SK}:ForestGrass02"]}},
-    "hatandros-bight": {"look": "grey_mud", "grass": {"meadow": [f"{KM}:ALPAGrassHeather02", f"{KM}:ALPAGrassHeather02"], "marsh_grass": [f"{KM}:ALPAGrassWildSaltrice01", f"{KM}:ALPAGrassHeather02"], "forest_floor": [f"{SK}:ForestGrass01", f"{KM}:ALPAGrassHeather02"]}},
-    "althii-archipelago": {"look": "meadow", "grass": {"marsh_grass": ["FlowerFields.esp:ESpTulip02Orange2", f"{KM}:ALPAGrassWildSaltrice01", f"{KM}:ALPAGrassWildSaltrice02", f"{KM}:ALPAGrassWildSaltrice03", f"{KM}:ALPAGrassWildSaltrice04"], "meadow": ["FlowerFields.esp:ESpTulip02Orange2", f"{KM}:ALPAGrassWildSaltrice04", f"{KM}:ALPAGrassReeds01"], "forest_floor": ["FlowerFields.esp:ESpTulip02Orange2", f"{SK}:ForestGrass01", f"{KM}:ALPAGrassFern01"]}},
-    "barsaebica": {"look": "pale_rock", "grass": {"marsh_grass": [f"{KM}:ALPAGrassYarrow01", f"{KM}:ALPAGrassMarsh02", f"{KM}:ALPAGrassReeds03"], "meadow": [f"{KM}:ALPAGrassMarsh02", f"{KM}:ALPAGrassYarrow01"], "forest_floor": [f"{SK}:ForestGrass01", f"{KM}:ALPAGrassYarrow01"]}},
+    "hatandros-bight": {"look": "grey_mud", "grass": {"meadow": ["FlowerFields.esp:ESuHeather02", "FlowerFields.esp:ESuHeather02"], "marsh_grass": [f"{KM}:ALPAGrassWildSaltrice01", "FlowerFields.esp:ESuHeather02"], "forest_floor": [f"{SK}:ForestGrass01", "FlowerFields.esp:ESuHeather02"]}},
+    "althii-archipelago": {"look": "meadow", "grass": {"marsh_grass": ["FlowerFields.esp:ESpTulip02Orange2", f"{KM}:ALPAGrassWildSaltrice01", f"{KM}:ALPAGrassWildSaltrice02", f"{KM}:ALPAGrassWildSaltrice02", f"{KM}:ALPAGrassWildSaltrice01"], "meadow": ["FlowerFields.esp:ESpTulip02Orange2", f"{KM}:ALPAGrassWildSaltrice01", f"{KM}:ALPAGrassReeds01"], "forest_floor": ["FlowerFields.esp:ESpTulip02Orange2", f"{SK}:ForestGrass01", f"{KM}:ALPAGrassFern01"]}},
+    "barsaebica": {"look": "pale_rock", "grass": {"marsh_grass": [f"{KM}:ALPAGrassYarrow01", f"{KM}:ALPAGrassMarsh02", f"{KM}:ALPAGrassReeds02"], "meadow": [f"{KM}:ALPAGrassMarsh02", f"{KM}:ALPAGrassYarrow01"], "forest_floor": [f"{SK}:ForestGrass01", f"{KM}:ALPAGrassYarrow01"]}},
     "aphon-isle": {"look": "pebble_earth", "grass": {"meadow": [f"{SK}:TundraGrass04", f"{SK}:TundraGrass01", f"{SK}:BeachGrass02"], "marsh_grass": [f"{SK}:TundraGrass04", f"{SK}:TundraGrass01"], "rock_grass": [f"{SK}:RockGrass01", f"{SK}:TundraGrass04"]}},
     "skeith-isle": {"look": "grey_gravel", "grass": {"meadow": [f"{KM}:ALPAGrassButtercup02", f"{SK}:BeachGrass01", f"{SK}:RockGrass01"], "marsh_grass": [f"{KM}:ALPAGrassButtercup02", f"{SK}:BeachGrass02", f"{SK}:TundraGrass01"], "rock_grass": [f"{SK}:RockGrass01"]}},
-    "aunike-ridge": {"look": "dark_grass_rocks", "grass": {"meadow": [f"{KM}:ALPAGrassHeather01", f"{SK}:ReachGrass02", f"{SK}:TundraGrass03"], "marsh_grass": [f"{KM}:ALPAGrassHeather01", f"{SK}:TundraGrass01"], "rock_grass": [f"{KM}:ALPAGrassHeather01", f"{SK}:RockGrass01"]}},
+    "aunike-ridge": {"look": "dark_grass_rocks", "grass": {"meadow": [f"{KM}:ALPAGrassHeather02", f"{SK}:ReachGrass02", f"{SK}:TundraGrass03"], "marsh_grass": [f"{KM}:ALPAGrassHeather02", f"{SK}:TundraGrass01"], "rock_grass": [f"{KM}:ALPAGrassHeather02", f"{SK}:RockGrass01"]}},
 }
 SIG = 0.2  # the least a region's signature ground holds of each classed habitat's palette
 PROV = list(PROVINCES)
@@ -298,6 +301,7 @@ def material_rows() -> list[dict]:
         ltex, grass, diffuse = MATERIALS[base]
         if scope:
             grass = (PROVINCES[scope] if scope in PROVINCES else REGIONS[scope])["grass"][base]
+        grass = list(dict.fromkeys(grass))  # a list names a grass once
         rows.append({"index": i, "id": m, "ltex": ltex, "grass": grass, "diffuse": diffuse, "road": base in rp.ROAD_MATERIALS,
                      "scope": scope or None})
     return rows
@@ -726,17 +730,23 @@ def encode_row(p: Painter, g: dict, cy: int):
 
 
 def quad_opacities(flat: np.ndarray, order: list[int]) -> np.ndarray:
-    """Vertex weights [289, NM] and a quadrant's layer order (base first) -> alpha opacities [n - 1, 289], inverted
-    top down so the stack's composite is the weights."""
+    """Vertex weights [289, NM] and a quadrant's layer order (base first) -> alpha opacities [n - 1, 289]: each alpha
+    layer's own weight (the engine adds the layers; the base shows 1 - their sum)."""
     n = len(order)
-    left = np.ones(flat.shape[0], np.float64)
     ops = np.zeros((max(n - 1, 0), flat.shape[0]))
-    for k in range(n - 1, 0, -1):  # top layer first
-        wk = flat[:, order[k]].astype(np.float64)
-        o = np.where(left > 1e-6, np.clip(wk / np.maximum(left, 1e-9), 0, 1), 0)
-        ops[k - 1] = o
-        left = left * (1 - o)
+    for k in range(1, n):
+        ops[k - 1] = np.clip(flat[:, order[k]].astype(np.float64), 0, 1)
     return ops
+
+
+def quantise(ops: np.ndarray) -> np.ndarray:
+    """Opacities [k, 289] -> uint8, rounded so no vertex's sum passes 255 (an overshoot is taken from its largest)."""
+    a = np.rint(np.asarray(ops) * 255).astype(np.int32)
+    if a.size:
+        over = np.maximum(a.sum(0) - 255, 0)
+        top = np.argmax(a, 0)
+        a[top, np.arange(a.shape[1])] -= over
+    return np.clip(a, 0, 255).astype(np.uint8)
 
 
 def quad_bytes(flat, order) -> bytes:
@@ -744,21 +754,19 @@ def quad_bytes(flat, order) -> bytes:
     mats = np.full(MAXL, 255, np.uint8)
     mats[:n] = order
     alph = np.zeros((MAXL - 1, Q * Q), np.uint8)
-    alph[:n - 1] = np.rint(quad_opacities(flat, order) * 255).astype(np.uint8)
+    alph[:n - 1] = quantise(quad_opacities(flat, order))
     return bytes([n]) + mats.tobytes() + alph.tobytes()
 
 
 def decode_quad(b: bytes, off: int):
-    """-> (materials list, composite weights [289, n]) as the engine stacks them."""
+    """-> (materials list, composite weights [289, n]) as the engine adds them (base = 1 - the alpha layers' sum)."""
     n = b[off]
     mats = list(b[off + 1:off + 1 + n])
     alph = np.frombuffer(b, np.uint8, (MAXL - 1) * Q * Q, off + 1 + MAXL).reshape(MAXL - 1, Q * Q).astype(np.float32) / 255
     w = np.zeros((Q * Q, n), np.float32)
-    w[:, 0] = 1
     for k in range(1, n):
-        o = alph[k - 1]
-        w[:, :k] *= (1 - o)[:, None]
-        w[:, k] = o
+        w[:, k] = alph[k - 1]
+    w[:, 0] = np.clip(1 - w[:, 1:].sum(1), 0, 1)
     return mats, w
 
 

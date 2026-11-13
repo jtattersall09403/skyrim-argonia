@@ -25,7 +25,8 @@ export class GrassLayer extends ObjectLayer {
   }
   invalidate() { this.stale = true; this._blockersStale = true; this._dirty = true; this.onDirty(); }
   setOn(on) { this.on = on; this.invalidate(); }
-  // The land texture that dominates a point: the top alpha layer over half opaque, else the quadrant's base.
+  // The land texture that dominates a point: the heaviest of its alpha layers (each opacity a weight) and the base
+  // (1 - their sum).
   texAt(x, y) {
     const t = this.terrain(); if (!t) return null;
     const cell = t.cellAt(x, y), c = t.cells.get(cell.join(',')); if (!c) return null;
@@ -33,8 +34,9 @@ export class GrassLayer extends ObjectLayer {
     const qi = (ly >= 0.5 ? 2 : 0) + (lx >= 0.5 ? 1 : 0), q = c.quadrants[qi]; if (!q) return null;
     const col = Math.max(0, Math.min(16, Math.round(((lx - (qi % 2) * 0.5) / 0.5) * 16)));
     const row = Math.max(0, Math.min(16, Math.round(((ly - (qi >> 1) * 0.5) / 0.5) * 16)));
-    for (let i = q.layers.length - 1; i >= 0; i--) { const a = q.layers[i].alpha; if (a && a[row * 17 + col] > 0.5) return q.layers[i].tex; }
-    return q.base;
+    let best = q.base, sum = 0, top = 0;
+    for (const l of q.layers) { const a = l.alpha ? l.alpha[row * 17 + col] : 0; sum += a; if (a > top) { top = a; best = l.tex; } }
+    return top > 1 - sum ? best : q.base;
   }
   grassesOf(tex) {
     const t = this.terrain(); const list = t?.ltex?.[tex]?.grasses || [];
