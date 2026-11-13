@@ -1,6 +1,7 @@
 """L2 (decision 0037): the restage resumes. A build VM killed mid-stage (spot reclaim) leaves step marks on disk; a
-rerun skips the done steps, redoes a cut one and starts clean on a changed key. The push resends only unsent parts."""
+rerun skips the done steps, redoes a cut one and starts clean on a changed key; one inner rar is on disk at a time. The push resends only unsent parts."""
 import os
+import pathlib
 import stat
 import sys
 from pathlib import Path
@@ -17,14 +18,17 @@ class Killed(Exception):
     pass
 
 
-def rig(tmp_path):
+def rig(tmp_path, size=4):
     calls = []
 
-    def unpack_fn(archive, dest):
-        calls.append("unpack")
-        (dest / "x").mkdir(parents=True)
-        (dest / "x" / "Data1.rar").write_text("1")
-        (dest / "x" / "Data2.rar").write_text("2")
+    def get_fn(m, archive, name, dest):
+        calls.append("get " + name)
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        dest.write_text(name)
+        return dest
+
+    def list_fn(inner):
+        return {inner.name + ".out": size}
 
     def unrar(inner, data):
         calls.append(inner.name)
@@ -32,35 +36,96 @@ def rig(tmp_path):
         if os.environ.get("KILL_AT") == inner.name:
             raise Killed
 
-    return calls, unpack_fn, unrar
+    return calls, get_fn, unrar, list_fn
 
 
-def run_stage(tmp_path, key, unpack_fn, unrar):
-    return stack.stage_nested(M, key, tmp_path / "a.tar", tmp_path / "src", tmp_path / "data",
-                              tmp_path / "progress" / "bmv.json", unpack_fn, unrar)
+def run_stage(tmp_path, key, get_fn, unrar, list_fn):
+    return stack.stage_nested(M, key, tmp_path / "a.tar", tmp_path / "work", tmp_path / "data",
+                              tmp_path / "progress" / "bmv.json", get_fn, unrar, list_fn)
 
 
 def test_resume_skips_done_steps(tmp_path, monkeypatch):
-    calls, up, unrar = rig(tmp_path)
+    calls, get, unrar, ls = rig(tmp_path)
     monkeypatch.setenv("KILL_AT", "Data2.rar")  # killed during the second rar
     with pytest.raises(Killed):
-        run_stage(tmp_path, "k1", up, unrar)
-    assert calls == ["unpack", "Data1.rar", "Data2.rar"]
+        run_stage(tmp_path, "k1", get, unrar, ls)
+    assert calls == ["get Data1.rar", "Data1.rar", "get Data2.rar", "Data2.rar"]
+    assert not list((tmp_path / "work").iterdir())  # each inner rar is deleted, laid or cut
     monkeypatch.delenv("KILL_AT")
     calls.clear()
-    r = run_stage(tmp_path, "k1", up, unrar)  # the rerun: no unpack, no Data1, Data2 redone
-    assert calls == ["Data2.rar"] and not r.fresh
-    assert (tmp_path / "data" / "Data1.rar.out").exists()  # the first rar's files were kept
+    r = run_stage(tmp_path, "k1", get, unrar, ls)  # the rerun: Data1 kept, Data2 fetched and laid again
+    assert calls == ["get Data2.rar", "Data2.rar"] and not r.fresh
+    assert (tmp_path / "data" / "Data1.rar.out").exists()
 
 
 def test_changed_key_starts_clean(tmp_path):
-    calls, up, unrar = rig(tmp_path)
-    run_stage(tmp_path, "k1", up, unrar)
+    calls, get, unrar, ls = rig(tmp_path)
+    run_stage(tmp_path, "k1", get, unrar, ls)
     (tmp_path / "data" / "stale").write_text("old")
     calls.clear()
-    run_stage(tmp_path, "k2", up, unrar)
-    assert calls == ["unpack", "Data1.rar", "Data2.rar"]
+    run_stage(tmp_path, "k2", get, unrar, ls)
+    assert calls == ["get Data1.rar", "Data1.rar", "get Data2.rar", "Data2.rar"]
     assert not (tmp_path / "data" / "stale").exists()
+
+
+def test_room_refuses_a_lay_before_the_disk_fills(tmp_path, monkeypatch):
+    """The peak is the laid copy plus one inner rar: room is asked for what the rar lays before unrar runs."""
+    calls, get, unrar, ls = rig(tmp_path, size=6 << 30)
+    monkeypatch.setattr(stack.shutil, "disk_usage", lambda p: type("U", (), {"free": 12 << 30})())
+    with pytest.raises(SystemExit, match="lay Data1.rar"):
+        run_stage(tmp_path, "k1", get, unrar, ls)
+    assert calls == ["get Data1.rar"] and not (tmp_path / "work" / "Data1.rar").exists()
+
+
+def test_inner_archive_from_the_tar_or_the_cache(tmp_path, monkeypatch):
+    import tarfile
+    src = tmp_path / "src" / "x"
+    src.mkdir(parents=True)
+    (src / "Data1.rar").write_bytes(b"one" * 1000)
+    (src / "Data2.rar").write_bytes(b"two" * 3000)
+    tar = tmp_path / "vault-bmv.tar"
+    with tarfile.open(tar, "w") as tf:
+        tf.add(src.parent, arcname="top")
+    got = stack.inner_archive(M, tar, "data2.RAR", tmp_path / "w" / "Data2.rar")
+    assert got.read_bytes() == b"two" * 3000
+
+    class Fake(stack.CachedArchive):  # the cache read by range, here from the same tar
+        def __init__(self, name):
+            self.pos, self.size = 0, tar.stat().st_size
+
+        def get(self, start, n, dest):
+            with open(tar, "rb") as f:
+                f.seek(start)
+                pathlib.Path(dest).write_bytes(f.read(n))
+    monkeypatch.setattr(stack, "CachedArchive", Fake)
+    got = stack.inner_archive(M, tmp_path / "absent" / "vault-bmv.tar", "Data2.rar", tmp_path / "w2" / "Data2.rar")
+    assert got.read_bytes() == b"two" * 3000
+    with pytest.raises(SystemExit, match="Data3.rar not in"):
+        stack.inner_archive(M, tar, "Data3.rar", tmp_path / "w" / "Data3.rar")
+
+
+def test_complete_reads_kept_listings_and_fetches_a_missing_one(tmp_path, monkeypatch):
+    calls, get, unrar, ls = rig(tmp_path)
+    r = run_stage(tmp_path, "k1", get, unrar, ls)
+    r.listing("Data1.rar").unlink()  # laid by an older stage that kept no listing
+    calls.clear()
+    monkeypatch.setattr(stack, "inner_archive", get)
+    monkeypatch.setattr(stack, "rar_listing", ls)
+    stack.complete_nested(M, tmp_path / "a.tar", tmp_path / "data", tmp_path / "work", r)
+    assert calls == ["get Data1.rar"]
+    (tmp_path / "data" / "Data2.rar.out").unlink()
+    with pytest.raises(SystemExit, match="1 archive files not laid"):
+        stack.complete_nested(M, tmp_path / "a.tar", tmp_path / "data", tmp_path / "work", r)
+    r.clear()
+    assert not list((tmp_path / "progress").iterdir())
+
+
+def test_rar_listing_reads_each_file_block(monkeypatch):
+    out = ("Archive: x.rar\nDetails: RAR 5\n\n        Name: Meshes\\a.nif\n        Type: File\n        Size: 196412\n"
+           " Packed size: 1\n\n        Name: Meshes\n        Type: Directory\n\n        Name: b.dds\n        Type: File\n"
+           "        Size: 7\n")
+    monkeypatch.setattr(stack.subprocess, "run", lambda *a, **k: type("R", (), {"stdout": out})())
+    assert stack.rar_listing("x.rar") == {"Meshes/a.nif": 196412, "b.dds": 7}
 
 
 def test_mark_survives_cut_write(tmp_path):
@@ -107,28 +172,3 @@ def test_send_tar_resends_only_unmarked_parts(tmp_path, monkeypatch):
     assert sorted(p.name for p in machine.iterdir()) == first  # only the lost part came back
     stack.send_tar(src, out, "m", "d2")  # new content: markers of d1 are dropped
     assert not (out / "parts" / "m-d1").exists()
-
-
-def test_rerun_after_tar_removed(tmp_path):
-    # every rar laid, then the caller removed the unpacked tar and a later check failed (2026-11-08): the rerun lays
-    # nothing and needs no tar
-    import shutil
-    calls, up, unrar = rig(tmp_path)
-    run_stage(tmp_path, "k1", up, unrar)
-    shutil.rmtree(tmp_path / "src")
-    calls.clear()
-    r = run_stage(tmp_path, "k1", up, unrar)
-    assert calls == [] and not r.fresh
-
-
-def test_rerun_with_rar_left_and_tar_gone_unpacks_again(tmp_path, monkeypatch):
-    import shutil
-    calls, up, unrar = rig(tmp_path)
-    monkeypatch.setenv("KILL_AT", "Data2.rar")
-    with pytest.raises(Killed):
-        run_stage(tmp_path, "k1", up, unrar)
-    monkeypatch.delenv("KILL_AT")
-    shutil.rmtree(tmp_path / "src")
-    calls.clear()
-    run_stage(tmp_path, "k1", up, unrar)
-    assert calls == ["unpack", "Data2.rar"]

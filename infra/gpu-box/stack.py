@@ -4,7 +4,8 @@ the game machine, with exact undo.
 
   stack.py fetch [--record] [--only ID ...]   download each row to ~/.argonia/mods (local, then the private cache in S3,
                                               then the Nexus API or GitHub); check sha256; --record writes new hashes
-  stack.py stage [--dev] [--into DIR]         unpack and place each row into ~/.argonia/stack/MO2/mods/<id>/, apply
+  stack.py stage [--dev] [--into DIR] [--reserve-gb N]
+                                              unpack and place each row into ~/.argonia/stack/MO2/mods/<id>/, apply
                                               the recorded FOMOD choices and ini settings, write the profile
                                               (modlist, plugins.txt, loadorder.txt) and installed.json (every file's hash)
   stack.py plan [--dev]                       what stage would unpack and the room it needs (JSON)
@@ -22,6 +23,7 @@ Machine: `stack.py --machine NAME <cmd>` (or ARGONIA_PLAY) drives that game mach
 import argparse
 import fnmatch
 import hashlib
+import io
 import json
 import os
 import pathlib
@@ -29,6 +31,7 @@ import re
 import shutil
 import struct
 import subprocess
+import tarfile
 import tempfile
 import urllib.error
 import urllib.parse
@@ -65,6 +68,7 @@ DATA_DIRS = {"meshes", "textures", "scripts", "skse", "interface", "sound", "mus
              "netscriptframework", "dyndolod", "materials", "platform"}
 PLUGIN_EXT = (".esp", ".esm", ".esl")
 RESERVE = 10 << 30  # the build VM's disk is shared by every lane: no write over 2 GB may leave less than this free
+FLOOR = 3 << 30  # the least `stage --reserve-gb` may lower it to, for one run the lead makes with no other writer
 
 
 def room(need, what):
@@ -266,116 +270,161 @@ class Resume:
         tmp.write_text(json.dumps({"key": self.key, "steps": self.steps}))
         tmp.replace(self.path)  # atomic: a kill leaves the old or the new list, never half
 
+    def listing(self, name):
+        """Where an inner archive's member listing is kept until the row is staged (stage_nested, complete_nested)."""
+        return self.path.with_name(f"{self.path.stem}.{name}.json")
+
     def clear(self):
         self.path.unlink(missing_ok=True)
+        for f in self.path.parent.glob(f"{self.path.stem}.*.json"):
+            f.unlink()
 
 
-def unrar_into(inner, data, names=None):
-    """Lay a rar into Data; with `names`, only those members (an @listfile, one exact name a line)."""
-    if names is None:
-        subprocess.run(["unrar", "x", "-o+", "-inul", str(inner), str(data) + "/"], check=True)
-        return
-    lst = pathlib.Path(str(inner) + ".extract.lst")
-    lst.write_text("\n".join(names) + "\n")
-    subprocess.run(["unrar", "x", "-o+", "-inul", str(inner), "@" + str(lst), str(data) + "/"], check=True)
-    lst.unlink()
+def unrar_into(inner, data):
+    """Lay a rar into Data (unrar -o+ overwrites what a cut run left)."""
+    subprocess.run(["unrar", "x", "-o+", "-inul", str(inner), str(data) + "/"], check=True)
 
 
-def list_rar(inner):
-    """Member names of a rar, as stored (case kept)."""
-    out = subprocess.run(["unrar", "lb", str(inner)], check=True, capture_output=True, text=True).stdout
-    return [n for n in out.splitlines() if n and not n.endswith("/")]
+def rar_listing(inner):
+    """{member (as stored, '/'): unpacked size} of every file a rar holds (`unrar lt`: a Name, Type, Size block each)."""
+    out = subprocess.run(["unrar", "lt", str(inner)], check=True, capture_output=True, text=True).stdout
+    files, cur = {}, {}
+
+    def flush():
+        if cur.get("Type") == "File" and "Name" in cur:
+            files[cur["Name"].replace("\\", "/")] = int(cur.get("Size", "0").split()[0])
+
+    for line in out.splitlines():
+        k, sep, v = line.strip().partition(": ")
+        if not sep:
+            continue
+        if k == "Name":
+            flush()
+            cur = {}
+        cur[k] = v
+    flush()
+    return files
 
 
-def keep_select(listings, m):
-    """The members of the row's rars that its `keep` (and `drop`) leave in Data: {rar: [names]}. The extraction list is
-    built from the keep list, so BM&V's 21 GB is never laid, only its few hundred files. A keep glob that matches no
-    member is a red (a stale entry or a case/prefix slip), never skipped quietly."""
-    globs, drops = m["keep"], m.get("drop", [])
-    sel, hit = {}, set()
-    for rar, names in listings.items():
-        sel[rar] = []
-        for n in names:
-            r = n.lower().replace("\\", "/")
-            if any(fnmatch.fnmatch(r, d.lower()) for d in drops):
-                continue
-            g = [x for x in globs if fnmatch.fnmatch(r, x)]
-            if g or (r.count("/") == 0 and pathlib.Path(r).suffix in PLUGIN_EXT):
-                sel[rar].append(n)
-                hit.update(g)
-    missing = [x for x in globs if x not in hit]
-    if missing:
-        raise SystemExit(f"{m['id']}: keep entries matching nothing in {', '.join(listings)}: {missing}")
-    return sel
+class CachedArchive(io.RawIOBase):
+    """A file in the private cache read by byte range (seekable), so a tar's member headers are read without
+    fetching the tar."""
+
+    def __init__(self, name):
+        self.key, self.pos = f"mods/{name}", 0
+        r = subprocess.run(["aws", "s3api", "head-object", "--bucket", CACHE_BUCKET, "--key", self.key, "--region",
+                            "eu-west-2", "--query", "ContentLength", "--output", "text"],
+                           capture_output=True, text=True, check=True)
+        self.size = int(r.stdout.strip())
+
+    def readable(self):
+        return True
+
+    def seekable(self):
+        return True
+
+    def tell(self):
+        return self.pos
+
+    def seek(self, off, whence=0):
+        self.pos = off if whence == 0 else self.pos + off if whence == 1 else self.size + off
+        return self.pos
+
+    def readinto(self, b):
+        n = min(len(b), self.size - self.pos)
+        if n <= 0:
+            return 0
+        with tempfile.NamedTemporaryFile() as t:
+            self.get(self.pos, n, t.name)
+            data = pathlib.Path(t.name).read_bytes()
+        b[:len(data)] = data
+        self.pos += len(data)
+        return len(data)
+
+    def get(self, start, n, dest):
+        subprocess.run(["aws", "s3api", "get-object", "--bucket", CACHE_BUCKET, "--key", self.key, "--region",
+                        "eu-west-2", "--range", f"bytes={start}-{start + n - 1}", str(dest)],
+                       check=True, capture_output=True)
 
 
-KEPT_HEADROOM = 1 << 30  # what a keep-listed row lays beyond its archive's own unpack (BM&V: measured 191 MB)
+def inner_archive(m, archive, name, dest):
+    """One inner archive of a nested row (BM&V's Data2.rar) out of the row's tar into `dest`: from the local tar when
+    it is here, else by byte range from the private cache, so the outer tar never needs to be on disk beside it."""
+    local = archive.exists()
+    fo = open(archive, "rb") if local else io.BufferedReader(CachedArchive(archive.name), 1 << 16)
+    with fo, tarfile.open(fileobj=fo, mode="r:") as tf:
+        for ti in tf:
+            if ti.isfile() and pathlib.PurePosixPath(ti.name).name.lower() == name.lower():
+                room(ti.size, f"{m['id']}: fetch {name}")
+                dest.parent.mkdir(parents=True, exist_ok=True)
+                if local:
+                    with tf.extractfile(ti) as src, open(dest, "wb") as out:
+                        shutil.copyfileobj(src, out, 1 << 22)
+                else:
+                    fo.raw.get(ti.offset_data, ti.size, dest)
+                if dest.stat().st_size != ti.size:
+                    raise SystemExit(f"{m['id']}: {name} came out {dest.stat().st_size} bytes, the tar holds {ti.size}")
+                return dest
+    raise SystemExit(f"{m['id']}: {name} not in {archive.name}")
 
 
-def stage_need(m, size):
-    """Bytes a row's stage needs free: the archive unpacked plus the staged copy (x3). A nested row with a keep list
-    lays only its keep list: its archive's members (x1) plus the kept files, never the full 21 GB."""
-    if m.get("nested") and m.get("keep"):
-        return size + KEPT_HEADROOM
-    return size * 3
+def lay_need(listing, data):
+    """Bytes laying a rar adds to Data: each member not already there at its size (a resumed lay overwrites in place)."""
+    need = 0
+    for rel, size in listing.items():
+        f = data / rel
+        if not (f.exists() and f.stat().st_size == size):
+            need += size - (f.stat().st_size if f.exists() else 0)
+    return need
 
 
-def stage_nested(m, key, archive, src, data, progress, unpack_fn=None, unrar_fn=unrar_into, list_fn=list_rar):
-    """A row whose archive holds archives (BM&V: a 9 GB tar of Data1.rar, Data2.rar, 21 GB laid). Each step is marked
-    on disk when done; a rerun after a kill skips the done steps, and a step cut half-way (no mark) is redone over its
-    partial files (unrar -o+ overwrites). A changed stage key (or no mark) clears the partial copy first.
-    A row with a `keep` list lays only the members its keep list names, plus the textures those meshes name (a second
-    pass), instead of the whole 21 GB that prune would then delete."""
-    unpack_fn = unpack_fn or unpack
+def nested_listing(m, archive, name, work, r):
+    """An inner rar's member listing, kept beside the row's progress marks; a missing one is read from the rar again
+    (fetched alone, listed, deleted)."""
+    f = r.listing(name)
+    if f.exists():
+        return json.loads(f.read_text())
+    inner = inner_archive(m, archive, name, work / name)
+    try:
+        listing = rar_listing(inner)
+    finally:
+        inner.unlink(missing_ok=True)
+    f.write_text(json.dumps(listing))
+    return listing
+
+
+def stage_nested(m, key, archive, work, data, progress, get_fn=inner_archive, unrar_fn=unrar_into, list_fn=rar_listing):
+    """A row whose archive holds archives (BM&V: a 9 GB tar of Data1.rar and Data2.rar, 26 GB laid). One inner rar at a
+    time is taken out of the tar (or read by range from the cache), listed, laid and deleted, so the disk never holds
+    more than the laid copy plus one inner rar; `room` is asked before the rar is fetched and again before it is laid.
+    Each rar is marked on disk when laid; a rerun after a kill skips the laid rars and redoes a cut one over its
+    partial files. A changed stage key (or no mark) clears the partial copy first."""
     r = Resume(progress, key)
     if r.fresh:
         shutil.rmtree(data, ignore_errors=True)
-        shutil.rmtree(src, ignore_errors=True)
-    todo = [name for name in m["nested"] if not r.done(f"rar:{name}")]
-    need = bool(todo) or bool(m.get("keep") and not r.done("textures"))  # the archive's rars are still read
-    # the unpacked tar is removed once every inner rar is laid, before the checks that follow; a rerun after one of
-    # those failed (2026-11-08: the completeness check) has nothing left to unpack, and one with a rar still to lay
-    # unpacks again if the tar's copy is gone
-    if need and (not r.done("unpack") or not src.exists()):
-        unpack_fn(archive, src)
-        r.mark("unpack")
-        print(f"  {m['id']}: unpacked the archive", flush=True)
+        r.clear()
     data.mkdir(parents=True, exist_ok=True)
-    inners = {}
-    for name in (m["nested"] if need else []):
-        inner = ci(data_root(src), name)
-        if inner is None:
-            raise SystemExit(f"{m['id']}: {name} not in the archive")
-        inners[name] = inner
-    sel = None
-    if m.get("keep") and need:
-        listings = {name: list_fn(inner) for name, inner in inners.items()}
-        sel = keep_select(listings, m)
-        print(f"  {m['id']}: extraction list {sum(len(v) for v in sel.values())} of "
-              f"{sum(len(v) for v in listings.values())} members", flush=True)
-    for name, inner in inners.items():
+    r.path.parent.mkdir(parents=True, exist_ok=True)
+    for name in m["nested"]:
         if r.done(f"rar:{name}"):
             print(f"  {m['id']}: {name} already laid (resumed)", flush=True)
             continue
-        if sel is None:
+        inner = get_fn(m, archive, name, work / name)
+        try:
+            listing = list_fn(inner)
+            r.listing(name).write_text(json.dumps(listing))
+            room(lay_need(listing, data), f"{m['id']}: lay {name}")
             unrar_fn(inner, data)
-        elif sel[name]:
-            unrar_fn(inner, data, sel[name])
+        finally:
+            inner.unlink(missing_ok=True)
         r.mark(f"rar:{name}")
         print(f"  {m['id']}: laid {name}", flush=True)
-    if sel is not None and not r.done("textures"):
-        have = {str(f.relative_to(data)).lower().replace("\\", "/") for f in data.rglob("*") if f.is_file()}
-        wanted = {}
-        for f in data.rglob("*.nif"):
-            for t in nif_textures(f.read_bytes()):
-                wanted[t] = None
-        for name in inners:
-            more = [n for n in listings[name] if n.lower().replace("\\", "/") in wanted and n.lower() not in have]
-            if more:
-                unrar_fn(inners[name], data, more)
-        r.mark("textures")
-        print(f"  {m['id']}: laid the meshes' textures", flush=True)
     return r
+
+def stage_need(m, size):
+    """Bytes a plain row's stage needs free: the archive unpacked plus the staged copy (x3). A nested row asks `room`
+    itself, one inner rar at a time (stage_nested)."""
+    return size * 3
 
 
 def ci(base, rel):
@@ -517,15 +566,6 @@ def place(m, src, data, tools, root):
     if how == "tool":
         copy_into(src, tools / m["id"])
         return []
-    if m.get("nested"):  # archives inside the archive (the vault's BM&V part: Data1.rar, Data2.rar), unpacked into Data
-        base = data_root(src)
-        for name in m["nested"]:
-            inner = ci(base, name)
-            if inner is None:
-                raise SystemExit(f"{m['id']}: {name} not in the archive")
-            subprocess.run(["unrar", "x", "-o+", "-inul", str(inner), str(data) + "/"], check=True)
-            inner.unlink()
-        return []
     if m.get("pick"):  # archive-relative paths, "x/*" copies x's contents; fixed choices from 0.0
         for part in m["pick"]:
             p = ci(src, part[:-2] if part.endswith("/*") else part)
@@ -551,22 +591,13 @@ def left_out_on_purpose(p, m):
     return any(fnmatch.fnmatch(p, d.lower()) or p.startswith(d.lower().rstrip("/") + "/") for d in m.get("drop", []))
 
 
-def complete_nested(m, archive, data):
-    """Every file of a nested row's inner archives is laid (owner, 2026-11-05: 100% of BM&V, nothing missing): list each
-    inner rar's files with `unrar lt` and fail on any not in the staged copy, bar what prune removes on purpose."""
-    with tempfile.TemporaryDirectory() as t:
-        subprocess.run(["tar", "-xf", str(archive), "-C", t, "--wildcards", *[f"*/{n}" for n in m["nested"]]], check=True)
-        want = set()
-        for n in m["nested"]:
-            inner = next(pathlib.Path(t).rglob(n))
-            out = subprocess.run(["unrar", "lt", str(inner)], check=True, capture_output=True, text=True).stdout
-            name = None
-            for line in out.splitlines():
-                line = line.strip()
-                if line.startswith("Name: "):
-                    name = line[6:]
-                elif line.startswith("Type: ") and line[6:] == "File" and name:
-                    want.add(name.replace("\\", "/").lower())
+def complete_nested(m, archive, data, work, r):
+    """Every file of a nested row's inner archives is laid (owner, 2026-11-05: 100% of BM&V, nothing missing): each
+    inner rar's listing (kept when it was laid, else read again one rar at a time) against the staged copy, bar what
+    prune removes on purpose."""
+    want = set()
+    for name in m["nested"]:
+        want.update(n.lower() for n in nested_listing(m, archive, name, work, r))
     have = {str(f.relative_to(data)).lower() for f in data.rglob("*") if f.is_file()}
     missing = sorted(p for p in want - have if not left_out_on_purpose(p, m))
     if missing:
@@ -615,8 +646,6 @@ def prune(data, m):
                 gone += sum(1 for x in f.rglob("*") if x.is_file()) if f.is_dir() else 1
                 shutil.rmtree(f) if f.is_dir() else f.unlink()
         print(f"  {m['id']}: drop {pat}: {gone} files" + ("" if gone else " (matched nothing: a stale drop list?)"))
-    if m.get("keep"):
-        keep_subset(data, m["keep"])
     for d in sorted((x for x in data.rglob("*") if x.is_dir()), key=lambda x: -len(x.parts)):
         if not any(d.iterdir()):
             d.rmdir()
@@ -636,21 +665,6 @@ def nif_textures(raw):
         t = t[t.find("textures/"):] if "textures/" in t else t.lstrip("/")  # a length byte may precede it
         out.add(t if t.startswith("textures/") else "textures/" + t)
     return out
-
-
-def keep_subset(data, globs):
-    """A row's `keep`: only the Data paths the world references (globs, lower case), the row's plugins, and every
-    texture a kept mesh names (read from the nif's strings) stay; the rest of the row is removed (BM&V, 9.6 GB, of
-    which the world references 24 meshes: dependency audit 2026-10-29)."""
-    files = {str(f.relative_to(data)).lower().replace("\\", "/"): f for f in data.rglob("*") if f.is_file()}
-    kept = {r for r in files if any(fnmatch.fnmatch(r, g) for g in globs)
-            or (r.count("/") == 0 and pathlib.Path(r).suffix in PLUGIN_EXT)}
-    for r in [r for r in kept if r.endswith(".nif")]:
-        kept.update(t for t in nif_textures(files[r].read_bytes()) if t in files)
-    for r, f in files.items():
-        if r not in kept:
-            f.unlink()
-    print(f"  keep: {len(kept)} of {len(files)} files")
 
 
 def set_ini(text, section, key, value):
@@ -741,7 +755,7 @@ def vanilla_plugins():
 # manifest fields that describe a row without changing what is laid
 DOC_FIELDS = {"licence", "permission_summary", "ai_clause", "permission_ask", "permission_evidence", "runtime",
               "conflicts", "linked_or_forked_by", "plugins",
-              "name", "why", "note", "drop_note", "keep_note"}
+              "name", "why", "note", "drop_note", "keep_note", "vanilla_note"}
 
 
 def stage_key(m) -> str:
@@ -785,6 +799,9 @@ def behind_main(repo=REPO):
 
 
 def cmd_stage(a):
+    global RESERVE
+    if getattr(a, "reserve_gb", None) is not None:
+        RESERVE = max(int(a.reserve_gb) << 30, FLOOR)
     rows = chosen(manifest(), a.dev)
     STACK, MO2 = stack_dirs(a)  # noqa: N806 (a scratch stage for a dry run, else the build VM's stack)
     if not getattr(a, "into", None):
@@ -821,17 +838,16 @@ def cmd_stage(a):
                 pruned.add(m["id"])
         else:
             src = work / m["id"]
-            if not archive_path(m).exists():
-                fetch_one(m, secret("NEXUS_API_KEY"))
             prog = STACK / "progress" / f"{m['id']}.json"
-            resume = Resume(prog, key) if m.get("nested") else None
-            if resume is None or resume.fresh:  # a resumed row keeps the partial copy it is part-way through
-                shutil.rmtree(data, ignore_errors=True)  # the old staged copy first: BM&V's is 21 GB on a 116 GB disk
-                room(stage_need(m, archive_path(m).stat().st_size), f"unpack {m['id']}")  # unpacked plus staged copy
-            if resume is not None:
+            if m.get("nested"):  # one inner rar at a time, out of the local tar or by range from the cache
                 resume = stage_nested(m, key, archive_path(m), src, data, prog)
                 taken = []
             else:
+                if not archive_path(m).exists():
+                    fetch_one(m, secret("NEXUS_API_KEY"))
+                shutil.rmtree(data, ignore_errors=True)
+                room(stage_need(m, archive_path(m).stat().st_size), f"unpack {m['id']}")  # unpacked plus staged copy
+                resume = None
                 unpack(archive_path(m), src)
                 data.mkdir()
                 if m.get("install") == "tool":  # a tool is never a mod: nothing of it reaches Data
@@ -841,8 +857,9 @@ def cmd_stage(a):
             if m.get("asset_only"):
                 assets_only(data)
             prune(data, m)
-            if m.get("nested") and not m.get("keep"):
-                complete_nested(m, archive_path(m), data)
+            if resume is not None:
+                complete_nested(m, archive_path(m), data, src, resume)
+                shutil.rmtree(src, ignore_errors=True)
             apply_ini(m, data)
             apply_files(m, data)
             apply_vanilla(m, data)
@@ -1318,6 +1335,8 @@ def main():
         elif name == "stage":
             s.add_argument("--into", help="stage into this dir instead of ~/.argonia/stack (a dry run)")
             s.add_argument("--group", help="with --into: only this group's rows")
+            s.add_argument("--reserve-gb", type=int, help="free space every big write must leave, for this run "
+                           "(default 10, never under 3): only when no rebuild or lane that writes is running")
     sub.add_parser("push").add_argument("--only", nargs="*", help="send these mods alone (the rest stay as on the machine)")
     for name in ("menu", "prune", "evict", "animdata"):
         sub.add_parser(name)

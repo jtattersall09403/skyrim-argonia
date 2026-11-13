@@ -61,7 +61,7 @@ One row per line, filled as each lane lands: the cause found, the change, the pr
 | L7 | Praise | none | none |
 | L8 | Praise | none | none |
 | L9 | Music: combat outranked explore and had no track that could play (L14). Grass: KoTM cattails stand 273 to 369 units against Skyrim's tallest 90 | as L14; over-tall grasses replaced by the shorter grass of their family; `grasscheck` | read-back `music` 38520/38520 explore; `grasscheck` 7 over 90 before, 0 after |
-| L10 | Creatures: D1 spot had 0 within 2 cells. Birds: a walking chicken-rig race. Splash: BM&V's splash mesh names a texture nothing ships | creatures as L28; birds become Skyrim's flying critters; bmv row drops `watersplash.nif` and `assets_audit engine_overrides` gates the class | D1 now crab 42 m, rat 59 m; `engine_overrides` 1 before, 0 after |
+| L10 | Creatures: D1 spot had 0 within 2 cells. Birds: a walking chicken-rig race. Splash: BM&V's splash mesh names a texture nothing ships | creatures as L28; birds become Skyrim's flying critters; the `argonia-skse` row lays Skyrim's own `watersplash.nif` from the player's Meshes0.bsa above bmv (bmv's stage key unchanged, so its copy is not re-laid) and `assets_audit engine_overrides` gates the class on the load order's winner | D1 now crab 42 m, rat 59 m; `engine_overrides` 1 before, 0 after |
 | L11 | Trees seated by a source pivot sink; downhill trunk side in the air | trunk foot ring's highest point 0.1 m under the ground; a trunk over a bank is refused | main 76,250 trunk hovers; small world 0 |
 | L12 | Rocks judged by a shrunk box and turned only when an open side was measured | each open rim found and buried 0.05 m, at the best of 16 yaws, else refused; audit is the place check | main 9,282 hollow shows; small world 0 |
 | L13 | The band ability added damage on top of the mod's own blow (hackwing 60) | `toughness.py measure` reads each record's blow; the ability brings it to the band's target (D0, D1 7.5) | peak blow D1 8; test |
@@ -89,7 +89,7 @@ Commands from the lanes still owed, in order, after the full rebuild:
 
 1. `python3 -m tools.newworld.start_check`: PASS for both cards.
 2. `infra/gpu-box/lod.sh map` and `lod.sh send`, then `infra/gpu-box/deploy.sh`; `infra/gpu-box/places_deploy.sh` if the places belong on the card.
-3. `python3 infra/gpu-box/stack.py stage` (lays `argonia-recolours`, SmoothCam.json, FreeClimb Diagnostics=1, drops BM&V's splash), `stack.py push`, then `infra/gpu-box/run.sh ps 'C:\argonia\infra\stack.ps1 on -World NewWorld'` and `... on -World Argonia`; bring `~/.argonia/stack/installed-NewWorld.json` level.
+3. `python3 infra/gpu-box/stack.py stage` (lays `argonia-recolours`, SmoothCam.json, FreeClimb Diagnostics=1, Skyrim's own splash over BM&V's): staged green 2026-11-13; `stack.py push`, then `infra/gpu-box/run.sh ps 'C:\argonia\infra\stack.ps1 on -World NewWorld'` and `... on -World Argonia`; bring `~/.argonia/stack/installed-NewWorld.json` level.
 4. `tooling/job_guard.sh run --gpu nw-lod-selftest -- infra/gpu-box/lod.sh selftest`, then `tooling/job_guard.sh wait nw-lod-selftest`.
 5. `NW_LOD=1 LOD_FORCE="texgen dyndolod" tooling/job_guard.sh run --gpu nw-lod -- infra/gpu-box/lod.sh stage`, then `tooling/job_guard.sh wait nw-lod`; `out/newworld/lod/check.txt` shows 0 stale billboards.
 6. Atlas: `python3 -m tools.newworld.map_page`, publish `out/newworld/map/index.html` to https://claude.ai/artifact/SwMRMPndRrXfEKtTuodNsb.

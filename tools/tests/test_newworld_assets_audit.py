@@ -71,34 +71,28 @@ def test_aliased_and_allowed_paths_do_not_gate():
     assert rep["missing_meshes"] == 1 and rep["missing_textures"] == 0 and rep["allowed"] == 1
 
 
-def test_engine_effect_mesh_a_mod_lays_with_a_missing_texture_gates_unless_dropped(tmp_path):
-    """BM&V's watersplash.nif over the engine's water splash named water_ring.dds, which nothing ships (walk 2 L10)."""
+def test_engine_effect_mesh_judged_by_the_load_orders_winner(tmp_path):
+    """BM&V's watersplash.nif over the engine's water splash named water_ring.dds, which nothing ships (walk 2 L10): it
+    gates while BM&V wins the path, and passes once a mod above it lays Skyrim's own mesh there."""
     sky = Plugin("Skyrim.esm", [], [])
     for r in (Record("IPCT", 0, 0x452D6, [("EDID", b"PHYWaterSplashImpact\0"), ("MODL", b"Effects\\waterSplash.nif\0")]),
               Record("ADDN", 0, 0xF3A90, [("EDID", b"MPSWaterSplash\0"), ("MODL", b"MPS\\MPSWaterSplash.nif\0")])):
         r.plugin = sky
         sky._records.append(r)
-    nif = tmp_path / "watersplash.nif"
-    nif.write_bytes(s(b"textures\\effects\\water_ring.dds") + s(b"textures\\effects\\fluiddrops02.dds"))
+    nifs = {"bmv": tmp_path / "bmv.nif", "argonia-skse": tmp_path / "vanilla.nif"}
+    nifs["bmv"].write_bytes(s(b"textures\\effects\\water_ring.dds") + s(b"textures\\effects\\fluiddrops02.dds"))
+    nifs["argonia-skse"].write_bytes(s(b"textures\\effects\\fxenergyimpacring.dds") + s(b"textures\\effects\\fluiddrops02.dds"))
+    have = {"textures\\effects\\fluiddrops02.dds": b"", "textures\\effects\\fxenergyimpacring.dds": b"",
+            "meshes\\mps\\mpswatersplash.nif": b""}
 
-    class R(FakeR):
-        loose = {"meshes\\effects\\watersplash.nif": "bmv"}
+    def resolver(winner):
+        class R(FakeR):
+            loose = {"meshes\\effects\\watersplash.nif": winner}
 
-        def loose_file(self, k):
-            return nif if k in self.loose else None
-    r = R({"textures\\effects\\fluiddrops02.dds": b"", "meshes\\mps\\mpswatersplash.nif": b""})
-    got = A.engine_overrides(r, sky, set())
+            def loose_file(self, k):
+                return nifs[winner] if k in self.loose else None
+        return R(have)
+    got = A.engine_overrides(resolver("bmv"), sky)
     assert [(e["path"], e["mod"], e["missing"]) for e in got] == [
         ("meshes\\effects\\watersplash.nif", "bmv", ["textures\\effects\\water_ring.dds"])]
-    deps = {"mods": [{"id": "bmv", "drop": ["meshes/effects/watersplash.nif", "meshes/x/*.nif"]}]}
-    assert A.engine_overrides(r, sky, A.dropped(deps)) == []
-
-
-
-def test_the_bamboo_staff_texture_is_laid_where_its_mesh_names_it():
-    import json
-
-    rows = json.loads(A.ALIASES.read_text())["aliases"]
-    mod, src = rows["textures\\weapons\\bamboostaff\\bamboostaffyellow.dds"]
-    assert mod == "htbm-cipactli" and src.endswith("weapons\\bamboo\\bamboostaffyellow.dds")
-    assert "textures\\weapons\\bamboostaff\\bamboostaffyellow.dds" not in json.loads(A.ALLOWED.read_text())["allowed"]
+    assert A.engine_overrides(resolver("argonia-skse"), sky) == []

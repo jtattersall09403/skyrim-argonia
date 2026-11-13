@@ -993,10 +993,9 @@
     "meshes/architecture/whiterun/wrbuildings/wrhousewind04.nif",
     "meshes/architecture/whiterun/wrbuildings/wrjorvaskr01.nif",
     "meshes/architecture/whiterun/wrbuildings/wrtempleofk01.nif",
-    "meshes/furniture/smallcookingpot.nif",
-    "meshes/effects/watersplash.nif"
+    "meshes/furniture/smallcookingpot.nif"
    ],
-   "drop_note": "BM&V's meshes at vanilla paths that name textures nothing staged holds; each path listed is also in the game's own archives, so the vanilla mesh draws. The buildings: edited for Enhanced Lighting (ELFX), their windows and glows name textures\\effects\\ELFX\\* (flat blue panes, owner walk 2026-11-07, Lilmoth; docs/phases/1-stack-in-bmv.md). The water splash (the model of Skyrim.esm's IPCT PHYWaterSplashImpact, every water of every world): BM&V's names textures\\effects\\water_ring.dds where vanilla's names FXEnergyImpacRing.dds, so its ring drew dark in every water (owner walk 2 L10, 2026-11-13; docs/phases/new-worldspace-plan/walk2/air.md)",
+   "drop_note": "BM&V's meshes at vanilla paths that name textures nothing staged holds; each path listed is also in the game's own archives, so the vanilla mesh draws. The buildings: edited for Enhanced Lighting (ELFX), their windows and glows name textures\\effects\\ELFX\\* (flat blue panes, owner walk 2026-11-07, Lilmoth; docs/phases/1-stack-in-bmv.md).",
    "note": "the vault part holds the ModDB download as Data1.rar and Data2.rar; everything is laid: Black Marsh.esm, Black Marsh North.esp, Valenwood.esp, BosmerArmorMaty743.esm, all meshes, textures and LOD settings (2026-11-05: the old keep and drop lists, made for the generated world, had left out three plugins and almost all the art)",
    "licence": "none stated",
    "permission_summary": "ModDB page states no permissions and no credits, and bundles third-party resources; the audit records it as 'available for this project', but using its contents in our mod without the author's written grant is unconfirmed.",
@@ -1160,7 +1159,14 @@
    "ai_clause": "none: our own code",
    "permission_ask": false,
    "runtime": "version independent (Address Library), SKSE 2.3.1 on 1.7.104.0",
-   "conflicts": "none known: reads TK Dodge RE's animation-graph events TKDR_DodgeStart and TKDR_DodgeEnd; adds no record and no hook"
+   "conflicts": "none known: reads TK Dodge RE's animation-graph events TKDR_DodgeStart and TKDR_DodgeEnd; adds no record and no hook",
+   "vanilla_files": {
+    "meshes/effects/watersplash.nif": [
+     "Skyrim - Meshes0.bsa",
+     "meshes/effects/watersplash.nif"
+    ]
+   },
+   "vanilla_note": "Skyrim's own water splash (the model of Skyrim.esm's IPCT PHYWaterSplashImpact, drawn in every water of every world), laid from the player's Skyrim - Meshes0.bsa by this row because it loads after bmv on both cards: BM&V ships a watersplash.nif naming textures\\effects\\water_ring.dds, which nothing ships, so its ring drew black in every water (owner walk 2 L10, 2026-11-13; docs/phases/new-worldspace-plan/walk2/air.md). Laid over BM&V rather than dropped from it, so BM&V's stage key, and its 26 GB copy on the build VM, stay as installed."
   },
   {
    "id": "dynamic-dodge",

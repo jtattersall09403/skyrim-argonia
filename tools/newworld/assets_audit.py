@@ -170,18 +170,14 @@ class Audit:
 
 
 ENGINE_SIGS = {"IPCT", "ADDN"}   # the engine's own effects (impacts, addon nodes: the water splash), drawn in every world
-DEPENDENCIES = REPO / "mods/dependencies.json"
 
 
-def dropped(deps: dict) -> set[tuple[str, str]]:
-    """(mod, data path) of every file a dependency row drops at staging (its `drop` list, exact paths)."""
-    return {(m["id"], p.replace("/", "\\").lower()) for m in deps.get("mods", []) for p in m.get("drop", []) if "*" not in p}
-
-
-def engine_overrides(resolver, skyrim, drops: set[tuple[str, str]]) -> list[dict]:
-    """Every model of Skyrim.esm's engine effects (IPCT, ADDN: the water splash among them) that a staged mod lays
-    loose over the game's own, and that names a texture nothing staged holds: drawn in every water of every world
-    (BM&V's watersplash.nif naming water_ring.dds was the black splash). A path its mod's row drops is not laid."""
+def engine_overrides(resolver, skyrim) -> list[dict]:
+    """Every model of Skyrim.esm's engine effects (IPCT, ADDN: the water splash among them) whose load-order winner is
+    a loose file a staged mod lays over the game's own, and that names a texture nothing staged holds: drawn in every
+    water of every world (BM&V's watersplash.nif naming water_ring.dds was the black splash). The winner is the
+    install record's (the last mod in the card's order that lays the path), so a mod laid above BM&V with Skyrim's
+    own mesh is what is judged."""
     out = []
     for r in skyrim.records():
         if r.sig not in ENGINE_SIGS:
@@ -189,7 +185,7 @@ def engine_overrides(resolver, skyrim, drops: set[tuple[str, str]]) -> list[dict
         for _sig, path in asset_paths(r.subs):
             key = norm_asset(path)
             mod = resolver.loose.get(key)
-            if not key.endswith(".nif") or not mod or (mod, key) in drops:
+            if not key.endswith(".nif") or not mod:
                 continue
             f = resolver.loose_file(key)
             gone = [t for t in nif_textures(f.read_bytes()) if resolver.where(norm_asset(t)) is None] if f else []
@@ -225,7 +221,7 @@ def main(argv=None) -> int:
     R = Resolver()
     rep = Audit(R, active_plugins(STACK / "MO2/profiles/NewWorld"), masters, vanilla, aliases, allowed).run(plugins)
     sky = Plugin.read(DATA / "Skyrim.esm", ENGINE_SIGS) if (DATA / "Skyrim.esm").exists() else None
-    rep["engine_overrides"] = engine_overrides(R, sky, dropped(json.loads(DEPENDENCIES.read_text()))) if sky else []
+    rep["engine_overrides"] = engine_overrides(R, sky) if sky else []
     print(f"assets audit: {rep['records']} records, {rep['assets']} asset paths; missing "
           f"{rep['missing_meshes']} meshes, {rep['missing_textures']} textures; "
           f"{len(rep['engine_overrides'])} engine effect meshes a mod lays naming a missing texture")
