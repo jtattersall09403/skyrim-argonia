@@ -114,6 +114,11 @@ builds, moves or renames anything in Helstrom to meet a need: an unmet need is s
 from first-draft stories (the main quest's fourth quest, Many-Root; the Waykeepers' line is not written yet) and
 are marked so.
 
+**Helstrom is not redrafted** (owner, 2026-11-13). Where a story's need is not met by drafted Helstrom, the story
+is changed to use what Helstrom has; only where it cannot is a small narrow thing added (a lock on a door that
+exists, the name on a door, a thing placed), and nothing larger without the owner's say. The consistency pass
+rewrites each story's Helstrom parts to the drafted place.
+
 ### Buildable first time (owner, 2026-11-13)
 
 The first four stories' deliverability readers found most full outlines unbuildable as first written, and each was

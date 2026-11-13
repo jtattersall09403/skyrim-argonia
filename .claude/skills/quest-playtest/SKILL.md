@@ -43,6 +43,12 @@ and is never read as "no path". `make reach` runs it over every compiled quest.
   *impatient* skims and follows markers; *wanderer* talks to everyone and pokes at everything. Moments 1 and 2 run all
   three; moment 3 runs one careful player. Add a second impatient run where a quest opens with much optional talk
   (a join, a briefing), since that player shows whether the step can be found without it.
+- **A choice is tested by players who value different things.** The three temperaments differ in patience, not in
+  what they want, and one model's players tend to make one choice. Where a quest turns on a choice, add runs whose
+  `--know` text gives the player a person to be with reasons of their own (out for power; loyal to their own people
+  above outsiders; true to whoever hired them; trusting no institution), on different models (`--model`), and in the
+  closing questions ask each for the strongest honest case for the option they did not take. Every player choosing
+  alike under one persona is not a finding; an option no persona takes and none can argue is.
 - **A later quest of a line** runs with `--after` the quests before it, their forms loaded beside it: the game first
   plays each to a completed ending along a shortest path, so the player starts with the state, things, gold and rank
   they leave and knows what those journal entries said. `--know` adds a short text of its own.

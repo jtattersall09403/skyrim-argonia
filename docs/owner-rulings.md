@@ -595,3 +595,11 @@ added here the day they are made, with the date and the issue.
   any place and first for Helstrom, what the stories need of it in plain words that assume no knowledge of the
   story, who each person is to a player, and a warning (never a block) when an edit touches something a quest
   needs; the owner's edit stands and the story is changed to fit the place. Built now, in nw-05, not left to nw-06.
+- 2026-11-13 (in session): (a) on every paper player making the same choice: it "might just be because they're all
+  the same AI model right, they're not actually different people, so you probably need to give them personalities
+  that are more different in order for that to be a fair test." A choice is tested by readers who are given
+  different things to value, on different models where possible, each also arguing the options they did not take.
+  (b) Helstrom is not redrafted for the stories ("It's a bit of a faff"): the stories and quests are fitted to what
+  is already drafted; only small narrow additions (a lock, a named door, a thing placed) are made where a story
+  cannot do without, and nothing larger without asking. (c) The owner does not open the studio until told it is
+  ready.

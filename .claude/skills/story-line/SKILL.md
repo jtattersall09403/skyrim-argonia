@@ -114,6 +114,17 @@ converge" says.
    each quest ask what they think is going on, whom they trust, what they expect next and what they would choose; then
    send the next quest's sheet (SendMessage to the same agent, so they carry what they believed). At the end: could
    they retell the story, do they want the next chapter, what bored or lost them.
+   **Testing a choice needs players who differ in what they value**, not only in patience. Fresh agents are one
+   model with one set of instincts, and left to themselves they all take the kind, careful option; that says
+   nothing about whether real players would split. For each choice meant to divide players, give the readers
+   different people to be, each a real kind of Elder Scrolls player with reasons of their own (one who plays to
+   grow powerful and takes what is offered; one who sides with their own tribe or faction against outsiders,
+   whatever it costs others; one who keeps their word to whoever hired them; one who distrusts every institution;
+   one who wants the province left as it is), and run them on different models where the tools allow. Then ask
+   every reader, after their own choice, to make the strongest honest case for each option they did not take. A
+   choice is real when each option was some reader's own choice for that reader's own reasons, or at least when
+   every option's case can be made without strain; an option nobody chose and nobody could argue is not an option.
+   Even then this is a rehearsal: the owner's reading is the test.
 3. **Start the deliverability reader** on the same version: a fresh agent given quest-system, the
    [quest form](../../../docs/design/quest-form.md) and the outlines in full. It checks every step against the
    ceiling: each stage moved by an allowed trigger; the ways through done in any order; a death at any moment; a
