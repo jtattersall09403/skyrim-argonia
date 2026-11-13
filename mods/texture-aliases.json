@@ -1,5 +1,5 @@
 {
- "about": "A file a mod ships at one path, laid again at the path that mod's own mesh names (infra/gpu-box/stack.py lay_aliases, the folder argonia-texture-aliases; nothing here is a game file). Found by tools/newworld/assets_audit.py. gkbjunglebranch10 is shipped by no mod: its own family's gkbjunglebranch3 stands in; ewpshore15 and ewpshore17 are shipped by no mod either: King of the Murkmire's violet grasses show Flower Fields' dog violet. The giant snakes King of the Murkmire copies name Mihail's snake mesh at Mihail's own path; Curse of Cipactli ships it under its Actors folder. Skinwalker21's giant snail names its leech's gradient and cubemap at the snail's path.",
+ "about": "A file a mod ships at one path, laid again at the path that mod's own mesh names (infra/gpu-box/stack.py lay_aliases, the folder argonia-texture-aliases; nothing here is a game file). Found by tools/newworld/assets_audit.py. gkbjunglebranch10 is shipped by no mod: its own family's gkbjunglebranch3 stands in; ewpshore15 and ewpshore17 are shipped by no mod either: King of the Murkmire's violet grasses show Flower Fields' dog violet. The giant snakes King of the Murkmire copies name Mihail's snake mesh at Mihail's own path; Curse of Cipactli ships it under its Actors folder. Skinwalker21's giant snail names its leech's gradient and cubemap at the snail's path. The bamboo staff's green mesh names its yellow texture at textures\\weapons\\bamboostaff; Curse of Cipactli ships it under its Weapons\\Bamboo folder.",
  "aliases": {
   "textures\\plants\\groundplants1\\fern2.dds": [
    "bmv",
@@ -92,6 +92,10 @@
   "textures\\skinwalker21 creatures\\horker\\leech\\ore_ebony_e.dds": [
    "giant-leeches",
    "textures\\skinwalker21 creatures\\horker\\leech\\skyrim\\ore_ebony_e.dds"
+  ],
+  "textures\\weapons\\bamboostaff\\bamboostaffyellow.dds": [
+   "htbm-cipactli",
+   "textures\\here there be monsters - curse of cipactli\\weapons\\bamboo\\bamboostaffyellow.dds"
   ]
  }
 }

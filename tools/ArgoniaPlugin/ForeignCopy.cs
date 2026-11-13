@@ -105,7 +105,6 @@ sealed class ForeignCopy : IDisposable
     {
         sourceOf[ours] = src.FormKey;
         var dup = (IMajorRecord)src.Duplicate(ours);
-        DropUnshowable(dup, file);
         dup.EditorID = $"ANW_{Initials(file)}_{src.EditorID ?? src.FormKey.IDString()}";
         var placed = new Dictionary<FormKey, FormKey>();
         foreach (var l in src.EnumerateFormLinks().Select(l => l.FormKey).Distinct().ToList())
@@ -132,30 +131,6 @@ sealed class ForeignCopy : IDisposable
         mod.GetTopLevelGroup(dup.GetType()).AddUntyped(dup);
         Copies[ours] = dup;
         return ours;
-    }
-
-    // Items whose model names a texture their own mod does not ship (the mod's own world draws them untextured too):
-    // a copy never carries them, so the closure never reaches them (plugin file, editor id, why).
-    public static readonly (string File, string EditorId, string Why)[] Unshowable =
-    {
-        ("Here There Be Monsters - Curse of Cipactli.esp", "CIPHTBMBambooStaff2",
-         "bamboostaffgreen.nif names textures\\weapons\\bamboostaff\\bamboostaffyellow.dds; the mod ships that texture only under its own folder"),
-    };
-
-    // A levelled list, a container or an actor in `dup` stops listing an unshowable item.
-    void DropUnshowable(IMajorRecord dup, string file)
-    {
-        var bad = Unshowable.Where(u => string.Equals(u.File, file, StringComparison.OrdinalIgnoreCase))
-            .Select(u => Find(u.File, u.EditorId).FormKey).ToHashSet();
-        if (bad.Count == 0) return;
-        int n = 0;
-        switch (dup)
-        {
-            case LeveledItem li when li.Entries is { } es: n = es.RemoveAll(e => e.Data?.Reference.FormKey is { } k && bad.Contains(k)); break;
-            case Npc np when np.Items is { } its: n = its.RemoveAll(e => e.Item is { } ci && bad.Contains(ci.Item.FormKey)); break;
-            case Container c when c.Items is { } cis: n = cis.RemoveAll(e => e.Item is { } ci && bad.Contains(ci.Item.FormKey)); break;
-        }
-        if (n > 0) Console.WriteLine($"foreign copy: {dup.EditorID}: {n} unshowable item(s) not carried");
     }
 
     public readonly Dictionary<FormKey, IMajorRecord> Copies = new();
