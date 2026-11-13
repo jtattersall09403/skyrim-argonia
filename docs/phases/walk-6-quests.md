@@ -225,8 +225,9 @@ skills.
 
 ## What the owner will be asked to check
 
-Kept short, in [owner-walk-checks](../owner-walk-checks.md) when posted: the generic scripts' block test (each
-result happens once); the opening from a new game (the man speaks first; three steps; a marker each); a marker on
+Kept short, in [owner-walk-checks](../owner-walk-checks.md) when posted, and real quests only, chosen so that every
+generic-script operation a quest uses runs once (the block test is the agents' diagnostic and never ships:
+[block-test](../design/block-test.md)): the opening from a new game (the man speaks first; three steps; a marker each); a marker on
 the compass and the map for an objective and for a thing to fetch; killing a main-quest person shows the message;
 one re-authored quest of each line. Everything else rests on the gate, the comparison and the paper playtests.
 

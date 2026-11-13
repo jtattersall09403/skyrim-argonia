@@ -24,8 +24,10 @@ load order are; the seed and the deploy run under `tooling/job_guard.sh`.
 ## 2. Seed the plugin
 
 `tooling/job_guard.sh run seed -- bash tools/ArgoniaPlugin/plugin.sh seed`, then `tooling/job_guard.sh wait seed`.
-The seed compiles every record that fits, builds every form and the block test into `plugin/Argonia` (Spriggit YAML,
-our source), and makes every person of ours and of Black Marsh & Valenwood killable.
+The seed compiles every record that fits, builds every form into `plugin/Argonia` (Spriggit YAML, our source), and
+makes every person of ours and of Black Marsh & Valenwood killable. The block test is not in it: `seed --blocktest`
+adds it for an in-game diagnosis only, and that tree is never committed or deployed
+([block-test](../../../docs/design/block-test.md)).
 
 - **The seed builds the whole tree**, so a lane seeds in its own worktree (main's quests and its own) and a lead
   seeds once more on the merged tree before deploy. Quests the lead has named as being rewritten whole (`rewriting`
@@ -57,8 +59,9 @@ The scripts in `papyrus/` (`ARG_QuestStages`, `ARG_Effects`, `ARG_LineEffects`, 
 quest; a quest's results are rows in their properties, so a new or changed quest needs no recompile. Recompile only
 when a `.psc` changed (a new operation, a fix): `tooling/job_guard.sh run papyrus -- bash
 infra/gpu-box/records_jobs.sh papyrus`, which compiles on the play machine with the Creation Kit's compiler and skips
-an unchanged set. A new operation is proven once in game by the block test (`tools/questform/blocktest/`) through an
-owner check before any quest relies on it. Never compile or deploy while the owner streams.
+an unchanged set. A new operation is added to the block test (`tools/questform/blocktest/`), which `plugin.sh
+questform-test` builds and reads back off game; in game it is proven by the owner's walk of the first real quest
+that uses it. Never compile or deploy while the owner streams.
 
 ## 5. Play the built quest
 
@@ -70,9 +73,12 @@ Commit `plugin/Argonia`, the records and the runs together, by path.
 Add the check to [owner-walk-checks](../../../docs/owner-walk-checks.md) and post it with `python3
 tooling/owner_inbox.py --post check`. In plain English, assuming no context: whether a new game is needed, where to
 go (the place by the name the game shows), whom to talk to and what to do, what passing looks like (the line, the
-journal entry, the marker on the compass and the map), and how to reply. Ask the fewest checks that prove what was
-built: a new kind of result, one quest of each line, a death that should show the message; the rest rests on the
-read-back, the comparison and the paper runs.
+journal entry, the marker on the compass and the map, every quoted word copied from the read-back forms), and how to
+reply. The walk is real quests only, the fewest that prove what was built: compute from the compiled forms which of
+the generic scripts' operations, triggers and conditions each step makes run, choose the shortest walk that runs
+every operation any quest uses at least once (a console `coc` to a cell or `setstage` to reach a far step), and end
+the section with a two-column table, operation and the step that proves it, naming the operations no quest uses.
+The rest rests on the read-back, the comparison and the paper runs.
 
 ## 7. Deploy
 

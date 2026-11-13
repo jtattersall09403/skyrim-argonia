@@ -273,8 +273,9 @@ quest never moves another's id: `quest:<quest>`, `ref:<ref>`, `npc:<ref>`, `dial
 `pack:<quest>:<line>`, `msg:<quest>:<hash>`, `glob:<number>`, `fac:<faction>`, `watch`, `watchmsg:<kind>`.
 
 **How the seed gets the forms.** `plugin.sh seed` compiles every quest record that fits to `out/questform`
-(`compile --all --owed-ok`) and builds those forms and `tools/questform/blocktest/*.json` (`QUESTFORM_DIRS` overrides
-the directories). Every quest of ours is built from its form; no quest has a builder of its own. A refused form is left
+(`compile --all --owed-ok`) and builds those forms; `seed --blocktest` (`QUESTFORM_BLOCKTEST=1`) adds
+`tools/questform/blocktest/*.json`, the agents' diagnostic, which never ships ([block-test](block-test.md));
+`QUESTFORM_DIRS` overrides the directories. Every quest of ours is built from its form; no quest has a builder of its own. A refused form is left
 out (found by a trial build on a copy of the plugin, so a form that fails for want of it is left out too) and listed
 only when its quest is on the seed's short list of quests being rewritten whole (`rewriting` in `plugin.sh`); any
 other refusal fails the seed, so no quest is dropped silently. `plugin.sh seed --refused-ok` leaves out every refused

@@ -86,9 +86,11 @@ as any change to the method; the quest skills carry it step by step, and their m
 
 Every quest is one form built by one generic builder into the same shape of records; no quest has code of its own
 ([quest-form](quest-form.md) "How a form becomes records"; the vocabulary and its engine shapes:
-[blocks](blocks.md)). A handful of generic scripts carry out every result and are proven once in game by the block
-test. A step needing anything outside the form is rewritten; a new block changes the form, the builder, the reader,
-the paper game and the block test together, and is proven once by an owner check. The gate (`make check`) compiles
+[blocks](blocks.md)). A handful of generic scripts carry out every result and are proven once in game by the owner's
+walk of real quests chosen so that every operation any quest uses runs at least once. A step needing anything
+outside the form is rewritten; a new block changes the form, the builder, the reader, the paper game and the block
+test (the agents' diagnostic, never shipped: [block-test](block-test.md)) together, and is proven in game by the
+walk of the first real quest that uses it. The gate (`make check`) compiles
 and checks every quest record that fits the form, holds the ones that do not on a list that only shrinks, and walks
 every compiled quest to a completed ending ([quest-build](../../.claude/skills/quest-build/SKILL.md)).
 
