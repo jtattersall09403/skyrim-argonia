@@ -37,8 +37,8 @@ owner has not edited it yet, and his words go above this line when he does.
 5. **Minor quests, lightly** (nw-05's step 7): two or three local premises re-homed to each slice place.
 6. **For the owner to read**: one private page that sets the fourteen stories side by side with what their readers
    made of each, and the handful of calls the ledger left for him (`consistency.md`, "For the owner").
-7. **Owed from nw-05**: the generic script's thirteen new steps compiled on the play machine when no stream is live
-   (`tooling/job_guard.sh run --gpu papyrus -- bash infra/gpu-box/records_jobs.sh papyrus papyrus/ARG_Effects.psc`).
+7. **Done, 2026-11-13**: the generic script's thirteen new steps were compiled on the play machine once the stream
+   ended (1 succeeded, 0 failed); they reach the game with the next deploy.
 
 ## How to run it cheaply
 
