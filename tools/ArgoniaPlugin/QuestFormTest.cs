@@ -49,6 +49,11 @@ static class QuestFormTest
         block.SubBlocks.Add(new CellSubBlock { BlockNumber = (int)(cell.FormKey.ID / 10 % 10), GroupType = GroupTypeEnum.InteriorCellSubBlock, Cells = { cell } });
         fx.Cells.Records.Add(block);
         var person = placed.FormKey.ToString();
+        var spell = new Spell(fx) { EditorID = "FxSpell" };
+        fx.Spells.Add(spell);
+        var faction = new Faction(fx) { EditorID = "FxFaction" };
+        fx.Factions.Add(faction);
+        string Teach(string w, string key) => $$"""[{"do":"{{w}}","spell":"{{key}}"}]""";
 
         JsonNode Form(Action<JsonNode>? tweak = null)
         {
@@ -96,6 +101,15 @@ static class QuestFormTest
         R("a placement with neither anchor nor container", "placement", f =>
             f["refs"]![0]!["placement"] = JsonNode.Parse("""{"base":{"kind":"existing_base","id":"00003B:Skyrim.esm"}}"""));
         R("a hostile existing person", "hostile", f => f["refs"]![0]!["hostile"] = true);
+        R("a spell taught under our name", null, f => { f["names"] = JsonNode.Parse($$"""{"{{spell.FormKey}}":"Shadow"}""");
+            f["stages"]![0]!["results"] = JsonNode.Parse(Teach("teach_spell", spell.FormKey.ToString())); });
+        R("a spell taught with no name", "spell", f => f["stages"]![0]!["results"] = JsonNode.Parse(Teach("teach_spell", spell.FormKey.ToString())));
+        R("a spell of no plugin", "form-key", f => { f["names"] = JsonNode.Parse("""{"000001:Nowhere.esm":"Shadow"}""");
+            f["stages"]![0]!["results"] = JsonNode.Parse(Teach("forget_spell", "000001:Nowhere.esm")); });
+        R("a group turned hostile that is a faction of ours", "faction", f =>
+            f["stages"]![0]!["results"] = JsonNode.Parse("""[{"do":"make_enemy","faction":"faction.ours"}]"""));
+        R("a faction of the load order turned hostile", null, f =>
+            f["stages"]![0]!["results"] = JsonNode.Parse($$"""[{"do":"make_enemy","faction":"{{faction.FormKey}}"},{"do":"leave_faction","faction":"{{faction.FormKey}}"}]"""));
         Console.WriteLine(bad == 0 ? "questform selftest: PASS" : $"questform selftest: FAIL ({bad} wrong)");
         return bad == 0 ? 0 : 1;
     }

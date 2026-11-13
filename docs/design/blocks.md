@@ -59,6 +59,9 @@ Every result is a row (`Op`, `What`, `Num`) that `ARG_Effects.Run` carries out; 
 | `switch_on`, `switch_off` (away from the player) | Enable, Disable on a persistent reference | 4,072 placements start disabled |
 | `lock_door`, `unlock_door` | Lock, Unlock on the door | 762 locked door refs, 398 naming a key; 43 quests' scripts take a locked door or key |
 | `give_ownership` | the container's owner set to the player | not counted |
+| `teach_spell`, `forget_spell` | AddSpell, RemoveSpell on the player, of our copy of a load-order spell under our name | the Nightingale and Black Book powers, the standing stones; Morrowind's AddSpell (the Corprus cure) |
+| `make_enemy`, `make_peace` | the faction's SetPlayerEnemy | the civil war's sides; Morrowind's SetPCFacRep and hostile houses |
+| `leave_faction` | RemoveFromFaction on the player | expulsion from a guild (Morrowind's PCExpell) |
 | `show_message` | a message box of ours, `Show()` | DA06FailMessage from QF_DA06 |
 | `start_quest` | Start, then SetStage | a chained quest started at its first stage |
 | `speaker_hostile` (a line's only) | the speaker attacks the player | common in Morrowind (the smuggler who draws a blade when refused) |

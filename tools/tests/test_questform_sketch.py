@@ -151,3 +151,40 @@ def test_report_names_the_file_line_and_what_is_left_for_the_build(tmp_path):
     text, n = sketch.report(p, sketch.check(p, walk=False))
     at = 1 + next(i for i, ln in enumerate(p.read_text().splitlines()) if ln.startswith("line ask tollman"))
     assert n == 1 and f"{p}:{at}:" in text and "checked when built" in text and text.endswith("1 fault(s)")
+
+
+MORE_BREAKS = [
+    ('objective 10 at 10, 20 "Get the toll purse" -> purse, tollman', 'objective 10 at 10, 20 "Get the toll purse" -> tollman',
+     "marker-dead"),
+    ('line job giver at 0 ask "Any work?" -> 10 says "the purse"',
+     'line job giver at 0 ask "Any work?" -> 10 says "the purse"\nline point tollman at 0 ask "Any work?" says "see Sarel"',
+     "pointer-alive"),
+    ('stage 90 completed "I gave Sarel the toll purse." do take purse, give-gold 50',
+     'stage 90 completed "I gave Sarel the toll purse." do take purse, teach shadow "Shadow"', "spell"),
+    ('stage 90 completed "I gave Sarel the toll purse." do take purse, give-gold 50',
+     'stage 90 completed "I gave Sarel the toll purse." do take purse, enemy thalmor', "enemy"),
+]
+
+
+@pytest.mark.parametrize("old, new, rule", MORE_BREAKS, ids=[b[2] for b in MORE_BREAKS])
+def test_each_new_fault_is_named(tmp_path, old, new, rule):
+    test_each_fault_is_named_on_its_line(tmp_path, old, new, rule)
+
+
+def test_a_pointer_with_the_offers_gates_passes(tmp_path):
+    text = GOOD.replace('line job giver at 0 ask "Any work?" -> 10 says "the purse"',
+                        'line job giver at 0 ask "Any work?" -> 10 says "the purse"\n'
+                        'line point tollman at 0 ask "Any work?" if alive giver says "see Sarel"')
+    assert "pointer-alive" not in rules_of(run(tmp_path, text, walk=False))
+
+
+def test_the_gift_words_are_stage_results_with_their_names(tmp_path):
+    text = GOOD.replace('do take purse, give-gold 50', 'do take purse, give-gold 50, teach 017122:Skyrim.esm "Shadow", '
+                        'enemy 039F26:Skyrim.esm, leave reed')
+    assert rules_of(run(tmp_path, text)) == set()
+    form, _ = sketch.expand(sketch.read(_write(tmp_path, text))[0])
+    st90 = next(s for s in form["stages"] if s["number"] == 90)
+    assert {"do": "teach_spell", "spell": "017122:Skyrim.esm"} in st90["results"]
+    assert {"do": "make_enemy", "faction": "039F26:Skyrim.esm"} in st90["results"]
+    assert {"do": "leave_faction", "faction": "reed"} in st90["results"]
+    assert form["names"]["017122:Skyrim.esm"] == "Shadow"

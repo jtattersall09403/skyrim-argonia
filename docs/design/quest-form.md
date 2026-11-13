@@ -61,7 +61,10 @@ player).
 **Results** (`do`): `set_stage` {stage} (this quest), with optional `if_held` {item} (a stage's result only: set
 the stage as this stage begins if the player already holds the item); `give_item`, `take_item` {item, count}; `give_gold`,
 `take_gold` {amount}; `set_number`, `add_number` {number, value} (a stored number: a flag, a counter, a standing, a
-quest's own liking); `join_faction` {faction}; `set_rank` {faction, rank}; `change_regard` {ref, by};
+quest's own liking); `join_faction`, `leave_faction` {faction}; `set_rank` {faction, rank}; `make_enemy`,
+`make_peace` {faction} (a faction of the load order by its form key: its people attack the player on sight, or no
+longer do); `teach_spell`, `forget_spell` {spell} (a spell, power or lasting ability of the load order by its form
+key, which the form's `names` must name: the player learns or loses it under that name); `change_regard` {ref, by};
 `switch_on`, `switch_off` {ref}; `lock_door`, `unlock_door` {ref}; `give_ownership` {ref} (an owned thing, a
 container, becomes the player's: what it holds is theirs to take); `show_message` {text}; `speaker_hostile` (a
 line's only: the speaker attacks); `start_quest` {quest, stage}.
@@ -102,6 +105,7 @@ failure is one line naming its rule.
 | `answer`, `prompt`, `speaker` | an answer line is no topic's answer, or a line's answer is not an answer line; a topic or answer has no prompt; a line's speaker is not a person |
 | `hostile`, `created` | a hostile ref is not a new person; a thing made in a container starts off, or is switched, locked, given or used |
 | `line-said` | a line has every condition of an earlier line of the same speaker, kind and prompt whose window covers its own: the engine says the first that holds, so it is never said |
+| `spell`, `enemy` | a taught or forgotten spell is not named by a form key, or the form's `names` give it no name; a faction made enemy or at peace is not a form key |
 | `regard-range` | a `change_regard` step is 0 or beyond 4 either way, or a `regard_at_least` value is outside -4 to 4 (regard is Skyrim's relationship rank, kept between -4 and 4) |
 | `late-trigger` | a take, use or death trigger can fire while the quest stands at a later stage than the one it sets (not an ending): walked over what is done from the start (`rules.ways`: every result, line and trigger taken as able to fire, but a line asking for a thing a take trigger still waits for), it is open at such a stage; or its `until` is not above its prerequisite |
 | `check-label` | a line's skill or gold check is not labelled on its prompt, or the prompt of a speaker's lines carries a label none of them checks, another amount, or a threshold (`(Speech 25)`) |
@@ -197,14 +201,20 @@ minor or faction quest); and Stop, always last, on an ending.
 | 29, 30 | SwitchOn, SwitchOff | the reference | |
 | 31, 32 | LockDoor, UnlockDoor | the door | |
 | 36 | GiveOwnership | the reference | its owner becomes the player (`SetActorOwner` with the player's base) |
+| 37, 38 | TeachSpell, ForgetSpell | our copy of the spell | (`AddSpell`, `RemoveSpell` on the player) |
+| 39, 40 | MakeEnemy, MakePeace | the faction | (`SetPlayerEnemy` true or false) |
+| 41 | LeaveFaction | the faction | (`RemoveFromFaction` on the player) |
 | 33 | ShowMessage | the message box | |
 | 34 | SpeakerHostile | | the line's speaker attacks the player |
 
-A `set_stage` result is row 1 (with `if_held`, IfHolds before it); the other form results are rows 20 to 36 by their word. A number is a global
+A `set_stage` result is row 1 (with `if_held`, IfHolds before it); the other form results are rows 20 to 41 by their word. A number is a global
 (`ARG_N_<id>`), a faction (when the form gives no form key) a faction record of ours, a message a message box named by
 the quest and a hash of its words. An item is a form key; a thing of this or another form being built (a stock thing:
 its item; a `template_item` or an item whose id is the ref's own: our new item, below); a page of the form's `texts`;
-or a story item whose first Skyrim record (`item_asset_record`) is an item of the load order.
+or a story item whose first Skyrim record (`item_asset_record`) is an item of the load order. A taught spell is our
+copy of the load order's spell (`spell:<form key>`, `ARG_S_<name>`) carrying the name the form's `names` give it, so
+the player sees our name on its fixed effects; one copy per spell, and two forms naming it differently are refused
+(`spell`). A faction made enemy or at peace is the load order's own (`faction`: one of ours has no people).
 
 **New items.** One record of ours per id (`item:<id>`), whichever form names it first: a `template_item` is a copy of
 its template; an item whose id is the ref's own, or a page of `texts`, is a copy of Skyrim's iron key
@@ -326,6 +336,7 @@ hint.
 | `objectiveComplete` | the objective's own completion test |
 | gates: `questStage`, `stageEverReached`, `flag`, `counterAtLeast`, standings, `factionRankAtLeast`, `hasItem`, `goldAtLeast`, `skillAtLeast`, `npcAlive`, `dispositionAtLeast`, `raceIs`, `sexIs` | the matching condition |
 | `setFlag`, `addCounter`, `changeStanding`, `changeSettlementStanding` | `set_number`, `add_number` |
+| `grantAbility`, `removeAbility` [form key, the name the player sees]; `expel`; `makeEnemy`, `makePeace` | `teach_spell`, `forget_spell` (the name into `names`; refused without one); `leave_faction`; `make_enemy`, `make_peace` |
 | `changeDisposition`, `enableRef`/`disableRef`, `setDoorAccess`, `giveOwnership`, `give`/`take` `Item`/`Gold`, `setFactionRank`, `setStage` | `change_regard` (a step of 1 to 4 either way, and `dispositionAtLeast` -3 to 4: regard is Skyrim's relationship rank; refused otherwise), `switch_on`/`off`, `lock_door`/`unlock_door`, `give_ownership`, the item and gold results, `set_rank`, `set_stage` or `start_quest` |
 | `grantTopic`, `removeTopic` | dropped: a line's window opens and closes it |
 | the record's `topics` (`kind` greeting or speaks-first; an answer is a reply of a written question) | lines, in the record's order (the engine says the first that holds); words from `story/data/quest_lines/<code>.json` (a topic's `infos`, or one info written as `prompt` and `lines`; variant `main` for the line, `fail` for its fallback; any other variant is refused as `variant`: words said under another condition are a topic of their own with that condition), else the written `dialogue_line` rows, else the `intent` as a gist; a speaks-first topic's first line is also its one speaks-first line |

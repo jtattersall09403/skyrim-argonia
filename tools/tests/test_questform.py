@@ -325,6 +325,29 @@ def test_an_unknown_skill_is_refused_and_a_known_one_is_mapped():
     assert [t for t, _, _ in c.refused] == ["skillAtLeast"]
 
 
+def test_the_record_terms_of_gifts_compile_to_their_results():
+    from tools.argonia_world import db
+    c = qc.Compiler(db.load(), "quest.local.lq25")
+    got = c.results([{"grantAbility": ["017122:Skyrim.esm", "Shadow"]}, {"removeAbility": ["017122:Skyrim.esm", "Shadow"]},
+                     {"expel": ["faction.reed"]}, {"makeEnemy": ["039F26:Skyrim.esm"]},
+                     {"makePeace": ["039F26:Skyrim.esm"]}], "x")
+    assert [r["do"] for r in got] == ["teach_spell", "forget_spell", "leave_faction", "make_enemy", "make_peace"]
+    assert c.spell_names == {"017122:Skyrim.esm": "Shadow"} and not c.refused
+    c.results([{"grantAbility": ["017122:Skyrim.esm"]}], "x")
+    assert [t for t, _, _ in c.refused] == ["grantAbility"]
+
+
+def test_a_gift_names_a_spell_or_faction_of_the_load_order():
+    f = example()
+    stage(f, 30)["results"] += [{"do": "teach_spell", "spell": "017122:Skyrim.esm"},
+                                {"do": "make_enemy", "faction": "039F26:Skyrim.esm"}]
+    assert "spell" in failed_rules(f)                       # no name the player sees
+    f["names"] = {**f.get("names", {}), "017122:Skyrim.esm": "Shadow"}
+    assert "spell" not in failed_rules(f) and "enemy" not in failed_rules(f)
+    stage(f, 30)["results"] += [{"do": "forget_spell", "spell": "shadow"}, {"do": "make_peace", "faction": "faction.reed"}]
+    assert {"spell", "enemy"} <= set(failed_rules(f))
+
+
 def test_the_compiler_names_what_the_player_sees():
     from tools.argonia_world import db
     w = db.load()

@@ -153,7 +153,7 @@ Actions are the only way authored content changes the world. Every one is data.
 ### B3. Items, rewards and money
 
 `giveItem(item, count)` · `takeItem(item, count)` · `giveGold(int)` ·
-`takeGold(int)` · `grantAbility(ability)` *(once-per-day powers, incl. Hist
+`takeGold(int)` · `grantAbility(spell, name)` · `removeAbility(spell, name)` *(a spell, power or lasting ability: its form key and the name the player sees; once-per-day powers, incl. Hist
 communion — 0042 §1)* · `grantMapMarker(marker)` · `setPrice(service, int)` ·
 `grantServiceAccess(service)` · `setDoorAccess(door, enum)` · `giveOwnership(ref)` *(an owned container or thing becomes the player's: what it holds is theirs to take, not stolen)*
 
@@ -163,7 +163,7 @@ every open favour whose service names that quest as its hook.
 ### B4. Factions, crime and standing
 
 `setFactionRank(faction, rank)` · `changeStanding(faction, int)` ·
-`expel(faction)` · `changeDisposition(npc, int)` · `addOwing(region, int)` ·
+`expel(faction)` · `makeEnemy(faction)` · `makePeace(faction)` · `changeDisposition(npc, int)` · `addOwing(region, int)` ·
 `clearOwing(region)` · `setNotoriety(region, tier)` ·
 `changeSettlementStanding(settlement, int)`
 

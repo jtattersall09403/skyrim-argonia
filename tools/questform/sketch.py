@@ -65,7 +65,6 @@ CANNOT = {
     "walk": "nobody walks for a quest: place the person where they are needed",
     "move": "nothing moves for a quest: switch one placement off and another on, away from the player",
     "scene": "there are no scenes: tell it in a line, or let it have happened already where the player finds it",
-    "teach": "no result teaches a skill: give a skill book (an item)",
     "price": "no result changes a trader's price: a gold check on a line is the price",
     "met": "the record cannot gate on having spoken before: gate on a stage done at which they spoke",
     "not": "a gate is never negated: use its opposite (alive or dead) or a stage",
@@ -149,6 +148,7 @@ class Sketch:
         self.people: dict[str, dict] = {}
         self.things: dict[str, dict] = {}
         self.items: dict[str, dict] = {}
+        self.spells: dict[str, str] = {}                   # a taught spell's form key: the name the player sees
         self.stages: dict[int, dict] = {}
         self.objectives: list[dict] = []
         self.lines: list[dict] = []
@@ -309,6 +309,14 @@ def result(sk: Sketch, toks) -> dict:
         r = {"do": f"{w}_number", "number": s.word("a number's id"), "value": s.number("a value")}
     elif w == "join":
         r = {"do": "join_faction", "faction": s.word("a faction")}
+    elif w in ("leave", "enemy", "peace"):
+        r = {"do": {"leave": "leave_faction", "enemy": "make_enemy", "peace": "make_peace"}[w],
+             "faction": s.word("a faction")}
+    elif w == "teach":
+        r = {"do": "teach_spell", "spell": s.word("a spell's, power's or ability's form key")}
+        sk.spells[r["spell"]] = s.text("the name the player sees")
+    elif w == "forget":
+        r = {"do": "forget_spell", "spell": s.word("a spell's form key")}
     elif w == "rank":
         r = {"do": "set_rank", "faction": s.word("a faction"), "rank": s.number("a rank")}
     elif w == "regard":
@@ -329,7 +337,8 @@ def result(sk: Sketch, toks) -> dict:
         raise SketchError(f"`{w}` is no result: {CANNOT[w]}")
     else:
         raise SketchError(f"`{w}` is no result the game can do (give, take, give-gold, take-gold, set, add, join, "
-                          "rank, regard, on, off, lock, unlock, own, message, start, stage)")
+                          "leave, enemy, peace, teach, forget, rank, regard, on, off, lock, unlock, own, message, start, "
+                          "stage; a skill is taught by giving a skill book)")
     if s.more():
         raise SketchError(f"left over in a result: {' '.join(t[1] for t in s.t[s.i:])!r} (a comma between results?)")
     return r
@@ -839,6 +848,7 @@ def expand(sk: Sketch) -> tuple[dict | None, dict]:
     names = {i["id"]: i["name"] for i in sk.items.values()}
     texts = {i["id"]: "(its words are written with the quest)" for i in sk.items.values() if i["readable"]}
     names.update({STOCK[k]: k.capitalize() for k in ("gold", "lockpick")})
+    names.update(sk.spells)
     form["names"] = names
     if texts:
         form["texts"] = texts
@@ -872,7 +882,7 @@ def _broken(form) -> bool:
 
 # -- the design rules: what a writer most often gets wrong that the form's rules do not name ---------------------
 
-DESIGN = ("before-offer", "one-ref-many", "rank-set", "take-unheld", "give-twice", "hostile-speaks", "hostile-must-live", "death-both-ways", "one-name", "give-placed", "dead-early",
+DESIGN = ("before-offer", "pointer-alive", "marker-dead", "one-ref-many", "rank-set", "take-unheld", "give-twice", "hostile-speaks", "hostile-must-live", "death-both-ways", "one-name", "give-placed", "dead-early",
           "early-death", "needs-living", "number-set", "refusal")
 
 
@@ -960,6 +970,18 @@ def design(form: dict, sk: Sketch, numbers_set: set[str], factions_set: set[str]
                 out.append(("before-offer", f"line {ln['id']} is open at stage {start}, before the job is offered, "
                             "without the gates of the offer: a player who cannot yet be offered it hears it (open it "
                             "from the first stage the player reads, or give it the offer's gates)"))
+    # a marker on a person the player may have killed: the person is who-must-live, or their death moves the quest
+    # (a death trigger, or a line gated on their death), or the objective also points at a thing to take
+    answered = {t["ref"] for t in form["triggers"] if t["kind"] == "death"} | \
+        {c["ref"] for ln in form["lines"] if ln["results"] for c in ln["conditions"] if c["is"] == "dead"}
+    for o in form["objectives"]:
+        if any(fm.refs.get(t, {}).get("kind") == "thing" for t in o["targets"]):
+            continue
+        for t in o["targets"]:
+            if t in people and t not in lives and t not in answered:
+                out.append(("marker-dead", f"objective {o['number']} points its marker at ref {t}, who may be "
+                            "killed: name them in must-live, or answer their death with a stage (a death trigger, or "
+                            f"a line gated on `dead {t}`)"))
     # nobody the quest cannot go on without, unless named: a person whose death leaves a stage with no way on
     endings = {s["number"] for s in form["stages"] if s["ending"] == "completed"}
     reach = _reachable(fm, None)
@@ -1103,6 +1125,10 @@ GLOSS = {
     "rank-set": "a rank asked for that no quest in the file gives",
     "one-ref-many": "one reference standing for several things or people",
     "before-offer": "talk about the job heard before the job can be offered",
+    "pointer-alive": "a line sends the player to a job that can no longer be offered",
+    "marker-dead": "a marker left pointing at a body",
+    "spell": "a spell taught or taken without its form key or the name the player sees",
+    "enemy": "a group turned against the player that is not a faction of the load order",
     "existing": "a level or hostility set on a person the world already holds",
     "refusal": "a check with no refusal of its own",
     "take-unheld": "a hand-over the player may not be able to make: the stage takes what a way to it never asked for",
@@ -1112,6 +1138,37 @@ GLOSS = {
     "body": "a body placed in the world",
     "reach": "a stage or ending no player reaches",
 }
+
+
+def pointers(every: list[dict]) -> list[tuple[str, str, str]]:
+    """A line that points the player to another person's job (said by someone who does not offer it, while that job's
+    quest waits at its hidden start: in its own form, or in another gated on `stage <quest> is <start>`) is gated on
+    every person the offer needs alive, as the offer is. (quest of the line, rule, message)"""
+    out = []
+    for b in every:
+        start = b["quest"]["start"]
+        if start["by"] != "game":
+            continue
+        n = start["stage"]
+        if next((s for s in b["stages"] if s["number"] == n), {}).get("shown", True):
+            continue
+        offers = [ln for ln in b["lines"] if ln["results"] and ln["first_stage"] <= n <= ln["last_stage"]]
+        if not offers:
+            continue
+        need = set.intersection(*({c["ref"] for c in o["conditions"] if c["is"] == "alive"} for o in offers))
+        givers = {o["speaker"] for o in offers}
+        for a in every:
+            for ln in a["lines"]:
+                if ln["results"] or ln["speaker"] in givers:
+                    continue
+                about = (ln["first_stage"] <= n <= ln["last_stage"]) if a is b else \
+                    {"is": "stage_is", "quest": b["quest"]["id"], "stage": n} in ln["conditions"]
+                missing = sorted(need - {c["ref"] for c in ln["conditions"] if c["is"] == "alive"})
+                if about and missing:
+                    out.append((a["quest"]["id"], "pointer-alive", f"line {ln['id']} points the player to "
+                                f"{b['quest']['id']}'s job, which is offered only while {', '.join(missing)} "
+                                "lives: gate it on `alive` for each, as the offer is"))
+    return out
 
 
 def _where(msg: str, src: dict) -> int | None:
@@ -1160,6 +1217,10 @@ def check(path, quest: str | None = None, walk: bool = True, max_states: int | N
         for rule, msg in fails:
             msg = msg.replace("sketch:", "")
             faults.append({"line": _where(msg, src) or src.get(("quest",)), "quest": qid, "rule": rule,
+                           "message": msg})
+    for qid, rule, msg in pointers(every):
+        if not quest or qid == quest:
+            faults.append({"line": _where(msg, srcs[qid]) or srcs[qid].get(("quest",)), "quest": qid, "rule": rule,
                            "message": msg})
     if forms and walkable:
         for rule, msg in rules.check_set(every):

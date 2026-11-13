@@ -67,7 +67,9 @@ A line does one thing: it moves the quest to a stage. **Everything else is done 
 |---|---|
 | give or take a thing, or gold | into or out of the player's pack |
 | set or add to a stored number | for a later line or quest to read |
-| make the player join a faction, or set their rank | |
+| make the player join a faction, set their rank, or put them out of it | |
+| teach the player a spell, power or lasting ability, or take one away | a spell of the load order, under the name we give it |
+| turn a faction's people against the player, or make peace | a faction of the load order: they attack on sight, or no longer do |
 | change a person's regard | -4 to 4 |
 | switch a named person or thing on or off | only away from the player |
 | lock or unlock a named door | |
@@ -196,7 +198,9 @@ the speaker's spot by the door, the names the game shows, the words) is listed a
 Gates: `stage <quest> is <n>`, `stage <quest> >= <n>`, `done <quest> <n>`, `number <id> = <v>`, `number <id> >= <v>`,
 `rank <faction> <n>`, `holds <thing or item> [<n>]`, `gold <n>`, `skill <skill> <n>`, `alive <person>`, `dead
 <person>`, `regard <person> <n>`, `race <race>`, `sex <sex>`. Results: `give <thing> [<n>]`, `take <thing> [<n>]`,
-`give-gold <n>`, `take-gold <n>`, `set <number> <v>`, `add <number> <v>`, `join <faction>`, `rank <faction> <n>`,
+`give-gold <n>`, `take-gold <n>`, `set <number> <v>`, `add <number> <v>`, `join <faction>`, `leave <faction>`,
+`rank <faction> <n>`, `teach <spell form key> "<name>"`, `forget <spell form key>`, `enemy <faction form key>`,
+`peace <faction form key>`,
 `regard <person> <n>`, `on <ref>`, `off <ref>`, `lock <door>`, `unlock <door>`, `own <container>`, `message "<words>"`,
 `start <quest> <stage>`, `stage <n>`.
 
@@ -302,8 +306,8 @@ person brother at yard "Meer-Ra"
 
 stage 0 hidden
 stage 10 "Elder Tsleeixth asked me to hear the two who claim the boat and give it to one of them."
-stage 41 "I gave the boat to Ei-Ja."
-stage 42 "I gave the boat to Meer-Ra."
+stage 41 "The boat is Ei-Ja's now."
+stage 42 "The boat is Meer-Ra's now."
 stage 91 completed "I told the elder Ei-Ja has the boat." do set p03.boat 1, give-gold 30
 stage 92 completed "I told the elder Meer-Ra has the boat." do set p03.boat 2, give-gold 30
 stage 95 failed "Elder Tsleeixth is dead, and nobody else can settle the boat."
@@ -316,6 +320,8 @@ line hers sister at 10 ask "Why should it be yours?" says "her case"
 line his brother at 10 ask "Why should it be yours?" says "his case"
 line toher sister at 10 ask "The boat is yours." if alive sister -> 41 says "she takes it"
 line tohim brother at 10 ask "The boat is yours." if alive brother -> 42 says "he takes it"
+line lost1 brother at 10 ask "Ei-Ja is dead." if dead sister -> 42 says "then the boat is mine"
+line lost2 sister at 10 ask "Meer-Ra is dead." if dead brother -> 41 says "then the boat is mine"
 line tell1 elder at 41 ask "Ei-Ja has the boat." -> 91 says "so be it"
 line tell2 elder at 42 ask "Meer-Ra has the boat." -> 92 says "so be it"
 must-live elder fails 95
@@ -582,6 +588,10 @@ must-live giver fails 96
 - "Things taken or people killed before the stage that expects them": a take moves on at once when held; a line
   gated on dead answers a death made early.
 - "A dead end once she is dead": she must live, or another way is left open.
+- "Go and see Sarel, she has work" when Sarel's offer needs others alive: the line that points to a job carries the
+  offer's `alive` gates, so nobody sends the player to a job that can no longer be offered (`pointer-alive`).
+- "A marker on the boatman" who may be killed: a person an objective points at must live, or their death moves the
+  quest (a death, or a line gated on `dead`), or the objective also points at a thing to take (`marker-dead`).
 - "Two hundred, you said", "Their bowman is coming" in the player's mouth: gate the prompt on the stage at which the
   player heard it, or word it so it needs nothing heard.
 - "She keeps the bracer at her hearth" when a stage only took it from the player: nobody holds it unless a placement

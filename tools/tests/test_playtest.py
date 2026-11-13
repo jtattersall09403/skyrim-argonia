@@ -101,6 +101,7 @@ COND_ARGS = {
     "speaker_is": {"ref": CONTACT}, "regard_at_least": {"ref": CONTACT, "value": 0},
     "race_is": {"value": "Argonian"}, "sex_is": {"value": "male"}, "spoken_before": {}, "not_spoken_before": {},
 }
+SPELL, FAC = "017122:Skyrim.esm", "039F26:Skyrim.esm"
 RESULT_ARGS = {
     "set_stage": {"stage": 20}, "give_item": {"item": "item.x", "count": 2}, "take_item": {"item": "item.x", "count": 1},
     "give_gold": {"amount": 5}, "take_gold": {"amount": 5}, "set_number": {"number": "n", "value": 3},
@@ -109,6 +110,8 @@ RESULT_ARGS = {
     "lock_door": {"ref": DOOR}, "unlock_door": {"ref": DOOR}, "give_ownership": {"ref": DOOR},
     "show_message": {"text": "A box."},
     "speaker_hostile": {}, "start_quest": {"quest": Q, "stage": 20},
+    "leave_faction": {"faction": "f"}, "make_enemy": {"faction": FAC}, "make_peace": {"faction": FAC},
+    "teach_spell": {"spell": SPELL}, "forget_spell": {"spell": SPELL},
 }
 
 
@@ -123,7 +126,7 @@ def test_each_condition_evaluates(word):
     assert g.holds(Q, [{"is": word, **COND_ARGS[word]}], CONTACT) in (True, False)
 
 
-EXPECT = {"give_item": "Added: Ring x2", "show_message": "[Message box] A box.", "speaker_hostile": "attacks you!",
+EXPECT = {"give_item": "Added: Ring x2", "teach_spell": "Learned: Shadow", "show_message": "[Message box] A box.", "speaker_hostile": "attacks you!",
           "set_stage": "New objective: Find Sample-Contact", "start_quest": "New objective: Find Sample-Contact"}
 
 
@@ -137,7 +140,7 @@ def test_each_result_is_said_from_a_line(word):
     f["lines"][0]["first_stage"] = f["lines"][1]["first_stage"] = 30      # keep the speaks-first line quiet
     f["lines"][0]["last_stage"] = f["lines"][1]["last_stage"] = 30
     f["objectives"][0]["targets"] = ["npc.example.roll-man"]
-    g = game(f, extra_names={"item.x": "Ring"})
+    g = game(f, extra_names={"item.x": "Ring", SPELL: "Shadow"})
     g.do("talk gang boss")
     out = g.do("say probe")
     assert 'Gang Boss: "Probe."' in out
@@ -149,7 +152,9 @@ def test_each_result_is_said_from_a_line(word):
             "set_rank": st["factions"].get("f") == 2, "change_regard": st["regard"].get(CONTACT) == 3,
             "switch_on": st["switched"].get(CONTACT) is True, "switch_off": st["switched"].get(CONTACT) is False,
             "lock_door": st["locked"].get(DOOR) is True, "unlock_door": st["locked"].get(DOOR) is False,
-            "give_ownership": st["owned"] == [DOOR]}.get(word, True)
+            "give_ownership": st["owned"] == [DOOR], "teach_spell": st["spells"] == [SPELL],
+            "forget_spell": st["spells"] == [], "make_enemy": st["enemies"] == [FAC], "make_peace": st["enemies"] == [],
+            "leave_faction": "f" not in st["factions"]}.get(word, True)
 
 
 def test_an_unknown_word_is_a_named_harness_error():
@@ -918,3 +923,13 @@ def test_a_run_that_is_always_refused_keeps_its_last_attempt(tmp_path, monkeypat
     got = runner.run([], "careful")
     assert got == folders[-1] and got.exists()
     assert len(folders) == runner.ATTEMPTS and not any(f.exists() for f in folders[:-1])
+
+
+def test_a_spell_learned_shows_in_magic_and_is_lost_again():
+    g = game(extra_names={SPELL: "Shadow"})
+    assert "no spell" in g.do("magic")
+    assert g._apply(Q, [{"do": "teach_spell", "spell": SPELL}], None) == ["Learned: Shadow"]
+    assert g._apply(Q, [{"do": "teach_spell", "spell": SPELL}], None) == []          # known: nothing again
+    assert "Shadow" in g.do("magic")
+    assert g._apply(Q, [{"do": "forget_spell", "spell": SPELL}], None) == ["Forgotten: Shadow"]
+    assert "no spell" in g.do("magic")
