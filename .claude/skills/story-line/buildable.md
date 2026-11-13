@@ -139,7 +139,9 @@ locked or not.
     creature as the place's own or as a person of ours (ours stand where the ground is walkable, so a water creature
     of ours is a need of the place: a shelf of ground or a navmesh over the water).
 14. **A line's later quest is gated on the earlier quest's stage**, not on the rank it gave, and the line's file
-    holds every earlier quest's sketch, so the walk plays them first.
+    holds every earlier quest's sketch, so the walk plays them first. The offer is a line at hidden stage 0 gated
+    `done <earlier quest> <ending>`, one per ending that changes what is said; a `when` trigger fires only as that
+    stage is set while this quest runs, never for one done before.
 15. **What `far` promises is a need of the place.** A place marked `far` in the sketch is out of sight of the others:
     say so in the outline's needs of places (the camp is a long walk from the shrine), or the switch is not away.
 
