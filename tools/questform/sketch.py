@@ -576,7 +576,7 @@ def _trigger_tail(s: _Stream, t: dict):
         elif k == "choice" and t["kind"] == "death":
             t["choice"] = True
         else:
-            raise SketchError(f"a trigger takes until" + (" and choice" if t["kind"] == "death" else "") +
+            raise SketchError("a trigger takes until" + (" and choice" if t["kind"] == "death" else "") +
                               f", not {k!r}")
 
 
