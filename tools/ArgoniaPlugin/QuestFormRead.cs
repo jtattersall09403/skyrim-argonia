@@ -424,6 +424,13 @@ static class QuestFormRead
                 lines.Add(j);
             }
         }
+        // a speaks-first line with no rows has no begin fragment: its greeting copy is the greeting of the same line id
+        foreach (var g in lines.Where(l => (string?)l!["kind"] == "greeting" && speaksFirst.ContainsKey((string)l!["id"]!)).ToList())
+        {
+            helloCopies.Add(((string)g!["id"]!, (string)g["text"]!, g["conditions"]!.ToJsonString(), g["results"]!.ToJsonString()));
+            lines.Remove(g);
+            answersOf.RemoveAll(x => x.line == g);
+        }
         foreach (var (id, text, cj, rj) in helloCopies)
             if (!speaksFirst.TryGetValue(id, out var sf) || sf != (text, cj, rj)) throw No($"greeting {id} runs its rows as it begins and is no speaks-first line's copy");
         foreach (var id in speaksFirst.Keys) if (!helloCopies.Any(h => h.id == id)) throw No($"speaks-first {id} has no copy under the greeting");

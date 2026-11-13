@@ -532,6 +532,7 @@ static class QuestForm
             r.Base = bk == "item" ? Item(c, b, bid) : Exists<IPlaceableObjectGetter>(c, bid, "base");
             if (j0.TryGetProperty("contents", out var contents)) r.Base = Contents(c, b, r, bk, bid, contents);
             if (r.Kind == "door" && !c.Mods.Any(m => m.Doors.Any(d => d.FormKey == r.Base))) throw c.No("placement", $"{r.Id}: base {bid} is not a door");
+            if (S(anchor, "rule") == "surface") at = Footprint(c, cell, world, interior, at, r.Base);
             var o = new PlacedObject(key, SkyrimRelease.SkyrimSE) { EditorID = edid, MajorRecordFlagsRaw = flags, Placement = new Placement { Position = at, Rotation = new P3Float() } };
             o.Base.SetTo(r.Base); placed = o;
         }
@@ -659,7 +660,8 @@ static class QuestForm
             var on = NearestOn(c, Neighbours(c.Grid, cell, world, interior, p), p, nearDoor ? 100 : 200);
             if (on is { } o && (o.dist <= 300 || nearDoor))
             {
-                var at2 = new P3Float(MathF.Round(o.at.X), MathF.Round(o.at.Y), MathF.Round(o.at.Z));
+                // a unit over the navmesh, never under it
+                var at2 = new P3Float(MathF.Round(o.at.X), MathF.Round(o.at.Y), MathF.Ceiling(o.at.Z) + 1);
                 if (nearDoor && o.dist > 300)
                     Console.WriteLine($"questform {c.Q}: {r.Id}: no navmesh within 300 of where the player comes out of {r.Door!.Value.door}; the nearest at that level is {o.dist:F0} units on, at {at2.X:F0},{at2.Y:F0},{at2.Z:F0}");
                 return (interior ? cell : CellAt(c, world, at2), world, interior, at2);
@@ -669,23 +671,44 @@ static class QuestForm
             var why = on == null ? $"no navmesh at its level in or beside cell {cell}" : $"the nearest navmesh at its level is {on.Value.dist:F0} units from its spot";
             if (r.Kind != "person" || r.Hostile || nearDoor || !r.Json.TryGetProperty("at", out _))
                 throw c.No("placement", $"{r.Id}: {why}{(r.Hostile ? " (a person the player fights must stand on navmesh)" : "")}");
+            // on the floor under the form's spot: the highest surface no more than 100 above its height
+            var floor = Surfaces(c, cell, world, interior, p).Where(h => h.Top <= p.Z + 100).MaxBy(h => h.Top)
+                ?? throw c.No("placement", $"{r.Id}: {why}, and no floor under its spot {p.X:F0},{p.Y:F0},{p.Z:F0} to stand on");
             r.Standing = true;
-            Console.WriteLine($"questform {c.Q}: {r.Id} stands at its spot {p.X:F0},{p.Y:F0},{p.Z:F0} in {cell}: {why}, so they will not walk");
-            return (cell, world, interior, p);
+            var stand = new P3Float(MathF.Round(p.X), MathF.Round(p.Y), MathF.Round(floor.Top) + 1);
+            Console.WriteLine($"questform {c.Q}: {r.Id} stands at its spot {stand.X:F0},{stand.Y:F0},{stand.Z:F0} on {floor.EditorId ?? floor.Kind} in {cell}: {why}, so they will not walk");
+            return (cell, world, interior, stand);
         }
-        var assets = new Surface.Assets(Surface.Paths);
-        List<Surface.Hit> hits;
-        if (interior)
-        {
-            Surface.Bases(c.Mods);
-            var refs = c.Mods.SelectMany(m => m.Cells.Records.SelectMany(x => x.SubBlocks).SelectMany(x => x.Cells)).Where(x => x.FormKey == cell)
-                .SelectMany(x => x.Persistent.Concat(x.Temporary)).OfType<IPlacedObjectGetter>().GroupBy(o => o.FormKey).Select(g => g.Last()).Where(o => o.Placement != null);
-            hits = Surface.UnderRefs(refs, assets, p.X, p.Y, everyCrossing: true);
-        }
-        else hits = Surface.Under(c.Mods, assets, world, p.X, p.Y);
+        var hits = Surfaces(c, cell, world, interior, p);
         if (hits.Count == 0) throw c.No("placement", $"{r.Id}: no surface under {p.X:F0},{p.Y:F0}");
         var top = hits.MinBy(h => MathF.Abs(h.Top - p.Z))!;
         return (cell, world, interior, new P3Float(MathF.Round(p.X), MathF.Round(p.Y), MathF.Round(top.Top)));
+    }
+
+    /// A thing on a surface rests on the highest surface under its footprint (its bounds' corners, a few units in, and its
+    /// centre) within 40 of the spot, so no part of it sinks into an uneven floor.
+    static P3Float Footprint(Ctx c, FormKey cell, FormKey world, bool interior, P3Float at, FormKey baseKey)
+    {
+        var ob = c.Mod.EnumerateMajorRecords<IPlaceableObjectGetter>().Concat(Enumerable.Reverse(c.Mods).SelectMany(m => m.EnumerateMajorRecords<IPlaceableObjectGetter>()))
+            .FirstOrDefault(x => x.FormKey == baseKey) is IObjectBoundedGetter bd ? bd.ObjectBounds : null;
+        if (ob == null) return at;
+        var z = at.Z;
+        foreach (var x in new[] { ob.First.X + 4f, 0f, ob.Second.X - 4f })
+            foreach (var y in new[] { ob.First.Y + 4f, 0f, ob.Second.Y - 4f })
+                foreach (var h in Surfaces(c, cell, world, interior, new P3Float(at.X + x, at.Y + y, at.Z)))
+                    if (MathF.Abs(h.Top - at.Z) <= 40) z = MathF.Max(z, MathF.Ceiling(h.Top));
+        return new P3Float(at.X, at.Y, z);
+    }
+
+    /// Every modelled surface (and the land, outdoors) under a spot.
+    static List<Surface.Hit> Surfaces(Ctx c, FormKey cell, FormKey world, bool interior, P3Float p)
+    {
+        var assets = new Surface.Assets(Surface.Paths);
+        if (!interior) return Surface.Under(c.Mods, assets, world, p.X, p.Y);
+        Surface.Bases(c.Mods);
+        var refs = c.Mods.SelectMany(m => m.Cells.Records.SelectMany(x => x.SubBlocks).SelectMany(x => x.Cells)).Where(x => x.FormKey == cell)
+            .SelectMany(x => x.Persistent.Concat(x.Temporary)).OfType<IPlacedObjectGetter>().GroupBy(o => o.FormKey).Select(g => g.Last()).Where(o => o.Placement != null);
+        return Surface.UnderRefs(refs, assets, p.X, p.Y, everyCrossing: true);
     }
 
     /// The cells whose navmeshes may hold a spot: an interior's own; an exterior cell and the eight round it (a navmesh
