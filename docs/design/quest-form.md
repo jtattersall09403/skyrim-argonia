@@ -343,6 +343,16 @@ ways` (a death that both fails and moves the quest), `fallback`, `unsaid line`, 
 `place name`, and a regard step or gate outside Skyrim's (`changeDisposition`, `dispositionAtLeast`).
 
 
+## The outline's sketch
+
+`python3 -m tools.questform sketch <story file> [--quest <id>] [--paths]` (`tools/questform/sketch.py`) checks a
+story outline before its places are built: each fenced `sketch` block (format in `.claude/skills/story-line/
+buildable.md` §4) is expanded to the form a record would compile to (a line only moves a stage; a take's held check,
+a late trigger's `until`, a check's refusal line and the hidden start's who-must-live gates added as `compile` adds
+them), each reference standing at a stand-in spot per named place (`far` places beyond `AWAY_UNITS`), then checked by
+every rule above, `check_set`, the design rules (`sketch.DESIGN`) and `reach`. It is a relaxed entry to the same
+rules: a built quest is still checked in full.
+
 ## The gate
 
 `make check` runs the form's unit tests and `python3 -m tools.questform gate`: the example
