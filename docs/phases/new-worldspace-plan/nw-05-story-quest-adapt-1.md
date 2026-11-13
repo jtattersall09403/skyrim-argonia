@@ -139,3 +139,13 @@ database lane (step 6) brings the places' notes into line and regenerates the di
 - The digest: 258 places, 24 regions, 18 cultures, 645 hooks, 58 named people (`story/design/world/`).
 - The province plan: read once on paper by three readers (one who knows the digest, one Elder Scrolls fan, one for
   deliverability); nothing merged or dropped; two lines re-scoped and four given work that is done, not heard.
+- Closed 2026-11-13 at the owner's ask, posted as issue #70; what is left is
+  [nw-05b](nw-05b-story-rounds-and-roster.md). Delivered: steps 1 and 2; step 3 and step 4 written and read once
+  for all fourteen lines; step 5's ledger; the second round of five lines (the main quest, the Lamp-Bearers,
+  Many-Root, the Marsh Charter, the Sunken Archive), none of which met the stop rule; the studio's story panel,
+  batch notes and machine start; Helstrom's rooms named and its needs loaded. Not delivered: the second round of
+  nine lines, any third round, steps 6, 7 and 10.
+- What a round costs: a line's writer with its readers is about 400,000 tokens and 30 to 80 minutes. The first
+  deliverability reading found 6 to 17 blocking faults a story even after the sketch check passed, most of them
+  prose that says what no sketch line does, and people who may be dead before a stage that names them.
+
