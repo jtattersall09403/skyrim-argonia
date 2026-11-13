@@ -103,6 +103,7 @@ BREAKS = [
      'line hand giver at 30 ask "Here is the purse." if holds purse, number t01.told = 1 -> 90 says "she pays"',
      "number-set"),
     ('if skill Speech 30 -> 20 else "Pay or swim."', 'if skill Speech 30 -> 20', "refusal"),
+    ('line job giver at 0 ask "Any work?" -> 10', 'line job giver at 0 ask "Any work?" if rank reed 0 -> 10', "rank-set"),
     ('stage 20 "The tollman told me to take the purse."',
      'stage 20 "The tollman told me to take the purse." do off tollman', "away"),
     ('must-live giver fails 95', 'must-live giver fails 95\ndeath giver from 10 -> 30 choice', "death-both-ways"),

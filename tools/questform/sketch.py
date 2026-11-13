@@ -869,11 +869,11 @@ def _broken(form) -> bool:
 
 # -- the design rules: what a writer most often gets wrong that the form's rules do not name ---------------------
 
-DESIGN = ("take-unheld", "give-twice", "hostile-speaks", "hostile-must-live", "death-both-ways", "one-name", "give-placed", "dead-early",
+DESIGN = ("rank-set", "take-unheld", "give-twice", "hostile-speaks", "hostile-must-live", "death-both-ways", "one-name", "give-placed", "dead-early",
           "early-death", "needs-living", "number-set", "refusal")
 
 
-def design(form: dict, sk: Sketch, numbers_set: set[str]) -> list[tuple[str, str]]:
+def design(form: dict, sk: Sketch, numbers_set: set[str], factions_set: set[str] = frozenset()) -> list[tuple[str, str]]:
     out = []
     fm = rules.Form(form)
     lives = {m["ref"] for m in form["must_live"]}
@@ -973,6 +973,10 @@ def design(form: dict, sk: Sketch, numbers_set: set[str]) -> list[tuple[str, str
                             f"(trigger {t['id']}): the player would hold two"))
     for ln in form["lines"]:
         for c in ln["conditions"]:
+            if c["is"] == "rank_at_least" and c["faction"] not in factions_set:
+                out.append(("rank-set", f"line {ln['id']} asks rank in {c['faction']}, which no stage of this file "
+                            "gives: gate on the stage of the earlier quest that gave it, and keep that quest's sketch "
+                            "in the same file"))
             if c["is"] == "number_compare" and c["number"] not in numbers_set:
                 out.append(("number-set", f"line {ln['id']} reads the number {c['number']}, which no stage of this "
                             "file sets"))
@@ -1072,6 +1076,7 @@ GLOSS = {
     "early-death": "a kill open before the player has the job",
     "needs-living": "a person the quest cannot go on without, not named",
     "number-set": "a number read that nothing sets",
+    "rank-set": "a rank asked for that no quest in the file gives",
     "refusal": "a check with no refusal of its own",
     "take-unheld": "a hand-over the player may not be able to make: the stage takes what a way to it never asked for",
     "give-twice": "one thing given and taken: the player would hold two",
@@ -1114,6 +1119,8 @@ def check(path, quest: str | None = None, walk: bool = True, max_states: int | N
     every = [f for f, _ in forms.values()]
     numbers_set = {r["number"] for f in every for s in f["stages"] for r in s["results"]
                    if r["do"] in ("set_number", "add_number")}
+    factions_set = {r["faction"] for f in every for s in f["stages"] for r in s["results"]
+                    if r["do"] in ("join_faction", "set_rank")}
     walkable = not faults
     for qid, (form, sk) in forms.items():
         fails = rules.check(form, every)
@@ -1122,7 +1129,7 @@ def check(path, quest: str | None = None, walk: bool = True, max_states: int | N
             continue
         src = srcs[qid]
         if not any(r in ("schema", "vocabulary", "stages-exist", "refs-exist") for r, _ in fails):
-            fails = fails + design(form, sk, numbers_set)
+            fails = fails + design(form, sk, numbers_set, factions_set)
         for rule, msg in fails:
             msg = msg.replace("sketch:", "")
             faults.append({"line": _where(msg, src) or src.get(("quest",)), "quest": qid, "rule": rule,

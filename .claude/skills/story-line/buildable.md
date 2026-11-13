@@ -132,7 +132,9 @@ locked or not.
     said after an ending (gated on the stage or the number the ending set), every gift and switch, and each fought
     creature as the place's own or as a person of ours (ours stand where the ground is walkable, so a water creature
     of ours is a need of the place: a shelf of ground or a navmesh over the water).
-14. **What `far` promises is a need of the place.** A place marked `far` in the sketch is out of sight of the others:
+14. **A line's later quest is gated on the earlier quest's stage**, not on the rank it gave, and the line's file
+    holds every earlier quest's sketch, so the walk plays them first.
+15. **What `far` promises is a need of the place.** A place marked `far` in the sketch is out of sight of the others:
     say so in the outline's needs of places (the camp is a long walk from the shrine), or the switch is not away.
 
 ## 4. The sketch
@@ -572,5 +574,7 @@ These stay the deliverability reader's to check, on the outline and its sketch t
 - that a hostile band cannot reach the person who speaks at its edge, and that a level is right for its place;
 - that a stand-in person's lines, a choice's two sides and an ending's switches tell one story;
 - that the player's own words state nothing they may not yet have been told;
+- that every locked door between places has its ways past (key, pick, a line that unlocks it, another way round):
+  the walk goes from place to place without doors;
 - that a thing placed in a container is one the container could hold, and a thing the player is told to take is
   where they are told it is.
