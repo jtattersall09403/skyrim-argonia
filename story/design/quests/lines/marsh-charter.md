@@ -787,7 +787,7 @@ stage 30 "The Sarpa woman who speaks for the three said a fourth of them walked 
 stage 35 "The Sarpa who spoke for the three is dead. The other two will not speak."
 stage 40 "I gave the three Sarpa four picks and their dead sister's crest-knot. They said they would go." do take pick 4, take knot, give roostarrows 30, set mc02.spared 1
 stage 42 "Joxhi's elder paid me 80 gold for quiet." do give-gold 80
-stage 45 "I killed the three Sarpa in the scrub at Joxhi."
+stage 45 "I killed the three Sarpa in the scrub at Joxhi." do set mc02.spared 0
 stage 47 "Joxhi's elder paid me 200 gold for the three." do give-gold 200
 stage 90 completed "Joxhi's spear. I told it at the Post." do join post, rank post 2, own rack, own stores, recipe fharrows at forge needs steel 1 firewood 1, give steel 2, give firewood 2, off zik, off hes, off raal, set mc02.told 1
 stage 91 completed "The Charter's spear. I told it to Raj-Deel at Inoja." do join post, rank post 2, own rack, own stores, give-gold 150, give potion 4, bounty 00F0C1:Argonia.esp 0, set mc02.told 2
@@ -839,7 +839,7 @@ must-live kaal fails 95
 
 From 20, 30 and 35 the objective's targets are the Sarpa still alive, so a marker stands on whoever is left. If
 all three are killed after the trade and before the telling, the line of stage 45 is said before any telling and
-replaces it. The endings told at the Post switch the three off in the scrub while the player is in the hall;
+replaces it, and the roost's word is lost with them (`mc02.spared` goes back to nothing). The endings told at the Post switch the three off in the scrub while the player is in the hall;
 Joxhi is far enough from Noota Nara and from Inoja (a need: section 4).
 
 **The first choice: do what was asked, or what the three ask.** *Jo-Reesh*, faced: "He is sixteen. He saw wings
