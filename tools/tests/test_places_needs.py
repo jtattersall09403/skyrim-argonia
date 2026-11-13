@@ -133,7 +133,7 @@ def test_payload_is_plain_and_check_holds_rests_to_the_place_files(world):
     assert hall["know"] == 'By the name the game shows: its door shows "Hall". Told by a person: the healer names it.'
     assert croc["know"].startswith("The story does not yet say")
     assert d["people"]["fenwick.A"]["who"] == "Xilsa, an Argonian woman: root-tender; grown child in Taleeka's household."
-    assert d["people"]["fenwick.A"]["uses"][0]["keep"] == "must stand where the player can speak to them"
+    assert d["people"]["fenwick.A"]["uses"][0]["keep"] == "to stand where the player can speak to them"
     assert d["people"]["fenwick.B"]["uses"] == []
     assert N.check("fenwick", world["root"], world["places"], world["people"]) == []
     doc = N.read("fenwick", world["root"])

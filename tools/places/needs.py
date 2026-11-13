@@ -54,9 +54,9 @@ SECTION = re.compile(r"^#{2,3}\s.*needs of (its )?places", re.I)
 HEADING = re.compile(r"^\*\*([^*]+)\*\*")
 SIGN_WORDS = {"look": "By its look", "label": "By the name the game shows", "beside": "By what stands in or by it",
               "person": "Told by a person"}
-KEEP_WORDS = {"reachable": "must stand where the player can speak to them",
-              "alive": "must stay alive",
-              "reachable and alive": "must stay alive and stand where the player can speak to them"}
+KEEP_WORDS = {"reachable": "to stand where the player can speak to them",
+              "alive": "to stay alive",
+              "reachable and alive": "to stay alive and stand where the player can speak to them"}
 ROLE_WORDS = {"partner": "partner", "grown child": "grown child", "elder": "elder", "sibling": "sibling",
               "cousin": "cousin", "lodger": "lodger", "levy": "levy member"}
 

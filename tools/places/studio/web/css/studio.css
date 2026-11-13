@@ -280,4 +280,5 @@ ol.needs .row { margin: 8px 0 0; flex-wrap: wrap; }
 .sketch .game-name.door { fill: var(--accent); }
 .sketch .game-name.marker { font-size: 15px; fill: var(--taste); }
 .names-banner { position: absolute; left: 10px; right: 10px; top: 64px; z-index: 3; background: var(--panel); border-radius: 12px; box-shadow: var(--shadow); padding: 6px 12px; font-size: 13px; pointer-events: none; }
+#player-names span { white-space: nowrap; }
 #player-names[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); }

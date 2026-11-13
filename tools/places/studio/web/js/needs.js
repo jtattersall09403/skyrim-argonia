@@ -81,7 +81,7 @@ export class Needs {
       parts.push(el(`<h3>People the stories use (${used.length})</h3>`));
       const ol = el('<ol class="needs people-uses"></ol>');
       for (const [pid, p] of used) {
-        const li = el(`<li><span class="what"><strong>${esc(p.who)}</strong>${p.uses.map((u) => `<span class="note">${esc(u.for)} ${esc(u.line)}; ${esc(u.quests)}. The story needs that this person ${esc(u.keep)}.${u.changed?.length ? ` <em>Changed by you: ${esc(u.changed.map((c) => c.what).join('; '))}</em>` : ''}</span>`).join('')}</span></li>`);
+        const li = el(`<li><span class="what"><strong>${esc(p.who)}</strong>${p.uses.map((u) => `<span class="note">${esc(u.for)} Needed by ${esc(u.line)}: ${esc(u.quests)}. The story needs this person ${esc(u.keep)}.${u.changed?.length ? ` <em>Changed by you: ${esc(u.changed.map((c) => c.what).join('; '))}</em>` : ''}</span>`).join('')}</span></li>`);
         const b = el('<button class="quiet">Show</button>'); b.onclick = () => this.showPerson(pid); li.append(b);
         ol.append(li);
       }
@@ -118,6 +118,7 @@ export class Needs {
     return li;
   }
   // ---------- show a need's thing or person in the view ----------
+  toTop() { const b = document.getElementById('panel-body'); if (b) b.scrollTop = 0; }
   outside() { const a = this.a; if (a.ours.space !== 'exterior') a.leave(a.ours, 0); }
   showNeed(n) {
     const r = n.rests || {};
@@ -128,12 +129,12 @@ export class Needs {
   showRef(id) {
     const a = this.a; this.outside();
     const r = a.model.spaces.exterior?.refs.get(id); if (!r) { a.toast('That thing is no longer in the place.'); return; }
-    a.tools.use('select'); a.selection = new Set([id]); a.tools.selectionChanged();
+    a.tools.use('select'); a.selection = new Set([id]); a.tools.selectionChanged(); this.toTop();
     const p = r.pos; a.ours.view.rig.pitch = Math.max(a.ours.view.rig.pitch, 0.7); a.ours.view.frame([p[0] - 900, p[1] - 900, p[0] + 900, p[1] + 900, p[2]]);
   }
   showPerson(pid) {
     const a = this.a, p = a.model.people.get(pid); if (!p) { a.toast('That person is no longer in the place.'); return; }
-    this.outside(); a.tools.use('people'); a.people.select(pid);
+    this.outside(); a.tools.use('people'); a.people.select(pid); this.toTop();
     const w = p.work || {};
     let at = w.space === 'exterior' && w.pos ? w.pos : null;
     if (!at && w.space) { const d = a.model.spaces.exterior?.refs.get(a.spaceInfo?.[w.space]?.door_from); at = d?.pos; }
@@ -159,7 +160,11 @@ export class Needs {
   }
   warn(hits) {
     const a = this.a, o = document.getElementById('needwarn');
-    const items = hits.map((h) => `<li>${esc(this.sentence(h.u))}</li>`).join('');
+    const items = hits.map((h) => {
+      const what = h.u.kind === 'use' ? h.u.person.name : h.u.n.thing, why = h.u.kind === 'use' ? h.u.use.for : h.u.n.does;
+      const by = h.u.kind === 'use' ? `${h.u.use.line}: ${h.u.use.quests}` : `${h.u.n.line}: ${h.u.n.quests}`;
+      return `<li><strong>${esc(what)}</strong> (just ${esc(h.what)}). ${esc(why)} Needed by ${esc(by)}.</li>`;
+    }).join('');
     o.innerHTML = `<div class="sheet" role="alertdialog" aria-labelledby="needwarn-h"><h2 id="needwarn-h">A quest needs this</h2>
       <ul class="plain">${items}</ul>
       <p>If you change it, that quest will be changed to fit. Carry on?</p>
@@ -204,7 +209,7 @@ export class Needs {
       let text = null, cls = 'thing';
       if (r.map_marker?.Name) { text = `Map: ${r.map_marker.Name}`; cls = 'marker'; }
       else if (r.door?.to_space && r.door.to_space !== 'exterior') { text = `Door: ${a.spaceInfo?.[r.door.to_space]?.name || '(shows no name)'}`; cls = 'door'; }
-      else if (r.door?.to_space === 'exterior') { text = 'Door: Outside'; cls = 'door'; }
+      else if (r.door?.to_space === 'exterior' && S !== 'exterior') { text = 'Door: Outside'; cls = 'door'; }
       else if (base.name && NAMED_KINDS.has(r.kind || base.kind) && near(r.pos)) text = base.name;
       if (!text) continue;
       if (cls !== 'marker' && !near(r.pos)) continue;
