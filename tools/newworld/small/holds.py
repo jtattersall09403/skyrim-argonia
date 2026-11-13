@@ -64,6 +64,7 @@ def facts(src: Path, block=small.BLOCK) -> dict:
             "still_cells": sum(water[k] for k in STILL), "dry_cells": nx * ny - sum(water.values()),
             "tree": t["tree"], "static_tree": t["static_tree"], "repaired_copy": t["repaired_copy"], "object": t["object"],
             "own": t["own"], "lodmodel_bases": sorted(lodmodels), "dressing": t["dressing"],
+            "lodmodel_planned": sum(v["mech"] == "lodmodel" for v in plan.values()),
             "road_cells": sum(small.in_block(*c, block) for c in road), "junctions": junctions,
             "places": places, "places_at_water": sorted(set(places) & shore)}
 
@@ -77,7 +78,7 @@ ROWS = (
     ("our copies of other plugins' trees, each with a billboard of its own", lambda f: f["repaired_copy"] >= 20),
     ("rocks matched by a full-model rule", lambda f: f["object"] >= 5),
     ("cliffs and trims with LOD models of their own", lambda f: f["own"] >= 20),
-    ("a base drawn from a derived LOD model", lambda f: len(f["lodmodel_bases"]) >= 1),
+    ("a base drawn from a derived LOD model, when the province plans one", lambda f: len(f["lodmodel_bases"]) >= min(1, f["lodmodel_planned"])),
     ("a road, its dressing and a junction", lambda f: f["road_cells"] >= 10 and f["dressing"] >= 5 and f["junctions"] >= 1),
     ("a place whose pad is at the water", lambda f: bool(f["places_at_water"])),
 )
