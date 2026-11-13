@@ -1,0 +1,241 @@
+# The Eye and the Root: the plot
+
+The main quest's plot, whole, at the length of one sitting. It is the one statement of the plot: the quest-by-quest
+detail, the citations to the lore and the outcome tables are in [main](main.md), which follows this page wherever
+the two differ. Everything here is inside the quest ceiling ([quest-system](../../../../.claude/skills/quest-system/SKILL.md)):
+what must happen has already happened and is found, is told by a witness, or happens while the player is elsewhere.
+
+**Words.** *Hist*: the thinking trees every Argonian is hatched under and returns to. *Sap*: what a Hist bleeds;
+drunk, it brings dreams the tree sends. *The Root Talk*: the yearly gathering at Helstrom where the elders of the
+tribes drink at the city tree's spring and hear all the trees speak together. *The Owing*: the marsh's sentence,
+months of owed work instead of a cell. *The Wardens*: the thin state that says it rules Black Marsh. *The Reed*: the
+Wardens' few spies. *The Unbound*: the cult that cuts roots; its mark is a cord cut through. *Naga*: tall tribeless
+Argonians whom no tree claims. *Sick ground*: the ruins of dead peoples, which Argonians will not enter.
+
+## 1. The premise, and what the player wants
+
+Black Marsh, 4E 201. The player wakes in the hold of an Owing barge at a reed-cutters' camp in the north, of any
+race, with nothing. The work gang's huts burned in the night. The man at the barge door has no such name on his
+roll: the player belongs to nobody, owes nothing and owns nothing. One cutter saw a tall woman with a cut cord at
+her wrist carry the player out of the fire and lay them on the barge.
+
+So the player starts with two wants. The plain one is a footing: coin, kit, a name somebody will answer for, which
+the Reed offers to a stranger no one can trace. The one that lasts is their own: who carried me out of that fire,
+and why? Each act gives a piece of that answer, and the last piece is given at the last door by the woman herself.
+
+## 2. The mystery and its hidden truth
+
+**What the player is shown.** Someone is cutting the roots of Hist trees and carrying the sap off in jars. A young
+tree at the edge of the marsh is dying of it, and the spring of the oldest city's tree has gone sour, so the Root
+Talk is late and nobody will say why. The cutters are paid by someone rich, and they are also hunting a jewel: the
+Eye of Argonia, the lost jewel of the old kings, said to be the key to a door.
+
+**What is true.** The trees are joined. When the first Hist wood sank under the southern sea, every tree left on
+land gave it a root, freely, so that the drowned would be remembered and no tree be alone. The joining is the Root,
+and it lies under the sea trench the divers call Echo Deep, where "the old Hist sings the drowned down". A tree
+could once close its root when it chose. Then came a year when the trees closed their roots on a dying neighbour
+and its people starved unheard, and the priest-kings had the Eye cut: a jewel that holds the Root's door and forbids
+any tree to close. The gift became a chain, and the last king left it locked.
+
+A bound tree cannot shut out what another sends. That is how one mad tree at Lilmoth called a flying city down on
+the whole marsh in 4E 48, and it is how the sickness travels now: the young tree's dying passes down the joining to
+trees that cannot refuse it.
+
+After 4E 48 the Wardens kept the Reed to listen for the next mad tree. The Reed listens by buying the dreams of
+people who drink sap, and it keeps the best dreamers, in the cellar of a coastal fort it says is empty. One of them,
+a young woman who dreamed the same door every night, was held nine years. Her listener let her out and reported her
+dead. She cut through the cord her gaolers knotted for each dream, named herself Cuts-the-Old-Knot, and gathered the
+tribeless to end the joining for good. For that she needs two things: the seed a dying Hist leaves (a Mnemic Egg,
+which poured into the Root severs every tree from every other), so she is killing a tree; and the Eye, to open the
+door.
+
+One rule of the jewel drives the second half. The Eye keeps to the hand that lifts it from its resting place: the
+drowned priest who guards it gives it to one bearer, and it opens the door for that hand and no other. Whoever
+wants the door opened does not need the jewel. They need the bearer, willing. The player becomes the bearer, and
+from then on every power in the story is courting one nobody.
+
+## 3. The people who matter
+
+| Who | What they want | What they hide, or what it costs |
+|---|---|---|
+| **Nesh-Deeka**, the Reed's handler, who gives the player their work | the cutting stopped; the people she listens to kept from harm; in the end, the trees given back their right to refuse | she freed a dreamer once, and the dreamer became the enemy; she does not tell the player what the Reed keeps |
+| **Never-Writes-Twice**, the Reed's officer, who mends nets in the same house and seems to be nobody | one answerable hand on the door, so that no tree ever turns on the marsh again | she let the young tree die, because a dead tree's Egg would be carried to the door and show her where it is |
+| **Cuts-the-Old-Knot**, leader of the Unbound, unseen until the end | every tree free of every other; no dreamer ever kept again | she lit the fire the player was carried out of, a man died in it, and her cure kills a tree and ends the Root Talk for ever |
+| **Ennodius Vanin, the Collector**, an Imperial buyer of relics who preaches for the Unbound | to see the door open, after twenty years of hunting the Eye | he tells the truth every time, because the truth is what moves the bearer where he wants |
+| **Heem-Jasa**, tender of the dying young tree | her tree to live; her people's eggs to hatch | she asks a stranger for a truth she may not want; her tree's seed is what all three endings spend or save |
+| **Vosh-Leera**, root-herald of the first town, who brings the player into the Reed | news worth selling; her town left alone | she sells what she hears and has never asked what becomes of it |
+| **Xil-Veeka**, a retired Shadowscale at Lilmoth | to be left alone | his order once guarded the kings' road to the door, and he has told nobody |
+| **Sesk**, a Naga of the cutters' camp | out, with the price of a boat | she cut roots too |
+
+Helstrom's elders, the reed people of the north and the divers of Bell Station are the province going about its
+life around these eight; they pay for whatever the player does at the end, and the player meets each of them first
+as people, not as stakes.
+
+## 4. The acts
+
+**Act I, the burnt camp** (the northern border, then Helstrom). Four small jobs, each a different kind, teach the
+game and the marsh. At the camp the player finds which of the gang took pay to light the fire: by a witness, a
+word, a quiet hand in his kit-box or a knife. His purse holds a cut cord. In the first town the root-herald takes
+the player on for the Reed and sends them to a cutters' camp hidden on sick ground, to bring out a jar of stolen
+sap by stealth, by a fight or by turning the town's own runaway youth. The sap came from the young tree at Vel-Sapha
+Stand, where the player finds the heart-root cut, deals with the crew that cut it, and must tell the tree's tender
+the truth (her tree will die) or a comfort. Her people's thanks is a place at the Root Talk, and with it the player
+rides a rootworm under the forest to Helstrom, the oldest city, where the handler Nesh-Deeka has them taste the
+sealed spring in front of its people. It is the same sourness as the jar, and with it comes a moment's dream: a ring
+of trees in black water, a door nobody built, a singing far off under water. *What the player learns:* it is one
+sickness, it travels between trees, someone rich pays the cutters, and the old songs give that door a key, the Eye
+of Argonia. Nesh-Deeka says one thing more: "The woman with the cut cord carried you out of a fire she lit. I do
+not know why, and I do not like it." *Why they go on:* the cutters want the Eye, the Reed wants it first, and the
+player wants the woman.
+
+**Act II, the hunt** (three coasts, in any order). Three things say where the Eye lies, and Nesh-Deeka gives all
+three leads at once, saying which is gentlest and which may kill. Each is a different adventure and each gives one
+piece of the mystery as well as one piece of the map.
+
+- *Gideon, the relic-dealers' city.* An Eye is for sale and it is glass, but its old setting is real and sits in a
+  smugglers' cellar under a leaning watchtower: stolen out, bought as a buyer, or stormed. The Collector has left
+  the player a courteous note, and the smugglers' last cargo was boats, bought for Naga with new coin. *Someone
+  is ahead of the player, and the cutters are going to sea.*
+- *Lilmoth and Bell Station, on the south-east sea.* Lilmoth is a city rebuilt over its own grave: its second tree
+  is the one that turned in 4E 48, and its people still let no one tend their young tree alone. From the divers'
+  platform beyond it the player wins a key from a winch-master and dives to a brass diving sphere wrecked among
+  drowned towers, for a lens-frame and a pilot's tag that says "the trench after". *This is what one mad tree did
+  to everyone joined to it, and the hunt points under the sea.*
+- *The Rose, the prison-fortress of the south.* A masked thief who sought the Eye died in its cells, and his mask is
+  in the old warden's office, among heirs of the garrison who kill strangers: bargained for as a guest (gold,
+  Speech or a champion's duel), or broken in for through a bastion the marsh has taken. A Naga of the Unbound is in
+  the yard, trying to buy the mask and laughed at. He says his mistress will have the jewel from whoever fetches
+  it, and that she asks after "the one from the fire". *She knows the player is coming.*
+
+The three together name the outermost of seven drowned spires. The act ends on news: the young tree is dead, the
+cutters dug an Egg from its root, and nobody was sent to guard it, though the player reported it. Never-Writes-Twice
+speaks almost for the first time: "A tree was always going to die of this. Be glad it was a small one." *Why they
+go on:* the Egg is out, the Eye is the only thing between it and the door, and the house the player works for has
+just shown a crack.
+
+**Act III, the spies** (the south-east sea and the east coast). A long dive to a dry temple inside the spire. The
+drowned priests' attendants are fought or passed unseen, or the divers lower a bell over their heads for a talker.
+A sea-priest's ghost keeps the last door "for no king", asks whose hand comes, and gives the jewel to one bearer:
+persuaded, sung to rest, shown the dead thief's mask, or struck down. Lifting the Eye brings the dream again,
+nearer. Nesh-Deeka then sends her one deniable hand, jewel and all, to the Unbound's gathering at Seafalls, a
+village too far from any tree to hear the Hist. The preacher there is the Collector. He knows who the player is,
+says in his sermon exactly what the Unbound mean to do with the Egg, and in private tells the player to go and look
+in the cellar of Fort Swiftmoth before deciding whom the jewel serves. Back in Helstrom the handler is gone:
+"up-river", says Never-Writes-Twice. The fort is held by the Reed's gaolers, hard men the coast takes for smugglers.
+The player gets in by stealth, by force or by an old privateer who knows the drain, and finds the cellar: pallets,
+dreamers, a knotted cord cut through above an empty pallet, and Nesh-Deeka, locked in for letting dreamers go.
+
+**The turn.** Here, two-thirds through, everything the player was told turns over. The patron keeps prisoners. The
+enemy's preacher told the truth. The young tree was left to die on purpose. The woman who lit the fire was a
+prisoner here for nine years, and the handler the player trusted is the one who freed her. The player then makes
+the story's first heavy choice, argued from both sides in the cellar: open the gate (some dreamers will drown in
+the marsh with the sap still in them; Nesh-Deeka walks free and becomes the player's teacher and informant; the
+gaolers hunt the player for good), or leave it shut (the fort becomes the player's own house of the Reed, with its
+strongroom and quartermaster; the dreamers are still there each time the player goes down). After this nobody gives
+orders. Nesh-Deeka, freed or not, gives the last lead: every dreamer dreams a carved stone on a height, and the
+marks on it are warded in Shadowscale teaching.
+
+**Act IV, the marks** (Lilmoth, the central ridge and the north again). The player holds the only key and now has
+to learn what it opens, and each stop argues a different answer. Xil-Veeka at Lilmoth gives the ward-words to one
+who impresses, persuades or pays him. On Aunike Crown, the bare summit of the marsh's one ridge, past Naga war
+parties (fought, slipped round, or led past by a scout who can be bought), the kings' stone read with the Eye in
+hand gives the kings' own account: the year the trees closed their roots, the tribe that starved unheard, and the
+jewel cut so that it could never happen again. In the flooded Vaults of Gemin, back in the country where the story
+began, through the restless dead or by a drowned side passage, the older tablet gives the rest: the joining was a
+gift, a tree could once refuse it, and the Root is at the bottom of the trench beyond the seventh spire. The kings'
+fear was real and so is the Unbound's grievance. Last, at the cutters' own stockade, a Naga who wants out lets the
+player in, by her gate, by stealth or by a hard fight, to an empty cradle: the Egg went down the creeks to the sea
+a month ago. She also says who burned in the gang's huts: a man who asked the Unbound for more pay. On the road
+south Never-Writes-Twice owns what she did ("One sapling at the edge, against every tree in the marsh the next time
+one turns. I would do it again, and I do not sleep"), says what she wants of the bearer, and asks where the cutters
+camp. Told the truth, the Reed burns the camp and everyone in it, and she pays with the Reed's last stores, among
+them an amulet of water-breathing. Told a lie, the camp stands, its Naga trade with the player, and it will cut
+again. *Why they go on:* the Egg is already at the door, the sour runs on while the door stays as the last king
+left it, and the only hand that can open it is the player's.
+
+**Act V, the door** (the trench). The divers will not lower below the rim. The player swims down the wrecked
+sphere's cable past hunting dreugh into the sealed spire, whose outer door stands open, into air and the hardest
+ground in the province: the Unbound's rearguard (fought, passed unseen, or talked past by a sentry sick of the
+dark), then the Root's guardian, the last thing sworn to the first gift, which speaks, does not strike first, and
+will not let the kings' jewel pass. It is answered with the tablet from Gemin, fought for its heart, or swum under.
+At the door from the dream stand Cuts-the-Old-Knot, with the Egg, and the Collector. She gives the last piece of
+the player's own story: "You lay unwritten in a gang-master's hut, on nobody's roll and under nobody's tree. I have
+been that. And I needed a hand no king had a claim on." Both are true. She yields the Egg to the tablet's words, to
+Speech, or to a hard fair fight the player starts. Egg and Eye together open the door. Inside are three things, and
+using one ends the story.
+
+## 5. The three endings
+
+None is the good one. Each has an advocate the player has reason to trust and to doubt, each has been argued
+somewhere on the road before the door, and the Collector says the whole trade in plain words before the player
+chooses. What changed is never watched: it is found on the way home.
+
+**CUT: pour the Egg into the basin.** Every tree is severed from every other. *The honest case:* the sickness
+stops at once, because nothing passes between trees now; no tree can ever again call something down on the whole
+marsh, as Lilmoth's did; nobody can ever again be kept in a cellar to be listened through, because there is nothing
+to overhear; and the tribeless are no longer lesser, since every tribe is now alone with its own tree. *It gives:*
+Rootless, a lasting ability (armour and resistance to magic, since nothing reaches the player through a tree any
+more), and the Unbound's camp as friends, with their healer, trader and stores. *It costs:* every Hist blessing in
+the province, for good; the Reed's house and its people; and the dead tree's seed, which is spent. *It leaves:* a
+sweet spring at Helstrom and a Root Talk at which each elder heard only her own tree; a quiet pool in the first
+town whose minder used to hear Helstrom in it; no song from the trench. Its advocate is Cuts-the-Old-Knot, who
+carried the player out of a fire and killed a man and a tree.
+
+**CLAIM: set the Eye in the kings' socket.** The joining holds, with the bearer's hand on it. *The honest case:*
+it is the only ending that saves everything the marsh has: the sickness is shut out, the spring runs sweet, the
+Root Talk is held as it always was, and a tree that turns can be shut out before it kills a city. It is also the
+only ending in which the dead tree's seed goes home. *It gives:* the Eye's Shutting, a power once a day that turns
+those nearby on each other; the Seed-Cord, a unique amulet of health, given by Heem-Jasa's people when the seed is
+brought back, and their blessing for good. *It costs:* a blood-price of 3,000 gold in Helstrom, paid or fought, for
+taking a seat no elder offered; the Unbound, gone, and their trade with them; the first town's blessing, refused.
+*It leaves:* the kings' chain again, with the player as king; the trees still listened to; whoever is still in the
+cellar. Its advocate is Never-Writes-Twice, who let a tree die and does not sleep.
+
+**MEND: read the first gift into the first root, and give the Egg back to it.** Each tree may again close its
+root. *The honest case:* it is the only ending that undoes a wrong instead of choosing who holds it, and the only
+one the trees themselves were asked about. *It gives:* the Root's counsel (the marsh's saps and herbs known, a sap
+tonic to make at any cook pot, Alchemy and Restoration raised) and the Wood's Regard, a power once a day that
+closes wounds; and no door anywhere shut against the player but one. *It costs, at once and where the player will
+see it:* nothing is stopped by force. The tree of the first town leaves the joining, and its pool blesses nobody.
+Helstrom's tree stays and its spring stays sour. The Unbound are not ended, hunt the player and go on cutting. The
+seed goes to the Root and not home. The trees may now do again what made the kings chain them. *It leaves:* a Root
+Talk held with empty places. Its advocate is Nesh-Deeka, who opened one door on principle and made the marsh an
+enemy by it.
+
+A player may also walk out. The Collector says what that is: the last king's hand stays on the door, and the sour
+runs on down the joining, tree by tree.
+
+**Who takes which.** A player who fears another Lilmoth, or who saw the cellar and wants no listener ever again,
+cuts. A player who wants the marsh as it was and trusts their own hand claims, pays for it, and is the only one who
+brings a dead tree's seed home. A player who thinks a bond is worth only what it may refuse mends, and pays in a
+quiet pool, a sour spring and an enemy left standing. A player who chooses for the reward alone still has to choose
+a kind: a lasting defence and a camp of friends, a daily power and a unique thing at a price, or craft, healing and
+every door left open.
+
+## 6. What a new player understands, and when
+
+| By the end of | The player can say |
+|---|---|
+| the first quest | I am nobody; a fire was lit for pay; a woman with a cut cord carried me out |
+| Act I | someone rich is having Hist roots cut; the sickness passes from tree to tree; I work for the state's quiet people; there is a door under water and a jewel that opens it |
+| Act II | the jewel is in a drowned spire; a collector is ahead of me; one mad tree once nearly ended the marsh; the tree I tried to save is dead, and my own side let it die |
+| the turn | my side keeps dreamers in a cellar; the enemy's leader was one of them; the enemy's preacher has not lied to me yet; the jewel answers only to me |
+| Act IV | the trees gave their roots freely; kings chained them, for a reason; three people want my hand on the door for three different things |
+| the door | why she carried me out; what each of the three things does, gives and costs |
+
+No word of the marsh's is used before someone has said what it means, and each act's news is told by a person in
+plain words as well as found.
+
+## 7. How any build finishes it
+
+Every quest is a place to get into and a thing to bring out, and every one has at least two ways through on
+different named skills: the quiet way (Sneak, Lockpicking, Pickpocket), the spoken way (Speech, sometimes gold),
+the armed way (One-Handed, Two-Handed, Archery, Block, Destruction, Conjuration), and often a knowing way (Alchemy,
+Restoration, Alteration, Illusion). A fighter, a mage, a thief and a talker each have a way through every act; the
+talker's ways through the hard places are a bell lowered past the spire's galleries, a treasure-seeker's gate at
+Gemin and the guardian answered. Breath under water is had by spell, by potion, made or bought, by a blessing or by
+a bought amulet. In Acts I and II no step meets a fight above the country's common danger unless another way stands
+beside it, and two people warn of every place that can kill. Nothing is levelled against the player. No step is won
+by reading or carrying a paper.
+
+## 8. Read on paper
