@@ -63,21 +63,7 @@ Then stop; you may be asked a few short questions afterwards.
 """
 
 
-def know_text(path: str | None) -> str:
-    """'What you know so far' for a later quest: a text file as it is, or the journal of quest forms (each shown
-    stage that is not a failure, in order), told as what the player remembers."""
-    if not path:
-        return ""
-    p = Path(path)
-    if p.suffix != ".json" and not p.is_dir():
-        return p.read_text(encoding="utf-8").strip()
-    forms, _ = S.load_forms([str(p)])
-    out = []
-    for f in forms:
-        entries = [s["journal"] for s in sorted(f["stages"], key=lambda s: s["number"])
-                   if s["shown"] and s["ending"] != "failed"]
-        out.append(f"From \"{f['quest']['name']}\": " + " ".join(entries))
-    return "What you know so far, from your journal: " + " ".join(out)
+know_text = S.know_text
 
 
 def brief(play: str, player: str, know: str) -> str:
@@ -135,12 +121,12 @@ def run_claude(cmd: list[str], stream_path: Path, cwd: Path, timeout: int = 3600
 
 
 def run(forms, player: str, model: str = "sonnet", know: str | None = None, names=(), at=None, start=None,
-        source="designed", sheet=None, max_commands=40, use_db=True, root: Path = S.RUNS) -> Path:
+        source="designed", sheet=None, max_commands=40, use_db=True, root: Path = S.RUNS, after=()) -> Path:
     if player not in TEMPERAMENTS:
         raise SystemExit(f"--player is one of {', '.join(TEMPERAMENTS)}")
     for _ in range(ATTEMPTS):
         folder, played = _attempt(forms, player, model, know, names, at, start, source, sheet, max_commands,
-                                  use_db, root)
+                                  use_db, root, after)
         if played:
             break
         shutil.rmtree(folder, ignore_errors=True)      # refused before its first command: nothing to keep
@@ -148,12 +134,13 @@ def run(forms, player: str, model: str = "sonnet", know: str | None = None, name
     return folder
 
 
-def _attempt(forms, player, model, know, names, at, start, source, sheet, max_commands, use_db, root):
+def _attempt(forms, player, model, know, names, at, start, source, sheet, max_commands, use_db, root, after):
     folder, screen = S.new(forms, player=player, source=source, start=start, at=at, sheet=sheet, know=know,
-                           names=names, use_db=use_db, max_commands=max_commands, root=root, model=model)
+                           names=names, use_db=use_db, max_commands=max_commands, root=root, model=model,
+                           after=after)
     play = wrapper(folder)
     room = Path(tempfile.mkdtemp(prefix="pt-"))
-    system = brief(str(play), player, know_text(know))
+    system = brief(str(play), player, S.known(folder))
     prompt = f"Your game has just begun. This is what you see:\n\n{screen}\n\nPlay."
     (folder / "brief.md").write_text(system + "\n---\n" + prompt + "\n", encoding="utf-8")
     t0 = time.time()

@@ -8,10 +8,12 @@ A snapshot, kept in the session so a run never changes under the player:
   it (talk.md: every topic gated to the talker; the stranger greeting; a rumour gated on its quest's stages);
 - doors: where a door leads (the position of its other side), for a door the census knows.
 
-Sources, later winning: the world database (story/data/db), then the forms (their `names`, a ref's `name`, a door's
-`destination`, a marker's `name` as its cell's place name), then each names file given (`--names`, JSON with "names"
-{id: name} and "places" {cell: {name, interior, entrance}}), then a ref's own `name` again (it is its name and
-nothing else). A name nobody gives is a harness error at the start of the run (game.py), never made up.
+- people: a person's race and sex ({ref or talker id: {race, sex}}), for "an Argonian woman".
+
+Sources, first winning: the forms (their `names`, a ref's `name`, a door's `destination`, a marker's `name` as its
+cell's place name), then each names file given (`--names`, JSON with "names" {id: name}, "places" {cell: {name,
+interior, entrance}} and "people" {id: {race, sex}}), then the world database (story/data/db). A name nobody gives is
+a harness error at the start of the run (game.py), never made up.
 """
 from __future__ import annotations
 
@@ -31,7 +33,7 @@ def from_db(forms: list[dict]) -> dict:
     """The snapshot's parts the world database knows. Empty parts when a form's keys are not in it."""
     from tools.argonia_world import db
     w = db.open()
-    names, places, doors = {}, {}, {}
+    names, places, doors, people = {}, {}, {}, {}
     cells = _cells(forms)
     q = w.query
     sets = {r["settlement"] for c in cells for r in q("SELECT settlement FROM bmv_settlement_cell WHERE cell = ?", c)}
@@ -57,7 +59,8 @@ def from_db(forms: list[dict]) -> dict:
             topics.append({"topic": tt["topic"], "prompt": prompts.get(tt["topic"], tt["topic"]), "lines": lines,
                            "gate": gate})
         talkers.append({"id": r["id"], "name": r["known_as"], "cell": r["cell"], "interior": bool(r["interior"]),
-                        "x": float(r["x"]), "y": float(r["y"]), "topics": topics})
+                        "x": float(r["x"]), "y": float(r["y"]), "topics": topics, "race": r["race"],
+                        "sex": r["sex"]})
     for c in cells | {t["cell"] for t in talkers}:
         places[c] = _place(w, c)
     fallback = []
@@ -79,6 +82,15 @@ def from_db(forms: list[dict]) -> dict:
                 q("SELECT name AS n FROM bmv_npc WHERE id = ?", key)
             if got and got[0]["n"]:
                 names[ref["id"]] = got[0]["n"]
+            if ref.get("kind") == "person":
+                who = q("SELECT race, sex FROM npc WHERE id = ?", ref["id"]) or \
+                    q("SELECT race, sex FROM bmv_talker WHERE id = ?", key) or \
+                    q("SELECT r.name AS race, n.sex FROM bmv_placement p JOIN bmv_npc n ON n.id = p.npc "
+                      "LEFT JOIN bmv_race r ON r.id = n.race WHERE p.id = ?", key) or \
+                    q("SELECT r.name AS race, n.sex FROM bmv_npc n LEFT JOIN bmv_race r ON r.id = n.race "
+                      "WHERE n.id = ?", key)
+                if who and (who[0]["race"] or who[0]["sex"]):
+                    people[ref["id"]] = {"race": who[0]["race"], "sex": who[0]["sex"]}
             d = q("SELECT d.*, t.cell AS to_cell, t.x AS tx, t.y AS ty, t.z AS tz FROM bmv_door d "
                   "LEFT JOIN bmv_door t ON t.id = d.target WHERE d.id = ?", key)
             if d and d[0]["to_cell"]:
@@ -87,7 +99,8 @@ def from_db(forms: list[dict]) -> dict:
                 names.setdefault(ref["id"], f"Door to {to['name']}" if to.get("name") else "Door")
                 doors[ref["id"]] = {"cell": d[0]["to_cell"], "interior": to["interior"], "x": d[0]["tx"],
                                     "y": d[0]["ty"], "z": d[0]["tz"]}
-    return {"names": names, "places": places, "talkers": talkers, "doors": doors, "fallback": fallback}
+    return {"names": names, "places": places, "talkers": talkers, "doors": doors, "fallback": fallback,
+            "people": people}
 
 
 def _place(w, cell) -> dict:
@@ -115,29 +128,35 @@ def from_forms(forms: list[dict]) -> tuple[dict, dict]:
 
 def load_names(path: Path) -> dict:
     d = json.loads(Path(path).read_text(encoding="utf-8"))
-    return {"names": d.get("names", {}), "places": d.get("places", {})}
+    return {"names": d.get("names", {}), "places": d.get("places", {}), "people": d.get("people", {})}
 
 
 def snapshot(forms: list[dict], names_files: list[Path] = (), use_db: bool = True) -> dict:
-    """A ref's own `name` field is its name and nothing else; a person placed from a template with no name of our
-    own gets the quest cast's name from the story database, else the template's, with one warning line saying so."""
-    snap = from_db(forms) if use_db else {"names": {}, "places": {}, "talkers": [], "doors": {}, "fallback": []}
+    """A name comes from the form first, then a names file, then the world database. `from_names_file` lists the
+    ids (and cells) whose name only a names file gave: what the forms still lack. A person placed from a template
+    with no name of our own on the form or in a names file gets the quest cast's name from the story database, else
+    the template's, with one warning line saying so."""
+    snap = from_db(forms) if use_db else {"names": {}, "places": {}, "talkers": [], "doors": {}, "fallback": [],
+                                          "people": {}}
     names, places = from_forms(forms)
+    used = set()
+    for p in names_files:
+        extra = load_names(p)
+        for k, v in extra["names"].items():
+            if k not in names:
+                snap["names"][k] = v
+                used.add(k)
+        for c, v in extra["places"].items():
+            if c not in places:
+                snap["places"][c] = {**snap["places"].get(c, {}), **v}
+                used.add(c)
+        for k, v in extra["people"].items():
+            snap["people"][k] = {**snap["people"].get(k, {}), **v}
     snap["names"].update(names)
     for c, v in places.items():
         snap["places"][c] = {**snap["places"].get(c, {}), **v}
-    given = set(names)
-    for p in names_files:
-        extra = load_names(p)
-        given |= set(extra["names"])
-        snap["names"].update(extra["names"])
-        for c, v in extra["places"].items():
-            snap["places"][c] = {**snap["places"].get(c, {}), **v}
-    for f in forms:
-        for ref in f["refs"]:
-            if ref.get("name"):
-                snap["names"][ref["id"]] = ref["name"]
-    snap["fallback"] = [r for r in snap["fallback"] if r not in given]
+    snap["from_names_file"] = sorted(used)
+    snap["fallback"] = [r for r in snap["fallback"] if r not in names and r not in used]
     for r in snap["fallback"]:
         n = snap["names"].get(r)
         print(f"WARNING: {r} is placed from a template with no name of its own on the form or in the story "

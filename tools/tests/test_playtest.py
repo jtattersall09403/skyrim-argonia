@@ -220,7 +220,9 @@ def test_locks_and_doors():
     g.s["locked"][DOOR] = True
     assert "Doors: Barge Hold Door (locked)" in g.look()
     assert g.do("use barge hold door") == "Barge Hold Door is locked."
-    assert "breaks" in g.do("pick barge hold door fail")
+    assert g.do("pick barge hold door fail") == "You have no lockpicks."
+    g.s["items"][G.LOCKPICK] = 2
+    assert "breaks" in g.do("pick barge hold door fail") and g.s["items"][G.LOCKPICK] == 1
     assert "You pick the lock" in g.do("pick barge hold door win")
     assert g.do("use barge hold door") == "You open Barge Hold Door."
 
@@ -337,7 +339,7 @@ def test_counts_are_filled_on_every_path_and_the_index_recomputes_them(tmp_path)
     p.write_text(json.dumps(kept))
     idx = json.loads(S.index(tmp_path / "runs").read_text())
     assert idx["runs"][0]["counts"] == {"commands": 1, "stalls": 0, "harness_errors": 0}
-    assert json.loads(p.read_text())["counts"]["commands"] == 1
+    assert json.loads(p.read_text())["counts"]["commands"] is None        # the index never rewrites a run
 
 
 def templated(**extra):
@@ -394,3 +396,248 @@ def test_the_forms_name_their_items_doors_and_marked_places():
     snap = W.snapshot([f], use_db=False)
     assert snap["names"]["item.ring"] == "Silver Ring" and snap["names"]["door.x"] == "Door to Coast Ship"
     assert snap["places"]["03978F:Black Marsh.esm"] == {"name": "Low-Reed Village", "interior": False}
+
+
+# -- containers, locks, theft, books, windows, who people are, names, the walker -----------------------------------
+
+AT = {"cell": "0A0100:Example.esp", "interior": False, "x": 1000.0, "y": 2000.0, "z": 0.0}
+JQ = "quest.test.jar"
+
+
+def jar_form():
+    """A keeper with the key, her owned locked lockbox holding a jar and a note, lockpicks and her cup about."""
+    def thing(i, **kw):
+        return {"id": i, "kind": "thing", "enabled": True, "at": dict(AT), **kw,
+                "placement": kw.get("placement") or {"base": {"kind": "existing_base", "id": "000001:Skyrim.esm"}}}
+    return {
+        "version": 1,
+        "quest": {"id": JQ, "editor_id": "ARG_TestJar", "name": "The Jar", "kind": "main",
+                  "start": {"by": "game", "stage": 10}},
+        "names": {"item.jar": "Sap Jar"},
+        "stages": [{"number": 10, "shown": True, "journal": "Get the jar.", "ending": "none", "results": []},
+                   {"number": 20, "shown": True, "journal": "I have the jar.", "ending": "none", "results": []},
+                   {"number": 90, "shown": True, "journal": "She has the jar.", "ending": "completed",
+                    "results": [{"do": "take_item", "item": "item.jar", "count": 1}]},
+                   {"number": 95, "shown": True, "journal": "She is dead.", "ending": "failed", "results": []}],
+        "objectives": [{"number": 10, "text": "Bring the jar to the keeper.", "shown_at": [10],
+                        "completed_at": [90], "targets": ["npc.keeper"]}],
+        "refs": [
+            {"id": "npc.keeper", "kind": "person", "enabled": True, "name": "Nesh-Deeka", "at": dict(AT),
+             "placement": {"base": {"kind": "template_person", "id": "160E6A:Black Marsh.esm"}}},
+            thing("thing.key", name="Lockbox Key", placement={"base": {"kind": "existing_base",
+                                                                      "id": "000002:Skyrim.esm"},
+                                                             "carried_by": "npc.keeper"}),
+            thing("thing.box", name="Lockbox", owner="npc.keeper", lock={"level": "novice", "key": "thing.key"},
+                  contents=[{"item": "item.jar", "count": 1}]),
+            thing("thing.note", name="Torn Note", text="The cutters come at dusk.",
+                  placement={"base": {"kind": "existing_base", "id": "000003:Skyrim.esm"}, "container": "thing.box"}),
+            thing("thing.picks", name="Lockpick", placement={"base": {"kind": "existing_base", "id": G.LOCKPICK}}),
+            thing("thing.cup", name="Clay Cup", owner="npc.keeper"),
+            {"id": "door.vault", "kind": "door", "enabled": True, "name": "Vault Door", "at": dict(AT),
+             "lock": {"level": "key"}, "placement": {"existing": "0A0030:Example.esp"}}],
+        "lines": [{"id": "keeper.jar", "speaker": "npc.keeper", "kind": "topic", "prompt": "Here is the jar.",
+                   "text": "Good.", "written": True,
+                   "conditions": [{"is": "item_count_at_least", "item": "item.jar", "count": 1}],
+                   "results": [{"do": "set_stage", "stage": 90}], "first_stage": 10, "last_stage": 20,
+                   "answers": []}],
+        "triggers": [{"id": "take.jar", "kind": "take", "ref": "item.jar", "prerequisite": 10, "sets": 20}],
+        "must_live": [{"ref": "npc.keeper", "fail_stage": 95, "main_message": True}]}
+
+
+def jar_world(*forms):
+    from tools.playtest import world as W
+    names, _ = W.from_forms(list(forms))
+    return {"names": names, "places": {"0A0100:Example.esp": {"name": "Barge Pier", "interior": False}},
+            "talkers": [], "doors": {}, "people": {"npc.keeper": {"race": "argonian", "sex": "female"}}}
+
+
+def jar_game(f=None):
+    f = f or jar_form()
+    g = G.Game([f], jar_world(f))
+    g.begin(at="npc.keeper")
+    return g
+
+
+def test_a_container_lists_its_contents_and_cannot_be_taken():
+    g = jar_game()
+    look = g.look()
+    assert "Lockbox (locked, Novice; owned)" in look and "Sap Jar" not in look and "Torn Note" not in look
+    assert g.do("take lockbox") == "You cannot carry Lockbox. Use it to open it."
+    assert g.do("take torn note") == "Torn Note is in Lockbox: open it first."
+    g.s["locked"]["thing.box"] = False
+    assert "not yours: opening it is stealing" in g.do("use lockbox")
+    out = g.do("use lockbox unseen")
+    assert "Nobody sees you." in out and "Lockbox holds: Torn Note; Sap Jar." in out
+    out = g.do("take sap jar")
+    assert "Added: Sap Jar" in out and "I have the jar." in out            # counted by the form's item id
+    assert g.s["items"]["item.jar"] == 1 and g.s["contents"]["thing.box"]["item.jar"] == 0
+    assert g.do("take sap jar") == "There is no 'sap jar' near you."
+    g.do("take torn note")
+    assert g.s["items"]["thing.note"] == 1
+    g.do("talk nesh-deeka")
+    assert "Quest completed: The Jar" in g.do("say here is the jar.")
+
+
+def test_a_hand_in_never_accepts_a_thing_never_held():
+    g = jar_game()
+    assert "Here is the jar." not in g.do("talk nesh-deeka")
+
+
+def test_locks_levels_keys_and_lockpicks():
+    g = jar_game()
+    assert g.do("use lockbox") == "Lockbox is locked (Novice)."
+    assert g.do("pick lockbox win") == "You have no lockpicks."
+    assert g.do("take lockpick") == "Added: Lockpick" and g.s["items"][G.LOCKPICK] == 1
+    assert "picking its lock is a crime" in g.do("pick lockbox win")
+    out = g.do("pick lockbox win seen")
+    assert "You are seen. Nesh-Deeka or a guard confronts you" in out and "Lockbox holds:" in out
+    assert g.s["crimes"] == [{"what": "pick Lockbox", "owner": "npc.keeper", "seen": True}]
+    assert g.do("use vault door") == "Vault Door is locked (needs a key). It opens only with its key."
+    assert g.do("pick vault door win") == "The lock of Vault Door cannot be picked: it opens only with its key."
+    f = jar_form()
+    f["refs"][2]["lock"]["level"] = "master"
+    g = jar_game(f)
+    g.s["items"][G.LOCKPICK] = 1
+    assert "is beyond your Lockpicking (25)" in g.do("pick lockbox win")
+    assert "Your lockpick breaks" in g.do("pick lockbox fail unseen") and G.LOCKPICK not in g.s["items"]
+
+
+def test_the_key_opens_its_lock_and_pickpocketing_takes_it():
+    g = jar_game()
+    out = g.do("pickpocket nesh-deeka")
+    assert out == "Nesh-Deeka carries: Lockbox Key. Take one with: take <thing> unseen, or take <thing> seen."
+    assert "Taking from Nesh-Deeka is pickpocketing." in g.do("take lockbox key")
+    g.do("pickpocket nesh-deeka")
+    assert g.do("take lockbox key unseen") == "Nobody sees you.\nAdded: Lockbox Key"
+    out = g.do("use lockbox unseen")
+    assert out.startswith("You unlock Lockbox with Lockbox Key.") and "Sap Jar" in out
+    assert g.do("pickpocket nesh-deeka") == "You find nothing on Nesh-Deeka worth taking."
+
+
+def test_owned_things_and_a_dead_persons_body():
+    g = jar_game()
+    assert "Clay Cup is not yours: taking it is stealing." in g.do("take clay cup")
+    assert "a guard confronts you" in g.do("take clay cup seen") and g.s["items"]["thing.cup"] == 1
+    assert "Quest failed: The Jar" in g.do("fight nesh-deeka win")
+    assert g.do("pickpocket nesh-deeka").startswith("Nesh-Deeka is dead")
+    assert g.do("use nesh-deeka") == "You search the body of Nesh-Deeka. It carries: Lockbox Key."
+    assert g.do("take lockbox key") == "Added: Lockbox Key"
+
+
+def test_a_readable_thing_shows_its_text():
+    g = jar_game()
+    g.s["locked"]["thing.box"] = False
+    g.do("use lockbox unseen")
+    g.do("take torn note")
+    assert g.do("use torn note") == "You read Torn Note:\nThe cutters come at dusk."
+
+
+def test_who_must_live_only_within_its_window():
+    f = jar_form()
+    f["must_live"][0].update({"from": 20, "to": 20, "main_message": False})
+    g = jar_game(f)
+    out = g.do("fight nesh-deeka win")
+    assert "Quest failed" not in out and g.s["quests"][JQ]["ended"] is None
+    f["must_live"][0]["from"] = 10
+    assert "Quest failed: The Jar" in jar_game(f).do("fight nesh-deeka win")
+
+
+def test_a_person_is_named_with_race_and_sex():
+    g = jar_game()
+    assert "Nesh-Deeka (an Argonian woman)" in g.look()
+    assert g.do("talk nesh-deeka").startswith("Nesh-Deeka, an Argonian woman.")
+    g.world["people"]["npc.keeper"] = {"race": "DarkElfRace", "sex": "male"}
+    assert g.who("npc.keeper") == "a Dark Elf man"
+    del g.world["people"]["npc.keeper"]
+    assert g.who("npc.keeper") is None and "Nesh-Deeka (a person)" in g.look()
+
+
+def test_the_world_database_says_who_a_person_is():
+    from tools.playtest import world as W
+    snap = W.from_db([templated()])
+    assert snap["people"]["npc.nesh-deeka"] == {"race": "argonian", "sex": "female"}
+
+
+def test_the_index_never_rewrites_a_kept_run(tmp_path):
+    folder, _ = new_session(tmp_path)
+    S.do(folder, "look", think="I look around")
+    S.write_run(folder)
+    p = folder / "run.json"
+    kept = json.loads(p.read_text())
+    kept["counts"] = {"commands": 99, "stalls": 0, "harness_errors": 0}
+    p.write_text(json.dumps(kept))
+    before = p.read_bytes()
+    idx = json.loads(S.index(tmp_path / "runs").read_text())
+    assert p.read_bytes() == before and idx["runs"][0]["counts"]["commands"] == 1
+
+
+def test_a_forms_name_wins_and_the_names_file_ids_are_listed(tmp_path):
+    from tools.playtest import world as W
+    f = tmp_path / "n.json"
+    f.write_text(json.dumps({"names": {"npc.nesh-deeka": "From The File", "item.x": "Ring"}, "places": {}}))
+    snap = W.snapshot([templated(name="Nesh-Deeka")], [f], use_db=False)
+    assert snap["names"]["npc.nesh-deeka"] == "Nesh-Deeka" and snap["names"]["item.x"] == "Ring"
+    assert snap["from_names_file"] == ["item.x"]
+    folder, _ = new_session(tmp_path)
+    assert set(S.write_run(folder)["names_from_file"]) == {
+        "npc.example.roll-man", "door.example.hold", "npc.example.contact", "0A0100:Example.esp",
+        "0A0200:Example.esp"}
+
+
+def second_form():
+    """The example opening, begun when the jar quest completes."""
+    f = form()
+    f["quest"].update(id="quest.test.after", editor_id="ARG_TestAfter", name="After the Jar",
+                      start={"by": "quest_stage", "quest": JQ, "quest_stage": 90, "stage": 10})
+    return f
+
+
+def test_reach_reports_each_ending_and_where_paths_stop():
+    from tools.playtest import walk
+    rows = walk.reach([jar_form()], world=jar_world(jar_form()))
+    ends = {e["stage"]: e for e in rows[0]["endings"]}
+    assert ends[95]["path"] == ["fight Nesh-Deeka win"]
+    assert ends[90]["path"] == ["take Lockpick", "pick Lockbox win", "take Sap Jar", "talk Nesh-Deeka",
+                                "say Here is the jar."]
+    assert walk.unreached(rows) == []
+    f = jar_form()
+    f["refs"][2]["contents"] = []                       # the jar is gone: nothing reaches the ending
+    rows = walk.reach([f], world=jar_world(f))
+    assert "90 completed: NOT REACHED: every path stops by stage 10" in walk.report(rows)
+    assert walk.unreached(rows) == [f"{JQ}: no completed ending can be reached"]
+
+
+def test_the_reach_gate_holds_to_its_owed_list(tmp_path, monkeypatch):
+    from tools.playtest import walk
+    owed = tmp_path / "owed.json"
+    owed.write_text(json.dumps({"quests": {"quest.a": "why"}}))
+    monkeypatch.setattr(walk, "OWED", owed)
+    assert walk.gate(["quest.a: no completed ending can be reached"]) == []
+    assert walk.gate(["quest.b: no completed ending can be reached"]) == [
+        "quest.b: no completed ending can be reached (and it is not on tools/playtest/reach_owed.json)",
+        "quest.a now reaches a completed ending: take it off tools/playtest/reach_owed.json"]
+
+
+def test_a_session_starts_after_earlier_quests_with_their_state(tmp_path):
+    paths = []
+    for i, f in enumerate((jar_form(), second_form())):
+        p = tmp_path / f"f{i}.json"
+        p.write_text(json.dumps(f))
+        paths.append(str(p))
+    folder, screen = S.new(paths, names=[str(NAMES)], use_db=False, root=tmp_path / "runs", after=[JQ],
+                           at="door.example.hold")
+    sess = json.loads((folder / "session.json").read_text())
+    st = sess["state"]
+    assert st["quests"][JQ]["ended"] == "completed" and "quest.test.after" in st["quests"]
+    assert st["commands"] == 0 and st["items"] == {G.LOCKPICK: 1}          # the jar was handed in
+    assert st["crimes"] == [{"what": "pick Lockbox", "owner": "npc.keeper", "seen": False}]
+    assert sess["know_text"] == ('What you know so far, from your journal: From "The Jar": Get the jar. I have '
+                                 'the jar. She has the jar.')
+    assert sess["after_path"][-1]["command"] == "say Here is the jar."
+    assert screen.startswith("Your game goes on.") and folder.parent.name == "quest.test.after"
+    bad = jar_form()
+    bad["refs"][2]["contents"] = []
+    p = tmp_path / "bad.json"
+    p.write_text(json.dumps(bad))
+    with pytest.raises(G.HarnessError, match="no completed ending can be reached"):
+        S.new([str(p)], use_db=False, root=tmp_path / "runs", after=[JQ])

@@ -42,6 +42,17 @@ RACE_SKILLS = {
     "redguard": ("One-handed", "Alteration", "Archery", "Block", "Destruction", "Smithing"),
     "orc": ("Heavy Armor", "Block", "Enchanting", "One-handed", "Smithing", "Two-handed"),
 }
+# Skyrim's own lockpick and gold: a form's thing or container entry of these bases is a lockpick or gold coins.
+LOCKPICK, GOLD = "00000A:Skyrim.esm", "00000F:Skyrim.esm"
+VANILLA_NAMES = {LOCKPICK: "Lockpick", GOLD: "Gold"}
+# The Lockpicking a lock level plausibly needs: above it the lock is said to be beyond the player (the one table).
+LOCK_SKILL = {"novice": 0, "apprentice": 15, "adept": 25, "expert": 50, "master": 75}
+CHOICES = ("unseen", "seen")
+# A person's race and sex in a word: Skyrim's race names, and the story database's race words.
+RACE_WORDS = {"argonian": "Argonian", "breton": "Breton", "dunmer": "Dark Elf", "darkelf": "Dark Elf",
+              "altmer": "High Elf", "highelf": "High Elf", "bosmer": "Wood Elf", "woodelf": "Wood Elf",
+              "imperial": "Imperial", "khajiit": "Khajiit", "nord": "Nord", "orc": "Orc", "orsimer": "Orc",
+              "redguard": "Redguard"}
 
 
 def new_sheet(race="Argonian", sex="male", **skills) -> dict:
@@ -83,18 +94,30 @@ def _how_far(units: float) -> str:
 class Game:
     """One paper game: forms + world snapshot + state. Every public command returns the player's screen text."""
 
-    def __init__(self, forms: list[dict], world: dict, state: dict | None = None, sheet: dict | None = None):
+    def __init__(self, forms: list[dict], world: dict, state: dict | None = None, sheet: dict | None = None,
+                 strict: bool = True):
+        """`strict` False (the walker's): a name nobody gives shows as its id instead of stopping the run."""
         self.forms = {f["quest"]["id"]: f for f in forms}
         self.by_editor = {f["quest"]["editor_id"]: f["quest"]["id"] for f in forms}
         self.world = world
+        self.strict = strict
         for f in forms:
             errs = validate.errors(f)
             if errs:
                 raise HarnessError(f"form {f.get('quest', {}).get('id')}: not a quest form: {'; '.join(errs[:5])}")
             self._scan(f)
         self.ents = self._entities()
-        self._check_names()
+        self.holders = {e["container"] for e in self.ents.values() if e["container"]} | \
+            {e["carried_by"] for e in self.ents.values() if e["carried_by"]} | \
+            {k for k, e in self.ents.items() if e["contents"] or (e["lock"] and e["kind"] == "thing")}
+        if strict:
+            self._check_names()
         self.s = state if state is not None else self._fresh(sheet or new_sheet())
+        fresh = self._fresh(self.s["sheet"])
+        for k, v in fresh.items():          # a session saved before a field existed, or a state from fewer forms
+            self.s.setdefault(k, v)
+        for k, v in fresh["contents"].items():
+            self.s["contents"].setdefault(k, v)
 
     # -- loading -------------------------------------------------------------------------------------------------
     def _scan(self, f):
@@ -128,28 +151,35 @@ class Game:
         for f in self.forms.values():
             for r in f["refs"]:
                 key = r["placement"].get("existing")
+                base = r["placement"].get("base") or {}
+                item = LOCKPICK if base.get("id") == LOCKPICK else base["id"] if base.get("kind") == "item" else r["id"]
                 e = ents.setdefault(r["id"], {"id": r["id"], "kind": r["kind"], "enabled": r["enabled"],
                                               "hostile": bool(r.get("hostile")), "at": r.get("at"),
                                               "container": r["placement"].get("container"),
-                                              "item": (r["placement"].get("base") or {}).get("id")
-                                              if (r["placement"].get("base") or {}).get("kind") == "item" else None,
+                                              "carried_by": r["placement"].get("carried_by"),
+                                              "item": item, "lock": r.get("lock"), "owner": r.get("owner"),
+                                              "contents": r.get("contents") or [], "text": r.get("text"),
                                               "talker": None, "quest": f["quest"]["id"]})
                 if key in talkers:
                     e["talker"] = talkers.pop(key)
         for t in talkers.values():
             ents[t["id"]] = {"id": t["id"], "kind": "person", "enabled": True, "hostile": False,
                              "at": {"cell": t["cell"], "interior": t["interior"], "x": t["x"], "y": t["y"], "z": 0.0},
-                             "container": None, "item": None, "talker": t, "quest": None}
+                             "container": None, "carried_by": None, "item": None, "lock": None, "owner": None,
+                             "contents": [], "text": None, "talker": t, "quest": None}
         return ents
 
     def _check_names(self):
         names = self.world.get("names", {})
         missing = {e["id"] for e in self.ents.values() if not (e["talker"] and e["talker"].get("name"))
                    and e["kind"] != "marker" and not names.get(e["id"])}
+        items = {c["item"] for e in self.ents.values() for c in e["contents"]} | \
+            {e["lock"]["key"] for e in self.ents.values() if e["lock"] and e["lock"].get("key")}
         for f in self.forms.values():
             for r in [r for s in f["stages"] for r in s["results"]] + [r for ln in f["lines"] for r in ln["results"]]:
-                if r["do"] in ("give_item", "take_item") and not names.get(r["item"]):
-                    missing.add(r["item"])
+                if r["do"] in ("give_item", "take_item"):
+                    items.add(r["item"])
+        missing |= {i for i in items if self._item_name(i) is None}
         if missing:
             raise HarnessError("no name the player would see for: " + ", ".join(sorted(missing)) +
                                " (give each a name in the run's names file)")
@@ -158,7 +188,9 @@ class Game:
         return {"quests": {}, "order": [], "items": {}, "gold": 0, "numbers": {}, "factions": {}, "regard": {},
                 "dead": [], "switched": {}, "locked": {}, "taken": [], "pos": None, "visited": [], "spoken": [],
                 "fired": [], "talking": None, "question": None, "message_shown": False, "hostile": [],
-                "sheet": sheet, "commands": 0, "ended": False}
+                "opened": [], "contents": {k: {c["item"]: c["count"] for c in e["contents"]}
+                                           for k, e in self.ents.items() if e["contents"]},
+                "crimes": [], "sheet": sheet, "commands": 0, "ended": False}
 
     # -- the opening -------------------------------------------------------------------------------------------
     def begin(self, start: str | None = None, at: str | None = None) -> str:
@@ -181,6 +213,36 @@ class Game:
         head = [f"A new game. You are a {sh['sex']} {race_key(sh['race']).capitalize()}."]
         return "\n".join(head + out + ["", self.look()] + self._speaks_first())
 
+    def resume(self, start: str | None = None, at: str | None = None) -> str:
+        """The player takes over a game already played on (by the walker, for --after): `start` begins at its start
+        stage if it has not begun; the player stands at `at`, else at the first target of an active objective. The
+        screen shows each running quest's latest journal entry and objectives, then the `look`."""
+        out = []
+        if start:
+            if start not in self.forms:
+                raise HarnessError(f"--start {start}: no such quest in this run")
+            if start not in self.s["quests"]:
+                out += self._set_stage(start, self.forms[start]["quest"]["start"]["stage"], None)
+        self.s.update(commands=0, talking=None, question=None, opened=[])
+        if at is None:
+            tg = [t for q in self.s["order"] for o in self._active(q) for t in o["targets"] if self._pos(t)]
+            at = tg[0] if tg else None
+        if at is None or at not in self.ents or self._pos(at) is None:
+            raise HarnessError(f"start position: {at} is not a placed ref of this run (give --at)")
+        self.s["pos"] = dict(self._pos(at))
+        self._visit()
+        sh = self.s["sheet"]
+        head = [f"Your game goes on. You are a {sh['sex']} {race_key(sh['race']).capitalize()}."]
+        for q in self.s["order"]:
+            st, f = self.s["quests"][q], self.forms[q]
+            if st["ended"]:
+                continue
+            last = next((s for n in reversed(st["done"]) for s in f["stages"] if s["number"] == n and s["shown"]), None)
+            if last:
+                head.append(f"Journal ({f['quest']['name']}): {last['journal']}")
+            head += [f"Objective: {o['text']}" for o in self._active(q)]
+        return "\n".join(head + out + ["", self.look()] + self._speaks_first())
+
     # -- names and places ------------------------------------------------------------------------------------------
     def name(self, eid: str) -> str:
         e = self.ents.get(eid)
@@ -188,8 +250,42 @@ class Game:
             return e["talker"]["name"]
         n = self.world.get("names", {}).get(eid)
         if n is None:
+            if not self.strict:
+                return eid
             raise HarnessError(f"no name the player would see for {eid}")
         return n
+
+    def _item_name(self, item) -> str | None:
+        n = self.world.get("names", {}).get(item) or VANILLA_NAMES.get(item)
+        if n is None:
+            ref = next((k for k, e in self.ents.items() if e["item"] == item and e["kind"] == "thing"), None)
+            n = self.world.get("names", {}).get(ref) if ref else None
+        return n
+
+    def item_name(self, item) -> str:
+        """An item id's name: the form's (or a names file's) for it, else its thing's, else Skyrim's own."""
+        n = self._item_name(item)
+        if n is None:
+            if not self.strict:
+                return item
+            raise HarnessError(f"no name the player would see for {item}")
+        return n
+
+    def who(self, eid) -> str | None:
+        """A person in a word, "an Argonian woman", where the form or the world database says race or sex."""
+        e = self.ents[eid]
+        p = {**(e["talker"] or {}), **self.world.get("people", {}).get(eid, {})}
+        race = RACE_WORDS.get(race_key(p.get("race") or "").replace("_", ""), p.get("race"))
+        sex = {"female": "woman", "male": "man"}.get((p.get("sex") or "").lower())
+        words = " ".join(w for w in (race, sex) if w)
+        if not words:
+            return None
+        return ("an " if words[0].lower() in "aeiou" else "a ") + words
+
+    def _owner_name(self, owner) -> str:
+        if owner in self.ents:
+            return self.name(owner)
+        return self.world.get("names", {}).get(owner) or "the owner"
 
     def place_name(self, pos) -> str:
         p = self.world.get("places", {}).get(pos["cell"], {})
@@ -202,12 +298,19 @@ class Game:
             return None
         if hasattr(self, "s") and eid in self.s["taken"]:
             return self.s["pos"]
-        if e["container"]:
-            return self._pos(e["container"])
+        if e["container"] or e["carried_by"]:
+            return self._pos(e["container"] or e["carried_by"])
         return e["at"]
 
     def _on(self, eid) -> bool:
-        return self.s["switched"].get(eid, self.ents[eid]["enabled"])
+        e = self.ents[eid]
+        holder = None if eid in self.s["taken"] else e["container"] or e["carried_by"]
+        return self.s["switched"].get(eid, e["enabled"]) and (holder is None or self._on(holder))
+
+    def _loose(self, eid) -> bool:
+        """On the ground: not in a container, not carried, not taken."""
+        e = self.ents[eid]
+        return not (e["container"] or e["carried_by"]) and eid not in self.s["taken"]
 
     def _alive(self, eid) -> bool:
         return eid not in self.s["dead"]
@@ -430,46 +533,70 @@ class Game:
 
     def _find(self, text, pool) -> tuple[str | None, str | None]:
         """An entity among `pool` by the name the player typed: exact, then a unique start, then a unique part."""
+        return self._find_in(text, [(self.name(e), e) for e in pool])
+
+    @staticmethod
+    def _find_in(text, named) -> tuple[str | None, str | None]:
+        """A key among (name, key) pairs by the name typed; `#<key>` names a key itself (the walker's way)."""
         t = text.lower().strip().removeprefix("the ").strip()
         if not t:
             return None, "Name who or what."
-        named = [(self.name(e), e) for e in pool]
+        if t.startswith("#"):
+            hit = [k for _, k in named if k.lower() == t[1:]]
+            return (hit[0], None) if hit else (None, None)
         for test in (lambda n: n.lower() == t, lambda n: n.lower().startswith(t), lambda n: t in n.lower()):
-            hits = [e for n, e in named if test(n)]
-            if len(hits) == 1:
+            hits = [k for n, k in named if test(n)]
+            if len(set(hits)) == 1:
                 return hits[0], None
             if len(hits) > 1:
-                return None, "Which one? " + ", ".join(sorted({self.name(e) for e in hits}))
+                return None, "Which one? " + ", ".join(sorted({n for n, k in named if k in hits}))
         return None, None
 
+    @staticmethod
+    def _choice(arg, words) -> tuple[str, str | None]:
+        """The text before a trailing outcome word, and that word (or None)."""
+        w = arg.split()
+        if w and w[-1].lower() in words:
+            return " ".join(w[:-1]), w[-1].lower()
+        return arg, None
+
     def _visible(self):
+        """Everyone and everything near and in plain sight (not inside a container or carried)."""
         return [e for e in self.ents if self.ents[e]["kind"] != "marker" and self._on(e) and self._near(e)
-                and e not in self.s["taken"]]
+                and self._loose(e)]
 
     def look(self) -> str:
         pos = self.s["pos"]
         out = [f"You are in {self.place_name(pos)}." if pos["interior"] else f"You are at {self.place_name(pos)}."]
         people = [e for e in self._visible() if self.ents[e]["kind"] == "person"]
-        things = [e for e in self._visible() if self.ents[e]["kind"] == "thing"]
+        things = [e for e in self._visible() if self.ents[e]["kind"] == "thing" and self._loose(e)]
         doors = [e for e in self._visible() if self.ents[e]["kind"] == "door"]
 
         def word(e):
+            words = [self.who(e)] if self.who(e) else []
             if not self._alive(e):
-                return "dead"
-            if self.ents[e]["hostile"] or e in self.s["hostile"]:
-                return "hostile"
-            t = self.ents[e]["talker"]
-            return (t.get("word") if t else None) or "a person"
+                words.append("dead")
+            elif self.ents[e]["hostile"] or e in self.s["hostile"]:
+                words.append("hostile")
+            return ", ".join(words) or "a person"
+
+        def marks(e):
+            m = ["locked" + (f", {self._lock_word(e)}" if self.ents[e]["lock"] else "")] if self._locked(e) else []
+            m += ["owned"] if self.ents[e]["owner"] else []
+            return f" ({'; '.join(m)})" if m else ""
         out.append("People: " + ("; ".join(f"{self.name(e)} ({word(e)})" for e in people) if people else "nobody"))
-        out.append("Things: " + ("; ".join(
-            self.name(e) + (f" (in {self.name(self.ents[e]['container'])})" if self.ents[e]["container"] else "")
-            for e in things) if things else "nothing of note"))
-        out.append("Doors: " + ("; ".join(self.name(e) + (" (locked)" if self._locked(e) else "") for e in doors)
-                                if doors else "none"))
+        out.append("Things: " + ("; ".join(self.name(e) + marks(e) for e in things) if things else "nothing of note"))
+        out.append("Doors: " + ("; ".join(self.name(e) + marks(e) for e in doors) if doors else "none"))
         return "\n".join(out)
 
     def _locked(self, e) -> bool:
-        return self.s["locked"].get(e, self.world.get("locked", {}).get(e, False))
+        return self.s["locked"].get(e, self.world.get("locked", {}).get(e, bool(self.ents[e]["lock"])))
+
+    def _lock_word(self, e) -> str:
+        lk = self.ents[e]["lock"]
+        if not lk:
+            return "a lock"
+        return "needs a key" if lk["level"] == "key" else lk["level"].capitalize()
 
     def journal(self) -> str:
         if not self.s["order"]:
@@ -584,6 +711,7 @@ class Game:
                 how = (f"You arrive and go in through a door.{trip}" if target["interior"]
                        else f"You go out through a door and on.{trip}")
         self.s["pos"] = dict(target)
+        self.s["opened"] = []
         self._visit()
         return "\n".join([how, self.look()] + self._speaks_first())
 
@@ -597,7 +725,8 @@ class Game:
         if self.ents[e]["hostile"] or e in self.s["hostile"]:
             return f"{self.name(e)} attacks you rather than talk."
         self.s["talking"] = e
-        out = []
+        who = self.who(e)
+        out = [f"{self.name(e)}, {who}."] if who else []
         greet = self._lines_of(e, ("greeting",))
         t = self.ents[e]["talker"]
         if greet:
@@ -652,38 +781,145 @@ class Game:
     def persuade(self, arg) -> str:
         return self.say(arg)
 
+    # -- things: taking, containers, locks, theft, reading -----------------------------------------------------
+    def _held_refs(self) -> list[str]:
+        """The things the player holds: those taken, and a thing whose item a result gave."""
+        return list(self.s["taken"]) + [k for k, e in self.ents.items() if e["kind"] == "thing" and e["item"] != k
+                                        and k not in self.s["taken"] and self.s["items"].get(e["item"], 0) > 0]
+
+    def _inside(self, h) -> list[tuple[str, str]]:
+        """What a container, a person or a body holds now, as (name, key): its refs by id, its listed items as
+        `<holder>|<item id>`."""
+        out = [(self.name(k), k) for k, e in self.ents.items() if (e["container"] == h or e["carried_by"] == h)
+               and k not in self.s["taken"] and self.s["switched"].get(k, e["enabled"])]
+        out += [(self.item_name(i), f"{h}|{i}") for i, n in self.s["contents"].get(h, {}).items() if n > 0]
+        return out
+
+    def _listing(self, h) -> str:
+        names = {}
+        for n, k in self._inside(h):
+            c = self.s["contents"][h][k.split("|", 1)[1]] if "|" in k else 1
+            names[n] = names.get(n, 0) + c
+        return "; ".join(n + (f" x{c}" if c > 1 else "") for n, c in names.items())
+
+    def _has_key(self, e) -> str | None:
+        k = (self.ents[e]["lock"] or {}).get("key")
+        if not k:
+            return None
+        items = {k} | ({self.ents[k]["item"]} if k in self.ents else set())
+        return k if any(self.s["items"].get(i, 0) > 0 for i in items) or k in self.s["taken"] else None
+
+    def _locked_text(self, e) -> str:
+        lk = self.ents[e]["lock"]
+        out = f"{self.name(e)} is locked" + (f" ({self._lock_word(e)})." if lk else ".")
+        if lk and lk["level"] == "key":
+            out += " It opens only with its key."
+        return out
+
+    @staticmethod
+    def _ask(verb, text, what) -> str:
+        return f"{what} Say whether anyone sees you: {verb} {text} unseen, or {verb} {text} seen."
+
+    def _crime(self, owner, what, choice) -> list[str]:
+        self.s["crimes"].append({"what": what, "owner": owner, "seen": choice == "seen"})
+        if choice == "seen":
+            return [f"You are seen. {self._owner_name(owner)} or a guard confronts you: as in Skyrim, you pay a "
+                    "fine or you fight. The game goes no further with it here."]
+        return ["Nobody sees you."]
+
     def take(self, arg) -> str:
-        e, err = self._find(arg, self._visible())
-        if err or e is None:
-            return err or f"There is no '{arg}' near you."
-        if self.ents[e]["kind"] != "thing":
-            return f"You cannot take {self.name(e)}."
-        self.s["taken"].append(e)
-        key = self.ents[e]["item"] or e
-        self.s["items"][key] = self.s["items"].get(key, 0) + 1
-        out = [f"Added: {self.name(e)}"]
-        out += self._fire("take", e)
-        return "\n".join(out)
+        text, choice = self._choice(arg, CHOICES)
+        here = self._visible()
+        pairs = [(self.name(e), e) for e in here if self.ents[e]["kind"] == "thing" and e not in self.holders]
+        for h in self.s["opened"]:
+            if h in self.ents and self._near(h):
+                pairs += self._inside(h)
+        key, err = self._find_in(text, pairs)
+        if err:
+            return err
+        if key is None:
+            e, _ = self._find(text, here + [k for k, x in self.ents.items() if x["kind"] == "thing" and k not in
+                                            self.s["taken"] and not self._loose(k) and self._on(k) and self._near(k)])
+            if e and e in self.holders and self.ents[e]["kind"] == "thing":
+                return f"You cannot carry {self.name(e)}. Use it to open it."
+            if e and (self.ents[e]["container"] or self.ents[e]["carried_by"]):
+                h = self.ents[e]["container"] or self.ents[e]["carried_by"]
+                return f"{self.name(e)} is in {self.name(h)}: open it first."
+            if e:
+                return f"You cannot take {self.name(e)}."
+            return f"There is no '{text}' near you."
+        if "|" in key:
+            holder, item = key.split("|", 1)
+            name = self.item_name(item)
+        else:
+            holder, item = self.ents[key]["container"] or self.ents[key]["carried_by"], self.ents[key]["item"]
+            name = self.name(key)
+        out = []
+        pocket = holder if holder and self.ents[holder]["kind"] == "person" and self._alive(holder) else None
+        owner = pocket or (self.ents[key]["owner"] if holder is None else None)
+        if owner:
+            if choice is None:
+                return self._ask("take", text, f"Taking from {self.name(pocket)} is pickpocketing." if pocket
+                                 else f"{name} is not yours: taking it is stealing.")
+            out += self._crime(owner, f"take {name}", choice)
+        if "|" in key:
+            self.s["contents"][holder][item] -= 1
+        else:
+            self.s["taken"].append(key)
+        if item == GOLD:
+            self.s["gold"] += 1
+            out.append("1 gold added")
+        else:
+            self.s["items"][item] = self.s["items"].get(item, 0) + 1
+            out.append(f"Added: {name}")
+        return "\n".join(out + self._fire("take", item if "|" in key else key))
+
+    def _open(self, e) -> list[str]:
+        if e not in self.s["opened"]:
+            self.s["opened"].append(e)
+        inside = self._listing(e)
+        return [f"{self.name(e)} holds: {inside}." if inside else f"{self.name(e)} is empty."]
 
     def use(self, arg) -> str:
-        held = [e for e in self.s["taken"]]
-        e, err = self._find(arg, self._visible() + held)
+        text, choice = self._choice(arg, CHOICES)
+        here = self._visible()
+        e, err = self._find(text, here + [k for k in self._held_refs() if k not in here])
         if err or e is None:
-            return err or f"There is no '{arg}' near you."
+            return err or f"There is no '{text}' near you."
         kind = self.ents[e]["kind"]
         if kind == "person":
-            return f"To speak with {self.name(e)}, talk to them."
+            if self._alive(e):
+                return f"To speak with {self.name(e)}, talk to them."
+            inside = self._listing(e)
+            if not inside:
+                return f"You search the body of {self.name(e)} and find nothing worth taking."
+            self.s["opened"] = [e]
+            return f"You search the body of {self.name(e)}. It carries: {inside}."
         out = []
+        if self._locked(e):
+            k = self._has_key(e)
+            if not k:
+                return self._locked_text(e)
+            self.s["locked"][e] = False
+            out.append(f"You unlock {self.name(e)} with {self.name(k) if k in self.ents else self.item_name(k)}.")
         if kind == "door":
-            if self._locked(e):
-                return f"{self.name(e)} is locked."
             dest = self.world.get("doors", {}).get(e)
             if dest:
                 self.s["pos"] = dict(dest)
+                self.s["opened"] = []
                 self._visit()
                 out += [f"You go through {self.name(e)}.", self.look()]
             else:
                 out.append(f"You open {self.name(e)}.")
+        elif e in self.holders:
+            owner = self.ents[e]["owner"]
+            if owner:
+                if choice is None:
+                    return self._ask("use", text, f"{self.name(e)} is not yours: opening it is stealing.")
+                out += self._crime(owner, f"open {self.name(e)}", choice)
+            out += self._open(e)
+        elif self.ents[e]["text"]:
+            out += [f"You read {self.name(e)}:", self.ents[e]["text"]]
         else:
             out.append(f"You use {self.name(e)}.")
         out += self._fire("use", e)
@@ -724,6 +960,10 @@ class Game:
                 if m["ref"] != e:
                     continue
                 st = self.s["quests"].get(q)
+                n = None if st is None else st["stage"]
+                if (m.get("from") is not None and (n is None or n < m["from"])) or \
+                        (m.get("to") is not None and n is not None and n > m["to"]):
+                    continue                            # outside the row's window: the death does not fail it
                 if st is not None and not st["ended"]:
                     out += self._set_stage(q, m["fail_stage"], None)
                 message |= m["main_message"] and f["quest"]["kind"] in ("main", "faction") and \
@@ -734,25 +974,53 @@ class Game:
         return out
 
     def pick(self, arg) -> str:
-        words = arg.split()
-        outcome = words[-1].lower() if words and words[-1].lower() in ("win", "fail") else None
+        text, choice = self._choice(arg, CHOICES)
+        text, outcome = self._choice(text, ("win", "fail"))
         if outcome is None:
             return "Say how the lock goes: pick <lock> win, or pick <lock> fail."
-        e, err = self._find(" ".join(words[:-1]), self._visible())
+        e, err = self._find(text, [x for x in self._visible() if self.ents[x]["kind"] in ("door", "thing")])
         if err or e is None:
             return err or "There is no such lock near you."
         if not self._locked(e):
             return f"{self.name(e)} is not locked."
+        level = (self.ents[e]["lock"] or {}).get("level")
+        if level == "key":
+            return f"The lock of {self.name(e)} cannot be picked: it opens only with its key."
+        if self.s["items"].get(LOCKPICK, 0) < 1:
+            return "You have no lockpicks."
+        have = self._skill("Lockpicking")
+        if outcome == "win" and have < LOCK_SKILL.get(level or "novice", 0):
+            return (f"The lock of {self.name(e)} ({self._lock_word(e)}) is beyond your Lockpicking ({have}): you "
+                    "would only break your picks.")
+        out = []
+        owner = self.ents[e]["owner"]
+        if owner:
+            if choice is None:
+                return self._ask("pick", f"{text} {outcome}", f"{self.name(e)} is not yours: picking its lock is "
+                                 "a crime.")
+            out += self._crime(owner, f"pick {self.name(e)}", choice)
         if outcome == "fail":
-            return "Your pick breaks; the lock holds."
+            self.s["items"][LOCKPICK] -= 1
+            if not self.s["items"][LOCKPICK]:
+                del self.s["items"][LOCKPICK]
+            return "\n".join(out + ["Your lockpick breaks; the lock holds."])
         self.s["locked"][e] = False
-        return f"You pick the lock of {self.name(e)}. (Lockpicking {self._skill('Lockpicking')}.)"
+        out.append(f"You pick the lock of {self.name(e)}. (Lockpicking {have}.)")
+        if e in self.holders:
+            out += self._open(e)
+        return "\n".join(out)
 
     def pickpocket(self, arg) -> str:
         e, err = self._find(arg, [x for x in self._visible() if self.ents[x]["kind"] == "person"])
         if err or e is None:
             return err or f"Nobody called '{arg}' is near you."
-        return f"You find nothing on {self.name(e)} worth taking."
+        if not self._alive(e):
+            return f"{self.name(e)} is dead: search the body (use {self.name(e)})."
+        inside = self._listing(e)
+        if not inside:
+            return f"You find nothing on {self.name(e)} worth taking."
+        self.s["opened"] = [e]
+        return f"{self.name(e)} carries: {inside}. Take one with: take <thing> unseen, or take <thing> seen."
 
     def wait(self) -> str:
         return "You wait an hour."

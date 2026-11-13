@@ -75,7 +75,7 @@ def _r_item(sign):
         if not n:
             return []
         word = "Added" if sign > 0 else "Removed"
-        return [f"{word}: {g.world['names'][r['item']]}" + (f" x{n}" if n > 1 else "")]
+        return [f"{word}: {g.item_name(r['item'])}" + (f" x{n}" if n > 1 else "")]
     return f
 
 

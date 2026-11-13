@@ -3,11 +3,13 @@
     python3 -m tools.playtest new --forms <dir|files...> [--start <quest id>|--new-game] [--at <ref id>]
                                   [--sheet race=Argonian,sex=female,Speech=30] [--know <file>] [--names <file>...]
                                   [--player hand] [--source designed|built] [--no-db] [--max-commands N]
+                                  [--after <quest id>...]   # those quests played to a completed ending first
     python3 -m tools.playtest do <session> "<command>" --think "<what I believe is going on and why I do this>"
     python3 -m tools.playtest end <session> --take "<open take>" | --answers "<answers>"
     python3 -m tools.playtest run --forms ... --player careful|impatient|wanderer [--model sonnet] [--know ...]
     python3 -m tools.playtest probe [--model haiku]      # proves the player cannot read the repo
     python3 -m tools.playtest index                      # rebuild story/playtests/index.json
+    python3 -m tools.playtest reach <forms...> | --compiled [--gate]   # each ending reachable? its shortest path
     python3 -m tools.playtest page [--out <html>] [--runs <dir>]   # the owner's page for exploring the runs
 """
 from __future__ import annotations
@@ -31,6 +33,7 @@ def _common(p):
     p.add_argument("--source", choices=("designed", "built"), default="designed")
     p.add_argument("--no-db", action="store_true", help="no world database: names and places from --names only")
     p.add_argument("--out", default=str(S.RUNS), help="the runs folder (default story/playtests)")
+    p.add_argument("--after", nargs="+", default=[], help="quests the game plays to a completed ending first")
 
 
 def main(argv=None) -> int:
@@ -57,6 +60,11 @@ def main(argv=None) -> int:
     pr = sub.add_parser("probe")
     pr.add_argument("--model", default="haiku")
     sub.add_parser("index")
+    rc = sub.add_parser("reach")
+    rc.add_argument("forms", nargs="*")
+    rc.add_argument("--compiled", action="store_true", help="every staged quest that fits the form, compiled now")
+    rc.add_argument("--max-states", type=int, default=None)
+    rc.add_argument("--gate", action="store_true", help="make check: only what is wrong against the owed list")
     pg = sub.add_parser("page")
     pg.add_argument("--out", default=None, help="the HTML file (default out/playtest/index.html)")
     pg.add_argument("--runs", default=str(S.RUNS), help="the runs folder (default story/playtests)")
@@ -65,20 +73,34 @@ def main(argv=None) -> int:
         if a.cmd == "new":
             folder, screen = S.new(a.forms, player=a.player, source=a.source, start=a.start, at=a.at,
                                    sheet=a.sheet, know=a.know, names=a.names, use_db=not a.no_db,
-                                   max_commands=a.max_commands, root=Path(a.out))
+                                   max_commands=a.max_commands, root=Path(a.out), after=a.after)
             print(f"session: {folder}\n\n{screen}")
             return 0
         if a.cmd == "run":
             from tools.playtest import runner
             folder = runner.run(a.forms, a.player, model=a.model, know=a.know, names=a.names, at=a.at,
                                 start=a.start, source=a.source, sheet=a.sheet, max_commands=a.max_commands,
-                                use_db=not a.no_db, root=Path(a.out))
+                                use_db=not a.no_db, root=Path(a.out), after=a.after)
             print(f"run: {folder}")
             print((folder / "run.json").read_text())
             return 0
     except G.HarnessError as ex:
         print(f"HARNESS ERROR: {ex}")
         return 3
+    if a.cmd == "reach":
+        from tools.playtest import walk
+        forms = walk.compiled() if a.compiled else S.load_forms(a.forms)[0]
+        rows = walk.reach(forms, **({"max_states": a.max_states} if a.max_states else {}))
+        bad = walk.unreached(rows)
+        if a.gate:
+            bad = walk.gate(bad)
+        else:
+            print(walk.report(rows))
+        for b in bad:
+            print(f"reach: {b}")
+        if a.gate and not bad:
+            print(f"reach: {len(rows)} quests, every one not owed reaches a completed ending")
+        return 1 if bad else 0
     if a.cmd == "do":
         code, screen = S.do(a.session, a.command, a.think)
         print(screen)

@@ -2,9 +2,9 @@
 PY := $(firstword $(wildcard $(HOME)/.argonia/venv/bin/python) python3)
 RUFF := $(firstword $(wildcard $(HOME)/.argonia/venv/bin/ruff) $(shell command -v ruff) python3 -m ruff)
 
-.PHONY: check guard lint unit adaptation questtext questform hooks deploy plugin plugin-check plugin-seed map
+.PHONY: check guard lint unit adaptation questtext questform reach hooks deploy plugin plugin-check plugin-seed map
 
-check: guard lint unit adaptation questtext questform
+check: guard lint unit adaptation questtext questform reach
 	@echo "CHECK GREEN"
 
 guard:
@@ -29,6 +29,11 @@ questtext:
 # (docs/design/quest-form.md); the example form passes.
 questform:
 	@$(PY) -m tools.questform gate
+
+# Those compiled forms played by the paper game's walker: every quest reaches a completed ending from a new game,
+# against tools/playtest/reach_owed.json (docs/design/paper-playtest.md).
+reach:
+	@$(PY) -m tools.playtest reach --compiled --gate
 
 hooks:
 	@bash tooling/guards/install_hooks.sh

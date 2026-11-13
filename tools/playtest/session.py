@@ -57,14 +57,56 @@ def utc_stamp() -> str:
     return time.strftime("%Y%m%dT%H%M%SZ", time.gmtime())
 
 
+def know_text(path: str | None) -> str:
+    """'What you know so far' for a later quest: a text file as it is, or the journal of quest forms (each shown
+    stage that is not a failure, in order), told as what the player remembers."""
+    if not path:
+        return ""
+    p = Path(path)
+    if p.suffix != ".json" and not p.is_dir():
+        return p.read_text(encoding="utf-8").strip()
+    forms, _ = load_forms([str(p)])
+    out = []
+    for f in forms:
+        entries = [s["journal"] for s in sorted(f["stages"], key=lambda s: s["number"])
+                   if s["shown"] and s["ending"] != "failed"]
+        out.append(f"From \"{f['quest']['name']}\": " + " ".join(entries))
+    return "What you know so far, from your journal: " + " ".join(out)
+
+
+def journal_known(g: G.Game, quests: list[str]) -> str:
+    """'What you know so far' from the journal entries the game met on its own path through `quests`."""
+    out = []
+    for q in quests:
+        f, st = g.forms[q], g.s["quests"][q]
+        entries = [s["journal"] for n in st["done"] for s in f["stages"] if s["number"] == n and s["shown"]]
+        out.append(f"From \"{f['quest']['name']}\": " + " ".join(entries))
+    return "What you know so far, from your journal: " + " ".join(out)
+
+
 def new(forms_paths, *, player="hand", source="designed", start=None, at=None, sheet=None, know=None,
-        names=(), use_db=True, max_commands=G.MAX_COMMANDS, root: Path = RUNS, model=None) -> tuple[Path, str]:
-    """Make a session (its run folder) and return (folder, the opening screen)."""
+        names=(), use_db=True, max_commands=G.MAX_COMMANDS, root: Path = RUNS, model=None,
+        after=()) -> tuple[Path, str]:
+    """Make a session (its run folder) and return (folder, the opening screen). With `after`, the game first plays
+    those quests to a completed ending by itself (tools/playtest/walk.py) and the player begins from the state they
+    leave; what the player knows is built from the journal entries met on that path."""
     forms, files = load_forms(forms_paths)
     snap = W.snapshot(forms, [Path(n) for n in names], use_db=use_db)
     g = G.Game(forms, snap, sheet=parse_sheet(sheet))
-    screen = g.begin(start=start, at=at)
-    qid = start or forms[0]["quest"]["id"]
+    after = list(after or ())
+    path = []
+    if after:
+        from tools.playtest import walk
+        for q in after:
+            if q not in g.forms:
+                raise G.HarnessError(f"--after {q}: no such quest in this run")
+        state, path = walk.play_after(g.forms, after, snap, sheet=g.s["sheet"], strict=True)
+        g = walk.game_on(g.forms, list(g.forms), snap, state, strict=True)
+        screen = g.resume(start=start, at=at)
+    else:
+        screen = g.begin(start=start, at=at)
+    known = " ".join(x for x in (know_text(know), journal_known(g, after) if after else "") if x)
+    qid = start or next((f["quest"]["id"] for f in forms if f["quest"]["id"] not in after), forms[0]["quest"]["id"])
     folder = Path(root) / qid / f"{utc_stamp()}-{player}-{source}"
     n = 1
     while folder.exists():
@@ -72,7 +114,8 @@ def new(forms_paths, *, player="hand", source="designed", start=None, at=None, s
         folder = folder.with_name(f"{folder.name.split('~')[0]}~{n}")
     folder.mkdir(parents=True)
     sess = {"quest": qid, "player": player, "source": source, "model": model, "form_files": files,
-            "forms_hash": forms_hash(forms), "start": start, "at": at, "know": know,
+            "forms_hash": forms_hash(forms), "start": start, "at": at, "know": know, "know_text": known,
+            "after": after, "after_path": [{"command": c, "result": r} for c, r in path],
             "max_commands": max_commands, "created": utc_stamp(), "forms": forms, "world": snap,
             "state": g.s, "broken": None, "take": None, "answers": None}
     _save(folder, sess)
@@ -151,6 +194,10 @@ def end(folder, take: str | None = None, answers: str | None = None, ask: bool =
     return 2, "end needs --take or --answers"
 
 
+def known(folder) -> str:
+    return _load(folder).get("know_text") or ""
+
+
 def has_take(folder) -> bool:
     return _load(folder)["take"] is not None
 
@@ -199,21 +246,28 @@ def how_ended(sess: dict, st: dict) -> str:
     return f"{why} ({', '.join(f'{q} {v}' for q, v in each.items())})"
 
 
-def write_run(folder, extra: dict | None = None) -> dict:
+def run_record(folder, extra: dict | None = None) -> dict:
+    """What run.json holds, computed from the session, the transcript and the run.json kept (nothing written)."""
     folder = Path(folder)
     sess = _load(folder)
     rows = transcript(folder)
     old = json.loads((folder / "run.json").read_text()) if (folder / "run.json").exists() else {}
     st = sess["state"]
     how = how_ended(sess, st)
-    run = {**old, "quest": sess["quest"], "player": sess["player"], "source": sess["source"],
-           "model": sess.get("model"), "form_files": [_rel(f) for f in sess["form_files"]],
-           "forms_hash": sess["forms_hash"], "created": sess["created"],
-           "counts": {"commands": sum(1 for r in rows if r["think"] is not None), "stalls": stalls(rows),
-                      "harness_errors": sum(1 for r in rows if r["result"].startswith("HARNESS ERROR"))},
-           "stages": {q: v["done"] for q, v in st["quests"].items()}, "ended": how,
-           "take": sess["take"] is not None, "answers": sess["answers"] is not None, **(extra or {})}
-    (folder / "run.json").write_text(json.dumps(run, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
+    return {**old, "quest": sess["quest"], "player": sess["player"], "source": sess["source"],
+            "model": sess.get("model"), "form_files": [_rel(f) for f in sess["form_files"]],
+            "forms_hash": sess["forms_hash"], "created": sess["created"],
+            "counts": {"commands": sum(1 for r in rows if r["think"] is not None), "stalls": stalls(rows),
+                       "harness_errors": sum(1 for r in rows if r["result"].startswith("HARNESS ERROR"))},
+            "stages": {q: v["done"] for q, v in st["quests"].items()}, "ended": how,
+            "after": sess.get("after") or [],
+            "names_from_file": sess["world"].get("from_names_file", []),
+            "take": sess["take"] is not None, "answers": sess["answers"] is not None, **(extra or {})}
+
+
+def write_run(folder, extra: dict | None = None) -> dict:
+    run = run_record(folder, extra)
+    (Path(folder) / "run.json").write_text(json.dumps(run, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
     return run
 
 
@@ -225,11 +279,14 @@ def _rel(p: str) -> str:
 
 
 def index(root: Path = RUNS) -> Path:
+    """Write index.json only: each kept run's counts and ending recomputed from its transcript and state, in the
+    index; no run's own files are touched."""
     runs = []
     for p in sorted(Path(root).glob("*/*/run.json")):
         if (p.parent / "session.json").exists():
-            write_run(p.parent)          # counts and endings come from the transcript and the state
-        r = json.loads(p.read_text(encoding="utf-8"))
+            r = run_record(p.parent)
+        else:
+            r = json.loads(p.read_text(encoding="utf-8"))
         runs.append({"path": str(p.parent.relative_to(root)), **{k: r.get(k) for k in (
             "quest", "player", "source", "model", "created", "forms_hash", "counts", "ended", "cost_usd",
             "minutes")}})
