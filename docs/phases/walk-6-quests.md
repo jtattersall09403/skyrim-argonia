@@ -263,4 +263,12 @@ Each was raised by a paper player, fixed, and not raised by the next player.
 - (MQ04, MQ05) Each person's first line says who they are in a clause and glosses our words the first time.
 - (all) A speaker's brief gives every person's sex.
 - (tools) A lane keeps its scratch in a folder of its own and deletes only that; lanes share the session's scratchpad.
+- (BC01) A talked route is an argument that settles the matter itself, never a promise the player must then keep.
+- (BC01, BC02) A line names only where its speaker stands as the player sees it: no room or wall the placement lacks.
+- (BC02, BC03) Each option of a choice is argued by the person it concerns, with a reason of their own, held as a
+  record fact before the lines are written; each side states what the other side winning would cost.
+- (BC01) A choice offered by a later person is named by the quest-giver first, or players never find it.
+- (BC01 to BC03) A hand-in or greeting shared by several routes or endings says only what is true of all of them.
+- (not cleared, held open) Four of four players made the same choice in BC02: a choice everyone makes one way is not
+  yet a choice. The Chainbreakers' rewrite owes it.
 
