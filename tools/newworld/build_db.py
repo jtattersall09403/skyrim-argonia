@@ -32,6 +32,7 @@ from tools.argonia_world import db
 from tools.newworld import atmosphere
 from tools.newworld import danger
 from tools.newworld import flora
+from tools.newworld import needsdb
 from tools.newworld import frame as f
 from tools.newworld import place_danger
 from tools.newworld import place_law
@@ -331,6 +332,7 @@ def build() -> db.World:
     atmosphere.load(w)
     w.insert_many("source", sorted(sources.values(), key=lambda r: r["id"]))
     stockdb.load(w)
+    needsdb.load(w)
     source_match(w)
     save_whole(w)
     return w

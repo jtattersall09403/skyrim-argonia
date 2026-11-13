@@ -697,6 +697,100 @@ CREATE TABLE "give_delivery" (
   FOREIGN KEY ("place_id", "give_seq") REFERENCES "place_give"("place_id", "seq")
 );
 
+-- ---------------------------------------------------------------------------------------------------------
+-- What the stories need of a place (docs/design/place-studio.md, "What the stories need of a place")
+-- ---------------------------------------------------------------------------------------------------------
+-- Sources: newworld/sources/needs/<place_id>.json (written by agents: `python -m tools.places needs`) and
+-- <place_id>.changed.jsonl (the owner's changes, written by the studio); tools/newworld/needsdb.py loads them.
+-- A need is a thing a story asks of a place, beside the place record's promises (place_give, give_delivery). It is
+-- met only from the player's side: the thing exists in the place files and a player would know it for what it is.
+
+-- The story lines, named for a reader who knows none of them.
+CREATE TABLE "story_line" (
+  "id" TEXT NOT NULL PRIMARY KEY,        -- main, many-root, waykeepers ... (the line story's file name)
+  "name" TEXT NOT NULL,                  -- the line's own name: 'Many-Root'
+  "plain" TEXT NOT NULL                  -- what it is, assuming nothing: 'a faction of tree-healers'
+);
+
+-- The four ways a player knows what a thing is.
+CREATE TABLE "need_sign" (
+  "id" TEXT NOT NULL PRIMARY KEY,        -- look, label, beside, person
+  "about" TEXT NOT NULL
+);
+
+CREATE TABLE "place_need" (
+  "place_id" TEXT NOT NULL REFERENCES "place"("id"),
+  "seq" INTEGER NOT NULL,
+  "thing" TEXT NOT NULL,                 -- what a player would call it on sight
+  "story_line_id" TEXT NOT NULL REFERENCES "story_line"("id"),
+  "quests" TEXT NOT NULL,                -- which quests, in words: 'the fourth main quest, The Sour Spring'
+  "does" TEXT NOT NULL,                  -- what the player does there, one sentence that assumes no story
+  "firmness" TEXT NOT NULL CHECK ("firmness" IN ('firm', 'first-draft')),
+  "rests_space" TEXT,                    -- what in the place files it rests on: a space (a room), and/or
+  "rests_ref_id" TEXT,                   --   a ref of that space (outside: 'exterior'), or
+  "rests_person_id" TEXT REFERENCES "person"("id"),   --   a person
+  "met" BOOLEAN NOT NULL CHECK ("met" IN (0, 1)),
+  "why" TEXT NOT NULL,                   -- met: what meets it and how a player knows; not met: what is there instead
+  "fit" TEXT,                            -- not met: what the drafted place has that the story could use instead
+  "narrow" TEXT,                         -- not met: whether a small narrow addition closes the gap, and which
+  "sight" TEXT CHECK ("sight" IN ('recognised', 'not recognised')),   -- the sight test's verdict; null until run
+  "sight_said" TEXT,                     -- what the sight reader said it was
+  "statement_tier_id" TEXT NOT NULL REFERENCES "statement_tier"("id"),
+  CHECK ("rests_ref_id" IS NULL OR "rests_space" IS NOT NULL),
+  CHECK ("rests_ref_id" IS NULL OR "rests_person_id" IS NULL),
+  CHECK ("met" = 0 OR "rests_space" IS NOT NULL OR "rests_person_id" IS NOT NULL),
+  PRIMARY KEY ("place_id", "seq")
+);
+
+-- How the player is meant to know the thing, one row per way.
+CREATE TABLE "place_need_sign" (
+  "place_id" TEXT NOT NULL,
+  "need_seq" INTEGER NOT NULL,
+  "need_sign_id" TEXT NOT NULL REFERENCES "need_sign"("id"),
+  "detail" TEXT NOT NULL,                -- the look, the label's words, what stands by it, what the person says
+  "person_id" TEXT REFERENCES "person"("id"),   -- a person of this place who tells the player
+  PRIMARY KEY ("place_id", "need_seq", "need_sign_id"),
+  FOREIGN KEY ("place_id", "need_seq") REFERENCES "place_need"("place_id", "seq")
+);
+
+-- Where in the line stories the need was asked (file:line); one need may gather several stories' rows.
+CREATE TABLE "place_need_story" (
+  "place_id" TEXT NOT NULL,
+  "need_seq" INTEGER NOT NULL,
+  "story" TEXT NOT NULL,
+  PRIMARY KEY ("place_id", "need_seq", "story"),
+  FOREIGN KEY ("place_id", "need_seq") REFERENCES "place_need"("place_id", "seq")
+);
+
+-- What a story uses a person of the place for.
+CREATE TABLE "person_need" (
+  "person_id" TEXT NOT NULL REFERENCES "person"("id"),
+  "seq" INTEGER NOT NULL,
+  "story_line_id" TEXT NOT NULL REFERENCES "story_line"("id"),
+  "quests" TEXT NOT NULL,
+  "what_for" TEXT NOT NULL,              -- one sentence that assumes no story
+  "keep" TEXT NOT NULL CHECK ("keep" IN ('reachable', 'alive', 'reachable and alive')),
+  "firmness" TEXT NOT NULL CHECK ("firmness" IN ('firm', 'first-draft')),
+  "story" TEXT NOT NULL,                 -- file:line
+  PRIMARY KEY ("person_id", "seq")
+);
+
+-- The owner's change to something a need rests on, made in the studio after its warning: the story changes to fit.
+CREATE TABLE "need_change" (
+  "place_id" TEXT NOT NULL REFERENCES "place"("id"),
+  "seq" INTEGER NOT NULL,
+  "at" TEXT NOT NULL,
+  "need_seq" INTEGER,                    -- the need it touched, or
+  "person_id" TEXT REFERENCES "person"("id"),   -- the person a story uses
+  "change" TEXT NOT NULL CHECK ("change" IN ('removed', 'moved', 'renamed')),
+  "what" TEXT NOT NULL,                  -- the change in plain words
+  "save_id" TEXT,
+  "statement_tier_id" TEXT NOT NULL REFERENCES "statement_tier"("id"),
+  CHECK (("need_seq" IS NULL) + ("person_id" IS NULL) = 1),
+  PRIMARY KEY ("place_id", "seq"),
+  FOREIGN KEY ("place_id", "need_seq") REFERENCES "place_need"("place_id", "seq")
+);
+
 CREATE TABLE "region_note" (
   "region_id" TEXT NOT NULL REFERENCES "region"("id"),
   "aspect_id" TEXT NOT NULL REFERENCES "note_aspect"("id"),

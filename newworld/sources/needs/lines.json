@@ -1,0 +1,14 @@
+{
+ "about": "The story lines (story/design/quests/lines/<id>.md), each named for a reader who knows none of them: the studio shows 'plain (name)'.",
+ "lines": [
+  {"id": "chainbreakers", "name": "the Chainbreakers", "plain": "a faction that frees people held in owed labour"},
+  {"id": "lamp-bearers", "name": "the Lamp-Bearers", "plain": "a faction of detectives"},
+  {"id": "main", "name": "the main quest", "plain": "the main story"},
+  {"id": "many-root", "name": "Many-Root", "plain": "a faction of healers who travel to sick sacred trees"},
+  {"id": "marsh-charter", "name": "the Marsh Charter", "plain": "a company of hired spears"},
+  {"id": "night-reed", "name": "the Night-Reed", "plain": "a house of thieves"},
+  {"id": "reed-sail", "name": "the Reed-Sail", "plain": "a faction of river and coast pilots"},
+  {"id": "sunken-archive", "name": "the Sunken Archive", "plain": "a faction that salvages lost knowledge from drowned places"},
+  {"id": "waykeepers", "name": "the Waykeepers", "plain": "a faction that keeps the travellers' ways: the rootworm landings, the fog-chimes and the watchfires"}
+ ]
+}

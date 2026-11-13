@@ -1,0 +1,4 @@
+{"id":"beside","about":"What visibly stands in or by it: nests and eggs, nets, a forge."}
+{"id":"label","about":"The game's own label: the name on its door, the room's name on entering, a map marker's name, the name shown on the thing."}
+{"id":"look","about":"Its look on sight: the building or thing itself reads as that to someone who knows nothing."}
+{"id":"person","about":"A named person who tells the player, placing it by something fixed, before the player needs it."}
