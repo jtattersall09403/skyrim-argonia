@@ -11,6 +11,7 @@ VirtualMachineAdapter:
       Name: Labels
       Data:
       - name=item|00000A:Skyrim.esm|item.lockpick
+      - name=base|800216:Argonia.esp|09424C:Skyrim.esm
       - name=item|8000DE:Argonia.esp|thing.mq03.sack-key
       - name=number|8000DF:Argonia.esp|flag.mq01.reed-joined
       - name=faction|8000E0:Argonia.esp|faction.veiled-reed

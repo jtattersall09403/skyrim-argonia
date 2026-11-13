@@ -10,6 +10,7 @@ VirtualMachineAdapter:
     - MutagenObjectType: ScriptStringListProperty
       Name: Labels
       Data:
+      - name=base|800217:Argonia.esp|09424C:Skyrim.esm
       - name=template|8000F0:Argonia.esp|0B9BD2:Skyrim.esm
       - name=item|8000F0:Argonia.esp|thing.mq04.gum-pot
       - name=template|8000F2:Argonia.esp|05421B:Skyrim.esm

@@ -133,7 +133,7 @@ TopCell:
     SkyrimMajorRecordFlags:
     - 0x400
     - InitiallyDisabled
-    Base: 09424C:Skyrim.esm
+    Base: 800218:Argonia.esp
     Lock:
       Level: Novice
       Unused: 0x000000
@@ -189,7 +189,7 @@ TopCell:
     SkyrimMajorRecordFlags:
     - 0x400
     - InitiallyDisabled
-    Base: 09424C:Skyrim.esm
+    Base: 800219:Argonia.esp
     Lock:
       Level: Novice
       Unused: 0x000000
@@ -269,7 +269,7 @@ TopCell:
     EditorID: ARG_R_thing_mq04_gum_box
     SkyrimMajorRecordFlags:
     - 0x400
-    Base: 09424C:Skyrim.esm
+    Base: 800217:Argonia.esp
     Lock:
       Level: Novice
       Unused: 0x000000

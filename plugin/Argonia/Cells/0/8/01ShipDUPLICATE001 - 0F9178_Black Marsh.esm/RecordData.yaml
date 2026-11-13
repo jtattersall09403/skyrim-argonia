@@ -103,7 +103,7 @@ Persistent:
   SkyrimMajorRecordFlags:
   - 0x400
   - InitiallyDisabled
-  Base: 09424C:Skyrim.esm
+  Base: 800216:Argonia.esp
   Lock:
     Level: Novice
     Unused: 0x000000

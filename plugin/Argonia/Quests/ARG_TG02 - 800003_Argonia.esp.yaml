@@ -16,6 +16,7 @@ VirtualMachineAdapter:
       - name=item|800021:Argonia.esp|item.tg02.bone-figurine
       - name=template|800022:Argonia.esp|087833:Skyrim.esm
       - name=item|800022:Argonia.esp|item.tg02.neesak-charm
+      - name=base|800219:Argonia.esp|09424C:Skyrim.esm
       - name=item|00000A:Skyrim.esm|item.lockpick
       - name=thing|800021:Argonia.esp|item.tg02.bone-figurine
       - name=thing|800022:Argonia.esp|item.tg02.neesak-charm

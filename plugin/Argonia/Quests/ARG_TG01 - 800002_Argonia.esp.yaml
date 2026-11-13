@@ -14,6 +14,7 @@ VirtualMachineAdapter:
       - name=item|800010:Argonia.esp|item.tg01.jasper-necklace
       - name=item|800011:Argonia.esp|item.tg01.strongbox-key
       - name=thing|800011:Argonia.esp|item.tg01.strongbox-key
+      - name=base|800218:Argonia.esp|09424C:Skyrim.esm
       - name=item|00000A:Skyrim.esm|item.lockpick
       - name=thing|800010:Argonia.esp|item.tg01.jasper-necklace
       - name=faction|80001D:Argonia.esp|faction.night-reed-chapter

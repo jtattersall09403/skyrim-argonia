@@ -609,6 +609,7 @@ static class QuestForm
             if (bk == "template_person") throw c.No("placement", $"{r.Id}: a {r.Kind} placed as a person");
             r.Base = bk == "template_item" ? OwnItem(c, b, r.Id, r.Json) : bk == "item" ? Item(c, b, bid) : Exists<IPlaceableObjectGetter>(c, bid, "base");
             if (j0.TryGetProperty("contents", out var contents)) r.Base = Contents(c, b, r, bk, bid, contents);
+            else if (bk == "existing_base" && So(j0, "name") != null && IsContainer(c.Mods, r.Base)) r.Base = Contents(c, b, r, bk, bid, null);
             if (r.Kind == "door" && !c.Mods.Any(m => m.Doors.Any(d => d.FormKey == r.Base))) throw c.No("placement", $"{r.Id}: base {bid} is not a door");
             if (S(anchor, "rule") == "surface") at = Footprint(c, cell, world, interior, at, r.Base);
             var o = new PlacedObject(key, SkyrimRelease.SkyrimSE) { EditorID = edid, MajorRecordFlagsRaw = flags, Placement = new Placement { Position = at, Rotation = new P3Float() } };
@@ -622,7 +623,9 @@ static class QuestForm
     }
 
     // A new container's contents: our own copy of the form's container base with exactly those items and no respawn.
-    static FormKey Contents(Ctx c, Built b, Ref r, string bk, string bid, JsonElement contents)
+    // A named container of an existing base is that copy too, carrying the form's name and holding only what the form
+    // puts in it (the base's own loot is levelled; nothing is levelled against the player, decision 0035).
+    static FormKey Contents(Ctx c, Built b, Ref r, string bk, string bid, JsonElement? contents)
     {
         if (r.Kind != "thing" || bk != "existing_base") throw c.No("contents", $"{r.Id}: contents are set on a new container, a thing of an existing base");
         var baseKey = r.Base;
@@ -632,7 +635,8 @@ static class QuestForm
         var cont = src.Duplicate(k);
         cont.EditorID = $"ARG_R_{Slug(r.Id)}_Cont";
         cont.Flags &= ~Container.Flag.Respawns;
-        cont.Items = contents.EnumerateArray()
+        if (So(r.Json, "name") is { } shown) cont.Name = shown;
+        cont.Items = contents is not { } items ? null : items.EnumerateArray()
             .Select(x => new ContainerEntry { Item = new ContainerItem { Item = new FormLink<IItemGetter>(ItemIn(c, b, S(x, "item"), r)), Count = I(x, "count") } })
             .ToExtendedList();
         c.Mod.Containers.Add(cont);

@@ -1,6 +1,6 @@
 # Argonia.esp: every record, read back from the built plugin
 
-Written by `make plugin-check` (tools/ArgoniaPlugin `list`) from `out/Argonia.esp`; masters: Skyrim.esm, Update.esm, Dawnguard.esm, HearthFires.esm, Dragonborn.esm, ccBGSSSE001-Fish.esm, ccBGSSSE025-AdvDSGS.esm, unofficial skyrim special edition patch.esp, Black Marsh.esm, Black Marsh North.esp, Valenwood.esp, RimExecutionHitSA.esp. 2110 records. Quest overrides keep the winning record (aliases, stages, scripts) with Start Game Enabled off and their player-visible text removed; story-manager overrides gain a first condition `GetGlobalValue ARG_VanillaStoryManager == 1` (the global is 0), so nothing under the node starts. The why is in `tools/ArgoniaPlugin/shutdown.json` and `mods/allowed-quests.json`.
+Written by `make plugin-check` (tools/ArgoniaPlugin `list`) from `out/Argonia.esp`; masters: Skyrim.esm, Update.esm, Dawnguard.esm, HearthFires.esm, Dragonborn.esm, ccBGSSSE001-Fish.esm, ccBGSSSE025-AdvDSGS.esm, unofficial skyrim special edition patch.esp, Black Marsh.esm, Black Marsh North.esp, Valenwood.esp, RimExecutionHitSA.esp. 2114 records. Quest overrides keep the winning record (aliases, stages, scripts) with Start Game Enabled off and their player-visible text removed; story-manager overrides gain a first condition `GetGlobalValue ARG_VanillaStoryManager == 1` (the global is 0), so nothing under the node starts. The why is in `tools/ArgoniaPlugin/shutdown.json` and `mods/allowed-quests.json`.
 
 | Group | Kind | Change | Records (editor id, form id) |
 |---|---|---|---|
@@ -27,6 +27,10 @@ Written by `make plugin-check` (tools/ArgoniaPlugin `list`) from `out/Argonia.es
 | ours | Armor | new | ARG_I_item_tg02_neesak_charm `800022:Argonia.esp` |
 | ours | Book | new | ARG_I_thing_mq03_page `8000E3:Argonia.esp` |
 | ours | Container | new | ARG_VendorLooksAtBooksChest `000BC9:Argonia.esp` |
+| ours | Container | new | ARG_R_thing_tg01_strongbox_Cont `800218:Argonia.esp` |
+| ours | Container | new | ARG_R_thing_mq03_sack_Cont `800216:Argonia.esp` |
+| ours | Container | new | ARG_R_thing_tg02_lockbox_Cont `800219:Argonia.esp` |
+| ours | Container | new | ARG_R_thing_mq04_gum_box_Cont `800217:Argonia.esp` |
 | ours | MiscItem | new | ARG_I_thing_mq04_sap_jars `8000F2:Argonia.esp` |
 | ours | MiscItem | new | ARG_I_item_tg02_bone_figurine `800021:Argonia.esp` |
 | ours | MiscItem | new | ARG_I_thing_lq25_bait `8000C9:Argonia.esp` |

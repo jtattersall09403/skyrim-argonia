@@ -123,7 +123,11 @@ static class QuestFormRead
         var (rows, stageRows, qid) = c.Rows[q.FormKey];
         var kind = Str(script, "Kind");
         if ((kind == "main") != (q.Type == Quest.TypeEnum.MainQuest)) throw No($"kind {kind} on a quest of type {q.Type}");
-        string Name(string k, FormKey key) => names.TryGetValue((k, key.ToString()), out var n) ? n : key.ToString();
+        // a ref shared by quests is built once, so its base's name may be labelled on the quest that built it
+        var shared = c.Mod.Quests.SelectMany(o => o.VirtualMachineAdapter?.Scripts.SelectMany(s => s.Properties).OfType<IScriptStringListPropertyGetter>()
+            .Where(p => p.Name == "Labels").SelectMany(p => p.Data) ?? []).Where(l => l.StartsWith("name=base|")).Select(l => l[5..].Split('|', 3))
+            .GroupBy(p => (p[0], p[1])).ToDictionary(g => g.Key, g => g.First()[2]);
+        string Name(string k, FormKey key) => names.TryGetValue((k, key.ToString()), out var n) || shared.TryGetValue((k, key.ToString()), out n) ? n : key.ToString();
         // an item base: a new item of ours copied from a template (template_item, its template's word), else the item's word
         JsonObject ItemBase(FormKey key) => names.TryGetValue(("template", key.ToString()), out var tw)
             ? new JsonObject { ["kind"] = "template_item", ["id"] = tw } : new JsonObject { ["kind"] = "item", ["id"] = Name("item", key) };
@@ -225,7 +229,7 @@ static class QuestFormRead
                     j["owner"] = personOfBase.TryGetValue(ok, out var pn) ? pn : c.Recs.GetValueOrDefault(ok) is IFactionGetter ? Name("faction", ok)
                         : throw No($"{a.Name}'s owner {ok} is neither a faction nor one person of the form");
                 }
-                if (isNew && c.Mod.Containers.FirstOrDefault(x => x.FormKey == baseKey) is { } cont)
+                if (isNew && c.Mod.Containers.FirstOrDefault(x => x.FormKey == baseKey) is { } cont && cont.Items?.Count > 0)
                     j["contents"] = new JsonArray([.. cont.Items?.Select(e => (JsonNode)new JsonObject { ["item"] = ItemWord(Name, e.Item.Item.FormKey), ["count"] = e.Item.Count }) ?? []]);
             }
             var pos = rec switch { IPlacedNpcGetter n => n.Placement!.Position, IPlacedObjectGetter o => o.Placement!.Position, _ => default };
