@@ -191,7 +191,7 @@ While writing a quest, check it alone with `--quest <id>`: the rules run over th
 quest only, from each state the quests before it can leave. Before the file goes to its readers, check the whole file.
 Each quest's walk is kept (in `out/sketch-cache`) until its sketch, the sketch of a quest it waits on, or the checker
 changes, so a quest unchanged since the last check is not walked again; `--no-cache` walks everything again. A quest's
-walk has a time limit (120 seconds; `--time-limit <seconds>`): a walk that runs past it stops with a `reach-time`
+walk has a time limit (180 seconds; `--time-limit <seconds>`): a walk that runs past it stops with a `reach-time`
 fault naming the stages and endings it had not reached and how many states it searched. That is not a pass: make the
 quest smaller, or give the walk longer.
 

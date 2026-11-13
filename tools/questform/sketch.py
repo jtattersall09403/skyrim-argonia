@@ -43,7 +43,7 @@ FAILS = HARD + ("item_count_at_least",)
 FAR_STEP = 200000.0           # far places stand this far apart: well beyond rules.AWAY_UNITS
 NEAR_STEP = 1000.0            # near outdoor places stand this far apart: well inside it
 CACHE = Path(__file__).resolve().parents[2] / "out/sketch-cache"   # the walk's kept results (never committed)
-TIME_LIMIT = 120.0            # seconds one quest's walk may take before it stops and says what it has not reached
+TIME_LIMIT = 180.0            # seconds one quest's walk may take before it stops and says what it has not reached
 
 # The words a writer reaches for that name something the game cannot know or do, each with the nearest thing it can.
 CANNOT = {

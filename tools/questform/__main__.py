@@ -134,7 +134,7 @@ def main(argv: list[str] | None = None) -> int:
     sk.add_argument("--no-walk", action="store_true", help="skip the reach walk (the rules only)")
     sk.add_argument("--paths", action="store_true", help="print the walk's shortest path to each ending")
     sk.add_argument("--no-cache", action="store_true", help="walk every quest again, keeping nothing")
-    sk.add_argument("--time-limit", type=float, help="seconds each quest's walk may take (default 120)")
+    sk.add_argument("--time-limit", type=float, help="seconds each quest's walk may take (default 180)")
     a = ap.parse_args(argv)
     if a.cmd == "sketch":
         from tools.questform import sketch

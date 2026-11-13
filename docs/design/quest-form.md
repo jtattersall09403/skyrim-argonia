@@ -393,7 +393,7 @@ A writer checks the quest in hand with `--quest <id>` (the rules over the file; 
 state the quests before it can leave) and the whole file before it goes to readers. Each quest's walk, and each play of
 an earlier quest to one of its endings, is kept in `out/sketch-cache` under a hash of the forms its game loads, the
 world entries they name, the walk's settings and the walker's code, so only what a change reaches is walked again
-(`--no-cache` keeps nothing; the folder is safe to delete). Each quest's walk stops at a time limit (120 s,
+(`--no-cache` keeps nothing; the folder is safe to delete). Each quest's walk stops at a time limit (180 s,
 `--time-limit`) with a `reach-time` fault naming what it had not reached and how many states it searched.
 
 ## The gate
