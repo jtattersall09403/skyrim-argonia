@@ -414,7 +414,8 @@ stage 41 "I put Hulm-Tei's own leaf in his hand. He said her Owing is closed, an
 stage 42 "I paid Hulm-Tei the whole of what her Owing had grown to, 1,000 gold. He said before the household that it is closed, and nobody carries anything." do take-gold 1000
 stage 60 "Rows-For-Another said she would go when I had gone, in the farm's boat, to her kin who keep Lujei Ferry. They will hide her in its waiting shelter: while the watchman lives she cannot be seen among them."
 stage 61 "Rows-For-Another said she would go when I had gone, in the farm's boat, home to her kin who keep Lujei Ferry."
-stage 88 completed "I gave Never-Sold a leaf I had taken from the count-box at Reedfall Farm. She told me whose it was, and that with no leaf the farm has nothing to hold its boat-hand by." do take herleaf, give-gold 100, give ring, rank chainbreakers 1, set bc01.settled 1, off rows, on rowsahead, on bedroll, unlock backroom
+stage 88 completed "I gave Never-Sold a leaf I had taken from the count-box at Reedfall Farm. She told me whose it was, and that with no leaf the farm has nothing to hold its boat-hand by." do join chainbreakers, take herleaf, give-gold 100, give ring, rank chainbreakers 1, set bc01.settled 1, off rows, on rowsahead, on bedroll, unlock backroom
+stage 89 completed "Struck. I told Never-Sold the keeper closed the Owing, and that he is dead." do give-gold 100, rank chainbreakers 1, set bc01.settled 3, off rows, on rowsahead, on bedroll, unlock backroom
 stage 90 completed "Lifted. I gave Never-Sold the leaf from the count-box. With no leaf, the farm has nothing to hold Rows-For-Another by." do take herleaf, give-gold 100, give ring, rank chainbreakers 1, set bc01.settled 1, off rows, on rowsahead, on bedroll, unlock backroom
 stage 91 completed "Struck. I told Never-Sold the keeper closed the Owing himself and carries it." do give-gold 100, give ring, rank chainbreakers 1, set bc01.settled 2, off rows, on rowsahead, on bedroll, regard hulm 2, unlock backroom
 stage 92 completed "Struck. I told Never-Sold the keeper closed the Owing and went free himself, and that the hands who stay will carry what both leaves owed." do give-gold 100, rank chainbreakers 1, set bc01.settled 3, off rows, on rowsahead, on bedroll, off hulm, on hulmfree, unlock backroom
@@ -430,26 +431,26 @@ objective 30 at 30, 31, 35 "Tell Rows-For-Another her way is open; or end her Ow
 objective 40 at 40, 41, 42 "Tell Never-Sold" -> neversold
 objective 60 at 60, 61 "Tell Never-Sold" -> neversold
 
-line job neversold at 0 ask "What is the job?" -> 10 says "a boat-hand at Reedfall, eleven years for one boat; her leaf is in the count-box in the rice shed and the keeper carries the key; the box is cypress, the hasp on the left; take hers, and do not read what lies under it"
+line job neversold at 0 ask "What is the job?" -> 10 says "a boat-hand at Reedfall, eleven years for one boat; her leaf is in the count-box in the rice shed and the keeper carries the key; the box is cypress, the hasp on the left; take hers, and do not read what lies under it; no leaf, no Owing: the Varo send no watchman after a hand they can show no count for; and if the keeper will take the first price and say it closed, better still"
 line early neversold at 0 ask "I have a leaf out of the count-box at Reedfall Farm." if holds herleaf -> 88 says "she reads the name, says whose it is, and that I have done her job before she gave it"
 line held rows at 10 ask "Tell me how you are held." -> 20 says "the leaf in the box in the rice shed; the keeper who stands at its mouth; the watchman on the Tei-Kur track, who knows her kin keep Lujei Ferry"
-line gone rows at 10-25 ask "A man with a mace is dead on the Tei-Kur track." if dead fetcher -> 35 says "then nobody is left to come after her"
+line gone rows at 20-25 ask "A man with a mace is dead on the Tei-Kur track." if dead fetcher -> 35 says "then nobody is left to come after her"
 line case meema at 10-35 ask "Why is she still owing?" says "the boat was real and the rice she ate was real; one paddy is failing and the buyers at Lilmoth forgive nothing"
-line taught meema at 10-35 ask "You know who sent me." says "ask the one who sent you who taught my keeper his letters"
-line asked neversold at 10-61 ask "What were you to Reedfall Farm?" says "I was owing on that ground once. So were many."
+line taught meema at 10-35 ask "Never-Sold sent me." says "ask the one who sent you who taught my keeper his letters"
+line asked neversold at 10-61 ask "How do you know the box?" says "I was owing on that ground once. So were many."
 line smaller hulm at 10-35 ask "Who keeps the count?" if alive hulm says "he does; the keeper before him wrote smaller than he does"
 line look fetcher at 20-25 ask "Be watching the paddies when she goes." if skill Speech 35 -> 30 else "I am paid by the head, not by the word." says "he will watch the paddies"
 line pay fetcher at 20-25 ask "What is her head worth to you?" if gold 150 -> 31 else "A hundred and fifty. That is what the Varo pay me to bring one back." says "he takes it"
 line open rows at 30-31 ask "The watchman will not see you go." if alive rows -> 60 says "the boat; the shelter at Lujei Ferry; hidden while he lives"
 line opend rows at 35 ask "Nobody will come after you." if alive rows -> 61 says "the boat; home to the ferry"
-line persuade hulm at 20-35 ask "Take her first price and close it." if skill Speech 50, gold 100 -> 40 else "A true count is the only thing between me and the mud." says "he closes it and carries it: I have carried worse than a boat-hand"
+line persuade hulm at 20-35 ask "Take her first price and close it." if skill Speech 50, gold 100 -> 40 else "A true count is the only thing between me and the mud. Bring her first price, and a better reason than that." says "he closes it and carries it: I have carried worse than a boat-hand"
 line hisleaf hulm at 20-35 ask "I have your leaf." if holds keeperleaf -> 41 says "he takes it, closes hers and will be gone tonight"
 line purse hulm at 20-35 ask "What has it grown to? I will pay all of it." if gold 1000 -> 42 else "A thousand, to the coin. The Varo do not round down." says "he counts it and closes it"
 line told rows at 40-42 ask "It is closed." says "she will go to her kin at Lujei Ferry when I have gone"
 line lifted neversold at 20-35 ask "Here is her leaf." if holds herleaf -> 90 says "tonight she reads it aloud and burns it"
-line liftedgone neversold at 60-61 ask "She is going by water, and here is her leaf." if holds herleaf -> 90 says "tonight she reads it aloud and burns it"
 line r40 neversold at 40 ask "The keeper closed it himself, and carries it." -> 91 says "then he carries it with his eyes open"
-line r41 neversold at 41 ask "The keeper closed it, and is gone." -> 92 says "a dozen hands will each work a season for her and never know why; I would have chosen the keeper"
+line r41 neversold at 41 ask "The keeper closed it, and is gone." if alive hulm -> 92 says "a dozen hands will each work a season for her and never know why; I would have chosen the keeper"
+line r41d neversold at 41 ask "The keeper closed it, and is dead." if dead hulm -> 89 says "then he carried it a shorter way than most"
 line r42 neversold at 42 ask "I paid all of it." -> 93 says "then the Varo are paid, and every holder on the lake knows what we will pay"
 line cut neversold at 60 ask "She has gone by water." if alive fetcher -> 94 says "then she hides until he dies; half"
 line cutdead neversold at 60 ask "She has gone by water, and the watchman is dead." if dead fetcher -> 95 says "she will get her colour back; I do not thank you for how"
@@ -462,11 +463,11 @@ line hided rowsahead at 94 ask "The watchman is dead." if dead fetcher says "the
 line short hulm at 88-90 ask "Is the count short?" if alive hulm says "eleven years I cannot account for, and they are written on me"
 line carried hulm at 91 ask "You carry her years." if alive hulm says "with my eyes open"
 line paid hulm at 93 ask "The count is whole." if alive hulm says "short of nothing, for once"
-line grows hulm at 94-95 ask "She is gone." if alive hulm says "her leaf stays in the box and grows on me"
+line grows hulm at 94-95 ask "She is gone." if alive hulm says "her years stay on the count and grow on me"
 line free hulmfree at 92 ask "You are out." says "he does not ask who carries it"
 
 use box from 20 -> 25 until 25
-death fetcher from 10 -> 35 choice
+death fetcher from 20 -> 35 choice
 must-live neversold fails 96
 must-live rows fails 97
 ```
@@ -636,12 +637,12 @@ place cookhouse outdoors "the cookhouse, Lujei"
 place shelter outdoors "the waiting shelter, Lujei Ferry"
 
 person neversold at seat "Never-Sold"
-person tsaxi at gate level 30 "Third-Born Tsaxi"
-person okaw at gate level 30 off "Third-Born Okaw"
+person tsaxi at gate level 35 "Third-Born Tsaxi"
 person walks at gate "Walks-Far"
 person mends at gate "Mends-Nets"
 person floods at gate "Old Seven-Floods"
 person nuleem at landing "Nuleem-Ei"
+person okeeh at landing "Nisswo Okeeh-Ra"
 person rowsahead at shelter existing "Rows-For-Another"
 person croc1 at reeds existing "Crocodile"
 person croc2 at reeds existing "Channel Crocodile"
@@ -652,6 +653,7 @@ thing lockupkey on tsaxi "Lock-Up Key"
 door lockup at gate locked adept key lockupkey "Lock-Up Door"
 thing purse at reeds container holds gold 40 "Drowned Traveller's Purse"
 thing chestkey in purse "Small Brass Key"
+thing sealring in purse "Reckoner's Seal Ring"
 thing raftchest at reeds container locked expert key chestkey holds gold 150 "Sealed Chest on the Stranded Raft"
 thing leaves in raftchest readable "Singed Leaves of the Rose"
 thing strongbox at gate container locked master key otheelkey holds gold 300 "Shelter-Reckoner's Strongbox"
@@ -661,7 +663,7 @@ item gloves "Gloves of Minor Pickpocketing"
 
 stage 0 hidden
 stage 10 "Never-Sold sent me to the Rose, the old prison at the end of the track south of Reedfall Farm. Since a fire in its upper cells, three people are held in the lock-up of its gatehouse, outside the wall. One of them can be got out, and she wants the one held for words. She gave me 100 gold for the gate-keeper, and told me to go no further than the gatehouse." do give-gold 100
-stage 20 "Third-Born Tsaxi keeps the Rose's gate and counts heads. She told me she can count one of the three lost to the smoke and not two; that one of the two young ones drowned a reckoner and will be put under when the leaves are read; and that the leaves went with the Rose's reckoner, who crossed at Lujei Ferry by night with a sealed chest and did not land."
+stage 20 "Third-Born Tsaxi keeps the Rose's gate and counts heads. She told me she can count one of the three lost to the smoke and not two; that one of the two young ones killed the shelter-reckoner Otheel and will be put under when the leaves are read; and that the leaves went with the Rose's reckoner, who crossed at Lujei Ferry by night with a sealed chest and did not land."
 stage 30 "I took the Rose's singed leaves out of the sealed chest on the stranded raft, in the reeds below Lujei Ferry."
 stage 33 "Tsaxi agreed to count one of the three lost to the smoke, and unlocked the lock-up. I have only to say which." do unlock lockup
 stage 34 "Tsaxi took 100 gold to count one of the three lost to the smoke, and unlocked the lock-up. I have only to say which." do take-gold 100, unlock lockup
@@ -671,11 +673,11 @@ stage 38 "Third-Born Tsaxi is dead. Nobody is left at the gatehouse to swear to 
 stage 41 "I told Walks-Far he is the one, and to go when I am gone. He said he would go to Blackrose, to the boardwalk tavern. The other two stay."
 stage 42 "I told Mends-Nets she is the one, and to go when I am gone. She said she would go to Lujei, to the fish-drying racks, where nets are mended and nobody asks. She gave me a key she took from the man she drowned, and said his strongbox is in the gatehouse. The other two stay." do give otheelkey
 stage 43 "I told Seven-Floods she is the one, and to go when I am gone. She said she would go to Lujei, to the cookhouse, near the lake. She gave me the key to her family's net-chest at Sheh-Ara. The other two stay." do give netkey
-stage 44 "I told all three to go when I am gone: Walks-Far to Blackrose's boardwalk tavern, Mends-Nets and Seven-Floods to Lujei."
+stage 44 "I told all three to go when I am gone: Walks-Far to Blackrose's boardwalk tavern, Mends-Nets and Seven-Floods to Lujei. Mends-Nets gave me a dead reckoner's key, and Seven-Floods the key to her family's net-chest at Sheh-Ara." do give otheelkey, give netkey
 stage 91 completed "I told Never-Sold that Walks-Far came out, and who did not." do give-gold 250, give gloves, set bc02.out 1, off walks, on walksout
-stage 92 completed "I told Never-Sold that Mends-Nets came out, and who did not." do give-gold 100, set bc02.out 2, off mends, on mendsout
+stage 92 completed "I told Never-Sold that Mends-Nets came out, and who did not." do set bc02.out 2, off mends, on mendsout
 stage 93 completed "I told Never-Sold that Seven-Floods came out, and who did not." do give-gold 150, give gloves, set bc02.out 3, off floods, on floodsout
-stage 94 completed "I told Never-Sold that the lock-up is empty and the gate-keeper dead." do set bc02.out 4, off walks, on walksout, off mends, on mendsout, off floods, on floodsout, on okaw
+stage 94 completed "I told Never-Sold that the lock-up is empty and the gate-keeper dead." do set bc02.out 4, off walks, on walksout, off mends, on mendsout, off floods, on floodsout
 stage 95 failed "Never-Sold is dead. The Chainbreakers have nobody to send me anywhere."
 stage 96 failed "Walks-Far is dead. Nobody can be brought out of the smoke now."
 stage 97 failed "Mends-Nets is dead. Nobody can be brought out of the smoke now."
@@ -693,15 +695,17 @@ line job4 neversold at 0 ask "Is there more work?" if done BC01 92 -> 10 says "t
 line job5 neversold at 0 ask "Is there more work?" if done BC01 93 -> 10 says "three in the lock-up of the Rose's gatehouse; one can be got out; she wants the one held for words; go no further than the gatehouse"
 line job6 neversold at 0 ask "Is there more work?" if done BC01 94 -> 10 says "three in the lock-up of the Rose's gatehouse; one can be got out; she wants the one held for words; go no further than the gatehouse"
 line job7 neversold at 0 ask "Is there more work?" if done BC01 95 -> 10 says "three in the lock-up of the Rose's gatehouse; one can be got out; she wants the one held for words; go no further than the gatehouse"
-line three tsaxi at 10 ask "Who are the three?" -> 20 says "one can be lost to the smoke, not two; one of the young ones killed; the leaves went with the reckoner, who crossed at Lujei Ferry by night with a sealed chest; the lake took him, and the lake has teeth there"
+line three tsaxi at 10 ask "Who are the three?" -> 20 says "one can be lost to the smoke, not two; one of the young ones killed the shelter-reckoner Otheel; the leaves went with the reckoner, who crossed at Lujei Ferry by night with a sealed chest; the lake took him, and the lake has teeth there"
 line whotsaxi tsaxi at 10-36 ask "Who are you to them?" says "born inside; never further from the Rose than this door; she answers for the count with her neck; Chainbreakers are the Broker's children, and she will not say more"
 line under tsaxi at 20-36 ask "What is put under?" says "sent down to the drowned cells, where the dead still walk; nobody comes up"
 line otheel tsaxi at 20-36 ask "How did the reckoner Otheel die?" says "drowned in the wash-pool, in a net"
+line left tsaxi at 20-36 ask "What becomes of the two who stay?" says "nothing changes for them until the leaves are read; unread, nobody is put under, and she cannot read"
+line nisswo okeeh at 10-44 ask "What does a Nisswo want at a ferry?" says "a debt that outlives its cause is a thing held too long; so is the grudge that cut this cable; she waits to say so to whoever will hear"
 line deadgate floods at 10-36 ask "Who keeps you here?" if dead tsaxi -> 38 says "she did; nobody does now"
-line cable nuleem at 20-36 ask "Did a man of the Rose cross here with a chest?" says "by night; the cable did not fray; the raft swung into the reeds below the landing, where the crocodiles lie, and nobody goes down there; her poleman has not come home"
-line casewalks walks at 20-38 ask "Why are you held?" says "for words in the yard; he recites them"
-line casemends mends at 20-38 ask "Why are you held?" says "for words in the yard; she recites them"
-line casefloods floods at 20-38 ask "Why are you held?" says "for a roof; the girl who kept the count wept when she wrote my daughter down, and then she wrote it; do not choose me"
+line cable nuleem at 20-36 ask "Did a man of the Rose cross here with a chest?" says "by night; the cable did not fray; the raft swung into the reeds below the landing, where the crocodiles lie, and nobody goes down there; his purse is in those reeds too, for whoever dares; her poleman has not come home"
+line casewalks walks at 10-38 ask "Why are you held?" says "for words in the yard; he recites them"
+line casemends mends at 10-38 ask "Why are you held?" says "for words in the yard; she recites them"
+line casefloods floods at 10-38 ask "Why are you held?" says "for a roof; I stood at that shed's mouth the day my daughter was written down: the girl who kept the count wept when she wrote her, and then she wrote it; do not choose me"
 line ease floods at 20-38 ask "Let me ease your breathing." if skill Restoration 25 else "Ask me which of my daughters I would drown." says "she tells which of the two killed, and why"
 line herb floods at 20-38 ask "I know what eases a smoke-chest." if skill Alchemy 25 else "Ask me which of my daughters I would drown." says "she tells which of the two killed, and why"
 line press floods at 20-38 ask "You know which of them it was." if skill Speech 40 else "Ask me which of my daughters I would drown." says "she tells which of the two killed, and why"
@@ -715,26 +719,25 @@ line goall floods at 38 ask "The gate-keeper is dead. All of you, go." if alive 
 line rep1 neversold at 41 ask "Walks-Far came out." -> 91 says "pleased, and uneasy"
 line rep2 neversold at 42 ask "Mends-Nets came out." -> 92 says "we will be called the people who loose killers, and it will be true"
 line rep3 neversold at 43 ask "Seven-Floods came out." -> 93 says "silent, then kind"
-line rep4 neversold at 44 ask "All three are out. The gate-keeper is dead." -> 94 says "the Rose's hunters will take a clutch-brother of his in their place; the heirs will not treat with us again"
+line rep4 neversold at 44 ask "All three are out. The gate-keeper is dead." -> 94 says "the Rose's hunters will take a clutch-brother of Walks-Far's in their place; the heirs will not treat with us again"
 line after1 walksout at 91-94 ask "You got here." says "he talks of the hatch in the yard to anyone who will stand still"
 line after2 mendsout at 92-94 ask "You got here." says "nobody asks a net-mender"
 line after3 floodsout at 93-94 ask "You got here." says "near enough to the tree"
-line after4 okaw at 94 ask "Who keeps the gate now?" says "he does; the Rose does not treat with Chainbreakers"
 line stay1 mends at 91 ask "You stayed." if alive mends says "then I am put under when they find a reader"
 line stay1b mends at 93 ask "You stayed." if alive mends says "she is out; that is what I did it for"
 line stay2 walks at 92-93 ask "You stayed." if alive walks says "three seasons; I have talked through worse"
 line stay3 floods at 91-92 ask "You stayed." if alive floods says "I asked not to be chosen"
-line mother rowsahead at 93-94 ask "Seven-Floods is out of the Rose." if alive rowsahead says "her mother; she has seen her, and will take her out to the water"
-line motherstays rowsahead at 91-92 ask "An old woman called Seven-Floods is held at the gatehouse of the Rose." if alive rowsahead says "her mother; she will have asked not to be chosen, that is her all over"
+line mother rowsahead at 93-94 ask "Seven-Floods is out of the Rose." if alive floodsout says "her mother; she will go to her at the cookhouse, and take her out to the water"
+line motherstays rowsahead at 91-92 ask "An old woman called Seven-Floods is held at the gatehouse of the Rose." if alive floods says "her mother; she will have asked not to be chosen, that is her all over"
 line tsaxiafter tsaxi at 91-93 ask "How is your count?" if alive tsaxi says "one died of the smoke; the reckoner will come when he comes"
 
 take leaves from 20 -> 30
 use lockup from 20 -> 36 until 33
 death tsaxi from 10 -> 38 choice
 must-live neversold fails 95
-must-live walks fails 96 to 38
-must-live mends fails 97 to 38
-must-live floods fails 98 to 38
+must-live walks fails 96 to 44
+must-live mends fails 97 to 44
+must-live floods fails 98 to 44
 ```
 
 **The choice, and each side's honest case.** *Walks-Far* is innocent of anything but words, is the one Never-Sold
@@ -881,7 +884,7 @@ place house indoors "the Broker's House, Soulrest"
 
 person neversold at seat "Never-Sold"
 person rope at quay "Heavy-Rope"
-person rajhan at quay level 22 "Ra'Jhan"
+person rajhan at quay level 25 "Ra'Jhan"
 person ussa at wharf "Ussa-Rekh"
 person dralas at wharf "Dralas"
 person ward at house level 15 "Keel-Tar"
@@ -894,18 +897,20 @@ thing list at house readable "List of Eleven at Thorn"
 thing shelf at house container owner ussa "Broker's Shelf"
 thing book in shelf readable "Bound Count: Never-Sold, Keeper at Reedfall"
 thing scimitar on rajhan "Ra'Jhan's Scimitar"
+thing berthkey on rajhan "Berth-Master's Key"
+thing berthchest at quay container locked adept key berthkey owner rajhan holds gold 400 "Berth-Master's Chest"
 item sneakring "Ring of Minor Sneaking"
-item housekey "Key to the Broker's House"
+item purse "The House's Purse (600 Gold)"
 
 stage 0 hidden
-stage 10 "Never-Sold sent me to Soulrest, to the harbour quay. A man called Ussa-Rekh, the Broker, bought a crew out of their Owings and holds their carved tokens for one season's hire more. She wants the tokens in the crew's hands. She also asked for a bound book from his shelf, and did not say why. She gave me 600 gold, which is all her house has, in case he will only let them go for coin." do give-gold 600
+stage 10 "Never-Sold sent me to Soulrest, to the harbour quay. A man called Ussa-Rekh, the Broker, bought a crew out of their Owings and holds their carved tokens for one season's hire more. She wants the tokens in the crew's hands. She also asked for a bound book from his shelf, and did not say why. She gave me the house's purse, 600 gold tied and counted, which is all the Chainbreakers have, in case he will only let them go for coin." do give purse
 stage 20 "Heavy-Rope, the crew's boss, told me the tokens are in a chest in the Broker's house on the timber wharves. The key is on the Broker, a dock hand called Dralas bars his door, and the berth-master Ra'Jhan is to pay for the season."
 stage 21 "I talked Dralas into leaving the Broker's door unbarred." do unlock housedoor
 stage 22 "I paid Dralas 30 gold to leave the Broker's door unbarred." do take-gold 30, unlock housedoor
-stage 40 "I talked Ussa-Rekh into letting the crew go. He will sign his own hands to the berth-master for the season, so that the price for eleven people held at Thorn is still earned. He told me to fetch the crew's tokens from his chest, and the book." do unlock housedoor, own chest, own shelf
-stage 41 "I paid Ussa-Rekh the season's hire, 600 gold, and he let the crew go. The price for eleven people held at Thorn is paid out of the Chainbreakers' purse. He told me to fetch the crew's tokens from his chest, and the book." do take-gold 600, unlock housedoor, own chest, own shelf
+stage 40 "I talked Ussa-Rekh into letting the crew go. He will sign his own hands to the berth-master for the season, which will buy four of the eleven people held at Thorn and not the rest. He said the book on his shelf is hers, and to take it." do unlock housedoor, own shelf
+stage 41 "I gave Ussa-Rekh the house's purse for the season's hire, and he let the crew go. The price for eleven people held at Thorn is paid out of the Chainbreakers' purse. He said the book on his shelf is hers, and to take it." do take purse, unlock housedoor, own shelf
 stage 45 "I talked Ra'Jhan into giving up the crew's season. The hire is void, and so is the price it was to pay."
-stage 46 "I paid Ra'Jhan 600 gold to give up the crew's season. The hire is void, and so is the price it was to pay." do take-gold 600
+stage 46 "I gave Ra'Jhan the house's purse to give up the crew's season. The hire is void, and so is the price it was to pay." do take purse
 stage 47 "Ra'Jhan the berth-master is dead. Nobody will pay for the crew's season, or for what it was to buy."
 stage 60 "I put the crew's tokens in Heavy-Rope's hand. The crew are free of the last season." do take tokens, give-gold 150, set bc03.crew 1, unlock housedoor
 stage 61 "I told Heavy-Rope the Broker has let the crew go." do give-gold 150, set bc03.crew 2
@@ -914,21 +919,24 @@ stage 63 "I told Heavy-Rope the hire is void. The crew are free of the last seas
 stage 64 "I put the Broker's list of eleven in Heavy-Rope's hand. He read it, and said the crew would sail the last season." do take list, set bc03.crew 3, unlock housedoor
 stage 65 "Ussa-Rekh said the bound book is hers and always was, that he offered it to her once and she refused it, and that I may take it from his shelf." do unlock housedoor, own shelf
 stage 70 "I gave Never-Sold the bound book from the Broker's shelf and said nothing of it. Its spine names her keeper of the count at Reedfall Farm." do take book
-stage 71 "I told Never-Sold I know she wrote the first lines of Rows-For-Another's Owing. She said: four months, then the food, then the fever; that she wrote small and wrote true; and that she has been striking that leaf out ever since, and could not do it with her own hand." do take book, set bc03.told 1
-stage 90 completed "Broken off. I told Never-Sold the crew are free, and that nobody will buy the eleven at Thorn." do give sneakring, rank chainbreakers 2, set bc03.settled 1
-stage 91 completed "Released. I told Never-Sold the Broker let the crew go himself." do give sneakring, give housekey, rank chainbreakers 2, set bc03.settled 2, off ussa, on ussaquay
-stage 92 completed "The season worked. I told Never-Sold the crew will sail one season more, and that eleven at Thorn will be bought out with it." do rank chainbreakers 2, set bc03.settled 3, regard ussa 2, regard rope -2
+stage 71 "I showed Never-Sold that the book names her keeper of the count at Reedfall. She said she wrote the first lines of Rows-For-Another's Owing: four months, then the food, then the fever; that she wrote small and wrote true; and that she has been striking that leaf out ever since, and could not do it with her own hand." do take book, set bc03.told 1
+stage 90 completed "Broken off. I told Never-Sold the crew are free of the last season, and gave her back the house's purse." do take purse, give sneakring, rank chainbreakers 2, set bc03.settled 1
+stage 91 completed "Released. I told Never-Sold the Broker let the crew go himself, and gave her back the house's purse." do take purse, give sneakring, rank chainbreakers 2, set bc03.settled 2, regard ussa 2, off ussa, on ussaquay
+stage 92 completed "The season worked. I told Never-Sold the crew will sail one season more, and gave her back the house's purse." do take purse, rank chainbreakers 2, set bc03.settled 3, regard ussa 2, regard rope -2
+stage 93 completed "Broken off. I told Never-Sold the crew are free of the last season, and that the house's purse is spent." do rank chainbreakers 2, set bc03.settled 1, set bc03.purse 1
+stage 94 completed "Released. I told Never-Sold the Broker let the crew go, and what it cost." do rank chainbreakers 2, set bc03.settled 2, set bc03.purse 1
+stage 97 completed "I told Never-Sold the crew agreed to sail one season more, and that the season died with the man it hung on." do rank chainbreakers 2, set bc03.settled 3
 stage 95 failed "Never-Sold is dead. The Chainbreakers have nobody to send me anywhere."
 stage 96 failed "Heavy-Rope is dead. The crew have nobody to speak for them."
 
 objective 10 at 10 "Speak to Heavy-Rope on the harbour quay at Soulrest" -> rope
 objective 20 at 20, 21, 22 "Free the crew of the last season: their tokens in the Broker's chest, the Broker's word or the berth-master's hire" -> tokens, ussa, rajhan, dralas, rope, housedoor
-objective 40 at 40, 41 "Tell Heavy-Rope the Broker has let them go" -> rope, tokens
+objective 40 at 40, 41 "Tell Heavy-Rope the Broker has let them go" -> rope
 objective 45 at 45, 46, 47 "Tell Heavy-Rope the hire is void" -> rope, tokens
 objective 60 at 60, 61, 62, 63, 64, 65 "Bring Never-Sold the bound book from the Broker's shelf" -> book, neversold, ussa
 objective 70 at 70, 71 "Tell Never-Sold how it ended for the crew" -> neversold
 
-line job1 neversold at 0 ask "Where next?" if done BC02 91 -> 10 says "the Broker at Soulrest's quay; a crew's tokens; and a book from his shelf"
+line job1 neversold at 0 ask "Where next?" if done BC02 91 -> 10 says "the Broker at Soulrest's quay; a crew's tokens, without which no berth-master on that coast will hire them as free hands; and a book from his shelf"
 line job2 neversold at 0 ask "Where next?" if done BC02 92 -> 10 says "the Broker at Soulrest's quay; a crew's tokens; and a book from his shelf"
 line job3 neversold at 0 ask "Where next?" if done BC02 93 -> 10 says "the Broker at Soulrest's quay; a crew's tokens; and a book from his shelf"
 line job4 neversold at 0 ask "Where next?" if done BC02 94 -> 10 says "the Broker at Soulrest's quay; a crew's tokens; and a book from his shelf"
@@ -936,11 +944,12 @@ line plan rope at 10 ask "Where are the tokens?" -> 20 says "the chest, the key,
 line whyussa ussa at 10-47 ask "Why do you hold their tokens?" says "one season pays for the next people bought; this one is promised to eleven at Thorn; he takes none of it"
 line unbar dralas at 20 ask "Leave his door unbarred." if skill Speech 25 -> 21 else "He bought me too. I bar his door." says "he will be looking at the boats"
 line unbarpay dralas at 20 ask "Thirty, and you saw nothing." if gold 30 -> 22 else "Thirty. I owe more than that for my supper." says "he takes it"
-line release ussa at 20-22 ask "Let them go. You promised them an ending." if skill Speech 50 -> 40 else "Carry my case to the crew. Eleven names. Ask them which they would leave at Thorn." says "then Ra'Jhan is short of hands and Thorn of its price; I have two hands"
-line releasepay ussa at 20-22 ask "I will pay the season myself." if gold 600 -> 41 else "The hire is six hundred. I will not take less for eleven lives." says "he takes it for Thorn"
+line release ussa at 20-22 ask "Let them go. You promised them an ending." if skill Speech 50 -> 40 else "Carry my case to the crew. Eleven names. Ask them which they would leave at Thorn." says "then Ra'Jhan is short of hands and Thorn of its price; I have two hands, and two hands buy four of the eleven"
+line releasepay ussa at 20-22 ask "I will pay the season myself." if holds purse -> 41 says "he takes it for Thorn"
 line hire rajhan at 20-22 ask "Give up the season. The crew are done." if skill Speech 40 -> 45 else "This one has a ship and no hands. Words do not row." says "he gives it up"
-line hirepay rajhan at 20-22 ask "What is the season worth to you?" if gold 600 -> 46 else "Six hundred, and this one finds other hands." says "he takes it"
-line handtokens rope at 20-47 ask "Here are your tokens." if holds tokens -> 60 says "nine on a cord; the crew's thanks"
+line hirepay rajhan at 20-22 ask "What is the season worth to you?" if holds purse -> 46 says "he takes it"
+line handtokens rope at 20-22 ask "Here are your tokens." if holds tokens -> 60 says "nine on a cord; the crew's thanks"
+line handtokens2 rope at 45-47 ask "Here are your tokens." if holds tokens -> 60 says "nine on a cord; the crew's thanks"
 line released rope at 40-41 ask "The Broker has let you go." -> 61 says "the crew's thanks; he would"
 line void rope at 45-47 ask "Nobody will pay for the season now." -> 63 says "the crew's thanks"
 line sail rope at 20-22 ask "Sail the season. It buys eleven out of Thorn." if skill Speech 30, alive ussa, alive rajhan -> 62 else "We were promised an ending. Show me these eleven." says "bitterly, he will"
@@ -948,18 +957,21 @@ line saillist rope at 20-22 ask "Read this. It was on his table." if holds list,
 line askbook ussa at 60-64 ask "Never-Sold sent me for a bound book on your shelf." if alive ussa -> 65 says "it is hers; he offered it once and she refused it; take it"
 line bookask neversold at 60-65 ask "About the book from his shelf." if holds book asks givebook, toldher says "she holds out her hand"
 line givebook neversold answer at 60-65 ask "Here is your book." if holds book -> 70 says "she takes it and says nothing"
-line toldher neversold answer at 60-65 ask "You wrote the first lines of her Owing. I saw the shack he lives in, the eleven on his table and your name in his book." if holds book -> 71 says "four months, then the food, then the fever"
-line whose ussa at 20-65 ask "Whose book is this?" if holds book, alive ussa says "she was the best keeper that farm had; I bought her for the price of a boat; ask her whose boat"
-line r1 neversold at 70-71 ask "The crew are free." if number bc03.crew = 1 -> 90 says "satisfied"
-line r2 neversold at 70-71 ask "The Broker let them go himself." if number bc03.crew = 2 -> 91 says "he would; that is the worst of him"
-line r3 neversold at 70-71 ask "The crew will sail the season." if number bc03.crew = 3 -> 92 says "eleven; I cannot tell you that you were wrong; he will ask again"
+line toldher neversold answer at 60-65 ask "This book names you keeper of the count at Reedfall." if holds book -> 71 says "she wrote the first lines of Rows-For-Another's Owing: four months, then the food, then the fever"
+line whose ussa at 20-65 ask "Whose book is this?" if holds book, alive ussa says "she was the best keeper that farm had; I bought her for the price of a boat; the boat a boat-hand holed at Reedfall; ask her who wrote that down"
+line r1 neversold at 70-71 ask "The crew are free of the last season." if number bc03.crew = 1, holds purse -> 90 says "satisfied; and nobody will buy the eleven at Thorn now"
+line r1s neversold at 70-71 ask "The crew are free of the last season." if number bc03.crew = 1 -> 93 says "and the house starts again from nothing"
+line r2 neversold at 70-71 ask "The Broker let them go himself." if number bc03.crew = 2, holds purse, alive ussa -> 91 says "he would; that is the worst of him"
+line r2s neversold at 70-71 ask "The Broker let them go himself." if number bc03.crew = 2 -> 94 says "then somebody paid for it; somebody always does"
+line r3 neversold at 70-71 ask "The crew will sail the season." if number bc03.crew = 3, holds purse, alive ussa, alive rajhan -> 92 says "eleven; I cannot tell you that you were wrong; he will ask again"
+line r3s neversold at 70-71 ask "The crew will sail the season." if number bc03.crew = 3 -> 97 says "a season nobody is left to pay for"
 line after1 ussa at 90 ask "What of the eleven?" if alive ussa says "he says their names"
 line after2 ussaquay at 91 ask "You are going aboard." says "a hand due aboard; proud of her"
 line after3 rope at 92 ask "You sailed." if alive rope says "coldly"
 
-line voiddead rope at 10-22 ask "The berth-master Ra'Jhan is dead." if dead rajhan -> 47 says "then nobody pays for the season"
+line voiddead rope at 20-22 ask "The berth-master Ra'Jhan is dead." if dead rajhan -> 47 says "then nobody pays for the season"
 
-death rajhan from 10 -> 47 choice
+death rajhan from 20 -> 47 choice
 must-live neversold fails 95
 must-live rope fails 96 to 64
 ```
