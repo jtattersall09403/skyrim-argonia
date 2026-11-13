@@ -578,3 +578,13 @@ added here the day they are made, with the date and the issue.
   its look, the names the game shows on doors, rooms, markers and things, what stands there, what a person has told
   them. Every promised place and thing carries how the player will know it, and that is tested by a fresh reader
   given only what the player would see.
+- 2026-11-13 (in session, nw-05): (a) the story hooks in each place's data: "I hadn't checked whether [they] were
+  any good or not. They were kind of rough I think and not based on that much. You can and should review and change
+  them wherever you think it's a good idea to, in order to make our story better." The hooks are raw material, not
+  canon: a writer may take, change or drop one, and the place's notes are then brought into line with the story.
+  (b) "Echo deep instead of lost city sounds good to me." (c) On the deliverability reader finding none of Act I's
+  outlines buildable: "if it's easy for a reader to tell this, it should be easy for the writer to know it as well,
+  and therefore to write buildable output in the first place. Make it so. Agents follow instructions, its
+  instructions should clearly say how to design something buildable." The story-line skill tells the writer how to
+  design a buildable quest and gives a mechanical check to run before any reader sees it; a reader finding an
+  outline unbuildable is then a fault in the skill, fixed there.

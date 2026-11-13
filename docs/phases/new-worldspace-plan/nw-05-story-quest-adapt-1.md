@@ -87,8 +87,7 @@ before the lines are written. They bind every line's writer; the first and the l
 the stories are posted, and nothing waits on the answer.
 
 1. **The main quest ends at a place the world already has.** No place is invented for it: Act V goes down to the
-   sealed spire at the bottom of Echo Deep, which the data holds. A "Lost City" as a new place is the owner's to
-   add if wanted.
+   sealed spire at the bottom of Echo Deep, which the data holds (the owner agreed, 2026-11-13).
 2. **Peoples with no culture row** (the tribeless Naga, the Sarpa, the Sul-Xan, the Paatru, the Tumnatu): a writer
    takes them from the lore, marks what is extrapolated, and lists what the roster lane must add as rows.
 3. **No fighting in deep water.** A drowned place a quest fights in has floors behind its dive and its guardians on
@@ -104,6 +103,21 @@ the stories are posted, and nothing waits on the answer.
 8. **Helstrom has the 58 people its roster names.**
 9. **The second slice** (four faction openings; Stormhold's source is Markarth, a large build) stands as proposed
    and is the owner's to cut when nw-08 is planned.
+
+### Buildable first time (owner, 2026-11-13)
+
+The first four stories' deliverability readers found most full outlines unbuildable as first written, and each was
+rebuilt after the reading. That is the wrong way round: what a reader can see, the writer can be told. So `story-line`
+gains a section on designing a quest that can be built (the patterns that work, and each thing that sounds buildable
+and is not, with what to do instead, drawn from every reader's findings so far), and each full outline is written
+with a sketch of its quest form that the form's own checks and the reach check pass before any reader sees it. The
+deliverability reader stays as the last look. The stories written before this get their sketches in the consistency
+pass.
+
+### Changes to places' notes
+
+The hooks in the places' data are raw material (owner, 2026-11-13). Each story lists the notes it changes; the
+database lane (step 6) brings the places' notes into line and regenerates the digest.
 
 ### Measured
 

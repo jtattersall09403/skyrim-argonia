@@ -51,6 +51,11 @@ second slice, those quests) and every later quest at arc level with its place, w
 what it carries on; the table of step, skill and ceiling block for the full outlines, with stage tables that only
 climb and use only what the quest form holds; "What each quest needs of its places"; then the reading on paper.
 
+**The hooks in the places' data are raw material, not canon** (owner, 2026-11-13: they were rough and "not based on
+that much"). Take one, change it or drop it, wherever that makes the story better; where you change or drop a hook,
+or add something a place's notes should now say, list it in a short final section "Changes to places' notes" (place,
+the note as it stands, what it should say), so the database is brought into line with the story.
+
 **What the player will know.** In "What each quest needs of its places", every row says how a player who has read
 none of this will know what the thing is: its look on sight, the game's own label (a door's name, a room's name, a
 map marker, the thing's name), what visibly stands in or by it, or a named person who tells them by a fixed
