@@ -100,6 +100,24 @@ static class Inspect
                 Console.WriteLine($"NAVSTAT {g.Key}: {g.Count()} navmeshes, {g.Count(w => w.Value.rec.Data?.EdgeLinks.Count > 0)} with edge links");
             return;
         }
+        if (what.StartsWith("navnear:"))  // navnear:<x>:<y>:<z>: the winning navmeshes with a triangle within 1500 of the spot (exterior), nearest first
+        {
+            var p = what[8..].Split(':').Select(float.Parse).ToArray();
+            var near = new List<(float d, float z, FormKey m, int tris)>();
+            foreach (var (k, (nv, _)) in Survey.Winners<INavigationMeshGetter>(mods))
+            {
+                if (nv.Data is not { } d || d.Triangles.Count == 0) continue;
+                var v = d.Vertices; var best = (dist: float.MaxValue, z: 0f);
+                foreach (var t in d.Triangles)
+                {
+                    var r = PlaceCheck.Nearest2D(v[t.Vertices.X], v[t.Vertices.Y], v[t.Vertices.Z], p[0], p[1]);
+                    if (MathF.Abs(r.z - p[2]) < 1000 && r.dist < best.dist) best = r;
+                }
+                if (best.dist < 1500) near.Add((best.dist, best.z, k, d.Triangles.Count));
+            }
+            foreach (var n in near.OrderBy(n => n.d)) Console.WriteLine($"NAVNEAR {n.m}: {n.d:F0} off, z {n.z:F0}, {n.tris} triangles");
+            return;
+        }
         if (what.StartsWith("navpath:"))  // navpath:<navmesh>:<x>:<y>:<navmesh>:<x>:<y>: is there a walk over winning navmesh between two spots
         {
             var p = what[8..].Split(':');

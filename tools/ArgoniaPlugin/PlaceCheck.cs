@@ -8,8 +8,8 @@ using Noggog;
 //   Actors: the winning navmesh under the feet (fail over 40 above it, below it by more than the 1-unit rounding, or no
 //   triangle within 150 horizontally); the body (fail if a static's or furniture's mesh within 200 units,
 //   whose bounding box holds the actor, crosses a 40-wide column 30 to 110 above the feet: inside a wall or a table).
-//   An actor under the water with no navmesh swims; an actor the builder names as standing (Standing) has no navmesh by
-//   the host's making and is checked on its floor instead.
+//   An actor under the water with no navmesh swims; an actor with no navmesh within 150 who is not aggressive stands
+//   where the host has none (the quest builder's rule: they will not walk) and is checked on its floor instead.
 //   WARN (not a failure): no floor (land, a model's mesh, water) within 40 under the feet: a navmesh over nothing. Settle
 //   moves such an actor to the nearest triangle of the space's navmeshes (within 1200) whose floor is BM&V's own and proven.
 //   A navmesh more than 1000 above or below the feet is another storey and not this actor's.
@@ -18,19 +18,16 @@ using Noggog;
 //   Objects: the bottom of the bounds against the surface nearest it (the land, a static, furniture, a container; fail
 //   floating or sunk by more than 10); a structure (256 or more across) may stand sunk in the ground or the water as
 //   Bethesda sinks foundations, and fails only floating. Markers, zones, effects, lights and merchant chests are skipped.
-//   Inside: an object of ours (the same ones the Objects check covers) fails when its bounds (the base's, under the ref's
+//   Inside: an object our plugin places (a new reference, not an override of another plugin's) fails when its bounds (the base's, under the ref's
 //   rotation and scale, shrunk by 4 units on every side so the floor it rests on and a wall it leans on never count) are
 //   crossed by a triangle of the mesh of another winning static, moveable static, furniture or activator of the load order
 //   (separating-axis triangle-box test on the meshes, never the other's bounding box).
-//   Nordic: every object Argonia.esp places (ours and its overrides) fails when its base's model path holds a Nordic
+//   Nordic: every object our plugin places (a new reference, not an override of another plugin's) fails when its base's model path holds a Nordic
 //   fragment (NordicFragments, decision 0006). Actors are not checked.
 // Settle (seed, after every builder): each object that fails is moved up or down onto the surface the check measured.
 // Game files are read only (decision 0003).
 static class PlaceCheck
 {
-    // Actors placed where the host has no navmesh (the Reed's house: BM&V's sinking cabin has none in its rooms).
-    public static readonly HashSet<string> Standing = ["ARG_BC_NeverSoldRef"];
-
     sealed record Nav(FormKey Parent, List<(P3Float a, P3Float b, P3Float c)> Tris);
     public sealed record Result(FormKey Ref, string Where, string? EditorId, P3Float At, string? Fail, string Detail, float? FixZ, bool Warn, P3Float? MoveTo = null);
 
@@ -62,7 +59,8 @@ static class PlaceCheck
     public static readonly string[] NordicFragments = ["WhiteRun", "Windhelm", "Solitude", "Markarth", "Riften", "Winterhold", "Dawnstar",
         "Falkreath", "Morthal", "Riverwood", "Nordic", "Farmhouse", "Talos"];
 
-    // Every object Argonia.esp places (ours and its overrides) whose base's model path holds a Nordic fragment.
+    // Every object our plugin places (new references only: another plugin's door or object we override is its own) whose
+    // base's model path holds a Nordic fragment.
     public static List<Result> NordicCheck(List<ISkyrimModGetter> all, ModKey ours)
     {
         var models = new Dictionary<FormKey, (string? EditorID, string? Model)>();
@@ -71,7 +69,7 @@ static class PlaceCheck
                 if (r is IModeledGetter md && r is not IPlacedGetter) models[r.FormKey] = (r.EditorID, md.Model?.File.DataRelativePath.Path);
         var results = new List<Result>();
         var mod = all.First(m => m.ModKey == ours);
-        foreach (var o in mod.EnumerateMajorRecords<IPlacedObjectGetter>())
+        foreach (var o in mod.EnumerateMajorRecords<IPlacedObjectGetter>().Where(o => o.FormKey.ModKey == ours))
         {
             if (!models.TryGetValue(o.Base.FormKey, out var b) || string.IsNullOrEmpty(b.Model)) continue;
             var hit = NordicFragments.Any(f => b.Model.Contains(f, StringComparison.OrdinalIgnoreCase));
@@ -93,7 +91,7 @@ static class PlaceCheck
         static P3Float[] Corners(IObjectBoundsGetter ob, float[] rot, P3Float at, float s) =>
             [.. new[] { ob.First.X, ob.Second.X }.SelectMany(x => new[] { ob.First.Y, ob.Second.Y }.SelectMany(y => new[] { ob.First.Z, ob.Second.Z }.Select(z => Surface.Add(at, Surface.Mul(rot, new P3Float(x, y, z), s)))))];
         var results = new List<Result>();
-        foreach (var (key, (space, where)) in mine.OrderBy(e => e.Value.where).ThenBy(e => refsIn[e.Value.space][e.Key].EditorID))
+        foreach (var (key, (space, where)) in mine.Where(e => e.Key.ModKey == ours).OrderBy(e => e.Value.where).ThenBy(e => refsIn[e.Value.space][e.Key].EditorID))
         {
             if (refsIn[space][key] is not IPlacedObjectGetter o || o.Placement is not { } pl) continue;
             if (merchant.Contains(key) || o.Primitive != null || SkipBase(types, o.Base.FormKey) || bounds.GetValueOrDefault(o.Base.FormKey) is not { } ob) continue;
@@ -326,6 +324,17 @@ static class PlaceCheck
             return null;
         }
 
+        // An actor's aggression: its base's AI data, or through a template with Use AI Data, the end of that chain's.
+        var npcs = Survey.Winners<INpcGetter>(all);
+        bool Aggressive(FormKey b)
+        {
+            for (var i = 0; i < 16 && npcs.TryGetValue(b, out var n); i++)
+            {
+                if (!n.rec.Configuration.TemplateFlags.HasFlag(NpcConfiguration.TemplateFlag.AIData) || n.rec.Template.IsNull) return n.rec.AIData.Aggression != Aggression.Unaggressive;
+                b = n.rec.Template.FormKey;
+            }
+            return true;   // a levelled list or a broken chain: not proven peaceful
+        }
         var results = new List<Result>();
         foreach (var (key, (space, where)) in mine.OrderBy(e => e.Value.where).ThenBy(e => refsIn[e.Value.space][e.Key].EditorID))
         {
@@ -352,7 +361,7 @@ static class PlaceCheck
                 var support = hits.Where(h => h.Kind != "water").FirstOrDefault(h => h.Top <= p.Z + 10);
                 var floor = support == null ? float.NaN : p.Z - support.Top;
                 if (float.IsNaN(best.gap) && water is float wz && p.Z < wz - 50) detail = "swimming (under the water, no navmesh)";
-                else if (float.IsNaN(best.gap) && Standing.Contains(r.EditorID ?? ""))
+                else if (float.IsNaN(best.gap) && r is IPlacedNpcGetter pn && !Aggressive(pn.Base.FormKey))
                 {
                     detail = $"standing (no navmesh in the host), floor {floor:+0;-0;0} on {support?.EditorId ?? support?.Kind}";
                     if (support == null || floor > 40 || floor < -1) fail = detail + List(hits);
@@ -483,7 +492,7 @@ static class PlaceCheck
     static float Dist2(P3Float a, P3Float b) => MathF.Sqrt((a.X - b.X) * (a.X - b.X) + (a.Y - b.Y) * (a.Y - b.Y));
 
     // The horizontal distance from x,y to a triangle (0 inside) and the triangle's height at the nearest point.
-    static (float dist, float z) Nearest2D(P3Float a, P3Float b, P3Float c, float x, float y)
+    public static (float dist, float z) Nearest2D(P3Float a, P3Float b, P3Float c, float x, float y)
     {
         if (x < MathF.Min(a.X, MathF.Min(b.X, c.X)) - 150 || x > MathF.Max(a.X, MathF.Max(b.X, c.X)) + 150
             || y < MathF.Min(a.Y, MathF.Min(b.Y, c.Y)) - 150 || y > MathF.Max(a.Y, MathF.Max(b.Y, c.Y)) + 150)

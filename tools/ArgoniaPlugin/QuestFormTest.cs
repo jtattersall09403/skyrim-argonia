@@ -81,7 +81,7 @@ static class QuestFormTest
         R("no such condition word", "vocabulary", f => f["lines"]![0]!["conditions"] = JsonNode.Parse("""[{"is":"wearing_green"}]"""));
         R("a start stage that is not a stage", "start", f => f["quest"]!["start"]!["stage"] = 15);
         T("two forms of one quest", "unique", null, Form(), Form());
-        R("a quest an old builder already built", "old-builder", f => { }, mod =>
+        R("a quest whose editor id the plugin already holds", "editor-id", f => { }, mod =>
             mod.Quests.Add(new Quest(new FormKey(mod.ModKey, 0x900000), SkyrimRelease.SkyrimSE) { EditorID = "ARG_T_A" }));
         R("a result naming a ref not in the form", "refs-exist", f => f["stages"]![0]!["results"] = JsonNode.Parse("""[{"do":"switch_on","ref":"nobody"}]"""));
         R("speaker_hostile as a stage's result", "vocabulary", f => f["stages"]![0]!["results"] = JsonNode.Parse("""[{"do":"speaker_hostile"}]"""));

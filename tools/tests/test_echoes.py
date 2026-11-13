@@ -59,20 +59,6 @@ def test_owner_is_first_in_play_order_and_others_leave_it():
     assert "Facts you leave" not in mine and "Buys-The-Months" in mine
 
 
-def test_people_speech_reads_when_facts_and_speaker(tmp_path):
-    path = tmp_path / "quest_people.json"
-    path.write_text(json.dumps({"_about": "x", "ARG_MQ01_WuleenSeiMarch": [
-        {"speaker": "Wuleen-Sei", "when": ["ARG_MQ01", 0, 40], "prompt": "Where?", "lines": ["To camp."],
-         "facts": ["f"]}]}))
-
-    class Win:
-        def at(self, code, keep):
-            return {f"{code} stage {s} at p" for s in (0, 10, 40) if keep(s)}
-    got = echoes.people_speech(None, Win(), path)
-    assert got[0].speaker == "wuleensei" and got[0].facts == ["f"]
-    assert got[0].windows == {"MQ01 stage 0 at p", "MQ01 stage 10 at p"}
-
-
 def test_compact_windows():
     assert echoes.compact({"MQ01 stage 40 at x", "MQ01 stage 90 at x", "talk bmv.y"}) == "MQ01 stages 40, 90 at x; talk bmv.y"
 

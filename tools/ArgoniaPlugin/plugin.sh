@@ -4,10 +4,7 @@
 #                      needs the game data and staged profile), plugin/Argonia.ini -> out/Argonia.ini
 #   plugin.sh check    build, then serialize it back and diff with plugin/Argonia (round trip clean), then read the
 #                      ESP back (tools/ArgoniaPlugin list): every override carries its change; writes the records table
-#   plugin.sh mqcheck  build, then the read-back of MQ04 and MQ05 from the ESP and out/gpu/papyrus against the record (MQCheck.cs)
 #   plugin.sh cleancheck  build, then read the slice's clean-ups back from the ESP (CleanUp.cs)
-#   plugin.sh bccheck  build, then read the Chainbreakers quests back from the ESP and the .pex (ChainbreakersCheck.cs)
-#   plugin.sh nightreedcheck  build, then read TG01/TG02 back from the ESP and the .pex (NightReedCheck.cs)
 #   plugin.sh questcheck  build, then ask of every ARG_ quest whether it can happen: walks, starts, shapes, reachable stages,
 #                      endings, zones, people, offers, doors (QuestCheck.cs; --selftest runs its rules on hand-made models)
 #   plugin.sh placecheck build, then check every actor and object the plugin places against the winning navmesh, the
@@ -17,9 +14,10 @@
 #   plugin.sh questform-test  the generic builder end to end, off game: the block test's forms and the example opening's
 #                      pier copy (tools/tests/data/questform) seeded into a scratch plugin, read back, compared with the
 #                      forms (apart from resolved positions), the read-back forms checked, questcheck run on it
-#   plugin.sh seed     regenerate plugin/Argonia from shutdown.json, the load order's winners and the quest forms (every
+#   plugin.sh seed [--refused-ok]  regenerate plugin/Argonia from shutdown.json, the load order's winners and the quest forms (every
 #                      quest record that fits, compiled fresh to out/questform, and tools/questform/blocktest); game data
-#                      needed: $ARGONIA_GAME_ROOT/Data or ~/games/skyrimse/Data, the staged profile ~/.argonia/stack/MO2
+#                      needed: $ARGONIA_GAME_ROOT/Data or ~/games/skyrimse/Data, the staged profile ~/.argonia/stack/MO2;
+#                      --refused-ok leaves each form the builder refuses out, lists it and seeds the rest
 set -euo pipefail
 repo=$(cd "$(dirname "$0")/../.." && pwd); cd "$repo"
 export DOTNET_ROOT="$HOME/.dotnet" PATH="$HOME/.dotnet:$PATH" DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_NOLOGO=1
@@ -61,11 +59,7 @@ case "${1:-}" in
   cleancheck) build; tool cleancheck "$esp" "${lo[@]}" ;;
   inspect) loadorder; [ -f "$esp" ] && lo+=("$esp"); tool inspect "$2" "${lo[@]}" ;;  # the load order, our built ESP last
   musicprobe) loadorder; tool musicprobe "${lo[@]}" ;;
-  localcheck) build; tool localcheck "$esp" out/gpu/papyrus "${lo[@]}" ;;
-  bccheck) build; tool bccheck "$esp" out/gpu/papyrus "${lo[@]}" ;;
-  mqcheck) build; tool mqcheck "$esp" out/gpu/papyrus "${lo[@]}" ;;
   questcheck) build; tool questcheck "$esp" papyrus "${lo[@]}" ;;
-  nightreedcheck) build; tool nightreedcheck "$esp" out/gpu/papyrus "${lo[@]}" ;;
   placecheck) build; tool placecheck "$esp" "${lo[@]}" ;;
   questform-read) build; tool questform-read "$esp" "$2" "${lo[@]}" ;;
   questform-test)
@@ -80,6 +74,7 @@ case "${1:-}" in
   seed)
     forms; loadorder
     tmp=$(mktemp -d); trap 'rm -rf "$tmp"' EXIT
+    [ "${2:-}" = --refused-ok ] && export QUESTFORM_REFUSED_OK=1
     tool seed "$tmp/Argonia.esp" "${lo[@]}"
     "${spriggit[@]}" serialize -i "$tmp/Argonia.esp" -o "$tmp/y" -g SkyrimSE "${spr[@]}" >/dev/null
     rm -rf "$yaml"; mkdir -p plugin; mv "$tmp/y" "$yaml"; echo "seeded $yaml" ;;

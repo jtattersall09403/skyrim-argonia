@@ -103,7 +103,7 @@ static class Talk
 
     // Quest rumours (talk.md, talk.rumours: "a QUST that can start (its giver, its stage)"): a talker whose rumours fact
     // cites a quest ("quest ARG_X stage N; giver ...") is left out of Add and built by Rumours at the seed's end, once
-    // every quest exists. Keyed (talker, topic) -> (quest editor id, start stage).
+    // every quest exists. Keyed (talker, topic) -> (quest editor id, start stage; the form's start decides the window).
     // A source 'quest ARG_X stages A-B; ...' is a line about the quest running, not one to start it (BC02's fire, seen by
     // the talkers near the stone house): its INFO is gated GetStage >= A and <= B. hi is -1 for a start rumour.
     static readonly Regex QuestSource = new(@"^quest (ARG_\w+) stages? (\d+)(?:-(\d+))?;");
@@ -124,10 +124,11 @@ static class Talk
         return by;
     }
 
-    // Each quest rumour, one INFO under ARG_Talk_Rumours gated to the talker's ref (as Add) and on the quest not yet past
-    // its start: the giver's opening INFO in the quest's own topics (GetStage quest == start, the C-stage) gives the gate,
-    // and every GetStage condition on it (the quest's, and another quest's, as BC03's BC01 >= 90) is copied.
-    public static void Rumours(SkyrimMod mod)
+    // Each quest rumour, one INFO under ARG_Talk_Rumours gated to the talker's ref (as Add). A start rumour holds while its
+    // quest can start: the window of its quest form's start (QuestForm.StartWindow: the start stage not yet passed, the
+    // quest that starts it at its stage, and the other quests' stages every opening line asks for). A running rumour
+    // (stages A-B) holds while the quest's stage is from A to B. After QuestForm.Build: every quest is a form's.
+    public static void Rumours(SkyrimMod mod, bool skipUnbuilt = false)
     {
         var want = QuestRumours();
         if (want.Count == 0) return;
@@ -136,11 +137,9 @@ static class Talk
         foreach (var who in lines.GroupBy(l => S(l, "talker")).OrderBy(w => w.Key))
         {
             var (edid, stage, hi) = want[(who.Key, "talk.rumours")];
-            var q = mod.Quests.FirstOrDefault(x => x.EditorID == edid) ?? throw new Exception($"talk rumours: {edid} not in the plugin");
-            bool IsStart(IConditionGetter c) => c is IConditionFloatGetter f && f.Data is IGetStageConditionDataGetter g && g.Quest.Link.FormKey == q.FormKey
-                && f.CompareOperator == CompareOperator.EqualTo && f.ComparisonValue == stage;
-            var opening = hi >= 0 ? null : mod.DialogTopics.Where(d => d.Quest.FormKey == q.FormKey).SelectMany(d => d.Responses)
-                .FirstOrDefault(r => r.Conditions.Any(IsStart)) ?? throw new Exception($"talk rumours: {edid} has no opening line at stage {stage}");
+            var q = mod.Quests.FirstOrDefault(x => x.EditorID == edid);
+            if (q == null && skipUnbuilt) { Console.WriteLine($"talk rumours: {who.Key} left out ({edid} is not built)"); continue; }
+            if (q == null) throw new Exception($"talk rumours: {edid} not in the plugin");
             var info = new DialogResponses(mod.GetNextFormKey(), SkyrimRelease.SkyrimSE) { Flags = new DialogResponseFlags(), Prompt = t.Name };
             byte n = 1;
             foreach (var l in who.OrderBy(l => l.GetProperty("ord").GetInt32()))
@@ -148,9 +147,8 @@ static class Talk
             var d = new GetIsReferenceConditionData();
             d.Target.Link.SetTo(FormKey.Factory(who.Key));
             info.Conditions.Add(new ConditionFloat { CompareOperator = CompareOperator.EqualTo, ComparisonValue = 1, Data = d });
-            if (opening != null)
-                foreach (var c in opening.Conditions.Where(c => c is IConditionFloatGetter { Data: IGetStageConditionDataGetter }))
-                    info.Conditions.Add(c.DeepCopy());
+            if (hi < 0)
+                info.Conditions.AddRange(QuestForm.StartWindow(edid) ?? throw new Exception($"talk rumours: {edid} is not built from a quest form"));
             else
                 foreach (var (op, v) in new[] { (CompareOperator.GreaterThanOrEqualTo, stage), (CompareOperator.LessThanOrEqualTo, hi) })
                 {
@@ -161,54 +159,6 @@ static class Talk
             t.Responses.Add(info);
         }
         Console.WriteLine($"talk rumours: {lines.Select(l => S(l, "talker")).Distinct().Count()} talkers rumour {want.Values.Select(v => v.quest).Distinct().Count()} quests");
-    }
-
-    // The slice quests' own people with no quest topic (story/data/quest_lines/quest_people.json): one top-level topic per
-    // prompt in ARG_Talk, an INFO per person gated GetIsID to their base (a base of ours stands in one or two places) and
-    // on a quest's stage window when given. After every quest, at the seed's end.
-    public static void QuestPeople(SkyrimMod mod)
-    {
-        var doc = JsonDocument.Parse(File.ReadAllText(Path.Combine("story", "data", "quest_lines", "quest_people.json"))).RootElement;
-        var q = mod.Quests.First(x => x.EditorID == "ARG_Talk");
-        var topics = new Dictionary<string, DialogTopic>();
-        int n = 0;
-        foreach (var who in doc.EnumerateObject().Where(p => !p.Name.StartsWith('_')).OrderBy(p => p.Name))
-        {
-            var npc = mod.Npcs.FirstOrDefault(x => x.EditorID == who.Name) ?? throw new Exception($"quest people: no base {who.Name}");
-            foreach (var v in who.Value.EnumerateArray())
-            {
-                var prompt = S(v, "prompt");
-                if (!topics.TryGetValue(prompt, out var t))
-                {
-                    var id = "ARG_Talk_Quest" + string.Concat(prompt.Where(char.IsLetter));
-                    var branch = mod.DialogBranches.AddNew(id + "Branch");
-                    t = mod.DialogTopics.AddNew(id);
-                    branch.Quest.SetTo(q.FormKey); branch.Category = DialogBranch.CategoryType.Player; branch.Flags = DialogBranch.Flag.TopLevel;
-                    branch.StartingTopic.SetTo(t.FormKey);
-                    t.Name = prompt; t.Quest.SetTo(q.FormKey); t.Branch.SetTo(branch.FormKey); t.Priority = 50;
-                    t.Category = DialogTopic.CategoryEnum.Topic; t.Subtype = DialogTopic.SubtypeEnum.Custom; t.SubtypeName = new RecordType("CUST");
-                    topics[prompt] = t;
-                }
-                var info = new DialogResponses(mod.GetNextFormKey(), SkyrimRelease.SkyrimSE) { Flags = new DialogResponseFlags(), Prompt = prompt };
-                byte r = 1;
-                foreach (var l in v.GetProperty("lines").EnumerateArray())
-                    info.Responses.Add(new DialogResponse { Text = l.GetString()!, ResponseNumber = r++, Emotion = Emotion.Neutral });
-                var d = new GetIsIDConditionData();
-                d.Object.Link.SetTo(npc.FormKey);
-                info.Conditions.Add(new ConditionFloat { CompareOperator = CompareOperator.EqualTo, ComparisonValue = 1, Data = d });
-                if (v.GetProperty("when") is { ValueKind: JsonValueKind.Array } w)
-                {
-                    var wq = mod.Quests.First(x => x.EditorID == w[0].GetString());
-                    foreach (var (op, val) in new[] { (CompareOperator.GreaterThanOrEqualTo, w[1].GetInt32()), (CompareOperator.LessThan, w[2].GetInt32()) })
-                    {
-                        var g = new GetStageConditionData(); g.Quest.Link.SetTo(wq.FormKey);
-                        info.Conditions.Add(new ConditionFloat { CompareOperator = op, ComparisonValue = val, Data = g });
-                    }
-                }
-                t.Responses.Add(info); n++;
-            }
-        }
-        Console.WriteLine($"quest people: {n} replies, {doc.EnumerateObject().Count(p => !p.Name.StartsWith('_'))} people, {topics.Count} topics");
     }
 
     // Every person we place has a voice: a base of ours drawn through Use Traits speaks with its template's voice, and a
@@ -272,7 +222,7 @@ static class Talk
         // each talker's cell names its worldspace (bmv_cell); none means an interior
         var cellWs = Rows("bmv_cell").ToDictionary(r => S(r, "id"),
             r => r.TryGetProperty("worldspace", out var ws) && ws.ValueKind == JsonValueKind.String ? ws.GetString() : null);
-        int named = 0, owned = 0;
+        int named = 0;
         foreach (var t in talkers)
         {
             var id = S(t, "id"); var c = census[id];
@@ -280,7 +230,6 @@ static class Talk
             var oldName = c.TryGetProperty("name", out var nm) && nm.ValueKind == JsonValueKind.String ? nm.GetString() : null;
             if (name == oldName || name.StartsWith("the ")) continue;
             var refKey = K(id);
-            if (LocalQuests.OwnsBase.Contains(refKey)) { owned++; continue; } // LQ25 gives this ref its base
             if (Overrides.Placed(mod, refKey) != null) throw new Exception($"talk names: {id} already overridden in the mod");
             var wsKey = cellWs.GetValueOrDefault(S(c, "cell"));
             var world = wsKey == null ? null : Overrides.World(mod, mods, K(wsKey));
@@ -309,7 +258,7 @@ static class Talk
             }
             named++;
         }
-        Console.WriteLine($"talk names: {named} people given bases of their own, {owned} left to a quest's base");
+        Console.WriteLine($"talk names: {named} people given bases of their own");
     }
 
     // Looks-At-Books' own vendor faction (a copy of WEServiceMiscMerchant: its buy list, hours and ranks) whose chest is

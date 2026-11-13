@@ -111,7 +111,11 @@ persistent placed reference (flagged disabled when it starts off) at the spot it
   front of the door and clear of the arrival point;
 - then the rule: `navmesh` takes the centre of the nearest free triangle of the cell's navmeshes (an exterior spot also
   looks in the eight cells round it) and is refused when that is over 300 units from the spot; `surface` takes the
-  modelled surface or land under the spot nearest its height.
+  modelled surface or land under the spot nearest its height;
+- where there is no navmesh within 300 units, a person the player does not fight stands at the form's exact `at` and
+  will not walk (the build log says so); a person the player fights, a person placed by a load door, or one with no `at`
+  is refused;
+- a person placed by a load door faces where the player comes out of it.
 
 **The persons.** A new person is a base of ours (`ARG_R_<ref>_Base`) templated on the form's base with everything taken
 from the template but the stats (the template's own level, automatic stats, its sex). A person the player is asked to
@@ -145,6 +149,7 @@ minor or faction quest); and Stop, always last, on an ending.
 | 8 | FailIfDead | a person | the failed ending (set when dead; the rest of the rows are skipped) |
 | 9 | SetStageIfRunning | a quest | its stage |
 | 10, 13 | IfStageDone, IfStageAtMost | a quest | a stage: guard the next row |
+| 14 | IfHolds | an item | how many the player must hold: guards the next row |
 | 11 | IfQuestOpen | a quest | guards the next row |
 | 12, 35 | StartOnStage, StartQuest | a quest | the stage it is set to |
 | 20, 21 | GiveItem, TakeItem | the item | how many |
@@ -174,13 +179,17 @@ first stage; at most the last stage; then the form's conditions (`not` inverts t
   also says it when spoken to), plus the quest's one force-greet package on the speaker: a copy of vanilla's
   `MS05InductionForcegreet` (template ForceGreet), held while the line's window is open, never in combat or while the
   player moves into a new space. He waits at his reference, greets a player within 500 units and walks up to 300. A quest
-  has one such package, so one person speaks first.
+  has one such package, so one person speaks first. He must stand on navmesh (one standing where there is none is
+  refused); placed by a load door, he must stand within the 500 units of where the player comes out of it with a walk
+  over navmesh between them, and the build log prints his spot and that distance.
 - A line open only after the quest ends (its window holds an ending stage) lives on `ARG_Talk`, the always-running
   quest, because a stopped quest's topics are never offered; such a line may not be open before the first ending and
   into it, and cannot speak first.
 
 **The triggers.** Each is a vanilla script on the ref's alias, never ours:
-- `take` (a thing): `defaultSetStageOnPlayerAcquire` with the prerequisite and the stage to set;
+- `take` (a thing): `defaultSetStageOnPlayerAcquire` with the prerequisite and the stage to set; and, since a thing
+  already held is never acquired again, two rows at the prerequisite stage: IfHolds (the thing's base, 1), then
+  SetStage (the stage the take sets);
 - `use`: `defaultSetStageOnCloseBook` for a book, else `defaultSetStageAliasScript` (activation) for the thing or
   door; a made thing is taken, not used;
 - `death` (a person): `defaultSetStageOnDeathRefAlias`; one open from the start also adds the start check, so a death
@@ -210,9 +219,14 @@ quest never moves another's id: `quest:<quest>`, `ref:<ref>`, `npc:<ref>`, `dial
 
 **How the seed gets the forms.** `plugin.sh seed` compiles every quest record that fits to `out/questform`
 (`compile --all --owed-ok`) and builds those forms and `tools/questform/blocktest/*.json` (`QUESTFORM_DIRS` overrides
-the directories). `Generate.OldBuilders` lists the old builders and their quests: a builder whose quests all have forms
-is skipped, one with only some is an error; a lane that moves a builder's quests to forms deletes the builder, its
-checks and scripts and its row. A form whose editor id an old builder already built is refused.
+the directories). Every quest of ours is built from its form; no quest has a builder of its own. The first refusal
+stops the seed; `plugin.sh seed --refused-ok` instead leaves each refused form out (found by a trial build on a copy of
+the plugin, so a form that fails for want of it is left out too), lists them, and seeds the rest.
+
+**Talk that points at a quest.** A talker's rumour of a quest that can start (`Talk.Rumours`, after the forms are built)
+holds while the form's start window does: the quest's stage at its start (a quest started by another's stage: not past
+its start, and that stage done), and every other quest's stage that each opening line (open at the start, setting a
+stage) asks for. A quest's people answer "Who are you?" from the form's own lines.
 
 **The reader and the tests.** `plugin.sh questform-read <dir>` turns every form-built quest of the built plugin back
 into its form from the records alone (a record the form cannot say fails the read). `plugin.sh questform-test` seeds the
@@ -221,14 +235,14 @@ rules on it. `ArgoniaPlugin questform --selftest` (`tools/tests/test_questform_b
 hand-made forms with no game data.
 
 **The refusals** (the rule named in the line): `unique`, `unique-ids` (two forms of a quest, or two refs, lines or
-triggers of one id); `old-builder`; `start` (a start stage that is not a stage, or started by a quest with no form);
+triggers of one id); `editor-id` (a quest of that editor id is already in the plugin); `start` (a start stage that is not a stage, or started by a quest with no form);
 `vocabulary` (no such result, condition, trigger kind, line kind, op, sex or skill; `speaker_hostile` as a stage's
 result; `not` on `number_compare`); `refs-exist`, `stages-exist` (a ref or a stage the form does not hold);
-`placement` (wrong kind, neither or both of an anchor and a container, a spot with no navmesh within 300 units or no
-surface, an existing ref with an enable parent); `hostile` (a hostile ref that is not a new person); `person`,
+`placement` (wrong kind, neither or both of an anchor and a container, a spot with no navmesh within 300 units for a
+person the player fights or one placed by a door, no surface, an existing ref with an enable parent); `hostile` (a hostile ref that is not a new person); `person`,
 `created`, `speaker` (a person's act on a thing, or a made thing's reference used); `form-key`, `item`, `race`, `quest`
 (a word that resolves to no record); `shared-ref`; `trigger`; `must-live`, `main-message`, `message`; `line-window`,
-`owner`, `speaks-first`, `answer`, `schema`; `result-limits` (over 128 rows).
+`owner`, `speaks-first` (two, after the ending, standing with no navmesh, or out of reach of the door), `answer`, `schema`; `result-limits` (over 128 rows).
 
 ## Compiling a quest record
 

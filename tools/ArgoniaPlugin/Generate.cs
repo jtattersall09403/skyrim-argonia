@@ -20,33 +20,15 @@ static class Generate
     // Dispel Self, Soul Trap Mass, Bound Shield.
     static readonly string[] TestSpells = ["000A8C", "000A8E", "0009EE", "00095C", "000A9B", "000A0A", "0009BE", "000AA5", "0009FB", "0009F2", "000ACD", "000991", "000823", "0009D3"];
 
-    // The old builders, each with the quest records it builds. Once every quest of a builder has a compiled quest form,
-    // the builder is skipped and QuestForm builds its quests; a lane that moves a builder's quests to the form deletes the
-    // builder, its checks and scripts, and its row here.
-    public static readonly (string Builder, string[] Quests)[] OldBuilders =
-    [
-        ("LocalQuests", ["quest.local.lq30", "quest.local.lq25"]),
-        ("NightReed", ["quest.tg.tg01", "quest.tg.tg02"]),
-        ("Chainbreakers", ["quest.bc.bc01", "quest.bc.bc02", "quest.bc.bc03"]),
-        ("MQ04", ["quest.main.mq04"]),
-        ("MQ05", ["quest.main.mq05"]),
-    ];
     // The retired Phase 3 block test (now a quest form) held 0x803..0x832; they stay unused, so no later id moves.
     const int RetiredBlockTestIds = 0x30;
+    const uint RetiredQuestIds = 0xF22;
 
-    public static void Run(string outPath, string[] paths)
+    public static void Run(string outPath, string[] paths) => Seed(outPath, Survey.Load(paths), QuestForm.Load(QuestForm.Dirs()));
+
+    static void Seed(string outPath, List<ISkyrimModGetter> mods, List<(string path, JsonElement form)> all)
     {
-        var forms = QuestForm.Load(QuestForm.Dirs());
-        var formed = forms.Select(f => QuestForm.QuestIdOf(f.form)).ToHashSet();
-        bool Old(string builder)
-        {
-            var qs = OldBuilders.Single(b => b.Builder == builder).Quests;
-            var moved = qs.Count(formed.Contains);
-            if (moved > 0 && moved < qs.Length) throw new Exception($"{builder}: {moved} of its {qs.Length} quests have a quest form; move them all, then delete the builder");
-            return moved == 0;
-        }
         var plan = JsonDocument.Parse(File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "shutdown.json"))).RootElement;
-        var mods = Survey.Load(paths);
         var quests = Survey.Winners<IQuestGetter>(mods);
         var nodes = Survey.Winners<IAStoryManagerNodeGetter>(mods);
         var byEdid = quests.Values.Where(v => v.rec.EditorID != null).GroupBy(v => v.rec.EditorID!).ToDictionary(g => g.Key, g => g.Last().rec);
@@ -194,24 +176,8 @@ static class Generate
         CleanUp.Add(mod, mods);
         // Skyrim's game music in BM&V's worlds (Music.cs): WRLD ZNAM only, no new forms; after Combat.
         Music.Apply(mod, mods);
-        // Phase 4's local quests LQ30 and LQ25 (LocalQuests.cs) in BlackMarsh2; allocated after Combat.
-        if (Old("LocalQuests")) LocalQuests.Add(mod, mods);
-        // The Night-Reed line, TG01 and TG02 (NightReed.cs): allocated after Combat; its TIF fragments' Papyrus to papyrus/generated.
-        if (Old("NightReed")) { NightReed.Add(mod, mods); NightReed.WritePsc("papyrus/generated"); }
-        // Phase 4's Chainbreakers line (Chainbreakers.cs): BC03 on Soulrest's dock; allocated after LocalQuests.
-        if (Old("Chainbreakers")) Chainbreakers.Add(mod, mods);
-        // The act's quests MQ04 and MQ05 (MQ04.cs, MQ05.cs): both quests first, so MQ04's ending can start MQ05.
-        if (Old("MQ04") != Old("MQ05")) throw new Exception("MQ04 and MQ05 are built together: move both to the quest form at once");
-        if (Old("MQ04"))
-        {
-            var mq04 = mod.Quests.AddNew("ARG_MQ04");
-            var mq05 = mod.Quests.AddNew("ARG_MQ05");
-            MQ04.Add(mod, mods, mq04, mq05);
-            MQ05.Add(mod, mods, mq05);
-        }
-        // MQ05's end, and LQ25's MQ05 >= 40 gate once ARG_MQ05 exists.
-        if (Old("MQ05")) MQ05.Finish();
-        if (Old("LocalQuests") && Old("MQ05")) LocalQuests.Finish(mod);
+        // The quests' old builders allocated their records here, up to 0xF22; nothing given since reuses one of their ids.
+        while (mod.GetNextFormKey().ID < RetiredQuestIds) { }
         // The new game's world (Opening.cs): the barge hold, the start marker and the stair door to the pier. MQ01 and MQ03 are
         // quest forms; MQ01 starts with the new game, and ARG_Opening keeps its forms (ids never move) and never starts.
         Opening.Add(mod, mods, world);
@@ -220,15 +186,30 @@ static class Generate
             new ScriptObjectProperty { Name = "Tunic", Object = new FormLink<ISkyrimMajorRecordGetter>(Opening.Tunic) },
             new ScriptObjectProperty { Name = "Footwraps", Object = new FormLink<ISkyrimMajorRecordGetter>(Opening.Footwraps) }]);
         opening.VirtualMachineAdapter = null;
-        // Quest rumours (Talk.cs): talkers' rumours of a quest that can start, gated as its giver's opening; after every quest.
-        Talk.Rumours(mod);
-        Talk.QuestPeople(mod); // the slice quests' own people with no quest topic
-        Talk.Voices(mod, mods); // every person we place has a voice
         // Every quest with a quest form (QuestForm.cs): its form ids from the registry, so its place in this order moves none.
+        // QUESTFORM_REFUSED_OK=1: a form the builder refuses is left out and listed (with every form that then fails for
+        // want of it), each found by a trial build on a copy of the plugin; otherwise the first refusal stops the seed.
+        var refused = new List<string>();
+        var forms = all;
+        if (Environment.GetEnvironmentVariable("QUESTFORM_REFUSED_OK") == "1")
+            for (var (kit, masters) = (QuestKit.Taken(), Overrides.Masters.ToList()); ; QuestKit.Taken(kit), Overrides.Masters.Clear(), Overrides.Masters.AddRange(masters))
+            {
+                forms = [.. all.Where(f => !refused.Contains(QuestForm.QuestIdOf(f.form)))];
+                try { QuestForm.Build((SkyrimMod)mod.DeepCopy(), mods, forms, FormIds.Load(QuestForm.FormIdsPath)); QuestKit.Taken(kit); Overrides.Masters.Clear(); Overrides.Masters.AddRange(masters); break; }
+                catch (QuestForm.Refused e) when (e.Quest.Length > 0)
+                {
+                    Console.WriteLine($"{e.Message} (left out)");
+                    refused.Add(e.Quest);
+                }
+            }
         var ids = FormIds.Load(QuestForm.FormIdsPath);
         var built = QuestForm.Build(mod, mods, forms, ids);
+        if (refused.Count > 0) Console.WriteLine($"questform: {refused.Count} quests refused, not built ({string.Join(", ", refused)})");
         Console.WriteLine($"questform: {built.Count} quests built from forms ({string.Join(", ", built)})");
         ids.Save();
+        // Quest rumours (Talk.cs): talkers' rumours of a quest that can start, gated on its form's start; after every quest.
+        Talk.Rumours(mod, refused.Count > 0);
+        Talk.Voices(mod, mods); // every person we place has a voice, the quests' people too
         Mortality.Clear(mod, mods); // nobody essential or protected, after every builder
         // Every object rests on the surface under it (PlaceCheck: floating or sunk more than 10 moves onto it); after every builder.
         Heights.Fix(mod, mods); // people at their race's height (Heights.cs)
@@ -236,7 +217,7 @@ static class Generate
         var order = mods.Select(m => m.ModKey).Append(Ours).ToList();
         // The plugin whose worldspace record we override is a master even when no form of it is referenced, so ours
         // always loads after it.
-        mod.BeginWrite.ToPath(outPath).WithLoadOrder(order).WithNoDataFolder().WithExtraIncludedMasters([worldFrom, .. LocalQuests.Masters]).Write();
+        mod.BeginWrite.ToPath(outPath).WithLoadOrder(order).WithNoDataFolder().WithExtraIncludedMasters([worldFrom, .. Overrides.Masters]).Write();
         Console.WriteLine($"wrote {outPath}: {mod.EnumerateMajorRecords().Count()} records");
     }
 }

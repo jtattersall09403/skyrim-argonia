@@ -4,13 +4,15 @@ using Mutagen.Bethesda.Plugins.Records;
 using Mutagen.Bethesda.Skyrim;
 
 // The one lookup for "the mod's existing override of this world or cell, or a new one": every step (MapFix, Music,
-// Talk, CleanUp, LocalQuests, NightReed, Chainbreakers, MQ*) extends the override an earlier step made rather than
+// Talk, CleanUp, Opening, QuestForm) extends the override an earlier step made rather than
 // adding a second record with the same form id. A new override is the load order's winner without its refs.
 public static class Overrides
 {
+    // The plugins whose world records we override: each is a master of ours even when no form of it is referenced.
+    public static readonly List<ModKey> Masters = [];
     public static readonly Cell.TranslationMask NoRefs = new(true) { Persistent = false, Temporary = false, NavigationMeshes = false, Landscape = false };
 
-    // The world's override with its persistent cell; the plugin its winner comes from is a master (LocalQuests.Masters).
+    // The world's override with its persistent cell; the plugin its winner comes from is a master (Masters).
     public static Worldspace World(SkyrimMod mod, List<ISkyrimModGetter> mods, FormKey wk)
     {
         var (win, from) = Survey.Winners<IWorldspaceGetter>(mods)[wk];
@@ -21,7 +23,7 @@ public static class Overrides
             mod.Worldspaces.Add(w);
         }
         w.TopCell ??= win.TopCell!.DeepCopy(NoRefs);
-        if (!LocalQuests.Masters.Contains(from)) LocalQuests.Masters.Add(from);
+        if (!Masters.Contains(from)) Masters.Add(from);
         return w;
     }
 

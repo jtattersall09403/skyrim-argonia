@@ -18,6 +18,7 @@ The operation numbers are QuestForm.cs's (tools/ArgoniaPlugin); a number not lis
 ; 10 IfStageDone        What: a quest; Num: a stage; guards the next row: it runs only if that stage is done
 ; 11 IfQuestOpen        What: a quest; guards the next row: it runs only if that quest has not ended
 ; 13 IfStageAtMost      What: a quest; Num: a stage; guards the next row: it runs only if the quest's stage is at most that
+; 14 IfHolds            What: an item; Num: a count; guards the next row: it runs only if the player holds that many
 ;                       (guards stand in a row before the one row they guard: one that fails skips the rest and that row)
 ; 12 StartOnStage       What: a quest started by this stage; Num: the stage it starts at
 ; ---- the form's results
@@ -77,11 +78,11 @@ Function Run(Int[] op, Form[] what, Float[] num, Int from, Int to, Quest q, Obje
 			If x.IsRunning() && !x.GetStageDone(n)
 				x.SetStage(n)
 			EndIf
-		ElseIf o == 10 || o == 11 || o == 13
+		ElseIf o == 10 || o == 11 || o == 13 || o == 14
 			x = w as Quest
-			If (o == 10 && !x.GetStageDone(n)) || (o == 11 && (x.IsCompleted() || (x.IsStopped() && x.GetStage() > 0))) || (o == 13 && x.GetStage() > n)
+			If (o == 10 && !x.GetStageDone(n)) || (o == 11 && (x.IsCompleted() || (x.IsStopped() && x.GetStage() > 0))) || (o == 13 && x.GetStage() > n) || (o == 14 && player.GetItemCount(w) < n)
 				i += 1
-				While i < to && (op[i] == 10 || op[i] == 11 || op[i] == 13)
+				While i < to && (op[i] == 10 || op[i] == 11 || op[i] == 13 || op[i] == 14)
 					i += 1
 				EndWhile
 			EndIf

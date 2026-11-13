@@ -45,6 +45,9 @@ sealed class QuestKit(SkyrimMod mod, List<ISkyrimModGetter> mods, Quest? q = nul
     static readonly HashSet<(FormKey, int)> used = [];
     // The base of each placed actor a kit made or re-based, so a check can read the base of a ref the load order does not hold.
     static readonly Dictionary<FormKey, FormKey> madeBase = [];
+    /// The triangles taken so far, to put back after a trial build (Taken(saved)).
+    public static HashSet<(FormKey, int)> Taken() => [.. used];
+    public static void Taken(HashSet<(FormKey, int)> saved) { used.Clear(); used.UnionWith(saved); }
 
     // ---- story data (story/data/db, the one source)
     static readonly string Db = Path.Combine("story", "data", "db");

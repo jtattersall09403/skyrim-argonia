@@ -2,9 +2,8 @@
 
 A window is where lines meet the player in quick succession, over the slice (the live quests and every talker):
 - a quest stage at its place (`MQ01 stage 10 at lilmoth`): every quest topic live at that stage (the record's topic
-  stages; the lines in story/data/quest_lines/<code>.json or the written `dialogue_line` rows), every quest person
-  whose `when` covers it (quest_lines/quest_people.json; stage 0 is before the quest starts, at its first stage's
-  place);
+  stages; the lines in story/data/quest_lines/<code>.json or the written `dialogue_line` rows; stage 0 is before the
+  quest starts, at its first stage's place);
 - a settlement (`talk bmv.lilmoth`): every talker of it (`bmv_talker.settlement`); a talker also stands in the quest
   windows whose place is their settlement (place id's last part and the settlement id's, letters only, match).
 Windows come from the records alone, so they follow a quest when its places or stages change.
@@ -54,7 +53,7 @@ COMPASS = {"north", "south", "east", "west", "northeast", "northwest", "southeas
 @dataclasses.dataclass
 class Speech:
     """One speaker's lines on one topic: where it comes from, who says it, what it states and where it is heard."""
-    source: str                 # quest_lines/mq01.json, quest_people.json, talk_line
+    source: str                 # quest_lines/mq01.json, talk_line
     key: str                    # topic id / quest-people base / talker ref + topic
     speaker: str                # identity: letters of the name, lower case
     name: str
@@ -108,8 +107,6 @@ class Windows:
 def quest_speech(w, win: Windows, root: pathlib.Path = LINES) -> list[Speech]:
     out = []
     for path in sorted(root.glob("*.json")):
-        if path.name == "quest_people.json":
-            continue
         code = path.stem
         q = win.record(code) or {}
         stages = {t["id"]: set(t["stages"]) for t in q.get("topics", [])}
@@ -127,24 +124,6 @@ def quest_speech(w, win: Windows, root: pathlib.Path = LINES) -> list[Speech]:
                 out.append(Speech(f"quest_lines/{path.name}", f"{topic}#{info.get('variant', 'main')}", ident(names[pid]),
                                   names[pid], info.get("prompt", topic), _texts(info), list(info.get("facts", [])),
                                   windows))
-    return out
-
-
-def people_speech(w, win: Windows, path: pathlib.Path = LINES / "quest_people.json") -> list[Speech]:
-    out = []
-    for base, entries in json.loads(path.read_text()).items():
-        if base.startswith("_"):
-            continue
-        code = base.split("_")[1]
-        for e in entries:
-            name = e.get("speaker") or re.sub(r"(?<=[a-z])(?=[A-Z])", "-", base.split("_", 2)[2])
-            if e.get("when"):
-                quest, lo, hi = e["when"]
-                windows = win.at(quest.split("_")[1], lambda s, lo=lo, hi=hi: lo <= s < hi)
-            else:
-                windows = win.at(code, lambda s: True)
-            out.append(Speech("quest_people.json", base, ident(name), name, e["prompt"], _texts(e),
-                              list(e.get("facts", [])), windows))
     return out
 
 
@@ -221,7 +200,7 @@ def speech(w=None, record: dict | None = None) -> list[Speech]:
                                                   if s.source != f"quest_lines/{record['code'].lower()}.json"]
         mine = {t["id"] for t in record.get("topics", [])}
         lines = [s for s in lines if s.topic not in mine]
-    items = quests + lines + people_speech(w, win) + talk_speech(w, win)
+    items = quests + lines + talk_speech(w, win)
     for i, s in enumerate(items):
         s.order = i
     return items

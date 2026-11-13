@@ -31,14 +31,14 @@ static class QuestForm
 {
     public sealed class Refused(string quest, string rule, string what) : Exception($"questform {quest}: {rule}: {what}")
     {
-        public readonly string Rule = rule;
+        public readonly string Rule = rule, Quest = quest;
     }
 
     // ---- the operations of ARG_Effects (papyrus/ARG_Effects.psc; the numbers are the script's)
     public static class Op
     {
         public const int SetStage = 1, ShowObjective = 2, CompleteObjective = 3, FailObjective = 4, SetActive = 5, StopQuest = 6,
-            IncSideQuests = 7, FailIfDead = 8, SetStageIfRunning = 9, IfStageDone = 10, IfQuestOpen = 11, StartOnStage = 12, IfStageAtMost = 13,
+            IncSideQuests = 7, FailIfDead = 8, SetStageIfRunning = 9, IfStageDone = 10, IfQuestOpen = 11, StartOnStage = 12, IfStageAtMost = 13, IfHolds = 14,
             GiveItem = 20, TakeItem = 21, GiveGold = 22, TakeGold = 23, SetNumber = 24, AddNumber = 25, JoinFaction = 26,
             SetRank = 27, ChangeRegard = 28, SwitchOn = 29, SwitchOff = 30, LockDoor = 31, UnlockDoor = 32, ShowMessage = 33,
             SpeakerHostile = 34, StartQuest = 35;
@@ -51,7 +51,8 @@ static class QuestForm
         };
     }
     public sealed record Row(int Op, FormKey What, float Num);
-    public const int MaxRows = 128;   // a Papyrus array made by `new` holds 128; no vanilla property array exceeds 35
+    public const int MaxRows = 128;
+    public const int GreetReach = 500;   // a speaks-first person greets a player within this many units   // a Papyrus array made by `new` holds 128; no vanilla property array exceeds 35
 
     public static readonly FormKey XMarker = FormKey.Factory("00003B:Skyrim.esm"), Player = FormKey.Factory("000014:Skyrim.esm"),
         Gold = FormKey.Factory("00000F:Skyrim.esm"), Achievements = FormKey.Factory("0FC85D:Skyrim.esm"),
@@ -91,6 +92,8 @@ static class QuestForm
         public FormKey Placed;              // the placed reference (null for a thing created in a container)
         public FormKey Base;                // its base (the item for a thing in a container)
         public bool Created, Enabled, Hostile, Npc, Fresh;
+        public bool Standing;               // a person at the form's exact spot where there is no navmesh (they will not walk)
+        public (FormKey door, P3Float arrival)? Door;   // the load door it stands by: where the player comes out of it
         public QuestAlias A = null!;
     }
     sealed class Built
@@ -117,6 +120,7 @@ static class QuestForm
         public Dictionary<(FormKey world, int x, int y), FormKey> Grid = [];
         public Dictionary<FormKey, FormKey> CellWorld = [];
         public Dictionary<FormKey, P3Float> Arrivals = [];
+        public Dictionary<FormKey, INavigationMeshGetter> NavWin = [];
         public Dictionary<string, (string Quest, string Same, FormKey Placed, FormKey Base, bool Npc, bool Created)> Shared = [];   // a load door: where the player comes out of it
         public QuestKit? Kit;
         public FormKey Key(string name) => new(Mod.ModKey, Ids.Take(Kind, name));
@@ -139,7 +143,7 @@ static class QuestForm
             var b = new Built { F = f, Qid = QuestIdOf(f), Edid = S(f.GetProperty("quest"), "editor_id"), Kind = S(f.GetProperty("quest"), "kind") };
             c.Q = b.Qid; c.Cur = b;
             if (c.Quests.ContainsKey(b.Qid)) throw c.No("unique", $"two forms of the quest ({path})");
-            if (mod.Quests.Any(q => q.EditorID == b.Edid)) throw c.No("old-builder", $"{b.Edid} is already built by an old builder: take it off Generate.OldBuilders' quests or delete the form");
+            if (mod.Quests.Any(q => q.EditorID == b.Edid)) throw c.No("editor-id", $"{b.Edid} is already a quest of the plugin");
             b.Q = new Quest(c.Key("quest:" + b.Qid), SkyrimRelease.SkyrimSE) { EditorID = b.Edid };
             mod.Quests.Add(b.Q);
             c.Quests[b.Qid] = b;
@@ -149,7 +153,35 @@ static class QuestForm
         foreach (var b in c.Quests.Values) { c.Q = b.Qid; c.Cur = b; Triggers(c, b); }
         Watch(c);
         foreach (var b in c.Quests.Values) { c.Q = b.Qid; c.Cur = b; Finish(c, b); }
+        Starts.Clear();
+        foreach (var b in c.Quests.Values) { c.Q = b.Qid; c.Cur = b; Starts[b.Edid] = Window(c, b); }
         return [.. c.Quests.Keys];
+    }
+
+    static readonly Dictionary<string, List<ConditionFloat>> Starts = new(StringComparer.Ordinal);
+    /// The conditions that hold while a form-built quest (by editor id) can start, for talk that points at it (a rumour);
+    /// null for a quest not built from a form.
+    public static List<ConditionFloat>? StartWindow(string edid) => Starts.TryGetValue(edid, out var l) ? [.. l.Select(x => (ConditionFloat)x.DeepCopy())] : null;
+    // The start window: the quest's stage not past its start (at it, for a quest running from a new game); the stage of the
+    // quest that starts it done; and every other quest's stage that each opening line (open at the start, moving the stage)
+    // asks for, when every such line asks it and no take or use trigger opens it instead.
+    static List<ConditionFloat> Window(Ctx c, Built b)
+    {
+        var start = b.F.GetProperty("quest").GetProperty("start");
+        var l = new List<ConditionFloat>();
+        if (S(start, "by") == "game") l.Add(Cond(StageData(b.Q.FormKey), CompareOperator.EqualTo, b.Start));
+        else
+        {
+            l.Add(Cond(StageData(b.Q.FormKey), CompareOperator.LessThanOrEqualTo, b.Start));
+            l.Add(Cond(Done(QuestKey(c, S(start, "quest")), I(start, "quest_stage")), CompareOperator.EqualTo, 1));
+        }
+        var opening = A(b.F, "lines").Where(x => I(x, "first_stage") <= b.Start && b.Start <= I(x, "last_stage") && A(x, "results").Any(r => S(r, "do") == "set_stage")).ToList();
+        if (opening.Count == 0 || A(b.F, "triggers").Any(t => S(t, "kind") is "take" or "use" && I(t, "prerequisite") == b.Start)) return l;
+        string[] stageWords = ["stage_is", "stage_at_least", "stage_done"];
+        IEnumerable<string> Gates(JsonElement x) => A(x, "conditions").Where(cd => stageWords.Contains(S(cd, "is")) && S(cd, "quest") != b.Qid).Select(cd => cd.GetRawText());
+        foreach (var raw in opening.Skip(1).Aggregate(Gates(opening[0]).ToHashSet(), (acc, x) => { acc.IntersectWith(Gates(x)); return acc; }).OrderBy(x => x, StringComparer.Ordinal))
+            l.Add(Condition(c, b, JsonDocument.Parse(raw).RootElement));
+        return l;
     }
 
     // Where every placed ref of the load order stands (cell, world, interior, position), and each world's grid of cells.
@@ -331,7 +363,6 @@ static class QuestForm
         return k;
     }
     static void Label(Ctx c, string l) { if (c.Cur is { } b && !b.Labels.Contains(l)) b.Labels.Add(l); }
-    static FormKey QuestKey(Ctx c, string qid) => c.Quests.ContainsKey(qid) ? QuestKey0(c, qid) : Named(c, "quest", qid, QuestKey0(c, qid));
     static FormKey Number(Ctx c, string id) => Named(c, "number", id, Number0(c, id));
     static FormKey Faction(Ctx c, string id) => Named(c, "faction", id, Faction0(c, id));
     // an item named by a thing of the form is labelled "thing" (its base keeps its own word where it is placed)
@@ -339,13 +370,8 @@ static class QuestForm
     static FormKey Race(Ctx c, string v) => Named(c, "race", v, Race0(c, v));
     static ActorValue SkillOf(Ctx c, string s) => Skill(s) ?? throw c.No("vocabulary", $"no skill {s}");
 
-    static FormKey QuestKey0(Ctx c, string qid)
-    {
-        if (c.Quests.TryGetValue(qid, out var o)) return o.Q.FormKey;
-        var code = QuestKit.Rows("quest").Where(r => r.GetProperty("id").GetString() == qid).Select(r => r.GetProperty("code").GetString()).FirstOrDefault();
-        var q = code == null ? null : c.Mod.Quests.FirstOrDefault(x => x.EditorID == "ARG_" + code);
-        return q?.FormKey ?? throw c.No("quest", $"{qid} is neither built from a form nor an old builder's quest");
-    }
+    static FormKey QuestKey(Ctx c, string qid) =>
+        c.Quests.TryGetValue(qid, out var o) ? o.Q.FormKey : throw c.No("quest", $"{qid} is not built from a form");
     static FormKey Number0(Ctx c, string id)
     {
         var k = c.Key("glob:" + id);
@@ -494,7 +520,9 @@ static class QuestForm
         {
             if (bk != "template_person") throw c.No("placement", $"{r.Id}: a new person is a template_person");
             var npc = Person(c, b, r, bid);
-            var a = new PlacedNpc(key, SkyrimRelease.SkyrimSE) { EditorID = edid, MajorRecordFlagsRaw = flags, Placement = new Placement { Position = at } };
+            // by a load door, facing where the player comes out of it (heading 0 is north, +y; clockwise)
+            var face = r.Door is { } dr ? new P3Float(0, 0, MathF.Atan2(dr.arrival.X - at.X, dr.arrival.Y - at.Y)) : new P3Float();
+            var a = new PlacedNpc(key, SkyrimRelease.SkyrimSE) { EditorID = edid, MajorRecordFlagsRaw = flags, Placement = new Placement { Position = at, Rotation = face } };
             a.Base.SetTo(npc); r.Base = npc; r.Npc = true; placed = a;
         }
         else
@@ -614,6 +642,7 @@ static class QuestForm
             // clear of the player's own arrival point
             if (c.Arrivals.TryGetValue(nk, out var arr))
             {
+                r.Door = (nk, arr);
                 float dx = arr.X - p.X, dy = arr.Y - p.Y, dl = MathF.Max(1, MathF.Sqrt(dx * dx + dy * dy));
                 p = new P3Float(arr.X + 100 * dx / dl, arr.Y + 100 * dy / dl, arr.Z);
                 if (!interior) cell = CellAt(c, world, p);
@@ -622,8 +651,20 @@ static class QuestForm
         else throw c.No("placement", $"{r.Id}: a place anchor needs the form's `at` (where in the place it stands)");
         if (rule == "navmesh")
         {
-            var mesh = NearestMesh(c.Mods, Neighbours(c.Grid, cell, world, interior, p), p) ?? throw c.No("placement", $"{r.Id}: no navmesh in or beside cell {cell}");
-            var s = c.Kit!.Snap(mesh, p.X, p.Y);
+            var mesh = NearestMesh(c.Mods, Neighbours(c.Grid, cell, world, interior, p), p);
+            var off = mesh is { } mk ? NearestTriangle(c, mk, p).dist : float.PositiveInfinity;
+            if (off > 300)
+            {
+                // no navmesh where the form puts a person: one who is not fought stands at the form's exact spot and will not
+                // walk; a person the player fights, or one placed by a door, needs navmesh
+                var why = mesh == null ? $"no navmesh in or beside cell {cell}" : $"the nearest navmesh of {cell} is {off:F0} units from its spot";
+                if (r.Kind != "person" || r.Hostile || nearDoor || !r.Json.TryGetProperty("at", out _))
+                    throw c.No("placement", $"{r.Id}: {why}{(r.Hostile ? " (a person the player fights must stand on navmesh)" : "")}");
+                r.Standing = true;
+                Console.WriteLine($"questform {c.Q}: {r.Id} stands at its spot {p.X:F0},{p.Y:F0},{p.Z:F0} in {cell}: {why}, so they will not walk");
+                return (cell, world, interior, p);
+            }
+            var s = c.Kit!.Snap(mesh!.Value, p.X, p.Y);
             if (MathF.Abs(s.X - p.X) > 300 || MathF.Abs(s.Y - p.Y) > 300) throw c.No("placement", $"{r.Id}: the nearest free navmesh of {cell} is {MathF.Sqrt((s.X - p.X) * (s.X - p.X) + (s.Y - p.Y) * (s.Y - p.Y)):F0} units from its spot");
             return (cell, world, interior, s);
         }
@@ -671,6 +712,52 @@ static class QuestForm
             }
         }
         return best;
+    }
+
+    /// The triangle of a navmesh (the winning copy) whose centre is nearest the spot in x and y, and that distance.
+    static (int tri, float dist) NearestTriangle(Ctx c, FormKey mesh, P3Float p)
+    {
+        var d = Navs(c)[mesh].Data!; var v = d.Vertices;
+        var best = (tri: -1, dist: float.PositiveInfinity);
+        for (var i = 0; i < d.Triangles.Count; i++)
+        {
+            var t = d.Triangles[i].Vertices;
+            float x = (v[t.X].X + v[t.Y].X + v[t.Z].X) / 3 - p.X, y = (v[t.X].Y + v[t.Y].Y + v[t.Z].Y) / 3 - p.Y, dd = MathF.Sqrt(x * x + y * y);
+            if (dd < best.dist) best = (i, dd);
+        }
+        return best;
+    }
+    static Dictionary<FormKey, INavigationMeshGetter> Navs(Ctx c)
+    {
+        if (c.NavWin.Count == 0) foreach (var m in c.Mods) foreach (var n in m.EnumerateMajorRecords<INavigationMeshGetter>()) if (n.Data != null) c.NavWin[n.FormKey] = n;
+        return c.NavWin;
+    }
+    /// Whether a walk over the winning navmeshes joins two spots: from the triangle nearest one to the triangle nearest the
+    /// other, across the triangles' shared edges and the edge links between navmeshes.
+    static bool Walk(Ctx c, (FormKey world, FormKey cell, bool interior) space, P3Float a, P3Float b)
+    {
+        (FormKey, int)? Near(P3Float p) =>
+            NearestMesh(c.Mods, Neighbours(c.Grid, space.cell, space.world, space.interior, p), p) is { } m ? (m, NearestTriangle(c, m, p).tri) : null;
+        if (Near(a) is not { } from || Near(b) is not { } to) return false;
+        var navs = Navs(c);
+        var seen = new HashSet<(FormKey, int)> { from }; var queue = new Queue<(FormKey, int)>([from]);
+        while (queue.Count > 0)
+        {
+            var (m, i) = queue.Dequeue();
+            if ((m, i) == to) return true;
+            if (!navs.TryGetValue(m, out var nv) || nv.Data is not { } d || i < 0 || i >= d.Triangles.Count) continue;
+            var t = d.Triangles[i];
+            var e = new[] { (int)t.EdgeLink_0_1, (int)t.EdgeLink_1_2, (int)t.EdgeLink_2_0 };   // flag bits 0-2: that edge is a link to another navmesh
+            for (var k = 0; k < 3; k++)
+            {
+                if (e[k] < 0) continue;
+                (FormKey, int) n = ((int)t.Flags & (1 << k)) != 0
+                    ? (e[k] < d.EdgeLinks.Count ? (d.EdgeLinks[e[k]].Mesh.FormKey, (int)d.EdgeLinks[e[k]].TriangleIndex) : default)
+                    : (m, e[k]);
+                if (n != default && seen.Add(n)) queue.Enqueue(n);
+            }
+        }
+        return false;
     }
 
     // A new person's base of ours: everything from the template but the stats (a fixed level, decision 0035) and, for a
@@ -887,6 +974,16 @@ static class QuestForm
     {
         var r = b.Refs[S(l, "speaker")];
         if (r.A.PackageData.Count > 0) throw c.No("speaks-first", $"{r.Id} speaks first twice");
+        // he walks up to the player: he stands on navmesh, and by a load door within the greeting's reach of where the player
+        // comes out of it, with a walk over navmesh between
+        if (r.Standing) throw c.No("speaks-first", $"{r.Id} stands where there is no navmesh, so cannot walk up to the player");
+        if (r.Fresh && r.Door is { } dr && c.Wheres.TryGetValue(r.Placed, out var wh))
+        {
+            var dist = MathF.Sqrt((wh.Pos.X - dr.arrival.X) * (wh.Pos.X - dr.arrival.X) + (wh.Pos.Y - dr.arrival.Y) * (wh.Pos.Y - dr.arrival.Y));
+            if (dist > GreetReach) throw c.No("speaks-first", $"{r.Id} stands {dist:F0} units from where the player comes out of {dr.door}, beyond the greeting's {GreetReach}");
+            if (!Walk(c, (wh.World, wh.Cell, wh.Interior), dr.arrival, wh.Pos)) throw c.No("speaks-first", $"{r.Id}: no walk over navmesh from where the player comes out of {dr.door} to his spot");
+            Console.WriteLine($"questform {c.Q}: {r.Id} speaks first from {wh.Pos.X:F0},{wh.Pos.Y:F0},{wh.Pos.Z:F0}, {dist:F0} units from where the player comes out of {dr.door} ({dr.arrival.X:F0},{dr.arrival.Y:F0},{dr.arrival.Z:F0}), facing it; on navmesh joined to it");
+        }
         var src = c.Mods[0].Packages.FirstOrDefault(p => p.FormKey == ForceGreetCopy) ?? throw c.No("speaks-first", "vanilla MS05InductionForcegreet is not in the load order");
         var p = src.Duplicate(c.Key($"pack:{b.Qid}:{S(l, "id")}"));
         p.EditorID = $"{b.Edid}_ForceGreet";
@@ -900,7 +997,7 @@ static class QuestForm
         ((PackageDataTopic)p.Data[7]).Topics.Add(new TopicReference { Reference = { FormKey = topic.FormKey } });
         var wait = new LocationTarget(); wait.Link.SetTo(r.Placed);
         ((PackageDataLocation)p.Data[8]).Location = new LocationTargetRadius { Target = wait, Radius = 150 };
-        ((PackageDataLocation)p.Data[62]).Location.Radius = 500;   // the player within 500 of the package start greets
+        ((PackageDataLocation)p.Data[62]).Location.Radius = GreetReach;   // the player within 500 of the package start greets
         ((PackageDataLocation)p.Data[75]).Location.Radius = 300;   // he walks up to 300 from the player
         c.Mod.Packages.Add(p);
         r.A.PackageData.Add(p.ToLink());

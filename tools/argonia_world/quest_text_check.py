@@ -2,7 +2,7 @@
 
     python -m tools.argonia_world.quest_text_check check
 
-Reads the quest lines (quest_lines/*.json, quest_people.json, the dialogue-writer TSVs, written dialogue_line rows),
+Reads the quest lines (quest_lines/*.json, the dialogue-writer TSVs, written dialogue_line rows),
 the journal entries and objectives, and the topic labels; runs E1 E2 E3 E8 E9 E10 E16 E17 E18 and the echoes check
 (E15). The checks that need the built plugin (E4-E7, E11-E14, E19, E20) live elsewhere. Allow-lists, retired nouns
 and role phrases: story/data/quest_text_allow.json.
@@ -77,10 +77,6 @@ def json_items(ids: dict[str, str], root: pathlib.Path = DATA) -> list[Item]:
     out = []
     for path in sorted((root / "quest_lines").glob("*.json")):
         data = json.loads(path.read_text())
-        if path.name == "quest_people.json":
-            for base, entries in data.items():
-                if base.startswith("_"):
-                    continue
                 q = ids.get(base.split("_")[1].upper())
                 for e in entries if q else []:
                     out.append(Item(q, base, "prompt", e.get("prompt", "")))
