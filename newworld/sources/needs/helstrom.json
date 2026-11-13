@@ -27,7 +27,11 @@
    "tier": "AGENT_INVENTED",
    "fit": "That house (the tally-keeper Ixtul-Bei's household lives there today) could be the spies' house: the story can meet them in its one room. The boatmen's lodge, a moored ship about 76 metres from the landing whose door shows \"Ship\", is the other building a player would tie to boatmen.",
    "narrow": "Partly. A name on the house (the name its door shows) and the household's people placed inside are narrow changes. A locked back room is not: the house has one room, so the story should keep its secret behind a locked chest or a locked door the room already has.",
-   "story_thing": "a boatman's house near the city landing, with a room inside and a locked back room"
+   "story_thing": "a boatman's house near the city landing, with a room inside and a locked back room",
+   "sight": {
+    "result": "not recognised",
+    "said": "none: the boats' spot has no house door, and the one house seen is far from the landing"
+   }
   },
   {
    "seq": 1,
@@ -61,7 +65,11 @@
    "tier": "AGENT_INVENTED",
    "fit": "The sacred tree itself, where most of the townsfolk stand by day, among them the water-carrier who says the spring is not used. The story could put the shut water at the tree's foot as a sealed basin or a locked water jar, guarded by one of the levy.",
    "narrow": "Yes, as placed things: a basin or small pool piece and a wicker gate that locks at the tree's foot, and one guard's day spot moved beside it. No redraft. If no piece we hold reads as a spring, the story should name what is placed instead (a sealed basin).",
-   "story_thing": "the city tree's spring shut behind a low wicker door that locks, with a dipper on its lip and a guard's post beside it"
+   "story_thing": "the city tree's spring shut behind a low wicker door that locks, with a dipper on its lip and a guard's post beside it",
+   "sight": {
+    "result": "not recognised",
+    "said": "none: a sacred tree, but no spring, wicker door, dipper or guard"
+   }
   },
   {
    "seq": 2,
@@ -90,7 +98,11 @@
     ]
    },
    "fit": "The river edge at the city landing, where the raft-master Poles-Upriver stands; or the wild ground outside the town, where the world's own beasts already are.",
-   "narrow": "Yes, if a place can hold one placed creature (today the place files hold people only); otherwise the story sends the player outside the town for the gall."
+   "narrow": "Yes, if a place can hold one placed creature (today the place files hold people only); otherwise the story sends the player outside the town for the gall.",
+   "sight": {
+    "result": "not recognised",
+    "said": "none: no creature anywhere"
+   }
   },
   {
    "seq": 3,
@@ -116,7 +128,11 @@
    "tier": "AGENT_INVENTED",
    "fit": "The open ground round the sacred tree, where the two elders already stand by day.",
    "narrow": "Yes: it follows once the spring is at the tree's foot; the elders are already placed there.",
-   "story_thing": "a place by the spring where a few elders can stand"
+   "story_thing": "a place by the spring where a few elders can stand",
+   "sight": {
+    "result": "not recognised",
+    "said": "none: no spring is seen; the tree is only a guess"
+   }
   },
   {
    "seq": 4,
@@ -153,7 +169,11 @@
    "tier": "AGENT_INVENTED",
    "fit": "The cave itself: it can be entered, the healer already works there by the enchanter the town promises for its hall, and the faction's leader could stand inside. The story can call it the tree-minders' cave, or keep 'hall' once the name is changed. It is about 520 metres from the sacred tree.",
    "narrow": "Yes: renaming the room (the name its door shows) to \"Tree-Minders' Hall\" is a narrow change, and it also takes away the test name a player would see today; the leader is one person placed inside.",
-   "story_thing": "the tree-minders' hall as a building that can be entered, with a place inside where Okeeh-Ja stands"
+   "story_thing": "the tree-minders' hall as a building that can be entered, with a place inside where Okeeh-Ja stands",
+   "sight": {
+    "result": "not recognised",
+    "said": "a temple or guild hall at best; its door's name 'Quick Test Cell' looks like an unfinished placeholder, and nothing says tree or healing"
+   }
   },
   {
    "seq": 5,
@@ -188,7 +208,11 @@
    "tier": "AGENT_INVENTED",
    "fit": "Both are placed and can be spoken to at the sacred tree. The story can meet them there, at the tree whose roots she tends, rather than at the hall's door.",
    "narrow": "Yes: moving the two women's day spots to beside the cave door is a person's routine change, not a redraft.",
-   "story_thing": "a spot among the roots by the hall's door where Xilsa-Jee stands, and from MR03 a spot beside it for Hixee-Ra"
+   "story_thing": "a spot among the roots by the hall's door where Xilsa-Jee stands, and from MR03 a spot beside it for Hixee-Ra",
+   "sight": {
+    "result": "not recognised",
+    "said": "none: the hall's door has two guards and waterfalls, not roots"
+   }
   },
   {
    "seq": 6,
@@ -218,7 +242,11 @@
    "story_know": "",
    "tier": "AGENT_INVENTED",
    "narrow": "Nothing is needed. A lantern or sign beside him would be a placed thing, if the story wants a post to see.",
-   "story_thing": "a keeper's post at the root landing"
+   "story_thing": "a keeper's post at the root landing",
+   "sight": {
+    "result": "recognised",
+    "said": "partly: the man there offers rootworm travel, though no post or booth marks a keeper"
+   }
   }
  ],
  "people": [

@@ -148,7 +148,10 @@ def sheet(pid: str, radius: float = 2000.0, places: Path = N.PLACES, root: Path 
             rooms.setdefault(sp["room"], space_rows(pid, sp["room"], places, out))
             keys |= {r["base"] for r in rooms[sp["room"]]}
     bases = bases_for(keys, out / "catalogue" / "bases.jsonl")
-    centre = next((r["pos"] for r in ext if (r.get("map_marker") or {}).get("Name")), ext[0]["pos"] if ext else [0, 0])
+    names = N.place_names(pid)
+    markers = [r for r in ext if (r.get("map_marker") or {}).get("Name")]
+    mark = next((r for r in markers if r["map_marker"]["Name"].lower() in names), markers[0] if markers else None)
+    centre = mark["pos"] if mark else (ext[0]["pos"] if ext else [0, 0])
     lines = [f"# What a player sees at {len(spots)} spots of one town",
              "", "You are a player walking through a town in a game you know nothing about. Below is what you would "
              "see at a few spots: what stands there, the names the game shows you when you look at a door, a map "
