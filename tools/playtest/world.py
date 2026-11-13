@@ -8,10 +8,11 @@ A snapshot, kept in the session so a run never changes under the player:
   it (talk.md: every topic gated to the talker; the stranger greeting; a rumour gated on its quest's stages);
 - doors: where a door leads (the position of its other side), for a door the census knows.
 
+- texts: a readable item's words, by item id;
 - people: a person's race and sex ({ref or talker id: {race, sex}}), for "an Argonian woman".
 
-Sources, first winning: the forms (their `names`, a ref's `name`, a door's `destination`, a marker's `name` as its
-cell's place name), then each names file given (`--names`, JSON with "names" {id: name}, "places" {cell: {name,
+Sources, first winning: the forms (their `names`, `places` and `texts`, a ref's `name`, a door's `destination`, a
+marker's `name` as its cell's place name), then each names file given (`--names`, JSON with "names" {id: name}, "places" {cell: {name,
 interior, entrance}} and "people" {id: {race, sex}}), then the world database (story/data/db). A name nobody gives is
 a harness error at the start of the run (game.py), never made up.
 """
@@ -108,22 +109,27 @@ def _place(w, cell) -> dict:
     return place(w, cell)
 
 
-def from_forms(forms: list[dict]) -> tuple[dict, dict]:
-    """What the forms alone say the player sees: (names, places). The form's `names` for its items, a ref's `name` (a
-    door that leads somewhere is "Door to <destination>" unless it has a name of its own), and a marker's `name` as
-    the name of the place its cell is."""
-    names, places = {}, {}
+def from_forms(forms: list[dict]) -> tuple[dict, dict, dict]:
+    """What the forms alone say the player sees: (names, places, texts). The form's `names` for its items, a ref's
+    `name` (a door that leads somewhere is "Door to <destination>" unless it has a name of its own), the form's
+    `places` (each cell's name, indoors, entrance), else a marker's `name` as the name of the place its cell is, and
+    the form's `texts` (a readable item's words)."""
+    names, places, texts = {}, {}, {}
     for f in forms:
         names.update(f.get("names", {}))
+        texts.update(f.get("texts", {}))
+        for c, v in f.get("places", {}).items():
+            places[c] = {**places.get(c, {}), **v}
         for r in f.get("refs", []):
             n, dest = r.get("name"), r.get("destination")
             if r.get("kind") == "door" and dest and n in (None, "Door"):
                 n = f"Door to {dest}"
             if n:
                 names[r["id"]] = n
-            if r.get("kind") == "marker" and n and r.get("at"):
-                places[r["at"]["cell"]] = {"name": n, "interior": r["at"]["interior"]}
-    return names, places
+            if r.get("kind") == "marker" and n and r.get("at") and not places.get(r["at"]["cell"], {}).get("name"):
+                places[r["at"]["cell"]] = {**places.get(r["at"]["cell"], {}), "name": n,
+                                           "interior": r["at"]["interior"]}
+    return names, places, texts
 
 
 def load_names(path: Path) -> dict:
@@ -138,7 +144,8 @@ def snapshot(forms: list[dict], names_files: list[Path] = (), use_db: bool = Tru
     the template's, with one warning line saying so."""
     snap = from_db(forms) if use_db else {"names": {}, "places": {}, "talkers": [], "doors": {}, "fallback": [],
                                           "people": {}}
-    names, places = from_forms(forms)
+    names, places, texts = from_forms(forms)
+    snap["texts"] = {**snap.get("texts", {}), **texts}
     used = set()
     for p in names_files:
         extra = load_names(p)

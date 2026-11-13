@@ -446,7 +446,7 @@ def jar_form():
 
 def jar_world(*forms):
     from tools.playtest import world as W
-    names, _ = W.from_forms(list(forms))
+    names, *_ = W.from_forms(list(forms))
     return {"names": names, "places": {"0A0100:Example.esp": {"name": "Barge Pier", "interior": False}},
             "talkers": [], "doors": {}, "people": {"npc.keeper": {"race": "argonian", "sex": "female"}}}
 
@@ -640,6 +640,84 @@ def test_the_reach_gate_holds_to_its_owed_list(tmp_path, monkeypatch):
     assert walk.gate(["quest.b: no completed ending can be reached"]) == [
         "quest.b: no completed ending can be reached (and it is not on tools/playtest/reach_owed.json)",
         "quest.a now reaches a completed ending: take it off tools/playtest/reach_owed.json"]
+
+
+# -- what a compiled form carries: places, texts, item ids, if_held, start_quest ------------------------------------
+
+def compiled_jar_form():
+    """The jar quest as the compiler writes it: the jar a unique thing of ours in the lockbox (its item id its ref
+    id), the lockpicks a stock item by the story database's id, the note's words and the pier's name on the form."""
+    f = jar_form()
+    refs = {r["id"]: r for r in f["refs"]}
+    refs["thing.box"]["contents"] = []
+    refs["thing.note"].pop("text")
+    refs["thing.picks"]["placement"] = {"base": {"kind": "item", "id": "item.lockpick"}}
+    f["refs"].append({"id": "thing.jar", "kind": "thing", "enabled": True, "name": "Sap Jar",
+                      "placement": {"base": {"kind": "item", "id": "thing.jar"}, "container": "thing.box"}})
+    f["names"] = {"item.lockpick": "Lockpick"}
+    f["texts"] = {"thing.note": "The cutters come at dusk."}
+    f["places"] = {AT["cell"]: {"name": "Barge Pier", "interior": False}}
+    for x in f["lines"][0]["conditions"] + f["stages"][2]["results"]:
+        x["item"] = "thing.jar"
+    f["triggers"] = [{"id": "take.thing.jar.10-20", "kind": "take", "ref": "thing.jar", "prerequisite": 10, "sets": 20},
+                     {"id": "take.thing.jar.15-30", "kind": "take", "ref": "thing.jar", "prerequisite": 15, "sets": 30}]
+    f["stages"].insert(2, {"number": 30, "shown": True, "journal": "Taken the other way.", "ending": "none",
+                           "results": []})
+    return f
+
+
+def compiled_jar_game(f=None):
+    from tools.playtest import world as W
+    f = f or compiled_jar_form()
+    snap = W.snapshot([f], use_db=False)
+    g = G.Game([f], {**snap, "people": {}})
+    g.begin(at="npc.keeper")
+    return g
+
+
+def test_a_compiled_forms_places_texts_and_names_need_no_names_file():
+    from tools.playtest import world as W
+    snap = W.snapshot([compiled_jar_form()], use_db=False)
+    assert snap["places"][AT["cell"]] == {"name": "Barge Pier", "interior": False}
+    assert snap["texts"] == {"thing.note": "The cutters come at dusk."} and snap["from_names_file"] == []
+    g = compiled_jar_game()
+    assert "You are at Barge Pier." in g.look()
+    g.s["locked"]["thing.box"] = False
+    g.do("use lockbox unseen")
+    g.do("take torn note")
+    assert g.do("use torn note") == "You read Torn Note:\nThe cutters come at dusk."
+
+
+def test_takes_and_hand_ins_match_by_the_forms_item_id_and_one_take_fires_once():
+    g = compiled_jar_game()
+    assert g.do("take lockpick") == "Added: Lockpick" and g.s["items"] == {G.LOCKPICK: 1}     # stock by one id
+    g.do("pick lockbox win unseen")
+    out = g.do("take sap jar")
+    assert "I have the jar." in out and g.s["items"]["thing.jar"] == 1
+    assert g.s["quests"][JQ]["done"] == [10, 20]       # 15-30 opened only by the stage the take itself set
+    g.do("talk nesh-deeka")
+    assert "Quest completed: The Jar" in g.do("say here is the jar.") and "thing.jar" not in g.s["items"]
+
+
+def test_if_held_moves_a_stage_on_only_when_the_thing_is_held():
+    f = compiled_jar_form()
+    f["stages"][1]["results"] = [{"do": "set_stage", "stage": 30, "if_held": "thing.jar"}]
+    g = compiled_jar_game(f)
+    g._set_stage(JQ, 20, None)
+    assert g.stage(JQ) == 20
+    g = compiled_jar_game(f)
+    g.s["items"]["thing.jar"] = 1
+    g._set_stage(JQ, 20, None)
+    assert g.stage(JQ) == 30
+
+
+def test_a_quest_started_by_another_forms_result_waits_on_it():
+    from tools.playtest import walk
+    first, after = jar_form(), second_form()
+    after["quest"]["start"] = {"by": "start_quest", "stage": 10}
+    first["stages"][2]["results"].append({"do": "start_quest", "quest": "quest.test.after", "stage": 10})
+    forms = {JQ: first, "quest.test.after": after}
+    assert walk.waits_on(after, forms) == {JQ} and walk.order("quest.test.after", forms) == [JQ, "quest.test.after"]
 
 
 def test_a_session_starts_after_earlier_quests_with_their_state(tmp_path):

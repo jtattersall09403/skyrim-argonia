@@ -13,6 +13,7 @@ import math
 
 from tools.playtest.vocab import CONDITIONS, RESULTS, HarnessError, race_key  # noqa: F401 (the vocabularies)
 from tools.questform import validate
+from tools.questform.rules import Form
 
 # Skyrim units: about 70 to a metre. "Near" is close enough to notice and to talk (outdoors); speaks-first fires
 # when the player arrives this near its speaker.
@@ -45,6 +46,8 @@ RACE_SKILLS = {
 # Skyrim's own lockpick and gold: a form's thing or container entry of these bases is a lockpick or gold coins.
 LOCKPICK, GOLD = "00000A:Skyrim.esm", "00000F:Skyrim.esm"
 VANILLA_NAMES = {LOCKPICK: "Lockpick", GOLD: "Gold"}
+# The same two as the story database's item ids, which a compiled form names stock things by.
+STOCK = {"item.lockpick": LOCKPICK, "item.gold": GOLD}
 # The Lockpicking a lock level plausibly needs: above it the lock is said to be beyond the player (the one table).
 LOCK_SKILL = {"novice": 0, "apprentice": 15, "adept": 25, "expert": 50, "master": 75}
 CHOICES = ("unseen", "seen")
@@ -149,10 +152,12 @@ class Game:
         ents = {}
         talkers = {t["id"]: t for t in self.world.get("talkers", [])}
         for f in self.forms.values():
+            form = Form(f)
             for r in f["refs"]:
                 key = r["placement"].get("existing")
                 base = r["placement"].get("base") or {}
-                item = LOCKPICK if base.get("id") == LOCKPICK else base["id"] if base.get("kind") == "item" else r["id"]
+                item = LOCKPICK if base.get("id") == LOCKPICK else form.item_of(r["id"])
+                item = STOCK.get(item, item)
                 e = ents.setdefault(r["id"], {"id": r["id"], "kind": r["kind"], "enabled": r["enabled"],
                                               "hostile": bool(r.get("hostile")), "at": r.get("at"),
                                               "container": r["placement"].get("container"),
@@ -245,6 +250,17 @@ class Game:
                 head.append(f"Journal ({f['quest']['name']}): {last['journal']}")
             head += [f"Objective: {o['text']}" for o in self._active(q)]
         return "\n".join(head + out + ["", self.look()] + self._speaks_first())
+
+    def item_of(self, x: str) -> str:
+        """The item id the player holds for `x`: a thing ref's item (the form's item id: a unique thing by its ref id,
+        a stock thing by its base), else `x` itself (already an item id); Skyrim's lockpick and gold by one id."""
+        e = self.ents.get(x)
+        return e["item"] if e and e["kind"] == "thing" and e["item"] else STOCK.get(x, x)
+
+    def _text(self, e) -> str | None:
+        """A readable thing's words: its ref's, else the form's `texts` for its item."""
+        texts = self.world.get("texts", {})
+        return self.ents[e]["text"] or texts.get(self.ents[e]["item"]) or texts.get(e)
 
     # -- names and places ------------------------------------------------------------------------------------------
     def name(self, eid: str) -> str:
@@ -932,8 +948,8 @@ class Game:
                     return self._ask("use", text, f"{self.name(e)} is not yours: opening it is stealing.")
                 out += self._crime(owner, f"open {self.name(e)}", choice)
             out += self._open(e)
-        elif self.ents[e]["text"]:
-            out += [f"You read {self.name(e)}:", self.ents[e]["text"]]
+        elif self._text(e):
+            out += [f"You read {self.name(e)}:", self._text(e)]
         else:
             out.append(f"You use {self.name(e)}.")
         out += self._fire("use", e)
@@ -942,11 +958,15 @@ class Game:
         return "\n".join(out)
 
     def _fire(self, kind, ref) -> list[str]:
+        """A take matches by the item taken (the form's item id), so a thing taken from a container or a pocket moves
+        the trigger on its ref."""
         out = []
-        for q, f in self.forms.items():
-            for t in f["triggers"]:
-                if t["kind"] == kind and t.get("ref") == ref and self._trig_open(q, t):
-                    out += self._set_stage(q, t["sets"], None)
+        same = (lambda r: self.item_of(r) == self.item_of(ref)) if kind == "take" else (lambda r: r == ref)
+        # the triggers open as the event happens: a stage one of them sets does not open another for the same event
+        fired = [(q, t) for q, f in self.forms.items() for t in f["triggers"]
+                 if t["kind"] == kind and t.get("ref") is not None and same(t["ref"]) and self._trig_open(q, t)]
+        for q, t in fired:
+            out += self._set_stage(q, t["sets"], None)
         return out
 
     def fight(self, arg) -> str:

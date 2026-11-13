@@ -1,8 +1,4 @@
 {
  "_about": "Compiled quest forms from which no completed ending can be reached today, each with why (python3 -m tools.playtest reach --compiled). make check fails on a quest out of reach that is not listed, and on a listed quest that now reaches a completed ending; the list only shrinks.",
- "quests": {
-  "quest.main.mq03": "the compiled form has no jar: the lockbox's contents, lock and owner and the key Dives-Without-A-Rope carries are owed by the compiler (lane I1); every path stops by stage 16",
-  "quest.main.mq04": "waits on MQ03 completing",
-  "quest.main.mq05": "waits on MQ03 and MQ04 completing"
- }
+ "quests": {}
 }

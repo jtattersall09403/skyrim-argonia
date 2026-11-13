@@ -51,7 +51,7 @@ CONDITIONS = {
     "number_compare": _c_number,
     "in_faction": lambda g, q, c, _: c["faction"] in g.s["factions"],
     "rank_at_least": lambda g, q, c, _: g.s["factions"].get(c["faction"], -1) >= c["rank"],
-    "item_count_at_least": lambda g, q, c, _: g.s["items"].get(c["item"], 0) >= c["count"],
+    "item_count_at_least": lambda g, q, c, _: g.s["items"].get(g.item_of(c["item"]), 0) >= c["count"],
     "gold_at_least": lambda g, q, c, _: g.s["gold"] >= c["gold"],
     "skill_at_least": lambda g, q, c, _: g._skill(c["skill"]) >= c["value"],
     "alive": lambda g, q, c, _: g._alive(_c_ref(g, c)),
@@ -67,15 +67,16 @@ CONDITIONS = {
 
 def _r_item(sign):
     def f(g, q, r, _):
-        have = g.s["items"].get(r["item"], 0)
+        item = g.item_of(r["item"])
+        have = g.s["items"].get(item, 0)
         n = r["count"] if sign > 0 else min(have, r["count"])
-        g.s["items"][r["item"]] = have + sign * n
-        if not g.s["items"][r["item"]]:
-            del g.s["items"][r["item"]]
+        g.s["items"][item] = have + sign * n
+        if not g.s["items"][item]:
+            del g.s["items"][item]
         if not n:
             return []
         word = "Added" if sign > 0 else "Removed"
-        return [f"{word}: {g.item_name(r['item'])}" + (f" x{n}" if n > 1 else "")]
+        return [f"{word}: {g.item_name(item)}" + (f" x{n}" if n > 1 else "")]
     return f
 
 
@@ -124,7 +125,9 @@ def _r_regard(g, q, r, _):
 
 
 RESULTS = {
-    "set_stage": lambda g, q, r, sp: g._set_stage(q, r["stage"], sp),
+    # `if_held`: a stage's result that moves on only when the player already holds the item as the stage begins
+    "set_stage": lambda g, q, r, sp: [] if "if_held" in r and not g.s["items"].get(g.item_of(r["if_held"]), 0)
+    else g._set_stage(q, r["stage"], sp),
     "give_item": _r_item(1),
     "take_item": _r_item(-1),
     "give_gold": _r_gold(1),

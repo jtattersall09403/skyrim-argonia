@@ -32,9 +32,10 @@ def _copy(s: dict) -> dict:
 
 def _key(s: dict, spoken: bool) -> str:
     """A state as far as what can happen next goes: lists as sets; who was spoken to only when a condition asks; who
-    the player is talking to only while a question waits (any topic is one `talk` away)."""
+    the player is talking to only while a question waits (any topic is one `talk` away); where the player stands only
+    while a container is open or a question waits (any person, thing or door is one `go` away)."""
     drop = {"commands", "visited", "crimes"} | (set() if spoken else {"spoken"}) | \
-        (set() if s["question"] else {"talking"})
+        (set() if s["question"] else {"talking"}) | (set() if s["opened"] or s["question"] else {"pos"})
     return json.dumps({k: sorted(v) if k in ("taken", "dead", "fired", "spoken", "opened", "hostile") else v
                        for k, v in s.items() if k not in drop}, sort_keys=True)
 
@@ -66,7 +67,7 @@ def _at(g, e, fightable, used, picks) -> list[tuple]:
         elif g._listing(e):
             out.append(("use", e, ""))
         return out
-    if x["kind"] == "door" or e in g.holders or x["text"] or e in used:
+    if x["kind"] == "door" or e in g.holders or g._text(e) or e in used:
         out.append(("use", e, "unseen"))
     elif x["kind"] == "thing":
         out.append(("take", e, "unseen"))
@@ -210,7 +211,8 @@ def complete(g, q: str, max_states: int = MAX_STATES) -> list[tuple[str, str]]:
 # -- reach: every ending of a set of forms ------------------------------------------------------------------------
 
 def waits_on(f: dict, forms: dict) -> set[str]:
-    """The other loaded quests a form waits on: its start, its quest-stage triggers, the quests its conditions name,
+    """The other loaded quests a form waits on: its start (the quest whose stage starts it, or whose start_quest result
+    does), its quest-stage triggers, the quests its conditions name,
     and the quests that set a number it reads or give an item it checks."""
     q = f["quest"]["id"]
     out = {t["quest"] for t in f["triggers"] if t["kind"] == "quest_stage"}
@@ -225,6 +227,8 @@ def waits_on(f: dict, forms: dict) -> set[str]:
         if o == q:
             continue
         rs = [r for s in g["stages"] for r in s["results"]] + [r for ln in g["lines"] for r in ln["results"]]
+        if f["quest"]["start"]["by"] == "start_quest" and any(r["do"] == "start_quest" and r["quest"] == q for r in rs):
+            out.add(o)
         if any(r.get("number") in numbers for r in rs if r["do"] in ("set_number", "add_number")) or \
                 any(r["item"] in items - own for r in rs if r["do"] == "give_item"):
             out.add(o)
@@ -263,7 +267,8 @@ def named(qs: list[str], forms: dict) -> list[str]:
 
 def game_on(forms: dict, qs: list[str], world: dict, state: dict | None, sheet=None, strict=False) -> G.Game:
     """A game over `qs` and the quests they name, from a new game (state None) or carrying on from `state`: a quest
-    not loaded before starts now if it runs from a new game or the stage it waits on is done."""
+    not loaded before starts now if it runs from a new game or the stage it waits on is done (one started by another
+    form's start_quest result starts when that result runs)."""
     g = G.Game([forms[x] for x in named(qs, forms)], world, state=_copy(state) if state else None, sheet=sheet,
                strict=strict)
     if state is None:
@@ -273,7 +278,8 @@ def game_on(forms: dict, qs: list[str], world: dict, state: dict | None, sheet=N
             st = f["quest"]["start"]
             if q in g.s["quests"]:
                 continue
-            if st["by"] == "game" or st["quest_stage"] in (g.s["quests"].get(st["quest"]) or {}).get("done", []):
+            if st["by"] == "game" or (st["by"] == "quest_stage" and
+                                      st["quest_stage"] in (g.s["quests"].get(st["quest"]) or {}).get("done", [])):
                 g._set_stage(q, st["stage"], None)
     return g
 

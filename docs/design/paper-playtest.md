@@ -59,11 +59,16 @@ player: a fine or a fight) and goes no further; either way the thing is held.
 
 The people met are the forms' refs and every authored talker standing in the places the forms involve (the refs'
 cells and their settlements), with each talker's topics gated as the build gates them. A name comes from the form
-first (its `names`, a ref's `name`, a door's `destination` as "Door to ...", a marker's `name` as its cell's place
-name), then from a names file (`<quest>.names.json`: `names` by id, `places` by cell with `name`, `interior` and an
+first (its `names`, `places` and `texts`, a ref's `name`, a door's `destination` as "Door to ...", a marker's
+`name` as its cell's place name), then from a names file (`<quest>.names.json`: `names` by id, `places` by cell with `name`, `interior` and an
 interior's `entrance`, `people` by id with `race` and `sex`), then from the world database, which also says who a
 person is. Each id a names file had to give is listed in the run's `run.json` (`names_from_file`): what the form
 still lacks.
+
+Items are held and matched by the form's item id (a unique thing by its ref id, a stock thing by its base; Skyrim's
+lockpick and gold under one id whichever way the form names them): a take trigger, a hand-in, a condition and a
+stage's `set_stage` `if_held` all count the same item. One take moves each quest by the triggers open as it happens,
+never by one the stage it set has just opened.
 
 ## Running it
 
