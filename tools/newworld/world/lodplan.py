@@ -295,12 +295,12 @@ def read_back(logs: Path) -> tuple[dict, dict, set[str]]:
     """The last DynDOLOD run: billboard found per base editor id, the LOD4 model of each object-LOD base editor id,
     and the full models whose LOD models it used (a model whose LOD rows name *_lod*.nif)."""
     bb = {}
-    for ln in (logs / "DynDOLOD_SSE_BillboardsUsed_ArgoniaBlackMarsh.txt").read_text(errors="replace").splitlines():
+    for ln in _logfile(logs, "DynDOLOD_SSE_BillboardsUsed").read_text(errors="replace").splitlines():
         m = re.match(r"(\S+) \[(\w+):(\w+)\] Billboard (found|not found)", ln)
         if m:
             bb[m[1].lower()] = m[4] == "found"
     obj, own = {}, set()
-    for ln in (logs / "LODGen_SSE_Export_ArgoniaBlackMarsh.txt").read_text(errors="replace").splitlines():
+    for ln in _logfile(logs, "LODGen_SSE_Export").read_text(errors="replace").splitlines():
         p = ln.split("\t")
         if len(p) == 17:
             obj.setdefault(p[9].lower(), re.sub(r"^meshes\\", "", p[13].lower()))
@@ -309,8 +309,90 @@ def read_back(logs: Path) -> tuple[dict, dict, set[str]]:
     return bb, obj, own
 
 
-def coverage(plugin: Path, logs: Path) -> int:
+def _logfile(logs: Path, stem: str) -> Path:
+    """The run's <stem>_<world>.txt (ArgoniaBlackMarsh, or ArgoniaSmallWorld in the selftest)."""
+    hits = sorted(logs.glob(f"{stem}_*.txt"))
+    return hits[0] if hits else logs / f"{stem}_ArgoniaBlackMarsh.txt"
+
+
+def model_extent(model: str, read) -> tuple[float, float] | None:
+    """A model's drawn shapes' bounds in the root's space as (width = the XY diagonal, height), None if unreadable."""
+    import numpy as np
+    from tools.places.assets import nifglb
+    raw = read(model)
+    if raw is None:
+        return None
+    try:
+        P = []
+        for s in nifglb.dump(raw)["shapes"]:
+            if s.get("hidden") or not s["verts"]:
+                continue
+            m = np.asarray(s["m"], np.float64).reshape(3, 4)
+            P.append(np.asarray(s["P"], np.float64) @ m[:, :3].T + m[:, 3])
+    except Exception:  # noqa: BLE001 - a mesh nifdump cannot read has no extent
+        return None
+    if not P:
+        return None
+    e = np.ptp(np.concatenate(P), axis=0)
+    return float(math.hypot(e[0], e[1])), float(e[2])
+
+
+# A billboard's size against its full model's (width: the XY diagonal; TexGen draws the widest view, so it falls
+# between the narrow side and the diagonal): measured on the run of 2026-11-11, 162 billboards whose stem is the
+# model's own: height 0.60 to 0.96 of the model's (a sprawling driftwood tree whose lowest branch cards are bare
+# is cut short), width 0.38 to 1.60. Outside these the far form is another shape.
+BILLBOARD_H, BILLBOARD_W = (0.55, 1.4), (0.3, 1.75)
+OWN_AXIS = (0.7, 1.4)  # a base's own LOD model against its full model, each axis (measured 0.82 to 1.01)
+
+
+def far_form(plan: dict, logs: Path, read=None, extent=model_extent) -> tuple[list[str], list[str]]:
+    """The far form each placed base is drawn with, against its full model: (stale, faults).
+    stale: a billboard drawn for a base the plan no longer draws as a tree (taken away or replanned since the LOD
+    run: a fresh tree LOD alone mends it). faults: a billboard made from another model (its file stem is not the
+    model's), or of another size (BILLBOARD_H/W); a base's own LOD model of another size (OWN_AXIS)."""
+    read = read or resolver()
+    rows = {r["edid"].lower(): r for r in plan["bases"]}
+    stale, faults = [], []
+    for ln in _logfile(logs, "DynDOLOD_SSE_BillboardsUsed").read_text(errors="replace").splitlines():
+        m = re.match(r"(\S+) \[(\w+):(\w+)\] Billboard found (\S+?\.dds) \w+ ([\d.]+)x([\d.]+)", ln)
+        if not m:
+            continue
+        r = rows.get(m[1].lower())
+        if r is None or r["mech"] != "tree" or not r["refs"]:
+            stale.append(f"{m[1]}: a billboard is drawn, the plan has {'no such base' if r is None else str(r['refs']) + ' refs, ' + r['mech']}")
+            continue
+        stem = m[4].replace("/", "\\").rsplit("\\", 1)[-1].rsplit("_", 1)[0].lower()
+        mstem = r["model"].replace("/", "\\").rsplit("\\", 1)[-1].lower().removesuffix(".nif")
+        if stem != mstem:
+            faults.append(f"{m[1]}: its billboard {m[4]} is of another model than {r['model']}")
+            continue
+        ext = extent(r["model"], read)
+        if ext is None:
+            continue  # preflight names a model that is not in the profile
+        w, h = float(m[5]) / max(ext[0], 1.0), float(m[6]) / max(ext[1], 1.0)
+        if not (BILLBOARD_H[0] <= h <= BILLBOARD_H[1] and BILLBOARD_W[0] <= w <= BILLBOARD_W[1]):
+            faults.append(f"{m[1]}: billboard {m[5]}x{m[6]} against its model's width {ext[0]:.0f}, height {ext[1]:.0f}")
+    for r in plan["bases"]:
+        if r["mech"] != "own" or not r["refs"]:
+            continue
+        lm = lod_model(r["model"], read)
+        full, far = extent(r["model"], read), (extent(lm, read) if lm else None)
+        if full is None or far is None:
+            continue
+        for name, a, b in (("width", far[0], full[0]), ("height", far[1], full[1])):
+            if not OWN_AXIS[0] <= a / max(b, 1.0) <= OWN_AXIS[1]:
+                faults.append(f"{r['edid']}: its LOD model {lm} {name} {a:.0f} against the full model's {b:.0f}")
+    return stale, faults
+
+
+def coverage(plugin: Path, logs: Path, read=None) -> int:
     plan = json.loads((plugin / "map" / "lodplan.json").read_text())
+    stale, far = far_form(plan, logs, read)
+    print(f"far forms: {len(stale)} stale billboards (a fresh tree LOD mends them), {len(far)} far forms unlike their model")
+    for x in stale[:40]:
+        print("  FAIL stale:", x)
+    for x in far[:40]:
+        print("  FAIL far form:", x)
     bb, obj, own = read_back(logs)
     got = collections.Counter()
     miss = []
@@ -334,7 +416,8 @@ def coverage(plugin: Path, logs: Path) -> int:
     (logs / "coverage.json").write_text(json.dumps({"own_lod_models": sorted(own), "planned_vs_got_refs":
                                                     {f"{a}->{b}": v for (a, b), v in sorted(got.items())}, "missing": miss,
                                                     "rules": len(rules), "rules_without_refs": dead,
-                                                    "own_lod_models_not_listed": unlisted}, indent=1))
+                                                    "own_lod_models_not_listed": unlisted,
+                                                    "stale_billboards": stale, "far_forms_unlike": far}, indent=1))
     for (a, b), v in sorted(got.items()):
         print(f"planned {a:8} got {b:6}: {v} refs")
     print(f"billboards: {sum(1 for r in plan['bases'] if r['mech'] == 'tree' and bb.get(r['edid'].lower()))} of "
@@ -346,7 +429,7 @@ def coverage(plugin: Path, logs: Path) -> int:
     print(f"large bases planned for LOD that got none: {len(miss)}")
     for m in miss[:40]:
         print("  FAIL", m)
-    return 1 if miss or dead else 0
+    return 1 if miss or dead or stale or far else 0
 
 
 def preflight(plugin: Path, lodmodels: Path, read=None) -> int:

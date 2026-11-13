@@ -87,6 +87,7 @@ own: a change reaches only the steps that read it.
 | Map markers, teleports, cell names, the map box | Nothing on the machine: `map` alone | every machine step |
 | A fix to how `lod.ps1` or `lod.sh` drives a window or a step | Nothing by key. The small world first (section 4); raise the step's `rev` in `lod-settings.json` only when the fix changes what the step writes | every output |
 | The plan's code or list, the plan coming out the same (`lodplan.py`, `lod_models.json`, `NewWorldMap.cs`) | Nothing by key. The small world first (section 4) | every output |
+| A leaf recolour (`newworld/sources/flora/recolour.json`, laid by `stack.py stage`) | No key reads textures: after the stack is pushed, `LOD_FORCE="texgen dyndolod"` so the billboards take the new colour | `terrain` |
 | A tool update (`lod-tools.json`) | That tool's steps and what stands on them: xLODGen `terrain` and `dyndolod`; DynDOLOD or its Resources `texgen` and `dyndolod` | the other tool's step |
 
 ## 4. The small world first
@@ -172,7 +173,10 @@ long step starts on a red preflight.
 
 - `out/newworld/lod/check.txt`: every expected terrain mesh and texture a level is in the laid folder; then the
   coverage: every base planned for a billboard has one, every base planned for object LOD is in DynDOLOD's export
-  drawn from the model planned, every rule of ours matched references. Exit 1 on any miss.
+  drawn from the model planned, every rule of ours matched references; then the far forms: every billboard drawn
+  is of a base the plan draws as a tree (a stale one means the LOD predates a drop or a rename: a fresh run mends
+  it), made from that base's own model and of its size, and every base's own LOD model of its full model's size
+  (`lodplan.far_form`). Exit 1 on any miss.
 - `out/newworld/lod/logs/`: each step's log and the tools' message panes; `metrics/`: seconds and peak memory.
 - A miss is mended at its cause: the plan (`lodplan.py`), a model, a rule, a setting. Then the same command runs
   the one step that reads the mend.

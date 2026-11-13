@@ -1,0 +1,12 @@
+{
+ "about": "Leaf textures a mod ships in an unnatural colour, laid again at the same path recoloured (tools/newworld/world/recolour.py, run by infra/gpu-box/stack.py stage into the folder argonia-recolours, above every mod; nothing here is a game file). hue: degrees added; sat, val: factors. Judged off-game against the owner's screenshot and the neighbouring trees' leaves (docs/phases/new-worldspace-plan/walk2/flora.md). The tree billboards follow at the next TexGen run.",
+ "textures": {
+  "textures\\plants\\tamira\\newplants\\bamboo.dds": {
+   "mod": "king-of-the-murkmire",
+   "hue": -58,
+   "sat": 0.9,
+   "val": 0.8,
+   "why": "King of the Murkmire's bamboo (ArgoniaTreeBamboo01, 02) leaves are hue 136, saturation 0.55: turquoise in game (hue 151 in the owner's picture); its neighbours' leaves are hue 70 to 103"
+  }
+ }
+}

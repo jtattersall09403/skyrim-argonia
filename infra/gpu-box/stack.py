@@ -807,7 +807,7 @@ def cmd_stage(a):
         if (STACK / installed_name(profile)).exists():
             prev.update(json.loads((STACK / installed_name(profile)).read_text())["files"])
     for d in list(mods.iterdir()):
-        if d.name not in ids and d.name not in ("pandora-output", LODS, ALIASES):
+        if d.name not in ids and d.name not in ("pandora-output", LODS, ALIASES, RECOLOURS):
             shutil.rmtree(d)
     for d in list(tools.iterdir()):  # a tool no row names any more
         if d.is_dir() and d.name not in ids:
@@ -872,6 +872,17 @@ def cmd_stage(a):
         restaged.add(ALIASES)
     if (mods / ALIASES).exists():
         names.append(ALIASES)
+    # leaf textures recoloured from the mod's own (newworld/sources/flora/recolour.json), above every mod
+    py = pathlib.Path.home() / ".argonia" / "venv" / "bin" / "python"
+    r = subprocess.run([str(py if py.exists() else "python3"), "-m", "tools.newworld.world.recolour", "lay",
+                        str(mods), str(mods / RECOLOURS)], cwd=REPO, capture_output=True, text=True)
+    if r.returncode:
+        raise SystemExit(f"recolour: {(r.stderr or r.stdout).strip()[-400:]}")
+    if "changed" in r.stdout:
+        print(f"  {RECOLOURS}: laid")
+        restaged.add(RECOLOURS)
+    if (mods / RECOLOURS).exists():
+        names.append(RECOLOURS)
     names.append("pandora-output")  # filled when Pandora runs on the machine; highest priority
     (mods / "pandora-output").mkdir(exist_ok=True)
     all_names = names
@@ -1181,6 +1192,7 @@ def cmd_install(a):
 
 LODS = "argonia-lodsettings"  # derived in cmd_stage, never a row
 ALIASES = "argonia-texture-aliases"  # derived in cmd_stage from ALIAS_TABLE, never a row
+RECOLOURS = "argonia-recolours"  # derived in cmd_stage by tools/newworld/world/recolour.py, never a row
 ALIAS_TABLE = REPO / "mods" / "texture-aliases.json"
 
 
