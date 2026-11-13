@@ -1,0 +1,100 @@
+FormKey: 8001DA:Argonia.esp
+VirtualMachineAdapter:
+  Scripts:
+  - Name: ARG_LineEffects
+    Properties:
+    - MutagenObjectType: ScriptStringProperty
+      Name: Line
+      Data: topic.mq04-give-nesh@npc.nesh-deeka#46-46.0
+    - MutagenObjectType: ScriptFloatListProperty
+      Name: Num
+      Data:
+      - 92
+    - MutagenObjectType: ScriptIntListProperty
+      Name: Op
+      Data:
+      - 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Owner
+      Object: 8000C4:Argonia.esp
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: What
+      Objects:
+      - Name: ''
+    - MutagenObjectType: ScriptBoolProperty
+      Name: Written
+      Data: True
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: ARG_LineEffects
+    OnEnd:
+      ScriptName: ARG_LineEffects
+      FragmentName: Fragment_End
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Then they did cut that Hist as well. From a dropped jar I learned that the cutters draw sap.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: These jars show me they cut trees with villages standing round them, which is what I feared. I take them, and here is fifty gold.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 3
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: The Reed pays its hands. I will not dress up what this costs Low-Reed.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 4
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: While I keep the jars they are not poured back at the cut root, and the village's Hist stays dark. The Reed wants them as proof.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 5
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I can hold up a jar where I must. I cannot hold up the word of a hand with no name.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 8000D4:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  CompareOperator: GreaterThanOrEqualTo
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 8000C4:Argonia.esp
+  ComparisonValue: 46
+- MutagenObjectType: ConditionFloat
+  CompareOperator: LessThanOrEqualTo
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 8000C4:Argonia.esp
+  ComparisonValue: 46
+- MutagenObjectType: ConditionFloat
+  CompareOperator: GreaterThanOrEqualTo
+  Data:
+    MutagenObjectType: GetItemCountConditionData
+    RunOnType: Reference
+    Reference: 000014:Skyrim.esm
+    ItemOrList: 8000F2:Argonia.esp
+  ComparisonValue: 1

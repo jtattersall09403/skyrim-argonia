@@ -1,0 +1,44 @@
+{
+ "quest": "quest.local.lq30",
+ "player": "careful",
+ "source": "built",
+ "model": "sonnet",
+ "form_files": [
+  "out/i3/built/quest.local.lq30.json"
+ ],
+ "forms_hash": "8ed580d7d909cdd6",
+ "created": "20261113T031440Z",
+ "counts": {
+  "commands": 39,
+  "stalls": 0,
+  "harness_errors": 0
+ },
+ "stages": {
+  "quest.local.lq30": [
+   0,
+   30,
+   40,
+   91
+  ]
+ },
+ "ended": "all quests ended (quest.local.lq30 completed)",
+ "after": [],
+ "names_from_file": [
+  "0D787F:Black Marsh.esm",
+  "0D7883:Black Marsh.esm"
+ ],
+ "take": true,
+ "answers": true,
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.136467,
+ "minutes": 0.9,
+ "turns": 41,
+ "tokens": {
+  "input_tokens": 78,
+  "output_tokens": 4604,
+  "cache_read_input_tokens": 289767,
+  "cache_creation_input_tokens": 11186
+ }
+}

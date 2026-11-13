@@ -19,6 +19,7 @@ VirtualMachineAdapter:
       Name: Written
       Data: True
 Flags: {}
+PreviousDialog: 80006B:Argonia.esp
 Responses:
 - ResponseNumber: 1
   Unknown2: 0x000000

@@ -1,0 +1,30 @@
+FormKey: 8000CB:Argonia.esp
+EditorID: ARG_R_creature_at_hist_heartland_helstrom_lq30_basin_beast_Base
+Configuration:
+  Flags:
+  - AutoCalcStats
+  Level:
+    MutagenObjectType: NpcLevel
+    Level: 12
+  TemplateFlags:
+  - Traits
+  - Factions
+  - SpellList
+  - AIPackages
+  - ModelAnimation
+  - Inventory
+  - Script
+  - DefPackList
+  - AttackData
+  - Keywords
+Template: 17BC83:Black Marsh.esm
+Race: 0131EB:Skyrim.esm
+AIData:
+  Aggression: VeryAggressive
+  Confidence: Brave
+  Responsibility: NoCrime
+  Assistance: HelpsAllies
+Class: 044CCA:Skyrim.esm
+Name:
+  TargetLanguage: English
+  Value: Viper

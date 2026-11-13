@@ -1,0 +1,8 @@
+FormKey: 80011D:Argonia.esp
+EditorID: ARG_LQ30_T_c95d6ca2
+Name:
+  TargetLanguage: English
+  Value: What are you waiting for here?
+Branch: 80011E:Argonia.esp
+Quest: 8000C1:Argonia.esp
+SubtypeName: CUST

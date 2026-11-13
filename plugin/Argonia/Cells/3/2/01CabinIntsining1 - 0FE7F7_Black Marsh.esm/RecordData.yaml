@@ -44,6 +44,29 @@ SkyAndWeatherFromRegion: 0C5855:Skyrim.esm
 AcousticSpace: 0D78C2:Skyrim.esm
 Music: 01BA72:Skyrim.esm
 ImageSpace: 0CE16C:Skyrim.esm
+Persistent:
+- MutagenObjectType: PlacedNpc
+  FormKey: 8000D2:Argonia.esp
+  MajorRecordFlagsRaw: 1024
+  EditorID: ARG_R_npc_mercantile_coast_lilmoth_fish_trader_house
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 8000D3:Argonia.esp
+  Placement:
+    Position: 1850, 800, 7622
+  MajorFlags:
+  - Persistent
+- MutagenObjectType: PlacedNpc
+  FormKey: 8000D4:Argonia.esp
+  MajorRecordFlagsRaw: 1024
+  EditorID: ARG_R_npc_nesh_deeka
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 8000D5:Argonia.esp
+  Placement:
+    Position: 1620, 1250, 7432
+  MajorFlags:
+  - Persistent
 Temporary:
 - MutagenObjectType: PlacedNpc
   FormKey: 0FE8B5:Black Marsh.esm

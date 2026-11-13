@@ -1,0 +1,116 @@
+FormKey: 80011F:Argonia.esp
+VirtualMachineAdapter:
+  Scripts:
+  - Name: ARG_LineEffects
+    Properties:
+    - MutagenObjectType: ScriptStringProperty
+      Name: Line
+      Data: topic.lq30-walked-out@npc.hist-heartland.helstrom.lq30-kin#0-0.0
+    - MutagenObjectType: ScriptFloatListProperty
+      Name: Num
+      Data:
+      - 30
+    - MutagenObjectType: ScriptIntListProperty
+      Name: Op
+      Data:
+      - 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Owner
+      Object: 8000C1:Argonia.esp
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: What
+      Objects:
+      - Name: ''
+    - MutagenObjectType: ScriptBoolProperty
+      Name: Written
+      Data: True
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: ARG_LineEffects
+    OnEnd:
+      ScriptName: ARG_LineEffects
+      FragmentName: Fragment_End
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I wait for Sei-Wan, my kin. He walked out into the basin alone, to prove himself to the Agaceph, and he has not come back. I am Agaceph too.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: By our custom none of us may follow a walk-out, so I stay at this gate. An outsider may follow him.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 3
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: He went east from the gate through the shallows, and he is up among the roots there.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 4
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Vipers lie in the roots, and the mud holds anyone who stands still. Nothing that walks in the basin lives long.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 5
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Gih-Xaleel, the levy warden beside me, will say the same. I want him alive.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 6
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: He wants the walk-out to count, and it counts only if he comes home on his own feet. If another brings him in, the Agaceph will say he did not finish.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 7
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I would have him alive and shamed sooner than proud and dead. Bring him home if you must. But if he can walk, let the walk-out be his own.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 8000CC:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  CompareOperator: GreaterThanOrEqualTo
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 8000C1:Argonia.esp
+- MutagenObjectType: ConditionFloat
+  CompareOperator: LessThanOrEqualTo
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 8000C1:Argonia.esp
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetDeadConditionData
+    RunOnType: Reference
+    Reference: 8000CC:Argonia.esp
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetDeadConditionData
+    RunOnType: Reference
+    Reference: 8000CE:Argonia.esp

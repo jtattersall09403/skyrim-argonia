@@ -1,0 +1,334 @@
+FormKey: 8000C5:Argonia.esp
+EditorID: ARG_MQ05
+VirtualMachineAdapter:
+  Scripts:
+  - Name: ARG_QuestStages
+    Properties:
+    - MutagenObjectType: ScriptStringProperty
+      Name: Kind
+      Data: main
+    - MutagenObjectType: ScriptStringListProperty
+      Name: Labels
+      Data:
+      - level=creature.mq05.wasp-1
+      - level=creature.mq05.wasp-2
+      - name=number|8000FD:Argonia.esp|flag.mq05.minders-hold
+      - name=number|8000FE:Argonia.esp|flag.mq05.nisswo-read
+      - name=number|8000E1:Argonia.esp|flag.main.thread-severed
+      - quest=quest.main.mq05
+      - kind=main
+      - trigger=use.thing.mq05.landing-door.20-40|use|thing.mq05.landing-door|20|40|
+      - trigger=death.npc.hist-heartland.helstrom.grove-s-senior-tree.40-46|death|npc.hist-heartland.helstrom.grove-s-senior-tree|40|46|choice
+    - MutagenObjectType: ScriptFloatListProperty
+      Name: Num
+      Data:
+      - 96
+      - 95
+      - 10
+      - 0
+      - 10
+      - 20
+      - 20
+      - 40
+      - 40
+      - 45
+      - 40
+      - 45
+      - 46
+      - 1
+      - 4
+      - 46
+      - 0
+      - 1
+      - 4
+      - 46
+      - 0
+      - 1
+      - 46
+      - 0
+      - 1
+      - 46
+      - 0
+    - MutagenObjectType: ScriptIntListProperty
+      Name: Op
+      Data:
+      - 8
+      - 8
+      - 2
+      - 5
+      - 3
+      - 2
+      - 3
+      - 2
+      - 3
+      - 2
+      - 3
+      - 3
+      - 2
+      - 24
+      - 28
+      - 15
+      - 6
+      - 24
+      - 28
+      - 15
+      - 6
+      - 24
+      - 16
+      - 6
+      - 24
+      - 16
+      - 6
+    - MutagenObjectType: ScriptStringProperty
+      Name: QuestId
+      Data: quest.main.mq05
+    - MutagenObjectType: ScriptIntListProperty
+      Name: StageFrom
+      Data:
+      - 0
+      - 4
+      - 6
+      - 8
+      - 10
+      - 13
+      - 17
+      - 21
+      - 24
+    - MutagenObjectType: ScriptIntListProperty
+      Name: Stages
+      Data:
+      - 10
+      - 20
+      - 40
+      - 45
+      - 46
+      - 91
+      - 92
+      - 95
+      - 96
+    - MutagenObjectType: ScriptIntListProperty
+      Name: StageTo
+      Data:
+      - 4
+      - 6
+      - 8
+      - 10
+      - 13
+      - 17
+      - 21
+      - 24
+      - 27
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: What
+      Objects:
+      - Name: ''
+        Object: 8000FB:Argonia.esp
+      - Name: ''
+        Object: 8000D4:Argonia.esp
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 8000FD:Argonia.esp
+      - Name: ''
+        Object: 8000F9:Argonia.esp
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 8000FE:Argonia.esp
+      - Name: ''
+        Object: 8000FB:Argonia.esp
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 8000E1:Argonia.esp
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 8000E1:Argonia.esp
+      - Name: ''
+      - Name: ''
+  FileName: ARG_QuestStages
+  Fragments:
+  - Stage: 10
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_10
+  - Stage: 20
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_20
+  - Stage: 40
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_40
+  - Stage: 45
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_45
+  - Stage: 46
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_46
+  - Stage: 91
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_91
+  - Stage: 92
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_92
+  - Stage: 95
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_95
+  - Stage: 96
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_96
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 8000C5:Argonia.esp
+      Alias: 2
+    Scripts:
+    - Name: defaultSetStageOnDeathRefAlias
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: myQST
+        Object: 8000C5:Argonia.esp
+      - MutagenObjectType: ScriptIntProperty
+        Name: preReqStage
+        Data: 40
+      - MutagenObjectType: ScriptIntProperty
+        Name: StageToSet
+        Data: 46
+  - Property:
+      Name: ''
+      Object: 8000C5:Argonia.esp
+      Alias: 5
+    Scripts:
+    - Name: defaultSetStageAliasScript
+      Properties:
+      - MutagenObjectType: ScriptIntProperty
+        Name: prereqStageOPT
+        Data: 20
+      - MutagenObjectType: ScriptIntProperty
+        Name: stage
+        Data: 40
+      - MutagenObjectType: ScriptIntProperty
+        Name: TriggerType
+Name:
+  TargetLanguage: English
+  Value: Helstrom Behind Its Marsh
+Flags:
+- RunOnce
+Priority: 50
+Type: MainQuest
+Stages:
+- Index: 10
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: "At Low-Reed Village I saw what the cutters do: a Hist cut at the root, its eggs dead and its sap drawn into jars. I'm to tell Nesh-Deeka at Salts-The-Catch's house in Lilmoth what I found."
+- Index: 20
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: Nesh-Deeka told me a silent Hist kills no eggs but a cut one does, and the interior must learn the difference. Its tree-minders and Nisswo, the wandering priests who read the Hist, meet at Helstrom. I'm to go alone without naming the Reed and take the coast ship from Lilmoth's stop to Helstrom's river landing.
+- Index: 40
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: I came ashore at Helstrom's river landing. In the grove inside the gate, Ei-Tuja, a Nisswo, would preach my word in every village; Kaska-Meen, a tree-minder who hears few strangers, would carry it to the tree-minders alone. I'm to tell Ei-Tuja what I saw at Low-Reed Village, or ask him about Kaska-Meen.
+- Index: 45
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: Ei-Tuja says Kaska-Meen hears few strangers, and he will not speak for me. I'm to talk her round myself, in the grove just inside Helstrom's gate, and tell her what I saw at Low-Reed Village.
+- Index: 46
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: What I saw at Low-Reed Village will not reach Kaska-Meen through me. Ei-Tuja, the Nisswo, hears anyone. I'm to tell him, in the grove just inside Helstrom's gate.
+- Index: 91
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+    Entry:
+      TargetLanguage: English
+      Value: 'I told Kaska-Meen what I saw at Low-Reed Village, and the tree-minders will hear it from her and shut their trees to strangers. She told me what a dying Hist leaves: a Mnemic Egg, a seed of its sap holding its memories, once used to stop a generation of eggs hatching. Is that what the cutters are gathering sap for?'
+- Index: 92
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+    Entry:
+      TargetLanguage: English
+      Value: 'I told Ei-Tuja what I saw at Low-Reed Village, and he will preach it openly in every village he walks to. He told me what a dying Hist leaves: a Mnemic Egg, a seed of its sap holding its memories, once used to stop a generation of eggs hatching. Is that what the cutters are gathering sap for?'
+- Index: 95
+  LogEntries:
+  - Flags:
+    - FailQuest
+    Entry:
+      TargetLanguage: English
+      Value: Nesh-Deeka, the Veiled Reed's handler in Lilmoth, is dead. I cannot report to anyone what the Reed wanted said in Helstrom.
+- Index: 96
+  LogEntries:
+  - Flags:
+    - FailQuest
+    Entry:
+      TargetLanguage: English
+      Value: Ei-Tuja, the Nisswo who heard anyone and would have carried my word to the villages, is dead. What I saw at Low-Reed Village goes no further in Helstrom.
+Objectives:
+- Index: 10
+  DisplayText:
+    TargetLanguage: English
+    Value: Tell Nesh-Deeka at Salts-The-Catch's house in Lilmoth what happened at Low-Reed Village.
+  Targets:
+  - AliasID: 4
+- Index: 20
+  DisplayText:
+    TargetLanguage: English
+    Value: Board the coast ship at Lilmoth's stop and go ashore by its door to Helstrom's landing.
+  Targets:
+  - AliasID: 5
+- Index: 40
+  DisplayText:
+    TargetLanguage: English
+    Value: Tell Ei-Tuja, in the grove past Helstrom's gate, what you saw at Low-Reed Village.
+  Targets:
+  - AliasID: 3
+- Index: 45
+  DisplayText:
+    TargetLanguage: English
+    Value: Persuade Kaska-Meen to hear what you saw at Low-Reed Village (Speech 25).
+  Targets:
+  - AliasID: 2
+- Index: 46
+  DisplayText:
+    TargetLanguage: English
+    Value: Tell Ei-Tuja, in the grove past Helstrom's gate, what you saw at Low-Reed Village.
+  Targets:
+  - AliasID: 3
+Aliases:
+- Name: creature.mq05.wasp-1
+  ForcedReference: 8000F5:Argonia.esp
+- ID: 1
+  Name: creature.mq05.wasp-2
+  ForcedReference: 8000F7:Argonia.esp
+- ID: 2
+  Name: npc.hist-heartland.helstrom.grove-s-senior-tree
+  ForcedReference: 8000F9:Argonia.esp
+- ID: 3
+  Name: npc.hist-heartland.helstrom.nisswo-interpreter-debating-house
+  ForcedReference: 8000FB:Argonia.esp
+- ID: 4
+  Name: npc.nesh-deeka
+  ForcedReference: 8000D4:Argonia.esp
+- ID: 5
+  Name: thing.mq05.landing-door
+  ForcedReference: 23D496:Black Marsh.esm

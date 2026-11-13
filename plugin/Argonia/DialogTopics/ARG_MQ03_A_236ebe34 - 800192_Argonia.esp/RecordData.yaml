@@ -1,0 +1,8 @@
+FormKey: 800192:Argonia.esp
+EditorID: ARG_MQ03_A_236ebe34
+Name:
+  TargetLanguage: English
+  Value: (Alchemy) Let me read the sap first, as a tester does, then taste it.
+Branch: 800189:Argonia.esp
+Quest: 8000C3:Argonia.esp
+SubtypeName: CUST

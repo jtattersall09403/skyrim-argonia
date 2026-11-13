@@ -5,9 +5,3 @@ Grid:
   Point: -7, 18
   Flags: -1536086528
 WaterHeight: 3.4028235E+38
-Temporary:
-- MutagenObjectType: PlacedNpc
-  FormKey: 08D5E9:Black Marsh North.esp
-  Base: 000BDA:Argonia.esp
-  Placement:
-    Position: -27857.562, 77814.81, 20.184082

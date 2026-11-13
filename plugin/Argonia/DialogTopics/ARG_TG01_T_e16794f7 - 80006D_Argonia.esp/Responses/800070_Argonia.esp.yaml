@@ -19,6 +19,7 @@ VirtualMachineAdapter:
       Name: Written
       Data: True
 Flags: {}
+PreviousDialog: 80006F:Argonia.esp
 Responses:
 - ResponseNumber: 1
   Unknown2: 0x000000
@@ -62,14 +63,6 @@ Conditions:
     MutagenObjectType: GetStageConditionData
     Quest: 800002:Argonia.esp
   ComparisonValue: 30
-- MutagenObjectType: ConditionFloat
-  CompareOperator: GreaterThanOrEqualTo
-  Data:
-    MutagenObjectType: GetItemCountConditionData
-    RunOnType: Reference
-    Reference: 000014:Skyrim.esm
-    ItemOrList: 800010:Argonia.esp
-  ComparisonValue: 1
 - MutagenObjectType: ConditionFloat
   Data:
     MutagenObjectType: GetDeadConditionData

@@ -1,0 +1,8 @@
+FormKey: 8001D0:Argonia.esp
+EditorID: ARG_MQ04_T_98f66550
+Name:
+  TargetLanguage: English
+  Value: Take the jars, but tell Hires-By-The-Season yourself that you hid the cut.
+Branch: 8001D1:Argonia.esp
+Quest: 8000C4:Argonia.esp
+SubtypeName: CUST

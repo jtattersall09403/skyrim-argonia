@@ -1,0 +1,287 @@
+FormKey: 8000C2:Argonia.esp
+EditorID: ARG_MQ01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: ARG_QuestStages
+    Properties:
+    - MutagenObjectType: ScriptStringProperty
+      Name: Kind
+      Data: main
+    - MutagenObjectType: ScriptStringListProperty
+      Name: Labels
+      Data:
+      - name=item|00000A:Skyrim.esm|item.lockpick
+      - name=item|8000DE:Argonia.esp|thing.mq03.sack-key
+      - name=number|8000DF:Argonia.esp|flag.mq01.reed-joined
+      - name=faction|8000E0:Argonia.esp|faction.veiled-reed
+      - name=number|8000E1:Argonia.esp|flag.main.thread-severed
+      - quest=quest.main.mq01
+      - kind=main
+      - trigger=death.npc.mercantile-coast.lilmoth.broker-buys-the-months.10-21|death|npc.mercantile-coast.lilmoth.broker-buys-the-months|until=20|10|21|choice
+    - MutagenObjectType: ScriptFloatListProperty
+      Name: Num
+      Data:
+      - 96
+      - 21
+      - 10
+      - 0
+      - 10
+      - 20
+      - 10
+      - 21
+      - 21
+      - 20
+      - 30
+      - 1
+      - 0
+      - 0
+      - 0
+      - 50
+      - 10
+      - 30
+      - 0
+      - 1
+      - 30
+      - 0
+    - MutagenObjectType: ScriptIntListProperty
+      Name: Op
+      Data:
+      - 8
+      - 8
+      - 2
+      - 5
+      - 3
+      - 2
+      - 3
+      - 2
+      - 3
+      - 3
+      - 2
+      - 24
+      - 29
+      - 29
+      - 27
+      - 22
+      - 12
+      - 15
+      - 6
+      - 24
+      - 16
+      - 6
+    - MutagenObjectType: ScriptStringProperty
+      Name: QuestId
+      Data: quest.main.mq01
+    - MutagenObjectType: ScriptIntListProperty
+      Name: StageFrom
+      Data:
+      - 0
+      - 4
+      - 6
+      - 8
+      - 11
+      - 19
+    - MutagenObjectType: ScriptIntListProperty
+      Name: Stages
+      Data:
+      - 10
+      - 20
+      - 21
+      - 30
+      - 90
+      - 96
+    - MutagenObjectType: ScriptIntListProperty
+      Name: StageTo
+      Data:
+      - 4
+      - 6
+      - 8
+      - 11
+      - 19
+      - 22
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: What
+      Objects:
+      - Name: ''
+        Object: 8000D4:Argonia.esp
+      - Name: ''
+        Object: 8000D0:Argonia.esp
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 8000DF:Argonia.esp
+      - Name: ''
+        Object: 8000DD:Argonia.esp
+      - Name: ''
+        Object: 8000DC:Argonia.esp
+      - Name: ''
+        Object: 8000E0:Argonia.esp
+      - Name: ''
+        Object: 00000F:Skyrim.esm
+      - Name: ''
+        Object: 8000C3:Argonia.esp
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 8000E1:Argonia.esp
+      - Name: ''
+      - Name: ''
+  FileName: ARG_QuestStages
+  Fragments:
+  - Stage: 10
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_10
+  - Stage: 20
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_20
+  - Stage: 21
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_21
+  - Stage: 30
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_30
+  - Stage: 90
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_90
+  - Stage: 96
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_96
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 8000C2:Argonia.esp
+      Alias: 0
+    Scripts:
+    - Name: ARG_AliasEffects
+      Properties:
+      - MutagenObjectType: ScriptFloatListProperty
+        Name: Num
+        Data:
+        - 10
+        - 19
+        - 21
+      - MutagenObjectType: ScriptIntListProperty
+        Name: Op
+        Data:
+        - 10
+        - 13
+        - 9
+      - MutagenObjectType: ScriptObjectListProperty
+        Name: What
+        Objects:
+        - Name: ''
+          Object: 8000C2:Argonia.esp
+        - Name: ''
+          Object: 8000C2:Argonia.esp
+        - Name: ''
+          Object: 8000C2:Argonia.esp
+Name:
+  TargetLanguage: English
+  Value: No Name on the Work Roll
+Flags:
+- StartGameEnabled
+- RunOnce
+Priority: 50
+Type: MainQuest
+Stages:
+- Index: 10
+  Flags:
+  - StartUpStage
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: I woke in the hold of a ship, moored at a pier west of Lilmoth in Black Marsh, among a gang of Argonians I do not know. I'm to go up the stairs and out of the door to the pier, and speak to the man who stands there.
+- Index: 20
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: Buys-The-Months, the broker, holds his gang's Owing, the months of work they owe. I am on no line of his roll, so he will not keep me. He says Nesh-Deeka, a guest at Salts-The-Catch's house south of the second big ship off Lilmoth's dock, pays for work. I'm to find her there, east along the shore.
+- Index: 21
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: Buys-The-Months, the broker, died on the pier before he had said a word to me. The others on the pier have no help for a stranger. I'm to look for work in Lilmoth, east along the shore.
+- Index: 30
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: A woman with a knotted cord killed Nesh-Deeka's courier at the gang's camp the night it burned, took his satchel and let me live. Nesh-Deeka serves the Veiled Reed, the state's quiet service, and wants a hand whose name is on no roll. I'm to hear her out and say whether I will work for the Reed.
+- Index: 90
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+    Entry:
+      TargetLanguage: English
+      Value: I took work with the Veiled Reed, and Nesh-Deeka put fifty gold in my hand. She has told me the first work the Reed wants of me. Why the woman with the knotted cord let me live, I still do not know.
+- Index: 96
+  LogEntries:
+  - Flags:
+    - FailQuest
+    Entry:
+      TargetLanguage: English
+      Value: Nesh-Deeka, who led the Veiled Reed's work in Lilmoth, is dead. The Reed has nothing more to ask of me.
+Objectives:
+- Index: 10
+  DisplayText:
+    TargetLanguage: English
+    Value: Speak to Buys-The-Months on the pier beside the ship.
+  Targets:
+  - {}
+- Index: 21
+  DisplayText:
+    TargetLanguage: English
+    Value: Look for work in Lilmoth.
+  Targets:
+  - AliasID: 2
+- Index: 20
+  DisplayText:
+    TargetLanguage: English
+    Value: Find Nesh-Deeka in Salts-The-Catch's house, south of the second big ship, anchored off Lilmoth's own dock.
+  Targets:
+  - AliasID: 2
+- Index: 30
+  DisplayText:
+    TargetLanguage: English
+    Value: Hear Nesh-Deeka out, then give her an answer on the Veiled Reed's offer.
+  Targets:
+  - AliasID: 2
+Aliases:
+- Name: npc.mercantile-coast.lilmoth.broker-buys-the-months
+  ForcedReference: 8000D0:Argonia.esp
+  PackageData:
+  - 800175:Argonia.esp
+- ID: 1
+  Name: npc.mercantile-coast.lilmoth.fish-trader-house
+  ForcedReference: 8000D2:Argonia.esp
+- ID: 2
+  Name: npc.nesh-deeka
+  ForcedReference: 8000D4:Argonia.esp
+- ID: 3
+  Name: npc.pirate-freeholds.opening-work-barge.npc-opening-overseer
+  ForcedReference: 8000D6:Argonia.esp
+- ID: 4
+  Name: npc.pirate-freeholds.opening-work-barge.npc-opening-roll-reader
+  ForcedReference: 8000D8:Argonia.esp
+- ID: 5
+  Name: npc.pirate-freeholds.opening-work-camp.n1-2
+  ForcedReference: 8000DA:Argonia.esp
+- ID: 6
+  Name: thing.mq03.lockpicks
+  Flags:
+  - AllowDisabled
+  ForcedReference: 8000DC:Argonia.esp
+- ID: 7
+  Name: thing.mq03.sack
+  Flags:
+  - AllowDisabled
+  ForcedReference: 8000DD:Argonia.esp

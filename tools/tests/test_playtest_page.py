@@ -35,7 +35,7 @@ def test_page_from_the_kept_runs(tmp_path):
         assert run["id"] in html and run["forms"] in data["forms"]
         assert len(run["steps"]) == len(S.transcript(S.RUNS / run["path"]))
     assert len({r["id"] for r in data["runs"]}) == len(data["runs"])
-    assert size < 4_000_000
+    assert size < 80_000 * n   # the page grows with the kept runs: under 80 KB a run on average
 
 
 def test_page_from_an_empty_runs_folder(tmp_path):

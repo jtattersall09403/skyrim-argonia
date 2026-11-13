@@ -1,0 +1,30 @@
+FormKey: 8000C7:Argonia.esp
+EditorID: ARG_R_creature_at_hist_heartland_helstrom_lq25_river_beast_Base
+Configuration:
+  Flags:
+  - AutoCalcStats
+  Level:
+    MutagenObjectType: NpcLevel
+    Level: 1
+  TemplateFlags:
+  - Traits
+  - Factions
+  - SpellList
+  - AIPackages
+  - ModelAnimation
+  - Inventory
+  - Script
+  - DefPackList
+  - AttackData
+  - Keywords
+Template: 0BCB00:Black Marsh.esm
+Race: 013203:Skyrim.esm
+AIData:
+  Aggression: VeryAggressive
+  Confidence: Brave
+  Responsibility: NoCrime
+  Assistance: HelpsAllies
+Class: 0131E6:Skyrim.esm
+Name:
+  TargetLanguage: English
+  Value: Crocodile

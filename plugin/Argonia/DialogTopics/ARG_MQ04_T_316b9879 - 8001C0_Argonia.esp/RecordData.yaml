@@ -1,0 +1,8 @@
+FormKey: 8001C0:Argonia.esp
+EditorID: ARG_MQ04_T_316b9879
+Name:
+  TargetLanguage: English
+  Value: Tell me, or the whole village hears that you would not.
+Branch: 8001C1:Argonia.esp
+Quest: 8000C4:Argonia.esp
+SubtypeName: CUST

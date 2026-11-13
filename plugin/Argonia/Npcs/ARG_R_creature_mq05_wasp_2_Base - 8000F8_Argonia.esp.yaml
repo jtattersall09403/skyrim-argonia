@@ -1,0 +1,30 @@
+FormKey: 8000F8:Argonia.esp
+EditorID: ARG_R_creature_mq05_wasp_2_Base
+Configuration:
+  Flags:
+  - AutoCalcStats
+  Level:
+    MutagenObjectType: NpcLevel
+    Level: 1
+  TemplateFlags:
+  - Traits
+  - Factions
+  - SpellList
+  - AIPackages
+  - ModelAnimation
+  - Inventory
+  - Script
+  - DefPackList
+  - AttackData
+  - Keywords
+Template: 166381:Black Marsh.esm
+Race: 0051FB:Dawnguard.esm
+AIData:
+  Aggression: VeryAggressive
+  Confidence: Brave
+  Responsibility: NoCrime
+  Assistance: HelpsAllies
+Class: 005206:Dawnguard.esm
+Name:
+  TargetLanguage: English
+  Value: Giant Wasp

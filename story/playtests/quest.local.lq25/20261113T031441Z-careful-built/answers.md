@@ -1,0 +1,7 @@
+1. Nothing seems to be left. My journal showed no active objective after I handed in the bucket, and nothing new began. If I were to carry on, I would wander the marsh and talk to Wuleen-Taza, Azum-Kai and Sells-Dear again to see whether anything has changed. I don't think the game is asking anything more of me right now.
+
+2. No one, really. I took the crocodile job from Okan-Zish and finished it. Then I sided with Sells-Dear by handing her the bucket as evidence, and she paid me 60 gold. I did that for the money and because Okan-Zish's crew had baited the beast on purpose, which I didn't like. So I'm a freelancer who sold the crew out, not anyone's employee.
+
+3. The crocodile. It was already hostile and listed as present before I had accepted any quest, so I tried to fight it early. Then Okan-Zish only admitted afterwards that his crew had put it there. I also wasn't sure at first whether the bucket was meant to be evidence or just an item, so I had to work that out from Wuleen-Taza's offer.
+
+4. The setup is good: a simple kill quest turns into a choice about blackmail or betrayal. But show me the consequences. Let Okan-Zish react to what I did, and let the crew's ruin be visible in the world. Make the fight take more than one command, and give the dialogue topics more character. Make sure monsters don't appear before the quest that introduces them. And give me a next hook so the story carries on after the payout.

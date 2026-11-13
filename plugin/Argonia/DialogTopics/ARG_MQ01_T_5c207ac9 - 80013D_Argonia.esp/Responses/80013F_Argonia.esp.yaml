@@ -1,0 +1,56 @@
+FormKey: 80013F:Argonia.esp
+VirtualMachineAdapter:
+  Scripts:
+  - Name: ARG_LineEffects
+    Properties:
+    - MutagenObjectType: ScriptStringProperty
+      Name: Line
+      Data: topic.mq01-the-camp@npc.pirate-freeholds.opening-work-barge.npc-opening-overseer#10-20.0
+    - MutagenObjectType: ScriptFloatListProperty
+      Name: Num
+    - MutagenObjectType: ScriptIntListProperty
+      Name: Op
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Owner
+      Object: 8000C2:Argonia.esp
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: What
+    - MutagenObjectType: ScriptBoolProperty
+      Name: Written
+      Data: True
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Raiders came off the water in the dark, two nights ago. Then the huts burned. I was getting my gang into the longboat by torchlight.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I never saw the raiders' faces. Who they were, and what they took, I cannot tell you. Ask in Lilmoth. Others there know more than a broker's overseer.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 8000D6:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  CompareOperator: GreaterThanOrEqualTo
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 8000C2:Argonia.esp
+  ComparisonValue: 10
+- MutagenObjectType: ConditionFloat
+  CompareOperator: LessThanOrEqualTo
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 8000C2:Argonia.esp
+  ComparisonValue: 20

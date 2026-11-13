@@ -1,0 +1,27 @@
+FormKey: 8000CD:Argonia.esp
+EditorID: ARG_R_npc_hist_heartland_helstrom_lq30_kin_Base
+Configuration:
+  Flags:
+  - Female
+  - AutoCalcStats
+  Level:
+    MutagenObjectType: NpcLevel
+    Level: 1
+  TemplateFlags:
+  - Traits
+  - Factions
+  - SpellList
+  - AIData
+  - AIPackages
+  - ModelAnimation
+  - Inventory
+  - Script
+  - DefPackList
+  - AttackData
+  - Keywords
+Template: 02A1EE:Black Marsh.esm
+Race: 013740:Skyrim.esm
+Class: 013176:Skyrim.esm
+Name:
+  TargetLanguage: English
+  Value: Haj-Wan

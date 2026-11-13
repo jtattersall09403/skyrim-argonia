@@ -1,0 +1,30 @@
+FormKey: 8000E8:Argonia.esp
+EditorID: ARG_R_npc_mercantile_coast_low_reed_village_cell_man_2_Base
+Configuration:
+  Flags:
+  - AutoCalcStats
+  Level:
+    MutagenObjectType: NpcLevel
+    Level: 1
+  TemplateFlags:
+  - Traits
+  - Factions
+  - SpellList
+  - AIPackages
+  - ModelAnimation
+  - Inventory
+  - Script
+  - DefPackList
+  - AttackData
+  - Keywords
+Template: 084A7A:Black Marsh.esm
+Race: 013740:Skyrim.esm
+AIData:
+  Aggression: VeryAggressive
+  Confidence: Brave
+  Responsibility: NoCrime
+  Assistance: HelpsAllies
+Class: 013176:Skyrim.esm
+Name:
+  TargetLanguage: English
+  Value: Counts-The-Jars

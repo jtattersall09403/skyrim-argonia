@@ -1,0 +1,8 @@
+FormKey: 8001F6:Argonia.esp
+EditorID: ARG_MQ05_T_4150bea9
+Name:
+  TargetLanguage: English
+  Value: I saw a Hist cut at the root, not gone silent. Hear me out. (Persuade)
+Branch: 8001F7:Argonia.esp
+Quest: 8000C5:Argonia.esp
+SubtypeName: CUST

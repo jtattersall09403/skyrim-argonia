@@ -1,0 +1,329 @@
+FormKey: 8000C1:Argonia.esp
+EditorID: ARG_LQ30
+VirtualMachineAdapter:
+  Scripts:
+  - Name: ARG_QuestStages
+    Properties:
+    - MutagenObjectType: ScriptStringProperty
+      Name: Kind
+      Data: minor
+    - MutagenObjectType: ScriptStringListProperty
+      Name: Labels
+      Data:
+      - level=creature-at.hist-heartland.helstrom.lq30-basin-beast
+      - quest=quest.local.lq30
+      - kind=minor
+      - trigger=death.creature-at.hist-heartland.helstrom.lq30-basin-beast.35-40|death|creature-at.hist-heartland.helstrom.lq30-basin-beast|35|40|
+    - MutagenObjectType: ScriptFloatListProperty
+      Name: Num
+      Data:
+      - 30
+      - 0
+      - 30
+      - 35
+      - 30
+      - 35
+      - 40
+      - 40
+      - 50
+      - 4
+      - 50
+      - 0
+      - 0
+      - 4
+      - -4
+      - 60
+      - 50
+      - 0
+      - 0
+      - 50
+      - 0
+      - 50
+      - 0
+    - MutagenObjectType: ScriptIntListProperty
+      Name: Op
+      Data:
+      - 2
+      - 5
+      - 3
+      - 2
+      - 3
+      - 3
+      - 2
+      - 3
+      - 2
+      - 28
+      - 15
+      - 7
+      - 6
+      - 28
+      - 28
+      - 22
+      - 15
+      - 7
+      - 6
+      - 16
+      - 6
+      - 16
+      - 6
+    - MutagenObjectType: ScriptStringProperty
+      Name: QuestId
+      Data: quest.local.lq30
+    - MutagenObjectType: ScriptIntListProperty
+      Name: StageFrom
+      Data:
+      - 0
+      - 2
+      - 4
+      - 7
+      - 9
+      - 13
+      - 19
+      - 21
+    - MutagenObjectType: ScriptIntListProperty
+      Name: Stages
+      Data:
+      - 30
+      - 35
+      - 40
+      - 50
+      - 91
+      - 92
+      - 93
+      - 94
+    - MutagenObjectType: ScriptIntListProperty
+      Name: StageTo
+      Data:
+      - 2
+      - 4
+      - 7
+      - 9
+      - 13
+      - 19
+      - 21
+      - 23
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: What
+      Objects:
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 8000CE:Argonia.esp
+      - Name: ''
+      - Name: ''
+        Object: 0FC85D:Skyrim.esm
+      - Name: ''
+      - Name: ''
+        Object: 8000CC:Argonia.esp
+      - Name: ''
+        Object: 8000CE:Argonia.esp
+      - Name: ''
+        Object: 00000F:Skyrim.esm
+      - Name: ''
+      - Name: ''
+        Object: 0FC85D:Skyrim.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+  FileName: ARG_QuestStages
+  Fragments:
+  - Stage: 30
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_30
+  - Stage: 35
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_35
+  - Stage: 40
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_40
+  - Stage: 50
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_50
+  - Stage: 91
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_91
+  - Stage: 92
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_92
+  - Stage: 93
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_93
+  - Stage: 94
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_94
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 8000C1:Argonia.esp
+      Alias: 0
+    Scripts:
+    - Name: defaultSetStageOnDeathRefAlias
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: myQST
+        Object: 8000C1:Argonia.esp
+      - MutagenObjectType: ScriptIntProperty
+        Name: preReqStage
+        Data: 35
+      - MutagenObjectType: ScriptIntProperty
+        Name: StageToSet
+        Data: 40
+  - Property:
+      Name: ''
+      Object: 8000C1:Argonia.esp
+      Alias: 2
+    Scripts:
+    - Name: ARG_AliasEffects
+      Properties:
+      - MutagenObjectType: ScriptFloatListProperty
+        Name: Num
+        Data:
+        - 30
+        - 94
+      - MutagenObjectType: ScriptIntListProperty
+        Name: Op
+        Data:
+        - 10
+        - 9
+      - MutagenObjectType: ScriptObjectListProperty
+        Name: What
+        Objects:
+        - Name: ''
+          Object: 8000C1:Argonia.esp
+        - Name: ''
+          Object: 8000C1:Argonia.esp
+  - Property:
+      Name: ''
+      Object: 8000C1:Argonia.esp
+      Alias: 3
+    Scripts:
+    - Name: ARG_AliasEffects
+      Properties:
+      - MutagenObjectType: ScriptFloatListProperty
+        Name: Num
+        Data:
+        - 30
+        - 93
+      - MutagenObjectType: ScriptIntListProperty
+        Name: Op
+        Data:
+        - 10
+        - 9
+      - MutagenObjectType: ScriptObjectListProperty
+        Name: What
+        Objects:
+        - Name: ''
+          Object: 8000C1:Argonia.esp
+        - Name: ''
+          Object: 8000C1:Argonia.esp
+Name:
+  TargetLanguage: English
+  Value: The Gates of Helstrom
+Flags:
+- StartGameEnabled
+- RunOnce
+Priority: 50
+Type: SideQuest
+Stages:
+- Flags:
+  - StartUpStage
+  LogEntries:
+  - Flags: []
+- Index: 30
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: Haj-Wan, waiting beside Gih-Xaleel, the levy warden at Helstrom's gate, told me her kin Sei-Wan walked out into the basin alone to prove himself to the Agaceph and has not come back. Their custom forbids his own to follow, but not an outsider. I'm to find him up among the roots east of the gate.
+- Index: 35
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: I found Sei-Wan up on the roots in the shallows east of Helstrom's gate. A viper lies in the roots west of him, between him and the gate, and he will not come down while it lives. I'm to kill the viper.
+- Index: 40
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: "The viper in the roots east of Helstrom's gate is dead, and Sei-Wan can come down. Haj-Wan wants him home alive; he wants the walk-out to be his own. I'm to speak to him and choose: talk him home, which costs him the walk-out, or tell him to walk home alone and say nothing at the gate."
+- Index: 50
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: Sei-Wan gave in and said he will come home, though not at my heels, and he will not count the walk-out as his own. Haj-Wan has waited for him since he left. I'm to tell her at Helstrom's gate, back west through the shallows, beside Gih-Xaleel, the levy warden.
+- Index: 91
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+    Entry:
+      TargetLanguage: English
+      Value: I told Sei-Wan to walk home on his own feet and left him among the roots in the shallows east of Helstrom's gate, and I said nothing of it to Haj-Wan. His walk-out stays his own. Haj-Wan keeps waiting at the gate and knows nothing.
+- Index: 92
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+    Entry:
+      TargetLanguage: English
+      Value: I told Haj-Wan at Helstrom's gate that Sei-Wan is coming home, and she paid me 60 gold. She is glad he lives, and sorry that he lost the walk-out he went into the basin to win. I talked him out of it, and he will not thank me.
+- Index: 93
+  LogEntries:
+  - Flags:
+    - FailQuest
+    Entry:
+      TargetLanguage: English
+      Value: Sei-Wan, a young Agaceph of Helstrom, is dead in the basin. Whatever Haj-Wan asked of me for him ends with him, and the walk-out is lost to him for good.
+- Index: 94
+  LogEntries:
+  - Flags:
+    - FailQuest
+    Entry:
+      TargetLanguage: English
+      Value: Haj-Wan, who waited at Helstrom's gate for her kin Sei-Wan, is dead. Whatever she wanted of me ends with her.
+Objectives:
+- Index: 30
+  DisplayText:
+    TargetLanguage: English
+    Value: Find Sei-Wan in the shallows east of Helstrom's gate.
+  Targets:
+  - AliasID: 3
+- Index: 35
+  DisplayText:
+    TargetLanguage: English
+    Value: Kill the viper in the roots west of Sei-Wan.
+  Targets:
+  - {}
+- Index: 40
+  DisplayText:
+    TargetLanguage: English
+    Value: Speak to Sei-Wan among the roots east of Helstrom's gate.
+  Targets:
+  - AliasID: 3
+- Index: 50
+  DisplayText:
+    TargetLanguage: English
+    Value: Tell Haj-Wan at Helstrom's gate that Sei-Wan is coming home.
+  Targets:
+  - AliasID: 2
+Aliases:
+- Name: creature-at.hist-heartland.helstrom.lq30-basin-beast
+  ForcedReference: 8000CA:Argonia.esp
+- ID: 1
+  Name: npc.hist-heartland.helstrom.levy-warden-01
+  ForcedReference: 08D5E9:Black Marsh North.esp
+- ID: 2
+  Name: npc.hist-heartland.helstrom.lq30-kin
+  ForcedReference: 8000CC:Argonia.esp
+- ID: 3
+  Name: npc.hist-heartland.helstrom.lq30-youth
+  ForcedReference: 8000CE:Argonia.esp

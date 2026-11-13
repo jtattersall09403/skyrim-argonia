@@ -1,0 +1,8 @@
+FormKey: 800107:Argonia.esp
+EditorID: ARG_LQ25_T_b25a6f42
+Name:
+  TargetLanguage: English
+  Value: The crocodile off the end of your plank walk is dead.
+Branch: 800108:Argonia.esp
+Quest: 8000C0:Argonia.esp
+SubtypeName: CUST

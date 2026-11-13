@@ -1,0 +1,88 @@
+FormKey: 8001A7:Argonia.esp
+VirtualMachineAdapter:
+  Scripts:
+  - Name: ARG_LineEffects
+    Properties:
+    - MutagenObjectType: ScriptStringProperty
+      Name: Line
+      Data: topic.mq04-errand@npc.nesh-deeka#10-41
+    - MutagenObjectType: ScriptFloatListProperty
+      Name: Num
+    - MutagenObjectType: ScriptIntListProperty
+      Name: Op
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Owner
+      Object: 8000C4:Argonia.esp
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: What
+    - MutagenObjectType: ScriptBoolProperty
+      Name: Written
+      Data: True
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I want one thing learned there. At the burnt camp the cutters cut the gang's Hist cutting, the slip of sacred tree they kept.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I need to know whether they cut the Hist of Low-Reed Village as well. Follow the shore east out of Lilmoth until you reach the village.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 3
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: It stands on stilts over fresh water. Hires-By-The-Season is its root-herald, the one who speaks for the village to strangers.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 4
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: She stands on the raised ground at the village's middle. Do not name the Reed there.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 5
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: You are a stranger who heard that the tree turned its face, and that is all you need be. I fear the cutters did not stop at the cutting.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 6
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I would be glad if you proved me wrong.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 8000D4:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  CompareOperator: GreaterThanOrEqualTo
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 8000C4:Argonia.esp
+  ComparisonValue: 10
+- MutagenObjectType: ConditionFloat
+  CompareOperator: LessThanOrEqualTo
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 8000C4:Argonia.esp
+  ComparisonValue: 41

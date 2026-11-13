@@ -1,0 +1,24 @@
+FormKey: 8000E3:Argonia.esp
+EditorID: ARG_I_thing_mq03_page
+ObjectBounds:
+  First: -8, -5, 0
+  Second: 8, 5, 0
+Name:
+  TargetLanguage: English
+  Value: Nesh-Deeka's Page
+Model:
+  File: Clutter\Books\Note02.nif
+  Data: 0x020000000200000000000000C5D74C9464647300B5139F09AD43553B64647300B5139F09
+BookText:
+  TargetLanguage: English
+  Value: Under the sap you spoke of a ship's hold, empty, with roots grown up through its deck in a ring like trees. A door at the top of its stairs that nobody built. A dry voice you could not make into words. I wrote it as you said it. I do not know what it means. - N.
+PickUpSound: 0C7A54:Skyrim.esm
+Keywords:
+- 0937A2:Skyrim.esm
+Teaches:
+  MutagenObjectType: BookTeachesNothing
+  RawContent: 0
+InventoryArt: 01541B:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''

@@ -1,0 +1,56 @@
+{
+ "quest": "quest.tg.tg01",
+ "player": "careful",
+ "source": "built",
+ "model": "sonnet",
+ "form_files": [
+  "out/i3/built/quest.tg.tg01.json",
+  "out/i3/built/quest.tg.tg02.json"
+ ],
+ "forms_hash": "5454d5ca1eb5eb53",
+ "created": "20261113T031440Z",
+ "counts": {
+  "commands": 40,
+  "stalls": 0,
+  "harness_errors": 0
+ },
+ "stages": {
+  "quest.tg.tg01": [
+   0,
+   10,
+   20,
+   30,
+   50,
+   90
+  ],
+  "quest.tg.tg02": [
+   10,
+   20
+  ]
+ },
+ "ended": "command limit (quest.tg.tg01 completed, quest.tg.tg02 active)",
+ "after": [],
+ "names_from_file": [
+  "0059FB:Black Marsh.esm",
+  "02F364:Black Marsh.esm",
+  "0396AF:Black Marsh.esm",
+  "0E96A9:Black Marsh.esm",
+  "16BF81:Black Marsh North.esp",
+  "item.lockpick",
+  "item.tg01.strongbox-key"
+ ],
+ "take": true,
+ "answers": true,
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.156719,
+ "minutes": 1.1,
+ "turns": 43,
+ "tokens": {
+  "input_tokens": 80,
+  "output_tokens": 4871,
+  "cache_read_input_tokens": 353346,
+  "cache_creation_input_tokens": 13569
+ }
+}

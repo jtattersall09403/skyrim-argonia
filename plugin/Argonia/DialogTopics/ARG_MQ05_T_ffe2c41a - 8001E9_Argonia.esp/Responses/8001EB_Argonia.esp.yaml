@@ -1,0 +1,64 @@
+FormKey: 8001EB:Argonia.esp
+VirtualMachineAdapter:
+  Scripts:
+  - Name: ARG_LineEffects
+    Properties:
+    - MutagenObjectType: ScriptStringProperty
+      Name: Line
+      Data: topic.mq05-the-quarrel@npc.hist-heartland.helstrom.nisswo-interpreter-debating-house#10-46
+    - MutagenObjectType: ScriptFloatListProperty
+      Name: Num
+    - MutagenObjectType: ScriptIntListProperty
+      Name: Op
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Owner
+      Object: 8000C5:Argonia.esp
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: What
+    - MutagenObjectType: ScriptBoolProperty
+      Name: Written
+      Data: True
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I am Ei-Tuja, a Nisswo, a wanderer who reads what the Hist tell us. I read for anyone who asks and take nothing for it.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I hold that a Hist that goes quiet is telling us something, and its tree-minders must not clamp it shut.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 3
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Kaska-Meen, the tree-minder who keeps the watch here, disagrees. Ask her for her own reasons.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 8000FB:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  CompareOperator: GreaterThanOrEqualTo
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 8000C5:Argonia.esp
+  ComparisonValue: 10
+- MutagenObjectType: ConditionFloat
+  CompareOperator: LessThanOrEqualTo
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 8000C5:Argonia.esp
+  ComparisonValue: 46

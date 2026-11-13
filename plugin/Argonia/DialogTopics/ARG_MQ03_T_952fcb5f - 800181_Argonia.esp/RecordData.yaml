@@ -1,0 +1,8 @@
+FormKey: 800181:Argonia.esp
+EditorID: ARG_MQ03_T_952fcb5f
+Name:
+  TargetLanguage: English
+  Value: What will you do without the jar?
+Branch: 800182:Argonia.esp
+Quest: 8000C3:Argonia.esp
+SubtypeName: CUST

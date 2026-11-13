@@ -1,0 +1,52 @@
+{
+ "quest": "quest.main.mq01",
+ "player": "careful",
+ "source": "built",
+ "model": "sonnet",
+ "form_files": [
+  "out/i3/built/quest.main.mq01.json",
+  "out/i3/built/quest.main.mq03.json"
+ ],
+ "forms_hash": "9c1a579a313f5b7d",
+ "created": "20261113T031441Z",
+ "counts": {
+  "commands": 28,
+  "stalls": 0,
+  "harness_errors": 0
+ },
+ "stages": {
+  "quest.main.mq01": [
+   10,
+   20,
+   30,
+   90
+  ],
+  "quest.main.mq03": [
+   10,
+   16,
+   90
+  ]
+ },
+ "ended": "all quests ended (quest.main.mq01 completed, quest.main.mq03 completed)",
+ "after": [],
+ "names_from_file": [
+  "0FE7F7:Black Marsh.esm",
+  "item.lockpick",
+  "thing.mq03.lockpicks",
+  "thing.mq03.sack-key"
+ ],
+ "take": true,
+ "answers": true,
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.130043,
+ "minutes": 0.7,
+ "turns": 31,
+ "tokens": {
+  "input_tokens": 58,
+  "output_tokens": 3861,
+  "cache_read_input_tokens": 246989,
+  "cache_creation_input_tokens": 12513
+ }
+}

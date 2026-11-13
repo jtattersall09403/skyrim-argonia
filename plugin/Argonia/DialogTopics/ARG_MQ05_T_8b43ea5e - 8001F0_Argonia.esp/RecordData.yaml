@@ -1,0 +1,8 @@
+FormKey: 8001F0:Argonia.esp
+EditorID: ARG_MQ05_T_8b43ea5e
+Name:
+  TargetLanguage: English
+  Value: The tree-minders should hear this. Will Kaska-Meen?
+Branch: 8001F1:Argonia.esp
+Quest: 8000C5:Argonia.esp
+SubtypeName: CUST

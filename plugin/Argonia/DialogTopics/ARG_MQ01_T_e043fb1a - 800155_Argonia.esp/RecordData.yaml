@@ -1,0 +1,8 @@
+FormKey: 800155:Argonia.esp
+EditorID: ARG_MQ01_T_e043fb1a
+Name:
+  TargetLanguage: English
+  Value: What is the Veiled Reed?
+Branch: 800156:Argonia.esp
+Quest: 8000C2:Argonia.esp
+SubtypeName: CUST

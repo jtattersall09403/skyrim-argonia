@@ -1,0 +1,7 @@
+1. Next I'm meant to get into the drowned merchant's lockbox and empty it of the pledges before Dar-Zeel, Okan-Tei and the third client can claim items from it. I would use the quest marker to reach the right box, since the first "go Strong Box" took me to the wrong one. Then I would decide how to handle the clients, whose stories were sympathetic. I never actually did any of this, so I'm inferring it from the journal and Bent-Spine's briefing.
+
+2. I work for the Night-Reed Chapter, through Bent-Spine, who handed me the lockbox job. Tilts-The-Jug sent me to him after I delivered the necklace, so I joined the chapter as a thief for hire. I took the work because it was the way forward and because I wanted to see where it led. I don't know what the chapter wants in the bigger picture, or whether Bent-Spine can be trusted.
+
+3. The most confusing moment was "go Strong Box" taking me to a different strongbox far from where I wanted to be. Nothing told me there were several boxes with the same name, so I lost a command finding out. The "seen or not seen" prompt on picking and taking was also odd, though I understood why it was there.
+
+4. I'd tell the writer the characters and tone are strong. The clients' stories and Sits-By-The-Water's account of Keeps-What-Floats made the theft feel like it had weight. But please give objects distinct names, such as "Merchant's Strongbox" and "Keeps-What-Floats' Strongbox", so travel commands don't misfire. Also make clearer when a choice is coming, so the player knows what matters before the budget runs out.

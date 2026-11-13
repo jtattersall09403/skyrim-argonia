@@ -1,0 +1,56 @@
+FormKey: 80015D:Argonia.esp
+VirtualMachineAdapter:
+  Scripts:
+  - Name: ARG_LineEffects
+    Properties:
+    - MutagenObjectType: ScriptStringProperty
+      Name: Line
+      Data: topic.mq01-pay@npc.nesh-deeka#30-30
+    - MutagenObjectType: ScriptFloatListProperty
+      Name: Num
+    - MutagenObjectType: ScriptIntListProperty
+      Name: Op
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Owner
+      Object: 8000C2:Argonia.esp
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: What
+    - MutagenObjectType: ScriptBoolProperty
+      Name: Written
+      Data: True
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Fifty gold in your palm the moment you say yes, and my door here stays open to you after. It is little against what the work may cost you.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I will not tell you otherwise.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 8000D4:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  CompareOperator: GreaterThanOrEqualTo
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 8000C2:Argonia.esp
+  ComparisonValue: 30
+- MutagenObjectType: ConditionFloat
+  CompareOperator: LessThanOrEqualTo
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 8000C2:Argonia.esp
+  ComparisonValue: 30

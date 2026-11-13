@@ -1,0 +1,8 @@
+FormKey: 8001F3:Argonia.esp
+EditorID: ARG_MQ05_T_4750a7f1
+Name:
+  TargetLanguage: English
+  Value: What is your watch here?
+Branch: 8001F4:Argonia.esp
+Quest: 8000C5:Argonia.esp
+SubtypeName: CUST

@@ -1,0 +1,16 @@
+FormKey: 8000C9:Argonia.esp
+EditorID: ARG_I_thing_lq25_bait
+Version2: 6
+ObjectBounds:
+  First: -18, -18, 0
+  Second: 18, 18, 46
+Name:
+  TargetLanguage: English
+  Value: Bait Bucket
+Model:
+  File: Clutter\Bucket02a.nif
+  Data: 0x0200000002000000000000009692849D64647300BFFA25DAB44F33AE64647300BFFA25DA
+Keywords:
+- 0914E9:Skyrim.esm
+Value: 1
+Weight: 0.5

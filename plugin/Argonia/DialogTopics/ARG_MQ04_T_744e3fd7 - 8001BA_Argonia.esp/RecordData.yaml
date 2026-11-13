@@ -1,0 +1,8 @@
+FormKey: 8001BA:Argonia.esp
+EditorID: ARG_MQ04_T_744e3fd7
+Name:
+  TargetLanguage: English
+  Value: This is your gum pot. The cut on your tree is sealed with this gum.
+Branch: 8001BB:Argonia.esp
+Quest: 8000C4:Argonia.esp
+SubtypeName: CUST

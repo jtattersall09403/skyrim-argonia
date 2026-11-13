@@ -1,0 +1,116 @@
+FormKey: 800151:Argonia.esp
+VirtualMachineAdapter:
+  Scripts:
+  - Name: ARG_LineEffects
+    Properties:
+    - MutagenObjectType: ScriptStringProperty
+      Name: Line
+      Data: topic.mq01-sent@npc.nesh-deeka#20-20
+    - MutagenObjectType: ScriptFloatListProperty
+      Name: Num
+      Data:
+      - 30
+    - MutagenObjectType: ScriptIntListProperty
+      Name: Op
+      Data:
+      - 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Owner
+      Object: 8000C2:Argonia.esp
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: What
+      Objects:
+      - Name: ''
+    - MutagenObjectType: ScriptBoolProperty
+      Name: Written
+      Data: True
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: ARG_LineEffects
+    OnEnd:
+      ScriptName: ARG_LineEffects
+      FragmentName: Fragment_End
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Sit. Salts-The-Catch told me what Buys-The-Months said of you. I am Nesh-Deeka, and I do not lie well to a face, so I will tell you plainly.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Two nights ago the gang's camp up the estuary burned. A woman with a knotted cord at her wrist killed the courier who walked with the gang.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 3
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: She took his satchel. The satchel was mine.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 4
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Her people also cut the camp's Hist cutting, a slip of the sacred tree from which the families draw their lives.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 5
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: They cut it away from the eggs at its roots. The eggs died. The gang say she looked at you lying by the fire and let you live.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 6
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I serve the Veiled Reed, the quiet service of the An-Xileel, the state that rules Black Marsh. Do not say that name to a stranger.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 7
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Not here, not on the pier. I have work for a hand whose name is on no roll. Ask me whatever you like about it before you answer.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 8
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I will tell you what I can, and where I am holding back.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 8000D4:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  CompareOperator: GreaterThanOrEqualTo
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 8000C2:Argonia.esp
+  ComparisonValue: 20
+- MutagenObjectType: ConditionFloat
+  CompareOperator: LessThanOrEqualTo
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 8000C2:Argonia.esp
+  ComparisonValue: 20

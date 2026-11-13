@@ -1,0 +1,16 @@
+FormKey: 8000F0:Argonia.esp
+EditorID: ARG_I_thing_mq04_gum_pot
+Version2: 6
+ObjectBounds:
+  First: -18, -18, 0
+  Second: 18, 18, 31
+Name:
+  TargetLanguage: English
+  Value: Pays-Late's Gum Pot
+Model:
+  File: Clutter\GlazedPot01.nif
+  Data: 0x020000000300000000000000D29F20AF64647300BFFA25DAAC8B974464647300BFFA25DADA8E929164647300262C333B
+Keywords:
+- 0914E9:Skyrim.esm
+Value: 5
+Weight: 3

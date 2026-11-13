@@ -1,0 +1,26 @@
+FormKey: 8000D1:Argonia.esp
+EditorID: ARG_R_npc_mercantile_coast_lilmoth_broker_buys_the_months_Base
+Configuration:
+  Flags:
+  - AutoCalcStats
+  Level:
+    MutagenObjectType: NpcLevel
+    Level: 19
+  TemplateFlags:
+  - Traits
+  - Factions
+  - SpellList
+  - AIData
+  - AIPackages
+  - ModelAnimation
+  - Inventory
+  - Script
+  - DefPackList
+  - AttackData
+  - Keywords
+Template: 045E50:Black Marsh.esm
+Race: 013740:Skyrim.esm
+Class: 013176:Skyrim.esm
+Name:
+  TargetLanguage: English
+  Value: Buys-The-Months

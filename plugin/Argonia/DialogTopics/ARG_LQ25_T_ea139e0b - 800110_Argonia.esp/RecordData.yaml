@@ -1,0 +1,8 @@
+FormKey: 800110:Argonia.esp
+EditorID: ARG_LQ25_T_ea139e0b
+Name:
+  TargetLanguage: English
+  Value: I know about the offal off the end of your plank walk. Pay me, and I will say nothing to Sells-Dear.
+Branch: 800111:Argonia.esp
+Quest: 8000C0:Argonia.esp
+SubtypeName: CUST

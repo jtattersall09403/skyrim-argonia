@@ -1,0 +1,418 @@
+FormKey: 8000C0:Argonia.esp
+EditorID: ARG_LQ25
+VirtualMachineAdapter:
+  Scripts:
+  - Name: ARG_QuestStages
+    Properties:
+    - MutagenObjectType: ScriptStringProperty
+      Name: Kind
+      Data: minor
+    - MutagenObjectType: ScriptStringListProperty
+      Name: Labels
+      Data:
+      - level=creature-at.hist-heartland.helstrom.lq25-river-beast
+      - name=template|8000C9:Argonia.esp|item.bucket
+      - name=item|8000C9:Argonia.esp|thing.lq25.bait
+      - name=thing|8000C9:Argonia.esp|thing.lq25.bait
+      - quest=quest.local.lq25
+      - kind=minor
+      - trigger=death.creature-at.hist-heartland.helstrom.lq25-river-beast.0-30|death|creature-at.hist-heartland.helstrom.lq25-river-beast|0|30|
+      - trigger=take.thing.lq25.bait.40-50|take|thing.lq25.bait|40|50|
+    - MutagenObjectType: ScriptFloatListProperty
+      Name: Num
+      Data:
+      - 30
+      - 20
+      - 0
+      - 20
+      - 30
+      - 1
+      - 50
+      - 30
+      - 40
+      - 40
+      - 50
+      - 1
+      - 4
+      - -4
+      - 60
+      - 50
+      - 0
+      - 0
+      - 2
+      - 60
+      - 50
+      - 0
+      - 0
+      - 50
+      - 0
+      - 50
+      - 0
+      - 50
+      - 0
+    - MutagenObjectType: ScriptIntListProperty
+      Name: Op
+      Data:
+      - 8
+      - 2
+      - 5
+      - 3
+      - 2
+      - 14
+      - 1
+      - 3
+      - 2
+      - 3
+      - 2
+      - 21
+      - 28
+      - 28
+      - 22
+      - 15
+      - 7
+      - 6
+      - 28
+      - 22
+      - 15
+      - 7
+      - 6
+      - 16
+      - 6
+      - 16
+      - 6
+      - 16
+      - 6
+    - MutagenObjectType: ScriptStringProperty
+      Name: QuestId
+      Data: quest.local.lq25
+    - MutagenObjectType: ScriptIntListProperty
+      Name: StageFrom
+      Data:
+      - 0
+      - 1
+      - 3
+      - 5
+      - 9
+      - 11
+      - 18
+      - 23
+      - 25
+      - 27
+    - MutagenObjectType: ScriptIntListProperty
+      Name: Stages
+      Data:
+      - 0
+      - 20
+      - 30
+      - 40
+      - 50
+      - 91
+      - 92
+      - 93
+      - 94
+      - 95
+    - MutagenObjectType: ScriptIntListProperty
+      Name: StageTo
+      Data:
+      - 1
+      - 3
+      - 5
+      - 9
+      - 11
+      - 18
+      - 23
+      - 25
+      - 27
+      - 29
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: What
+      Objects:
+      - Name: ''
+        Object: 8000C6:Argonia.esp
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 8000C9:Argonia.esp
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 8000C9:Argonia.esp
+      - Name: ''
+        Object: 08D5F1:Black Marsh North.esp
+      - Name: ''
+        Object: 08D5EF:Black Marsh North.esp
+      - Name: ''
+        Object: 00000F:Skyrim.esm
+      - Name: ''
+      - Name: ''
+        Object: 0FC85D:Skyrim.esm
+      - Name: ''
+      - Name: ''
+        Object: 08D5EF:Black Marsh North.esp
+      - Name: ''
+        Object: 00000F:Skyrim.esm
+      - Name: ''
+      - Name: ''
+        Object: 0FC85D:Skyrim.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+  FileName: ARG_QuestStages
+  Fragments:
+  - ScriptName: ARG_QuestStages
+    FragmentName: Fragment_0
+  - Stage: 20
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_20
+  - Stage: 30
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_30
+  - Stage: 40
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_40
+  - Stage: 50
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_50
+  - Stage: 91
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_91
+  - Stage: 92
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_92
+  - Stage: 93
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_93
+  - Stage: 94
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_94
+  - Stage: 95
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_95
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 8000C0:Argonia.esp
+      Alias: 0
+    Scripts:
+    - Name: defaultSetStageOnDeathRefAlias
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: myQST
+        Object: 8000C0:Argonia.esp
+      - MutagenObjectType: ScriptIntProperty
+        Name: preReqStage
+      - MutagenObjectType: ScriptIntProperty
+        Name: StageToSet
+        Data: 30
+  - Property:
+      Name: ''
+      Object: 8000C0:Argonia.esp
+      Alias: 1
+    Scripts:
+    - Name: ARG_AliasEffects
+      Properties:
+      - MutagenObjectType: ScriptFloatListProperty
+        Name: Num
+        Data:
+        - 20
+        - 94
+      - MutagenObjectType: ScriptIntListProperty
+        Name: Op
+        Data:
+        - 10
+        - 9
+      - MutagenObjectType: ScriptObjectListProperty
+        Name: What
+        Objects:
+        - Name: ''
+          Object: 8000C0:Argonia.esp
+        - Name: ''
+          Object: 8000C0:Argonia.esp
+  - Property:
+      Name: ''
+      Object: 8000C0:Argonia.esp
+      Alias: 2
+    Scripts:
+    - Name: ARG_AliasEffects
+      Properties:
+      - MutagenObjectType: ScriptFloatListProperty
+        Name: Num
+        Data:
+        - 20
+        - 93
+      - MutagenObjectType: ScriptIntListProperty
+        Name: Op
+        Data:
+        - 10
+        - 9
+      - MutagenObjectType: ScriptObjectListProperty
+        Name: What
+        Objects:
+        - Name: ''
+          Object: 8000C0:Argonia.esp
+        - Name: ''
+          Object: 8000C0:Argonia.esp
+  - Property:
+      Name: ''
+      Object: 8000C0:Argonia.esp
+      Alias: 3
+    Scripts:
+    - Name: ARG_AliasEffects
+      Properties:
+      - MutagenObjectType: ScriptFloatListProperty
+        Name: Num
+        Data:
+        - 20
+        - 95
+      - MutagenObjectType: ScriptIntListProperty
+        Name: Op
+        Data:
+        - 10
+        - 9
+      - MutagenObjectType: ScriptObjectListProperty
+        Name: What
+        Objects:
+        - Name: ''
+          Object: 8000C0:Argonia.esp
+        - Name: ''
+          Object: 8000C0:Argonia.esp
+  - Property:
+      Name: ''
+      Object: 8000C0:Argonia.esp
+      Alias: 4
+    Scripts:
+    - Name: defaultSetStageOnPlayerAcquire
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: myQST
+        Object: 8000C0:Argonia.esp
+      - MutagenObjectType: ScriptIntProperty
+        Name: preReqStage
+        Data: 40
+      - MutagenObjectType: ScriptIntProperty
+        Name: StageToSet
+        Data: 50
+Name:
+  TargetLanguage: English
+  Value: The River Monster
+Flags:
+- StartGameEnabled
+- RunOnce
+Priority: 50
+Type: SideQuest
+Stages:
+- Flags:
+  - StartUpStage
+  LogEntries:
+  - Flags: []
+- Index: 20
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: At Helstrom's landing, Okan-Zish of the landing crew told me a crocodile lairs in the shallows off the end of the crew's plank walk. It took one of their rafts, and no raft has gone out since. I'm to kill it; the plank walk runs east along the shore from the stone tower where he stands.
+- Index: 30
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: The crocodile in the shallows off the end of the plank walk at Helstrom's landing is dead. I'm to tell Okan-Zish, the rafter of the landing crew who wanted it gone; he stands by the stone tower at the landing, beside the plank walk.
+- Index: 40
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: "Okan-Zish admitted the beast was the crew's doing: Wuleen-Taza dumped offal off the end of the plank walk to scare traders off Sells-Dear's boat, and it drew a real crocodile. The crew left their bait bucket there. I'm to fetch it for Sells-Dear, the boat captain, which costs the crew their trade, or take Wuleen-Taza's price to keep quiet."
+- Index: 50
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: I have the crew's bait bucket, still sour with offal. I'm to show it to Sells-Dear, the boat captain, by a house door on the west side of Helstrom's street north of the landing, and the crew lose their trade; or take Wuleen-Taza's price by the bridge and keep quiet.
+- Index: 91
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+    Entry:
+      TargetLanguage: English
+      Value: "I showed Sells-Dear, the boat captain, the crew's bait bucket. She kept it and paid me 60 gold, and with the rafters' trick known the river trade is hers. The landing crew have lost it: no trader hires their rafts now, and Okan-Zish and Wuleen-Taza have no work at the landing."
+- Index: 92
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+    Entry:
+      TargetLanguage: English
+      Value: Wuleen-Taza paid me 60 gold to say nothing of the bait. The crew keep their trade and their rafts are on the river again, but I took coin to hide a trick that drew a real beast to their own plank walk, and Sells-Dear, the boat captain, still thinks the crocodile came up the river on its own.
+- Index: 93
+  LogEntries:
+  - Flags:
+    - FailQuest
+    Entry:
+      TargetLanguage: English
+      Value: Okan-Zish, a rafter of Helstrom's landing crew, is dead. What the crew asked of me ends with him.
+- Index: 94
+  LogEntries:
+  - Flags:
+    - FailQuest
+    Entry:
+      TargetLanguage: English
+      Value: Sells-Dear, the boat captain of Helstrom, is dead. What was asked of me at the landing ends with her.
+- Index: 95
+  LogEntries:
+  - Flags:
+    - FailQuest
+    Entry:
+      TargetLanguage: English
+      Value: Wuleen-Taza, a rafter of Helstrom's landing crew, is dead. What was asked of me at the landing ends with her.
+Objectives:
+- Index: 20
+  DisplayText:
+    TargetLanguage: English
+    Value: Kill the crocodile off the end of the plank walk at Helstrom's landing.
+  Targets:
+  - {}
+- Index: 30
+  DisplayText:
+    TargetLanguage: English
+    Value: Tell Okan-Zish at the landing's stone tower that the crocodile is dead.
+  Targets:
+  - AliasID: 2
+- Index: 40
+  DisplayText:
+    TargetLanguage: English
+    Value: Fetch the bait bucket from the shallows off the end of the plank walk for Sells-Dear, or take Wuleen-Taza's price to keep quiet.
+  Targets:
+  - AliasID: 4
+  - AliasID: 1
+  - AliasID: 3
+- Index: 50
+  DisplayText:
+    TargetLanguage: English
+    Value: Show the bait bucket to Sells-Dear, or take Wuleen-Taza's price to keep quiet.
+  Targets:
+  - AliasID: 1
+  - AliasID: 3
+Aliases:
+- Name: creature-at.hist-heartland.helstrom.lq25-river-beast
+  ForcedReference: 8000C6:Argonia.esp
+- ID: 1
+  Name: npc.hist-heartland.helstrom.boat-captain
+  ForcedReference: 08D5F1:Black Marsh North.esp
+- ID: 2
+  Name: npc.hist-heartland.helstrom.lq25-crew-poler
+  ForcedReference: 08D5EE:Black Marsh North.esp
+- ID: 3
+  Name: npc.hist-heartland.helstrom.lq25-crew-steerer
+  ForcedReference: 08D5EF:Black Marsh North.esp
+- ID: 4
+  Name: thing.lq25.bait
+  ForcedReference: 8000C8:Argonia.esp

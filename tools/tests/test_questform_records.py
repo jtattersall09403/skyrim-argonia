@@ -160,13 +160,14 @@ def test_a_hand_in_and_a_take_name_one_item(forms):
 
 def test_naming_a_unique_things_base_is_refused(world, forms):
     f = copy.deepcopy(forms["quest.main.mq03"])
+    base = next(r["placement"]["base"]["id"] for r in f["refs"] if r["id"] == "thing.mq03.sap-jar")   # its template item
     for ln in f["lines"]:
         for c in ln["conditions"]:
             if c.get("item") == "thing.mq03.sap-jar":
-                c["item"] = "03EADD:Skyrim.esm"
+                c["item"] = base
     assert "item-id" in {r for r, _ in rules.check(f)}
     c = qc.Compiler(world, "quest.main.mq03")
-    assert c.item("03EADD:Skyrim.esm", "x") == "03EADD:Skyrim.esm"
+    assert c.item(base, "x") == base
     assert [t for t, _, _ in c.refused] == ["item id"]
     assert c.item("thing.mq03.lockpicks", "x") == "item.lockpick"       # a stock thing by its base
 

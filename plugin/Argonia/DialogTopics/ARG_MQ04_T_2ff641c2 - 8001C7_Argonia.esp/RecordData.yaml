@@ -1,0 +1,8 @@
+FormKey: 8001C7:Argonia.esp
+EditorID: ARG_MQ04_T_2ff641c2
+Name:
+  TargetLanguage: English
+  Value: Did you see who came to your tree?
+Branch: 8001C8:Argonia.esp
+Quest: 8000C4:Argonia.esp
+SubtypeName: CUST

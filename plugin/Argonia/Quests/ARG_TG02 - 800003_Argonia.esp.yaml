@@ -10,22 +10,21 @@ VirtualMachineAdapter:
     - MutagenObjectType: ScriptStringListProperty
       Name: Labels
       Data:
+      - name=template|800020:Argonia.esp|087834:Skyrim.esm
       - name=item|800020:Argonia.esp|item.glass-bead-strand
-      - name=thing|800020:Argonia.esp|item.glass-bead-strand
       - name=item|800021:Argonia.esp|item.tg02.bone-figurine
       - name=thing|800021:Argonia.esp|item.tg02.bone-figurine
+      - name=template|800022:Argonia.esp|087833:Skyrim.esm
       - name=item|800022:Argonia.esp|item.tg02.neesak-charm
-      - name=thing|800022:Argonia.esp|item.tg02.neesak-charm
       - name=item|00000A:Skyrim.esm|item.lockpick
+      - name=thing|800022:Argonia.esp|item.tg02.neesak-charm
+      - name=thing|800020:Argonia.esp|item.glass-bead-strand
       - name=number|80002A:Argonia.esp|flag.tg02.fence-dead
       - quest=quest.tg.tg02
       - kind=faction
       - trigger=take.item.tg02.bone-figurine.20-30|take|item.tg02.bone-figurine|20|30|
       - trigger=take.item.tg02.neesak-charm.20-30|take|item.tg02.neesak-charm|20|30|
       - trigger=take.item.glass-bead-strand.20-30|take|item.glass-bead-strand|20|30|
-      - trigger=take.item.tg02.bone-figurine.21-30|take|item.tg02.bone-figurine|21|30|
-      - trigger=take.item.tg02.neesak-charm.21-30|take|item.tg02.neesak-charm|21|30|
-      - trigger=take.item.glass-bead-strand.21-30|take|item.glass-bead-strand|21|30|
     - MutagenObjectType: ScriptFloatListProperty
       Name: Num
       Data:
@@ -64,77 +63,68 @@ VirtualMachineAdapter:
       - 1
       - 40
       - 30
-      - 41
+      - 40
       - 1
       - 90
       - 40
-      - 41
       - 42
       - 1
       - 45
       - 40
-      - 41
-      - 43
+      - 42
       - 1
       - 1
       - 1
       - 120
-      - 15
-      - -15
-      - -15
-      - 30
-      - 43
+      - 3
+      - -3
+      - -3
+      - 42
       - 0
       - 0
       - 1
       - 1
       - 1
       - 120
-      - 15
-      - -15
-      - -15
-      - 30
-      - 43
+      - 3
+      - -3
+      - -3
+      - 42
       - 0
       - 0
       - 1
       - 1
       - 1
       - 120
-      - 15
-      - -15
-      - -15
-      - 30
-      - 43
+      - 3
+      - -3
+      - -3
+      - 42
       - 0
       - 0
       - 1
-      - 5
+      - 1
       - 55
-      - -5
-      - -5
-      - -5
+      - -1
+      - -1
+      - -1
       - 42
-      - 43
-      - 43
       - 0
       - 0
       - 1
-      - 5
+      - 1
       - 30
-      - -5
-      - -5
-      - -5
+      - -1
+      - -1
+      - -1
       - 42
-      - 43
-      - 43
       - 0
       - 0
       - 1
-      - 43
+      - 42
       - 0
-      - -10
-      - 43
+      - -2
+      - 42
       - 0
     - MutagenObjectType: ScriptIntListProperty
       Name: Op
@@ -178,12 +168,10 @@ VirtualMachineAdapter:
       - 21
       - 22
       - 3
-      - 3
       - 2
       - 21
       - 22
       - 3
-      - 3
       - 2
       - 21
       - 21
@@ -192,7 +180,6 @@ VirtualMachineAdapter:
       - 28
       - 28
       - 28
-      - 3
       - 15
       - 7
       - 6
@@ -203,7 +190,6 @@ VirtualMachineAdapter:
       - 28
       - 28
       - 28
-      - 3
       - 15
       - 7
       - 6
@@ -214,7 +200,6 @@ VirtualMachineAdapter:
       - 28
       - 28
       - 28
-      - 3
       - 15
       - 7
       - 6
@@ -224,8 +209,6 @@ VirtualMachineAdapter:
       - 28
       - 28
       - 28
-      - 3
-      - 3
       - 15
       - 7
       - 6
@@ -235,8 +218,6 @@ VirtualMachineAdapter:
       - 28
       - 28
       - 28
-      - 3
-      - 3
       - 15
       - 7
       - 6
@@ -259,14 +240,14 @@ VirtualMachineAdapter:
       - 28
       - 32
       - 36
-      - 41
-      - 46
-      - 57
-      - 68
-      - 79
-      - 90
-      - 101
-      - 104
+      - 40
+      - 44
+      - 54
+      - 64
+      - 74
+      - 83
+      - 92
+      - 95
     - MutagenObjectType: ScriptIntListProperty
       Name: Stages
       Data:
@@ -294,15 +275,15 @@ VirtualMachineAdapter:
       - 28
       - 32
       - 36
-      - 41
-      - 46
-      - 57
-      - 68
-      - 79
-      - 90
-      - 101
-      - 104
-      - 107
+      - 40
+      - 44
+      - 54
+      - 64
+      - 74
+      - 83
+      - 92
+      - 95
+      - 98
     - MutagenObjectType: ScriptObjectListProperty
       Name: What
       Objects:
@@ -366,11 +347,9 @@ VirtualMachineAdapter:
       - Name: ''
       - Name: ''
       - Name: ''
-      - Name: ''
         Object: 800022:Argonia.esp
       - Name: ''
         Object: 00000F:Skyrim.esm
-      - Name: ''
       - Name: ''
       - Name: ''
       - Name: ''
@@ -387,7 +366,6 @@ VirtualMachineAdapter:
         Object: 800025:Argonia.esp
       - Name: ''
         Object: 800023:Argonia.esp
-      - Name: ''
       - Name: ''
       - Name: ''
         Object: 0FC85D:Skyrim.esm
@@ -408,7 +386,6 @@ VirtualMachineAdapter:
         Object: 800023:Argonia.esp
       - Name: ''
       - Name: ''
-      - Name: ''
         Object: 0FC85D:Skyrim.esm
       - Name: ''
       - Name: ''
@@ -425,7 +402,6 @@ VirtualMachineAdapter:
         Object: 800027:Argonia.esp
       - Name: ''
         Object: 800025:Argonia.esp
-      - Name: ''
       - Name: ''
       - Name: ''
         Object: 0FC85D:Skyrim.esm
@@ -444,8 +420,6 @@ VirtualMachineAdapter:
         Object: 800023:Argonia.esp
       - Name: ''
       - Name: ''
-      - Name: ''
-      - Name: ''
         Object: 0FC85D:Skyrim.esm
       - Name: ''
       - Name: ''
@@ -460,8 +434,6 @@ VirtualMachineAdapter:
         Object: 800025:Argonia.esp
       - Name: ''
         Object: 800023:Argonia.esp
-      - Name: ''
-      - Name: ''
       - Name: ''
       - Name: ''
         Object: 0FC85D:Skyrim.esm
@@ -716,19 +688,7 @@ Objectives:
     Value: Sell Okan-Tei the Newly Mounted Neesak Charm (Speech 30 for its full price).
   Targets:
   - AliasID: 5
-- Index: 41
-  DisplayText:
-    TargetLanguage: English
-    Value: Sell Okan-Tei the Newly Mounted Neesak Charm (Speech 30 for its full price).
-  Targets:
-  - AliasID: 5
 - Index: 42
-  DisplayText:
-    TargetLanguage: English
-    Value: Sell Dar-Zeel the Kothringi Glass Beads (Speech 30 for their full price).
-  Targets:
-  - AliasID: 4
-- Index: 43
   DisplayText:
     TargetLanguage: English
     Value: Sell Dar-Zeel the Kothringi Glass Beads (Speech 30 for their full price).

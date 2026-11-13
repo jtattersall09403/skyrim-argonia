@@ -1,0 +1,8 @@
+FormKey: 80018C:Argonia.esp
+EditorID: ARG_MQ03_A_47138b74
+Name:
+  TargetLanguage: English
+  Value: (Persuade) The one I work for means to find who cut your tree. We can learn it from the jar.
+Branch: 80017C:Argonia.esp
+Quest: 8000C3:Argonia.esp
+SubtypeName: CUST

@@ -1,0 +1,8 @@
+FormKey: 800148:Argonia.esp
+EditorID: ARG_MQ01_T_c6b5b34f
+Name:
+  TargetLanguage: English
+  Value: Where can I find work, then?
+Branch: 800149:Argonia.esp
+Quest: 8000C2:Argonia.esp
+SubtypeName: CUST

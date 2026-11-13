@@ -1,0 +1,8 @@
+FormKey: 80013D:Argonia.esp
+EditorID: ARG_MQ01_T_5c207ac9
+Name:
+  TargetLanguage: English
+  Value: What happened at your camp?
+Branch: 80013E:Argonia.esp
+Quest: 8000C2:Argonia.esp
+SubtypeName: CUST

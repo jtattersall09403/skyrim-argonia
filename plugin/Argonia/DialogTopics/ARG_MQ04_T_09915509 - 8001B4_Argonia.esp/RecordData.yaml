@@ -1,0 +1,8 @@
+FormKey: 8001B4:Argonia.esp
+EditorID: ARG_MQ04_T_09915509
+Name:
+  TargetLanguage: English
+  Value: The village blames you whatever you say. Tell me what happened to your tree. (Persuade)
+Branch: 8001B5:Argonia.esp
+Quest: 8000C4:Argonia.esp
+SubtypeName: CUST

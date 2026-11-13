@@ -1,0 +1,25 @@
+FormKey: 000F29:Argonia.esp
+Flags: {}
+PreviousDialog: 000F28:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Traveller, from this tower I watch the rafters sit idle. A beast in the shallows has taken one of their crew, and no raft has gone out since. Ask Okan-Zish, who stands near the tower here. He wants it dealt with.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 08D5EC:Black Marsh North.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 8000C0:Argonia.esp
+Prompt:
+  TargetLanguage: English
+  Value: Latest rumours

@@ -1,0 +1,164 @@
+FormKey: 8001E5:Argonia.esp
+VirtualMachineAdapter:
+  Scripts:
+  - Name: ARG_LineEffects
+    Properties:
+    - MutagenObjectType: ScriptStringProperty
+      Name: Line
+      Data: topic.mq05-back@npc.nesh-deeka#10-10
+    - MutagenObjectType: ScriptFloatListProperty
+      Name: Num
+      Data:
+      - 20
+    - MutagenObjectType: ScriptIntListProperty
+      Name: Op
+      Data:
+      - 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Owner
+      Object: 8000C5:Argonia.esp
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: What
+      Objects:
+      - Name: ''
+    - MutagenObjectType: ScriptBoolProperty
+      Name: Written
+      Data: True
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: ARG_LineEffects
+    OnEnd:
+      ScriptName: ARG_LineEffects
+      FragmentName: Fragment_End
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Then you have seen what a cut is. A Hist that falls silent kills no eggs.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: The Hist at Low-Reed Village was cut at the root, and the eggs at its roots died of the cut.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 3
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: The interior, the villages inland behind the marsh, must hear that difference.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 4
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: The people who can carry it home gather at Helstrom, a great city behind the marsh.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 5
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: They are the tree-minders, who tend each village's Hist, and the Nisswo, wandering priests who read what a Hist says.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 6
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I want them to hear what a cut tree looks like from someone the Reed can deny. So you go alone, and I send no escort.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 7
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Do not name the Reed in Helstrom. If it is named, what you saw becomes the Reed's word and I cannot disown it.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 8
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I do not like using a hand I can disown. I have no other. Take the coast ship at Lilmoth's stop, on the east side of the town.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 9
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: The ship has a door that opens on Helstrom's landing. Go ashore by it. From the landing the way runs inland over roots and through shallows.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 10
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Two giant wasps keep the far bend of it, short of the gate. Just inside the gate, to the west, is the grove.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 11
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Ei-Tuja stands there, a Nisswo who reads for anyone.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 12
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Kaska-Meen is a tree-minder who sits in the city's assembly and keeps the grove's watch, and she hears few strangers.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 13
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Whoever you tell decides how the word travels. A Nisswo preaches it in every village, where the cutters will hear it too.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 14
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: A tree-minder carries it only to those who keep trees. Go and tell one of them what you saw. Say only that, as a stranger who saw it.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 8000D4:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  CompareOperator: GreaterThanOrEqualTo
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 8000C5:Argonia.esp
+  ComparisonValue: 10
+- MutagenObjectType: ConditionFloat
+  CompareOperator: LessThanOrEqualTo
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 8000C5:Argonia.esp
+  ComparisonValue: 10

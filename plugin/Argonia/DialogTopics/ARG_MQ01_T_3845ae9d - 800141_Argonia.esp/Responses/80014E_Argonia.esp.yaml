@@ -1,0 +1,57 @@
+FormKey: 80014E:Argonia.esp
+VirtualMachineAdapter:
+  Scripts:
+  - Name: ARG_LineEffects
+    Properties:
+    - MutagenObjectType: ScriptStringProperty
+      Name: Line
+      Data: topic.mq01-salts@npc.mercantile-coast.lilmoth.fish-trader-house#30-30.1
+    - MutagenObjectType: ScriptFloatListProperty
+      Name: Num
+    - MutagenObjectType: ScriptIntListProperty
+      Name: Op
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Owner
+      Object: 8000C2:Argonia.esp
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: What
+    - MutagenObjectType: ScriptBoolProperty
+      Name: Written
+      Data: True
+Flags: {}
+PreviousDialog: 80014D:Argonia.esp
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I am Salts-The-Catch. I sell fish, and I keep this house below Lilmoth Dock. People come and go here. I ask nothing of them.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Nesh-Deeka sits at the far end of the room.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 8000D2:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  CompareOperator: GreaterThanOrEqualTo
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 8000C2:Argonia.esp
+  ComparisonValue: 30
+- MutagenObjectType: ConditionFloat
+  CompareOperator: LessThanOrEqualTo
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 8000C2:Argonia.esp
+  ComparisonValue: 30

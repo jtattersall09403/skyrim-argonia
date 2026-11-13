@@ -1,0 +1,16 @@
+FormKey: 8000E2:Argonia.esp
+VersionControl: 79128
+EditorID: ARG_I_thing_mq03_sap_jar
+Version2: 7
+ObjectBounds:
+  First: -21, -21, 0
+  Second: 21, 21, 40
+Name:
+  TargetLanguage: English
+  Value: Cutters' Jar of Sap
+Model:
+  File: Clutter\HoneyPot01.nif
+  Data: 0x020000000400000000000000EC76DF3664647300BFFA25DAF25384DC64647300BFFA25DA4A28DF7564647300262C333B4DD3988364647300BFFA25DA
+Keywords:
+- 0914E9:Skyrim.esm
+Weight: 1

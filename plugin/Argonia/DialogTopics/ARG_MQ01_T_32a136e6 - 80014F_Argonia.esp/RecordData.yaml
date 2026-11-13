@@ -1,0 +1,8 @@
+FormKey: 80014F:Argonia.esp
+EditorID: ARG_MQ01_T_32a136e6
+Name:
+  TargetLanguage: English
+  Value: Buys-The-Months says you pay for anyone off his ship.
+Branch: 800150:Argonia.esp
+Quest: 8000C2:Argonia.esp
+SubtypeName: CUST

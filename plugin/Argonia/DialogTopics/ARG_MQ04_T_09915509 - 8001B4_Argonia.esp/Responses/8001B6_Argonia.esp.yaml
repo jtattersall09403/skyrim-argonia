@@ -1,0 +1,108 @@
+FormKey: 8001B6:Argonia.esp
+VirtualMachineAdapter:
+  Scripts:
+  - Name: ARG_LineEffects
+    Properties:
+    - MutagenObjectType: ScriptStringProperty
+      Name: Line
+      Data: topic.mq04-persuade@npc.mercantile-coast.low-reed-village.chime-tuner#20-20.0
+    - MutagenObjectType: ScriptFloatListProperty
+      Name: Num
+      Data:
+      - 30
+    - MutagenObjectType: ScriptIntListProperty
+      Name: Op
+      Data:
+      - 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Owner
+      Object: 8000C4:Argonia.esp
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: What
+      Objects:
+      - Name: ''
+    - MutagenObjectType: ScriptBoolProperty
+      Name: Written
+      Data: True
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: ARG_LineEffects
+    OnEnd:
+      ScriptName: ARG_LineEffects
+      FragmentName: Fragment_End
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: You do not shout it to the village. You ask me quietly. I have carried this alone too long.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: A root of the Hist was cut under the stilts, and its sap was drawn off. The cut was sealed with black gum from the sap-workshop.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 3
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: It was my gum, and my knife was gone from the workshop.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 4
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I knew how it would look, so I hid the cut and told only Turns-The-Clutch, who tends the eggs in the pool.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 5
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: The drips led north to the leech water, and there I lost them. A boat came in from the north reeds that night and went back out. She saw it too.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 6
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: If you want to know where the sap went, ask me.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 8000E9:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  CompareOperator: GreaterThanOrEqualTo
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 8000C4:Argonia.esp
+  ComparisonValue: 20
+- MutagenObjectType: ConditionFloat
+  CompareOperator: LessThanOrEqualTo
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 8000C4:Argonia.esp
+  ComparisonValue: 20
+- MutagenObjectType: ConditionFloat
+  CompareOperator: GreaterThanOrEqualTo
+  Data:
+    MutagenObjectType: GetActorValueConditionData
+    RunOnType: Reference
+    Reference: 000014:Skyrim.esm
+    ActorValue: Speech
+  ComparisonValue: 25

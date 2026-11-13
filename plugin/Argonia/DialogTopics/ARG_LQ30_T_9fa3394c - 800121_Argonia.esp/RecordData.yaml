@@ -1,0 +1,8 @@
+FormKey: 800121:Argonia.esp
+EditorID: ARG_LQ30_T_9fa3394c
+Name:
+  TargetLanguage: English
+  Value: Will you stop me going out into the basin?
+Branch: 800122:Argonia.esp
+Quest: 8000C1:Argonia.esp
+SubtypeName: CUST

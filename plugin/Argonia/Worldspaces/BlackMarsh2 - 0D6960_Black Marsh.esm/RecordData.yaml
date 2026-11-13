@@ -34,6 +34,144 @@ TopCell:
   Grid:
     Flags: -1536086528
   WaterHeight: 3.4028235E+38
+  Persistent:
+  - MutagenObjectType: PlacedNpc
+    FormKey: 8000C6:Argonia.esp
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_R_creature_at_hist_heartland_helstrom_lq25_river_beast
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 8000C7:Argonia.esp
+    Placement:
+      Position: -35700, 63380, 8
+    MajorFlags:
+    - Persistent
+  - MutagenObjectType: PlacedObject
+    FormKey: 8000C8:Argonia.esp
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_R_thing_lq25_bait
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 8000C9:Argonia.esp
+    Placement:
+      Position: -35620, 63440, -8
+  - MutagenObjectType: PlacedNpc
+    FormKey: 8000CA:Argonia.esp
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_R_creature_at_hist_heartland_helstrom_lq30_basin_beast
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 8000CB:Argonia.esp
+    Placement:
+      Position: -19900, 76650, 993
+    MajorFlags:
+    - Persistent
+  - MutagenObjectType: PlacedNpc
+    FormKey: 8000CC:Argonia.esp
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_R_npc_hist_heartland_helstrom_lq30_kin
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 8000CD:Argonia.esp
+    Placement:
+      Position: -27710, 77844, 83
+    MajorFlags:
+    - Persistent
+  - MutagenObjectType: PlacedNpc
+    FormKey: 8000CE:Argonia.esp
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_R_npc_hist_heartland_helstrom_lq30_youth
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 8000CF:Argonia.esp
+    Placement:
+      Position: -18525, 77230, 148
+    MajorFlags:
+    - Persistent
+  - MutagenObjectType: PlacedNpc
+    FormKey: 8000F5:Argonia.esp
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_R_creature_mq05_wasp_1
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 8000F6:Argonia.esp
+    Placement:
+      Position: -36500, 60500, -1
+    MajorFlags:
+    - Persistent
+  - MutagenObjectType: PlacedNpc
+    FormKey: 8000F7:Argonia.esp
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_R_creature_mq05_wasp_2
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 8000F8:Argonia.esp
+    Placement:
+      Position: -36200, 60300, 35
+    MajorFlags:
+    - Persistent
+  - MutagenObjectType: PlacedNpc
+    FormKey: 8000F9:Argonia.esp
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_R_npc_hist_heartland_helstrom_grove_s_senior_tree
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 8000FA:Argonia.esp
+    Placement:
+      Position: -29761, 79228, 1574
+    MajorFlags:
+    - Persistent
+  - MutagenObjectType: PlacedNpc
+    FormKey: 8000FB:Argonia.esp
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_R_npc_hist_heartland_helstrom_nisswo_interpreter_debating_house
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 8000FC:Argonia.esp
+    Placement:
+      Position: -29300, 78400, 1574
+    MajorFlags:
+    - Persistent
+  - MutagenObjectType: PlacedNpc
+    FormKey: 08D5E9:Black Marsh North.esp
+    MajorRecordFlagsRaw: 1024
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000BDA:Argonia.esp
+    Placement:
+      Position: -27857.562, 77814.81, 20.184082
+    MajorFlags:
+    - Persistent
+  - MutagenObjectType: PlacedNpc
+    FormKey: 08D5EE:Black Marsh North.esp
+    MajorRecordFlagsRaw: 1024
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000BDE:Argonia.esp
+    Placement:
+      Position: -37269.316, 63904.95, 161.9195
+    MajorFlags:
+    - Persistent
+  - MutagenObjectType: PlacedNpc
+    FormKey: 08D5EF:Black Marsh North.esp
+    MajorRecordFlagsRaw: 1024
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000BDF:Argonia.esp
+    Placement:
+      Position: -36824.04, 64087.633, 194.38165
+    MajorFlags:
+    - Persistent
+  - MutagenObjectType: PlacedNpc
+    FormKey: 08D5F1:Black Marsh North.esp
+    MajorRecordFlagsRaw: 1024
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000BE1:Argonia.esp
+    Placement:
+      Position: -35963.996, 78367.34, 788.00397
+    MajorFlags:
+    - Persistent
   MajorFlags:
   - Persistent
   - 0x40000

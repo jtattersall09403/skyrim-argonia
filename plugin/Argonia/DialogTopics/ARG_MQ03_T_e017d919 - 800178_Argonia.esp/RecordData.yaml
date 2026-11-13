@@ -1,0 +1,8 @@
+FormKey: 800178:Argonia.esp
+EditorID: ARG_MQ03_T_e017d919
+Name:
+  TargetLanguage: English
+  Value: What does the Reed want of me?
+Branch: 800179:Argonia.esp
+Quest: 8000C3:Argonia.esp
+SubtypeName: CUST

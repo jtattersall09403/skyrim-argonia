@@ -1,0 +1,330 @@
+FormKey: 8000C3:Argonia.esp
+EditorID: ARG_MQ03
+VirtualMachineAdapter:
+  Scripts:
+  - Name: ARG_QuestStages
+    Properties:
+    - MutagenObjectType: ScriptStringProperty
+      Name: Kind
+      Data: main
+    - MutagenObjectType: ScriptStringListProperty
+      Name: Labels
+      Data:
+      - name=item|00000A:Skyrim.esm|item.lockpick
+      - name=item|8000DE:Argonia.esp|thing.mq03.sack-key
+      - name=thing|8000DE:Argonia.esp|thing.mq03.sack-key
+      - name=template|8000E2:Argonia.esp|05421B:Skyrim.esm
+      - name=item|8000E2:Argonia.esp|thing.mq03.sap-jar
+      - name=thing|8000E2:Argonia.esp|thing.mq03.sap-jar
+      - name=item|8000E3:Argonia.esp|thing.mq03.page
+      - name=number|8000E4:Argonia.esp|flag.mq03.tasted
+      - name=number|8000E1:Argonia.esp|flag.main.thread-severed
+      - quest=quest.main.mq03
+      - kind=main
+      - trigger=death.npc.pirate-freeholds.opening-work-camp.n1-2.10-13|death|npc.pirate-freeholds.opening-work-camp.n1-2|until=12|10|13|choice
+    - MutagenObjectType: ScriptFloatListProperty
+      Name: Num
+      Data:
+      - 95
+      - 13
+      - 10
+      - 0
+      - 10
+      - 12
+      - 10
+      - 13
+      - 1
+      - 0
+      - 10
+      - 15
+      - 20
+      - 1
+      - 0
+      - 10
+      - 15
+      - 1
+      - 1
+      - 1
+      - 0
+      - 25
+      - 10
+      - 15
+      - 0
+      - 1
+      - 15
+      - 0
+    - MutagenObjectType: ScriptIntListProperty
+      Name: Op
+      Data:
+      - 8
+      - 8
+      - 2
+      - 5
+      - 3
+      - 2
+      - 3
+      - 2
+      - 20
+      - 36
+      - 3
+      - 2
+      - 23
+      - 20
+      - 36
+      - 3
+      - 2
+      - 21
+      - 20
+      - 24
+      - 30
+      - 22
+      - 12
+      - 15
+      - 6
+      - 24
+      - 16
+      - 6
+    - MutagenObjectType: ScriptStringProperty
+      Name: QuestId
+      Data: quest.main.mq03
+    - MutagenObjectType: ScriptIntListProperty
+      Name: StageFrom
+      Data:
+      - 0
+      - 4
+      - 6
+      - 8
+      - 12
+      - 17
+      - 25
+    - MutagenObjectType: ScriptIntListProperty
+      Name: Stages
+      Data:
+      - 10
+      - 12
+      - 13
+      - 15
+      - 16
+      - 90
+      - 95
+    - MutagenObjectType: ScriptIntListProperty
+      Name: StageTo
+      Data:
+      - 4
+      - 6
+      - 8
+      - 12
+      - 17
+      - 25
+      - 28
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: What
+      Objects:
+      - Name: ''
+        Object: 8000D4:Argonia.esp
+      - Name: ''
+        Object: 8000DA:Argonia.esp
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 8000DE:Argonia.esp
+      - Name: ''
+        Object: 8000DD:Argonia.esp
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 00000F:Skyrim.esm
+      - Name: ''
+        Object: 8000DE:Argonia.esp
+      - Name: ''
+        Object: 8000DD:Argonia.esp
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 8000E2:Argonia.esp
+      - Name: ''
+        Object: 8000E3:Argonia.esp
+      - Name: ''
+        Object: 8000E4:Argonia.esp
+      - Name: ''
+        Object: 8000DD:Argonia.esp
+      - Name: ''
+        Object: 00000F:Skyrim.esm
+      - Name: ''
+        Object: 8000C4:Argonia.esp
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 8000E1:Argonia.esp
+      - Name: ''
+      - Name: ''
+  FileName: ARG_QuestStages
+  Fragments:
+  - Stage: 10
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_10
+  - Stage: 12
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_12
+  - Stage: 13
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_13
+  - Stage: 15
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_15
+  - Stage: 16
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_16
+  - Stage: 90
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_90
+  - Stage: 95
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_95
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 8000C3:Argonia.esp
+      Alias: 4
+    Scripts:
+    - Name: ARG_AliasEffects
+      Properties:
+      - MutagenObjectType: ScriptFloatListProperty
+        Name: Num
+        Data:
+        - 10
+        - 11
+        - 13
+      - MutagenObjectType: ScriptIntListProperty
+        Name: Op
+        Data:
+        - 10
+        - 13
+        - 9
+      - MutagenObjectType: ScriptObjectListProperty
+        Name: What
+        Objects:
+        - Name: ''
+          Object: 8000C3:Argonia.esp
+        - Name: ''
+          Object: 8000C3:Argonia.esp
+        - Name: ''
+          Object: 8000C3:Argonia.esp
+Name:
+  TargetLanguage: English
+  Value: The Cutters' Jar
+Flags:
+- RunOnce
+Priority: 50
+Type: MainQuest
+Stages:
+- Index: 10
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: Nesh-Deeka gave me the Veiled Reed's first work. Dives-Without-A-Rope, one of the broker's gang, carried off a jar of sap that the cutters dropped at the burnt camp. Nesh-Deeka wants it to learn what the cutters wanted. I'm to ask Dives-Without-A-Rope for the jar in the ship's hold at the pier west of Lilmoth.
+- Index: 12
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: Dives-Without-A-Rope will not give up the jar. It is sap of her own tree, and she keeps it in her lockbox at the far side of the ship's hold, with the key on her. I'm to take the jar by picking the lock or by taking her key, and bring it to Nesh-Deeka.
+- Index: 13
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: Dives-Without-A-Rope is dead. Her lockbox is at the far side of the ship's hold, and the key is on her body. I'm to take the jar from the lockbox and bring it to Nesh-Deeka.
+- Index: 15
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: I talked Dives-Without-A-Rope round. She gave me the key to her lockbox in the ship's hold. She asked me in return to find who cut her tree. I'm to take the jar from the lockbox and bring it to Nesh-Deeka.
+- Index: 16
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: I paid Dives-Without-A-Rope twenty gold. She gave me the key to her lockbox in the ship's hold. I'm to take the jar from the lockbox and bring it to Nesh-Deeka.
+- Index: 90
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+    Entry:
+      TargetLanguage: English
+      Value: "I tasted the cutters' sap in Salts-The-Catch's house. Nesh-Deeka wrote down what I said under it: a ship's hold with roots through its deck, a door that was never built, a dry voice. She gave me the page and twenty-five gold. She has heard that the Hist of Low-Reed Village, east of Lilmoth, has turned its face."
+- Index: 95
+  LogEntries:
+  - Flags:
+    - FailQuest
+    Entry:
+      TargetLanguage: English
+      Value: Nesh-Deeka is dead. I will not learn from her what the cutters wanted with the jar.
+Objectives:
+- Index: 10
+  DisplayText:
+    TargetLanguage: English
+    Value: Ask Dives-Without-A-Rope for the jar, in the ship's hold.
+  Targets:
+  - AliasID: 4
+- Index: 13
+  DisplayText:
+    TargetLanguage: English
+    Value: Bring the jar from Dives-Without-A-Rope's lockbox to Nesh-Deeka (a Novice lock, or the key on her body).
+  Targets:
+  - AliasID: 1
+- Index: 12
+  DisplayText:
+    TargetLanguage: English
+    Value: Bring the jar from Dives-Without-A-Rope's lockbox to Nesh-Deeka (a Novice lock, or her key).
+  Targets:
+  - AliasID: 1
+- Index: 15
+  DisplayText:
+    TargetLanguage: English
+    Value: Bring the jar from Dives-Without-A-Rope's lockbox to Nesh-Deeka.
+  Targets:
+  - AliasID: 1
+Aliases:
+- Name: npc.mercantile-coast.lilmoth.fish-trader-house
+  ForcedReference: 8000D2:Argonia.esp
+- ID: 1
+  Name: npc.nesh-deeka
+  ForcedReference: 8000D4:Argonia.esp
+- ID: 2
+  Name: npc.pirate-freeholds.opening-work-barge.npc-opening-overseer
+  ForcedReference: 8000D6:Argonia.esp
+- ID: 3
+  Name: npc.pirate-freeholds.opening-work-barge.npc-opening-roll-reader
+  ForcedReference: 8000D8:Argonia.esp
+- ID: 4
+  Name: npc.pirate-freeholds.opening-work-camp.n1-2
+  ForcedReference: 8000DA:Argonia.esp
+- ID: 5
+  Name: thing.mq03.lockpicks
+  Flags:
+  - AllowDisabled
+  ForcedReference: 8000DC:Argonia.esp
+- ID: 6
+  Name: thing.mq03.sack
+  Flags:
+  - AllowDisabled
+  ForcedReference: 8000DD:Argonia.esp
+- ID: 7
+  Name: thing.mq03.sack-key
+  CreateReferenceToObject:
+    Object: 8000DE:Argonia.esp
+    AliasID: 4
+    Create: In
+- ID: 8
+  Name: thing.mq03.sap-jar
+  CreateReferenceToObject:
+    Object: 8000E2:Argonia.esp
+    AliasID: 6
+    Create: In

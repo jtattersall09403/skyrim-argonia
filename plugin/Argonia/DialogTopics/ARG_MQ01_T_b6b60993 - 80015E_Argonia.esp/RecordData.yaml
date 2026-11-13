@@ -1,0 +1,8 @@
+FormKey: 80015E:Argonia.esp
+EditorID: ARG_MQ01_T_b6b60993
+Name:
+  TargetLanguage: English
+  Value: Who does the Reed answer to?
+Branch: 80015F:Argonia.esp
+Quest: 8000C2:Argonia.esp
+SubtypeName: CUST

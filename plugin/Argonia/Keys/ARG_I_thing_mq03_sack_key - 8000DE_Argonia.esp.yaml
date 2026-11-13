@@ -1,0 +1,17 @@
+FormKey: 8000DE:Argonia.esp
+VersionControl: 79128
+EditorID: ARG_I_thing_mq03_sack_key
+Version2: 3
+ObjectBounds:
+  First: 0, -12, -2
+  Second: 0, 12, 2
+Name:
+  TargetLanguage: English
+  Value: ''
+Model:
+  File: Clutter\Key01.nif
+  Data: 0x0200000004000000000000007B24A23764647300BFFA25DA8A7EE16764647300BFFA25DA6BBB96D164647300262C333BFAE0BBA4646473007F66A5C0
+PickUpSound: 03ED75:Skyrim.esm
+PutDownSound: 03ED78:Skyrim.esm
+Keywords:
+- 0914EF:Skyrim.esm

@@ -1,0 +1,8 @@
+FormKey: 8001A5:Argonia.esp
+EditorID: ARG_MQ04_T_633300f4
+Name:
+  TargetLanguage: English
+  Value: What does the Reed want at Low-Reed Village?
+Branch: 8001A6:Argonia.esp
+Quest: 8000C4:Argonia.esp
+SubtypeName: CUST

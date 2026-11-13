@@ -1,0 +1,8 @@
+FormKey: 8001B1:Argonia.esp
+EditorID: ARG_MQ04_T_b5a1121c
+Name:
+  TargetLanguage: English
+  Value: Why do you stand by the roots?
+Branch: 8001B2:Argonia.esp
+Quest: 8000C4:Argonia.esp
+SubtypeName: CUST

@@ -1,0 +1,8 @@
+FormKey: 80018F:Argonia.esp
+EditorID: ARG_MQ03_A_cd02a9b0
+Name:
+  TargetLanguage: English
+  Value: I will give you twenty gold for the key. (20 gold)
+Branch: 80017C:Argonia.esp
+Quest: 8000C3:Argonia.esp
+SubtypeName: CUST

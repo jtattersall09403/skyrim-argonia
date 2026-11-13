@@ -31,6 +31,7 @@ VirtualMachineAdapter:
       ScriptName: ARG_LineEffects
       FragmentName: Fragment_End
 Flags: {}
+PreviousDialog: 8000BA:Argonia.esp
 Responses:
 - ResponseNumber: 1
   Unknown2: 0x000000

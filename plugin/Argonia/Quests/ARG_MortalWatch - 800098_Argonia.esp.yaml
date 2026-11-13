@@ -15,6 +15,174 @@ VirtualMachineAdapter:
         Data:
         - 0
         - 0
+        - 96
+      - MutagenObjectType: ScriptIntListProperty
+        Name: Op
+        Data:
+        - 11
+        - 33
+        - 9
+      - MutagenObjectType: ScriptObjectListProperty
+        Name: What
+        Objects:
+        - Name: ''
+          Object: 8000C2:Argonia.esp
+        - Name: ''
+          Object: 800204:Argonia.esp
+        - Name: ''
+          Object: 8000C2:Argonia.esp
+  - Property:
+      Name: ''
+      Object: 800098:Argonia.esp
+      Alias: 1
+    Scripts:
+    - Name: ARG_AliasEffects
+      Properties:
+      - MutagenObjectType: ScriptFloatListProperty
+        Name: Num
+        Data:
+        - 0
+        - 0
+        - 95
+      - MutagenObjectType: ScriptIntListProperty
+        Name: Op
+        Data:
+        - 11
+        - 33
+        - 9
+      - MutagenObjectType: ScriptObjectListProperty
+        Name: What
+        Objects:
+        - Name: ''
+          Object: 8000C3:Argonia.esp
+        - Name: ''
+          Object: 800204:Argonia.esp
+        - Name: ''
+          Object: 8000C3:Argonia.esp
+  - Property:
+      Name: ''
+      Object: 800098:Argonia.esp
+      Alias: 2
+    Scripts:
+    - Name: ARG_AliasEffects
+      Properties:
+      - MutagenObjectType: ScriptFloatListProperty
+        Name: Num
+        Data:
+        - 0
+        - 0
+        - 95
+      - MutagenObjectType: ScriptIntListProperty
+        Name: Op
+        Data:
+        - 11
+        - 33
+        - 9
+      - MutagenObjectType: ScriptObjectListProperty
+        Name: What
+        Objects:
+        - Name: ''
+          Object: 8000C4:Argonia.esp
+        - Name: ''
+          Object: 800204:Argonia.esp
+        - Name: ''
+          Object: 8000C4:Argonia.esp
+  - Property:
+      Name: ''
+      Object: 800098:Argonia.esp
+      Alias: 3
+    Scripts:
+    - Name: ARG_AliasEffects
+      Properties:
+      - MutagenObjectType: ScriptFloatListProperty
+        Name: Num
+        Data:
+        - 0
+        - 0
+        - 96
+      - MutagenObjectType: ScriptIntListProperty
+        Name: Op
+        Data:
+        - 11
+        - 33
+        - 9
+      - MutagenObjectType: ScriptObjectListProperty
+        Name: What
+        Objects:
+        - Name: ''
+          Object: 8000C4:Argonia.esp
+        - Name: ''
+          Object: 800204:Argonia.esp
+        - Name: ''
+          Object: 8000C4:Argonia.esp
+  - Property:
+      Name: ''
+      Object: 800098:Argonia.esp
+      Alias: 4
+    Scripts:
+    - Name: ARG_AliasEffects
+      Properties:
+      - MutagenObjectType: ScriptFloatListProperty
+        Name: Num
+        Data:
+        - 0
+        - 0
+        - 96
+      - MutagenObjectType: ScriptIntListProperty
+        Name: Op
+        Data:
+        - 11
+        - 33
+        - 9
+      - MutagenObjectType: ScriptObjectListProperty
+        Name: What
+        Objects:
+        - Name: ''
+          Object: 8000C5:Argonia.esp
+        - Name: ''
+          Object: 800204:Argonia.esp
+        - Name: ''
+          Object: 8000C5:Argonia.esp
+  - Property:
+      Name: ''
+      Object: 800098:Argonia.esp
+      Alias: 5
+    Scripts:
+    - Name: ARG_AliasEffects
+      Properties:
+      - MutagenObjectType: ScriptFloatListProperty
+        Name: Num
+        Data:
+        - 0
+        - 0
+        - 95
+      - MutagenObjectType: ScriptIntListProperty
+        Name: Op
+        Data:
+        - 11
+        - 33
+        - 9
+      - MutagenObjectType: ScriptObjectListProperty
+        Name: What
+        Objects:
+        - Name: ''
+          Object: 8000C5:Argonia.esp
+        - Name: ''
+          Object: 800204:Argonia.esp
+        - Name: ''
+          Object: 8000C5:Argonia.esp
+  - Property:
+      Name: ''
+      Object: 800098:Argonia.esp
+      Alias: 6
+    Scripts:
+    - Name: ARG_AliasEffects
+      Properties:
+      - MutagenObjectType: ScriptFloatListProperty
+        Name: Num
+        Data:
+        - 0
+        - 0
         - 90
       - MutagenObjectType: ScriptIntListProperty
         Name: Op
@@ -34,7 +202,7 @@ VirtualMachineAdapter:
   - Property:
       Name: ''
       Object: 800098:Argonia.esp
-      Alias: 1
+      Alias: 7
     Scripts:
     - Name: ARG_AliasEffects
       Properties:
@@ -70,7 +238,7 @@ VirtualMachineAdapter:
   - Property:
       Name: ''
       Object: 800098:Argonia.esp
-      Alias: 2
+      Alias: 8
     Scripts:
     - Name: ARG_AliasEffects
       Properties:
@@ -114,7 +282,7 @@ VirtualMachineAdapter:
   - Property:
       Name: ''
       Object: 800098:Argonia.esp
-      Alias: 3
+      Alias: 9
     Scripts:
     - Name: ARG_AliasEffects
       Properties:
@@ -142,7 +310,7 @@ VirtualMachineAdapter:
   - Property:
       Name: ''
       Object: 800098:Argonia.esp
-      Alias: 4
+      Alias: 10
     Scripts:
     - Name: ARG_AliasEffects
       Properties:
@@ -178,7 +346,7 @@ VirtualMachineAdapter:
   - Property:
       Name: ''
       Object: 800098:Argonia.esp
-      Alias: 5
+      Alias: 11
     Scripts:
     - Name: ARG_AliasEffects
       Properties:
@@ -214,7 +382,7 @@ VirtualMachineAdapter:
   - Property:
       Name: ''
       Object: 800098:Argonia.esp
-      Alias: 6
+      Alias: 12
     Scripts:
     - Name: ARG_AliasEffects
       Properties:
@@ -251,42 +419,78 @@ Flags:
 - StartGameEnabled
 - RunOnce
 Aliases:
-- Name: quest.test.blocktest|person.test.keeper
+- Name: quest.main.mq01|npc.nesh-deeka
+  Flags:
+  - Optional
+  - AllowDisabled
+  ForcedReference: 8000D4:Argonia.esp
+- ID: 1
+  Name: quest.main.mq03|npc.nesh-deeka
+  Flags:
+  - Optional
+  - AllowDisabled
+  ForcedReference: 8000D4:Argonia.esp
+- ID: 2
+  Name: quest.main.mq04|npc.mercantile-coast.low-reed-village.chime-tuner
+  Flags:
+  - Optional
+  - AllowDisabled
+  ForcedReference: 8000E9:Argonia.esp
+- ID: 3
+  Name: quest.main.mq04|npc.nesh-deeka
+  Flags:
+  - Optional
+  - AllowDisabled
+  ForcedReference: 8000D4:Argonia.esp
+- ID: 4
+  Name: quest.main.mq05|npc.hist-heartland.helstrom.nisswo-interpreter-debating-house
+  Flags:
+  - Optional
+  - AllowDisabled
+  ForcedReference: 8000FB:Argonia.esp
+- ID: 5
+  Name: quest.main.mq05|npc.nesh-deeka
+  Flags:
+  - Optional
+  - AllowDisabled
+  ForcedReference: 8000D4:Argonia.esp
+- ID: 6
+  Name: quest.test.blocktest|person.test.keeper
   Flags:
   - Optional
   - AllowDisabled
   ForcedReference: 800007:Argonia.esp
-- ID: 1
+- ID: 7
   Name: quest.tg.tg01|npc.mercantile-coast.lilmoth-divers-yard.night-reed-fence
   Flags:
   - Optional
   - AllowDisabled
   ForcedReference: 800012:Argonia.esp
-- ID: 2
+- ID: 8
   Name: quest.tg.tg01|npc.mercantile-coast.soulrest.keeper-harbour-den
   Flags:
   - Optional
   - AllowDisabled
   ForcedReference: 800014:Argonia.esp
-- ID: 3
+- ID: 9
   Name: quest.tg.tg02|npc.mercantile-coast.lilmoth-divers-yard.night-reed-fence
   Flags:
   - Optional
   - AllowDisabled
   ForcedReference: 800012:Argonia.esp
-- ID: 4
+- ID: 10
   Name: quest.tg.tg02|npc.mercantile-coast.lilmoth.tg02-beads-client
   Flags:
   - Optional
   - AllowDisabled
   ForcedReference: 800023:Argonia.esp
-- ID: 5
+- ID: 11
   Name: quest.tg.tg02|npc.mercantile-coast.lilmoth.tg02-charm-client
   Flags:
   - Optional
   - AllowDisabled
   ForcedReference: 800025:Argonia.esp
-- ID: 6
+- ID: 12
   Name: quest.tg.tg02|npc.mercantile-coast.lilmoth.tg02-clutch-client
   Flags:
   - Optional

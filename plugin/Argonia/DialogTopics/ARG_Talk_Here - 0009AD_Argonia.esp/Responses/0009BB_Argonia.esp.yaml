@@ -1,5 +1,6 @@
 FormKey: 0009BB:Argonia.esp
 Flags: {}
+PreviousDialog: 0009BA:Argonia.esp
 Responses:
 - ResponseNumber: 1
   Unknown2: 0x000000

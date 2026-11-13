@@ -1,0 +1,7 @@
+FormKey: 800171:Argonia.esp
+EditorID: ARG_MQ01_SFB_fa1bcdd7
+Quest: 8000C2:Argonia.esp
+Category: Player
+Flags:
+- Blocking
+StartingTopic: 800170:Argonia.esp

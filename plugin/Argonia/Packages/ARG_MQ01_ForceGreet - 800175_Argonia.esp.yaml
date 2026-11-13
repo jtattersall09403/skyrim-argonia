@@ -1,0 +1,149 @@
+FormKey: 800175:Argonia.esp
+VersionControl: 5662742
+EditorID: ARG_MQ01_ForceGreet
+FormVersion: 40
+Type: Package
+PreferredSpeed: Run
+InterruptFlags:
+- HellosToPlayer
+- RandomConversations
+- ObserveCombatBehavior
+- GreetCorpseBehavior
+- ReactionToPlayerActions
+- FriendlyFireComments
+- AggroRadiusBehavior
+- AllowIdleChatter
+- WorldInteractions
+- 0x400
+- 0x800
+- 0x1000
+- 0x2000
+- 0x4000
+- 0x8000
+ScheduleMonth: -1
+ScheduleDayOfWeek: Any
+ScheduleHour: -1
+ScheduleMinute: -1
+Unknown3: 0x706C79
+Conditions:
+- MutagenObjectType: ConditionFloat
+  CompareOperator: GreaterThanOrEqualTo
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 8000C2:Argonia.esp
+  ComparisonValue: 10
+- MutagenObjectType: ConditionFloat
+  CompareOperator: LessThanOrEqualTo
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 8000C2:Argonia.esp
+  ComparisonValue: 10
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: IsInCombatConditionData
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: IsPlayerMovingIntoNewSpaceConditionData
+OwnerQuest: 8000C2:Argonia.esp
+PackageTemplate: 03C1C4:Skyrim.esm
+DataInputVersion: 18
+Data:
+- Key: 7
+  Value:
+    MutagenObjectType: PackageDataTopic
+    Topics:
+    - MutagenObjectType: TopicReference
+      Reference: 800170:Argonia.esp
+- Key: 8
+  Value:
+    MutagenObjectType: PackageDataLocation
+    Location:
+      Target:
+        MutagenObjectType: LocationTarget
+        Link: 8000D0:Argonia.esp
+      Radius: 150
+- Key: 17
+  Value:
+    MutagenObjectType: PackageDataTarget
+    Type: SingleRef
+    Target:
+      MutagenObjectType: PackageTargetSpecificReference
+      Reference: 000014:Skyrim.esm
+- Key: 22
+  Value:
+    MutagenObjectType: PackageDataLocation
+    Location:
+      Target:
+        MutagenObjectType: LocationTarget
+        Link: 000014:Skyrim.esm
+      Radius: 5000
+- Key: 26
+  Value:
+    MutagenObjectType: PackageDataBool
+- Key: 29
+  Value:
+    MutagenObjectType: PackageDataBool
+- Key: 30
+  Value:
+    MutagenObjectType: PackageDataBool
+- Key: 31
+  Value:
+    MutagenObjectType: PackageDataBool
+- Key: 32
+  Value:
+    MutagenObjectType: PackageDataBool
+- Key: 33
+  Value:
+    MutagenObjectType: PackageDataBool
+- Key: 34
+  Value:
+    MutagenObjectType: PackageDataBool
+- Key: 36
+  Value:
+    MutagenObjectType: PackageDataBool
+- Key: 40
+  Value:
+    MutagenObjectType: PackageDataBool
+- Key: 62
+  Value:
+    MutagenObjectType: PackageDataLocation
+    Location:
+      Target:
+        MutagenObjectType: LocationFallback
+        Type: NearPackageStart
+      Radius: 500
+- Key: 65
+  Value:
+    MutagenObjectType: PackageDataBool
+    Data: True
+- Key: 67
+  Value:
+    MutagenObjectType: PackageDataFloat
+    Data: 50
+- Key: 69
+  Value:
+    MutagenObjectType: PackageDataBool
+- Key: 75
+  Value:
+    MutagenObjectType: PackageDataLocation
+    Location:
+      Target:
+        MutagenObjectType: LocationTarget
+        Link: 000014:Skyrim.esm
+      Radius: 300
+- Key: 79
+  Value:
+    MutagenObjectType: PackageDataBool
+- Key: 81
+  Value:
+    MutagenObjectType: PackageDataBool
+XnamMarker: 0x50
+OnBegin:
+  Topics:
+  - MutagenObjectType: TopicReference
+OnEnd:
+  Topics:
+  - MutagenObjectType: TopicReference
+OnChange:
+  Topics:
+  - MutagenObjectType: TopicReference

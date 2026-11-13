@@ -196,6 +196,109 @@ TopCell:
       Unused2: 0x0000000000000000000000
     Placement:
       Position: 22400, 1024, -696
+  - MutagenObjectType: PlacedNpc
+    FormKey: 8000D0:Argonia.esp
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_R_npc_mercantile_coast_lilmoth_broker_buys_the_months
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 8000D1:Argonia.esp
+    Placement:
+      Position: 5471, -9382, 179
+      Rotation: 0, 0, 1.5682156
+    MajorFlags:
+    - Persistent
+  - MutagenObjectType: PlacedNpc
+    FormKey: 8000E5:Argonia.esp
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_R_npc_mercantile_coast_low_reed_village_cell_man_1
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 8000E6:Argonia.esp
+    Placement:
+      Position: 91392, -6933, 145
+    MajorFlags:
+    - Persistent
+  - MutagenObjectType: PlacedNpc
+    FormKey: 8000E7:Argonia.esp
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_R_npc_mercantile_coast_low_reed_village_cell_man_2
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 8000E8:Argonia.esp
+    Placement:
+      Position: 91755, -7403, 8
+    MajorFlags:
+    - Persistent
+  - MutagenObjectType: PlacedNpc
+    FormKey: 8000E9:Argonia.esp
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_R_npc_mercantile_coast_low_reed_village_chime_tuner
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 8000EA:Argonia.esp
+    Placement:
+      Position: 92700, -13600, 23
+    MajorFlags:
+    - Persistent
+  - MutagenObjectType: PlacedNpc
+    FormKey: 8000EB:Argonia.esp
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_R_npc_mercantile_coast_low_reed_village_egg_tender
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 8000EC:Argonia.esp
+    Placement:
+      Position: 93700, -13400, 50
+    MajorFlags:
+    - Persistent
+  - MutagenObjectType: PlacedNpc
+    FormKey: 8000ED:Argonia.esp
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_R_npc_mercantile_coast_low_reed_village_root_herald
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 8000EE:Argonia.esp
+    Placement:
+      Position: 92950, -12600, 122
+    MajorFlags:
+    - Persistent
+  - MutagenObjectType: PlacedObject
+    FormKey: 8000EF:Argonia.esp
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_R_thing_mq04_gum_box
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 09424C:Skyrim.esm
+    Lock:
+      Level: Novice
+      Unused: 0x000000
+      Unused2: 0x0000000000000000000000
+    Owner: 8000EA:Argonia.esp
+    Placement:
+      Position: 92760, -13650, 16
+  - MutagenObjectType: PlacedObject
+    FormKey: 8000F1:Argonia.esp
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_R_thing_mq04_sap_jars
+    SkyrimMajorRecordFlags:
+    - 0x400
+    VirtualMachineAdapter:
+      Scripts:
+      - Name: defaultSetStageOnPlayerAcquireItem
+        Properties:
+        - MutagenObjectType: ScriptObjectProperty
+          Name: myQST
+          Object: 8000C4:Argonia.esp
+        - MutagenObjectType: ScriptIntProperty
+          Name: preReqStage
+          Data: 31
+        - MutagenObjectType: ScriptIntProperty
+          Name: StageToSet
+          Data: 41
+    Base: 8000F2:Argonia.esp
+    Placement:
+      Position: 91720, -7450, 8
   - MutagenObjectType: PlacedObject
     FormKey: 0934A4:Black Marsh North.esp
     MajorRecordFlagsRaw: 1024

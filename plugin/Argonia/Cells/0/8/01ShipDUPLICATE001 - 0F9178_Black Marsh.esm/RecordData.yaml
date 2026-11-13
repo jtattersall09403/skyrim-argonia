@@ -53,6 +53,66 @@ Persistent:
   Placement:
     Position: 2753, 3878, 7015
 - MutagenObjectType: PlacedNpc
+  FormKey: 8000D6:Argonia.esp
+  MajorRecordFlagsRaw: 1024
+  EditorID: ARG_R_npc_pirate_freeholds_opening_work_barge_npc_opening_overseer
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 8000D7:Argonia.esp
+  Placement:
+    Position: 2700, 4700, 7029
+  MajorFlags:
+  - Persistent
+- MutagenObjectType: PlacedNpc
+  FormKey: 8000D8:Argonia.esp
+  MajorRecordFlagsRaw: 1024
+  EditorID: ARG_R_npc_pirate_freeholds_opening_work_barge_npc_opening_roll_reader
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 8000D9:Argonia.esp
+  Placement:
+    Position: 2618, 4567, 7023
+  MajorFlags:
+  - Persistent
+- MutagenObjectType: PlacedNpc
+  FormKey: 8000DA:Argonia.esp
+  MajorRecordFlagsRaw: 1024
+  EditorID: ARG_R_npc_pirate_freeholds_opening_work_camp_n1_2
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 8000DB:Argonia.esp
+  Placement:
+    Position: 2512, 4316, 7015
+  MajorFlags:
+  - Persistent
+- MutagenObjectType: PlacedObject
+  FormKey: 8000DC:Argonia.esp
+  MajorRecordFlagsRaw: 3072
+  EditorID: ARG_R_thing_mq03_lockpicks
+  SkyrimMajorRecordFlags:
+  - 0x400
+  - InitiallyDisabled
+  Base: 00000A:Skyrim.esm
+  ItemCount: 5
+  Placement:
+    Position: 3150, 4250, 7011
+- MutagenObjectType: PlacedObject
+  FormKey: 8000DD:Argonia.esp
+  MajorRecordFlagsRaw: 3072
+  EditorID: ARG_R_thing_mq03_sack
+  SkyrimMajorRecordFlags:
+  - 0x400
+  - InitiallyDisabled
+  Base: 09424C:Skyrim.esm
+  Lock:
+    Level: Novice
+    Unused: 0x000000
+    Key: 8000DE:Argonia.esp
+    Unused2: 0x0000000000000000000000
+  Owner: 8000DB:Argonia.esp
+  Placement:
+    Position: 3100, 4300, 7012
+- MutagenObjectType: PlacedNpc
   FormKey: 0F920A:Black Marsh.esm
   MajorRecordFlagsRaw: 3072
   SkyrimMajorRecordFlags:

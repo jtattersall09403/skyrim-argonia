@@ -1,0 +1,8 @@
+FormKey: 800204:Argonia.esp
+EditorID: ARG_MortalWatchMain
+Description:
+  TargetLanguage: English
+  Value: 'With this death the root of what was to come is cut: the main story can no longer be finished. Load an earlier save to let it grow again, or go on in the marsh as it now is.'
+INAM: '[]'
+Flags:
+- MessageBox

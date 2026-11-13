@@ -22,6 +22,7 @@ VirtualMachineAdapter:
       - 10
       - 20
       - 20
+      - 20
       - 0
       - 20
       - 20
@@ -35,6 +36,7 @@ VirtualMachineAdapter:
       - 5
       - 3
       - 2
+      - 3
       - 16
       - 6
       - 3
@@ -50,12 +52,14 @@ VirtualMachineAdapter:
       - 0
       - 3
       - 5
-      - 7
+      - 6
+      - 8
     - MutagenObjectType: ScriptIntListProperty
       Name: Stages
       Data:
       - 10
       - 20
+      - 30
       - 90
       - 100
     - MutagenObjectType: ScriptIntListProperty
@@ -63,13 +67,15 @@ VirtualMachineAdapter:
       Data:
       - 3
       - 5
-      - 7
-      - 11
+      - 6
+      - 8
+      - 12
     - MutagenObjectType: ScriptObjectListProperty
       Name: What
       Objects:
       - Name: ''
         Object: 800004:Argonia.esp
+      - Name: ''
       - Name: ''
       - Name: ''
       - Name: ''
@@ -89,6 +95,9 @@ VirtualMachineAdapter:
   - Stage: 20
     ScriptName: ARG_QuestStages
     FragmentName: Fragment_20
+  - Stage: 30
+    ScriptName: ARG_QuestStages
+    FragmentName: Fragment_30
   - Stage: 90
     ScriptName: ARG_QuestStages
     FragmentName: Fragment_90
