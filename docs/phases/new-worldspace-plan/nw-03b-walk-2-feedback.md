@@ -41,8 +41,8 @@ L30. Still some hard edges between ground textures, e.g. right at the Aunike Rid
 | Lane | Lines | Owns |
 |---|---|---|
 | seat | L6, L11, L12 | `tools/newworld/place/` seating and its checks; the audit of every placed kind |
-| flora | L15, L20, L9 (tall grass) | `newworld/sources/flora/`, the LOD plan (`world/lodplan.py`, `lod_models.json`), grass records |
-| ground | L16, L21, L30 | `tools/newworld/world/texture.py`, `roadpaint.py`, the terrain LOD's textures |
+| flora | L15, L20 | `newworld/sources/flora/`, the LOD plan (`world/lodplan.py`, `lod_models.json`), grass records |
+| ground | L16, L21, L30, L9 (tall grass) | `tools/newworld/world/texture.py`, `roadpaint.py`, the terrain LOD's textures |
 | eco | L10 (creatures, birds), L13, L17, L22, L23, L25, L26, L28 | `newworld/sources/ecology/`, `tools/newworld/ecology/`, `dressing/` |
 | air | L9 (music), L14, L10 (splash), L29 | `newworld/sources/music/`, `NewWorldMusic.cs`, `world/water_types.py`, region names for the player |
 | stack | L2, L3, L4, L18, L19, L27 | the start, `travel_menu.py`, the mod stack's settings, the Atlas |
@@ -53,3 +53,45 @@ One row per line, filled as each lane lands: the cause found, the change, the pr
 
 | Line | Cause | Change | Proof |
 |---|---|---|---|
+| L2 | The Atlas's heightmap is the terrain build's own (sha equal; 600 cells, median gap 0.1 units); the page never named its build | `map_page.py` refuses a heightmap not the build's own, names the build, and shows height in metres under the pointer | `relief_data()`: build 20261111T100156Z, -80 m to 73 m |
+| L3 | The start marker was a temporary ref, so MQ101's lookup found nothing at a new game and fell back to the barge hold | `NewWorld.cs` writes it persistent in the persistent cell; esm check and read-back row "start marker persistent"; `start_check.py` names each card's start | small esm green, marker persistent; `start_check` FAIL New World card before |
+| L4 | Vanilla message box lays one row that never wraps; rows up to 328 characters | `travel_menu.py`: labels of 24 characters at most, rows of 96 or less, every list paged with More and Back | `travel_menu check`: 76 pages, widest row 96; 7 tests |
+| L5 | Praise | none | none |
+| L6 | Logs seated by their lowest vertex, a root tip; the seater's rotation was the transpose of Skyrim's | `place/audit.py`: a log's bulk median at the ground, a stump's foot ring 0.25 m in, else refused; Skyrim's rotation | main 4,967 bulk hovers; small world after 0; tests |
+| L7 | Praise | none | none |
+| L8 | Praise | none | none |
+| L9 | Music: combat outranked explore and had no track that could play (L14). Grass: KoTM cattails stand 273 to 369 units against Skyrim's tallest 90 | as L14; over-tall grasses replaced by the shorter grass of their family; `grasscheck` | read-back `music` 38520/38520 explore; `grasscheck` 7 over 90 before, 0 after |
+| L10 | Creatures: D1 spot had 0 within 2 cells. Birds: a walking chicken-rig race. Splash: BM&V's splash mesh names a texture nothing ships | creatures as L28; birds become Skyrim's flying critters; bmv row drops `watersplash.nif` and `assets_audit engine_overrides` gates the class | D1 now crab 42 m, rat 59 m; `engine_overrides` 1 before, 0 after |
+| L11 | Trees seated by a source pivot sink; downhill trunk side in the air | trunk foot ring's highest point 0.1 m under the ground; a trunk over a bank is refused | main 76,250 trunk hovers; small world 0 |
+| L12 | Rocks judged by a shrunk box and turned only when an open side was measured | each open rim found and buried 0.05 m, at the best of 16 yaws, else refused; audit is the place check | main 9,282 hollow shows; small world 0 |
+| L13 | The band ability added damage on top of the mod's own blow (hackwing 60) | `toughness.py measure` reads each record's blow; the ability brings it to the band's target (D0, D1 7.5) | peak blow D1 8; test |
+| L14 | Track conditions run on a subject a music track lacks; Skyrim's run on PlayerRef, so no combat track played | `NewWorldMusic.cs`: world condition on PlayerRef | MUSCombat 0 ours before, 7 after on the small world |
+| L15 | KoTM bamboo's leaf texture is itself teal (hue 136) | `recolour.py` recolours it at staging into `argonia-recolours`; no tree moved | three reader rounds; shaded hue 79, inside neighbours' 70 to 103 |
+| L16 | Far terrain textures are baked from the overbright paint (L30) | the paint's change; the terrain LOD rebuilds from it | the paint's proof; the far land at this walk |
+| L17 | The serpent's skeleton is not driven by its behaviour's clips (3% bone match); 3 more broken | `anim_audit.py` in the ecology check; serpents rebound, wisp to Skyrim's, wyvern and centipede dropped | 4 failing before, 0 of 286 after |
+| L18 | Not found offline: FreeClimb loaded and ready; refusals not logged | Diagnostics=1 in the freeclimb row | the next walk's FreeClimb.log |
+| L19 | SmoothCam's default turns off pitch zoom | SmoothCam.json laid with `enablePitchZoom: true` | the owner's walk check |
+| L20 | Five stale billboards (moss bases dropped after the LOD; two renamed bases) | `lodplan.far_form` in the LOD check; fresh tree LOD | main 5 stale, 0 unlike |
+| L21 | Grass-bearing weight on the road surface up to 1.99 under the engine's additive read | the paint's change; texcheck `road_surface_grass_max` <= 0.1 | 1.992 FAIL before, 0.035 PASS after |
+| L22 | Not found: our navmesh lies closer to the land than Skyrim's; the actors are plain | navmesh check holds the share over 16 units under the land to Skyrim's | 0.04% to 0.19% against Skyrim's 6.8%; owner check asks where |
+| L23 | Water creatures at a third of Skyrim's rate; none promised near the spot | water at Skyrim's walked rate; the spot's promises placed within 200 m | dreugh 78 m, sea otter 151 m |
+| L24 | Praise | none | none |
+| L25 | Not found in the records; 10 copies kept Summonable, kitted bandits took the template's inventory | world writer clears Summonable, Unique, Essential, Protected and a kitted copy's template; `loot_check.py` | 10 faults before, 0 after; owner check asks where |
+| L26 | Torchbugs' spawner runs 20:00 to 23:00 only | the spot promises torchbugs and gnats within 200 m; the walk check names the hours | torchbug 63 m, gnats 43 m |
+| L27 | As L4: More and Back fell off the screen | as L4 | as L4 |
+| L28 | Density over all LAND (half empty) cut to a third; spots' own cells empty; two spots in unbanded cells | Skyrim's rate per navmeshed cell times the band; promised kinds placed within 200 m; two spots moved | 7,663 actors against 5,979; 0.89 to 0.97 of Skyrim per class |
+| L29 | No location records: nothing named a region | one LCTN per region, parent "Black Marsh", on every exterior cell | `location` 0/38520 before, 256/256 small world |
+| L30 | Opacities written as stacking, the engine adds them: 20.7% of vertices overbright; writer and both checks read stacking | `texture.py` writes weights as opacities; texcheck reads additively with `over_share`, `over_p99` | texcheck FAIL before, PASS on the small world |
+
+## After the rebuild
+
+Commands from the lanes still owed, in order, after the full rebuild:
+
+1. `python3 -m tools.newworld.start_check`: PASS for both cards.
+2. `infra/gpu-box/lod.sh map` and `lod.sh send`, then `infra/gpu-box/deploy.sh`; `infra/gpu-box/places_deploy.sh` if the places belong on the card.
+3. `python3 infra/gpu-box/stack.py stage` (lays `argonia-recolours`, SmoothCam.json, FreeClimb Diagnostics=1, drops BM&V's splash), `stack.py push`, then `infra/gpu-box/run.sh ps 'C:\argonia\infra\stack.ps1 on -World NewWorld'` and `... on -World Argonia`; bring `~/.argonia/stack/installed-NewWorld.json` level.
+4. `tooling/job_guard.sh run --gpu nw-lod-selftest -- infra/gpu-box/lod.sh selftest`, then `tooling/job_guard.sh wait nw-lod-selftest`.
+5. `NW_LOD=1 LOD_FORCE="texgen dyndolod" tooling/job_guard.sh run --gpu nw-lod -- infra/gpu-box/lod.sh stage`, then `tooling/job_guard.sh wait nw-lod`; `out/newworld/lod/check.txt` shows 0 stale billboards.
+6. Atlas: `python3 -m tools.newworld.map_page`, publish `out/newworld/map/index.html` to https://claude.ai/artifact/SwMRMPndRrXfEKtTuodNsb.
+7. `python -m tools.newworld.place.audit refs out/newworld/plugin/refs/flora`: 0 in every class.
+8. After the owner's climb: read `C:\Program Files (x86)\Steam\steamapps\common\Skyrim Special Edition\Data\SKSE\FreeClimb.log` on the play machine.
