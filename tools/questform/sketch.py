@@ -148,6 +148,7 @@ class Sketch:
         self.people: dict[str, dict] = {}
         self.things: dict[str, dict] = {}
         self.items: dict[str, dict] = {}
+        self.perks: dict[str, str] = {}                    # a given perk's form key: the name the player sees
         self.spells: dict[str, str] = {}                   # a taught spell's form key: the name the player sees
         self.stages: dict[int, dict] = {}
         self.objectives: list[dict] = []
@@ -179,6 +180,13 @@ class _Stream:
             raise SketchError(f"expected {what}, found {got!r}")
         self.i += 1
         return self.t[self.i - 1][1]
+
+    def key(self, what="a form key") -> str:
+        """A load order's form key: a word, or quoted when its plugin's name holds a space (`"0AA665:Black Marsh.esm"`)."""
+        if self.i < len(self.t) and self.t[self.i][0] == "str":
+            self.i += 1
+            return self.t[self.i - 1][1]
+        return self.word(what)
 
     def text(self, what="a quoted text") -> str:
         if self.i >= len(self.t) or self.t[self.i][0] != "str":
@@ -311,12 +319,28 @@ def result(sk: Sketch, toks) -> dict:
         r = {"do": "join_faction", "faction": s.word("a faction")}
     elif w in ("leave", "enemy", "peace"):
         r = {"do": {"leave": "leave_faction", "enemy": "make_enemy", "peace": "make_peace"}[w],
-             "faction": s.word("a faction")}
+             "faction": s.key("a faction")}
     elif w == "teach":
-        r = {"do": "teach_spell", "spell": s.word("a spell's, power's or ability's form key")}
+        r = {"do": "teach_spell", "spell": s.key("a spell's, power's or ability's form key")}
         sk.spells[r["spell"]] = s.text("the name the player sees")
     elif w == "forget":
-        r = {"do": "forget_spell", "spell": s.word("a spell's form key")}
+        r = {"do": "forget_spell", "spell": s.key("a spell's form key")}
+    elif w == "perk":
+        r = {"do": "add_perk", "perk": s.key("a perk's form key")}
+        sk.perks[r["perk"]] = s.text("the name the player sees")
+    elif w == "unperk":
+        r = {"do": "remove_perk", "perk": s.key("a perk's form key")}
+    elif w == "map":
+        r = {"do": "mark_on_map", "ref": s.word("a marker")}
+    elif w == "bounty":
+        r = {"do": "set_bounty", "faction": s.key("a faction's form key"), "amount": s.number("an amount of gold, 0 clears it")}
+    elif w == "home":
+        r = {"do": "own_room", "cell": s.key("an interior cell's form key")}
+    elif w == "skill-up":
+        sw = s.word("a skill")
+        if sw.lower() not in SKILLS:
+            raise SketchError(f"{sw!r} is no skill the game can raise (one of {', '.join(sorted(set(SKILLS.values())))})")
+        r = {"do": "raise_skill", "skill": SKILLS[sw.lower()], "by": s.number("a step, 1 to 10")}
     elif w == "rank":
         r = {"do": "set_rank", "faction": s.word("a faction"), "rank": s.number("a rank")}
     elif w == "regard":
@@ -337,8 +361,8 @@ def result(sk: Sketch, toks) -> dict:
         raise SketchError(f"`{w}` is no result: {CANNOT[w]}")
     else:
         raise SketchError(f"`{w}` is no result the game can do (give, take, give-gold, take-gold, set, add, join, "
-                          "leave, enemy, peace, teach, forget, rank, regard, on, off, lock, unlock, own, message, start, "
-                          "stage; a skill is taught by giving a skill book)")
+                          "leave, enemy, peace, teach, forget, perk, unperk, map, bounty, home, skill-up, rank, regard, on, "
+                          "off, lock, unlock, own, message, start, stage; a skill is also taught by giving a skill book)")
     if s.more():
         raise SketchError(f"left over in a result: {' '.join(t[1] for t in s.t[s.i:])!r} (a comma between results?)")
     return r
@@ -412,7 +436,7 @@ def statement(sk: Sketch, n: int, toks) -> None:
                               "its own hostility; a fixed level or hostility is a person of ours (drop `existing`)"))
         sk.people[pid] = p
         sk.src[("ref", pid)] = n
-    elif w in ("thing", "door"):
+    elif w in ("thing", "door", "marker"):
         tid = s.word("an id")
         t = {"id": tid, "kind": w, "line": n}
         where = s.word("at, in or on")
@@ -656,7 +680,7 @@ def _refs(sk: Sketch) -> list[dict]:
         out.append(ref)
     for tid, t in sk.things.items():
         ref = {"id": tid, "kind": t["kind"], "enabled": tid not in switched_on and not t.get("off"), "name": t["name"]}
-        if t["kind"] == "door":
+        if t["kind"] in ("door", "marker"):
             ref["placement"] = {"existing": f"sketch:{tid}"}
         elif "in" in t:
             ref["placement"] = {"base": {"kind": "template_item", "id": "sketch:item"}, "container": t["in"]}
@@ -849,6 +873,7 @@ def expand(sk: Sketch) -> tuple[dict | None, dict]:
     texts = {i["id"]: "(its words are written with the quest)" for i in sk.items.values() if i["readable"]}
     names.update({STOCK[k]: k.capitalize() for k in ("gold", "lockpick")})
     names.update(sk.spells)
+    names.update(sk.perks)
     form["names"] = names
     if texts:
         form["texts"] = texts
@@ -1128,6 +1153,10 @@ GLOSS = {
     "pointer-alive": "a line sends the player to a job that can no longer be offered",
     "marker-dead": "a marker left pointing at a body",
     "spell": "a spell taught or taken without its form key or the name the player sees",
+    "perk": "a perk given or taken without its form key or the name the player sees",
+    "map-marker": "a map marker put on the map that is not a marker of the form",
+    "bounty": "a bounty set on a group that is not a faction of the load order",
+    "room": "a home that is not an interior cell of the load order",
     "enemy": "a group turned against the player that is not a faction of the load order",
     "existing": "a level or hostility set on a person the world already holds",
     "refusal": "a check with no refusal of its own",

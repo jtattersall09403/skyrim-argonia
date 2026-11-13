@@ -55,7 +55,7 @@ def _key(s: dict, spoken: bool) -> str:
     drop = {"commands", "visited", "crimes", "travel"} | (set() if spoken else {"spoken"}) | \
         (set() if s["question"] else {"talking"}) | (set() if s["opened"] or s["question"] else {"pos"})
     return json.dumps({k: sorted(v) if k in ("taken", "dead", "fired", "spoken", "opened", "hostile", "spells",
-                                                    "enemies") else v
+                                                    "enemies", "perks", "mapped", "rooms") else v
                        for k, v in s.items() if k not in drop}, sort_keys=True)
 
 

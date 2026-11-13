@@ -154,7 +154,7 @@ Actions are the only way authored content changes the world. Every one is data.
 
 `giveItem(item, count)` · `takeItem(item, count)` · `giveGold(int)` ·
 `takeGold(int)` · `grantAbility(spell, name)` · `removeAbility(spell, name)` *(a spell, power or lasting ability: its form key and the name the player sees; once-per-day powers, incl. Hist
-communion — 0042 §1)* · `grantMapMarker(marker)` · `setPrice(service, int)` ·
+communion — 0042 §1)* · `grantPerk(perk, name)` · `removePerk(perk, name)` *(a perk of the load order: its form key and the name the player sees)* · `raiseSkill(skill, n)` *(n from 1 to 10)* · `grantMapMarker(marker)` *(a marker of the quest, shown on the map)* · `giveHome(cell)` *(an interior cell of the load order: the room and the unowned things in it become the player's)* · `setPrice(service, int)` ·
 `grantServiceAccess(service)` · `setDoorAccess(door, enum)` · `giveOwnership(ref)` *(an owned container or thing becomes the player's: what it holds is theirs to take, not stolen)*
 
 A favour (decision 0141) needs no verb: `completeQuest(quest)` marks paid
@@ -163,7 +163,7 @@ every open favour whose service names that quest as its hook.
 ### B4. Factions, crime and standing
 
 `setFactionRank(faction, rank)` · `changeStanding(faction, int)` ·
-`expel(faction)` · `makeEnemy(faction)` · `makePeace(faction)` · `changeDisposition(npc, int)` · `addOwing(region, int)` ·
+`expel(faction)` · `setBounty(faction, int)` *(a crime faction of the load order; 0 clears it)* · `makeEnemy(faction)` · `makePeace(faction)` · `changeDisposition(npc, int)` · `addOwing(region, int)` ·
 `clearOwing(region)` · `setNotoriety(region, tier)` ·
 `changeSettlementStanding(settlement, int)`
 

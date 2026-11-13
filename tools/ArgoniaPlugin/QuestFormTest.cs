@@ -53,6 +53,10 @@ static class QuestFormTest
         fx.Spells.Add(spell);
         var faction = new Faction(fx) { EditorID = "FxFaction" };
         fx.Factions.Add(faction);
+        var perk = new Perk(fx) { EditorID = "FxPerk" };
+        fx.Perks.Add(perk);
+        var mark = new PlacedObject(fx) { Placement = new Placement { Position = new Noggog.P3Float(0, 0, 0) } };
+        cell.Persistent.Add(mark);
         string Teach(string w, string key) => $$"""[{"do":"{{w}}","spell":"{{key}}"}]""";
 
         JsonNode Form(Action<JsonNode>? tweak = null)
@@ -110,6 +114,26 @@ static class QuestFormTest
             f["stages"]![0]!["results"] = JsonNode.Parse("""[{"do":"make_enemy","faction":"faction.ours"}]"""));
         R("a faction of the load order turned hostile", null, f =>
             f["stages"]![0]!["results"] = JsonNode.Parse($$"""[{"do":"make_enemy","faction":"{{faction.FormKey}}"},{"do":"leave_faction","faction":"{{faction.FormKey}}"}]"""));
+        R("a perk given under our name", null, f => { f["names"] = JsonNode.Parse($$"""{"{{perk.FormKey}}":"Quiet Step"}""");
+            f["stages"]![0]!["results"] = JsonNode.Parse($$"""[{"do":"add_perk","perk":"{{perk.FormKey}}"},{"do":"remove_perk","perk":"{{perk.FormKey}}"}]"""); });
+        R("a perk given with no name", "perk", f =>
+            f["stages"]![0]!["results"] = JsonNode.Parse($$"""[{"do":"add_perk","perk":"{{perk.FormKey}}"}]"""));
+        R("a perk of no plugin", "form-key", f => { f["names"] = JsonNode.Parse("""{"000001:Nowhere.esm":"Quiet Step"}""");
+            f["stages"]![0]!["results"] = JsonNode.Parse("""[{"do":"add_perk","perk":"000001:Nowhere.esm"}]"""); });
+        R("a marker put on the map", null, f => { ((JsonArray)f["refs"]!).Add(JsonNode.Parse($$$"""{"id":"m","kind":"marker","enabled":true,"placement":{"existing":"{{{mark.FormKey}}}"}}"""));
+            f["stages"]![0]!["results"] = JsonNode.Parse("""[{"do":"mark_on_map","ref":"m"}]"""); });
+        R("a person put on the map", "map-marker", f =>
+            f["stages"]![0]!["results"] = JsonNode.Parse("""[{"do":"mark_on_map","ref":"p"}]"""));
+        R("a bounty set on a faction of the load order", null, f =>
+            f["stages"]![0]!["results"] = JsonNode.Parse($$"""[{"do":"set_bounty","faction":"{{faction.FormKey}}","amount":0}]"""));
+        R("a bounty set on a faction of ours", "faction", f =>
+            f["stages"]![0]!["results"] = JsonNode.Parse("""[{"do":"set_bounty","faction":"faction.ours","amount":100}]"""));
+        R("a room made the player's", null, f =>
+            f["stages"]![0]!["results"] = JsonNode.Parse($$"""[{"do":"own_room","cell":"{{cell.FormKey}}"}]"""));
+        R("a room of no plugin", "form-key", f =>
+            f["stages"]![0]!["results"] = JsonNode.Parse("""[{"do":"own_room","cell":"000001:Nowhere.esm"}]"""));
+        R("a skill raised", null, f =>
+            f["stages"]![0]!["results"] = JsonNode.Parse("""[{"do":"raise_skill","skill":"Sneak","by":5}]"""));
         Console.WriteLine(bad == 0 ? "questform selftest: PASS" : $"questform selftest: FAIL ({bad} wrong)");
         return bad == 0 ? 0 : 1;
     }

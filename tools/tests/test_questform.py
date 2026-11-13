@@ -463,3 +463,38 @@ def test_a_target_switched_on_by_the_starting_stage_is_on():
     for how in (False, None):
         g, starter = _started_later(how)
         assert "objective-target-on" in {r for r, _ in rules.check(g, [starter])}
+
+
+def test_the_record_terms_of_powers_compile_to_their_results():
+    from tools.argonia_world import db
+    c = qc.Compiler(db.load(), "quest.local.lq25")
+    c.rows = {}
+    got = c.results([{"grantPerk": ["0BE123:Skyrim.esm", "Agility"]}, {"removePerk": ["0BE123:Skyrim.esm", "Agility"]},
+                     {"grantMapMarker": ["marker.a"]}, {"setBounty": ["10CEE9:Skyrim.esm", 0]},
+                     {"giveHome": ["0AA665:Black Marsh.esm"]}, {"raiseSkill": ["skill.speechcraft", 3]}], "x")
+    assert [r["do"] for r in got] == ["add_perk", "remove_perk", "mark_on_map", "set_bounty", "own_room", "raise_skill"]
+    assert got[-1] == {"do": "raise_skill", "skill": "Speech", "by": 3} and got[3]["amount"] == 0
+    assert c.perk_names == {"0BE123:Skyrim.esm": "Agility"} and not c.refused
+    c.results([{"grantPerk": ["0BE123:Skyrim.esm"]}, {"raiseSkill": ["mysticism", 2]}], "x")
+    assert [t for t, _, _ in c.refused] == ["grantPerk", "raiseSkill"]
+
+
+def test_the_powers_name_what_the_load_order_holds():
+    f = example()
+    f["refs"].append({"id": "marker.hill", "kind": "marker", "enabled": True,
+                      "placement": {"base": {"kind": "existing_base", "id": "00003B:Skyrim.esm"},
+                                    "anchor": {"near": "0AA837:Black Marsh.esm", "rule": "navmesh"}}})
+    stage(f, 30)["results"] += [{"do": "add_perk", "perk": "0BE123:Skyrim.esm"},
+                                {"do": "mark_on_map", "ref": "marker.hill"},
+                                {"do": "set_bounty", "faction": "10CEE9:Skyrim.esm", "amount": 50},
+                                {"do": "own_room", "cell": "0AA665:Black Marsh.esm"},
+                                {"do": "raise_skill", "skill": "Sneak", "by": 2}]
+    assert failed_rules(f) & {"perk", "map-marker", "bounty", "room"} == {"perk"}    # the perk has no name
+    f["names"] = {**f.get("names", {}), "0BE123:Skyrim.esm": "Agility"}
+    assert not failed_rules(f) & {"perk", "map-marker", "bounty", "room"}
+    stage(f, 30)["results"] += [{"do": "mark_on_map", "ref": "npc.example.contact"},
+                                {"do": "set_bounty", "faction": "faction.reed", "amount": 0},
+                                {"do": "own_room", "cell": "cell.mine"}, {"do": "remove_perk", "perk": "agility"}]
+    assert {"perk", "map-marker", "bounty", "room"} <= failed_rules(f)
+    stage(f, 30)["results"] += [{"do": "raise_skill", "skill": "Mysticism", "by": 2}]
+    assert failed_rules(f) & {"schema", "vocabulary"}

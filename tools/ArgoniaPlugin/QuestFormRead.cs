@@ -508,11 +508,11 @@ static class QuestFormRead
         // the names of the items the form names that are not its refs (a result's, a condition's, a stock thing's base, a
         // lock's key), as the player sees them: each word's record by its label (this quest's, else the quest that built it)
         var keyOf = names.Where(n => n.Key.Item1 is "item" or "thing").GroupBy(n => n.Value).ToDictionary(g => g.Key, g => FormKey.Factory(g.First().Key.Item2));
-        foreach (var l in c.Labels.Where(l => l.StartsWith("name=item|") || l.StartsWith("name=thing|") || l.StartsWith("name=spell|")).Select(l => l[5..].Split('|', 3)))
+        foreach (var l in c.Labels.Where(l => l.StartsWith("name=item|") || l.StartsWith("name=thing|") || l.StartsWith("name=spell|") || l.StartsWith("name=perk|")).Select(l => l[5..].Split('|', 3)))
             keyOf.TryAdd(l[2], FormKey.Factory(l[1]));
-        foreach (var n in names.Where(n => n.Key.Item1 == "spell")) keyOf.TryAdd(n.Value, FormKey.Factory(n.Key.Item2));
+        foreach (var n in names.Where(n => n.Key.Item1 is "spell" or "perk")) keyOf.TryAdd(n.Value, FormKey.Factory(n.Key.Item2));
         var words = new SortedSet<string>(StringComparer.Ordinal);
-        void Words(JsonNode? rows) { foreach (var r in rows?.AsArray() ?? []) foreach (var f in new[] { "item", "if_held", "spell" }) if (r?[f] is JsonValue v) words.Add(v.GetValue<string>()); }
+        void Words(JsonNode? rows) { foreach (var r in rows?.AsArray() ?? []) foreach (var f in new[] { "item", "if_held", "spell", "perk" }) if (r?[f] is JsonValue v) words.Add(v.GetValue<string>()); }
         foreach (var s in stages) Words(s?["results"]);
         foreach (var l in lines) { Words(l?["results"]); Words(l?["conditions"]); }
         foreach (var r in refs)
@@ -672,6 +672,16 @@ static class QuestFormRead
             case "teach_spell" or "forget_spell":
                 if (!c.Mod.Spells.Any(x => x.FormKey == r.What)) throw no($"{where}: spell {r.What} is not ours");
                 j["spell"] = name("spell", r.What); break;
+            case "add_perk" or "remove_perk":
+                if (!c.Mod.Perks.Any(x => x.FormKey == r.What)) throw no($"{where}: perk {r.What} is not ours");
+                j["perk"] = name("perk", r.What); break;
+            case "mark_on_map": j["ref"] = refName(r.What, where); break;
+            case "set_bounty": j["faction"] = name("faction", r.What); j["amount"] = (int)r.Num; break;
+            case "own_room": j["cell"] = r.What.ToString(); break;
+            case "raise_skill":
+                var si = (int)r.Num / 100;
+                if (si >= QuestForm.SkillOrder.Length) throw no($"{where}: skill {si} is none of the form's");
+                j["skill"] = QuestForm.SkillOrder[si]; j["by"] = (int)r.Num % 100; break;
             case "set_rank": j["faction"] = name("faction", r.What); j["rank"] = (int)r.Num; break;
             case "change_regard": j["ref"] = refName(r.What, where); j["by"] = (int)r.Num; break;
             case "switch_on" or "switch_off" or "lock_door" or "unlock_door" or "give_ownership": j["ref"] = refName(r.What, where); break;

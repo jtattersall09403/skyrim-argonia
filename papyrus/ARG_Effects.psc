@@ -39,6 +39,11 @@ The operation numbers are QuestForm.cs's (tools/ArgoniaPlugin); a number not lis
 ; 37 TeachSpell  38 ForgetSpell  What: the spell (a spell, power or ability); the player learns or loses it
 ; 39 MakeEnemy   40 MakePeace    What: the faction; its people attack the player on sight, or no longer do
 ; 41 LeaveFaction               What: the faction; the player is no longer of it
+; 42 AddPerk  43 RemovePerk     What: the perk; the player gains or loses it
+; 44 MarkOnMap                  What: the map marker reference; it is shown on the map (fast travel once visited)
+; 45 SetBounty                  What: the faction (a crime faction); Num: the bounty the player carries there, 0 clears it
+; 46 OwnRoom                    What: the interior cell; the room and the unowned things in it become the player's
+; 47 RaiseSkill                 Num: by + 100 * the skill's index in the form's skill list (see SkillName); the skill rises by `by`
 
 Function Run(Int[] op, Form[] what, Float[] num, Int from, Int to, Quest q, ObjectReference speaker = None) Global
 	Actor player = Game.GetPlayer()
@@ -157,6 +162,18 @@ Function Run(Int[] op, Form[] what, Float[] num, Int from, Int to, Quest q, Obje
 			(w as Faction).SetPlayerEnemy(o == 39)
 		ElseIf o == 41
 			player.RemoveFromFaction(w as Faction)
+		ElseIf o == 42
+			player.AddPerk(w as Perk)
+		ElseIf o == 43
+			player.RemovePerk(w as Perk)
+		ElseIf o == 44
+			(w as ObjectReference).AddToMap(false)
+		ElseIf o == 45
+			(w as Faction).SetCrimeGold(n)
+		ElseIf o == 46
+			(w as Cell).SetActorOwner(player.GetActorBase())
+		ElseIf o == 47
+			Game.IncrementSkillBy(SkillName(n / 100), n % 100)
 		ElseIf o == 34
 			a = speaker as Actor
 			If a && !a.IsDead()
@@ -165,4 +182,44 @@ Function Run(Int[] op, Form[] what, Float[] num, Int from, Int to, Quest q, Obje
 		EndIf
 		i += 1
 	EndWhile
+EndFunction
+
+; The skill a RaiseSkill row names, as Skyrim's skill functions call it: the form's skill list, in its order.
+String Function SkillName(Int i) Global
+	If i == 0
+		Return "Speechcraft"
+	ElseIf i == 1
+		Return "Sneak"
+	ElseIf i == 2
+		Return "Lockpicking"
+	ElseIf i == 3
+		Return "Pickpocket"
+	ElseIf i == 4
+		Return "Alchemy"
+	ElseIf i == 5
+		Return "OneHanded"
+	ElseIf i == 6
+		Return "TwoHanded"
+	ElseIf i == 7
+		Return "Marksman"
+	ElseIf i == 8
+		Return "Block"
+	ElseIf i == 9
+		Return "HeavyArmor"
+	ElseIf i == 10
+		Return "LightArmor"
+	ElseIf i == 11
+		Return "Smithing"
+	ElseIf i == 12
+		Return "Enchanting"
+	ElseIf i == 13
+		Return "Alteration"
+	ElseIf i == 14
+		Return "Conjuration"
+	ElseIf i == 15
+		Return "Destruction"
+	ElseIf i == 16
+		Return "Illusion"
+	EndIf
+	Return "Restoration"
 EndFunction

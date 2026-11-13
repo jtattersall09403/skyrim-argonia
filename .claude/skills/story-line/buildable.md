@@ -70,6 +70,11 @@ A line does one thing: it moves the quest to a stage. **Everything else is done 
 | make the player join a faction, set their rank, or put them out of it | |
 | teach the player a spell, power or lasting ability, or take one away | a spell of the load order, under the name we give it |
 | turn a faction's people against the player, or make peace | a faction of the load order: they attack on sight, or no longer do |
+| give the player a perk, or take one away | a perk of the load order, under the name we give it |
+| show a marker on the map | a marker of the quest; it can be travelled to once visited |
+| set the bounty the player carries with a crime faction (0 clears it) | a crime faction of the load order |
+| make a room the player's home | an interior cell of the load order: the room and the unowned things in it become theirs |
+| raise one of the player's skills | by 1 to 10 |
 | change a person's regard | -4 to 4 |
 | switch a named person or thing on or off | only away from the player |
 | lock or unlock a named door | |
@@ -187,6 +192,7 @@ the speaker's spot by the door, the names the game shows, the words) is listed a
 | `person <id> at <place> [level <n>] [hostile] [existing] [off] "<name>"` | a person or creature; `existing` for one the world already holds; `off` until a stage switches them on |
 | `thing <id> at <place>\|in <container>\|on <person> [container] [locked <level> [key <thing>]] [owner <person or faction>] [holds <item> <n>, ...] [readable] [stock <item> [count <n>]] [off] "<name>"` | a thing; `stock` for a counted stock item (gold, lockpick, or one of ours given in several places) |
 | `door <id> at <place> [locked <level> [key <thing>]] "<name>"` | a door |
+| `marker <id> at <place> "<name>"` | a marker, which `map` shows on the map |
 | `item <id> [readable] "<name>"` | a thing nobody places, which a stage gives |
 | `stage <n> hidden` / `stage <n> [completed\|failed] "<journal>" [do <result>, ...]` | a stage, its entry and its results |
 | `objective <n> at <stage>, ... "<words>" -> <target>, ...` | an objective shown at those stages, its markers; it is done when the quest moves on |
@@ -200,9 +206,11 @@ Gates: `stage <quest> is <n>`, `stage <quest> >= <n>`, `done <quest> <n>`, `numb
 <person>`, `regard <person> <n>`, `race <race>`, `sex <sex>`. Results: `give <thing> [<n>]`, `take <thing> [<n>]`,
 `give-gold <n>`, `take-gold <n>`, `set <number> <v>`, `add <number> <v>`, `join <faction>`, `leave <faction>`,
 `rank <faction> <n>`, `teach <spell form key> "<name>"`, `forget <spell form key>`, `enemy <faction form key>`,
-`peace <faction form key>`,
+`peace <faction form key>`, `perk <perk form key> "<name>"`, `unperk <perk form key>`, `map <marker>`,
+`bounty <faction form key> <n>`, `home <interior cell form key>`, `skill-up <skill> <n>`,
 `regard <person> <n>`, `on <ref>`, `off <ref>`, `lock <door>`, `unlock <door>`, `own <container>`, `message "<words>"`,
-`start <quest> <stage>`, `stage <n>`.
+`start <quest> <stage>`, `stage <n>`. A form key whose plugin's name holds a space is quoted
+(`home "0AA665:Black Marsh.esm"`).
 
 As the quest writer's record will, `sketch` adds three things for you: a take's stage moves on at once when the thing
 is already held; a take, use or death that could fire after the step it stands for closes there; a job offered at a

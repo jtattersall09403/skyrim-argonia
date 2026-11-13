@@ -150,6 +150,46 @@ def _r_enemy(on):
     return f
 
 
+def _r_perk(add):
+    """A perk given or taken: the player is told by its name (the form's `names`); the perk tree is not modelled."""
+    def f(g, q, r, _):
+        known, name = g.s["perks"], g.perk_name(r["perk"])
+        if add and r["perk"] not in known:
+            known.append(r["perk"])
+            return [f"Perk added: {name}"]
+        if not add and r["perk"] in known:
+            known.remove(r["perk"])
+            return [f"Perk removed: {name}"]
+        return []
+    return f
+
+
+def _r_map(g, q, r, _):
+    """A marker put on the map: its place is a known place on `map` (fast travel waits until it is visited)."""
+    p = g._pos(r["ref"])
+    if p is None:
+        raise HarnessError(f"{q}: mark_on_map names {r['ref']}, which has no position in this run")
+    if p["cell"] not in g.s["mapped"]:
+        g.s["mapped"].append(p["cell"])
+    return [f"Map updated: {g.place_name(p)}"]
+
+
+def _r_bounty(g, q, r, _):
+    g.s["bounty"][r["faction"]] = r["amount"]
+    return []
+
+
+def _r_room(g, q, r, _):
+    if r["cell"] not in g.s["rooms"]:
+        g.s["rooms"].append(r["cell"])
+    return []
+
+
+def _r_skill(g, q, r, _):
+    name = g.raise_skill(r["skill"], r["by"])
+    return [f"{name} increased to {g.s['sheet']['skills'][name]}"]
+
+
 RESULTS = {
     # `if_held`: a stage's result that moves on only when the player already holds the item as the stage begins
     "set_stage": lambda g, q, r, sp: [] if "if_held" in r and not g.s["items"].get(g.item_of(r["if_held"]), 0)
@@ -178,4 +218,10 @@ RESULTS = {
     "make_peace": _r_enemy(False),
     "teach_spell": _r_spell(True),
     "forget_spell": _r_spell(False),
+    "add_perk": _r_perk(True),
+    "remove_perk": _r_perk(False),
+    "mark_on_map": _r_map,
+    "set_bounty": _r_bounty,
+    "own_room": _r_room,
+    "raise_skill": _r_skill,
 }

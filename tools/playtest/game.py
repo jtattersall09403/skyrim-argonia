@@ -198,6 +198,8 @@ class Game:
                     items.add(r["item"])
                 if r["do"] in ("teach_spell", "forget_spell") and not names.get(r["spell"]):
                     missing.add(r["spell"])
+                if r["do"] in ("add_perk", "remove_perk") and not names.get(r["perk"]):
+                    missing.add(r["perk"])
         missing |= {i for i in items if self._item_name(i) is None}
         if missing:
             raise HarnessError("no name the player would see for: " + ", ".join(sorted(missing)) +
@@ -207,7 +209,7 @@ class Game:
         return {"quests": {}, "order": [], "items": {}, "gold": 0, "numbers": {}, "factions": {}, "regard": {},
                 "dead": [], "switched": {}, "locked": {}, "taken": [], "pos": None, "visited": [], "spoken": [],
                 "fired": [], "talking": None, "question": None, "hostile": [],
-                "opened": [], "owned": [], "spells": [], "enemies": [], "contents": {k: {c["item"]: c["count"] for c in e["contents"]}
+                "opened": [], "owned": [], "spells": [], "enemies": [], "perks": [], "mapped": [], "bounty": {}, "rooms": [], "contents": {k: {c["item"]: c["count"] for c in e["contents"]}
                                            for k, e in self.ents.items() if e["contents"]},
                 "crimes": [], "sheet": sheet, "commands": 0, "ended": False}
 
@@ -309,6 +311,22 @@ class Game:
                 return spell
             raise HarnessError(f"no name the player would see for {spell}")
         return n
+
+    def perk_name(self, perk) -> str:
+        """A perk's name as the player sees it: the form's `names` for its form key."""
+        n = self.world.get("names", {}).get(perk)
+        if n is None:
+            if not self.strict:
+                return perk
+            raise HarnessError(f"no name the player would see for {perk}")
+        return n
+
+    def raise_skill(self, skill, by) -> str:
+        """The character sheet's skill raised by `by` (Game.IncrementSkillBy); its sheet name."""
+        k = self._skill_key(skill)
+        name = next(s for s in self.s["sheet"]["skills"] if s.lower().replace("-", "").replace(" ", "") == k)
+        self.s["sheet"]["skills"][name] += by
+        return name
 
     def magic(self) -> str:
         """The magic menu's own: every spell, power and ability a quest has taught."""
@@ -640,6 +658,8 @@ class Game:
     def look(self) -> str:
         pos = self.s["pos"]
         out = [f"You are in {self.place_name(pos)}." if pos["interior"] else f"You are at {self.place_name(pos)}."]
+        if pos["interior"] and pos["cell"] in self.s["rooms"]:
+            out.append("This room is yours.")     # a thing in it whose owner is a person stays theirs, as it is
         people = [e for e in self._visible() if self.ents[e]["kind"] == "person"]
         things = [e for e in self._visible() if self.ents[e]["kind"] == "thing" and self._loose(e)]
         doors = [e for e in self._visible() if self.ents[e]["kind"] == "door"]
@@ -729,7 +749,7 @@ class Game:
                 d = _dist(me, there)
                 line += f"; {_how_far(d)} to the {_compass(me, there)}" if d > NEAR else "; right here"
             out.append(line)
-        known = [c for c in self.s["visited"]] + [self._pos(t)["cell"] for _, _, t in marks]
+        known = [c for c in self.s["visited"]] + self.s["mapped"] + [self._pos(t)["cell"] for _, _, t in marks]
         names = []
         for c in known:
             n = self.world.get("places", {}).get(c, {}).get("name") or self.world.get("names", {}).get(c)
@@ -1122,9 +1142,13 @@ class Game:
     def wait(self) -> str:
         return "You wait an hour."
 
-    def _skill(self, skill) -> int:
+    @staticmethod
+    def _skill_key(skill) -> str:
         k = skill.lower().replace("-", "").replace(" ", "")
-        k = SKILL_ALIASES.get(k, k)
+        return SKILL_ALIASES.get(k, k)
+
+    def _skill(self, skill) -> int:
+        k = self._skill_key(skill)
         for s, v in self.s["sheet"]["skills"].items():
             if s.lower().replace("-", "").replace(" ", "") == k:
                 return v

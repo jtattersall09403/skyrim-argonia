@@ -346,7 +346,12 @@
         {"$ref": "#/$defs/r_hostile"},
         {"$ref": "#/$defs/r_start"},
         {"$ref": "#/$defs/r_spell"},
-        {"$ref": "#/$defs/r_faction"}
+        {"$ref": "#/$defs/r_faction"},
+        {"$ref": "#/$defs/r_perk"},
+        {"$ref": "#/$defs/r_map"},
+        {"$ref": "#/$defs/r_bounty"},
+        {"$ref": "#/$defs/r_room"},
+        {"$ref": "#/$defs/r_skill"}
       ]
     },
     "r_stage": {
@@ -378,6 +383,28 @@
     "r_spell": {
       "type": "object", "additionalProperties": false, "required": ["do", "spell"],
       "properties": {"do": {"enum": ["teach_spell", "forget_spell"]}, "spell": {"$ref": "#/$defs/id"}}
+    },
+    "r_perk": {
+      "type": "object", "additionalProperties": false, "required": ["do", "perk"],
+      "properties": {"do": {"enum": ["add_perk", "remove_perk"]}, "perk": {"$ref": "#/$defs/id"}}
+    },
+    "r_map": {
+      "type": "object", "additionalProperties": false, "required": ["do", "ref"],
+      "properties": {"do": {"const": "mark_on_map"}, "ref": {"$ref": "#/$defs/id"}}
+    },
+    "r_bounty": {
+      "type": "object", "additionalProperties": false, "required": ["do", "faction", "amount"],
+      "properties": {"do": {"const": "set_bounty"}, "faction": {"$ref": "#/$defs/id"},
+                     "amount": {"type": "integer", "minimum": 0}}
+    },
+    "r_room": {
+      "type": "object", "additionalProperties": false, "required": ["do", "cell"],
+      "properties": {"do": {"const": "own_room"}, "cell": {"$ref": "#/$defs/id"}}
+    },
+    "r_skill": {
+      "type": "object", "additionalProperties": false, "required": ["do", "skill", "by"],
+      "properties": {"do": {"const": "raise_skill"}, "skill": {"$ref": "#/$defs/skill"},
+                     "by": {"type": "integer", "minimum": 1, "maximum": 10}}
     },
     "r_rank": {
       "type": "object", "additionalProperties": false, "required": ["do", "faction", "rank"],

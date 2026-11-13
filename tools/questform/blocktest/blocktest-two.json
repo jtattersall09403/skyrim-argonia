@@ -10,7 +10,7 @@
  "stages": [
   {"number": 10, "shown": true, "ending": "none", "results": [],
    "journal": "The Dock Keeper's walker is waiting for me on the dock."},
-  {"number": 20, "shown": true, "ending": "none", "results": [],
+  {"number": 20, "shown": true, "ending": "none", "results": [{"do": "mark_on_map", "ref": "marker.test.bollard"}],
    "journal": "The walker told me to wait by the bollard until the Dock Keeper says I have passed."},
   {"number": 30, "shown": false, "ending": "none", "results": [], "journal": null},
   {"number": 90, "shown": true, "ending": "failed", "results": [],

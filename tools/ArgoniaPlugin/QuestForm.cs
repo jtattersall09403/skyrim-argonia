@@ -43,7 +43,7 @@ static class QuestForm
             GiveItem = 20, TakeItem = 21, GiveGold = 22, TakeGold = 23, SetNumber = 24, AddNumber = 25, JoinFaction = 26,
             SetRank = 27, ChangeRegard = 28, SwitchOn = 29, SwitchOff = 30, LockDoor = 31, UnlockDoor = 32, ShowMessage = 33,
             SpeakerHostile = 34, StartQuest = 35, GiveOwnership = 36, TeachSpell = 37, ForgetSpell = 38, MakeEnemy = 39, MakePeace = 40,
-            LeaveFaction = 41;
+            LeaveFaction = 41, AddPerk = 42, RemovePerk = 43, MarkOnMap = 44, SetBounty = 45, OwnRoom = 46, RaiseSkill = 47;
         public static readonly Dictionary<string, int> OfResult = new()
         {
             ["set_stage"] = SetStage, ["give_item"] = GiveItem, ["take_item"] = TakeItem, ["give_gold"] = GiveGold, ["take_gold"] = TakeGold,
@@ -51,7 +51,8 @@ static class QuestForm
             ["change_regard"] = ChangeRegard, ["switch_on"] = SwitchOn, ["switch_off"] = SwitchOff, ["lock_door"] = LockDoor,
             ["unlock_door"] = UnlockDoor, ["show_message"] = ShowMessage, ["speaker_hostile"] = SpeakerHostile, ["start_quest"] = StartQuest,
             ["give_ownership"] = GiveOwnership, ["teach_spell"] = TeachSpell, ["forget_spell"] = ForgetSpell, ["make_enemy"] = MakeEnemy,
-            ["make_peace"] = MakePeace, ["leave_faction"] = LeaveFaction,
+            ["make_peace"] = MakePeace, ["leave_faction"] = LeaveFaction, ["add_perk"] = AddPerk, ["remove_perk"] = RemovePerk,
+            ["mark_on_map"] = MarkOnMap, ["set_bounty"] = SetBounty, ["own_room"] = OwnRoom, ["raise_skill"] = RaiseSkill,
         };
     }
     public sealed record Row(int Op, FormKey What, float Num);
@@ -322,6 +323,11 @@ static class QuestForm
             "join_faction" or "leave_faction" => [new Row(op, Faction(c, S(res, "faction")), 0)],
             "make_enemy" or "make_peace" => [new Row(op, LoadOrderFaction(c, S(res, "faction"), w), 0)],
             "teach_spell" or "forget_spell" => [new Row(op, Spell(c, b, S(res, "spell")), 0)],
+            "add_perk" or "remove_perk" => [new Row(op, Perk(c, b, S(res, "perk")), 0)],
+            "mark_on_map" => [new Row(op, MarkerRef(c, b, S(res, "ref")), 0)],
+            "set_bounty" => [new Row(op, LoadOrderFaction(c, S(res, "faction"), w), I(res, "amount"))],
+            "own_room" => [new Row(op, Exists<ICellGetter>(c, S(res, "cell"), "cell"), 0)],
+            "raise_skill" => [new Row(op, FormKey.Null, I(res, "by") + 100 * Array.IndexOf(SkillOrder, S(res, "skill")))],
             "set_rank" => [new Row(op, Faction(c, S(res, "faction")), I(res, "rank"))],
             "change_regard" => [new Row(op, PersonRef(c, b, S(res, "ref"), w), I(res, "by"))],
             "switch_on" or "switch_off" => [new Row(op, PlacedRef(c, b, S(res, "ref"), w), 0)],
@@ -338,6 +344,9 @@ static class QuestForm
         var r = RefOf(c, b, id, what);
         return r.Created ? throw c.No("created", $"{what} names {id}, a thing made in a container, which has no reference to act on") : r.Placed;
     }
+    // A map marker a result shows on the map: a ref of kind marker.
+    static FormKey MarkerRef(Ctx c, Built b, string id) =>
+        RefOf(c, b, id, "mark_on_map").Kind == "marker" ? PlacedRef(c, b, id, "mark_on_map") : throw c.No("map-marker", $"mark_on_map names {id}, which is no marker of the form");
     static FormKey PersonRef(Ctx c, Built b, string id, string what)
     {
         var r = RefOf(c, b, id, what);
@@ -372,6 +381,9 @@ static class QuestForm
         ["Enchanting"] = ActorValue.Enchanting, ["Alteration"] = ActorValue.Alteration, ["Conjuration"] = ActorValue.Conjuration,
         ["Destruction"] = ActorValue.Destruction, ["Illusion"] = ActorValue.Illusion, ["Restoration"] = ActorValue.Restoration,
     };
+    /// The form's skills in the schema's order: a raise_skill row carries the index (ARG_Effects.SkillName).
+    public static readonly string[] SkillOrder = ["Speech", "Sneak", "Lockpicking", "Pickpocket", "Alchemy", "OneHanded", "TwoHanded", "Archery", "Block",
+        "HeavyArmor", "LightArmor", "Smithing", "Enchanting", "Alteration", "Conjuration", "Destruction", "Illusion", "Restoration"];
     /// The skill's actor value: Skyrim's own name for it (the form holds no other).
     public static ActorValue? Skill(string s) => Skills.TryGetValue(s, out var v) ? v : null;
     /// The name the reader writes for an actor value: Skyrim's.
@@ -408,6 +420,24 @@ static class QuestForm
         copy.EditorID = $"ARG_S_{Slug(name)}";
         copy.Name = new Mutagen.Bethesda.Strings.TranslatedString(Mutagen.Bethesda.Strings.Language.English, name);
         c.Mod.Spells.Add(copy);
+        return k;
+    }
+    static FormKey Perk(Ctx c, Built b, string id) => Named(c, "perk", id, Perk0(c, b, id));
+    /// A perk the player is given or loses: our copy of a perk of the load order (the form key the form names), called
+    /// by the form's `names` for that key. One record per perk; two forms naming one perk differently is refused.
+    static FormKey Perk0(Ctx c, Built b, string id)
+    {
+        var tk = Exists<IPerkGetter>(c, id, "perk");
+        var name = c.Quests.Values.Select(q => q.F).Prepend(b.F).Select(f => f.TryGetProperty("names", out var m) && m.TryGetProperty(id, out var v) ? v.GetString() : null)
+            .FirstOrDefault(x => x != null) ?? throw c.No("perk", $"{id}: a perk given with no name in the form's names");
+        var k = c.Key("perk:" + id);
+        if (c.Mod.Perks.FirstOrDefault(x => x.FormKey == k) is { } had)
+            return had.Name?.String == name ? k : throw c.No("perk", $"{id}: named '{name}' here and '{had.Name?.String}' by another form");
+        var src = Enumerable.Reverse(c.Mods).SelectMany(m => m.EnumerateMajorRecords<IPerkGetter>()).First(x => x.FormKey == tk);
+        var copy = (Perk)((IMajorRecordGetter)src).Duplicate(k);
+        copy.EditorID = $"ARG_P_{Slug(name)}";
+        copy.Name = new Mutagen.Bethesda.Strings.TranslatedString(Mutagen.Bethesda.Strings.Language.English, name);
+        c.Mod.Perks.Add(copy);
         return k;
     }
     // an item named by a thing of the form is labelled "thing" (its base keeps its own word where it is placed)

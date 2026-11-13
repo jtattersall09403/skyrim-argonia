@@ -1,6 +1,6 @@
 {
  "version": 1,
- "names": {"00000A:Skyrim.esm": "Lockpick", "017122:Skyrim.esm": "Block Test Shadow"},
+ "names": {"00000A:Skyrim.esm": "Lockpick", "017122:Skyrim.esm": "Block Test Shadow", "0BE123:Skyrim.esm": "Block Test Agility"},
  "quest": {
   "id": "quest.test.blocktest",
   "editor_id": "ARG_BlockTest",
@@ -28,7 +28,9 @@
   {"number": 70, "shown": true, "ending": "none",
    "results": [{"do": "show_message", "text": "Block test: using the ship's door set stage 70 (a use trigger)."},
                {"do": "start_quest", "quest": "quest.test.blocktest-two", "stage": 10},
-               {"do": "teach_spell", "spell": "017122:Skyrim.esm"}, {"do": "make_enemy", "faction": "039F26:Skyrim.esm"}],
+               {"do": "teach_spell", "spell": "017122:Skyrim.esm"}, {"do": "make_enemy", "faction": "039F26:Skyrim.esm"},
+               {"do": "add_perk", "perk": "0BE123:Skyrim.esm"}, {"do": "set_bounty", "faction": "10CEE9:Skyrim.esm", "amount": 0},
+               {"do": "raise_skill", "skill": "Sneak", "by": 1}],
    "journal": "I came out of the ship by its door. The Dock Keeper will want to hear the crab is dead."},
   {"number": 90, "shown": true, "ending": "failed", "results": [],
    "journal": "The Dock Keeper is dead. Nobody else can finish the block test with me."},
@@ -36,7 +38,8 @@
    "results": [{"do": "lock_door", "ref": "door.test.ship"}, {"do": "switch_off", "ref": "person.test.crab"},
                {"do": "forget_spell", "spell": "017122:Skyrim.esm"}, {"do": "make_peace", "faction": "039F26:Skyrim.esm"},
                {"do": "leave_faction", "faction": "faction.test.dock-hands"},
-               {"do": "show_message", "text": "Block test complete: the ship's door is locked again, the power Block Test Shadow is gone, the Thalmor are at peace with you again, you have left the dock hands, and every result has run."}],
+               {"do": "remove_perk", "perk": "0BE123:Skyrim.esm"}, {"do": "own_room", "cell": "0AA665:Black Marsh.esm"},
+               {"do": "show_message", "text": "Block test complete: the ship's door is locked again, the power Block Test Shadow is gone, the Thalmor are at peace with you again, you have left the dock hands, the Block Test Agility perk is gone, the ship's cabin is your room, and every result has run."}],
    "journal": "I told the Dock Keeper the crab is dead. I passed the block test."}
  ],
  "objectives": [

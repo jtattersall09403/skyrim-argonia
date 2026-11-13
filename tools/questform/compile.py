@@ -156,6 +156,7 @@ class Compiler:
         self.death_moves: set[str] = set()
         self.used_refs: dict[str, str] = {}
         self.kill_choice: set[str] = set()
+        self.perk_names: dict[str, str] = {}      # a given perk's form key: the name the player sees
         self.spell_names: dict[str, str] = {}     # a taught spell's form key: the name the player sees
 
     def refuse(self, term, where, hint):
@@ -353,6 +354,24 @@ class Compiler:
                 else:
                     self.spell_names[a[0]] = a[1]
                 out.append({"do": "teach_spell" if term == "grantAbility" else "forget_spell", "spell": a[0]})
+            elif term in ("grantPerk", "removePerk"):
+                if len(a) < 2 or not a[1]:
+                    self.refuse(term, where, "name the perk as the player will see it: [<its form key>, <name>]")
+                else:
+                    self.perk_names[a[0]] = a[1]
+                out.append({"do": "add_perk" if term == "grantPerk" else "remove_perk", "perk": a[0]})
+            elif term == "grantMapMarker":
+                out.append({"do": "mark_on_map", "ref": self.use(a[0], where)})
+            elif term == "setBounty":
+                out.append({"do": "set_bounty", "faction": a[0], "amount": int(a[1])})
+            elif term == "giveHome":
+                out.append({"do": "own_room", "cell": a[0]})
+            elif term == "raiseSkill":
+                sk = skill_of(str(a[0]))
+                if sk is None:
+                    self.refuse(term, where, f"{a[0]} is no Skyrim skill and maps to none: name one of the form's skills")
+                else:
+                    out.append({"do": "raise_skill", "skill": sk, "by": int(a[1])})
             elif term == "expel":
                 out.append({"do": "leave_faction", "faction": a[0]})
             elif term in ("makeEnemy", "makePeace"):
@@ -463,7 +482,7 @@ class Compiler:
                 "must_live": must_live}
         self._until(form)
         names, texts = self.item_names(form)
-        names |= self.spell_names
+        names |= self.spell_names | self.perk_names
         if names:
             form["names"] = names
         if texts:

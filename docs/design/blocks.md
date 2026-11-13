@@ -62,6 +62,11 @@ Every result is a row (`Op`, `What`, `Num`) that `ARG_Effects.Run` carries out; 
 | `teach_spell`, `forget_spell` | AddSpell, RemoveSpell on the player, of our copy of a load-order spell under our name | the Nightingale and Black Book powers, the standing stones; Morrowind's AddSpell (the Corprus cure) |
 | `make_enemy`, `make_peace` | the faction's SetPlayerEnemy | the civil war's sides; Morrowind's SetPCFacRep and hostile houses |
 | `leave_faction` | RemoveFromFaction on the player | expulsion from a guild (Morrowind's PCExpell) |
+| `add_perk`, `remove_perk` | AddPerk, RemovePerk on the player, of our copy of a load-order perk under our name | Morrowind's AddSpell of an ability; the dragon shouts' and standing stones' perks |
+| `mark_on_map` | AddToMap(false) on a marker reference | Morrowind's journal naming a place; the quests that reveal a location |
+| `set_bounty` | SetCrimeGold on a crime faction | forgiving or fining a crime (Morrowind's SetPCCrimeLevel) |
+| `own_room` | SetActorOwner on the interior cell, the player's base | the player's homes (Hearthfires, Breezehome); Morrowind's house purchases |
+| `raise_skill` | Game.IncrementSkillBy | the skill books and trainers; Morrowind's ModSkill |
 | `show_message` | a message box of ours, `Show()` | DA06FailMessage from QF_DA06 |
 | `start_quest` | Start, then SetStage | a chained quest started at its first stage |
 | `speaker_hostile` (a line's only) | the speaker attacks the player | common in Morrowind (the smuggler who draws a blade when refused) |

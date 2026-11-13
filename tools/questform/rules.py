@@ -39,7 +39,7 @@ RULES = ("schema", "vocabulary", "unique-ids", "stages-exist", "refs-exist", "pl
          "line-window", "switch-cause", "away", "must-live-fails", "must-live-window", "main-message", "death-hostile",
          "result-limits", "speaks-first-has-line", "stage-order", "trigger", "speaks-first", "answer", "prompt",
          "speaker", "hostile", "created", "line-said", "regard-range", "objective-left", "late-trigger", "check-label",
-         "spell", "enemy")
+         "spell", "enemy", "perk", "map-marker", "bounty", "room")
 
 # A check on a prompt, as Skyrim shows it: in brackets, "(Persuade)" for Speech, the skill's name for any other,
 # "(<n> gold)" for gold; never a threshold.
@@ -333,6 +333,7 @@ def check(form, others: list[dict] | None = None) -> list[tuple[str, str]]:
     out += _said(fm)
     out += _regard(fm)
     out += _gifts(fm)
+    out += _powers(fm)
     out += _left(fm)
     out += _late(fm)
     out += _labels(fm)
@@ -600,6 +601,30 @@ def _gifts(fm: Form):
             if x["do"] in ("make_enemy", "make_peace") and not _form_key(x["faction"]):
                 out.append(("enemy", f"{where} {x['do']} {x['faction']}: a group turned against the player is a "
                             "faction of the load order, by its form key"))
+    return out
+
+
+def _powers(fm: Form):
+    """A perk given or taken is a perk of the load order by its form key, with the name the player sees in the form's
+    `names`; a marker put on the map is a ref of kind marker; a bounty is set on a faction of the load order; a home is
+    an interior cell of the load order by its form key."""
+    out, names = [], fm.f.get("names", {})
+    for where, res in _all_results(fm):
+        for x in res:
+            do = x["do"]
+            if do in ("add_perk", "remove_perk"):
+                if not _form_key(x["perk"]):
+                    out.append(("perk", f"{where} {do} {x['perk']}: a perk is named by its form key"))
+                elif not names.get(x["perk"]):
+                    out.append(("perk", f"{where} {do} {x['perk']}: the form's names give it no name the player sees"))
+            elif do == "mark_on_map" and fm.refs.get(x["ref"], {}).get("kind") != "marker":
+                out.append(("map-marker", f"{where} {do} {x['ref']}: only a ref of kind marker is put on the map"))
+            elif do == "set_bounty" and not _form_key(x["faction"]):
+                out.append(("bounty", f"{where} {do} {x['faction']}: a bounty is set on a faction of the load order, "
+                            "by its form key"))
+            elif do == "own_room" and not _form_key(x["cell"]):
+                out.append(("room", f"{where} {do} {x['cell']}: a home is an interior cell of the load order, by its "
+                            "form key"))
     return out
 
 

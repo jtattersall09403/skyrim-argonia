@@ -188,3 +188,28 @@ def test_the_gift_words_are_stage_results_with_their_names(tmp_path):
     assert {"do": "make_enemy", "faction": "039F26:Skyrim.esm"} in st90["results"]
     assert {"do": "leave_faction", "faction": "reed"} in st90["results"]
     assert form["names"]["017122:Skyrim.esm"] == "Shadow"
+
+
+def test_the_power_words_are_stage_results(tmp_path):
+    text = GOOD.replace('place hall indoors "Sarel\'s hall"', 'place hall indoors "Sarel\'s hall"\nmarker hill at bridge "the hill"')
+    text = text.replace('do take purse, give-gold 50', 'do take purse, give-gold 50, perk 0BE123:Skyrim.esm "Agility", '
+                        'map hill, bounty 10CEE9:Skyrim.esm 0, home "0AA665:Black Marsh.esm", skill-up Sneak 2, '
+                        'unperk 0BE123:Skyrim.esm')
+    assert rules_of(run(tmp_path, text)) == set()
+    form, _ = sketch.expand(sketch.read(_write(tmp_path, text))[0])
+    st90 = next(s for s in form["stages"] if s["number"] == 90)
+    for want in ({"do": "add_perk", "perk": "0BE123:Skyrim.esm"}, {"do": "mark_on_map", "ref": "hill"},
+                 {"do": "set_bounty", "faction": "10CEE9:Skyrim.esm", "amount": 0},
+                 {"do": "own_room", "cell": "0AA665:Black Marsh.esm"}, {"do": "raise_skill", "skill": "Sneak", "by": 2},
+                 {"do": "remove_perk", "perk": "0BE123:Skyrim.esm"}):
+        assert want in st90["results"]
+    assert form["names"]["0BE123:Skyrim.esm"] == "Agility"
+    assert next(r for r in form["refs"] if r["id"] == "hill")["kind"] == "marker"
+
+
+def test_a_map_word_names_a_marker_and_a_perk_its_name(tmp_path):
+    base = GOOD.replace('do take purse, give-gold 50', 'do take purse, give-gold 50, {}')
+    assert "map-marker" in rules_of(run(tmp_path, base.format("map giver"), walk=False))
+    assert "perk" in rules_of(run(tmp_path, base.format("unperk 0BE123:Skyrim.esm"), walk=False))
+    assert "bounty" in rules_of(run(tmp_path, base.format("bounty thalmor 5"), walk=False))
+    assert "room" in rules_of(run(tmp_path, base.format("home hall"), walk=False))
