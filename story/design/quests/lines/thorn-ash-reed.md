@@ -19,8 +19,11 @@ and who keep the forts and the accounts now. *The Owing*: the native sentence, m
 cell, which round Thorn can be sold on, grow and be inherited (`topics/labour-and-bondage.md:68`, `:90` to `:99`,
 `:132`). *Washed out*: the grey look of an Argonian kept for years from their own Hist (`:112`). *Hatching-stone*: a
 small stone a worker carries from the village they were hatched in (D hatandros-bight, Coldbrine Mine, faith).
-*Grave-stake*: the carved stake that marks an Argonian's dead. *Vicecanon*: Thorn's magistrate; there are two (X on
-*state*:135, :380). *The Standing*: the Ash-Reed's founding act and its name for itself among its own (X, section
+*Grave-stake*: the carved stake that marks an Argonian's dead. *Vicecanon*: Thorn's magistrate. There are two, one chosen by each people, as the office was made at Stormhold
+to be (X on *state*:135, :380; province-plan, section 6, Valley of Storms). *The Company*: the East Empire
+Company, which shipped Thorn's saltrice and salt until the province left the Empire. *The Wardens*: the thin
+successor state, which keeps the old Legion forts, their law and their cells. Archein families took Cyrodilic
+given names in Imperial times and keep them (Quintus Haleem, Cassia Ruleem). *The Standing*: the Ash-Reed's founding act and its name for itself among its own (X, section
 2). *Danger bands*: fixed in the world, never set against the player (D province, Danger; decision 0035).
 
 ## 1. The faction in a page
@@ -49,12 +52,14 @@ hall that is now the city's saltrice store (D arnesian-jungle, Thorn, look), whe
 and so both may be seen going in. **Mirvasa Nethril**, the oldest Dunmer in Thorn, keeps the shrine of Saint Roris
 (D arnesian-jungle, Thorn, gives and faith) and has not been inside the Hall in the player's lifetime. Roris is the
 Dunmer trader whose killing by slaves in revolt began the Arnesian War (`topics/history-timeline.md:66`): a saint
-to one people and a slaver to the other, with his shrine in the middle of the city. The two women agree on what
+to one people and a slaver to the other, with his shrine in the middle of the city. Argonians of Thorn spit as
+they pass it and say so; Mirvasa sweeps the step and says that too. The two women agree on what
 must be fetched and never on what to do with it. Uxa-Meen keeps. Mirvasa says burn. They send word to each other
 by whoever is working for them, which now means the player.
 
 The name is the two peoples: ash for the Dunmer, reed for the Argonians. Among themselves they say *the Standing*.
-When the levies came up the Tear road after the Red Year (`topics/history-timeline.md:81`), field-hands of Thorn
+When the An-Xileel's levies came up the Tear road after the Red Year (`topics/history-timeline.md:79` to `:81`;
+`an-xileel.md:73`), field-hands of Thorn
 stood in the doors of Dunmer houses and said "these are ours", and the houses they stood for were passed over (X:
 the lore has the armies go north through this country and has a large Dunmer minority still here two centuries
 on; somebody vouched). That is the story a recruit is told. Its other half is section 2's.
@@ -76,7 +81,8 @@ open a way and none is required.
   without it.
 - *The Sareloths*, a Dunmer trading house, whose head **Vaneth Sareloth** keeps the general store in the market (D
   arnesian-jungle, Thorn, gives) and has for most of her long life kept up her house's hunt for the line of a
-  slave who ran. To Thorn's Argonians it is six generations ago. To a Dunmer it is her grandfather's brother.
+  slave who ran. To Thorn's Argonians it is six generations ago. To a Dunmer it is her grandfather's brother, who
+drowned for it and has no grave.
 - *The law*: Vicecanon **Teegla-Ru**, who would have everything the Ash-Reed has ever buried laid in the market
   square and judged; and Vicecanon **Arvys Tereval**, of a mixed Dunmer and Argonian house, who would not.
 - *Each other.*
@@ -91,7 +97,8 @@ hands. That it keeps the peace for both peoples alike.
 **The Chainbreakers** (the plan's crossing, section 4). Uxa-Meen greets a known Chainbreaker coldly and says why:
 "I know what you do in the south. Free one hand in these fields and forty ask why not them, and the managers
 answer with the fort. I have kept that day from coming since before you could lift a pick. Work for me or do not.
-Do not do your other work here." It is a greeting gated on that faction's rank and changes no stage. No quest of
+Do not do your other work here." It is a greeting gated on that faction's rank and changes no stage; it is written with her dialogue and is not
+in the sketches, which hold only this line's own quests. No quest of
 this line frees anyone by taking them anywhere, and none is set on the Chainbreakers' ground.
 
 ## 2. The line's arc
@@ -168,7 +175,7 @@ world's fixed bands.
 | # | Quest | Place and band | The kind of job | The thing, and why it would start the killing | Skills | The hands |
 |---|---|---|---|---|---|---|
 | TA01 | The Barred Shaft | Coldbrine Mine (Wild) | a sealed room opened under its keeper's eye; a beast behind the door | the dead of the walled shaft, and how they died | Speech, Lockpicking or Pickpocket; One-Handed or Archery, Block | the keeper who would have it unsaid, or the kin who would carve it |
-| TA02 | A Crate Nobody Opened | Fort Thornmoth (Settled, under foreign law with cells) | a break-in at a garrisoned fort that its own captain wants robbed | twelve blades from Tear in an unopened crate | Sneak, Lockpicking, Pickpocket, Speech | the keeper, the buyers, the carrier or the law |
+| TA02 | A Crate Nobody Opened | Fort Thornmoth (Settled, under foreign law with cells) | a break-in at a garrisoned fort that its own captain wants robbed | twelve blades from Tear in an unopened crate | Sneak, Lockpicking, Pickpocket, Speech; Archery or One-Handed on the shore | the keeper, the buyers, the carrier or the law |
 | TA03 | Whoever Was Standing in Them | the long field outside Thorn's walls (Safe; hired hunters at Dangerous) | a person and a piece of iron, with the other side's hunters in the same field | the slipped shackle that says whose line a field hand is | Speech, Sneak, Lockpicking; One-Handed, Archery or Illusion against the hunters | the keeper, the hunters, or the woman it belongs to |
 | TA04 | The Mask in the Dead Town | Kharraluhl (Deadly) | a ruin of the restless dead with a living crew camped on top of it | an ancestor mask, and the slaver's brand hidden beside it | Sneak, Illusion, Archery, One-Handed, Block | a dying woman, or the people her house branded |
 | TA05 | What the Bride Kept | the Wreck of the Silt Bride (Deadly, under water) and Thorn | a dive to a drowned cabin, and then the line's last choice | the captain's log | Alteration or Alchemy for breath; One-Handed, Archery, Sneak, Lockpicking; Speech | whose hands |
@@ -188,7 +195,8 @@ she tells the turn: the field-woman pointed, her foremother went to the ship, th
 field, "and I cut its rice, and I know whose hand you are". She will not give the iron to Uxa-Meen: "It is the
 one thing that says who we are. The day somebody asks who stood in this field, that iron answers." The three
 hunters stand at the dyke's far end, where the track leaves the field, and their leader speaks and is not
-hostile: 500 gold for the iron or the name. They are fixed at the Dangerous band, hired blades from a harder
+hostile: 500 gold for the iron or the name, and, asked, what his mistress wants it for: "A man of her house
+drowned on that woman's account and walks the sea floor. Somebody answers." They are fixed at the Dangerous band, hired blades from a harder
 country than Thorn's paddies, and a player may fight them (the player's choice, by One-Handed, Archery, or
 Illusion to set them on each other), talk them off with Speech 60 and the lie that the line died out at
 Coldbrine, or leave them standing. The hands: the iron to Uxa-Meen (the line stays hidden, safe and bound; the
@@ -197,7 +205,7 @@ the hunters (the Gei huts are empty when the player next passes, and the gangs s
 be faced with what Jasa-Gei said, and admits it: she bought their Owing to keep them where no Sareloth walks, and
 has not ended it, "because the day I end it somebody asks why, and the answer is in a book under the sea. May it
 stay there." **This is the turn**: the first two jobs were done for a peace whose keeper holds the wronged in her
-own field. *Carries on*: `ta03.iron` (1 keeper, 2 Jasa-Gei, 3 hunters); who of the hunters is alive; rank 3. The
+own field. *Carries on*: `ta03.iron` (1 keeper, 2 Jasa-Gei, 3 hunters); who of the hunters is alive; rank 3. The quest has the line's hardest fight outside a ruin, and the search is for a person, not a place. The
 line's **misjudgement** is here too: a player who trusts the patron and fetches the iron as asked has taken from a
 bound woman the only proof of who she is, and nothing in the quest stops them.
 
@@ -232,34 +240,48 @@ him. The log is in the captain's strongbox (a Master lock, its key on the captai
 play: its name is "The Log of the Silt Bride", and one message says what the player sees when it is opened. Then
 five people have a case, each made by the one it concerns:
 
-- *Vicecanon Teegla-Ru*: the law. Every title in Thorn reopened, the houses named put to an Owing or the road, as
-  Heita-Meen caged the Dres slavers and then exiled them (`topics/labour-and-bondage.md:221` to `:223`). It costs
-  the peace: afterwards Dunmer doors in the market are shut, a gang stands at the quarter's gate, and Vicecanon
-  Tereval is gone.
-- *Uxa-Meen*: the cellar. Nothing changes, and that is her case: nobody dies. She pays most, and gives the
-  cellar's key, and the player is the Ash-Reed's next keeper with everything that means.
-- *Jasa-Gei* (if she is still in the field): the right. It is her title. Uxa-Meen, faced with the log in that
-  hand, yields the long field and ends the Owing; Jasa-Gei stands at the field-house door afterwards. But the log
-  names Oleen-Gei, and the Sareloths then know the line: this ending is safe for her only if Vaneth has the ring.
-- *Vicecanon Tereval, for the houses it names*: fire. They pay the most gold in the province's north to watch it
-  burn, and his case is not only fear: "Every name in it is dead but one, and she died this month. You would hang
-  children for a book."
+- *Vicecanon Teegla-Ru*: the law, and the wide justice. Every title in Thorn is reopened and every field goes to
+  the hands who cut it; the houses the log names, Dunmer and Archein, are put on the Tear road as Heita-Meen
+  caged the Dres slavers and then exiled them (`topics/labour-and-bondage.md:221` to `:223`). It ends every Owing
+  in the fields at once, which nothing else here does. It costs the peace and the innocent with the guilty:
+  afterwards half the Dunmer doors in the market are shut for good, Vaneth's among them whatever her house did,
+  Tereval is gone, and Uxa-Meen sits in a Hall with no rice in it.
+- *Uxa-Meen*: the cellar. Nothing changes, and that is her case: nobody dies and nobody leaves. She pays least in
+  coin and gives the cellar's key: the player is the Ash-Reed's next keeper, with every hold in Thorn in one room.
+- *Jasa-Gei* (if she is still in the field): the right, and the narrow justice. It is her title. Uxa-Meen, faced
+  with the log in that hand, yields the long field and ends that one Owing; Jasa-Gei stands at the field-house
+  door afterwards, a holder, with the other hands of the field still owing to her as they owed before. "When the
+  crop is in," she says. And the log names Oleen-Gei, so the Sareloths then know the line: unless Vaneth has the
+  ring, the field-house door is shut when the player next comes and Okan-Shei says who came in the night.
+- *Vicecanon Tereval, for the houses it names*: fire. They pay 5,000 gold, more than anyone, to watch it burn,
+  and his case is not only fear: "Every name in it is dead but one, and she died this month. You would put
+  children on the road for a book."
 - *Okan-Shei*: the gangs. He would read it from the dyke to every hand in the fields. It is the truth told to the
   people it was done to, and it is the killing the line has spent five quests preventing.
 
 Beside the choice, and open in every ending: the ring to **Vaneth Sareloth**. She has kept a niche empty for a
-man who walks under the sea. Given him, she ends the hunt in her own words and for her own reason, and that is
-the only ending in which Jasa-Gei holding the log is safe. Kept from her, or sold to her with the name, the hunt
-goes on. *What each leaves, in play*: the law gives a house key in Thorn and the fort's and the Vicecanon's
-regard, and closes the Dunmer traders' best prices; the cellar gives the most gold, the cellar and its hoard
-(every thing the player handed Uxa-Meen is in it, with what three generations of keepers put there) and the
-Hall's bed; Jasa-Gei gives a share of the long field (ownership of its rice bins and a bed at the field-house)
-and the gangs as friends; the fire gives 3,000 gold and the Dunmer houses' prices and loses the gangs for good;
-the dyke gives nothing but a named reaping-blade from Okan-Shei's own hand and a Thorn in which several people
-the player has traded with are not where they stood. The finale is the plan's kind, *whose hands*, and each case
-can be made without strain.
+man who walks under the sea. Given him, she ends the hunt in her own words and for her own reason. Kept from
+her, or sold to her with the name, the hunt goes on.
 
-**What carries between quests.** Rank (Carrier, Quiet Hand, Door-Stander, Keeper's Hand); `ta01.end`, `ta02.hands`,
+**What the player did earlier bites here**, by single lines and switches made at the report and never by a
+stage: if the dyke was given its blades in TA02, the dyke's ending and the law's are each bloodier, and two named
+people more are gone from where they stood; if the truth was told at Coldbrine, the gangs already have one
+hanged boy to their count and Okan-Shei opens with his name; if the iron went to Uxa-Meen in TA03, Jasa-Gei has
+nothing to hold beside the log and Uxa-Meen says so before she yields; if the brand was kept, it can be laid
+beside the log before either Vicecanon, and Tereval's price falls away, since his own colleague's shrine-keeper
+is in it.
+
+*What each leaves, in play*: the law gives a house in Thorn, the Speech trainer's lessons at no charge and the
+fort's regard, and closes every Dunmer trader in the city; the cellar gives 1,000 gold, the cellar and its hoard
+(every thing the player handed Uxa-Meen is in it, with what three generations of keepers put there, some of it
+enchanted and all of it somebody's shame) and the Hall's bed; Jasa-Gei gives a share of the long field
+(ownership of its rice bins and a bed at the field-house) and the gangs as friends; the fire gives 5,000 gold
+and the Dunmer houses' best prices and loses the gangs for good; the dyke gives a named reaping-blade from
+Okan-Shei's own hand and a Thorn in which several people the player has traded with are not where they stood.
+The finale is the plan's kind, *whose hands*.
+
+**What carries between quests.** Rank (Carrier, Quiet Hand, Door-Stander, Keeper's Hand), which only a thing
+brought to Uxa-Meen raises, so that it measures her trust and nothing else, and gates nothing; `ta01.end`, `ta02.hands`,
 `ta03.iron`, `ta04.brand`, each read by greetings and single lines and never by a later quest's stages; who is
 alive; the things held. The hub reacts: Uxa-Meen's greeting cools with each thing not brought to her and she says
 which; Okan-Shei's warms with the same; Vaneth's prices are the same for everyone until TA05. **Abandoned at any
@@ -306,7 +328,7 @@ of two or three sentences each:
 "Not yet" stays open and free. The job, in four sentences: behind a barred door in the old shaft of Coldbrine
 Mine lie bonded labourers who died there in the Company's time and were never staked. Their kinswoman Wudan-Jei
 has sworn to break the door on the next rest-day with half the gangs to carry, and the overseer, an Archein, will
-not open it. The miners say the dead have started knocking. "Go in before the crowd does. Bring me their
+not open it. The miners say the dead have started knocking on it. "Go in before the crowd does. Bring me their
 hatching-stones, so they can be staked at last, and leave everything else where it lies. If there is something
 in there I should know, I want to hear it before she does."
 
@@ -323,7 +345,8 @@ in there I should know, I want to hear it before she does."
    Archein family who keeps the mine's keys"). **Quintus Haleem** knows what is behind the door and what it would
    mean said aloud in a city of freed labourers' descendants.
 4. "Something has broken through the walled-off gallery wall from the other side" (the same, hooks): an old giant
-   mudcrab from the brine pools. Its digging is the knocking.
+   mudcrab from the brine pools, which has nested among the bones and strikes the door when the shift's noise
+   wakes it. That is the knocking.
 5. **Wudan-Jei**, one of the mine's five hands, is of the line of one of the dead. "One of their descendants
    wants the bodies brought out and staked, and the overseer refuses." An Argonian who dies far from their tree
    and unstaked may never get home to it (`topics/labour-and-bondage.md:118` to `:121`): to her the five are not
@@ -339,8 +362,10 @@ weigh.
 |---|---|---|---|
 | Uxa-Meen (woman) | the Old Guild Hall, Thorn | the stones brought to her and the rest unsaid | the quest fails, with the faction's message |
 | Mirvasa Nethril (woman) | the shrine of Saint Roris, Thorn | nothing of this job; she has a line about it | her lines close |
-| Wudan-Jei (woman) | the yard of Coldbrine Mine | her dead staked, and staked truly | the stones go to Uxa-Meen only |
-| Overseer Quintus Haleem (man) | the yard of Coldbrine Mine | the door shut; failing that, one quiet stranger through it and not forty | his key is on his body; his lines close; the truth's ending switches nothing |
+| Wudan-Jei (woman) | the yard of Coldbrine Mine; fixed at level 6 | her dead staked, and staked truly | the stones go to Uxa-Meen only |
+| Meer-Tulm, a young hand of the mine (man) | the yard of Coldbrine Mine | to carry for Wudan-Jei on the rest-day | nothing of the quest; one ending takes him away |
+| the purse-cutter | the dockside tavern, Thorn; the record's | coin for what he knows | his line closes |
+| Overseer Quintus Haleem (man) | the yard of Coldbrine Mine; fixed at level 10 | the door shut; failing that, one quiet stranger through it and not forty | his key is on his body; his lines close; the truth's ending switches nothing |
 | the old brine-crab | the Old Gallery; fixed at level 12, the record's boss of the Wild band (D hatandros-bight, Coldbrine Mine, gives) | | nothing of the quest; it stands between the door and the bones |
 | the mine's own mudcrabs | the spoil heap and brine pools, as the record places them | | nothing of the quest |
 
@@ -350,6 +375,8 @@ weigh.
 |---|---|---|---|
 | the barred door | in the old shaft of Coldbrine Mine, past the iron veins | Adept lock; the Old Gallery key; the mine's rooms are the mine's people's, so picking it is a crime under the mine's native law | the way into the Old Gallery |
 | the Old Gallery key | on Quintus Haleem | his | |
+| the broken wall | where the brine pools of the old shaft meet the gallery's back | a second door, never locked | the way in that the crab dug |
+| a row of grave-stakes | at the mine mouth, in the yard | switched on by every ending | one piece that reads as five stakes |
 | the dead of the Old Gallery | against the inner face of the barred door | a heap of bones to search; nobody's (the gallery is nobody's room) | the hatching-stones; a pick worn to the eye |
 | the hatching-stones of the gallery's dead | in the bones | one thing, five small stones on a rotted cord | each cut with a village's mark |
 | a pick worn to the eye | in the bones | | proof for a person who knows picks: nobody wears one out on a fallen roof |
@@ -362,22 +389,22 @@ weigh.
 | "They knock at the turn of the shift. My foremother's brother is in there and he wants out" | Wudan-Jei | why it cannot wait, and what she will do if nobody else does | the mine |
 | "It has knocked since the rains and it is no ghost. Something is digging on the far side" | Haleem, open from the first stage | that there is a beast, and that the overseer knows more than he says | him |
 | "The brine pools run round behind the old shaft. Whatever dug in, dug in from there" | Wudan-Jei | a way in with no lock: through the pools and the crabs | the mine's hands |
-| the bones against the door, the hacked inner face, the picks | the Old Gallery | everything: what to tell, and to whom | Haleem |
+| the bones against the inner face of the door, and the picks under them worn to the eye | the Old Gallery | everything: what to tell, and to whom | Haleem |
 | "My grandfather's grandfather dropped that bar with brine at his knees and forty below him. He could count" | Haleem, shown the pick | whether the truth is a murder or a sum | his family |
 
 **The ways through.** The crux is the barred door; the gallery behind it holds one fight that can be had or
 avoided.
 
-- *The overseer's word (Speech 35).* "Whatever is behind your wall will be through into the working shaft before
-  the rest-day. Let me kill it, alone, today." He unlocks the door himself. His refusal: "It has been behind that
+- *The overseer's word (Speech 35).* "Let me through alone, today, and I will kill what is knocking." He says the
+  door will be found unlocked, and it is. His refusal: "It has been behind that
   wall longer than you have been alive."
 - *His surety (200 gold).* He will let one stranger through for a surety against "what a stranger might carry
   off", fixed, and keeps it.
 - *His key (Pickpocket), or his death.* The key is on him. Bungled, he turns on the player under the mine's law.
   Killed, he has it on his body, and the player has killed a man in front of his hands.
 - *The lock (Lockpicking, Adept).* A crime if a hand of the mine sees it.
-- *Round the back (One-Handed, Archery, Block).* Through the brine pools and the mine's own crabs to the hole the
-  old crab dug: no lock and no word, and more fighting.
+- *Round the back (One-Handed, Archery, Block).* Through the brine pools and the mine's own crabs to the broken
+  wall the old crab dug through: no lock and no word, and more fighting.
 - *In the gallery.* The old crab is one hard fight at a fixed level, in the room's middle. A bow has it from the
   doorway; a blade and a shield meet it; a sneak keeps to the door's side of the room, where the bones are, and
   is gone before it turns.
@@ -388,13 +415,13 @@ avoided.
 |---|---|---|---|
 | 0 | hidden start; offered while Uxa-Meen lives | | |
 | 10 | Uxa-Meen's line "What needs fetching?" | Uxa-Meen of the Ash-Reed asked me to go behind the barred door in the old shaft of Coldbrine Mine and bring her the hatching-stones of the bonded labourers who died there, before their kinswoman Wudan-Jei breaks the door with a crowd. The overseer, Quintus Haleem, keeps the key. | Bring out the hatching-stones of the dead (the stones; Haleem) |
-| 20 | Haleem's line, Speech 35 | I told Quintus Haleem I would kill what is digging behind his wall, and he unlocked the barred door. | Bring out the hatching-stones of the dead (the stones) |
-| 25 | Haleem's line, 200 gold | I paid Quintus Haleem his surety and he unlocked the barred door. | the same |
-| 40 | taking the hatching-stones (open from 10) | I took the hatching-stones of the five dead from the Old Gallery. Their bones lay against the inner face of the barred door, which is hacked a hand deep, with their picks under them. | Take the stones to Uxa-Meen at the Old Guild Hall or to Wudan-Jei at the mine; Haleem can be faced with what lay at his door (all three) |
-| 45 | Haleem's answer line "What is this pick worth to you?" (holding the pick) | I sold Quintus Haleem the pick I found at his door. | Take the stones to Uxa-Meen or to Wudan-Jei (both) |
+| 20 | Haleem's line, Speech 35 | I told Quintus Haleem I would kill what is knocking behind his wall. He said I would find the barred door unlocked. | Bring out the hatching-stones of the dead (the stones) |
+| 25 | Haleem's line, 200 gold | I paid Quintus Haleem his surety. He said I would find the barred door unlocked. | the same |
+| 40 | taking the hatching-stones (open from 10) | I took the hatching-stones of the five dead from the Old Gallery. Their bones lay against the inner face of the barred door, with their picks, worn to the eye, under them. | Take the stones to Uxa-Meen at the Old Guild Hall or to Wudan-Jei at the mine; Haleem can be faced with what lay at his door (all three) |
+| 45 | Haleem's answer line "What is one of those picks worth to you?" (holding the pick) | I sold Quintus Haleem the pick I found at his door. | Take the stones to Uxa-Meen or to Wudan-Jei (both) |
 | 60 | Wudan-Jei's line "They died at the door" (holding stones and pick) | I gave Wudan-Jei the hatching-stones and the pick, and told her the five died at a door that was barred on them. | Tell Uxa-Meen (her) |
 | 65 | Wudan-Jei's line "Here are your dead" (holding the stones) | I gave Wudan-Jei the hatching-stones of her dead and said nothing of the door. | Tell Uxa-Meen (her) |
-| 90 | Uxa-Meen's line "Here are the hatching-stones" (at 40 or 45, holding them) | I gave Uxa-Meen the hatching-stones. She said nothing of the door, and I did not. | ends, completed |
+| 90 | Uxa-Meen's line "Here are the hatching-stones" (at 40 or 45, holding them) | I gave Uxa-Meen the hatching-stones. She did not ask what else was there, and I did not say. | ends, completed |
 | 91 | Uxa-Meen's line at 65 | I told Uxa-Meen that Wudan-Jei has her dead and does not know how they died. | ends, completed |
 | 92 | Uxa-Meen's line at 60, Haleem alive | I told Uxa-Meen that Wudan-Jei knows the door was barred on her dead. | ends, completed |
 | 93 | Uxa-Meen's line at 60, Haleem dead | the same words | ends, completed |
@@ -409,6 +436,7 @@ start game 0
 
 place hall indoors "the Old Guild Hall, Thorn"
 place shrine outdoors "the shrine of Saint Roris, Thorn"
+place tavern indoors "the dockside tavern, Thorn"
 place mineyard outdoors "the yard of Coldbrine Mine"
 place shaft indoors "Coldbrine Mine"
 place gallery indoors "the Old Gallery"
@@ -416,30 +444,34 @@ place fortyard outdoors "the yard of Fort Thornmoth"
 
 person uxa at hall "Uxa-Meen"
 person mirvasa at shrine "Mirvasa Nethril"
-person wudan at mineyard "Wudan-Jei"
-person haleem at mineyard "Overseer Quintus Haleem"
+person cutter at tavern existing "the purse-cutter"
+person wudan at mineyard level 6 "Wudan-Jei"
+person haleem at mineyard level 10 "Overseer Quintus Haleem"
+person tulm at mineyard level 6 "Meer-Tulm"
 person haleemfort at fortyard off "Overseer Quintus Haleem"
 person crab at gallery hostile level 12 "the old brine-crab"
 
 thing galkey on haleem "the Old Gallery key"
 door bardoor at shaft locked adept key galkey "Barred Door to the Old Gallery"
+door brokenwall at shaft "Broken Wall to the Old Gallery"
 thing bones at gallery container "the dead of the Old Gallery"
 thing stones in bones "the hatching-stones of the gallery's dead"
 thing pick in bones "a pick worn to the eye"
 thing ricebin at hall container owner uxa "Uxa-Meen's rice bin"
+thing stakes at mineyard off "the stake-row at the mine mouth"
 
 stage 0 hidden
 stage 10 "Uxa-Meen of the Ash-Reed asked me to go behind the barred door in the old shaft of Coldbrine Mine and bring her the hatching-stones of the bonded labourers who died there, before their kinswoman Wudan-Jei breaks the door with a crowd. The overseer, Quintus Haleem, keeps the key."
-stage 20 "I told Quintus Haleem I would kill what is digging behind his wall, and he unlocked the barred door." do unlock bardoor
-stage 25 "I paid Quintus Haleem his surety and he unlocked the barred door." do take-gold 200, unlock bardoor
-stage 40 "I took the hatching-stones of the five dead from the Old Gallery. Their bones lay against the inner face of the barred door, which is hacked a hand deep, with their picks under them."
+stage 20 "I told Quintus Haleem I would kill what is knocking behind his wall. He said I would find the barred door unlocked." do unlock bardoor
+stage 25 "I paid Quintus Haleem his surety. He said I would find the barred door unlocked." do take-gold 200, unlock bardoor
+stage 40 "I took the hatching-stones of the five dead from the Old Gallery. Their bones lay against the inner face of the barred door, with their picks, worn to the eye, under them."
 stage 45 "I sold Quintus Haleem the pick I found at his door." do take pick, give-gold 150
 stage 60 "I gave Wudan-Jei the hatching-stones and the pick, and told her the five died at a door that was barred on them." do take stones, take pick
 stage 65 "I gave Wudan-Jei the hatching-stones of her dead and said nothing of the door." do take stones
-stage 90 completed "I gave Uxa-Meen the hatching-stones. She said nothing of the door, and I did not." do take stones, give-gold 150, join ashreed, rank ashreed 1, own ricebin, set ta01.end 1
-stage 91 completed "I told Uxa-Meen that Wudan-Jei has her dead and does not know how they died." do give-gold 100, join ashreed, rank ashreed 1, own ricebin, set ta01.end 2
-stage 92 completed "I told Uxa-Meen that Wudan-Jei knows the door was barred on her dead." do give-gold 50, join ashreed, rank ashreed 1, regard uxa -1, off haleem, on haleemfort, set ta01.end 3
-stage 93 completed "I told Uxa-Meen that Wudan-Jei knows the door was barred on her dead." do give-gold 50, join ashreed, rank ashreed 1, regard uxa -1, set ta01.end 4
+stage 90 completed "I gave Uxa-Meen the hatching-stones. She did not ask what else was there, and I did not say." do take stones, give-gold 150, join ashreed, rank ashreed 1, own ricebin, on stakes, set ta01.end 1
+stage 91 completed "I told Uxa-Meen that Wudan-Jei has her dead and does not know how they died." do give-gold 100, join ashreed, rank ashreed 1, own ricebin, on stakes, set ta01.end 2
+stage 92 completed "I told Uxa-Meen that Wudan-Jei knows the door was barred on her dead." do join ashreed, own ricebin, regard uxa -1, off haleem, on haleemfort, off tulm, on stakes, set ta01.end 3
+stage 93 completed "I told Uxa-Meen that Wudan-Jei knows the door was barred on her dead." do join ashreed, own ricebin, regard uxa -1, on stakes, set ta01.end 4
 stage 95 failed "Uxa-Meen is dead, and the Ash-Reed has nobody to fetch for."
 
 objective 10 at 10 "Bring out the hatching-stones of the dead from behind the barred door at Coldbrine Mine" -> stones, haleem
@@ -450,34 +482,33 @@ objective 60 at 60, 65 "Tell Uxa-Meen what I did with the stones" -> uxa
 
 line house uxa at 0 ask "What is this house?" says "the rice store both peoples use; what the Ash-Reed is, what it pays, why to hesitate"
 line job uxa at 0 ask "What needs fetching?" -> 10 says "the dead behind the barred door, the kinswoman, the overseer; bring the stones to me and leave the rest"
-line knock wudan at 10-25 ask "What is behind the door?" says "her foremother's brother and four more; they knock; the pools run round behind"
-line digging haleem at 10-25 ask "What is knocking in your shaft?" says "no ghost; something digging from the far side"
-line talk haleem at 10 ask "Let me through alone, today, and I will kill what is digging." if skill Speech 35 -> 20 else "It has been behind that wall longer than you have been alive." says "he unlocks the door himself"
-line surety haleem at 10 ask "What would a surety cost, for one stranger and one hour?" if gold 200 -> 25 else "Two hundred, and you carry nothing out but claws." says "he takes the coin and unlocks the door"
-line face haleem at 40 ask "Five picks worn to the eye, at the inner face of your door." if holds pick asks sellpick, keeppick says "the bar, the brine and the forty below: his forebear could count"
-line sellpick haleem answer at 40 ask "What is this pick worth to you?" if holds pick -> 45 says "a hundred and fifty, and his thanks"
-line keeppick haleem answer at 40 ask "It goes where the stones go." says "then you are counting too"
-line truth wudan at 40 ask "They died at the door. It was barred on them." if holds stones, holds pick -> 60 says "she takes the stones and the pick and says what she will carve"
+line keys cutter at 10-25 ask "Who carries the keys at Coldbrine?" says "the Archein, on his belt, left side; he counts his purse and never his keys"
+line knock wudan at 10-25 ask "What is behind the door?" says "her foremother's brother and four more; something strikes the door from inside; the pools run round behind to a broken wall"
+line digging haleem at 10-25 ask "What is knocking in your shaft?" says "no ghost; something dug in from the pools and is at the door"
+line talk haleem at 10 ask "Let me through alone, today, and I will kill what is knocking." if skill Speech 35 -> 20 else "It has been behind that wall longer than you have been alive." says "he says the door will be unlocked"
+line surety haleem at 10 ask "What would a surety cost, for one stranger and one hour?" if gold 200 -> 25 else "Two hundred, and you carry nothing out but claws." says "he takes the coin and says the door will be unlocked"
+line face haleem at 40 ask "Your dead lie against the inner face of that door, with their picks worn to nothing." asks sellpick, keeppick says "the bar, the brine and the forty in the shaft below: his forebear could count"
+line sellpick haleem answer at 40 ask "What is one of those picks worth to you?" if holds pick -> 45 else "Bring me one and ask again." says "a hundred and fifty, and his thanks"
+line keeppick haleem answer at 40 ask "I am selling nothing." says "then you are counting too"
+line truth wudan at 40 ask "They died at the door. It was barred on them." if holds stones, holds pick -> 60 says "she takes the stones and the pick; her family's telling always had water in it; forty of theirs, five of ours"
 line quiet wudan at 40-45 ask "Here are your dead." if holds stones -> 65 says "she takes the stones"
-line hand uxa at 40-45 ask "Here are the hatching-stones." if holds stones -> 90 says "she takes them and asks what else was there"
+line hand uxa at 40-45 ask "Here are the hatching-stones." if holds stones -> 90 says "she takes them and does not ask what else was there"
 line tellquiet uxa at 65 ask "Wudan-Jei has her dead. I said nothing of the door." -> 91 says "then it is done the long way round"
-line telltruth uxa at 60 ask "Wudan-Jei has her dead, and knows the door was barred on them." if alive haleem -> 92 says "she sends to the fort for his skin"
+line telltruth uxa at 60 ask "Wudan-Jei has her dead, and knows the door was barred on them." if alive haleem -> 92 says "she sends to the fort for his skin, and says what it will cost"
 line telltruthdead uxa at 60 ask "Wudan-Jei has her dead, and knows the door was barred on them." if dead haleem -> 93 says "and he is dead already; she counts what comes next"
 line roof mirvasa at 10-65 ask "Coldbrine's old shaft." says "they told us it was the roof; she was a girl and believed it"
+line staked12 wudan at 90-91 ask "Your dead." says "staked at last; the stakes say the roof took them; she thanks the player"
+line staked3 wudan at 92 ask "Your dead." says "the stakes say 'at a door'; the gangs stood at the fort's gate, a stone was thrown, and the fort hanged Meer-Tulm for it; she would do it again, ask her another day"
+line staked4 wudan at 93 ask "Your dead." says "the stakes say 'at a door'; the man who kept the key is dead, and she never got to ask him why"
+line skin haleemfort at 92 ask "You are alive." says "because an old woman's runner was faster than the gangs; a boy was hanged at this gate for his sake"
+line neverasks mirvasa at 90 ask "I brought her the stones." says "and she did not ask what else was in there; she never needs to"
 
 take stones from 10 -> 40
 must-live uxa fails 95
 ```
 
-After an ending these lines are open, each gated on the number the ending set and on its speaker being alive;
-they are written with the dialogue and move nothing:
-
-- Wudan-Jei, `ta01.end` 1 or 2: the five are staked at the mine mouth and the stakes say the roof took them. She
-  thanks the player.
-- Wudan-Jei, `ta01.end` 3 or 4: the stakes say "at a door". She has the keys of the old shaft now and the gangs
-  stood a day at the fort's gate.
-- Haleem at the fort, `ta01.end` 3: "I am alive because an old woman sent a runner faster than you walked."
-- Mirvasa, any ending: "And did she ask you what else was in there? She always asks."
+The lines said after an ending are in the sketch, each gated on its ending's stage; they move nothing. The
+boatman's and the tavern-keeper's pointers to the Hall are Thorn's general talk and belong to no quest.
 
 **The choice.** *Uxa-Meen*: "Forty hands with reaping hooks and one Archein with a key. Tell them the door was shut
 on their kin and he is dead by dark, the fort hangs three for it, and the gangs burn the managers' house for the
@@ -489,19 +520,25 @@ say nothing; the choice is whether to do the job.
 
 **The endings and what each leaves.**
 
-- *The stones to Uxa-Meen (90).* The rank Carrier, 150 gold and the run of her rice bin. The five are staked as
-  the roof's dead. Wudan-Jei is grateful and does not know.
+Every ending switches on a row of grave-stakes at the mine mouth, and what Wudan-Jei says is carved on them
+differs.
+
+- *The stones to Uxa-Meen (90).* Taken on, with the rank Carrier, 150 gold and the run of her rice bin. The five
+  are staked as the roof's dead. Wudan-Jei is grateful and does not know.
 - *The stones to Wudan-Jei, the door unsaid (91).* The same rank, 100 gold and the bin. "You could have saved
   yourself the walk back."
-- *The truth told (92, 93).* The same rank and the bin, 50 gold, and Uxa-Meen's regard a step down: "You fetch
-  well and you hand badly." If Haleem lived he is gone from the mine and stands in the yard of Fort Thornmoth,
-  taken in by Captain Ruleem on Uxa-Meen's word; the mine's hands keep the old shaft's keys. Okan-Shei remembers
-  it in TA03.
+- *The truth told, Haleem alive (92).* Taken on and given the bin, with no rank, no coin and Uxa-Meen's regard a
+  step down: "You fetch well and you hand badly. Go and look at what it bought." Haleem is gone from the mine and
+  stands in the yard of Fort Thornmoth, taken in by Captain Ruleem on Uxa-Meen's word. The gangs stood at the
+  fort's gate; a stone was thrown; the fort hanged the one who threw it. Meer-Tulm is gone from the mine yard
+  and Wudan-Jei, Haleem and Uxa-Meen each say his name. Uxa-Meen counted three; it was one, and it was a boy.
+- *The truth told, Haleem dead by the player's hand (93).* The same without the stand-off: there was nobody
+  left to hang or to save. Wudan-Jei never got to ask him why.
 - *The pick sold (45)* is the player's own business with Haleem: 150 gold, and the truth can no longer be shown
   to anyone.
 
-**The moment a player retells.** The knocking was a crab. The dead were on the other side of the door with their
-picks worn down to nothing, and the man with the key knew, and had a reason that was not a bad one.
+**The moment a player retells.** The thing knocking was a crab in a nest of bones. The bones were against the inside of the door with
+their picks worn down to nothing, and the man with the key knew, and had a reason that was not a bad one.
 
 | Step | Skill | Ceiling block |
 |---|---|---|
@@ -538,7 +575,7 @@ captain has").
    certain cart through untouched every few days" (the same, Fort Thornmoth, hooks). The guard is the gate-warden
    **Varro Teeus**; the carter is **Dovyn Mareth**, one of the "Dunmer drivers [who] wait at the gate with their
    carts" (the same, people).
-2. **Okan-Shei**, who speaks for the saltrice gangs, paid Mareth forty hands' season-ends to bring twelve chitin
+2. **Okan-Shei**, who speaks for the saltrice gangs, paid Mareth forty hands' end-of-season coin to bring twelve chitin
    blades down from Tear under the sugar. They are not for Dunmer. "The saltrice workers bear grudges against the
    field-owners" (the same, Thorn, dangers): the blades are for the day the managers call an Owing on a child and
    the hands have only reaping hooks.
@@ -559,10 +596,12 @@ twist*: they were going to Argonian hands, to be used on Argonian holders, and t
 | Who | Where they stand | What they want | If they die |
 |---|---|---|---|
 | Uxa-Meen (woman) | the Old Guild Hall | the crate's load in her hands and nobody the wiser | the quest fails |
-| Captain Cassia Ruleem (woman) | the yard of Fort Thornmoth | never to have seen it | her lines close; nobody can be handed the blades for the law |
+| Captain Cassia Ruleem (woman) | the yard of Fort Thornmoth; fixed at level 20 | never to have seen it | her lines close; nobody can be handed the blades for the law |
+| two sugar-runners | the shore under the fort's wall; hostile, fixed at level 8 | their sugar back, and no witnesses | nothing of the quest; they stand on the sneak's way in |
+| Vaneth Sareloth (woman) | the market square, Thorn; the record's general trader | to sell, and to ask every stranger whether they dive | her line closes |
 | Nevena Orvel, quartermaster (woman) | the yard of Fort Thornmoth, at her trade | her store kept; she carries its key | the key is on her body |
 | Varro Teeus, gate-warden (man) | the toll bar of Fort Thornmoth | his arrangement unspoken | his two ways close; the others stand |
-| Dovyn Mareth, carter (man) | the toll bar, by his cart | his load back, either part of it | nobody says whose the blades are, and the dyke's hand-in closes with him; the other three stand |
+| Dovyn Mareth, carter (man) | the toll bar, by his cart | his load back, either part of it | nobody says whose the blades are, and the dyke's hand-in and his own close with him; Uxa-Meen's and the captain's stand |
 | Okan-Shei (man) | the paddy dyke outside Thorn's walls | what the hands paid for | the dyke's hand-in closes |
 | Mirvasa Nethril (woman) | the shrine of Saint Roris | to say what she thinks of keeping | her line closes |
 
@@ -581,21 +620,24 @@ twist*: they were going to Argonian hands, to be used on Argonian holders, and t
 
 | Clue | Where | The choice it changes | Who else knows |
 |---|---|---|---|
-| "The quartermaster has the only key and never leaves her bench while the gate is open" | Captain Ruleem | which way in | the garrison |
+| "The quartermaster carries the key and never leaves her bench while the gate is open" | Captain Ruleem | which way in | the garrison |
 | "The store's seaward shutter has not latched since the Legion left. I have not told you that" | Captain Ruleem | a way in with no lock and no key, for a sneak | her |
 | "Teeus has the bar most days. He is easier about what passes than I would like" | Nevena Orvel | that the gate-warden can be leaned on or paid | the purse-cutter in Thorn, for coin |
 | the blades themselves | the long crate | that it is arms, as the captain feared | nobody yet |
-| "Not for my people. Ask at the dyke who is short forty season-ends" | Dovyn Mareth, shown that the player has them | whose they are, and so every hand-in | Okan-Shei |
+| "Chitin, out of Tear, where they still make it. Not for my people. Okan-Shei at the dyke paid forty hands' end-of-season coin for those" | Dovyn Mareth, told that the player has them | whose they are, and so every hand-in | Okan-Shei |
 
 **The ways through.**
 
 - *The key (Pickpocket).* Off the quartermaster at her bench, in a yard of soldiers. Bungled, it is the cells or
   a fight with the garrison.
 - *The lock (Lockpicking, Expert).* In the same yard, under the same eyes.
-- *The shutter (Sneak).* Along the shore under the wall and in from the seaward side. Trespass if seen inside.
-- *The gate-warden's nerve (Speech 40).* "I know which cart you do not look in." He opens the store "for as long
-  as it takes to count the sugar". His refusal: "Then you know nothing the captain cannot be told is a lie."
-- *The gate-warden's price (250 gold).* He opens it for coin and does not ask.
+- *The shutter (Sneak; Archery or One-Handed).* Along the shore under the wall and in from the seaward side. Two
+  of the ring's runners wait on that shore for sugar that is not coming and attack a stranger on sight: a sneak
+  goes round them in the reeds, an archer takes them from the rocks, a blade goes through them. Trespass if seen
+  inside.
+- *The gate-warden's nerve (Speech 40).* "I know which cart you do not look in." He says the store will be open "for
+  as long as it takes to count the sugar", and it is. His refusal: "Then you know nothing the captain cannot be told is a lie."
+- *The gate-warden's price (250 gold).* The same, for coin, and he does not ask.
 - There is no fought way: the garrison is a dozen at fixed levels under foreign law, and a player who starts
   that fight has the crime system's answer, not the quest's.
 
@@ -605,10 +647,10 @@ twist*: they were going to Argonian hands, to be used on Argonian holders, and t
 |---|---|---|---|
 | 0 | hidden; offered once TA01 is done, while Uxa-Meen lives | | |
 | 10 | Uxa-Meen's line "What needs fetching now?" | Uxa-Meen asked me to steal what is in an unopened crate in the locked store room of Fort Thornmoth and bring it to her. The quartermaster carries the store's key, and the gate-warden Varro Teeus is said to take coin. Captain Ruleem wants it gone and cannot be seen to help. | Take what is in the long crate (the bundle; the quartermaster; the captain; the gate-warden) |
-| 20 | Teeus's line, Speech 40 | I told the gate-warden Varro Teeus I knew which cart he does not search, and he opened the store room. | Take what is in the long crate (the bundle) |
-| 25 | Teeus's line, 250 gold | I paid the gate-warden Varro Teeus and he opened the store room. | the same |
-| 40 | taking the bundle (open from 10) | I opened the long crate in the store room of Fort Thornmoth. It held twelve chitin blades from Tear, and I took them. | Bring the blades to Uxa-Meen (her), lay them before the captain (her), or ask the carter at the toll bar whose they were (Mareth) |
-| 45 | Mareth's line, holding the bundle | Dovyn Mareth, the carter, says the blades were never for the Dunmer quarter. Okan-Shei, who speaks for the saltrice gangs at the paddy dyke, bought them. | Decide whose hands the blades go to (Uxa-Meen; Okan-Shei; Mareth; the captain) |
+| 20 | Teeus's line, Speech 40 | I told the gate-warden Varro Teeus I knew which cart he does not search. He said I would find the store room open. | Take what is in the long crate (the bundle) |
+| 25 | Teeus's line, 250 gold | I paid the gate-warden Varro Teeus. He said I would find the store room open. | the same |
+| 40 | taking the bundle (open from 10) | I opened the long crate in the store room of Fort Thornmoth. It held twelve chitin blades, and I took them. | Bring the blades to Uxa-Meen (her), lay them before the captain (her), or ask the carter at the toll bar whose they were (Mareth) |
+| 45 | Mareth's line, holding the bundle | Dovyn Mareth, the carter, told me the blades came down from Tear and were never for the Dunmer quarter. Okan-Shei, who speaks for the saltrice gangs at the paddy dyke, bought them. | Decide whose hands the blades go to (Uxa-Meen; Okan-Shei; Mareth; the captain) |
 | 60 | Okan-Shei's line (at 45, holding them) | I gave the twelve blades to Okan-Shei at the dyke. | Tell Uxa-Meen (her) |
 | 62 | Captain Ruleem's line (at 40 or 45, holding them) | I laid the twelve blades in front of Captain Ruleem. | Tell Uxa-Meen (her) |
 | 64 | Mareth's line (at 45, holding them) | I sold the twelve blades back to the carter Dovyn Mareth. | Tell Uxa-Meen (her) |
@@ -624,39 +666,44 @@ start game 0
 
 place hall indoors "the Old Guild Hall, Thorn"
 place shrine outdoors "the shrine of Saint Roris, Thorn"
+place market outdoors "the market square, Thorn"
 place dyke outdoors "the paddy dyke outside Thorn's walls"
 place tollbar outdoors "the toll bar of Fort Thornmoth"
 place fortyard outdoors "the yard of Fort Thornmoth"
+place shore outdoors "the shore under Fort Thornmoth's wall"
 place store indoors "Fort Thornmoth Store Room"
 
 person uxa at hall "Uxa-Meen"
 person mirvasa at shrine "Mirvasa Nethril"
-person captain at fortyard "Captain Cassia Ruleem"
-person orvel at fortyard "Quartermaster Nevena Orvel"
-person teeus at tollbar "Gate-Warden Varro Teeus"
-person mareth at tollbar "Dovyn Mareth"
-person okan at dyke "Okan-Shei"
+person vaneth at market existing "Vaneth Sareloth"
+person captain at fortyard level 20 "Captain Cassia Ruleem"
+person orvel at fortyard level 12 "Quartermaster Nevena Orvel"
+person teeus at tollbar level 12 "Gate-Warden Varro Teeus"
+person mareth at tollbar level 6 "Dovyn Mareth"
+person okan at dyke level 12 "Okan-Shei"
+person runner1 at shore hostile level 8 "a sugar-runner"
+person runner2 at shore hostile level 8 "a sugar-runner"
 
 thing storekey on orvel "Fort Thornmoth store room key"
 door storedoor at fortyard locked expert key storekey "Store Room"
-door shutter at store "Seaward Shutter"
+door shutter at shore "Seaward Shutter"
 thing crate at store container owner orvel "the long crate"
 thing blades in crate "a bundle of twelve chitin blades"
 item oneblade "a chitin shortblade from the dyke's twelve"
 
 stage 0 hidden
 stage 10 "Uxa-Meen asked me to steal what is in an unopened crate in the locked store room of Fort Thornmoth and bring it to her. The quartermaster carries the store's key, and the gate-warden Varro Teeus is said to take coin. Captain Ruleem wants it gone and cannot be seen to help."
-stage 20 "I told the gate-warden Varro Teeus I knew which cart he does not search, and he opened the store room." do unlock storedoor
-stage 25 "I paid the gate-warden Varro Teeus and he opened the store room." do take-gold 250, unlock storedoor
-stage 40 "I opened the long crate in the store room of Fort Thornmoth. It held twelve chitin blades from Tear, and I took them."
-stage 45 "Dovyn Mareth, the carter, told me the blades were never for the Dunmer quarter. Okan-Shei, who speaks for the saltrice gangs at the paddy dyke, bought them."
+stage 20 "I told the gate-warden Varro Teeus I knew which cart he does not search. He said I would find the store room open." do unlock storedoor
+stage 25 "I paid the gate-warden Varro Teeus. He said I would find the store room open." do take-gold 250, unlock storedoor
+stage 40 "I opened the long crate in the store room of Fort Thornmoth. It held twelve chitin blades, and I took them."
+stage 45 "Dovyn Mareth, the carter, told me the blades came down from Tear and were never for the Dunmer quarter. Okan-Shei, who speaks for the saltrice gangs at the paddy dyke, bought them."
 stage 60 "I gave the twelve blades to Okan-Shei at the dyke." do take blades, give oneblade, set ta02.hands 2
 stage 62 "I laid the twelve blades in front of Captain Ruleem." do take blades, set ta02.hands 3
-stage 64 "I sold the twelve blades back to the carter Dovyn Mareth." do take blades, give-gold 300, set ta02.hands 4
+stage 64 "I sold the twelve blades back to the carter Dovyn Mareth." do take blades, give-gold 200, set ta02.hands 4
 stage 90 completed "I gave Uxa-Meen the twelve blades." do take blades, give-gold 250, rank ashreed 2, set ta02.hands 1
-stage 91 completed "I told Uxa-Meen the dyke has its blades." do rank ashreed 2, regard uxa -1
-stage 92 completed "I told Uxa-Meen the captain has seen the blades." do give-gold 100, rank ashreed 2, off mareth
-stage 93 completed "I told Uxa-Meen the carter has the blades again." do rank ashreed 2, regard uxa -1
+stage 91 completed "I told Uxa-Meen the dyke has its blades." do regard uxa -1
+stage 92 completed "I told Uxa-Meen the captain has seen the blades." do give-gold 100, off mareth
+stage 93 completed "I told Uxa-Meen the carter has the blades again." do regard uxa -1
 stage 95 failed "Uxa-Meen is dead, and the Ash-Reed has nobody to fetch for."
 
 objective 10 at 10 "Take what is in the long crate in the store room of Fort Thornmoth" -> blades, orvel, captain, teeus
@@ -665,57 +712,64 @@ objective 40 at 40 "Bring the blades to Uxa-Meen, lay them before Captain Ruleem
 objective 45 at 45 "Decide whose hands the blades go to" -> uxa, okan, mareth, captain
 objective 60 at 60, 62, 64 "Tell Uxa-Meen where the blades went" -> uxa
 
-line job1 uxa at 0 ask "What needs fetching now?" if done TA01 90 -> 10 says "the crate, the captain's word, the key; bring me what is in it"
+line job1 uxa at 0 ask "What needs fetching now?" if done TA01 90 -> 10 says "the crate, the captain's word, the key, the gate-warden who never looks in the sugar cart; bring me what is in it"
 line job2 uxa at 0 ask "What needs fetching now?" if done TA01 91 -> 10 says "the same, and that this one comes to her hand first"
-line job3 uxa at 0 ask "What needs fetching now?" if done TA01 92 -> 10 says "the same, and that the captain already holds one man for this house"
+line job3 uxa at 0 ask "What needs fetching now?" if done TA01 92 -> 10 says "the same, and that the last thing fetched cost a boy his neck; this one comes to her"
 line job4 uxa at 0 ask "What needs fetching now?" if done TA01 93 -> 10 says "the same, and that she is short of people who do as they are asked"
+line fortlaw uxa at 10-25 ask "The fort." says "the Wardens' law, the old Legion's, not Thorn's: they have cells and use them; the captain is Archein and the best friend this house has in a uniform"
+line sugar uxa at 10-25 ask "The sugar." says "has gone through that gate since before the Legion left; leave it; its runners wait on the shore under the wall and are no friends of a stranger"
+line whofor uxa at 10-25 ask "Who is the crate for?" says "a Dunmer drove it; draw the line yourself; the captain has"
 line sink mirvasa at 10-64 ask "The crate at the fort." says "sink whatever it is; she will put it with the rest"
-line bench captain at 10-25 ask "Your store room." says "the quartermaster has the only key and keeps her bench; the seaward shutter has not latched since the Legion left"
+line bench captain at 10-25 ask "Your store room." says "the quartermaster carries the key and keeps her bench; the seaward shutter has not latched since the Legion left; she has not said so"
 line bar orvel at 10-25 ask "Who has the toll bar?" says "Teeus, most days; easier about what passes than she would like"
-line lean teeus at 10 ask "I know which cart you do not look in." if skill Speech 40 -> 20 else "Then you know nothing the captain cannot be told is a lie." says "he opens the store for as long as it takes to count the sugar"
-line buy teeus at 10 ask "What does the store room cost, with nobody asking?" if gold 250 -> 25 else "Two hundred and fifty. I have a great many people not to tell." says "he takes the coin and opens it"
-line whose mareth at 40 ask "I have what was under your sugar. Whose is it?" if holds blades -> 45 says "not for his people; ask at the dyke who is short forty season-ends"
-line okancase okan at 45 ask "Twelve blades from Tear." says "forty hands, reaping hooks, and the day an Owing is called on a child"
+line lean teeus at 10 ask "I know which cart you do not look in." if skill Speech 40 -> 20 else "Then you know nothing the captain cannot be told is a lie." says "he says the store will be open for as long as it takes to count the sugar"
+line buy teeus at 10 ask "What does the store room cost, with nobody asking?" if gold 250 -> 25 else "Two hundred and fifty. I have a great many people not to tell." says "he takes the coin and says it will be open"
+line whose mareth at 40 ask "I have what was under your sugar. Whose is it?" if holds blades -> 45 says "chitin out of Tear, where they still make it; not for his people; Okan-Shei at the dyke paid forty hands' end-of-season coin for them"
+line okancase okan at 45 ask "Twelve chitin blades." says "forty hands, reaping hooks, and the day an Owing is called on a child"
 line tookan okan at 45 ask "These are yours." if holds blades -> 60 says "he takes them and gives one back"
-line tocaptain captain at 40-45 ask "This is what was in your crate." if holds blades -> 62 says "then she has seen it, and says what she must now do"
-line tomareth mareth at 45 ask "Buy them back." if holds blades -> 64 says "three hundred, and they go north again, he says"
+line dykeknown captain at 45 ask "The dyke bought them, not the Dunmer quarter." says "a carter she can hold; forty reapers she cannot; the law takes whom it can reach, and she will still have to look where a Dunmer cart was going"
+line tocaptain captain at 40-45 ask "This is what was in your crate." if holds blades, alive mareth -> 62 says "then she has seen it, and will hold the man who drove the cart"
+line tocaptainx captain at 40-45 ask "This is what was in your crate." if holds blades, dead mareth -> 62 says "then she has seen it; the man who drove it is dead, so she will look where his cart was going"
+line tomareth mareth at 45 ask "Buy them back." if holds blades -> 64 says "two hundred, and they go north again, he says"
 line hand uxa at 40-45 ask "Here is what was in the crate." if holds blades -> 90 says "she takes them and does not say where they will go"
 line telldyke uxa at 60 ask "The dyke has its blades." -> 91 says "then she has armed her own reapers against her, and says so"
-line tellcaptain uxa at 62 ask "The captain has seen the blades." -> 92 says "then the captain will do what the law tells her, to the people nearest"
-line tellmareth uxa at 64 ask "The carter has them again." -> 93 says "then they are in Thorn by another gate inside the month"
+line tellcaptain uxa at 62 ask "The captain has seen the blades." -> 92 says "then the captain will do what the law says, to the people nearest"
+line tellmareth uxa at 64 ask "The carter has them again." -> 93 says "then they are at the dyke by another gate inside the month, and the player has two hundred for it"
+line hailed okan at 91 ask "The blades." says "the hands greet the player by name"
+line broom okan at 90 ask "The blades." says "the old woman's broom"
+line searched captain at 92 ask "The blades." says "the Dunmer quarter was searched as the law says and nothing found; the barracks has a bunk nobody will grudge the player; she does not thank them"
+line turnedout vaneth at 92 ask "The search." says "they turned out her store-room for blades; the player's, she hears"
+line therest mirvasa at 90 ask "I brought her the blades." says "with the rest, then; ask her some day how much the rest is"
 
 take blades from 10 -> 40
 must-live uxa fails 95
 ```
 
-After an ending these lines are open, each gated on `ta02.hands` and on its speaker being alive:
-
-- Okan-Shei, 2: the hands greet the player by name. 1, 3 or 4: "The old woman's broom."
-- Captain Ruleem, 3, in two forms: if Mareth was alive when the blades were shown, the carter is in her cells (he
-  is gone from the toll bar); if the player had killed him, she has nobody to hold. In both, she has searched the Dunmer
-  quarter as the law told her and found nothing, and she gives the player the barracks bunk her record promises
-  "once the captain trusts the player" (D arnesian-jungle, Fort Thornmoth, gives). She does not thank them.
-- Vaneth Sareloth in the market, 3: "They turned out my store-room for blades. Yours, I hear."
-- Mirvasa, 1: "With the rest, then. Ask her some day how much 'the rest' is."
+The lines said after an ending are in the sketch, each gated on its ending's stage. At the hand-in to the captain
+the player who has heard the carter may say first that the dyke bought the blades; her answer changes nothing she
+then does, and she says why.
 
 **The choice.** Four hands. *Uxa-Meen*: what is not found cannot be used. *Okan-Shei*: "They are bought and paid
 for. Forty of us cut her rice with hooks, and the managers have the fort's ear. Those are not for elves. They are
 for the day an Owing is called on a child and somebody has to stand in a door again. Who stands in ours?"
 *Captain Ruleem*, who did not want this: "Put them in front of me and I am the law. I will do what it says, to
-the man who drove the cart, and you will not like it, and nor will I." *Mareth*: coin now, and the blades out of
-Thorn, as he tells it. What the other side winning costs: the hands unarmed before the managers; or forty armed
-hands a wall away from the holders; or a Dunmer carter in a cell and his quarter searched for an Argonian's
-blades. The last is the line's first taste of its misjudgement: the player who trusts the law lands it on the
+the man who drove the cart, and you will not like it, and nor will I." *Mareth*: coin now, less than the keeper pays, and the blades out
+of Thorn, as he tells it; Uxa-Meen says they will be at the dyke inside the month, and she is right. What the other side winning costs: the hands unarmed before the managers; or forty armed
+hands a wall away from the holders; or a Dunmer carter held and his quarter searched for an Argonian's
+blades, by a captain who was told whose they were and could reach only him. The last is the line's first taste of its misjudgement: the player who trusts the law lands it on the
 people nearest.
 
 **The endings and what each leaves.**
 
 - *To Uxa-Meen (90).* The rank Quiet Hand and 250 gold. The blades are not seen again until TA05.
-- *To the dyke (91).* The rank, no coin, her regard a step down; one chitin blade from Okan-Shei's hand; the
-  gangs' goodwill, which opens Jasa-Gei's door a little in TA03.
-- *To the captain (92).* The rank and 100 gold "for the fort's thanks, which I am told to give". Mareth is gone
-  from the toll bar. The bunk. The Dunmer quarter's cold.
-- *Back to the carter (93).* The rank, his 300 gold already paid, her regard a step down.
+- *To the dyke (91).* No rank, no coin, her regard a step down; one chitin blade from Okan-Shei's hand; the
+  gangs' goodwill, which opens Jasa-Gei's door a little in TA03; and twelve blades at the dyke in TA05.
+- *To the captain (92).* No rank; 100 gold "for the fort's thanks, which I am told to give". Mareth is gone from
+  the toll bar, taken up the road under guard. The Dunmer quarter was searched and nothing found; Vaneth Sareloth
+  says so over her counter. The captain says the barracks has a bunk nobody will grudge the player, which is the
+  free bed her record promises (D arnesian-jungle, Fort Thornmoth, gives).
+- *Back to the carter (93).* No rank, his 200 gold already paid, her regard a step down, and the dyke armed all
+  the same with no thanks owed to the player.
 
 **The moment a player retells.** Everyone drew the line from the Dunmer carter to the Dunmer quarter. The blades
 were for the reapers in the keeper's own field, and the keeper never asked.
@@ -759,18 +813,19 @@ the outlines and not repeated.
 
 | The thing | Quest | What happens there | How the player knows it |
 |---|---|---|---|
-| A barred door in the older shaft, past the iron veins, that locks (the plan's row); the mine's rooms owned by the mine's people | TA01 | the crux: opened by word, coin, key or pick | the door reads "Barred Door to the Old Gallery"; a bar stands across it; Wudan-Jei and Haleem both say "the barred door in the old shaft" |
+| A barred door in the older shaft, past the iron veins, that locks (the plan's row); the mine's rooms owned by the mine's people. The mine's source has one interior and this story needs two, so the Old Gallery needs a second source or a second cell allotted | TA01 | the crux: opened by word, coin, key or pick | the door reads "Barred Door to the Old Gallery"; a bar stands across it; Wudan-Jei and Haleem both say "the barred door in the old shaft" |
 | The walled gallery as a room of its own behind that door, owned by nobody: the old crab in its middle, room to keep to the door's side, and the record's chest at its far end | TA01 | the fight, or the slip past it | entering shows "The Old Gallery" |
 | A heap of bones against the inner face of the barred door that can be searched, with picks lying by it | TA01 | the stones and the pick are taken here | bones and picks on sight; its name when looked at, "The Dead of the Old Gallery" |
-| A way from the brine pools into the Old Gallery by the hole the crab dug, wide enough to walk | TA01 | the way in with no lock | Wudan-Jei says the pools run round behind the old shaft; broken stone and crab-spoil at the hole |
-| Places in the yard, by the headframe, for the overseer and for Wudan-Jei, apart | TA01 | the door's keeper; the hand-in | the yard is the first thing reached from the Thorn track; the quest's markers |
+| A second door from the brine pools of the old shaft into the back of the Old Gallery, never locked, which the old crab does not come out through; the pools inside the mine, as the record has them | TA01 | the way in with no lock | the door reads "Broken Wall to the Old Gallery"; Wudan-Jei says the pools run round behind the old shaft; broken stone and crab-spoil lie at it |
+| Places in the yard, by the headframe, for the overseer, for Wudan-Jei and for a young hand, apart from one another and out of reach of the spoil heap's crabs | TA01 | the door's keeper; the hand-in; who is gone afterwards | the yard is the first thing reached from the Thorn track; the quest's markers; names shown on each |
+| A row of grave-stakes at the mine mouth, one piece that reads as five stakes, able to be switched on. If nothing the load order holds reads as a grave-stake, the row is left out and Wudan-Jei says the stones went home to their villages' trees | TA01 | every ending; what she says is carved on them | stakes on sight where there were none; Wudan-Jei says "at the mine mouth" |
 
 **Fort Thornmoth**
 
 | The thing | Quest | What happens there | How the player knows it |
 |---|---|---|---|
 | The record's locked store room as a room of its own off the yard, with a door that locks; the fort owned by its garrison | TA02 | the break-in | the door reads "Store Room"; the quartermaster's bench stands by it |
-| A shutter on the store room's seaward wall, reached along the shore under the fort's wall and out of the yard's sight, that is not locked | TA02 | the sneak's way in | its name when looked at, "Seaward Shutter"; the captain tells of it |
+| A strip of shore under the fort's seaward wall, out of the yard's sight and reach, walkable from the road, with rocks above it and reeds along it, where two hostile sugar-runners stand; and on the store room's seaward wall a shutter that is a door and is not locked | TA02 | the sneak's way in, and its fight or its way round | its name when looked at, "Seaward Shutter"; the captain tells of it |
 | A long crate in the store room among the sugar sacks | TA02 | the bundle is taken from it | its name, "Long Crate"; it is the only crate that is long |
 | Places for the captain in the yard, the quartermaster at a bench by the store, the gate-warden at the toll bar and a carter with a cart beside the bar | TA02 | the ways in; two hand-ins | the toll bar across the road is the record's; a cart and an ox; names shown on each person |
 | A place in the yard where Overseer Haleem stands when switched on | TA01 | the truth's aftermath, seen | his name; Uxa-Meen says the fort has him |
@@ -786,6 +841,7 @@ the outlines and not repeated.
 
 | The thing | Quest | What happens there | How the player knows it |
 |---|---|---|---|
+| The log in the captain's strongbox, a thing that is taken and whose name says what it is | TA05 | taken; never read as play | its name, "The Log of the Silt Bride" |
 | The stern cabin as a room of its own, entered by a hatch on the wreck, with a floor to stand on and air in it; the captain and two of his dead on that floor, and none of the quest's dead in the water | TA05 | the fight and the strongbox | the hatch reads "Stern Cabin"; the wreck has a map marker; Thorn's divers name the cabin |
 | One of the cabin's dead named as the supercargo, carrying a ring | TA05 | the ring is taken | his name when looked at, "Drowned Supercargo"; the ring's name, "Sareloth House Ring" |
 | A shore nearest the wreck with painted shells laid on it (the record's own custom) | TA05 | where the swim begins | painted shells on sight; Uxa-Meen says "from the shells, straight out" |
@@ -796,7 +852,77 @@ own models hold.
 
 ## 5. Read on paper
 
-To be filled by the first round.
+**Round one.** Three fresh readers, all on one version (the first to pass `sketch`). Two players were taken
+through TA01 and TA02 a sheet at a time and the rest of the arc in summary, saying after each what they thought
+was going on, whom they trusted, what they expected and what they chose, then making the case for every option
+they had not taken: a lore-reader who distrusts every patron and sides with the wronged, and an impatient
+sneak-archer who takes the pay and keeps their word to whoever hired them. A deliverability reader had
+quest-system, buildable.md, sections 3 and 4 and `sketch`'s closing lines.
+
+*What they found.*
+
+- *Both players* could retell the line in three sentences, cared about Jasa-Gei, Mirvasa and Haleem, and would
+  join ("in order to end it", said one; "for the story, not the loot", the other). They split as hoped on TA01
+  (stones to the patron for the pay; stones, pick and truth to the kinswoman) and on TA02 (the patron; the
+  dyke), and each could argue the other's side. Both guessed the hoard from Mirvasa's "with the rest". The barred
+  door with the picks under the bones, "I have not told you that", "Who stands in ours?" and "I know whose hand
+  you are" were the lines they quoted back.
+- Both found the crab a slight let-down as the knocking; both found the truth's ending at Coldbrine too mild,
+  which made Uxa-Meen's warning sound like bluster; the lore-reader wanted earlier defiance to bite later and
+  thought a promotion after defying the patron cheapened it.
+- On the last choice both said nobody would hand the log to the law (the worst outcome, the weakest reward, and
+  "the Owing again"), that Tereval's fire was beaten outright by Uxa-Meen paying more for the same quiet, and
+  that Jasa-Gei with the ring read as the golden ending.
+- In TA02 the carter's hand was near dominant (the dyke's outcome and the most coin), and the player could not
+  tell the captain whose the blades were. The archer had nothing to shoot for two quests and wanted "a real
+  danger in every job".
+- A new player was not told what the Company, the Wardens or a Vicecanon are; "forty season-ends" was opaque;
+  nobody remarked on a shrine to Roris in an Argonian city; the An-Xileel were missing from the invasion; a
+  Dunmer Vicecanon, Imperial names on Archeins and blades "from Tear" each wanted a line. The lore-reader found
+  the bought doors of the Standing "the best thing here".
+- The lore-reader also found the five jobs one shape, fetch a buried thing and choose a hand.
+- *The deliverability reader* found fifteen things, seven blocking: people said to open doors they do not stand
+  at; the captain's lines after the ending true two stages too early; a bunk "given" by a line; grave-stakes
+  spoken of that no stage switches on; an after-line false when the overseer was killed; "from Tear" in the
+  player's mouth before anyone says it; and a mine whose source has one interior asked for two. Minor: a prompt
+  resting on an optional line, a marker on Haleem useless without the pick, a journal and a gist at odds,
+  lines about people who may be dead, missing rows in section 4 (the crab's hole as a door, the shore, the
+  hacked door face), no fixed levels for people standing near crabs, and after-ending lines absent from the
+  sketches.
+
+*What changed, as one set.*
+
+- **Defiance costs and the patron's arithmetic is shown.** The truth told at Coldbrine now hangs a named boy at
+  the fort's gate (one, not the three she counted), gives no coin and no rank, and is remembered by three
+  people. Rank is raised only by a thing brought to Uxa-Meen, measures her trust and gates nothing. TA05 names
+  what each earlier hand does to the last choice.
+- **The last choice has no dominated hand and no golden one.** The law is the wide justice (every field to its
+  hands and every Owing in them ended, the named houses exiled, the innocent Dunmer with them); Jasa-Gei is the
+  narrow one, and becomes a holder with hands who still owe; the fire pays most; the cellar pays least and gives
+  the hoard and the keeper's place.
+- **TA02.** The carter pays less than the keeper and the dyke is armed anyway, with no thanks; the captain can be
+  told the dyke bought the blades and holds the carter regardless, with her reason; the sneak's way in crosses a
+  shore with two hostile sugar-runners.
+- **TA01.** The crab nests in the bones and strikes the door; nobody is said to walk to a door; Wudan-Jei's
+  telling already "had water in it", so the truth told is the whole truth; a stake-row is switched on by every
+  ending; the hacked door face is gone from the journal; the people in the yard have levels and stand out of
+  the crabs' reach.
+- **The sketches** hold the lines said after each ending, gated on its stage, the optional briefings and the
+  purse-cutter's line; section 4 has the broken wall as a door, the shore, the stake-row, the second interior
+  and the log.
+- **Words and history.** The Company, the Wardens, the two Vicecanons and Archein names are glossed; the levies
+  are the An-Xileel's; the shrine prickles and both women say so; Tear still makes chitin; the hunters say what
+  the Sareloths want it for.
+
+*Not changed.* The shape "fetch it, then choose the hand" is the line's own promise in the plan and stays; the
+quests differ in place, danger and what is fetched (the dead, arms, a person's proof, a relic, a book), and TA03
+is a search among people. One reader's taste, noted for round two.
+
+*What round two must check*, with fresh readers and players who differ in what they value: that the hanged boy
+reads as the truth's cost and not as a punishment for choosing it; that some reader now takes the law's hand
+and some the fire's for reasons of their own; whether TA02 still wants more to do for a fighter; that TA03 to
+TA05, once outlined in full, keep every earlier hand to greetings and switches at a report; and the two X
+points put to the lore lane in section 6.
 
 ## 6. For the other lines
 
