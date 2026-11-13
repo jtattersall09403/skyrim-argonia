@@ -19,6 +19,8 @@ The operation numbers are QuestForm.cs's (tools/ArgoniaPlugin); a number not lis
 ; 11 IfQuestOpen        What: a quest; guards the next row: it runs only if that quest has not ended
 ; 13 IfStageAtMost      What: a quest; Num: a stage; guards the next row: it runs only if the quest's stage is at most that
 ; 14 IfHolds            What: an item; Num: a count; guards the next row: it runs only if the player holds that many
+; 15 CompleteAll        Num: the highest objective; every objective up to it that is shown and open is completed, in order
+; 16 FailAll            Num: the highest objective; every objective up to it that is shown and open is failed, in order
 ;                       (guards stand in a row before the one row they guard: one that fails skips the rest and that row)
 ; 12 StartOnStage       What: a quest started by this stage; Num: the stage it starts at
 ; ---- the form's results
@@ -56,6 +58,18 @@ Function Run(Int[] op, Form[] what, Float[] num, Int from, Int to, Quest q, Obje
 			If q.IsObjectiveDisplayed(n) && !q.IsObjectiveCompleted(n)
 				q.SetObjectiveCompleted(n)
 			EndIf
+		ElseIf o == 15 || o == 16
+			r = 0
+			While r <= n
+				If q.IsObjectiveDisplayed(r) && !q.IsObjectiveCompleted(r) && !q.IsObjectiveFailed(r)
+					If o == 15
+						q.SetObjectiveCompleted(r)
+					Else
+						q.SetObjectiveFailed(r)
+					EndIf
+				EndIf
+				r += 1
+			EndWhile
 		ElseIf o == 4
 			If q.IsObjectiveDisplayed(n) && !q.IsObjectiveCompleted(n) && !q.IsObjectiveFailed(n)
 				q.SetObjectiveFailed(n)

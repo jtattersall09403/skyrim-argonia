@@ -124,6 +124,9 @@ static class QuestFormRead
         var kind = Str(script, "Kind");
         if ((kind == "main") != (q.Type == Quest.TypeEnum.MainQuest)) throw No($"kind {kind} on a quest of type {q.Type}");
         string Name(string k, FormKey key) => names.TryGetValue((k, key.ToString()), out var n) ? n : key.ToString();
+        // an item base: a new item of ours copied from a template (template_item, its template's word), else the item's word
+        JsonObject ItemBase(FormKey key) => names.TryGetValue(("template", key.ToString()), out var tw)
+            ? new JsonObject { ["kind"] = "template_item", ["id"] = tw } : new JsonObject { ["kind"] = "item", ["id"] = Name("item", key) };
         string QuestName(FormKey key) => c.Rows.TryGetValue(key, out var r) ? r.qid : Name("quest", key);
 
         // ---- refs: one per alias, the alias's name is the ref id
@@ -135,6 +138,7 @@ static class QuestFormRead
         var personIds = persons.Select(x => x.ID).ToHashSet();
         var personOfBase = persons.GroupBy(x => ((IPlacedNpcGetter)Placed(c, x.ForcedReference.FormKey)!).Base.FormKey).Where(g => g.Count() == 1)
             .ToDictionary(g => g.Key, g => g.First().Name!);
+        var refTakes = new List<(string an, int pre, int sets)>();
         var autolocked = labels.Where(l => l.StartsWith("autolock=")).Select(l => l[9..]).ToHashSet();
         foreach (var a in aliases)
         {
@@ -146,7 +150,7 @@ static class QuestFormRead
             {
                 if (cr.Create != CreateReferenceToObject.CreateEnum.In || !a.ForcedReference.IsNull) throw No($"alias {a.Name}: a created reference not in a container");
                 j["kind"] = "thing";
-                j["placement"] = new JsonObject { ["base"] = new JsonObject { ["kind"] = "item", ["id"] = Name("item", cr.Object.FormKey) },
+                j["placement"] = new JsonObject { ["base"] = ItemBase(cr.Object.FormKey),
                     [personIds.Contains((uint)cr.AliasID) ? "carried_by" : "container"] = aliasName.TryGetValue((uint)cr.AliasID, out var cn) ? cn : throw No($"alias {a.Name}'s container alias {cr.AliasID}") };
                 j["enabled"] = true;
                 if (Full(c, cr.Object.FormKey) is { } cnm) j["name"] = cnm;
@@ -181,11 +185,20 @@ static class QuestFormRead
                 else
                 {
                     var item = c.All.Any(m => m.EnumerateMajorRecords<IItemGetter>().Any(x => x.FormKey == baseKey));
-                    bas = new JsonObject { ["kind"] = item ? "item" : "existing_base", ["id"] = item ? Name("item", baseKey) : Name("base", baseKey) };
+                    bas = item ? ItemBase(baseKey) : new JsonObject { ["kind"] = "existing_base", ["id"] = Name("base", baseKey) };
                 }
                 j["placement"] = new JsonObject { ["base"] = bas, ["anchor"] = anchor };
             }
             j["enabled"] = (rec.MajorRecordFlagsRaw & 0x800) == 0;
+            if (rec is IPlacedObjectGetter pc && pc.ItemCount is int cnt) j["count"] = cnt;
+            // a second take of a placed thing rides on the reference (QuestForm.Triggers)
+            foreach (var s in (rec as IPlacedObjectGetter)?.VirtualMachineAdapter?.Scripts ?? [])
+            {
+                if (s.Name != QuestForm.TakeRefScript) continue;
+                var si = s.Properties.OfType<IScriptIntPropertyGetter>().ToDictionary(p => p.Name, p => p.Data);
+                refTakes.Add((a.Name!, si["preReqStage"], si["StageToSet"]));
+            }
+            if (npc && labels.Contains($"level={a.Name}") && c.Mod.Npcs.FirstOrDefault(n => n.FormKey == baseKey)?.Configuration.Level is INpcLevelGetter lvl) j["level"] = (int)lvl.Level;
             // what the player sees: a person's or thing's name, a marker's place, a door's name and where it leads, a book's text
             var shown = npc ? PersonName(c, baseKey) : j["kind"]!.GetValue<string>() == "marker" ? Full(c, CellOf(c, k, rec)) : Full(c, baseKey);
             if (shown != null) j["name"] = shown;
@@ -250,9 +263,12 @@ static class QuestFormRead
                 if (mine.Count == 0 || mine[^1].Op != QuestForm.Op.StopQuest) throw No($"ending {n} does not stop the quest last");
                 mine = mine[..^1];
                 if (ending == "completed" && kind != "main") { if (mine.Count == 0 || mine[^1].Op != QuestForm.Op.IncSideQuests) throw No($"ending {n} does not count the side quest"); mine = mine[..^1]; }
-                var close = ending == "completed" ? QuestForm.Op.CompleteObjective : QuestForm.Op.FailObjective;
-                if (mine.Count < objs.Count || !mine[^objs.Count..].Select(r => (r.Op, (int)r.Num)).SequenceEqual(objs.Select(o => (close, (int)o.Index)))) throw No($"ending {n} does not close every objective");
-                mine = mine[..^objs.Count];
+                var close = ending == "completed" ? QuestForm.Op.CompleteAll : QuestForm.Op.FailAll;
+                if (objs.Count > 0)
+                {
+                    if (mine.Count == 0 || mine[^1].Op != close || (int)mine[^1].Num != objs.Max(o => (int)o.Index)) throw No($"ending {n} does not close every objective");
+                    mine = mine[..^1];
+                }
             }
             var results = new JsonArray();
             for (var i = 0; i < mine.Count; i++)
@@ -266,6 +282,10 @@ static class QuestFormRead
                     case QuestForm.Op.SetActive: break;
                     case QuestForm.Op.StartOnStage: break;                                  // another quest's start: read there
                     case QuestForm.Op.IfStageDone: i++; break;                              // another quest's trigger: read there
+                    case QuestForm.Op.IfHolds:                                              // set_stage if_held
+                        if (i + 1 >= mine.Count || mine[i + 1].Op != QuestForm.Op.SetStage) throw No($"stage {n}: a held check guards no set_stage");
+                        results.Add(new JsonObject { ["do"] = "set_stage", ["stage"] = (int)mine[i + 1].Num, ["if_held"] = ItemWord(Name, r.What) });
+                        i++; break;
                     case QuestForm.Op.FailObjective or QuestForm.Op.StopQuest or QuestForm.Op.IncSideQuests or QuestForm.Op.SetStageIfRunning or QuestForm.Op.IfQuestOpen:
                         throw No($"stage {n}: op {r.Op} out of its place");
                     default: results.Add(Result(c, r, No, Name, QuestName, RefName, $"stage {n}")); break;
@@ -280,9 +300,13 @@ static class QuestFormRead
         {
             var by = c.Rows.SelectMany(kv => kv.Value.stages.SelectMany(st => kv.Value.rows.GetRange(st.Value.from, st.Value.to - st.Value.from)
                 .Where(r => r.Op == QuestForm.Op.StartOnStage && r.What == q.FormKey).Select(r => (kv.Value.qid, st.Key, (int)r.Num)))).ToList();
-            if (by.Count != 1) throw No($"started by {by.Count} other quests' stages, and not from a new game");
-            startJ = new JsonObject { ["by"] = "quest_stage", ["quest"] = by[0].qid, ["quest_stage"] = by[0].Key, ["stage"] = by[0].Item3 };
+            // started by another quest's start_quest result: every such row starts it at one stage
+            var res = c.Rows.SelectMany(kv => kv.Value.rows.Where(r => r.Op == QuestForm.Op.StartQuest && r.What == q.FormKey).Select(r => (int)r.Num)).Distinct().ToList();
+            if (by.Count == 0 && res.Count == 1) startJ = new JsonObject { ["by"] = "start_quest", ["stage"] = res[0] };
+            else if (by.Count != 1) throw No($"started by {by.Count} other quests' stages, and not from a new game");
+            else startJ = new JsonObject { ["by"] = "quest_stage", ["quest"] = by[0].qid, ["quest_stage"] = by[0].Key, ["stage"] = by[0].Item3 };
         }
+        start = startJ["stage"]!.GetValue<int>();   // the start stage, however the quest starts
         var objectives = new JsonArray();
         foreach (var o in objs)
             objectives.Add(new JsonObject
@@ -328,12 +352,18 @@ static class QuestFormRead
                         continue;
                     default: throw No($"alias {an} carries {s.Name}, which no form says");
                 }
+                // a take script stands for every take of its thing to its stage from its prerequisite on (QuestForm.Triggers)
+                if (kindT == "take")
+                    foreach (var p in trigLabels.Where(p => p[1] == "take" && p[2] == an && p[^2] == sets.ToString() && int.Parse(p[^3]) > pre))
+                        triggers.Add(new JsonObject { ["id"] = p[0], ["kind"] = "take", ["ref"] = an, ["prerequisite"] = int.Parse(p[^3]), ["sets"] = sets });
                 var id = TrigId(kindT, an, pre, sets, out var choice);
                 var t = new JsonObject { ["id"] = id, ["kind"] = kindT, ["ref"] = an, ["prerequisite"] = pre, ["sets"] = sets };
                 if (choice) t["choice"] = true;
                 triggers.Add(t);
             }
         }
+        foreach (var (an2, pre2, sets2) in refTakes)
+            triggers.Add(new JsonObject { ["id"] = TrigId("take", an2, pre2, sets2, out _), ["kind"] = "take", ["ref"] = an2, ["prerequisite"] = pre2, ["sets"] = sets2 });
         foreach (var (other, (orows, ost, oqid)) in c.Rows)
             foreach (var (st, (from, to)) in ost)
                 for (var i = from; i < to; i++)

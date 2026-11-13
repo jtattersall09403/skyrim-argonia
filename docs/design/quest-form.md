@@ -93,7 +93,8 @@ code of its own. Anything it cannot build exactly fails the build with one line 
 (`questform <quest>: <rule>: <what>`); it never approximates.
 
 **The quest.** One quest record: Run Once; type Main Quest for kind `main`, Side Quest otherwise; Start Game Enabled
-when the form starts `by: game`, and that start stage carries the Start Up Stage flag; priority 50. Each stage is one log
+when the form starts `by: game`, and that start stage carries the Start Up Stage flag; priority 50. A quest started
+`by: start_quest` has neither: another form's `start_quest` result starts it. Each stage is one log
 entry: its journal text when shown, and the flag Complete Quest or Fail Quest for an ending. A form started by another
 quest's stage adds a start row to that quest's stage (below), so that quest must be built from a form too.
 
@@ -119,7 +120,8 @@ persistent placed reference (flagged disabled when it starts off) at the spot it
 - a person placed by a load door faces where the player comes out of it.
 
 **The persons.** A new person is a base of ours (`ARG_R_<ref>_Base`) templated on the form's base with everything taken
-from the template but the stats (the template's own level, automatic stats, its sex). A person the player is asked to
+from the template but the stats (the form's `level`, else the template's own; automatic stats; its sex) and, when the
+form names them, the base data: the name the player sees is the ref's `name`. A person the player is asked to
 fight (`hostile`) takes its AI data from ours instead: very aggressive, brave, no crime, helps allies. An existing
 person cannot be hostile.
 
@@ -136,7 +138,7 @@ properties:
 A stage's rows run in this order: the who-must-live start check (the start stage only); the stage's own results; the
 objectives it completes, then those it shows (the stage that shows the first objective then sets the quest active);
 the rows other forms added to this stage (a quest it starts, a trigger of another form's quest on it); the ending's
-closing rows (every objective completed, or failed for a failed ending; Side Quests Completed counted for a completed
+closing rows (one row, CompleteAll or FailAll, closing every objective still open; Side Quests Completed counted for a completed
 minor or faction quest); and Stop, always last, on an ending.
 
 **The operations** (`papyrus/ARG_Effects.psc` carries them out; the numbers are the script's):
@@ -151,6 +153,7 @@ minor or faction quest); and Stop, always last, on an ending.
 | 9 | SetStageIfRunning | a quest | its stage |
 | 10, 13 | IfStageDone, IfStageAtMost | a quest | a stage: guard the next row |
 | 14 | IfHolds | an item | how many the player must hold: guards the next row |
+| 15, 16 | CompleteAll, FailAll | | the highest objective: every objective up to it shown and open is closed, in number order |
 | 11 | IfQuestOpen | a quest | guards the next row |
 | 12, 35 | StartOnStage, StartQuest | a quest | the stage it is set to |
 | 20, 21 | GiveItem, TakeItem | the item | how many |
@@ -163,10 +166,17 @@ minor or faction quest); and Stop, always last, on an ending.
 | 33 | ShowMessage | the message box | |
 | 34 | SpeakerHostile | | the line's speaker attacks the player |
 
-A `set_stage` result is row 1; the other form results are rows 20 to 35 by their word. A number is a global
+A `set_stage` result is row 1 (with `if_held`, IfHolds before it); the other form results are rows 20 to 35 by their word. A number is a global
 (`ARG_N_<id>`), a faction (when the form gives no form key) a faction record of ours, a message a message box named by
-the quest and a hash of its words. An item is a form key, a thing of the form (its base), or a story item whose first
-Skyrim record (`item_asset_record`) is an item of the load order. A door that a result unlocks starts locked.
+the quest and a hash of its words. An item is a form key; a thing of this or another form being built (a stock thing:
+its item; a `template_item` or an item whose id is the ref's own: our new item, below); a page of the form's `texts`;
+or a story item whose first Skyrim record (`item_asset_record`) is an item of the load order.
+
+**New items.** One record of ours per id (`item:<id>`), whichever form names it first: a `template_item` is a copy of
+its template; an item whose id is the ref's own, or a page of `texts`, is a copy of Skyrim's iron key
+(`RiftenConfiscatedGoodsChestKey`) when a lock names it as its key, else of a note (`WIAddItem07Note`) when it has
+words, else of a glazed pot (`GlazedPot01`); named by the ref's `name` (or the form's `names`), a book with the ref's
+`text` (or `texts`), its scripts dropped. A door that a result unlocks starts locked.
 
 **The lines.** A line's words are split at sentence ends into responses of about 150 characters (one subtitle each).
 Every response carries `ARG_LineEffects` with the line's rows (`Op`, `What`, `Num`), `Owner` (the form's quest),
@@ -181,16 +191,19 @@ first stage; at most the last stage; then the form's conditions (`not` inverts t
   `MS05InductionForcegreet` (template ForceGreet), held while the line's window is open, never in combat or while the
   player moves into a new space. He waits at his reference, greets a player within 500 units and walks up to 300. A quest
   has one such package, so one person speaks first. He must stand on navmesh (one standing where there is none is
-  refused); placed by a load door, he must stand within the 500 units of where the player comes out of it with a walk
-  over navmesh between them, and the build log prints his spot and that distance.
+  refused). Placed by a load door, he stands on the navmesh nearest where the player comes out of it, at the player's
+  height, facing it; when the player comes out on navmesh he must stand within the 500 units with a walk over navmesh
+  between them, else (no navmesh where the player comes out) he greets once the player has walked within 500 of him.
+  The build log prints his spot and the distance.
 - A line open only after the quest ends (its window holds an ending stage) lives on `ARG_Talk`, the always-running
   quest, because a stopped quest's topics are never offered; such a line may not be open before the first ending and
   into it, and cannot speak first.
 
 **The triggers.** Each is a vanilla script on the ref's alias, never ours:
-- `take` (a thing): `defaultSetStageOnPlayerAcquire` with the prerequisite and the stage to set; and, since a thing
-  already held is never acquired again, two rows at the prerequisite stage: IfHolds (the thing's base, 1), then
-  SetStage (the stage the take sets);
+- `take` (a thing): `defaultSetStageOnPlayerAcquire` with the prerequisite and the stage to set. Takes of one thing that
+  set one stage from several stages are one script, from the lowest of them. A second take of a placed thing that sets
+  another stage is vanilla's reference script `defaultSetStageOnPlayerAcquireItem` on the thing itself. A thing held
+  before its take opens is the stage's `set_stage` with `if_held`: IfHolds (the item, 1), then SetStage;
 - `use`: `defaultSetStageOnCloseBook` for a book, else `defaultSetStageAliasScript` (activation) for the thing or
   door; a made thing is taken, not used;
 - `death` (a person): `defaultSetStageOnDeathRefAlias`; one open from the start also adds the start check, so a death

@@ -39,6 +39,7 @@ static class QuestForm
     {
         public const int SetStage = 1, ShowObjective = 2, CompleteObjective = 3, FailObjective = 4, SetActive = 5, StopQuest = 6,
             IncSideQuests = 7, FailIfDead = 8, SetStageIfRunning = 9, IfStageDone = 10, IfQuestOpen = 11, StartOnStage = 12, IfStageAtMost = 13, IfHolds = 14,
+            CompleteAll = 15, FailAll = 16,
             GiveItem = 20, TakeItem = 21, GiveGold = 22, TakeGold = 23, SetNumber = 24, AddNumber = 25, JoinFaction = 26,
             SetRank = 27, ChangeRegard = 28, SwitchOn = 29, SwitchOff = 30, LockDoor = 31, UnlockDoor = 32, ShowMessage = 33,
             SpeakerHostile = 34, StartQuest = 35;
@@ -64,6 +65,7 @@ static class QuestForm
     public const string MainMessage = "With this death the root of what was to come is cut: the main story can no longer be finished. Load an earlier save to let it grow again, or go on in the marsh as it now is.";
     public const string FactionMessage = "With this death the root of what was to come is cut: this faction's story can no longer be finished. Load an earlier save to let it grow again, or go on in the marsh as it now is.";
     // The vanilla scripts a trigger or a who-must-live row puts on an alias (docs/research/skyrim/quest-form-engine-facts.md §5e).
+    public const string TakeRefScript = "defaultSetStageOnPlayerAcquireItem";
     public const string TakeScript = "defaultSetStageOnPlayerAcquire", UseScript = "defaultSetStageAliasScript",
         ReadScript = "defaultSetStageOnCloseBook", DeathScript = "defaultSetStageOnDeathRefAlias";
 
@@ -121,6 +123,7 @@ static class QuestForm
         public Dictionary<FormKey, FormKey> CellWorld = [];
         public Dictionary<FormKey, P3Float> Arrivals = [];
         public Dictionary<FormKey, INavigationMeshGetter> NavWin = [];
+        public Dictionary<FormKey, (ICellGetter rec, ModKey from)>? CellWin;
         public List<P3Float> Stood = [];   // where the people placed on navmesh stand, so no two share a spot
         public Dictionary<string, (string Quest, string Same, FormKey Placed, FormKey Base, bool Npc, bool Created)> Shared = [];   // a load door: where the player comes out of it
         public QuestKit? Kit;
@@ -153,6 +156,7 @@ static class QuestForm
         foreach (var b in c.Quests.Values) { c.Q = b.Qid; c.Cur = b; Lines(c, b); }
         foreach (var b in c.Quests.Values) { c.Q = b.Qid; c.Cur = b; Triggers(c, b); }
         Watch(c);
+        foreach (var b in c.Quests.Values) { c.Q = b.Qid; c.Cur = b; Places(c, b); }
         foreach (var b in c.Quests.Values) { c.Q = b.Qid; c.Cur = b; Finish(c, b); }
         Starts.Clear();
         foreach (var b in c.Quests.Values) { c.Q = b.Qid; c.Cur = b; Starts[b.Edid] = Window(c, b); }
@@ -174,7 +178,7 @@ static class QuestForm
         else
         {
             l.Add(Cond(StageData(b.Q.FormKey), CompareOperator.LessThanOrEqualTo, b.Start));
-            l.Add(Cond(Done(QuestKey(c, S(start, "quest")), I(start, "quest_stage")), CompareOperator.EqualTo, 1));
+            if (S(start, "by") == "quest_stage") l.Add(Cond(Done(QuestKey(c, S(start, "quest")), I(start, "quest_stage")), CompareOperator.EqualTo, 1));
         }
         var opening = A(b.F, "lines").Where(x => I(x, "first_stage") <= b.Start && b.Start <= I(x, "last_stage") && A(x, "results").Any(r => S(r, "do") == "set_stage")).ToList();
         if (opening.Count == 0 || A(b.F, "triggers").Any(t => S(t, "kind") is "take" or "use" && I(t, "prerequisite") == b.Start)) return l;
@@ -246,7 +250,7 @@ static class QuestForm
                     Entry = shown ? So(s, "journal") : null } },
             });
         }
-        if (!byGame)
+        if (S(start, "by") == "quest_stage")
         {
             var other = S(start, "quest");
             if (!c.Quests.TryGetValue(other, out var o)) throw c.No("start", $"started by {other}, which is not built from a form");
@@ -287,7 +291,8 @@ static class QuestForm
         foreach (var s in stages.Where(s => S(s, "ending") != "none"))
         {
             var n = I(s, "number"); var done = S(s, "ending") == "completed";
-            foreach (var o in objs.OrderBy(o => I(o, "number"))) Add(b.Tail, n, new Row(done ? Op.CompleteObjective : Op.FailObjective, FormKey.Null, I(o, "number")));
+            // every objective shown and still open is closed, in number order: one row up to the highest objective
+            if (objs.Count > 0) Add(b.Tail, n, new Row(done ? Op.CompleteAll : Op.FailAll, FormKey.Null, objs.Max(o => I(o, "number"))));
             if (done && b.Kind != "main") Add(b.Tail, n, new Row(Op.IncSideQuests, Achievements, 0));
         }
         b.Labels.Add("quest=" + b.Qid);
@@ -303,7 +308,7 @@ static class QuestForm
         if (!Op.OfResult.TryGetValue(w, out var op)) throw c.No("vocabulary", $"no result {w}");
         return w switch
         {
-            "set_stage" => [new Row(op, FormKey.Null, I(res, "stage"))],
+            "set_stage" => So(res, "if_held") is { } held ? [new Row(Op.IfHolds, Item(c, b, held), 1), new Row(op, FormKey.Null, I(res, "stage"))] : [new Row(op, FormKey.Null, I(res, "stage"))],
             "give_item" or "take_item" => [new Row(op, Item(c, b, S(res, "item")), I(res, "count"))],
             "give_gold" or "take_gold" => [new Row(op, Gold, I(res, "amount"))],
             "set_number" or "add_number" => [new Row(op, Number(c, S(res, "number")), (float)res.GetProperty("value").GetDouble())],
@@ -402,7 +407,18 @@ static class QuestForm
     static FormKey Item0(Ctx c, Built b, string id)
     {
         if (id.Contains(':')) return Exists<IItemGetter>(c, id, "item");
-        if (b.Refs.TryGetValue(id, out var r)) return r.Kind == "thing" ? r.Base : throw c.No("item", $"{id} is a {r.Kind}, not a thing");
+        if (RefJson(c, b, id) is { } rj)
+        {
+            if (S(rj, "kind") != "thing") throw c.No("item", $"{id} is a {S(rj, "kind")}, not a thing");
+            var bas = rj.GetProperty("placement").TryGetProperty("base", out var bb) ? bb : default;
+            if (bas.ValueKind != JsonValueKind.Object) throw c.No("item", $"{id} is an existing reference, not an item");
+            var bk = S(bas, "kind"); var bid = S(bas, "id");
+            if (bk == "template_item" || (bk == "item" && bid == id)) return OwnItem(c, b, id, rj);
+            if (bk == "item") return Item0(c, b, bid);
+            throw c.No("item", $"{id} is a thing of base kind {bk}, not an item");
+        }
+        if (c.Quests.Values.Select(q => q.F).Prepend(b.F).Any(f => f.TryGetProperty("texts", out var tx) && tx.TryGetProperty(id, out _)))
+            return OwnItem(c, b, id, null);
         var edid = QuestKit.Rows("item_asset_record").Where(x => x.GetProperty("item_id").GetString() == id && x.GetProperty("ord").GetInt32() == 0)
             .Select(x => x.GetProperty("value").GetString()).FirstOrDefault() ?? throw c.No("item", $"{id}: no form key, no thing of the form and no item_asset_record");
         if (!ReferenceEquals(itemsFor, c.Mods))
@@ -412,6 +428,59 @@ static class QuestForm
         }
         return itemsByEdid!.TryGetValue(edid, out var k) ? k : throw c.No("item", $"{id}: its record {edid} is no item of the load order");
     }
+    /// The ref of that id in this form, else in any other form being built (a lock's key another form places).
+    static JsonElement? RefJson(Ctx c, Built b, string id)
+    {
+        foreach (var f in c.Quests.Values.Select(q => q.F).Prepend(b.F))
+            foreach (var r in A(f, "refs")) if (S(r, "id") == id) return r;
+        return null;
+    }
+    // The templates of a new item of ours whose form gives none (an item whose id is the ref's own, or a page the form
+    // gives the words of): a key when some lock names it, a note when it has words, else a clay pot.
+    public static readonly FormKey KeyTemplate = FormKey.Factory("10E7E6:Skyrim.esm"), NoteTemplate = FormKey.Factory("0A0F46:Skyrim.esm"),
+        MiscTemplate = FormKey.Factory("0B9BD2:Skyrim.esm");
+    /// A new item of ours: a `template_item` thing's copy of its template, or an item whose id is the ref's own (or a page
+    /// of the form's `texts`) on the template of its kind; called by the ref's name (or the form's `names`), with the
+    /// ref's text (or the form's `texts`) for a book. One record per id, whichever form names it first.
+    static FormKey OwnItem(Ctx c, Built b, string id, JsonElement? rj)
+    {
+        var k = c.Key("item:" + id);
+        if (c.Mod.EnumerateMajorRecords<IItemGetter>().Any(x => x.FormKey == k)) return Named(c, "item", id, k);
+        string? Word(string field) =>
+            c.Quests.Values.Select(q => q.F).Prepend(b.F).Select(f => f.TryGetProperty(field, out var m) && m.TryGetProperty(id, out var v) ? v.GetString() : null).FirstOrDefault(x => x != null);
+        var name = (rj is { } r0 ? So(r0, "name") : null) ?? Word("names") ?? throw c.No("item", $"{id}: a new item with no name");
+        var text = (rj is { } r1 ? So(r1, "text") : null) ?? Word("texts");
+        var bas = rj is { } r2 ? r2.GetProperty("placement").GetProperty("base") : default;
+        FormKey tk; string? template = null;
+        if (bas.ValueKind == JsonValueKind.Object && S(bas, "kind") == "template_item") { template = S(bas, "id"); tk = Item0(c, b, template); }
+        else if (c.Quests.Values.Select(q => q.F).Prepend(b.F).SelectMany(f => A(f, "refs")).Any(x => x.TryGetProperty("lock", out var l) && So(l, "key") == id)) tk = KeyTemplate;
+        else tk = text != null ? NoteTemplate : MiscTemplate;
+        var src = Enumerable.Reverse(c.Mods).SelectMany(m => m.EnumerateMajorRecords<IItemGetter>()).FirstOrDefault(x => x.FormKey == tk)
+            ?? throw c.No("item", $"{id}: its template {tk} is no item of the load order");
+        var copy = (IItemGetter)((IMajorRecordGetter)src).Duplicate(k);
+        var rec = (IMajorRecord)copy;
+        rec.EditorID = $"ARG_I_{Slug(id)}";
+        if (copy is Mutagen.Bethesda.Plugins.Aspects.INamed nm) nm.Name = name;
+        if (copy is Book bk2)
+        {
+            if (text != null) bk2.BookText = text;
+            bk2.Teaches = null; bk2.VirtualMachineAdapter = null;
+        }
+        switch (copy)
+        {
+            case Key kk: kk.VirtualMachineAdapter = null; c.Mod.Keys.Add(kk); break;
+            case Book bo: c.Mod.Books.Add(bo); break;
+            case MiscItem mi: mi.VirtualMachineAdapter = null; c.Mod.MiscItems.Add(mi); break;
+            case Armor ar: c.Mod.Armors.Add(ar); break;
+            case Weapon we: c.Mod.Weapons.Add(we); break;
+            case Ingredient ig: c.Mod.Ingredients.Add(ig); break;
+            case Ingestible ie: c.Mod.Ingestibles.Add(ie); break;
+            default: throw c.No("item", $"{id}: its template {tk} is a {copy.GetType().Name}, which the builder does not copy");
+        }
+        if (template != null) Label(c, $"name=template|{k}|{template}");
+        return Named(c, "item", id, k);
+    }
+
     static FormKey Message(Ctx c, Built b, string text)
     {
         var k = c.Key($"msg:{b.Qid}:{Sha(text)}");
@@ -474,6 +543,7 @@ static class QuestForm
             if (had.Same != same) throw c.No("shared-ref", $"{r.Id} is placed otherwise by {had.Quest}");
             if (had.Created) throw c.No("shared-ref", $"{r.Id} is made in a container for {had.Quest}; a made thing belongs to one quest");
             (r.Placed, r.Base, r.Npc) = (had.Placed, had.Base, had.Npc);
+            if (p.TryGetProperty("base", out var sb) && S(sb, "kind") == "item" && S(sb, "id") != r.Id) Item(c, b, S(sb, "id"));   // its item word, for this quest's reader
             return;
         }
         try { PlaceOnce(c, b, r, p); r.Fresh = true; }
@@ -505,10 +575,10 @@ static class QuestForm
         if (holder.Item1 != null)
         {
             if (p.TryGetProperty("anchor", out _) || (p.TryGetProperty("container", out _) && p.TryGetProperty("carried_by", out _))) throw c.No("placement", $"{r.Id}: more than one of an anchor, a container and a carrier");
-            if (r.Kind != "thing" || bk != "item") throw c.No("placement", $"{r.Id}: only an item thing sits in a {holder.Item3}");
+            if (r.Kind != "thing" || bk is not ("item" or "template_item")) throw c.No("placement", $"{r.Id}: only an item thing sits in a {holder.Item3}");
             if (!r.Enabled) throw c.No("placement", $"{r.Id}: a thing made in a {holder.Item3} is there from the quest's start (enabled)");
             if (!b.Refs.TryGetValue(holder.Item1, out var box) || box.Kind != holder.Item2) throw c.No("placement", $"{r.Id}: its {holder.Item3} {holder.Item1} is not a {holder.Item2} of the form");
-            r.Base = Item(c, b, bid); r.Created = true;
+            r.Base = bk == "template_item" ? OwnItem(c, b, r.Id, r.Json) : Item(c, b, bid); r.Created = true;
             return;
         }
         if (!p.TryGetProperty("anchor", out var anchor)) throw c.No("placement", $"{r.Id}: a new placement with neither an anchor, a container nor a carrier");
@@ -529,12 +599,13 @@ static class QuestForm
         else
         {
             if (bk == "template_person") throw c.No("placement", $"{r.Id}: a {r.Kind} placed as a person");
-            r.Base = bk == "item" ? Item(c, b, bid) : Exists<IPlaceableObjectGetter>(c, bid, "base");
+            r.Base = bk == "template_item" ? OwnItem(c, b, r.Id, r.Json) : bk == "item" ? Item(c, b, bid) : Exists<IPlaceableObjectGetter>(c, bid, "base");
             if (j0.TryGetProperty("contents", out var contents)) r.Base = Contents(c, b, r, bk, bid, contents);
             if (r.Kind == "door" && !c.Mods.Any(m => m.Doors.Any(d => d.FormKey == r.Base))) throw c.No("placement", $"{r.Id}: base {bid} is not a door");
             if (S(anchor, "rule") == "surface") at = Footprint(c, cell, world, interior, at, r.Base);
             var o = new PlacedObject(key, SkyrimRelease.SkyrimSE) { EditorID = edid, MajorRecordFlagsRaw = flags, Placement = new Placement { Position = at, Rotation = new P3Float() } };
             o.Base.SetTo(r.Base); placed = o;
+            if (j0.TryGetProperty("count", out var cnt)) o.ItemCount = cnt.GetInt32();
         }
         r.Placed = key;
         if (interior) Overrides.Interior(c.Mod, c.Mods, cell).Persistent.Add(placed);
@@ -657,6 +728,9 @@ static class QuestForm
         {
             // the nearest point of a navmesh at the spot's level: by a load door, at the player's feet (within 100 up or
             // down, so never the water's navmesh under a pier); else within 200 of the form's height
+            // outdoors the form's height is the ground's: the surface under the spot nearest it (a record gives no height)
+            if (!nearDoor && !interior && Surfaces(c, cell, world, interior, p) is { Count: > 0 } ground)
+                p = new P3Float(p.X, p.Y, ground.MinBy(h => MathF.Abs(h.Top - p.Z))!.Top);
             var on = NearestOn(c, Neighbours(c.Grid, cell, world, interior, p), p, nearDoor ? 100 : 200);
             if (on is { } o && (o.dist <= 300 || nearDoor))
             {
@@ -848,7 +922,12 @@ static class QuestForm
             | NpcConfiguration.TemplateFlag.Inventory | NpcConfiguration.TemplateFlag.Script | NpcConfiguration.TemplateFlag.DefPackList | NpcConfiguration.TemplateFlag.AttackData
             | NpcConfiguration.TemplateFlag.Keywords;
         n.Configuration.TemplateFlags = r.Hostile ? all & ~NpcConfiguration.TemplateFlag.AIData : all;
-        n.Configuration.Level = new NpcLevel { Level = t.Configuration.Level is INpcLevelGetter l ? l.Level : Math.Max((short)1, t.Configuration.CalcMinLevel) };
+        // the name the player sees is the form's: base data (the name among it) is then ours, not the template's
+        if (So(r.Json, "name") is { } name) { n.Name = name; n.Configuration.TemplateFlags &= ~NpcConfiguration.TemplateFlag.BaseData; }
+        // a fixed level: the form's, else the template's own
+        short? lv = r.Json.TryGetProperty("level", out var fl) ? (short)fl.GetInt32() : null;
+        if (lv != null) Label(c, $"level={r.Id}");
+        n.Configuration.Level = new NpcLevel { Level = lv ?? (t.Configuration.Level is INpcLevelGetter l ? l.Level : Math.Max((short)1, t.Configuration.CalcMinLevel)) };
         n.Configuration.Flags = NpcConfiguration.Flag.AutoCalcStats | (t.Configuration.Flags & NpcConfiguration.Flag.Female);
         if (r.Hostile)
             n.AIData = new AIData { Aggression = Aggression.VeryAggressive, Confidence = Confidence.Brave, Responsibility = Responsibility.NoCrime, Assistance = Assistance.HelpsAllies };
@@ -1149,6 +1228,13 @@ static class QuestForm
                 continue;
             }
             var r = RefOf(c, b, S(t, "ref"), $"trigger {id}");
+            // takes of one thing that set one stage from several stages are one script, from the lowest of them (a later
+            // one is reached through it: the script's prerequisite is then done)
+            if (kind == "take" && A(b.F, "triggers").Any(o => S(o, "kind") == "take" && S(o, "ref") == r.Id && I(o, "sets") == sets && I(o, "prerequisite") < pre))
+            {
+                b.Labels.Add($"trigger={id}|{kind}|{r.Id}|{pre}|{sets}|");
+                continue;
+            }
             ScriptEntry s = kind switch
             {
                 "take" => r.Kind == "thing" ? QuestKit.Script(TakeScript, QuestKit.Obj("myQST", b.Q.FormKey), QuestKit.Int("preReqStage", pre), QuestKit.Int("StageToSet", sets))
@@ -1159,7 +1245,15 @@ static class QuestForm
                 "death" => r.Npc ? QuestKit.OnDeath(b.Q, pre, sets) : throw c.No("trigger", $"{id}: only a person dies"),
                 _ => throw c.No("vocabulary", $"no trigger kind {kind}"),
             };
-            AddAliasScript(c, b, r, s, id);
+            if (kind == "take" && b.AliasScripts.TryGetValue(r.Alias, out var have) && have.Any(x => x.Name == TakeScript) && !r.Created
+                && Overrides.Placed(c.Mod, r.Placed) is PlacedObject po && r.Fresh)
+            {
+                // a second take of a placed thing from another stage: vanilla's reference script, on the thing itself
+                po.VirtualMachineAdapter ??= new VirtualMachineAdapter();
+                if (po.VirtualMachineAdapter.Scripts.Any(x => x.Name == TakeRefScript)) throw c.No("trigger", $"{id}: {r.Id} is taken from three stages");
+                po.VirtualMachineAdapter.Scripts.Add(QuestKit.Script(TakeRefScript, QuestKit.Obj("myQST", b.Q.FormKey), QuestKit.Int("preReqStage", pre), QuestKit.Int("StageToSet", sets)));
+            }
+            else AddAliasScript(c, b, r, s, id);
             b.Labels.Add($"trigger={id}|{kind}|{r.Id}|{pre}|{sets}|{(B(t, "choice") ? "choice" : "")}");
         }
         // a death trigger open from the start: a death before the quest began moves it as it starts (the start check)
@@ -1197,6 +1291,27 @@ static class QuestForm
         if (!b.AliasScripts.TryGetValue(r.Alias, out var l)) b.AliasScripts[r.Alias] = l = [];
         if (l.Any(x => x.Name == s.Name)) throw c.No("trigger", $"{what}: {r.Id} already carries {s.Name} (one trigger of a kind per ref)");
         l.Add(s);
+    }
+
+    // ---- the places: an interior the form names otherwise than the load order's winning cell is named so in our plugin
+    // (what the player reads on its doors and its loading screen); a place outdoors keeps its map markers' names
+    static void Places(Ctx c, Built b)
+    {
+        if (!b.F.TryGetProperty("places", out var places)) return;
+        foreach (var pl in places.EnumerateObject())
+        {
+            if (!B(pl.Value, "interior")) continue;
+            var key = FormKey.Factory(pl.Name); var name = S(pl.Value, "name");
+            c.CellWin ??= Survey.Winners<ICellGetter>(c.Mods);
+            var win = c.CellWin.TryGetValue(key, out var w) ? w.rec : throw c.No("place", $"{pl.Name} is no cell of the load order");
+            var mine = c.Mod.Cells.Records.SelectMany(x => x.SubBlocks).SelectMany(x => x.Cells).FirstOrDefault(x => x.FormKey == key);
+            var now = mine?.Name?.String ?? win.Name?.String;
+            // the census's own name with its settlement after it ("House, Lilmoth") is how the paper game tells places
+            // apart; the cell keeps its name. A name of its own (a record's placeName) is written
+            if (now == name || (now != null && name.StartsWith(now + ", ", StringComparison.Ordinal))) continue;
+            Overrides.Interior(c.Mod, c.Mods, key).Name = name;
+            Console.WriteLine($"questform {c.Q}: cell {key} named \"{name}\" (was \"{now}\")");
+        }
     }
 
     // ---- the mortal watch: one always-running quest holding every person a main or faction quest cannot go on without
