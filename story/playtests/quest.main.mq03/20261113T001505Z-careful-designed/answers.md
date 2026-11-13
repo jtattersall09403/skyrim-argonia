@@ -1,0 +1,7 @@
+1. I think I'm meant to get the jar of Hist sap out of Dives-Without-A-Rope's lockbox and bring it back to Nesh-Deeka as the Reed's first job. I can't say for sure, because the jar never showed up for me. The key and lockbox should have been enough, so the missing step is probably a way to open or loot the container that I didn't find, or a bug.
+
+2. I work for the Veiled Reed now, through Nesh-Deeka. I took fifty gold from her, and she offered work to a hand whose name is on no roll. I also have my own reason to stay: I want to know why the woman with the knotted cord let me live. The Reed seems the likeliest route to that answer, and I have no other prospects. I don't trust it, though, and I'm not sure what it really is.
+
+3. The most confusing moment was after I took the lockbox. The journal still showed the same objective, and no jar was in my inventory or in the lockbox. I couldn't tell whether I had done something wrong or the game had broken. The generic "Argonian Dock Worker 2" label made things worse, since I had to guess which person was Dives.
+
+4. The writing is strong. The Hist visions, the debt-labor setup and the Reed's quiet menace all pulled me in. But a quest item needs a clear way to be taken, whether that's a "take jar" command or the jar appearing when the lockbox opens. Name the NPCs by their real names, or make quest markers say who they point to. The journal should also say when an objective has been completed or why it hasn't moved. I also never got to learn who the cutters are, and I'd like to.

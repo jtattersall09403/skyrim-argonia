@@ -155,7 +155,8 @@ def snapshot(forms: list[dict], names_files: list[Path] = (), use_db: bool = Tru
     snap["names"].update(names)
     for c, v in places.items():
         snap["places"][c] = {**snap["places"].get(c, {}), **v}
-    snap["from_names_file"] = sorted(used)
+    text = json.dumps(forms)
+    snap["from_names_file"] = sorted(k for k in used if json.dumps(k) in text)      # only what these forms name
     snap["fallback"] = [r for r in snap["fallback"] if r not in names and r not in used]
     for r in snap["fallback"]:
         n = snap["names"].get(r)

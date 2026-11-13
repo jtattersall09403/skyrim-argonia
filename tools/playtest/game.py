@@ -160,6 +160,9 @@ class Game:
                                               "item": item, "lock": r.get("lock"), "owner": r.get("owner"),
                                               "contents": r.get("contents") or [], "text": r.get("text"),
                                               "talker": None, "quest": f["quest"]["id"]})
+                for k in ("lock", "owner", "contents", "text", "container", "carried_by"):      # a ref two
+                    e[k] = e[k] or (r.get(k) if k not in ("container", "carried_by")                # forms share
+                                    else r["placement"].get(k)) or ([] if k == "contents" else None)
                 if key in talkers:
                     e["talker"] = talkers.pop(key)
         for t in talkers.values():
@@ -533,7 +536,14 @@ class Game:
 
     def _find(self, text, pool) -> tuple[str | None, str | None]:
         """An entity among `pool` by the name the player typed: exact, then a unique start, then a unique part."""
-        return self._find_in(text, [(self.name(e), e) for e in pool])
+        return self._find_in(text, [(self.label(e, pool), e) for e in pool])
+
+    def label(self, e, pool) -> str:
+        """A name as the player tells it from others near: two people or things of one name are "<name> 1" and
+        "<name> 2", in the order they are listed."""
+        n = self.name(e)
+        same = [x for x in pool if self.name(x) == n]
+        return n if len(same) < 2 else f"{n} {same.index(e) + 1}"
 
     @staticmethod
     def _find_in(text, named) -> tuple[str | None, str | None]:
@@ -584,9 +594,12 @@ class Game:
             m = ["locked" + (f", {self._lock_word(e)}" if self.ents[e]["lock"] else "")] if self._locked(e) else []
             m += ["owned"] if self.ents[e]["owner"] else []
             return f" ({'; '.join(m)})" if m else ""
-        out.append("People: " + ("; ".join(f"{self.name(e)} ({word(e)})" for e in people) if people else "nobody"))
-        out.append("Things: " + ("; ".join(self.name(e) + marks(e) for e in things) if things else "nothing of note"))
-        out.append("Doors: " + ("; ".join(self.name(e) + marks(e) for e in doors) if doors else "none"))
+        here = self._visible()
+        out.append("People: " + ("; ".join(f"{self.label(e, here)} ({word(e)})" for e in people) if people
+                                 else "nobody"))
+        out.append("Things: " + ("; ".join(self.label(e, here) + marks(e) for e in things) if things
+                                 else "nothing of note"))
+        out.append("Doors: " + ("; ".join(self.label(e, here) + marks(e) for e in doors) if doors else "none"))
         return "\n".join(out)
 
     def _locked(self, e) -> bool:
@@ -842,9 +855,10 @@ class Game:
                                             self.s["taken"] and not self._loose(k) and self._on(k) and self._near(k)])
             if e and e in self.holders and self.ents[e]["kind"] == "thing":
                 return f"You cannot carry {self.name(e)}. Use it to open it."
-            if e and (self.ents[e]["container"] or self.ents[e]["carried_by"]):
-                h = self.ents[e]["container"] or self.ents[e]["carried_by"]
-                return f"{self.name(e)} is in {self.name(h)}: open it first."
+            if e and self.ents[e]["carried_by"]:
+                return f"{self.name(self.ents[e]['carried_by'])} carries {self.name(e)}."
+            if e and self.ents[e]["container"]:
+                return f"{self.name(e)} is in {self.name(self.ents[e]['container'])}: open it first."
             if e:
                 return f"You cannot take {self.name(e)}."
             return f"There is no '{text}' near you."

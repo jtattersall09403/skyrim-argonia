@@ -478,6 +478,25 @@ def test_a_container_lists_its_contents_and_cannot_be_taken():
     assert "Quest completed: The Jar" in g.do("say here is the jar.")
 
 
+def test_a_ref_two_forms_share_takes_what_either_says():
+    plain = second_form()
+    box = dict(jar_form()["refs"][2])
+    plain["refs"].append({k: v for k, v in box.items() if k not in ("lock", "owner", "contents")})
+    g = G.Game([plain, jar_form()], {**jar_world(jar_form()), "names": {**jar_world(jar_form())["names"],
+                                                                         **json.loads(NAMES.read_text())["names"]}})
+    assert g.ents["thing.box"]["lock"]["level"] == "novice" and g.ents["thing.box"]["contents"]
+
+
+def test_two_people_of_one_name_are_told_apart_by_number():
+    f = jar_form()
+    twin = dict(f["refs"][0], id="npc.twin")
+    f["refs"].append(twin)
+    g = jar_game(f)
+    assert "People: Nesh-Deeka 1 (an Argonian woman); Nesh-Deeka 2 (a person)" in g.look()
+    assert g.do("talk nesh-deeka") == "Which one? Nesh-Deeka 1, Nesh-Deeka 2"
+    assert g.do("talk nesh-deeka 2").startswith("Nesh-Deeka looks at you")
+
+
 def test_a_hand_in_never_accepts_a_thing_never_held():
     g = jar_game()
     assert "Here is the jar." not in g.do("talk nesh-deeka")
@@ -504,6 +523,7 @@ def test_locks_levels_keys_and_lockpicks():
 
 def test_the_key_opens_its_lock_and_pickpocketing_takes_it():
     g = jar_game()
+    assert g.do("take lockbox key") == "Nesh-Deeka carries Lockbox Key."
     out = g.do("pickpocket nesh-deeka")
     assert out == "Nesh-Deeka carries: Lockbox Key. Take one with: take <thing> unseen, or take <thing> seen."
     assert "Taking from Nesh-Deeka is pickpocketing." in g.do("take lockbox key")
@@ -574,8 +594,12 @@ def test_the_index_never_rewrites_a_kept_run(tmp_path):
 def test_a_forms_name_wins_and_the_names_file_ids_are_listed(tmp_path):
     from tools.playtest import world as W
     f = tmp_path / "n.json"
-    f.write_text(json.dumps({"names": {"npc.nesh-deeka": "From The File", "item.x": "Ring"}, "places": {}}))
-    snap = W.snapshot([templated(name="Nesh-Deeka")], [f], use_db=False)
+    f.write_text(json.dumps({"names": {"npc.nesh-deeka": "From The File", "item.x": "Ring", "item.unused": "Cup"},
+                             "places": {}}))
+    form_ = templated(name="Nesh-Deeka")
+    form_["refs"].append({"id": "thing.x", "kind": "thing", "enabled": True,
+                          "placement": {"base": {"kind": "item", "id": "item.x"}}})
+    snap = W.snapshot([form_], [f], use_db=False)
     assert snap["names"]["npc.nesh-deeka"] == "Nesh-Deeka" and snap["names"]["item.x"] == "Ring"
     assert snap["from_names_file"] == ["item.x"]
     folder, _ = new_session(tmp_path)

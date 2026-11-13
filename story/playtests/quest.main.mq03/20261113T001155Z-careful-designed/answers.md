@@ -1,0 +1,7 @@
+1. I'm meant to get the jar of sap from Dives-Without-A-Rope, one of the dock workers in the hold, and bring it back to Nesh-Deeka as the Reed's first job. I never got that far. I couldn't reach the right worker, so I don't know what the jar is or what happens once I have it.
+
+2. I work for the Veiled Reed, the state's quiet service, through Nesh-Deeka. I took the job because Buys-The-Months wouldn't keep me, since I'm on no roll. Nesh-Deeka paid me fifty gold and wants a hand with no name on any list. I haven't decided whether I trust them. I also still don't know why the woman with the knotted cord let me live.
+
+3. The most confusing moment was when the marker pointed at "Argonian Dock Worker" and two people in the hold had that exact name. Every command I tried only returned "Which one?" and gave me no way to answer. I kept guessing at numbers, ordinals and partial names, and nothing worked. It felt like a bug rather than a puzzle. I also wasn't sure whether the marker meant one of them in particular.
+
+4. I'd tell the writer the setup is intriguing: the Owing, the Reed, the knotted-cord woman and the sap jar all made me want to know more. But if two NPCs share a name, the game has to let me choose between them. That could be a distinguishing label or description, or the marker could select one directly. If the quest depends on someone called Dives-Without-A-Rope, that name should show up on the character, or the objective should say how to recognize them. As it was, I was blocked with no feedback, and that's the worst way for a quest to fail.
