@@ -126,7 +126,14 @@ locked or not.
 11. **Switched only by a line, a take or a use, and far away.** Never by a death or another quest's stage, and never
     in the cell where the player stands.
 12. **The journal says only what the player has just done.** A stage reached several ways has an entry true of
-    each, or one stage for each way.
+    each, or one stage for each way; the same for a player's own words: a prompt that states what someone told the
+    player is gated on the stage at which they were told.
+13. **Everything the outline says happens is in the sketch**: every line that is gated or moves the quest, the lines
+    said after an ending (gated on the stage or the number the ending set), every gift and switch, and each fought
+    creature as the place's own or as a person of ours (ours stand where the ground is walkable, so a water creature
+    of ours is a need of the place: a shelf of ground or a navmesh over the water).
+14. **What `far` promises is a need of the place.** A place marked `far` in the sketch is out of sight of the others:
+    say so in the outline's needs of places (the camp is a long walk from the shrine), or the switch is not away.
 
 ## 4. The sketch
 
@@ -549,6 +556,10 @@ must-live giver fails 96
 - "Things taken or people killed before the stage that expects them": a take moves on at once when held; a line
   gated on dead answers a death made early.
 - "A dead end once she is dead": she must live, or another way is left open.
+- "Two hundred, you said", "Their bowman is coming" in the player's mouth: gate the prompt on the stage at which the
+  player heard it, or word it so it needs nothing heard.
+- "She keeps the bracer at her hearth" when a stage only took it from the player: nobody holds it unless a placement
+  of it is switched on there; say only what the game shows.
 
 ## 7. What `sketch` cannot see
 
@@ -560,5 +571,6 @@ These stay the deliverability reader's to check, on the outline and its sketch t
   there (a ledge, a gate, a landing);
 - that a hostile band cannot reach the person who speaks at its edge, and that a level is right for its place;
 - that a stand-in person's lines, a choice's two sides and an ending's switches tell one story;
+- that the player's own words state nothing they may not yet have been told;
 - that a thing placed in a container is one the container could hold, and a thing the player is told to take is
   where they are told it is.
