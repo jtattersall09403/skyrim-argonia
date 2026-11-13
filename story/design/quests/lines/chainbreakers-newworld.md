@@ -242,3 +242,271 @@ player who knows her secret (`bc03.told`) answers one question of hers, "Will yo
 just come apart here, and the journal does not rule on it. If the answer is yes she lays down her rank and offers
 the player her desk, which is the only way the player comes to lead, and it costs the faction its founder twice
 over.
+
+## 3. The first three quests
+
+Common to all three.
+
+- **Never-Sold** stands inside her house on Blackrose's north side for the whole line. She must live: her death
+  fails any running quest of the line with the faction's message. Nobody is essential. People stand where they are
+  placed.
+- **How the seat is found.** The keeper of the boardwalk tavern and the canoe-men at the island core's landing (D
+  tulmek-washes, Blackrose) each have a line for a stranger who asks after work or after someone held: it names
+  Never-Sold, says her house is on the north side, and that its door bears her name.
+- **One working stage.** After its briefing each quest sits at a stage at which every way through is open. A way
+  ends in a thing held, a person dead, a thing used, or a line that sets the stage which finishes the step. Where a
+  way's result has to be remembered (the watchman bought, the door unbarred, the Broker's word), it is a stage of
+  its own, numbered below the stages it can still lead to.
+- **A line only moves the quest to a stage.** Whatever is given, taken, set, unlocked or switched is done by that
+  stage. A stage takes from the player only what the line that reaches it has checked they hold.
+- **Every switch is made by a line of Never-Sold's, inside her house,** of people and things that stand outdoors
+  somewhere else. So no place in these outlines is promised to lie any distance from another.
+- **A fight is started by the player.** Nobody who speaks turns on the player by a line. A person the player may
+  choose to kill has a death that moves the quest, marked as the player's choice.
+- Every objective has a marker on its person or thing, and the way is told in words as well. Journal entries are in
+  the first person and the past tense and say only what the player has just done. Thresholds are fixed. Each failed
+  check has its own refusal and leaves another way open. Things use existing forms; nothing new is modelled.
+- "Night" and "dark" in what people say are their words only; no step depends on the hour.
+- **What an ending gives.** Each ending's table says what the player gains and loses that they can go and use. The
+  outcomes lane's worked example for this line (`story/design/quests/review/outcomes-main.md`) had not landed when
+  these were written, so the tables use only what the quest form's results allow today: things and gold given or
+  taken, a door unlocked, ownership of a container, a person or thing switched on or off, and a person's regard.
+  Regard is used for what Skyrim itself makes of it: a person who is the player's friend lets their bed be slept in
+  and their small things be taken without theft.
+
+### BC01. Four Months for a Boat
+
+**What a new player is told, and when.** On first speaking to Never-Sold, before any job, four optional lines, each
+two or three sentences: *the Owing* (with nushmeeko glossed: "a month of work nobody thanks you for"); *the grey
+ones* ("the Hist is the tree a tribe is hatched under; our colour comes from it, and so does the way home when we
+die. Ours lies under the lake, and the island core sells the way down to it"); *the Chainbreakers* (the oath, and
+the three legs in one breath); *what it pays and why I might not* (a thief's share, a bed and a door on the lake;
+and "caught at a holder's box, you will be owing them yourself"). "Not yet" stays open and free. The job itself is
+three sentences, and one thing more: she describes the box, cypress, the hasp on the left, and says "Take hers, and
+do not read what lies under it."
+
+**The hidden truth.** Eleven years ago Rows-For-Another, a lake woman of the families the Rose's raiders emptied
+out of Sheh-Ara (D tulmek-washes, Sheh-Ara), hired on at Reedfall Farm as a boat-hand, holed the farm's boat and was
+assessed four nushmeekos. The farm's keeper wrote her leaf: first the four months, then her food, then a fever.
+Every line since is true and the Owing has outgrown her. In eleven years nobody has paid the island core's due for
+her, so she has not once been poled out to the drowned tree, and she is going grey in sight of its water (X). The
+Tulm-Varo trust no free hand with their count: the keeper is always a debtor hatched on the farm, and whatever any
+leaf is short at the season's reckoning is written onto the keeper's own leaf, the last in the box. So a leaf that
+vanishes and a debtor who runs both land on Hulm-Tei; and if his own leaf is gone too, the shortfall is spread over
+the dozen hands in the far paddies. Never-Sold knows this, because she was that keeper once, and does not say it.
+Rows-For-Another's kin are among the two families who keep Lujei Ferry (D tulmek-washes, Lujei Ferry), and the
+farm's watchman knows it: the ferry is the first place he would look.
+
+**The people.**
+
+| Who | Where they stand | What they want | If they die |
+|---|---|---|---|
+| Never-Sold, patron (woman) | inside her house, Blackrose | the leaf out of the box, quietly; not to be asked how she knows the box | the quest fails, with the faction's message |
+| Rows-For-Another, boat-hand, grey from eleven years without the tree's water (woman) | the boat landing, Reedfall Farm | her Owing closed, not fled: the watchman knows where her kin are, and while he lives a runaway cannot be seen among them | the quest fails |
+| Hulm-Tei, keeper of the count (man) | at the mouth of the rice shed, Reedfall Farm | the count to hold true, because every shortfall is his | his key is on his body; his word can no longer close anything |
+| Meema Tulm-Varo, the family's elder (woman; one of the record's five) | by the stilted house, Reedfall Farm | her farm fed; she knows who Never-Sold is and says only as much as stings | nothing; the Owing passes with the household |
+| Brings-Them-Back, the farm's night watchman and fetcher (man), one hard fighter of the Wild band with a fixed kit | on the Tei-Kur track where it leaves the farm's last paddy | his head-price; he thinks fetching is the kind part of the trade, and he is what keeps the crocodiles off the paddies | she can go home; the paddies have no watch |
+| the rest of the family | the record's own household, about the house and paddies | nothing of the quest; they are who sees a theft | nothing |
+
+Found afterwards, each switched on by an ending: **Rows-For-Another** at Lujei Ferry's waiting shelter; **Hulm-Tei**
+at Blackrose's boardwalk tavern; a crocodile on the Tei-Kur track at the far paddy.
+
+**The things.**
+
+| Thing | Where | Lock, key, owner | Holds or says |
+|---|---|---|---|
+| the first price | given by Never-Sold | 100 gold | "He has refused it from me twice. He may not refuse it from someone who is standing at his box." |
+| the count-box key | carried by Hulm-Tei | pickpocketed, or taken from his body | opens the count-box |
+| the count-box | inside the rice shed, Reedfall Farm, a shed that is walked into | Adept lock; the count-box key; owned by Hulm-Tei, so taking from it is theft | Rows-For-Another's leaf; the keeper's leaf; 60 gold of rice money; six lockpicks |
+| Rows-For-Another's leaf | in the count-box | a readable note | eleven years of true lines; the first two years in a smaller hand than the rest |
+| the keeper's leaf | in the count-box | a readable note | "Hulm-Tei, hatched owing on this ground. What any leaf is short at the reckoning is written here. If this leaf is lost, the shortfall is shared among all." Under it, eleven shortfalls already, none of them hers |
+| the watchman's kit | on Brings-Them-Back | taken from his body | a steel mace and a hide shield: the fight's reward |
+| the farm's boat | at the boat landing | a thing in the world, switched off by two endings | the boat that replaced the one she holed |
+
+**The ways through** (all open at the working stage, in any order).
+
+- *The count (Pickpocket or Lockpicking, with Sneak).* Lift the key from Hulm-Tei's belt as he stands at the shed's
+  mouth, or slip past him and pick the Adept lock, with the household about the house in sight. Opening the box is
+  the find, and has its own journal entry. Either leaf can then be taken. It goes wrong as Skyrim's own law does:
+  seen, the player is a thief on the family's ground under native law; a bungled pickpocket turns the keeper on the
+  player.
+- *The word (Speech, the purse, or what the box gave).* Hulm-Tei declares the Owing closed before the household,
+  which by custom ends it, in one of three ways, each a line of his that sets its own stage:
+  1. *persuaded* (Speech 50, and the first price in hand): he closes it and writes the eleven years onto his own
+     leaf with his eyes open. "I have carried worse than a boat-hand." Refused: "A true count is the only thing
+     between me and the mud."
+  2. *his own leaf put in his hand*: he takes it, closes hers and says the damp had his. He is free of the farm
+     tonight, he leaves the count-box open to the player, and the shortfall of both leaves will be shared among the
+     dozen hands who stay.
+  3. *the long purse*: the whole of what it has grown to, 1,000 gold. The farm is paid and nobody carries anything.
+     Refused: "A thousand, to the coin. The Varo do not round down."
+- *The hand (Speech, coin or a fight).* Brings-Them-Back agrees to be watching the paddies and not the water for
+  Speech 35 or 150 gold, each a stage. The player may attack him instead: he is alone and hard, and his death is
+  the player's choice. Bought, he still knows where her kin are. Dead, nobody does, and nobody watches the paddies.
+  With her way open, Rows-For-Another is told so, and says where she will go.
+- *Meema Tulm-Varo* argues the farm's side to anyone who asks, and adds, to a player sent by Never-Sold: "Ask the
+  one who sent you who taught my keeper his letters." Asked, Never-Sold says only: "I was owing on that ground
+  once. So were many."
+
+**The stages.**
+
+| Stage | What moves it | Journal gist | Objective and its marker |
+|---|---|---|---|
+| 0 | hidden start; the job is offered while Never-Sold and Rows-For-Another live | | |
+| 10 | Never-Sold's line "What is the job?" (joins the Chainbreakers; gives 100 gold) | Never-Sold asked me to end an eleven-year Owing at Reedfall Farm, and gave me its first price. | Speak to Rows-For-Another at the boat landing of Reedfall Farm (her) |
+| 20 | Rows-For-Another's line "Tell me how you are held" | She told me the three things that hold her: her leaf in the count-box in the rice shed, the keeper's word, and the watchman on the Tei-Kur track. | End her Owing (the count-box and her leaf; Hulm-Tei; Brings-Them-Back; her; Never-Sold) |
+| 25 | opening the count-box (open at 20) | I opened the count-box. Her leaf is in it, and under it, the last in the box, a leaf with the keeper's own name. | as at 20 |
+| 30, 31 | Brings-Them-Back's line: Speech 35 (30), or 150 gold (31, taken) (open at 20 and 25) | I talked him, or paid him, into watching the paddies and not the water when she goes. | Tell Rows-For-Another her way is open; or end her Owing by the leaf or the keeper's word (her; her leaf; Hulm-Tei; Never-Sold) |
+| 35 | Brings-Them-Back dead (the player's choice; open from 10); or, killed before the job, Rows-For-Another's line saying so | Brings-Them-Back is dead. Nobody is left to fetch her back. | as at 30 |
+| 40, 41, 42 | Hulm-Tei's closing line (open 20 to 35): persuaded with the first price (40, takes 100 gold); his own leaf held (41, takes it and gives ownership of the count-box); the purse (42, takes 1,000 gold) | Hulm-Tei said before the household that her Owing is closed, and how. | Tell Never-Sold (her) |
+| 60, 61 | Rows-For-Another's line "The watchman will not see you go" (at 30, 31: 60); "Nobody will come after you" (at 35: 61) | She said she would go when I had gone, in the farm's boat, to her kin at Lujei Ferry: hidden in its waiting shelter while the watchman lives (60), or openly (61). | Tell Never-Sold (her) |
+| 90 | Never-Sold's line "Here is her leaf", the leaf held (at 20 to 35, and at 60, 61); takes it | **Lifted.** I gave Never-Sold the leaf. | ends, completed |
+| 88 | Never-Sold's line at 0, her leaf already held; takes it | I gave Never-Sold a leaf I had taken from the count-box at Reedfall Farm. | ends, completed |
+| 91, 92, 93 | Never-Sold's line at 40, 41, 42 | **Struck.** I told Never-Sold how the keeper closed it. | ends, completed |
+| 94 | Never-Sold's line at 60, the watchman alive | **Cut loose.** I told Never-Sold she has gone by water, and that the watchman lives. | ends, completed |
+| 95 | Never-Sold's line at 61; or at 60, the watchman since dead | **Cut loose.** I told Never-Sold she has gone home by water, and that the watchman is dead. | ends, completed |
+| 96, 97 | Never-Sold dead (96); Rows-For-Another dead (97) | The Owing cannot be ended now. | ends, failed |
+
+Order where two are true. The watchman's stages sit below the keeper's, so a player who has bought or killed the
+watchman can still go to Hulm-Tei, and the keeper's word then stands over the flight. Once Hulm-Tei has closed it
+(40 to 42) or Rows-For-Another has been told to go (60, 61), the other is shut, because nothing is left to flee or
+to close. At 60 and 61 Never-Sold's lines are tried in this order: her leaf held (90); the watchman dead (95); the
+watchman alive (94). Every ending switches Rows-For-Another off at the farm's landing and on at Lujei Ferry.
+
+```sketch
+quest BC01 faction "Four Months for a Boat"
+start game 0
+
+place seat indoors "Never-Sold's House, Blackrose"
+place farm outdoors "Reedfall Farm"
+place landing outdoors "the boat landing, Reedfall Farm"
+place track outdoors "the Tei-Kur track at Reedfall Farm's last paddy"
+place ferry outdoors "the waiting shelter, Lujei Ferry"
+place boardwalk outdoors "the boardwalk tavern, Blackrose"
+
+person neversold at seat "Never-Sold"
+person rows at landing "Rows-For-Another"
+person hulm at farm "Hulm-Tei"
+person meema at farm "Meema Tulm-Varo"
+person fetcher at track level 12 "Brings-Them-Back"
+person rowsahead at ferry off "Rows-For-Another"
+person hulmfree at boardwalk off "Hulm-Tei"
+person croc at track hostile level 10 off "Paddy Crocodile"
+thing boxkey on hulm "Count-Box Key"
+thing box at farm container locked adept key boxkey owner hulm holds gold 60, lockpick 6 "Count-Box of Reedfall Farm"
+thing herleaf in box readable "Leaf of the Count: Rows-For-Another"
+thing keeperleaf in box readable "Leaf of the Count: Hulm-Tei, Keeper"
+thing mace on fetcher "Brings-Them-Back's Mace"
+thing boat at landing "Reedfall Farm's Boat"
+thing bedroll at ferry off "Rows-For-Another's Spare Bedroll"
+door backroom at seat locked expert "Door to the Back Room"
+item ring "Ring of Minor Lockpicking"
+
+stage 0 hidden
+stage 10 "Never-Sold of the Chainbreakers asked me to end an eleven-year Owing at Reedfall Farm, on the track south of Blackrose, where a boat-hand called Rows-For-Another is held. She gave me the Owing's first price, 100 gold, in case the keeper will take it from me." do give-gold 100, join chainbreakers
+stage 20 "Rows-For-Another told me the three things that hold her: her leaf of the count, locked in the count-box in the rice shed; the word of the keeper Hulm-Tei, who carries the box's key; and the farm's watchman Brings-Them-Back, on the Tei-Kur track, who fetches runaways back."
+stage 25 "I opened the count-box in Reedfall's rice shed. Her leaf is in it. Under it, the last in the box, is a leaf with the keeper's own name on it."
+stage 30 "I talked Brings-Them-Back into watching the paddies and not the water when she goes."
+stage 31 "I paid Brings-Them-Back 150 gold to be watching the paddies and not the water when she goes." do take-gold 150
+stage 35 "Brings-Them-Back is dead. Nobody is left on the Tei-Kur track to fetch her back, or to say where her kin are."
+stage 40 "Hulm-Tei took the first price and said before the household that her Owing is closed. He wrote her eleven years onto his own leaf." do take-gold 100
+stage 41 "I put Hulm-Tei's own leaf in his hand. He said her Owing is closed, and that the damp had his leaf. He means to be gone from Reedfall tonight, and he left the count-box open to me." do take keeperleaf, own box
+stage 42 "I paid Hulm-Tei the whole of what her Owing had grown to, 1,000 gold. He said before the household that it is closed, and nobody carries anything." do take-gold 1000
+stage 60 "Rows-For-Another said she would go when I had gone, in the farm's boat, to her kin who keep Lujei Ferry. They will hide her in its waiting shelter: while the watchman lives she cannot be seen among them."
+stage 61 "Rows-For-Another said she would go when I had gone, in the farm's boat, home to her kin who keep Lujei Ferry."
+stage 88 completed "I gave Never-Sold a leaf I had taken from the count-box at Reedfall Farm. She told me whose it was, and that with no leaf the farm has nothing to hold its boat-hand by." do take herleaf, give-gold 100, give ring, rank chainbreakers 1, set bc01.settled 1, off rows, on rowsahead, on bedroll, unlock backroom
+stage 90 completed "Lifted. I gave Never-Sold the leaf from the count-box. With no leaf, the farm has nothing to hold Rows-For-Another by." do take herleaf, give-gold 100, give ring, rank chainbreakers 1, set bc01.settled 1, off rows, on rowsahead, on bedroll, unlock backroom
+stage 91 completed "Struck. I told Never-Sold the keeper closed the Owing himself and carries it." do give-gold 100, give ring, rank chainbreakers 1, set bc01.settled 2, off rows, on rowsahead, on bedroll, regard hulm 2, unlock backroom
+stage 92 completed "Struck. I told Never-Sold the keeper closed the Owing and went free himself, and that the hands who stay will carry what both leaves owed." do give-gold 100, rank chainbreakers 1, set bc01.settled 3, off rows, on rowsahead, on bedroll, off hulm, on hulmfree, unlock backroom
+stage 93 completed "Struck. I told Never-Sold I paid the Owing in full." do give ring, rank chainbreakers 1, set bc01.settled 4, off rows, on rowsahead, on bedroll, regard meema 2, unlock backroom
+stage 94 completed "Cut loose. I told Never-Sold that Rows-For-Another has gone by water, and that the watchman lives." do give-gold 50, rank chainbreakers 1, set bc01.settled 5, off rows, on rowsahead, off boat, unlock backroom
+stage 95 completed "Cut loose. I told Never-Sold that Rows-For-Another has gone home by water, and that the watchman is dead." do give-gold 100, give ring, rank chainbreakers 1, set bc01.settled 6, off rows, on rowsahead, on bedroll, off boat, on croc, unlock backroom
+stage 96 failed "Never-Sold is dead. The Chainbreakers have nobody to send me anywhere."
+stage 97 failed "Rows-For-Another is dead. Her Owing cannot be ended now."
+
+objective 10 at 10 "Speak to Rows-For-Another at the boat landing of Reedfall Farm" -> rows
+objective 20 at 20, 25 "End her Owing: her leaf in the count-box, the keeper's word, or the watchman on the track" -> box, herleaf, hulm, fetcher, rows, neversold
+objective 30 at 30, 31, 35 "Tell Rows-For-Another her way is open; or end her Owing by the leaf or the keeper's word" -> rows, herleaf, hulm, neversold
+objective 40 at 40, 41, 42 "Tell Never-Sold" -> neversold
+objective 60 at 60, 61 "Tell Never-Sold" -> neversold
+
+line job neversold at 0 ask "What is the job?" -> 10 says "a boat-hand at Reedfall, eleven years for one boat; her leaf is in the count-box in the rice shed and the keeper carries the key; the box is cypress, the hasp on the left; take hers, and do not read what lies under it"
+line early neversold at 0 ask "I have a leaf out of the count-box at Reedfall Farm." if holds herleaf -> 88 says "she reads the name, says whose it is, and that I have done her job before she gave it"
+line held rows at 10 ask "Tell me how you are held." -> 20 says "the leaf in the box in the rice shed; the keeper who stands at its mouth; the watchman on the Tei-Kur track, who knows her kin keep Lujei Ferry"
+line gone rows at 10-25 ask "A man with a mace is dead on the Tei-Kur track." if dead fetcher -> 35 says "then nobody is left to come after her"
+line case meema at 10-35 ask "Why is she still owing?" says "the boat was real and the rice she ate was real; one paddy is failing and the buyers at Lilmoth forgive nothing"
+line taught meema at 10-35 ask "You know who sent me." says "ask the one who sent you who taught my keeper his letters"
+line asked neversold at 10-61 ask "Meema Tulm-Varo says you taught her keeper his letters." says "I was owing on that ground once. So were many."
+line smaller hulm at 10-35 ask "Who keeps the count?" if alive hulm says "he does; the keeper before him wrote smaller than he does"
+line look fetcher at 20-25 ask "Be watching the paddies when she goes." if skill Speech 35 -> 30 else "I am paid by the head, not by the word." says "he will watch the paddies"
+line pay fetcher at 20-25 ask "What is her head worth to you?" if gold 150 -> 31 else "A hundred and fifty. That is what the Varo pay me to bring one back." says "he takes it"
+line open rows at 30-31 ask "The watchman will not see you go." if alive rows -> 60 says "the boat; the shelter at Lujei Ferry; hidden while he lives"
+line opend rows at 35 ask "Nobody will come after you." if alive rows -> 61 says "the boat; home to the ferry"
+line persuade hulm at 20-35 ask "Take her first price and close it." if skill Speech 50, gold 100 -> 40 else "A true count is the only thing between me and the mud." says "he closes it and carries it: I have carried worse than a boat-hand"
+line hisleaf hulm at 20-35 ask "I have your leaf." if holds keeperleaf -> 41 says "he takes it, closes hers, and will be gone tonight"
+line purse hulm at 20-35 ask "What has it grown to? I will pay all of it." if gold 1000 -> 42 else "A thousand, to the coin. The Varo do not round down." says "he counts it and closes it"
+line told rows at 40-42 ask "It is closed." says "she will go to her kin at Lujei Ferry when I have gone"
+line lifted neversold at 20-35 ask "Here is her leaf." if holds herleaf -> 90 says "tonight she reads it aloud and burns it"
+line liftedgone neversold at 60-61 ask "She is going by water, and here is her leaf." if holds herleaf -> 90 says "tonight she reads it aloud and burns it"
+line r40 neversold at 40 ask "The keeper closed it himself, and carries it." -> 91 says "then he carries it with his eyes open"
+line r41 neversold at 41 ask "The keeper closed it, and is gone." -> 92 says "a dozen hands will each work a season for her and never know why; I would have chosen the keeper"
+line r42 neversold at 42 ask "I paid all of it." -> 93 says "then the Varo are paid, and every holder on the lake knows what we will pay"
+line cut neversold at 60 ask "She has gone by water." if alive fetcher -> 94 says "then she hides until he dies; half"
+line cutdead neversold at 60 ask "She has gone by water, and the watchman is dead." if dead fetcher -> 95 says "she will get her colour back; I do not thank you for how"
+line cut61 neversold at 61 ask "She has gone home by water." -> 95 says "she will get her colour back; I do not thank you for how"
+line knew neversold at 88-95 ask "You knew about the keeper's leaf." if done BC01 25 says "every count has a last leaf; had I told you, you would have stood at that box weighing a jailer against a boat-hand"
+line home rowsahead at 88-93 ask "You are among your own." says "she poles with her kin, and has been out to the tree's water"
+line home95 rowsahead at 95 ask "You are among your own." says "nobody followed; the bedroll is mine to use"
+line hide rowsahead at 94 ask "Why do you keep out of sight?" if alive fetcher says "a passenger who must not be seen, until a night dark enough"
+line hided rowsahead at 94 ask "The watchman is dead." if dead fetcher says "then she will stand up when nobody is by"
+line mother rowsahead at 88-95 ask "Your mother is out of the Rose." if number bc02.out = 3 says "she has seen her; she will take her out to the water"
+line motherstays rowsahead at 88-95 ask "Your mother is still in the Rose." if number bc02.out = 1 says "she asked not to be chosen; that is her all over"
+line short hulm at 88-90 ask "Is the count short?" if alive hulm says "eleven years I cannot account for, and they are written on me"
+line carried hulm at 91 ask "You carry her years." if alive hulm says "with my eyes open"
+line paid hulm at 93 ask "The count is whole." if alive hulm says "short of nothing, for once"
+line grows hulm at 94-95 ask "She is gone." if alive hulm says "her leaf stays in the box and grows on me"
+line free hulmfree at 92 ask "You are out." says "he does not ask who carries it"
+
+use box from 20 -> 25 until 25
+death fetcher from 10 -> 35 choice
+must-live neversold fails 96
+must-live rows fails 97
+```
+
+**The choice.** It comes at the box, open, with both leaves in hand: do as Never-Sold asked and let eleven years
+fall on a man hatched owing; put his own leaf in his hand, and let it fall thinly on a dozen strangers; pay, and
+teach every holder on the lake what a Chainbreaker will pay; or leave the box and clear the track. Each side is
+argued by the person it concerns. *Rows-For-Another:* "Closed, not fled. A runaway is still owing in every mouth
+that names her." *Hulm-Tei:* "I never chose the box I keep. Every line I wrote was true." *Meema Tulm-Varo:* "The
+boat was real. Forgive one and the other twelve stop rowing." *Brings-Them-Back:* "I bring them back alive. Ask what
+the paddies do to those who stay when one has run."
+
+**The endings and what each leaves.** Every completed ending sets `bc01.settled`, gives the rank of Hand and
+unlocks the back room of Never-Sold's house, which holds a bed and a chest nobody owns: a place to sleep and to keep
+things in Blackrose. Rows-For-Another is found at Lujei Ferry's waiting shelter after every ending.
+
+| Ending | What it leaves, and where it is seen | What the player gains and can use | What it costs the player |
+|---|---|---|---|
+| Lifted (90; 88 for a leaf taken before the job) | Rows-For-Another poles the raft with her kin and has been out to the tree. Hulm-Tei, at the shed, has eleven years he cannot account for. Never-Sold: "Tonight I read it aloud and burn it." | 100 gold; a Ring of Minor Lockpicking; the first price, unspent; whatever was lifted from the box; her spare bedroll in the ferry's shelter, a bed at a boat stop | a theft on the family's ground if seen, answered under native law |
+| Struck, the keeper carries it (91) | The same for her. Hulm-Tei carries it knowingly. Never-Sold: "Then he carries it with his eyes open." | 100 gold; the ring; the bedroll; Hulm-Tei as a friend, whose bed at the shed can be used and whose small things can be taken | the first price |
+| Struck, the keeper gone (92) | Hulm-Tei is gone from the farm and stands at Blackrose's boardwalk tavern. Never-Sold: "A dozen hands will each work a season for her and never know why. I would have chosen the keeper." | 100 gold; the count-box, which is the player's to empty; the bedroll | Never-Sold's ring |
+| Struck, paid in full (93) | The farm is short of nothing. Never-Sold: "Every holder on the lake now knows what we will pay." | the ring; the bedroll; Meema Tulm-Varo as a friend: the family's beds and table | 1,000 gold; no gold from Never-Sold |
+| Cut loose, the watchman alive (94) | She hides in the ferry's shelter, "a passenger who must not be seen" (D tulmek-washes, Lujei Ferry); her leaf stays in the box and grows on the keeper; the farm's boat is gone from its landing (D tulmek-washes, Reedfall Farm) | 50 gold | the ring; the bedroll; 150 gold if he was paid |
+| Cut loose, the watchman dead (95) | She stands openly among her kin; the boat is gone; with no watch, a crocodile lies up at the far paddy on the Tei-Kur track. Never-Sold: "She will get her colour back. I do not thank you for how." | 100 gold; the ring; the bedroll; his mace and shield | a new danger on the Tei-Kur track |
+
+After any ending a player who opened the box can say to Never-Sold "You knew about the keeper's leaf." "Every count
+has a last leaf. If I had told you, you would have stood at that box weighing a jailer against a boat-hand."
+
+**The moment a player retells.** Opening the jailer's box and finding the jailer's own name on the last leaf, having
+been told by the patron not to look; and afterwards working out how she knew which side the hasp was on.
+
+| Step | Skill | Ceiling block |
+|---|---|---|
+| take the job; hear how she is held | none (the two briefings) | a line sets a stage; the stage gives gold and joins a faction |
+| get the keeper's key | Pickpocket | a key carried by a person; Skyrim's own pickpocket |
+| open the count-box | Lockpicking (Adept), Sneak | a container with a lock level, a key and an owner; using a named thing sets a stage |
+| take a leaf | Sneak (theft, seen or not) | a thing held gates a line |
+| close it by the keeper's word | Speech 50 with 100 gold, or the keeper's leaf held, or 1,000 gold | line conditions: skill, thing held, gold; one stage per way, which takes gold or the leaf and gives ownership of a container |
+| clear the track | Speech 35, 150 gold, or a weapon skill or Destruction | line conditions; one stage per way; a death, the player's choice, sets a stage |
+| she says where she will go | none | one line per case, gated on her alive |
+| she is found there | none | Never-Sold's line indoors sets an ending, which switches people and things outdoors, unlocks a door and changes regard |
