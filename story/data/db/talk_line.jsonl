@@ -673,7 +673,7 @@
 {"talker":"0C7250:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Quintel is the other guard at this gate, grandson of an Imperial jailer. He is usually just north-north-east of here. He is too soft for the work."}
 {"talker":"0C7251:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The cooking fire by the docks? Walk east a short way, and the fire is there. I charge no toll for directions."}
 {"talker":"0C7251:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"You again. Come, stand a while, my friend. For you there is no questioning at this post. I have said that to very few."}
-{"talker":"0C7251:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"The crossing costs coin. I will name the sum once I have seen your pack."}
+{"talker":"0C7251:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"I hold this post at the edge of Black Rose. Keep your hands where I can see them."}
 {"talker":"0C7251:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is the edge of Black Rose."}
 {"talker":"0C7251:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"Around Black Rose, an owing is taken at a crossing for damage to the way. The debtor works it off on the water. I did that myself once, so I know the sum of it better than most. Now I am the one who stands guard. I will not apologise for the post."}
 {"talker":"0C7251:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Counts-The-Tolls, guard at this post. I was a debtor once, working off an owing on the water. I took this post as the way out. I know how that sounds, but the post is paid work and the water was not."}
@@ -836,14 +836,14 @@
 {"talker":"0C72A4:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"In Empress Morihatha's day the people of Black Rose raised an army against the Empire. Her battlemage Welloc broke it with a spell, not with soldiers. In the town, nobody has trusted a battlemage since."}
 {"talker":"0C72A4:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Watches-The-Road. I guard the north edge of town. I report every lapse I see. That includes the lapses of other guards."}
 {"talker":"0C72A4:Black Marsh.esm","topic":"talk.self","ord":2,"text":"I am a guard. I watch the north edge and I report what I find."}
-{"talker":"0C72A4:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Raxa-Tum, the guard at the north landing, is usually just north-north-west of here. He fishes on duty. He should be dismissed."}
+{"talker":"0C72A4:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Raxa-Tum guards the north of Black Rose. You will find him just north-north-west of here, most hours. He idles on duty. He should be dismissed."}
 {"talker":"0C72A6:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The cooking fire? Walk south a fair way, past the house. You will find it there."}
 {"talker":"0C72A6:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Sit by me a while."}
 {"talker":"0C72A6:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"I am a fisher. Please speak softly."}
 {"talker":"0C72A6:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is the north edge of Black Rose. My boat is just north-north-east of here."}
 {"talker":"0C72A6:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"Ask Keeps-The-Stone about the Lilmothiit. I know the water and the fish. That is enough for me."}
 {"talker":"0C72A6:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Okeemu. I keep my boat at the north edge of Black Rose with my family. It is the oldest boat here."}
-{"talker":"0C72A6:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Heshra, the fishwife at the north landing, is usually just west of here."}
+{"talker":"0C72A6:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Heshra the fishwife lives up in the north of the town. She keeps just west of here."}
 {"talker":"0C72A7:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Walk south-east just until you reach Black Rose on your left. Then walk south a short way until you reach the statue on your left. Walk south-east just until you reach the house on your left, then south a short way more. The longboat is there."}
 {"talker":"0C72A7:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"For you I will not haggle. Come closer and look at the catch."}
 {"talker":"0C72A7:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"What do you want? If you are buying, say what you want and what you will pay."}

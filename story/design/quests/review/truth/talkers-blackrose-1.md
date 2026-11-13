@@ -12,7 +12,7 @@ Sheet-wide note: only Nuxi-Ra shows a work faction (street vendor); every other 
 | 0C7250#talk.greet-friend#1, talk.here#1, talk.self#1 | place (unsure) | "Stand by the post a while", "I stand at the west gate and count what comes through it" | No gate or post; only one cart east, a short way, above. | "Stand by me a while"; "I stand here at the edge of Black Rose." | Fixed: false words swapped for what the sheet and the built forms show (patch.json) |
 | 0C7251#trade (Counts-The-Tolls) | work | "guard who takes the crossing toll", "Now he is the one who takes the toll" | Class only; no toll faction, package or object. | "guard at the edge of Black Rose" | Fixed: false words swapped for what the sheet and the built forms show (patch.json) |
 | 0C7251#talk.directions#1 | position | "Walk east a short way, and the fire is there." | Three fires burning: nearest north-west, just. | "Walk north-west, just a little way; the fire is there." | Stands: talk_route's line to the market's fire (about 160 m east); talk_check route agrees |
-| 0C7251#talk.greet-stranger#1, talk.here#1 | work | "The crossing costs coin." "I keep the toll here." "Pass it only once the fee is settled." | No toll or crossing shown; he wanders about the spot. | "Stop and state your business." / "I keep watch here." | Fixed (writer): queued |
+| 0C7251#talk.greet-stranger#1, talk.here#1 | work | "The crossing costs coin." "I keep the toll here." "Pass it only once the fee is settled." | No toll or crossing shown; he wanders about the spot. | "Stop and state your business." / "I keep watch here." | Fixed (writer, find step mw04125/mw04163/mw04177): "I hold this post at the edge of Black Rose. Keep your hands where I can see them." |
 | 0C7251#talk.here#1 | position | "The marker post is just south-south-west of where you stand." | Two pillars: nearest north-east, just; water SW just. | "The marker post is just north-east of where you stand." | Fixed: the marker post is a map marker, not a built thing; the sentence and its fact are cut |
 | 0C7252#trade, talk.here#1, talk.self#1, talk.greet-stranger#1 (Quintel) | place (unsure) | "at the west gate", "This is the west gate of Black Rose" | No gate; Black Rose lies west, a few steps; walls W above. | "at the edge of Black Rose" | Fixed: false words swapped for what the sheet and the built forms show (patch.json) |
 | 0C7252#talk.here#1 | position | "The tower stands a short way north-north-west of here." | Four stone towers: nearest south, a short way, above. | "The tower stands a short way south of here." | Stands: tower 1616C3 about 85 m north-north-west, a short way |
@@ -58,4 +58,4 @@ Sheet-wide note: only Nuxi-Ra shows a work faction (street vendor); every other 
 - event: 2 (1 unsure)
 - system: 2
 
-Outcome: fixed 29, queued for a writer 1, stand 14.
+Outcome: fixed 30, queued for a writer 0, stand 14.
