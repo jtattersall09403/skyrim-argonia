@@ -1127,12 +1127,108 @@ free, and the readers who complained of it chose that path every time. MC04 stil
 is the record's own hook, it is now shorter, and the cave can be fought instead. MC03 and MC05 keep a required
 fight above the band of the quest before: the bands are the world's, each giver says so, and the hunt keeps.
 
-**What a second round should check.** Whether a fresh reader now wavers before choosing the Pact, and whether
-anyone chooses the Charter. Whether the kaal's half-admission makes the cave land harder or steals it. Whether the
-bout at the foot reads as a fight earned or bolted on. Whether "my own" without a rank reads as a cost or as a
-trap. Whether a fresh deliverability reader can build both stage tables as written, above all MC02's line gated on
-three deaths, and whether the foot of each roost can truly be kept out of its archers' reach. Whether the names
-now stay apart.
+**What the second round was asked to check.** Whether a fresh reader wavers before choosing the Pact, and whether
+anyone chooses the Charter. Whether the bout at the parley ground reads as a fight earned or bolted on. Whether "my
+own" without a rank reads as a cost or as a trap. Whether a fresh deliverability reader can build both stage
+tables as written. Whether the names now stay apart.
+
+### Round two
+
+**Before the readers.** The story was brought up to the consistency ledger (its section 8, items 1 to 5), every
+choice and ending was given an outcome table, both full outlines were given sketches that pass, every need of a
+place was given how the player knows it, and section 7 was added. The secret changed kind: the kaal no longer
+hides the Sarpa's half of the dragon; nobody alive knows it, and the player reads it off the first keeper's stake.
+MC05 ends on the stake pulled or left. Nobody offers the post.
+
+**Who read.** Three players on three models, each given only the four sheets a player meets (the two full
+outlines step by step, the later four hunts in summary), each answering a sheet before opening the next; and one
+deliverability reader given the ceiling, `buildable.md`, the outlines with their sketches and what `sketch` had
+proved.
+
+- *The one who plays to grow powerful* (Opus; a two-handed fighter in heavy armour, no bow, no shield). Kept the
+  sack; told the first hunt as the pit's, for the great-blade recipe; killed the three at Joxhi and told it as the
+  Charter's, because the trade paid in arrows; showed one side's proof for the 900; killed Kor-Ahk from behind for
+  the thousand; left the stake, for the lasting blessing, since the slate would move the kaal anyway; ended with
+  the Post, for the keeper's recipe. Called the Pact "plainly the right ending" and unpaid for his character.
+  Hard to please on: every reward that was a bow, an arrow or a spear; Block; the bounty; the cuirass's weight
+  unsaid; reward lists that "read like a price sheet".
+- *The one who keeps their word to whoever hired them* (Sonnet; sword, shield and a bow). Gave the sack to the
+  pit and told it as the pit's; killed the three, "the contract as worded", and it hurt; showed only the spine;
+  killed Kor-Ahk, whom the contract named; left the stake, because the asker said to; ended with the Post, whose
+  hall had housed them. Could not tell whose spear they were at Joxhi, the fort's or the village's. Would join
+  over the Companions. Hunt three "felt like an exam".
+- *The one loyal to their own people* (Fable; an Argonian spear and bow, some Smithing). Sack to the pit, the
+  pit's spear; traded at Joxhi, since their own side was in the wrong; spine only; killed Kor-Ahk; pulled the
+  stake, "so my people read their own cuts"; ended with the Post, uneasy, "the Pact nearly won". Hunt three felt
+  like a side trip with new names. The bounty "meant nothing to me three times"; the slate was kept by luck.
+- All three retold the story unprompted, with the fish and the stake at its centre, wanted more, and found the
+  kaal's refusal to be softened by the stake the truest thing in it. None found "my own" a trap; none took it.
+  None complained of the names, but two listed words nobody had explained (the flu-dead, bone-tenders, a
+  raft-stage, Hanaxi, the eleven) and places they could not have found (the first pole, where fish comes from).
+- *The deliverability reader* found the journals, the levels and the outcome tables' results sound, and fifteen
+  blocking faults in the two outlines: the player's own words stating what nobody had said (the driver, the
+  sister, "200", "a week ago at dusk"); lines open to players who had not earned them; a second placement of the
+  quartermaster switched on though he might be dead; the old face standing on the fort's own watched road, by the
+  place records' distances; no offer when one of the three is dead before the job; the three partly dead; one line
+  holding two speeches; Deesha in two places; picks with no owner or seller; the wary three not made safe from
+  the village; eight gated or after-ending lines in the prose that the sketches lacked. In the arc: a skill read
+  on a thing where gates exist only on lines; switches made where the player stands; a gate on a thing not held;
+  ownership that cannot be revoked; a twin of the kaal; a back chamber that the warband could walk into; distances
+  missing from the needs.
+
+**Did the choices split?** The sack, Joxhi, the reed-water and the stake did: each option was somebody's own
+choice for their own reason, or was argued without strain. The cave did not: all three killed Kor-Ahk, because a
+thousand gold beat an amulet. The finale did not: all three chose the Post; two said the Pact was the right ending
+and one that it paid nothing a fighter without a bow could use; nobody chose the Charter, though each could argue
+it.
+
+**What changed, as one set.**
+
+1. *Mercy pays in one lasting thing, and it can be lost twice.* The roost's blessing, High-Flower's Breath, moved
+   from the stake to the cave: Ilu-Sei gives it when the eggs are home, Kor-Ahk is left to his elders, and the
+   three at Joxhi went home. So the kill at Joxhi and the kill in the cave each cost the one reward every fighter
+   wanted, and each is told before it is done. Leaving the stake now pays an amulet and the elders' trade.
+2. *The Pact pays a fighter.* It gives the Tried Hand, a lasting gain for anyone in armour, with the peace and a
+   trader who sells spears as well as bows. The Post gives the keeper's weapon in the kind the player names. The
+   Charter's cuirass is said to be heavy.
+3. *Nothing is paid only in arrows.* The second making is a shield, a war-hood and arrows; Ves-Tal's gift is
+   offered in three kinds.
+4. *The slate helps and does not decide.* A stake left standing now moves the kaal by Speech 60, or Speech 30 with
+   the slate; the pulled stake still moves her outright.
+5. *Whose spear at Joxhi is said.* Raj-Deel: "Joxhi asks. The Charter only carries the ask." And at every telling:
+   no answer is a lie, the player chooses who is owed.
+6. *Words and places.* Five words glossed; fresh fish given a source; the first pole given the quest's marker.
+7. *The sketches answer the deliverability reader*: the driver in the job; lines gated on what was heard; the
+   fort's telling in two forms, by whether the quartermaster lives; the old face moved north, off the fort's road
+   and out of its sight; the offer made whoever of the three is dead; the trade said only while both archers live;
+   the kaal's answer in two lines; Deesha at the forge; a tool-seller who owns the picks; the wary three no enemy
+   of the village; the missing lines written in. The captain stands inside the keep, so that what his telling
+   switches is always outside.
+8. *The arc was brought inside the ceiling*: a skill is read by a person's line on a thing held; every switch is
+   made by a telling indoors or from far off; the stake's taking sets a stage that later lines read; the Charter
+   ending locks a room and leaves a faction and revokes no chest; the kaal's twin is named and both must live; the
+   back chamber is an inside of its own; the distances are in section 4.
+
+`sketch` after the changes: both quests pass, every stage and ending reached after each ending before it.
+
+**Not changed, and why.** MC03 stays a hunt off the mesa with three new names: it is the one hunt where the Sarpa
+are met as a people who trade, and the line's big beast; it is shorter in what it asks the player to weigh (three
+outcomes, said beforehand). The bounty stays as a small part of the Charter's pay and is no longer counted as a
+gain by itself: a fort's law is real only to a spear who has broken it. "My own" stays untaken by these three: it is
+the freelancer's road and none of them was one.
+
+**New classes of fault the deliverability reader found** (for the skill, once a fix has cleared them): a second
+placement switched on for a person who may be dead; a named group partly dead, where gates cover all alive and all
+dead and nothing between; loot left on a body that an ending switches off; a story fact contradicted by the place
+records' measured distances.
+
+**The stop rule, judged.** Not met. The round could retell the story and wanted the next chapter; `sketch`
+passes; four of the six choices split. But the finale and the cave did not split before the changes, and the
+changes that answer that (items 1 and 2) have been read by nobody; the deliverability reader's faults were
+answered and not re-read. A third round must check: whether any fresh player now leaves Kor-Ahk to his elders and
+whether any chooses the Pact or the Charter for their own reasons; whether the blessing's two conditions read as a
+trade told in time or as a trap sprung late; whether a fresh deliverability reader finds the two sketches and the
+arc's switches buildable as now written; and whether MC03 still reads as a side trip.
 
 ## 6. For the other lines
 
