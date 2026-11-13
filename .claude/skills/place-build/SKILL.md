@@ -204,6 +204,16 @@ The tools lay the network by these rules.
 - **A copied room keeps the source's own lights**, shadow casters among them, each on the base the source placed.
   There is no cap on shadow-casting lights in a room: the player's renderer settings decide how many it draws.
 - **Leftovers**: `draft.drop` `{source ref id: reason}` for anything the source placed that our place must not have.
+- **Every room says what it is.** The name on a room's door is the one a player reads it by, so the tools give it
+  from the place's data (`docs/design/place-studio.md`, Room names): the place a promise kept in it names, else its
+  household's head ("Ixtul-Bei's House"), else the source's name unless it is a builder's leftover. A room nothing
+  names (a source cell with no name and no one of ours in it) is your call in `draft.room_names` `{space: {name,
+  why}}`, named for what a player finds inside it.
+- **A thing a story needs, placed by hand** (a sealed jar at a tree's foot, a locked chest in a home): a `draft.add`
+  row with its `space` (a room) or none (outside), `need` (the need's seq), `name` where the player must read what it
+  is (a container), `tier` and `why`; its owner, lock and contents are a stock row (the skill `place-stock`). Choose a
+  base the source or the marsh's own mods hold that reads as the thing, never a Nordic one. Then point the need's
+  `rests` at it.
 - **What the record promises and the source lacks is added in the source's own style.** The tools add each
   missing crafting station by the person who works it, the way Skyrim's towns do (the smith's yard outside the
   smithy; the alchemy lab with the apothecary; the enchanter with the spell trader; the cooking pot at the inn).
@@ -280,7 +290,8 @@ The tools lay the network by these rules.
    accounted for, seated by its rule, buildings on ground no steeper than the source's, water and land as the
    source had them, patches within bound, streets clear of buildings and open water, every door on a path, every
    promised service and station given and worked, a bed for every sleeper, an unowned bed to rent at the inn,
-   guards out of the inn, every resident in one household under one roof, replaced pieces in the original's plane,
+   guards out of the inn, every resident in one household under one roof, every room named (no leftover name,
+   and no two alike once the people have identities), replaced pieces in the original's plane,
    nothing floating or buried along its true outline beyond how it sat in the source, every door's arrival clear
    and on dry ground or a deck over the water, every replaced door facing its arrival, every light within 16
    units of its place by its fixture, every added forge lit, nothing Nordic
@@ -325,6 +336,8 @@ and removed per file; a stage that would write outside what it owns changes noth
 | `jail` | the place's law, the jail room, its door or its arrival, the landing or the streets changed | the jail's or the Owing's prison markers, bedroll and chests; `place.json`'s crime row `law`, `law_why`, `jail` and `owing` |
 | `primitives` | the source bundle, the kept pieces or the primitive classes changed | each exterior row's `primitive`, and a kept collision box's place, turn, seat and cluster by its piece; a dropped box's or trigger's row and its ledger row |
 | `hang` | trees under a place's Hist moved, turned or were swapped; lanterns are owed to a drafted place | the place's rope lanterns on its Hist and the trees round it; `place.json` `hang` |
+| `add` | `draft.add` changed: a thing placed by hand, outside or in a room | the rows `draft.add` mints |
+| `names` | who lives or works in a room changed, a promise moved, `draft.room_names` changed | each room's `name` in its `space.json` |
 
 1. Make the change that calls for it (`place.json` `draft`, the people source, a rule of the tools).
 2. Run the stage and read its counts: they are the whole change. Then run `streets` when what the network is built

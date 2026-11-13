@@ -116,7 +116,9 @@ compressed over HTTP.
 A ref: `{id, edid?, base, kind, pos:[x,y,z], rot:[rx,ry,rz], scale, layer, flags:[...], door:{to_space,to_ref,to_pos,
 to_rot,flags}?, owner:{owner,rank}?, linked:[{ref,keyword}]?, enable_parent:{ref,flags}?, lock:{level,key,flags}?,
 src?, cell?, map_marker?, primitive?, radius?, light_data:{fov,fade,end_cap,shadow_bias}?, emittance?,
-loc_ref_types?, count?, patrol?, persistent_location?, merchant_container?, scripts?, activate_parents?}`. `primitive` is
+loc_ref_types?, count?, patrol?, persistent_location?, merchant_container?, scripts?, activate_parents?, name?}`. A
+place row's `name` is the name the game shows on looking at the thing, where the place names it (a container only:
+the build's stock copy of its base carries the name, below). `primitive` is
 the ref's XPRM, the shape a collision marker, a trigger, a room marker or an acoustic space has: `{type: Box | Sphere |
 Plane | Line | Ellipsoid, bounds: [x, y, z] half extents round the ref's origin in its own frame (xEdit shows them
 doubled), color: [r, g, b], unknown}`; `scripts` the names of the ref's own scripts (VMAD) and `activate_parents` the
@@ -163,8 +165,9 @@ spaces/<space_id>/refs.jsonl     the place layer's refs, same row shape as a bun
                        fixture (the lantern, sconce, window or fire within 128 units of it in the source) and
                        stands at its source offset from it. A copied room's lights stand on the bases the source
                        placed, shadow casters among them (no cap on shadow-casting lights in a room)
-spaces/<space_id>/space.json     interiors: {copy_of: "<source_id>/<space_id>"}; the refs file holds only our
-                       changes to the copy (moved, removed, added)
+spaces/<space_id>/space.json     interiors: {copy_of: "<source_id>/<space_id>", name}; the refs file holds only our
+                       changes to the copy (moved, removed, added). `name` is what the game shows on the room's door
+                       and inside it (the cell's name); the stage `names` gives it (Room names, below)
 clear.jsonl            world plants and scatter switched off: {base, pos, by: draft|owner}; matched to the world's
                        ref at build by base and nearest position, so a world rebuild re-applies it
 land.jsonl             land patches: {cell, verts:[[row,col,dz]...], textures?, why}; the last resort, only to ease
@@ -210,7 +213,7 @@ whose gangway a laid walkway piece is; the seat's mode is then `free`). A flight
 piece it leaves, its top tread at the deck's height.
 
 `place.json` also holds: `draft` (the agent's calls: `anchor`, `rot_deg`, `search`, `replace`, `drop`, `add`,
-`roles`, `keep_patches`; skill `place-build`), `fit` (global and per-cluster transforms, `clusters_info`,
+`roles`, `keep_patches`, `room_names`; skill `place-build`), `fit` (global and per-cluster transforms, `clusters_info`,
 `relief_norm`, `patch_max`),
 `clearance` (the source's measured clearance), `factions` (`<place_id>.crime`, `.guard`, `.town`, and one
 `.vendor.NN` per trader with hours and `chest`; the crime row's `law` is the place's law (native, foreign or
@@ -239,6 +242,22 @@ has `bed` null and one 24-hour work stop (Skyrim's innkeepers keep no bed). An e
 carries `door.arrival` [x, y, z], where one stands outside it on our ground, clear of collision; the copy's way
 out (its `door_back` row) has `to_pos` that arrival and `to_rot` facing away from the door. A copy of a shared
 cell overrides only its own way out and removes the other rooms' ways out that fall in its kept room.
+
+**Things added by hand** (`draft.add`, `tools/places/draft/adds.py`): `[{base, pos: [x, y] | [x, y, z], space?, rot_z?,
+scale?, kind?, dz?, name?, need?, tier?, why}]`. Outside (no `space`) a thing is seated `ground` on its true
+footprint; in a room (`space` a room's id) it stands `free` where `pos` puts it, its height measured off the
+floor-standing piece beside it. Its row carries `name`, `need` (the seq of the story need it meets) and `tier` as
+given; its id is minted from its place in the list and its base. The whole draft places them; `draft add <place>`
+places them again on a drafted place.
+
+**Room names** (`tools/places/draft/names.py`, stage `names`). A room's `name` says what it is, from what the place
+data holds, first rule that gives one: the agent's call in `draft.room_names` `{space: {name, why}}`; the place a
+promise of the record names (a detail beginning "the ..."), where that promise is kept in the room (a station of it
+stands there, or its giver works there): "the tree-minders' hall" names the room its enchanter stands in
+"Tree-Minders' Hall"; the household that lives there, by its head, as Skyrim names its homes ("Ixtul-Bei's House");
+the source's own name unless it is a builder's leftover (a test cell, an editor id). A room an owner's save created
+keeps the owner's name. `draft check` fails a room with no name or a leftover name and, once the place's people have
+identities, two rooms with one name.
 
 Seating is data, never baked: `pos[2]` is what the last seating wrote, and `python -m tools.places seat` rewrites
 it from `seat` and the ground bundle. A ground rebuild is followed by `seat`, `build`, nothing else.
@@ -361,6 +380,8 @@ leaves open. The stocker reads it, corrects it and completes it by hand into the
 navmesh; the records by `ArgoniaPlaces/Build` `Stock.cs` and `People.cs`). A place with no stock source is built as
 before. Every list is read at level 1 the way the writer flattens one (`Records.fixed`: the level-1 entries, every
 one when the list gives all, else the first).
+A placed container whose row carries a `name` is always copied, under that name, holding its stock row's items and
+gold alone (a new thing keeps none of its base's contents); a `name` on any other ref is a problem.
 1. A `stock_container` row: the placed ref's base becomes a container of ours (a copy of its base, `ANP_<place>_StockNNN`)
    holding the base's own set dressing plus exactly the row's items and gold, never respawning. The ref gets the row's
    lock (its level, no key) or none, and its owner: the person's actor base, a household faction of ours (`<household
@@ -748,7 +769,8 @@ player (their trade and household) is derived from the people source, never stor
 
 **The sight test.** `sight` writes, for each need's spot, only what a player would meet there: what stands within
 about 30 metres in plain kinds (`tools/argonia_world/surroundings.py`'s table over each base's model and editor id),
-the names the game shows (doors by their room's name, map markers, named things), the people there as a player
+the names the game shows (doors by their room's name, map markers, named things: a base's name or a row's own
+`name`, with the lock the stock source gives it), the people there as a player
 sees them (name, race, a guard's kit, what they offer when spoken to), and through a door the room's name and what
 it holds; never our names for things, ids or the story. One fresh `reader` is asked first what each spot is, and
 only then which spot each needed thing is; the need's `sight` records whether the reader said it unprompted.
