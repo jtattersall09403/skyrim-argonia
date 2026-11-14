@@ -192,8 +192,8 @@ switch ($Cmd) {
     # what goes and what is laid are listed first, so the splash can count them (a file that goes is never wanted)
     $gone = @(foreach ($f in @([IO.Directory]::EnumerateFiles("\\?\$Data", '*', 'AllDirectories'))) {
       $rel = $f.Substring($f.IndexOf('\Data\') + 5).ToLower()   # with its leading \, as $want's keys
-      if (-not ($want.ContainsKey($rel) -or $vanilla[$rel.Substring(1)] -or $rel.StartsWith('\shadercache\'))) { $f } })
-    $lay = @(foreach ($rel in $want.Keys) {
+      if (-not ($want.ContainsKey($rel) -or $vanilla[$rel.Substring(1)] -or $rel.StartsWith('\shadercache\') -or $rel -match '^\\skse\\[^\\]+\.log$')) { $f } })  # a plugin's own log (FreeClimb.log) outlives a re-lay
+    $lay =@(foreach ($rel in $want.Keys) {
       $f = $want[$rel]; $a = [IO.FileInfo]::new("\\?\$f"); $b = [IO.FileInfo]::new("\\?\$Data" + $f.Substring($f.Length - $rel.Length))
       if (-not ($b.Exists -and $b.Length -eq $a.Length -and $b.LastWriteTimeUtc -eq $a.LastWriteTimeUtc)) { $rel } })
     $total = $gone.Count + $lay.Count; $done = 0

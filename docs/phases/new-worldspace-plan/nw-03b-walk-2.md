@@ -126,16 +126,25 @@ Every creature named below is placed within about a minute's walk of where you l
 
 ## Bodies and bandits
 
-We could not find the cause of these two in the files, so one short test, which the game logs for us, is needed.
-Two console command files are already on the game machine.
+We could not find the cause of these two in the files, and the save from your walk cannot show it (it only holds
+people who were far away from you, and the game does not keep those on the ground). So one test is needed, which the
+game logs for us. It compares four things: one of our bandits, one of our spider crabs, a Skyrim townsman brought
+into our world, and a Skyrim townsman in Whiterun. Whichever of them sink, or cannot be searched, tells us whether
+the cause is our bandits, our world, or the combat mods. Seven console command files are on the game machine.
 
 - **The sinking bandit and the bodies that could not be searched (lines 22 and 25).** Start the game on the "Argonia:
-  New World" card and load any save. Open the console (the ~ key). Type `bat repro_a` and press Enter. Wait ten
-  seconds. Look at the bandit and the spider crab that appear beside you: do they lie on the ground, or half in it or
-  under it? Aim at each in turn and say whether "Search" appears for it. Then type `bat repro_b`, press Enter and
-  close the console. Nothing else is needed: the game writes a log file (`bodies_repro_log.txt`) that we read. Reply
-  with what you saw: for each of the bandit and the crab, whether it lay on the ground and what the prompt said
-  ("Search", a name only, or nothing).
+  New World" card and load any save. Each step below is: open the console (the ~ key), type the command, press
+  Enter, close the console, and wait ten seconds before the next.
+  1. `bat repro_a`. You are moved to a place in our world.
+  2. `bat repro_b`. A bandit, a spider crab and a man called Nazeem appear beside you. The bandit will attack; stay
+     near and watch its feet and Nazeem's for ten seconds. Does either sink into the ground?
+  3. `bat repro_c`. All three die. Aim at each body: does "Search" appear for it?
+  4. `bat repro_d`.
+  5. `bat repro_e`. You are moved to Whiterun, beside a beggar called Brenuin. Does he sink into the ground?
+  6. `bat repro_f`. He dies. Does "Search" appear for his body?
+  7. `bat repro_g`.
+  Reply with what you saw for each of the four (bandit, crab, Nazeem, Brenuin): sank or not, and "Search" or not.
+  The game writes the heights to log files that we read.
 
 ## Music, water and the region's name
 
@@ -191,7 +200,8 @@ any of them has got worse.
   example Whiterun Hold), and the cells of the land carry it. The map, the save list and the journal show its name, and
   "Discovered" names a map marker. Our world had no locations at all, so nothing ever named a region. Now each region
   is a location named for the region, inside one called "Black Marsh", and every cell of the land carries its region's.
-- **Was FreeClimb turned off? (line 18)** No. Its log from your walk shows it loaded and ready. It writes no reason
-  when it refuses a climb, which is why we could not tell offline what stopped it. The likeliest cause is a drawn
-  weapon, which the soulslike mods keep out in combat. Its log now names the reason on every attempt, so the check
-  above settles it in one try.
+- **Was FreeClimb turned off? (line 18)** No. The game's log from your walk shows the mod loaded. We read its whole
+  code again: nothing in it looks at which world you are in, and our rocks and trees are of the kind it climbs. So
+  what stopped it is something about the moment (a drawn weapon, crouching, a lock-on, holding B, low stamina), which
+  only its own log can name. That log from your walk was lost: our install step deleted it, and that is now fixed. It
+  writes the reason on every attempt, so the check above settles it in one try.
