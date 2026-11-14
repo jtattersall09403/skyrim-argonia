@@ -99,6 +99,21 @@ typed: a person on the winning navmesh (`plugin.sh inspect navnear`), a thing on
 | A death before the quest starts | a person the quest needs, or whose death it waits for, is already dead when it starts | the start stage carries FailIfDead for each who-must-live row whose window holds it, and a death trigger open from the start adds its own start check, so the quest moves at once |
 | Arrays past their limit | Papyrus arrays hold 128 entries | `result-limits` refuses a quest whose stage rows or a line's rows pass 128, counted as the builder writes them |
 
+## Blocks owed: approved, not yet built
+
+The owner approved these six on 2026-11-13, each only for the use named. None is in the form yet: each is a change to
+the form, the builder, the reader, the paper game and the block test together, proven once by an owner check before
+a quest uses it.
+
+| Block | Only for | Likely engine shape |
+|---|---|---|
+| a staged ending scene | a line's ending vision: a fade to black, the ending's music, named things switched in view, then the vision's messages | ImageSpaceModifier fade, a MusicType, Enable and Disable, the message boxes; vanilla's ending sequences (MQ305) |
+| a choice on a message box | a line's final choice, each button setting a stage | `Message.Show()` returning the button; vanilla's message-box choices |
+| a called ally | an ending's reward: one named person called to the player's side by a power and sent away by another | two spells of ours whose effects move the person to the player and back, with a follower package |
+| a stage that kills a named person | an ending that costs that person's life | `Kill()` on the alias, with the person's must-live row closed first |
+| an objective with no marker until found | a riddle side quest's place, until the player stands in it | the objective shown without a target; the player's arrival in the place's location (a location-change event) sets the next stage, whose objectives carry markers |
+| sick Hist bark | the look of a sick Hist | our recolour tool's darkened copy of the Hist bark texture, a placed base of ours |
+
 ## How record terms map to blocks
 
 The compiler maps every record term to the form's blocks, and refuses each term outside them, in

@@ -1,5 +1,11 @@
 # The Blackrose Chainbreakers in the new world: the line's story
 
+**Status: to be rewritten.** This story rests on facts of the main quest's earlier plot that [the plot](main-plot.md) no longer holds; it is to be rewritten to the plot and is not yet. What in it is untrue, by section:
+
+- Section 3 (The first three quests): BC02 gives Third-Born Tsaxi as a gate-keeper who speaks, is not hostile and is shared with the main quest, but the plot's heirs of Blackrose kill strangers on sight and it has no Tsaxi.
+- Section 4 (What each quest needs of its places): it says the main quest takes the Rose's one interior for the old warden's office, but the plot's fourteenth quest is a cell holding a seal-stone, a yard held by the heirs and a broken bastion.
+- Section 6 (For the other lines): it ties the heir at the gate to MQ07 and its bargain, but the plot's seventh quest is The Pale Harvest and its Blackrose quest is the fourteenth, The Thief's Stone, entered as a guest by gold or duel, by the bastion or by a fight.
+
 The story of the Chainbreakers' six quests, re-homed from Black Marsh & Valenwood's Blackrose to the new world's
 Blackrose and its country. It is the story of [chainbreakers](chainbreakers.md), which met the owner's bar and whose
 first three quests were built and played on paper, grown into new ground: the same hook, people and turns, every

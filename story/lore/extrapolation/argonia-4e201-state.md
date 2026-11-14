@@ -763,3 +763,45 @@ inside the timeline above.
 - An abandonment of an Imperial building is "at the secession"; an Argonian loss is 4E 48 only where the place
   lay in Murkmire, Lilmoth, Gideon or Stormhold country (§9).
 - A holder is one of the holders in 10.2; a foreigner or wreck has a reason from 10.3.
+
+---
+
+## 11. The Hist, the Reed, the Unbound and the Eye: four extrapolations the main quest rests on
+
+All `EXTRAPOLATED`. Each is derived from the canon cited and leaves canon's own open questions open. Used by the main
+quest ([main-plot](../../design/quests/lines/main-plot.md)); a line that touches them cites this section.
+
+### 11.1 A Hist gives a blessing — `EXTRAPOLATED`
+
+Canon: a Hist-Tsoko may mark an individual for a sacred task, and sap-speakers know to aid them
+(`topics/hist-and-sap.md:24-25`); a Hist's sap brings visions and raises combat prowess (`:31-32`); tribal Hist relics
+let a tribe call on its tree (`:155`). The spine gives a tree's minder the Hist's blessing (§2). So a tree that trusts
+someone, and is asked by its minder, may lend them a strength for a while. A stranger can be given one, since sap given
+by a minder is safe to anyone (T9 of the consistency ledger). It is a power the player holds, not a gift to a people.
+
+### 11.2 The Reed keeps dreamers — `EXTRAPOLATED`
+
+Canon: 4E 48, Lilmoth's mad Hist helped the An-Xileel call Umbriel down (`topics/umbriel.md:26-29`); the Hist share
+one mind, so what one has seen another can know (`topics/hist-and-sap.md:15-16`); sap-speakers eat the tree's forbidden
+fruit to get "second-eyes and second-ears", and some trees send dreams (`:115-119`). So an order set up to watch the
+trees after 4E 48 needs eyes. The least inventive eyes are people fed sap and made to tell their dreams. The Reed keeps
+them in the cellars of its forts. It calls itself the guardian of the old ways, and what it takes in return is their
+freedom.
+
+### 11.3 The Unbound — `EXTRAPOLATED`
+
+Canon: an Argonian hatched outside a tribe's tree cannot hear it and is outcast (`topics/hist-and-sap.md:108-111`);
+sap is wanted for industry and always by villains (`:45-50`); cutting the bond between a Hist and its unborn kills the
+unborn (`:78-80`), and an Argonian can be wholly without tribe (the tribeless Naga, §3). So the tribeless have a
+grievance against the trees, and a use for what they bleed. The Unbound are tribeless Argonians who cut Hist roots
+and carry the sap away in jars. A cut root sickens its tree and, because the trees are joined, the trees round it.
+
+### 11.4 The Eye's power at the Root — `EXTRAPOLATED`
+
+Canon: the Eye of Argonia is the old kings' jewel, and its nature is deliberately left open
+(`regions/eye-of-argonia.md:6-8`); Hist amber is solid sap the trees no longer make (`topics/hist-and-sap.md:154`);
+all Hist are joined at the root (`:15-16`); a Mnemic Egg is a gateway into the whole collective and can sever the
+Argonian-Hist bond (`:150`). So a jewel cut from Hist amber, held where the roots of every Hist meet, can pour
+strength down every root and heal every tree, or part every root from every other. The Root lies under the sea
+trench of Echo Deep, behind a door the last king sealed.
+

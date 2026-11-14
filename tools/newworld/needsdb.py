@@ -1,11 +1,12 @@
 """What the stories need of a place, into the new world's database (docs/design/place-studio.md, "What the stories
-need of a place"; tables story_line, need_sign, place_need, place_need_sign, place_need_story, person_need,
-need_change).
+need of a place"; tables story_line, need_sign, place_need, place_need_sign, place_need_story, need_change).
+The needs themselves are the line stories' needs tables, read when the studio asks (tools/places/needs.py); these
+tables hold the place's side.
 
 Sources (committed, the single truth):
 - `newworld/sources/needs/lines.json`: the story lines, each named for a reader who knows none of them;
-- `newworld/sources/needs/<place_id>.json`: a place's needs and the story's uses of its people (agents write it,
-  through `python -m tools.places needs`);
+- `newworld/sources/needs/<place_id>.json`: the place's judgement of each need from the player's side, keyed to the
+  story rows it judges (agents write it; `python -m tools.places needs open <place>` lists the rows to judge);
 - `newworld/sources/needs/<place_id>.changed.jsonl`: the owner's changes to what a need rests on (the studio writes
   it when the owner carries on past a warning).
 
@@ -21,8 +22,7 @@ from tools.argonia_world import db
 from tools.newworld import frame as f
 
 NEEDS = f.ROOT / "sources" / "needs"
-TABLES = ("story_line", "need_sign", "place_need", "place_need_sign", "place_need_story", "person_need",
-          "need_change")
+TABLES = ("story_line", "need_sign", "place_need", "place_need_sign", "place_need_story", "need_change")
 SIGNS = {
     "look": "Its look on sight: the building or thing itself reads as that to someone who knows nothing.",
     "label": "The game's own label: the name on its door, the room's name on entering, a map marker's name, the "
@@ -57,7 +57,7 @@ def load(w, root: Path = NEEDS) -> None:
         for n in doc.get("needs", []):
             rests = n.get("rests") or {}
             w.insert("place_need", place_id=pid, seq=n["seq"], thing=n["thing"], story_line_id=n["line"],
-                     quests=n["quests"], does=n["does"], firmness=n["firmness"], rests_space=rests.get("space"),
+                     rests_space=rests.get("space"),
                      rests_ref_id=rests.get("ref"), rests_person_id=rests.get("person"), met=bool(n["met"]),
                      why=n["why"], fit=n.get("fit"), narrow=n.get("narrow"),
                      sight=(n.get("sight") or {}).get("result"), sight_said=(n.get("sight") or {}).get("said"),
@@ -65,12 +65,8 @@ def load(w, root: Path = NEEDS) -> None:
             for s in n.get("signs", []):
                 w.insert("place_need_sign", place_id=pid, need_seq=n["seq"], need_sign_id=s["sign"],
                          detail=s["detail"], person_id=s.get("person"))
-            for st in dict.fromkeys(n.get("stories", [])):
-                w.insert("place_need_story", place_id=pid, need_seq=n["seq"], story=st)
-        for u in doc.get("people", []):
-            w.insert("person_need", person_id=u["person"], seq=u["seq"], story_line_id=u["line"],
-                     quests=u["quests"], what_for=u["for"], keep=u["keep"], firmness=u["firmness"],
-                     story=u["story"])
+            for key in dict.fromkeys(n.get("from", [])):
+                w.insert("place_need_story", place_id=pid, need_seq=n["seq"], story=key)
         for i, c in enumerate(changes(pid, root)):
             w.insert("need_change", place_id=pid, seq=i, at=c["at"], need_seq=c.get("need"),
                      person_id=c.get("person"), change=c["change"], what=c["what"], save_id=c.get("save"),

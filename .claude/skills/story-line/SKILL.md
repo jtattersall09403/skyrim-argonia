@@ -163,11 +163,16 @@ honest case and something of its own to give in play, and once that is so the ch
 
 ## 5. Hand on
 
-When the story lands, its needs go onto each place it names: `python3 -m tools.places needs propose <place>`
-reads the needs tables (so keep each one a regular table under its place's bold name, with the columns "The thing",
-"Quest", "What happens there" and "How the player knows it"), then each proposal is confirmed, merged into the
-need it repeats or dismissed with its reason, and judged from the player's side (`place-build`, section 6). Where a
-place is already built, a need it does not meet is answered by changing the story to what the place has.
+When the story lands, its needs reach each place it names by themselves: the place studio's story panel reads the
+needs tables each time it opens (so keep each one a regular table under a "What each quest needs of its places"
+heading, under its place's bold name or with a Place column, with the columns "The thing", "Quest", "What happens
+there" and "How the player knows it", the place named as the world's data names it). Each new row is then judged
+from the player's side (`python3 -m tools.places needs open <place>`; `place-build`, section 6). Where a place is
+already built, a need it does not meet is answered by changing the story to what the place has.
+
+A story that no longer holds is marked at its head, as its first paragraph: `**Status: to be rewritten.**` with what
+in it is untrue by section, or `**Status: replaced by ...**` when another story holds its work. The explorer and the
+studio both read it: a story to be rewritten has its rows marked, and a replaced one is not read for needs.
 
 Each full outline goes to [quest-write](../quest-write/SKILL.md) with its sketch, which the record follows; the
 record's `foundation` names the line document and the quest's section. A quest writer who finds a gap asks the

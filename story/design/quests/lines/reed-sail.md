@@ -1,5 +1,12 @@
 # The Reed-Sail: the line's story
 
+**Status: to be rewritten.** This story rests on facts of the main quest's earlier plot that [the plot](main-plot.md) no longer holds; it is to be rewritten to the plot and is not yet. What in it is untrue, by section:
+
+- Section 2 (The line's arc): it names Reads-the-White-Water, pilot-elder of Seafalls, as the main quest's person, but the plot has no such person and gives Seafalls no part in the main quest.
+- Section 3 (The first three quests): RS02 relies on Reads-the-White-Water as the main quest's pilot-elder in her named house, which the plot does not hold.
+- Section 6 (For the other lines): it speaks of the main quest's preacher at Seafalls and leaves the landing's raiders to MQ09, but the plot has no preacher and its ninth quest is The Bells of Meliton, far from Seafalls.
+- Section 6 (For the other lines): it makes Fort Swiftmoth a crew that buys and sells nothing, while the plot makes it a keep of the Reed holding dreamers in its cellar.
+
 The story of the Reed-Sail's seven quests, written inside the quest ceiling
 ([quest-form](../../../../docs/design/quest-form.md)) and the owner's bar ([owner-bar](../../owner-bar.md)), on the
 ground the [province plan](province-plan.md) gives the line (its sections 3.8, 4 and 7). A quest writer turns each

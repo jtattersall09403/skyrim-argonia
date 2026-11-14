@@ -1,5 +1,12 @@
 # Many-Root: the line's story
 
+**Status: to be rewritten.** This story rests on facts of the main quest's earlier plot that [the plot](main-plot.md) no longer holds; it is to be rewritten to the plot and is not yet. What in it is untrue, by section:
+
+- Section 1 (The faction in a page): the walkers never connect Helstrom's sealed spring or any sick tree to a tree the main quest tends, but the plot has the Unbound cutting roots and the trees joined at the root, so one cut tree sickens the rest.
+- Section 4 (What each quest needs of its places): it keeps the Sealed Spring urn at the foot of Helstrom's sacred tree, but the plot's Helstrom has no spring and the urn was made for a quest the plot no longer holds.
+- Section 5 (Read on paper): its rounds leave the sealed spring unexplained as the main quest's alone, but the plot has no spring at Helstrom.
+- Section 6 (For the other lines): it says the hall never explains the sour spring, never names Vel-Sapha and never says one tree's sickness reaches another, but the plot has no sour spring, uses Vel-Sapha Stand for its third quest and holds that a cut tree sickens its neighbours.
+
 The story of Many-Root's six quests, written inside the quest ceiling
 ([quest-form](../../../../docs/design/quest-form.md)) and the owner's bar ([owner-bar](../../owner-bar.md)), on the
 ground the [province plan](province-plan.md) gives the line (its sections 3.4, 4 and 7) and under the rulings that

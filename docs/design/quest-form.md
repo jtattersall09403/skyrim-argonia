@@ -2,7 +2,9 @@
 
 A quest is data only: one JSON file per quest in one fixed form, `tools/questform/schema.json` (version 1). The
 form has no place for a scene, a walk, an area to walk into, a timer or a script, so a quest above the ceiling cannot
-be written in it. The generic builder turns a form into plugin records; the plugin reader turns the built plugin back
+be written in it; the six narrow additions the owner approved (a staged ending scene, a choice on a message box, a
+called ally as an ending's reward, a stage that kills a named person, a riddle place with no marker until found,
+sick Hist bark) join the form only as their blocks are built and proven ([blocks](blocks.md), "Blocks owed"). The generic builder turns a form into plugin records; the plugin reader turns the built plugin back
 into a form; the paper game plays a form. Every field not listed here is refused (`additionalProperties: false`
 throughout). Ids, form keys, editor ids and positions are plain strings and numbers.
 

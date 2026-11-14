@@ -1,5 +1,10 @@
 # The Umbriel Witness: the line's story
 
+**Status: to be rewritten.** This story rests on facts of the main quest's earlier plot that [the plot](main-plot.md) no longer holds; it is to be rewritten to the plot and is not yet. What in it is untrue, by section:
+
+- Section 6 (For the other lines): it says Xil-Veeka is not used and that nothing is said of any living tree's health, but the plot has no Xil-Veeka and makes Lilmoth's mad Hist the Reed's reason for watching the trees.
+- Section 6 (For the other lines): it says Bell Station, the Kelp Lantern, Thul-Kesh Spire and Echo Deep are not entered and that nothing touches the Root, the Eye or the Unbound, but the plot's quests 13, 17 and 18 and a side quest use those places and its whole story is the Root, the Eye and the Unbound.
+
 The story of the Umbriel Witness's six quests, written inside the quest ceiling
 ([quest-form](../../../../docs/design/quest-form.md)) and the owner's bar ([owner-bar](../../owner-bar.md)), on the
 ground the province plan gives the line ([province-plan](province-plan.md) §3.13, §4, §7) and the lead's rulings on

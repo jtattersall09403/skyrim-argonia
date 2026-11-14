@@ -649,3 +649,18 @@ added here the day they are made, with the date and the issue.
   ranks with proportionate rewards. (h) A power explained once at the right point needs no "each says why". (i) He
   leans to fewer factions and could cut the League. (j) Endings as visions with end music, trees shown dying and
   villages abandoned; post-game hard dungeons with a mark of achievement. Recorded in owner-bar the same day.
+- 2026-11-13 (in session, the knock-ons of the main plot's rewrite): (a) "Studio story panels mist be made to update
+  automatically": the place studio's story panel is generated from the story sources whenever it is opened, never
+  hand-written. (b) "First act in old world - leave it": the first act built from the old plot stays as it is.
+  (c) "Ledger, part of province plan, roster - update then": the consistency ledger, the province plan's main-quest
+  section and the cast roster are brought up to the new plot. (d) "Six faction stories - mark them as needing to be
+  rewritten. But don't rewrite yet": the Reed-Sail, Sunken Archive, Waykeepers, Many-Root, Chainbreakers and
+  Umbriel Witness stories carry a "to be rewritten" status and are not rewritten yet.
+- 2026-11-13 (#71, the main plot's six ceiling calls): "Approved on all 6." Each is approved only for its use in the
+  plot: one staged ending scene (fade to black, music, the trees shown changing) for the endings' visions; the final
+  choice on a message box; Cuts-the-Old-Knot called and sent away by a power as the Give ending's reward; a stage
+  that kills one named person (the Eye in the Use ending); riddle side quests with no marker until found; sick Hist
+  bark darkened by the recolour tool. Each is a new block proven once before use. On the ally: "are you talking
+  about the antagonist in the finale? They wouldn't have been "summoned" at that point, they would already be there
+  when you arrive, like I said": in the finale Cuts-the-Old-Knot is already there when the player arrives, never
+  summoned, and nobody follows the player through the door.

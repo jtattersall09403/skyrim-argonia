@@ -112,7 +112,7 @@ def _person(p: dict, ident: dict, place_row: dict) -> str:
 
 def sheet(pid: str, radius: float = 2000.0, places: Path = N.PLACES, root: Path = N.NEEDS) -> tuple[str, dict]:
     out = _out()
-    doc = N.read(pid, root)
+    doc = {"needs": [n for n in N.compose(pid, root, places=places)["needs"] if n["judged"]]}   # the stories' needs, judged
     spaces = {d.name: (N._json(d / "space.json") or {}) for d in (places / pid / "spaces").iterdir() if d.is_dir()}
     ext = _jsonl(places / pid / "spaces" / "exterior" / "refs.jsonl")
     by_id = {r["id"]: r for r in ext}

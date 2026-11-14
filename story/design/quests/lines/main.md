@@ -1,5 +1,9 @@
 # The Eye and the Root: the main quest's story
 
+**Status: replaced by the plot.** [The plot](main-plot.md) holds the main quest whole: its premise, people, nineteen
+quests, endings and what each quest needs of its places. Nothing below holds for it; the quest-by-quest detail is to
+be written again from the plot.
+
 **The plot's one statement is [main-plot](main-plot.md)**: the premise, the hidden truth, the people, the acts, the
 turn and the three endings at the length of one sitting, read on paper to its stop. This document follows it and
 holds the detail: the citations, the quest-by-quest arc, the outcome tables, Act I's full outlines and what each

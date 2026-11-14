@@ -35,6 +35,7 @@ PLUGIN_QUESTS = Path("plugin/Argonia/Quests")
 QUEST_HEAD = re.compile(r"^([A-Z]{2}\d{2})\.\s+(.+)$")
 ARC_QUEST = re.compile(r"^\*\*([A-Z]{2}\d{2})[.,]?\s+(.+?)\*\*\s*(.*)$")
 FIELD = re.compile(r"^\*\*([^*]{2,80}?)\*\*\s*(.*)$")
+STATUS = re.compile(r"^\*\*Status:\s*([^*]+?)\.?\*\*")   # a story's status at its head: "to be rewritten", "replaced by ..."
 
 
 # ---- sources -------------------------------------------------------------------------------------------------
@@ -186,7 +187,9 @@ def build_doc(rel: Path, text: str) -> dict:
         b2["_raw"] = b
         b2["h"] = hashlib.sha1(json.dumps(b, sort_keys=True).encode()).hexdigest()[:8]
         out.append(b2)
-    return {"id": did, "path": str(rel), "kind": doc_kind(rel), "title": title, "blocks": out}
+    status = next((STATUS.match(b["text"]).group(1).strip().lower() for b in blocks[:6]
+                   if b["t"] == "p" and STATUS.match(b["text"])), None)
+    return {"id": did, "path": str(rel), "kind": doc_kind(rel), "title": title, "blocks": out, "status": status}
 
 
 def parse_sketch(text: str) -> dict:
@@ -425,12 +428,12 @@ def generate(root: Path = ROOT, out: Path = OUT) -> dict:
             reviewed = any(re.match(r"^(\d+\.\s+)?read on paper", plain(b["_raw"]["text"]), re.I)
                            for b in d["blocks"] if b["_raw"]["t"] == "h")
             lines.append({"id": d["id"], "title": d["title"], "kind": d["kind"], "quests": [q["id"] for q in qs],
-                          "readOnPaper": reviewed,
+                          "readOnPaper": reviewed, "status": d["status"],
                           "summary": next((plain(b["_raw"]["text"])[:400] for b in d["blocks"] if b["_raw"]["t"] == "p"), "")})
     catalog = {
         "version": version,
         "generated": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
-        "docs": [{"id": d["id"], "title": d["title"], "kind": d["kind"], "path": d["path"],
+        "docs": [{"id": d["id"], "title": d["title"], "kind": d["kind"], "path": d["path"], "status": d["status"],
                   "hash": hashlib.sha1("".join(b["h"] for b in d["blocks"]).encode()).hexdigest()[:10],
                   "words": sum(len(json.dumps(b["_raw"]).split()) for b in d["blocks"])} for d in docs],
         "lines": lines,

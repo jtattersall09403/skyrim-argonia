@@ -18,7 +18,9 @@ How to read the citations:
   a place to hold that its record does not promise is a row of "Needs of places" at the end.
 
 **Words used below**, for a reader new to the province. *Hist*: the sentient trees every Argonian is hatched under
-and returns to. *The Owing*: the native sentence, months of owed work instead of a cell. *Naheesh*: a tribe's
+and returns to. *The Reed*: the secret order that watches the trees through dreamers. *The Unbound*: the cult of the
+tribeless that cuts Hist roots. *The Root*: the place under the sea where the roots of every Hist meet. *The Eye*:
+the old kings' jewel that lies there. *The Owing*: the native sentence, months of owed work instead of a cell. *Naheesh*: a tribe's
 elders. *Tree-minder*: the tender of a Hist, a village's usual arbiter. *Ku-vastei*: one who brings needed change,
 the old word for a Shadowscale arbiter. *Vicecanon*: the magistrate of the northern cities. *Archein*: the
 assimilated landholding families of Imperial times, now keeping the forts. *The Wardens* (Archwardens): the thin
@@ -36,25 +38,25 @@ shortened, and Reed-Sail's pirate branch is called the Skeith crews, not the Sal
 river-ports and cities held loosely by a state "whose reach ends where the water gets deep" (*state*:25 to :31). The
 Archwardens keep the old forts, the port customs and the name of a party nobody says aloud (*state*:62 to :68,
 :701 to :707). Everything that matters runs through the Hist: eggs, names, souls and burial (D province, Peoples:
-Root-Folk; D murkwood, faith). And in this world's own data the trees are not well. Helstrom's assembly "will not
-speak of its sour spring in open session" (D murkwood, Helstrom). A young Hist at Vel-Sapha Stand is dying (D
+Root-Folk; D murkwood, faith). And in this world's own data the trees are not well. Helstrom's assembly says the
+trees decide, and cannot yet say what ails them (X, on D murkwood, Helstrom). A young Hist at Vel-Sapha Stand is dying (D
 barsaebica, Vel-Sapha Stand). The sap-jar at Yuva-Goli has gone cloudy (D hatandros-bight, Yuva-Goli). Tsonac's
 dreams have turned bad (D arnesian-jungle, Tsonac). Clutches fail at Guxal and Tazhul, sap is slashed and stolen at
 Tseli-Oon, and Meris-Keth's tree sickened and emptied its village (D arnesian-jungle, Guxal; D okuwun-rahei, Tazhul;
 D murkwood, Tseli-Oon; D banujha-basin, Meris-Keth). In the same year the last known Shadowscale dies and the
 province loses the last of its judges (*state*:201 to :222). The Root Talk, at which every naheesh of the interior
-gathers at Helstrom to hear the trees (D murkwood, Helstrom; *state*:169), is late this year, because the assembly
-dare not let the tribes drink at a sour spring (X). That is the stage: a people whose government is a rumour and
+gathers at Helstrom to hear the trees (D murkwood, Helstrom; *state*:169), is late this year, because the tree-minders
+cannot yet tell the tribes why the trees are sick (X). That is the stage: a people whose government is a rumour and
 whose real authority, the trees, has begun to falter, in the year the old order's last servants die.
 
 **The four tensions.** Every line pulls on at least one from its own side. They are what make fourteen stories one.
 
 | Tension | In the data and the lore | Who pulls on it, and from which side |
 |---|---|---|
-| **The Root.** The trees are sick, and who may say so, tend them, cut them or speak for them. | The hooks above; a planted cutting at Gideon that two families and a river tribe all claim (D kotherra-mangroves, Gideon; D province, Peoples: Naka-Desh); Lilmoth's young tree "feared", with a two-tender rule so that no one communes alone again (D province, Peoples: Lilmoth); a Hist can cut itself off and go rogue (`topics/hist-and-sap.md:19`, `lilmoth.md:84`). | The main quest (who is cutting, and what the old bond was); Many-Root (tend, and decide which tree is saved); the League (a city with no tree of its own); the Nisswo (a dead tree is also a thing to let go); the Umbriel Witness (what a rogue tree did); the Waykeepers (the roots are the roads). |
-| **The Crossing.** Who owns the water and takes the toll. | The Wardens' revenue is "tolls at crossings and customs at ports, nothing else", with no navy (*state*:704 to :707). Truowa refuses Fort Gysilla's toll; the Three Waters say Reedmoth's chain is theirs by older right; the back-waters carry trade "past the customs men"; Archon charters the pirates it cannot beat; whoever holds Bramman's river holds the province's smuggling (D lake-ulaish, Truowa; D althii-archipelago, Fort Reedmoth; D province, Peoples: Three Waters, Archon, Soulrest). | Reed-Sail (run it); the Night-Reed (rob the toll-takers); the Waykeepers (keep the ways honest); the Marsh Charter (whose spears guard a road); the Lamp-Bearers (what the night traffic leaves behind); the main quest (the state's hidden house is a keep it calls empty, beside its busiest port). |
+| **The Root.** The trees are sick, and who may say so, tend them, cut them or speak for them. | The hooks above; a planted cutting at Gideon that two families and a river tribe all claim (D kotherra-mangroves, Gideon; D province, Peoples: Naka-Desh); Lilmoth's young tree "feared", with a two-tender rule so that no one communes alone again (D province, Peoples: Lilmoth); a Hist can cut itself off and go rogue (`topics/hist-and-sap.md:19`, `lilmoth.md:84`). | The main quest (who is cutting the roots, and what the Root is); Many-Root (tend, and decide which tree is saved); the League (a city with no tree of its own); the Nisswo (a dead tree is also a thing to let go); the Umbriel Witness (what a rogue tree did); the Waykeepers (the roots are the roads). |
+| **The Crossing.** Who owns the water and takes the toll. | The Wardens' revenue is "tolls at crossings and customs at ports, nothing else", with no navy (*state*:704 to :707). Truowa refuses Fort Gysilla's toll; the Three Waters say Reedmoth's chain is theirs by older right; the back-waters carry trade "past the customs men"; Archon charters the pirates it cannot beat; whoever holds Bramman's river holds the province's smuggling (D lake-ulaish, Truowa; D althii-archipelago, Fort Reedmoth; D province, Peoples: Three Waters, Archon, Soulrest). | Reed-Sail (run it); the Night-Reed (rob the toll-takers); the Waykeepers (keep the ways honest); the Marsh Charter (whose spears guard a road); the Lamp-Bearers (what the night traffic leaves behind); the main quest (the Reed's keep inland of Archon, beside the province's busiest port). |
 | **The Owing and the dead.** Holding on against letting go: debts, the slave trade, 4E 48, the unstaked. | The Owing and its drift (`topics/labour-and-bondage.md:68`, `:88`, `:112`); a Dunmer family hunting a runaway slave's grandchildren and a slaver's log under the sea off Thorn (D arnesian-jungle, Thorn; D padomaic-ocean, Wreck of the Silt Bride); Lilmoth built over a mass grave (D province, Peoples: Lilmoth); the Nisswo's *shunatei*, the pain of holding on (`topics/sithis-nisswo-shadowscales.md:21`); unstaked dead in a dozen places. | The Chainbreakers (get the held out); the Thorn Ash-Reed (stop an old wrong becoming a new killing); the Umbriel Witness (bring it up and keep it); the Nisswo (lay it down); the Sunken Archive (whose dead ground is it to dig). |
-| **The empty seat.** Nobody is left to judge, and several hands reach for the chair. | The Shadowscales were "arbiters and peacekeepers" and are dying out (*state*:205 to :213); the Scalded Throne is empty (*state*:693 to :697); the Brotherhood wants the Archon school reopened (D nushara-bayou, Archon; *state*:223); Vicecanons judge in the north, a merchant council here, an island core there (D province, Power and law). | The Shadowscales (who may issue a writ now); the Lamp-Bearers (proof instead of a writ); the Nisswo (mercy without a court); the Marsh Charter (the fort's charter or the village's spear); the League (who counts as a citizen); the main quest (the king's jewel, and the CLAIM ending). |
+| **The empty seat.** Nobody is left to judge, and several hands reach for the chair. | The Shadowscales were "arbiters and peacekeepers" and are dying out (*state*:205 to :213); the Scalded Throne is empty (*state*:693 to :697); the Brotherhood wants the Archon school reopened (D nushara-bayou, Archon; *state*:223); Vicecanons judge in the north, a merchant council here, an island core there (D province, Power and law). | The Shadowscales (who may issue a writ now); the Lamp-Bearers (proof instead of a writ); the Nisswo (mercy without a court); the Marsh Charter (the fort's charter or the village's spear); the League (who counts as a citizen); the main quest (the old kings' jewel, and who is to hold it). |
 
 A fifth thing runs under all four and is the treasure hunt's ground: **sick ground**. The ruins of the dead peoples
 (Ayleid, Velothi, Kothringi, Lilmothiit, the drowned xanmeer spires) are avoided by Argonians and worked by
@@ -89,156 +91,82 @@ Argonians will not enter is where secrets are safest, and the stories use that.
 
 ## 2. The main quest's journey: The Eye and the Root
 
-The line keeps its name, its treasure hunt, its spies and its three endings
-([main-line-outline](../main-line-outline.md)). What changes is that every act now grows from ground this world
-already holds.
+The plot is [main-plot](main-plot.md), the one statement of it. This section says where it lives in the province:
+the premise in a line, the people, the nineteen quests by place and region, the side quests, the endings and where
+the line meets the factions. It decides no plot.
 
-**The mystery.** Someone is cutting the roots of Hist trees and carrying off the sap, and the trees are sickening.
-Behind that is an older question: what the Eye of Argonia opens. Canon leaves the "priceless king's jewel of ancient
-Black Marsh" as perhaps "a key to the lost city" (`eye-of-argonia.md:6` to `:8`). Here it is the key to the Root of
-Accord, the old bond between chosen trees that was first freely given and later made compulsory (X, kept from the
-old outline).
+**The premise.** The player, a stranger of any race, works off an Owing cutting reed at Sedge-Kal Camp. The
+gang-master strikes their name from his roll on an order he cannot refuse, and sends them to the root-herald of
+Jal-Veesa, who brings them into the Reed. Hist trees are falling sick, one at a time. The trail leads to the
+Unbound, who cut the roots, and to the Eye of Argonia, which lies at the Root under the sea. The player is never
+chosen: the Reed combs the work gangs for strangers with no kin and no ties, and a freed stranger wants work, coin
+and a place in the world.
 
-**Who wants what.**
+**The Reed.** A secret order that says it protects the old ways of Argonian life. In 4E 48 a mad Hist at Lilmoth
+helped the An-Xileel call Umbriel down (`topics/umbriel.md:26` to `:29`; *state*:684), and the Reed set itself to
+watch the trees so that it would never happen again. It watches through dreamers, people locked in the cellars of
+its forts and fed sap, whose visions show what any tree has seen (X, on `topics/hist-and-sap.md:15` to `:16`, `:31`
+to `:32`). Its hold on the marsh rests on them. It is the plan's one hidden power, small and of the marsh (X); the
+state's working offices at Stormhold and Archon know nothing of it (X).
 
-- **The Unbound Root** wants every bound tree cut loose. Its hands are tribeless Naga, whom no tree claims, paid in
-  boats: the data has Naga camps round Helstrom holding stolen sap-skins and asking for boats, and "boats pass that
-  did not come up the river" (D murkwood, Dry-Fang Camp, Salt-Tooth Camp, Gaxu-Reet; X for the buyer). It needs a
-  Mnemic Egg, the seed a dying Hist leaves, which is "a gateway into the whole collective"
-  (`topics/hist-and-sap.md:150`), and the Eye to reach the Root with it. So it is killing a tree to make one. Its
-  leader, Cuts-the-Old-Knot, believes the bond is a chain and calls the cutting Sithis's own work, change long owed.
-  Its preacher is an outsider (X): a buyer for the Cyrodilic Collections, revived at Gideon
-  ([province-vibe](../../province-vibe.md) §8), whom the cult named Opens-the-Last-Door and dealers call the
-  Collector. He has hunted the Eye for twenty years and no longer cares whom it serves, so long as he sees what it
-  opens.
-- **The Veiled Reed** wants the cutting stopped quietly and the jewel in the state's hand. Its secret is that it
-  buys sap-dreams and keeps the dreamers.
-- **Helstrom's assembly** wants its sour spring unspoken until the Root Talk can be held.
-- **The player** is a nobody off an Owing barge, of any race, on nobody's list, which is exactly what the Reed can
-  use. A player who is not Argonian is told the dreams by those who have them and takes the sap as any outsider may,
-  at their own risk; no step needs a Saxhleel.
+**The Unbound.** A cult of the tribeless, led by Cuts-the-Old-Knot, that cuts Hist roots and carries the sap off in
+jars. She was a dreamer in the cellar of Fort Swiftmoth for nine years, and wants the Root cut so that no dreamer
+can ever see through the trees again. Its hands are tribeless Naga, whom no tree claims (`tribes.md:7` to `:12`; D
+valley-of-storms, Karsh-Naal Camp; X for the cult). The Collector, Ennodius Vanin, an Imperial relic-hunter of the
+kind the Cyrodilic Collections' revived buyers are at Gideon ([province-vibe](../../province-vibe.md) §8), hunts the
+Eye for himself and sells what he learns to whoever pays (X).
 
-**The faction that carries it.** The Veiled Reed keeps its name and becomes smaller and more of the marsh (X). The
-old party summoned Umbriel through one rogue tree (`lilmoth.md:84`; *state*:684). The successor state kept one small
-office whose whole work is to see that no tree turns again unnoticed: a few listeners who buy what people dream
-after taking sap, and a few deniable hands. It has no hall and no files. Its **seat** is one household in Helstrom,
-the state's formal seat "that Helstrom ignores" (*state*:701 to :702), where its handler lives among boatmen and
-is taken for one. Its second house is Fort Swiftmoth, the keep inland of Archon that the Wardens say they never
-re-garrisoned (Act III). The state's working offices at Stormhold and Archon know nothing of it (X). The player
-reports to the household through Acts I to III only; after that there is nobody left there to report to, and the
-last two acts are the player's own.
+**The Eye.** Canon leaves "the priceless king's jewel of ancient Black Marsh" open as perhaps "a key to the lost
+city" (`eye-of-argonia.md:6` to `:8`). Here it was cut by the priest-kings from Hist amber (`topics/hist-and-sap.md:154`)
+and lies at the Root, the place under the sea trench of Echo Deep where the roots of every Hist meet, behind a door
+the last king sealed (X). Held there it can heal every tree or cut every root. A beast the kings set there guards
+it. Every one of those facts is plot, so the plot's page holds them and this page does not repeat them.
 
-**Act I, the burnt camp (the north).** The player wakes in the hold of an Owing barge moored at Sedge-Kal Camp,
-where the Sedge-Wardens' crews cut the northern reed for Stormhold's mat-makers (D valley-of-storms, Sedge-Kal
-Camp). The barge is the Vicecanons': an Owing gang hired out to cut beside the free crews, which the reed people
-dislike and take pay for, as they take the frontier screen's (X, on D province, Peoples: Sedge-Wardens). The gang's
-own huts burned in the night; the data's hook is "a stranger who is paying for reed to be burned". The man outside
-the barge's door speaks first, finds no such name on his list, and names the one person who can use a nobody: a
-root-herald at Jal-Veesa, the Sedge-Wardens' town round its Hist pool, who takes the player into the Reed (D
-valley-of-storms, Jal-Veesa). The first job is the act's adventure. A weir warden has seen lights at Nenria, the
-Ayleid hall south of the town that the reed people hold to be sick ground, ward-stakes there are being pulled up,
-and a youth of the town has been seen near it at dusk (D valley-of-storms, Jal-Veesa, Nenria). The cutters camp in
-the one place nobody will follow them. Their jar of sap is brought out by stealth, by a fight with two or three
-cutters at a fixed modest level, or by turning the youth, who carries it out. The hall's own dead are Deadly and
-lie deeper; the story never sends the player to them, and two people say so before the player goes. The sap is not
-Jal-Veesa's. It was drawn from the young tree at Vel-Sapha Stand, a mile west by the weir road, where "the sapling
-at the heart of the stand is dying" (D barsaebica, Vel-Sapha Stand). The player goes for the Reed and carries the
-tree-minder's phial as a reason to be let near; the roots are found cut, and what is done about the Root-Folk's
-grief is the act's one choice. Their thanks is an invitation to the Root Talk. The handler in Helstrom will speak to
-nobody who does not hold it, so a player who reaches the city early by river finds a household of boatmen and
-nothing more. With it, the rootworm from Jal-Veesa's pool is the short way in (D province, Roads). The act begins
-here because Stormhold's country is "the likeliest first sight of the province for a newcomer" (D
-valley-of-storms, Stormhold), because the Vicecanons' magistracy is where an Owing is handed down
-([province-vibe](../../province-vibe.md) §2), and because the lone young tree at the edge of the roots is the one a
-cutter would choose. Stormhold itself, a short walk from the camp, is open from the first and is the Lamp-Bearers'
-city; the main quest leaves it to them.
+**How the plot sits on the province.** Nineteen quests in three acts. Act I opens at the north edge, runs west by
+the weir road and ends in Helstrom, the hub of the travel network (D province, Roads). Act II is a treasure hunt
+that fans out across the province's coasts and drowned ground, each find pointing to the next, the places growing
+more dangerous and the rewards growing with them. Act III is the sea floor and the door. Every quest has at least
+two ways through for different builds; the danger rises by the act, to the bands the digest fixes (D province, Danger).
+Drowned ground is built with floors to stand on, since Skyrim gives no attack while swimming (section 6).
 
-**Act II, the hunt (three spokes from Helstrom).** A jewel called the Eye is for sale, and the cult means to have
-it. Helstrom is the hub of the whole travel network (D province, Roads), and the handler gives three leads at once,
-one down each spoke. She says which is gentlest and which may kill, and the order is the player's. West by
-rootworm to Gideon, the gentlest: the city's relic trade sold "a Kothringi silver mask twice in one week" (D
-kotherra-mangroves, Gideon), and the same dealer has an Eye on offer. The stone is glass. Its old setting is real,
-cut with a route cipher, and already sold on: it sits in the smugglers' cellar under Gideon South Watch (D
-kotherra-mangroves, Gideon South Watch), to be stolen out or fought for, and the Collector has left the player a
-courteous note with the dealer. South-east by Truowa and Uluo to Lilmoth and out to Bell Station: before the
-secession the East Empire Company lowered a brass diving sphere, the Kelp Lantern, to reach the drowned spires, and
-its locked hatch has never been opened (D benthic-yobesh, The Kelp Lantern). The key is to be found among the
-station's divers and the Company's lens-frame lies behind the hatch (X). South by Korydon to Blackrose and the
-Rose, the hardest: Lark of Rosgard, the masked thief who sought the Eye (`eye-of-argonia.md:9`), died a prisoner of
-the Second Empire's fortress (X), and what he scratched and hid is still there (D tulmek-washes, Blackrose Prison,
-whose own hook is "to break in, to bargain with the raj-kaal"). The three together say which of the seven drowned
-spires holds the jewel: Thul-Kesh, the outermost. The false sale was the cult's own net, cast to draw out whoever
-held the true pieces (X). The act ends with news from the north: the young tree at Vel-Sapha is dead, and the cult
-has its Egg.
-
-**Act III, the spies (the south-east sea and the east coast).** The player takes the Eye from the Hist chamber
-of Thul-Kesh Spire, kept by a sea-priest's ghost (D benthic-yobesh, Thul-Kesh Spire). Taking it gives the dream, as
-a message: a ring of trees, a door nobody built. The Reed then sends its one deniable hand to the cult's own door
-with the jewel as bait. The Unbound Root gathers where the roots do not reach: at Seafalls, the village under the
-falls whose people "live too far from any tree to hear the Hist clearly" and hold that the sea keeps what the Hist
-let fall (D province, Peoples: Spray-Folk). The Collector stands there among a few listeners. He knows whose hand
-took the pieces he wanted, and says nothing of it. What he tells of the state is true, and he tells where to look:
-Fort Swiftmoth, the keep inland of Archon, "empty since the Legion left", with "a locked cellar door below the old
-garrison's strongroom" and a watch of armed men whom the coast's people take for smugglers (D nushara-bayou, Fort Swiftmoth).
-They are the Reed's keepers (X), and below them are the dreamers. The handler was caught letting dreamers go and is
-among them now. The player gets in by stealth, by force or through the old ex-privateer who keeps a room there and
-knows the cellar. Whoever is let out is gone when the player next returns. It is the line's turn: the patron has
-prisoners, the enemy told the truth, and the jewel is in the player's pack.
-
-**Act IV, the marks and the root (the ridge and the north).** Nobody gives orders now. A stone read with the Eye
-in hand shows marks no other reading gives. The first is on Aunike Crown, the ridge's summit "from which the marsh
-can be seen for hours", reached past the Naga who watch the pass (D aunike-ridge, Aunike Crown, Nacydes). The marks
-are warded in an old hand, and the wards are known to the retired Shadowscale who trains at Lilmoth (D
-althii-archipelago, Lilmoth), for a price or a favour. They lead back to where the story began: the Vaults of
-Gemin, which kept "the ancient tablet for ... divining Murkwood's place" (D barsaebica, Gemin;
-`topics/guilds-and-orders.md:146`). Read with the Eye in hand, the player learns two things from the fragment in the lowest hall:
-where the forest's heart stands this year, and the twist, that the Accord began as a bond the trees gave freely and
-was made a chain by kings. The cult's grievance is real; its cure kills. A short way off, the Naga of Ushaan Camp
-are the sap road's northern end, and "one of the Naga wants out of the camp and will open the stockade at night for
-a price" (D barsaebica, Ushaan Camp): by her, by stealth or by a hard fight the player learns that the Egg has
-already gone into the forest. The Reed's last officer, alone now in the Helstrom household, asks where the cutters
-camp. Told the truth, the Reed burns the camp and everyone in it, the one who wanted out among them, and it is
-found so. Told a lie, the camp stands and goes on cutting.
-
-**Act V, the city and the door (the heart).** The way into Murkwood's Lethal heart is learnt at Vesh-Aneel, the
-last hummock south-west of Helstrom, whose guide "lost a party at the last crossing" (D murkwood, Vesh-Aneel) and
-can say where. She does not come. There are two ways across and a player may mix them: fight through, which is the
-hardest fighting in the province, or go unseen wearing the pale feather armband that "lets a hunter move through
-Murkwood undetected" (D murkwood, economy). An armband can be bought dear from the feather-trader at Hokal-Ush,
-talked out of the guide, or taken from the Naga leader's tent at Salt-Tooth Camp (D murkwood, Hokal-Ush,
-Salt-Tooth Camp). The Lost City stands in the forest that moves (a new place: section 6). Its keeper, the last
-thing still bound to the first consent, is fought on every path. At the Root, Cuts-the-Old-Knot stands with the
-Egg, talked down or beaten, and the player ends it by using one of three things there:
-
-- **CUT**: the Egg is poured into the Root. Every bound tree is cut loose from the others. The sickness stops,
-  because nothing passes between them now, and each tribe is alone with its own tree. The cult is the most feared
-  power in the marsh, and it is the player's.
-- **CLAIM**: the Eye is set in the Root and the door closed to everyone else. The bond holds, with one hand on it.
-  The player walks out with a king's jewel and a claim to the empty throne, which some will back and Helstrom will
-  not forgive.
-- **MEND**: the Egg is given back whole and the old consent read into the Root, so that each tree may again refuse
-  the bond. Some will. The Root Talk is held, and not every tribe comes.
-
-What changed is found afterwards, never watched: at Helstrom's spring, at Jal-Veesa's pool and among the people of
-Vel-Sapha, by what is said and by things switched while the player was far away.
-
-| Act | Regions | Places (by the digest) | Why here |
+| Act | Quest | Place (region) | Why here |
 |---|---|---|---|
-| I The burnt camp | Valley of Storms; the edge of Barsaebica; Murkwood (Helstrom only) | Sedge-Kal Camp (reed-cutters' camp); Jal-Veesa (town, Hist pool, rootworm stop); Nenria (Ayleid ruin, its outer part); Vel-Sapha Stand (Root-Folk stand round a young Hist); Helstrom | The province's front door; an Owing needs a magistracy; sick ground hides the cutters; the dying young tree and the lights at Nenria are already in the data; the only rootworm to Helstrom from the north starts at Jal-Veesa's pool. |
-| II The hunt | Kotherra Mangroves; Althii Archipelago and Benthic Yobesh; Tulmek Washes | Gideon and Gideon South Watch (Imperial ruin held by smugglers); Lilmoth, Bell Station and The Kelp Lantern (wreck); Blackrose and Blackrose Prison | Three spokes of the hub teach the west road, the sea and the southern water. Each lead is a different job: a theft from smugglers, a dive, a prison. Gideon's relic trade, the Company's lost sphere and the Rose's own hooks are the data's. |
-| III The spies | Benthic Yobesh; Okuwun Rahei (coast); Nushara Bayou | Thul-Kesh Spire (sunken ruin); Seafalls (village); Fort Swiftmoth (keep) | The spire with its ghost is in the data. A preacher against roots belongs where no root reaches. The state's hidden house would be a keep it says is empty, a walk from its busiest port, and the keep already has a locked cellar and a watch nobody can account for. |
-| IV The marks and the root | Aunike Ridge; Althii Archipelago (one talk at Lilmoth); Barsaebica | Aunike Crown (peak); Gemin (Ayleid ruin); Ushaan Camp (Naga camp) | The one height from which the interior can be read; the one tablet that finds Murkwood; a Naga camp whose record already holds one who will talk. The story returns north and the same ground reads differently with the Eye. |
-| V The city and the door | Murkwood | Vesh-Aneel and Hokal-Ush (outposts); Salt-Tooth Camp (Naga camp); the Lost City (new place) | The province's heart is its deadliest ground (D province, Danger). Everything has pointed inward to it. The ending lands a short way from the hub, so its consequences are found at once. |
+| I | 1 Struck Off | Sedge-Kal Camp, reed-cutters' camp (Valley of Storms) | The province's front door and the stage of the Owing; its barge is a place the story needs (needs table). |
+| I | 2 The Weeping Tree | Jal-Veesa, town round a Hist pool (Valley of Storms); Nenria, Ayleid ruin on sick ground (Valley of Storms) | The town's tree is a living tree the player can see sicken; Nenria is the hall the reed people hold to be sick ground, and holds the moss (D valley-of-storms, Jal-Veesa, Nenria). |
+| I | 3 The First Dream | Vel-Sapha Stand, Root-Folk stand round a young Hist (Barsaebica) | "The sapling at the heart of the stand is dying" is the data's own hook (D barsaebica, Vel-Sapha Stand). |
+| I | 4 The Cutters' Camp | Karsh-Naal Camp, Naga brigands' camp (Valley of Storms) | The tribeless Naga are where the Unbound recruit; the camp lies on the road from Stormhold toward Helstrom (D valley-of-storms, Karsh-Naal Camp). |
+| I | 5 The Handler | Helstrom, the oldest city (Murkwood) | The hub of the travel network and a city with a hall of its own that ignores the state's seat there (D murkwood, Helstrom; *state*:701 to :702). |
+| II | 6 The Glass Eye | Gideon, relic city; Gideon South Watch, Imperial ruin held by smugglers (Kotherra Mangroves) | The relic trade sold "a Kothringi silver mask twice in one week", and smugglers moor beneath the watch tower (D kotherra-mangroves, Gideon, Gideon South Watch). |
+| II | 7 The Pale Harvest | Wreck of the Pale Harvest (Hatandros Bight) | The first dive, to a wreck on the shelf (D hatandros-bight, Wreck of the Pale Harvest). |
+| II | 8 The Chimes of Toklea | Toklea, Chime-Keepers town; Bucalos, abandoned stilt village (Tulmek Washes) | Toklea's own chimes hang in a nest at Bucalos, where its people quarry the stone (D tulmek-washes, Toklea, Bucalos). |
+| II | 9 The Bells of Meliton | Meliton, Kothringi ruin (Blackwood) | Chimes hung for a dead people; the ruin is full of the restless dead (D blackwood, Meliton; `topics/lost-peoples.md:23`). |
+| II | 10 Down into Vicrium | Vicrium, mine (Okuwun Rahei) | A mine whose miners walled up old workings (D okuwun-rahei, Vicrium). |
+| II | 11 The Signal Tower | Aphon Signal Tower; Kelp-Mouth Cave (Aphon Isle) | Imperial ruins on the island of false lights and a customs watch (D aphon-isle, Aphon Signal Tower, Kelp-Mouth Cave). |
+| II | 12 The Cellar Door | Fort Swiftmoth, Reed keep inland of Archon (Nushara Bayou) | The keep already holds "a locked cellar door below the old garrison's strongroom" and a watch nobody can account for (D nushara-bayou, Fort Swiftmoth). |
+| II | 13 The Kings' Door | Bell Station; Thul-Kesh Spire (Benthic Yobesh) | The diving station is the only way down, and the spire has its sea-priest's ghost (D benthic-yobesh, Bell Station, Thul-Kesh Spire). |
+| II | 14 The Thief's Stone | Blackrose Prison, "the Rose" (Tulmek Washes) | The heirs hold it and "to break in, to bargain with the raj-kaal" is its own hook (D tulmek-washes, Blackrose Prison). |
+| II | 15 The Vault's Stone | Gemin, flooded Ayleid ruin (Barsaebica) | A drowned hall of tablets, and the act's one return north (D barsaebica, Gemin). |
+| II | 16 The Deepest Tower | Haxtil-Meht Spire (Benthic Yobesh) | The deepest of the seven drowned spires, in a dreugh hive (D benthic-yobesh, Haxtil-Meht Spire). |
+| III | 17 Echo Deep | Thul-Kesh Spire, then the trench (Benthic Yobesh) | The trench holds "a sealed spire at [the] bottom" (D benthic-yobesh, Echo Deep). |
+| III | 18 The Guardian | The cavern beyond the door (Benthic Yobesh; a new place, section 6) | The guardian is the wamasu of `topics/ecology-encounters-loot.md:57`, from Here There Be Monsters. |
+| III | 19 The Eye | The Root (Benthic Yobesh; a new place, section 6) | The ending is shown across the province by vision and found afterwards in it. |
 
-**How the journey teaches the world.** The regions are met by their links: the border on foot, one ride under the
-forest to a safe city in the middle of ground that would kill, then the three coasts by rootworm and boat, then the
-east, then the ridge and the north again, and last the heart on foot (D province, Roads). Danger does not climb
-evenly, and the plan does not pretend it does: the Valley of Storms is Wild on its roads with Deadly ruins a short
-walk off them, the Rose and the spires are Deadly in the second and third acts, and only the heart is Lethal (D
-province, Danger). The rule the main quest's writer keeps is this: in Acts I and II no step the story requires
-meets a fight above the Wild band unless another way through, on other skills, stands beside it; and two people
-warn of every place above the band around it. From Act III the fights are the place's own. Every main quest has two
-ways through on different skills (owner-bar, "Action and the player's skills").
+**The side quests on the road.** Six riddle quests in Act II send the player off the main road to a place a giver
+names without a marker: Mistwatch, an Imperial fort on Cape Percar (D cape-percar, Mistwatch); Kitsa Burrow, a
+Lilmothiit ruin of the Althii Archipelago (D althii-archipelago, Kitsa Burrow); Va-Seeth Spire and Zeshul-Tha Spire,
+two of the seven drowned spires (D benthic-yobesh, Va-Seeth Spire, Zeshul-Tha Spire); Anutasil, an Ayleid hall of
+Blackwood (D blackwood, Anutasil); and the Kelp Lantern, a wreck in Benthic Yobesh (D benthic-yobesh, The Kelp
+Lantern). Each pays a thing made for the fight with the guardian. The plot's page holds the givers and the rewards.
+
+**Where the story is felt afterwards.** The three endings are shown by a vision and then found: the trees of
+Vel-Sapha Stand and Guxal (D barsaebica; D arnesian-jungle, Guxal) stand dead if the player takes or gives the Eye;
+the Reed turns on the player in two endings, and in the other Fort Swiftmoth's upper keep is the player's own; Karsh-Naal Camp
+is the Unbound's stronghold in the third. No faction line states any of this ahead of the main quest.
+
+**Where the main quest meets the factions.** Section 4 lists each crossing. In short: Helstrom is the handler's
+quiet house beside Many-Root's hall; Blackrose Prison's gate is shared with the Chainbreakers; Gemin, Nenria and the
+spires are the main quest's; and the Nisswo's, the League's, the Night-Reed's and the Archive's regions each hold
+one side-quest ruin that their lines leave alone.
 
 ## 3. Each faction line's home
 
@@ -351,11 +279,11 @@ data's own; the best quests will be those hooks made the line's.
 - **Its drama.** Each quest is one tree in trouble with a physical cause to be found in a dangerous place, and then
   a decision that costs a real person something. The patron's secret is which trees the minders have chosen not to
   save.
-- **Friends and enemies.** The League (a tree is not taken); the Veiled Reed (who watch the minders, section 4);
+- **Friends and enemies.** The League (a tree is not taken); the Reed (who watch the minders, section 4);
   sap crews everywhere.
 - **Promise.** Learn to read a sick tree as a hunter reads a trail, and follow it to the hand that did it.
-- **A boundary.** The cause of Helstrom's sour spring belongs to the main quest. Many-Root shows the hall's
-  silence about it and never explains it.
+- **A boundary.** The cutting of the roots and the Unbound belong to the main quest. Many-Root's trees fail from
+  causes of their own, and its quests never name the Unbound or the Reed.
 
 ### 3.5 The Marsh Charter
 
@@ -433,7 +361,7 @@ data's own; the best quests will be those hooks made the line's.
   hand. What it settled is told, and found when the player comes back. The enemy is a sect that has made destruction a dogma. The
   hard cases are the kind ones: a chime hung for the dead, a memorial, a grudge.
 - **Friends and enemies.** The Umbriel Witness, their true opposite. The Chainbreakers, half allies. The Sul-Xan.
-  The Unbound Root is their heresy seen from far off.
+  The Unbound are their heresy seen from far off.
 - **Promise.** Walk into the places the dead will not leave, and be the one who ends it.
 
 ### 3.8 The Reed-Sail
@@ -537,8 +465,7 @@ data's own; the best quests will be those hooks made the line's.
   (`topics/guilds-and-orders.md:71`, `:104`), bid for what comes out. The hall's own argument is whether to become
   an institution at all.
 - **What it becomes here.** The seat moves from a guild-like archive to the Agaceph's hall, and the Conclave of
-  Baal, which the data has "long gone from Stormhold" (D barsaebica, Gemin), leaves the line. Gemin and its tablet
-  are the main quest's.
+  Baal, which the data has "long gone from Stormhold" (D barsaebica, Gemin), leaves the line. Gemin is the main quest's.
 - **Friends and enemies.** The Sedge-Wardens, who guard the northern ruins "against looters"; the Marsh Charter;
   the Umbriel Witness, over the College.
 - **Promise.** Go down into the halls Argonians call sick, and bring back what no living reader has seen.
@@ -610,7 +537,7 @@ the Ash-Reed, whose hands; the Witness, a race lost or won against the College b
 
 | Line | Seat | Region | Its kind of drama | First skills |
 |---|---|---|---|---|
-| Main (the Veiled Reed) | a household in Helstrom | Murkwood | a hunt and a spy story | any build, two ways each |
+| Main (the Reed and the Unbound) | no seat: Sedge-Kal Camp to the Root, by the Reed's houses in Helstrom and Fort Swiftmoth | Valley of Storms to Benthic Yobesh | a treasure hunt | any build, two ways each |
 | Chainbreakers | Blackrose | Tulmek Washes | jailbreaks | Lockpicking, Pickpocket, Sneak |
 | Lamp-Bearers | Stormhold | Valley of Storms | investigations | Speech, Sneak, Alchemy |
 | League of Open Water | Soulrest | Cape Percar | one bold hand in hostile country | Speech, Sneak, Restoration |
@@ -647,22 +574,25 @@ player plays, in any order or not at all.
 
 | Act | Ground | Whose it is | What each makes of it |
 |---|---|---|---|
-| I to V | Helstrom | Many-Root's seat; the Waykeepers' second post | The handler's household is not the hall and is not known to it. The minders speak of "the Wardens' boat people" with contempt and no knowledge. The root landing's keeper is the same person in both lines. |
-| I, IV | Jal-Veesa, Nenria, Gemin, Ushaan Camp | The opening region; the Lamp-Bearers' country; later the Archive's | Only the main quest goes into Nenria, Gemin and Ushaan Camp. The Lamp-Bearers hear of pulled ward-stakes and are told it is the reed people's business. |
-| II | Blackrose and the Rose | The Chainbreakers | Both lines pass one gate, kept by one named heir who can be spoken to (a need of the place) and who greets a known Chainbreaker differently. Beyond it the main quest goes down to Lark's cell and the Chainbreakers keep to the yard. The heirs hold the Rose after both lines, whatever is decided of it: what the Rose "becomes" is told, and shown by who stands at the gate. |
-| II, III, IV | Lilmoth, Bell Station, the spires | The Night-Reed and the Umbriel Witness (Lilmoth) | The main quest passes through Lilmoth and speaks once to its retired Shadowscale, who belongs to no line. Bell Station, Thul-Kesh Spire and the Kelp Lantern are the main quest's alone. |
-| III | Fort Swiftmoth | nobody's; Reed-Sail's people know it as a smugglers' cache | Reed-Sail's pilots say the crew at Swiftmoth buys nothing and sells nothing, and keep away. No faction quest goes there. |
-| III | Seafalls | Reed-Sail's coast pilots | The pilot-elder dislikes the preacher and tolerates him. Reed-Sail's quest there concerns a ship, not the sermon. |
-| IV | Aunike Crown | The Waykeepers' fires | The fire-basket on the Crown is the Waykeepers'; the carved stone beside it says nothing to anyone without the Eye. |
-| V | Salt-Tooth Camp, Vesh-Aneel, Hokal-Ush | The Waykeepers' fire at Vesh-Aneel | The fire at Vesh-Aneel is a Waykeeper matter; its guide's knowledge of the crossing is the main quest's, and she stays at her post in both. Dry-Fang Camp and its stolen sap are Many-Root's. |
+| I, II | Helstrom | Many-Root's seat; the Waykeepers' second post | The handler's quiet house is not the hall and is not known to it. The minders speak of "the Wardens' boat people" with contempt and no knowledge. The root landing's keeper is the same person in both lines. |
+| I, II | Jal-Veesa, Nenria, Karsh-Naal Camp, Gemin | The opening region; the Lamp-Bearers' country; later the Archive's | Only the main quest goes into Nenria, Karsh-Naal Camp and Gemin. The Lamp-Bearers hear of a cutters' camp and of a Naga caged, and are told it is the Naga's business. |
+| II | Gideon and Gideon South Watch | The Nisswo's gate city; many-Root's cutting | The main quest buys, steals or takes the glass Eye in the watch tower and touches nothing of Gideon's cutting or the Nisswo's rite. |
+| II | Toklea, Bucalos, Meliton, Vicrium | The Waykeepers' chimes; the Nisswo's range; the Archive's mines | The main quest's work is the town's stolen chimes, Meliton's shrine and inner tomb, and Vicrium's walled workings. The Nisswo's doll at Meliton and the Archive's ruins stay theirs; no line states what the other found (X). |
+| II | Blackrose and the Rose | The Chainbreakers | Both lines pass one gate, kept by one named heir who can be spoken to (a need of the place) and who greets a known Chainbreaker differently. Beyond it the main quest goes down to the masked thief's cell and the Chainbreakers keep to the yard. The heirs hold the Rose after both lines, whatever is decided of it: what the Rose "becomes" is told, and shown by who stands at the gate. |
+| II, III | Bell Station and the sunken spires | The Umbriel Witness dives at Lilmoth | Bell Station, Thul-Kesh, Haxtil-Meht and Echo Deep are the main quest's alone; the Witness keeps to Lilmoth's drowned quarter. |
+| II | Fort Swiftmoth | nobody's; Reed-Sail's people know it as a smugglers' cache | Reed-Sail's pilots say the crew at Swiftmoth buys nothing and sells nothing, and keep away. No faction quest goes there. |
+| II (side) | Mistwatch; Kitsa Burrow; Anutasil; Va-Seeth and Zeshul-Tha Spires; the Kelp Lantern | the League (Cape Percar); the Night-Reed (Althii); the Nisswo (Blackwood); nobody (the spires, the wreck) | Each is a ruin or wreck in a line's region that the line's writer leaves to the main quest's riddle. |
+| III | the Root, the cavern of the guardian | nobody's | Reached only through the door at Echo Deep. |
 
 ### Exclusions
 
-- **One seat, one line**, with two meant exceptions: Helstrom (the main quest's household and Many-Root's hall, which
+- **One seat, one line**, with two meant exceptions: Helstrom (the handler's house and Many-Root's hall, which
   do not know each other) and Lilmoth (the Night-Reed and the Umbriel Witness, who do).
-- **Reserved to the main quest**: Sedge-Kal Camp's barge, Nenria, Vel-Sapha Stand, Gideon South Watch, Lark's cell
-  in the Rose, Bell Station and the Kelp Lantern, Thul-Kesh Spire, Fort Swiftmoth, the stone on Aunike Crown, Gemin,
-  Ushaan Camp, Salt-Tooth Camp, the Lost City. No faction quest is set in them or changes them.
+- **Reserved to the main quest**: Sedge-Kal Camp's barge, Nenria, Vel-Sapha Stand, Karsh-Naal Camp, Gideon South
+  Watch, the masked thief's cell in the Rose, Bucalos, Meliton's shrine and inner tomb, Vicrium, Aphon Signal Tower
+  and Kelp-Mouth Cave, Fort Swiftmoth, Bell Station, the spires (Thul-Kesh, Haxtil-Meht, Va-Seeth, Zeshul-Tha), the
+  Kelp Lantern, Mistwatch, Kitsa Burrow, Anutasil, Gemin, Echo Deep and the Root. No faction quest is set in them or
+  changes them.
 - **Reserved to one line each**: Meris-Keth and Dry-Fang Camp (Many-Root); Fort Gysilla (the Lamp-Bearers' case;
   Reed-Sail's quarrel with its toll is with Truowa's people and does not go inside); the Wreck of the Silt Bride and Coldbrine Mine (Thorn
   Ash-Reed); Gandranen, Sethiral and Anvadas (Sunken Archive); the customs strongroom at Archon (Night-Reed); the
@@ -672,10 +602,10 @@ player plays, in any order or not at all.
   free to a line whose seat or range covers its place, and to the local quests otherwise; the consistency pass
   (nw-05 step 5) settles a hook two writers took.
 - **One timeline.** It is 4E 201. The Root Talk is late. The last serving Shadowscale has just died at Archon, and
-  is found so; everywhere people say the last of them is dead or dying. The young tree at Vel-Sapha is sick, and is
-  called dead only after the main quest's second act: its look does not change, its people stay to mourn it, and its
-  blessing is switched off while the player is far away. No other line states its condition. Nobody
-  outside the main quest knows why Helstrom's spring is sour. No line dates an event outside the lore's spine
+  is found so; everywhere people say the last of them is dead or dying. The young tree at Vel-Sapha is sick, its heart-root
+  cut, and is dead only if the player takes or gives the Eye: its look changes while the player is far away, and its
+  village is empty. Guxal's tree is the same. No other line states their condition. Nobody outside the main quest
+  knows who cuts the roots. No line dates an event outside the lore's spine
   (*state*:662 to :691).
 - **Anyone can die.** A person two lines share (the root landing's keeper, a fort captain, a Vicecanon) is named by
   each line among those it cannot go on without, or each line reads sensibly with them dead.
@@ -691,34 +621,37 @@ walked as the game will be.
 |---|---|---|---|
 | Large settlement | **Jal-Veesa** (town, 46 people) | The Hist pool, the rootworm stop, a market, an Archery trainer; Act I's second place. Stormhold, the region's city, comes in the second slice because of its size. | Cormaris, Journey to Baan Malur (a town with 27 interiors) |
 | Village | **Surkina** (10 people) | A causeway village of Argonian and Dunmer farm families under a reeve, the Stormhold manner in small. Its hook (the pulled causeway stones) is kept for the Lamp-Bearers' first case, so it is built once and used twice. | Left Hand Mine, Skyrim (a village with 4 interiors) |
-| Camp | **Sedge-Kal Camp** (15 people) | Where the game begins: the barge, the burnt huts, the cutters. Its source is a soldiers' camp with no interior, so the barge's hold, the game's first room, must come from another source, and nothing of the source's own style may show (decision 0006). | Military Camp Winterhold Sons, Skyrim |
-| Ruin | **Nenria** (Ayleid) | Act I's dangerous place, sick ground with pulled ward-stakes; Deadly within, so the story keeps the player to its outer part and says so. | Ranmora, Nyhus (an Ayleid ruin with 2 interiors) |
+| Camp | **Sedge-Kal Camp** (15 people) | Where the game begins: the barge, its hold and its gang-master. Its source is a soldiers' camp with no interior, so the barge's hold, the game's first room, must come from another source, and nothing of the source's own style may show (decision 0006). | Military Camp Winterhold Sons, Skyrim |
+| Ruin | **Nenria** (Ayleid) | Quest 2's place, sick ground full of the restless dead; Deadly within, so the way in is a fight, a slip past or a turning by Restoration, and two people say so first. | Ranmora, Nyhus (an Ayleid ruin with 2 interiors) |
 | Cave or wreck | **Tenmal Pits** (a mine; the region has no wreck or cave) | The crystal pit with its walled-off galleries and the vein "that sings at night": the region's delve. | Whistling Mine, Skyrim |
 | Shrine or Hist | the **Hist pool of Jal-Veesa**, and **Vel-Sapha Stand** | The living tree and the dying one, which is the act's point. | Jal-Veesa as above; Riverside Shack, Skyrim (a homestead) |
 | Fort or outsider holding | **Fort Willowmoth** (23 people) | The Wardens as the player first meets them: tolls, a Block trainer, a Dunmer raft held at the gate. | Dawnguard Valley01, Dawnguard (a fort with 4 interiors) |
 
-**The opening act's places**: Sedge-Kal Camp, Jal-Veesa, Nenria, Vel-Sapha Stand and Helstrom. Vel-Sapha Stand lies
+**The opening act's places**: Sedge-Kal Camp, Jal-Veesa, Nenria, Vel-Sapha Stand, Karsh-Naal Camp and Helstrom.
+Vel-Sapha Stand lies
 in Barsaebica, about a mile west of Jal-Veesa by the weir road through Reed-Sill Weir and Ashgate Post (D
-barsaebica, the roads from each). Three small places lie on the act's roads and are not used by it: those two, and
+barsaebica, the roads from each). Karsh-Naal Camp (a tribal camp of 12 people, not yet built) lies in the marsh
+south of Stormhold, on the road toward Helstrom (D valley-of-storms, Karsh-Naal Camp); its source is not yet
+allotted, and it joins the slice. Three small places lie on the act's roads and are not used by it: those two, and
 Urvyn Farm on the track to Nenria. Whether they are built now, so the roads feel whole, or left to nw-11 is the
 owner's call on the slice's size.
 
-**Its size, plainly.** Only one place has ever been drafted, and this slice is seven more (about 120 people who
-all get general talk), with Jal-Veesa's source alone holding 27 interiors. The act needs four of the seven. Fort
+**Its size, plainly.** Only one place has ever been drafted, and this slice is eight more (about 130 people who
+all get general talk), with Jal-Veesa's source alone holding 27 interiors. The act needs five of the eight. Fort
 Willowmoth, Surkina and Tenmal Pits are there only for "one of each kind"; if the slice must shrink, they go
-in that order. The tribeless Naga are Act I's cutters and need their culture row before nw-07 (section 6).
+in that order. The tribeless Naga of Karsh-Naal Camp are Act I's cutters and need their culture row before nw-07 (section 6).
 
 **Helstrom's part.** Helstrom, the one place already drafted (from Black Marsh & Valenwood's Helstrom), is where Act
-I ends and where every later act begins and reports: the Reed's household, and the hub of the rootworm and the
-river boats. It is also Many-Root's seat and the Waykeepers' second post. No main quest after Act I is played out
-in it. Its 58 named people stay as they are; the lines add a handful.
+I ends (quest 5, the handler's quiet house) and the hub of the rootworm and the river boats. It is also Many-Root's
+seat and the Waykeepers' second post. No other main quest is played out in it; Act II reports to the handler there
+until quest 10. Its 58 named people stay as they are; the lines add a handful.
 
 ### The second slice: four faction openings (nw-08)
 
 Four openings, chosen because their seats lie on the one chain of links the player already holds after Act I:
 Stormhold by road from Jal-Veesa, Helstrom by rootworm, Korydon by rootworm from Helstrom, Blackrose by boat from
-Korydon. Built in that order, the province's spine from north to south exists, and the main quest's southern road
-in Act II is built with it.
+Korydon. Built in that order, the province's spine from north to south exists, and the start of the main quest's
+roads in Act II is built with it.
 
 | Line | Opening places | Why first |
 |---|---|---|
@@ -766,30 +699,28 @@ digest's holders so that all fourteen writers start from one map. Rows marked X 
 
 ### To be researched or ruled first, because several lines depend on it
 
-1. **The Lost City.** The main quest's last place does not exist in the data: a drowned, root-grown xanmeer in
-   Murkwood's Lethal ground, reached on foot from Vesh-Aneel, with an outer city, a keeper's hall and an inner
-   chamber where a living root comes through worked stone. It needs a place record, a site, a source and a root we
-   can show from assets we hold, before the main quest's Act V is outlined and well before nw-09 (place-research).
-   The source allotted to the drowned spires (Wajeem-Krona, King of the Murkmire: D benthic-yobesh, Thul-Kesh
-   Spire) shows what it can be built with. **If no such place can be made**, the door is the "sealed spire at
-   [the] bottom" of Echo Deep (D benthic-yobesh, Echo Deep), which the data already holds and the myth of the
-   drowned Hist-land supports; Act V then goes down instead of in, and Vesh-Aneel leaves the main quest.
-2. **The peoples with no culture row**: the tribeless Naga (the main quest from its first act, so before nw-07;
+1. **The Root and the guardian's cavern.** The main quest's last two places do not exist in the data: the cavern
+   beyond the sealed door at Echo Deep, where the guardian waits, and the Root, a chamber among the roots of every
+   tree with a plinth for the Eye. They need a place record, a site, a source and roots we can show from assets we
+   hold, before the main quest's Act III is outlined and well before nw-09 (place-research). The door itself is
+   the "sealed spire at [the] bottom" of Echo Deep (D benthic-yobesh, Echo Deep). The source allotted to the
+   drowned spires (Wajeem-Krona, King of the Murkmire: D benthic-yobesh, Thul-Kesh Spire) shows what it can be built
+   with.
+2. **The peoples with no culture row**: the tribeless Naga (the main quest from its fourth quest, so before nw-07;
    the Waykeepers), the Sarpa (the Marsh Charter), the Sul-Xan (the Nisswo), the Paatru and the Tumnatu. Each needs
    a short row: who they are, what they believe, how they meet a stranger. Lore exists for the Naga and the Sul-Xan (`tribes.md:7` to `:12`; D blackwood,
    faith).
 3. **Fighting where the water is deep.** Skyrim gives no attack while swimming, so every drowned place a quest
-   fights in (the spires, Gemin's lowest hall, the Rose's drowned cells, the drowned quarter) must be built with
+   fights in (the spires, the Wreck of the Pale Harvest, Gemin's flooded vaults, the Rose's drowned cells, the drowned
+   quarter) must be built with
    floors to stand on behind its dive, and its guardians on those floors, not in the water outside. The swim itself
    must be passable without a fight, and breath must be had by any race: the sap of Lilmoth's young tree and the
-   shrine on Okhu-Thteel Spire both give it (D province, Every place). The Kelp Lantern is "a sealed shell"; its
-   hatch is opened as a locked box from outside and nobody goes in.
+   shrine on Okhu-Thteel Spire both give it (D province, Every place). A wreck's chest is opened where the wreck lies.
 4. **Records that must change before a story can stand on them.** The stories need a person who can be spoken to
-   at three places their records make hostile on sight: the Rose's gate (two lines), Ushaan Camp's edge (the one
-   who wants out) and Nenria's approach (the youth). Nenria's dead must lie behind its outer part, not at the arch
-   that is the way in. Three sources are too thin for what is asked and need another allotted or the need refused:
+   at two places their records make hostile on sight: the Rose's gate (two lines) and the cage at Karsh-Naal Camp
+   (the Naga held there). Three sources are too thin for what is asked and need another allotted or the need refused:
    the Rose (one interior, asked for a gate, a yard and lower levels), Thorn (one interior, a seat) and Giovesse (no
-   interior, a seat's hut). If the Rose cannot have lower levels, Lark's leavings are in the old warden's office,
+   interior, a seat's hut). If the Rose cannot have lower levels, the masked thief's cell is the old warden's office,
    which its record already promises.
 5. **Lilmoth's drowned quarter**: what of it can be entered, since a seat and its dives lean on it. Xhon-Mehl's
    shrine is a note of Lilmoth's, not a place, until this is ruled.
@@ -809,8 +740,8 @@ digest's holders so that all fourteen writers start from one map. Rows marked X 
   Lamp-Bearers name Stormhold's Vicecanons, the Ash-Reed Thorn's, the Chainbreakers the island core and the
   raj-kaal, the Shadowscales Archon's authority, the Night-Reed Lilmoth's council, the League Soulrest's, Reed-Sail
   the elder of Uluo, the Marsh Charter the captain of Fort Chalkmoth, the Waykeepers Korydon's elders, the Archive
-  Yulca's readers, Many-Root the minders of the trees it visits). The main quest names the pilot-elder of Seafalls,
-  the root-herald of Jal-Veesa and the retired Shadowscale of Lilmoth; the Lamp-Bearers the captain of Fort
+  Yulca's readers, Many-Root the minders of the trees it visits). The main quest names the gang-master of Sedge-Kal Camp,
+  the root-herald of Jal-Veesa (Vosh-Leera) and the tree-minder of Vel-Sapha Stand; the Lamp-Bearers the captain of Fort
   Gysilla.
 - **Belief** where a culture's row is silent, from the places' faith notes: Stormhold keeps "the town-square Hist,
   the grave-stake tradition and Dunmer ancestor stones"; Soulrest "Sithis and the Hist through inland trees; a few
@@ -821,7 +752,7 @@ digest's holders so that all fourteen writers start from one map. Rows marked X 
 - **Places with no culture** that are ruins, wrecks or camps: they belong to the dead people or the band their
   record names.
 - **Not free**: a new place, a new people, a ruler above a region, a tree where none is listed, an event with a
-  date, or anything about the Root, the Eye or the Unbound Root outside the main quest.
+  date, or anything about the Root, the Eye, the Reed's dreamers or the Unbound outside the main quest.
 
 ## 7. For each line's writer
 
@@ -829,14 +760,13 @@ Each brief is handed over with this plan. All of them: write with `story-line`; 
 places by their records; end with the needs of places; keep paperwork out of the play; every quest something daring
 done with named skills.
 
-**The main quest (The Eye and the Root).** Seat: a household in Helstrom; second house Fort Swiftmoth. Five acts
-on the ground of section 2: north, three spokes, the east coast, the ridge and the north again, the heart. Take up
-the burned reed, the lights at Nenria, the dying sapling, the twice-sold mask, the Rose's own hook, the Kelp
-Lantern, the spire and its ghost, Swiftmoth's cellar, the Naga who wants out, the feather armband. Honour the
-reserved places and every row of "Where the main quest passes through". Two ways through every quest; the danger
-rule of section 2; the three endings as written there. Reports to the handler end with Act III. Avoid: reports,
-files, councils; any quest played out inside Helstrom after Act I; a fight in deep water; four reading-quests in a
-row in Act IV (the Crown is a climb past the Naga, Gemin a delve, Ushaan a way into a camp).
+**The main quest (The Eye and the Root).** The plot is [main-plot](main-plot.md); the writer builds each quest from
+it, as an outline in the story-line form. Places and regions are those of section 2. The Reed's houses are the
+handler's quiet house in Helstrom and Fort Swiftmoth. Honour the reserved places and every row of "Where the main
+quest passes through". Two ways through every quest, on different skills; the third ending closed if the player
+fights Cuts-the-Old-Knot. The root-herald of Jal-Veesa is Vosh-Leera. Avoid: reports, files, councils; any other
+quest played out inside Helstrom; a fight in deep water; the main quest's claims about the Root, the Eye or the
+Unbound in any other line.
 
 **The Chainbreakers.** Seat: Blackrose. Re-home the written story on the new Blackrose, the lake villages and the
 Rose's gate. Hooks: Lujei Ferry's hidden passenger, Sheh-Ara, Khariton, Mereweather. Crossings: the saltrice Owings
@@ -857,9 +787,9 @@ tribe's own trial. Avoid: petitions, registers, votes and charters as play; lead
 a string of deliveries; making the Mine-Burners villains.
 
 **Many-Root.** Seat: the tree-minders' hall, Helstrom. Hooks: Tsonac, Guxal, Yuva-Goli, Gideon's cutting, Uluo's
-pool, Ixu-Maan, Wattle-Pool's honey, Meris-Keth, Dry-Fang's captive. Crossings: the League; the main quest's household next door,
+pool, Ixu-Maan, Wattle-Pool's honey, Meris-Keth, Dry-Fang's captive. Crossings: the League; the handler's house next door,
 unknown to the hall. Alchemy, Restoration, Archery, Sneak. One tree, one hidden cause tracked into a dangerous place, one
-costly decision per quest. Avoid: explaining the sour spring; Vel-Sapha; Ushaan and Salt-Tooth camps; a council as
+costly decision per quest. Avoid: naming the Unbound or the Reed; Vel-Sapha; Karsh-Naal Camp; a council as
 the climax; a carried jar as the whole of a quest.
 
 **The Marsh Charter.** Seat: Noota Nara, under Fort Chalkmoth; working hub Inoja. Hooks: the fire salts and the
@@ -877,7 +807,7 @@ ledger as the prize; the Rose; a finale that is a fight.
 at Umpholo, Mnemosa, then Nyrath-Ven's ashes, Ashiit Den, Reknaa-iit. Crossing: Lilmoth's grave, in talk only.
 Speech, Restoration, Mysticism. Rites on land among the dead, each ended by something the player destroys, sinks or
 stakes; what it settled is found on return. The Sul-Xan as the sect. Avoid: sermons as play, a day of following
-anyone, hearings; a ghost that vanishes in view; any word on the Unbound Root beyond rumour.
+anyone, hearings; a ghost that vanishes in view; any word on the Unbound beyond rumour.
 
 **Reed-Sail.** Seat: Uluo. Hooks: the saltrice run, Reedmoth's chain, Truowa's toll quarrel, both Skeith camps,
 Rainbreaker's quartermaster, the Brindle Gull, the Stormwidow's key, Seafalls. Crossings: the bought lights; the
@@ -886,15 +816,14 @@ caches, a camp chosen. Avoid: a moving boat, a storm, a timed rescue, an electio
 inside of Fort Gysilla.
 
 **The Waykeepers.** Seat: Korydon; second post Helstrom's root landing. Hooks: every unlit or unowned light in
-section 3.9, the Naga at the pass, the chime quarrel. Crossings: the bought lights; Aunike Crown's fire-basket
-(not its marks); Vesh-Aneel's fire (not its guide). Sneak, Archery, Illusion. Expeditions to posts where the wrong thing is
+section 3.9, the Naga at the pass, the chime quarrel. Crossings: the bought lights. Sneak, Archery, Illusion. Expeditions to posts where the wrong thing is
 already there to find. Avoid: showing the worm; anything lit, answered or put out in view; a step that needs night;
 a quest inside the root tunnels, which have no place; the cult.
 
 **The Shadowscales.** Seat: the sealed school, Archon. Hooks: the old ku-vastei, found dead; the privateers'
 prize; the pilot of the Tidewarden's logbook. Crossing: the stolen clutches. Sneak, One-Handed, Archery, Illusion,
 Alchemy. Contracts that ask who may order them. Avoid: hearings; Skeith Isle; the retired Shadowscale who trains at
-Lilmoth, who is the main quest's to name and will join nothing.
+Lilmoth, who will join nothing.
 
 **The Sunken Archive.** Seat: the book hall, Yulca. Hooks: the raft-prow, Sethiral, Anvadas, Joxhi, the mission
 lamp, the unfound ruin, Gandranen. Crossings: whose ruin (the Sedge-Wardens); the Charter's guards; the College,
@@ -914,31 +843,15 @@ Five or six quests. Avoid: anyone who remembers 4E 48; archives and publication 
 ## Needs of places
 
 What the stories above already rely on that the place records do not promise. Each is named as a player would call
-it on sight. The line stories will add to this table; nw-05 step 6 writes every row onto its place as a promise.
+it on sight. The line stories will add to this table; nw-05 step 6 writes every row onto its place as a promise. The main
+quest's needs are in the plot's own table, [main-plot](main-plot.md), not here.
 
 | Place | The thing needed | Line |
 |---|---|---|
-| Sedge-Kal Camp | a barge moored at the landing, with a hold a person can stand in and a door | Main |
-| Sedge-Kal Camp | two or three burnt huts beside the standing ones | Main |
-| Jal-Veesa | a house for the root-herald | Main |
-| Nenria | an outer part, before the dead and out of their reach, where a few people camp, with a chest | Main |
-| Vel-Sapha Stand | the young tree's roots showing at its foot, cut; a young Hist that reads as sickly from the first | Main |
-| Helstrom | a boatman's house that is the handler's | Main |
 | Helstrom | a place in the tree-minders' hall where the Many-Root's speaker stands | Many-Root |
 | Helstrom | a keeper's post at the root landing | Waykeepers |
-| Gideon | a relic dealer's stall or shop | Main |
-| Helstrom | a spring that people can be seen not to use | Main |
-| Blackrose Prison | a cell below the yard with a scratched wall, on a floor that can be stood on | Main |
-| Blackrose Prison | a gate that locks, a gatehouse and one of the heirs at it who speaks | Chainbreakers, Main |
-| Bell Station | a diver's locker or berth where a key is kept | Main |
-| Thul-Kesh Spire | a dry chamber behind the sealed door, with a stone setting for a jewel; the ghost on a floor, not in open water | Main |
-| Seafalls | a platform where a speaker and a few listeners stand; a lodging with a locked chest | Main |
-| Fort Swiftmoth | rooms behind the locked cellar door, with pallets | Main |
-| Aunike Crown | a carved standing stone by the fire-basket | Main |
-| Ushaan Camp | a stockade gate that locks, and a place outside it where one of the band can be met | Main |
-| Hokal-Ush | the feather-trader's stock to include one armband of the pale down, a worn thing that hides its wearer from the forest's beasts | Main |
+| Blackrose Prison | a gate that locks, a gatehouse and one of the heirs at it who speaks | Chainbreakers |
 | Dry-Fang Camp | a pen or hut where a captive is kept | Many-Root |
-| The Lost City | the whole place (section 6) | Main |
 | Stormhold | a house for the Lamp-Bearers near the Vicecanons' | Lamp-Bearers |
 | Korydon | a keepers' house by the root pool, with a great chime | Waykeepers |
 | Blackrose | a plain house on the north side | Chainbreakers |

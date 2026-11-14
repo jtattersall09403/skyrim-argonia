@@ -1,5 +1,12 @@
 # The Rootworm Waykeepers: the line's story
 
+**Status: to be rewritten.** This story rests on facts of the main quest's earlier plot that [the plot](main-plot.md) no longer holds; it is to be rewritten to the plot and is not yet. What in it is untrue, by section:
+
+- Section 2 (The line's arc): WK03 and WK06 treat the carved stone on Aunike Crown and the lizard-keepers' path from Nacydes as the main quest's, but the plot has no carved stone there and does not use Aunike Crown or the path.
+- Section 4 (What each quest needs of its places): it says the carved stone and the path from Nacydes are the main quest's needs of the place, but the plot's table of needs holds neither.
+- Section 6 (For the other lines): it speaks of the spring, the handler's household and the Root Talk at Helstrom, but the plot's Helstrom holds only the handler Nesh-Deeka's quiet house and the Unbound go-between's lodging, with no spring and no Root Talk.
+- Section 6 (For the other lines): it places a player on Aunike Crown in MQ11, but the plot's eleventh quest is The Signal Tower on Aphon Isle.
+
 The story of the Waykeepers' six quests, written inside the quest ceiling
 ([quest-form](../../../../docs/design/quest-form.md)), the owner's bar ([owner-bar](../../owner-bar.md)) and the
 province plan ([province-plan](province-plan.md), section 3.9, its crossings in section 4 and the lead's rulings in

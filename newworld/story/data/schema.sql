@@ -700,10 +700,11 @@ CREATE TABLE "give_delivery" (
 -- ---------------------------------------------------------------------------------------------------------
 -- What the stories need of a place (docs/design/place-studio.md, "What the stories need of a place")
 -- ---------------------------------------------------------------------------------------------------------
--- Sources: newworld/sources/needs/<place_id>.json (written by agents: `python -m tools.places needs`) and
--- <place_id>.changed.jsonl (the owner's changes, written by the studio); tools/newworld/needsdb.py loads them.
--- A need is a thing a story asks of a place, beside the place record's promises (place_give, give_delivery). It is
--- met only from the player's side: the thing exists in the place files and a player would know it for what it is.
+-- The needs themselves are the line stories' needs tables, read when asked for (tools/places/needs.py). These tables
+-- hold the place's side: newworld/sources/needs/<place_id>.json (each judgement of a need from the player's side,
+-- keyed to the story rows it judges) and <place_id>.changed.jsonl (the owner's changes, written by the studio);
+-- tools/newworld/needsdb.py loads them. A need is met only from the player's side: the thing exists in the place
+-- files and a player would know it for what it is.
 
 -- The story lines, named for a reader who knows none of them.
 CREATE TABLE "story_line" (
@@ -721,11 +722,8 @@ CREATE TABLE "need_sign" (
 CREATE TABLE "place_need" (
   "place_id" TEXT NOT NULL REFERENCES "place"("id"),
   "seq" INTEGER NOT NULL,
-  "thing" TEXT NOT NULL,                 -- what a player would call it on sight
+  "thing" TEXT NOT NULL,                 -- the story row's thing as judged: what a player would call it on sight
   "story_line_id" TEXT NOT NULL REFERENCES "story_line"("id"),
-  "quests" TEXT NOT NULL,                -- which quests, in words: 'the fourth main quest, The Sour Spring'
-  "does" TEXT NOT NULL,                  -- what the player does there, one sentence that assumes no story
-  "firmness" TEXT NOT NULL CHECK ("firmness" IN ('firm', 'first-draft')),
   "rests_space" TEXT,                    -- what in the place files it rests on: a space (a room), and/or
   "rests_ref_id" TEXT,                   --   a ref of that space (outside: 'exterior'), or
   "rests_person_id" TEXT REFERENCES "person"("id"),   --   a person
@@ -753,26 +751,13 @@ CREATE TABLE "place_need_sign" (
   FOREIGN KEY ("place_id", "need_seq") REFERENCES "place_need"("place_id", "seq")
 );
 
--- Where in the line stories the need was asked (file:line); one need may gather several stories' rows.
+-- The story rows a judgement judges, by key (tools/places/needs.py row_key); one may gather several stories' rows.
 CREATE TABLE "place_need_story" (
   "place_id" TEXT NOT NULL,
   "need_seq" INTEGER NOT NULL,
-  "story" TEXT NOT NULL,
+  "story" TEXT NOT NULL,                 -- the row's key
   PRIMARY KEY ("place_id", "need_seq", "story"),
   FOREIGN KEY ("place_id", "need_seq") REFERENCES "place_need"("place_id", "seq")
-);
-
--- What a story uses a person of the place for.
-CREATE TABLE "person_need" (
-  "person_id" TEXT NOT NULL REFERENCES "person"("id"),
-  "seq" INTEGER NOT NULL,
-  "story_line_id" TEXT NOT NULL REFERENCES "story_line"("id"),
-  "quests" TEXT NOT NULL,
-  "what_for" TEXT NOT NULL,              -- one sentence that assumes no story
-  "keep" TEXT NOT NULL CHECK ("keep" IN ('reachable', 'alive', 'reachable and alive')),
-  "firmness" TEXT NOT NULL CHECK ("firmness" IN ('firm', 'first-draft')),
-  "story" TEXT NOT NULL,                 -- file:line
-  PRIMARY KEY ("person_id", "seq")
 );
 
 -- The owner's change to something a need rests on, made in the studio after its warning: the story changes to fit.

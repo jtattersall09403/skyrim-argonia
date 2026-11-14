@@ -13,244 +13,222 @@
 
 ## 55. The principal cast (C1)
 
-Supersedes the summary table in [30-main-quest.md](30-main-quest.md) §19. Every
-entry: **want · contradiction · quirk · lore anchor · fail-forward**.
+The people of the main quest, [The Eye and the Root](lines/main-plot.md), and the few principals who stand beside
+it. The plot is the truth for everyone in the first three groups. Every entry: **where they stand · want · hide ·
+the quests that use them · without them**. Anyone can die. A person the main line cannot go on without gets the
+thread of prophecy message (our version of Morrowind's); anyone else's death changes what is said and closes only
+their own side quest. The Reed's ranks are Reed-Hand, Listener, Watcher, Warden's Ear and Reed-Master. A role the
+plot gives no name stays a role.
 
-### The Veiled Reed
+### The Reed
 
-**Nesh-Deeka** — field handler. *Jel name. Alten Corimont, mid-40s.*
-The game's Caius Cosades: the one personal relationship in an institutional
-cast, and the player's feelings about the Reed will largely *be* their feelings
-about her. **And like Caius, she is removed at the midpoint** (owner-approved
-2026-08-26): her record alterations surface in the MQ20 evidence,
-Never-Writes-Twice files the honest report, and she is purged — the player can
-later free, exonerate, spring or abandon her, and her fate colours the ending.
-- **Want**: to be the person who noticed. She joined from a harbour clerkship
-  because she found a discrepancy and could not leave it alone.
-- **Contradiction**: believes records expose power, and alters records to protect
-  people — without seeing that this is her Director's crime at a smaller scale.
-- **Quirk**: she reconciles other people's ledgers, unasked, for free, in taverns,
-  because it is how she thinks. She keeps three feral **Corimont Mouth-Plovers**
-  (canon: fang-cleaning birds kept by *high-status* Argonians) which is a joke
-  the city makes about her and which she enjoys.
-- **Against the cliché**: a spy handler who is bad at lying to your face and says
-  so — *"I extend the claw of welcome. I am also not telling you two things."*
-  Her honesty about withholding is itself a technique she learned from her
-  Director, and the player should eventually work that out.
-- **Lore**: Alten Corimont's principled neutrality with a price list; the state's
-  working offices at Stormhold.
-- **Fail-forward**: her case files and her flat survive her; the ledgers are
-  legible.
+**Vosh-Leera** — root-herald of Jal-Veesa, a Sedge-Warden town. *Jel name.*
+- **Stands**: brings the player into the Reed. She carried the order that struck the player's name from Dralin's
+  roll, and she is the first Reed face the player knows.
+- **Want**: the trees healed; her town left alone.
+- **Hide**: she struck the name on the Reed's order. She has never asked what the Reed does with what she tells it.
+- **Quests**: 2 The Weeping Tree (she tells the player of the Reed and gives the moss errand), 3 The First Dream (the
+  cup of sap), 5 The Handler (she sends the player to Helstrom). After quest 5 she gives the Mistwatch riddle, a
+  side quest whose reward is an amulet that turns most of a lightning strike.
+- **Without her**: if she dies before quest 5, the thread message sounds, because no one else sends the player to
+  Helstrom. After quest 5 her death closes only the Mistwatch riddle.
 
-**Holds-the-Reed** — Director of the Veiled Reed. *Chosen translated name.
-Gideon-born, elderly, frail, personally kind.*
-- **Want**: to finish proving something that cannot be finished.
-- **Contradiction**: he is **lukiul** — hatched outside Black Marsh, unable to
-  hear the Hist — and he directs the intelligence service of the nativist
-  successor state whose predecessor coined the slur for people like him. Fifty
-  years of loyalty tests he set himself. He classifies dissenters because he has
-  spent his life being classified.
-- **Quirk**: he asks agents to describe what a Hist *sounded* like, and listens
-  the way a man listens to a letter from home. He has never pretended to hear one.
-- **Discoverable**: the Gideon civic registry still holds the name he was entered
-  under. Finding it is optional and changes nothing officially; it changes every
-  conversation afterwards.
-- **Lore**: lukiul as An-Xileel coinage; Gideon's Lukiul majority killed by the
-  state's own weapon in 4E 48; Hist-less Argonians cannot hear the Hist at all.
-- **Fail-forward**: a successor Archwarden; his private file survives either way.
+**Nesh-Deeka** — the player's Reed handler in Helstrom, in a quiet house. *Jel name.*
+- **Stands**: makes the player a Reed-Hand, tells them what the Eye is and what it can do, and takes their reports
+  after each find of the first half of Act II. After quest 10 the player passes to Never-Writes-Twice.
+- **Want**: the cutting stopped; the Eye in the Reed's hands.
+- **Hide**: she always knows a little more than she should about where the Unbound have been. Asked how, she says
+  "we listen" and changes the subject. The answer is the dreamers in the cellars.
+- **Quests**: 5 The Handler, and the reports after 6 to 9.
+- **Without her**: if she dies before quest 10, the thread message sounds, because the Reed's trust and the Eye's
+  meaning pass through her.
 
-**Never-Writes-Twice** — Reed hardliner, the player's institutional rival, and
-**acting handler after Nesh-Deeka's purge**. *Translated name; it means she
-never revises a report.* **New C1** (the plan had an unnamed "Reed hardliner"
-in MQ25 only; she now runs MQ03→MQ31).
-- **Want**: an honest service.
-- **Contradiction, and the point of her**: she is the only officer in the Reed who
-  files truthful reports, and this makes her the player's most dangerous enemy.
-  She correctly identifies the player as an uncontrolled security risk — because
-  they are. Nesh-Deeka is sympathetic *because* she lies. The player should find
-  that uncomfortable and should never be given a clean way out of it.
-- **Quirk**: she reads her own reports aloud once before filing them, to hear
-  whether they sound like something she would say under oath.
-- **Relationship**: Nemesis and foil. **Never write her as corrupt.** It is her
-  honest report that destroys Nesh-Deeka (MQ20), and from MQ22 the player's own
-  reports land on her desk. On cult-allied paths she leads the Reed expedition
-  and is **the named final opponent at the sanctuary** — talk her down with
-  evidence she cannot refute, or fight the most incorruptible person in the
-  game.
-- **Fail-forward**: if killed or disgraced she is replaced by someone worse and
-  less scrupulous, and at least one NPC says so.
+**Never-Writes-Twice** — the Reed's officer who takes the player on after the handler. *Translated name.*
+- **Stands**: takes the player at quest 10, makes them a Listener, tells them how Lilmoth's mad tree brought Umbriel
+  down, and makes them a Warden's Ear at quest 16. She sends them to the door.
+- **Want**: that no tree ever turns on the marsh again.
+- **Hide**: she runs the cellars and believes they are worth what they cost. The player learns it at the door, from
+  Cuts-the-Old-Knot.
+- **Quests**: 10 Down into Vicrium, the reports after 11 to 15, and 16 The Deepest Tower.
+- **Without her**: if she dies from quest 10 to quest 16, the thread message sounds. After quest 16 her death
+  changes only the Reed's tone in the endings.
+- **Lore**: the Reed's reason is Umbriel in 4E 48 (`topics/umbriel.md:26-29`).
 
-**Spills-The-Ink** — Reed records clerk, early 20s. *Translated name given as a
-joke by an office he cannot leave; it stuck three years ago.* **New C1.**
-- **Want**: to be sent somewhere.
-- **The arc**: he idolises the player and is poor at fieldwork. **He changes to
-  match the player's conduct**, with no choice menu anywhere: model deceit and he
-  becomes an efficient, hollow operator; model restraint and he is the
-  institutional inheritor the reform ending needs. He is the branch-state model's
-  strongest single use, and he is the only character who visibly *ages* across the
-  game.
-- **Quirk**: he practises Nesh-Deeka's turns of phrase, badly, in front of the
-  player, who is the only person who will not tell him to stop.
-- **Fail-forward**: if he dies, the epilogue's reform variant loses its named
-  inheritor and gains a document instead — which is, deliberately, worse.
+**The Reed-Master** — a rank, held by no one when the plot opens. The player takes it in the Use ending, with the
+upper keep of Fort Swiftmoth.
+
+**The Reed gaoler of Fort Swiftmoth** — a role, at the foot of the cellar stair (quest 12).
+- **Stands**: stops the player at the cellar door and speaks first: the cellar is closed to them.
+- **Hide**: what is behind the door, the dreamers whose moans the player hears.
+- **Without him**: not needed. If he dies, the player still hears the moaning at the door.
+
+**The dreamers** — the people locked in the cellars of the Reed's forts, fed sap and made to tell their dreams. A
+role, never met as people until the Take and Give endings open the cellars. Cuts-the-Old-Knot was one for nine years.
+
+### The Unbound
+
+**Cuts-the-Old-Knot** — leader of the Unbound, unseen until the door. *Translated name.*
+- **Stands**: gets to the door at Echo Deep first, with no seal-stones, and speaks first. She was a dreamer in the
+  cellar of Fort Swiftmoth for nine years until she found a way out.
+- **Want**: the Root cut so that no dreamer can ever see through the trees again, which ends the Reed's power. She
+  does not want the trees dead. She accepts that some may die alone once parted from the rest.
+- **Hide**: her people's knives are killing trees, and her cure may kill more. She drains sap to brew a draught
+  strong enough to kill the Root's guardian.
+- **Quests**: 17 Echo Deep (fought, or believed), 18 The Guardian (a battlemage at the player's side), 19 The Eye
+  (the Give ending is open only if she is alive).
+- **Without her**: not needed. If she dies in quest 17 the player goes on alone, her spell tomes, robes, staff and
+  draughts are the loot, and the Give ending is closed. In the Use ending the Eye's power kills her through the
+  sap she drank.
+- **Lore**: the Eye and the Root are our extrapolation (`eye-of-argonia.md:6-8`, `topics/hist-and-sap.md:154`).
+
+**Ennodius Vanin, the Collector** — an Imperial relic-hunter, twenty years in the hunt for the Eye.
+- **Stands**: wants the Eye for himself. He reaches the Gideon cache first and leaves the player a courteous note
+  (quest 6). He sells what he learns to whoever pays, the Unbound among them.
+- **Want**: the Eye.
+- **Hide**: he deals with both sides. His hired men fight an Unbound scout over a cache in Kelp-Mouth Cave
+  (quest 11).
+- **Quests**: 6, 11 and 14, where he bids for the thief's stone and can be outbid, robbed, killed or left alone. Left
+  alive in quest 14, he gives the Kelp Lantern riddle: a wreck in Benthic Yobesh and a blade that bites deeper into
+  the guardian.
+- **Without him**: not needed. His death closes the Kelp Lantern riddle.
+
+**Sesk** — a Naga cutter of the Unbound, caged at Karsh-Naal Camp for trying to leave.
+- **Stands**: the source the player needs in quest 4. She names the Unbound and their leader, and says the sap is for
+  "the Eye".
+- **Want**: out, with the price of a boat.
+- **Hide**: she cut roots with her own hands.
+- **Quests**: 4 The Cutters' Camp. If freed, she gives the Kitsa Burrow riddle, whose reward is scrolls of a
+  paralysing spell.
+- **Without her**: if she is killed before she names the Unbound, the thread message sounds. Once she has spoken,
+  her death closes only the Kitsa Burrow riddle.
+
+**The Unbound go-between in Helstrom** — a role, lodging in the city with a jar of stolen sap (quest 5). The jar is
+lifted from his pack, bought or won from him and his hired men. He is met once, and his death changes nothing.
+
+**The spared cutter** — a role: an Unbound cutter left alive in Meliton (quest 9). The cutter gives the Anutasil
+riddle, whose reward is a quiver of arrows that slow what they strike. If killed, only that riddle is lost.
+
+**The dying Unbound scout** — a role, in Kelp-Mouth Cave (quest 11). He tells the player to ask what moans in the
+cellar of Fort Swiftmoth. If he is killed first, the stone chart still points the player on.
+
+### The people of the road
+
+**Dralin Uveran** — gang-master of the reed-cutters at Sedge-Kal Camp, in the Valley of Storms. *Dunmeri name.*
+- **Stands**: calls the player out of the barge's hold and frees them (quest 1). He does not know why the order came.
+- **Want**: the player's name crossed off his roll. He is sour about losing a pair of hands.
+- **Hide**: he owes the player the things they came with, locked in his strongbox, and has "mislaid" the key. It can
+  be lifted from his belt, the box picked or Dralin talked round.
+- **Quests**: 1 Struck Off.
+- **Without him**: if he dies before he frees the player, the thread message sounds, because no one else strikes the
+  name. After quest 1 he changes nothing.
+
+**Heem-Jasa** — tree-minder of Vel-Sapha Stand, a Root-Folk outpost in Barsaebica. *Jel name.*
+- **Stands**: asks the player whether her tree will live (quest 3). The player tells her the truth or a comfort.
+- **Want**: her tree to live.
+- **Hide**: nothing. The truth may be the worst news she has had. After the Take or Give ending the tree and her
+  village are dead when the player next comes.
+- **Quests**: 3 The First Dream; the Take and Give endings.
+- **Without her**: not needed. If she dies, quest 3 ends at the cut root and its jars.
+
+**The tree-minder of Jal-Veesa** — a role: the minder of the sick town tree, who needs the moss from Nenria
+(quest 2). If killed, the player still gets the tree's blessing by taking the moss to the tree.
+
+**The Toklea elder** — a role: the Chime-Keepers' elder of Toklea, in the Tulmek Washes (quest 8). She will say where
+the chime came from once the town's stolen chimes are back from the bandit nest at Bucalos. After quest 8 she gives
+the Va-Seeth Spire riddle, whose reward is a shield that soaks up lightning as magicka.
+- **Without her**: if she dies before she names Meliton, the thread message sounds. After that, only the Va-Seeth
+  riddle is lost.
+
+**The ghost priest at Thul-Kesh Spire** — a role: a priest of the old kings, met in the dry chamber before the door
+(quest 13). He says a seal-stone belongs in each socket and names where each was taken: a thief's cell, a flooded
+vault and the deepest tower.
+- **Without him**: the thread message sounds if he is destroyed before he speaks.
+
+**The Bell Station divers** — a role: the divers of Benthic Yobesh who show the player the way down to the marked
+tower (quest 13). After quest 13 one of them gives the Zeshul-Tha Spire riddle, whose reward is potions that heal
+burns from lightning quickly. A diver's death closes only that riddle.
+
+**The Vicrium foreman** — a role: holds the key to the walled Velothi workings (quest 10). It is lifted, bought or
+talked out of him, or the player goes round by the flooded sump. His death changes nothing.
+
+**The Gideon dealer** — a role: sells a glass Eye (quest 6). Seen once. His death changes nothing.
+
+**The drowned captain of the *Pale Harvest*** — a role, a body at the wreck (quest 7) with the key to the chest.
+
+**The masked thief** — a role, long dead in the Rose's cells (quest 14), with the first stone.
 
 ### Helstrom and the Hist
 
 **Ei-Tuja, "the Third Answer"** — Nisswo interpreter. *Jel name.*
-(Renamed from *Speaks-in-Reeds*: reed imagery collision, per
-[35-cast.md](35-cast.md) §54.)
 - **Want**: for the plural tradition to survive a century that wants answers.
-- **Contradiction**: he preaches a different sermon in every city and means all of
-  them; he also enjoys the influence ambiguity gives him, and knows it.
-- **Quirk**: he sculpts in mud and sand while he talks and destroys it at the end
-  — canon Nisswo practice (making art and then unmaking it). Every important
-  conversation with him happens over something being built that will not survive
-  the scene. One prop, one swap, enormous character.
-- **Register**: the cast's comic voice. He is genuinely funny and his jokes are
-  load-bearing theology. He is also the one who names the Unbound Root's error in
-  Argonian terms — that severance is *shunatei*, holding on to an injury so
-  tightly you would destroy the thing that caused it. That speech is his.
-- **Fail-forward**: three of his students carry different halves of his position,
-  which is exactly what he would have wanted and he would say so.
+- **Contradiction**: he preaches a different sermon in every city and means all of them; he also enjoys the
+  influence ambiguity gives him, and knows it.
+- **Quirk**: he sculpts in mud and sand while he talks and destroys it at the end, as canon Nisswo do (making art and
+  then unmaking it).
+- **Register**: the cast's comic voice. His jokes are load-bearing theology. He names the Unbound's error in
+  Argonian terms: cutting the Root is *shunatei*, holding on to an injury so tightly you would destroy the thing that
+  caused it.
+- **Quests**: the Nisswo line (§56). No main quest needs him.
+- **Without him**: three of his students carry different halves of his position.
 
-**Kaska-Meen** — Helstrom Tree-Minder. *Jel name. Early 30s — the youngest senior
-figure in the province.* (Renamed from *Moss-Beneath-Stars*, per
-[35-cast.md](35-cast.md) §54.)
+**Kaska-Meen** — Helstrom Tree-Minder. *Jel name. Early 30s, the youngest senior figure in the province.*
 - **Want**: to not be the reason something ancient ends on her watch.
-- **Contradiction**: she inherited the post early when her predecessor died, is
-  demonstrably excellent at it, is resented for her age, and overcompensates by
-  being immovable. She will override individuals for the collective and is
-  sometimes right to.
-- **Quirk**: she keeps her predecessor's **grave-stake** (canon *xul-vaat*, carved
-  with the dead one's entire life) in her own house and reads it when she cannot
-  decide — consulting a dead woman's biography as an oracle.
-- **Lore**: tree-minder as default arbitrator; grave-stakes; the Helstrom assembly.
-- **Fail-forward**: the stake survives her and can be read by anyone.
+- **Contradiction**: she inherited the post early, is excellent at it, is resented for her age and overcompensates by
+  being immovable. She will override individuals for the collective and is sometimes right to.
+- **Quirk**: she keeps her predecessor's **grave-stake** (canon *xul-vaat*, carved with the dead one's entire life)
+  in her own house and reads it when she cannot decide.
+- **Quests**: none of the nineteen needs her.
+- **Without her**: the stake survives her and can be read by anyone.
+- **Lore**: tree-minder as arbitrator; grave-stakes (`topics/hist-and-sap.md`).
 
-**Sings-Over-Stone** — Helstrom archivist. *Translated name. Very old, physically
-enormous, substantially deaf, a **jekka-wat** (canon: an Argonian who tracks time
-at all).*
+**Sings-Over-Stone** — Helstrom archivist. *Translated name. Very old, enormous, substantially deaf, a **jekka-wat**
+(canon: an Argonian who tracks time at all).*
 - **Want**: to be left alone with the dates.
-- **Contradiction**: he is the world's leading authority on the Eye of Argonia and
-  believes the entire treasure hunt is a category error — the Eye's importance is
-  a fact about people, not about the gem. He is largely correct and it does not
-  help anybody.
-- **Quirk**: he can date any document by its idiom in three seconds and cannot
-  stop correcting people, including in the middle of other people's emergencies.
-  His deafness plus his pedantry is the archive's comic register and is
-  *mechanically load-bearing*: he is how the player disambiguates the six
-  contradictory Eye accounts.
-- **Fail-forward**: his catalogue is complete and legible; his marginalia are
-  better than the catalogue.
-
-### The Unbound Root
-
-**Opens-the-Last-Door / "the Collector"** — recruiter and philosopher.
-*Translated name; the Collector is a chosen alias.* Former Miredancer
-**sap-speaker**.
-- **Want**: for no one else to give what he gave.
-- **The body is the argument** (`CANON_EXPLICIT` mechanism): he spent years among
-  the roots on his tribe's behalf and came out with canon **sap-poisoning** — gold
-  tongue (permanent golden mouth pigmentation), bark scale (thickened darkened
-  scales), unwanted hallucinations. Then the community he did it for set him
-  aside. He is physically marked by devotion and was discarded for it. His
-  doctrine is *earned*, not argued, and it costs one material variant.
-- **The disguise works because of it**: as the Collector he keeps his mouth
-  covered and speaks little. **The unmasking at MQ18 is the moment he smiles.**
-- **Quirk against the cliché**: he is a compulsive gift-giver. Across Act II he
-  leaves the player small, well-chosen, genuinely useful presents. He recruits by
-  kindness.
-- **The rule that makes him frightening**: *he never lies to the player, not once,
-  in the entire game.* Every terrible thing he says is true.
-- **Discoverable**: he has already carved **his own grave-stake** and keeps it. A
-  man who has decided in advance how he will be remembered. Never remark on it.
-- **Counterweight**: **Miril-Tei** (§56, Many-Root) is the sap-speaker who did the
-  same thing and *was* honoured. They know each other. Neither will discuss it.
-- **Fail-forward**: his writings and his gifts survive him; the gifts are worse to
-  keep afterwards.
-
-**Cuts-the-Old-Knot** — leader of the Unbound Root; former Veiled Reed officer.
-*Translated name.* **Seen in the game's first hour**: she leads the opening
-attack in person (MQ01), takes the courier's satchel, looks at the player and
-decides they are not worth killing — and hers is the voice in the recurring
-sap-dreams (30-main-quest §18d). The whole game is the road back to her.
-- **Want**: to undo one specific thing she built.
-- **Contradiction, sharpened**: she did not suffer the classification apparatus —
-  **she designed it**. The sap-dream testimony system the player exposes in MQ20
-  is hers, in her handwriting, and she watched what it became. "I know exactly
-  what it can do. I know because I specified it." Victim and architect are the two
-  routes to the same doctrine, and she and Opens-the-Last-Door are one of each:
-  the movement's public face and its brain are different people, which is why the
-  Reed keeps arresting the wrong one.
-- **Quirk against the cliché**: she is a *terrible* speaker — visibly
-  uncomfortable, dry, self-deprecating, exhausted — and delegates all preaching.
-  A cult leader with no charisma is a far better cult leader.
-- **The finale**: on all anti-cult paths she is **the named opponent at the
-  sanctuary** (MQ31) — mid-ritual, out of speeches, entirely herself. A genuine
-  speech resolution exists (high speechcraft *plus* the right evidence about
-  what severance does to the people she thinks she is freeing); otherwise she
-  is the game's hardest fair duel, winnable by any developed build.
-- **Fail-forward**: her specification documents survive and are, on their own,
-  enough to convict the Reed. The plan's "absent architect whose writings survive"
-  branch is now literal.
+- **Contradiction**: he is the world's leading authority on the Eye of Argonia and believes the whole hunt is a
+  category error: the Eye's importance is a fact about people, not about the gem.
+- **Quirk**: he dates any document by its idiom in three seconds and cannot stop correcting people. He is how the
+  player sorts the contradictory accounts of the Eye.
+- **Quests**: none of the nineteen needs him; he answers questions about the Eye.
+- **Without him**: his catalogue is complete; his marginalia are better.
 
 ### Independents
 
-**Walks-Against-Current** — pilot and Waykeeper contact. *Translated name.*
-The one relationship in the game with no institution behind it, and the cast's
-**warm** register: he likes the player and wants nothing.
-- **Quirk**: he plays the **vossa-satl** (canon frog-pipes — a valved clam-shell
-  with a live frog in each chamber; the happier and better-fed the frogs, the
-  better the music). His frogs are named, grossly over-fed and appalling. He talks
-  to them. He grieves when one dies. It is funny for twenty hours and then it is
-  not, because he is a candidate casualty of the MQ27 expedition and the player will have
-  learned the sound.
-- **Contradiction**: values route freedom over every ideology, and has therefore
-  carried state prisoners *and* cult fugitives, and will not apologise for either.
-- **Fail-forward**: his route notes and his instrument. Someone else can play it
-  badly.
+**Walks-Against-Current** — pilot and Waykeeper contact. *Translated name.* The one relationship with no institution
+behind it, and the cast's **warm** register: he likes the player and wants nothing.
+- **Quirk**: he plays the **vossa-satl** (canon frog-pipes: a valved clam-shell with a live frog in each chamber; the
+  better-fed the frogs, the better the music). He names his frogs and grieves when one dies.
+- **Contradiction**: values route freedom over every ideology, and has carried state prisoners and cult fugitives
+  alike without apology.
+- **Quests**: the Waykeepers and Reed-Sail lines (§56). No main quest needs him.
+- **Without him**: his route notes and his instrument remain.
 
-**Ahnjazzi** — Khajiit marine underwriter. *Ta'agra name. One desk on Soulrest
-harbour; she never leaves it, and everything comes to her.* **New C1** — the
-plan's only non-Argonian principal, and the fix for a main cast with no
-outsider in it. Promoted from the unnamed "Khajiit broker" of MQ10. The main
-quest, the Reed-Sail line and the heist content all pass through Soulrest, so
-the player keeps meeting her without her ever moving — the Morrowind
-shared-place pattern ([35-cast.md](35-cast.md) §53.6). For business elsewhere
-she has correspondents, and her letters sound exactly like her.
-- **The job**: she prices risk. In the most dangerous province in Tamriel, she
-  will tell you your odds and charge you for the telling. She is therefore a
-  **diegetic danger-tier oracle** — [60-writing-and-lore.md](60-writing-and-lore.md)
-  §49's requirement that D4/D5 warnings come from people, wearing a hat.
-- **Against the cliché**: not a smuggler and not a haggler. Scrupulously,
-  tediously honest, because in her trade honesty is the competitive advantage.
-- **Contradiction**: her cargo is legal and the crews she must hire are not — a
-  live thread into the Owing (lore: topics/labour-and-bondage.md), indentured dock
-  crews and the Reed-Sail line.
-- **Quirk**: she has already calculated the player's survival odds and updates the
-  figure aloud, unprompted, every time they meet. It is meant kindly.
-- **Fail-forward**: her books; another underwriter with worse manners.
+**Ahnjazzi** — Khajiit marine underwriter. *Ta'agra name. One desk on Soulrest harbour; she never leaves it.* The
+player meets her without her moving (the Morrowind shared-place pattern, [35-cast.md](35-cast.md) §53.6).
+- **Job**: she prices risk and tells the player their odds, a **diegetic danger-tier oracle**
+  ([60-writing-and-lore.md](60-writing-and-lore.md) §49).
+- **Against the cliché**: not a smuggler or a haggler; scrupulously honest, because honesty is her trade's advantage.
+- **Contradiction**: her cargo is legal and the crews she must hire are not, a thread into the Owing
+  (`topics/labour-and-bondage.md`).
+- **Quirk**: she updates the player's survival odds aloud, unprompted, every time they meet.
+- **Quests**: the Reed-Sail line and the heist content (§56, §57.1). No main quest needs her.
+- **Without her**: another underwriter with worse manners.
 
-**The Last Warden** — an ancient **Xal-Krona** (Argonian Behemoth), Hist-made
-at the Accord's founding (canon: behemoths are created by the Hist through sap,
-"often created for a reason", speak in fragmentary third person, and can spew
-corrosive sludge — Lore:Argonian Behemoth; boss decision 0030). Not a character
-with a want; a **condition of the place**. Bound to the Accord's consent
-conditions, not to any modern faction — made to test them. Its one characterful
-act is that it will not attack a bearer who has understood the consent records —
-it *waits*, and may speak a fragment of the conditions aloud, which is far more
-frightening.
+**The Last Warden** — an ancient **Xal-Krona** (Argonian Behemoth), Hist-made at the Accord's founding (canon:
+behemoths are created by the Hist through sap, "often created for a reason", speak in fragmentary third person and
+can spew corrosive sludge; boss decision 0030). A **condition of the place** with no want. Bound to the Accord's
+consent conditions and made to test them. It will not attack a bearer who has understood the consent records; it
+waits, and may speak a fragment of the conditions aloud.
 
 ### Cast-level check
 
 | Axis | Spread |
 |---|---|
-| Age | Spills-The-Ink (20s) · Kaska-Meen (30s) · Nesh-Deeka (40s) · Ahnjazzi, Never-Writes-Twice, Opens-the-Last-Door, Cuts-the-Old-Knot (middle) · Ei-Tuja, Walks-Against-Current (older) · Holds-the-Reed, Sings-Over-Stone (elderly) |
-| Race | 9 Argonian (interior, city, lukiul, Miredancer), 1 Khajiit. Every faction line adds more |
-| Register | Comic: Ei-Tuja, Sings-Over-Stone. Warm: Walks-Against-Current, Nesh-Deeka. Cold: Never-Writes-Twice, Cuts-the-Old-Knot. Grave: Kaska-Meen, Holds-the-Reed. Odd: Ahnjazzi |
-| Name form | 4 Jel, 5 translated (2 of them chosen), 1 Ta'agra, 1 title — inside the §54 one-third rule once epithets are counted |
-| Physically distinctive | Gold mouth and bark scale (Opens-the-Last-Door); enormous and deaf (Sings-Over-Stone); frail (Holds-the-Reed); the frogs; the plovers |
-| Who is right | Never-Writes-Twice (about the player) · Sings-Over-Stone (about the Eye) · Cuts-the-Old-Knot (about what she built) — none of them pleasant about it |
+| Where they stand | Act I: Dralin, Vosh-Leera, Heem-Jasa, Sesk, Nesh-Deeka. Act II: the Collector, Never-Writes-Twice, the Toklea elder, the gaoler, the ghost priest. Act III: Cuts-the-Old-Knot. The side-quest givers (Vosh-Leera, Sesk, the Toklea elder, the spared cutter, a Bell Station diver, the Collector) hold the road between |
+| Race and name | Argonian: Vosh-Leera, Nesh-Deeka, Heem-Jasa, Cuts-the-Old-Knot, Never-Writes-Twice, Sesk (a Naga). Dunmeri name: Dralin Uveran. Imperial: Ennodius Vanin. Khajiit: Ahnjazzi. Jel names: Vosh-Leera, Nesh-Deeka, Heem-Jasa, Ei-Tuja, Kaska-Meen; translated: Never-Writes-Twice, Cuts-the-Old-Knot, Sings-Over-Stone, Walks-Against-Current |
+| Who wants the Eye | The Reed through Nesh-Deeka and Never-Writes-Twice; the Unbound through Cuts-the-Old-Knot; the Collector for himself |
+| Who the player's choice costs | Take and Give: the Reed's enmity and two dead trees. Use: the dreamers stay in the cellars and Cuts-the-Old-Knot dies. The Collector loses nothing, if he is outbid |
+| Who is right | Never-Writes-Twice about Umbriel; Cuts-the-Old-Knot about what the Reed costs. Neither is pleasant about it |
+| Who can end the main line by dying | Dralin (quest 1), Vosh-Leera (to quest 5), Nesh-Deeka (to quest 10), Sesk (before she speaks), the Toklea elder and the ghost priest (before they speak), Never-Writes-Twice (quests 10 to 16): each gets the thread of prophecy message |
 
 ---
 
@@ -269,7 +247,7 @@ rather than a history ([35-cast.md](35-cast.md) §53.6).
 
 **Desks:** Ohl-Katta (Kota-Vimleel territory, Murkmire — tradition's desk),
 Rasha (a rented dockside guesthouse, Archon — the Brotherhood's), and the
-Veiled Reed's chartering officer at Stormhold (the state's, SS08). Three
+Reed's chartering officer at Stormhold (the state's, SS08). Three
 bidders, three fixed posts, and the player carries the order's future between
 them. **The argument:** Ohl-Katta vs Rasha over what a Shadowscale *is* — a
 duty that exists whether or not any institution claims it, or a franchise that
@@ -402,7 +380,7 @@ The player must side with one procedure at MR08; MR10 resolves it.
 | Name | Role | Who, and the quirk |
 |---|---|---|
 | **Root-Herald Ixo-Vaal** | Patron | Canon office: outward-facing, gathers news and negotiates trade, "closer to ambassador than spy". **Quirk**: inter-tribal alliance is made through **bonding ceremonies**, not treaties (canon), so his diplomacy is literally matchmaking, and he is insufferably proud of his record |
-| **Sap-Speaker Miril-Tei** | Oddity / Friend | A Miredancer sap-speaker with the same canon **sap-poisoning** as Opens-the-Last-Door — gold tongue, bark scale — who was *honoured* for it rather than set aside. She is the living counter-argument to the cult, and the two of them know each other. Neither will discuss it. **Quirk**: she answers questions asked yesterday, and is right about things she should not know |
+| **Sap-Speaker Miril-Tei** | Oddity / Friend | A Miredancer sap-speaker with canon **sap-poisoning** (gold tongue, bark scale) who was *honoured* for it rather than set aside. She is the living counter-argument to those who cut trees for their sap. **Quirk**: she answers questions asked yesterday, and is right about things she should not know |
 | **Tuwul of Gloommire** | Dependent | The claimant of MR03: her tribe says Gideon's city-garden Hist is a cutting taken from them without consent, and through **gloor** a whole district's children now belong body and soul to a stolen tree. She is not a firebrand and does not want a war; she wants an acknowledgement, which is harder to give |
 | **Kaska-Meen** | (C1) | Her Helstrom post; see §55 |
 
@@ -524,10 +502,8 @@ it.
 
 ## 57. Shared places and shadow networks
 
-*(Rewritten 2026-08-26 to the Morrowind model — the earlier "cross-line faces"
-concept, a set of characters who recur across all questlines, is dropped:
-Morrowind has no such thing, and neither do we. Nothing friendly travels.
-Cross-line texture comes from the three sources below.)*
+Morrowind has no cross-line faces, and neither do we: nothing friendly travels. Cross-line texture comes from the three
+sources below.
 
 ### 57.1 Fixed figures in shared places
 
@@ -538,9 +514,9 @@ is one cheap dialogue condition, not a schedule.
 
 | Name | Fixed post | Who |
 |---|---|---|
-| **Ahnjazzi** (C1) | One desk, Soulrest harbour | Prices your odds; the diegetic danger warning. Main quest (MQ10), Reed-Sail and heist content all come to Soulrest, so they all come to her |
+| **Ahnjazzi** (C1) | One desk, Soulrest harbour | Prices your odds; the diegetic danger warning. Reed-Sail and heist content all come to Soulrest, so they all come to her |
 | **Curator Aulus Pell** | Cyrodilic Collections house, Gideon | Canon-refounded; the museum was never built. Old, sincere, slowly running out of money, and the only person in Tamriel who takes the player's *junk* seriously. The polite face of a genuine argument — a museum of the past, in a country whose religion is letting go of it — and the League, Archive and main-quest Gideon content all walk past his door. Fieldwork elsewhere is done by *letters* in his voice, never by his person |
-| **Dravyna Andalen** | Crystal-trade counting house, Stormhold | Third-generation Argonia-born Dunmer (canon: the crystal trade from the Ayleid tunnels). Speaks better Jel than Dunmeris, considers herself a Stormhold woman, and is **bored to death of being asked about the Accession War** — the standing correction to the plan's tendency to make every Dunmer a slavery quest. Main quest (MQ03 region), Archive and northern trade content share her city |
+| **Dravyna Andalen** | Crystal-trade counting house, Stormhold | Third-generation Argonia-born Dunmer (canon: the crystal trade from the Ayleid tunnels). Speaks better Jel than Dunmeris, considers herself a Stormhold woman, and is **bored to death of being asked about the Accession War** — the standing correction to the plan's tendency to make every Dunmer a slavery quest. Archive and northern trade content share her city |
 | **Handler Ki-Ossa** | Rootworm terminus, Helstrom | §56 — fixed at the one station most lines pass through |
 | **"the Wet Consort"** | Seasonal, festival circuit | A travelling **vossa-satl** troupe — *ambience, not a character*: canon month **Thtithil-Gah** is when travelling entertainers earn their year, and the world clock (Phase 8a) drives where they are. Their repertoire changes with what the player has done. No line depends on them |
 
@@ -569,7 +545,7 @@ faces, are what make the province feel like one connected place.
 ex-Archein families (lore: topics/labour-and-bondage.md) hold the tolled
 crossings, the estate ledgers, the hiring floors and the Owing paper across the
 south and the border country. Unjoinable, legally respectable, never all in one
-room. The player meets it as: the estate office of MQ11, the ledger behind
+room. The player meets it as: the estate office of a brokerage house, the ledger behind
 BC01/BC03, the toll-holder of RS08, the financiers behind Oshu-Kai's victories
 (LW07/LW10), the buyers of Thorn's disputed fields (TA03), and the quiet money
 that would rather the Rose stay exactly as it is. **The spider: Oleen-Tei, who
@@ -578,12 +554,10 @@ characterisation ([35-cast.md](35-cast.md) §54: a chosen Imperial name over a
 Jel one, and which he gives you depends on what he wants). Heard of from Act I
 ledgers; met, at most, twice; charming; never once caught holding anything.
 
-**The Unbound Root.** The main quest's network is the second shadow web — cells,
-sympathisers and the Collector's buying agents surface in faction and local
-content (MQ13's courier chain, SA-line interest in severance lore, cult
-recruitment at the province's margins) long before and after the player's own
-Act III entanglement, exactly as the Camonna Tong shadows lines it never
-formally enters.
+**The Unbound.** The main quest's network is the second shadow web: cutters, go-betweens and the Collector's hired men
+surface in faction and local content (jars of stolen sap on the river trade, the Nisswo's talk of cutting the Root,
+recruitment at the province's margins) before and after the player's own meeting with them in Acts I to III, as the
+Camonna Tong shadows lines it never formally enters.
 
 **Rule**: a region packet earns its cross-line texture from these three
 sources — a shared-place figure, a declared collision, or a shadow-network

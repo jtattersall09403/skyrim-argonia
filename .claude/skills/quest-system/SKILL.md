@@ -36,12 +36,25 @@ see it; no music or weather; nothing built or moved in the world; no script of a
 need one is rewritten: [principles/general.md](../quest-write/principles/general.md) "What a quest may use" gives
 the way each such dramatic job is done inside the ceiling.
 
+**Six narrow additions**, each used only as stated here and only once its block is proven
+([blocks](../../../docs/design/blocks.md), "Blocks owed"):
+
+| Addition | Only for |
+|---|---|
+| one staged ending scene: a fade to black, the ending's music and named things switched in view, then messages | a line's ending vision (the main quest's three endings) |
+| a choice on a message box's buttons, each button setting a stage | a line's final choice (the Eye's three endings) |
+| a named ally called to the player's side by one power and sent away by another | an ending's reward (Cuts-the-Old-Knot in the Give ending) |
+| a stage that kills one named person | an ending that costs that person's life (the Eye in the Use ending) |
+| an objective with no marker until the player reaches its place, the journal then saying they guessed right | a side quest given as a riddle |
+| a sick Hist's bark darkened by our recolour tool | the look of a sick Hist |
+
 **Anyone can die.** No person of ours or of Black Marsh & Valenwood is made unkillable. A quest names the people it
 cannot go on without; if one dies the quest fails with a journal entry, and a main or faction quest also shows its
 kind's message once (load an earlier save, or go on in the world as it now is).
 
-**Every objective has a marker.** Every shown stage has an objective with a target switched on; the quest becomes
-the tracked one with its first objective. Directions in words are given as well, never instead.
+**Every objective has a marker**, save a riddle side quest's place before it is found. Every shown stage has an
+objective with a target switched on; the quest becomes the tracked one with its first objective. Directions in words
+are given as well, never instead.
 
 **Everything said is true of the built world, by how it is made.** A quest never describes a world; it is written
 onto one. Each step takes its facts from what exists at that step and passes on only what the next can keep:

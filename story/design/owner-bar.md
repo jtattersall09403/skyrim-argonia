@@ -58,8 +58,8 @@ reads this first; a new ruling is added here the day it is made, as well as to o
 - Side quests met on the main road are plainly side quests. They give a riddle in place of directions, with no
   marker until the place is found; the journal then says the player guessed right, and the work there has markers
   and uses the player's skills. Their rewards are made for the main quest's final fight, so a player who does them
-  all finds it easy (Majora's Mask's Fierce Deity mask) (OR 2026-11-13, story explorer notes; needs the ceiling's
-  every-objective-has-a-marker rule changed, an open call).
+  all finds it easy (Majora's Mask's Fierce Deity mask) (OR 2026-11-13, story explorer notes; the riddle place
+  with no marker approved in #71).
 - A faction's ranks bring rewards in proportion, and things unlocked, as Skyrim's guilds do (OR 2026-11-13).
 - A power or rule of the story is explained to the player once, at the point it matters; nobody then needs to say
   why again (OR 2026-11-13, story explorer notes).
@@ -86,6 +86,11 @@ reads this first; a new ruling is added here the day it is made, as well as to o
 - Nothing more complicated than Morrowind-level scripting, and much less world editing per quest (walk 6,
   OR 2026-11-12; the ceiling: [quest-form](../../docs/design/quest-form.md)). Before that ruling the bar was
   "nothing harder to script than an average Skyrim quest" (OR 2026-11-06); the lower ceiling replaces it.
+- Six narrow additions to the ceiling, each only for the use named: one staged ending scene (fade, music, the trees
+  shown changing); a final choice on a message box; a named ally called by a power as an ending's reward; a stage
+  that kills one named person in an ending; riddle side quests with no marker until found; sick Hist bark from the
+  recolour tool. A person at a finale is already there when the player arrives, never summoned, and nobody follows
+  the player (#71, OR 2026-11-13).
 - A branching budget keeps quests simple, with some branching for interest. Within a questline, earlier choices
   and endings do not change later quests' stages (no multiplying branches); only planned finale choices carry
   forward (OR 2026-11-06).

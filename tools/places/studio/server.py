@@ -471,7 +471,7 @@ async def needs_get(req: web.Request) -> web.Response:
     if not PLACE_ID.match(pid):
         return jerr(400, "bad place id")
     out = await asyncio.get_running_loop().run_in_executor(
-        None, lambda: needs.payload(pid, cfg.sources / "needs", cfg.sources / "people"))
+        None, lambda: needs.payload(pid, cfg.sources / "needs", cfg.sources / "people", cfg.places))
     return jok(out)
 
 

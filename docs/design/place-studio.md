@@ -612,10 +612,12 @@ POST /api/place/<id>/notes/send               sends every unsent note as one bat
 GET  /api/place/<id>/stock                    who the place's people are and what it holds, from the database's
                                               sources (Stock: the studio)
 GET  /api/place/<id>/items?q=&kind=&limit=    item search for a holder: each result allowed or refused, with why
-GET  /api/place/<id>/needs                    what the stories need of the place, in plain words (What the stories
-                                              need of a place, below): {needs: [{seq, thing, line, quests, does,
-                                              first_draft, know, signs, rests, met, why, fit, narrow, sight,
-                                              changed}], people: {person id: {who, name, uses}}}
+GET  /api/place/<id>/needs                    what the stories need of the place, made from the stories at each
+                                              request (What the stories need of a place, below): {needs: [{seq,
+                                              key, thing, line, quests, does, rewrite, sources: [{story, line,
+                                              rewrite, url}], judged, know, signs, rests, met, why, fit, narrow,
+                                              sight, changed}], people: {person id: {who, name, uses: [{for, line,
+                                              rewrite, sources}]}}, changed_story: [{seq, was_for, line, placed}]}
 POST /api/place/<id>/needs/changed            the owner carried on past a need's warning: {need | person, change:
                                               removed|moved|renamed, what, save}; appended at OWNER_STATED to
                                               newworld/sources/needs/<id>.changed.jsonl and committed by path
@@ -790,21 +792,27 @@ gap (`narrow`: a name on a room, a lock, a thing placed, a person's spot).
 
 | What | Where |
 |---|---|
-| A place's needs and the stories' uses of its people | `newworld/sources/needs/<place_id>.json` (`needs`, `people`, `proposed`, `dismissed`) |
+| What a place's stories need of it, and the people they name | the line stories' needs tables and text (`story/design/quests/lines/`) and the cast roster, read each time (`tools/places/needs.py`) |
+| The place's judgement of each need, keyed to the story rows it judges | `newworld/sources/needs/<place_id>.json` (`needs`, `dismissed`) |
 | The story lines, named for a reader who knows none of them | `newworld/sources/needs/lines.json` |
 | The owner's changes to what a need rests on | `newworld/sources/needs/<place_id>.changed.jsonl` (the studio writes it) |
-| The tables | `story_line`, `need_sign`, `place_need`, `place_need_sign`, `place_need_story`, `person_need`, `need_change` (`tools/newworld/needsdb.py`) |
+| The tables | `story_line`, `need_sign`, `place_need`, `place_need_sign`, `place_need_story`, `need_change` (`tools/newworld/needsdb.py`) |
 
-A need: `{seq, thing (what a player calls it on sight), line, quests, does (one sentence that assumes no story),
-firmness: firm|first-draft, signs: [{sign: look|label|beside|person, detail, person?}], stories: [file:line],
-rests: {space, ref?} | {person} | null, near?: {space, pos} (where the story puts it, when nothing rests yet), met,
-why, fit?, narrow?, sight?: {result: recognised|not recognised, said}}`. A person's use: `{person, seq, line,
-quests, for, keep: reachable|alive|reachable and alive, firmness, story}`. Who each of the place's people is to a
-player (their trade and household) is derived from the people source, never stored.
+The panel is made from the stories each time it is asked for, so it never falls behind them. A **need** is a row
+of a story's needs table naming this place (its name or an alias in the database), shown in the story's own words
+with a link to the story in the story explorer; a story whose head says `**Status: to be rewritten.**` marks its
+rows so, and one whose status begins "replaced" is not read. A **judgement** is the place's side, kept by hand:
+`{seq, from: [the story rows' keys], thing (the row it judged), line, rests: {space, ref?} | {person} | null,
+signs: [{sign: look|label|beside|person, detail, person?}], placed?: [{person}], near?: {space, pos}, met, why,
+fit?, narrow?, sight?: {result: recognised|not recognised, said}, tier}`. A row no judgement covers shows as not yet
+judged. A judgement whose rows no story still has shows under **Placed for a story that has changed**, with every
+thing placed for it (a ref whose `need` is its seq) and every person it names; nothing is removed, and the owner
+decides. **People the stories name** are the place's people found by name in the line stories and the cast roster,
+each with the sentence or table row that names them and its link. Who each person is to a player (their trade and
+household) is derived from the people source, never stored.
 
-    python -m tools.places needs propose <place>        the stories' needs tables for the place, as proposals
-    python -m tools.places needs confirm <place> <key> [--into <seq>]    then judge the need by hand
-    python -m tools.places needs dismiss <place> <key> --why "..."
+    python -m tools.places needs open <place>           the story rows no judgement covers yet, with their keys
+    python -m tools.places needs dismiss <place> <key> --why "..."    a row that names the place by mistake
     python -m tools.places needs check <place>          every rest exists; every need judged; every unmet one fitted
     python -m tools.places needs show <place>
     python -m tools.places needs changed [<place>]      the owner's changes: the stories to change to fit
@@ -820,9 +828,11 @@ it holds; never our names for things, ids or the story. One fresh `reader` is as
 only then which spot each needed thing is; the need's `sight` records whether the reader said it unprompted.
 
 **The studio.** The rail's **Story** opens "What the story needs of this place": one row per need in its plain
-sentence, not met first, each saying how the player would know it, what is there now, what the story could use
+sentence, grouped not met, not yet judged, then met, each linked to the story it comes from and marked when that
+story is to be rewritten, saying how the player would know it, what is there now, what the story could use
 instead and whether a small change closes the gap; "Show it" (or "Show what could serve") selects and frames the
-thing or person; a not-met row offers a note for the agent (the place's ordinary notes). Selecting a thing or
+thing or person; a not-met row offers a note for the agent (the place's ordinary notes). Below them come the
+people the stories name, and what stands placed for a story that has changed, each with "Show". Selecting a thing or
 person a need rests on, or any of the place's people, adds a line to the Selected or People panel: who this is to
 a player, and "A quest needs this: ...". Removing, moving more than 10 metres or into another cell, re-homing or
 renaming something a need rests on shows a plain warning at that moment ("A quest needs this: ... If you change

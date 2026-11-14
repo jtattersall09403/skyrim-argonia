@@ -82,6 +82,15 @@ def test_generate(tmp_path):
     assert all({"id", "kind", "a", "b"} <= set(e) for e in c["links"])
 
 
+def test_a_story_status_reaches_the_catalogue(tmp_path):
+    root = tree(tmp_path / "r")
+    p = root / se.LINES / "many-root.md"
+    p.write_text(LINE.replace("Intro with", "**Status: to be rewritten.** Section 3 is untrue.\n\nIntro with"))
+    c = se.generate(root, tmp_path / "out")
+    assert next(x for x in c["lines"] if x["id"] == "many-root")["status"] == "to be rewritten"
+    assert next(x for x in c["docs"] if x["id"] == "many-root")["status"] == "to be rewritten"
+
+
 def test_block_ids_stable_when_another_section_changes():
     a = se.build_doc(Path("x.md"), LINE)
     b = se.build_doc(Path("x.md"), LINE.replace("Readers liked MR01.", "Readers liked MR01.\n\nMore."))

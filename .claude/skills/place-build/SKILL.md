@@ -301,8 +301,9 @@ The tools lay the network by these rules.
    passes here passes there. Its `measures` line gives the patched cells and points and the streets' length: keep
    the patches as near nothing as you can.
 2. The stories' needs (`docs/design/place-studio.md`, "What the stories need of a place"): the place is built
-   to its record's promises and to the needs the line stories load onto it. Judge each need from the player's
-   side only: it is met when the thing is in the place files and a player told nothing would know it by its look,
+   to its record's promises and to the needs the line stories put on it (`python3 -m tools.places needs open
+   <place_id>` lists the rows not yet judged, each with the key a judgement's `from` holds). Judge each need from
+   the player's side only: it is met when the thing is in the place files and a player told nothing would know it by its look,
    the game's own label (its door's room name, a map marker, a named thing), what stands in or by it, or a named
    person who tells them. A building that could serve is not met: say where it stands, what the story could use
    instead and whether a narrow addition (a room's name, a lock, a thing placed, a person's spot) closes the gap.

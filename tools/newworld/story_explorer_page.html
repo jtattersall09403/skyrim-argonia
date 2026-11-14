@@ -278,7 +278,7 @@ function lineCard(l, sub) {
   const qs = l.quests.map(quest).filter(Boolean);
   const by = s => qs.filter(q => q.status === s).length; const m = readMem()[l.id], dm = CAT.docs.find(d => d.id === l.id);
   const upd = m && dm && m.hash !== dm.hash;
-  return `<a class="card" style="--lc:${lineColor(l.id)}" href="#d-${l.id}"><span class="eyebrow">${l.kind === "plot" ? "Plot" : `${qs.length} quests`}${l.readOnPaper ? " · read on paper" : ""}</span>
+  return `<a class="card" style="--lc:${lineColor(l.id)}" href="#d-${l.id}"><span class="eyebrow">${l.kind === "plot" ? "Plot" : `${qs.length} quests`}${l.readOnPaper ? " · read on paper" : ""}${l.status ? ` · <b>${esc(l.status)}</b>` : ""}</span>
     <b>${esc(l.title)}</b><p>${esc(sub || l.summary)}</p>
     ${m ? `<span class="row"><span class="prog" style="flex:1"><i style="width:${Math.round((m.progress || 0) * 100)}%"></i></span>${upd ? `<span class="msg upd">Changed since you read it</span>` : ""}</span>` : ""}
     ${qs.length ? `<span class="row">${Object.keys(STATUS).filter(by).map(s => `<span class="pill st-${s}">${by(s)} ${STATUS[s].toLowerCase()}</span>`).join("")}</span>` : ""}</a>`;

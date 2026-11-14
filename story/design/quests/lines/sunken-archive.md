@@ -1,5 +1,11 @@
 # The Sunken Archive: the line's story
 
+**Status: to be rewritten.** This story rests on facts of the main quest's earlier plot that [the plot](main-plot.md) no longer holds; it is to be rewritten to the plot and is not yet. What in it is untrue, by section:
+
+- Section 2 (The line's arc): it makes Xoh-Reesha, stake-keeper of Jal-Veesa, a woman the main quest names and may leave dead, but the plot's person at Jal-Veesa is Vosh-Leera, the root-herald, and it has no Xoh-Reesha.
+- Section 4 (What each quest needs of its places): it stands SA06's leave at Jal-Veesa on Xoh-Reesha as the main quest has her, which the plot does not.
+- Section 6 (For the other lines): it keeps SA06 away from Nenria, Gemin, Vel-Sapha Stand and Ushaan Camp as the main quest's places, but the plot uses Nenria, Vel-Sapha Stand and Gemin for its second, third and fifteenth quests and has no Ushaan Camp.
+
 The story of the Sunken Archive's six quests and their two small riders, written inside the quest ceiling
 ([quest-form](../../../../docs/design/quest-form.md)) and the owner's bar ([owner-bar](../../owner-bar.md)), on the
 ground the [province plan](province-plan.md) gives the line (its section 3.11, its brief in section 7, the crossings

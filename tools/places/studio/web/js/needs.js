@@ -59,42 +59,65 @@ export class Needs {
     for (const [pid, p] of Object.entries(this.data?.people || {})) for (const use of p.uses) add(`person:${pid}`, { kind: 'use', pid, person: p, use });
   }
   sentence(u) {
-    if (u.kind === 'use') return `${u.use.for} (${u.use.line}; ${u.use.quests})`;
+    if (u.kind === 'use') return `${u.use.for} (${u.use.line})`;
     if (u.kind === 'tells') return `this person is how a player learns of ${u.n.thing}: ${u.n.does} (${u.n.line})`;
     return `${u.n.does} (${u.n.line}; ${u.n.quests})`;
   }
   // ---------- the panel ----------
   panel() {
     const P = this.a.panels, parts = [], d = this.data;
-    parts.push(el('<p>Each row is something a story needs a player to find in this place, in plain words. <strong>Met</strong> means it is here and a player who has been told nothing would know it for what it is: by its look, by the name the game shows, by what stands by it, or because someone tells them. The stories are first drafts; they change to fit the place, never the place to fit them.</p>'));
-    if (!d?.needs?.length) { parts.push(el('<p class="tag">No story needs anything of this place yet.</p>')); P.show('What the story needs of this place', parts); return; }
-    for (const met of [false, true]) {
-      const rows = d.needs.filter((n) => n.met === met);
-      parts.push(el(`<h3>${met ? 'Met' : 'Not met'} (${rows.length})</h3>`));
-      if (!rows.length) { parts.push(el(`<p class="tag">${met ? 'Nothing yet.' : 'Every need is met.'}</p>`)); continue; }
+    parts.push(el('<p>Made from the stories each time this panel opens, so it always follows them. Each row is something a story needs a player to find in this place, in plain words, with a link to the story it comes from. <strong>Met</strong> means it is here and a player who has been told nothing would know it for what it is: by its look, by the name the game shows, by what stands by it, or because someone tells them. A row marked <em>its story is to be rewritten</em> comes from a story that will change. The stories change to fit the place, never the place to fit them.</p>'));
+    const groups = [['Not met', (n) => n.judged && !n.met, 'Every judged need is met.'], ['Not yet judged', (n) => !n.judged, 'Every need has been looked for.'], ['Met', (n) => n.met, 'Nothing yet.']];
+    if (!d?.needs?.length) parts.push(el('<p class="tag">No story needs anything of this place.</p>'));
+    else for (const [title, pick, none] of groups) {
+      const rows = d.needs.filter(pick);
+      parts.push(el(`<h3>${title} (${rows.length})</h3>`));
+      if (!rows.length) { parts.push(el(`<p class="tag">${none}</p>`)); continue; }
       const ol = el('<ol class="needs"></ol>');
       for (const n of rows) ol.append(this.row(n));
       parts.push(ol);
     }
-    const used = Object.entries(d.people || {}).filter(([, p]) => p.uses.length);
+    const used = Object.entries(d?.people || {}).filter(([, p]) => p.uses.length);
     if (used.length) {
-      parts.push(el(`<h3>People the stories use (${used.length})</h3>`));
+      parts.push(el(`<h3>People the stories name (${used.length})</h3>`));
       const ol = el('<ol class="needs people-uses"></ol>');
       for (const [pid, p] of used) {
-        const li = el(`<li><span class="what"><strong>${esc(p.who)}</strong>${p.uses.map((u) => `<span class="note">${esc(u.for)} Needed by ${esc(u.line)}: ${esc(u.quests)}. The story needs this person ${esc(u.keep)}.${u.changed?.length ? ` <em>Changed by you: ${esc(u.changed.map((c) => c.what).join('; '))}</em>` : ''}</span>`).join('')}</span></li>`);
+        const li = el(`<li><span class="what"><strong>${esc(p.who)}</strong>${p.uses.map((u) => `<span class="note">"${esc(u.for)}" ${this.from(u)}${u.changed?.length ? ` <em>Changed by you: ${esc(u.changed.map((c) => c.what).join('; '))}</em>` : ''}</span>`).join('')}</span></li>`);
         const b = el('<button class="quiet">Show</button>'); b.onclick = () => this.showPerson(pid); li.append(b);
         ol.append(li);
       }
       parts.push(ol);
     }
+    const gone = d?.changed_story || [];
+    if (gone.length) {
+      parts.push(el(`<h3>Placed for a story that has changed (${gone.length})</h3>`));
+      parts.push(el('<p class="tag">These were placed or given a part for something no story asks of this place any more. Nothing has been removed: keep, change or remove each as you choose.</p>'));
+      const ol = el('<ol class="needs"></ol>');
+      for (const c of gone) {
+        const li = el(`<li><span class="what"><strong>Was for: ${esc(c.was_for)}</strong><span class="note">${esc(c.line)}</span>${c.placed.length ? c.placed.map((t) => `<span class="need-line">${t.kind === 'person' ? 'Person' : 'Thing'}: ${esc(t.name || t.ref || t.person)}</span>`).join('') : '<span class="need-line">Nothing was placed for it.</span>'}</span></li>`);
+        const btns = el('<div class="row"></div>');
+        for (const t of c.placed) {
+          const b = el(`<button class="quiet">Show ${esc(t.name || 'it')}</button>`);
+          b.onclick = () => (t.kind === 'person' ? this.showPerson(t.person) : this.showNeed({ rests: { space: t.space, ref: t.space === 'exterior' ? t.ref : null } }));
+          btns.append(b);
+        }
+        li.append(btns); ol.append(li);
+      }
+      parts.push(ol);
+    }
     P.show('What the story needs of this place', parts);
+  }
+  // where a row comes from: each story, linked to the story explorer, and marked when that story is to be rewritten
+  from(n) {
+    return (n.sources || []).map((s) => `<span class="need-line"><b>From</b> ${s.url ? `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.line)}</a>` : esc(s.line)} (${esc(s.story)})${s.rewrite ? ' <em>its story is to be rewritten</em>' : ''}</span>`).join('');
   }
   row(n) {
     const li = el(`<li data-met="${n.met}"><span class="what"><strong>${esc(n.thing)}</strong>
-      <span class="note">Needed by ${esc(n.line)}: ${esc(n.quests)}${n.first_draft ? ' (a first draft of the story)' : ''}.</span>
+      <span class="note">Needed by ${esc(n.line)}${n.quests ? `: ${esc(n.quests)}` : ''}.${n.rewrite ? ' <em>Its story is to be rewritten.</em>' : ''}</span>
+      ${this.from(n)}
       <span class="need-line"><b>What the player does there</b> ${esc(n.does)}</span>
       <span class="need-line"><b>How a player would know it</b> ${esc(n.know)}</span>
-      <span class="need-line"><b>${n.met ? 'What meets it' : 'What is there now'}</b> ${esc(n.why.replace(/^(Not met|Met)\.\s*/, ''))}</span>
+      <span class="need-line"><b>${n.met ? 'What meets it' : (n.judged ? 'What is there now' : 'In the place')}</b> ${esc(n.why.replace(/^(Not met|Met|Not yet judged)[.:]\s*/, ''))}</span>
       ${n.fit ? `<span class="need-line"><b>What the story could use instead</b> ${esc(n.fit)}</span>` : ''}
       ${n.narrow ? `<span class="need-line"><b>Could a small change close the gap</b> ${esc(n.narrow)}</span>` : ''}
       ${n.sight ? `<span class="need-line"><b>A fresh reader, shown only what a player sees</b> ${n.sight.result === 'recognised' ? 'knew it' : 'did not know it'}${n.sight.said ? `: "${esc(n.sight.said)}"` : ''}</span>` : ''}
@@ -162,7 +185,7 @@ export class Needs {
     const a = this.a, o = document.getElementById('needwarn');
     const items = hits.map((h) => {
       const what = h.u.kind === 'use' ? h.u.person.name : h.u.n.thing, why = h.u.kind === 'use' ? h.u.use.for : h.u.n.does;
-      const by = h.u.kind === 'use' ? `${h.u.use.line}: ${h.u.use.quests}` : `${h.u.n.line}: ${h.u.n.quests}`;
+      const by = h.u.kind === 'use' ? h.u.use.line : `${h.u.n.line}${h.u.n.quests ? `: ${h.u.n.quests}` : ''}`;
       return `<li><strong>${esc(what)}</strong> (just ${esc(h.what)}). ${esc(why)} Needed by ${esc(by)}.</li>`;
     }).join('');
     o.innerHTML = `<div class="sheet" role="alertdialog" aria-labelledby="needwarn-h"><h2 id="needwarn-h">A quest needs this</h2>

@@ -35,9 +35,30 @@ written to every writing rule and run through the prose linter; its section 9 li
 five calls for the owner on the ceiling, and every knock-on effect found by checking (the built first-act quests
 mq01, mq03 to mq05, Helstrom's studio needs and place files, place hooks, the roster, the province plan, about forty
 ledger rows, six faction lines, four lore extrapolations). The owner's rulings from the notes are in owner-bar and
-owner-rulings. Each note has a reply in the explorer, shown under the draft (collection `draftReplies`). Owed: the
-ceiling call to the owner; the knock-ons, each when its own work comes up; `main.md` redone from the plot before
-any main quest is written. The rounds below for `main` are void until then.
+owner-rulings. Each note has a reply in the explorer, shown under the draft (collection `draftReplies`). Owed: `main.md`
+written again from the plot before any main quest is written; the rounds below for `main` are void until then.
+
+## The plot's knock-ons settled (2026-11-13, the owner's rulings)
+
+The owner ruled on the knock-ons: "Studio story panels mist be made to update automatically / First act in old
+world - leave it / Ledger, part of province plan, roster - update then / Six faction stories - mark them as needing
+to be rewritten. But don't rewrite yet". And on #71 he approved the plot's six ceiling calls, each narrowly.
+
+- **The first act built in the old world (mq01, mq03 to mq05) is left entirely as it is.**
+- The studio's story panel is made from the stories each time it opens (`tools/places/needs.py`): the plot's new
+  needs table, the line stories' tables, the people they name, each linked to its story and marked when that story
+  is to be rewritten. Helstrom shows the plot's two needs (the handler's quiet house, the go-between's lodging) as
+  not yet judged; what was placed for the earlier plot (the Sealed Spring urn, the locked chest, Ruxa-Neel's and
+  Wujeel's parts) stands and is listed as placed for a story that has changed, for the owner to decide.
+- The consistency ledger, the province plan (section 2 whole and every line the plot made untrue) and the cast
+  roster follow the plot; the root-herald of Jal-Veesa is Vosh-Leera; the plot's four extrapolations are in
+  `story/lore/extrapolation/argonia-4e201-state.md` section 11.
+- Marked "to be rewritten", each with what in it is untrue by section, not rewritten: the Reed-Sail, the Sunken
+  Archive, the Waykeepers, Many-Root, the Chainbreakers (new world), the Umbriel Witness. `main.md` is marked
+  replaced by the plot. Item 1's rounds for these six wait for their rewrite.
+- The six ceiling additions are in quest-form, blocks ("Blocks owed") and quest-system; each is a new block proven
+  once before the plot's quests use it. In the finale Cuts-the-Old-Knot is already in the cavern when the player
+  arrives; nobody follows the player.
 
 ## What this phase delivers
 
