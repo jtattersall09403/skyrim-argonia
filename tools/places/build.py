@@ -560,6 +560,32 @@ def plan_paths(paths: list[dict], facts: dict, walked: set | None = None) -> dic
                 continue
             keep = sorted((k for k in world if world[k].max() > 1e-4), key=lambda k: -float(world[k].sum()))[:tx.MAXL]
             quads[n] = {"cell": c, "quadrant": q, "w": world, "keep": keep, "gone": set(), "paths": [], "dropped": 0.0}
+    # every lattice corner keeps one texture all its quadrants keep: each quadrant reads the world through its own
+    # layers, so their corner picks can differ; where they share none, the heaviest there over them all is kept by each
+    forced: dict[tuple[int, int], set] = {}
+    for gq in sorted(quads):
+        for cx_, cy_ in ((0, 0), (1, 0), (0, 1), (1, 1)):
+            v = (gq[0] + cx_, gq[1] + cy_)
+            touch = [(n, quads[n]) for n in ((v[0] - 1, v[1] - 1), (v[0], v[1] - 1), (v[0] - 1, v[1]), v) if n in quads]
+            if set.intersection(*(set(Q["keep"]) for _, Q in touch)):
+                continue
+            idx = {n: (v[0] - n[0]) * 16 + (v[1] - n[1]) * 272 for n, _ in touch}
+            score: dict = {}
+            for n, Q in touch:
+                for k, a in Q["w"].items():
+                    score[k] = score.get(k, 0.0) + float(a[idx[n]])
+            pick = max(sorted(score), key=lambda k: score[k])
+            for n, Q in touch:
+                if pick in Q["keep"]:
+                    continue
+                fixed = forced.setdefault(n, set())
+                if len(Q["keep"]) >= tx.MAXL:
+                    out_k = next(k for k in reversed(Q["keep"]) if k not in fixed)
+                    Q["keep"].remove(out_k)
+                    Q["gone"].add(out_k)
+                Q["keep"].append(pick)
+                Q["gone"].discard(pick)
+                fixed.add(pick)
     if not quads:
         return {}
     # the repainted quadrants' vertices as one lattice, so every shared vertex is painted once and read by each quadrant
