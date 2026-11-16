@@ -141,7 +141,7 @@ with its source in [owner-rulings-on-factions](../../docs/research/writing/owner
   "nothing harder to script than an average Skyrim quest" (OR 2026-11-06); the lower ceiling replaces it.
 - Six additions to the ceiling, which any quest may use ("Yes open those too", OR 2026-11-16), each proven once
   before its first use: one staged ending scene (fade, music, the trees
-  shown changing); a final choice on a message box; a named ally called by a power as an ending's reward; a stage
+  shown changing: this one only for the main quest's ending visions); a final choice on a message box; a named ally called by a power as an ending's reward; a stage
   that kills one named person in an ending; riddle side quests with no marker until found; sick Hist bark from the
   recolour tool. A person at a finale is already there when the player arrives, never summoned, and nobody follows
   the player (#71, OR 2026-11-13).

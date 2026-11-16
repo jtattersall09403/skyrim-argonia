@@ -708,3 +708,7 @@ added here the day they are made, with the date and the issue.
 - 2026-11-16 (in session): "Oh but actually not the one about cut scenes. They will be a pain to make I think. So
   whichever one that is, only narrow for that (the end of the main quest)". The film played by a stage is for the
   main quest's three ending visions only. The other sixteen added blocks stay open to any quest.
+- 2026-11-16 (in session): the staged ending scene of #71 stays narrow, "only the use I described: 'The ending
+  visions: a fade to black, music and effects on the trees at the endings. Yes means the ceiling is raised to allow
+  one staged ending scene.'" So two added blocks are for the main quest's ending visions only (the staged scene and
+  the film); the other fifteen are open to any quest.

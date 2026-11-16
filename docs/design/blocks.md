@@ -108,7 +108,7 @@ a quest uses it.
 
 | Block | Only for | Likely engine shape |
 |---|---|---|
-| a staged ending scene | a line's ending vision: a fade to black, the ending's music, named things switched in view, then the vision's messages | ImageSpaceModifier fade, a MusicType, Enable and Disable, the message boxes; vanilla's ending sequences (MQ305) |
+| a staged ending scene (this one only for the use named, never elsewhere) | a line's ending vision: a fade to black, the ending's music, named things switched in view, then the vision's messages | ImageSpaceModifier fade, a MusicType, Enable and Disable, the message boxes; vanilla's ending sequences (MQ305) |
 | a choice on a message box | a line's final choice, each button setting a stage | `Message.Show()` returning the button; vanilla's message-box choices |
 | a called ally | an ending's reward: one named person called to the player's side by a power and sent away by another | two spells of ours whose effects move the person to the player and back, with a follower package |
 | a stage that kills a named person | an ending that costs that person's life | `Kill()` on the alias, with the person's must-live row closed first |

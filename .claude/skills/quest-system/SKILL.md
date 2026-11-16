@@ -36,10 +36,9 @@ see it; no music or weather; nothing built or moved in the world; no script of a
 need one is rewritten: [principles/general.md](../quest-write/principles/general.md) "What a quest may use" gives
 the way each such dramatic job is done inside the ceiling.
 
-**Sixteen added blocks, open to any quest** once each is proven ([blocks](../../../docs/design/blocks.md),
+**Fifteen added blocks, open to any quest** once each is proven ([blocks](../../../docs/design/blocks.md),
 "Blocks owed"):
 
-- a staged scene: a fade to black, music and named things switched in view, then messages;
 - a choice on a message box's buttons, each button setting a stage;
 - a named ally called to the player's side by one power and sent away by another;
 - a stage that kills one named person;
@@ -56,8 +55,9 @@ the way each such dramatic job is done inside the ceiling.
 - a hearing after a fade;
 - a place that changes after a line ends.
 
-**One added block for one use only:** a short film played by a stage, for the main quest's three ending visions
-and nothing else.
+**Two added blocks for one use only**, the main quest's three ending visions and nothing else: one staged ending
+scene (a fade to black, the ending's music and the trees shown changing, then messages), and a short film played
+by a stage.
 
 **Anyone can die.** No person of ours or of Black Marsh & Valenwood is made unkillable. A quest names the people it
 cannot go on without; if one dies the quest fails with a journal entry, and a main or faction quest also shows its
