@@ -114,9 +114,11 @@ pre{font-family:var(--mono);font-size:.82rem;line-height:1.5;overflow-x:auto;bac
 .link .k{font-size:.82rem;font-weight:700;color:var(--muted)}
 .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(80px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:999px;z-index:40;font-weight:600}
 mark{background:var(--mark);color:var(--mark-ink);border-radius:3px;padding:0 2px}
-/* action bar, sheets */
-.act{position:fixed;left:0;right:0;bottom:0;z-index:20;display:flex;justify-content:center;pointer-events:none;
-  padding:0 max(16px,env(safe-area-inset-right,0px)) calc(12px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+/* action bar, sheets. The note bar sits fixed just under the header (its top set from the header's height), never
+   at the bottom: Chrome on Android puts its own selection toolbar beside the words and its "touch to search" bar
+   along the bottom of the screen, and neither reaches the strip under our header. */
+.act{position:fixed;left:0;right:0;top:var(--act-top,64px);z-index:20;display:flex;justify-content:center;pointer-events:none;
+  padding:6px max(16px,env(safe-area-inset-right,0px)) 0 max(16px,env(safe-area-inset-left,0px))}
 .act button{pointer-events:auto;background:var(--accent);color:var(--accent-ink);border:0;border-radius:999px;padding:12px 20px;font-weight:700;box-shadow:0 6px 20px rgba(0,0,0,.18);cursor:pointer;min-height:48px}
 .sheet-bg{position:fixed;inset:0;background:rgba(10,14,12,.45);z-index:30}
 .sheet{position:fixed;left:0;right:0;bottom:0;z-index:31;background:var(--paper);border-radius:16px 16px 0 0;max-height:88vh;overflow:auto;
@@ -155,11 +157,11 @@ mark{background:var(--mark);color:var(--mark-ink);border-radius:3px;padding:0 2p
   <a class="brand" href="#home">Argonia Story Explorer<small>The new world's story and quests</small></a>
   <nav class="nav" aria-label="Sections">
     <a href="#home" data-nav="home">Lines</a><a href="#quests" data-nav="quests">Quests</a>
-    <a href="#people" data-nav="people">People</a><a href="#places" data-nav="places">Places</a><a href="#map" data-nav="map">Map</a><a href="#world" data-nav="world">World</a>
+    <a href="#people" data-nav="people">People</a><a href="#places" data-nav="places">Places</a><a href="#map" data-nav="map">Map</a><a href="#world" data-nav="world">World</a><a href="#d-spell-groups" data-nav="spells" id="navSpells" hidden>Spells by use</a>
   </nav>
   <button class="tray-btn" id="trayBtn" type="button">Notes<b id="trayCount">0</b></button>
 </div></header>
-<main><div class="wrap" id="view"><p class="msg">Loading the story…</p></div></main>
+<main><div class="wrap" id="view"><p class="msg">The story is loading.</p></div></main>
 <div class="act" id="act" hidden><div class="actin" role="toolbar" aria-label="Note on the selection"><button type="button" id="actBtn">Add a note</button>
 <button type="button" data-react="Love this">Love this</button><button type="button" data-react="Unclear">Unclear</button><button type="button" data-react="Change this">Change</button><button type="button" data-react="Cut this">Cut</button></div></div>
 <div class="readbar" id="readbar"></div>
@@ -170,10 +172,12 @@ mark{background:var(--mark);color:var(--mark-ink);border-radius:3px;padding:0 2p
 const $ = (s, el = document) => el.querySelector(s);
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const STATUS = {outlined:"Outlined", written:"Written", reviewed:"Reviewed", built:"Built"};
-const STATUS_HELP = {outlined:"Told at arc level in its line's story; not yet written out stage by stage.",
-  written:"Written out in full: people, stages, endings.", reviewed:"Written in full and read on paper by fresh readers.",
-  built:"A record of this quest is in our plugin."};
-const KIND = {plot:"Main quest plot", line:"Line story", ledger:"Ledger", world:"Province digest", region:"Region"};
+const STATUS_HELP = {outlined:"This quest is told at arc level in its line's story. It is not yet written out stage by stage.",
+  written:"This quest is written out in full, with its people, stages and endings.", reviewed:"This quest is written out in full and fresh readers have read it on paper.",
+  built:"Our plugin holds a record of this quest."};
+const KIND = {plot:"Faction story", line:"Line story", ledger:"Ledger", world:"Province digest", region:"Region", spells:"Spells by use"};
+const kindOf = d => d.kind === "plot" && d.id === "main-plot" ? "Main quest plot" : KIND[d.kind] || d.kind;
+const MAIN = () => CAT.lines.find(l => l.id === "main-plot") || CAT.lines.find(l => l.id === "main");
 let CAT = null; const DOCS = {}; let db = null, dbState = "connecting", batches = [], dreplies = {};
 const DKEY = "story-explorer-drafts";
 let drafts = []; try { drafts = JSON.parse(localStorage.getItem(DKEY) || "[]"); } catch (e) { drafts = []; }
@@ -244,7 +248,7 @@ function blockHtml(b, item, field) {
   let inner = "";
   if (b.t === "p") inner = `<p>${b.html}</p>`;
   else if (b.t === "h") { const l = Math.min(4, Math.max(2, b.level)); inner = `<h${l}>${b.html}</h${l}>`; }
-  else if (b.t === "list") inner = `<${b.ordered ? "ol" : "ul"}>${b.items.map(i => `<li>${i}</li>`).join("")}</${b.ordered ? "ol" : "ul"}>`;
+  else if (b.t === "list") inner = `<${b.ordered ? `ol start="${b.start || 1}"` : "ul"}>${b.items.map(i => `<li>${i}</li>`).join("")}</${b.ordered ? "ol" : "ul"}>`;
   else if (b.t === "table") inner = `<div class="tbl"><table><thead><tr>${b.head.map(h => `<th>${h}</th>`).join("")}</tr></thead><tbody>${
       b.rows.map(r => `<tr>${r.map(c => `<td>${c}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
   else inner = `<pre>${esc(b.text)}</pre>`;
@@ -253,34 +257,34 @@ function blockHtml(b, item, field) {
 
 /* ---------- views ---------- */
 function setNav(n) { document.querySelectorAll("[data-nav]").forEach(a => a.classList.toggle("on", a.dataset.nav === n)); }
-function stamp() { return `<p class="msg">Story data version ${esc(CAT.version)}, generated ${esc(CAT.generated)}. Select any passage, or tap a paragraph or a table row, to leave a note.</p>`; }
+function stamp() { return `<p class="msg">This is story data version ${esc(CAT.version)}, generated on ${esc(CAT.generated)}. Select any passage, or tap a paragraph or a table row, to leave a note.</p>`; }
 
 function viewHome() {
   setNav("home");
-  const plot = CAT.lines.find(l => l.kind === "plot"), main = CAT.lines.find(l => l.id === "main");
-  const others = CAT.lines.filter(l => l.kind === "line" && l.id !== "main");
+  const plot = CAT.lines.find(l => l.id === "main-plot"), main = CAT.lines.find(l => l.id === "main");
+  const others = CAT.lines.filter(l => l.id !== "main" && l.id !== "main-plot");
   const counts = Object.fromEntries(Object.keys(STATUS).map(s => [s, CAT.quests.filter(q => q.status === s).length]));
   CUR = {item: "home", label: "The story home page"};
   return `<div class="read"><p class="eyebrow">Elder Souls: Argonia, the new world</p>
-    <h1>The story, all of it</h1>
-    <p class="lede">Every story line written for the new world: the main quest and the fourteen faction lines, each quest in them,
-    and the people and places they use. ${CAT.quests.length} quests: ${Object.entries(counts).map(([s, n]) => `${n} ${STATUS[s].toLowerCase()}`).join(", ")}.</p></div>
-    <p class="lede">Highlight any words to note or react to them; tap an underlined name to see who or what it is. Notes gather in the tray at the top until you send them as one batch. <a href="#map">The link map</a> shows how the lines meet.</p>
+    <h1>The story</h1>
+    <p class="lede">This page holds every story line written for the new world. It has the main quest, the faction lines and the people and places they use.${CAT.quests.length ? ` Of the ${CAT.quests.length} quests written out on their own, ${Object.entries(counts).filter(([, n]) => n).map(([s, n]) => `${n} ${n === 1 ? "is" : "are"} ${STATUS[s].toLowerCase()}`).join(", ")}.` : ""}</p></div>
+    <p class="lede">Highlight any words to note them or react to them. Tap an underlined name to see who or what it is. Your notes gather in the tray at the top until you send them as one batch. <a href="#map">The link map</a> shows where the lines meet.</p>
     ${stamp()}
     <section class="wrap" style="gap:12px"><h2>The main quest</h2><div class="grid">
-      ${plot ? lineCard(plot, "The plot, whole, at the length of one sitting.") : ""}
+      ${plot ? lineCard(plot, "The whole plot, short enough to read in one sitting.") : ""}
       ${main ? lineCard(main) : ""}</div></section>
     <section class="wrap" style="gap:12px"><h2>The faction lines</h2><div class="grid">${others.map(l => lineCard(l)).join("")}</div></section>
-    <section class="wrap" style="gap:12px"><h2>Ledgers</h2><p class="lede">The rulings that make the stories one province.</p><div class="grid">
-      ${CAT.docs.filter(d => d.kind === "ledger").map(d => `<a class="card" href="#d-${d.id}"><span class="eyebrow">${KIND[d.kind]}</span><b>${esc(d.title)}</b></a>`).join("")}</div></section>`;
+    <section class="wrap" style="gap:12px"><h2>Ledgers</h2><p class="lede">These are the rulings that keep the stories true to one province.</p><div class="grid">
+      ${CAT.docs.filter(d => d.kind === "ledger").map(d => `<a class="card" href="#d-${d.id}"><span class="eyebrow">${KIND[d.kind]}</span><b>${esc(d.title)}</b></a>`).join("")}</div></section>
+    ${CAT.docs.some(d => d.kind === "spells") ? `<section class="wrap" style="gap:12px"><h2>Spells</h2><div class="grid">${CAT.docs.filter(d => d.kind === "spells").map(d => `<a class="card" href="#d-${d.id}"><span class="eyebrow">${KIND[d.kind]}</span><b>${esc(d.title)}</b></a>`).join("")}</div></section>` : ""}`;
 }
 function lineCard(l, sub) {
   const qs = l.quests.map(quest).filter(Boolean);
   const by = s => qs.filter(q => q.status === s).length; const m = readMem()[l.id], dm = CAT.docs.find(d => d.id === l.id);
   const upd = m && dm && m.hash !== dm.hash;
-  return `<a class="card" style="--lc:${lineColor(l.id)}" href="#d-${l.id}"><span class="eyebrow">${l.kind === "plot" ? "Plot" : `${qs.length} quests`}${l.readOnPaper ? " · read on paper" : ""}${l.status ? ` · <b>${esc(l.status)}</b>` : ""}</span>
+  return `<a class="card" style="--lc:${lineColor(l.id)}" href="#d-${l.id}"><span class="eyebrow">${l.kind === "plot" ? (l.id === "main-plot" ? "Plot" : "Story") : `${qs.length} quests`}${l.readOnPaper ? " · read on paper" : ""}${l.status ? ` · <b>${esc(l.status)}</b>` : ""}</span>
     <b>${esc(l.title)}</b><p>${esc(sub || l.summary)}</p>
-    ${m ? `<span class="row"><span class="prog" style="flex:1"><i style="width:${Math.round((m.progress || 0) * 100)}%"></i></span>${upd ? `<span class="msg upd">Changed since you read it</span>` : ""}</span>` : ""}
+    ${m ? `<span class="row"><span class="prog" style="flex:1"><i style="width:${Math.round((m.progress || 0) * 100)}%"></i></span>${upd ? `<span class="msg upd">This has changed since you read it.</span>` : ""}</span>` : ""}
     ${qs.length ? `<span class="row">${Object.keys(STATUS).filter(by).map(s => `<span class="pill st-${s}">${by(s)} ${STATUS[s].toLowerCase()}</span>`).join("")}</span>` : ""}</a>`;
 }
 
@@ -294,7 +298,7 @@ function viewQuests() {
     <div class="lchips" role="group" aria-label="Quest line"><button type="button" data-ln="" aria-pressed="${!F.line}">Every line</button>${lines.map(l => `<button type="button" data-ln="${l.id}" style="--lc:${lineColor(l.id)}" aria-pressed="${F.line === l.id}"><span class="swatch"></span>${esc(shortLine(l))}</button>`).join("")}</div>
     <div class="seg" role="group" aria-label="Status">${["", ...Object.keys(STATUS)].map(s => `<button type="button" data-st="${s}" aria-pressed="${F.status === s}">${s ? STATUS[s] : "All"}</button>`).join("")}</div>
     <div class="list" id="qlist"></div>
-    <section class="wrap" style="gap:8px"><h2>Search the full text</h2><p class="msg">Searches every story, ledger and region file for the words above.</p>
+    <section class="wrap" style="gap:8px"><h2>Search the full text</h2><p class="msg">This searches every story, ledger and region file for the words above.</p>
       <div><button class="btn" type="button" id="fts">Search all the text</button></div><div id="ftsOut"></div></section>`;
 }
 function fillQuests() {
@@ -302,12 +306,12 @@ function fillQuests() {
   const rows = CAT.quests.filter(q => (!F.line || q.line === F.line) && (!F.status || q.status === F.status) &&
     (!t || [q.id, q.title, q.lineTitle, ...q.cast.map(c => c.name), ...q.sketch.places.map(p => p.name)].join(" ").toLowerCase().includes(t))).sort(qsort);
   $("#qlist").innerHTML = rows.length ? rows.map(q => `<a class="li" href="#q-${hashId(q.id)}"><span class="swatch" style="--lc:${lineColor(q.line)}"></span><span class="id">${q.id}</span>
-    <span class="t">${esc(q.title)}<span class="sub">${esc(q.lineTitle)}</span></span>${pill(q.status)}</a>`).join("") : `<p class="empty">No quest matches.</p>`;
+    <span class="t">${esc(q.title)}<span class="sub">${esc(q.lineTitle)}</span></span>${pill(q.status)}</a>`).join("") : `<p class="empty">No quest matches these words.</p>`;
 }
 async function fullText() {
   const t = F.q.trim().toLowerCase(), out = $("#ftsOut");
   if (t.length < 3) { out.innerHTML = `<p class="msg">Type at least three letters first.</p>`; return; }
-  out.innerHTML = `<p class="msg">Reading ${CAT.docs.length} files…</p>`;
+  out.innerHTML = `<p class="msg">Reading ${CAT.docs.length} files.</p>`;
   await Promise.all(CAT.docs.map(d => loadDoc(d.id)));
   const hits = [];
   for (const d of CAT.docs) for (const b of DOCS[d.id].blocks) {
@@ -316,18 +320,18 @@ async function fullText() {
     if (i >= 0) hits.push({d, b, s: esc(txt.slice(Math.max(0, i - 70), i)) + "<mark>" + esc(txt.substr(i, t.length)) + "</mark>" + esc(txt.slice(i + t.length, i + t.length + 90))});
     if (hits.length > 200) break;
   }
-  out.innerHTML = hits.length ? `<p class="msg">${hits.length > 200 ? "The first 200" : hits.length} matches.</p>` + hits.map(h => `<div class="fhit"><a href="#d-${h.d.id}" data-jump="${esc(h.b.id)}"><b>${esc(h.d.title)}</b> <span class="msg">${esc(h.b.section)}</span><div class="s">…${h.s}…</div></a></div>`).join("") : `<p class="empty">Nothing found.</p>`;
+  out.innerHTML = hits.length ? `<p class="msg">${hits.length > 200 ? "These are the first 200 matches." : hits.length === 1 ? "There is one match." : `There are ${hits.length} matches.`}</p>` + hits.map(h => `<div class="fhit"><a href="#d-${h.d.id}" data-jump="${esc(h.b.id)}"><b>${esc(h.d.title)}</b> <span class="msg">${esc(h.b.section)}</span><div class="s">…${h.s}…</div></a></div>`).join("") : `<p class="empty">Nothing matches these words.</p>`;
 }
 
 async function viewDoc(id) {
   const meta = CAT.docs.find(d => d.id === id); if (!meta) return notFound();
-  setNav(meta.kind === "world" || meta.kind === "region" ? "world" : "home");
+  setNav(meta.kind === "world" || meta.kind === "region" ? "world" : meta.kind === "spells" ? "spells" : "home");
   const d = await loadDoc(id), line = CAT.lines.find(l => l.id === id); CUR = {item: id, label: d.title};
   const heads = d.blocks.filter(b => b.t === "h" && b.level === 2);
   const qs = line ? line.quests.map(quest).filter(Boolean).sort(qsort) : [];
-  return `<div class="read"><p class="eyebrow">${KIND[d.kind]} · <code>${esc(d.path)}</code></p><h1>${esc(d.title)}</h1></div>
-    <div class="tools"><button class="notebtn" type="button" data-whole="${esc(id)}" data-label="${esc(d.title)}">Note on this whole ${d.kind === "line" ? "line" : "document"}</button>
-    ${heads.length ? `<select class="toc" id="toc" aria-label="Jump to section"><option value="">Jump to a section…</option>${heads.map(h => `<option value="${esc(h.id)}">${h.html.replace(/<[^>]+>/g, "")}</option>`).join("")}</select>` : ""}</div>
+  return `<div class="read"><p class="eyebrow">${kindOf(d)} · <code>${esc(d.path)}</code></p><h1>${esc(d.title)}</h1></div>
+    <div class="tools"><button class="notebtn" type="button" data-whole="${esc(id)}" data-label="${esc(d.title)}">Note on this whole ${d.kind === "line" || d.kind === "plot" ? "story" : "document"}</button>
+    ${heads.length ? `<select class="toc" id="toc" aria-label="Jump to section"><option value="">Jump to a section</option>${heads.map(h => `<option value="${esc(h.id)}">${h.html.replace(/<[^>]+>/g, "")}</option>`).join("")}</select>` : ""}</div>
     ${qs.length ? `<div class="list">${qs.map(q => `<a class="li" href="#q-${hashId(q.id)}"><span class="id">${q.id}</span><span class="t">${esc(q.title)}</span>${pill(q.status)}</a>`).join("")}</div>` : ""}
     <div id="changes"></div>
     <article class="doc read">${d.blocks.filter(b => !(b.t === "h" && b.level === 1)).map(b => blockHtml(b, id, b.section)).join("")}</article>`;
@@ -346,9 +350,9 @@ async function viewQuest(hid) {
     <div class="tools"><button class="notebtn" type="button" data-whole="${esc(q.id)}" data-label="${esc(q.id + " " + q.title)}">Note on this whole quest</button>
       ${i > 0 ? `<a class="chip" href="#q-${hashId(sib[i - 1])}">← ${sib[i - 1]}</a>` : ""}${i < sib.length - 1 ? `<a class="chip" href="#q-${hashId(sib[i + 1])}">${sib[i + 1]} →</a>` : ""}</div>
     <div class="facts">
-      <div class="fact"><h3>People</h3><div class="row">${cast.length ? cast.map(pLink).join("") : `<span class="empty">Named in the outline below.</span>`}</div></div>
-      <div class="fact"><h3>Places</h3><div class="row">${q.sketch.places.length ? q.sketch.places.map(p => plLink(p.name)).join("") : `<span class="empty">Named in the outline below.</span>`}</div></div>
-      <div class="fact"><h3>Stages</h3>${q.stages.length ? `<span>${q.stages.length} stages, from ${esc(q.stages[0].stage)} to ${esc(q.stages[q.stages.length - 1].stage)}</span>` : `<span class="empty">Not staged yet.</span>`}</div>
+      <div class="fact"><h3>People</h3><div class="row">${cast.length ? cast.map(pLink).join("") : `<span class="empty">They are named in the outline below.</span>`}</div></div>
+      <div class="fact"><h3>Places</h3><div class="row">${q.sketch.places.length ? q.sketch.places.map(p => plLink(p.name)).join("") : `<span class="empty">They are named in the outline below.</span>`}</div></div>
+      <div class="fact"><h3>Stages</h3>${q.stages.length ? `<span>It has ${q.stages.length} stages, from ${esc(q.stages[0].stage)} to ${esc(q.stages[q.stages.length - 1].stage)}.</span>` : `<span class="empty">This quest is not staged yet.</span>`}</div>
     </div>
     <div id="changes"></div>${threadHtml(q)}
     <article class="doc read">${q.fields.map(f => `<div class="field-h">${esc(f.name)}<button class="notebtn" type="button" data-whole="${esc(q.id)}" data-field="${esc(f.name)}" data-label="${esc(q.id + ": " + f.name)}">Note</button></div>` +
@@ -366,7 +370,7 @@ function viewPeople(kind) {
 function fillPeople() {
   const el = $("#plist"), kind = el.dataset.kind, t = (F.p || "").toLowerCase();
   const rows = (kind === "people" ? CAT.people : CAT.places).filter(p => (!F.inQuests || p.quests.length) && (!t || (p.name + " " + (p.region || "")).toLowerCase().includes(t)));
-  $("#pcount").textContent = `${rows.length} shown.`;
+  $("#pcount").textContent = rows.length === 1 ? "One is shown." : `${rows.length} are shown.`;
   el.innerHTML = rows.slice(0, 400).map(p => `<a class="li" href="#${kind === "people" ? "p" : "pl"}-${p.id}"><span class="t">${esc(p.name)}<span class="sub">${esc(kind === "people" ? (p.about[0] || "") : (p.region || ""))}</span></span>
     ${p.quests.length ? `<span class="msg">${p.quests.length} quest${p.quests.length > 1 ? "s" : ""}</span>` : ""}</a>`).join("");
 }
@@ -381,17 +385,17 @@ async function viewEntity(kind, id) {
     <div class="tools"><button class="notebtn" type="button" data-whole="${kind}-${esc(p.id)}" data-label="${esc(p.name)}">Note on ${esc(p.name)}</button></div>
     ${about.length && !block ? `<div class="doc read">${about.map(a => `<p>${esc(a)}</p>`).join("")}</div>` : ""}
     ${block ? `<article class="doc read">${block}</article>` : ""}
-    <section class="wrap" style="gap:8px"><h2>In the quests</h2>${p.quests.length ? `<div class="list">${p.quests.map(quest).filter(Boolean).map(q => `<a class="li" href="#q-${hashId(q.id)}"><span class="id">${q.id}</span><span class="t">${esc(q.title)}<span class="sub">${esc(q.lineTitle)}</span></span>${pill(q.status)}</a>`).join("")}</div>` : `<p class="empty">No quest names ${esc(p.name)} yet.</p>`}</section>
+    <section class="wrap" style="gap:8px"><h2>In the quests</h2>${p.quests.length ? `<div class="list">${p.quests.map(quest).filter(Boolean).map(q => `<a class="li" href="#q-${hashId(q.id)}"><span class="id">${q.id}</span><span class="t">${esc(q.title)}<span class="sub">${esc(q.lineTitle)}</span></span>${pill(q.status)}</a>`).join("")}</div>` : `<p class="empty">No quest written out on its own names ${esc(p.name)} yet.</p>`}</section>
     <section class="wrap" style="gap:8px"><h2>Named in</h2><div class="row">${p.docs.map(d => { const m = CAT.docs.find(x => x.id === d); return m ? `<a class="chip" href="#d-${d}">${esc(m.title)}</a>` : ""; }).join("")}</div></section>`;
 }
 function viewWorld() {
   setNav("world"); CUR = {item: "world", label: "The province"};
   const g = k => CAT.docs.filter(d => d.kind === k);
-  return `<div class="read"><h1>The province</h1><p class="lede">The digest of the new world as the stories see it: the province, its named people, and each region with its places.</p></div>
+  return `<div class="read"><h1>The province</h1><p class="lede">This is the digest of the new world on which the stories are built. It covers the province, its named people and each region with its places.</p></div>
     <div class="grid">${g("world").map(d => `<a class="card" href="#d-${d.id}"><span class="eyebrow">Province digest</span><b>${esc(d.title)}</b></a>`).join("")}</div>
     <h2>Regions</h2><div class="grid">${g("region").map(d => `<a class="card" href="#d-${d.id}"><span class="eyebrow">Region · ${CAT.places.filter(p => p.region === d.title).length} places</span><b>${esc(d.title)}</b></a>`).join("")}</div>`;
 }
-const notFound = () => `<h1>Not found</h1><p class="lede">This item is not in the current story data. It may have been renamed. <a href="#home">Back to the lines.</a></p>`;
+const notFound = () => `<h1>Not found</h1><p class="lede">This item is not in the current story data. It may have been renamed. <a href="#home">Go back to the lines.</a></p>`;
 
 async function route() {
   const h = location.hash.slice(1) || "home"; const v = $("#view"); let html;
@@ -428,7 +432,10 @@ let target = null; // {item, field, block, quote, label}
 const act = $("#act"), actBtn = $("#actBtn");
 function itemLabel(item) { const q = quest(item); if (q) return `${q.id} ${q.title}`; const d = CAT.docs.find(x => x.id === item); return d ? d.title : item; }
 function clearActive() { document.querySelectorAll(".blk.active,tr.active").forEach(e => e.classList.remove("active")); target = null; act.hidden = true; }
-function showAct(t, text) { target = t; actBtn.textContent = text; act.hidden = false; }
+function showAct(t, text) { target = t; actBtn.textContent = text; placeAct(); act.hidden = false; }
+/* the note bar's top: just under the sticky header, wherever the page is scrolled */
+function placeAct() { const b = $(".bar").getBoundingClientRect(); act.style.setProperty("--act-top", Math.max(0, Math.round(b.bottom)) + "px"); }
+addEventListener("resize", () => { if (!act.hidden) placeAct(); });
 document.addEventListener("selectionchange", () => {
   const sel = getSelection(); if (!sel || sel.isCollapsed) { if (target && target.fromSel) { target = null; act.hidden = true; } return; }
   const node = sel.anchorNode && (sel.anchorNode.nodeType === 1 ? sel.anchorNode : sel.anchorNode.parentElement);
@@ -465,7 +472,7 @@ document.querySelectorAll("[data-react]").forEach(b => b.addEventListener("click
   if (!target) return; const a = {...target, label: target.label || itemLabel(target.item)};
   drafts.push({id: "n" + Date.now().toString(36) + Math.random().toString(36).slice(2, 6), item: a.item, label: a.label, field: a.field, block: a.block,
     quote: a.quote, note: `Reaction: ${b.dataset.react}.`, version: CAT.version, at: new Date().toISOString(), view: a.view || location.hash || "#home", kind: "reaction", _dirty: true});
-  saveDrafts(); clearActive(); getSelection()?.removeAllRanges(); paintHighlights(); toast(`${b.dataset.react}: added to the tray`);
+  saveDrafts(); clearActive(); getSelection()?.removeAllRanges(); paintHighlights(); toast(`Your reaction "${b.dataset.react}" is in the tray.`);
 }));
 
 function sheet(html, onClose) {
@@ -483,16 +490,16 @@ function openComposer(t, editId) {
     <div class="anchor">On <b>${esc(a.label)}</b>${a.field && a.field !== "whole" ? `, ${esc(a.field)}` : ""}</div>
     ${a.quote ? `<blockquote class="quote">${esc(a.quote)}</blockquote>` : ""}
     <label for="noteText" class="eyebrow">Your note for the agent</label>
-    <textarea id="noteText" placeholder="What should change, and why">${esc(ex ? ex.note : "")}</textarea>
+    <textarea id="noteText" placeholder="Say what should change and why.">${esc(ex ? ex.note : "")}</textarea>
     <div class="row"><button class="btn pri" type="button" id="noteSave">${ex ? "Save changes" : "Add to the tray"}</button><button class="btn" type="button" data-close>Cancel</button>${ex ? `<button class="btn dan" type="button" id="noteDel">Remove</button>` : ""}</div>`);
-  if (ex) $("#noteDel", root).onclick = () => { removeDraft(ex.id); closeSheet(); paintHighlights(); toast("Note removed"); };
+  if (ex) $("#noteDel", root).onclick = () => { removeDraft(ex.id); closeSheet(); paintHighlights(); toast("The note is removed."); };
   const ta = $("#noteText", root); setTimeout(() => ta.focus(), 50);
   $("#noteSave", root).onclick = () => {
     const note = ta.value.trim(); if (!note) { ta.focus(); return; }
     if (ex) { ex.note = note; ex._dirty = true; }
     else drafts.push({id: "n" + Date.now().toString(36) + Math.random().toString(36).slice(2, 6), item: a.item, label: a.label, field: a.field,
       block: a.block, quote: a.quote, note, version: CAT.version, at: new Date().toISOString(), view: a.view || location.hash || "#home", kind: a.kind || "text", _dirty: true});
-    saveDrafts(); closeSheet(); clearActive(); getSelection()?.removeAllRanges(); paintHighlights(); toast(ex ? "Note saved" : "Note added to the tray");
+    saveDrafts(); closeSheet(); clearActive(); getSelection()?.removeAllRanges(); paintHighlights(); toast(ex ? "The note is saved." : "The note is in the tray.");
     if (a.block) document.querySelector(`[data-block="${CSS.escape(a.block)}"]`)?.classList.add("noted");
     if (editId) openTray();
   };
@@ -503,34 +510,34 @@ const BST = {submitted: "Submitted", "picked up": "Picked up", actioned: "Action
 function openTray(msg) {
   const past = batches.slice().sort((a, b) => (b.submittedAt || "").localeCompare(a.submittedAt || ""));
   const root = sheet(`<div class="sheet-h"><h2>Notes</h2><button class="x" type="button" data-close aria-label="Close">✕</button></div>
-    <p class="msg">${db && synced ? "Your drafts are saved to your account, so they follow you to any device." : "Your drafts are saved on this device only for now; they go to your account when it can be reached."} A submitted batch goes to the agents, who mark it picked up and answer each note here.</p>
+    <p class="msg">${db && synced ? "Your drafts are saved to your account, so you can read them on any device." : "For now your drafts are saved on this device alone. They go to your account once the page can reach it."} A submitted batch goes to the agents, who mark it picked up and answer each note here.</p>
     ${msg ? `<p class="msg"><b>${esc(msg)}</b></p>` : ""}
     <h3 class="eyebrow">Drafts (${drafts.length})</h3>
-    ${drafts.length ? drafts.map(d => `<div class="note"><div class="anchor"><b>${esc(d.label)}</b>${d.field && d.field !== "whole" ? ` · ${esc(d.field)}` : ""}${d.version !== CAT.version ? " · made on an older version of the story" : ""}</div>
+    ${drafts.length ? drafts.map(d => `<div class="note"><div class="anchor"><b>${esc(d.label)}</b>${d.field && d.field !== "whole" ? ` · ${esc(d.field)}` : ""}${d.version !== CAT.version ? " · written on an older version of the story" : ""}</div>
       ${d.quote ? `<blockquote class="quote">${esc(d.quote)}</blockquote>` : ""}<div>${esc(d.note)}</div>
       ${dreplies[d.id] ? `<div class="reply"><b>Agent:</b> ${esc(dreplies[d.id])}</div>` : ""}
       <div class="row"><button class="btn" type="button" data-edit="${d.id}">Edit</button><button class="btn dan" type="button" data-del="${d.id}">Remove</button></div></div>`).join("")
-      : `<p class="empty">No drafts. Select words in any story, or tap a paragraph, then add a note.</p>`}
+      : `<p class="empty">You have no drafts. Select words in any story, or tap a paragraph, then add a note.</p>`}
     <div class="row"><button class="btn pri" type="button" id="submitB" ${drafts.length && db ? "" : "disabled"}>Submit ${drafts.length || ""} note${drafts.length === 1 ? "" : "s"} as a batch</button>
-      <span class="msg">${db ? "" : dbState === "connecting" ? "Connecting to the shared store…" : "Submitting needs you signed in to claude.ai; drafts are kept here meanwhile."}</span></div>
+      <span class="msg">${db ? "" : dbState === "connecting" ? "The page is connecting to the shared store." : "You need to be signed in to claude.ai to submit. Your drafts are kept here until then."}</span></div>
     <h3 class="eyebrow">Submitted batches</h3>
     ${past.length ? past.map(b => `<div class="note"><div class="row"><b>${esc((b.submittedAt || "").slice(0, 16).replace("T", " "))}</b><span class="pill ${b.status === "actioned" ? "st-reviewed" : b.status === "picked up" ? "st-written" : "st-outlined"}">${BST[b.status] || esc(b.status)}</span><span class="msg">${(b.notes || []).length} notes${b.pickedUpBy ? " · " + esc(b.pickedUpBy) : ""}</span></div>
       ${b.reply ? `<div class="reply">${esc(b.reply)}</div>` : ""}
       ${(b.notes || []).map(n => `<div class="note"><div class="anchor"><b>${esc(n.label)}</b>${n.field && n.field !== "whole" ? ` · ${esc(n.field)}` : ""}</div>${n.quote ? `<blockquote class="quote">${esc(n.quote)}</blockquote>` : ""}<div>${esc(n.note)}</div>
         ${n.reply ? `<div class="reply"><b>Agent:</b> ${esc(n.reply)}</div>` : ""}</div>`).join("")}</div>`).join("")
-      : `<p class="empty">${db ? "No batches yet." : "Past batches show here once the shared store is reachable."}</p>`}`);
+      : `<p class="empty">${db ? "You have not submitted a batch yet." : "Past batches show here once the page can reach the shared store."}</p>`}`);
   root.querySelectorAll("[data-del]").forEach(b => b.onclick = () => { removeDraft(b.dataset.del); paintHighlights(); openTray(); });
   root.querySelectorAll("[data-edit]").forEach(b => b.onclick = () => openComposer(null, b.dataset.edit));
   const sb = $("#submitB", root); if (sb) sb.onclick = async () => {
-    sb.disabled = true; sb.textContent = "Submitting…";
+    sb.disabled = true; sb.textContent = "Submitting";
     const id = "b" + new Date().toISOString().replace(/[^0-9]/g, "").slice(0, 14) + Math.random().toString(36).slice(2, 5);
     try {
       await db.collection("batches").doc(id).set({status: "submitted", submittedAt: new Date().toISOString(), dataVersion: CAT.version,
         notes: drafts.map(d => ({id: d.id, kind: d.kind || "text", item: d.item, label: d.label, field: d.field, block: d.block || null, view: d.view || null, quote: d.quote || "", note: d.note, version: d.version, reply: null}))});
       const now = Date.now(), sent = drafts.map(d => d.id); drafts = []; for (const i of sent) gone[i] = now; saveLocal();
       for (const i of sent) { try { await db.collection("drafts").doc(i).set({by: uid, updatedAt: now, deleted: true}); } catch (e) { queueSync(); } }
-      openTray("Submitted. The batch is waiting for an agent.");
-    } catch (e) { openTray(`Could not submit: ${e.message || e.code}. Your drafts are kept; try again.`); }
+      openTray("The batch is submitted and is waiting for an agent.");
+    } catch (e) { openTray(`The batch could not be submitted (${e.message || e.code}). Your drafts are kept, so you can try again.`); }
   };
 }
 $("#trayBtn").onclick = () => openTray();
@@ -548,7 +555,7 @@ function markQuote(root, quote, noteId) {
     const s0 = Math.max(at, off), e0 = Math.min(end, off + node.data.length);
     if (s0 >= e0 || !node.data.slice(s0 - off, e0 - off).trim()) continue;
     const r = document.createRange(); r.setStart(node, s0 - off); r.setEnd(node, e0 - off);
-    const m = document.createElement("mark"); m.className = "hl"; m.dataset.note = noteId; m.title = "Your note: tap to edit"; r.surroundContents(m);
+    const m = document.createElement("mark"); m.className = "hl"; m.dataset.note = noteId; m.title = "Tap to edit your note"; r.surroundContents(m);
   }
   return true;
 }
@@ -564,31 +571,31 @@ function paintHighlights() {
 }
 
 /* ---------- the root map ---------- */
-const KINDS = {crossing: "Crossings the ledger rules on", person: "Shared people", place: "Shared places", reference: "One quest names another's"};
+const KINDS = {crossing: "Crossings that the ledger settles", person: "Shared people", place: "Shared places", reference: "One quest names another's"};
 const MK = {crossing: true, person: true, place: false, reference: true};
 function viewMap() {
   setNav("map"); CUR = {item: "map", label: "The link map"};
-  return `<div class="read"><h1>Link map</h1><p class="lede">The main quest sits in the middle, the faction lines around it. A line between two lines means they share something: a crossing the consistency ledger rules on, a person, a place, or a quest that names another line's quest. Tap a quest line to see what it connects to; tap a connection to read its links and leave a note on any of them.</p></div>
+  return `<div class="read"><h1>Link map</h1><p class="lede">The main quest is in the middle, with the faction stories round it. A line between two stories means they share something. It may be a crossing that the consistency ledger settles, a person, a place or a quest that names another story's quest. Tap a story to see what it connects to. Tap a connection to read its links and leave a note on any of them.</p></div>
     <div class="kinds" role="group" aria-label="Kinds of link">${Object.entries(KINDS).map(([k, t]) => `<button type="button" class="chip" data-mk="${k}" aria-pressed="${MK[k]}" style="cursor:pointer;border:2px solid ${MK[k] ? "var(--accent)" : "var(--line)"}">${MK[k] ? "Showing" : "Show"} ${t.toLowerCase()} (${CAT.links.filter(e => e.kind === k).length})</button>`).join("")}</div>
     <div class="mapbox"><svg id="map" viewBox="0 0 420 420" role="img" aria-label="Map of the links between quest lines"></svg></div>
     <section id="mapPanel" class="wrap" style="gap:10px"></section>`;
 }
 function wireMap(focus) {
-  const svg = $("#map"), lines = CAT.lines.filter(l => l.kind === "line"), C = 210;
-  const others = lines.filter(l => l.id !== "main");
-  const pos = {main: [C, C]};
+  const svg = $("#map"), M = MAIN(), mid = M ? M.id : "main", lines = CAT.lines.filter(l => l.id === mid || (l.id !== "main" && l.id !== "main-plot")), C = 210;
+  const others = lines.filter(l => l.id !== mid);
+  const pos = {[mid]: [C, C]};
   others.forEach((l, i) => { const a = -Math.PI / 2 + i * 2 * Math.PI / others.length; pos[l.id] = [C + 160 * Math.cos(a), C + 160 * Math.sin(a)]; });
   const es = CAT.links.filter(e => MK[e.kind] && pos[e.a] && pos[e.b]);
   const pairs = {}; es.forEach(e => (pairs[e.a + "|" + e.b] ||= []).push(e));
-  const curve = (a, b) => { const [x1, y1] = pos[a], [x2, y2] = pos[b]; const mx = (x1 + x2) / 2, my = (y1 + y2) / 2; const k = a === "main" || b === "main" ? 0.15 : 0.6;
+  const curve = (a, b) => { const [x1, y1] = pos[a], [x2, y2] = pos[b]; const mx = (x1 + x2) / 2, my = (y1 + y2) / 2; const k = a === mid || b === mid ? 0.15 : 0.6;
     return `M${x1.toFixed(1)},${y1.toFixed(1)} Q${(mx + (C - mx) * k).toFixed(1)},${(my + (C - my) * k).toFixed(1)} ${x2.toFixed(1)},${y2.toFixed(1)}`; };
   let g = `<defs><radialGradient id="glow"><stop offset="0" stop-color="var(--glow)" stop-opacity=".35"/><stop offset="1" stop-color="var(--glow)" stop-opacity="0"/></radialGradient></defs>
     `;
   for (const [k, list] of Object.entries(pairs)) { const [a, b] = k.split("|"); const w = Math.min(10, 1.5 + list.length * 0.9);
     g += `<path class="edge" data-pair="${k}" d="${curve(a, b)}" stroke-width="${w}"/><path class="hit" data-pair="${k}" d="${curve(a, b)}"><title>${list.length} links</title></path>`; }
-  for (const l of lines) { const [x, y] = pos[l.id]; const r = l.id === "main" ? 30 : 16; const below = y >= C - 5;
+  for (const l of lines) { const [x, y] = pos[l.id]; const r = l.id === mid ? 30 : 16; const below = y >= C - 5;
     g += `<g class="node" data-node="${l.id}" tabindex="0" role="button" aria-label="${esc(shortLine(l))}"><circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r}" fill="${lineColor(l.id)}"/>
-      <text x="${x.toFixed(1)}" y="${(l.id === "main" ? y + 4 : below ? y + r + 13 : y - r - 6).toFixed(1)}" text-anchor="middle"${l.id === "main" ? ' style="fill:#fff"' : ""}>${esc(l.id === "main" ? "Main quest" : shortLine(l))}</text></g>`; }
+      <text x="${x.toFixed(1)}" y="${(l.id === mid ? y + 4 : below ? y + r + 13 : y - r - 6).toFixed(1)}" text-anchor="middle"${l.id === mid ? ' style="fill:#fff"' : ""}>${esc(l.id === mid ? "Main quest" : shortLine(l))}</text></g>`; }
   svg.innerHTML = g;
   const panel = $("#mapPanel"), L = id => CAT.lines.find(l => l.id === id);
   const linkCard = e => { const lbl = `Link: ${shortLine(L(e.a))} and ${shortLine(L(e.b))}, ${e.label}`; const q = id => id ? `<a class="chip" href="#q-${hashId(id)}">${id}</a>` : "";
@@ -598,8 +605,8 @@ function wireMap(focus) {
   const showPair = k => { const list = pairs[k] || []; const [a, b] = k.split("|");
     svg.querySelectorAll(".edge").forEach(p => { p.classList.toggle("on", p.dataset.pair === k); p.classList.toggle("off", p.dataset.pair !== k); });
     svg.querySelectorAll(".node").forEach(n => { n.classList.toggle("on", false); n.classList.toggle("off", n.dataset.node !== a && n.dataset.node !== b); });
-    panel.innerHTML = `<h2>${esc(shortLine(L(a)))} and ${esc(shortLine(L(b)))}</h2><p class="msg">${list.length} link${list.length === 1 ? "" : "s"} of the kinds shown.</p>
-      <div><button class="notebtn" type="button" data-whole="pair:${esc(a)}:${esc(b)}" data-kind="link" data-field="pair" data-label="${esc(`Link: ${shortLine(L(a))} and ${shortLine(L(b))}, all of it`)}">Note on how these two lines meet</button></div>${list.map(linkCard).join("")}`;
+    panel.innerHTML = `<h2>${esc(shortLine(L(a)))} and ${esc(shortLine(L(b)))}</h2><p class="msg">${list.length === 1 ? "There is one link" : `There are ${list.length} links`} of the kinds shown.</p>
+      <div><button class="notebtn" type="button" data-whole="pair:${esc(a)}:${esc(b)}" data-kind="link" data-field="pair" data-label="${esc(`Link: ${shortLine(L(a))} and ${shortLine(L(b))}, as a whole`)}">Note on how these two lines meet</button></div>${list.map(linkCard).join("")}`;
     panel.scrollIntoView({behavior: "smooth", block: "nearest"}); };
   const showNode = id => { const l = L(id);
     const mine = Object.entries(pairs).filter(([k]) => k.split("|").includes(id)).sort((x, y) => y[1].length - x[1].length);
@@ -607,12 +614,12 @@ function wireMap(focus) {
     svg.querySelectorAll(".node").forEach(n => { n.classList.toggle("on", n.dataset.node === id); n.classList.toggle("off", n.dataset.node !== id && !mine.some(([k]) => k.split("|").includes(n.dataset.node))); });
     panel.innerHTML = `<h2 style="color:${lineColor(id)}">${esc(l.title.split(":")[0])}</h2><div class="row"><a class="chip" href="#d-${id}">Read its story</a>${l.quests.slice().sort().map(q => `<a class="chip" href="#q-${hashId(q)}">${q}</a>`).join("")}</div>
       ${mine.length ? `<div class="list">${mine.map(([k, list]) => { const o = k.split("|").find(x => x !== id); return `<button type="button" class="li" style="width:100%;background:none;border:0;border-bottom:1px solid var(--line);cursor:pointer;text-align:left" data-openpair="${k}"><span class="swatch" style="--lc:${lineColor(o)}"></span><span class="t">${esc(shortLine(L(o)))}<span class="sub">${[...new Set(list.map(e => KINDS[e.kind]))].join(", ")}</span></span><span class="msg">${list.length}</span></button>`; }).join("")}</div>`
-        : `<p class="empty">No links of the kinds shown.</p>`}`;
+        : `<p class="empty">There are no links of the kinds shown.</p>`}`;
     panel.querySelectorAll("[data-openpair]").forEach(b => b.onclick = () => showPair(b.dataset.openpair)); };
   svg.querySelectorAll(".hit").forEach(p => p.onclick = () => showPair(p.dataset.pair));
   svg.querySelectorAll(".node").forEach(n => { n.onclick = () => showNode(n.dataset.node); n.onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); showNode(n.dataset.node); } }; });
   document.querySelectorAll("[data-mk]").forEach(b => b.onclick = () => { MK[b.dataset.mk] = !MK[b.dataset.mk]; route(); });
-  showNode(focus && pos[focus] ? focus : "main");
+  showNode(focus && pos[focus] ? focus : mid);
 }
 
 
@@ -658,7 +665,7 @@ function threadHtml(q) {
     return `<div class="row" ${e ? `data-link="${esc(e.id)}" data-label="${esc(`Link: ${q.id} and ${qid}, ${e.label}`)}"` : ""}><a class="li" style="flex:1;border:0;padding:6px 0" href="#q-${hashId(qid)}"><span class="swatch" style="--lc:${lineColor(o.line)}"></span><span class="id">${qid}</span><span class="t">${esc(o.title)}<span class="sub">${esc(why)}</span></span></a>
       ${e ? `<button class="notebtn" type="button" data-whole="${esc(e.id)}" data-kind="link" data-field="${e.kind}" data-quote="${esc(e.label)}" data-label="${esc(`Link: ${q.id} and ${qid}, ${e.label}`)}">Note on link</button>` : ""}</div>`; };
   return `<details class="fact thread" ${mine.length ? "open" : ""}><summary style="cursor:pointer;font-weight:600">Follow the thread (${mine.length + (i > 0) + (i < sib.length - 1)})</summary>
-    ${i > 0 ? row(sib[i - 1], "Before this, in the same line") : ""}${i < sib.length - 1 ? row(sib[i + 1], "Next in the same line") : ""}
+    ${i > 0 ? row(sib[i - 1], "The quest before this one in the same line") : ""}${i < sib.length - 1 ? row(sib[i + 1], "The next quest in the same line") : ""}
     ${mine.map(e => row(e.qa === q.id ? e.qb : e.qa, `${KINDS[e.kind]}: ${e.label}`, e)).join("")}</details>`;
 }
 
@@ -697,7 +704,7 @@ addEventListener("scroll", () => {
 /* ---------- start ---------- */
 paintCount();
 fetch("data/catalog.json").then(r => { if (!r.ok) throw new Error("the story data did not load"); return r.json(); })
-  .then(c => { CAT = c; addEventListener("hashchange", route); route(); })
+  .then(c => { CAT = c; $("#navSpells").hidden = !c.docs.some(d => d.kind === "spells"); addEventListener("hashchange", route); route(); })
   .catch(e => { $("#view").innerHTML = `<h1>Could not load the story</h1><p class="lede">${esc(e.message)}. Reload the page to try again.</p>`; });
 const t = setTimeout(() => { if (!db) dbState = "absent"; }, 10000);
 (async () => {

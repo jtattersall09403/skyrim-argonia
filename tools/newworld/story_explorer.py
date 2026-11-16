@@ -27,6 +27,7 @@ ROOT = Path(__file__).resolve().parents[2]
 LINES = Path("story/design/quests/lines")
 WORLD = Path("story/design/world")
 WORLD_FILES = ("index.md", "province.md", "people.md")
+SPELLS = Path("story/design/quests/spell-groups.md")   # the spells grouped by use: a plain document, when it exists
 PAGE = Path(__file__).with_name("story_explorer_page.html")
 RECORD = Path(__file__).with_name("story_explorer.json")
 OUT = ROOT / "out" / "story-explorer"
@@ -48,6 +49,8 @@ def sources(root: Path = ROOT) -> list[Path]:
     out = [p for p in lines if f"{p.stem}-newworld" not in names]
     out += [root / WORLD / f for f in WORLD_FILES if (root / WORLD / f).exists()]
     out += sorted((root / WORLD / "regions").glob("*.md"))
+    if (root / SPELLS).exists():
+        out.append(root / SPELLS)
     return [p.relative_to(root) for p in out]
 
 
@@ -124,7 +127,10 @@ def parse(text: str) -> list[dict]:
                     items[-1] += " " + lines[i].strip()
                 i += 1
             ordered = bool(re.match(r"^\s*\d", ln))
-            if any(ARC_QUEST.match(x) for x in items):  # a list of quests: one block each, so each is its own quest
+            if ordered:  # each numbered item is its own block, so it can be noted on its own; it keeps its number
+                start = int(re.match(r"^\s*(\d+)", ln).group(1))
+                blocks += [{"t": "list", "ordered": True, "items": [x], "start": start + k} for k, x in enumerate(items)]
+            elif any(ARC_QUEST.match(x) for x in items):  # a list of quests: one block each, so each is its own quest
                 blocks += [{"t": "list", "ordered": ordered, "items": [x]} for x in items]
             else:
                 blocks.append({"t": "list", "ordered": ordered, "items": items})
@@ -144,7 +150,7 @@ def render(b: dict) -> dict:
     if b["t"] == "h":
         return {"t": "h", "level": b["level"], "html": inline(b["text"])}
     if b["t"] == "list":
-        return {"t": "list", "ordered": b["ordered"], "items": [inline(x) for x in b["items"]]}
+        return {"t": "list", "ordered": b["ordered"], "items": [inline(x) for x in b["items"]], "start": b.get("start", 1)}
     if b["t"] == "table":
         return {"t": "table", "head": [inline(x) for x in b["head"]], "rows": [[inline(x) for x in r] for r in b["rows"]]}
     return {"t": "code", "lang": b["lang"], "text": b["text"]}
@@ -152,12 +158,19 @@ def render(b: dict) -> dict:
 
 # ---- documents, sections, quests -----------------------------------------------------------------------------
 
-def doc_kind(rel: Path) -> str:
+PLOT_ACTS = re.compile(r"^#{2,3}\s+(\d+\.\s+)?The acts\s*$", re.M | re.I)
+
+
+def doc_kind(rel: Path, text: str = "") -> str:
+    """A line file in the plot form (a short page with a section "The acts", as main-plot.md) is a plot; the main
+    quest's plot is the one with the id main-plot, every other plot is a faction's."""
+    if rel == SPELLS:
+        return "spells"
     if rel.parent == WORLD / "regions":
         return "region"
     if rel.parent == WORLD:
         return "world"
-    if rel.stem == "main-plot":
+    if rel.stem == "main-plot" or PLOT_ACTS.search(text):
         return "plot"
     if rel.stem in ("consistency", "province-plan"):
         return "ledger"
@@ -189,7 +202,7 @@ def build_doc(rel: Path, text: str) -> dict:
         out.append(b2)
     status = next((STATUS.match(b["text"]).group(1).strip().lower() for b in blocks[:6]
                    if b["t"] == "p" and STATUS.match(b["text"])), None)
-    return {"id": did, "path": str(rel), "kind": doc_kind(rel), "title": title, "blocks": out, "status": status}
+    return {"id": did, "path": str(rel), "kind": doc_kind(rel, text), "title": title, "blocks": out, "status": status}
 
 
 def parse_sketch(text: str) -> dict:
@@ -338,6 +351,19 @@ def people_and_places(docs: list[dict], quests: list[dict]) -> tuple[list[dict],
                     nxt = next((x["_raw"]["text"] for x in blocks[i + 1:i + 3] if x["_raw"]["t"] == "p"), "")
                     place(plain(raw["text"]), d["id"], plain(nxt)[:280], d["title"])
                     places[slug(re.sub(r"\s*\(.*?\)\s*$", "", plain(raw["text"])))]["block"] = b["id"]
+        if d["kind"] == "plot":  # a plot names its people in a "Who" table and its places in the needs table
+            for b in d["blocks"]:
+                raw = b["_raw"]
+                if raw["t"] != "table" or not raw["head"]:
+                    continue
+                head = plain(raw["head"][0]).lower()
+                for r in raw["rows"]:
+                    if head == "who":
+                        bold = re.match(r"^\*\*(.+?)\*\*", r[0].strip())
+                        person(plain(bold.group(1)) if bold else plain(r[0]).split(",")[0], d["id"],
+                               plain(r[1]) if len(r) > 1 else "")
+                    elif head == "place":
+                        place(plain(r[0]), d["id"])
         if d["id"] == "people":
             for b in d["blocks"]:
                 raw = b["_raw"]
@@ -415,6 +441,18 @@ def links(docs: list[dict], quests: list[dict], people: list[dict], places: list
 
 # ---- the whole -----------------------------------------------------------------------------------------------
 
+def summary(d: dict) -> str:
+    """A line's card text: a plot's first paragraph under its first section (what the faction is), else the
+    story's first paragraph; a status line is never the summary."""
+    blocks = d["blocks"]
+    if d["kind"] == "plot":
+        first = next((i for i, b in enumerate(blocks) if b["_raw"]["t"] == "h" and b["_raw"]["level"] == 2), None)
+        if first is not None:
+            blocks = blocks[first:]
+    return next((plain(b["_raw"]["text"])[:400] for b in blocks
+                 if b["_raw"]["t"] == "p" and not STATUS.match(b["_raw"]["text"])), "")
+
+
 def generate(root: Path = ROOT, out: Path = OUT) -> dict:
     version = sources_hash(root)
     built = built_records(root)
@@ -429,7 +467,7 @@ def generate(root: Path = ROOT, out: Path = OUT) -> dict:
                            for b in d["blocks"] if b["_raw"]["t"] == "h")
             lines.append({"id": d["id"], "title": d["title"], "kind": d["kind"], "quests": [q["id"] for q in qs],
                           "readOnPaper": reviewed, "status": d["status"],
-                          "summary": next((plain(b["_raw"]["text"])[:400] for b in d["blocks"] if b["_raw"]["t"] == "p"), "")})
+                          "summary": summary(d)})
     catalog = {
         "version": version,
         "generated": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),

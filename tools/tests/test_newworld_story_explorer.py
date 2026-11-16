@@ -144,3 +144,77 @@ def test_merge_newest_edit_wins():
     assert m["drafts"][0]["note"] == "new" and m["upload"][0]["note"] == "new"
     m = _merge([{"id": "n5", "note": "old", "updatedAt": 2}], {}, [{"id": "n5", "note": "new", "updatedAt": 9, "deleted": False}])
     assert m["drafts"][0]["note"] == "new" and not m["upload"]
+
+
+PLOT = """# The Chainbreakers: the plot
+
+The faction's plot, whole.
+
+**Words.** *The Owing*: the marsh's sentence.
+
+## 1. What the faction is
+
+The Chainbreakers buy the bound out of their Owing.
+
+## 2. The people who matter
+
+| Who | What they want | What they hide |
+|---|---|---|
+| **Never-Sold**, the Chainbreakers' head, at Reedfall | every debtor freed | her own past |
+
+## 3. The acts
+
+### Act I: the gate
+
+1. **The Gate** (Reedfall). The player buys three people out.
+2. **The Broker** (Ussa-Rekh). The broker sells a debt.
+
+## 4. What it needs
+
+| Place | The thing | Quest |
+|---|---|---|
+| Reedfall | a gate with a keeper | 1. The Gate |
+"""
+
+
+def plot_tree(root: Path) -> Path:
+    (root / se.LINES).mkdir(parents=True)
+    (root / se.LINES / "main-plot.md").write_text(PLOT.replace("The Chainbreakers: the plot", "The Eye and the Root: the plot"))
+    (root / se.LINES / "chainbreakers.md").write_text(PLOT)
+    return root
+
+
+def test_a_plot_form_faction_story_is_read_as_the_main_plot_is(tmp_path):
+    c = se.generate(plot_tree(tmp_path / "r"), tmp_path / "out")
+    lines = {x["id"]: x for x in c["lines"]}
+    assert lines["chainbreakers"]["kind"] == lines["main-plot"]["kind"] == "plot"
+    assert lines["chainbreakers"]["summary"].startswith("The Chainbreakers buy")
+    assert c["quests"] == [] and lines["chainbreakers"]["quests"] == []
+    assert "chainbreakers" in next(p for p in c["people"] if p["name"] == "Never-Sold")["docs"]
+    assert "chainbreakers" in next(p for p in c["places"] if p["name"] == "Reedfall")["docs"]
+    assert not any(d["kind"] == "spells" for d in c["docs"])
+
+
+def test_a_numbered_item_is_its_own_block_and_keeps_its_number():
+    d = se.build_doc(Path("chainbreakers.md"), PLOT)
+    items = [b for b in d["blocks"] if b["t"] == "list"]
+    assert [len(b["items"]) for b in items] == [1, 1] and [b["start"] for b in items] == [1, 2]
+    assert len({b["id"] for b in items}) == 2 and "The Broker" in items[1]["items"][0]
+
+
+def test_spells_by_use_appears_when_its_source_exists(tmp_path):
+    root = plot_tree(tmp_path / "r")
+    (root / se.SPELLS).write_text("# Spells by use\n\n## Healing\n\nRestore Health heals.\n")
+    c = se.generate(root, tmp_path / "out")
+    doc = next(d for d in c["docs"] if d["id"] == "spell-groups")
+    assert doc["kind"] == "spells" and doc["title"] == "Spells by use"
+    assert (tmp_path / "out" / "data" / "doc-spell-groups.json").exists()
+
+
+def test_the_note_bar_sits_under_the_header_clear_of_chrome_android():
+    """Chrome on Android covers the bottom of the screen (touch to search) and the words' surroundings (its
+    selection toolbar); the note bar is fixed under the sticky header, its top set from the header's bottom."""
+    page = se.PAGE.read_text()
+    rule = page.split(".act{", 1)[1].split("}", 1)[0]
+    assert "position:fixed" in rule and "top:var(--act-top" in rule and "bottom:" not in rule
+    assert "getBoundingClientRect" in page.split("function placeAct", 1)[1][:200]

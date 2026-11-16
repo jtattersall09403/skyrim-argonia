@@ -5,8 +5,8 @@ description: Pick up the owner's note batches from the story explorer page, act 
 
 # Story feedback
 
-The story explorer is a private page of the new world's story: the main quest's plot, every line's story, every
-quest, the people, places and the province digest. The owner selects a passage, or taps a paragraph, a table row
+The story explorer is a private page of the new world's story: the main quest's plot, every faction's story, every
+quest written out on its own, the people, places, the province digest and the spells by use. The owner selects a passage, or taps a paragraph, a table row
 or a whole quest, writes a note, and submits his notes as a batch. Its url is in
 `tools/newworld/story_explorer.json`.
 
@@ -46,7 +46,8 @@ notes; `story-explorer-drafts-gone`, removals by id and time) and merges the two
 2. Mark each picked up at once: `action: "update"`, `doc_id`, `if_version` (the version the read showed),
    `data: {"status": "picked up", "pickedUpAt": <now>, "pickedUpBy": <your session>}`.
 3. Act on every note. The quote and `block` find the passage in its source file (the document id is the file's
-   name under `story/design/quests/lines/` or `story/design/world/`); a note made on an older `version` may point
+   name under `story/design/quests/lines/` or `story/design/world/`, and `spell-groups` is
+   `story/design/quests/spell-groups.md`; each numbered item, each table and each paragraph is its own block); a note made on an older `version` may point
    at text that has since moved, so search for the quote. Story and quest changes go through the quest skills,
    entered at `quest-system`, and the owner's bar; a ruling in a note goes to owner-rulings and owner-bar the same
    day.
