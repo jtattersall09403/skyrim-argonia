@@ -123,7 +123,7 @@ before its first use. The middle column is where each was first asked for:
 |---|---|---|
 | the player's name set from a conversation | the main quest's opening | the game's own name entry opened by a stage |
 | a fight that ends in a yield | a duel or brawl a quest calls for (Blackrose's gate, the pirates' tavern, the merchants' and the Chainbreakers' fights) | Skyrim's brawl: the person yields when badly hurt, which sets a stage |
-| a short film played by a stage | the main quest's three ending visions | a Bink film played by the ending's stage; messages until the films are made |
+| a short film played by a stage (this one only for the use named, never elsewhere) | the main quest's three ending visions | a Bink film played by the ending's stage; messages until the films are made |
 | a visitor who wakes the player from rest | the thieves' recruiter | the sleep event Skyrim's Dark Brotherhood visit uses |
 | the player's first theft starts a quest | the thieves' recruiter | a story-manager event on the first stolen thing |
 | a fade to black after which a person is gone | a person who leaves at the end of a talk (the thieves' visitor, people the Chainbreakers free, the Sisei-Xul's dying man) | an ImageSpaceModifier fade with the person disabled behind it |

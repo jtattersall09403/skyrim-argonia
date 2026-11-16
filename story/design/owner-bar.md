@@ -147,7 +147,7 @@ with its source in [owner-rulings-on-factions](../../docs/research/writing/owner
   the player (#71, OR 2026-11-13).
 - Eleven more, which any quest may use ("Let the quest authoring thing use all these blocks though if they want
   to", OR 2026-11-16), each proven once before its first use: the player's name set from a conversation; a fight
-  that ends in a yield; a short film played by a stage; a visitor who wakes the player from rest; a first theft
+  that ends in a yield; a short film played by a stage (this one only for the end of the main quest: "They will be a pain to make"); a visitor who wakes the player from rest; a first theft
   that starts a quest; a fade after which a person is gone; a spell cast before a person as a test; a potion the
   player made handed in; a defence with an hour to prepare; a hearing after a fade; a place that changes after a
   line ends (#73, OR 2026-11-16: "I'm happy with all 11 ceiling things on that issue").

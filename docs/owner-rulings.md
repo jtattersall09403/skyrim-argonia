@@ -705,3 +705,6 @@ added here the day they are made, with the date and the issue.
   its first use. The six of #71 keep their narrow uses.
 - 2026-11-16 (in session): "Yes open those too". The six blocks of #71 are open to any quest as well, each proven
   once before its first use. All seventeen added blocks are now general vocabulary.
+- 2026-11-16 (in session): "Oh but actually not the one about cut scenes. They will be a pain to make I think. So
+  whichever one that is, only narrow for that (the end of the main quest)". The film played by a stage is for the
+  main quest's three ending visions only. The other sixteen added blocks stay open to any quest.
