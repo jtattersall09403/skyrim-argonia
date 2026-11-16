@@ -712,3 +712,7 @@ added here the day they are made, with the date and the issue.
   visions: a fade to black, music and effects on the trees at the endings. Yes means the ceiling is raised to allow
   one staged ending scene.'" So two added blocks are for the main quest's ending visions only (the staged scene and
   the film); the other fifteen are open to any quest.
+- 2026-11-16 (in session): "I don't think those are different things. The 'film' you're referring to *is* the
+  staged scene. That was my intention anyway". The cutscenes he asked for at the endings are the staged ending
+  scene of #71, not a recorded film. There is no film block. One added block is narrow (the staged ending scene,
+  for the main quest's ending visions only); the other fifteen are open to any quest.

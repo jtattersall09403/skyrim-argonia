@@ -145,9 +145,9 @@ with its source in [owner-rulings-on-factions](../../docs/research/writing/owner
   that kills one named person in an ending; riddle side quests with no marker until found; sick Hist bark from the
   recolour tool. A person at a finale is already there when the player arrives, never summoned, and nobody follows
   the player (#71, OR 2026-11-13).
-- Eleven more, which any quest may use ("Let the quest authoring thing use all these blocks though if they want
+- Ten more, which any quest may use ("Let the quest authoring thing use all these blocks though if they want
   to", OR 2026-11-16), each proven once before its first use: the player's name set from a conversation; a fight
-  that ends in a yield; a short film played by a stage (this one only for the end of the main quest: "They will be a pain to make"); a visitor who wakes the player from rest; a first theft
+  that ends in a yield; a visitor who wakes the player from rest; a first theft
   that starts a quest; a fade after which a person is gone; a spell cast before a person as a test; a potion the
   player made handed in; a defence with an hour to prepare; a hearing after a fade; a place that changes after a
   line ends (#73, OR 2026-11-16: "I'm happy with all 11 ceiling things on that issue").
@@ -185,7 +185,8 @@ with its source in [owner-rulings-on-factions](../../docs/research/writing/owner
   pain"): they say where to go, and markers show it (OR 2026-11-16, story explorer notes).
 - A line's plot is read by the owner as a short page in the main plot's form (what the faction is at the top, acts,
   one numbered paragraph per quest) before any quest record is written (OR 2026-11-16, story explorer notes).
-- Endings' visions are cutscenes made later; messages are the fallback and carry what a cutscene cannot show (OR 2026-11-16, story explorer notes).
+- Endings' visions are the staged ending scene ("They will be a pain to make", so it is for the end of the main
+  quest only), made later; messages are the fallback and carry what the scene cannot show (OR 2026-11-16, story explorer notes).
 - The factions the owner wants, their skills, how each is joined, their rivalries and their endings are in
   [the factions overhaul](../../docs/phases/new-worldspace-plan/nw-05c-factions-overhaul.md), in his words
   (OR 2026-11-16, story explorer notes). Each faction is heard of through rumours, which start a small quest to find it; a late point in a rival's

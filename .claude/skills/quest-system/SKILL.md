@@ -55,9 +55,8 @@ the way each such dramatic job is done inside the ceiling.
 - a hearing after a fade;
 - a place that changes after a line ends.
 
-**Two added blocks for one use only**, the main quest's three ending visions and nothing else: one staged ending
-scene (a fade to black, the ending's music and the trees shown changing, then messages), and a short film played
-by a stage.
+**One added block for one use only**, the main quest's three ending visions and nothing else: one staged ending
+scene (a fade to black, the ending's music and the trees shown changing, then messages).
 
 **Anyone can die.** No person of ours or of Black Marsh & Valenwood is made unkillable. A quest names the people it
 cannot go on without; if one dies the quest fails with a journal entry, and a main or faction quest also shows its

@@ -352,9 +352,10 @@ switches her off at the gate and on in the hall while the game loads it.
 ## 8. The three endings
 
 The player activates the Eye. A message lays out the three choices and what each will do. Each ending is shown as
-a vision. The trees changing across the province are a short film that we make in a later phase. What a film
-cannot show (the cellar opened, the Reed's rage) is told in the messages that follow it. Until the films are
-made, messages carry the whole vision. Then the player walks back into a world that has changed.
+a vision: one staged scene. The screen fades to black, the ending's music plays and the trees are shown changing.
+What the scene cannot show (the cellar opened, the Reed's rage) is told in the messages that follow it. The scenes
+are made in a later phase, and until then messages carry the whole vision. Then the player walks back into a
+world that has changed.
 
 **Take the Eye.** The player lifts the Eye from its plinth. That act parts the trees. The player keeps the Eye.
 
@@ -414,7 +415,7 @@ places, which a later piece of work names and marks (section 9).
 - **The Reed's gear:** Sign of Cipactli's light Argonian armour, Stormhold Warrior Armor for the heavier set (row
   `stormhold-warrior-armor` in `mods/dependencies.json`; [reward-gear](../reward-gear.md)) and Animated Armoury's
   rapier, quarterstaff, pike and claws, each under our name.
-- **The endings' films:** made in a later phase.
+- **The endings' staged scenes:** made in a later phase.
 
 ### What each quest needs of its places
 
@@ -464,12 +465,11 @@ plot used, has no cellar, so the plot no longer uses it.
 
 The owner approved six additions on 2026-11-13 ([blocks](../../../../docs/design/blocks.md), "Blocks owed"): the
 staged ending scene, the final choice on a message box, the called ally, a stage that kills one named person, the
-riddle place with no marker and the sick Hist's bark. This plot uses three more, which he approved on 2026-11-16 (#73), each a block to be proven
-once:
+riddle place with no marker and the sick Hist's bark. This plot uses two more, which he
+approved on 2026-11-16 (#73), each a block to be proven once:
 
 - the opening's name: a stage that opens the game's own naming of the character;
-- the duel at Blackrose's gate: a named person who yields when badly hurt, which sets a stage;
-- the endings' films: a stage that plays a short film.
+- the duel at Blackrose's gate: a named person who yields when badly hurt, which sets a stage.
 
 The professions need nothing new. Each is a line that sets a stage, and the stage raises skills.
 
