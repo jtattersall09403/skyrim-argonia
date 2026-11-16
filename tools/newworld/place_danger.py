@@ -17,7 +17,8 @@ nothing here is levelled to the player (decision 0035).
   its reward band is the higher of the place's way in and the fight (table place_encounter). The settlement's own
   facts ignore it: no hostile occupants inside.
 The owner overrules any of it per place in `newworld/sources/danger/owner.json` ({place_id: {disposition?,
-strength?, reward?, why}}); the reward follows an overruled strength unless it is overruled itself.
+strength?, reach?, reward?, why}}); the reward follows an overruled strength or way in unless it is overruled
+itself.
 
     python3 -m tools.newworld.place_danger show <place_id>
     python3 -m tools.newworld.place_danger counts       # places by ground, strength, reach, reward, disposition
@@ -175,6 +176,8 @@ def derive(w) -> list[dict]:
             disp, dwhy = o["disposition"], f"owner: {o['why']} (derived: {disp}, {dwhy})"
         if o.get("strength"):
             st, swhy = o["strength"], f"owner: {o['why']} (derived: {st}, {swhy})"
+        if o.get("reach"):
+            rb, rwhy = o["reach"], f"owner: {o['why']} (derived: {rb}, {rwhy})"
         rw = max(rb, st, key=RANK.get)
         wwhy = f"the harder of the way in ({rb}) and what lives inside ({st})"
         if o.get("reward"):

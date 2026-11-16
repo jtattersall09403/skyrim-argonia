@@ -137,7 +137,7 @@
     },
     {
      "aspect": "look",
-     "text": "Imperial brick and timber along Blackwood Way, wet red clay underfoot, crooked alleys running off the causeway and Ayleid white-stone stumps in the plaza and the southern gardens. Steam rises from the bathhouses and fog lies in the streets at dawn.",
+     "text": "Imperial brick and timber along Blackwood Way, wet red clay underfoot, crooked alleys running off the causeway and Ayleid white-stone stumps in the plaza and the southern gardens. Steam rises from the bathhouses.",
      "tier": "CANON_DERIVED",
      "sources": [
       {
@@ -185,6 +185,17 @@
        "kind": "dossier",
        "title": "story/lore/gideon.md",
        "locator": "story/lore/gideon.md"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Riften (Skyrim), is a city of thirty-four interiors (a smithy, two inns, an alchemist, a Temple of Mara, a jail, many houses); its Nordic pieces are replaced with Imperial brick and timber. Lilmoth (King of the Murkmire) adds an apothecary and sewer interiors that serve as the forced cellar of the closed Ayleid quarter. Baan Malur (Journey to Baan Malur) lends a bathhouse interior for the inn. Still to add: the courthouse, the arena, the Ayleid white-stone stumps, the Hist garden and the east gate.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -494,6 +505,17 @@
        "locator": "reasoning"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, BlackMarsh 22,-4 (Black Marsh & Valenwood), is a hamlet of thirteen people on a rise with no interior; its Nordic pieces are replaced with stilt huts, and Ree-An-Wo (King of the Murkmire) fits as the alternate with sixteen people and Argonian pieces. A hut interior for the bedroll comes from Root Whisper Village (King of the Murkmire). No source holds the castle: its halls and cell block are added as one ruin interior from the keep pieces of Cracked Tusk (Skyrim). Still to add: the root-split castle walls on the mound, the plank causeway, the roadside shrine and the yam beds.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -540,7 +562,7 @@
     },
     {
      "kind": "harvest-common",
-     "detail": "yams from the hut beds; swamp fungus in the castle moat",
+     "detail": "yams from the hut beds; swamp fungus on the castle walls",
      "count": 1
     }
    ]
@@ -562,7 +584,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A village of stilt houses and house-rafts moored to stakes on the northern caravan road above Gideon. The families can pole a raft to a new mooring when a channel silts up, and the ring of rafts has been moored where it is for years.",
+     "text": "A village of stilt houses and house-rafts moored to stakes on the northern caravan road above Gideon. The ring of rafts has been moored where it is for years.",
      "tier": "CANON_DERIVED",
      "sources": [
       {
@@ -665,7 +687,7 @@
     },
     {
      "aspect": "faith",
-     "text": "A small Sithis shrine on a raft that moves with the village; Dibella charms hang from the ferry post.",
+     "text": "A small Sithis shrine on a raft moored with the village; Dibella charms hang from the ferry post.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -726,6 +748,17 @@
        "kind": "reasoning",
        "title": "a raft village with clan channel rights on a caravan road",
        "locator": "reasoning"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Dragon Bridge (Skyrim), is a Nordic bridge town of five interiors (a tavern, a lumber camp, a farm) and does not fit a raft village. Seekhat Yol (King of the Murkmire) fits better: Argonian huts on dock pieces, with seven hut interiors that serve as the rest-house and the keeper's house. Still to add: the house-rafts roped end to end, the causeway of laid planks, the ferry stage, the raft shrine to Sithis and the sleeping platform.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -976,6 +1009,17 @@
        "kind": "reasoning",
        "title": "the ferry to Aphon; Khajiit moon-sugar smuggling through Topal Bay (spine 10.3)",
        "locator": "reasoning"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Morthal (Skyrim), is a marsh town of ten interiors (an inn, a guardhouse, houses) and 82 people; its Nordic and farm pieces are replaced, and the inn serves as the fish-seller's alehouse. Seekhat Yol (King of the Murkmire) fits better: Argonian huts on dock pieces for the landing. Still to add: the mudflat of stilt houses, the drying racks, the upturned punts, the jetty and the shrine to the drowned.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -1234,6 +1278,17 @@
        "locator": "reasoning"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Cracked Tusk (Skyrim), is an Imperial fort of 254 pieces with two keep interiors, which serve as the barracks hall and the quartermaster's store with the forge. Still to add: the toll chain across the road, the saltrice paddy, the stockade for the held smuggler, the shrine to Zenithar, moss on the parapet and the flag of the successor state.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -1480,6 +1535,17 @@
        "locator": "cell -22,-90"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, the Ancient Gold Mine (Here There Be Monsters - Curse of Cipactli), is a mine entrance with one mine interior and eleven people, a poor fit for a village of potters. Seekhat Yol (King of the Murkmire) fits better: seven Argonian hut interiors (a carpenter's, a smithy, a fisher's, an accommodation hut) that serve as the potter's house and the caravan rest-house, with dock pieces. Still to add: the round clay kilns along the road, the drying racks, the rice paddies and the red-clay pits.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -1705,6 +1771,17 @@
        "kind": "map",
        "title": "PT3-map-Black_Marsh.png",
        "locator": "cell -17,-77"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Ivarstead (Skyrim), is a river town of twenty people and three interiors (an inn, a farm, a house); its Nordic and farm pieces are replaced with plank and reed stalls, and the inn serves as the cook-house with its loft. Alten Meerhleel (King of the Murkmire) fits the style better: an Argonian dock town with three interiors and dock pieces for the market landing. Still to add: the plank market, the caravan yard, the tanning rack and the Dibella wayside shrine.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -1940,7 +2017,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Mangrove crocodiles and mudcrabs lie in the channel at the landing, and the pools round the altar are deep enough to drown in. Gideon's diggers say ghost lights at dusk lead the careless into them.",
+     "text": "Mangrove crocodiles and mudcrabs lie in the channel at the landing, and the pools round the altar are deep enough to drown in. Gideon's diggers say ghost lights over the pools draw the careless into them.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1952,7 +2029,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A buried offering-vault, a chime-keeper who guards the roots or a Gideon digger hunting a Dibella relic.",
+     "text": "A buried offering chest, a chime-keeper who guards the roots or a Gideon digger hunting a Dibella relic.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1970,6 +2047,17 @@
        "kind": "map",
        "title": "PT3-map-Black_Marsh.png",
        "locator": "cell -24,-89"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, near Swampy Grotto (Here There Be Monsters - Curse of Cipactli), is a small ruin of ruin and Ayleid pieces with a shrine, three people and no interior, which fits a half-sunk shrine without needing a room. Still to add: the leaf-carved altar slab, the mangrove roots over the broken pillars, the pools, the landing and the chimes.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -1997,7 +2085,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "an offering chest under the altar slab",
+     "detail": "an offering chest at the altar slab",
      "count": 1
     },
     {
@@ -2182,7 +2270,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Restless dead of the knights walk the barracks at night, and wild boars and wolves den in the roofless nave. The tomb steps are slick and the cellar floor is rotten.",
+     "text": "Restless dead of the knights walk the barracks at night, and wild boars and wolves den in the roofless nave. The tomb steps are narrow and dark.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2205,7 +2293,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A knight's silver helm missing from the last tomb still sealed, a re-opened grave or a quarrel over a silver-skinned mummy that two diggers both found.",
+     "text": "The knight-captain's tomb under the end wall, sealed behind a stone door with a socket for a Kothringi keystone that no digger has opened; a re-opened grave or a quarrel over a silver-skinned mummy that two diggers both found.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2218,6 +2306,17 @@
        "kind": "reasoning",
        "title": "Kothringi knights' tombs",
        "locator": "reasoning"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Driftshade Sanctuary (Skyrim), is an Imperial ruin of 960 Imperial pieces with two interiors: one serves as the knight-captain's tomb behind the sealed stone door and the other as the rooms of the barracks wing. Still to add: the roofless hall of grey-white stone, the row of broken columns, the gable that carts steer by, the shield-hook and the socket for the keystone.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -2245,7 +2344,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "the knight-captain's tomb chest",
+     "detail": "the knight-captain's tomb chest behind the sealed door",
      "count": 1
     },
     {
@@ -2479,6 +2578,17 @@
        "kind": "map",
        "title": "PT3-map-Black_Marsh.png",
        "locator": "cell -21,-84"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, near Karthspire (UWRL_UnderWaterSkyrimRiversAndLakes), is a bare ruin marker with no pieces and no interior. The terraces and chime-posts are built from the ruin and shrine pieces of Nightcaller Temple (Skyrim), whose one interior serves as the great tomb. Still to add: the stepped grave-stones, the ring of posts hung with tin and copper chimes, the middle pool and the nightshade.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -2730,6 +2840,17 @@
        "locator": "cell -17,-86"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, ArgoniaWorld -2,-45 (King of the Murkmire), is an Imperial ruin of eighteen pieces with no interior and is too small for a quay and a boat-house. Japhet's Folly (Skyrim) fits better: a ruined hamlet of Imperial pieces with 37 ship pieces and two interiors, one serving as the boat-house floor. Still to add: the stone quay, the launching slip with its half-built hull, the sunken lower shed in the shallows and the Kynareth wind-chime.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -2755,7 +2876,7 @@
     },
     {
      "kind": "combat-boss",
-     "detail": "the boat-house master's dead, in the flooded lower shed",
+     "detail": "the boat-house master's dead, in the sunken lower shed",
      "count": 1,
      "reward": "boss-chest"
     },
@@ -2945,6 +3066,17 @@
        "kind": "map",
        "title": "PT3-map-Black_Marsh.png",
        "locator": "cell -19,-79"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Provision Cellar (Nyhus), is a small ruin of mine and Imperial pieces with two interiors, which serve as the back room with the snake nest and the strongroom behind the iron door. Teeth of Sithis (King of the Murkmire) is an Argonian ruin of 66 hostile and does not fit a family hall. Still to add: the long pale-stone hall above ground from Imperial ruin pieces, the leviathan horn on the lintel, the hearth, the fallen roof-beam and the spiked grate.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -3176,7 +3308,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A tuned set of chimes that sounds only at dusk, a Mine-Burner who guards the hall or a Chime-Keeper claim to the stones.",
+     "text": "A tuned set of chimes that still hangs on the north columns, a Mine-Burner who guards the hall or a Chime-Keeper claim to the stones.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3194,6 +3326,17 @@
        "kind": "map",
        "title": "PT3-map-Black_Marsh.png",
        "locator": "cell -12,-93"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "No source fits a long music-hall: the main one, near Yngol Barrow (Black Marsh & Valenwood), is a hamlet with one ship interior. The hall is added as a ring of tall ruin columns under open sky from Imperial ruin pieces. The crypt below the stage is the single interior of Nightcaller Temple (Skyrim), a temple of Imperial pieces. Still to add: the iron arms and chimes on the columns, the drifted leaves and the chime-master's chest.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -3428,6 +3571,17 @@
        "locator": "reasoning"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, near Dark Brotherhood Sanctuary (Wyrmstooth), is a tiny Imperial ruin of nine pieces with no interior. Driftshade Sanctuary (Skyrim) fits better: an Imperial ruin of 960 Imperial pieces with two interiors, one serving as the tower's rooms and the other as the smugglers' cellar. Still to add: the square tower with its fallen roof, the granary block, the hearth platform, the ring of reeds and the broken shrine.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -3645,6 +3799,17 @@
        "locator": "reasoning"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Nightcaller Temple (Skyrim), is a great temple with one large interior, not a watchtower, and does not fit. Old Laboratory (King of the Murkmire) fits better: a small Imperial ruin on the water with Argonian pieces, a dock and one interior, which serves as the tower's inner room where the smugglers keep their locked chest. Still to add: a leaning round tower of Imperial ruin pieces over the interior's door, the broken lantern room and the rotted pier into the channel.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -3690,7 +3855,7 @@
    "id": "imperial-ruin-m34-m96",
    "name": "Aphon Signal Tower",
    "status": "ruined",
-   "held_by": "No one: bandits and smugglers shelter in it",
+   "held_by": "No one: hired men guard a dig in its base",
    "population": 0,
    "footprint_radius_m": 40,
    "siting": "hilltop",
@@ -3742,7 +3907,7 @@
     },
     {
      "aspect": "present",
-     "text": "The tower is unheld, a landmark for fishing boats rounding the isle. Smugglers who work the bay use its top as a lookout and keep a cache in the base.",
+     "text": "The tower is unheld, a landmark for fishing boats rounding the isle. Hired men have lifted the floor of its base in a dig and keep a lookout on its top.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3832,7 +3997,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Wind and a loose parapet make the climb risky. The smugglers will not welcome visitors, and mudcrabs crowd the rocks around its base.",
+     "text": "The climb is steep and open to the wind. The hired men will not welcome visitors, and mudcrabs crowd the rocks around its base.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3854,7 +4019,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A smugglers' lookout who signals boats with a lantern from the top, a Khajiit crew waiting below for the signal or the Belvedere's watch wanting the tower cleared.",
+     "text": "A dig in the tower's base where hired men lifted the old floor and took a rubbing of a carved stone; the Belvedere's watch wanting the tower cleared.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3866,6 +4031,17 @@
        "kind": "reasoning",
        "title": "the tower paired with the Warden watch at Aphon Belvedere",
        "locator": "reasoning"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Ash Crypt (SolsthDungeonPack), is a cave crypt of 938 cave pieces with one interior, not a tower. Old Laboratory (King of the Murkmire) fits better: an Imperial ruin of 417 Imperial pieces with one interior, which serves as the dug-out base of the tower. Still to add: the tall tower on the rock crest, the outside stair, the blackened lamp-room and the hired men's dig.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -3881,24 +4057,24 @@
    "gives": [
     {
      "kind": "combat-foes",
-     "detail": "sea-smugglers keeping the lookout",
-     "count": 1,
+     "detail": "hired men guarding the dig",
+     "count": 3,
      "reward": "treasure"
     },
     {
      "kind": "combat-boss",
-     "detail": "the smugglers' lookout captain in the lamp-room",
+     "detail": "the diggers' foreman in the lamp-room",
      "count": 1,
      "reward": "boss-chest"
     },
     {
      "kind": "boss-chest",
-     "detail": "the cache in the tower base",
+     "detail": "the diggers' chest by the dig in the tower base",
      "count": 1
     },
     {
      "kind": "treasure",
-     "detail": "smugglers' satchels on the stair",
+     "detail": "the hired men's satchels on the stair",
      "count": 2
     },
     {
@@ -4026,7 +4202,7 @@
     },
     {
      "aspect": "faith",
-     "text": "They honour Sithis and the Hist of Low-Crown, and hang feather and reed charms from the smoke-rack. A tiny totem-stone by the landing is turned to face the water at dawn.",
+     "text": "They honour Sithis and the Hist of Low-Crown, and hang feather and reed charms from the smoke-rack. A tiny totem-stone by the landing faces the water.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4104,6 +4280,17 @@
        "kind": "map",
        "title": "PT3-map-Black_Marsh.png",
        "locator": "cell -16,-82"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Stonehill Bluff (Skyrim), is a tribal camp site of fifteen ruin pieces with no people and no interior, too bare for a hunters' camp. Near Loreisian (King of the Murkmire) fits better: an Argonian tribal camp of five people, Argonian pieces and shrine pieces. No room inside is needed. Still to add: the reed and hide lean-tos, the smoke-rack, the drawn-up boat, the hearth pit and the feather charms.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -4206,7 +4393,7 @@
     },
     {
      "aspect": "present",
-     "text": "A party of Paatru hunters stays on the dry ground for the drier months and leaves when the water rises. They keep a careful distance from the Mine-Burner watch posts.",
+     "text": "A party of Paatru hunters keeps the dry ground at the basin's north edge and stays clear of the Mine-Burner watch posts.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4350,6 +4537,17 @@
        "kind": "map",
        "title": "PT3-map-Black_Marsh.png",
        "locator": "cell -18,-91"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Talking Stone Camp (Skyrim), is a camp site with five pieces, no people and no interior, too bare for a hunters' camp. Near Loreisian (King of the Murkmire) fits better: an Argonian tribal camp of five people with shrine pieces. No room inside is needed. Still to add: the ring of reed shelters, the smoke-rack, the stack of hides, the reed mound for the dead and the boundary stone with bones.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -4596,6 +4794,17 @@
        "kind": "map",
        "title": "PT3-map-Black_Marsh.png",
        "locator": "cell -22,-83"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Dragon Bridge Overlook (Skyrim), is a camp site of five pieces with no interior. The ruin's inner rooms come from Narzulbur (Skyrim), a tribal camp whose basement serves as the inner rooms with the urns and whose longhouse serves as the roofed room; both are re-dressed in grey-white ruin stone. Still to add: the broken Kothringi wall, the hide and reed shelters, the smoke-rack, the hearth pit and the chimes on the lintel.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -4859,6 +5068,17 @@
        "locator": "cell -14,-89"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Military Camp Haafingar Sons (Skyrim), is a camp of thirteen people with 27 camp pieces and no interior, so it lends tents and racks with its Nordic pieces replaced. Black Rose (Black Marsh & Valenwood) is a hamlet of three people with ruin pieces and is too bare. Still to add: the reed-thatched stilt platform, the fish-rack, the net-drying frame, the landing and the chime-post from near Loreisian (King of the Murkmire).",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -4958,7 +5178,7 @@
     },
     {
      "aspect": "present",
-     "text": "A few Naka-Desh keep the station through the year and ferry goods to and from Gul-Tej. They exchange news with every boat and know who has gone up and down the channel.",
+     "text": "A few Naka-Desh keep the station through the year and trade goods with Gul-Tej's boats. They exchange news with every boat and know who has gone up and down the channel.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4998,7 +5218,7 @@
     },
     {
      "aspect": "economy",
-     "text": "The five Naka-Desh fish for gar and run a small ferry for Gul-Tej's boats.",
+     "text": "The five Naka-Desh fish for gar and keep the landing for Gul-Tej's boats.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5108,6 +5328,17 @@
        "kind": "map",
        "title": "PT3-map-Black_Marsh.png",
        "locator": "cell -18,-84"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Military Camp Winterhold Imperial (Skyrim), is a camp of eleven people with 29 camp pieces and no interior; it lends tents and racks. Near Loreisian (King of the Murkmire) is a tribal camp with a chime shrine and fits the chime-post. No room inside is needed. Still to add: the reed-thatched stilt platform, the long landing, the fish-rack, the signal lamp and the moored barges.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -5367,6 +5598,17 @@
        "locator": "cell -20,-77"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Military Camp Reach Sons (Skyrim), is a camp of twelve people with camp and Dwemer pieces and no interior; its Dwemer and Nordic pieces are not used. Ree-An-Wo (King of the Murkmire) fits better with Argonian stilt pieces. Still to add: the reed platform, the lamp-post, the fish-rack, the hide-drying frame and the chime-post.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -5624,6 +5866,17 @@
        "locator": "cell -25,-90"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Hag's Perch (Wyrmstooth), is a Nordic tower of eleven people and no interior, which does not fit a platform among mangrove roots. Ree-An-Wo (King of the Murkmire) fits better: a small Argonian hamlet with Argonian pieces. No room inside is needed. Still to add: the stilt platform, the rope-walk, the hidden landing and the chime-post.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -5728,7 +5981,7 @@
     },
     {
      "aspect": "present",
-     "text": "Four Saxhleel hold the post. They hunt and tend the sapling, and the tree-minders' boat comes from Helstrom to fetch sap and bring news.",
+     "text": "Four Saxhleel hold the post. They hunt and tend the sapling, and tree-minders come from Helstrom to fetch sap and bring news.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5773,7 +6026,7 @@
     },
     {
      "aspect": "economy",
-     "text": "They hunt the reeds for birds and eels, and send sap and egg-gifts to Helstrom. Little leaves the station except by the tree-minders' own boat.",
+     "text": "They hunt the reeds for birds and eels, and send sap and egg-gifts to Helstrom. Little leaves the station except with the tree-minders.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5878,6 +6131,17 @@
        "kind": "map",
        "title": "PT3-map-Black_Marsh.png",
        "locator": "cell -23,-80"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, CWAttacker Camp Whiterun (Skyrim), is a small camp of four people and ten camp pieces with no interior. Ree-An-Wo (King of the Murkmire) fits better with Argonian stilt pieces. The egg-hut's room is added as the Egg Tender's Quarters interior from Seekhat Yol (King of the Murkmire). Still to add: the stilt platform, the drying rack and the young Hist sapling ringed with stones.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -6141,6 +6405,17 @@
        "locator": "cell -17,-97"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Saerings Watch (Dragonborn), is a Nordic tower on Solstheim and does not fit a reed station. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet of sixteen people on the water. The egg-hut's room is added as the Egg Tender's Quarters interior from Seekhat Yol (King of the Murkmire). Still to add: the stilt platform, the long drying rack and the hidden landing.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -6196,7 +6471,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Zul-Meeka Station is a stilt platform on dry ground with an egg-hut and a lookout post. Four Saxhleel hold it.",
+     "text": "Zul-Meeka Station is a stilt platform at the swamp's edge with an egg-hut and a lookout post. Four Saxhleel hold it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6342,7 +6617,7 @@
     },
     {
      "aspect": "look",
-     "text": "A stilt platform on the basin's dry south-east edge, an egg-hut, a lookout post and a boat landing. The abandoned village's roofs show through the reeds nearby.",
+     "text": "A stilt platform on the basin's south-east edge, an egg-hut, a lookout post and a boat landing. The abandoned village's roofs show through the reeds nearby.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6404,6 +6679,17 @@
        "kind": "map",
        "title": "PT3-map-Black_Marsh.png",
        "locator": "cell -9,-99"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Meekos Shack (Skyrim), is a three-metre homestead of four pieces and is too small. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet of sixteen people. The egg-hut's room is added as the Egg Tender's Quarters interior from Seekhat Yol (King of the Murkmire). Still to add: the stilt platform, the lookout post and the landing.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -6615,7 +6901,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Watchers with bows cover the channel, and a chain stretched below the surface stops a boat that will not pay. Crocodiles use the same channel.",
+     "text": "Watchers with bows cover the channel, and a toll chain stretches across it. Crocodiles use the same channel.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6650,6 +6936,17 @@
        "kind": "map",
        "title": "PT3-map-Black_Marsh.png",
        "locator": "cell -11,-102"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Military Camp Pale Sons (Skyrim), is a camp of ten people and no interior; its Nordic pieces are replaced. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet of 105 Argonian pieces. The post needs no room inside, so it is built of stilt platforms with dock pieces from Seekhat Yol (King of the Murkmire). Still to add: the lookout platform, the long landing, the toll chain, the lean-to of salt sacks and the fang charm.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -6856,7 +7153,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Bow-watchers cover the channel and the watchers blow the signal horn to call reinforcements. Ruin-diggers who ignore the warning are shot.",
+     "text": "Bow-watchers cover the channel, and a signal horn hangs at the lookout tower. Ruin-diggers who ignore the warning are shot.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6891,6 +7188,17 @@
        "title": "Lore:Soulrest",
        "locator": "Lore:Soulrest",
        "url": "https://en.uesp.net/wiki/Lore:Soulrest"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Military Camp Hjaalmarch Sons (Skyrim), is a camp of eleven people with camp and Nordic pieces and no interior; its Nordic pieces are replaced. Ree-An-Wo (King of the Murkmire) fits better: a small Argonian hamlet on the water with sixteen people. No room inside is needed. Still to add: the stilt platform, the lookout tower with its signal horn, the landing and the two war-canoes.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -7144,6 +7452,17 @@
        "url": "https://en.uesp.net/wiki/Lore:Soulrest"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Military Camp Reach Imperial (Skyrim), is a small Imperial camp with sixteen people, camp pieces and a fort piece, and no interior; it lends the gate-tower ground. No room inside is needed. Ree-An-Wo (King of the Murkmire) is the alternate for Argonian stilt pieces. Still to add: the stilt platform, the trading float, the burn-marks on the gate and the cache under the platform.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -7348,7 +7667,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Watchers with bows cover the road. Bandits sometimes test the post at night, and giant snakes cross the causeway at dusk.",
+     "text": "Watchers with bows cover the road. Bandits sometimes test the post at night, and giant snakes cross the causeway.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7387,6 +7706,17 @@
        "kind": "map",
        "title": "PT3-map-Black_Marsh.png",
        "locator": "cell -19,-103"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Military Camp Rift Imperial (Skyrim), is a camp of thirteen people with mine and camp pieces and no interior; its Nordic pieces are replaced. Ree-An-Wo (King of the Murkmire) fits as the alternate for the Argonian stilt pieces. No room inside is needed. Still to add: the toll gate, the lookout, the wagon yard, the raised causeway and the fang-charm over the gate.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -7664,6 +7994,17 @@
        "title": "Lore:Hist",
        "locator": "Lore:Hist",
        "url": "https://en.uesp.net/wiki/Lore:Hist"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Murkmire (Black Marsh & Valenwood), is a town of thirty-four people with dock and ship pieces and one ship interior, so it lends the landings and the palisade ground. The council hall and the smithy come from the hut interiors of Alten Meerhleel (King of the Murkmire) and the household interiors of Cormaris (Journey to Baan Malur). Still to add: the tiered stilt halls, the stake palisade, the scorched mine timbers and the Hist.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -7982,6 +8323,17 @@
        "title": "UESP search of the Lore namespace for 'Kharaxos' found no page (2026-11-08): a Project Tamriel name"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Murkwood (Black Marsh & Valenwood), is a town of thirty people with 116 dock pieces and one ship interior, which serves as the metal-trader's store. Alten Meerhleel (King of the Murkmire) is the alternate, with three Argonian hut interiors. Still to add: the stilt halls, the scorched palisade, the tin chimes on the market posts, the spoil heaps and the smelter.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -8044,7 +8396,7 @@
    "siting": "island",
    "danger_band_id": "D4",
    "importance": 2,
-   "summary": "Oeneas is a hamlet of the Chime-Keepers on the water of the basin's eastern reaches. Its tin chimes carry across the water at dusk.",
+   "summary": "Oeneas is a hamlet of the Chime-Keepers on the water of the basin's eastern reaches. Its tin chimes carry across the water.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -8257,7 +8609,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A chime-maker's commission, a boat race or a stolen tuning-fork.",
+     "text": "A chime-maker's commission, a stolen tuning-fork or a boat-builder's debt.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8278,6 +8630,17 @@
       {
        "kind": "reasoning",
        "title": "UESP search of the Lore namespace for 'Oeneas' found no page (2026-11-08): a Project Tamriel name"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Brodir Grove (Dragonborn), is a Solstheim hamlet of mine pieces with one person and no interior; its Nordic pieces are replaced. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet of 105 Argonian pieces with sixteen people. The chime-smith's hut interior is added from Root Whisper Village (King of the Murkmire). Still to add: the stone footings under the stilt houses, the long landing, the forge and the chimes on every eave.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -8327,7 +8690,7 @@
    "siting": "inland",
    "danger_band_id": "D2",
    "importance": 1,
-   "summary": "Redtimber Camp is a small timber camp at the basin's south edge, worked for Soulrest's merchant council. It cuts red mangrove and sends logs down the channel.",
+   "summary": "Redtimber Camp is a small timber camp at the basin's south edge, worked for Soulrest's merchant council. It cuts red mangrove and stacks the logs at a landing on the channel.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -8533,6 +8896,17 @@
       {
        "kind": "reasoning",
        "title": "the map's [Logging Camp] label; name AGENT_INVENTED"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Solitude Sawmill (Skyrim), is a Nordic sawmill with one interior and five people; its Nordic pieces are replaced and it lends the lumber pieces and the foreman's room. The Lady Padomay (King of the Murkmire) fits the style better: a small Argonian mill with one interior and dock pieces. Still to add: the log huts, the skid-road, the piled red logs and the chest in the foreman's hut.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -8805,7 +9179,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "The smugglers fight anyone who comes near their stores, and the unstaked dead rise from the water under the walkways at night. Walkway planks give way into deep water where slaughterfish feed.",
+     "text": "The smugglers fight anyone who comes near their stores, and the unstaked dead rise from the water under the walkways at night. Slaughterfish feed in the deep water under the walkways.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8834,7 +9208,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "Grave-stakes to carve for the unstaked dead, a clan's carved totem left behind in the headman's hall or the smugglers' store of moon sugar under the root-hut.",
+     "text": "Grave-stakes to carve for the unstaked dead, a clan's carved totem left behind in the headman's hall or the smugglers' store of moon sugar in a dry hall.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8858,6 +9232,17 @@
        "kind": "reasoning",
        "title": "a Banujha village whose Hist sickened; Argonians cannot hatch without a living Hist (Lore:Hist); Khajiit moon-sugar smugglers by sea (spine 10.3); grave-stakes (vocabulary.md)",
        "locator": "reasoning"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, near Way to Ruins (Black Marsh & Valenwood, Black Marsh.esm), is an empty hamlet of 120 pieces with one Argonian house interior; its Nordic and Dunmer pieces are replaced and the house serves as the headman's hall. Seekhat Yol (King of the Murkmire) fits the stilt halls better, with seven hut interiors such as an elder's hut and a smithy hut, dock pieces and a ship. Still to add: the tiers of halls joined by walkways, the leafless Hist in a root-hut, the smugglers' sacks of moon sugar and the clan carvings.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -8890,7 +9275,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "the smugglers' store under the root-hut",
+     "detail": "the smugglers' store in a dry hall",
      "count": 1
     },
     {
@@ -9133,6 +9518,17 @@
        "locator": "cell -6,-97"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, AHO (Dwarfsphere), is a Dwemer sphere-ruin of 3,711 Dwemer pieces with five interiors and does not fit a turf dome. Haj-Uxith (King of the Murkmire) fits better: a small Argonian ruin of 236 Argonian pieces with one interior, which serves as the dome's passages and hearth chamber. Still to add: the grass-covered dome above it from Argonian camp pieces, the hearth ring, the orange paper charms and the pools.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -9158,7 +9554,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "a buried Lilmothiit kit-cache under the hearth",
+     "detail": "a hidden Lilmothiit kit-cache in the hearth chamber",
      "count": 1
     },
     {
@@ -9393,6 +9789,17 @@
        "locator": "reasoning"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Waylayer's Watch (Wyrmstooth), is a small Imperial tower on the water with fifteen people and no interior, which suits a watch on a hill. Stendarrs Beacon (Skyrim) is a bare Imperial tower with shrine pieces and serves for the signal lantern. The watch bunk needs one small room, added as a hut interior from Seekhat Yol (King of the Murkmire). Still to add: the white-washed house with its verandah, the stair of rough stone, the Nine shrine and the landing for the supply boat.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -9440,13 +9847,13 @@
    "id": "cave-m32-m92",
    "name": "Kelp-Mouth Cave",
    "status": "abandoned",
-   "held_by": "Smugglers of Topal Bay, using it as a cache",
+   "held_by": "Scouts of the Unbound, a sap-takers' cult",
    "population": 6,
    "footprint_radius_m": 30,
    "siting": "coast",
    "danger_band_id": "D3",
    "importance": 2,
-   "summary": "Kelp-Mouth Cave is a sea cave on Aphon Isle's eastern shore, where a Khajiit smuggling crew keeps moon sugar out of sight of the Warden watch at the Belvedere.",
+   "summary": "Kelp-Mouth Cave is a sea cave on Aphon Isle's eastern shore, with a dry outer chamber and a flooded inner one. Scouts of the Unbound hold it.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -9517,7 +9924,7 @@
     },
     {
      "aspect": "present",
-     "text": "A Khajiit crew of six land moon sugar from Senchal here and keep it until Gideon's buyers send a boat. They have a sloop moored out of sight in the cave mouth.",
+     "text": "A party of Unbound scouts camps in the dry outer chamber. The inner chamber is flooded and reached only by swimming.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9575,7 +9982,7 @@
     },
     {
      "aspect": "economy",
-     "text": "The cave is a store for moon sugar in transit, which is illegal in the province and for salvage the crew pulls from wrecks in the bay.",
+     "text": "Smugglers once kept goods here; now the Unbound use it as a camp while they search the isle.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9639,7 +10046,7 @@
     },
     {
      "aspect": "look",
-     "text": "A low black cave mouth hung with kelp, a rock ledge with a rope ladder and an inner pool lit green from below by the light through a sea-cut tunnel.",
+     "text": "A low black cave mouth hung with kelp, a dry rock chamber with the scouts' bedrolls and an inner pool with a green light on the water.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9668,7 +10075,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "The crew fight anyone who finds them, and the flooded inner chamber is a long swim with slaughterfish in it.",
+     "text": "The scouts fight anyone who finds them, and the flooded inner chamber is a long swim with slaughterfish in it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9697,7 +10104,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "The crew's moon sugar waiting for a Gideon buyer, an Argonian pilot who wants out of the crew or the Warden captain at the Belvedere wanting the cave cleared.",
+     "text": "A chest in the flooded inner chamber; the scouts' packs and papers by their fire; a wounded scout sitting apart at the cave mouth.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9723,6 +10130,17 @@
        "locator": "reasoning"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Wajeem-Krona (King of the Murkmire), is an Argonian sea cave of cave and mine pieces with one interior that holds water and nine placed foes. The interior serves as the dry outer chamber and the pool beyond it, with the chest set in the pool. Still to add: the kelp hung at the mouth, the scouts' bedrolls and packs and the Khajiit shell charm.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -9736,25 +10154,25 @@
    "gives": [
     {
      "kind": "combat-foes",
-     "detail": "a Khajiit smuggling crew",
-     "count": 1,
+     "detail": "Unbound scouts in the dry outer chamber",
+     "count": 4,
      "reward": "treasure"
     },
     {
      "kind": "combat-boss",
-     "detail": "the Khajiit captain on the rock ledge",
+     "detail": "the scouts' leader in the dry outer chamber",
      "count": 1,
      "reward": "boss-chest"
     },
     {
      "kind": "boss-chest",
-     "detail": "the captain's sea chest in the flooded inner chamber, reached by swimming",
+     "detail": "a chest in the flooded inner chamber, reached by swimming",
      "count": 1
     },
     {
      "kind": "treasure",
-     "detail": "moon-sugar crates and crew satchels",
-     "count": 3
+     "detail": "the scouts' packs by their fire",
+     "count": 2
     },
     {
      "kind": "combat-creature",
@@ -9856,7 +10274,7 @@
     },
     {
      "aspect": "present",
-     "text": "Olvani's divers work the wreck and haul up what they can reach. Part of the cargo is still in the hold, behind beams too heavy to shift.",
+     "text": "Olvani's divers have worked the wreck and hauled up what they could reach. Part of the cargo is still in the hold, behind beams too heavy to shift.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9926,7 +10344,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Its hold still holds Cyrodiilic wine casks and iron bars, and the divers bring them up a few at a time.",
+     "text": "Its hold still holds Cyrodiilic wine casks and iron bars, and the divers have brought up a few.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -10098,6 +10516,17 @@
        "locator": "reasoning"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Wreck of the Winter Sparrow (Wyrmstooth), is a bare wreck of nineteen ship pieces with no interior and lends the broken hull and ribs. Icerunner (Skyrim) is a larger wreck of 214 ship pieces with a ship's hold interior, which serves as the hold and the stern cabin; its Nordic ship pieces are replaced. Still to add: the weed on the ribs, the stern post with the Dibella charm, the casks, the iron bars and the captain's chest.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -10194,7 +10623,7 @@
     },
     {
      "aspect": "present",
-     "text": "Divers from Aphon and Soulrest come out to the wreck, and the Kelp-Mouth crew search it for the captain's strongbox, that has never been found.",
+     "text": "Divers from Aphon and Soulrest have searched the wreck, and the Kelp-Mouth crew still look for the captain's strongbox, that has never been found.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -10356,6 +10785,17 @@
        "kind": "reasoning",
        "title": "Khajiit crews and moon-sugar smuggling by sea from Senchal; Valenwood silk by sea (spine 10.3); no Argonian navy, so a smuggler runs from a rival crew (spine-conflicts)",
        "locator": "reasoning"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Icerunner (Skyrim), is a wreck of 214 ship pieces with a ship's hold interior, which serves as the sloop's hold; its Nordic ship pieces are replaced. Wreck of the Winter Sparrow (Wyrmstooth) is a bare nineteen-piece hull and fits the smaller sloop outside. Still to add: the rock cleft from rock pieces, the snapped mast, the kelp on the deck, the tin cup of coins and the strongbox in the cleft.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -10604,6 +11044,17 @@
        "kind": "map",
        "title": "PT3-map-Black_Marsh.png",
        "locator": "cell -26,-108"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Whiterun Watchtower (Skyrim), is a small fort with twenty people and no interior; its Nordic pieces are replaced and it lends the walls and the tower. The barracks, the quartermaster's store and the forge room come from the two keep interiors of Cracked Tusk (Skyrim), a fort of Imperial pieces. Forth Isle (Journey to Baan Malur) adds dock pieces for the landing. Still to add: the signal tower, the sea-gate and the shrine to the Nine.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }

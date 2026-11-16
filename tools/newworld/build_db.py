@@ -402,6 +402,9 @@ def place_gives(pid: str, r: dict, kinds: dict[str, dict]) -> list[dict]:
 
 def write_notes(w: db.World, kind: str, rid: str, r: dict, source) -> None:
     for n in r.get("notes", []):
+        a = w.get("note_aspect", n["aspect"])
+        if a is None or a.applies_to not in (kind, "both"):
+            raise ValueError(f"{rid}: note aspect {n['aspect']!r} does not apply to a {kind}")
         w.insert(f"{kind}_note", **{f"{kind}_id": rid}, aspect_id=n["aspect"], text=n["text"],
                  statement_tier_id=n["tier"])
         for s in n.get("sources", []):

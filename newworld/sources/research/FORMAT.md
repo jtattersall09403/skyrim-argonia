@@ -53,7 +53,11 @@ names. Rebuild after writing: `/home/ubuntu/.argonia/venv/bin/python -m tools.ne
 
 Every place carries every field above (aliases and terrain needs may be empty lists), and one note for each of
 these aspects: `overview`, `history`, `present`, `people`, `economy`, `faith`, `look`, `dangers`, `hooks`
-(1-3 sentences each; a ruin's `economy` says what it once was and what draws people now).
+(1-3 sentences each; a ruin's `economy` says what it once was and what draws people now) and `source` (2-5
+sentences: the main source place and its mod, what it holds that matters (its buildings, each interior by what it
+is, doors, water, notable containers), how it serves this place and what must be added or changed for the record to
+be true; where it does not fit, say so and name the better-fitting alternate source; read from
+`python3 -m tools.newworld.place_card --mined <place>`). The atlas shows it as "Built from".
 
 Terrain needs (`id`): `flat-pad` (level built ground), `entrance-in-slope` (a bank or rise the entrance is cut into;
 give `facing_deg`, 0 north, clockwise), `shore-access`, `island`, `rise` (stands on a mound above the land),
@@ -120,7 +124,10 @@ and weather, light and sound records. The engine does not have these, so no note
 - People: no routine beyond AI packages (rest, eat, work, sandbox, patrol at set hours). No crowds that trade with
   each other and no prices that move with supply.
 - Creatures: no herds that migrate and no breeding. Foes respawn only when a cell resets.
-- Building: nothing is built or destroyed during play except by enabling and disabling placed references.
+- Building: nothing is built or destroyed during play except by enabling and disabling placed references. No
+  machine works: no winch, crane, diving bell, lift or moving ship.
+- Structure: every building, interior, cellar, tunnel or flooded hall a note names is in the place's source places
+  or is named in its `source` note as added, from which mod's pieces; nothing contradicts the record's `siting`.
 
 ## Region record (`regions/<batch>.json`)
 

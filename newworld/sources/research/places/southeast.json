@@ -10,7 +10,7 @@
    "siting": "coast",
    "danger_band_id": "D0",
    "importance": 5,
-   "summary": "Archon is the province's best working harbour and its principal legal port, on the Padomaic coast where an estuary meets the sea. Amphibious civic life is ordinary here: children play underwater, guar breathe water, cargo moves above and below the surface. A sealed Shadowscale school stands closed in the town.",
+   "summary": "Archon is the province's best working harbour and its principal legal port, on the Padomaic coast where an estuary meets the sea. Amphibious civic life is ordinary here: Argonian residents swim the harbour, which serves as a public road, and cargo is carried along the quays. A sealed Shadowscale school stands closed in the town.",
    "lore_page": "Lore:Archon",
    "statement_tier_id": "CANON_DERIVED",
    "aliases": [],
@@ -284,7 +284,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "The sealed Shadowscale school, which the Dark Brotherhood wants reopened and the townspeople watch, with a very old ku-vastei living near it. A privateer crew whose prize the customs officers refuse to call lawful. Underwater games a visitor can join, which teach swimming.",
+     "text": "The sealed Shadowscale school, which the Dark Brotherhood wants reopened and the townspeople watch, with a very old ku-vastei living near it. A privateer crew whose prize the customs officers refuse to call lawful. A wharf runner's wager that a visitor cannot swim to the far quay and back.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -313,6 +313,17 @@
        "kind": "reasoning",
        "title": "Archon as the legal port: Archwardens' working offices and customs at the recognised ports, merchant council (10.2); Company and Legion gone at the secession (10.1, 10.4); Shadowscale school closed 4E 187 (10.1); sea trade from Tear, Elsweyr and Valenwood (10.3)",
        "locator": "argonia-4e201-state.md §10.2"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Baan Malur (Journey to Baan Malur), is a Dunmer and Imperial waterside city of 162 interiors, far larger than this harbour, so it lends only its dockhouses, taverna, smithy, alchemist, general store, bakery and embassy-style halls for the Company buildings, the tavern and the shops. Lilmoth (King of the Murkmire) fits the stilt houses and the Argonian dock pieces, and its apothecary, ironworks and shipwright serve the apothecary, the smith's yard and the wharf sheds. Baan Malur's Nordic pieces are replaced. Still to add: the Company brick wharves, the customs post on the quay, the sealed school's locked door, the landward Hist tree and the stilt house for sale.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -472,14 +483,14 @@
    "siting": "coast",
    "danger_band_id": "D1",
    "importance": 5,
-   "summary": "Lilmoth is the Festering Jewel of Black Marsh, destroyed in 4E 48 and rebuilt smaller as a wholly Argonian stilt town over a mass grave. Its Old Imperial quarter lies drowned and unrepaired. A young Hist grows in the lower town. It is feared and tended under a rotating guard of tree-minders.",
+   "summary": "Lilmoth is the Festering Jewel of Black Marsh, destroyed in 4E 48 and rebuilt smaller as a wholly Argonian stilt town over a mass grave. Its Old Imperial quarter lies drowned and unrepaired. A young Hist grows in the lower town. It is feared and tended by two tree-minders.",
    "lore_page": "Lore:Lilmoth",
    "statement_tier_id": "CANON_EXPLICIT",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "A merchant port on the southern point of the Althii islands, built over shallow water so large ships anchor out and lighter their goods in. It is the biggest town on the south coast and the market for the delta villages and estates of the Althii islands.",
+     "text": "A merchant port on the southern point of the Althii islands, built over shallow water, with large ships moored out in the bay and lighters tied at the quays. It is the biggest town on the south coast and the market for the delta villages and estates of the Althii islands.",
      "tier": "CANON_DERIVED",
      "sources": [
       {
@@ -765,6 +776,17 @@
        "kind": "reasoning",
        "title": "Lilmoth rebuilt smaller after 4E 48 as a merchant-council town hostile to the Archwardens (10.2); the second Hist of 4E 8 and the Umbriel destruction of 4E 48 (10.1); the Imperial Quarter looted at the secession (10.1); foreign dock traders from Cyrodiil, Elsweyr and Morrowind by sea (10.3); old Imperial buildings lost since 4E 48 (10.4)",
        "locator": "argonia-4e201-state.md §10.2"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Built from Lilmoth (King of the Murkmire), an Argonian and Imperial stilt port of 46 interiors that includes a taverna, apothecary, ironworks, shipwright, lumberworks, bunkhouses, a sinking manor and sewers with a hideout room. The taverna serves as the stilt-hall tavern, the apothecary as the herb-wife's hall, the ironworks as the smith's yard and the sewer hideout as the smugglers' cellars under Pusbottom, with a hatch door from the walkways. Still to add: the young Hist and its two minders' hut, the drowned Imperial villas as submerged ruin pieces, the sunken shrine of Xhon-Mehl and the salvage chests.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -1098,7 +1120,7 @@
     },
     {
      "aspect": "faith",
-     "text": "Argonian Sithis and Hist devotion; a small Hist pool lies in the town, tended by a tree-minder and hatching families come in from the hamlets. Rafts are blessed at launching.",
+     "text": "Argonian Sithis and Hist devotion; a small Hist pool lies in the town, tended by a tree-minder and hatching families come in from the hamlets. The raft-masters speak a word to the pool before a journey.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1235,6 +1257,17 @@
        "locator": "argonia-4e201-state.md §10.2"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Pryai village (Nyhus), is a Nordic and Dunmer village of eight interiors with an inn, a farm and a prison, so its Nordic pieces are replaced and it does not fit well. Alten Meerhleel (King of the Murkmire) fits better: a small Argonian dock town of three interiors, a dockmaster's house, a general store and a bunkhouse, which serve as the cook-house, the landing market and the travellers' raft-house. Still to add: the pentagon of raft halls, the elder's long hall and its moot, the drying frames, the Hist pool and the smugglers' stash in the reed edge.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -1333,7 +1366,7 @@
    "siting": "riverbank",
    "danger_band_id": "D3",
    "importance": 2,
-   "summary": "Inoio is a Three Waters hamlet where the east road crosses a bayou channel by raft ferry. It is the only crossing for days and tolls nothing, because the elder wants the traffic to talk.",
+   "summary": "Inoio is a Three Waters hamlet where the east road meets a bayou channel and the raft families ferry travellers across. It is the only crossing for days and tolls nothing, because the elder wants the traffic to talk.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -1643,6 +1676,17 @@
        "title": "UESP search of the Lore namespace (2026-11-08) finds no page for Inoio: a Project Tamriel name"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Black Rose (Black Marsh), is a hamlet of eight buildings with only ruin pieces and no interiors, so it lends little. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet of thirty-one buildings with camp pieces and no interiors, which serves as the six pole-stilt raft-houses. Still to add: the guide-rope between two stump posts, the lantern poles, the moored boats on the mud and the drowned traveller's satchel.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -1703,7 +1747,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A small hamlet on a ridge of firm ground in the reed beds south of Inoio, off the road and reached by punt.",
+     "text": "A small hamlet on a ridge of firm ground in the reed beds south of Inoio, off the road and reached by a walkway of poles.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2006,6 +2050,17 @@
        "title": "UESP search of the Lore namespace (2026-11-08) finds no page for Siluo: a Project Tamriel name"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, a hamlet at Solstheim's cell -1,-5 (Journey to Baan Malur), is eighteen Dunmer-style buildings with mine and ship pieces and no interior, so it does not fit. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet of thirty-one buildings with no interior, which serves as the six stilt houses and their drying frames. Siluo needs no interior. Still to add: the pole walkway, the tall reed racks, the hanging eel traps and the corroded strongbox in the mud.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -2304,7 +2359,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Mud-crabs and slaughterfish off the flats, deep water past the shell banks where breath runs out and the occasional patrol from the fort; risky ground.",
+     "text": "Mud-crabs and slaughterfish off the flats, deep water past the shell banks where breath runs out and a patrol from the fort; risky ground.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2367,6 +2422,17 @@
       {
        "kind": "reasoning",
        "title": "UESP search of the Lore namespace (2026-11-08) finds no page for Shalaia: a Project Tamriel name"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Hunter's Shack (Wyrmstooth), is a single hunter's camp of mine, farm and camp pieces and does not fit a shellfish hamlet. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet of thirty-one buildings with no interior, which serves as the pole houses over the flats. Shalaia needs no interior. Still to add: the shell middens as low white mounds, the net frames, the salt pans, the shell banks and the beads in the old midden.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -2742,6 +2808,17 @@
        "title": "UESP search of the Lore namespace (2026-11-08) finds no page for Tapauo: a Project Tamriel name"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Skjaldur (Northwatch Coast), is a Nordic farm hamlet whose pieces are replaced, so it does not fit. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet of thirty-one buildings with no interior, which serves as the stilt storehouses and the pole landing. Still to add: the rice beds as rows of placed rafts with saltrice plants, the drying racks, an open thatched cook-stall for the visitors' meals and the hidden grain-raft cache.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -2800,14 +2877,14 @@
    "siting": "riverbank",
    "danger_band_id": "D1",
    "importance": 2,
-   "summary": "Xi-Inou is a Three Waters hamlet on the west bank of Archon's estuary, where bayou rafts hand their loads to harbour boats. It is the bayou's nearest door to the sea.",
+   "summary": "Xi-Inou is a Three Waters hamlet on the west bank of Archon's estuary, where bayou raftsmen and harbour boatmen trade at the landing. It is the bayou's nearest door to the sea.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "A hamlet on the west bank of the estuary just above Archon, where bayou rafts and harbour boats meet.",
+     "text": "A hamlet on the west bank of the estuary just above Archon, where bayou rafts and harbour boats tie up side by side.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3052,7 +3129,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Slaughterfish run the channel below the landing. Drunk sailors and smugglers put in at the quay by night.",
+     "text": "Slaughterfish run the channel below the landing. Drunk sailors and smugglers work the quay by night.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3117,6 +3194,17 @@
        "kind": "reasoning",
        "title": "No UESP page for the name (a Project Tamriel place); identity reasoned from: Archon's harbour council and Warden customs (state §10.2), the Three Waters Tribe (tribes.md) and the estuary's position make a tribal landing outside the quay a natural trade stop; the Three Waters hold the bayou (§10.2 table)",
        "locator": "argonia-4e201-state.md §10"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Millcrest (Nyhus), is a Nordic farm hamlet of two farmhouse interiors, so it does not fit. Keeba Hollow (King of the Murkmire) fits better: an Argonian village of nine interiors, huts and an elder's hut, with lighthouse and dock pieces, where one hut serves as the pilot's widow's lantern house with its bunk. Ree-An-Wo (King of the Murkmire) supplies the stilt houses on the bank. Still to add: the plank landing, the mud post with its net scrap and the smuggler's cache under the landing.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -3384,7 +3472,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Safe in the village; a sea-drake is seen now and then off the channel posts, and slaughterfish crowd the shallows.",
+     "text": "Safe in the village; a sea-drake lies off the channel posts, and slaughterfish crowd the shallows.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3411,7 +3499,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A boat found drifting with its crew gone; a boatman whose family owes both Archon and Lilmoth kin; goods that were not meant to be on the ferry.",
+     "text": "A boat found empty at the platforms' edge with its crew gone; a boatman whose family owes both Archon and Lilmoth kin; goods that were not meant to be on the ferry.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3433,6 +3521,17 @@
        "kind": "reasoning",
        "title": "No UESP page for the name (a Project Tamriel place); identity reasoned from: Lilmoth's merchant council holds the delta villages (§10.2 Althii/Nushara row) and its second Hist grew in 4E 8 (§10.1), so a coast village sends its hatchlings there; Archon, Lilmoth, Soulrest and Tear boat traffic (§10.3) makes a half-way landing",
        "locator": "argonia-4e201-state.md §10"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Dunnashammipuri (Journey to Baan Malur), is a Daedric-style town with one interior, so it does not fit. Seekhat Yol (King of the Murkmire) fits better: an Argonian stilt village of seven huts with dock and ship pieces, which serves as the hostel with its long deck and the landing's boat gear. Still to add: the lantern mast, the carved channel post for the drowned and the cargo box at the empty boat.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -3473,7 +3572,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "a drifting boat's cargo box",
+     "detail": "an abandoned boat's cargo box",
      "count": 1
     }
    ]
@@ -3684,7 +3783,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Slaughterfish swim in the inlet by the landing. The odd crocodile comes down to drink there.",
+     "text": "Slaughterfish swim in the inlet by the landing. A crocodile lies at the water's edge there.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3735,6 +3834,17 @@
        "locator": "argonia-4e201-state.md §10"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Black Briar Lodge (Skyrim), is a Nordic lodge with one interior and does not fit. Root Whisper Village (King of the Murkmire) fits better: an Argonian village of eight interiors, huts and a hall, which serve as the households and the elder's hall. Still to add: the raised red-clay mounds, the kilns, the clay pits, the drying racks of dyed cloth and the landing on the inlet.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -3778,8 +3888,8 @@
     {
      "kind": "combat-creature",
      "detail": "slaughterfish by the landing and a crocodile at the water's edge",
-     "count": 2,
-     "reward": "treasure"
+     "reward": "treasure",
+     "count": 1
     },
     {
      "kind": "treasure",
@@ -3793,13 +3903,13 @@
    "name": "Fort Swiftmoth",
    "place_kind_id": "keep",
    "status": "abandoned",
-   "held_by": "No one holds it; Aroxhu families shelter in its upper floor and smugglers cache goods in its cellars",
+   "held_by": "No one holds it; Aroxhu families shelter in its upper floor and smugglers cache goods in its lower hall",
    "population": 3,
    "footprint_radius_m": 60,
    "siting": "inland",
    "danger_band_id": "D4",
    "importance": 3,
-   "summary": "Fort Swiftmoth is a stone keep on firm ground inland from Archon, empty since the Legion left at the secession and never re-garrisoned by the Archwardens. Smugglers keep goods in its cellars, and Aroxhu families rest in its dry upper floor.",
+   "summary": "Fort Swiftmoth is a stone keep on firm ground inland from Archon, empty since the Legion left at the secession and never re-garrisoned by the Archwardens. Smugglers keep goods in its lower hall, and Aroxhu families rest in its dry upper floor.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -3886,7 +3996,7 @@
     },
     {
      "aspect": "people",
-     "text": "No garrison. Aroxhu families rest in the upper floor on their road, smugglers use the cellars as a cache and an old ex-privateer keeps a room as his home.",
+     "text": "No garrison. Aroxhu families rest in the upper floor on their road, smugglers use the lower hall as a cache and an old ex-privateer keeps a room as his home.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3979,7 +4089,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "A smugglers' watch holds the cellars, mud-crocodiles lie in the ditch round the rise and the stair-tower is broken above the first landing.",
+     "text": "A smugglers' watch holds the lower hall, mud-crocodiles lie in the ditch round the rise and the stair-tower is broken above the first landing.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4001,7 +4111,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A smugglers' cache waiting to be moved. A locked cellar door below the old garrison's strongroom. A faded Imperial banner still hangs in the upper hall.",
+     "text": "A smugglers' cache waiting to be moved. A locked strongroom off the lower hall. A faded Imperial banner still hangs in the upper hall.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4018,6 +4128,17 @@
        "kind": "reasoning",
        "title": "Spine 10.4: Imperial forts were left at the secession (4E 5-10), most re-held by the Archwardens and the rest empty; 10.2: the Archwardens garrison only the trunk-route and coast forts they can keep; Archon's inland holders are the harbour folk and the Aroxhu clay-mound people",
        "locator": "argonia-4e201-state.md §10.1, §10.2, §10.4"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Built from Mistwatch (Skyrim), a ruined Imperial fort round a tall stair-tower, with three interiors that are the tower's halls one above another and no cellar. Its lowest hall serves as the smugglers' lower hall and a side room as the strongroom, given a locked door; its top hall serves as the dry upper floor where travellers sleep. Still to add: moss and vine on the stone, the ditch round the rise, the smugglers' cache, the faded Imperial banner and the travellers' pallets.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -4038,7 +4159,7 @@
    "gives": [
     {
      "kind": "combat-foes",
-     "detail": "smugglers' watch in the cellars, bandits' arms and bows",
+     "detail": "smugglers' watch in the lower hall, bandits' arms and bows",
      "count": 4,
      "reward": "boss-chest"
     },
@@ -4056,7 +4177,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "boss chest in the locked strongroom cellar",
+     "detail": "boss chest in the locked strongroom off the lower hall",
      "count": 1
     },
     {
@@ -4351,6 +4472,17 @@
        "locator": "argonia-4e201-state.md §10.1, §10.2, §10.4"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Built from Redeyn Ancestral Tomb (Journey to Baan Malur), a Dunmer tomb of one interior with shrine, ruin and some Ayleid and Imperial pieces, which fits a Velothi shrine well. Its single interior serves as the lower rooms, the south hall behind the fallen dome side and the inner dome with its boss chest, as parts of one cell. Still to add: the stepped dome in grey stone with vine, the dome's fallen side as placed rubble, the carved ash-grey doors, the east niche with its ash-bowls, the nightshade on the mound and the smugglers' digging.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -4608,6 +4740,17 @@
        "locator": "argonia-4e201-state.md §10.1, §10.3"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, The Lair of the Curruid (Here There Be Monsters), is two ship pieces among four creatures, so it lends little. Pilgrims Trench (Skyrim) fits better: five wreck buildings of ship pieces, no interior and no people. The sources hold no ship's hold, so the strongbox lies on the broken lower deck inside the hull, open to the air. Still to add: the hull on its side in white sand, the fallen masts, the holes in the rotten deck as placed gaps, the stern post with its cords, the captain's logbook and the mudcrabs.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -4842,7 +4985,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Sea-drakes are seen beyond the reef, and cutpurses work the Lilmoth road.",
+     "text": "Sea-drakes lie beyond the reef, and cutpurses work the Lilmoth road.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4891,6 +5034,17 @@
        "kind": "reasoning",
        "title": "No UESP page for the name (a Project Tamriel place); identity reasoned from: Lilmoth's merchant council holds its delta villages (§10.2), Umbriel destroyed Lilmoth in 4E 48 and Lilmoth was rebuilt smaller (§10.1), the Lilmothiit coastal dens were empty before the Flu (§10.4), and Lilmoth's third Hist grew from the second (lilmoth.md)",
        "locator": "argonia-4e201-state.md §10"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Karthwasten (Skyrim), is a Nordic mining town of five interiors, mostly mines and barracks, so it does not fit and its Nordic pieces are replaced. Keeba Hollow (King of the Murkmire) fits better: an Argonian village of nine interiors, huts and an elder's hut, with lighthouse and dock pieces for the long jetty and its tower lamp. Seekhat Yol (King of the Murkmire) adds ship and dock pieces. Still to add: the stilt houses on pilings, the salt pans, the drying racks, the carved prayer-post and the cutpurses' stash.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -5209,6 +5363,17 @@
        "locator": "argonia-4e201-state.md §10"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Nzech (Black Marsh), is a Dwemer ruin town of two interiors and does not fit a rice village. Seekhat Yol (King of the Murkmire) fits better: an Argonian stilt village of seven huts with dock and ship pieces for the ferry pier, and Keeba Hollow (King of the Murkmire) adds nine interiors for the households. Still to add: the paddies cut in low ground, the sluice gates, the carved post on the rice dyke and the old bones with their grave goods.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -5514,6 +5679,17 @@
        "locator": "argonia-4e201-state.md §10"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Eastmarch Trading Post (Skyrim Trading Posts), is one Nordic building with no interior, so it does not fit. Seekhat Yol (King of the Murkmire) fits better: an Argonian stilt village of seven huts with dock pieces, and a hut serves as the village table. Keeba Hollow (King of the Murkmire) adds more huts. Still to add: the fish racks, the landing, the view of the fort tower to the east and the deserters' hoard in the reeds.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -5573,7 +5749,7 @@
    "siting": "coast",
    "danger_band_id": "D2",
    "importance": 3,
-   "summary": "Fort Reedmoth is a stone fort at the east end of the northern Althii island, held by a small Archwarden garrison as a toll station on the island road and the boat crossing to Archon's coast.",
+   "summary": "Fort Reedmoth is a stone fort at the east end of the northern Althii island, held by a small Archwarden garrison as a toll station on the island road and at the chain across the channel facing Archon's coast.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -5642,7 +5818,7 @@
     },
     {
      "aspect": "present",
-     "text": "Ten men of Archein descent keep the gate, take tolls on the road and the strait and check cargo for the Warden customs. They hold the keys in the Archwardens' name.",
+     "text": "Ten men of Archein descent keep the gate, take tolls on the road and at the chain and check cargo for the Warden customs. They hold the keys in the Archwardens' name.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5704,7 +5880,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Tolls on the road and the strait; fish and rice bought from Sal-Axan. The quartermaster sells the surplus to travellers.",
+     "text": "Tolls on the road and at the chain; fish and rice bought from Sal-Axan. The quartermaster sells the surplus to travellers.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5861,6 +6037,17 @@
        "locator": "argonia-4e201-state.md §10.1, §10.2, §10.4"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Kintyra's Wall (Here There Be Monsters - Curse of Cipactli), is a small ruin wall of sixteen buildings with shrine and Ayleid pieces and no interior, so it does not fit a garrisoned fort. Cracked Tusk (Skyrim) fits better: an Imperial fort of two keep interiors, which serve as the gatehouse and the quartermaster's store with the smith's room, and its orc pieces are replaced. Still to add: moss on the wall, the tower, the toll chain across the channel, the smith's grindstone in the yard and the east shingle landing.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -5921,7 +6108,7 @@
    "siting": "coast",
    "danger_band_id": "D2",
    "importance": 3,
-   "summary": "Southwatch Keep is a stone fort at the south-western tip of the southern Althii island, facing the sea road to Lilmoth. A small Archwarden garrison lights its beacon and checks ships.",
+   "summary": "Southwatch Keep is a stone fort at the south-western tip of the southern Althii island, facing the sea road to Lilmoth. A small Archwarden garrison lights its beacon and watches the sea road.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -5990,7 +6177,7 @@
     },
     {
      "aspect": "present",
-     "text": "Eight garrison men keep the beacon lit, check the ships that anchor below and pay little attention to Lilmoth's politics.",
+     "text": "Eight garrison men keep the beacon lit, watch the sea road from the tower and pay little attention to Lilmoth's politics.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6052,7 +6239,7 @@
     },
     {
      "aspect": "economy",
-     "text": "The keep takes a toll on ships that anchor below it and buys its provisions from the fishermen of Karketa. Spare fish is sold at the gate.",
+     "text": "The keep takes a toll from boatmen who put in at the landing below it and buys its provisions from the fishermen of Karketa. Spare fish is sold at the gate.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6150,7 +6337,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Slaughterfish in the shallows below the landing, wreckers in a sea-cave on the shore and reef rocks that tear hulls.",
+     "text": "Slaughterfish in the shallows below the landing and wreckers in a sea-cave on the shore.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6207,6 +6394,17 @@
        "kind": "reasoning",
        "title": "Spine 10.2: the Archwardens garrison the old Imperial coast forts, held by ex-Archein families, with customs at the recognised ports and no navy; 10.4: the Legion left at the secession (4E 5-10); 10.1: Lilmoth rebuilt smaller after 4E 48 keeps the sea road busy",
        "locator": "argonia-4e201-state.md §10.1, §10.2, §10.4"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Ashguard (SolstheimExpand), is a Dunmer fort of three interiors, a watchtower, a manor and a barracks, which serve as the beacon tower, the keep hall and the garrison's barracks, with its few Nordic pieces replaced. The sources hold no cave, so the wreckers' sea-cave is added as a small cave interior from Skyrim's cave pieces behind a door on the shore. Still to add: the beacon lamp, the landing below the keep, the gate stores, the boss chest in the cave and the salvage.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -6594,6 +6792,17 @@
        "locator": "argonia-4e201-state.md §10.1, §10.2, §10.4"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Cormar Crossing (Journey to Baan Malur), is a Dunmer farm of five interiors, a storehouse, grain silo, farmhouse, cornerclub and guardhouse, which fits a rice estate with its great house and huts. The farmhouse serves as the great house and the storehouse as the old cellar, behind a door the family has walled up with placed boards and stone. Still to add: the long plank house on posts with a tiled roof, the paddies and dykes, the boat landing, the bell on its post, the veranda with its hearth pot and the planters' strongbox.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -6973,6 +7182,17 @@
        "locator": "argonia-4e201-state.md §10.1, §10.2, §10.4"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Goldenglow Estate (Skyrim), is a Nordic estate of four interiors and over nine hundred Nordic pieces, so it does not fit and those pieces are replaced. Cormar Crossing (Journey to Baan Malur) fits better: a Dunmer farm of five interiors, where the farmhouse serves as the planter's house and the storehouse as the cellar holding the salvage chest. Still to add: the low thatched halls on stilts, the rice-barn, the reed-lined channels and the woven reed post at the landing.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -7337,6 +7557,17 @@
        "locator": "argonia-4e201-state.md §10.1, §10.2, §10.4"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Ramshackle Trading Post (Dragonborn), is thirty-five buildings of Dwemer and mine pieces with no interior, so it does not fit. Cormar Crossing (Journey to Baan Malur) fits better: a Dunmer farm of five interiors, where the farmhouse serves as the two-storey house and the storehouse as the rice-barn. Still to add: the veranda, the landing with its post, the tall palms and the smugglers' cache.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -7670,6 +7901,17 @@
        "locator": "argonia-4e201-state.md §10.1, §10.2, §10.4"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Hollyfrost Farm (Skyrim), is a Nordic farmhouse of one interior with forty-seven farm pieces and thirty-nine Nordic ones, so it does not fit. Farmhouse (Journey to Baan Malur) fits better: a tiny Dunmer farm of two interiors, a farmhouse and a storehouse, which serve as the stilt house and the root store. Still to add: the thatched roof and stilts in Argonian pieces from King of the Murkmire, the gourd garden on its rise, the chicken coops, the shell-hung post by the door and the wreck salvage in the shallows.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -7938,7 +8180,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Crocodiles and giant snakes from the marsh edge come for the guar at night, so the paddock is stockaded.",
+     "text": "Crocodiles and giant snakes lurk at the marsh edge near the paddock, which is why it is stockaded.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7997,6 +8239,17 @@
        "locator": "argonia-4e201-state.md §10.1, §10.2, §10.4"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Chillfurrow Farm (Skyrim), is a Nordic farm of one interior and over a hundred Nordic pieces, so those pieces are replaced. Its single interior serves as the low house. Still to add: the stockaded guar paddock and reed fences in Argonian pieces from King of the Murkmire, the vegetable plot, the reed post with the guar horns and the crocodile's den with its hoard at the marsh edge.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -8019,9 +8272,9 @@
     },
     {
      "kind": "combat-creature",
-     "detail": "crocodiles and giant snakes from the marsh edge at the paddock by night",
-     "count": 3,
-     "reward": "treasure"
+     "detail": "crocodiles and giant snakes at the marsh edge by the paddock",
+     "reward": "treasure",
+     "count": 1
     },
     {
      "kind": "treasure",
@@ -8265,7 +8518,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Slaughterfish swim in the pond. Wasps nest in the fruit trees.",
+     "text": "Slaughterfish swim in the pond.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8322,6 +8575,17 @@
        "kind": "reasoning",
        "title": "Spine 10.1: Lilmoth's delta and island villages were cleared and resettled in the generations after 4E 48; 10.2: Lilmoth's merchant council and the Warden forts hold this coast; 10.4: Imperial forts left at the secession, most re-held by the Archwardens",
        "locator": "argonia-4e201-state.md §10.1, §10.2, §10.4"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Cliffside Retreat (Skyrim), is a single homestead hut of eight mine-style pieces with no interior and does not fit. Salvius Farm (Skyrim) fits better: a farm of five buildings with one farmhouse interior, which serves as the small stilt house, its Dwemer and Nordic pieces replaced. Still to add: the fruit trees, the pond ringed with wattle, the hives, the driftwood post with its fish-bone string and the drowned fisher's box in the shallows.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -8656,6 +8920,17 @@
        "locator": "argonia-4e201-state.md §10.1, §10.2, §10.4"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Salvius Farm (Skyrim), is five buildings with one farmhouse interior, with Dwemer and Nordic pieces that are replaced. Hlaalu Farm (Skyrim) fits better for a plain family farm: sixteen buildings with farm pieces, one interior and a barn, its Nordic pieces replaced. Its interior serves as the low plain house. Still to add: the rice paddy, the woodpile, the barn post with the bandit's knife, the post hung with soldiers' cloth and the bandits' stash in the barn.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -8922,7 +9197,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "The water-filled cellar is the main risk, with snakes in the wall-gaps and a squatters' lookout on the north wall. Holes in the floor by the old armoury drop into the cellar.",
+     "text": "The water-filled cellar is the main risk, with snakes in the wall-gaps and a squatters' lookout on the north wall.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8977,6 +9252,17 @@
        "kind": "reasoning",
        "title": "Spine 10.4: Imperial forts and posts were left at the secession (4E 5-10), most re-held by the Archwardens and the rest empty; 10.2: the Archwardens garrison only the forts on the trunk routes they can hold, so this road post is left to squatters and smugglers; the 10.1 table puts the Legion's departure at 4E 5-10",
        "locator": "argonia-4e201-state.md §10.1, §10.2, §10.4"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Built from Fort Hraggstad (Skyrim), an Imperial fort of two interiors, a keep with its halls and a lower hall, with 405 Imperial pieces and no Nordic ones. The upper hall serves as the barracks and armoury with its locked cage, and the lower hall as the cellar, given a shallow water plane. Still to add: the vines and broken corner on the wall, the roofless yard, the empty chapel niche with candle stubs, the north wall lookout and the squatters' camp.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -9315,6 +9601,17 @@
        "locator": "argonia-4e201-state.md §10.1, §10.2, §10.4"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Built from Old Laboratory (King of the Murkmire), a small Imperial ruin of one interior with Argonian and dock pieces, whose interior serves as the sea-cave beneath the shed, entered by a hatch in the shed floor, and whose Nordic pieces are replaced. Still to add: the low brick shed, the toppled signal tower with its rubble, the rusted iron ring in the wall, the deep pool in the cave, the bonded strongbox bolted to the floor and the clam beds on the shore.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -9594,7 +9891,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Bandits with a leader and a lookout hold the shell, and gaps in the burnt floors open onto the cellar below. The garrison's patrols avoid the ruin, so the approach along the island road is unwatched.",
+     "text": "Bandits with a leader and a lookout hold the shell. The garrison's patrols avoid the ruin, so the approach along the island road is unwatched.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9649,6 +9946,17 @@
        "kind": "reasoning",
        "title": "Spine 10.4: Imperial forts were left at the secession (4E 5-10), most re-held by the Archwardens and the rest empty; 10.2: the Archwardens' garrisons are small, so an outlier next to Reedmoth is left to bandits; the 10.1 table puts the Legion's departure and the burning at the secession",
        "locator": "argonia-4e201-state.md §10.1, §10.2, §10.4"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Quick Test Cell (Black Marsh North), is a ruined fort of one interior with 551 fort pieces and a few Imperial ones, which fits a burnt outlier fort. Its Nordic and Dwemer pieces are replaced, and its single interior serves as the strongroom behind the iron door. Still to add: the charred black timbers and stone footings, the burnt shrine plinth, the bandits' lookout post and the dealer's corner on the road.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -9940,7 +10248,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Mudcrabs and hackwings hold the beach below. Restless dead walk the midden at night, a wraith keeps the child's tomb and old traps guard the grave-passages.",
+     "text": "Mudcrabs and hackwings hold the beach below. Restless dead lie in the midden, a wraith keeps the child's tomb and old traps guard the grave-passages.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -10003,6 +10311,17 @@
        "locator": "argonia-4e201-state.md §10.1, §10.4 (Lore:Lilmothiit, Lore:Knahaten Flu)"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, a ruined Argonian site at cell 2,-40 of King of the Murkmire's world, is fifty-one buildings of Argonian and ruin pieces with no interior, which serve as the cracked turf-and-leaf domes. The child's tomb and its grave-passages are the single interior of Haj-Uxith (King of the Murkmire), reached by a dome door. Still to add: the shell midden, the vine cover, the fox-tail charm, the carved bone flute and the trap triggers.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -10022,9 +10341,9 @@
     },
     {
      "kind": "combat-foes",
-     "detail": "restless dead (skeletal Lilmothiit) in the domes and midden at night",
-     "count": 4,
-     "reward": "treasure"
+     "detail": "restless dead (skeletal Lilmothiit) in the domes and midden",
+     "reward": "treasure",
+     "count": 1
     },
     {
      "kind": "combat-boss",
@@ -10298,7 +10617,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Old bone-chime tripwires hang in the tunnels, and the smugglers' door is guarded by armed crews. At night the wind-driven sand sounds like footsteps.",
+     "text": "Old bone-chime tripwires hang in the tunnels, and the smugglers' door is guarded by armed crews. The wind makes sounds like footsteps among the dunes.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -10359,6 +10678,17 @@
        "kind": "reasoning",
        "title": "Kitsa is a small Lilmothiit den; The Lilmothiit withdrew inland from the coasts over generations and the Knahaten Flu (2E 560-603) finished the remnant, so no Lilmothiit lives or builds after 2E 603; the den is empty, and Argonians know it through the old sickness; the smugglers are Khajiit and other Southern Sea crews moving moon sugar in transit (spine 10.3, Elsweyr row, any date)",
        "locator": "argonia-4e201-state.md §10.1, §10.4, §10.3 (Lore:Lilmothiit, Lore:Knahaten Flu)"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, a small Argonian ruin at cell -10,-44 of King of the Murkmire's world, is eleven buildings of Argonian and ruin pieces with no interior, which serve as the half-buried domes. The tunnels and the inner burrow are the single interior of Haj-Uxith (King of the Murkmire), with a door cut into it for the smugglers. Still to add: the dune sand drifts, the shell charms in the niches, the ash scratchings, the moon-sugar crates and the captain's strongbox.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -10716,6 +11046,17 @@
        "kind": "reasoning",
        "title": "Reknaa-iit is the largest Lilmothiit den of the southern island; The Lilmothiit withdrew inland from the coasts over generations and the Knahaten Flu (2E 560-603) finished the remnant, so no Lilmothiit lives or builds after 2E 603; the den is empty, and Argonians know it through the old sickness",
        "locator": "argonia-4e201-state.md §10.1, §10.4 (Lore:Lilmothiit, Lore:Knahaten Flu)"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Keel-Sakka Bridge (King of the Murkmire), is a bridge of thirty-five buildings with mine and fort pieces and no interior, so it does not fit a burial mound. Huluxinoag (King of the Murkmire) fits better: an Argonian ruin of one cave-like interior, which serves as the lower galleries and the burial chamber under the crown. Still to add: the large turf mound with its fallen leaf-roof, the ring of fallen posts, the skeleton guards on the crown and the fox-bone talisman by the hoard.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -11076,6 +11417,17 @@
        "locator": "argonia-4e201-state.md §10.1, §10.4 (Lore:Lilmothiit, Lore:Knahaten Flu)"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, a ruin near Bonestrewn Grove (King of the Murkmire), is twelve Argonian and dock pieces with no interior, so it supplies only the gnawed mounds. Huluxinoag (King of the Murkmire) fits better for the tunnels: an Argonian ruin of one interior with cave pieces, which serves as the tunnels and the nest chamber. Still to add: the turf-and-leaf mounds with their gnawed entrance, the pit-traps, the lost party's packs and the bull crocodile's golden ring.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -11434,6 +11786,17 @@
        "locator": "argonia-4e201-state.md §10.1, §10.4 (Lore:Lilmothiit, Lore:Knahaten Flu)"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Huluxinoag (King of the Murkmire), is an Argonian ruin of one interior with cave pieces, which serves as the smugglers' lower hall. Wajeem-Krona (King of the Murkmire) adds a second cave interior of eighty-nine cave pieces, which serves as the tomb-rooms. Still to add: the domes over the shore with their cracks, the ring of tails carved in the doorposts, the kit-fable on the lintel, the headman's strongbox and the smuggled cargo.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -11490,14 +11853,14 @@
    "siting": "island",
    "danger_band_id": "D2",
    "importance": 3,
-   "summary": "Bell Station is a timber platform anchored over the drowned spires of Benthic Yobesh, from which divers are lowered in brass bells. It is held by a small crew of Lilmoth's delta families, who dive the spires and watch the deep for the merchant council and pay it a share of what they raise.",
+   "summary": "Bell Station is a salvage station of timber huts on a rock islet above the drowned spires of Benthic Yobesh. A small crew of Lilmoth's delta families dive the spires from its landing, watch the deep for the merchant council and pay it a share of what they raise.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "A working platform at sea, east of Lilmoth, whose diving bells reach the drowned spires. No other settlement stands in Benthic Yobesh.",
+     "text": "A working station on a bare islet at sea, east of Lilmoth, named for the ship's bell at its landing that calls the divers in. Its divers swim down to the drowned spires. No other settlement stands in Benthic Yobesh.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -11530,7 +11893,7 @@
     },
     {
      "aspect": "history",
-     "text": "Built in the generations after 4E 48, when divers working Lilmoth's ruined waterfront found the spires of the land that sank in the Dawn Era; Lilmoth's merchant council sent a crew of delta kin to the platform to bring the salvage up for it.",
+     "text": "Built in the generations after 4E 48, when divers working Lilmoth's ruined waterfront found the spires of the land that sank in the Dawn Era; Lilmoth's merchant council sent a crew of delta kin to the islet to bring the salvage up for it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -11558,7 +11921,7 @@
     },
     {
      "aspect": "present",
-     "text": "Eight crew live on the platform: bell-tenders, divers, a winch-master and a steward who weighs every find and takes the council's share of each haul.",
+     "text": "Eight crew live on the islet: divers, a boat-keeper, a cook and a steward who weighs every find, takes the council's share of each haul and sells potions of waterbreathing to divers.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -11670,7 +12033,7 @@
     },
     {
      "aspect": "look",
-     "text": "A timber platform on pilings with winches, copper bells hanging on chains, drying diving gear, bunks in a hut and a lantern mast.",
+     "text": "Timber huts and a lantern mast on a bare rock islet, a plank landing with boats drawn up, diving gear drying on racks and a ship's bell hung on a post at the landing.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -11726,7 +12089,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A diver who failed to come up; a diver who wants a find kept off the steward's scale; a bell hauled up with something clinging to it.",
+     "text": "A diver who failed to come up; a diver who wants a find kept off the steward's scale; a salvage crate brought up with something clinging to it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -11751,6 +12114,17 @@
        "locator": "argonia-4e201-state.md §10"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Solitude Docks (Skyrim), is a city waterfront of sixty buildings with one ship interior, far too large for eight crew on an islet, so it lends only its dock pieces, crates and nets. Alten Meerhleel (King of the Murkmire) fits better: a small Argonian dock of four buildings with a moored ship whose hold is an interior, set here on the islet's shore as the landing. Still to add: the islet's rock, a crew hut with bunks from Black Marsh & Valenwood's stilt-hut pieces, a lantern mast, a ship's bell on a post and the steward's counter.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -11773,7 +12147,7 @@
     },
     {
      "kind": "trader-jeweller",
-     "detail": "the steward buys and sells salvaged jewellery, brass and vakka stones",
+     "detail": "the steward buys and sells salvaged jewellery, brass and vakka stones, and sells potions of waterbreathing",
      "count": 1
     },
     {
@@ -11788,7 +12162,7 @@
     },
     {
      "kind": "harvest-rare",
-     "detail": "pearl oysters on the spires, taken by diving bell",
+     "detail": "pearl oysters on the spires, taken by diving",
      "count": 2
     },
     {
@@ -11930,7 +12304,7 @@
     },
     {
      "aspect": "present",
-     "text": "Divers avoid it; the bell-tenders at Bell Station refuse to lower below the rim.",
+     "text": "Divers avoid it; the bell-tenders at Bell Station will not send divers past the rim.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -12126,7 +12500,7 @@
     },
     {
      "aspect": "look",
-     "text": "A wall of black water on the sea floor, cold and dark, with sound returning from below.",
+     "text": "A trench in the sea floor, black and dark, with sound returning from below.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -12175,7 +12549,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Dreugh, drowning where a diver's breath runs out and cold; sounds that draw divers over the edge.",
+     "text": "Dreugh, drowning where a diver's breath runs out, and echoes that return a diver's own voice from below.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -12270,6 +12644,17 @@
        "locator": "argonia-4e201-state.md §10.2"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, a landmark at cell -28,-9 of Black Marsh, is 157 dock, farm and Nordic pieces with no interior, so it does not fit a trench. The trench is the sea-floor relief itself. Hajsetha-Tzel (King of the Murkmire) fits the dreugh lair: an Argonian grove ruin of one cave-like interior on the rim. The sealed spire at the bottom is built from the xanmeer pieces of Teeth of Sithis (King of the Murkmire). Still to add: the dark water, the echo sounds, the drowned hoard on the lip, the glowing kelp and the lair chest.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -12324,7 +12709,7 @@
    "siting": "seabed",
    "danger_band_id": "D3",
    "importance": 2,
-   "summary": "The Kelp Lantern is a brass diving sphere on the sea floor near Echo Deep, lost from an East Empire Company barge before the secession. Kelp has grown over it and its viewing glass still glows.",
+   "summary": "The Kelp Lantern is the wreck of an East Empire Company salvage barge on the sea floor near Echo Deep, lost before the secession. Kelp has grown over its hull, and its brass stern lantern still hangs from the rail.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [
@@ -12340,7 +12725,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A sunken brass diving sphere lying on the sea floor near Echo Deep, reached by swimming down to it.",
+     "text": "A sunken Company salvage barge on the sea floor near Echo Deep, reached by swimming down to it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -12365,7 +12750,7 @@
     },
     {
      "aspect": "history",
-     "text": "The East Empire Company had it built to reach the drowned xanmeer spires without a bell, and lowered it from a barge in the years before the secession. Its cable parted and the Company's crew left when the Company did.",
+     "text": "The East Empire Company sent it out to strip the drowned xanmeer spires of bronze in the years before the secession. It foundered at anchor, and the Company's crew left when the Company did.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -12390,7 +12775,7 @@
     },
     {
      "aspect": "present",
-     "text": "It lies on its side half buried in silt, its ports cracked and its glass still glowing under the kelp. Bell Station's divers know it as a landmark and a salvage prize they have not yet opened.",
+     "text": "It lies on its side half buried in silt, its hold broken open and its stern lantern hanging in the kelp. Bell Station's divers know it as a landmark and a salvage prize they have not yet cleared.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -12415,7 +12800,7 @@
     },
     {
      "aspect": "people",
-     "text": "The sphere holds no living crew. Divers tell of the sphere's pilot tapping on the glass from inside.",
+     "text": "The wreck holds no living crew.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -12440,7 +12825,7 @@
     },
     {
      "aspect": "economy",
-     "text": "It was a Company tool for stripping the spires of bronze; now the sphere itself is the salvage, brass fittings and whatever its crew left aboard.",
+     "text": "It was a Company salvage barge; now the wreck itself is the salvage: brass fittings, tools and whatever its crew left in the hold.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -12465,7 +12850,7 @@
     },
     {
      "aspect": "faith",
-     "text": "Argonian divers tap the sphere's brass three times for luck as they pass, the way they touch the bell-cord at Bell Station.",
+     "text": "Argonian divers tap its stern lantern three times for luck as they pass, the way they touch the bell at Bell Station.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -12490,7 +12875,7 @@
     },
     {
      "aspect": "look",
-     "text": "A brass ball with portholes and rivets, a broken cable trailing from its crown, wrapped in kelp and lit from within.",
+     "text": "A broad barge hull on its side, a snapped mast and a brass stern lantern, wrapped in kelp.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -12515,7 +12900,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "A slaughterfish shoal circles the wreck. Inside, the sphere is a sealed shell with no air and a diver's breath runs out fast once he squeezes through the hatch.",
+     "text": "A slaughterfish shoal circles the wreck, and its hold has no air: a diver's breath runs out fast inside.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -12540,7 +12925,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A locked brass hatch whose key a Company salvage master carried; a cable end to follow across the sand to the spires.",
+     "text": "The salvage master's locked chest in the stern cabin; an anchor chain to follow across the sand toward the spires.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -12560,6 +12945,17 @@
        "kind": "reasoning",
        "title": "A Company salvage sphere is a pre-secession foreigner (spine 10.3 Cyrodiil: Imperial and Company ships only before the secession, 4E 5-10); Bell Station and Lilmoth's merchants hold the sea off the south-east (10.2); the Imperial and Company presence is gone since the secession (10.4)",
        "locator": "argonia-4e201-state.md §10.3"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Winter War (Skyrim), is a wreck of eleven buildings of ship pieces with no interior, so it gives only the hull. Icerunner (Skyrim) fits better: a wrecked ship of 214 ship pieces with a ship interior, which serves as the broken hold and the stern cabin with the locked chest, given a water plane. Still to add: the barge's flat hull and snapped mast, the kelp over it, the brass stern lantern, the silt bank, the pearl clams and the anchor chain across the sand.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -12585,13 +12981,13 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "Chest behind the locked brass hatch",
+     "detail": "the salvage master's locked chest in the stern cabin",
      "count": 1
     },
     {
-     "kind": "fishing",
-     "detail": "Pearl clams in the silt around the hull; Fat Sleeper fish in the kelp",
-     "count": 2
+     "kind": "harvest-common",
+     "detail": "Pearl clams in the silt around the hull",
+     "count": 1
     }
    ]
   },
@@ -12600,7 +12996,7 @@
    "name": "Teku-Sul Spire",
    "place_kind_id": "sunken-ruin",
    "status": "sunken",
-   "held_by": "Reef fish and a giant mudcrab",
+   "held_by": "The drowned priests' attendants, reef fish and a giant mudcrab",
    "population": 0,
    "footprint_radius_m": 60,
    "siting": "seabed",
@@ -12644,7 +13040,7 @@
     },
     {
      "aspect": "history",
-     "text": "Argonians raised it in the Stone-Nest age, before the land sank: legend says the Southern Sea swallowed Murkmire and the Padomaic took most of the Hist's first domain. Its Hist chamber was sealed when the tree died.",
+     "text": "Argonians raised it in the Stone-Nest age, before the land sank: legend says the Southern Sea swallowed Murkmire and the Padomaic took most of the Hist's first domain. When the last of the old kings fell, his priests shut its lowest halls behind a great gate.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -12686,7 +13082,7 @@
     },
     {
      "aspect": "present",
-     "text": "Silted and furred with kelp and coral, it stands close enough for a day's dive from Lilmoth. Bell Station's divers have stripped its upper floors bare.",
+     "text": "Silted and furred with kelp and coral, it stands close enough for a day's dive from Lilmoth. Bell Station's divers have stripped its upper floors bare. Air still stands in its east halls, where the drowned priests' attendants walk.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -12717,7 +13113,7 @@
     },
     {
      "aspect": "people",
-     "text": "A giant mudcrab has taken one gallery. Divers say a drowned priest walks the stair and never speaks.",
+     "text": "The drowned priests' attendants hold the east halls, and a giant mudcrab has taken one gallery. Divers say a priest's ghost stands before the great gate and never speaks to them.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -12748,7 +13144,7 @@
     },
     {
      "aspect": "economy",
-     "text": "The upper floors gave bronze, vakka stones and bone to Bell Station, which sells them on to Lilmoth's merchants. What remains lies behind the sealed door and in the mudcrab's gallery.",
+     "text": "The upper floors gave bronze, vakka stones and bone to Bell Station, which sells them on to Lilmoth's merchants. What remains lies in the mudcrab's gallery and beyond the great gate.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -12785,7 +13181,7 @@
     },
     {
      "aspect": "faith",
-     "text": "Divers say it belonged to Sithis and the water-spirits, and they pray before going in. The Hist-glyph cut into its sealed door marks the chamber where a tree once grew.",
+     "text": "Divers say it belonged to Sithis and the water-spirits, and they pray before going in. The great gate is cut with the old kings' marks round three empty sockets.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -12816,7 +13212,7 @@
     },
     {
      "aspect": "look",
-     "text": "A broken spire furred with weed, round windows and a stair spiralling down inside.",
+     "text": "A broken spire furred with weed, round windows and a stair spiralling down to halls where the air still holds, ending at a great carved gate.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -12847,7 +13243,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "A diver can drown on the long spiral stair when the breath gives out, and the mudcrab's claws hold fast. Reef slaughterfish dart out of the lower windows.",
+     "text": "A diver can drown on the long spiral stair when the breath gives out. The attendants strike at anyone in the east halls, the giant mudcrab guards its gallery and reef slaughterfish dart out of the lower windows.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -12878,7 +13274,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A salvage chest left half-opened in the mudcrab's gallery; the sealed door with its Hist-glyph that Bell Station's divers cannot force.",
+     "text": "A salvage chest left half-opened in the mudcrab's gallery; the great gate with three empty sockets that Bell Station's divers have never forced; the ghost of a priest who stands before it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -12904,6 +13300,17 @@
        "kind": "reasoning",
        "title": "A drowned xanmeer tower: xanmeers are Argonian-built, ancient in the Stone-Nest age, and a ruin once their tribe is gone; the Dawn Era sinking is myth (10.1); Lilmoth's merchant council and Bell Station hold this sea (10.2)",
        "locator": "argonia-4e201-state.md §10.1, §10.2"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Built from Teeth of Sithis (King of the Murkmire), whose three interiors, two Xanmeer towers and a halls level, serve as the dry east halls where the attendants walk, the mudcrab's gallery with the spiral stair and the lower halls ending at the great gate, with its Xanmeer pieces for the broken spire. Its Dwemer pieces are replaced. Still to add: the weed and coral, the great gate with its three empty sockets and the old kings' marks, the half-opened salvage chest, the priest's ghost before the gate and the pearl clams on the reef.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -12939,9 +13346,15 @@
      "count": 1
     },
     {
-     "kind": "fishing",
-     "detail": "Spotted Seatrout and pearl clams on the reef",
-     "count": 2
+     "kind": "harvest-common",
+     "detail": "Pearl clams on the reef",
+     "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "the drowned priests' attendants in the east halls",
+     "count": 3,
+     "reward": "treasure"
     }
    ]
   },
@@ -13254,6 +13667,17 @@
        "kind": "reasoning",
        "title": "A drowned xanmeer tower: xanmeers are Argonian-built, ancient in the Stone-Nest age, and a ruin once their tribe is gone; the Dawn Era sinking is myth (10.1); Lilmoth's merchant council and Bell Station hold this sea (10.2)",
        "locator": "argonia-4e201-state.md §10.1, §10.2"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Haj-Uxith (King of the Murkmire), is an Argonian ruin of one interior with lighthouse pieces and does not give a xanmeer tower. Teeth of Sithis (King of the Murkmire) fits better: its East Xanmeer interior serves as the tower's flooded hall, given a water plane, with its Xanmeer pieces for the curling stone arms outside. Still to add: the weed, the half-cleared rooms, the dead-end gallery with the drowned diver, the locked grate and the salvage chest.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -13601,6 +14025,17 @@
        "locator": "argonia-4e201-state.md §10.1, §10.2"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, a ruin near Alten Meerhleel (King of the Murkmire), is twenty-eight Argonian and ruin pieces with no interior and does not give a tower. Teeth of Sithis (King of the Murkmire) fits better: its West Xanmeer interior serves as the upper galleries holding the nests, given a water plane, with its Xanmeer pieces for the leaning spire outside. Still to add: the lean of the tower, the weed, the nests, the dreugh hoard and the dead diver's kit with its brass bell-cord token at the foot of the stair.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -13892,7 +14327,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Dreugh scouts strike from the dark, and silt hides their approach until they are on the diver. A carved prize in a dreugh's grip is bait.",
+     "text": "Dreugh scouts strike from the dark. A carved prize in a dreugh's grip is bait.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -13949,6 +14384,17 @@
        "kind": "reasoning",
        "title": "A drowned xanmeer tower: xanmeers are Argonian-built, ancient in the Stone-Nest age, and a ruin once their tribe is gone; the Dawn Era sinking is myth (10.1); Lilmoth's merchant council and Bell Station hold this sea (10.2)",
        "locator": "argonia-4e201-state.md §10.1, §10.2"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, a ruin near Bonestrewn Grove (King of the Murkmire), is 129 Argonian, ruin and Imperial pieces with no interior, so it supplies only the silt-buried base. Teeth of Sithis (King of the Murkmire) fits better: its Halls interior serves as the dreugh-held rooms and the crown, given a water plane, and its Xanmeer pieces make the spire. Its few Nordic pieces are replaced. Still to add: the silt around the base, the coral on the crown, the carved prize, the cut bell-chain and the bell with its crew's remains.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -14296,6 +14742,17 @@
        "locator": "argonia-4e201-state.md §10.1, §10.2"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, a ruin near Keel-Sakka Bridge (King of the Murkmire), is sixteen Argonian and ruin pieces with no interior and a single shrine piece, which fits a lone spire on a plain with a summit shrine and needs no interior. Teeth of Sithis (King of the Murkmire) supplies the Xanmeer pieces for the tower. Still to add: the sand plain, the basin of Hist-sap on the summit, the salvager's lamp and grave at the foot and the salvager's cache.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -14323,9 +14780,9 @@
      "count": 3
     },
     {
-     "kind": "fishing",
-     "detail": "Pearl clams on the sand plain; Longlure Eelfin around the foot",
-     "count": 2
+     "kind": "harvest-common",
+     "detail": "Pearl clams on the sand plain",
+     "count": 1
     }
    ]
   },
@@ -14640,6 +15097,17 @@
        "locator": "argonia-4e201-state.md §10.1, §10.2"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, a small ruin at cell -10,-56 of King of the Murkmire's world, is eight Argonian and ship pieces with no interior, which serve as the old salvage platform at the spire's foot. Haj-Uxith (King of the Murkmire) fits the lower gallery: an Argonian ruin of one interior, which serves as the grave-rooms where the crew lies. The tower's Xanmeer pieces come from Teeth of Sithis (King of the Murkmire). Still to add: the anchor chains from Bell Station, the first bell on its post, the bell-cord on the platform and the trapped lock on the crew's cache.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -14667,8 +15135,8 @@
      "count": 1
     },
     {
-     "kind": "fishing",
-     "detail": "Fat Sleeper fish around the anchor chains",
+     "kind": "harvest-common",
+     "detail": "Kelp and sea-grass around the anchor chains",
      "count": 1
     }
    ]
@@ -14684,7 +15152,7 @@
    "siting": "seabed",
    "danger_band_id": "D4",
    "importance": 3,
-   "summary": "Thul-Kesh Spire is the outermost drowned xanmeer tower, tall and pale on the edge of the deep, kept sealed by a sea-priest's ghost.",
+   "summary": "Thul-Kesh Spire is the outermost drowned xanmeer tower, tall and pale on the edge of the deep, haunted by a sea-priest's ghost.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -14722,7 +15190,7 @@
     },
     {
      "aspect": "history",
-     "text": "It was a temple-tower of the Stone-Nest age, and its Hist chamber was shut when the sea came. The ghost is taken for its last priest.",
+     "text": "It was a temple-tower of the Stone-Nest age, drowned when the sea came. The ghost is taken for its last priest.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -14795,7 +15263,7 @@
     },
     {
      "aspect": "people",
-     "text": "A drowned sea-priest's ghost keeps the sealed door. Divers who have seen it describe a figure bright in the water.",
+     "text": "A drowned sea-priest's ghost keeps the inner gallery, with the priests' drowned attendants in the outer ones. Divers who have seen the ghost describe a figure bright in the water.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -14826,7 +15294,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Its bronze is known but untouched, kept sealed by the ghost. Divers have not stripped it, and the hoard behind the door draws only the bold.",
+     "text": "Its bronze is known but untouched, kept by the ghost. Divers have not stripped it, and the temple hoard in the inner gallery draws only the bold.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -14925,7 +15393,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "The ghost strikes at anyone who nears the sealed door, and the depth leaves a diver little breath for a fight. Divers must not touch the door's lock.",
+     "text": "The ghost strikes at anyone who enters the inner gallery, and the depth leaves a diver little breath for a fight.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -14956,7 +15424,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "Thul-Kesh is the outermost spire, and its sealed Hist-chamber door opens only when the ghost is put to rest.",
+     "text": "Thul-Kesh is the outermost spire, and its temple hoard lies in the inner gallery where the ghost walks.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -14984,6 +15452,17 @@
        "locator": "argonia-4e201-state.md §10.1, §10.2"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Wajeem-Krona (King of the Murkmire), is a cave ruin of eighty-nine cave pieces with one interior and does not give a tall tower. Teeth of Sithis (King of the Murkmire) fits better: its three interiors, two Xanmeer towers and a halls level, serve as the outer galleries, the inner gallery and the priest's chamber, given water planes. Its Xanmeer pieces make the pale spire. Still to add: the spire's height on the sea-floor edge, the priest's chest, the temple hoard and the bright light about the ghost.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -15002,7 +15481,7 @@
     },
     {
      "kind": "combat-boss",
-     "detail": "The sea-priest's ghost at the sealed door",
+     "detail": "the sea-priest's ghost in the inner gallery",
      "count": 1,
      "reward": "boss-chest"
     },
@@ -15013,12 +15492,12 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "Chest in the Hist chamber behind the sealed door",
+     "detail": "the priest's chest in the inner gallery",
      "count": 1
     },
     {
      "kind": "gold-hoard",
-     "detail": "The temple hoard of coin and gems",
+     "detail": "the temple hoard of coin and gems in the inner gallery",
      "count": 1
     }
    ]

@@ -63,7 +63,7 @@ def test_hooks_quote_the_hooks_notes_whole(made):
     out, counts = made
     assert counts["hooks"] >= len(rows("SELECT 1 FROM place_note WHERE aspect_id = 'hooks'"))
     text = (out / "regions" / "murkwood.md").read_text()
-    assert "The assembly will not speak of its sour spring in open session." in text
+    assert "A quiet house off the market takes visitors only by word of mouth, and nobody will say whose it is." in text
 
 
 def test_no_em_dashes_in_what_the_generator_writes(made):

@@ -21,7 +21,8 @@ from tools.newworld import frame as f
 
 OUT = f.OUT / "map"
 TEMPLATE = f.REPO / "tools" / "newworld" / "map_page.html"
-SCALE = 0.5          # image layers at half the map's resolution (1760 x 1420 px): 5.9 m a pixel
+HEADING = {"source": "Built from"}  # a note's heading in a place's panel where it is not its aspect's name
+SCALE = 0.5         # image layers at half the map's resolution (1760 x 1420 px): 5.9 m a pixel
 
 
 def terrain_image(scale: float = SCALE) -> tuple[Image.Image, str]:
@@ -144,7 +145,7 @@ def data(w: db.World) -> dict:
             srcs[s.aspect_id].append({"t": src.title, "u": src.url, "k": src.kind, "s": s.locator})
         order = list(aspects)
         for n in sorted(w.rows(f"{table}_note", **{key: rid}), key=lambda n: order.index(n.aspect_id)):
-            out.append({"a": n.aspect_id.capitalize(), "t": n.text, "tier": n.statement_tier_id,
+            out.append({"a": HEADING.get(n.aspect_id, n.aspect_id.capitalize()), "t": n.text, "tier": n.statement_tier_id,
                         "src": srcs.get(n.aspect_id, [])})
         return out
 

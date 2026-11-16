@@ -166,7 +166,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "The city's alleys are as dangerous as they are fine, and its guard has a bad name. The danger is social: the levy answers to no outsider, the assembly's politics run deep, and its members will not discuss the sour-spring cycle. Past the city every approach is deep swamp.",
+     "text": "The city's alleys are as dangerous as they are fine, and its guard has a bad name. The danger is social: the levy answers to no outsider and the assembly's politics run deep. Past the city every approach is deep swamp.",
      "tier": "CANON_EXPLICIT",
      "sources": [
       {
@@ -185,7 +185,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A stranger stranded on the approaches is pulled out by an Agaceph raftsman. The assembly will not speak of its sour spring in open session. Every naheesh in the interior travels to the Root Talk.",
+     "text": "A stranger stranded on the approaches is pulled out by an Agaceph raftsman. A quiet house off the market takes visitors only by word of mouth, and nobody will say whose it is. Every naheesh in the interior travels to the Root Talk.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -203,6 +203,17 @@
        "kind": "reasoning",
        "title": "Settlement people and hooks reasoned from the place's kind, culture and neighbours on the PT map (cultures.json; state §10.2, §10.3)",
        "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Helstrom in Black Marsh & Valenwood (Black Marsh.esm), is a town of 308 buildings built in Nordic and Dunmer style with two interiors, one of them an Argonian house. Its Nordic and Dunmer pieces are replaced with root-hollow and stilt houses from King of the Murkmire. Lilmoth (King of the Murkmire) supplies the interiors a city needs in Argonian and Imperial style: a tavern, an ironworks, an apothecary, a healer's hut and a guardhouse. They are set here as the boatmen's lodge, the market smithy, the sap-seller's stall and the levy's post. Still to add: the city tree and the tree-minders' hall, the root landing and raft moorings, and the market square.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -518,6 +529,17 @@
        "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Shedet (Here There Be Monsters - Curse of Cipactli), is an Argonian and Ayleid town on water with 18 interiors: sixteen huts, a great house and a swampy grotto. The huts serve as the chime-smiths' forge, the guest-house and the herb-seller's house. The great house serves as the elders' hall. Shedet holds about 100 people and 36 hostile figures against Korydon's 22 residents, so most of them are removed and its few Nordic pieces are replaced. Still to add: the ring of stone footings, the tin and copper chimes on every eave and the Kothringi cairn.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -806,6 +828,17 @@
        "kind": "reasoning",
        "title": "Settlement people and hooks reasoned from the place's kind, culture and neighbours on the PT map (cultures.json; state §10.2, §10.3)",
        "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Dwemer Lift (Wyrmstooth), is a Dwemer and Falmer ruin city with a single interior and 23 hostile figures and does not fit a lake harbour. Lilmoth (King of the Murkmire) fits better: an Argonian and Imperial harbour city with 46 interiors, among them a tavern, an ironworks, an apothecary, a shipwright, an imports shop, a guardhouse and merchant manors. These serve as the quay tavern, the harbour smithy, the sap and herb seller's house, the cloth trader's shop, the harbour watch post and the council hall. Still to add: reed-pile quays and warehouses at the lake edge, the city tree and the Zenithar shrine.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -1107,6 +1140,17 @@
        "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Wayfinder Trading Post (Skyrim Trading Posts), is a Nordic and Orc trading post of three buildings with no interior, too small and too Nordic for a village of ten. Seekhat Yol (King of the Murkmire) fits better: an Argonian village of 160 buildings with seven interiors, among them an egg-tender's quarters, a tree-minder's hut and households' huts, which serve as the elder-woman's house and the potters' homes. Still to add: the raised mound of red clay, the kilns and drying racks for pots and cloth, the ferryman's hut and the landing.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -1347,6 +1391,17 @@
        "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Honningbrew Meadery (Skyrim), is a Nordic hamlet of farm pieces with three interiors and 23 hostile figures. Its farm pieces and interiors serve as the farmhouse. The hostile figures are removed and the Nordic pieces are replaced with stone footings and reed and mud walls. Ree-An-Wo (King of the Murkmire) is the closer match in size: a small Argonian hamlet of 31 buildings with no interior. Still to add: the laid-stone causeway to the ferry post, the saltrice paddies, the ferry raft and the opened cairn on the near bank.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -1469,7 +1524,7 @@
     },
     {
      "aspect": "present",
-     "text": "Five people keep eel traps, a lantern for night boats and a causeway of stones across a shoal that surfaces at low water.",
+     "text": "Five people keep eel traps, a lantern for night boats and a causeway of stones across a shoal under knee-deep water.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1600,6 +1655,17 @@
        "kind": "reasoning",
        "title": "Settlement people and hooks reasoned from the place's kind, culture and neighbours on the PT map (cultures.json; state §10.2, §10.3)",
        "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, BlackMarsh2 1,-11 in Black Marsh & Valenwood (Black Marsh.esm), is a hamlet of 129 buildings in Nordic and Imperial style with one house interior and nine hostile figures. The house serves as the family's home and the Nordic pieces are replaced with stone-footed Argonian pieces from Ree-An-Wo (King of the Murkmire). Still to add: the island's low ground in the lake, the stone causeway over the shoal with reeds beside it, the eel pots, the lantern post and the landing.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -1838,6 +1904,17 @@
        "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Hunter's Shack (Wyrmstooth), is a lone group of twelve buildings in mine and farm pieces with no interior and no people. None of the four listed sources holds an interior, so the farmhouse and the old cook's house are added as interiors built from Argonian hut pieces of Ree-An-Wo (King of the Murkmire), an Argonian hamlet of 31 buildings. Still to add: stone footings under the farms, saltrice paddies, a spare boat at the shore and the smugglers' landing on the south bank.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -1968,7 +2045,7 @@
     },
     {
      "aspect": "people",
-     "text": "About ten: Archein families who still keep Imperial-style ranks and drill, and a few grandchildren of freed labourers who row the toll boats.",
+     "text": "About ten: Archein families who still keep Imperial-style ranks and drill, and a few grandchildren of freed labourers who keep the toll boats.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2081,6 +2158,17 @@
        "kind": "reasoning",
        "title": "Settlement people and hooks reasoned from the place's kind, culture and neighbours on the PT map (cultures.json; state §10.2, §10.3)",
        "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Fort Tulis (Journey to Baan Malur), is a ruined Imperial fort of nine buildings on water with no interior and no people. It lends its Imperial walls and keep. Cracked Tusk (Skyrim), an Imperial fort with two interiors, supplies the interior pieces: one serves as the barracks and the other as the cellar behind a bricked door. Still to add: reed re-roofing and moss on the stone, a signal lantern on a tower of Imperial pieces, a chain across the channel, the smithy and the stone chapel of the Nine.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -2342,7 +2430,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Dragon's-tongue patches are deadly to the careless; channels hide predators; Tumnatu parties pass by.",
+     "text": "A spriggan guards the dragon's-tongue patches; channels hide predators; Tumnatu parties pass by.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2366,7 +2454,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "The chime-tender has gone silent and the boats run blind in the fog; a boat came up from Blackrose with a dead man aboard; a spriggan guards the hummock where the rarest dragon's-tongue grows.",
+     "text": "The chime-tender has gone silent and the chime hangs still; a boat from Blackrose is moored at the landing with a dead man aboard; a spriggan guards the hummock where the rarest dragon's-tongue grows.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2390,6 +2478,17 @@
        "kind": "reasoning",
        "title": "Settlement people and hooks reasoned from the place's kind, culture and neighbours on the PT map (cultures.json; state §10.2, §10.3)",
        "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Old Hroldan (Skyrim), is a Nordic hamlet of ten buildings with one interior and farm pieces. The interior serves as the herb drying-hut and the Nordic pieces are replaced with Argonian pieces from Ree-An-Wo (King of the Murkmire). Still to add: hummocks and channels of water round the hamlet, the chime-post with its chime, the patches of dragon's-tongue and the spriggan's hummock.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -2625,6 +2724,17 @@
        "kind": "reasoning",
        "title": "Settlement people and hooks reasoned from the place's kind, culture and neighbours on the PT map (cultures.json; state §10.2, §10.3)",
        "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Headwaters Of Harstrad (Dragonborn), is a three-person hamlet of 16 buildings in Nordic and Dunmer style with one interior and cave, mine and ruin pieces. Its Nordic pieces are replaced. Ree-An-Wo (King of the Murkmire) fits the waterway better: an Argonian hamlet whose pieces serve the boat-wife's house. Still to add: the waystation bench and lantern, the wreck in the reeds and the Kothringi cairn behind the houses.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -2877,6 +2987,17 @@
        "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, BlackMarsh 5,-1 in Black Marsh & Valenwood (Black Marsh.esm), is a hamlet of 109 buildings in Nordic and Dwemer style on dry ground, with one house interior that serves as the chime-maker's house. Its Nordic and Dwemer pieces are replaced with Argonian stilt-and-stone pieces from King of the Murkmire. Still to add: the lizard pens, the hide racks, the chime-maker's forge and the watch post on the nearest peak.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -3125,6 +3246,17 @@
        "kind": "reasoning",
        "title": "Settlement people and hooks reasoned from the place's kind, culture and neighbours on the PT map (cultures.json; state §10.2, §10.3)",
        "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, near Honrich Lake Cave (UWRL_UnderWaterSkyrimRiversAndLakes), is a Nordic hamlet of 116 buildings with one interior on dry ground, which serves as a hunter's house. Its Nordic pieces are replaced with Argonian pieces from Ree-An-Wo (King of the Murkmire). BlackMarsh 5,-1 (Black Marsh.esm) offers one house interior as an alternate. Still to add: stilt-and-stone houses against a rock rise, the signal fire basket on the peak, the chime-menders' forge, the hunters' racks and the spiders' nest on the ridge path.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -3378,6 +3510,17 @@
        "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Riften Military Camp (Skyrim), is a camp of 16 buildings with no interior, built in camp, Imperial and Nordic pieces. It lends its tents and racks and its Nordic pieces are replaced. Near Loreisian (King of the Murkmire) is the closer kind: an Argonian camp of eight buildings with shrine pieces, which serves as the keeper's huts and the totem. Still to add: the sap-skins on the bank trees, the station fire and spears at each door.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -3437,7 +3580,7 @@
    "siting": "riverbank",
    "danger_band_id": "D5",
    "importance": 1,
-   "summary": "Gaxu-Reet is a small outpost where the river arms south-east of Helstrom join and spread into the lake delta, kept for egg-tending and river watch. Boats from Helstrom to the lake's south shore pass through its landing, and few outsiders see more than the totem-post.",
+   "summary": "Gaxu-Reet is a small outpost where the river arms south-east of Helstrom join and spread into the lake delta, kept for egg-tending and river watch. Boats from Helstrom to the lake's south shore put in at its landing, and few outsiders see more than the totem-post.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -3604,7 +3747,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A clutch is missing from the nest-pits; boats pass that did not come up the river; the old sap-speaker will name who took it for a price.",
+     "text": "A clutch is missing from the nest-pits; boats tie up here that did not come up the river; the old sap-speaker will name who took it for a price.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3622,6 +3765,17 @@
        "kind": "reasoning",
        "title": "Root-Folk station: the PT map marks an outpost in Helstrom's hinterland; Helstrom's Root-Folk hold that hinterland (state §10.2); the interior tribes never left in 4E 48 (state §10.1); Argonians tend eggs and sap under a Hist (Lore:Hist, Lore:Argonian)",
        "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Southroad Pass (Wyrmstooth), is a large Nordic and Imperial tower fort of 365 buildings with one interior, far beyond a one-keeper station, so it does not fit. Near Loreisian (King of the Murkmire) fits better: a small Argonian camp of eight buildings with shrine pieces, which serves as the stilt platform and the totem-post. Still to add: the nest-pits, the junction landing and the platform's fishing edge.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -3879,6 +4033,17 @@
        "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Serpents Bluff Redoubt (Skyrim), is a ruined Imperial redoubt of 166 buildings with one interior and 16 hostile figures, far larger than a four-keeper hummock, so it does not fit. Near Loreisian (King of the Murkmire) is the better kind: a small Argonian camp with shrine pieces, which serves as the hunters' huts. Still to add: the racks for hides and feathers, the feather-trader's stall and the landing at the river bend.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -4123,6 +4288,17 @@
        "kind": "reasoning",
        "title": "Root-Folk station: the PT map marks an outpost in Helstrom's hinterland; Helstrom's Root-Folk hold that hinterland (state §10.2); the interior tribes never left in 4E 48 (state §10.1); Argonians tend eggs and sap under a Hist (Lore:Hist, Lore:Argonian)",
        "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Hrodulfs House (Dragonborn), is a homestead of 119 buildings in Dwemer and Nordic style with one interior, which serves as the watch hut. Its Dwemer and Nordic pieces are replaced with Argonian pieces from near Loreisian (King of the Murkmire). Still to add: the clay nest-pit, the signal pole, the lamp-niche totem-post on the crest and the rope bridge to the next hummock.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -4375,6 +4551,17 @@
        "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Bleakwind Bluff (Skyrim), is a Nordic tower of ten buildings with no interior and four people. Its Nordic pieces are replaced with Argonian hut pieces from Ree-An-Wo (King of the Murkmire). Alten Meerhleel (King of the Murkmire) adds a small Argonian dock for the guide's landing. Still to add: the hunters' hut with its bed, the post's fire and the hide racks on the hummock.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -4583,7 +4770,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Slaughterfish round the islet's eel-traps; Tumnatu canoes pass without leave.",
+     "text": "Slaughterfish round the islet's eel-traps; Tumnatu canoes land without leave.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4601,7 +4788,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A canoe was found drifting with its paddles shipped. The lantern was lit although no boat had come.",
+     "text": "A canoe was found off the islet with its paddles shipped. The lantern was lit although no boat had come.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4619,6 +4806,17 @@
        "kind": "reasoning",
        "title": "Root-Folk station: the PT map marks an outpost in Helstrom's hinterland; Helstrom's Root-Folk hold that hinterland (state §10.2); the interior tribes never left in 4E 48 (state §10.1); Argonians tend eggs and sap under a Hist (Lore:Hist, Lore:Argonian)",
        "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Wulfmere's Watch (Wyrmstooth), is a Nordic tower of eleven buildings with no interior and a dock piece, a good fit for a lake islet. Its Nordic pieces are replaced with Argonian reed pieces from near Loreisian (King of the Murkmire). Still to add: the eel traps round the islet, the keepers' lantern, smoked-eel racks and the canoe off the islet.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -4660,11 +4858,11 @@
     },
     {
      "kind": "combat-boss",
-     "detail": "the boat-robber who emptied the drifting canoe",
+     "detail": "the boat-robber who emptied the canoe",
      "count": 1,
      "reward": "boss-chest",
      "setting": "nearby",
-     "spot": "the drifting canoe off the islet",
+     "spot": "the empty canoe off the islet",
      "bearing_deg": 209,
      "distance_m": 120
     }
@@ -4680,7 +4878,7 @@
    "siting": "island",
    "danger_band_id": "D4",
    "importance": 1,
-   "summary": "Neexa-Lul is a small outpost on an islet in the lake's eastern reaches, between Marzai and Truowa, kept for a lake watch and egg-tending. Boats crossing between Marzai and Truowa often use its landing to wait out the wind.",
+   "summary": "Neexa-Lul is a small outpost on an islet in the lake's eastern reaches, between Marzai and Truowa, kept for a lake watch and egg-tending. Boats crossing between Marzai and Truowa often use its landing to tie up.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -4867,6 +5065,17 @@
        "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Cradle Stone Tower (Skyrim), is a Nordic tower of 49 buildings with one interior and six hostile figures. Its Nordic pieces are replaced and the interior serves as the platform hut. Near Loreisian (King of the Murkmire) lends Argonian reed pieces for the platform. Still to add: the reed platform on silt, a lamp tower, the eel line, the dried-fish racks and the cask marked with Truowa's quay-mark.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -4940,7 +5149,7 @@
    "siting": "swamp",
    "danger_band_id": "D3",
    "importance": 1,
-   "summary": "Orji-Hael is a small outpost south of Korydon on firm ground by the great southern water. It serves as a waystation. Boats going south toward Blackrose pause at its landing before they leave the sheltered water.",
+   "summary": "Orji-Hael is a small outpost south of Korydon on firm ground by the great southern water. It serves as a waystation. Boats going south toward Blackrose moor at its landing before they leave the sheltered water.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -5089,7 +5298,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Ultherus herbs can kill the careless; predators in the open water south; Tumnatu parties.",
+     "text": "Ultherus herb beds hide predators; predators in the open water south; Tumnatu parties.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5125,6 +5334,17 @@
        "kind": "reasoning",
        "title": "Root-Folk station: the PT map marks an outpost in Helstrom's hinterland; Helstrom's Root-Folk hold that hinterland (state §10.2); the interior tribes never left in 4E 48 (state §10.1); Argonians tend eggs and sap under a Hist (Lore:Hist, Lore:Argonian)",
        "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Hesperide (Here There Be Monsters - Curse of Cipactli), is a camp of 96 buildings with no interior and 62 people, built in Ayleid and Argonian pieces with ruin and shrine pieces. Its Argonian and camp pieces serve as the crews' lodging hut and the herb-gatherers' shed. The Ayleid ruin and shrine pieces and the hostile figures are removed. Still to add: the landing, the wreck of the Blackrose boat in the shallows and the dragon's-tongue beds.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -5344,7 +5564,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Meddling with a totem draws dangerous beasts; Paatru raiders from the west camp.",
+     "text": "Spriggans stand at the place a totem was moved from; Paatru raiders from the west camp.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5382,6 +5602,17 @@
        "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Shors Watchtower (Skyrim), is a Nordic and Imperial watchtower of one building with no interior. It lends its stone footing for a river watch and its Nordic pieces are replaced. Near Loreisian (King of the Murkmire) fits better: an Argonian camp of eight buildings with shrine pieces, which serves as the rune-carved totems. Still to add: a reed palisade round the bank, the ferry post and the landing.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -5398,13 +5629,8 @@
    ],
    "gives": [
     {
-     "kind": "shrine-blessing",
-     "detail": "(delete entry)",
-     "count": 1
-    },
-    {
      "kind": "combat-creature",
-     "detail": "spriggans drawn by the moved totem",
+     "detail": "spriggans at the place the totem was moved from",
      "count": 2,
      "reward": "boss-chest"
     },
@@ -5598,7 +5824,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A go-between's canoe came back to the landing with his carved message-stick in it and no one aboard; the naheesh wants a bargain struck with the Root-Folk over the river toll.",
+     "text": "A go-between's canoe lies at the landing with his carved message-stick in it and no one aboard; the naheesh wants a bargain struck with the Root-Folk over the river toll.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5616,6 +5842,17 @@
        "kind": "reasoning",
        "title": "Hutan-Tzel post: the PT map marks an outpost on the Panther River side of Murkwood; the Hutan-Tzel are named among Murkwood's interior tribes (state §10.2, story/lore/tribes.md) and keep fortified river posts (cultures.json)",
        "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Sadrith Kegran (Dwarfsphere), is a Dwemer and Dunmer tower city of 33 interiors and 247 hostile figures, far too large for a go-between post, so it does not fit. Near Loreisian (King of the Murkmire) fits better: a small Argonian camp of eight buildings with shrine pieces, which serves as the totems and huts. Still to add: a reed palisade, the canoe shed and the landing.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -5972,6 +6209,17 @@
        "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Blizzard Rest (Skyrim), is a small camp of a few camp, mine and ruin pieces with no building, too small for nine Naga. Near Loreisian (King of the Murkmire) fits better: an Argonian camp of eight buildings, whose huts and shrine pieces serve as the lean-tos and the old leader's place. Still to add: bones strung on lines, a fire pit, the stolen sap-skins and the captive sap-gatherer.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -6302,6 +6550,17 @@
        "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Brucas Leap Redoubt (Skyrim), is a camp of 101 buildings with one interior, built in mine and cave pieces. Its interior serves as the seer's den. Near Loreisian (King of the Murkmire) lends Argonian huts for the bank. Still to add: lean-tos and totem poles, the stolen totem-stone and the bank landing.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -6627,6 +6886,17 @@
        "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Sleeping Tree Camp (Skyrim), is a small camp of 18 buildings with one interior in cave pieces. The interior serves as the leader's den. Mor Khazgur (Skyrim) offers a larger Orc and Nordic camp as an alternate, but its Nordic pieces are replaced, so Argonian pieces from near Loreisian (King of the Murkmire) are used. Still to add: the leader's tent with the feather armband, bundles of feathers on poles and a hidden fire.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -6890,7 +7160,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Paatru kill unwary outsiders on sight; their mere is deep and poisoned.",
+     "text": "Paatru kill unwary outsiders on sight; their mere is deep and brown.",
      "tier": "CANON_DERIVED",
      "sources": [
       {
@@ -6946,6 +7216,17 @@
        "kind": "reasoning",
        "title": "Paatru camp: Paatru are toad-like, found only in Middle Argonia, and kill outsiders on sight (story/lore/tribes.md, story/lore/helstrom.md)",
        "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Largashbur (Skyrim), is an Orc and Nordic camp of 65 buildings with two interiors and twelve people, the size of twelve Paatru. Its interiors serve as the elder's den and a storehouse. Its Nordic pieces are replaced with Argonian pieces from near Loreisian (King of the Murkmire). Still to add: the mere with the caravan's goods in the mud and the mudpot herbs round it.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -7175,6 +7456,17 @@
        "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Cradlecrush Rock (Skyrim), is a tiny camp of a few camp and mine pieces with no building and no interior. It lends only its tents. Near Loreisian (King of the Murkmire) fits better: an Argonian camp of eight buildings with shrine pieces, which serves as the headwoman's place and the reed-mat racks. Still to add: net-lines and fish-traps at the shore, the camp fire and the cut net-line.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -7365,7 +7657,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Peaceable with those who come openly; dragon's-tongue beds around the camp can kill the careless.",
+     "text": "Peaceable with those who come openly; giant spiders nest in the dragon's-tongue beds around the camp.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7399,6 +7691,17 @@
        "kind": "reasoning",
        "title": "Tumnatu camp: the PT map names the Tumnatu camps; a lake and swamp tribe trading with the resettled towns (cultures.json; state §10.2 interior tribes)",
        "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Bloodstone Camp (Wyrmstooth), is a small camp of eleven buildings built in Nordic, ruin and mine pieces with three people and no interior. Its Nordic pieces are replaced with Argonian pieces from near Loreisian (King of the Murkmire). Still to add: cattails round the huts, herb bundles on poles, a smoke fire and the dragon's-tongue beds.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -7622,6 +7925,17 @@
        "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Doomstone Apprentice (Skyrim), is a landmark of six shrine pieces with no building, on dry ground. They are Nordic standing-stone work and are replaced, so only the bare rise is used. Velothi Mountain Pass (Nyhus), a peak with Dunmer and Imperial mine pieces, is an alternate. Still to add: the bare rock summit, a fire-basket, the Kothringi bead-cairn and the den below the summit.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -7826,6 +8140,17 @@
        "kind": "reasoning",
        "title": "Peak: the PT map marks a summit on the Aunike Ridge above a Chime-Keeper hamlet; ridge hamlets keep watch from the peaks (region aunike-ridge, state §10.2)",
        "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Velothi Mountain Pass (Nyhus), is a peak with four Dunmer and Imperial buildings and three people. Its pieces serve as the sentry's hut. Still to add: the chime post, the crevice den and the lost scout's pack.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }

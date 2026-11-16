@@ -760,6 +760,8 @@ def place_section(W: World, pid: str) -> list[str]:
     L += [head, "", " ".join(facts) + cite(f"place:{pid}"), ""]
     L += [quote(W, n, ("overview", "present", "people", "history"), f"place_note:{pid}"), ""]
     L += [quote(W, n, ("look", "economy", "faith"), f"place_note:{pid}"), ""]
+    if n.get("source"):
+        L += ["Built from: " + quote(W, n, ("source",), f"place_note:{pid}"), ""]
     # promises
     gs = W.gives[pid]
     if gs:
@@ -922,6 +924,8 @@ def note_names(W: World) -> list[tuple[str, str, str]]:
     out, seen = [], set()
     for pid, ns in sorted(W.pnotes.items()):
         for a, t in sorted(ns.items()):
+            if a == "source":  # names mods and source places, never people
+                continue
             for s in sentences(t):
                 cands = {re.sub(r"'s?$", "", x) for x in TITLE.findall(s)}
                 cands = {x for x in cands if x not in names and x not in things}

@@ -14,3 +14,4 @@
 {"id":"present","applies_to":"both","about":"What it is like in 4E 201: who lives there, who holds it, how it is doing."}
 {"id":"relationships","applies_to":"person","about":"Their ties beyond the household tables: debts, grudges, loves."}
 {"id":"secrets","applies_to":"person","about":"What they hide, and from whom."}
+{"id":"source","applies_to":"place","about":"What the place is built from: its source place, what that holds, how it is adapted and what it still needs."}

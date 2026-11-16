@@ -109,7 +109,7 @@
     },
     {
      "aspect": "economy",
-     "text": "River traffic to Morrowind and to Alten Corimont down the northern trunk road, the customs on that traffic and the Stormhold Crystals dug in the tunnels below. Sedge mats, dried fish and reed goods arrive daily from Jal-Veesa and the weirs; the trading halls sit in the repurposed Ayleid compound.",
+     "text": "River traffic to Morrowind and to Alten Corimont down the northern trunk road, the customs on that traffic and the Stormhold Crystals dug in the tunnels below. Sedge mats, dried fish and reed goods come from Jal-Veesa and the weirs; the trading halls sit in the repurposed Ayleid compound.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -206,6 +206,17 @@
        "kind": "extrapolation",
        "title": "settlement-register.md",
        "locator": "story/lore/extrapolation/settlement-register.md"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Markarth (Skyrim), is a stone city on a mountainside with a waterfall, thirty interiors and a mine beneath, and is the closest match in size and shape. Its Dwemer and Nordic pieces are replaced with Dunmer stone, Argonian mud huts and white Ayleid stone. Its temple and halls serve as the Vicecanons' hall and the trading halls, and its mine and Nchuand-Zel serve as the Silyanorn tunnels and crystal galleries. Lilmoth (King of the Murkmire) lends Argonian huts and a dock for the west quarter and the quay. Still to add: the Hist tree in its pond ringed by pillars, the sunken Ayleid well-room under the tunnels and the customs office.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -447,7 +458,7 @@
     },
     {
      "aspect": "faith",
-     "text": "A Hist tree in a pool at the heart of the town, tended by a tree-minder; hatchlings come here. The Veesa-Teeleel hold the Barsaebic ruins to be sick ground and teach children not to touch them.",
+     "text": "A Hist tree in a pool at the heart of the town, tended by a tree-minder; hatchlings come here. In 4E 201 the tree is sick: its bark is dry and dark, its scar has closed and its egg-pool is cooling. The Veesa-Teeleel hold the Barsaebic ruins to be sick ground and teach children not to touch them.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -511,7 +522,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A looter caught with Ayleid goods, and the elders' refusal to hand him to Stormhold; a weir warden who sees lights at Nenria at night; the tree-minder asking the player to carry a phial of the pool's sap to the Root-Folk at Vel-Sapha Stand.",
+     "text": "A looter caught with Ayleid goods, and the elders' refusal to hand him to Stormhold; a weir warden who sees lights at Nenria at night; the tree-minder looking for someone to fetch Sithis' beard from Reed-Sill Weir to warm the cooling pool.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -527,6 +538,17 @@
        "kind": "extrapolation",
        "title": "argonia-4e201-state.md",
        "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Cormaris (Journey to Baan Malur), is a town of the right size with twenty-seven interiors and forty-six people, but it is Imperial and Dunmer in style. Its houses are replaced with Argonian stilt huts from Seekhat Yol and Alten Meerhleel (King of the Murkmire), and Seekhat Yol's elder's hut and treeminder's hut serve as the elders' long house and the tree-minder's house. Still to add: the Hist tree and its pool at the centre, the jetty market on the creek, the fish racks and the boat sheds.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -783,6 +805,17 @@
        "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Dawnguard Valley01 (Dawnguard), is a fort of the right size but its interiors are caves and a Nordic hall, so it does not fit. Cracked Tusk (Skyrim) fits better: an Imperial fort of a yard and two keep interiors, which serve as the barracks and the captain's hall. Its orc pieces are replaced with Imperial stone. Still to add: the moss on the walls, the Imperial relief over the gate, the toll-bar and the timber jetty on the road outside.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -894,7 +927,7 @@
     },
     {
      "aspect": "present",
-     "text": "A dozen households of Argonians and Dunmer on stone mounds, linked to Stormhold by a causeway whose lower stretch lies under shallow black water that carts wade through.",
+     "text": "A dozen households of Argonians and Dunmer on stone mounds, linked to Stormhold by a causeway whose lower stretch lies under shallow black water that travellers wade through.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1071,6 +1104,17 @@
       {
        "kind": "reasoning",
        "title": "stone-grey culture: farmsteads and villages in the Stormhold manner"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Left Hand Mine (Skyrim), is a village of the right size with four interiors, but its mine and Nordic pieces do not suit a farm village, and they are replaced. Seekhat Yol (King of the Murkmire) fits better for the Argonian houses, whose interiors serve as the headman's house and the farm wife's kitchen, and Dres village (Black Marsh North) gives the Dunmer stone-footed houses. Still to add: the raised mounds, the stone causeway with its drowned lower stretch, the saltrice paddies, the drying frames and the Hist-shoot shrine at the causeway head.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -1346,6 +1390,17 @@
       {
        "kind": "reasoning",
        "title": "stone-grey culture: farmsteads and villages in the Stormhold manner"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Stendarr's Outpost (Wyrmstooth), is a Nordic hamlet of one interior and ten buildings, too small and the wrong style. Seekhat Yol (King of the Murkmire) fits better: a riverside Argonian village with a dock and seven interiors, of which the guides' quarters serves as the long wayhouse with its rooms. Still to add: the timber landing stages, the stone chimney on the wayhouse, the Hist-shoot shrine and the ancestor stones.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -1628,6 +1683,17 @@
        "title": "farm raised stone habit"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Ruined Farmhouse (Journey to Baan Malur), is a Dunmer farm of four people and one interior, and serves as the farmhouse once its ruin pieces are swapped for whole walls. The Storehouse of Farmhouse (Journey to Baan Malur) serves as the stone barn with its loft bed. Still to add: the raised mound, the paddy dikes, the causeway, the ancestor stones by the door and the Hist shoot in its clay pot.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -1831,7 +1897,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Crocodiles lie around the weir and hackwings swarm over the drying racks in the heat, though the camp itself is safe for the wardens' families.",
+     "text": "Crocodiles lie around the weir and hackwings swarm over the drying racks, though the camp itself is safe for the wardens' families.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1870,6 +1936,17 @@
        "kind": "extrapolation",
        "title": "argonia-4e201-state.md",
        "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Imperial Camp (Wyrmstooth), is a military camp with no interior and does not suit weir-wardens. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet of stilt huts and camp pieces with no interiors, which is all the record holds. Still to add: the woven weir of stakes across the creek, the boat landing, the drying racks, the small Hist-shoot shrine and the drowned strongbox below the weir.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -1975,7 +2052,7 @@
     },
     {
      "aspect": "present",
-     "text": "One family keeps a flat ferry and a roadhouse and sells directions south.",
+     "text": "One family keeps a moored flat barge and a roadhouse and sells directions south.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2029,7 +2106,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Ferry fares, a night's bed, smoked meat for the road to Helstrom.",
+     "text": "Landing fees, a night's bed, smoked meat for the road to Helstrom.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2083,7 +2160,7 @@
     },
     {
      "aspect": "look",
-     "text": "A timber landing, a rope-hauled flat barge and a long low house of stone and reed.",
+     "text": "A timber landing, a flat barge moored beside it and a long low house of stone and reed.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2159,6 +2236,17 @@
        "kind": "map",
        "title": "[Outpost] dot (2,-68) beside the Naga camp (-2,-68)",
        "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, a camp near Katlas Farm (Skyrim), is a Nordic camp of one building and does not fit. Velothi Victuals (Nyhus) fits better: a Dunmer roadside hamlet with one interior, which serves as the roadhouse with its room. Ree-An-Wo (King of the Murkmire) lends the Argonian crew's huts. Still to add: the timber landing, the flat barge moored beside it, the row of grave-stakes on the rise and the smoked-meat rack.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -2394,6 +2482,17 @@
        "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Doomstone Tower (Skyrim), is a Nordic tower with no interior, so its Nordic pieces are replaced with a low Imperial-style stone hut. The record needs no interior, so the hut is an outside prop and the reeve and guards work in the open. Ree-An-Wo (King of the Murkmire) lends Argonian lamp posts and stall pieces. Still to add: the bar across the causeway, the lamp post, the oil-and-rope stall, the grave-stake and the Dunmer ancestor stone.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -2420,9 +2519,9 @@
    "population": 5,
    "footprint_radius_m": 40,
    "siting": "swamp",
-   "danger_band_id": "D2",
+   "danger_band_id": "D1",
    "importance": 1,
-   "summary": "A seasonal cutters' camp on the northern road beyond Jal-Veesa, where the reed is cut for Stormhold's mat-makers.",
+   "summary": "A cutters' camp on the northern road beyond Jal-Veesa, where the reed is cut for Stormhold's mat-makers.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -2472,7 +2571,7 @@
     },
     {
      "aspect": "present",
-     "text": "A cluster of lean-to huts and boat landings, where a crew of cutters lives until the reed is bound and then another crew takes its place.",
+     "text": "A cluster of lean-to huts and boat landings, where a crew of cutters lives among the bound reed stacks. A work barge lies moored at the landing, its hold shut by a door that locks from outside.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2538,7 +2637,7 @@
     },
     {
      "aspect": "faith",
-     "text": "A Hist-shoot is set on a post at the centre of the camp, the cutters' shrine for the season.",
+     "text": "A Hist-shoot is set on a post at the centre of the camp, the cutters' shrine.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2560,7 +2659,7 @@
     },
     {
      "aspect": "look",
-     "text": "Reed-thatched lean-tos on a mud bank, bundled reed stacked like haystacks, flat boats pulled up.",
+     "text": "Reed-thatched lean-tos on a mud bank, bundled reed stacked like haystacks, flat boats pulled up and a work barge moored at the landing.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2582,7 +2681,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Far from the guards; crocodiles in the channels and the odd Naga raider.",
+     "text": "The camp is safe. Mudcrabs work the mud bank, and one young crocodile lies in the cut channels.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2604,7 +2703,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "Cutters report a stranger who is paying for reed to be burned; a child has gone missing near the old Imperial waystation to the south.",
+     "text": "The gang-master keeps a strongbox in his lean-to with the easiest of locks, and its key hangs on his belt; the barge's hold locks from outside, and the cutters do not say who was last kept in it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2621,6 +2720,17 @@
        "kind": "dossier",
        "title": "tribes.md",
        "locator": "story/lore/tribes.md"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Military Camp Winterhold Sons (Skyrim), is a Nordic camp of fourteen buildings with no interior, and its Nordic pieces are replaced with Argonian reed lean-tos from Ree-An-Wo (King of the Murkmire). The barge's hold is a ship interior borrowed from Thorn (Black Marsh North), given a door that locks from outside. Still to add: the mud bank, the bundled reed stacks, the moored work barge and flat boats, the gang-master's lean-to with its strongbox and the Hist-shoot on its post.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -2650,13 +2760,13 @@
     },
     {
      "kind": "combat-creature",
-     "detail": "crocodiles in the cut channels",
-     "count": 2,
+     "detail": "mudcrabs on the mud bank and one young crocodile in the cut channels",
+     "count": 3,
      "reward": "treasure"
     },
     {
      "kind": "treasure",
-     "detail": "a cutters' stash of coin and a steel knife",
+     "detail": "the gang-master's strongbox in his lean-to",
      "count": 1
     }
    ]
@@ -2866,7 +2976,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A vein that sings at night; a pit-boss who wants someone to go through the wall the old delvers built across a gallery.",
+     "text": "A vein that hums; a pit-boss who wants someone to go through the wall the old delvers built across a gallery.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2884,6 +2994,17 @@
        "kind": "dossier",
        "title": "stormhold.md",
        "locator": "story/lore/stormhold.md"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Whistling Mine (Skyrim), is a small mine of one interior and eight people, with timber-propped galleries and cave pieces, and it fits the adit. Its interior serves as the galleries, and a wall piece placed across one gallery makes the walled-off section. Still to add: the tipping-yard of spoil, the huts, the smelter, the ancestor shrine at the mouth and the geode and iron veins.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -3140,6 +3261,17 @@
        "locator": "story/lore/regions/shadowfen.md"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Ranmora (Nyhus), is a small Ayleid ruin of two interiors, the Lower Sanctum and the Crown Sanctum, and fits the hall and its undercroft. Its Dwemer and Imperial pieces are replaced with white Ayleid stone, and the Lower Sanctum is given a water level to make the flooded undercroft. Still to add: the mound in the reeds, the broken arch, the ring of Veesa-Teeleel ward-stakes and the Welkynd stones in the sconces.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -3322,7 +3454,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Wildlife and the odd thief lurk in the reeds around the ruin. Hackwings swarm over the mud in the heat.",
+     "text": "Wildlife and the odd thief lurk in the reeds around the ruin. Hackwings swarm over the mud.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3351,6 +3483,17 @@
        "kind": "dossier",
        "title": "foreign-powers.md",
        "locator": "story/lore/topics/foreign-powers.md"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Ruins (Black Marsh North), is a tiny Imperial ruin of an arch, a plinth and a shrine piece, and fits a roofless waystation. Nightcaller Temple (Skyrim) and Old Laboratory (King of the Murkmire) both hold large interiors that this open ruin does not need. Still to add: the low stone wall, the worn eagle on the plinth with a chest set in its hollow and the sleeping corners for the scavengers.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -3386,20 +3529,20 @@
    "id": "tribal-camp-m2-m68",
    "name": "Karsh-Naal Camp",
    "status": "inhabited",
-   "held_by": "A band of tribeless Naga",
+   "held_by": "Tribeless Naga hired as guards by the Unbound, a sap-takers' cult",
    "population": 8,
    "footprint_radius_m": 45,
    "siting": "swamp",
    "danger_band_id": "D3",
    "importance": 2,
-   "summary": "A Naga camp in the marsh south of Stormhold, where the brigands of the road-sides live between raids.",
+   "summary": "A Naga camp in the marsh south of Stormhold, where the Unbound keep the sap their crews draw from the Hist and pay a few tribeless Naga to guard it.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "Karsh-Naal Camp is a Naga brigands' camp in the marsh south of Stormhold. The Naga are the tribeless Argonians of canon who rob travellers on the roads; the busy road from Stormhold toward Helstrom is where such a band would live.",
+     "text": "Karsh-Naal Camp is a camp of tribeless Naga in the marsh south of Stormhold, hired out to the Unbound as guards. The Naga are the tribeless Argonians of canon who sell their blades to whoever pays; the Unbound use the camp as the store for the sap their crews draw.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3421,7 +3564,7 @@
     },
     {
      "aspect": "history",
-     "text": "The Naga highwaymen live off the road traffic from Stormhold to Helstrom. They come and go as the merchants do.",
+     "text": "The Naga once lived off the road traffic from Stormhold to Helstrom. When the Unbound came with coin, they took to guarding the sap jars instead.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3444,7 +3587,7 @@
     },
     {
      "aspect": "present",
-     "text": "A band of Naga lives in huts of woven reed and bone around a fire pit.",
+     "text": "A few Naga guards keep the camp, standing at the fire by the longhouse. A cage stands at the camp's edge for anyone who tries to leave the Unbound's work.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3467,7 +3610,7 @@
     },
     {
      "aspect": "people",
-     "text": "Tribeless Naga, tall and hard-eyed and they rob for a living.",
+     "text": "Tribeless Naga, tall and hard-eyed, who guard for pay and answer to the Unbound; they have no chief of their own.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3490,7 +3633,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Highway robbery and ransom; some trade of stolen goods with Dunmer smugglers.",
+     "text": "The Unbound pay the guards in coin; jars of Hist sap are stacked by the longhouse until the cult's crews carry them on.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3536,7 +3679,7 @@
     },
     {
      "aspect": "look",
-     "text": "Reed-and-bone huts around a pit, a lookout on a dead tree and a pole of trophies.",
+     "text": "Reed-and-bone huts and a timber longhouse around a fire pit, jars of sap stacked by the longhouse wall, a cage at the camp's edge and a pole of trophies.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3559,7 +3702,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Naga warbands raid from the camp and strike at travellers. The approaches to it are set with traps.",
+     "text": "The guards attack strangers on sight, but they are few and keep to the fire, away from the cage at the edge.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3582,7 +3725,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A captive merchant held for ransom; a Naga who wants to defect.",
+     "text": "A Naga sap-drawer caged at the camp's edge for trying to leave; jars of Hist sap stacked by the longhouse, more than any camp would need.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3602,6 +3745,17 @@
        "locator": "story/lore/tribes.md"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Dushnikh Yal (Skyrim), is an orc camp with a longhouse, a mine and a cellar, and its longhouse interior serves as the Naga longhouse where the pay and stolen goods lie. Its orc pieces are replaced with reed-and-bone huts and a bone shrine from the Argonian camp near Loreisian (King of the Murkmire). Still to add: the fire pit, the stacked jars of sap, the pole of trophies and the cage at the camp's edge, built from placed bars and posts.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -3614,24 +3768,13 @@
    "gives": [
     {
      "kind": "combat-foes",
-     "detail": "Naga brigands",
-     "count": 6,
-     "reward": "boss-chest"
-    },
-    {
-     "kind": "combat-boss",
-     "detail": "the Naga band's chief",
-     "count": 1,
-     "reward": "boss-chest"
-    },
-    {
-     "kind": "boss-chest",
-     "detail": "the chief's chest",
-     "count": 1
+     "detail": "the Unbound's hired Naga guards at the fire",
+     "count": 4,
+     "reward": "treasure"
     },
     {
      "kind": "treasure",
-     "detail": "stolen goods in the huts",
+     "detail": "the guards' pay and stolen goods in the longhouse",
      "count": 2
     }
    ]
@@ -3695,7 +3838,7 @@
     },
     {
      "aspect": "present",
-     "text": "A village around the old customs house and the bridge. The bridge's low middle span lies under the black water, and a rope ferry carries the road across. The toll is kept by the garrison of Fort Rustmoth next door.",
+     "text": "A village around the old customs house and the bridge. The bridge's low middle span lies under the black water, and a rope ferry stage with a moored boat stands where the road meets the water. The toll is kept by the garrison of Fort Rustmoth next door.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3759,7 +3902,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Road trade to Gideon and Leyawiin, the ferry fare, a market of smugglers and herb-sellers.",
+     "text": "Road trade to Gideon and Leyawiin, a ferry landing, a market of smugglers and herb-sellers.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3914,6 +4057,17 @@
        "title": "Lore:Blackwood",
        "locator": "Lore:Blackwood",
        "url": "https://en.uesp.net/wiki/Lore:Blackwood"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Cyrodiil Morrowind Border (Nyhus), is an Imperial border village of eleven people with one interior, a guard house, which serves as the old customs house. Its Nordic pieces are replaced with Cyrodiilic gables and stilt houses. Root Whisper Village and Seekhat Yol (King of the Murkmire) lend Argonian stilt houses, and one of their interiors serves as the ferry tavern with its room. Still to add: the black river, the white bridge missing its middle span, the Dibella shrine and the rope ferry stage with its moored boat.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -4166,6 +4320,17 @@
        "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Ashfallow (Dragonborn), is a large Imperial citadel with a single great interior, too big for a toll fort. Fort Tulis (Journey to Baan Malur) fits better: an Imperial keep with six interiors, its main hall, warden's tower and prison block serving as the barracks, the captain's tower and the storeroom. Its prison cave is not used. Still to add: the Imperial eagle over the gate and the reed pond in place of the moat.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -4393,7 +4558,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "The tablet itself; a Stormhold scholar who needs someone to swim the drowned lowest hall.",
+     "text": "A seal-stone of the old kings in the drowned lowest hall, with a tablet cut beside it; the Murkwood tablet itself; a Stormhold scholar who needs someone to swim the drowned lowest hall.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4411,6 +4576,17 @@
        "kind": "dossier",
        "title": "stormhold.md",
        "locator": "story/lore/stormhold.md"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Feren Tarn (King of the Murkmire), is a sunken Ayleid ruin with one interior of ruin, cave and Argonian pieces, and fits the vaults. That interior serves as the vaults, with water set at its lower levels so the lowest hall is drowned. Still to add: the collapsed vault entrance on a slope of reeds, rockfall traps in the lower halls, the seal-stone with its cut tablet and the Conclave's vault store.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -4672,6 +4848,17 @@
        "locator": "story/lore/regions/shadowfen.md"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Black Marsh 5,0 (Black Marsh and Valenwood), is a small Ayleid ruin of one interior and does not hold a citadel, so only its interior is used, as the keystone hall. Feren Tarn (King of the Murkmire) serves as the lamia caverns, since its interior joins cave pieces to Ayleid stone. Still to add: the hilltop amphitheatre with its ring of seats and the inner bailey, built from Ayleid pieces, the tomb wings, the Enchanter's workbench and the Hist-shoot outside the walls.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -4738,14 +4925,14 @@
    "siting": "swamp",
    "danger_band_id": "D4",
    "importance": 4,
-   "summary": "A Barsaebic Ayleid ruin in the fetid mires, with a book-drawing magical library, built by a sorceress of Hermaeus Mora and the tomb of a Fenlord.",
+   "summary": "A Barsaebic Ayleid ruin in the fetid mires, with a magical library of shelved books, built by a sorceress of Hermaeus Mora and the tomb of a Fenlord.",
    "lore_page": "Lore:Gandranen Ruins",
    "statement_tier_id": "CANON_EXPLICIT",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "Gandranen is a Barsaebic Ayleid ruin in Shadowfen: a library of magical halls that draws books from any time, and a Fenlord's tomb crawling with undead slave-guardians.",
+     "text": "Gandranen is a Barsaebic Ayleid ruin in Shadowfen: a library of magical halls that holds books from any age, and a Fenlord's tomb crawling with undead slave-guardians.",
      "tier": "CANON_EXPLICIT",
      "sources": [
       {
@@ -4772,7 +4959,7 @@
     },
     {
      "aspect": "present",
-     "text": "Volumes still turn up on its shelves; the Fenlord's undead guards still walk the tomb.",
+     "text": "Its shelves still hold their volumes; the Fenlord's undead guards still walk the tomb.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4928,6 +5115,17 @@
        "kind": "dossier",
        "title": "shadowfen.md",
        "locator": "story/lore/regions/shadowfen.md"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Loreisian (King of the Murkmire), is an Ayleid ruin with one large interior of ruin and Ayleid pieces, which serves as the library halls and the Fenlord's tomb. Its few Nordic pieces are replaced. Still to add: the reed island and black water round the half-sunk ruin, the shelves of books with their reading stand and the Fenlord's sarcophagus and vault.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -5145,6 +5343,17 @@
        "kind": "dossier",
        "title": "foreign-powers.md",
        "locator": "story/lore/topics/foreign-powers.md"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Fort Kastav (Skyrim), is an Imperial fort with two interiors, four doors and bandits, and fits a broken road post. One of its interiors serves as the smugglers' cache under the tower, and its Nordic pieces are replaced. Nightcaller Temple and Old Laboratory are not used, being a temple and a lab. Still to add: the tower stump, the half-buried arch, the worn plinth and the scavenger corner in the yard.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -5384,6 +5593,17 @@
        "kind": "dossier",
        "title": "shadowfen.md",
        "locator": "story/lore/regions/shadowfen.md"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, a stretch of ArgoniaWorld (King of the Murkmire), is a small exterior Ayleid ruin of arches and Argonian pieces with no interior. The undercroft is the one interior of Black Marsh 5,0 (Black Marsh and Valenwood), given a water level and reached by a stair down. Still to add: the sedge island, the fallen column over the pool, the altar under its vine, the ring of ward-stakes and the nirnroot at the water's edge.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -5635,6 +5855,17 @@
        "locator": "story/lore/regions/shadowfen.md"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, the ruin near Teeth of Sithis (King of the Murkmire), is a small exterior Ayleid ruin of arches and Argonian pieces with no interior. The flooded lower rooms are the interior of Loreisian (King of the Murkmire), given a water level and entered by a stair. Still to add: the high-ground mound, the cracked shrine-stone at its top, the ring of leaning ward-stakes and the Welkynd stones in the arches.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -5819,7 +6050,7 @@
     },
     {
      "aspect": "look",
-     "text": "Pale stilt huts on a mud bank and a woven weir across the creek.",
+     "text": "Pale stilt huts on a mud bank and a woven weir across the creek, with a log walk along its top and long grey moss hanging from the trees over the water below it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5840,7 +6071,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Crocodiles lie below the weir where the offal goes in, and the log walk is slick. The camp is safe; the creek downstream toward Mirasel is not.",
+     "text": "One young crocodile lies below the weir where the offal goes in, mudcrabs work the bank and the log walk is slick. The camp is safe; the creek downstream toward Mirasel is not.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5861,7 +6092,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "The weir traps are being robbed at night. The wardens want the thief found.",
+     "text": "The weir traps are being robbed at night, and the wardens want the thief found. Sithis' beard, a moss tree-minders use, hangs over the creek below the weir, where the crocodile lies.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5877,6 +6108,17 @@
        "kind": "extrapolation",
        "title": "argonia-4e201-state.md",
        "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Hunters Rest (Skyrim), is a Nordic homestead with no interior and does not suit a weir camp. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet of stilt huts, with no interior, which is all the record holds. Still to add: the woven log weir with its walk, the landing, the Hist-shoot post, the hanging moss over the creek and the hidden sack in the reeds.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -5901,14 +6143,19 @@
     },
     {
      "kind": "combat-creature",
-     "detail": "crocodiles below the weir",
-     "count": 2,
+     "detail": "mudcrabs on the bank and one young crocodile below the weir",
+     "count": 3,
      "reward": "treasure"
     },
     {
      "kind": "treasure",
      "detail": "a thief's sack of stolen traps and coin hidden in the reeds",
      "count": 1
+    },
+    {
+     "kind": "harvest-rare",
+     "detail": "Sithis' beard, a grey moss hanging over the creek below the weir",
+     "count": 2
     }
    ]
   },
@@ -6116,6 +6363,17 @@
        "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Military Camp Hjaalmarch Imperial (Skyrim), is an Imperial camp of sixteen people with no interior, and its pieces serve as the post's gate and hut walls. The record needs no interior, so the hut is an outside prop. Ree-An-Wo (King of the Murkmire) lends the stall and lamp pieces. Still to add: the wooden gate across the causeway, the stall of lamp oil and dried fish, the bench and the grave-stake.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -6206,7 +6464,7 @@
     },
     {
      "aspect": "present",
-     "text": "Stilt huts stand in a ring around a young Hist sapling, with sap-tapping and egg-tending going on beneath the canopy.",
+     "text": "Stilt huts stand in a ring around a young Hist sapling, with sap-tapping and egg-tending going on beneath the canopy. Three nights ago the young tree's scar closed over a grey paste that none of its tenders put there.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6294,7 +6552,7 @@
     },
     {
      "aspect": "look",
-     "text": "Root-hollows and stilt huts sit under a thick canopy on the Barsaebica edge.",
+     "text": "Stilt huts sit under a thick canopy on the Barsaebica edge.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6316,7 +6574,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Wildlife roams the swamp around the stand. The Root-Folk are hostile to uninvited guests.",
+     "text": "Wildlife roams the swamp around the stand. The Root-Folk are wary of strangers, and strangers come and go at a reed hide beside a lone dead tree outside the stand.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6338,7 +6596,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "The sapling at the heart of the stand is dying. The Root-Folk offer an invitation to the Root Talk.",
+     "text": "The young Hist is sick: its scar has closed over a grey paste and its sap no longer runs. A reed hide beside a lone dead tree outside the stand, where strangers keep jars of sap.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6355,6 +6613,17 @@
        "kind": "extrapolation",
        "title": "argonia-4e201-state.md",
        "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Riverside Shack (Skyrim), is a homestead of one shack with farm pieces and does not fit a Root-Folk stand. Ree-An-Wo (King of the Murkmire) fits better: Argonian stilt huts and camp pieces, with no interior. Its huts, and the shrine pieces of the camp near Loreisian, make the ring round the sapling. Still to add: the young Hist tree, the sap bench under a stilt hut, the tapping cuts and the reed hide beside a dead tree.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -6384,13 +6653,29 @@
     },
     {
      "kind": "alchemy-lab",
-     "detail": "a sap bench in a root-hollow",
+     "detail": "a sap bench under a stilt hut",
      "count": 1
     },
     {
      "kind": "harvest-rare",
      "detail": "Hist sap at the tapping cuts",
      "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "three Unbound sap-takers at the reed hide",
+     "count": 3,
+     "reward": "treasure",
+     "setting": "nearby",
+     "spot": "the reed hide beside a lone dead tree outside the stand",
+     "bearing_deg": 270,
+     "distance_m": 130
+    },
+    {
+     "kind": "treasure",
+     "detail": "jars of sap and the sap-takers' packs at the reed hide",
+     "count": 1,
+     "setting": "nearby"
     }
    ]
   },
@@ -6454,7 +6739,7 @@
     },
     {
      "aspect": "present",
-     "text": "Five wardens and their families live on a small stilt platform at the weir, with a landing and a drying rack of fish. They hand off the catch to Urvyn Farm's cart every other day.",
+     "text": "Five wardens and their families live on a small stilt platform at the weir, with a landing and a drying rack of fish. Their catch goes to Urvyn Farm to be carted up the northern road.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6496,7 +6781,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Eels and gar from the traps are sold up river. The catch goes to Urvyn Farm's cart every other day.",
+     "text": "Eels and gar from the traps are sold up river. The catch goes to Urvyn Farm to be carted to market.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6596,6 +6881,17 @@
        "kind": "extrapolation",
        "title": "argonia-4e201-state.md",
        "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, a camp near Left Hand Mine (Skyrim), is a Nordic camp of seventeen buildings with no interior, whose camp pieces are replaced. Ree-An-Wo (King of the Murkmire) fits better: Argonian stilt huts with no interior, which suit a weir camp. Still to add: the small platform of huts, the woven weir with its log boom, the drying rack, the Hist-shoot post and the landing.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -6835,6 +7131,17 @@
        "kind": "extrapolation",
        "title": "argonia-4e201-state.md",
        "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Katlas Farm (Skyrim), is a farm of fourteen people with a farmhouse and a stable interior, which serve as the stone house and the barn. Its Nordic pieces are replaced with Dunmer stone and Argonian mud-plaster. Hlaalu Farm (Skyrim) is smaller with one interior and is not used. Still to add: the mound, the flooded fields, the ancestor stones, the Hist shoot and the eel racks.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -7084,6 +7391,17 @@
        "locator": "story/lore/tribes.md"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Narzulbur (Skyrim), is an orc camp with a longhouse and a basement, and its longhouse interior serves as the leader's hut with its chest. Its orc pieces are replaced with reed-and-bone huts and a bone shrine from the Argonian camp near Loreisian (King of the Murkmire). Still to add: the fire pit, the pole of trophies, the palisade of stakes round the camp and the stockade door that one Naga can open.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -7323,6 +7641,17 @@
        "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Dres village (Black Marsh North), is a Dunmer riverside village of fourteen buildings with no interior and does not suit the chapel. Root Whisper Village (King of the Murkmire) fits better: Argonian stilt houses and shrine pieces, with a hall interior that serves as the stripped chapel inside. Still to add: the fallen chapel roof with vines over the stone, the silver amulet under the floor, the Hist-shoot shrine beside it and the potter's stall.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -7462,7 +7791,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Hutan-Aru's people hunt and guide travellers across the river branch, and sell hides and smoked fish to Umpholo and the Naka-Desh who come to Meliton. They bargain hard over bridge-tolls, which every passing caravan must pay.",
+     "text": "Hutan-Aru's people hunt and guide travellers across the river branch, and sell hides and smoked fish to Umpholo and the Naka-Desh who come to Meliton. They bargain hard over the tolls at the landing.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7525,7 +7854,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "The Hutan-Tzel say beasts come for anyone who touches a totem, so strangers keep their hands off the carvings.",
+     "text": "The Hutan-Tzel tell strangers that beasts come for anyone who touches a totem, so travellers keep their hands off the carvings.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7562,6 +7891,17 @@
       {
        "kind": "reasoning",
        "title": "cultures.json magenta"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Military Camp Falkreath Imperial (Skyrim), is an Imperial camp of twelve people with no interior, and its Imperial pieces are replaced with dark palisade posts. Ree-An-Wo and the camp near Loreisian (King of the Murkmire) lend the huts and the shrine posts that become the carved totem. Still to add: the palisade, the landing on the river branch, the tanning rack and the cooking pot by the totem.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -7737,7 +8077,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "The guards say beasts follow anyone who disturbs a totem, so the outpost is dangerous to anyone who meddles with its runes.",
+     "text": "The guards tell strangers that beasts follow anyone who disturbs a totem, so travellers do not meddle with the runes.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7766,6 +8106,17 @@
        "kind": "dossier",
        "title": "tribes.md",
        "locator": "story/lore/tribes.md"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, a tower in Apocrypha (Dragonborn), is a strange Daedric tower of camp pieces and does not suit the border post. The camp near Loreisian and Ree-An-Wo (King of the Murkmire) fit better, with no interior: Argonian huts and shrine posts. Still to add: the dark palisade, the totem made from a shrine post, the landing and the cooking pot inside.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -7966,6 +8317,17 @@
        "kind": "dossier",
        "title": "foreign-powers.md",
        "locator": "story/lore/topics/foreign-powers.md"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Bloodlet Throne (Skyrim), is a large fort with a cave interior and does not fit a lone tower. Tamriel 18,35 (DepthsOfSkyrim) fits better: ten Imperial ruin pieces, a tower stump and a length of wall, with no interior. Still to add: the thicket, the shrine niche in the tower base, the rubble and the courier's strongbox.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -8181,7 +8543,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Restless dead rise from the oldest cairns, and Sul-Xan diggers work the south side by day.",
+     "text": "Restless dead lie among the oldest cairns, and Sul-Xan diggers work the south side by day.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8222,6 +8584,17 @@
        "kind": "dossier",
        "title": "lost-peoples.md",
        "locator": "story/lore/topics/lost-peoples.md"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Japhet's Folly (Skyrim), is a ruined hamlet with a ring of broken walls and two interiors that this open town does not use. Its Imperial and Nordic pieces are replaced with Argonian ruin pieces from Root Whisper Village (King of the Murkmire). Still to add: the stone footings, the cairns heaped with beads, the thorn tree hung with chimes and the diggers' trench.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -8491,6 +8864,17 @@
        "locator": "story/lore/topics/lost-peoples.md"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Molten Depths (CavesofMorrowind), is a large mine-and-cave interior and does not suit an open dead town. Root Whisper Village (King of the Murkmire) fits better for its shrine pieces and Argonian ruin walls, with no interior needed. Still to add: the footings in a loose ring, the four cairns with coloured glass, the tin chime-frame, the pottery heap and the raiders' trench.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -8703,6 +9087,17 @@
        "kind": "dossier",
        "title": "lost-peoples.md",
        "locator": "story/lore/topics/lost-peoples.md"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, BlackMarshNorth -16,16 (Black Marsh North), is a small Ayleid exterior of ruin and Ayleid pieces with no interior. The drowned hall is the interior of Loreisian (King of the Murkmire), given a water level and entered by a stair. Still to add: the white arches in the reeds, the vines, the shrine fragments and the Welkynd stone on the stair.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }

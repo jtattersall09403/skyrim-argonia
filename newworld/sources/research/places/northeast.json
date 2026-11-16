@@ -294,6 +294,17 @@
        "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Thorn (Black Marsh North), is a city of 629 buildings in Dunmer and Imperial style with farm and ship pieces and 25 people, which fits the walled city on flat grassland. It has one interior, a ship, so the tavern, the apothecary's shop and the smithy borrow interiors from Lilmoth (King of the Murkmire), which holds a tavern, an apothecary and an ironworks. Still to add: the Conclave of the One, the Temple shrine of Saint Roris and the Vicecanons' hall as interiors built from Imperial and Dunmer pieces, the saltrice paddies round the walls and the Hist tree outside the gate.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "gives": [
@@ -664,6 +675,17 @@
        "locator": "story/lore/extrapolation/settlement-register.md"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, The Perilous Pass (Caves of Morrowind), is a fort in Imperial and Dunmer style with six interiors, among them a pass tunnel, a bulwark, a distillery and its warehouse, which fits a gate fort cut into a rise. The warehouse serves as the locked store room for the confiscated moon sugar and the other interiors as the barracks and the captain's room. Its 91 hostiles are removed. Still to add: the toll bar across the road, the jetty for the watch boat and the Argonian reed-cord pennants.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "gives": [
@@ -914,6 +936,17 @@
        "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Chillwater Mill (Wyrmstooth), is a small mill of four people with farm, lumber and dock pieces and one house interior, which matches a bank camp of four. The house interior serves as the sawyers' bunkhouse. Its nine Nordic pieces are replaced with Argonian plank and stilt pieces from King of the Murkmire. Still to add: the plank-drying sheds, the saw-pit, the moored log rafts and the raw earth bank.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "gives": [
@@ -974,7 +1007,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A roadside toll post called Thornway Watch by the garrison, set where the Tsonac track meets the bay's southern shore. Every load of Stone-Sleeper stone bound for Thorn passes its chain.",
+     "text": "A roadside toll post called Thornway Watch by the garrison, set on the Tsonac track a short way back from the bay's southern shore. Every load of Stone-Sleeper stone bound for Thorn passes its chain.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1016,7 +1049,7 @@
     },
     {
      "aspect": "present",
-     "text": "Four of Fort Thornmoth's garrison take turns at the post, lifting the chain for carts once the toll is paid and sending runners to the fort when trouble comes up the track.",
+     "text": "Four of Fort Thornmoth's garrison take turns at the post, standing at the chain to take the toll from each cart and sending runners to the fort when trouble comes up the track.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1121,7 +1154,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "The road past the post is watched, and travellers are stopped at the chain. After dark giant snakes come down from the jungle to hunt round the well.",
+     "text": "The road past the post is watched, and travellers are stopped at the chain. Giant snakes lair at the jungle edge beside the well.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1160,6 +1193,17 @@
        "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Captain Guomundr's Village (Here There Be Monsters), is a Nordic hamlet of wreck pieces with 26 hostiles and no interior, so it does not fit. Ree-An-Wo (King of the Murkmire) fits better: a small Argonian hamlet of stilt pieces with no interior, which suits a watch house on stilts. No source holds a watch house interior, so the guards' bench stands on the stilt platform in the open. Still to add: the lantern pole, the stone-lined well and the chain between two posts.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "gives": [
@@ -1170,12 +1214,12 @@
     },
     {
      "kind": "free-bed",
-     "detail": "a bench in the watch house",
+     "detail": "a bench on the watch house's stilt platform",
      "count": 1
     },
     {
      "kind": "combat-creature",
-     "detail": "a pair of giant snakes that come to the well after dark",
+     "detail": "a pair of giant snakes that lair beside the well",
      "count": 1,
      "reward": "treasure"
     },
@@ -1455,6 +1499,17 @@
        "section": "forest-green"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, BlackMarsh2 -7,-4 (Black Marsh.esm), holds eight buildings of ship and farm pieces with no people and no interior, so it lends little. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet of 31 buildings in stilt and camp pieces with 16 people and no interior. Its stilt houses are set on the bay's mud shore and its five hostiles are removed. Still to add: the rope bridges, the drying and tanning racks, the dugouts on the mud, the smoking fire and the root hollow with the egg clutch.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "gives": [
@@ -1689,7 +1744,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Undead of the flu-dead, pit traps and scavenger crews who guard their finds; it is dark and cold below.",
+     "text": "Undead of the flu-dead, tripwire traps and scavenger crews who guard their finds; it is dark and cold below.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1728,6 +1783,17 @@
        "title": "Lost peoples",
        "locator": "story/lore/topics/lost-peoples.md",
        "section": "Cantemiric Velothi"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, SathilTownLocation (Solstheim Expand), is a ruined Dunmer town of 327 buildings in Dunmer and Imperial style with eight interiors, among them huts, a manor and an ancestral tomb, which fits a half-buried Velothi settlement. The manor's halls and the tomb serve as the lower halls under the plaza with the tomb as the household shrine. Its people and 13 hostiles are replaced by the scavenger crew and the dead. Its 19 Nordic pieces are replaced with Dunmer stone. Still to add: the vine cover, the cracked plaza with a stair down to the halls and the tripwire traps.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -2000,6 +2066,17 @@
        "title": "Lost peoples",
        "locator": "story/lore/topics/lost-peoples.md",
        "section": "Cantemiric Velothi"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Ashimmidarum (Journey to Baan Malur), is a Daedric ruin with one interior, so its stonework is the wrong style and only its ruined footprint by the water fits. Redeyn Ancestral Tomb (Journey to Baan Malur) is closer: Dunmer and Ayleid pieces with one tomb interior, which serves as the barred cellar behind the market. Still to add: the Dunmer houses and towers from Redeyn's Dunmer pieces, the stone quay set low in the water, the boats lying on the bottom and the tree through the market square.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -2304,6 +2381,17 @@
        "section": "sky-blue"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, BlackMarshNorth -17,3 (Black Marsh North), is a Nordic dock hamlet of 56 buildings with no interior, so its houses do not fit. Ree-An-Wo (King of the Murkmire) is closer: an Argonian hamlet of stilt and camp pieces on the water with no interior. Still to add: the square stone houses with reed roofs, the terraced plots, the hillside quarry and the stone quay. The elder's house is an interior from Seekhat Yol's elder's hut (King of the Murkmire). The sealed Velothi chamber under the oldest foundation is a small interior built from Redeyn Ancestral Tomb's Dunmer pieces (Journey to Baan Malur).",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "gives": [
@@ -2603,6 +2691,17 @@
        "kind": "dossier",
        "title": "Tribes",
        "locator": "story/lore/tribes.md"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Windhelm (Skyrim), is a city of 27 interiors and 120 people, the same count as Tsonac, built on a rise above the water, which fits terraces climbing from a quay. Its Nordic carvings and its Talos temple and Hall of the Dead are replaced with squared Argonian stone and timber. Its houses and inn serve as the lodging house and the shops. Lilmoth (King of the Murkmire) is the alternate for the sap-seller's apothecary. Still to add: the central mound with the sleeping Hist and its ring of carved stone steps.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -2905,6 +3004,17 @@
        "locator": "story/lore/extrapolation/settlement-register.md"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Stendarrs Beacon (Skyrim), is an Imperial tower with six hostiles and no interior or people, so it does not fit a stilt-house station. near Loreisian (King of the Murkmire) fits better: an Argonian camp of eight buildings with five people, shrine and camp pieces and no interior, which gives the root shrine at the camp's edge. Still to add: the stilt houses, the pelt frames, the lookout in a tall trunk and the gully with the snake's den.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "gives": [
@@ -3127,7 +3237,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Flu-dead undead in the lower halls, loose stone and falling masonry.",
+     "text": "Flu-dead undead in the lower halls, loose stone and rockfall traps.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3166,6 +3276,17 @@
        "title": "Lost peoples",
        "locator": "story/lore/topics/lost-peoples.md",
        "section": "Cantemiric Velothi"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Dunnashammipuri (Journey to Baan Malur), is a Daedric and Nordic ruin with one interior, so its Daedric pieces do not suit a Velothi mesa town. Redeyn Ancestral Tomb (Journey to Baan Malur) fits better: Dunmer and Ayleid stone with shrine pieces and one tomb interior, which serves as the lower halls with the hall under the well at its end. Still to add: the roofless houses round a central well, a small outer tomb interior for the herbalist's bench built from Redeyn's Dunmer pieces and the cellars with their fungus.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -3431,6 +3552,17 @@
        "section": "Cantemiric Velothi"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, near Cormaris (Journey to Baan Malur), is a ruined Dunmer and Imperial settlement of 28 buildings with 8 hostiles and no interior, which fits the town above ground. It holds no cellars, so the cellars and the bell-tower crypt are added as interiors built from Redeyn Ancestral Tomb's Dunmer pieces (Journey to Baan Malur), the silted ones with placed water to the knee. Its three Nordic pieces are replaced with Dunmer stone. Still to add: the standing tower stump, the vine cover and the gate where shells are left.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "gives": [
@@ -3668,7 +3800,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A Noota Nara scout went into the outer yard and was found dead with a key of Velothi bronze in his hand, and the hunters of Noota Nara will pay for the bell that hangs silent in the high tower.",
+     "text": "A Sarpa raider of the outer yard carries a key of Velothi bronze that opens the deep vault, and the hunters of Noota Nara will pay for the bell that hangs silent in the high tower.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3685,6 +3817,17 @@
        "title": "Lost peoples",
        "locator": "story/lore/topics/lost-peoples.md",
        "section": "Cantemiric Velothi"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, near Northen Cage (Depths of Skyrim), is a heap of wreck and mine pieces with three hostiles and no interior, so it does not fit. Redeyn Ancestral Tomb (Journey to Baan Malur) fits better: 179 Dunmer pieces with shrine and Ayleid stone and one tomb interior, which serves as the deep halls with the household's vault behind a locked door that the bronze key opens. Still to add: the fallen towers and the high tower with its silent bell, the outer yard and the fungus over the halls.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -3985,6 +4128,17 @@
        "locator": "newworld/sources/research/cultures.json"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Ree-An-Wo (King of the Murkmire), is an Argonian hamlet of 31 buildings and 16 people, the same count as Ayiin, on the water with no interior. It holds no house to enter, so the elder's house is an interior from Seekhat Yol's elder's hut (King of the Murkmire). Still to add: the squared stone walls under reed roofs, the stone jetty, the cairn, the cart in the ford with its locked chest and the crocodile's path along the bank.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "gives": [
@@ -4272,6 +4426,17 @@
        "locator": "story/lore/tribes.md"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, BlackMarsh 2,6 (Black Marsh.esm), is a cave with one interior, 56 cave pieces and eight people, the same count as the Sarpa here, and it serves as the passage and the nest gallery. Its few orc and Imperial pieces are replaced with bone heaps and feather-lined nests. Still to add: the ledges inside the mouth, the larder and the back chamber as rooms of the same interior, and the rockfall trap before the nest gallery.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "gives": [
@@ -4554,6 +4719,17 @@
        "locator": "story/lore/tribes.md"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Mor Khazgur (Skyrim), is an Orc stronghold of stone and palisade with three interiors, so its style does not fit hide tents. near Loreisian (King of the Murkmire) fits better: a small Argonian camp of eight buildings with shrine and camp pieces and no interior, which suits a camp that needs none. Still to add: the hide tents with a larger one for the chief, the feather-hung poles, the drying racks, the camp fire and the drop at the shelf's edge.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "gives": [
@@ -4802,7 +4978,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "The garrison holds the walls and the road, and Sarpa raids come to its western approach.",
+     "text": "The garrison holds the walls and the road, and Sarpa raids come to its western approach. The garrison turns away anyone who goes down the prison stair.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4828,7 +5004,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A garrison captain whose chalk cart and its driver vanished on the western road, and a cellar wall that rings hollow where the Legion's masons bricked up something older.",
+     "text": "A garrison captain whose chalk cart and its driver vanished on the western road. The old Legion prison below the keep is kept locked, with a gaoler of the garrison at its door, and the carters say they hear moaning from it at night.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4849,6 +5025,17 @@
        "kind": "dossier",
        "title": "Settlement register",
        "locator": "story/lore/extrapolation/settlement-register.md"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Fort Neugrad (Skyrim), is an Imperial fort of 533 buildings with two interiors, which serve as the keep's hall and the prison below it, and it fits a walled fort on a mesa shoulder. The prison is a locked door with a gaoler. Its 100 hostiles are removed and its Nordic pieces are replaced with chalk-dusted grey Imperial stone. Still to add: the barracks bunks, the quartermaster's store with its strongbox, the yard grindstone and workbench and the reed-cord pennants.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -4887,7 +5074,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "behind the bricked-up cellar wall: an Imperial strongbox",
+     "detail": "an Imperial strongbox in the quartermaster's store",
      "count": 1
     }
    ]
@@ -5099,6 +5286,17 @@
        "kind": "dossier",
        "title": "Settlement register",
        "locator": "story/lore/extrapolation/settlement-register.md"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Root Whisper Village (King of the Murkmire), is an Argonian village of 19 people, the same count as Noota Nara, with eight hut interiors among them a carpenter's, a hunter's and a treeminder's. They serve as the potters' houses, the spear-smiths' house and the elders' hall. Seekhat Yol's smithy hut (King of the Murkmire) is the alternate for the forge. Still to add: the timber and clay walls, the burned-black post where the gate stood and the dragon-spear beside the village Hist.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -5372,7 +5570,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "The hamlet is peaceful. Its guards rarely draw a blade. Its Agaceph illusionists test strangers with glamours and false paths before they let them in.",
+     "text": "The hamlet is peaceful. Its guards rarely draw a blade. Its Agaceph illusionists test strangers with illusion spells before they let them in.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5398,7 +5596,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "An Agaceph reader wants her forebear's bronze mission lamp from the drowned lower floor of a chapel downriver, reached only by swimming and a traveller stands frozen by a spell in a doorway, held there since he tried to steal a raft.",
+     "text": "An Agaceph reader wants her forebear's bronze mission lamp from the water beside a chapel downriver, where it lies on the bottom and is reached only by swimming and a traveller stands frozen by a spell in a doorway, held there since he tried to steal a raft.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5419,6 +5617,17 @@
        "kind": "dossier",
        "title": "Middle Argonia",
        "locator": "story/lore/regions/middle-argonia.md"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Dimfrost (Wyrmstooth), is a Nordic hamlet of mine and shrine pieces with nine people, the same count as Hirecan, and no interior, so its style does not fit. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet of stilt pieces on the water. The reed-roofed mission-book house and the illusionist's shop are interiors from Keeba Hollow's hut interiors (King of the Murkmire). Still to add: the slender posts, the raft racks and the painted shutters.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -5711,6 +5920,17 @@
        "locator": "newworld/sources/research/cultures.json"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, near Stonehollow (Wyrmstooth), is 13 buildings of mine and camp pieces with no people and no interior, so it does not fit. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet on the water with no interior. The watch-elder's house is an interior from Seekhat Yol's elder's hut (King of the Murkmire). Still to add: the stone walls under reed roofs, the cairn, the signal horn on a pole and the grindstone.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "gives": [
@@ -5943,7 +6163,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "There is rockfall inside and an old tunnel behind the north wall. The outside is mostly safe, as the road to Oxayo is watched from Fort Chalkmoth.",
+     "text": "There are rockfall traps inside and an old tunnel behind the north wall. The outside is mostly safe, as the road to Oxayo is watched from Fort Chalkmoth.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5990,6 +6210,17 @@
        "kind": "dossier",
        "title": "Settlement register",
        "locator": "story/lore/extrapolation/settlement-register.md"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Darkstone Mine (Nyhus), is a mine of 111 cave pieces and 27 mine pieces with one interior, which serves as the timbered gallery with the rough older tunnel and the end chamber. Its Imperial and Nordic pieces are replaced and its 17 hostiles are removed. Gloombound Mine (Skyrim) is the alternate: a plain mine interior with no cave pieces. Still to add: the raw cut in the mesa wall, the spoil heaps, the cairn of chips and the ox-cart track.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -6236,7 +6467,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "A rockfall risk inside; mostly safe outside because the road is watched.",
+     "text": "A rockfall trap inside; mostly safe outside because the road is watched.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6283,6 +6514,17 @@
        "kind": "dossier",
        "title": "Settlement register",
        "locator": "story/lore/extrapolation/settlement-register.md"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Llerush Kwama Mine (Journey to Baan Malur), is a mine of 15 people, the same count as the pit's families, with 172 mine pieces and 32 Imperial pieces and one interior. The Imperial pieces serve as the bricked storeroom behind the fallen chalk face. Still to add: the white-scarred pit, the lime kiln with its smoke, the handprints on the inner wall and the cart track to Noota Nara.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -6513,7 +6755,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Rockfall inside and a long drop at the cutting edge. The outside is mostly safe because the Ayiin road is watched.",
+     "text": "A rockfall trap inside and a long drop at the cutting edge. The outside is mostly safe because the Ayiin road is watched.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6560,6 +6802,17 @@
        "kind": "dossier",
        "title": "Settlement register",
        "locator": "story/lore/extrapolation/settlement-register.md"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Kolskeggr Mine (Skyrim), is a mine of 256 mine pieces and 68 cave pieces with two interiors, a foreman's house and the mine, which serve as the gallery and the fissure's cavern behind it. Its Nordic and Dwemer pieces are replaced. Still to add: the sheer cut above the road, the stacked blocks, the cairn at the gallery mouth and the steep cart track.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -6849,6 +7102,17 @@
        "locator": "newworld/sources/research/cultures.json"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Secundas Shelf (Skyrim), is four ruin pieces and one camp piece with two hostiles and no people, so it does not fit. near Loreisian (King of the Murkmire) fits better: an Argonian camp of five people with shrine and camp pieces, the same count as Yuvexa, which gives the Hist shrine at the settlement edge. Still to add: the stilt houses, the drying racks, the goat pen, the lookout in a trunk facing the ruins and the snakes' lair under the lip.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "gives": [
@@ -7135,6 +7399,17 @@
        "locator": "newworld/sources/research/cultures.json"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Tumble Arch Pass (Skyrim), is four ruin pieces and two camp pieces with three hostiles and no people, so it does not fit. near Loreisian (King of the Murkmire) fits better: an Argonian camp of five people with shrine and camp pieces, the same count as Nuxhal, which gives the Hist shrine at the post's edge. Still to add: the stilt houses, the drying racks, the lookout in a trunk and the gully with the snakes' den.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "gives": [
@@ -7151,7 +7426,7 @@
     {
      "kind": "combat-creature",
      "detail": "a pair of giant snakes denned in the gully",
-     "count": 4,
+     "count": 2,
      "reward": "treasure"
     },
     {
@@ -7414,6 +7689,17 @@
        "kind": "dossier",
        "title": "Culture records",
        "locator": "newworld/sources/research/cultures.json"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Military Camp Falkreath Sons (Skyrim), is a Nordic and Imperial tent camp of 20 people and 11 hostiles, so its tents and style do not fit stilt houses. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet of stilt and camp pieces with 16 people and no interior. Still to add: the drying racks of reed and feather, the shrine at the post's edge, the lookout in a trunk facing the cave and the web on the cave path.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }

@@ -205,6 +205,17 @@
        "title": "metropolis on Cape Percar, umber culture, Soulrest 4E 201 state"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Solitude (Skyrim), is a Nordic and Imperial capital of 31 interiors, among them an inn, a smithy, an apothecary, a clothier, a temple, a lighthouse, a jail and a palace. Its stone Imperial quarter, gate and shop interiors serve the Imperial quarter here. Its Nordic pieces are replaced with Imperial and Argonian ones from Lilmoth (King of the Murkmire), whose harbour, wharves and sewer interiors give the stilt wharves and the smugglers' landing. Still to add: the shrine of the Nine, the half-empty government quarter in the palace halls, the mangrove creeks and the burn-scar gas vents on the landward edge.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -482,7 +493,7 @@
     },
     {
      "aspect": "look",
-     "text": "A walled island core of stone, most of the city over the lake on stilt and boardwalk districts raised well above the water, shore quarters at the feeder mouths, canoes everywhere, mist off the water at dawn.",
+     "text": "A walled island core of stone, most of the city over the lake on stilt and boardwalk districts raised well above the water, shore quarters at the feeder mouths, canoes everywhere, mist over the water.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -542,6 +553,17 @@
       {
        "kind": "reasoning",
        "title": "large city in the Tulmek Washes, olive culture, Blackrose 4E 201 state"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Black Rose (Black Marsh North), is a town of 222 buildings over water with 64 people but only a house and a ship for interiors, too few for a city. Lilmoth (King of the Murkmire) lends the Argonian stilt houses, the tavern, the apothecary, the ironworks and a Hist-root interior, and its three sewer interiors serve as the Lilmothiit foundations under the island core. Its dock pieces make the boardwalks and its stone ruin pieces make the walled core. Still to add: the drowned Hist as a placed tree and shrine on the lake floor, the earthworks in the marsh and the toll gate on the core's landing.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -811,7 +833,7 @@
     },
     {
      "aspect": "look",
-     "text": "A grey stone fortress of Lilmothiit rubble, part-flooded, with bastions the marsh has crept into and Blackguard banners and fires on the upper wall.",
+     "text": "A grey stone fortress of Lilmothiit rubble, part-flooded, with bastions that stand in marsh water and Blackguard banners and fires on the upper wall.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -871,6 +893,17 @@
       {
        "kind": "reasoning",
        "title": "prison in the Tulmek Washes, Warden Marches culture, owner ruling Q3"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Forth Isle (Journey to Baan Malur), is an Imperial island fort of 24 buildings with one shack, far too small for a fortress prison. Cracked Tusk (Skyrim) fits better: an Imperial and Orc fort of 254 buildings with two keep interiors and three doors, one keep serving as the raj-kaal's hall and the other as the lower cells. Still to add: a water plane in the lower cell to drown it, the bastions set in marsh water, the Blackguard banners and fires, the yard forge and the warden's vault with its office.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -1101,7 +1134,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "Kothringi treasure rumours, a chime-maker's commission, a dispute over a wreck and the old foundations beneath the stone footings.",
+     "text": "Kothringi treasure rumours, a chime-maker's commission, a dispute over a wreck and the old stone footings that carry the town.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1112,6 +1145,17 @@
       {
        "kind": "reasoning",
        "title": "town in the Tulmek Washes, oxblood Chime-Keepers culture"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Toil's End (Here There Be Monsters, Curse of Cipactli), is a Kothringi town of 173 buildings with dock pieces and one interior, the Kothringi Greathouse, so it fits the name and the stone footing. Alten Meerhleel (King of the Murkmire) adds Argonian stilt houses and three interiors, a market and a lodging house among them, for the inn and the chime-smith's trading room. Its Nordic pieces are replaced. Still to add: tin and copper chimes on the eaves, the rope-walks and the boatyard on the channel.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -1361,6 +1405,17 @@
       {
        "kind": "reasoning",
        "title": "town in the Tulmek Washes on the Soulrest road, umber culture"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Fort Frostmoth Lost Quarters (Bloodmoon Dungeons Restored, Fort Frostmoth Expansion), is an Imperial walled town of 394 buildings with two interiors, which suits the toll gate and the pentagon of walls on the rise. Its two interiors serve as the toll house and the guards' quarters. Alten Meerhleel (King of the Murkmire) supplies the timber and reed buildings, a market house and a lodging house for the stage inn. Still to add: the warehouse quay on the river, the teamsters' yard, the small Sithis shrines on the main street and the red clay tracks.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -1617,6 +1672,17 @@
        "title": "village in the Tulmek Washes around Blackrose, olive culture"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Stonehills (Skyrim), is a Nordic mining village of 78 buildings with two interiors and does not fit a lakeshore fishing village. Keeba Hollow (King of the Murkmire) fits better: an Argonian stilt village of 203 buildings and nine interiors, a fisher's hut, a snail-minder's hut and a tree-minder's hut among them. The fisher's hut serves as the ferry families' cookhouse. Still to add: the fish-drying rack frame, the lantern post at the landing and the tarred pole-boat yard.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -1669,14 +1735,14 @@
    "siting": "riverbank",
    "danger_band_id": "D3",
    "importance": 2,
-   "summary": "A ferry landing with a cable raft across the Blackrose channel west of Lujei. It carries road traffic between the Soulrest side and the island.",
+   "summary": "A ferry landing with a raft moored on the Blackrose channel west of Lujei. Its crew take road traffic across to the island.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "A ferry landing on the channel: a cable raft, a landing hut and a waiting shelter.",
+     "text": "A ferry landing on the channel: a moored raft, a landing hut and a waiting shelter.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1780,7 +1846,7 @@
     },
     {
      "aspect": "look",
-     "text": "A plank landing, a cable and winch, a lantern pole, a thatched shelter on stilts.",
+     "text": "A plank landing, a cable post, a lantern pole, a thatched shelter on stilts.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1827,6 +1893,17 @@
        "title": "ferry in the Tulmek Washes, olive culture, Blackrose approach"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Northshore Landing (Dragonborn), is a dock of 24 buildings with no interior, which suits a ferry landing with no room the record needs. Its Nordic pieces are replaced with Argonian stilt and dock pieces from Alten Meerhleel (King of the Murkmire), a four-building Argonian dock. Still to add: the plank landing, the landing hut and thatched shelter on stilts, a raft moored at the post, the lantern pole and the eel-skin knot on the landing post.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -1839,7 +1916,7 @@
    "gives": [
     {
      "kind": "boat-stop",
-     "detail": "the cable raft across the Blackrose channel",
+     "detail": "the raft at the landing across the Blackrose channel",
      "count": 1
     },
     {
@@ -2050,6 +2127,17 @@
       {
        "kind": "reasoning",
        "title": "village in the Tulmek Washes around Blackrose, olive culture"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Honeymane Trading Post (Skyrim Trading Posts), is a Nordic post of seven buildings with no interior and does not fit a village of stilt houses. Seekhat Yol (King of the Murkmire) fits better: an Argonian village of 160 buildings with seven interiors, among them a fisher's hut and an accommodation hut that serve as the salvagers' longhouse. Its dock pieces make the landing. Still to add: the salt pans, the drying racks, the driftwood shrine above the beach and the salvage timber.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -2289,6 +2377,17 @@
       {
        "kind": "reasoning",
        "title": "village in the Tulmek Washes around Blackrose, olive culture"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Pale Trading Post (Skyrim Trading Posts), is a Nordic post of two buildings with no interior, long and thin along the water but too small. Keeba Hollow (King of the Murkmire) fits better: Argonian stilt huts and nine interiors, among them a fisher's hut and a crafter's hut that serve as the longhouse and the boatwright's workshop. Its dock pieces make the moorings. Still to add: the rope bridges between the stilt houses, the fish traps at the channel mouth and the cord of knots under the longhouse eaves.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -2531,6 +2630,17 @@
        "title": "village in the Tulmek Washes around Blackrose, olive culture"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Hjaalmarch Trading Post (Skyrim Trading Posts), is a post of four buildings with eight people and no interior, close to the size of the headland. Its Nordic pieces are replaced with Argonian reed huts from Seekhat Yol (King of the Murkmire), whose interiors give the fish-and-rice seller's room. Still to add: the rice-straw shrine on the dune, the rice sacks under tarps and the line of fishing boats on the beach.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -2750,6 +2860,17 @@
        "title": "village in the Tulmek Washes toward Lilmoth, rose culture"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Cormaris (Journey to Baan Malur), is a Dunmer farm hamlet of 16 buildings with one small interior and does not fit an Argonian rice village. Seekhat Yol (King of the Murkmire) fits better: an Argonian stilt village of 160 buildings and seven interiors, one of which serves as the granary. Cormaris lends its farm pieces for the rice stores. Still to add: the terraced paddies, the boardwalk road and the channel fish traps.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -2919,7 +3040,7 @@
     },
     {
      "aspect": "look",
-     "text": "A plank landing runs out to a winch raft, and a lamp post at the end guides the crossing after dark.",
+     "text": "A plank landing runs out to a moored raft, and a lamp post at the end guides the crossing after dark.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2964,6 +3085,17 @@
       {
        "kind": "reasoning",
        "title": "ferry in the Tulmek Washes, rose culture, Lilmoth road"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Alten Meerhleel (King of the Murkmire), is a small Argonian dock of four buildings with a moored ship, The Lady Padomay, whose hold is an interior. That hold serves as the ferry house. Its dock and Argonian hut pieces make the landing and the ferrymen's huts. Still to add: a raft moored at the landing post, the lamp post at the end, the carved gar-tooth on the post and the rice sacks.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -3161,6 +3293,17 @@
       {
        "kind": "reasoning",
        "title": "farm in the Tulmek Washes, rose culture"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Pinewood Farm (Nyhus), is a Nordic and Imperial farm of 158 buildings with two interiors named Farm, which serve as the stilted house and the rice shed. Its Nordic pieces are replaced with Argonian stilt pieces from Seekhat Yol (King of the Murkmire). Still to add: the rice paddies, the reed beds that lean over the landing and the family's boat at the landing.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -3378,6 +3521,17 @@
       {
        "kind": "reasoning",
        "title": "village in the Tulmek Washes on the south coast, umber culture"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Alten Merihall (Black Marsh & Valenwood), is a hamlet of 38 buildings with dock and ship pieces and no interior, which suits a landing with no room the record needs. Its Nordic pieces are replaced with Argonian stilt houses from Seekhat Yol (King of the Murkmire). Still to add: the salt pan behind the houses, the drying racks above the beach, the shrine of piled conch shells and the wooden jetty from the dock pieces.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -3600,7 +3754,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "Chimes that ring with no wind; a chime-maker's stash under the footings.",
+     "text": "Chimes that ring with no wind; a chime-maker's stash among the footings.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3611,6 +3765,17 @@
       {
        "kind": "reasoning",
        "title": "abandoned village in the Tulmek Washes"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, a hamlet near Way to Ruins (Black Marsh & Valenwood), is 120 buildings of ruin and camp pieces with one Argonian house interior, which suits a dead stilt town on stone footings. Its Nordic pieces are replaced with Argonian stilt-hall pieces from Keeba Hollow (King of the Murkmire). Still to add: the rusted tin chimes in the central tree, the Blackguard watch post of tents from the camp pieces and the stash chest set among the footings.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -3644,7 +3809,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "treasure: a chime-maker's cache of tin and copper ingots under the footings",
+     "detail": "treasure: a chime-maker's cache of tin and copper ingots among the footings",
      "count": 1
     },
     {
@@ -3831,7 +3996,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "Footings that hide a Kothringi cache; a ghostly chime-singer.",
+     "text": "A Kothringi cache among the footings; a ghostly chime-singer.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3842,6 +4007,17 @@
       {
        "kind": "reasoning",
        "title": "abandoned village in the Tulmek Washes"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Pilgrim Pass (Nyhus), is a Nordic hamlet of 16 buildings with ruin and shrine pieces and no interior, small enough for a few footings and a fallen hall. Its Nordic pieces are replaced with Argonian stilt pieces from Root Whisper Village (King of the Murkmire). Still to add: the moss, the rusted chimes, the bead cords on the doorposts and the Kothringi cache chest set among the footings.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -3875,7 +4051,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "treasure: a Kothringi cache of chimes and silver under the footings",
+     "detail": "treasure: a Kothringi cache of chimes and silver among the footings",
      "count": 1
     },
     {
@@ -4095,6 +4271,17 @@
       {
        "kind": "reasoning",
        "title": "abandoned village in the Tulmek Washes"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Grondal Passage (Nyhus), is a Dwemer and Nordic hamlet around a single cave, which does not fit a ring of tiered Argonian halls. Teeth of Sithis (King of the Murkmire) fits better: an Argonian ruin with tiered halls, three interiors and a large footprint. Its halls interior serves as the serpent's den in the great hall. Still to add: the stockade and landing set under water by a water plane, the lichen, the Legion banner and the pile of rusted arms.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -4353,6 +4540,17 @@
        "title": "abandoned village in the Tulmek Washes"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, a hamlet near Thorn (Black Marsh North), is 13 buildings of camp pieces with no interior, which suits a village with no room the record needs. Keeba Hollow (King of the Murkmire) gives the Argonian stilt halls and posts. Still to add: the leaning halls above the flooded yard, the minder's platform, the rotting ladder, the dead sapling on the mud spit and the sunk chest under the platform.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -4553,7 +4751,7 @@
     },
     {
      "aspect": "look",
-     "text": "A ring of grey posts stands in an empty paddy, with a collapsed hall roof in the mud and sluice gates still hanging from the old dyke. Rice stalks come up wild around them.",
+     "text": "A ring of grey posts stands in an empty paddy, with a collapsed hall roof in the mud and sluice gates still hanging from the old dyke. Wild rice stands around them.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4598,6 +4796,17 @@
       {
        "kind": "reasoning",
        "title": "abandoned village in the Tulmek Washes"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, a hamlet near Way to Ruins (Black Marsh & Valenwood), is 120 buildings of ruin and camp pieces with one small Argonian house interior, which serves as the half-buried granary with its locked bin. Its Nordic pieces are replaced with grey Argonian posts from Seekhat Yol (King of the Murkmire). Still to add: the broken dyke with its hanging sluice gates, the tilted hall platform and the brown water in the empty paddy.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -4822,7 +5031,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A Natai fisherman's trap line snagged a carved grave-stake in the drowned street, and a Mir-Xal family wants its ancestor's stake raised before the eels have it.",
+     "text": "A Natai fisherman saw a carved grave-stake in a chest in the drowned street, and a Chime-Keeper family of Toklea wants its ancestor's stake raised before the eels have it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4833,6 +5042,17 @@
       {
        "kind": "reasoning",
        "title": "abandoned village in the Tulmek Washes"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Kagrumez (Dragonborn), is a Dwemer ruin of 264 buildings with one interior and does not fit a drowned Argonian village. Seekhat Yol (King of the Murkmire) fits better: an Argonian stilt village of 160 buildings and docks. Its huts are set so that three roof peaks and a leaning platform show above the water. Still to add: the line of stumps along the old street, the fish-bone shrine on the highest roof and the chest under water in the street.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -4860,7 +5080,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "an underwater chest in the drowned carting yard",
+     "detail": "a chest under water in the drowned street, with a family's grave-stake in it",
      "count": 1
     },
     {
@@ -5043,7 +5263,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "The station's paymaster sank his iron strongbox in the flooded cellar when the Legion left, and it has never been raised. Smugglers meet in the yard on moonless nights.",
+     "text": "The station's paymaster sank his iron strongbox in the flooded cellar when the Legion left, and it has never been raised. Smugglers meet in the yard at night.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5065,6 +5285,17 @@
       {
        "kind": "reasoning",
        "title": "an Imperial ruin on the map on the Soulrest-Blackrose road in the washes; the Imperial posts were left at the secession (spine 10.4); Mir-Xal now takes the road toll for Soulrest, so the Archwardens never re-held it"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Tamriel 18,35 (DepthsOfSkyrim), is a bare Imperial ruin of ten pieces with no interior and no cellar. Old Laboratory (King of the Murkmire) fits better: an Imperial and Argonian ruin on the water with a dock and one interior, which serves as the cellars where outlaws sleep, its lower part set under water. Still to add: the broken stone tower and wall, the creepers over the Imperial crest, the cold forge in the yard and the outlaws' stash.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -5263,7 +5494,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Sinkholes under the turf, snakes in the burrow roofs and the shades of the plague dead at the third dome. A stranger is likelier to be lost than attacked.",
+     "text": "Flooded burrows under the turf, snakes in the burrow roofs and the shades of the plague dead at the third dome. A stranger is likelier to be lost than attacked.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5296,6 +5527,17 @@
       {
        "kind": "reasoning",
        "title": "Lilmothiit ruin in the Tulmek Washes"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Xocei-Tluthek (King of the Murkmire), is an Argonian ruin of 990 buildings, far larger than three domes, and does not fit. Huluxinoag (King of the Murkmire) fits better: a small Argonian ruin of 59 buildings with cave pieces and one root interior, which serves as the third dome with its grave goods. Still to add: the three low turf domes built from its cave pieces, the sedge, the flooded burrows and the fox-kite poles.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -5435,7 +5677,7 @@
     },
     {
      "aspect": "economy",
-     "text": "The den kept bramble-fruit presses and fox-pelt work, and it now draws delta antiquaries and fruit-pickers from Delta Ferry when the brambles fruit.",
+     "text": "The den kept bramble-fruit presses and fox-pelt work, and it now draws delta antiquaries and fruit-pickers from Delta Ferry.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5489,7 +5731,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Thorn tangles that hold a person like a net, venomous snakes in the burrow roofs and plague-dead who rise on the crown at dusk. The brambles are the worst of it.",
+     "text": "Thorn tangles that hold a person like a net, venomous snakes in the burrow roofs and plague-dead on the crown. The brambles are the worst of it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5522,6 +5764,17 @@
       {
        "kind": "reasoning",
        "title": "Lilmothiit ruin in the Tulmek Washes"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Ixtaxh-Thtithil-Meht (King of the Murkmire), is an Argonian ruin of 1952 buildings on a compact footprint, with one interior that serves as the central burrow. Haj-Uxith (King of the Murkmire) is a smaller alternate with two doors. Still to add: the thorn canopy as placed bramble plants, the three burrow mouths, the spirit stones with their notches and the ferry cache chest.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -5748,6 +6001,17 @@
       {
        "kind": "reasoning",
        "title": "Lilmothiit ruin in the Tulmek Washes"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Avanchnzel (Skyrim), is a Dwemer ruin of 3105 buildings with three interiors and does not fit a flooded fox-folk den. Huluxinoag (King of the Murkmire) fits better: a small Argonian ruin of 59 buildings with cave pieces and one root interior, which serves as the drowned lower burrow with a water plane set in it. Still to add: the fallen roof, the ring of black stumps, the fox-kite poles and cloth, and the hunter's blind.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -6022,6 +6286,17 @@
        "title": "a wreck on the map off Natai; most Southern Sea seafarers are Khajiit and Senchal trades through Topal Bay, moon sugar among it (Lore:Black Marsh; spine 10.3)"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, The Lair of Ymir (Here There Be Monsters), is four ship pieces with no interior and no hold. Icerunner (Skyrim) fits better: a wreck with two ship interiors, which serve as the hold and the stern. Its Nordic hull pieces are replaced with a Khajiit coaster's. Still to add: the broken ribs on the sand bar, the casks of salt with a false bottom, the captain's locked chest and the fish laid on the bow.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -6258,6 +6533,17 @@
        "title": "Cape Percar hinterland of Soulrest, umber culture"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Docks (Black Marsh & Valenwood), is a town of 482 buildings with ship pieces and three interiors, a ship and two cabins, which serve as the inn and the yard smithy. Its ship pieces make the salvage yard of ship timber. Its Nordic pieces are replaced with Imperial and Argonian ones from Seekhat Yol (King of the Murkmire). Still to add: the carts under sheds, the plain stone shrine slab and the toll post.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -6467,7 +6753,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Sea-drakes work the water off the village, wreckers lurk along the shore and hidden rocks off the landing tear the bottoms out of strange boats.",
+     "text": "Sea-drakes work the water off the village, wreckers lurk along the shore and hidden rocks lie off the landing.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6500,6 +6786,17 @@
       {
        "kind": "reasoning",
        "title": "Cape Percar hinterland of Soulrest, umber culture"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Longmont (Black Marsh & Valenwood), is a town of eight buildings with no interior, too thin for a fishing village. Seekhat Yol (King of the Murkmire) fits better: Argonian stilt houses, dock pieces and a fisher's hut that serves as the fish-and-salt seller's room. Still to add: the drying racks, the boat slip, the salt-white shrine stone at the landing and the wreckers' cache in the dunes.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -6729,7 +7026,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A boat has been hijacked off Naxan's coast. The loggers need a crew to raft a load of timber down to the landing before the rains.",
+     "text": "A boat has been hijacked off Naxan's coast. The loggers need a crew to raft a load of timber down to the landing.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6745,6 +7042,17 @@
       {
        "kind": "reasoning",
        "title": "Cape Percar hinterland of Soulrest, umber culture"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Silversand Trading Post (Skyrim Trading Posts), is a Nordic post of three buildings with no interior, too small for a village. Seekhat Yol (King of the Murkmire) fits better: Argonian stilt houses, dock pieces and an accommodation hut that serves as the longhouse. Still to add: the log landing, the drying racks, the ring of pale stones on the headland and the tanning rack.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -6978,6 +7286,17 @@
        "title": "ruin on Cape Percar"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Darklight Tower (Skyrim), is an Imperial ruin tower and does not fit a mine. Gloombound Mine (Skyrim) fits better: a small mine of 60 buildings with one interior, which serves as the galleries. The Flooded Mine Shaft (UWRL Underwater Skyrim Rivers and Lakes) lends its shaft interior for the flooded lower galleries. Still to add: the rusted rails, the broken sluice, the winch house as a plain ruined shed, the chief's chest and the Hist-token on its pole.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -7169,7 +7488,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Gas gathers in the fallen galleries, loose-rock traps hang where the props have rotted and scavengers at the portal are armed.",
+     "text": "Gas gathers in the fallen galleries, rotten props lean over the passages and scavengers at the portal are armed.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7202,6 +7521,17 @@
       {
        "kind": "reasoning",
        "title": "ruin on Cape Percar"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, the Flooded Mine Shaft (UWRL Underwater Skyrim Rivers and Lakes), is a mine of 31 buildings with one flooded interior, which serves as the burned galleries. Gloombound Mine (Skyrim) is an alternate with a dry interior. Still to add: the black-scorched timbers, the collapsed portal, the overseer's crooked shed, the scavenger camp and the overseers' gold chest behind placed fallen stone.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -7424,6 +7754,17 @@
        "title": "ruin on Cape Percar"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Ilinaltas Deep (Skyrim), is an Imperial ruin of 488 buildings and does not fit a mine. Bilegulch Mine (Skyrim) fits better: an Orc mine of 90 buildings with one interior, which serves as the upper levels and the lower galleries, the lower part set under water. Still to add: the timber headframe over the shaft mouth, the cracked Imperial votive niche and the smugglers' store.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -7609,7 +7950,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Gas collects in the pit, vents in the burned floor burst into flame when stepped on and fire-scarred undead wander the floor of the cut.",
+     "text": "Gas collects in the pit, vents in the burned floor burn with open flame and fire-scarred undead wander the floor of the cut.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7642,6 +7983,17 @@
       {
        "kind": "reasoning",
        "title": "ruin on Cape Percar"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Bilegulch Mine (Skyrim), is an Orc mine of 90 buildings with one interior, which serves as the burned passages that the vent shaft leads to. Its Orc pieces are replaced with scorched Imperial timber. Still to add: the open black cut with its gas vents, the ash-grey slopes, the charred post with its Hist-token and the grave goods at the vent shaft.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -7773,7 +8125,7 @@
     },
     {
      "aspect": "economy",
-     "text": "It sells cut stone to Soulrest's builders and road-menders and gives the merchant council a share of its blocks for its protection on the road. Carts leave twice a week for Chasepoint and the port.",
+     "text": "It sells cut stone to Soulrest's builders and road-menders and gives the merchant council a share of its blocks for its protection on the road. Carts take the stone to Chasepoint and the port.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7829,7 +8181,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Rockfalls come down on the quarry face. Bandits watch the Percar road for the stone carts.",
+     "text": "The quarry face is steep and loose. Bandits watch the Percar road for the stone carts.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7862,6 +8214,17 @@
       {
        "kind": "reasoning",
        "title": "ruin on Cape Percar"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Frostmoon Crag (Dragonborn), is an open mine area with no building or interior, which suits an open quarry. Gloombound Mine (Skyrim) lends a mine interior if the strata find needs one. Still to add: the terraced cut, the stone sled track, the cutting shed with its Sithis niche and the stacked grey blocks.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -8047,7 +8410,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Rockfalls come down on the quarry face. Bandits watch the track to the shore for the barge loads.",
+     "text": "The quarry face is steep and loose. Bandits watch the track to the shore for the barge loads.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8080,6 +8443,17 @@
       {
        "kind": "reasoning",
        "title": "ruin on Cape Percar"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Ironrock Mine (ExploreSkyrim-ES), is an enclosed mine of 157 buildings and does not fit an open cut. Frostmoon Crag (Dragonborn) fits better: an open area with no building or interior and mine and camp pieces. Still to add: the red-stained cut, the sled track to the shore, the crew's shed and the niche cut into the face.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -8258,7 +8632,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Predators prowl the forest around the clearing. Falling timber kills loggers who work carelessly.",
+     "text": "Predators prowl the forest around the clearing.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8286,6 +8660,17 @@
       {
        "kind": "reasoning",
        "title": "Cape Percar hinterland of Soulrest, umber culture"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, The Lady Padomay (King of the Murkmire), is a moored ship and does not fit a forest clearing. Chillwater Mill (Wyrmstooth) fits better: a mill of nine buildings with lumber pieces and one interior, which serves as the bunk house. Its Nordic farm pieces are replaced. Still to add: the log yard of red gum, the felling-post with its gar jaw, the haul track and the tanning rack.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -8503,7 +8888,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Smugglers use the tower and post their own guard on it. Sea-birds nest in the broken top and attack climbers.",
+     "text": "Smugglers use the tower and post their own guard on it. Sea-birds nest in the broken top.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8536,6 +8921,17 @@
       {
        "kind": "reasoning",
        "title": "ruin on Cape Percar"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Highpoint Tower (Dragonborn), is an Imperial fort tower of 537 buildings with one interior, which serves as the tower base with its niche and chest. Its Nordic pieces are replaced. Still to add: the broken top open to the weather, the Divines' niche with its bowl, the brass signal mirror bolted to the top and the signal lamp.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -8785,6 +9181,17 @@
        "title": "ruin on Cape Percar"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Morvunskar (Skyrim), is an Imperial fort of 361 buildings with two interiors, which serve as the gatehouse and the iron-doored strongroom. Its yard and gate are set in standing water. Still to add: the creepers on the walls, the weathered standard-shrine, the Legion forge and the outlaws' stash.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -9021,6 +9428,17 @@
        "title": "ruin on Cape Percar"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Irkngthand (Skyrim), is a Dwemer ruin of 2661 buildings with four interiors and does not fit a stilt village in the trees. Keeba Hollow (King of the Murkmire) fits better: Argonian stilt huts and nine interiors, whose huts serve as the dry halls where scavengers sleep. Left Hand Mine (Skyrim), a mining village, lends the mine crews' barracks. Still to add: the creepers on the old walls, the hollow stump shrine with its bird bones and the buried gold chest under a hall floor.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -9226,6 +9644,17 @@
       {
        "kind": "reasoning",
        "title": "outpost on Cape Percar, steel-blue culture"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, a camp near the Shrine of Boethiah (Skyrim), is a dry Imperial camp of 40 buildings and does not fit a stilt platform in the water. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet of 31 buildings on water with its people. Still to add: the tall lookout platform, the boat tied below, the Banujha tree-token shrine and the watch leader's chest.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -9436,6 +9865,17 @@
        "title": "outpost on Cape Percar, indigo culture"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, The Reaver's Respite (Journey to Baan Malur), is a pirate hamlet of 48 buildings with ship pieces and two interiors and does not fit a river station of the Naka-Desh. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet of 31 buildings on water. Still to add: the fishing weir from dock pieces, the elder's chest and the riddle trading room.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -9634,7 +10074,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Gas pools in the hollows, fire vents flare from the glassy crust where a foot falls and fire-undead walk the vents.",
+     "text": "Gas pools in the hollows, fire vents burn from the glassy crust and fire-undead walk the vents.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9661,6 +10101,17 @@
       {
        "kind": "reasoning",
        "title": "landmark on Cape Percar, Great Burn"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Falmer Valley (Dawnguard), is a landmark of cave and mine pieces over a dead valley floor. It has no interior, so the vent shaft and the deepest vent are an added cave interior of mine and cave pieces from Gloombound Mine (Skyrim). Still to add: the glassy black ground, the white ash, the dead snags, the gas and fire vents and the fire salts.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -9870,6 +10321,17 @@
        "title": "lighthouse on the Sea of Mists, Warden Marches culture"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Abandoned Lighthouse (Wyrmstooth), is a lighthouse of 44 buildings with one interior, which serves as the tower stair and lamp room. Its Nordic pieces are replaced with stone and Argonian stilt pieces from Keeba Hollow (King of the Murkmire) for the keeper's house. Still to add: the net-knot token on the stair, the rock under the tower and the shore rocks for the wreckers' takings.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -9908,7 +10370,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "the wreckers' takings in a shore cave",
+     "detail": "the wreckers' takings among the shore rocks",
      "count": 1
     }
    ]
@@ -9996,7 +10458,7 @@
     },
     {
      "aspect": "present",
-     "text": "Soulrest salvagers dive the Brine Gull on calm, clear days.",
+     "text": "Soulrest salvagers dive the Brine Gull.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -10142,6 +10604,17 @@
       {
        "kind": "reasoning",
        "title": "a wreck on the map off the cape's south-west; Bosmer coasters sail the Southern Sea to Soulrest with silk and timber the Green Pact forbids Bosmer to fell (spine 10.3)"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, the Wreck of the Serpent's Wake (Northwatch Coast), is five ship pieces with no interior, so it has no hold. Icerunner (Skyrim) fits better: a wreck with two ship interiors, which serve as the hold and the stern. Its Nordic hull pieces are replaced with a Bosmer coaster's. Still to add: the dark hull on the sea floor, the trailing weed, the captain's chest and the oilcloth bundles of silk and bows.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }

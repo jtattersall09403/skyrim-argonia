@@ -186,7 +186,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Inside the village it is calm. On the shore road to the north, mudcrab swarms and giant snakes are the daily trouble and outlaws from Skeith Isle sometimes land in the dark to take boats.",
+     "text": "Inside the village it is calm. On the shore road to the north, mudcrab swarms and giant snakes are the daily trouble. Outlaws from Skeith Isle have raided boats at the quay in the dark.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -230,6 +230,17 @@
        "kind": "reasoning",
        "title": "Knahaten Flu emptied the coast; East Empire Company left at the secession; Aroxhu clay-mound confederacy holds Okuwun-Rahei (state 10.1, 10.2)",
        "locator": "story/lore/extrapolation/argonia-4e201-state.md 10.1-10.2"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Keeba Hollow (King of the Murkmire), is an Argonian village of 203 buildings by water with nine hut interiors, a few dock pieces and a lighthouse. It fits a village of sixteen people. Its huts serve as the mound houses and the elder's hut as the pot-painter's home; its Nordic pieces are replaced with Argonian reed and mud-brick. Still to add: the ring of red mounds, the kilns at the water's edge, the clay and ochre pits, the votive shrine on the quay and the flat-boat tied there.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -529,6 +540,17 @@
        "locator": "story/lore/extrapolation/argonia-4e201-state.md 10.1, 10.3"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, near Dunmeth Pass (Journey to Baan Malur), is a small Dunmer ruin of 23 pieces with no interior, so it cannot hold halls. Redeyn Ancestral Tomb (Journey to Baan Malur) fits better: a Dunmer ruin by water with one large interior of tomb halls and niches, which serves as the upper halls and the lowest hall, the latter given a barred door and a still water plane at knee depth for the slaughterfish. Still to add: the rock itself, the stone causeway, the broken tower of Dunmer pieces over the door, the barnacled base courses and the ancestor tablets in the niches.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -648,7 +670,7 @@
     },
     {
      "aspect": "present",
-     "text": "Roofless but standing. A smuggler's lantern sometimes burns on the headland, though the smugglers do not go inside.",
+     "text": "Roofless but standing. A smuggler's lantern hangs on the headland, though the smugglers do not go inside.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -743,7 +765,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Ancestor ghosts within, crabs and hackwings on the beach and a sinkhole in the courtyard floor that drops to the sea cave beneath.",
+     "text": "Ancestor ghosts within, crabs and hackwings on the beach and a hole in the courtyard floor that leads down to the sea cave beneath.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -782,6 +804,17 @@
        "kind": "reasoning",
        "title": "Velothi holds along the seaboard died in the Flu 2E 560-603; Skeith smugglers use the headland (state 10.1, 10.2)",
        "locator": "story/lore/extrapolation/argonia-4e201-state.md 10.1-10.2"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Frossel (Dragonborn), is a Dunmer and Nordic ruin with cave pieces and one interior. Its Nordic pieces are replaced. Redeyn Ancestral Tomb (Journey to Baan Malur) fits the hold better: a Dunmer ruin by water whose one interior of halls and shrine niches serves as the inner hall with the tower stair. The sea cave is a second interior built from Frossel's cave pieces and reached by a door in a hole in the courtyard floor. Still to add: the roofless courses on the headland, the broken watch-tower, the brazier with its fire, the sand drifts and the smugglers' cache.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -901,7 +934,7 @@
     },
     {
      "aspect": "present",
-     "text": "A handful of workers cut brine-hard salt blocks in two shafts and load them on carts. A warden from Fort Thornmoth comes each month for the toll on the carts.",
+     "text": "A handful of workers cut brine-hard salt blocks in two shafts and load them on carts. A warden from Fort Thornmoth collects the toll on the carts.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1075,6 +1108,17 @@
        "kind": "reasoning",
        "title": "East Empire Company labour left at the secession; Warden Marches families keep the Thornmoth country; Thorn exports saltrice and cured fish (state 10.1, 10.2, 10.3)",
        "locator": "story/lore/extrapolation/argonia-4e201-state.md 10.1-10.3"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Broken Tusk Mine (Dragonborn), is a Dunmer and Nordic dig on Solstheim with one interior. Gloombound Mine (Skyrim) fits better: a mine with one interior of timbered galleries, four people and a single door, which serves as the working shaft. Whistling Mine (Skyrim), a mine by water with its own interior, serves as the older shaft. Still to add: the open salt face, the timber headframe, the carts and stacked blocks under reed roofs, the walled-off gallery, the brine pools and the spoil heap.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -1323,7 +1367,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Giant snakes, swamp-crocodiles in the ditch and smugglers landing by night who fight when asked to pay.",
+     "text": "Giant snakes, swamp-crocodiles in the ditch and smugglers who camp on the shore and fight when asked to pay.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1367,6 +1411,17 @@
        "kind": "reasoning",
        "title": "Archwardens hold the Imperial '-moth' forts and run customs at the road; Skeith smugglers (state 10.2)",
        "locator": "story/lore/extrapolation/argonia-4e201-state.md 10.2"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "No ranked source holds an interior or a blockhouse. Its main source, Lair of the Kraken (Here There Be Monsters), is a Dwemer and ship hamlet of nine buildings. Black Rose (Black Marsh) is eight buildings with ruin pieces and no interior. They lend only ground clutter, fences and stone. Still to add: the blockhouse and its single bunk room, an interior of Black Marsh & Valenwood's Imperial stone and timber pieces, then the mud-brick plinth, the toll bar, the signal pole and the reed huts.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -1562,6 +1617,17 @@
        "kind": "reasoning",
        "title": "East Empire Company ships ran until the secession; Thorn-Archon saltrice freight; Hatandros Bight is the only shoal sea on this coast (state 10.1, 10.3)",
        "locator": "story/lore/extrapolation/argonia-4e201-state.md 10.1, 10.3"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Katariah (Skyrim), is a large Imperial ship with a hold interior, six doors and many crates and chests. It fits a freighter. The hull is set on the seabed under water with its hold as the interior, entered by a door in the hull. Icerunner (Skyrim), a wrecked ship with two interiors and nineteen foes, is the alternate for the lower deck, its Nordic pieces replaced. Still to add: the silt, the barnacled ribs, the sacks of rotted cargo, the drowned crew and the captain's strongbox.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -1851,6 +1917,17 @@
        "locator": "story/lore/extrapolation/argonia-4e201-state.md 10.2 and story/lore/tribes.md"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Broken Tower Redoubt (Skyrim), is an Imperial and Nordic ruined fort of 307 buildings with 11 foes and two interiors. It does not fit a camp of nine. near Loreisian (King of the Murkmire) fits better: a small Argonian tribal camp of eight buildings with shrine and camp pieces, by water. Its tents and posts serve as the Sarpa camp, with no interior. Still to add: the high perches of timber and rock, the boundary poles marked in feathers and bones, the hoard chest of ash-glass and the hawk nests.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -2099,7 +2176,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "The steward's ghost still wears a ring of the lord's house; the Dunmer relic-seller in Thorn will pay for it. The cistern joins the bight by a drowned tunnel that a swimmer can follow.",
+     "text": "The steward's ghost still wears a ring of the lord's house; the Dunmer relic-seller in Thorn will pay for it. The cistern below the tower is a water-filled hall that a swimmer can cross.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2121,6 +2198,17 @@
        "kind": "reasoning",
        "title": "Velothi holds died in the Flu 2E 560-603; Dunmer relic-buyers at Thorn; Sarpa roost beside it (state 10.1, 10.3)",
        "locator": "story/lore/extrapolation/argonia-4e201-state.md 10.1, 10.3"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Thirsk Unifying Dummy (Dragonborn), is a small Dunmer and Imperial ruin of 51 buildings with one interior, but it carries camp and farm pieces and seven living people that a haunted ruin does not need. Redeyn Ancestral Tomb (Journey to Baan Malur) fits the lower halls better: a Dunmer ruin by water with one interior of tomb halls and shrine pieces. Its interior serves as the lower halls and the vault, with a still water plane added in the cistern hall. Still to add: the collapsed courts, the standing tower, the Sarpa perches at the edge and the steward's ring.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -2230,7 +2318,7 @@
     },
     {
      "aspect": "present",
-     "text": "A busy river-mouth landing with a stone jetty, a lime kiln and loading sheds. Thorn boats call whenever stone is ready.",
+     "text": "A busy river-mouth landing with a stone jetty, a lime kiln and loading sheds. Thorn boats lie moored at the jetty.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2366,6 +2454,17 @@
        "locator": "story/lore/extrapolation/argonia-4e201-state.md 10.1-10.2"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, BlackMarsh 4,-4 (Black Marsh), is a Nordic hamlet of eleven buildings with no interior, so its Nordic pieces are replaced. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet by water of 31 buildings and sixteen people, with camp and ruin pieces and no interior. It supplies the jetty, the huts and the stacked stone. Still to add: the stone jetty, the lime kiln, the open loading sheds that the trader's stall stands in, the stone stacks and the stash under the jetty.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -2465,7 +2564,7 @@
     },
     {
      "aspect": "present",
-     "text": "Five Root-Folk keep the station and go home in turns. They watch ships and trade quietly with Arorha.",
+     "text": "Five Root-Folk keep the station for Helstrom. They watch ships and trade quietly with Arorha.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2560,7 +2659,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Surf, crabs and hackwings on the shore and Skeith outlaws who beach a boat in the cove. The station's folk do not like uninvited visitors and send word of them to Helstrom.",
+     "text": "Surf, crabs and hackwings on the shore and Skeith outlaws who keep a boat beached in the cove. The station's folk do not like uninvited visitors and send word of them to Helstrom.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2599,6 +2698,17 @@
        "kind": "reasoning",
        "title": "Umbriel 4E 48 and the resettlement; Helstrom's Root-Folk hold the Hist forest; Skeith outlaws raid the bight (state 10.1, 10.2)",
        "locator": "story/lore/extrapolation/argonia-4e201-state.md 10.1-10.2"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Velothi Victuals (Nyhus), is a small Dunmer hamlet of sixteen buildings with one interior and three people. It fits a station of five. Its Dunmer and Nordic pieces are replaced with Argonian reed and wood from Ree-An-Wo (King of the Murkmire). Its interior serves as the station hall holding the sap-jar. Still to add: the canoe landing, the salt piles, the kelp racks, the beached outlaw boat in the cove and the cove chest.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -2649,7 +2759,7 @@
      "count": 1,
      "reward": "boss-chest",
      "setting": "nearby",
-     "spot": "the cove beyond the hamlet where the outlaws beach their boat",
+     "spot": "the cove beyond the hamlet where the outlaws keep their beached boat",
      "bearing_deg": 125,
      "distance_m": 120
     }
@@ -2873,7 +2983,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Drowned crew and shackled dead in the hold, slaughterfish around the hull and a captain who keeps his strongbox. The wreck is a short swim from shore, .",
+     "text": "Drowned crew and shackled dead in the hold, slaughterfish around the hull and a captain who keeps his strongbox. The wreck is a short swim from shore.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2924,6 +3034,17 @@
        "kind": "reasoning",
        "title": "Dres slaving from Thorn into the late Third Era (Lore:Thorn, Lore:Arnesia); slaver wrecks dated before the Red Year (state §10.3, Morrowind row)",
        "locator": "story/lore/extrapolation/argonia-4e201-state.md section 10"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Pilgrims Trench (Skyrim), is a ship hull of 48 pieces on a rocky shore with no interior, so it supplies the broken hull lying on its side. Icerunner (Skyrim), a wrecked ship with two interiors, supplies the hold and the stern cabin, its Nordic pieces replaced. Still to add: the split hull set on the shelf under water, the shackles on the hatch and in the hold, the weed, the captain's strongbox and his log in the cabin.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -3232,6 +3353,17 @@
        "locator": "story/lore/extrapolation/argonia-4e201-state.md section 10"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "No ranked source holds a ship with an interior. Its main source, Wreck? (DepthsOfSkyrim), is a bare wreck of eleven static pieces with rock and trees. Ink Lagoon (Journey to Baan Malur) is a ruined hull in a lagoon with no interior. They lend only the broken hull and the shoal rock. The upright sloop, its mast stump, the shut deckhouse hatch and the strongbox inside the deckhouse are added from Skyrim's ship pieces, set in shallow water over a jagged shoal; the deckhouse is one small interior behind the hatch.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -3277,7 +3409,7 @@
    "siting": "seabed",
    "danger_band_id": "D3",
    "importance": 1,
-   "summary": "Wreck of the Resolute Crest is a Septim man-of-war of Uriel V's Akavir fleet, sunk in deep water off Skeith Isle with its ballistae and an Akaviri chest still aboard.",
+   "summary": "Wreck of the Resolute Crest is a Septim man-of-war of Uriel V's Akavir fleet, sunk in deep water off Skeith Isle with an Akaviri chest still aboard.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -3457,7 +3589,7 @@
     },
     {
      "aspect": "look",
-     "text": "A tall black-oaked hull ringed with weed, a bronze figurehead of a crest worn smooth, ballistae on a sunken deck, shoals of fish.",
+     "text": "A tall black-oaked hull ringed with weed, a bronze figurehead of a crest worn smooth, a sunken deck, shoals of fish.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3536,6 +3668,17 @@
        "kind": "reasoning",
        "title": "Uriel V's fleet sailed the Padomaic against Akavir in 3E 288 and was lost at Ionith in 3E 290 (Lore:Akavir; state §10.1), the one canon reason for a Septim warship off the east coast (state §10.3)",
        "locator": "story/lore/extrapolation/argonia-4e201-state.md section 10"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "None of its ranked sources fits. Stone Wind (Dragonborn) is a Nordic and Dwemer temple site whose interiors are temple halls. The rest are small shipwrecks with no interior. The best hull is Pilgrims Trench (Skyrim), a ship of 48 pieces, scaled up and set upright on the deep shelf. Its decks, quarterdeck and lower hold are an interior added from Skyrim's ship pieces behind a hull door. Still to add: the weed and silt, the drowned marines, the Akaviri chest and the dark water over the lower hold.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -3639,7 +3782,7 @@
     },
     {
      "aspect": "present",
-     "text": "About fourteen men and women live in lean-to huts above the shingle, with two hidden coves and a cache in the caves under the bluff. They bring their boats in on moonless nights.",
+     "text": "About fourteen men and women live in lean-to huts above the shingle, with two hidden coves and a cache in the caves under the bluff. Their boats are hauled up in the coves.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3788,6 +3931,17 @@
        "kind": "reasoning",
        "title": "Customs stand only at the recognised ports and the Warden forts, and the Archwardens have no navy (state §10.2); moon sugar and Khajiit crews on the Southern Sea (state §10.3); Skeith holds half-chartered pirates and smugglers (state §10.2 holdings)",
        "locator": "story/lore/extrapolation/argonia-4e201-state.md section 10"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, New Zainab (CampNewZainab), is a Dunmer camp by water of 25 buildings with eight yurt interiors and twelve people. It fits a beach camp of fourteen. Its yurts are replaced with open lean-to huts of Argonian reed and hide from Bonestrewn Grove (King of the Murkmire). One yurt interior serves as the leader's hut. Still to add: the shingle beach, the two coves with snares, the boats hauled up on the shingle, the cook fire with its drying-rack and the bluff cave, a small interior built from Skyrim's cave pieces, holding the cache.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -4074,7 +4228,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "The captain wants the Hollow Tide leader's best boat burned at its mooring. A stranger who does it is taken aboard as crew and sails with a privateer's protection.",
+     "text": "The captain wants the Hollow Tide leader's best boat burned at its mooring. A stranger who does it is taken on as crew and carries a privateer's letter of protection.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4096,6 +4250,17 @@
        "kind": "reasoning",
        "title": "General Falco's letters of marque to the Archon coast pirates in the Blackwater War (Lore:Archon; state §10.1); the Archwardens have no navy, so the chartered privateer is the state's arm on the water (state §10.2)",
        "locator": "story/lore/extrapolation/argonia-4e201-state.md section 10"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Bonestrewn Grove (King of the Murkmire), is an Argonian and Imperial camp by water of eleven buildings with a lighthouse and eight people and no interior. It fits the stilt look but is small for twenty pirates. New Zainab (CampNewZainab), a Dunmer camp with eight yurt interiors, supplies the captain's cabin and crew quarters, the yurt felt replaced with timber and reed. Still to add: the stilt walkways and jetty over the shallows, the moored hulks of Skyrim's ship pieces, the crew cook fire and the quartermaster's counter.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -4221,7 +4386,7 @@
     },
     {
      "aspect": "present",
-     "text": "It serves as a seamark. A rough cairn stands at the top and a goat-path climbs the south face. The pirates keep a lookout post on it in clear weather.",
+     "text": "It serves as a seamark. A rough cairn stands at the top and a goat-path climbs the south face. The pirates keep a lookout post on it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4377,6 +4542,17 @@
        "kind": "reasoning",
        "title": "The Arnesian island has dark green-grey terrain unlike the rest of the province (Lore:Arnesia); both Skeith camps need a lookout over the Thorn and Archon sea lanes (state §10.2 holdings)",
        "locator": "story/lore/extrapolation/argonia-4e201-state.md section 10"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Velothi Mountains Pass (CavesofMorrowind), is a Dwemer and Imperial range of 2112 buildings, 81 foes and seven interiors. It is far too large. Mount Moesring (Dragonborn) fits better: a bare crag with no buildings, one foe and shrine and ruin pieces, shaped here into a single grey-green spire. Still to add: the goat-path up the south face, the cairn with its buried cache, the nesting ledges, the pirate lookout post and a small cave interior on the north face built from Skyrim's cave pieces.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -4675,6 +4851,17 @@
        "locator": "story/lore/extrapolation/argonia-4e201-state.md section 10"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Fort Tulis (Journey to Baan Malur), is an Imperial and Nordic keep with six interiors, a prison block and a warden's tower. It fits a sea-watch keep. Its halls serve as the upper moot-hall, the lower vault and the undercroft cells, the Nordic pieces replaced with Imperial stone. Forth Isle (Journey to Baan Malur) lends the dock pieces for the jetty. Still to add: a still water plane in the lower cells for the slaughterfish pen, the locked strong room, the stair traps, the Akatosh shrine in the chapel and the crates that stack before it. Its thirty-two people are cut to the twelve pirates and their captives.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -4887,6 +5074,17 @@
        "locator": "story/lore/extrapolation/argonia-4e201-state.md section 10"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Ink Lagoon (Journey to Baan Malur), is a lagoon wreck of three ship pieces with ruin and camp pieces and no interior, so it lends only the beached hull and the tide-line rock. Icerunner (Skyrim), a wrecked ship with two interiors, supplies the sand-filled hold and the stern cabin, its Nordic pieces replaced with Imperial galleon timber. Still to add: the galleon's upper hull on the beach, the sand drift in the hold, the rotten decks, the sealed strongbox with its lock and the scavengers' camp marks.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -4987,7 +5185,7 @@
     },
     {
      "aspect": "present",
-     "text": "A busy mound-town: the council meets each new moon under the Hist, the potters' kilns burn day and night and the Archwardens must bargain for any road or toll in Oxhu country.",
+     "text": "A busy mound-town: the council meets under the Hist, the potters' kilns burn day and night and the Archwardens must bargain for any road or toll in Oxhu country.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5116,6 +5314,17 @@
        "kind": "reasoning",
        "title": "The interior tribes were never emptied and rule everything outside the cities through tree-minders and a Hist (state §10.2); the Aroxhu clay-mound confederacy holds Okuwun-Rahei (state §10.2 holdings); the Archwardens hold only tolls and customs, so they must bargain (state §10.2)",
        "locator": "story/lore/extrapolation/argonia-4e201-state.md section 10"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, South of Riverhold (moonpath), is a Nordic and Dwemer city with 135 foes and does not fit. Lilmoth (King of the Murkmire) is the better source: an Argonian and Imperial city by water with 46 interiors, of which a few dozen huts, a market hall and an elder's hall serve the mound-town, the Imperial stone replaced with mud-brick. Still to add: the clay ridge and its terraces, the kilns and bread oven, the great Hist and its root pool from Black Marsh & Valenwood's Hist pieces, the dye table beside it and the moot-ground.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -5402,6 +5611,17 @@
        "locator": "story/lore/extrapolation/argonia-4e201-state.md section 10"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Alten Meerhleel (King of the Murkmire), is a small Argonian and Imperial river town of 72 buildings with a dock, a market hall and a lodging house as its interiors. It fits a market town well. The market hall serves the bulk-trade counter and the lodging house the stilted inn. Still to add: the river fork and ferry, the barge at the market ground, the hide stalls and the pot stacks.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -5666,6 +5886,17 @@
        "locator": "newworld/sources/research/cultures.json"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Saxhleel Camp (Journey to Baan Malur), is a Dunmer and Dwemer camp of six buildings with three tent interiors. It does not fit a clay-diggers' village. Root Whisper Village (King of the Murkmire) fits better: an Argonian village by water with eight hut interiors and its Ayleid and ruin pieces. Its huts serve the village. Its Ayleid pieces and one hall interior serve the buried stone hall the diggers broke into. Still to add: the open clay pits with steep walls, the spoil mounds, the village kiln and the reed beds.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -5801,7 +6032,7 @@
     },
     {
      "aspect": "present",
-     "text": "A quiet village. Its elders keep good terms with Yulca, which is rare. Agaceph rafters tie up at its landing to trade.",
+     "text": "A quiet village. Its elders keep good terms with Yulca, which is rare. Agaceph rafters trade at its landing.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5936,7 +6167,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Lake crocodiles, slaughterfish in the shallows and travellers from Yulca who arrive muddled by illusions.",
+     "text": "Lake crocodiles, slaughterfish in the shallows and travellers from Yulca who are muddled by illusions.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5985,6 +6216,17 @@
        "kind": "reasoning",
        "title": "Aroxhu culture (cultures.json rust) + Yulca on the great lake as the Agaceph town + tribes bargain across borders (tribes.md)",
        "locator": "newworld/sources/research/cultures.json"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Darkwater Crossing (Skyrim), is a Nordic and Imperial river village of 82 buildings with two interiors. Its pieces are replaced. Seekhat Yol (King of the Murkmire) fits better: an Argonian village by water with 48 dock pieces, a fishers' hut and an accommodation hut among its seven interiors. The accommodation hut serves the eel-paste kitchen and a second hut serves as the elders' mound, the Nordic pieces replaced with reed and mud-brick. Still to add: the clay mounds and rice terraces, the landing for rafts, the lily beds, the fisher's lockbox on the point and the worked stones in the shallows.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -6211,7 +6453,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Coastal crocodiles, mudcrabs on the inlet shore and smuggler landings after dark.",
+     "text": "Coastal crocodiles, mudcrabs on the inlet shore and smugglers camped on the inlet in the dark.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6250,6 +6492,17 @@
        "kind": "reasoning",
        "title": "Aroxhu culture (cultures.json rust) + Skeith's half-chartered smugglers and the Seafalls road in §10.2",
        "locator": "newworld/sources/research/cultures.json"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Kynesgrove (Skyrim), is a Nordic and Imperial village of 161 buildings with two interiors. Its Nordic pieces are replaced. Seekhat Yol (King of the Murkmire) fits better: an Argonian village by water with dock pieces and an accommodation hut among its seven interiors, which serves as the guesthouse. Still to add: the red mounds, the fish racks on the estuary shore, the lamp on the bluff and the smugglers' cache beneath it.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -6301,7 +6554,7 @@
     },
     {
      "kind": "combat-foes",
-     "detail": "Skeith smugglers landing on the inlet",
+     "detail": "Skeith smugglers camped on the inlet",
      "count": 3,
      "reward": "treasure",
      "setting": "nearby",
@@ -6377,7 +6630,7 @@
     },
     {
      "aspect": "present",
-     "text": "A steady fishing village. Its boats go out at dawn and sell to Seafalls, and its people dislike the Skeith smugglers' habit of landing at the cape.",
+     "text": "A steady fishing village. Its boats lie moored at the breakwater and its fish sell at Seafalls. Its people dislike the Skeith smugglers' habit of landing at the cape.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6487,7 +6740,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Crocodiles at the inlet, smuggler landings on the cape and the ghosts of Mazurath on the headland.",
+     "text": "Crocodiles at the inlet, smugglers camped on the cape and the ghosts of Mazurath on the headland.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6526,6 +6779,17 @@
        "kind": "reasoning",
        "title": "Aroxhu culture (cultures.json rust) + velothi-ruin-28-m92 Mazurath on the next headland + Skeith smugglers in §10.2",
        "locator": "newworld/sources/research/cultures.json"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Tel Eyrith (Nyhus), is a Dunmer and Nordic fishing village of 85 buildings with dock pieces and five interiors, among them a fish shop and an inn. It fits a fishing village by water. Its Dunmer and Nordic pieces are replaced with Argonian reed from Seekhat Yol (King of the Murkmire). The fish shop serves the salted-fish store and an upper room the boat-wright's loft. Still to add: the breakwater, the half-built hull on the slip, the shell racks, the smugglers' bundle and the glow of the ruin on the next headland.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -6577,7 +6841,7 @@
     },
     {
      "kind": "combat-foes",
-     "detail": "Skeith smugglers on the cape",
+     "detail": "Skeith smugglers camped on the cape",
      "count": 3,
      "reward": "treasure",
      "setting": "nearby",
@@ -6802,6 +7066,17 @@
        "kind": "reasoning",
        "title": "Aroxhu culture (cultures.json rust) + §10.2 tolls at crossings as the revenue of the east + Skeith smugglers",
        "locator": "newworld/sources/research/cultures.json"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Whitewatch Tower (Skyrim), is a Nordic and Imperial stone tower of 33 buildings with no interior, which is wrong for a mound-top spear-post. near Loreisian (King of the Murkmire) fits better: a small Argonian camp of eight buildings with shrine and camp pieces and five people and no interior. It supplies the reed hut and the posts. Still to add: the mound top, the bar across the road, the spear rack, the grindstone and the smugglers' cache by the road.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -7054,7 +7329,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "The sealed galleries hold the Company's last strongbox. The gallery-boss wants someone to swim the flooded drift past the crocodiles to reach the locked lower door from below.",
+     "text": "The sealed lower galleries hold an old strongbox of the Kothringi knights of Gideon. The gallery-boss keeps the key to the timber door, and the flooded drift goes round the door past the crocodiles.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7071,6 +7346,17 @@
        "kind": "reasoning",
        "title": "East Empire Company departs at the secession (§10.1, §10.4) + Aroxhu clay-diggers (cultures.json rust) + Skeith smugglers (§10.2)",
        "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Gloombound Mine (Skyrim), is a mine with one interior of timbered galleries, four people and 60 pieces on dry ground. It serves as the worked upper galleries with the smelter and headframe outside. Whistling Mine (Skyrim), a mine by water with its own interior, serves as the sealed lower galleries and the flooded drift, with a still water plane added for the crocodile nest and a locked timber door set between the two. Still to add: the clay plug and the door, the ore-cart cache, the knights' strongbox and the Company-era smelter.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -7129,7 +7415,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "the Company's last strongbox and ore-cart cache",
+     "detail": "the knights' old strongbox in the lower galleries and an ore-cart cache",
      "count": 1
     }
    ]
@@ -7356,7 +7642,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Falls from the wet rocks and rope-bridges, slaughterfish in the sea-pool and Skeith pirate boats in the dark.",
+     "text": "Falls from the wet rocks and rope-bridges, slaughterfish in the sea-pool and Skeith pirates who raid the landing.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7384,7 +7670,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "The pilot-elder needs a successor and has chosen a hatchling who cannot swim. A ship has come in whose cargo does not match its master's story, and Archon's chartered privateer wants it quietly held.",
+     "text": "The pilot-elder needs a successor and has chosen a hatchling who cannot swim. A ship lies at the landing whose cargo does not match its master's story. Archon's chartered privateer wants it quietly held.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7407,6 +7693,17 @@
        "kind": "reasoning",
        "title": "settlement-register: Seafalls NNE of Archon, falls-and-portage + East Empire Company gone at the secession (§10.1) + Archon's privateers (§10.2)",
        "locator": "story/lore/extrapolation/settlement-register.md"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Seekhat Yol (King of the Murkmire), is an Argonian village by water with 160 buildings, 48 dock pieces, ship pieces and seven hut interiors. It fits a village of fourteen; its Nordic pieces are replaced. Its accommodation hut serves the inn room and its huts the pilot-elder's house and the trader. Still to add: the cliff platforms and rope-bridges, the falls and the sea-pool, the pilot's boat at the landing, the shoal pearls and the salvage store.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -7664,7 +7961,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Falls from the gallery, slippery rocks and Skeith pirates who take the tower in the dark.",
+     "text": "Falls from the gallery, slippery rocks and Skeith pirates who hold the tower.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7703,6 +8000,17 @@
        "kind": "reasoning",
        "title": "Imperial lighthouses lost or re-held at the secession (§10.4) + Spray-Folk of Seafalls hold the coast (§10.2) + Skeith pirates",
        "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Solitude Lighthouse Exterior (Skyrim), is a lighthouse of 55 buildings with three people and one interior. It fits the tower and the keeper's family. The Nordic and Imperial stone is replaced with Imperial coast stone. Its interior serves as the keeper's stair and lamp room. Alten Meerhleel (King of the Murkmire), an Argonian dock with a moored ship interior, lends the keeper's hut. Still to add: the lamp that lights at night, the gallery rail, the salvage chest and the point's rocks and driftwood.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -7958,6 +8266,17 @@
        "kind": "reasoning",
        "title": "Spray-Folk of Seafalls (state §10.2) + salt as a sea-coast trade good (settlement-register)",
        "locator": "story/lore/extrapolation/settlement-register.md"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Hlaalu Farm (Skyrim), is a Nordic farm of sixteen buildings with one interior and four foes. Its Nordic pieces would be replaced. Farmhouse (Journey to Baan Malur) fits better: a small farm by water with two interiors, a farmhouse and a storehouse, which serve as the reed house and the boiling shed. Still to add: the salt pans, the salt piles, the salt pot, the sedge beds and the smuggler's cache in the pans.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -8221,6 +8540,17 @@
        "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Farmhouse (Journey to Baan Malur), is a small farm by water with two interiors, a farmhouse and a storehouse. It fits a household of four; its Dunmer and Nordic pieces are replaced with reed and mud-brick. The farmhouse serves as the reed house with its pot and mat. Still to add: the rice paddy, the guar pen and its herd, the path to Seafalls and the thieves' hidden bundle.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -8482,6 +8812,17 @@
        "locator": "story/lore/extrapolation/argonia-4e201-state.md section 2-3"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Crabbers Shanty (Skyrim), is a shore shanty of 30 buildings with mine pieces, one person, three foes and no interior. Meekos Shack (Skyrim), a small shack of sixteen buildings with no interior, fits as well. Neither holds a room, so the one-room house is an interior added from Black Marsh & Valenwood's reed-hut pieces. Still to add: the net frames and rope walk on the shingle, the hearth pot, the pallet, the clam beds and the dropped satchel.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -8520,7 +8861,7 @@
     },
     {
      "kind": "combat-foes",
-     "detail": "night-landing smugglers, 2 to 3",
+     "detail": "smugglers camped on the shingle, 2 to 3",
      "count": 1,
      "reward": "treasure"
     },
@@ -8529,7 +8870,8 @@
      "detail": "a smugglers' dropped satchel",
      "count": 1
     }
-   ]
+   ],
+   "dangers": "Mudcrabs on the shingle. Smugglers who camp on the shore and take what they find."
   },
   {
    "id": "icalca",
@@ -8634,7 +8976,7 @@
     },
     {
      "aspect": "people",
-     "text": "About eight Agaceph with rainbow scales and needle faces, riding razor-thin rafts; the eldest reads three languages.",
+     "text": "About eight Agaceph with rainbow scales and needle faces, who work razor-thin rafts; the eldest reads three languages.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8791,6 +9133,17 @@
        "kind": "reasoning",
        "title": "Agaceph looted the Maran mission at Umpholo (tribes.md, Lore:Argonian); the mission died 3E 378-399 (spine section 10); Agaceph are exclusive to Middle Argonia and are illusionists",
        "locator": "story/lore/tribes.md; story/lore/extrapolation/argonia-4e201-state.md section 10"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, near Masvos (Journey to Baan Malur), is a Dunmer and Nordic hamlet of 24 buildings with no interior. Its pieces would be replaced. Ree-An-Wo (King of the Murkmire) fits better: an Argonian and Ayleid hamlet by water of 31 buildings with camp and ruin pieces. It supplies the stilt houses, the reed screens and the landings. The eldest's raft-house, holding the book shelf, is an interior added from Black Marsh & Valenwood's reed-hut pieces. Still to add: the moored razor-thin rafts, the lake shallows and the bandit's cache by the screens.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -9067,6 +9420,17 @@
        "kind": "reasoning",
        "title": "Agaceph took books from dead Maran outposts and are illusionists (tribes.md); Maran missions died in the Third Era (spine section 10); the marsh between Gaweja and Renhu is open swamp on the map",
        "locator": "story/lore/tribes.md; story/lore/extrapolation/argonia-4e201-state.md section 10"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, near Dark Brotherhood Sanctuary (Wyrmstooth), is a Nordic hamlet of 43 buildings with ship and farm pieces and no interior, which does not fit a marsh island. Ree-An-Wo (King of the Murkmire) fits better: an Argonian and Ayleid hamlet by water of 31 buildings and no interior. It supplies the stilt huts and camp pieces on the island. The eldest's raft-house with the book shelf is an interior added from Black Marsh & Valenwood's reed-hut pieces. Still to add: the raft with its locked coffer, the marsh reed beds and the guards' posts on the approach.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -9391,6 +9755,17 @@
        "locator": "story/lore/tribes.md; story/lore/topics/lost-peoples.md; story/lore/extrapolation/argonia-4e201-state.md section 10"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, The Chaoskampf (Here There Be Monsters - Curse of Cipactli), is a Dwemer and Nordic hamlet of 44 buildings with ship pieces and no interior. It does not fit. Ree-An-Wo (King of the Murkmire) fits better: an Argonian and Ayleid hamlet by water with camp and ruin pieces, which supplies the stilt-houses and landings. Neither holds the Velothi stronghold, so the ruin with its upper halls and ghost-haunted lower halls is added: its interior comes from Redeyn Ancestral Tomb (Journey to Baan Malur), a Dunmer ruin with one large interior of tomb halls. Still to add: the ruin's wall against which the huts lean, the sealed door and the river landings.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -9666,7 +10041,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Illusion and paralysis spells on strangers; otherwise the town is calm. The lake has crocodiles, and a pirate raft that works its far shore.",
+     "text": "Illusion and paralysis spells on strangers; otherwise the town is calm. The lake has crocodiles. A pirate raft lies moored on its far shore.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9715,6 +10090,17 @@
        "kind": "reasoning",
        "title": "Agaceph looted Umpholo's Maran mission for books and are educated illusionists (tribes.md); Maran missions died in 3E (spine section 10); Okuwun-Rahei holds the Agaceph (spine section 10 place table)",
        "locator": "story/lore/tribes.md; story/lore/extrapolation/argonia-4e201-state.md section 10"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Nyhus (Nyhus), is an Imperial and Nordic town of 340 buildings with 21 foes and does not fit a lake town of readers. Alten Meerhleel (King of the Murkmire) fits better: an Argonian town by water with a market hall, a lodging house and a house among its three interiors, on timber and dock pieces. The market hall serves as the book hall, the lodging house as the guest raft and the house as the raft kitchen. Still to add: the raft platforms on the lake, the enchanting table, the raft-top alchemy bench, the carved raft-prow and the pirate raft moored on the far shore.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -9796,11 +10182,11 @@
     },
     {
      "kind": "combat-foes",
-     "detail": "pirates of a raft working the far shore, 3 to 4",
+     "detail": "pirates of a raft moored on the far shore, 3 to 4",
      "count": 1,
      "reward": "treasure",
      "setting": "nearby",
-     "spot": "the lake shore south of the town where the pirate raft puts in",
+     "spot": "the lake shore south of the town where the pirate raft is moored",
      "bearing_deg": 180,
      "distance_m": 190
     }
@@ -10023,6 +10409,17 @@
        "locator": "story/lore/tribes.md; story/lore/extrapolation/argonia-4e201-state.md section 10"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, near Loreisian (King of the Murkmire), is a small Argonian tribal camp of eight buildings by water with shrine and camp pieces, five people and no interior. It fits a station of hunters. It supplies the huts and posts. The lodge is an open-sided hut with its bedroll and fire. Ree-An-Wo (King of the Murkmire) lends the stilt pieces for the egg rack. Still to add: the warm mud-bank, the egg rack, the tanning rack, the trap line along the paths and the hunter's stash.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -10154,7 +10551,7 @@
     },
     {
      "aspect": "present",
-     "text": "A camp of perches and tents; Aroxhu's spears and the Sarpa trade blows now and then and trade fish for clay beads between fights.",
+     "text": "A camp of perches and tents; Aroxhu's spears and the Sarpa have traded blows here. Fish and clay beads have changed hands between fights.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -10338,6 +10735,17 @@
        "kind": "reasoning",
        "title": "The Sarpa are winged, hostile and exclusive to Middle Argonia (tribes.md); the Aroxhu confederacy holds the clay-mound country (spine section 10, culture rust); winged flight is shown only as high perches in play",
        "locator": "story/lore/tribes.md; story/lore/extrapolation/argonia-4e201-state.md section 10"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Kazmalgur (Wyrmstooth), is an Orc and Nordic camp of 30 buildings with a longhouse interior. Its pieces would all be replaced. near Loreisian (King of the Murkmire) fits better: a small Argonian camp of eight buildings with shrine and camp pieces and no interior. Its tents and posts serve the camp. Still to add: the high perches, the wing-chief's tent, the perch caches and the boss chest.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -10643,6 +11051,17 @@
        "kind": "reasoning",
        "title": "Cantemiric Velothi were wiped out by the Knahaten Flu 2E 560-603 (Lore:Cantemiric Velothi, spine section 10); Anvadas is on a ridge south of Gaweja on the map; ruins left empty are held by ghosts and beasts",
        "locator": "story/lore/topics/lost-peoples.md; story/lore/tribes.md; story/lore/extrapolation/argonia-4e201-state.md section 10"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Cursed Tomb (SolsthDungeonPack), is a small Dunmer and Imperial ruin by water of 88 buildings with cave pieces and one interior, which serves as the halls, the drowned halls with a still water plane and the vault behind its sealed door. Redeyn Ancestral Tomb (Journey to Baan Malur), a Dunmer and Ayleid ruin with one interior of tomb halls and urns, is the alternate. Still to add: the ruin half sunk in the marsh, the mud-ridge, the drowned courtyard with its crocodiles, the tower for the warden ghost and the family urns and coffers.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }
@@ -10962,6 +11381,17 @@
        "locator": "story/lore/topics/lost-peoples.md; story/lore/tribes.md; story/lore/extrapolation/argonia-4e201-state.md section 10"
       }
      ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Mortrag Glacier Ruins (Forgotten Bloodmoon Dungeons), is a Daedric ruin on dry ground and does not fit. Redeyn Ancestral Tomb (Journey to Baan Malur) fits better: a Dunmer and Ayleid ruin by water whose one interior of halls and altar niches is split by a locked door into the upper halls the Agaceph read in and the lower halls behind the humming door. Still to add: the ruin's wall above the river bank, the landing, the humming door's sound and the Illusion tome in an upper niche.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      }
+     ]
     }
    ],
    "terrain_needs": [
@@ -11277,6 +11707,17 @@
        "kind": "reasoning",
        "title": "Cantemiric Velothi died in the Knahaten Flu 2E 560-603 (Lore:Cantemiric Velothi, spine section 10); smugglers land on the Padomaic coast (state trade section); Mazurath is on the headland south of Khiar on the map",
        "locator": "story/lore/topics/lost-peoples.md; story/lore/tribes.md; story/lore/extrapolation/argonia-4e201-state.md section 10"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Ashimmidarum (Journey to Baan Malur), is a Daedric ruin with Nordic pieces and 355 buildings. It does not fit a sea-cliff hold. Redeyn Ancestral Tomb (Journey to Baan Malur) fits better: a Dunmer and Ayleid ruin by water with one interior of halls and shrine niches, which serves as the upper tier and the halls. The sea-cave is a second interior built from Frossel's cave pieces (Dragonborn) behind a door at the waterline. Still to add: the cliff, the spell-fire, the rotten floor over the drop, the captive's cell and the smugglers' cache.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     }

@@ -10,8 +10,8 @@ database. Danger is fixed geography. The player grows into a band, but no band g
 - `tools/newworld/place_danger.py` sets each place's facts (`place_danger`: disposition, strength, reach, reward,
   each with its reason) and each encounter near a settlement (`place_encounter`: its cell, strength and reward,
   each with its reason). `build_db` runs both after the roads and the travel network are in.
-- `newworld/sources/danger/owner.json` holds the owner's overrules, `{place_id: {disposition?, strength?, reward?,
-  why}}`. `build_db` keeps them and marks the row `by: owner`.
+- `newworld/sources/danger/owner.json` holds the owner's overrules, `{place_id: {disposition?, strength?, reach?,
+  reward?, why}}`. `build_db` keeps them and marks the row `by: owner`.
 - The place record's `danger_band_id` is the researched strength inside; a combat give at a settlement names its
   `setting` (`newworld/sources/research/FORMAT.md`).
 - The bands are `danger_band` D0 Safe .. D5 Lethal, each with its foes' level; the dispositions are `disposition`.
