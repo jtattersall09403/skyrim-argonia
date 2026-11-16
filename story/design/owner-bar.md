@@ -144,6 +144,11 @@ with its source in [owner-rulings-on-factions](../../docs/research/writing/owner
   that kills one named person in an ending; riddle side quests with no marker until found; sick Hist bark from the
   recolour tool. A person at a finale is already there when the player arrives, never summoned, and nobody follows
   the player (#71, OR 2026-11-13).
+- Eleven more, on the same terms, each only for its named use: the player's name set from a conversation; a fight
+  that ends in a yield; a short film played by a stage; a visitor who wakes the player from rest; a first theft
+  that starts a quest; a fade after which a person is gone; a spell cast before a person as a test; a potion the
+  player made handed in; a defence with an hour to prepare; a hearing after a fade; a place that changes after a
+  line ends (#73, OR 2026-11-16: "I'm happy with all 11 ceiling things on that issue").
 - A branching budget keeps quests simple, with some branching for interest. Within a questline, earlier choices
   and endings do not change later quests' stages (no multiplying branches); only planned finale choices carry
   forward (OR 2026-11-06).

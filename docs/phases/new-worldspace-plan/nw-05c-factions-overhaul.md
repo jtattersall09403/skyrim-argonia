@@ -306,7 +306,8 @@ Ulvarys) as background. Gear for each faction's ranks is in
 Owed, in order:
 
 1. The owner reads the plots in the explorer and notes them. No outline is written for a plot before he passes it.
-2. The owner's call on the eleven blocks beyond the ceiling (#73). A block he refuses is written out of its plot.
+2. The eleven blocks beyond the ceiling are approved (#73, 2026-11-16) and listed in
+   [blocks](../../design/blocks.md), "Blocks owed". Each is built and proven once before a quest uses it.
 3. The world holds no D1 wild place, so the factions open in D2 and only the main quest opens in D1 (three bands
    lowered for it in `newworld/sources/danger/owner.json`). Stock and wealth for the five re-banded places follow
    at the next stocking stage.

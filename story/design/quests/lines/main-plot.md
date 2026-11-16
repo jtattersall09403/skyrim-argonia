@@ -464,7 +464,7 @@ plot used, has no cellar, so the plot no longer uses it.
 
 The owner approved six additions on 2026-11-13 ([blocks](../../../../docs/design/blocks.md), "Blocks owed"): the
 staged ending scene, the final choice on a message box, the called ally, a stage that kills one named person, the
-riddle place with no marker and the sick Hist's bark. This plot asks for three more, each a block to be proven
+riddle place with no marker and the sick Hist's bark. This plot uses three more, which he approved on 2026-11-16 (#73), each a block to be proven
 once:
 
 - the opening's name: a stage that opens the game's own naming of the character;

@@ -114,6 +114,22 @@ a quest uses it.
 | an objective with no marker until found | a riddle side quest's place, until the player stands in it | the objective shown without a target; the player's arrival in the place's location (a location-change event) sets the next stage, whose objectives carry markers |
 | sick Hist bark | the look of a sick Hist | our recolour tool's darkened copy of the Hist bark texture, a placed base of ours |
 
+The owner approved eleven more on 2026-11-16 (#73), each only for the use named, on the same terms:
+
+| Block | Only for | Likely engine shape |
+|---|---|---|
+| the player's name set from a conversation | the main quest's opening | the game's own name entry opened by a stage |
+| a fight that ends in a yield | a duel or brawl a quest calls for (Blackrose's gate, the pirates' tavern, the merchants' and the Chainbreakers' fights) | Skyrim's brawl: the person yields when badly hurt, which sets a stage |
+| a short film played by a stage | the main quest's three ending visions | a Bink film played by the ending's stage; messages until the films are made |
+| a visitor who wakes the player from rest | the thieves' recruiter | the sleep event Skyrim's Dark Brotherhood visit uses |
+| the player's first theft starts a quest | the thieves' recruiter | a story-manager event on the first stolen thing |
+| a fade to black after which a person is gone | a person who leaves at the end of a talk (the thieves' visitor, people the Chainbreakers free, the Sisei-Xul's dying man) | an ImageSpaceModifier fade with the person disabled behind it |
+| a spell cast in front of a person as a test | joining the necromancers | a spell-cast event near the named person; a gate on Conjuration 20 stands in until proven |
+| handing in a potion the player made | the Sisei-Xul's healing potion and painless poison | a hand-in gated on a held potion with the named effect |
+| a defence with an hour to prepare | the Chainbreakers' safe house | a message starts a timer; the attackers are enabled when it ends |
+| a hearing after a fade | the Lamps' cases and the Chainbreakers' last quest | a fade, the player moved to the hearing room, the magistrate speaking first |
+| a place that changes after a line ends | Gideon held by the pirates; the merchants' post on Skeith Isle growing in three steps | sets of people and things enabled and disabled away from the player |
+
 ## How record terms map to blocks
 
 The compiler maps every record term to the form's blocks, and refuses each term outside them, in
