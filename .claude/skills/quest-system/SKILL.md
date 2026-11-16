@@ -36,19 +36,26 @@ see it; no music or weather; nothing built or moved in the world; no script of a
 need one is rewritten: [principles/general.md](../quest-write/principles/general.md) "What a quest may use" gives
 the way each such dramatic job is done inside the ceiling.
 
-**Narrow additions**, each used only as stated here and only once its block is proven
-([blocks](../../../docs/design/blocks.md), "Blocks owed"):
+**Seventeen added blocks, open to any quest** once each is proven ([blocks](../../../docs/design/blocks.md),
+"Blocks owed"):
 
-| Addition | Only for |
-|---|---|
-| one staged ending scene: a fade to black, the ending's music and named things switched in view, then messages | a line's ending vision (the main quest's three endings) |
-| a choice on a message box's buttons, each button setting a stage | a line's final choice (the Eye's three endings) |
-| a named ally called to the player's side by one power and sent away by another | an ending's reward (Cuts-the-Old-Knot in the Give ending) |
-| a stage that kills one named person | an ending that costs that person's life (the Eye in the Use ending) |
-| an objective with no marker until the player reaches its place, the journal then saying they guessed right | a side quest given as a riddle |
-| a sick Hist's bark darkened by our recolour tool | the look of a sick Hist |
-
-**Eleven more blocks, open to any quest** once each is proven ([blocks](../../../docs/design/blocks.md), "Blocks owed"): the player's name set from a conversation; a fight that ends in a yield; a short film played by a stage; a visitor who wakes the player from rest; the player's first theft starts a quest; a fade to black after which a person is gone; a spell cast in front of a person as a test; handing in a potion the player made; a defence with an hour to prepare; a hearing after a fade; a place that changes after a line ends.
+- a staged scene: a fade to black, music and named things switched in view, then messages;
+- a choice on a message box's buttons, each button setting a stage;
+- a named ally called to the player's side by one power and sent away by another;
+- a stage that kills one named person;
+- an objective with no marker until the player reaches its place, the journal then saying they guessed right;
+- a sick Hist's bark darkened by our recolour tool;
+- the player's name set from a conversation;
+- a fight that ends in a yield;
+- a short film played by a stage;
+- a visitor who wakes the player from rest;
+- the player's first theft starting a quest;
+- a fade to black after which a person is gone;
+- a spell cast in front of a person as a test;
+- a potion the player made, handed in;
+- a defence with an hour to prepare;
+- a hearing after a fade;
+- a place that changes after a line ends.
 
 **Anyone can die.** No person of ours or of Black Marsh & Valenwood is made unkillable. A quest names the people it
 cannot go on without; if one dies the quest fails with a journal entry, and a main or faction quest also shows its

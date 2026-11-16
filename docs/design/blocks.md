@@ -101,7 +101,8 @@ typed: a person on the winning navmesh (`plugin.sh inspect navnear`), a thing on
 
 ## Blocks owed: approved, not yet built
 
-The owner approved these six on 2026-11-13, each only for the use named. None is in the form yet: each is a change to
+The owner approved these six on 2026-11-13 and opened them to any quest on 2026-11-16 (the "Only for" column is
+where each was first asked for). None is in the form yet: each is a change to
 the form, the builder, the reader, the paper game and the block test together, proven once by an owner check before
 a quest uses it.
 

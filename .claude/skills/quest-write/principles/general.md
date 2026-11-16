@@ -140,7 +140,7 @@ player can see it, music and weather [MW §3; MW §4.4; MW §4.5]. Each dramatic
 25. **Every objective has a marker on its target, and directions are also given in words**: a route by landmarks the
     world really has, a bearing, a word for how far, never a count. A giver who does not know the way names someone
     who does, and the objective points at that person first. A riddle side quest's place alone has no marker until
-    the player finds it ([quest-system](../../quest-system/SKILL.md), "Six narrow additions") [OB shape; OB talk;
+    the player finds it ([quest-system](../../quest-system/SKILL.md), "Seventeen added blocks") [OB shape; OB talk;
     ES P1; ES P2; TJ D].
 26. **One stage, one step.** Each entry says, first person and past tense, what the player has just done, carries
     forward the names and places still needed, and gives the one step now owed; it never tells a later step or an

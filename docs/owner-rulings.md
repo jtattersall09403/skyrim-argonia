@@ -703,3 +703,5 @@ added here the day they are made, with the date and the issue.
 - 2026-11-16 (in session): "Let the quest authoring thing use all these blocks though if they want to". The eleven
   blocks of #73 are open to any quest, not only the use each was first asked for. Each is still proven once before
   its first use. The six of #71 keep their narrow uses.
+- 2026-11-16 (in session): "Yes open those too". The six blocks of #71 are open to any quest as well, each proven
+  once before its first use. All seventeen added blocks are now general vocabulary.

@@ -139,7 +139,8 @@ with its source in [owner-rulings-on-factions](../../docs/research/writing/owner
 - Nothing more complicated than Morrowind-level scripting, and much less world editing per quest (walk 6,
   OR 2026-11-12; the ceiling: [quest-form](../../docs/design/quest-form.md)). Before that ruling the bar was
   "nothing harder to script than an average Skyrim quest" (OR 2026-11-06); the lower ceiling replaces it.
-- Six narrow additions to the ceiling, each only for the use named: one staged ending scene (fade, music, the trees
+- Six additions to the ceiling, which any quest may use ("Yes open those too", OR 2026-11-16), each proven once
+  before its first use: one staged ending scene (fade, music, the trees
   shown changing); a final choice on a message box; a named ally called by a power as an ending's reward; a stage
   that kills one named person in an ending; riddle side quests with no marker until found; sick Hist bark from the
   recolour tool. A person at a finale is already there when the player arrives, never summoned, and nobody follows
