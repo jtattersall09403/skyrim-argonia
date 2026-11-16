@@ -83,6 +83,42 @@ reads this first; a new ruling is added here the day it is made, as well as to o
   several that lead into each other (OR 2026-11-16, story explorer notes).
 
 
+## The factions
+
+His words on each faction (skills, how it is joined, its rival, its choice and its ending) are in
+[the factions overhaul](../../docs/phases/new-worldspace-plan/nw-05c-factions-overhaul.md) and are read whole before
+a faction is written. Every earlier ruling of his on factions, from this repository and the first one, is gathered
+with its source in [owner-rulings-on-factions](../../docs/research/writing/owner-rulings-on-factions.md).
+
+- The joinable factions are eight: the Chainbreakers, the detectives (the Lamps), a thieves' guild (not called the
+  Night-Reed), the Shadowscales (back in secret; the death of the "last" one was cover), the pirates, an Argonian
+  order of magic and alchemy with a name in Jel, Dunmer necromancers behind a respectable trading house at Thorn,
+  and Imperial merchants at Gideon. The main quest has the Veiled Reed and the Unbound. A Dunmer house that profits
+  from the Owing cannot be joined. Every other line is cut, the League among them (OR 2026-11-16).
+- Rivals: the Lamps, the thieves and the Shadowscales, three ways; the Argonian order and the necromancers; the
+  pirates and the Imperials; the Chainbreakers (the pirates' allies) and the Owing house. "It's fun if they're in
+  conflict with each other in various combinations" (OR 2026-11-16).
+- Each line has about as many quests as a guild of Morrowind's or Skyrim's. Between them the factions have a seat
+  or a branch in every major city (OR 2026-11-16).
+- In the three-way rivalry the player is shut out of the other two at some point, and late in the line chooses
+  which rival to side with against the third. The Lamps' last case has a very hard Speech check that avoids the
+  choice (OR 2026-11-16).
+- A detective's case: the player names the suspect, then motive, means and opportunity, each line open only with
+  its evidence found. Every suspect has a motive and a means; all but the culprit have an alibi to find. A
+  magistrate confirms the case or shows what was missed. A wrong answer costs a penalty and another case at that
+  rank; three wrong at one rank and the player is put out (OR 2026-11-16).
+- The thieves' line builds to one great heist (first repo, decision 0026: a first heist, preparations chosen from
+  several, then the great heist with more than one way in). The assassins' contracts reward doing them a named
+  clever way, and give a unique enchanted thing nearly every quest (the same decision, from Oblivion).
+- People the Chainbreakers free turn up at fixed posts with cheap training and good prices, and help in other
+  lines without ever being needed (OR 2026-11-16).
+- To Argonians, raising and binding the dead is their own enslavement over again: the order of magic and the
+  necromancers are enemies for that reason (OR 2026-11-16).
+- Rewards by rank "stack low, lock high": the first ranks' rewards can be held together across factions, the top
+  ones shut each other out, and the player is told before they commit (first repo, decision 0028, 2026-08-26).
+- A new player is assumed to know no Elder Scrolls lore "beyond having maybe played Morrowind" (first repo,
+  decision 0026).
+
 ## The vibe of Argonia: not a bureaucratic place
 
 - "Too many ledgers and rolls and tallies. For some reason AI agents are obsessed with these. It's all a bit too
@@ -190,6 +226,10 @@ reads this first; a new ruling is added here the day it is made, as well as to o
   OR 2026-11-10). A lore fact said by two or three people is fine (OR 2026-11-08).
 - Directions are Morrowind's: a route by real landmarks from the world, in words, never a count of paces
   (walk 3, OR 2026-11-08, 2026-11-12).
+- A speaker never describes their own doings in an accuser's words (a robber does not say "robbery"). No
+  closing question that does not follow from the line. The player does not know a speaker's trade until told. No
+  two people share a sentence word for word. Talk of trade or of danger is true of what the player will then meet
+  (first repo, the owner's notes of 2026-10-17 to 2026-10-19).
 - No personification, no verbless fragments, no dangling modifiers, nothing opaque to the player; British
   punctuation (OR "Writing"; walk 4).
 - Every story, quest and line passes through our text rules: the owner finds "a lot of annoying AI writing style"

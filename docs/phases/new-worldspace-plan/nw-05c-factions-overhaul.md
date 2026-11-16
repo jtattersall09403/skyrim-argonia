@@ -250,3 +250,46 @@ are answered in [main-plot](../../../story/design/quests/lines/main-plot.md) and
 > to the player, I mean they should escalate up an objective hardness ladder in terms of what they *require*,
 > regardless of the player's level). Rewards should get progressively better in proportion (and be hand authored,
 > not random)
+
+## What was agreed and how it is done
+
+Written by the lead on 2026-11-16. The owner's words above are the brief; this section is the plan made from them.
+
+### The order of work
+
+1. **Rulings recorded** in [owner-bar](../../../story/design/owner-bar.md) and
+   [owner-rulings](../../owner-rulings.md); his earlier faction rulings from both repositories gathered in
+   [owner-rulings-on-factions](../../research/writing/owner-rulings-on-factions.md).
+2. **The skills take the main quest's lessons first.** [story-line](../../../.claude/skills/story-line/SKILL.md)
+   starts every line with a plot page in the main plot's form and says how a plot is built (the source place first,
+   danger climbing with the line, each quest leading to the next, real choices of ways, branches walked to their
+   end). `python3 -m tools.newworld.plot_check` prints a line's danger ladder and fails a step out of order.
+3. **The main plot answers his notes** ([main-plot](../../../story/design/quests/lines/main-plot.md)).
+4. **The eight faction plots are written fresh**, by Opus 5.5 at medium effort, with no reader or player rounds,
+   one lane for each set of rivals so that their stories meet:
+
+   | Lane | Factions | Cities to cover between them |
+   |---|---|---|
+   | the three rivals | the Lamps, the thieves, the Shadowscales | Archon, Blackrose, Lilmoth, Soulrest, Truowa |
+   | the living and the dead | the Argonian order of magic and alchemy, the Dunmer necromancers | Thorn, Tsonac, Aroxhu, Helstrom |
+   | the sea | the pirates, the Imperial merchants | Gideon, Soulrest, the Topal Bay coast and islands |
+   | the Owing | the Chainbreakers, the Dunmer Owing house (not joinable, a page of background) | Stormhold, Thorn, the east and north interior |
+
+   The cities are where a lane starts looking, checked against the lore; a faction may sit elsewhere with a reason.
+5. **The old stories go.** Every old line file is deleted when the new plots land (git keeps them): the League, the
+   Night-Reed, the Nisswo, the Reed-Sail, the Sunken Archive, the Thorn Ash-Reed, the Umbriel Witness, the
+   Waykeepers, Many-Root, the Marsh Charter, the old Lamp-Bearers, Shadowscales and Chainbreakers stories and
+   `main.md`. The consistency ledger and the province plan are cut down to what the new plots hold.
+6. **The explorer** shows a faction as its plot page, with what the faction is at the top, one paragraph a quest,
+   and the page "Spells by use" ([spell-groups](../../../story/design/quests/spell-groups.md)).
+7. **The atlas and the place records**: each place's source place in prose, how it is adapted and what it needs;
+   every record's prose checked against the ceiling and against what its source place holds.
+
+### What his outline asks beyond the ceiling
+
+Several things in his outline are beyond Morrowind-level scripting as the ceiling lists it. The plots use them as he
+asked and name each as a block owed; one owner call lists them for narrow approval, as #71 did for the main plot:
+a join that wakes the player from rest; a fade to black after which a person is gone; a brawl or duel that ends in
+a yield; a spell cast in front of a person as a test; a timed defence with time to prepare; a case heard before a
+magistrate after a fade; a settlement that grows after a line ends; a city changing hands. The main plot adds the
+opening's name and profession.
