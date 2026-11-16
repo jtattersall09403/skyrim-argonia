@@ -1,6 +1,6 @@
 ---
 name: story-line
-description: Write the overall story of Argonia's main quest or of one faction's line of quests inside the quest ceiling (the faction in a page, the arc, each quest as an outline a quest writer can build without inventing), then read it on paper with fresh readers quest by quest until a round converges. Use before any quest of a line is written, and to rework a line. Written by Fable.
+description: Write the overall story of Argonia's main quest or of one faction's line of quests inside the quest ceiling (first a short plot page the owner reads, then the arc and each quest as an outline a quest writer can build without inventing), then read it on paper with fresh readers quest by quest until a round converges. Use before any quest of a line is written, and to rework a line. Written by Fable.
 ---
 
 # Writing a story line
@@ -10,8 +10,8 @@ hold together is caught while changing it costs a page. A minor quest (one place
 and starts at quest-write. Before this: [quest-system](../quest-system/SKILL.md) (the
 ceiling and the order of work). After this: [quest-write](../quest-write/SKILL.md), one quest at a time, from the
 outlines this skill leaves. The worked example is the Chainbreakers' line,
-[chainbreakers](../../../story/design/quests/lines/chainbreakers.md): its four sections are the shape of every line
-story.
+[chainbreakers](../../../story/design/quests/lines/chainbreakers.md): its outlines are the shape of every line's
+outlines; the plot page's shape is [main-plot](../../../story/design/quests/lines/main-plot.md).
 
 ## 1. Read first
 
@@ -40,23 +40,80 @@ story.
 - [buildable.md](buildable.md), whole, before any outline is written: what the game can know and do, the shape that
   always works, the patterns, and the sketch every full outline carries.
 
-## 2. What to write
+## 2. The plot, first
 
-One file, `story/design/quests/lines/<line>.md`. Lore is cited as `file:line` under `story/lore/`; **X** marks the
-document's own extrapolation, derived from cited lore and never from nothing. Places are those the game loads, with
-their form keys.
+A line's story starts as a short plot page, `story/design/quests/lines/<line>.md`, in the form of
+[main-plot](../../../story/design/quests/lines/main-plot.md). The owner reads and notes it in the story explorer.
+No outline is written until he has passed the plot. Lore is cited as `file:line` under `story/lore/`; **X** marks
+the document's own extrapolation, derived from cited lore and never from nothing.
 
-1. **The faction (or the line) in a page.** The wrong it fights or the thing it wants; who its people are and where
-   they sit; how they work, in the line's own skills; who stands against them and why each side is arguable; what it
-   pays and what joining costs; what it lies about. A line that suits several builds says which, and that no quest
-   shuts any of them out.
-2. **The arc.** The hidden spine (the line's truth in order, and what its leader does not tell), with a table of each
-   hidden truth, where it is seeded and where it is found. Then each quest in a line or two, each a **different kind
-   of job** (a locked box under a household's eyes, an errand into a swamp of beasts, a planned break-in, an aftermath
-   walked into, a ruin of the restless dead), with scale climbing, a turn at half to two-thirds, and a finale that is a
-   hard choice or a hard place. Say what each quest carries on (a rank, stored numbers, who is alive, what is held,
-   what the player knows); earlier choices change greetings and single lines, never a later quest's stages.
-3. **Each quest as an outline**, full for the quests about to be built, at arc level for the rest. An outline holds:
+**Its sections, in this order:**
+
+1. `**Words.**` Every local word the page uses, each glossed in a clause.
+2. **What the faction is** (for the main quest, the premise): in its first two sentences, what it is and what a
+   member does all day. Then where it sits, its skills, its rival and what joining gives.
+3. **The truth under the story:** what the player is shown, then what is true, each a physical fact a player
+   could retell after one reading (who does what to what, and why). A truth that needs a new idea about how the
+   world works is cut down until it does not.
+4. **The people who matter:** a table of who, what they want, and what they hide or what it costs. Each has a
+   reason of their own. One person on the player's side is tied to the enemy by something they did.
+5. **Joining** (a faction): the rumours that lead to it and the small quest of finding it; what the player does to
+   be let in; what shuts the door (a rival joined, a stage of a rival's line).
+6. **The acts:** `### Act I: <name>` and so on, each quest one numbered paragraph of its own, written
+   `**3. Title** (Place, what it is; Second Place, what it is). ...`. The paragraph says what the player is asked
+   to do, the ways through by named skills, what they find, and how it leads to the next quest: who tells them
+   where to go, what the journal then says and where the marker points. A report back to a handler is written
+   out: what the handler says and what they send the player to do.
+7. **Side quests on the road**, **the twist** and **the endings**, where the line has them. Every choice and
+   ending says what it gives and what it costs in play ([choices.md](../quest-write/principles/choices.md)).
+8. **What it needs, and what it changes elsewhere:** what it asks of the world (meshes, creatures, mods), the
+   needs table (below, "What each quest needs of its places"), what it asks of the ceiling, and what else in the
+   repository it makes untrue.
+
+**How a plot is built:**
+
+- *The player is a blank slate* drawn into the world's intrigue. Nothing turns on who they were.
+- *The thing at stake is sold early.* In the first two quests the player sees it, hears from someone who would
+  lose it what losing it means, and gets a use of it for themselves.
+- *A mystery gives up its means before its motive.* The player finds how the thing is done, by clues of their own
+  gathering, and is left with a stated question (why this way, and not the plain way?) that the twist answers.
+  The twist calls back to things the player saw; the journal marks each oddity when it happens.
+- *Every place is written from its source place.* Before a quest is set anywhere, read the place's record and its
+  source place: the rough layout, each building and interior, its rooms, doors, water and containers, who and what
+  already stands there (`newworld/places/`, the census, the digest). Use what it holds. Ask only for small
+  additions: a thing placed, a person, a lock, a name. A cellar, a flooded passage or a great door is written
+  only where the source has one; otherwise the quest moves to a place that has, or the story changes.
+- *Danger climbs with the line.* Each quest's places are no harder (the place's band and the band of the way to
+  it) than the line has reached. A line a new character can start opens in D1, rises a band at a time and ends in
+  the hardest places it uses. Skill checks follow: a lock or a pocket in a first quest opens for a level-one
+  character who has that skill. Rewards rise in step and are fixed and hand-made.
+  `python3 -m tools.newworld.plot_check <the line's file>` prints the ladder and fails a step out of order.
+- *A choice of ways is a choice.* No way is both free and best: a ring handed over for nothing makes the potion
+  and the spell pointless. Each way is open to a build (melee of several kinds, ranged, magic, or stealth paired
+  with one of them); a Speech way is an extra, never a quest's only second way.
+- *Every branch is walked to its end.* For each way in, write the state it leaves (who is alive, who is friendly,
+  what the player holds) and what the next step is in that state. The thing the line needs next can be got in
+  every state.
+- *Everyone stands somewhere for a reason.* Enemies do not stand among the people they wrong. Say where each
+  person is, and why there.
+- *Each quest is a different kind of job* (a locked box under a household's eyes, an errand into a swamp of
+  beasts, a planned break-in, a ruin of the restless dead), with a turn at half to two-thirds and a finale that is
+  a hard choice or a hard place. A title is true of its quest.
+- *A faction's line* has about as many quests as a guild of Skyrim's or Morrowind's. Its early quests teach a
+  pattern (a spell or recipe taught, then used as one step among several in the job it was taught for; a case
+  solved by evidence the player must have found) and its late quests break that pattern. It names a rival, the
+  point at which the rival's door shuts, and a late choice the player's skills can sometimes avoid.
+
+## 3. The outlines
+
+Once the owner has passed the plot, each quest becomes an outline in the same file, full for the quests about to
+be built. Places are those the game loads, with their form keys.
+
+1. **The arc.** The hidden spine (the line's truth in order, and what its leader does not tell), with a table of each
+   hidden truth, where it is seeded and where it is found. Say what each quest carries on (a rank, stored numbers,
+   who is alive, what is held, what the player knows); earlier choices change greetings and single lines, never a
+   later quest's stages.
+2. **Each quest as an outline**, full for the quests about to be built, at arc level for the rest. An outline holds:
    - *what a new player is told, and when*: the optional lines before any job (what it is, whom it serves, what it
      wants of them and why them, what it pays, one true reason to hesitate; local words glossed), and the job in a
      few sentences;
@@ -84,7 +141,7 @@ their form keys.
    - *its sketch*: the stage table as the quest form will hold it, a fenced `sketch` block under the stage table
      ([buildable.md](buildable.md) §4), passing `python3 -m tools.questform sketch <the line's file>`, and then checked by its writer against
      [buildable.md](buildable.md) §3 and §7, line by line, before the document is read on paper.
-4. **What each quest needs of its places.** A table per place: every physical thing an outline relies on that the
+3. **What each quest needs of its places.** A table per place: every physical thing an outline relies on that the
    world's data does not already hold (a house with a door that locks, a chest in it, a shrine, a pen, a wreck, a
    person's post), named plainly by what a player would call it on sight, with the quest that needs it and what the
    quest does there. Each row is a promise the place's record will carry and its build must keep, so write only what
@@ -99,9 +156,9 @@ their form keys.
    place can keep: change the story. The outlines themselves
    place people and things only by the place and by these needs, never by description of surroundings: where things
    stand, what is beside what, and every spoken word about the place are written later, on the built place.
-5. **Read on paper**: each round's readers, what they said, what changed as one set, and what the next round checks.
+4. **Read on paper**: each round's readers, what they said, what changed as one set, and what the next round checks.
 
-## 3. The bar
+## 4. The bar
 
 - **Drama and tension of the line's own kind**: what it fights, who it fights, what it costs. Each quest is something
   daring the player does, never a chore, and names the skills it uses.
@@ -114,7 +171,7 @@ their form keys.
 - **Inside the ceiling**: an event the story needs has already happened and is found, is told by a witness, or
   happens where the player is not; nobody walks for the story; a finale is never a staged sequence.
 
-## 4. Read it on paper
+## 5. Read it on paper
 
 Each round reads one version of the whole document, as [quest-system](../quest-system/SKILL.md) "How rounds
 converge" says.
@@ -152,7 +209,7 @@ converge" says.
    entries true of every way, the needs of places, a hostile band kept from the speaker at its edge, and one story
    told by stand-ins, choices and switches.
 4. **Gather every finding**, then make one set of changes that answers them together, written into the document, and
-   record the round in section 4. A change for one reader's taste alone is not made; readers splitting on a conflict
+   record the round in "Read on paper". A change for one reader's taste alone is not made; readers splitting on a conflict
    meant to be ambiguous is welcome and is not a finding; readers agreeing is not a failure either.
 5. **Next round, fresh readers** on the changed version.
 
@@ -161,7 +218,7 @@ every step buildable, and nothing new is raised that the author agrees with. Whe
 something to weigh, never a bar to pass: readers all choosing alike is a prompt to check that each option has an
 honest case and something of its own to give in play, and once that is so the choice stands however they chose.
 
-## 5. Hand on
+## 6. Hand on
 
 When the story lands, its needs reach each place it names by themselves: the place studio's story panel reads the
 needs tables each time it opens (so keep each one a regular table under a "What each quest needs of its places"

@@ -664,3 +664,34 @@ added here the day they are made, with the date and the issue.
   about the antagonist in the finale? They wouldn't have been "summoned" at that point, they would already be there
   when you arrive, like I said": in the finale Cuts-the-Old-Knot is already there when the player arrives, never
   summoned, and nobody follows the player through the door.
+- 2026-11-16 (story explorer batch of 77 notes; 21 were his earlier drafts, answered on 2026-11-13; 56 new). His
+  two long notes are kept word for word in
+  [nw-05c](phases/new-worldspace-plan/nw-05c-factions-overhaul.md). **The main plot:** (a) the player starts locked
+  in the barge's hold with the gang, new and on the way to the camp; someone in the hold asks their name and
+  profession ("Morrowind style, choose from classes or a custom set of preferred skills ... choices alter your
+  starting base skills"); then the door unlocks. (b) The strongbox is a side quest: it holds what the friend in
+  high places said the player should have; the player starts with a lockpick or two; lock and pocket are easy
+  enough for level one. (c) The mystery is subtler than cut roots: the trees shrivel and stop giving sap; the
+  Unbound drain too much and seal the tree with a paralysis poison of their own recipe, to starve the Reed's
+  dreamers; the player finds the poison by clues and is left asking why she seals trees when she could kill them;
+  the recipe is a reward. Every "cutting" and "cutter" goes. (d) The handler does not want the Eye for the Reed:
+  it must stay locked and guarded where it is. A Reed officer was the enemy's captor and lies about her. (e) The
+  Collector stays in the hunt and out of the ending. (f) Quest places must fit the danger band of their point in
+  the line (Nenria is D4), and this goes into the skills. (g) Stories are written from each place's source place.
+  (h) Blackrose's branches are worked through as he set out (stopped at the gate: pay, persuade or duel to a
+  yield). (i) Divers tell the way; nobody is followed. (j) The final guardian is the hydra of Nexus mod 63082,
+  with custom boss music. (k) Side quest rewards include attacking scrolls and spell tomes. (l) Taking the Eye is
+  what cuts the Root; about 30% of the province's trees die; the Use ending turns the Unbound's friends on the
+  player; the visions are cutscenes made in a later phase, with the cellars and the Reed's rage as text. (m) Quest
+  1 is "No Name on the Work Roll". **The explorer:** the note bar clear of Chrome's popup; "The story"; the app's
+  own text to the writing rules; faction pages cut down, what the faction is at the top, acts and one paragraph a
+  quest. **The atlas:** each place's source place, in prose, with how it is adapted and what it needs; place
+  records reviewed for what can be delivered (Bell Station's lowered bells; a platform that the map shows on an
+  island). **The factions:** overhauled completely to his list (the Chainbreakers, the detectives, a thieves'
+  guild not called the Night-Reed, the Shadowscales, the pirates, an Argonian magic and alchemy order with a Jel
+  name, Dunmer necromancers at Thorn, Imperial merchants at Gideon; the Veiled Reed and the Unbound of the main
+  quest; a Dunmer house of Owing-profiteers that cannot be joined), with as many quests as Morrowind's and
+  Skyrim's guilds, his earlier faction rulings found and used, the lessons of the main quest's overhaul put into
+  the skills first, the old faction stories and quests deleted, the plots written first with no reader or player
+  loops, by Opus 5.5 at medium effort. Every faction's line climbs an objective ladder of difficulty with
+  hand-made rewards in proportion. Recorded in owner-bar the same day.

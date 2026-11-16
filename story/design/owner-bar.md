@@ -31,6 +31,11 @@ reads this first; a new ruling is added here the day it is made, as well as to o
   for example. Use your imagination, make them fun" (OR 2026-11-13, of the Chainbreakers and "all the factions").
 - A new player with no context must be able to tell what is going on as it happens: the walked quests were
   "incredibly confusing" and "super impenetrable" (walk 6, OR 2026-11-12).
+- A mystery keeps its question open. The player finds how a thing is done by gathering clues in quests, and is
+  left asking why it is done that way; the twist answers. The player works it out, never their employer (OR 2026-11-16, story explorer notes).
+- The owner likes a side that does "something fundamentally bad but for a good reason", an enemy it "legitimately
+  wronged", and someone on the player's side tied to that enemy by what they did to her, who lies about it (OR 2026-11-16, story explorer notes).
+
 
 ## Action and the player's skills
 
@@ -63,8 +68,20 @@ reads this first; a new ruling is added here the day it is made, as well as to o
 - A faction's ranks bring rewards in proportion, and things unlocked, as Skyrim's guilds do (OR 2026-11-13).
 - A power or rule of the story is explained to the player once, at the point it matters; nobody then needs to say
   why again (OR 2026-11-13, story explorer notes).
-- Fewer factions overall: the owner could not tell what the League of Open Water is and "could probably cut this
-  one" (OR 2026-11-13, story explorer notes; a leaning, not yet decided).
+- A choice of ways is real only when no way is free: "if the Reed gives you the ring freely/automatically then
+  this is a pointless 'choice', you are just always going to use the ring" (OR 2026-11-16, story explorer notes).
+- A skill way in an early quest can be done by a level-one character who chose that skill: the lock is easy, the
+  pocket is easy, and the player starts with a lockpick or two (OR 2026-11-16, story explorer notes).
+- A sneak way is truly possible: guards few enough and far enough from what the player must reach; the journal says
+  the player may fight or sneak; markers show the key and the cage (OR 2026-11-16, story explorer notes).
+- Every faction's line climbs "an objective hardness ladder in terms of what they *require*, regardless of the
+  player's level": skill levels asked, danger bands of the places visited. Nothing is levelled to the player.
+  Rewards get "progressively better in proportion (and be hand authored, not random)" (OR 2026-11-16, story explorer notes).
+- A quest's place has the danger band its point in the line calls for, the way to it included. A first quest does
+  not send a new character to a D4 ruin (OR 2026-11-16, story explorer notes).
+- A faction quest that teaches a spell, a recipe or a thing has the player use it in that quest, as one step of
+  several that lead into each other (OR 2026-11-16, story explorer notes).
+
 
 ## The vibe of Argonia: not a bureaucratic place
 
@@ -110,7 +127,27 @@ reads this first; a new ruling is added here the day it is made, as well as to o
   our mods hold, and the quest ceiling) and chooses only from it, so no burnt huts without a burnt hut to show, no
   knotted cords without a cord to hold, no diving sphere without a sphere (OR 2026-11-13, story explorer notes).
 - Nothing is levelled against the player; rewards are fixed (decision 0035).
-- A detectives' faction, rival to the assassins and the thieves (decision 0025).
+- A detectives' faction, rival to the assassins and the thieves (decision 0025). Its cases are solved by evidence the
+  player must have found (who, means, motive, opportunity), judged right or wrong; later cases break the pattern
+  (OR 2026-11-16, story explorer notes).
+- A story is written from the source place: the writer first looks at what the place's source holds (rough layout,
+  each building, interiors, caves and mines, rooms, containers, where new things could go) and writes from that,
+  "using what is already available where possible and only requiring minimal changes/additions". A cellar, a
+  flooded vault or a great door is written only where the source has one (OR 2026-11-16, story explorer notes).
+- Each quest says how it leads to the next. A report back to a handler is written out: what is said and where the
+  player is sent. Markers back up every "how the player knows" (OR 2026-11-16, story explorer notes).
+- Branches are thought through: for each way in, what state it leaves and how the next step plays in that state;
+  what the line needs next can never be left behind (OR 2026-11-16, story explorer notes).
+- Nobody walks ahead for the player to follow ("scripting the divers to dive down and you follow them will be a
+  pain"): they say where to go, and markers show it (OR 2026-11-16, story explorer notes).
+- A line's plot is read by the owner as a short page in the main plot's form (what the faction is at the top, acts,
+  one numbered paragraph per quest) before any quest record is written (OR 2026-11-16, story explorer notes).
+- Endings' visions are cutscenes made later; messages are the fallback and carry what a cutscene cannot show (OR 2026-11-16, story explorer notes).
+- The factions the owner wants, their skills, how each is joined, their rivalries and their endings are in
+  [the factions overhaul](../../docs/phases/new-worldspace-plan/nw-05c-factions-overhaul.md), in his words
+  (OR 2026-11-16, story explorer notes). Each faction is heard of through rumours, which start a small quest to find it; a late point in a rival's
+  line shuts its door.
+
 
 ## Truth and lore
 
