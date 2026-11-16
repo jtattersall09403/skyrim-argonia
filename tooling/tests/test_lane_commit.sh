@@ -6,6 +6,7 @@ script="$here/lane_commit.sh"
 t=$(mktemp -d)
 trap 'rm -rf "$t"' EXIT
 export GIT_AUTHOR_NAME=t GIT_AUTHOR_EMAIL=t@t GIT_COMMITTER_NAME=t GIT_COMMITTER_EMAIL=t@t
+export LANE_GATE=true  # the repo under test has no gate
 fail() { echo "FAIL: $*" >&2; exit 1; }
 git init -q --bare -b main "$t/o.git"
 git clone -q "$t/o.git" "$t/a" 2>/dev/null

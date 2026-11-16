@@ -1,0 +1,114 @@
+# The scoped gate's map (read by tooling/gate.py). A changed path picks stages and test files in three ways:
+#   1. automatically: a test file (or a stage's module) runs when the path is in its import closure inside the repo,
+#      or is a repo path its code names in a string or in a `REPO / "a" / "b"` chain;
+#   2. by a rule below: path globs -> make stages and pytest files or directories;
+#   3. by `full` below, or by matching nothing at all: the whole gate runs.
+# The guard and ruff always run. Globs are fnmatch patterns on repo-relative paths ("*" crosses "/").
+
+# A change to any of these runs the whole gate: the gate and its map, test set-up, the build of the gate, and the
+# shell libraries every tool leans on.
+full = [
+  "tooling/gate.py",
+  "tooling/gate_map.toml",
+  "Makefile",
+  "*conftest.py",
+  "ruff.toml",
+  "pyproject.toml",
+  "*requirements*.txt",
+  "tooling/job_guard.sh",
+  "tooling/job_resume.sh",
+  "tools/__init__.py",
+  "tools/tests/places_fixture.py",
+  "tools/tests/stock_fixture.py",
+]
+
+# Stages: guard and lint always; unit is the picked pytest files; the rest run when a rule or their module's closure
+# names them. Each stage's module is what its make target runs, for the automatic closure.
+[stages]
+adaptation = "tools.argonia_world.adaptation_check"
+questtext = "tools.argonia_world.quest_text_check"
+questform = "tools.questform.__main__"
+reach = "tools.playtest.__main__"
+storyexplorer = "tools.newworld.story_explorer"
+
+# Story design and the docs: the explorer and the story tests read them.
+[[rule]]
+globs = ["story/design/*", "docs/*", "story/lore/*", "newworld/story/*"]
+stages = ["storyexplorer"]
+tests = [
+  "tools/tests/test_newworld_story_explorer.py",
+  "tools/tests/test_newworld_plot_check.py",
+  "tools/tests/test_places_needs.py",
+  "tools/tests/test_newworld_story_digest.py",
+]
+
+# The new world's sources and story data: the place database and everything derived from it.
+[[rule]]
+globs = ["newworld/sources/*", "newworld/story/data/*"]
+stages = ["storyexplorer"]
+tests = [
+  "tools/tests/test_newworld_place.py",
+  "tools/tests/test_newworld_danger.py",
+  "tools/tests/test_newworld_story_digest.py",
+  "tools/tests/test_newworld_travel_menu.py",
+  "tools/tests/test_newworld_story_explorer.py",
+  "tools/tests/test_newworld_plot_check.py",
+  "tools/tests/test_newworld_source_note.py",
+]
+
+# The rest of the new world's committed files: the place tests and the explorer.
+[[rule]]
+globs = ["newworld/*"]
+stages = ["storyexplorer"]
+tests = ["tools/tests/test_newworld_place.py", "tools/tests/test_places_check.py"]
+
+# Our SKSE plugin: its own C++ tests.
+[[rule]]
+globs = ["skse/*"]
+stages = ["skse"]
+
+# Our plugin's records and its C# tool.
+[[rule]]
+globs = ["plugin/*", "tools/ArgoniaPlugin/*", "papyrus/*"]
+tests = [
+  "tools/tests/test_questform_build.py",
+  "tools/tests/test_questform_records.py",
+  "tools/tests/test_questform_diff.py",
+  "tools/tests/test_newworld_formids.py",
+]
+stages = ["questform", "reach"]
+
+# Quest records and the old world's story data (the first-act quests stay and are checked whenever they change).
+[[rule]]
+globs = ["story/data/*", "story/quests/*", "story/*.json"]
+stages = ["adaptation", "questtext", "questform", "reach", "storyexplorer"]
+tests = [
+  "tools/tests/test_adaptation_check.py",
+  "tools/tests/test_quest_text_check.py",
+  "tools/tests/test_questform.py",
+  "tools/tests/test_playtest.py",
+]
+
+# Any other story file: the explorer and the story tests.
+[[rule]]
+globs = ["story/*"]
+stages = ["storyexplorer"]
+tests = [
+  "tools/tests/test_newworld_story_explorer.py",
+  "tools/tests/test_newworld_plot_check.py",
+  "tools/tests/test_newworld_story_digest.py",
+]
+
+# Test fixtures that no test names by repo path: every test beside them.
+[[rule]]
+globs = ["tools/tests/data/*", "tools/tests/fixtures/*", "tools/tests/places_edits/*"]
+tests = ["tools/tests"]
+
+# Code under tools/ and tooling/ that no test or stage imports: ruff (always run) is its whole check. Code that is
+# imported is picked by the closure above.
+[[rule]]
+globs = ["tools/*", "tooling/*", ".claude/*", "infra/*", "mods/*", ".github/*"]
+
+# Top-level prose and licences.
+[[rule]]
+globs = ["README.md", "CLAUDE.md", "LICENSE*", ".gitignore"]

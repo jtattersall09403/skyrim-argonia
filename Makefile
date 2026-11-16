@@ -1,11 +1,16 @@
-# The one gate: `make check` runs lint, the unit tests and the no-assets guard.
+# The gate. `make check` runs only the checks the change can reach (tooling/gate.py, its map tooling/gate_map.toml):
+# the working tree against HEAD, or GATE_BASE=origin/main for a lane's branch, or GATE_PATHS="a b" for given paths.
+# `make check-all` runs every stage and every test: before a deploy and at a phase's close.
 PY := $(firstword $(wildcard $(HOME)/.argonia/venv/bin/python) python3)
 RUFF := $(firstword $(wildcard $(HOME)/.argonia/venv/bin/ruff) $(shell command -v ruff) python3 -m ruff)
 
-.PHONY: storyexplorer check guard lint unit adaptation questtext questform reach hooks deploy plugin plugin-check plugin-seed map
+.PHONY: storyexplorer check check-all guard lint unit adaptation questtext questform reach hooks deploy plugin plugin-check plugin-seed map
 
-check: guard lint unit adaptation questtext questform reach storyexplorer
-	@echo "CHECK GREEN"
+check:
+	@GATE_PY=$(PY) $(PY) tooling/gate.py run $(if $(GATE_BASE),--base $(GATE_BASE)) $(GATE_PATHS)
+
+check-all: guard lint unit adaptation questtext questform reach storyexplorer
+	@echo "CHECK GREEN (all)"
 
 guard:
 	@python3 tooling/guards/no_assets.py --tree

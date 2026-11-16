@@ -4,7 +4,8 @@
 # Steps, each skipped when already done, so a rerun after an interrupt carries on from where it stopped:
 #   1. refuse a dirty lane worktree (uncommitted or untracked files: the lane commits or deletes them first)
 #   2. rebase the lane's branch on origin/main (a conflict stops here, the rebase undone: resolve it in the lane)
-#   3. the gate in the lane's worktree (`make check`; LANE_GATE overrides the command); red refuses
+#   3. the gate in the lane's worktree (`make check GATE_BASE=origin/main`, scoped to what the
+#      branch changed; LANE_GATE overrides the command); red refuses
 #   4. push to origin/main (main moved meanwhile: back to 2, up to three times)
 #   5. fast-forward the main tree, keeping its uncommitted edits; skipped, and said, while a job runs from it (a job that only
 #      waits, its command a sleep, does not count)
@@ -34,7 +35,7 @@ for _ in 1 2 3; do
     git -C "$wt" rebase --abort >/dev/null 2>&1 || true
     die "refused: $branch conflicts with origin/main (rebase undone); rebase it in the lane, then land again"
   fi
-  (cd "$wt" && ${LANE_GATE:-make check}) || die "refused: the gate is red in $wt; nothing pushed"
+  (cd "$wt" && ${LANE_GATE:-make check GATE_BASE=origin/main}) || die "refused: the gate is red in $wt; nothing pushed"
   if git -C "$wt" push -q origin HEAD:main 2>/dev/null; then
     landed=1; echo "pushed: origin/main is at $(git -C "$wt" rev-parse --short HEAD)"; break
   fi

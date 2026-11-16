@@ -67,6 +67,9 @@ if [ -z "${LANE_SKIP_CS_BUILD:-}" ] && git diff --cached --name-only -- "${paths
   fi
   git worktree remove --force "$cs/wt"; rm -rf "$cs"; git worktree prune
 fi
+# The scoped gate on the staged paths (tooling/gate.py: only the checks they can reach); LANE_GATE overrides it.
+staged=$(git diff --cached --name-only -- "${paths[@]}" | tr '\n' ' ')
+${LANE_GATE:-make -s check GATE_PATHS="$staged"} || die "refused: the gate is red (staged, not committed)"
 git commit -q -m "$msg" -m "Co-Authored-By: $COAUTHOR" -- "${paths[@]}" || die "commit failed"
 new=$(git rev-parse HEAD)
 echo "committed $new"

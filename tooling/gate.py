@@ -1,0 +1,312 @@
+"""The scoped gate: run only the checks a change can reach.
+
+`make check` runs this; `make check-all` runs every stage and every test. Run `make check-all` before a deploy and
+at a phase's close.
+
+    python tooling/gate.py run              # the working tree and index against HEAD (before a commit)
+    python tooling/gate.py run --base origin/main   # everything on this branch since main (a lane landing)
+    python tooling/gate.py plan [--base REF] [paths...]   # print what would run, run nothing
+    python tooling/gate.py run --all        # the whole gate
+
+How a change picks its checks (the map is tooling/gate_map.toml, one comment per rule):
+  - the no-assets guard and ruff always run (seconds);
+  - a pytest file runs when a changed path is in its import closure inside the repo (tools.*, tooling.*), or is a
+    repo path its code names: a string such as "story/data/x.json" or "tools.places.studio", or a chain such as
+    REPO / "newworld" / "sources" (a named directory covers everything under it);
+  - the make stages adaptation, questtext, questform, reach and storyexplorer run the same way from their module;
+  - the map's rules add stages and tests for path globs (story markdown -> the explorer and story tests, skse/** ->
+    the C++ tests, and so on);
+  - a path in the map's `full` list, or a path nothing above picks up, runs the whole gate; so does any error in
+    the picker itself.
+It prints one line saying what it ran and what it skipped, and why.
+"""
+from __future__ import annotations
+
+import argparse
+import ast
+import fnmatch
+import os
+import re
+import subprocess
+import sys
+import tomllib
+from dataclasses import dataclass, field
+from pathlib import Path
+
+REPO = Path(__file__).resolve().parents[1]
+MAP = REPO / "tooling" / "gate_map.toml"
+TEST_DIRS = ("tooling/tests", "tools/tests")
+STAGES = ("adaptation", "questtext", "questform", "reach", "storyexplorer", "skse")
+TOP = None  # top-level repo entries, filled lazily
+PATH_RE = re.compile(r"^[A-Za-z0-9_.-]+(?:/[A-Za-z0-9_.*-]+)+/?$")
+MOD_RE = re.compile(r"^(tools|tooling)(\.[A-Za-z_][A-Za-z0-9_]*)+$")
+
+
+@dataclass
+class Plan:
+    full: bool = False
+    reason: str = ""
+    tests: set[str] = field(default_factory=set)
+    stages: set[str] = field(default_factory=set)
+    why: dict[str, str] = field(default_factory=dict)
+
+
+# ---- the dependency index -------------------------------------------------------------------------------------
+
+def _top(repo: Path) -> set[str]:
+    return {p.name for p in repo.iterdir() if not p.name.startswith(".git")}
+
+
+def _mod_file(repo: Path, mod: str) -> Path | None:
+    base = repo.joinpath(*mod.split("."))
+    for cand in (base.with_suffix(".py"), base / "__init__.py"):
+        if cand.is_file():
+            return cand
+    return None
+
+
+def _chain(node: ast.AST) -> list[str] | None:
+    """`a / "x" / "y"` -> ["x", "y"] (the string parts of a / chain), else None."""
+    parts: list[str] = []
+    while isinstance(node, ast.BinOp) and isinstance(node.op, ast.Div):
+        if isinstance(node.right, ast.Constant) and isinstance(node.right.value, str):
+            parts.append(node.right.value)
+        else:
+            parts.clear()
+        node = node.left
+    if isinstance(node, ast.Constant) and isinstance(node.value, str):
+        parts.append(node.value)
+    return list(reversed(parts)) if parts else None
+
+
+def scan(repo: Path, f: Path, tops: set[str]) -> tuple[set[str], set[str]]:
+    """One file's imports (module names, resolved later) and the repo paths it names."""
+    mods: set[str] = set()
+    paths: set[str] = set()
+    try:
+        tree = ast.parse(f.read_text(encoding="utf-8", errors="replace"))
+    except SyntaxError:
+        return mods, paths
+    pkg = ".".join(f.relative_to(repo).with_suffix("").parts[:-1])
+    for n in ast.walk(tree):
+        if isinstance(n, ast.Import):
+            mods.update(a.name for a in n.names)
+        elif isinstance(n, ast.ImportFrom):
+            base = n.module or ""
+            if n.level:
+                up = pkg.split(".")[: len(pkg.split(".")) - (n.level - 1)]
+                base = ".".join([*up, base] if base else up)
+            mods.add(base)
+            mods.update(f"{base}.{a.name}" for a in n.names)
+        elif isinstance(n, ast.Constant) and isinstance(n.value, str):
+            s = n.value.strip()
+            if MOD_RE.match(s):
+                mods.add(s)
+            elif PATH_RE.match(s) and s.split("/")[0] in tops:
+                paths.add(s.rstrip("/").split("*")[0].rstrip("/"))
+        elif isinstance(n, ast.BinOp):
+            parts = _chain(n)
+            if parts and len(parts) >= 1:
+                joined = "/".join(p.strip("/") for p in parts if p)
+                if joined.split("/")[0] in tops:
+                    paths.add(joined.split("*")[0].rstrip("/"))
+    return {m for m in mods if m}, paths
+
+
+class Index:
+    """Each test file's and each stage's closure: the repo files it imports and the repo paths it names."""
+
+    def __init__(self, repo: Path):
+        self.repo = repo
+        self.tops = _top(repo)
+        self._scan: dict[str, tuple[set[str], set[str]]] = {}
+        self._mods: dict[str, str | None] = {}
+
+    def _deps(self, rel: str) -> tuple[set[str], set[str]]:
+        """One file's direct in-repo dependencies (files, a package's __init__ included) and the paths it names."""
+        if rel not in self._scan:
+            mods, named = scan(self.repo, self.repo / rel, self.tops)
+            files: set[str] = set()
+            here = (self.repo / rel).parent
+            for m in mods:
+                if m.split(".")[0] not in ("tools", "tooling"):
+                    # a bare import from a folder the file put on sys.path: its own folder, its parent, or one it names
+                    for d in (here, here.parent, *(self.repo / n for n in named)):
+                        mf = _mod_file(d, m)
+                        if mf and mf.is_relative_to(self.repo):
+                            files.add(mf.relative_to(self.repo).as_posix())
+                            break
+                    continue
+                parts = m.split(".")
+                for i in range(1, len(parts) + 1):     # a package's __init__ runs on import of its children
+                    key = ".".join(parts[:i])
+                    if key not in self._mods:
+                        mf = _mod_file(self.repo, key)
+                        self._mods[key] = mf.relative_to(self.repo).as_posix() if mf else None
+                    if self._mods[key]:
+                        files.add(self._mods[key])
+            self._scan[rel] = (files, named)
+        return self._scan[rel]
+
+    def closure(self, start: Path) -> tuple[set[str], set[str]]:
+        files: set[str] = set()
+        paths: set[str] = set()
+        todo = [start.relative_to(self.repo).as_posix()]
+        while todo:
+            rel = todo.pop()
+            if rel in files:
+                continue
+            files.add(rel)
+            deps, named = self._deps(rel)
+            paths |= named
+            todo.extend(deps - files)
+        return files, paths
+
+    def tests(self) -> list[str]:
+        out = []
+        for d in TEST_DIRS:
+            out += sorted(p.relative_to(self.repo).as_posix() for p in (self.repo / d).glob("test_*.py"))
+        return out
+
+
+def _named(path: str, named: set[str]) -> bool:
+    """A named file, or anything under a named directory of two or more parts (a bare top-level directory such as
+    REPO / "docs" / name is too coarse to pick by; the map's rules cover those trees)."""
+    return any(path == n or (n.count("/") >= 1 and path.startswith(n + "/")) for n in named)
+
+
+def _glob(path: str, globs) -> bool:
+    return any(fnmatch.fnmatchcase(path, g) for g in globs)
+
+
+# ---- the picker ---------------------------------------------------------------------------------------------
+
+def pick(changed: list[str], repo: Path = REPO, mapfile: Path = MAP) -> Plan:
+    gate = tomllib.loads(mapfile.read_text())
+    plan = Plan()
+    changed = sorted({c for c in changed if c})
+    for c in changed:
+        if _glob(c, gate.get("full", [])):
+            return Plan(full=True, reason=f"{c} is shared by every check")
+    if not changed:
+        return plan
+    idx = Index(repo)
+    matched: set[str] = set()
+    for t in idx.tests():
+        files, named = idx.closure(repo / t)
+        for c in changed:
+            if c in files or _named(c, named):
+                plan.tests.add(t); plan.why.setdefault(t, c); matched.add(c)
+                break
+    for stage, mod in gate.get("stages", {}).items():
+        mf = _mod_file(repo, mod)
+        if mf is None:
+            raise FileNotFoundError(f"stage {stage}: no module {mod}")
+        files, named = idx.closure(mf)
+        for c in changed:
+            if c in files or _named(c, named):
+                plan.stages.add(stage); plan.why.setdefault(stage, c); matched.add(c)
+                break
+    for rule in gate.get("rule", []):
+        for c in changed:
+            if _glob(c, rule["globs"]):
+                matched.add(c)
+                for s in rule.get("stages", []):
+                    if s not in STAGES:
+                        raise ValueError(f"unknown stage {s}")
+                    plan.stages.add(s); plan.why.setdefault(s, c)
+                for t in rule.get("tests", []):
+                    if not (repo / t).exists():
+                        raise FileNotFoundError(f"map names a missing test {t}")
+                    plan.tests.add(t); plan.why.setdefault(t, c)
+    unmatched = [c for c in changed if c not in matched]
+    if unmatched:
+        return Plan(full=True, reason=f"{unmatched[0]} matches no rule" + (f" (+{len(unmatched)-1})" if len(unmatched) > 1 else ""))
+    # a directory named as a test covers its files
+    for t in list(plan.tests):
+        if (repo / t).is_dir():
+            plan.tests.discard(t)
+            plan.tests |= {x for x in idx.tests() if x.startswith(t.rstrip("/") + "/")}
+    return plan
+
+
+def changed_paths(base: str | None, repo: Path = REPO) -> list[str]:
+    def git(*a):
+        return subprocess.run(["git", "-C", str(repo), *a], check=True, capture_output=True, text=True).stdout.split("\n")
+    if base:
+        out = git("diff", "--name-only", f"{base}...HEAD") + git("diff", "--name-only", "HEAD")
+    else:
+        out = git("diff", "--name-only", "HEAD") + git("ls-files", "--others", "--exclude-standard")
+    return [p for p in out if p]
+
+
+# ---- running ------------------------------------------------------------------------------------------------
+
+def _make(target: str) -> int:
+    return subprocess.run(["make", "-s", "-C", str(REPO), target]).returncode
+
+
+def _pytest(tests: list[str]) -> int:
+    py = os.environ.get("GATE_PY", sys.executable)
+    rc = subprocess.run([py, "-m", "pytest", "-q", *tests], cwd=REPO).returncode
+    return 0 if rc in (0, 5) else rc
+
+
+def summary(plan: Plan, n_tests: int) -> str:
+    if plan.full:
+        return f"gate: FULL (all {n_tests} test files, every stage): {plan.reason}"
+    ran = sorted(plan.stages)
+    skipped = [s for s in STAGES if s not in plan.stages]
+    return (f"gate: scoped: guard, lint, {len(plan.tests)}/{n_tests} test files"
+            + (f", {', '.join(ran)}" if ran else "")
+            + f"; skipped {', '.join(skipped) or 'nothing'} and {n_tests - len(plan.tests)} test files"
+            + " (no changed path reaches them; `make check-all` runs everything)")
+
+
+def run(plan: Plan, all_tests: list[str]) -> int:
+    rc = _make("guard") or _make("lint")
+    if rc:
+        return rc
+    tests = all_tests if plan.full else sorted(plan.tests)
+    if tests:
+        rc = _pytest(list(TEST_DIRS) if plan.full else tests)
+        if rc:
+            return rc
+    for s in STAGES:
+        if plan.full or s in plan.stages:
+            rc = (subprocess.run(["bash", str(REPO / "skse" / "check.sh")]).returncode if s == "skse" else _make(s))
+            if rc:
+                return rc
+    return 0
+
+
+def main(argv=None) -> int:
+    ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
+    ap.add_argument("cmd", choices=("run", "plan"))
+    ap.add_argument("--base", help="diff from this ref's merge base (a lane landing: origin/main)")
+    ap.add_argument("--all", action="store_true", help="the whole gate")
+    ap.add_argument("paths", nargs="*", help="changed paths (default: from git)")
+    a = ap.parse_args(argv)
+    all_tests = Index(REPO).tests()
+    if a.all:
+        plan = Plan(full=True, reason="asked for (make check-all)")
+    else:
+        try:
+            plan = pick(a.paths or changed_paths(a.base))
+        except Exception as e:   # the picker never makes the gate weaker: any error runs everything
+            plan = Plan(full=True, reason=f"the picker failed ({type(e).__name__}: {e})")
+    line = summary(plan, len(all_tests))
+    print(line, flush=True)
+    if a.cmd == "plan":
+        for t in sorted(plan.tests):
+            print(f"  {t}  <- {plan.why.get(t, '')}")
+        for s in sorted(plan.stages):
+            print(f"  [{s}]  <- {plan.why.get(s, '')}")
+        return 0
+    rc = run(plan, all_tests)
+    print(("CHECK GREEN" if rc == 0 else "CHECK RED") + f" ({line.split(':')[1].strip()})")
+    return rc
+
+
+if __name__ == "__main__":
+    sys.exit(main())
