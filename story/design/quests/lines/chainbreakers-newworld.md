@@ -34,7 +34,7 @@ Light Armor), Sneak and Lockpicking, and Speech used only to intimidate. A Chain
 roll or face what follows.
 
 **Their enemy** is the Ulvarys house of Thorn, a Dunmer merchant family that buys Owings and works them as slaves in
-all but name ([owing-house](owing-house.md)). **Their allies** are the Free Marque, the pirates of Skeith Isle
+all but name ([owing-house](owing-house.md)). **Their allies** are Bramman's Brethren, the pirates of Skeith Isle
 ([pirates](pirates.md)), who carry freed people out of the province by sea from the causeway of Bala Karag. **Joining** gives the player a set of light Argonian armour, a set of lockpicks, a bed in every safe
 house as their rank rises, and work that frees a named person in every quest.
 
@@ -247,7 +247,7 @@ Speech to intimidate. *Reward:* 200 gold. *Leads on:* among the catchers' orders
 Bala Karag for a boat, and that the catchers mean to be there first. Mere-Halu marks the island.
 
 **7. Out by Sea** (Ysan, a Stone-Sleeper landing; Bala Karag, a ruined Velothi stronghold on a rocky island). The
-Free Marque carry freed people out of the province by sea, and their crew bring a boat to Bala Karag's causeway
+Brethren carry freed people out of the province by sea, and their crew bring a boat to Bala Karag's causeway
 after dark. (The Rothalens' 5, The Lord's Tablet, robs the same ruin's lowest hall.) At
 Ysan, a landing where the quarrymen turn away any trader who asks after labour, the keeper of the safe house gives
 the player the signal. On the island the four runaways have hidden in the upper halls among the Velothi dead. The
@@ -373,7 +373,7 @@ the quest where they help.
 |---|---|---|---|---|
 | Hasa-Teeus | 2. The Catchers Below | Stormhold's west quarter mounds | Sneak training to Expert at half price | in the main quest's 12, The Cellar Door, she has heard of the trapdoor in Fort Chalkmoth's yard |
 | Huzei | 1. The Salt Shed | the smith's yard by Thorn's west gate | iron and steel arms bought and sold at fair prices | in the Sisei-Xul's 6, Grave-Iron, a sack of Coldbrine salt for the spikes (Gam-Meesh also sells it) |
-| Romi-Tei's son | 5. The Toll Chain | Tsonac's quay, at his father's cart | stone, rope and travel goods at fair prices | in the Free Marque's 8, The Hollow Tide Run, the hour the wardens of Marshgate Watch change |
+| Romi-Tei's son | 5. The Toll Chain | Tsonac's quay, at his father's cart | stone, rope and travel goods at fair prices | in the Brethren's 8, The Hollow Tide Run, the hour the wardens of Marshgate Watch change |
 | Beeko-Raj | 3. Behind the Old Wall | Tenmal's wayhouse | cut Stormhold Crystal at fair prices, and Block training to Adept at half price | in the main quest's 10, Down into Vicrium, a sketch of the flooded drift's turns, which shortens the swim |
 | Saveri Vandrel | 4. The Dunmer's Field | Vandrel Farm | Archery training to Expert at half price | in the Nibenese Company's 3, The Captain's Chain, the word that Hareel lowers his shield after each blow |
 | Gulu-Tasa's family | 6. The Ferryman's Price, if the roll is burned | Ranvos Landing | the ferry and the roadhouse at no charge | in the main quest's 5, The Handler, the word that the go-between's two hired men drink apart from him at night |
@@ -475,7 +475,7 @@ The owner asked for these. Each is a block to be proven once:
 
 - `chainbreakers.md` is the old world's line and the story-line skill's worked example; this page is the new
   world's.
-- The **Free Marque's plot** carries freed people out by sea from Bala Karag (quest 7). The two lines touch there.
+- The **Brethren's plot** carries freed people out by sea from Bala Karag (quest 7). The two lines touch there.
 - The **main quest** opens on an Owing barge. Nothing here changes it.
 - The places named above take the rows of the needs table.
 

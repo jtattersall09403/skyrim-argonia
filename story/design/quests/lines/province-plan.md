@@ -40,7 +40,7 @@ the barred cellar under Ovezza, and its master sits under the well at Kaochalit.
 joins by casting a conjuration in front of its factor. Its door shuts when the player finishes the Sisei-Xul's quest
 3, The Walled Gallery.
 
-**The Free Marque** ([pirates](pirates.md)). Pirates who take Imperial merchant ships and smuggle past the
+**Bramman's Brethren** ([pirates](pirates.md)). Pirates who take Imperial merchant ships and smuggle past the
 Archwardens' tolls. Their seat is Rainbreaker Keep on Skeith Isle, with the stilt camp of Marque Landing below it, and
 their bay crew works Topal Bay from Soulrest's mangrove landing. Their rival is the Nibenese Company. A player joins
 by winning a brawl in the ale-house at Olvani. Their door shuts at the end of the Company's quest 5, and their own
@@ -48,13 +48,13 @@ quest 5 shuts the Company's.
 
 **The Nibenese Company** ([merchants](merchants.md)). Imperial merchants of Gideon who ship goods into the province and
 gold, timber and iron out of it. Their house stands on Blackwood Way in Gideon, and over the line they take Wrackmoth
-and, at the end, Skeith Isle. Their rival is the Free Marque. A player signs on at the Company house. Their door shuts
-at the end of the Free Marque's quest 5, and their own quest 5 shuts the Free Marque's.
+and, at the end, Skeith Isle. Their rival is the Brethren. A player signs on at the Company house. Their door shuts
+at the end of the Brethren's quest 5, and their own quest 5 shuts the Brethren's.
 
 **The Chainbreakers** ([chainbreakers-newworld](chainbreakers-newworld.md)). An outlawed band that frees people
 from Owings that have grown into slavery. Their seat is the Well-Room in the tunnels under Stormhold, and their second
 house is in Thorn, with safe houses across the province. Their enemy is the Ulvarys house ([owing-house](owing-house.md)),
-which cannot be joined. Their allies are the Free Marque. Selling the first freed man's roll to the house's factor is
+which cannot be joined. Their allies are the Brethren. Selling the first freed man's roll to the house's factor is
 the only thing that shuts their door.
 
 ## 2. Where each line works
@@ -67,13 +67,13 @@ the only thing that shuts their door.
 | The Shadowscales | Archon (seat), Lilmoth (branch), Blackrose, Soulrest | Nushara Bayou, Althii Archipelago, Okuwun Rahei, Tulmek Washes, Nha Enasa, Banujha Basin |
 | The Sisei-Xul | Helstrom (mother hall), Aroxhu and Tsonac (branches), Thorn | Hatandros Bight, Okuwun Rahei, Arnesian Jungle, Chixathe Mesa, Padomaic Ocean, Murkwood |
 | The Rothalen house | Thorn (front), Tsonac, Helstrom | Arnesian Jungle, Hatandros Bight, Okuwun Rahei, Padomaic Ocean, Murkwood, Chixathe Mesa |
-| The Free Marque | Soulrest (bay crew), Gideon (taken at the end) | Topal Bay, Kotherra Mangroves, Cape Percar, Hatandros Bight, Skeith Isle, Padomaic Ocean |
+| Bramman's Brethren | Soulrest (bay crew), Gideon (taken at the end) | Topal Bay, Kotherra Mangroves, Cape Percar, Hatandros Bight, Skeith Isle, Padomaic Ocean |
 | The Nibenese Company | Gideon (seat), Soulrest | Topal Bay, Kotherra Mangroves, Cape Percar, Skeith Isle, Okuwun Rahei, Padomaic Ocean, Nushara Bayou |
 | The Chainbreakers | Stormhold (seat), Thorn (second house), a safe house in every city | Valley of Storms, Arnesian Jungle, Hatandros Bight, Okuwun Rahei, Lake Ulaish |
 
 Every great city holds a seat or a branch: Helstrom (the Sisei-Xul, the Reed's handler), Stormhold (the
 Chainbreakers), Thorn (the Rothalen house, the Ulvarys house, the Chainbreakers' second house), Gideon (the Nibenese
-Company), Soulrest (the Lamps, the Free Marque's bay crew), Lilmoth (the Eelskins, the Shadowscales' branch), Archon
+Company), Soulrest (the Lamps, the Brethren's bay crew), Lilmoth (the Eelskins, the Shadowscales' branch), Archon
 (the Shadowscales) and Blackrose (the Eelskins' outpost).
 
 ## 3. What rivals share
@@ -88,13 +88,13 @@ sides: the salt dead of Coldbrine Mine, Tazhul's stakes and the store under Joxh
 log of the *Silt Bride*, the urn of Keel-Vaxa, the barred cellar at Ovezza, the raid on Ixu-Maan, the *Saltrice Queen*
 and the hall under the well at Kaochalit. Each page holds the table of who does what.
 
-**The war on the bay** joins the Free Marque and the Nibenese Company: the brawl at Olvani, the *Grey Heron*'s
+**The war on the bay** joins the Brethren and the Nibenese Company: the brawl at Olvani, the *Grey Heron*'s
 salvage, Captain Hareel's toll chain at Fort Silvermoth, the night of the *Leyawiin Pride*, Hollow Tide Camp,
 Wrackmoth, the *Resolute Crest*'s Akaviri chest, Old Goldseam and the *Stormwidow*'s letter of marque. The pirates'
 page, section 6, holds the table. One line ends with Gideon taken and the other with Skeith Isle taken.
 
 **The Owing** joins the Chainbreakers and the Ulvarys house. The house has no line, so the Chainbreakers' fifteen
-quests are the whole of it, struck at the house's farms, mines, forts, barge and estate. The Free Marque carry the
+quests are the whole of it, struck at the house's farms, mines, forts, barge and estate. The Brethren carry the
 freed out by sea from Bala Karag, and the Rothalens are the Ulvarys' kin, though the two houses do not speak.
 
 ## 4. Where other lines cross
@@ -105,11 +105,11 @@ Places two lines use in ways that are true together. Each plot names the other's
 |---|---|
 | Coldbrine Mine | the Chainbreakers' 1 frees the diggers in the bunk shed. The Sisei-Xul's 3 and the Rothalens' 1 are the walled gallery |
 | Fort Gysilla | the Eelskins' 8 robs the toll strongroom. The Chainbreakers' 9 frees the runaways in the lock-room |
-| Fort Swiftmoth | the Eelskins' 7 and the Company's 11 both rob the Free Marque's strongroom off the lower hall |
+| Fort Swiftmoth | the Eelskins' 7 and the Company's 11 both rob the Brethren's strongroom off the lower hall |
 | Bala Karag | the Rothalens' 5 takes the lord's tablet from the lowest hall. The Chainbreakers' 7 saves runaways in the upper halls |
-| Marshgate Watch | the Rothalens' 2 deals with the sergeant. The Free Marque's 8 pays his corrupt warden |
-| Naxan | the Lamps' 8 begins with its log-haulers. The Free Marque's 3 robs the Company's pay chest on its log landing |
-| Arorha | the Sisei-Xul's 1 is at its kilns. The Free Marque's 6 and the Company's 7 set out from its quay |
+| Marshgate Watch | the Rothalens' 2 deals with the sergeant. The Brethren's 8 pays his corrupt warden |
+| Naxan | the Lamps' 8 begins with its log-haulers. The Brethren's 3 robs the Company's pay chest on its log landing |
+| Arorha | the Sisei-Xul's 1 is at its kilns. The Brethren's 6 and the Company's 7 set out from its quay |
 | Helstrom | the main quest's 5 is at the Reed's handler. The Sisei-Xul's hall and the Rothalens' 9 are at the tree-minders' hall |
 | Tailfall Mound | the Shadowscales' 4 kills the hatchling buyer there, one of the clean kills of the Lamps' 11 |
 
@@ -120,7 +120,7 @@ Helstrom. From the first hour the player hears Owing workers in the fields, and 
 Chainbreakers. In Helstrom the tree-minders' hall is the Sisei-Xul's.
 
 The main quest's fifth quest sends the player to Gideon. There the Nibenese Company is hiring on Blackwood Way, and the
-Free Marque's recruiter drinks at Olvani, a short walk west. Its seventh quest reaches Hatandros Bight, the bay of
+Brethren's recruiter drinks at Olvani, a short walk west. Its seventh quest reaches Hatandros Bight, the bay of
 Thorn, where the Rothalens' stall and the kilns of Arorha are.
 
 The hunt then crosses the south: Toklea in the Tulmek Washes, the country of Blackrose, and at last the drowned

@@ -123,7 +123,7 @@ journal says so, and the guards stand few and apart.
 ### Act I: the healers
 
 **1. The Burnt Kilns** (Arorha, a clay-mound village on Hatandros Bight). A kiln has burst at the water's edge and
-three potters lie burnt in the tree-minder's house. (Arorha's quay is where the Free Marque's 6, Across the Water, and
+three potters lie burnt in the tree-minder's house. (Arorha's quay is where the pirates' 6, Across the Water, and
 the Company's 7, The Hollow Tide, set out for Skeith Isle.) Deegla-Tsei, Arorha's tree-minder, speaks first at her door. She
 teaches the player what two marsh plants do (the stage makes them know every effect of somnalius frond and swamp
 fungal pod) and asks for three of each. Both grow along the shore road north of the village, among the mudcrab

@@ -98,6 +98,10 @@ with its source in [owner-rulings-on-factions](../../docs/research/writing/owner
 - Rivals: the Lamps, the thieves and the Shadowscales, three ways; the Argonian order and the necromancers; the
   pirates and the Imperials; the Chainbreakers (the pirates' allies) and the Owing house. "It's fun if they're in
   conflict with each other in various combinations" (OR 2026-11-16).
+- Every faction's name is researched and grounded in the lore of its region, its people's culture, its role in
+  society and its aims: a Jel or translated-Argonian name for an Argonian body, a Dunmeri one for a Dunmer house, a
+  Cyrodilic one for the Imperials, a sailors' name for a mixed crew. Every Jel word in a name is attested and
+  glossed (OR 2026-11-16).
 - Each line has about as many quests as a guild of Morrowind's or Skyrim's. Between them the factions have a seat
   or a branch in every major city (OR 2026-11-16).
 - In the three-way rivalry the player is shut out of the other two at some point, and late in the line chooses

@@ -50,15 +50,15 @@ Rulings on places that two lines use. Each plot names the other's quest at the p
 |---|---|
 | Coldbrine Mine | Three things stand here at once. The Ulvarys house's diggers sleep locked in the bunk shed (the Chainbreakers' 1). The salt dead lie behind the walled gallery's door, and the Rothalens' diggers work its far side (the Sisei-Xul's 3, the Rothalens' 1). Huzei's father lies in the old giant mudcrab's burrow between the brine pools and the gallery, outside the wall. The crab is dead if the Chainbreakers' 1 came first, and the other two quests say so |
 | Wrackmoth, Old Goldseam | These belong to the war on the bay: each becomes a Company post or a Company mine in the merchants' line and a pirate hold or a raided mine in the pirates' line. No other line sends the player there. The Shadowscales' contracts are at Fort Lowmoth and Nine Reeds Waystation |
-| Fort Swiftmoth | The keep has a lower hall and a locked strongroom off it, and no cellar. The smugglers there are the Free Marque's. The Eelskins' 7 and the Company's 11 both rob the strongroom, each with its own watch and captain |
+| Fort Swiftmoth | The keep has a lower hall and a locked strongroom off it, and no cellar. The smugglers there belong to Bramman's Brethren, the pirates. The Eelskins' 7 and the Company's 11 both rob the strongroom, each with its own watch and captain |
 | Fort Gysilla | An Archwarden toll fort on a lake island. Its garrison keeps the lake's toll strongroom (the Eelskins' 8) and takes the Ulvarys house's coin to hold runaways in the lock-room (the Chainbreakers' 9). The Lamps' 2 hears of its quarrel with Truowa's boats |
-| Marshgate Watch | Its sergeant is honest and means to report the Rothalens' carts (the Rothalens' 2). One of his wardens takes pay to let cargo through, and the Free Marque pay him (the Free Marque's 8) |
-| Bala Karag | The lord's ghost carries the key to the flooded lowest hall, where the ancestor tablet lies (the Rothalens' 5). Runaways hide among the dead of the upper halls until the Free Marque's boat comes (the Chainbreakers' 7) |
-| Naxan, Arorha | Each is a village two lines pass through, at different buildings: Naxan's log landing (the Lamps' 8, the Free Marque's 3), Arorha's kilns and quay (the Sisei-Xul's 1, the Free Marque's 6, the Company's 7) |
+| Marshgate Watch | Its sergeant is honest and means to report the Rothalens' carts (the Rothalens' 2). One of his wardens takes pay to let cargo through, and the Brethren pay him (the Brethren's 8) |
+| Bala Karag | The lord's ghost carries the key to the flooded lowest hall, where the ancestor tablet lies (the Rothalens' 5). Runaways hide among the dead of the upper halls until the Brethren's boat comes (the Chainbreakers' 7) |
+| Naxan, Arorha | Each is a village two lines pass through, at different buildings: Naxan's log landing (the Lamps' 8, the Brethren's 3), Arorha's kilns and quay (the Sisei-Xul's 1, the Brethren's 6, the Company's 7) |
 | Helstrom | The Reed's handler's quiet house (the main quest's 5) and the tree-minders' hall (the Sisei-Xul's seat, the Rothalens' 9) are different buildings |
 | Thorn | The Rothalens' stall is in the market square, beside the Vicecanon's factor. The Ulvarys house's counting-house is the old Mages Guild hall. Llaros Seloth's safe house is in the Argonian timber quarter. The *Saltrice Queen* uses the city's ship interior at the quay, and no other line uses that ship |
 | Stormhold | The Dunmer merchant in the old Ayleid compound is the Ulvarys house's factor. Freed people stand elsewhere in the city |
-| Gideon | The Free Marque's ending changes the guards and the Company house. The main quest's relic dealer and Gideon South Watch are untouched by it |
+| Gideon | The Brethren's ending changes the guards and the Company house. The main quest's relic dealer and Gideon South Watch are untouched by it |
 
 **A place two quests fight in.** When two lines send the player to fight in one place, each quest's enemies are its
 own, switched on by its own stage. A quest done first never takes from the place a thing or a person that another
@@ -68,7 +68,7 @@ line's quest needs, and the second quest's journal says what it finds changed.
 
 - The Ulvarys house and the Rothalen house are kin by an old marriage. The two houses do not speak, and the Ulvarys
   say they deal in the living and want nothing of the dead. Both pages say so.
-- The Chainbreakers and the Free Marque are allies. The Free Marque carry people the Chainbreakers have freed out of
+- The Chainbreakers and the Brethren are allies. The Brethren carry people the Chainbreakers have freed out of
   the province by sea, from the causeway of Bala Karag. Ysan is a landing where their boats call. Both pages say so.
 - The Stormwidow was chased onto Skeith Isle's beach by the Archwardens' chartered privateers, to whom Gaius Cassena
   sold her course.

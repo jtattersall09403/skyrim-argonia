@@ -232,7 +232,7 @@ burnt mines of the cape.
 
 **8. The Burnt Cut** (Naxan, a logging village on the Soulrest coast; Ashfall Cut, a burnt open mine near it). A
 log-hauler of Naxan was found at the foot of the old vent shaft in Ashfall Cut. He went there for the grave goods
-that lie in the shaft. (The Free Marque's 3, The Naxan Landing, robs the Company's pay chest on the same village's
+that lie in the shaft. (The pirates' 3, The Naxan Landing, robs the Company's pay chest on the same village's
 log landing.) The suspects are two men who went with him and a third who was not meant to be there. The
 burnt overseer's corpse, risen, holds the vent shaft. The player fights past it or turns it with Restoration, then
 finds the second man's lamp at the top of the shaft and the third man's tracks (a dropped knife) in the cut. The

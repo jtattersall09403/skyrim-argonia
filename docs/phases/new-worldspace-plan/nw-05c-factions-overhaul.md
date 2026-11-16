@@ -298,10 +298,14 @@ opening's name and profession.
 ### Where it stands (2026-11-16)
 
 Steps 1 to 7 are done and on main. The nine plot pages are `main-plot.md`, `lamps.md`, `thieves.md` (the Eelskins),
-`shadowscales.md`, `sisei-xul.md` (the Argonian order), `rothalen-house.md` (the necromancers), `pirates.md` (the
-Free Marque), `merchants.md` (the Nibenese Company) and `chainbreakers-newworld.md`, with `owing-house.md` (the
+`shadowscales.md`, `sisei-xul.md` (the Argonian order), `rothalen-house.md` (the necromancers), `pirates.md` (Bramman's
+Brethren), `merchants.md` (the Nibenese Company) and `chainbreakers-newworld.md`, with `owing-house.md` (the
 Ulvarys) as background. Gear for each faction's ranks is in
 [reward-gear](../../../story/design/quests/reward-gear.md).
+
+The pirates were renamed Bramman's Brethren on 2026-11-16, after Red Bramman, the canon pirate-king of Topal Bay,
+because the owner did not like "the Free Marque". Three researched alternatives for every other faction's name are
+with him for his call ([faction-names-call](research/faction-names-call.md)); no other name changes before he rules.
 
 Owed, in order:
 

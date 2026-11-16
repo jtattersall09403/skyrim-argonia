@@ -131,7 +131,7 @@ has started asking questions. The journal marks the watch.
 **2. The Blind Gate** (Marshgate Watch, a road post south of Thorn; Fort Thornmoth, the toll fort west of the
 city). Fort Thornmoth has a guard who lets the house's cart through untouched every few days. At Marshgate Watch the
 sergeant has found out a warden of his own taking pay to let boats through, and means to report both to Fort
-Thornmoth. (That warden is the one the Free Marque's 8, The Hollow Tide Run, pays to look away.) Neeja teaches Conjure Flame Atronach. The sergeant patrols the ditch road among the crocodiles and giant
+Thornmoth. (That warden is the one the pirates' 8, The Hollow Tide Run, pays to look away.) Neeja teaches Conjure Flame Atronach. The sergeant patrols the ditch road among the crocodiles and giant
 snakes. The player kills him there with a conjured atronach, so that no blade of theirs is seen. Or they take his
 report from the chest in the watch-house (an easy lock) and burn it. Or they pay him the house's purse of 300
 gold, which Ervyn takes out of the player's reward. *Leads on:* Ervyn pays what is left and gives the player a

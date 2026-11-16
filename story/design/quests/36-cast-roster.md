@@ -83,17 +83,17 @@ The plot also names Okeeh, the cook of the Owing gang at Sedge-Kal Camp, and Dra
 | **Dalvela Rothalen** | The house's bone-mistress, in the hall at Ovezza (also in the Sisei-Xul) | the Sisei-Xul wiped out and a house of the dead after Morvayn |
 | **Morvayn Rothalen** | Master of the house, at Kaochalit (also in the Sisei-Xul) | his heirs to keep the house after he dies, on his terms |
 
-### The Free Marque
+### Bramman's Brethren
 
 [pirates](lines/pirates.md)
 
 | Who | Where they stand | What they want |
 |---|---|---|
-| **Ma'jirra** | A Khajiit captain who runs the bay crew from Soulrest's mangrove landing and recruits for the Free Marque | the bay free of Company ships and her crew paid |
-| **Wazei-Vos, called One-Eye** | Captain of the Free Marque at Marque Landing (also in the Nibenese Company) | the Company broken and Gideon's quay hers |
+| **Ma'jirra** | A Khajiit captain who runs the bay crew from Soulrest's mangrove landing and recruits for the Brethren | the bay free of Company ships and her crew paid |
+| **Wazei-Vos, called One-Eye** | Captain of the Brethren at Marque Landing (also in the Nibenese Company) | the Company broken and Gideon's quay hers |
 | **Selvo Arenim** | A Dunmer, quartermaster of Rainbreaker Keep (also in the Nibenese Company) | the keep's stores full and the ransoms paid |
 | **Bar-Neeus** | Bosun of Marque Landing (also in the Nibenese Company) | a newcomer who can fight |
-| **Rajeel-Kosh** | Leader of the smugglers of Hollow Tide Camp on the same island (also in the Nibenese Company) | his camp left out of the Free Marque's war, and his old strongbox back |
+| **Rajeel-Kosh** | Leader of the smugglers of Hollow Tide Camp on the same island (also in the Nibenese Company) | his camp left out of the Brethren's war, and his old strongbox back |
 | **Kesh-Ulee** | A bosun of the bay crew | out of the stockade at Fort Silvermoth before Gideon hangs him |
 | **Ixil-Ma** | A diver of Seafalls, prisoner in the undercroft of Rainbreaker Keep | to go home |
 
@@ -103,10 +103,10 @@ The plot also names Okeeh, the cook of the Owing gang at Sedge-Kal Camp, and Dra
 
 | Who | Where they stand | What they want |
 |---|---|---|
-| **Opilia Cassena** | Master of the Nibenese Company, in the Company house in Gideon (also in the Free Marque) | the bay's trade for the Company and the pirates gone |
+| **Opilia Cassena** | Master of the Nibenese Company, in the Company house in Gideon (also in the Brethren) | the bay's trade for the Company and the pirates gone |
 | **Nuxal-Tei** | A Lukiul factor of the Company, the player's handler in the Company house | the Company's trade and her own share of it |
-| **Gallus Ostorius** | An Imperial, master of the Company ship *Leyawiin Pride* (also in the Free Marque) | his ship and his name kept |
-| **Captain Hareel Tullan** | The Archwarden captain of Fort Silvermoth (also in the Free Marque) | his toll, and his family's old land under Gideon's south gardens |
+| **Gallus Ostorius** | An Imperial, master of the Company ship *Leyawiin Pride* (also in the Brethren) | his ship and his name kept |
+| **Captain Hareel Tullan** | The Archwarden captain of Fort Silvermoth (also in the Brethren) | his toll, and his family's old land under Gideon's south gardens |
 | **Drusus Faleria** | A fixer of the Ruction Ring under Gideon | to buy cheap and sell dear |
 
 ### The Chainbreakers
@@ -132,7 +132,7 @@ Nothing friendly travels between lines. Lines meet through the same named people
 through the places they share ([the province plan](lines/province-plan.md), sections 3 and 4).
 
 **The same conflict from both sides.** The night at Silt-Orrel (the Lamps, the Eelskins and the Shadowscales), the war
-of the stakes (the Sisei-Xul and the Rothalen house) and the war on the bay (the Free Marque and the Nibenese Company)
+of the stakes (the Sisei-Xul and the Rothalen house) and the war on the bay (the Brethren and the Nibenese Company)
 are each one set of people and events told from every side. Each person above holds the same facts in every plot that
 names them.
 

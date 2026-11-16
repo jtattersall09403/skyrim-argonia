@@ -190,7 +190,7 @@ window, beyond the guards' reach and beyond a hand's. The player lifts it out wi
 can also take the guards' key (Pickpocket, an Adept pocket), or walk in and fight. *Leads on:* Swims has a bigger
 cellar for them.
 
-**7. The Locked Strongroom** (Fort Swiftmoth, an empty keep inland from Archon). Smugglers of the Free Marque keep
+**7. The Locked Strongroom** (Fort Swiftmoth, an empty keep inland from Archon). Smugglers of Bramman's Brethren, the pirates, keep
 their cache in the keep's locked strongroom, under a watch of four and their captain (the Company's 11, The Scroll
 Store, raids the same strongroom). Aroxhu families rest in the dry upper floor and are
 to be left alone. The captain carries the strongroom key, and it can be lifted (Pickpocket, an Expert pocket). The

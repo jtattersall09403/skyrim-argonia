@@ -716,3 +716,9 @@ added here the day they are made, with the date and the issue.
   staged scene. That was my intention anyway". The cutscenes he asked for at the endings are the staged ending
   scene of #71, not a recorded film. There is no film block. One added block is narrow (the staged ending scene,
   for the main quest's ending visions only); the other fifteen are open to any quest.
+- 2026-11-16 (in session): "I don't like the 'Free Marque' name for the pirates. All factions should have well
+  researched lore-grounded names appropriate for their region and culture and role in society and goals. Change that
+  one, and give me some alternative options for all of them (but don't change the others yet, post as an issue for
+  my call)". The pirates are renamed Bramman's Brethren, after Red Bramman, the canon pirate-king of Topal Bay whose
+  heirs they are; three researched alternatives for each faction's name go to him as a call, and no other name
+  changes before he rules. The rule is in the owner's bar under "The factions".
