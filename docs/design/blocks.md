@@ -114,9 +114,11 @@ a quest uses it.
 | an objective with no marker until found | a riddle side quest's place, until the player stands in it | the objective shown without a target; the player's arrival in the place's location (a location-change event) sets the next stage, whose objectives carry markers |
 | sick Hist bark | the look of a sick Hist | our recolour tool's darkened copy of the Hist bark texture, a placed base of ours |
 
-The owner approved eleven more on 2026-11-16 (#73), each only for the use named, on the same terms:
+The owner approved eleven more on 2026-11-16 (#73), and the same day opened them to any quest that wants them
+("Let the quest authoring thing use all these blocks though if they want to"). Each is still built and proven once
+before its first use. The middle column is where each was first asked for:
 
-| Block | Only for | Likely engine shape |
+| Block | First asked for | Likely engine shape |
 |---|---|---|
 | the player's name set from a conversation | the main quest's opening | the game's own name entry opened by a stage |
 | a fight that ends in a yield | a duel or brawl a quest calls for (Blackrose's gate, the pirates' tavern, the merchants' and the Chainbreakers' fights) | Skyrim's brawl: the person yields when badly hurt, which sets a stage |

@@ -700,3 +700,6 @@ added here the day they are made, with the date and the issue.
 - 2026-11-16 (in session, on #73): "I'm happy with all 11 ceiling things on that issue". The eleven blocks beyond
   the ceiling that the main plot and the faction plots use are approved, each only for its named use and each
   proven once before a quest uses it: listed in docs/design/blocks.md ("Blocks owed"), quest-system and owner-bar.
+- 2026-11-16 (in session): "Let the quest authoring thing use all these blocks though if they want to". The eleven
+  blocks of #73 are open to any quest, not only the use each was first asked for. Each is still proven once before
+  its first use. The six of #71 keep their narrow uses.
