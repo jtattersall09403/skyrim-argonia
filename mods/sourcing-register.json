@@ -1232,6 +1232,17 @@
   "permission_condition": "Owner ruling 2026-11-12: \"I have checked and we have permission to use them in this way if we don't ship their assets directly and we make their mods dependencies for ours\". Condition: their assets are never shipped by us, and the mod is a dependency of ours (a row in mods/dependencies.json); before release its plugin becomes a real master of our world file."
  },
  {
+  "name": "Hydra (Creature Series pt.2) SE (Nexus 63082)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/63082?tab=files&file_id=263648",
+  "version": "1.4 (row hydra-skinwalker)",
+  "licence": "none stated; sounds CC BY 3.0 (The Ambience Channel, Free Sound Effects Channel, Nagaty Studio Channel), some textures CC BY 2.0 (Zaphad1)",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): the guardian of the Root, the main quest's final boss",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author Skinwalker21. Chosen by the owner for the final boss (2026-11-16). Hydra records to be copied into ArgoniaNewWorld.esm, assets the player's own download.",
+  "permission": "granted on condition (owner ruling 2026-11-16)",
+  "permission_condition": "Owner, 2026-11-16: \"I've checked permissions and it's fine for our use\". Condition as for his other Skinwalker21 mods (ruling 2026-11-12): its assets are never shipped by us, and the mod is a dependency of ours; before release its plugin becomes a real master of our world file."
+ },
+ {
   "name": "Flower Fields SE (Nexus 20960)",
   "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/20960?tab=files&file_id=280639",
   "version": "1.1 (row flower-fields-se)",

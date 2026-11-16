@@ -3200,6 +3200,34 @@
    "asset_only": true
   },
   {
+   "id": "hydra-skinwalker",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 63082,
+    "file": 263648
+   },
+   "name": "Hydra (Creature Series pt.2) SE",
+   "author": "Skinwalker21",
+   "version": "1.4",
+   "archive": "Hydra (Creature Series pt.2) SE-63082-1-4-1644694889.zip",
+   "size_kb": 107118,
+   "why": "the guardian of the Root, the main quest's final boss (main-plot.md, quest 18); chosen by the owner (story explorer note, 2026-11-16); asset-only: its hydra records copied into ArgoniaNewWorld.esm, assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "licence": "none stated for the mod; its sounds are CC BY 3.0 and some textures CC BY 2.0 from named sources",
+   "permission_summary": "No terms of its own on the page. The owner checked the permissions himself: \"I've checked permissions and it's fine for our use\" (2026-11-16).",
+   "ai_clause": "not stated",
+   "permission_ask": false,
+   "permission_evidence": "Nexus API v1 description and files read 2026-11-16 (594 endorsements, last updated 2022-02-12); the owner's own check, in session, 2026-11-16",
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download; ArgoniaNewWorld.esm will copy its creature records (ForeignCopy) and name its assets by path",
+   "from": "nw-05c",
+   "asset_only": true,
+   "check": "not yet fetched: sha256 and plugin name are recorded by `stack.py fetch --record`; its attacks (venom in the air and water round it, boss phases, heads that regrow and detach as sentries) are read from the plugin then, and the side quests' rewards fitted to them"
+  },
+  {
    "id": "blue-whales",
    "group": "newworld",
    "source": {
