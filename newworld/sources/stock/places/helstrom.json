@@ -393,7 +393,7 @@
    "why": "the city tree's sealed spring: the town shut it away, so the town owns it and it is locked (Novice, the lock of the open tier); it holds nothing of the stock's, its water is the main story's to give",
    "cites": [
     "place_wealth:helstrom",
-    "story/design/quests/lines/main.md"
+    "story/design/quests/lines/main-plot.md"
    ]
   },
   {
@@ -410,7 +410,7 @@
    "cites": [
     "place_wealth:helstrom",
     "person:helstrom.TA28STYJ3XNYJ9FPVMQEYJVQQ4",
-    "story/design/quests/lines/main.md"
+    "story/design/quests/lines/main-plot.md"
    ]
   }
  ],

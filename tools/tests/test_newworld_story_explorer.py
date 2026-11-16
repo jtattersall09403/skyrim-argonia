@@ -8,7 +8,7 @@ import pytest
 
 from tools.newworld import story_explorer as se
 
-LINE = """# Many-Root: the line's story
+LINE = """# Sisei-Xul: the line's story
 
 Intro with **bold** and *the Hist*.
 
@@ -55,7 +55,7 @@ A town of chime-smiths on a ring of dry ground.
 def tree(root: Path) -> Path:
     (root / se.LINES).mkdir(parents=True)
     (root / se.WORLD / "regions").mkdir(parents=True)
-    (root / se.LINES / "many-root.md").write_text(LINE)
+    (root / se.LINES / "sisei-xul.md").write_text(LINE)
     (root / se.LINES / "old.md").write_text("# Old\n")
     (root / se.LINES / "old-newworld.md").write_text("# New\n")
     (root / se.WORLD / "regions" / "ultherus-swamp.md").write_text(REGION)
@@ -74,7 +74,7 @@ def test_generate(tmp_path):
     korydon = next(p for p in c["places"] if p["name"] == "Korydon")
     assert korydon["region"] == "Ultherus Swamp" and "MR01" in korydon["quests"] and "chime" in korydon["about"]
     assert "MR01" in next(p for p in c["people"] if p["name"] == "Okeeh-Ja")["quests"]
-    doc = json.loads((out / "data" / "doc-many-root.json").read_text())
+    doc = json.loads((out / "data" / "doc-sisei-xul.json").read_text())
     ids = [b["id"] for b in doc["blocks"]]
     assert len(ids) == len(set(ids))
     assert any("<b>bold</b>" in b.get("html", "") for b in doc["blocks"])
@@ -84,11 +84,11 @@ def test_generate(tmp_path):
 
 def test_a_story_status_reaches_the_catalogue(tmp_path):
     root = tree(tmp_path / "r")
-    p = root / se.LINES / "many-root.md"
+    p = root / se.LINES / "sisei-xul.md"
     p.write_text(LINE.replace("Intro with", "**Status: to be rewritten.** Section 3 is untrue.\n\nIntro with"))
     c = se.generate(root, tmp_path / "out")
-    assert next(x for x in c["lines"] if x["id"] == "many-root")["status"] == "to be rewritten"
-    assert next(x for x in c["docs"] if x["id"] == "many-root")["status"] == "to be rewritten"
+    assert next(x for x in c["lines"] if x["id"] == "sisei-xul")["status"] == "to be rewritten"
+    assert next(x for x in c["docs"] if x["id"] == "sisei-xul")["status"] == "to be rewritten"
 
 
 def test_block_ids_stable_when_another_section_changes():
@@ -107,7 +107,7 @@ def test_check_follows_sources(tmp_path):
     rec = tmp_path / "rec.json"
     rec.write_text(json.dumps({"url": "u", "published_hash": se.sources_hash(root)}))
     assert se.check(root, rec) is None
-    (root / se.LINES / "many-root.md").write_text(LINE + "\nChanged.\n")
+    (root / se.LINES / "sisei-xul.md").write_text(LINE + "\nChanged.\n")
     assert "behind" in se.check(root, rec)
 
 
@@ -193,6 +193,14 @@ def test_a_plot_form_faction_story_is_read_as_the_main_plot_is(tmp_path):
     assert "chainbreakers" in next(p for p in c["people"] if p["name"] == "Never-Sold")["docs"]
     assert "chainbreakers" in next(p for p in c["places"] if p["name"] == "Reedfall")["docs"]
     assert not any(d["kind"] == "spells" for d in c["docs"])
+
+
+def test_a_page_with_neither_acts_nor_quests_is_background_not_a_line(tmp_path):
+    root = plot_tree(tmp_path / "r")
+    (root / se.LINES / "owing-house.md").write_text("# The house\n\nA family of Thorn.\n\n## Who leads it\n\nThe matriarch.\n")
+    c = se.generate(root, tmp_path / "out")
+    assert "owing-house" not in {x["id"] for x in c["lines"]}
+    assert next(d for d in c["docs"] if d["id"] == "owing-house")["kind"] == "background"
 
 
 def test_a_numbered_item_is_its_own_block_and_keeps_its_number():

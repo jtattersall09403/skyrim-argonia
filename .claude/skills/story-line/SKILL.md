@@ -84,8 +84,8 @@ the document's own extrapolation, derived from cited lore and never from nothing
   additions: a thing placed, a person, a lock, a name. A cellar, a flooded passage or a great door is written
   only where the source has one; otherwise the quest moves to a place that has, or the story changes.
 - *Danger climbs with the line.* Each quest's places are no harder (the place's band and the band of the way to
-  it) than the line has reached. A line a new character can start opens in D1, rises a band at a time and ends in
-  the hardest places it uses. Skill checks follow: a lock or a pocket in a first quest opens for a level-one
+  it) than the line has reached. The main quest opens in D1 and a faction in D1 or D2 (`--opens-at D2`); a line
+  rises a band at a time and ends in the hardest places it uses. Skill checks follow: a lock or a pocket in a first quest opens for a level-one
   character who has that skill. Rewards rise in step and are fixed and hand-made.
   `python3 -m tools.newworld.plot_check <the line's file>` prints the ladder and fails a step out of order.
 - *A choice of ways is a choice.* No way is both free and best: a ring handed over for nothing makes the potion

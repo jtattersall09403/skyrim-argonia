@@ -1,8 +1,8 @@
 # The Shadowscales: the plot
 
 This page is the plot of the Shadowscales, the Argonian assassins, written on 2026-11-16 to the owner's notes in
-[the factions overhaul](../../../../docs/phases/new-worldspace-plan/nw-05c-factions-overhaul.md). It replaces the
-earlier page of this name. It is one of three plots that share one late event: the Lamps' ([lamps](lamps.md)) and
+[the factions overhaul](../../../../docs/phases/new-worldspace-plan/nw-05c-factions-overhaul.md). It is one of three
+plots that share one late event: the Lamps' ([lamps](lamps.md)) and
 the Eelskins' ([thieves](thieves.md)) are the other two. Every quest is set in a place whose source place holds what
 the quest needs (`python3 -m tools.newworld.place_card <place>`). Everything is inside the quest ceiling
 ([quest-system](../../../../.claude/skills/quest-system/SKILL.md)), with the additions listed in section 8.
@@ -138,8 +138,8 @@ dead. A contract done any other way is paid without the bonus. Nearly every cont
 thing, as the Dark Brotherhood's did in Oblivion. Killing anyone but the target costs part of the pay, and the journal
 says so before the player goes.
 
-Danger climbs with the line: a hamlet (D1), Archon (D0), a farm (D2), the ruins and forts of the coast (D3), the
-abandoned towns and mines (D4) and, last, Meris-Keth and Ra'tal Den (D5). Locks climb with it: Novice in Act I, Adept
+Danger climbs with the line: a hamlet and a farm (D2), Archon (D0), the ruins and burnt forts (D3), an abandoned
+town and a bandits' tower (D4) and, last, Meris-Keth and Ra'tal Den (D5). Locks climb with it: Novice in Act I, Adept
 and Expert in Act II, Master in Act III. Where the player may fight or sneak, the journal says so. Every objective
 has a marker.
 
@@ -148,9 +148,9 @@ and the bonus doubles it.
 
 | Rank | Given after | Reward |
 |---|---|---|
-| Hatchling | quest 2 | Shadowscale hood and boots (Sign of Cipactli's light Argonian armour, under our name), a bed in the sealed school |
+| Hatchling | quest 2 | Shadowscale hood and boots (Black Marsh & Valenwood's Argonian leathers, under our name), a bed in the sealed school |
 | Brass | quest 4 | a brass medallion of the player's own (Fortify Sneak 10); Hulee-Tah as an Expert Archery trainer; Black-Tongue Brews sells the player poisons |
-| Ku-Vastei | quest 8 | the Shadowscale cuirass and gauntlets (Sign of Cipactli's light armour), enchanted with Fortify One-Handed 15 and Fortify Archery 15; Beem-Xal as a Master Sneak trainer |
+| Ku-Vastei | quest 8 | the Shadowscale cuirass, hood and mask (Shadowscale Set Reborn, under our name), enchanted with Fortify One-Handed 15 and Fortify Archery 15; Beem-Xal as a Master Sneak trainer |
 | Elder | quest 13 | the Hook-and-Eye, the Eldest's own dagger, which absorbs health; the ending's gift (section 6) |
 
 | Contract | The bonus way | The unique thing |
@@ -159,9 +159,9 @@ and the bonus doubles it.
 | 3. the toll sergeant | his own bowl poisoned, nobody else's | the Supper Ring: Fortify Alchemy 15 |
 | 4. the hatchling buyer | the rotten prop of the lower hall knocked out (its lever), bringing the roof down on him | Sithis' Sting: a bow that paralyses for a second |
 | 5. the smugglers' boss | the old door to the lower halls opened, letting the Velothi ghosts in on his men | the Ghost-Step Boots: Muffle |
-| 6. the outlaw captain | the gatehouse portcullis dropped (its lever) | Quick Hands: gloves, Fortify One-Handed 15 |
+| 6. the bandit leader | the lamp over the spilt oil shot down, so that the oil burns under him | Quick Hands: gloves, Fortify One-Handed 15 |
 | 7. the watch captain | the watch-fire put out, and the kill made in the dark | the Black Hood: Fortify Sneak 15 |
-| 8. the outlaw chief | the ore cage dropped from the winch (its lever) | the Ore-Dark Amulet: Fortify Lockpicking 20 |
+| 8. the tower's bandit leader | the portcullis of the tower door dropped on him (its lever) | the Signal-Fire Amulet: Fortify Lockpicking 20 |
 | 12. Marcella Dovi | the great lamp of the hearing room dropped on her (its chain) | the Lamp-Breaker: Animated Armoury's whip, under our name, that burns |
 
 ### Act I: the brass
@@ -207,27 +207,31 @@ Mazurath ships moon sugar into the bayou villages, and two children of Khiar hav
 the upper tier, ghosts walk the lower halls and the smugglers hold the middle. Hulee-Tah teaches Muffle before the
 player goes. The bonus way is the old door between the lower halls and the smugglers' rooms, which the smugglers have
 barred. With it opened (an Adept lock), the ghosts fall on the smugglers and the boss. The player can also climb to
-the spell-fire tier and shoot him, or fight. *Leads on:* the next contract is an outlaw captain at Wrackmoth.
+the spell-fire tier and shoot him, or fight. *Leads on:* the next contract is a bandit leader at Fort Lowmoth.
 
-**6. The Gatehouse** (Wrackmoth, a ruined Imperial fort on the cape's north coast). The outlaw captain of Wrackmoth
-raids Naxan and takes its young men for the Owing work he sells to the cape's mines. He keeps to the gatehouse. Its
-portcullis hangs above the gate where he stands to watch the road, and its lever is in the wall-walk. The player gets
-to the lever unseen, or shoots him from the cliff path, or fights through the yard. The captain's chest holds the
-names of the men he sold. *Leads on:* Hulee-Tah sends the player into the washes, to Khariton.
+**6. The Burnt Fort** (Fort Lowmoth, a burnt Imperial fort on the island road near Fort Reedmoth). The bandit leader
+of Fort Lowmoth robs the island road and takes Sal-Axan's young men, whom he sells as Owing labour to whoever pays.
+The Reedmoth garrison has a price on his head and will not go into the ruin. He watches the road from the burnt
+hall, where his bandits hang a lamp over the oil they burn for light. A shot that brings the lamp down sets the oil
+alight under him. The player gets close enough to shoot unseen past the lookout, or fights through the shell, or
+knifes him at the strongroom's iron door. His chest holds the names of the men he sold. *Leads on:* Hulee-Tah sends
+the player into the washes, to Khariton.
 
 **7. The Watch Captain** (Khariton, an abandoned Kothringi town in the washes). The Blackguards hold Khariton, and
 their watch captain killed a ku-vastei of Lilmoth last winter. Hulee-Tah teaches Night-Eye. The bonus way is to put out
 the watch-fire on the old chime-tower, which leaves the town dark, and to kill the captain in the dark. Blackguards
 walk the town in pairs, with gaps a quiet player can use. The player can also fight, or shoot from the tower.
-*Leads on:* the next contract is in the gold mines of the cape.
+*Leads on:* the next contract is on the Gideon road.
 
-**8. The Winch House** (Old Goldseam, a burnt gold mine of the cape). The outlaw chief of Old Goldseam works
-captured Argonians in the old galleries. The galleries are dark and full of his men. Hulee-Tah teaches Invisibility.
-The chief sits in the winch house above the ore cage. The bonus way is to release the cage from the winch while he
-stands below it. The player can slip past the galleries with Invisibility and Muffle, fight down to him, or shoot him
-across the shaft. The captives' shackles open with an Expert lock or the chief's key, and when the player frees them
-the screen fades and they are gone. *Leads on:* the Eldest makes the player a Ku-Vastei and speaks to them for the
-first time. He has heard of a Brotherhood agent.
+**8. The Signal Tower's Cellar** (Nine Reeds Waystation, a ruined Imperial tower on the road north of Gideon). The
+bandit leader of Nine Reeds takes Argonian carters off the road and holds them in the tower's cellar until their kin
+pay. Those whose kin cannot pay, he sells. Archers watch the road from the tower top, and his men hold the granary.
+Hulee-Tah teaches Invisibility. At dusk the leader comes down to the tower door to see the road, under the old
+portcullis, whose lever is on the stair. The bonus way is to drop it on him. The player can slip past the granary
+and the stair with Invisibility and Muffle, fight up to him, or shoot him from the reeds. The carters' shackles open
+with an Expert lock or the leader's key, and when the player frees them the screen fades and they are gone. *Leads
+on:* the Eldest makes the player a Ku-Vastei and speaks to them for the first time. He has heard of a Brotherhood
+agent.
 
 ### Act III: the brass and the Lamps
 
@@ -313,17 +317,14 @@ the line ends. Contracts go on, small and repeating, from Hulee-Tah.
 
 ### What it asks of the world
 
-- **One danger band lowered.** The database has no place at D1. Xi-Inou is asked at strength D1 (Davos Rethan and two
-  crewmen at the night quay at level 1, and the channel's slaughterfish), so that a new character's first contract
-  starts at D1. Until it is, `plot_check` fails at quest 1.
 - **Named things from meshes we hold:** the drowned man's satchel and bones, the writ, the brass medallions (a Skyrim
   amulet, under our name), the brass token, the poison and its two ingredients (Skyrim's deathbell and nightshade),
   the sergeant's bowl, the sale-notes, Vetrix's letter, Orrel-Sakka's council ring.
-- **Traps from Skyrim's own:** a roped log stack (Xi-Inou), a falling roof (Tailfall Mound), a portcullis
-  (Wrackmoth), an ore cage on a winch (Old Goldseam), an iron lamp on a chain (the Lamp-Hall). Each is a Skyrim trap
+- **Traps from Skyrim's own:** a roped log stack (Xi-Inou), a falling roof (Tailfall Mound), a hanging lamp over
+  spilt oil (Fort Lowmoth), a portcullis (Nine Reeds Waystation), an iron lamp on a chain (the Lamp-Hall). Each is a Skyrim trap
   or lift, placed, with its rope or lever as the named thing used.
-- **The order's gear:** Sign of Cipactli's light Argonian armour, Skyrim's bow and Animated Armoury's whip, under our
-  names.
+- **The order's gear:** Black Marsh & Valenwood's Argonian leathers, Shadowscale Set Reborn's armour, hood and mask,
+  Skyrim's bow and Animated Armoury's whip, under our names ([reward-gear](../reward-gear.md)).
 
 ### What each quest needs of its places
 
@@ -335,9 +336,9 @@ the line ends. Contracts go on, small and repeating, from Hulee-Tah.
 | Tal-Neesh Farm | the farmhouse with the sergeant's bowl on the table, the family out on the paddies, a dog at the door and deathbell at the marsh edge | 3. The Supper at Tal-Neesh | The player poisons the sergeant's meal. | Hulee-Tah tells them; markers |
 | Tailfall Mound | the headman's table under a rotten roof prop with its lever, a cage with two hatchlings (an Apprentice lock), smugglers in the outer hall (the place's record holds the smugglers and the headman) | 4. The Hatchling Buyer | The contract and the freeing. | markers |
 | Mazurath | the barred door between the ghosts' lower halls and the smugglers' rooms (an Adept lock), the spell-fire tier, the boss (in the place's record) | 5. The Spell-Fire | The contract. | markers |
-| Wrackmoth | the outlaw captain in the gatehouse, the portcullis with its lever on the wall-walk (the place's record holds the captain in the gatehouse) | 6. The Gatehouse | The contract. | markers |
+| Fort Lowmoth | the bandit leader in the burnt hall under a hanging lamp, a pool of spilt oil at his feet, a lookout and the strongroom's iron door (the place's record holds the leader, the lookout and the strongroom) | 6. The Burnt Fort | The contract. | markers |
 | Khariton | the Blackguard watch captain, a watch-fire on the old chime-tower | 7. The Watch Captain | The contract. | markers |
-| Old Goldseam | the outlaw chief in the winch house above an ore cage with its lever, captives in shackles in the galleries (an Expert lock) | 8. The Winch House | The contract and the freeing. | markers |
+| Nine Reeds Waystation | the bandit leader at the tower door at dusk, a portcullis above it with its lever on the stair, archers on the tower top, carters in shackles in the cellar (an Expert lock) (the place's record holds the leader, the archers, the cellar and a carter held for ransom) | 8. The Signal Tower's Cellar | The contract and the freeing. | markers |
 | Sheh-Ara | caged hatchlings on the platforms (an Expert lock), raiders from the Rose and the great crocodile under the minder's platform (in the place's record) | 9. The Caged Hatchlings | The player frees the hatchlings. | markers |
 | Lilmoth | Lucan Vetrix's room at the stilt-hall tavern (an Expert lock), with the Listener's letter | 9. The Caged Hatchlings | The player learns of the sale. | a marker; the letter is a named thing |
 | Silt-Orrel Estate | the drain grate under the rice-barn (an Expert lock), the reed channel, a guard at the barn door, and the boat landing outside where the Eldest waits | 10. The Drain Grate | The player opens the Eldest's way. | the Eldest tells them; markers |
@@ -363,7 +364,6 @@ from the player at the landing while they wait outside the house.
 
 ### What it changes elsewhere
 
-- The earlier `shadowscales.md` is overwritten by this page.
 - *Place records:* Archon's sealed school as the order's seat, with Beem-Xal's house and its cellar door; Black-Tongue
   Brews in Lilmoth as the branch; Ra'tal Den's hearth chamber as the trial ground; the traps named above.
 - *Lore:* the hidden order, Ukka-Teel, the planted test and the cover story about Veezara are extrapolations, grounded

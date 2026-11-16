@@ -117,7 +117,7 @@
     "09a57327e0"
    ],
    "thing": "the tree-minders' hall as a building that can be entered, with a place inside where Okeeh-Ja stands",
-   "line": "many-root",
+   "line": "sisei-xul",
    "rests": {
     "space": "01BlackRoseJail"
    },
@@ -148,7 +148,7 @@
     "600bad59e1"
    ],
    "thing": "Xilsa-Jee and Hixee-Ra where they already stand by day, in the crowd at the sacred tree in the middle of the town",
-   "line": "many-root",
+   "line": "sisei-xul",
    "rests": {
     "person": "helstrom.C72K61PGJ6NNZ53Z8RWKR1SMY7"
    },
@@ -165,32 +165,6 @@
    ],
    "met": true,
    "why": "Met. Xilsa-Jee, the young root-tender, and the elder Hixee-Ra both stand by day in the crowd round the sacred tree, where a player can speak to them.",
-   "tier": "AGENT_INVENTED"
-  },
-  {
-   "seq": 6,
-   "from": [
-    "7e10d04e68"
-   ],
-   "thing": "a keeper's post at the root landing",
-   "line": "waykeepers",
-   "rests": {
-    "person": "helstrom.C2855503QH3SHVRJDJSG1E9MKM"
-   },
-   "signs": [
-    {
-     "sign": "person",
-     "detail": "Cheeval-Xu, spoken to, offers to call a rootworm to carry the player to other towns",
-     "person": "helstrom.C2855503QH3SHVRJDJSG1E9MKM"
-    }
-   ],
-   "met": true,
-   "why": "Met. Cheeval-Xu stands by day beside the sacred tree, where the rootworm landing is, and spoken to he offers rootworm travel, so a player knows him as its keeper. No hut or sign marks a post.",
-   "narrow": "Nothing is needed. A lantern or sign beside him would be a placed thing, if the story wants a post to see.",
-   "sight": {
-    "result": "recognised",
-    "said": "partly (second reading 2026-11-13, after the rooms were named and the spring and chest placed): the rootworm man by the Hist tree; nothing marks a post"
-   },
    "tier": "AGENT_INVENTED"
   }
  ],

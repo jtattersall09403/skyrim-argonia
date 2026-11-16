@@ -39,8 +39,9 @@ written to every writing rule and run through the prose linter; its section 9 li
 five calls for the owner on the ceiling, and every knock-on effect found by checking (the built first-act quests
 mq01, mq03 to mq05, Helstrom's studio needs and place files, place hooks, the roster, the province plan, about forty
 ledger rows, six faction lines, four lore extrapolations). The owner's rulings from the notes are in owner-bar and
-owner-rulings. Each note has a reply in the explorer, shown under the draft (collection `draftReplies`). Owed: `main.md`
-written again from the plot before any main quest is written; the rounds below for `main` are void until then.
+owner-rulings. Each note has a reply in the explorer, shown under the draft (collection `draftReplies`).
+Owed: the main quest outlines written from the plot before any main quest is written; the rounds below for `main`
+are void until then.
 
 ## The plot's knock-ons settled (2026-11-13, the owner's rulings)
 
@@ -58,8 +59,8 @@ to be rewritten. But don't rewrite yet". And on #71 he approved the plot's six c
   roster follow the plot; the root-herald of Jal-Veesa is Vosh-Leera; the plot's four extrapolations are in
   `story/lore/extrapolation/argonia-4e201-state.md` section 11.
 - Marked "to be rewritten", each with what in it is untrue by section, not rewritten: the Reed-Sail, the Sunken
-  Archive, the Waykeepers, Many-Root, the Chainbreakers (new world), the Umbriel Witness. `main.md` is marked
-  replaced by the plot. Item 1's rounds for these six wait for their rewrite.
+  Archive, the Waykeepers, Many-Root, the Chainbreakers (new world), the Umbriel Witness.
+  The old main quest line is marked replaced by the plot. Item 1's rounds for these six wait for their rewrite.
 - The six ceiling additions are in quest-form, blocks ("Blocks owed") and quest-system; each is a new block proven
   once before the plot's quests use it. In the finale Cuts-the-Old-Knot is already in the cavern when the player
   arrives; nobody follows the player.

@@ -27,7 +27,9 @@ are graves.
 
 Its skills are Conjuration, all of it, with Enchanting for the soul gems, Destruction and Restoration's
 Necromantic Healing and its spells against the undead, which a necromancer uses on a rival's dead. Its enemy is the
-Sisei-Xul, who stake the dead so that nothing can raise them. Inside the house, the factor and the bone-mistress
+Sisei-Xul, who stake the dead so that nothing can raise them. The house is kin by an old marriage to the Ulvarys
+house of Thorn, which buys Owings ([owing-house](owing-house.md)). The two houses do not speak: the Ulvarys say they
+deal in the living and want nothing of the dead. Inside the house, the factor and the bone-mistress
 want different houses, and both are waiting for the old master to die. Joining gives the player the house's black
 arts one spell a quest, its gold and, at the end, the house itself.
 
@@ -106,10 +108,10 @@ says so, and the guards stand few and apart.
 
 | Rank | Given after | Reward |
 |---|---|---|
-| Hireling | quest 1 | the house's black robes (Skyrim's necromancer robes, under our name), five common soul gems and the house's traders: the stall in Thorn and the herbalist of Kaochalit's outer tomb |
+| Hireling | quest 1 | the house's black robe (Skyrim's Dragonborn Dunmer robe, under our name), five common soul gems and the house's traders: the stall in Thorn and the herbalist of Kaochalit's outer tomb |
 | Gravewright | quest 3 | the Coffle-Whip (an Animated Armoury whip, enchanted to absorb stamina) and the tome of Raise Zombie |
-| Soul-Factor | quest 6 | a rapier of the house (Animated Armoury, enchanted with Soul Trap), the tome of Conjure Ghost and the use of the house's enchanter in the hall at Ovezza |
-| Bone-Master | quest 11 | the Bone-Master's robes (enchanted to fortify Conjuration and magicka), two black soul gems and the tome of Dead Thrall |
+| Soul-Factor | quest 6 | a bonemold helm and a dagger of the house (Skyrim's Dragonborn bonemold helm and Dunmer dagger, under our names, the dagger enchanted with Soul Trap), the tome of Conjure Ghost and the use of the house's enchanter in the hall at Ovezza |
+| Bone-Master | quest 11 | the Bone-Master's robes (DX Necromancer Robes, under our name, enchanted to fortify Conjuration and magicka), two black soul gems and the tome of Dead Thrall |
 | Master of the House | quest 13 | section 7 |
 
 ### Act I: the front
@@ -119,7 +121,9 @@ Ervyn watches the player cast and sends them to the old shaft of Coldbrine, past
 camp beyond the walled gallery. Neeja waits there and tells the player what the house is in a few plain words. One of
 the house's diggers raised the salt-kept dead of the walled gallery and lost them, and they killed him. Neeja
 teaches Command Lesser Undead. The dead are loose in the gallery, with the old giant mudcrab that dug in from the
-brine pools. The player commands the dead to fight the crab, or puts both down by fire and conjuring. In the dead
+brine pools, unless the Chainbreakers' 1, The Salt Shed, has killed it. The player commands the dead to fight the
+crab, or puts the dead down by fire and conjuring. The Sisei-Xul's side of this gallery is their 3, The Walled
+Gallery. In the dead
 digger's satchel is the house's binding-stone, carved with a spider in a circle. The player takes it to Neeja and is
 made a Hireling. *Leads on:* Neeja says the house's carts take the salt dead past Marshgate Watch, and its sergeant
 has started asking questions. The journal marks the watch.
@@ -127,13 +131,13 @@ has started asking questions. The journal marks the watch.
 **2. The Blind Gate** (Marshgate Watch, a road post south of Thorn; Fort Thornmoth, the toll fort west of the
 city). Fort Thornmoth has a guard who lets the house's cart through untouched every few days. At Marshgate Watch the
 sergeant has found out a warden of his own taking pay to let boats through, and means to report both to Fort
-Thornmoth. Neeja teaches Conjure Flame Atronach. The sergeant patrols the ditch road among the crocodiles and giant
+Thornmoth. (That warden is the one the Free Marque's 8, The Hollow Tide Run, pays to look away.) Neeja teaches Conjure Flame Atronach. The sergeant patrols the ditch road among the crocodiles and giant
 snakes. The player kills him there with a conjured atronach, so that no blade of theirs is seen. Or they take his
 report from the chest in the watch-house (an easy lock) and burn it. Or they pay him the house's purse of 300
 gold, which Ervyn takes out of the player's reward. *Leads on:* Ervyn pays what is left and gives the player a
 buyer's errand, the house's relic trade at its plainest: Kornakim, a Velothi watch-hold down the bight.
 
-**3. The Spell-Fire** (Kornakim, a ruined Velothi watch-hold on Hatandros Bight). Neeja teaches Soul Trap. A brazier
+**3. The Fire-Stone** (Kornakim, a ruined Velothi watch-hold on Hatandros Bight). Neeja teaches Soul Trap. A brazier
 at the top of Kornakim's tower holds a spell-lit fire that has never gone out, because a soul is bound in its
 fire-stone. The house wants the stone. The household ghosts keep the inner hall, and the watch-captain's ghost holds
 the tower stair. The player fights the hall or slips round it through the sinkhole in the courtyard, into the sea
@@ -154,7 +158,8 @@ player. *Leads on:* the house's man at Joxhi pays the player and says Ervyn want
 for the ancestor tablet carved with the sign of the holding's last lord. He gives the player an amulet of
 waterbreathing to break at the arcane enchanter of the Conclave of the One in Thorn, which teaches them the
 enchantment (Enchanting 30). The lord's ghost carries the key to the lowest hall, and the lowest hall is flooded,
-with slaughterfish trapped in it. The player walks the causeway to the island, fights or turns the ghosts in the
+with slaughterfish trapped in it. (Runaways hide in the upper halls in the Chainbreakers' 7, Out by Sea, and the
+lord's chest is their reward too.) The player walks the causeway to the island, fights or turns the ghosts in the
 upper halls, and kills the lord's ghost for the key. They enchant a ring or a helm with waterbreathing from their
 own gems and dive the lowest hall to the chest that holds the tablet. An Argonian player needs no enchantment. *Leads
 on:* Ervyn sells the tablet. Dalvela, the bone-mistress, sends word through him that Tsonac's minder is about to seal
@@ -263,12 +268,12 @@ plays one line or the other.
 | Event | Here | In the Sisei-Xul's line |
 |---|---|---|
 | The salt dead of Coldbrine Mine's walled gallery | 1. The Demonstration: the player commands them for the house | 3. The Walled Gallery: the player stakes them. This shuts the house's door |
-| Tazhul's stakes and the store under Joxhi | 4. The Pulled Stakes: the player pulls them | 5. The Pulled Stakes: the player brings them back |
+| Tazhul's stakes and the store under Joxhi | 4. The Pulled Stakes: the player pulls them | 5. Drag-Marks to Joxhi: the player brings them back |
 | The welkynd stone under Tselan | 6. The Mason's Stone: the player takes it | 4. Under the Oldest Foundation: the player stops the house's man |
 | The *Silt Bride*'s log | 7. The Drowned Coffle: Morvayn burns it | 7. The Slaver's Log: the Vicecanon closes the stall with it |
 | The urn of Keel-Vaxa | 9. The Urn: the player steals it | 8. The Empty Niche: the player follows the thieves |
 | The barred cellar at Ovezza | 8. Below the Spider: the house lets the player in | 10. The Barred Cellar: the player breaks in |
-| The raid on Ixu-Maan | 11. The Night at Ixu-Maan: the order is beaten | 11. The Night at Ixu-Maan: the raid is broken |
+| The raid on Ixu-Maan | 11. The Night at Ixu-Maan: the order is beaten | 11. Hold the Egg Pools: the raid is broken |
 | The *Saltrice Queen* and Kharraluhl | 12. The House Divided | 12. The Thrall Ship |
 | The hall under the well at Kaochalit | 13. The Old Master | 13. Under the Well |
 
@@ -280,8 +285,9 @@ plays one line or the other.
   creature set under our names, each wearing its stake (a xul-vaat mesh of Black Marsh & Valenwood as a worn item).
 - **The *Saltrice Queen*:** the ship interior of Thorn's first source, moored at the quay.
 - **The house's mark:** a spider in a circle on crates, a binding-stone and a key bow.
-- **Items:** Skyrim's necromancer robes, soul gems, welkynd stone and urn. Animated Armoury's whip and rapier. The
-  staff of Morvayn, each under our names. The custom enchantment Morvayn's Due is the line's last reward.
+- **Items:** Skyrim's Dragonborn Dunmer robe, bonemold helm and dagger, soul gems, welkynd stone and urn. Animated
+  Armoury's whip. DX Necromancer Robes' robes and Morvayn's staff, the one that comes with them, each under our
+  names ([reward-gear](../reward-gear.md)). The custom enchantment Morvayn's Due is the line's last reward.
 - **Spells:** all from [Spells by use](../spell-groups.md): Command Lesser Undead, Command Undead and Command Greater
   Undead, Conjure Ghost and Resurrection come from Magic Expanded.
 
@@ -293,7 +299,7 @@ plays one line or the other.
 | Coldbrine Mine | a diggers' camp in the old shaft beyond the walled gallery with Neeja; the salt dead loose in the gallery; the old giant mudcrab from the brine pools; the dead digger's satchel with the binding-stone (the record's old shaft, walled gallery and brine pools) | 1. The Demonstration | The player commands or puts down the dead and takes the stone. | Ervyn's directions; Neeja speaks first; markers |
 | Marshgate Watch | the sergeant on the ditch road, and his report in a chest with an easy lock in the watch-house (the record's sergeant) | 2. The Blind Gate | The player kills him, burns the report or pays him. | Neeja tells them; markers |
 | Fort Thornmoth | the guard who lets the house's cart through (the record's guard) | 2. The Blind Gate | The player learns how the house's carts pass. | he speaks of the cart; a marker |
-| Kornakim | the spell-fire brazier on the tower with its fire-stone, the watch-captain's ghost on the stair, the courtyard sinkhole to the sea cave (the record's brazier, ghost and sinkhole) | 3. The Spell-Fire | The player takes the stone. | Ervyn tells them; the stone is a named thing; markers |
+| Kornakim | the spell-fire brazier on the tower with its fire-stone, the watch-captain's ghost on the stair, the courtyard sinkhole to the sea cave (the record's brazier, ghost and sinkhole) | 3. The Fire-Stone | The player takes the stone. | Ervyn tells them; the stone is a named thing; markers |
 | Tazhul | three staked graves on the trap-line path, the hostile hunters on the line | 4. The Pulled Stakes | The player pulls the stakes past the hunters. | Neeja tells them; markers on the stakes |
 | Joxhi | the buried Ayleid hall the diggers broke into, with the house's man and its store of stakes (the record's buried hall) | 4. The Pulled Stakes | The player delivers the stakes. | a marker on the house's man |
 | Thorn | the arcane enchanter in the Conclave of the One (the record's enchanter) | 5. The Lord's Tablet | The player learns waterbreathing as an enchantment. | Ervyn tells them; a marker |
@@ -322,7 +328,6 @@ named thing taken or a named person dead.
 
 ### What it changes elsewhere
 
-- *The old line* `thorn-ash-reed.md` is deleted. This page holds its work.
 - *Place records:* Coldbrine Mine (the diggers' camp in the old shaft), Marshgate Watch and Fort Thornmoth (the
   house's carts), Kornakim (the fire-stone), Joxhi (the house's store), Bala Karag (the tablet's buyer is Ervyn),
   Ovezza (the water door and the hall), Virtluush (Dalvela's apprentice), Kharraluhl and Kaochalit take the rows

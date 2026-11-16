@@ -78,7 +78,8 @@ runaways for it. Its barges carry a crew of four and a master. At Julo it keeps 
 
 ## Its kin
 
-The Dunmer necromancers who hide behind a trading house in Thorn are kin of the Ulvarys by an old marriage. The two
+The Rothalen house ([rothalen-house](rothalen-house.md)), the Dunmer necromancers who hide behind a trading house in
+Thorn, are kin of the Ulvarys by an old marriage. The two
 houses do not speak. The Ulvarys say they deal in the living and want nothing of the dead.
 
 ## The places the Chainbreakers strike
@@ -88,7 +89,7 @@ houses do not speak. The Ulvarys say they deal in the living and want nothing of
 | Saltmeadow Farm | a guar herder's Owing, sold on to the farm | Who Breaks Chains |
 | Coldbrine Mine | six diggers locked in the bunk shed, and an overseer | 1. The Salt Shed |
 | Stormhold | catchers hunting a runaway in the Silyanorn tunnels, and the house's factor | 2. The Catchers Below |
-| Tenmal Pits | three delvers behind the old wall, bought by the pit-boss | 3. The Walled Gallery |
+| Tenmal Pits | three delvers behind the old wall, bought by the pit-boss | 3. Behind the Old Wall |
 | Vandrel Farm | Fenas Ulvarys, two catchers and the Vandrel family's Owing | 4. The Dunmer's Field |
 | Thornway Watch | wardens who set Owings on carters and sell them to the house | 5. The Toll Chain |
 | Ranvos Landing | the ferry family's Owing and two catchers | 6. The Ferryman's Price |

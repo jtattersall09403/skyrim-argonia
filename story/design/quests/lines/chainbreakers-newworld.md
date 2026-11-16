@@ -34,8 +34,8 @@ Light Armor), Sneak and Lockpicking, and Speech used only to intimidate. A Chain
 roll or face what follows.
 
 **Their enemy** is the Ulvarys house of Thorn, a Dunmer merchant family that buys Owings and works them as slaves in
-all but name ([owing-house](owing-house.md)). **Their allies** are the pirates, who carry freed people out of the
-province by sea. **Joining** gives the player a set of light Argonian armour, a set of lockpicks, a bed in every safe
+all but name ([owing-house](owing-house.md)). **Their allies** are the Free Marque, the pirates of Skeith Isle
+([pirates](pirates.md)), who carry freed people out of the province by sea from the causeway of Bala Karag. **Joining** gives the player a set of light Argonian armour, a set of lockpicks, a bed in every safe
 house as their rank rises, and work that frees a named person in every quest.
 
 ## 2. The thing at stake
@@ -79,8 +79,8 @@ house's letters in quest 11.
 
 | Who | What they want | What they hide, or what it costs |
 |---|---|---|
-| **Mere-Eeja**, leader of the Chainbreakers, in the Well-Room under Stormhold | every long Owing ended by a ruling that holds for good | she was born owing in Thorn's saltrice fields, under months her mother never finished. She would rather win in law, and she will give up the band to do it |
-| **Okan-Wei**, a Chainbreaker who poses as a held worker | new hands who will act | he lets strangers believe he is a captive until they prove themselves |
+| **Mere-Halu**, leader of the Chainbreakers, in the Well-Room under Stormhold | every long Owing ended by a ruling that holds for good | she was born owing in Thorn's saltrice fields, under months her mother never finished. She would rather win in law, and she will give up the band to do it |
+| **Jeen-Wei**, a Chainbreaker who poses as a held worker | new hands who will act | he lets strangers believe he is a captive until they prove themselves |
 | **Llaros Seloth**, a Dunmer who keeps the Thorn safe house | the house broken, and his own name out of its great roll | he set many of the months in that roll. He still sells the house a safe house for coin, and he lies about why he left |
 | **Aldyne Ulvarys**, matriarch of the Ulvarys house | her family's fortune, and the Owing left as it is | she writes the great roll herself. She argues, honestly, that without the Owing the province has no law at all |
 | **Ah-Kesh**, the house's catch-captain, an Argonian of an ex-Archein family | his pay, and the Chainbreakers' leader caught | his family set Owings at the crossings for generations. He is the one fighter the house cannot replace |
@@ -100,7 +100,7 @@ The first such rumour starts a small quest, **Who Breaks Chains**. Its journal n
 Farm, a Spray-Folk grazing and rice farm south of Seafalls in the east. Rumours heard later add the name of the
 person who told them.
 
-**The work roll.** At Saltmeadow a washed-out Argonian herds the guar. He is Okan-Wei. He tells the player his
+**The work roll.** At Saltmeadow a washed-out Argonian herds the guar. He is Jeen-Wei. He tells the player his
 story: his Owing was bought by a Thorn house and sold on to this farm, and it has grown every season. His roll is in
 the farmhouse, in the chest by the householder's bed. He says the player looks as if they know what a roll is. The
 marker moves to the chest. The journal says the player may take it quietly, frighten the householder into giving it
@@ -113,14 +113,14 @@ up or fight him for it. Every way is open to a new character.
 - *By a fight.* The householder and his son are weak and yield after a few blows. Either yields and gives up the
   roll. Killing them is murder, and the farm's people report it.
 
-The player gives the roll to Okan-Wei. He tears it in two and tells the truth: he is a Chainbreaker, and the farm's
+The player gives the roll to Jeen-Wei. He tears it in two and tells the truth: he is a Chainbreaker, and the farm's
 holder bought him knowing what his months had become. The band wants people who act. He invites the player in. The
 band's nearest house is in Thorn, kept by Llaros Seloth, and the map marks his door. The band's seat is the Well-Room
 under Stormhold, which the player will be shown when they have done a job. The screen fades to black. When it
-clears, Okan-Wei is gone. **Who Breaks Chains** completes.
+clears, Jeen-Wei is gone. **Who Breaks Chains** completes.
 
 **What shuts the door.** The house's factor in Stormhold offers the player 100 gold for any roll they carry. A player
-who sells him Okan-Wei's roll fails **Who Breaks Chains**, and the Chainbreakers will not have them. No other line
+who sells him Jeen-Wei's roll fails **Who Breaks Chains**, and the Chainbreakers will not have them. No other line
 shuts it: the Ulvarys house cannot be joined.
 
 ## 6. The chain of safe houses
@@ -131,7 +131,7 @@ the rank of Breaker (quest 9). Each is a small addition to its place: a room, a 
 
 | Place | The safe house |
 |---|---|
-| Stormhold | the Well-Room in the Silyanorn tunnels, the seat, with Mere-Eeja |
+| Stormhold | the Well-Room in the Silyanorn tunnels, the seat, with Mere-Halu |
 | Thorn | Llaros Seloth's house in the Argonian timber quarter |
 | Tenmal | the back room of the long wayhouse |
 | Ranvos Landing | the roadhouse loft, kept by the ferry-keeper's family (after quest 6) |
@@ -166,10 +166,10 @@ faction's first ranks. The last is one of two, and the player is told before the
 
 | Rank | Given after | Reward |
 |---|---|---|
-| Link | joining | a set of light Argonian armour (Sign of Cipactli), the Runner's Scales, and ten lockpicks |
-| Hammer | quest 5 | the steel halberd Chain-Cutter or the steel claws Hook and Hasp (Animated Armoury), as the player chooses |
+| Link | joining | a set of Argonian leathers (Black Marsh & Valenwood), the Runner's Scales, and ten lockpicks |
+| Hammer | quest 5 | the steel claws Hook and Hasp or the steel quarterstaff Gate-Bar (Animated Armoury), as the player chooses |
 | Breaker | quest 9 | the Breaker's Plate, a set of heavy Argonian armour (Sign of Cipactli), and a bed in every safe house |
-| Keyholder | quest 12 | one of three enchanted weapons: the pike Coffle-Breaker, which absorbs stamina; the quarterstaff Weir-Pole, which staggers and slows; or an elven bow, the Long Reach, whose arrows can paralyse |
+| Keyholder | quest 12 | one of three enchanted weapons: the halberd Chain-Cutter, which absorbs stamina; the quarterstaff Weir-Pole, which staggers and slows; or an elven bow, the Long Reach, whose arrows can paralyse |
 | Unchained, or Firebrand | quest 15 | section 9 |
 
 ### Act I: the first breaks
@@ -180,22 +180,23 @@ by. At Coldbrine Mine, south-west of the city, six diggers are held under the ho
 bunk shed each night, and the overseer carries the key. The overseer speaks first at the headframe. An easy Speech
 check (about 15) makes him give up the key. If it fails, he and two hired hands fight, and they are weak. By night
 the shed's Novice lock can be picked while the overseer sleeps in his hut. One digger, Huzei, will not go until his
-father's bones are taken out of the walled gallery where a collapse killed bonded labourers. A giant mudcrab that has
-dug into that gallery guards them. The player kills it or slips past it, and brings out the bones in a sack to be
-staked. The diggers fade and are gone. *Skills:* any combat skill, Sneak, Lockpicking, Speech to intimidate.
-*Reward:* 100 gold, five lockpicks and the gallery's chest. *Leads on:* Llaros says the player has earned a meeting
+father's bones are brought out to be staked. His father died in the collapse of the old shaft, and the old giant
+mudcrab dragged his body into its burrow between the brine pools and the walled gallery, outside the wall. The player
+kills the crab or slips past it, and brings out the bones in a sack. (The walled gallery itself is the Sisei-Xul's 3
+and the Rothalens' 1.) The diggers fade and are gone. *Skills:* any combat skill, Sneak, Lockpicking, Speech to intimidate.
+*Reward:* 100 gold, five lockpicks and the chest in the crab's burrow. *Leads on:* Llaros says the player has earned a meeting
 with the band's leader. He marks the Well-Room under Stormhold.
 
-**2. The Catchers Below** (Stormhold, the northern gate city). Mere-Eeja meets the player in the Well-Room and tells
-them what the band is. Her first job is in the tunnels. A runaway, Xil-Teeus, hides in the crystal galleries, and two
+**2. The Catchers Below** (Stormhold, the northern gate city). Mere-Halu meets the player in the Well-Room and tells
+them what the band is. Her first job is in the tunnels. A runaway, Hasa-Teeus, hides in the crystal galleries, and two
 of the house's catchers are hunting her there. The marker points into the galleries. The catchers start calm. A
 Speech check of about 20 sends them off with a warning. If it fails or the player draws first, they fight. A quiet
-player goes round by the low gallery and reaches Xil-Teeus unseen. She knows the way out and needs only to be told
-where the catchers stand. Xil-Teeus thanks the player. The screen fades, and she is gone. *Skills:* any combat skill,
-Sneak, Speech to intimidate. *Reward:* 100 gold. *Leads on:* Mere-Eeja has had word from Tenmal, where a delver got
+player goes round by the low gallery and reaches Hasa-Teeus unseen. She knows the way out and needs only to be told
+where the catchers stand. Hasa-Teeus thanks the player. The screen fades, and she is gone. *Skills:* any combat skill,
+Sneak, Speech to intimidate. *Reward:* 100 gold. *Leads on:* Mere-Halu has had word from Tenmal, where a delver got
 a message out of the crystal pit. The journal marks the wayhouse at Tenmal.
 
-**3. The Walled Gallery** (Tenmal, a river village; Tenmal Pits, a crystal pit above it). The pit-boss works three
+**3. Behind the Old Wall** (Tenmal, a river village; Tenmal Pits, a crystal pit above it). The pit-boss works three
 delvers bought from the house behind the old wall in the deep galleries, where giant spiders nest. One delver,
 Beeko-Raj, came down to the wayhouse for food and passed word out. The pit-boss speaks first at the adit. A Speech
 check of about 30 frightens him into opening the wall's door. If it fails he and his foreman fight. A quiet player
@@ -204,7 +205,7 @@ door are the spiders and their brood-mother, and the three delvers holding a gal
 the brood-mother or gets the delvers to the door past her. They fade and are gone. *Skills:* any combat skill,
 Block, Sneak, Lockpicking, Speech to intimidate. *Reward:* 150 gold and a cut Stormhold Crystal ring. *Leads on:* in
 the pit-boss's hut is a letter from the house's overseer at Vandrel Farm, who has a Dunmer family of the valley under
-an Owing. Mere-Eeja reads it and marks the farm.
+an Owing. Mere-Halu reads it and marks the farm.
 
 **4. The Dunmer's Field** (Vandrel Farm, a saltrice farmstead south-west of Fort Willowmoth). The Vandrels are
 Dunmer, tenants of the city's farm-holders, and the house holds their Owing as well. In the saltrice country Dunmer
@@ -216,7 +217,7 @@ fight, and he yields when he is badly hurt and gives up the roll. By night the b
 while the catchers drink. Crocodiles lie in the irrigation ditch. Saveri fades and is gone, and the family keep their
 farm free. *Skills:* any combat skill, Sneak, Lockpicking, Speech to intimidate. *Reward:* 200 gold. *Leads on:* if
 Fenas lived, he rides to Thorn and the house knows the band's name. Either way, Saveri's mother says the house buys
-months at the crossings too, and a carter's son is held at Thornway Watch. Mere-Eeja marks the post.
+months at the crossings too, and a carter's son is held at Thornway Watch. Mere-Halu marks the post.
 
 **5. The Toll Chain** (Thornway Watch, a toll post on the Tsonac track). The four wardens of the post take a toll from
 the stone carts, and when a carter cannot pay they set an Owing on him "for damage to the way". They sell those
@@ -227,7 +228,7 @@ the post fights, and Fort Thornmoth will remember it: its quartermaster will not
 night two of the wardens sleep, one stands at the chain, and the watch house has an Apprentice lock. Giant snakes
 come to the well after dark, which a quiet player can use as cover or must avoid. The son fades and is gone, and
 Romi-Tei drives on. *Skills:* any combat skill, Archery from the ridge, Sneak, Lockpicking, Speech to intimidate.
-*Reward:* the rank of Hammer (section 7), and 200 gold. *Leads on:* Mere-Eeja says that the band needs a chain of
+*Reward:* the rank of Hammer (section 7), and 200 gold. *Leads on:* Mere-Halu says that the band needs a chain of
 houses now, from the north into the east, before the house answers. Her first link is the ferry at Ranvos Landing,
 and she marks it.
 
@@ -239,14 +240,15 @@ the next. Gulu-Tasa speaks first and tells the truth if a Speech check of about 
 own family's Owing and he pays it in runaways. If it fails, he says nothing and the catchers come down to see who is
 asking, and fight. A quiet player can search the roadhouse loft (Adept lock) while the catchers sleep and find the
 roll that holds the ferry family, with the catchers' orders. Whichever way the player learns it, they may burn the
-family's roll before Gulu-Tasa, who then keeps the safe house honestly, or hand him to Mere-Eeja's judgement, in which
+family's roll before Gulu-Tasa, who then keeps the safe house honestly, or hand him to Mere-Halu's judgement, in which
 case the band keeps the landing without him and the roadhouse trader is closed to the player. The predators in the
 sedge and the Naga watching the road make the way there dangerous. *Skills:* any combat skill, Sneak, Lockpicking,
 Speech to intimidate. *Reward:* 200 gold. *Leads on:* among the catchers' orders is a note that four runaways wait at
-Bala Karag for a boat, and that the catchers mean to be there first. Mere-Eeja marks the island.
+Bala Karag for a boat, and that the catchers mean to be there first. Mere-Halu marks the island.
 
 **7. Out by Sea** (Ysan, a Stone-Sleeper landing; Bala Karag, a ruined Velothi stronghold on a rocky island). The
-pirates carry freed people out of the province by sea, and their crew bring a boat to Bala Karag's causeway after dark. At
+Free Marque carry freed people out of the province by sea, and their crew bring a boat to Bala Karag's causeway
+after dark. (The Rothalens' 5, The Lord's Tablet, robs the same ruin's lowest hall.) At
 Ysan, a landing where the quarrymen turn away any trader who asks after labour, the keeper of the safe house gives
 the player the signal. On the island the four runaways have hidden in the upper halls among the Velothi dead. The
 catchers came first and hold the causeway. There is no talking to them here: they are hostile from the start. The
@@ -256,7 +258,7 @@ player clears a way, or finds the runaways and lights the signal brazier on the 
 gone by sea. One of them, Tsleeksa, will not leave her Hist and stays at the landing. *Skills:* One-Handed,
 Two-Handed, Archery, Block, Sneak. *Reward:* 250 gold and the ghost lord's lowest-hall chest, whose key he carries, if
 the player goes down for it. *Leads on:* the keeper at Ysan sends word that a runaway who reached the Aroxhu
-spear-watch has seen the house's great roll. Mere-Eeja marks Redclay Watch.
+spear-watch has seen the house's great roll. Mere-Halu marks Redclay Watch.
 
 **8. Hold the Watch** (Redclay Watch, a mound-top spear-post on the Seafalls road). Tumma-Ra ran from the house's
 estate at Julo, where he carried the great roll's chest from boat to cellar. The spear-watch shelters him. The
@@ -269,11 +271,12 @@ dead. If Tumma-Ra dies, the quest fails. The player is then put out of the Chain
 journal says so, and a reload is the way back. The spear-watch fights at the player's side. *Skills:* Archery from the
 roof, any melee skill, Block, Heavy Armor. *Reward:* 300 gold and the attackers' gear. *Leads on:* Tumma-Ra fades and is
 gone, but first he tells the player that the great roll lies in the estate's cellar at Julo. He also says the
-fighters knew the safe house by name. The journal records it. Mere-Eeja asks who could have sold it. Llaros says it
+fighters knew the safe house by name. The journal records it. Mere-Halu asks who could have sold it. Llaros says it
 must have been the ferry.
 
 **9. The Island Keep** (Fort Gysilla, an Archwarden toll fort on an island of Lake Ulaish). The garrison, of old
-Archein families, takes the house's coin to hold runaways caught on the lake until the house's barge collects them.
+Archein families, keeps the lake's toll strongroom (the Eelskins' 8, The Toll Strongroom, robs it) and takes the
+house's coin to hold runaways caught on the lake until the house's barge collects them.
 Three are in the keep's lock-room now. The way in is across the water. The Archein captain speaks first at the gate
 and refuses. A Speech check of about 50 frightens him into opening the lock-room, because he fears the Vicecanons
 will learn he hires out the state's cells. If it fails, the garrison fights. A quiet player swims to the islet by
@@ -281,7 +284,7 @@ night, climbs the curtain wall where the walk is unmanned, and picks the lock-ro
 smith and quartermaster will not trade with a player who fought there. The three fade and are gone. *Skills:* any
 combat skill, Block, Sneak, Lockpicking, Speech to intimidate. *Reward:* the rank of Breaker, and 300 gold. *Leads
 on:* the captain, or the lock-room's guard book, says that the barge moors off Marzai each night on its way to Julo.
-Mere-Eeja marks Marzai.
+Mere-Halu marks Marzai.
 
 **10. The Lantern on the Lake** (Marzai, a clay-mound village on the lake's north-east shore). The ferryman at Marzai
 has seen a lantern on the lake at night where no boat should be. It is the house's barge, moored off the shore below
@@ -289,9 +292,9 @@ the kilns, with five held workers in its hold. The barge carries the house's cre
 master stands on the landing by day and speaks first. A Speech check of about 55 frightens him into opening the
 hold. If it fails, the crew fight on the deck. The quiet way is to swim out past the slaughterfish below the kilns by
 night, climb aboard at the stern and pick the hold's Expert lock while the crew sleep forward. The five fade and are
-gone. One, Keel-Raj, says the barge's next stop is Julo, where the house's estate keeps its fighters, and that its
-catch-captain is camped at the old Calvian Waystation on the northern road, hunting Mere-Eeja. *Skills:* any combat
-skill, Sneak, Lockpicking, Speech to intimidate. *Reward:* 350 gold and the master's sword. *Leads on:* Mere-Eeja
+gone. One, Weeta-Lan, says the barge's next stop is Julo, where the house's estate keeps its fighters, and that its
+catch-captain is camped at the old Calvian Waystation on the northern road, hunting Mere-Halu. *Skills:* any combat
+skill, Sneak, Lockpicking, Speech to intimidate. *Reward:* 350 gold and the master's sword. *Leads on:* Mere-Halu
 says that before they can go for Julo they need to know what the house knows of them. The house's letters are in its
 counting-house in Thorn. The journal marks it.
 
@@ -306,7 +309,7 @@ Llaros Seloth for safe houses, and the last he sold was Redclay Watch. The great
 Speaks-at-the-Falls has refused the house a favour. *Skills:* Sneak, Lockpicking, Speech to intimidate. *Reward:* 400
 gold from the factor's strongbox. *Leads on:* the journal marks Llaros's door. He admits it when shown the letter, and
 says he did it for coin and is ashamed. He lies again: he says he was never the house's assessor, only a clerk.
-Mere-Eeja keeps him on, because the band needs his house in Thorn. She sends the player to break the catch-captain.
+Mere-Halu keeps him on, because the band needs his house in Thorn. She sends the player to break the catch-captain.
 
 **12. The Catch-Captain** (Calvian Waystation, a ruined Imperial road station north of Jal-Veesa). Ah-Kesh camps in
 the ruin with hired scavengers. He carries the key to the cellar at Julo. He speaks first, by his fire. A hard Speech
@@ -314,7 +317,7 @@ check (about 70) makes him give up the key and leave the province. If it fails, 
 takes the key to his grave. A quiet player takes the key from his strongbox in the plinth's hollow (Expert lock)
 while he sleeps. In that case he lives and is at Julo in quest 14, and the fight there is harder. In every case the
 player holds the key. *Skills:* any combat skill, Sneak, Lockpicking, Speech to intimidate. *Reward:* the rank of
-Keyholder, and the scavengers' boss chest. *Leads on:* Mere-Eeja says that burning the great roll would free the
+Keyholder, and the scavengers' boss chest. *Leads on:* Mere-Halu says that burning the great roll would free the
 names in it tonight. She means to do more. She sends the player to Speaks-at-the-Falls, who rules in Stormhold, and
 the journal marks her hall.
 
@@ -343,13 +346,14 @@ staff if she is dead, or her ring if she yielded. *Leads on:* with the great rol
 player to the Well-Room.
 
 **15. The Hearing** (Stormhold). In the Well-Room the player opens the great roll and reads what it holds. Llaros's
-name is on every second page as the assessor who set the months. Mere-Eeja and Llaros argue before the player, who
+name is on every second page as the assessor who set the months. Mere-Halu and Llaros argue before the player, who
 holds the roll.
 
-- **Mere-Eeja:** take it to Speaks-at-the-Falls. With the house's own hand as proof, she can rule that an Owing ends
+- **Mere-Halu:** take it to Speaks-at-the-Falls. With the house's own hand as proof, she can rule that an Owing ends
   when its months end. It may not be sold, grown or passed on, and only an arbitrator with a Nisswo witness may set
-  it (`topics/labour-and-bondage.md:158-159`). The ruling binds every Owing in the province, because the state's
-  working offices sit at Stormhold (`extrapolation/argonia-4e201-state.md:303-305`).
+  it (`topics/labour-and-bondage.md:158-159`). The ruling binds every Owing set or sold in the north and east,
+  where the Vicecanons of Stormhold and Thorn judge and where the Owing has drifted
+  (`extrapolation/argonia-4e201-state.md:707-709`). The Archwardens' writ ends at their forts' walls and has no say.
 - **Llaros:** burn it here. Every month in it is then finished, and by custom a finished Owing is never spoken of
   again (`topics/labour-and-bondage.md:75-76`). Every name in it is free tonight. The house is left with nothing it
   can prove.
@@ -362,23 +366,22 @@ gives and costs.
 ## 8. The people the player frees
 
 Each person freed in a quest later stands at a fixed post of their own. Each is a cheap trainer or a fair trader to
-the player, and turns up once in another line with a helpful thing that the line never needs. The other lines are
-being written beside this one, so the last column names the quest of the main plot where it can, and the line alone
-where it cannot.
+the player, and turns up once in another line with a helpful thing that the line never needs. The last column names
+the quest where they help.
 
 | Who | Freed in | Where they then stand | What they give the player | In another line |
 |---|---|---|---|---|
-| Xil-Teeus | 2. The Catchers Below | Stormhold's west quarter mounds | Sneak training to Expert at half price | in the main quest's 12, The Cellar Door, she has heard of the trapdoor in Fort Chalkmoth's yard |
-| Huzei | 1. The Salt Shed | the smith's yard by Thorn's west gate | iron and steel arms bought and sold at fair prices | in the necromancers' or the Argonian order's line, a sack of grave salt for a staking |
-| Romi-Tei's son | 5. The Toll Chain | Tsonac's quay, at his father's cart | stone, rope and travel goods at fair prices | in the pirates' line, the tide times at Ysan |
-| Beeko-Raj | 3. The Walled Gallery | Tenmal's wayhouse | cut Stormhold Crystal at fair prices, and Block training to Adept at half price | in the main quest's 10, Down into Vicrium, a lamp that does not go out under water |
-| Saveri Vandrel | 4. The Dunmer's Field | Vandrel Farm | Archery training to Expert at half price | in the Imperial merchants' line, a word on which Thorn buyers pay late |
-| Gulu-Tasa's family | 6. The Ferryman's Price, if the roll is burned | Ranvos Landing | the ferry and the roadhouse at no charge | in the main quest, a boat's word on where the Unbound crossed |
-| Tsleeksa | 7. Out by Sea | Guxal, the sap-gatherers' hamlet | Light Armor training to Expert at half price | in the Argonian order's line, a fresh sap-cup for a healing |
+| Hasa-Teeus | 2. The Catchers Below | Stormhold's west quarter mounds | Sneak training to Expert at half price | in the main quest's 12, The Cellar Door, she has heard of the trapdoor in Fort Chalkmoth's yard |
+| Huzei | 1. The Salt Shed | the smith's yard by Thorn's west gate | iron and steel arms bought and sold at fair prices | in the Sisei-Xul's 6, Grave-Iron, a sack of Coldbrine salt for the spikes (Gam-Meesh also sells it) |
+| Romi-Tei's son | 5. The Toll Chain | Tsonac's quay, at his father's cart | stone, rope and travel goods at fair prices | in the Free Marque's 8, The Hollow Tide Run, the hour the wardens of Marshgate Watch change |
+| Beeko-Raj | 3. Behind the Old Wall | Tenmal's wayhouse | cut Stormhold Crystal at fair prices, and Block training to Adept at half price | in the main quest's 10, Down into Vicrium, a sketch of the flooded drift's turns, which shortens the swim |
+| Saveri Vandrel | 4. The Dunmer's Field | Vandrel Farm | Archery training to Expert at half price | in the Nibenese Company's 3, The Captain's Chain, the word that Hareel lowers his shield after each blow |
+| Gulu-Tasa's family | 6. The Ferryman's Price, if the roll is burned | Ranvos Landing | the ferry and the roadhouse at no charge | in the main quest's 5, The Handler, the word that the go-between's two hired men drink apart from him at night |
+| Tsleeksa | 7. Out by Sea | Guxal, the sap-gatherers' hamlet | Light Armor training to Expert at half price | in the Sisei-Xul's 2, The Painless Cup, three imp stools from Guxal's banks |
 | Tumma-Ra | 8. Hold the Watch | Inoja's market ground | general goods at fair prices, and Two-Handed training to Adept at half price | in the main quest's 13, The Kings' Gate, three potions of waterbreathing |
-| Naxi-Ru | 9. The Island Keep | Truowa's lake shore | One-Handed training to Expert at half price | in the Lamps' line, a witness's word in one case |
-| Keel-Raj | 10. The Lantern on the Lake | Marzai's landing | Heavy Armor training to Expert at half price | in the thieves' line, the night the barge crews drink |
-| Ulasi | 13. The Vicecanon's Price | Stormhold, by the Dunmer merchant in the Ayleid compound | Lockpicking training to Master at half price, and potions at fair prices | in the Shadowscales' line, a sleeping draught |
+| Naxi-Ru | 9. The Island Keep | Truowa's lake shore | One-Handed training to Expert at half price | in the Eelskins' 8, The Toll Strongroom, the hour the guard at Fort Gysilla's water-gate changes |
+| Weeta-Lan | 10. The Lantern on the Lake | Marzai's landing | Heavy Armor training to Expert at half price | in the Lamps' 2, The Cloth on the Quay, where the quay smuggler hides the cloth |
+| Ulasi | 13. The Vicecanon's Price | Stormhold, in a room above the bridge tavern | Lockpicking training to Master at half price, and potions at fair prices | in the Shadowscales' 3, The Supper at Tal-Neesh, a sleeping draught for the farm's dog |
 | Julo's held workers | 14. The Great Roll | Julo's paddies, farming for themselves | a free bed and food | none |
 
 ## 9. The endings
@@ -389,7 +392,7 @@ player chooses, the journal says what each gives and costs.
 **The Ruling.** The player gives the great roll to Speaks-at-the-Falls.
 
 - *What happens:* the hearing is held after a fade. Speaks-at-the-Falls rules that no Owing may be sold, grown or
-  passed on, and that only an arbitrator with a Nisswo witness may set one. Every long Owing in the province is
+  passed on, and that only an arbitrator with a Nisswo witness may set one. Every long Owing of the north and east is
   reckoned again under that rule. The house is dissolved. If Aldyne lives, she is sent over the border into
   Morrowind, as Heita-Meen sent the Dres slavers (`stormhold.md:67-70`). This rids the province of the abused form of
   the Owing for good, and keeps the fair form.
@@ -399,19 +402,19 @@ player chooses, the journal says what each gives and costs.
   held by Paralysis, and their Speech checks to intimidate count as twenty points higher.
 - *It costs:* Llaros Seloth is put under an Owing for the months he set. His house in Thorn closes, and so does his
   trade. The house's coffers at Julo go to the people it held, so the player takes nothing from them. The band's raids
-  end: there are no more Chainbreaker jobs after this. Mere-Eeja becomes an arbitrator's witness and leaves the
+  end: there are no more Chainbreaker jobs after this. Mere-Halu becomes an arbitrator's witness and leaves the
   Well-Room.
 
 **The Fire.** The player burns the great roll in the Well-Room.
 
 - *What happens:* every name in it is free that night, and the house can prove no month. The house is broken in the
   north and east. The law is as it was, so an Owing can still be sold elsewhere, and the band goes on.
-- *It gives:* the rank of Firebrand, the top rank. The house's coffers at Julo, a chest of 3,000 gold that Mere-Eeja
+- *It gives:* the rank of Firebrand, the top rank. The house's coffers at Julo, a chest of 3,000 gold that Mere-Halu
   sends the player as their share. The last reward, the Firebrand claws, steel claws with a custom enchantment: fire
   damage, and a strike that makes the struck flee. Llaros stays, and his house in Thorn becomes a fence for the
   player. 
 - *It costs:* Speaks-at-the-Falls puts a bounty of 1,000 gold on the player in Stormhold, and its guards try to
-  arrest them on sight until it is paid. Mere-Eeja leaves the band, because she wanted the law. The Well-Room's trainer
+  arrest them on sight until it is paid. Mere-Halu leaves the band, because she wanted the law. The Well-Room's trainer
   and her rewards go with her. The Owing in the south and west is untouched.
 
 ## 10. What it needs, and what it changes elsewhere
@@ -425,23 +428,23 @@ player chooses, the journal says what each gives and costs.
   Rune).
 - **The barge at Marzai:** a ship's hold from Black Marsh & Valenwood, moored below the kilns, as the main quest's
   barge at Sedge-Kal Camp is.
-- **Gear:** Sign of Cipactli's light and heavy Argonian armour, Animated Armoury's halberd, claws, pike and
-  quarterstaff, and Skyrim's elven bow, each under our name.
+- **Gear:** Black Marsh & Valenwood's Argonian leathers, Sign of Cipactli's heavy Argonian armour, Skyrim's elven
+  bow and Animated Armoury's halberd, claws and quarterstaves, each under our name ([reward-gear](../reward-gear.md)).
 
 ### What each quest needs of its places
 
 | Place | The thing | Quest | What happens there | How the player knows it |
 |---|---|---|---|---|
-| Saltmeadow Farm | the washed-out guar herder Okan-Wei and a chest by the householder's bed with the easiest lock, holding his roll | Who Breaks Chains | The player takes the roll and gives it to him. | Okan-Wei tells them; a marker on the chest |
-| Stormhold | the Well-Room, an Ayleid chamber in the Silyanorn tunnels with a door into the tunnels, a bed and a chest (the source city's ruin and mine interiors) | 2. The Catchers Below; 15. The Hearing | The band's seat, where Mere-Eeja gives the jobs. | its door shows its name; a marker |
-| Stormhold | the crystal galleries of the tunnels, with a low gallery round the main one | 2. The Catchers Below | The player turns the catchers away and Xil-Teeus slips out. | a marker on Xil-Teeus |
+| Saltmeadow Farm | the washed-out guar herder Jeen-Wei and a chest by the householder's bed with the easiest lock, holding his roll | Who Breaks Chains | The player takes the roll and gives it to him. | Jeen-Wei tells them; a marker on the chest |
+| Stormhold | the Well-Room, an Ayleid chamber in the Silyanorn tunnels with a door into the tunnels, a bed and a chest (the source city's ruin and mine interiors) | 2. The Catchers Below; 15. The Hearing | The band's seat, where Mere-Halu gives the jobs. | its door shows its name; a marker |
+| Stormhold | the crystal galleries of the tunnels, with a low gallery round the main one | 2. The Catchers Below | The player turns the catchers away and Hasa-Teeus slips out. | a marker on Hasa-Teeus |
 | Stormhold | the house's factor at a stall in the Ayleid compound | Who Breaks Chains | He offers to buy a roll. | he speaks of rolls |
 | Stormhold | Speaks-at-the-Falls's hall (one of the source city's halls) | 13. The Vicecanon's Price; 15. The Hearing | She sets her price, and holds the hearing. | its door shows her office; a marker |
 | Thorn | Llaros Seloth's house in the Argonian timber quarter, with a bed and a chest | Who Breaks Chains; 1. The Salt Shed; 11. The Counting-House | The first safe house the player is sent to. | its door shows his name; a marker |
 | Thorn | the old Mages Guild hall as the house's counting-house, a back door with an Expert lock, an upper window, two watchmen and a letter chest in the factor's room | 11. The Counting-House | The player breaks in by night and takes the letters. | the door shows the house's name; markers |
-| Coldbrine Mine | a bunk shed with a Novice lock, the overseer's hut and key, and the walled gallery with the old labourers' bones (the place's record holds the gallery and the crab) | 1. The Salt Shed | The player frees the diggers and brings out the bones. | the overseer speaks first; markers on the shed and the bones |
+| Coldbrine Mine | a bunk shed with a Novice lock, the overseer's hut and key, and the old giant mudcrab's burrow between the brine pools and the walled gallery, with Huzei's father's bones and a chest (the place's record holds the gallery, the brine pools and the crab) | 1. The Salt Shed | The player frees the diggers and brings out the bones. | the overseer speaks first; markers on the shed and the bones |
 | Thornway Watch | the watch house with an Apprentice lock and the carter's son inside, Romi-Tei's cart at the chain | 5. The Toll Chain | The player frees the son. | Romi-Tei tells them; markers |
-| Tenmal Pits | a door in the old wall, its key in the pit-boss's hut (Apprentice lock), three delvers beyond it among the spiders | 3. The Walled Gallery | The player opens the wall and brings the delvers out. | the pit-boss speaks first; markers |
+| Tenmal Pits | a door in the old wall, its key in the pit-boss's hut (Apprentice lock), three delvers beyond it among the spiders | 3. Behind the Old Wall | The player opens the wall and brings the delvers out. | the pit-boss speaks first; markers |
 | Vandrel Farm | Fenas Ulvarys and two catchers lodging at the farm, Saveri in the barn by night (Apprentice lock) | 4. The Dunmer's Field | The player drives Fenas off and frees Saveri. | Fenas speaks first; markers |
 | Ranvos Landing | two catchers in the roadhouse, and a chest in the loft (Adept lock) with the ferry family's roll | 6. The Ferryman's Price | The player learns who sells the runaways. | Gulu-Tasa speaks first; markers |
 | Ysan | a stilt house on the landing kept as a safe house | 7. Out by Sea | The keeper gives the signal. | a marker; the keeper tells them |
@@ -470,9 +473,9 @@ The owner asked for these. Each is a block to be proven once:
 
 ### What it changes elsewhere
 
-- The old story in this file is replaced whole. `chainbreakers.md`, the old world's line, stays as the story-line
-  skill's worked example.
-- The **pirates' plot** carries freed people out by sea from Bala Karag (quest 7). The two lines touch there.
+- `chainbreakers.md` is the old world's line and the story-line skill's worked example; this page is the new
+  world's.
+- The **Free Marque's plot** carries freed people out by sea from Bala Karag (quest 7). The two lines touch there.
 - The **main quest** opens on an Owing barge. Nothing here changes it.
 - The places named above take the rows of the needs table.
 

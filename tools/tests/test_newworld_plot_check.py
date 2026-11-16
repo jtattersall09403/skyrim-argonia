@@ -78,6 +78,10 @@ def test_opening_rule(tmp_path):
     assert res["errors"] == []
     res = run(tmp_path, [("One", "Alpha, x"), ("Two", "Gamma, x")])
     assert any("second quest" in e for e in res["errors"])
+    res = run(tmp_path, [("One", "Eps, x"), ("Two", "Eps, x"), ("Three", "Beta, x")], opens="D2")
+    assert res["errors"] == []
+    res = run(tmp_path, [("One", "Eps, x"), ("Two", "Eps, x"), ("Three", "Beta, x")])
+    assert any("Three" in e and "jump" in e for e in res["errors"])
 
 
 def test_unknown_place_warns_when_another_resolved_and_errors_when_none(tmp_path):

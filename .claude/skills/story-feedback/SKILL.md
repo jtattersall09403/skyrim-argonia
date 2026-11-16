@@ -17,7 +17,7 @@ Each batch is one document of the page's database, collection `batches`:
 - `status`: `submitted`, then `picked up`, then `actioned`.
 - `submittedAt`, `dataVersion` (the story data version the page showed).
 - `notes`: a list, each with `kind` (`text` for a note on words, `reaction` for a one-word reaction such as
-  "Unclear" given as its `note`, `link` for a note on a link between two lines), `id`, `item` (a quest id such as `MR01`, a document id such as `many-root`, or
+  "Unclear" given as its `note`, `link` for a note on a link between two lines), `id`, `item` (a quest id such as `MQ01`, a document id such as `lamps`, or
   `p-<person>` / `pl-<place>`; for a link, the link's id `<kind>:<one end>:<other end>`, its kind being
   `crossing`, `person`, `place` or `reference`, or `pair:<line>:<line>` for how two lines meet as a whole; the
   link is the row of `links` in the page's `data/catalog.json` with that id), `label`, `field` (the section, or `Stage 20` for a stage row; `whole` for the whole

@@ -139,7 +139,7 @@ The fine climbs with the rank: 25 gold at Wick, 75 at Flame, 150 at Lantern. Eac
 same shape: *The Smelter's Silver* (Soulrest) at Wick, *The Salt Pan* (Karketa) at Flame and *The Bad Shellfish*
 (Amalaja) at Lantern. A spare case can itself be failed, which counts as one more wrong answer.
 
-Danger climbs with the line: towns (D0), a farm (D1), farmland and wrecks (D2), ruins and ferries (D3), the old forts
+Danger climbs with the line: towns (D0), farms and wrecks (D2), ruins and ferries (D3), the old forts
 and strongholds of the washes (D4) and, last, the dead village of Meris-Keth and Ra'tal Den (D5). Locks climb with
 it: Novice locks in Act I, Adept and Expert locks in Act II, Master locks in Act III. Where the player may fight or
 sneak, the journal says so. Every objective has a marker.
@@ -149,7 +149,7 @@ quest 12.
 
 | Rank | Given after | Reward |
 |---|---|---|
-| Wick | quest 1 | Lamp's boots and hood (Sign of Cipactli's light Argonian armour, under our name), ten lockpicks, a bed in the Lamp-Hall |
+| Wick | quest 1 | the Lamp's coat and hood (King of the Murkmire's fine marsh coat and hood, under our name), ten lockpicks, a bed in the Lamp-Hall |
 | Flame | quest 4 | the Hearing Ring (Fortify Speech 15), and Marcella as an Expert Speech trainer |
 | Lantern | quest 8 | the Lamp's rapier (Animated Armoury's rapier, under our name), enchanted to paralyse for two seconds on a hit, and the Lamps' house on Truowa's quay as a home |
 | Beacon | quest 12 | the Beacon cuirass and gauntlets (Sign of Cipactli's light armour), enchanted with Fortify Sneak 20 and Fortify Lockpicking 20 |
@@ -232,7 +232,8 @@ burnt mines of the cape.
 
 **8. The Burnt Cut** (Naxan, a logging village on the Soulrest coast; Ashfall Cut, a burnt open mine near it). A
 log-hauler of Naxan was found at the foot of the old vent shaft in Ashfall Cut. He went there for the grave goods
-that lie in the shaft. The suspects are two men who went with him and a third who was not meant to be there. The
+that lie in the shaft. (The Free Marque's 3, The Naxan Landing, robs the Company's pay chest on the same village's
+log landing.) The suspects are two men who went with him and a third who was not meant to be there. The
 burnt overseer's corpse, risen, holds the vent shaft. The player fights past it or turns it with Restoration, then
 finds the second man's lamp at the top of the shaft and the third man's tracks (a dropped knife) in the cut. The
 first man's boots, scorched at the vent, put him there. Speech gets the third man to say what he saw, or his knife
@@ -353,14 +354,12 @@ given the Owing for life. At Ra'tal Den, the Eldest thanks the player and the La
 
 ### What it asks of the world
 
-- **One danger band lowered.** The database has no place at D1. Seeku Farm is asked at strength D1 (young crocodiles
-  and one snake at the paddock), so that a new character's third case does not jump from the towns to D2. Until it
-  is, `plot_check` fails at quest 3.
 - **Named things from meshes we hold:** a snapped lockpick (Skyrim's lockpick), the guar halter, the sluice key, the
   pilot's knife and logbook, the bloody toll token, the brass chain link and torn neck-chain (Skyrim's silver chain
   necklace, recoloured to brass, under our name), the brass medallion (a Skyrim amulet, under our name), Vetrix's
   letter, Orrel-Sakka's council ring (a Skyrim gold ring, under our name).
-- **The Lamps' gear:** Sign of Cipactli's light Argonian armour and Animated Armoury's rapier, under our names.
+- **The Lamps' gear:** King of the Murkmire's marsh coat and hood, Sign of Cipactli's light Argonian armour and
+  Animated Armoury's rapier, under our names ([reward-gear](../reward-gear.md)).
 - **The fade before a hearing** and **the arrest after a fade** (section "What it asks of the ceiling").
 
 ### What each quest needs of its places
@@ -407,7 +406,6 @@ starts the rank's spare case, adds one to a stored count, and puts the player ou
 
 ### What it changes elsewhere
 
-- `lamp-bearers.md` is deleted. This page replaces it.
 - *Place records:* the Lamp-Hall in Soulrest, the Lamps' house at Truowa, the Eelskins' hall under Pusbottom (in
   [thieves](thieves.md)), and the hearth chamber at Ra'tal Den as the Shadowscales' trial ground.
 - *Lore:* the Lamps, the Eldest and the hidden Shadowscales are extrapolations, grounded above. They go into

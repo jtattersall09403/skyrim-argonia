@@ -45,13 +45,14 @@ says the Free Marque are thieves and always were.
 **What is true.** Thirty years ago Opilia's father, Gaius Cassena, who founded the Company, wrote letters of marque
 to the captains of Skeith Isle and paid them to take Soulrest's ships. His Company grew rich on the trade that
 Soulrest lost. When he no longer needed the pirates, he sold the course of their best ship, the *Stormwidow*, to the
-Archwardens. She was chased onto the beach of Skeith Isle and her crew were killed. The pirates' war on the Company
+Archwardens. Their chartered privateers of the Archon coast chased her onto the beach of Skeith Isle, and her
+crew were killed. The pirates' war on the Company
 is revenge for that.
 
-**How the player finds it.** Lucan Ostorius, the Company ship-master whom the player guards, sailed with the Free
+**How the player finds it.** Gallus Ostorius, the Company ship-master whom the player guards, sailed with the Free
 Marque as a young man. He tells the player he was pressed into it. He was not: he joined, and bought his place in
 the Company with what he knew of the pirates' moorings. If the player turns Rajeel-Kosh in quest 7, the smuggler
-tells them the story of the *Stormwidow* and calls Lucan a turncoat. In quest 14 the player finds the *Stormwidow*'s
+tells them the story of the *Stormwidow* and calls Gallus a turncoat. In quest 14 the player finds the *Stormwidow*'s
 letter of marque in the strong room of Rainbreaker Keep, sealed with the Company's seal. One-Eye kept it.
 
 **What the Free Marque hides, and the player sees.** The Free Marque holds captured Company sailors in the undercroft
@@ -64,11 +65,11 @@ reaches the cells in quest 14.
 |---|---|---|
 | **Opilia Cassena**, master of the Nibenese Company, in the Company house in Gideon | the bay's trade for the Company and the pirates gone | she knows what her father did and has burned every copy of his letters she could find |
 | **Nuxal-Tei**, a Lukiul factor of the Company, the player's handler in the Company house | the Company's trade and her own share of it | she was born in Olvani and knows the bay crews by name. She keeps that to herself |
-| **Lucan Ostorius**, an Imperial, master of the Company ship *Leyawiin Pride* | his ship and his name kept | he sailed with the Free Marque and sold their moorings to the Company. He says he was pressed |
+| **Gallus Ostorius**, an Imperial, master of the Company ship *Leyawiin Pride* | his ship and his name kept | he sailed with the Free Marque and sold their moorings to the Company. He says he was pressed |
 | **Captain Hareel Tullan**, the Archwarden captain of Fort Silvermoth | his toll, and his family's old land under Gideon's south gardens | he takes money from the Company and from the Free Marque |
 | **Drusus Faleria**, a fixer of the Ruction Ring under Gideon | to buy cheap and sell dear | he buys the Company's stolen goods |
 | **Rajeel-Kosh**, leader of the smugglers of Hollow Tide Camp on Skeith Isle | to keep his camp out of the war | he will sell anyone, the Free Marque among them, if the price is his life |
-| **Teeba-Vos, called One-Eye**, captain of the Free Marque at Marque Landing | the Company broken | she keeps the *Stormwidow*'s letter as proof of the Company's betrayal |
+| **Wazei-Vos, called One-Eye**, captain of the Free Marque at Marque Landing | the Company broken | she keeps the *Stormwidow*'s letter as proof of the Company's betrayal |
 | **Selvo Arenim**, a Dunmer, quartermaster of Rainbreaker Keep | the keep's stores and the ransoms | he holds the cell keys and the strong room |
 | **Bar-Neeus**, bosun of Marque Landing | his crew alive | he has lost two crews to the Company already |
 
@@ -101,11 +102,11 @@ The Company's ranks come with the line, each with a fixed reward:
 
 | Rank | Given after | Reward |
 |---|---|---|
-| Hireling | quest 1 | an Imperial helmet (Skyrim's heavy Imperial armour, under our name) and 50 gold |
+| Hireling | quest 1 | an Imperial helmet (Skyrim's light Imperial armour, under our name) and 50 gold |
 | Company Guard | quest 5 | the Imperial cuirass, gauntlets and boots to match. The banded shield of quest 2 is the player's own |
-| Factor | quest 8 | a steel plate cuirass and helm (Skyrim's, under our names), and a bed, the Legion forge and a Company trader at Wrackmoth |
-| Master-at-Arms | quest 12 | an enchanted halberd (Animated Armoury, under our name) or an enchanted steel sword with an enchanted shield, as the player chooses |
-| Master of Skeith | quest 14 | Rainbreaker Keep as the player's stronghold, the post at Marque Landing, and the reward of the last choice (section 7) |
+| Factor | quest 8 | the Company's centurion cuirass (Imperial Guard Centurion Armor, under our name), and a bed, the Legion forge and a Company trader at Wrackmoth |
+| Master-at-Arms | quest 12 | an enchanted halberd (Animated Armoury, under our name) or an enchanted Imperial sword with an enchanted Imperial shield (Skyrim's, under our names), as the player chooses |
+| Master of Skeith | quest 14 | the rest of the centurion set, Rainbreaker Keep as the player's stronghold, the post at Marque Landing, and the reward of the last choice (section 7) |
 
 ### Act I: the bay trade
 
@@ -120,7 +121,7 @@ with a crate of the Company's wine, and they fight. *Leads on:* Nuxal-Tei hears 
 Marque, makes the player a Hireling and tells them who the pirates are. She has a salvage job off Olvani. The
 journal marks the Company's smith in Gideon.
 
-**2. The Grey Heron** (The Grey Heron, a wreck on the floor of Topal Bay; Olvani, a fishing village on the estuary
+**2. Iron from the Heron** (The Grey Heron, a wreck on the floor of Topal Bay; Olvani, a fishing village on the estuary
 west of Gideon). Gideon's harbour officer has sold the Company the salvage of the *Grey Heron*, a Leyawiin
 merchantman that sank off the estuary with iron in her hold. The Company's smith in Gideon teaches the player the
 recipe for the Company's banded shield, made from the *Heron*'s iron. The player buys a potion of Waterbreathing
@@ -131,7 +132,7 @@ Gideon's forge the player makes the banded shield (Smithing) and shows it to the
 for the iron, and the player keeps the shield. Nuxal-Tei says the Company's carts to Soulrest are held at Fort
 Silvermoth's toll chain. The journal marks the fort.
 
-**3. The Toll Chain** (Fort Silvermoth, an Archwarden toll fort on the coast road). Captain Hareel Tullan has closed
+**3. The Captain's Chain** (Fort Silvermoth, an Archwarden toll fort on the coast road). Captain Hareel Tullan has closed
 the road to Company carts. The Free Marque has paid him, and one of its bosuns, Kesh-Ulee, sits in his stockade
 with the purse he carried. Hareel stands at the toll chain and speaks first. The player has three ways:
 
@@ -155,9 +156,9 @@ Shellmoth's wall, and sends the player to guard her. The journal marks the ship.
 
 **5. Guarding the Leyawiin Pride** (Fort Shellmoth, an Archwarden harbour fort near Soulrest, with the ship moored at
 its sea-gate). When the player arrives, the Free Marque's boarding party is already on the deck and in the hold.
-Lucan Ostorius is shut in his cabin. The player fights them on the deck, in heavy armour through the middle or with
+Gallus Ostorius is shut in his cabin. The player fights them on the deck, in heavy armour through the middle or with
 a shield at the head of the hold's ladder, where they come one at a time. The fort's sergeant and two wardens fight
-on the quay. When the boarders are dead, Lucan comes out of his cabin. He thanks the player and tells them he was a
+on the quay. When the boarders are dead, Gallus comes out of his cabin. He thanks the player and tells them he was a
 pressed man on a pirate ship once, and hates them. *Leads on:* Nuxal-Tei makes the player a Company Guard. The
 Company needs iron for blades, and the old Imperial mine of Ninth Shaft has iron in its upper levels. The journal
 marks it.
@@ -179,19 +180,19 @@ quartermaster commands them. The player has two ways:
 
 The player mines six iron ore from the upper veins (a pickaxe is sold at Soulrest's smithy), smelts it at
 Soulrest's harbour smelter and forges three boarding swords at the Imperial-quarter forge (Smithing). *Leads on:*
-Lucan takes the swords for his crew. He says the smugglers of Hollow Tide Camp on Skeith Isle carry the Free
+Gallus takes the swords for his crew. He says the smugglers of Hollow Tide Camp on Skeith Isle carry the Free
 Marque's goods, and the Company has hired a boat at Arorha to land the player there. The journal marks Arorha's
 quay and the camp.
 
 **7. The Hollow Tide** (Hollow Tide Camp, the smugglers' beach camp on Skeith Isle). The Company's boatman at Arorha
-lands the player on the island's south-west beach. Eight lookouts and boat crew hold the camp, and the coves are
+(the village of the Sisei-Xul's 1, The Burnt Kilns) lands the player on the island's south-west beach. Eight lookouts and boat crew hold the camp, and the coves are
 strung with snares. The player fights through the lean-tos, or holds the narrow path from the beach with a shield
 and lets them come. Rajeel-Kosh stands at the bluff cave with his last two men. He talks before he fights. The player
 chooses:
 
 - *Kill him.* His cache in the bluff cave is the player's: gold and a heavy shield. The camp is cleared.
 - *Turn him* (Speech 50, or 500 gold). He gives up the Free Marque. He tells the player the story of the
-  *Stormwidow* and calls Lucan a turncoat. He also shows them a way into Rainbreaker Keep from the jetty through the
+  *Stormwidow* and calls Gallus a turncoat. He also shows them a way into Rainbreaker Keep from the jetty through the
   wet cells. He stays at the camp as the player's fence.
 
 *Leads on:* Nuxal-Tei says the Company will open a post on Cape Percar at the ruined fort of Wrackmoth, to watch the
@@ -222,12 +223,13 @@ and sells potions of Waterbreathing. Two of Skeith's divers have died in her. Th
 the hull. Six drowned marines hold the main deck and their captain stands on the quarterdeck. The player fights them
 in heavy armour down the gun deck or holds the hatch with a shield. The Akaviri chest holds Akaviri gold and a
 blade, *the Resolute*, enchanted with frost. *Leads on:* Opilia takes the gold and lets the player keep the blade.
-She tells the player the Free Marque stores its scrolls of Mayhem and Frenzy in the cellars of Fort Swiftmoth, and
+She tells the player the Free Marque stores its scrolls of Mayhem and Frenzy in the lower hall of Fort Swiftmoth, and
 she will not send her people against crews who carry them. The journal marks the fort.
 
 **11. The Scroll Store** (Fort Swiftmoth, an empty Imperial keep inland from Archon). Smugglers of the Free Marque
-hold the cellars with a captain who carries the strong room's key. Mud-crocodiles lie in the ditch round the rise.
-Aroxhu families shelter in the dry upper floor and do not fight. The player fights down through the cellars with
+hold the lower hall with a captain who carries the strong room's key (the Eelskins' 7, The Locked Strongroom, robs the
+same strongroom). Mud-crocodiles lie in the ditch round the rise.
+Aroxhu families shelter in the dry upper floor and do not fight. The player fights through the lower hall with
 blade and shield or a two-handed weapon. The strong room holds the Free Marque's store of scrolls. *Leads on:* the
 scrolls of Mayhem and Frenzy are the player's to use in the assault. Nuxal-Tei says the Company will arm its
 landing party in Company plate, and the iron for it is in Blackdrift. The journal marks the mine.
@@ -238,11 +240,11 @@ scavengers hold the mine's portal under a headman. Gas gathers in the fallen gal
 the props have rotted. The player fights through the portal and mines the iron vein near it. The ore is smelted at
 Soulrest's harbour smelter and the cuirass forged at Wrackmoth (Smithing). Past the fallen stone in the sealed gallery lies the overseers' gold from 3E 427,
 which is the player's if they go on into the gas. *Leads on:* the player is made Master-at-Arms. Opilia names the
-day. The Company's sellswords and Lucan's crew will be on Marque Landing's jetty when the player lands. The journal
+day. The Company's sellswords and Gallus's crew will be on Marque Landing's jetty when the player lands. The journal
 marks Marque Landing.
 
 **13. The Landing** (Marque Landing, the pirates' stilt camp on Skeith Isle). The Company's boatman lands the player
-at the jetty, where the Company's sellswords and Lucan's crew are already fighting. The Free Marque's crews hold the
+at the jetty, where the Company's sellswords and Gallus's crew are already fighting. The Free Marque's crews hold the
 hulks and the stilt-houses. One-Eye stands on the largest hulk. The player fights across the hulks in heavy armour,
 holds the jetty's end with a shield, or reads Mayhem among the crews. Bar-Neeus, the bosun, stands apart in the last
 stilt-house, his crew dead or fled, and talks before he fights. With Speech 75 the player tells him his captain is
@@ -267,8 +269,8 @@ what Gaius Cassena did. The player chooses what to do with the letter (section 7
 
 The shared events are fixed in the pirates' page, section 6. This line's side of them:
 
-- Quest 2, *The Grey Heron*, is the Free Marque's quest 2 seen from the Company's side.
-- Quest 3, *The Toll Chain*, meets Captain Hareel and Kesh-Ulee as the Free Marque's quest 4 does.
+- Quest 2, *Iron from the Heron*, is the Free Marque's quest 2 seen from the Company's side.
+- Quest 3, *The Captain's Chain*, meets Captain Hareel and Kesh-Ulee as the Free Marque's quest 4 does.
 - Quest 5, *Guarding the Leyawiin Pride*, is the night of the Free Marque's quest 5. Each shuts the other's door.
 - Quest 7, *The Hollow Tide*, takes down the camp that the Free Marque's quest 8 wins as an ally.
 - Quest 8, *A Post at Wrackmoth*, takes the fort that the Free Marque's quest 9 takes for the bay crew.
@@ -287,14 +289,14 @@ The player stands in the strong room with the letter. Two people want it, and ea
 
 - *It gives:* the Factor's Seal, a ring with an enchantment of our own (Fortify Barter, Fortify Smithing and
   Fortify Block together). Opilia stays master of the Company and names the player Master of Skeith.
-- *It costs:* the truth stays buried. Lucan stays in the Company.
+- *It costs:* the truth stays buried. Gallus stays in the Company.
 
 **Give it to Gideon's courthouse.** The council judges the Company's founder and puts his daughter out of the
 Company.
 
 - *It gives:* the player becomes the Company's master in Opilia's place, as well as Master of Skeith. The Company
   house's strong room is theirs, with 2,000 gold, and its master's room is a second bed in Gideon.
-- *It costs:* no ring. Opilia is gone from the Company house. Lucan Ostorius resigns his ship and leaves the line's
+- *It costs:* no ring. Opilia is gone from the Company house. Gallus Ostorius resigns his ship and leaves the line's
   people, since he is named in the letter as the man who sold the moorings.
 
 **In both.** Rainbreaker Keep becomes the player's stronghold: the hall, a bed in the warden's tower, the chapel with
@@ -319,8 +321,8 @@ turned. The Free Marque's line can never be taken.
 
 - **The Company's recipes**: the banded shield, the boarding sword, the gold signet and the heavy cuirass, each a
   recipe opened at a forge by a stage, made from Skyrim's own items under our names.
-- **The Company's gear**: Skyrim's heavy Imperial armour and steel plate, Animated Armoury's halberd, an Akaviri
-  blade, each under our name. The Factor's Seal's enchantment is ours.
+- **The Company's gear**: Skyrim's light Imperial armour, Imperial sword and shield, Imperial Guard Centurion
+  Armor, Animated Armoury's halberd and an Akaviri blade, each under our name ([reward-gear](../reward-gear.md)). The Factor's Seal's enchantment is ours.
 - **A moored ship** at Fort Shellmoth's sea-gate (the same ship as the Free Marque's quest 5).
 - **A boatman** of the Company at Arorha's quay who lands the player on Skeith Isle.
 - **The post at Marque Landing**: three sets of buildings and people for its stages, from the meshes Black Marsh &
@@ -334,10 +336,10 @@ turned. The Free Marque's line can never be taken.
 | Gideon | the Ruction Ring, a pit under the city with Drusus Faleria and a pit fighter (the record's Ruction Ring and its fixer) | 1. The Ruction Ring | The player wins a bout or buys Drusus's word. | Drusus speaks; a marker |
 | Gideon | the town smith by the arena, who teaches the recipes (in the record) | 2; 6; 9; 12 | The player learns each recipe. | a marker |
 | Teth-Kasa Station | two Free Marque hands at a cache in the mangrove roots, with a crate of Company wine (the record's smuggler's cache) | 1. The Ruction Ring | The player fights them and takes the crate. | a marker; the crate is a named thing |
-| The Grey Heron | a hull with air inside, iron ingots in the hold and two Free Marque salvors (the source wreck's interior) | 2. The Grey Heron | The player fights the salvors and raises the iron. | the game names the wreck; a marker |
-| Fort Silvermoth | Captain Hareel at the toll chain, the stockade with Kesh-Ulee (in the record) | 3. The Toll Chain | The player gets the chain lifted. | Hareel speaks first; a marker |
+| The Grey Heron | a hull with air inside, iron ingots in the hold and two Free Marque salvors (the source wreck's interior) | 2. Iron from the Heron | The player fights the salvors and raises the iron. | the game names the wreck; a marker |
+| Fort Silvermoth | Captain Hareel at the toll chain, the stockade with Kesh-Ulee (in the record) | 3. The Captain's Chain | The player gets the chain lifted. | Hareel speaks first; a marker |
 | Acra-Tiin | a wreckers' lamp on the dunes and the wreckers' cache (the record's wreckers and cache) | 4. Wreckers' Lights | The player kills the wreckers and takes the cache. | markers on the lamp and the cache |
-| Fort Shellmoth | the *Leyawiin Pride* moored at the sea-gate, with boarders on the deck and in the hold, and Lucan in his cabin (an added ship; the source's dock and ship pieces) | 5. Guarding the Leyawiin Pride | The player kills the boarders. | the ship's name on her door; a marker |
+| Fort Shellmoth | the *Leyawiin Pride* moored at the sea-gate, with boarders on the deck and in the hold, and Gallus in his cabin (an added ship; the source's dock and ship pieces) | 5. Guarding the Leyawiin Pride | The player kills the boarders. | the ship's name on her door; a marker |
 | Ninth Shaft | smugglers and their quartermaster in the upper levels, iron veins, the store in the lower galleries (in the record) | 6. Iron of the Ninth Shaft | The player clears or buys the smugglers and mines iron. | markers on the quartermaster and the veins |
 | Soulrest | the harbour smelter and the Imperial-quarter forge (in the record) | 6. Iron of the Ninth Shaft | The player smelts and forges the swords. | their look; a marker |
 | Arorha | the Company's boatman at the quay | 7; 13 | He lands the player on Skeith Isle. | a marker; he speaks of the isle |
@@ -346,9 +348,9 @@ turned. The Free Marque's line can never be taken.
 | Old Goldseam | outlaws at the mouth, the chief in the winch house, the flooded lower shafts, the gold veins (in the record) | 9. Gold of Old Goldseam | The player clears the mine and mines gold. | markers |
 | Seafalls | the pilot-elder, who sells potions of Waterbreathing (the record's pilot-elder) | 10. The Septim Warship | The player learns where the wreck lies. | she speaks of the wreck; a marker |
 | Wreck of the Resolute Crest | a hull with air inside, the drowned marines and captain, the Akaviri chest (in the record) | 10. The Septim Warship | The player takes the chest. | the game names the wreck and the chest; a marker |
-| Fort Swiftmoth | smugglers in the cellars, their captain with the strong room key, the strong room with the scrolls (the record's locked strongroom cellar) | 11. The Scroll Store | The player takes the scrolls. | markers on the captain and the strong room |
+| Fort Swiftmoth | smugglers in the lower hall, their captain with the strong room key, the strong room with the scrolls (the record's locked strongroom off the lower hall) | 11. The Scroll Store | The player takes the scrolls. | markers on the captain and the strong room |
 | Blackdrift | scavengers at the portal, the iron vein near it, the sealed gallery with the overseers' gold (in the record) | 12. Armour for the Landing | The player mines iron and may take the gold. | markers |
-| Marque Landing | One-Eye on the largest hulk, Bar-Neeus alone in the last stilt-house, the Company's sellswords and Lucan's crew on the jetty | 13. The Landing | The player takes the landing. | markers on One-Eye and Bar-Neeus |
+| Marque Landing | One-Eye on the largest hulk, Bar-Neeus alone in the last stilt-house, the Company's sellswords and Gallus's crew on the jetty | 13. The Landing | The player takes the landing. | markers on One-Eye and Bar-Neeus |
 | Rainbreaker Keep | the hall, the trapped stair, the wet cells with captives, the slaughterfish pen, Selvo with the strong room key, the letter in the strong room (in the record; the first source's prison block) | 14. Rainbreaker Keep | The player takes the keep and finds the letter. | markers; the letter is a named thing |
 | Rainbreaker Keep | the hall, a bed in the warden's tower, the chapel's shrine, the strong room's chests (in the record) | the ending | The keep becomes the player's stronghold. | the journal; its doors name it as the player's |
 | Marque Landing | the post's three stages of buildings and people | after the ending | The post grows as the player brings timber, iron and signets. | their look; the post's people speak of the Company |
@@ -370,7 +372,6 @@ has.
   says.
 - *Gideon's record* gains the Company house on Blackwood Way.
 - *Arorha's record* gains the Company's boatman.
-- *The old Marsh Charter line* is deleted. This page replaces it.
 
 ## 9. Read on paper
 

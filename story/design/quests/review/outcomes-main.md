@@ -1,8 +1,8 @@
 # Outcome tables: the main quest's endings and the Chainbreakers' (the worked example)
 
 The owner's ruling of 2026-11-13 (owner-bar, "The bar"): each choice and ending says what it gives and costs in play.
-These are proposals for the writers' second round of [main](../lines/main.md) and
-[chainbreakers](../lines/chainbreakers.md), written by the recipe in
+These are proposals for the writers' second round of the old main quest line (now replaced by
+[the plot](../lines/main-plot.md)) and [chainbreakers](../lines/chainbreakers.md), written by the recipe in
 `.claude/skills/quest-write/principles/choices.md`; every row is built by results the quest form holds
 ([outcome-kinds](../../../../docs/research/skyrim/outcome-kinds.md)). The stories are not changed here.
 

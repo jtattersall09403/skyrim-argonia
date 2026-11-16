@@ -73,10 +73,10 @@ quest 8.
 
 | Who | What they want | What they hide, or what it costs |
 |---|---|---|
-| **Heeba-Tsei**, tree-minder of Aroxhu, who brings the player in | her potters healed and her town's dead left in the mud | she takes a stranger into the order on the strength of one potion, because the order is short of hands |
+| **Deegla-Tsei**, tree-minder of Aroxhu, who brings the player in | her potters healed and her town's dead left in the mud | she takes a stranger into the order on the strength of one potion, because the order is short of hands |
 | **Okan-Zeel**, Eldest Grave-Singer of the order, in the tree-minders' hall at Helstrom | the Rothalens destroyed and every Argonian dead returned to the mud | she bound Keel-Vaxa to an urn with her own hands and says the urn holds a poisoner. She hates the house for good reason and has done to one man what it does to many |
 | **Akeeta-Sul**, the Stone-Sleepers' minder at Tsonac, the order's teacher of Alteration | the old Velothi graves under her hamlets left shut | she has sold the house Velothi pieces in the past and did not ask why it wanted them |
-| **Bur-Meesh**, the mason-smith of Tsonac, the order's teacher of Smithing | iron that the dead respect | he lost a brother to Thorn's saltrice fields and wants the house hurt more than he wants it stopped |
+| **Gam-Meesh**, the mason-smith of Tsonac, the order's teacher of Smithing | iron that the dead respect | he lost a brother to Thorn's saltrice fields and wants the house hurt more than he wants it stopped |
 | **Neeja**, an Argonian necromancer of the house | her grandfather's soul freed from the urn | she helps the house rob Argonian graves to get there. She is the order's enemy with the best reason of anyone in the war |
 | **Morvayn Rothalen**, master of the house, unseen until Kaochalit | the house's trade in the dead, and his heirs to keep it after he dies | he bought living Argonians before the Red Year. To him the dead are empty husks and the Argonians' grief is a superstition |
 | **Ervyn Rothalen**, the house's factor in Thorn's market | a quiet and profitable trade | he is the respectable face of the house and knows exactly what its ship carries |
@@ -86,7 +86,7 @@ quest 8.
 
 **The rumours.** In Thorn, Tsonac, Inoja, Aroxhu and Helstrom, people asked about healers, work or the dead speak of
 the grave-singers. "If you can brew, the Sisei-Xul want hands. A kiln burst at Arorha, and their tree-minder there
-has more burns than salve." The first such line starts **Find the Sisei-Xul**, and its marker sits on Heeba-Tsei,
+has more burns than salve." The first such line starts **Find the Sisei-Xul**, and its marker sits on Deegla-Tsei,
 Arorha's tree-minder.
 
 **Being let in.** Quest 1 is the test the owner set: gather named ingredients, make a healing potion and give it to
@@ -114,21 +114,22 @@ journal says so, and the guards stand few and apart.
 
 | Rank | Given after | Reward |
 |---|---|---|
-| Sprout | quest 1 | the order's alchemy tables, traders and trainers at Aroxhu, Tsonac and Helstrom, with the Minder's Staff (a black-wood quarterstaff from Animated Armoury, under our name) |
-| Leaf-Hand | quest 3 | the Leaf-Hand's Scales (Sign of Cipactli's light Argonian armour, under our name) and the tomes of Cure Disease and Cure Poison |
+| Sprout | quest 1 | the order's alchemy tables, traders and trainers at Aroxhu, Tsonac and Helstrom, with the Sprout's robe (King of the Murkmire's marsh robe, under our name) |
+| Leaf-Hand | quest 3 | the Minder's Staff (a Magic Expanded staff, under our name) and the tomes of Cure Disease and Cure Poison |
 | Stake-Keeper | quest 6 | Grave-Iron Claws (Animated Armoury steel claws, enchanted with Turn Undead), and a free bed in each of the order's three halls |
-| Grave-Singer | quest 10 | the Grave-Singer's Mail (Sign of Cipactli's heavier Argonian armour, its helm enchanted to fortify Restoration) and the tome of Guardian Circle |
+| Grave-Singer | quest 10 | the Grave-Singer's robe and hood (Arcane Mage Armor's armoured robe and hood, under our name, the hood enchanted to fortify Restoration) and the tome of Guardian Circle |
 | Eldest's Hand | quest 13 | section 7 |
 
 ### Act I: the healers
 
 **1. The Burnt Kilns** (Arorha, a clay-mound village on Hatandros Bight). A kiln has burst at the water's edge and
-three potters lie burnt in the tree-minder's house. Heeba-Tsei, Arorha's tree-minder, speaks first at her door. She
+three potters lie burnt in the tree-minder's house. (Arorha's quay is where the Free Marque's 6, Across the Water, and
+the Company's 7, The Hollow Tide, set out for Skeith Isle.) Deegla-Tsei, Arorha's tree-minder, speaks first at her door. She
 teaches the player what two marsh plants do (the stage makes them know every effect of somnalius frond and swamp
 fungal pod) and asks for three of each. Both grow along the shore road north of the village, among the mudcrab
 swarms and giant snakes, and both are marked. The player fights the beasts, shoots them from the mounds or picks
 round them. They make a healing potion at the tree-minder's table (Alchemy, any level) and bring it to her. She
-gives it to the worst burnt potter and offers the player a place in the order. *Leads on:* Heeba-Tsei says a dying
+gives it to the worst burnt potter and offers the player a place in the order. *Leads on:* Deegla-Tsei says a dying
 man at the order's hall in Aroxhu has asked for a grave-singer and cannot wait. The journal marks him.
 
 **2. The Painless Cup** (Aroxhu, the Clay-Mound People's mound-town). Nadras Velsa is an old Dunmer trader dying of
@@ -146,10 +147,12 @@ the other bonded labourers who died in the old shaft's collapse brought out and 
 gallery up and keeps its key. The player is taught Turn Undead before they go. They lift the key from the overseer
 (Pickpocket, easy), pick the wall door's lock (an easy lock) or go round by the brine pools, where the old giant
 mudcrab has dug through. In the gallery the dead are risen. The rock-salt preserved the bodies, and someone has broken in
-from the far side to raise them. The journal says the player may fight them or turn them. Past them lies the satchel
+from the far side to raise them: the house's side of this gallery is the Rothalens' 1, The Demonstration. The
+diggers locked in the mine's bunk shed are the Ulvarys house's, whom the Chainbreakers' 1, The Salt Shed, frees. The
+journal says the player may fight the dead or turn them. Past them lies the satchel
 of a Dunmer digger the dead killed, with a soul gem and a stone carved with a spider in a circle. *Leads on:*
 Tzeeh tells the player the spider in a circle is the mark the Rothalen house puts on its crates in Thorn's market.
-Heeba-Tsei makes the player a Leaf-Hand and sends them to Akeeta-Sul at Tsonac, whose hamlets have graves the house
+Deegla-Tsei makes the player a Leaf-Hand and sends them to Akeeta-Sul at Tsonac, whose hamlets have graves the house
 would want.
 
 ### Act II: the war of the stakes
@@ -163,7 +166,7 @@ Stoneflesh on them, turns them or slips past, and kills the hired man or takes t
 (Sneak). *Leads on:* the stone goes back to Akeeta-Sul. She admits, unasked, that she once sold the house Velothi
 pieces. She sends the player to Tazhul, where two eggs have failed and the egg-minder speaks of a curse.
 
-**5. The Pulled Stakes** (Tazhul, a Root-Folk egg station in the marsh west of Inoja; Joxhi, a clay-diggers'
+**5. Drag-Marks to Joxhi** (Tazhul, a Root-Folk egg station in the marsh west of Inoja; Joxhi, a clay-diggers'
 village north of Inoja). The curse is the dead. Tazhul's stakes on the trap-line path have been pulled, and bog
 blights walk the path. The egg-minder teaches the player Detect Dead (Alteration). The player lays the blights with
 Turn Undead or weapons. With Detect Dead they see the drag-marks of bodies leading off the path toward Joxhi, where
@@ -174,7 +177,7 @@ egg-minder takes the stakes back. A grave-singer's work follows, and Okan-Zeel a
 journal marks the tree-minders' hall at Helstrom.
 
 **6. Grave-Iron** (Tsonac; Balormaak, a ruined Velothi town on the eastern mesa). Okan-Zeel sends the player back to
-Tsonac to learn grave-iron from Bur-Meesh. A spike of it, driven through a raised body, holds it down. The stage
+Tsonac to learn grave-iron from Gam-Meesh. A spike of it, driven through a raised body, holds it down. The stage
 opens the recipe at his forge: two iron ingots and a pinch of salt from Coldbrine (Smithing 25). Skeletons walk the
 cellars of Balormaak, and Ayiin's children have seen torches there at night. The house has raised a Velothi captain
 in the bell-tower crypt to guard a cache. The player forges three spikes and goes in. Each skeleton they kill they
@@ -225,7 +228,7 @@ when they can, and the journal marks the outpost.
 
 ### Act III: the end of the trade
 
-**11. The Night at Ixu-Maan** (Ixu-Maan, an egg-tending outpost south of Helstrom). The order teaches Poison Spray
+**11. Hold the Egg Pools** (Ixu-Maan, an egg-tending outpost south of Helstrom). The order teaches Poison Spray
 (Destruction 50), as old marsh fighters used it. The raid has begun when the player arrives. The house's Naga from
 Salt-Tooth Camp hold the nest-pit, and Dalvela Rothalen's bound dead walk among the grave-stakes. Okan-Zeel stands
 at the egg pools with two grave-singers, placed there and fighting. The player clears the nest-pit, lays the dead and
@@ -288,12 +291,12 @@ The player plays one line or the other.
 | Event | Here | In the Rothalen house's line |
 |---|---|---|
 | The salt dead of Coldbrine Mine's walled gallery | 3. The Walled Gallery: the player finds the dead raised and stakes them | 1. The Demonstration: the player commands them for the house on the day they join |
-| Tazhul's stakes and the store under Joxhi | 5. The Pulled Stakes: the player brings the stakes back | 4. The Pulled Stakes: the player pulls them. This shuts the Sisei-Xul's door |
+| Tazhul's stakes and the store under Joxhi | 5. Drag-Marks to Joxhi: the player brings the stakes back | 4. The Pulled Stakes: the player pulls them. This shuts the Sisei-Xul's door |
 | The welkynd stone under Tselan | 4. Under the Oldest Foundation: the player stops the house's man | 6. The Mason's Stone: the player takes it for the house |
 | The *Silt Bride*'s log | 7. The Slaver's Log: the player takes it to the Vicecanon | 7. The Drowned Coffle: the player takes it to Morvayn to burn |
 | The urn of Keel-Vaxa | 8. The Empty Niche: the player follows the thieves | 9. The Urn: the player steals it |
 | The barred cellar at Ovezza | 10. The Barred Cellar: the player breaks into the house's hall | 8. Below the Spider: the house lets the player in |
-| The raid on Ixu-Maan | 11. The Night at Ixu-Maan: the player defends the order | 11. The Night at Ixu-Maan: the player leads the raid and the order is beaten |
+| The raid on Ixu-Maan | 11. Hold the Egg Pools: the player defends the order | 11. The Night at Ixu-Maan: the player leads the raid and the order is beaten |
 | The *Saltrice Queen* and Kharraluhl | 12. The Thrall Ship: the player frees the dead | 12. The House Divided: the house's rivals fight over the ship |
 | The hall under the well at Kaochalit | 13. Under the Well: the player kills Morvayn | 13. The Old Master: the player kills Morvayn and takes his seat |
 
@@ -313,22 +316,23 @@ The necromancers' Find the Rothalens fails when the player finishes quest 3 here
   that interior's rooms.
 - **The house's mark:** a spider in a circle, painted on crates and carved on a stone and a key bow (existing
   carved-stone and key meshes under our names).
-- **Items:** the Minder's Staff and the Eldest's staff (Animated Armoury quarterstaff), Grave-Iron Claws (Animated
-  Armoury claws), Sign of Cipactli's armour, Skyrim's urn, soul gems and welkynd stone, each under our names.
+- **Items:** the Sprout's robe (King of the Murkmire's marsh robe), the Minder's Staff and the Eldest's staff
+  (Magic Expanded staves), Grave-Iron Claws (Animated Armoury claws), the Grave-Singer's robe and hood (Arcane Mage
+  Armor), Skyrim's urn, soul gems and welkynd stone, each under our names ([reward-gear](../reward-gear.md)).
 
 ### What each quest needs of its places
 
 | Place | The thing | Quest | What happens there | How the player knows it |
 |---|---|---|---|---|
-| Arorha | the tree-minder's house (a Treeminder's house of the village's second source) with three burnt potters on its mats and an alchemy table | 1. The Burnt Kilns | The player gives the worst burnt potter a healing potion. | Heeba-Tsei speaks first at her door; its door shows her name; markers on the potters |
+| Arorha | the tree-minder's house (a Treeminder's house of the village's second source) with three burnt potters on its mats and an alchemy table | 1. The Burnt Kilns | The player gives the worst burnt potter a healing potion. | Deegla-Tsei speaks first at her door; its door shows her name; markers on the potters |
 | Arorha | somnalius fronds and swamp fungal pods along the shore road north of the village, among the mudcrabs and giant snakes | 1. The Burnt Kilns | The player gathers what the potion needs past the beasts. | the game names the plants; markers |
 | Aroxhu | Nadras Velsa on the guest mats of the moot-ground, the order's alchemist by the Hist, imp stool on the terraces, and a hillside below the mounds where his stake stands afterwards (the record's guest mats and dye-and-sap table) | 2. The Painless Cup | The player makes the draught and gives it to him. After the fade he is gone and his stake stands. | markers on him and the imp stool; the alchemist tells them |
 | Coldbrine Mine | the walled-off gallery behind a locked wall door, its key on the overseer, the risen salt dead inside, and the brine pools where the giant mudcrab has dug through (the record's walled gallery and brine pools) | 3. The Walled Gallery | The player gets in, lays the dead and finds the digger's satchel. | Tzeeh tells them; markers on the door, the key and the satchel |
 | Coldbrine Mine | the dead digger's satchel, holding a soul gem and the stone with the spider in a circle | 3. The Walled Gallery | The player learns whose work it is. | the stone is a named thing |
 | Tselan | the sealed Velothi chamber under the oldest foundation, with its skeletons, the house's hired man and a welkynd stone set in its wall (the record's chamber) | 4. Under the Oldest Foundation | The player takes the stone back. | the elder tells them; markers on the man and the stone |
-| Tsonac | Akeeta-Sul by the stone ring round the sleeping Hist, and Bur-Meesh at his forge | 4. Under the Oldest Foundation; 6. Grave-Iron | They teach Stoneflesh and grave-iron. | their trades, as the record has them; markers |
-| Tazhul | pulled stakes and bog blights on the trap-line path, and drag-marks leading off it | 5. The Pulled Stakes | The player lays the blights and follows the marks. | the egg-minder tells them; Detect Dead shows the marks; markers |
-| Joxhi | the buried Ayleid hall the diggers broke into, held by three of the house's men, with the bundle of Tazhul's stakes (the record's buried hall) | 5. The Pulled Stakes | The player takes the stakes by force or stealth. | the diggers tell them of the hall; a marker on the bundle |
+| Tsonac | Akeeta-Sul by the stone ring round the sleeping Hist, and Gam-Meesh at his forge | 4. Under the Oldest Foundation; 6. Grave-Iron | They teach Stoneflesh and grave-iron. | their trades, as the record has them; markers |
+| Tazhul | pulled stakes and bog blights on the trap-line path, and drag-marks leading off it | 5. Drag-Marks to Joxhi | The player lays the blights and follows the marks. | the egg-minder tells them; Detect Dead shows the marks; markers |
+| Joxhi | the buried Ayleid hall the diggers broke into, held by three of the house's men, with the bundle of Tazhul's stakes (the record's buried hall) | 5. Drag-Marks to Joxhi | The player takes the stakes by force or stealth. | the diggers tell them of the hall; a marker on the bundle |
 | Helstrom | the tree-minders' hall with its arcane enchanter, Okan-Zeel, the order's enchanter and an empty urn niche (the record's hall) | 5 to 10, and the ending | The order's mother hall: ranks, teaching and the urn. | its door shows its name; markers |
 | Balormaak | the raised Velothi captain in the bell-tower crypt, with the house's cache and its letter (the record's crypt and boss) | 6. Grave-Iron | The player spikes the captain and finds the letter. | Ayiin's children speak of torches; markers |
 | Wreck of the Silt Bride | the drowned captain's strongbox in the stern cabin, its key on him, holding the log (the record's strongbox and log) | 7. The Slaver's Log | The player takes the log. | a marker; the log is a named thing |
@@ -336,7 +340,7 @@ The necromancers' Find the Rothalens fails when the player finishes quest 3 here
 | Hiss-Bank Camp | the hired Naga, a chest with an expert lock holding the urn, and Neeja apart by the water | 8. The Empty Niche | The player takes the urn and hears Neeja. | markers on the chest and on Neeja; she speaks first |
 | Sethiral | the humming sealed door with the bound ghost behind it, the house's stakes and the store-keeper with the spider key (the record's door and ghost) | 9. The Humming Door | The player opens the door and takes the key. | Yina's eldest tells them; markers |
 | Ovezza | a water door below the drowned quay that the spider key opens, leading into the barred cellar; the bound dead in rows and the wraith before the inner room (the record's barred cellar and wraith; the water door is added) | 10. The Barred Cellar | The player breaks into the house's hall and takes Morvayn's letter. | the key's sign matches the carving on the cellar door; markers |
-| Ixu-Maan | the nest-pit held by Salt-Tooth Naga, the bound dead among the grave-stakes, Okan-Zeel and two grave-singers at the egg pools, and a Rothalen captain with the sailing orders (the record's nest-pit and Naga) | 11. The Night at Ixu-Maan | The player breaks the raid. | Okan-Zeel's letter; markers |
+| Ixu-Maan | the nest-pit held by Salt-Tooth Naga, the bound dead among the grave-stakes, Okan-Zeel and two grave-singers at the egg pools, and a Rothalen captain with the sailing orders (the record's nest-pit and Naga) | 11. Hold the Egg Pools | The player breaks the raid. | Okan-Zeel's letter; markers |
 | Kharraluhl | the house's diggers in the upper walls, the bound dead in the lower halls and the stake store at the household shrine (the record's scavenger crew, lower halls and shrine) | 12. The Thrall Ship | The player clears the store and burns it. | the sailing orders; markers |
 | Thorn | the *Saltrice Queen* at the quay, with a master-locked hold, Ervyn in the cabin with its key, and the binding-stone in the hold (Thorn's ship interior) | 12. The Thrall Ship | The player frees the dead in the hold. | the ship's name on the quay marker; markers |
 | Thorn | Neeja on the quay after the ship | 12. The Thrall Ship | She makes her offer. | she speaks first; a marker |
@@ -355,7 +359,6 @@ named thing taken or a named person dead, and the spell is the way through that 
 
 ### What it changes elsewhere
 
-- *The old lines* `nisswo.md` and `many-root.md` are deleted. This page holds their work.
 - *Place records:* Coldbrine Mine (the risen salt dead), Tselan (the welkynd stone and the house's man), Joxhi (the
   house's store in the buried hall), Sethiral (the house's stake store behind the humming door), Ovezza (the water
   door and the house's hall), Ixu-Maan (the order's grave-ground), Kharraluhl (the house's diggers and bound dead) and

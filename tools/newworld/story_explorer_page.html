@@ -175,7 +175,7 @@ const STATUS = {outlined:"Outlined", written:"Written", reviewed:"Reviewed", bui
 const STATUS_HELP = {outlined:"This quest is told at arc level in its line's story. It is not yet written out stage by stage.",
   written:"This quest is written out in full, with its people, stages and endings.", reviewed:"This quest is written out in full and fresh readers have read it on paper.",
   built:"Our plugin holds a record of this quest."};
-const KIND = {plot:"Faction story", line:"Line story", ledger:"Ledger", world:"Province digest", region:"Region", spells:"Spells by use"};
+const KIND = {plot:"Faction story", line:"Line story", background:"Background", ledger:"Ledger", world:"Province digest", region:"Region", spells:"Spells by use"};
 const kindOf = d => d.kind === "plot" && d.id === "main-plot" ? "Main quest plot" : KIND[d.kind] || d.kind;
 const MAIN = () => CAT.lines.find(l => l.id === "main-plot") || CAT.lines.find(l => l.id === "main");
 let CAT = null; const DOCS = {}; let db = null, dbState = "connecting", batches = [], dreplies = {};
@@ -273,7 +273,7 @@ function viewHome() {
     <section class="wrap" style="gap:12px"><h2>The main quest</h2><div class="grid">
       ${plot ? lineCard(plot, "The whole plot, short enough to read in one sitting.") : ""}
       ${main ? lineCard(main) : ""}</div></section>
-    <section class="wrap" style="gap:12px"><h2>The faction lines</h2><div class="grid">${others.map(l => lineCard(l)).join("")}</div></section>
+    <section class="wrap" style="gap:12px"><h2>The faction lines</h2><div class="grid">${others.map(l => lineCard(l)).join("")}${CAT.docs.filter(d => d.kind === "background").map(d => `<a class="card" href="#d-${d.id}"><span class="eyebrow">${KIND[d.kind]}</span><b>${esc(d.title)}</b></a>`).join("")}</div></section>
     <section class="wrap" style="gap:12px"><h2>Ledgers</h2><p class="lede">These are the rulings that keep the stories true to one province.</p><div class="grid">
       ${CAT.docs.filter(d => d.kind === "ledger").map(d => `<a class="card" href="#d-${d.id}"><span class="eyebrow">${KIND[d.kind]}</span><b>${esc(d.title)}</b></a>`).join("")}</div></section>
     ${CAT.docs.some(d => d.kind === "spells") ? `<section class="wrap" style="gap:12px"><h2>Spells</h2><div class="grid">${CAT.docs.filter(d => d.kind === "spells").map(d => `<a class="card" href="#d-${d.id}"><span class="eyebrow">${KIND[d.kind]}</span><b>${esc(d.title)}</b></a>`).join("")}</div></section>` : ""}`;

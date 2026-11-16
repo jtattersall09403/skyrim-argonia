@@ -33,7 +33,8 @@ Topal Bay's one island is Aphon Isle, which is small, watched by the Archwardens
 keep. So the Free Marque's island is Skeith Isle, which already holds a pirates' keep and camp, and its bay crew
 gives it the "inland/river branch" the owner asked for.
 
-The Free Marque also carries out by sea people whom the Chainbreakers have freed. The two are allies.
+The Free Marque also carries people whom the Chainbreakers have freed out of the province by sea, from the causeway
+of Bala Karag ([the Chainbreakers](chainbreakers-newworld.md)' 7, Out by Sea). The two are allies.
 
 **Its skills.** Pure combat: One-Handed, Two-Handed, Archery, Block, Light Armour and Heavy Armour. The Free Marque
 does not teach spells. It hands out scrolls, and a quest that hands out a scroll uses it: Waterbreathing, Water
@@ -65,7 +66,8 @@ worse, and at first the player does not know why.
 captains of Skeith Isle. Gideon and Soulrest have quarrelled for centuries over who ships the bay's trade
 (`gideon.md:106`). Gaius paid the Skeith captains to take Soulrest's ships, and his Company grew rich on the trade
 that Soulrest lost. When the Company no longer needed them, he sold the course of their best ship, the
-*Stormwidow*, to the Archwardens. She was chased onto the beach of Skeith Isle and her crew were killed. Her captain
+*Stormwidow*, to the Archwardens. Their chartered privateers of the Archon coast chased her onto the beach of
+Skeith Isle, and her crew were killed. Her captain
 hid her letter of marque in a cache under the cairn on the Grey Tooth before she died.
 
 The player finds the letter in quest 7. Its seal is the Company's seal. Gaius is dead. His daughter, Opilia
@@ -84,14 +86,14 @@ the recorded view that a shipless power charters the pirates it cannot beat
 
 | Who | What they want | What they hide, or what it costs |
 |---|---|---|
-| **Ma'jirra**, a Khajiit captain who runs the bay crew from Soulrest's mangrove landing and recruits for the Free Marque | the bay free of Company ships and her crew paid | she sailed for the Company before she sailed for the Free Marque, on Lucan Ostorius's ship. She left it with his strongbox. Canon makes many of the Southern Sea's pirates Khajiit (`soulrest.md:52-55`) |
-| **Teeba-Vos, called One-Eye**, captain of the Free Marque at Marque Landing | the Company broken and Gideon's quay hers | she takes the name of the old pirate captain of Alten Corimont (`alten-corimont.md:45`). She keeps unransomed sailors in the wet cells, and she knew of the *Stormwidow*'s letter long before the player found it |
+| **Ma'jirra**, a Khajiit captain who runs the bay crew from Soulrest's mangrove landing and recruits for the Free Marque | the bay free of Company ships and her crew paid | she sailed for the Company before she sailed for the Free Marque, on Gallus Ostorius's ship. She left it with his strongbox. Canon makes many of the Southern Sea's pirates Khajiit (`soulrest.md:52-55`) |
+| **Wazei-Vos, called One-Eye**, captain of the Free Marque at Marque Landing | the Company broken and Gideon's quay hers | she takes the name of the old pirate captain of Alten Corimont (`alten-corimont.md:45`). She keeps unransomed sailors in the wet cells, and she knew of the *Stormwidow*'s letter long before the player found it |
 | **Selvo Arenim**, a Dunmer, quartermaster of Rainbreaker Keep | the keep's stores full and the ransoms paid | he holds the cell keys and sells a prisoner's freedom for the ransom price |
 | **Bar-Neeus**, bosun of Marque Landing | a newcomer who can fight | he has lost two crews to the Company and trusts nobody he has not fought |
 | **Rajeel-Kosh**, leader of the smugglers of Hollow Tide Camp on the same island | his camp left out of the Free Marque's war, and his old strongbox back | he sells to anyone, the Archwardens' sergeants among them |
 | **Kesh-Ulee**, a bosun of the bay crew | out of the stockade at Fort Silvermoth before Gideon hangs him | he was caught carrying the Free Marque's purse to the fort's captain |
 | **Captain Hareel Tullan**, the Archwarden captain of Fort Silvermoth | his toll and his family's old land under Gideon's south gardens | he takes money from the Free Marque and from the Company |
-| **Lucan Ostorius**, an Imperial, master of the Company ship *Leyawiin Pride* | his ship and his name kept | he sailed with the Free Marque as a young man and bought his way into the Company with what he knew of their moorings |
+| **Gallus Ostorius**, an Imperial, master of the Company ship *Leyawiin Pride* | his ship and his name kept | he sailed with the Free Marque as a young man and bought his way into the Company with what he knew of their moorings |
 | **Opilia Cassena**, master of the Nibenese Company in Gideon | the bay's trade for the Company, and the pirates gone | she knows what her father did and has burned every copy of his letters she could find |
 | **Ixil-Ma**, a diver of Seafalls, prisoner in the undercroft of Rainbreaker Keep | to go home | he knows the way into the wreck of the *Resolute Crest* by its stern ports |
 
@@ -127,19 +129,19 @@ The Free Marque's ranks come with the line, each with a fixed reward:
 
 | Rank | Given after | Reward |
 |---|---|---|
-| Deckhand | quest 1 | light Argonian boots and bracers (Sign of Cipactli, under our name "bay-runner's") and 50 gold |
-| Boarder | quest 5 | a boarding rapier or a boarding pike (Animated Armoury, under our names), as the player chooses. Ma'jirra's crew sell scrolls of Frenzy from now on |
+| Deckhand | quest 1 | a cutlass (Animated Armoury, under our name "bay-runner's") and 50 gold |
+| Boarder | quest 5 | a boarder's coat (Pirate Armor's coat, under our name). Ma'jirra's crew sell scrolls of Frenzy from now on |
 | Bosun | quest 9 | a set of light Argonian armour (Sign of Cipactli) or a set of steel plate (Skyrim's), as the player chooses, and a bed and the Legion forge at Wrackmoth |
-| Mate | quest 12 | enchanted claws that drain stamina or an enchanted halberd that strikes with shock (Animated Armoury, under our names). Selvo sells scrolls of Mayhem from now on |
-| Captain | quest 13 | the Marque Coat, armour with an enchantment of our own (Fortify One-Handed, Fortify Two-Handed and Waterbreathing together), and the Company house in Gideon as the player's stronghold |
+| Mate | quest 12 | an enchanted pike that drains stamina or an enchanted halberd that strikes with shock (Animated Armoury, under our names). Selvo sells scrolls of Mayhem from now on |
+| Captain | quest 13 | the Marque Coat, the captain's set of Pirate Armor under our name, with an enchantment of our own (Fortify One-Handed, Fortify Two-Handed and Waterbreathing together), and the Company house in Gideon as the player's stronghold |
 
 ### Act I: the bay
 
 **1. A Drink and a Brawl** (Olvani, a fishing village on the estuary west of Gideon, with an ale-house). Ma'jirra
 drinks in Olvani's ale-house, where the Company's sailors drink ashore. She speaks first, buys the player a cup of Surilie wine and asks what they can do with their fists. An Imperial
-sailor drinks at the next table: Lucan Ostorius, master of the Company ship *Leyawiin Pride*. Ma'jirra tells the
-player to pick a fight with him. The player says something to Lucan that angers him, and he brawls. The fight is
-unarmed, as Skyrim's tavern brawls are, so it rewards Heavy Armour's gauntlets and a strong Block. When Lucan is
+sailor drinks at the next table: Gallus Ostorius, master of the Company ship *Leyawiin Pride*. Ma'jirra tells the
+player to pick a fight with him. The player says something to Gallus that angers him, and he brawls. The fight is
+unarmed, as Skyrim's tavern brawls are, so it rewards Heavy Armour's gauntlets and a strong Block. When Gallus is
 beaten he yields, and the player accepts. A player who draws a weapon or kills him has failed the test: Ma'jirra
 says she has no use for a killer in a tavern. A second Company sailor drinks at the bar, and the player may try
 her test again with him.
@@ -159,13 +161,14 @@ gives the player half the silver. She has a second job: the Company keeps a pay 
 Naxan.
 
 **3. The Naxan Landing** (Naxan, a fishing and timber village on the cape's north coast). The Company pays its
-loggers at Naxan from a strongbox on the log landing. Three Company sellswords guard it by night. Ma'jirra gives
+loggers at Naxan from a strongbox on the log landing (the Lamps' 8, The Burnt Cut, starts from the same village's
+log-haulers). Three Company sellswords guard it by night. Ma'jirra gives
 the player two scrolls of Frenzy and shows them how a crew turned on itself is half beaten. The journal says the
 player may fight the guards or set them on each other, and markers show the strongbox and the guard who carries
 its key. The player reads a scroll among the guards and finishes the last one standing, or fights them on the
 landing with blade and shield, or shoots from behind the timber stacks. Theft is seen by anyone in the village who
 is awake, and a bounty with Soulrest's council follows a theft that is seen. In the strongbox are the loggers' pay
-and a sailing order in Lucan's hand: the *Leyawiin Pride* will lie at Fort Shellmoth's sea-gate to load timber.
+and a sailing order in Gallus's hand: the *Leyawiin Pride* will lie at Fort Shellmoth's sea-gate to load timber.
 *Leads on:* Ma'jirra reads the order and says she wants that ship. First she needs her bosun back. Kesh-Ulee is
 held in the stockade of Fort Silvermoth, and Gideon has asked for him. The journal marks the fort.
 
@@ -188,7 +191,7 @@ at its sea-gate). The *Leyawiin Pride* lies moored at the fort's sea-gate. Ma'ji
 Mayhem and tells them what Mayhem does to a crew woken in the dark. Her crew are already in the water by the hull
 when the player arrives. The player climbs aboard. The two sailors on watch are fought or shot. The crew come up from the hold
 and are fought on the deck, or the player reads Mayhem among them as they come. The strongbox is in the master's
-cabin aft. Lucan Ostorius stands in his cabin and does not fight. He knows the player from the inn. He gives up the
+cabin aft. Gallus Ostorius stands in his cabin and does not fight. He knows the player from the inn. He gives up the
 strongbox key if the player asks, or the player kills him for it. In the strongbox is the Company's silver for the
 timber. *Leads on:* Ma'jirra makes the player a Boarder. One-Eye has heard who took the *Pride* and wants to see
 them on the island. Ma'jirra gives the player two scrolls of Water Walking: no boat goes to Skeith Isle from the
@@ -201,7 +204,8 @@ Company is put out of it (section 6).
 
 **6. Across the Water** (Arorha, a clay-mound village and sea door on Hatandros Bight; Marque Landing, the
 pirates' stilt camp on Skeith Isle). Arorha's boatmen will not row to Skeith Isle, because Skeith crews take boats
-that land there. The player reads a scroll of Water Walking at Arorha's quay and walks across the strait to the
+that land there. (The Sisei-Xul's 1, The Burnt Kilns, is set at the same village's kilns.) The player reads a
+scroll of Water Walking at Arorha's quay and walks across the strait to the
 island. A player without a scroll may swim, past the slaughterfish under Marque Landing's jetty. Bar-Neeus, the
 bosun, stops the player on the jetty and speaks first. The landing's custom is that a newcomer fights the bosun.
 The player chooses fists or blades. With blades the fight is to the first good wound, and with fists it is a brawl.
@@ -227,7 +231,8 @@ warns that they shoot strangers who come in without a word. The player gives One
 is let in. Rajeel-Kosh gives the player the cargo and two scrolls of Water Walking. The watch searches goods on the
 road. The player has three ways:
 
-- *By the road, paying.* The watch sergeant stops the player and speaks first. A toll of 250 gold buys him blind.
+- *By the road, paying.* The warden at the gate stops the player and speaks first. A toll of 250 gold buys him
+  blind. He is the warden whom his sergeant suspects in the Rothalens' 2, The Blind Gate.
 - *By the road, fighting.* The player kills the watch of four. The Archwardens put a bounty on the player.
 - *By the sea.* The player reads Water Walking at the shore below Kornakim and walks the coast past the watch.
 
@@ -301,7 +306,7 @@ shuts at its quest 5.
 
 | Event | The Free Marque's side | The Company's side |
 |---|---|---|
-| Lucan Ostorius drinks at Olvani's ale-house | quest 1: the player brawls him | he is the master of the ship the player guards in quest 5 |
+| Gallus Ostorius drinks at Olvani's ale-house | quest 1: the player brawls him | he is the master of the ship the player guards in quest 5 |
 | the race for the *Grey Heron*'s salvage | quest 2: the player kills the Company's divers and takes the captain's chest | quest 2: the player kills the Free Marque's salvors and raises the iron |
 | Captain Hareel Tullan and Kesh-Ulee at Fort Silvermoth | quest 4: the player pays for Kesh-Ulee or breaks him out | quest 3: the player gets the toll chain lifted, and may have Kesh-Ulee handed to Gideon |
 | the night of the *Leyawiin Pride* at Fort Shellmoth | quest 5: the player boards and takes her strongbox. The Company's door shuts | quest 5: the player kills the boarding party. The Free Marque's door shuts |
@@ -338,8 +343,9 @@ can never be taken.
   [spell-groups](../spell-groups.md) (Water Walking and Swift Swim are Magic Expanded's).
 - **A moored ship** at Fort Shellmoth's sea-gate with a deck and a hold that can be entered, from the ships that
   Black Marsh & Valenwood and Skyrim hold. The fort's third source, Forth Isle, is built with dock and ship pieces.
-- **The Free Marque's gear:** Sign of Cipactli's Argonian armour, Animated Armoury's rapier, pike, claws and
-  halberd, Skyrim's steel plate and an Akaviri blade, each under our name. The Marque Coat's enchantment is ours.
+- **The Free Marque's gear:** Pirate Armor's coat and captain's set, Sign of Cipactli's Argonian armour, Animated
+  Armoury's cutlass, pike and halberd, Skyrim's steel plate and an Akaviri blade, each under our name
+  ([reward-gear](../reward-gear.md)). The Marque Coat's enchantment is ours.
 - **Gideon after the ending:** Free Marque crews (pirates of the load order, under our names) to stand in the
   guards' places.
 
@@ -347,19 +353,19 @@ can never be taken.
 
 | Place | The thing | Quest | What happens there | How the player knows it |
 |---|---|---|---|---|
-| Olvani | an ale-house with Ma'jirra at a table and Lucan Ostorius at the next (the record's fish-seller sells ale; the source town's inn is the building) | 1. A Drink and a Brawl | Ma'jirra buys the drink and sets the brawl. | Ma'jirra speaks first; a marker |
+| Olvani | an ale-house with Ma'jirra at a table and Gallus Ostorius at the next (the record's fish-seller sells ale; the source town's inn is the building) | 1. A Drink and a Brawl | Ma'jirra buys the drink and sets the brawl. | Ma'jirra speaks first; a marker |
 | Soulrest | Ma'jirra's crew at the mangrove landing, with her fence (the record's smugglers' fence on the mangrove landing) | 1 to 5 | The player takes jobs from Ma'jirra and sells what they take. | its name on the map; a marker |
 | The Grey Heron | a hull with air inside (the source wreck's interior), the captain's locked chest in the stern cabin, two Company divers in the hold | 2. The Grey Heron | The player fights the divers and opens the chest with their key. | the game names the wreck and the chest; a marker |
 | Olvani | the jetty the player wades out from (in the record) | 2. The Grey Heron | The player starts the dive. | its look; a marker on the wreck |
-| Naxan | a Company strongbox on the log landing, three Company sellswords, one carrying the key | 3. The Naxan Landing | The player takes the pay and Lucan's sailing order. | the game names the strongbox; markers on it and the key-holder |
+| Naxan | a Company strongbox on the log landing, three Company sellswords, one carrying the key | 3. The Naxan Landing | The player takes the pay and Gallus's sailing order. | the game names the strongbox; markers on it and the key-holder |
 | Fort Silvermoth | a stockade in the yard with Kesh-Ulee in it, its key on the sergeant, and Captain Hareel at the toll chain (the record holds the stockade and its prisoner) | 4. The Stockade | The player pays for Kesh-Ulee or breaks him out. | Hareel speaks first; markers on the stockade and the sergeant |
-| Fort Shellmoth | the *Leyawiin Pride* moored at the sea-gate, two sailors on watch, crew in the hold, Lucan in the master's cabin with the strongbox (an added ship; the source's dock and ship pieces) | 5. Boarding the Leyawiin Pride | The player boards her and takes the strongbox. | the ship's name on her door; a marker |
+| Fort Shellmoth | the *Leyawiin Pride* moored at the sea-gate, two sailors on watch, crew in the hold, Gallus in the master's cabin with the strongbox (an added ship; the source's dock and ship pieces) | 5. Boarding the Leyawiin Pride | The player boards her and takes the strongbox. | the ship's name on her door; a marker |
 | Arorha | the quay the player walks out from (in the record) | 6. Across the Water | The player crosses to Skeith Isle. | the journal; a marker on Marque Landing |
 | Marque Landing | Bar-Neeus on the jetty, and One-Eye on the hulks (the record's captain and jetty) | 6. Across the Water; 7; 8; 12 | The player fights the bosun and takes One-Eye's jobs. | Bar-Neeus speaks first; a marker on One-Eye |
 | Wreck of the Stormwidow | the strongbox under the sand in the stern, with the brass key in it, and four scavengers (the record holds the strongbox and the scavengers) | 7. The Widow's Strongbox | The player clears the wreck and takes the key. | a marker; the key is a named thing |
 | The Grey Tooth | a cairn on the summit with a small iron box under it, holding the letter of marque | 7. The Widow's Strongbox | The player opens the box with the brass key. | a marker; the letter is a named thing |
 | Hollow Tide Camp | Rajeel-Kosh by the cook fire, his lookouts (in the record) | 8. The Hollow Tide Run; 12 | The player is let in and given the cargo. | a marker; the lookouts call out |
-| Marshgate Watch | a watch sergeant at the road post who speaks first, and three wardens (the record's post) | 8. The Hollow Tide Run | The player pays, fights or goes round by the sea. | the sergeant speaks first |
+| Marshgate Watch | a warden at the road post's gate who speaks first, the sergeant and two more wardens (the record's post) | 8. The Hollow Tide Run | The player pays, fights or goes round by the sea. | the sergeant speaks first |
 | Ysan | the buyer at the landing | 8. The Hollow Tide Run | The player hands over the cargo. | a marker |
 | Wrackmoth | the outlaws in the yard, the captain in the gatehouse, the flooded gate and the Legion forge (in the record) | 9. Wrackmoth | The player takes the fort for the bay crew. | markers; the forge is in sight |
 | Rainbreaker Keep | Ixil-Ma in a cell of the undercroft, Selvo with the cell key, the wet cells and the slaughterfish pen (in the record; the first source's prison block) | 10. The Akaviri Chest | The player frees Ixil-Ma or leaves him. | Selvo tells them; markers on Ixil-Ma and Selvo |
@@ -390,7 +396,6 @@ the guards and sellswords there are placed at the D4 level (35).
 - *Fort Shellmoth's record* gains the moored *Leyawiin Pride*.
 - *The main quest* sends the player to a relic dealer in Gideon's market and to Gideon South Watch. Neither is the
   Company's, and both stay as they are after the ending.
-- *The old Reed-Sail line* is deleted. This page replaces it.
 
 ## 9. Read on paper
 

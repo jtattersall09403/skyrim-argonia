@@ -163,7 +163,8 @@ PLOT_ACTS = re.compile(r"^#{2,3}\s+(\d+\.\s+)?The acts\s*$", re.M | re.I)
 
 def doc_kind(rel: Path, text: str = "") -> str:
     """A line file in the plot form (a short page with a section "The acts", as main-plot.md) is a plot; the main
-    quest's plot is the one with the id main-plot, every other plot is a faction's."""
+    quest's plot is the one with the id main-plot, every other plot is a faction's. A line file with neither acts nor
+    quests is a line's background page."""
     if rel == SPELLS:
         return "spells"
     if rel.parent == WORLD / "regions":
@@ -174,6 +175,8 @@ def doc_kind(rel: Path, text: str = "") -> str:
         return "plot"
     if rel.stem in ("consistency", "province-plan"):
         return "ledger"
+    if not re.search(r"^#{2,4}\s+[A-Z]{2}\d{2}\.|^\*\*[A-Z]{2}\d{2}[.,]", text, re.M):
+        return "background"   # a page with no acts and no quests: the background of a line (owing-house.md)
     return "line"
 
 

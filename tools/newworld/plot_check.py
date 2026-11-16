@@ -5,7 +5,7 @@
 Under the "## ... The acts" heading each quest is a numbered item ``6. **Title** (place, kind; place, kind). text`` or a
 paragraph ``**6. Title** (place, kind; ...). text``. A place's band is the harder of its strength and reach bands
 (``place_danger``), else its ``danger_band_id``; a quest's band is its hardest place. Errors (exit 1): a jump of more
-than one band over the hardest earlier quest, a first quest above the opening band (D1, or D2 with --opens-at D2), a
+than one band over the hardest earlier quest (a line may climb from towns to its opening band), a first quest above the opening band (D1, or D2 with --opens-at D2), a
 second quest above D2, a quest with no place of the database. Warnings: a slump (two or more bands under the running
 top after the line's first third), a phrase that is not a place when another place resolved. Info: the last act's top.
 """
@@ -130,7 +130,8 @@ def analyse(quests: list[dict], places: Places, opens_at: str = "D1") -> dict:
         else:
             for ph in missing:
                 warnings.append(f"{label}: '{ph}' is not a place")
-            if top is not None and band > top + 1:
+            # a line may climb to its opening band from towns (D0) without a jump
+            if top is not None and band > max(top, open_rank - 1) + 1:
                 errors.append(f"{label}: D{band} is a jump over the top so far D{top}")
             if i == 0 and band > open_rank:
                 errors.append(f"{label}: the first quest is D{band}, above D{open_rank}")

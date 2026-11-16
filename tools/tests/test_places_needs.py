@@ -50,7 +50,7 @@ PLAN = """## Needs of places
 
 | Place | The thing needed | Line |
 |---|---|---|
-| Fenwick | a keeper's post | Waykeepers |
+| Fenwick | a keeper's post | Lamps |
 | Fenwick | a gate that locks | Chainbreakers, Main |
 """
 
@@ -59,12 +59,12 @@ PLAN = """## Needs of places
 def world(tmp_path):
     lines = tmp_path / "lines"
     lines.mkdir()
-    (lines / "many-root.md").write_text(STORY)
+    (lines / "sisei-xul.md").write_text(STORY)
     (lines / "province-plan.md").write_text(PLAN)
     root = tmp_path / "needs"
     root.mkdir()
     (root / "lines.json").write_text(json.dumps({"lines": [
-        {"id": "many-root", "name": "Many-Root", "plain": "a faction of healers"},
+        {"id": "sisei-xul", "name": "Sisei-Xul", "plain": "a faction of healers"},
         {"id": "main", "name": "the main quest", "plain": "the main story"}]}))
     people = tmp_path / "people"
     people.mkdir()
@@ -83,24 +83,24 @@ def world(tmp_path):
 
 
 def test_tables_are_read_for_the_place_only(world):
-    rows = N.read_tables(world["lines"] / "many-root.md", {"fenwick"})
+    rows = N.read_tables(world["lines"] / "sisei-xul.md", {"fenwick"})
     assert [r["thing"] for r in rows] == ["a hall that can be entered", "a spot by the hall's door",
                                           "a crocodile on the mud"]
-    assert rows[0]["know"] == 'its door is named "Hall"' and rows[0]["quests"] == "all" and rows[0]["line"] == "many-root"
-    assert rows[0]["story"] == "lines/many-root.md:11"
+    assert rows[0]["know"] == 'its door is named "Hall"' and rows[0]["quests"] == "all" and rows[0]["line"] == "sisei-xul"
+    assert rows[0]["story"] == "lines/sisei-xul.md:11"
     plan = N.read_tables(world["lines"] / "province-plan.md", {"fenwick"})
-    assert [(r["line"], r["thing"]) for r in plan] == [("waykeepers", "a keeper's post"),
+    assert [(r["line"], r["thing"]) for r in plan] == [("lamps", "a keeper's post"),
                                                        ("chainbreakers", "a gate that locks"), ("main", "a gate that locks")]
 
 
-def _key(world, thing, line="many-root", name="many-root.md"):
+def _key(world, thing, line="sisei-xul", name="sisei-xul.md"):
     return N.row_key(world["lines"] / name, line, thing)
 
 
 def _judged(world):
     hall = _key(world, "a hall that can be entered")
     doc = {"place_id": "fenwick", "dismissed": [], "needs": [
-        {"seq": 0, "from": [hall], "thing": "a hall that can be entered", "line": "many-root",
+        {"seq": 0, "from": [hall], "thing": "a hall that can be entered", "line": "sisei-xul",
          "signs": [{"sign": "label", "detail": "its door shows \"Hall\""},
                    {"sign": "person", "detail": "the healer names it", "person": "fenwick.B"}],
          "rests": {"space": "hall"}, "met": True, "why": "Met. Its door shows Hall."},
@@ -121,8 +121,8 @@ def test_the_panel_is_made_from_the_stories(world):
     _judged(world)
     d = _compose(world)
     hall = d["needs"][0]
-    assert hall["seq"] == 0 and hall["met"] and hall["judged"] and hall["line"] == "a faction of healers (Many-Root)"
-    assert hall["does"] == "briefings" and hall["sources"][0]["story"] == "lines/many-root.md:11"
+    assert hall["seq"] == 0 and hall["met"] and hall["judged"] and hall["line"] == "a faction of healers (Sisei-Xul)"
+    assert hall["does"] == "briefings" and hall["sources"][0]["story"] == "lines/sisei-xul.md:11"
     assert hall["know"] == 'By the name the game shows: its door shows "Hall". Told by a person: the healer names it.'
     open_ = [n for n in d["needs"] if not n["judged"]]
     assert {n["thing"] for n in open_} == {"a spot by the hall's door", "a crocodile on the mud", "a keeper's post",
@@ -136,7 +136,7 @@ def test_the_panel_is_made_from_the_stories(world):
 
 def test_a_story_marked_to_be_rewritten_marks_its_rows_and_a_replaced_one_is_not_read(world):
     _judged(world)
-    p = world["lines"] / "many-root.md"
+    p = world["lines"] / "sisei-xul.md"
     p.write_text(STORY.replace("# A line\n", "# A line\n\n**Status: to be rewritten.** Section 4 is untrue.\n"
                                "\nXilsa tends the roots by the hall.\n"))
     d = _compose(world)
@@ -147,8 +147,8 @@ def test_a_story_marked_to_be_rewritten_marks_its_rows_and_a_replaced_one_is_not
     d = _compose(world)
     assert [n["thing"] for n in d["needs"]] == ["a keeper's post", "a gate that locks", "a gate that locks"]
     assert d["changed_story"][0]["seq"] == 0 and d["changed_story"][1]["seq"] == 1
-    (world["lines"] / "many-root-newworld.md").write_text("# Twin\n")
-    assert [p.stem for p, _ in N.stories(world["lines"])] == ["many-root-newworld", "province-plan"]
+    (world["lines"] / "sisei-xul-newworld.md").write_text("# Twin\n")
+    assert [p.stem for p, _ in N.stories(world["lines"])] == ["province-plan", "sisei-xul-newworld"]
 
 
 def test_who_words_and_check_hold_rests_to_the_place_files(world):

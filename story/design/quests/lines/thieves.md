@@ -120,7 +120,7 @@ The Eelskins' line is twelve quests in three acts. Act I is the outpost at Black
 themselves. Act II is the hall under Pusbottom and the jobs that build to a first heist. Act III is the great heist:
 the scout's night, the preparations, the choice of ally and the heist.
 
-Danger climbs with the line: Blackrose (D0), a farm (D1), a salvagers' village (D2), the villages, ferries and ruins
+Danger climbs with the line: Blackrose (D0), a farm and a salvagers' village (D2), the villages, ferries and ruins
 of the washes (D3), an old keep (D4), and, in the preparations, Meris-Keth (D5). The great heist itself is at
 Silt-Orrel (D3 by its band). It is the hardest job of the line in its locks, its guards and its choices of way. Locks
 and pockets climb with the line: Novice in quests 1 and 2, Apprentice and Adept in quests 3 to 6, Expert in quests 7
@@ -132,11 +132,11 @@ quest 8.
 
 | Rank | Given after | Reward |
 |---|---|---|
-| Slick | quest 1 | Eelskin boots and hood (Sign of Cipactli's light Argonian armour, under our name), fifteen lockpicks, Corso's fence at the outpost |
+| Slick | quest 1 | Eelskin boots and hood (Skyrim's thieves' leathers, under our name), fifteen lockpicks, Corso's fence at the outpost |
 | Eel | quest 4 | the key to the hall; the Pusbottom fence, who buys stolen goods to 2,000 gold; Sees-Nothing as an Expert Pickpocket trainer |
 | Ripper | quest 8 | Eel's Teeth (Animated Armoury's claws, under our name), enchanted to absorb stamina; the hall's arcane enchanter and a bed |
-| Deep Eel | quest 10 | the Eelskin cuirass and gauntlets (Sign of Cipactli's light armour), enchanted with Fortify Sneak 20 and Fortify Pickpocket 20; a Master Lockpicking trainer in the hall |
-| Master Eel | quest 12 | the Still Water ring, and the ending's gift (section 6) |
+| Deep Eel | quest 10 | the Eelskin hooded cuirass and gauntlets (Skyrim's Linwe-style hooded armour, under our name), enchanted with Fortify Sneak 20 and Fortify Pickpocket 20; a Master Lockpicking trainer in the hall |
+| Master Eel | quest 12 | the Still Water ring, the Master Eel's armour (Skyrim's Nightingale-style armour, renamed and recoloured by enchantment only), and the ending's gift (section 6) |
 
 ### Act I: the outpost
 
@@ -190,8 +190,9 @@ window, beyond the guards' reach and beyond a hand's. The player lifts it out wi
 can also take the guards' key (Pickpocket, an Adept pocket), or walk in and fight. *Leads on:* Swims has a bigger
 cellar for them.
 
-**7. The Strongroom Cellar** (Fort Swiftmoth, an empty keep inland from Archon). Smugglers keep their cache in the
-keep's locked strongroom, under a watch of four and their captain. Aroxhu families rest in the dry upper floor and are
+**7. The Locked Strongroom** (Fort Swiftmoth, an empty keep inland from Archon). Smugglers of the Free Marque keep
+their cache in the keep's locked strongroom, under a watch of four and their captain (the Company's 11, The Scroll
+Store, raids the same strongroom). Aroxhu families rest in the dry upper floor and are
 to be left alone. The captain carries the strongroom key, and it can be lifted (Pickpocket, an Expert pocket). The
 strongroom can be picked (an Expert lock), or the player can fight down to it. Mud-crocodiles lie in the ditch round
 the rise. *Leads on:* Swims says the player is ready for a heist of their own. Truowa's council wants the Archwardens'
@@ -202,7 +203,8 @@ first heist. A Truowa council merchant, who will not pay Gysilla's toll, pays th
 chooses the way in. They can swim from a boat to the fort's water-gate by night and pick it (an Expert lock). They
 can ride in a rice crate on the garrison's supply boat, which takes a bribe of 200 gold to its boatman or an Expert
 Speech check (75). Or they can go over the gate by force, and the journal warns that the garrison is the
-Archwardens'. The strongroom's key is on the toll-master. The lock is Expert. Two guards stand by the strongroom and
+Archwardens'. The same garrison holds runaways for the Ulvarys house (the Chainbreakers' 9, The Island Keep). The
+strongroom's key is on the toll-master. The lock is Expert. Two guards stand by the strongroom and
 the rest are at the landing, so a quiet player can reach it. *Leads on:* the merchant pays at Truowa. Swims makes the
 player a Ripper and calls them to the hall. She is ready to speak of the great heist.
 
@@ -299,16 +301,14 @@ enchantment made for this line (no Chameleon spell exists).
 
 ### What it asks of the world
 
-- **One danger band lowered.** The database has no place at D1. Reedfall Farm is asked at strength D1 (one young
-  crocodile at the landing), so that a new character's second job does not jump from Blackrose to D2. Until it is,
-  `plot_check` fails at quest 2.
 - **Ripper eels:** Skyrim's slaughterfish, under the name "ripper eel", in Pusbottom's canal, set to ignore a player
   who carries the eel-slime effect. **Eel-slime:** a potion of ours (Skyrim's slaughterfish egg, under our name) that
   gives that effect for an hour.
 - **Named things from meshes we hold:** the toll purse, the Eelskin ring of Fortify Pickpocket, the gold pearl,
   Matius's sketch of the hulk, the marked rice sack and its pearl box, the cellar hatch key, the golden ring of
   Rushiit Den, the brass medallion, the governor's seal ring (Skyrim's rings and amulets, under our names).
-- **The Eelskins' gear:** Sign of Cipactli's light Argonian armour and Animated Armoury's claws, under our names.
+- **The Eelskins' gear:** Skyrim's thieves' leathers, Linwe-style hooded armour and Nightingale-style armour, and
+  Animated Armoury's claws, under our names ([reward-gear](../reward-gear.md)).
 - **The Still Water ring:** one custom enchantment, constant Chameleon 50%.
 
 ### What each quest needs of its places
@@ -323,7 +323,7 @@ enchantment made for this line (no Chameleon spell exists).
 | Brackwater Waystation | eel pens below the old signal tower, held by smugglers and their cache-master | 5. Eel-Slime; 10. Two of Four | The player gets the slime. | a marker; the slime is a named thing |
 | Lilmoth | the hatch on Pusbottom's walkways, a flooded stair to the canal with ripper eels, and the Eelskins' hall in the drowned Imperial cellars, with Swims-Without-Ripples, her strongbox (a Master lock), a fence, a bed, an enchanter and trainers (the place's record holds the cellars and the hatch; their smugglers become the Eelskins) | 5 to 13 | The guild's hall. | the hatch is named; Swims speaks first on arrival |
 | Delta Ferry | the ferry shed with a marked rice sack, a pearl box behind a barred window, the ferry-keeper and two guards | 6. The Marked Sack | The player lifts the box. | Swims tells them; markers |
-| Fort Swiftmoth | the locked strongroom cellar with the smugglers' cache, its key on their captain, and Aroxhu families in the upper floor (in the place's record) | 7. The Strongroom Cellar | The player empties the cache. | markers |
+| Fort Swiftmoth | the locked strongroom off the lower hall, with the smugglers' cache, its key on their captain, and Aroxhu families in the upper floor (in the place's record) | 7. The Locked Strongroom | The player empties the cache. | markers |
 | Fort Gysilla | a water-gate with an Expert lock, the garrison's supply boat at its landing with a rice crate, the toll strongroom with two guards and its key on the toll-master | 8. The Toll Strongroom | The first heist. | the merchant tells them; markers |
 | Truowa | the council merchant who hires the Eelskins; the supply boat's boatman at the quay | 8. The Toll Strongroom | The job is given and paid. | a marker |
 | Silt-Orrel Estate | the drain under the rice-barn with a new grate (an Expert lock), the cellar hatch at the boat landing (a Master lock), the front door, the vault in the cellar (a Master lock) with the drowned quarter's gold, the seal ring and Imperial silver, four or eight guards and the dogs (the source estate's barn, house, cellar, channel and landing) | 9. The Drowned Quarter's Gold; 12. The Great Heist | The player looks it over and robs the vault. | markers on each way in and on the vault |
@@ -353,7 +353,6 @@ preparations are four stages, and the heist's locks and guards are switched by t
 
 ### What it changes elsewhere
 
-- `night-reed.md` is deleted. This page replaces it.
 - *Place records:* the Eelskins' hall in Lilmoth's drowned cellars (the record's hostile smugglers there become the
   Eelskins, friendly to members), the hulk at Blackrose, Silt-Orrel's vault and the drowned quarter's gold, the eel
   pens at Brackwater Waystation.

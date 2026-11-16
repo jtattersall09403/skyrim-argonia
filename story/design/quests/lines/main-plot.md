@@ -121,8 +121,8 @@ The Reed's ranks come with the plot, each with a fixed reward:
 |---|---|---|
 | Reed-Hand | quest 5 | a set of light Argonian armour (from Sign of Cipactli, under our name) and the Reed's traders |
 | Listener | quest 10 | a rapier of the Reed (from Animated Armoury, under our name) or a quarterstaff, as the player chooses |
-| Watcher | quest 13 | a cuirass and helm of the Reed's heavier make, and free beds in every Archwarden fort |
-| Warden's Ear | quest 16 | the Reed's best: an enchanted pike or enchanted claws, and the rest of the heavy set |
+| Watcher | quest 13 | a cuirass and helm of the Reed's heavier make (Stormhold Warrior Armor, under our name), and free beds in every Archwarden fort |
+| Warden's Ear | quest 16 | the Reed's best: an enchanted pike or enchanted claws, and the rest of the Stormhold Warrior set |
 | Reed-Master | the Use ending | section 8 |
 
 ### Act I: the sick trees
@@ -295,7 +295,9 @@ stones the player carries.
 
 **18. The Guardian** (Teku-Sul Spire, the hall beyond the gate). The player sets the three stones in their
 sockets, and the gate opens. Beyond is a great hall where the Root's guardian waits: a hydra, old beyond memory.
-Nobody in the story explains it. The deep places of the world keep such things. It has its own music. If the
+Nobody in the story explains it. The deep places of the world keep such things. It is highly venomous, and the air
+and the water round it are poison. It fights in phases. When it is badly hurt its heads grow back, and heads that
+come off crawl away and roam the hall as sentries. It has its own music. If the
 player believed her, Cuts-the-Old-Knot is already in the hall when they step through, and she fights beside them
 as a battlemage. The guardian's body holds rich loot. *Leads on:* the door at the hall's far end.
 
@@ -319,7 +321,7 @@ rewards serve every build: some protect, some heal and some attack.
 | Sesk, if freed in quest 4 | Kitsa Burrow, a Lilmothiit ruin of the Althii Archipelago | scrolls of a paralysing spell, enough to hold the guardian three times |
 | the Toklea elder, after quest 8 | Va-Seeth Spire, a drowned tower | a spell tome: a spell of ours that burns the guardian far worse than it burns anything else |
 | a spared Unbound, after quest 9 | Anutasil, an Ayleid ruin of Blackwood | a quiver of arrows that slow what they strike |
-| Bell Station's steward, after quest 13 | Zeshul-Tha Spire, a drowned tower | scrolls of a storm that strikes the guardian's heads all at once, and potions that cure its venom quickly |
+| Bell Station's steward, after quest 13 | Zeshul-Tha Spire, a drowned tower | scrolls of a storm that strikes every head in reach at once, the roaming heads among them, and potions that cure its venom quickly |
 | the Collector, if left alive in quest 14 | the Kelp Lantern, a wreck in Benthic Yobesh | a blade that bites deeper into the guardian than into anything else |
 
 ## 7. The twist at the gate
@@ -399,17 +401,19 @@ places, which a later piece of work names and marks (section 9).
   when their places are built, about three in ten of the province's, and each is a need of its place.
 - **The barge's hold:** a ship's hold from Black Marsh & Valenwood, moored at Sedge-Kal's landing. The camp's
   source has no barge.
-- **The guardian:** the hydra of the mod that the owner chose (Nexus, Skyrim Special Edition, mod 63082). Its
-  page could not be read from here. Its name, author, needs and permissions go into the mod list when it is
-  installed, and the side quests' rewards are then fitted to its attacks. It gets a boss track of its own, from a
-  composer whose licence allows it. We do not make music.
+- **The guardian:** the hydra of "Hydra (Creature Series pt.2) SE" by Skinwalker21, which the owner chose (row
+  `hydra-skinwalker` in `mods/dependencies.json`). It is highly venomous and poisons the air and the water round
+  it. It fights in phases, and when it is badly hurt its heads grow back; heads that come off roam as sentries.
+  The side quests' rewards answer the venom and the roaming heads. It gets a boss track of its own, from a composer
+  whose licence allows it. We do not make music.
 - **Named things from meshes we hold:** the keystone (Here There Be Monsters' Kothringi keystone amulet), the
   bronze disc (King of the Murkmire's), the three seal-stones and their sockets (King of the Murkmire's crystal
   and its pedestal), the cage and its key (Skyrim's cage door), Sithis' beard (Here There Be Monsters' moss), the
   paralysis poison (Skyrim's). The Eye's setting, the slate chart and the marker stone are existing jewellery and
   stone meshes under our names.
-- **The Reed's gear:** Sign of Cipactli's Argonian armour and Animated Armoury's rapier, quarterstaff, pike and
-  claws, each under our name. Four other armour mods were found and not yet checked. They are in the owner's reply.
+- **The Reed's gear:** Sign of Cipactli's light Argonian armour, Stormhold Warrior Armor for the heavier set (row
+  `stormhold-warrior-armor` in `mods/dependencies.json`; [reward-gear](../reward-gear.md)) and Animated Armoury's
+  rapier, quarterstaff, pike and claws, each under our name.
 - **The endings' films:** made in a later phase.
 
 ### What each quest needs of its places
@@ -472,8 +476,8 @@ The professions need nothing new. Each is a line that sets a stage, and the stag
 ### What it changes elsewhere
 
 - *The first act built in the old world* (`story/data/quest_lines/` mq01, mq03, mq04 and mq05) stays as it is.
-- *The faction lines* are being written again from nothing ([the factions
-  overhaul](../../../../docs/phases/new-worldspace-plan/nw-05c-factions-overhaul.md)).
+- *The faction lines* are the eight plots beside this one; [the province plan](province-plan.md) shows where they
+  meet it and each other.
 - *The places.* The studio's story panel is made from the table above each time it opens, so every place shows
   what the plot asks of it without anyone having to remember.
 - *Place records.* The records of the plot's places are corrected to it in the same piece of work as the atlas:
