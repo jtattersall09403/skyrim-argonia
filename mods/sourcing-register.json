@@ -1259,5 +1259,82 @@
   "used_by": "the NewWorld profile: the new world's music records (exploration per region, combat, stings), docs/design/music.md",
   "linked_or_forked_by": "none: built by tools/newworld/music/soundtrack.py into the private mod cache, never committed (decision 0003)",
   "notes": "prompts are our own descriptions (newworld/sources/music/pieces.json); no third-party audio was given to the model; each piece's reference track is used for described feel only, never named in a prompt."
+ },
+ {
+  "name": "Stormhold Warrior Armor SSE - Port Plus (Nexus 96559)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/96559?tab=files&file_id=551820",
+  "version": "1.3 (row stormhold-warrior-armor)",
+  "licence": "custom terms on the page",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): the Veiled Reed's rank armour",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author son6of6tredis, SassiestAssassin. Page permission text: \"Okay to make patches/mesh replacers based on my meshes (for body types) on mods receiving no donations. Must require my plugin, do not include my plugin in your mod. Please credit properly as well.\" Records to be copied into our plugin under our names; assets the player's own download.",
+  "permission": "granted on condition (owner ruling 2026-11-16)",
+  "permission_condition": "Owner, 2026-11-16: \"Yes to the Reed rank armour. Find unique interesting reward items for the other factions too if you can. I am happy to auto approve. You decide for me.\" Condition: its assets are never shipped by us, and the mod is a dependency of ours; credited here."
+ },
+ {
+  "name": "Shadowscale Set Reborn (Nexus 79717)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/79717?tab=files&file_id=356080",
+  "version": "1.1.1 (row shadowscale-set-reborn)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): the Shadowscales' reward gear",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author Veer Kwrrrttty, Sebastian and DoktorWilp. Page permission text: No permission section on the page; credits only. Records to be copied into our plugin under our names; assets the player's own download.",
+  "permission": "granted on condition (owner ruling 2026-11-16)",
+  "permission_condition": "Owner, 2026-11-16: \"Yes to the Reed rank armour. Find unique interesting reward items for the other factions too if you can. I am happy to auto approve. You decide for me.\" Condition: its assets are never shipped by us, and the mod is a dependency of ours; credited here."
+ },
+ {
+  "name": "Ancient Argonian Armor SE (Nexus 100724)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/100724?tab=files&file_id=426226",
+  "version": "1 (row ancient-argonian-armor)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): the Unbound's reward gear",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author Secret Reptilian Government. Page permission text: No permission section on the page. Records to be copied into our plugin under our names; assets the player's own download.",
+  "permission": "granted on condition (owner ruling 2026-11-16)",
+  "permission_condition": "Owner, 2026-11-16: \"Yes to the Reed rank armour. Find unique interesting reward items for the other factions too if you can. I am happy to auto approve. You decide for me.\" Condition: its assets are never shipped by us, and the mod is a dependency of ours; credited here."
+ },
+ {
+  "name": "DX Necromancer Robes - UNP (Nexus 38201)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/38201?tab=files&file_id=151265",
+  "version": "1.0 (row dx-necromancer-robes)",
+  "licence": "custom terms on the page",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): the necromancers of Thorn's reward gear",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author Deserter X - dianka33. Page permission text: \"You can use assets of this armor inside Skyrim SE Nexus as long as you credit our work in the comments\" Records to be copied into our plugin under our names; assets the player's own download.",
+  "permission": "granted on condition (owner ruling 2026-11-16)",
+  "permission_condition": "Owner, 2026-11-16: \"Yes to the Reed rank armour. Find unique interesting reward items for the other factions too if you can. I am happy to auto approve. You decide for me.\" Condition: its assets are never shipped by us, and the mod is a dependency of ours; credited here."
+ },
+ {
+  "name": "Pirate Armor (Nexus 53225)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/53225?tab=files&file_id=430721",
+  "version": "2.1 (row pirate-armor-nordwar)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): the pirates' reward gear",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author NordwarUA. Page permission text: No permission section on the page. Records to be copied into our plugin under our names; assets the player's own download.",
+  "permission": "granted on condition (owner ruling 2026-11-16)",
+  "permission_condition": "Owner, 2026-11-16: \"Yes to the Reed rank armour. Find unique interesting reward items for the other factions too if you can. I am happy to auto approve. You decide for me.\" Condition: its assets are never shipped by us, and the mod is a dependency of ours; credited here."
+ },
+ {
+  "name": "Imperial Guard Centurion Armor SE (Nexus 50410)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/50410?tab=files&file_id=206436",
+  "version": "1.2.1 (row imperial-guard-centurion)",
+  "licence": "custom terms on the page",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): the merchants of Gideon's reward gear",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author johnskyrim. Page permission text: \"Under no circumstance is this mod allowed to be uploaded to another website without my given permission. No permission will be granted in regards to porting to console.\" Records to be copied into our plugin under our names; assets the player's own download.",
+  "permission": "granted on condition (owner ruling 2026-11-16)",
+  "permission_condition": "Owner, 2026-11-16: \"Yes to the Reed rank armour. Find unique interesting reward items for the other factions too if you can. I am happy to auto approve. You decide for me.\" Condition: its assets are never shipped by us, and the mod is a dependency of ours; credited here."
+ },
+ {
+  "name": "Arcane Mage Armor (Nexus 50751)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/50751?tab=files&file_id=207037",
+  "version": "1.0 (row arcane-mage-armor)",
+  "licence": "custom terms on the page",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): the order of magic's reward gear",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author TeluraVas. Page permission text: \"It is fine to port this mod over to PlayStation and Xbox, just make sure to give credit back to the original mod.\" Records to be copied into our plugin under our names; assets the player's own download.",
+  "permission": "granted on condition (owner ruling 2026-11-16)",
+  "permission_condition": "Owner, 2026-11-16: \"Yes to the Reed rank armour. Find unique interesting reward items for the other factions too if you can. I am happy to auto approve. You decide for me.\" Condition: its assets are never shipped by us, and the mod is a dependency of ours; credited here."
  }
 ]

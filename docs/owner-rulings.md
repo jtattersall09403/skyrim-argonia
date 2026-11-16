@@ -695,3 +695,4 @@ added here the day they are made, with the date and the issue.
   the skills first, the old faction stories and quests deleted, the plots written first with no reader or player
   loops, by Opus 5.5 at medium effort. Every faction's line climbs an objective ladder of difficulty with
   hand-made rewards in proportion. Recorded in owner-bar the same day.
+- 2026-11-16, reward gear: "Yes to the Reed rank armour. Find unique interesting reward items for the other factions too if you can. I am happy to auto approve. You decide for me." Stormhold Warrior Armor (Nexus 96559) is the Veiled Reed's rank armour; six more asset-only reward mods were chosen and added as rows and credits without asking; the table is story/design/quests/reward-gear.md.
