@@ -294,3 +294,23 @@ a join that wakes the player from rest; a fade to black after which a person is 
 a yield; a spell cast in front of a person as a test; a timed defence with time to prepare; a case heard before a
 magistrate after a fade; a settlement that grows after a line ends; a city changing hands. The main plot adds the
 opening's name and profession.
+
+### Where it stands (2026-11-16)
+
+Steps 1 to 7 are done and on main. The nine plot pages are `main-plot.md`, `lamps.md`, `thieves.md` (the Eelskins),
+`shadowscales.md`, `sisei-xul.md` (the Argonian order), `rothalen-house.md` (the necromancers), `pirates.md` (the
+Free Marque), `merchants.md` (the Nibenese Company) and `chainbreakers-newworld.md`, with `owing-house.md` (the
+Ulvarys) as background. Gear for each faction's ranks is in
+[reward-gear](../../../story/design/quests/reward-gear.md).
+
+Owed, in order:
+
+1. The owner reads the plots in the explorer and notes them. No outline is written for a plot before he passes it.
+2. The owner's call on the eleven blocks beyond the ceiling (#73). A block he refuses is written out of its plot.
+3. The world holds no D1 wild place, so the factions open in D2 and only the main quest opens in D1 (three bands
+   lowered for it in `newworld/sources/danger/owner.json`). Stock and wealth for the five re-banded places follow
+   at the next stocking stage.
+4. The hydra's and the seven gear mods' archives are fetched (`stack.py fetch --record`), and their records read:
+   the side quests' rewards are then fitted to the hydra's real numbers.
+5. About 110 places' source notes say the main source does not fit and name a better one. The owner's studio
+   work on each place settles which source it is built from.
