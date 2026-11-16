@@ -1,5 +1,9 @@
 # Finish the stories and write the roster
 
+**Overtaken on 2026-11-16.** The owner overhauled the factions completely
+([nw-05c](nw-05c-factions-overhaul.md)): the fourteen old line stories are replaced by eight faction plots written
+fresh, so items 1 to 3 and 6 below are void. Items 4 and 5 (the database and the minor quests) wait for the new plots.
+
 Split out of [nw-05](nw-05-story-quest-adapt-1.md) on 2026-11-13 at the owner's ask, to stop that session's usage:
 "aiming for having a smaller amount of high quality output completed if possible rather than a large amount
 partially completed, and split out whatever is left into a new phase with its own brief". Written by the lead; the
