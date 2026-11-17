@@ -287,7 +287,7 @@ as the old adit, and a still water plane is added in its first passage. These ar
 Smugglers have moved into the lower galleries. The player fights them or passes them by stealth. Past them, in the
 knights' old strongbox, is an old parchment map (Skyrim's treasure map, under our name) showing seven towers
 standing in the sea and a crag shaped like a tooth on an island. *Leads on:* Nesh-Deeka makes the player a
-Toh-Wo, the order's second rank, and passes them to her officer, Never-Writes-Twice, who keeps the upper room of
+Toh-Wo, the order's second rank, and passes them to her officer, Never-Writes-Twice, who stands at the back of
 the same house. Never-Writes-Twice tells her lie about Cuts-the-Old-Knot. She knows the crag on the map: the Grey
 Tooth, the seamark of Skeith Isle, and she marks it.
 
@@ -613,8 +613,8 @@ place its rows, and the place is built to them.
 | Karsh-Naal Camp | a cage at the camp's edge with Sesk in it, its key on a guard who stands at the fire (Skyrim's cage door, placed) | 4. The Sap Camp | The player frees her by picking the cage, stealing the key or killing the guards. | markers on the cage and the guard; Sesk calls out |
 | Karsh-Naal Camp | jars of sap stacked by the longhouse | 4. The Sap Camp | The jars show the player this is where the sap goes. | their look |
 | Karsh-Naal Camp | the longhouse and its cellar (the source camp's longhouse and cellar) | the Give ending | The longhouse becomes the player's stronghold. | Cuts-the-Old-Knot gives it to them |
-| Helstrom | a quiet house where the handler, Nesh-Deeka, stands, with an upper room for Never-Writes-Twice | 5. The Handler, and the reports of quests 6 to 16 | Nesh-Deeka makes the player a Voh-Vastei and takes their reports; Never-Writes-Twice takes them from quest 10. | its door shows its name; a marker |
-| Helstrom | a lodging where the Unbound go-between stays, with two hired men and a jar of stolen sap in his pack | 5. The Handler | The player lifts the jar, buys it or fights the three for it. | Nesh-Deeka tells them; a marker; the jar is a named thing |
+| Helstrom | a quiet house, its door showing "Nesh-Deeka's House" (one of the source city's one-room Argonian houses), where the handler, Nesh-Deeka, stands by the door and Never-Writes-Twice at the back | 5. The Handler, and the reports of quests 6 to 16 | Nesh-Deeka makes the player a Voh-Vastei and takes their reports; Never-Writes-Twice takes them from quest 10. | its door shows its name; a marker |
+| Helstrom | the Unbound go-between lodging at the Boatmen's Lodge, the city's inn (the source's ship interior), with his two hired men beside him and a jar of stolen sap in his pack | 5. The Handler | The player lifts the jar, buys it or fights the three for it. | Nesh-Deeka tells them; a marker; the jar is a named thing |
 | Gideon | a relic dealer's stall in the market with a glass Eye for sale (the source city's market stalls) | 6. The Glass Eye | The player learns the Eye is glass and where its setting went. | the dealer shows it; a marker |
 | Gideon South Watch | the smugglers' locked chest in the inner room, with the Eye's old setting and the Collector's note (the second source's one interior) | 6. The Glass Eye | The player takes the setting by force or by stealth. | a marker; the setting and the note are named things |
 | Wreck of the Pale Harvest | a ship that can be entered, with air inside, the drowned crew in the hold and the captain's locked strongbox, its key on the captain (the source ship's hold) | 7. The Pale Harvest | The player swims out from Ysan's jetty and opens the strongbox. | the game names the wreck and the strongbox; a marker |

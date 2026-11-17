@@ -4,3 +4,7 @@
 {"place_id":"helstrom","need_seq":4,"need_sign_id":"person","detail":"the healer Taleeka-Ma heals and sells spell tomes there, and she and the sap-seller Wujeel both name it and its leader","person_id":"helstrom.V7CK5843EKQS34ZEHS9HJ39CHN"}
 {"place_id":"helstrom","need_seq":5,"need_sign_id":"look","detail":"she is seen clearing creepers from tree roots"}
 {"place_id":"helstrom","need_seq":5,"need_sign_id":"person","detail":"the healers' leader calls her the root-tender at the door; the elder Hixee-Ra speaks first and says who she is","person_id":"helstrom.9NSKR4AZPYF3XXEDHPN0TX6WQK"}
+{"place_id":"helstrom","need_seq":7,"need_sign_id":"label","detail":"its door shows \"Nesh-Deeka's House\""}
+{"place_id":"helstrom","need_seq":7,"need_sign_id":"person","detail":"Nesh-Deeka heads the household and lives there; Never-Writes-Twice keeps a bed in it","person_id":"helstrom.70XB8VD8S4A3J2CHESHXF26B2C"}
+{"place_id":"helstrom","need_seq":8,"need_sign_id":"label","detail":"its door shows \"Boatmen's Lodge\""}
+{"place_id":"helstrom","need_seq":8,"need_sign_id":"person","detail":"the innkeeper Sleeps-Last keeps it and rents its bed","person_id":"helstrom.8A62J4KYJ8DA3F58WKMRY3Y79F"}

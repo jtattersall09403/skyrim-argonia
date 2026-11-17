@@ -232,9 +232,9 @@
    "kind": "dresser",
    "security": "S1",
    "tier": "T2",
-   "gold": 50,
+   "gold": 27,
    "items": [],
-   "why": "the household store of Ixtul-Bei (W3 Modest, head of 6): gold 50 of 15-50 by household size; best tier T2, owned and unlocked: security S1 allows up to T2 (a chest, unlocked or Novice)",
+   "why": "the household store of Nesh-Deeka (W3 Modest, head of 2): gold 27 of 15-50 by household size; best tier T2, owned and unlocked: security S1 allows up to T2 (a chest, unlocked or Novice)",
    "cites": [
     "place_wealth:helstrom",
     "person:helstrom.TA28STYJ3XNYJ9FPVMQEYJVQQ4"
@@ -406,7 +406,7 @@
    "tier": "T1",
    "gold": 0,
    "items": [],
-   "why": "Ixtul-Bei's household's locked chest, in the house nearest the city landing: empty and locked at Novice so the main story can keep a secret in it in place of a back room; the household's store stays its dresser",
+   "why": "Nesh-Deeka's household's locked chest, in the house nearest the city landing: empty and locked at Novice so the main story can keep a secret in it in place of a back room; the household's store stays its dresser",
    "cites": [
     "place_wealth:helstrom",
     "person:helstrom.TA28STYJ3XNYJ9FPVMQEYJVQQ4",
@@ -948,12 +948,12 @@
    "items": [
     {
      "item": "Skyrim.esm:00000F",
-     "count": 7,
-     "why": "carried gold, 2-10 for W2 Poor",
+     "count": 16,
+     "why": "carried gold, 8-25 for W3 Modest",
      "worn": false
     }
    ],
-   "why": "Ulaxeen: resident, raft-poler between the districts, W2 Poor"
+   "why": "Nesh-Deeka: resident, tally-keeper of goods landed at the river fork, W3 Modest"
   },
   {
    "person": "helstrom.82Z8NX6PFJJAFJTXPT9AFW5F4G",
@@ -972,24 +972,6 @@
     }
    ],
    "why": "Xuhal-Teeus: resident, raft-builder, W3 Modest"
-  },
-  {
-   "person": "helstrom.83KFGZX11WTYYG7AANHBJ86442",
-   "items": [
-    {
-     "item": "Skyrim.esm:0209A6",
-     "count": 1,
-     "why": "plain clothes: the armour or enchanted piece of the source's outfit is taken out, so a plain garment covers the body",
-     "worn": true
-    },
-    {
-     "item": "Skyrim.esm:00000F",
-     "count": 5,
-     "why": "carried gold, 2-10 for W2 Poor",
-     "worn": false
-    }
-   ],
-   "why": "Wexa-Dun: resident, frog-pipe player, W2 Poor"
   },
   {
    "person": "helstrom.87WTH0EW4WJ6AQ9CTRC7GXAZTS",
@@ -1412,24 +1394,6 @@
    "why": "Raxeela-Hut: guard, the city levy, day watch, W2 Poor"
   },
   {
-   "person": "helstrom.HNKX48AJYF89Q7WGNA02D1YV62",
-   "items": [
-    {
-     "item": "Skyrim.esm:01397E",
-     "count": 1,
-     "why": "a spear-fisher's knife for the catch",
-     "worn": true
-    },
-    {
-     "item": "Skyrim.esm:00000F",
-     "count": 9,
-     "why": "carried gold, 2-10 for W2 Poor",
-     "worn": false
-    }
-   ],
-   "why": "Peeshal-Ru: resident, spear-fisher, W2 Poor"
-  },
-  {
    "person": "helstrom.HV5320ZME61ST3NG6ANDRGJSAS",
    "items": [
     {
@@ -1536,12 +1500,12 @@
     },
     {
      "item": "Skyrim.esm:00000F",
-     "count": 2,
-     "why": "carried gold, 2-10 for W2 Poor",
+     "count": 12,
+     "why": "carried gold, 8-25 for W3 Modest",
      "worn": false
     }
    ],
-   "why": "Jeetsa-Rin: resident, tail-band dyer, W2 Poor"
+   "why": "Never-Writes-Twice: resident, raft-pilot on the northern rivers, W3 Modest"
   },
   {
    "person": "helstrom.K3KEW6JNDH6HQTS3EANF71X664",
@@ -1766,30 +1730,6 @@
    "why": "Kassa-Weel: resident, porter, working off an Owing, W1 Destitute"
   },
   {
-   "person": "helstrom.RRR4CMCSQPTR9F46FDDSWE8QA1",
-   "items": [
-    {
-     "item": "Skyrim.esm:01397E",
-     "count": 1,
-     "why": "a knife for splitting cane",
-     "worn": true
-    },
-    {
-     "item": "Skyrim.esm:0261C0",
-     "count": 1,
-     "why": "plain clothes: the armour or enchanted piece of the source's outfit is taken out, so a plain garment covers the body",
-     "worn": true
-    },
-    {
-     "item": "Skyrim.esm:00000F",
-     "count": 10,
-     "why": "carried gold, 2-10 for W2 Poor",
-     "worn": false
-    }
-   ],
-   "why": "Weesha-Lun: resident, basket-weaver, W2 Poor"
-  },
-  {
    "person": "helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS",
    "items": [
     {
@@ -1830,24 +1770,6 @@
     }
    ],
    "why": "Zeexa-Num: resident, frog-catcher, W2 Poor"
-  },
-  {
-   "person": "helstrom.TA28STYJ3XNYJ9FPVMQEYJVQQ4",
-   "items": [
-    {
-     "item": "Skyrim.esm:03B97C",
-     "count": 1,
-     "why": "the tally-keeper's ring, his household's one piece (W3)",
-     "worn": true
-    },
-    {
-     "item": "Skyrim.esm:00000F",
-     "count": 16,
-     "why": "carried gold, 8-25 for W3 Modest",
-     "worn": false
-    }
-   ],
-   "why": "Ixtul-Bei: resident, tally-keeper of goods landed for the assembly, W3 Modest"
   },
   {
    "person": "helstrom.TQRTJ0F942RQNR31D17MBB4J60",

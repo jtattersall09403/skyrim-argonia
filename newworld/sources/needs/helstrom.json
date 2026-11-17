@@ -181,6 +181,74 @@
    "fit": "A promise to keep at the place's next change: a large stilt hall near the sacred tree, built from the source city's Argonian pieces, whose door shows \"Council House\", with a hall by day, an upper room for the treasurer, a back door down to the river landing, a gallery door up the stilts and a strongroom behind an iron door. It must not be the Toh-Reel-Ka's quiet house or any building the main quest uses.",
    "narrow": "No: it is a new building with its interiors, added to the drafted town as one change, not a redraft.",
    "tier": "AGENT_INVENTED"
+  },
+  {
+   "seq": 7,
+   "from": [
+    "ef3c7cdb4f"
+   ],
+   "thing": "a quiet house, its door showing \"Nesh-Deeka's House\" (one of the source city's one-room Argonian houses), where the handler, Nesh-Deeka, stands by the door and Never-Writes-Twice at the back",
+   "line": "main",
+   "rests": {
+    "space": "01ArgonianHouseinside.8"
+   },
+   "signs": [
+    {
+     "sign": "label",
+     "detail": "its door shows \"Nesh-Deeka's House\""
+    },
+    {
+     "sign": "person",
+     "detail": "Nesh-Deeka heads the household and lives there; Never-Writes-Twice keeps a bed in it",
+     "person": "helstrom.70XB8VD8S4A3J2CHESHXF26B2C"
+    }
+   ],
+   "placed": [
+    {
+     "person": "helstrom.70XB8VD8S4A3J2CHESHXF26B2C"
+    },
+    {
+     "person": "helstrom.JVCV7101QV5QE2000KQ5RJ8WRY"
+    }
+   ],
+   "met": true,
+   "why": "Met. The one-room Argonian house nearest the city landing now shows \"Nesh-Deeka's House\" on its door; its household is hers alone, with Never-Writes-Twice as its lodger (the quest keeps her disabled until quest 10). The room holds three tables, two chairs and three benches, six beds, four dressers, two workbenches, an arcane enchanter, an iron door and a locked chest the household owns; the other residents left the city's people.",
+   "tier": "AGENT_INVENTED",
+   "sight": {
+    "result": "recognised",
+    "said": "2026-11-17: \"Nesh-Deeka's House\" by its door name; read as a crowded shared lodging (six beds), not a quiet house, and no one inside by day"
+   }
+  },
+  {
+   "seq": 8,
+   "from": [
+    "8c11f84fec"
+   ],
+   "thing": "the Unbound go-between lodging at the Boatmen's Lodge, the city's inn (the source's ship interior), with his two hired men beside him and a jar of stolen sap in his pack",
+   "line": "main",
+   "rests": {
+    "space": "01Ship"
+   },
+   "signs": [
+    {
+     "sign": "label",
+     "detail": "its door shows \"Boatmen's Lodge\""
+    },
+    {
+     "sign": "person",
+     "detail": "the innkeeper Sleeps-Last keeps it and rents its bed",
+     "person": "helstrom.8A62J4KYJ8DA3F58WKMRY3Y79F"
+    }
+   ],
+   "met": true,
+   "why": "Met as a lodging. The moored ship's hold shows \"Boatmen's Lodge\" on its door and is the city's inn, kept by Sleeps-Last, with one bed to rent. The go-between and his two hired men are the quest's own placements. The hold has no dining table: its far end, about 6 to 7 metres from the door, holds a long crate, a shelf and stacked crates; the only table is a small end table by the bed, about 2 metres in.",
+   "fit": "The go-between and his men can stand at the far end of the hold among the crates, or by the end table and the bed.",
+   "narrow": "Yes, if a table is wanted: one table placed by hand at the far end of the hold (draft.add) is a narrow change.",
+   "tier": "AGENT_INVENTED",
+   "sight": {
+    "result": "recognised",
+    "said": "2026-11-17: an inn at the docks by its door name and its keeper; the go-between and his men are not seen (the quest places them)"
+   }
   }
  ],
  "dismissed": []
