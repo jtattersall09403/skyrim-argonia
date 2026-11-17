@@ -514,8 +514,8 @@ stages:
 - id: 30
   place: jal-veesa
   journal: text.journal.mn04.30
-  journalText: Sesk drew sap for the Unbound, a cult of the tribeless whose leader is Cuts-the-Old-Knot. The sap is for
-    a draught, and the draught has something to do with "the Eye". They call the grey paste in the scars "the seal". Why
+  journalText: Sesk drew sap for the Unbound, a cult of the tribeless whose leader is Cuts-the-Old-Knot, an Argonian woman. The sap is
+    for a draught she brews, and the draught has something to do with "the Eye". They call the grey paste in the scars "the seal". Why
     drain a tree and then seal it, if they only want its sap? I'm to take this to Vosh-Leera in Jal-Veesa.
   objectives:
   - id: report
@@ -789,7 +789,7 @@ topics:
   - 20
   essential: true
   intent: 'Sesk, out of the cage. Tells: the crews who drain the trees are the Unbound, a cult of the tribeless, and their
-    leader is Cuts-the-Old-Knot. Sesk drew sap for them: cut the scar, fill the jars, press the grey paste in after. They
+    leader is Cuts-the-Old-Knot, an Argonian woman; she never stays where her crews are. Sesk drew sap for them: cut the scar, fill the jars, press the grey paste in after. They
     call the paste "the seal"; she never knew what is in it, and she was told never to leave a scar open. The jars come
     here and go on to Cuts-the-Old-Knot. The sap is for a draught she brews, and the draught is for something to do with
     "the Eye"; Sesk never learned what. She wants out, with the price of a boat, and goes now, before the guards look round.
