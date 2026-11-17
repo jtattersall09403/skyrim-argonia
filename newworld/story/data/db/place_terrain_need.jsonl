@@ -362,7 +362,7 @@
 {"place_id":"yina","terrain_need_id":"shore-access","radius_m":40.0,"why":"river landings"}
 {"place_id":"ysan","terrain_need_id":"flat-pad","radius_m":40.0,"why":"jetty and sheds"}
 {"place_id":"ysan","terrain_need_id":"shore-access","radius_m":40.0,"why":"the stone landing"}
-{"place_id":"yulca","terrain_need_id":"flat-pad","radius_m":110.0,"why":"raft-town built area"}
-{"place_id":"yulca","terrain_need_id":"shore-access","radius_m":80.0,"why":"raft landings and quays"}
+{"place_id":"yulca","terrain_need_id":"flat-pad","radius_m":110.0,"why":"the town's built area"}
+{"place_id":"yulca","terrain_need_id":"shore-access","radius_m":80.0,"why":"the docks and the beached ship"}
 {"place_id":"yuva-goli","terrain_need_id":"flat-pad","radius_m":40.0,"why":"stilt houses"}
 {"place_id":"yuva-goli","terrain_need_id":"shore-access","radius_m":40.0,"why":"canoe landing"}

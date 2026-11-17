@@ -761,11 +761,11 @@
    "disposition_id": "wary",
    "reward_band_id": "D4",
    "danger_tier": "T4",
-   "wealth_score": 35,
+   "wealth_score": 38,
    "band": "P2",
    "open_tier": "T1",
    "ceiling_tier": "T2",
-   "why": "score 35 = outpost 6 + importance 2 10 + population 9 10 + trade 6 (1 roads, 2 traders) + economy +3 (+trade) -> P2 Modest; ceiling T2 (wary: its people's own goods, its wealth's T2; reward band D4 T4)",
+   "why": "score 38 = outpost 6 + importance 2 10 + population 9 10 + trade 6 (1 roads, 2 traders) + economy +6 (+trade +port) -> P2 Modest; ceiling T2 (wary: its people's own goods, its wealth's T2; reward band D4 T4)",
    "owner": null
   },
   {
@@ -995,11 +995,11 @@
    "disposition_id": "wary",
    "reward_band_id": "D0",
    "danger_tier": "T1",
-   "wealth_score": 69,
-   "band": "P3",
+   "wealth_score": 70,
+   "band": "P4",
    "open_tier": "T1",
-   "ceiling_tier": "T3",
-   "why": "score 69 = town 18 + importance 4 20 + population 34 15 + trade 10 (1 roads, boat stop, 2 traders) + economy +6 (+trade +toll) -> P3 Comfortable; ceiling T3 (wary: its people's own goods, its wealth's T3; reward band D0 T1)",
+   "ceiling_tier": "T4",
+   "why": "score 70 = town 18 + importance 4 20 + population 43 16 + trade 10 (1 roads, boat stop, 2 traders) + economy +6 (+trade +toll) -> P4 Prosperous; ceiling T4 (wary: its people's own goods, its wealth's T4; reward band D0 T1)",
    "owner": null
   },
   {
@@ -3331,15 +3331,15 @@
   },
   {
    "id": "yulca",
-   "name": "Yulca",
-   "disposition_id": "wary",
+   "name": "Alten Corimont",
+   "disposition_id": "friendly",
    "reward_band_id": "D0",
    "danger_tier": "T1",
-   "wealth_score": 66,
-   "band": "P3",
+   "wealth_score": 70,
+   "band": "P4",
    "open_tier": "T1",
-   "ceiling_tier": "T3",
-   "why": "score 66 = town 18 + importance 4 20 + population 43 16 + trade 12 (0 roads, boat stop, 4 traders) + economy +0 (no telling words) -> P3 Comfortable; ceiling T3 (wary: its people's own goods, its wealth's T3; reward band D0 T1)",
+   "ceiling_tier": "T4",
+   "why": "score 70 = town 18 + importance 4 20 + population 34 15 + trade 14 (0 roads, boat stop, 5 traders) + economy +3 (+port) -> P4 Prosperous; ceiling T4 (friendly: its people's own goods, its wealth's T4; reward band D0 T1)",
    "owner": null
   },
   {

@@ -5966,7 +5966,7 @@
    "siting": "lakeshore",
    "danger_band_id": "D3",
    "importance": 3,
-   "summary": "Gaweja is a lakeside clay-mound village on the road between Yulca and Badal. It fishes, grows rice on its mound slopes and trades fish to the Agaceph.",
+   "summary": "Gaweja is a lakeside clay-mound village on the road between Alten Corimont and Badal. It fishes, grows rice on its mound slopes and trades fish to the Agaceph.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -5998,14 +5998,14 @@
       },
       {
        "kind": "reasoning",
-       "title": "Aroxhu culture (cultures.json rust) + Yulca on the great lake as the Agaceph town + tribes bargain across borders (tribes.md)",
+       "title": "Aroxhu culture (cultures.json rust) + Alten Corimont the free port on the great lake + tribes bargain across borders (tribes.md)",
        "locator": "newworld/sources/research/cultures.json"
       }
      ]
     },
     {
      "aspect": "history",
-     "text": "The clay-mound people's furthest settlement toward Yulca. It began as a fishing post and became the place where Oxhu and Agaceph rafters trade.",
+     "text": "The clay-mound people's furthest settlement toward Alten Corimont. It began as a fishing post and became the place where Oxhu and Agaceph rafters trade.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6025,14 +6025,14 @@
       },
       {
        "kind": "reasoning",
-       "title": "Aroxhu culture (cultures.json rust) + Yulca on the great lake as the Agaceph town + tribes bargain across borders (tribes.md)",
+       "title": "Aroxhu culture (cultures.json rust) + Alten Corimont the free port on the great lake + tribes bargain across borders (tribes.md)",
        "locator": "newworld/sources/research/cultures.json"
       }
      ]
     },
     {
      "aspect": "present",
-     "text": "A quiet village. Its elders keep good terms with Yulca, which is rare. Agaceph rafters trade at its landing.",
+     "text": "A quiet village. Its elders keep good terms with the free port at Alten Corimont, which is rare. Agaceph rafters trade at its landing.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6052,7 +6052,7 @@
       },
       {
        "kind": "reasoning",
-       "title": "Aroxhu culture (cultures.json rust) + Yulca on the great lake as the Agaceph town + tribes bargain across borders (tribes.md)",
+       "title": "Aroxhu culture (cultures.json rust) + Alten Corimont the free port on the great lake + tribes bargain across borders (tribes.md)",
        "locator": "newworld/sources/research/cultures.json"
       }
      ]
@@ -6079,14 +6079,14 @@
       },
       {
        "kind": "reasoning",
-       "title": "Aroxhu culture (cultures.json rust) + Yulca on the great lake as the Agaceph town + tribes bargain across borders (tribes.md)",
+       "title": "Aroxhu culture (cultures.json rust) + Alten Corimont the free port on the great lake + tribes bargain across borders (tribes.md)",
        "locator": "newworld/sources/research/cultures.json"
       }
      ]
     },
     {
      "aspect": "economy",
-     "text": "Dried fish, eel-paste and rice go to Yulca and Aroxhu. Gaweja buys reed rafts and small illusion charms from the Agaceph.",
+     "text": "Dried fish, eel-paste and rice go to Alten Corimont and Aroxhu. Gaweja buys reed rafts and small illusion charms from the Agaceph.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6106,7 +6106,7 @@
       },
       {
        "kind": "reasoning",
-       "title": "Aroxhu culture (cultures.json rust) + Yulca on the great lake as the Agaceph town + tribes bargain across borders (tribes.md)",
+       "title": "Aroxhu culture (cultures.json rust) + Alten Corimont the free port on the great lake + tribes bargain across borders (tribes.md)",
        "locator": "newworld/sources/research/cultures.json"
       }
      ]
@@ -6133,7 +6133,7 @@
       },
       {
        "kind": "reasoning",
-       "title": "Aroxhu culture (cultures.json rust) + Yulca on the great lake as the Agaceph town + tribes bargain across borders (tribes.md)",
+       "title": "Aroxhu culture (cultures.json rust) + Alten Corimont the free port on the great lake + tribes bargain across borders (tribes.md)",
        "locator": "newworld/sources/research/cultures.json"
       }
      ]
@@ -6160,14 +6160,14 @@
       },
       {
        "kind": "reasoning",
-       "title": "Aroxhu culture (cultures.json rust) + Yulca on the great lake as the Agaceph town + tribes bargain across borders (tribes.md)",
+       "title": "Aroxhu culture (cultures.json rust) + Alten Corimont the free port on the great lake + tribes bargain across borders (tribes.md)",
        "locator": "newworld/sources/research/cultures.json"
       }
      ]
     },
     {
      "aspect": "dangers",
-     "text": "Lake crocodiles, slaughterfish in the shallows and travellers from Yulca who are muddled by illusions.",
+     "text": "Lake crocodiles, slaughterfish in the shallows and crews out of Alten Corimont who come ashore drunk.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6187,7 +6187,7 @@
       },
       {
        "kind": "reasoning",
-       "title": "Aroxhu culture (cultures.json rust) + Yulca on the great lake as the Agaceph town + tribes bargain across borders (tribes.md)",
+       "title": "Aroxhu culture (cultures.json rust) + Alten Corimont the free port on the great lake + tribes bargain across borders (tribes.md)",
        "locator": "newworld/sources/research/cultures.json"
       }
      ]
@@ -6214,7 +6214,7 @@
       },
       {
        "kind": "reasoning",
-       "title": "Aroxhu culture (cultures.json rust) + Yulca on the great lake as the Agaceph town + tribes bargain across borders (tribes.md)",
+       "title": "Aroxhu culture (cultures.json rust) + Alten Corimont the free port on the great lake + tribes bargain across borders (tribes.md)",
        "locator": "newworld/sources/research/cultures.json"
       }
      ]
@@ -9827,280 +9827,230 @@
   },
   {
    "id": "yulca",
-   "name": "Yulca",
+   "name": "Alten Corimont",
+   "culture_id": "rust",
    "status": "inhabited",
-   "held_by": "The Agaceph of Yulca, a council of readers",
-   "population": 22,
+   "held_by": "The captain of the port, chosen by the ship-masters who winter there",
+   "population": 34,
    "footprint_radius_m": 110,
    "siting": "lakeshore",
    "danger_band_id": "D1",
    "importance": 4,
-   "summary": "Yulca is the Agaceph's one town, on the great lake in Okuwun-Rahei's west. It is a town of illusionists and rafters who keep books taken from dead Maran missions.",
-   "lore_page": null,
-   "statement_tier_id": "EXTRAPOLATED",
-   "aliases": [],
+   "summary": "Alten Corimont is the old freebooters' port on the east shore of the great lake, a town of docks, stilt houses and a beached ship that serves as its hall. It takes anyone's boat and sells anyone's cargo for a price, and it kills those who try to make it take a side.",
+   "lore_page": "Lore:Alten Corimont",
+   "statement_tier_id": "CANON_DERIVED",
+   "aliases": [
+    {
+     "alias": "Yulca",
+     "source": {
+      "kind": "map",
+      "title": "Project Tamriel Black Marsh map label at this spot",
+      "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+     }
+    },
+    {
+     "alias": "Corimont",
+     "source": {
+      "kind": "dossier",
+      "title": "Alten Corimont",
+      "locator": "story/lore/alten-corimont.md"
+     }
+    }
+   ],
    "notes": [
     {
      "aspect": "overview",
-     "text": "A raft-town on a wide lake in the west, the only Agaceph place of any size. The Agaceph belong to Middle Argonia and live nowhere else.",
-     "tier": "EXTRAPOLATED",
+     "text": "A small port town of smugglers and freebooters on the bank of a waterway that reaches the sea, as canon has it. It stands where the great lake's east shore meets the river country of the clay-mound people, and boats come down to it from every side.",
+     "tier": "CANON_DERIVED",
      "sources": [
       {
        "kind": "uesp",
-       "title": "Lore:Yulca (searched 2026-11-08: no page)",
-       "locator": "no page"
-      },
-      {
-       "kind": "extrapolation",
-       "title": "research/cultures.json: culture lime",
-       "locator": "newworld/sources/research/cultures.json"
+       "title": "Lore:Alten Corimont",
+       "locator": "Lore:Alten Corimont",
+       "url": "https://en.uesp.net/wiki/Lore:Alten_Corimont",
+       "section": "Location"
       },
       {
        "kind": "dossier",
-       "title": "Argonian tribes",
-       "locator": "story/lore/tribes.md"
-      },
-      {
-       "kind": "dossier",
-       "title": "Middle Argonia",
-       "locator": "story/lore/regions/middle-argonia.md"
+       "title": "Alten Corimont",
+       "locator": "story/lore/alten-corimont.md"
       },
       {
        "kind": "map",
-       "title": "Project Tamriel Black Marsh map (PT3-map-Black_Marsh.png)",
+       "title": "Project Tamriel Black Marsh map: the town-seat on the east shore of the great lake, labelled Yulca there",
        "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
       },
       {
        "kind": "reasoning",
-       "title": "Agaceph looted Umpholo's Maran mission for books and are educated illusionists (tribes.md); Maran missions died in 3E (spine section 10); Okuwun-Rahei holds the Agaceph (spine section 10 place table)",
-       "locator": "story/lore/tribes.md; story/lore/extrapolation/argonia-4e201-state.md section 10"
+       "title": "canon places it in eastern Shadowfen; our world has no Shadowfen of that name, and this is the nearest town-sized place on navigable water south-east of Stormhold (owner, 2026-11-17)"
       }
      ]
     },
     {
      "aspect": "history",
-     "text": "The Agaceph gathered here after the Maran missions died in the Third Era. They looted the Maran mission at Umpholo for its library, and Yulca holds the most books of any place in the east.",
-     "tier": "EXTRAPOLATED",
+     "text": "Its freebooters sailed with the All Flags Navy in the First Era and never came home. In the Second Era it was little more than a tavern, docks and a beached ship, run by the pirate Captain One-Eye, and by the late Third Era it had grown into a small town under a lord. The town tells that the pirate-king Red Bramman first beached a hull here.",
+     "tier": "CANON_EXPLICIT",
      "sources": [
       {
-       "kind": "map",
-       "title": "Project Tamriel Black Marsh map (PT3-map-Black_Marsh.png)",
-       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
-      },
-      {
-       "kind": "extrapolation",
-       "title": "research/cultures.json: culture lime",
-       "locator": "newworld/sources/research/cultures.json"
+       "kind": "uesp",
+       "title": "Lore:Alten Corimont",
+       "locator": "Lore:Alten Corimont",
+       "url": "https://en.uesp.net/wiki/Lore:Alten_Corimont",
+       "section": "History"
       },
       {
        "kind": "dossier",
-       "title": "Argonian tribes",
-       "locator": "story/lore/tribes.md"
+       "title": "History timeline (1E 1033, 1E 2200, 2E 582)",
+       "locator": "story/lore/topics/history-timeline.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "Alten Corimont",
+       "locator": "story/lore/alten-corimont.md"
       },
       {
        "kind": "reasoning",
-       "title": "Agaceph looted Umpholo's Maran mission for books and are educated illusionists (tribes.md); Maran missions died in 3E (spine section 10); Okuwun-Rahei holds the Agaceph (spine section 10 place table)",
-       "locator": "story/lore/tribes.md; story/lore/extrapolation/argonia-4e201-state.md section 10"
+       "title": "the Red Bramman founding is the town's own telling: canon names Bramman a pirate-king of Topal Bay, not this town's founder"
       }
      ]
     },
     {
      "aspect": "present",
-     "text": "Yulca is a lake town of rafts with a hall of books open to guests. Its people are polite and wary, and will freeze an intruder with a spell before deciding what to do.",
+     "text": "In 4E 201 Alten Corimont is a free port that no tribe, council or Archwarden owns. A captain of the port, chosen each wet season by the ship-masters who winter there, keeps its one peace: no side is taken inside the town.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
-       "kind": "map",
-       "title": "Project Tamriel Black Marsh map (PT3-map-Black_Marsh.png)",
-       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+       "kind": "dossier",
+       "title": "Alten Corimont",
+       "locator": "story/lore/alten-corimont.md"
       },
       {
        "kind": "extrapolation",
-       "title": "research/cultures.json: culture lime",
-       "locator": "newworld/sources/research/cultures.json"
-      },
-      {
-       "kind": "dossier",
-       "title": "Argonian tribes",
-       "locator": "story/lore/tribes.md"
+       "title": "Argonia in 4E 201",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       },
       {
        "kind": "reasoning",
-       "title": "Agaceph looted Umpholo's Maran mission for books and are educated illusionists (tribes.md); Maran missions died in 3E (spine section 10); Okuwun-Rahei holds the Agaceph (spine section 10 place table)",
-       "locator": "story/lore/tribes.md; story/lore/extrapolation/argonia-4e201-state.md section 10"
+       "title": "canon neutrality with a price list (2E 582) carried into the post-Imperial province"
       }
      ]
     },
     {
      "aspect": "people",
-     "text": "About twenty-two Agaceph in rainbow colours, ruled by five elders who sit together in the book hall. A few visitors from Gaweja and Aroxhu live on a guest raft.",
+     "text": "Argonian boat-crews, a few Dunmer chandlers whose families came with the Dunmer outbuildings, a Khajiit fence and whatever crews are in port. The ship-masters are mostly Argonian; their crews are of every race.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
-       "kind": "map",
-       "title": "Project Tamriel Black Marsh map (PT3-map-Black_Marsh.png)",
-       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
-      },
-      {
-       "kind": "extrapolation",
-       "title": "research/cultures.json: culture lime",
-       "locator": "newworld/sources/research/cultures.json"
+       "kind": "uesp",
+       "title": "Lore:Alten Corimont",
+       "locator": "Lore:Alten Corimont",
+       "url": "https://en.uesp.net/wiki/Lore:Alten_Corimont",
+       "section": "History"
       },
       {
        "kind": "dossier",
-       "title": "Argonian tribes",
-       "locator": "story/lore/tribes.md"
-      },
-      {
-       "kind": "reasoning",
-       "title": "Agaceph looted Umpholo's Maran mission for books and are educated illusionists (tribes.md); Maran missions died in 3E (spine section 10); Okuwun-Rahei holds the Agaceph (spine section 10 place table)",
-       "locator": "story/lore/tribes.md; story/lore/extrapolation/argonia-4e201-state.md section 10"
+       "title": "Alten Corimont",
+       "locator": "story/lore/alten-corimont.md"
       }
      ]
     },
     {
      "aspect": "economy",
-     "text": "Books, ink, illusion-work and spell-teaching, sold for coin, fish and rice. Yulca's teachers charge outsiders; its illusions are cheap.",
+     "text": "Anything that floats is landed, sold on or hidden here: salvage, sap, contraband for the coast. The port takes a mooring fee from every hull and asks no questions, and the clay-mound villages sell it fish, clay and rice.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
-       "kind": "map",
-       "title": "Project Tamriel Black Marsh map (PT3-map-Black_Marsh.png)",
-       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
-      },
-      {
-       "kind": "extrapolation",
-       "title": "research/cultures.json: culture lime",
-       "locator": "newworld/sources/research/cultures.json"
-      },
-      {
        "kind": "dossier",
-       "title": "Argonian tribes",
-       "locator": "story/lore/tribes.md"
+       "title": "Alten Corimont",
+       "locator": "story/lore/alten-corimont.md"
       },
       {
        "kind": "reasoning",
-       "title": "Agaceph looted Umpholo's Maran mission for books and are educated illusionists (tribes.md); Maran missions died in 3E (spine section 10); Okuwun-Rahei holds the Agaceph (spine section 10 place table)",
-       "locator": "story/lore/tribes.md; story/lore/extrapolation/argonia-4e201-state.md section 10"
+       "title": "canon smugglers' port; the clay-mound people round the lake (cultures.json rust)"
       }
      ]
     },
     {
      "aspect": "faith",
-     "text": "No Hist grows here. The Agaceph find the Hist loud and prefer their books. They keep a hall of the Maran mission's tracts, which they read for sport.",
-     "tier": "EXTRAPOLATED",
+     "text": "No Hist grows here. Its Argonians ship their dead upriver to their own trees, and a figurehead on the quay stands for the ships that sailed to Thras and never returned.",
+     "tier": "CANON_DERIVED",
      "sources": [
       {
-       "kind": "map",
-       "title": "Project Tamriel Black Marsh map (PT3-map-Black_Marsh.png)",
-       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
-      },
-      {
-       "kind": "extrapolation",
-       "title": "research/cultures.json: culture lime",
-       "locator": "newworld/sources/research/cultures.json"
-      },
-      {
        "kind": "dossier",
-       "title": "Argonian tribes",
-       "locator": "story/lore/tribes.md"
+       "title": "Hist placement: the eight majors and Alten Corimont",
+       "locator": "story/lore/topics/hist-placement.md"
       },
       {
-       "kind": "reasoning",
-       "title": "Agaceph looted Umpholo's Maran mission for books and are educated illusionists (tribes.md); Maran missions died in 3E (spine section 10); Okuwun-Rahei holds the Agaceph (spine section 10 place table)",
-       "locator": "story/lore/tribes.md; story/lore/extrapolation/argonia-4e201-state.md section 10"
+       "kind": "uesp",
+       "title": "Lore:Alten Corimont",
+       "locator": "Lore:Alten Corimont",
+       "url": "https://en.uesp.net/wiki/Lore:Alten_Corimont",
+       "section": "History"
       }
      ]
     },
     {
      "aspect": "look",
-     "text": "A town of lashed rafts and stilted pavilions on a broad lake, reed screens in bright scale-colours, a book hall under a tall roof, books drying on lines, rafts like blades on the water.",
-     "tier": "EXTRAPOLATED",
+     "text": "Stilt houses and plank walks over the shallows, long docks, a few Dunmer-built outbuildings, and at the town's heart the beached ship, its hold opened up as hall and tavern.",
+     "tier": "CANON_DERIVED",
      "sources": [
       {
-       "kind": "map",
-       "title": "Project Tamriel Black Marsh map (PT3-map-Black_Marsh.png)",
-       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
-      },
-      {
-       "kind": "extrapolation",
-       "title": "research/cultures.json: culture lime",
-       "locator": "newworld/sources/research/cultures.json"
+       "kind": "uesp",
+       "title": "Lore:Alten Corimont",
+       "locator": "Lore:Alten Corimont",
+       "url": "https://en.uesp.net/wiki/Lore:Alten_Corimont",
+       "section": "2E 582"
       },
       {
        "kind": "dossier",
-       "title": "Argonian tribes",
-       "locator": "story/lore/tribes.md"
-      },
-      {
-       "kind": "reasoning",
-       "title": "Agaceph looted Umpholo's Maran mission for books and are educated illusionists (tribes.md); Maran missions died in 3E (spine section 10); Okuwun-Rahei holds the Agaceph (spine section 10 place table)",
-       "locator": "story/lore/tribes.md; story/lore/extrapolation/argonia-4e201-state.md section 10"
+       "title": "Alten Corimont",
+       "locator": "story/lore/alten-corimont.md"
       }
      ]
     },
     {
      "aspect": "dangers",
-     "text": "Illusion and paralysis spells on strangers; otherwise the town is calm. The lake has crocodiles. A pirate raft lies moored on its far shore.",
+     "text": "Inside the town the port's peace holds, and a brawl ends at the dock edge. The lake has crocodiles, and a crew turned out of the port for breaking its peace camps on the far shore.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
-       "kind": "map",
-       "title": "Project Tamriel Black Marsh map (PT3-map-Black_Marsh.png)",
-       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
-      },
-      {
-       "kind": "extrapolation",
-       "title": "research/cultures.json: culture lime",
-       "locator": "newworld/sources/research/cultures.json"
-      },
-      {
        "kind": "dossier",
-       "title": "Argonian tribes",
-       "locator": "story/lore/tribes.md"
+       "title": "Alten Corimont",
+       "locator": "story/lore/alten-corimont.md"
       },
       {
        "kind": "reasoning",
-       "title": "Agaceph looted Umpholo's Maran mission for books and are educated illusionists (tribes.md); Maran missions died in 3E (spine section 10); Okuwun-Rahei holds the Agaceph (spine section 10 place table)",
-       "locator": "story/lore/tribes.md; story/lore/extrapolation/argonia-4e201-state.md section 10"
+       "title": "canon: the port kills those who make it pick a side"
       }
      ]
     },
     {
      "aspect": "hooks",
-     "text": "The founding elders' carved raft-prow, kept in the hall, has been stolen and the elders will not say why they want it back so badly. A visiting Dunmer scholar wants to buy the secret of the Agaceph's freezing spell.",
+     "text": "A ship-master wants a crewman back from the camp of the crew the port turned out. A Dunmer chandler is selling a sea-chart he swears was drawn aboard the Golden Era, and an old crewman will pay to learn whether it is true.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
-       "kind": "map",
-       "title": "Project Tamriel Black Marsh map (PT3-map-Black_Marsh.png)",
-       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
-      },
-      {
-       "kind": "extrapolation",
-       "title": "research/cultures.json: culture lime",
-       "locator": "newworld/sources/research/cultures.json"
-      },
-      {
        "kind": "dossier",
-       "title": "Argonian tribes",
-       "locator": "story/lore/tribes.md"
+       "title": "History timeline (1E 1033, 1E 2200, 2E 582)",
+       "locator": "story/lore/topics/history-timeline.md"
       },
       {
-       "kind": "reasoning",
-       "title": "Agaceph looted Umpholo's Maran mission for books and are educated illusionists (tribes.md); Maran missions died in 3E (spine section 10); Okuwun-Rahei holds the Agaceph (spine section 10 place table)",
-       "locator": "story/lore/tribes.md; story/lore/extrapolation/argonia-4e201-state.md section 10"
+       "kind": "uesp",
+       "title": "Lore:Alten Corimont",
+       "locator": "Lore:Alten Corimont",
+       "url": "https://en.uesp.net/wiki/Lore:Alten_Corimont",
+       "section": "History"
       }
      ]
     },
     {
      "aspect": "source",
-     "text": "Its main source, Nyhus (Nyhus), is an Imperial and Nordic town of 340 buildings with 21 foes and does not fit a lake town of readers. Alten Meerhleel (King of the Murkmire) fits better: an Argonian town by water with a market hall, a lodging house and a house among its three interiors, on timber and dock pieces. The market hall serves as the book hall, the lodging house as the guest raft and the house as the raft kitchen. Still to add: the raft platforms on the lake, the enchanting table, the raft-top alchemy bench, the carved raft-prow and the pirate raft moored on the far shore.",
+     "text": "Its main source, Murkmire (Black Marsh & Valenwood), is a town of 34 people on the water built of ship and Dunmer pieces, with docks and a ship interior: canon's Alten Corimont nearly as it stands, the ship serving as the beached hall and the Dunmer pieces as its outbuildings. Its Nordic pieces are replaced with Argonian stilt houses from King of the Murkmire. Alten Meerhleel (King of the Murkmire) lends its market hall and lodging house for the chandlery and the hedge-mage's rooms. Still to add: the stilt houses and plank walks, the figurehead on the quay, the enchanting table and alchemy bench in the hall, and the turned-out crew's camp on the far shore.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined)"
       }
      ]
     }
@@ -10109,63 +10059,68 @@
     {
      "id": "flat-pad",
      "radius_m": 110,
-     "why": "raft-town built area"
+     "why": "the town's built area"
     },
     {
      "id": "shore-access",
      "radius_m": 80,
-     "why": "raft landings and quays"
+     "why": "the docks and the beached ship"
     }
    ],
    "gives": [
     {
      "kind": "boat-stop",
-     "detail": "the raft ferry at the lake landing",
-     "count": 1
-    },
-    {
-     "kind": "trader-bookseller",
-     "detail": "the town's book hall: Maran lore books and tomes",
-     "count": 1
-    },
-    {
-     "kind": "trader-spells",
-     "detail": "Illusion tomes to Adept, Alteration and Conjuration to Novice, scrolls, soul gems",
-     "count": 1
-    },
-    {
-     "kind": "trainer",
-     "detail": "Illusion, Expert",
-     "count": 1
-    },
-    {
-     "kind": "arcane-enchanter",
-     "detail": "scholars' enchanting table in the book hall",
-     "count": 1
-    },
-    {
-     "kind": "alchemy-lab",
-     "detail": "a raft-top alchemy bench",
+     "detail": "raft-masters at the town docks",
      "count": 1
     },
     {
      "kind": "trader-general",
-     "detail": "ink, rice, lake fish and rope",
+     "detail": "a Dunmer chandler selling rope, salvage, rice and lake fish",
+     "count": 1
+    },
+    {
+     "kind": "fence",
+     "detail": "a Khajiit fence in the beached ship's hold",
+     "count": 1
+    },
+    {
+     "kind": "trader-bookseller",
+     "detail": "the chandler's shelf of salvaged books and sea-charts",
+     "count": 1
+    },
+    {
+     "kind": "trader-spells",
+     "detail": "the hall's hedge-mage: Illusion tomes to Adept, Alteration and Conjuration to Novice, scrolls, soul gems",
+     "count": 1
+    },
+    {
+     "kind": "trainer",
+     "detail": "Illusion, Expert, the hedge-mage",
+     "count": 1
+    },
+    {
+     "kind": "arcane-enchanter",
+     "detail": "the hedge-mage's enchanting table in the hall",
+     "count": 1
+    },
+    {
+     "kind": "alchemy-lab",
+     "detail": "an alchemy bench in the hall",
      "count": 1
     },
     {
      "kind": "trader-innkeeper",
-     "detail": "a raft kitchen",
+     "detail": "the beached ship's tavern",
      "count": 1
     },
     {
      "kind": "inn-room",
-     "detail": "the guest raft",
+     "detail": "a berth in the beached ship",
      "count": 1
     },
     {
      "kind": "fishing",
-     "detail": "lake fish and eels",
+     "detail": "lake fish and eels off the docks",
      "count": 1
     },
     {
@@ -10176,17 +10131,17 @@
     },
     {
      "kind": "treasure",
-     "detail": "the pirate raft's stash",
+     "detail": "the turned-out crew's stash",
      "count": 1,
      "setting": "nearby"
     },
     {
      "kind": "combat-foes",
-     "detail": "pirates of a raft moored on the far shore, 3 to 4",
+     "detail": "the crew turned out of the port, 3 to 4",
      "count": 1,
      "reward": "treasure",
      "setting": "nearby",
-     "spot": "the lake shore south of the town where the pirate raft is moored",
+     "spot": "the far shore south of the town where the turned-out crew camps",
      "bearing_deg": 180,
      "distance_m": 190
     }
@@ -10485,7 +10440,7 @@
    "siting": "inland",
    "danger_band_id": "D3",
    "importance": 2,
-   "summary": "Seth-Alaxh Roost is a winged Sarpa camp in the marsh between Aroxhu and Yulca. They are hostile to strangers and fire down on them from high perches.",
+   "summary": "Seth-Alaxh Roost is a winged Sarpa camp in the marsh between Aroxhu and Alten Corimont. They are hostile to strangers and fire down on them from high perches.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -11028,7 +10983,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A sealed vault door opens only to the right family tablet, and the Oxhu tell of a tablet carried off into the marsh. A Yulca elder will pay for any carved Velothi tablet that survives.",
+     "text": "A sealed vault door opens only to the right family tablet, and the Oxhu tell of a tablet carried off into the marsh. A hedge-mage of Alten Corimont will pay for any carved Velothi tablet that survives.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

@@ -56,6 +56,7 @@
 {"id":"dossier-regions-murkmire-md","kind":"dossier","title":"story/lore/regions/murkmire.md","locator":"regions/murkmire.md"}
 {"id":"dossier-regions-waters-md","kind":"dossier","title":"story/lore/regions/waters.md","locator":"regions/waters.md"}
 {"id":"dossier-root-folk","kind":"dossier","title":"story/lore/helstrom.md","locator":"Root-Folk"}
+{"id":"dossier-story-lore-alten-corimont-md","kind":"dossier","title":"Alten Corimont","locator":"story/lore/alten-corimont.md"}
 {"id":"dossier-story-lore-archon-md","kind":"dossier","title":"Archon","locator":"story/lore/archon.md"}
 {"id":"dossier-story-lore-blackrose-md","kind":"dossier","title":"Blackrose dossier","locator":"story/lore/blackrose.md"}
 {"id":"dossier-story-lore-extrapolation-argonia-4e201-state-md","kind":"dossier","title":"Argonia in 4E 201 (state document)","locator":"story/lore/extrapolation/argonia-4e201-state.md"}
@@ -199,6 +200,10 @@
 {"id":"reasoning-balormaak-no-uesp-page-the-cantemiric-velothi-s-eastern-seaboard-settl","kind":"reasoning","title":"Balormaak: no UESP page; the Cantemiric Velothi's eastern seaboard settlements"}
 {"id":"reasoning-black-marsh-was-an-imperial-province-until-the-argonians-drove-the-emp","kind":"reasoning","title":"Black Marsh was an Imperial province until the Argonians drove the Empire out (story/lore/topics/history-timeline.md)"}
 {"id":"reasoning-bosmer-dead-are-foreign-to-argonian-rites-a-fishing-village-gives-a-fo","kind":"reasoning","title":"Bosmer dead are foreign to Argonian rites; a fishing village gives a foreign wreck a wide berth"}
+{"id":"reasoning-canon-neutrality-with-a-price-list-2e-582-carried-into-the-post-imperi","kind":"reasoning","title":"canon neutrality with a price list (2E 582) carried into the post-Imperial province"}
+{"id":"reasoning-canon-places-it-in-eastern-shadowfen-our-world-has-no-shadowfen-of-tha","kind":"reasoning","title":"canon places it in eastern Shadowfen; our world has no Shadowfen of that name, and this is the nearest town-sized place on navigable water south-east of Stormhold (owner, 2026-11-17)"}
+{"id":"reasoning-canon-smugglers-port-the-clay-mound-people-round-the-lake-cultures-jso","kind":"reasoning","title":"canon smugglers' port; the clay-mound people round the lake (cultures.json rust)"}
+{"id":"reasoning-canon-the-port-kills-those-who-make-it-pick-a-side","kind":"reasoning","title":"canon: the port kills those who make it pick a side"}
 {"id":"reasoning-cantemiric-velothi-settled-the-east-coast-and-died-in-the-knahaten-flu","kind":"reasoning","title":"Cantemiric Velothi settled the east coast and died in the Knahaten Flu, 2E 560-603 (Lore:Cantemiric Velothi, Lore:Knahaten Flu, spine 10.1); Thorn's scavenger trade; the Hist hold Flu ground sick"}
 {"id":"reasoning-cape-percar-hinterland-of-soulrest-umber-culture","kind":"reasoning","title":"Cape Percar hinterland of Soulrest, umber culture"}
 {"id":"reasoning-cape-percar-region-its-places-on-the-map-and-the-soulrest-dossier","kind":"reasoning","title":"Cape Percar region, its places on the map and the Soulrest dossier"}
@@ -283,6 +288,7 @@
 {"id":"reasoning-the-map-labels-it-downed-bathysphere-the-diving-bell-trade-at-bell-sta","kind":"reasoning","title":"The map labels it [Downed Bathysphere]; the diving-bell trade at Bell Station makes a salvage sphere a natural neighbour"}
 {"id":"reasoning-the-map-s-logging-camp-label-name-agent-invented","kind":"reasoning","title":"the map's [Logging Camp] label; name AGENT_INVENTED"}
 {"id":"reasoning-the-place-s-source-places-and-what-they-hold-python3-m-tools-newworld-","kind":"reasoning","title":"the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"}
+{"id":"reasoning-the-red-bramman-founding-is-the-town-s-own-telling-canon-names-bramman","kind":"reasoning","title":"the Red Bramman founding is the town's own telling: canon names Bramman a pirate-king of Topal Bay, not this town's founder"}
 {"id":"reasoning-the-sarpa-are-a-winged-tribe-found-only-in-middle-argonia-tribes-md-lo","kind":"reasoning","title":"The Sarpa are a winged tribe found only in Middle Argonia (tribes.md, Lore:Argonian); the mesa's western edge faces Middle Argonia; the map's cave glyph beside the Sarpa camp"}
 {"id":"reasoning-the-sedge-wardens-of-jal-veesa-cut-reed-and-keep-watch-posts-along-the","kind":"reasoning","title":"The Sedge-Wardens of Jal-Veesa cut reed and keep watch posts along the valleys and guard sick ground (culture record jade); the map's unlabelled jade-green triangle at the mesa's far west on the Tenmal - Ranvos Landing road"}
 {"id":"reasoning-the-stone-sleepers-of-tsonac-build-in-stone-over-velothi-and-ayleid-fo","kind":"reasoning","title":"The Stone-Sleepers of Tsonac build in stone over Velothi and Ayleid foundations and quarry the jungle uplands (culture record sky-blue); the Xit-Xaht, a tribe that never stopped building in stone (Lore:Xit-Xaht, tribes.md); the map's pale-blue triangle on this river"}
@@ -358,6 +364,7 @@
 {"id":"reasoning-xanuc-diggings-no-uesp-page-mesa-stone-and-chalk-workings","kind":"reasoning","title":"Xanuc Diggings: no UESP page; mesa stone and chalk workings"}
 {"id":"reasoning-yuvexa-no-uesp-page-argonian-outposts-of-the-mesa","kind":"reasoning","title":"Yuvexa: no UESP page; Argonian outposts of the mesa"}
 {"id":"uesp-lore-acra-tiin","kind":"uesp","title":"Lore:Acra-Tiin: no page (API title lookup and namespace-130 search, 2026-11-08)","locator":"Lore:Acra-Tiin"}
+{"id":"uesp-lore-alten-corimont","kind":"uesp","title":"Lore:Alten Corimont","locator":"Lore:Alten Corimont","url":"https://en.uesp.net/wiki/Lore:Alten_Corimont"}
 {"id":"uesp-lore-amalaja","kind":"uesp","title":"Lore:Amalaja: no page (API title lookup and namespace-130 search, 2026-11-08)","locator":"Lore:Amalaja"}
 {"id":"uesp-lore-archein","kind":"uesp","title":"Lore:Archein","locator":"Lore:Archein","url":"https://en.uesp.net/wiki/Lore:Archein"}
 {"id":"uesp-lore-archon","kind":"uesp","title":"Lore:Archon","locator":"Lore:Archon","url":"https://en.uesp.net/wiki/Lore:Archon"}

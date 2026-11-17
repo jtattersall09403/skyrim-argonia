@@ -1536,19 +1536,20 @@
 {"place_id":"ysan","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (cooking-pot: landing cook-fire)"}
 {"place_id":"ysan","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-creature: crocodiles at the river mouth and skeevers among the stone stacks)"}
 {"place_id":"ysan","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (treasure: smugglers' stashed goods under the jetty)"}
-{"place_id":"yulca","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (boat-stop: the raft ferry at the lake landing)"}
-{"place_id":"yulca","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-bookseller: the town's book hall: Maran lore books and tomes)"}
-{"place_id":"yulca","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-spells: Illusion tomes to Adept, Alteration and Conjuration to Novice, scrolls, soul gems)"}
-{"place_id":"yulca","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trainer: Illusion, Expert)"}
-{"place_id":"yulca","give_seq":4,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (arcane-enchanter: scholars' enchanting table in the book hall)"}
-{"place_id":"yulca","give_seq":5,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (alchemy-lab: a raft-top alchemy bench)"}
-{"place_id":"yulca","give_seq":6,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-general: ink, rice, lake fish and rope)"}
-{"place_id":"yulca","give_seq":7,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-innkeeper: a raft kitchen)"}
-{"place_id":"yulca","give_seq":8,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (inn-room: the guest raft)"}
-{"place_id":"yulca","give_seq":9,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (fishing: lake fish and eels)"}
-{"place_id":"yulca","give_seq":10,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-creature: lake crocodiles)"}
-{"place_id":"yulca","give_seq":11,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (treasure: the pirate raft's stash)"}
-{"place_id":"yulca","give_seq":12,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-foes: pirates of a raft moored on the far shore, 3 to 4)"}
+{"place_id":"yulca","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (boat-stop: raft-masters at the town docks)"}
+{"place_id":"yulca","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-general: a Dunmer chandler selling rope, salvage, rice and lake fish)"}
+{"place_id":"yulca","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (fence: a Khajiit fence in the beached ship's hold)"}
+{"place_id":"yulca","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-bookseller: the chandler's shelf of salvaged books and sea-charts)"}
+{"place_id":"yulca","give_seq":4,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-spells: the hall's hedge-mage: Illusion tomes to Adept, Alteration and Conjuration to Novice, scrolls, soul gems)"}
+{"place_id":"yulca","give_seq":5,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trainer: Illusion, Expert, the hedge-mage)"}
+{"place_id":"yulca","give_seq":6,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (arcane-enchanter: the hedge-mage's enchanting table in the hall)"}
+{"place_id":"yulca","give_seq":7,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (alchemy-lab: an alchemy bench in the hall)"}
+{"place_id":"yulca","give_seq":8,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-innkeeper: the beached ship's tavern)"}
+{"place_id":"yulca","give_seq":9,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (inn-room: a berth in the beached ship)"}
+{"place_id":"yulca","give_seq":10,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (fishing: lake fish and eels off the docks)"}
+{"place_id":"yulca","give_seq":11,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-creature: lake crocodiles)"}
+{"place_id":"yulca","give_seq":12,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (treasure: the turned-out crew's stash)"}
+{"place_id":"yulca","give_seq":13,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-foes: the crew turned out of the port, 3 to 4)"}
 {"place_id":"yuva-goli","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-general: kelp, salt, sea-bird eggs and dye; 750 gold)"}
 {"place_id":"yuva-goli","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (harvest-common: salt piles and bird eggs on the shore)"}
 {"place_id":"yuva-goli","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (fishing: canoe landing fishing spot)"}

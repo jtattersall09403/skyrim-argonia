@@ -37,4 +37,4 @@
 {"place_id":"truowa","travel_mode_id":"boat","give_seq":0,"travel_operator_id":"raft-master","rank":"hub","why":"The deep-water quay of Lake Ulaish is at Truowa, where the council tolls the lake's boats. Rice, fish and clay come down the lake and goods go back up (Truowa record, economy)."}
 {"place_id":"tsonac","travel_mode_id":"boat","give_seq":0,"travel_operator_id":"raft-master","rank":"spoke","why":"Stone, hardwood and hides from Tsonac go down its river to be sold at Thorn (Tsonac record, economy)."}
 {"place_id":"uluo","travel_mode_id":"boat","give_seq":0,"travel_operator_id":"raft-master","rank":"hub","why":"Uluo's raft-masters move the back-water freight between Archon and the Lilmoth delta. The elder takes a share of every raft (Uluo record, economy)."}
-{"place_id":"yulca","travel_mode_id":"boat","give_seq":0,"travel_operator_id":"raft-master","rank":"spoke","why":"Yulca's raft ferry works the lake toward Truowa (Yulca record)."}
+{"place_id":"yulca","travel_mode_id":"boat","give_seq":0,"travel_operator_id":"raft-master","rank":"spoke","why":"Alten Corimont's raft-masters work the lake toward Truowa (Alten Corimont record)."}

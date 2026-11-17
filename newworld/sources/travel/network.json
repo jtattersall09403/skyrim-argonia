@@ -308,7 +308,7 @@
    "mode": "boat",
    "operator": "raft-master",
    "rank": "spoke",
-   "why": "Yulca's raft ferry works the lake toward Truowa (Yulca record)."
+   "why": "Alten Corimont's raft-masters work the lake toward Truowa (Alten Corimont record)."
   },
   {
    "place": "kharaxos",
@@ -504,7 +504,7 @@
    "a": "truowa",
    "b": "yulca",
    "mode": "boat",
-   "why": "Up the lake to Yulca's landing."
+   "why": "Up the lake to the docks of Alten Corimont."
   },
   {
    "a": "blackrose",

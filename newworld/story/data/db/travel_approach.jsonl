@@ -10,7 +10,7 @@
 {"place_id":"ayleid-ruin-m15-m69","stop_place_id":"slough-point","travel_mode_id":"coach","foot_m":368,"way":"marsh","remote":0,"why":"368 m across the marsh on foot from the coach stop at Slough Point"}
 {"place_id":"ayleid-ruin-m18-m71","stop_place_id":"slough-point","travel_mode_id":"coach","foot_m":734,"way":"water","remote":0,"why":"734 m over the water from the coach stop at Slough Point"}
 {"place_id":"ayleid-ruin-m8-m65","stop_place_id":"jal-veesa","travel_mode_id":"rootworm","foot_m":326,"way":"water","remote":0,"why":"326 m over the water from the rootworm stop at Jal-Veesa"}
-{"place_id":"badal","stop_place_id":"yulca","travel_mode_id":"boat","foot_m":609,"way":"marsh","remote":0,"why":"609 m across the marsh on foot from the boat stop at Yulca"}
+{"place_id":"badal","stop_place_id":"yulca","travel_mode_id":"boat","foot_m":609,"way":"marsh","remote":0,"why":"609 m across the marsh on foot from the boat stop at Alten Corimont"}
 {"place_id":"bala-karag","stop_place_id":"thorn","travel_mode_id":"boat","foot_m":314,"way":"water","remote":0,"why":"314 m over the water from the boat stop at Thorn"}
 {"place_id":"balormaak","stop_place_id":"inoja","travel_mode_id":"boat","foot_m":828,"way":"marsh","remote":0,"why":"828 m across the marsh on foot from the boat stop at Inoja"}
 {"place_id":"blackrose-prison","stop_place_id":"blackrose","travel_mode_id":"boat","foot_m":277,"way":"marsh","remote":0,"why":"277 m across the marsh on foot from the boat stop at Blackrose"}
@@ -41,7 +41,7 @@
 {"place_id":"fort-thornmoth","stop_place_id":"thorn","travel_mode_id":"boat","foot_m":159,"way":"water","remote":0,"why":"159 m over the water from the boat stop at Thorn"}
 {"place_id":"fort-willowmoth","stop_place_id":"stormhold","travel_mode_id":"boat","foot_m":304,"way":"marsh","remote":0,"why":"304 m across the marsh on foot from the boat stop at Stormhold"}
 {"place_id":"gandranen","stop_place_id":"slough-point","travel_mode_id":"coach","foot_m":372,"way":"water","remote":0,"why":"372 m over the water from the coach stop at Slough Point"}
-{"place_id":"gaweja","stop_place_id":"yulca","travel_mode_id":"boat","foot_m":523,"way":"water","remote":0,"why":"523 m over the water from the boat stop at Yulca"}
+{"place_id":"gaweja","stop_place_id":"yulca","travel_mode_id":"boat","foot_m":523,"way":"water","remote":0,"why":"523 m over the water from the boat stop at Alten Corimont"}
 {"place_id":"gemin","stop_place_id":"jal-veesa","travel_mode_id":"rootworm","foot_m":613,"way":"marsh","remote":0,"why":"613 m across the marsh on foot from the rootworm stop at Jal-Veesa"}
 {"place_id":"giovesse","stop_place_id":"gideon","travel_mode_id":"boat","foot_m":243,"way":"road","remote":0,"why":"243 m by road from the boat stop at Gideon"}
 {"place_id":"guxal","stop_place_id":"thorn","travel_mode_id":"boat","foot_m":501,"way":"marsh","remote":0,"why":"501 m across the marsh on foot from the boat stop at Thorn"}
@@ -93,7 +93,7 @@
 {"place_id":"loriasel","stop_place_id":"slough-point","travel_mode_id":"coach","foot_m":341,"way":"marsh","remote":0,"why":"341 m across the marsh on foot from the coach stop at Slough Point"}
 {"place_id":"lujei","stop_place_id":"lujei-ferry","travel_mode_id":"boat","foot_m":166,"way":"marsh","remote":0,"why":"166 m across the marsh on foot from the boat stop at Lujei Ferry"}
 {"place_id":"luntoc","stop_place_id":"julo","travel_mode_id":"boat","foot_m":546,"way":"water","remote":0,"why":"546 m over the water from the boat stop at Julo"}
-{"place_id":"marzai","stop_place_id":"yulca","travel_mode_id":"boat","foot_m":555,"way":"water","remote":0,"why":"555 m over the water from the boat stop at Yulca"}
+{"place_id":"marzai","stop_place_id":"yulca","travel_mode_id":"boat","foot_m":555,"way":"water","remote":0,"why":"555 m over the water from the boat stop at Alten Corimont"}
 {"place_id":"mine-16-m69","stop_place_id":"noota-nara","travel_mode_id":"boat","foot_m":499,"way":"marsh","remote":0,"why":"499 m across the marsh on foot from the boat stop at Noota Nara"}
 {"place_id":"mine-20-m70","stop_place_id":"noota-nara","travel_mode_id":"boat","foot_m":217,"way":"marsh","remote":0,"why":"217 m across the marsh on foot from the boat stop at Noota Nara"}
 {"place_id":"mine-25-m68","stop_place_id":"tsonac","travel_mode_id":"boat","foot_m":736,"way":"marsh","remote":0,"why":"736 m across the marsh on foot from the boat stop at Tsonac"}
@@ -117,7 +117,7 @@
 {"place_id":"outpost-1-m75","stop_place_id":"helstrom","travel_mode_id":"boat","foot_m":666,"way":"water","remote":0,"why":"666 m over the water from the boat stop at Helstrom"}
 {"place_id":"outpost-1-m81","stop_place_id":"julo","travel_mode_id":"boat","foot_m":477,"way":"water","remote":0,"why":"477 m over the water from the boat stop at Julo"}
 {"place_id":"outpost-12-m63","stop_place_id":"tsonac","travel_mode_id":"boat","foot_m":1195,"way":"road","remote":0,"why":"1195 m by road from the boat stop at Tsonac"}
-{"place_id":"outpost-14-m85","stop_place_id":"yulca","travel_mode_id":"boat","foot_m":385,"way":"water","remote":0,"why":"385 m over the water from the boat stop at Yulca"}
+{"place_id":"outpost-14-m85","stop_place_id":"yulca","travel_mode_id":"boat","foot_m":385,"way":"water","remote":0,"why":"385 m over the water from the boat stop at Alten Corimont"}
 {"place_id":"outpost-2-m68","stop_place_id":"stormhold","travel_mode_id":"boat","foot_m":854,"way":"marsh","remote":0,"why":"854 m across the marsh on foot from the boat stop at Stormhold"}
 {"place_id":"outpost-2-m96","stop_place_id":"korydon","travel_mode_id":"boat","foot_m":419,"way":"marsh","remote":0,"why":"419 m across the marsh on foot from the boat stop at Korydon"}
 {"place_id":"outpost-22-m77","stop_place_id":"inoja","travel_mode_id":"boat","foot_m":417,"way":"marsh","remote":0,"why":"417 m across the marsh on foot from the boat stop at Inoja"}

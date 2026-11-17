@@ -39,7 +39,12 @@ WEIGHTS = {"kind": 0.38, "text": 0.14, "size": 0.14, "status": 0.10, "culture": 
 NAME_BONUS = 0.3            # the same place by name, over the weighted parts
 NAME_GROUPS = {"bmv", "kotm"}   # the Black Marsh mods: a shared name there is the same place
 IMPORTANCE_WEIGHT = {1: 1.0, 2: 1.5, 3: 2.5, 4: 4.0, 5: 6.0}
-FIXED = {"helstrom": ("bmv.helstrom", re.compile(r"^blackmarsh\.cluster\.helstrom\."))}
+FIXED = {"helstrom": ("bmv.helstrom", re.compile(r"^blackmarsh\.cluster\.helstrom\.")),
+         "yulca": ("blackmarsh.cluster.murkmire.-23.20", re.compile(r"^blackmarsh\.cluster\.murkmire\.-23\.20$")),
+         "jarecai": ("nyhus.cluster.nyhus.51.-39", re.compile(r"^nyhus\.cluster\.nyhus\.51\.-39$"))}
+FIXED_WHY = {"helstrom": "the place is drafted from this source",
+             "yulca": "Alten Corimont's docks, Dunmer outbuildings and ship are canon's (owner, 2026-11-17)",
+             "jarecai": "swapped with Alten Corimont: Nyhus's fort, smithy and inn serve the fortified town (owner, 2026-11-17)"}
 EXCLUDE = [("bmv", re.compile(r"l[io]lmoth(?!iit)", re.I))]
 LIVED = {"inhabited", "garrisoned", "occupied"}
 WET_SITING = {"coast", "riverbank", "swamp", "lakeshore", "island", "seabed"}
@@ -603,7 +608,7 @@ def main(argv: list[str]) -> int:
                 pop, pwhy = population(p, gives.get(p["id"], []), c)
                 row.update(population_before=p.get("population"), population_after=pop, population_why=pwhy)
                 if p["id"] in fixed:
-                    row["why"] = "fixed: the place is drafted from this source; " + why
+                    row["why"] = "fixed: " + FIXED_WHY[p["id"]] + "; " + why
             match_rows.append(row)
     src_rows, ext_rows = [], []
     for sid, c in sorted(used.items()):

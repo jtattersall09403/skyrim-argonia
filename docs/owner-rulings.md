@@ -723,3 +723,9 @@ added here the day they are made, with the date and the issue.
   heirs they are; three researched alternatives for each faction's name go to him as a call, and no other name
   changes before he rules. The rule is in the owner's bar under "The factions".
 - 2026-11-17 (story explorer notes on the plot pages): four writing rules. "Hold" is overused for a group occupying a place ("unbound scouts hold the cave"): use a variety of words and structures. "You also overuse the passive voice": the actor is the subject, "the player fights them or passes them by stealth". "You cannot fight a yard or a hall, you fight people or creatures in them." Agents are too concise about buying and selling ("sell that" for "sell this information"; "sold the course of the best ship" meant telling other privateers where it would sail, for gold): say in full who gave what to whom for what. Added to story/design/text/style-core.md and style-guide.md, the dialogue linter (B14 to B17) and the owner's bar under "People and talk".
+- 2026-11-17 (story explorer note): "We have no Alten Corimont in our world. I think we should. Find a candidate in
+  the atlas somewhere town sized and in approximately the right place per lore and where we have relatively little
+  or no canon info about, so we can easily swap it out ... Maybe Yulca?" The map's Yulca (place id `yulca`, kept;
+  alias Yulca) is now Alten Corimont, the freebooters' free port on the great lake's east shore, built from BM&V's
+  Murkmire (docks, Dunmer outbuildings, a ship: canon's look); Jarecai takes Yulca's old source, Nyhus, in a
+  one-for-one swap. The Agaceph keep their hamlets and lose only their town.

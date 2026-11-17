@@ -1536,19 +1536,20 @@
 {"place_id":"ysan","seq":1,"give_kind_id":"cooking-pot","detail":"landing cook-fire","count":1}
 {"place_id":"ysan","seq":2,"give_kind_id":"combat-creature","detail":"crocodiles at the river mouth and skeevers among the stone stacks","count":3,"reward_kind_id":"treasure"}
 {"place_id":"ysan","seq":3,"give_kind_id":"treasure","detail":"smugglers' stashed goods under the jetty","count":1}
-{"place_id":"yulca","seq":0,"give_kind_id":"boat-stop","detail":"the raft ferry at the lake landing","count":1}
-{"place_id":"yulca","seq":1,"give_kind_id":"trader-bookseller","detail":"the town's book hall: Maran lore books and tomes","count":1}
-{"place_id":"yulca","seq":2,"give_kind_id":"trader-spells","detail":"Illusion tomes to Adept, Alteration and Conjuration to Novice, scrolls, soul gems","count":1}
-{"place_id":"yulca","seq":3,"give_kind_id":"trainer","detail":"Illusion, Expert","count":1}
-{"place_id":"yulca","seq":4,"give_kind_id":"arcane-enchanter","detail":"scholars' enchanting table in the book hall","count":1}
-{"place_id":"yulca","seq":5,"give_kind_id":"alchemy-lab","detail":"a raft-top alchemy bench","count":1}
-{"place_id":"yulca","seq":6,"give_kind_id":"trader-general","detail":"ink, rice, lake fish and rope","count":1}
-{"place_id":"yulca","seq":7,"give_kind_id":"trader-innkeeper","detail":"a raft kitchen","count":1}
-{"place_id":"yulca","seq":8,"give_kind_id":"inn-room","detail":"the guest raft","count":1}
-{"place_id":"yulca","seq":9,"give_kind_id":"fishing","detail":"lake fish and eels","count":1}
-{"place_id":"yulca","seq":10,"give_kind_id":"combat-creature","detail":"lake crocodiles","count":1,"reward_kind_id":"treasure"}
-{"place_id":"yulca","seq":11,"give_kind_id":"treasure","detail":"the pirate raft's stash","count":1,"setting":"nearby"}
-{"place_id":"yulca","seq":12,"give_kind_id":"combat-foes","detail":"pirates of a raft moored on the far shore, 3 to 4","count":1,"reward_kind_id":"treasure","setting":"nearby","spot":"the lake shore south of the town where the pirate raft is moored","bearing_deg":180.0,"distance_m":190.0}
+{"place_id":"yulca","seq":0,"give_kind_id":"boat-stop","detail":"raft-masters at the town docks","count":1}
+{"place_id":"yulca","seq":1,"give_kind_id":"trader-general","detail":"a Dunmer chandler selling rope, salvage, rice and lake fish","count":1}
+{"place_id":"yulca","seq":2,"give_kind_id":"fence","detail":"a Khajiit fence in the beached ship's hold","count":1}
+{"place_id":"yulca","seq":3,"give_kind_id":"trader-bookseller","detail":"the chandler's shelf of salvaged books and sea-charts","count":1}
+{"place_id":"yulca","seq":4,"give_kind_id":"trader-spells","detail":"the hall's hedge-mage: Illusion tomes to Adept, Alteration and Conjuration to Novice, scrolls, soul gems","count":1}
+{"place_id":"yulca","seq":5,"give_kind_id":"trainer","detail":"Illusion, Expert, the hedge-mage","count":1}
+{"place_id":"yulca","seq":6,"give_kind_id":"arcane-enchanter","detail":"the hedge-mage's enchanting table in the hall","count":1}
+{"place_id":"yulca","seq":7,"give_kind_id":"alchemy-lab","detail":"an alchemy bench in the hall","count":1}
+{"place_id":"yulca","seq":8,"give_kind_id":"trader-innkeeper","detail":"the beached ship's tavern","count":1}
+{"place_id":"yulca","seq":9,"give_kind_id":"inn-room","detail":"a berth in the beached ship","count":1}
+{"place_id":"yulca","seq":10,"give_kind_id":"fishing","detail":"lake fish and eels off the docks","count":1}
+{"place_id":"yulca","seq":11,"give_kind_id":"combat-creature","detail":"lake crocodiles","count":1,"reward_kind_id":"treasure"}
+{"place_id":"yulca","seq":12,"give_kind_id":"treasure","detail":"the turned-out crew's stash","count":1,"setting":"nearby"}
+{"place_id":"yulca","seq":13,"give_kind_id":"combat-foes","detail":"the crew turned out of the port, 3 to 4","count":1,"reward_kind_id":"treasure","setting":"nearby","spot":"the far shore south of the town where the turned-out crew camps","bearing_deg":180.0,"distance_m":190.0}
 {"place_id":"yuva-goli","seq":0,"give_kind_id":"trader-general","detail":"kelp, salt, sea-bird eggs and dye; 750 gold","count":1}
 {"place_id":"yuva-goli","seq":1,"give_kind_id":"harvest-common","detail":"salt piles and bird eggs on the shore","count":4}
 {"place_id":"yuva-goli","seq":2,"give_kind_id":"fishing","detail":"canoe landing fishing spot","count":1}

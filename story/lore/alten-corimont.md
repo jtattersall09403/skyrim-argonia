@@ -12,7 +12,11 @@ state is ours to author — recommended continuity: still a river-port freehold
 of smugglers and neutral traders, weathered but alive (fits the pirate lore of
 the province and the community map's 4E 231 depiction).
 
-**Build implications:** matches our placement east of Stormhold in the low
+**In the new world (owner, 2026-11-17):** the town is the map's Yulca (place id
+`yulca`), on the great lake's east shore in Okuwun-Rahei, built from BM&V's
+Murkmire; its record is `newworld/sources/research/places/eastcoast.json`.
+
+**Build implications (old world):** matches our placement east of Stormhold in the low
 wetland corridor; drives the "pirate-freeholds" culture zone; its access
 counts as a minor port (not a safe city) in the danger model; dock implies a
 navigable channel — a Phase 3 refinement constraint (river route to its

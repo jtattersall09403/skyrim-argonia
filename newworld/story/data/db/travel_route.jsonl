@@ -81,10 +81,10 @@
 {"from_place_id":"truowa","to_place_id":"helstrom","travel_mode_id":"boat","distance_m":2284,"open_sea_m":0,"fare":30,"hours":2,"why":"Down the interior's water to the lake city. Rafts from both cities carry the lake trade."}
 {"from_place_id":"truowa","to_place_id":"korydon","travel_mode_id":"boat","distance_m":1582,"open_sea_m":0,"fare":25,"hours":2,"why":"Across the lake's south shore to the boatwrights' channels."}
 {"from_place_id":"truowa","to_place_id":"uluo","travel_mode_id":"boat","distance_m":1777,"open_sea_m":0,"fare":25,"hours":2,"why":"South-east by the back-waters to the raft town and the coast."}
-{"from_place_id":"truowa","to_place_id":"yulca","travel_mode_id":"boat","distance_m":399,"open_sea_m":0,"fare":15,"hours":1,"why":"Up the lake to Yulca's landing."}
+{"from_place_id":"truowa","to_place_id":"yulca","travel_mode_id":"boat","distance_m":399,"open_sea_m":0,"fare":15,"hours":1,"why":"Up the lake to the docks of Alten Corimont."}
 {"from_place_id":"tsonac","to_place_id":"thorn","travel_mode_id":"boat","distance_m":819,"open_sea_m":0,"fare":15,"hours":1,"why":"Up the river to the quarry city."}
 {"from_place_id":"uluo","to_place_id":"archon","travel_mode_id":"boat","distance_m":2134,"open_sea_m":0,"fare":25,"hours":2,"why":"The back-water freight run to the great port."}
 {"from_place_id":"uluo","to_place_id":"lilmoth","travel_mode_id":"boat","distance_m":1257,"open_sea_m":0,"fare":20,"hours":2,"why":"Across the delta to Lilmoth's harbour."}
 {"from_place_id":"uluo","to_place_id":"shalaia","travel_mode_id":"boat","distance_m":1193,"open_sea_m":0,"fare":20,"hours":1,"why":"North through the bayou to the shellfish flats."}
 {"from_place_id":"uluo","to_place_id":"truowa","travel_mode_id":"boat","distance_m":1777,"open_sea_m":0,"fare":25,"hours":2,"why":"South-east by the back-waters to the raft town and the coast."}
-{"from_place_id":"yulca","to_place_id":"truowa","travel_mode_id":"boat","distance_m":399,"open_sea_m":0,"fare":15,"hours":1,"why":"Up the lake to Yulca's landing."}
+{"from_place_id":"yulca","to_place_id":"truowa","travel_mode_id":"boat","distance_m":399,"open_sea_m":0,"fare":15,"hours":1,"why":"Up the lake to the docks of Alten Corimont."}
