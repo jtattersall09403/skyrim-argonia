@@ -302,6 +302,17 @@ stages:
     use: fight
     target: the Sarpa raiders
     note: any fighting skill
+  approaches:
+  - id: lift
+    actions:
+    - skill: Pickpocket
+      use: pickpocket
+      target: Hesh-Var
+  - id: force
+    actions:
+    - skill: Archery
+      use: fight
+      target: the Sarpa raiders
 - id: 20
   place: velothi-ruin-23-m73
   journal: text.journal.mn16.20
@@ -414,6 +425,22 @@ stages:
     use: fight
     target: the Lord of Vorannuhl
     note: any fighting skill
+  approaches:
+  - id: fight
+    actions:
+    - skill: One-Handed
+      use: fight
+      target: any fighting skill
+  - id: sneak
+    actions:
+    - skill: Sneak
+      use: slip-past
+      target: the deep halls
+  - id: turn
+    actions:
+    - skill: Restoration
+      use: turn-undead
+      target: the plague-dead
 - id: 90
   place: velothi-ruin-23-m73
   journal: text.journal.mn16.90

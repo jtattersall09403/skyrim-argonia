@@ -448,6 +448,22 @@ stages:
   - skill: Illusion
     use: calm
     target: the rearguard
+  approaches:
+  - id: fight
+    actions:
+    - skill: One-Handed
+      use: fight
+      target: any fighting skill
+  - id: sneak
+    actions:
+    - skill: Sneak
+      use: slip-past
+      target: the east halls
+  - id: magic
+    actions:
+    - skill: Illusion
+      use: calm
+      target: the rearguard
 - id: 21
   place: sunken-ruin-23-m112
   journal: text.journal.mn17.21
@@ -529,6 +545,22 @@ stages:
   - skill: Illusion
     use: calm
     target: the rearguard
+  approaches:
+  - id: fight
+    actions:
+    - skill: One-Handed
+      use: fight
+      target: any fighting skill
+  - id: sneak
+    actions:
+    - skill: Sneak
+      use: slip-past
+      target: the east halls
+  - id: magic
+    actions:
+    - skill: Illusion
+      use: calm
+      target: the rearguard
 - id: 30
   place: sunken-ruin-23-m112
   journal: text.journal.mn17.30
@@ -736,10 +768,13 @@ topics:
 - id: topic.mn-ranks
   label: What do the order's ranks mean?
   person: npc.mn.never-writes-twice
-  stages: [10, 20, 21]
-  intent: 'Never-Writes-Twice. Tells: the Toh-Reel-Ka''s ranks, lowest first, are Voh-Vastei, "Apprentice"; Toh-Wo,
-    "Secret-Speaker"; Reel-Ka, "Warrior"; Ka-Deelith, "War-Teacher", who may teach the order''s fighters; and Toh-Nassa,
-    "Leader of the Secret", the order''s highest.'
+  stages:
+  - 10
+  - 20
+  - 21
+  intent: 'Never-Writes-Twice. Tells: the Toh-Reel-Ka''s ranks, lowest first, are Voh-Vastei, "Apprentice"; Toh-Wo, "Secret-Speaker";
+    Reel-Ka, "Warrior"; Ka-Deelith, "War-Teacher", who may teach the order''s fighters; and Toh-Nassa, "Leader of the Secret",
+    the order''s highest.'
   new: false
 - id: topic.mn17-report
   label: I have all three seal-stones.

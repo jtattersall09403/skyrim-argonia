@@ -355,6 +355,22 @@ stages:
   - skill: Restoration
     use: turn-undead
     target: the dead and the wraith
+  approaches:
+  - id: fight
+    actions:
+    - skill: One-Handed
+      use: fight
+      target: any fighting skill
+  - id: sneak
+    actions:
+    - skill: Sneak
+      use: slip-past
+      target: the halls
+  - id: turn
+    actions:
+    - skill: Restoration
+      use: turn-undead
+      target: the dead
 - id: 90
   place: gemin
   journal: text.journal.mn15.90
