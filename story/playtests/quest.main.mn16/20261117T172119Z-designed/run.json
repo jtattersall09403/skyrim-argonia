@@ -1,0 +1,106 @@
+{
+ "quest": "quest.main.mn16",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn16.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "force",
+ "choose": null,
+ "know": "/home/ubuntu/skyrim-argonia/.claude/worktrees/agent-a7ed3383f725be781/story/playtests/quest.main.mn15/20261117T171745Z-designed/notes.md",
+ "created": "20261117T172119Z",
+ "stages": [
+  10,
+  20,
+  93
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn04.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn05.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn06.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn07.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn08.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn09.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn10.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn11.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn12.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn13.yaml",
+   "ending": 91
+  },
+  {
+   "record": "newworld/story/quests/main/mn14.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn15.yaml",
+   "ending": 91
+  }
+ ],
+ "milestones": 3,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I work for the Toh-Reel-Ka under Never-Writes-Twice. I hold two Seal-Stones (Blackrose, Gemin). The third lies in the deepest hall of Vorannuhl, and all three go into the gate at Teku-Sul Spire. The Collector, Ennodius Vanin, is a rival. 2. Get the Bronze Key from Hesh-Var, a Sarpa raider in the outer yard of Vorannuhl, then open the bronze vault door. 3. Lift the key from him unseen (pickpocket) or kill him and take it. I favour force. There are also Sarpa raiders and Plague-Dead around. 4. I do not know why the Unbound seal the trees, what moans in the Fort Chalkmoth cellar, or how Nesh-Deeka knows of the Unbound. I could find out by exploring and talking to people.",
+  "fight Hesh-Var win",
+  "take Bronze Key",
+  "answer 1. I killed Hesh-Var and have the Bronze Key. Plague-dead of the old household walk the deep halls and a wraith lord guards the vault with the third seal-stone. 2. Go down to the Vault of the Household door, open it with the key, take the stone. 3. Fight the dead, slip past them, or turn them with Restoration. I favour force. 4. I do not know what the wraith lord is or how strong; I could find out by looking when I get there.",
+  "use Door to Vault of the Household",
+  "fight Lord of Vorannuhl win",
+  "take Household's Hoard",
+  "use Household's Hoard",
+  "take Seal-Stone of the Kings",
+  "answer 1. I now hold all three seal-stones. Never-Writes-Twice ordered me to bring them to her before anyone goes near the gate at Teku-Sul Spire. 2. Bring them to Never-Writes-Twice in Nesh-Deeka's House in Helstrom. 3. Go straight there, or first explore other open questions. I will deliver them as ordered. 4. Still unknown: why the Unbound seal trees, what moans in the Fort Chalkmoth cellar, how Nesh-Deeka knows of the Unbound. I could ask in Helstrom.",
+  "answer I killed Hesh-Var, took the Bronze Key, killed the wraith Lord of Vorannuhl and took the third Seal-Stone. I carry all three stones (Blackrose, Gemin, Vorannuhl), plus the Eye-Setting, Keystone, about 350 gold, 3 paralysis poison, sap jar, rapier, Reelka armour, Warden Vault Key and the Bronze Key. Next: take the stones to Never-Writes-Twice in Nesh-Deeka's House in Helstrom, before anyone goes near the gate at drowned Teku-Sul Spire off Lilmoth. Open questions: why the Unbound seal trees, what moans in the Fort Chalkmoth cellar and where its key is, how Nesh-Deeka knows of the Unbound. Rival: the Collector, Ennodius Vanin."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.0502735,
+ "minutes": 0.5,
+ "turns": 12,
+ "tokens": {
+  "input_tokens": 22,
+  "output_tokens": 2134,
+  "cache_read_input_tokens": 58975,
+  "cache_creation_input_tokens": 5748
+ }
+}

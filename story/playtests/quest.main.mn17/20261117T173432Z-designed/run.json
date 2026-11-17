@@ -1,0 +1,116 @@
+{
+ "quest": "quest.main.mn17",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn17.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": null,
+ "choose": "e-killed",
+ "know": "/home/ubuntu/skyrim-argonia/.claude/worktrees/agent-a7ed3383f725be781/story/playtests/quest.main.mn16/20261117T172949Z-designed/notes.md",
+ "created": "20261117T173432Z",
+ "stages": [
+  10,
+  20,
+  30,
+  40,
+  91
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn04.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn05.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn06.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn07.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn08.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn09.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn10.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn11.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn12.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn13.yaml",
+   "ending": 91
+  },
+  {
+   "record": "newworld/story/quests/main/mn14.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn15.yaml",
+   "ending": 91
+  },
+  {
+   "record": "newworld/story/quests/main/mn16.yaml",
+   "ending": 93
+  }
+ ],
+ "milestones": 5,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I carry the three seal-stones of the kings gate. The Eye of Argonia at the Root under Teku-Sul Spire can heal sick Hist trees; the Kings Gate opens only with the three stones. 2. Bring the stones to Never-Writes-Twice at the back of Nesh-Deeka House in Helstrom. 3. I can go straight to him and talk; later the Kings Gate. Rivals exist (the Unbound, Collector Vanin). 4. I do not understand why the Unbound drain trees, or how Nesh-Deeka knows of them; I could ask Never-Writes-Twice.",
+  "talk Never-Writes-Twice",
+  "say 2",
+  "say 3",
+  "answer 1. I work for the Toh-Reel-Ka order. I gave the stones to Never-Writes-Twice, was made Ka-Deelith and given a pike and armour. The Eye, used in place, heals every tree. 2. Dive to Teku-Sul Spire (via Bell Station) and go to the Kings Gate, set the stones, use the Eye without lifting it. 3. Go to the marker directly; afterwards return stones to Never-Writes-Twice and hunt Cuts-the-Old-Knot. 4. I do not know who Cuts-the-Old-Knot is exactly or why the Unbound drain trees; I could ask Never-Writes-Twice.",
+  "go The Kings Gate",
+  "look",
+  "go marker 1",
+  "answer 1. Cuts-the-Old-Knot waits at the Kings Gate. She says my order, the Toh-Reel-Ka, serves the ruling Xeech-Leel and keeps sap-fed dreamers in Fort Chalkmoth to see through the trees; she was one. She drains and seals trees to hide from them. She wants the Eye lifted, which would kill about three in ten trees and break the order. 2. Choose here at the gate: fight her or believe her, then go through the gate with the stones to the Eye. 3. Fight her (I take her tomes, staff, draughts and face the guardian alone) or believe her (she fights the guardian beside me). The final choice at the Eye stays mine either way. I mean to take the ending where she is killed, so I will fight her. 4. I cannot verify her claims; I do not know the guardian or the full truth of the dreamers. I could learn more by asking her and Never-Writes-Twice.",
+  "talk Cuts-the-Old-Knot",
+  "say 7",
+  "answer 1. I chose to fight Cuts-the-Old-Knot; she is hostile and drank a draught. 2. Kill her here before the Kings Gate. 3. Fight her and win, or lose and reload; the Unbound Rearguard may join. 4. Nothing new that I cannot explain; I still do not know the guardian behind the gate.",
+  "fight Cuts-the-Old-Knot win",
+  "answer 1. Cuts-the-Old-Knot is dead before the Kings Gate. The order serves the Xeech-Leel and keeps dreamers in Fort Chalkmoth, by her account. 2. The quest is complete; the next step would be setting the three stones in the gate and facing the guardian and the Eye choice. 3. Set the stones and go in; at the Eye I could use it in place or lift it, and I will not lift it. 4. I do not know the guardian, nor whether her claims about the order are true.",
+  "answer I am Ka-Deelith of Toh-Reel-Ka, with the three seal-stones (Blackrose, Gemin, Kings), the order pike, gauntlets and boots, Reel-Ka armour, rapier, about 350 gold, 2 lockpicks, 3 paralysis poisons, sap jar, keystone, eye-setting, Bronze Key and Cuts-the-Old-Knot Draught. I gave the stones to Never-Writes-Twice, who sent me to the Kings Gate at Sunken-Ruin-23-M112 under Teku-Sul. There Cuts-the-Old-Knot told me the order keeps sap-fed dreamers in the Fort Chalkmoth cellar to see through the trees, that she was one, and that she wants the Eye lifted, which would kill about three in ten trees. I could not verify her claims. I chose to fight her and killed her. The gate is still shut. I must set the three stones, face the guardian alone, and at the Eye I will use it in place and not lift it. Afterward the stones go back to Never-Writes-Twice. Open questions: the guardian, whether the dreamer claim is true, and what the Xeech-Leel really intend."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.0778562,
+ "minutes": 0.6,
+ "turns": 16,
+ "tokens": {
+  "input_tokens": 26,
+  "output_tokens": 3142,
+  "cache_read_input_tokens": 88962,
+  "cache_creation_input_tokens": 9372
+ }
+}

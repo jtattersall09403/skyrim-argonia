@@ -267,6 +267,18 @@ placements:
     id: 'to choose: a potion bottle (Skyrim)'
   carriedBy: npc.mn.cuts-the-old-knot
   count: 3
+- ref: thing.mn17.gate
+  kind: door
+  name: The Kings' Gate
+  placeName: Guardian's Hall
+  formKey: MN13's gate door (stated alike in MN13 and MN18)
+  lock:
+    level: key
+    key: none
+  anchor:
+    place: sunken-ruin-23-m112
+    rule: surface
+    need: the great gate with three empty sockets at the end of the Halls
 conclusions:
 - id: c1
   statement: The Toh-Reel-Ka see the marsh through dreamers kept in Fort Chalkmoth's cellar, and that is why the Unbound
@@ -326,8 +338,12 @@ stages:
 - id: 10
   place: helstrom
   journal: text.journal.mn17.10
-  journalText: I carry all three seal-stones of the kings' gate. I'm to bring them to Never-Writes-Twice, who stands at
-    the back of Nesh-Deeka's House in Helstrom.
+  journalText: 'I serve the Toh-Reel-Ka, the secret warriors of the Xeech-Leel who rule Black Marsh. We hunt the Eye of
+    Argonia: a great jewel the old priest-kings cut from Hist amber, the hardened sap of the trees. It lies at the Root,
+    a chamber under the sea below Teku-Sul Spire where the roots of every Hist in the marsh meet, and it binds them together;
+    used where it sits, it can pour strength into every sick tree. The last king shut the Root behind the Kings'' Gate,
+    which opens only with its three seal-stones. I carry all three seal-stones of the kings'' gate. I''m to bring them to
+    Never-Writes-Twice, who stands at the back of Nesh-Deeka''s House in Helstrom.'
   objectives:
   - id: report
     text: text.objective.mn17.report
@@ -357,10 +373,16 @@ stages:
   directions: Boats from Blackrose and Noota Nara go up to Helstrom, and the rootworm runs from Jal-Veesa's Hist pool to
     Helstrom's city tree. Nesh-Deeka's House is the quiet house with her name on the door.
   information:
-    going: I have all three stones the ghost at Teku-Sul named; the order wants them
+    going: The Eye of Argonia, the old kings' jewel, sits at the Root under Teku-Sul, where the roots of every Hist meet;
+      used there it heals every sick tree. The Kings' Gate shuts it in and opens only with three seal-stones. I have all
+      three stones the ghost at Teku-Sul named; the order wants them
     next: report to Never-Writes-Twice in Nesh-Deeka's House, Helstrom
     ways: none; the report is the step
     carriers:
+    - know: what the Eye of Argonia, the Root and the seal-stones are
+      by:
+      - journal
+      - ask:topic.mn-the-hunt
     - know: report to Never-Writes-Twice
       by:
       - journal
@@ -564,13 +586,15 @@ stages:
 - id: 30
   place: sunken-ruin-23-m112
   journal: text.journal.mn17.30
-  journalText: 'Cuts-the-Old-Knot was waiting before the Kings'' Gate, without stones. She says the Toh-Reel-Ka keep dreamers
-    in the cellar of Fort Chalkmoth, fed on sap, and see the whole marsh through them. She was one of them for nine years,
-    and Never-Writes-Twice kept the key. That is why she seals the trees she drains: a sealed tree shows the dreamers nothing.
-    If I fight her, I take what she carries and go on alone, and giving her the Eye is closed to me. If I believe her, she
-    fights the guardian beside me. Either way the choice at the Eye stays mine. Used where it sits, the Eye heals every
+  journalText: 'Cuts-the-Old-Knot waited before the Kings'' Gate without stones, and told me what the order I serve is.
+    The Toh-Reel-Ka are the secret warriors of the Xeech-Leel, the party that rules Black Marsh, made so that no tree could
+    bring another Umbriel. They keep dreamers in the cellar of Fort Chalkmoth: people fed sap and made to tell what the
+    trees have seen, so the order sees the whole marsh. She was a dreamer for nine years, and Never-Writes-Twice kept the
+    key. She seals the trees she drains so the dreamers cannot see through them. Used where it sits, the Eye heals every
     tree, and the dreamers see through them all again; lifted, it parts the trees, about three in ten die, and the dreams
-    end. I''m to choose.'
+    end. If I fight her, I take her tomes, staff and draughts, face the guardian alone, and cannot give her the Eye. If
+    I believe her, she fights the guardian beside me and giving her the Eye stays open. Either way the choice at the Eye
+    is mine. I''m to choose.'
   objectives:
   - id: choose
     text: text.objective.mn17.choose
@@ -604,7 +628,10 @@ stages:
   - fact.mn17.lift
   - fact.mn17.unseen-here
   information:
-    going: 'Cuts-the-Old-Knot told me what the Toh-Reel-Ka are: they see the marsh through sap-fed dreamers in Fort Chalkmoth''s
+    going: 'The Toh-Reel-Ka are the secret warriors of the Xeech-Leel, the party that rules Black Marsh; they were made
+      so that no tree could bring another Umbriel, the flying city the An-Xileel called down on Lilmoth with its mad Hist.
+      The dreamers are people the order keeps in Fort Chalkmoth''s cellar, fed sap and made to tell what the trees have
+      seen. Cuts-the-Old-Knot told me what the Toh-Reel-Ka are: they see the marsh through sap-fed dreamers in Fort Chalkmoth''s
       cellar, the moaning I heard. She seals trees to blind them, not to kill the trees. The healing I was sent to do would
       let the dreamers see again, and the stones in the order''s hands would keep the Eye theirs. She wants the Eye lifted,
       which ends the dreams and kills many trees. This answers the question in my journal. Used where it sits, the Eye heals
@@ -616,6 +643,11 @@ stages:
       hall beyond the gate and fights the guardian beside me; at the Eye I can use it, take it, or give it to her. Using
       the Eye with her alive kills her'
     carriers:
+    - know: what the order is (the Xeech-Leels secret warriors, made after Umbriel) and what the dreamers are
+      by:
+      - line:topic.mn17-cuts-truth
+      - journal
+      - ask:topic.mn-umbriel
     - know: the dreamers and the cellar
       by:
       - line:topic.mn17-cuts-truth
@@ -878,12 +910,14 @@ topics:
     kept the key, and her story that Cuts went mad on sap and killed her minders is a lie. The answer to the player''s question:
     she seals each tree she drains so the order draws no sap from it for its dreamers and its dreamers cannot see her through
     it; under the sea there are no trees, so nobody saw her here. She never meant a tree to die of her seal, and some have.
-    She grants the order its reason: no second Umbriel. But the Xeech-Leel took the marsh by being not the An-Xileel and
-    now rule unseen through the trees as the An-Xileel did. The healing the player was sent to do is for the dreamers: a
-    sick tree shows them nothing, a healed one shows them everything, and the stones "kept safe" mean only the order can
-    ever reach the Eye. She wants the Eye lifted, which parts the trees, ends the dreams and breaks the order; many trees
-    will die of it, with the villages under them, and she will not pretend otherwise. She asks the player to stand with
-    her or fight her here (answers: topic.mn17-fight, topic.mn17-believe). Does: sets stage 30.'
+    She grants the order its reason: no second Umbriel, the flying city that the An-Xileel called down on Lilmoth with Lilmoth''s
+    mad Hist in 4E 48, whose dead killed the city''s people. But the Xeech-Leel, the party that has ruled Black Marsh since
+    the An-Xileel fell and that made the Toh-Reel-Ka, took the marsh by being not the An-Xileel and now rule unseen through
+    the trees as the An-Xileel did. The healing the player was sent to do is for the dreamers: a sick tree shows them nothing,
+    a healed one shows them everything, and the stones "kept safe" mean only the order can ever reach the Eye. She wants
+    the Eye lifted, which parts the trees, ends the dreams and breaks the order; many trees will die of it, with the villages
+    under them, and she will not pretend otherwise. She asks the player to stand with her or fight her here (answers: topic.mn17-fight,
+    topic.mn17-believe). Does: sets stage 30.'
   uses:
   - fact.mn17.dreamers
   - fact.mn17.she-was-one

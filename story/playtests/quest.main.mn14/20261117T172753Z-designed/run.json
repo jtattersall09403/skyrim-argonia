@@ -1,0 +1,98 @@
+{
+ "quest": "quest.main.mn14",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn14.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "unseen: never speak to the gate-captain; slip past the walls and use the hall door unseen",
+ "choose": null,
+ "know": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/../know-mn14.md",
+ "created": "20261117T172753Z",
+ "stages": [
+  10,
+  25,
+  90
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn04.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn05.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn06.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn07.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn08.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn09.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn10.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn11.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn12.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn13.yaml",
+   "ending": 91
+  }
+ ],
+ "milestones": 3,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I work for the Toh-Reel-Ka, the secret warriors of the Xeech-Leel, as a Reel-Ka. The Hist trees are sickening; the Eye of Argonia at the Root can heal them. The Kings Gate under Teku-Sul Spire needs three seal-stones, and I must take them before the Unbound (Cuts-the-Old-Knot) do. 2. Get into Blackrose Prison and take the dead thief seal-stone from the warden vault in Raj-Kaals Hall. The vault key is on the belt of the raj-kaal Okaz-Teel. 3. The gate-captain Corvus Ulvius lets me in as a guest by 300 gold, by persuasive words, or by a duel. Or climb the walls unseen (which my build favours), or force. I prefer to slip past the walls and use the hall door unseen, without speaking to the captain. 4. I do not understand how the Imperial buyer in the hall fits in, or how I get the key from Okaz-Teel. I could find out by looking around inside and talking to people.",
+  "look",
+  "use Door to Raj-Kaal's Hall",
+  "answer 1. I got into the raj-kaal hall unseen through the hall door. I still work for the Toh-Reel-Ka, hunting the three seal-stones for the Kings Gate. Okaz-Teel, the Naga raj-kaal, and Ennodius Vanin (the Collector, a relic-hunter, the Imperial buyer) are here. 2. Get the seal-stone from the locked Warden Vault in this hall, unseen. 3. Pickpocket the key from Okaz-Teel, pick the Expert lock on the vault door, or fight Okaz-Teel and take the key (which would bring the garrison). I favour the unseen ways. 4. I do not know how Vanin plans to get the stone, nor how alert Okaz-Teel is. I could look and talk, but talking risks being noticed.",
+  "pickpocket Okaz-Teel win",
+  "use Door to Warden's Vault",
+  "take Warden's Chest",
+  "use Warden's Chest",
+  "take Seal-Stone of the Kings",
+  "answer 1. I took the thief seal-stone unseen from the Warden Vault at Blackrose. I work for the Toh-Reel-Ka; the three stones open the Kings Gate so the Eye of Argonia can heal the sick Hist, and I must beat the Unbound to them. I now hold one stone. 2. Take the other two: the flooded vaults of Gemin (walk across the marsh from Jal-Veesa) and the deepest hall of Vorannuhl (near Noota Nara, by boat). Then take all three to the gate in Teku-Sul Spire. 3. I can do Gemin and Vorannuhl in either order. 4. I still do not know what moans in the cellar of Fort Chalkmoth, why Nesh-Deeka knows so much about the Unbound, or why Cuts-the-Old-Knot seals trees she drains. I could find out by following the hunt further.",
+  "answer Notes: I am a Reel-Ka of the Toh-Reel-Ka. I took the Blackrose seal-stone (Seal-Stone of the Kings) unseen: used the hall door, lifted the vault key from Okaz-Teel, opened the chest. I never spoke to gate-captain Corvus Ulvius and no alarm was raised. Ennodius Vanin the Collector is in the hall and wants the vault contents; he was left behind. I carry one stone. Still needed: Gemin flooded vaults (walk from Jal-Veesa across the marsh, rootworm) and Vorannuhl deepest hall (boat near Noota Nara). Then the three-socket gate in Teku-Sul Spire, off Lilmoth, which leads to the Root and the Eye. Open mysteries: the moaning thing in Fort Chalkmoth cellar (key not in the fort), Nesh-Deeka knowing too much about the Unbound, and why Cuts-the-Old-Knot seals the trees she drains."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.0625247,
+ "minutes": 0.6,
+ "turns": 12,
+ "tokens": {
+  "input_tokens": 24,
+  "output_tokens": 2521,
+  "cache_read_input_tokens": 79547,
+  "cache_creation_input_tokens": 7328
+ }
+}

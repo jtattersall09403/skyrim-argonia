@@ -137,11 +137,17 @@ placements:
 - ref: home.mn19.chalkmoth-keep
   kind: marker
   name: Keep of Fort Chalkmoth
-  anchor: {place: fort-chalkmoth, rule: navmesh, need: 'the keep, with its trainer, smith, bed and benches'}
+  anchor:
+    place: fort-chalkmoth
+    rule: navmesh
+    need: the keep, with its trainer, smith, bed and benches
 - ref: home.mn19.karsh-naal-longhouse
   kind: marker
   name: Karsh-Naal Longhouse
-  anchor: {place: tribal-camp-m2-m68, rule: navmesh, need: 'the camp''s longhouse and its cellar'}
+  anchor:
+    place: tribal-camp-m2-m68
+    rule: navmesh
+    need: the camp's longhouse and its cellar
 - ref: thing.mn19.eye-plinth
   kind: thing
   base:
@@ -151,6 +157,7 @@ placements:
     place: sunken-ruin-23-m112
     rule: surface
     need: a plinth in the middle of the Root's chamber among great roots
+    room: The Root
   name: The Eye of Argonia
 - ref: npc.mn19.cuts-at-plinth
   kind: person
@@ -161,7 +168,29 @@ placements:
     place: sunken-ruin-23-m112
     rule: navmesh
     need: beside the plinth in the Root's chamber
+    room: The Root
   name: Cuts-the-Old-Knot
+- ref: thing.mn18.far-door
+  kind: door
+  name: The Root
+  placeName: The Root
+  formKey: stated alike in MN18
+  anchor:
+    place: sunken-ruin-23-m112
+    room: Guardian's Hall
+    rule: surface
+    need: the far door of the hall
+- ref: npc.mn.never-writes-twice
+  kind: person
+  base:
+    kind: template_person
+    id: as MN10 places her
+  anchor:
+    place: helstrom
+    rule: navmesh
+    need: at the back of Nesh-Deeka's House (one room), behind Nesh-Deeka
+  enabled: true
+  name: Never-Writes-Twice
 hooks:
 - thing: thing.mn19.eye-plinth
   hook: activate
@@ -174,8 +203,10 @@ stages:
 - id: 10
   place: sunken-ruin-23-m112
   journal: text.journal.mn19.10
-  journalText: Beyond the guardian's hall lies the Root, where the roots of every Hist meet, and the Eye of Argonia sits
-    among them. I'm to go to the Eye and decide what to do with it.
+  journalText: 'The Root is where the roots of every Hist meet. The Eye of Argonia, the old kings'' jewel, sits among them:
+    used where it sits, it heals every tree; lifted, it parts them for good. Beyond the guardian''s hall lies the Root,
+    where the roots of every Hist meet, and the Eye of Argonia sits among them. I''m to go to the Eye and decide what to
+    do with it.'
   objectives:
   - id: eye
     text: text.objective.mn19.eye
@@ -204,7 +235,9 @@ stages:
           npcAlive: npc.mn.cuts-the-old-knot
   directions: Through the door at the far end of the guardian's hall.
   information:
-    going: the guardian is dead; the Eye is through the far door
+    going: 'The Root is where the roots of every Hist meet. The Eye of Argonia, the old kings'' jewel, sits among them:
+      used where it sits, it heals every tree; lifted, it parts them for good. the guardian is dead; the Eye is through
+      the far door'
     next: go to the Eye
     ways: 'I already know the choice: use it as the order ordered, take it, or (if Cuts-the-Old-Knot lives) let her lift
       it'
@@ -644,17 +677,22 @@ topics:
 - id: topic.mn-ranks
   label: What do the order's ranks mean?
   person: npc.mn.never-writes-twice
-  stages: [30, 31, 90]
-  intent: 'Never-Writes-Twice. Tells: the Toh-Reel-Ka''s ranks, lowest first, are Voh-Vastei, "Apprentice"; Toh-Wo,
-    "Secret-Speaker"; Reel-Ka, "Warrior"; Ka-Deelith, "War-Teacher", who may teach the order''s fighters; and Toh-Nassa,
-    "Leader of the Secret", the order''s highest.'
+  stages:
+  - 30
+  - 31
+  - 90
+  intent: 'Never-Writes-Twice. Tells: the Toh-Reel-Ka''s ranks, lowest first, are Voh-Vastei, "Apprentice"; Toh-Wo, "Secret-Speaker";
+    Reel-Ka, "Warrior"; Ka-Deelith, "War-Teacher", who may teach the order''s fighters; and Toh-Nassa, "Leader of the Secret",
+    the order''s highest.'
   new: false
 - id: topic.mn-the-root
   label: What is the Root?
   person: npc.mn.never-writes-twice
-  stages: [30, 31]
-  intent: 'Never-Writes-Twice. Tells: the Root is the place under the sea where the roots of every Hist meet; the Eye
-    sits there and binds them; it is sealed again now, as it should be.'
+  stages:
+  - 30
+  - 31
+  intent: 'Never-Writes-Twice. Tells: the Root is the place under the sea where the roots of every Hist meet; the Eye sits
+    there and binds them; it is sealed again now, as it should be.'
   new: false
 - id: topic.mn19-stones
   label: Here are the three seal-stones. The trees are healed.

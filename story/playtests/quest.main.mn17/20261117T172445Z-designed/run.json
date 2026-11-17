@@ -1,0 +1,117 @@
+{
+ "quest": "quest.main.mn17",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn17.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": null,
+ "choose": "e-killed",
+ "know": "/home/ubuntu/skyrim-argonia/.claude/worktrees/agent-a7ed3383f725be781/story/playtests/quest.main.mn16/20261117T172119Z-designed/notes.md",
+ "created": "20261117T172445Z",
+ "stages": [
+  10,
+  20,
+  30,
+  40,
+  91
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn04.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn05.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn06.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn07.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn08.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn09.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn10.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn11.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn12.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn13.yaml",
+   "ending": 91
+  },
+  {
+   "record": "newworld/story/quests/main/mn14.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn15.yaml",
+   "ending": 91
+  },
+  {
+   "record": "newworld/story/quests/main/mn16.yaml",
+   "ending": 93
+  }
+ ],
+ "milestones": 5,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I hold the three seal-stones (Blackrose, Gemin, Vorannuhl) of the Kings Gate. The gate shuts away the Eye of Argonia, under the sea below Teku-Sul Spire, which can heal every sick Hist tree. It matters because the trees are dying and the Collector, Ennodius Vanin, is a rival. 2. Bring the three stones to Never-Writes-Twice at the back of Nesh-Deeka House in Helstrom. 3. I can go straight to him and talk; the game only shows that one marker so far. I have no other choice visible yet. 4. I do not understand why the Unbound seal trees, what moans in the Fort Chalkmoth cellar or where its key is, or how Nesh-Deeka knows of the Unbound. I could ask Never-Writes-Twice and others.",
+  "talk Never-Writes-Twice",
+  "say 2",
+  "say 3",
+  "journal",
+  "answer 1. I work with the Toh-Reel-Ka order. Never-Writes-Twice made me Ka-Deelith and gave me a pike and armour. The Unbound are hunting the Eye too, but are not yet at Teku-Sul, so I am ahead. 2. Dive to Teku-Sul Spire, open the Kings Gate with the three stones, use the Eye where it sits (not lift it), then take the stones back to her and hunt Cuts-the-Old-Knot. 3. I can go to the gate marker directly; the order says to leave the Eye in place. I could also ask about Fort Chalkmoth first. I intend to kill the enemy at the end. 4. I do not understand why the Unbound seal trees, what moans in Fort Chalkmoth cellar, where its key is, or how Nesh-Deeka knows of the Unbound. I could ask Never-Writes-Twice.",
+  "go The Kings Gate",
+  "look",
+  "go marker 1",
+  "answer 1. Cuts-the-Old-Knot waits at the Kings Gate. She says the Toh-Reel-Ka keep sap-fed dreamers in the Fort Chalkmoth cellar to watch the whole marsh, that she was one, and that Never-Writes-Twice lied. She seals trees to blind them, and some died. Healing the Eye in place would restore the dreamers sight; lifting it parts the trees, ends the dreams, but about three in ten trees die. 2. Choose: fight her or believe her, here at the gate. 3. Fight her and take what she carries, going on alone; or believe her and have her help against the guardian. The final choice at the Eye stays mine either way. I mean to fight her. 4. I do not know if she is telling the truth; I cannot verify it without seeing the cellar, and I lack its key. Xeech-Leel and An-Xileel I only half understand.",
+  "talk Cuts-the-Old-Knot",
+  "say 7",
+  "answer 1. I chose to fight Cuts-the-Old-Knot; she is now hostile and drank her draught. 2. Kill her here before the Kings Gate. 3. Fight her (and her Unbound Rearguard); winning or losing is my choice. Afterwards I still choose at the Eye whether to use or lift it. 4. Nothing new that blocks me; I still cannot verify her claims about the cellar.",
+  "fight Cuts-the-Old-Knot win",
+  "answer 1. Cuts-the-Old-Knot is dead before the Kings Gate. The order wanted her dead; she claimed the order keeps dreamers in the Fort Chalkmoth cellar, which I never verified. 2. Set the three stones in the Kings Gate and reach the Eye; the quest is marked complete. 3. Use the Eye in place (heals trees, dreamers see again) or lift it (ends dreams, kills about three in ten trees). 4. I still do not know whether her claims were true, what the Unbound Rearguard will do, or who holds the Fort Chalkmoth key.",
+  "answer Notes: I took the three seal-stones (Blackrose, Gemin, Vorannuhl) to Never-Writes-Twice in Helstrom. She made me Ka-Deelith of Toh-Reel-Ka and gave me the pike (life-drinking), gauntlets and boots. At the sunken ruin under Teku-Sul I met Cuts-the-Old-Knot, who said the order keeps sap-fed dreamers in Fort Chalkmoth cellar and that Never-Writes-Twice lied and kept the key. I chose to fight and killed her; I carry her Draught. I have not verified her claims. Still carry the stones, Eye-Setting, Keystone, gold, poison, sap jar, rapier, Warden Vault Key, Bronze Key. Next: set the stones in the Kings Gate; the Eye choice remains. Using it in place heals trees but lets the order see through them; lifting it ends the dreams but kills about three in ten trees. The order says do not lift it, and return the stones to Never-Writes-Twice. Open: Fort Chalkmoth key and cellar, Ennodius Vanin the Collector."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.08127870000000002,
+ "minutes": 0.7,
+ "turns": 17,
+ "tokens": {
+  "input_tokens": 30,
+  "output_tokens": 3359,
+  "cache_read_input_tokens": 104327,
+  "cache_creation_input_tokens": 9299
+ }
+}

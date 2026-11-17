@@ -244,23 +244,24 @@ placements:
     kind: template_person
     id: 'to choose: an Argonian of the Naga breed''s look (our ecology), a chief''s template'
   anchor:
-    place: blackrose-prison-hall
+    place: blackrose-prison
     rule: navmesh
     need: the raj-kaal's seat in the chief's hall (CrackedTuskKeep01)
+    room: Raj-Kaal's Hall
   enabled: true
   level: 36
   killChoice: true
   name: Okaz-Teel
-  placeName: Raj-Kaal's Hall
 - ref: npc.mn.ennodius-vanin
   kind: person
   base:
     kind: template_person
     id: the Collector's own (MN06 places him first as a note; this is his first standing self)
   anchor:
-    place: blackrose-prison-hall
+    place: blackrose-prison
     rule: navmesh
     need: a guest's bench in the chief's hall, apart from the garrison
+    room: Raj-Kaal's Hall
   enabled: true
   level: 20
   killChoice: true
@@ -285,9 +286,10 @@ placements:
     kind: existing_base
     id: 'to choose: an Imperial fort door (Skyrim)'
   anchor:
-    place: blackrose-prison-hall
+    place: blackrose-prison
     rule: surface
     need: a locked door in the chief's hall wall into a small added room, the warden's vault
+    room: Raj-Kaal's Hall
   lock:
     level: expert
     key: thing.mn14.vault-key
@@ -299,12 +301,12 @@ placements:
     kind: existing_base
     id: 'to choose: an Imperial chest (Skyrim)'
   anchor:
-    place: blackrose-prison-vault
+    place: blackrose-prison
     rule: surface
     need: one chest in the warden's vault
+    room: Warden's Vault
   owner: npc.mn.okaz-teel
   name: Warden's Chest
-  placeName: Warden's Vault
 - ref: thing.mn.seal-stone-thief
   kind: thing
   base:
@@ -383,9 +385,14 @@ stages:
 - id: 10
   place: blackrose-prison
   journal: text.journal.mn14.10
-  journalText: 'Never-Writes-Twice sent me after the three seal-stones. A dead thief''s stone lies in the warden''s vault
-    at Blackrose Prison, whose people, the Blackguards'' heirs, attack strangers on sight. Their gate-captain stands outside
-    the gate. I''m to get in: as a guest past the gate-captain (a toll, words or a duel), unseen past the walls, or by force.'
+  journalText: 'I serve the Toh-Reel-Ka, the secret warriors of the Xeech-Leel who rule Black Marsh. We hunt the Eye of
+    Argonia: a great jewel the old priest-kings cut from Hist amber, the hardened sap of the trees. It lies at the Root,
+    a chamber under the sea below Teku-Sul Spire where the roots of every Hist in the marsh meet, and it binds them together;
+    used where it sits, it can pour strength into every sick tree. The last king shut the Root behind the Kings'' Gate,
+    which opens only with its three seal-stones. Never-Writes-Twice sent me after the three seal-stones. A dead thief''s
+    stone lies in the warden''s vault at Blackrose Prison, whose people, the Blackguards'' heirs, attack strangers on sight.
+    Their gate-captain stands outside the gate. I''m to get in: as a guest past the gate-captain (a toll, words or a duel),
+    unseen past the walls, or by force.'
   objectives:
   - id: gate
     text: text.objective.mn14.gate
@@ -436,13 +443,19 @@ stages:
     on its upper wall. Boats from Helstrom's quay go down to Blackrose. The gate-captain stands outside the main gate on
     the road.
   information:
-    going: I am a Reel-Ka of the Toh-Reel-Ka, hunting the three seal-stones that open the kings' gate at Teku-Sul before
-      the Unbound get them. One lies in the warden's vault in Blackrose Prison. The prison's people attack strangers.
+    going: The Eye of Argonia, the old kings' jewel, sits at the Root under Teku-Sul, where the roots of every Hist meet;
+      used there it heals every sick tree. The Kings' Gate shuts it in and opens only with three seal-stones. I am a Reel-Ka
+      of the Toh-Reel-Ka, hunting the three seal-stones that open the kings' gate at Teku-Sul before the Unbound get them.
+      One lies in the warden's vault in Blackrose Prison. The prison's people attack strangers.
     next: get into the prison; the gate-captain outside the gate is the first person to deal with
     ways: 'pay the gate-captain 300 gold, persuade him (Speech 75) or duel him until he yields: each makes me a guest, and
       the garrison stops attacking me; or slip past the walls unseen (Sneak, Invisibility), and they attack if they see
       me; or fight my way in (any fighting skill), and the whole garrison fights me'
     carriers:
+    - know: what the Eye of Argonia, the Root and the seal-stones are
+      by:
+      - journal
+      - ask:topic.mn-the-hunt
     - know: the stone is in the warden's vault
       by:
       - journal
@@ -1058,17 +1071,17 @@ stages:
 - id: 93
   place: blackrose-prison
   journal: text.journal.mn14.93
-  journalText: I took the thief's seal-stone from Blackrose Prison. I now carry all three seal-stones. I'm to bring them
-    to Never-Writes-Twice in Nesh-Deeka's House in Helstrom.
+  journalText: I took the thief's seal-stone from Blackrose Prison. I now carry all three seal-stones. Never-Writes-Twice
+    ordered all three brought to her before anyone goes near the gate. I'm to bring them to her in Nesh-Deeka's House in
+    Helstrom.
   ending: complete
   endingId: e-stone
   information:
-    going: I took the thief's seal-stone from Blackrose Prison. I now carry all three seal-stones. I'm to bring them to
-      Never-Writes-Twice in Nesh-Deeka's House in Helstrom.
-    next: nothing more in this quest; the next quests entry carries the step
-    ways: none
+    going: I hold all three seal-stones of the Kings' Gate
+    next: bring them to Never-Writes-Twice in Nesh-Deeka's House, Helstrom, as her orders said, before going to the gate
+    ways: none; the report is the step
     carriers:
-    - know: what happened
+    - know: all three held; report first, then the gate
       by:
       - journal
 - id: 95

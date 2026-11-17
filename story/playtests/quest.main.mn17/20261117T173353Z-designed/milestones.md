@@ -1,0 +1,46 @@
+# Milestones: quest.main.mn17
+
+## 1. Stage 10 (start): At the Kings' Gate
+
+Journal: The Eye of Argonia is the old priest-kings' jewel. It sits at the Root, under the sea below Teku-Sul Spire, where the roots of every Hist meet; used there, it can heal every sick tree. The last king shut it behind the Kings' Gate, which opens only with three seal-stones. I carry all three seal-stones of the kings' gate. I'm to bring them to Never-Writes-Twice, who stands at the back of Nesh-Deeka's House in Helstrom.
+
+| | Plan | Player |
+|---|---|---|
+| Going on | The Eye of Argonia, the old kings' jewel, sits at the Root under Teku-Sul, where the roots of every Hist meet; used there it heals every sick tree. The Kings' Gate shuts it in and opens only with three seal-stones. I have all three stones the ghost at Teku-Sul named; the order wants them | I carry the three seal-stones of the kings. The Eye of Argonia, the priest-kings jewel at the Root under Teku-Sul Spire, can heal sick trees, and it is shut behind the Kings Gate, which opens only with the three stones. Rivals are the Unbound and Collector Vanin. |
+| Next | report to Never-Writes-Twice in Nesh-Deeka's House, Helstrom | Bring the three seal-stones to Never-Writes-Twice in Nesh-Deeka House, Helstrom. |
+| Ways | none; the report is the step | I can talk to Never-Writes-Twice and hand over the stones, or keep them; I can see no other choices yet. |
+| Not understood | (none) | I do not understand why the Unbound drain trees, or how Nesh-Deeka knows about them. I could ask Never-Writes-Twice. |
+
+## 2. Stage 20 (stage): At the Kings' Gate
+
+Journal: Never-Writes-Twice made me a Ka-Deelith, a War-Teacher of the Toh-Reel-Ka, and gave me the order's pike. Her watchers have not seen the Unbound near Teku-Sul, so I am ahead of them. I'm to dive to Teku-Sul Spire, open the Kings' Gate with the three stones and use the Eye where it sits to heal the trees. Then I'm to bring the stones back to her and hunt down Cuts-the-Old-Knot.
+
+| | Plan | Player |
+|---|---|---|
+| Going on | I am a Ka-Deelith now. The order thinks I am ahead of the Unbound and has sent me to open the gate and heal the trees with the Eye; afterwards the stones go back to Never-Writes-Twice and I hunt Cuts-the-Old-Knot | I work for the Toh-Reel-Ka order via Never-Writes-Twice. I am now a Ka-Deelith with a life-drinking pike. The Eye used in place heals every tree; lifted, it cuts trees off. |
+| Next | dive to Teku-Sul and go to the Kings' Gate | Dive to Teku-Sul Spire and go to the Kings Gate, set the three stones, use the Eye where it sits, not lifting it. Then return the stones to her and hunt Cuts-the-Old-Knot. |
+| Ways | carry waterbreathing for the dive; in the east halls Unbound I was not warned of wait for me: fight them, slip past or hold them off with magic | Go to the gate directly, or ask more questions first; at the Eye I could use it in place or lift it, and I will not lift it. |
+| Not understood | (none) | I do not know who Cuts-the-Old-Knot is exactly, or why the Unbound drain trees. I could ask Never-Writes-Twice. |
+
+## 3. Stage 30 (stage): At the Kings' Gate
+
+Journal: Cuts-the-Old-Knot waited before the Kings' Gate without stones, and told me what the order I serve is. The Toh-Reel-Ka are the secret warriors of the Xeech-Leel, the party that rules Black Marsh, made so that no tree could bring another Umbriel. They keep dreamers in the cellar of Fort Chalkmoth: people fed sap and made to tell what the trees have seen, so the order sees the whole marsh. She was a dreamer for nine years, and Never-Writes-Twice kept the key. She seals the trees she drains so the dreamers cannot see through them. Used where it sits, the Eye heals every tree, and the dreamers see through them all again; lifted, it parts the trees, about three in ten die, and the dreams end. If I fight her, I take her tomes, staff and draughts, face the guardian alone, and cannot give her the Eye. If I believe her, she fights the guardian beside me and giving her the Eye stays open. Either way the choice at the Eye is mine. I'm to choose.
+
+| | Plan | Player |
+|---|---|---|
+| Going on | The Toh-Reel-Ka are the secret warriors of the Xeech-Leel, the party that rules Black Marsh; they were made so that no tree could bring another Umbriel, the flying city the An-Xileel called down on Lilmoth with its mad Hist. The dreamers are people the order keeps in Fort Chalkmoth's cellar, fed sap and made to tell what the trees have seen. Cuts-the-Old-Knot told me what the Toh-Reel-Ka are: they see the marsh through sap-fed dreamers in Fort Chalkmoth's cellar, the moaning I heard. She seals trees to blind them, not to kill the trees. The healing I was sent to do would let the dreamers see again, and the stones in the order's hands would keep the Eye theirs. She wants the Eye lifted, which ends the dreams and kills many trees. This answers the question in my journal. Used where it sits, the Eye heals every tree and lets the dreamers see through them all; lifted, it parts the trees for good, about three in ten die, and the dreams end | Cuts-the-Old-Knot met me at the Kings Gate. She says the Toh-Reel-Ka, my order, keep dreamers in the Fort Chalkmoth cellar and use them to watch the whole marsh for the Xeech-Leel. Healing the trees serves that. She wants the Eye lifted, which ends the dreams but kills about three in ten trees. |
+| Next | choose whether to fight her or believe her | Choose here at the gate: fight her or believe her. Then face the guardian and the Eye. |
+| Ways | fight: the hardest fight yet (she drinks her draught and fights as a battlemage); I get her spell tomes, robes, staff and draughts; I face the guardian alone; at the Eye I can only use it or take it. Believe: she waits in the hall beyond the gate and fights the guardian beside me; at the Eye I can use it, take it, or give it to her. Using the Eye with her alive kills her | Fight her, taking her things and facing the guardian alone, or believe her and have her fight beside me. At the Eye the choice stays mine. |
+| Not understood | (none) | I cannot verify her claims. I do not know what the guardian is. I could check by seeing the Eye and perhaps the cellar. |
+
+## 4. Stage 90 (ending): At the Kings' Gate
+
+Journal: I chose to believe Cuts-the-Old-Knot. She will wait in the hall beyond the gate and fight the guardian with me. I have not promised her the Eye. I'm to set the three stones in the Kings' Gate.
+
+| | Plan | Player |
+|---|---|---|
+| Going on | I chose to believe Cuts-the-Old-Knot. She will wait in the hall beyond the gate and fight the guardian with me. I have not promised her the Eye. I'm to set the three stones in the Kings' Gate. | I chose to believe Cuts-the-Old-Knot. The order I served keeps dreamers in the Fort Chalkmoth cellar. She will fight the guardian beside me beyond the gate. I have not promised her the Eye. |
+| Next | nothing more in this quest; the next quests entry carries the step | Set the three stones in the Kings Gate here, then go in. |
+| Ways | none | Set the stones, use the Eye in place, or lift it, which kills trees but ends the dreams. Give it to her or not. I have not decided about the Eye. |
+| Not understood | (none) | I do not know what the guardian is, nor can I confirm her account. I would learn by going in. |
+

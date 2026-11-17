@@ -227,9 +227,13 @@ stages:
 - id: 10
   place: gemin
   journal: text.journal.mn15.10
-  journalText: The second seal-stone lies in the lowest hall of the Vaults of Gemin, which is under water. The dead walk
-    the vaults and a wraith guards the last hall, and Unbound may be searching there. I'm to go down and take it. I can
-    fight through, slip past them, or turn the dead with Restoration.
+  journalText: 'I serve the Toh-Reel-Ka, the secret warriors of the Xeech-Leel who rule Black Marsh. We hunt the Eye of
+    Argonia: a great jewel the old priest-kings cut from Hist amber, the hardened sap of the trees. It lies at the Root,
+    a chamber under the sea below Teku-Sul Spire where the roots of every Hist in the marsh meet, and it binds them together;
+    used where it sits, it can pour strength into every sick tree. The last king shut the Root behind the Kings'' Gate,
+    which opens only with its three seal-stones. The second seal-stone lies in the lowest hall of the Vaults of Gemin, which
+    is under water. The dead walk the vaults and a wraith guards the last hall, and Unbound may be searching there. I''m
+    to go down and take it. I can fight through, slip past them, or turn the dead with Restoration.'
   objectives:
   - id: stone
     text: text.objective.mn15.stone
@@ -319,11 +323,17 @@ stages:
   learns:
   - fact.mn15.stone-drowned
   information:
-    going: I am hunting the three seal-stones for the Toh-Reel-Ka; this one is in Gemin's drowned lowest hall
+    going: The Eye of Argonia, the old kings' jewel, sits at the Root under Teku-Sul, where the roots of every Hist meet;
+      used there it heals every sick tree. The Kings' Gate shuts it in and opens only with three seal-stones. I am hunting
+      the three seal-stones for the Toh-Reel-Ka; this one is in Gemin's drowned lowest hall
     next: go down through the vaults to the lowest hall and take the stone; read the tablet beside it
     ways: fight the Unbound, the dead and the wraith; slip past them (Sneak); turn the dead and the wraith (Restoration);
       I must swim the last hall, or carry waterbreathing
     carriers:
+    - know: what the Eye of Argonia, the Root and the seal-stones are
+      by:
+      - journal
+      - ask:topic.mn-the-hunt
     - know: the stone is in the drowned lowest hall
       by:
       - journal
@@ -429,18 +439,16 @@ stages:
   place: gemin
   journal: text.journal.mn15.93
   journalText: I took the second seal-stone from the drowned hall of Gemin, and the tablet beside it says that the Eye,
-    lifted, parts the trees. I now carry all three seal-stones. I'm to bring them to Never-Writes-Twice in Nesh-Deeka's
-    House in Helstrom.
+    lifted, parts the trees. I now carry all three seal-stones. Never-Writes-Twice ordered all three brought to her before
+    anyone goes near the gate. I'm to bring them to her in Nesh-Deeka's House in Helstrom.
   ending: complete
   endingId: e-stone
   information:
-    going: I took the second seal-stone from the drowned hall of Gemin, and the tablet beside it says that the Eye, lifted,
-      parts the trees. I now carry all three seal-stones. I'm to bring them to Never-Writes-Twice in Nesh-Deeka's House
-      in Helstrom.
-    next: nothing more in this quest; the next quests entry carries the step
-    ways: none
+    going: I hold all three seal-stones of the Kings' Gate
+    next: bring them to Never-Writes-Twice in Nesh-Deeka's House, Helstrom, as her orders said, before going to the gate
+    ways: none; the report is the step
     carriers:
-    - know: what happened
+    - know: all three held; report first, then the gate
       by:
       - journal
 - id: 95

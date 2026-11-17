@@ -1,0 +1,24 @@
+# Milestones: quest.main.mn15
+
+## 1. Stage 10 (start): The Vault's Stone
+
+Journal: The Eye of Argonia is the old priest-kings' jewel. It sits at the Root, under the sea below Teku-Sul Spire, where the roots of every Hist meet; used there, it can heal every sick tree. The last king shut it behind the Kings' Gate, which opens only with three seal-stones. The second seal-stone lies in the lowest hall of the Vaults of Gemin, which is under water. The dead walk the vaults and a wraith guards the last hall, and Unbound may be searching there. I'm to go down and take it. I can fight through, slip past them, or turn the dead with Restoration.
+
+| | Plan | Player |
+|---|---|---|
+| Going on | The Eye of Argonia, the old kings' jewel, sits at the Root under Teku-Sul, where the roots of every Hist meet; used there it heals every sick tree. The Kings' Gate shuts it in and opens only with three seal-stones. I am hunting the three seal-stones for the Toh-Reel-Ka; this one is in Gemin's drowned lowest hall | I am collecting three seal-stones to open the Kings Gate and reach the Eye of Argonia, which can heal the sick Hist trees. I already hold the first stone. The second lies in the drowned lowest hall of the Vaults of Gemin. |
+| Next | go down through the vaults to the lowest hall and take the stone; read the tablet beside it | Go down through the vaults of Gemin, take the Seal-Stone of the Kings, and read the Tablet of the Kings beside it. |
+| Ways | fight the Unbound, the dead and the wraith; slip past them (Sneak); turn the dead and the wraith (Restoration); I must swim the last hall, or carry waterbreathing | Fight through the dead, sneak past them (my build favours sneaking), or turn the dead with Restoration. Unbound may also be searching there. |
+| Not understood | (none) | I do not know what the wraith or the Warden of the Vaults is exactly, or what the Unbound Rearguard intends. I could find out by talking to them or reading the tablet. |
+
+## 2. Stage 91 (ending): The Vault's Stone
+
+Journal: I took the second seal-stone from the drowned hall of Gemin. The tablet beside it says that the Eye, lifted, parts every tree from every other, and used where it sits, it strengthens them. I already carry the thief's stone from Blackrose. One is left, in the deepest hall of Vorannuhl, and it is still marked.
+
+| | Plan | Player |
+|---|---|---|
+| Going on | I took the second seal-stone from the drowned hall of Gemin. The tablet beside it says that the Eye, lifted, parts every tree from every other, and used where it sits, it strengthens them. I already carry the thief's stone from Blackrose. One is left, in the deepest hall of Vorannuhl, and it is still marked. | I took the second seal-stone from Gemin and now hold two. The tablet says the Eye, if lifted, parts every tree from every other, but used where it sits it strengthens them. So I should not lift it. |
+| Next | nothing more in this quest; the next quests entry carries the step | Get the third stone from the deepest hall of Vorannuhl (boat, near Noota Nara), then take all three to the Kings Gate under Teku-Sul Spire. |
+| Ways | none | Go to Vorannuhl and fight or sneak through; or consider rivals Unbound and the Collector. |
+| Not understood | (none) | I do not know what the Unbound really want or why they seal trees. I could find out by asking people near Vorannuhl. |
+

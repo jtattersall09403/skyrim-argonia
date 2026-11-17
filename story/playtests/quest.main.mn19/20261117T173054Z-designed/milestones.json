@@ -1,0 +1,66 @@
+[
+ {
+  "stage": 10,
+  "kind": "start",
+  "ending": null,
+  "title": "The Eye",
+  "journal": "The Root is where the roots of every Hist meet. The Eye of Argonia, the old kings' jewel, sits among them: used where it sits, it heals every tree; lifted, it parts them for good. Beyond the guardian's hall lies the Root, where the roots of every Hist meet, and the Eye of Argonia sits among them. I'm to go to the Eye and decide what to do with it.",
+  "objectives": [
+   "Go to the Eye of Argonia in the Root's chamber. (marker: The Eye of Argonia)"
+  ],
+  "plan": {
+   "going": "The Root is where the roots of every Hist meet. The Eye of Argonia, the old kings' jewel, sits among them: used where it sits, it heals every tree; lifted, it parts them for good. the guardian is dead; the Eye is through the far door",
+   "next": "go to the Eye",
+   "ways": "I already know the choice: use it as the order ordered, take it, or (if Cuts-the-Old-Knot lives) let her lift it"
+  },
+  "answers": [
+   "I am after the Eye of Argonia, the old kings jewel, at the Root where all Hist roots meet. Used in place it heals every tree; lifted it parts them for good. I already set the seal-stones and killed the hydra guardian.",
+   "Go through the Door to The Root at the end of Guardian Hall and reach the Eye, then decide what to do with it.",
+   "Use the Eye in place (heals trees, but the order sees through them) or lift it (ends the dreams, kills about three in ten trees). I mean to lift it. Also unverified: dreamers in the Fort Chalkmoth cellar, and the open Ennodius Vanin lead.",
+   "I do not fully know who the order is or whether Never-Writes-Twice and Cuts-the-Old-Knot told the truth; I could check the Fort Chalkmoth cellar."
+  ],
+  "raw": "1. I am after the Eye of Argonia, the old kings jewel, at the Root where all Hist roots meet. Used in place it heals every tree; lifted it parts them for good. I already set the seal-stones and killed the hydra guardian. 2. Go through the Door to The Root at the end of Guardian Hall and reach the Eye, then decide what to do with it. 3. Use the Eye in place (heals trees, but the order sees through them) or lift it (ends the dreams, kills about three in ten trees). I mean to lift it. Also unverified: dreamers in the Fort Chalkmoth cellar, and the open Ennodius Vanin lead. 4. I do not fully know who the order is or whether Never-Writes-Twice and Cuts-the-Old-Knot told the truth; I could check the Fort Chalkmoth cellar."
+ },
+ {
+  "stage": 21,
+  "kind": "stage",
+  "ending": null,
+  "title": "The Eye",
+  "journal": "I laid my hand on the Eye of Argonia. Cuts-the-Old-Knot is dead, so it is mine alone to use or to take. I'm to choose.",
+  "objectives": [
+   "Choose what to do with the Eye of Argonia. (marker: The Eye of Argonia)"
+  ],
+  "plan": {
+   "going": "the choice is in front of me; Cuts-the-Old-Knot is dead, so giving is closed",
+   "next": "choose",
+   "ways": "use or take, each as the message box says"
+  },
+  "answers": [
+   "I stand at the Root with my hand on the Eye. Cuts-the-Old-Knot is dead, so the choice is mine alone.",
+   "Choose what to do with the Eye, here at the Root.",
+   "Use the Eye: trees healed, order rules and sees through them, gate returns stones for Never-Writes-Twice. Take the Eye: trees parted, about three in ten die with their villages, dreams end, order broken but hunts me, no Hist blesses me. I mean to take it.",
+   "Nothing new that I do not understand, though I still have not verified the Fort Chalkmoth cellar claim."
+  ],
+  "raw": "1. I stand at the Root with my hand on the Eye. Cuts-the-Old-Knot is dead, so the choice is mine alone. 2. Choose what to do with the Eye, here at the Root. 3. Use the Eye: trees healed, order rules and sees through them, gate returns stones for Never-Writes-Twice. Take the Eye: trees parted, about three in ten die with their villages, dreams end, order broken but hunts me, no Hist blesses me. I mean to take it. 4. Nothing new that I do not understand, though I still have not verified the Fort Chalkmoth cellar claim."
+ },
+ {
+  "stage": 40,
+  "kind": "ending",
+  "ending": "complete",
+  "title": "The Eye",
+  "journal": "I lifted the Eye of Argonia from its plinth, and the trees parted. I saw about three in ten of them die. The dreamers will see nothing now, and the Unbound will open the cellar. Every member and friend of the Toh-Reel-Ka will attack me, and no Hist will bless me again. The Eye is mine.",
+  "objectives": [],
+  "plan": {
+   "going": "I took the Eye; the trees parted and some died; the order is my enemy",
+   "next": "the main quest is over; the marsh is open, and dead trees stand where I will see them",
+   "ways": "none"
+  },
+  "answers": [
+   "Notes: I took the Eye of Argonia from the Root. The trees are parted; about three in ten died, including the pools at Jal-Veesa and Teel-Fen Weir, whose people are leaving. The dreams have ended. In Fort Chalkmoth the dreamers woke and the Unbound broke the cellar door, so the cellar claim looks true, but I did not check it myself. The Unbound are friendly to me, and I am Top of Unbound. The Toh-Reel-Ka order is hostile and will hunt me from Helstrom. No Hist will bless me again. I learned the spell The Eye's Gaze. I carry the Eye, the pike, armour, Eye-Setting, Keystone, poison, rapier, keys and 1650 gold. The seal-stones stay in the gate. I never looted the hydra treasure. Ennodius Vanin the Collector is an open lead.",
+   "",
+   "",
+   ""
+  ],
+  "raw": "Notes: I took the Eye of Argonia from the Root. The trees are parted; about three in ten died, including the pools at Jal-Veesa and Teel-Fen Weir, whose people are leaving. The dreams have ended. In Fort Chalkmoth the dreamers woke and the Unbound broke the cellar door, so the cellar claim looks true, but I did not check it myself. The Unbound are friendly to me, and I am Top of Unbound. The Toh-Reel-Ka order is hostile and will hunt me from Helstrom. No Hist will bless me again. I learned the spell The Eye's Gaze. I carry the Eye, the pike, armour, Eye-Setting, Keystone, poison, rapier, keys and 1650 gold. The seal-stones stay in the gate. I never looted the hydra treasure. Ennodius Vanin the Collector is an open lead."
+ }
+]

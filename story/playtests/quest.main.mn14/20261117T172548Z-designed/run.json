@@ -1,0 +1,104 @@
+{
+ "quest": "quest.main.mn14",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn14.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "force",
+ "choose": null,
+ "know": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/../know-mn14.md",
+ "created": "20261117T172548Z",
+ "stages": [
+  10,
+  15,
+  30,
+  90
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn04.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn05.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn06.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn07.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn08.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn09.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn10.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn11.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn12.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn13.yaml",
+   "ending": 91
+  }
+ ],
+ "milestones": 4,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I work for the Toh-Reel-Ka (Never-Writes-Twice is my officer). The Hist trees are sick, the Unbound drain them, and the Eye of Argonia at the Root could heal them. The Kings' Gate at Teku-Sul Spire needs three seal-stones. 2. Take the thief's seal-stone from the warden's vault at Blackrose Prison; first get inside past the gate-captain Corvus Ulvius. 3. Pay 300 gold toll, persuade him with words, or duel him (fists and steel until one yields); or climb the walls unseen (risky, fair game), or kill him (whole Rose attacks). Inside, the raj-kaal Okaz-Teel holds the vault key on his belt, and an Imperial in the hall has a buyer for what is in it. 4. I do not know who the Imperial buyer is (probably the Collector, Ennodius Vanin?) - I can ask Corvus or people in the hall.",
+  "talk Corvus Ulvius",
+  "say 4",
+  "answer 1. I challenged Corvus to a duel for the gate; he accepted. He yields when badly hurt, and then I enter as a guest. Killing him would turn the whole garrison on me. 2. Fight Corvus here at the gate and beat him without killing him. 3. Fight and win; or I could have paid or persuaded instead. 4. Nothing new; I still do not know who the Imperial buyer is.",
+  "fight Corvus Ulvius win",
+  "answer 1. The duel ended with Corvus dead (not a yield), so the whole garrison of Blackguards' heirs now fights me. The vault key is on Okaz-Teel, the Naga raj-kaal, in his hall. 2. Fight through to Okaz-Teel in Raj-Kaal's Hall and take the key, then open the Warden's Vault for the seal-stone. 3. Kill Okaz-Teel for the key, or pick the vault's Expert lock. 4. Nothing new; I do not know the Imperial buyer.",
+  "go Okaz-Teel",
+  "fight Okaz-Teel win",
+  "take Warden's Vault Key",
+  "use Door to Warden's Vault",
+  "take Warden's Chest",
+  "use Warden's Chest",
+  "take Seal-Stone of the Kings",
+  "answer 1. I work for the Toh-Reel-Ka. I killed Corvus Ulvius in the duel (he did not yield), then killed Okaz-Teel, took the Warden's Vault Key and the Seal-Stone of the Kings from the chest. The stones open the Kings' Gate at Teku-Sul Spire so the Eye can heal the Hist. 2. Take the two remaining stones: the flooded vaults of Gemin (walk from Jal-Veesa, rootworm) and the deepest hall of Vorannuhl (near Noota Nara, by boat). 3. Either order. I can fight or sneak as I choose. 4. I never learned who the Imperial buyer was, though Ennodius Vanin, the Collector, was in the hall; I did not talk to him. I also still do not know what moans in Fort Chalkmoth cellar.",
+  "answer Notes: I work for the Toh-Reel-Ka (officer Never-Writes-Twice, Reel-Ka rank). Hist trees are sickening; the Unbound under Cuts-the-Old-Knot drain sap and want the Root guardian dead. The Eye of Argonia lies behind the Kings Gate in the drowned Teku-Sul Spire off Lilmoth and needs three seal-stones. At Blackrose Prison I chose the duel with Corvus Ulvius but he died instead of yielding, so the garrison turned hostile; I killed the raj-kaal Okaz-Teel, took the Warden Vault Key and now carry the first Seal-Stone of the Kings. Blackrose is now emptied of its leaders and hostile. Ennodius Vanin the Collector was in the hall (I did not speak to him; he had a buyer lined up for the vault). Still to get: the stones at the flooded vaults of Gemin (walk from Jal-Veesa, rootworm) and the deepest hall of Vorannuhl (near Noota Nara, by boat). Open mysteries: what moans in the Fort Chalkmoth cellar and the key to it, why the Unbound seal trees they drain, and how Nesh-Deeka knows the Unbound.",
+  "answer Notes: I work for the Toh-Reel-Ka (officer Never-Writes-Twice, Reel-Ka rank). Hist trees are sickening; the Unbound under Cuts-the-Old-Knot drain sap and want the Root guardian dead. The Eye of Argonia lies behind the Kings Gate in the drowned Teku-Sul Spire off Lilmoth and needs three seal-stones. At Blackrose Prison I chose the duel with Corvus Ulvius but he died instead of yielding, so the garrison turned hostile; I killed the raj-kaal Okaz-Teel, took the Warden Vault Key and now carry the first Seal-Stone of the Kings. Blackrose is now emptied of its leaders and hostile. Ennodius Vanin the Collector was in the hall (I did not speak to him; he had a buyer lined up for the vault). Still to get: the stones at the flooded vaults of Gemin (walk from Jal-Veesa, rootworm) and the deepest hall of Vorannuhl (near Noota Nara, by boat). Open mysteries: what moans in the Fort Chalkmoth cellar and the key to it, why the Unbound seal trees they drain, and how Nesh-Deeka knows the Unbound."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.0841188,
+ "minutes": 0.8,
+ "turns": 17,
+ "tokens": {
+  "input_tokens": 30,
+  "output_tokens": 3673,
+  "cache_read_input_tokens": 112528,
+  "cache_creation_input_tokens": 9019
+ }
+}

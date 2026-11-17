@@ -176,9 +176,10 @@ placements:
     kind: template_person
     id: Skyrim wraith template
   anchor:
-    place: vorannuhl-vault
+    place: velothi-ruin-23-m73
     rule: navmesh
     need: the household's lord in the vault before the chest
+    room: Vault of the Household
   name: Lord of Vorannuhl
   level: 42
   hostile: true
@@ -195,11 +196,11 @@ placements:
     kind: existing_base
     id: the place's boss chest
   anchor:
-    place: vorannuhl-vault
+    place: velothi-ruin-23-m73
     rule: surface
     need: the hoard chest at the back of the vault
+    room: Vault of the Household
   name: Household's Hoard
-  placeName: Vault of the Household
 - ref: thing.mn.seal-stone-deep
   kind: thing
   base:
@@ -249,9 +250,13 @@ stages:
 - id: 10
   place: velothi-ruin-23-m73
   journal: text.journal.mn16.10
-  journalText: 'The third seal-stone lies in the vault of Vorannuhl''s deep halls, behind a door of bronze. Sarpa raiders
-    shelter in the outer yard, and one of them, Hesh-Var, carries the bronze key. I''m to get the key: lift it from him
-    unseen, or kill him and take it.'
+  journalText: 'I serve the Toh-Reel-Ka, the secret warriors of the Xeech-Leel who rule Black Marsh. We hunt the Eye of
+    Argonia: a great jewel the old priest-kings cut from Hist amber, the hardened sap of the trees. It lies at the Root,
+    a chamber under the sea below Teku-Sul Spire where the roots of every Hist in the marsh meet, and it binds them together;
+    used where it sits, it can pour strength into every sick tree. The last king shut the Root behind the Kings'' Gate,
+    which opens only with its three seal-stones. The third seal-stone lies in the vault of Vorannuhl''s deep halls, behind
+    a door of bronze. Sarpa raiders shelter in the outer yard, and one of them, Hesh-Var, carries the bronze key. I''m to
+    get the key: lift it from him unseen, or kill him and take it.'
   objectives:
   - id: key
     text: text.objective.mn16.key
@@ -277,11 +282,17 @@ stages:
     dark Dunmer stonework half sunk into the hill with fallen towers. The raiders' fire is in the outer yard before the
     ruin's door.
   information:
-    going: I am hunting the third seal-stone, in Vorannuhl's deep vault, the hardest place of the hunt
+    going: The Eye of Argonia, the old kings' jewel, sits at the Root under Teku-Sul, where the roots of every Hist meet;
+      used there it heals every sick tree. The Kings' Gate shuts it in and opens only with three seal-stones. I am hunting
+      the third seal-stone, in Vorannuhl's deep vault, the hardest place of the hunt
     next: get the bronze key from Hesh-Var at the yard's fire
     ways: pickpocket it from him unseen (Sneak and Pickpocket), or fight the raiders and take it from his body (any fighting
       skill); the raiders shoot strangers
     carriers:
+    - know: what the Eye of Argonia, the Root and the seal-stones are
+      by:
+      - journal
+      - ask:topic.mn-the-hunt
     - know: key on Hesh-Var
       by:
       - journal
@@ -492,17 +503,17 @@ stages:
 - id: 93
   place: velothi-ruin-23-m73
   journal: text.journal.mn16.93
-  journalText: I took the third seal-stone from the vault of Vorannuhl. I now carry all three seal-stones. I'm to bring
-    them to Never-Writes-Twice in Nesh-Deeka's House in Helstrom.
+  journalText: I took the third seal-stone from the vault of Vorannuhl. I now carry all three seal-stones. Never-Writes-Twice
+    ordered all three brought to her before anyone goes near the gate. I'm to bring them to her in Nesh-Deeka's House in
+    Helstrom.
   ending: complete
   endingId: e-stone
   information:
-    going: I took the third seal-stone from the vault of Vorannuhl. I now carry all three seal-stones. I'm to bring them
-      to Never-Writes-Twice in Nesh-Deeka's House in Helstrom.
-    next: nothing more in this quest; the next quests entry carries the step
-    ways: none
+    going: I hold all three seal-stones of the Kings' Gate
+    next: bring them to Never-Writes-Twice in Nesh-Deeka's House, Helstrom, as her orders said, before going to the gate
+    ways: none; the report is the step
     carriers:
-    - know: what happened
+    - know: all three held; report first, then the gate
       by:
       - journal
 - id: 95

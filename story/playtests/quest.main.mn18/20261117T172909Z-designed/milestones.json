@@ -1,0 +1,88 @@
+[
+ {
+  "stage": 10,
+  "kind": "start",
+  "ending": null,
+  "title": "The Guardian",
+  "journal": "Beyond the Kings' Gate lies the Root, where the roots of every Hist meet, and the Eye of Argonia, the old kings' jewel, sits there. I'm to set the three seal-stones in the empty sockets of the Kings' Gate.",
+  "objectives": [
+   "Set the three seal-stones in the Kings' Gate. (marker: The Kings' Gate)"
+  ],
+  "plan": {
+   "going": "Beyond the Kings' Gate lies the Root, where the roots of every Hist meet, and the Eye of Argonia, the old kings' jewel, sits there. I stand before the gate with the three stones",
+   "next": "set them in the gate's sockets",
+   "ways": "none; the stones are the key"
+  },
+  "answers": [
+   "I serve Never-Writes-Twice of Toh-Reel-Ka as Ka-Deelith. The Root lies beyond the Kings Gate, with the Eye of Argonia. Her order says to keep the Eye in place. Cuts-the-Old-Knot claimed she lied and keeps dreamers in Fort Chalkmoth cellar; I killed her and have not verified the claims.",
+   "Set the three seal-stones in the Kings Gate here at the sunken ruin.",
+   "Set the stones and then choose: use the Eye in place (heals trees, but the order sees through them) or lift it (ends dreams, kills about three in ten trees). I could also return the stones to Never-Writes-Twice, or look into Fort Chalkmoth and Ennodius Vanin.",
+   "I do not know who Ennodius Vanin the Collector is, nor where the Fort Chalkmoth key is. I could ask around or check my journal."
+  ],
+  "raw": "1. I serve Never-Writes-Twice of Toh-Reel-Ka as Ka-Deelith. The Root lies beyond the Kings Gate, with the Eye of Argonia. Her order says to keep the Eye in place. Cuts-the-Old-Knot claimed she lied and keeps dreamers in Fort Chalkmoth cellar; I killed her and have not verified the claims. 2. Set the three seal-stones in the Kings Gate here at the sunken ruin. 3. Set the stones and then choose: use the Eye in place (heals trees, but the order sees through them) or lift it (ends dreams, kills about three in ten trees). I could also return the stones to Never-Writes-Twice, or look into Fort Chalkmoth and Ennodius Vanin. 4. I do not know who Ennodius Vanin the Collector is, nor where the Fort Chalkmoth key is. I could ask around or check my journal."
+ },
+ {
+  "stage": 15,
+  "kind": "stage",
+  "ending": null,
+  "title": "The Guardian",
+  "journal": "I set the three seal-stones in their sockets, and the Kings' Gate opened. The stones stay in the gate. Beyond it lies the hall of the Root's guardian. I'm to go through.",
+  "objectives": [
+   "Go through the Kings' Gate. (marker: The Kings' Gate)"
+  ],
+  "plan": {
+   "going": "the gate is open; the stones are in it",
+   "next": "go through",
+   "ways": "none"
+  },
+  "answers": [
+   "The stones are set and the Kings Gate is open. Beyond is the hall of the Root guardian.",
+   "Go through the Kings Gate.",
+   "Go through, or leave; the Eye choice still awaits.",
+   "I do not know what the guardian is; I will find out by going in."
+  ],
+  "raw": "1. The stones are set and the Kings Gate is open. Beyond is the hall of the Root guardian. 2. Go through the Kings Gate. 3. Go through, or leave; the Eye choice still awaits. 4. I do not know what the guardian is; I will find out by going in."
+ },
+ {
+  "stage": 21,
+  "kind": "stage",
+  "ending": null,
+  "title": "The Guardian",
+  "journal": "Beyond the gate a hydra, older than any king, guards the hall. Its breath and the water round it are poison. When it is badly hurt its heads grow back, and heads that come off crawl away and hunt the hall. I face it alone. I'm to kill it.",
+  "objectives": [
+   "Kill the Guardian of the Root. (marker: Guardian of the Root)"
+  ],
+  "plan": {
+   "going": "the guardian of the Root stands before me, and I am alone",
+   "next": "kill the guardian",
+   "ways": "fight it with any skill; cure its venom (potions, Restoration, the side quests' amulet and cures); cut down or burn the roaming heads"
+  },
+  "answers": [
+   "Beyond the gate a poisonous hydra guards the Root hall; its heads regrow when it is badly hurt and severed heads crawl off to hunt. I face it alone.",
+   "Kill the Guardian of the Root in the hall past the Kings Gate.",
+   "Fight it, using the pike (life-drinking) and poison-proofing if I have any, or retreat first. The Eye choice comes after.",
+   "I do not know how to stop the regrowth; I will see in the fight."
+  ],
+  "raw": "1. Beyond the gate a poisonous hydra guards the Root hall; its heads regrow when it is badly hurt and severed heads crawl off to hunt. I face it alone. 2. Kill the Guardian of the Root in the hall past the Kings Gate. 3. Fight it, using the pike (life-drinking) and poison-proofing if I have any, or retreat first. The Eye choice comes after. 4. I do not know how to stop the regrowth; I will see in the fight."
+ },
+ {
+  "stage": 90,
+  "kind": "ending",
+  "ending": "complete",
+  "title": "The Guardian",
+  "journal": "The Guardian of the Root is dead, and its body holds the treasure of ages. A door stands at the far end of its hall. Beyond it lies the Root.",
+  "objectives": [],
+  "plan": {
+   "going": "The Guardian of the Root is dead, and its body holds the treasure of ages. A door stands at the far end of its hall. Beyond it lies the Root.",
+   "next": "nothing more in this quest; the next quests entry carries the step",
+   "ways": "none"
+  },
+  "answers": [
+   "The hydra is dead. Its body holds treasure, and a door leads to the Root where the Eye lies.",
+   "Loot the body, then go through the Door to The Root.",
+   "Take the treasure, enter the Root, then decide about the Eye: use in place or lift it, or consult the order.",
+   "Nothing new that I do not understand."
+  ],
+  "raw": "1. The hydra is dead. Its body holds treasure, and a door leads to the Root where the Eye lies. 2. Loot the body, then go through the Door to The Root. 3. Take the treasure, enter the Root, then decide about the Eye: use in place or lift it, or consult the order. 4. Nothing new that I do not understand."
+ }
+]

@@ -1,0 +1,103 @@
+{
+ "quest": "quest.main.mn14",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn14.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "guest",
+ "choose": null,
+ "know": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/know-mn13.md",
+ "created": "20261117T173527Z",
+ "stages": [
+  10,
+  20,
+  22,
+  90
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn04.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn05.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn06.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn07.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn08.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn09.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn10.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn11.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn12.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn13.yaml",
+   "ending": 91
+  }
+ ],
+ "milestones": 4,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I serve the Toh-Reel-Ka, secret warriors of the Xeech-Leel. We hunt the Eye of Argonia, an amber jewel at the Root under Teku-Sul Spire, which could heal the Hist trees. The Root is shut behind the Kings Gate, which needs three seal-stones. 2. Get into Blackrose Prison and take the dead thief seal-stone from the warden vault in the hall of the raj-kaal Okaz-Teel. First I must get past gate-captain Corvus Ulvius. 3. Pay 300 gold toll, persuade him with words, or duel him; or sneak over the walls unseen, or use force (but killing him means the whole Rose fights me). 4. I do not know exactly what the Root and Eye truly are, or who the Collector is. The Imperial buyer in the hall is unknown to me; I can ask around inside.",
+  "talk Corvus Ulvius",
+  "say 2",
+  "say 2 pass",
+  "answer 1. I paid the toll and am a guest of the Rose. The vault key is on raj-kaal Okaz-Teel in his hall. The Collector, Ennodius Vanin, is in the hall as a guest and wants what is in the vault. 2. Take the seal-stone from the Warden Vault in Okaz-Teel hall. 3. Buy the key for 1000 gold (I have about 1050), lift it from his belt, or pick the vault lock at night; a seen theft turns the garrison on me. 4. I do not know what Vanin ring of Kothringi silver does beyond helping locks and pockets, or what he is planning; I can talk to him and Okaz-Teel.",
+  "go Okaz-Teel",
+  "talk Okaz-Teel",
+  "say 2 pass",
+  "answer 1. I bought the vault key from Okaz-Teel for 1000 gold; he says the stone is mine. 2. Open the Warden Vault door in the hall and take the seal-stone from the Warden Chest. 3. Just use the key; Vanin the Collector is nearby and may object. 4. I still do not know who the Collector really is or what he wants.",
+  "use Door to Warden's Vault",
+  "use Warden's Chest",
+  "take Seal-Stone of the Kings",
+  "answer 1. I got the first seal-stone from Blackrose by paying the toll and buying the vault key. Two stones remain. 2. Go to Gemin (flooded vaults) and Vorannuhl (deepest hall), both marked. 3. Take either first; Gemin is flooded so I may need waterbreathing. 4. Still unknown: what the Root and Eye truly are, who the Collector Vanin serves.",
+  "answer Blackrose done: paid Corvus 300 gold toll, bought the warden vault key from Okaz-Teel for 1000 gold, took the Seal-Stone of the Kings from the Warden Chest. I have that stone, about 50 gold, rapier, lockpicks, 3 Grey Seals, 3 Unbound Seals, the other quest items and the Warden Vault Key. Two stones remain: Gemin (flooded vaults, may need waterbreathing) and Vorannuhl (deepest hall, worst); both marked. The Collector is Ennodius Vanin, who was in Okaz-Teel hall wanting the vault contents; his ring of Kothringi silver aids locks and pockets. Still unknown: what the Root and Eye truly are, Vanin real master, and Fort Chalkmoth cellar moaning is unchecked. Then take all three stones to the Kings Gate at Teku-Sul Spire off Lilmoth.",
+  "answer Blackrose done: paid Corvus 300 gold toll, bought the warden vault key from Okaz-Teel for 1000 gold, took the Seal-Stone of the Kings from the Warden Chest. I have that stone, about 50 gold, rapier, lockpicks, 3 Grey Seals, 3 Unbound Seals, the other quest items and the Warden Vault Key. Two stones remain: Gemin (flooded vaults, may need waterbreathing) and Vorannuhl (deepest hall, worst); both marked. The Collector is Ennodius Vanin, who was in Okaz-Teel hall wanting the vault contents; his ring of Kothringi silver aids locks and pockets. Still unknown: what the Root and Eye truly are, Vanin real master, and Fort Chalkmoth cellar moaning is unchecked. Then take all three stones to the Kings Gate at Teku-Sul Spire off Lilmoth."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.0727635,
+ "minutes": 0.7,
+ "turns": 16,
+ "tokens": {
+  "input_tokens": 28,
+  "output_tokens": 3073,
+  "cache_read_input_tokens": 94895,
+  "cache_creation_input_tokens": 8122
+ }
+}

@@ -1,0 +1,66 @@
+[
+ {
+  "stage": 10,
+  "kind": "start",
+  "ending": null,
+  "title": "The Deepest Hall",
+  "journal": "The third seal-stone lies in the vault of Vorannuhl's deep halls, behind a door of bronze. Sarpa raiders shelter in the outer yard, and one of them, Hesh-Var, carries the bronze key. I'm to get the key: lift it from him unseen, or kill him and take it.",
+  "objectives": [
+   "Get the Bronze Key of Vorannuhl from Hesh-Var in the outer yard. (marker: Hesh-Var, Vorannuhl)"
+  ],
+  "plan": {
+   "going": "I am hunting the third seal-stone, in Vorannuhl's deep vault, the hardest place of the hunt",
+   "next": "get the bronze key from Hesh-Var at the yard's fire",
+   "ways": "pickpocket it from him unseen (Sneak and Pickpocket), or fight the raiders and take it from his body (any fighting skill); the raiders shoot strangers"
+  },
+  "answers": [
+   "I work for the Toh-Reel-Ka as a Reel-Ka. I hold two Seal-Stones of the Kings (Blackrose and Gemin) and need the third, in the vault of Vorannuhl behind a bronze door. All three go into the gate at the drowned Teku-Sul Spire off Lilmoth.",
+   "Get the Bronze Key from Hesh-Var, a Sarpa raider in the outer yard of Vorannuhl, then open the Vault of the Household door.",
+   "Sneak and pickpocket the key from Hesh-Var, or kill him and take it. Sarpa raiders and Plague-Dead are also here. I favour sneaking and pickpocketing. I also have paralysis poison.",
+   "I do not fully understand why the Unbound seal trees, what moans in the Fort Chalkmoth cellar, or how Nesh-Deeka knows of the Unbound. I could find out by exploring and talking to people."
+  ],
+  "raw": "1. I work for the Toh-Reel-Ka as a Reel-Ka. I hold two Seal-Stones of the Kings (Blackrose and Gemin) and need the third, in the vault of Vorannuhl behind a bronze door. All three go into the gate at the drowned Teku-Sul Spire off Lilmoth. 2. Get the Bronze Key from Hesh-Var, a Sarpa raider in the outer yard of Vorannuhl, then open the Vault of the Household door. 3. Sneak and pickpocket the key from Hesh-Var, or kill him and take it. Sarpa raiders and Plague-Dead are also here. I favour sneaking and pickpocketing. I also have paralysis poison. 4. I do not fully understand why the Unbound seal trees, what moans in the Fort Chalkmoth cellar, or how Nesh-Deeka knows of the Unbound. I could find out by exploring and talking to people."
+ },
+ {
+  "stage": 20,
+  "kind": "stage",
+  "ending": null,
+  "title": "The Deepest Hall",
+  "journal": "I have the Bronze Key of Vorannuhl. The plague-dead of the old household walk the deep halls, and their lord, a wraith, guards the vault. I'm to go down, open the vault with the key and take the stone. I can fight, slip past or turn the dead with Restoration.",
+  "objectives": [
+   "Open the Vault of the Household with the bronze key and take the seal-stone. (marker: Door to Vault of the Household, Household's Hoard)"
+  ],
+  "plan": {
+   "going": "I hold the key; the stone is in the vault below",
+   "next": "go down, open the vault, take the stone",
+   "ways": "fight the plague-dead and the wraith-lord; sneak past them; turn them with Restoration"
+  },
+  "answers": [
+   "I stole the Bronze Key from Hesh-Var unseen. The plague-dead of the old household walk the deep halls and their wraith lord guards the vault holding the third seal-stone.",
+   "Go to the Door to the Vault of the Household here, open it with the key and take the seal-stone.",
+   "Fight the dead, slip past them by sneaking, or turn them with Restoration.",
+   "I do not know how strong the wraith lord is, nor what the Unbound want with the trees. I could learn more by exploring."
+  ],
+  "raw": "1. I stole the Bronze Key from Hesh-Var unseen. The plague-dead of the old household walk the deep halls and their wraith lord guards the vault holding the third seal-stone. 2. Go to the Door to the Vault of the Household here, open it with the key and take the seal-stone. 3. Fight the dead, slip past them by sneaking, or turn them with Restoration. 4. I do not know how strong the wraith lord is, nor what the Unbound want with the trees. I could learn more by exploring."
+ },
+ {
+  "stage": 93,
+  "kind": "ending",
+  "ending": "complete",
+  "title": "The Deepest Hall",
+  "journal": "I took the third seal-stone from the vault of Vorannuhl. I now carry all three seal-stones. I'm to bring them to Never-Writes-Twice in Nesh-Deeka's House in Helstrom.",
+  "objectives": [],
+  "plan": {
+   "going": "I took the third seal-stone from the vault of Vorannuhl. I now carry all three seal-stones. I'm to bring them to Never-Writes-Twice in Nesh-Deeka's House in Helstrom.",
+   "next": "nothing more in this quest; the next quests entry carries the step",
+   "ways": "none"
+  },
+  "answers": [
+   "I now carry all three Seal-Stones of the Kings, taken from Vorannuhl without fighting the wraith lord.",
+   "Bring them to Never-Writes-Twice in Nesh-Deeka's House in Helstrom.",
+   "Travel to Helstrom directly. I could also go to the Teku-Sul Spire gate, but the journal says to go to Never-Writes-Twice.",
+   "I still do not know why the Unbound seal trees, what moans in the Fort Chalkmoth cellar, or how Nesh-Deeka knows of the Unbound."
+  ],
+  "raw": "1. I now carry all three Seal-Stones of the Kings, taken from Vorannuhl without fighting the wraith lord. 2. Bring them to Never-Writes-Twice in Nesh-Deeka's House in Helstrom. 3. Travel to Helstrom directly. I could also go to the Teku-Sul Spire gate, but the journal says to go to Never-Writes-Twice. 4. I still do not know why the Unbound seal trees, what moans in the Fort Chalkmoth cellar, or how Nesh-Deeka knows of the Unbound."
+ }
+]

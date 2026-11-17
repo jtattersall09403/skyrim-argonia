@@ -1,0 +1,99 @@
+{
+ "quest": "quest.main.mn15",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn15.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "fight",
+ "choose": null,
+ "know": "/home/ubuntu/skyrim-argonia/.claude/worktrees/agent-a7ed3383f725be781/story/playtests/quest.main.mn14/20261117T171553Z-designed/notes.md",
+ "created": "20261117T171745Z",
+ "stages": [
+  10,
+  91
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn04.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn05.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn06.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn07.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn08.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn09.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn10.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn11.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn12.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn13.yaml",
+   "ending": 91
+  },
+  {
+   "record": "newworld/story/quests/main/mn14.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 2,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I work for the Toh-Reel-Ka as a Reel-Ka under Never-Writes-Twice. I am collecting three Seal-Stones of the Kings, which all go into the gate at the drowned Teku-Sul Spire off Lilmoth, leading to the Eye at the Root. I already have the first stone. The Unbound are also searching and the Collector, Ennodius Vanin, is a rival. 2. Go down into the flooded Vaults of Gemin, take the second seal-stone from the lowest hall, and read the Tablet of the Kings beside it. 3. Fight through the dead and Unbound, slip past them, or turn the dead with Restoration. I also have paralysis poison x3 to help against the wraith. 4. I do not understand why the Unbound seal trees and drain them, what moans in the Fort Chalkmoth cellar, or how Nesh-Deeka knows about the Unbound. The Tablet may tell me more; I can ask people.",
+  "look",
+  "fight Unbound Rearguard win",
+  "fight Restless Dead win",
+  "fight Warden of the Vaults win",
+  "take Seal-Stone of the Kings",
+  "read Tablet of the Kings",
+  "answer 1. I took the second seal-stone from Gemin. The tablet says the Eye, if lifted, parts every tree from every other, and if used where it sits, strengthens them. I hold two stones; one remains in the deepest hall of Vorannuhl. 2. Go to Vorannuhl (boat near Noota Nara) for the third stone, then take all three to the Teku-Sul Spire off Lilmoth. 3. I can fight or sneak through Vorannuhl; the tablet suggests a choice later between lifting the Eye or using it in place. 4. I still do not understand why the Unbound seal trees, what moans in the Fort Chalkmoth cellar, or how Nesh-Deeka knows about the Unbound. I can ask people and read further.",
+  "answer I work for the Toh-Reel-Ka as a Reel-Ka under Never-Writes-Twice. I now carry two Seal-Stones of the Kings (Blackrose and Gemin), plus about 350 gold, Eye-Setting, Keystone, 3 paralysis poison, sap jar, rapier, Reelka armour and Warden Vault Key. At Gemin I killed the Unbound rearguard, the restless dead and the warden. The tablet says the Eye, lifted, parts every tree from every other; used where it sits, it strengthens them. One stone remains in the deepest hall of Vorannuhl (boat near Noota Nara). All three go into the gate at the drowned Teku-Sul Spire off Lilmoth. Open questions: why the Unbound seal trees, what moans in the Fort Chalkmoth cellar and where its key is, how Nesh-Deeka knows about the Unbound. Rival: the Collector, Ennodius Vanin."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.043587100000000004,
+ "minutes": 0.4,
+ "turns": 10,
+ "tokens": {
+  "input_tokens": 18,
+  "output_tokens": 1870,
+  "cache_read_input_tokens": 43911,
+  "cache_creation_input_tokens": 5115
+ }
+}

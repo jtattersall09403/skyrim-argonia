@@ -1,0 +1,115 @@
+{
+ "quest": "quest.main.mn18",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn18.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": null,
+ "choose": null,
+ "know": "/home/ubuntu/skyrim-argonia/.claude/worktrees/agent-a7ed3383f725be781/story/playtests/quest.main.mn17/20261117T172405Z-designed/notes.md",
+ "created": "20261117T172837Z",
+ "stages": [
+  10,
+  15,
+  20,
+  90
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn04.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn05.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn06.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn07.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn08.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn09.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn10.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn11.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn12.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn13.yaml",
+   "ending": 91
+  },
+  {
+   "record": "newworld/story/quests/main/mn14.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn15.yaml",
+   "ending": 91
+  },
+  {
+   "record": "newworld/story/quests/main/mn16.yaml",
+   "ending": 93
+  },
+  {
+   "record": "newworld/story/quests/main/mn17.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 4,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I serve the Toh-Reel-Ka as Ka-Deelith. I hold three seal-stones and must open the Kings' Gate to reach the Root and the Eye of Argonia. 2. Set the three seal-stones in the Kings' Gate here at the sunken ruin. 3. Set the stones and go in; at the Eye I later choose between using it in place (heals every tree, dreams continue) or lifting it (ends dreams, about three in ten trees die, order breaks). Cuts-the-Old-Knot will fight the guardian beside me. 4. I do not know what the guardian truly is, or what is really in the Fort Chalkmoth cellar; Cuts' claims are unverified. I may learn by going on.",
+  "use The Kings' Gate",
+  "answer 1. The stones are set and the Kings' Gate is open. Beyond is the hall of the Root's guardian. 2. Go through the Kings' Gate. 3. Enter and face the guardian, with Cuts-the-Old-Knot beside me; the Eye choice comes later. 4. I still do not know what the guardian is; I will see it inside.",
+  "go The Kings' Gate",
+  "answer 1. Past the gate a hydra guards the hall. Its breath and the water are poison; when badly hurt its heads regrow, and severed heads crawl off and hunt. Cuts-the-Old-Knot fights with me. 2. Kill the Guardian of the Root in the hall. 3. Fight it with Cuts, use the pike and gear, possibly my poison items and careful play around the poison water; the Eye choice comes after. 4. Nothing new that I do not understand, except how to stop the heads regrowing; I will learn by fighting.",
+  "look",
+  "go Guardian of the Root",
+  "journal",
+  "fight Guardian of the Root win",
+  "answer 1. The hydra guardian is dead. Its body holds treasure, and a door at the hall's far end leads to the Root. 2. Loot the body if I wish, then go through the Door to The Root. 3. Take the treasure or not, then enter the Root and face the Eye choice: use it in place or lift it. 4. I do not know what is truly in the Fort Chalkmoth cellar or whether Cuts is honest; I may learn at the Root.",
+  "answer I set the three seal-stones in the Kings' Gate (they stay there) and it opened. With Cuts-the-Old-Knot I killed the hydra Guardian of the Root in Guardian's Hall. Its body holds treasure, which I have not looted. A door at the hall's far end leads to the Root and the Eye of Argonia. The final choice is still mine: use the Eye in place (heals every tree, dreams continue) or lift it (ends the dreams, about three in ten trees die, the order breaks). I promised Cuts nothing about the Eye. Her claims about the sap-fed dreamers in the Fort Chalkmoth cellar and Never-Writes-Twice lying are unverified. I carry Eye-Setting, Keystone, Grave-Stake, 3 Paralysis Poison, Sap-Jar, Order-Pike, Reelka armour, Rapier, Bronze Key, Bronze Disc, Parchment Map, Unbound-Note, 2 lockpicks, 1650 gold."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.0548863,
+ "minutes": 0.5,
+ "turns": 12,
+ "tokens": {
+  "input_tokens": 20,
+  "output_tokens": 2271,
+  "cache_read_input_tokens": 57243,
+  "cache_creation_input_tokens": 6603
+ }
+}

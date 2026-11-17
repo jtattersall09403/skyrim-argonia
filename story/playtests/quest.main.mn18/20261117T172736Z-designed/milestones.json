@@ -1,0 +1,88 @@
+[
+ {
+  "stage": 10,
+  "kind": "start",
+  "ending": null,
+  "title": "The Guardian",
+  "journal": "I'm to set the three seal-stones in the empty sockets of the Kings' Gate.",
+  "objectives": [
+   "Set the three seal-stones in the Kings' Gate. (marker: The Kings' Gate)"
+  ],
+  "plan": {
+   "going": "I stand before the gate with the three stones",
+   "next": "set them in the gate's sockets",
+   "ways": "none; the stones are the key"
+  },
+  "answers": [
+   "I serve the order of Toh-Reel-Ka as Ka-Deelith, under Never-Writes-Twice, who I have killed after Cuts-the-Old-Knot said she lied about sap-fed dreamers in Fort Chalkmoth cellar. I have not verified that. The three seal-stones must go in the Kings Gate.",
+   "Set the three seal-stones in the Kings Gate, here at the sunken ruin.",
+   "Set the stones, or not. Then the Eye choice: use it in place (heals trees but lets the order see through them) or lift it (ends dreams but kills about three in ten trees). Also the Fort Chalkmoth cellar and Ennodius Vanin are open.",
+   "I do not fully understand what the Eye really does or whether Cuts-the-Old-Knot told the truth; I could find out by investigating the fort cellar."
+  ],
+  "raw": "1. I serve the order of Toh-Reel-Ka as Ka-Deelith, under Never-Writes-Twice, who I have killed after Cuts-the-Old-Knot said she lied about sap-fed dreamers in Fort Chalkmoth cellar. I have not verified that. The three seal-stones must go in the Kings Gate. 2. Set the three seal-stones in the Kings Gate, here at the sunken ruin. 3. Set the stones, or not. Then the Eye choice: use it in place (heals trees but lets the order see through them) or lift it (ends dreams but kills about three in ten trees). Also the Fort Chalkmoth cellar and Ennodius Vanin are open. 4. I do not fully understand what the Eye really does or whether Cuts-the-Old-Knot told the truth; I could find out by investigating the fort cellar."
+ },
+ {
+  "stage": 15,
+  "kind": "stage",
+  "ending": null,
+  "title": "The Guardian",
+  "journal": "I set the three seal-stones in their sockets, and the Kings' Gate opened. The stones stay in the gate. Beyond it lies the hall of the Root's guardian. I'm to go through.",
+  "objectives": [
+   "Go through the Kings' Gate. (marker: The Kings' Gate)"
+  ],
+  "plan": {
+   "going": "the gate is open; the stones are in it",
+   "next": "go through",
+   "ways": "none"
+  },
+  "answers": [
+   "The stones are set and the Kings Gate is open; beyond is the hall of the Root guardian.",
+   "Go through the Kings Gate.",
+   "Go through, or leave; the Eye choice probably waits inside.",
+   "I do not know what the Root guardian is; I will find out by going in."
+  ],
+  "raw": "1. The stones are set and the Kings Gate is open; beyond is the hall of the Root guardian. 2. Go through the Kings Gate. 3. Go through, or leave; the Eye choice probably waits inside. 4. I do not know what the Root guardian is; I will find out by going in."
+ },
+ {
+  "stage": 21,
+  "kind": "stage",
+  "ending": null,
+  "title": "The Guardian",
+  "journal": "Beyond the gate a hydra, older than any king, guards the hall. Its breath and the water round it are poison. When it is badly hurt its heads grow back, and heads that come off crawl away and hunt the hall. I face it alone. I'm to kill it.",
+  "objectives": [
+   "Kill the Guardian of the Root. (marker: Guardian of the Root)"
+  ],
+  "plan": {
+   "going": "the guardian of the Root stands before me, and I am alone",
+   "next": "kill the guardian",
+   "ways": "fight it with any skill; cure its venom (potions, Restoration, the side quests' amulet and cures); cut down or burn the roaming heads"
+  },
+  "answers": [
+   "The gate is open and a poisonous hydra guards the Root hall; heads regrow when it is badly hurt and severed heads hunt me.",
+   "Kill the Guardian of the Root, inside the gate.",
+   "Fight it (I have the life-drinking pike, poison, rapier), or leave.",
+   "I do not know what the Root is exactly; I may learn inside."
+  ],
+  "raw": "1. The gate is open and a poisonous hydra guards the Root hall; heads regrow when it is badly hurt and severed heads hunt me. 2. Kill the Guardian of the Root, inside the gate. 3. Fight it (I have the life-drinking pike, poison, rapier), or leave. 4. I do not know what the Root is exactly; I may learn inside."
+ },
+ {
+  "stage": 90,
+  "kind": "ending",
+  "ending": "complete",
+  "title": "The Guardian",
+  "journal": "The Guardian of the Root is dead, and its body holds the treasure of ages. A door stands at the far end of its hall. Beyond it lies the Root.",
+  "objectives": [],
+  "plan": {
+   "going": "The Guardian of the Root is dead, and its body holds the treasure of ages. A door stands at the far end of its hall. Beyond it lies the Root.",
+   "next": "nothing more in this quest; the next quests entry carries the step",
+   "ways": "none"
+  },
+  "answers": [
+   "The hydra is dead; its body holds treasure; a door leads to the Root.",
+   "Loot the body, then go through the door to the Root.",
+   "Loot or not, go to the Root, where the Eye choice awaits.",
+   "Not sure what the Root holds; I will see."
+  ],
+  "raw": "1. The hydra is dead; its body holds treasure; a door leads to the Root. 2. Loot the body, then go through the door to the Root. 3. Loot or not, go to the Root, where the Eye choice awaits. 4. Not sure what the Root holds; I will see."
+ }
+]

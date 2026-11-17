@@ -1,0 +1,88 @@
+[
+ {
+  "stage": 10,
+  "kind": "start",
+  "ending": null,
+  "title": "The Guardian",
+  "journal": "Beyond the Kings' Gate lies the Root, where the roots of every Hist meet, and the Eye of Argonia, the old kings' jewel, sits there. I'm to set the three seal-stones in the empty sockets of the Kings' Gate.",
+  "objectives": [
+   "Set the three seal-stones in the Kings' Gate. (marker: The Kings' Gate)"
+  ],
+  "plan": {
+   "going": "Beyond the Kings' Gate lies the Root, where the roots of every Hist meet, and the Eye of Argonia, the old kings' jewel, sits there. I stand before the gate with the three stones",
+   "next": "set them in the gate's sockets",
+   "ways": "none; the stones are the key"
+  },
+  "answers": [
+   "I serve the Toh-Reel-Ka as Ka-Deelith. I hold three seal-stones and must open the Kings' Gate to reach the Root and the Eye of Argonia.",
+   "Set the three seal-stones in the Kings' Gate here at the sunken ruin.",
+   "Set the stones and go in; at the Eye I later choose between using it in place (heals every tree, dreams continue) or lifting it (ends dreams, about three in ten trees die, order breaks). Cuts-the-Old-Knot will fight the guardian beside me.",
+   "I do not know what the guardian truly is, or what is really in the Fort Chalkmoth cellar; Cuts' claims are unverified. I may learn by going on."
+  ],
+  "raw": "1. I serve the Toh-Reel-Ka as Ka-Deelith. I hold three seal-stones and must open the Kings' Gate to reach the Root and the Eye of Argonia. 2. Set the three seal-stones in the Kings' Gate here at the sunken ruin. 3. Set the stones and go in; at the Eye I later choose between using it in place (heals every tree, dreams continue) or lifting it (ends dreams, about three in ten trees die, order breaks). Cuts-the-Old-Knot will fight the guardian beside me. 4. I do not know what the guardian truly is, or what is really in the Fort Chalkmoth cellar; Cuts' claims are unverified. I may learn by going on."
+ },
+ {
+  "stage": 15,
+  "kind": "stage",
+  "ending": null,
+  "title": "The Guardian",
+  "journal": "I set the three seal-stones in their sockets, and the Kings' Gate opened. The stones stay in the gate. Beyond it lies the hall of the Root's guardian. I'm to go through.",
+  "objectives": [
+   "Go through the Kings' Gate. (marker: The Kings' Gate)"
+  ],
+  "plan": {
+   "going": "the gate is open; the stones are in it",
+   "next": "go through",
+   "ways": "none"
+  },
+  "answers": [
+   "The stones are set and the Kings' Gate is open. Beyond is the hall of the Root's guardian.",
+   "Go through the Kings' Gate.",
+   "Enter and face the guardian, with Cuts-the-Old-Knot beside me; the Eye choice comes later.",
+   "I still do not know what the guardian is; I will see it inside."
+  ],
+  "raw": "1. The stones are set and the Kings' Gate is open. Beyond is the hall of the Root's guardian. 2. Go through the Kings' Gate. 3. Enter and face the guardian, with Cuts-the-Old-Knot beside me; the Eye choice comes later. 4. I still do not know what the guardian is; I will see it inside."
+ },
+ {
+  "stage": 20,
+  "kind": "stage",
+  "ending": null,
+  "title": "The Guardian",
+  "journal": "Beyond the gate a hydra, older than any king, guards the hall. Its breath and the water round it are poison. When it is badly hurt its heads grow back, and heads that come off crawl away and hunt the hall. Cuts-the-Old-Knot stands with me. I'm to kill it.",
+  "objectives": [
+   "Kill the Guardian of the Root. (marker: Guardian of the Root)"
+  ],
+  "plan": {
+   "going": "the guardian of the Root stands before me; Cuts-the-Old-Knot fights beside me",
+   "next": "kill the guardian",
+   "ways": "fight it with any skill; cure its venom (potions, Restoration, the side quests' amulet and cures); cut down or burn the roaming heads; Cuts-the-Old-Knot fights as a battlemage at my side"
+  },
+  "answers": [
+   "Past the gate a hydra guards the hall. Its breath and the water are poison; when badly hurt its heads regrow, and severed heads crawl off and hunt. Cuts-the-Old-Knot fights with me.",
+   "Kill the Guardian of the Root in the hall.",
+   "Fight it with Cuts, use the pike and gear, possibly my poison items and careful play around the poison water; the Eye choice comes after.",
+   "Nothing new that I do not understand, except how to stop the heads regrowing; I will learn by fighting."
+  ],
+  "raw": "1. Past the gate a hydra guards the hall. Its breath and the water are poison; when badly hurt its heads regrow, and severed heads crawl off and hunt. Cuts-the-Old-Knot fights with me. 2. Kill the Guardian of the Root in the hall. 3. Fight it with Cuts, use the pike and gear, possibly my poison items and careful play around the poison water; the Eye choice comes after. 4. Nothing new that I do not understand, except how to stop the heads regrowing; I will learn by fighting."
+ },
+ {
+  "stage": 90,
+  "kind": "ending",
+  "ending": "complete",
+  "title": "The Guardian",
+  "journal": "The Guardian of the Root is dead, and its body holds the treasure of ages. A door stands at the far end of its hall. Beyond it lies the Root.",
+  "objectives": [],
+  "plan": {
+   "going": "The Guardian of the Root is dead, and its body holds the treasure of ages. A door stands at the far end of its hall. Beyond it lies the Root.",
+   "next": "nothing more in this quest; the next quests entry carries the step",
+   "ways": "none"
+  },
+  "answers": [
+   "The hydra guardian is dead. Its body holds treasure, and a door at the hall's far end leads to the Root.",
+   "Loot the body if I wish, then go through the Door to The Root.",
+   "Take the treasure or not, then enter the Root and face the Eye choice: use it in place or lift it.",
+   "I do not know what is truly in the Fort Chalkmoth cellar or whether Cuts is honest; I may learn at the Root."
+  ],
+  "raw": "1. The hydra guardian is dead. Its body holds treasure, and a door at the hall's far end leads to the Root. 2. Loot the body if I wish, then go through the Door to The Root. 3. Take the treasure or not, then enter the Root and face the Eye choice: use it in place or lift it. 4. I do not know what is truly in the Fort Chalkmoth cellar or whether Cuts is honest; I may learn at the Root."
+ }
+]

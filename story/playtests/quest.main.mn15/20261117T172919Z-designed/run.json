@@ -1,0 +1,98 @@
+{
+ "quest": "quest.main.mn15",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn15.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "turn",
+ "choose": null,
+ "know": "/home/ubuntu/skyrim-argonia/.claude/worktrees/agent-a7ed3383f725be781/story/playtests/quest.main.mn14/20261117T172405Z-designed/notes.md",
+ "created": "20261117T172919Z",
+ "stages": [
+  10,
+  91
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn04.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn05.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn06.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn07.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn08.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn09.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn10.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn11.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn12.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-d/mn13.yaml",
+   "ending": 91
+  },
+  {
+   "record": "newworld/story/quests/main/mn14.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 2,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I am seeking the Eye of Argonia, the priest-kings jewel at the Root under Teku-Sul Spire, which could heal every sick Hist tree. The Kings Gate needs three seal-stones; I already have the first and now need the second from the flooded lowest hall of the Vaults of Gemin. 2. Go down through the vaults at Gemin, take the Seal-Stone of the Kings from the drowned lowest hall, and read the Tablet of the Kings beside it. 3. Fight through the dead and the wraith, sneak past them, or turn the dead with Restoration. Unbound may be there too. 4. I do not know exactly what the Unbound want or why they drain trees, nor what the wraith or Warden of the Vaults is. I can ask the Warden and read the tablet.",
+  "look",
+  "talk Warden of the Vaults",
+  "read Tablet of the Kings",
+  "talk Unbound Rearguard",
+  "take Seal-Stone of the Kings",
+  "answer 1. I took the second seal-stone at Gemin. The tablet says the Eye, used where it sits at the Root, strengthens every tree, but lifted from its place it cuts every tree off from every other and the weak die alone. 2. Get the third stone from the deepest hall of Vorannuhl (boat, near Noota Nara), then take all three to the Kings Gate under Teku-Sul Spire via a dive from Bell Station. 3. I can go for Vorannuhl next; later at the Eye I must choose between using it in place (healing) and lifting it; the Unbound and the Collector are rivals. 4. I do not know why the Unbound drain trees, whether they want to lift the Eye, or what is in the Fort Chalkmoth cellar. I could ask Nesh-Deeka and explore.",
+  "answer I now hold two seal-stones: Blackrose and Gemin (taken from the drowned hall; nobody there would talk, and I did not need to fight). About 350 gold, Reel-Ka armour, rapier, 2 lockpicks, 3 paralysis poisons, sap jar, keystone, eye-setting. The Gemin tablet says: the Eye used in place at the Root strengthens every tree; lifted from its place it cuts every tree off from every other and the weak die alone. The king sealed it so no one hand could do either alone. Still needed: third stone from the deepest hall of Vorannuhl (boat, near Noota Nara). Then the Kings Gate under Teku-Sul Spire (dive from Bell Station). Rivals: the Unbound (who drain trees) and the Collector Ennodius Vanin at Blackrose. Open: why the Unbound drain trees, what moans in the Fort Chalkmoth cellar, how Nesh-Deeka knows about the Unbound. Do not lift the Eye."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.0456081,
+ "minutes": 0.5,
+ "turns": 9,
+ "tokens": {
+  "input_tokens": 18,
+  "output_tokens": 1977,
+  "cache_read_input_tokens": 45261,
+  "cache_creation_input_tokens": 5319
+ }
+}

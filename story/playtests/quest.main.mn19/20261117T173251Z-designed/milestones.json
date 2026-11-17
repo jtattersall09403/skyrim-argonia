@@ -1,0 +1,88 @@
+[
+ {
+  "stage": 10,
+  "kind": "start",
+  "ending": null,
+  "title": "The Eye",
+  "journal": "The Root is where the roots of every Hist meet. The Eye of Argonia, the old kings' jewel, sits among them: used where it sits, it heals every tree; lifted, it parts them for good. Beyond the guardian's hall lies the Root, where the roots of every Hist meet, and the Eye of Argonia sits among them. I'm to go to the Eye and decide what to do with it.",
+  "objectives": [
+   "Go to the Eye of Argonia in the Root's chamber. (marker: The Eye of Argonia)"
+  ],
+  "plan": {
+   "going": "The Root is where the roots of every Hist meet. The Eye of Argonia, the old kings' jewel, sits among them: used where it sits, it heals every tree; lifted, it parts them for good. the guardian is dead; the Eye is through the far door",
+   "next": "go to the Eye",
+   "ways": "I already know the choice: use it as the order ordered, take it, or (if Cuts-the-Old-Knot lives) let her lift it"
+  },
+  "answers": [
+   "I opened the Kings Gate with the three seal-stones and killed the hydra Guardian of the Root with Cuts-the-Old-Knot. The Eye of Argonia, the old kings jewel, lies in the Root where all Hist roots meet. I must decide what to do with it.",
+   "Go through the door at the far end of Guardians Hall to the Root and the Eye of Argonia (marker). I could also loot the hydra body first.",
+   "Use the Eye in place (heals every tree, dreams continue) which I intend to do, or lift it (ends dreams, about three in ten trees die, order breaks).",
+   "I do not know whether Cuts claims about the Fort Chalkmoth cellar dreamers or Never-Writes-Twice are true; I could not verify them yet."
+  ],
+  "raw": "1. I opened the Kings Gate with the three seal-stones and killed the hydra Guardian of the Root with Cuts-the-Old-Knot. The Eye of Argonia, the old kings jewel, lies in the Root where all Hist roots meet. I must decide what to do with it. 2. Go through the door at the far end of Guardians Hall to the Root and the Eye of Argonia (marker). I could also loot the hydra body first. 3. Use the Eye in place (heals every tree, dreams continue) which I intend to do, or lift it (ends dreams, about three in ten trees die, order breaks). 4. I do not know whether Cuts claims about the Fort Chalkmoth cellar dreamers or Never-Writes-Twice are true; I could not verify them yet."
+ },
+ {
+  "stage": 20,
+  "kind": "stage",
+  "ending": null,
+  "title": "The Eye",
+  "journal": "I laid my hand on the Eye of Argonia. I'm to choose what to do with it.",
+  "objectives": [
+   "Choose what to do with the Eye of Argonia. (marker: The Eye of Argonia)"
+  ],
+  "plan": {
+   "going": "the choice is in front of me on the message box",
+   "next": "choose",
+   "ways": "use (heals all trees; the order's rule made fast; Cuts-the-Old-Knot dies; I get Toh-Nassa, a keep, training, stronger blessings; the Unbound hunt me); take (trees part, three in ten die, dreams end; I get the Eye and the Unbound's highest rank; the order hunts me; no more blessings); give (the same parting; she keeps the Eye; I get her as an ally, her spells and the Karsh-Naal longhouse)"
+  },
+  "answers": [
+   "I touched the Eye in the Root; I must now choose its fate. Using it heals every tree and keeps the order and dreams, but Cuts-the-Old-Knot will die from the sap. Taking or giving it parts the trees and kills about three in ten with their villages.",
+   "Choose a button here at the Eye.",
+   "Use the Eye, Take the Eye, or Give it to Cuts. I mean to Use it.",
+   "I do not know if the order is good or whether Cuts claims were true; I cannot verify that here."
+  ],
+  "raw": "1. I touched the Eye in the Root; I must now choose its fate. Using it heals every tree and keeps the order and dreams, but Cuts-the-Old-Knot will die from the sap. Taking or giving it parts the trees and kills about three in ten with their villages. 2. Choose a button here at the Eye. 3. Use the Eye, Take the Eye, or Give it to Cuts. I mean to Use it. 4. I do not know if the order is good or whether Cuts claims were true; I cannot verify that here."
+ },
+ {
+  "stage": 30,
+  "kind": "stage",
+  "ending": null,
+  "title": "The Eye",
+  "journal": "I used the Eye where it sits. I saw the trees of the marsh heal, every one. Cuts-the-Old-Knot died of it in the guardian's hall: the sap she drank carried the Eye's power through her. The Kings' Gate gave the three stones back to me as it closed. I'm to bring them to Never-Writes-Twice in Nesh-Deeka's House in Helstrom.",
+  "objectives": [
+   "Bring the three seal-stones to Never-Writes-Twice in Nesh-Deeka's House, Helstrom. (marker: Never-Writes-Twice)"
+  ],
+  "plan": {
+   "going": "I healed every tree; the order's dreamers see through them again; the Unbound will now attack me on sight",
+   "next": "bring the stones to Never-Writes-Twice in Helstrom for the order's highest rank",
+   "ways": "none; the hand-in is the step"
+  },
+  "answers": [
+   "I used the Eye in place: every tree healed, the dreams continue and the Xeech-Leel rule is secure. Cuts-the-Old-Knot died from the sap. The gate returned the three seal-stones. Unbound is now hostile to me.",
+   "Bring the three seal-stones to Never-Writes-Twice in Nesh-Deeka House, Helstrom.",
+   "Deliver them as asked, or keep them; I intend to deliver.",
+   "I do not know why Unbound turned hostile, or whether Never-Writes-Twice can be trusted; I would find out by talking to her."
+  ],
+  "raw": "1. I used the Eye in place: every tree healed, the dreams continue and the Xeech-Leel rule is secure. Cuts-the-Old-Knot died from the sap. The gate returned the three seal-stones. Unbound is now hostile to me. 2. Bring the three seal-stones to Never-Writes-Twice in Nesh-Deeka House, Helstrom. 3. Deliver them as asked, or keep them; I intend to deliver. 4. I do not know why Unbound turned hostile, or whether Never-Writes-Twice can be trusted; I would find out by talking to her."
+ },
+ {
+  "stage": 90,
+  "kind": "ending",
+  "ending": "complete",
+  "title": "The Eye",
+  "journal": "I gave the three seal-stones to Never-Writes-Twice. She made me Toh-Nassa, Leader of the Secret, and gave me the keep of Fort Chalkmoth for my house. The dreamers sleep in the cellar beneath it.",
+  "objectives": [],
+  "plan": {
+   "going": "I gave the three seal-stones to Never-Writes-Twice. She made me Toh-Nassa, Leader of the Secret, and gave me the keep of Fort Chalkmoth for my house. The dreamers sleep in the cellar beneath it.",
+   "next": "nothing more in this quest; the next quests entry carries the step",
+   "ways": "none"
+  },
+  "answers": [
+   "The quest is done: I used the Eye in place, healing every tree. Cuts-the-Old-Knot died. I gave the stones to Never-Writes-Twice, who made me Toh-Nassa, Leader of the Secret, and gave me the keep of Fort Chalkmoth.",
+   "Nothing required; I could visit the keep, its smith and trainer.",
+   "Go to Fort Chalkmoth, use the free training, or look at the cellar dreamers.",
+   "I still do not know whether Cuts claims about the dreamers were true, nor why Unbound became hostile."
+  ],
+  "raw": "1. The quest is done: I used the Eye in place, healing every tree. Cuts-the-Old-Knot died. I gave the stones to Never-Writes-Twice, who made me Toh-Nassa, Leader of the Secret, and gave me the keep of Fort Chalkmoth. 2. Nothing required; I could visit the keep, its smith and trainer. 3. Go to Fort Chalkmoth, use the free training, or look at the cellar dreamers. 4. I still do not know whether Cuts claims about the dreamers were true, nor why Unbound became hostile."
+ }
+]
