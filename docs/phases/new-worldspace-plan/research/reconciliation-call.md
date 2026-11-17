@@ -114,7 +114,10 @@ stays sealed: the novices train at Ra'tal Den, not in the school. The Brotherhoo
 Cyrodiil", not the Empire's. Cost: three lines in the thieves' page, one in the Shadowscales' page, and a short
 paragraph in each on the Toh-Reel-Ka.
 
-## 4. The Lamps (detectives) and the Twin Lamps (Chainbreakers)
+## 4. The Lamps (detectives) and the Twin Lamps (Chainbreakers): decided, no answer needed
+
+You settled this on the names call (#74): the detectives are the Lampbearers, and the Chainbreakers see themselves
+as the more militant successors of the Twin Lamps. The rest of this item is kept only as the record of why.
 
 **What the plots say.** The detectives of Soulrest are "the Lamps", with ranks Wick, Flame, Lantern and Beacon and a
 reward called the Lamp (`lamps.md:111-115`, `:152-156`). The Chainbreakers now descend from Morrowind's Twin
@@ -276,11 +279,17 @@ Unbound".
 
 **Recommendation:** nothing to change beyond your answer on the names call.
 
+## What happens until you answer
+
+The faction plots are being rewritten today to your notes of 17 November. So that they are not written twice, the
+writers use each recommendation above as a working default. Any item you answer differently is then a text change
+to the pages it names.
+
 ## How to reply
 
 Reply on this issue with one entry per item, by its number and a letter: for example "1a, 2c, 3b, 4a, 5a, 6b, 7a,
 8a, 9a, 10 yes, 11a, 12a". "Yes" takes my recommendation for that item; "all yes" takes them all. Write your own
-answer for any item if none of the options is right. Nothing in the plots changes until you reply.
+answer for any item if none of the options is right.
 
 **Cost.** Everything here is still text on plot pages. Taking all my recommendations is about three hours of agent
 time in all, and a republish of the story explorer. Once quests are built, each change would cost a rebuild of the
