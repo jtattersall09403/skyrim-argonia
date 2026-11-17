@@ -4,12 +4,12 @@
 PY := $(firstword $(wildcard $(HOME)/.argonia/venv/bin/python) python3)
 RUFF := $(firstword $(wildcard $(HOME)/.argonia/venv/bin/ruff) $(shell command -v ruff) python3 -m ruff)
 
-.PHONY: storyexplorer check check-all guard lint unit adaptation questtext questform reach hooks deploy plugin plugin-check plugin-seed map
+.PHONY: atlas storyexplorer check check-all guard lint unit adaptation questtext questform reach hooks deploy plugin plugin-check plugin-seed map
 
 check:
 	@GATE_PY=$(PY) $(PY) tooling/gate.py run $(if $(GATE_BASE),--base $(GATE_BASE)) $(GATE_PATHS)
 
-check-all: guard lint unit adaptation questtext questform reach storyexplorer
+check-all: guard lint unit adaptation questtext questform reach storyexplorer atlas
 	@echo "CHECK GREEN (all)"
 
 guard:
@@ -43,6 +43,10 @@ reach:
 # The owner's story explorer is published from the current story sources (tools/newworld/story_explorer.py).
 storyexplorer:
 	@$(PY) -m tools.newworld.story_explorer check
+
+# The Atlas (the map page) is published from the current place records (tools/newworld/atlas_state.py).
+atlas:
+	@python3 -m tools.newworld.atlas_state check
 
 hooks:
 	@bash tooling/guards/install_hooks.sh

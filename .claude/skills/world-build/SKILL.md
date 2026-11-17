@@ -209,7 +209,8 @@ stale beyond this build. The order keeps every long job on a world file that can
    `newworld/story/data/db/`, and `newworld/sources/world_formids.json` after a run that added form ids) with the
    change that caused them.
 2. Republish the Atlas when the terrain or the water changed: `python3 -m tools.newworld.map_page`, then publish
-   `out/newworld/map/index.html` to the Atlas's own link (`tools/newworld/water_overrides_pull.py` names it). The
+   `out/newworld/map/index.html` to the url in `tools/newworld/atlas.json`, then
+   `python3 -m tools.newworld.atlas_state mark-published`. The
    page names the terrain build it shows (its id, date and heightmap checksum, with the height under the pointer)
    and the builder refuses a heightmap that is not that build's own.
 3. Prove the world file settled: `tools/newworld/rebuild.sh settled` exits 0 when the main tree is level with

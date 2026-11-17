@@ -1,6 +1,6 @@
 """The owner's water edits, from the atlas's shared database into the build's source files.
 
-The atlas (https://claude.ai/artifact/SwMRMPndRrXfEKtTuodNsb, built by tools/newworld/map_page.py) keeps two
+The atlas (the url in tools/newworld/atlas.json, built by tools/newworld/map_page.py) keeps two
 collections: `water_edits` (one document per body id: kind, flows, flow_deg, speed, name, and point, a map pixel inside the body
 that finds it again after a terrain rebuild changes ids) and `water_paint` (one
 document per painted stroke: kind, flows, radius_px, pts as a flat [x, y, ...] list in map pixels).

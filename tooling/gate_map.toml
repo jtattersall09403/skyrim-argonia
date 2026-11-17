@@ -30,6 +30,7 @@ questtext = "tools.argonia_world.quest_text_check"
 questform = "tools.questform.__main__"
 reach = "tools.playtest.__main__"
 storyexplorer = "tools.newworld.story_explorer"
+atlas = "tools.newworld.atlas_state"
 
 # Story design and the docs: the explorer and the story tests read them.
 [[rule]]
@@ -112,3 +113,11 @@ globs = ["tools/*", "tooling/*", ".claude/*", "infra/*", "mods/*", ".github/*"]
 # Top-level prose and licences.
 [[rule]]
 globs = ["README.md", "CLAUDE.md", "LICENSE*", ".gitignore"]
+
+# The Atlas: the place and region tables and the page it shows them in.
+[[rule]]
+globs = ["story/data/db/place*", "story/data/db/region*", "story/data/db/source_place*", "story/data/db/road*",
+         "story/data/db/border_vertex*", "story/data/db/cell.jsonl", "story/data/db/culture.jsonl",
+         "story/data/db/symbol.jsonl", "tools/newworld/map_page.*", "tools/newworld/atlas*"]
+stages = ["atlas"]
+tests = ["tools/tests/test_newworld_atlas_state.py"]
