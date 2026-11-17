@@ -32,20 +32,27 @@ def dry(home: Path, tag: str, marker=False, owed=False) -> dict:
             p.unlink(missing_ok=True)
     env = {k: v for k, v in os.environ.items() if k != "JOBS_DIR"} | {"HOME": str(home), "STUDIO_TAG": tag}
     out = subprocess.run(["bash", str(RESUME), "--dry"], env=env, capture_output=True, text=True, timeout=120).stdout
-    return dict(line.split(": ", 1) for line in out.splitlines() if line.startswith(("start: ", "mode: ")))
+    return dict(line.split(": ", 1) for line in out.splitlines() if line.startswith(("start: ", "mode: ", "lanes: ")))
 
 
 def test_a_studio_start_never_resumes(tmp_path):
     # no marker and no sign of an idle stop: work was live, so an agent start resumes it
-    assert dry(tmp_path, "") == {"start": "agent", "mode": "resume"}
+    assert dry(tmp_path, "") == {"start": "agent", "mode": "resume", "lanes": "on"}
     # the same boot started by the studio's address: Claude waits at its prompt
-    assert dry(tmp_path, boot_utc(0.5)) == {"start": "studio", "mode": "idle"}
+    assert dry(tmp_path, boot_utc(0.5)) == {"start": "studio", "mode": "idle", "lanes": "off"}
     # a tag from an earlier start is not this boot's
-    assert dry(tmp_path, boot_utc(120)) == {"start": "agent", "mode": "resume"}
-    assert dry(tmp_path, "None") == {"start": "agent", "mode": "resume"}
+    assert dry(tmp_path, boot_utc(120)) == {"start": "agent", "mode": "resume", "lanes": "on"}
+    assert dry(tmp_path, "None") == {"start": "agent", "mode": "resume", "lanes": "on"}
 
 
 def test_the_owed_resume_waits_for_an_agent_start(tmp_path):
-    assert dry(tmp_path, boot_utc(1), marker=True, owed=True) == {"start": "studio", "mode": "idle"}
-    assert dry(tmp_path, "", marker=True, owed=True) == {"start": "agent", "mode": "resume"}
-    assert dry(tmp_path, "", marker=True) == {"start": "agent", "mode": "idle"}
+    assert dry(tmp_path, boot_utc(1), marker=True, owed=True) == {"start": "studio", "mode": "idle", "lanes": "off"}
+    assert dry(tmp_path, "", marker=True, owed=True) == {"start": "agent", "mode": "resume", "lanes": "on"}
+    assert dry(tmp_path, "", marker=True) == {"start": "agent", "mode": "idle", "lanes": "off"}
+
+
+def test_a_wake_reopens_no_lanes():
+    # an owner reply is read by one session: only a resume brings back the parallel lanes
+    src = RESUME.read_text()
+    assert 'lanes=off; [ "$mode" = resume ] && lanes=on' in src
+    assert 'if [ "$lanes" = on ]; then' in src

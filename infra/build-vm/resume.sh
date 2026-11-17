@@ -105,15 +105,18 @@ case "$mode" in
   wake)   cmd="$CLAUDE --continue \"\$(cat infra/build-vm/prompts/wake.md)\" || $CLAUDE \"\$(cat infra/build-vm/prompts/wake.md)\"" ;;
   idle)   cmd="$CLAUDE" ;;
 esac
-if [ $DRY = 1 ]; then echo "start: $start"; echo "mode: $mode"; exit 0; fi
+# Lanes come back only on a resume: an owner reply (wake) is one reader's work, and reopening every recent session
+# for it woke two agents on one reply (#76, 2026-11-17).
+lanes=off; [ "$mode" = resume ] && lanes=on
+if [ $DRY = 1 ]; then echo "start: $start"; echo "mode: $mode"; echo "lanes: $lanes"; exit 0; fi
 printf '%s %s %s\n' "$(date -u +%FT%TZ)" "$mode" "$start" >> "$STATE/boots.log"
 logger -t argonia-resume "boot mode: $mode ($start start)"
 tmux new-session -d -s argonia -c "$REPO" "bash -lc '$cmd; exec bash'"
 
-# Parallel lanes (owner, 2026-10-29): --continue resumes only the newest session. Every other session that wrote
-# its transcript within 30 minutes of the newest was working too; each gets its own window and the same prompt.
-if [ "$mode" != idle ]; then
-  prompt=infra/build-vm/prompts/$([ "$mode" = wake ] && echo wake || echo resume).md
+# Parallel lanes (owner, 2026-10-29): --continue resumes only the newest session. On a resume, every other session
+# that wrote its transcript within 30 minutes of the newest was working too; each gets its own window.
+if [ "$lanes" = on ]; then
+  prompt=infra/build-vm/prompts/resume.md
   dir="$HOME/.claude/projects/$(echo "$REPO" | tr '/' '-')"
   newest=$(ls -t "$dir"/*.jsonl 2>/dev/null | head -1)
   [ -n "$newest" ] && find "$dir" -maxdepth 1 -name '*.jsonl' ! -path "$newest" -newermt "$(date -u -d "$(stat -c %y "$newest") - 30 min" +%FT%TZ)" |
