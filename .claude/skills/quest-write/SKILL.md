@@ -179,7 +179,22 @@ into the stage's `information` (quest-record.md §1) and the quest's `terms`:
    open to the end of the line wherever their speaker stands.
 6. **Hand over between quests.** The last stage says where the next quest starts and why, with a marker on the
    person or place; a report back is written out as the lines that say what the handler makes of the find and where
-   the player goes next.
+   the player goes next. An ending also says what it has closed (a trader who will no longer deal, a door shut).
+7. **Keep the line's centre in view.** Players forget across a long line. Each quest's first entry names who the
+   player works for and glosses, in one plain clause each, the line's aim and the central things it turns on (in the
+   main quest the Eye of Argonia and the Root); each report line does the same; a topic with the line's handler
+   restates the whole aim and stays open to the end. Never in every entry: a thing is explained once where it
+   matters. A late quest that turns on something told long before (a twist on the rulers' history) glosses it
+   again where it is used.
+8. **Make every step reachable from what the player does there.**
+   - A stage moves on any line the player could pick to do the step (every way to talk a guard round), and a report
+     line moves the stage itself; never on a reply the player may not choose.
+   - A thing the player is to look at, not carry off, moves the stage by use or read; a thing to take is a thing,
+     and a container is `kind: container`, so nobody walks off with the chest.
+   - A person who stands in a room comes with the door to that room (its `placeName` the room's name), in every
+     quest that sends the player there.
+   - The journal names the person each objective marks, and before any choice says what each answer gives and
+     costs.
 
 ## 4. Write the record in order
 

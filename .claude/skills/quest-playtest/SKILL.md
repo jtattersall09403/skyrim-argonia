@@ -35,7 +35,12 @@ grade sets the player's answers beside it:
 - **Miss**: a point of the plan they do not have, a wrong belief, a next step they cannot name, a way through they
   did not see, or a term with no way to learn it.
 
-A run **passes** when every milestone on the way it played passes. The quest passes when a run passes on each way
+A player who cannot say what the line's central things are (in the main quest, the Eye of Argonia and the Root)
+or whom they work for misses, whatever the stage's plan says. A question the plot keeps open on purpose (why the
+Unbound seal the trees, what the Eye truly does) is no miss when the player names it as open.
+
+A run **passes** when every milestone on the way it played passes; a run that only completes has not passed until
+each milestone is graded. The quest passes when a run passes on each way
 through and at each choice (section 3).
 
 ## 2. The three moments
