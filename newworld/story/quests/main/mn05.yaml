@@ -6,67 +6,103 @@ line: quest.line.main
 group: main
 tier: 0
 status: concept
-shapes: [THEFT, NEGOTIATION]
+shapes:
+- THEFT
+- NEGOTIATION
 region: murkwood
 settlement: helstrom
-anchorPlaces: [helstrom]
-premise: In Helstrom the order's handler hears what the player found, has them win a jar of stolen sap off an Unbound
-  go-between, makes them a Voh-Vastei and sends them after an "Eye of Argonia" for sale in Gideon.
+anchorPlaces:
+- helstrom
+premise: In Helstrom the order's handler hears what the player found, has them win a jar of stolen sap off an Unbound go-between,
+  makes them a Voh-Vastei and sends them after an "Eye of Argonia" for sale in Gideon.
 costTier: M
 milestone: 1
 touches:
-- {id: npc.mn.nesh-deeka, access: write}
-- {id: npc.mn.keel-raa, access: write}
-- {id: npc.mn.cheeval-xu, access: read}
-- {id: door.mn.nesh-deeka-house, access: write}
-- {id: thing.mn.stolen-sap-jar, access: write}
-- {id: faction.toh-reel-ka, access: write}
-- {id: faction.mn05.keel-raa-hands, access: write}
-- {id: flag.main.thread-severed, access: write}
-- {id: topic.mn-eye-of-argonia, access: write}
-- {id: topic.mn-the-root, access: write}
-- {id: topic.mn-ranks, access: write}
-- {id: topic.mn-order-history, access: write}
-sources: [story/design/quests/lines/main-plot.md §3 §4 §5 quest 5 and the rank table §9]
-essentialTopics: [topic.mn05-report, topic.mn05-draught, topic.mn05-give-jar, topic.mn05-buy]
+- id: npc.mn.nesh-deeka
+  access: write
+- id: npc.mn.keel-raa
+  access: write
+- id: npc.mn.cheeval-xu
+  access: read
+- id: door.mn.nesh-deeka-house
+  access: write
+- id: thing.mn.stolen-sap-jar
+  access: write
+- id: faction.toh-reel-ka
+  access: write
+- id: faction.mn05.keel-raa-hands
+  access: write
+- id: flag.main.thread-severed
+  access: write
+- id: topic.mn-eye-of-argonia
+  access: write
+- id: topic.mn-the-root
+  access: write
+- id: topic.mn-ranks
+  access: write
+- id: topic.mn-order-history
+  access: write
+sources:
+- story/design/quests/lines/main-plot.md §3 §4 §5 quest 5 and the rank table §9
+essentialTopics:
+- topic.mn05-report
+- topic.mn05-draught
+- topic.mn05-give-jar
+- topic.mn05-buy
 startWhen:
-  questStage: [quest.main.mn04, '=', 90]
+  questStage:
+  - quest.main.mn04
+  - '='
+  - 90
 start: 10
 recordStatus: design
 foundation: 'Built from main-plot.md §5 quest 5 and the rank table. The player rides the rootworm from Jal-Veesa''s pool
-  (the travel network''s fare line, 25 gold) to Helstrom''s city tree, where Cheeval-Xu works the rootworm, and finds
-  Nesh-Deeka''s House, one of the city''s one-room Argonian houses, its door showing her name. Nesh-Deeka hears the
-  report and tells the player what the Eye of Argonia is and where it lies; the player says what the draught must be
-  for and she agrees. To prove the player she sends them for a jar of stolen sap carried by Keel-Raa, an Unbound go-between
-  who lodges at the Boatmen''s Lodge (Helstrom''s inn, a ship''s hold interior kept by Sleeps-Last) with two hired men
-  beside him, none hostile, in a band of ours whose members'' wrongs Helstrom''s levy does not punish (Skyrim''s flag that
-  reports no crimes against its members). The player lifts the jar from his pack (Pickpocket), buys it for 100 gold,
-  or fights the three for it. On the jar''s hand-in Nesh-Deeka makes the player a Voh-Vastei (the rank, Sign of Cipactli''s
-  light Argonian armour under our name, the order''s traders and 200 gold), gives the order''s aim and her one lead,
-  an "Eye of Argonia" for sale in Gideon, by the rootworm from Helstrom''s city tree: stage 90, which starts MN06. The
-  rank is given at the end, after the test (the rank table: "given after quest 5").'
+  (the travel network''s fare line, 25 gold) to Helstrom''s city tree, where Cheeval-Xu works the rootworm, and finds Nesh-Deeka''s
+  House, one of the city''s one-room Argonian houses, its door showing her name. Nesh-Deeka hears the report and tells the
+  player what the Eye of Argonia is and where it lies; the player says what the draught must be for and she agrees. To prove
+  the player she sends them for a jar of stolen sap carried by Keel-Raa, an Unbound go-between who lodges at the Boatmen''s
+  Lodge (Helstrom''s inn, a ship''s hold interior kept by Sleeps-Last) with two hired men beside him, none hostile, in a
+  band of ours whose members'' wrongs Helstrom''s levy does not punish (Skyrim''s flag that reports no crimes against its
+  members). The player lifts the jar from his pack (Pickpocket), buys it for 100 gold, or fights the three for it. On the
+  jar''s hand-in Nesh-Deeka makes the player a Voh-Vastei (the rank, Sign of Cipactli''s light Argonian armour under our
+  name, the order''s traders and 200 gold), gives the order''s aim and her one lead, an "Eye of Argonia" for sale in Gideon,
+  by the rootworm from Helstrom''s city tree: stage 90, which starts MN06. The rank is given at the end, after the test
+  (the rank table: "given after quest 5").'
 recordSources:
   place: helstrom (place card --mined, 2026-11-17; newworld/places/helstrom people.jsonl for Sleeps-Last and Cheeval-Xu;
     the lead's ruling of 2026-11-17 on the house and the lodge)
-  lore: ['story/lore/extrapolation/argonia-4e201-state.md §1, §2.5 (ranks), Helstrom', story/lore/topics/hist-and-sap.md
-      (line 154, amber), story/lore/topics/umbriel.md]
+  lore:
+  - story/lore/extrapolation/argonia-4e201-state.md §1, §2.5 (ranks), Helstrom
+  - story/lore/topics/hist-and-sap.md (line 154
+  - amber)
+  - story/lore/topics/umbriel.md
 centrepiece: ACQUIRE
 actionPlan:
-- {skill: Pickpocket, use: pickpocket, reason: the jar is in Keel-Raa's pack}
-- {skill: One-Handed, use: fight-people, reason: Keel-Raa and two hired men; attacking his band is no crime}
-- {skill: Destruction, use: fight-people, reason: the same fight in a cramped hold}
-- {skill: Archery, use: fight-people, reason: the hold's length gives a few shots}
+- skill: Pickpocket
+  use: pickpocket
+  reason: the jar is in Keel-Raa's pack
+- skill: One-Handed
+  use: fight-people
+  reason: Keel-Raa and two hired men; attacking his band is no crime
+- skill: Destruction
+  use: fight-people
+  reason: the same fight in a cramped hold
+- skill: Archery
+  use: fight-people
+  reason: the hold's length gives a few shots
 truth:
 - id: t1
   when: four days before
-  who: [npc.mn.keel-raa]
+  who:
+  - npc.mn.keel-raa
   where: Helstrom
-  what: Keel-Raa, a tribeless Argonian who carries sap between the Unbound's crews and buyers, came to Helstrom with a
-    jar of stolen sap in his pack and two hired men, Varus Atrius and Ah-Meesei, and took a room at the Boatmen's Lodge
-    to wait for a buyer. His band pays the levy to look away.
+  what: Keel-Raa, a tribeless Argonian who carries sap between the Unbound's crews and buyers, came to Helstrom with a jar
+    of stolen sap in his pack and two hired men, Varus Atrius and Ah-Meesei, and took a room at the Boatmen's Lodge to wait
+    for a buyer. His band pays the levy to look away.
 - id: t2
   when: unknown
-  who: [npc.mn.nesh-deeka]
+  who:
+  - npc.mn.nesh-deeka
   where: Nesh-Deeka's House
   what: Nesh-Deeka knows Keel-Raa is in the city and what he carries. (She learns such things from the order's dreamers;
     she says only "we listen".)
@@ -77,48 +113,96 @@ truth:
   what: The old priest-kings cut the Eye of Argonia from Hist amber and set it at the Root, the place under the sea where
     the roots of every Hist meet, behind a gate the last king sealed. No living diver has found it.
 facts:
-- {id: fact.mn05.eye, claim: 'The Eye of Argonia is the lost jewel of the old priest-kings, cut from Hist amber, the
-    solid sap the trees no longer make. It lies at the Root, where the roots of every Hist meet under the sea, behind
-    a gate the old kings sealed, in a place no living diver has found.', from: t3}
-- {id: fact.mn05.draught, claim: 'Cuts-the-Old-Knot''s draught is to make her strong enough to kill whatever guards
-    the Root.', from: t3}
-- {id: fact.mn05.go-between, claim: 'Keel-Raa, an Unbound go-between, lodges at the Boatmen''s Lodge with two hired men
-    and a jar of stolen sap in his pack.', from: t1}
-- {id: fact.mn05.aim, claim: 'The order''s aim: find the Root before the Unbound, and the player is to use the Eye where
-    it sits to heal the trees.', from: t3}
-- {id: fact.mn05.gideon, claim: 'An "Eye of Argonia" is for sale in Gideon''s market; the rootworm runs from Helstrom''s
-    city tree to Gideon.', from: t2}
+- id: fact.mn05.eye
+  claim: The Eye of Argonia is the lost jewel of the old priest-kings, cut from Hist amber, the solid sap the trees no longer
+    make. It lies at the Root, where the roots of every Hist meet under the sea, behind a gate the old kings sealed, in
+    a place no living diver has found.
+  from: t3
+- id: fact.mn05.draught
+  claim: Cuts-the-Old-Knot's draught is to make her strong enough to kill whatever guards the Root.
+  from: t3
+- id: fact.mn05.go-between
+  claim: Keel-Raa, an Unbound go-between, lodges at the Boatmen's Lodge with two hired men and a jar of stolen sap in his
+    pack.
+  from: t1
+- id: fact.mn05.aim
+  claim: 'The order''s aim: find the Root before the Unbound, and the player is to use the Eye where it sits to heal the
+    trees.'
+  from: t3
+- id: fact.mn05.gideon
+  claim: An "Eye of Argonia" is for sale in Gideon's market; the rootworm runs from Helstrom's city tree to Gideon.
+  from: t2
 cast:
 - id: npc.mn.nesh-deeka
-  persona: {status: invented, race: Argonian, sex: female, role: the Toh-Reel-Ka's handler at Helstrom, home: helstrom,
-    voice: dry, sharp, enjoys knowing more}
+  persona:
+    status: invented
+    race: Argonian
+    sex: female
+    role: the Toh-Reel-Ka's handler at Helstrom
+    home: helstrom
+    voice: dry
+    sharp: null
+    enjoys knowing more: null
   wants: the Eye used in place to heal the trees, as her orders say; no second Umbriel (main-plot §4)
   fears: being asked how she knows
   hides: 'how she knows (the dreamers): she says "we listen"'
-  knowledge: {fact.mn05.eye: knows, fact.mn05.draught: suspects, fact.mn05.go-between: knows, fact.mn05.aim: knows, fact.mn05.gideon: knows}
+  knowledge:
+    fact.mn05.eye: knows
+    fact.mn05.draught: suspects
+    fact.mn05.go-between: knows
+    fact.mn05.aim: knows
+    fact.mn05.gideon: knows
+  name: Nesh-Deeka
 - id: npc.mn.keel-raa
-  persona: {status: invented, race: Argonian, sex: male, role: Unbound go-between, home: helstrom (Boatmen's Lodge), voice: easy,
-    mercenary}
+  persona:
+    status: invented
+    race: Argonian
+    sex: male
+    role: Unbound go-between
+    home: helstrom (Boatmen's Lodge)
+    voice: easy
+    mercenary: null
   wants: a buyer and his coin
   fears: the levy changing its mind
-  knowledge: {fact.mn05.go-between: knows}
-- {id: npc.mn.varus-atrius, persona: {status: invented, race: Imperial, sex: male, role: Keel-Raa's hired man}, wants: his
-    pay}
-- {id: npc.mn.ah-meesei, persona: {status: invented, race: Argonian, sex: female, role: Keel-Raa's hired woman}, wants: her
-    pay}
-- {id: npc.mn.cheeval-xu, persona: {status: 'existing in the Helstrom draft (newworld/places/helstrom/people.jsonl)', role: works
-      the rootworm at the city's Hist}}
+  knowledge:
+    fact.mn05.go-between: knows
+  name: Keel-Raa
+- id: npc.mn.varus-atrius
+  persona:
+    status: invented
+    race: Imperial
+    sex: male
+    role: Keel-Raa's hired man
+  wants: his pay
+  name: Varus Atrius
+- id: npc.mn.ah-meesei
+  persona:
+    status: invented
+    race: Argonian
+    sex: female
+    role: Keel-Raa's hired woman
+  wants: her pay
+  name: Ah-Meesei
+- id: npc.mn.cheeval-xu
+  persona:
+    status: existing in the Helstrom draft (newworld/places/helstrom/people.jsonl)
+    role: works the rootworm at the city's Hist
+  name: Cheeval-Xu
 things:
 - id: door.mn.nesh-deeka-house
   kind: door
   name: Nesh-Deeka's House
-  source: one of Helstrom's one-room Argonian house interiors (source 01ArgonianHouseinside copies), its door named for her
+  source: one of Helstrom's one-room Argonian house interiors (source 01ArgonianHouseinside copies), its door named for
+    her
   where: Helstrom, off the market
 - id: thing.mn.stolen-sap-jar
   kind: item
   name: Keel-Raa's Jar of Sap
   source: 'new: Skyrim''s clay jar under our name (main-plot §9)'
-  states: {before-30: in Keel-Raa's pack, after-30: carried, after-90: with Nesh-Deeka}
+  states:
+    before-30: in Keel-Raa's pack
+    after-30: carried
+    after-90: with Nesh-Deeka
   where: carried by Keel-Raa
 - id: item.mn05.voh-vastei-armour
   kind: item
@@ -127,68 +211,118 @@ things:
 placements:
 - ref: npc.mn.nesh-deeka
   kind: person
-  base: {kind: template_person, id: 'new: Argonian female in plain dark robes'}
+  base:
+    kind: template_person
+    id: 'new: Argonian female in plain dark robes'
   name: Nesh-Deeka
-  anchor: {place: helstrom, rule: navmesh, need: 'inside Nesh-Deeka''s House, standing by the table in its one room;
-      she stays there'}
+  anchor:
+    place: helstrom
+    rule: navmesh
+    need: inside Nesh-Deeka's House, standing by the table in its one room; she stays there
   enabled: true
 - ref: door.mn.nesh-deeka-house
   kind: door
-  base: {kind: existing_base, id: 'Helstrom''s Argonian house door'}
-  anchor: {place: helstrom, rule: surface, need: 'one of Helstrom''s one-room Argonian houses off the market, quiet, its
-      door showing "Nesh-Deeka''s House"; a table, two chairs and a bed inside (from MN10 Never-Writes-Twice stands at
-      the back of the same room)'}
+  base:
+    kind: existing_base
+    id: Helstrom's Argonian house door
+  anchor:
+    place: helstrom
+    rule: surface
+    need: one of Helstrom's one-room Argonian houses off the market, quiet, its door showing "Nesh-Deeka's House"; a table,
+      two chairs and a bed inside (from MN10 Never-Writes-Twice stands at the back of the same room)
   enabled: true
   placeName: Nesh-Deeka's House
 - ref: npc.mn.keel-raa
   kind: person
-  base: {kind: template_person, id: 'new: tribeless Argonian male, light armour, a sword'}
+  base:
+    kind: template_person
+    id: 'new: tribeless Argonian male, light armour, a sword'
   name: Keel-Raa
   level: 6
   killChoice: true
-  anchor: {place: helstrom, rule: navmesh, need: 'inside the Boatmen''s Lodge (Helstrom''s inn, a ship''s hold interior;
-      Sleeps-Last keeps it), at a table at the far end of the hold from the door; not hostile; in faction.mn05.keel-raa-hands'}
+  anchor:
+    place: helstrom
+    rule: navmesh
+    need: inside the Boatmen's Lodge (Helstrom's inn, a ship's hold interior; Sleeps-Last keeps it), at a table at the far
+      end of the hold from the door; not hostile; in faction.mn05.keel-raa-hands
   enabled: true
 - ref: thing.mn.stolen-sap-jar
   kind: thing
-  base: {kind: template_item, id: 'Skyrim clay jar'}
+  base:
+    kind: template_item
+    id: Skyrim clay jar
   carriedBy: npc.mn.keel-raa
   enabled: true
 - ref: npc.mn.varus-atrius
   kind: person
-  base: {kind: template_person, id: 'new: Imperial hired sword, steel armour'}
+  base:
+    kind: template_person
+    id: 'new: Imperial hired sword, steel armour'
   name: Varus Atrius
   level: 5
   killChoice: true
-  anchor: {place: helstrom, rule: navmesh, need: 'inside the Boatmen''s Lodge, standing beside Keel-Raa''s table; not
-      hostile; in faction.mn05.keel-raa-hands'}
+  anchor:
+    place: helstrom
+    rule: navmesh
+    need: inside the Boatmen's Lodge, standing beside Keel-Raa's table; not hostile; in faction.mn05.keel-raa-hands
   enabled: true
 - ref: npc.mn.ah-meesei
   kind: person
-  base: {kind: template_person, id: 'new: Argonian hired blade, a bow and a dagger'}
+  base:
+    kind: template_person
+    id: 'new: Argonian hired blade, a bow and a dagger'
   name: Ah-Meesei
   level: 5
   killChoice: true
-  anchor: {place: helstrom, rule: navmesh, need: 'inside the Boatmen''s Lodge, sitting on a crate by Keel-Raa''s table;
-      not hostile; in faction.mn05.keel-raa-hands'}
+  anchor:
+    place: helstrom
+    rule: navmesh
+    need: inside the Boatmen's Lodge, sitting on a crate by Keel-Raa's table; not hostile; in faction.mn05.keel-raa-hands
   enabled: true
 - ref: npc.mn.cheeval-xu
   kind: person
-  formKey: 'Helstrom draft people row helstrom.C2855503QH3SHVRJDJSG1E9MKM (Cheeval-Xu), standing at the root landing
-    under the city tree'
+  formKey: Helstrom draft people row helstrom.C2855503QH3SHVRJDJSG1E9MKM (Cheeval-Xu), standing at the root landing under
+    the city tree
   enabled: true
+  name: Cheeval-Xu
 - ref: faction.mn05.keel-raa-hands
   kind: marker
-  base: {kind: existing_base, id: 'a faction of ours with Skyrim''s flag that reports no crimes against its members'}
+  base:
+    kind: existing_base
+    id: a faction of ours with Skyrim's flag that reports no crimes against its members
   name: Keel-Raa's Hands
 conclusions:
 - id: c1
-  statement: 'Cuts-the-Old-Knot hunts the Eye of Argonia at the Root, and her draught is to kill what guards it.'
-  clues: [k1, k2, k3]
+  statement: Cuts-the-Old-Knot hunts the Eye of Argonia at the Root, and her draught is to kill what guards it.
+  clues:
+  - k1
+  - k2
+  - k3
 clues:
-- {id: k1, kind: concept, form: line, carrier: npc.mn.sesk, gives: [fact.mn05.draught], supports: [c1]}
-- {id: k2, kind: concept, form: line, carrier: npc.mn.nesh-deeka, gives: [fact.mn05.eye], supports: [c1]}
-- {id: k3, kind: concept, form: line, carrier: npc.mn.nesh-deeka, gives: [fact.mn05.draught], supports: [c1]}
+- id: k1
+  kind: concept
+  form: line
+  carrier: npc.mn.sesk
+  gives:
+  - fact.mn05.draught
+  supports:
+  - c1
+- id: k2
+  kind: concept
+  form: line
+  carrier: npc.mn.nesh-deeka
+  gives:
+  - fact.mn05.eye
+  supports:
+  - c1
+- id: k3
+  kind: concept
+  form: line
+  carrier: npc.mn.nesh-deeka
+  gives:
+  - fact.mn05.draught
+  supports:
+  - c1
 shapeData:
   prize: Keel-Raa's jar of stolen sap
   kept: in his pack, on him (carriedBy), in the Boatmen's Lodge
@@ -203,314 +337,582 @@ stages:
   place: helstrom
   journal: text.journal.mn05.10
   journalText: Vosh-Leera sent me to the order's handler, Nesh-Deeka, at her house in Helstrom, the oldest city. I'm to
-    ride the rootworm there from Jal-Veesa's Hist pool, paying Weeltul twenty-five gold, and find Nesh-Deeka's House.
-    Cheeval-Xu, who works the rootworm at Helstrom's city tree, can point the way.
+    ride the rootworm there from Jal-Veesa's Hist pool, paying Weeltul twenty-five gold, and find Nesh-Deeka's House. Cheeval-Xu,
+    who works the rootworm at Helstrom's city tree, can point the way.
   objectives:
   - id: nesh
     text: text.objective.mn05.nesh
     objectiveText: Speak to Nesh-Deeka in Nesh-Deeka's House, Helstrom.
     target: npc.mn.nesh-deeka
-    completeWhen: {questStage: [quest.main.mn05, ≥, 20]}
+    completeWhen:
+      questStage:
+      - quest.main.mn05
+      - ≥
+      - 20
   successors:
   - to: 20
-    when: {topicHeardFrom: [topic.mn05-draught, npc.mn.nesh-deeka]}
+    when:
+      topicHeardFrom:
+      - topic.mn05-draught
+      - npc.mn.nesh-deeka
   failForward:
   - to: 95
-    when: {not: {npcAlive: npc.mn.nesh-deeka}}
-  directions: The rootworm comes up at the root landing under Helstrom's city tree. Nesh-Deeka's House is one of the
-    houses off the market; its door bears her name.
+    when:
+      not:
+        npcAlive: npc.mn.nesh-deeka
+  directions: The rootworm comes up at the root landing under Helstrom's city tree. Nesh-Deeka's House is one of the houses
+    off the market; its door bears her name.
   information:
-    going: 'I carry the Unbound''s names, their draught for "the Eye" and the seal to the order''s handler.'
+    going: I carry the Unbound's names, their draught for "the Eye" and the seal to the order's handler.
     next: Ride the rootworm to Helstrom and speak to Nesh-Deeka in her house.
     ways: One way; the fare is twenty-five gold, and I have more than that.
     carriers:
-    - {know: where to go and how, by: [journal, objective, 'marker:npc.mn.jal-veesa-minder', marker:npc.mn.nesh-deeka, name:door.mn.nesh-deeka-house]}
-    - {know: Cheeval-Xu points the way in Helstrom, by: [journal, line:topic.mn05-cheeval]}
+    - know: where to go and how
+      by:
+      - journal
+      - objective
+      - marker:npc.mn.nesh-deeka
+      - name:door.mn.nesh-deeka-house
+    - know: Cheeval-Xu points the way in Helstrom
+      by:
+      - journal
+      - ask:topic.mn05-cheeval
 - id: 20
   place: helstrom
   journal: text.journal.mn05.20
-  journalText: 'Nesh-Deeka heard my report. The Eye is the Eye of Argonia, the old priest-kings'' jewel of Hist amber.
-    It lies at the Root, where every tree''s roots meet under the sea, behind a gate the old kings sealed, and no living
-    diver has found it. I said the draught must be to kill whatever guards the Root, and she agreed. To prove me, she
-    wants a jar of stolen sap from Keel-Raa, an Unbound go-between lodging at the Boatmen''s Lodge with two hired men.
-    I can lift it from his pack, buy it for a hundred gold, or fight the three of them for it, which the levy will not
-    count as a crime. I''m to bring her the jar.'
+  journalText: Nesh-Deeka heard my report. The Eye is the Eye of Argonia, the old priest-kings' jewel of Hist amber. It
+    lies at the Root, where every tree's roots meet under the sea, behind a gate the old kings sealed, and no living diver
+    has found it. I said the draught must be to kill whatever guards the Root, and she agreed. To prove me, she wants a
+    jar of stolen sap from Keel-Raa, an Unbound go-between lodging at the Boatmen's Lodge with two hired men. I can lift
+    it from his pack, buy it for a hundred gold, or fight the three of them for it, which the levy will not count as a crime.
+    I'm to bring her the jar.
   objectives:
   - id: jar
     text: text.objective.mn05.jar
     objectiveText: Get Keel-Raa's jar of sap at the Boatmen's Lodge (Pickpocket, 100 gold, or a fight).
     target: npc.mn.keel-raa
-    completeWhen: {questStage: [quest.main.mn05, ≥, 30]}
+    completeWhen:
+      questStage:
+      - quest.main.mn05
+      - ≥
+      - 30
   successors:
   - to: 30
-    when: {hasItem: [thing.mn.stolen-sap-jar, 1]}
+    when:
+      hasItem:
+      - thing.mn.stolen-sap-jar
+      - 1
   - to: 26
-    when: {all: [{topicHeardFrom: [topic.mn05-buy, npc.mn.keel-raa]}, {goldAtLeast: 100}]}
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn05-buy
+        - npc.mn.keel-raa
+      - goldAtLeast: 100
   failForward:
   - to: 95
-    when: {not: {npcAlive: npc.mn.nesh-deeka}}
-  learns: [fact.mn05.eye, fact.mn05.draught, fact.mn05.go-between]
-  directions: The Boatmen's Lodge is Helstrom's inn, by the city landing where the rafts tie up; Keel-Raa sits at the
-    far end of its hold.
+    when:
+      not:
+        npcAlive: npc.mn.nesh-deeka
+  learns:
+  - fact.mn05.eye
+  - fact.mn05.draught
+  - fact.mn05.go-between
+  directions: The Boatmen's Lodge is Helstrom's inn, by the city landing where the rafts tie up; Keel-Raa sits at the far
+    end of its hold.
   actions:
-  - {skill: Pickpocket, use: pickpocket, target: Keel-Raa, note: the jar in his pack}
-  - {skill: One-Handed, use: fight-people, target: Keel-Raa and his two hired men, note: fixed levels 5 and 6; no crime}
-  - {skill: Destruction, use: fight-people, target: the three}
-  - {skill: Archery, use: fight-people, target: the three}
+  - skill: Pickpocket
+    use: pickpocket
+    target: Keel-Raa
+    note: the jar in his pack
+  - skill: One-Handed
+    use: fight-people
+    target: Keel-Raa and his two hired men
+    note: fixed levels 5 and 6; no crime
+  - skill: Destruction
+    use: fight-people
+    target: the three
+  - skill: Archery
+    use: fight-people
+    target: the three
   information:
-    going: 'Cuts-the-Old-Knot hunts the Eye of Argonia at the Root and brews her draught to kill its guardian. The order
-      wants proof of me.'
+    going: Cuts-the-Old-Knot hunts the Eye of Argonia at the Root and brews her draught to kill its guardian. The order
+      wants proof of me.
     next: Get Keel-Raa's jar at the Boatmen's Lodge and bring it to Nesh-Deeka.
     ways: 'Pickpocket the jar from his pack; buy it for 100 gold; or fight him and his two hired men (no crime: the levy
       ignores their band).'
     carriers:
-    - {know: the Eye and the Root, by: [journal, line:topic.mn05-report, ask:topic.mn-eye-of-argonia, ask:topic.mn-the-root]}
-    - {know: what the draught is for, by: [journal, line:topic.mn05-draught]}
-    - {know: get the jar from Keel-Raa, by: [journal, objective, marker:npc.mn.keel-raa, name:npc.mn.keel-raa]}
-    - {know: the three ways and that a fight is no crime, by: [journal, objective, line:topic.mn05-draught, line:topic.mn05-keel-jar]}
+    - know: the Eye and the Root
+      by:
+      - journal
+      - line:topic.mn05-draught
+      - ask:topic.mn-eye-of-argonia
+      - ask:topic.mn-the-root
+    - know: what the draught is for
+      by:
+      - journal
+      - line:topic.mn05-draught
+    - know: get the jar from Keel-Raa
+      by:
+      - journal
+      - objective
+      - marker:npc.mn.keel-raa
+      - name:npc.mn.keel-raa
+    - know: the three ways and that a fight is no crime
+      by:
+      - journal
+      - objective
+      - line:topic.mn05-draught
+      - ask:topic.mn05-keel-jar
 - id: 26
   place: helstrom
   journal: text.journal.mn05.26
   journalText: I paid Keel-Raa a hundred gold for his jar of sap. I'm to bring it to Nesh-Deeka.
   onEnter:
-  - {takeGold: 100}
-  - giveItem: [thing.mn.stolen-sap-jar, 1]
-  objectives: &bring
+  - takeGold: 100
+  - giveItem:
+    - thing.mn.stolen-sap-jar
+    - 1
+  objectives:
   - id: bring
     text: text.objective.mn05.bring
     objectiveText: Bring Keel-Raa's jar to Nesh-Deeka.
     target: npc.mn.nesh-deeka
-    completeWhen: {questStage: [quest.main.mn05, ≥, 90]}
-  successors: &give
+    completeWhen:
+      questStage:
+      - quest.main.mn05
+      - ≥
+      - 90
+  successors:
   - to: 90
-    when: {all: [{topicHeardFrom: [topic.mn05-give-jar, npc.mn.nesh-deeka]}, {hasItem: [thing.mn.stolen-sap-jar, 1]}]}
-  failForward: &nesh
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn05-give-jar
+        - npc.mn.nesh-deeka
+      - hasItem:
+        - thing.mn.stolen-sap-jar
+        - 1
+  failForward:
   - to: 95
-    when: {not: {npcAlive: npc.mn.nesh-deeka}}
-  information: &bring-info
+    when:
+      not:
+        npcAlive: npc.mn.nesh-deeka
+  information:
     going: I have the jar.
     next: Bring it to Nesh-Deeka in her house.
     ways: One way.
     carriers:
-    - {know: bring it to her, by: [journal, objective, marker:npc.mn.nesh-deeka, name:door.mn.nesh-deeka-house]}
+    - know: bring it to her
+      by:
+      - journal
+      - objective
+      - marker:npc.mn.nesh-deeka
+      - name:door.mn.nesh-deeka-house
 - id: 30
   place: helstrom
   journal: text.journal.mn05.30
   journalText: I have Keel-Raa's jar of sap. I'm to bring it to Nesh-Deeka.
-  objectives: *bring
-  successors: *give
-  failForward: *nesh
-  information: *bring-info
+  objectives:
+  - id: bring
+    text: text.objective.mn05.bring
+    objectiveText: Bring Keel-Raa's jar to Nesh-Deeka.
+    target: npc.mn.nesh-deeka
+    completeWhen:
+      questStage:
+      - quest.main.mn05
+      - ≥
+      - 90
+  successors:
+  - to: 90
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn05-give-jar
+        - npc.mn.nesh-deeka
+      - hasItem:
+        - thing.mn.stolen-sap-jar
+        - 1
+  failForward:
+  - to: 95
+    when:
+      not:
+        npcAlive: npc.mn.nesh-deeka
+  information:
+    going: I have the jar.
+    next: Bring it to Nesh-Deeka in her house.
+    ways: One way.
+    carriers:
+    - know: bring it to her
+      by:
+      - journal
+      - objective
+      - marker:npc.mn.nesh-deeka
+      - name:door.mn.nesh-deeka-house
 - id: 90
   place: helstrom
   journal: text.journal.mn05.90
-  journalText: 'Nesh-Deeka took the jar and made me a Voh-Vastei, an apprentice of the Toh-Reel-Ka, with the order''s
-    armour and two hundred gold; the order''s traders will deal with me now. The order means to find the Root before
-    the Unbound, and I am to use the Eye where it sits to heal the trees. Her one lead: an "Eye of Argonia" is for sale
-    in Gideon''s market. I''m to ride the rootworm from Helstrom''s city tree to Gideon.'
+  journalText: 'Nesh-Deeka took the jar and made me a Voh-Vastei, an apprentice of the Toh-Reel-Ka, with the order''s armour
+    and two hundred gold; the order''s traders will deal with me now. The order means to find the Root before the Unbound,
+    and I am to use the Eye where it sits to heal the trees. Her one lead: an "Eye of Argonia" is for sale in Gideon''s
+    market. I''m to ride the rootworm from Helstrom''s city tree to Gideon.'
   onEnter:
-  - takeItem: [thing.mn.stolen-sap-jar, 1]
-  learns: [fact.mn05.aim, fact.mn05.gideon]
+  - takeItem:
+    - thing.mn.stolen-sap-jar
+    - 1
+  learns:
+  - fact.mn05.aim
+  - fact.mn05.gideon
   ending: complete
   endingId: e-voh-vastei
   information:
-    going: 'I am a Voh-Vastei of the Toh-Reel-Ka. The order wants the Root found before the Unbound and the Eye used there
-      to heal the trees.'
+    going: I am a Voh-Vastei of the Toh-Reel-Ka. The order wants the Root found before the Unbound and the Eye used there
+      to heal the trees.
     next: Ride the rootworm from Helstrom's city tree to Gideon and find the "Eye of Argonia" for sale (MN06).
     ways: One way on.
     carriers:
-    - {know: my rank and what it gives, by: [journal, line:topic.mn05-give-jar, ask:topic.mn-ranks]}
-    - {know: the order's aim, by: [journal, line:topic.mn05-give-jar]}
-    - {know: the Gideon lead and the rootworm, by: [journal, line:topic.mn05-give-jar, 'objective (MN06 stage 10)', 'marker:npc.mn.cheeval-xu']}
-- {id: 95, place: helstrom, journal: text.journal.mn05.95, journalText: 'Nesh-Deeka is dead. With her goes the order''s
-    trust, and the way to the Root.', ending: failed, endingId: e-nesh-dead}
+    - know: my rank and what it gives
+      by:
+      - journal
+      - line:topic.mn05-give-jar
+      - ask:topic.mn-ranks
+    - know: the order's aim
+      by:
+      - journal
+      - line:topic.mn05-give-jar
+    - know: the Gideon lead and the rootworm
+      by:
+      - journal
+      - line:topic.mn05-give-jar
+- id: 95
+  place: helstrom
+  journal: text.journal.mn05.95
+  journalText: Nesh-Deeka is dead. With her goes the order's trust, and the way to the Root.
+  ending: failed
+  endingId: e-nesh-dead
+  information:
+    going: Nesh-Deeka is dead. With her goes the order's trust, and the way to the Root.
+    next: 'Nothing: this quest is over.'
+    ways: None.
+    carriers:
+    - know: what happened
+      by:
+      - journal
 endings:
 - id: e-voh-vastei
   when: the player brought the jar
-  world: [{setFactionRank: [faction.toh-reel-ka, 0]}]
-  seen: 'the player is a Voh-Vastei; the order''s traders deal with them; Keel-Raa and his men stay at the lodge if alive'
+  world:
+  - setFactionRank:
+    - faction.toh-reel-ka
+    - 0
+  seen: the player is a Voh-Vastei; the order's traders deal with them; Keel-Raa and his men stay at the lodge if alive
   rewards:
-  - giveItem: [item.mn05.voh-vastei-armour, 1]
-  - {giveGold: 200}
+  - giveItem:
+    - item.mn05.voh-vastei-armour
+    - 1
+  - giveGold: 200
 - id: e-nesh-dead
   when: Nesh-Deeka died before the hand-in
-  world: [{setFlag: [flag.main.thread-severed, true]}]
+  world:
+  - setFlag:
+    - flag.main.thread-severed
+    - true
   seen: the main quest's message that the thread is severed
 terms:
-- {term: Helstrom, meets: '10, journal', told: 'journal 10: "the oldest city"', ask: topic.mn04-vosh-handler}
-- {term: Cheeval-Xu, meets: '10, journal', told: 'journal 10: "who works the rootworm at Helstrom''s city tree"', ask: topic.mn05-cheeval}
-- {term: the Eye of Argonia, meets: '20, topic.mn05-report', told: '"the old priest-kings'' jewel, cut from Hist amber"', ask: topic.mn-eye-of-argonia}
-- {term: the Root, meets: '20, topic.mn05-report', told: '"the place under the sea where the roots of every Hist meet"', ask: topic.mn-the-root}
-- {term: Hist amber, meets: '20, topic.mn05-report', told: '"solid sap, which the trees no longer make"', ask: topic.mn-eye-of-argonia}
-- {term: priest-kings, meets: '20, topic.mn05-report', told: '"the kings who ruled the marsh before history"', ask: topic.mn-eye-of-argonia}
-- {term: Keel-Raa, meets: '20, topic.mn05-draught', told: '"an Unbound go-between"', ask: topic.mn05-keel-who}
-- {term: the Boatmen's Lodge, meets: '20, topic.mn05-draught', told: '"the inn by the city landing"', ask: topic.mn05-keel-who}
-- {term: Voh-Vastei, meets: '90, topic.mn05-give-jar', told: '"apprentice: the order''s first rank"', ask: topic.mn-ranks}
-- {term: Gideon, meets: '90, topic.mn05-give-jar', told: '"the relic-dealers'' city to the west"', ask: topic.mn05-gideon}
+- term: Helstrom
+  meets: 10, journal
+  told: 'journal 10: "the oldest city"'
+  ask: topic.mn05-cheeval
+- term: Cheeval-Xu
+  meets: 10, journal
+  told: 'journal 10: "who works the rootworm at Helstrom''s city tree"'
+  ask: topic.mn05-cheeval
+- term: the Eye of Argonia
+  meets: 20, topic.mn05-report
+  told: '"the old priest-kings'' jewel, cut from Hist amber"'
+  ask: topic.mn-eye-of-argonia
+- term: the Root
+  meets: 20, topic.mn05-report
+  told: '"the place under the sea where the roots of every Hist meet"'
+  ask: topic.mn-the-root
+- term: Hist amber
+  meets: 20, topic.mn05-report
+  told: '"solid sap, which the trees no longer make"'
+  ask: topic.mn-eye-of-argonia
+- term: priest-kings
+  meets: 20, topic.mn05-report
+  told: '"the kings who ruled the marsh before history"'
+  ask: topic.mn-eye-of-argonia
+- term: Keel-Raa
+  meets: 20, topic.mn05-draught
+  told: '"an Unbound go-between"'
+  ask: topic.mn05-keel-who
+- term: the Boatmen's Lodge
+  meets: 20, topic.mn05-draught
+  told: '"the inn by the city landing"'
+  ask: topic.mn05-keel-who
+- term: Voh-Vastei
+  meets: 90, topic.mn05-give-jar
+  told: '"apprentice: the order''s first rank"'
+  ask: topic.mn-ranks
+- term: Gideon
+  meets: 90, topic.mn05-give-jar
+  told: '"the relic-dealers'' city to the west"'
+  ask: topic.mn05-gideon
 topics:
 - id: topic.mn05-cheeval
   label: Where is Nesh-Deeka's House?
   person: npc.mn.cheeval-xu
-  stages: [10]
+  stages:
+  - 10
   essential: false
-  intent: 'Cheeval-Xu, at the root landing under the city tree. Tells: he works the rootworm here. Nesh-Deeka''s House
-    is a quiet house off the market, one of the houses nearest the city tree; her name is on the door; she takes visitors
-    by word of mouth. Checks: nothing. Does: nothing.'
+  intent: 'Cheeval-Xu, at the root landing under the city tree. Tells: he works the rootworm here. Nesh-Deeka''s House is
+    a quiet house off the market, one of the houses nearest the city tree; her name is on the door; she takes visitors by
+    word of mouth. Checks: nothing. Does: nothing.'
   new: true
 - id: topic.mn05-nesh-who
   label: Who are you?
   person: npc.mn.nesh-deeka
-  stages: [10, 20, 26, 30, 90]
+  stages:
+  - 10
+  - 20
+  - 26
+  - 30
+  - 90
   essential: false
-  intent: 'Nesh-Deeka. Tells: the Toh-Reel-Ka''s handler at Helstrom: she takes the reports of the order''s people in
-    this country and gives them their work. Vosh-Leera sends her word now and then. Checks: nothing. Does: nothing.'
+  intent: 'Nesh-Deeka. Tells: the Toh-Reel-Ka''s handler at Helstrom: she takes the reports of the order''s people in this
+    country and gives them their work. Vosh-Leera sends her word now and then. Checks: nothing. Does: nothing.'
   new: true
 - id: topic.mn05-report
   label: Vosh-Leera sent me. The Unbound are draining the trees.
   person: npc.mn.nesh-deeka
-  stages: [10]
+  stages:
+  - 10
   essential: true
-  intent: 'Nesh-Deeka. Tells: she knows; she hears the player out: the sealed scar, the hide, the camp, Sesk''s names.
-    "The Eye" is the Eye of Argonia, the lost jewel of the old priest-kings, who ruled the marsh before any history was
-    written; they cut it from Hist amber, the solid sap the trees no longer make. It lies at the Root, the place under
-    the sea where the roots of every Hist meet, behind a gate that the last king sealed, in a place no living diver has
-    found. Cuts-the-Old-Knot wants it. She asks what the player thinks the draught is for (a question; its answer is
-    topic.mn05-draught). Checks: nothing. Does: nothing.'
-  uses: [fact.mn05.eye]
-  replies: [topic.mn05-draught]
+  intent: 'Nesh-Deeka. Tells: she knows; she hears the player out: the sealed scar, the hide, the camp, Sesk''s names. "The
+    Eye" is the Eye of Argonia, the lost jewel of the old priest-kings, who ruled the marsh before any history was written;
+    they cut it from Hist amber, the solid sap the trees no longer make. It lies at the Root, the place under the sea where
+    the roots of every Hist meet, behind a gate that the last king sealed, in a place no living diver has found. Cuts-the-Old-Knot
+    wants it. She asks what the player thinks the draught is for (a question; its answer is topic.mn05-draught). Checks:
+    nothing. Does: nothing.'
+  uses:
+  - fact.mn05.eye
+  replies:
+  - topic.mn05-draught
   new: true
 - id: topic.mn05-draught
   label: Sap makes a fighter strong. Something must guard the Root, and she means to kill it.
   person: npc.mn.nesh-deeka
-  stages: [10]
+  stages:
+  - 10
   essential: true
-  intent: 'Nesh-Deeka. Tells: she agrees: whatever guards the Root, Cuts-the-Old-Knot means to kill it. Now she wants
-    proof of the player. Keel-Raa, an Unbound go-between, lodges at the Boatmen''s Lodge, the inn by the city landing,
-    with two hired men and a jar of stolen sap in his pack. Bring her the jar. He is not looking for a fight and will
-    talk, so lift it from his pack, buy it, or take it by force: his band pays the levy to look away from them, so the
-    levy will not count it a crime either. Does: sets stage 20. Checks: nothing.'
-  uses: [fact.mn05.draught, fact.mn05.go-between]
+  intent: 'Nesh-Deeka. Tells: (after topic.mn05-report: the Eye of Argonia is the priest-kings'' jewel of Hist amber, at
+    the Root under the sea behind a sealed gate) she agrees: whatever guards the Root, Cuts-the-Old-Knot means to kill it.
+    Now she wants proof of the player. Keel-Raa, an Unbound go-between, lodges at the Boatmen''s Lodge, the inn by the city
+    landing, with two hired men and a jar of stolen sap in his pack. Bring her the jar. He is not looking for a fight and
+    will talk, so lift it from his pack, buy it, or take it by force: his band pays the levy to look away from them, so
+    the levy will not count it a crime either. Does: sets stage 20. Checks: nothing.'
+  uses:
+  - fact.mn05.draught
+  - fact.mn05.go-between
   new: true
 - id: topic.mn-eye-of-argonia
   label: Tell me about the Eye of Argonia.
   person: npc.mn.nesh-deeka
-  stages: [20, 26, 30, 90]
+  stages:
+  - 20
+  - 26
+  - 30
+  - 90
   essential: false
   intent: 'Nesh-Deeka. Tells: the priest-kings cut it from Hist amber in the oldest days, when the trees still made sap
     hard as stone. It is said to be the knot that joins every root to every other; used where it sits, it can pour strength
     down every root. Relic-hunters have chased it for centuries; most chase glass. Checks: nothing. Does: nothing.'
-  uses: [fact.mn05.eye]
+  uses:
+  - fact.mn05.eye
   new: true
 - id: topic.mn-the-root
   label: What is the Root?
   person: npc.mn.nesh-deeka
-  stages: [20, 26, 30, 90]
+  stages:
+  - 20
+  - 26
+  - 30
+  - 90
   essential: false
-  intent: 'Nesh-Deeka. Tells: every Hist is joined to every other at the root. Under the sea, somewhere off the coast,
-    the roots of every tree meet in one place: the Root. The priest-kings built over it, and the last of them sealed its
-    gate. Nobody living knows the way down. Checks: nothing. Does: nothing.'
+  intent: 'Nesh-Deeka. Tells: every Hist is joined to every other at the root. Under the sea, somewhere off the coast, the
+    roots of every tree meet in one place: the Root. The priest-kings built over it, and the last of them sealed its gate.
+    Nobody living knows the way down. Checks: nothing. Does: nothing.'
   new: true
 - id: topic.mn-order-history
   label: Tell me the order's history.
   person: npc.mn.nesh-deeka
-  stages: [20, 26, 30, 90]
+  stages:
+  - 20
+  - 26
+  - 30
+  - 90
   essential: false
   intent: 'Nesh-Deeka. Tells: Toh-Reel-Ka is Jel for Secret Warriors. The Xeech-Leel made the order in the Void Nights,
-    4E 98 to 100, when the moons vanished and the province feared its trees were turning again, as the sworn guard of
-    the Root Talk, the great gathering of the tribes at Helstrom, and of Lilmoth''s third tree. Its one charge has not
-    changed: no tree, and no person or group allied with a tree, may bring another Umbriel. It answers to the council
-    of the Xeech-Leel and to nobody else. Checks: nothing. Does: nothing.'
+    4E 98 to 100, when the moons vanished and the province feared its trees were turning again, as the sworn guard of the
+    Root Talk, the great gathering of the tribes at Helstrom, and of Lilmoth''s third tree. Its one charge has not changed:
+    no tree, and no person or group allied with a tree, may bring another Umbriel. It answers to the council of the Xeech-Leel
+    and to nobody else. Checks: nothing. Does: nothing.'
   new: true
 - id: topic.mn-ranks
   label: What are the order's ranks?
   person: npc.mn.nesh-deeka
-  stages: [20, 26, 30, 90]
+  stages:
+  - 20
+  - 26
+  - 30
+  - 90
   essential: false
-  intent: 'Nesh-Deeka. Tells: lowest first, Voh-Vastei, "Apprentice"; Toh-Wo, "Secret-Speaker", one who brings secrets
-    in; Reel-Ka, "Warrior", a full member; Ka-Deelith, "War-Teacher", who trains the warriors; and Toh-Nassa, "Leader
-    of the Secret". Each rank brings gear and gold, and the order''s doors open wider. Checks: nothing. Does: nothing.'
+  intent: 'Nesh-Deeka. Tells: lowest first, Voh-Vastei, "Apprentice"; Toh-Wo, "Secret-Speaker", one who brings secrets in;
+    Reel-Ka, "Warrior", a full member; Ka-Deelith, "War-Teacher", who trains the warriors; and Toh-Nassa, "Leader of the
+    Secret". Each rank brings gear and gold, and the order''s doors open wider. Checks: nothing. Does: nothing.'
   new: true
 - id: topic.mn-xeech-leel
   label: Who are the Xeech-Leel?
   person: npc.mn.nesh-deeka
-  stages: [20, 26, 30, 90]
+  stages:
+  - 20
+  - 26
+  - 30
+  - 90
   essential: false
-  intent: 'Nesh-Deeka. Tells: the party that rules the province, the People of the New Beginning; their council sits
-    here in Helstrom, a few streets from her door. They swore to govern in the open. She says it without a smile. Checks:
-    nothing. Does: nothing.'
+  intent: 'Nesh-Deeka. Tells: the party that rules the province, the People of the New Beginning; their council sits here
+    in Helstrom, a few streets from her door. They swore to govern in the open. She says it without a smile. Checks: nothing.
+    Does: nothing.'
   new: true
 - id: topic.mn-umbriel
   label: What was Umbriel?
   person: npc.mn.nesh-deeka
-  stages: [20, 26, 30, 90]
+  stages:
+  - 20
+  - 26
+  - 30
+  - 90
   essential: false
-  intent: 'Nesh-Deeka. Tells, in a line or two: the flying city the An-Xileel called down through Lilmoth''s mad tree;
-    the order exists so that it never happens again. Checks: nothing. Does: nothing.'
+  intent: 'Nesh-Deeka. Tells, in a line or two: the flying city the An-Xileel called down through Lilmoth''s mad tree; the
+    order exists so that it never happens again. Checks: nothing. Does: nothing.'
   new: true
 - id: topic.mn05-keel-who
   label: Who are you?
   person: npc.mn.keel-raa
-  stages: [10, 20, 26, 30, 90]
+  stages:
+  - 10
+  - 20
+  - 26
+  - 30
+  - 90
   essential: false
-  intent: 'Keel-Raa. Tells: he carries goods between people who want them, and he lodges here at the Boatmen''s Lodge
-    till a buyer comes. Varus and Ah-Meesei are his hired help. Checks: nothing. Does: nothing.'
+  intent: 'Keel-Raa. Tells: he carries goods between people who want them, and he lodges here at the Boatmen''s Lodge till
+    a buyer comes. Varus and Ah-Meesei are his hired help. Checks: nothing. Does: nothing.'
   new: true
 - id: topic.mn05-keel-jar
   label: I hear you have a jar of sap.
   person: npc.mn.keel-raa
-  stages: [20]
+  stages:
+  - 20
   essential: false
-  intent: 'Keel-Raa. Tells: he does, in his pack, and it stays there until someone pays. A hundred gold, and it is the
-    player''s. Checks: nothing. Does: nothing.'
-  replies: [topic.mn05-buy]
+  intent: 'Keel-Raa. Tells: he does, in his pack, and it stays there until someone pays. A hundred gold, and it is the player''s.
+    Checks: nothing. Does: nothing.'
+  replies:
+  - topic.mn05-buy
   new: true
 - id: topic.mn05-buy
   label: A hundred gold for the jar. (100 gold)
   person: npc.mn.keel-raa
-  stages: [20]
+  stages:
+  - 20
   essential: true
   intent: 'Keel-Raa. Checks: goldAtLeast 100. Tells: a pleasure; he hands over the jar. Does: sets stage 26, whose start
     takes a hundred gold and gives the jar. Fallback when the check fails: no coin, no jar; he names a hundred again.'
   fallback: No coin, no jar. A hundred, and it's yours.
   new: true
-- {id: topic.mn05-varus-who, label: 'Who are you?', person: npc.mn.varus-atrius, stages: [10, 20, 26, 30, 90], essential: false,
-  intent: 'Varus Atrius. Tells: hired to stand beside Keel-Raa and look large; he does. Checks: nothing. Does: nothing.',
-  new: true}
-- {id: topic.mn05-ahmeesei-who, label: 'Who are you?', person: npc.mn.ah-meesei, stages: [10, 20, 26, 30, 90], essential: false,
+- id: topic.mn05-varus-who
+  label: Who are you?
+  person: npc.mn.varus-atrius
+  stages:
+  - 10
+  - 20
+  - 26
+  - 30
+  - 90
+  essential: false
+  intent: 'Varus Atrius. Tells: hired to stand beside Keel-Raa and look large; he does. Checks: nothing. Does: nothing.'
+  new: true
+- id: topic.mn05-ahmeesei-who
+  label: Who are you?
+  person: npc.mn.ah-meesei
+  stages:
+  - 10
+  - 20
+  - 26
+  - 30
+  - 90
+  essential: false
   intent: 'Ah-Meesei. Tells: she guards Keel-Raa''s back for coin; the player should keep their hands where she can see
-    them. Checks: nothing. Does: nothing.', new: true}
+    them. Checks: nothing. Does: nothing.'
+  new: true
 - id: topic.mn05-give-jar
   label: Here is Keel-Raa's jar.
   person: npc.mn.nesh-deeka
-  stages: [26, 30]
+  stages:
+  - 26
+  - 30
   essential: true
-  when: {hasItem: [thing.mn.stolen-sap-jar, 1]}
-  intent: 'Nesh-Deeka. Checks: hasItem the jar. Tells: good. She makes the player a Voh-Vastei, an apprentice of the
-    order, and gives them the order''s light armour and two hundred gold for the road; the order''s traders will deal
-    with them now. The order''s aim: the Root must be found before the Unbound find it, and the player is to use the
-    Eye where it sits to heal the trees. She has one lead: an "Eye of Argonia" is for sale in Gideon''s market, the relic-dealers''
-    city to the west. Most such eyes are glass; find out where this one came from. The rootworm runs from Helstrom''s
-    city tree to Gideon; Cheeval-Xu calls it there. Does: sets stage 90. '
-  uses: [fact.mn05.aim, fact.mn05.gideon]
+  when:
+    hasItem:
+    - thing.mn.stolen-sap-jar
+    - 1
+  intent: 'Nesh-Deeka. Checks: hasItem the jar. Tells: good. She makes the player a Voh-Vastei, an apprentice of the order,
+    and gives them the order''s light armour and two hundred gold for the road; the order''s traders will deal with them
+    now. The order''s aim: the Root must be found before the Unbound find it, and the player is to use the Eye where it
+    sits to heal the trees. She has one lead: an "Eye of Argonia" is for sale in Gideon''s market, the relic-dealers'' city
+    to the west. Most such eyes are glass; find out where this one came from. The rootworm runs from Helstrom''s city tree
+    to Gideon; Cheeval-Xu calls it there. Does: sets stage 90. '
+  uses:
+  - fact.mn05.aim
+  - fact.mn05.gideon
   new: true
 - id: topic.mn05-gideon
   label: Tell me about Gideon.
   person: npc.mn.nesh-deeka
-  stages: [90]
+  stages:
+  - 90
   essential: false
-  intent: 'Nesh-Deeka. Tells: the relic-dealers'' city on the western frontier, full of Imperials and old records; it
-    keeps the Xeech-Leel at arm''s length. Its market sells anything said to be old. Checks: nothing. Does: nothing.'
+  intent: 'Nesh-Deeka. Tells: the relic-dealers'' city on the western frontier, full of Imperials and old records; it keeps
+    the Xeech-Leel at arm''s length. Its market sells anything said to be old. Checks: nothing. Does: nothing.'
   new: true
 review:
   reviewer: writer lore checks (quest-write §5); quest-reviewer round to follow
   findings:
-  - {id: L1, severity: lore, ids: [topics.topic.mn-ranks, topics.topic.mn-order-history], finding: 'Ranks, founding, charge.',
-    answer: 'sourced: argonia-4e201-state.md §2.5'}
-  - {id: L2, severity: lore, ids: [topics.topic.mn-eye-of-argonia], finding: 'The Eye cut from Hist amber; at the Root.',
-    answer: 'sourced: hist-and-sap.md 154; main-plot §3 (our extrapolation; eye-of-argonia.md 6-8 leaves it open)'}
-  - {id: L3, severity: lore, ids: [stages.20], finding: 'A band the levy ignores; attacking it is no crime.', answer: 'sourced:
-      owner-bar (people offered to talk to start non-hostile; attacking outlaws is no crime); helstrom place card (the
-      guard has a bad name)'}
-  - {id: L4, severity: lore, ids: [stages.26], finding: 'Buying gives a second copy of the jar while Keel-Raa''s stays in
-      his pack.', answer: 'gap: the build should remove his jar when the buy stage starts (no take-from-person term in
-      the vocabulary yet); left for the builder'}
+  - id: L1
+    severity: lore
+    ids:
+    - topics.topic.mn-ranks
+    - topics.topic.mn-order-history
+    finding: Ranks, founding, charge.
+    answer: 'sourced: argonia-4e201-state.md §2.5'
+  - id: L2
+    severity: lore
+    ids:
+    - topics.topic.mn-eye-of-argonia
+    finding: The Eye cut from Hist amber; at the Root.
+    answer: 'sourced: hist-and-sap.md 154; main-plot §3 (our extrapolation; eye-of-argonia.md 6-8 leaves it open)'
+  - id: L3
+    severity: lore
+    ids:
+    - stages.20
+    finding: A band the levy ignores; attacking it is no crime.
+    answer: 'sourced: owner-bar (people offered to talk to start non-hostile; attacking outlaws is no crime); helstrom place
+      card (the guard has a bad name)'
+  - id: L4
+    severity: lore
+    ids:
+    - stages.26
+    finding: Buying gives a second copy of the jar while Keel-Raa's stays in his pack.
+    answer: 'gap: the build should remove his jar when the buy stage starts (no take-from-person term in the vocabulary
+      yet); left for the builder'
