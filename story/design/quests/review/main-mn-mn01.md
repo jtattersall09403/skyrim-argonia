@@ -19,7 +19,20 @@ Moment 1: the designed records. One line per run.
 | MN02 | quest.main.mn02/20261117T170740Z-designed~2 (--way shoot) | pass |
 | MN03 | quest.main.mn03/20261117T170740Z-designed (--way fight, truth) | pass |
 | MN03 | quest.main.mn03/20261117T170741Z-designed (--way shoot, comfort) | pass |
-| MN04, MN05 | held | waiting for `record --after`, which carries the state of earlier quests |
+| MN04 | quest.main.mn04/20261117T171435Z-designed, ~2, 20261117T171436Z-designed | miss: Vosh-Leera in a room no MN04 door reached (stopped at 30) |
+| MN04 | quest.main.mn04/20261117T171601Z-designed, ~2 (pickpocket, pick) | harness error: the cage door had no placeName |
+| MN04 | quest.main.mn04/20261117T171601Z-designed~3 (fight) | pass |
+| MN04 | quest.main.mn04/20261117T171711Z-designed (pick) | pass |
+| MN04 | quest.main.mn04/20261117T171712Z-designed (pickpocket) | pass |
+| MN05 | quest.main.mn05/20261117T171712Z-designed (pickpocket) | pass; its notes are MN06's --know |
+| MN05 | quest.main.mn05/20261117T171712Z-designed~2 (fight) | pass |
+| MN05 | quest.main.mn05/20261117T171712Z-designed~3 (buy) | pass |
+| MN01 | quest.main.mn01/20261117T171828Z-designed (rooms) | pass |
+| MN02 | quest.main.mn02/20261117T171828Z-designed (--after MN01) | pass |
+| MN03 | quest.main.mn03/20261117T171829Z-designed, ~2 (--after; truth, comfort) | pass |
+
+A further class cleared: **a person in a room with no door to it** (record: placements). Every quest that names
+a person standing in a room places the door whose `placeName` is that room.
 
 Classes of miss that a change cleared:
 

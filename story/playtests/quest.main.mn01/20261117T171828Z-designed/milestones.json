@@ -1,0 +1,88 @@
+[
+ {
+  "stage": 10,
+  "kind": "start",
+  "ending": null,
+  "title": "No Name on the Work Roll",
+  "journal": "I woke in the hold of a barge with a gang of strangers. The door is locked. The cook, an Argonian woman named Okeeh, is watching me. I'm to speak to her and find out where I am.",
+  "objectives": [
+   "Speak to Okeeh in the barge's hold. (marker: Okeeh)"
+  ],
+  "plan": {
+   "going": "I am in a locked ship's hold with strangers and know nothing else.",
+   "next": "Speak to Okeeh, the woman watching me.",
+   "ways": "There is one way on, to talk to her. I carry two lockpicks, but the door has no lock I can pick."
+  },
+  "answers": [
+   "I woke in a barge hold with strangers; the door is locked. A cook named Okeeh is watching me. I do not know why I am here.",
+   "Speak to Okeeh in Barge Hold (marker).",
+   "Talk to Okeeh; maybe pick the locked door with my lockpick, or talk to Dralin Uveran.",
+   "I do not know who Okeeh or Dralin Uveran are, or what the work roll is; I can find out by talking."
+  ],
+  "raw": "1. I woke in a barge hold with strangers; the door is locked. A cook named Okeeh is watching me. I do not know why I am here. 2. Speak to Okeeh in Barge Hold (marker). 3. Talk to Okeeh; maybe pick the locked door with my lockpick, or talk to Dralin Uveran. 4. I do not know who Okeeh or Dralin Uveran are, or what the work roll is; I can find out by talking."
+ },
+ {
+  "stage": 20,
+  "kind": "stage",
+  "ending": null,
+  "title": "No Name on the Work Roll",
+  "journal": "Okeeh told me where I am. This is the hold of an Owing barge moored at Ashgate Landing, a reed-cutters' camp in Black Marsh, and the gang here are sent to cut reed for the months they owe. I gave her my name. I'm to tell her what my trade was. The door stays locked until the gang-master takes our names.",
+  "objectives": [
+   "Tell Okeeh your trade. (marker: Okeeh)"
+  ],
+  "plan": {
+   "going": "I am in the hold of an Owing barge at Ashgate Landing, a reed-cutters' camp in Black Marsh. The Owing is the marsh's sentence: months of owed work in place of a cell. The door stays locked until the gang-master takes the new gang's names.",
+   "next": "Tell Okeeh what my trade was.",
+   "ways": "Seven answers: warrior, hunter, thief, battlemage, healer, nightblade (each names the five skills it raises by five), or naming my own five skills one by one."
+  },
+  "answers": [
+   "I am in a work barge hold at Ashgate Landing, serving the Owing (months of owed work cutting reed instead of a cell). The door stays locked until gang-master Dralin Uveran takes our names.",
+   "Tell Okeeh my trade, here in the hold.",
+   "She offers seven trade topics (fighter, hunter, thief, poultice-maker, etc.); I can also ask about the Owing, Hist, Jal-Veesa.",
+   "I do not understand Hist or Jal-Veesa; I can ask Okeeh. I also have not yet given my name."
+  ],
+  "raw": "1. I am in a work barge hold at Ashgate Landing, serving the Owing (months of owed work cutting reed instead of a cell). The door stays locked until gang-master Dralin Uveran takes our names. 2. Tell Okeeh my trade, here in the hold. 3. She offers seven trade topics (fighter, hunter, thief, poultice-maker, etc.); I can also ask about the Owing, Hist, Jal-Veesa. 4. I do not understand Hist or Jal-Veesa; I can ask Okeeh. I also have not yet given my name."
+ },
+ {
+  "stage": 32,
+  "kind": "stage",
+  "ending": null,
+  "title": "No Name on the Work Roll",
+  "journal": "I told Okeeh I was a hunter. Someone has unbarred the hold's door from outside. I'm to go out onto the landing.",
+  "objectives": [
+   "Go out onto the landing. (marker: Door to Barge Hold)"
+  ],
+  "plan": {
+   "going": "My trade is told and the hold's door is open. Someone on the landing must have opened it.",
+   "next": "Go out through the door onto the landing.",
+   "ways": "One way, through the door."
+  },
+  "answers": [
+   "I told Okeeh I was a hunter and my skills rose; the hold door is now unbarred. I am serving the Owing under gang-master Dralin Uveran.",
+   "Go out onto the landing at Ashgate Landing via the door.",
+   "Leave through the door, or first ask Okeeh about Hist and Jal-Veesa.",
+   "Still do not know what Hist or Jal-Veesa are; can ask Okeeh."
+  ],
+  "raw": "1. I told Okeeh I was a hunter and my skills rose; the hold door is now unbarred. I am serving the Owing under gang-master Dralin Uveran. 2. Go out onto the landing at Ashgate Landing via the door. 3. Leave through the door, or first ask Okeeh about Hist and Jal-Veesa. 4. Still do not know what Hist or Jal-Veesa are; can ask Okeeh."
+ },
+ {
+  "stage": 90,
+  "kind": "ending",
+  "ending": "complete",
+  "title": "No Name on the Work Roll",
+  "journal": "Dralin Uveran, the Dunmer gang-master of Ashgate Landing, met me on the landing. My name was struck from his roll this morning, on an order brought by Vosh-Leera, the root-herald of Jal-Veesa, so I owe no months. He does not know why she wants me, and he is sour about it. I'm to go to Vosh-Leera's house in Jal-Veesa, east up the road. On the way, at Reed-Sill Weir, the town's tree-minder wants Sithis' beard, a grey moss that hangs over the creek below the weir.",
+  "objectives": [],
+  "plan": {
+   "going": "I am free of the Owing: Vosh-Leera, root-herald of Jal-Veesa, had my name struck from the roll. I do not know why.",
+   "next": "Go east up the road to Vosh-Leera's House in Jal-Veesa; on the way, pick Sithis' beard below Reed-Sill Weir for the town's tree-minder.",
+   "ways": "The moss is a favour on the road; Vosh-Leera is where the answers are."
+  },
+  "answers": [
+   "My name was struck from the Owing roll by order of Vosh-Leera, root-herald of Jal-Veesa, so I owe no months. She wants me at her house; I do not know why.",
+   "Go east up the road to Jal-Veesa, to Vosh-Leera house; on the way Reed-Sill Weir has Sithis beard moss the tree-minder wants.",
+   "Go straight to Jal-Veesa, or gather the moss at the creek below the weir (crocodiles) first.",
+   "I do not know why Vosh-Leera wants me, or what the Hist tree is; I could ask in Jal-Veesa."
+  ],
+  "raw": "1. My name was struck from the Owing roll by order of Vosh-Leera, root-herald of Jal-Veesa, so I owe no months. She wants me at her house; I do not know why. 2. Go east up the road to Jal-Veesa, to Vosh-Leera house; on the way Reed-Sill Weir has Sithis beard moss the tree-minder wants. 3. Go straight to Jal-Veesa, or gather the moss at the creek below the weir (crocodiles) first. 4. I do not know why Vosh-Leera wants me, or what the Hist tree is; I could ask in Jal-Veesa."
+ }
+]

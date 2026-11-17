@@ -1,0 +1,75 @@
+{
+ "quest": "quest.main.mn03",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn03.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": null,
+ "choose": "e-truth",
+ "know": "story/playtests/quest.main.mn02/20261117T170313Z-designed/notes.md",
+ "created": "20261117T171829Z",
+ "stages": [
+  10,
+  20,
+  30,
+  40,
+  50,
+  60,
+  90
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "newworld/story/quests/main/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn02.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 7,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I am Tarin, a thief freed from the Owing barge by Vosh-Leera, root-herald of Jal-Veesa. She works for the Toh-Reel-Ka, the Secret Warriors of the Xeech-Leel who rule the province. The Hists along the river are sickening, including Jal-Veesa Hist (dry bark, closed scar, cooling egg-pool). I brought Sithis beard to Weeltul but it only warmed the pool. 2. Ask Vosh-Leera in her house in Jal-Veesa for her second task. 3. Talk to Vosh-Leera; I could also question Weeltul on sap, scar, eggs and Umbriel. 4. I do not know why the trees sicken, or what Umbriel did beyond the 4E 48 story. I could find out by asking Vosh-Leera and Weeltul.",
+  "go Vosh-Leera",
+  "talk Vosh-Leera",
+  "say 1",
+  "answer 1. Vosh-Leera gave me a cup of Jal-Veesa sap, drawn before the scar closed. Trees are joined at the root, so drinking it lets me ask where the sickness is. 2. Drink the sap here in her house in front of her, then tell her everything I see. 3. Drink it, or refuse; I mean to drink it and report honestly. Weeltul could be asked about sap first. 4. I do not know what the dream will show or whether the sap is safe; I will find out by drinking, and my Hist blessing resists poison.",
+  "use Cup of Hist Sap",
+  "look",
+  "talk Vosh-Leera",
+  "say 1",
+  "answer 1. I drank the sap and saw a vision: a young slender grey Hist among pale stilt huts, a woven weir across a creek, and west of the weir on a reed bank a reed hide beside a lone dead tree with clay jars stacked in its shade. This is the answer to where the sickness is. 2. Tell Vosh-Leera everything I saw, in her house. 3. Tell her it all honestly and in full; I could leave things out but I mean to tell the truth. 4. I do not know where the weir and stilt huts are, who owns the reed hide or what the clay jars hold. Vosh-Leera or Weeltul may know.",
+  "talk Vosh-Leera",
+  "say 1",
+  "say 2",
+  "say 3",
+  "answer 1. My vision was of Teel-Fen Weir, a Sedge-Wardens camp south of Jal-Veesa down the creek, where a young Hist grew from the roots of Jal-Veesa Hist. Jars by a hide suggest someone is keeping sap there. 2. Go to Teel-Fen Weir and speak to Heem-Jasa, minder of the young tree, on the platform round it. 3. Go to Heem-Jasa first as Vosh-Leera advised and see what she knows, and be careful at the reed hide. I could also approach the hide directly but that seems risky. 4. I do not know who keeps the jars or the hide, or why the sickness is there. Heem-Jasa may tell me.",
+  "go Heem-Jasa",
+  "talk Heem-Jasa",
+  "say 2",
+  "answer 1. Heem-Jasa's young tree was drained and its scar sealed with grey paste three nights ago. Three strangers who call themselves the Unbound keep jars of sap at the reed hide west of the weir; this is probably the cause of the sickness. 2. Take the Note to the Sap-Takers from the reed hide west of Teel-Fen Weir. 3. I can fight the three Unbound, shoot them from the reeds east of the hide, or sneak round the open west side where the jars are stacked. I am a thief so sneaking suits me. 4. I do not know who the Unbound really are, what the grey paste is, or what the note says. The note may tell me.",
+  "go Note to the Sap-Takers",
+  "take Note to the Sap-Takers",
+  "answer 1. I took the note unseen. The Unbound crew's master orders them to bring jars of sap to Karsh-Naal Camp and seal every scar behind them. So someone is draining and sealing Hists. 2. Return to Heem-Jasa at Teel-Fen Weir. 3. Tell her the truth about her tree (e-truth), which earns alchemy teaching and trade, or ease her with a kind lie, which loses her trust. I choose truth. 4. I do not know who the crew's master is, what Karsh-Naal Camp is or where, or whether the tree will live. I may find out from Heem-Jasa, Vosh-Leera or Weeltul.",
+  "read Note to the Sap-Takers",
+  "talk Heem-Jasa",
+  "say 2",
+  "say 3",
+  "answer 1. Unbound Sap-Takers, working for a Naga signed K., drain Hists of sap and seal the scars with grey paste. That is likely why the trees sicken. Heem-Jasa's tree may die. I told her the truth and she will now teach me alchemy and sell sap, fungus and eggshells. 2. Go to Karsh-Naal Camp, the Naga camp in the marsh east of Teel-Fen Weir, where the jars are taken. 3. Go there carefully (sneak, fight, or shoot), or first learn and buy from Heem-Jasa, or report to Vosh-Leera. 4. I do not know who the Naga K. is, what the grey paste is, or why they want the sap. I would find out at Karsh-Naal Camp.",
+  "answer I am Tarin, a thief freed by Vosh-Leera of Jal-Veesa, who works for the Toh-Reel-Ka. I drank Jal-Veesa sap in her house and saw Teel-Fen Weir, a Sedge-Wardens camp south of town. Heem-Jasa minds the young Hist there. Its scar was drained and sealed with grey paste three nights ago. Three Unbound Sap-Takers keep sap jars at a reed hide west of the weir. I took their note unseen. It orders jars brought to Karsh-Naal Camp by the next dark moon, stacked by the longhouse, for a Naga to pay for them, and says to seal every scar behind them. It is signed K. I told Heem-Jasa honestly that her tree may die. She thanked me and will teach me alchemy and sell me sap, swamp fungus and eggshells. I have the note, 50 gold, a lockpick and the Hist blessing. Next is Karsh-Naal Camp, the Naga camp in the marsh east of the weir. I do not know who K. or the Naga is, what the grey paste is, why they want the sap, or what Umbriel did beyond the 4E 48 story. Weeltul still has untried topics, and Heem-Jasa has a topic on Umbriel and one on Karsh-Naal Camp."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.1178522,
+ "minutes": 1.1,
+ "turns": 29,
+ "tokens": {
+  "input_tokens": 48,
+  "output_tokens": 5038,
+  "cache_read_input_tokens": 194002,
+  "cache_creation_input_tokens": 11994
+ }
+}

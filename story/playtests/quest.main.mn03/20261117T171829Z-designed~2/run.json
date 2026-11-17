@@ -1,0 +1,74 @@
+{
+ "quest": "quest.main.mn03",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn03.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": null,
+ "choose": "e-comfort",
+ "know": "story/playtests/quest.main.mn02/20261117T170313Z-designed/notes.md",
+ "created": "20261117T171829Z",
+ "stages": [
+  10,
+  20,
+  30,
+  40,
+  50,
+  60,
+  91
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "newworld/story/quests/main/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn02.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 7,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I am Tarin, a thief freed from the Owing barge by Vosh-Leera, root-herald of Jal-Veesa, who works for the Toh-Reel-Ka (Secret Warriors of the Xeech-Leel, rulers of the province). The Hists along the river are sickening, including Jal-Veesa Hist (dry bark, closed scar, cooling egg-pool). I delivered Sithis beard to Weeltul but it only warmed the pool. 2. Ask Vosh-Leera in her house in Jal-Veesa for her second task. 3. Go into her house and talk to her. I could also ask Weeltul about sap, scar, eggs or Umbriel. No choices yet. 4. I do not know why the trees sicken, or what Umbriel did beyond the 4E 48 story. I could ask Weeltul and Vosh-Leera.",
+  "go Vosh-Leera",
+  "talk Vosh-Leera",
+  "say 1",
+  "answer 1. Vosh-Leera gave me a cup of Jal-Veesa sap, drawn before the scar closed. Tree-minders drink it to ask the trees a question; the trees are joined at the root. She wants me to ask where the sickness is and tell her what I see. 2. Drink the sap here in her house, in front of her. 3. Drink it (use the cup), or decline; I could also talk to her more or Weeltul first. 4. I do not know what the dream will show or whether the sap is safe; I have the Hist blessing against poison. I can find out by drinking it.",
+  "use Cup of Hist Sap",
+  "look",
+  "journal",
+  "talk Vosh-Leera",
+  "say 1",
+  "answer 1. I drank the sap and saw a vision: a young grey Hist among pale stilt huts, a woven weir across a creek, and west of the weir on a reed bank a reed hide beside a lone dead tree with clay jars stacked in its shade. The trees showed me where the sickness is. 2. Tell Vosh-Leera what I saw, in her house. 3. Tell her everything in the vision via talking to her. No other choice visible. 4. I do not know where this place is, what the jars hold, or why the tree is dead. Vosh-Leera may know the place.",
+  "talk Vosh-Leera",
+  "say 1",
+  "say 2",
+  "say 3",
+  "answer 1. The vision showed Teel-Fen Weir, a Sedge-Wardens weir camp south of Jal-Veesa down the creek, where a young Hist grew from Jal-Veesa Hist roots. Jars by a hide mean someone is keeping sap, so something is amiss there. 2. Go to Teel-Fen Weir and speak to Heem-Jasa, the tree-minder, on the platform round the tree. 3. Go there and talk to Heem-Jasa first; be careful at the reed hide. 4. I do not know who keeps the sap in the jars or why, or whether the Sedge-Wardens can be trusted. I can ask Heem-Jasa.",
+  "go Heem-Jasa",
+  "talk Heem-Jasa",
+  "say 2",
+  "answer 1. Someone drained Heem-Jasa young Hist and sealed its scar with grey paste three nights ago. Strangers calling themselves the Unbound (three Sap-Takers) work at the reed hide west of the weir, keeping jars of sap. They are likely behind the sickness. 2. Take the Note to the Sap-Takers from the reed hide west of Teel-Fen Weir. 3. Fight them, shoot them from the reeds east of the hide (I have no bow), or creep round the open west side to the jars and note unseen. 4. I do not know who the Unbound really are, who sends them, what the grey paste is, or what the sap is for. The note may tell me.",
+  "take Note to the Sap-Takers",
+  "answer 1. I took the note: the crew master orders the Sap-Takers to bring jars to Karsh-Naal Camp and seal every scar behind them. 2. Return to Heem-Jasa at Teel-Fen Weir; she will ask whether her tree will live. 3. Answer her straight (she then teaches and sells to me) or ease her with a kind word (she will not deal with me after). I mean to comfort her. 4. I do not know who the master is, what Karsh-Naal Camp is or where, or whether the tree will live.",
+  "talk Heem-Jasa",
+  "say 6",
+  "say 4",
+  "answer 1. The quest is complete. I told Heem-Jasa her tree will live; she gave me three Cure Poison potions but will not teach or sell to me. The Unbound Sap-Takers drained and sealed Hist scars and take jars to Karsh-Naal Camp, a tribeless Naga camp in the marsh east of the weir. 2. Next, go to Karsh-Naal Camp to follow the jars, though nobody from the weir goes there. 3. Go there, or report back to Vosh-Leera first. 4. I do not know who the master of the Sap-Takers is, what the grey paste is, why sap is wanted, or whether the tree will really live.",
+  "answer I am Tarin, a thief freed by Vosh-Leera of Jal-Veesa, who works for the Toh-Reel-Ka. I drank Jal-Veesa sap at her house and saw Teel-Fen Weir, a Sedge-Wardens camp south of town. Heem-Jasa, minder of its young Hist, showed me the scar sealed with grey paste three nights ago. I crept to the reed hide and took the Note to the Sap-Takers: the master of the Unbound crew orders jars brought to Karsh-Naal Camp and every scar sealed behind them. I comforted Heem-Jasa by saying her tree will live, a lie I did not know to be true. She gave me three Cure Poison potions but will not teach or sell to me. I carry about 50 gold, 2 lockpicks, the Hist blessing and the potions. Unknown: who leads the Unbound, what the grey paste is, why sap is wanted, and whether the tree lives. Next lead is Karsh-Naal Camp, a tribeless Naga camp in the marsh east of the weir, which is dangerous. Weeltul and Vosh-Leera have more to tell."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.11295359999999999,
+ "minutes": 1.2,
+ "turns": 28,
+ "tokens": {
+  "input_tokens": 46,
+  "output_tokens": 4773,
+  "cache_read_input_tokens": 180156,
+  "cache_creation_input_tokens": 11779
+ }
+}
