@@ -134,6 +134,14 @@ things:
   source: 'stated alike in MN14 to MN16: from Vorannuhl (MN16)'
   where: carried
 placements:
+- ref: home.mn19.chalkmoth-keep
+  kind: marker
+  name: Keep of Fort Chalkmoth
+  anchor: {place: fort-chalkmoth, rule: navmesh, need: 'the keep, with its trainer, smith, bed and benches'}
+- ref: home.mn19.karsh-naal-longhouse
+  kind: marker
+  name: Karsh-Naal Longhouse
+  anchor: {place: tribal-camp-m2-m68, rule: navmesh, need: 'the camp''s longhouse and its cellar'}
 - ref: thing.mn19.eye-plinth
   kind: thing
   base:
@@ -509,7 +517,7 @@ stages:
   - setFlag:
     - flag.mn.no-hist-blessing
     - true
-  - giveHome: tribal-camp-m2-m68.longhouse
+  - giveHome: home.mn19.karsh-naal-longhouse
   ending: complete
   endingId: e-give
   information:
@@ -540,7 +548,7 @@ stages:
   - setFactionRank:
     - faction.toh-reel-ka
     - toh-nassa
-  - giveHome: fort-chalkmoth.keep
+  - giveHome: home.mn19.chalkmoth-keep
   - setFlag:
     - flag.mn.order-free-training
     - true

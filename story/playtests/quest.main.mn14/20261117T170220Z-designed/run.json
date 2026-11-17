@@ -1,0 +1,49 @@
+{
+ "quest": "quest.main.mn14",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn14.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "by force: kill the gate-captain and fight the garrison",
+ "choose": null,
+ "know": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/know-mn14.md",
+ "created": "20261117T170220Z",
+ "stages": [
+  10,
+  15,
+  30,
+  90
+ ],
+ "ended": "complete",
+ "milestones": 4,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I work for the Toh-Reel-Ka (Never-Writes-Twice is my officer). The Hist trees are sick, and the Unbound are draining sap. To use the Eye of Argonia at the Root I must open the gate at Teku-Sul Spire, which needs three seal-stones. This one is the thief stone in the warden vault at Blackrose Prison. 2. Get into Blackrose Prison past the gate-captain Corvus Ulvius, then reach the raj-kaal Okaz-Teel in Raj-Kaal Hall, who has the vault key on his belt. 3. Pay 300 gold toll, persuade him with words, duel him (fists and steel until one yields), or climb the walls unseen (risky), or fight everyone by force. Killing Corvus means the whole Rose fights me. I favour force/duel. 4. I do not know what the Imperial in the hall is, who the buyer is, or what is in the vault exactly. I can find out by talking to Corvus and going inside.",
+  "talk Corvus Ulvius",
+  "say 4",
+  "answer 1. Same mission for the Toh-Reel-Ka: get the thief seal-stone from Blackrose. Corvus accepted my duel; he fights until badly hurt, then yields and I enter as a guest. 2. Beat Corvus at the gate without killing him. 3. Fight him and win (he yields), or lose and reload; I could also have paid or persuaded, but I chose the duel. Killing him would bring the whole garrison. 4. Nothing new that I do not understand, except the Imperial buyer inside.",
+  "fight Corvus Ulvius win",
+  "answer 1. I killed Corvus instead of making him yield, so the whole garrison of Blackguards heirs now fights me. I still work for the Toh-Reel-Ka and need the thief seal-stone from the Warden vault. 2. Fight through the yard to Okaz-Teel in his hall, take the vault key from him, and open the Warden Vault door for the stone. 3. Kill Okaz-Teel for the key, or pick the vault Expert lock. 4. I do not know what the Imperial buyer wants or how strong the garrison is; I will see inside.",
+  "go Okaz-Teel",
+  "fight Okaz-Teel win",
+  "take Warden's Vault Key",
+  "use Door to Warden's Vault",
+  "take Warden's Chest",
+  "use Warden's Chest",
+  "take Seal-Stone of the Kings",
+  "answer 1. I got the thief seal-stone from the Warden Vault at Blackrose, after killing Corvus, Okaz-Teel and fighting the heirs. One of three stones for the Teku-Sul Spire gate, so the Eye can heal the Hist. 2. Fetch the other two: Gemin flooded vaults (walk from Jal-Veesa, rootworm) and Vorannuhl deepest hall (boat to Noota Nara). Then take all to the Spire. 3. Either order. 4. I still do not know what Ennodius Vanin the Collector will do, or what moans in Fort Chalkmoth cellar.",
+  "answer I hold the Seal-Stone of the Kings from Blackrose Warden Vault (and the vault key). I killed Corvus and Okaz-Teel, so the Rose is hostile; Ennodius Vanin the Collector was in the hall and I did not deal with him. Two stones remain: Gemin flooded vaults (walk from Jal-Veesa, rootworm) and Vorannuhl deepest hall (boat to Noota Nara). Then bring all three to the gate at Teku-Sul Spire off Lilmoth. Open questions: what moans in the Fort Chalkmoth cellar, why Unbound seal trees they drain, and how Nesh-Deeka knows the Unbound. Never-Writes-Twice is my officer in Helstrom."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.0702494,
+ "minutes": 0.6,
+ "turns": 16,
+ "tokens": {
+  "input_tokens": 28,
+  "output_tokens": 2817,
+  "cache_read_input_tokens": 100274,
+  "cache_creation_input_tokens": 7999
+ }
+}

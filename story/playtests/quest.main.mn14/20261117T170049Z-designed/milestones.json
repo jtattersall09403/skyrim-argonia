@@ -1,0 +1,66 @@
+[
+ {
+  "stage": 10,
+  "kind": "start",
+  "ending": null,
+  "title": "The Thief's Stone",
+  "journal": "Never-Writes-Twice sent me after the three seal-stones. A dead thief's stone lies in the warden's vault at Blackrose Prison, whose people, the Blackguards' heirs, attack strangers on sight. Their gate-captain stands outside the gate. I'm to get in: as a guest past the gate-captain (a toll, words or a duel), unseen past the walls, or by force.",
+  "objectives": [
+   "Get into Blackrose Prison; the gate-captain stands at the gate. (marker: Corvus Ulvius, Blackrose Prison)"
+  ],
+  "plan": {
+   "going": "I am a Reel-Ka of the Toh-Reel-Ka, hunting the three seal-stones that open the kings' gate at Teku-Sul before the Unbound get them. One lies in the warden's vault in Blackrose Prison. The prison's people attack strangers.",
+   "next": "get into the prison; the gate-captain outside the gate is the first person to deal with",
+   "ways": "pay the gate-captain 300 gold, persuade him (Speech 75) or duel him until he yields: each makes me a guest, and the garrison stops attacking me; or slip past the walls unseen (Sneak, Invisibility), and they attack if they see me; or fight my way in (any fighting skill), and the whole garrison fights me"
+  },
+  "answers": [
+   "I work for the Toh-Reel-Ka, as a Reel-Ka. Hist trees are sickening; the Unbound drain them. I must gather three seal-stones to open the gate at Teku-Sul Spire and reach the Eye of Argonia. This one is a dead thief stone in the warden vault at Blackrose Prison.",
+   "Get into Blackrose Prison past gate-captain Corvus Ulvius, then reach the vault in Raj-Kaal Okaz-Teel hall. The key is on his belt.",
+   "Pay 300 gold, persuade him with words, duel him, or sneak over the walls unseen or fight by force (risky, whole Rose attacks). Also Corvus says an Imperial in the hall wants to buy what is in the vault.",
+   "I do not know what the vault holds exactly beyond the stone, or who the Imperial buyer is; I can ask people inside."
+  ],
+  "raw": "1. I work for the Toh-Reel-Ka, as a Reel-Ka. Hist trees are sickening; the Unbound drain them. I must gather three seal-stones to open the gate at Teku-Sul Spire and reach the Eye of Argonia. This one is a dead thief stone in the warden vault at Blackrose Prison. 2. Get into Blackrose Prison past gate-captain Corvus Ulvius, then reach the vault in Raj-Kaal Okaz-Teel hall. The key is on his belt. 3. Pay 300 gold, persuade him with words, duel him, or sneak over the walls unseen or fight by force (risky, whole Rose attacks). Also Corvus says an Imperial in the hall wants to buy what is in the vault. 4. I do not know what the vault holds exactly beyond the stone, or who the Imperial buyer is; I can ask people inside."
+ },
+ {
+  "stage": 20,
+  "kind": "stage",
+  "ending": null,
+  "title": "The Thief's Stone",
+  "journal": "Corvus Ulvius let me through the gate as a guest, and the Blackguards' heirs will not attack me now. The vault's key is on Okaz-Teel, the Naga raj-kaal in his hall. I'm to get the stone: buy the key from him for 1,000 gold, lift it from his belt, or pick the vault's lock at night when the hall is quiet. A theft that is seen turns the garrison on me. The Collector, Ennodius Vanin, waits in the hall as the chief's guest; his ring of Kothringi silver helps a hand at locks and pockets, but a dead man gives no errands.",
+  "objectives": [
+   "Take the seal-stone from the Warden's Vault in Okaz-Teel's hall. (marker: Door to Warden's Vault, Okaz-Teel)"
+  ],
+  "plan": {
+   "going": "I am inside as a guest; the garrison does not attack me",
+   "next": "get the stone from the warden's vault in Okaz-Teel's hall",
+   "ways": "buy the key from Okaz-Teel for 1,000 gold; pickpocket it from him; pick the Expert lock at night; any theft seen turns the garrison on me. The Collector is here too: I can talk to him, lift his ring (hard), kill him for it (losing his side errand) or leave him"
+  },
+  "answers": [
+   "I paid 300 gold and am now a guest at Blackrose. The seal-stone is in the Warden Vault in raj-kaal Okaz-Teel hall. The Collector, Ennodius Vanin, is also there as the chief guest.",
+   "Go into the hall and get the stone from the Warden Vault.",
+   "Buy the key from Okaz-Teel for 1,000 gold (I do not have that), pickpocket the key from his belt, or pick the vault lock at night when the hall is quiet. Being seen stealing turns the garrison on me. The Collector ring of Kothringi silver helps with locks and pockets, but I should not kill him.",
+   "I do not know what the Collector wants here exactly or what the ring does; I can talk to him and Okaz-Teel."
+  ],
+  "raw": "1. I paid 300 gold and am now a guest at Blackrose. The seal-stone is in the Warden Vault in raj-kaal Okaz-Teel hall. The Collector, Ennodius Vanin, is also there as the chief guest. 2. Go into the hall and get the stone from the Warden Vault. 3. Buy the key from Okaz-Teel for 1,000 gold (I do not have that), pickpocket the key from his belt, or pick the vault lock at night when the hall is quiet. Being seen stealing turns the garrison on me. The Collector ring of Kothringi silver helps with locks and pockets, but I should not kill him. 4. I do not know what the Collector wants here exactly or what the ring does; I can talk to him and Okaz-Teel."
+ },
+ {
+  "stage": 90,
+  "kind": "ending",
+  "ending": "complete",
+  "title": "The Thief's Stone",
+  "journal": "I took the thief's seal-stone from the warden's vault in Blackrose Prison. Two stones are still out, in the flooded vaults of Gemin and the deepest hall of Vorannuhl, and both are still marked. I'm to take them.",
+  "objectives": [],
+  "plan": {
+   "going": "I took the thief's seal-stone from the warden's vault in Blackrose Prison. Two stones are still out, in the flooded vaults of Gemin and the deepest hall of Vorannuhl, and both are still marked. I'm to take them.",
+   "next": "nothing more in this quest; the next quests entry carries the step",
+   "ways": "none"
+  },
+  "answers": [
+   "I took the first seal-stone from Blackrose for the Toh-Reel-Ka, to open the gate at Teku-Sul Spire and reach the Eye to heal the Hist.",
+   "Take the other two stones: Gemin flooded vaults (walk from Jal-Veesa) and Vorannuhl deepest hall (boat near Noota Nara), before the Unbound.",
+   "Either order.",
+   "Still unknown: what moans in Fort Chalkmoth cellar, why Nesh-Deeka knows the Unbound, and why Cuts-the-Old-Knot seals trees she drains."
+  ],
+  "raw": "1. I took the first seal-stone from Blackrose for the Toh-Reel-Ka, to open the gate at Teku-Sul Spire and reach the Eye to heal the Hist. 2. Take the other two stones: Gemin flooded vaults (walk from Jal-Veesa) and Vorannuhl deepest hall (boat near Noota Nara), before the Unbound. 3. Either order. 4. Still unknown: what moans in Fort Chalkmoth cellar, why Nesh-Deeka knows the Unbound, and why Cuts-the-Old-Knot seals trees she drains."
+ }
+]

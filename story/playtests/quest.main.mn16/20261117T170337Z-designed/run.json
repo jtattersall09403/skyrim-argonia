@@ -1,0 +1,43 @@
+{
+ "quest": "quest.main.mn16",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn16.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": null,
+ "choose": null,
+ "know": "/home/ubuntu/skyrim-argonia/.claude/worktrees/agent-a7ed3383f725be781/story/playtests/quest.main.mn15/20261117T170305Z-designed/notes.md",
+ "created": "20261117T170337Z",
+ "stages": [
+  10,
+  20,
+  90
+ ],
+ "ended": "complete",
+ "milestones": 3,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I work for the Toh-Reel-Ka as a Reel-Ka. I already hold two of three seal-stones (Blackrose Prison and Gemin) and the Warden Vault Key. The third stone is in the vault of Vorannuhl deep halls behind a bronze door. 2. Get the Bronze Key from Hesh-Var, a Sarpa raider in the outer yard of Vorannuhl, then open the vault door. 3. Lift the key from him unseen (pickpocket), or kill him and take it. There are also a Sarpa Raider and Plague-Dead nearby. 4. I do not know exactly what Sarpa raiders or the Plague-Dead are in this setting; I could ask people here or look around.",
+  "look",
+  "pickpocket Hesh-Var win",
+  "answer 1. I lifted the Bronze Key from Hesh-Var unseen. Plague-dead of the old household walk the deep halls and their lord, a wraith, guards the vault with the third seal-stone. 2. Go to the Door to the Vault of the Household, open it with the key, take the seal-stone. 3. Fight the dead, slip past them, or turn them with Restoration. 4. I do not know what the wraith lord is called or how strong it is; I may learn by going down and looking.",
+  "use Door to Vault of the Household",
+  "take Household's Hoard",
+  "use Household's Hoard",
+  "take Seal-Stone of the Kings",
+  "answer 1. I took the third seal-stone from the Vorannuhl vault; the wraith lord did not stop me. I work for the Toh-Reel-Ka. 2. The journal says two stones are still out at Blackrose Prison and Gemin, but I believed I already held those; I am unsure. Next from my notes: dive from Bell Station off Lilmoth to the Teku-Sul gate. 3. Check the journal and my inventory to see what I carry, then head to Lilmoth. 4. The journal wording about Blackrose and Gemin still being marked confuses me; I can check the journal.",
+  "answer I work for the Toh-Reel-Ka as a Reel-Ka. I now carry the Vorannuhl Seal-Stone of the Kings (took it from the Household Hoard; the wraith lord in the vault did not interfere), plus the Bronze Key (lifted from Hesh-Var by pickpocket) and the Warden Vault Key. My notes say I hold the Blackrose and Gemin stones too, but the final journal line says both are still marked as to take, so check the journal and inventory to confirm. Next: dive from Bell Station off Lilmoth to the Teku-Sul gate. The Tablet of the Kings says use the Eye at the Root in place and never lift it. Open questions: Fort Chalkmoth cellar moan and key, how Nesh-Deeka knows the Unbound, why Cuts-the-Old-Knot seals trees she drains (she may want the Eye lifted)."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.04911510000000001,
+ "minutes": 0.5,
+ "turns": 11,
+ "tokens": {
+  "input_tokens": 20,
+  "output_tokens": 2162,
+  "cache_read_input_tokens": 51871,
+  "cache_creation_input_tokens": 5567
+ }
+}

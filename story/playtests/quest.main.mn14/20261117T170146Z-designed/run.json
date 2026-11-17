@@ -1,0 +1,45 @@
+{
+ "quest": "quest.main.mn14",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn14.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "unseen: sneak past the gate without dealing with the gate-captain",
+ "choose": null,
+ "know": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/know-mn14.md",
+ "created": "20261117T170146Z",
+ "stages": [
+  10,
+  25,
+  90
+ ],
+ "ended": "complete",
+ "milestones": 3,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I work for the Toh-Reel-Ka (Never-Writes-Twice is my officer). The Hist trees are sick and I need three seal-stones to open the gate at Teku-Sul Spire to reach the Eye of Argonia. The Unbound are racing me for them. 2. Get into Blackrose Prison and take the thief stone from the warden vault in Raj-Kaal Hall, held by raj-kaal Okaz-Teel who keeps the key on his belt. 3. As a guest past gate-captain Corvus Ulvius: pay 300 gold, persuade him with words, or duel him. Or sneak over the walls unseen (risky, fair game if caught), or force. 4. I do not fully understand how I get the vault key from Okaz-Teel, or who the Imperial buyer in the hall is. I could find out by talking to people inside.",
+  "look",
+  "use Door to Raj-Kaal's Hall",
+  "answer 1. I slipped into Raj-Kaal Hall unseen. The seal-stone is in the Warden Vault here; Okaz-Teel the Naga holds the key. Ennodius Vanin the Collector is here too, he wants the vault contents. 2. Take the stone from the Warden Vault unseen. 3. Pickpocket the key from Okaz-Teel, pick the Expert lock on the vault door, or fight Okaz-Teel (the whole garrison would then attack). 4. Nothing new; I do not know what Vanin is up to in here, I could talk to him.",
+  "pick Door to Warden's Vault win",
+  "pickpocket Okaz-Teel win",
+  "use Door to Warden's Vault",
+  "take Warden's Chest",
+  "use Warden's Chest",
+  "take Seal-Stone of the Kings",
+  "answer 1. NOTES: I work for the Toh-Reel-Ka (officer Never-Writes-Twice, Helstrom). I need three seal-stones for the gate at Teku-Sul Spire to reach the Eye of Argonia and heal the sick Hist trees; the Unbound (Cuts-the-Old-Knot) are racing me. I now hold the Seal-Stone of the Kings from Blackrose Prison, got by slipping past the gate-captain, lifting the vault key from Okaz-Teel unseen and opening the Warden Vault. Ennodius Vanin the Collector was in the hall. 2. Next, get the stones from the flooded vaults of Gemin (walk from Jal-Veesa, rootworm) and the deepest hall of Vorannuhl (near Noota Nara, by boat), then return to the Spire. 3. Either order. 4. Still unknown: why the Unbound seal trees they drain, and what moans in Fort Chalkmoth cellar; I could find out by further investigation.",
+  "answer I am a Reel-Ka of the Toh-Reel-Ka (officer Never-Writes-Twice, Helstrom). I have the Seal-Stone of the Kings from Blackrose Prison. I got it by walking in past the gate-captain, lifting the vault key off Okaz-Teel, and opening the Warden Vault. Two stones are left: the flooded vaults of Gemin (walk from Jal-Veesa, rootworm) and the deepest hall of Vorannuhl (near Noota Nara, by boat). All three go in the sockets of the gate at Teku-Sul Spire, the drowned tower off Lilmoth. The Eye of Argonia is behind that gate, and the order wants it used to heal the Hist. The Unbound want the stones too. Ennodius Vanin, the Collector, was at Blackrose and is after the same relics. Still open: why the Unbound seal the trees they drain, what moans in the Fort Chalkmoth cellar and where its key is, and how Nesh-Deeka knows so much about the Unbound."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.0626759,
+ "minutes": 0.6,
+ "turns": 13,
+ "tokens": {
+  "input_tokens": 24,
+  "output_tokens": 2514,
+  "cache_read_input_tokens": 79119,
+  "cache_creation_input_tokens": 7394
+ }
+}

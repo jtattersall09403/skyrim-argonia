@@ -1,0 +1,40 @@
+{
+ "quest": "quest.main.mn15",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn15.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": null,
+ "choose": null,
+ "know": "/home/ubuntu/skyrim-argonia/.claude/worktrees/agent-a7ed3383f725be781/story/playtests/quest.main.mn14/20261117T170049Z-designed/notes.md",
+ "created": "20261117T170305Z",
+ "stages": [
+  10,
+  90
+ ],
+ "ended": "complete",
+ "milestones": 2,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I work for the Toh-Reel-Ka as a Reel-Ka. I must gather three seal-stones that open the gate at Teku-Sul Spire so I can use the Eye of Argonia at the Root to heal the sick Hist trees. I already hold the Seal-Stone of the Kings from Blackrose Prison. Now I am at Gemin for the second stone. 2. Take the seal-stone from the drowned lowest hall of Gemin, and read the Tablet of the Kings beside it. 3. Fight through the dead, slip past them, or turn the dead with Restoration. There is a Warden of the Vaults, an Unbound Rearguard and Restless Dead here. 4. I do not fully understand what the Warden of the Vaults wants, why Unbound are here, or what the Tablet says. I can find out by talking to the Warden and reading the tablet.",
+  "look",
+  "talk Warden of the Vaults",
+  "talk Unbound Rearguard",
+  "read Tablet of the Kings",
+  "take Seal-Stone of the Kings",
+  "answer Notes: I took the second seal-stone (Seal-Stone of the Kings, Gemin) without a fight; nobody would talk. I now hold two stones (Blackrose and Gemin), plus the Warden Vault Key. The Tablet says: the Eye at the Root, used where it sits, strengthens every Hist tree; lifted from its place, it cuts every tree off from every other and the weak die alone. So I must USE it in place, never lift it. Still to get: the Vorannuhl stone (deepest hall, boat near Noota Nara); the journal also oddly still lists Blackrose as marked, though I have that stone. Then dive from Bell Station off Lilmoth to Teku-Sul gate. Open questions: Fort Chalkmoth cellar moan and key, how Nesh-Deeka knows the Unbound, why Cuts-the-Old-Knot seals trees she drains (maybe she wants the Eye lifted).",
+  "answer Notes: I work for the Toh-Reel-Ka as a Reel-Ka. I hold two of three seal-stones (Blackrose Prison and Gemin) and the Warden Vault Key. Gemin stone taken with no fight. The Tablet of the Kings says the Eye at the Root, used where it sits, strengthens every Hist tree; lifted, it cuts all trees from each other and the weak die. So use it in place, never lift it. Still to get: the Vorannuhl stone (deepest hall, boat near Noota Nara). Then dive from Bell Station off Lilmoth to the Teku-Sul gate. Open questions: the Fort Chalkmoth cellar moan and key, how Nesh-Deeka knows the Unbound, why Cuts-the-Old-Knot seals trees she drains (she may want the Eye lifted)."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.0452525,
+ "minutes": 0.4,
+ "turns": 9,
+ "tokens": {
+  "input_tokens": 18,
+  "output_tokens": 2022,
+  "cache_read_input_tokens": 44285,
+  "cache_creation_input_tokens": 5142
+ }
+}
