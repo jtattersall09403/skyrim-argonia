@@ -1,0 +1,98 @@
+{
+ "quest": "quest.main.mn12",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn12.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "pickpocket",
+ "choose": null,
+ "know": "story/playtests/quest.main.mn11/20261117T165846Z-designed/notes.md",
+ "created": "20261117T171639Z",
+ "stages": [
+  10,
+  25
+ ],
+ "ended": "stopped",
+ "after": [
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn04.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn05.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn06.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn07.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn08.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn09.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn10.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn11.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 2,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I am hunting a lead on the Unbound and the seven drowned towers. A wounded Unbound scout, Tah-Leesh, told me to ask what moans in the cellar of Fort Chalkmoth. This is my own errand, not the order. 2. Get into Fort Chalkmoth keep and see its cellar, here at the fort on Chixathe Mesa. 3. Ask the wall captain Sakeeus-Wan for leave to enter, or find another way in unseen (I favour stealth/pickpocketing, maybe a key from someone). The keep door is locked; the guardroom door is a marker. 4. I do not know what moans in the cellar, who the Sarpa Raiders here are, or what Cuts-the-Old-Knot and Toh-Reel-Ka are exactly. I could find out by talking to people here and seeing the cellar.",
+  "look",
+  "talk Sakeeus-Wan",
+  "say 2",
+  "say 3",
+  "pickpocket Sakeeus-Wan win",
+  "journal",
+  "use Door to Fort Chalkmoth Guardroom",
+  "answer 1. I slipped unseen through the yard trapdoor into the cellar guardroom of Fort Chalkmoth. If the garrison sees me they attack. I am still on my own errand, following the Unbound scout hint about what moans in the cellar. 2. Look in the quartermaster store up the stair (a Jar of Hist Sap marked, Jal-Veesa Knot), speak to the gaoler Tsleel-Vaku, and try the locked cellar door. 3. Talk to the gaoler, search the store, try or pick the locked cellar door (I have 2 lockpicks), or pickpocket the gaoler for a key. 4. I do not understand what the Jal-Veesa Knot is or why Hist Sap is here, nor what moans in the cellar. I could learn by looking at the store and talking to the gaoler.",
+  "pickpocket Tsleel-Vaku win",
+  "use Door to Quartermaster's Store",
+  "read Jar of Hist Sap",
+  "take Jar of Hist Sap",
+  "go Tsleel-Vaku",
+  "say 2 pass",
+  "say 3 pass",
+  "pick Door to Cellar Door win",
+  "journal",
+  "go Never-Writes-Twice",
+  "go Helstrom"
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.08764309999999999,
+ "minutes": 0.9,
+ "turns": 22,
+ "tokens": {
+  "input_tokens": 40,
+  "output_tokens": 3430,
+  "cache_read_input_tokens": 151111,
+  "cache_creation_input_tokens": 9538
+ }
+}

@@ -1,0 +1,95 @@
+[
+ {
+  "stage": 10,
+  "kind": "start",
+  "ending": null,
+  "title": "The Cellar Door",
+  "journal": "Never-Writes-Twice says Fort Chalkmoth is a fort like any other, but a wounded Unbound scout told me to ask what moans in its cellar. This is my own errand, not the order's; the hunt waits at Bell Station and either may come first. Fort Chalkmoth is the Archwardens' fort on the Chixathe Mesa above Noota Nara. I'm to get into the fort and see its cellar: the wall captain at the gate may let me in, or I may find another way in unseen.",
+  "objectives": [
+   "Get into Fort Chalkmoth's keep, by the wall captain's leave or unseen. (marker: Sakeeus-Wan, Door to Fort Chalkmoth Guardroom)"
+  ],
+  "plan": {
+   "going": "This is my own errand, to see what moans in the cellar of Fort Chalkmoth; the order's hunt, at Bell Station, is open beside it and either may come first.",
+   "next": "Get into Fort Chalkmoth's keep, on the mesa above Noota Nara.",
+   "ways": "Ask the wall captain at the gate for leave, or go in unseen by the trapdoor in the yard."
+  },
+  "answers": [
+   "I am hunting the Unbound/Seal trail for the order. A wounded Unbound scout, Tah-Leesh, told me to ask what moans in the cellar of Fort Chalkmoth, an Archwarden fort. Never-Writes-Twice dismissed it. This is my own side errand; the main hunt is at Bell Station.",
+   "Get into the fort keep and see its cellar, starting here at Fort Chalkmoth.",
+   "Ask the wall captain Sakeeus-Wan for leave to enter, or find another way in unseen; there is a locked keep door and a guardroom door.",
+   "I do not know who the Sarpa Raiders here are or what moans in the cellar. I could find out by talking to Sakeeus-Wan and looking around."
+  ],
+  "raw": "1. I am hunting the Unbound/Seal trail for the order. A wounded Unbound scout, Tah-Leesh, told me to ask what moans in the cellar of Fort Chalkmoth, an Archwarden fort. Never-Writes-Twice dismissed it. This is my own side errand; the main hunt is at Bell Station. 2. Get into the fort keep and see its cellar, starting here at Fort Chalkmoth. 3. Ask the wall captain Sakeeus-Wan for leave to enter, or find another way in unseen; there is a locked keep door and a guardroom door. 4. I do not know who the Sarpa Raiders here are or what moans in the cellar. I could find out by talking to Sakeeus-Wan and looking around."
+ },
+ {
+  "stage": 15,
+  "kind": "stage",
+  "ending": null,
+  "title": "The Cellar Door",
+  "journal": "The wall captain, Sakeeus-Wan, says a Toh-Wo may sleep in the barracks, but the keep stays shut to strangers while three Sarpa raiders rob the chalk carts on the western approach. I'm to kill the three raiders; then he will open the keep and pay me. I can still go in unseen by the trapdoor in the yard instead.",
+  "objectives": [
+   "Kill the three Sarpa raiders on Fort Chalkmoth's western approach. (marker: Sarpa Raider, Sarpa Raider, Sarpa Raider)",
+   "Tell the wall captain the raiders are dead. (marker: Sakeeus-Wan)"
+  ],
+  "plan": {
+   "going": "The captain will open the keep once the raiders on the western approach are dead.",
+   "next": "Kill the three Sarpa raiders, then tell the captain.",
+   "ways": "Fight the raiders (any weapon or magic), or skip the captain and go in by the trapdoor unseen."
+  },
+  "answers": [
+   "The wall captain will open the keep only if I kill three Sarpa raiders robbing chalk carts on the western approach, and pay 100 gold. I want to see the cellar for the Unbound scout hint.",
+   "Kill the three raiders on the western approach, then report to Sakeeus-Wan.",
+   "Fight the raiders for the captain, or sneak in by the trapdoor in the yard.",
+   "Nothing major; I do not know what is in the cellar yet."
+  ],
+  "raw": "1. The wall captain will open the keep only if I kill three Sarpa raiders robbing chalk carts on the western approach, and pay 100 gold. I want to see the cellar for the Unbound scout hint. 2. Kill the three raiders on the western approach, then report to Sakeeus-Wan. 3. Fight the raiders for the captain, or sneak in by the trapdoor in the yard. 4. Nothing major; I do not know what is in the cellar yet."
+ },
+ {
+  "stage": 20,
+  "kind": "stage",
+  "ending": null,
+  "title": "The Cellar Door",
+  "journal": "I killed the Sarpa raiders, and the wall captain gave me the key to the keep and a hundred gold. The stair down to the cellar starts in the quartermaster's store, inside the keep, behind a good lock; the Dunmer quartermaster, Theyne Indarys, carries its key. I'm to get into the store and go down to the cellar. I may pick the lock or lift his key.",
+  "objectives": [
+   "Look at the stack of sap jars by the cellar stair in the quartermaster's store. (marker: Door to Quartermaster's Store, Theyne Indarys, Stack of Sap Jars (Jal-Veesa Knot))",
+   "Speak to the gaoler at the foot of the cellar stair. (marker: Tsleel-Vaku)",
+   "Try the cellar door. (marker: Door to Cellar Door)"
+  ],
+  "plan": {
+   "going": "I am in the keep by the captain's leave. The cellar stair starts in the quartermaster's store.",
+   "next": "Three things, in any order: look in the store, speak to the gaoler at the stair's foot, try the cellar door.",
+   "ways": "Pick the store's Adept lock or lift the quartermaster's key; persuade the gaoler or test him with Illusion for more (optional). A theft seen, or an attack on the gaoler, sets the garrison on me.",
+   "terms": [
+    "Jal-Veesa's knot: the jar's name and text; the quartermaster's line",
+    "the gaoler: his line: a gaoler of the Toh-Reel-Ka who keeps the inner door"
+   ]
+  },
+  "answers": [
+   "I cleared the raiders and got the keep key and 100 gold. The cellar stair is in the quartermaster Theyne Indarys store, and the captain warns that entering the store is theft.",
+   "Go into the keep, reach the store, look at the sap jars, speak to gaoler Tsleel-Vaku at the stair foot, try the cellar door.",
+   "Pick the store lock, lift the quartermaster key, or perhaps ask him.",
+   "I do not know what Jal-Veesa Knot sap jars mean, or what moans below; I will look and ask."
+  ],
+  "raw": "1. I cleared the raiders and got the keep key and 100 gold. The cellar stair is in the quartermaster Theyne Indarys store, and the captain warns that entering the store is theft. 2. Go into the keep, reach the store, look at the sap jars, speak to gaoler Tsleel-Vaku at the stair foot, try the cellar door. 3. Pick the store lock, lift the quartermaster key, or perhaps ask him. 4. I do not know what Jal-Veesa Knot sap jars mean, or what moans below; I will look and ask."
+ },
+ {
+  "stage": 90,
+  "kind": "ending",
+  "ending": "complete",
+  "title": "The Cellar Door",
+  "journal": "Jars of Hist sap marked with Jal-Veesa's knot are stacked by the cellar stair, in a fort with no Hist of its own. The order's gaoler turned me away from the inner door, Toh-Wo or not, and said Never-Writes-Twice keeps its key. Behind the door, something moans. Who is down there, and why the order feeds them sap, I cannot learn here. I'm to go back to the order's hunt for the drowned tower that Bell Station's divers know.",
+  "objectives": [],
+  "plan": {
+   "going": "The cellar holds people who moan behind a locked door, fed on sap from Jal-Veesa; Never-Writes-Twice keeps the key; why is an open question.",
+   "next": "Go back to the hunt at Bell Station, east of Lilmoth.",
+   "ways": "One way on."
+  },
+  "answers": [
+   "The order stores Hist sap jars tied with Jal-Veesa knot by a cellar stair in a fort with no Hist; something moans behind a door the gaoler guards and Never-Writes-Twice holds the key to. She dismissed the fort to me, which is suspicious.",
+   "Go back to the hunt: Bell Station, east of Lilmoth by boat, to ask the divers which drowned tower is marked.",
+   "Go to Bell Station now; or confront Never-Writes-Twice in Helstrom about the cellar and key.",
+   "I do not know who or what is in the cellar or why the order feeds it sap. I might learn it from Never-Writes-Twice or Jal-Veesa at Noota Nara."
+  ],
+  "raw": "1. The order stores Hist sap jars tied with Jal-Veesa knot by a cellar stair in a fort with no Hist; something moans behind a door the gaoler guards and Never-Writes-Twice holds the key to. She dismissed the fort to me, which is suspicious. 2. Go back to the hunt: Bell Station, east of Lilmoth by boat, to ask the divers which drowned tower is marked. 3. Go to Bell Station now; or confront Never-Writes-Twice in Helstrom about the cellar and key. 4. I do not know who or what is in the cellar or why the order feeds it sap. I might learn it from Never-Writes-Twice or Jal-Veesa at Noota Nara."
+ }
+]

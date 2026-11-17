@@ -1,0 +1,105 @@
+{
+ "quest": "quest.main.mn12",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn12.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "trapdoor",
+ "choose": null,
+ "know": "story/playtests/quest.main.mn11/20261117T165846Z-designed/notes.md",
+ "created": "20261117T171920Z",
+ "stages": [
+  10,
+  15,
+  25,
+  91
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn04.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn05.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn06.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn07.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn08.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn09.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn10.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn11.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn13.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 4,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I am hunting the seven marked towers for the Seal puzzle; a wounded Unbound scout, Tah-Leesh, told me to ask what moans in the cellar of Fort Chalkmoth. This is my own errand, not the order main hunt. Never-Writes-Twice dismissed it, which seems suspicious. 2. Get into Fort Chalkmoth keep and see its cellar, at Chixathe Mesa above Noota Nara. 3. Ask the wall captain Sakeeus-Wan for leave to enter, or find another way in unseen (the guardroom door, or the locked keep door). 4. I do not know what moans in the cellar, or who Cuts-the-Old-Knot is exactly; I could find out by asking the captain and exploring the cellar.",
+  "talk Sakeeus-Wan",
+  "say 2",
+  "say 3",
+  "say 1",
+  "answer 1. I seek the cellar of Fort Chalkmoth on my own errand. The captain Sakeeus-Wan will open the keep only if I kill three Sarpa raiders robbing carts on the western approach, then pays 100 gold. 2. Either kill the raiders and report back to him, or go in unseen. 3. Fight the three raiders for the captain, or use the trapdoor in the yard to slip in unseen. 4. I do not know what the cellar holds or where exactly the trapdoor is; I will look around the yard.",
+  "look",
+  "look",
+  "use Door to Fort Chalkmoth Guardroom",
+  "answer 1. I got into the cellar guardroom unseen through the yard trapdoor. If the garrison sees me they attack. I am investigating what moans in the cellar for the Unbound scout hint, on my own errand. 2. Look at the sap jars in the quartermaster store (marked Jal-Veesa Knot), talk to gaoler Tsleel-Vaku, and try the locked cellar door. 3. Talk to the gaoler, inspect the jars, try the door; picking the lock is possible. 4. I do not know what Jal-Veesa Knot means or what the sap jars are for; I can look at them and ask the gaoler.",
+  "talk Tsleel-Vaku",
+  "say 4",
+  "say 2 pass",
+  "say 3 pass",
+  "use Door to Quartermaster's Store",
+  "read Stack of Sap Jars",
+  "go Door to Cellar Door",
+  "use Door to Fort Chalkmoth Guardroom",
+  "use Door to Cellar Door",
+  "answer 1. The quest is done: the cellar of Fort Chalkmoth is held shut by the order, Hist sap jars marked with Jal-Veesa knot are stacked by the stair though the fort has no Hist, and something moans behind the locked door. Never-Writes-Twice keeps the key, and she dismissed it earlier. 2. Return to the hunt for the seal-stones: Bell Station near Lilmoth to learn which drowned tower is marked. 3. Go to Bell Station by boat from Lilmoth; or try to learn more about the cellar later, e.g. ask Never-Writes-Twice or pick the lock. 4. I do not know who is held in the cellar or why the order feeds them sap; I might ask Never-Writes-Twice or Jal-Veesa tree-minder.",
+  "answer Notes: I entered Fort Chalkmoth unseen via the yard trapdoor, which leads to the cellar guardroom. Captain Sakeeus-Wan offered to open the keep and pay 100 gold if I killed three Sarpa raiders, but I did not do it. In the quartermaster store are Hist sap jars with Jal-Veesa tree-minder knot, though the fort has no Hist. The gaoler Tsleel-Vaku refused me, and persuasion and illusion both failed. The cellar door is locked and needs a key, which Never-Writes-Twice keeps, or it can be picked. Something moans behind it. I do not know who is down there or why the order feeds them sap. I still carry the Unbounds Recipe for the Seal. Next: go to Lilmoth, take a boat to Bell Station and ask the divers which drowned tower is marked. Vanin is digging ahead of us. Later I could press Never-Writes-Twice or Jal-Veesa about the cellar."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.09073659999999999,
+ "minutes": 0.9,
+ "turns": 22,
+ "tokens": {
+  "input_tokens": 38,
+  "output_tokens": 3594,
+  "cache_read_input_tokens": 147046,
+  "cache_creation_input_tokens": 10004
+ }
+}

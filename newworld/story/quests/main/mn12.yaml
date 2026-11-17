@@ -132,10 +132,10 @@ placements:
 - {ref: npc.mn.chalkmoth-captain, kind: person, name: Sakeeus-Wan, base: {kind: template_person, id: invented}, enabled: true,
   anchor: {place: fort-chalkmoth, rule: navmesh, need: inside the gatehouse}}
 - {ref: npc.mn.chalkmoth-quartermaster, kind: person, name: Theyne Indarys, base: {kind: template_person, id: invented},
-  enabled: true, anchor: {place: Fort Chalkmoth Keep, rule: navmesh, need: 'the keep''s hall, at his counter beside the store
+  enabled: true, anchor: {place: fort-chalkmoth, room: Fort Chalkmoth Keep, rule: navmesh, need: 'the keep''s hall, at his counter beside the store
       door'}}
 - {ref: npc.mn.tsleel-vaku, kind: person, name: Tsleel-Vaku, base: {kind: template_person, id: invented}, enabled: true,
-  anchor: {place: Fort Chalkmoth Guardroom, rule: navmesh, need: 'the guardroom at the foot of the stair, a step from the trapdoor''s
+  anchor: {place: fort-chalkmoth, room: Fort Chalkmoth Guardroom, rule: navmesh, need: 'the guardroom at the foot of the stair, a step from the trapdoor''s
       ladder and the stair''s foot, before the inner door'}}
 - {ref: npc.mn.sarpa-raider-1, kind: person, name: Sarpa Raider, level: 20, hostile: true, base: {kind: template_person,
     id: King of the Murkmire Argonian raider (our Sarpa binding)}, anchor: {place: fort-chalkmoth, rule: navmesh, need: the
@@ -149,23 +149,28 @@ placements:
 - {ref: door.mn12.keep, kind: door, placeName: Fort Chalkmoth Keep, lock: {level: key, key: thing.mn12.keep-key}, owner: faction.archwardens,
   anchor: {place: fort-chalkmoth, rule: surface, need: the keep's door off the yard}}
 - {ref: door.mn12.store, kind: door, placeName: Quartermaster's Store, lock: {level: adept, key: thing.mn12.store-key},
-  owner: npc.mn.chalkmoth-quartermaster, anchor: {place: Fort Chalkmoth Keep, rule: surface, need: 'Fort Neugrad''s Adept-locked
+  owner: npc.mn.chalkmoth-quartermaster, anchor: {place: fort-chalkmoth, room: Fort Chalkmoth Keep, rule: surface, need: 'Fort Neugrad''s Adept-locked
       door in the keep'}}
 - {ref: thing.mn12.store-key, kind: thing, base: {kind: item, id: thing.mn12.store-key}, carriedBy: npc.mn.chalkmoth-quartermaster,
   enabled: true}
-- {ref: thing.mn12.sap-jar, kind: thing, base: {kind: template_item, id: Skyrim clay jar}, owner: npc.mn.chalkmoth-quartermaster,
-  enabled: true, anchor: {place: Quartermaster's Store, rule: surface, need: 'a stack of sealed jars by the head of the stair
-      in the store'}}
+- {ref: thing.mn12.jar-stack, kind: container, name: Stack of Sap Jars (Jal-Veesa Knot), owner: npc.mn.chalkmoth-quartermaster,
+  anchor: {place: fort-chalkmoth, room: Quartermaster's Store, rule: surface, need: 'a stack of sealed clay jars by the head of the
+      stair down to the old prison'}, text: 'A stack of sealed clay jars of Hist sap, each tied with the cord-knot that Jal-Veesa''s
+    tree-minder ties on her jars. This fort has no Hist of its own.'}
+- {ref: thing.mn12.sap-jar, kind: thing, base: {kind: template_item, id: Skyrim clay jar}, container: thing.mn12.jar-stack,
+  owner: npc.mn.chalkmoth-quartermaster, enabled: true}
 - {ref: door.mn12.trapdoor, kind: door, placeName: Fort Chalkmoth Guardroom, anchor: {place: fort-chalkmoth, rule: surface,
     need: 'a trapdoor in the yard behind the barracks (the prison''s passage door), out of the walls'' sight'}}
-- {ref: door.mn12.inner, kind: door, placeName: Cellar Door, lock: {level: key, key: thing.mn.cellar-key}, anchor: {place: Fort Chalkmoth Guardroom,
+- {ref: door.mn12.inner, kind: door, placeName: Cellar Door, lock: {level: key, key: thing.mn.cellar-key}, anchor: {place: fort-chalkmoth, room: Fort Chalkmoth Guardroom,
     rule: surface, need: 'the inner door of the prison (the cellar), behind the gaoler'}, text: 'An iron-bound door, locked, with no keyhole you have a key for. With an ear to it you hear a low moaning from behind it, more than one voice.'}
-- {ref: door.mn12.stair-down, kind: door, placeName: Fort Chalkmoth Guardroom, anchor: {place: Quartermaster's Store, rule: surface, need: 'the head of the stair down to the old prison'}}
-- {ref: door.mn12.stair-up, kind: door, placeName: Quartermaster's Store, anchor: {place: Fort Chalkmoth Guardroom, rule: surface, need: 'the foot of the stair up to the store'}}
-- {ref: door.mn12.keep-out, kind: door, placeName: Fort Chalkmoth, anchor: {place: Fort Chalkmoth Keep, rule: surface, need: 'the keep''s door to the yard'}}
-- {ref: door.mn12.store-out, kind: door, placeName: Fort Chalkmoth Keep, anchor: {place: Quartermaster's Store, rule: surface, need: 'the store''s door to the keep hall'}}
-- {ref: door.mn12.guardroom-out, kind: door, placeName: Fort Chalkmoth, anchor: {place: Fort Chalkmoth Guardroom, rule: surface, need: 'the ladder up to the trapdoor in the yard'}}
+- {ref: door.mn12.stair-down, kind: door, placeName: Fort Chalkmoth Guardroom, anchor: {place: fort-chalkmoth, room: Quartermaster's Store, rule: surface, need: 'the head of the stair down to the old prison'}}
+- {ref: door.mn12.stair-up, kind: door, placeName: Quartermaster's Store, anchor: {place: fort-chalkmoth, room: Fort Chalkmoth Guardroom, rule: surface, need: 'the foot of the stair up to the store'}}
+- {ref: door.mn12.keep-out, kind: door, placeName: Fort Chalkmoth, anchor: {place: fort-chalkmoth, room: Fort Chalkmoth Keep, rule: surface, need: 'the keep''s door to the yard'}}
+- {ref: door.mn12.store-out, kind: door, placeName: Fort Chalkmoth Keep, anchor: {place: fort-chalkmoth, room: Quartermaster's Store, rule: surface, need: 'the store''s door to the keep hall'}}
+- {ref: door.mn12.guardroom-out, kind: door, placeName: Fort Chalkmoth, anchor: {place: fort-chalkmoth, room: Fort Chalkmoth Guardroom, rule: surface, need: 'the ladder up to the trapdoor in the yard'}}
 hooks:
+- {thing: thing.mn12.jar-stack, hook: activate, setsFlag: flag.mn12.jars-seen}
+- {thing: thing.mn12.jar-stack, hook: read, setsFlag: flag.mn12.jars-seen}
 - {thing: door.mn12.trapdoor, hook: activate, setsFlag: flag.mn12.trapdoor}
 - {thing: door.mn12.inner, hook: activate, setsFlag: flag.mn12.door-tried, message: The door is locked, and no key you
     carry fits it. From behind it comes a low moaning, more than one voice.}
@@ -295,16 +300,20 @@ stages:
   objectives:
   - id: store20
     text: text.objective.mn12.store20
-    objectiveText: Look in the quartermaster's store, where the cellar stair begins.
-    target: door.mn12.store, npc.mn.chalkmoth-quartermaster, thing.mn12.sap-jar
+    objectiveText: Look at the stack of sap jars by the cellar stair in the quartermaster's store.
+    target: door.mn12.store, npc.mn.chalkmoth-quartermaster, thing.mn12.jar-stack
     completeWhen:
-      hasItem: [thing.mn12.sap-jar, 1]
+      flag: flag.mn12.jars-seen
   - id: gaoler20
     text: text.objective.mn12.gaoler20
     objectiveText: Speak to the gaoler at the foot of the cellar stair.
     target: npc.mn.tsleel-vaku
     completeWhen:
-      topicHeardFrom: [topic.mn12-gaoler-closed, npc.mn.tsleel-vaku]
+      any:
+      - topicHeardFrom: [topic.mn12-gaoler-closed, npc.mn.tsleel-vaku]
+      - topicHeardFrom: [topic.mn12-gaoler-persuade, npc.mn.tsleel-vaku]
+      - topicHeardFrom: [topic.mn12-gaoler-test, npc.mn.tsleel-vaku]
+      - not: {npcAlive: npc.mn.tsleel-vaku}
   - id: door20
     text: text.objective.mn12.door20
     objectiveText: Try the cellar door.
@@ -315,15 +324,23 @@ stages:
     when:
       all:
       - {flag: flag.mn12.door-tried}
-      - hasItem: [thing.mn12.sap-jar, 1]
-      - topicHeardFrom: [topic.mn12-gaoler-closed, npc.mn.tsleel-vaku]
+      - {flag: flag.mn12.jars-seen}
+      - any:
+        - topicHeardFrom: [topic.mn12-gaoler-closed, npc.mn.tsleel-vaku]
+        - topicHeardFrom: [topic.mn12-gaoler-persuade, npc.mn.tsleel-vaku]
+        - topicHeardFrom: [topic.mn12-gaoler-test, npc.mn.tsleel-vaku]
+        - not: {npcAlive: npc.mn.tsleel-vaku}
       - not: {questStage: [quest.main.mn13, ≥, 90]}
   - to: 91
     when:
       all:
       - {flag: flag.mn12.door-tried}
-      - hasItem: [thing.mn12.sap-jar, 1]
-      - topicHeardFrom: [topic.mn12-gaoler-closed, npc.mn.tsleel-vaku]
+      - {flag: flag.mn12.jars-seen}
+      - any:
+        - topicHeardFrom: [topic.mn12-gaoler-closed, npc.mn.tsleel-vaku]
+        - topicHeardFrom: [topic.mn12-gaoler-persuade, npc.mn.tsleel-vaku]
+        - topicHeardFrom: [topic.mn12-gaoler-test, npc.mn.tsleel-vaku]
+        - not: {npcAlive: npc.mn.tsleel-vaku}
       - questStage: [quest.main.mn13, ≥, 90]
   failForward:
   - to: 95
@@ -357,7 +374,7 @@ stages:
     carriers:
     - {know: the store holds the stair, by: [journal, 'name:door.mn12.store', 'line:topic.mn12-captain-paid']}
     - {know: lock or key, by: [journal, 'marker:door.mn12.store', 'marker:npc.mn.chalkmoth-quartermaster']}
-    - {know: the three things to do, by: [objective, 'marker:thing.mn12.sap-jar', 'marker:npc.mn.tsleel-vaku', 'marker:door.mn12.inner']}
+    - {know: the three things to do, by: [objective, 'marker:thing.mn12.jar-stack', 'marker:npc.mn.tsleel-vaku', 'marker:door.mn12.inner']}
     - {know: a seen theft brings the garrison down, by: ['line:topic.mn12-captain-paid']}
 - id: 25
   place: fort-chalkmoth
@@ -368,16 +385,20 @@ stages:
   objectives:
   - id: store25
     text: text.objective.mn12.store25
-    objectiveText: Look in the quartermaster's store at the top of the cellar stair.
-    target: thing.mn12.sap-jar
+    objectiveText: Look at the stack of sap jars by the stair in the quartermaster's store.
+    target: thing.mn12.jar-stack
     completeWhen:
-      hasItem: [thing.mn12.sap-jar, 1]
+      flag: flag.mn12.jars-seen
   - id: gaoler25
     text: text.objective.mn12.gaoler25
     objectiveText: Speak to the gaoler at the foot of the cellar stair.
     target: npc.mn.tsleel-vaku
     completeWhen:
-      topicHeardFrom: [topic.mn12-gaoler-closed, npc.mn.tsleel-vaku]
+      any:
+      - topicHeardFrom: [topic.mn12-gaoler-closed, npc.mn.tsleel-vaku]
+      - topicHeardFrom: [topic.mn12-gaoler-persuade, npc.mn.tsleel-vaku]
+      - topicHeardFrom: [topic.mn12-gaoler-test, npc.mn.tsleel-vaku]
+      - not: {npcAlive: npc.mn.tsleel-vaku}
   - id: door25
     text: text.objective.mn12.door25
     objectiveText: Try the cellar door.
@@ -388,15 +409,23 @@ stages:
     when:
       all:
       - {flag: flag.mn12.door-tried}
-      - hasItem: [thing.mn12.sap-jar, 1]
-      - topicHeardFrom: [topic.mn12-gaoler-closed, npc.mn.tsleel-vaku]
+      - {flag: flag.mn12.jars-seen}
+      - any:
+        - topicHeardFrom: [topic.mn12-gaoler-closed, npc.mn.tsleel-vaku]
+        - topicHeardFrom: [topic.mn12-gaoler-persuade, npc.mn.tsleel-vaku]
+        - topicHeardFrom: [topic.mn12-gaoler-test, npc.mn.tsleel-vaku]
+        - not: {npcAlive: npc.mn.tsleel-vaku}
       - not: {questStage: [quest.main.mn13, ≥, 90]}
   - to: 91
     when:
       all:
       - {flag: flag.mn12.door-tried}
-      - hasItem: [thing.mn12.sap-jar, 1]
-      - topicHeardFrom: [topic.mn12-gaoler-closed, npc.mn.tsleel-vaku]
+      - {flag: flag.mn12.jars-seen}
+      - any:
+        - topicHeardFrom: [topic.mn12-gaoler-closed, npc.mn.tsleel-vaku]
+        - topicHeardFrom: [topic.mn12-gaoler-persuade, npc.mn.tsleel-vaku]
+        - topicHeardFrom: [topic.mn12-gaoler-test, npc.mn.tsleel-vaku]
+        - not: {npcAlive: npc.mn.tsleel-vaku}
       - questStage: [quest.main.mn13, ≥, 90]
   failForward:
   - to: 95
@@ -422,7 +451,7 @@ stages:
     ways: Stay unseen; persuade the gaoler or test him with Illusion for more (optional).
     carriers:
     - {know: the garrison attacks if it sees me, by: [journal]}
-    - {know: the three things, by: [journal, objective, 'marker:thing.mn12.sap-jar', 'marker:npc.mn.tsleel-vaku',
+    - {know: the three things, by: [journal, objective, 'marker:thing.mn12.jar-stack', 'marker:npc.mn.tsleel-vaku',
         'marker:door.mn12.inner']}
     - {know: the gaoler will talk, by: ['line:topic.mn12-gaoler-closed', 'marker:npc.mn.tsleel-vaku']}
 - id: 90

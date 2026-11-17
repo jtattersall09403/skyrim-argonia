@@ -1,0 +1,108 @@
+{
+ "quest": "quest.main.mn12",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn12.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "lockpick",
+ "choose": null,
+ "know": "story/playtests/quest.main.mn11/20261117T165846Z-designed/notes.md",
+ "created": "20261117T171912Z",
+ "stages": [
+  10,
+  15,
+  20,
+  90
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn04.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn05.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn06.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn07.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn08.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn09.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn10.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn11.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 4,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I am hunting for the seven marked drowned towers for the order (Never-Writes-Twice), but on my own I am checking what a wounded Unbound scout said: ask what moans in the cellar of Fort Chalkmoth. The Collector Vanin is digging ahead of us. 2. Get into Fort Chalkmoth keep and see its cellar, at the fort on Chixathe Mesa; the wall captain Sakeeus-Wan is the quest marker, and the guardroom door is marked. 3. Talk to the wall captain for leave to enter, or find another way in unseen, such as picking the locked keep door (my build favours lockpicking). Bell Station is the other lead and can wait. 4. I do not know who the Sarpa Raiders are or why they are here, or what moans in the cellar. I can find out by talking to people and looking around.",
+  "look",
+  "talk Sakeeus-Wan",
+  "say 3",
+  "say 2",
+  "say 1",
+  "answer 1. I want to see the cellar of Fort Chalkmoth on my own errand. The wall captain Sakeeus-Wan keeps the keep shut to strangers while three Sarpa raiders rob chalk carts on the western approach. 2. Kill the three raiders on the western approach, then tell Sakeeus-Wan so he opens the keep and pays 100 gold. 3. Kill the raiders for the captain, or go in unseen by the trapdoor in the yard, or pick the locked keep door (my build favours lockpicking). 4. I do not know what the old prison below the keep holds, or what moans in the cellar. The captain says the prison is the order is, not his. I can find out by going in.",
+  "look",
+  "pick Door to Fort Chalkmoth Keep win",
+  "journal",
+  "fight Sarpa Raider win",
+  "fight Sarpa Raider win",
+  "fight Sarpa Raider win",
+  "talk Sakeeus-Wan",
+  "say 3",
+  "answer 1. I killed the raiders and the captain gave me the keep key and 100 gold. The cellar stair starts in the quartermaster store inside the keep; the Dunmer quartermaster Theyne Indarys has its key. 2. Go into the keep, get into the quartermaster store, look at the stack of sap jars by the stair, speak to the gaoler Tsleel-Vaku at the foot, and try the cellar door. 3. Pick the store lock (my build favours it) or lift the quartermaster key; the captain warned that being caught in the store makes me a thief. 4. I do not know what the Jal-Veesa Knot is, why sap jars matter, or what moans in the cellar. I can find out by looking at the jars and talking to the gaoler.",
+  "use Door to Fort Chalkmoth Keep",
+  "pick Door to Quartermaster's Store win",
+  "use Door to Quartermaster's Store",
+  "read Stack of Sap Jars",
+  "use Door to Fort Chalkmoth Guardroom",
+  "say 2 pass",
+  "say 3 pass",
+  "pick Door to Cellar Door win",
+  "journal",
+  "use Door to Cellar Door",
+  "answer 1. The quest is done. I found Hist sap jars with Jal-Veesa knot by the cellar stair in a fort that has no Hist, the order gaoler Tsleel-Vaku refused me, and Never-Writes-Twice keeps the key. Something moans behind the door. 2. Go back to the hunt: Bell Station, east of Lilmoth by boat, where the divers know which drowned tower is marked. 3. Go to Bell Station now; or confront Never-Writes-Twice about the cellar, or find her key some other way. 4. I do not know who or what is in the cellar, or why the order feeds them sap. I cannot learn that here; maybe from Never-Writes-Twice or Jal-Veesa.",
+  "answer Cellar Door quest finished. At Fort Chalkmoth I killed the three Sarpa raiders for Sakeeus-Wan (got keep key, 100 gold; I now have about 1150 gold, lockpicks x2, Unbound recipe/note, rapier, paralysis poison x3). I picked the quartermaster store lock. Sap jars with Jal-Veesa knot sit by the cellar stair though the fort has no Hist. Gaoler Tsleel-Vaku refused me; persuade and illusion failed. The cellar door needs a key that Never-Writes-Twice keeps, and something moans behind it. Unknown: who is down there and why the order feeds them sap. Next step: Bell Station (boat from Lilmoth) to ask the divers which drowned tower in Benthic Yobesh is marked. Vanin is digging ahead of us."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.11596350000000002,
+ "minutes": 1.1,
+ "turns": 29,
+ "tokens": {
+  "input_tokens": 56,
+  "output_tokens": 4208,
+  "cache_read_input_tokens": 243835,
+  "cache_creation_input_tokens": 12347
+ }
+}

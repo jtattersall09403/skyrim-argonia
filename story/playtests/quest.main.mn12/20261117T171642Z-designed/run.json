@@ -1,0 +1,111 @@
+{
+ "quest": "quest.main.mn12",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn12.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "illusion",
+ "choose": null,
+ "know": "story/playtests/quest.main.mn11/20261117T165846Z-designed/notes.md",
+ "created": "20261117T171642Z",
+ "stages": [
+  10,
+  15,
+  20
+ ],
+ "ended": "stopped",
+ "after": [
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn04.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn05.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn06.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn07.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn08.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn09.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn10.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn11.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 3,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I am hunting the Unbound order's seven-tower secret with a stone and a recipe for the Seal. A wounded Unbound scout, Tah-Leesh, told me to ask what moans in the cellar of Fort Chalkmoth. Never-Writes-Twice dismissed it, which seems suspicious. This is my own errand; the Bell Station hunt can wait. 2. Get into Fort Chalkmoth keep and see its cellar, here at the fort on Chixathe Mesa. 3. Ask the wall captain, Sakeeus-Wan, to let me in, or find another way in unseen (the keep door is locked; the guardroom door is marked). Three Sarpa Raiders are also here. As an illusion character I could try persuasion or trickery. 4. I do not know who the Sarpa Raiders are or whether they are hostile, nor what moans in the cellar. I could find out by looking around and talking to Sakeeus-Wan.",
+  "look",
+  "talk Sakeeus-Wan",
+  "say 3",
+  "say 2",
+  "say 1",
+  "answer 1. I am on my own errand, not the order's, to see what moans in the cellar of Fort Chalkmoth. The wall captain Sakeeus-Wan will open the keep and pay 100 gold if I kill three Sarpa raiders robbing chalk carts on the western approach. 2. Either kill the three raiders on the western approach and report back to Sakeeus-Wan, or get into the keep another way. 3. Fight the raiders for the captain's leave and gold, or use the trapdoor in the yard to go in unseen. As an illusion character I might calm or turn the raiders instead of fighting. The captain also offered a barracks bed. 4. I do not know what is in the cellar, or whether the old prison below the keep is where the moaning comes from. I do not know where the trapdoor is exactly. I can find out by looking around the yard and going down.",
+  "look",
+  "use trapdoor",
+  "journal",
+  "fight Sarpa Raider win",
+  "fight Sarpa Raider win",
+  "fight Sarpa Raider win",
+  "talk Sakeeus-Wan",
+  "say 3",
+  "answer 1. I killed the three raiders and the captain gave me the keep key and 100 gold. The cellar stair starts in the quartermaster's store inside the keep; the Dunmer quartermaster Theyne Indarys holds its key. 2. Enter the keep, get into the quartermaster's store, go down the stair, speak to the gaoler Tsleel-Vaku and try the cellar door. 3. Pick the store lock, lift Theyne's key, or perhaps talk to him. The captain warned that being caught in the store makes me a thief. 4. I do not know what the Jar of Hist Sap (Jal-Veesa Knot) is, or what moans below. I can find out by looking around and asking Tsleel-Vaku.",
+  "use Door to Fort Chalkmoth Keep",
+  "talk Theyne Indarys",
+  "say 2",
+  "pick Door to Quartermaster's Store win",
+  "use Door to Quartermaster's Store",
+  "read Jar of Hist Sap (Jal-Veesa Knot)",
+  "use Door to Fort Chalkmoth Guardroom",
+  "say 3",
+  "say 3 pass",
+  "use Door to Cellar Door",
+  "pick Door to Cellar Door win",
+  "journal",
+  "talk Tsleel-Vaku",
+  "say 2 pass",
+  "go Never-Writes-Twice",
+  "go Helstrom"
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.13586460000000003,
+ "minutes": 1.3,
+ "turns": 34,
+ "tokens": {
+  "input_tokens": 62,
+  "output_tokens": 5189,
+  "cache_read_input_tokens": 298306,
+  "cache_creation_input_tokens": 13505
+ }
+}

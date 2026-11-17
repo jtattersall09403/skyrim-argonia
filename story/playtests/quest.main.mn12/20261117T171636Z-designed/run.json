@@ -1,0 +1,106 @@
+{
+ "quest": "quest.main.mn12",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn12.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "lockpick",
+ "choose": null,
+ "know": "story/playtests/quest.main.mn11/20261117T165846Z-designed/notes.md",
+ "created": "20261117T171636Z",
+ "stages": [
+  10,
+  15,
+  25,
+  90
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn04.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn05.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn06.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn07.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn08.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn09.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn10.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn11.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 4,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I am hunting the seven marked drowned towers for the order via the Kings Marker Stone, but I came to Fort Chalkmoth on my own errand: a wounded Unbound scout said to ask what moans in its cellar. The Unbound and the collector Vanin are also after this. 2. Get into the fort keep and see its cellar, at Fort Chalkmoth on Chixathe Mesa. 3. Ask the wall captain Sakeeus-Wan for leave to enter, or find another way in unseen, e.g. picking the locked keep door or using the guardroom door. 4. I do not know what moans in the cellar or who the Sarpa Raiders are here. I can find out by talking and exploring.",
+  "talk Sakeeus-Wan",
+  "say 2",
+  "say 3",
+  "say 1",
+  "answer 1. The wall captain Sakeeus-Wan will only open the keep if I kill three Sarpa raiders robbing carts on the western approach, then pays 100 gold. 2. Kill the raiders and report back, or go in unseen. 3. Fight the raiders, or use the trapdoor in the yard to get in unseen, or pick the keep door. 4. I do not know what is in the cellar; the old prison below is the order own, per the captain.",
+  "look",
+  "look",
+  "pick Door to Fort Chalkmoth Keep win",
+  "use Door to Fort Chalkmoth Guardroom",
+  "answer 1. I got into the cellar guardroom unseen through the yard trapdoor. If the garrison sees me they attack. Something moans in the cellar and I want to know what. 2. Look at the quartermaster store, speak to the gaoler Tsleel-Vaku, and try the locked cellar door. 3. Talk to the gaoler, check the store upstairs (a Jar of Hist Sap marked Jal-Veesa Knot), or pick the cellar door. 4. I do not know what the Jal-Veesa Knot is or why a jar of Hist Sap is marked; I could ask the gaoler or look closer.",
+  "talk Tsleel-Vaku",
+  "say 4",
+  "say 2 pass",
+  "journal",
+  "pick Door to Cellar Door win",
+  "use Door to Quartermaster's Store",
+  "take Jar of Hist Sap",
+  "journal",
+  "go Tsleel-Vaku",
+  "talk Tsleel-Vaku",
+  "say 3 pass",
+  "journal",
+  "use Door to Cellar Door",
+  "answer 1. Quest over: the cellar holds something that moans and sleeps and dreams, fed Hist sap marked with Jal-Veesa knot by the order, in a fort without Hist. The gaoler says Never-Writes-Twice holds the key. 2. Go back to the hunt: Bell Station, east of Lilmoth by boat, for the drowned tower. 3. Bell Station first, or return to Helstrom and press Never-Writes-Twice about the key. 4. I do not know who is down there or who Jal-Veesa is; I could ask Never-Writes-Twice or others.",
+  "answer Notes: Fort Chalkmoth (Chixathe Mesa above Noota Nara) is an old Legion fort; captain Sakeeus-Wan offered the keep for killing three Sarpa raiders (I did not; I used the yard trapdoor instead). In the cellar guardroom the gaoler Tsleel-Vaku (Toh-Reel-Ka) refuses entry; the inner cellar door needs a key, which Never-Writes-Twice keeps in Helstrom. Something moans behind it; the order feeds it Hist sap, jars marked with Jal-Veesa knot, one of which I took. Persuade and illusion only got: they sleep and dream. I carry 1050 gold, 2 lockpicks, the Unbound recipe/note, Kings Marker Stone given away already, paralysis poison x3, rapier, jar of Hist sap. Next: Bell Station, east of Lilmoth by boat, for the divers who know the marked drowned tower; Vanin the Collector is digging ahead. Open questions: who is in the cellar, who Jal-Veesa is, why Never-Writes-Twice dismissed it."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.1120404,
+ "minutes": 1.0,
+ "turns": 27,
+ "tokens": {
+  "input_tokens": 46,
+  "output_tokens": 4118,
+  "cache_read_input_tokens": 199764,
+  "cache_creation_input_tokens": 12698
+ }
+}

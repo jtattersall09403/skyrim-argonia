@@ -1,0 +1,100 @@
+{
+ "quest": "quest.main.mn11",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn11.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "sneak",
+ "choose": null,
+ "know": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/know-mn11.md",
+ "created": "20261117T171622Z",
+ "stages": [
+  10,
+  20,
+  30,
+  40,
+  90
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn04.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn05.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn06.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn07.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn08.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn09.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn10.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 5,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I work for the Toh-Reel-Ka, the Xeech-Leel secret warriors. The Hist trees are sickening because the Unbound, led by Cuts-the-Old-Knot, drain their sap and seal the scars with paralysis paste. We think the Eye of Argonia, hidden at the Root, could heal the trees if used there, and I must find it before the Unbound. 2. Go to the Grey Tooth on Skeith Isle and find what the Collectors hired men found in the Grey Tooth Cave, on its north face. 3. I can fight the three hirelings or sneak past them (sneaking suits my build) to the cave door. There is also Vanin's Rubbing to examine. 4. I do not know what the Rubbing shows or what the Collector found. I can find out by reading the Rubbing and entering the cave.",
+  "read Vanin's Rubbing",
+  "answer 1. I serve the Toh-Reel-Ka hunting the Eye of Argonia before the Unbound. The rubbing says the stone once in the Grey Tooth niche was carried to the ship Stormwidow by her captain in year 181; the niche is empty. The Collector has sold the ships name to diggers. 2. Go to the wreck of the Stormwidow on the south-west beach of Skeith Isle and search its hold (the ballast crate) for the kings stone. 3. Fight whoever guards the wreck or sneak past them; I favour sneaking. 4. I do not know what the kings stone is exactly or who the Collectors diggers are; I will learn by going to the wreck.",
+  "go Stormwidow",
+  "look",
+  "read Recipe for the Seal",
+  "talk Tah-Leesh",
+  "say 1",
+  "use Door to Stormwidow's Hold",
+  "take Stormwidow's Ballast Crate",
+  "go Stormwidow's Ballast Crate",
+  "take Stormwidow's Ballast Crate",
+  "use Stormwidow's Ballast Crate",
+  "take Kings' Marker Stone",
+  "answer 1. I work for the Toh-Reel-Ka. I took the kings marker stone from the Stormwidows ballast crate before the Unbound scouts; it shows seven towers in water, one cut deeper. The scouts carry the recipe for the paralysis seal. 2. Speak to the wounded scout Tah-Leesh on the sand below the bow. 3. Talk to her, or take the recipe and seal, or leave; the other scouts could be fought or avoided. 4. I do not know which of the seven towers matters or what the stone opens. I may learn from Tah-Leesh or Never-Writes-Twice.",
+  "talk Tah-Leesh",
+  "say 2",
+  "answer 1. I hold the kings marker stone. Tah-Leesh, an Unbound scout, says her leader Cuts-the-Old-Knot tells servants of the Toh-Reel-Ka to ask what moans in the cellar of Fort Chalkmoth, the Archwardens fort on the Chixathe Mesa. It may hint the order hides something. 2. Bring the stone to Never-Writes-Twice in Nesh-Deeka's House, Helstrom. 3. Go straight to Helstrom, or first look into Fort Chalkmoth myself, or ask Never-Writes-Twice about the saying. 4. I do not know what moans in Fort Chalkmoths cellar or what Cuts-the-Old-Knot means; I could ask Never-Writes-Twice or visit the fort.",
+  "go Never-Writes-Twice",
+  "talk Never-Writes-Twice",
+  "say 2",
+  "answer 1. Notes for a friend picking up my save: I am a Toh-Wo of the Toh-Reel-Ka, working through Nesh-Deeka and Never-Writes-Twice in Helstrom. The Grey Tooth cave niche was empty; the rubbing said the stone went to the wreck Stormwidow. I took the kings marker stone from its ballast crate ahead of Unbound scouts and handed it to Never-Writes-Twice, who was paid me 100 gold and kept the stone. The stone shows seven towers, the drowned spires off Lilmoth on the sea floor of Benthic Yobesh. 2. Next: go by boat from Lilmoth to Bell Station, an islet salvage station east of Lilmoth, whose divers know which tower it is; the hunt for the Root and the Eye comes first. 3. Alternatively visit Fort Chalkmoth on the Chixathe Mesa above Noota Nara first: Unbound leader Cuts-the-Old-Knot says to ask what moans in its cellar; Never-Writes-Twice dismissed it, which makes me suspicious. I also learned the Unbound seal recipe: grey caps and dried root ground into a numbing paste, pressed into the scar after drawing sap; the recipe lies at the Stormwidow wreck, where the injured scout Tah-Leesh remains. 4. I do not know what moans in the cellar, nor which tower is marked, nor how Nesh-Deeka knows so much about the Unbound.",
+  "answer Notes: I am a Toh-Wo of the Toh-Reel-Ka. I carry 100 gold; the marker stone now belongs to Never-Writes-Twice in Nesh-Deeka's House, Helstrom. The stone shows seven drowned towers off Lilmoth, one cut deeper; the divers of Bell Station (islet east of Lilmoth, boat from Lilmoth) will know which. Two leads: Bell Station for the hunt, or Fort Chalkmoth (Chixathe Mesa above Noota Nara) to learn what moans in its cellar; Cuts-the-Old-Knot says to ask that of the order, and Never-Writes-Twice brushed it off. The Unbound seal recipe is grey caps and dried root ground to a numbing paste; Tah-Leesh, a hurt Unbound scout, is left at the Stormwidow wreck. Still unknown: which tower, what moans in the cellar, and how Nesh-Deeka knows the Unbound so well."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.10529110000000003,
+ "minutes": 1.0,
+ "turns": 24,
+ "tokens": {
+  "input_tokens": 40,
+  "output_tokens": 4404,
+  "cache_read_input_tokens": 162951,
+  "cache_creation_input_tokens": 11219
+ }
+}

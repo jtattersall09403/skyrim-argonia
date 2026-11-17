@@ -1,0 +1,110 @@
+{
+ "quest": "quest.main.mn12",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn12.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "speech",
+ "choose": null,
+ "know": "story/playtests/quest.main.mn11/20261117T165846Z-designed/notes.md",
+ "created": "20261117T171916Z",
+ "stages": [
+  10,
+  15,
+  20,
+  90
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn04.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn05.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn06.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn07.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn08.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn09.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn10.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn11.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 4,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I am hunting a stone-and-tower trail for the Helstrom contact Never-Writes-Twice; separately, a wounded Unbound scout said to ask what moans in the cellar of Fort Chalkmoth. This is my own errand. 2. Get into the fort keep and see its cellar, here at Fort Chalkmoth. 3. Ask the wall captain (Sakeeus-Wan) for leave, using speech, or find another way in unseen; the keep door is locked and there is a guardroom door. 4. I do not know what moans in the cellar, who Cuts-the-Old-Knot or the Toh-Reel-Ka are exactly; I can learn by asking people here.",
+  "talk Sakeeus-Wan",
+  "say 2",
+  "say 3",
+  "say 1",
+  "answer 1. The wall captain will open the keep and pay 100 gold if I kill three Sarpa raiders robbing chalk carts on the western approach. The old prison below the keep belongs to the order, not him. 2. Kill the three raiders on the western approach, then report to Sakeeus-Wan. 3. Fight the raiders (I favour speech, so maybe talk to them), or skip it and use the trapdoor in the yard to go in unseen. 4. I do not know what moans in the cellar, or what the order does with the old prison; I can look around the fort and ask.",
+  "look",
+  "talk Sarpa Raider",
+  "fight Sarpa Raider win",
+  "fight Sarpa Raider win",
+  "fight Sarpa Raider win",
+  "talk Sakeeus-Wan",
+  "say 3",
+  "answer 1. I killed the three raiders and the captain gave me the keep key and 100 gold. The cellar stair starts in the quartermaster store inside the keep; the Dunmer quartermaster Theyne Indarys holds the key. Beyond is a gaoler (Tsleel-Vaku) and a cellar door. 2. Enter the keep, get into the quartermaster store, look at the sap jars by the stair, speak to the gaoler, try the cellar door. 3. Pick the store lock, lift the key from Theyne, or ask Theyne by speech; the captain warned that entering the store without leave makes me a thief. 4. I do not know what Jal-Veesa Knot sap jars are, or what moans in the cellar. I can look and ask the gaoler.",
+  "use Door to Fort Chalkmoth Keep",
+  "talk Theyne Indarys",
+  "say 2",
+  "say 1",
+  "pick Door to Quartermaster's Store win",
+  "use Door to Quartermaster's Store",
+  "read Stack of Sap Jars",
+  "use Door to Fort Chalkmoth Guardroom",
+  "say 2",
+  "say 2 pass",
+  "say 3 pass",
+  "pick Door to Cellar Door win",
+  "journal",
+  "use Door to Cellar Door",
+  "answer 1. The quest is done. Fort Chalkmoth has Hist sap jars tied with Jal-Veesa knot stacked by the cellar stair, though the fort has no Hist. The gaoler Tsleel-Vaku refused me; Never-Writes-Twice keeps the cellar key. Something moans behind the door. Never-Writes-Twice dismissed the fort, which is suspicious. 2. Go back to the hunt: Bell Station, reached by boat from Lilmoth, to learn which drowned tower is marked. 3. Bell Station first; or return to Never-Writes-Twice in Helstrom and ask about the cellar key and the sap; or Jal-Veesa at Noota Nara tree about the jars. 4. I do not know who is moaning in the cellar, why the order feeds them sap, or who Jal-Veesa is beyond a tree-minder. I could ask Never-Writes-Twice or Jal-Veesa.",
+  "answer Notes: At Fort Chalkmoth I killed the three Sarpa raiders for Sakeeus-Wan and got the keep key and 100 gold. I picked the lock of the quartermaster store (Theyne Indarys, Dunmer, says he asks nothing). Sealed Hist sap jars tied with Jal-Veesa knot are stacked by the cellar stair; the fort has no Hist, and Theyne says they come up the mesa road each season and go down the stair. The gaoler Tsleel-Vaku refused persuasion and illusion; the cellar door needs its key, which Never-Writes-Twice keeps, and something moans behind it. I could not open it. I still carry the Unbound recipe, 1150 gold, lockpicks, and the keep key. Open threads: who is in the cellar and why the order feeds them sap (ask Never-Writes-Twice in Helstrom, or Jal-Veesa at Noota Nara). Main hunt: Bell Station, boat from Lilmoth, divers know which drowned tower off Lilmoth is marked; Vanin the Collector is digging ahead of us."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.12127540000000003,
+ "minutes": 1.2,
+ "turns": 31,
+ "tokens": {
+  "input_tokens": 56,
+  "output_tokens": 4588,
+  "cache_read_input_tokens": 247434,
+  "cache_creation_input_tokens": 12635
+ }
+}

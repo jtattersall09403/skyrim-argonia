@@ -1,0 +1,101 @@
+{
+ "quest": "quest.main.mn13",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn13.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "sneak",
+ "choose": null,
+ "know": "story/playtests/quest.main.mn11/20261117T165846Z-designed/notes.md",
+ "created": "20261117T171630Z",
+ "stages": [
+  10,
+  20,
+  30,
+  91
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn04.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn05.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn06.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn07.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn08.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn09.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn10.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn11.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn12.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 4,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I am hunting for the location of a gate tied to the Kings Marker Stone I recovered from the Stormwidow. Never-Writes-Twice in Helstrom says the marked tower is one of the drowned spires off Lilmoth. The Unbound are also after this, and the Collector Vanin is digging ahead of us. 2. Ask the steward of Bell Station, an islet east of Lilmoth, which tower the stone marks. The quest markers are on Meer-Tasi and Sees-Below. 3. I can talk to Meer-Tasi or Sees-Below, and I could go to Fort Chalkmoth first for my own errand. I favour sneaking. 4. I do not know who Meer-Tasi and Sees-Below are or which is the steward. I also do not know what moans in the Fort Chalkmoth cellar or what the Kings Gate is. I can find out by talking to people.",
+  "talk Meer-Tasi",
+  "say 1",
+  "answer 1. The stone marks Teku-Sul Spire, the drowned tower nearest Lilmoth. It has a great gate with three empty sockets that nobody has forced, and a priest ghost stands before it. 2. Dive to Teku-Sul and find the great gate, going through the Halls and East Halls doors. I need waterbreathing first (a potion from Meer-Tasi, or I may breathe water already if I am Argonian). 3. I can buy waterbreathing potions from Meer-Tasi. Inside I can fight the priests attendants or sneak past them, and I can talk to the ghost of Sul-Xeeth. I could also go to Fort Chalkmoth first. 4. I do not know what the three sockets take, who Sul-Xeeth was, or what the gate opens. I can ask the ghost and look around inside.",
+  "talk Sees-Below",
+  "say 1",
+  "journal",
+  "talk Meer-Tasi",
+  "say 1",
+  "journal",
+  "go marker 2",
+  "answer 1. I reached the Kings Gate in Teku-Sul. The ghost of priest Sul-Xeeth says three seal-stones open it, all three needed. They are at Blackrose Prison (warden vault), the flooded vaults of Gemin, and the deepest hall of Vorannuhl. Beyond is the way to the Root where the Hist roots meet and the Eye sits. 2. Tell Never-Writes-Twice in Nesh-Deeka House, Helstrom what the ghost said. 3. I can report to her, or begin fetching stones myself, or do my Fort Chalkmoth errand. The drowned attendants here could be fought or avoided. 4. I do not know what the Eye is, why the Unbound and Vanin want it, or what the Root holds. I could ask Never-Writes-Twice or the ghost.",
+  "go Never-Writes-Twice",
+  "talk Never-Writes-Twice",
+  "say 1",
+  "answer 1. The Kings Gate quest is complete. I work for the Toh-Reel-Ka and am now a Reel-Ka (Warrior), with the Reel-Ka cuirass and helm, 300 gold and free beds in Archwarden forts. The gate in Teku-Sul Spire needs three seal-stones to open the way to the Root and the Eye of Argonia. The order wants all three before the Unbound get them. 2. Fetch the stones from Blackrose Prison (warden vault, least dangerous), Gemin (flooded vaults) and Vorannuhl (deepest hall, worst). The markers are on my map. 3. I can take them in any order and sneak or fight. My Fort Chalkmoth errand is still open, and I still suspect Never-Writes-Twice for dismissing it. 4. I do not know what the Eye does in the order hands, what Fort Chalkmoth cellar moans are, or what the Unbound and Vanin intend. I could find out at Fort Chalkmoth or the sites themselves. Notes: I never bought waterbreathing potions and did not need them to reach the gate. I carry the Unbound recipe note, 1350 gold or so, and the rapier.",
+  "answer Kings Gate done. Stone marked Teku-Sul Spire (via Meer-Tasi at Bell Station). Ghost Sul-Xeeth says three seal-stones open the gate: Blackrose Prison warden vault, Gemin flooded vaults, Vorannuhl deepest hall. Never-Writes-Twice in Helstrom made me Reel-Ka of the Toh-Reel-Ka and gave a cuirass, helm, 300 gold, free beds in Archwarden forts. Map markers set for all three sites; Blackrose is easiest, Vorannuhl worst. Still open: the Fort Chalkmoth cellar errand from Tah-Leesh, which she dismissed, and Vanin digging ahead of us. I carry the Unbound recipe, lockpicks x2, 3 paralysis poisons, a rapier, and about 1350 gold. I did not buy waterbreathing and did not need it for the gate visit."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.08559800000000001,
+ "minutes": 0.8,
+ "turns": 18,
+ "tokens": {
+  "input_tokens": 30,
+  "output_tokens": 3455,
+  "cache_read_input_tokens": 109120,
+  "cache_creation_input_tokens": 10019
+ }
+}
