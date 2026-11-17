@@ -1,0 +1,77 @@
+{
+ "quest": "quest.main.mn07",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn07.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "fight",
+ "choose": null,
+ "know": "story/playtests/quest.main.mn06/20261117T165901Z-designed/notes.md",
+ "created": "20261117T171550Z",
+ "stages": [
+  10,
+  20,
+  90
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn04.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn05.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn06.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 3,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I am a Voh-Vastei of the Toh-Reel-Ka under Nesh-Deeka. The Pale Harvest, a Company freighter, sank in Hatandros Bight with a dealers stock aboard; it is the next lead to the real Eye of Argonia, which is meant to heal the Hist trees at the Root. The Unbound and the Collector (Ennodius Vanin) also hunt the Eye. 2. Get into the wreck of the Pale Harvest (a short swim from Ysan jetty), get past the drowned crew in the hold, and open the captain's strongbox. 3. Fight the drowned crew and take the key from the Drowned Captain, or sneak past and pick the strongbox lock. 4. I do not know what is in the strongbox or exactly what the drowned crew are; I will find out by looking inside the wreck.",
+  "look",
+  "use Door to The Pale Harvest",
+  "fight Drowned Sailor win",
+  "fight Drowned Captain win",
+  "take Pale Harvest Strongbox Key",
+  "use Captain's Strongbox",
+  "take Kothringi Keystone",
+  "answer 1. I killed the drowned sailor and captain, took the key and opened the strongbox on the Pale Harvest. It held a Kothringi Keystone on a chain, not the Eye itself, but presumably a further lead. 2. Bring the keystone to Nesh-Deeka in her house in Helstrom. 3. I can go straight to Nesh-Deeka; I do not see another option, though I could study the keystone first. 4. I do not know what a Kothringi Keystone is or what the Kothringi style means. Nesh-Deeka may explain.",
+  "go Nesh-Deeka",
+  "talk Nesh-Deeka",
+  "say 1",
+  "say 3",
+  "say 4",
+  "journal",
+  "say 2",
+  "answer 1. The Pale Harvest quest is done. I got the Kothringi Keystone from the wreck and Nesh-Deeka paid 100 gold. She did not know the keystone but says the carving is Kothringi, and the Chime-Keepers of Toklea keep Kothringi lore. It is another step toward the Eye of Argonia, which should heal the Hist trees at the Root. 2. Nothing is set yet. The obvious next lead is Toklea, a town on the river fork in the Tulmek Washes, where the elder in the old Kothringi greathouse should know the keystone. 3. Go to Toklea and ask the elder, or ask Nesh-Deeka more. I still carry the keystone. 4. Nesh-Deeka still will not say how she knew the Unbound had not been to the wreck (\"we listen\"), and that is suspicious. I do not know what the keystone opens or does. The Chime-Keepers elder may tell me.",
+  "answer Pale Harvest done: I killed the drowned sailor and captain at the wreck, took the strongbox key and the Kothringi Keystone, and gave it to Nesh-Deeka in Helstrom, who paid 100 gold. I now have about 550 gold, 2 lockpicks, the Unbound-Note, Voh-Vastei armour, the Old Silver Setting (Eye-Setting), the strongbox key and the keystone. Nesh-Deeka says the keystone is Kothringi (silver-skinned people killed by the Knahaten Flu). Next lead: the Chime-Keepers of Toklea, on the river fork in the Tulmek Washes, whose elder in the old Kothringi greathouse should know the keystone. The Unbound lost the trail at Gideon and have not been to the wreck, per Nesh-Deeka, but she will not say how she knows (\"we listen\"), which I distrust. The Collector (Ennodius Vanin) also hunts the Eye. The Eye is meant to heal the Hist trees at the Root."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.0727155,
+ "minutes": 0.9,
+ "turns": 19,
+ "tokens": {
+  "input_tokens": 30,
+  "output_tokens": 3092,
+  "cache_read_input_tokens": 92035,
+  "cache_creation_input_tokens": 8133
+ }
+}

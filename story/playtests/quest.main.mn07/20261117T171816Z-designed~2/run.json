@@ -1,0 +1,72 @@
+{
+ "quest": "quest.main.mn07",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn07.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "quiet",
+ "choose": null,
+ "know": "story/playtests/quest.main.mn06/20261117T165901Z-designed/notes.md",
+ "created": "20261117T171816Z",
+ "stages": [
+  10,
+  20,
+  90
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn04.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn05.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn06.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 3,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I work for handler Nesh-Deeka of the Toh-Reel-Ka. The Pale Harvest is a sunk Company freighter in Hatandros Bight with a dealers stock aboard; it is the lead to the real Eye of Argonia, which is meant to heal the Hist trees. The Unbound and the Collector also hunt it. 2. Get into the hold of the wreck, past the drowned crew, and open the captain's strongbox. 3. Fight the drowned crew, or sneak past and pick the strongbox lock; the Drowned Captain carries the key. 4. Nothing major unclear; I do not know what is in the strongbox until I open it.",
+  "look",
+  "use Door to The Pale Harvest",
+  "pick Captain's Strongbox win",
+  "take Captain's Strongbox",
+  "use Captain's Strongbox",
+  "take Kothringi Keystone",
+  "answer 1. I picked the strongbox lock without fighting and took a Kothringi Keystone on a chain, carved in an unfamiliar style. It is presumably tied to the Eye hunt. 2. Bring the keystone to Nesh-Deeka at her house in Helstrom. 3. Go straight back to her, or ask others about the keystone first; I see no other choice. 4. I do not know what Kothringi means or what the keystone does. Nesh-Deeka may tell me.",
+  "go Nesh-Deeka",
+  "talk Nesh-Deeka",
+  "say 1",
+  "answer 1. Quest complete. I brought the Kothringi keystone to Nesh-Deeka, who was paid me 100 gold. She did not know it but says the carving is Kothringi (silver-skinned marsh people, dead of the Knahaten Flu). The Unbound have not found the wreck. She again said \"we listen\" about how she knows. 2. Next lead: the Chime-Keepers of Toklea, a town on the river fork in the Tulmek Washes; their elder should know the keystone. 3. Go to Toklea, or first ask Nesh-Deeka about the Chime-Keepers and Kothringi. 4. I do not know how Nesh-Deeka knows what the Unbound do, nor what the keystone opens. The Toklea elder may tell me.",
+  "answer I work for Nesh-Deeka in Helstrom (Toh-Reel-Ka). I sneaked into the Pale Harvest wreck, picked the captain's strongbox with no fight, and took a Kothringi Keystone on a chain. I gave it to Nesh-Deeka; she was paid 100 gold (I have 500 or more). She did not know the keystone but says it is Kothringi (silver-skinned people, dead of the Knahaten Flu). Next lead: the Chime-Keepers of Toklea, a town on the river fork in the Tulmek Washes, whose elder keeps Kothringi lore. The Unbound lost the trail at Gideon and have not found the wreck; Nesh-Deeka will not say how she knows (\"we listen\"). I still carry the Old Silver Setting, the Collector note and the smuggler key. The Collector (Ennodius Vanin) also hunts the Eye. Unknown: what the keystone opens, and how Nesh-Deeka gets her information."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.0572443,
+ "minutes": 0.6,
+ "turns": 14,
+ "tokens": {
+  "input_tokens": 26,
+  "output_tokens": 2404,
+  "cache_read_input_tokens": 71883,
+  "cache_creation_input_tokens": 6491
+ }
+}

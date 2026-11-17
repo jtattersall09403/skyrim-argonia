@@ -1,0 +1,72 @@
+{
+ "quest": "quest.main.mn09",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn09.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "fight",
+ "choose": null,
+ "know": "story/playtests/quest.main.mn08/20261117T170115Z-designed~2/notes.md",
+ "created": "20261117T171552Z",
+ "stages": [
+  10
+ ],
+ "ended": "harness error",
+ "after": [
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn04.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn05.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn06.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn07.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn08.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 1,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I work for Nesh-Deeka. She sent me to Eurydike, a roofless Kothringi hall north of Gideon, to open the knight-captain tomb with the keystone before the Unbound and the Collector. The knights guarded the kings road to the Root. 2. Search the Unbound packs in the barracks wing (marker), then reach the tomb. 3. Fight the restless dead, slip past them, or turn them with Restoration. There is also an Unbound Digger here. 4. I do not know what the Root and the Eye really are, or how Nesh-Deeka knows what she does. I might learn from the tomb contents and from people.",
+  "look",
+  "take Unbound Pack",
+  "use Unbound Pack",
+  "journal",
+  "talk Unbound Digger",
+  "use Door to Knight-Captain's Tomb"
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.037745299999999996,
+ "minutes": 0.4,
+ "turns": 9,
+ "tokens": {
+  "input_tokens": 18,
+  "output_tokens": 1470,
+  "cache_read_input_tokens": 43573,
+  "cache_creation_input_tokens": 4663
+ }
+}

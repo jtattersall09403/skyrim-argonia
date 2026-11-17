@@ -1,0 +1,94 @@
+[
+ {
+  "stage": 10,
+  "kind": "start",
+  "ending": null,
+  "title": "The Knights' Tomb",
+  "journal": "Nesh-Deeka sent me to Eurydike, the roofless hall of the Kothringi knights north of Gideon, to open the knight-captain's tomb with the keystone; the knights once guarded the kings' road to the Root, the place under the sea where every Hist's roots meet and the Eye of Argonia lies. The knights' dead walk the barracks wing, and the Unbound got there before me. I'm to search the Unbound's packs by their fire on the way to the tomb. I may fight, slip past, or turn the dead with Restoration.",
+  "objectives": [
+   "Search the Unbound's packs in Eurydike's barracks wing. (marker: Unbound Pack)"
+  ],
+  "plan": {
+   "going": "The keystone opens the knight-captain's tomb at Eurydike; the Unbound are there ahead of me.",
+   "next": "Go to Eurydike and search the Unbound's packs on the way to the tomb.",
+   "ways": "Fight the dead and the Unbound, slip past them, or turn the dead with Restoration."
+  },
+  "answers": [
+   "I work for Nesh-Deeka. I am at Eurydike, a roofless Kothringi hall, to open the knight-captain tomb with the keystone before the Unbound and the Collector. The captain was buried with something that marked the kings road to the Root.",
+   "Search the Unbound packs in the barracks wing, then reach the tomb door.",
+   "Fight the Restless Knight, sneak past, or turn the dead with Restoration; I could also talk to the Unbound Digger.",
+   "I do not know what the Root and the Eye of Argonia really are, nor how Nesh-Deeka knows so much. I might learn from the packs, the tomb, or people here."
+  ],
+  "raw": "1. I work for Nesh-Deeka. I am at Eurydike, a roofless Kothringi hall, to open the knight-captain tomb with the keystone before the Unbound and the Collector. The captain was buried with something that marked the kings road to the Root. 2. Search the Unbound packs in the barracks wing, then reach the tomb door. 3. Fight the Restless Knight, sneak past, or turn the dead with Restoration; I could also talk to the Unbound Digger. 4. I do not know what the Root and the Eye of Argonia really are, nor how Nesh-Deeka knows so much. I might learn from the packs, the tomb, or people here."
+ },
+ {
+  "stage": 20,
+  "kind": "stage",
+  "ending": null,
+  "title": "The Knights' Tomb",
+  "journal": "In the Unbound's packs were bottles of the grey paste they call \"the seal\". It is a paralysis poison: it numbs a tree's scar shut. The Unbound drain a tree and then poison it. If they wanted the trees dead they could kill them, so why seal a tree they drain? I'm to open the knight-captain's tomb with the keystone.",
+  "objectives": [
+   "Open the knight-captain's tomb with the keystone and search it. (marker: Door to Knight-Captain's Tomb, Knight-Captain's Tomb Chest)"
+  ],
+  "plan": {
+   "going": "The seal is a paralysis poison. I do not know why the Unbound seal trees they drain: that question is open.",
+   "next": "Open the tomb with the keystone and search the knight-captain's chest.",
+   "ways": "The keystone is the door's key; the dead and the Unbound may still be about.",
+   "terms": [
+    "paralysis poison (the seal): the item's name and journal 20"
+   ]
+  },
+  "answers": [
+   "I work for Nesh-Deeka. The Unbound packs held Grey Seal, a paralysis poison that numbs a tree scar shut; the Unbound drain trees then seal them, which is odd.",
+   "Open the knight-captain tomb door with the keystone and search the chest inside.",
+   "Use the keystone on the door; deal with the Restless Knight by fighting, sneaking or Restoration.",
+   "I do not understand why the Unbound seal trees they drain, nor what the Root and Eye are. I might learn from the tomb or the Unbound-Note."
+  ],
+  "raw": "1. I work for Nesh-Deeka. The Unbound packs held Grey Seal, a paralysis poison that numbs a tree scar shut; the Unbound drain trees then seal them, which is odd. 2. Open the knight-captain tomb door with the keystone and search the chest inside. 3. Use the keystone on the door; deal with the Restless Knight by fighting, sneaking or Restoration. 4. I do not understand why the Unbound seal trees they drain, nor what the Root and Eye are. I might learn from the tomb or the Unbound-Note."
+ },
+ {
+  "stage": 30,
+  "kind": "stage",
+  "ending": null,
+  "title": "The Knights' Tomb",
+  "journal": "In the knight-captain's tomb lay a bronze disc stamped with a mine's mark, a pick crossed with a tower. I'm to bring it to Nesh-Deeka in Helstrom.",
+  "objectives": [
+   "Bring the bronze disc to Nesh-Deeka in Helstrom. (marker: Nesh-Deeka)"
+  ],
+  "plan": {
+   "going": "The disc bears a mine's mark; I do not know which mine.",
+   "next": "Bring the disc to Nesh-Deeka.",
+   "ways": "none"
+  },
+  "answers": [
+   "I work for Nesh-Deeka. I opened the knight-captain tomb with the keystone and found a bronze disc stamped with a mine mark, a pick crossed with a tower.",
+   "Bring the disc to Nesh-Deeka in Helstrom.",
+   "Go straight to Helstrom; I could also keep the disc or look into the mine mark first, but my orders are to deliver it.",
+   "I do not know which mine the mark belongs to, nor what the Root and Eye really are. Nesh-Deeka or Gideon locals might tell me."
+  ],
+  "raw": "1. I work for Nesh-Deeka. I opened the knight-captain tomb with the keystone and found a bronze disc stamped with a mine mark, a pick crossed with a tower. 2. Bring the disc to Nesh-Deeka in Helstrom. 3. Go straight to Helstrom; I could also keep the disc or look into the mine mark first, but my orders are to deliver it. 4. I do not know which mine the mark belongs to, nor what the Root and Eye really are. Nesh-Deeka or Gideon locals might tell me."
+ },
+ {
+  "stage": 90,
+  "kind": "ending",
+  "ending": "complete",
+  "title": "The Knights' Tomb",
+  "journal": "Nesh-Deeka knew the mark: Vicrium, an old mine in the clay country behind Seafalls, in the east. She already knew the Unbound had been at Eurydike. Before I could ask how, she said \"we listen\" and would not answer why they seal the trees. She paid me 100 gold. The question stays with me.",
+  "objectives": [],
+  "plan": {
+   "going": "The disc points to Vicrium. Why the Unbound seal the trees is still open; Nesh-Deeka knows where they go and will not say how.",
+   "next": "MN10 starts; its first entry marks Vicrium.",
+   "ways": "none",
+   "terms": [
+    "Vicrium: Nesh-Deeka: an old mine behind Seafalls in Okuwun Rahei"
+   ]
+  },
+  "answers": [
+   "The quest is done. The disc is the mark of Vicrium, an old ochre and alum mine behind Seafalls in Okuwun Rahei, where the knights kept a strongbox. Nesh-Deeka paid 100 gold and said only \"we listen\" about how she knew the Unbound were at Eurydike.",
+   "Nothing is set now; likely Vicrium next, but no orders yet.",
+   "Ask Nesh-Deeka more, or travel east to Vicrium.",
+   "I still do not know what the Root and Eye are, why the Unbound seal drained trees, or how Nesh-Deeka listens."
+  ],
+  "raw": "1. The quest is done. The disc is the mark of Vicrium, an old ochre and alum mine behind Seafalls in Okuwun Rahei, where the knights kept a strongbox. Nesh-Deeka paid 100 gold and said only \"we listen\" about how she knew the Unbound were at Eurydike. 2. Nothing is set now; likely Vicrium next, but no orders yet. 3. Ask Nesh-Deeka more, or travel east to Vicrium. 4. I still do not know what the Root and Eye are, why the Unbound seal drained trees, or how Nesh-Deeka listens."
+ }
+]

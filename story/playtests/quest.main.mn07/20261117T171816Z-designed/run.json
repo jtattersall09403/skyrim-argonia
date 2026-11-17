@@ -1,0 +1,72 @@
+{
+ "quest": "quest.main.mn07",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn07.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "fight",
+ "choose": null,
+ "know": "story/playtests/quest.main.mn06/20261117T165901Z-designed/notes.md",
+ "created": "20261117T171816Z",
+ "stages": [
+  10,
+  20,
+  90
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn04.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn05.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn06.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 3,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I work for Nesh-Deeka of the Toh-Reel-Ka. The Pale Harvest, a sunken Company freighter, may hold the real Eye of Argonia, which is needed to heal the Hist trees at the Root. The Unbound and the Collector also hunt it. 2. Get into the hold of the wreck of the Pale Harvest in Hatandros Bight, near Ysan jetty, and open the captain's strongbox. 3. Fight the drowned crew and the Drowned Captain and take his key, or sneak past and pick the strongbox lock. 4. I do not know what the drowned crew are or exactly what is in the strongbox. I can find out by going aboard and looking.",
+  "use Door to The Pale Harvest",
+  "fight Drowned Sailor win",
+  "fight Drowned Captain win",
+  "take Pale Harvest Strongbox Key",
+  "use Captain's Strongbox",
+  "take Kothringi Keystone",
+  "answer 1. I killed the drowned sailor and captain on the Pale Harvest, took the key and found a Kothringi Keystone in the strongbox instead of the Eye. It may be a step toward the Eye. 2. Bring the keystone to Nesh-Deeka in her house in Helstrom. 3. Go straight to her; I could also keep it or look into it first, but the journal points to her. 4. I do not know what Kothringi means here or what the keystone opens. Nesh-Deeka may tell me.",
+  "go Nesh-Deeka",
+  "talk Nesh-Deeka",
+  "say 1",
+  "answer 1. The quest is done. I got the Kothringi Keystone from the Pale Harvest and gave it to Nesh-Deeka, who paid 100 gold. She did not know the keystone, but it is Kothringi make. The Chime-Keepers of Toklea in the Tulmek Washes keep Kothringi lore. The Unbound lost the trail at Gideon. 2. Nothing is set for certain. The next lead seems to be Toklea, to ask the Chime-Keepers elder about the keystone. 3. I could go to Toklea, ask Nesh-Deeka more (who the Chime-Keepers are, what we hunt), or leave it. 4. I do not know how Nesh-Deeka knows what the Unbound do (\"we listen\"), who exactly the Chime-Keepers are, or what the keystone does. I could ask in Toklea.",
+  "answer Notes: I killed the drowned sailor and Drowned Captain on the Pale Harvest, took the strongbox key and found a Kothringi Keystone (not the Eye). I gave it to Nesh-Deeka in Helstrom. She paid 100 gold, so I have about 500 or more. I still carry the Old Silver Setting, The Collector note, the smuggler key and the Pale Harvest Strongbox Key. She does not know the keystone, but it is Kothringi (silver-skinned people, dead of the Knahaten Flu). The Chime-Keepers of Toklea, on the river fork in the Tulmek Washes, keep Kothringi lore, and their elder should know. The Unbound lost the trail at Gideon and have not been to the wreck. She will not say how she knows; she only says \"we listen\". The Collector (Ennodius Vanin) also hunts the Eye. Next step: travel to Toklea and ask the Chime-Keepers about the keystone. I have not yet asked Nesh-Deeka the other topics."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.05653590000000001,
+ "minutes": 0.6,
+ "turns": 14,
+ "tokens": {
+  "input_tokens": 22,
+  "output_tokens": 2413,
+  "cache_read_input_tokens": 61419,
+  "cache_creation_input_tokens": 6555
+ }
+}

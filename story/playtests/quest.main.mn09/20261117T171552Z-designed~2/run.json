@@ -1,0 +1,73 @@
+{
+ "quest": "quest.main.mn09",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn09.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "quiet",
+ "choose": null,
+ "know": "story/playtests/quest.main.mn08/20261117T170115Z-designed~2/notes.md",
+ "created": "20261117T171552Z",
+ "stages": [
+  10
+ ],
+ "ended": "harness error",
+ "after": [
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn04.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn05.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn06.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn07.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn08.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 1,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I work for Nesh-Deeka. She wants me to open the Kothringi knight-captain tomb at Eurydike with the keystone, before the Unbound and the Collector get there. The captain was buried with something that marked the kings road to the Root, where the Hist roots meet and the Eye of Argonia lies. 2. Search the Unbound packs in the barracks wing, then go to the tomb door. 3. Fight the dead or the Unbound digger, slip past quietly (my preference), or turn the dead with Restoration. 4. I do not really understand what the Root and the Eye are, or how Nesh-Deeka knows what she knows. I could find out from the tomb contents and by talking to people.",
+  "look",
+  "take Unbound Pack",
+  "use Unbound Pack",
+  "journal",
+  "read Unbound-Note",
+  "look",
+  "use Door to Knight-Captain's Tomb"
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.040044699999999996,
+ "minutes": 0.6,
+ "turns": 10,
+ "tokens": {
+  "input_tokens": 20,
+  "output_tokens": 1579,
+  "cache_read_input_tokens": 49667,
+  "cache_creation_input_tokens": 4812
+ }
+}

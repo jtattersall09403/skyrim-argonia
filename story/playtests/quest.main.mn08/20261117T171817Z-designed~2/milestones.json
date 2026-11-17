@@ -1,0 +1,116 @@
+[
+ {
+  "stage": 10,
+  "kind": "start",
+  "ending": null,
+  "title": "The Drowned Street",
+  "journal": "Nesh-Deeka sent me with the keystone to the Chime-Keepers of Toklea, who keep what is left of Kothringi lore. I'm to show it to their elder in the Kothringi Greathouse.",
+  "objectives": [
+   "Show the keystone to the elder of the Chime-Keepers in Toklea. (marker: Hums-the-Long-Note)"
+  ],
+  "plan": {
+   "going": "The keystone from the wreck is Kothringi; the Chime-Keepers' elder may know what it opens.",
+   "next": "Take boats to Lujei Ferry, cross to Toklea and show the keystone to the elder in the Kothringi Greathouse.",
+   "ways": "none yet"
+  },
+  "answers": [
+   "I work for Nesh-Deeka of the Toh-Reel-Ka in Helstrom. I took a Kothringi Keystone from the Pale Harvest wreck. The Collector and the Unbound are hunting the Eye, so it matters.",
+   "Show the keystone to the elder of the Chime-Keepers, Hums-the-Long-Note, in the Kothringi Greathouse here in Toklea.",
+   "Go into the Greathouse and talk to Hums-the-Long-Note. I see no other choices yet.",
+   "I do not know what the Eye is, or what the keystone does. I could ask the elder."
+  ],
+  "raw": "1. I work for Nesh-Deeka of the Toh-Reel-Ka in Helstrom. I took a Kothringi Keystone from the Pale Harvest wreck. The Collector and the Unbound are hunting the Eye, so it matters. 2. Show the keystone to the elder of the Chime-Keepers, Hums-the-Long-Note, in the Kothringi Greathouse here in Toklea. 3. Go into the Greathouse and talk to Hums-the-Long-Note. I see no other choices yet. 4. I do not know what the Eye is, or what the keystone does. I could ask the elder."
+ },
+ {
+  "stage": 20,
+  "kind": "stage",
+  "ending": null,
+  "title": "The Drowned Street",
+  "journal": "Hums-the-Long-Note knows the keystone, and named her price: her family's carved grave-stake lies in a chest in the drowned street of Zul-Etha, and she wants it raised. Crocodiles lie on the roof peaks above it. I may kill them from a roof or from range, calm them with Illusion, or swim under them unseen to the chest.",
+  "objectives": [
+   "Raise the grave-stake from the chest in Zul-Etha's drowned street. (marker: Drowned Chest)"
+  ],
+  "plan": {
+   "going": "The elder will say what the keystone opens if I raise her family's grave-stake.",
+   "next": "Go to Zul-Etha and take the grave-stake from the chest under the water.",
+   "ways": "Kill the crocodiles (from a roof or from range), calm them with Illusion, or swim under them unseen.",
+   "terms": [
+    "Zul-Etha: Hums-the-Long-Note: a carting village the washes drowned, south-east of Mir-Xal"
+   ]
+  },
+  "answers": [
+   "Hums-the-Long-Note knows the keystone but wants payment: her family grave-stake, in a chest in drowned Zul-Etha.",
+   "Go to Zul-Etha (south-east of Mir-Xal quay) and raise the stake from the Drowned Chest.",
+   "Calm crocodiles with Illusion (calm approach suits me), swim under them unseen, or kill them from a roof or with arrows.",
+   "I do not know where exactly Mir-Xal is, but the marker should guide me. I also still do not know what the keystone means."
+  ],
+  "raw": "1. Hums-the-Long-Note knows the keystone but wants payment: her family grave-stake, in a chest in drowned Zul-Etha. 2. Go to Zul-Etha (south-east of Mir-Xal quay) and raise the stake from the Drowned Chest. 3. Calm crocodiles with Illusion (calm approach suits me), swim under them unseen, or kill them from a roof or with arrows. 4. I do not know where exactly Mir-Xal is, but the marker should guide me. I also still do not know what the keystone means."
+ },
+ {
+  "stage": 30,
+  "kind": "stage",
+  "ending": null,
+  "title": "The Drowned Street",
+  "journal": "I raised the grave-stake from the drowned street. I'm to bring it to Hums-the-Long-Note in the Kothringi Greathouse in Toklea.",
+  "objectives": [
+   "Bring the grave-stake to Hums-the-Long-Note in Toklea. (marker: Hums-the-Long-Note)"
+  ],
+  "plan": {
+   "going": "I have the stake; the elder owes me the keystone's story.",
+   "next": "Bring the stake to Hums-the-Long-Note.",
+   "ways": "none"
+  },
+  "answers": [
+   "I got the grave-stake from the chest without a fight; the crocodiles did not stir. Hums-the-Long-Note will tell me about the keystone in return.",
+   "Take the stake back to Hums-the-Long-Note in the Kothringi Greathouse, Toklea.",
+   "Just go back and give it to her. No other choice visible.",
+   "Still unknown: what the keystone and the Eye are. Hums should tell me."
+  ],
+  "raw": "1. I got the grave-stake from the chest without a fight; the crocodiles did not stir. Hums-the-Long-Note will tell me about the keystone in return. 2. Take the stake back to Hums-the-Long-Note in the Kothringi Greathouse, Toklea. 3. Just go back and give it to her. No other choice visible. 4. Still unknown: what the keystone and the Eye are. Hums should tell me."
+ },
+ {
+  "stage": 40,
+  "kind": "stage",
+  "ending": null,
+  "title": "The Drowned Street",
+  "journal": "Hums-the-Long-Note took her family's stake and kept her word: the keystone opens the tomb of the knight-captain at Eurydike, a ruin near Gideon. The Kothringi knights of Gideon were the last to guard the kings' road to the Root. I'm to tell Nesh-Deeka in Helstrom.",
+  "objectives": [
+   "Tell Nesh-Deeka in Helstrom what the keystone opens. (marker: Nesh-Deeka)"
+  ],
+  "plan": {
+   "going": "The keystone opens the knight-captain's tomb at Eurydike, on the old road to the Root.",
+   "next": "Report to Nesh-Deeka in Helstrom.",
+   "ways": "none",
+   "terms": [
+    "Eurydike and the knights of Gideon: Hums-the-Long-Note: the hall of Kothringi knights who served in Gideon's garrison and guarded the kings' road to the Root"
+   ]
+  },
+  "answers": [
+   "Hums-the-Long-Note took the stake and said the keystone opens the tomb of the Kothringi knight-captain at Eurydike, a roofless hall north of Gideon. The knights of Gideon guarded the old kings road to the Root.",
+   "Go to Nesh-Deeka in Helstrom and tell her.",
+   "Report to her now. Later I could go to Eurydike myself, but that is not the objective yet.",
+   "I do not know what the Root is, or what the Eye is, or what is in the tomb. Nesh-Deeka or the tomb may tell me."
+  ],
+  "raw": "1. Hums-the-Long-Note took the stake and said the keystone opens the tomb of the Kothringi knight-captain at Eurydike, a roofless hall north of Gideon. The knights of Gideon guarded the old kings road to the Root. 2. Go to Nesh-Deeka in Helstrom and tell her. 3. Report to her now. Later I could go to Eurydike myself, but that is not the objective yet. 4. I do not know what the Root is, or what the Eye is, or what is in the tomb. Nesh-Deeka or the tomb may tell me."
+ },
+ {
+  "stage": 90,
+  "kind": "ending",
+  "ending": "complete",
+  "title": "The Drowned Street",
+  "journal": "Nesh-Deeka heard me out. She already knew that the Unbound have been asking Gideon's diggers about Eurydike. Before I could ask how, she said \"we listen\" and told me to hurry. She paid me 100 gold.",
+  "objectives": [],
+  "plan": {
+   "going": "The Unbound are close behind on the same trail; Nesh-Deeka knows it and will not say how.",
+   "next": "MN09 starts; its first entry marks Eurydike.",
+   "ways": "none"
+  },
+  "answers": [
+   "The quest is done. The keystone opens the knight-captain tomb at Eurydike, a step toward the Eye of Argonia at the Root. The Unbound are asking about Eurydike too, so I must hurry.",
+   "Nothing is set yet; likely go to Eurydike near Gideon.",
+   "Go to Eurydike, or ask Nesh-Deeka more.",
+   "I do not know what the Eye really is, what the Root is, or how Nesh-Deeka listens."
+  ],
+  "raw": "1. The quest is done. The keystone opens the knight-captain tomb at Eurydike, a step toward the Eye of Argonia at the Root. The Unbound are asking about Eurydike too, so I must hurry. 2. Nothing is set yet; likely go to Eurydike near Gideon. 3. Go to Eurydike, or ask Nesh-Deeka more. 4. I do not know what the Eye really is, what the Root is, or how Nesh-Deeka listens."
+ }
+]

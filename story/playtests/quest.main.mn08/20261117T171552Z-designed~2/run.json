@@ -1,0 +1,87 @@
+{
+ "quest": "quest.main.mn08",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn08.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "quiet",
+ "choose": null,
+ "know": "story/playtests/quest.main.mn07/20261117T170011Z-designed/notes.md",
+ "created": "20261117T171552Z",
+ "stages": [
+  10,
+  20,
+  30,
+  40,
+  90
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn04.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn05.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn06.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn07.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 5,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I work for Nesh-Deeka of the Toh-Reel-Ka in Helstrom. I took a Kothringi Keystone from the Pale Harvest wreck. The Collector (Ennodius Vanin) and the Unbound are hunting the Eye, and the keystone seems tied to it. 2. Go to the Kothringi Greathouse in Toklea and show the keystone to Hums-the-Long-Note, the elder of the Chime-Keepers. 3. I can talk to the elder and show the keystone, or look around Toklea first. I can also ask about the Kothringi and the Eye. I have not seen any other choices yet. 4. I do not know what the Eye is exactly, what the keystone does, or who the Unbound are. I could ask the elder.",
+  "go Hums-the-Long-Note",
+  "talk Hums-the-Long-Note",
+  "say 2",
+  "answer 1. Hums-the-Long-Note knows the keystone but wants payment: her family grave-stake from a chest in drowned Zul-Etha. 2. Go to Zul-Etha (south-east of Mir-Xal quay) and raise the grave-stake from the Drowned Chest, then bring it back. 3. Quiet is my style: swim under the crocodiles unseen, or calm them with Illusion; or kill them from a roof or with arrows. 4. I do not know where Mir-Xal quay is exactly; the marker should guide me. I also still do not know what the Eye is.",
+  "go Drowned Chest",
+  "look",
+  "use Drowned Chest",
+  "take Carved Grave-Stake",
+  "answer 1. I got the Carved Grave-Stake from the drowned chest in Zul-Etha without any fight. Hums-the-Long-Note wanted it as payment for telling me about the keystone. 2. Take it back to Hums-the-Long-Note in the Kothringi Greathouse, Toklea. 3. I can go straight back and hand it over and then ask about the keystone. I see no other choice. 4. I still do not know what the Eye is or what the keystone does. Hums-the-Long-Note should tell me.",
+  "go Hums-the-Long-Note",
+  "talk Hums-the-Long-Note",
+  "say 2",
+  "answer 1. I gave Hums-the-Long-Note the grave-stake and she told me the keystone opens the tomb of the knight-captain at Eurydike, a roofless Kothringi hall near Gideon. The knights of Gideon were the last to guard the old kings road to the Root. 2. Report to Nesh-Deeka in Helstrom. 3. I can report straight back, or go to Eurydike myself first. The journal points me to Nesh-Deeka. 4. I do not know what the Root is, what the Eye is, or what the captain was buried with. I could find out at Eurydike or by asking Nesh-Deeka.",
+  "go Nesh-Deeka",
+  "talk Nesh-Deeka",
+  "say 1",
+  "say 3",
+  "journal",
+  "say 2",
+  "answer 1. Notes for a friend picking up the save: I am a Voh-Vastei of the Toh-Reel-Ka under Nesh-Deeka in Helstrom. The order hunts the Eye of Argonia, a jewel cut from Hist amber that lies at the Root, under the sea behind a gate the last Kothringi king sealed. Used in place, it can heal the sick Hist trees. The Unbound drain sap to make a draught that will kill the beast guarding the Root, and they want to get there first. I took the Kothringi Keystone from the Pale Harvest wreck. In Toklea, Hums-the-Long-Note told me it opens the tomb of the knight-captain at Eurydike, a roofless Kothringi hall just north of Gideon. She wanted her family grave-stake from a chest in drowned Zul-Etha as her price, and I raised it without a fight and gave it to her. Nesh-Deeka paid me 100 gold and told me to hurry, because the Unbound have been asking Gideons diggers about Eurydike. She says only that she listens to learn such things. 2. Next I should go to Eurydike near Gideon, open the captains tomb with the keystone, and find what marks the way to the Root. No marker or objective is set yet. 3. I can go quietly to Eurydike. I do not know my other options. 4. I do not know what the captain was buried with, how the Unbound or the Collector (Ennodius Vanin) are placed, or how Nesh-Deeka learns things. I carry the Keystone, the Eye-Setting, an Unbound-Note, two lockpicks, my Voh-Vastei armour and about 650 gold.",
+  "answer The Drowned Street is finished. I am a Voh-Vastei of the Toh-Reel-Ka under Nesh-Deeka in Helstrom. We hunt the Eye of Argonia, a Hist-amber jewel at the Root, under the sea behind a gate the last Kothringi king sealed. Used in place, it can heal the sick trees. The Unbound drain sap for a draught to kill the Roots guardian beast and want to reach it first. Hums-the-Long-Note of Toklea told me the Kothringi Keystone opens the knight-captains tomb at Eurydike, a roofless hall just north of Gideon. I paid her price by raising her family grave-stake from Zul-Etha without a fight. Nesh-Deeka paid me 100 gold and told me to hurry, because the Unbound are asking Gideons diggers about Eurydike. Next step: go to Eurydike and open the tomb. No marker is set yet. I carry the Keystone, the Eye-Setting, an Unbound-Note, two lockpicks, Voh-Vastei armour and about 650 gold. I still do not know what the captain was buried with."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.09594839999999999,
+ "minutes": 1.0,
+ "turns": 23,
+ "tokens": {
+  "input_tokens": 40,
+  "output_tokens": 4115,
+  "cache_read_input_tokens": 142744,
+  "cache_creation_input_tokens": 10111
+ }
+}

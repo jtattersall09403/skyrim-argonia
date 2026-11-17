@@ -1,0 +1,86 @@
+{
+ "quest": "quest.main.mn08",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn08.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "fight",
+ "choose": null,
+ "know": "story/playtests/quest.main.mn07/20261117T170011Z-designed/notes.md",
+ "created": "20261117T171551Z",
+ "stages": [
+  10,
+  20,
+  30,
+  40
+ ],
+ "ended": "stopped",
+ "after": [
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn04.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn05.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn06.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn07.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 4,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I work for Nesh-Deeka of the Toh-Reel-Ka in Helstrom. I took a Kothringi Keystone from the Pale Harvest wreck. The Collector (Ennodius Vanin) and the Unbound are hunting the Eye, and the keystone seems tied to it. 2. Go to the Kothringi Greathouse in Toklea and show the keystone to the elder of the Chime-Keepers, Hums-the-Long-Note. 3. I can just talk to the elder and show the keystone; I could also look around Toklea first, or fight if things turn hostile. No other choice is visible yet. 4. I do not know what the Eye is exactly, what the keystone does, or who the Unbound really are. I may find out by asking the elder.",
+  "go Hums-the-Long-Note",
+  "talk Hums-the-Long-Note",
+  "say 2",
+  "answer 1. Hums-the-Long-Note knows the keystone but wants payment first: her family grave-stake, lying in a chest in drowned Zul-Etha. 2. Go to Zul-Etha (from Mir-Xal quay, south-east) and raise the stake from the Drowned Chest, then return to her. 3. Fight the crocodiles and the old bull from a roof or with arrows (my build favours fighting), calm them with Illusion, or swim under unseen. 4. I do not know where Mir-Xal quay is exactly, though the marker should guide me; nor what the keystone is.",
+  "go Drowned Chest",
+  "fight Crocodile win",
+  "fight Old Bull Crocodile win",
+  "take Drowned Chest",
+  "use Drowned Chest",
+  "take Carved Grave-Stake",
+  "answer 1. I killed the crocodiles at Zul-Etha and took the Carved Grave-Stake, the price Hums-the-Long-Note set for telling me about the keystone. 2. Bring the stake to Hums-the-Long-Note in the Kothringi Greathouse, Toklea. 3. Just deliver it; then ask about the keystone. 4. I still do not know what the keystone is or does; she should tell me.",
+  "go Hums-the-Long-Note",
+  "talk Hums-the-Long-Note",
+  "say 2",
+  "answer 1. Hums-the-Long-Note took the stake and told me the keystone opens the tomb of the knight-captain at Eurydike, a roofless Kothringi hall near Gideon. The knights of Gideon guarded the old kings road to the Root. 2. Report to Nesh-Deeka in Helstrom. 3. Report first as asked, or go to Eurydike myself; the journal only asks me to tell Nesh-Deeka. 4. I do not know what the Root is or how it relates to the Eye; Nesh-Deeka may know.",
+  "go Nesh-Deeka",
+  "talk Nesh-Deeka",
+  "say 1",
+  "say 3",
+  "journal",
+  "look"
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.0897262,
+ "minutes": 0.9,
+ "turns": 24,
+ "tokens": {
+  "input_tokens": 38,
+  "output_tokens": 3878,
+  "cache_read_input_tokens": 130142,
+  "cache_creation_input_tokens": 9464
+ }
+}

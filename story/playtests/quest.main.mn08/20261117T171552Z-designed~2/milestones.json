@@ -1,0 +1,116 @@
+[
+ {
+  "stage": 10,
+  "kind": "start",
+  "ending": null,
+  "title": "The Drowned Street",
+  "journal": "Nesh-Deeka sent me with the keystone to the Chime-Keepers of Toklea, who keep what is left of Kothringi lore. I'm to show it to their elder in the Kothringi Greathouse.",
+  "objectives": [
+   "Show the keystone to the elder of the Chime-Keepers in Toklea. (marker: Hums-the-Long-Note)"
+  ],
+  "plan": {
+   "going": "The keystone from the wreck is Kothringi; the Chime-Keepers' elder may know what it opens.",
+   "next": "Take boats to Lujei Ferry, cross to Toklea and show the keystone to the elder in the Kothringi Greathouse.",
+   "ways": "none yet"
+  },
+  "answers": [
+   "I work for Nesh-Deeka of the Toh-Reel-Ka in Helstrom. I took a Kothringi Keystone from the Pale Harvest wreck. The Collector (Ennodius Vanin) and the Unbound are hunting the Eye, and the keystone seems tied to it.",
+   "Go to the Kothringi Greathouse in Toklea and show the keystone to Hums-the-Long-Note, the elder of the Chime-Keepers.",
+   "I can talk to the elder and show the keystone, or look around Toklea first. I can also ask about the Kothringi and the Eye. I have not seen any other choices yet.",
+   "I do not know what the Eye is exactly, what the keystone does, or who the Unbound are. I could ask the elder."
+  ],
+  "raw": "1. I work for Nesh-Deeka of the Toh-Reel-Ka in Helstrom. I took a Kothringi Keystone from the Pale Harvest wreck. The Collector (Ennodius Vanin) and the Unbound are hunting the Eye, and the keystone seems tied to it. 2. Go to the Kothringi Greathouse in Toklea and show the keystone to Hums-the-Long-Note, the elder of the Chime-Keepers. 3. I can talk to the elder and show the keystone, or look around Toklea first. I can also ask about the Kothringi and the Eye. I have not seen any other choices yet. 4. I do not know what the Eye is exactly, what the keystone does, or who the Unbound are. I could ask the elder."
+ },
+ {
+  "stage": 20,
+  "kind": "stage",
+  "ending": null,
+  "title": "The Drowned Street",
+  "journal": "Hums-the-Long-Note knows the keystone, and named her price: her family's carved grave-stake lies in a chest in the drowned street of Zul-Etha, and she wants it raised. Crocodiles lie on the roof peaks above it. I may kill them from a roof or from range, calm them with Illusion, or swim under them unseen to the chest.",
+  "objectives": [
+   "Raise the grave-stake from the chest in Zul-Etha's drowned street. (marker: Drowned Chest)"
+  ],
+  "plan": {
+   "going": "The elder will say what the keystone opens if I raise her family's grave-stake.",
+   "next": "Go to Zul-Etha and take the grave-stake from the chest under the water.",
+   "ways": "Kill the crocodiles (from a roof or from range), calm them with Illusion, or swim under them unseen.",
+   "terms": [
+    "Zul-Etha: Hums-the-Long-Note: a carting village the washes drowned, south-east of Mir-Xal"
+   ]
+  },
+  "answers": [
+   "Hums-the-Long-Note knows the keystone but wants payment: her family grave-stake from a chest in drowned Zul-Etha.",
+   "Go to Zul-Etha (south-east of Mir-Xal quay) and raise the grave-stake from the Drowned Chest, then bring it back.",
+   "Quiet is my style: swim under the crocodiles unseen, or calm them with Illusion; or kill them from a roof or with arrows.",
+   "I do not know where Mir-Xal quay is exactly; the marker should guide me. I also still do not know what the Eye is."
+  ],
+  "raw": "1. Hums-the-Long-Note knows the keystone but wants payment: her family grave-stake from a chest in drowned Zul-Etha. 2. Go to Zul-Etha (south-east of Mir-Xal quay) and raise the grave-stake from the Drowned Chest, then bring it back. 3. Quiet is my style: swim under the crocodiles unseen, or calm them with Illusion; or kill them from a roof or with arrows. 4. I do not know where Mir-Xal quay is exactly; the marker should guide me. I also still do not know what the Eye is."
+ },
+ {
+  "stage": 30,
+  "kind": "stage",
+  "ending": null,
+  "title": "The Drowned Street",
+  "journal": "I raised the grave-stake from the drowned street. I'm to bring it to Hums-the-Long-Note in the Kothringi Greathouse in Toklea.",
+  "objectives": [
+   "Bring the grave-stake to Hums-the-Long-Note in Toklea. (marker: Hums-the-Long-Note)"
+  ],
+  "plan": {
+   "going": "I have the stake; the elder owes me the keystone's story.",
+   "next": "Bring the stake to Hums-the-Long-Note.",
+   "ways": "none"
+  },
+  "answers": [
+   "I got the Carved Grave-Stake from the drowned chest in Zul-Etha without any fight. Hums-the-Long-Note wanted it as payment for telling me about the keystone.",
+   "Take it back to Hums-the-Long-Note in the Kothringi Greathouse, Toklea.",
+   "I can go straight back and hand it over and then ask about the keystone. I see no other choice.",
+   "I still do not know what the Eye is or what the keystone does. Hums-the-Long-Note should tell me."
+  ],
+  "raw": "1. I got the Carved Grave-Stake from the drowned chest in Zul-Etha without any fight. Hums-the-Long-Note wanted it as payment for telling me about the keystone. 2. Take it back to Hums-the-Long-Note in the Kothringi Greathouse, Toklea. 3. I can go straight back and hand it over and then ask about the keystone. I see no other choice. 4. I still do not know what the Eye is or what the keystone does. Hums-the-Long-Note should tell me."
+ },
+ {
+  "stage": 40,
+  "kind": "stage",
+  "ending": null,
+  "title": "The Drowned Street",
+  "journal": "Hums-the-Long-Note took her family's stake and kept her word: the keystone opens the tomb of the knight-captain at Eurydike, a ruin near Gideon. The Kothringi knights of Gideon were the last to guard the kings' road to the Root. I'm to tell Nesh-Deeka in Helstrom.",
+  "objectives": [
+   "Tell Nesh-Deeka in Helstrom what the keystone opens. (marker: Nesh-Deeka)"
+  ],
+  "plan": {
+   "going": "The keystone opens the knight-captain's tomb at Eurydike, on the old road to the Root.",
+   "next": "Report to Nesh-Deeka in Helstrom.",
+   "ways": "none",
+   "terms": [
+    "Eurydike and the knights of Gideon: Hums-the-Long-Note: the hall of Kothringi knights who served in Gideon's garrison and guarded the kings' road to the Root"
+   ]
+  },
+  "answers": [
+   "I gave Hums-the-Long-Note the grave-stake and she told me the keystone opens the tomb of the knight-captain at Eurydike, a roofless Kothringi hall near Gideon. The knights of Gideon were the last to guard the old kings road to the Root.",
+   "Report to Nesh-Deeka in Helstrom.",
+   "I can report straight back, or go to Eurydike myself first. The journal points me to Nesh-Deeka.",
+   "I do not know what the Root is, what the Eye is, or what the captain was buried with. I could find out at Eurydike or by asking Nesh-Deeka."
+  ],
+  "raw": "1. I gave Hums-the-Long-Note the grave-stake and she told me the keystone opens the tomb of the knight-captain at Eurydike, a roofless Kothringi hall near Gideon. The knights of Gideon were the last to guard the old kings road to the Root. 2. Report to Nesh-Deeka in Helstrom. 3. I can report straight back, or go to Eurydike myself first. The journal points me to Nesh-Deeka. 4. I do not know what the Root is, what the Eye is, or what the captain was buried with. I could find out at Eurydike or by asking Nesh-Deeka."
+ },
+ {
+  "stage": 90,
+  "kind": "ending",
+  "ending": "complete",
+  "title": "The Drowned Street",
+  "journal": "Nesh-Deeka heard me out. She already knew that the Unbound have been asking Gideon's diggers about Eurydike. When I asked how, she said \"we listen\" and told me to hurry. She paid me 100 gold.",
+  "objectives": [],
+  "plan": {
+   "going": "The Unbound are close behind on the same trail; Nesh-Deeka knows it and will not say how.",
+   "next": "MN09 starts; its first entry marks Eurydike.",
+   "ways": "none"
+  },
+  "answers": [
+   "Notes for a friend picking up the save: I am a Voh-Vastei of the Toh-Reel-Ka under Nesh-Deeka in Helstrom. The order hunts the Eye of Argonia, a jewel cut from Hist amber that lies at the Root, under the sea behind a gate the last Kothringi king sealed. Used in place, it can heal the sick Hist trees. The Unbound drain sap to make a draught that will kill the beast guarding the Root, and they want to get there first. I took the Kothringi Keystone from the Pale Harvest wreck. In Toklea, Hums-the-Long-Note told me it opens the tomb of the knight-captain at Eurydike, a roofless Kothringi hall just north of Gideon. She wanted her family grave-stake from a chest in drowned Zul-Etha as her price, and I raised it without a fight and gave it to her. Nesh-Deeka paid me 100 gold and told me to hurry, because the Unbound have been asking Gideons diggers about Eurydike. She says only that she listens to learn such things.",
+   "Next I should go to Eurydike near Gideon, open the captains tomb with the keystone, and find what marks the way to the Root. No marker or objective is set yet.",
+   "I can go quietly to Eurydike. I do not know my other options.",
+   "I do not know what the captain was buried with, how the Unbound or the Collector (Ennodius Vanin) are placed, or how Nesh-Deeka learns things. I carry the Keystone, the Eye-Setting, an Unbound-Note, two lockpicks, my Voh-Vastei armour and about 650 gold."
+  ],
+  "raw": "1. Notes for a friend picking up the save: I am a Voh-Vastei of the Toh-Reel-Ka under Nesh-Deeka in Helstrom. The order hunts the Eye of Argonia, a jewel cut from Hist amber that lies at the Root, under the sea behind a gate the last Kothringi king sealed. Used in place, it can heal the sick Hist trees. The Unbound drain sap to make a draught that will kill the beast guarding the Root, and they want to get there first. I took the Kothringi Keystone from the Pale Harvest wreck. In Toklea, Hums-the-Long-Note told me it opens the tomb of the knight-captain at Eurydike, a roofless Kothringi hall just north of Gideon. She wanted her family grave-stake from a chest in drowned Zul-Etha as her price, and I raised it without a fight and gave it to her. Nesh-Deeka paid me 100 gold and told me to hurry, because the Unbound have been asking Gideons diggers about Eurydike. She says only that she listens to learn such things. 2. Next I should go to Eurydike near Gideon, open the captains tomb with the keystone, and find what marks the way to the Root. No marker or objective is set yet. 3. I can go quietly to Eurydike. I do not know my other options. 4. I do not know what the captain was buried with, how the Unbound or the Collector (Ennodius Vanin) are placed, or how Nesh-Deeka learns things. I carry the Keystone, the Eye-Setting, an Unbound-Note, two lockpicks, my Voh-Vastei armour and about 650 gold."
+ }
+]

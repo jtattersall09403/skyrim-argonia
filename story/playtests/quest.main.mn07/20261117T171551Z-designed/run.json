@@ -1,0 +1,77 @@
+{
+ "quest": "quest.main.mn07",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn07.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "quiet",
+ "choose": null,
+ "know": "story/playtests/quest.main.mn06/20261117T165901Z-designed/notes.md",
+ "created": "20261117T171551Z",
+ "stages": [
+  10,
+  20,
+  90
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn04.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn05.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn06.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 3,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I work for Nesh-Deeka of the Toh-Reel-Ka. The Old Silver Setting named the Pale Harvest, a sunk Company freighter, which may hold the real Eye of Argonia that heals the Hist trees. The Unbound and the Collector hunt it too. 2. Get into the hold of the wreck of the Pale Harvest in Hatandros Bight, and open the captain's strongbox. 3. Fight the drowned crew, or sneak past and pick the strongbox lock. The Drowned Captain carries the key. 4. I do not know what the drowned crew are exactly, or what is in the strongbox. I can find out by going aboard and looking.",
+  "look",
+  "use Door to The Pale Harvest",
+  "pick Captain's Strongbox win",
+  "look",
+  "take Captain's Strongbox",
+  "use Captain's Strongbox",
+  "take Kothringi Keystone",
+  "answer 1. I picked the strongbox lock on the Pale Harvest without a fight and took a Kothringi Keystone on a chain. It was not the Eye itself, but may be a step toward it. I work for Nesh-Deeka. 2. Bring the keystone to Nesh-Deeka in her house in Helstrom. 3. Go straight back, or look around the wreck first. The Unbound or the Collector might try to take the keystone, so I should be careful. 4. I do not know what Kothringi means, or what the keystone opens. Nesh-Deeka may be able to tell me.",
+  "go Nesh-Deeka",
+  "talk Nesh-Deeka",
+  "say 1",
+  "journal",
+  "say 3",
+  "say 4",
+  "say 2",
+  "answer 1. The Pale Harvest quest is done. I got the Kothringi Keystone from the wreck without a fight and Nesh-Deeka paid me 100 gold. She does not know the keystone, but it is Kothringi make. The Kothringi were silver-skinned marsh people killed by the Knahaten Flu. The keystone is a step toward the Eye of Argonia. 2. Go to Toklea on the river fork in the Tulmek Washes and ask the elder of the Chime-Keepers in the old Kothringi greathouse about the keystone. 3. I can go to Toklea myself or look for other leads. The Unbound and the Collector are also hunting the Eye. 4. I do not know what the keystone opens or where the Root is. She still would not say how she knows what the Unbound have done; she only said \"we listen\". I can ask the Chime-Keepers about the keystone.",
+  "answer Pale Harvest quest done. I swam out to the wreck at Hatandros Bight, picked the captain's strongbox lock without fighting, and took a Kothringi Keystone on a chain. I still carry it, along with the Eye-Setting, Unbound-Note, Voh-Vastei armour, 2 lockpicks, and about 550 gold. Nesh-Deeka does not know what the keystone is. She says it is Kothringi make. The Kothringi were the silver-skinned marsh people killed by the Knahaten Flu. Next lead: the Chime-Keepers of Toklea, on the river fork in the Tulmek Washes. Their elder speaks in the old Kothringi greathouse. Nesh-Deeka says the Unbound have not found the wreck. She would not say how she knows; she only said \"we listen\". The Collector and the Unbound still hunt the Eye, so be careful. The Eye is meant to heal the Hist trees at the Root."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.07132590000000001,
+ "minutes": 0.8,
+ "turns": 18,
+ "tokens": {
+  "input_tokens": 32,
+  "output_tokens": 2942,
+  "cache_read_input_tokens": 99099,
+  "cache_creation_input_tokens": 7983
+ }
+}

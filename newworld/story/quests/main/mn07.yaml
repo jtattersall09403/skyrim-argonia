@@ -6,84 +6,249 @@ line: quest.line.main
 group: main
 tier: 0
 status: concept
-shapes: [EXPEDITION]
+shapes:
+- EXPEDITION
 region: hatandros-bight
 settlement: shipwreck-33-m67
-anchorPlaces: [shipwreck-33-m67, ysan, thorn, helstrom]
+anchorPlaces:
+- shipwreck-33-m67
+- ysan
+- thorn
+- helstrom
 premise: The Voh-Vastei swims out from Ysan's jetty to the wreck of the Pale Harvest, gets past its drowned crew to the
   captain's strongbox, and brings Nesh-Deeka the Kothringi keystone inside.
 costTier: M
 milestone: 1
 touches:
-- {id: npc.mn.nesh-deeka, access: read}
-- {id: thing.mn.keystone, access: write}
-- {id: flag.main.thread-severed, access: write}
-sources: [story/design/quests/lines/main-plot.md §5 quest 7, §9 How the player travels]
-essentialTopics: [topic.mn07-report, topic.mn07-how-know]
+- id: npc.mn.nesh-deeka
+  access: read
+- id: thing.mn.keystone
+  access: write
+- id: flag.main.thread-severed
+  access: write
+sources:
+- story/design/quests/lines/main-plot.md §5 quest 7
+- §9 How the player travels
+essentialTopics:
+- topic.mn07-report
 startWhen:
-  questStage: [quest.main.mn06, '=', 90]
+  questStage:
+  - quest.main.mn06
+  - '='
+  - 90
 start: 10
 recordStatus: design
 foundation: 'Built from main-plot.md §5 quest 7. Kept: the wreck in shallow water off Ysan''s jetty past slaughterfish,
-  air in the hull (Katariah''s hold interior, entered by a door in the hull), the drowned crew in the hold and the
-  captain beside his strongbox, the three ways (fight, steal past and pick, the key from the captain), the Kothringi
-  keystone on a chain, and Nesh-Deeka sending the player to the Chime-Keepers of Toklea. Filled: the strongbox''s lock
-  (Adept), the captain''s key taken from his body (a draugr cannot be pickpocketed), and what Nesh-Deeka already
-  knows (that the Unbound have not yet found the wreck; they lost the trail at Gideon).'
+  air in the hull (Katariah''s hold interior, entered by a door in the hull), the drowned crew in the hold and the captain
+  beside his strongbox, the three ways (fight, steal past and pick, the key from the captain), the Kothringi keystone on
+  a chain, and Nesh-Deeka sending the player to the Chime-Keepers of Toklea. Filled: the strongbox''s lock (Adept), the
+  captain''s key taken from his body (a draugr cannot be pickpocketed), and what Nesh-Deeka already knows (that the Unbound
+  have not yet found the wreck; they lost the trail at Gideon).'
 recordSources:
-  places: [shipwreck-33-m67, ysan, thorn, helstrom]
-  lore: [story/lore/topics/lost-peoples.md (Kothringi), story/lore/extrapolation/argonia-4e201-state.md §2.5]
+  places:
+  - shipwreck-33-m67
+  - ysan
+  - thorn
+  - helstrom
+  lore:
+  - story/lore/topics/lost-peoples.md (Kothringi)
+  - story/lore/extrapolation/argonia-4e201-state.md §2.5
 centrepiece: DELVE
 actionPlan:
-- {skill: Sneak, use: sneak-past, reason: the drowned crew walk the hold; a quiet player steals past them}
-- {skill: Lockpicking, use: pick-a-lock, reason: the captain's strongbox has an Adept lock}
-- {skill: Two-Handed, use: fight, reason: any melee build fights the crew and the captain for his key}
-- {skill: Destruction, use: fight-with-magic, reason: a mage burns the drowned dead}
+- skill: Sneak
+  use: sneak-past
+  reason: the drowned crew walk the hold; a quiet player steals past them
+- skill: Lockpicking
+  use: pick-a-lock
+  reason: the captain's strongbox has an Adept lock
+- skill: Two-Handed
+  use: fight
+  reason: any melee build fights the crew and the captain for his key
+- skill: Destruction
+  use: fight-with-magic
+  reason: a mage burns the drowned dead
 truth:
-- {id: t1, when: the last years before the secession, who: [], where: Hatandros Bight, what: 'The Pale Harvest ran onto
-    a sandbar with a Gideon dealer''s stock aboard; her captain locked the dealer''s best piece, a Kothringi keystone
-    on a chain, in his own strongbox.'}
-- {id: t2, when: since, who: [], where: the wreck, what: The drowned crew rose as the walking dead; air stayed in the hull.}
+- id: t1
+  when: the last years before the secession
+  who: []
+  where: Hatandros Bight
+  what: The Pale Harvest ran onto a sandbar with a Gideon dealer's stock aboard; her captain locked the dealer's best piece,
+    a Kothringi keystone on a chain, in his own strongbox.
+- id: t2
+  when: since
+  who: []
+  where: the wreck
+  what: The drowned crew rose as the walking dead; air stayed in the hull.
 facts:
-- {id: fact.mn07.keystone, claim: 'The captain''s strongbox held a keystone on a chain, of Kothringi make.', from: t1}
-- {id: fact.mn07.chime-keepers, claim: 'The Chime-Keepers of Toklea keep what is left of Kothringi lore.', from: t1}
-- {id: fact.mn07.not-there, claim: The Unbound have not found the wreck; they lost the trail at Gideon., from: t1}
+- id: fact.mn07.keystone
+  claim: The captain's strongbox held a keystone on a chain, of Kothringi make.
+  from: t1
+- id: fact.mn07.chime-keepers
+  claim: The Chime-Keepers of Toklea keep what is left of Kothringi lore.
+  from: t1
+- id: fact.mn07.not-there
+  claim: The Unbound have not found the wreck; they lost the trail at Gideon.
+  from: t1
 cast:
 - id: npc.mn.nesh-deeka
   wants: the next step before the Unbound
-  knowledge: {fact.mn07.chime-keepers: knows, fact.mn07.not-there: knows}
+  knowledge:
+    fact.mn07.chime-keepers: knows
+    fact.mn07.not-there: knows
 - id: npc.mn07.drowned-captain
-  persona: {invented: true, name: Drowned Captain, race: draugr (Skyrim), role: the Pale Harvest's dead captain}
+  persona:
+    invented: true
+    name: Drowned Captain
+    race: draugr (Skyrim)
+    role: the Pale Harvest's dead captain
 things:
-- {id: thing.mn07.strongbox, kind: container, name: Captain's Strongbox, source: 'existing base: Skyrim strongbox in
-    Katariah''s hold interior', where: the hold, beside the captain, states: {all: 'locked (Adept), key on the captain'}}
-- {id: thing.mn07.strongbox-key, kind: item, name: Pale Harvest Strongbox Key, source: new, where: on the Drowned Captain}
-- {id: thing.mn.keystone, kind: item, name: Kothringi Keystone, source: 'new: Here There Be Monsters'' Kothringi keystone
-    amulet''s mesh, made a key record (it opens MN09''s tomb door)', where: in thing.mn07.strongbox, states: {all: carried
-      from here to MN09}}
+- id: thing.mn07.strongbox
+  kind: container
+  name: Captain's Strongbox
+  source: 'existing base: Skyrim strongbox in Katariah''s hold interior'
+  where: the hold
+  beside the captain: null
+  states:
+    all: locked (Adept), key on the captain
+- id: thing.mn07.strongbox-key
+  kind: item
+  name: Pale Harvest Strongbox Key
+  source: new
+  where: on the Drowned Captain
+- id: thing.mn.keystone
+  kind: item
+  name: Kothringi Keystone
+  source: 'new: Here There Be Monsters'' Kothringi keystone amulet''s mesh, made a key record (it opens MN09''s tomb door)'
+  where: in thing.mn07.strongbox
+  states:
+    all: carried from here to MN09
 placements:
-- {ref: marker.mn07.place, kind: marker, name: Wreck of the Pale Harvest, placeName: Wreck of the Pale Harvest, anchor: {place: shipwreck-33-m67, rule: surface, need: 'the place itself, known as Wreck of the Pale Harvest'}}
-- {ref: npc.mn.nesh-deeka, kind: person, name: Nesh-Deeka, anchor: {place: helstrom, rule: navmesh, need: Nesh-Deeka in Nesh-Deeka's House}}
-- {ref: door.mn07.hull, kind: door, anchor: {place: shipwreck-33-m67, rule: surface, need: 'a door in the sunken hull,
-      named "The Pale Harvest", leading to the hold with air in it'}, placeName: The Pale Harvest}
-- {ref: npc.mn07.drowned-captain, kind: person, base: {kind: template_person, id: 'draugr boss template'}, anchor: {place: shipwreck-33-m67,
-    rule: navmesh, need: the captain standing beside his strongbox at the far end of the hold}, name: Drowned Captain,
-  level: 14, hostile: true, enabled: true}
-- {ref: npc.mn07.crew, kind: person, base: {kind: template_person, id: 'draugr template'}, anchor: {place: shipwreck-33-m67,
-    rule: navmesh, need: four drowned crew walking the hold among the rotted sacks}, name: Drowned Sailor, level: 9, count: 4,
-  hostile: true, enabled: true}
-- {ref: thing.mn07.strongbox, kind: container, base: {kind: existing_base, id: Skyrim strongbox}, anchor: {place: shipwreck-33-m67,
-    rule: surface, need: the captain's strongbox in the hold}, lock: {level: adept, key: thing.mn07.strongbox-key}, enabled: true}
-- {ref: thing.mn07.strongbox-key, kind: thing, base: {kind: item, id: thing.mn07.strongbox-key}, carriedBy: npc.mn07.drowned-captain,
-  enabled: true}
-- {ref: thing.mn.keystone, kind: thing, base: {kind: item, id: thing.mn.keystone}, container: thing.mn07.strongbox, enabled: true}
-- {ref: marker.mn07.ysan-jetty, kind: marker, name: Ysan Jetty, anchor: {place: ysan, rule: surface, need: the end of Ysan's dry-stone jetty}}
+- ref: door.mn.nesh-deeka-house
+  kind: door
+  anchor:
+    place: helstrom
+    rule: surface
+    need: the door of the quiet house, named "Nesh-Deeka's House"
+  placeName: Nesh-Deeka's House
+- ref: marker.mn07.place
+  kind: marker
+  name: Wreck of the Pale Harvest
+  placeName: Wreck of the Pale Harvest
+  anchor:
+    place: shipwreck-33-m67
+    rule: surface
+    need: the place itself, known as Wreck of the Pale Harvest
+- ref: npc.mn.nesh-deeka
+  kind: person
+  name: Nesh-Deeka
+  anchor:
+    place: helstrom
+    room: Nesh-Deeka's House
+    rule: navmesh
+    need: Nesh-Deeka in Nesh-Deeka's House
+- ref: door.mn07.hull
+  kind: door
+  anchor:
+    place: shipwreck-33-m67
+    rule: surface
+    need: a door in the sunken hull, named "The Pale Harvest", leading to the hold with air in it
+  placeName: The Pale Harvest
+- ref: npc.mn07.drowned-captain
+  kind: person
+  base:
+    kind: template_person
+    id: draugr boss template
+  anchor:
+    place: shipwreck-33-m67
+    room: The Pale Harvest
+    rule: navmesh
+    need: the captain standing beside his strongbox at the far end of the hold
+  name: Drowned Captain
+  level: 14
+  hostile: true
+  enabled: true
+- ref: npc.mn07.crew
+  kind: person
+  base:
+    kind: template_person
+    id: draugr template
+  anchor:
+    place: shipwreck-33-m67
+    room: The Pale Harvest
+    rule: navmesh
+    need: four drowned crew walking the hold among the rotted sacks
+  name: Drowned Sailor
+  level: 9
+  count: 4
+  hostile: true
+  enabled: true
+- ref: thing.mn07.strongbox
+  kind: container
+  base:
+    kind: existing_base
+    id: Skyrim strongbox
+  anchor:
+    place: shipwreck-33-m67
+    room: The Pale Harvest
+    rule: surface
+    need: the captain's strongbox in the hold
+  lock:
+    level: adept
+    key: thing.mn07.strongbox-key
+  enabled: true
+- ref: thing.mn07.strongbox-key
+  kind: thing
+  base:
+    kind: item
+    id: thing.mn07.strongbox-key
+  carriedBy: npc.mn07.drowned-captain
+  enabled: true
+- ref: thing.mn.keystone
+  kind: thing
+  base:
+    kind: item
+    id: thing.mn.keystone
+  container: thing.mn07.strongbox
+  enabled: true
+- ref: marker.mn07.ysan-jetty
+  kind: marker
+  name: Ysan Jetty
+  anchor:
+    place: ysan
+    rule: surface
+    need: the end of Ysan's dry-stone jetty
 conclusions:
-- {id: c1, statement: The keystone is Kothringi; the next step is whoever keeps Kothringi lore., clues: [k1, k2, k3]}
+- id: c1
+  statement: The keystone is Kothringi; the next step is whoever keeps Kothringi lore.
+  clues:
+  - k1
+  - k2
+  - k3
 clues:
-- {id: k1, kind: lead, form: thing, carrier: thing.mn.keystone, gives: [fact.mn07.keystone], supports: [c1]}
-- {id: k2, kind: concept, form: line, carrier: npc.mn.nesh-deeka, gives: [fact.mn07.chime-keepers], supports: [c1]}
-- {id: k3, kind: concept, form: line, carrier: npc.mn.nesh-deeka, gives: [fact.mn07.keystone], supports: [c1]}
+- id: k1
+  kind: lead
+  form: thing
+  carrier: thing.mn.keystone
+  gives:
+  - fact.mn07.keystone
+  supports:
+  - c1
+- id: k2
+  kind: concept
+  form: line
+  carrier: npc.mn.nesh-deeka
+  gives:
+  - fact.mn07.chime-keepers
+  supports:
+  - c1
+- id: k3
+  kind: concept
+  form: line
+  carrier: npc.mn.nesh-deeka
+  gives:
+  - fact.mn07.keystone
+  supports:
+  - c1
 shapeData:
   destination: the captain's strongbox in the hold of the Pale Harvest
   route: boats from Helstrom to Archon and Thorn, the coast south to Ysan's jetty, a swim east to the wreck
@@ -93,99 +258,225 @@ stages:
 - id: 10
   place: shipwreck-33-m67
   journal: text.journal.mn07.10
-  journalText: 'Nesh-Deeka sent me to the wreck of the Pale Harvest in Hatandros Bight, a short swim out from Ysan''s
-    jetty. I''m to get into the hold, where the drowned crew walk, and open the captain''s strongbox. I may fight them
-    or steal past and pick its lock; the captain carries its key.'
-  directions: 'Poles-Upriver''s boats run from Helstrom''s landing down the rivers to Archon and on round the coast to
-    Thorn. From Thorn''s quay walk south along the coast to Ysan''s stone jetty, then swim east past the slaughterfish
-    to the listing hull; its door lets into the hold.'
+  journalText: Nesh-Deeka sent me to the wreck of the Pale Harvest in Hatandros Bight, a short swim out from Ysan's jetty.
+    I'm to get into the hold, where the drowned crew walk, and open the captain's strongbox. I may fight them or steal past
+    and pick its lock; the captain carries its key.
+  directions: Poles-Upriver's boats run from Helstrom's landing down the rivers to Archon and on round the coast to Thorn.
+    From Thorn's quay walk south along the coast to Ysan's stone jetty, then swim east past the slaughterfish to the listing
+    hull; its door lets into the hold.
   objectives:
-  - {id: box, text: text.objective.mn07.box, objectiveText: Open the captain's strongbox in the wreck of the Pale Harvest.,
-    target: 'thing.mn07.strongbox, npc.mn07.drowned-captain, marker.mn07.ysan-jetty', completeWhen: {questStage: [quest.main.mn07,
-        ≥, 20]}}
+  - id: box
+    text: text.objective.mn07.box
+    objectiveText: Open the captain's strongbox in the wreck of the Pale Harvest.
+    target: thing.mn07.strongbox, npc.mn07.drowned-captain, marker.mn07.ysan-jetty
+    completeWhen:
+      questStage:
+      - quest.main.mn07
+      - ≥
+      - 20
   successors:
-  - {to: 20, when: {hasItem: [thing.mn.keystone, 1]}}
+  - to: 20
+    when:
+      hasItem:
+      - thing.mn.keystone
+      - 1
   failForward:
-  - {to: 95, when: {not: {npcAlive: npc.mn.nesh-deeka}}}
+  - to: 95
+    when:
+      not:
+        npcAlive: npc.mn.nesh-deeka
   approaches:
-  - {id: fight, actions: [{skill: Two-Handed, use: fight, target: the drowned crew and captain}, {skill: Destruction, use: fight-with-magic,
-        target: the drowned crew}]}
-  - {id: quiet, actions: [{skill: Sneak, use: sneak-past, target: the drowned crew}, {skill: Lockpicking, use: pick-a-lock,
-        target: the strongbox, note: Adept}]}
+  - id: fight
+    actions:
+    - skill: Two-Handed
+      use: fight
+      target: the drowned crew and captain
+    - skill: Destruction
+      use: fight-with-magic
+      target: the drowned crew
+  - id: quiet
+    actions:
+    - skill: Sneak
+      use: sneak-past
+      target: the drowned crew
+    - skill: Lockpicking
+      use: pick-a-lock
+      target: the strongbox
+      note: Adept
   information:
     going: The silver setting named the Pale Harvest, a wreck that may hold the next clue to the Eye.
     next: Travel by boat to Thorn, walk to Ysan's jetty, swim to the wreck and open the captain's strongbox.
     ways: Fight the drowned crew and take the captain's key, or sneak past them and pick the strongbox's Adept lock.
     carriers:
-    - {know: the wreck and the way, by: [journal, objective, marker:marker.mn07.ysan-jetty, marker:thing.mn07.strongbox,
-        'name:door.mn07.hull']}
-    - {know: fight or sneak and pick; key on the captain, by: [journal, marker:npc.mn07.drowned-captain, 'name:thing.mn07.strongbox']}
+    - know: the wreck and the way
+      by:
+      - journal
+      - objective
+      - marker:marker.mn07.ysan-jetty
+      - marker:thing.mn07.strongbox
+      - name:door.mn07.hull
+    - know: fight or sneak and pick; key on the captain
+      by:
+      - journal
+      - marker:npc.mn07.drowned-captain
+      - name:thing.mn07.strongbox
 - id: 20
   place: helstrom
   journal: text.journal.mn07.20
-  journalText: 'In the captain''s strongbox lay a keystone on a chain, carved in a style I do not know. I''m to bring it
-    to Nesh-Deeka in her house in Helstrom.'
+  journalText: In the captain's strongbox lay a keystone on a chain, carved in a style I do not know. I'm to bring it to
+    Nesh-Deeka in her house in Helstrom.
   objectives:
-  - {id: report, text: text.objective.mn07.report, objectiveText: Bring the keystone to Nesh-Deeka in Helstrom., target: npc.mn.nesh-deeka,
-    completeWhen: {questStage: [quest.main.mn07, ≥, 90]}}
+  - id: report
+    text: text.objective.mn07.report
+    objectiveText: Bring the keystone to Nesh-Deeka in Helstrom.
+    target: npc.mn.nesh-deeka
+    completeWhen:
+      questStage:
+      - quest.main.mn07
+      - ≥
+      - 90
   successors:
-  - {to: 90, when: {all: [{topicHeardFrom: [topic.mn07-how-know, npc.mn.nesh-deeka]}, {hasItem: [thing.mn.keystone, 1]}]}}
+  - to: 90
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn07-report
+        - npc.mn.nesh-deeka
+      - hasItem:
+        - thing.mn.keystone
+        - 1
   failForward:
-  - {to: 95, when: {not: {npcAlive: npc.mn.nesh-deeka}}}
-  learns: [fact.mn07.keystone]
+  - to: 95
+    when:
+      not:
+        npcAlive: npc.mn.nesh-deeka
+  learns:
+  - fact.mn07.keystone
   information:
     going: I have a keystone from the wreck; I do not know what it opens.
     next: Bring it to Nesh-Deeka in Helstrom, by boat back up the rivers.
     ways: none
     carriers:
-    - {know: the keystone, by: [journal, 'name:thing.mn.keystone']}
-    - {know: report, by: [journal, objective, marker:npc.mn.nesh-deeka]}
+    - know: the keystone
+      by:
+      - journal
+      - name:thing.mn.keystone
+    - know: report
+      by:
+      - journal
+      - objective
+      - marker:npc.mn.nesh-deeka
 - id: 90
   place: helstrom
   journal: text.journal.mn07.90
-  journalText: 'Nesh-Deeka did not know the keystone, but it is of Kothringi make (the Kothringi were the silver-skinned people of the marsh, all dead of the Knahaten Flu long ago), and the Chime-Keepers of Toklea keep
-    what is left of Kothringi lore. She already knew the Unbound had not found the wreck. When I asked how, she said
-    "we listen" and talked of Toklea instead. She paid me 100 gold.'
-  onEnter: [{giveGold: 100}]
-  learns: [fact.mn07.chime-keepers, fact.mn07.not-there]
+  journalText: Nesh-Deeka did not know the keystone, but it is of Kothringi make (the Kothringi were the silver-skinned
+    people of the marsh, all dead of the Knahaten Flu long ago), and the Chime-Keepers of Toklea keep what is left of Kothringi
+    lore. She already knew the Unbound had not found the wreck. Before I could ask how, she said "we listen" and talked
+    of Toklea instead. She paid me 100 gold.
+  onEnter:
+  - giveGold: 100
+  learns:
+  - fact.mn07.chime-keepers
+  - fact.mn07.not-there
   ending: complete
   endingId: e-read
   information:
-    going: The keystone is Kothringi; the Chime-Keepers of Toklea may know what it opens. Nesh-Deeka again knew where the Unbound had or had not been.
+    going: The keystone is Kothringi; the Chime-Keepers of Toklea may know what it opens. Nesh-Deeka again knew where the
+      Unbound had or had not been.
     next: MN08 starts; its first entry marks Toklea.
     ways: none
     carriers:
-    - {know: Kothringi and the Chime-Keepers, by: [journal, 'ask:topic.mn07-report', 'ask:topic.mn-kothringi']}
-    - {know: she turned the question aside, by: [journal, 'line:topic.mn07-how-know']}
-- {id: 95, place: helstrom, journal: text.journal.mn07.95, journalText: 'Nesh-Deeka is dead. Nobody else in the
-    Toh-Reel-Ka knows me, and the trail of the Eye ends with her.', ending: failed, endingId: e-thread, information: {going: 'The one the hunt for the Eye depends on is dead; the main quest cannot go on.', next: Nothing more in the main quest., ways: none}}
+    - know: Kothringi and the Chime-Keepers
+      by:
+      - journal
+      - line:topic.mn07-report
+      - ask:topic.mn-kothringi
+    - know: she turned the question aside
+      by:
+      - journal
+      - line:topic.mn07-report
+- id: 95
+  place: helstrom
+  journal: text.journal.mn07.95
+  journalText: Nesh-Deeka is dead. Nobody else in the Toh-Reel-Ka knows me, and the trail of the Eye ends with her.
+  ending: failed
+  endingId: e-thread
+  information:
+    going: The one the hunt for the Eye depends on is dead; the main quest cannot go on.
+    next: Nothing more in the main quest.
+    ways: none
 endings:
-- {id: e-read, when: Nesh-Deeka read the keystone, seen: the player keeps the keystone}
-- {id: e-thread, when: Nesh-Deeka died, world: [{setFlag: [flag.main.thread-severed, true]}], seen: the main quest's message}
+- id: e-read
+  when: Nesh-Deeka read the keystone
+  seen: the player keeps the keystone
+- id: e-thread
+  when: Nesh-Deeka died
+  world:
+  - setFlag:
+    - flag.main.thread-severed
+    - true
+  seen: the main quest's message
 terms:
-- {term: Hatandros Bight and Ysan, meets: '10 journal', told: 'journal 10: the bay, and the landing with the stone jetty', ask: topic.mn07-ysan}
-- {term: Kothringi, meets: '90 line', told: 'Nesh-Deeka: the silver-skinned people of the marsh, dead of the Knahaten Flu', ask: topic.mn-kothringi}
-- {term: the Chime-Keepers of Toklea, meets: '90 line', told: 'Nesh-Deeka: the town that keeps Kothringi lore', ask: topic.mn07-chime-keepers}
+- term: Hatandros Bight and Ysan
+  meets: 10 journal
+  told: 'journal 10: the bay, and the landing with the stone jetty'
+  ask: topic.mn07-ysan
+- term: Kothringi
+  meets: 90 line
+  told: 'Nesh-Deeka: the silver-skinned people of the marsh, dead of the Knahaten Flu'
+  ask: topic.mn-kothringi
+- term: the Chime-Keepers of Toklea
+  meets: 90 line
+  told: 'Nesh-Deeka: the town that keeps Kothringi lore'
+  ask: topic.mn07-chime-keepers
 topics:
-- {id: topic.mn07-ysan, label: "How do I reach the Pale Harvest?", person: npc.mn.nesh-deeka, stages: [10], essential: false,
-  intent: 'Nesh-Deeka. Tells: Poles-Upriver''s boats to Archon and round the coast to Thorn; walk south from Thorn to
-    Ysan, a landing of stone-cutters with a dry-stone jetty; the wreck lies a short swim out, with slaughterfish about
-    it. Does: nothing.', new: true}
-- {id: topic.mn07-report, label: "I found this keystone in the captain's strongbox.", person: npc.mn.nesh-deeka, stages: [20],
-  essential: true, when: {hasItem: [thing.mn.keystone, 1]}, intent: 'Nesh-Deeka. Tells: this is one more step towards the Eye of Argonia at the Root; she does not know it, but the
+- id: topic.mn07-ysan
+  label: How do I reach the Pale Harvest?
+  person: npc.mn.nesh-deeka
+  stages:
+  - 10
+  essential: false
+  intent: 'Nesh-Deeka. Tells: Poles-Upriver''s boats to Archon and round the coast to Thorn; walk south from Thorn to Ysan,
+    a landing of stone-cutters with a dry-stone jetty; the wreck lies a short swim out, with slaughterfish about it. Does:
+    nothing.'
+  new: true
+- id: topic.mn07-report
+  label: I found this keystone in the captain's strongbox.
+  person: npc.mn.nesh-deeka
+  stages:
+  - 20
+  essential: true
+  when:
+    hasItem:
+    - thing.mn.keystone
+    - 1
+  intent: 'Nesh-Deeka. Tells: this is one more step towards the Eye of Argonia at the Root; she does not know it, but the
     carving is Kothringi; the Chime-Keepers of Toklea, a town on the river fork in the Tulmek Washes, keep what is left
     of Kothringi lore; their elder will know. Then she says the Unbound have not been to the wreck: they lost the trail
-    at Gideon. Does: nothing (a question; its answer is topic.mn07-how-know).', replies: [topic.mn07-how-know], new: true}
-- {id: topic.mn07-how-know, label: "How can you know where the Unbound have not been?", person: npc.mn.nesh-deeka, stages: [20],
-  essential: true, when: {hasItem: [thing.mn.keystone, 1]}, intent: 'Nesh-Deeka. Tells: "We listen." She turns to Toklea
-    and pays 100 gold. Does: sets stage 90.', new: true}
-- {id: topic.mn-kothringi, label: "Who were the Kothringi?", person: npc.mn.nesh-deeka, stages: [20, 90], essential: false,
-  intent: 'Nesh-Deeka. Tells: a people of silver-skinned men and women who lived in the marsh beside the Argonians;
-    the Knahaten Flu killed every one of them in the Second Era; Argonians who lived through it settled their empty
-    towns, and Toklea kept their name and their chimes. Does: nothing.', new: true}
-- {id: topic.mn07-chime-keepers, label: "Who are the Chime-Keepers?", person: npc.mn.nesh-deeka, stages: [20, 90], essential: false,
+    at Gideon. She sees the question coming, how she can know this, and answers it before it is asked: "We listen." She
+    turns to Toklea and pays 100 gold. Does: sets stage 90.'
+  new: true
+- id: topic.mn-kothringi
+  label: Who were the Kothringi?
+  person: npc.mn.nesh-deeka
+  stages:
+  - 20
+  - 90
+  essential: false
+  intent: 'Nesh-Deeka. Tells: a people of silver-skinned men and women who lived in the marsh beside the Argonians; the
+    Knahaten Flu killed every one of them in the Second Era; Argonians who lived through it settled their empty towns, and
+    Toklea kept their name and their chimes. Does: nothing.'
+  new: true
+- id: topic.mn07-chime-keepers
+  label: Who are the Chime-Keepers?
+  person: npc.mn.nesh-deeka
+  stages:
+  - 20
+  - 90
+  essential: false
   intent: 'Nesh-Deeka. Tells: the people of Toklea, who hang tin and copper chimes from every eave as the Kothringi did
-    and keep their stories; an elder speaks for them in the old Kothringi greathouse. Does: nothing.', new: true}
+    and keep their stories; an elder speaks for them in the old Kothringi greathouse. Does: nothing.'
+  new: true
 - id: topic.mn-the-hunt
   label: Remind me what we are hunting, and why.
   person: npc.mn.nesh-deeka
@@ -203,5 +494,9 @@ topics:
   new: false
 review:
   findings:
-  - {id: L1, severity: lore, ids: [topics.topic.mn-kothringi], finding: Kothringi died of the Knahaten Flu; Toklea resettled., answer: 'sourced:
-      lost-peoples.md (Kothringi); place card toklea (history)'}
+  - id: L1
+    severity: lore
+    ids:
+    - topics.topic.mn-kothringi
+    finding: Kothringi died of the Knahaten Flu; Toklea resettled.
+    answer: 'sourced: lost-peoples.md (Kothringi); place card toklea (history)'

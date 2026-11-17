@@ -1,0 +1,101 @@
+{
+ "quest": "quest.main.mn10",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn10.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "key",
+ "choose": null,
+ "know": "story/playtests/quest.main.mn09/20261117T171818Z-designed/notes.md",
+ "created": "20261117T171936Z",
+ "stages": [
+  10,
+  20,
+  30,
+  40,
+  90
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn04.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn05.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn06.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn07.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn08.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn09.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 5,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I work for Nesh-Deeka in Helstrom. The knight-captain disc bears the Vicrium mark, an old ochre and alum mine behind Seafalls, where the knights kept a strongbox. I must find that strongbox. 2. Get into the lower galleries of Vicrium and search the knights strongbox there. 3. Get the key from Ah-Zish by good words or 100 gold, or lift it from him; or take the old lower adit on the creek bank through water where crocodiles nest; smugglers are in the lower galleries so I can fight or sneak. 4. I do not know what the Root and the Eye are, how Nesh-Deeka knows what she knows, or why the Unbound seal trees. I might learn by talking to people and finding the strongbox contents.",
+  "talk Ah-Zish",
+  "say 3 pass",
+  "use Door to Lower Galleries",
+  "journal",
+  "say 4",
+  "talk Ah-Zish",
+  "say 4",
+  "say 4 pass",
+  "use Door to Lower Galleries",
+  "journal",
+  "pick Door to Lower Galleries win",
+  "look",
+  "use Old Lower Adit",
+  "use Knights' Strongbox",
+  "take Old Parchment Map",
+  "answer 1. I work for Nesh-Deeka. I went round the locked door through the old adit, past the crocodiles, and found the knights strongbox in the lower galleries. It held an old parchment map showing seven towers standing in the sea and a tooth-shaped crag on an island. 2. Bring the map to Nesh-Deeka in Helstrom. 3. I can go straight back to Helstrom, or read the map first or look around the galleries. A smuggler is here. I could also go after the Unbound or the Collector Ennodius Vanin later. 4. I do not know where the seven towers or the tooth crag are, what the Root and the Eye are, or why the Unbound seal trees. Nesh-Deeka may know, and I could ask her.",
+  "go Nesh-Deeka",
+  "talk Nesh-Deeka",
+  "say 1",
+  "answer 1. I gave Nesh-Deeka the map. She says it is another step towards the Eye of Argonia at the Root, and that her officer must read the towers and the crag. She knew the Unbound had not reached Vicrium and only said we listen. She named me Toh-Wo, Secret-Speaker, second rank, and paid 200 gold. 2. Choose the order gift, a rapier or a quarterstaff, from Nesh-Deeka in Helstrom. 3. Take the rapier or the quarterstaff. I could also ask her what we are hunting. 4. I still do not know what the Root and the Eye of Argonia really are, how she listens, or why the Unbound seal trees. I could ask her or follow the map.",
+  "talk Nesh-Deeka",
+  "say 1",
+  "answer 1. I took the rapier. Nesh-Deeka now passes me to her officer Never-Writes-Twice, whom I report to from now on. 2. Show the map to Never-Writes-Twice at the back of the same room in Nesh-Deeka House. 3. Talk to Never-Writes-Twice and show the map; I could also ask Nesh-Deeka more. 4. Still unknown: what the Root and the Eye are, how the order listens, why the Unbound seal trees. Never-Writes-Twice may explain the map.",
+  "talk Never-Writes-Twice",
+  "say 2",
+  "answer 1. The quest is done. The map shows the Grey Tooth, seamark of Skeith Isle, reached by boat to Archon and Arorha; Never-Writes-Twice marked it. She warned me about Cuts-the-Old-Knot, a former member who went mad on sap and killed her minders, and told me not to listen to her. 2. Nothing is set yet; likely Skeith Isle by boat via Archon and Arorha, or the Unbound and the Collector Ennodius Vanin. 3. Ask Never-Writes-Twice what we hunt, or go to Skeith Isle, or chase the Unbound or the Collector. 4. Unknown: the seven towers, what the Root and the Eye are, how the order listens, why the Unbound seal trees, and who Cuts-the-Old-Knot is and where.",
+  "answer I work for Nesh-Deeka in Helstrom and am now Toh-Wo, Secret-Speaker, second rank, reporting to her officer Never-Writes-Twice. At Vicrium Ah-Zish key did not reach my pack despite persuasion and 100 gold (gold was unchanged), so I went through the old adit and took the knights map from the strongbox. The map shows seven towers in the sea and the Grey Tooth crag, the seamark of Skeith Isle, reached by boat to Archon and Arorha. Nesh-Deeka said this is a step towards the Eye of Argonia at the Root and that the Unbound had not reached Vicrium; she said only we listen. I carry the rapier, about 950 gold, lockpicks, Grey Seal x3, Pale Harvest key and other items, the disc, keystone and eye-setting. Never-Writes-Twice warned me of Cuts-the-Old-Knot, once of the order, mad on sap, killed her minders. Still unknown: what the Root and Eye are, how the order listens, why the Unbound seal trees, the seven towers, and the Collector Ennodius Vanin. Next: Skeith Isle, the Unbound, the Collector."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.11211710000000001,
+ "minutes": 1.1,
+ "turns": 29,
+ "tokens": {
+  "input_tokens": 52,
+  "output_tokens": 4665,
+  "cache_read_input_tokens": 200911,
+  "cache_creation_input_tokens": 11318
+ }
+}

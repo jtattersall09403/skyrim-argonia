@@ -1,0 +1,87 @@
+{
+ "quest": "quest.main.mn09",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn09.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "fight",
+ "choose": null,
+ "know": "story/playtests/quest.main.mn08/20261117T170115Z-designed~2/notes.md",
+ "created": "20261117T171817Z",
+ "stages": [
+  10,
+  20,
+  30,
+  90
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn04.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn05.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn06.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn07.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn08.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 4,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I work for Nesh-Deeka. I am at Eurydike, a roofless Kothringi hall near Gideon, to open the knight-captain tomb with the keystone before the Unbound and the Collector. The captain was buried with what marked the kings road to the Root. The Unbound are already here and the knights dead walk the barracks wing. 2. Search the Unbound packs in the barracks wing (marker: Unbound Pack), then go to the tomb door. 3. Fight the Restless Knight and the Unbound Digger, slip past, or turn the dead with Restoration. 4. I do not understand what the Root and the Eye of Argonia really are, or how Nesh-Deeka knows what she knows. I might learn by reading what I find here and asking people.",
+  "look",
+  "talk Unbound Digger",
+  "fight Unbound Digger win",
+  "fight Restless Knight win",
+  "search Unbound Pack",
+  "use Unbound Pack",
+  "take Unbound Pack",
+  "take Grey Seal",
+  "answer 1. I work for Nesh-Deeka. I cleared the digger and the dead knight at Eurydike and found Unbound bottles of grey seal, a paralysis poison used to numb a tree scar shut after they drain it. 2. Open the knight-captain tomb door with the keystone and search the chest inside. 3. Use the keystone on the door; the lock may also be pickable. I could also keep the poison. 4. I do not understand why the Unbound drain and then seal trees, or what the Root and the Eye are. I might learn from the tomb contents or from Nesh-Deeka.",
+  "use Door to Knight-Captain's Tomb",
+  "use Knight-Captain's Tomb Chest",
+  "take Knight-Captain's Bronze Disc",
+  "answer 1. I opened the knight-captain tomb with the keystone and took a bronze disc stamped with a pick crossed with a tower, a mine mark. It is what marked the kings road to the Root, I think. 2. Bring the disc to Nesh-Deeka in Helstrom. 3. Go straight to her, or keep the disc and look into the mark first; I also have gold and the other items. 4. I do not know which mine the mark belongs to, nor what the Root and Eye really are. Nesh-Deeka may tell me.",
+  "go Nesh-Deeka",
+  "talk Nesh-Deeka",
+  "say 1",
+  "answer Notes: I work for Nesh-Deeka (Toh-Reel-Ka, Helstrom). I opened the knight-captain tomb at Eurydike with the Kothringi Keystone, killed the Unbound digger and the restless knight, took 3 Grey Seal paralysis poisons from the Unbound pack (the Unbound drain trees then numb the scar shut with it, and I do not know why), and took the bronze disc. I gave it to Nesh-Deeka. The mark, a pick and tower, is Vicrium, an old ochre and alum mine in the clay country behind Seafalls in Okuwun Rahei in the east; the knights kept a strongbox there. This is a step to the Eye of Argonia at the Root. She was paid me 100 gold again, so I have about 800. She knew the Unbound were at Eurydike and only said \"we listen\"; how she knows stays unanswered. I still carry the Pale Harvest strongbox key, Old Silver Setting, The Collector note, smuggler key. Next: go to Vicrium near Seafalls before the Unbound and the Collector (Ennodius Vanin). Unknown: what the Root and the Eye really are, why trees are sealed, how Nesh-Deeka knows things.",
+  "answer Notes: I work for Nesh-Deeka in Helstrom. I opened the knight-captain tomb at Eurydike with the Kothringi Keystone after killing the Unbound digger and restless knight. I took 3 Grey Seal paralysis poisons from the Unbound pack; the Unbound drain trees then numb the scar shut, and I do not know why. The tomb held a bronze disc with a pick-and-tower mark. I gave it to Nesh-Deeka and she paid 100 gold, so I have about 800. The mark is Vicrium, an old ochre and alum mine in the clay country behind Seafalls in Okuwun Rahei in the east, where the knights kept a strongbox. This is one more step to the Eye of Argonia at the Root. I still carry the Pale Harvest strongbox key, Old Silver Setting, The Collector note and the smuggler key. Next step is Vicrium before the Unbound and the Collector (Ennodius Vanin). Unknown: what the Root and the Eye are, why trees are sealed, and how Nesh-Deeka knows what she knows. She only says \"we listen\"."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.07832070000000001,
+ "minutes": 0.9,
+ "turns": 20,
+ "tokens": {
+  "input_tokens": 36,
+  "output_tokens": 3521,
+  "cache_read_input_tokens": 109787,
+  "cache_creation_input_tokens": 8015
+ }
+}

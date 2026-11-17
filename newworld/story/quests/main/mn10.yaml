@@ -6,113 +6,327 @@ line: quest.line.main
 group: main
 tier: 0
 status: concept
-shapes: [EXPEDITION, SMUGGLING]
+shapes:
+- EXPEDITION
+- SMUGGLING
 region: okuwun-rahei
 settlement: vicrium
-anchorPlaces: [vicrium, seafalls, helstrom]
-premise: The Voh-Vastei gets into Vicrium's sealed lower galleries by the gallery-boss's key or the flooded old adit,
-  takes an old parchment map from the knights' strongbox past the smugglers, is made a Toh-Wo, and is handed to
-  Never-Writes-Twice, who marks the Grey Tooth.
+anchorPlaces:
+- vicrium
+- seafalls
+- helstrom
+premise: The Voh-Vastei gets into Vicrium's sealed lower galleries by the gallery-boss's key or the flooded old adit, takes
+  an old parchment map from the knights' strongbox past the smugglers, is made a Toh-Wo, and is handed to Never-Writes-Twice,
+  who marks the Grey Tooth.
 costTier: L
 milestone: 2
 touches:
-- {id: npc.mn.nesh-deeka, access: read}
-- {id: npc.mn.never-writes-twice, access: write}
-- {id: npc.mn.cuts-the-old-knot, access: read}
-- {id: thing.mn.parchment-map, access: write}
-- {id: flag.main.thread-severed, access: write}
-- {id: flag.main.rank-toh-wo, access: write}
-sources: [story/design/quests/lines/main-plot.md §4, §5 quest 10, rank table]
-essentialTopics: [topic.mn10-report, topic.mn10-how-know, topic.mn10-rapier, topic.mn10-staff, topic.mn10-nwt-meet]
+- id: npc.mn.nesh-deeka
+  access: read
+- id: npc.mn.never-writes-twice
+  access: write
+- id: npc.mn.cuts-the-old-knot
+  access: read
+- id: thing.mn.parchment-map
+  access: write
+- id: flag.main.thread-severed
+  access: write
+- id: flag.main.rank-toh-wo
+  access: write
+sources:
+- story/design/quests/lines/main-plot.md §4
+- §5 quest 10
+- rank table
+essentialTopics:
+- topic.mn10-report
+- topic.mn10-rapier
+- topic.mn10-staff
+- topic.mn10-nwt-meet
 startWhen:
-  questStage: [quest.main.mn09, '=', 90]
+  questStage:
+  - quest.main.mn09
+  - '='
+  - 90
 start: 10
 recordStatus: design
-foundation: 'Built from main-plot.md §5 quest 10 and the rank table. Kept: the miners in the upper galleries
-  (Gloombound Mine''s interior), the lower galleries shut behind a locked timber door after a roof fall, the
-  gallery-boss''s key by Pickpocket, Speech or 100 gold, the old lower adit on the creek bank whose first passage stands
-  in water where crocodiles nest (Whistling Mine''s interior and its door out, a still water plane added), the
-  smugglers in the lower galleries, the knights'' strongbox and its parchment map of seven sea towers and a
-  tooth-shaped crag; the rank of Toh-Wo with a rapier or a quarterstaff and 200 gold; the hand-over to
-  Never-Writes-Twice, her lie about Cuts-the-Old-Knot and her marking the Grey Tooth. Ruled by the lead: Helstrom''s
-  houses are one room, so Never-Writes-Twice stands at the back of the same room of Nesh-Deeka''s House; she is
-  switched on by the map''s take, in another interior. Filled: the gallery-boss''s name (Ah-Zish), the Speech level (40),
-  the rank pay in place of the report''s 100 gold, and what Nesh-Deeka already knows (the Unbound have not reached
-  Vicrium; the smugglers there sell to anyone).'
+foundation: 'Built from main-plot.md §5 quest 10 and the rank table. Kept: the miners in the upper galleries (Gloombound
+  Mine''s interior), the lower galleries shut behind a locked timber door after a roof fall, the gallery-boss''s key by
+  Pickpocket, Speech or 100 gold, the old lower adit on the creek bank whose first passage stands in water where crocodiles
+  nest (Whistling Mine''s interior and its door out, a still water plane added), the smugglers in the lower galleries, the
+  knights'' strongbox and its parchment map of seven sea towers and a tooth-shaped crag; the rank of Toh-Wo with a rapier
+  or a quarterstaff and 200 gold; the hand-over to Never-Writes-Twice, her lie about Cuts-the-Old-Knot and her marking the
+  Grey Tooth. Ruled by the lead: Helstrom''s houses are one room, so Never-Writes-Twice stands at the back of the same room
+  of Nesh-Deeka''s House; she is switched on by the map''s take, in another interior. Filled: the gallery-boss''s name (Ah-Zish),
+  the Speech level (40), the rank pay in place of the report''s 100 gold, and what Nesh-Deeka already knows (the Unbound
+  have not reached Vicrium; the smugglers there sell to anyone).'
 recordSources:
-  places: [vicrium, seafalls, helstrom]
-  lore: [story/lore/extrapolation/argonia-4e201-state.md §2.5, §11.2, docs/phases/new-worldspace-plan/research/rulers-rename-map.md]
+  places:
+  - vicrium
+  - seafalls
+  - helstrom
+  lore:
+  - story/lore/extrapolation/argonia-4e201-state.md §2.5
+  - §11.2
+  - docs/phases/new-worldspace-plan/research/rulers-rename-map.md
 centrepiece: INFILTRATE
 actionPlan:
-- {skill: Pickpocket, use: pickpocket, reason: the key is on the gallery-boss}
-- {skill: Speech, use: persuade, reason: Speech 40 gets the key}
-- {skill: Sneak, use: sneak-past, reason: the smugglers in the lower galleries}
-- {skill: Archery, use: fight-at-range, reason: the crocodiles in the flooded adit and the smugglers}
-- {skill: One-Handed, use: fight, reason: the smugglers and their captain}
+- skill: Pickpocket
+  use: pickpocket
+  reason: the key is on the gallery-boss
+- skill: Speech
+  use: persuade
+  reason: Speech 40 gets the key
+- skill: Sneak
+  use: sneak-past
+  reason: the smugglers in the lower galleries
+- skill: Archery
+  use: fight-at-range
+  reason: the crocodiles in the flooded adit and the smugglers
+- skill: One-Handed
+  use: fight
+  reason: the smugglers and their captain
 truth:
-- {id: t1, when: the Second Era, who: [], where: Vicrium's lower galleries, what: The Kothringi knights hid a strongbox
-    with a map of the kings' road to the sea.}
-- {id: t2, when: years ago, who: [npc.mn.ah-zish], where: Vicrium, what: 'A roof fall killed two men; the gallery-boss
-    shut the lower galleries behind a locked timber door and keeps the key.'}
-- {id: t3, when: this season, who: [], where: lower galleries, what: Smugglers came in by the flooded adit and store goods there.}
-- {id: t4, when: 4E 187 to 196, who: [npc.mn.never-writes-twice, npc.mn.cuts-the-old-knot], where: Fort Chalkmoth, what: 'Never-Writes-Twice
-    kept Cuts-the-Old-Knot as a dreamer in the fort''s cellar for nine years (the player does not learn this here).'}
+- id: t1
+  when: the Second Era
+  who: []
+  where: Vicrium's lower galleries
+  what: The Kothringi knights hid a strongbox with a map of the kings' road to the sea.
+- id: t2
+  when: years ago
+  who:
+  - npc.mn.ah-zish
+  where: Vicrium
+  what: A roof fall killed two men; the gallery-boss shut the lower galleries behind a locked timber door and keeps the
+    key.
+- id: t3
+  when: this season
+  who: []
+  where: lower galleries
+  what: Smugglers came in by the flooded adit and store goods there.
+- id: t4
+  when: 4E 187 to 196
+  who:
+  - npc.mn.never-writes-twice
+  - npc.mn.cuts-the-old-knot
+  where: Fort Chalkmoth
+  what: Never-Writes-Twice kept Cuts-the-Old-Knot as a dreamer in the fort's cellar for nine years (the player does not
+    learn this here).
 facts:
-- {id: fact.mn10.map, claim: 'The knights'' strongbox held a parchment map showing seven towers standing in the sea and
-    a crag shaped like a tooth on an island.', from: t1}
-- {id: fact.mn10.grey-tooth, claim: 'The crag is the Grey Tooth, the seamark of Skeith Isle.', from: t1}
-- {id: fact.mn10.lie, claim: 'Never-Writes-Twice says Cuts-the-Old-Knot was one of the Toh-Reel-Ka who went mad on sap
-    and killed her minders.', from: t4}
-- {id: fact.mn10.not-yet, claim: The Unbound have not reached Vicrium., from: t3}
+- id: fact.mn10.map
+  claim: The knights' strongbox held a parchment map showing seven towers standing in the sea and a crag shaped like a tooth
+    on an island.
+  from: t1
+- id: fact.mn10.grey-tooth
+  claim: The crag is the Grey Tooth, the seamark of Skeith Isle.
+  from: t1
+- id: fact.mn10.lie
+  claim: Never-Writes-Twice says Cuts-the-Old-Knot was one of the Toh-Reel-Ka who went mad on sap and killed her minders.
+  from: t4
+- id: fact.mn10.not-yet
+  claim: The Unbound have not reached Vicrium.
+  from: t3
 cast:
 - id: npc.mn.nesh-deeka
-  knowledge: {fact.mn10.not-yet: knows}
+  knowledge:
+    fact.mn10.not-yet: knows
 - id: npc.mn.never-writes-twice
   wants: that no tree or anyone allied with one can make another Umbriel (plot §4)
   fears: Cuts-the-Old-Knot, because she knows what the cellar holds
-  knowledge: {fact.mn10.grey-tooth: knows, fact.mn10.lie: 'hides: the truth is t4'}
+  knowledge:
+    fact.mn10.grey-tooth: knows
+    fact.mn10.lie: 'hides: the truth is t4'
 - id: npc.mn.ah-zish
-  persona: {invented: true, name: Ah-Zish, race: Argonian, sex: male, role: gallery-boss of Vicrium, home: vicrium}
+  persona:
+    invented: true
+    name: Ah-Zish
+    race: Argonian
+    sex: male
+    role: gallery-boss of Vicrium
+    home: vicrium
   wants: nobody else killed in the lower galleries
-  knowledge: {fact.mn10.not-yet: suspects}
+  knowledge:
+    fact.mn10.not-yet: suspects
 things:
-- {id: thing.mn10.timber-door, kind: door, name: Lower Galleries, source: 'a locked timber door from Skyrim''s mine
-    pieces, set between Gloombound''s and Whistling Mine''s interiors', where: the upper galleries' far end}
-- {id: thing.mn10.door-key, kind: item, name: Key to Vicrium's Lower Galleries, source: new, where: on Ah-Zish}
-- {id: thing.mn10.adit, kind: door, name: Old Lower Adit, source: Whistling Mine's own door out, on the creek bank, where: 'the creek bank below the headframe'}
-- {id: thing.mn10.strongbox, kind: container, name: Knights' Strongbox, source: existing base, where: past the smugglers in the lower galleries}
-- {id: thing.mn.parchment-map, kind: item, name: Old Parchment Map, source: 'new: Skyrim''s treasure map under our name;
-    shows seven towers standing in the sea and a crag shaped like a tooth on an island', where: in thing.mn10.strongbox}
-- {id: thing.mn10.rapier, kind: item, name: Toh-Wo's Rapier, source: Animated Armoury's rapier under our name}
-- {id: thing.mn10.staff, kind: item, name: Toh-Wo's Quarterstaff, source: Animated Armoury's quarterstaff under our name}
+- id: thing.mn10.timber-door
+  kind: door
+  name: Lower Galleries
+  source: a locked timber door from Skyrim's mine pieces, set between Gloombound's and Whistling Mine's interiors
+  where: the upper galleries' far end
+- id: thing.mn10.door-key
+  kind: item
+  name: Key to Vicrium's Lower Galleries
+  source: new
+  where: on Ah-Zish
+- id: thing.mn10.adit
+  kind: door
+  name: Old Lower Adit
+  source: Whistling Mine's own door out
+  on the creek bank: null
+  where: the creek bank below the headframe
+- id: thing.mn10.strongbox
+  kind: container
+  name: Knights' Strongbox
+  source: existing base
+  where: past the smugglers in the lower galleries
+- id: thing.mn.parchment-map
+  kind: item
+  name: Old Parchment Map
+  source: 'new: Skyrim''s treasure map under our name; shows seven towers standing in the sea and a crag shaped like a tooth
+    on an island'
+  where: in thing.mn10.strongbox
+- id: thing.mn10.rapier
+  kind: item
+  name: Toh-Wo's Rapier
+  source: Animated Armoury's rapier under our name
+- id: thing.mn10.staff
+  kind: item
+  name: Toh-Wo's Quarterstaff
+  source: Animated Armoury's quarterstaff under our name
 placements:
-- {ref: npc.mn.ah-zish, kind: person, base: {kind: template_person, id: Argonian miner template}, anchor: {place: vicrium,
-    rule: navmesh, need: the gallery-boss standing by the timber door in the upper galleries}, name: Ah-Zish, level: 8, enabled: true}
-- {ref: thing.mn10.door-key, kind: thing, base: {kind: item, id: thing.mn10.door-key}, carriedBy: npc.mn.ah-zish, enabled: true}
-- {ref: thing.mn10.timber-door, kind: door, anchor: {place: vicrium, rule: surface, need: 'a locked timber door named
-      "Lower Galleries"'}, lock: {level: key, key: thing.mn10.door-key}, placeName: Lower Galleries}
-- {ref: thing.mn10.adit, kind: door, anchor: {place: vicrium, rule: surface, need: 'the old adit''s door on the creek
-      bank, named "Old Lower Adit", its first passage under still water'}, placeName: Old Lower Adit}
-- {ref: npc.mn10.crocodiles, kind: person, base: {kind: template_person, id: crocodile (ecology)}, anchor: {place: vicrium,
-    rule: navmesh, need: three crocodiles nesting in the adit's flooded first passage}, name: Crocodile, level: 10, count: 3,
-  hostile: true, enabled: true}
-- {ref: npc.mn10.smugglers, kind: person, base: {kind: template_person, id: bandit template}, anchor: {place: vicrium,
-    rule: navmesh, need: four smuggler guards and their captain in the lower galleries}, name: Smuggler, level: 12, count: 5,
-  hostile: true, enabled: true}
-- {ref: thing.mn10.strongbox, kind: container, base: {kind: existing_base, id: Skyrim strongbox}, anchor: {place: vicrium,
-    rule: surface, need: the knights' old strongbox past the smugglers}, enabled: true}
-- {ref: thing.mn.parchment-map, kind: thing, base: {kind: template_item, id: Skyrim treasure map}, container: thing.mn10.strongbox,
-  enabled: true}
-- {ref: npc.mn.never-writes-twice, kind: person, base: {kind: template_person, id: Argonian officer template}, anchor: {place: helstrom,
-    rule: navmesh, need: 'Never-Writes-Twice standing at the back of the one room of Nesh-Deeka''s House'}, name: Never-Writes-Twice,
-  level: 25, enabled: false}
-- {ref: npc.mn.nesh-deeka, kind: person, name: Nesh-Deeka, anchor: {place: helstrom, rule: navmesh, need: Nesh-Deeka in Nesh-Deeka's House}}
+- ref: door.mn.nesh-deeka-house
+  kind: door
+  anchor:
+    place: helstrom
+    rule: surface
+    need: the door of the quiet house, named "Nesh-Deeka's House"
+  placeName: Nesh-Deeka's House
+- ref: npc.mn.ah-zish
+  kind: person
+  base:
+    kind: template_person
+    id: Argonian miner template
+  anchor:
+    place: vicrium
+    rule: navmesh
+    need: the gallery-boss standing by the timber door in the upper galleries
+  name: Ah-Zish
+  level: 8
+  enabled: true
+- ref: thing.mn10.door-key
+  kind: thing
+  base:
+    kind: item
+    id: thing.mn10.door-key
+  carriedBy: npc.mn.ah-zish
+  enabled: true
+- ref: thing.mn10.timber-door
+  kind: door
+  anchor:
+    place: vicrium
+    rule: surface
+    need: a locked timber door named "Lower Galleries"
+  lock:
+    level: key
+    key: thing.mn10.door-key
+  placeName: Lower Galleries
+- ref: thing.mn10.adit
+  kind: door
+  anchor:
+    place: vicrium
+    rule: surface
+    need: the old adit's door on the creek bank, named "Old Lower Adit", its first passage under still water
+  name: Old Lower Adit
+  placeName: Lower Galleries
+- ref: npc.mn10.crocodiles
+  kind: person
+  base:
+    kind: template_person
+    id: crocodile (ecology)
+  anchor:
+    place: vicrium
+    rule: navmesh
+    need: three crocodiles nesting in the adit's flooded first passage
+  name: Crocodile
+  level: 10
+  count: 3
+  hostile: true
+  enabled: true
+- ref: npc.mn10.smugglers
+  kind: person
+  base:
+    kind: template_person
+    id: bandit template
+  anchor:
+    place: vicrium
+    room: Lower Galleries
+    rule: navmesh
+    need: four smuggler guards and their captain in the lower galleries
+  name: Smuggler
+  level: 12
+  count: 5
+  hostile: true
+  enabled: true
+- ref: thing.mn10.strongbox
+  kind: container
+  base:
+    kind: existing_base
+    id: Skyrim strongbox
+  anchor:
+    place: vicrium
+    room: Lower Galleries
+    rule: surface
+    need: the knights' old strongbox past the smugglers
+  enabled: true
+- ref: thing.mn.parchment-map
+  kind: thing
+  base:
+    kind: template_item
+    id: Skyrim treasure map
+  container: thing.mn10.strongbox
+  enabled: true
+- ref: npc.mn.never-writes-twice
+  kind: person
+  base:
+    kind: template_person
+    id: Argonian officer template
+  anchor:
+    place: helstrom
+    room: Nesh-Deeka's House
+    rule: navmesh
+    need: Never-Writes-Twice standing at the back of the one room of Nesh-Deeka's House
+  name: Never-Writes-Twice
+  level: 25
+  enabled: false
+- ref: npc.mn.nesh-deeka
+  kind: person
+  name: Nesh-Deeka
+  anchor:
+    place: helstrom
+    room: Nesh-Deeka's House
+    rule: navmesh
+    need: Nesh-Deeka in Nesh-Deeka's House
 conclusions:
-- {id: c1, statement: The map shows the way to the Root runs by a tooth-shaped crag and seven sea towers., clues: [k1, k2, k3]}
+- id: c1
+  statement: The map shows the way to the Root runs by a tooth-shaped crag and seven sea towers.
+  clues:
+  - k1
+  - k2
+  - k3
 clues:
-- {id: k1, kind: lead, form: thing, carrier: thing.mn.parchment-map, gives: [fact.mn10.map], supports: [c1]}
-- {id: k2, kind: concept, form: line, carrier: npc.mn.never-writes-twice, gives: [fact.mn10.grey-tooth], supports: [c1]}
-- {id: k3, kind: concept, form: line, carrier: npc.mn.nesh-deeka, gives: [fact.mn10.map], supports: [c1]}
+- id: k1
+  kind: lead
+  form: thing
+  carrier: thing.mn.parchment-map
+  gives:
+  - fact.mn10.map
+  supports:
+  - c1
+- id: k2
+  kind: concept
+  form: line
+  carrier: npc.mn.never-writes-twice
+  gives:
+  - fact.mn10.grey-tooth
+  supports:
+  - c1
+- id: k3
+  kind: concept
+  form: line
+  carrier: npc.mn.nesh-deeka
+  gives:
+  - fact.mn10.map
+  supports:
+  - c1
 shapeData:
   destination: the knights' strongbox in the lower galleries
   hazards: crocodiles in the adit; smugglers
@@ -123,195 +337,480 @@ stages:
 - id: 10
   place: vicrium
   journal: text.journal.mn10.10
-  journalText: 'The knight-captain''s disc bears the mark of Vicrium, a mine behind Seafalls, where the knights kept a
-    strongbox. The lower galleries are shut behind a locked timber door; the gallery-boss, Ah-Zish, keeps the key, and
-    an old adit on the creek bank goes round it through water where crocodiles nest. I''m to get into the lower
-    galleries and find the knights'' strongbox. Ah-Zish might give the key to good words or 100 gold, or it can be
-    lifted from him. Smugglers have moved into the lower galleries; I may fight them or sneak past.'
-  directions: 'Poles-Upriver''s boats run from Helstrom to Archon and on up the coast to Seafalls, the village by the
-    white falls. From Seafalls follow the road inland to the hillside cut in rust and yellow bands with a timber
-    headframe; the adit''s mouth is down on the creek bank below it.'
+  journalText: The knight-captain's disc bears the mark of Vicrium, a mine behind Seafalls, where the knights kept a strongbox.
+    The lower galleries are shut behind a locked timber door; the gallery-boss, Ah-Zish, keeps the key, and an old adit
+    on the creek bank goes round it through water where crocodiles nest. I'm to get into the lower galleries and find the
+    knights' strongbox. Ah-Zish might give the key to good words or 100 gold, or it can be lifted from him. Smugglers have
+    moved into the lower galleries; I may fight them or sneak past.
+  directions: Poles-Upriver's boats run from Helstrom to Archon and on up the coast to Seafalls, the village by the white
+    falls. From Seafalls follow the road inland to the hillside cut in rust and yellow bands with a timber headframe; the
+    adit's mouth is down on the creek bank below it.
   objectives:
-  - {id: in, text: text.objective.mn10.in, objectiveText: 'Get into Vicrium''s lower galleries, by Ah-Zish''s key or the
-      old lower adit.', target: 'npc.mn.ah-zish, thing.mn10.timber-door, thing.mn10.adit', completeWhen: {questStage: [quest.main.mn10,
-        ≥, 20]}}
-  - {id: box, text: text.objective.mn10.box, objectiveText: Search the knights' strongbox in the lower galleries., target: thing.mn10.strongbox,
-    completeWhen: {questStage: [quest.main.mn10, ≥, 20]}}
+  - id: in
+    text: text.objective.mn10.in
+    objectiveText: Get into Vicrium's lower galleries, by Ah-Zish's key or the old lower adit.
+    target: npc.mn.ah-zish, thing.mn10.timber-door, thing.mn10.adit
+    completeWhen:
+      questStage:
+      - quest.main.mn10
+      - ≥
+      - 20
+  - id: box
+    text: text.objective.mn10.box
+    objectiveText: Search the knights' strongbox in the lower galleries.
+    target: thing.mn10.strongbox
+    completeWhen:
+      questStage:
+      - quest.main.mn10
+      - ≥
+      - 20
   successors:
-  - {to: 20, when: {hasItem: [thing.mn.parchment-map, 1]}}
+  - to: 20
+    when:
+      hasItem:
+      - thing.mn.parchment-map
+      - 1
   failForward:
-  - {to: 95, when: {not: {npcAlive: npc.mn.nesh-deeka}}}
+  - to: 95
+    when:
+      not:
+        npcAlive: npc.mn.nesh-deeka
   approaches:
-  - {id: key, actions: [{skill: Pickpocket, use: pickpocket, target: Ah-Zish}, {skill: Speech, use: persuade, target: Ah-Zish,
-        note: Speech 40; or 100 gold}]}
-  - {id: adit, actions: [{skill: Archery, use: fight-at-range, target: crocodiles}, {skill: Sneak, use: sneak-past, target: crocodiles}]}
-  - {id: smugglers, actions: [{skill: One-Handed, use: fight, target: smugglers}, {skill: Sneak, use: sneak-past, target: smugglers}]}
+  - id: key
+    actions:
+    - skill: Pickpocket
+      use: pickpocket
+      target: Ah-Zish
+    - skill: Speech
+      use: persuade
+      target: Ah-Zish
+      note: Speech 40; or 100 gold
+  - id: adit
+    actions:
+    - skill: Archery
+      use: fight-at-range
+      target: crocodiles
+    - skill: Sneak
+      use: sneak-past
+      target: crocodiles
+  - id: smugglers
+    actions:
+    - skill: One-Handed
+      use: fight
+      target: smugglers
+    - skill: Sneak
+      use: sneak-past
+      target: smugglers
   information:
     going: The disc points to Vicrium, where the knights kept a strongbox in galleries now shut.
     next: Go by boat to Seafalls and up the road to Vicrium; get into the lower galleries and find the strongbox.
-    ways: 'Ah-Zish''s key (persuade him, pay 100 gold or pick his pocket), or the flooded adit past the crocodiles. In
-      the galleries, fight the smugglers or sneak past them.'
+    ways: Ah-Zish's key (persuade him, pay 100 gold or pick his pocket), or the flooded adit past the crocodiles. In the
+      galleries, fight the smugglers or sneak past them.
     carriers:
-    - {know: the place and the way, by: [journal, objective]}
-    - {know: the key or the adit, by: [journal, marker:npc.mn.ah-zish, marker:thing.mn10.adit, 'name:thing.mn10.timber-door',
-        'name:thing.mn10.adit', 'ask:topic.mn10-door']}
-    - {know: smugglers inside; fight or sneak, by: [journal, 'ask:topic.mn10-door', marker:thing.mn10.strongbox]}
+    - know: the place and the way
+      by:
+      - journal
+      - objective
+    - know: the key or the adit
+      by:
+      - journal
+      - marker:npc.mn.ah-zish
+      - marker:thing.mn10.adit
+      - name:thing.mn10.timber-door
+      - name:thing.mn10.adit
+      - ask:topic.mn10-door
+    - know: smugglers inside; fight or sneak
+      by:
+      - journal
+      - ask:topic.mn10-door
+      - marker:thing.mn10.strongbox
 - id: 20
   place: helstrom
   journal: text.journal.mn10.20
   journalText: 'In the knights'' strongbox lay an old parchment map: seven towers standing in the sea, and a crag shaped
     like a tooth on an island. I''m to bring it to Nesh-Deeka in Helstrom.'
-  onEnter: [{enableRef: npc.mn.never-writes-twice}]
+  onEnter:
+  - enableRef: npc.mn.never-writes-twice
   objectives:
-  - {id: report, text: text.objective.mn10.report, objectiveText: Bring the parchment map to Nesh-Deeka in Helstrom., target: npc.mn.nesh-deeka,
-    completeWhen: {questStage: [quest.main.mn10, ≥, 30]}}
+  - id: report
+    text: text.objective.mn10.report
+    objectiveText: Bring the parchment map to Nesh-Deeka in Helstrom.
+    target: npc.mn.nesh-deeka
+    completeWhen:
+      questStage:
+      - quest.main.mn10
+      - ≥
+      - 30
   successors:
-  - {to: 30, when: {all: [{topicHeardFrom: [topic.mn10-how-know, npc.mn.nesh-deeka]}, {hasItem: [thing.mn.parchment-map, 1]}]}}
+  - to: 30
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn10-report
+        - npc.mn.nesh-deeka
+      - hasItem:
+        - thing.mn.parchment-map
+        - 1
   failForward:
-  - {to: 95, when: {not: {npcAlive: npc.mn.nesh-deeka}}}
-  learns: [fact.mn10.map]
+  - to: 95
+    when:
+      not:
+        npcAlive: npc.mn.nesh-deeka
+  learns:
+  - fact.mn10.map
   information:
     going: I have a map of seven sea towers and a tooth-shaped crag.
     next: Bring it to Nesh-Deeka.
     ways: none
     carriers:
-    - {know: the map, by: [journal, 'name:thing.mn.parchment-map']}
-    - {know: report, by: [journal, objective, marker:npc.mn.nesh-deeka]}
+    - know: the map
+      by:
+      - journal
+      - name:thing.mn.parchment-map
+    - know: report
+      by:
+      - journal
+      - objective
+      - marker:npc.mn.nesh-deeka
 - id: 30
   place: helstrom
   journal: text.journal.mn10.30
-  journalText: 'Nesh-Deeka already knew the Unbound had not reached Vicrium. When I asked how, she said "we listen" and
-    named me Toh-Wo, "Secret-Speaker", the order''s second rank, with 200 gold. I''m to choose the order''s gift: a
+  journalText: 'Nesh-Deeka already knew the Unbound had not reached Vicrium. Before I could ask how, she said "we listen"
+    and named me Toh-Wo, "Secret-Speaker", the order''s second rank, with 200 gold. I''m to choose the order''s gift: a
     rapier or a quarterstaff.'
-  onEnter: [{giveGold: 200}, {setFlag: [flag.main.rank-toh-wo, true]}]
+  onEnter:
+  - giveGold: 200
+  - setFlag:
+    - flag.main.rank-toh-wo
+    - true
   objectives:
-  - {id: gift, text: text.objective.mn10.gift, objectiveText: Choose a rapier or a quarterstaff from Nesh-Deeka., target: npc.mn.nesh-deeka,
-    completeWhen: {questStage: [quest.main.mn10, ≥, 40]}}
+  - id: gift
+    text: text.objective.mn10.gift
+    objectiveText: Choose a rapier or a quarterstaff from Nesh-Deeka.
+    target: npc.mn.nesh-deeka
+    completeWhen:
+      questStage:
+      - quest.main.mn10
+      - ≥
+      - 40
   successors:
-  - {to: 40, when: {topicHeardFrom: [topic.mn10-rapier, npc.mn.nesh-deeka]}}
-  - {to: 41, when: {topicHeardFrom: [topic.mn10-staff, npc.mn.nesh-deeka]}}
+  - to: 40
+    when:
+      topicHeardFrom:
+      - topic.mn10-rapier
+      - npc.mn.nesh-deeka
+  - to: 41
+    when:
+      topicHeardFrom:
+      - topic.mn10-staff
+      - npc.mn.nesh-deeka
   failForward:
-  - {to: 95, when: {not: {npcAlive: npc.mn.nesh-deeka}}}
-  learns: [fact.mn10.not-yet]
+  - to: 95
+    when:
+      not:
+        npcAlive: npc.mn.nesh-deeka
+  learns:
+  - fact.mn10.not-yet
   information:
     going: I am a Toh-Wo now. Nesh-Deeka again knew where the Unbound had not been and would not say how.
     next: Choose the rank's weapon.
     ways: a rapier (one-handed) or a quarterstaff (two-handed)
     carriers:
-    - {know: the rank and its meaning, by: [journal, 'ask:topic.mn10-report', 'ask:topic.mn-ranks']}
-    - {know: she turned the question aside, by: [journal, 'line:topic.mn10-how-know']}
-    - {know: the choice, by: [objective, 'line:topic.mn10-rapier', 'line:topic.mn10-staff']}
+    - know: the rank and its meaning
+      by:
+      - journal
+      - line:topic.mn10-report
+      - ask:topic.mn-ranks
+    - know: she turned the question aside
+      by:
+      - journal
+      - line:topic.mn10-report
+    - know: the choice
+      by:
+      - objective
+      - line:topic.mn10-rapier
+      - line:topic.mn10-staff
 - id: 40
   place: helstrom
   journal: text.journal.mn10.40
-  journalText: 'I took the rapier. Nesh-Deeka passed me to her officer, Never-Writes-Twice, who stands at the back of
-    the same room; from now on I report to her. I''m to show her the map.'
-  onEnter: [{giveItem: [thing.mn10.rapier, 1]}]
+  journalText: I took the rapier. Nesh-Deeka passed me to her officer, Never-Writes-Twice, who stands at the back of the
+    same room; from now on I report to her. I'm to show her the map.
+  onEnter:
+  - giveItem:
+    - thing.mn10.rapier
+    - 1
   objectives:
-  - {id: nwt, text: text.objective.mn10.nwt40, objectiveText: Show the map to Never-Writes-Twice in Nesh-Deeka's House.,
-    target: npc.mn.never-writes-twice, completeWhen: {questStage: [quest.main.mn10, ≥, 90]}}
+  - id: nwt
+    text: text.objective.mn10.nwt40
+    objectiveText: Show the map to Never-Writes-Twice in Nesh-Deeka's House.
+    target: npc.mn.never-writes-twice
+    completeWhen:
+      questStage:
+      - quest.main.mn10
+      - ≥
+      - 90
   successors:
-  - {to: 90, when: {topicHeardFrom: [topic.mn10-nwt-meet, npc.mn.never-writes-twice]}}
+  - to: 90
+    when:
+      topicHeardFrom:
+      - topic.mn10-nwt-meet
+      - npc.mn.never-writes-twice
   failForward:
-  - {to: 96, when: {not: {npcAlive: npc.mn.never-writes-twice}}}
+  - to: 96
+    when:
+      not:
+        npcAlive: npc.mn.never-writes-twice
   information:
     going: I now answer to Never-Writes-Twice, the order's officer.
     next: Show her the map, at the back of the room.
     ways: none
     carriers:
-    - {know: the hand-over, by: [journal, objective, marker:npc.mn.never-writes-twice, 'name:npc.mn.never-writes-twice']}
+    - know: the hand-over
+      by:
+      - journal
+      - objective
+      - marker:npc.mn.never-writes-twice
+      - name:npc.mn.never-writes-twice
 - id: 41
   place: helstrom
   journal: text.journal.mn10.41
-  journalText: 'I took the quarterstaff. Nesh-Deeka passed me to her officer, Never-Writes-Twice, who stands at the back
-    of the same room; from now on I report to her. I''m to show her the map.'
-  onEnter: [{giveItem: [thing.mn10.staff, 1]}]
+  journalText: I took the quarterstaff. Nesh-Deeka passed me to her officer, Never-Writes-Twice, who stands at the back
+    of the same room; from now on I report to her. I'm to show her the map.
+  onEnter:
+  - giveItem:
+    - thing.mn10.staff
+    - 1
   objectives:
-  - {id: nwt41, text: text.objective.mn10.nwt41, objectiveText: Show the map to Never-Writes-Twice in Nesh-Deeka's House.,
-    target: npc.mn.never-writes-twice, completeWhen: {questStage: [quest.main.mn10, ≥, 90]}}
+  - id: nwt41
+    text: text.objective.mn10.nwt41
+    objectiveText: Show the map to Never-Writes-Twice in Nesh-Deeka's House.
+    target: npc.mn.never-writes-twice
+    completeWhen:
+      questStage:
+      - quest.main.mn10
+      - ≥
+      - 90
   successors:
-  - {to: 90, when: {topicHeardFrom: [topic.mn10-nwt-meet, npc.mn.never-writes-twice]}}
+  - to: 90
+    when:
+      topicHeardFrom:
+      - topic.mn10-nwt-meet
+      - npc.mn.never-writes-twice
   failForward:
-  - {to: 96, when: {not: {npcAlive: npc.mn.never-writes-twice}}}
+  - to: 96
+    when:
+      not:
+        npcAlive: npc.mn.never-writes-twice
   information:
     going: I now answer to Never-Writes-Twice, the order's officer.
     next: Show her the map, at the back of the room.
     ways: none
     carriers:
-    - {know: the hand-over, by: [journal, objective, marker:npc.mn.never-writes-twice, 'name:npc.mn.never-writes-twice']}
+    - know: the hand-over
+      by:
+      - journal
+      - objective
+      - marker:npc.mn.never-writes-twice
+      - name:npc.mn.never-writes-twice
 - id: 90
   place: helstrom
   journal: text.journal.mn10.90
-  journalText: 'Never-Writes-Twice knew the crag on the map: the Grey Tooth, the seamark of Skeith Isle. She told me
-    Cuts-the-Old-Knot was once one of the order, who went mad on sap and killed her minders. She marked the Grey Tooth.'
-  learns: [fact.mn10.grey-tooth, fact.mn10.lie]
+  journalText: 'Never-Writes-Twice knew the crag on the map: the Grey Tooth, the seamark of Skeith Isle. She told me Cuts-the-Old-Knot
+    was once one of the order, who went mad on sap and killed her minders. She marked the Grey Tooth.'
+  learns:
+  - fact.mn10.grey-tooth
+  - fact.mn10.lie
   ending: complete
   endingId: e-toh-wo
   information:
-    going: 'The map leads to the Grey Tooth on Skeith Isle. Never-Writes-Twice says Cuts-the-Old-Knot was one of the
-      order gone mad on sap.'
+    going: The map leads to the Grey Tooth on Skeith Isle. Never-Writes-Twice says Cuts-the-Old-Knot was one of the order
+      gone mad on sap.
     next: MN11 starts; its first entry marks the Grey Tooth.
     ways: none
     carriers:
-    - {know: Grey Tooth, by: [journal, 'line:topic.mn10-nwt-meet']}
-    - {know: her account of Cuts-the-Old-Knot, by: [journal, 'line:topic.mn10-nwt-meet', 'ask:topic.mn-cuts-the-old-knot']}
-- {id: 95, place: helstrom, journal: text.journal.mn10.95, journalText: 'Nesh-Deeka is dead. Nobody else in the
-    Toh-Reel-Ka knows me, and the trail of the Eye ends with her.', ending: failed, endingId: e-thread, information: {going: 'The one the hunt for the Eye depends on is dead; the main quest cannot go on.', next: Nothing more in the main quest., ways: none}}
-- {id: 96, place: helstrom, journal: text.journal.mn10.96, journalText: 'Never-Writes-Twice is dead. Without the
-    order''s officer the hunt for the Eye goes no further.', ending: failed, endingId: e-thread, information: {going: 'The one the hunt for the Eye depends on is dead; the main quest cannot go on.', next: Nothing more in the main quest., ways: none}}
+    - know: Grey Tooth
+      by:
+      - journal
+      - line:topic.mn10-nwt-meet
+    - know: her account of Cuts-the-Old-Knot
+      by:
+      - journal
+      - line:topic.mn10-nwt-meet
+      - ask:topic.mn-cuts-the-old-knot
+- id: 95
+  place: helstrom
+  journal: text.journal.mn10.95
+  journalText: Nesh-Deeka is dead. Nobody else in the Toh-Reel-Ka knows me, and the trail of the Eye ends with her.
+  ending: failed
+  endingId: e-thread
+  information:
+    going: The one the hunt for the Eye depends on is dead; the main quest cannot go on.
+    next: Nothing more in the main quest.
+    ways: none
+- id: 96
+  place: helstrom
+  journal: text.journal.mn10.96
+  journalText: Never-Writes-Twice is dead. Without the order's officer the hunt for the Eye goes no further.
+  ending: failed
+  endingId: e-thread
+  information:
+    going: The one the hunt for the Eye depends on is dead; the main quest cannot go on.
+    next: Nothing more in the main quest.
+    ways: none
 endings:
-- {id: e-toh-wo, when: Never-Writes-Twice marked the Grey Tooth, seen: 'the player is a
-    Toh-Wo with a rapier or a quarterstaff; Never-Writes-Twice stands at the back of Nesh-Deeka''s House from now on'}
-- {id: e-thread, when: Nesh-Deeka or Never-Writes-Twice died, world: [{setFlag: [flag.main.thread-severed, true]}], seen: the
-    main quest's message}
+- id: e-toh-wo
+  when: Never-Writes-Twice marked the Grey Tooth
+  seen: the player is a Toh-Wo with a rapier or a quarterstaff; Never-Writes-Twice stands at the back of Nesh-Deeka's House
+    from now on
+- id: e-thread
+  when: Nesh-Deeka or Never-Writes-Twice died
+  world:
+  - setFlag:
+    - flag.main.thread-severed
+    - true
+  seen: the main quest's message
 terms:
-- {term: Ah-Zish, meets: '10 journal', told: journal 10, ask: topic.mn10-ah-zish-who}
-- {term: Toh-Wo, meets: '30 line', told: 'Nesh-Deeka: "Secret-Speaker", the order''s second rank', ask: topic.mn-ranks}
-- {term: Never-Writes-Twice, meets: '40 line', told: 'Nesh-Deeka: her officer, to whom the player now reports', ask: topic.mn10-nwt-who}
-- {term: the Grey Tooth and Skeith Isle, meets: '90 line', told: 'Never-Writes-Twice: a crag that is the seamark of Skeith Isle', ask: topic.mn10-nwt-meet}
+- term: Ah-Zish
+  meets: 10 journal
+  told: journal 10
+  ask: topic.mn10-ah-zish-who
+- term: Toh-Wo
+  meets: 30 line
+  told: 'Nesh-Deeka: "Secret-Speaker", the order''s second rank'
+  ask: topic.mn-ranks
+- term: Never-Writes-Twice
+  meets: 40 line
+  told: 'Nesh-Deeka: her officer, to whom the player now reports'
+  ask: topic.mn10-nwt-who
+- term: the Grey Tooth and Skeith Isle
+  meets: 90 line
+  told: 'Never-Writes-Twice: a crag that is the seamark of Skeith Isle'
+  ask: topic.mn10-nwt-meet
 topics:
-- {id: topic.mn10-ah-zish-who, label: "Who are you?", person: npc.mn.ah-zish, stages: [10, 20, 90], essential: false, intent: 'Ah-Zish,
-    gallery-boss of Vicrium; his miners are Oxhu clay-diggers and Seafalls families; Umbriel in a line: his grandfather
-    said the sky went dark over the east. Does: nothing.', new: true}
-- {id: topic.mn10-door, label: "I need to get into the lower galleries.", person: npc.mn.ah-zish, stages: [10], essential: true,
+- id: topic.mn10-ah-zish-who
+  label: Who are you?
+  person: npc.mn.ah-zish
+  stages:
+  - 10
+  - 20
+  - 90
+  essential: false
+  intent: 'Ah-Zish, gallery-boss of Vicrium; his miners are Oxhu clay-diggers and Seafalls families; Umbriel in a line:
+    his grandfather said the sky went dark over the east. Does: nothing.'
+  new: true
+- id: topic.mn10-door
+  label: I need to get into the lower galleries.
+  person: npc.mn.ah-zish
+  stages:
+  - 10
+  essential: true
   intent: 'Ah-Zish. Tells: no; a roof fall killed two men down there and he locked the timber door himself; and lately he
-    hears voices below, smugglers, he thinks, come in by the old adit on the creek bank, which is flooded and full of
-    crocodiles. The player can argue (Persuade), pay 100 gold, or go round by the adit. Does: nothing.', replies: [topic.mn10-persuade,
-    topic.mn10-pay], new: true}
-- {id: topic.mn10-persuade, label: '(Persuade) If smugglers are under your feet, better I clear them than your miners.',
-  person: npc.mn.ah-zish, stages: [10], essential: false, when: {skillAtLeast: [Speech, 40]}, intent: 'Ah-Zish. Gives the
-    key. Does: gives thing.mn10.door-key.', fallback: 'He has buried two men already; for 100 gold he will let a fool try.',
-  new: true}
-- {id: topic.mn10-pay, label: "Here is 100 gold for the key. (100 gold)", person: npc.mn.ah-zish, stages: [10], essential: false,
-  when: {goldAtLeast: 100}, intent: 'Ah-Zish. Takes 100 gold and gives the key. Does: gives thing.mn10.door-key.', fallback: A
-    hundred, or the adit., new: true}
-- {id: topic.mn10-report, label: "The knights' strongbox held this map.", person: npc.mn.nesh-deeka, stages: [20], essential: true,
-  when: {hasItem: [thing.mn.parchment-map, 1]}, intent: 'Nesh-Deeka. Tells: this is one more step towards the Eye of Argonia at the Root; seven towers in the sea and a crag like a
-    tooth: that is for her officer to read. She says the Unbound have not reached Vicrium. Does: nothing (a question;
-    its answer is topic.mn10-how-know).', replies: [topic.mn10-how-know], new: true}
-- {id: topic.mn10-how-know, label: "How could you know the Unbound never reached Vicrium?", person: npc.mn.nesh-deeka, stages: [
-    20], essential: true, when: {hasItem: [thing.mn.parchment-map, 1]}, intent: 'Nesh-Deeka. Tells: "We listen." Then she
-    names the player Toh-Wo, "Secret-Speaker", the second rank, with 200 gold, and offers the order''s weapon: a rapier
-    or a quarterstaff. Does: sets stage 30.', new: true}
-- {id: topic.mn10-rapier, label: "I'll take the rapier.", person: npc.mn.nesh-deeka, stages: [30], essential: true, intent: 'Nesh-Deeka.
-    Gives the rapier; says that from now on the player reports to her officer, Never-Writes-Twice, who stands at the back
-    of this room; she has more than one hand to run. Does: sets stage 40.', new: true}
-- {id: topic.mn10-staff, label: "I'll take the quarterstaff.", person: npc.mn.nesh-deeka, stages: [30], essential: true, intent: 'Nesh-Deeka.
-    Gives the quarterstaff; the same hand-over to Never-Writes-Twice. Does: sets stage 41.', new: true}
-- {id: topic.mn10-nwt-who, label: "Who are you?", person: npc.mn.never-writes-twice, stages: [40, 41, 90], essential: false,
-  intent: 'Never-Writes-Twice, an officer of the Toh-Reel-Ka; she says what she must once and writes nothing down; she
-    served at Fort Chalkmoth, an Archwarden fort, for many years. Does: nothing.', new: true}
-- {id: topic.mn10-nwt-meet, label: "Nesh-Deeka says I answer to you now. Here is the map.", person: npc.mn.never-writes-twice,
-  stages: [40, 41], essential: true, intent: 'Never-Writes-Twice. Tells: the crag is the Grey Tooth, the seamark of Skeith
-    Isle, reached by boat to Archon and Arorha; she marks it. Then, unasked, she warns the player of Cuts-the-Old-Knot:
-    once one of the order, who went mad on sap and killed her minders; the player is not to listen to her. Does: sets
-    stage 90.', new: true}
-- {id: topic.mn-cuts-the-old-knot, label: "Tell me about Cuts-the-Old-Knot.", person: npc.mn.never-writes-twice, stages: [90],
-  essential: false, intent: 'Never-Writes-Twice, her own row on the shared topic. Tells: the same account: one of the order
-    who went mad on sap and killed her minders, and has led the Unbound since. Does: nothing.', new: false}
-- {id: topic.mn-ranks, label: "What does Toh-Wo mean?", person: npc.mn.nesh-deeka, stages: [30, 40, 41, 90], essential: false,
+    hears voices below, smugglers, he thinks, come in by the old adit on the creek bank, which is flooded and full of crocodiles.
+    The player can argue (Persuade), pay 100 gold, or go round by the adit. Does: nothing.'
+  replies:
+  - topic.mn10-persuade
+  - topic.mn10-pay
+  new: true
+- id: topic.mn10-persuade
+  label: (Persuade) If smugglers are under your feet, better I clear them than your miners.
+  person: npc.mn.ah-zish
+  stages:
+  - 10
+  essential: false
+  when:
+    skillAtLeast:
+    - Speech
+    - 40
+  intent: 'Ah-Zish. Gives the key. Does: gives thing.mn10.door-key.'
+  fallback: He has buried two men already; for 100 gold he will let a fool try.
+  new: true
+- id: topic.mn10-pay
+  label: Here is 100 gold for the key. (100 gold)
+  person: npc.mn.ah-zish
+  stages:
+  - 10
+  essential: false
+  when:
+    goldAtLeast: 100
+  intent: 'Ah-Zish. Takes 100 gold and gives the key. Does: gives thing.mn10.door-key.'
+  fallback: A hundred
+  or the adit.: null
+  new: true
+- id: topic.mn10-report
+  label: The knights' strongbox held this map.
+  person: npc.mn.nesh-deeka
+  stages:
+  - 20
+  essential: true
+  when:
+    hasItem:
+    - thing.mn.parchment-map
+    - 1
+  intent: 'Nesh-Deeka. Tells: this is one more step towards the Eye of Argonia at the Root; seven towers in the sea and
+    a crag like a tooth: that is for her officer to read. She says the Unbound have not reached Vicrium. She sees the question
+    coming, how she can know this, and answers it before it is asked: "We listen." Then she names the player Toh-Wo, "Secret-Speaker",
+    the second rank, with 200 gold, and offers the order''s weapon: a rapier or a quarterstaff. Does: sets stage 30.'
+  new: true
+- id: topic.mn10-rapier
+  label: I'll take the rapier.
+  person: npc.mn.nesh-deeka
+  stages:
+  - 30
+  essential: true
+  intent: 'Nesh-Deeka. Gives the rapier; says that from now on the player reports to her officer, Never-Writes-Twice, who
+    stands at the back of this room; she has more than one hand to run. Does: sets stage 40.'
+  new: true
+- id: topic.mn10-staff
+  label: I'll take the quarterstaff.
+  person: npc.mn.nesh-deeka
+  stages:
+  - 30
+  essential: true
+  intent: 'Nesh-Deeka. Gives the quarterstaff; the same hand-over to Never-Writes-Twice. Does: sets stage 41.'
+  new: true
+- id: topic.mn10-nwt-who
+  label: Who are you?
+  person: npc.mn.never-writes-twice
+  stages:
+  - 40
+  - 41
+  - 90
+  essential: false
+  intent: 'Never-Writes-Twice, an officer of the Toh-Reel-Ka; she says what she must once and writes nothing down; she served
+    at Fort Chalkmoth, an Archwarden fort, for many years. Does: nothing.'
+  new: true
+- id: topic.mn10-nwt-meet
+  label: Nesh-Deeka says I answer to you now. Here is the map.
+  person: npc.mn.never-writes-twice
+  stages:
+  - 40
+  - 41
+  essential: true
+  intent: 'Never-Writes-Twice. Tells: the crag is the Grey Tooth, the seamark of Skeith Isle, reached by boat to Archon
+    and Arorha; she marks it. Then, unasked, she warns the player of Cuts-the-Old-Knot: once one of the order, who went
+    mad on sap and killed her minders; the player is not to listen to her. Does: sets stage 90.'
+  new: true
+- id: topic.mn-cuts-the-old-knot
+  label: Tell me about Cuts-the-Old-Knot.
+  person: npc.mn.never-writes-twice
+  stages:
+  - 90
+  essential: false
+  intent: 'Never-Writes-Twice, her own row on the shared topic. Tells: the same account: one of the order who went mad on
+    sap and killed her minders, and has led the Unbound since. Does: nothing.'
+  new: false
+- id: topic.mn-ranks
+  label: What does Toh-Wo mean?
+  person: npc.mn.nesh-deeka
+  stages:
+  - 30
+  - 40
+  - 41
+  - 90
+  essential: false
   intent: 'Nesh-Deeka, her row on the shared topic. Tells: Toh, secret; Wo, speaker: a Secret-Speaker, trusted to speak
-    for the order; the next rank is Reel-Ka, Warrior. Does: nothing.', new: false}
+    for the order; the next rank is Reel-Ka, Warrior. Does: nothing.'
+  new: false
 - id: topic.mn-the-hunt
   label: Remind me what we are hunting, and why.
   person: npc.mn.nesh-deeka
@@ -346,7 +845,15 @@ topics:
   new: false
 review:
   findings:
-  - {id: L1, severity: lore, ids: [facts.fact.mn10.lie], finding: Never-Writes-Twice lies about Cuts-the-Old-Knot., answer: 'sourced:
-      main-plot.md §4, §7'}
-  - {id: L2, severity: lore, ids: [topics.topic.mn-ranks], finding: Toh-Wo glossed Secret-Speaker., answer: 'sourced:
-      main-plot.md Words; rulers-rename-map.md'}
+  - id: L1
+    severity: lore
+    ids:
+    - facts.fact.mn10.lie
+    finding: Never-Writes-Twice lies about Cuts-the-Old-Knot.
+    answer: 'sourced: main-plot.md §4, §7'
+  - id: L2
+    severity: lore
+    ids:
+    - topics.topic.mn-ranks
+    finding: Toh-Wo glossed Secret-Speaker.
+    answer: 'sourced: main-plot.md Words; rulers-rename-map.md'

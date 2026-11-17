@@ -1,0 +1,82 @@
+{
+ "quest": "quest.main.mn06",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn06.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "fight",
+ "choose": null,
+ "know": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/know-mn06.md",
+ "created": "20261117T171549Z",
+ "stages": [
+  10,
+  20,
+  30,
+  90
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn04.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn05.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 4,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I serve the Toh-Reel-Ka, the order of the Xeech-Leel, as a Voh-Vastei. Hist trees are falling sick, and the Unbound are draining sap, probably for a draught to kill whatever guards the Root. The Eye of Argonia, cut from Hist amber, could heal every tree if used at the Root. 2. Find the dealer in Gideon market who is selling an \"Eye of Argonia\" and learn whether it is real. The marker points to Ovinius Calo in Gideon. 3. I can talk to Ovinius Calo and persuade him or pay a few coins for the truth. I can also look at the Eye (Glass) on display. Fighting is possible but I do not yet see a reason. 4. I do not know who Ovinius Calo is. The item is labelled Glass, so it may be a fake. I can find out by talking to him and looking at the Eye.",
+  "talk Ovinius Calo",
+  "say 1",
+  "say 2",
+  "say 2 pass",
+  "answer 1. The Eye on sale is just cheap glass garnet. The smugglers who sold it kept its old silver setting, which may hold a clue to the real Eye. Unbound and a Collector (Imperial relic-hunter) are also asking after it. 2. Go to Gideon South Watch, the leaning tower SE of the quay, and take the silver setting from the smugglers chest in the inner room. 3. Fight the smugglers (the expected way), sneak past, pick the chest lock, or take the key from the Smuggler Boss. 4. I do not know who the Collector is or why the setting matters; I may learn at the tower or by asking around.",
+  "go Smuggler Boss",
+  "fight Smuggler Boss win",
+  "fight Delta Smuggler win",
+  "take Key to the Smugglers Chest",
+  "look",
+  "take key from Smuggler Boss",
+  "use Door to South Watch Inner Room",
+  "use Smugglers Chest",
+  "use Smugglers' Chest",
+  "pick Smugglers' Chest win",
+  "use Smugglers' Chest",
+  "take Old Silver Setting",
+  "answer 1. The Eye for sale was glass; I took its old silver setting from the smugglers. The Collector, Ennodius Vanin, an Imperial relic-hunter, got there first and left a note saying a ship name is scratched inside the band. 2. Bring the setting to Nesh-Deeka in Helstrom via the rootworm from Gideons Hist garden. 3. Go straight to Nesh-Deeka, or take the Collectors note too; I could also look for the Collector himself. 4. I do not know which ship it is or why it matters; Nesh-Deeka may know, and the note may say more.",
+  "go Nesh-Deeka",
+  "talk Nesh-Deeka",
+  "say 1",
+  "say 2",
+  "answer 1. The Eye in Gideon was glass. The setting it came in names a ship, the Pale Harvest, a Company freighter sunk in Hatandros Bight with a Gideon dealers whole stock aboard. The Eye may be in that wreck. Unbound also hunt it. Nesh-Deeka paid me 100 gold. 2. The quest is complete; the next lead is presumably the wreck in Hatandros Bight, south of Thorn on the east coast, but I have not been told to go yet. 3. Go to the Bight and search the wreck, or ask Nesh-Deeka more, or find the Collector. 4. I do not know how Nesh-Deeka knew the Unbound were in Gideon (she said we listen), nor where exactly the wreck lies or what is in it.",
+  "answer Notes: I am a Voh-Vastei of the Toh-Reel-Ka, working for Nesh-Deeka in Helstrom. The Eye of Argonia for sale in Gideon (Ovinius Calo, 3000 gold) was glass. I killed the smugglers at Gideon South Watch and took the Old Silver Setting from their chest; the Collector, Ennodius Vanin (Imperial relic-hunter), had been there first. Inside the band is the ship name Pale Harvest, a Company freighter sunk in Hatandros Bight (east coast, south of Thorn) with a Gideon dealers stock aboard. Nesh-Deeka returned the setting and paid 100 gold. Unbound asked after the glass Eye a month ago; she says \"we listen\" and would not say more. Next lead: search the Pale Harvest wreck in Hatandros Bight. I still carry the setting. Unknown: how she knows about the Unbound, what is in the wreck, and what the Collector wants.",
+  "answer Notes: I am a Voh-Vastei of the Toh-Reel-Ka, working for Nesh-Deeka in Helstrom. The Eye of Argonia for sale in Gideon (Ovinius Calo, 3000 gold) was glass. I killed the smugglers at Gideon South Watch and took the Old Silver Setting from their chest; the Collector, Ennodius Vanin (Imperial relic-hunter), had been there first. Inside the band is the ship name Pale Harvest, a Company freighter sunk in Hatandros Bight (east coast, south of Thorn) with a Gideon dealers stock aboard. Nesh-Deeka returned the setting and paid 100 gold. Unbound asked after the glass Eye a month ago; she says \"we listen\" and would not say more. Next lead: search the Pale Harvest wreck in Hatandros Bight. I still carry the setting. Unknown: how she knows about the Unbound, what is in the wreck, and what the Collector wants."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.1025066,
+ "minutes": 1.0,
+ "turns": 27,
+ "tokens": {
+  "input_tokens": 46,
+  "output_tokens": 4351,
+  "cache_read_input_tokens": 178566,
+  "cache_creation_input_tokens": 10262
+ }
+}

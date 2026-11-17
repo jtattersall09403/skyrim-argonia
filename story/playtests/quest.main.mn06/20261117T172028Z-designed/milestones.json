@@ -1,0 +1,99 @@
+[
+ {
+  "stage": 10,
+  "kind": "start",
+  "ending": null,
+  "title": "The Glass Eye",
+  "journal": "Nesh-Deeka made me a Voh-Vastei of the Toh-Reel-Ka and gave me my first lead: someone in Gideon's market is selling an \"Eye of Argonia\". I'm to ride the rootworm from Helstrom's city tree to Gideon and find the dealer who sells it. Nesh-Deeka says Gideon's dealers tell the truth for a little persuasion or a few coins, and keep their papers in their pockets.",
+  "objectives": [
+   "Find the dealer selling the Eye of Argonia in Gideon's market. (marker: Ovinius Calo, Rootworm Landing (Helstrom))"
+  ],
+  "plan": {
+   "going": "I serve the Toh-Reel-Ka, the Xeech-Leel's secret warriors, as a Voh-Vastei. The Unbound want the Eye of Argonia, which lies at the Root; an \"Eye of Argonia\" is for sale in Gideon, and Nesh-Deeka wants to know if it is real.",
+   "next": "Ride the rootworm from Helstrom's city tree to Gideon and find the dealer in the market.",
+   "ways": "Ask the dealer about the Eye. He will tell the truth about it to a little persuasion (Speech) or for 20 gold; or his note can be lifted from his pocket (Pickpocket) and read.",
+   "terms": [
+    "Gideon: journal 10: a city reached by the rootworm"
+   ]
+  },
+  "answers": [
+   "I am Tarin, a thief and now Voh-Vastei (apprentice) of the Toh-Reel-Ka. The order wants the Eye of Argonia, the priest-kings Hist amber jewel, found before Cuts-the-Old-Knot gets it, to heal the trees.",
+   "Find the dealer in Gideon market selling an Eye of Argonia (most are glass) and learn where it came from. Ovinius Calo is marked in Gideon.",
+   "Talk to Ovinius Calo and persuade him, pay a few coins, or pickpocket his papers. I can also examine the glass Eye here.",
+   "I do not know who Ovinius Calo is yet; I can find out by talking to him. Seal paste, Xeech-Leel and Umbriel are still unknown; I can ask Nesh-Deeka about Umbriel."
+  ],
+  "raw": "1. I am Tarin, a thief and now Voh-Vastei (apprentice) of the Toh-Reel-Ka. The order wants the Eye of Argonia, the priest-kings Hist amber jewel, found before Cuts-the-Old-Knot gets it, to heal the trees. 2. Find the dealer in Gideon market selling an Eye of Argonia (most are glass) and learn where it came from. Ovinius Calo is marked in Gideon. 3. Talk to Ovinius Calo and persuade him, pay a few coins, or pickpocket his papers. I can also examine the glass Eye here. 4. I do not know who Ovinius Calo is yet; I can find out by talking to him. Seal paste, Xeech-Leel and Umbriel are still unknown; I can ask Nesh-Deeka about Umbriel."
+ },
+ {
+  "stage": 20,
+  "kind": "stage",
+  "ending": null,
+  "title": "The Glass Eye",
+  "journal": "The Eye on Ovinius Calo's stall is glass. The smugglers who sold it to him keep the old silver setting it came in, at Gideon South Watch, a leaning tower south-east of the quay. I'm to take the setting from their locked chest in the tower's inner room. I may fight the smugglers or slip past them; the chest's lock can be picked, and their boss carries its key. A man called the Collector, an Imperial relic-hunter, has been asking after the Eye too.",
+  "objectives": [
+   "Take the old silver setting from the smugglers' chest at Gideon South Watch. (marker: Smugglers' Chest, Smuggler Boss)"
+  ],
+  "plan": {
+   "going": "The Eye in Gideon is glass. Its old silver setting, the only true part, is with the smugglers of the South Watch.",
+   "next": "Go to Gideon South Watch and take the setting from the smugglers' chest in the inner room.",
+   "ways": "Fight the smugglers (their boss carries the chest's key), or sneak past them and pick the chest's lock.",
+   "terms": [
+    "Gideon South Watch: topic.mn06-persuade: a leaning Imperial watch-tower south-east of the quay",
+    "the Collector (Ennodius Vanin): Ovinius: an Imperial relic-hunter twenty years after the Eye; his note"
+   ]
+  },
+  "answers": [
+   "The Eye on the stall is glass. Ovinius bought it from smugglers who kept the old silver setting it came in. Two Unbound and a Collector (Imperial relic-hunter) also asked after it.",
+   "Go to Gideon South Watch, a leaning tower south-east of the quay, and take the silver setting from the smugglers locked chest in the inner room.",
+   "Fight the smugglers, sneak past, pick the chest lock, or pickpocket the boss for the key. I favour sneaking or talking.",
+   "I do not know who the Collector is or why the Unbound want the Eye; I might learn more from the setting or from smugglers."
+  ],
+  "raw": "1. The Eye on the stall is glass. Ovinius bought it from smugglers who kept the old silver setting it came in. Two Unbound and a Collector (Imperial relic-hunter) also asked after it. 2. Go to Gideon South Watch, a leaning tower south-east of the quay, and take the silver setting from the smugglers locked chest in the inner room. 3. Fight the smugglers, sneak past, pick the chest lock, or pickpocket the boss for the key. I favour sneaking or talking. 4. I do not know who the Collector is or why the Unbound want the Eye; I might learn more from the setting or from smugglers."
+ },
+ {
+  "stage": 30,
+  "kind": "stage",
+  "ending": null,
+  "title": "The Glass Eye",
+  "journal": "I took the old silver setting from the smugglers' chest. Ennodius Vanin, the Collector, an Imperial relic-hunter who has chased the Eye for twenty years, had opened it before me and left a note: the setting is no use to him, but a ship's name is scratched inside the band. I'm to bring the setting to Nesh-Deeka in her house in Helstrom, by the rootworm from Gideon's Hist garden.",
+  "objectives": [
+   "Bring the old silver setting to Nesh-Deeka in Helstrom. (marker: Nesh-Deeka)"
+  ],
+  "plan": {
+   "going": "I have the setting. The Collector, a rival relic-hunter, got there first but left it; a ship's name is scratched inside it.",
+   "next": "Take the setting to Nesh-Deeka in her house in Helstrom.",
+   "ways": "The rootworm from Gideon's Hist garden back to Helstrom."
+  },
+  "answers": [
+   "I pickpocketed the boss key and took the old silver setting from the chest. The Collector, Ennodius Vanin, an Imperial relic-hunter, got there first and left a note saying a ships name is scratched inside the band.",
+   "Bring the setting to Nesh-Deeka at her house in Helstrom, by rootworm from Gideon Hist garden.",
+   "Go straight to Nesh-Deeka; I could also read the Collector note first (I have not picked it up yet) or look at the band myself.",
+   "I do not know the ship name yet, or what the Collector wants it for. Nesh-Deeka may help."
+  ],
+  "raw": "1. I pickpocketed the boss key and took the old silver setting from the chest. The Collector, Ennodius Vanin, an Imperial relic-hunter, got there first and left a note saying a ships name is scratched inside the band. 2. Bring the setting to Nesh-Deeka at her house in Helstrom, by rootworm from Gideon Hist garden. 3. Go straight to Nesh-Deeka; I could also read the Collector note first (I have not picked it up yet) or look at the band myself. 4. I do not know the ship name yet, or what the Collector wants it for. Nesh-Deeka may help."
+ },
+ {
+  "stage": 90,
+  "kind": "ending",
+  "ending": "complete",
+  "title": "The Glass Eye",
+  "journal": "Nesh-Deeka read the name inside the setting: the Pale Harvest, a ship that sank in Hatandros Bight, the bay on the east coast south of Thorn, with a Gideon dealer's whole stock aboard. She already knew that two Unbound had asked after the glass Eye in Gideon a month ago. Before I could ask how she knew, she said \"we listen\" and spoke of the wreck instead. She paid me 100 gold.",
+  "objectives": [],
+  "plan": {
+   "going": "The setting points to the wreck of the Pale Harvest. Nesh-Deeka knows more than I told her of where the Unbound have been, and will not say how.",
+   "next": "MN07 starts; its first entry marks the wreck.",
+   "ways": "none here",
+   "terms": [
+    "the Pale Harvest: Nesh-Deeka: a ship that sank in Hatandros Bight with a Gideon dealer's stock",
+    "\"we listen\": Nesh-Deeka turns aside the question of how she knows"
+   ]
+  },
+  "answers": [
+   "Notes for a friend picking up my save: I am Tarin, Voh-Vastei of the Toh-Reel-Ka. The Eye on Ovinius Calo stall in Gideon was glass. Ovinius told me (persuasion) the smugglers of Gideon South Watch had the old silver setting. I pickpocketed the boss key, opened the chest, and took the setting and the Collector note. The Collector is Ennodius Vanin, an Imperial relic-hunter chasing the Eye for twenty years. Nesh-Deeka read the ship name inside the band: the Pale Harvest, a Company freighter sunk in Hatandros Bight, east coast south of Thorn, with a Gideon dealers whole stock aboard. She paid me 100 gold (about 450 total) and gave the setting back. Two Unbound also asked after the glass Eye in Gideon; she says we listen.",
+   "Next: follow the wreck lead to Hatandros Bight, details not yet given.",
+   "I could ask Nesh-Deeka about the wreck, Umbriel, Xeech-Leel, or seal paste, or travel to the Bight.",
+   "Still unknown: who Cuts-the-Old-Knot is, seal paste, Xeech-Leel, Umbriel, how the order listens, and what the Collector wants."
+  ],
+  "raw": "1. Notes for a friend picking up my save: I am Tarin, Voh-Vastei of the Toh-Reel-Ka. The Eye on Ovinius Calo stall in Gideon was glass. Ovinius told me (persuasion) the smugglers of Gideon South Watch had the old silver setting. I pickpocketed the boss key, opened the chest, and took the setting and the Collector note. The Collector is Ennodius Vanin, an Imperial relic-hunter chasing the Eye for twenty years. Nesh-Deeka read the ship name inside the band: the Pale Harvest, a Company freighter sunk in Hatandros Bight, east coast south of Thorn, with a Gideon dealers whole stock aboard. She paid me 100 gold (about 450 total) and gave the setting back. Two Unbound also asked after the glass Eye in Gideon; she says we listen. 2. Next: follow the wreck lead to Hatandros Bight, details not yet given. 3. I could ask Nesh-Deeka about the wreck, Umbriel, Xeech-Leel, or seal paste, or travel to the Bight. 4. Still unknown: who Cuts-the-Old-Knot is, seal paste, Xeech-Leel, Umbriel, how the order listens, and what the Collector wants."
+ }
+]

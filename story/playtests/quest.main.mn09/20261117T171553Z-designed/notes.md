@@ -1,0 +1,1 @@
+I am at Eurydike for Nesh-Deeka. I searched the Unbound Pack (Grey Seal paralysis poison). I carry the Keystone, Grave-Stake, Eye-Setting, Voh-Vastei-Armour, Unbound-Note, 2 lockpicks, 650 gold. I tried the tomb door and the game stopped with a harness error about the keystone having no name. The tomb is still unopened. I still do not know what the Root and the Eye really are.

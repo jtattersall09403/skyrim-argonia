@@ -1,0 +1,85 @@
+{
+ "quest": "quest.main.mn06",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn06.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "pay",
+ "choose": null,
+ "know": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/know-mn06.md",
+ "created": "20261117T171550Z",
+ "stages": [
+  10,
+  20,
+  30,
+  90
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn04.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn05.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 4,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I serve the Toh-Reel-Ka, the Xeech-Leel secret order, as a Voh-Vastei. Hist trees are sickening because the Unbound drain and seal them. The Eye of Argonia, a Hist-amber jewel at the Root, could heal every tree. The order wants it before Cuts-the-Old-Knot. 2. Find the dealer in Gideon market selling an Eye of Argonia. The marker points at Ovinius Calo. 3. Talk to Ovinius Calo and persuade him or pay him coins. I can also examine the Eye of Argonia (Glass) here. 4. I do not know who Ovinius Calo is. The Eye is listed as Glass, which may mean it is a fake. I can find out by talking and looking.",
+  "talk Ovinius Calo",
+  "say 3",
+  "say 3 pass",
+  "answer 1. The Eye for sale is only glass. Smugglers sold it to Ovinius and kept the old silver setting, which may be a clue to the real Eye. A relic-hunter called the Collector is also looking. 2. Go to Gideon South Watch, a leaning tower south-east of the quay, and take the setting from the locked chest in the inner room. 3. Fight the smugglers, sneak past them, pick the chest lock, or take the key from the boss. 4. I do not know who the Collector is or why the setting matters. I might learn more at the tower.",
+  "go Gideon South Watch",
+  "talk Smuggler Boss",
+  "talk Delta Smuggler",
+  "use Door to South Watch Inner Room",
+  "pick Smugglers Chest win",
+  "pick Smugglers' Chest win",
+  "look",
+  "take silver setting",
+  "use Smugglers' Chest",
+  "take Old Silver Setting",
+  "answer 1. I have the old silver setting from the smugglers chest. The Collector, Ennodius Vanin, a relic-hunter, got there first and left a note saying a ship name is scratched inside the band. That ship may lead to the real Eye. 2. Take the setting to Nesh-Deeka in Helstrom by rootworm from Gideon Hist garden. 3. I could read the Collectors Note first, or go straight to Nesh-Deeka. I could also look for the Collector. 4. I do not know the ship name or what happened to the Eye after the ship. Nesh-Deeka may know.",
+  "take The Collector's Note",
+  "read The Collector's Note",
+  "go Nesh-Deeka",
+  "talk Nesh-Deeka",
+  "say 1",
+  "journal",
+  "say 3",
+  "look",
+  "say 2",
+  "talk Nesh-Deeka",
+  "say 2",
+  "answer 1. The Glass Eye quest is done. The glass Eye came in a setting marked with the ship Pale Harvest, a Company freighter sunk in Hatandros Bight, east coast south of Thorn, with a Gideon dealer stock aboard. Unbound were asking about the glass Eye a month ago. I was paid 100 gold. 2. Nothing is set yet; the wreck in Hatandros Bight is the likely next lead. 3. Go to the Pale Harvest wreck, or ask Nesh-Deeka more. 4. I do not know how the wreck links to the real Eye, or how Nesh-Deeka knows what the Unbound did; she only said we listen.",
+  "answer I am a Voh-Vastei of the Toh-Reel-Ka, working for Nesh-Deeka in Helstrom. Goal: find the Eye of Argonia, a Hist-amber jewel at the Root, to heal the sick Hist trees before the Unbound (leader Cuts-the-Old-Knot) get there; they want sap for a draught to kill the Root guardian. In Gideon I paid Ovinius Calo 20 gold and learned his Eye is glass. I picked the lock of the smugglers chest at South Watch without a fight and took the Old Silver Setting. Inside the band is the ship name Pale Harvest, a Company freighter sunk in Hatandros Bight, east coast south of Thorn, with a Gideon dealer stock aboard. The Collector, Ennodius Vanin, a relic-hunter, is also hunting the Eye and got to the chest first. Nesh-Deeka paid 100 gold and kept the setting. I carry 2 lockpicks, the Unbound-Note, Voh-Vastei armour, the Collectors Note and about 450 gold. Next lead: the Pale Harvest wreck in Hatandros Bight. I do not yet know how it leads to the real Eye, or how the order knows the Unbound moves."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.10926949999999999,
+ "minutes": 1.5,
+ "turns": 30,
+ "tokens": {
+  "input_tokens": 54,
+  "output_tokens": 4291,
+  "cache_read_input_tokens": 220715,
+  "cache_creation_input_tokens": 11045
+ }
+}

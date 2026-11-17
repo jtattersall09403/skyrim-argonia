@@ -1,0 +1,92 @@
+{
+ "quest": "quest.main.mn10",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn10.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "adit",
+ "choose": null,
+ "know": "story/playtests/quest.main.mn09/20261117T171818Z-designed/notes.md",
+ "created": "20261117T171936Z",
+ "stages": [
+  10,
+  20,
+  30,
+  40,
+  90
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn04.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn05.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn06.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn07.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn08.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn09.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 5,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I work for Nesh-Deeka in Helstrom. The bronze disc from the knight-captain tomb bears the Vicrium mark, an old mine behind Seafalls. The knights kept a strongbox in the lower galleries, and I am to find it. Smugglers have moved in. 2. Get into the lower galleries of Vicrium and search the knights strongbox. 3. Get the key from Ah-Zish by talking or paying 100 gold, or pickpocket it, or take the old lower adit on the creek bank through water where crocodiles nest (the adit is the way the game favours for my build). I could also fight or sneak past the smugglers inside. 4. I do not know what the Root and the Eye are, why the Unbound seal trees, or how Nesh-Deeka knows what she knows. I might learn more from the strongbox contents and people I meet.",
+  "go Old Lower Adit",
+  "look",
+  "use Old Lower Adit",
+  "use Knights Strongbox",
+  "use Knights' Strongbox",
+  "take Old Parchment Map",
+  "answer 1. I work for Nesh-Deeka. Through the old adit I reached the lower galleries and took an old parchment map from the knights strongbox: seven towers in the sea and a tooth-shaped crag on an island. 2. Bring the map to Nesh-Deeka in Helstrom. 3. Go straight back to Helstrom and hand it over; I could also read or study the map first, or leave via the adit again. I do not see another real choice. 4. I do not know what the seven towers or the tooth crag are, nor the Root, the Eye, or why the Unbound seal trees. Nesh-Deeka or the map itself may tell me more.",
+  "go Nesh-Deeka",
+  "talk Nesh-Deeka",
+  "say 1",
+  "answer 1. Nesh-Deeka took the map and said it is another step toward the Eye of Argonia at the Root; her officer will read the towers and tooth crag. She knew the Unbound had not reached Vicrium, answering only \"we listen\". She named me Toh-Wo, Secret-Speaker, second rank, and paid 200 gold. 2. Choose the orders gift from Nesh-Deeka in Helstrom: a rapier or a quarterstaff. 3. Take the rapier or the quarterstaff; no other choice seen. 4. I still do not know what the Eye of Argonia and the Root really are, how Nesh-Deeka listens, who her officer is, or why the Unbound seal trees. Asking Nesh-Deeka or following the map may help.",
+  "talk Nesh-Deeka",
+  "say 1",
+  "answer 1. I took the rapier. Nesh-Deeka now passes me to her officer Never-Writes-Twice, who will read the map. 2. Show the map to Never-Writes-Twice, in the same room in Helstrom. 3. Just talk to her; no other option seen. 4. Still unknown: the Eye of Argonia, the Root, how the order listens, why the Unbound seal trees, what the seven towers and tooth crag are. Never-Writes-Twice may explain the map.",
+  "talk Never-Writes-Twice",
+  "say 2",
+  "answer 1. The quest is done. The crag on the map is the Grey Tooth, seamark of Skeith Isle, reached by boat to Archon and Arorha. Never-Writes-Twice warned me about Cuts-the-Old-Knot, a former order member who went mad on sap and killed her minders. 2. Nothing is set yet; likely Skeith Isle via Archon and Arorha, and the Unbound and the Collector Ennodius Vanin remain. 3. Wait for the next task or travel toward Skeith Isle. 4. Unknown: the Eye of Argonia, the Root, the seven towers, why the Unbound seal trees, how the order listens, and who Cuts-the-Old-Knot is and why not to listen.",
+  "answer Vicrium done: I used the Old Lower Adit (crocodiles did not stop me) to the Lower Galleries, took the Old Parchment Map from the Knights Strongbox (seven towers in the sea, tooth-shaped crag on an island), no fight and Ah-Zish untouched. Nesh-Deeka gave me rank Toh-Wo (Secret-Speaker), 200 gold (about 950 total) and Toh-Wos Rapier (I chose it over the quarterstaff). I now report to her officer Never-Writes-Twice in Nesh-Deeka House, Helstrom. She says the crag is the Grey Tooth, seamark of Skeith Isle, reached by boat to Archon and Arorha, and she marked it. She warned me off Cuts-the-Old-Knot, ex-order, mad on sap, killed her minders. I still carry Pale Harvest strongbox key, Old Silver Setting, Collector note, smuggler key, lockpicks, Grey Seal x3. Still unknown: what the Root and the Eye of Argonia are, how the order knows things (\"we listen\"), why the Unbound seal trees, the seven towers. Next leads: Skeith Isle, the Unbound, the Collector Ennodius Vanin."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.0833094,
+ "minutes": 0.8,
+ "turns": 20,
+ "tokens": {
+  "input_tokens": 34,
+  "output_tokens": 3676,
+  "cache_read_input_tokens": 111254,
+  "cache_creation_input_tokens": 8839
+ }
+}
