@@ -34,7 +34,7 @@ mother hall is the tree-minders' hall in Helstrom, with branches at Aroxhu and T
 house. A player joins by brewing a healing potion for the burnt potters of Arorha. Its door shuts when the player
 finishes the Rothalens' quest 4, The Pulled Stakes.
 
-**The Rothalen house** ([rothalen-house](rothalen-house.md)). A Dunmer trading house of Thorn whose masters are
+**The Rothalen house** ([house-cardruhn](house-cardruhn.md)). A Dunmer trading house of Thorn whose masters are
 necromancers who sell the bound Argonian dead to Telvanni buyers. Its front is a stall in Thorn's market, its hall is
 the barred cellar under Ovezza, and its master sits under the well at Kaochalit. Its enemy is the Sisei-Xul. A player
 joins by casting a conjuration in front of its factor. Its door shuts when the player finishes the Sisei-Xul's quest

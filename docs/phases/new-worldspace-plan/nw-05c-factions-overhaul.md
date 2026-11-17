@@ -298,7 +298,7 @@ opening's name and profession.
 ### Where it stands (2026-11-16)
 
 Steps 1 to 7 are done and on main. The nine plot pages are `main-plot.md`, `lamps.md`, `thieves.md` (the Eelskins),
-`shadowscales.md`, `sisei-xul.md` (the Argonian order), `rothalen-house.md` (the necromancers), `pirates.md` (Bramman's
+`shadowscales.md`, `sisei-xul.md` (the Argonian order), `house-cardruhn.md` (the necromancers, House Cardruhn), `pirates.md` (Bramman's
 Brethren), `merchants.md` (the Nibenese Company) and `chainbreakers-newworld.md`, with `owing-house.md` (the
 Ulvarys) as background. Gear for each faction's ranks is in
 [reward-gear](../../../story/design/quests/reward-gear.md).

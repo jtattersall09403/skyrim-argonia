@@ -92,7 +92,7 @@ up runaways for it. Its barge carries a crew of four and a master. At Julo it ke
 
 ## Its kin
 
-House Cardruhn ([rothalen-house](rothalen-house.md)), the Dunmer necromancers who hide behind a trading house in
+House Cardruhn ([house-cardruhn](house-cardruhn.md)), the Dunmer necromancers who hide behind a trading house in
 Thorn, are kin of the Ulvarys by an old marriage. The two houses do not speak. The Ulvarys say they deal in the
 living and want nothing of the dead.
 

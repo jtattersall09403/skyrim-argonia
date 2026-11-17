@@ -74,7 +74,7 @@ The plot also names Okeeh, the cook of the Owing gang at Sedge-Kal Camp, and Dra
 
 ### The Rothalen house
 
-[rothalen-house](lines/rothalen-house.md)
+[house-cardruhn](lines/house-cardruhn.md)
 
 | Who | Where they stand | What they want |
 |---|---|---|
