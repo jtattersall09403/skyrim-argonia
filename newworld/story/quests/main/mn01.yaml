@@ -471,7 +471,7 @@ stages:
     - 5
   - setDoorAccess:
     - thing.mn01.hold-door
-    - unlocked
+    - open
   objectives:
   - id: out
     text: text.objective.mn01.out
@@ -526,7 +526,7 @@ stages:
     - 5
   - setDoorAccess:
     - thing.mn01.hold-door
-    - unlocked
+    - open
   objectives:
   - id: out
     text: text.objective.mn01.out
@@ -581,7 +581,7 @@ stages:
     - 5
   - setDoorAccess:
     - thing.mn01.hold-door
-    - unlocked
+    - open
   objectives:
   - id: out
     text: text.objective.mn01.out
@@ -637,7 +637,7 @@ stages:
     - 5
   - setDoorAccess:
     - thing.mn01.hold-door
-    - unlocked
+    - open
   objectives:
   - id: out
     text: text.objective.mn01.out
@@ -692,7 +692,7 @@ stages:
     - 5
   - setDoorAccess:
     - thing.mn01.hold-door
-    - unlocked
+    - open
   objectives:
   - id: out
     text: text.objective.mn01.out
@@ -748,7 +748,7 @@ stages:
     - 5
   - setDoorAccess:
     - thing.mn01.hold-door
-    - unlocked
+    - open
   objectives:
   - id: out
     text: text.objective.mn01.out
@@ -5074,7 +5074,7 @@ stages:
   onEnter:
   - setDoorAccess:
     - thing.mn01.hold-door
-    - unlocked
+    - open
   objectives:
   - id: out
     text: text.objective.mn01.out

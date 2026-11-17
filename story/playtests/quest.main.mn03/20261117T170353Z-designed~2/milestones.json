@@ -1,0 +1,154 @@
+[
+ {
+  "stage": 10,
+  "kind": "start",
+  "ending": null,
+  "title": "The First Dream",
+  "journal": "Vosh-Leera has a second task for me. I'm to ask her for it in her house in Jal-Veesa.",
+  "objectives": [
+   "Ask Vosh-Leera for her second task. (marker: Vosh-Leera)"
+  ],
+  "plan": {
+   "going": "I work for the Toh-Reel-Ka through Vosh-Leera; the trees are sick and nobody knows why.",
+   "next": "Ask Vosh-Leera, in her house, for the second task.",
+   "ways": "One way."
+  },
+  "answers": [
+   "I am Tarin, a thief freed from the Owing barge by Vosh-Leera, root-herald of Jal-Veesa. She works for the Toh-Reel-Ka, the Secret Warriors of the Xeech-Leel who rule the province. The Hists along the river are sickening, including Jal-Veesa Hist (dry bark, closed scar, cooling egg-pool). I do not know the cause.",
+   "Ask Vosh-Leera for her second task, in her house in Jal-Veesa.",
+   "I can talk to her, or first ask Weeltul the tree-minder about sap, scar, eggs and Umbriel. No big choice yet.",
+   "I do not understand why the trees sicken, or what Umbriel did beyond the 4E 48 story. I could find out by asking Weeltul and Vosh-Leera."
+  ],
+  "raw": "1. I am Tarin, a thief freed from the Owing barge by Vosh-Leera, root-herald of Jal-Veesa. She works for the Toh-Reel-Ka, the Secret Warriors of the Xeech-Leel who rule the province. The Hists along the river are sickening, including Jal-Veesa Hist (dry bark, closed scar, cooling egg-pool). I do not know the cause. 2. Ask Vosh-Leera for her second task, in her house in Jal-Veesa. 3. I can talk to her, or first ask Weeltul the tree-minder about sap, scar, eggs and Umbriel. No big choice yet. 4. I do not understand why the trees sicken, or what Umbriel did beyond the 4E 48 story. I could find out by asking Weeltul and Vosh-Leera."
+ },
+ {
+  "stage": 20,
+  "kind": "stage",
+  "ending": null,
+  "title": "The First Dream",
+  "journal": "Vosh-Leera gave me a cup of Jal-Veesa's sap, drawn before its scar closed. Tree-minders drink sap to ask the trees a question, and she wants me to ask where the sickness is. I'm to drink it here, in front of her.",
+  "objectives": [
+   "Drink the cup of sap in front of Vosh-Leera. (marker: Vosh-Leera)"
+  ],
+  "plan": {
+   "going": "Sap drunk brings visions the trees send; Vosh-Leera wants me to ask the trees where the sickness is.",
+   "next": "Drink the cup in front of her, by telling her I will.",
+   "ways": "One way."
+  },
+  "answers": [
+   "Vosh-Leera gave me a cup of Jal-Veesa sap, drawn before the scar closed. Trees are joined at the root, so drinking it lets me ask where the sickness is and see what the trees show.",
+   "Drink the cup here in front of Vosh-Leera, then tell her everything I see.",
+   "Drink it now, or first ask Weeltul more questions. I see no other choice yet.",
+   "I do not know what the vision will be or if it is safe. I have the Hist blessing against poison. I could find out by drinking it."
+  ],
+  "raw": "1. Vosh-Leera gave me a cup of Jal-Veesa sap, drawn before the scar closed. Trees are joined at the root, so drinking it lets me ask where the sickness is and see what the trees show. 2. Drink the cup here in front of Vosh-Leera, then tell her everything I see. 3. Drink it now, or first ask Weeltul more questions. I see no other choice yet. 4. I do not know what the vision will be or if it is safe. I have the Hist blessing against poison. I could find out by drinking it."
+ },
+ {
+  "stage": 30,
+  "kind": "stage",
+  "ending": null,
+  "title": "The First Dream",
+  "journal": "I drank the sap and the world went black. I saw a young Hist among stilt huts beside a woven weir, and a reed hide beside a lone dead tree. I'm to tell Vosh-Leera what I saw.",
+  "objectives": [
+   "Tell Vosh-Leera what you saw. (marker: Vosh-Leera)"
+  ],
+  "plan": {
+   "going": "The sap showed me a young Hist by a woven weir among stilt huts, and a reed hide by a lone dead tree.",
+   "next": "Tell Vosh-Leera what I saw, one thing at a time.",
+   "ways": "One way."
+  },
+  "answers": [
+   "I drank the sap and saw a young grey Hist among pale stilt huts, a woven weir across a creek, and west of the weir a reed hide beside a lone dead tree with clay jars stacked in its shade. Presumably this shows where the sickness is.",
+   "Tell Vosh-Leera what I saw, here at Jal-Veesa.",
+   "Tell her everything, or hold something back. I mean to tell her all.",
+   "I do not know where this place is, what the hide and jars mean, or whether the dead tree is the cause. Vosh-Leera may know."
+  ],
+  "raw": "1. I drank the sap and saw a young grey Hist among pale stilt huts, a woven weir across a creek, and west of the weir a reed hide beside a lone dead tree with clay jars stacked in its shade. Presumably this shows where the sickness is. 2. Tell Vosh-Leera what I saw, here at Jal-Veesa. 3. Tell her everything, or hold something back. I mean to tell her all. 4. I do not know where this place is, what the hide and jars mean, or whether the dead tree is the cause. Vosh-Leera may know."
+ },
+ {
+  "stage": 40,
+  "kind": "stage",
+  "ending": null,
+  "title": "The First Dream",
+  "journal": "Vosh-Leera knew the place from what I told her. It is Teel-Fen Weir, a weir-wardens' camp south of Jal-Veesa, where a young Hist grew from the roots of Jal-Veesa's own. Heem-Jasa minds its tree there. I'm to go to Teel-Fen Weir and speak to Heem-Jasa.",
+  "objectives": [
+   "Speak to Heem-Jasa at Teel-Fen Weir. (marker: Heem-Jasa)"
+  ],
+  "plan": {
+   "going": "The vision showed Teel-Fen Weir, whose young Hist grew from Jal-Veesa's roots.",
+   "next": "Go south to Teel-Fen Weir and speak to Heem-Jasa, its tree-minder.",
+   "ways": "One way."
+  },
+  "answers": [
+   "The vision showed Teel-Fen Weir, a Sedge-Wardens camp south of Jal-Veesa where a young Hist grew from Jal-Veesa roots. Jars by the hide suggest someone is keeping sap there. Vosh-Leera told me to be careful at the hide.",
+   "Go to Teel-Fen Weir and speak to Heem-Jasa, the tree minder, on the platform round the tree.",
+   "Go there directly, or visit Weeltul first. I will go to Heem-Jasa.",
+   "I do not know who keeps the sap in the hide, or if the dead tree matters. Heem-Jasa may tell me."
+  ],
+  "raw": "1. The vision showed Teel-Fen Weir, a Sedge-Wardens camp south of Jal-Veesa where a young Hist grew from Jal-Veesa roots. Jars by the hide suggest someone is keeping sap there. Vosh-Leera told me to be careful at the hide. 2. Go to Teel-Fen Weir and speak to Heem-Jasa, the tree minder, on the platform round the tree. 3. Go there directly, or visit Weeltul first. I will go to Heem-Jasa. 4. I do not know who keeps the sap in the hide, or if the dead tree matters. Heem-Jasa may tell me."
+ },
+ {
+  "stage": 50,
+  "kind": "stage",
+  "ending": null,
+  "title": "The First Dream",
+  "journal": "Heem-Jasa showed me her young tree's scar. It closed three nights ago over a grey paste that none of her people put there. Someone drained the tree and sealed it. Strangers keep jars at the reed hide by the lone dead tree west of the weir, the hide from my vision. I'm to take what they have. I can fight them, shoot them from the reeds, or creep in to the jars unseen.",
+  "objectives": [
+   "Take the note from the reed hide west of Teel-Fen Weir. (marker: Note to the Sap-Takers)"
+  ],
+  "plan": {
+   "going": "The young tree was drained and sealed with a grey paste by people, not by sickness. The strangers at the hide keep jars of sap.",
+   "next": "Go to the reed hide west of the weir and take the note lying with the jars; take a jar too.",
+   "ways": "Fight the three, shoot them from the reeds, or sneak to the west side of the hide and take the note unseen."
+  },
+  "answers": [
+   "Strangers, the Unbound Sap-Takers, are draining Hists of sap and sealing the scars with grey paste. Heem-Jasa saw it three nights ago on her young tree. They have a reed hide west of the weir by a lone dead tree.",
+   "Take the Note to the Sap-Takers from the reed hide west of Teel-Fen Weir.",
+   "Fight the three Sap-Takers, shoot them from the reeds east of the hide, or creep to the open west side where the jars are and take the note unseen.",
+   "I do not know who the Unbound are, who they serve, what the grey paste is, or why they take sap. The note may tell me."
+  ],
+  "raw": "1. Strangers, the Unbound Sap-Takers, are draining Hists of sap and sealing the scars with grey paste. Heem-Jasa saw it three nights ago on her young tree. They have a reed hide west of the weir by a lone dead tree. 2. Take the Note to the Sap-Takers from the reed hide west of Teel-Fen Weir. 3. Fight the three Sap-Takers, shoot them from the reeds east of the hide, or creep to the open west side where the jars are and take the note unseen. 4. I do not know who the Unbound are, who they serve, what the grey paste is, or why they take sap. The note may tell me."
+ },
+ {
+  "stage": 60,
+  "kind": "stage",
+  "ending": null,
+  "title": "The First Dream",
+  "journal": "I took the note from the reed hide. The crew's master orders them to bring their jars to Karsh-Naal Camp, and to seal every scar behind them. I'm to go back to Heem-Jasa on the platform. She will ask whether her tree will live. If I am straight with her, she will teach me alchemy and sell me what she has; if I ease her with a kind word instead, she will not deal with me after.",
+  "objectives": [
+   "Return to Heem-Jasa at Teel-Fen Weir. (marker: Heem-Jasa)"
+  ],
+  "plan": {
+   "going": "The sap-takers drain trees and seal them on someone's orders, and carry the jars to Karsh-Naal Camp.",
+   "next": "Go back to Heem-Jasa, who will ask whether her tree will live.",
+   "ways": "Tell her the truth (it may die: she then trains me in Alchemy and sells to me) or a comfort (it will live: it eases her, but she will not train or trade with me)."
+  },
+  "answers": [
+   "I took the note. The Sap-Takers crew master orders them to bring jars to Karsh-Naal Camp and seal every scar behind them.",
+   "Return to Heem-Jasa on the platform at Teel-Fen Weir. She will ask if her tree will live.",
+   "Be straight with her, and she teaches alchemy and sells to me, or ease her with a kind word, after which she will not deal with me. I mean to comfort her.",
+   "I do not know who the crew master is, where Karsh-Naal Camp is, or why they seal scars."
+  ],
+  "raw": "1. I took the note. The Sap-Takers crew master orders them to bring jars to Karsh-Naal Camp and seal every scar behind them. 2. Return to Heem-Jasa on the platform at Teel-Fen Weir. She will ask if her tree will live. 3. Be straight with her, and she teaches alchemy and sells to me, or ease her with a kind word, after which she will not deal with me. I mean to comfort her. 4. I do not know who the crew master is, where Karsh-Naal Camp is, or why they seal scars."
+ },
+ {
+  "stage": 91,
+  "kind": "ending",
+  "ending": "complete",
+  "title": "The First Dream",
+  "journal": "I told Heem-Jasa her tree will live. She gave me three potions of Cure Poison, but she will not teach me or sell to me: she deals only with those who are straight with her. I'm to go to Karsh-Naal Camp, the Naga camp in the marsh east of Teel-Fen Weir, where the jars are taken.",
+  "objectives": [],
+  "plan": {
+   "going": "I told Heem-Jasa her tree will live. She gave me three potions of Cure Poison, but she will not teach me or sell to me: she deals only with those who are straight with her.",
+   "next": "Go to Karsh-Naal Camp, east of Teel-Fen Weir (MN04 marks it on the map).",
+   "ways": "None in this quest."
+  },
+  "answers": [
+   "The quest is done. I comforted Heem-Jasa that her tree will live; she gave three Cure Poison potions but will not teach or sell to me. Sap-Takers drain Hists and seal scars; their jars go to Karsh-Naal Camp.",
+   "Go to Karsh-Naal Camp, a Naga camp in the marsh east of Teel-Fen Weir.",
+   "Go there and investigate, or tell Vosh-Leera first.",
+   "I do not know who is behind the Sap-Takers or why they take sap, or whether I told Heem-Jasa a lie. I could learn at the camp."
+  ],
+  "raw": "1. The quest is done. I comforted Heem-Jasa that her tree will live; she gave three Cure Poison potions but will not teach or sell to me. Sap-Takers drain Hists and seal scars; their jars go to Karsh-Naal Camp. 2. Go to Karsh-Naal Camp, a Naga camp in the marsh east of Teel-Fen Weir. 3. Go there and investigate, or tell Vosh-Leera first. 4. I do not know who is behind the Sap-Takers or why they take sap, or whether I told Heem-Jasa a lie. I could learn at the camp."
+ }
+]

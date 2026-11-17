@@ -1,0 +1,220 @@
+[
+ {
+  "stage": 10,
+  "kind": "start",
+  "ending": null,
+  "title": "No Name on the Work Roll",
+  "journal": "I woke in the hold of a barge with a gang of strangers. The door is locked. The cook, an Argonian woman named Okeeh, is watching me. I'm to speak to her and find out where I am.",
+  "objectives": [
+   "Speak to Okeeh in the barge's hold. (marker: Okeeh)"
+  ],
+  "plan": {
+   "going": "I am in a locked ship's hold with strangers and know nothing else.",
+   "next": "Speak to Okeeh, the woman watching me.",
+   "ways": "There is one way on, to talk to her. I carry two lockpicks, but the door has no lock I can pick."
+  },
+  "answers": [
+   "I woke in the hold of a barge with a gang of strangers, door locked. I seem to be on a work roll but my name is not on it. I do not know who I work for.",
+   "Speak to Okeeh, the cook, in the barge hold, to find out where I am.",
+   "Talk to Okeeh; others here are Hara-Jeel and Dralin Uveran; the door is locked.",
+   "I do not understand the work roll or why no name; I can ask Okeeh."
+  ],
+  "raw": "1. I woke in the hold of a barge with a gang of strangers, door locked. I seem to be on a work roll but my name is not on it. I do not know who I work for. 2. Speak to Okeeh, the cook, in the barge hold, to find out where I am. 3. Talk to Okeeh; others here are Hara-Jeel and Dralin Uveran; the door is locked. 4. I do not understand the work roll or why no name; I can ask Okeeh."
+ },
+ {
+  "stage": 20,
+  "kind": "stage",
+  "ending": null,
+  "title": "No Name on the Work Roll",
+  "journal": "Okeeh told me where I am. This is the hold of an Owing barge moored at Ashgate Landing, a reed-cutters' camp in Black Marsh, and the gang here are sent to cut reed for the months they owe. I gave her my name. I'm to tell her what my trade was. The door stays locked until the gang-master takes our names.",
+  "objectives": [
+   "Tell Okeeh your trade. (marker: Okeeh)"
+  ],
+  "plan": {
+   "going": "I am in the hold of an Owing barge at Ashgate Landing, a reed-cutters' camp in Black Marsh. The Owing is the marsh's sentence: months of owed work in place of a cell. The door stays locked until the gang-master takes the new gang's names.",
+   "next": "Tell Okeeh what my trade was.",
+   "ways": "Seven answers: warrior, hunter, thief, battlemage, healer, nightblade (each names the five skills it raises by five), or naming my own five skills one by one."
+  },
+  "answers": [
+   "I am in the hold of an Owing barge at Ashgate Landing, a reed-cutters camp in Black Marsh. The gang serves months of work cutting reed instead of a cell. Gang-master Dralin Uveran will take names on his roll.",
+   "Give my name, then tell Okeeh my trade.",
+   "Seven trade topics will be offered; the door stays locked until names are taken.",
+   "I do not fully understand the Owing, Hist, or Jal-Veesa; I can ask Okeeh."
+  ],
+  "raw": "1. I am in the hold of an Owing barge at Ashgate Landing, a reed-cutters camp in Black Marsh. The gang serves months of work cutting reed instead of a cell. Gang-master Dralin Uveran will take names on his roll. 2. Give my name, then tell Okeeh my trade. 3. Seven trade topics will be offered; the door stays locked until names are taken. 4. I do not fully understand the Owing, Hist, or Jal-Veesa; I can ask Okeeh."
+ },
+ {
+  "stage": 37,
+  "kind": "stage",
+  "ending": null,
+  "title": "No Name on the Work Roll",
+  "journal": "I told Okeeh my trade was none of hers to name. She asked me for the five things I do best. I'm to name five skills to her, one at a time.",
+  "objectives": [
+   "Name five skills to Okeeh. (marker: Okeeh)"
+  ],
+  "plan": {
+   "going": "I am naming my own five skills to Okeeh instead of a trade; each one I name rises by five.",
+   "next": "Name five skills to Okeeh, one at a time; when the fifth is named the hold's door opens.",
+   "ways": "Any five of the eighteen skills, each once."
+  },
+  "answers": [
+   "I am on an Owing barge at Ashgate Landing; I refused the preset trades and Okeeh asked me to name my five best skills, each gets a bit easier by five.",
+   "Name five skills to Okeeh, one at a time, in the hold.",
+   "I can choose any five skills; she will not take the same twice.",
+   "I still do not know what the Owing, a Hist or Jal-Veesa fully mean; Okeeh has topics on them. I do not yet know which skills are valid names."
+  ],
+  "raw": "1. I am on an Owing barge at Ashgate Landing; I refused the preset trades and Okeeh asked me to name my five best skills, each gets a bit easier by five. 2. Name five skills to Okeeh, one at a time, in the hold. 3. I can choose any five skills; she will not take the same twice. 4. I still do not know what the Owing, a Hist or Jal-Veesa fully mean; Okeeh has topics on them. I do not yet know which skills are valid names."
+ },
+ {
+  "stage": 115,
+  "kind": "stage",
+  "ending": null,
+  "title": "No Name on the Work Roll",
+  "journal": "I named Sneak to Okeeh as one of my five. I'm to name the rest.",
+  "objectives": [
+   "Name five skills to Okeeh. (marker: Okeeh)"
+  ],
+  "plan": {
+   "going": "I am naming my own five skills to Okeeh instead of a trade; each one I name rises by five.",
+   "next": "Name five skills to Okeeh, one at a time; when the fifth is named the hold's door opens.",
+   "ways": "Any five of the eighteen skills, each once."
+  },
+  "answers": [
+   "I named Sneak to Okeeh and it rose by five. Four more to name; at the fifth the hold door bar lifts.",
+   "Name four more skills to Okeeh.",
+   "Any other skills from her list.",
+   "Nothing new that I do not understand beyond the Owing, Hist, Jal-Veesa."
+  ],
+  "raw": "1. I named Sneak to Okeeh and it rose by five. Four more to name; at the fifth the hold door bar lifts. 2. Name four more skills to Okeeh. 3. Any other skills from her list. 4. Nothing new that I do not understand beyond the Owing, Hist, Jal-Veesa."
+ },
+ {
+  "stage": 116,
+  "kind": "stage",
+  "ending": null,
+  "title": "No Name on the Work Roll",
+  "journal": "I named Lockpicking to Okeeh as one of my five. I'm to name the rest.",
+  "objectives": [
+   "Name five skills to Okeeh. (marker: Okeeh)"
+  ],
+  "plan": {
+   "going": "I am naming my own five skills to Okeeh instead of a trade; each one I name rises by five.",
+   "next": "Name five skills to Okeeh, one at a time; when the fifth is named the hold's door opens.",
+   "ways": "Any five of the eighteen skills, each once."
+  },
+  "answers": [
+   "Named Sneak and Lockpicking; both rose by five.",
+   "Name three more skills to Okeeh.",
+   "Choose from the remaining skills.",
+   "Nothing new."
+  ],
+  "raw": "1. Named Sneak and Lockpicking; both rose by five. 2. Name three more skills to Okeeh. 3. Choose from the remaining skills. 4. Nothing new."
+ },
+ {
+  "stage": 103,
+  "kind": "stage",
+  "ending": null,
+  "title": "No Name on the Work Roll",
+  "journal": "I named Archery to Okeeh as one of my five. I'm to name the rest.",
+  "objectives": [
+   "Name five skills to Okeeh. (marker: Okeeh)"
+  ],
+  "plan": {
+   "going": "I am naming my own five skills to Okeeh instead of a trade; each one I name rises by five.",
+   "next": "Name five skills to Okeeh, one at a time; when the fifth is named the hold's door opens.",
+   "ways": "Any five of the eighteen skills, each once."
+  },
+  "answers": [
+   "Named Sneak, Lockpicking, Archery; each up five.",
+   "Name two more skills to Okeeh.",
+   "Choose from remaining skills.",
+   "Nothing new."
+  ],
+  "raw": "1. Named Sneak, Lockpicking, Archery; each up five. 2. Name two more skills to Okeeh. 3. Choose from remaining skills. 4. Nothing new."
+ },
+ {
+  "stage": 101,
+  "kind": "stage",
+  "ending": null,
+  "title": "No Name on the Work Roll",
+  "journal": "I named One-Handed to Okeeh as one of my five. I'm to name the rest.",
+  "objectives": [
+   "Name five skills to Okeeh. (marker: Okeeh)"
+  ],
+  "plan": {
+   "going": "I am naming my own five skills to Okeeh instead of a trade; each one I name rises by five.",
+   "next": "Name five skills to Okeeh, one at a time; when the fifth is named the hold's door opens.",
+   "ways": "Any five of the eighteen skills, each once."
+  },
+  "answers": [
+   "Four skills named so far: Sneak, Lockpicking, Archery, One-Handed.",
+   "Name one more skill to Okeeh.",
+   "Choose from the remaining skills.",
+   "Nothing new."
+  ],
+  "raw": "1. Four skills named so far: Sneak, Lockpicking, Archery, One-Handed. 2. Name one more skill to Okeeh. 3. Choose from the remaining skills. 4. Nothing new."
+ },
+ {
+  "stage": 106,
+  "kind": "stage",
+  "ending": null,
+  "title": "No Name on the Work Roll",
+  "journal": "I named Light Armor to Okeeh as one of my five. I'm to name the rest.",
+  "objectives": [
+   "Name five skills to Okeeh. (marker: Okeeh)"
+  ],
+  "plan": {
+   "going": "I am naming my own five skills to Okeeh instead of a trade; each one I name rises by five.",
+   "next": "Name five skills to Okeeh, one at a time; when the fifth is named the hold's door opens.",
+   "ways": "Any five of the eighteen skills, each once."
+  },
+  "answers": [
+   "I named all five skills: Sneak, Lockpicking, Archery, One-Handed, Light Armor. The hold door bar should lift.",
+   "Look around and leave the hold, then meet the gang-master Dralin Uveran who takes names on his roll.",
+   "Go out the door, talk to Dralin, Hara-Jeel.",
+   "Still unsure about the Owing, Hist, Jal-Veesa, and why my name might not be on the roll."
+  ],
+  "raw": "1. I named all five skills: Sneak, Lockpicking, Archery, One-Handed, Light Armor. The hold door bar should lift. 2. Look around and leave the hold, then meet the gang-master Dralin Uveran who takes names on his roll. 3. Go out the door, talk to Dralin, Hara-Jeel. 4. Still unsure about the Owing, Hist, Jal-Veesa, and why my name might not be on the roll."
+ },
+ {
+  "stage": 40,
+  "kind": "stage",
+  "ending": null,
+  "title": "No Name on the Work Roll",
+  "journal": "I named my five skills to Okeeh. Someone has unbarred the hold's door from outside. I'm to go out onto the landing.",
+  "objectives": [
+   "Go out onto the landing. (marker: Door to Barge Hold)"
+  ],
+  "plan": {
+   "going": "My trade is told and the hold's door is open. Someone on the landing must have opened it.",
+   "next": "Go out through the door onto the landing.",
+   "ways": "One way, through the door."
+  },
+  "answers": [
+   "I named my five skills and someone unbarred the hold door from outside.",
+   "Go out onto the landing through the Door to Barge Hold.",
+   "Use the door; or talk more to Okeeh first.",
+   "Still do not know the Owing, Hist, Jal-Veesa in detail; Okeeh has topics."
+  ],
+  "raw": "1. I named my five skills and someone unbarred the hold door from outside. 2. Go out onto the landing through the Door to Barge Hold. 3. Use the door; or talk more to Okeeh first. 4. Still do not know the Owing, Hist, Jal-Veesa in detail; Okeeh has topics."
+ },
+ {
+  "stage": 90,
+  "kind": "ending",
+  "ending": "complete",
+  "title": "No Name on the Work Roll",
+  "journal": "Dralin Uveran, the Dunmer gang-master of Ashgate Landing, met me on the landing. My name was struck from his roll this morning, on an order brought by Vosh-Leera, the root-herald of Jal-Veesa, so I owe no months. He does not know why she wants me, and he is sour about it. I'm to go to Vosh-Leera's house in Jal-Veesa, east up the road. On the way, at Reed-Sill Weir, the town's tree-minder wants Sithis' beard, a grey moss that hangs over the creek below the weir.",
+  "objectives": [],
+  "plan": {
+   "going": "I am free of the Owing: Vosh-Leera, root-herald of Jal-Veesa, had my name struck from the roll. I do not know why.",
+   "next": "Go east up the road to Vosh-Leera's House in Jal-Veesa; on the way, pick Sithis' beard below Reed-Sill Weir for the town's tree-minder.",
+   "ways": "The moss is a favour on the road; Vosh-Leera is where the answers are."
+  },
+  "answers": [
+   "My name was struck from the Owing roll this morning on an order from Vosh-Leera, root-herald of Jal-Veesa, so I owe no months. She wants me at her house in Jal-Veesa, east up the road; nobody knows why.",
+   "Go to Vosh-Leera house in Jal-Veesa; optionally gather Sithis beard moss at Reed-Sill Weir on the way for the tree-minder.",
+   "Go straight to Jal-Veesa, or fetch the moss first, minding crocodiles.",
+   "I do not know why Vosh-Leera wants me, who my friends in high places are, or what a Hist is."
+  ],
+  "raw": "1. My name was struck from the Owing roll this morning on an order from Vosh-Leera, root-herald of Jal-Veesa, so I owe no months. She wants me at her house in Jal-Veesa, east up the road; nobody knows why. 2. Go to Vosh-Leera house in Jal-Veesa; optionally gather Sithis beard moss at Reed-Sill Weir on the way for the tree-minder. 3. Go straight to Jal-Veesa, or fetch the moss first, minding crocodiles. 4. I do not know why Vosh-Leera wants me, who my friends in high places are, or what a Hist is."
+ }
+]

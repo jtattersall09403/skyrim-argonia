@@ -557,7 +557,7 @@ stages:
   place: jal-veesa
   journal: text.journal.mn04.90
   journalText: 'Weeltul told me how the rootworm works: a great worm that swims the roots between the trees'' pools, and
-    she calls it for travellers at Jal-Veesa''s pool. The fare to Helstrom is twenty-five gold, paid to her.'
+    she calls it for travellers at Jal-Veesa''s pool. The fare to Helstrom is twenty-five gold, paid to her. I'm to pay her the fare, ride to Helstrom and find Nesh-Deeka's House there.'
   learns:
   - fact.mn04.rootworm
   ending: complete

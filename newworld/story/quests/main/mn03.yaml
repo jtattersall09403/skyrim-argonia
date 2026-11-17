@@ -541,9 +541,9 @@ stages:
   place: outpost-m6-m66
   journal: text.journal.mn03.50
   journalText: Heem-Jasa showed me her young tree's scar. It closed three nights ago over a grey paste that none of her
-    people put there. Someone drained the tree and sealed it. Strangers keep jars at the reed hide by the lone dead tree
-    west of the weir, the hide from my vision. I'm to take what they have. I can fight them, shoot them from the reeds,
-    or creep in to the jars unseen.
+    people put there. Someone drained the tree and sealed it. Strangers who call themselves the Unbound keep jars at the
+    reed hide by the lone dead tree west of the weir, the hide from my vision. I'm to take what they have. I can fight them,
+    shoot them from the reeds, or creep in to the jars unseen.
   objectives:
   - id: hide
     text: text.objective.mn03.hide
@@ -611,7 +611,8 @@ stages:
   journal: text.journal.mn03.60
   journalText: I took the note from the reed hide. The crew's master orders them to bring their jars to Karsh-Naal Camp,
     and to seal every scar behind them. I'm to go back to Heem-Jasa on the platform. She will ask whether her tree will
-    live; she teaches and trades only with those who are straight with her.
+    live. If I am straight with her, she will teach me alchemy and sell me what she has; if I ease her with a kind word
+    instead, she will not deal with me after.
   objectives:
   - id: back
     text: text.objective.mn03.back
@@ -643,8 +644,8 @@ stages:
   information:
     going: The sap-takers drain trees and seal them on someone's orders, and carry the jars to Karsh-Naal Camp.
     next: Go back to Heem-Jasa, who will ask whether her tree will live.
-    ways: 'Tell her the truth (it may die: she then trains me in Alchemy and sells to me) or a comfort (it will live: she
-      gives me three potions of Cure Poison now, but will not train or trade with me).'
+    ways: 'Tell her the truth (it may die: she then trains me in Alchemy and sells to me) or a comfort (it will live: it
+      eases her, but she will not train or trade with me).'
     carriers:
     - know: the note's orders
       by:
@@ -664,24 +665,26 @@ stages:
 - id: 90
   place: outpost-m6-m66
   journal: text.journal.mn03.90
-  journalText: I told Heem-Jasa the truth, that her tree may die. She thanked me for not lying, and offered to teach me
-    alchemy and sell me what she has. The note names Karsh-Naal Camp.
+  journalText: I told Heem-Jasa the truth, that her tree may die. She thanked me for not lying, and will teach me alchemy
+    and sell me sap, fungus and eggshells. I'm to go to Karsh-Naal Camp, the Naga camp in the marsh east of Teel-Fen Weir,
+    where the jars are taken.
   ending: complete
   endingId: e-truth
   information:
-    going: I told Heem-Jasa the truth, that her tree may die. She thanked me for not lying, and offered to teach me alchemy
-      and sell me what she has. The note names Karsh-Naal Camp.
-    next: 'Nothing: this quest is over.'
-    ways: None.
+    going: I told Heem-Jasa the truth, that her tree may die. She thanked me for not lying, and will teach me alchemy and
+      sell me sap, fungus and eggshells.
+    next: Go to Karsh-Naal Camp, east of Teel-Fen Weir (MN04 marks it on the map).
+    ways: None in this quest.
     carriers:
-    - know: what happened
+    - know: what happened and where next
       by:
       - journal
 - id: 91
   place: outpost-m6-m66
   journal: text.journal.mn03.91
-  journalText: I told Heem-Jasa her tree will live. She gave me three potions of Cure Poison. She trades and teaches only
-    with kin and with those who are straight with her. The note names Karsh-Naal Camp.
+  journalText: 'I told Heem-Jasa her tree will live. She gave me three potions of Cure Poison, but she will not teach me
+    or sell to me: she deals only with those who are straight with her. I''m to go to Karsh-Naal Camp, the Naga camp in
+    the marsh east of Teel-Fen Weir, where the jars are taken.'
   onEnter:
   - giveItem:
     - item.potion-cure-poison
@@ -689,26 +692,27 @@ stages:
   ending: complete
   endingId: e-comfort
   information:
-    going: I told Heem-Jasa her tree will live. She gave me three potions of Cure Poison. She trades and teaches only with
-      kin and with those who are straight with her. The note names Karsh-Naal Camp.
-    next: 'Nothing: this quest is over.'
-    ways: None.
+    going: 'I told Heem-Jasa her tree will live. She gave me three potions of Cure Poison, but she will not teach me or
+      sell to me: she deals only with those who are straight with her.'
+    next: Go to Karsh-Naal Camp, east of Teel-Fen Weir (MN04 marks it on the map).
+    ways: None in this quest.
     carriers:
-    - know: what happened
+    - know: what happened and where next
       by:
       - journal
 - id: 92
   place: outpost-m6-m66
   journal: text.journal.mn03.92
-  journalText: Heem-Jasa is dead, and her young tree has no minder now. The note from the hide names Karsh-Naal Camp.
+  journalText: Heem-Jasa is dead, and her young tree has no minder now. I'm to go to Karsh-Naal Camp, the Naga camp in the
+    marsh east of Teel-Fen Weir, where the jars are taken.
   ending: complete
   endingId: e-no-minder
   information:
-    going: Heem-Jasa is dead, and her young tree has no minder now. The note from the hide names Karsh-Naal Camp.
-    next: 'Nothing: this quest is over.'
-    ways: None.
+    going: Heem-Jasa is dead, and her young tree has no minder now.
+    next: Go to Karsh-Naal Camp, east of Teel-Fen Weir (MN04 marks it on the map).
+    ways: None in this quest.
     carriers:
-    - know: what happened
+    - know: what happened and where next
       by:
       - journal
 - id: 95
@@ -772,6 +776,10 @@ terms:
   meets: 60, read the note
   told: 'journal 60 and topic.mn03-heem-karsh: "a Naga camp east of here in the marsh"'
   ask: topic.mn03-heem-karsh
+- term: the Unbound
+  meets: 50 look
+  told: 'topic.mn03-heem-scar: "people with no tree and no kin to answer to"'
+  ask: topic.mn03-heem-scar
 topics:
 - id: topic.mn03-task
   label: You said you had a second task for me.
@@ -870,9 +878,11 @@ topics:
   intent: 'Heem-Jasa. Tells: she shows the player the young tree''s scar, low on the trunk on the platform side: three nights
     ago it closed over a grey paste, and none of her people put it there. Something was pressed into the cut. The tree was
     drained, then sealed. Strangers come and go at the reed hide by the lone dead tree west of the weir; the wardens keep
-    away from them. There are three. The player can go at them, shoot them from the reeds east of the hide, or creep round
-    to the hide''s open west side where they stack their jars. She teaches alchemy and sells sap, fungus and eggshells,
-    but only to kin and to those who are straight with her. Does: sets stage 50. Checks: nothing.'
+    away from them. There are three. A warden heard one call the others "Unbound"; Heem-Jasa takes it to mean people with
+    no tree and no kin to answer to, and knows nothing more of them. The player can go at them, shoot them from the reeds
+    east of the hide, or creep round to the hide''s open west side where they stack their jars. She teaches alchemy and
+    sells sap, fungus and eggshells, but only to kin and to those who are straight with her. Does: sets stage 50. Checks:
+    nothing.'
   uses:
   - fact.mn03.paste
   - fact.mn03.hide

@@ -381,8 +381,9 @@ stages:
 - id: 20
   place: jal-veesa
   journal: text.journal.mn02.20
-  journalText: I picked Sithis' beard below Reed-Sill Weir. I'm to bring it to the tree-minder at the Hist pool in the middle
-    of Jal-Veesa, east along the road.
+  journalText: 'I picked Sithis'' beard below Reed-Sill Weir. I''m to bring it to Weeltul, the tree-minder of Jal-Veesa,
+    at the Hist pool in the middle of the town, east along the road. The Hist is the town''s great tree, a thinking tree:
+    the tall grey one standing in the pool, with the stilt houses round it.'
   objectives:
   - id: give
     text: text.objective.mn02.give
@@ -425,6 +426,7 @@ stages:
       - journal
       - objective
       - marker:npc.mn.jal-veesa-minder
+      - name:npc.mn.jal-veesa-minder
     - know: how to know the Hist on sight
       by:
       - journal
@@ -501,7 +503,8 @@ stages:
   journalText: 'Vosh-Leera told me who I work for now: the Toh-Reel-Ka, the "Secret Warriors" of the Xeech-Leel, who rule
     the province. They were made after Umbriel, when the An-Xileel used Lilmoth''s mad tree to call a flying city down on
     the marsh, so that no tree and nobody allied with a tree can do it again. They free strangers like me because we come
-    cheap and have no kin. She paid me fifty gold and has a second task for me at her house.'
+    cheap and have no kin. She paid me fifty gold. She has a second task for me, and I''m to ask her for it here in her
+    house in Jal-Veesa.'
   learns:
   - fact.mn02.order
   - fact.mn02.why-me
