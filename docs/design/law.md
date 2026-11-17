@@ -21,7 +21,7 @@ Read from the place's `held_by`, its disposition and its kind:
 1. **None**: a hostile or abandoned place, or one with no people. It has no guards to arrest anyone, and the player
    meets its fight.
 2. **Foreign**: `held_by` names an office inherited from the Empire. That is either the Archwardens, who hold the
-   old Imperial forts, keeps, posts and lights in their own name, or a city governed from an Imperial building
+   old Imperial forts, keeps, posts and lights in the name of the ruling Xeech-Leel, or a city governed from an Imperial building
    still standing (Gideon's Governor's Mansion and courthouse, Archon's East Empire Company halls, Soulrest's
    ex-Imperial civil office). A fort, keep or city serves its sentences in its own cell. The keeper of a post or
    light without one sends the prisoner to the same keeper's nearest fort or keep.

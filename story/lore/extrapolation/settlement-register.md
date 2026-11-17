@@ -47,8 +47,8 @@ line for placement:
 
 | Settlement | Class | Runs it | Lives on | Hist | Danger |
 |---|---|---|---|---|---|
-| **Helstrom** | M5 | Assembly of interior naheesh and tree-minders; a dangerous tribal guard | Receives and redistributes; pilgrimage and Root Talk traffic | Inside the interior **grove** | City D0, approaches D5 |
-| **Stormhold** | M5 | Vicecanons (plural); the state's working border offices | River trade to Morrowind and Alten Corimont; crystal trade; causeway traffic | Town-square tree in a pond | D0–D2; D3 in the Silyanorn tunnels |
+| **Helstrom** | M5 | Assembly of interior naheesh and tree-minders; a dangerous tribal guard; the ruling Xeech-Leel's seat | Receives and redistributes; pilgrimage and Root Talk traffic | Inside the interior **grove** | City D0, approaches D5 |
+| **Stormhold** | M5 | Vicecanons (plural); the Xeech-Leel's working border offices | River trade to Morrowind and Alten Corimont; crystal trade; causeway traffic | Town-square tree in a pond | D0–D2; D3 in the Silyanorn tunnels |
 | **Gideon** | M5 | Civic council in the old Governor's Mansion; the courthouse still sits | Blackwood Road (seasonal), Leyawiin trade, hunting, herbs, pottery, the rootworm terminus | Disputed **cutting** in the city gardens | D0–D2 |
 | **Lilmoth** | M5 (rebuilt smaller) | Merchant council, reconstituted | Bay trade, lighters, salvage, rice from Hereguard | **Third tree** — feared and tended, vigil-kept | D0–D2; drowned quarter D3 |
 | **Thorn** | M5 | Vicecanon(s) and the disputed field-owners | Saltrice, the Tear road, border tolls, smuggling | Field-edge tree outside the walls | D0–D3 |
@@ -226,7 +226,7 @@ Empire would have stripped first.
 State in 4E 201: **held, but not by the Empire.** `EXTRAPOLATED` — the least
 inventive outcome for an intact stone fort on the province's only land road,
 abandoned 200 years ago, is that **somebody moved in and started charging**. Give
-it to the state as its western customs post if the owner wants the border legible,
+it to the Xeech-Leel's Archwardens as their western customs post if the owner wants the border legible,
 or to a toll-taking outfit with a claim if they want it murkier. Either way the
 Imperial eagle is still over the gate because nobody bothered to chisel it off,
 which is the most eloquent thing about the place.

@@ -17,8 +17,8 @@
 **Build implications:** underwrites the quest plan's political frame (party ≠
 monolith; strongest in Lilmoth; uncertainty of 4E 201 constitutional position
 is canonical space we use). Lukiul tension feeds the League of Open Water line
-and mixed-city demographics. The Veiled Reed is our project-original organ of
-this movement.
+and mixed-city demographics. The party fell after Umbriel; its successors in
+power are the Xeech-Leel, who rose by being its opposite (below).
 
 **Confidence:** CANON_FIXED (formation, independence, nativism, Lukiul term);
 4E 201 detail LORE_INFERRED.
@@ -75,29 +75,27 @@ selected, whether cities answer to them, what they call their law — is ours.
 | 4E 48 | The Umbriel disaster, self-inflicted, which destroyed their own seat of power and their own city tree's people. |
 | after 4E 48 | Lore:An-Xileel: "The status of the An-Xileel following the Umbriel Crisis is **unknown**." Lore:Accession War: "This disaster appears to have **broken the hold the An-Xileel held over the Argonian people**, and the mysterious party **receives no mention in the following centuries**." |
 
-### The An-Xileel in 4E 201 — `OWNER DECISION Q1, BINDING`
+### The An-Xileel in 4E 201 — `OWNER RULING 2026-11-17, BINDING`
 
 Our production era is **4E 201 — 153 years after the last mention of the party.**
-Owner decision of 2026-08-24: **the An-Xileel as a movement broke at 4E 48. What
-governs Argonia is a successor administration that inherited the party's offices,
-titles and name, but not its mandate.**
+Owner ruling of 2026-11-17: **the An-Xileel fell after Umbriel. No party of that
+name survived having called it down. Argonia is ruled by the Xeech-Leel, "the People
+of the New Beginning", a new party that took power largely by being not the
+An-Xileel.**
 
-- **Inherited**: the office of **Archwarden**; the ruling council still styled
-  **the Organism**; a customs regime at the recognised ports; the frontier screen
-  facing Morrowind. All of these are canon terms (Lore:Kingdom of Black Marsh).
-- **Not inherited**: the mandate. Its writ is real at the borders and the ports
-  and thin everywhere else, and its legitimacy is openly contested — most sharply
-  in **Gideon** and **Lilmoth**, the two cities its predecessor's weapon killed.
-- **What it is called**: officially still *the An-Xileel*; in ordinary speech,
-  *the Archwardens*, *the Organism*, or "the Wardens". Who says "An-Xileel" aloud,
-  and in what tone, places them politically in one word.
-- **Its rhetoric outlived its base**: it still speaks of the **Wild Ones** as its
-  constituency — a category the An-Xileel themselves named and claimed, and which
-  never agreed to be spoken for. See
-  [topics/guilds-and-orders.md](topics/guilds-and-orders.md) §5.
-- **Its internal contradiction** is now historical fact rather than argument: an
-  administration that exists to defend Argonian sovereignty, founded by a movement
-  that used that sovereignty to try to exterminate a section of its own people.
+- **Gone**: the party, its name, its mandate, its council (**the Organism**) and its
+  seat at Lilmoth. No place or person in 4E 201 serves the An-Xileel.
+- **Kept by the Xeech-Leel**: the office of **Archwarden** (canon: Qajalil, above),
+  now their wardens of the forts, roads, crossings and tolls; the customs at the
+  recognised ports; the frontier screen facing Morrowind.
+- **The name now**: a curse. To call a Xeech-Leel officer "An-Xileel" is the gravest
+  insult in the province, and the young make a joke of it.
+- **The irony**: to make sure no tree, and no one allied with a tree, brings another
+  Umbriel, the Xeech-Leel made the **Toh-Reel-Ka**, their Secret Warriors, who keep
+  dreamers fed on sap in fort cellars. By those means the party is becoming what the
+  An-Xileel were.
+- **The Wild Ones**: the An-Xileel's word for the tribes they claimed; the tribes never
+  agreed to it. See [topics/guilds-and-orders.md](topics/guilds-and-orders.md) §5.
 
 Developed in
 [extrapolation/argonia-4e201-state.md](extrapolation/argonia-4e201-state.md) §1–2,

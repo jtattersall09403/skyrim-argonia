@@ -10,13 +10,16 @@ overrides a cited dossier fact.
 
 **Owner decisions of 2026-08-24 are applied and binding** throughout — see the
 decisions block at the foot of [owner-questions.md](owner-questions.md). In
-summary: the An-Xileel are a **successor state** (Q1); the Hist speak through an
+summary: the Hist speak through an
 occasional **great Root Talk convocation at Helstrom** (Q2); **Blackrose Prison is
 a ruin reoccupied by the Blackguards' heirs** (Q3); **Lilmoth is rebuilt but not
 restored** (Q4); the province's register is **melancholy and dignified, horror
 kept local**, and the trauma of 4E 48 sits at the emotional distance our own 2026
 has from the First World War (Q5, with the owner's addition). The last of these
-is developed in **§9**, which binds every dossier and every quest.
+is developed in **§9**, which binds every dossier and every quest. **Owner ruling of
+2026-11-17**, binding: the An-Xileel fell after Umbriel; the province is ruled by
+the **Xeech-Leel**, whose elite intelligence and security organisation is the
+**Toh-Reel-Ka** (§1, §2, §10, §11).
 
 ---
 
@@ -27,8 +30,9 @@ dangerous country that has spent a century and a half recovering from a disaster
 it inflicted on itself. It is not an empire, not a rising power, and not a
 colony. It is a patchwork of tribal territories, river-ports and city polities
 that share a language, a religion of change, and a memory of being purged by
-their own government — bound loosely by a state whose legitimacy is contested and
-whose reach ends where the water gets deep. Its borders are closed by geography
+their own government — bound loosely by a state that came to power promising never
+to be that government, whose reach ends where the water gets deep, and whose secret
+arm reaches further than anyone says aloud. Its borders are closed by geography
 rather than by soldiers. Foreigners are tolerated at the coasts, licensed in the
 cities, and dead in the interior. **Reasoning**: every dated 4E 201 fact canon
 gives about Argonia is a fact about withdrawal (thinning frontier patrols, a
@@ -57,43 +61,108 @@ singular nation" (Lore:Black Marsh). So:
   you something about their politics. That is free characterisation and it is
   canon-true.
 
-### The state — the An-Xileel successor administration `OWNER DECISION Q1`
+### The state — the Xeech-Leel `OWNER RULING 2026-11-17`
 
-**Binding**: the An-Xileel as a *movement* broke at 4E 48. What governs Argonia in
-4E 201 is a **successor administration that inherited the party's offices, titles
-and name** — **Archwardens**, the ruling council still styled **the Organism**, a
-customs regime at the recognised ports, and the frontier screen facing Morrowind
-— **but not its mandate**. Its legitimacy is contested everywhere and openly
-denied in **Gideon** and **Lilmoth**, the two cities its predecessor's weapon
-killed. Its reach ends where the water gets deep.
+**Binding**: the An-Xileel did not survive Umbriel. They called it down in 4E 48
+through Lilmoth's mad Hist (`topics/umbriel.md:26-29`), and canon says the disaster
+"broke the hold the An-Xileel held over the Argonian people" and that the party
+"receives no mention in the following centuries" (Lore:Accession War;
+`topics/history-timeline.md:89`). No party bearing that name could survive having
+killed Lilmoth and Gideon's Lukiul. What governs Argonia in 4E 201 is the
+**Xeech-Leel**, the People of the New Beginning: a new party that took power in the
+generations after 4E 48 largely by being *not* the An-Xileel.
 
-`EXTRAPOLATED` — **There is a state, and it is thinner than it claims to be.**
-Reasoning: (a) canon requires *something* to have kept the Empire out of southern
-Morrowind since 4E 6 and to have maintained "occasional patrols" on that frontier
-in 4E 201 — patrols imply a payer; (b) canon requires *something* to have
+**The name** `EXTRAPOLATED`, built from attested Jel. *Xeech* is "nut or seed",
+the name of the second month (UESP Lore:Jel, from *The Sharper Tongue: A Jel Primer*
+and *The Seasons of the Argonians*; `topics/sky-moons-calendar.md:21`): the planting
+month, "the hiding time", when bulbs are buried and elders pass their knowledge on
+(`topics/birthsigns.md:34`, `topics/material-culture.md:207`). *Leel* is "tribe,
+people" (UESP Lore:Jel, as in *Saxhleel*, *Tum-Taleel*). The compound *Xeech-Leel* is
+**our coinage** from those two words, and "the New Beginning" is our rendering of the
+planting month, not a canon gloss. The name carries its own shadow, which Argonians
+hear: Xeech is also the **First Mourning**, because a planted nut is lost forever
+(`topics/material-culture.md:207`).
+
+**How they rose** `EXTRAPOLATED`. The An-Xileel who hid to wait out the slaughter came
+back to a province that knew what they had done. The Organism, their council, died
+with its seat at Lilmoth. Their claim to speak for the "Wild Ones" was refused by the
+tribes it named. Out of the survivors of Umbriel's corridor (the families who
+sheltered at the Refuge of Deepmire, §9), the delta and Murkmire tribes, and the
+northern cities came a party whose whole programme was the An-Xileel's opposite:
+
+- **No tree speaks to one faction alone.** The great Root Talk convocation at
+  Helstrom (§2.2) is the Xeech-Leel's founding promise, and their seat is there, not
+  at Lilmoth.
+- **No Argonian is purged for how they live.** *Lukiul* is not used in their offices.
+  The licensed foreigner is welcome at the ports.
+- **Nothing is hidden from the people.** The An-Xileel ruled from a closed council
+  that sang to one tree in secret; the Xeech-Leel govern in the open.
+
+They kept what the province could not do without: the forts and the wardens who hold
+them, the customs at the ports and the frontier screen facing Morrowind. They dropped
+the An-Xileel's council, its seat, its name and its mandate.
+
+**What they are becoming** `EXTRAPOLATED`, the irony that binds every story that
+touches them. To keep their first promise, that no tree and no one allied with a tree
+can bring another Umbriel, the Xeech-Leel made the **Toh-Reel-Ka** (§2.5), and the
+Toh-Reel-Ka keep dreamers in fort cellars, fed sap, so that the state hears what
+every tree has seen (§11.2). The party that came to power because one faction had held
+secret communion with one tree now holds, in secret, a communion with all of them. It
+watches tree-minders, removes people, and answers to no one outside itself. By the
+means it uses to prevent the atrocity that is the reason everybody wanted rid of the
+An-Xileel, it is becoming the An-Xileel. Few people know this. Those who suspect it
+say it only to people they trust.
+
+**What it rules** `EXTRAPOLATED`. **There is a state, and it is thinner than it claims
+to be.** Reasoning: (a) canon requires *something* to have kept the Empire out of
+southern Morrowind since 4E 6 and to have maintained "occasional patrols" on that
+frontier in 4E 201 — patrols imply a payer; (b) canon requires *something* to have
 prevented the Empire returning to the province at any point in 150 years, during
 which the Empire fought and lost a Great War; (c) but canon equally requires that
 whatever it is generated **no recorded event for 153 years**, which rules out an
-energetic centralised power.
+energetic centralised power, and is exactly what a party built on not being the
+An-Xileel would want.
 
 The least inventive reading is a **minimal state**: a border force, a customs
-regime at the recognised ports, a claim to speak for the province abroad, and
-almost no writ inland. Everything else is done by cities, tribes and Hist
-communities exactly as it was before.
+regime at the recognised ports, the forts and tolls on the trunk routes, a claim to
+speak for the province abroad, and almost no writ inland. Everything else is done by
+cities, tribes and Hist communities exactly as it was before. Its hidden reach, through
+the Toh-Reel-Ka, is far longer than its open one.
 
-**What it calls itself.** `EXTRAPOLATED` — officially, still **the An-Xileel**:
-states rarely rename themselves after a disaster they would rather not discuss.
-In ordinary speech people use the office titles instead — **the Archwardens**,
-**the Organism** — or simply "the Wardens", which lets a speaker refer to the
-government without invoking the party. That asymmetry is itself characterisation:
-who says "An-Xileel" out loud, and in what tone, places them politically in one
-word. (Canon supplies both titles: Lore:Kingdom of Black Marsh, Lore:An-Xileel.)
+**Its offices**:
+
+- **Archwardens** `CANON_DERIVED`: the office is canon (an Archwarden, Qajalil, served
+  the An-Xileel in 4E 48: Lore:Kingdom of Black Marsh, `an-xileel.md:31-35`). The
+  Xeech-Leel kept the office because the forts still needed holding, and it is now
+  theirs: the wardens who hold the forts, roads, crossings and tolls, the customs at
+  the ports and the frontier screen. Garrisons are drawn from the ex-Archein families
+  (§2.2). In speech, "the Wardens". That the new party kept the old party's wardens is
+  the first thing its critics say.
+- **The council** `EXTRAPOLATED`: the party's council sits at Helstrom. It has no
+  title of its own beyond "the council of the Xeech-Leel"; the Organism is a name of
+  the dead party.
+- **Vicecanons** stay a **city** office (§2.2), chosen by each city in its own way.
+  They deal with the Xeech-Leel; they are not its officers.
+- **The Toh-Reel-Ka**: the party's elite intelligence and security organisation
+  (§2.5).
+
+**What people call it.** Officially *the Xeech-Leel*; in ordinary speech, "the
+Wardens", or "the New Beginning" said flatly or with a smile. Nobody names the
+Toh-Reel-Ka aloud in company. To call a Xeech-Leel officer "An-Xileel" is the gravest
+insult in the province, and the young have begun to make it a joke. Who makes that
+joke, and to whom, places a speaker politically in one word.
+
+**Where it stands** `EXTRAPOLATED`. Its legitimacy is real in the north and the
+interior, where it was born, and thin on the coasts. **Gideon** and **Lilmoth**, the
+two cities the An-Xileel's weapon killed, cheered the fall and keep the Xeech-Leel at
+arm's length: they pay its customs and refuse its wardens inside their walls. They
+are the cities that would be first to see what it is becoming.
 
 ### Where its seat is — `EXTRAPOLATED`
 
 Not Lilmoth. The An-Xileel's council sat at Lilmoth and Lilmoth was destroyed by
-their own weapon; no successor would rebuild the capital on the site of its
-founding catastrophe, and the city tree there has now gone rogue twice.
+their own weapon; a party that rose by being their opposite would never seat itself
+on the site of that catastrophe, and the city tree there has now gone rogue twice.
 Reasoning by elimination against canon's own candidates:
 
 - **Helstrom** is called "the capital" in the Simulacrum, has never been taken,
@@ -104,7 +173,7 @@ Reasoning by elimination against canon's own candidates:
 - **Stormhold** was the Pact capital and invented the Vicecanon office, but it is
   a border city on the Dunmer river.
 
-**Recommended**: the state's formal seat is **Helstrom**; its *working* offices —
+**Binding**: the Xeech-Leel's seat is **Helstrom**; its *working* offices —
 customs, ports, the frontier — are at Stormhold and Archon because that is where
 the work is. A capital nobody can reach is a very Argonian arrangement and it
 matches "the immortal capital" language exactly. This also serves the quest plan,
@@ -173,8 +242,8 @@ Second Empire.** That is the least inventive consequence of 4E 48.
   interior tribes gather. It has no executive power and issues no orders; it is
   where the Hist's alignment becomes audible. A convocation rather than a
   hierarchy is faithful to a people who do not consider themselves a nation, and
-  it is the direct institutional lesson of 4E 48: never again should one tree
-  speak to one faction alone. Placement detail:
+  it is the direct institutional lesson of 4E 48 and the Xeech-Leel's founding
+  promise: never again should one tree speak to one faction alone. Placement detail:
   [../topics/hist-placement.md](../topics/hist-placement.md).
 
 ### 3. Armed force — `EXTRAPOLATED`
@@ -222,6 +291,52 @@ does not have a replacement.** Concretely, in 4E 201:
   tension worth playing.
 - The Dark Brotherhood's Cheydinhal Listener wanted Archon reopened in 4E 187
   `CANON_EXPLICIT`. **Foreign interest in the empty school is live**, and hostile.
+
+### 5. The Toh-Reel-Ka — `OWNER RULING 2026-11-17` + `EXTRAPOLATED`
+
+**What it is.** The Xeech-Leel's elite intelligence and security organisation: the
+Secret Warriors. Its one charge is that **no tree, and no person or group allied with
+a tree, can bring another Umbriel**. It watches the Hist, the tree-minders who speak
+for them, and anyone who seeks a tree's power, and it removes those it judges a danger.
+It answers to the Xeech-Leel's council and to no city, tribe or court.
+
+**The name** `EXTRAPOLATED`, built from attested Jel: *toh*, "secret" (UESP Lore:Jel,
+from Jee-Lar's dialogue in *The Elder Scrolls Online*), the word in *xal-toh*, "sacred
+secret" (UESP Lore:Jel, from Jee-Lar and *The Journal of Margus Derius*); and *reel-ka*,
+"warrior" (UESP Lore:Jel, from *The Sharper Tongue: A Jel Primer*, a book of *The Elder
+Scrolls Online*). The compound is **our coinage**. In Tamrielic mouths, "the Secret
+Warriors".
+
+**How it works.** Through **dreamers** (§11.2): people kept in the cellars of the
+Archwardens' forts, the first and chief at **Fort Chalkmoth**, fed sap and made to tell
+their dreams, so that it sees what any tree has seen. Through **handlers** in quiet
+houses in the cities, who take reports and give no account of how they know what they
+know, and through local people who pass things on without asking what is done with
+them. Its members wear no mark. The Archwardens' garrisons let its people in and ask
+nothing.
+
+**Its ranks**, lowest first. Each is Jel, attested or put together from attested words
+(UESP Lore:Jel), with its Tamrielic rendering:
+
+| Rank | Tamrielic | Grounding |
+|---|---|---|
+| **Voh-Vastei** | Apprentice | attested, "apprentice" |
+| **Toh-Wo** | Secret-Speaker: one who brings secrets in | our coinage from *toh* "secret" and *wo* "speak", on the attested pattern of *nisswo* "nothing-speaker" and *kuhupwo* "mouth-talk" |
+| **Reel-Ka** | Warrior | attested, "warrior"; a full member of the order |
+| **Ka-Deelith** | War-Teacher | attested, "a title for the one responsible for training warriors" |
+| **Toh-Nassa** | Leader of the Secret | our coinage from *toh* and *nassa*, "probably leader" (attested in *raj-nassa*, "elder leader") |
+
+**When.** Founded in the **Void Nights (4E 98–100)**, when the moons vanished and the
+province feared the trees were turning again, as the sworn guard of the Root Talk and
+of Lilmoth's third Hist. Its dreamers' cellars are recent: they began in the years after
+**4E 187**, when the Shadowscale school closed and the province lost its arbiters
+(§2.4). In 4E 201 some of Chalkmoth's dreamers have been in its cellar nine years and
+more.
+
+**The irony it carries** (§1): the order made so that no faction ever again holds secret
+communion with a tree holds a secret communion with all of them. It calls itself the
+guardian of the old ways. What it takes in return is its dreamers' freedom, and in time
+everyone else's.
 
 ---
 
@@ -281,7 +396,7 @@ the quest plan's community priors ([docs/quests/10-political-frame.md](../../../
   assembly of **interior tribes' naheesh and tree-minders** plus the city's own
   offices, which becomes the **great Root Talk convocation** in the month of
   **Hist-Tsoko** and functions by consensus the rest of the year — with the
-  state's formal seat lodged here and largely ignored by it. The "**dangerous city
+  Xeech-Leel's seat lodged here and tolerated by it. The "**dangerous city
   guard**" is
   `CANON_EXPLICIT` and should be a *tribal* levy answerable to the assembly, not
   a professional force: dangerous because it is not accountable to strangers.
@@ -358,9 +473,10 @@ the quest plan's community priors ([docs/quests/10-political-frame.md](../../../
   ruler-less trade port reconstituted one twice before.
 - **People**: Argonian-majority with a working foreign dock population. The quest
   plan's ~80% Argonian is right. Its "large An-Xileel and commercial centre"
-  framing needs correcting under Q1/Q4: Lilmoth is **commercially significant and
-  politically hostile to the successor state**, not one of its strongholds. It was
-  the An-Xileel's seat, and the An-Xileel killed it. See
+  framing needs correcting under Q4: Lilmoth is **commercially significant and
+  wary of the Xeech-Leel**, not one of their strongholds. It was
+  the An-Xileel's seat, and the An-Xileel killed it; it keeps the Xeech-Leel at
+  arm's length and their wardens outside its walls (§1). See
   [quest-plan-deltas.md](quest-plan-deltas.md) D2.
 - **The Hist**: the third tree is **feared and tended anyway** — walled and open,
   a rotating tree-minder's post so no one person ever holds sole communion again,
@@ -623,8 +739,8 @@ binds every dossier, every settlement record and every line of dialogue.
 | **But family stories, verbatim** | Everyone has a great-great-grandparent's account, worn smooth by retelling and probably wrong in detail. The grave-stake tradition means many of those accounts are **physically carved on a post in the mud** and can be read. This is the single best fit between a canon institution and the owner's directive: Argonia's war memorials are its graveyards, and they are *legible*. |
 | **Memorials, and arguments about them** | Every affected settlement has one, and no two agree on what it is for. The most important is at **Deepmire** — "the Refuge", where Murkmire's survivors sheltered while the island passed. Argues with the Nisswo doctrine of letting go, which is the point. |
 | **Place-names carry it** | Quarters, channels and fields named for what happened there or who was lost. The drowned Imperial quarter of Lilmoth has a name nobody uses in front of strangers. |
-| **Politics shaped by it** | The successor state's whole legitimacy problem. Gideon and Lilmoth's hostility. The Lukiul-versus-sovereignty argument. Who is allowed to say "An-Xileel" out loud. |
-| **Institutions visibly bent around the wound** | The clearest tells: Lilmoth's **rotating tree-minder's post and two-tender rule** (nobody holds sole communion again); the **great Root Talk convocation** at Helstrom (no tree speaks to one faction alone); the state's inability to use the party's own name comfortably. Each is a rule that only makes sense if you know what it was written after. |
+| **Politics shaped by it** | The Xeech-Leel's whole claim to rule: they are not the An-Xileel. Gideon and Lilmoth's wariness. The Lukiul-versus-sovereignty argument. Who calls whom "An-Xileel", and whether as a joke. |
+| **Institutions visibly bent around the wound** | The clearest tells: Lilmoth's **rotating tree-minder's post and two-tender rule** (nobody holds sole communion again); the **great Root Talk convocation** at Helstrom (no tree speaks to one faction alone); a ruling party named for a new beginning, whose worst insult is the old party's name. Each is a rule that only makes sense if you know what it was written after. |
 | **Not raw grief** | It is *history* now, and history is argued about, politicised, taught badly, exploited and occasionally forgotten by the young. An NPC should be able to be **bored** by it. That is what 153 years does, and playing it that way is what makes the places where it *is* still raw land properly. |
 
 ### How it should not be played
@@ -682,13 +798,16 @@ their dates and holders in one place. UESP pages are cited as `Lore:<Name>` (rea
 | 4E 22–29 | The Thalmor take Summerset, then Valenwood; the Aldmeri Dominion re-forms. | `CANON_EXPLICIT`, Lore:Fourth Era | Explains Altmer and Maormer warships in the Southern Sea. |
 | 4E 47 | Prime Minister Hierem's secret visit to the An-Xileel at Lilmoth. A secret visit: there is no Imperial presence left to make it openly. | `CANON_EXPLICIT`, Lore:An-Xileel | |
 | **4E 48** | **Umbriel.** Summoned by the An-Xileel through Lilmoth's rogue Hist; Lilmoth destroyed, Gideon's Lukiul killed, Stormhold lightly damaged, the island path through Murkmire to Scathing Bay laid waste. | `CANON_EXPLICIT`, Lore:Umbriel, Lore:Lilmoth, Lore:Gideon, Lore:Stormhold | The catastrophe of the **Argonian** cities and the assimilated, not of the Empire, which was already gone. The interior tribes were untouched and never left. |
-| 4E 48–c. 100 | The resettlement: Lilmoth rebuilt smaller, delta and island villages cleared, the An-Xileel movement broken and its offices kept by a successor administration. | `EXTRAPOLATED`, §1, §4 | "Cleared in the generations after 4E 48" is the standard phrase for new hamlets. |
-| 4E 98–100 | The Void Nights: the moons vanish for two years. | `CANON_EXPLICIT`, Lore:Fourth Era | Available as a dated memory; not required. |
+| 4E 48–c. 55 | **The An-Xileel fall.** Those who hid return to a province that knows what they did; the Organism dies with Lilmoth; the tribes refuse to be their "Wild Ones". The party is broken and its name becomes a curse. | `CANON_DERIVED`, Lore:Accession War ("broken the hold"; "no mention in the following centuries"); detail `EXTRAPOLATED`, §1 | No place names the An-Xileel as holding anything after 4E 48. |
+| c. 4E 55–80 | **The Xeech-Leel rise** from Umbriel's survivors (the Refuge of Deepmire), the Murkmire and delta tribes and the northern cities, by being not the An-Xileel. They take the forts and keep the Archwardens, seat themselves at Helstrom and call the first great Root Talk convocation. | `EXTRAPOLATED`, §1 | A fort "re-held by the Archwardens" was re-held in these years. |
+| 4E 48–c. 100 | The resettlement: Lilmoth rebuilt smaller, delta and island villages cleared. | `EXTRAPOLATED`, §1, §4 | "Cleared in the generations after 4E 48" is the standard phrase for new hamlets. |
+| 4E 98–100 | The Void Nights: the moons vanish for two years. **The Toh-Reel-Ka are founded** in the fear of them, as the Xeech-Leel's sworn guard of the trees. | `CANON_EXPLICIT`, Lore:Fourth Era; the founding `EXTRAPOLATED`, §2.5 | Available as a dated memory; not required. Places do not name the Toh-Reel-Ka. |
 | 4E 115 | Elsweyr becomes Anequina and Pelletine, Dominion client states. | `CANON_EXPLICIT`, Lore:Fourth Era | |
 | 4E 150 | Argonian raiders land on Solstheim and are thrown back by the Redoran. | `CANON_EXPLICIT`, Lore:Fourth Era | |
 | 4E 171–175 | The Great War. Black Marsh is not a party; Naarifin's Dominion army seizes Leyawiin in 4E 171–172, which shuts the Blackwood Road trade for those years. | `CANON_EXPLICIT`, Lore:Great War; consequence `EXTRAPOLATED` | The only Great War effect on a place here is that closure. |
 | 4E 187 | The Shadowscale school at Archon closes. | `CANON_EXPLICIT`, Lore:Archon | |
-| **4E 201** | The present. The last known living Shadowscale dies this year. | `CANON_EXPLICIT`, Lore:Shadowscale | |
+| after 4E 187 | The Toh-Reel-Ka begin to keep dreamers in fort cellars, Fort Chalkmoth first. | `EXTRAPOLATED`, §2.5, §11.2 | Only Fort Chalkmoth's record shows it. |
+| **4E 201** | The present. The last known living Shadowscale dies this year. The Xeech-Leel rule from Helstrom; the Toh-Reel-Ka watch the trees. | `CANON_EXPLICIT`, Lore:Shadowscale; the rulers `EXTRAPOLATED`, §1 | |
 
 The **Mages Guild** dissolved before 4E 48 (Lore:Mages Guild): no guild hall stands in 4E 201; a former guild
 building is a ruin or has another use. The 3E city kings (Lore:Kingdom of Black Marsh) are history. UESP's
@@ -698,18 +817,19 @@ spine reads this as the Shadowscales' own title for the empty Scalded Throne (§
 
 ### 10.2 Who holds what in 4E 201
 
-- **The Archwardens** (the An-Xileel successor administration, §1) `EXTRAPOLATED`: a formal seat at Helstrom that
-  Helstrom ignores; working offices at Stormhold and Archon; the frontier screen facing Morrowind; customs at the
-  recognised ports; and the old Imperial '-moth' forts on the trunk routes and the coasts, garrisoned by ex-Archein
+- **The Xeech-Leel** (§1) `EXTRAPOLATED`: the ruling party, with its seat at Helstrom, which Helstrom's assembly
+  tolerates, and working offices at Stormhold and Archon. Its office of **the Archwardens** holds the frontier screen facing Morrowind; customs at the
+  recognised ports and the old Imperial '-moth' forts on the trunk routes and the coasts, garrisoned by ex-Archein
   families who keep the keys **in the Archwardens' name** (the Warden Marches culture). Their revenue is **tolls at
   crossings and customs at ports**, nothing else: no head-tax, no tax-farmers, no collectors walking the villages,
   no census. **No navy and no cutters** (§2.3): on the water the state's arm is the chartered privateer of the
-  Archon coast. Their writ ends at the water's edge, the fort's walls and the port's quay.
+  Archon coast. Their open writ ends at the water's edge, the fort's walls and the port's quay. The party's hidden
+  arm, the **Toh-Reel-Ka** (§2.5), goes where it likes and is named by no place.
 - **City governments** (§4): Helstrom, an assembly of naheesh and tree-minders; Stormhold and Thorn, Vicecanons
   (Thorn's with the saltrice field-holders); Gideon, a civic council in the Governor's Mansion; Lilmoth, Archon and
   Soulrest, merchant councils (Soulrest's contested); Blackrose, whoever holds the island core; Alten Corimont, a
-  captain of the port. **Gideon and Lilmoth deny the successor state outright**; the others deal with it as much
-  as they must.
+  captain of the port. **Gideon and Lilmoth keep the Xeech-Leel at arm's length** and refuse their wardens inside
+  their walls; the others deal with them as much as they must. No place in 4E 201 is held by the An-Xileel.
 - **Tribes** rule everything else, through tree-minders, naheesh and a Hist (§2.1, §3). The interior was never
   emptied by Umbriel: its tribes did not "return", they stayed.
 - **The Empire is absent** since the secession: no Legion, no fleet, no governor, no Company. Imperial *people*
@@ -752,7 +872,7 @@ inside the timeline above.
 | Kothringi, Velothi and Dunmer-dissident towns; Lilmothiit dens | 2E 560–603, the Flu (Lilmothiit coastal dens earlier, by withdrawal) | `CANON_EXPLICIT`, Lore:Knahaten Flu, Lore:Lilmothiit |
 | Soulrest's mines and concessions | 3E 427, burned by the tribes | `CANON_EXPLICIT`, Lore:Soulrest |
 | Archein plantations | already derelict in the 3E | `CANON_DERIVED`, §4 Gideon |
-| Imperial forts, posts and lighthouses | the secession (4E 5–10); most re-held by the Archwardens, the rest empty since | `EXTRAPOLATED` from Lore:Fourth Era |
+| Imperial forts, posts and lighthouses | the secession (4E 5–10); most re-held by the Archwardens for the Xeech-Leel, the rest empty since | `EXTRAPOLATED` from Lore:Fourth Era |
 | Old Lilmoth, Gideon's Lukiul quarters, the Murkmire villages on Umbriel's path | 4E 48 | `CANON_EXPLICIT`, Lore:Umbriel |
 | The Shadowscale school | 4E 187 | `CANON_EXPLICIT`, Lore:Archon |
 
@@ -766,7 +886,7 @@ inside the timeline above.
 
 ---
 
-## 11. The Hist, the Reed, the Unbound and the Eye: four extrapolations the main quest rests on
+## 11. The Hist, the Toh-Reel-Ka, the Unbound and the Eye: four extrapolations the main quest rests on
 
 All `EXTRAPOLATED`. Each is derived from the canon cited and leaves canon's own open questions open. Used by the main
 quest ([main-plot](../../design/quests/lines/main-plot.md)); a line that touches them cites this section.
@@ -779,14 +899,14 @@ let a tribe call on its tree (`:155`). The spine gives a tree's minder the Hist'
 someone, and is asked by its minder, may lend them a strength for a while. A stranger can be given one, since sap given
 by a minder is safe to anyone (T9 of the consistency ledger). It is a power the player holds, not a gift to a people.
 
-### 11.2 The Reed keeps dreamers — `EXTRAPOLATED`
+### 11.2 The Toh-Reel-Ka keep dreamers — `EXTRAPOLATED`
 
 Canon: 4E 48, Lilmoth's mad Hist helped the An-Xileel call Umbriel down (`topics/umbriel.md:26-29`); the Hist share
 one mind, so what one has seen another can know (`topics/hist-and-sap.md:15-16`); sap-speakers eat the tree's forbidden
-fruit to get "second-eyes and second-ears", and some trees send dreams (`:115-119`). So an order set up to watch the
-trees after 4E 48 needs eyes. The least inventive eyes are people fed sap and made to tell their dreams. The Reed keeps
-them in the cellars of its forts. It calls itself the guardian of the old ways, and what it takes in return is their
-freedom.
+fruit to get "second-eyes and second-ears", and some trees send dreams (`:115-119`). So an order set up to make sure
+no tree, and no one allied with a tree, brings another Umbriel needs eyes on every tree. The least inventive eyes are
+people fed sap and made to tell their dreams. The Toh-Reel-Ka (§2.5) keep them in the cellars of the Archwardens'
+forts. It calls itself the guardian of the old ways, and what it takes in return is their freedom.
 
 ### 11.3 The Unbound — `EXTRAPOLATED`
 

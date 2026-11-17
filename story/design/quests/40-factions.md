@@ -35,8 +35,8 @@ Faction membership may give an alternate method in the main quest—boat access,
 ## 27a. The registry
 
 [`factions.json`](../../../world/sources/registries/factions.json) holds 32
-factions, Morrowind's size: the state and its covert office (An-Xileel,
-Veiled Reed), the eight major lines and five compact lines below, the
+factions, Morrowind's size: the state and its covert office (Xeech-Leel,
+Toh-Reel-Ka), the eight major lines and five compact lines below, the
 foreign powers (College of Whispers, Synod, Cyrodilic Collections, Dres
 remnant, Legion remnant, Morrowind veterans), the tribal powers
 (Bright-Throat, Murkwater, Xit-Xaht, Root-Whisper, Sul-Xan, Naga-Kur,
@@ -111,7 +111,7 @@ A skilled non-combat character can advance in the Marsh Charter through tactics,
 | Night-Reed oligarch/blackmailer | Senior League public office |
 | Night-Reed redistributive branch | Compatible with lower League membership; conflicts with strict law-enforcement office |
 | Reed-Sail pirate/cartel chief | Marsh Charter state auxiliary; senior League regulator |
-| Marsh Charter An-Xileel auxiliary | Reed-Sail pirate branch; some closed Conclave outcomes |
+| Marsh Charter Xeech-Leel auxiliary | Reed-Sail pirate branch; some closed Conclave outcomes |
 | Sunken Archive Synod office | College of Whispers or independent senior office |
 | Closed Many-Root leadership | Senior Open Water civic office |
 | Formal state-aligned Nisswo | Unbound Root main ending and some independent Nisswo outcomes |
@@ -120,7 +120,7 @@ Incompatibilities must be telegraphed before the commitment.
 
 ## 30. Main-quest separation rule
 
-The Veiled Reed and Unbound Root are main-quest alignments. They are not ordinary completionist faction lines.
+The Toh-Reel-Ka and Unbound Root are main-quest alignments. They are not ordinary completionist faction lines.
 
 Major factions may:
 
@@ -199,7 +199,7 @@ The deferral principle: cut breadth before depth, and never defer a line's final
 | SS05 | A Brother from Falkreath | A Dark Brotherhood emissary offers training, contracts and Listener legitimacy in exchange for absorption — executing the revival Listener Dupre and Rasha planned before the Brotherhood's own collapse (lore: topics/sithis-nisswo-shadowscales.md). The emissary is useful, courteous and plainly seeking control. | **P11/P12/P13:** Guest safehouse, ritual chamber and discreet dock/escape; 4-actor negotiation marks. | L09, L29; A02, V03 |
 | SS06 | The Honest Target | A contract names a corrupt magistrate, but the patron is a smuggler trying to erase a conviction. Bonus conditions reward discovery and restraint, not one prescribed kill method. | **P11/P12/P13:** Magistrate courthouse/home, smuggler warehouse, patrol schedules, poison/stealth/social approaches and evidence sockets. | L08–L09; A18–A20, V02–V03 |
 | SS07 | Two Knives, One Name | Two assassins use the same Shadowscale title. One is an impostor; the other committed an atrocity under a genuine writ. Authenticity and innocence diverge — and the order's own law makes it worse: canon holds that **a Shadowscale may not kill a fellow Shadowscale**, and that tenet-breaking is punished by an assassin sent by the **Argonian Royal Court**, which does not exist and canon doubts ever did. So whoever executes either of them is **claiming the empty throne's authority**, which ties this line to the main quest's kingship question without requiring a single main-quest stage. | **P11/P12/P13:** Twin safehouses, **pursuit-by-inference** route (three sites, each already vacated, read the exit from the evidence — no fleeing-NPC pathing), interrogation room and fail-forward journals. | L08–L09; A02, V03 |
-| SS08 | The State’s Hand | The Veiled Reed offers an official charter: legal protection and resources in return for state-directed contracts. It is the third bidder — after the Brotherhood (SS05) and the Black-Tongues (SS04) — for an order everyone wants and nobody made. Refusal leaves the order vulnerable but independent. | **P11/P12:** An-Xileel office, Shadowscale council chamber and branch-specific banner/guard state only. **Touches:** no main-quest writes — zero coupling to `veiledReedTrust` (§30b); the Reed's charter offer is recognition dialogue and local charter state only. | L02, L08–L09; A02–A03 |
+| SS08 | The State’s Hand | The Toh-Reel-Ka offers an official charter: legal protection and resources in return for state-directed contracts. It is the third bidder — after the Brotherhood (SS05) and the Black-Tongues (SS04) — for an order everyone wants and nobody made. Refusal leaves the order vulnerable but independent. | **P11/P12:** Xeech-Leel office, Shadowscale council chamber and branch-specific banner/guard state only. **Touches:** no main-quest writes — zero coupling to `veiledReedTrust` (§30b); the Reed's charter offer is recognition dialogue and local charter state only. | L02, L08–L09; A02–A03 |
 | SS09 | No Listener in Black Marsh | A ritual meant to contact the Night Mother yields ambiguous evidence and a staged deception. The player can bind the order to the Brotherhood, expose the fraud, or adopt a local non-mystical charter. | **P12/P13:** Ritual sanctuary, coffin/crypt, acoustic/lighting variants, secret observer route and one compact combat space. | L08–L09, L29; A02, A20, V03 |
 | SS10 | Shadow at Dawn | The surviving claimants force a final choice: state service, Brotherhood affiliation, independent ethical order, or dissolution with records returned to victims. | **P11/P12/P14:** One shared headquarters with four local end states; NPC schedule swaps, contract board variants and epilogue letters. | L02, L08–L09, L29; A02–A03, V03 |
 
@@ -243,7 +243,7 @@ The deferral principle: cut breadth before depth, and never defer a line's final
 
 **Ranks:** Recruit → Proven Blade → Contract Captain → charter branch office. Promotions require combat or tactical competence plus sponsors.  
 
-**Senior exclusions:** An-Xileel auxiliary ending conflicts with pirate/cartel Reed-Sail leadership; public-service ending can coexist with most civic factions.  
+**Senior exclusions:** Xeech-Leel auxiliary ending conflicts with pirate/cartel Reed-Sail leadership; public-service ending can coexist with most civic factions.  
 
 **World-generation summary:** One main guildhall/training yard, one reusable frontier fort, villages with defence sockets, fixed creature habitats and contract boards.
 
@@ -258,13 +258,13 @@ The deferral principle: cut breadth before depth, and never defer a line's final
 | FG07 | The Price of Protection | Local officers encourage bandits to keep villages dependent on guild contracts. The player can expose, seize or redirect the racket. | **P4/P11/P12/P13:** Roadside bandit camp with causal trade-route placement, guild office, village and ambush route. | L27; V06, A04–A05 |
 | FG08 | Charter War | Reformers, mercenary captains and the **Four Winds** compete over what the Charter is for. Ka-Deelith Ushu's position — that a paid, portable, chartered defence is a foreign disease and an unpaid hereditary one is the only kind that stays — is the hardest to argue with and the least practical. Demonstrated skill, sponsorship and prior conduct determine who follows the player. | **P11/P12:** Guildhall meeting floor, training yard, records archive, `LOC blackwood.stonewastes` Four Winds hall and branch banners; no city battle. | L27; A04–A05, V06 |
 | FG09 | The Contract No One Signed | A lucrative extermination order targets a marsh community that never requested help. The real client wants their land and water access. | **P4/P11/P13:** Remote D3 community, disputed resource site, client estate and non-hostile/hostile encounter configurations. | L01, L16, L27; A15–A17, V12 |
-| FG10 | No Master of Arms | The player resolves the guild as public-service charter, disciplined mercenary company, An-Xileel auxiliary, or broken protection cartel. Rank depends on martial competence and decisions. | **P11/P14:** One guildhall with four local states; patrol/contract board swaps and settlement letters. | L02, L27; A03–A05, V06 |
+| FG10 | No Master of Arms | The player resolves the guild as public-service charter, disciplined mercenary company, Xeech-Leel auxiliary, or broken protection cartel. Rank depends on martial competence and decisions. | **P11/P14:** One guildhall with four local states; patrol/contract board swaps and settlement letters. | L02, L27; A03–A05, V06 |
 
 ## 34. The Sunken Archive
 
 **Type:** Major joinable magical/scholarly faction  
 
-**Premise:** Black Marsh scholars operate between local custodians, the Synod and College of Whispers after the Mages Guild’s dissolution. Canon leaves Argonia with **no resident magical institutions at all** (the Synod had no presence within ~400 miles of Lilmoth), so both foreign bodies work through intermediaries, each with a distinct canon motive: the **Synod** hunts artefacts of power (its declared 4E 201 project), and the **College of Whispers** — canon's open necromancers with the best Umbriel intelligence — seeks **Umbriel's dead**, which from the Argonian side is grave desecration on a mass-grave scale; it is the province's most legible foreign magical antagonist. And the minister who performed the Umbriel ritual, **Hierem**, was a Synod member with "vast influence" over it — a fact the Veiled Reed's records would hold, and a permanent Argonian reason to refuse the Synod anything (lore: topics/guilds-and-orders.md §2).  
+**Premise:** Black Marsh scholars operate between local custodians, the Synod and College of Whispers after the Mages Guild’s dissolution. Canon leaves Argonia with **no resident magical institutions at all** (the Synod had no presence within ~400 miles of Lilmoth), so both foreign bodies work through intermediaries, each with a distinct canon motive: the **Synod** hunts artefacts of power (its declared 4E 201 project), and the **College of Whispers** — canon's open necromancers with the best Umbriel intelligence — seeks **Umbriel's dead**, which from the Argonian side is grave desecration on a mass-grave scale; it is the province's most legible foreign magical antagonist. And the minister who performed the Umbriel ritual, **Hierem**, was a Synod member with "vast influence" over it — a fact the Toh-Reel-Ka's records would hold, and a permanent Argonian reason to refuse the Synod anything (lore: topics/guilds-and-orders.md §2).  
 
 **Themes:** Ownership of knowledge, research ethics, translation, foreign institutions and the political force of archives.  
 
@@ -403,7 +403,7 @@ The deferral principle: cut breadth before depth, and never defer a line's final
 | LW06 | The Empty Ward **(W2)** | A district evacuated after disease remains legally occupied by absent owners. Refugees move in; speculators want clearance. | **P11/P12/P13:** Empty urban ward with 2–3 occupancy states, clinic and property records. | L14, L16; A15, A18–A20 |
 | LW07 | A Vote Bought Twice | Two blocs bribe the same electors using different definitions of corruption. The player can expose all, choose a reform coalition or manipulate the vote. | **P11/P12/P13:** Council hall, tavern, counting house and private meeting routes. | L16; A19–A20, V12 |
 | LW08 | The Public Canal | A canal project improves sanitation and trade but cuts a sacred route and displaces households. Design alternatives cost money and access. | **P3/P11:** Static canal/boardwalk alternatives pre-authored as 2–3 local states; affected homes, shrine and works camp. | L03, L16–L20; A15, A17, V07 |
-| LW09 | The Open Water Charter | League reformers, merchants and An-Xileel-aligned civic officers negotiate a new charter. Prior cases control credible clauses. | **P11/P12:** Large but compact civic chamber, private caucus rooms and charter display. | L02, L16; A20, V12 |
+| LW09 | The Open Water Charter | League reformers, merchants and Xeech-Leel-aligned civic officers negotiate a new charter. Prior cases control credible clauses. | **P11/P12:** Large but compact civic chamber, private caucus rooms and charter display. | L02, L16; A20, V12 |
 | LW10 | Who Counts as Argonian? | The League becomes plural civic movement, merchant oligarchy, regulated municipal service or collapses after exposing its own contradictions. | **P11/P14:** League hall and selected district state swaps; officeholders, services and epilogue documents. | L02–L03, L16; A19–A20, V12 |
 
 ---

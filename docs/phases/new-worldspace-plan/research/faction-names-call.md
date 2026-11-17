@@ -46,6 +46,9 @@ and on both halves of the crew.
 
 ## 2. The Veiled Reed (the main quest's hidden order)
 
+**Decided by you on 2026-11-17: the Toh-Reel-Ka**, "the Secret Warriors", the elite intelligence and security
+organisation of the ruling Xeech-Leel. Nothing below is open; it is kept as the record of the options.
+
 **Now:** a name in plain Tamrielic for the hidden watchers of the marsh, our own
 (`story/lore/topics/guilds-and-orders.md:340`, `story/design/quests/lines/main-plot.md`). It is your name and the only one that may
 use "Reed".

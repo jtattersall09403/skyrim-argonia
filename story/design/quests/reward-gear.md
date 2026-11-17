@@ -9,14 +9,14 @@ clothing, Black Marsh & Valenwood's Argonian gear, Magic Expanded's staves, and 
 thieves' gear from the game and its Dawnguard and Dragonborn add-ons. The exact item names in each mod are read
 from its plugin when it is fetched.
 
-## The Veiled Reed
+## The Toh-Reel-Ka
 
 | Thing | Mod | Kind | Rank or moment |
 |---|---|---|---|
-| Light Argonian armour set | Sign of Cipactli | light armour | Reed-Hand (early) |
-| A rapier or a quarterstaff | Animated Armoury | weapon | Listener (middle) |
-| Stormhold Warrior cuirass and helm | Stormhold Warrior Armor (new) | heavy armour | Watcher (middle) |
-| The rest of the Stormhold Warrior set, with an enchanted pike or claws | Stormhold Warrior Armor (new), Animated Armoury | heavy armour, weapon | Warden's Ear (late) |
+| Light Argonian armour set | Sign of Cipactli | light armour | Voh-Vastei, Apprentice (early) |
+| A rapier or a quarterstaff | Animated Armoury | weapon | Toh-Wo, Secret-Speaker (middle) |
+| Stormhold Warrior cuirass and helm | Stormhold Warrior Armor (new) | heavy armour | Reel-Ka, Warrior (middle) |
+| The rest of the Stormhold Warrior set, with an enchanted pike or claws | Stormhold Warrior Armor (new), Animated Armoury | heavy armour, weapon | Ka-Deelith, War-Teacher (late) |
 
 ## The Lamps (detectives)
 

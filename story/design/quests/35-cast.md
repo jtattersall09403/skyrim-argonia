@@ -275,7 +275,7 @@ topics/material-culture.md), and no more:
   and a Helstrom crowd sound different before anyone says anything;
 
 **Forbidden in C4**: opinions about the main quest, exposition about the Hist or
-the An-Xileel, and any history the player cannot verify. A C4 who explains the
+the Xeech-Leel, and any history the player cannot verify. A C4 who explains the
 world is a C3 we did not budget for.
 
 ---

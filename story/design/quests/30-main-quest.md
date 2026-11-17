@@ -1,6 +1,12 @@
 <!-- imported unchanged from elder-souls-argonia docs/quests/30-main-quest.md @ b581910f0f87d8da88eaa9876d238cdc5d709e78 (0.1 §f) -->
 # Main quest: The Eye and the Root — structure, cast, endings
 
+> **Rulers (owner, 2026-11-17).** The An-Xileel fell after Umbriel; Argonia in 4E 201 is ruled by the
+> **Xeech-Leel**, and the Veiled Reed is now the **Toh-Reel-Ka**, their secret warriors. Where this file says the
+> An-Xileel, a successor state or the Veiled Reed rule or act in 4E 201, read those
+> (`story/lore/extrapolation/argonia-4e201-state.md` §1, §2.5;
+> `docs/phases/new-worldspace-plan/research/rulers-rename-map.md`).
+
 > **Authored history (2026-11-06).** This is the main quest as first designed. The adapted outline, and the source
 > for Acts II to V, is [main-line-outline.md](main-line-outline.md), written to the planner's rulings in
 > [review/act1.md](review/act1.md) ("The whole main line, round 1"). Where the two differ, the outline wins; §20,

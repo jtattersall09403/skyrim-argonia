@@ -117,9 +117,9 @@ of 2026-08-24: **rebuilt, but not restored.**
 - The **Ixtaxh Xanmeer** the An-Xileel pumped dry has silted and flooded again.
 - **Government**: a merchant council, reconstituted — a ruler-less trade port has
   produced one twice before.
-- **Politics**: Lilmoth is commercially significant and **politically hostile to
-  the An-Xileel successor state**. It was the party's seat, and the party killed
-  it. Correction to the quest plan recorded at
+- **Politics**: Lilmoth is commercially significant and **keeps the ruling
+  Xeech-Leel at arm's length**, refusing their wardens inside its walls. It was the
+  An-Xileel's seat, and the An-Xileel killed it. Correction to the quest plan recorded at
   [extrapolation/quest-plan-deltas.md](extrapolation/quest-plan-deltas.md) D2.
 
 Province context:

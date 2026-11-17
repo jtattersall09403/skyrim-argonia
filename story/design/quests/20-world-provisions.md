@@ -220,7 +220,7 @@ extrapolation/quest-plan-deltas.md D8/D16.)
 | **Deepmire, "the Refuge"** as a D4 destination with an approach route | Canon cursed plateau, caretaker few, swamp-leviathan bones; the province's Umbriel memorial | UW04 — the Umbriel Witness Society's only traversal spike |
 | **The player stronghold site** — one reoccupied xanmeer or abandoned river station | `EXTRAPOLATED`; Morrowind Great House stronghold model | 30 §24b.5 — **one** site, three phase states, four allegiance re-skins (cult sanctum / Reed safehouse / village hall / your seat); reserve in 16g, build the interior in Phase 12 (Xanmeer family; 0061) |
 | **Stonewastes and the Four Winds hall** | Canon hereditary defenders, xanmeer keep, Hist in the town centre | FG08 and the Marsh Charter's re-anchored premise |
-| **Reed writ enforcement points** | `EXTRAPOLATED` from the Veiled Reed's paper government: **toll/crossing points on the major road and boat routes**, and a **restricted-door flag class** on civic archives, guarded districts, bonded stores and dock offices — the doors the Reed allegiance writs open | 30 §24b.2 — Reed track tier rewards |
+| **Warden writ enforcement points** | `EXTRAPOLATED` from the Xeech-Leel's paper government: **toll/crossing points on the major road and boat routes**, and a **restricted-door flag class** on civic archives, guarded districts, bonded stores and dock offices — the doors the Toh-Reel-Ka allegiance writs open | 30 §24b.2 — Reed track tier rewards |
 
 **Root-transit network note.** 16g re-authored the rootworm network on the
 places (decision 0068). `world/sources/routes/rootworm-stations.json` holds

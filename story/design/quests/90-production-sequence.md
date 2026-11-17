@@ -122,7 +122,7 @@ MQ01 now spans processing and the attack):
 
 - prisoner processing straight into the attack (villain seen, clutch dead);
 - witness choice;
-- Veiled Reed recruitment and the first dream;
+- Toh-Reel-Ka recruitment and the first dream;
 - first affected-Hist investigation;
 - convoy visit to Helstrom, including the Hall of the Scalded Throne.
 

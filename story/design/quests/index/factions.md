@@ -165,7 +165,7 @@ An order with three bidders and no issuing authority.
 | SS05 | A Brother from Falkreath | saxhleel-coast | `NEGOTIATION`, `FRAUD` | A Dark Brotherhood emissary offers legitimacy. The price is absorption. | — | live |
 | SS06 | The Honest Target | imperial-fringe | `FRAUD`, `MURDER` | A contract names a corrupt magistrate. The patron is erasing a conviction. | `imperial-fringe.gideon` | live |
 | SS07 | Two Knives, One Name | saxhleel-coast | `MURDER`, `RECKONING` | Two assassins share one Shadowscale title. Proving which is genuine does not prove which is guilty. | — | live |
-| SS08 | The State's Hand | saxhleel-coast | `NEGOTIATION`, `DISPUTE` | The Veiled Reed offers a charter. The charter gives protection and resources for state-directed contracts. | — | live |
+| SS08 | The State's Hand | saxhleel-coast | `NEGOTIATION`, `DISPUTE` | The Toh-Reel-Ka offer a charter. The charter gives protection and resources for state-directed contracts. | — | live |
 | SS09 | No Listener in Black Marsh | saxhleel-coast | `RITE`, `FRAUD` | A rite is meant to reach the Night Mother. It yields ambiguous evidence over a staged deception. | — | live |
 | SS10 | Shadow at Dawn | saxhleel-coast | `SUCCESSION`, `NEGOTIATION` | The surviving claimants force a final choice. The choice decides what the order becomes. | — | live |
 

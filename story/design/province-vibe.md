@@ -22,10 +22,11 @@ remembers, lets go, and survives.
 
 ## 2. The tensions of the time
 
-- **A state nobody quite believes in.** The An-Xileel successor administration (Archwardens, the Organism) has
-  its predecessor's offices but not its mandate. Gideon and Lilmoth deny it openly, because its predecessor's
-  weapon killed them (X, state §1; frame §5). Who says "An-Xileel" aloud, and in what tone, places a speaker
-  politically (X, state §1).
+- **A new beginning going the old way.** The Xeech-Leel rose by being not the An-Xileel, who called Umbriel down
+  and fell for it. To make sure no tree brings another, their secret warriors, the Toh-Reel-Ka, keep dreamers on
+  sap in fort cellars, and the party is becoming what it replaced. Few know it; Gideon and Lilmoth suspect it
+  (X, state §1, §2.5; frame §5). Calling a Xeech-Leel officer "An-Xileel" is the gravest insult, and the young
+  make a joke of it (X, state §1).
 - **The wound of 4E 48, at the distance of a century and a half.** No one alive saw Umbriel. People hold family
   stories, carved grave-stakes and memorials they argue over. History here can bore the young (X, state §9).
 - **Holding on against letting go.** The Nisswo teach *shunatei*, the refusal to cling to what has passed.
@@ -149,9 +150,9 @@ names its place and its source.
 
 | Motif | Where it belongs | What Argonian ground uses instead |
 |---|---|---|
-| couriers, sealed letters, dispatches | the state and its agents (the Veiled Reed's handlers: project-original and lore-inferred, frame §6); city and port merchants; foreigners at a foreign foothold (the ports, Gideon, the roads) | the root-herald, a travelling Nisswo, a raft-trader, a kinsman sent in person; word of mouth |
+| couriers, sealed letters, dispatches | the state and its agents (the Toh-Reel-Ka's handlers: project-original and lore-inferred, frame §6); city and port merchants; foreigners at a foreign foothold (the ports, Gideon, the roads) | the root-herald, a travelling Nisswo, a raft-trader, a kinsman sent in person; word of mouth |
 | ledgers, accounts, tallies | the ex-Archein families' estates and hiring offices (labour §2); Thorn and Branchmont's saltrice accounts; the Rose's owing (labour §3). Not a toll-keeper, who owns "a bridge rather than an office" (labour §3) | a witnessed award that is then forgotten; the memory of the people who witnessed it |
-| rolls, registers, filing numbers, records | Gideon's courthouse and archives; the Veiled Reed and the state's customs; the opening's prisoner work roll (frame §6); the Keepers of the Shell's egg records at the Hatching Pools, with star signs (C, `regions/shadowfen.md`) | grave-stakes; the naheesh's recitation; what the tree-minder and egg-tenders know of their own clutch |
+| rolls, registers, filing numbers, records | Gideon's courthouse and archives; the Toh-Reel-Ka and the state's customs; the opening's prisoner work roll (frame §6); the Keepers of the Shell's egg records at the Hatching Pools, with star signs (C, `regions/shadowfen.md`) | grave-stakes; the naheesh's recitation; what the tree-minder and egg-tenders know of their own clutch |
 | clerks, officials, offices | Gideon, Archon's harbour authority, Stormhold's working offices, the customs regime at the recognised ports (state §1, §4) | the village offices of §3; a mutually chosen arbitrator |
 | permits, licences, passes, papers | the recognised ports' customs, Archon's charters, Lilmoth's lapsed rule on licensed foreigners (state §4) | a toll paid at the crossing; a root-herald's word; reciprocity |
 | fines and coin payment | the coin tier: cities, ports, roads (register §7) | owed work, barter, a gift of tools or food |

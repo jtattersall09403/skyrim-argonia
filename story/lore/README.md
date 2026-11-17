@@ -93,8 +93,10 @@ Fills the gap between what canon says and what the game needs to know
 Set by the owner; do not re-litigate. Full text at the foot of
 [extrapolation/owner-questions.md](extrapolation/owner-questions.md).
 
-1. The **An-Xileel are a successor state** — inherited offices, titles and name
-   (Archwardens, the Organism); the movement broke at 4E 48.
+1. The **An-Xileel fell after Umbriel**; the province is ruled by the **Xeech-Leel**,
+   who rose by being not the An-Xileel, kept the Archwardens as their wardens of
+   forts, roads and tolls, and made the **Toh-Reel-Ka** their secret warriors (owner
+   ruling 2026-11-17; extrapolation/argonia-4e201-state.md §1, §2.5).
 2. The Hist speak through an occasional **great Root Talk convocation at
    Helstrom** — an occasion, not a council.
 3. **Blackrose Prison is a ruin reoccupied by the Blackguards' heirs.**

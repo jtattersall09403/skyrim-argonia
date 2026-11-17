@@ -18,7 +18,7 @@ Every narrative datum should use the existing source-confidence categories:
 
 **King of the Murkmire (KotM) text** ([KotM plan](../research/placement-settlements/king-of-the-murkmire-adoption-plan.md) § 3.8): its dialogue, books and names are a register reference for Saxhleel speech, never a source; cite UESP for canon books. The extracted corpus lives in the vault (`elder-scrolls-asset-pipeline/derived/text/king-of-the-murkmire/`), never in the repo. Never reuse its invented names: [86-never-reuse-names.md](86-never-reuse-names.md).
 
-The Veiled Reed, Unbound Root and Root of Accord are project-original. The Eye of Argonia, Hist, Sithis, Nisswo, An-Xileel, Shadowscales, Duskfall, Xanmeers, Lilmoth/Umbriel and Black Marsh cities are grounded in established lore.
+The Xeech-Leel, the Toh-Reel-Ka, the Unbound Root and the Root of Accord are project-original. The Eye of Argonia, Hist, Sithis, Nisswo, An-Xileel, Shadowscales, Duskfall, Xanmeers, Lilmoth/Umbriel and Black Marsh cities are grounded in established lore.
 
 ## 45b. Argonian register — and the layered model it sits in
 
@@ -385,8 +385,8 @@ Principal main-quest revelations:
   eggs and the dead's way home;
 - the woman from the opening attack and the voice in the dreams are the same
   person, and she is the end of the road;
-- the Veiled Reed allowed or manipulated some evidence to identify the network;
-- the cult leader once served the Veiled Reed — and designed the apparatus she
+- the Toh-Reel-Ka allowed or manipulated some evidence to identify the network;
+- the cult leader once served the Toh-Reel-Ka — and designed the apparatus she
   now fights;
 - the player's own handler falsified records, and the honest officer destroys
   her for it;

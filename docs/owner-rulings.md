@@ -729,3 +729,18 @@ added here the day they are made, with the date and the issue.
   alias Yulca) is now Alten Corimont, the freebooters' free port on the great lake's east shore, built from BM&V's
   Murkmire (docks, Dunmer outbuildings, a ship: canon's look); Jarecai takes Yulca's old source, Nyhus, in a
   one-for-one swap. The Agaceph keep their hamlets and lose only their town.
+- 2026-11-17 (story explorer note): "Need to reconcile many things (in main quest and probably all factions) against
+  story/lore/extrapolation/argonia-4e201-state.md. E.g. what happened to the An-Xileel successor state? ... Give me
+  some options before changing anything. ... Actually I have decided we should overrule the earlier thing about a
+  successor state called 'An-Xileel' still being in charge. I just don't think they'd survive Umbriel. I like the
+  idea of it being a new party/faction who gained power largely by being *not* the An-Xileel, but who are now
+  becoming increasingly like them, ironically, by the means they use to try to prevent the atrocity that is the
+  reason everybody wanted rid of them (Umbriel). Let's call this party Xeech-Leel — People of the New Beginning.
+  And the veiled reed becomes the Toh-Reel-Ka — Secret Warriors. ... The Toh-Reel-Ka would be the Xeech-Leel's
+  elite intelligence and security organisation." And on a faction page: "Stuff like this ['The Archwardens'] (here
+  and for all factions) will need to be reconciled with whatever we rewrite for the main quest regarding the ruling
+  party/faction that succeeded the An-Xileel, and the titles and roles they use". Owner decision Q1 of 2026-08-24
+  is superseded: the An-Xileel fell after Umbriel; the Xeech-Leel rule from Helstrom and keep the Archwardens as
+  their office of fort, road and toll wardens; the Toh-Reel-Ka keep the dreamers. Written into the lore
+  (argonia-4e201-state.md §1, §2.5, §10, §11.2), the rename map and owner-bar; every other mismatch goes to him as
+  a call (`docs/phases/new-worldspace-plan/research/reconciliation-call.md`).

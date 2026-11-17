@@ -4,6 +4,12 @@ The human-readable plan for Phase 2's "whole quest system on BM&V" ([phase 2](..
 per line its spirit, its new home in BM&V, what changed and why, and the world-edit ledger in summary. The story data
 is the record; this file is the read of it. Act I's own adaptation is [act1-on-bmv](act1-on-bmv.md).
 
+> **Rulers (owner, 2026-11-17).** The An-Xileel fell after Umbriel; Argonia in 4E 201 is ruled by the
+> **Xeech-Leel**, and the Veiled Reed is now the **Toh-Reel-Ka**, their secret warriors. Where this file says the
+> An-Xileel, a successor state or the Veiled Reed rule or act in 4E 201, read those
+> (`story/lore/extrapolation/argonia-4e201-state.md` §1, §2.5;
+> `docs/phases/new-worldspace-plan/research/rulers-rename-map.md`).
+
 Status: the first story slice (owner, 2026-11-06) is ledgered in §5: Act I and the first quests of two faction lines
 and two locals; the other 706 quests wait (`wait`) until the owner has tried the slice. Sections 3 and 4 stay the
 whole-province draft the slice was cut from.

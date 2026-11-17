@@ -107,7 +107,7 @@ are the house-style pool. Creature entries confirmed for quest use:
 | Penal work barge and small ferries | V07, A13; larger reference from A11/A12 |
 | Managed marsh opening | V01, A17, A25 |
 | Hist and Root spaces | V04, A17, A24; lighting/audio/particles distinguish affected states |
-| Veiled Reed offices | V06/V12 offices plus A19/A20 records and Argonian clutter |
+| Toh-Reel-Ka offices | V06/V12 offices plus A19/A20 records and Argonian clutter |
 | Cult safehouses | A15/A16/A17, V03 robes/ritual props, A20 clutter |
 | Eye of Argonia prop | Reuse an existing Skyrim gemstone/amulet/paragon mesh in an existing metal setting; no bespoke model required |
 | Mnemic Egg prop | Re-materialled vanilla chaurus egg pod or spriggan sac with an emissive sap material — material-variant work only, no new mesh |

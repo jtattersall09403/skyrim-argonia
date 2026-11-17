@@ -5,6 +5,12 @@ This is the source for the main quest's Acts II to V. Act I's four records (MQ01
 [30-main-quest.md](30-main-quest.md), is history: its cast, thesis and ending families stand where this file keeps
 them, and its branch-state model, reward tracks and per-quest table are replaced here.
 
+> **Rulers (owner, 2026-11-17).** The An-Xileel fell after Umbriel; Argonia in 4E 201 is ruled by the
+> **Xeech-Leel**, and the Veiled Reed is now the **Toh-Reel-Ka**, their secret warriors. Where this file says the
+> An-Xileel, a successor state or the Veiled Reed rule or act in 4E 201, read those
+> (`story/lore/extrapolation/argonia-4e201-state.md` §1, §2.5;
+> `docs/phases/new-worldspace-plan/research/rulers-rename-map.md`).
+
 Rules this outline is written to: the planner's rulings in [review/act1.md](review/act1.md), "The whole main line,
 rounds 1 to 6" (each B1 to B5, N1 to N5), and the owner's ruling of 2026-11-06 ([owner-rulings](../../../docs/owner-rulings.md)):
 keep the treasure hunt, the spies and the spirit; more Black Marsh, more exciting, less bureaucratic; law and

@@ -56,7 +56,8 @@ That is itself a finding: those places are ours to author.
 ## Owner decisions in force
 
 Round 1 (2026-08-24) — all five recommendations accepted and **binding**:
-An-Xileel **successor state** (Q1); Hist speak through a **great Root Talk
+Q1 superseded 2026-11-17: the An-Xileel fell after Umbriel and the **Xeech-Leel**
+rule (state §1); Hist speak through a **great Root Talk
 convocation at Helstrom** (Q2); Blackrose Prison is a **ruin reoccupied by the
 Blackguards' heirs** (Q3); Lilmoth **rebuilt but not restored** (Q4); register
 **melancholy and dignified, horror kept local** (Q5) — plus the owner's addition

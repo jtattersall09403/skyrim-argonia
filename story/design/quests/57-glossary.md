@@ -56,8 +56,9 @@ Meerhleel*) is the name a foreign clerk wrote down. Places often carry two.
 
 | Term | Newcomer gloss | Newcomer topic | Act I | Opaque |
 |---|---|---|---|---|
-| An-Xileel | The nativist government of Argonia, heirs to the movement that drove out the Empire. | Who rules Argonia? | yes | |
-| Veiled Reed | The An-Xileel's covert office; its factors travel the interior. | Who are the Veiled Reed? | no | |
+| An-Xileel | The nativist party that drove out the Empire and called Umbriel down in 4E 48; it fell for it. | What happened to the An-Xileel? | yes | |
+| Xeech-Leel | The ruling party, "the People of the New Beginning", who rose by being not the An-Xileel. | Who rules Argonia? | yes | |
+| Toh-Reel-Ka | "The Secret Warriors": the Xeech-Leel's hidden order that watches the trees. | Who are the Toh-Reel-Ka? | no | |
 | Unbound Root | A movement that holds the Hist above every law; some are victims, some fanatics. | Who are the Unbound Root? | no | |
 | Many-Root Conclave / Conclave | The order of Hist stewards who keep the trees and oversee consent. | What is the Conclave? | yes | |
 | Reed-Sail Compact / Compact | The guild of boat crews, routes and ferries. | Who runs the boats? | yes | |

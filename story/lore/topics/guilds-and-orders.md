@@ -304,11 +304,11 @@ Reasoning for preferring this over an invented secret society:
 
 ### What this gives us in 4E 201 — `EXTRAPOLATED`
 
-- **The state claims a constituency that has never agreed to be claimed.** The
-  successor administration inherited the An-Xileel's rhetoric along with its
-  offices, and still speaks of "the Wild Ones" as its base. The deep-interior
-  tribes it means have opinions about that, and mostly the opinion is
-  indifference — "you're in the middle of everywhere, and near nowhere."
+- **The name outlived the party that claimed it.** The An-Xileel fell after
+  Umbriel, and the Xeech-Leel who rule now do not use "the Wild Ones"; but the
+  phrase is still heard, from the old and from the few who still wait. The
+  deep-interior tribes it meant mostly answer it with indifference — "you're in
+  the middle of everywhere, and near nowhere."
 - **It is now also a slur, in both directions.** In the cities, calling someone a
   Wild One means backward and dangerous. In the interior, accepting the name means
   accepting the An-Xileel's frame. Most tribes simply give their own name instead.
@@ -336,8 +336,10 @@ of it and should be owner-visible. Raised as **Round 2 Q6** in
 | **Black Marsh Exploration Society** | Kratius Gray authored *Miregaunts of the Marsh* for it | `EXTRAPOLATED`: a small, chronically underfunded naturalists' society; the polite face of foreign interest |
 | **Circle of Champions** | 2E gladiatorial guild; Helstrom's team would have been "the Pit Daemons" | `EXTRAPOLATED`: gone as an institution; the **Ruction Ring** under Gideon (canon) is what survives of fighting-pit culture |
 | **East Empire Company** | Archon–Lilmoth–Soulrest–Tear line | Gone from the province; its wharves and bonded stores are not |
-| **The Organism / Archwardens** | The An-Xileel's ruling council and office, Lilmoth, 4E 48 | Inherited by the successor state (owner decision Q1) |
-| **The Veiled Reed** | Project-original (quest plan) | Fits the successor state well; see [quest-plan-deltas.md](../extrapolation/quest-plan-deltas.md) D1 |
+| **The Organism** | The An-Xileel's ruling council, Lilmoth, 4E 48 | Gone with the party (owner ruling 2026-11-17) |
+| **Archwardens** | An An-Xileel office, 4E 48 | Kept by the ruling Xeech-Leel as their wardens of forts, roads, tolls and customs ([state §1](../extrapolation/argonia-4e201-state.md)) |
+| **The Xeech-Leel** | Project-original, from attested Jel | The ruling party, seated at Helstrom ([state §1](../extrapolation/argonia-4e201-state.md)) |
+| **The Toh-Reel-Ka** | Project-original, from attested Jel | The Xeech-Leel's secret warriors, keepers of the dreamers ([state §2.5](../extrapolation/argonia-4e201-state.md)) |
 | **Keepers of the Shell** | Shadowfen's egg-tenders at the Hatching Pools | Alive; the north's most defended institution |
 | **Root Stewards** | Administer Hissmir's Trials; **cannot refuse a comer** | Alive and busier than ever |
 | **Clutch of Nisswo** | Travelling Sithis priesthood, no central governance | Alive; partially filling the *ku-vastei* vacuum the Shadowscales left |
@@ -359,5 +361,5 @@ of it and should be owner-visible. Raised as **Round 2 Q6** in
   needs a chapter house.
 - **The Hierem link is free and excellent**: the Imperial minister who set Umbriel
   in motion was the Synod's most influential patron. Any Argonian who knows this —
-  and the Veiled Reed's records would — has a permanent reason to refuse the
+  and the Toh-Reel-Ka's records would — has a permanent reason to refuse the
   Synod anything.

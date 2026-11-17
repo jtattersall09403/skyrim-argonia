@@ -50,6 +50,11 @@ summoned the thing that killed a fifth of it, and to have done so for 150 years
 without generating a single recorded event. Reads against the grain of both
 quoted sentences.
 
+**Superseded by the owner's ruling of 2026-11-17**: no party of the An-Xileel's
+name survived Umbriel; the **Xeech-Leel**, a new party, rule
+([argonia-4e201-state.md](argonia-4e201-state.md) §1). The options below are the
+record of round 1.
+
 **B. Successor state (recommended).** The An-Xileel as a *movement* broke at
 4E 48. What survived is a **successor administration that inherited its offices,
 its titles and its name** — Archwardens, the Organism, the customs and frontier
@@ -244,8 +249,9 @@ across the whole build.
 
 All five recommendations **accepted**:
 
-- **Q1**: An-Xileel **successor state** — inherited offices/titles/name
-  (Archwardens, the Organism), not the mandate. Movement broke at 4E 48.
+- **Q1**: superseded 2026-11-17. The An-Xileel fell after 4E 48; the
+  **Xeech-Leel** rule, keeping the Archwardens as their office; their secret
+  warriors are the **Toh-Reel-Ka** (state §1, §2.5).
 - **Q2**: the Hist speak through **Root Talk extended into an occasional
   great convocation at Helstrom** — an occasion, not a council.
 - **Q3**: Blackrose Prison is a **ruin reoccupied by the Blackguards' heirs**.

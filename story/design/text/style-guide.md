@@ -136,7 +136,7 @@ than *announced*.
   ashkhan" but "Ashkhan Ulath-Pal" (**Morrowind:Nibani Maesa** has both).
 
 **Our terms, ruled by the same test.** Capitalised: the Hist (and *a Hist*, *the
-Hist* — capital as a species-proper), Sithis, the An-Xileel, the Veiled Reed,
+Hist* — capital as a species-proper), Sithis, the An-Xileel, the Xeech-Leel, the Toh-Reel-Ka,
 the Root of Accord, the Owing, Shadowscales, Nisswo, Chukka-Sei, the Scalded
 Throne, Duskfall, the Eye of Argonia. Lowercase: sap, hist-sap resin, xanmeer
 (a building type — capitalised only in a specific ruin's name), rootworm,

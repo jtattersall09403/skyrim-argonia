@@ -107,7 +107,7 @@ Applies across race. This is the layer that stops "all Dunmer sound alike".
 | **Argonian, tribal / interior-raised** | Qualifiers at full strength; address by category, not name; proverb-and-riddle mode |
 | **Argonian, city / port-raised** | Qualifiers worn smooth by daily contact with *ojel*; complete sentences, practical imperatives |
 | **Lukiul (assimilated Argonian)** | **Cannot use the qualifiers naturally and it shows** — either omitted entirely or used one beat late. *Lukiul* is the An-Xileel's slur, so hearing it applied is an event |
-| **An-Xileel-era (raised after the rise)** | Political certainty; invitation in place of threat; the province as a settled fact, not a contested one |
+| **Xeech-Leel-raised (the party's young officers)** | Political certainty; invitation in place of threat; the province as a settled fact, not a contested one |
 | **Older generation (remembers the Empire / the Accession War)** | Provisional phrasing about the state; Imperial place-names used out of habit and corrected by the young |
 | **Slaver-descended / freed-descended (Dunmer and Argonian both)** | The subject both sides route around. Neither says it plainly; each says it differently |
 
@@ -175,7 +175,7 @@ not send you over either." Fault the other way: an Imperial clerk
 with "I do not know. It is not my post." Fix: "I don't know, and it isn't
 my post to know."
 
-Address-term families per faction (pool greetings): each faction owns one family, so no two collide. *citizen*: An-Xileel; *civilian*: Legion remnant; *friend* or none: Legion-descended; *guest*: Bright-Throat; *outsider*: Naga-Kur; *neighbour*: Stillrise; *grower*: Thorn-Ash-Reed Accord; *delegate*: League of Open Water; *colleague*: College of Whispers; *agent*: Cyrodilic Collections; *muthsera*, *serjo*: Dres remnant; *root-kin*: Many-Root; *root-sibling*: Unbound Root; *friend of the roots*: Root-Whisper; *stone-kin*, *Reed-folk*: Xit-Xaht; *traveller*: Rootworm Waykeepers; *seeker*: Nisswo; *pilot*: Reed-Sail; *mate*: Salt-Teeth; *reed*, *water-rat*: Night Reed; *blade*, *captain*: Marsh Charter; *hunter*: Murkwater; *offering*: Sul-Xan; *reader*: Sunken Archive; *attendant*: Synod; *soft-skin*: tribeless Naga; *witness*: Umbriel; *young one*: Shadowscales; *brother*: Blackguards; *sibling*: Chainbreakers; *friend*: Veiled Reed; *comrade*: Morrowind veterans (their sheet's address; never *sera*). Peoples keep their own words (Argonian *ojel*, Dunmer *sera*, Bosmer *Longshanks*, Khajiit *walker*); outsiders are named by homeland or role, never *outlander* or *stranger* in Black Marsh lines.
+Address-term families per faction (pool greetings): each faction owns one family, so no two collide. *citizen*: Xeech-Leel; *civilian*: Legion remnant; *friend* or none: Legion-descended; *guest*: Bright-Throat; *outsider*: Naga-Kur; *neighbour*: Stillrise; *grower*: Thorn-Ash-Reed Accord; *delegate*: League of Open Water; *colleague*: College of Whispers; *agent*: Cyrodilic Collections; *muthsera*, *serjo*: Dres remnant; *root-kin*: Many-Root; *root-sibling*: Unbound Root; *friend of the roots*: Root-Whisper; *stone-kin*, *Reed-folk*: Xit-Xaht; *traveller*: Rootworm Waykeepers; *seeker*: Nisswo; *pilot*: Reed-Sail; *mate*: Salt-Teeth; *reed*, *water-rat*: Night Reed; *blade*, *captain*: Marsh Charter; *hunter*: Murkwater; *offering*: Sul-Xan; *reader*: Sunken Archive; *attendant*: Synod; *soft-skin*: tribeless Naga; *witness*: Umbriel; *young one*: Shadowscales; *brother*: Blackguards; *sibling*: Chainbreakers; *friend*: Veiled Reed; *comrade*: Morrowind veterans (their sheet's address; never *sera*). Peoples keep their own words (Argonian *ojel*, Dunmer *sera*, Bosmer *Longshanks*, Khajiit *walker*); outsiders are named by homeland or role, never *outlander* or *stranger* in Black Marsh lines.
 
 ---
 
@@ -189,7 +189,7 @@ Applies to **every** member regardless of race. It governs on-duty speech.
 | **The Owing (penal administration)** | Debt and ledger nouns for people; sentences described as balances; the passive voice carve-out | region row `imperial-penal-south` |
 | **Nisswo / Sithis clergy** | Doctrinal, numbered structures, one mandatory formula used every time (Morrowind's "(Blessed Be Their Holy Names)"). Preaching *shunatei* is consolation, not callousness (quests 60 §45c) | **Lore:The Anticipations**, **Morrowind:Tholer Saryoni** |
 | **Shadowscales** | Understatement. Divinity and killing both written small: *"When I was young like you, I was very impatient. So I will keep our business short."* | **Morrowind:Vivec (god)** |
-| **The An-Xileel** | Political certainty; *lukiul* as a weapon; invitation in place of threat | **Morrowind:Sleepers Awake** |
+| **The Xeech-Leel** | Political certainty; *never again* as a weapon; invitation in place of threat | **Morrowind:Sleepers Awake** |
 | **East Empire Company / chartered trade** | Contract nouns, tonnages, "the Company" as a person; complaint routed as procedure | `mercantile-coast` row |
 | **Smugglers and free crews** | Trade in euphemism (*cargo*, *passengers*); names withheld; a question answered with a different question | `pirate-freeholds` row |
 | **House Dres remnants** | Antique legal formality about property, applied to people, by speakers who no longer have the law behind them | **Morrowind:Bolvyn Venim** (register), `LORE_INFERRED` (Dres in 4E 48) |

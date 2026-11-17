@@ -93,7 +93,7 @@ with its source in [owner-rulings-on-factions](../../docs/research/writing/owner
 - The joinable factions are eight: the Chainbreakers, the detectives (the Lamps), a thieves' guild (not called the
   Night-Reed), the Shadowscales (back in secret; the death of the "last" one was cover), the pirates, an Argonian
   order of magic and alchemy with a name in Jel, Dunmer necromancers behind a respectable trading house at Thorn,
-  and Imperial merchants at Gideon. The main quest has the Veiled Reed and the Unbound. A Dunmer house that profits
+  and Imperial merchants at Gideon. The main quest has the Toh-Reel-Ka and the Unbound. A Dunmer house that profits
   from the Owing cannot be joined. Every other line is cut, the League among them (OR 2026-11-16).
 - Rivals: the Lamps, the thieves and the Shadowscales, three ways; the Argonian order and the necromancers; the
   pirates and the Imperials; the Chainbreakers (the pirates' allies) and the Owing house. "It's fun if they're in
@@ -225,6 +225,11 @@ with its source in [owner-rulings-on-factions](../../docs/research/writing/owner
 - No Nordic element reaches the player through what we add (decision 0006).
 - A native Argonian place has no jail; the Owing is the sentence; resisting arrest is a fight to the death
   (OR 2026-11-10).
+- The rulers of Argonia in 4E 201 are the **Xeech-Leel**, "the People of the New Beginning". The An-Xileel fell
+  with Umbriel: "I just don't think they'd survive Umbriel". The Xeech-Leel gained power largely by being not the
+  An-Xileel, and are becoming more like them, ironically, by the means they use to prevent another Umbriel. Their
+  elite intelligence and security organisation is the **Toh-Reel-Ka**, "the Secret Warriors". Every faction and
+  story is reconciled with this (OR 2026-11-17; `story/lore/extrapolation/argonia-4e201-state.md` §1, §2.5).
 - Quests, places, dialogue, characters and facts are consistent first time, by how they are written.
 
 ## People and talk

@@ -38,6 +38,11 @@ status of the An-Xileel following the Umbriel Crisis is **unknown**." Our era is
 153 years after that. The plan's framing is defensible but runs against canon's
 own trajectory, and the sweep found no supporting 4E evidence at all.
 
+**Superseded 2026-11-17**: the owner ruled that the An-Xileel fell after Umbriel and
+the **Xeech-Leel** rule; `10-political-frame.md` §5–6 now say so
+([argonia-4e201-state.md](argonia-4e201-state.md) §1, §2.5). The wording below is the
+record of what was applied in 2026-08.
+
 **Proposed change** (Q1 Option B — successor state): keep every structure, change
 the standing. Replace the bullet list's first two items with something like:
 
