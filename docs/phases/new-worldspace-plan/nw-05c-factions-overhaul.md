@@ -323,3 +323,22 @@ Owed, in order:
    work on each place settles which source it is built from. Coldbrine Mine and Vicrium both lean on Gloombound
    and Whistling Mine's interiors, and Fort Silvermoth, Fort Gysilla and Blackrose Prison on Cracked Tusk's; their
    builds give each a look of its own.
+
+### The owner's notes of 2026-11-17 (64 notes) and his names (#74)
+
+Answered and on main. The rulers are the Xeech-Leel and their secret arm the Toh-Reel-Ka (the lore's extrapolation
+rewritten). The names he chose are applied: the Lampbearers, the Eelskins, the Shadowscales, the Sisei-Xul, House
+Cardruhn (`house-cardruhn.md`), Bramman's Brethren, the Topal Bay Company, the Chainbreakers (successors of the Twin
+Lamps), House Ulvarys, the Unbound. The main quest opens at Ashgate Landing, runs Act I as one onward road and has
+its eleventh quest on Skeith Isle. The Brethren sit on Aphon Isle at Bramman's Watch. Alten Corimont replaces
+Yulca. Every plot carries bracketed checks of what its places, items and creatures can deliver. Four writing rules
+are in style-core and the linter. The story skill carries what generalised.
+
+Owed:
+
+1. The owner's answers on the thirteen items of the reconciliation call (#75). The plots use each recommendation
+   as a working default.
+2. The next world rebuild regenerates the travel menu and map labels for three renamed places (Ashgate Landing,
+   Bramman's Watch, Alten Corimont) and re-derives stock for the re-banded places.
+3. Sources shared between places, to settle when each is built: Coldbrine Mine and Vicrium (two mine interiors);
+   Fort Silvermoth, Fort Gysilla and Blackrose Prison (Cracked Tusk).
