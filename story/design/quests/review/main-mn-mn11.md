@@ -13,3 +13,5 @@ Classes of miss cleared:
 - A fixed thing the player must open or use (a crate, a gate) is placed `kind: container`, never `thing`, or the player picks it up.
 - A step that is "try a locked door" needs a usable or readable thing at the door that carries what the player learns there (here a barred window with the moaning); a locked door alone gives nothing.
 - Every room the quest uses inside a place is a place of its own, with doors between them, and each person and thing is anchored in the room they stand in.
+| MN11 | story/playtests/quest.main.mn11/20261117T170701Z-designed (way fight) | pass |
+| MN11 | story/playtests/quest.main.mn11/20261117T170701Z-designed~2 (way sneak) | pass |
