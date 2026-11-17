@@ -14,7 +14,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-DB = Path("story/data/db")
+DB = Path("newworld/story/data/db")
 TABLES = (
     "place", "place_alias", "place_danger", "place_encounter", "place_give", "place_kind", "place_law",
     "place_note", "place_note_source", "place_source", "place_terrain_need", "source_place", "region",
