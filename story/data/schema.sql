@@ -1451,6 +1451,8 @@ CREATE TABLE "quest_stage" (
   "directions" TEXT,
   "ending_id" TEXT,
   "hidden" INTEGER,
+  "info_going" TEXT,
+  "info_next" TEXT,
   PRIMARY KEY ("quest_id", "ord"),
   UNIQUE ("quest_id", "id"),
   FOREIGN KEY ("quest_id") REFERENCES "quest" ("id") ON DELETE CASCADE
@@ -1802,6 +1804,55 @@ CREATE TABLE "quest_stage_learns" (
   "value" TEXT NOT NULL REFERENCES "fact"("id"),
   PRIMARY KEY ("quest_id", "stages_ord", "ord"),
   FOREIGN KEY ("quest_id", "stages_ord") REFERENCES "quest_stage" ("quest_id", "ord") ON DELETE CASCADE
+);
+
+-- Home of one row per element of `stages[].information.ways` of each quest_stage row: a way through or a choice the
+-- player must see at that stage (the information plan, quest-write/quest-record.md §1; design only, never built).
+-- The plan's `going` and `next` are quest_stage's `info_going` and `info_next`.
+CREATE TABLE "quest_stage_info_way" (
+  "quest_id" TEXT NOT NULL,
+  "stages_ord" INTEGER NOT NULL,
+  "ord" INTEGER NOT NULL,
+  "value" TEXT NOT NULL,
+  PRIMARY KEY ("quest_id", "stages_ord", "ord"),
+  FOREIGN KEY ("quest_id", "stages_ord") REFERENCES "quest_stage" ("quest_id", "ord") ON DELETE CASCADE
+);
+
+-- Home of one row per element of `stages[].information.carriers`: a point of the plan (`know`) and the channels that
+-- give it (quest_stage_info_carrier_by).
+CREATE TABLE "quest_stage_info_carrier" (
+  "quest_id" TEXT NOT NULL,
+  "stages_ord" INTEGER NOT NULL,
+  "ord" INTEGER NOT NULL,
+  "know" TEXT NOT NULL,
+  PRIMARY KEY ("quest_id", "stages_ord", "ord"),
+  FOREIGN KEY ("quest_id", "stages_ord") REFERENCES "quest_stage" ("quest_id", "ord") ON DELETE CASCADE
+);
+
+-- Home of one row per element of `stages[].information.carriers[].by`: a channel (`journal`, `objective`,
+-- `marker:<ref>`, `line:<topic>`, `name:<ref>`, `read:<ref>`, `look:<ref>`, `message:<stage>`, `ask:<topic>`).
+CREATE TABLE "quest_stage_info_carrier_by" (
+  "quest_id" TEXT NOT NULL,
+  "stages_ord" INTEGER NOT NULL,
+  "carriers_ord" INTEGER NOT NULL,
+  "ord" INTEGER NOT NULL,
+  "value" TEXT NOT NULL,
+  PRIMARY KEY ("quest_id", "stages_ord", "carriers_ord", "ord"),
+  FOREIGN KEY ("quest_id", "stages_ord", "carriers_ord") REFERENCES "quest_stage_info_carrier" ("quest_id", "stages_ord", "ord") ON DELETE CASCADE
+);
+
+-- Home of one row per element of `terms` of each quest row: a word, name, person or piece of lore the player meets
+-- first in this quest, where they meet it, where the path tells it plainly and the topic that tells more (design
+-- only, never built).
+CREATE TABLE "quest_term" (
+  "quest_id" TEXT NOT NULL,
+  "ord" INTEGER NOT NULL,
+  "term" TEXT NOT NULL,
+  "meets" TEXT,
+  "told" TEXT,
+  "ask" TEXT,
+  PRIMARY KEY ("quest_id", "ord"),
+  FOREIGN KEY ("quest_id") REFERENCES "quest" ("id") ON DELETE CASCADE
 );
 
 -- Home of one row per element of `stages[].approaches` of each quest_stage row (ordered by `ord` where it has one).

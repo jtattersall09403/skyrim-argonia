@@ -9,7 +9,6 @@ from __future__ import annotations
 
 import json
 import os
-import shlex
 import shutil
 import subprocess
 import sys
@@ -20,17 +19,7 @@ from pathlib import Path
 
 from tools.playtest import session as S
 
-TEMPERAMENTS = {
-    "careful": "You are a careful player. You read every line people say and every journal entry, you think about "
-               "what you have been told before you act, and you like to understand who people are and why.",
-    "impatient": "You are an impatient player. You skim what people say, you want to get on with it, and you mostly "
-                 "follow the quest markers and the objective text. You rarely ask people about themselves.",
-    "wanderer": "You are a wandering player. You poke at everything, talk to everyone you meet and ask them about "
-                "anything on offer, and you follow your curiosity as much as the quest.",
-    "gainer": "You play for what the game gives you. When you must choose, you choose by what each side gets you in "
-              "play: a power, a thing, a place, a trader or trainer, standing with people who matter, more than the "
-              "story. You ask what you will get before you choose, and you check what you got afterwards.",
-}
+AGENT = S.REPO / ".claude/agents/paper-player.md"
 
 BRIEF = """You are playing a new Elder Scrolls game set in Argonia, the Black Marsh. You have played Skyrim, so you \
 know how its quests, journal, map markers and dialogue menus work. {know}
@@ -38,55 +27,103 @@ know how its quests, journal, map markers and dialogue menus work. {know}
 This version of the game is played in words. You see the game only through one command, `{play}`, which you run \
 with your Bash tool. Each call does one thing and shows you exactly what you would see on screen:
 
-  {play} 'look'                     where you are, who and what is near you, the doors
+{commands}
+
+Every command carries --think: a sentence or two in your own voice as a player at the screen, saying what you \
+make of what is happening and why you do this next. For example:
+  {play} 'look' --think 'I have just arrived. Before I do anything I want to see who is around.'
+Use single quotes around each argument. Run one command at a time and read what comes back before the next.
+
+How you play: you are a new player who wants to understand the story and decide for yourself. Read what people say, \
+what you read and what your journal tells you. Pick a topic when you want to know something, as a player would. \
+Never try to test or break the game.{steer}
+
+Milestones: whenever your journal changes, the game pauses and asks you four questions: what is going on, what you \
+are expected to do next and where, what options you have, and whether there is any word, name, person or thing you \
+do not understand. Answer them honestly from what the game has shown you, in your own words, numbered, with \
+  {play} 'answer' '1. ... 2. ... 3. ... 4. ...' --think '...'
+Say plainly when you do not know something; never guess to fill a gap. The game accepts nothing else until you answer.
+
+When the quest ends, the game asks for your notes: what you now know and have, as you would tell a friend picking \
+up your save. Give them with answer, then stop. If you are truly stuck, or the game says you have used all your \
+commands, give the same notes with
+  {play} end '...'
+and stop.
+"""
+
+COMMANDS_RECORD = """  {play} 'look'                     where you are, who and what is here, the doors, the quest markers
+  {play} 'journal'                  your journal entries, objectives, what each marker points at, what you carry
+  {play} 'go <place | person | thing | marker N>'   travel there (no need to walk the way)
+  {play} 'talk <person>'            start a conversation: the topics you can pick
+  {play} 'say <topic or its number>'   pick a topic while talking; add pass or fail when the game asks for a check
+  {play} 'take <thing>'   {play} 'use <thing or door>'   {play} 'read <thing>'
+  {play} 'fight <who> win|lose'     you choose how a fight ends (losing means you load your last save)
+  {play} 'pick <lock> win|fail'   {play} 'pickpocket <person> win|fail'"""
+
+COMMANDS_FORMS = """  {play} 'look'                     where you are, who and what is near you, the doors
   {play} 'journal'                  your quests: journal entries and active objectives
   {play} 'magic'                    the spells and powers you have learned on your travels
-  {play} 'map'                      your position, each quest marker (where, how far, which way, what it marks), places you know
+  {play} 'map'                      your position, each quest marker (where, how far, which way, what it marks)
   {play} 'go <marker N | person | thing | place>'   travel there (no need to walk the way)
   {play} 'talk <person>'            start a conversation: their greeting and the topics you can pick
   {play} 'say <topic, answer or its number>'      pick a topic or an answer while talking
   {play} 'take <thing>'   {play} 'use <thing or door>'   {play} 'wait'
   {play} 'fight <who> win|lose|flee'    you choose how a fight ends (losing means you load your last save)
-  {play} 'pick <lock> win|fail'   {play} 'pickpocket <person>'
-
-Every command carries --think: a sentence or two in your own voice as a player at the screen, saying what you \
-make of what is happening, what you want, and why you are doing this next. For example:
-  {play} 'look' --think 'I just woke up somewhere strange. Before I do anything I want to see who is around.'
-Use single quotes around each argument. Run one command at a time and read what comes back before the next.
-
-How you play: {temperament} Play as yourself, a real player meeting this game for the first time: follow what \
-interests you, form your own opinions about the people and the story, and do not try to test or break the game.
-
-A quest that ends may be followed by another: more may follow after a quest completes. Keep playing for as long \
-as your journal holds an active objective or something new has started; check the journal after each ending. Stop \
-only when nothing is left to do (no active objective and nothing new begins), when you are truly stuck (say why in \
-your last --think), or when the game says you have used all your commands. Then give your own open take, in your \
-own words, as long as it needs to be:
-  {play} end --take '...'
-Say how it felt to play, whether you understood what was going on and who people were, whether it was fun, \
-whether you want to know what happens next, what made no sense, and anything else you noticed or would want. \
-Then stop; you may be asked a few short questions afterwards.
-"""
+  {play} 'pick <lock> win|fail'   {play} 'pickpocket <person>'"""
 
 
 know_text = S.know_text
 
 
-def brief(play: str, player: str, know: str) -> str:
-    return BRIEF.format(play=play, temperament=TEMPERAMENTS[player],
-                        know=(know + "\n") if know else "You know nothing else about this game.")
+def agent_settings(path: Path = AGENT) -> tuple[str, str | None]:
+    """The paper player's model and effort, from its agent file's frontmatter."""
+    text = Path(path).read_text(encoding="utf-8")
+    head = text.split("---", 2)[1] if text.startswith("---") else ""
+    kv = dict((k.strip(), v.strip()) for k, _, v in (ln.partition(":") for ln in head.splitlines()) if _)
+    if not kv.get("model"):
+        raise SystemExit(f"{path}: no model in its frontmatter")
+    return kv["model"], kv.get("effort")
+
+
+def steer_text(way: str | None = None, choose: str | None = None) -> str:
+    out = ""
+    if way:
+        out += f" The game expects a character of your build to favour this way through where there is a choice: {way}."
+    if choose:
+        out += f" Where the quest offers a choice of how it ends, you mean to take this one: {choose}."
+    return out
+
+
+def brief(play: str, know: str, mode: str = "forms", way: str | None = None, choose: str | None = None) -> str:
+    cmds = (COMMANDS_RECORD if mode == "record" else COMMANDS_FORMS).format(play=play)
+    return BRIEF.format(play=play, commands=cmds, steer=steer_text(way, choose),
+                        know=(f"What you already know: {know}\n") if know else "You know nothing else about this game.")
 
 
 def wrapper_argv(argv: list[str], sess: str, py: str | None = None) -> list[str]:
-    """The command the `play` wrapper runs for the player's arguments: each argument stays one literal argument."""
+    """The command the `play` wrapper runs for the player's arguments: the words before --think are the one
+    command (`play 'answer' '1. ...'` and `play 'answer 1. ...'` alike), each kept a literal argument."""
     py = py or sys.executable
-    if argv and argv[0].split(" ", 1)[0] in ("end", "answers") and " " in argv[0]:
-        argv = shlex.split(argv[0]) + argv[1:]      # `play 'end --take ...'` quoted whole: split it, never run it
-    if argv[:1] == ["end"]:
-        return [py, "-m", "tools.playtest", "end", sess, "--ask-later", *argv[1:]]
-    if argv[:1] == ["answers"]:
-        return [py, "-m", "tools.playtest", "end", sess, "--answers", " ".join(argv[1:])]
-    return [py, "-m", "tools.playtest", "do", sess, *argv]
+    think, pos, i = None, [], 0
+    while i < len(argv):
+        if argv[i] == "--think" and i + 1 < len(argv):
+            think, i = argv[i + 1], i + 2
+            continue
+        if argv[i].startswith("--think="):
+            think, i = argv[i][8:], i + 1
+            continue
+        pos.append(argv[i])
+        i += 1
+    cmd = " ".join(pos).strip()
+    if cmd.split(" ", 1)[0] == "end":
+        notes = cmd[3:].strip()
+        for flag in ("--notes", "--take"):
+            if notes.startswith(flag):
+                notes = notes[len(flag):].strip()
+        if len(notes) > 1 and notes[0] == notes[-1] and notes[0] in "'\"":
+            notes = notes[1:-1]
+        return [py, "-m", "tools.playtest", "end", sess, "--notes", notes]
+    return [py, "-m", "tools.playtest", "do", sess, cmd] + (["--think", think] if think is not None else [])
 
 
 def wrapper(folder: Path) -> Path:
@@ -111,8 +148,9 @@ os.execv(argv[0], argv)
     return play
 
 
-def claude_cmd(play: Path, system: str, model: str, prompt: str) -> list[str]:
+def claude_cmd(play: Path, system: str, model: str, prompt: str, effort: str | None = None) -> list[str]:
     return ["claude", "-p", prompt, "--output-format", "stream-json", "--verbose", "--model", model,
+            *(["--effort", effort] if effort else []),
             "--system-prompt", system, "--tools", "Bash", "--allowedTools", f"Bash({play}:*)",
             "--permission-mode", "dontAsk", "--setting-sources", "project", "--strict-mcp-config",
             "--no-session-persistence"]
@@ -155,63 +193,88 @@ def run_claude(cmd: list[str], stream_path: Path, cwd: Path, timeout: int = 3600
     return {**result, "stopped": stopped}
 
 
-def run(forms, player: str, model: str = "sonnet", know: str | None = None, names=(), at=None, start=None,
-        source="designed", sheet=None, max_commands=40, use_db=True, root: Path = S.RUNS, after=()) -> Path:
-    if player not in TEMPERAMENTS:
-        raise SystemExit(f"--player is one of {', '.join(TEMPERAMENTS)}")
+def run(forms, know: str | None = None, names=(), at=None, start=None, source="designed", sheet=None,
+        max_commands=60, use_db=True, root: Path = S.RUNS, after=()) -> Path:
+    """A form-based run (moments 2 and 3): the paper player plays the compiled forms."""
+    model, effort = agent_settings()
+
+    def make():
+        folder, screen = S.new(forms, source=source, start=start, at=at, sheet=sheet, know=know, names=names,
+                               use_db=use_db, max_commands=max_commands, root=root, model=model, effort=effort,
+                               after=after)
+        return folder, screen, brief("{play}", S.known(folder), "forms")
+    return _play(make, model, effort, S)
+
+
+def run_record(path, know: str | None = None, way: str | None = None, choose: str | None = None,
+               max_commands=60, root: Path = S.RUNS) -> Path:
+    """A record run (moment 1): the paper player plays the record's YAML view."""
+    from tools.playtest import record as R
+    model, effort = agent_settings()
+
+    def make():
+        folder, screen = R.new(path, root=root, know=know, way=way, choose=choose, model=model, effort=effort,
+                               max_commands=max_commands)
+        sess = json.loads((folder / "session.json").read_text(encoding="utf-8"))
+        return folder, screen, brief("{play}", sess.get("know_text") or "", "record", way, choose)
+    return _play(make, model, effort, R)
+
+
+def _play(make, model, effort, mod) -> Path:
     for i in range(ATTEMPTS):
-        folder, played = _attempt(forms, player, model, know, names, at, start, source, sheet, max_commands,
-                                  use_db, root, after)
+        folder, played = _attempt(make, model, effort, mod)
         if played or i == ATTEMPTS - 1:
             break
         shutil.rmtree(folder, ignore_errors=True)      # refused before its first command: nothing to keep
     return folder                                      # the last refused attempt stays, its run.json saying why
 
 
-def _attempt(forms, player, model, know, names, at, start, source, sheet, max_commands, use_db, root, after):
-    folder, screen = S.new(forms, player=player, source=source, start=start, at=at, sheet=sheet, know=know,
-                           names=names, use_db=use_db, max_commands=max_commands, root=root, model=model,
-                           after=after)
+def _attempt(make, model, effort, mod):
+    folder, screen, system = make()
     play = wrapper(folder)
     room = Path(tempfile.mkdtemp(prefix="pt-"))
-    system = brief(str(play), player, S.known(folder))
+    system = system.replace("{play}", str(play))
     prompt = f"Your game has just begun. This is what you see:\n\n{screen}\n\nPlay."
-    (folder / "brief.md").write_text(system + "\n---\n" + prompt + "\n", encoding="utf-8")
+    (folder / "brief.md").write_text(system.replace(str(play), "play") + "\n---\n" + prompt + "\n", encoding="utf-8")
     t0 = time.time()
-    res = run_claude(claude_cmd(play, system, model, prompt), folder / "stream.jsonl", room)
+    res = run_claude(claude_cmd(play, system, model, prompt, effort), folder / "stream.jsonl", room)
     usage = res.get("usage") or {}
     text = str(res.get("result") or "")
     err = text if res.get("stopped") == "error" else None
-    run = S.write_run(folder, {"player_error": err, "stopped": res.get("stopped"), "subtype": res.get("subtype"),
-                               "cost_usd": res.get("total_cost_usd"), "minutes": round((time.time() - t0) / 60, 1),
-                               "turns": res.get("num_turns"), "tokens": {k: usage.get(k) for k in (
-                                   "input_tokens", "output_tokens", "cache_read_input_tokens",
-                                   "cache_creation_input_tokens")}})
-    if S.has_take(folder) and not S.has_answers(folder):
+    run = mod.write_run(folder, {"player_error": err, "stopped": res.get("stopped"), "subtype": res.get("subtype"),
+                                 "model": model, "effort": effort,
+                                 "cost_usd": res.get("total_cost_usd"), "minutes": round((time.time() - t0) / 60, 1),
+                                 "turns": res.get("num_turns"), "tokens": {k: usage.get(k) for k in (
+                                     "input_tokens", "output_tokens", "cache_read_input_tokens",
+                                     "cache_creation_input_tokens")}})
+    played = len(run["commands_used"]) if "commands_used" in run else run["counts"]["commands"]
+    if mod is S and played and not S.has_notes(folder):
         costs = []
-        ask_questions(folder, system, model, room, cost=costs)
+        ask_questions(folder, system, model, room, cost=costs, effort=effort)
         run = S.write_run(folder, {"cost_usd": round((res.get("total_cost_usd") or 0) + sum(costs), 6)})
     shutil.rmtree(room, ignore_errors=True)
     shutil.rmtree(play.parent, ignore_errors=True)
-    return folder, run["counts"]["commands"] > 0
+    return folder, played > 0
 
 
 def questions_prompt(folder: Path) -> str:
-    """The final turn: what the player did and said, their take, then the standing questions, numbered."""
+    """The closing turn of a run that stopped without notes: what the player did and thought, then the questions on
+    what they understood, numbered."""
     rows = [r for r in S.transcript(folder) if r["think"] is not None and not r.get("refused")]
     played = "\n".join(f"> {r['command']}\n  (you thought: {r['think']})" for r in rows)
-    take = (Path(folder) / "take.md").read_text(encoding="utf-8").strip()
-    return ("You have finished playing. This is what you did:\n\n" + played + "\n\nThis is the take you gave:\n\n" +
-            take + "\n\nNow answer these short questions, each by its number, in one reply, in your own words. "
-            "Answer every one; the take does not replace them.\n\n" + S.numbered_questions())
+    return ("You have stopped playing. This is what you did:\n\n" + played + "\n\nNow answer these short "
+            "questions, each by its number, in one reply, in your own words, from what the game showed you.\n\n" +
+            S.numbered_questions())
 
 
-def ask_questions(folder: Path, system: str, model: str, room: Path, ask=None, cost: list | None = None) -> str:
-    """Ask the standing questions as a separate final turn after the take is stored, and store whatever comes back."""
+def ask_questions(folder: Path, system: str, model: str, room: Path, ask=None, cost: list | None = None,
+                  effort: str | None = None) -> str:
+    """Ask the closing questions as a separate final turn, and store whatever comes back."""
     prompt = questions_prompt(folder)
     if ask is None:
         def ask(p):
             cmd = ["claude", "-p", p, "--output-format", "stream-json", "--verbose", "--model", model,
+                   *(["--effort", effort] if effort else []),
                    "--system-prompt", system, "--tools", "", "--permission-mode", "dontAsk",
                    "--setting-sources", "project", "--strict-mcp-config", "--no-session-persistence"]
             res = run_claude(cmd, Path(folder) / "answers-stream.jsonl", room)

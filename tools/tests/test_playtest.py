@@ -30,44 +30,57 @@ def game(f=None, **kw):
     return g
 
 
-def new_session(tmp_path, *forms):
+ANSWER = "answer 1. I serve the Reed. 2. Find Sample-Contact. 3. Go there. 4. Nothing."
+
+
+def new_session(tmp_path, *forms, answered=True):
+    """A session of the example; with `answered` its opening milestone is answered (one transcript row)."""
     paths = []
     for i, f in enumerate(forms):
         p = tmp_path / f"form{i}.json"
         p.write_text(json.dumps(f))
         paths.append(str(p))
-    return S.new(paths or [str(EXAMPLE)], names=[str(NAMES)], at="door.example.hold", use_db=False,
-                 root=tmp_path / "runs")
+    folder, screen = S.new(paths or [str(EXAMPLE)], names=[str(NAMES)], at="door.example.hold", use_db=False,
+                           root=tmp_path / "runs")
+    while answered and json.loads((folder / "session.json").read_text())["pending"]:
+        assert S.do(folder, ANSWER, think="I answer the game's questions")[0] == 0
+    return folder, screen
 
 
 def test_example_played_to_its_ending_through_do(tmp_path):
-    folder, screen = new_session(tmp_path)
+    folder, screen = new_session(tmp_path, answered=False)
     assert "Gang Boss walks up to you and speaks." in screen
     assert "New objective: Find Sample-Contact in Lilmoth." in screen
-    steps = [("map", "Marker 1: Sample-Contact (a person)"), ("go marker 1", "Sample House, Lilmoth"),
+    assert "1. What is going on?" in screen and "answer '1. ..." in screen          # the opening milestone
+    code, out = S.do(folder, "map", think="I want to see the map")
+    assert code == 2 and "Answer the four questions first" in out                 # the gate
+    steps = [(ANSWER, "Journal updated"), (ANSWER, "Noted. The game goes on."),
+             ("map", "Marker 1: Sample-Contact (a person)"), ("go marker 1", "Sample House, Lilmoth"),
              ("talk Sample-Contact", "1. I was told you have work."),
              ("say I was told you have work.", "[not yet written; the gist:] Work for those"),
-             ("say 1", "1. I will serve."), ("say I will serve.", "Quest completed: Off the Pier"),
-             ("journal", "Sample-Contact took me in. I serve the Reed now.")]
+             (ANSWER, "Noted. The game goes on."), ("say 1", "1. I will serve."), ("say I will serve.", "Quest completed: Off the Pier"),
+             ("journal", "The game is paused at a milestone"),
+             ("answer 1. I serve the Reed. 2. Nothing. 3. None. 4. None.", "Write your notes"),
+             ("answer I joined the Reed through Sample-Contact.", "Your notes are kept")]
     for cmd, want in steps:
         code, out = S.do(folder, cmd, think=f"I do {cmd} because it seems the next step")
-        assert code == 0 and want in out, (cmd, out)
-    rows = S.transcript(folder)
-    assert [r["command"] for r in rows][0] == "(new game)" and len(rows) == len(steps) + 1
-    assert rows[-1]["summary"]["stages"] == {"quest.example.opening": 40}
-    assert S.end(folder, take="It was short and clear.")[0] == 0
-    assert S.end(folder, answers="1. Serve the Reed.")[0] == 0
+        assert want in out, (cmd, out)
+    sess = json.loads((folder / "session.json").read_text())
+    assert [m["kind"] for m in sess["milestones"]] == ["start", "stage", "stage", "ending"] and sess["notes"].startswith("I joined")
+    md = (folder / "milestones.md").read_text()
+    assert "| Next | (no information plan) | Nothing. |" in md and "Stage 40 (ending)" in md
+    assert (folder / "notes.md").read_text().startswith("I joined the Reed")
     run = json.loads((folder / "run.json").read_text())
-    assert run["ended"] == "all quests ended (quest.example.opening completed)" and run["counts"] == {"commands": 7, "stalls": 0, "harness_errors": 0}
-    assert (folder / "take.md").read_text().startswith("It was short")
+    assert run["ended"] == "all quests ended (quest.example.opening completed)" and run["counts"]["commands"] == 6
+    assert run["milestones"] == 4 and run["notes"] is True
 
 
 def test_a_command_without_think_is_refused(tmp_path):
     folder, _ = new_session(tmp_path)
     assert S.do(folder, "look", think="")[0] == 2
     assert S.do(folder, "look", think=None)[0] == 2
-    assert [r["command"] for r in S.transcript(folder)] == ["(new game)", "look", "look"]      # each refusal has a row
-    assert S.transcript(folder)[1]["result"].startswith("Refused")
+    assert [r["command"] for r in S.transcript(folder)] == ["(new game)", ANSWER, ANSWER, "look", "look"]   # a refusal's row
+    assert S.transcript(folder)[3]["result"].startswith("Refused")
 
 
 def test_command_limit(tmp_path):
@@ -77,7 +90,7 @@ def test_command_limit(tmp_path):
     (folder / "session.json").write_text(json.dumps(sess))
     assert S.do(folder, "look", "first look")[0] == 0
     code, out = S.do(folder, "look", "again")
-    assert code == 2 and "give your take" in out
+    assert code == 2 and "give your notes" in out
 
 
 # -- the vocabularies ---------------------------------------------------------------------------------------------
@@ -327,12 +340,12 @@ def test_the_world_database_gives_the_talkers_standing_where_a_quest_is():
 
 def test_a_run_over_chained_quests_is_not_over_when_the_first_ends(tmp_path):
     from tools.playtest import runner
-    assert "more may follow after a quest completes" in runner.brief("play", "careful", "")
-    assert "active objective" in runner.brief("play", "careful", "")
+    b = runner.brief("play", "", "forms")
+    assert "four questions" in b and "notes" in b and "careful" not in b
     second = form()
     second["quest"]["id"] = "quest.example.second"
     second["quest"]["start"] = {"by": "quest_stage", "quest": Q, "quest_stage": 40, "stage": 10}
-    sess = {"forms": [form(), second], "broken": None, "take": "t", "max_commands": 40}
+    sess = {"forms": [form(), second], "broken": None, "notes": "t", "max_commands": 40}
     st = {"commands": 5, "quests": {Q: {"ended": "completed"}}}
     assert S.how_ended(sess, st) == f"stopped by the player ({Q} completed, quest.example.second not started)"
     st["quests"]["quest.example.second"] = {"ended": None}
@@ -341,7 +354,7 @@ def test_a_run_over_chained_quests_is_not_over_when_the_first_ends(tmp_path):
     assert S.how_ended(sess, st) == f"all quests ended ({Q} completed, quest.example.second failed)"
     st["commands"] = 40
     st["quests"]["quest.example.second"] = {"ended": None}
-    sess["take"] = None
+    sess["notes"] = None
     assert S.how_ended(sess, st).startswith("command limit")
 
 
@@ -381,12 +394,11 @@ def test_the_standing_questions_are_a_separate_numbered_final_turn(tmp_path):
     from tools.playtest import runner
     folder, _ = new_session(tmp_path)
     S.do(folder, "look", think="I look around")
-    code, out = S.end(folder, take="A short take.", ask=True)
-    assert code == 0 and "answer these" not in out
     asked = []
     text = runner.ask_questions(folder, "sys", "m", tmp_path, ask=lambda p: asked.append(p) or "1. Go on.\n2. Nobody.")
-    assert "1. What do you think you are meant to do next?" in asked[0] and "A short take." in asked[0]
-    assert "4. What would you tell the writer?" in asked[0] and "look" in asked[0]
+    assert "1. What has happened in the quest so far" in asked[0] and "look" in asked[0]
+    assert "4. Is there any word, name, person or thing you never understood?" in asked[0]
+    assert "fun" not in asked[0] and "writer" not in asked[0]
     assert text.startswith("1. Go on.") and (folder / "answers.md").read_text().startswith("1. Go on.")
 
 
@@ -860,9 +872,9 @@ def test_every_command_counts_toward_the_limit_and_a_refusal_has_a_row(tmp_path)
     assert code == 2 and "used all 3 commands" in text
     assert json.loads((folder / "session.json").read_text())["state"]["commands"] == 3
     rows = S.transcript(folder)
-    assert [r["command"] for r in rows] == ["(new game)", "frobnicate", "look", "look", "look"]
-    assert rows[2]["result"].startswith("Refused: every command needs --think")
-    assert rows[4]["result"].startswith("You have used all 3 commands")
+    assert [r["command"] for r in rows] == ["(new game)", ANSWER, ANSWER, "frobnicate", "look", "look", "look"]
+    assert rows[4]["result"].startswith("Refused: every command needs --think")
+    assert rows[6]["result"].startswith("You have used all 3 commands")
     assert S.write_run(folder)["counts"]["commands"] == 2
 
 
@@ -886,11 +898,12 @@ def test_the_wrapper_passes_an_argument_through_as_one_literal():
     from tools.playtest import runner
     got = runner.wrapper_argv(["go $(cat /etc/hostname)"], "/s", py="py")
     assert got == ["py", "-m", "tools.playtest", "do", "/s", "go $(cat /etc/hostname)"]
-    assert runner.wrapper_argv(["end", "--take", "x"], "/s", py="py")[3:] == ["end", "/s", "--ask-later", "--take", "x"]
-    assert runner.wrapper_argv(["answers", "1. a", "2. b"], "/s", py="py")[-2:] == ["--answers", "1. a 2. b"]
-    # `play 'end --take ...'` quoted whole is a take, its words split as text and never run
-    assert runner.wrapper_argv(["end --take 'It was $(fun)'", "--think", "done"], "/s", py="py")[3:] == [
-        "end", "/s", "--ask-later", "--take", "It was $(fun)", "--think", "done"]
+    assert runner.wrapper_argv(["end", "x y"], "/s", py="py")[3:] == ["end", "/s", "--notes", "x y"]
+    assert runner.wrapper_argv(["answer", "1. a", "2. b", "--think", "t"], "/s", py="py")[3:] == [
+        "do", "/s", "answer 1. a 2. b", "--think", "t"]
+    # `play 'end ...'` quoted whole is notes, its words kept as text and never run
+    assert runner.wrapper_argv(["end 'It was $(fun)'", "--think", "done"], "/s", py="py")[3:] == [
+        "end", "/s", "--notes", "It was $(fun)"]
 
 
 def test_the_wrapper_script_is_python_without_a_shell(tmp_path):
@@ -928,7 +941,7 @@ def test_a_run_that_is_always_refused_keeps_its_last_attempt(tmp_path, monkeypat
         return f, False
 
     monkeypatch.setattr(runner, "_attempt", attempt)
-    got = runner.run([], "careful")
+    got = runner.run([])
     assert got == folders[-1] and got.exists()
     assert len(folders) == runner.ATTEMPTS and not any(f.exists() for f in folders[:-1])
 

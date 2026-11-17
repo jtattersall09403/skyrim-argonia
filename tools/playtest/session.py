@@ -1,9 +1,12 @@
 """A playtest session and its run folder (docs/design/paper-playtest.md).
 
-A session is a run folder `story/playtests/<quest id>/<utc>-<player>-<designed|built>/` holding:
-session.json (the forms played, their hash, the world snapshot, the state), transcript.jsonl (one line per command:
-time, think, command, result, a state summary), take.md and answers.md (the player's words), stream.jsonl (the
-runner's raw model stream) and run.json (the run's counts, cost and how it ended).
+A session is a run folder `story/playtests/<quest id>/<utc>-<written|built>/` holding: session.json (the forms
+played, their hash, the world snapshot, the state), transcript.jsonl (one line per command: time, think, command,
+result, a state summary), milestones.md and milestones.json (each milestone's plan beside the player's four
+answers), notes.md (what the player knew and had at the end), answers.md (the closing questions of a run that
+stopped without notes), stream.jsonl (the runner's raw model stream) and run.json (the run's counts, cost and how it
+ended). Every journal change is a milestone (tools/playtest/milestone.py): the game refuses every command but
+`answer` until its four questions are answered, and after the last ending it asks for the player's notes.
 """
 from __future__ import annotations
 
@@ -14,17 +17,16 @@ import time
 from pathlib import Path
 
 from tools.playtest import game as G
+from tools.playtest import milestone as M
 from tools.playtest import world as W
 
 REPO = Path(__file__).resolve().parents[2]
 RUNS = REPO / "story/playtests"
 QUESTIONS = (
-    "What do you think you are meant to do next?",
-    "Who do you work for now, if anyone, and why?",
-    "What was the most confusing moment?",
-    "What would you tell the writer?",
-    "If you made a choice: what do you think you gained by it, and what did you give up, in what you can now do, "
-    "get or reach? Would you choose differently for the reward?",
+    "What has happened in the quest so far, as you understand it?",
+    "Who are you working for or with, if anyone, and why?",
+    "What are you expected to do next, and where?",
+    "Is there any word, name, person or thing you never understood?",
 )
 STALL_VIEWS = ("journal", "map")
 
@@ -60,13 +62,13 @@ def utc_stamp() -> str:
 
 
 def know_text(path: str | None) -> str:
-    """'What you know so far' for a later quest: a text file as it is, or the journal of quest forms (each shown
+    """'What you know so far' for a later quest: a text file as it is (text that names no file, as it is), or the journal of quest forms (each shown
     stage that is not a failure, in order), told as what the player remembers."""
     if not path:
         return ""
     p = Path(path)
     if p.suffix != ".json" and not p.is_dir():
-        return p.read_text(encoding="utf-8").strip()
+        return p.read_text(encoding="utf-8").strip() if p.is_file() else str(path).strip()
     forms, _ = load_forms([str(p)])
     out = []
     for f in forms:
@@ -86,9 +88,31 @@ def journal_known(g: G.Game, quests: list[str]) -> str:
     return "What you know so far, from your journal: " + " ".join(out)
 
 
-def new(forms_paths, *, player="hand", source="designed", start=None, at=None, sheet=None, know=None,
+def plans(forms: list[dict], use_db: bool) -> dict:
+    """Each quest's information plan by stage number and its terms, from its record in the story database (empty
+    without one)."""
+    if not use_db:
+        return {}
+    out = {}
+    try:
+        from tools.argonia_world import db
+        from tools.argonia_world import quest_record as QR
+        w = db.open()
+        for f in forms:
+            qid = f["quest"]["id"]
+            try:
+                q = QR.export(w, qid)
+            except KeyError:
+                continue
+            out[qid] = {str(s["id"]): M.plan_of(s, q.get("terms")) for s in q.get("stages") or []}
+    except Exception as e:      # noqa: BLE001 -- a plan is a help to the grader, never a reason to stop the run
+        out["_error"] = str(e)
+    return out
+
+
+def new(forms_paths, *, source="designed", start=None, at=None, sheet=None, know=None,
         names=(), use_db=True, max_commands=G.MAX_COMMANDS, root: Path = RUNS, model=None,
-        after=()) -> tuple[Path, str]:
+        effort=None, after=()) -> tuple[Path, str]:
     """Make a session (its run folder) and return (folder, the opening screen). With `after`, the game first plays
     those quests to a completed ending by itself (tools/playtest/walk.py) and the player begins from the state they
     leave; what the player knows is built from the journal entries met on that path."""
@@ -109,17 +133,23 @@ def new(forms_paths, *, player="hand", source="designed", start=None, at=None, s
         screen = g.begin(start=start, at=at)
     known = " ".join(x for x in (know_text(know), journal_known(g, after) if after else "") if x)
     qid = start or next((f["quest"]["id"] for f in forms if f["quest"]["id"] not in after), forms[0]["quest"]["id"])
-    folder = Path(root) / qid / f"{utc_stamp()}-{player}-{source}"
+    moment = "written" if source == "designed" else source
+    folder = Path(root) / qid / f"{utc_stamp()}-{moment}"
     n = 1
     while folder.exists():
         n += 1
         folder = folder.with_name(f"{folder.name.split('~')[0]}~{n}")
     folder.mkdir(parents=True)
-    sess = {"quest": qid, "player": player, "source": source, "model": model, "form_files": files,
+    seen = {q: list(v["done"]) for q, v in g.s["quests"].items()} if after else {}
+    pending = _milestones(g, seen)
+    sess = {"quest": qid, "source": source, "moment": moment, "model": model, "effort": effort, "form_files": files,
             "forms_hash": forms_hash(forms), "start": start, "at": at, "know": know, "know_text": known,
             "after": after, "after_path": [{"command": c, "result": r} for c, r in path],
             "max_commands": max_commands, "created": utc_stamp(), "forms": forms, "world": snap,
-            "state": g.s, "broken": None, "take": None, "answers": None}
+            "state": g.s, "broken": None, "notes": None, "answers": None, "plans": plans(forms, use_db),
+            "milestones": [], "pending": pending, "want_notes": False}
+    if pending:
+        screen += "\n\n" + M.ask(pending[0])
     _save(folder, sess)
     _append(folder, {"time": utc_stamp(), "think": None, "command": "(new game)", "result": screen,
                      "summary": g.summary()})
@@ -139,6 +169,66 @@ def _append(folder: Path, row: dict) -> None:
         fh.write(json.dumps(row, ensure_ascii=False) + "\n")
 
 
+def _milestones(g: G.Game, before: dict) -> list[dict]:
+    """The journal changes since `before` (each quest's stages done then): one milestone per shown stage."""
+    out = []
+    for q in g.s["order"]:
+        f, st = g.forms[q], g.s["quests"][q]
+        old = before.get(q, [])
+        for n in st["done"]:
+            if n in old:
+                continue
+            stage = next(s for s in f["stages"] if s["number"] == n)
+            if not stage["shown"]:
+                continue
+            ending = stage["ending"] if stage["ending"] != "none" else None
+            first = not any(s["shown"] for s in f["stages"] if s["number"] in old) and n == next(
+                (m for m in st["done"] if next(s for s in f["stages"] if s["number"] == m)["shown"]), None)
+            objs = [o["text"] for o in f["objectives"] if n in o["shown_at"]] if not ending else []
+            out.append({"quest": q, "stage": n, "kind": "ending" if ending else "start" if first else "stage",
+                        "ending": ending, "title": f["quest"]["name"], "journal": stage["journal"],
+                        "objectives": objs})
+    return out
+
+
+def _keep_milestones(folder, sess) -> None:
+    rows = list(sess["milestones"]) + [dict(m, answers=None) for m in sess["pending"]]
+    for m in rows:
+        m.setdefault("plan", (sess.get("plans") or {}).get(m["quest"], {}).get(str(m["stage"])) or {})
+    M.write(folder, sess["quest"], rows)
+
+
+def _answer(folder, sess, command, think) -> tuple[int, str]:
+    text = command.strip()[len("answer"):].strip().strip("'\"")
+    if not text:
+        out = "Answer in words: answer '...'"
+    elif sess["pending"]:
+        m = sess["pending"].pop(0)
+        m["answers"], m["raw"] = M.split_answers(text), text
+        sess["milestones"].append(m)
+        g = G.Game(sess["forms"], sess["world"], state=sess["state"])
+        if sess["pending"]:
+            out = "Noted.\n\n" + M.ask(sess["pending"][0])
+        elif g.all_ended():
+            sess["want_notes"] = True
+            out = "Noted.\n\n" + M.NOTES_ASK
+        else:
+            out = "Noted. The game goes on."
+    elif sess["want_notes"]:
+        sess["want_notes"] = False
+        sess["notes"] = text
+        (Path(folder) / "notes.md").write_text(text + "\n", encoding="utf-8")
+        out = "Thank you. Your notes are kept; the game is over. You can stop now."
+    else:
+        out = "There is nothing to answer just now."
+    _save(folder, sess)
+    _keep_milestones(folder, sess)
+    _append(folder, {"time": utc_stamp(), "think": think, "command": command, "result": out, "summary": None,
+                     "answer": True})
+    write_run(folder)
+    return 0, out
+
+
 def do(folder, command: str, think: str) -> tuple[int, str]:
     """Apply one command; (exit code, the screen). 0 played, 2 refused, 3 a harness error (the run stops)."""
     sess = _load(folder)
@@ -154,16 +244,23 @@ def do(folder, command: str, think: str) -> tuple[int, str]:
 
     if sess["broken"]:
         return 3, f"HARNESS ERROR (the run has stopped): {sess['broken']}"
-    if sess["take"] is not None:
-        return 2, "You have given your take; the game is over."
-    st = sess["state"]
-    if st["commands"] >= sess["max_commands"]:
-        return refuse(f"You have used all {sess['max_commands']} commands. Stop playing now and give your take: "
-                      "play end --take '...'")
+    if sess["notes"] is not None:
+        return 2, "You have given your notes; the game is over."
     if not (think or "").strip():
         return refuse("Refused: every command needs --think: say what you believe is going on and why you do this.",
                       count=True)
+    if command.strip().lower().split(" ", 1)[0] == "answer":
+        return _answer(folder, sess, command, think)
+    if sess["pending"]:
+        return refuse(M.refusal())
+    if sess["want_notes"]:
+        return refuse(M.NOTES_ASK)
+    st = sess["state"]
+    if st["commands"] >= sess["max_commands"]:
+        return refuse(f"You have used all {sess['max_commands']} commands. Stop playing now and give your notes: "
+                      "play end '<what you now know and have>'")
     n = st["commands"] + 1
+    before = {q: list(v["done"]) for q, v in st["quests"].items()}
     try:
         g = G.Game(sess["forms"], sess["world"], state=st)
         screen = g.do(command)
@@ -174,8 +271,12 @@ def do(folder, command: str, think: str) -> tuple[int, str]:
         screen, summary, code = f"HARNESS ERROR (the run has stopped): {e}", None, 3
     else:
         sess["state"] = g.s
+        sess["pending"] += _milestones(g, before)
+        if sess["pending"]:
+            screen += "\n\n" + M.ask(sess["pending"][0])
     sess["state"]["commands"] = n
     _save(folder, sess)
+    _keep_milestones(folder, sess)
     _append(folder, {"time": utc_stamp(), "think": think, "command": command, "result": screen,
                      "summary": summary})
     return code, screen
@@ -185,40 +286,31 @@ def numbered_questions() -> str:
     return "\n".join(f"{i}. {qq}" for i, qq in enumerate(QUESTIONS, 1))
 
 
-def end(folder, take: str | None = None, answers: str | None = None, ask: bool = False) -> tuple[int, str]:
-    """Store the take (then the questions are shown, unless `ask`: the runner asks them as its own final turn) or the
-    answers."""
+def end(folder, notes: str | None = None, answers: str | None = None) -> tuple[int, str]:
+    """Store the notes of a player who stops before the end (stuck, or out of commands), or the answers to the
+    closing questions the runner asks of such a run."""
     sess = _load(folder)
-    if take is not None:
-        sess["take"] = take
-        (Path(folder) / "take.md").write_text(take.strip() + "\n", encoding="utf-8")
+    if notes is not None:
+        sess["notes"] = notes
+        (Path(folder) / "notes.md").write_text(notes.strip() + "\n", encoding="utf-8")
         _save(folder, sess)
         write_run(folder)
-        if ask:
-            return 0, "Thank you. Your take is kept; you can stop now."
-        return 0, ("Thank you. Now, briefly, answer these in one reply with play answers '...':\n" +
-                   numbered_questions())
+        return 0, "Thank you. Your notes are kept; you can stop now."
     if answers is not None:
-        if sess["take"] is None:
-            return 2, "Give your open take first: play end --take '...'"
         sess["answers"] = answers
         (Path(folder) / "answers.md").write_text(answers.strip() + "\n", encoding="utf-8")
         _save(folder, sess)
         write_run(folder)
         return 0, "Thank you. The session is closed; you can stop now."
-    return 2, "end needs --take or --answers"
+    return 2, "end needs notes"
 
 
 def known(folder) -> str:
     return _load(folder).get("know_text") or ""
 
 
-def has_take(folder) -> bool:
-    return _load(folder)["take"] is not None
-
-
-def has_answers(folder) -> bool:
-    return _load(folder)["answers"] is not None
+def has_notes(folder) -> bool:
+    return _load(folder).get("notes") is not None
 
 
 def transcript(folder) -> list[dict]:
@@ -254,7 +346,7 @@ def how_ended(sess: dict, st: dict) -> str:
         why = "all quests ended"
     elif st["commands"] >= sess["max_commands"]:
         why = "command limit"
-    elif sess["take"] is not None:
+    elif sess.get("notes") is not None:
         why = "stopped by the player"
     else:
         why = "open"
@@ -269,15 +361,18 @@ def run_record(folder, extra: dict | None = None) -> dict:
     old = json.loads((folder / "run.json").read_text()) if (folder / "run.json").exists() else {}
     st = sess["state"]
     how = how_ended(sess, st)
-    return {**old, "quest": sess["quest"], "player": sess["player"], "source": sess["source"],
-            "model": sess.get("model"), "form_files": [_rel(f) for f in sess["form_files"]],
+    cmds = [r["command"] for r in rows if r["think"] is not None and not r.get("refused")]
+    return {**old, "quest": sess["quest"], "moment": sess.get("moment"), "source": sess["source"],
+            "model": sess.get("model"), "effort": sess.get("effort"), "know": sess.get("know"),
+            "commands_used": cmds, "milestones": len(sess.get("milestones") or []), "form_files": [_rel(f) for f in sess["form_files"]],
             "forms_hash": sess["forms_hash"], "created": sess["created"],
-            "counts": {"commands": sum(1 for r in rows if r["think"] is not None and not r.get("refused")), "stalls": stalls(rows),
+            "counts": {"commands": sum(1 for r in rows if r["think"] is not None and not r.get("refused")
+                                       and not r.get("answer")), "stalls": stalls(rows),
                        "harness_errors": sum(1 for r in rows if r["result"].startswith("HARNESS ERROR"))},
             "stages": {q: v["done"] for q, v in st["quests"].items()}, "ended": how,
             "after": sess.get("after") or [],
             "names_from_file": sess["world"].get("from_names_file", []),
-            "take": sess["take"] is not None, "answers": sess["answers"] is not None, **(extra or {})}
+            "notes": sess.get("notes") is not None, "answers": sess["answers"] is not None, **(extra or {})}
 
 
 def write_run(folder, extra: dict | None = None) -> dict:

@@ -1,12 +1,16 @@
 """The paper playtest's command line (docs/design/paper-playtest.md).
 
+    python3 -m tools.playtest record <record.yaml> [--know <notes.md>] [--way <approach id>] [--choose <ending id>]
+                                     [--check] [--new]   # a headless run of the record; --check only validates it;
+                                                         # --new makes the session for a hand to play
     python3 -m tools.playtest new --forms <dir|files...> [--start <quest id>|--new-game] [--at <ref id>]
                                   [--sheet race=Argonian,sex=female,Speech=30] [--know <file>] [--names <file>...]
-                                  [--player hand] [--source designed|built] [--no-db] [--max-commands N]
+                                  [--source designed|built] [--no-db] [--max-commands N]
                                   [--after <quest id>...]   # those quests played to a completed ending first
     python3 -m tools.playtest do <session> "<command>" --think "<what I believe is going on and why I do this>"
-    python3 -m tools.playtest end <session> --take "<open take>" | --answers "<answers>"
-    python3 -m tools.playtest run --forms ... --player careful|impatient|wanderer|gainer [--model sonnet] [--know ...]
+    python3 -m tools.playtest end <session> --notes "<what I know and have>" | --answers "<answers>"
+    python3 -m tools.playtest run --forms ... [--know <notes.md>] [--after ...] [--source built]
+    (the player's model and effort for record and run: .claude/agents/paper-player.md)
     python3 -m tools.playtest probe [--model haiku]      # proves the player cannot read the repo
     python3 -m tools.playtest reach <forms...> | --compiled [--gate | --ratchet]   # each ending reachable? its path
     python3 -m tools.playtest page [--out <html>] [--runs <dir>]   # the owner's page for exploring the runs
@@ -18,6 +22,7 @@ import sys
 from pathlib import Path
 
 from tools.playtest import game as G
+from tools.playtest import record as R
 from tools.playtest import session as S
 
 
@@ -38,9 +43,17 @@ def _common(p):
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     sub = ap.add_subparsers(dest="cmd", required=True)
+    rr = sub.add_parser("record")
+    rr.add_argument("record")
+    rr.add_argument("--know", help="a file (or text) given to the player as what they already know")
+    rr.add_argument("--way", help="the approach id the player's build favours")
+    rr.add_argument("--choose", help="the ending id the player means to take")
+    rr.add_argument("--check", action="store_true", help="only validate the record: one line per fault")
+    rr.add_argument("--new", action="store_true", help="make the session and print its opening; play it with do")
+    rr.add_argument("--max-commands", type=int, default=60)
+    rr.add_argument("--out", default=str(S.RUNS), help="the runs folder (default story/playtests)")
     n = sub.add_parser("new")
     _common(n)
-    n.add_argument("--player", default="hand")
     n.add_argument("--max-commands", type=int, default=G.MAX_COMMANDS)
     d = sub.add_parser("do")
     d.add_argument("session")
@@ -48,15 +61,12 @@ def main(argv=None) -> int:
     d.add_argument("--think")
     e = sub.add_parser("end")
     e.add_argument("session")
-    e.add_argument("--take")
+    e.add_argument("--notes")
     e.add_argument("--answers")
-    e.add_argument("--ask-later", action="store_true", help="the runner asks the standing questions itself")
-    e.add_argument("--think", help="accepted and not kept: a take needs no think")
+    e.add_argument("--think", help="accepted and not kept: notes need no think")
     r = sub.add_parser("run")
     _common(r)
-    r.add_argument("--player", required=True)
-    r.add_argument("--model", default="sonnet")
-    r.add_argument("--max-commands", type=int, default=40)
+    r.add_argument("--max-commands", type=int, default=60)
     pr = sub.add_parser("probe")
     pr.add_argument("--model", default="haiku")
     rc = sub.add_parser("reach")
@@ -70,15 +80,33 @@ def main(argv=None) -> int:
     pg.add_argument("--runs", default=str(S.RUNS), help="the runs folder (default story/playtests)")
     a = ap.parse_args(argv)
     try:
+        if a.cmd == "record":
+            if a.check:
+                bad = R.check(R.load(a.record))
+                for b in bad:
+                    print(f"check: {b}")
+                print(f"check: {a.record}: " + (f"{len(bad)} fault(s)" if bad else "the paper game can play it"))
+                return 1 if bad else 0
+            if a.new:
+                folder, screen = R.new(a.record, root=Path(a.out), know=a.know, way=a.way, choose=a.choose,
+                                       max_commands=a.max_commands)
+                print(f"session: {folder}\n\n{screen}")
+                return 0
+            from tools.playtest import runner
+            folder = runner.run_record(a.record, know=a.know, way=a.way, choose=a.choose,
+                                       max_commands=a.max_commands, root=Path(a.out))
+            print(f"run: {folder}")
+            print((folder / "run.json").read_text())
+            return 0
         if a.cmd == "new":
-            folder, screen = S.new(a.forms, player=a.player, source=a.source, start=a.start, at=a.at,
+            folder, screen = S.new(a.forms, source=a.source, start=a.start, at=a.at,
                                    sheet=a.sheet, know=a.know, names=a.names, use_db=not a.no_db,
                                    max_commands=a.max_commands, root=Path(a.out), after=a.after)
             print(f"session: {folder}\n\n{screen}")
             return 0
         if a.cmd == "run":
             from tools.playtest import runner
-            folder = runner.run(a.forms, a.player, model=a.model, know=a.know, names=a.names, at=a.at,
+            folder = runner.run(a.forms, know=a.know, names=a.names, at=a.at,
                                 start=a.start, source=a.source, sheet=a.sheet, max_commands=a.max_commands,
                                 use_db=not a.no_db, root=Path(a.out), after=a.after)
             print(f"run: {folder}")
@@ -115,11 +143,14 @@ def main(argv=None) -> int:
                                                              f"a character of {', '.join(walk.SHEETS)}"))
         return 1 if bad else 0
     if a.cmd == "do":
-        code, screen = S.do(a.session, a.command, a.think)
+        code, screen = (R.do if R.is_session(a.session) else S.do)(a.session, a.command, a.think)
         print(screen)
         return code
     if a.cmd == "end":
-        code, screen = S.end(a.session, take=a.take, answers=a.answers, ask=a.ask_later)
+        if R.is_session(a.session):
+            code, screen = R.end(a.session, a.notes or a.answers or "")
+        else:
+            code, screen = S.end(a.session, notes=a.notes, answers=a.answers)
         print(screen)
         return code
     if a.cmd == "probe":

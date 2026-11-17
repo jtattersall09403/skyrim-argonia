@@ -173,6 +173,7 @@
   "shapeData",
   "stages",
   "endings",
+  "terms",
   "topics",
   "review"
  ],
@@ -378,6 +379,20 @@
       [
        "hidden"
       ]
+     ],
+     [
+      "info_going",
+      [
+       "information",
+       "going"
+      ]
+     ],
+     [
+      "info_next",
+      [
+       "information",
+       "next"
+      ]
      ]
     ],
     "conds": [],
@@ -402,6 +417,7 @@
      "learns",
      "directions",
      "actions",
+     "information",
      "ending",
      "endingId",
      "hidden",
@@ -805,6 +821,107 @@
        "acts": [],
        "order": [],
        "children": []
+      }
+     },
+     {
+      "rel": [
+       "information",
+       "ways"
+      ],
+      "mode": "list",
+      "key": null,
+      "node": {
+       "table": "quest_stage_info_way",
+       "pk": [
+        "quest_id",
+        "stages_ord",
+        "ord"
+       ],
+       "parent_cols": [
+        "quest_id",
+        "stages_ord"
+       ],
+       "fields": [
+        [
+         "value",
+         [
+          "<value>"
+         ]
+        ]
+       ],
+       "conds": [],
+       "acts": [],
+       "order": [],
+       "children": []
+      }
+     },
+     {
+      "rel": [
+       "information",
+       "carriers"
+      ],
+      "mode": "list",
+      "key": null,
+      "node": {
+       "table": "quest_stage_info_carrier",
+       "pk": [
+        "quest_id",
+        "stages_ord",
+        "ord"
+       ],
+       "parent_cols": [
+        "quest_id",
+        "stages_ord"
+       ],
+       "fields": [
+        [
+         "know",
+         [
+          "know"
+         ]
+        ]
+       ],
+       "conds": [],
+       "acts": [],
+       "order": [
+        "know",
+        "by"
+       ],
+       "children": [
+        {
+         "rel": [
+          "by"
+         ],
+         "mode": "list",
+         "key": null,
+         "node": {
+          "table": "quest_stage_info_carrier_by",
+          "pk": [
+           "quest_id",
+           "stages_ord",
+           "carriers_ord",
+           "ord"
+          ],
+          "parent_cols": [
+           "quest_id",
+           "stages_ord",
+           "carriers_ord"
+          ],
+          "fields": [
+           [
+            "value",
+            [
+             "<value>"
+            ]
+           ]
+          ],
+          "conds": [],
+          "acts": [],
+          "order": [],
+          "children": []
+         }
+        }
+       ]
       }
      }
     ]
@@ -2373,6 +2490,58 @@
     "order": [],
     "children": []
    }
+  },
+  {
+   "rel": [
+    "terms"
+   ],
+   "mode": "list",
+   "key": null,
+   "node": {
+    "table": "quest_term",
+    "pk": [
+     "quest_id",
+     "ord"
+    ],
+    "parent_cols": [
+     "quest_id"
+    ],
+    "fields": [
+     [
+      "term",
+      [
+       "term"
+      ]
+     ],
+     [
+      "meets",
+      [
+       "meets"
+      ]
+     ],
+     [
+      "told",
+      [
+       "told"
+      ]
+     ],
+     [
+      "ask",
+      [
+       "ask"
+      ]
+     ]
+    ],
+    "conds": [],
+    "acts": [],
+    "order": [
+     "term",
+     "meets",
+     "told",
+     "ask"
+    ],
+    "children": []
+   }
   }
  ],
  "inline_order": {
@@ -2498,6 +2667,12 @@
   ],
   ".stages[].successors[].when.all[].not": [
    "flag"
+  ],
+  ".stages[].information": [
+   "going",
+   "next",
+   "ways",
+   "carriers"
   ]
  }
 }

@@ -1,0 +1,225 @@
+# The paper game's fixture record (tools/playtest/record.py; tests in tools/tests/test_playtest_record.py): a small
+# new-world-style record (places by new-world id, placements anchored to a place with no `at`, `hooks` in place of
+# thing_hook rows) with a talk, a take, a locked chest, a read hook and a choice of two endings.
+id: quest.example.satchel
+code: EX01
+title: The Mender's Satchel
+line: quest.line.example
+group: local
+tier: 3
+status: concept
+settlement: yulca
+anchorPlaces: [yulca, yulca-hut]
+premise: Old Teeka's satchel is in Hanu-Mah's chest, and the letter in it decides whose it should be.
+start: 10
+recordStatus: design
+cast:
+- id: npc.example.teeka
+  name: Old Teeka
+- id: npc.example.hanu
+  name: Hanu-Mah
+things:
+- id: thing.example.chest
+  kind: container
+  name: Hanu-Mah's Chest
+- id: thing.example.satchel
+  kind: item
+  name: Mender's Satchel
+- id: thing.example.letter
+  kind: item
+  name: Letter in Teeka's Hand
+  text: Hanu, the satchel and all in it are yours when I am gone. You mend better than I ever did. - Teeka
+- id: thing.example.chest-key
+  kind: item
+  name: Key to Hanu-Mah's Chest
+placements:
+- ref: npc.example.teeka
+  kind: person
+  base: {kind: template_person, id: '160E6A:Black Marsh.esm'}
+  anchor: {place: yulca, rule: navmesh, need: a mender's mat under the stilt-house eaves}
+  placeName: Yulca
+- ref: npc.example.hanu
+  kind: person
+  base: {kind: template_person, id: '02A1EE:Black Marsh.esm'}
+  anchor: {place: yulca-hut, rule: navmesh, need: a hut on the west causeway}
+  placeName: Hanu-Mah's Hut
+- ref: thing.example.chest
+  kind: thing
+  base: {kind: existing_base, id: '09424C:Skyrim.esm'}
+  anchor: {place: yulca-hut, rule: surface, need: a chest by the sleeping mat}
+  lock: {level: novice, key: thing.example.chest-key}
+  owner: npc.example.hanu
+- ref: thing.example.satchel
+  kind: thing
+  base: {kind: template_item, id: '0A3D2D:Skyrim.esm'}
+  container: thing.example.chest
+- ref: thing.example.letter
+  kind: thing
+  base: {kind: item, id: thing.example.letter}
+  container: thing.example.chest
+  text: Hanu, the satchel and all in it are yours when I am gone. You mend better than I ever did. - Teeka
+- ref: thing.example.chest-key
+  kind: thing
+  base: {kind: item, id: thing.example.chest-key}
+  carriedBy: npc.example.hanu
+- ref: thing.example.lockpicks
+  kind: thing
+  base: {kind: item, id: item.lockpick}
+  anchor: {place: yulca-hut, rule: surface, need: a shelf by the door}
+  count: 3
+  name: Lockpick
+hooks:
+- {thing: thing.example.letter, hook: read, setsFlag: flag.example.letter-read}
+stages:
+- id: 10
+  place: yulca
+  journalText: Old Teeka, the mender of Yulca, says her satchel of needles and gut was carried off to Hanu-Mah's hut on
+    the west causeway. I'm to ask Hanu-Mah for it.
+  objectives:
+  - id: ask
+    objectiveText: Ask Hanu-Mah for Old Teeka's satchel.
+    target: npc.example.hanu
+  successors:
+  - to: 20
+    when:
+      topicHeardFrom: [topic.example.ask-satchel, npc.example.hanu]
+  - to: 30
+    when:
+      hasItem: [thing.example.satchel, 1]
+  information:
+    going: Old Teeka, Yulca's mender, has lost her satchel of tools to Hanu-Mah, who took it to her hut.
+    next: Go to Hanu-Mah's hut on the west causeway and ask her for the satchel.
+    ways: [ask Hanu-Mah for it]
+    carriers:
+    - {know: the satchel is Teeka's and Hanu-Mah has it, by: [journal, 'ask:topic.example.errand']}
+    - {know: ask Hanu-Mah at her hut, by: [objective, 'marker:npc.example.hanu']}
+- id: 20
+  place: yulca-hut
+  journalText: Hanu-Mah will not give up the satchel; she says Teeka promised it to her. It is in her locked chest, and
+    she keeps the key on her. I'm to get the satchel from the chest.
+  objectives:
+  - id: take
+    objectiveText: Take the satchel from Hanu-Mah's chest.
+    target: thing.example.chest
+  successors:
+  - to: 30
+    when:
+      hasItem: [thing.example.satchel, 1]
+  information:
+    going: Hanu-Mah says Teeka promised her the satchel, and will not hand it over.
+    next: Get the satchel out of Hanu-Mah's locked chest in her hut.
+    ways: [pick the chest's lock with the lockpicks on the shelf, lift the key from Hanu-Mah, kill her and take the key]
+    carriers:
+    - {know: Hanu-Mah claims Teeka promised it to her, by: [journal, 'line:topic.example.ask-satchel']}
+    - {know: the satchel is in the locked chest and the key is on her, by: [journal, 'name:thing.example.chest']}
+    - {know: lockpicks lie on the shelf, by: ['look:thing.example.lockpicks']}
+- id: 30
+  place: yulca-hut
+  journalText: I have the satchel. A letter in Teeka's hand lay beside it. I'm to read the letter.
+  objectives:
+  - id: read
+    objectiveText: Read the letter that lay with the satchel.
+    target: thing.example.letter
+  successors:
+  - to: 40
+    when:
+      flag: flag.example.letter-read
+  information:
+    going: The satchel is in my hands, and a letter from Teeka lay with it.
+    next: Read Teeka's letter.
+    ways: [read the letter]
+    carriers:
+    - {know: there is a letter to read, by: [journal, objective]}
+- id: 40
+  place: yulca-hut
+  journalText: Teeka's letter leaves the satchel to Hanu-Mah when she is gone. Teeka is not gone. I'm to decide whose
+    the satchel is, and give it to Teeka or back to Hanu-Mah.
+  objectives:
+  - id: give
+    objectiveText: Give the satchel to Old Teeka or back to Hanu-Mah.
+    target: npc.example.teeka, npc.example.hanu
+  successors:
+  - to: 90
+    when:
+      all:
+      - topicHeardFrom: [topic.example.give-teeka, npc.example.teeka]
+      - hasItem: [thing.example.satchel, 1]
+  - to: 91
+    when:
+      all:
+      - topicHeardFrom: [topic.example.give-hanu, npc.example.hanu]
+      - hasItem: [thing.example.satchel, 1]
+  information:
+    going: Teeka wrote that the satchel goes to Hanu-Mah when she dies, but she is still alive and wants it back.
+    next: Decide whose the satchel is and give it to that one.
+    ways: [give it to Old Teeka in Yulca, give it back to Hanu-Mah in her hut]
+    carriers:
+    - {know: the letter leaves the satchel to Hanu-Mah, by: ['read:thing.example.letter', journal]}
+    - {know: the choice and where each one is, by: [objective, 'marker:npc.example.teeka', 'marker:npc.example.hanu']}
+- id: 90
+  place: yulca
+  journalText: I gave the satchel back to Old Teeka. She paid me ten gold and said Hanu-Mah could wait her turn.
+  ending: complete
+  endingId: e-teeka
+  onEnter:
+  - takeItem: [thing.example.satchel, 1]
+  information:
+    going: Teeka has her satchel again; Hanu-Mah must wait for it.
+- id: 91
+  place: yulca-hut
+  journalText: I gave the satchel back to Hanu-Mah. She thanked me and said she would mend Teeka's nets for nothing.
+  ending: complete
+  endingId: e-hanu
+  onEnter:
+  - takeItem: [thing.example.satchel, 1]
+  information:
+    going: Hanu-Mah keeps the satchel Teeka promised her, and will mend for Teeka in return.
+endings:
+- id: e-teeka
+  when: the player gave the satchel to Teeka
+  seen: Teeka mends with her own tools again
+  rewards:
+  - {giveGold: 10}
+- id: e-hanu
+  when: the player gave the satchel to Hanu-Mah
+  seen: Hanu-Mah mends at her hut
+terms:
+- {term: Yulca, meets: 10 journal, told: a village on the causeways, ask: topic.example.yulca}
+topics:
+- id: topic.example.errand
+  label: What do you need?
+  person: npc.example.teeka
+  stages: [10, 20, 30]
+  intent: Teeka's satchel of needles and gut went off with Hanu-Mah to her hut on the west causeway; she wants it back
+    before the nets come in.
+- id: topic.example.yulca
+  label: Tell me about Yulca.
+  person: npc.example.teeka
+  intent: Yulca is a fishing village on causeways over the water; its nets need mending every dry season.
+- id: topic.example.ask-satchel
+  label: Old Teeka wants her satchel back.
+  person: npc.example.hanu
+  stages: [10]
+  intent: No. Teeka promised it to her; it stays in her chest, and the key stays on her belt.
+- id: topic.example.give-teeka
+  label: Here is your satchel.
+  person: npc.example.teeka
+  stages: [40]
+  when:
+    hasItem: [thing.example.satchel, 1]
+  intent: Teeka takes it, counts her needles, and pays ten gold. Hanu-Mah can wait her turn.
+- id: topic.example.give-hanu
+  label: Teeka's letter says this is yours.
+  person: npc.example.hanu
+  stages: [40]
+  when:
+    hasItem: [thing.example.satchel, 1]
+  intent: Hanu-Mah takes it and says she will mend Teeka's nets for nothing, as long as Teeka lives.
+- id: topic.example.persuade
+  label: (Persuade) Let me look in the chest; I will settle it with Teeka.
+  person: npc.example.hanu
+  stages: [20]
+  when:
+    skillAtLeast: [Speechcraft, 30]
+  intent: She shrugs and says the chest is only a novice's lock; she will not stop anyone who picks it.
+  fallback: She tells you to mind your own business.
