@@ -336,8 +336,8 @@ are in style-core and the linter. The story skill carries what generalised.
 
 Owed:
 
-1. The owner's answers on the thirteen items of the reconciliation call (#75). The plots use each recommendation
-   as a working default.
+1. Answered and applied (#75, 2026-11-17): every sale of a person in 4E 201 is a sale of an Owing; the
+   Shadowscales stand apart from the main quest and the Toh-Reel-Ka; no tree-minder knows of the dreamers.
 2. The next world rebuild regenerates the travel menu and map labels for three renamed places (Ashgate Landing,
    Bramman's Watch, Alten Corimont) and re-derives stock for the re-banded places.
 3. Sources shared between places, to settle when each is built: Coldbrine Mine and Vicrium (two mine interiors);
