@@ -568,7 +568,9 @@ stages:
     in the cellar of Fort Chalkmoth, fed on sap, and see the whole marsh through them. She was one of them for nine years,
     and Never-Writes-Twice kept the key. That is why she seals the trees she drains: a sealed tree shows the dreamers nothing.
     If I fight her, I take what she carries and go on alone, and giving her the Eye is closed to me. If I believe her, she
-    fights the guardian beside me. Either way the choice at the Eye stays mine. I''m to choose.'
+    fights the guardian beside me. Either way the choice at the Eye stays mine. Used where it sits, the Eye heals every
+    tree, and the dreamers see through them all again; lifted, it parts the trees, about three in ten die, and the dreams
+    end. I''m to choose.'
   objectives:
   - id: choose
     text: text.objective.mn17.choose
@@ -605,7 +607,9 @@ stages:
     going: 'Cuts-the-Old-Knot told me what the Toh-Reel-Ka are: they see the marsh through sap-fed dreamers in Fort Chalkmoth''s
       cellar, the moaning I heard. She seals trees to blind them, not to kill the trees. The healing I was sent to do would
       let the dreamers see again, and the stones in the order''s hands would keep the Eye theirs. She wants the Eye lifted,
-      which ends the dreams and kills many trees. This answers the question in my journal'
+      which ends the dreams and kills many trees. This answers the question in my journal. Used where it sits, the Eye heals
+      every tree and lets the dreamers see through them all; lifted, it parts the trees for good, about three in ten die,
+      and the dreams end'
     next: choose whether to fight her or believe her
     ways: 'fight: the hardest fight yet (she drinks her draught and fights as a battlemage); I get her spell tomes, robes,
       staff and draughts; I face the guardian alone; at the Eye I can only use it or take it. Believe: she waits in the
@@ -643,6 +647,11 @@ stages:
       - journal
       - ask:topic.mn17-if-fight
       - ask:topic.mn17-if-believe
+    - know: what the Eye does when used in place, and when lifted
+      by:
+      - journal
+      - line:topic.mn17-cuts-truth
+      - ask:topic.mn17-lift
 - id: 40
   place: sunken-ruin-23-m112
   journal: text.journal.mn17.40
@@ -973,6 +982,23 @@ topics:
   - 90
   intent: 'Cuts. Tells: the An-Xileel spoke alone with Lilmoth''s mad tree and brought the city down; the order was made
     so nobody could do it again, and now the order speaks alone with every tree.'
+  new: false
+- id: topic.mn-the-hunt
+  label: Remind me what we are hunting, and why.
+  person: npc.mn.never-writes-twice
+  stages:
+  - 10
+  - 20
+  - 21
+  intent: 'Never-Writes-Twice, at the back of Nesh-Deekas House. Tells: the Eye of Argonia is the old priest-kings jewel,
+    cut from Hist amber. It sits at the Root, the place under the sea below Teku-Sul Spire where the roots of every Hist
+    meet. Used where it sits, it pours strength down every root and heals every sick tree; lifted from its place, it cuts
+    every tree from every other for good. The last king shut it behind the Kings Gate, which opens only with its three seal-stones:
+    the thiefs stone in Blackrose Prison, the stone in the flooded vaults of Gemin and the stone in the deepest hall of
+    Vorannuhl. A beast guards the Root; Cuts-the-Old-Knot brews a draught from drained sap strong enough to kill it, so
+    she can reach the Eye. The orders aim: take the stones first, open the gate, use the Eye in place to heal the trees,
+    bring the stones back to her so the chamber is sealed for good, and end the Unbound. She looks at the stones the player
+    carries and names the places of those still missing.'
   new: false
 review:
   reviewer: writer's lore checks; quest-reviewer round to follow

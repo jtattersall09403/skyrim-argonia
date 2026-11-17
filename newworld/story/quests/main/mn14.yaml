@@ -1303,6 +1303,26 @@ topics:
   intent: 'Corvus. Tells: the flying city came down on Lilmoth when his grandmother was a girl; its dead came as far as
     the Rose''s walls and the walls held.'
   new: false
+- id: topic.mn-the-hunt
+  label: Remind me what we are hunting, and why.
+  person: npc.mn.never-writes-twice
+  stages:
+  - 10
+  - 15
+  - 20
+  - 22
+  - 25
+  - 30
+  intent: 'Never-Writes-Twice, at the back of Nesh-Deekas House. Tells: the Eye of Argonia is the old priest-kings jewel,
+    cut from Hist amber. It sits at the Root, the place under the sea below Teku-Sul Spire where the roots of every Hist
+    meet. Used where it sits, it pours strength down every root and heals every sick tree; lifted from its place, it cuts
+    every tree from every other for good. The last king shut it behind the Kings Gate, which opens only with its three seal-stones:
+    the thiefs stone in Blackrose Prison, the stone in the flooded vaults of Gemin and the stone in the deepest hall of
+    Vorannuhl. A beast guards the Root; Cuts-the-Old-Knot brews a draught from drained sap strong enough to kill it, so
+    she can reach the Eye. The orders aim: take the stones first, open the gate, use the Eye in place to heal the trees,
+    bring the stones back to her so the chamber is sealed for good, and end the Unbound. She looks at the stones the player
+    carries and names the places of those still missing.'
+  new: false
 review:
   reviewer: writer's lore checks; quest-reviewer round to follow
   findings:
