@@ -244,7 +244,7 @@ Each is quoted from the notes and cited to its row. The place's own hooks note c
 
 **Bala Karag.**
 
-- A Dunmer relic-seller in Thorn will pay for the ancestor tablet carved with the family sign of the holding's last lord. <!-- place_note:bala-karag/hooks -->
+- A Dunmer relic-seller in Thorn will pay for the ash urn of the holding's last lord, carved with his family's sign, which lies in a chest in the lowest hall. <!-- place_note:bala-karag/hooks -->
 - The door to the lowest hall is barred from within, and the lord's ghost carries the key. <!-- place_note:bala-karag/hooks -->
 - Thorn's slavers, until the Red Year and later the Warden Marches' toll men both kept away from it. <!-- place_note:bala-karag/present -->
 - The coast Argonians call it sick ground. <!-- place_note:bala-karag/present -->

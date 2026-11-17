@@ -74,15 +74,17 @@ the document's own extrapolation, derived from cited lore and never from nothing
 
 - *The player is a blank slate* drawn into the world's intrigue. Nothing turns on who they were.
 - *The thing at stake is sold early.* In the first two quests the player sees it, hears from someone who would
-  lose it what losing it means, and gets a use of it for themselves.
+  lose it what losing it means, and gets a use of it for themselves. People tell it plainly, with topics to ask.
 - *A mystery gives up its means before its motive.* The player finds how the thing is done, by clues of their own
   gathering, and is left with a stated question (why this way, and not the plain way?) that the twist answers.
   The twist calls back to things the player saw; the journal marks each oddity when it happens.
 - *Every place is written from its source place.* Before a quest is set anywhere, read the place's record and its
   source place: the rough layout, each building and interior, its rooms, doors, water and containers, who and what
   already stands there (`newworld/places/`, the census, the digest). Use what it holds. Ask only for small
-  additions: a thing placed, a person, a lock, a name. A cellar, a flooded passage or a great door is written
-  only where the source has one; otherwise the quest moves to a place that has, or the story changes.
+  additions: a thing placed, a person, a lock, a name. Every major thing asked of a place (a cellar, a flooded
+  passage, a second way in, a great door) and every named item and creature carries its check in brackets: which
+  source, mod or Skyrim record gives it and how it is enabled (`python3 -m tools.newworld.place_card "<place>"
+  --mined`), or the stand-in. What cannot be enabled is not written.
 - *Danger climbs with the line.* Each quest's places are no harder (the place's band and the band of the way to
   it) than the line has reached. The main quest opens in D1 and a faction in D1 or D2 (`--opens-at D2`); a line
   rises a band at a time and ends in the hardest places it uses. Skill checks follow: a lock or a pocket in a first quest opens for a level-one
@@ -91,18 +93,24 @@ the document's own extrapolation, derived from cited lore and never from nothing
 - *A choice of ways is a choice.* No way is both free and best: a ring handed over for nothing makes the potion
   and the spell pointless. Each way is open to a build (melee of several kinds, ranged, magic, or stealth paired
   with one of them); a Speech way is an extra, never a quest's only second way.
+- *A choice point is written as the player meets it,* step by step: who sends them where, what they see in order
+  and what each answer does next. An optional act gives or costs something stated.
 - *Every branch is walked to its end.* For each way in, write the state it leaves (who is alive, who is friendly,
   what the player holds) and what the next step is in that state. The thing the line needs next can be got in
   every state.
 - *Everyone stands somewhere for a reason.* Enemies do not stand among the people they wrong. Say where each
-  person is, and why there.
+  person is, and why there. The journal and the marker name an area or a room to search, never the exact spot.
+- *The player gets there.* The line says how they reach each far place (boat, rootworm or a short walk) and pays
+  fixed gold early, enough for the fares.
 - *Each quest is a different kind of job* (a locked box under a household's eyes, an errand into a swamp of
   beasts, a planned break-in, a ruin of the restless dead), with a turn at half to two-thirds and a finale that is
   a hard choice or a hard place. A title is true of its quest.
 - *A faction's line* has about as many quests as a guild of Skyrim's or Morrowind's. Its early quests teach a
   pattern (a spell or recipe taught, then used as one step among several in the job it was taught for; a case
   solved by evidence the player must have found) and its late quests break that pattern. It names a rival, the
-  point at which the rival's door shuts, and a late choice the player's skills can sometimes avoid.
+  point at which the rival's door shuts, and a late choice the player's skills can sometimes avoid. Its joining
+  test is easy; after it the player can ask a member about the faction's history and name, and its own hostile
+  places turn friendly. It can be played at any point of the main quest and never uses what the main quest needs.
 
 ## 3. The outlines
 

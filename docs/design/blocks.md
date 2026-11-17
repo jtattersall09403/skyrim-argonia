@@ -130,7 +130,7 @@ before its first use. The middle column is where each was first asked for:
 | a spell cast in front of a person as a test | joining the necromancers | a spell-cast event near the named person; a gate on Conjuration 20 stands in until proven |
 | handing in a potion the player made | the Sisei-Xul's healing potion and painless poison | a hand-in gated on a held potion with the named effect |
 | a defence with an hour to prepare | the Chainbreakers' safe house | a message starts a timer; the attackers are enabled when it ends |
-| a hearing after a fade | the Lamps' cases and the Chainbreakers' last quest | a fade, the player moved to the hearing room, the magistrate speaking first |
+| a hearing after a fade | the Lampbearers' cases and the Chainbreakers' last quest | a fade, the player moved to the hearing room, the magistrate speaking first |
 | a place that changes after a line ends | Gideon held by the pirates; the merchants' post on Skeith Isle growing in three steps | sets of people and things enabled and disabled away from the player |
 
 ## How record terms map to blocks

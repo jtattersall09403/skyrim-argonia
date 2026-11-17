@@ -516,7 +516,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A Dunmer relic-seller in Thorn will pay for the ancestor tablet carved with the family sign of the holding's last lord. The door to the lowest hall is barred from within, and the lord's ghost carries the key.",
+     "text": "A Dunmer relic-seller in Thorn will pay for the ash urn of the holding's last lord, carved with his family's sign, which lies in a chest in the lowest hall. The door to the lowest hall is barred from within, and the lord's ghost carries the key.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5010,7 +5010,7 @@
     },
     {
      "aspect": "history",
-     "text": "A chartered privateer of the Archon coast that ran onto the beach in the dark and was abandoned by her crew, who joined the Marque Landing camp.",
+     "text": "A ship of Bramman's Brethren that sailed under a letter of marque. In 4E 181 Gaius Cassena of the Topal Bay Company told the Archwardens where she would sail, and their chartered privateers under Captain Dravos Indrelo of the Black Kestrel ran her onto this beach and killed her crew. Before he died, her captain hid her letter of marque in the cache under the cairn on the Grey Tooth.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5150,7 +5150,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Ink Lagoon (Journey to Baan Malur), is a lagoon wreck of three ship pieces with ruin and camp pieces and no interior, so it lends only the beached hull and the tide-line rock. Icerunner (Skyrim), a wrecked ship with two interiors, supplies the sand-filled hold and the stern cabin, its Nordic pieces replaced with Imperial galleon timber. Still to add: the galleon's upper hull on the beach, the sand drift in the hold, the rotten decks, the sealed strongbox with its lock and the scavengers' camp marks.",
+     "text": "Its main source, Ink Lagoon (Journey to Baan Malur), is a lagoon wreck of three ship pieces with ruin and camp pieces and no interior, so it lends only the beached hull and the tide-line rock. Icerunner (Skyrim), a wrecked ship with two interiors, supplies the sand-filled hold and the stern cabin, its Nordic pieces replaced with Imperial galleon timber. Still to add: the galleon's upper hull on the beach, the sand drift in the hold, the stern cabin's own door on the stern deck (Icerunner's second interior behind it), the rotten decks, the sealed strongbox with its lock and the scavengers' camp marks.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

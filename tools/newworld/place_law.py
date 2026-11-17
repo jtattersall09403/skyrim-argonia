@@ -3,7 +3,7 @@ story/lore/topics/labour-and-bondage.md, "Native law").
 
 - None: a hostile or abandoned place, or one with no people. No one there keeps law; its fight is its answer.
 - Foreign: the place is kept by an office inherited from the Empire, which keeps the Imperial cells: the Archwardens
-  (the successor administration, which holds the old Imperial forts and posts in its name), or a city governed from
+  (the Xeech-Leel's wardens, who hold the old Imperial forts and posts in the party's name), or a city governed from
   an Imperial institution still standing (Gideon's Governor's Mansion and courthouse, Archon's East Empire Company
   buildings, Soulrest's ex-Imperial civil office). Its sentence is served in the cell of its own fort, keep or city,
   or else of the same keeper's nearest fort, keep or city.

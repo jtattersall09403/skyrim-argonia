@@ -295,27 +295,31 @@ a yield; a spell cast in front of a person as a test; a timed defence with time 
 magistrate after a fade; a settlement that grows after a line ends; a city changing hands. The main plot adds the
 opening's name and profession.
 
-### Where it stands (2026-11-16)
+### Where it stands (2026-11-17)
 
-Steps 1 to 7 are done and on main. The nine plot pages are `main-plot.md`, `lamps.md`, `thieves.md` (the Eelskins),
-`shadowscales.md`, `sisei-xul.md` (the Argonian order), `house-cardruhn.md` (the necromancers, House Cardruhn), `pirates.md` (Bramman's
-Brethren), `merchants.md` (the Nibenese Company) and `chainbreakers-newworld.md`, with `owing-house.md` (the
-Ulvarys) as background. Gear for each faction's ranks is in
-[reward-gear](../../../story/design/quests/reward-gear.md).
-
-The pirates were renamed Bramman's Brethren on 2026-11-16, after Red Bramman, the canon pirate-king of Topal Bay,
-because the owner did not like "the Free Marque". Three researched alternatives for every other faction's name are
-with him for his call ([faction-names-call](research/faction-names-call.md)); no other name changes before he rules.
+Steps 1 to 7 are done and on main. The owner's 64 explorer notes and his names call (#74) of 2026-11-17 are answered:
+the main plot and the eight faction plots are rewritten to them, and the ten pages are settled against each other as
+one province. The pages are `main-plot.md`, `lamps.md` (the Lampbearers), `thieves.md` (the Eelskins),
+`shadowscales.md`, `sisei-xul.md`, `house-cardruhn.md` (House Cardruhn), `pirates.md` (Bramman's Brethren, seated at
+Bramman's Watch on Aphon Isle), `merchants.md` (the Topal Bay Company) and `chainbreakers-newworld.md`, with
+`owing-house.md` (House Ulvarys) as background. The rulers are the Xeech-Leel and the main quest's order the
+Toh-Reel-Ka ([rename map](research/rulers-rename-map.md)). The rules between the pages are in the
+[consistency ledger](../../../story/design/quests/lines/consistency.md); every faction can be played at any point of
+the main quest. Gear for each faction's ranks is in [reward-gear](../../../story/design/quests/reward-gear.md). The
+reconciliation call's recommendations (#75) stand as working defaults until the owner answers.
 
 Owed, in order:
 
 1. The owner reads the plots in the explorer and notes them. No outline is written for a plot before he passes it.
 2. The eleven blocks beyond the ceiling are approved (#73, 2026-11-16) and listed in
    [blocks](../../design/blocks.md), "Blocks owed". Each is built and proven once before a quest uses it.
-3. The world holds no D1 wild place, so the factions open in D2 and only the main quest opens in D1 (three bands
-   lowered for it in `newworld/sources/danger/owner.json`). Stock and wealth for the five re-banded places follow
-   at the next stocking stage.
-4. The hydra's and the seven gear mods' archives are fetched (`stack.py fetch --record`), and their records read:
+3. The travel menu (`newworld/sources/travel/menu.json`, an input of the world file's writer) still labels Bramman's
+   Watch, Ashgate Landing and Alten Corimont by their old names. `travel_menu generate` renames them at the next world
+   rebuild, which then rewrites the world file.
+4. Helstrom's needs data holds the Xeech-Leel's council house as a promise, kept at the place's next change.
+5. The hydra's and the seven gear mods' archives are fetched (`stack.py fetch --record`), and their records read:
    the side quests' rewards are then fitted to the hydra's real numbers.
-5. About 110 places' source notes say the main source does not fit and name a better one. The owner's studio
-   work on each place settles which source it is built from.
+6. About 110 places' source notes say the main source does not fit and name a better one. The owner's studio
+   work on each place settles which source it is built from. Coldbrine Mine and Vicrium both lean on Gloombound
+   and Whistling Mine's interiors, and Fort Silvermoth, Fort Gysilla and Blackrose Prison on Cracked Tusk's; their
+   builds give each a look of its own.

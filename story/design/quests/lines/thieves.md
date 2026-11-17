@@ -87,8 +87,8 @@ and a key. The screen fades, and when it clears he is gone. The note reads: "The
 key fits the deck hatch." The journal marks the hulk, and quest 1 begins. Blackrose's canoe-men and the boats of
 Lilmoth and Truowa reach it.
 
-**What shuts the door.** The Eelskins' door shuts when the player takes the rank of Flame at the end of quest 4 of
-the Lampbearers' line, or takes the brass at the end of quest 4 of the Shadowscales' line. *The Eelskins* then fails,
+**What shuts the door.** The Eelskins' door shuts when the player takes the rank of Flame at the end of the
+Lampbearers' 4, The Walled Cellar, or takes the brass at the end of the Shadowscales' 4, The Hatchling Seller. *The Eelskins* then fails,
 and the first theft no longer brings a visitor. In this line, the Lampbearers' and the Shadowscales' doors shut at
 the end of quest 4, when the player is given the key to the hall. Corso warns them first: a player who is a
 Lampbearer or a Shadowscale of the lowest rank is put out of it, and neither will take them again.
@@ -187,7 +187,9 @@ Swims has a bigger cellar for them.
 **7. The Locked Strongroom** (Fort Swiftmoth, an empty keep inland from Archon). Smugglers of Bramman's Brethren,
 the pirates, cache their goods in the keep's locked strongroom off the lower hall, with a watch of four and their
 captain (checked: the record sets the source's lowest hall, Mistwatch's, as the lower hall and a side room as the
-strongroom behind a locked door). The Topal Bay Company's 11, The Scroll Store, raids the same strongroom. Aroxhu
+strongroom behind a locked door). The Topal Bay Company's 11, The Scroll Store, raids the same strongroom for the
+scrolls in it. Each of the two quests switches on its own watch and its own store when it starts, so they can be
+played in either order. Aroxhu
 families rest in the dry upper floor and are to be left alone. The journal says: "Empty the strongroom off the lower
 hall." The captain carries the strongroom key, and the player can lift it (Pickpocket, an Expert pocket), pick the
 strongroom (an Expert lock), or fight the watch to reach it. Mud-crocodiles lie in the ditch round the rise. *Leads
@@ -201,10 +203,11 @@ one of the second source's two interiors, Cracked Tusk's, as the barracks). The 
 swim to the islet by night and climb the curtain wall (FreeClimb, or a scroll). They can ride in a rice crate on the
 garrison's supply boat, which takes a bribe of 200 gold to its boatman at Truowa's quay or an Expert Speech check
 (75): the screen fades, and the player stands on the fort's landing. Or they can force the gate, and the journal
-warns that the garrison is the Archwardens'. The same garrison buys and sells Owings at its crossing, and some of
+warns that a fight sets a bounty that Fort Gysilla's garrison keeps. The same garrison buys and sells Owings at its crossing, and some of
 those it holds go on to House Ulvarys (the Chainbreakers' 9, The Island Keep). The chest's key is on the toll-master,
 and the lock is Expert. Two guards stand in the barracks and the rest are at the landing and the toll chain, so a
-quiet player can reach it. *Leads on:* the merchant pays 800 gold at Truowa. Swims makes the player a Ripper and calls
+quiet player can reach it. A player who freed Naxi-Ru in the Chainbreakers' 9, The Island Keep, has learnt from Naxi-Ru the
+hour the guards on the curtain wall change. *Leads on:* the merchant pays 800 gold at Truowa. Swims makes the player a Ripper and calls
 them to the hall. She is ready to speak of the great heist.
 
 ### Act III: the great heist
@@ -370,7 +373,7 @@ Three blocks that the owner approved, each proven once before its first use:
   own story event for the start of sleep; a stage that ends the sleep, switches him on beside the bed and starts his
   talk.
 - **The fade after which a person is gone.** When his talk ends, the screen fades and he is switched off while it is
-  black. The same block serves the Lampbearers and the Chainbreakers. The supply boat of quest 8 and the raft out of
+  black. The same block serves the Lampbearers, the Shadowscales and the Chainbreakers. The supply boat of quest 8 and the raft out of
   quest 12 use the same fade, with the player moved while the screen is black.
 
 The rest is inside the ceiling. The pay that falls with each killing is a line gated on named people alive. The four
@@ -381,8 +384,8 @@ quest 11 is a line that sets one of two stages.
 
 - *Place records:* the Eelskins' hall in Lilmoth's drowned cellars (the record's hostile smugglers there become the
   Eelskins, friendly to members) and the ripper eels in its cistern; the hulk at Blackrose; the ripper eels in
-  Brackwater's pool; and at Helstrom, the council house of the Xeech-Leel with its strongroom, which Helstrom's record
-  does not yet hold and must be given as a promise when the lead accepts this page.
+  Brackwater's pool; and at Helstrom, the council house of the Xeech-Leel with its strongroom, which Helstrom's needs data
+  holds as a promise to keep at the place's next change.
 - *Lore:* the Eelskins and Swims-Without-Ripples's reason, and the Xeech-Leel keeping the An-Xileel's gold, are
   extrapolations, grounded above. They go into `story/lore/extrapolation/argonia-4e201-state.md` when the owner
   passes the plot.

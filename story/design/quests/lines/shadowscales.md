@@ -87,18 +87,19 @@ names the landing at Xi-Inou, and a marker then shows it; Archon's harbour boatm
 
 **Being let in.** Under the plank landing at Xi-Inou lie a drowned man's bones and his satchel (the record's landing
 and the cache under it). In the satchel are a brass medallion and a sealed writ. The writ is a contract in the
-order's old form. It names Davos Rethan, a Dunmer smuggler who puts in at Xi-Inou's quay by night, as the man who
+order's old form. It names Golven Rethan, a Dunmer smuggler who puts in at Xi-Inou's quay by night, as the man who
 drowned a raft-boy who saw his cargo. "Needed change. The brass goes back to the old one by the closed school in
 Archon when the work is done." The player may do the work (quest 1) and carry the brass to Archon (quest 2). The dead
 man is a test: Hulee-Tah left a smuggler's bones there with his own satchel, and the order watches who finishes the
 work. This is how the order has always found its outsiders, and it is why the rumour of brass on drowned men exists.
 The test is easy: Rethan is one man with two crewmen, at a D2 hamlet.
 
-A player who takes the writ to Davos Rethan to warn him, or to the Lampbearers, ends the test. The small quest fails,
+A player who takes the writ to Golven Rethan to warn him, or to the Lampbearers, ends the test. The small quest fails,
 and the order never sends another writ.
 
-**What shuts the door.** The Shadowscales' door shuts when the player takes the rank of Flame at the end of quest 4
-of the Lampbearers' line, or is given the key to the Eelskins' hall at the end of quest 4 of the Eelskins' line. *The
+**What shuts the door.** The Shadowscales' door shuts when the player takes the rank of Flame at the end of the
+Lampbearers' 4, The Walled Cellar, or is given the key to the Eelskins' hall at the end of the Eelskins' 4, The
+Lampbearer's Man. *The
 Shadowscales* then fails, and the satchel under the landing is gone. In this line, the Lampbearers' and the
 Eelskins' doors shut at the end of quest 4, when the player takes the brass. Hulee-Tah warns them first: a player who
 is a Lampbearer or an Eelskin of the lowest rank is put out of it, and neither will take them again.
@@ -135,7 +136,7 @@ quest 1, rising to 1,000 in quest 8. The bonus doubles it.
 
 | Contract | The bonus way | The unique thing |
 |---|---|---|
-| 1. Davos Rethan | drop the log stack on the landing on him (the stack's rope) | the Drowned Man's Knife: a dagger, frost damage |
+| 1. Golven Rethan | drop the log stack on the landing on him (the stack's rope) | the Drowned Man's Knife: a dagger, frost damage |
 | 3. the toll sergeant | his own bowl poisoned, nobody else's | the Supper Ring: Fortify Alchemy 15 |
 | 4. the hatchling seller | the cracked roof brought down on him (its pull-chain) | Sithis' Sting: a bow that paralyses for a second |
 | 5. the smugglers' boss | the Khiar fisherman freed first, and alive | the Ghost-Step Boots: Muffle |
@@ -149,7 +150,7 @@ quest 1, rising to 1,000 in quest 8. The bonus doubles it.
 ### Act I: the brass
 
 **1. The Drowned Man's Writ** (Xi-Inou, a raft hamlet on Archon's estuary). The player takes the satchel from under
-the landing and reads the writ. Davos Rethan drinks at the quay by night with two of his crew (the record's
+the landing and reads the writ. Golven Rethan drinks at the quay by night with two of his crew (the record's
 smugglers on the quay by night). The journal says that the player may fight or go quietly, and that the order
 prefers the stack. A stack of logs is roped above the landing (Skyrim's rolling-log trap, placed), and its rope can
 be cut when he stands below it. The player can also shoot him from the bank (Archery), stab him on his way to his
@@ -174,7 +175,8 @@ trade there on credit). Hulee-Tah teaches the player a poison: he shows them the
 effects of deathbell and nightshade. The player gathers the deathbell at the marsh edge past the snakes and buys
 nightshade at Black-Tongue Brews in Lilmoth. They make the poison at the alchemy table in Beem-Xal's house. Then they
 enter the farmhouse while the family works outside and poison the sergeant's own bowl on the table. The farm's dog is
-the only watcher at the door. The sergeant comes in from the road to eat, away from where the player stands, and dies
+the only watcher at the door; a player who freed Ulasi in the Chainbreakers' 13, The Vicecanon's Price, has a
+sleeping draught from her for it. The sergeant comes in from the road to eat, away from where the player stands, and dies
 at his meal. A player who would rather can kill him on the road to the fort (One-Handed, Archery), without the bonus.
 *Leads on:* Hulee-Tah sends the player after a man who sells hatchlings. He is at Tailfall Mound.
 
@@ -255,7 +257,7 @@ the door, or fight all three. On his body is his answer to Marcella, sent the da
 order's novices train at Ra'tal Den, in return for being let go. The journal: "Vetrix sold the Lampbearers the place
 where the order trains, for his freedom." *Leads on:* the Eldest calls the player to Beem-Xal's house.
 
-**11. Two Offers** (Archon; Lilmoth, the Eelskins' hall; Soulrest, the Lamp-Hall). This quest holds the line's
+**11. Whose Offer** (Archon; Lilmoth, the Eelskins' hall; Soulrest, the Lamp-Hall). This quest holds the line's
 choice, written as the player meets it.
 
 1. *At Beem-Xal's house*, Ukka-Teel speaks first. He tells the player of the Toh-Reel-Ka's charter and his refusal
@@ -354,7 +356,7 @@ theirs. *Leads on:* the line ends. Contracts go on, small and repeating, from Hu
 
 | Place | The thing | Quest | What happens there | How the player knows it |
 |---|---|---|---|---|
-| Xi-Inou | bones and a satchel under the plank landing, Davos Rethan and two crewmen on the quay by night, and a roped stack of logs above the landing | joining; 1. The Drowned Man's Writ | The player finds the test and does the work. | the third rumour; markers |
+| Xi-Inou | bones and a satchel under the plank landing, Golven Rethan and two crewmen on the quay by night, and a roped stack of logs above the landing | joining; 1. The Drowned Man's Writ | The player finds the test and does the work. | the third rumour; markers |
 | Archon | Beem-Xal's house beside the sealed school (one of the source city's houses), with a back room, an alchemy table, beds and Hulee-Tah (Ukka-Teel too in Act III); the customs post on the quay with its officer and strongbox (a Novice lock) | 2 to 12 | The order's door to the world, and the first trial. | the door shows "Beem-Xal's House"; Archon's people call the school the closed school (the place's record); a marker |
 | Lilmoth | Black-Tongue Brews (a named interior of the source city), whose keeper sells nightshade, poisons and eel-slime to the order | 3, 4, 11 | The order's branch. | its door shows its name; Hulee-Tah tells them |
 | Tal-Neesh Farm | the farmhouse with the sergeant's bowl on the table, a dog at the door and deathbell at the marsh edge | 3. The Supper at Tal-Neesh | The player poisons the sergeant's meal. | Hulee-Tah tells them; a marker on the farm |
@@ -366,8 +368,8 @@ theirs. *Leads on:* the line ends. Contracts go on, small and repeating, from Hu
 | Sheh-Ara | a cage of hatchlings on the minder's platform (an Expert lock), four of Vetrix's men, crocodiles in the flooded yard (the platform and crocodiles are in the record) | 9. The Caged Hatchlings | The player frees the hatchlings. | a marker on the village |
 | Lilmoth | Lucan Vetrix's room at the stilt-hall tavern (an Expert lock), with the Listener's letter and Marcella's note | 9. The Caged Hatchlings | The player learns of the Lampbearers' bargain. | a marker on the tavern |
 | Lilmoth | the lodging house on the harbour with Vetrix and two hired men | 10. The Rice Buyer | The contract. | a marker on the lodging house |
-| Lilmoth | the hatch on Pusbottom's walkways, the cistern with ripper eels, the Eelskins' hall with Swims-Without-Ripples and her strongbox (a Master lock) | 11. Two Offers; 12, with the Lampbearers | An offer; the contract. | a marker on the hatch |
-| Soulrest | the Lamp-Hall with Marcella Dovi; its hearing room with a hanging lamp and lamp-oil under her chair, a gallery above, two guards at the front door and a back door (an Expert lock) | 11. Two Offers; 12, with the Eelskins | An offer; the contract. | a marker on the Lamp-Hall |
+| Lilmoth | the hatch on Pusbottom's walkways, the cistern with ripper eels, the Eelskins' hall with Swims-Without-Ripples and her strongbox (a Master lock) | 11. Whose Offer; 12, with the Lampbearers | An offer; the contract. | a marker on the hatch |
+| Soulrest | the Lamp-Hall with Marcella Dovi; its hearing room with a hanging lamp and lamp-oil under her chair, a gallery above, two guards at the front door and a back door (an Expert lock) | 11. Whose Offer; 12, with the Eelskins | An offer; the contract. | a marker on the Lamp-Hall |
 | Ra'tal Den | dark passages with three novices, the hearth chamber with the giant mudcrab and Ukka-Teel (the record holds the chamber and the mudcrabs) | 13. The Trial at Ra'tal Den | The last trial. | a marker; he speaks first |
 
 ### What it asks of the ceiling
@@ -378,7 +380,7 @@ One block for this line and one shared with the other two, each proven once befo
   the player next goes outside, the sergeant, who eats inside, dies. The simplest build: the existing block "a stage
   that kills one named person", used here for this one contract, with the kill made away from the player.
 - **The fade after which a person is gone** (the freed hatchlings and captives, and the raid on the Eelskins' hall).
-  The same block as the Lampbearers' and the Eelskins'.
+  The same block as the Lampbearers', the Eelskins' and the Chainbreakers'.
 
 The rest is inside the ceiling. A bonus way is a named thing used (a rope, a chain, a lamp, a lever, a horn, a bowl,
 a strongbox) or a named person alive, and the target dead, all of which the game can know. The truce at the Eelskins'

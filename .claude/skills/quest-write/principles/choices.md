@@ -11,8 +11,8 @@ player knows the trade before choosing [OB bar; CC P1].
    door, a group's peace or hostility, the next job. What people say about it afterwards is how it is shown, never
    the outcome itself [CC P1; CC P7; OB bar].
 2. **Standing is never an outcome by itself.** A stored number, a regard or a rank is written only with what it opens
-   or shuts that the player can go and use: "rank 3 in the Reed: the quartermaster's chest is theirs and the trainer
-   teaches to 50", never "standing with the Reed rises" [GK; CC P1; owner, 2026-11-13].
+   or shuts that the player can go and use: "rank 3 in the Toh-Reel-Ka: the quartermaster's chest is theirs and the trainer
+   teaches to 50", never "standing with the Toh-Reel-Ka rises" [GK; CC P1; owner, 2026-11-13].
 3. **Different in kind, not better and worse.** Give each outcome a different kind of gain (a power against a place
    against a thing against a service), so a player who chooses only for the reward still has to decide what kind of
    play they want [CC P2; CC WS Skyrim table].

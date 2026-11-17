@@ -4,7 +4,7 @@
    "id": "archon",
    "name": "Archon",
    "status": "inhabited",
-   "held_by": "A harbour authority and merchant council in the East Empire Company's old buildings, with the successor state's customs officers alongside",
+   "held_by": "A harbour authority and merchant council in the East Empire Company's old buildings, with the Xeech-Leel's customs officers alongside",
    "population": 100,
    "footprint_radius_m": 300,
    "siting": "coast",
@@ -553,7 +553,7 @@
     },
     {
      "aspect": "present",
-     "text": "Rebuilt but not restored: smaller, lower and wholly Argonian in its fabric. The merchant council sets the dock tolls and pays the guards. Its people hate the successor state, whose party killed the old town. The dock officials still enforce the old law against unlicensed foreigners in some quarters and let it lapse in others.",
+     "text": "Rebuilt but not restored: smaller, lower and wholly Argonian in its fabric. The merchant council sets the dock tolls and pays the guards. Its people hate the Xeech-Leel, whose party killed the old town. The dock officials still enforce the old law against unlicensed foreigners in some quarters and let it lapse in others.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1015,7 +1015,7 @@
     },
     {
      "aspect": "present",
-     "text": "A market town of raft-houses and stilt halls, never taken by any power and untouched by Umbriel. The tribe is wary of the An-Xileel's successors and sends its own to sit with Archon's merchants, so it is both neutral ground and a smuggler's door.",
+     "text": "A market town of raft-houses and stilt halls, never taken by any power and untouched by Umbriel. The tribe is wary of the Xeech-Leel and sends its own to sit with Archon's merchants, so it is both neutral ground and a smuggler's door.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5743,7 +5743,7 @@
    "name": "Fort Reedmoth",
    "place_kind_id": "fort",
    "status": "garrisoned",
-   "held_by": "A small garrison of the Archwardens, the An-Xileel successor administration, drawn from old Archein families",
+   "held_by": "A small garrison of the Archwardens, the Xeech-Leel's wardens, drawn from old Archein families",
    "population": 10,
    "footprint_radius_m": 40,
    "siting": "coast",
@@ -6102,7 +6102,7 @@
    "name": "Southwatch Keep",
    "place_kind_id": "fort",
    "status": "garrisoned",
-   "held_by": "A small garrison of the Archwardens, the An-Xileel successor administration, drawn from old Archein families",
+   "held_by": "A small garrison of the Archwardens, the Xeech-Leel's wardens, drawn from old Archein families",
    "population": 8,
    "footprint_radius_m": 40,
    "siting": "coast",
@@ -6760,7 +6760,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "The family has walled up the old cellar, where the planters' strongbox lies and the unstaked Breton dead are not at rest. A rival family claims the east dykes and has cut the sluice twice.",
+     "text": "The family has walled up the old cellar, where the planters' strongbox lies and the unstaked Breton dead are not at rest. A rival family claims the east dykes.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

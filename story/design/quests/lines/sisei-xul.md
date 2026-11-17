@@ -74,9 +74,9 @@ home to Thorn to sell dead what he could no longer sell alive.
 
 **What the order hides.** Argonians bind souls too. A blasphemer is punished by being bound to an urn, so that his
 soul is denied its return to the Hist (`topics/sithis-nisswo-shadowscales.md:130-134`). In the mother hall at
-Helstrom there is such an urn. The Eldest of the order says it holds a Hist-poisoner. It holds Keel-Vaxa, an Archein
+Helstrom there is such an urn. The First Grave-Singer says it holds a Hist-poisoner. It holds Keel-Vaxa, an Archein
 of the Thorn coast. In the 4E 160s he sold Morvayn Cardruhn the Owings of forty of his own village's debtors for
-gold, and Morvayn shipped them over the border to Telvanni buyers (**X**, reconciliation items 2 and 10). The Eldest
+gold, and Morvayn shipped them over the border to Telvanni buyers (**X**, reconciliation items 2 and 10). The First Grave-Singer
 bound Keel-Vaxa herself, out of grief: her clutch-sister was among the forty. His granddaughter, Neeja, now works for
 the house. The player learns this in quest 8.
 
@@ -85,7 +85,7 @@ the house. The player learns this in quest 8.
 | Who | What they want | What they hide, or what it costs |
 |---|---|---|
 | **Deegla-Tsei**, tree-minder of Arorha, who brings the player in | her potters healed and her village's dead left in the mud | she takes a stranger into the order on the strength of one potion, because the order is short of hands |
-| **Okan-Zeel**, Eldest Grave-Singer of the order, in the tree-minders' hall at Helstrom | House Cardruhn destroyed and every Argonian dead returned to the mud | she bound Keel-Vaxa to an urn with her own hands and says the urn holds a poisoner, which is the one prisoner the Toh-Reel-Ka would let her have. She hates the house for good reason and has done to one man what it does to many |
+| **Okan-Zeel**, First Grave-Singer of the order, in the tree-minders' hall at Helstrom | House Cardruhn destroyed and every Argonian dead returned to the mud | she bound Keel-Vaxa to an urn with her own hands and says the urn holds a poisoner, which is the one prisoner the Toh-Reel-Ka would let her have. She hates the house for good reason and has done to one man what it does to many |
 | **Akeeta-Sul**, the Stone-Sleepers' minder at Tsonac, the order's teacher of Alteration | the old Velothi graves under her hamlets left shut | she has sold Ervyn Cardruhn Velothi grave-goods from under her hamlets for gold, and did not ask what he wanted them for |
 | **Gam-Meesh**, the mason-smith of Tsonac, the order's teacher of Smithing | iron that the dead respect | he lost a brother to Thorn's saltrice fields and wants the house hurt more than he wants it stopped |
 | **Neeja**, an Argonian necromancer of the house | her grandfather's soul freed from the urn | she helps the house rob Argonian graves to get there. She is the order's enemy with the best reason of anyone in the war |
@@ -138,7 +138,7 @@ fixed gold (50, 75 and 100) for boat and rootworm fares. Every place is reached 
 | Leaf-Hand | quest 3 | the Minder's Staff (a Magic Expanded staff, under our name) and the tomes of Cure Disease and Cure Poison (Magic Expanded) |
 | Stake-Keeper | quest 6 | Grave-Iron Claws (Animated Armoury steel claws, enchanted with Turn Undead), and a free bed in each of the order's three halls |
 | Grave-Singer | quest 10 | the Grave-Singer's robe and hood (Arcane Mage Armor's armoured robe and hood, under our name, the hood enchanted to fortify Restoration) and the tome of Guardian Circle |
-| Eldest's Hand | quest 13 | section 7 |
+| First Singer's Hand | quest 13 | section 7 |
 
 ### Act I: the healers
 
@@ -166,7 +166,8 @@ Hist (Alchemy). Before he drinks, Nadras asks one thing: that he be staked like 
 that Morvayn Cardruhn's people never stand me up again". He was the Cardruhns' factor for forty years. He drinks,
 the screen fades and he is gone, and a fresh grave-stake stands below the mounds (the fade after which a person is
 gone; the stake is a stand-in, Curse of Cipactli's carved Xanmeer post under our name, switched on away from the
-player). The alchemist pays the player 75 gold. *Leads on:* his last words go into the journal. The alchemist hears
+player). The alchemist pays the player 75 gold. A player who freed Tsleeksa in the
+Chainbreakers' 7, Out by Sea, can have three imp stools from Guxal's banks from her instead of picking them. *Leads on:* his last words go into the journal. The alchemist hears
 them and sends the player to Coldbrine Mine, south-west of Thorn, where a woman wants her dead staked and the overseer
 refuses. Coldbrine is a walk north along the bight from Arorha, past Marshgate Watch.
 
@@ -226,7 +227,9 @@ interiors added from Redeyn Ancestral Tomb's pieces, the silted cellars with wat
 record's boss, Skyrim's skeleton under our name). The player forges three spikes and goes in. The journal says the
 player may fight through the skeletons in the cellars or sneak past them in the silt. The captain takes grave harm
 from a spike and little from anything else. In the cache are Velothi bronze and a letter of the house about a log in
-a wreck off Thorn. *Leads on:* Okan-Zeel makes the player a Stake-Keeper. She has heard of the *Silt Bride*: if her
+a wreck off Thorn. A player who freed Huzei in the Chainbreakers' 1, The Salt Shed, can
+get the sack of Coldbrine salt for the spikes from him at Thorn's west gate; Gam-Meesh also sells it. *Leads on:*
+Okan-Zeel makes the player a Stake-Keeper. She has heard of the *Silt Bride*: if her
 captain's log names the Cardruhns, the Vicecanon of Thorn can close their stall in the market.
 
 **7. The Slaver's Log** (Wreck of the Silt Bride, a slaver brig off Thorn; Thorn, the grassland border city). The
@@ -258,7 +261,7 @@ player meets it in this order.
 - *At the landing.* When the player takes the urn, Neeja's marker shows at the camp's landing, where she waits apart from
   the band. She is unarmed and speaks first. She tells the player whose soul is in the urn: Keel-Vaxa, her
   grandfather, who sold the Owings of forty of his own people to Morvayn and was bound by Okan-Zeel herself. "If the
-  Toh-Reel-Ka knew what your Eldest keeps in her niche, she would be the one in a cell." She asks the player to let
+  Toh-Reel-Ka knew what your First Grave-Singer keeps in her niche, she would be the one in a cell." She asks the player to let
   her break it.
 - *Give her the urn.* She breaks it (the Xanmeer urn's broken mesh, switched on in its place) and Keel-Vaxa's soul
   goes to the Hist. She gives the player her own tome of Conjure Familiar and says she will be on Thorn's quay when
@@ -350,8 +353,8 @@ The choice that began at Hiss-Bank Camp ends on Thorn's quay, in quest 12. The p
 What each road leaves:
 
 - **The urn broken.** Keel-Vaxa's soul goes to the Hist. The player comes into the hall under the well by the back
-  way, with the herbalist and half the halls behind them. Neeja leaves the marsh. The Eldest's lie is out: Okan-Zeel,
-  if alive, gives up the Eldest's staff (section 7).
+  way, with the herbalist and half the halls behind them. Neeja leaves the marsh. The First Grave-Singer's lie is out: Okan-Zeel,
+  if alive, gives up the First Singer's staff (section 7).
 - **The urn kept.** The player goes in by the front through every hall, the herbalist included. Neeja stands in the
   hall under the well beside Morvayn as a battlemage, a second hard fight. Okan-Zeel keeps her office.
 
@@ -364,8 +367,8 @@ order's grave-singers go back to every grave-ground the house opened.
 
 | Outcome | It gives | It costs |
 |---|---|---|
-| **The urn broken** (Neeja's way) | the rank Eldest's Hand. The Eldest's staff from Okan-Zeel, who steps down: a staff with our custom enchantment, Sisei-Xul's Rest, which lays any undead it strikes and heals the bearer by part of the harm done. The tree-minders' hall becomes the player's home, with its enchanter and tables. Neeja's parting gift: Morvayn's own tome of Command Undead (Magic Expanded), taken from the house | Okan-Zeel leaves the hall and is switched off: her teaching of Restoration is gone, and the order's grave-singers' regard for the player falls for breaking a binding. Keel-Vaxa's soul is free, whatever he was |
-| **The urn kept** | the rank Eldest's Hand. Okan-Zeel names the player her heir and gives them the same staff, and the stage raises their Restoration and Alteration by 5 each. Neeja's body gives her robes and tomes | The player fights through Kaochalit's halls from the front, with Neeja beside Morvayn. The urn stays in its niche, and the order keeps what it did to one man |
+| **The urn broken** (Neeja's way) | the rank First Singer's Hand. the First Singer's staff from Okan-Zeel, who steps down: a staff with our custom enchantment, Sisei-Xul's Rest, which lays any undead it strikes and heals the bearer by part of the harm done. The tree-minders' hall becomes the player's home, with its enchanter and tables. Neeja's parting gift: Morvayn's own tome of Command Undead (Magic Expanded), taken from the house | Okan-Zeel leaves the hall and is switched off: her teaching of Restoration is gone, and the order's grave-singers' regard for the player falls for breaking a binding. Keel-Vaxa's soul is free, whatever he was |
+| **The urn kept** | the rank First Singer's Hand. Okan-Zeel names the player her heir and gives them the same staff, and the stage raises their Restoration and Alteration by 5 each. Neeja's body gives her robes and tomes | The player fights through Kaochalit's halls from the front, with Neeja beside Morvayn. The urn stays in its niche, and the order keeps what it did to one man |
 
 In both, the player keeps every spell and recipe the order taught. If Okan-Zeel died at Ixu-Maan, the order's second
 grave-singer gives the staff and the hall in her place.
@@ -404,7 +407,7 @@ player plays one line or the other.
 - **The *Saltrice Queen*:** the ship interior of Thorn's first source, moored at the quay.
 - **The house's mark:** a spider in a circle, on a silver token (a Skyrim amulet), a key bow (a Skyrim key) and
   Ovezza's cellar door (the record's carving).
-- **Items:** the Sprout's robe (King of the Murkmire's marsh robe), the Minder's Staff and the Eldest's staff
+- **Items:** the Sprout's robe (King of the Murkmire's marsh robe), the Minder's Staff and the First Singer's staff
   (Magic Expanded staves), Grave-Iron Claws (Animated Armoury claws), the Grave-Singer's robe and hood (Arcane Mage
   Armor), King of the Murkmire's Xanmeer urn and its broken mesh, Skyrim's soul gems, welkynd stone and journal, each
   under our names ([reward-gear](../reward-gear.md)).

@@ -18,7 +18,7 @@ from its plugin when it is fetched.
 | Stormhold Warrior cuirass and helm | Stormhold Warrior Armor (new) | heavy armour | Reel-Ka, Warrior (middle) |
 | The rest of the Stormhold Warrior set, with an enchanted pike or claws | Stormhold Warrior Armor (new), Animated Armoury | heavy armour, weapon | Ka-Deelith, War-Teacher (late) |
 
-## The Lamps (detectives)
+## The Lampbearers
 
 What we hold is enough; no new mod.
 
@@ -29,7 +29,7 @@ What we hold is enough; no new mod.
 | A ring of quiet speech, an amulet against charm | Skyrim (enchanted under our names) | ring, amulet | late |
 | A whip | Animated Armoury | weapon | the line's last reward |
 
-## The thieves' guild
+## The Eelskins
 
 What we hold is enough; no new mod.
 
@@ -49,7 +49,7 @@ What we hold is enough; no new mod.
 | Shadowscale armour, hood and mask | Shadowscale Set Reborn (new) | light armour | late |
 | The enchanted Shadowscale set | Shadowscale Set Reborn (new) | light armour | the line's last reward |
 
-## The Argonian order of magic and alchemy
+## The Sisei-Xul
 
 | Thing | Mod | Kind | Rank or moment |
 |---|---|---|---|
@@ -58,7 +58,7 @@ What we hold is enough; no new mod.
 | Arcane mage armoured robe and hood | Arcane Mage Armor (new) | robe, light armour | late |
 | The enchanted Arcane mage set | Arcane Mage Armor (new) | robe, light armour | the line's last reward |
 
-## The Dunmer necromancers of Thorn
+## House Cardruhn
 
 | Thing | Mod | Kind | Rank or moment |
 |---|---|---|---|
@@ -67,7 +67,7 @@ What we hold is enough; no new mod.
 | Necromancer robes | DX Necromancer Robes (new) | robe | late |
 | Necromancer robes and the staff that comes with them, enchanted | DX Necromancer Robes (new) | robe, staff | the line's last reward |
 
-## The pirates
+## Bramman's Brethren
 
 | Thing | Mod | Kind | Rank or moment |
 |---|---|---|---|
@@ -76,7 +76,7 @@ What we hold is enough; no new mod.
 | A pike or a halberd | Animated Armoury | weapon | late |
 | The captain's set | Pirate Armor (new) | light armour | the line's last reward |
 
-## The Imperial merchants of Gideon
+## The Topal Bay Company
 
 | Thing | Mod | Kind | Rank or moment |
 |---|---|---|---|
@@ -92,9 +92,10 @@ What we hold is enough; no new mod.
 | Thing | Mod | Kind | Rank or moment |
 |---|---|---|---|
 | Argonian leathers | Black Marsh & Valenwood | light armour | early |
-| Claws or a quarterstaff | Animated Armoury | weapon | middle |
-| Heavy Argonian armour | Sign of Cipactli | heavy armour | late |
-| An enchanted halberd and broken shackles worn as bracers | Animated Armoury, Skyrim | weapon, gauntlets | the line's last reward |
+| Claws or a quarterstaff | Animated Armoury | weapon | middle (Hammer) |
+| Heavy Argonian armour | Sign of Cipactli | heavy armour | late (Breaker) |
+| An enchanted halberd, quarterstaff or elven bow | Animated Armoury, Skyrim | weapon | late (Keyholder) |
+| The Hasp of the Falls, an enchanted amulet (the Ruling), or the Firebrand claws, enchanted steel claws (the Fire) | Skyrim, Animated Armoury | amulet or weapon | the line's last reward |
 
 ## The Unbound
 

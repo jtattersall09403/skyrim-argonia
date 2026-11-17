@@ -38,7 +38,7 @@ Healing and its spells against the undead, which a necromancer uses on a rival's
 who stake the dead so that nothing can raise them. Raising the dead breaks no Argonian law, but a soul kept from its
 Hist is the Toh-Reel-Ka's business (**X**, reconciliation item 6), so the Cardruhns keep their black arts behind the
 stall and their trade out of the Xeech-Leel's sight. House Cardruhn is kin by an old marriage to House Ulvarys of
-Thorn, which buys Owings ([owing-house](owing-house.md)). The two houses do not speak: the Ulvarys say they deal in
+Thorn, which buys Owings ([owing-house](owing-house.md)). The two houses do not speak: House Ulvarys says it deals in
 the living and want nothing of the dead. Inside the house, the factor and the bone-mistress want different houses,
 and both are waiting for the old master to die. Joining gives the player the house's black arts one spell a quest,
 its gold and, at the end, the house itself.
@@ -71,7 +71,7 @@ caster nearly all their health (`spell-groups.md`, Necromancy), and it is killin
 
 **Why each side can be argued.** The Cardruhns say the dead are empty, since an Argonian soul goes back to its Hist
 (`topics/sithis-nisswo-shadowscales.md:130`), and the order binds souls itself: a blasphemer is bound to an urn and
-denied the Hist (`topics/sithis-nisswo-shadowscales.md:133-134`). The Eldest of the order bound Keel-Vaxa to an urn
+denied the Hist (`topics/sithis-nisswo-shadowscales.md:133-134`). The First Grave-Singer bound Keel-Vaxa to an urn
 with her own hands. The order's poisoners end the lives of the sick. Argonian armies sacked Mournhold and nearly
 destroyed House Telvanni within living Dunmer memory (`topics/foreign-powers.md:47-48`). The order says that a body
 pulled off its stake and made to work for a Dunmer master is the slave-coffles of Thorn over again
@@ -86,7 +86,7 @@ pulled off its stake and made to work for a Dunmer master is the slave-coffles o
 | **Neeja**, an Argonian necromancer of the house, the player's teacher | her grandfather Keel-Vaxa's soul freed from an urn in the Sisei-Xul's hall | she tells the player she works for coin. She works for the urn, and she robs Argonian graves to get it |
 | **Dalvela Cardruhn**, the house's bone-mistress, in the hall at Ovezza | the Sisei-Xul wiped out and a house of the dead after Morvayn | her family's ancestral ash was lost when Argonian armies reached Scathing Bay in the Accession War (`topics/foreign-powers.md:47`). She makes ancestors of other people's dead |
 | **Morvayn Cardruhn**, master of the house, at Kaochalit | his heirs to keep the house after he dies, on his terms | he bought living Argonians late in the Third Era and sold Argonian Owings over the border forty years ago. He is dying of his own spell |
-| **Okan-Zeel**, Eldest Grave-Singer of the Sisei-Xul | the house destroyed | she bound Neeja's grandfather Keel-Vaxa to an urn. She says the urn holds a poisoner |
+| **Okan-Zeel**, First Grave-Singer of the Sisei-Xul | the house destroyed | she bound Neeja's grandfather Keel-Vaxa to an urn. She says the urn holds a poisoner |
 | **Akeeta-Sul**, the Stone-Sleepers' minder at Tsonac | the Velothi graves under her hamlets left shut | she once sold Ervyn grave-goods from under her hamlets for gold and did not ask why he wanted them |
 
 ## 4. Joining
@@ -137,7 +137,7 @@ boat stop, from Arorha's or Inoja's, or from the rootworm at Aroxhu or Helstrom;
 
 | Rank | Given after | Reward |
 |---|---|---|
-| Hireling | quest 1 | the house's black robe (Skyrim's Dragonborn Dunmer robe, under our name), five common soul gems and the house's traders: the stall in Thorn and the herbalist of Kaochalit's outer tomb |
+| Tomb-Hand | quest 1 | the house's black robe (Skyrim's Dragonborn Dunmer robe, under our name), five common soul gems and the house's traders: the stall in Thorn and the herbalist of Kaochalit's outer tomb |
 | Gravewright | quest 3 | the Coffle-Whip (an Animated Armoury whip, enchanted to absorb stamina) and the tome of Raise Zombie |
 | Soul-Factor | quest 6 | a bonemold helm and a dagger of the house (Skyrim's Dragonborn bonemold helm and Dunmer dagger, under our names, the dagger enchanted with Soul Trap), the tome of Conjure Ghost and the use of the house's enchanter in the hall at Ovezza |
 | Bone-Master | quest 11 | the Bone-Master's robes (DX Necromancer Robes, under our name, enchanted to fortify Conjuration and magicka), two black soul gems and the tome of Dead Thrall |
@@ -156,19 +156,20 @@ Murkmire's Argonian skeletons, under our name), with the giant mudcrab, unless t
 it. The journal says "search the walled gallery for the digger". The player commands the dead to fight the crab, or
 puts the dead down by fire and conjuring. The Sisei-Xul's side of this gallery is their 3, The Walled Gallery. In
 the dead digger's satchel is the house's token, a silver spider in a circle (a Skyrim amulet mesh under our name).
-The player takes it to Neeja and is made a Hireling, and Ervyn pays 50 gold. *Leads on:* Neeja says the house's carts
+The player takes it to Neeja and is made a Tomb-Hand, and Ervyn pays 50 gold. *Leads on:* Neeja says the house's carts
 take the salt dead past Marshgate Watch, and its sergeant has started asking questions. The journal marks the watch,
 a short walk south of Thorn.
 
 **2. The Blind Gate** (Marshgate Watch, a road post south of Thorn; Fort Thornmoth, the toll fort west of the
 city). A guard at Fort Thornmoth lets the house's cart through untouched every few days (the record's hook). At
 Marshgate Watch the sergeant has found out a warden of his own taking pay to let boats through, and means to report
-both men to Fort Thornmoth. (Bramman's Brethren pay that warden in their own line.) Neeja teaches Conjure Flame
+both men to Fort Thornmoth. (Bramman's Brethren pay that warden in their 8, The Hollow Tide Run.) Neeja teaches Conjure Flame
 Atronach. The sergeant stands at the toll bar on the ditch road, where crocodiles and giant snakes hunt the ditch
 (Curse of Cipactli's). His report lies in a chest in the watch's blockhouse (checked: the record lists the blockhouse
 as an interior to add, of Black Marsh & Valenwood's Imperial stone and timber pieces). The player kills him there with
 a conjured atronach, or picks the chest (an easy lock) and takes the report, or pays him 300 gold of their own to
-tear it up. *Leads on:* Ervyn pays the player 150 gold, and 300 more if they paid the sergeant. He gives them a buyer's
+tear it up. If the Brethren's 8 has already killed the watch, the report still lies in the chest, and the player
+takes it. *Leads on:* Ervyn pays the player 150 gold, and 300 more if they paid the sergeant. He gives them a buyer's
 errand, the house's relic trade at its plainest: Kornakim, a Velothi watch-hold a walk south-east down the bight.
 
 **3. The Fire-Stone** (Kornakim, a ruined Velothi watch-hold on Hatandros Bight). Neeja teaches Soul Trap. A brazier
@@ -262,7 +263,7 @@ line's first choice, and the player meets it in this order.
   a bounty in Helstrom, which they can pay at the levy's post, so the city stays open to them.
 - *At Hiss-Bank Camp*, a walk west along the river bank, the house's hired Naga let a member pass. Neeja waits at the
   landing by the house's boat, and speaks first. The urn holds her grandfather, Keel-Vaxa, who sold Morvayn the
-  Owings of forty of his own people and was bound by the Eldest of the order herself. She asks the player to let her
+  Owings of forty of his own people and was bound by the First Grave-Singer herself. She asks the player to let her
   break it.
 - *Give it to her.* She breaks it (the urn's broken mesh, switched on in its place), leaves the house and gives the
   player her own staff (a Magic Expanded staff, under our name, enchanted to raise a zombie). Morvayn pays nothing for
@@ -297,7 +298,7 @@ order first.
 Undead (Conjuration 75, Magic Expanded). Ixu-Maan is a walk south of Helstrom. The house's Naga from Salt-Tooth Camp
 (Curse of Cipactli's Naga) and Dalvela's dead go into the order's grave-ground with the player, placed beside them.
 Okan-Zeel and two grave-singers stand at the clay nest-pit (on the record's list to add). The player leads the raid.
-They raise the grave-singers who fall against the order, fight beside the Naga, and kill the Eldest. With her dead
+They raise the grave-singers who fall against the order, fight beside the Naga, and kill the First Grave-Singer. With her dead
 the order is beaten: its grave-singers leave the hall at Helstrom and its teachers stop teaching. *Leads on:* Morvayn
 makes the player a Bone-Master. The same night he falls in the hall under the well and cannot rise.
 
@@ -411,7 +412,7 @@ plays one line or the other.
 | Helstrom | the tree-minders' hall (to add), its urn in a case with an expert lock, and two grave-singers | 9. The Urn | The player steals the urn. | Morvayn tells them; a marker on the hall |
 | Hiss-Bank Camp | the house's hired Naga, its boat and boatman at the landing, and Neeja | 9. The Urn | The player gives the urn to Neeja or to the boat. | she speaks first; a marker on the landing |
 | Virtluush | the steward's ghost with the ring, Dalvela's apprentice and her dead, the Sarpa lookout on the reed-path and the water-filled cistern (the record's ghost, lookout and cistern) | 10. The Steward's Ring | The player takes the ring and finds Ervyn's letter. | Ervyn tells them; a marker on the ruin |
-| Ixu-Maan | the nest-pit, the grave-stakes, Okan-Zeel and two grave-singers at the pit, and the house's Naga from Salt-Tooth Camp placed with the player's side (the record's nest-pit and Naga) | 11. The Night at Ixu-Maan | The player leads the raid and kills the Eldest. | Morvayn's orders; a marker on the outpost |
+| Ixu-Maan | the nest-pit, the grave-stakes, Okan-Zeel and two grave-singers at the pit, and the house's Naga from Salt-Tooth Camp placed with the player's side (the record's nest-pit and Naga) | 11. The Night at Ixu-Maan | The player leads the raid and kills the First Grave-Singer. | Morvayn's orders; a marker on the outpost |
 | Kharraluhl | Dalvela at the household shrine, her diggers in the upper walls, the bound dead in the lower halls (the record's crew, halls and shrine) | 12. The House Divided | The player kills Dalvela, or spares her. | Dalvela tells them; a marker on the ruin |
 | Thorn | the *Saltrice Queen* at the quay with Ervyn by it and his crew of three (Thorn's ship interior) | 12. The House Divided | The player kills Ervyn, or spares him. | he speaks; a marker on the quay |
 | Kaochalit | the herbalist in the outer tomb, the flu-dead in the lower halls, the risen priestess and Morvayn in the hall under the well, and the spared heir there (the record's outer tomb, halls and boss) | 13. The Old Master | The player kills Morvayn and takes the house. | Morvayn's summons; a marker on the ruin |

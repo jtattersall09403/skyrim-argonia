@@ -42,7 +42,7 @@ Each place below says what its record promises the player, how it is reached, an
 
 A large city, about 440 m across, sited on coast, of Lilmoth and the Murkmire Coast. In 4E 201 it is inhabited, held by a reconstituted merchant council; no ruler; 144 people live there. It is not built yet. <!-- place:lilmoth -->
 
-A merchant port on the southern point of the Althii islands, built over shallow water, with large ships moored out in the bay and lighters tied at the quays. It is the biggest town on the south coast and the market for the delta villages and estates of the Althii islands. <!-- place_note:lilmoth/overview --> Rebuilt but not restored: smaller, lower and wholly Argonian in its fabric. The merchant council sets the dock tolls and pays the guards. Its people hate the successor state, whose party killed the old town. The dock officials still enforce the old law against unlicensed foreigners in some quarters and let it lapse in others. <!-- place_note:lilmoth/present --> About four in five are Argonians, with a working foreign dock population of Bretons, Khajiit and Imperial-descended traders. Elders, including retired Shadowscales, settle disputes. Tree-minders rotate through the Hist's post so that no one holds it alone. <!-- place_note:lilmoth/people --> Founded by the Lilmothiit, ruled by Priest-Kings and taken by the Empire; its Imperial Quarter was looted when the An-Xileel drove the Empire out at the secession. Its second Hist grew mad and summoned Umbriel in 4E 48, and the Slaughter at Lilmoth destroyed the city. The site was resettled in the generations after, because the harbour has no rival nearby. <!-- place_note:lilmoth/history -->
+A merchant port on the southern point of the Althii islands, built over shallow water, with large ships moored out in the bay and lighters tied at the quays. It is the biggest town on the south coast and the market for the delta villages and estates of the Althii islands. <!-- place_note:lilmoth/overview --> Rebuilt but not restored: smaller, lower and wholly Argonian in its fabric. The merchant council sets the dock tolls and pays the guards. Its people hate the Xeech-Leel, whose party killed the old town. The dock officials still enforce the old law against unlicensed foreigners in some quarters and let it lapse in others. <!-- place_note:lilmoth/present --> About four in five are Argonians, with a working foreign dock population of Bretons, Khajiit and Imperial-descended traders. Elders, including retired Shadowscales, settle disputes. Tree-minders rotate through the Hist's post so that no one holds it alone. <!-- place_note:lilmoth/people --> Founded by the Lilmothiit, ruled by Priest-Kings and taken by the Empire; its Imperial Quarter was looted when the An-Xileel drove the Empire out at the secession. Its second Hist grew mad and summoned Umbriel in 4E 48, and the Slaughter at Lilmoth destroyed the city. The site was resettled in the generations after, because the harbour has no rival nearby. <!-- place_note:lilmoth/history -->
 
 Ninety percent of the fabric is Argonian stilts and platforms that climb into the air, wired together by walkways, over a drowned layer of Imperial villas. Old Imperial walls survive in places; mould, vines, big bamboo, sleeping palms and harmless drifting shines mark the drowned quarter. <!-- place_note:lilmoth/look --> Lighterage, bay trade, salvage from the drowned quarter and saltrice from the beds of the delta villages. Pusbottom, repopulated as a slum, supplies the criminal trade of the coast. <!-- place_note:lilmoth/economy --> The third Hist is walled but open, tended by two minders at once and no faction may hold exclusive access. A sunken shrine to Xhon-Mehl the Fisher, the Ancestral Organ Lord of Lilmoth, is known to divers. <!-- place_note:lilmoth/faith -->
 
@@ -60,7 +60,7 @@ It is to be built from Lilmoth in King of the Murkmire.esp (a city: 4030 buildin
 
 A town, about 220 m across, sited on coast, of The Three Waters Tribe. In 4E 201 it is inhabited, held by the elder of the Three Waters Tribe and the tribe's council of raft-masters; 36 people live there. It is not built yet. <!-- place:uluo -->
 
-The one town of the Three Waters Tribe, and the place the bayou hamlets send their catch, rice and reed. It matters as the tribe's seat and as a crossing point between Archon, Lilmoth and the Nushara waters. <!-- place_note:uluo/overview --> A market town of raft-houses and stilt halls, never taken by any power and untouched by Umbriel. The tribe is wary of the An-Xileel's successors and sends its own to sit with Archon's merchants, so it is both neutral ground and a smuggler's door. <!-- place_note:uluo/present --> Three Waters Argonians: the elder, a council of raft-masters who know the channel routes, a handful of Archon and Lilmoth traders and traders from Aroxhu. <!-- place_note:uluo/people --> The tribe's Elder Nuetepa is remembered in Archon from long ago. Each family tells the tribe's first settlement on the islands differently; the town grew where the bayou channels meet the open strait, and the Flu that emptied the coast of other peoples left the Argonians alive. <!-- place_note:uluo/history -->
+The one town of the Three Waters Tribe, and the place the bayou hamlets send their catch, rice and reed. It matters as the tribe's seat and as a crossing point between Archon, Lilmoth and the Nushara waters. <!-- place_note:uluo/overview --> A market town of raft-houses and stilt halls, never taken by any power and untouched by Umbriel. The tribe is wary of the Xeech-Leel and sends its own to sit with Archon's merchants, so it is both neutral ground and a smuggler's door. <!-- place_note:uluo/present --> Three Waters Argonians: the elder, a council of raft-masters who know the channel routes, a handful of Archon and Lilmoth traders and traders from Aroxhu. <!-- place_note:uluo/people --> The tribe's Elder Nuetepa is remembered in Archon from long ago. Each family tells the tribe's first settlement on the islands differently; the town grew where the bayou channels meet the open strait, and the Flu that emptied the coast of other peoples left the Argonians alive. <!-- place_note:uluo/history -->
 
 A pentagon of raft-mounted halls and reed houses around a landing, with a long communal hall for the elder's moot, drying frames of fish and rafts lashed in rings beside the landing. <!-- place_note:uluo/look --> Net-fish, shellfish, saltrice, reed mats and bundles and the back-water freight that moves between Archon and the Lilmoth delta without passing customs. The elder takes a share of every raft. <!-- place_note:uluo/economy --> Argonian Sithis and Hist devotion; a small Hist pool lies in the town, tended by a tree-minder and hatching families come in from the hamlets. The raft-masters speak a word to the pool before a journey. <!-- place_note:uluo/faith -->
 
@@ -76,7 +76,7 @@ It is to be built from Pryai village in Nyhus.esp (a town: 199 buildings, 8 inte
 
 ### Southwatch Keep
 
-A fort, about 80 m across, sited on coast, of The Warden Marches. In 4E 201 it is garrisoned, held by a small garrison of the Archwardens, the An-Xileel successor administration, drawn from old Archein families; 9 people live there. It is not built yet. <!-- place:southwatch-keep -->
+A fort, about 80 m across, sited on coast, of The Warden Marches. In 4E 201 it is garrisoned, held by a small garrison of the Archwardens, the Xeech-Leel's wardens, drawn from old Archein families; 9 people live there. It is not built yet. <!-- place:southwatch-keep -->
 
 A coastal fort at the south-west tip of the island, facing the sea road to Lilmoth. <!-- place_note:southwatch-keep/overview --> Eight garrison men keep the beacon lit, watch the sea road from the tower and pay little attention to Lilmoth's politics. <!-- place_note:southwatch-keep/present --> Argonian garrison of Archein-line officers, with fishermen from Karketa as neighbours. <!-- place_note:southwatch-keep/people --> An Imperial coast fort. The Legion left at the secession, 4E 5-10 and the Archwardens took the keep over soon after. <!-- place_note:southwatch-keep/history -->
 
@@ -94,7 +94,7 @@ It is to be built from Ashguard in SolstheimExpand.esp (a fort: 136 buildings, 3
 
 ### Fort Reedmoth
 
-A fort, about 80 m across, sited on coast, of The Warden Marches. In 4E 201 it is garrisoned, held by a small garrison of the Archwardens, the An-Xileel successor administration, drawn from old Archein families; 6 people live there. It is not built yet. <!-- place:fort-reedmoth -->
+A fort, about 80 m across, sited on coast, of The Warden Marches. In 4E 201 it is garrisoned, held by a small garrison of the Archwardens, the Xeech-Leel's wardens, drawn from old Archein families; 6 people live there. It is not built yet. <!-- place:fort-reedmoth -->
 
 A stone fort held as a toll station and watch on the east end of the northern island, facing Archon's coast across the strait. <!-- place_note:fort-reedmoth/overview --> Ten men of Archein descent keep the gate, take tolls on the road and at the chain and check cargo for the Warden customs. They hold the keys in the Archwardens' name. <!-- place_note:fort-reedmoth/present --> Argonian garrison families, some Archein-line officers, no Imperials. The Three Waters raft-families come through often and know every man at the gate. <!-- place_note:fort-reedmoth/people --> Built by the Legion with a '-moth' name. The Legion left at the secession, 4E 5-10 and the Archwardens have kept the fort since. <!-- place_note:fort-reedmoth/history -->
 
@@ -458,7 +458,7 @@ Each is quoted from the notes and cited to its row. The place's own hooks note c
 - The young Hist with its two minders, and the story its people tell of the mad tree before it. <!-- place_note:lilmoth/hooks -->
 - Pusbottom's thieves, and the docks-only law that some officials still enforce. <!-- place_note:lilmoth/hooks -->
 - The sunken shrine of Xhon-Mehl, which a diver reaches only as far as breath allows. <!-- place_note:lilmoth/hooks -->
-- Its people hate the successor state, whose party killed the old town. <!-- place_note:lilmoth/present -->
+- Its people hate the Xeech-Leel, whose party killed the old town. <!-- place_note:lilmoth/present -->
 - Elders, including retired Shadowscales, settle disputes. <!-- place_note:lilmoth/people -->
 - The site was resettled in the generations after, because the harbour has no rival nearby. <!-- place_note:lilmoth/history -->
 - Lighterage, bay trade, salvage from the drowned quarter and saltrice from the beds of the delta villages. <!-- place_note:lilmoth/economy -->
@@ -468,7 +468,7 @@ Each is quoted from the notes and cited to its row. The place's own hooks note c
 - The elder wants a cargo of saltrice carried to Archon past the customs post. <!-- place_note:uluo/hooks -->
 - A raft-master offers a back channel the customs officers do not use, for a favour. <!-- place_note:uluo/hooks -->
 - Two families dispute who tends the Hist pool. <!-- place_note:uluo/hooks -->
-- The tribe is wary of the An-Xileel's successors and sends its own to sit with Archon's merchants, so it is both neutral ground and a smuggler's door. <!-- place_note:uluo/present -->
+- The tribe is wary of the Xeech-Leel and sends its own to sit with Archon's merchants, so it is both neutral ground and a smuggler's door. <!-- place_note:uluo/present -->
 - Each family tells the tribe's first settlement on the islands differently; the town grew where the bayou channels meet the open strait, and the Flu that emptied the coast of other peoples left the Argonians alive. <!-- place_note:uluo/history -->
 
 **Southwatch Keep.**
@@ -560,7 +560,7 @@ Each is quoted from the notes and cited to its row. The place's own hooks note c
 **Dunhallow Plantation.**
 
 - The family has walled up the old cellar, where the planters' strongbox lies and the unstaked Breton dead are not at rest. <!-- place_note:estate-15-m110/hooks -->
-- A rival family claims the east dykes and has cut the sluice twice. <!-- place_note:estate-15-m110/hooks -->
+- A rival family claims the east dykes. <!-- place_note:estate-15-m110/hooks -->
 
 **Tal-Neesh Farm.**
 

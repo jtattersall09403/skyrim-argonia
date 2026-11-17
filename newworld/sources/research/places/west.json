@@ -64,7 +64,7 @@
     },
     {
      "aspect": "present",
-     "text": "In 4E 201 the council still sits in the Governor's Mansion and the courthouse still hears cases and keeps its records, an Imperial habit the town never dropped. Gideon denies the successor state's claim and deals with the Archwardens only at Fort Silvermoth's toll gate. Carts on the Blackwood Road to Leyawiin leave from the east gate.",
+     "text": "In 4E 201 the council still sits in the Governor's Mansion and the courthouse still hears cases and keeps its records, an Imperial habit the town never dropped. Gideon denies the Xeech-Leel's claim and deals with the Archwardens only at Fort Silvermoth's toll gate. Carts on the Blackwood Road to Leyawiin leave from the east gate.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1212,7 +1212,7 @@
     },
     {
      "aspect": "look",
-     "text": "Grey stone walls and a tower at a road bend, moss on the parapet, a toll chain across the road, reeds all around and a flag of the successor state.",
+     "text": "Grey stone walls and a tower at a road bend, moss on the parapet, a toll chain across the road, reeds all around and a flag of the Xeech-Leel.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1274,14 +1274,14 @@
       },
       {
        "kind": "reasoning",
-       "title": "a Warden toll fort beside Gideon, which denies the successor state",
+       "title": "a Warden toll fort beside Gideon, which keeps the Xeech-Leel at arm's length",
        "locator": "reasoning"
       }
      ]
     },
     {
      "aspect": "source",
-     "text": "Its main source, Cracked Tusk (Skyrim), is an Imperial fort of 254 pieces with two keep interiors, which serve as the barracks hall and the quartermaster's store with the forge. Still to add: the toll chain across the road, the saltrice paddy, the stockade for the held smuggler, the shrine to Zenithar, moss on the parapet and the flag of the successor state.",
+     "text": "Its main source, Cracked Tusk (Skyrim), is an Imperial fort of 254 pieces with two keep interiors, which serve as the barracks hall and the quartermaster's store with the forge. Still to add: the toll chain across the road, the saltrice paddy, the stockade for the held smuggler, the shrine to Zenithar, moss on the parapet and the flag of the Xeech-Leel.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4059,7 +4059,7 @@
       },
       {
        "kind": "reasoning",
-       "title": "the tower paired with the Warden watch at Aphon Belvedere",
+       "title": "the tower paired with the Warden watch at Fort Shellmoth",
        "locator": "reasoning"
       },
       {
@@ -10003,7 +10003,7 @@
       },
       {
        "kind": "reasoning",
-       "title": "Khajiit seafarers and moon-sugar smuggling through Topal Bay (spine 10.3; Lore:Black Marsh: most Southern Sea seafarers are Khajiit); a Warden customs watch on the same isle (Aphon Belvedere)",
+       "title": "Khajiit seafarers and moon-sugar smuggling through Topal Bay (spine 10.3; Lore:Black Marsh: most Southern Sea seafarers are Khajiit); a Warden customs watch at Fort Shellmoth, off the isle (Bramman's Watch)",
        "locator": "reasoning"
       },
       {
@@ -10037,7 +10037,7 @@
       },
       {
        "kind": "reasoning",
-       "title": "Khajiit seafarers and moon-sugar smuggling through Topal Bay (spine 10.3; Lore:Black Marsh: most Southern Sea seafarers are Khajiit); a Warden customs watch on the same isle (Aphon Belvedere)",
+       "title": "Khajiit seafarers and moon-sugar smuggling through Topal Bay (spine 10.3; Lore:Black Marsh: most Southern Sea seafarers are Khajiit); a Warden customs watch at Fort Shellmoth, off the isle (Bramman's Watch)",
        "locator": "reasoning"
       },
       {
@@ -10077,7 +10077,7 @@
       },
       {
        "kind": "reasoning",
-       "title": "Khajiit seafarers and moon-sugar smuggling through Topal Bay (spine 10.3; Lore:Black Marsh: most Southern Sea seafarers are Khajiit); a Warden customs watch on the same isle (Aphon Belvedere)",
+       "title": "Khajiit seafarers and moon-sugar smuggling through Topal Bay (spine 10.3; Lore:Black Marsh: most Southern Sea seafarers are Khajiit); a Warden customs watch at Fort Shellmoth, off the isle (Bramman's Watch)",
        "locator": "reasoning"
       },
       {
@@ -10111,7 +10111,7 @@
       },
       {
        "kind": "reasoning",
-       "title": "Khajiit seafarers and moon-sugar smuggling through Topal Bay (spine 10.3; Lore:Black Marsh: most Southern Sea seafarers are Khajiit); a Warden customs watch on the same isle (Aphon Belvedere)",
+       "title": "Khajiit seafarers and moon-sugar smuggling through Topal Bay (spine 10.3; Lore:Black Marsh: most Southern Sea seafarers are Khajiit); a Warden customs watch at Fort Shellmoth, off the isle (Bramman's Watch)",
        "locator": "reasoning"
       },
       {
@@ -10145,7 +10145,7 @@
       },
       {
        "kind": "reasoning",
-       "title": "Khajiit seafarers and moon-sugar smuggling through Topal Bay (spine 10.3; Lore:Black Marsh: most Southern Sea seafarers are Khajiit); a Warden customs watch on the same isle (Aphon Belvedere)",
+       "title": "Khajiit seafarers and moon-sugar smuggling through Topal Bay (spine 10.3; Lore:Black Marsh: most Southern Sea seafarers are Khajiit); a Warden customs watch at Fort Shellmoth, off the isle (Bramman's Watch)",
        "locator": "reasoning"
       },
       {
@@ -10179,7 +10179,7 @@
       },
       {
        "kind": "reasoning",
-       "title": "Khajiit seafarers and moon-sugar smuggling through Topal Bay (spine 10.3; Lore:Black Marsh: most Southern Sea seafarers are Khajiit); a Warden customs watch on the same isle (Aphon Belvedere)",
+       "title": "Khajiit seafarers and moon-sugar smuggling through Topal Bay (spine 10.3; Lore:Black Marsh: most Southern Sea seafarers are Khajiit); a Warden customs watch at Fort Shellmoth, off the isle (Bramman's Watch)",
        "locator": "reasoning"
       },
       {
@@ -10214,7 +10214,7 @@
       },
       {
        "kind": "reasoning",
-       "title": "Khajiit seafarers and moon-sugar smuggling through Topal Bay (spine 10.3; Lore:Black Marsh: most Southern Sea seafarers are Khajiit); a Warden customs watch on the same isle (Aphon Belvedere)",
+       "title": "Khajiit seafarers and moon-sugar smuggling through Topal Bay (spine 10.3; Lore:Black Marsh: most Southern Sea seafarers are Khajiit); a Warden customs watch at Fort Shellmoth, off the isle (Bramman's Watch)",
        "locator": "reasoning"
       },
       {
@@ -10248,7 +10248,7 @@
       },
       {
        "kind": "reasoning",
-       "title": "Khajiit seafarers and moon-sugar smuggling through Topal Bay (spine 10.3; Lore:Black Marsh: most Southern Sea seafarers are Khajiit); a Warden customs watch on the same isle (Aphon Belvedere)",
+       "title": "Khajiit seafarers and moon-sugar smuggling through Topal Bay (spine 10.3; Lore:Black Marsh: most Southern Sea seafarers are Khajiit); a Warden customs watch at Fort Shellmoth, off the isle (Bramman's Watch)",
        "locator": "reasoning"
       },
       {
@@ -10282,7 +10282,7 @@
       },
       {
        "kind": "reasoning",
-       "title": "Khajiit seafarers and moon-sugar smuggling through Topal Bay (spine 10.3; Lore:Black Marsh: most Southern Sea seafarers are Khajiit); a Warden customs watch on the same isle (Aphon Belvedere)",
+       "title": "Khajiit seafarers and moon-sugar smuggling through Topal Bay (spine 10.3; Lore:Black Marsh: most Southern Sea seafarers are Khajiit); a Warden customs watch at Fort Shellmoth, off the isle (Bramman's Watch)",
        "locator": "reasoning"
       },
       {

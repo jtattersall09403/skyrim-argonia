@@ -98,10 +98,10 @@ journal names the Company house in Gideon, and its marker leads to the house's d
 gives them the first job (quest 1). *The Topal Bay Company* completes. Nothing is tested at the door: the first job
 is the easy test.
 
-**What shuts the door.** The Brethren's quest 5, *Boarding the Leyawiin Pride*, in which a pirate player boards
-and robs the Company's ship. When that quest completes, *The Topal Bay Company* fails with the entry "The Company
-knows who boarded the *Leyawiin Pride*. Its house in Gideon will not hire me now." A player who already belongs to
-the Company and takes that quest is put out of it at its end, and the Company's sellswords attack them on sight.
+**What shuts the door.** Joining Bramman's Brethren. The two lines tell the same events from the two sides from
+their second quests on (the pirates' page, section 6), so a player plays only one of them. When Ma'jirra makes the
+player a Deckhand, *The Topal Bay Company* fails with the entry "I have drunk with the Brethren. The Company's house
+in Gideon will not hire me now." Joining the Company shuts the Brethren's door in the same way.
 
 ## 5. The acts
 
@@ -165,6 +165,8 @@ the purse he carried. The player meets the choice so:
    - *Outbid the pirates*: 300 gold of the player's own. Hareel takes it and lifts the chain.
    - *Fight him for it*: "I challenge you, by the fort's custom." The fort's custom lets a refused traveller
      challenge the captain. Hareel trains Block and fights with a shield. He yields when beaten and lifts the chain.
+     A player who freed Saveri Vandrel in the Chainbreakers' 4, The Dunmer's Field, has heard from him that Hareel
+     lowers his shield after each blow.
 3. A failed persuasion leaves the other two lines open; a player without the gold may come back with it.
 
 In every way the chain is lifted and Hareel is alive. The player may then ask for Kesh-Ulee to be sent to Gideon's
@@ -195,9 +197,6 @@ cabin. He thanks the player and tells them he was a pressed man on a pirate ship
 uses the small boat, and the fade sets them back on the quay. *Leads on:* Nuxal-Tei makes the player a Company Guard.
 The Company needs iron for blades, and the old Imperial mine of Ninth Shaft has iron in its upper levels. The journal
 marks it, a walk east from Soulrest.
-
-This quest shuts the Brethren's door: *Bramman's Brethren* fails at its end, and a player who belongs to the
-Brethren is put out of it (the pirates' page, section 6).
 
 ### Act II: iron and smugglers
 
@@ -272,7 +271,9 @@ the fort, inland from Archon.
 **11. The Scroll Store** (Fort Swiftmoth, an empty Imperial keep inland from Archon). Smugglers who work for the
 Brethren camp in the lower hall with a captain who carries the strongroom's key (checked: the source, Mistwatch, has
 three halls one above another; the lowest serves as the lower hall and a side room as the strongroom, with a locked
-door). The Eelskins' 7, The Locked Strongroom, robs the same strongroom. Mud-crocodiles lie in the ditch round the
+door). The Eelskins' 7, The Locked Strongroom, robs the same strongroom of the
+Brethren's coin and goods. Each of the two quests switches on its own watch and its own store when it starts, so
+they can be played in either order. Mud-crocodiles lie in the ditch round the
 rise. Aroxhu families shelter in the dry upper floor and do not fight. The player fights the smugglers through the
 lower hall with blade and shield or a two-handed weapon. The strongroom has the Brethren's store of scrolls in it.
 *Leads on:* the scrolls of Mayhem and Frenzy are the player's to use in the assault. Nuxal-Tei says the Company will
@@ -319,8 +320,7 @@ The shared events are fixed in the pirates' page, section 6. This line's side of
 
 - Quest 2, *Iron from the Heron*, is the Brethren's quest 2 seen from the Company's side.
 - Quest 3, *The Captain's Chain*, meets Captain Hareel and Kesh-Ulee as the Brethren's quest 4 does.
-- Quest 5, *Guarding the Leyawiin Pride*, is the night of the Brethren's quest 5, on the same ship at anchor. Each
-  shuts the other's door.
+- Quest 5, *Guarding the Leyawiin Pride*, is the night of the Brethren's quest 5, on the same ship at anchor.
 - Quest 7, *The Hollow Tide*, kills the crew of the camp that the Brethren's quest 8 wins as an ally.
 - Quest 8, *A Post at Wrackmoth*, takes the fort that the Brethren's quest 12 takes for the bay crew.
 - Quest 9, *Gold of Old Goldseam*, opens the mine that the Brethren's quest 13 raids.
@@ -328,8 +328,8 @@ The shared events are fixed in the pirates' page, section 6. This line's side of
 - Quest 14 finds One-Eye's copy of the letter whose original the Brethren's quest 7 finds under the Grey Tooth.
 - Quests 13 and 14 are the end of the Brethren. The Brethren's quest 14 is the end of the Company.
 
-The two endings cannot both happen in one game. The doors shut at quest 5 of each line, so a player reaches only one
-line's Act II. Each ending also kills the other line's leader.
+The two endings cannot both happen in one game. Joining one line shuts the other's door, so a player plays only one
+side. Each ending also kills the other line's leader.
 
 ## 7. The ending: the Company on Aphon Isle
 

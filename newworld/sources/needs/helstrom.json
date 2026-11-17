@@ -166,6 +166,21 @@
    "met": true,
    "why": "Met. Xilsa-Jee, the young root-tender, and the elder Hixee-Ra both stand by day in the crowd round the sacred tree, where a player can speak to them.",
    "tier": "AGENT_INVENTED"
+  },
+  {
+   "seq": 6,
+   "from": [
+    "dc97d42585"
+   ],
+   "thing": "the Xeech-Leel's council house: a hall open by day, the treasurer's room upstairs, a front door, a back door to the river landing, a gallery door reached up the stilts and a strongroom behind an iron door",
+   "line": "thieves",
+   "rests": null,
+   "signs": [],
+   "met": false,
+   "why": "Not met. Helstrom's place files hold no council house: no building there is the seat of the Xeech-Leel's council, and none has a strongroom.",
+   "fit": "A promise to keep at the place's next change: a large stilt hall near the sacred tree, built from the source city's Argonian pieces, whose door shows \"Council House\", with a hall by day, an upper room for the treasurer, a back door down to the river landing, a gallery door up the stilts and a strongroom behind an iron door. It must not be the Toh-Reel-Ka's quiet house or any building the main quest uses.",
+   "narrow": "No: it is a new building with its interiors, added to the drafted town as one change, not a redraft.",
+   "tier": "AGENT_INVENTED"
   }
  ],
  "dismissed": []

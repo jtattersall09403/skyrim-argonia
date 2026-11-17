@@ -7,7 +7,7 @@
 {"place_id":"agia-nero","law_id":"none","why":"no one keeps law: hostile, ruined"}
 {"place_id":"amalaja","law_id":"native","why":"Argonian law, no cell: The village elders, paying the island core little for protection"}
 {"place_id":"aphon-belvedere","law_id":"none","why":"no one keeps law: hostile, occupied"}
-{"place_id":"archon","law_id":"foreign","jail_place_id":"archon","why":"kept by an office inherited from the Empire ('East Empire Company'): A harbour authority and merchant council in the East Empire Company's old buildings, with the successor state's customs officers alongside; its own cell (city)"}
+{"place_id":"archon","law_id":"foreign","jail_place_id":"archon","why":"kept by an office inherited from the Empire ('East Empire Company'): A harbour authority and merchant council in the East Empire Company's old buildings, with the Xeech-Leel's customs officers alongside; its own cell (city)"}
 {"place_id":"armanias","law_id":"native","why":"Argonian law, no cell: A Lukiul village of potters and rice-growers under Gideon's council"}
 {"place_id":"arorha","law_id":"native","why":"Argonian law, no cell: Arorha village elders, answering to the Aroxhu council"}
 {"place_id":"aroxhu","law_id":"native","why":"Argonian law, no cell: The council of village elders of the Oxhu-Teeleel, meeting under the Aroxhu Hist"}
@@ -41,7 +41,7 @@
 {"place_id":"farm-m6-m64","law_id":"native","why":"Argonian law, no cell: The Urvyn family"}
 {"place_id":"fort-chalkmoth","law_id":"foreign","jail_place_id":"fort-chalkmoth","why":"kept by an office inherited from the Empire ('Archwarden'): The Archwardens' garrison, ex-Archein families; its own cell (fort)"}
 {"place_id":"fort-gysilla","law_id":"foreign","jail_place_id":"fort-gysilla","why":"kept by an office inherited from the Empire ('Archwarden'): An Archwardens garrison of old Archein families; its own cell (fort)"}
-{"place_id":"fort-reedmoth","law_id":"foreign","jail_place_id":"fort-reedmoth","why":"kept by an office inherited from the Empire ('Archwarden'): A small garrison of the Archwardens, the An-Xileel successor administration, drawn from old Archein families; its own cell (fort)"}
+{"place_id":"fort-reedmoth","law_id":"foreign","jail_place_id":"fort-reedmoth","why":"kept by an office inherited from the Empire ('Archwarden'): A small garrison of the Archwardens, the Xeech-Leel's wardens, drawn from old Archein families; its own cell (fort)"}
 {"place_id":"fort-rustmoth","law_id":"foreign","jail_place_id":"fort-rustmoth","why":"kept by an office inherited from the Empire ('Archwarden'): An Archwarden customs garrison keeping the old Imperial fort; its own cell (keep)"}
 {"place_id":"fort-shellmoth","law_id":"foreign","jail_place_id":"fort-shellmoth","why":"kept by an office inherited from the Empire ('Archwarden'): A small garrison of the Archwardens, Archein-descended; its own cell (fort)"}
 {"place_id":"fort-silvermoth","law_id":"foreign","jail_place_id":"fort-silvermoth","why":"kept by an office inherited from the Empire ('Archwarden'): An Archwarden toll garrison drawn from old Archein families; its own cell (fort)"}
@@ -76,7 +76,7 @@
 {"place_id":"jal-veesa","law_id":"native","why":"Argonian law, no cell: The Veesa-Teeleel elders; their own, not the Vicecanons"}
 {"place_id":"jarecai","law_id":"native","why":"Argonian law, no cell: The Mine-Burner tribes' council of elders"}
 {"place_id":"joxhi","law_id":"native","why":"Argonian law, no cell: Joxhi elders, under the Aroxhu council"}
-{"place_id":"julo","law_id":"native","why":"Argonian law, no cell: A family of causeway farmers in the Stormhold manner"}
+{"place_id":"julo","law_id":"native","why":"Argonian law, no cell: House Ulvarys, the Dunmer house of Thorn that buys Owings, as its saltrice estate"}
 {"place_id":"ka-asei","law_id":"native","why":"Argonian law, no cell: The village elders, paying the island core for protection"}
 {"place_id":"kaochalit","law_id":"none","why":"no one keeps law: abandoned, ruined"}
 {"place_id":"karketa","law_id":"native","why":"Argonian law, no cell: A village moot answering to Lilmoth's council"}
@@ -206,7 +206,7 @@
 {"place_id":"siluo","law_id":"native","why":"Argonian law, no cell: A Three Waters raft-master family under the elder of Uluo"}
 {"place_id":"slough-point","law_id":"native","why":"Argonian law, no cell: A council of Lukiul and Nibenese-descended families; Fort Rustmoth's garrison keeps the toll"}
 {"place_id":"soulrest","law_id":"foreign","jail_place_id":"soulrest","why":"kept by an office inherited from the Empire ('ex-Imperial'): A merchant council, the ex-Imperial civil office and river interests, in an unresolved contest; the Banujha tribes hold the hatching grounds; its own cell (city)"}
-{"place_id":"southwatch-keep","law_id":"foreign","jail_place_id":"southwatch-keep","why":"kept by an office inherited from the Empire ('Archwarden'): A small garrison of the Archwardens, the An-Xileel successor administration, drawn from old Archein families; its own cell (fort)"}
+{"place_id":"southwatch-keep","law_id":"foreign","jail_place_id":"southwatch-keep","why":"kept by an office inherited from the Empire ('Archwarden'): A small garrison of the Archwardens, the Xeech-Leel's wardens, drawn from old Archein families; its own cell (fort)"}
 {"place_id":"stormhold","law_id":"native","why":"Argonian law, no cell: The Vicecanons of Stormhold (the office the city invented); the Hist tree in the town square"}
 {"place_id":"sunken-ruin-23-m112","law_id":"none","why":"no one keeps law: abandoned, sunken"}
 {"place_id":"sunken-ruin-24-m109","law_id":"none","why":"no one keeps law: abandoned, sunken"}

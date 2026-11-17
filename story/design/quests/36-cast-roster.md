@@ -13,31 +13,31 @@ section 4).
 
 ## 55. The main quest's people
 
-[The Eye and the Root](lines/main-plot.md). The Reed's ranks are Reed-Hand, Listener, Watcher, Warden's Ear
-and Reed-Master.
-The plot also names Okeeh, the cook of the Owing gang at Sedge-Kal Camp, and Dralin Uveran, its gang-master.
+[The Eye and the Root](lines/main-plot.md). The rulers are the Xeech-Leel; the player serves their order, the
+Toh-Reel-Ka, whose ranks are Voh-Vastei, Toh-Wo, Reel-Ka, Ka-Deelith and Toh-Nassa. The plot also names Okeeh, the
+cook of the Owing gang at Ashgate Landing, and Dralin Uveran, its gang-master.
 
 | Who | Where they stand | What they want |
 |---|---|---|
-| **Vosh-Leera** | Root-herald of Jal-Veesa, who brings the player into the Reed | the trees healed and her town left alone |
-| **Nesh-Deeka** | The player's Reed handler, in a quiet house in Helstrom | the Eye left where it lies, locked and guarded. No second Umbriel |
-| **Never-Writes-Twice** | The Reed's officer, who takes the player on after the handler | that no tree ever turns on the marsh again |
+| **Vosh-Leera** | Root-herald of Jal-Veesa, who brings the player into the Toh-Reel-Ka | the trees healed and her town left alone |
+| **Nesh-Deeka** | The player's handler, in a quiet house in Helstrom | the Eye used in place to heal the trees, as her orders say. No second Umbriel |
+| **Never-Writes-Twice** | The Toh-Reel-Ka's officer, who takes the player on after the handler | that no tree, and no person or group allied with a tree, can ever make another Umbriel |
 | **Cuts-the-Old-Knot** | Leader of the Unbound, unseen until the gate | the Eye lifted and every dreamer free |
 | **Ennodius Vanin, the Collector** | An Imperial relic-hunter | the Eye, for himself, after twenty years of hunting it |
 | **Sesk** | A Naga of the Unbound who drew sap for them | out, with the price of a boat |
-| **Heem-Jasa** | Tree-minder of Vel-Sapha Stand | her tree to live |
+| **Heem-Jasa** | Tree-minder of Teel-Fen Weir | her young tree to live |
 
 ## 56. The factions' people
 
-### The Lamps
+### The Lampbearers
 
 [lamps](lines/lamps.md)
 
 | Who | Where they stand | What they want |
 |---|---|---|
-| **Marcella Dovi** | The Lamps' chief, an Imperial of Soulrest's old civil office families, in the Lamp-Hall (also in the Eelskins, the Shadowscales) | crimes solved and the Lamps paid by all three powers of Soulrest, so that none can call them its own |
-| **Teesh-Vaal** | The arbiter, a very old Argonian woman, in the Lamp-Hall's hearing room (also in the Shadowscales) | to judge fairly in the years she has left |
-| **J'zahri** | A Khajiit, the head of the Lamps' branch on Truowa's quay (also in the Eelskins) | to run her own branch one day, away from Soulrest's three powers |
+| **Marcella Dovi** | The Lampbearers' chief, an Imperial of Soulrest's old civil office families, in the Lamp-Hall (also in the Eelskins, the Shadowscales) | crimes solved and the Lampbearers paid by all three powers of Soulrest, so that none can call them its own |
+| **Teesh-Vaal** | The arbiter, a very old Argonian woman, in the Lamp-Hall's hearing room (also in the Shadowscales) | to judge fairly in the years she has left, and to keep the hatchlings out of the Toh-Reel-Ka's hands |
+| **J'zahri** | A Khajiit, the head of the Lampbearers' branch on Truowa's quay (also in the Eelskins) | to run her own branch one day, away from Soulrest's three powers |
 
 ### The Eelskins
 
@@ -45,10 +45,11 @@ The plot also names Okeeh, the cook of the Owing gang at Sedge-Kal Camp, and Dra
 
 | Who | Where they stand | What they want |
 |---|---|---|
-| **Swims-Without-Ripples** | The Eelskins' leader, in the hall under Pusbottom (also in the Lamps, the Shadowscales) | the Silt-Orrel vault, which she thinks of as owed to her family |
-| **Corso Delling** | An Imperial, a deserter from the Blackguards, who keeps the outpost at Blackrose | a quiet outpost and members he can trust |
+| **Swims-Without-Ripples** | The Eelskins' leader, in the hall under Pusbottom (also in the Lampbearers, the Shadowscales) | the An-Xileel's gold out of the Xeech-Leel's strongroom, which she thinks of as owed to her family |
+| **Corso Delling** | An Imperial, a deserter from the Blackguards, who runs the outpost at Blackrose | a quiet outpost and members he can trust |
 | **Sees-Nothing** | A young Argonian Eelskin, the one who wakes the player | to bring in members of his own and rise |
-| **Drips-From-Eaves** | An Eelskin scout, hiding at Meris-Keth (also in the Lamps) | to live |
+| **Gathe-Ru** | The council house's cook at Helstrom, born in Pusbottom | to be free of a Lilmoth moneylender |
+| **Drips-From-Eaves** | An Eelskin thief, hiding at Meris-Keth (also in the Lampbearers) | to live |
 
 ### The Shadowscales
 
@@ -56,10 +57,10 @@ The plot also names Okeeh, the cook of the Owing gang at Sedge-Kal Camp, and Dra
 
 | Who | Where they stand | What they want |
 |---|---|---|
-| **Ukka-Teel** | The Eldest, in the sealed school at Archon (also in the Lamps) | the order alive and its hatchlings his, free of the Brotherhood |
-| **Hulee-Tah** | A Shadowscale, the player's handler (also in the Eelskins) | to see the order judge the marsh again, as it did before he was hatched |
+| **Ukka-Teel** | The Eldest, at Ra'tal Den (at Beem-Xal's house in Act III) (also in the Lampbearers) | the order alive and its hatchlings his, free of the Brotherhood and of the Toh-Reel-Ka |
+| **Hulee-Tah** | A Shadowscale, the player's handler, at Beem-Xal's house in Archon (also in the Eelskins) | to see the order judge the marsh again, as it did before he was hatched |
 | **Beem-Xal** | The old ku-vastei, in his house beside the sealed school | to die in his bed with the order alive |
-| **Lucan Vetrix** | An Imperial rice buyer, at Lilmoth's stilt-hall tavern (also in the Lamps) | the Archon school and its hatchlings for the Brotherhood |
+| **Lucan Vetrix** | An Imperial who calls himself a rice buyer, at Lilmoth's stilt-hall tavern (also in the Lampbearers) | the Archon school and its hatchlings for the Brotherhood |
 
 ### The Sisei-Xul
 
@@ -67,21 +68,21 @@ The plot also names Okeeh, the cook of the Owing gang at Sedge-Kal Camp, and Dra
 
 | Who | Where they stand | What they want |
 |---|---|---|
-| **Deegla-Tsei** | Tree-minder of Aroxhu, who brings the player in | her potters healed and her town's dead left in the mud |
-| **Okan-Zeel** | Eldest Grave-Singer of the order, in the tree-minders' hall at Helstrom (also in the Rothalen house) | the Rothalens destroyed and every Argonian dead returned to the mud |
-| **Akeeta-Sul** | The Stone-Sleepers' minder at Tsonac, the order's teacher of Alteration (also in the Rothalen house) | the old Velothi graves under her hamlets left shut |
+| **Deegla-Tsei** | Tree-minder of Arorha, who brings the player in | her potters healed and her village's dead left in the mud |
+| **Okan-Zeel** | First Grave-Singer of the order, in the tree-minders' hall at Helstrom (also in House Cardruhn) | House Cardruhn destroyed and every Argonian dead returned to the mud |
+| **Akeeta-Sul** | The Stone-Sleepers' minder at Tsonac, the order's teacher of Alteration (also in House Cardruhn) | the old Velothi graves under her hamlets left shut |
 | **Gam-Meesh** | The mason-smith of Tsonac, the order's teacher of Smithing | iron that the dead respect |
 
-### The Rothalen house
+### House Cardruhn
 
 [house-cardruhn](lines/house-cardruhn.md)
 
 | Who | Where they stand | What they want |
 |---|---|---|
-| **Ervyn Rothalen** | The house's factor, at its stall in Thorn's market square (also in the Sisei-Xul) | the house rich and respectable, the dead a quiet sideline |
-| **Neeja** | An Argonian necromancer of the house, the player's teacher (also in the Sisei-Xul) | her grandfather's soul freed from an urn in the Sisei-Xul's hall |
-| **Dalvela Rothalen** | The house's bone-mistress, in the hall at Ovezza (also in the Sisei-Xul) | the Sisei-Xul wiped out and a house of the dead after Morvayn |
-| **Morvayn Rothalen** | Master of the house, at Kaochalit (also in the Sisei-Xul) | his heirs to keep the house after he dies, on his terms |
+| **Ervyn Cardruhn** | The house's factor and Morvayn's grandson, at its stall in Thorn's market square (also in the Sisei-Xul) | the house rich and respectable, the dead a quiet sideline |
+| **Neeja** | An Argonian necromancer of the house, the player's teacher (also in the Sisei-Xul) | her grandfather Keel-Vaxa's soul freed from an urn in the Sisei-Xul's hall |
+| **Dalvela Cardruhn** | The house's bone-mistress, in the hall at Ovezza (also in the Sisei-Xul) | the Sisei-Xul wiped out and a house of the dead after Morvayn |
+| **Morvayn Cardruhn** | Master of the house, at Kaochalit (also in the Sisei-Xul) | his heirs to keep the house after he dies, on his terms |
 
 ### Bramman's Brethren
 
@@ -90,55 +91,58 @@ The plot also names Okeeh, the cook of the Owing gang at Sedge-Kal Camp, and Dra
 | Who | Where they stand | What they want |
 |---|---|---|
 | **Ma'jirra** | A Khajiit captain who runs the bay crew from Soulrest's mangrove landing and recruits for the Brethren | the bay free of Company ships and her crew paid |
-| **Wazei-Vos, called One-Eye** | Captain of the Brethren at Marque Landing (also in the Nibenese Company) | the Company broken and Gideon's quay hers |
-| **Selvo Arenim** | A Dunmer, quartermaster of Rainbreaker Keep (also in the Nibenese Company) | the keep's stores full and the ransoms paid |
-| **Bar-Neeus** | Bosun of Marque Landing (also in the Nibenese Company) | a newcomer who can fight |
-| **Rajeel-Kosh** | Leader of the smugglers of Hollow Tide Camp on the same island (also in the Nibenese Company) | his camp left out of the Brethren's war, and his old strongbox back |
+| **Wazei-Vos, called One-Eye** | Captain of the Brethren at Bramman's Watch (also in the Topal Bay Company) | the Company broken and Gideon's quay hers |
+| **Selvo Arenim** | A Dunmer, quartermaster of Bramman's Watch (also in the Topal Bay Company) | the Watch's store full |
+| **Bar-Neeus** | Bosun of Bramman's Watch (also in the Topal Bay Company) | a newcomer who can fight |
+| **Hasha-Jeen** | Master of Marque Landing and Rainbreaker Keep | the Archon coast's grudge paid |
+| **Rajeel-Kosh** | Leader of the smugglers of Hollow Tide Camp on Skeith Isle (also in the Topal Bay Company) | his camp left out of the Brethren's war, and his sloop's strongbox back |
+| **Dravos Indrelo** | A Dunmer, captain of the chartered privateer *Black Kestrel* | the Archwardens' bounty on Brethren hulls |
 | **Kesh-Ulee** | A bosun of the bay crew | out of the stockade at Fort Silvermoth before Gideon hangs him |
-| **Ixil-Ma** | A diver of Seafalls, prisoner in the undercroft of Rainbreaker Keep | to go home |
+| **Ixil-Ma** | A diver of Seafalls who dives for pay out of Rainbreaker Keep | 300 gold to take home |
 
-### The Nibenese Company
+### The Topal Bay Company
 
 [merchants](lines/merchants.md)
 
 | Who | Where they stand | What they want |
 |---|---|---|
-| **Opilia Cassena** | Master of the Nibenese Company, in the Company house in Gideon (also in the Brethren) | the bay's trade for the Company and the pirates gone |
+| **Opilia Cassena** | Master of the Topal Bay Company, in the Company house in Gideon (also in Bramman's Brethren) | the bay's trade for the Company and the pirates gone |
 | **Nuxal-Tei** | A Lukiul factor of the Company, the player's handler in the Company house | the Company's trade and her own share of it |
-| **Gallus Ostorius** | An Imperial, master of the Company ship *Leyawiin Pride* (also in the Brethren) | his ship and his name kept |
-| **Captain Hareel Tullan** | The Archwarden captain of Fort Silvermoth (also in the Brethren) | his toll, and his family's old land under Gideon's south gardens |
+| **Gallus Ostorius** | An Imperial, master of the Company ship *Leyawiin Pride* (also in Bramman's Brethren) | his ship and his name kept |
+| **Captain Hareel Tullan** | The Archwarden captain of Fort Silvermoth | his toll, and his family's old land under Gideon's south gardens |
 | **Drusus Faleria** | A fixer of the Ruction Ring under Gideon | to buy cheap and sell dear |
 
 ### The Chainbreakers
 
 [chainbreakers-newworld](lines/chainbreakers-newworld.md)
 
-The Ulvarys house, which cannot be joined, has its page in [owing-house](lines/owing-house.md). Fenas Ulvarys,
+House Ulvarys, which cannot be joined, has its page in [owing-house](lines/owing-house.md). Fenas Ulvarys,
 the matriarch's nephew, is its overseer in the Stormhold valley. The people the Chainbreakers free are in
-their plot, section 8.
+their plot, section 9.
 
 | Who | Where they stand | What they want |
 |---|---|---|
-| **Mere-Halu** | Leader of the Chainbreakers, in the Well-Room under Stormhold | every long Owing ended by a ruling that holds for good |
+| **Mere-Halu** | Leader of the Chainbreakers, in the Well-Room under Stormhold | every long Owing ended by a ruling that lasts |
 | **Jeen-Wei** | A Chainbreaker who poses as a held worker | new hands who will act |
-| **Llaros Seloth** | A Dunmer who keeps the Thorn safe house | the house broken, and his own name out of its great roll |
-| **Aldyne Ulvarys** | Matriarch of the Ulvarys house | her family's fortune, and the Owing left as it is |
-| **Ah-Kesh** | The house's catch-captain, an Argonian of an ex-Archein family | his pay, and the Chainbreakers' leader caught |
+| **Llaros Seloth** | A Dunmer who keeps the Thorn safe house | House Ulvarys broken, and his own name out of their great roll |
+| **Aldyne Ulvarys** | Matriarch of House Ulvarys | her family's fortune, and the Owing left as it is |
+| **Ah-Kesh** | House Ulvarys' catch-captain, an Argonian of an ex-Archein family | his pay, and the Chainbreakers' leader caught |
 | **Speaks-at-the-Falls** | A Vicecanon of Stormhold | order on the border, and an end to the trouble the Owing makes |
 
 ## 57. Shared places and shadow networks
 
-Nothing friendly travels between lines. Lines meet through the same named people and stakes, seen from two sides, and
-through the places they share ([the province plan](lines/province-plan.md), sections 3 and 4).
+Lines meet through the same named people, places and stakes, seen from two sides, and through the places they
+share ([the province plan](lines/province-plan.md); the rules in [the consistency ledger](lines/consistency.md)).
+The one friendly crossing is the Chainbreakers' freed people, who help in other lines once those lines reach them.
 
-**The same conflict from both sides.** The night at Silt-Orrel (the Lamps, the Eelskins and the Shadowscales), the war
-of the stakes (the Sisei-Xul and the Rothalen house) and the war on the bay (the Brethren and the Nibenese Company)
-are each one set of people and events told from every side. Each person above holds the same facts in every plot that
-names them.
+**The same conflict from both sides.** The war of the stakes (the Sisei-Xul and House Cardruhn) and the war on the
+bay (Bramman's Brethren and the Topal Bay Company) are each one set of people and events told from both sides. The
+Lampbearers, the Eelskins and the Shadowscales share their people, and each of the three lines tells its own late
+story. Each person above holds the same facts in every plot that names them.
 
-**The Ulvarys house.** The province's unjoinable web: a Dunmer family of Thorn that buys Owings and works the people
-under them. The player meets it at its farms, mines, forts, barge and estate through the Chainbreakers' line, and hears
-of it in the fields from the first hour. Its matriarch, Aldyne Ulvarys, is met once, at Julo.
+**House Ulvarys.** The province's unjoinable web: a Dunmer family of Thorn that buys Owings and works the people
+under them. The player meets it at its farms, mines, forts, barge and estate through the Chainbreakers' line, and
+hears of it in the fields from the first hour. Its matriarch, Aldyne Ulvarys, is met once, at Julo.
 
 **The Unbound.** The main quest's shadow web. Rumours of stolen sap reach other lines, and nothing more.
 

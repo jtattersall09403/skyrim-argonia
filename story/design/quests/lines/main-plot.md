@@ -98,7 +98,8 @@ visions show what any tree has seen, anywhere in the province. That is how the T
 Xeech-Leel's rule rests on it. The irony is the lore's own: the party that rose because one faction held secret
 communion with one tree now holds, in secret, a communion with all of them (§1). The tree-minders and the Root Talk
 do not know of the dreamers. Vosh-Leera serves the Toh-Reel-Ka without asking what they do. Of all the minders,
-Helstrom's eldest tree-minder knows and consents, for fear of another Umbriel (X).
+Helstrom's eldest tree-minder, who keeps the city tree, knows and consents, for fear of another Umbriel (X). She is
+not Okan-Zeel, the Sisei-Xul's First Grave-Singer, who works in the same hall.
 
 **What the Toh-Reel-Ka want of the Eye.** They want the Unbound stopped and Cuts-the-Old-Knot dead. They want the
 Root found and the player to use the Eye where it sits, to heal the trees. They say that this saves the villages,
@@ -292,7 +293,8 @@ the same house. Never-Writes-Twice tells her lie about Cuts-the-Old-Knot. She kn
 Tooth, the seamark of Skeith Isle, and she marks it.
 
 **11. The Grey Tooth** (the Grey Tooth, a crag on Skeith Isle; the Wreck of the Stormwidow, a beached galleon).
-The Collector's hired men have camped at the foot of the Grey Tooth's goat-path. They have dug in the small cave
+The Collector's hired men have camped at the foot of the Grey Tooth's goat-path. They, and the Unbound at the
+wreck, are switched on when this quest starts, so a player of Bramman's Brethren who comes first meets neither. They have dug in the small cave
 on its north face. The player fights them or passes them by stealth. In the cave the player finds what the men
 found: an empty niche and their master's rubbing of the stone that stood in it (a note under our name), which says
 that the Stormwidow's captain carried the stone off to his ship. (Checked: the crag's source, Mount Moesring, is
@@ -656,7 +658,10 @@ Blackrose's garrison is placed hostile, and the gate's toll, persuasion or yield
 - *The first act built in the old world* (`story/data/quest_lines/` mq01, mq03, mq04 and mq05) stays as it is.
 - *The faction lines* are the eight plots beside this one; [the province plan](province-plan.md) shows where they
   meet it and each other. Bramman's Brethren's line keeps the Grey Tooth's cairn and the Stormwidow's strongbox;
-  this plot uses the crag's cave and the wreck's hold. Aphon Isle has left the main plot.
+  this plot uses the crag's cave and the wreck's hold. Aphon Isle has left the main plot. No faction quest uses a place,
+  person or thing of this plot in a way that could break or pre-empt it. The one crossing is the Chainbreakers' freed
+  people, who give small help in quests 5, 10, 12 and 13 once the plot has sent the player there; nothing here needs
+  it ([chainbreakers-newworld](chainbreakers-newworld.md), section 9).
 - *The places.* The studio's story panel is made from the table above each time it opens, so every place shows
   what the plot asks of it without anyone having to remember. Changed with this page: Ashgate Post became Ashgate
   Landing, the Owing reed-cutters' camp with the barge; Teel-Fen Weir took the young sick Hist and the reed hide,

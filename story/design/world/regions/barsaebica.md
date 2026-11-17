@@ -323,7 +323,7 @@ Each is quoted from the notes and cited to its row. The place's own hooks note c
 
 **Slough Point.**
 
-- A smuggler who wants the ferry rope cut on the night he crosses; a Gideon trader who will not pay a toll to the successor state and is held at the fort. <!-- place_note:slough-point/hooks -->
+- A smuggler who wants the ferry rope cut on the night he crosses; a Gideon trader who will not pay a toll to the Xeech-Leel and is held at the fort. <!-- place_note:slough-point/hooks -->
 - Road trade to Gideon and Leyawiin, a ferry landing, a market of smugglers and herb-sellers. <!-- place_note:slough-point/economy -->
 
 **Gemin.**

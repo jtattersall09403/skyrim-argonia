@@ -2,7 +2,7 @@
 
 House Ulvarys is a Dunmer merchant family of Thorn that buys Owings and works the people under them for profit. It
 cannot be joined and gives no quests: it is the enemy of [the Chainbreakers](chainbreakers-newworld.md), and this
-page is its background. In speech its people are "the Ulvarys".
+page is its background. In speech its people are "House Ulvarys".
 
 **Words.** *The Owing*: the marsh's sentence, months of owed work in place of a cell. *A work roll*: the sheet that
 names a person under an Owing, the months set on them and who has bought them. *The great roll*: Aldyne Ulvarys's
@@ -21,9 +21,9 @@ them: freed labourers' descendants and the ex-Archein families who had kept the 
 (`extrapolation/argonia-4e201-state.md` §4, Thorn). Thorn still has a large Dunmer minority, many from families whose
 ancestors stood on both sides of the coffles (the same section).
 
-The Ulvarys are one of those Dunmer families. The family came to Thorn as Dres's overseers in the fields, stayed when
+House Ulvarys are one of those Dunmer families. The family came to Thorn as Dres's overseers in the fields, stayed when
 Dres went, and kept a share of the saltrice by being there when the title passed. Nobody living remembers that: it
-is the family's own story of itself, told over six centuries. The Ulvarys are not Dres, and in 4E 201 Dres has
+is the family's own story of itself, told over six centuries. House Ulvarys is not Dres, and in 4E 201 Dres has
 nothing in the province.
 
 ## Why the law lets it buy Owings
@@ -37,7 +37,7 @@ carters who cannot pay the toll and sell them on, and the Xeech-Leel look away b
 the tolls. An Owing can be sold on, and nothing in custom forbids a buyer of any race
 (`topics/labour-and-bondage.md:90-93`).
 
-So the Ulvarys buy. They pay the ex-Archein assessors and the toll wardens in silver for Owings that have grown past
+So House Ulvarys buy. They pay the ex-Archein assessors and the toll wardens in silver for Owings that have grown past
 paying, and they own the months from then on. Thorn's Vicecanons take the family's taxes and its gifts, and Thorn's
 guards look away (`thorn.md:6-8`). Because the family has Argonian and Dunmer debtors on the same roll, it can say it
 is not a Dunmer family owning Argonians, and some Argonian families who keep Owings of their own agree with it.
@@ -53,12 +53,12 @@ she says: that without the Owing the province has no law at all, and that what c
 taken seriously, and he is cruel to people who cannot answer back.
 
 **Ah-Kesh** is the family's catch-captain, an Argonian of an ex-Archein family that set Owings at the crossings for
-generations. He wants his pay and a name for never losing a runaway. The Ulvarys can hire swords anywhere, but they
+generations. He wants his pay and a name for never losing a runaway. House Ulvarys can hire swords anywhere, but they
 cannot replace him.
 
 **Llaros Seloth** was the family's assessor for ten years and set many of the months in the great roll. Aldyne put
 him out for skimming. He now keeps the Chainbreakers' safe house in Thorn, which his family has kept since the Twin
-Lamps' days, and lies to the band about why he left. He still tells the Ulvarys' factor where safe houses are, and
+Lamps' days, and lies to the band about why he left. He still tells House Ulvarys' factor where safe houses are, and
 the factor pays him in gold for it.
 
 ## Where it sits
@@ -67,7 +67,7 @@ The family's seat in Thorn is its counting-house, a saltrice store by the quay (
 interior, which Thorn borrows). Its country seat is the estate at Julo, a hamlet of stone-footed farmhouses where the
 river braid enters Lake Ulaish, with a ferry and saltrice paddies. A Naga band hunts the delta and crocodiles lie in
 the braid, so the estate is hard to reach (Julo's place record, strength D4). Julo's record does not yet name the
-estate as the Ulvarys'. The family's factor has a stall in Stormhold's old Ayleid compound.
+estate as House Ulvarys'. The family's factor has a stall in Stormhold's old Ayleid compound.
 
 ## How it makes the Owing pay
 
@@ -80,7 +80,7 @@ between its places by barge. People kept for years far from their Hist are washe
 known by it (`topics/labour-and-bondage.md:112-116`).
 
 The Owing is the trade in people inside the province. Over the border, House Telvanni still buys, rarely, the living
-as well as the dead. When a debtor is too sick or too old to work off anything, the Ulvarys now and then sell that
+as well as the dead. When a debtor is too sick or too old to work off anything, House Ulvarys now and then sell that
 debtor's body and labour to a Telvanni buyer's agent for gold and send them up the border river in old Dres shackles. The flat barge
 held at Fort Willowmoth's jetty is one such (the Chainbreakers' 13).
 
@@ -93,7 +93,7 @@ up runaways for it. Its barge carries a crew of four and a master. At Julo it ke
 ## Its kin
 
 House Cardruhn ([house-cardruhn](house-cardruhn.md)), the Dunmer necromancers who hide behind a trading house in
-Thorn, are kin of the Ulvarys by an old marriage. The two houses do not speak. The Ulvarys say they deal in the
+Thorn, are kin of House Ulvarys by an old marriage. The two houses do not speak. House Ulvarys say they deal in the
 living and want nothing of the dead.
 
 ## The places the Chainbreakers strike

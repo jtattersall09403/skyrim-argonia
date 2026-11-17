@@ -1,110 +1,103 @@
 # The consistency ledger
 
-The rulings that keep the nine plots one province. A plot that changes a fact below changes this page and every plot
-the fact touches in the same piece of work. Where a plot and this page disagree, the main plot wins over a faction,
-and between two factions the less costly side changes. [The province plan](province-plan.md) shows where the lines
-work and meet.
+The rules that keep the ten pages one province: the main plot, the eight faction lines and House Ulvarys' page. A
+plot that changes a fact below changes this page and every plot the fact touches in the same piece of work. Where a
+plot and this page disagree, the main plot wins over a faction, and between two factions the cheaper side changes.
+[The province plan](province-plan.md) shows where each line works and where each door shuts.
 
-## 1. What every line holds
+## 1. Who rules
 
-**The Owing.** The Owing is the marsh's sentence: months of owed work in place of a cell. An arbiter whom both sides
-choose sets it, and a native Argonian place has no jail. In much of the province it still works as it should. In the
-north and east it has drifted: whoever holds the estate or the crossing sets the months, an Owing can be sold on, and
-it can grow faster than it is worked off (`topics/labour-and-bondage.md:84-103`). The player arrives under one, in the
-hold of an Owing barge moored at Sedge-Kal Camp, and their name is struck from the gang-master's roll before they cut a
-reed. A line that speaks of the opening says exactly that. The Lamps' culprits are given the Owing, and a long Owing
-can be set for life.
+**The Xeech-Leel.** "The People of the New Beginning" have ruled the province since the An-Xileel fell after Umbriel
+(`extrapolation/argonia-4e201-state.md` §1). No party called the An-Xileel survives; they are history, the party
+that called Umbriel down in 4E 48. The council of the Xeech-Leel sits at Helstrom, in its council house. Acts of
+state (chartering privateers, setting customs, buying a crew) are the Xeech-Leel's, done through their Archwardens at
+Archon. To call a Xeech-Leel officer "An-Xileel" is the gravest insult.
 
-**The Hist.** The Hist are the great thinking trees, one at the heart of every village, with the eggs in pools among
-their roots. A tree-minder tends each one and draws a little sap at the scar. Through the main quest the trees are
-falling sick one at a time, and the tree-minders cannot find the cause. The Sisei-Xul are tree-minders and
-grave-singers, and they share that worry and that ignorance. No faction line names the cause, the Unbound's seal or
-the Reed's dreamers.
+**The Toh-Reel-Ka.** "The Secret Warriors" are the Xeech-Leel's elite order of spies and guards (§2.5). Their ranks,
+lowest first, are Voh-Vastei, Toh-Wo, Reel-Ka, Ka-Deelith and Toh-Nassa. They watch the Hist through dreamers kept in
+the cellar of Fort Chalkmoth. Only the main quest knows the dreamers. A faction line may know the Toh-Reel-Ka by name
+and fear them (they offered the Shadowscales a charter, and a soul kept from its Hist is their business), and nothing
+more.
 
-**The Archwardens.** The Archwardens are the province's rulers, a thin state. Their garrisons, of old Archein families,
-hold the old Imperial forts on the roads and coasts, take tolls at the crossings and customs at the ports. They have no
-navy: on the water their arm is the chartered privateers of the Archon coast. Their writ ends at a fort's walls and a
-port's quay (`extrapolation/argonia-4e201-state.md:701-709`). The cities govern themselves: Stormhold and Thorn by
-Vicecanons, Gideon by its civic council, Lilmoth, Archon and Soulrest by merchant councils, Helstrom by its assembly.
-A ruling by a Vicecanon binds the country that Vicecanon judges, never the whole province.
+**The Archwardens.** The Xeech-Leel's wardens. Their garrisons, of old Archein families, keep the old Imperial forts,
+roads, tolls and customs. Each fort or post keeps its own law: a bounty set at one is kept by that post and the fort
+it answers to, never by Fort Chalkmoth or the other forts. The main quest's Reel-Ka beds are in every fort that has
+no bounty on the player.
 
-**The Reed.** The Reed is a secret order that says it protects the old ways. It watches the Hist through dreamers, kept
-in the cellar of Fort Chalkmoth and fed sap, so that no tree turns on the marsh again as Lilmoth's did in 4E 48. Its
-handler sits in a quiet house in Helstrom. Fort Chalkmoth's garrison is the Archwardens' and lets the Reed's people in.
-No faction line names the Reed or knows what the cellar holds. A Chainbreaker's freed woman may know of the trapdoor
-in the fort's yard, and nothing more.
+**The cities** govern themselves: Stormhold and Thorn by Vicecanons, Gideon by its civic council, Lilmoth, Archon and
+Soulrest by merchant councils, Helstrom by its assembly. A Vicecanon's ruling binds only the country she judges. A
+city bounty set in a faction line can always be paid at the city's guard post, so it never bars the main quest.
 
-**The Unbound.** The Unbound are a cult of the tribeless, led by Cuts-the-Old-Knot, who drain Hist sap and seal the
-trees they drain. Their camp is Karsh-Naal in the Valley of Storms. They appear only in the main quest. A faction line
-may carry rumours of stolen sap and nothing else.
+**The Owing.** The marsh's sentence: a counted number of months of owed work in place of a cell. An arbiter both
+sides choose sets it, and native places have no jail. In the north and east it has drifted: whoever holds the
+crossing or the estate sets the months, the Archwardens set and sell Owings at their crossings, and House Ulvarys buys
+them. There is no court outside Gideon. The worst sentence is a long Owing, twenty years, never one for life. Gideon
+alone keeps a rope.
 
-**The Shadowscales.** The Shadowscale Veezara who died in Skyrim this year was real. The word that he was the last was
-spread by the order as cover, and the Lamps' arbiter Teesh-Vaal carried it. Every line that mentions the order holds
-this.
+## 2. What every line holds
 
-## 2. Where the lines cross
+- **The Hist** are the great thinking trees, one at the heart of every village. In the main quest they fall sick one
+  at a time. No faction line names the cause, the Unbound's seal or the dreamers.
+- **The Unbound** belong to the main quest. A faction line may carry rumours of stolen sap and nothing else.
+- **The Shadowscales** live in secret. The Archon school has been sealed since 4E 187 and stays sealed; the novices
+  train at Ra'tal Den. Veezara, who died in Skyrim this year, was called the last as the order's cover. The Dark
+  Brotherhood is "the Brotherhood of Cyrodiil", whose Listener at Cheydinhal wants the Shadow-born.
+- **The Lampbearers** are Soulrest's investigators, founded in 4E 189. They are not the Twin Lamps. The Chainbreakers
+  see themselves as the Twin Lamps' more militant heirs, and their safe houses show the Twin Lamps' sign of two lamps.
+- **Helstrom's eldest tree-minder**, who keeps the city tree and knows of the dreamers, is not Okan-Zeel, the
+  Sisei-Xul's First Grave-Singer, who works in the same hall.
+- **The Stormwidow** was a ship of Bramman's Brethren. In 4E 181 Gaius Cassena told the Archwardens her course; the
+  privateers of the *Black Kestrel* ran her onto Skeith Isle's beach and killed her crew. Her captain hid her letter
+  of marque in the cache under the cairn on the Grey Tooth before he died. One-Eye keeps a copy at Kelp-Mouth Cave.
 
-Rulings on places that two lines use. Each plot names the other's quest at the place.
+## 3. Where the lines cross
+
+Each plot names the other line's quest at the place. When two quests fight in one place, each quest's people are its
+own, switched on when it starts, so either can be played first.
 
 | Place | The ruling |
 |---|---|
-| Coldbrine Mine | Three things stand here at once. The Ulvarys house's diggers sleep locked in the bunk shed (the Chainbreakers' 1). The salt dead lie behind the walled gallery's door, and the Rothalens' diggers work its far side (the Sisei-Xul's 3, the Rothalens' 1). Huzei's father lies in the old giant mudcrab's burrow between the brine pools and the gallery, outside the wall. The crab is dead if the Chainbreakers' 1 came first, and the other two quests say so |
-| Wrackmoth, Old Goldseam | These belong to the war on the bay: each becomes a Company post or a Company mine in the merchants' line and a pirate hold or a raided mine in the pirates' line. No other line sends the player there. The Shadowscales' contracts are at Fort Lowmoth and Nine Reeds Waystation |
-| Fort Swiftmoth | The keep has a lower hall and a locked strongroom off it, and no cellar. The smugglers there belong to Bramman's Brethren, the pirates. The Eelskins' 7 and the Company's 11 both rob the strongroom, each with its own watch and captain |
-| Fort Gysilla | An Archwarden toll fort on a lake island. Its garrison keeps the lake's toll strongroom (the Eelskins' 8) and takes the Ulvarys house's coin to hold runaways in the lock-room (the Chainbreakers' 9). The Lamps' 2 hears of its quarrel with Truowa's boats |
-| Marshgate Watch | Its sergeant is honest and means to report the Rothalens' carts (the Rothalens' 2). One of his wardens takes pay to let cargo through, and the Brethren pay him (the Brethren's 8) |
-| Bala Karag | The lord's ghost carries the key to the flooded lowest hall, where the ancestor tablet lies (the Rothalens' 5). Runaways hide among the dead of the upper halls until the Brethren's boat comes (the Chainbreakers' 7) |
-| Naxan, Arorha | Each is a village two lines pass through, at different buildings: Naxan's log landing (the Lamps' 8, the Brethren's 3), Arorha's kilns and quay (the Sisei-Xul's 1, the Brethren's 6, the Company's 7) |
-| Helstrom | The Reed's handler's quiet house (the main quest's 5) and the tree-minders' hall (the Sisei-Xul's seat, the Rothalens' 9) are different buildings |
-| Thorn | The Rothalens' stall is in the market square, beside the Vicecanon's factor. The Ulvarys house's counting-house is the old Mages Guild hall. Llaros Seloth's safe house is in the Argonian timber quarter. The *Saltrice Queen* uses the city's ship interior at the quay, and no other line uses that ship |
-| Stormhold | The Dunmer merchant in the old Ayleid compound is the Ulvarys house's factor. Freed people stand elsewhere in the city |
-| Gideon | The Brethren's ending changes the guards and the Company house. The main quest's relic dealer and Gideon South Watch are untouched by it |
+| Ashgate Landing, Jal-Veesa, Teel-Fen Weir, Karsh-Naal Camp | The main quest's alone. The Chainbreakers name the opening barge as the player's past and reuse its block elsewhere |
+| Helstrom | Four buildings, never one for two lines: the Toh-Reel-Ka's quiet house and the go-between's lodging (the main quest's 5), the tree-minders' hall (the Sisei-Xul's seat; House Cardruhn's 9 steals the urn there), and the Xeech-Leel's council house with its strongroom (the Eelskins' 9 to 12). A theft seen at the council house is wanted only by its wardens |
+| Gideon | The main quest's relic dealer, the rootworm and Gideon South Watch stand whatever the bay war does. Bramman's Brethren's ending replaces the guards and empties the Company house; the Topal Bay Company's ending changes nothing in the city |
+| The Grey Tooth, Wreck of the Stormwidow | The main quest's 11 uses the crag's north-face cave and the wreck's sand-filled hold, and its Collector's men and Unbound scouts appear only when that quest starts. Bramman's Brethren's 7 uses the cairn and its cache on the south face and the stern cabin's strongbox |
+| Fort Chalkmoth | The main quest's alone. The Chainbreakers' freed Mim-Teeus may hide in its yard once the main quest's 12 has begun |
+| Coldbrine Mine | House Ulvarys' diggers sleep in the bunk shed (the Chainbreakers' 1). The salt dead lie behind the walled gallery (the Sisei-Xul's 3 from the near side, House Cardruhn's 1 from the crab's hole). If the overseer or the crab is dead, the other quests use their other ways |
+| Fort Swiftmoth | The Eelskins' 7 takes the Brethren's coin and goods from the strongroom, the Topal Bay Company's 11 their scrolls; each switches on its own watch and store |
+| Fort Gysilla | Its garrison keeps the lake toll (the Eelskins' 8) and locks up runaways for House Ulvarys (the Chainbreakers' 9). The Lampbearers' 2 only hears of its quarrel with Truowa. A fight there sets a bounty Fort Gysilla alone keeps |
+| Marshgate Watch | Its honest sergeant means to report House Cardruhn's carts (House Cardruhn's 2); his corrupt warden takes the Brethren's toll (Bramman's Brethren's 8) and stands at the gate whatever befell the sergeant. If the Brethren killed the watch, the sergeant's report is still in the blockhouse chest |
+| Bala Karag | The lord's ghost keeps the key to the flooded lowest hall, where his ash urn lies (House Cardruhn's 5). Runaways hide in the upper halls until the Brethren's boat comes (the Chainbreakers' 7) |
+| Naxan, Arorha, Ysan | Villages two or three lines pass through at different buildings: Naxan's log landing and its log-haulers (Bramman's Brethren's 3, the Lampbearers' 8); Arorha's kilns and quay (the Sisei-Xul's 1, the boats to Skeith Isle); Ysan's jetty (the main quest's 7, Bramman's Brethren's 8, the Chainbreakers' 7) |
+| Thorn | House Cardruhn's stall is in the market square; House Ulvarys' counting-house and Llaros Seloth's safe house are elsewhere in the city; the *Saltrice Queen* is at the quay |
+| Stormhold | House Ulvarys' factor keeps a stall in the old Ayleid compound; the Chainbreakers' Well-Room is under the city |
 
-**A place two quests fight in.** When two lines send the player to fight in one place, each quest's enemies are its
-own, switched on by its own stage. A quest done first never takes from the place a thing or a person that another
-line's quest needs, and the second quest's journal says what it finds changed.
+## 4. The main quest comes first
 
-## 3. Houses, allies and kin
+Every faction line can be played at any point of the main quest. No faction quest uses a place, person or thing the
+main quest needs in a way that could break or pre-empt it: it never kills, moves or turns hostile anyone the main
+quest needs, never takes a thing the main quest needs, and never shows a player the main quest's secrets before the
+main quest does. The one crossing allowed is the Chainbreakers' freed people: each gives small help in one quest of
+another line (the main quest's 5, 10, 12 and 13 among them) only once that line has sent the player there, and
+nothing needs it ([the Chainbreakers](chainbreakers-newworld.md), section 9).
 
-- The Ulvarys house and the Rothalen house are kin by an old marriage. The two houses do not speak, and the Ulvarys
-  say they deal in the living and want nothing of the dead. Both pages say so.
-- The Chainbreakers and the Brethren are allies. The Brethren carry people the Chainbreakers have freed out of
-  the province by sea, from the causeway of Bala Karag. Ysan is a landing where their boats call. Both pages say so.
-- The Stormwidow was chased onto Skeith Isle's beach by the Archwardens' chartered privateers, to whom Gaius Cassena
-  sold her course.
-- The Chainbreakers' Ruling binds every Owing of the north and east, where Stormhold's and Thorn's Vicecanons judge.
-  The abused form of the Owing exists only there, so the Ruling ends it.
+## 5. People and names
 
-## 4. People and names
+- Each person has one name and one set of facts across every plot; the [cast roster](../36-cast-roster.md) lists each
+  under their own line, with the other lines that name them.
+- No two people share a name or a name close enough to mistake, and no two quests or ranks share a title. Changed to
+  keep that: the Chainbreakers' Mim-Teeus (beside Hasha-Jeen) and Tirasa Seloth (beside Dravos Indrelo); the
+  Shadowscales' Golven Rethan (beside Dravos); the Shadowscales' 11, Whose Offer (the Eelskins' 11 is Two Offers);
+  House Cardruhn's first rank, Tomb-Hand (the Company's is Hireling); and the Sisei-Xul's leader, the First
+  Grave-Singer, and their top rank, the First Singer's Hand (the Shadowscales' leader is the Eldest).
+- The names are the owner's (#74): the Xeech-Leel, the Toh-Reel-Ka, the Lampbearers, the Eelskins, the Shadowscales,
+  the Sisei-Xul, House Cardruhn, Bramman's Brethren (seated at Bramman's Watch on Aphon Isle, with an outpost at
+  Marque Landing and Rainbreaker Keep on Skeith Isle), the Topal Bay Company, the Chainbreakers, House Ulvarys and the
+  Unbound. The places are Ashgate Landing and Alten Corimont.
+- New names are checked against [the names we never reuse](../86-never-reuse-names.md) and the cast roster.
 
-- Each person has one name across every plot. Shared people (Marcella Dovi, Teesh-Vaal, J'zahri, Ukka-Teel, Hulee-Tah,
-  Swims-Without-Ripples, Drips-From-Eaves, Lucan Vetrix, Okan-Zeel, Neeja, Akeeta-Sul, Ervyn, Dalvela and Morvayn
-  Rothalen, Captain Hareel Tullan, Gallus Ostorius, Wazei-Vos called One-Eye, Selvo Arenim, Bar-Neeus, Rajeel-Kosh)
-  hold the same facts in each plot that names them.
-- No two people in the province share a name or a name close enough to mistake. The names changed to keep that:
-  the Chainbreakers' Jeen-Wei (from Okan-Wei, beside Okan-Zeel), Mere-Halu (from Mere-Eeja, beside Neeja), Hasa-Teeus
-  (from Xil-Teeus, beside Ixil-Ma) and Weeta-Lan (from Keel-Raj, beside Keel-Vaxa), the Sisei-Xul's Deegla-Tsei (from
-  Heeba-Tsei, beside Heem-Jasa) and Gam-Meesh (from Bur-Meesh, beside Bar-Neeus), and the sea lines' Gallus Ostorius
-  (from Lucan Ostorius, beside Lucan Vetrix) and Wazei-Vos (from Teeba-Vos, beside Teesh-Vaal). Okeeh, the main
-  quest's cook, and Okan-Zeel stay.
-- No two quests share a title. The titles changed to keep that:
+## 6. Openings, danger and rewards
 
-  | Line | Quest | Title |
-  |---|---|---|
-  | the Chainbreakers | 3 | Behind the Old Wall |
-  | the Sisei-Xul | 5 | Drag-Marks to Joxhi |
-  | the Sisei-Xul | 11 | Hold the Egg Pools |
-  | the Rothalen house | 3 | The Fire-Stone |
-  | the Nibenese Company | 2 | Iron from the Heron |
-  | the Nibenese Company | 3 | The Captain's Chain |
-- The Chainbreakers' freed people each help in one named quest of another line, with a thing that quest never needs
-  (the Chainbreakers' page, section 8).
-- New names are checked against [the names we never reuse](../86-never-reuse-names.md) and the
-  [cast roster](../36-cast-roster.md).
-
-## 5. Openings, danger and rewards
-
-- The main quest opens in D1. A faction opens in D1 or D2, and its plot passes
-  `python3 -m tools.newworld.plot_check <file> --opens-at D2`. No place's band is lowered for a faction.
-- A line may climb from the towns (D0) to its opening band without counting as a jump.
+- The main quest opens in D1. A faction opens in D1 or D2, its joining test is easy for a new character, and its plot
+  passes `python3 -m tools.newworld.plot_check <file> --opens-at D2`. No place's band is lowered for a faction.
 - Rank rewards take their gear from [reward-gear](../reward-gear.md), each under a name of ours.
+- A faction's own hostile places turn friendly to a member when they join.

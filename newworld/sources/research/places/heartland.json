@@ -678,7 +678,7 @@
     },
     {
      "aspect": "history",
-     "text": "No song names Truowa before its rise. It grew from a lake landing where interior goods met coast-bound boats; in the generations after Umbriel destroyed Lilmoth, traders who would not live under the successor state came here.",
+     "text": "No song names Truowa before its rise. It grew from a lake landing where interior goods met coast-bound boats; in the generations after Umbriel destroyed Lilmoth, traders who would not live under the Xeech-Leel came here.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1203,7 +1203,7 @@
    "id": "julo",
    "name": "Julo",
    "status": "inhabited",
-   "held_by": "A family of causeway farmers in the Stormhold manner",
+   "held_by": "House Ulvarys, the Dunmer house of Thorn that buys Owings, as its saltrice estate",
    "population": 6,
    "footprint_radius_m": 40,
    "siting": "riverbank",
@@ -1216,7 +1216,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Julo is a hamlet of about six people at the delta where Helstrom's waters spread into the lake. It follows the Stormhold manner of raised stone footings and causeways.",
+     "text": "Julo is House Ulvarys' saltrice estate at the delta where Helstrom's waters spread into the lake. It follows the Stormhold manner of raised stone footings and causeways.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1258,7 +1258,7 @@
     },
     {
      "aspect": "present",
-     "text": "In 4E 201 it holds a small saltrice patch and a ferry. It sends a gift of rice to Helstrom at each Root Talk and keeps good terms with the Root-Folk stations upstream.",
+     "text": "In 4E 201 Aldyne Ulvarys, the house's matriarch, keeps her hall here, and the great roll of the Owings the house has bought lies in the cellar under it. People whose Owings the house holds work the saltrice paddies, and the house's fighters keep the farmhouses and the ferry. The estate still sends a gift of rice to Helstrom at each Root Talk.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1276,7 +1276,7 @@
     },
     {
      "aspect": "people",
-     "text": "About six residents: Argonian farmers and one grandmother of Dunmer descent, from a Stormhold border family, who settles every quarrel over the rice.",
+     "text": "About six residents: Aldyne Ulvarys and her household of Dunmer in the hall, and the house's fighters. About twelve held workers, Argonians bound by Owings, sleep in the huts by the paddies.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1317,7 +1317,7 @@
     },
     {
      "aspect": "faith",
-     "text": "Hist and Sithis at a little roadside tree; the Dunmer grandmother still tends a household Ancestor shrine.",
+     "text": "Hist and Sithis at a little roadside tree; Aldyne Ulvarys keeps a household Ancestor shrine in the hall.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1371,7 +1371,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "The ferry-rope has been cut twice; a cairn on the nearest firm bank has been opened; a salt trader's body washed up at the paddies.",
+     "text": "The great roll lies in the cellar under the hall, behind a Master lock; the ferry-rope has been cut twice; a cairn on the nearest firm bank has been opened; a salt trader's body washed up at the paddies.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

@@ -71,6 +71,7 @@ Names in the places' researched notes that are not a place, a region or a people
 
 | Name | Where | The sentence |
 |---|---|---|
+| Captain Dravos Indrelo | Wreck of the Stormwidow | In 4E 181 Gaius Cassena of the Topal Bay Company told the Archwardens where she would sail, and their chartered privateers under Captain Dravos Indrelo of the Black Kestrel ran her onto this beach and killed her crew. | <!-- place_note:shipwreck-36-m82/history -->
 | Captain One-Eye | Alten Corimont | In the Second Era it was little more than a tavern, docks and a beached ship, run by the pirate Captain One-Eye, and by the late Third Era it had grown into a small town under a lord. | <!-- place_note:yulca/history -->
 | Elder Nuetepa | Uluo | The tribe's Elder Nuetepa is remembered in Archon from long ago. | <!-- place_note:uluo/history -->
 | King Tibus | Thorn | In the Third Era it was a city-state under King Tibus and rival to Archon, and the Arnesian War of 3E 396 was fought on its border. | <!-- place_note:thorn/history -->

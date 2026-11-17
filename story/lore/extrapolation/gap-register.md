@@ -45,7 +45,7 @@ anchors, preferring answers that explain something we already have to build.
 
 | ID | City | Status |
 |---|---|---|
-| G2.1 | **Lilmoth** | `DECIDED` Q4 — rebuilt but not restored; merchant council; drowned Imperial quarter unrepaired; Pusbottom repopulated; third Hist **feared and tended** with a rotating tree-minder's post; politically hostile to the successor state. → state §4, lilmoth.md, hist-placement §4 |
+| G2.1 | **Lilmoth** | `DECIDED` Q4 — rebuilt but not restored; merchant council; drowned Imperial quarter unrepaired; Pusbottom repopulated; third Hist **feared and tended** with a rotating tree-minder's post; politically hostile to the Xeech-Leel. → state §4, lilmoth.md, hist-placement §4 |
 | G2.2 | **Stormhold** | `FILLED` — Vicecanons; the state's working border offices; crystal trade; oldest and largest Dunmer minority; town-square Hist. → state §4 |
 | G2.3 | **Gideon** | `FILLED` — civic council in the Governor's Mansion, courthouse still sitting; Lukiul-majority; rootworm terminus; Archein plantations left derelict; a **disputed Hist cutting** in the city gardens. → state §4, hist-placement |
 | G2.4 | **Helstrom** | `FILLED` + `DECIDED` Q2 — an assembly of interior naheesh and tree-minders that becomes the great Root Talk in Hist-Tsoko; a tribal guard accountable to nobody outside; the state's formal seat, largely ignored by it. → state §4 |

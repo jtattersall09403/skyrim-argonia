@@ -99,7 +99,8 @@ in Soulrest, and takes them on because they belong to no side. The small quest c
 at once. There is no test beyond the first case, which a new character with a lockpick can solve.
 
 **What shuts the door.** The Lampbearers' door shuts when the player is given the key to the Eelskins' hall at the
-end of quest 4 of the Eelskins' line, or takes the brass at the end of quest 4 of the Shadowscales' line. *The
+end of the Eelskins' 4, The Lampbearer's Man, or takes the brass at the end of the Shadowscales' 4, The Hatchling
+Seller. *The
 Lampbearers of Soulrest* then fails. In this line, the Eelskins' and the Shadowscales' doors shut at the end of
 quest 4, when the player takes the rank of Flame. Before they take it, Marcella tells them what it costs: every
 thief and every assassin in the south will know them, and a player who is already an Eelskin or a Shadowscale of the
@@ -205,7 +206,9 @@ tavern. The merchant's house is on the council street." Markers lead to the ware
 - *The merchant's house* holds the receipt in his own hand for the cloth sold to the smuggler, in a desk the player
   reaches at night unseen (Sneak). The journal: "The merchant sold his own cloth to the smuggler and blamed the fort."
 
-*Leads on:* J'zahri pays 100 gold and sends the player back to Marcella, who has a case from the farms west of
+A player who freed Weeta-Lan in the Chainbreakers' 10, The Lantern on the Lake, has learnt from Weeta-Lan that the quay
+smuggler keeps his goods in his shed at the quay's end. *Leads on:* J'zahri pays 100 gold and sends the player back
+to Marcella, who has a case from the farms west of
 Lilmoth. The journal marks Seeku Farm, a walk west from Lilmoth's harbour.
 
 **3. The Missing Guar** (Seeku Farm, a guar farm west of Lilmoth; Lilmoth, the rebuilt stilt city). A guar has gone
@@ -303,7 +306,7 @@ to the landing and the village.
 
 **8. The Burnt Cut** (Naxan, a logging village on the Soulrest coast; Ashfall Cut, a burnt open mine near it). A
 log-hauler of Naxan was found at the foot of the old vent shaft in Ashfall Cut (the record's forgotten vent shaft). He
-went there for the grave goods that lie at the shaft. (The pirates' 3, The Naxan Landing, robs the pay chest on the
+went there for the grave goods that lie at the shaft. (Bramman's Brethren's 3, The Naxan Landing, robs the pay chest on the
 same village's log landing.) The suspects are two men who went with him and a third who was not meant to be there.
 The journal says: "Ask in Naxan who went to the cut. Search the cut and the vent shaft." Markers lead to the village
 and the cut.
@@ -359,8 +362,8 @@ Silt-Orrel, a walk north of Lilmoth's harbour.
 Lampbearers and the family's guards watch the estate. Orrel-Sakka was found at dawn on his own boat landing, by the
 woven reed post, and the family carried him into the planter's house (checked: the record sets the source's
 farmhouse, Cormar Crossing's, as the planter's house and its storehouse as the cellar with the salvage chest; the
-landing and its reed post are promised in the record). There are four suspects. Orrel-Sakka's cousin is back from the
-Warden fort and wants a share of the boats. Lucan Vetrix paid gold for the hatchlings that the boats carried. A thief robbed the estate that
+landing and its reed post are promised in the record). There are four suspects. Orrel-Sakka's cousin is back from his
+service in an Archwarden fort and wants a share of the boats. Lucan Vetrix paid gold for the hatchlings that the boats carried. A thief robbed the estate that
 night. The fourth is the killer. The journal says: "Look at the
 body in the planter's house. Search the landing and the storehouse. Speak to the people of the estate." Markers lead
 to the house, the landing and the storehouse.

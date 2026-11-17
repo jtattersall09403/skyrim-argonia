@@ -138,10 +138,10 @@ Brethren* completes. The stage that makes the player a Deckhand also makes peace
 Brethren's crews, a faction of ours. From then on the crews at Bramman's Watch, Kelp-Mouth Cave, Marque Landing and
 Rainbreaker Keep, who attack strangers on sight, let the player walk among them.
 
-**What shuts the door.** The Company's quest 5, *Guarding the Leyawiin Pride*, in which a Company player kills the
-Brethren's boarding party. When that quest completes, *Bramman's Brethren* fails with the entry "The Brethren
-know my face from the deck of the *Leyawiin Pride*. They will not take me on now." A player who already belongs to
-the Brethren and takes that quest is put out of the Brethren at its end, and the crews attack them on sight again.
+**What shuts the door.** Joining the Topal Bay Company. The two lines tell the same events from the two sides from
+their second quests on, so a player plays only one of them. When Nuxal-Tei signs the player on in Gideon,
+*Bramman's Brethren* fails with the entry "I have taken the Company's silver. The Brethren will not take me on now."
+Joining the Brethren shuts the Company's door in the same way.
 
 ## 5. The acts
 
@@ -253,9 +253,6 @@ the landing. *Leads on:* Ma'jirra makes the player a Boarder. One-Eye has heard 
 them at Bramman's Watch. The Brethren's boat to Aphon Isle leaves from Olvani's jetty. The journal marks Olvani's
 jetty and Bramman's Watch.
 
-This quest shuts the Company's door: *The Topal Bay Company* fails at its end, and a player who belongs to the
-Company is put out of it (section 6).
-
 ### Act II: the islands
 
 **6. Bramman's Watch** (Olvani, a fishing village on the estuary west of Gideon; Bramman's Watch, the Brethren's
@@ -316,8 +313,11 @@ journal names the three ways, and the player chooses as they come:
 
 - *By the road, paying.* The warden at the gate stops the player and speaks first (checked: the post is a blockhouse
   of one room, added from Black Marsh & Valenwood's Imperial stone and timber pieces; the gate is in the record). A
-  toll of 250 gold buys him blind. He is the warden whom his sergeant suspects in House Cardruhn's 2, The Blind Gate.
-- *By the road, fighting.* The player kills the watch of four. The Archwardens set a bounty on the player.
+  toll of 250 gold buys him blind. He is the warden whom his sergeant suspects in House Cardruhn's 2, The Blind Gate, and he is at the gate
+  whatever that quest did to his sergeant. A player who freed Romi-Tei's son in the Chainbreakers' 6, The Toll Chain,
+  has heard from him the hour the watch changes, and can slip past the warden at that hour unseen (Sneak).
+- *By the road, fighting.* The player kills the watch of four. The Archwardens set a bounty on the player, which
+  only Marshgate Watch and Fort Thornmoth keep.
 - *By the sea.* The player reads Water Walking at the shore below Kornakim and walks the coast past the watch.
 
 At Ysan the buyer on the jetty takes the cargo and pays the player 200 gold. *Leads on:* Rajeel-Kosh's crew will
@@ -419,15 +419,15 @@ same.
 
 ## 6. The war from both sides
 
-The same events, people and places in both lines. A player can play only one side of each: the door of each line
-shuts at its quest 5.
+The same events, people and places in both lines. A player can play only one side of each: joining one line shuts the
+other's door.
 
 | Event | The Brethren's side | The Company's side |
 |---|---|---|
 | Gallus Ostorius drinks at Olvani's ale-house | quest 1: the player brawls him | he is the master of the ship the player guards in quest 5 |
 | the race for the *Grey Heron*'s salvage | quest 2: the player kills the Company's divers and takes the captain's chest | quest 2: the player kills the Brethren's salvors and raises the iron |
 | Captain Hareel Tullan and Kesh-Ulee at Fort Silvermoth | quest 4: the player pays for Kesh-Ulee or breaks him out | quest 3: the player gets the toll chain lifted, and may have Kesh-Ulee handed to Gideon |
-| the night of the *Leyawiin Pride*, at anchor off Fort Shellmoth | quest 5: the player boards her and takes her strongbox. The Company's door shuts | quest 5: the player is rowed out to her and kills the boarding party. The Brethren's door shuts |
+| the night of the *Leyawiin Pride*, at anchor off Fort Shellmoth | quest 5: the player boards her and takes her strongbox | quest 5: the player is rowed out to her and kills the boarding party. The Brethren's door shuts |
 | Hollow Tide Camp | quest 8: the player runs its cargo and wins its crew | quest 7: the player kills its crew and kills or turns Rajeel-Kosh |
 | Wrackmoth | quest 12: the bay crew's base | quest 8: the Company's post on the cape |
 | the *Resolute Crest*'s Akaviri chest | quest 10: the Brethren's war chest | quest 10: the Company's claim |
@@ -435,8 +435,8 @@ shuts at its quest 5.
 | the *Stormwidow*'s letter of marque | quest 7: the player finds the original under the Grey Tooth's cairn | quest 14: the player finds One-Eye's copy in the Brethren's store at Kelp-Mouth Cave |
 | the end | quest 14: Gideon taken, Opilia dead | quests 13 and 14: Aphon Isle taken, One-Eye dead |
 
-The two endings cannot both happen in one game. The doors shut at quest 5 of each line, so a player reaches only one
-line's Act II. Each ending also kills the other line's leader.
+The two endings cannot both happen in one game. Joining one line shuts the other's door, so a player plays only one
+side. Each ending also kills the other line's leader.
 
 ## 7. The ending: Gideon taken
 
@@ -449,7 +449,8 @@ fence buys anything at the quay. Gideon's quay has a boat to Soulrest and to Olv
 **What it costs.** The Company's people are dead or gone. The Company's general store on Blackwood Way closes, and
 the council merchant who trained Speech leaves the city. The Archwardens' garrisons at Fort Silvermoth and Fort
 Shellmoth attack the player on sight. Gideon's civic council stays in the old Governor's Mansion but will not speak to
-the player. Every Company player and trader in the province is gone, so the Company's line can never be taken.
+the player. The market's relic dealer, the rootworm's tree-minder and everyone else the main quest needs in Gideon
+stay as they were. Every Company player and trader in the province is gone, so the Company's line can never be taken.
 
 ## 8. What it needs, and what it changes elsewhere
 

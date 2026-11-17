@@ -90,12 +90,12 @@ His words on each faction (skills, how it is joined, its rival, its choice and i
 a faction is written. Every earlier ruling of his on factions, from this repository and the first one, is gathered
 with its source in [owner-rulings-on-factions](../../docs/research/writing/owner-rulings-on-factions.md).
 
-- The joinable factions are eight: the Chainbreakers, the detectives (the Lamps), a thieves' guild (not called the
+- The joinable factions are eight: the Chainbreakers, the detectives (the Lampbearers), a thieves' guild (not called the
   Night-Reed), the Shadowscales (back in secret; the death of the "last" one was cover), the pirates, an Argonian
   order of magic and alchemy with a name in Jel, Dunmer necromancers behind a respectable trading house at Thorn,
   and Imperial merchants at Gideon. The main quest has the Toh-Reel-Ka and the Unbound. A Dunmer house that profits
   from the Owing cannot be joined. Every other line is cut, the League among them (OR 2026-11-16).
-- Rivals: the Lamps, the thieves and the Shadowscales, three ways; the Argonian order and the necromancers; the
+- Rivals: the Lampbearers, the thieves and the Shadowscales, three ways; the Argonian order and the necromancers; the
   pirates and the Imperials; the Chainbreakers (the pirates' allies) and the Owing house. "It's fun if they're in
   conflict with each other in various combinations" (OR 2026-11-16).
 - Every faction's name is researched and grounded in the lore of its region, its people's culture, its role in
@@ -105,7 +105,7 @@ with its source in [owner-rulings-on-factions](../../docs/research/writing/owner
 - Each line has about as many quests as a guild of Morrowind's or Skyrim's. Between them the factions have a seat
   or a branch in every major city (OR 2026-11-16).
 - In the three-way rivalry the player is shut out of the other two at some point, and late in the line chooses
-  which rival to side with against the third. The Lamps' last case has a very hard Speech check that avoids the
+  which rival to side with against the third. The Lampbearers' last case has a very hard Speech check that avoids the
   choice (OR 2026-11-16).
 - A detective's case: the player names the suspect, then motive, means and opportunity, each line open only with
   its evidence found. Every suspect has a motive and a means; all but the culprit have an alibi to find. A
