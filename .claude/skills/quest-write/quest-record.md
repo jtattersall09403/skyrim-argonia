@@ -129,7 +129,10 @@ cannot be imported yet. Such a record is kept as its YAML view at `newworld/stor
 (the main quest's line is `main`), in this same form: its `settlement`, `anchorPlaces` and each stage's `place` are
 the new world's place ids (`yulca`, `jal-veesa`); each new placement is anchored `{place: <new-world place id>, rule,
 need: <what the place must have here, as the player would call it on sight>}` (a placement inside a building's room adds `room: <the room's name as its door shows it>` beside `place`) with no `at` until the place is built,
-and the place's build takes each `need` as a promise. The paper player plays it directly (quest-playtest §2). It is
+and the place's build takes each `need` as a promise. Its people are `npc.<line>.<slug>` ids with their `persona`
+marked `invented` until the place's people source holds them. Its use and read triggers are listed under `hooks`
+(`{thing, hook: activate | read, setsFlag}`), the rows `thing_hook` gets when it is imported. The paper player plays
+it directly (quest-playtest §2). It is
 imported, compiled and checked when its places are in the story database.
 
 ## 3. How the record becomes the game
