@@ -159,6 +159,19 @@ placements:
     need: a plinth in the middle of the Root's chamber among great roots
     room: The Root
   name: The Eye of Argonia
+- ref: npc.mn18.cuts-in-hall
+  kind: person
+  base:
+    kind: template_person
+    id: npc.mn.cuts-the-old-knot (the same person; a second position is her one reference moved, not a copy)
+  anchor:
+    place: sunken-ruin-23-m112
+    rule: navmesh
+    need: just inside the great hall, a step from the gate's door
+    room: Guardian's Hall
+  note: built as a move of npc.mn.cuts-the-old-knot's one reference while the hall loads; listed so the place has the spot
+  name: Cuts-the-Old-Knot
+  enabled: false
 - ref: npc.mn19.cuts-at-plinth
   kind: person
   base:
@@ -364,7 +377,7 @@ stages:
     - thing.mn.seal-stone-deep
     - 1
   - makeEnemy: faction.mn.unbound
-  - killNpc: npc.mn.cuts-the-old-knot
+  - killNpc: npc.mn18.cuts-in-hall
   objectives:
   - id: stones
     text: text.objective.mn19.stones

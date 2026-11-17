@@ -229,8 +229,8 @@ placements:
   anchor:
     place: helstrom
     rule: surface
-    need: one of Helstrom's one-room Argonian houses off the market, quiet, its door showing "Nesh-Deeka's House"; a table,
-      two chairs and a bed inside (from MN10 Never-Writes-Twice stands at the back of the same room)
+    need: one of Helstrom's one-room Argonian houses off the market, its door showing "Nesh-Deeka's House" (Helstrom's 01ArgonianHouseinside.8, the house nearest
+      the city landing); one room with tables, benches, beds, an arcane enchanter and a locked chest inside (from MN10 Never-Writes-Twice stands at the back of the same room)
   enabled: true
   placeName: Nesh-Deeka's House
 - ref: npc.mn.keel-raa
@@ -244,8 +244,8 @@ placements:
   anchor:
     place: helstrom
     rule: navmesh
-    need: inside the Boatmen's Lodge (Helstrom's inn, a ship's hold interior; Sleeps-Last keeps it), at a table at the far
-      end of the hold from the door; not hostile; in faction.mn05.keel-raa-hands
+    need: inside the Boatmen's Lodge (Helstrom's inn, a ship's hold interior; Sleeps-Last keeps it), among the crates and
+      the shelf at the far end of the hold from the door; not hostile; in faction.mn05.keel-raa-hands
     room: Boatmen's Lodge
   enabled: true
 - ref: thing.mn.stolen-sap-jar
@@ -266,7 +266,7 @@ placements:
   anchor:
     place: helstrom
     rule: navmesh
-    need: inside the Boatmen's Lodge, standing beside Keel-Raa's table; not hostile; in faction.mn05.keel-raa-hands
+    need: inside the Boatmen's Lodge, standing beside Keel-Raa among the crates at the far end of the hold; not hostile; in faction.mn05.keel-raa-hands
     room: Boatmen's Lodge
   enabled: true
 - ref: npc.mn.ah-meesei
@@ -280,7 +280,7 @@ placements:
   anchor:
     place: helstrom
     rule: navmesh
-    need: inside the Boatmen's Lodge, sitting on a crate by Keel-Raa's table; not hostile; in faction.mn05.keel-raa-hands
+    need: inside the Boatmen's Lodge, sitting on a crate beside Keel-Raa at the far end of the hold; not hostile; in faction.mn05.keel-raa-hands
     room: Boatmen's Lodge
   enabled: true
 - ref: npc.mn.cheeval-xu
