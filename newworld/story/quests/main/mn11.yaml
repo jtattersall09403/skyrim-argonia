@@ -36,7 +36,7 @@ start: 10
 recordStatus: design
 foundation: 'Built from the main plot (story/design/quests/lines/main-plot.md §5 quest 11, passed by the owner), and
   invents nothing it does not give beyond the names listed in the review (L8). The quest starts on MN10''s last stage
-  (taken as 90, its completed ending: the lead to confirm with the MN10 lane): Never-Writes-Twice, now the player''s
+  (90, its completed ending): Never-Writes-Twice, now the player''s
   officer at the back of Nesh-Deeka''s House in Helstrom, has read the parchment map and marked the Grey Tooth. It uses
   the crag''s small cave on the north face and the Stormwidow''s sand-filled hold only; the cairn, its cache and the
   stern''s strongbox belong to Bramman''s Brethren and are never named as targets. The Collector''s three hired men at
@@ -187,11 +187,13 @@ things:
   where: carried by Tah-Leesh
   text: Ask what moans in the cellar of Fort Chalkmoth.
 placements:
-- {ref: npc.mn.never-writes-twice, kind: person, base: {kind: template_person, id: invented}, anchor: {place: helstrom,
+- {ref: marker.mn11.helstrom, kind: marker, placeName: Helstrom, anchor: {place: helstrom, rule: surface, need: the city}}
+- {ref: marker.mn11.arorha, kind: marker, placeName: Arorha, anchor: {place: arorha, rule: surface, need: the quay}}
+- {ref: npc.mn.never-writes-twice, kind: person, name: Never-Writes-Twice, base: {kind: template_person, id: invented}, anchor: {place: helstrom,
     rule: navmesh, need: 'the back of Nesh-Deeka''s House (one-room interior), standing apart from Nesh-Deeka'}, enabled: true}
 - {ref: door.mn.nesh-deeka-house, kind: door, placeName: Nesh-Deeka's House, anchor: {place: helstrom, rule: surface,
     need: 'the door of the quiet house, showing "Nesh-Deeka''s House"'}}
-- {ref: marker.mn11.grey-tooth, kind: marker, anchor: {place: peak-39-m79, rule: surface, need: the foot of the goat-path
+- {ref: marker.mn11.grey-tooth, kind: marker, placeName: The Grey Tooth, anchor: {place: peak-39-m79, rule: surface, need: the foot of the goat-path
       on the south face}}
 - {ref: door.mn11.tooth-cave, kind: door, placeName: Grey Tooth Cave, anchor: {place: peak-39-m79, rule: surface, need: 'the
       mouth of the small cave on the north face (added from Skyrim''s cave pieces)'}}
@@ -206,7 +208,7 @@ placements:
     rule: navmesh, need: inside the Grey Tooth Cave, digging by the niche}}
 - {ref: thing.mn.collector-rubbing, kind: thing, base: {kind: template_item, id: 'Skyrim note'}, enabled: false, anchor: {
     place: peak-39-m79, rule: surface, need: a crate beside the empty niche at the back of the cave}}
-- {ref: marker.mn11.stormwidow, kind: marker, anchor: {place: shipwreck-36-m82, rule: surface, need: the beached hull on
+- {ref: marker.mn11.stormwidow, kind: marker, placeName: Wreck of the Stormwidow, anchor: {place: shipwreck-36-m82, rule: surface, need: the beached hull on
       the south-west shore}}
 - {ref: door.mn11.stormwidow-hold, kind: door, placeName: Stormwidow's Hold, anchor: {place: shipwreck-36-m82, rule: surface,
     need: 'the door into the sand-filled hold (Icerunner''s first interior), never the stern cabin''s door'}}
@@ -309,11 +311,11 @@ stages:
       cave on its north face.
     ways: Fight the three hired men (any weapon or magic), or pass them by stealth.
     carriers:
-    - {know: the Grey Tooth is the crag on the map, on Skeith Isle, by: [journal, 'marker:marker.mn11.grey-tooth', 'line:topic.mn11-errand']}
-    - {know: the Collector's men are there and dig in the cave, by: [journal, 'name:npc.mn.vanin-hireling-1', 'line:topic.mn11-errand']}
+    - {know: the Grey Tooth is the crag on the map, on Skeith Isle, by: [journal, 'marker:marker.mn11.grey-tooth', 'ask:topic.mn11-errand']}
+    - {know: the Collector's men are there and dig in the cave, by: [journal, 'name:npc.mn.vanin-hireling-1', 'ask:topic.mn11-errand']}
     - {know: go to the cave and find what they found, by: [objective, 'marker:door.mn11.tooth-cave', 'marker:thing.mn.collector-rubbing',
         'name:door.mn11.tooth-cave']}
-    - {know: how to get there, by: [journal, 'line:topic.mn11-errand']}
+    - {know: how to get there, by: [journal, 'ask:topic.mn11-errand']}
     - {know: fight or sneak, by: [journal]}
 - id: 20
   place: shipwreck-36-m82
@@ -489,6 +491,12 @@ stages:
   journalText: Never-Writes-Twice is dead. Without the order's officer I cannot carry the hunt on.
   ending: failed
   endingId: e-officer-dead
+  information:
+    going: Never-Writes-Twice, the order's officer, is dead, and the hunt for the Eye cannot go on.
+    next: Nothing more in the main quest; the world stays open.
+    ways: None.
+    carriers:
+    - {know: the officer is dead and the hunt is over, by: [journal, 'message:95']}
 endings:
 - id: e-reported
   when: the player gave Never-Writes-Twice the marker stone

@@ -95,6 +95,10 @@ facts:
 - {id: fact.mn12.they-dream, claim: '"They sleep, and they dream. That is all they do down there."', from: t1}
 - {id: fact.mn12.moaning, claim: 'Moaning comes from behind the locked inner door, and no key in the fort opens it.', from: t1}
 cast:
+- id: npc.mn.never-writes-twice
+  name: Never-Writes-Twice
+  wants: the cellar kept shut
+  knowledge: {fact.mn12.closed: knows}
 - id: npc.mn.chalkmoth-captain
   persona: invented. Sakeeus-Wan, the wall captain, Argonian of an old Archein family, trains Archery (place record);
     blunt, proud of his walls
@@ -123,7 +127,8 @@ things:
 - {id: thing.mn12.strongbox, kind: container, name: Imperial Strongbox, source: 'existing: the fort''s Imperial strongbox
     in the store (place record)', where: the quartermaster's store}
 placements:
-- {ref: marker.mn12.fort, kind: marker, anchor: {place: fort-chalkmoth, rule: surface, need: the fort's gatehouse}}
+- {ref: marker.mn12.noota-nara, kind: marker, placeName: Noota Nara, anchor: {place: noota-nara, rule: surface, need: the village landing}}
+- {ref: marker.mn12.fort, kind: marker, placeName: Fort Chalkmoth, anchor: {place: fort-chalkmoth, rule: surface, need: the fort's gatehouse}}
 - {ref: npc.mn.chalkmoth-captain, kind: person, name: Sakeeus-Wan, base: {kind: template_person, id: invented}, enabled: true,
   anchor: {place: fort-chalkmoth, rule: navmesh, need: inside the gatehouse}}
 - {ref: npc.mn.chalkmoth-quartermaster, kind: person, name: Theyne Indarys, base: {kind: template_person, id: invented},
@@ -401,7 +406,7 @@ stages:
     ways: One way on.
     carriers:
     - {know: what I found and the open question, by: [journal]}
-    - {know: back to Bell Station, by: [journal, 'marker:npc.mn.meer-tasi']}
+    - {know: back to Bell Station, by: [journal]}
 - id: 91
   place: fort-chalkmoth
   journal: text.journal.mn12.91
@@ -424,6 +429,12 @@ stages:
   journalText: Never-Writes-Twice is dead. Without the order's officer the hunt cannot go on.
   ending: failed
   endingId: e-officer-dead
+  information:
+    going: Never-Writes-Twice, the order's officer, is dead, and the hunt for the Eye cannot go on.
+    next: Nothing more in the main quest; the world stays open.
+    ways: None.
+    carriers:
+    - {know: the officer is dead and the hunt is over, by: [journal, 'message:95']}
 endings:
 - id: e-seen
   when: the player has seen the store, met the gaoler and tried the door
@@ -458,6 +469,16 @@ topics:
     kill those three and he will open the keep and pay a hundred gold. Checks: nothing. Does: sets stage 15.'
   uses: [fact.mn12.price]
   new: true
+- id: topic.mn-fort-chalkmoth
+  label: What is Fort Chalkmoth?
+  person: npc.mn.chalkmoth-captain
+  stages: [10, 15, 20, 25, 90, 91]
+  essential: false
+  intent: 'Sakeeus-Wan answering the shared topic in his own words. Tells: an old Legion fort on the Chixathe Mesa, the
+    high ground above Noota Nara; his garrison of the Archwardens takes a toll on the chalk carts and watches the Sarpa
+    to the west; the old prison below the keep is the order''s, not his. Checks: nothing. Does: nothing.'
+  uses: [fact.mn12.price]
+  new: false
 - id: topic.mn12-sarpa
   label: Who are the Sarpa?
   person: npc.mn.chalkmoth-captain

@@ -127,13 +127,16 @@ things:
 - {id: thing.mn13.reelka-helm, kind: item, name: Reel-Ka Helm, source: 'Stormhold Warrior Armor helm under our name', where: given
     at stage 90}
 placements:
-- {ref: marker.mn13.bell-station, kind: marker, anchor: {place: bell-station, rule: surface, need: the plank landing with
+- {ref: npc.mn.never-writes-twice, kind: person, name: Never-Writes-Twice, base: {kind: template_person, id: invented}, enabled: true, anchor: {place: helstrom, rule: navmesh, need: the back of Nesh-Deeka's House}}
+- {ref: door.mn.nesh-deeka-house, kind: door, placeName: Nesh-Deeka's House, anchor: {place: helstrom, rule: surface, need: the door of the quiet house}}
+- {ref: marker.mn13.lilmoth, kind: marker, placeName: Lilmoth, anchor: {place: lilmoth, rule: surface, need: the boat quay}}
+- {ref: marker.mn13.bell-station, kind: marker, placeName: Bell Station, anchor: {place: bell-station, rule: surface, need: the plank landing with
       the ship's bell on its post}}
 - {ref: npc.mn.meer-tasi, kind: person, name: Meer-Tasi, base: {kind: template_person, id: invented}, enabled: true,
   anchor: {place: bell-station, rule: navmesh, need: 'the steward''s counter by the landing'}}
 - {ref: npc.mn.bell-diver, kind: person, name: Sees-Below, base: {kind: template_person, id: invented}, enabled: true, anchor: {
     place: bell-station, rule: navmesh, need: by the racks of diving gear}}
-- {ref: marker.mn13.teku-sul, kind: marker, anchor: {place: sunken-ruin-23-m112, rule: surface, need: the broken spire
+- {ref: marker.mn13.teku-sul, kind: marker, placeName: Teku-Sul Spire, anchor: {place: sunken-ruin-23-m112, rule: surface, need: the broken spire
       top on the sea floor}}
 - {ref: door.mn13.east-halls, kind: door, placeName: Teku-Sul East Halls, anchor: {place: sunken-ruin-23-m112, rule: surface,
     need: 'the way into the East Xanmeer, where the air holds'}}
@@ -151,9 +154,9 @@ placements:
 - {ref: npc.mn.priest-ghost, kind: person, name: Ghost of Sul-Xeeth, base: {kind: template_person, id: 'a ghost of Skyrim''s
       (ghost shader) under our name'}, enabled: true, anchor: {place: sunken-ruin-23-m112, rule: navmesh, need: 'before
       the gate, a step from the door the player comes through from the east halls'}}
-- {ref: marker.mn13.blackrose-prison, kind: marker, anchor: {place: blackrose-prison, rule: surface, need: the prison gate}}
-- {ref: marker.mn13.gemin, kind: marker, anchor: {place: gemin, rule: surface, need: the ruin's entrance}}
-- {ref: marker.mn13.vorannuhl, kind: marker, anchor: {place: velothi-ruin-23-m73, rule: surface, need: the ruin's outer
+- {ref: marker.mn13.blackrose-prison, kind: marker, placeName: Blackrose Prison, anchor: {place: blackrose-prison, rule: surface, need: the prison gate}}
+- {ref: marker.mn13.gemin, kind: marker, placeName: Gemin, anchor: {place: gemin, rule: surface, need: the ruin's entrance}}
+- {ref: marker.mn13.vorannuhl, kind: marker, placeName: Vorannuhl, anchor: {place: velothi-ruin-23-m73, rule: surface, need: the ruin's outer
       yard}}
 hooks: []
 conclusions:
@@ -308,7 +311,7 @@ stages:
   - giveItem: [thing.mn13.reelka-cuirass, 1]
   - giveItem: [thing.mn13.reelka-helm, 1]
   - {giveGold: 300}
-  - grantServiceAccess: archwarden-fort-beds
+  - setFlag: [flag.mn13.archwarden-beds, true]
   - grantMapMarker: marker.mn13.blackrose-prison
   - grantMapMarker: marker.mn13.gemin
   - grantMapMarker: marker.mn13.vorannuhl
@@ -336,7 +339,7 @@ stages:
   - giveItem: [thing.mn13.reelka-cuirass, 1]
   - giveItem: [thing.mn13.reelka-helm, 1]
   - {giveGold: 300}
-  - grantServiceAccess: archwarden-fort-beds
+  - setFlag: [flag.mn13.archwarden-beds, true]
   - grantMapMarker: marker.mn13.blackrose-prison
   - grantMapMarker: marker.mn13.gemin
   - grantMapMarker: marker.mn13.vorannuhl
@@ -355,6 +358,12 @@ stages:
   journalText: Never-Writes-Twice is dead. Without the order's officer I cannot carry the hunt on.
   ending: failed
   endingId: e-officer-dead
+  information:
+    going: Never-Writes-Twice, the order's officer, is dead, and the hunt for the Eye cannot go on.
+    next: Nothing more in the main quest; the world stays open.
+    ways: None.
+    carriers:
+    - {know: the officer is dead and the hunt is over, by: [journal, 'message:95']}
 endings:
 - id: e-reel-ka
   when: the player reported the ghost's words to Never-Writes-Twice
