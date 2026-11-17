@@ -1,0 +1,222 @@
+# MN09 The Knights' Tomb: the quest record's YAML view (new world; places not yet in the story database).
+id: quest.main.mn09
+code: MN09
+title: The Knights' Tomb
+line: quest.line.main
+group: main
+tier: 0
+status: concept
+shapes: [EXPEDITION, HAUNTING]
+region: kotherra-mangroves
+settlement: kothringi-ruin-m25-m80
+anchorPlaces: [kothringi-ruin-m25-m80, gideon, helstrom]
+premise: The Voh-Vastei gets through Eurydike's restless dead and an Unbound party, learns from the Unbound's bottles
+  that the grey paste is a paralysis poison, opens the knight-captain's tomb with the keystone and brings Nesh-Deeka
+  its bronze disc.
+costTier: M
+milestone: 1
+touches:
+- {id: npc.mn.nesh-deeka, access: read}
+- {id: thing.mn.keystone, access: read}
+- {id: thing.mn.paralysis-poison, access: write}
+- {id: thing.mn.bronze-disc, access: write}
+- {id: flag.main.thread-severed, access: write}
+- {id: flag.main.seal-question, access: write}
+sources: [story/design/quests/lines/main-plot.md §3, §5 quest 9]
+essentialTopics: [topic.mn09-report, topic.mn09-how-know]
+startWhen:
+  questStage: [quest.main.mn08, '=', 90]
+start: 10
+recordStatus: design
+foundation: 'Built from main-plot.md §5 quest 9 and §3. Kept: the knights'' restless dead in the barracks wing, the
+  Unbound party that cannot open the tomb, the three ways (fight, slip past, turn the dead with Restoration), the tomb
+  door (Driftshade''s second interior) locked with the keystone as its key, the bronze disc with a mine''s mark, the
+  Unbound''s bottles that the game names as paralysis poison, and the journal''s open question: why seal a tree you
+  drain? Nobody answers it. Filled: the bottles lie in the Unbound''s packs, which the objective sends the player to
+  first (the packs stand on the way to the tomb), and a disc taken first moves the quest on as the packs'' step opens;
+  the spared Unbound''s side quest belongs to its own record (plot §6) and is not built here.'
+recordSources:
+  places: [kothringi-ruin-m25-m80, gideon, helstrom]
+  lore: [story/lore/topics/hist-and-sap.md, story/lore/topics/lost-peoples.md (Kothringi), main-plot.md §3]
+centrepiece: DELVE
+actionPlan:
+- {skill: Restoration, use: turn-undead, reason: the knights' dead are turned}
+- {skill: Sneak, use: sneak-past, reason: the dead and the Unbound are slipped past}
+- {skill: One-Handed, use: fight, reason: the player fights through}
+- {skill: Destruction, use: fight-with-magic, reason: a mage fights through}
+truth:
+- {id: t1, when: the Second Era, who: [], where: Eurydike, what: 'The knight-captain was buried with a bronze disc
+    stamped with the mark of the mine where the knights kept their strongbox.'}
+- {id: t2, when: days ago, who: [], where: Eurydike's barracks wing, what: 'An Unbound party got into the barracks but
+    could not open the tomb; their packs hold bottles of the grey paste that seals the trees.'}
+facts:
+- {id: fact.mn09.poison, claim: 'The grey paste the Unbound put in a tree''s scar, "the seal", is a paralysis poison.', from: t2}
+- {id: fact.mn09.question, claim: 'The Unbound drain a tree''s sap and then numb its scar shut with a poison. If they
+    wanted the trees dead they could kill them. Why seal a tree they drain?', from: t2}
+- {id: fact.mn09.disc, claim: The knight-captain's bronze disc is stamped with a mine's mark., from: t1}
+- {id: fact.mn09.vicrium, claim: 'The mark is Vicrium''s, a mine in Okuwun Rahei behind Seafalls.', from: t1}
+- {id: fact.mn09.knew, claim: Nesh-Deeka already knew the Unbound had been at Eurydike., from: t2}
+cast:
+- id: npc.mn.nesh-deeka
+  knowledge: {fact.mn09.vicrium: knows, fact.mn09.knew: knows}
+things:
+- {id: thing.mn09.packs, kind: container, name: Unbound Pack, source: 'existing base: a Skyrim knapsack container',
+    where: the barracks wing, by the Unbound's fire, states: {all: unlocked}}
+- {id: thing.mn.paralysis-poison, kind: item, name: Grey Seal (Paralysis Poison), source: 'new: Skyrim''s poison of
+    paralysis under our name; the item shows its effect, Paralysis', where: 'three in thing.mn09.packs'}
+- {id: thing.mn09.tomb-door, kind: door, name: Knight-Captain's Tomb, source: 'Driftshade Sanctuary''s door to its
+    second interior, locked with the keystone as its key', where: 'the end wall of the barracks wing'}
+- {id: thing.mn09.tomb-chest, kind: container, name: Knight-Captain's Tomb Chest, source: existing base, where: in the tomb}
+- {id: thing.mn.bronze-disc, kind: item, name: Knight-Captain's Bronze Disc, source: 'new: King of the Murkmire''s
+    bronze disc, its description "Stamped with a mine''s mark: a pick crossed with a tower."', where: in thing.mn09.tomb-chest}
+placements:
+- {ref: npc.mn09.dead, kind: person, base: {kind: template_person, id: skeleton/draugr template}, anchor: {place: kothringi-ruin-m25-m80,
+    rule: navmesh, need: the knights' restless dead walking the barracks wing}, name: Restless Knight, level: 12, count: 5,
+  hostile: true, enabled: true}
+- {ref: npc.mn09.unbound, kind: person, base: {kind: template_person, id: Unbound template}, anchor: {place: kothringi-ruin-m25-m80,
+    rule: navmesh, need: 'three Unbound camped by a fire in the barracks wing, short of the tomb door'}, name: Unbound
+    Digger, level: 11, count: 3, hostile: true, killChoice: true, enabled: true}
+- {ref: thing.mn09.packs, kind: thing, base: {kind: existing_base, id: Skyrim knapsack}, anchor: {place: kothringi-ruin-m25-m80,
+    rule: surface, need: the Unbound's packs by their fire}, enabled: true}
+- {ref: thing.mn.paralysis-poison, kind: thing, base: {kind: template_item, id: Skyrim poison of paralysis}, container: thing.mn09.packs,
+  count: 3, enabled: true}
+- {ref: thing.mn09.tomb-door, kind: door, anchor: {place: kothringi-ruin-m25-m80, rule: surface, need: the stone tomb
+      door with a keystone socket}, lock: {level: key, key: thing.mn.keystone}, placeName: Knight-Captain's Tomb}
+- {ref: thing.mn09.tomb-chest, kind: thing, base: {kind: existing_base, id: Skyrim tomb chest}, anchor: {place: kothringi-ruin-m25-m80,
+    rule: surface, need: the chest in the tomb behind the stone door}, enabled: true}
+- {ref: thing.mn.bronze-disc, kind: thing, base: {kind: template_item, id: KotM bronze disc}, container: thing.mn09.tomb-chest,
+  enabled: true}
+conclusions:
+- {id: c1, statement: The disc points to a mine; the next step is that mine., clues: [k1, k2, k3]}
+- {id: c2, statement: 'The seal is a paralysis poison, and nobody yet knows why the Unbound use it.', clues: [k4, k5, k6]}
+clues:
+- {id: k1, kind: lead, form: thing, carrier: thing.mn.bronze-disc, gives: [fact.mn09.disc], supports: [c1]}
+- {id: k2, kind: concept, form: line, carrier: npc.mn.nesh-deeka, gives: [fact.mn09.vicrium], supports: [c1]}
+- {id: k3, kind: lead, form: place, carrier: thing.mn09.tomb-door, gives: [fact.mn09.disc], supports: [c1]}
+- {id: k4, kind: lead, form: thing, carrier: thing.mn.paralysis-poison, gives: [fact.mn09.poison], supports: [c2]}
+- {id: k5, kind: concept, form: thing, carrier: thing.mn09.packs, gives: [fact.mn09.poison], supports: [c2]}
+- {id: k6, kind: concept, form: line, carrier: npc.mn.nesh-deeka, gives: [fact.mn09.question], supports: [c2]}
+shapeData:
+  destination: the knight-captain's tomb
+  hazards: the restless dead; the Unbound party
+  prize: the bronze disc
+  presence: the knights' dead, who walk the barracks wing
+  rule: Restoration turns them
+stages:
+- id: 10
+  place: kothringi-ruin-m25-m80
+  journal: text.journal.mn09.10
+  journalText: 'Nesh-Deeka sent me to Eurydike, the roofless hall of the Kothringi knights north of Gideon, to open the
+    knight-captain''s tomb with the keystone. The knights'' dead walk the barracks wing, and the Unbound got there
+    before me. I''m to search the Unbound''s packs by their fire on the way to the tomb. I may fight, slip past, or turn
+    the dead with Restoration.'
+  directions: 'Ride the rootworm from Helstrom''s city tree to Gideon''s Hist garden, then walk north out of Gideon to
+    the long grey-white hall with its roof gone and a broken gable; the barracks wing stands at the back.'
+  objectives:
+  - {id: packs, text: text.objective.mn09.packs, objectiveText: Search the Unbound's packs in Eurydike's barracks wing.,
+    target: thing.mn09.packs, completeWhen: {questStage: [quest.main.mn09, ≥, 20]}}
+  successors:
+  - {to: 20, when: {hasItem: [thing.mn.paralysis-poison, 1]}}
+  failForward:
+  - {to: 95, when: {not: {npcAlive: npc.mn.nesh-deeka}}}
+  approaches:
+  - {id: fight, actions: [{skill: One-Handed, use: fight, target: the dead and the Unbound}, {skill: Destruction, use: fight-with-magic,
+        target: the dead and the Unbound}]}
+  - {id: turn, actions: [{skill: Restoration, use: turn-undead, target: the dead}]}
+  - {id: quiet, actions: [{skill: Sneak, use: sneak-past, target: the dead and the Unbound}]}
+  information:
+    going: The keystone opens the knight-captain's tomb at Eurydike; the Unbound are there ahead of me.
+    next: Go to Eurydike and search the Unbound's packs on the way to the tomb.
+    ways: Fight the dead and the Unbound, slip past them, or turn the dead with Restoration.
+    carriers:
+    - {know: the way and the packs, by: [journal, objective, marker:thing.mn09.packs, 'name:thing.mn09.packs']}
+    - {know: the ways, by: [journal]}
+- id: 20
+  place: kothringi-ruin-m25-m80
+  journal: text.journal.mn09.20
+  journalText: 'In the Unbound''s packs were bottles of the grey paste they call "the seal". It is a paralysis poison:
+    it numbs a tree''s scar shut. The Unbound drain a tree and then poison it. If they wanted the trees dead they could
+    kill them, so why seal a tree they drain? I''m to open the knight-captain''s tomb with the keystone.'
+  onEnter: [{setFlag: [flag.main.seal-question, true]}]
+  objectives:
+  - {id: tomb, text: text.objective.mn09.tomb, objectiveText: Open the knight-captain's tomb with the keystone and search it.,
+    target: 'thing.mn09.tomb-door, thing.mn09.tomb-chest', completeWhen: {questStage: [quest.main.mn09, ≥, 30]}}
+  successors:
+  - {to: 30, when: {hasItem: [thing.mn.bronze-disc, 1]}}
+  failForward:
+  - {to: 95, when: {not: {npcAlive: npc.mn.nesh-deeka}}}
+  learns: [fact.mn09.poison, fact.mn09.question]
+  information:
+    going: 'The seal is a paralysis poison. I do not know why the Unbound seal trees they drain: that question is open.'
+    next: Open the tomb with the keystone and search the knight-captain's chest.
+    ways: The keystone is the door's key; the dead and the Unbound may still be about.
+    carriers:
+    - {know: the poison, by: [journal, 'name:thing.mn.paralysis-poison']}
+    - {know: the open question, by: [journal]}
+    - {know: the tomb, by: [objective, marker:thing.mn09.tomb-door, 'name:thing.mn09.tomb-door']}
+- id: 30
+  place: helstrom
+  journal: text.journal.mn09.30
+  journalText: 'In the knight-captain''s tomb lay a bronze disc stamped with a mine''s mark, a pick crossed with a
+    tower. I''m to bring it to Nesh-Deeka in Helstrom.'
+  objectives:
+  - {id: report, text: text.objective.mn09.report, objectiveText: Bring the bronze disc to Nesh-Deeka in Helstrom., target: npc.mn.nesh-deeka,
+    completeWhen: {questStage: [quest.main.mn09, ≥, 90]}}
+  successors:
+  - {to: 90, when: {all: [{topicHeardFrom: [topic.mn09-how-know, npc.mn.nesh-deeka]}, {hasItem: [thing.mn.bronze-disc, 1]}]}}
+  failForward:
+  - {to: 95, when: {not: {npcAlive: npc.mn.nesh-deeka}}}
+  learns: [fact.mn09.disc]
+  information:
+    going: The disc bears a mine's mark; I do not know which mine.
+    next: Bring the disc to Nesh-Deeka.
+    ways: none
+    carriers:
+    - {know: the disc, by: [journal, 'name:thing.mn.bronze-disc']}
+    - {know: report, by: [journal, objective, marker:npc.mn.nesh-deeka]}
+- id: 90
+  place: helstrom
+  journal: text.journal.mn09.90
+  journalText: 'Nesh-Deeka knew the mark: Vicrium, an old mine in the clay country behind Seafalls, in the east. She
+    already knew the Unbound had been at Eurydike. When I asked how, she said "we listen" and would not answer why
+    they seal the trees. She paid me 100 gold. The question stays with me.'
+  onEnter: [{giveGold: 100}]
+  learns: [fact.mn09.vicrium, fact.mn09.knew]
+  ending: complete
+  endingId: e-read
+  information:
+    going: The disc points to Vicrium. Why the Unbound seal the trees is still open; Nesh-Deeka knows where they go and will not say how.
+    next: MN10 starts; its first entry marks Vicrium.
+    ways: none
+    carriers:
+    - {know: Vicrium, by: [journal, 'line:topic.mn09-report']}
+    - {know: she turned the question aside; the seal question open, by: [journal, 'line:topic.mn09-how-know', 'ask:topic.mn09-why-seal']}
+- {id: 95, place: helstrom, journal: text.journal.mn09.95, journalText: 'Nesh-Deeka is dead. Nobody else in the
+    Toh-Reel-Ka knows me, and the trail of the Eye ends with her.', ending: failed, endingId: e-thread}
+endings:
+- {id: e-read, when: Nesh-Deeka read the disc, rewards: [{giveGold: 100}], seen: the tomb stands open}
+- {id: e-thread, when: Nesh-Deeka died, world: [{setFlag: [flag.main.thread-severed, true]}], seen: the main quest's message}
+terms:
+- {term: paralysis poison (the seal), meets: '20 item', told: 'the item''s name and journal 20', ask: topic.mn-the-seal}
+- {term: Vicrium, meets: '90 line', told: 'Nesh-Deeka: an old mine behind Seafalls in Okuwun Rahei', ask: topic.mn09-report}
+topics:
+- {id: topic.mn09-report, label: "The tomb held this bronze disc.", person: npc.mn.nesh-deeka, stages: [30], essential: true,
+  when: {hasItem: [thing.mn.bronze-disc, 1]}, intent: 'Nesh-Deeka. Tells: the pick and tower is Vicrium''s mark, an old
+    ochre and alum mine in the clay country behind Seafalls, in Okuwun Rahei in the east; the knights kept a strongbox
+    there. She says she knew the Unbound had got into Eurydike. Does: nothing (a question; its answer is
+    topic.mn09-how-know).', replies: [topic.mn09-how-know], new: true}
+- {id: topic.mn09-how-know, label: "You knew the Unbound were at Eurydike. How?", person: npc.mn.nesh-deeka, stages: [30],
+  essential: true, when: {hasItem: [thing.mn.bronze-disc, 1]}, intent: 'Nesh-Deeka. Tells: "We listen." She pays 100
+    gold. Does: sets stage 90.', new: true}
+- {id: topic.mn09-why-seal, label: "The seal is a poison. Why would the Unbound seal a tree they drain?", person: npc.mn.nesh-deeka,
+  stages: [90], essential: false, intent: 'Nesh-Deeka. Tells: she does not know, and it does not matter; madness or
+    spite. The player should find the Eye first. (She answers nothing; the question stays open.) Does: nothing.', new: true}
+- {id: topic.mn-the-seal, label: "What is the seal?", person: npc.mn.nesh-deeka, stages: [90], essential: false, intent: 'Nesh-Deeka,
+    a row of her own on the shared topic. Tells: a paralysis poison, now that the player has found it; it numbs a scar
+    shut. Does: nothing.', new: false}
+review:
+  findings:
+  - {id: L1, severity: lore, ids: [facts.fact.mn09.poison], finding: The seal is a paralysis poison., answer: 'sourced:
+      main-plot.md §3'}
+  - {id: L2, severity: lore, ids: [facts.fact.mn09.question], finding: The question is left open., answer: 'sourced:
+      main-plot.md §3; owner-bar (a mystery keeps its question open)'}
