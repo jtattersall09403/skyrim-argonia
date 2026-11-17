@@ -627,8 +627,10 @@ function wireMap(focus) {
 let NAMES = null;
 function xray() {
   const art = $("#view .doc"); if (!art) return;
+  if (NAMES === false) return;
   if (!NAMES) {
     const all = [...CAT.people.map(p => ["p", p]), ...CAT.places.map(p => ["pl", p])].filter(([, p]) => p.quests.length && p.name.length >= 4 && /^[A-Z]/.test(p.name));
+    if (!all.length) { NAMES = false; return; }
     NAMES = {map: Object.fromEntries(all.map(([k, p]) => [p.name, `${k}:${p.id}`])),
       re: new RegExp(`(?<![\\w-])(${all.map(([, p]) => p.name).sort((a, b) => b.length - a.length).map(n => n.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|")})(?![\\w-])`, "g")};
   }
@@ -638,6 +640,7 @@ function xray() {
     NAMES.re.lastIndex = 0; if (!NAMES.re.test(node.data)) continue;
     const frag = document.createDocumentFragment(); let last = 0; NAMES.re.lastIndex = 0; let m;
     while ((m = NAMES.re.exec(node.data))) {
+      if (!m[1]) { NAMES.re.lastIndex++; continue; }
       frag.append(node.data.slice(last, m.index));
       const b = document.createElement("button"); b.type = "button"; b.className = "xr"; b.dataset.xr = NAMES.map[m[1]]; b.textContent = m[1]; frag.append(b);
       last = m.index + m[1].length;
