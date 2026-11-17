@@ -33,11 +33,15 @@
 {"place_id":"amalaja","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (cooking-pot: cooking pot on the dune above the boats)"}
 {"place_id":"amalaja","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (fishing: sea fishing off the point)"}
 {"place_id":"amalaja","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (harvest-common: rice and dried fish from the delta swap)"}
-{"place_id":"aphon-belvedere","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (boat-stop: the watch's supply boat to Olvani)"}
-{"place_id":"aphon-belvedere","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (free-bed: a watch bunk)"}
-{"place_id":"aphon-belvedere","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trainer: Journeyman Marksman trainer, the watch captain)"}
-{"place_id":"aphon-belvedere","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (fishing: bay fish off the landing)"}
-{"place_id":"aphon-belvedere","give_seq":4,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (cooking-pot: the watch-house hearth)"}
+{"place_id":"aphon-belvedere","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (boat-stop: the Brethren's boat to Olvani)"}
+{"place_id":"aphon-belvedere","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (free-bed: a bunk in the view-house for a member of the Brethren)"}
+{"place_id":"aphon-belvedere","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trainer: Journeyman One-Handed trainer, Bar-Neeus the bosun)"}
+{"place_id":"aphon-belvedere","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (fence: Selvo Arenim, the quartermaster, who buys prize goods from a member)"}
+{"place_id":"aphon-belvedere","give_seq":4,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (fishing: bay fish off the landing)"}
+{"place_id":"aphon-belvedere","give_seq":5,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (cooking-pot: the crews' hearth in the view-house)"}
+{"place_id":"aphon-belvedere","give_seq":6,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-foes: pirate crews on the landing and the tower, who attack strangers)"}
+{"place_id":"aphon-belvedere","give_seq":7,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-boss: One-Eye, the captain, in the view-house)"}
+{"place_id":"aphon-belvedere","give_seq":8,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (boss-chest: the captain's sea chest in the view-house)"}
 {"place_id":"archon","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (boat-stop: harbour boatmen at the wharves)"}
 {"place_id":"archon","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-general: Ship chandler: rope, lamp oil, sacks, fishing gear and mixed goods; 750 gold, restocked every 48 hours)"}
 {"place_id":"archon","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-blacksmith: Wharf smith in the old Company yard: iron and steel arms and armour, hooks, ingots, ore and hides)"}
@@ -165,10 +169,10 @@
 {"place_id":"cave-11-m71","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-boss: the Sarpa war-leader in the nest gallery)"}
 {"place_id":"cave-11-m71","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (boss-chest: boss chest in the nest gallery)"}
 {"place_id":"cave-11-m71","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (treasure: travellers' goods heaped in the larder: a prospector's pick)"}
-{"place_id":"cave-m32-m92","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-foes: Unbound scouts in the dry outer chamber)"}
-{"place_id":"cave-m32-m92","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-boss: the scouts' leader in the dry outer chamber)"}
-{"place_id":"cave-m32-m92","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (boss-chest: a chest in the flooded inner chamber, reached by swimming)"}
-{"place_id":"cave-m32-m92","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (treasure: the scouts' packs by their fire)"}
+{"place_id":"cave-m32-m92","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-foes: Brethren store crew in the dry outer chamber)"}
+{"place_id":"cave-m32-m92","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-boss: the store's mate in the dry outer chamber)"}
+{"place_id":"cave-m32-m92","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (boss-chest: the store chest in the flooded inner chamber, reached by swimming)"}
+{"place_id":"cave-m32-m92","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (treasure: the crew's packs by their fire)"}
 {"place_id":"cave-m32-m92","give_seq":4,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-creature: slaughterfish in the inner pool)"}
 {"place_id":"cave-m32-m92","give_seq":5,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (harvest-common: kelp and clams at the cave mouth)"}
 {"place_id":"chasepoint","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-general: salvage trader in the carters' yard)"}
@@ -453,10 +457,10 @@
 {"place_id":"imperial-ruin-m25-m85","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (boss-chest: the smugglers' cache in the hidden cellar)"}
 {"place_id":"imperial-ruin-m25-m85","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (treasure: moon-sugar sacks and purses on the pier)"}
 {"place_id":"imperial-ruin-m25-m85","give_seq":4,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-creature: crocodiles under the pier)"}
-{"place_id":"imperial-ruin-m34-m96","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-foes: hired men guarding the dig)"}
-{"place_id":"imperial-ruin-m34-m96","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-boss: the diggers' foreman in the lamp-room)"}
-{"place_id":"imperial-ruin-m34-m96","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (boss-chest: the diggers' chest by the dig in the tower base)"}
-{"place_id":"imperial-ruin-m34-m96","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (treasure: the hired men's satchels on the stair)"}
+{"place_id":"imperial-ruin-m34-m96","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-foes: Brethren lookouts on the stair and the top)"}
+{"place_id":"imperial-ruin-m34-m96","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-boss: the lookouts' mate in the lamp-room)"}
+{"place_id":"imperial-ruin-m34-m96","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (boss-chest: the lookouts' chest in the tower base)"}
+{"place_id":"imperial-ruin-m34-m96","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (treasure: the lookouts' satchels on the stair)"}
 {"place_id":"imperial-ruin-m34-m96","give_seq":4,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (skill-book: a Legion signaller's copy of a Marksman skill book left in the lamp-room)"}
 {"place_id":"imperial-ruin-m7-m61","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-foes: scavenger bandits sleeping in the corners)"}
 {"place_id":"imperial-ruin-m7-m61","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-boss: the scavengers' leader)"}
@@ -863,7 +867,7 @@
 {"place_id":"outlaw-camp-36-m80","give_seq":5,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (cooking-pot: camp cook fire and drying-rack)"}
 {"place_id":"outlaw-camp-38-m77","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-foes: pirate crews on the hulks and jetty)"}
 {"place_id":"outlaw-camp-38-m77","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-creature: slaughterfish under the jetty)"}
-{"place_id":"outlaw-camp-38-m77","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-boss: the one-eyed pirate captain)"}
+{"place_id":"outlaw-camp-38-m77","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-boss: Hasha-Jeen, master of the outpost)"}
 {"place_id":"outlaw-camp-38-m77","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (boss-chest: captain's sea chest)"}
 {"place_id":"outlaw-camp-38-m77","give_seq":4,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-general: prize goods sold off the hulks)"}
 {"place_id":"outlaw-camp-38-m77","give_seq":5,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (fence: the quartermaster's buyer for stolen cargo)"}

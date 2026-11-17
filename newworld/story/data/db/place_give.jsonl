@@ -33,11 +33,15 @@
 {"place_id":"amalaja","seq":1,"give_kind_id":"cooking-pot","detail":"cooking pot on the dune above the boats","count":1}
 {"place_id":"amalaja","seq":2,"give_kind_id":"fishing","detail":"sea fishing off the point","count":1}
 {"place_id":"amalaja","seq":3,"give_kind_id":"harvest-common","detail":"rice and dried fish from the delta swap","count":1}
-{"place_id":"aphon-belvedere","seq":0,"give_kind_id":"boat-stop","detail":"the watch's supply boat to Olvani","count":1}
-{"place_id":"aphon-belvedere","seq":1,"give_kind_id":"free-bed","detail":"a watch bunk","count":1}
-{"place_id":"aphon-belvedere","seq":2,"give_kind_id":"trainer","detail":"Journeyman Marksman trainer, the watch captain","count":1}
-{"place_id":"aphon-belvedere","seq":3,"give_kind_id":"fishing","detail":"bay fish off the landing","count":1}
-{"place_id":"aphon-belvedere","seq":4,"give_kind_id":"cooking-pot","detail":"the watch-house hearth","count":1}
+{"place_id":"aphon-belvedere","seq":0,"give_kind_id":"boat-stop","detail":"the Brethren's boat to Olvani","count":1}
+{"place_id":"aphon-belvedere","seq":1,"give_kind_id":"free-bed","detail":"a bunk in the view-house for a member of the Brethren","count":1}
+{"place_id":"aphon-belvedere","seq":2,"give_kind_id":"trainer","detail":"Journeyman One-Handed trainer, Bar-Neeus the bosun","count":1}
+{"place_id":"aphon-belvedere","seq":3,"give_kind_id":"fence","detail":"Selvo Arenim, the quartermaster, who buys prize goods from a member","count":1}
+{"place_id":"aphon-belvedere","seq":4,"give_kind_id":"fishing","detail":"bay fish off the landing","count":1}
+{"place_id":"aphon-belvedere","seq":5,"give_kind_id":"cooking-pot","detail":"the crews' hearth in the view-house","count":1}
+{"place_id":"aphon-belvedere","seq":6,"give_kind_id":"combat-foes","detail":"pirate crews on the landing and the tower, who attack strangers","count":8,"reward_kind_id":"boss-chest"}
+{"place_id":"aphon-belvedere","seq":7,"give_kind_id":"combat-boss","detail":"One-Eye, the captain, in the view-house","count":1,"reward_kind_id":"boss-chest"}
+{"place_id":"aphon-belvedere","seq":8,"give_kind_id":"boss-chest","detail":"the captain's sea chest in the view-house","count":1}
 {"place_id":"archon","seq":0,"give_kind_id":"boat-stop","detail":"harbour boatmen at the wharves","count":1}
 {"place_id":"archon","seq":1,"give_kind_id":"trader-general","detail":"Ship chandler: rope, lamp oil, sacks, fishing gear and mixed goods; 750 gold, restocked every 48 hours","count":1}
 {"place_id":"archon","seq":2,"give_kind_id":"trader-blacksmith","detail":"Wharf smith in the old Company yard: iron and steel arms and armour, hooks, ingots, ore and hides","count":1}
@@ -165,10 +169,10 @@
 {"place_id":"cave-11-m71","seq":1,"give_kind_id":"combat-boss","detail":"the Sarpa war-leader in the nest gallery","count":1,"reward_kind_id":"boss-chest"}
 {"place_id":"cave-11-m71","seq":2,"give_kind_id":"boss-chest","detail":"boss chest in the nest gallery","count":1}
 {"place_id":"cave-11-m71","seq":3,"give_kind_id":"treasure","detail":"travellers' goods heaped in the larder: a prospector's pick","count":1}
-{"place_id":"cave-m32-m92","seq":0,"give_kind_id":"combat-foes","detail":"Unbound scouts in the dry outer chamber","count":4,"reward_kind_id":"treasure"}
-{"place_id":"cave-m32-m92","seq":1,"give_kind_id":"combat-boss","detail":"the scouts' leader in the dry outer chamber","count":1,"reward_kind_id":"boss-chest"}
-{"place_id":"cave-m32-m92","seq":2,"give_kind_id":"boss-chest","detail":"a chest in the flooded inner chamber, reached by swimming","count":1}
-{"place_id":"cave-m32-m92","seq":3,"give_kind_id":"treasure","detail":"the scouts' packs by their fire","count":2}
+{"place_id":"cave-m32-m92","seq":0,"give_kind_id":"combat-foes","detail":"Brethren store crew in the dry outer chamber","count":4,"reward_kind_id":"treasure"}
+{"place_id":"cave-m32-m92","seq":1,"give_kind_id":"combat-boss","detail":"the store's mate in the dry outer chamber","count":1,"reward_kind_id":"boss-chest"}
+{"place_id":"cave-m32-m92","seq":2,"give_kind_id":"boss-chest","detail":"the store chest in the flooded inner chamber, reached by swimming","count":1}
+{"place_id":"cave-m32-m92","seq":3,"give_kind_id":"treasure","detail":"the crew's packs by their fire","count":2}
 {"place_id":"cave-m32-m92","seq":4,"give_kind_id":"combat-creature","detail":"slaughterfish in the inner pool","count":1,"reward_kind_id":"treasure"}
 {"place_id":"cave-m32-m92","seq":5,"give_kind_id":"harvest-common","detail":"kelp and clams at the cave mouth","count":1}
 {"place_id":"chasepoint","seq":0,"give_kind_id":"trader-general","detail":"salvage trader in the carters' yard","count":1}
@@ -453,10 +457,10 @@
 {"place_id":"imperial-ruin-m25-m85","seq":2,"give_kind_id":"boss-chest","detail":"the smugglers' cache in the hidden cellar","count":1}
 {"place_id":"imperial-ruin-m25-m85","seq":3,"give_kind_id":"treasure","detail":"moon-sugar sacks and purses on the pier","count":2}
 {"place_id":"imperial-ruin-m25-m85","seq":4,"give_kind_id":"combat-creature","detail":"crocodiles under the pier","count":1,"reward_kind_id":"treasure"}
-{"place_id":"imperial-ruin-m34-m96","seq":0,"give_kind_id":"combat-foes","detail":"hired men guarding the dig","count":3,"reward_kind_id":"treasure"}
-{"place_id":"imperial-ruin-m34-m96","seq":1,"give_kind_id":"combat-boss","detail":"the diggers' foreman in the lamp-room","count":1,"reward_kind_id":"boss-chest"}
-{"place_id":"imperial-ruin-m34-m96","seq":2,"give_kind_id":"boss-chest","detail":"the diggers' chest by the dig in the tower base","count":1}
-{"place_id":"imperial-ruin-m34-m96","seq":3,"give_kind_id":"treasure","detail":"the hired men's satchels on the stair","count":2}
+{"place_id":"imperial-ruin-m34-m96","seq":0,"give_kind_id":"combat-foes","detail":"Brethren lookouts on the stair and the top","count":3,"reward_kind_id":"treasure"}
+{"place_id":"imperial-ruin-m34-m96","seq":1,"give_kind_id":"combat-boss","detail":"the lookouts' mate in the lamp-room","count":1,"reward_kind_id":"boss-chest"}
+{"place_id":"imperial-ruin-m34-m96","seq":2,"give_kind_id":"boss-chest","detail":"the lookouts' chest in the tower base","count":1}
+{"place_id":"imperial-ruin-m34-m96","seq":3,"give_kind_id":"treasure","detail":"the lookouts' satchels on the stair","count":2}
 {"place_id":"imperial-ruin-m34-m96","seq":4,"give_kind_id":"skill-book","detail":"a Legion signaller's copy of a Marksman skill book left in the lamp-room","count":1}
 {"place_id":"imperial-ruin-m7-m61","seq":0,"give_kind_id":"combat-foes","detail":"scavenger bandits sleeping in the corners","count":4,"reward_kind_id":"boss-chest"}
 {"place_id":"imperial-ruin-m7-m61","seq":1,"give_kind_id":"combat-boss","detail":"the scavengers' leader","count":1,"reward_kind_id":"boss-chest"}
@@ -863,7 +867,7 @@
 {"place_id":"outlaw-camp-36-m80","seq":5,"give_kind_id":"cooking-pot","detail":"camp cook fire and drying-rack","count":1}
 {"place_id":"outlaw-camp-38-m77","seq":0,"give_kind_id":"combat-foes","detail":"pirate crews on the hulks and jetty","count":8,"reward_kind_id":"boss-chest"}
 {"place_id":"outlaw-camp-38-m77","seq":1,"give_kind_id":"combat-creature","detail":"slaughterfish under the jetty","count":3,"reward_kind_id":"boss-chest"}
-{"place_id":"outlaw-camp-38-m77","seq":2,"give_kind_id":"combat-boss","detail":"the one-eyed pirate captain","count":1,"reward_kind_id":"boss-chest"}
+{"place_id":"outlaw-camp-38-m77","seq":2,"give_kind_id":"combat-boss","detail":"Hasha-Jeen, master of the outpost","count":1,"reward_kind_id":"boss-chest"}
 {"place_id":"outlaw-camp-38-m77","seq":3,"give_kind_id":"boss-chest","detail":"captain's sea chest","count":1}
 {"place_id":"outlaw-camp-38-m77","seq":4,"give_kind_id":"trader-general","detail":"prize goods sold off the hulks","count":1}
 {"place_id":"outlaw-camp-38-m77","seq":5,"give_kind_id":"fence","detail":"the quartermaster's buyer for stolen cargo","count":1}

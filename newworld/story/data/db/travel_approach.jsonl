@@ -16,7 +16,7 @@
 {"place_id":"blackrose-prison","stop_place_id":"blackrose","travel_mode_id":"boat","foot_m":277,"way":"marsh","remote":0,"why":"277 m across the marsh on foot from the boat stop at Blackrose"}
 {"place_id":"bucalos","stop_place_id":"lujei-ferry","travel_mode_id":"boat","foot_m":273,"way":"marsh","remote":0,"why":"273 m across the marsh on foot from the boat stop at Lujei Ferry"}
 {"place_id":"cave-11-m71","stop_place_id":"aroxhu","travel_mode_id":"rootworm","foot_m":912,"way":"marsh","remote":0,"why":"912 m across the marsh on foot from the rootworm stop at Aroxhu"}
-{"place_id":"cave-m32-m92","stop_place_id":"aphon-belvedere","travel_mode_id":"boat","foot_m":373,"way":"marsh","remote":0,"why":"373 m across the marsh on foot from the boat stop at Aphon Belvedere"}
+{"place_id":"cave-m32-m92","stop_place_id":"aphon-belvedere","travel_mode_id":"boat","foot_m":373,"way":"marsh","remote":0,"why":"373 m across the marsh on foot from the boat stop at Bramman's Watch"}
 {"place_id":"chasepoint","stop_place_id":"soulrest","travel_mode_id":"boat","foot_m":638,"way":"marsh","remote":0,"why":"638 m across the marsh on foot from the boat stop at Soulrest"}
 {"place_id":"echo-deep","stop_place_id":"bell-station","travel_mode_id":"boat","foot_m":439,"way":"dive","remote":0,"why":"439 m down through the water from the boat stop at Bell Station"}
 {"place_id":"estate-15-m110","stop_place_id":"lilmoth","travel_mode_id":"boat","foot_m":326,"way":"road","remote":0,"why":"326 m by road from the boat stop at Lilmoth"}
@@ -58,7 +58,7 @@
 {"place_id":"imperial-ruin-m19-m82","stop_place_id":"gul-tej","travel_mode_id":"boat","foot_m":810,"way":"road","remote":0,"why":"810 m by road from the boat stop at Gul-Tej"}
 {"place_id":"imperial-ruin-m23-m103","stop_place_id":"soulrest","travel_mode_id":"boat","foot_m":467,"way":"marsh","remote":0,"why":"467 m across the marsh on foot from the boat stop at Soulrest"}
 {"place_id":"imperial-ruin-m25-m85","stop_place_id":"gideon","travel_mode_id":"boat","foot_m":251,"way":"marsh","remote":0,"why":"251 m across the marsh on foot from the boat stop at Gideon"}
-{"place_id":"imperial-ruin-m34-m96","stop_place_id":"aphon-belvedere","travel_mode_id":"boat","foot_m":485,"way":"marsh","remote":0,"why":"485 m across the marsh on foot from the boat stop at Aphon Belvedere"}
+{"place_id":"imperial-ruin-m34-m96","stop_place_id":"aphon-belvedere","travel_mode_id":"boat","foot_m":485,"way":"marsh","remote":0,"why":"485 m across the marsh on foot from the boat stop at Bramman's Watch"}
 {"place_id":"imperial-ruin-m7-m61","stop_place_id":"jal-veesa","travel_mode_id":"rootworm","foot_m":91,"way":"marsh","remote":0,"why":"91 m across the marsh on foot from the rootworm stop at Jal-Veesa"}
 {"place_id":"inoio","stop_place_id":"truowa","travel_mode_id":"boat","foot_m":929,"way":"marsh","remote":0,"why":"929 m across the marsh on foot from the boat stop at Truowa"}
 {"place_id":"joxhi","stop_place_id":"inoja","travel_mode_id":"boat","foot_m":396,"way":"water","remote":0,"why":"396 m over the water from the boat stop at Inoja"}
@@ -176,7 +176,7 @@
 {"place_id":"shipwreck-42-m78","stop_place_id":"arorha","travel_mode_id":"boat","foot_m":1347,"way":"dive","remote":1,"why":"The Resolute Crest lies in deep water off Skeith Isle, beyond any boat route. Reaching it takes a long swim and a dive from Arorha's shore."}
 {"place_id":"shipwreck-m25-m113","stop_place_id":"acra-tiin","travel_mode_id":"boat","foot_m":329,"way":"dive","remote":0,"why":"329 m down through the water from the boat stop at Acra-Tiin"}
 {"place_id":"shipwreck-m30-m91","stop_place_id":"olvani","travel_mode_id":"boat","foot_m":562,"way":"dive","remote":0,"why":"562 m down through the water from the boat stop at Olvani"}
-{"place_id":"shipwreck-m36-m95","stop_place_id":"aphon-belvedere","travel_mode_id":"boat","foot_m":400,"way":"dive","remote":0,"why":"400 m down through the water from the boat stop at Aphon Belvedere"}
+{"place_id":"shipwreck-m36-m95","stop_place_id":"aphon-belvedere","travel_mode_id":"boat","foot_m":400,"way":"dive","remote":0,"why":"400 m down through the water from the boat stop at Bramman's Watch"}
 {"place_id":"siluo","stop_place_id":"truowa","travel_mode_id":"boat","foot_m":786,"way":"marsh","remote":0,"why":"786 m across the marsh on foot from the boat stop at Truowa"}
 {"place_id":"southwatch-keep","stop_place_id":"lilmoth","travel_mode_id":"boat","foot_m":583,"way":"road","remote":0,"why":"583 m by road from the boat stop at Lilmoth"}
 {"place_id":"sunken-ruin-23-m112","stop_place_id":"lilmoth","travel_mode_id":"boat","foot_m":767,"way":"dive","remote":0,"why":"767 m down through the water from the boat stop at Lilmoth"}

@@ -6,7 +6,7 @@
 {"place_id":"acra-tiin","law_id":"native","why":"Argonian law, no cell: Soulrest merchant council through a village reeve"}
 {"place_id":"agia-nero","law_id":"none","why":"no one keeps law: hostile, ruined"}
 {"place_id":"amalaja","law_id":"native","why":"Argonian law, no cell: The village elders, paying the island core little for protection"}
-{"place_id":"aphon-belvedere","law_id":"foreign","jail_place_id":"fort-silvermoth","why":"kept by an office inherited from the Empire ('Archwarden'): A small Archwardens' customs watch of Archein-descended families; the cell at Fort Silvermoth, the same keeper's nearest fort"}
+{"place_id":"aphon-belvedere","law_id":"none","why":"no one keeps law: hostile, occupied"}
 {"place_id":"archon","law_id":"foreign","jail_place_id":"archon","why":"kept by an office inherited from the Empire ('East Empire Company'): A harbour authority and merchant council in the East Empire Company's old buildings, with the successor state's customs officers alongside; its own cell (city)"}
 {"place_id":"armanias","law_id":"native","why":"Argonian law, no cell: A Lukiul village of potters and rice-growers under Gideon's council"}
 {"place_id":"arorha","law_id":"native","why":"Argonian law, no cell: Arorha village elders, answering to the Aroxhu council"}
@@ -23,7 +23,7 @@
 {"place_id":"blackrose-prison","law_id":"none","why":"no one keeps law: hostile, occupied"}
 {"place_id":"bucalos","law_id":"none","why":"no one keeps law: hostile, abandoned"}
 {"place_id":"cave-11-m71","law_id":"none","why":"no one keeps law: hostile, occupied"}
-{"place_id":"cave-m32-m92","law_id":"none","why":"no one keeps law: hostile, abandoned"}
+{"place_id":"cave-m32-m92","law_id":"none","why":"no one keeps law: hostile, occupied"}
 {"place_id":"chasepoint","law_id":"native","why":"Argonian law, no cell: Soulrest merchant council through a village reeve"}
 {"place_id":"delta-ferry","law_id":"native","why":"Argonian law, no cell: Delta ferry-folk, kin to the Lilmoth boatmen, who keep the crossing with the merchant council's goodwill"}
 {"place_id":"echo-deep","law_id":"none","why":"no one keeps law: abandoned, sunken"}
@@ -69,7 +69,7 @@
 {"place_id":"imperial-ruin-m19-m82","law_id":"none","why":"no one keeps law: hostile, ruined"}
 {"place_id":"imperial-ruin-m23-m103","law_id":"none","why":"no one keeps law: hostile, abandoned"}
 {"place_id":"imperial-ruin-m25-m85","law_id":"none","why":"no one keeps law: hostile, ruined"}
-{"place_id":"imperial-ruin-m34-m96","law_id":"none","why":"no one keeps law: hostile, ruined"}
+{"place_id":"imperial-ruin-m34-m96","law_id":"none","why":"no one keeps law: hostile, occupied"}
 {"place_id":"imperial-ruin-m7-m61","law_id":"none","why":"no one keeps law: hostile, ruined"}
 {"place_id":"inoio","law_id":"native","why":"Argonian law, no cell: A Three Waters raft-master family under the elder of Uluo"}
 {"place_id":"inoja","law_id":"native","why":"Argonian law, no cell: Inoja elders, under the Aroxhu council"}

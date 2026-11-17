@@ -3854,21 +3854,21 @@
   {
    "id": "imperial-ruin-m34-m96",
    "name": "Aphon Signal Tower",
-   "status": "ruined",
-   "held_by": "No one: hired men guard a dig in its base",
+   "status": "occupied",
+   "held_by": "Bramman's Brethren: lookouts on the tower",
    "population": 0,
    "footprint_radius_m": 40,
    "siting": "hilltop",
    "danger_band_id": "D2",
    "importance": 2,
-   "summary": "Aphon Signal Tower is an Imperial ruin on Aphon Isle, a signal tower on the island's high ground paired with Aphon Belvedere to watch the bay.",
+   "summary": "Aphon Signal Tower is an Imperial ruin on Aphon Isle, a signal tower on the island's high ground that the Brethren use as a lookout over the bay.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "A ruined Imperial signal tower on the high ground of Aphon Isle, paired with Aphon Belvedere to watch the bay.",
+     "text": "A ruined Imperial signal tower on the high ground of Aphon Isle, paired with the view-house that is now Bramman's Watch.",
      "tier": "CANON_DERIVED",
      "sources": [
       {
@@ -3884,12 +3884,17 @@
        "kind": "map",
        "title": "PT3-map-Black_Marsh.png",
        "locator": "cell -34,-96"
+      },
+      {
+       "kind": "reasoning",
+       "title": "owner, story explorer notes 37, 42 and 43 (2026-11-17): Aphon Isle is the Brethren's seat, Skeith Isle their outpost; no captives; Brethren places let a member in; story/design/quests/lines/pirates.md",
+       "locator": "story/design/quests/lines/pirates.md"
       }
      ]
     },
     {
      "aspect": "history",
-     "text": "Aphon Signal Tower stands on the high ground of Aphon Isle, paired with the Belvedere so that a fire on one could be seen from the other across the bay. It was built under the Empire. Its lamp has not been kept since the secession.",
+     "text": "Aphon Signal Tower stands on the high ground of Aphon Isle, paired with the view-house so that a fire on one could be seen from the other across the bay. It was built under the Empire. Its lamp has not been kept since the secession, and the Brethren took it with the Watch in 4E 196.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3902,12 +3907,17 @@
        "title": "Lore:Fourth Era",
        "locator": "Lore:Fourth Era",
        "url": "https://en.uesp.net/wiki/Lore:Fourth_Era"
+      },
+      {
+       "kind": "reasoning",
+       "title": "owner, story explorer notes 37, 42 and 43 (2026-11-17): Aphon Isle is the Brethren's seat, Skeith Isle their outpost; no captives; Brethren places let a member in; story/design/quests/lines/pirates.md",
+       "locator": "story/design/quests/lines/pirates.md"
       }
      ]
     },
     {
      "aspect": "present",
-     "text": "The tower is unheld, a landmark for fishing boats rounding the isle. Hired men have lifted the floor of its base in a dig and keep a lookout on its top.",
+     "text": "Four Brethren lookouts live in the tower's base and watch the bay from its top. Hired men once lifted the floor of the base in a dig and left it open.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3924,24 +3934,34 @@
        "kind": "map",
        "title": "PT3-map-Black_Marsh.png",
        "locator": "cell -34,-96"
+      },
+      {
+       "kind": "reasoning",
+       "title": "owner, story explorer notes 37, 42 and 43 (2026-11-17): Aphon Isle is the Brethren's seat, Skeith Isle their outpost; no captives; Brethren places let a member in; story/design/quests/lines/pirates.md",
+       "locator": "story/design/quests/lines/pirates.md"
       }
      ]
     },
     {
      "aspect": "people",
-     "text": "The tower is uninhabited. A small band of sea-smugglers keeps watch from its top, and Aphon's fishers pass it without a word.",
+     "text": "Four lookouts of the Brethren under a mate in the lamp-room.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
        "title": "a smugglers' lookout on an island with a Warden watch",
        "locator": "reasoning"
+      },
+      {
+       "kind": "reasoning",
+       "title": "owner, story explorer notes 37, 42 and 43 (2026-11-17): Aphon Isle is the Brethren's seat, Skeith Isle their outpost; no captives; Brethren places let a member in; story/design/quests/lines/pirates.md",
+       "locator": "story/design/quests/lines/pirates.md"
       }
      ]
     },
     {
      "aspect": "economy",
-     "text": "A signal post for the bay's shipping, kept by Imperial dues. Today its main value is as a lookout for smugglers and a source of dressed stone for fishers' huts.",
+     "text": "A signal post for the bay's shipping, once kept by Imperial dues. Today the Brethren use it to sight the Company's ships.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3958,6 +3978,11 @@
        "kind": "map",
        "title": "PT3-map-Black_Marsh.png",
        "locator": "cell -34,-96"
+      },
+      {
+       "kind": "reasoning",
+       "title": "owner, story explorer notes 37, 42 and 43 (2026-11-17): Aphon Isle is the Brethren's seat, Skeith Isle their outpost; no captives; Brethren places let a member in; story/design/quests/lines/pirates.md",
+       "locator": "story/design/quests/lines/pirates.md"
       }
      ]
     },
@@ -3997,7 +4022,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "The climb is steep and open to the wind. The hired men will not welcome visitors, and mudcrabs crowd the rocks around its base.",
+     "text": "The climb is steep and open to the wind. The lookouts shoot strangers on the stair, and mudcrabs crowd the rocks around its base. A member of Bramman's Brethren is let in: the crews are at peace with the player once they join.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4014,12 +4039,17 @@
        "kind": "map",
        "title": "PT3-map-Black_Marsh.png",
        "locator": "cell -34,-96"
+      },
+      {
+       "kind": "reasoning",
+       "title": "owner, story explorer notes 37, 42 and 43 (2026-11-17): Aphon Isle is the Brethren's seat, Skeith Isle their outpost; no captives; Brethren places let a member in; story/design/quests/lines/pirates.md",
+       "locator": "story/design/quests/lines/pirates.md"
       }
      ]
     },
     {
      "aspect": "hooks",
-     "text": "A dig in the tower's base where hired men lifted the old floor and took a rubbing of a carved stone; the Belvedere's watch wanting the tower cleared.",
+     "text": "The open dig in the tower's base. The lookouts sight every boat that comes for Aphon before it lands.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4031,17 +4061,27 @@
        "kind": "reasoning",
        "title": "the tower paired with the Warden watch at Aphon Belvedere",
        "locator": "reasoning"
+      },
+      {
+       "kind": "reasoning",
+       "title": "owner, story explorer notes 37, 42 and 43 (2026-11-17): Aphon Isle is the Brethren's seat, Skeith Isle their outpost; no captives; Brethren places let a member in; story/design/quests/lines/pirates.md",
+       "locator": "story/design/quests/lines/pirates.md"
       }
      ]
     },
     {
      "aspect": "source",
-     "text": "Its main source, Ash Crypt (SolsthDungeonPack), is a cave crypt of 938 cave pieces with one interior, not a tower. Old Laboratory (King of the Murkmire) fits better: an Imperial ruin of 417 Imperial pieces with one interior, which serves as the dug-out base of the tower. Still to add: the tall tower on the rock crest, the outside stair, the blackened lamp-room and the hired men's dig.",
+     "text": "Its main source, Ash Crypt (SolsthDungeonPack), is a cave crypt of 938 cave pieces with one interior, not a tower. Old Laboratory (King of the Murkmire) fits better: an Imperial ruin of 417 Imperial pieces with one interior, which serves as the dug-out base of the tower. Still to add: the tall tower on the rock crest, the outside stair, the blackened lamp-room, the open dig and the lookouts' bedrolls.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
        "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      },
+      {
+       "kind": "reasoning",
+       "title": "owner, story explorer notes 37, 42 and 43 (2026-11-17): Aphon Isle is the Brethren's seat, Skeith Isle their outpost; no captives; Brethren places let a member in; story/design/quests/lines/pirates.md",
+       "locator": "story/design/quests/lines/pirates.md"
       }
      ]
     }
@@ -4057,24 +4097,24 @@
    "gives": [
     {
      "kind": "combat-foes",
-     "detail": "hired men guarding the dig",
+     "detail": "Brethren lookouts on the stair and the top",
      "count": 3,
      "reward": "treasure"
     },
     {
      "kind": "combat-boss",
-     "detail": "the diggers' foreman in the lamp-room",
+     "detail": "the lookouts' mate in the lamp-room",
      "count": 1,
      "reward": "boss-chest"
     },
     {
      "kind": "boss-chest",
-     "detail": "the diggers' chest by the dig in the tower base",
+     "detail": "the lookouts' chest in the tower base",
      "count": 1
     },
     {
      "kind": "treasure",
-     "detail": "the hired men's satchels on the stair",
+     "detail": "the lookouts' satchels on the stair",
      "count": 2
     },
     {
@@ -9566,22 +9606,31 @@
   },
   {
    "id": "aphon-belvedere",
-   "name": "Aphon Belvedere",
-   "status": "garrisoned",
-   "held_by": "A small Archwardens' customs watch of Archein-descended families",
-   "population": 6,
+   "name": "Bramman's Watch",
+   "status": "occupied",
+   "held_by": "Bramman's Brethren, the pirates' seat under Captain Wazei-Vos, called One-Eye",
+   "population": 15,
    "footprint_radius_m": 40,
    "siting": "hilltop",
    "danger_band_id": "D1",
    "importance": 3,
-   "summary": "Aphon Belvedere is a lookout house on Aphon Isle, an old Imperial retreat now used by the Archwardens as a customs watch over Topal Bay.",
+   "summary": "Bramman's Watch is the seat of Bramman's Brethren on Aphon Isle: an old Imperial view-house and its tower on the island's rise, which the pirates took from the Xeech-Leel's customs watch in 4E 196.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
-   "aliases": [],
+   "aliases": [
+    {
+     "alias": "Aphon Belvedere",
+     "source": {
+      "kind": "map",
+      "title": "Project Tamriel Black Marsh map (PT3-map-Black_Marsh.png)",
+      "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+     }
+    }
+   ],
    "notes": [
     {
      "aspect": "overview",
-     "text": "A belvedere built as a view-house for an Imperial governor; now a customs watch.",
+     "text": "A view-house built for an Imperial governor, with a tower on the water below it; now the seat of the pirates of Topal Bay, who call it Bramman's Watch.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9602,12 +9651,17 @@
        "kind": "map",
        "title": "PT3-map-Black_Marsh.png",
        "locator": "cell -35,-92"
+      },
+      {
+       "kind": "reasoning",
+       "title": "owner, story explorer notes 37, 42 and 43 (2026-11-17): Aphon Isle is the Brethren's seat, Skeith Isle their outpost; no captives; Brethren places let a member in; story/design/quests/lines/pirates.md",
+       "locator": "story/design/quests/lines/pirates.md"
       }
      ]
     },
     {
      "aspect": "history",
-     "text": "Built under the Empire as a retreat; the Imperial garrison left at the secession, and a Warden customs watch now keeps it.",
+     "text": "Built under the Empire as a governor's retreat. The Imperial garrison left at the secession and a customs watch of the Archwardens used it for two centuries. In 4E 196 One-Eye's crews took it, and the watch withdrew to Fort Shellmoth by Soulrest.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9628,12 +9682,17 @@
        "kind": "map",
        "title": "PT3-map-Black_Marsh.png",
        "locator": "cell -35,-92"
+      },
+      {
+       "kind": "reasoning",
+       "title": "owner, story explorer notes 37, 42 and 43 (2026-11-17): Aphon Isle is the Brethren's seat, Skeith Isle their outpost; no captives; Brethren places let a member in; story/design/quests/lines/pirates.md",
+       "locator": "story/design/quests/lines/pirates.md"
       }
      ]
     },
     {
      "aspect": "present",
-     "text": "Six watchers log ships in and out of Topal Bay and signal Soulrest.",
+     "text": "About fifteen pirates live at the Watch. Their lookouts count every ship that comes into the bay for Gideon, and their boat crosses to Olvani.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9654,12 +9713,17 @@
        "kind": "map",
        "title": "PT3-map-Black_Marsh.png",
        "locator": "cell -35,-92"
+      },
+      {
+       "kind": "reasoning",
+       "title": "owner, story explorer notes 37, 42 and 43 (2026-11-17): Aphon Isle is the Brethren's seat, Skeith Isle their outpost; no captives; Brethren places let a member in; story/design/quests/lines/pirates.md",
+       "locator": "story/design/quests/lines/pirates.md"
       }
      ]
     },
     {
      "aspect": "people",
-     "text": "Argonian watchers of Archein families and a Bosmer pilot keep the lookout house on Aphon Isle.",
+     "text": "Argonian, Khajiit and Dunmer pirates under their captain, One-Eye, with a Dunmer quartermaster and an Argonian bosun.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9680,24 +9744,34 @@
        "kind": "map",
        "title": "PT3-map-Black_Marsh.png",
        "locator": "cell -35,-92"
+      },
+      {
+       "kind": "reasoning",
+       "title": "owner, story explorer notes 37, 42 and 43 (2026-11-17): Aphon Isle is the Brethren's seat, Skeith Isle their outpost; no captives; Brethren places let a member in; story/design/quests/lines/pirates.md",
+       "locator": "story/design/quests/lines/pirates.md"
       }
      ]
     },
     {
      "aspect": "economy",
-     "text": "Customs on boats landing at Aphon, a signal fire and a fishing boat for supplies keep the watch going.",
+     "text": "Prize cargoes taken from the Topal Bay Company's ships, stored in Kelp-Mouth Cave and sold up Bramman's river at Alten Corimont.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "dossier",
        "title": "story/lore/extrapolation/argonia-4e201-state.md",
        "locator": "§10 the spine"
+      },
+      {
+       "kind": "reasoning",
+       "title": "owner, story explorer notes 37, 42 and 43 (2026-11-17): Aphon Isle is the Brethren's seat, Skeith Isle their outpost; no captives; Brethren places let a member in; story/design/quests/lines/pirates.md",
+       "locator": "story/design/quests/lines/pirates.md"
       }
      ]
     },
     {
      "aspect": "faith",
-     "text": "The watchers honour Sithis and keep a small Nine shrine left from the old Imperial retreat.",
+     "text": "The crews swear by a figurehead set at the head of the stair. The small Nine shrine of the old retreat still stands, and nobody tends it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9718,12 +9792,17 @@
        "kind": "map",
        "title": "PT3-map-Black_Marsh.png",
        "locator": "cell -35,-92"
+      },
+      {
+       "kind": "reasoning",
+       "title": "owner, story explorer notes 37, 42 and 43 (2026-11-17): Aphon Isle is the Brethren's seat, Skeith Isle their outpost; no captives; Brethren places let a member in; story/design/quests/lines/pirates.md",
+       "locator": "story/design/quests/lines/pirates.md"
       }
      ]
     },
     {
      "aspect": "look",
-     "text": "A white-washed house with a verandah on a hill, a signal-lantern and a stair of rough stone.",
+     "text": "A white-washed house with a verandah on the island's rise, a stair of rough stone down to a stone tower on the water, and boats at the tower's foot.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9744,12 +9823,17 @@
        "kind": "map",
        "title": "PT3-map-Black_Marsh.png",
        "locator": "cell -35,-92"
+      },
+      {
+       "kind": "reasoning",
+       "title": "owner, story explorer notes 37, 42 and 43 (2026-11-17): Aphon Isle is the Brethren's seat, Skeith Isle their outpost; no captives; Brethren places let a member in; story/design/quests/lines/pirates.md",
+       "locator": "story/design/quests/lines/pirates.md"
       }
      ]
     },
     {
      "aspect": "dangers",
-     "text": "Bay pirates raid the lookout at night. The watchers fire on them without warning.",
+     "text": "The crews attack strangers who land without the Brethren's word. A member of Bramman's Brethren is let in: the crews are at peace with the player once they join.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9770,12 +9854,17 @@
        "kind": "map",
        "title": "PT3-map-Black_Marsh.png",
        "locator": "cell -35,-92"
+      },
+      {
+       "kind": "reasoning",
+       "title": "owner, story explorer notes 37, 42 and 43 (2026-11-17): Aphon Isle is the Brethren's seat, Skeith Isle their outpost; no captives; Brethren places let a member in; story/design/quests/lines/pirates.md",
+       "locator": "story/design/quests/lines/pirates.md"
       }
      ]
     },
     {
      "aspect": "hooks",
-     "text": "A smuggler's name in the customs book that the captain wants answered for, a pilot who knows the reef channels for a price or a parley with the Khajiit crew at Kelp-Mouth Cave.",
+     "text": "The bosun fights every newcomer before the captain will see them. The captain wants the Stormwidow's letter of marque brought from Skeith Isle.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9787,17 +9876,27 @@
        "kind": "reasoning",
        "title": "a Warden customs watch on Topal Bay; the smugglers' cave on the same isle",
        "locator": "reasoning"
+      },
+      {
+       "kind": "reasoning",
+       "title": "owner, story explorer notes 37, 42 and 43 (2026-11-17): Aphon Isle is the Brethren's seat, Skeith Isle their outpost; no captives; Brethren places let a member in; story/design/quests/lines/pirates.md",
+       "locator": "story/design/quests/lines/pirates.md"
       }
      ]
     },
     {
      "aspect": "source",
-     "text": "Its main source, Waylayer's Watch (Wyrmstooth), is a small Imperial tower on the water with fifteen people and no interior, which suits a watch on a hill. Stendarrs Beacon (Skyrim) is a bare Imperial tower with shrine pieces and serves for the signal lantern. The watch bunk needs one small room, added as a hut interior from Seekhat Yol (King of the Murkmire). Still to add: the white-washed house with its verandah, the stair of rough stone, the Nine shrine and the landing for the supply boat.",
+     "text": "Its main source, Waylayer's Watch (Wyrmstooth), is a small Imperial tower on the water with camp pieces, fifteen people and no interior, which suits the pirates' tower and their camp on the island's rise. Stendarrs Beacon (Skyrim) is a bare Imperial tower with shrine pieces and serves for the old Nine shrine. The view-house, the captain's house, needs one room, added as a hut interior from Seekhat Yol (King of the Murkmire). Still to add: the view-house with its verandah, the stair of rough stone, the figurehead at its head and the landing for the Brethren's boat.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
        "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      },
+      {
+       "kind": "reasoning",
+       "title": "owner, story explorer notes 37, 42 and 43 (2026-11-17): Aphon Isle is the Brethren's seat, Skeith Isle their outpost; no captives; Brethren places let a member in; story/design/quests/lines/pirates.md",
+       "locator": "story/design/quests/lines/pirates.md"
       }
      ]
     }
@@ -9818,17 +9917,22 @@
    "gives": [
     {
      "kind": "boat-stop",
-     "detail": "the watch's supply boat to Olvani",
+     "detail": "the Brethren's boat to Olvani",
      "count": 1
     },
     {
      "kind": "free-bed",
-     "detail": "a watch bunk",
+     "detail": "a bunk in the view-house for a member of the Brethren",
      "count": 1
     },
     {
      "kind": "trainer",
-     "detail": "Journeyman Marksman trainer, the watch captain",
+     "detail": "Journeyman One-Handed trainer, Bar-Neeus the bosun",
+     "count": 1
+    },
+    {
+     "kind": "fence",
+     "detail": "Selvo Arenim, the quartermaster, who buys prize goods from a member",
      "count": 1
     },
     {
@@ -9838,7 +9942,24 @@
     },
     {
      "kind": "cooking-pot",
-     "detail": "the watch-house hearth",
+     "detail": "the crews' hearth in the view-house",
+     "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "pirate crews on the landing and the tower, who attack strangers",
+     "count": 8,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "One-Eye, the captain, in the view-house",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "the captain's sea chest in the view-house",
      "count": 1
     }
    ]
@@ -9846,21 +9967,21 @@
   {
    "id": "cave-m32-m92",
    "name": "Kelp-Mouth Cave",
-   "status": "abandoned",
-   "held_by": "Scouts of the Unbound, a sap-takers' cult",
+   "status": "occupied",
+   "held_by": "Bramman's Brethren: the crew of their prize store",
    "population": 6,
    "footprint_radius_m": 30,
    "siting": "coast",
    "danger_band_id": "D3",
    "importance": 2,
-   "summary": "Kelp-Mouth Cave is a sea cave on Aphon Isle's eastern shore, with a dry outer chamber and a flooded inner one. Scouts of the Unbound hold it.",
+   "summary": "Kelp-Mouth Cave is a sea cave on Aphon Isle's eastern shore, with a dry outer chamber and a flooded inner one. Bramman's Brethren keep their prize store in it.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "A sea-cut cave on Aphon Isle's eastern shore, on the side away from the Belvedere. Its outer chamber is dry; its inner chamber is flooded and reached by swimming.",
+     "text": "A sea-cut cave on Aphon Isle's eastern shore, on the side away from Bramman's Watch. Its outer chamber is dry; its inner chamber is flooded and reached by swimming.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9884,12 +10005,17 @@
        "kind": "reasoning",
        "title": "Khajiit seafarers and moon-sugar smuggling through Topal Bay (spine 10.3; Lore:Black Marsh: most Southern Sea seafarers are Khajiit); a Warden customs watch on the same isle (Aphon Belvedere)",
        "locator": "reasoning"
+      },
+      {
+       "kind": "reasoning",
+       "title": "owner, story explorer notes 37, 42 and 43 (2026-11-17): Aphon Isle is the Brethren's seat, Skeith Isle their outpost; no captives; Brethren places let a member in; story/design/quests/lines/pirates.md",
+       "locator": "story/design/quests/lines/pirates.md"
       }
      ]
     },
     {
      "aspect": "history",
-     "text": "Pirates have used the coves of Topal Bay since Red Bramman's day. This cave is the one on Aphon that the Warden watch at the Belvedere cannot see, which is why the present crew chose it.",
+     "text": "Pirates have used the coves of Topal Bay since Red Bramman's day. The customs watch that once manned the view-house could not see this cave, which is why the Brethren chose it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9919,12 +10045,17 @@
        "title": "Lore:Soulrest",
        "locator": "Lore:Soulrest",
        "url": "https://en.uesp.net/wiki/Lore:Soulrest"
+      },
+      {
+       "kind": "reasoning",
+       "title": "owner, story explorer notes 37, 42 and 43 (2026-11-17): Aphon Isle is the Brethren's seat, Skeith Isle their outpost; no captives; Brethren places let a member in; story/design/quests/lines/pirates.md",
+       "locator": "story/design/quests/lines/pirates.md"
       }
      ]
     },
     {
      "aspect": "present",
-     "text": "A party of Unbound scouts camps in the dry outer chamber. The inner chamber is flooded and reached only by swimming.",
+     "text": "A store crew of five camps in the dry outer chamber. The store chest stands in the flooded inner chamber, reached only by swimming.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9948,12 +10079,17 @@
        "kind": "reasoning",
        "title": "Khajiit seafarers and moon-sugar smuggling through Topal Bay (spine 10.3; Lore:Black Marsh: most Southern Sea seafarers are Khajiit); a Warden customs watch on the same isle (Aphon Belvedere)",
        "locator": "reasoning"
+      },
+      {
+       "kind": "reasoning",
+       "title": "owner, story explorer notes 37, 42 and 43 (2026-11-17): Aphon Isle is the Brethren's seat, Skeith Isle their outpost; no captives; Brethren places let a member in; story/design/quests/lines/pirates.md",
+       "locator": "story/design/quests/lines/pirates.md"
       }
      ]
     },
     {
      "aspect": "people",
-     "text": "Khajiit sailors out of Senchal under a captain who has worked the bay for years, with one Argonian pilot from Olvani who knows the reef.",
+     "text": "Khajiit and Argonian sailors of the Brethren under a mate who answers to the quartermaster of Bramman's Watch.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9977,12 +10113,17 @@
        "kind": "reasoning",
        "title": "Khajiit seafarers and moon-sugar smuggling through Topal Bay (spine 10.3; Lore:Black Marsh: most Southern Sea seafarers are Khajiit); a Warden customs watch on the same isle (Aphon Belvedere)",
        "locator": "reasoning"
+      },
+      {
+       "kind": "reasoning",
+       "title": "owner, story explorer notes 37, 42 and 43 (2026-11-17): Aphon Isle is the Brethren's seat, Skeith Isle their outpost; no captives; Brethren places let a member in; story/design/quests/lines/pirates.md",
+       "locator": "story/design/quests/lines/pirates.md"
       }
      ]
     },
     {
      "aspect": "economy",
-     "text": "Smugglers once kept goods here; now the Unbound use it as a camp while they search the isle.",
+     "text": "The Brethren store prize cargo here before it goes up Bramman's river to be sold at Alten Corimont.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -10006,6 +10147,11 @@
        "kind": "reasoning",
        "title": "Khajiit seafarers and moon-sugar smuggling through Topal Bay (spine 10.3; Lore:Black Marsh: most Southern Sea seafarers are Khajiit); a Warden customs watch on the same isle (Aphon Belvedere)",
        "locator": "reasoning"
+      },
+      {
+       "kind": "reasoning",
+       "title": "owner, story explorer notes 37, 42 and 43 (2026-11-17): Aphon Isle is the Brethren's seat, Skeith Isle their outpost; no captives; Brethren places let a member in; story/design/quests/lines/pirates.md",
+       "locator": "story/design/quests/lines/pirates.md"
       }
      ]
     },
@@ -10046,7 +10192,7 @@
     },
     {
      "aspect": "look",
-     "text": "A low black cave mouth hung with kelp, a dry rock chamber with the scouts' bedrolls and an inner pool with a green light on the water.",
+     "text": "A low black cave mouth hung with kelp, a dry rock chamber with the crew's bedrolls and an inner pool with a green light on the water.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -10070,12 +10216,17 @@
        "kind": "reasoning",
        "title": "Khajiit seafarers and moon-sugar smuggling through Topal Bay (spine 10.3; Lore:Black Marsh: most Southern Sea seafarers are Khajiit); a Warden customs watch on the same isle (Aphon Belvedere)",
        "locator": "reasoning"
+      },
+      {
+       "kind": "reasoning",
+       "title": "owner, story explorer notes 37, 42 and 43 (2026-11-17): Aphon Isle is the Brethren's seat, Skeith Isle their outpost; no captives; Brethren places let a member in; story/design/quests/lines/pirates.md",
+       "locator": "story/design/quests/lines/pirates.md"
       }
      ]
     },
     {
      "aspect": "dangers",
-     "text": "The scouts fight anyone who finds them, and the flooded inner chamber is a long swim with slaughterfish in it.",
+     "text": "The store crew fight anyone who comes in without the Brethren's word, and the flooded inner chamber is a long swim with slaughterfish in it. A member of Bramman's Brethren is let in: the crews are at peace with the player once they join.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -10099,12 +10250,17 @@
        "kind": "reasoning",
        "title": "Khajiit seafarers and moon-sugar smuggling through Topal Bay (spine 10.3; Lore:Black Marsh: most Southern Sea seafarers are Khajiit); a Warden customs watch on the same isle (Aphon Belvedere)",
        "locator": "reasoning"
+      },
+      {
+       "kind": "reasoning",
+       "title": "owner, story explorer notes 37, 42 and 43 (2026-11-17): Aphon Isle is the Brethren's seat, Skeith Isle their outpost; no captives; Brethren places let a member in; story/design/quests/lines/pirates.md",
+       "locator": "story/design/quests/lines/pirates.md"
       }
      ]
     },
     {
      "aspect": "hooks",
-     "text": "A chest in the flooded inner chamber; the scouts' packs and papers by their fire; a wounded scout sitting apart at the cave mouth.",
+     "text": "The store chest in the flooded inner chamber, where the captain keeps the prize silver and her papers.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -10128,17 +10284,27 @@
        "kind": "reasoning",
        "title": "Khajiit seafarers and moon-sugar smuggling through Topal Bay (spine 10.3; Lore:Black Marsh: most Southern Sea seafarers are Khajiit); a Warden customs watch on the same isle (Aphon Belvedere)",
        "locator": "reasoning"
+      },
+      {
+       "kind": "reasoning",
+       "title": "owner, story explorer notes 37, 42 and 43 (2026-11-17): Aphon Isle is the Brethren's seat, Skeith Isle their outpost; no captives; Brethren places let a member in; story/design/quests/lines/pirates.md",
+       "locator": "story/design/quests/lines/pirates.md"
       }
      ]
     },
     {
      "aspect": "source",
-     "text": "Its main source, Wajeem-Krona (King of the Murkmire), is an Argonian sea cave of cave and mine pieces with one interior that holds water and nine placed foes. The interior serves as the dry outer chamber and the pool beyond it, with the chest set in the pool. Still to add: the kelp hung at the mouth, the scouts' bedrolls and packs and the Khajiit shell charm.",
+     "text": "Its main source, Wajeem-Krona (King of the Murkmire), is an Argonian sea cave of cave and mine pieces with one interior that holds water and nine placed foes. The interior serves as the dry outer chamber and the pool beyond it, with the store chest set in the pool. Still to add: the kelp hung at the mouth, the crew's bedrolls and packs and the Khajiit shell charm.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
        "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      },
+      {
+       "kind": "reasoning",
+       "title": "owner, story explorer notes 37, 42 and 43 (2026-11-17): Aphon Isle is the Brethren's seat, Skeith Isle their outpost; no captives; Brethren places let a member in; story/design/quests/lines/pirates.md",
+       "locator": "story/design/quests/lines/pirates.md"
       }
      ]
     }
@@ -10154,24 +10320,24 @@
    "gives": [
     {
      "kind": "combat-foes",
-     "detail": "Unbound scouts in the dry outer chamber",
+     "detail": "Brethren store crew in the dry outer chamber",
      "count": 4,
      "reward": "treasure"
     },
     {
      "kind": "combat-boss",
-     "detail": "the scouts' leader in the dry outer chamber",
+     "detail": "the store's mate in the dry outer chamber",
      "count": 1,
      "reward": "boss-chest"
     },
     {
      "kind": "boss-chest",
-     "detail": "a chest in the flooded inner chamber, reached by swimming",
+     "detail": "the store chest in the flooded inner chamber, reached by swimming",
      "count": 1
     },
     {
      "kind": "treasure",
-     "detail": "the scouts' packs by their fire",
+     "detail": "the crew's packs by their fire",
      "count": 2
     },
     {

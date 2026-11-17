@@ -121,7 +121,7 @@ Each is quoted from the notes and cited to its row. The place's own hooks note c
 **Wreck of the Resolute Crest.**
 
 - Two Skeith divers have not come back from it, and Marque Landing pays for anyone who returns with the chest. <!-- place_note:shipwreck-42-m78/hooks -->
-- A captive in the cells of Rainbreaker Keep says he knows the way down to it. <!-- place_note:shipwreck-42-m78/hooks -->
+- A Seafalls diver at Rainbreaker Keep sells the way in by the stern ports. <!-- place_note:shipwreck-42-m78/hooks -->
 - The Resolute Crest sailed in Uriel Septim V's fleet against Akavir in 3E 288 and went down off the east coast. <!-- place_note:shipwreck-42-m78/overview -->
 - The marines went down with the ship, and their drowned dead still stand on the quarterdeck. <!-- place_note:shipwreck-42-m78/people -->
 - She was lost off Black Marsh in the years of that campaign, long before the secession. <!-- place_note:shipwreck-42-m78/history -->

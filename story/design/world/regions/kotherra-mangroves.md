@@ -88,7 +88,7 @@ It promises the player: Boat stop: the ferry to Aphon Isle; Fish and clams: mudf
 
 Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). Its record sets no fight here; the calmest way in crosses settled ground; its loot is of the wild band. Bay pirates come ashore at night when no fighters are home, and slaughterfish crowd the deep channel off the end of the jetty. Anyone who swims out after a lost net is bitten. <!-- place_note:olvani/dangers --> <!-- place_law:olvani; place_danger:olvani -->
 
-It is a boat spoke, kept by harbour boatmans (a small-draft coaster or lighter with a sail), with passage to Aphon Belvedere (960 m, 20 gold, 1 hour). Roads run from it to Gideon (cart road, 530 m north). <!-- travel_stop:olvani/boat; travel_route:aphon-belvedere/olvani/boat; road_node:place=olvani -->
+It is a boat spoke, kept by harbour boatmans (a small-draft coaster or lighter with a sail), with passage to Bramman's Watch (960 m, 20 gold, 1 hour). Roads run from it to Gideon (cart road, 530 m north). <!-- travel_stop:olvani/boat; travel_route:aphon-belvedere/olvani/boat; road_node:place=olvani -->
 
 It is to be built from Morthal in Skyrim.esm (a town: 162 buildings, 10 interiors, 82 residents, 8 hostile, about 126 m across). The source reads: "Morthal: a town built in nordic and argonian style with farm, mine, fort pieces. 82 people live there, 8 hostile. 10 interiors. By water." Similar sources: Seekhat Yol (village, 160 buildings, 7 interiors), Keeba Hollow (village, 203 buildings, 9 interiors) and Root Whisper Village (village, 791 buildings, 8 interiors). <!-- place_source:olvani/0; source_place:skyrim.morthallocation; place_source:olvani/1; place_source:olvani/2; place_source:olvani/3 -->
 

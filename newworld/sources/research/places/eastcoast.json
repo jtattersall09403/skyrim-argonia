@@ -3645,7 +3645,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "Two Skeith divers have not come back from it, and Marque Landing pays for anyone who returns with the chest. A captive in the cells of Rainbreaker Keep says he knows the way down to it.",
+     "text": "Two Skeith divers have not come back from it, and Marque Landing pays for anyone who returns with the chest. A Seafalls diver at Rainbreaker Keep sells the way in by the stern ports.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3668,6 +3668,11 @@
        "kind": "reasoning",
        "title": "Uriel V's fleet sailed the Padomaic against Akavir in 3E 288 and was lost at Ionith in 3E 290 (Lore:Akavir; state §10.1), the one canon reason for a Septim warship off the east coast (state §10.3)",
        "locator": "story/lore/extrapolation/argonia-4e201-state.md section 10"
+      },
+      {
+       "kind": "reasoning",
+       "title": "owner, story explorer notes 37, 42 and 43 (2026-11-17): Aphon Isle is the Brethren's seat, Skeith Isle their outpost; no captives; Brethren places let a member in; story/design/quests/lines/pirates.md",
+       "locator": "story/design/quests/lines/pirates.md"
       }
      ]
     },
@@ -3998,13 +4003,13 @@
    "id": "outlaw-camp-38-m77",
    "name": "Marque Landing",
    "status": "inhabited",
-   "held_by": "Skeith pirates, half-chartered ex-privateers",
+   "held_by": "Bramman's Brethren: their outpost on the Archon coast, under Hasha-Jeen",
    "population": 20,
    "footprint_radius_m": 45,
    "siting": "coast",
    "danger_band_id": "D3",
    "importance": 3,
-   "summary": "Marque Landing is the pirates' camp on stilts in the shallows below Rainbreaker Keep. Its crews sail on a half-recognised commission from the Archon coast's privateering tradition.",
+   "summary": "Marque Landing is the pirates' camp on stilts in the shallows below Rainbreaker Keep, the outpost of Bramman's Brethren on the Archon coast. Its name comes from the chartered crews who lived here before.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -4043,7 +4048,7 @@
     },
     {
      "aspect": "history",
-     "text": "The Archon coast was riddled with pirates, and in the Blackwater War General Falco sent letters of marque to them. The tradition survived as a half-chartered fleet in 4E 201, the state's stand-in for a navy.",
+     "text": "The Archon coast was riddled with pirates, and in the Blackwater War General Falco sent letters of marque to them. The tradition survived as a half-chartered fleet in 4E 201, the state's stand-in for a navy. In 4E 189 Bramman's Brethren of Topal Bay took the landing and the keep above it from the chartered crews, and some of those crews came over to them.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4061,12 +4066,17 @@
        "kind": "reasoning",
        "title": "General Falco's letters of marque to the Archon coast pirates in the Blackwater War (Lore:Archon; state §10.1); the Archwardens have no navy, so the chartered privateer is the state's arm on the water (state §10.2)",
        "locator": "story/lore/extrapolation/argonia-4e201-state.md section 10"
+      },
+      {
+       "kind": "reasoning",
+       "title": "owner, story explorer notes 37, 42 and 43 (2026-11-17): Aphon Isle is the Brethren's seat, Skeith Isle their outpost; no captives; Brethren places let a member in; story/design/quests/lines/pirates.md",
+       "locator": "story/design/quests/lines/pirates.md"
       }
      ]
     },
     {
      "aspect": "present",
-     "text": "Four ships' crews share the camp. They hold the keep above as a strong room and raid shipping, but leave Archon's own boats alone.",
+     "text": "Four ships' crews of the Brethren share the camp under Hasha-Jeen, master of the outpost. They use the keep above as a strong room and raid the Archwardens' chartered ships.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4088,12 +4098,17 @@
        "kind": "reasoning",
        "title": "General Falco's letters of marque to the Archon coast pirates in the Blackwater War (Lore:Archon; state §10.1); the Archwardens have no navy, so the chartered privateer is the state's arm on the water (state §10.2)",
        "locator": "story/lore/extrapolation/argonia-4e201-state.md section 10"
+      },
+      {
+       "kind": "reasoning",
+       "title": "owner, story explorer notes 37, 42 and 43 (2026-11-17): Aphon Isle is the Brethren's seat, Skeith Isle their outpost; no captives; Brethren places let a member in; story/design/quests/lines/pirates.md",
+       "locator": "story/design/quests/lines/pirates.md"
       }
      ]
     },
     {
      "aspect": "people",
-     "text": "About twenty pirates, mostly Argonian boat-crews with a few Dunmer and Khajiit seamen. The pirate-captain, a one-eyed Argonian, sails on a commission that the Archwardens neither honour nor repudiate.",
+     "text": "About twenty pirates, mostly Argonian boat-crews with a few Dunmer and Khajiit seamen. Their master, Hasha-Jeen, an Argonian, sailed with the chartered crews before he came over to the Brethren.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4115,12 +4130,17 @@
        "kind": "reasoning",
        "title": "General Falco's letters of marque to the Archon coast pirates in the Blackwater War (Lore:Archon; state §10.1); the Archwardens have no navy, so the chartered privateer is the state's arm on the water (state §10.2)",
        "locator": "story/lore/extrapolation/argonia-4e201-state.md section 10"
+      },
+      {
+       "kind": "reasoning",
+       "title": "owner, story explorer notes 37, 42 and 43 (2026-11-17): Aphon Isle is the Brethren's seat, Skeith Isle their outpost; no captives; Brethren places let a member in; story/design/quests/lines/pirates.md",
+       "locator": "story/design/quests/lines/pirates.md"
       }
      ]
     },
     {
      "aspect": "economy",
-     "text": "Prize cargoes, ransom, protection from coast boats and the occasional commission to chase a rival. They sell to Archon quietly.",
+     "text": "Prize cargoes, protection from coast boats and the carrying of freed people out by sea for the Chainbreakers. They sell their prizes at Alten Corimont.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4142,6 +4162,11 @@
        "kind": "reasoning",
        "title": "General Falco's letters of marque to the Archon coast pirates in the Blackwater War (Lore:Archon; state §10.1); the Archwardens have no navy, so the chartered privateer is the state's arm on the water (state §10.2)",
        "locator": "story/lore/extrapolation/argonia-4e201-state.md section 10"
+      },
+      {
+       "kind": "reasoning",
+       "title": "owner, story explorer notes 37, 42 and 43 (2026-11-17): Aphon Isle is the Brethren's seat, Skeith Isle their outpost; no captives; Brethren places let a member in; story/design/quests/lines/pirates.md",
+       "locator": "story/design/quests/lines/pirates.md"
       }
      ]
     },
@@ -4201,7 +4226,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Bow and crossbow lookouts and a camp that fights as a crew. The keep above is a stronghold, and the water below the jetty is thick with slaughterfish.",
+     "text": "Bow and crossbow lookouts and a camp that fights strangers as a crew. The keep above is a stronghold, and the water below the jetty is thick with slaughterfish. A member of Bramman's Brethren is let in: the crews are at peace with the player once they join.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4223,12 +4248,17 @@
        "kind": "reasoning",
        "title": "General Falco's letters of marque to the Archon coast pirates in the Blackwater War (Lore:Archon; state §10.1); the Archwardens have no navy, so the chartered privateer is the state's arm on the water (state §10.2)",
        "locator": "story/lore/extrapolation/argonia-4e201-state.md section 10"
+      },
+      {
+       "kind": "reasoning",
+       "title": "owner, story explorer notes 37, 42 and 43 (2026-11-17): Aphon Isle is the Brethren's seat, Skeith Isle their outpost; no captives; Brethren places let a member in; story/design/quests/lines/pirates.md",
+       "locator": "story/design/quests/lines/pirates.md"
       }
      ]
     },
     {
      "aspect": "hooks",
-     "text": "The captain wants the Hollow Tide leader's best boat burned at its mooring. A stranger who does it is taken on as crew and carries a privateer's letter of protection.",
+     "text": "The master wants the Stormwidow's strongbox raised from her stern cabin and the chartered privateer that watches the landing taken.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4250,6 +4280,11 @@
        "kind": "reasoning",
        "title": "General Falco's letters of marque to the Archon coast pirates in the Blackwater War (Lore:Archon; state §10.1); the Archwardens have no navy, so the chartered privateer is the state's arm on the water (state §10.2)",
        "locator": "story/lore/extrapolation/argonia-4e201-state.md section 10"
+      },
+      {
+       "kind": "reasoning",
+       "title": "owner, story explorer notes 37, 42 and 43 (2026-11-17): Aphon Isle is the Brethren's seat, Skeith Isle their outpost; no captives; Brethren places let a member in; story/design/quests/lines/pirates.md",
+       "locator": "story/design/quests/lines/pirates.md"
       }
      ]
     },
@@ -4292,7 +4327,7 @@
     },
     {
      "kind": "combat-boss",
-     "detail": "the one-eyed pirate captain",
+     "detail": "Hasha-Jeen, master of the outpost",
      "count": 1,
      "reward": "boss-chest"
     },
@@ -4597,13 +4632,13 @@
    "id": "rainbreaker-keep",
    "name": "Rainbreaker Keep",
    "status": "occupied",
-   "held_by": "Marque Landing pirates, the Rainbreaker crew",
+   "held_by": "Bramman's Brethren of Marque Landing, the Rainbreaker crew",
    "population": 12,
    "footprint_radius_m": 60,
    "siting": "coast",
    "danger_band_id": "D3",
    "importance": 4,
-   "summary": "Rainbreaker Keep is an old Imperial sea-watch keep on Skeith Isle, left empty at the secession. The pirates of Marque Landing now use it as their strong room, and its undercroft holds their prisoners.",
+   "summary": "Rainbreaker Keep is an old Imperial sea-watch keep on Skeith Isle, left empty at the secession. The Brethren of Marque Landing now use it as their strong room.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -4669,7 +4704,7 @@
     },
     {
      "aspect": "present",
-     "text": "Pirates took it in recent years. They hold the upper hall as their moot-room and the lower vault as a strong room; the undercroft, once the garrison's cells, is the pirates' prison.",
+     "text": "The Brethren took it in 4E 189. They use the upper hall as their moot-room and the lower vault as a strong room. The undercroft, once the garrison's cells, stands empty.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4691,12 +4726,17 @@
        "kind": "reasoning",
        "title": "Imperial forts and posts were left at the secession (4E 5-10), most re-held by the Archwardens and the rest empty (state §10.4); Archon coast pirates and Falco's letters of marque (Lore:Archon; state §10.1)",
        "locator": "story/lore/extrapolation/argonia-4e201-state.md section 10"
+      },
+      {
+       "kind": "reasoning",
+       "title": "owner, story explorer notes 37, 42 and 43 (2026-11-17): Aphon Isle is the Brethren's seat, Skeith Isle their outpost; no captives; Brethren places let a member in; story/design/quests/lines/pirates.md",
+       "locator": "story/design/quests/lines/pirates.md"
       }
      ]
     },
     {
      "aspect": "people",
-     "text": "Twelve of the Marque Landing pirates live here under the quartermaster, with up to a dozen captives in the cells at a time.",
+     "text": "Twelve of the Marque Landing pirates live here under the quartermaster, with a Seafalls diver who works for pay.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4718,12 +4758,17 @@
        "kind": "reasoning",
        "title": "Imperial forts and posts were left at the secession (4E 5-10), most re-held by the Archwardens and the rest empty (state §10.4); Archon coast pirates and Falco's letters of marque (Lore:Archon; state §10.1)",
        "locator": "story/lore/extrapolation/argonia-4e201-state.md section 10"
+      },
+      {
+       "kind": "reasoning",
+       "title": "owner, story explorer notes 37, 42 and 43 (2026-11-17): Aphon Isle is the Brethren's seat, Skeith Isle their outpost; no captives; Brethren places let a member in; story/design/quests/lines/pirates.md",
+       "locator": "story/design/quests/lines/pirates.md"
       }
      ]
     },
     {
      "aspect": "economy",
-     "text": "A strong room for prize cargoes and ransom. Captives are kept for ransom or sold to buyers on the Okuwun coast.",
+     "text": "A strong room for prize cargoes before they go to Alten Corimont.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4745,6 +4790,11 @@
        "kind": "reasoning",
        "title": "Imperial forts and posts were left at the secession (4E 5-10), most re-held by the Archwardens and the rest empty (state §10.4); Archon coast pirates and Falco's letters of marque (Lore:Archon; state §10.1)",
        "locator": "story/lore/extrapolation/argonia-4e201-state.md section 10"
+      },
+      {
+       "kind": "reasoning",
+       "title": "owner, story explorer notes 37, 42 and 43 (2026-11-17): Aphon Isle is the Brethren's seat, Skeith Isle their outpost; no captives; Brethren places let a member in; story/design/quests/lines/pirates.md",
+       "locator": "story/design/quests/lines/pirates.md"
       }
      ]
     },
@@ -4804,7 +4854,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Pirates, a locked strong room, trapped stairs and wet lower cells where the pirates keep a pen of slaughterfish.",
+     "text": "Pirates who attack strangers, a locked strong room and trapped stairs. A member of Bramman's Brethren is let in: the crews are at peace with the player once they join.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4826,12 +4876,17 @@
        "kind": "reasoning",
        "title": "Imperial forts and posts were left at the secession (4E 5-10), most re-held by the Archwardens and the rest empty (state §10.4); Archon coast pirates and Falco's letters of marque (Lore:Archon; state §10.1)",
        "locator": "story/lore/extrapolation/argonia-4e201-state.md section 10"
+      },
+      {
+       "kind": "reasoning",
+       "title": "owner, story explorer notes 37, 42 and 43 (2026-11-17): Aphon Isle is the Brethren's seat, Skeith Isle their outpost; no captives; Brethren places let a member in; story/design/quests/lines/pirates.md",
+       "locator": "story/design/quests/lines/pirates.md"
       }
      ]
     },
     {
      "aspect": "hooks",
-     "text": "A captive in the cells knows how to reach the Resolute Crest's chest. The quartermaster knows which wardens took the pirates' money.",
+     "text": "A Seafalls diver who dives for the keep knows the way into the Resolute Crest. The quartermaster knows which wardens took the pirates' money.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4853,17 +4908,27 @@
        "kind": "reasoning",
        "title": "Imperial forts and posts were left at the secession (4E 5-10), most re-held by the Archwardens and the rest empty (state §10.4); Archon coast pirates and Falco's letters of marque (Lore:Archon; state §10.1)",
        "locator": "story/lore/extrapolation/argonia-4e201-state.md section 10"
+      },
+      {
+       "kind": "reasoning",
+       "title": "owner, story explorer notes 37, 42 and 43 (2026-11-17): Aphon Isle is the Brethren's seat, Skeith Isle their outpost; no captives; Brethren places let a member in; story/design/quests/lines/pirates.md",
+       "locator": "story/design/quests/lines/pirates.md"
       }
      ]
     },
     {
      "aspect": "source",
-     "text": "Its main source, Fort Tulis (Journey to Baan Malur), is an Imperial and Nordic keep with six interiors, a prison block and a warden's tower. It fits a sea-watch keep. Its halls serve as the upper moot-hall, the lower vault and the undercroft cells, the Nordic pieces replaced with Imperial stone. Forth Isle (Journey to Baan Malur) lends the dock pieces for the jetty. Still to add: a still water plane in the lower cells for the slaughterfish pen, the locked strong room, the stair traps, the Akatosh shrine in the chapel and the crates that stack before it. Its thirty-two people are cut to the twelve pirates and their captives.",
+     "text": "Its main source, Fort Tulis (Journey to Baan Malur), is an Imperial and Nordic keep with six interiors, a prison block and a warden's tower. It fits a sea-watch keep. Its halls serve as the upper moot-hall, the lower vault and the empty undercroft, the Nordic pieces replaced with Imperial stone. Forth Isle (Journey to Baan Malur) lends the dock pieces for the jetty. Still to add: the locked strong room, the stair traps, the Akatosh shrine in the chapel and the crates that stack before it. Its thirty-two people are cut to the twelve pirates and the diver.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
        "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      },
+      {
+       "kind": "reasoning",
+       "title": "owner, story explorer notes 37, 42 and 43 (2026-11-17): Aphon Isle is the Brethren's seat, Skeith Isle their outpost; no captives; Brethren places let a member in; story/design/quests/lines/pirates.md",
+       "locator": "story/design/quests/lines/pirates.md"
       }
      ]
     }

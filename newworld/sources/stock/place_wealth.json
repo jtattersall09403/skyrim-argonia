@@ -107,15 +107,15 @@
   },
   {
    "id": "aphon-belvedere",
-   "name": "Aphon Belvedere",
-   "disposition_id": "friendly",
-   "reward_band_id": "D2",
-   "danger_tier": "T2",
-   "wealth_score": 47,
+   "name": "Bramman's Watch",
+   "disposition_id": "hostile",
+   "reward_band_id": "D3",
+   "danger_tier": "T3",
+   "wealth_score": 49,
    "band": "P2",
    "open_tier": "T1",
-   "ceiling_tier": "T2",
-   "why": "score 47 = belvedere 16 + importance 3 15 + population 15 12 + trade 4 (0 roads, boat stop, 0 traders) + economy +0 (no telling words) -> P2 Modest; ceiling T2 (friendly: its people's own goods, its wealth's T2; reward band D2 T2)",
+   "ceiling_tier": "T3",
+   "why": "score 49 = belvedere 16 + importance 3 15 + population 15 12 + trade 6 (0 roads, boat stop, 1 traders) + economy +0 (no telling words) -> P2 Modest; ceiling T3 (hostile: the higher of wealth T2 and reward tier T3; reward band D3 T3)",
    "owner": null
   },
   {
@@ -332,11 +332,11 @@
    "disposition_id": "hostile",
    "reward_band_id": "D3",
    "danger_tier": "T3",
-   "wealth_score": null,
-   "band": null,
-   "open_tier": "T2",
+   "wealth_score": 24,
+   "band": "P1",
+   "open_tier": "T1",
    "ceiling_tier": "T3",
-   "why": "abandoned: no residents' wealth; the reward band D3 sets it (T3 at the hardest spot, T2 along the way)",
+   "why": "score 24 = cave 4 + importance 2 10 + population 6 8 + trade 2 (1 roads, 0 traders) + economy +0 (no telling words) -> P1 Poor; ceiling T3 (hostile: the higher of wealth T1 and reward tier T3; reward band D3 T3)",
    "owner": null
   },
   {
@@ -934,7 +934,7 @@
    "band": null,
    "open_tier": "T2",
    "ceiling_tier": "T3",
-   "why": "ruined: no residents' wealth; the reward band D3 sets it (T3 at the hardest spot, T2 along the way)",
+   "why": "occupied: no residents' wealth; the reward band D3 sets it (T3 at the hardest spot, T2 along the way)",
    "owner": null
   },
   {
