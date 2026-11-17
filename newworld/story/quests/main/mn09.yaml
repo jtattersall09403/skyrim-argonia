@@ -70,6 +70,7 @@ things:
 - {id: thing.mn.bronze-disc, kind: item, name: Knight-Captain's Bronze Disc, source: 'new: King of the Murkmire''s
     bronze disc, its description "Stamped with a mine''s mark: a pick crossed with a tower."', where: in thing.mn09.tomb-chest}
 placements:
+- {ref: marker.mn09.place, kind: marker, name: Eurydike, placeName: Eurydike, anchor: {place: kothringi-ruin-m25-m80, rule: surface, need: 'the place itself, known as Eurydike'}}
 - {ref: npc.mn.nesh-deeka, kind: person, name: Nesh-Deeka, anchor: {place: helstrom, rule: navmesh, need: Nesh-Deeka in Nesh-Deeka's House}}
 - {ref: npc.mn09.dead, kind: person, base: {kind: template_person, id: skeleton/draugr template}, anchor: {place: kothringi-ruin-m25-m80,
     rule: navmesh, need: the knights' restless dead walking the barracks wing}, name: Restless Knight, level: 12, count: 5,
@@ -77,13 +78,13 @@ placements:
 - {ref: npc.mn09.unbound, kind: person, base: {kind: template_person, id: Unbound template}, anchor: {place: kothringi-ruin-m25-m80,
     rule: navmesh, need: 'three Unbound camped by a fire in the barracks wing, short of the tomb door'}, name: Unbound
     Digger, level: 11, count: 3, hostile: true, killChoice: true, enabled: true}
-- {ref: thing.mn09.packs, kind: thing, base: {kind: existing_base, id: Skyrim knapsack}, anchor: {place: kothringi-ruin-m25-m80,
+- {ref: thing.mn09.packs, kind: container, base: {kind: existing_base, id: Skyrim knapsack}, anchor: {place: kothringi-ruin-m25-m80,
     rule: surface, need: the Unbound's packs by their fire}, enabled: true}
 - {ref: thing.mn.paralysis-poison, kind: thing, base: {kind: template_item, id: Skyrim poison of paralysis}, container: thing.mn09.packs,
   count: 3, enabled: true}
 - {ref: thing.mn09.tomb-door, kind: door, anchor: {place: kothringi-ruin-m25-m80, rule: surface, need: the stone tomb
       door with a keystone socket}, lock: {level: key, key: thing.mn.keystone}, placeName: Knight-Captain's Tomb}
-- {ref: thing.mn09.tomb-chest, kind: thing, base: {kind: existing_base, id: Skyrim tomb chest}, anchor: {place: kothringi-ruin-m25-m80,
+- {ref: thing.mn09.tomb-chest, kind: container, base: {kind: existing_base, id: Skyrim tomb chest}, anchor: {place: kothringi-ruin-m25-m80,
     rule: surface, need: the chest in the tomb behind the stone door}, enabled: true}
 - {ref: thing.mn.bronze-disc, kind: thing, base: {kind: template_item, id: KotM bronze disc}, container: thing.mn09.tomb-chest,
   enabled: true}
@@ -108,7 +109,7 @@ stages:
   place: kothringi-ruin-m25-m80
   journal: text.journal.mn09.10
   journalText: 'Nesh-Deeka sent me to Eurydike, the roofless hall of the Kothringi knights north of Gideon, to open the
-    knight-captain''s tomb with the keystone. The knights'' dead walk the barracks wing, and the Unbound got there
+    knight-captain''s tomb with the keystone; the knights once guarded the kings'' road to the Root, the place under the sea where every Hist''s roots meet and the Eye of Argonia lies. The knights'' dead walk the barracks wing, and the Unbound got there
     before me. I''m to search the Unbound''s packs by their fire on the way to the tomb. I may fight, slip past, or turn
     the dead with Restoration.'
   directions: 'Ride the rootworm from Helstrom''s city tree to Gideon''s Hist garden, then walk north out of Gideon to
@@ -195,7 +196,7 @@ stages:
 - {id: 95, place: helstrom, journal: text.journal.mn09.95, journalText: 'Nesh-Deeka is dead. Nobody else in the
     Toh-Reel-Ka knows me, and the trail of the Eye ends with her.', ending: failed, endingId: e-thread, information: {going: 'The one the hunt for the Eye depends on is dead; the main quest cannot go on.', next: Nothing more in the main quest., ways: none}}
 endings:
-- {id: e-read, when: Nesh-Deeka read the disc, rewards: [{giveGold: 100}], seen: the tomb stands open}
+- {id: e-read, when: Nesh-Deeka read the disc, seen: the tomb stands open}
 - {id: e-thread, when: Nesh-Deeka died, world: [{setFlag: [flag.main.thread-severed, true]}], seen: the main quest's message}
 terms:
 - {term: paralysis poison (the seal), meets: '20 item', told: 'the item''s name and journal 20', ask: topic.mn-the-seal}

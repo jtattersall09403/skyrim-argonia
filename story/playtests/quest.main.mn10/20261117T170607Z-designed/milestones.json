@@ -1,0 +1,123 @@
+[
+ {
+  "stage": 10,
+  "kind": "start",
+  "ending": null,
+  "title": "Down into Vicrium",
+  "journal": "The knight-captain's disc bears the mark of Vicrium, a mine behind Seafalls, where the knights kept a strongbox. The lower galleries are shut behind a locked timber door; the gallery-boss, Ah-Zish, keeps the key, and an old adit on the creek bank goes round it through water where crocodiles nest. I'm to get into the lower galleries and find the knights' strongbox. Ah-Zish might give the key to good words or 100 gold, or it can be lifted from him. Smugglers have moved into the lower galleries; I may fight them or sneak past.",
+  "objectives": [
+   "Get into Vicrium's lower galleries, by Ah-Zish's key or the old lower adit. (marker: Ah-Zish, Door to Lower Galleries, Door to Old Lower Adit)",
+   "Search the knights' strongbox in the lower galleries. (marker: Knights' Strongbox)"
+  ],
+  "plan": {
+   "going": "The disc points to Vicrium, where the knights kept a strongbox in galleries now shut.",
+   "next": "Go by boat to Seafalls and up the road to Vicrium; get into the lower galleries and find the strongbox.",
+   "ways": "Ah-Zish's key (persuade him, pay 100 gold or pick his pocket), or the flooded adit past the crocodiles. In the galleries, fight the smugglers or sneak past them.",
+   "terms": [
+    "Ah-Zish: journal 10"
+   ]
+  },
+  "answers": [
+   "I work for Nesh-Deeka. The knight-captain tomb opened and his disc bears the mark of Vicrium, a mine behind Seafalls, where the knights kept a strongbox. I must find it before the Unbound and the Collector.",
+   "Get into the lower galleries of Vicrium and search the knights strongbox.",
+   "Get the key from Ah-Zish by good words or 100 gold, or lift it from him; or take the old adit on the creek bank through water with crocodiles; smugglers are inside, fight or sneak.",
+   "I do not know what the Root and the Eye really are, nor how Nesh-Deeka knows what she knows. I could find out by asking people and reading what I find."
+  ],
+  "raw": "1. I work for Nesh-Deeka. The knight-captain tomb opened and his disc bears the mark of Vicrium, a mine behind Seafalls, where the knights kept a strongbox. I must find it before the Unbound and the Collector. 2. Get into the lower galleries of Vicrium and search the knights strongbox. 3. Get the key from Ah-Zish by good words or 100 gold, or lift it from him; or take the old adit on the creek bank through water with crocodiles; smugglers are inside, fight or sneak. 4. I do not know what the Root and the Eye really are, nor how Nesh-Deeka knows what she knows. I could find out by asking people and reading what I find."
+ },
+ {
+  "stage": 20,
+  "kind": "stage",
+  "ending": null,
+  "title": "Down into Vicrium",
+  "journal": "In the knights' strongbox lay an old parchment map: seven towers standing in the sea, and a crag shaped like a tooth on an island. I'm to bring it to Nesh-Deeka in Helstrom.",
+  "objectives": [
+   "Bring the parchment map to Nesh-Deeka in Helstrom. (marker: Nesh-Deeka)"
+  ],
+  "plan": {
+   "going": "I have a map of seven sea towers and a tooth-shaped crag.",
+   "next": "Bring it to Nesh-Deeka.",
+   "ways": "none"
+  },
+  "answers": [
+   "I work for Nesh-Deeka. I found the knights strongbox at Vicrium and took an old parchment map: seven towers standing in the sea and a tooth-shaped crag on an island. It presumably points toward the Root or the Eye.",
+   "Bring the map to Nesh-Deeka in Helstrom.",
+   "Go straight to Helstrom; I could study the map first, or keep it from the Unbound and the Collector. I see no other choice.",
+   "I do not know where the seven towers or the tooth crag are, what the Root and the Eye are, or how Nesh-Deeka knows this. I could ask Nesh-Deeka or read the map."
+  ],
+  "raw": "1. I work for Nesh-Deeka. I found the knights strongbox at Vicrium and took an old parchment map: seven towers standing in the sea and a tooth-shaped crag on an island. It presumably points toward the Root or the Eye. 2. Bring the map to Nesh-Deeka in Helstrom. 3. Go straight to Helstrom; I could study the map first, or keep it from the Unbound and the Collector. I see no other choice. 4. I do not know where the seven towers or the tooth crag are, what the Root and the Eye are, or how Nesh-Deeka knows this. I could ask Nesh-Deeka or read the map."
+ },
+ {
+  "stage": 30,
+  "kind": "stage",
+  "ending": null,
+  "title": "Down into Vicrium",
+  "journal": "Nesh-Deeka already knew the Unbound had not reached Vicrium. When I asked how, she said \"we listen\" and named me Toh-Wo, \"Secret-Speaker\", the order's second rank, with 200 gold. I'm to choose the order's gift: a rapier or a quarterstaff.",
+  "objectives": [
+   "Choose a rapier or a quarterstaff from Nesh-Deeka. (marker: Nesh-Deeka)"
+  ],
+  "plan": {
+   "going": "I am a Toh-Wo now. Nesh-Deeka again knew where the Unbound had not been and would not say how.",
+   "next": "Choose the rank's weapon.",
+   "ways": "a rapier (one-handed) or a quarterstaff (two-handed)",
+   "terms": [
+    "Toh-Wo: Nesh-Deeka: \"Secret-Speaker\", the order's second rank"
+   ]
+  },
+  "answers": [
+   "I work for Nesh-Deeka, whose order listens and knew the Unbound had not reached Vicrium. She gave the map to her officer to read, promoted me to Toh-Wo, Secret-Speaker, second rank, and paid 200 gold.",
+   "Choose the order gift from Nesh-Deeka in Helstrom: a rapier or a quarterstaff.",
+   "Pick the rapier or the quarterstaff.",
+   "I still do not know how the order listens, who her officer is, what the Root and Eye are, or what the map shows. I could ask Nesh-Deeka."
+  ],
+  "raw": "1. I work for Nesh-Deeka, whose order listens and knew the Unbound had not reached Vicrium. She gave the map to her officer to read, promoted me to Toh-Wo, Secret-Speaker, second rank, and paid 200 gold. 2. Choose the order gift from Nesh-Deeka in Helstrom: a rapier or a quarterstaff. 3. Pick the rapier or the quarterstaff. 4. I still do not know how the order listens, who her officer is, what the Root and Eye are, or what the map shows. I could ask Nesh-Deeka."
+ },
+ {
+  "stage": 40,
+  "kind": "stage",
+  "ending": null,
+  "title": "Down into Vicrium",
+  "journal": "I took the rapier. Nesh-Deeka passed me to her officer, Never-Writes-Twice, who stands at the back of the same room; from now on I report to her. I'm to show her the map.",
+  "objectives": [
+   "Show the map to Never-Writes-Twice in Nesh-Deeka's House. (marker: Never-Writes-Twice)"
+  ],
+  "plan": {
+   "going": "I now answer to Never-Writes-Twice, the order's officer.",
+   "next": "Show her the map, at the back of the room.",
+   "ways": "none",
+   "terms": [
+    "Never-Writes-Twice: Nesh-Deeka: her officer, to whom the player now reports"
+   ]
+  },
+  "answers": [
+   "I took the rapier. Nesh-Deeka passed me to her officer Never-Writes-Twice, whom I now report to.",
+   "Show the map to Never-Writes-Twice in this same room.",
+   "Just talk to her; nothing else is offered.",
+   "I still do not know what the map shows, or what the Root and Eye are. I can ask Never-Writes-Twice."
+  ],
+  "raw": "1. I took the rapier. Nesh-Deeka passed me to her officer Never-Writes-Twice, whom I now report to. 2. Show the map to Never-Writes-Twice in this same room. 3. Just talk to her; nothing else is offered. 4. I still do not know what the map shows, or what the Root and Eye are. I can ask Never-Writes-Twice."
+ },
+ {
+  "stage": 90,
+  "kind": "ending",
+  "ending": "complete",
+  "title": "Down into Vicrium",
+  "journal": "Never-Writes-Twice knew the crag on the map: the Grey Tooth, the seamark of Skeith Isle. She told me Cuts-the-Old-Knot was once one of the order, who went mad on sap and killed her minders. She marked the Grey Tooth.",
+  "objectives": [],
+  "plan": {
+   "going": "The map leads to the Grey Tooth on Skeith Isle. Never-Writes-Twice says Cuts-the-Old-Knot was one of the order gone mad on sap.",
+   "next": "MN11 starts; its first entry marks the Grey Tooth.",
+   "ways": "none",
+   "terms": [
+    "the Grey Tooth and Skeith Isle: Never-Writes-Twice: a crag that is the seamark of Skeith Isle"
+   ]
+  },
+  "answers": [
+   "The quest is done. Never-Writes-Twice read the map: the crag is the Grey Tooth, seamark of Skeith Isle, reached by boat to Archon and Arorha, and she marked it. She warned me about Cuts-the-Old-Knot, a former member of the order who went mad on sap and killed her minders; I must not listen to her.",
+   "Nothing further is set; presumably await orders.",
+   "I could ask more of Never-Writes-Twice or travel toward Skeith Isle.",
+   "I do not know what the Root and Eye are, where Cuts-the-Old-Knot is, or what the seven towers are."
+  ],
+  "raw": "1. The quest is done. Never-Writes-Twice read the map: the crag is the Grey Tooth, seamark of Skeith Isle, reached by boat to Archon and Arorha, and she marked it. She warned me about Cuts-the-Old-Knot, a former member of the order who went mad on sap and killed her minders; I must not listen to her. 2. Nothing further is set; presumably await orders. 3. I could ask more of Never-Writes-Twice or travel toward Skeith Isle. 4. I do not know what the Root and Eye are, where Cuts-the-Old-Knot is, or what the seven towers are."
+ }
+]

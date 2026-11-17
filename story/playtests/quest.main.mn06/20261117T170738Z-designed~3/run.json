@@ -1,0 +1,53 @@
+{
+ "quest": "quest.main.mn06",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn06.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "pickpocket",
+ "choose": null,
+ "know": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/know-mn06.md",
+ "created": "20261117T170738Z",
+ "stages": [
+  10,
+  20,
+  30,
+  90
+ ],
+ "ended": "complete",
+ "milestones": 4,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I serve the Toh-Reel-Ka (the order of the Xeech-Leel) as a Voh-Vastei. Hist trees are falling sick, the Unbound drain sap for a draught tied to the Eye. The Eye of Argonia, cut from Hist amber at the Root, could heal the trees. 2. Find the dealer in Gideon market who sells an Eye of Argonia. A marker points to Ovinius Calo. 3. Talk to Ovinius Calo and persuade or pay him; examine the Glass Eye; as a pickpocket I could steal his papers from his pocket. 4. I do not know exactly where the Root is or who Ovinius Calo is; I can find out by talking to him.",
+  "talk Ovinius Calo",
+  "pickpocket Ovinius Calo win",
+  "read Note from the South Watch",
+  "answer 1. The Eye at Ovinius Calo stall is only glass. Smugglers sold it to him and kept the old silver setting at Gideon South Watch. I still serve the Toh-Reel-Ka seeking the real Eye. 2. Go to South Watch, a leaning tower south-east of the quay, and take the setting from the locked chest in the inner room. 3. Fight the smugglers, sneak past, pick the chest lock, or pickpocket the boss for the key (my preferred way). 4. Who the Collector is, an Imperial relic-hunter also after the Eye; I could find out by asking around or meeting him.",
+  "go Smuggler Boss",
+  "pickpocket Smuggler Boss win",
+  "use Smugglers' Chest",
+  "take Old Silver Setting",
+  "take The Collector's Note",
+  "answer 1. I got the old silver setting from the smugglers chest. The Collector, Ennodius Vanin, an Imperial relic-hunter, opened it first and left a note saying a ship name is scratched inside the band. 2. Take the setting to Nesh-Deeka in Helstrom by rootworm from Gideon Hist garden. 3. Go straight back to her, or first read the Collector note and the band for the ship name, or seek the Collector. 4. I do not know which ship it is or what it leads to; Nesh-Deeka or the note may tell me.",
+  "take The Collector's Note",
+  "read The Collector's Note",
+  "go Nesh-Deeka",
+  "talk Nesh-Deeka",
+  "say 1",
+  "say 2",
+  "answer 1. The quest is complete. The Eye in Gideon was glass; the setting names the Pale Harvest, a Company freighter sunk in Hatandros Bight with a Gideon dealer stock aboard. Unbound also asked after the glass Eye. Nesh-Deeka paid me 100 gold. 2. Nothing is set; presumably the wreck in Hatandros Bight (east coast south of Thorn) is the next lead, but I have not been told. 3. Ask Nesh-Deeka more, or head to the Bight. 4. I do not know how the real Eye connects to the wreck, or how Nesh-Deeka knows what the Unbound do.",
+  "answer I am a Voh-Vastei of the Toh-Reel-Ka, working for Nesh-Deeka in Helstrom. In Gideon, Ovinius Calo sold a glass fake of the Eye of Argonia. I pickpocketed his note, then at Gideon South Watch pickpocketed the smuggler boss key and took the Old Silver Setting from the chest, plus the Collector note (Ennodius Vanin, Imperial relic-hunter, has hunted the Eye twenty years). The setting has the ship name Pale Harvest scratched inside: a Company freighter sunk in Hatandros Bight, east coast south of Thorn, with a Gideon dealer stock aboard. Nesh-Deeka paid 100 gold and gave the setting back; I still carry it. Unbound asked after the glass Eye in Gideon a month ago. Open: the real Eye and the Root, the wreck as next lead, Cuts-the-Old-Knot draught, the sick Hist trees. Nesh-Deeka did not explain how she knows about the Unbound."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.07895579999999999,
+ "minutes": 0.7,
+ "turns": 20,
+ "tokens": {
+  "input_tokens": 32,
+  "output_tokens": 3352,
+  "cache_read_input_tokens": 110118,
+  "cache_creation_input_tokens": 8590
+ }
+}

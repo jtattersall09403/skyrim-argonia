@@ -1,0 +1,53 @@
+{
+ "quest": "quest.main.mn09",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn09.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "fight",
+ "choose": null,
+ "know": "story/playtests/quest.main.mn08/20261117T170115Z-designed~2/notes.md",
+ "created": "20261117T170414Z",
+ "stages": [
+  10
+ ],
+ "ended": "stopped",
+ "milestones": 1,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I work for Nesh-Deeka (Toh-Reel-Ka, Helstrom). I came to Eurydike, a roofless Kothringi hall north of Gideon, to open the knight-captain tomb with the keystone before the Unbound and the Collector do. The captain was buried with what marked the kings road to the Root. The Unbound are already here and the knights dead walk the barracks wing. 2. Search the Unbound packs in the barracks wing (marker: Unbound Pack), then reach the tomb door. 3. Fight the dead and the Unbound, slip past them, or turn the dead with Restoration. 4. I do not understand what the Root and the Eye of Argonia really are, or how Nesh-Deeka knows what she knows. I might learn more from the tomb, the packs, or by asking people.",
+  "look",
+  "take Unbound Pack",
+  "journal",
+  "use Door to Knight-Captain's Tomb",
+  "read Unbound Pack",
+  "talk Unbound Digger",
+  "pick Door to Knight-Captain's Tomb win",
+  "journal",
+  "talk Restless Knight",
+  "fight Restless Knight win",
+  "look",
+  "take body of Restless Knight",
+  "use Knight-Captain's Tomb Chest",
+  "take Knight-Captain's Bronze Disc",
+  "journal",
+  "use Door to Knight-Captain's Tomb",
+  "read Knight-Captain's Bronze Disc",
+  "fight Unbound Digger win",
+  "look",
+  "journal",
+  "go barracks wing"
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.07546169999999999,
+ "minutes": 0.9,
+ "turns": 22,
+ "tokens": {
+  "input_tokens": 44,
+  "output_tokens": 3195,
+  "cache_read_input_tokens": 138517,
+  "cache_creation_input_tokens": 7393
+ }
+}

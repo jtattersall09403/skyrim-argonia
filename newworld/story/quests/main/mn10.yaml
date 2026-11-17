@@ -99,7 +99,7 @@ placements:
 - {ref: npc.mn10.smugglers, kind: person, base: {kind: template_person, id: bandit template}, anchor: {place: vicrium,
     rule: navmesh, need: four smuggler guards and their captain in the lower galleries}, name: Smuggler, level: 12, count: 5,
   hostile: true, enabled: true}
-- {ref: thing.mn10.strongbox, kind: thing, base: {kind: existing_base, id: Skyrim strongbox}, anchor: {place: vicrium,
+- {ref: thing.mn10.strongbox, kind: container, base: {kind: existing_base, id: Skyrim strongbox}, anchor: {place: vicrium,
     rule: surface, need: the knights' old strongbox past the smugglers}, enabled: true}
 - {ref: thing.mn.parchment-map, kind: thing, base: {kind: template_item, id: Skyrim treasure map}, container: thing.mn10.strongbox,
   enabled: true}
@@ -260,7 +260,7 @@ stages:
 - {id: 96, place: helstrom, journal: text.journal.mn10.96, journalText: 'Never-Writes-Twice is dead. Without the
     order''s officer the hunt for the Eye goes no further.', ending: failed, endingId: e-thread, information: {going: 'The one the hunt for the Eye depends on is dead; the main quest cannot go on.', next: Nothing more in the main quest., ways: none}}
 endings:
-- {id: e-toh-wo, when: Never-Writes-Twice marked the Grey Tooth, rewards: [{giveGold: 200}], seen: 'the player is a
+- {id: e-toh-wo, when: Never-Writes-Twice marked the Grey Tooth, seen: 'the player is a
     Toh-Wo with a rapier or a quarterstaff; Never-Writes-Twice stands at the back of Nesh-Deeka''s House from now on'}
 - {id: e-thread, when: Nesh-Deeka or Never-Writes-Twice died, world: [{setFlag: [flag.main.thread-severed, true]}], seen: the
     main quest's message}

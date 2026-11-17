@@ -66,10 +66,11 @@ things:
 - {id: thing.mn.grave-stake, kind: item, name: Carved Grave-Stake, source: 'new: King of the Murkmire''s carved
     grave-stake as a thing to carry', where: in thing.mn08.chest, states: {after-40: with Hums-the-Long-Note}}
 placements:
+- {ref: marker.mn08.place, kind: marker, name: Zul-Etha, placeName: Zul-Etha, anchor: {place: abandoned-village-m4-m109, rule: surface, need: 'the place itself, known as Zul-Etha'}}
 - {ref: npc.mn.hums-the-long-note, kind: person, base: {kind: template_person, id: Argonian elder template}, anchor: {place: toklea,
     rule: navmesh, need: 'the elder standing in the Kothringi Greathouse, its door named "Kothringi Greathouse"'},
   name: Hums-the-Long-Note, level: 8, enabled: true}
-- {ref: thing.mn08.chest, kind: thing, base: {kind: existing_base, id: Skyrim chest}, anchor: {place: abandoned-village-m4-m109,
+- {ref: thing.mn08.chest, kind: container, base: {kind: existing_base, id: Skyrim chest}, anchor: {place: abandoned-village-m4-m109,
     rule: surface, need: a chest under water in the drowned street below the three roof peaks}, enabled: true}
 - {ref: thing.mn.grave-stake, kind: thing, base: {kind: template_item, id: KotM carved grave-stake}, container: thing.mn08.chest,
   enabled: true}
@@ -214,7 +215,7 @@ stages:
     {to: 95, when: {not: {npcAlive: npc.mn.nesh-deeka}}}], information: {going: The elder is dead but the keystone's door lies near Gideon where the
       knights lie., next: Report to Nesh-Deeka., ways: none, carriers: [{know: report, by: [journal, objective, marker:npc.mn.nesh-deeka]}]}}
 endings:
-- {id: e-told, when: the report to Nesh-Deeka, rewards: [{giveGold: 100}], seen: Hums-the-Long-Note's stake hangs in the greathouse
+- {id: e-told, when: the report to Nesh-Deeka, seen: Hums-the-Long-Note's stake hangs in the greathouse
     among the chimes}
 - {id: e-thread, when: Nesh-Deeka died, world: [{setFlag: [flag.main.thread-severed, true]}], seen: the main quest's message}
 terms:

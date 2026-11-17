@@ -1,0 +1,47 @@
+{
+ "quest": "quest.main.mn07",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn07.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "fight",
+ "choose": null,
+ "know": "story/playtests/quest.main.mn06/20261117T165901Z-designed/notes.md",
+ "created": "20261117T170011Z",
+ "stages": [
+  10,
+  20,
+  90
+ ],
+ "ended": "complete",
+ "milestones": 3,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I work for handler Nesh-Deeka of the Toh-Reel-Ka. I am hunting the real Eye of Argonia, which is meant to heal the Hist trees at the Root. The Old Silver Setting led me to the wreck of the Pale Harvest, a Company freighter in Hatandros Bight. The Unbound and the Collector (Ennodius Vanin) are also after the Eye. 2. Get into the wreck, past the drowned crew, and open the captain's strongbox. 3. Fight the Drowned Captain and Drowned Sailor and take the key from the captain, or sneak past and pick the strongbox lock. I favour fighting. 4. I do not know what the strongbox holds, or why the crew are drowned and walking. I could find out by looking inside the wreck.",
+  "look",
+  "fight Drowned Captain win",
+  "take Pale Harvest Strongbox Key",
+  "use Captain's Strongbox",
+  "take Kothringi Keystone",
+  "answer 1. I killed the Drowned Captain, took his key and opened the strongbox on the Pale Harvest. It held a Kothringi Keystone on a chain. It is a lead toward the real Eye, for Nesh-Deeka. 2. Take the keystone to Nesh-Deeka in her house in Helstrom. 3. I can go straight there. I could also look over the rest of the wreck first, but the journal only points me to Nesh-Deeka. 4. I do not know what Kothringi means, or what the keystone does. Nesh-Deeka may tell me.",
+  "go Nesh-Deeka",
+  "talk Nesh-Deeka",
+  "say 1",
+  "journal",
+  "say 2",
+  "answer 1. The quest is done. I got the Kothringi Keystone from the Pale Harvest and gave it to Nesh-Deeka. She did not know it, but she says it is Kothringi make. She paid me 100 gold (the game shows it added twice). She says the Unbound have not been to the wreck, but she would not say how she knows: \"we listen.\" 2. The next lead is Toklea, on the river fork in the Tulmek Washes. The Chime-Keepers there keep Kothringi lore and their elder should know the keystone. 3. I can go to Toklea. I can also ask Nesh-Deeka about the Kothringi and the Chime-Keepers first. 4. I do not know who the Kothringi were, what the keystone opens, or how Nesh-Deeka knows what the Unbound do. I can ask her the Kothringi and Chime-Keepers topics, or ask the elder in Toklea.",
+  "answer I am a Voh-Vastei of the Toh-Reel-Ka under Nesh-Deeka in Helstrom. At the Pale Harvest wreck I killed the Drowned Captain, took his key and opened the strongbox. It held a Kothringi Keystone, which I still carry along with the Pale Harvest Strongbox Key, the Old Silver Setting, The Collector note and the smuggler key. I have about 600 gold after Nesh-Deeka paid me 100. She does not know the keystone, but she says it is Kothringi. The Chime-Keepers of Toklea, on the river fork in the Tulmek Washes, keep Kothringi lore, and their elder should know it. She says the Unbound have not found the wreck, but she will not say how she knows (\"we listen\"). The Collector (Ennodius Vanin) and the Unbound are still hunting the Eye. I have not yet asked her about the Kothringi or the Chime-Keepers. Next step: go to Toklea and show the keystone to the elder."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.0621042,
+ "minutes": 0.6,
+ "turns": 15,
+ "tokens": {
+  "input_tokens": 28,
+  "output_tokens": 2668,
+  "cache_read_input_tokens": 79682,
+  "cache_creation_input_tokens": 6850
+ }
+}

@@ -1,0 +1,24 @@
+[
+ {
+  "stage": 10,
+  "kind": "start",
+  "ending": null,
+  "title": "The Knights' Tomb",
+  "journal": "Nesh-Deeka sent me to Eurydike, the roofless hall of the Kothringi knights north of Gideon, to open the knight-captain's tomb with the keystone; the knights once guarded the kings' road to the Root, the place under the sea where every Hist's roots meet and the Eye of Argonia lies. The knights' dead walk the barracks wing, and the Unbound got there before me. I'm to search the Unbound's packs by their fire on the way to the tomb. I may fight, slip past, or turn the dead with Restoration.",
+  "objectives": [
+   "Search the Unbound's packs in Eurydike's barracks wing. (marker: Unbound Pack)"
+  ],
+  "plan": {
+   "going": "The keystone opens the knight-captain's tomb at Eurydike; the Unbound are there ahead of me.",
+   "next": "Go to Eurydike and search the Unbound's packs on the way to the tomb.",
+   "ways": "Fight the dead and the Unbound, slip past them, or turn the dead with Restoration."
+  },
+  "answers": [
+   "I work for Nesh-Deeka (Toh-Reel-Ka, Helstrom). I came to Eurydike, a roofless Kothringi hall north of Gideon, to open the knight-captain tomb with the keystone before the Unbound and the Collector do. The captain was buried with what marked the kings road to the Root. The Unbound are already here and the knights dead walk the barracks wing.",
+   "Search the Unbound packs in the barracks wing (marker: Unbound Pack), then reach the tomb door.",
+   "Fight the dead and the Unbound, slip past them, or turn the dead with Restoration.",
+   "I do not understand what the Root and the Eye of Argonia really are, or how Nesh-Deeka knows what she knows. I might learn more from the tomb, the packs, or by asking people."
+  ],
+  "raw": "1. I work for Nesh-Deeka (Toh-Reel-Ka, Helstrom). I came to Eurydike, a roofless Kothringi hall north of Gideon, to open the knight-captain tomb with the keystone before the Unbound and the Collector do. The captain was buried with what marked the kings road to the Root. The Unbound are already here and the knights dead walk the barracks wing. 2. Search the Unbound packs in the barracks wing (marker: Unbound Pack), then reach the tomb door. 3. Fight the dead and the Unbound, slip past them, or turn the dead with Restoration. 4. I do not understand what the Root and the Eye of Argonia really are, or how Nesh-Deeka knows what she knows. I might learn more from the tomb, the packs, or by asking people."
+ }
+]

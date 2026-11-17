@@ -101,6 +101,7 @@ things:
     stone is gone and the stone is what I hunt. Look inside the band. Someone scratched a ship''s name there long ago.
     It means nothing to me. Perhaps it will to you. With my compliments, E. Vanin, collector.'}
 placements:
+- {ref: marker.mn06.place, kind: marker, name: Gideon South Watch, placeName: Gideon South Watch, anchor: {place: imperial-ruin-m25-m85, rule: surface, need: 'the place itself, known as Gideon South Watch'}}
 - {ref: npc.mn.nesh-deeka, kind: person, name: Nesh-Deeka, anchor: {place: helstrom, rule: navmesh, need: 'Nesh-Deeka standing in her
       house, its door named "Nesh-Deeka''s House"'}, enabled: true}
 - {ref: door.mn.nesh-deeka-house, kind: door, anchor: {place: helstrom, rule: surface, need: 'the door of the quiet
@@ -118,7 +119,7 @@ placements:
 - {ref: npc.mn06.smugglers, kind: person, base: {kind: template_person, id: 'bandit archer template (crossbow)'},
   anchor: {place: imperial-ruin-m25-m85, rule: navmesh, need: 'three smugglers with crossbows on the rotted pier, two
       in the inner room''s far end, away from the chest'}, name: Delta Smuggler, level: 8, count: 5, hostile: true, enabled: true}
-- {ref: thing.mn06.chest, kind: thing, base: {kind: existing_base, id: 'Skyrim chest'}, anchor: {place: imperial-ruin-m25-m85,
+- {ref: thing.mn06.chest, kind: container, base: {kind: existing_base, id: 'Skyrim chest'}, anchor: {place: imperial-ruin-m25-m85,
     rule: surface, need: 'the smugglers'' locked chest in the inner room, by the door in from the pier'}, lock: {level: apprentice,
     key: thing.mn06.chest-key}, owner: npc.mn.south-watch-boss, enabled: true}
 - {ref: thing.mn06.chest-key, kind: thing, base: {kind: item, id: thing.mn06.chest-key}, carriedBy: npc.mn.south-watch-boss,
@@ -128,7 +129,7 @@ placements:
 - {ref: thing.mn06.collector-note, kind: thing, base: {kind: item, id: thing.mn06.collector-note}, container: thing.mn06.chest,
   enabled: true}
 - {ref: npc.mn.cheeval-xu, kind: person, name: Cheeval-Xu, anchor: {place: helstrom, rule: navmesh, need: 'Cheeval-Xu at the rootworm landing under the city tree'}, enabled: true}
-- {ref: marker.mn06.rootworm-helstrom, kind: marker, anchor: {place: helstrom, rule: navmesh, need: 'the rootworm''s
+- {ref: marker.mn06.rootworm-helstrom, kind: marker, name: Rootworm Landing (Helstrom), anchor: {place: helstrom, rule: navmesh, need: 'the rootworm''s
       landing under the city tree, where Cheeval-Xu calls it'}}
 hooks:
 - {thing: thing.mn06.south-watch-note, hook: read, setsFlag: flag.mn06.note-read}
@@ -153,7 +154,8 @@ stages:
   journal: text.journal.mn06.10
   journalText: 'Nesh-Deeka made me a Voh-Vastei of the Toh-Reel-Ka and gave me my first lead: someone in Gideon''s
     market is selling an "Eye of Argonia". I''m to ride the rootworm from Helstrom''s city tree to Gideon and find the
-    dealer who sells it.'
+    dealer who sells it. Nesh-Deeka says Gideon''s dealers tell the truth for a little persuasion or a few coins,
+    and keep their papers in their pockets.'
   directions: 'Cheeval-Xu calls the rootworm at the landing under Helstrom''s great tree; the fare is 25 gold. In
     Gideon the rootworm comes up at the red-clay stop by the Hist garden; the market lies along Blackwood Way, the one
     dry street through the town.'
@@ -167,9 +169,11 @@ stages:
   - {to: 20, when: {flag: flag.mn06.note-read}}
   failForward:
   - {to: 95, when: {not: {npcAlive: npc.mn.nesh-deeka}}}
-  actions:
-  - {skill: Speech, use: persuade, target: Ovinius Calo, note: Speech 25 gets the truth}
-  - {skill: Pickpocket, use: pickpocket, target: Ovinius Calo, note: his Note from the South Watch says the same}
+  approaches:
+  - {id: talk, actions: [{skill: Speech, use: persuade, target: Ovinius Calo, note: Speech 25 gets the truth}]}
+  - {id: pay, actions: [{system: gold, use: pay 20 gold, target: Ovinius Calo}]}
+  - {id: pickpocket, actions: [{skill: Pickpocket, use: pickpocket, target: Ovinius Calo, note: his Note from the South
+          Watch says the same}]}
   information:
     going: 'I serve the Toh-Reel-Ka, the Xeech-Leel''s secret warriors, as a Voh-Vastei. The Unbound want the Eye of
       Argonia, which lies at the Root; an "Eye of Argonia" is for sale in Gideon, and Nesh-Deeka wants to know if it is
@@ -181,14 +185,15 @@ stages:
     - {know: who I serve and why, by: [journal]}
     - {know: the way to Gideon by rootworm, by: [journal, objective, marker:marker.mn06.rootworm-helstrom, 'ask:topic.mn06-rootworm']}
     - {know: the dealer, by: [objective, marker:npc.mn.ovinius-calo, 'name:npc.mn.ovinius-calo', 'name:thing.mn06.glass-eye']}
-    - {know: 'persuade, pay or pick his pocket', by: ['ask:topic.mn06-ask-eye', 'line:topic.mn06-persuade', 'line:topic.mn06-buy-truth']}
+    - {know: 'persuade, pay or pick his pocket', by: [journal, 'ask:topic.mn06-ask-eye', 'line:topic.mn06-persuade', 'line:topic.mn06-buy-truth']}
 - id: 20
   place: imperial-ruin-m25-m85
   journal: text.journal.mn06.20
   journalText: 'The Eye on Ovinius Calo''s stall is glass. The smugglers who sold it to him keep the old silver setting
     it came in, at Gideon South Watch, a leaning tower south-east of the quay. I''m to take the setting from their
     locked chest in the tower''s inner room. I may fight the smugglers or slip past them; the chest''s lock can be
-    picked, and their boss carries its key.'
+    picked, and their boss carries its key. A man called the Collector, an Imperial relic-hunter, has been
+    asking after the Eye too.'
   directions: From Gideon's quay, follow the mangrove edge south-east to the leaning stone tower with the rotted pier;
     the inner room's door opens off the pier.
   objectives:
@@ -215,11 +220,13 @@ stages:
     - {know: the Eye is glass and the setting is at the South Watch, by: [journal, 'line:topic.mn06-persuade', 'line:topic.mn06-buy-truth',
         'read:thing.mn06.south-watch-note']}
     - {know: where the chest is, by: [journal, objective, marker:thing.mn06.chest, 'name:thing.mn06.chest']}
+    - {know: the Collector is a rival relic-hunter, by: [journal, 'ask:topic.mn-the-collector']}
     - {know: fight or sneak and pick, key on the boss, by: [journal, marker:npc.mn.south-watch-boss, 'name:thing.mn06.chest-key']}
 - id: 30
   place: helstrom
   journal: text.journal.mn06.30
-  journalText: 'I took the old silver setting from the smugglers'' chest. Ennodius Vanin, the Collector, had opened it
+  journalText: 'I took the old silver setting from the smugglers'' chest. Ennodius Vanin, the Collector, an Imperial relic-hunter
+    who has chased the Eye for twenty years, had opened it
     before me and left a note: the setting is no use to him, but a ship''s name is scratched inside the band. I''m to
     bring the setting to Nesh-Deeka in her house in Helstrom, by the rootworm from Gideon''s Hist garden.'
   objectives:
@@ -241,7 +248,8 @@ stages:
 - id: 90
   place: helstrom
   journal: text.journal.mn06.90
-  journalText: 'Nesh-Deeka read the name inside the setting: the Pale Harvest, a ship that sank in Hatandros Bight with
+  journalText: 'Nesh-Deeka read the name inside the setting: the Pale Harvest, a ship that sank in Hatandros Bight, the
+    bay on the east coast south of Thorn, with
     a Gideon dealer''s whole stock aboard. She already knew that two Unbound had asked after the glass Eye in Gideon a
     month ago. When I asked how she knew, she said "we listen" and spoke of the wreck instead. She paid me 100 gold.'
   onEnter:
@@ -264,7 +272,6 @@ endings:
   when: Nesh-Deeka read the setting
   world: [{setFlag: [flag.mn06.done, true]}]
   seen: Nesh-Deeka hands the setting back as a keepsake; the smugglers' chest stands empty
-  rewards: [{giveGold: 100}]
 - id: e-thread
   when: Nesh-Deeka died before the report
   world: [{setFlag: [flag.main.thread-severed, true]}]

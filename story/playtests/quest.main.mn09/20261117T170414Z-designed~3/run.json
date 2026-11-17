@@ -1,0 +1,45 @@
+{
+ "quest": "quest.main.mn09",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn09.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "quiet",
+ "choose": null,
+ "know": "story/playtests/quest.main.mn08/20261117T170115Z-designed~2/notes.md",
+ "created": "20261117T170414Z",
+ "stages": [
+  10
+ ],
+ "ended": "stopped",
+ "milestones": 1,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I work for Nesh-Deeka. I am at Eurydike, a roofless Kothringi hall north of Gideon, to open the knight-captain tomb with the Kothringi Keystone before the Unbound and the Collector get what is inside, something that marked the kings road to the Root. The Unbound are already here. 2. Search the Unbound packs in the barracks wing (quest marker), then reach the tomb door. 3. Fight the Restless Knight or the Unbound Digger, sneak past quietly (my preferred way), or turn the dead with Restoration. 4. I do not know what the Root and the Eye of Argonia really are, nor how Nesh-Deeka knows so much. I might learn by reading the packs and the tomb contents and by asking people.",
+  "look",
+  "take Unbound Pack",
+  "journal",
+  "read Unbound Pack",
+  "use Door to Knight-Captain's Tomb",
+  "talk Unbound Digger",
+  "pick Door to Knight-Captain's Tomb win",
+  "journal",
+  "take Knight-Captain's Tomb Chest",
+  "talk Restless Knight",
+  "look",
+  "use Kothringi Keystone",
+  "pickpocket Unbound Digger win"
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.05512489999999999,
+ "minutes": 0.6,
+ "turns": 16,
+ "tokens": {
+  "input_tokens": 30,
+  "output_tokens": 2328,
+  "cache_read_input_tokens": 83409,
+  "cache_creation_input_tokens": 5861
+ }
+}

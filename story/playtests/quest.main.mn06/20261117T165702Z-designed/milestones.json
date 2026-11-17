@@ -1,0 +1,99 @@
+[
+ {
+  "stage": 10,
+  "kind": "start",
+  "ending": null,
+  "title": "The Glass Eye",
+  "journal": "Nesh-Deeka made me a Voh-Vastei of the Toh-Reel-Ka and gave me my first lead: someone in Gideon's market is selling an \"Eye of Argonia\". I'm to ride the rootworm from Helstrom's city tree to Gideon and find the dealer who sells it.",
+  "objectives": [
+   "Find the dealer selling the Eye of Argonia in Gideon's market. (marker: Ovinius Calo, Rootworm Landing (Helstrom))"
+  ],
+  "plan": {
+   "going": "I serve the Toh-Reel-Ka, the Xeech-Leel's secret warriors, as a Voh-Vastei. The Unbound want the Eye of Argonia, which lies at the Root; an \"Eye of Argonia\" is for sale in Gideon, and Nesh-Deeka wants to know if it is real.",
+   "next": "Ride the rootworm from Helstrom's city tree to Gideon and find the dealer in the market.",
+   "ways": "Ask the dealer about the Eye. He will tell the truth about it to a little persuasion (Speech) or for 20 gold; or his note can be lifted from his pocket (Pickpocket) and read.",
+   "terms": [
+    "Gideon: journal 10: a city reached by the rootworm"
+   ]
+  },
+  "answers": [
+   "I serve the Toh-Reel-Ka, the Xeech-Leel secret order, as a Voh-Vastei. Hist trees are falling sick because the Unbound drain sap. The Eye of Argonia, a Hist-amber jewel, could heal the trees if used at the Root. The order wants it before the Unbound get it.",
+   "Go to Gideon market and find the dealer selling an Eye of Argonia. Ovinius Calo is marked, so probably him.",
+   "Talk to Ovinius Calo, look at the glass Eye, buy it, or take it by force. I can also ask around.",
+   "I do not know if this Eye is real, since it is listed as Glass. I can find out by talking to Calo and examining it."
+  ],
+  "raw": "1. I serve the Toh-Reel-Ka, the Xeech-Leel secret order, as a Voh-Vastei. Hist trees are falling sick because the Unbound drain sap. The Eye of Argonia, a Hist-amber jewel, could heal the trees if used at the Root. The order wants it before the Unbound get it. 2. Go to Gideon market and find the dealer selling an Eye of Argonia. Ovinius Calo is marked, so probably him. 3. Talk to Ovinius Calo, look at the glass Eye, buy it, or take it by force. I can also ask around. 4. I do not know if this Eye is real, since it is listed as Glass. I can find out by talking to Calo and examining it."
+ },
+ {
+  "stage": 20,
+  "kind": "stage",
+  "ending": null,
+  "title": "The Glass Eye",
+  "journal": "The Eye on Ovinius Calo's stall is glass. The smugglers who sold it to him keep the old silver setting it came in, at Gideon South Watch, a leaning tower south-east of the quay. I'm to take the setting from their locked chest in the tower's inner room. I may fight the smugglers or slip past them; the chest's lock can be picked, and their boss carries its key.",
+  "objectives": [
+   "Take the old silver setting from the smugglers' chest at Gideon South Watch. (marker: Smugglers' Chest, Smuggler Boss)"
+  ],
+  "plan": {
+   "going": "The Eye in Gideon is glass. Its old silver setting, the only true part, is with the smugglers of the South Watch.",
+   "next": "Go to Gideon South Watch and take the setting from the smugglers' chest in the inner room.",
+   "ways": "Fight the smugglers (their boss carries the chest's key), or sneak past them and pick the chest's lock.",
+   "terms": [
+    "Gideon South Watch: topic.mn06-persuade: a leaning Imperial watch-tower south-east of the quay",
+    "the Collector (Ennodius Vanin): Ovinius: an Imperial relic-hunter twenty years after the Eye; his note"
+   ]
+  },
+  "answers": [
+   "The Eye on sale is just glass, but the smugglers who sold it kept its old silver setting, which may hold clues to the real Eye. Unbound and a man called the Collector have also asked after it.",
+   "Go to Gideon South Watch, a leaning tower south-east of the quay, and take the silver setting from the smugglers chest in the inner room.",
+   "Fight the smugglers, sneak past them, pick the chest lock, or kill the boss for the key. Fighting suits my build.",
+   "I do not know who the Collector is or why the setting matters. I could ask around or look at the setting itself."
+  ],
+  "raw": "1. The Eye on sale is just glass, but the smugglers who sold it kept its old silver setting, which may hold clues to the real Eye. Unbound and a man called the Collector have also asked after it. 2. Go to Gideon South Watch, a leaning tower south-east of the quay, and take the silver setting from the smugglers chest in the inner room. 3. Fight the smugglers, sneak past them, pick the chest lock, or kill the boss for the key. Fighting suits my build. 4. I do not know who the Collector is or why the setting matters. I could ask around or look at the setting itself."
+ },
+ {
+  "stage": 30,
+  "kind": "stage",
+  "ending": null,
+  "title": "The Glass Eye",
+  "journal": "I took the old silver setting from the smugglers' chest. Ennodius Vanin, the Collector, had opened it before me and left a note: the setting is no use to him, but a ship's name is scratched inside the band. I'm to bring the setting to Nesh-Deeka in her house in Helstrom, by the rootworm from Gideon's Hist garden.",
+  "objectives": [
+   "Bring the old silver setting to Nesh-Deeka in Helstrom. (marker: Nesh-Deeka)"
+  ],
+  "plan": {
+   "going": "I have the setting. The Collector, a rival relic-hunter, got there first but left it; a ship's name is scratched inside it.",
+   "next": "Take the setting to Nesh-Deeka in her house in Helstrom.",
+   "ways": "The rootworm from Gideon's Hist garden back to Helstrom."
+  },
+  "answers": [
+   "I killed the smugglers and took the old silver setting. Ennodius Vanin, the Collector, opened the chest before me and left a note saying the setting is no use to him but a ships name is scratched inside the band. The Eye on sale was glass; this ship may lead to the real Eye.",
+   "Bring the setting to Nesh-Deeka in Helstrom, by rootworm from Gideons Hist garden.",
+   "Go straight to Nesh-Deeka, or first read the Collectors note and inspect the setting for the ship name.",
+   "I do not know which ship it is or what the Collector wants with it. I can read the note and ask Nesh-Deeka."
+  ],
+  "raw": "1. I killed the smugglers and took the old silver setting. Ennodius Vanin, the Collector, opened the chest before me and left a note saying the setting is no use to him but a ships name is scratched inside the band. The Eye on sale was glass; this ship may lead to the real Eye. 2. Bring the setting to Nesh-Deeka in Helstrom, by rootworm from Gideons Hist garden. 3. Go straight to Nesh-Deeka, or first read the Collectors note and inspect the setting for the ship name. 4. I do not know which ship it is or what the Collector wants with it. I can read the note and ask Nesh-Deeka."
+ },
+ {
+  "stage": 90,
+  "kind": "ending",
+  "ending": "complete",
+  "title": "The Glass Eye",
+  "journal": "Nesh-Deeka read the name inside the setting: the Pale Harvest, a ship that sank in Hatandros Bight with a Gideon dealer's whole stock aboard. She already knew that two Unbound had asked after the glass Eye in Gideon a month ago. When I asked how she knew, she said \"we listen\" and spoke of the wreck instead. She paid me 100 gold.",
+  "objectives": [],
+  "plan": {
+   "going": "The setting points to the wreck of the Pale Harvest. Nesh-Deeka knows more than I told her of where the Unbound have been, and will not say how.",
+   "next": "MN07 starts; its first entry marks the wreck.",
+   "ways": "none here",
+   "terms": [
+    "the Pale Harvest: Nesh-Deeka: a ship that sank in Hatandros Bight with a Gideon dealer's stock",
+    "\"we listen\": Nesh-Deeka turns aside the question of how she knows"
+   ]
+  },
+  "answers": [
+   "The Gideon Eye was glass. The setting names the Pale Harvest, a Company freighter sunk in Hatandros Bight with a dealers whole stock, so the real Eye may be in that wreck. Nesh-Deeka paid me 100 gold and returned the setting. The Unbound are also hunting it.",
+   "Nothing is set yet; the quest is complete. Likely next: the wreck in Hatandros Bight, but no marker says so.",
+   "Ask Nesh-Deeka more, or look for the wreck.",
+   "I do not know where exactly Hatandros Bight is, how she knows what the Unbound do (she only said we listen), or who the Collector really is."
+  ],
+  "raw": "1. The Gideon Eye was glass. The setting names the Pale Harvest, a Company freighter sunk in Hatandros Bight with a dealers whole stock, so the real Eye may be in that wreck. Nesh-Deeka paid me 100 gold and returned the setting. The Unbound are also hunting it. 2. Nothing is set yet; the quest is complete. Likely next: the wreck in Hatandros Bight, but no marker says so. 3. Ask Nesh-Deeka more, or look for the wreck. 4. I do not know where exactly Hatandros Bight is, how she knows what the Unbound do (she only said we listen), or who the Collector really is."
+ }
+]
