@@ -583,7 +583,7 @@ topics:
   essential: true
   when:
     hasItem: [thing.mn.marker-stone, 1]
-  intent: 'Never-Writes-Twice. Checks: hasItem [thing.mn.marker-stone, 1]. Tells: the seven towers are the drowned spires
+  intent: 'Never-Writes-Twice. Checks: hasItem [thing.mn.marker-stone, 1]. Tells: the stone brings the order a step nearer the Root, where the Eye of Argonia sits; the seven towers are the drowned spires
     off Lilmoth, towers of the old kings'' land that sank, standing on the sea floor of Benthic Yobesh; the divers of
     Bell Station, a salvage station on an islet east of Lilmoth, have dived them for years and will know which tower
     this is; go there by boat from Lilmoth; that is the hunt, and it comes before anything. To the cellar: Fort Chalkmoth
@@ -623,6 +623,14 @@ topics:
     Does: nothing.'
   uses: [fact.mn11.lilmoth-spires]
   new: true
+- id: topic.mn-the-hunt
+  label: Remind me what we are hunting, and why.
+  person: npc.mn.never-writes-twice
+  stages: [10, 20, 30, 35, 40, 90]
+  essential: false
+  intent: 'Never-Writes-Twice answering the shared topic (first written by Nesh-Deeka in MN05). Tells: The Eye of Argonia is the lost jewel of the old priest-kings, cut from Hist amber; it sits at the Root, the place under the sea where the roots of every Hist meet, behind a gate the last king sealed; used where it sits it can heal every tree. The Unbound drain sap to brew a draught strong enough to kill whatever guards the Root, and their leader, Cuts-the-Old-Knot, wants the Eye. The order means to reach the Root first, use the Eye in place to heal the trees, and stop the Unbound. So far: the glass Eye in Gideon, its setting, the Pale Harvest''s keystone, the knights'' tomb and its disc, and the map from Vicrium, which points to the Grey Tooth. Checks: nothing. Does: nothing.'
+  uses: []
+  new: false
 review:
   reviewer: writer's lore checks (quest-write §5); quest-reviewer round to follow
   findings:

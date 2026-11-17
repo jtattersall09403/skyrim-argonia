@@ -612,6 +612,14 @@ topics:
     nothing. Does: nothing.'
   uses: [fact.mn12.closed]
   new: true
+- id: topic.mn-the-hunt
+  label: Remind me what we are hunting, and why.
+  person: npc.mn.never-writes-twice
+  stages: [10, 15, 20, 25, 90, 91]
+  essential: false
+  intent: 'Never-Writes-Twice answering the shared topic (first written by Nesh-Deeka in MN05). Tells: The Eye of Argonia is the lost jewel of the old priest-kings, cut from Hist amber; it sits at the Root, the place under the sea where the roots of every Hist meet, behind a gate the last king sealed; used where it sits it can heal every tree. The Unbound drain sap to brew a draught strong enough to kill whatever guards the Root, and their leader, Cuts-the-Old-Knot, wants the Eye. The order means to reach the Root first, use the Eye in place to heal the trees, and stop the Unbound. So far the hunt has the marker stone from the Stormwidow, which points to a drowned tower off Lilmoth that Bell Station''s divers know; the player''s business at Fort Chalkmoth is their own. Checks: nothing. Does: nothing.'
+  uses: []
+  new: false
 review:
   reviewer: writer's lore checks (quest-write §5); quest-reviewer round to follow
   findings:
