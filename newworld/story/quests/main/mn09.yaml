@@ -203,7 +203,7 @@ terms:
 - {term: Vicrium, meets: '90 line', told: 'Nesh-Deeka: an old mine behind Seafalls in Okuwun Rahei', ask: topic.mn09-report}
 topics:
 - {id: topic.mn09-report, label: "The tomb held this bronze disc.", person: npc.mn.nesh-deeka, stages: [30], essential: true,
-  when: {hasItem: [thing.mn.bronze-disc, 1]}, intent: 'Nesh-Deeka. Tells: the pick and tower is Vicrium''s mark, an old
+  when: {hasItem: [thing.mn.bronze-disc, 1]}, intent: 'Nesh-Deeka. Tells: this is one more step towards the Eye of Argonia at the Root; the pick and tower is Vicrium''s mark, an old
     ochre and alum mine in the clay country behind Seafalls, in Okuwun Rahei in the east; the knights kept a strongbox
     there. She says she knew the Unbound had got into Eurydike. Does: nothing (a question; its answer is
     topic.mn09-how-know).', replies: [topic.mn09-how-know], new: true}
@@ -216,6 +216,23 @@ topics:
 - {id: topic.mn-the-seal, label: "What is the seal?", person: npc.mn.nesh-deeka, stages: [90], essential: false, intent: 'Nesh-Deeka,
     a row of her own on the shared topic. Tells: a paralysis poison, now that the player has found it; it numbs a scar
     shut. Does: nothing.', new: false}
+- id: topic.mn-the-hunt
+  label: Remind me what we are hunting, and why.
+  person: npc.mn.nesh-deeka
+  stages:
+  - 10
+  - 20
+  - 30
+  - 90
+  essential: false
+  intent: 'Nesh-Deeka, her row on the shared topic. Tells: the hunt is for the Eye of Argonia, the jewel the old priest-kings
+    cut from Hist amber, the solid sap the trees no longer make; it lies at the Root, the place under the sea where the
+    roots of every Hist meet, behind a gate the last king sealed; used where it sits it can heal every sick tree. The Unbound
+    drain sap for a draught strong enough to kill the beast that guards the Root, so they mean to reach it first; the order''s
+    aim is to find the Root before them and have the player use the Eye in place to heal the trees; so far: the keystone
+    opens the knight-captain''s tomb at Eurydike, where the knights who guarded the kings'' road to the Root lie; the Unbound''s
+    grey seal is a paralysis poison. Does: nothing.'
+  new: false
 review:
   findings:
   - {id: L1, severity: lore, ids: [facts.fact.mn09.poison], finding: The seal is a paralysis poison., answer: 'sourced:

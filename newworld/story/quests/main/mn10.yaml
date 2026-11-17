@@ -286,7 +286,7 @@ topics:
   when: {goldAtLeast: 100}, intent: 'Ah-Zish. Takes 100 gold and gives the key. Does: gives thing.mn10.door-key.', fallback: A
     hundred, or the adit., new: true}
 - {id: topic.mn10-report, label: "The knights' strongbox held this map.", person: npc.mn.nesh-deeka, stages: [20], essential: true,
-  when: {hasItem: [thing.mn.parchment-map, 1]}, intent: 'Nesh-Deeka. Tells: seven towers in the sea and a crag like a
+  when: {hasItem: [thing.mn.parchment-map, 1]}, intent: 'Nesh-Deeka. Tells: this is one more step towards the Eye of Argonia at the Root; seven towers in the sea and a crag like a
     tooth: that is for her officer to read. She says the Unbound have not reached Vicrium. Does: nothing (a question;
     its answer is topic.mn10-how-know).', replies: [topic.mn10-how-know], new: true}
 - {id: topic.mn10-how-know, label: "How could you know the Unbound never reached Vicrium?", person: npc.mn.nesh-deeka, stages: [
@@ -312,6 +312,38 @@ topics:
 - {id: topic.mn-ranks, label: "What does Toh-Wo mean?", person: npc.mn.nesh-deeka, stages: [30, 40, 41, 90], essential: false,
   intent: 'Nesh-Deeka, her row on the shared topic. Tells: Toh, secret; Wo, speaker: a Secret-Speaker, trusted to speak
     for the order; the next rank is Reel-Ka, Warrior. Does: nothing.', new: false}
+- id: topic.mn-the-hunt
+  label: Remind me what we are hunting, and why.
+  person: npc.mn.nesh-deeka
+  stages:
+  - 10
+  - 20
+  - 30
+  essential: false
+  intent: 'Nesh-Deeka, her row on the shared topic. Tells: the hunt is for the Eye of Argonia, the jewel the old priest-kings
+    cut from Hist amber, the solid sap the trees no longer make; it lies at the Root, the place under the sea where the
+    roots of every Hist meet, behind a gate the last king sealed; used where it sits it can heal every sick tree. The Unbound
+    drain sap for a draught strong enough to kill the beast that guards the Root, so they mean to reach it first; the order''s
+    aim is to find the Root before them and have the player use the Eye in place to heal the trees; so far: the knight-captain''s
+    bronze disc bears Vicrium''s mark, where the knights kept a strongbox; it held a map of seven sea towers and a crag
+    like a tooth. Does: nothing.'
+  new: false
+- id: topic.mn-the-hunt
+  label: Remind me what we are hunting, and why.
+  person: npc.mn.never-writes-twice
+  stages:
+  - 40
+  - 41
+  - 90
+  essential: false
+  intent: 'Never-Writes-Twice, her row on the shared topic. Tells: the hunt is for the Eye of Argonia, the jewel the old
+    priest-kings cut from Hist amber, the solid sap the trees no longer make; it lies at the Root, the place under the sea
+    where the roots of every Hist meet, behind a gate the last king sealed; used where it sits it can heal every sick tree.
+    The Unbound drain sap for a draught strong enough to kill the beast that guards the Root, so they mean to reach it first;
+    the order''s aim is to find the Root before them and have the player use the Eye in place to heal the trees; so far:
+    the knight-captain''s bronze disc bears Vicrium''s mark, where the knights kept a strongbox; it held a map of seven
+    sea towers and a crag like a tooth. Does: nothing.'
+  new: false
 review:
   findings:
   - {id: L1, severity: lore, ids: [facts.fact.mn10.lie], finding: Never-Writes-Twice lies about Cuts-the-Old-Knot., answer: 'sourced:

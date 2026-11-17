@@ -172,7 +172,7 @@ topics:
     Ysan, a landing of stone-cutters with a dry-stone jetty; the wreck lies a short swim out, with slaughterfish about
     it. Does: nothing.', new: true}
 - {id: topic.mn07-report, label: "I found this keystone in the captain's strongbox.", person: npc.mn.nesh-deeka, stages: [20],
-  essential: true, when: {hasItem: [thing.mn.keystone, 1]}, intent: 'Nesh-Deeka. Tells: she does not know it, but the
+  essential: true, when: {hasItem: [thing.mn.keystone, 1]}, intent: 'Nesh-Deeka. Tells: this is one more step towards the Eye of Argonia at the Root; she does not know it, but the
     carving is Kothringi; the Chime-Keepers of Toklea, a town on the river fork in the Tulmek Washes, keep what is left
     of Kothringi lore; their elder will know. Then she says the Unbound have not been to the wreck: they lost the trail
     at Gideon. Does: nothing (a question; its answer is topic.mn07-how-know).', replies: [topic.mn07-how-know], new: true}
@@ -186,6 +186,21 @@ topics:
 - {id: topic.mn07-chime-keepers, label: "Who are the Chime-Keepers?", person: npc.mn.nesh-deeka, stages: [20, 90], essential: false,
   intent: 'Nesh-Deeka. Tells: the people of Toklea, who hang tin and copper chimes from every eave as the Kothringi did
     and keep their stories; an elder speaks for them in the old Kothringi greathouse. Does: nothing.', new: true}
+- id: topic.mn-the-hunt
+  label: Remind me what we are hunting, and why.
+  person: npc.mn.nesh-deeka
+  stages:
+  - 10
+  - 20
+  - 90
+  essential: false
+  intent: 'Nesh-Deeka, her row on the shared topic. Tells: the hunt is for the Eye of Argonia, the jewel the old priest-kings
+    cut from Hist amber, the solid sap the trees no longer make; it lies at the Root, the place under the sea where the
+    roots of every Hist meet, behind a gate the last king sealed; used where it sits it can heal every sick tree. The Unbound
+    drain sap for a draught strong enough to kill the beast that guards the Root, so they mean to reach it first; the order''s
+    aim is to find the Root before them and have the player use the Eye in place to heal the trees; so far: the glass Eye''s
+    setting named the wreck of the Pale Harvest, and its captain''s strongbox held a Kothringi keystone. Does: nothing.'
+  new: false
 review:
   findings:
   - {id: L1, severity: lore, ids: [topics.topic.mn-kothringi], finding: Kothringi died of the Knahaten Flu; Toklea resettled., answer: 'sourced:

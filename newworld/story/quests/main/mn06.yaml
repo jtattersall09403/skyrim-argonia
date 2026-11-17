@@ -313,7 +313,7 @@ topics:
   intent: 'Ovinius. Tells: the frontier city of the Blackwood Road; its council sits in the old Governor''s Mansion and
     denies the Xeech-Leel''s claim; it trades with Leyawiin. Does: nothing.', new: true}
 - {id: topic.mn06-report, label: "Here is the setting the glass Eye came in.", person: npc.mn.nesh-deeka, stages: [30], essential: true,
-  when: {hasItem: [thing.mn.eye-setting, 1]}, intent: 'Nesh-Deeka. Tells: she turns it to the light and reads the name
+  when: {hasItem: [thing.mn.eye-setting, 1]}, intent: 'Nesh-Deeka. Tells: this is one more step towards the Eye of Argonia at the Root; she turns it to the light and reads the name
     scratched inside: the Pale Harvest. She knows it: a Company freighter that sank in Hatandros Bight with a Gideon
     dealer''s whole stock aboard. Then she says the Unbound were in Gideon''s market a month ago, two of them, asking
     after that same glass. Does: nothing (a question; its answer is topic.mn06-how-know).', replies: [topic.mn06-how-know],
@@ -324,6 +324,22 @@ topics:
 - {id: topic.mn-how-she-knows, label: "How do you always know where the Unbound have been?", person: npc.mn.nesh-deeka,
   stages: [90], essential: false, intent: 'Nesh-Deeka. Tells: "We listen, and the marsh talks." She will say no more and
     asks about the player''s road. Open in every later report window of Act II. Does: nothing.', new: true}
+- id: topic.mn-the-hunt
+  label: Remind me what we are hunting, and why.
+  person: npc.mn.nesh-deeka
+  stages:
+  - 10
+  - 20
+  - 30
+  - 90
+  essential: false
+  intent: 'Nesh-Deeka, her row on the shared topic. Tells: the hunt is for the Eye of Argonia, the jewel the old priest-kings
+    cut from Hist amber, the solid sap the trees no longer make; it lies at the Root, the place under the sea where the
+    roots of every Hist meet, behind a gate the last king sealed; used where it sits it can heal every sick tree. The Unbound
+    drain sap for a draught strong enough to kill the beast that guards the Root, so they mean to reach it first; the order''s
+    aim is to find the Root before them and have the player use the Eye in place to heal the trees; so far: the Eye sold
+    in Gideon was glass; its old silver setting came from the smugglers of the South Watch. Does: nothing.'
+  new: false
 review:
   findings:
   - {id: L1, severity: lore, ids: [truth.t1], finding: 'A Company freighter lost in Hatandros Bight.', answer: 'sourced:

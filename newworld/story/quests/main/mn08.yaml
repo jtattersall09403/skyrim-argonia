@@ -242,12 +242,30 @@ topics:
     priest-kings used to the Root; the flu killed them with all their people, and their dead are said to walk their hall
     still. Does: nothing.', new: true}
 - {id: topic.mn08-report, label: "The keystone opens the knight-captain's tomb at Eurydike.", person: npc.mn.nesh-deeka,
-  stages: [40, 96], essential: true, intent: 'Nesh-Deeka. Tells: good; the Unbound have been asking Gideon''s diggers
+  stages: [40, 96], essential: true, intent: 'Nesh-Deeka. Tells: this is one more step towards the Eye of Argonia at the Root; good; the Unbound have been asking Gideon''s diggers
     about Eurydike, so the player must be quick. Does: nothing (a question; its answer is topic.mn08-how-know).', replies: [
     topic.mn08-how-know], new: true}
 - {id: topic.mn08-how-know, label: "How do you know what the Unbound ask in Gideon?", person: npc.mn.nesh-deeka, stages: [40,
     96], essential: true, intent: 'Nesh-Deeka. Tells: "We listen." She tells the player to hurry, and pays 100 gold. Does:
     sets stage 90.', new: true}
+- id: topic.mn-the-hunt
+  label: Remind me what we are hunting, and why.
+  person: npc.mn.nesh-deeka
+  stages:
+  - 10
+  - 20
+  - 30
+  - 40
+  - 90
+  - 96
+  essential: false
+  intent: 'Nesh-Deeka, her row on the shared topic. Tells: the hunt is for the Eye of Argonia, the jewel the old priest-kings
+    cut from Hist amber, the solid sap the trees no longer make; it lies at the Root, the place under the sea where the
+    roots of every Hist meet, behind a gate the last king sealed; used where it sits it can heal every sick tree. The Unbound
+    drain sap for a draught strong enough to kill the beast that guards the Root, so they mean to reach it first; the order''s
+    aim is to find the Root before them and have the player use the Eye in place to heal the trees; so far: the setting
+    led to the Pale Harvest and its Kothringi keystone, which the Chime-Keepers'' elder of Toklea can read. Does: nothing.'
+  new: false
 review:
   findings:
   - {id: L1, severity: lore, ids: [truth.t1], finding: A Chime-Keeper family's stake in Zul-Etha., answer: 'sourced: place
