@@ -1,0 +1,106 @@
+{
+ "quest": "quest.main.mn11",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn11.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "fight",
+ "choose": null,
+ "know": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/know-mn10.md",
+ "created": "20261117T172437Z",
+ "stages": [
+  10,
+  20,
+  30,
+  40,
+  90
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn04.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn05.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn06.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn07.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn08.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn09.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn10.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 5,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I work for Nesh-Deeka, the order of Secret-Speakers in Helstrom, as Toh-Wo. The order hunts the Eye of Argonia, an old kings jewel said to heal every sick Hist, lying at the Root under the sea where all Hist roots meet. The Unbound, Cuts-the-Old-Knot cult that drains sap, want it first, and so does the Collector Ennodius Vanin, an Imperial relic-hunter whose hired men are camped at the Grey Tooth on Skeith Isle. 2. Find out what the Collector hirelings found in the Grey Tooth Cave, a door on the crags north face. 3. Fight the three hirelings, or slip past them to the cave door; also there is Vanins Rubbing nearby to examine. 4. I do not fully understand what the Root and the Eye really are, how the order listens, why the Unbound seal trees, or the seven towers. I could learn more by reading the rubbing and exploring the cave.",
+  "read Vanin's Rubbing",
+  "answer 1. The Collectors rubbing says the stone once in the cave niche was carried off by a ships captain in year 181 to the Stormwidow, now beached on the south-west shore of Skeith Isle. The Collector has sold her name to diggers, so others may be there. 2. Go to the Wreck of the Stormwidow and search the hold, especially the ballast crate, for the kings stone. 3. Fight whoever guards the wreck or slip past them. 4. I do not know what the kings stone is, or who the diggers are. I can find out by going to the wreck.",
+  "go Stormwidow",
+  "talk Tah-Leesh",
+  "say 1",
+  "fight Unbound Scout win",
+  "fight Unbound Scout win",
+  "fight Unbound Scout win",
+  "take Recipe for the Seal",
+  "take Unbound Seal",
+  "read Recipe for the Seal",
+  "take Stormwidow's Ballast Crate",
+  "go Door to Stormwidow's Hold",
+  "use Door to Stormwidow's Hold",
+  "use Stormwidow's Ballast Crate",
+  "use Door to Stormwidow's Hold",
+  "go Wreck of the Stormwidow",
+  "use Stormwidow's Ballast Crate",
+  "take Kings' Marker Stone",
+  "answer 1. I work for Nesh-Deeka and the order hunting the Eye of Argonia. I killed three Unbound scouts at the Stormwidow wreck and took the kings marker stone from the ballast crate. It shows seven towers in water, one cut deeper than the others. I also took their seal recipe (grey caps and dried root paste that numbs and closes a tree scar after sap is drawn, signed C.) and three Unbound Seals. 2. Speak to the wounded scout Tah-Leesh below the bow. 3. Talk to her, spare her, or kill her; I could also take the stone back to the order. 4. I do not know which tower is the deep-cut one or what it means, or what the Root and Eye really are. Tah-Leesh or the order may tell me.",
+  "talk Tah-Leesh",
+  "say 2",
+  "answer 1. Tah-Leesh says her leader Cuts-the-Old-Knot tells whoever serves the Toh-Reel-Ka (my order) to ask what moans in the cellar of Fort Chalkmoth, the Archwardens fort on the Chixathe Mesa. She does not know what it means. 2. Bring the marker stone to Never-Writes-Twice at Nesh-Deekas House in Helstrom. 3. Go straight to Helstrom, or first look into Fort Chalkmoth; the quest points to Helstrom. 4. I do not understand what moans in Fort Chalkmoths cellar, or why Cuts-the-Old-Knot taunts the order with it. I could ask Never-Writes-Twice or Nesh-Deeka.",
+  "go Never-Writes-Twice",
+  "talk Never-Writes-Twice",
+  "say 2",
+  "answer 1. I delivered the marker stone to Never-Writes-Twice and got 100 gold. The marked tower is one of the seven drowned spires off Lilmoth in Benthic Yobesh; the divers of Bell Station, an islet east of Lilmoth, will know which. The order hunts the Eye of Argonia at the Root. 2. Go by boat from Lilmoth to Bell Station, or first see Fort Chalkmoth on the Chixathe Mesa above Noota Nara. 3. Bell Station first for the order hunt, or Fort Chalkmoth first for my own curiosity. 4. I still do not know what moans in the Fort Chalkmoth cellar, what the Root and Eye really are, or what Cuts-the-Old-Knot wants. I could find out by going there.",
+  "answer I am Toh-Wo, Secret-Speaker, working for Nesh-Deeka under Never-Writes-Twice in Helstrom. Quest The Grey Tooth done: the Collector Vanins rubbing at the Grey Tooth cave led me to the wreck of the Stormwidow on Skeith Isle. I killed three Unbound scouts there and took the kings marker stone, which shows seven towers with one cut deeper. I gave the stone to Never-Writes-Twice and she paid 100 gold. The towers are the drowned spires off Lilmoth; the divers of Bell Station, an islet east of Lilmoth reached by boat from Lilmoth, will know which one. Next step: go to Bell Station. The order hunts the Eye of Argonia at the Root, where all Hist roots meet. The Unbound (Cuts-the-Old-Knot) seal tree scars with a paste of grey caps and dried root after drawing sap; I carry the Recipe for the Seal and 3 Unbound Seals, plus the rapier, about 1050 gold, lockpicks, 3 Grey Seals, Pale Harvest key, disc, keystone and eye-setting. Tah-Leesh, a wounded Unbound scout left alive at the wreck, said Cuts-the-Old-Knot tells the order to ask what moans in the cellar of Fort Chalkmoth (Archwarden fort, Chixathe Mesa above Noota Nara). Never-Writes-Twice calls it nothing, but I mean to check it myself. Still unknown: what the Root and Eye really are, what moans in the cellar, and the Collector, who is hunting the Eye too."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.1165327,
+ "minutes": 1.1,
+ "turns": 30,
+ "tokens": {
+  "input_tokens": 50,
+  "output_tokens": 5009,
+  "cache_read_input_tokens": 200307,
+  "cache_creation_input_tokens": 11578
+ }
+}

@@ -1,0 +1,110 @@
+[
+ {
+  "stage": 10,
+  "kind": "start",
+  "ending": null,
+  "title": "The Grey Tooth",
+  "journal": "Never-Writes-Twice read the parchment map from Vicrium and named the tooth-shaped crag: the Grey Tooth, the seamark of Skeith Isle. The hired men of the Collector, Ennodius Vanin, an Imperial relic-hunter who hunts the Eye too, are camped at the foot of its goat-path and dig in a small cave on its north face. The order hunts the Eye of Argonia, the old kings' jewel that can heal every sick Hist, which lies at the Root, the place under the sea where the roots of every Hist meet. The Unbound, the tribeless cult of Cuts-the-Old-Knot that drains Hist sap, want it first. I'm to find out what they found in the Grey Tooth Cave. I may fight them or slip past them.",
+  "objectives": [
+   "Find what the Collector's men found in the Grey Tooth Cave. (marker: Door to Grey Tooth Cave, Vanin's Rubbing)"
+  ],
+  "plan": {
+   "going": "The order hunts the Eye of Argonia, the old kings' jewel that can heal every sick Hist; it lies at the Root, where the roots of every Hist meet under the sea, and the Unbound want it first. I am a Toh-Wo of the Toh-Reel-Ka on the hunt for the Root and the Eye. The parchment map led to the Grey Tooth on Skeith Isle, and the Collector's men got there first.",
+   "next": "Go to the Grey Tooth (boat to Archon, then Arorha, then on foot) and see what the Collector's men found in the cave on its north face.",
+   "ways": "Fight the three hired men (any weapon or magic), or pass them by stealth."
+  },
+  "answers": [
+   "I work for Nesh-Deeka as Toh-Wo, a Secret-Speaker. Her order hunts the Eye of Argonia, the old kings jewel that can heal sick Hist, at the Root under the sea. The Unbound (Cuts-the-Old-Knot cult) want it first, and the Collector Ennodius Vanin, an Imperial relic-hunter, also hunts it. His hired men are camped at the Grey Tooth and dig in a cave.",
+   "Find out what the Collector men found in the Grey Tooth Cave, at the Grey Tooth on Skeith Isle (north face cave door).",
+   "Fight the three hirelings, or sneak past them to the cave door; there is also Vanin Rubbing to examine.",
+   "I do not understand what the Root and Eye truly are, how the order listens, why the Unbound seal trees, or the seven towers. I could learn by reading the rubbing, the cave, and talking to people."
+  ],
+  "raw": "1. I work for Nesh-Deeka as Toh-Wo, a Secret-Speaker. Her order hunts the Eye of Argonia, the old kings jewel that can heal sick Hist, at the Root under the sea. The Unbound (Cuts-the-Old-Knot cult) want it first, and the Collector Ennodius Vanin, an Imperial relic-hunter, also hunts it. His hired men are camped at the Grey Tooth and dig in a cave. 2. Find out what the Collector men found in the Grey Tooth Cave, at the Grey Tooth on Skeith Isle (north face cave door). 3. Fight the three hirelings, or sneak past them to the cave door; there is also Vanin Rubbing to examine. 4. I do not understand what the Root and Eye truly are, how the order listens, why the Unbound seal trees, or the seven towers. I could learn by reading the rubbing, the cave, and talking to people."
+ },
+ {
+  "stage": 20,
+  "kind": "stage",
+  "ending": null,
+  "title": "The Grey Tooth",
+  "journal": "In the Grey Tooth Cave I found an empty niche and the Collector's rubbing of a sailor's scratch above it: the stone was carried off to the Stormwidow by her captain's order. The Stormwidow lies beached on the south-west shore of Skeith Isle, and the Collector has sold her name to someone who will dig for him. I'm to search the wreck's hold for the stone. I may fight whoever is there or slip past them.",
+  "objectives": [
+   "Find the kings' stone in the hold of the Wreck of the Stormwidow. (marker: Door to Stormwidow's Hold, Stormwidow's Ballast Crate)"
+  ],
+  "plan": {
+   "going": "The stone from the cave's niche went to the Stormwidow twenty years ago; the Collector sold that to someone.",
+   "next": "Search the hold of the Wreck of the Stormwidow, on the south-west beach, for the stone.",
+   "ways": "Fight whoever is in the hold, or pass them by stealth."
+  },
+  "answers": [
+   "I work for Nesh-Deeka hunting the Eye of Argonia. The rubbing shows the stone once in the Grey Tooth niche was carried to the ship Stormwidow by her captain in year 181; the Collector Vanin has sold her name to diggers and will buy what they find.",
+   "Go to the wreck of the Stormwidow on the south-west beach of Skeith Isle and search the hold, the ballast crate, for the kings stone.",
+   "Fight whoever is at the wreck or sneak past them, as my build favours.",
+   "I do not know what the stone is exactly, who the diggers are, or what the Root and Eye are; I could learn at the wreck."
+  ],
+  "raw": "1. I work for Nesh-Deeka hunting the Eye of Argonia. The rubbing shows the stone once in the Grey Tooth niche was carried to the ship Stormwidow by her captain in year 181; the Collector Vanin has sold her name to diggers and will buy what they find. 2. Go to the wreck of the Stormwidow on the south-west beach of Skeith Isle and search the hold, the ballast crate, for the kings stone. 3. Fight whoever is at the wreck or sneak past them, as my build favours. 4. I do not know what the stone is exactly, who the diggers are, or what the Root and Eye are; I could learn at the wreck."
+ },
+ {
+  "stage": 30,
+  "kind": "stage",
+  "ending": null,
+  "title": "The Grey Tooth",
+  "journal": "Unbound scouts were searching the Stormwidow's hold, and I took the kings' marker stone from a ballast crate before them. It is carved with seven towers standing in water, one cut deeper than the rest. The scouts had the recipe for their seal with them. A wounded scout lies on the sand below the bow. I'm to hear what she has to say.",
+  "objectives": [
+   "Speak to the wounded scout below the Stormwidow's bow. (marker: Tah-Leesh)"
+  ],
+  "plan": {
+   "going": "I have the marker stone, which shows seven towers in water with one marked. The Unbound wanted it too.",
+   "next": "Speak to the wounded scout on the sand below the Stormwidow's bow.",
+   "ways": "Talk to her; she is unarmed and does not fight."
+  },
+  "answers": [
+   "I work for Nesh-Deeka hunting the Eye of Argonia. I took the kings marker stone from the Stormwidow ballast crate; it shows seven towers in water, one cut deeper. Unbound scouts were searching too; I also have their seal recipe (paste of grey caps and root that numbs and closes a tree scar, signed C.).",
+   "Speak to the wounded scout Tah-Leesh below the bow, at the wreck.",
+   "Talk to her, or leave her, or deal with the other scouts; I can only talk to her about the one topic I have seen so far.",
+   "I do not understand which tower is the deeper one, what the Root and Eye are, or why the seal is used on trees. Tah-Leesh or Nesh-Deeka may tell me."
+  ],
+  "raw": "1. I work for Nesh-Deeka hunting the Eye of Argonia. I took the kings marker stone from the Stormwidow ballast crate; it shows seven towers in water, one cut deeper. Unbound scouts were searching too; I also have their seal recipe (paste of grey caps and root that numbs and closes a tree scar, signed C.). 2. Speak to the wounded scout Tah-Leesh below the bow, at the wreck. 3. Talk to her, or leave her, or deal with the other scouts; I can only talk to her about the one topic I have seen so far. 4. I do not understand which tower is the deeper one, what the Root and Eye are, or why the seal is used on trees. Tah-Leesh or Nesh-Deeka may tell me."
+ },
+ {
+  "stage": 40,
+  "kind": "stage",
+  "ending": null,
+  "title": "The Grey Tooth",
+  "journal": "The wounded scout, Tah-Leesh, told me that her leader, Cuts-the-Old-Knot, says whoever serves the Toh-Reel-Ka, my order, should ask what moans in the cellar of Fort Chalkmoth. She did not know what it meant. I'm to bring the marker stone to Never-Writes-Twice in Nesh-Deeka's House in Helstrom.",
+  "objectives": [
+   "Bring the marker stone to Never-Writes-Twice in Nesh-Deeka's House, Helstrom. (marker: Never-Writes-Twice)"
+  ],
+  "plan": {
+   "going": "I have the marker stone. Cuts-the-Old-Knot wants the order's people to ask what moans in the cellar of Fort Chalkmoth, an Archwarden fort.",
+   "next": "Bring the stone to Never-Writes-Twice at the back of Nesh-Deeka's House in Helstrom.",
+   "ways": "One way, the report. I may ask her about Fort Chalkmoth there."
+  },
+  "answers": [
+   "I have the kings marker stone with seven towers, one cut deeper. Tah-Leesh, an Unbound scout, said Cuts-the-Old-Knot tells servants of the Toh-Reel-Ka (my order) to ask what moans in the cellar of Fort Chalkmoth, the Archwardens fort on the Chixathe Mesa. She does not know what it means.",
+   "Bring the stone to Never-Writes-Twice in Nesh-Deeka House, Helstrom.",
+   "Go straight to Helstrom, or first look elsewhere on the island; I can also ask Never-Writes-Twice about the Fort Chalkmoth riddle.",
+   "I do not understand what moans in the Fort Chalkmoth cellar, why Cuts-the-Old-Knot says it, or what the Root and Eye are. I can ask Never-Writes-Twice."
+  ],
+  "raw": "1. I have the kings marker stone with seven towers, one cut deeper. Tah-Leesh, an Unbound scout, said Cuts-the-Old-Knot tells servants of the Toh-Reel-Ka (my order) to ask what moans in the cellar of Fort Chalkmoth, the Archwardens fort on the Chixathe Mesa. She does not know what it means. 2. Bring the stone to Never-Writes-Twice in Nesh-Deeka House, Helstrom. 3. Go straight to Helstrom, or first look elsewhere on the island; I can also ask Never-Writes-Twice about the Fort Chalkmoth riddle. 4. I do not understand what moans in the Fort Chalkmoth cellar, why Cuts-the-Old-Knot says it, or what the Root and Eye are. I can ask Never-Writes-Twice."
+ },
+ {
+  "stage": 90,
+  "kind": "ending",
+  "ending": "complete",
+  "title": "The Grey Tooth",
+  "journal": "Never-Writes-Twice read the marker stone, a step nearer the Root, where the roots of every Hist meet under the sea and the Eye of Argonia, the jewel that can heal every sick Hist, sits. The marked tower is one of the drowned spires off Lilmoth, and the divers of Bell Station, east of Lilmoth, will know which; finding the tower is the order's hunt, and she paid me a hundred gold. I asked her about Fort Chalkmoth. She said it is a fort like any other, but someone moans in its cellar, and I mean to see it for myself on my own account. I'm to go to Bell Station for the hunt, or to Fort Chalkmoth first; either may come first.",
+  "objectives": [],
+  "plan": {
+   "going": "The marker stone points to a drowned spire off Lilmoth; Bell Station's divers will know which. Never-Writes-Twice calls Fort Chalkmoth a fort like any other, though something moans in its cellar.",
+   "next": "Two things are open, in either order: the order's hunt, at Bell Station (MN13), and my own errand to see the cellar of Fort Chalkmoth (MN12).",
+   "ways": "Either first; both are marked."
+  },
+  "answers": [
+   "The quest is done. I gave the stone to Never-Writes-Twice and got 100 gold. The stone points to one of seven drowned towers off Lilmoth on the sea floor of Benthic Yobesh, a step to the Root and the Eye of Argonia, which can heal sick Hist.",
+   "Go to Bell Station, an islet east of Lilmoth, by boat from Lilmoth, and ask the divers which tower. Or go to Fort Chalkmoth on Chixathe Mesa above Noota Nara first.",
+   "Either order.",
+   "I still do not know what moans in the Fort Chalkmoth cellar, or why the Unbound seal trees; I could ask at the fort or watch the Unbound."
+  ],
+  "raw": "1. The quest is done. I gave the stone to Never-Writes-Twice and got 100 gold. The stone points to one of seven drowned towers off Lilmoth on the sea floor of Benthic Yobesh, a step to the Root and the Eye of Argonia, which can heal sick Hist. 2. Go to Bell Station, an islet east of Lilmoth, by boat from Lilmoth, and ask the divers which tower. Or go to Fort Chalkmoth on Chixathe Mesa above Noota Nara first. 3. Either order. 4. I still do not know what moans in the Fort Chalkmoth cellar, or why the Unbound seal trees; I could ask at the fort or watch the Unbound."
+ }
+]

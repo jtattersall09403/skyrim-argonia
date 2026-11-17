@@ -180,14 +180,16 @@ stages:
   place: bell-station
   journal: text.journal.mn13.10
   journalText: 'Never-Writes-Twice says the marked tower is one of the drowned spires off Lilmoth, and the divers of Bell
-    Station will know which. This is the order''s hunt; my own errand to Fort Chalkmoth may wait or come first. I''m to
-    ask the steward of Bell Station, on an islet east of Lilmoth, which tower the stone marks.'
+    Station will know which. This is the hunt of my order, the Toh-Reel-Ka, the Xeech-Leel''s secret warriors. The Toh-Reel-Ka hunt the Eye of Argonia, the old kings'' jewel that can heal every sick Hist, which lies at the Root, the
+    place under the sea where the roots of every Hist meet, before the Unbound, the tribeless cult of Cuts-the-Old-Knot,
+    can reach it. My own errand to Fort Chalkmoth may wait or come first. I''m to
+    ask Meer-Tasi, the steward of Bell Station, on an islet east of Lilmoth, which tower the stone marks.'
   onEnter:
   - grantMapMarker: marker.mn13.bell-station
   objectives:
   - id: steward
     text: text.objective.mn13.steward
-    objectiveText: Ask the steward of Bell Station which tower the marker stone shows.
+    objectiveText: Ask Meer-Tasi, the steward of Bell Station, which tower the marker stone shows.
     target: npc.mn.meer-tasi, npc.mn.bell-diver
     completeWhen:
       questStage: [quest.main.mn13, ≥, 20]
@@ -205,14 +207,14 @@ stages:
   directions: Take the boat from Helstrom to Lilmoth, then the station's boat east over the open water to Bell Station,
     timber huts and a lantern mast on a bare rock islet, with a ship's bell on a post at its landing.
   information:
-    going: The order's hunt goes on; the marker stone's tower is a drowned spire off Lilmoth. My own errand to Fort Chalkmoth
+    going: The order hunts the Eye of Argonia, the old kings' jewel that can heal every sick Hist; it lies at the Root, where the roots of every Hist meet under the sea, and the Unbound want it first. The order's hunt goes on; the marker stone's tower is a drowned spire off Lilmoth. My own errand to Fort Chalkmoth
       is open beside it.
     next: Ask the steward of Bell Station which tower it is.
     ways: Either order with Fort Chalkmoth; one way here, a question.
     carriers:
     - {know: hunt vs own errand, both open, by: [journal]}
     - {know: where Bell Station is, by: [journal, 'marker:marker.mn13.bell-station']}
-    - {know: ask the steward, by: [objective, 'marker:npc.mn.meer-tasi', 'name:npc.mn.meer-tasi']}
+    - {know: ask the steward, Meer-Tasi, by: [journal, objective, 'marker:npc.mn.meer-tasi', 'name:npc.mn.meer-tasi']}
 - id: 20
   place: sunken-ruin-23-m112
   journal: text.journal.mn13.20
@@ -308,6 +310,7 @@ stages:
     carriers:
     - {know: what a seal-stone is and that all three open the gate, by: [journal, 'line:topic.mn-seal-stones', 'look:thing.mn13.gate']}
     - {know: where each went, by: [journal, 'line:topic.mn-seal-stones']}
+    - {know: what the Eye is, by: ['line:topic.mn-seal-stones', 'ask:topic.mn13-ghost-eye']}
     - {know: report to Never-Writes-Twice, by: [objective, 'marker:npc.mn.never-writes-twice', 'name:door.mn.nesh-deeka-house']}
 - id: 90
   place: helstrom
@@ -480,6 +483,17 @@ topics:
     Prison, and the warden took it into his vault; one lies in the flooded vaults of Gemin; one in the deepest hall of
     Vorannuhl. Checks: nothing. Does: sets stage 30.'
   uses: [fact.mn13.seal-stones, fact.mn13.where-stones]
+  new: true
+- id: topic.mn13-ghost-eye
+  label: What is the Eye that sits at the Root?
+  person: npc.mn.priest-ghost
+  stages: [20, 30, 90, 91]
+  essential: false
+  intent: 'The Ghost of Sul-Xeeth. Tells: the Eye of Argonia is the jewel the kings had cut from Hist amber, the hard sap
+    the trees no longer make; it sits at the Root, where the roots of every Hist meet, and is the knot that ties them all;
+    a hand on it where it sits can send strength down every root; the kings sealed it away so that no one hand would
+    hold it. Checks: nothing. Does: nothing.'
+  uses: [fact.mn13.seal-stones]
   new: true
 - id: topic.mn13-stone-places
   label: Tell me again where the stones lie.

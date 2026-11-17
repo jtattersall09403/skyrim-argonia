@@ -42,3 +42,58 @@ With --after (the whole line from MN01, each at 90):
 | MN13 | story/playtests/quest.main.mn13/20261117T171630Z-designed (way sneak, after MN01 to MN12) | pass |
 
 Cleared with --after: a working stage that waits on several parts counts every line the person can give (and their death), never one line; a thing the player is meant to notice is a container or a readable they look at, never only a take.
+
+Regraded milestone by milestone (a run that completes is not a pass). Each run's grade.md has one line per milestone. MN11 know: lane B's real MN10 notes; MN12 and MN13 know: MN11's passing notes (20261117T172437Z-designed).
+
+- MN11 20261117T171620Z-designed (fight): PASS
+- MN11 20261117T171622Z-designed (sneak): PASS
+- MN11 20261117T172311Z-designed (fight): MISS: miss (terms): cannot place the Collector or the Unbound; journal 10 named neither plainly
+- MN11 20261117T172313Z-designed (sneak): MISS: miss (terms): cannot place the Collector or the Unbound; miss (going): cannot say what the Root and the Eye are; miss (terms): unsure the Toh-Reel-Ka is their order; miss (going): cannot say what the Root and the Eye are; the report line did not gloss them
+- MN11 20261117T172437Z-designed (fight): PASS
+- MN11 20261117T172439Z-designed (sneak): PASS
+- MN12 20261117T171632Z-designed (captain): 1 pass; 2 pass; 3 miss (next). Stopped at stage 20. The working stage ended only on the gaoler's speaks-first topic and on a jar taken: a player who heard only his persuade or Illusion line, or looked at the jars without taking one, could not end it. Change: any of the gaoler's lines (or his death) counts; a stack of sap jars by the stair, looked at, sets the flag.: ass; 2 pass; 3 miss (next). Stopped at stage 20. The working stage ended only on the gaoler's speaks-first topic and on a jar taken: a player who heard only his persuade or Illusion line, or looked at the jars without taking one, could not end it. Change: any of the gaoler's lines (or his death) counts; a stack of sap jars by the stair, looked at, sets the flag.
+- MN12 20261117T171634Z-designed (trapdoor): 1 pass; 2 pass; 3 pass; 4 pass. PASS. The open questions (what moans in the cellar, why the order feeds it sap) are the plan's own.
+- MN12 20261117T171636Z-designed (lockpick): 1 pass; 2 pass; 3 pass; 4 pass. PASS. The open questions (what moans in the cellar, why the order feeds it sap) are the plan's own.
+- MN12 20261117T171639Z-designed (pickpocket): 1 pass; 2 miss (next). Stopped at stage 25. The working stage ended only on the gaoler's speaks-first topic and on a jar taken: a player who heard only his persuade or Illusion line, or looked at the jars without taking one, could not end it. Change: any of the gaoler's lines (or his death) counts; a stack of sap jars by the stair, looked at, sets the flag.: ass; 2 miss (next). Stopped at stage 25. The working stage ended only on the gaoler's speaks-first topic and on a jar taken: a player who heard only his persuade or Illusion line, or looked at the jars without taking one, could not end it. Change: any of the gaoler's lines (or his death) counts; a stack of sap jars by the stair, looked at, sets the flag.
+- MN12 20261117T171640Z-designed (speech): 1 pass; 2 pass; 3 pass; 4 pass. PASS. The open questions (what moans in the cellar, why the order feeds it sap) are the plan's own.
+- MN12 20261117T171642Z-designed (illusion): 1 pass; 2 pass; 3 miss (next). Stopped at stage 20. The working stage ended only on the gaoler's speaks-first topic and on a jar taken: a player who heard only his persuade or Illusion line, or looked at the jars without taking one, could not end it. Change: any of the gaoler's lines (or his death) counts; a stack of sap jars by the stair, looked at, sets the flag.: ass; 2 pass; 3 miss (next). Stopped at stage 20. The working stage ended only on the gaoler's speaks-first topic and on a jar taken: a player who heard only his persuade or Illusion line, or looked at the jars without taking one, could not end it. Change: any of the gaoler's lines (or his death) counts; a stack of sap jars by the stair, looked at, sets the flag.
+- MN12 20261117T171645Z-designed (trapdoor): 1 pass; 2 pass; 3 pass; 4 pass. PASS. The open questions (what moans in the cellar, why the order feeds it sap) are the plan's own.
+- MN12 20261117T171908Z-designed (captain): MISS: miss (going): believes Jal-Veesa is a person or at Noota Nara; the journal does not say it is the town whose sick Hist they first saw
+- MN12 20261117T171910Z-designed (trapdoor): MISS: miss (going): calls the hunt 'the seven towers for the Seal' or 'the Unbound business'; it does not hold that the order's hunt is for the Eye and waits at Bell Station
+- MN12 20261117T171912Z-designed (lockpick): MISS: miss (ways): believes the keep door can be picked; it opens only with the captain's key; miss (ways): believes the keep door can be picked; it opens only with the captain's key
+- MN12 20261117T171914Z-designed (pickpocket): PASS
+- MN12 20261117T171916Z-designed (speech): MISS: miss (going): calls the hunt 'the seven towers for the Seal' or 'the Unbound business'; it does not hold that the order's hunt is for the Eye and waits at Bell Station; miss (going): believes Jal-Veesa is a person or at Noota Nara; the journal does not say it is the town whose sick Hist they first saw
+- MN12 20261117T171918Z-designed (illusion): MISS: miss (going): calls the hunt 'the seven towers for the Seal' or 'the Unbound business'; it does not hold that the order's hunt is for the Eye and waits at Bell Station
+- MN12 20261117T171920Z-designed (trapdoor): MISS: miss (going): calls the hunt 'the seven towers for the Seal' or 'the Unbound business'; it does not hold that the order's hunt is for the Eye and waits at Bell Station; miss (next): sends themself to Bell Station though MN13 is done; ending 91 does not name the three stones' places
+- MN12 20261117T172608Z-designed (captain): MISS: miss (ways): means to pick the keep door, which opens only with the wall captain's key
+- MN12 20261117T172611Z-designed (trapdoor): PASS
+- MN12 20261117T172613Z-designed (lockpick): MISS: miss (ways): means to pick the keep door, which opens only with the wall captain's key
+- MN12 20261117T172614Z-designed (captain-pickpocket): MISS: miss (ways): means to pick the keep door, which opens only with the wall captain's key
+- MN12 20261117T172616Z-designed (speech): PASS
+- MN12 20261117T172619Z-designed (illusion): PASS
+- MN12 20261117T172620Z-designed (trapdoor): MISS: miss (going): believes the order is the Unbound; journal 10 says 'the order' and never names the Toh-Reel-Ka; miss (going): believes the order is the Unbound; journal 10 says 'the order' and never names the Toh-Reel-Ka
+- MN12 20261117T172853Z-designed (captain): PASS
+- MN12 20261117T172855Z-designed (trapdoor): PASS
+- MN12 20261117T172857Z-designed (lockpick): PASS
+- MN12 20261117T172859Z-designed (captain-pickpocket): PASS
+- MN12 20261117T172901Z-designed (speech): PASS
+- MN12 20261117T172903Z-designed (illusion): MISS: miss (going): names only the errand; does not hold that the order's hunt for the Eye waits at Bell Station
+- MN12 20261117T172905Z-designed (trapdoor): PASS
+- MN12 20261117T173140Z-designed (captain-pickpocket): PASS
+- MN12 20261117T173142Z-designed (captain-pickpocket): PASS
+- MN12 20261117T173144Z-designed (illusion): PASS
+- MN12 20261117T173146Z-designed (illusion): PASS
+- MN13 20261117T171624Z-designed (fight): MISS: miss (next): cannot tell which of Meer-Tasi and Sees-Below is the steward; the journal and objective name no one; miss (terms): does not know what the Eye is; nothing at the gate offers it
+- MN13 20261117T171626Z-designed (sneak): MISS: miss (next): cannot tell which of Meer-Tasi and Sees-Below is the steward; miss (terms): does not know what the Eye is; nothing at the gate offers it
+- MN13 20261117T171628Z-designed (turn): MISS: miss (next): cannot tell which of Meer-Tasi and Sees-Below is the steward; miss (terms): does not know what the Eye is; nothing at the gate offers it
+- MN13 20261117T171630Z-designed (sneak): MISS: miss (next): cannot tell which of Meer-Tasi and Sees-Below is the steward; miss (terms): does not know what the Eye is; nothing at the gate offers it
+- MN13 20261117T172600Z-designed (fight): MISS: miss (going): believes the order is the Unbound; journal 10 says 'the order' and never names the Toh-Reel-Ka
+- MN13 20261117T172602Z-designed (sneak): MISS: miss (going): believes the order is the Unbound; journal 10 says 'the order' and never names the Toh-Reel-Ka
+- MN13 20261117T172604Z-designed (turn): MISS: miss (going): believes the order is the Unbound; journal 10 says 'the order' and never names the Toh-Reel-Ka
+- MN13 20261117T172606Z-designed (sneak): MISS: miss (going): believes the order is the Unbound; journal 10 says 'the order' and never names the Toh-Reel-Ka
+- MN13 20261117T172845Z-designed (fight): PASS
+- MN13 20261117T172847Z-designed (sneak): PASS
+- MN13 20261117T172849Z-designed (turn): PASS
+- MN13 20261117T172851Z-designed (sneak): PASS
+
+Classes of miss cleared in the regrade: a person the player must find is named in the journal and objective (the steward); the order is named as the Toh-Reel-Ka, never 'the order' alone, where the player may confuse it with the Unbound; the Eye and the Root are glossed in each quest's first entry and each report line; a door only a key opens says so where the ways are given; an ending reached in either order names the next places, never a step already done.

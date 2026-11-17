@@ -1,2 +1,9 @@
-# Grade (way fight)
-1 pass; 2 pass; 3 pass; 4 pass; 5 pass. PASS. The open questions (what moans in the cellar, why the order feeds it sap) are the plan's own.
+# Grade (way fight), read milestone by milestone
+
+1. pass
+2. pass
+3. pass
+4. pass
+5. pass
+
+PASS

@@ -1,0 +1,116 @@
+{
+ "quest": "quest.main.mn12",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn12.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "illusion",
+ "choose": null,
+ "know": "story/playtests/quest.main.mn11/20261117T172437Z-designed/notes.md",
+ "created": "20261117T173144Z",
+ "stages": [
+  10,
+  15,
+  20,
+  90
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn04.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn05.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn06.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn07.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn08.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn09.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn10.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn11.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 4,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I am Toh-Wo, Secret-Speaker of the Toh-Reel-Ka, working for Nesh-Deeka under Never-Writes-Twice. The order hunts the Eye of Argonia, a jewel said to heal sick Hist, at the Root. A wounded Unbound scout told me to ask what moans in the cellar of Fort Chalkmoth, so I am checking it on my own errand. 2. Get into Fort Chalkmoth keep and see its cellar. The keep door is locked and needs the wall captain key and cannot be picked. Bell Station is the other lead and can wait. 3. Talk to Sakeeus-Wan (quest marker) to ask for leave from the wall captain, or find another way in unseen, perhaps through the Guardroom door. I favour illusion, so I could try persuasion or trickery. There are three Sarpa Raiders here too. 4. I do not know what the Root and Eye truly are, what moans in the cellar, or who the Collector is. I can learn by talking to people here and exploring.",
+  "talk Sakeeus-Wan",
+  "say 2",
+  "say 3",
+  "say 4",
+  "say 1",
+  "answer 1. The wall captain Sakeeus-Wan will open the keep if I kill three Sarpa raiders robbing chalk carts on the western approach, and pay 100 gold. The cellar is the order prison store, which he says is none of his business. 2. Go to the western approach, kill the three Sarpa Raiders, then report back to Sakeeus-Wan. 3. Fight the raiders (perhaps with illusion/rapier), or skip it and sneak in by the trapdoor in the yard unseen. 4. I still do not know what moans in the cellar, or what the Root and Eye are. I would find out inside the cellar.",
+  "look",
+  "use trapdoor",
+  "journal",
+  "fight Sarpa Raider win",
+  "fight Sarpa Raider win",
+  "fight Sarpa Raider win",
+  "look",
+  "talk Sakeeus-Wan",
+  "say 3",
+  "answer 1. I killed the three raiders and the wall captain gave me the keep key and 100 gold. The stair to the old prison cellar starts in the quartermaster store inside the keep. Quartermaster Theyne Indarys, a Dunmer, holds that key, and the captain warned his leave does not cover the store. 2. Enter the keep, get into the quartermaster store, look at the stack of sap jars by the cellar stair, speak to the gaoler Tsleel-Vaku at the foot of the stair, and try the cellar door. 3. Pick the store lock with my lockpicks, lift Theyne Indarys key by pickpocketing, or talk to him using illusion-style persuasion. Being caught makes me a thief. 4. I do not know what moans in the cellar, what the Jal-Veesa Knot is (the sap jars marker is named for it), or who Tsleel-Vaku is beyond being the gaoler. I would learn by going down and asking.",
+  "use Door to Fort Chalkmoth Keep",
+  "talk Theyne Indarys",
+  "say 2",
+  "pick Door to Quartermaster's Store win",
+  "use Door to Quartermaster's Store",
+  "read Stack of Sap Jars",
+  "look",
+  "use Door to Fort Chalkmoth Guardroom",
+  "say 3",
+  "say 3 pass",
+  "say 2 pass",
+  "pick Door to Cellar Door win",
+  "say 4",
+  "talk Tsleel-Vaku",
+  "say 4",
+  "journal",
+  "use Door to Cellar Door",
+  "answer 1. The quest ended. In the fort I found jars of Hist sap tied with the knot of Jal-Veesa tree-minder, stacked by the cellar stair, in a fort with no Hist. The gaoler Tsleel-Vaku refused me; only Never-Writes-Twice has the cellar key. Something moans behind the door. 2. Go back to the order hunt: go to Bell Station, east of Lilmoth by boat, and ask the divers which drowned tower the marker stone shows. 3. Go to Bell Station, or confront Never-Writes-Twice about the cellar. 4. I do not know who or what is in the cellar, or why the order feeds it sap, nor what the Root and Eye are, nor who the Collector is.",
+  "answer Notes: I am Toh-Wo of the Toh-Reel-Ka. At Fort Chalkmoth I killed the three Sarpa raiders for wall captain Sakeeus-Wan, got the keep key and 100 gold, and picked the quartermaster store lock. Quartermaster Theyne Indarys keeps jars of Hist sap tied with the Jal-Veesa tree-minder knot, which come up the mesa road each season and go down the stair. The fort has no Hist of its own. Gaoler Tsleel-Vaku guards the locked cellar door; persuasion and illusion failed, and only Never-Writes-Twice has the key. Something moans behind it, but I do not know who or what, or why the order feeds it sap. I carry about 1150 gold, rapier, 2 lockpicks, 3 paralysis poisons, the keep key, eye-setting, keystone, bronze disc, Unbound note and parchment map. Still unknown: the Root, the Eye, the Collector, and the cellar prisoner. Next: go to Bell Station, east of Lilmoth, and ask the divers which drowned tower is cut deeper. I could also later ask Never-Writes-Twice about the cellar."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.1509351,
+ "minutes": 1.4,
+ "turns": 37,
+ "tokens": {
+  "input_tokens": 66,
+  "output_tokens": 5563,
+  "cache_read_input_tokens": 342131,
+  "cache_creation_input_tokens": 15240
+ }
+}

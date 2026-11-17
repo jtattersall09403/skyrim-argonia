@@ -1,0 +1,92 @@
+{
+ "quest": "quest.main.mn13",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn13.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "sneak",
+ "choose": null,
+ "know": "story/playtests/quest.main.mn11/20261117T172437Z-designed/notes.md",
+ "created": "20261117T172602Z",
+ "stages": [
+  10,
+  20,
+  30,
+  90
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn04.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn05.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn06.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn07.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn08.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn09.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn10.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn11.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 4,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I am Toh-Wo, Secret-Speaker working for Nesh-Deeka under Never-Writes-Twice in Helstrom. The kings marker stone shows seven drowned spires off Lilmoth with one cut deeper. The order (Unbound) hunts the Eye of Argonia, a jewel said to heal every sick Hist, at the Root where all Hist roots meet. 2. Go to Bell Station and ask Meer-Tasi, the steward, which tower the stone marks; Sees-Below is also marked. 3. I can talk to Meer-Tasi or Sees-Below, and my own errand to Fort Chalkmoth can wait or come first. I favour sneaking over fighting. 4. I do not understand what the Root and Eye really are, what moans in the cellar of Fort Chalkmoth, or who the Collector is. I could find out by asking people and exploring.",
+  "talk Meer-Tasi",
+  "say 1",
+  "answer 1. Meer-Tasi says the cut tower is Teku-Sul Spire, drowned near Lilmoth. Past its east halls is a great gate with three empty sockets nobody has forced, and a priest ghost stands before it. I work for Never-Writes-Twice hunting the Eye. 2. Dive to Teku-Sul Spire and find the great gate; markers are the doors to East Halls and Halls and the Ghost of Sul-Xeeth. 3. As an Argonian I may breathe water already; otherwise buy waterbreathing from Meer-Tasi. Inside there is air. I can fight the priests attendants or sneak past; sneaking is my preference. 4. I do not understand what the three sockets need (I carry a disc, keystone and eye-setting, maybe those), or who Sul-Xeeth the ghost is. I could ask the ghost or read in the tower.",
+  "go Teku-Sul",
+  "answer 1. The ghost of Sul-Xeeth, priest of the last king, says the gate bars the way to the Root and the Eye. Three seal-stones open it, all three needed: one in the warden vault of Blackrose Prison, one in the flooded vaults of Gemin, one in the deepest hall of Vorannuhl. 2. Tell Never-Writes-Twice in Nesh-Deeka House, Helstrom. 3. I can report to her, or go after the stones myself, or visit Fort Chalkmoth first; the Unbound also hunt the Eye so there is a race. 4. I do not know what the Root and Eye really are, what moans in Fort Chalkmoth cellar, or who the Collector is; I do not know where these three places are exactly but the journal or Never-Writes-Twice may tell.",
+  "go Never-Writes-Twice",
+  "talk Never-Writes-Twice",
+  "say 1",
+  "answer 1. I am Toh-Wo, now Reel-Ka (Warrior) of the order under Never-Writes-Twice, Nesh-Deeka House, Helstrom. The kings marker stone led to Teku-Sul Spire, whose great gate guards the way to the Root and the Eye. Three seal-stones open it, all needed. Never-Writes-Twice wants all three before the Unbound. Blackrose Prison (warden vault, least dangerous), Gemin (flooded vaults), Vorannuhl (deepest hall, worst) are marked. I got a Reel-Ka cuirass, helm, 300 gold and free beds at Archwarden forts. 2. Fetch the three stones, in any order, starting probably with Blackrose; Fort Chalkmoth errand still open. 3. Any order of the three places, sneaking preferred; Fort Chalkmoth first or later. 4. I still do not know what the Root and Eye truly are, what moans in Fort Chalkmoth cellar, or who the Collector is. I can find out by exploring and asking.",
+  "answer Toh-Wo, now Reel-Ka of the order, working for Never-Writes-Twice (Nesh-Deeka House, Helstrom). Kings Gate done: Bell Station steward Meer-Tasi named Teku-Sul Spire; its ghost Sul-Xeeth said the great gate to the Root needs three seal-stones: Blackrose Prison warden vault (least dangerous), flooded vaults of Gemin, deepest hall of Vorannuhl (worst). All three are marked on the map; the order wants them before the Unbound. I carry the rapier, about 1350 gold, lockpicks, 3 Grey Seals, 3 Unbound Seals, Recipe for the Seal, Pale Harvest key, disc, keystone, eye-setting, plus Reel-Ka cuirass and helm, and have a free bed in Archwarden forts. Still open: the Fort Chalkmoth cellar (what moans there), what the Root and Eye truly are, and the Collector who hunts the Eye too. Next: Blackrose first, sneaking.",
+  "answer Toh-Wo, now Reel-Ka of the order, working for Never-Writes-Twice (Nesh-Deeka House, Helstrom). Kings Gate done: Bell Station steward Meer-Tasi named Teku-Sul Spire; its ghost Sul-Xeeth said the great gate to the Root needs three seal-stones: Blackrose Prison warden vault (least dangerous), flooded vaults of Gemin, deepest hall of Vorannuhl (worst). All three are marked on the map; the order wants them before the Unbound. I carry the rapier, about 1350 gold, lockpicks, 3 Grey Seals, 3 Unbound Seals, Recipe for the Seal, Pale Harvest key, disc, keystone, eye-setting, plus Reel-Ka cuirass and helm, and have a free bed in Archwarden forts. Still open: the Fort Chalkmoth cellar (what moans there), what the Root and Eye truly are, and the Collector who hunts the Eye too. Next: Blackrose first, sneaking."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.0758557,
+ "minutes": 0.7,
+ "turns": 13,
+ "tokens": {
+  "input_tokens": 22,
+  "output_tokens": 3337,
+  "cache_read_input_tokens": 74497,
+  "cache_creation_input_tokens": 8748
+ }
+}

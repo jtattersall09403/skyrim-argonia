@@ -199,9 +199,10 @@ stages:
   place: fort-chalkmoth
   journal: text.journal.mn12.10
   journalText: 'Never-Writes-Twice says Fort Chalkmoth is a fort like any other, but a wounded Unbound scout told me to
-    ask what moans in its cellar. This is my own errand, not the order''s; the hunt waits at Bell Station and either
-    may come first. Fort Chalkmoth is the Archwardens'' fort on the Chixathe Mesa above Noota Nara. I''m to get into the
-    fort and see its cellar: the wall captain at the gate may let me in, or I may find another way in unseen.'
+    ask what moans in its cellar. This is my own errand, not that of my order, the Toh-Reel-Ka. The Toh-Reel-Ka''s hunt for the Eye of Argonia (the old kings'' jewel that
+    can heal every sick Hist, at the Root, where the roots of every Hist meet under the sea) waits at Bell Station, whose divers know which drowned tower the marker stone shows, and either may come first. Fort Chalkmoth
+    is the Archwardens'' fort on the Chixathe Mesa above Noota Nara. I''m to get into the fort and see its cellar. The keep''s
+    door opens only with the wall captain''s key and cannot be picked, so he may let me in, or I may find another way in unseen.'
   onEnter:
   - grantMapMarker: marker.mn12.fort
   objectives:
@@ -231,13 +232,19 @@ stages:
   - id: trapdoor
     actions:
     - {skill: Sneak, use: pass-unseen, target: door.mn12.trapdoor}
+  - id: captain-pickpocket
+    actions:
+    - {skill: One-Handed, use: fight-raiders, target: the three Sarpa raiders, note: the captain's price first}
+    - {skill: Pickpocket, use: pickpocket, target: npc.mn.chalkmoth-quartermaster, note: then lift the store's key inside the
+        keep}
   information:
-    going: This is my own errand, to see what moans in the cellar of Fort Chalkmoth; the order's hunt, at Bell Station,
+    going: The order hunts the Eye of Argonia, the old kings' jewel that can heal every sick Hist; it lies at the Root, where the roots of every Hist meet under the sea, and the Unbound want it first. This is my own errand, to see what moans in the cellar of Fort Chalkmoth; the order's hunt, at Bell Station,
       is open beside it and either may come first.
     next: Get into Fort Chalkmoth's keep, on the mesa above Noota Nara.
     ways: Ask the wall captain at the gate for leave, or go in unseen by the trapdoor in the yard.
     carriers:
-    - {know: own errand vs the hunt, by: [journal]}
+    - {know: own errand vs the hunt for the Eye at Bell Station, by: [journal]}
+    - {know: the keep door takes the captain's key, by: [journal, 'name:door.mn12.keep']}
     - {know: where the fort is, by: [journal, 'marker:marker.mn12.fort']}
     - {know: the captain may let me in, by: [journal, objective, 'marker:npc.mn.chalkmoth-captain', 'line:topic.mn12-captain-price']}
     - {know: there is a way in unseen, by: [journal, objective, 'marker:door.mn12.trapdoor', 'name:door.mn12.trapdoor']}
@@ -457,8 +464,8 @@ stages:
 - id: 90
   place: fort-chalkmoth
   journal: text.journal.mn12.90
-  journalText: 'Jars of Hist sap marked with Jal-Veesa''s knot are stacked by the cellar stair, in a fort with no Hist
-    of its own. The order''s gaoler turned me away from the inner door, Toh-Wo or not, and said Never-Writes-Twice keeps
+  journalText: 'Jars of Hist sap tied with the knot of the tree-minder of Jal-Veesa, the town whose sick Hist I first saw, are stacked
+    by the cellar stair, in a fort with no Hist of its own. The order''s gaoler turned me away from the inner door, Toh-Wo or not, and said Never-Writes-Twice keeps
     its key. Behind the door, something moans. Who is down there, and why the order feeds them sap, I cannot learn here.
     I''m to go back to the order''s hunt for the drowned tower that Bell Station''s divers know.'
   ending: complete
@@ -474,10 +481,11 @@ stages:
 - id: 91
   place: fort-chalkmoth
   journal: text.journal.mn12.91
-  journalText: 'Jars of Hist sap marked with Jal-Veesa''s knot are stacked by the cellar stair, in a fort with no Hist
-    of its own. The order''s gaoler turned me away from the inner door, Toh-Wo or not, and said Never-Writes-Twice keeps
+  journalText: 'Jars of Hist sap tied with the knot of the tree-minder of Jal-Veesa, the town whose sick Hist I first saw, are stacked
+    by the cellar stair, in a fort with no Hist of its own. The order''s gaoler turned me away from the inner door, Toh-Wo or not, and said Never-Writes-Twice keeps
     its key. Behind the door, something moans. Who is down there, and why the order feeds them sap, I cannot learn here.
-    I''m to go back to the hunt for the three seal-stones.'
+    I''m to go back to the hunt for the three seal-stones, at Blackrose Prison, Gemin and Vorannuhl, all marked on my
+    map.'
   ending: complete
   endingId: e-seen
   information:

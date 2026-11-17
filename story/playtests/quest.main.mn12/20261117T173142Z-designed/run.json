@@ -1,0 +1,107 @@
+{
+ "quest": "quest.main.mn12",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn12.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "captain-pickpocket",
+ "choose": null,
+ "know": "story/playtests/quest.main.mn11/20261117T172437Z-designed/notes.md",
+ "created": "20261117T173142Z",
+ "stages": [
+  10,
+  15,
+  25,
+  90
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn04.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn05.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn06.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn07.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn08.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn09.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn10.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn11.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 4,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I am Toh-Wo, a Secret-Speaker of the Toh-Reel-Ka. A wounded Unbound scout told me to ask what moans in the cellar of Fort Chalkmoth. My order hunts the Eye of Argonia, which can heal sick Hist. This is my own errand. 2. Get into the keep of Fort Chalkmoth and see its cellar. 3. Get the wall captain (maybe Sakeeus-Wan) to let me in, or find another way in unseen. The keep door is locked and cannot be picked. There is also a guardroom door. 4. I do not know who Sakeeus-Wan is or who the wall captain is, and I do not know what moans in the cellar. I can find out by talking to people here.",
+  "talk Sakeeus-Wan",
+  "say 4",
+  "say 3",
+  "say 1",
+  "answer 1. I am Toh-Wo of the Toh-Reel-Ka, checking Fort Chalkmoth cellar on my own errand. Captain Sakeeus-Wan keeps the keep shut while three Sarpa raiders rob chalk carts on the western approach. 2. Kill the three raiders on the western approach, then tell the captain for entry and 100 gold. 3. Kill the raiders for the captain, or go in unseen by the trapdoor in the yard. Maybe I could also pickpocket the keep key from the captain. 4. I do not know what the order keeps in the cellar store, or what moans there. I can only find out by getting in.",
+  "look",
+  "pickpocket Sakeeus-Wan win",
+  "use trapdoor",
+  "use Door to Fort Chalkmoth Guardroom",
+  "answer 1. That door led me unseen through the yard trapdoor into the cellar guardroom. If the garrison sees me they will attack. I am still on my own errand to learn what moans in the cellar. 2. Look at the sap jars in the quartermaster store, speak to the gaoler Tsleel-Vaku, and try the locked cellar door. 3. Talk to the gaoler, inspect the jars, try or pick the cellar door, or sneak. 4. I do not know who Tsleel-Vaku is, what the Jal-Veesa Knot is, or why sap jars are stored here. I can ask the gaoler and examine the jars.",
+  "talk Tsleel-Vaku",
+  "say 4",
+  "say 2 pass",
+  "say 3 pass",
+  "pickpocket Tsleel-Vaku win",
+  "pick Door to Cellar Door win",
+  "use Door to Quartermaster's Store",
+  "read Stack of Sap Jars",
+  "journal",
+  "use Door to Cellar Door",
+  "go Door to Cellar Door",
+  "go marker 3",
+  "journal",
+  "use Door to Cellar Door",
+  "answer 1. The quest is done. I got into the cellar guardroom unseen. The order stacks Hist sap jars tied with the knot of Jal-Veesa tree-minder in a fort with no Hist of its own, and something moans behind the locked inner door. The gaoler would not let me through, and says Never-Writes-Twice keeps the key. 2. Go back to the order hunt: travel to Bell Station, an islet east of Lilmoth reached by boat, and ask the divers which drowned tower is cut deeper on the marker stone. 3. I could go to Bell Station, or find a way to get the key from Never-Writes-Twice later to learn who is down there. 4. I do not know who or what moans in the cellar, why the order feeds them sap, or what the Eye and the Root truly are. I may learn by asking Never-Writes-Twice, or from the key.",
+  "answer Notes: I am Toh-Wo of the Toh-Reel-Ka. At Fort Chalkmoth I got in unseen by the yard trapdoor into the cellar guardroom. The quartermaster store above holds jars of Hist sap tied with the knot of the Jal-Veesa tree-minder, in a fort with no Hist of its own. Something moans behind the locked inner cellar door. The gaoler Tsleel-Vaku refused persuasion and illusion, and I could not pickpocket him. He carries no key. Never-Writes-Twice keeps the key. The door cannot be picked. Captain Sakeeus-Wan offered entry and 100 gold for killing 3 Sarpa raiders on the western approach, which I did not do. Still unknown: who or what is down there and why the order feeds it sap. Next: go to Bell Station east of Lilmoth by boat and ask the divers which drowned tower is cut deeper. I carry about 1050 gold, 2 lockpicks, a rapier, paralysis poison x3, an Unbound note, the eye-setting, keystone, bronze disc and a parchment map."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.11871869999999998,
+ "minutes": 1.1,
+ "turns": 28,
+ "tokens": {
+  "input_tokens": 52,
+  "output_tokens": 4461,
+  "cache_read_input_tokens": 229807,
+  "cache_creation_input_tokens": 12756
+ }
+}

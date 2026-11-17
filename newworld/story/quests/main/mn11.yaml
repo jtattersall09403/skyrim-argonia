@@ -267,8 +267,11 @@ stages:
   place: peak-39-m79
   journal: text.journal.mn11.10
   journalText: 'Never-Writes-Twice read the parchment map from Vicrium and named the tooth-shaped crag: the Grey Tooth,
-    the seamark of Skeith Isle. The Collector''s hired men are camped at the foot of its goat-path and dig in a small cave
-    on its north face. I''m to find out what they found in the Grey Tooth Cave. I may fight them or slip past them.'
+    the seamark of Skeith Isle. The hired men of the Collector, Ennodius Vanin, an Imperial relic-hunter who hunts the
+    Eye too, are camped at the foot of its goat-path and dig in a small cave
+    on its north face. The order hunts the Eye of Argonia, the old kings'' jewel that can heal every sick Hist, which lies at the Root, the
+    place under the sea where the roots of every Hist meet. The Unbound, the tribeless cult of Cuts-the-Old-Knot that
+    drains Hist sap, want it first. I''m to find out what they found in the Grey Tooth Cave. I may fight them or slip past them.'
   onEnter:
   - enableRef: npc.mn.vanin-hireling-1
   - enableRef: npc.mn.vanin-hireling-2
@@ -312,7 +315,7 @@ stages:
     actions:
     - {skill: Sneak, use: pass-unseen, target: the Collector's hired men}
   information:
-    going: I am a Toh-Wo of the Toh-Reel-Ka on the hunt for the Root and the Eye. The parchment map led to the Grey Tooth
+    going: The order hunts the Eye of Argonia, the old kings' jewel that can heal every sick Hist; it lies at the Root, where the roots of every Hist meet under the sea, and the Unbound want it first. I am a Toh-Wo of the Toh-Reel-Ka on the hunt for the Root and the Eye. The parchment map led to the Grey Tooth
       on Skeith Isle, and the Collector's men got there first.
     next: Go to the Grey Tooth (boat to Archon, then Arorha, then on foot) and see what the Collector's men found in the
       cave on its north face.
@@ -445,8 +448,8 @@ stages:
 - id: 40
   place: helstrom
   journal: text.journal.mn11.40
-  journalText: 'The wounded scout, Tah-Leesh, told me that her leader, Cuts-the-Old-Knot, says whoever serves the Toh-Reel-Ka
-    should ask what moans in the cellar of Fort Chalkmoth. She did not know what it meant. I''m to bring the marker stone
+  journalText: 'The wounded scout, Tah-Leesh, told me that her leader, Cuts-the-Old-Knot, says whoever serves the Toh-Reel-Ka,
+    my order, should ask what moans in the cellar of Fort Chalkmoth. She did not know what it meant. I''m to bring the marker stone
     to Never-Writes-Twice in Nesh-Deeka''s House in Helstrom.'
   objectives:
   - id: report40
@@ -479,7 +482,9 @@ stages:
 - id: 90
   place: helstrom
   journal: text.journal.mn11.90
-  journalText: 'Never-Writes-Twice read the marker stone. The marked tower is one of the drowned spires off Lilmoth,
+  journalText: 'Never-Writes-Twice read the marker stone, a step nearer the Root, where the roots of every Hist meet
+    under the sea and the Eye of Argonia, the jewel that can heal every sick Hist, sits. The marked tower is one of the
+    drowned spires off Lilmoth,
     and the divers of Bell Station, east of Lilmoth, will know which; finding the tower is the order''s hunt, and she
     paid me a hundred gold. I asked her about Fort Chalkmoth. She said it is a fort like any other, but someone moans
     in its cellar, and I mean to see it for myself on my own account. I''m to go to Bell Station for the hunt, or to
@@ -583,7 +588,8 @@ topics:
   essential: true
   when:
     hasItem: [thing.mn.marker-stone, 1]
-  intent: 'Never-Writes-Twice. Checks: hasItem [thing.mn.marker-stone, 1]. Tells: the stone brings the order a step nearer the Root, where the Eye of Argonia sits; the seven towers are the drowned spires
+  intent: 'Never-Writes-Twice. Checks: hasItem [thing.mn.marker-stone, 1]. Tells: the stone brings the order a step nearer the Root, the place under the sea where the roots of every Hist meet,
+    where the Eye of Argonia, the old kings'' jewel that can heal every sick Hist, sits; the seven towers are the drowned spires
     off Lilmoth, towers of the old kings'' land that sank, standing on the sea floor of Benthic Yobesh; the divers of
     Bell Station, a salvage station on an islet east of Lilmoth, have dived them for years and will know which tower
     this is; go there by boat from Lilmoth; that is the hunt, and it comes before anything. To the cellar: Fort Chalkmoth

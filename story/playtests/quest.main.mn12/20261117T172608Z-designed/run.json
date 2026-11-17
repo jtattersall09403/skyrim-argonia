@@ -1,0 +1,108 @@
+{
+ "quest": "quest.main.mn12",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn12.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "captain",
+ "choose": null,
+ "know": "story/playtests/quest.main.mn11/20261117T172437Z-designed/notes.md",
+ "created": "20261117T172608Z",
+ "stages": [
+  10,
+  15,
+  20,
+  90
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn04.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn05.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn06.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn07.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn08.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn09.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn10.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn11.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 4,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I am Toh-Wo, Secret-Speaker working for Nesh-Deeka under Never-Writes-Twice. The order hunts the Eye of Argonia at the Root; a dying scout told me to ask what moans in the cellar of Fort Chalkmoth, which Never-Writes-Twice calls nothing. This is my own errand. 2. Get into Fort Chalkmoth keep and see its cellar, here at the fort on Chixathe Mesa. 3. Talk to the wall captain Sakeeus-Wan for leave to enter, or find a way in unseen (guardroom door, or lockpicks on the locked keep door). 4. I do not know what the Root and Eye really are, what moans in the cellar, or who the Collector is. I might learn by exploring the cellar and talking to people.",
+  "talk Sakeeus-Wan",
+  "say 1",
+  "answer 1. Sakeeus-Wan will open the keep and pay 100 gold if I kill three Sarpa raiders robbing chalk carts on the western approach. I still seek the cellar that moans. 2. Kill the three raiders on the western approach, then report to Sakeeus-Wan. 3. Fight the raiders for the captain captaincy route, or use the trapdoor in the yard to go in unseen. 4. I do not know who the Sarpa are beyond raiders; I could ask the captain.",
+  "fight Sarpa Raider win",
+  "fight Sarpa Raider win",
+  "fight Sarpa Raider win",
+  "talk Sakeeus-Wan",
+  "say 3",
+  "answer 1. The raiders are dead and I have the keep key and 100 gold. The cellar stair is in the quartermaster Theyne Indarys store inside the keep; he holds its key. 2. Enter the keep, get into the quartermaster store, look at the sap jars by the stair, go down, speak to gaoler Tsleel-Vaku, try the cellar door. 3. Pick the store lock, lift the quartermaster key, or ask him; the captain warned I am a thief if caught in the store. 4. I do not know what the sap jars (Jal-Veesa Knot) mean or what moans below; I will look.",
+  "go Door to Quartermaster's Store",
+  "use Door to Fort Chalkmoth Keep",
+  "talk Theyne Indarys",
+  "say 2",
+  "pickpocket Theyne Indarys win",
+  "use Door to Quartermaster's Store",
+  "read Stack of Sap Jars",
+  "look",
+  "take Stack of Sap Jars",
+  "use Door to Fort Chalkmoth Guardroom",
+  "say 2",
+  "say 3 pass",
+  "pick Door to Cellar Door win",
+  "journal",
+  "say 4",
+  "use Door to Cellar Door",
+  "answer 1. The quest is over. Sap jars tied with the knot of Jal-Veesa tree-minder are stacked in a fort with no Hist; the order gaoler Tsleel-Vaku refused me the cellar door and said Never-Writes-Twice keeps its key. Something moans behind it; the order feeds it sap. 2. Return to the order hunt: go to Bell Station by boat from Lilmoth and ask the divers which drowned tower is cut deeper. 3. I could go to Bell Station next, or go ask Never-Writes-Twice in Helstrom about the key and the cellar. 4. I do not know who or what is in the cellar or why the order feeds it sap; I could learn by getting the key from Never-Writes-Twice.",
+  "answer I am Toh-Wo, Secret-Speaker under Never-Writes-Twice. At Fort Chalkmoth I killed the three Sarpa raiders, got the keep key and 100 gold from wall captain Sakeeus-Wan, and lifted the quartermaster Theyne Indarys store key. The store holds sap jars tied with the Jal-Veesa tree-minder knot, which go down the cellar stair, though the fort has no Hist. Gaoler Tsleel-Vaku guards the inner cellar door and refused persuasion and illusion; the door needs a key that Never-Writes-Twice keeps, and cannot be picked. Something moans behind it. I carry about 1150 gold, 2 lockpicks, rapier, 3 paralysis poisons, eye-setting, keystone, disc, map, Unbound note and both fort keys. Unknown: who or what is in the cellar and why the order feeds it sap. Next: go to Bell Station via boat from Lilmoth for the drowned tower, and ask Never-Writes-Twice about the key."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.11508460000000001,
+ "minutes": 1.1,
+ "turns": 29,
+ "tokens": {
+  "input_tokens": 54,
+  "output_tokens": 4319,
+  "cache_read_input_tokens": 233826,
+  "cache_creation_input_tokens": 12101
+ }
+}

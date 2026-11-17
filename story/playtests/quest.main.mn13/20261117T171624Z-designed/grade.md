@@ -1,2 +1,8 @@
-# Grade (way fight)
-1 pass; 2 pass; 3 pass; 4 pass. PASS. The open questions (what moans in the cellar, why the order feeds it sap) are the plan's own.
+# Grade (way fight), read milestone by milestone
+
+1. miss (next): cannot tell which of Meer-Tasi and Sees-Below is the steward; the journal and objective name no one
+2. pass
+3. miss (terms): does not know what the Eye is; nothing at the gate offers it
+4. pass
+
+MISS

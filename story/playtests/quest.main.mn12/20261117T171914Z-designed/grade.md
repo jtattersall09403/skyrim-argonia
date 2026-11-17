@@ -1,2 +1,8 @@
-# Grade (way pickpocket)
-1 pass; 2 pass; 3 pass; 4 pass. PASS. The open questions (what moans in the cellar, why the order feeds it sap) are the plan's own.
+# Grade (way pickpocket), read milestone by milestone
+
+1. pass
+2. pass
+3. pass (Jal-Veesa's knot unknown but offered: the jars and topic.mn12-jars)
+4. pass
+
+PASS

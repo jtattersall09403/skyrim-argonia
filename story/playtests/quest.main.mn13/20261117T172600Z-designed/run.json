@@ -1,0 +1,92 @@
+{
+ "quest": "quest.main.mn13",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn13.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "fight",
+ "choose": null,
+ "know": "story/playtests/quest.main.mn11/20261117T172437Z-designed/notes.md",
+ "created": "20261117T172600Z",
+ "stages": [
+  10,
+  20,
+  30,
+  90
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn04.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn05.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn06.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn07.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn08.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn09.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn10.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn11.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 4,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I am Toh-Wo, Secret-Speaker working for Nesh-Deeka under Never-Writes-Twice. The marker stone shows seven drowned spires off Lilmoth with one cut deeper. The order (Unbound) hunts the Eye of Argonia at the Root, which can heal sick Hist. 2. Go to Bell Station and ask Meer-Tasi, the steward, which tower the stone marks. Sees-Below is also marked. 3. Talk to Meer-Tasi or Sees-Below; fight if needed; my Fort Chalkmoth errand can wait. 4. I do not know what the Root and Eye really are, or what moans in the Fort Chalkmoth cellar, or who the Collector is. I could find out by asking people and exploring.",
+  "talk Meer-Tasi",
+  "say 1",
+  "answer 1. Meer-Tasi says the cut tower is Teku-Sul Spire, nearest Lilmoth, with an unforced great gate with three empty sockets and a priest ghost before it. 2. Dive to Teku-Sul Spire and find the great gate. 3. Fight or sneak past the drowned priests attendants; waterbreathing is an option (I am Argonian so I breathe water, likely fine); I could also buy potions. 4. I do not know what the three sockets need, who Sul-Xeeth the ghost is, or what lies behind the gate; I may learn by talking to the ghost and exploring.",
+  "go Teku-Sul",
+  "answer 1. The ghost of Sul-Xeeth, a priest of the last king, says the gate hides the way to the Root and Eye; three seal-stones open it, all three needed: one in the warden vault at Blackrose Prison, one in the flooded vaults of Gemin, one in the deepest hall of Vorannuhl. 2. Report to Never-Writes-Twice at Nesh-Deeka House in Helstrom. 3. Report first, or go fetch the stones myself; I could fight through those places. Fort Chalkmoth errand is also open. 4. I do not know where or how hard Gemin, Vorannuhl and Blackrose are, or what the Root really is; I can ask Never-Writes-Twice.",
+  "go Never-Writes-Twice",
+  "talk Never-Writes-Twice",
+  "say 1",
+  "answer 1. I reported to Never-Writes-Twice, who promoted me to Reel-Ka (Warrior), gave armour, 300 gold and free beds in Archwarden forts. The order wants all three seal-stones before the Unbound to open the gate to the Root and use the Eye. 2. Fetch the stones from Blackrose Prison (easiest), Gemin and Vorannuhl (worst), in any order. 3. Choose order of stones; fight through; or do Fort Chalkmoth first. 4. I still do not know what the Root and Eye truly are, what moans in the Chalkmoth cellar, or who the Collector is; I can investigate at Chalkmoth.",
+  "answer Notes: Meer-Tasi at Bell Station said the cut tower is Teku-Sul Spire; its great gate has three sockets. Ghost Sul-Xeeth said the three seal-stones are at Blackrose Prison (warden vault), the flooded vaults of Gemin, and the deepest hall of Vorannuhl; all three needed. I reported to Never-Writes-Twice, who made me Reel-Ka with Reel-Ka cuirass and helm, 300 gold (about 1350 total), free beds in Archwarden forts. Map markers for all three places are set; Blackrose is easiest, Vorannuhl worst. The order wants the stones before the Unbound. I still carry the rapier, lockpicks, 3 Grey Seals, 3 Unbound Seals, Recipe for the Seal, Pale Harvest key, disc, keystone, eye-setting. Unknown: what the Root and Eye really are, what moans in Fort Chalkmoth cellar (my own errand, still open), and who the Collector is.",
+  "answer Notes: Meer-Tasi at Bell Station said the cut tower is Teku-Sul Spire; its great gate has three sockets. Ghost Sul-Xeeth said the three seal-stones are at Blackrose Prison (warden vault), the flooded vaults of Gemin, and the deepest hall of Vorannuhl; all three needed. I reported to Never-Writes-Twice, who made me Reel-Ka with Reel-Ka cuirass and helm, 300 gold (about 1350 total), free beds in Archwarden forts. Map markers for all three places are set; Blackrose is easiest, Vorannuhl worst. The order wants the stones before the Unbound. I still carry the rapier, lockpicks, 3 Grey Seals, 3 Unbound Seals, Recipe for the Seal, Pale Harvest key, disc, keystone, eye-setting. Unknown: what the Root and Eye really are, what moans in Fort Chalkmoth cellar (my own errand, still open), and who the Collector is."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.07104289999999999,
+ "minutes": 0.6,
+ "turns": 13,
+ "tokens": {
+  "input_tokens": 22,
+  "output_tokens": 2983,
+  "cache_read_input_tokens": 73489,
+  "cache_creation_input_tokens": 8455
+ }
+}

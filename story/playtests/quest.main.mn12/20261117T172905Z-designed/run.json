@@ -1,0 +1,107 @@
+{
+ "quest": "quest.main.mn12",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn12.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "trapdoor",
+ "choose": null,
+ "know": "story/playtests/quest.main.mn11/20261117T172437Z-designed/notes.md",
+ "created": "20261117T172905Z",
+ "stages": [
+  10,
+  15,
+  25,
+  91
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn04.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn05.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn06.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn07.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn08.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn09.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn10.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn11.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-c/mn13.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 4,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I am Toh-Wo, a Secret-Speaker of the Toh-Reel-Ka under Never-Writes-Twice. The order hunts the Eye of Argonia, a jewel that can heal sick Hist, at the Root. A wounded Unbound scout told me to ask what moans in the cellar of Fort Chalkmoth. This is my own errand. 2. Get into the keep of Fort Chalkmoth, which is locked, and see its cellar. 3. Ask the wall captain (Sakeeus-Wan, marked) for leave, or find another unseen way in; the keep door cannot be picked. I can also enter the guardroom door. Bell Station is the other lead and can come first or later. 4. I do not know what moans in the cellar, what the Root and Eye truly are, or who the Collector is. I could learn by talking to people here and seeing the cellar.",
+  "talk Sakeeus-Wan",
+  "say 1",
+  "answer 1. Captain Sakeeus-Wan will only open the keep if I kill three Sarpa raiders robbing chalk carts on the western approach; he pays 100 gold. 2. Kill the raiders on the western approach and report back, or use the trapdoor in the yard to get in unseen. 3. Fight the raiders for the captain, or sneak in through the yard trapdoor. 4. I do not know who the Sarpa are in detail; I could ask the captain. I still do not know what moans in the cellar.",
+  "look",
+  "look",
+  "use trapdoor",
+  "journal",
+  "go trapdoor",
+  "use Door to Fort Chalkmoth Guardroom",
+  "answer 1. I entered unseen through the yard trapdoor into the cellar guardroom of Fort Chalkmoth. If the garrison sees me they will attack. I am here on my own errand to learn what moans in the cellar. 2. Look at the stack of sap jars in the quartermaster store, speak to the gaoler Tsleel-Vaku, and try the locked cellar door. 3. Do those three in any order; talk to the gaoler, try or pick the cellar door, or inspect the jars. Stay unseen. 4. I do not know why sap jars are here (marked Jal-Veesa Knot), what moans in the cellar, or who the gaoler guards. I can find out by looking and asking.",
+  "talk Tsleel-Vaku",
+  "say 2",
+  "say 3",
+  "say 3 pass",
+  "use Door to Cellar Door",
+  "pick Door to Cellar Door win",
+  "use Door to Quartermaster's Store",
+  "read Stack of Sap Jars",
+  "journal",
+  "go Tsleel-Vaku",
+  "answer 1. The quest is done. In the fort cellar I found jars of Hist sap tied with the knot of the tree-minder of Jal-Veesa, in a fort with no Hist of its own. The gaoler, who serves the Toh-Reel-Ka, refused me the inner door and said Never-Writes-Twice keeps its key. Something moans behind it. 2. Go back to the hunt for the three seal-stones at Blackrose Prison, Gemin and Vorannuhl, marked on the map (and Bell Station for the tower). 3. Pick any of the seal-stone sites, or go to Bell Station; or later press Never-Writes-Twice about the cellar key. 4. I do not know who or what is behind the cellar door, why the order feeds it sap, or why my own order hid it. I could ask Never-Writes-Twice, or find the key.",
+  "answer Notes: I went into Fort Chalkmoth by the yard trapdoor, unseen, to the cellar guardroom. Captain Sakeeus-Wan would open the keep only if I killed three Sarpa raiders, which I did not do. The gaoler Tsleel-Vaku, who is the Toh-Reel-Ka own, would not be persuaded and my illusion failed. The cellar door is locked and cannot be picked; Never-Writes-Twice keeps the key. In the quartermaster store are sap jars tied with the Jal-Veesa tree-minder knot, in a fort with no Hist of its own. Something moans behind the door. I do not know who or what it is, or why the order hides it. Next: the seal-stones at Blackrose Prison, Gemin and Vorannuhl, and Bell Station for the drowned tower. I carry about 1650 gold, 2 lockpicks, rapier, Reelka cuirass and helm, 3 paralysis poisons, keystone, eye-setting, bronze disc, parchment map, Unbound-Note. Unknown: the Root, the Eye, the Collector, and what is in the cellar."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.1061613,
+ "minutes": 1.0,
+ "turns": 24,
+ "tokens": {
+  "input_tokens": 44,
+  "output_tokens": 4097,
+  "cache_read_input_tokens": 183793,
+  "cache_creation_input_tokens": 11681
+ }
+}

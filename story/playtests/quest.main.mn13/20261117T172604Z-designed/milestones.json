@@ -1,0 +1,88 @@
+[
+ {
+  "stage": 10,
+  "kind": "start",
+  "ending": null,
+  "title": "The Kings' Gate",
+  "journal": "Never-Writes-Twice says the marked tower is one of the drowned spires off Lilmoth, and the divers of Bell Station will know which. This is the order's hunt. The order hunts the Eye of Argonia, the old kings' jewel that can heal every sick Hist, which lies at the Root, the place under the sea where the roots of every Hist meet. My own errand to Fort Chalkmoth may wait or come first. I'm to ask Meer-Tasi, the steward of Bell Station, on an islet east of Lilmoth, which tower the stone marks.",
+  "objectives": [
+   "Ask Meer-Tasi, the steward of Bell Station, which tower the marker stone shows. (marker: Meer-Tasi, Sees-Below)"
+  ],
+  "plan": {
+   "going": "The order hunts the Eye of Argonia, the old kings' jewel that can heal every sick Hist; it lies at the Root, where the roots of every Hist meet under the sea, and the Unbound want it first. The order's hunt goes on; the marker stone's tower is a drowned spire off Lilmoth. My own errand to Fort Chalkmoth is open beside it.",
+   "next": "Ask the steward of Bell Station which tower it is.",
+   "ways": "Either order with Fort Chalkmoth; one way here, a question."
+  },
+  "answers": [
+   "I am Toh-Wo, Secret-Speaker working for Nesh-Deeka under Never-Writes-Twice in Helstrom. The marker stone I took shows seven drowned towers off Lilmoth with one cut deeper. The order (the Unbound) hunts the Eye of Argonia, a jewel said to heal every sick Hist, at the Root where all Hist roots meet.",
+   "Ask Meer-Tasi, steward of Bell Station, which tower the stone marks (Sees-Below is also a marker).",
+   "Talk to Meer-Tasi or Sees-Below; or put off this and go to Fort Chalkmoth first to check what moans in the cellar.",
+   "I do not understand what the Root and the Eye really are, what moans in the cellar of Fort Chalkmoth, or who the Collector is. I could find out by asking people and exploring."
+  ],
+  "raw": "1. I am Toh-Wo, Secret-Speaker working for Nesh-Deeka under Never-Writes-Twice in Helstrom. The marker stone I took shows seven drowned towers off Lilmoth with one cut deeper. The order (the Unbound) hunts the Eye of Argonia, a jewel said to heal every sick Hist, at the Root where all Hist roots meet. 2. Ask Meer-Tasi, steward of Bell Station, which tower the stone marks (Sees-Below is also a marker). 3. Talk to Meer-Tasi or Sees-Below; or put off this and go to Fort Chalkmoth first to check what moans in the cellar. 4. I do not understand what the Root and the Eye really are, what moans in the cellar of Fort Chalkmoth, or who the Collector is. I could find out by asking people and exploring."
+ },
+ {
+  "stage": 20,
+  "kind": "stage",
+  "ending": null,
+  "title": "The Kings' Gate",
+  "journal": "The steward, Meer-Tasi, knew the cut tower at once: Teku-Sul Spire, the drowned tower nearest Lilmoth, whose great gate her divers have never forced. The dive is long. I need a Hist's blessing, a spell or potion of waterbreathing (she sells them) or an enchantment, unless I am Argonian; inside the tower there is air. I'm to dive to Teku-Sul and find the great gate. The drowned priests' attendants walk its east halls; I may fight them or slip past.",
+  "objectives": [
+   "Find the great gate deep in Teku-Sul Spire. (marker: Door to Teku-Sul East Halls, Door to Teku-Sul Halls, Ghost of Sul-Xeeth)"
+  ],
+  "plan": {
+   "going": "The marked tower is Teku-Sul Spire, under the sea; its great gate has never been forced.",
+   "next": "Dive to Teku-Sul and find the great gate beyond the east halls.",
+   "ways": "Breathe by a potion (bought or brewed), a blessing, a spell, an enchantment, or being Argonian; fight the attendants, turn them with Restoration, or pass them by stealth."
+  },
+  "answers": [
+   "The cut tower is Teku-Sul Spire, nearest Lilmoth, west of the station under the sea. It has a great gate with three empty sockets nobody has forced, and a priest ghost before it. I carry a disc, keystone and eye-setting that may fit.",
+   "Dive to Teku-Sul and find the great gate.",
+   "As an Argonian I may already breathe water; otherwise buy waterbreathing from Meer-Tasi. Inside I can fight the attendants or slip past.",
+   "I do not know what the gate guards, who Sul-Xeeth the ghost is, or whether my three items fit the sockets; I could ask the ghost."
+  ],
+  "raw": "1. The cut tower is Teku-Sul Spire, nearest Lilmoth, west of the station under the sea. It has a great gate with three empty sockets nobody has forced, and a priest ghost before it. I carry a disc, keystone and eye-setting that may fit. 2. Dive to Teku-Sul and find the great gate. 3. As an Argonian I may already breathe water; otherwise buy waterbreathing from Meer-Tasi. Inside I can fight the attendants or slip past. 4. I do not know what the gate guards, who Sul-Xeeth the ghost is, or whether my three items fit the sockets; I could ask the ghost."
+ },
+ {
+  "stage": 30,
+  "kind": "stage",
+  "ending": null,
+  "title": "The Kings' Gate",
+  "journal": "Before the great gate in Teku-Sul stands the ghost of a priest of the old kings, Sul-Xeeth. The gate has three empty sockets, one for each seal-stone the last king's priests cut, and only all three open it. One lies in the warden's vault at Blackrose Prison, one in the flooded vaults of Gemin, one in the deepest hall of Vorannuhl. I'm to tell Never-Writes-Twice in Nesh-Deeka's House in Helstrom.",
+  "objectives": [
+   "Tell Never-Writes-Twice in Nesh-Deeka's House, Helstrom, what the ghost said. (marker: Never-Writes-Twice)"
+  ],
+  "plan": {
+   "going": "The gate needs three seal-stones; I know where each lies.",
+   "next": "Tell Never-Writes-Twice in Helstrom.",
+   "ways": "One way, the report."
+  },
+  "answers": [
+   "The gate in Teku-Sul guards the way to the Root and the Eye. The ghost Sul-Xeeth says three seal-stones open it, all three needed: one in the warden vault of Blackrose Prison, one in the flooded vaults of Gemin, one in the deepest hall of Vorannuhl.",
+   "Report to Never-Writes-Twice in Nesh-Deeka House, Helstrom.",
+   "Report as told, or go after a stone myself first, or check Fort Chalkmoth cellar.",
+   "I do not know where Gemin and Vorannuhl are, how to get into the Blackrose vault, or what my disc, keystone and eye-setting are for; I could ask Never-Writes-Twice."
+  ],
+  "raw": "1. The gate in Teku-Sul guards the way to the Root and the Eye. The ghost Sul-Xeeth says three seal-stones open it, all three needed: one in the warden vault of Blackrose Prison, one in the flooded vaults of Gemin, one in the deepest hall of Vorannuhl. 2. Report to Never-Writes-Twice in Nesh-Deeka House, Helstrom. 3. Report as told, or go after a stone myself first, or check Fort Chalkmoth cellar. 4. I do not know where Gemin and Vorannuhl are, how to get into the Blackrose vault, or what my disc, keystone and eye-setting are for; I could ask Never-Writes-Twice."
+ },
+ {
+  "stage": 90,
+  "kind": "ending",
+  "ending": "complete",
+  "title": "The Kings' Gate",
+  "journal": "Never-Writes-Twice made me a Reel-Ka, a Warrior of the order, and gave me its heavier armour, three hundred gold and a free bed in every Archwarden fort. Her orders are to take all three seal-stones before the Unbound do. I'm to fetch them from Blackrose Prison, Gemin and Vorannuhl, in any order; all three are marked, Blackrose the least dangerous and Vorannuhl the worst. My own errand to Fort Chalkmoth is still open.",
+  "objectives": [],
+  "plan": {
+   "going": "I am a Reel-Ka; the order wants all three seal-stones before the Unbound.",
+   "next": "Take the three stones from Blackrose Prison, Gemin and Vorannuhl, in any order (MN14 to MN16); Fort Chalkmoth is open too, my own errand.",
+   "ways": "Any order; the journal ranks them by danger."
+  },
+  "answers": [
+   "I reported to Never-Writes-Twice and was promoted to Reel-Ka. The order wants all three seal-stones before the Unbound to open the gate to the Root and use the Eye.",
+   "Fetch the stones from Blackrose Prison, Gemin and Vorannuhl; my Fort Chalkmoth errand is still open.",
+   "Any order of the three stones (Blackrose easiest, Vorannuhl worst), or Fort Chalkmoth first.",
+   "I still do not know what the Eye does when used, what moans in the Chalkmoth cellar, or who the Collector is."
+  ],
+  "raw": "1. I reported to Never-Writes-Twice and was promoted to Reel-Ka. The order wants all three seal-stones before the Unbound to open the gate to the Root and use the Eye. 2. Fetch the stones from Blackrose Prison, Gemin and Vorannuhl; my Fort Chalkmoth errand is still open. 3. Any order of the three stones (Blackrose easiest, Vorannuhl worst), or Fort Chalkmoth first. 4. I still do not know what the Eye does when used, what moans in the Chalkmoth cellar, or who the Collector is."
+ }
+]
