@@ -1,0 +1,662 @@
+# MN14 The Thief's Stone: the quest record's YAML view (new world; its places are not in the story database yet).
+id: quest.main.mn14
+code: MN14
+title: The Thief's Stone
+line: quest.line.main
+group: main
+tier: 0
+status: concept
+shapes: [HEIST, INFILTRATION]
+region: tulmek-washes
+settlement: blackrose-prison
+anchorPlaces: [blackrose-prison, blackrose]
+premise: The Toh-Reel-Ka's new Reel-Ka gets into Blackrose Prison as a guest, unseen or by force and takes the first
+  of the kings' seal-stones from the old warden's vault, whose key the Naga chief carries.
+costTier: L
+milestone: 2
+touches:
+- {id: npc.mn.never-writes-twice, access: read}
+- {id: npc.mn.ennodius-vanin, access: write}
+- {id: npc.mn.corvus-ulvius, access: write}
+- {id: npc.mn.okaz-teel, access: write}
+- {id: faction.mn.blackrose-heirs, access: write}
+- {id: thing.mn.seal-stone-thief, access: write}
+- {id: quest.main.mn15, access: read}
+- {id: quest.main.mn16, access: read}
+sources: [story/design/quests/lines/main-plot.md §5 quest 14, §6, §9]
+essentialTopics: [topic.mn14-gate, topic.mn14-toll, topic.mn14-duel]
+startWhen:
+  questStage: [quest.main.mn13, '>=', 90]
+start: 10
+recordStatus: design
+foundation: 'Written 2026-11-17 from main-plot.md quest 14, passed by the owner. Starts with MN15 and MN16 on MN13''s last
+  stage (Never-Writes-Twice made the player a Reel-Ka and marked the three places); the order is the player''s. Three
+  ways in (toll, Speech 75 or a duel that ends in a yield; unseen; by force) leave three states inside (guest, unseen,
+  enemy), each its own stage with its own entry. The quest ends when the stone is taken: four end stages say which other
+  stones are still out (their quests keep their own markers). With all three stones held, MN17''s first stage is the
+  report to Never-Writes-Twice in Helstrom (Ka-Deelith and her last order). The Collector''s side quest is not in this
+  record; his offer and what killing him loses are told here.'
+recordSources:
+  place: 'python -m tools.newworld.place_card blackrose-prison --mined (Cracked Tusk: two keep interiors, CrackedTuskKeep01
+    as the chief''s hall, CrackedTuskKeep02 as the drowned lower cells; the warden''s vault is added off the hall from
+    Skyrim''s Imperial fort pieces)'
+  lore: ['story/lore/topics/prisons.md §Blackrose Prison, §The Rose in 4E 201', 'story/lore/tribes.md §Naga',
+    'story/design/quests/lines/main-plot.md §3, §5 quest 13 and 14, §6']
+centrepiece: INFILTRATE
+actionPlan:
+- {skill: Speech, use: persuade, reason: the gate-captain lets a Reel-Ka through for words alone at Speech 75}
+- {skill: One-Handed, use: duel, reason: 'the gate-captain duels a challenger and yields when badly hurt (Two-Handed,
+    Destruction or any fighting skill serves alike)'}
+- {skill: Sneak, use: slip-past, reason: 'past the gate and the yard''s guards unseen; Illusion''s Invisibility serves'}
+- {skill: Lockpicking, use: pick-a-lock, reason: the warden's vault has an Expert lock}
+- {skill: Pickpocket, use: pickpocket, reason: 'the vault key on the Naga chief; the Collector''s ring (hard)'}
+- {skill: Archery, use: fight, reason: 'by force: the garrison in the yard and the chief in his hall (any fighting skill)'}
+truth:
+- id: t1
+  when: when the last of the old kings fell
+  who: [the kings' priests]
+  where: Teku-Sul Spire
+  what: The three seal-stones of the gate were carried off; one passed from hand to hand until a masked thief who sought
+    the Eye was taken with it.
+- id: t2
+  when: the Third Era
+  who: [the masked thief]
+  where: Blackrose Prison
+  what: The thief died in the Rose's cells. The wardens put his stone in the warden's vault off the great hall, where
+    it has lain since.
+- id: t3
+  when: generations before 4E 201
+  who: [the Blackguards' heirs]
+  where: Blackrose Prison
+  what: The prison-born heirs of the Rose's inmates took the fortress. In 4E 201 they hold the upper walls under a Naga
+    raj-kaal, Okaz-Teel, who carries the vault's key on his belt. They attack strangers on sight. Their gate-captain,
+    Corvus Ulvius, stands outside the gate and lets in whom he chooses, for a toll, for good words or for a fight he loses.
+- id: t4
+  when: days before the player comes
+  who: [npc.mn.ennodius-vanin]
+  where: the chief's hall
+  what: The Collector came to buy the stone, paid the gate's toll and is the chief's guest. Okaz-Teel told him to wait
+    while he learns what the stone is worth. He wears a ring of Kothringi silver that helps hands at locks and pockets.
+facts:
+- {id: fact.mn14.stone-in-vault, claim: 'The thief''s seal-stone lies in the old warden''s vault, a locked room off the
+    chief''s hall in Blackrose Prison.', from: t2}
+- {id: fact.mn14.key-on-chief, claim: 'Okaz-Teel, the Naga raj-kaal who leads the prison''s people, carries the vault''s
+    key.', from: t3}
+- {id: fact.mn14.hostile, claim: 'The Blackguards'' heirs who live in the prison attack strangers on sight.', from: t3}
+- {id: fact.mn14.gate-ways, claim: 'Corvus Ulvius lets a stranger through the gate as a guest for 300 gold, for good
+    words or if the stranger beats him in a duel; a guest is not attacked inside.', from: t3}
+- {id: fact.mn14.collector-here, claim: 'The Collector is Okaz-Teel''s guest in the hall, waiting to buy the stone.',
+  from: t4}
+- {id: fact.mn14.ring, claim: 'The Collector''s ring of Kothringi silver helps the hands at locks and pockets.', from: t4}
+cast:
+- id: npc.mn.corvus-ulvius
+  persona: {race: Imperial, sex: male, role: 'gate-captain of Blackrose Prison, a Blackguard heir born in the Rose',
+    invented: true}
+  wants: the gate's toll, and a fight now and then to show the walls he is still the best of them
+  fears: the walls seeing him beaten
+  knowledge: {fact.mn14.gate-ways: knows, fact.mn14.hostile: knows, fact.mn14.key-on-chief: knows, fact.mn14.collector-here: knows}
+- id: npc.mn.okaz-teel
+  persona: {race: Argonian (Naga breed), sex: male, role: 'raj-kaal of the Blackguards'' heirs in Blackrose Prison',
+    invented: true}
+  wants: the best price for the stone; the Rose kept the heirs'
+  fears: the Toh-Reel-Ka taking the Rose back for the Xeech-Leel
+  knowledge: {fact.mn14.stone-in-vault: knows, fact.mn14.key-on-chief: knows, fact.mn14.collector-here: knows}
+- id: npc.mn.ennodius-vanin
+  wants: the Eye, after twenty years of hunting it (main-plot §4)
+  fears: being beaten to it by the Toh-Reel-Ka
+  knowledge: {fact.mn14.stone-in-vault: knows, fact.mn14.collector-here: knows, fact.mn14.ring: knows}
+things:
+- id: thing.mn.seal-stone-thief
+  kind: item
+  name: Seal-Stone of the Kings
+  source: 'new: a quest item on King of the Murkmire''s crystal (main-plot §9, checked there), one of three alike; the
+    gate''s sockets take it in MN18'
+  states: {before-take: in the vault's chest, after-take: carried until MN18 sets it in the gate}
+  where: the warden's vault, in thing.mn14.vault-chest
+- id: thing.mn14.vault-chest
+  kind: container
+  name: Warden's Chest
+  source: 'new: an Imperial chest (Skyrim''s) in the warden''s vault, unlocked; owned by Okaz-Teel'
+  states: {all: in the vault}
+  where: the warden's vault
+- id: thing.mn14.vault-door
+  kind: door
+  name: Warden's Vault
+  source: 'new: the vault door off the chief''s hall, Expert lock, its key thing.mn14.vault-key (the vault is added from
+    Skyrim''s Imperial fort pieces, main-plot §5 quest 14)'
+  states: {all: locked until opened}
+  where: the chief's hall
+- id: thing.mn14.vault-key
+  kind: item
+  name: Warden's Vault Key
+  source: 'new: a key, carried by Okaz-Teel; sold by him to a guest for 1,000 gold'
+  states: {all: 'on Okaz-Teel, or carried'}
+  where: Okaz-Teel
+- id: thing.mn14.hall-door
+  kind: door
+  name: Raj-Kaal's Hall
+  source: 'the door from the yard into CrackedTuskKeep01 (the source''s), named; using it at stage 10 (without leave)
+    sets flag.mn14.inside-unseen'
+  where: the prison yard
+- id: thing.mn14.collector-ring
+  kind: item
+  name: Collector's Ring of Kothringi Silver
+  source: 'new: a silver ring of Skyrim''s, enchanted Fortify Lockpicking 15 and Fortify Pickpocket 15, worn by the
+    Collector; pickpocketed (hard) or taken from his body'
+  where: npc.mn.ennodius-vanin
+- id: thing.mn14.collector-purse
+  kind: item
+  name: Collector's Purse
+  source: 'new: 400 gold in a purse, on the Collector; had only from his body (it is what he came to buy the stone with,
+    short of the chief''s price)'
+  where: npc.mn.ennodius-vanin
+placements:
+- ref: npc.mn.corvus-ulvius
+  kind: person
+  base: {kind: template_person, id: 'to choose: an Imperial bandit chief template (Skyrim)'}
+  anchor: {place: blackrose-prison, rule: navmesh, need: 'the gate-captain outside the prison''s main gate, a step from
+      the road the player comes by'}
+  enabled: true
+  level: 30
+  owner: faction.mn.blackrose-heirs
+- ref: npc.mn.okaz-teel
+  kind: person
+  base: {kind: template_person, id: 'to choose: an Argonian of the Naga breed''s look (our ecology), a chief''s template'}
+  anchor: {place: blackrose-prison, rule: navmesh, need: 'the raj-kaal''s seat in the chief''s hall (CrackedTuskKeep01)'}
+  enabled: true
+  level: 36
+  killChoice: true
+- ref: npc.mn.ennodius-vanin
+  kind: person
+  base: {kind: template_person, id: 'the Collector''s own (MN06 places him first as a note; this is his first standing
+      self)'}
+  anchor: {place: blackrose-prison, rule: navmesh, need: 'a guest''s bench in the chief''s hall, apart from the garrison'}
+  enabled: true
+  level: 20
+  killChoice: true
+- ref: npc.mn14.heir-guard
+  kind: person
+  base: {kind: template_person, id: 'to choose: bandit templates (Skyrim), one per post'}
+  count: 8
+  anchor: {place: blackrose-prison, rule: navmesh, need: 'eight Blackguard heirs on the upper walls and in the yard; the
+      vault''s side of the hall seen by none of them at night'}
+  name: Blackguard Heir
+  level: 26
+  hostile: true
+- ref: thing.mn14.vault-door
+  kind: door
+  base: {kind: existing_base, id: 'to choose: an Imperial fort door (Skyrim)'}
+  anchor: {place: blackrose-prison, rule: surface, need: 'a locked door in the chief''s hall wall into a small added
+      room, the warden''s vault'}
+  lock: {level: expert, key: thing.mn14.vault-key}
+  owner: npc.mn.okaz-teel
+- ref: thing.mn14.vault-chest
+  kind: thing
+  base: {kind: existing_base, id: 'to choose: an Imperial chest (Skyrim)'}
+  anchor: {place: blackrose-prison, rule: surface, need: 'one chest in the warden''s vault'}
+  owner: npc.mn.okaz-teel
+- ref: thing.mn.seal-stone-thief
+  kind: thing
+  base: {kind: template_item, id: 'to choose: King of the Murkmire''s crystal'}
+  container: thing.mn14.vault-chest
+  name: Seal-Stone of the Kings
+- ref: thing.mn14.vault-key
+  kind: thing
+  base: {kind: item, id: thing.mn14.vault-key}
+  carriedBy: npc.mn.okaz-teel
+- ref: thing.mn14.collector-ring
+  kind: thing
+  base: {kind: template_item, id: 'to choose: a silver ring (Skyrim)'}
+  carriedBy: npc.mn.ennodius-vanin
+- ref: thing.mn14.collector-purse
+  kind: thing
+  base: {kind: item, id: item.gold}
+  count: 400
+  carriedBy: npc.mn.ennodius-vanin
+- ref: thing.mn14.hall-door
+  kind: door
+  formKey: 'the source''s door into CrackedTuskKeep01 (to read from the census when built)'
+  placeName: Raj-Kaal's Hall
+hooks:
+- {thing: thing.mn14.hall-door, hook: activate, setsFlag: flag.mn14.inside-unseen, note: 'counts only at stage 10 (its
+    successor is at 10 alone): the player came in without the gate-captain''s leave'}
+conclusions:
+- id: c1
+  statement: The first stone is in the warden's vault, and the chief's key opens it.
+  clues: [k1, k2, k3]
+clues:
+- {id: k1, form: line, carrier: npc.mn.corvus-ulvius, gives: [fact.mn14.key-on-chief], supports: [c1]}
+- {id: k2, form: thing, carrier: thing.mn14.vault-door, gives: [fact.mn14.stone-in-vault], supports: [c1]}
+- {id: k3, form: line, carrier: npc.mn.ennodius-vanin, gives: [fact.mn14.stone-in-vault], supports: [c1]}
+shapeData:
+  target: the thief's seal-stone in the warden's vault
+  guard: the Blackguard heirs on the walls and in the yard; the vault's Expert lock; the key on the raj-kaal
+  ways: 'the gate as a guest (300 gold, Speech 75 or a duel); unseen past the gate; by force'
+  rival: the Collector, the chief's guest, who waits to buy the same stone
+stages:
+- id: 10
+  place: blackrose-prison
+  journal: text.journal.mn14.10
+  journalText: 'Never-Writes-Twice sent me after the three seal-stones. A dead thief''s stone lies in the warden''s
+    vault at Blackrose Prison, whose people, the Blackguards'' heirs, attack strangers on sight. Their gate-captain
+    stands outside the gate. I''m to get in: as a guest past the gate-captain (a toll, words or a duel), unseen past
+    the walls, or by force.'
+  objectives:
+  - id: gate
+    text: text.objective.mn14.gate
+    objectiveText: Get into Blackrose Prison; the gate-captain stands at the gate.
+    target: npc.mn.corvus-ulvius, marker.mn13.blackrose-prison
+    completeWhen:
+      questStage: [quest.main.mn14, ≥, 15]
+  successors:
+  - to: 20
+    when:
+      all:
+      - topicHeardFrom: [topic.mn14-toll, npc.mn.corvus-ulvius]
+      - {goldAtLeast: 300}
+  - to: 20
+    when:
+      all:
+      - topicHeardFrom: [topic.mn14-persuade, npc.mn.corvus-ulvius]
+      - skillAtLeast: [Speech, 75]
+  - to: 15
+    when:
+      topicHeardFrom: [topic.mn14-duel, npc.mn.corvus-ulvius]
+  - to: 25
+    when:
+      flag: [flag.mn14.inside-unseen, true]
+  - to: 30
+    when:
+      not: {npcAlive: npc.mn.corvus-ulvius}
+  failForward:
+  - to: 95
+    when:
+      not: {npcAlive: npc.mn.never-writes-twice}
+  directions: Blackrose Prison stands in the marsh water a short walk east of Blackrose's quay, a grey fortress with
+    fires on its upper wall. Boats from Helstrom's quay go down to Blackrose. The gate-captain stands outside the main
+    gate on the road.
+  information:
+    going: I am a Reel-Ka of the Toh-Reel-Ka, hunting the three seal-stones that open the kings' gate at Teku-Sul before
+      the Unbound get them. One lies in the warden's vault in Blackrose Prison. The prison's people attack strangers.
+    next: get into the prison; the gate-captain outside the gate is the first person to deal with
+    ways: 'pay the gate-captain 300 gold, persuade him (Speech 75) or duel him until he yields: each makes me a guest,
+      and the garrison stops attacking me; or slip past the walls unseen (Sneak, Invisibility), and they attack if they
+      see me; or fight my way in (any fighting skill), and the whole garrison fights me'
+    carriers:
+    - {know: the stone is in the warden's vault, by: [journal, line:topic.mn14-gate, ask:topic.mn-seal-stones]}
+    - {know: the prison's people attack strangers, by: [journal, line:topic.mn14-gate]}
+    - {know: the gate-captain is at the gate, by: [journal, objective, marker:npc.mn.corvus-ulvius, name:npc.mn.corvus-ulvius]}
+    - {know: 'the three ways in and the state each leaves', by: [journal, line:topic.mn14-gate]}
+  actions:
+  - {skill: Speech, use: persuade, target: Corvus Ulvius, note: Speech 75}
+  - {skill: Sneak, use: slip-past, target: the walls and the yard, note: Illusion's Invisibility serves}
+- id: 15
+  place: blackrose-prison
+  journal: text.journal.mn14.15
+  journalText: Corvus Ulvius, the gate-captain, took up my challenge. He fights until he is badly hurt and then yields.
+    If he yields, I go in as a guest. If I kill him, the whole garrison will fight me. I'm to beat him.
+  objectives:
+  - id: duel
+    text: text.objective.mn14.duel
+    objectiveText: Beat Corvus Ulvius in the duel until he yields.
+    target: npc.mn.corvus-ulvius
+    completeWhen:
+      questStage: [quest.main.mn14, ≥, 20]
+  onEnter:
+  - {note: 'the fight that ends in a yield (blocks.md): Corvus fights the player; when badly hurt he yields and sets
+      flag.mn14.yielded'}
+  successors:
+  - to: 20
+    when:
+      flag: [flag.mn14.yielded, true]
+  - to: 30
+    when:
+      not: {npcAlive: npc.mn.corvus-ulvius}
+  failForward:
+  - to: 95
+    when:
+      not: {npcAlive: npc.mn.never-writes-twice}
+  information:
+    going: I challenged the gate-captain to a duel to get in as a guest
+    next: beat him until he yields
+    ways: 'when he yields I am a guest; if I kill him instead, the garrison fights me'
+    carriers:
+    - {know: he yields when badly hurt; killing him makes the garrison my enemy, by: [journal, line:topic.mn14-duel]}
+    - {know: beat him, by: [objective, marker:npc.mn.corvus-ulvius]}
+  actions:
+  - {skill: One-Handed, use: duel, target: Corvus Ulvius, note: any fighting skill; he yields badly hurt}
+- id: 20
+  place: blackrose-prison
+  journal: text.journal.mn14.20
+  journalText: 'Corvus Ulvius let me through the gate as a guest, and the Blackguards'' heirs will not attack me now.
+    The vault''s key is on Okaz-Teel, the Naga raj-kaal in his hall. I''m to get the stone: buy the key from him for
+    1,000 gold, lift it from his belt, or pick the vault''s lock at night when the hall is quiet. A theft that is seen
+    turns the garrison on me.'
+  onEnter:
+  - {makePeace: faction.mn.blackrose-heirs}
+  objectives:
+  - id: stone20
+    text: text.objective.mn14.stone20
+    objectiveText: Take the seal-stone from the Warden's Vault in Okaz-Teel's hall.
+    target: thing.mn14.vault-door, npc.mn.okaz-teel
+    completeWhen:
+      questStage: [quest.main.mn14, ≥, 90]
+  successors:
+  - to: 22
+    when:
+      all:
+      - topicHeardFrom: [topic.mn14-buy-key, npc.mn.okaz-teel]
+      - {goldAtLeast: 1000}
+  - &take90
+    to: 90
+    when:
+      all:
+      - hasItem: [thing.mn.seal-stone-thief, 1]
+      - not: {questStage: [quest.main.mn15, ≥, 90]}
+      - not: {questStage: [quest.main.mn16, ≥, 90]}
+  - &take91
+    to: 91
+    when:
+      all:
+      - hasItem: [thing.mn.seal-stone-thief, 1]
+      - questStage: [quest.main.mn15, ≥, 90]
+      - not: {questStage: [quest.main.mn16, ≥, 90]}
+  - &take92
+    to: 92
+    when:
+      all:
+      - hasItem: [thing.mn.seal-stone-thief, 1]
+      - not: {questStage: [quest.main.mn15, ≥, 90]}
+      - questStage: [quest.main.mn16, ≥, 90]
+  - &take93
+    to: 93
+    when:
+      all:
+      - hasItem: [thing.mn.seal-stone-thief, 1]
+      - questStage: [quest.main.mn15, ≥, 90]
+      - questStage: [quest.main.mn16, ≥, 90]
+  failForward:
+  - to: 95
+    when:
+      not: {npcAlive: npc.mn.never-writes-twice}
+  directions: The raj-kaal's hall is the keep's door across the yard from the gate; the vault's door is in the hall's
+    wall.
+  information:
+    going: I am inside as a guest; the garrison does not attack me
+    next: get the stone from the warden's vault in Okaz-Teel's hall
+    ways: 'buy the key from Okaz-Teel for 1,000 gold; pickpocket it from him; pick the Expert lock at night; any theft
+      seen turns the garrison on me. The Collector is here too: I can talk to him, lift his ring (hard), kill him for it
+      (losing his side errand) or leave him'
+    carriers:
+    - {know: I am a guest, by: [journal, line:topic.mn14-toll, line:topic.mn14-persuade, line:topic.mn14-yield]}
+    - {know: key on Okaz-Teel; the vault in his hall, by: [journal, objective, marker:npc.mn.okaz-teel, marker:thing.mn14.vault-door,
+        name:thing.mn14.vault-door]}
+    - {know: buy, lift or pick, and a seen theft turns them, by: [journal, line:topic.mn14-okaz-who]}
+    - {know: the Collector's offer and ring, by: [line:topic.mn14-collector-greet, ask:topic.mn14-collector-ring]}
+  actions:
+  - {skill: Pickpocket, use: pickpocket, target: Okaz-Teel, note: the vault key}
+  - {skill: Lockpicking, use: pick-a-lock, target: the Warden's Vault, note: Expert, at night}
+- id: 22
+  place: blackrose-prison
+  journal: text.journal.mn14.22
+  journalText: I paid Okaz-Teel 1,000 gold, and he gave me the key to the warden's vault and what lies in it. I'm to
+    take the seal-stone from the vault.
+  onEnter:
+  - {takeGold: 1000}
+  - giveItem: [thing.mn14.vault-key, 1]
+  - {giveOwnership: thing.mn14.vault-chest}
+  objectives:
+  - id: stone22
+    text: text.objective.mn14.stone22
+    objectiveText: Take the seal-stone from the Warden's Vault.
+    target: thing.mn14.vault-chest
+    completeWhen:
+      questStage: [quest.main.mn14, ≥, 90]
+  successors: [*take90, *take91, *take92, *take93]
+  failForward:
+  - to: 95
+    when:
+      not: {npcAlive: npc.mn.never-writes-twice}
+  information:
+    going: I bought the vault key; the stone is mine to take
+    next: open the Warden's Vault and take the stone
+    ways: none needed
+    carriers:
+    - {know: open the vault and take the stone, by: [journal, objective, marker:thing.mn14.vault-chest]}
+- id: 25
+  place: blackrose-prison
+  journal: text.journal.mn14.25
+  journalText: 'I got into the raj-kaal''s hall without the gate-captain''s leave. If a guard sees me, the whole
+    garrison will attack. The vault''s key is on Okaz-Teel, the Naga raj-kaal. I''m to get the stone unseen: lift the
+    key from him or pick the vault''s Expert lock. Or I can fight him and take the key from his body.'
+  objectives:
+  - id: stone25
+    text: text.objective.mn14.stone25
+    objectiveText: Take the seal-stone from the Warden's Vault unseen, or by force.
+    target: thing.mn14.vault-door, npc.mn.okaz-teel
+    completeWhen:
+      questStage: [quest.main.mn14, ≥, 90]
+  successors: [*take90, *take91, *take92, *take93]
+  failForward:
+  - to: 95
+    when:
+      not: {npcAlive: npc.mn.never-writes-twice}
+  information:
+    going: I am inside unseen; the garrison is still hostile and attacks if it sees me
+    next: get the stone from the warden's vault
+    ways: pickpocket the key from Okaz-Teel, pick the Expert lock, or fight him and take it from his body
+    carriers:
+    - {know: seen means attacked, by: [journal]}
+    - {know: key on Okaz-Teel; the vault, by: [journal, objective, marker:npc.mn.okaz-teel, marker:thing.mn14.vault-door,
+        name:thing.mn14.vault-door]}
+  actions:
+  - {skill: Sneak, use: slip-past, target: the hall}
+  - {skill: Pickpocket, use: pickpocket, target: Okaz-Teel}
+  - {skill: Lockpicking, use: pick-a-lock, target: the Warden's Vault, note: Expert}
+- id: 30
+  place: blackrose-prison
+  journal: text.journal.mn14.30
+  journalText: Corvus Ulvius is dead, and the Blackguards' heirs are fighting me. The vault's key is on Okaz-Teel, the
+    Naga raj-kaal, in his hall across the yard. I'm to fight through to him and take the key from his body, or pick the
+    vault's Expert lock.
+  objectives:
+  - id: stone30
+    text: text.objective.mn14.stone30
+    objectiveText: Take the seal-stone from the Warden's Vault in Okaz-Teel's hall.
+    target: npc.mn.okaz-teel, thing.mn14.vault-door
+    completeWhen:
+      questStage: [quest.main.mn14, ≥, 90]
+  successors: [*take90, *take91, *take92, *take93]
+  failForward:
+  - to: 95
+    when:
+      not: {npcAlive: npc.mn.never-writes-twice}
+  information:
+    going: I am the garrison's enemy
+    next: get the key from Okaz-Teel in his hall, or pick the vault
+    ways: fight the guards and the chief and take the key from his body, or pick the Expert lock
+    carriers:
+    - {know: fight to Okaz-Teel and take the key, by: [journal, objective, marker:npc.mn.okaz-teel]}
+    - {know: the vault, by: [marker:thing.mn14.vault-door, name:thing.mn14.vault-door]}
+  actions:
+  - {skill: Archery, use: fight, target: the garrison and Okaz-Teel, note: any fighting skill}
+- id: 90
+  place: blackrose-prison
+  journal: text.journal.mn14.90
+  journalText: I took the thief's seal-stone from the warden's vault in Blackrose Prison. Two stones are still out, in
+    the flooded vaults of Gemin and the deepest hall of Vorannuhl, and both are still marked. I'm to take them.
+  ending: complete
+  endingId: e-stone
+- id: 91
+  place: blackrose-prison
+  journal: text.journal.mn14.91
+  journalText: I took the thief's seal-stone from Blackrose Prison, and I already carry Gemin's. One stone is left, in
+    the deepest hall of Vorannuhl, and it is still marked. I'm to take it.
+  ending: complete
+  endingId: e-stone
+- id: 92
+  place: blackrose-prison
+  journal: text.journal.mn14.92
+  journalText: I took the thief's seal-stone from Blackrose Prison, and I already carry Vorannuhl's. One stone is left,
+    in the flooded vaults of Gemin, and it is still marked. I'm to take it.
+  ending: complete
+  endingId: e-stone
+- id: 93
+  place: blackrose-prison
+  journal: text.journal.mn14.93
+  journalText: I took the thief's seal-stone from Blackrose Prison. I now carry all three seal-stones. I'm to bring them
+    to Never-Writes-Twice in Nesh-Deeka's House in Helstrom.
+  ending: complete
+  endingId: e-stone
+- {id: 95, place: blackrose-prison, journal: text.journal.mn14.95, journalText: Never-Writes-Twice is dead. Nobody is
+    left in the order to tell me what the stones are for., ending: failed, endingId: e-thread}
+endings:
+- id: e-stone
+  when: the player took the thief's stone
+  seen: 'the stone is carried; the garrison stays as the player left it: friendly to a guest, hostile otherwise; the
+    Collector, if alive, stays in the hall with his side errand open'
+- id: e-thread
+  when: Never-Writes-Twice died
+  world:
+  - setFlag: [flag.main.thread-severed, true]
+  seen: the main quest's message that the thread is severed
+terms:
+- {term: Blackguards' heirs, meets: '10, line:topic.mn14-gate', told: 'the prison-born children of the Rose''s old
+    inmates, who hold the prison now', ask: topic.mn14-heirs}
+- {term: the Rose, meets: '10, line:topic.mn14-gate', told: 'what the prison''s people call Blackrose Prison', ask: topic.mn14-heirs}
+- {term: raj-kaal, meets: '10, journal', told: 'a Naga war-chief; Okaz-Teel leads the prison''s people', ask: topic.mn14-okaz-who}
+- {term: Naga, meets: '10, journal', told: a breed of Argonian of the deep swamps, ask: topic.mn14-okaz-who}
+- {term: Corvus Ulvius, meets: '10, speaks first', told: the gate-captain, ask: topic.mn14-corvus-who}
+- {term: the Collector's ring, meets: '20, line:topic.mn14-collector-greet', told: 'Kothringi silver that helps the
+    hands at locks and pockets', ask: topic.mn14-collector-ring}
+topics:
+- id: topic.mn14-gate
+  label: (speaks first)
+  person: npc.mn.corvus-ulvius
+  kind: speaks-first
+  stages: [10]
+  essential: true
+  intent: 'Corvus Ulvius, outside the gate. Tells: this is the Rose, and the Blackguards'' heirs born in it hold it now;
+    strangers who walk in are killed on the walls. He lets a stranger in as a guest three ways: 300 gold to him, words
+    good enough to move him, or a duel with him, fists and steel, until one yields. A guest walks the yard and the hall
+    and nobody touches them. Anyone who climbs the walls without his leave is fair game, and anyone who kills him has
+    the whole Rose to fight. If the player asks what they want inside, he says the raj-kaal Okaz-Teel keeps the old
+    warden''s vault in his hall and the key on his belt, and he already has a buyer for what lies in it, the Imperial
+    in the hall. Offers topic.mn14-toll, topic.mn14-persuade and topic.mn14-duel as answers. Does: nothing.'
+  uses: [fact.mn14.hostile, fact.mn14.gate-ways, fact.mn14.key-on-chief, fact.mn14.collector-here]
+  new: true
+- id: topic.mn14-toll
+  label: Here is your toll. (300 gold)
+  person: npc.mn.corvus-ulvius
+  stages: [10]
+  essential: true
+  intent: 'Corvus. Checks: goldAtLeast 300. Tells: he waves the player in as a guest of the Rose; the walls will let
+    them be. Does: takes 300 gold; sets stage 20. Fallback: no coin, no gate; words or steel are the other ways.'
+  grants: [{takeGold: 300}]
+  new: true
+- id: topic.mn14-persuade
+  label: (Persuade) The Toh-Reel-Ka can send you a hundred like me. Let one in quietly instead.
+  person: npc.mn.corvus-ulvius
+  stages: [10]
+  essential: false
+  intent: 'Corvus. Checks: skillAtLeast [Speech, 75]. Tells: he laughs and lets the player in as a guest, since a quiet
+    Reel-Ka is cheaper than a loud one. Does: sets stage 20. Fallback: words are wind at this gate; the player is left
+    the toll or a duel, and this line is not offered again.'
+  new: true
+- id: topic.mn14-duel
+  label: I'll fight you for the gate.
+  person: npc.mn.corvus-ulvius
+  stages: [10]
+  essential: true
+  intent: 'Corvus. Tells: he likes that; until one of them yields; if he yields, the player walks in as a guest; if
+    the player kills him, the Rose fights them. Does: sets stage 15 (the duel begins, the yield block).'
+  new: true
+- id: topic.mn14-yield
+  label: (on yielding)
+  person: npc.mn.corvus-ulvius
+  stages: [15]
+  essential: false
+  intent: 'Corvus, when he yields. Tells: enough; he gives the gate; the player is a guest of the Rose and nobody on
+    the walls will touch them. Does: sets flag.mn14.yielded (stage 20).'
+  new: true
+- id: topic.mn14-corvus-who
+  label: Who are you?
+  person: npc.mn.corvus-ulvius
+  stages: [10, 15, 20, 22, 25, 90, 91, 92, 93]
+  intent: 'Corvus. Tells: captain of the Rose''s gate, born in its cells like his father and his father''s mother; he
+    keeps the gate because he has not lost a fight at it in eleven years.'
+  new: true
+- id: topic.mn14-heirs
+  label: Who are the Blackguards' heirs?
+  person: npc.mn.corvus-ulvius
+  stages: [10, 15, 20, 22, 25]
+  intent: 'Corvus. Tells: the Rose was the Empire''s prison, built for Argonians; when the Empire left, the prisoners''
+    children took it for their own and call it the Rose; they live by the road and the boat, and they answer to the
+    raj-kaal, Okaz-Teel, a Naga of the deep swamp.'
+  new: true
+- id: topic.mn14-okaz-who
+  label: Who are you?
+  person: npc.mn.okaz-teel
+  stages: [20, 22, 25]
+  intent: 'Okaz-Teel, in his hall (talks only to a guest; at 25 a player who speaks to him is seen). Tells: he is the
+    raj-kaal of the Rose, the war-chief of its people; a Naga is an Argonian of the deep swamp, and he says it with
+    pride. The warden''s vault in his wall holds a thief''s old stone; the Imperial has offered for it and been told to
+    wait; the key is on his belt and goes to whoever pays 1,000 gold first. He watches his own belt, and his people watch
+    the vault, and a thief they see is a thief they kill.'
+  uses: [fact.mn14.stone-in-vault, fact.mn14.key-on-chief]
+  new: true
+- id: topic.mn14-buy-key
+  label: I'll buy the key to the warden's vault. (1000 gold)
+  person: npc.mn.okaz-teel
+  stages: [20]
+  essential: false
+  intent: 'Okaz-Teel. Checks: goldAtLeast 1000. Tells: the Imperial waited too long; he gives the key and says the
+    stone is the player''s. Does: sets stage 22 (takes 1,000 gold, gives the key and the chest''s contents). Fallback:
+    1,000 gold, not a coin less; the Imperial can still outbid a pauper.'
+  new: true
+- id: topic.mn14-collector-greet
+  label: (greeting)
+  person: npc.mn.ennodius-vanin
+  kind: greeting
+  stages: [10, 15, 20, 22, 25, 30]
+  intent: 'The Collector, in the hall (he never fights and never calls the guards). Tells: so the Toh-Reel-Ka''s hound
+    has found him again; he left the player a note in Gideon; he has offered for the stone and been told to wait, and
+    he will not bid against the order. He has a side errand for a capable hand: a riddle, not a road, and the Eye can
+    wait for it; what lies at the end of it is made for whatever guards the Root. (The side quest itself is its own
+    record.)'
+  uses: [fact.mn14.collector-here]
+  new: true
+- id: topic.mn14-collector-ring
+  label: That ring on your finger. What is it?
+  person: npc.mn.ennodius-vanin
+  stages: [10, 15, 20, 22, 25, 30, 90, 91, 92, 93]
+  intent: 'The Collector. Tells: Kothringi silver, from a knight''s barrow in the Kotherra; it steadies the hand at a
+    lock or a pocket; it is not for sale. If the player asks what he would lose: alive he is worth more to them than the
+    ring, for his errand; a dead man gives no riddles.'
+  uses: [fact.mn14.ring]
+  new: true
+- id: topic.mn-the-collector
+  label: The Collector
+  person: npc.mn.corvus-ulvius
+  stages: [10, 15, 20, 22, 25]
+  intent: 'Corvus. Tells: the Imperial paid the toll like an honest man, which nobody here trusts; he sits in the hall
+    as the raj-kaal''s guest waiting to buy the stone.'
+  new: false
+- id: topic.mn-umbriel
+  label: Umbriel
+  person: npc.mn.corvus-ulvius
+  stages: [10, 15, 20, 22, 25, 90, 91, 92, 93]
+  intent: 'Corvus. Tells: the flying city came down on Lilmoth when his grandmother was a girl; its dead came as far as
+    the Rose''s walls and the walls held.'
+  new: false
+review:
+  reviewer: writer's lore checks; quest-reviewer round to follow
+  findings:
+  - {id: L1, severity: lore, ids: [cast.npc.mn.okaz-teel], finding: 'A Naga raj-kaal leads the Blackguards'' heirs.',
+    answer: 'sourced: blackrose-prison place card (held by the heirs under a Naga raj-kaal); prisons.md (raj-kaal Drakeeh,
+      canon''s precedent)'}
+  - {id: L2, severity: lore, ids: [stages.20], finding: 'Making peace with the garrison by a toll, words or a yield.',
+    answer: 'main-plot §9: the garrison is placed hostile and the toll, persuasion or yield makes peace with its faction'}
+  - {id: L3, severity: lore, ids: [stages.25], finding: 'Entering unseen is detected by using the hall''s door at stage
+      10.', answer: 'the only allowed trigger for "inside" is a use; flag.mn14.inside-unseen is a use hook on the hall
+      door (thing_hook row when imported). Detection itself is the crime engine and the hostile faction.'}

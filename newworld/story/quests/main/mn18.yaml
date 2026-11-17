@@ -1,0 +1,256 @@
+# MN18 The Guardian: the quest record's YAML view (new world; its places are not in the story database yet).
+id: quest.main.mn18
+code: MN18
+title: The Guardian
+line: quest.line.main
+group: main
+tier: 0
+status: concept
+shapes: [CONFRONTATION]
+region: benthic-yobesh
+settlement: sunken-ruin-23-m112
+anchorPlaces: [sunken-ruin-23-m112]
+premise: The player sets the three seal-stones in the Kings' Gate, goes through, and kills the Root's guardian, an
+  ancient venomous hydra, alone or with Cuts-the-Old-Knot beside them.
+costTier: L
+milestone: 2
+touches:
+- {id: npc.mn.cuts-the-old-knot, access: write}
+- {id: npc.mn.root-guardian, access: write}
+- {id: flag.mn.cuts-believed, access: read}
+- {id: thing.mn.seal-stone-thief, access: write}
+- {id: thing.mn.seal-stone-vault, access: write}
+- {id: thing.mn.seal-stone-deep, access: write}
+sources: [story/design/quests/lines/main-plot.md §5 quest 18, §6, §7, §9]
+essentialTopics: []
+startWhen:
+  any:
+  - questStage: [quest.main.mn17, '=', 90]
+  - questStage: [quest.main.mn17, '=', 91]
+start: 10
+recordStatus: design
+foundation: 'Written 2026-11-17 from main-plot.md quest 18 and §7. Setting the stones (a use of the gate with all three
+  held) opens it and takes the stones into its sockets. Going through the open gate (a use of the gate as a door, which
+  loads the hall) is the stage that, if she was believed, switches Cuts-the-Old-Knot off at the gate and on in the hall
+  while the game loads it (§7); she is never seen to move. The hydra fights in phases (the mod''s own); its death ends
+  the quest and MN19 marks the door at the hall''s far end. Who must live: nobody (Cuts-the-Old-Knot may die in the
+  fight; the endings read her alive or dead), named in review.'
+recordSources:
+  place: 'python -m tools.newworld.place_card sunken-ruin-23-m112 --mined (Teeth of Sithis Halls: the gate; West Xanmeer:
+    the guardian''s hall and the Root''s chamber)'
+  lore: ['story/design/quests/lines/main-plot.md §5 quest 18, §6 (the side quests'' rewards made for this fight), §9
+    (the hydra of "Hydra (Creature Series pt.2) SE", row hydra-skinwalker; its own boss track)']
+centrepiece: FIGHT-BOSS
+actionPlan:
+- {skill: Two-Handed, use: fight, reason: 'the hydra (any fighting skill: One-Handed, Archery, Destruction)'}
+- {skill: Restoration, use: cure, reason: 'its venom and poisoned air (cure potions and spells, the side quests'' amulet)'}
+- {skill: Block, use: block, reason: its strikes}
+- {skill: Conjuration, use: summon, reason: a summoned fighter draws the roaming heads}
+truth:
+- id: t1
+  when: since before the kings
+  who: [npc.mn.root-guardian]
+  where: the great hall beyond the gate
+  what: A hydra, old beyond memory, guards the way to the Root. Its venom poisons the air and water round it. Its heads
+    grow back when it is badly hurt, and heads cut off crawl away and roam the hall.
+facts:
+- {id: fact.mn18.guardian, claim: 'A great hydra guards the hall beyond the gate; its breath and the water round it are
+    poison, its heads grow back when it is badly hurt, and heads cut off roam the hall.', from: t1}
+cast:
+- id: npc.mn.cuts-the-old-knot
+  wants: the guardian dead and the Eye reached
+  knowledge: {fact.mn18.guardian: knows}
+things:
+- id: thing.mn17.gate
+  kind: door
+  name: The Kings' Gate
+  source: 'MN13''s gate in the Halls (King of the Murkmire''s crystal pedestals in a gate of its Xanmeer pieces), a door
+    into the West Xanmeer, locked with no key; using it with all three stones held sets flag.mn18.stones-set; once
+    unlocked, using it again sets flag.mn18.through'
+- id: thing.mn18.far-door
+  kind: door
+  name: The Root
+  source: 'the door at the far end of the guardian''s hall into the Root''s chamber (in the West Xanmeer, the source''s
+    inner door), stated alike in MN19'
+placements:
+- ref: npc.mn.root-guardian
+  kind: person
+  base: {kind: template_person, id: 'the hydra of hydra-skinwalker (mods/dependencies.json)'}
+  anchor: {place: sunken-ruin-23-m112, rule: navmesh, need: 'the middle of the great hall in the West Xanmeer, with water
+      round it'}
+  name: Guardian of the Root
+  level: 60
+  hostile: true
+  enabled: true
+- ref: npc.mn18.cuts-in-hall
+  kind: person
+  base: {kind: template_person, id: 'npc.mn.cuts-the-old-knot (the same person; a second position is her one reference
+      moved, not a copy)'}
+  anchor: {place: sunken-ruin-23-m112, rule: navmesh, need: 'just inside the great hall, a step from the gate''s door'}
+  note: 'built as a move of npc.mn.cuts-the-old-knot''s one reference while the hall loads; listed so the place has the
+    spot'
+- ref: thing.mn17.gate
+  kind: door
+  formKey: 'MN13''s gate door (read when built)'
+  lock: {level: key, key: none}
+  placeName: The Kings' Gate
+- ref: thing.mn18.far-door
+  kind: door
+  formKey: 'the source''s inner door at the far end of the West Xanmeer''s hall (read when built)'
+  placeName: The Root
+hooks:
+- {thing: thing.mn17.gate, hook: activate, setsFlag: flag.mn18.stones-set, when: 'the player holds all three seal-stones'}
+- {thing: thing.mn17.gate, hook: activate, setsFlag: flag.mn18.through, when: 'stage 15 (the gate open)'}
+conclusions: []
+clues: []
+shapeData:
+  confrontation: the guardian; with or without Cuts-the-Old-Knot
+stages:
+- id: 10
+  place: sunken-ruin-23-m112
+  journal: text.journal.mn18.10
+  journalText: I'm to set the three seal-stones in the empty sockets of the Kings' Gate.
+  objectives:
+  - id: set
+    text: text.objective.mn18.set
+    objectiveText: Set the three seal-stones in the Kings' Gate.
+    target: thing.mn17.gate
+    completeWhen:
+      questStage: [quest.main.mn18, ≥, 15]
+  successors:
+  - to: 15
+    when:
+      flag: [flag.mn18.stones-set, true]
+  information:
+    going: I stand before the gate with the three stones
+    next: set them in the gate's sockets
+    ways: none; the stones are the key
+    carriers:
+    - {know: set the stones, by: [journal, objective, marker:thing.mn17.gate, name:thing.mn17.gate]}
+- id: 15
+  place: sunken-ruin-23-m112
+  journal: text.journal.mn18.15
+  journalText: I set the three seal-stones in their sockets, and the Kings' Gate opened. The stones stay in the gate.
+    Beyond it lies the hall of the Root's guardian. I'm to go through.
+  onEnter:
+  - takeItem: [thing.mn.seal-stone-thief, 1]
+  - takeItem: [thing.mn.seal-stone-vault, 1]
+  - takeItem: [thing.mn.seal-stone-deep, 1]
+  - {unlockDoor: thing.mn17.gate}
+  - {showMessage: 'The three stones settle into their sockets. Stone grinds on stone, and the Kings'' Gate swings open
+      onto the dark.'}
+  objectives:
+  - id: through
+    text: text.objective.mn18.through
+    objectiveText: Go through the Kings' Gate.
+    target: thing.mn17.gate
+    completeWhen:
+      questStage: [quest.main.mn18, ≥, 20]
+  successors:
+  - to: 20
+    when:
+      all:
+      - flag: [flag.mn18.through, true]
+      - flag: [flag.mn.cuts-believed, true]
+  - to: 21
+    when:
+      all:
+      - flag: [flag.mn18.through, true]
+      - not: {flag: [flag.mn.cuts-believed, true]}
+  information:
+    going: the gate is open; the stones are in it
+    next: go through
+    ways: none
+    carriers:
+    - {know: the gate opened and the stones stayed, by: [message:15, journal]}
+    - {know: go through, by: [objective, marker:thing.mn17.gate]}
+- id: 20
+  place: sunken-ruin-23-m112
+  journal: text.journal.mn18.20
+  journalText: 'Beyond the gate a hydra, older than any king, guards the hall. Its breath and the water round it are poison.
+    When it is badly hurt its heads grow back, and heads that come off crawl away and hunt the hall. Cuts-the-Old-Knot
+    stands with me. I''m to kill it.'
+  onEnter:
+  - {switchOff: npc.mn.cuts-the-old-knot, at: the gate}
+  - {switchOn: npc.mn18.cuts-in-hall}
+  objectives: &kill
+  - id: kill
+    text: text.objective.mn18.kill
+    objectiveText: Kill the Guardian of the Root.
+    target: npc.mn.root-guardian
+    completeWhen:
+      questStage: [quest.main.mn18, ≥, 90]
+  successors: &dead
+  - to: 90
+    when:
+      not: {npcAlive: npc.mn.root-guardian}
+  information:
+    going: the guardian of the Root stands before me; Cuts-the-Old-Knot fights beside me
+    next: kill the guardian
+    ways: 'fight it with any skill; cure its venom (potions, Restoration, the side quests'' amulet and cures); cut down
+      or burn the roaming heads; Cuts-the-Old-Knot fights as a battlemage at my side'
+    carriers:
+    - {know: what the guardian does, by: [journal, look:npc.mn.root-guardian, name:npc.mn.root-guardian, line:topic.mn18-cuts-hall]}
+    - {know: kill it, by: [objective, marker:npc.mn.root-guardian]}
+    - {know: she is with me, by: [line:topic.mn18-cuts-hall, journal]}
+  actions: &acts
+  - {skill: Two-Handed, use: fight, target: the guardian, note: any fighting skill}
+  - {skill: Restoration, use: cure, target: the venom}
+  - {skill: Block, use: block, target: the guardian}
+- id: 21
+  place: sunken-ruin-23-m112
+  journal: text.journal.mn18.21
+  journalText: 'Beyond the gate a hydra, older than any king, guards the hall. Its breath and the water round it are poison.
+    When it is badly hurt its heads grow back, and heads that come off crawl away and hunt the hall. I face it alone.
+    I''m to kill it.'
+  objectives: *kill
+  successors: *dead
+  information:
+    going: the guardian of the Root stands before me, and I am alone
+    next: kill the guardian
+    ways: 'fight it with any skill; cure its venom (potions, Restoration, the side quests'' amulet and cures); cut down
+      or burn the roaming heads'
+    carriers:
+    - {know: what the guardian does, by: [journal, look:npc.mn.root-guardian, name:npc.mn.root-guardian]}
+    - {know: kill it, by: [objective, marker:npc.mn.root-guardian]}
+  actions: *acts
+- id: 90
+  place: sunken-ruin-23-m112
+  journal: text.journal.mn18.90
+  journalText: The Guardian of the Root is dead, and its body holds the treasure of ages. A door stands at the far end
+    of its hall. Beyond it lies the Root.
+  ending: complete
+  endingId: e-guardian
+endings:
+- id: e-guardian
+  when: the guardian died
+  seen: 'its body with rich loot (hand-placed, fixed: the boss chest''s contents of the place card, gold and gems); the
+    door at the far end; Cuts-the-Old-Knot standing in the hall if believed and alive'
+terms:
+- {term: the Root's guardian, meets: '20/21, look and journal', told: 'an ancient venomous hydra', ask: topic.mn18-cuts-hall}
+topics:
+- id: topic.mn18-cuts-hall
+  label: (greeting)
+  person: npc.mn.cuts-the-old-knot
+  kind: greeting
+  stages: [20]
+  intent: 'Cuts, in the hall (said once, as the player comes in). Tells: there it is; its breath poisons, cut heads crawl
+    off and hunt, and it heals if it is given time; she drank her draught for this. Hit it hard and together.'
+  uses: [fact.mn18.guardian]
+  new: true
+- id: topic.mn18-cuts-after
+  label: (greeting)
+  person: npc.mn.cuts-the-old-knot
+  kind: greeting
+  stages: [90]
+  intent: 'Cuts, after the guardian. Tells: the Root is through the far door; she will wait here; what is done there is
+    the player''s to choose, and she asks only that they not let the order have it.'
+  new: true
+review:
+  reviewer: writer's lore checks; quest-reviewer round to follow
+  findings:
+  - {id: L1, severity: lore, ids: [stages.20], finding: 'Cuts-the-Old-Knot appears in the hall without being seen to
+      move.', answer: 'main-plot §7: the stage set by going through the gate switches her while the hall loads'}
+  - {id: R0, severity: medium, ids: [failForward], finding: 'No who-must-live row.', answer: 'deliberate: the plot''s
+      endings read Cuts alive or dead, and Never-Writes-Twice is not needed until the Use ending''s hand-in, which MN19
+      gates on her alive'}

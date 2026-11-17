@@ -1,0 +1,431 @@
+# MN19 The Eye: the quest record's YAML view (new world; its places are not in the story database yet).
+id: quest.main.mn19
+code: MN19
+title: The Eye
+line: quest.line.main
+group: main
+tier: 0
+status: concept
+shapes: [CHOICE]
+region: benthic-yobesh
+settlement: sunken-ruin-23-m112
+anchorPlaces: [sunken-ruin-23-m112, helstrom, fort-chalkmoth, tribal-camp-m2-m68, jal-veesa, outpost-m6-m66]
+premise: At the Root the player touches the Eye of Argonia and chooses to use it where it sits for the order, take it
+  for themselves, or give it to Cuts-the-Old-Knot, and walks back into a marsh that has changed.
+costTier: L
+milestone: 2
+touches:
+- {id: npc.mn.never-writes-twice, access: write}
+- {id: npc.mn.cuts-the-old-knot, access: write}
+- {id: faction.toh-reel-ka, access: write}
+- {id: faction.mn.unbound, access: write}
+- {id: flag.mn.trees-parted, access: write}
+- {id: flag.mn.trees-healed, access: write}
+- {id: thing.mn.seal-stone-thief, access: write}
+- {id: thing.mn.seal-stone-vault, access: write}
+- {id: thing.mn.seal-stone-deep, access: write}
+sources: [story/design/quests/lines/main-plot.md §3, §5 quest 19, §8, §9]
+essentialTopics: [topic.mn19-stones]
+startWhen:
+  questStage: [quest.main.mn18, '=', 90]
+start: 10
+recordStatus: design
+foundation: 'Written 2026-11-17 from main-plot.md quest 19 and §8. Touching the Eye (a use) shows the final choice on
+  a message box (the approved block): three buttons if Cuts-the-Old-Knot is alive, two if not (Give is open only while
+  she lives). Each button sets an ending stage whose start plays the staged ending scene; until the scenes are made, the
+  scene''s messages carry the whole vision on a black screen. Use gives the stones back from the gate, kills Cuts-the-Old-Knot
+  if she lives (the approved stage that kills one named person) and ends at the hand-in to Never-Writes-Twice (Toh-Nassa).
+  Take and Give part the trees: the dead Hists chosen at their places'' builds are switched on by flag.mn.trees-parted.
+  Give moves Cuts-the-Old-Knot to the plinth under the black screen of the ending scene. The world stays open after.'
+recordSources:
+  place: 'python -m tools.newworld.place_card sunken-ruin-23-m112 --mined (West Xanmeer: the Root''s chamber behind the
+    far door); fort-chalkmoth (the keep with trainer, smith, bed and benches); tribal-camp-m2-m68 (the longhouse and
+    its cellar)'
+  lore: ['story/design/quests/lines/main-plot.md §3 (the Eye: our extrapolation; canon leaves it open, eye-of-argonia.md:6-8),
+    §8', 'story/lore/topics/hist-and-sap.md:78-80 (a tree''s eggs die with its bond)', 'story/lore/extrapolation/argonia-4e201-state.md
+    §1, §2.5']
+centrepiece: CHOOSE
+actionPlan:
+- {skill: Speech, use: report, reason: 'none needed: the choice is the act. The quest''s skill use was the guardian (MN18);
+    this is the line''s planned finale choice'}
+truth:
+- id: t1
+  when: since the kings
+  who: [the Eye of Argonia]
+  where: the Root's chamber
+  what: The Eye sits on a plinth among the roots of every Hist. Used where it sits, it pours strength down every root.
+    Lifted, it parts every tree from every other for good.
+facts:
+- {id: fact.mn19.three-ways, claim: 'Use the Eye where it sits: every tree healed, the order''s dreamers see again, the
+    order''s rule made fast; Cuts-the-Old-Knot, if alive, dies of it. Take it: the trees part, about three in ten die,
+    the dreams end and the order hunts me. Give it to her: the same, and the Eye is hers.', from: t1}
+cast:
+- id: npc.mn.never-writes-twice
+  wants: the stones in her hands
+  knowledge: {}
+- id: npc.mn.cuts-the-old-knot
+  wants: the Eye lifted
+  knowledge: {fact.mn19.three-ways: knows}
+things:
+- id: thing.mn19.eye-plinth
+  kind: activator
+  name: The Eye of Argonia
+  source: 'new: the Eye on its plinth (a flawless garnet of Skyrim''s scaled up on King of the Murkmire''s pedestal, among
+    the roots), an activator; using it sets flag.mn19.touched'
+  where: the Root's chamber
+- id: thing.mn.eye-of-argonia
+  kind: item
+  name: Eye of Argonia
+  source: 'new: an amulet on a flawless garnet''s look, enchanted (fixed: Fortify Health 50, Fortify Magicka 50, Resist
+    Poison 50) with a power usable once a day, the Eye''s Gaze (taught with it: Paralyse every foe in sight for 10 seconds)'
+- id: thing.mn19.dead-hists
+  kind: static
+  name: Dead Hist
+  source: 'main-plot §9: King of the Murkmire''s dead roots or Here There Be Monsters'' dark Hist bark switched on in place
+    of the living tree, with the village''s people switched off, at about three in ten Hist places chosen at their builds;
+    Jal-Veesa''s and Teel-Fen Weir''s among them; under flag.mn.trees-parted'
+placements:
+- ref: thing.mn19.eye-plinth
+  kind: thing
+  base: {kind: existing_base, id: 'to choose: King of the Murkmire''s crystal pedestal with the garnet'}
+  anchor: {place: sunken-ruin-23-m112, rule: surface, need: 'a plinth in the middle of the Root''s chamber among great
+      roots'}
+  name: The Eye of Argonia
+- ref: npc.mn19.cuts-at-plinth
+  kind: person
+  base: {kind: template_person, id: 'npc.mn.cuts-the-old-knot (her one reference, moved under the ending scene''s black
+      screen; not a copy)'}
+  anchor: {place: sunken-ruin-23-m112, rule: navmesh, need: 'beside the plinth in the Root''s chamber'}
+hooks:
+- {thing: thing.mn19.eye-plinth, hook: activate, setsFlag: flag.mn19.touched}
+conclusions: []
+clues: []
+shapeData:
+  choice: 'use, take, or give; each with its outcome table below; Give only while Cuts-the-Old-Knot lives'
+stages:
+- id: 10
+  place: sunken-ruin-23-m112
+  journal: text.journal.mn19.10
+  journalText: Beyond the guardian's hall lies the Root, where the roots of every Hist meet, and the Eye of Argonia sits
+    among them. I'm to go to the Eye and decide what to do with it.
+  objectives:
+  - id: eye
+    text: text.objective.mn19.eye
+    objectiveText: Go to the Eye of Argonia in the Root's chamber.
+    target: thing.mn19.eye-plinth
+    completeWhen:
+      questStage: [quest.main.mn19, ≥, 20]
+  successors:
+  - to: 20
+    when:
+      all:
+      - flag: [flag.mn19.touched, true]
+      - npcAlive: npc.mn.cuts-the-old-knot
+  - to: 21
+    when:
+      all:
+      - flag: [flag.mn19.touched, true]
+      - not: {npcAlive: npc.mn.cuts-the-old-knot}
+  directions: Through the door at the far end of the guardian's hall.
+  information:
+    going: the guardian is dead; the Eye is through the far door
+    next: go to the Eye
+    ways: 'I already know the choice: use it as the order ordered, take it, or (if Cuts-the-Old-Knot lives) let her
+      lift it'
+    carriers:
+    - {know: go to the Eye, by: [journal, objective, marker:thing.mn19.eye-plinth, name:thing.mn19.eye-plinth]}
+- id: 20
+  place: sunken-ruin-23-m112
+  journal: text.journal.mn19.20
+  journalText: I laid my hand on the Eye of Argonia. I'm to choose what to do with it.
+  onEnter:
+  - showChoice:
+      text: 'The Eye of Argonia sits among the roots of every tree. Under your hand you feel them all.
+
+
+        USE IT where it sits, as the order ordered. Every tree is healed and the roots stay joined. The order''s dreamers
+        see through every tree again, and its rule is made fast. The gate gives the stones back, for Never-Writes-Twice.
+        The sap Cuts-the-Old-Knot drank will carry the Eye''s power through her, and she will die.
+
+
+        TAKE IT. Every tree is parted from every other for good. About three trees in ten die, with their villages. The
+        dreams end and the order is broken, and its people will hunt you. No Hist will bless you again. The Eye is yours.
+
+
+        GIVE IT to Cuts-the-Old-Knot. She lifts it: the same parting and the same deaths. The Eye is hers, and she stands
+        with you.'
+      buttons: [{label: Use the Eye, sets: 30}, {label: Take the Eye, sets: 40}, {label: Give it to Cuts-the-Old-Knot,
+          sets: 50}]
+  objectives: &choose
+  - id: choose
+    text: text.objective.mn19.choose
+    objectiveText: Choose what to do with the Eye of Argonia.
+    target: thing.mn19.eye-plinth
+    completeWhen:
+      questStage: [quest.main.mn19, ≥, 30]
+  information:
+    going: the choice is in front of me on the message box
+    next: choose
+    ways: 'use (heals all trees; the order''s rule made fast; Cuts-the-Old-Knot dies; I get Toh-Nassa, a keep, training,
+      stronger blessings; the Unbound hunt me); take (trees part, three in ten die, dreams end; I get the Eye and the
+      Unbound''s highest rank; the order hunts me; no more blessings); give (the same parting; she keeps the Eye; I get
+      her as an ally, her spells and the Karsh-Naal longhouse)'
+    carriers:
+    - {know: the three choices and what each does, by: ['message:20', journal]}
+- id: 21
+  place: sunken-ruin-23-m112
+  journal: text.journal.mn19.21
+  journalText: I laid my hand on the Eye of Argonia. Cuts-the-Old-Knot is dead, so it is mine alone to use or to take.
+    I'm to choose.
+  onEnter:
+  - showChoice:
+      text: 'The Eye of Argonia sits among the roots of every tree. Under your hand you feel them all.
+
+
+        USE IT where it sits, as the order ordered. Every tree is healed and the roots stay joined. The order''s dreamers
+        see through every tree again, and its rule is made fast. The gate gives the stones back, for Never-Writes-Twice.
+
+
+        TAKE IT. Every tree is parted from every other for good. About three trees in ten die, with their villages. The
+        dreams end and the order is broken, and its people will hunt you. No Hist will bless you again. The Eye is yours.'
+      buttons: [{label: Use the Eye, sets: 31}, {label: Take the Eye, sets: 40}]
+  objectives: *choose
+  information:
+    going: the choice is in front of me; Cuts-the-Old-Knot is dead, so giving is closed
+    next: choose
+    ways: use or take, each as the message box says
+    carriers:
+    - {know: the two choices and what each does, by: ['message:21', journal]}
+- id: 30
+  place: sunken-ruin-23-m112
+  journal: text.journal.mn19.30
+  journalText: 'I used the Eye where it sits. I saw the trees of the marsh heal, every one. Cuts-the-Old-Knot died of
+    it in the guardian''s hall: the sap she drank carried the Eye''s power through her. The Kings'' Gate gave the three
+    stones back to me as it closed. I''m to bring them to Never-Writes-Twice in Nesh-Deeka''s House in Helstrom.'
+  onEnter: &usescene
+  - {endingScene: use, messages: ['The roots under your hand warm. Light runs out along them, away into the dark, to
+        every tree in the marsh.', 'At Jal-Veesa the grey bark softens and the scar weeps sap. At Teel-Fen Weir the young
+        tree''s pool grows warm again. In Lilmoth, in Gideon, in a hundred villages, the trees stand green.', 'Far
+        off, in the cellar of Fort Chalkmoth, the dreamers stir and begin to speak. Every tree shows them everything
+        again. The Xeech-Leel''s rule is made fast for another age.']}
+  - setFlag: [flag.mn.trees-healed, true]
+  - giveItem: [thing.mn.seal-stone-thief, 1]
+  - giveItem: [thing.mn.seal-stone-vault, 1]
+  - giveItem: [thing.mn.seal-stone-deep, 1]
+  - {makeEnemy: faction.mn.unbound}
+  - {killNpc: npc.mn.cuts-the-old-knot}
+  objectives: &stones
+  - id: stones
+    text: text.objective.mn19.stones
+    objectiveText: Bring the three seal-stones to Never-Writes-Twice in Nesh-Deeka's House, Helstrom.
+    target: npc.mn.never-writes-twice
+    completeWhen:
+      questStage: [quest.main.mn19, ≥, 90]
+  successors: &handin
+  - to: 90
+    when:
+      topicHeardFrom: [topic.mn19-stones, npc.mn.never-writes-twice]
+  - to: 91
+    when:
+      not: {npcAlive: npc.mn.never-writes-twice}
+  information: &useinfo
+    going: 'I healed every tree; the order''s dreamers see through them again; the Unbound will now attack me on sight'
+    next: bring the stones to Never-Writes-Twice in Helstrom for the order's highest rank
+    ways: none; the hand-in is the step
+    carriers:
+    - {know: the trees healed and what it means, by: ['message:30', journal]}
+    - {know: the Unbound hate me now, by: [journal]}
+    - {know: bring the stones to her, by: [journal, objective, marker:npc.mn.never-writes-twice]}
+- id: 31
+  place: sunken-ruin-23-m112
+  journal: text.journal.mn19.31
+  journalText: I used the Eye where it sits. I saw the trees of the marsh heal, every one, and the order's dreamers will
+    see through them again. The Kings' Gate gave the three stones back to me as it closed. I'm to bring them to Never-Writes-Twice
+    in Nesh-Deeka's House in Helstrom.
+  onEnter:
+  - {endingScene: use, messages: ['The roots under your hand warm. Light runs out along them, away into the dark, to
+        every tree in the marsh.', 'At Jal-Veesa the grey bark softens and the scar weeps sap. At Teel-Fen Weir the young
+        tree''s pool grows warm again. In Lilmoth, in Gideon, in a hundred villages, the trees stand green.', 'Far
+        off, in the cellar of Fort Chalkmoth, the dreamers stir and begin to speak. Every tree shows them everything
+        again. The Xeech-Leel''s rule is made fast for another age.']}
+  - setFlag: [flag.mn.trees-healed, true]
+  - giveItem: [thing.mn.seal-stone-thief, 1]
+  - giveItem: [thing.mn.seal-stone-vault, 1]
+  - giveItem: [thing.mn.seal-stone-deep, 1]
+  - {makeEnemy: faction.mn.unbound}
+  objectives: *stones
+  successors: *handin
+  information: *useinfo
+- id: 40
+  place: sunken-ruin-23-m112
+  journal: text.journal.mn19.40
+  journalText: 'I lifted the Eye of Argonia from its plinth, and the trees parted. I saw about three in ten of them die.
+    The dreamers will see nothing now, and the Unbound will open the cellar. Every member and friend of the Toh-Reel-Ka
+    will attack me, and no Hist will bless me again. The Eye is mine.'
+  onEnter:
+  - {endingScene: take, messages: ['You lift the Eye. The roots under it go slack, and a sound like a long breath runs
+        away into the dark.', 'Across the marsh the trees stand alone. The strong ones stay green. The weak ones grey
+        and blacken: about three in every ten. At Jal-Veesa and at Teel-Fen Weir the pools go cold, and the people
+        leave.', 'In Fort Chalkmoth the dreamers wake and see nothing. The Unbound break the cellar door. In Helstrom the
+        order''s people rage, and they will know whose hand did it.']}
+  - setFlag: [flag.mn.trees-parted, true]
+  - giveItem: [thing.mn.eye-of-argonia, 1]
+  - {teachSpell: spell.mn.eyes-gaze}
+  - {makeEnemy: faction.toh-reel-ka}
+  - {makePeace: faction.mn.unbound}
+  - {joinFaction: faction.mn.unbound}
+  - {setRank: [faction.mn.unbound, top]}
+  - setFlag: [flag.mn.no-hist-blessing, true]
+  - {switchOff: thing.mn19.eye-plinth}
+  ending: complete
+  endingId: e-take
+  information:
+    going: I took the Eye; the trees parted and some died; the order is my enemy
+    next: the main quest is over; the marsh is open, and dead trees stand where I will see them
+    ways: none
+    carriers:
+    - {know: what I did and what it cost, by: ['message:40', journal]}
+- id: 50
+  place: sunken-ruin-23-m112
+  journal: text.journal.mn19.50
+  journalText: 'Cuts-the-Old-Knot lifted the Eye of Argonia from its plinth, and the trees parted. I saw about three in
+    ten of them die. The dreamers will see nothing now. She keeps the Eye and calls me her equal among the Unbound; she
+    will come when I call her. Every member and friend of the Toh-Reel-Ka will attack me, and no Hist will bless me again.'
+  onEnter:
+  - {endingScene: give, before: [{switchOff: npc.mn.cuts-the-old-knot}, {switchOn: npc.mn19.cuts-at-plinth}, {switchOff: thing.mn19.eye-plinth}],
+    messages: ['You step back. Cuts-the-Old-Knot comes through the far door and lays both hands on the Eye, and lifts
+        it.', 'Across the marsh the trees stand alone. The strong ones stay green. The weak ones grey and blacken: about
+        three in every ten. At Jal-Veesa and at Teel-Fen Weir the pools go cold, and the people leave.', 'In Fort Chalkmoth
+        the dreamers wake and see nothing. The Unbound break the cellar door. In Helstrom the order''s people rage.']}
+  - setFlag: [flag.mn.trees-parted, true]
+  - {teachSpell: spell.mn.call-cuts}
+  - {teachSpell: spell.mn.dismiss-cuts}
+  - {teachSpell: spell.mn.cuts-storm}
+  - {teachSpell: spell.mn.cuts-root-ward}
+  - {makeEnemy: faction.toh-reel-ka}
+  - {makePeace: faction.mn.unbound}
+  - {joinFaction: faction.mn.unbound}
+  - {setRank: [faction.mn.unbound, top]}
+  - setFlag: [flag.mn.no-hist-blessing, true]
+  - {ownRoom: tribal-camp-m2-m68.longhouse}
+  ending: complete
+  endingId: e-give
+  information:
+    going: she lifted the Eye; the trees parted; she is my ally
+    next: the main quest is over; I can call her with a power; the Karsh-Naal longhouse is mine
+    ways: none
+    carriers:
+    - {know: what happened and what I have, by: ['message:50', journal, line:topic.mn19-cuts-give]}
+- id: 90
+  place: helstrom
+  journal: text.journal.mn19.90
+  journalText: I gave the three seal-stones to Never-Writes-Twice. She made me Toh-Nassa, Leader of the Secret, and gave
+    me the keep of Fort Chalkmoth for my house. The dreamers sleep in the cellar beneath it.
+  onEnter:
+  - takeItem: [thing.mn.seal-stone-thief, 1]
+  - takeItem: [thing.mn.seal-stone-vault, 1]
+  - takeItem: [thing.mn.seal-stone-deep, 1]
+  - {setRank: [faction.toh-reel-ka, toh-nassa]}
+  - {ownRoom: fort-chalkmoth.keep}
+  - setFlag: [flag.mn.order-free-training, true]
+  - setFlag: [flag.mn.hist-blessing-strong, true]
+  ending: complete
+  endingId: e-use
+- id: 91
+  place: sunken-ruin-23-m112
+  journal: text.journal.mn19.91
+  journalText: Never-Writes-Twice is dead, and nobody is left to take the stones from me or make me Toh-Nassa. The trees
+    are healed all the same, and every Hist blesses me more strongly than before.
+  onEnter:
+  - setFlag: [flag.mn.hist-blessing-strong, true]
+  ending: complete
+  endingId: e-use-no-rank
+endings:
+- id: e-use
+  when: the player used the Eye and gave the stones to Never-Writes-Twice
+  gives: 'Toh-Nassa, the order''s highest rank; Fort Chalkmoth''s keep as the player''s house, with its trainer, smith,
+    bed and benches; free training from the order''s members up to a set level; stronger blessings from every Hist'
+  costs: 'Cuts-the-Old-Knot dead if she lived (her body in the guardian''s hall gives the battlemage''s loot); every Unbound
+    and friend of the Unbound attacks on sight; the dreamers stay in the cellar under the player''s house'
+  seen: 'every Hist green; Jal-Veesa''s pool warm; the keep''s door is the player''s; the cellar door below still locked
+    and moaning'
+  world:
+  - setFlag: [flag.mn.trees-healed, true]
+  rewards:
+  - {setRank: [faction.toh-reel-ka, toh-nassa]}
+- id: e-use-no-rank
+  when: the player used the Eye and Never-Writes-Twice is dead
+  gives: stronger blessings from every Hist
+  costs: the Unbound's enmity; no rank or house
+  seen: every Hist green
+- id: e-take
+  when: the player lifted the Eye
+  gives: 'the Eye (amulet: Fortify Health 50, Fortify Magicka 50, Resist Poison 50; a power once a day, the Eye''s Gaze);
+    the Unbound''s highest rank; their trainers and traders as friends; Cuts-the-Old-Knot''s thanks if she lives'
+  costs: 'every member and friend of the Toh-Reel-Ka attacks on sight; no Hist gives a blessing again; about three trees
+    in ten dead, Teel-Fen Weir''s and Jal-Veesa''s among them'
+  seen: 'dead Hists blackened at their places with their villages empty (Jal-Veesa, Teel-Fen Weir and the others chosen
+    at their builds); the order''s people hostile'
+  world:
+  - setFlag: [flag.mn.trees-parted, true]
+- id: e-give
+  when: Cuts-the-Old-Knot lifted the Eye at the player's word
+  gives: 'the Unbound''s highest rank; Cuts-the-Old-Knot as an ally called with one power and sent away with another,
+    fighting as a battlemage; strong spells she teaches with a power once a day; the longhouse of Karsh-Naal Camp as
+    the player''s stronghold'
+  costs: as e-take, and the Eye is hers
+  seen: as e-take; Cuts-the-Old-Knot at the Karsh-Naal longhouse when not called
+  world:
+  - setFlag: [flag.mn.trees-parted, true]
+terms:
+- {term: the Root, meets: '10, journal', told: 'where the roots of every Hist meet, under the sea', ask: topic.mn-the-root}
+- {term: Toh-Nassa, meets: '90, line:topic.mn19-stones', told: '"Leader of the Secret", the order''s highest rank', ask: topic.mn-ranks}
+topics:
+- id: topic.mn19-stones
+  label: Here are the three seal-stones. The trees are healed.
+  person: npc.mn.never-writes-twice
+  stages: [30, 31]
+  essential: true
+  when:
+    all:
+    - hasItem: [thing.mn.seal-stone-thief, 1]
+    - hasItem: [thing.mn.seal-stone-vault, 1]
+    - hasItem: [thing.mn.seal-stone-deep, 1]
+  intent: 'Never-Writes-Twice. Tells: she takes the stones; nobody will open that gate again; she names the player Toh-Nassa,
+    Leader of the Secret, and gives them the keep of Fort Chalkmoth for their house, with its smith and its trainer; the
+    order''s members will teach them without charge. If asked about the cellar, she says the dreamers are the reason
+    there will be no second Umbriel, and the player now keeps the house above them. Does: sets stage 90. Fallback when
+    the stones are not held: bring all three.'
+  new: true
+- id: topic.mn19-cuts-give
+  label: (greeting)
+  person: npc.mn.cuts-the-old-knot
+  kind: greeting
+  stages: [50]
+  intent: 'Cuts, with the Eye. Tells: it is done; the dreams are over; she will not forget the trees it cost. The player
+    stands beside her at the head of the Unbound; the power she taught calls her to their side, the other sends her home
+    to Karsh-Naal, and the longhouse there is theirs.'
+  new: true
+- id: topic.mn19-cuts-take
+  label: (greeting)
+  person: npc.mn.cuts-the-old-knot
+  kind: greeting
+  stages: [40]
+  when:
+    npcAlive: npc.mn.cuts-the-old-knot
+  intent: 'Cuts, in the guardian''s hall after the Take ending. Tells: she felt it go; the Eye is the player''s, and she
+    thanks them; the Unbound are theirs to lead beside her.'
+  new: true
+review:
+  reviewer: writer's lore checks; quest-reviewer round to follow
+  findings:
+  - {id: L1, severity: lore, ids: [stages.20, stages.21], finding: 'The final choice on a message box; the staged ending
+      scene with messages as fallback; a stage that kills one named person.', answer: 'owner-bar (six additions, OR
+      2026-11-16); quest-form blocks; main-plot §8'}
+  - {id: L2, severity: lore, ids: [stages.50], finding: 'Cuts-the-Old-Knot moved to the plinth under the scene''s black
+      screen.', answer: 'gap filled: §8 has her lift the Eye though she waits in the hall (§7); the ending scene may switch
+      things in view under its fade (blocks.md row)'}
+  - {id: L3, severity: lore, ids: [things.thing.mn.eye-of-argonia], finding: 'The Eye''s enchantments and power.', answer: 'gap
+      filled with fixed values; plot says "strong enchantments and a power usable once a day"'}
+  - {id: R0, severity: medium, ids: [failForward], finding: 'No who-must-live row.', answer: 'deliberate: every ending
+      reads with Never-Writes-Twice or Cuts-the-Old-Knot dead (e-use-no-rank; Give closed)'}

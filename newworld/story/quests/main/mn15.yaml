@@ -1,0 +1,259 @@
+# MN15 The Vault's Stone: the quest record's YAML view (new world; its places are not in the story database yet).
+id: quest.main.mn15
+code: MN15
+title: The Vault's Stone
+line: quest.line.main
+group: main
+tier: 0
+status: concept
+shapes: [DELVE]
+region: barsaebica
+settlement: gemin
+anchorPlaces: [gemin, jal-veesa]
+premise: The Reel-Ka goes down through the flooded Vaults of Gemin, past the dead, a wraith and an Unbound rearguard,
+  takes the second seal-stone from the drowned lowest hall and reads on the kings' tablet why the Root was sealed.
+costTier: M
+milestone: 2
+touches:
+- {id: npc.mn.never-writes-twice, access: read}
+- {id: thing.mn.seal-stone-vault, access: write}
+- {id: faction.mn.unbound, access: read}
+- {id: quest.main.mn14, access: read}
+- {id: quest.main.mn16, access: read}
+sources: [story/design/quests/lines/main-plot.md §5 quest 15, §9]
+essentialTopics: []
+startWhen:
+  questStage: [quest.main.mn13, '>=', 90]
+start: 10
+recordStatus: design
+foundation: 'Written 2026-11-17 from main-plot.md quest 15. Starts with MN14 and MN16 on MN13''s last stage. One working
+  stage: the stone in the drowned lowest hall, with the kings'' tablet beside it to read; the quest ends when the stone
+  is taken, at one of four end stages that say which stones are still out. The tablet is the plot''s plain statement of
+  why the kings sealed the Root (whoever lifts the Eye parts the trees), which MN17''s choice relies on.'
+recordSources:
+  place: 'python -m tools.newworld.place_card gemin --mined (Feren Tarn: one interior, FerenTarnInt01, with water set
+    at its lower levels so the lowest hall is drowned)'
+  lore: ['story/design/quests/lines/main-plot.md §3 (the Eye: used in place it heals; lifted, it parts every tree), §5
+    quest 15', 'story/lore/topics/hist-and-sap.md (roots joined)']
+centrepiece: DELVE
+actionPlan:
+- {skill: One-Handed, use: fight, reason: 'the dead of the vaults, the Unbound rearguard and the wraith (any fighting
+    skill: Two-Handed, Archery, Destruction)'}
+- {skill: Sneak, use: slip-past, reason: past the Unbound in the upper halls and the dead below}
+- {skill: Restoration, use: turn-undead, reason: the dead and the wraith turn from Restoration's Turn Undead}
+truth:
+- id: t1
+  when: when the last king fell
+  who: [the kings' priests]
+  where: the Vaults of Gemin
+  what: A priest hid the second seal-stone in the lowest hall of the Conclave's old vaults and cut a tablet beside it
+    saying why the Root was sealed. The vaults later sank and flooded; the lowest hall is under water.
+- id: t2
+  when: days before the player comes
+  who: [an Unbound rearguard]
+  where: the upper halls
+  what: An Unbound band, sent after the same stone, searches the upper halls; it has not got past the dead.
+facts:
+- {id: fact.mn15.stone-drowned, claim: The second seal-stone lies in the drowned lowest hall of Gemin., from: t1}
+- {id: fact.mn15.why-sealed, claim: 'The kings sealed the Root because whoever lifts the Eye from its place parts every
+    tree from every other; used where it sits, it strengthens them all.', from: t1}
+- {id: fact.mn15.unbound-here, claim: 'An Unbound band is searching Gemin''s upper halls for the same stone.', from: t2}
+cast:
+- id: npc.mn15.unbound-rearguard
+  persona: {race: Argonian, sex: mixed, role: 'four Unbound of the rearguard, hostile, tribeless (main-plot §3)', invented: true}
+  wants: the stone, for Cuts-the-Old-Knot
+  fears: the dead below
+  knowledge: {fact.mn15.unbound-here: knows}
+things:
+- id: thing.mn.seal-stone-vault
+  kind: item
+  name: Seal-Stone of the Kings
+  source: 'new: a quest item on King of the Murkmire''s crystal, the second of three alike'
+  states: {before-take: on a plinth in the drowned lowest hall, after-take: carried until MN18}
+  where: the lowest hall
+- id: thing.mn15.kings-tablet
+  kind: book
+  name: Tablet of the Kings
+  source: 'new: a readable on King of the Murkmire''s carved tablet, beside the stone (main-plot §5 quest 15)'
+  where: the lowest hall, beside the stone
+  text: 'We who served the last king set this stone apart from its brothers, so that the gate stays shut. Under Teku-Sul
+    the roots of every Hist meet, and the Eye sits where they meet and binds them. Set your hand to it where it sits,
+    and strength runs down every root to every tree. Lift it from its place, and every tree is cut from every other,
+    for good, and the weak among them die alone. The king would not trust either act to any one hand. So we sealed it.'
+placements:
+- ref: thing.mn.seal-stone-vault
+  kind: thing
+  base: {kind: template_item, id: 'to choose: King of the Murkmire''s crystal'}
+  anchor: {place: gemin, rule: surface, need: 'a stone plinth at the far end of the drowned lowest hall, under water'}
+  name: Seal-Stone of the Kings
+- ref: thing.mn15.kings-tablet
+  kind: thing
+  base: {kind: template_item, id: 'to choose: King of the Murkmire''s carved tablet'}
+  anchor: {place: gemin, rule: surface, need: 'the carved tablet standing beside the stone''s plinth'}
+  name: Tablet of the Kings
+- ref: npc.mn15.unbound-rearguard
+  kind: person
+  base: {kind: template_person, id: 'to choose: our Unbound templates (MN03''s hide crew)'}
+  count: 4
+  anchor: {place: gemin, rule: navmesh, need: 'four Unbound searching the upper halls, short of the stair down'}
+  name: Unbound Rearguard
+  level: 24
+  hostile: true
+- ref: npc.mn15.vault-dead
+  kind: person
+  base: {kind: template_person, id: 'Skyrim draugr and skeleton templates'}
+  count: 6
+  anchor: {place: gemin, rule: navmesh, need: 'the restless dead in the middle and lower halls'}
+  name: Restless Dead
+  level: 26
+  hostile: true
+- ref: npc.mn15.wraith
+  kind: person
+  base: {kind: template_person, id: 'Skyrim wraith (ghost) template'}
+  anchor: {place: gemin, rule: navmesh, need: 'the wraith in the last hall before the drowned one'}
+  name: Warden of the Vaults
+  level: 32
+  hostile: true
+conclusions:
+- id: c1
+  statement: The kings sealed the Root because lifting the Eye parts the trees.
+  clues: [k1, k2, k3]
+clues:
+- {id: k1, form: thing, carrier: thing.mn15.kings-tablet, gives: [fact.mn15.why-sealed], supports: [c1]}
+- {id: k2, form: line, carrier: npc.mn.nesh-deeka, gives: [fact.mn15.why-sealed], supports: [c1], note: 'MN05: used
+    in place, it heals'}
+- {id: k3, form: line, carrier: npc.mn.cuts-the-old-knot, gives: [fact.mn15.why-sealed], supports: [c1], note: MN17}
+shapeData:
+  depth: upper halls (the Unbound), middle and lower halls (the dead), the wraith's hall, the drowned lowest hall
+  prize: the second seal-stone and the tablet
+hooks:
+- {thing: thing.mn15.kings-tablet, hook: read, setsFlag: flag.mn15.tablet-read}
+stages:
+- id: 10
+  place: gemin
+  journal: text.journal.mn15.10
+  journalText: 'The second seal-stone lies in the lowest hall of the Vaults of Gemin, which is under water. The dead walk
+    the vaults and a wraith guards the last hall, and Unbound may be searching there. I''m to go down and take it. I
+    can fight through, slip past them, or turn the dead with Restoration.'
+  objectives:
+  - id: stone
+    text: text.objective.mn15.stone
+    objectiveText: Take the seal-stone from the drowned lowest hall of Gemin.
+    target: thing.mn.seal-stone-vault, marker.mn13.gemin
+    completeWhen:
+      questStage: [quest.main.mn15, ≥, 90]
+  - id: tablet
+    text: text.objective.mn15.tablet
+    objectiveText: Read the Tablet of the Kings beside the stone.
+    target: thing.mn15.kings-tablet
+    completeWhen:
+      flag: [flag.mn15.tablet-read, true]
+  successors:
+  - to: 90
+    when:
+      all:
+      - hasItem: [thing.mn.seal-stone-vault, 1]
+      - not: {questStage: [quest.main.mn14, ≥, 90]}
+      - not: {questStage: [quest.main.mn16, ≥, 90]}
+  - to: 91
+    when:
+      all:
+      - hasItem: [thing.mn.seal-stone-vault, 1]
+      - questStage: [quest.main.mn14, ≥, 90]
+      - not: {questStage: [quest.main.mn16, ≥, 90]}
+  - to: 92
+    when:
+      all:
+      - hasItem: [thing.mn.seal-stone-vault, 1]
+      - not: {questStage: [quest.main.mn14, ≥, 90]}
+      - questStage: [quest.main.mn16, ≥, 90]
+  - to: 93
+    when:
+      all:
+      - hasItem: [thing.mn.seal-stone-vault, 1]
+      - questStage: [quest.main.mn14, ≥, 90]
+      - questStage: [quest.main.mn16, ≥, 90]
+  failForward:
+  - to: 95
+    when:
+      not: {npcAlive: npc.mn.never-writes-twice}
+  directions: 'Ride the rootworm to Jal-Veesa''s Hist pool. Gemin lies north-west of the town across the marsh: a
+    collapsed vault entrance in a slope of reeds, with half-sunk columns round it.'
+  learns: [fact.mn15.stone-drowned]
+  information:
+    going: I am hunting the three seal-stones for the Toh-Reel-Ka; this one is in Gemin's drowned lowest hall
+    next: go down through the vaults to the lowest hall and take the stone; read the tablet beside it
+    ways: fight the Unbound, the dead and the wraith; slip past them (Sneak); turn the dead and the wraith (Restoration);
+      I must swim the last hall, or carry waterbreathing
+    carriers:
+    - {know: the stone is in the drowned lowest hall, by: [journal, objective, marker:thing.mn.seal-stone-vault, name:thing.mn.seal-stone-vault]}
+    - {know: 'dead, a wraith and Unbound; fight, sneak or turn', by: [journal, look:npc.mn15.unbound-rearguard, name:npc.mn15.wraith]}
+    - {know: the tablet, by: [objective, marker:thing.mn15.kings-tablet, name:thing.mn15.kings-tablet]}
+    - {know: why the kings sealed the Root, by: [read:thing.mn15.kings-tablet]}
+  actions:
+  - {skill: One-Handed, use: fight, target: the dead and the Unbound, note: any fighting skill}
+  - {skill: Sneak, use: slip-past, target: the halls}
+  - {skill: Restoration, use: turn-undead, target: the dead and the wraith}
+- id: 90
+  place: gemin
+  journal: text.journal.mn15.90
+  journalText: I took the second seal-stone from the drowned hall of Gemin. The tablet beside it says why the kings sealed
+    the Root. Lifted, the Eye parts every tree from every other; used where it sits, it strengthens them. Two stones are
+    still out, in Blackrose Prison and the deepest hall of Vorannuhl, and both are still marked.
+  ending: complete
+  endingId: e-stone
+- id: 91
+  place: gemin
+  journal: text.journal.mn15.91
+  journalText: I took the second seal-stone from the drowned hall of Gemin. The tablet beside it says that the Eye, lifted,
+    parts every tree from every other, and used where it sits, it strengthens them. I already carry the thief's stone
+    from Blackrose. One is left, in the deepest hall of Vorannuhl, and it is still marked.
+  ending: complete
+  endingId: e-stone
+- id: 92
+  place: gemin
+  journal: text.journal.mn15.92
+  journalText: I took the second seal-stone from the drowned hall of Gemin. The tablet beside it says that the Eye, lifted,
+    parts every tree from every other, and used where it sits, it strengthens them. I already carry Vorannuhl's stone.
+    One is left, in Blackrose Prison, and it is still marked.
+  ending: complete
+  endingId: e-stone
+- id: 93
+  place: gemin
+  journal: text.journal.mn15.93
+  journalText: I took the second seal-stone from the drowned hall of Gemin, and the tablet beside it says that the Eye,
+    lifted, parts the trees. I now carry all three seal-stones. I'm to bring them to Never-Writes-Twice in Nesh-Deeka's
+    House in Helstrom.
+  ending: complete
+  endingId: e-stone
+- {id: 95, place: gemin, journal: text.journal.mn15.95, journalText: Never-Writes-Twice is dead. Nobody is left in the
+    order to tell me what the stones are for., ending: failed, endingId: e-thread}
+endings:
+- id: e-stone
+  when: the player took the stone
+  seen: the stone carried; the vaults as the player left them
+- id: e-thread
+  when: Never-Writes-Twice died
+  world:
+  - setFlag: [flag.main.thread-severed, true]
+  seen: the main quest's message that the thread is severed
+terms:
+- {term: Gemin, meets: '10, journal', told: 'the Vaults of Gemin, a sunken ruin north-west of Jal-Veesa', ask: topic.mn15-gemin}
+- {term: the tablet's warning, meets: '10, read', told: 'lifted, the Eye parts every tree; used in place, it strengthens
+    them', ask: topic.mn-eye-of-argonia}
+topics:
+- id: topic.mn15-gemin
+  label: What do you know of Gemin?
+  person: npc.mn.jal-veesa-minder
+  stages: [10]
+  intent: 'Jal-Veesa''s tree-minder. Tells: the vaults north-west of the town, past the reeds, were outlanders'' vaults
+    that sank when a spell went wrong; the Veesa-Teeleel call the ground sick and nobody goes; the lower halls are full
+    of water.'
+  new: true
+review:
+  reviewer: writer's lore checks; quest-reviewer round to follow
+  findings:
+  - {id: L1, severity: lore, ids: [things.thing.mn15.kings-tablet], finding: 'The tablet''s words on the Eye.', answer: 'main-plot
+      §3 (our extrapolation of the Eye, canon leaves it open: eye-of-argonia.md:6-8) and §5 quest 15'}
+  - {id: L2, severity: lore, ids: [topics.topic.mn15-gemin], finding: 'Gemin sank by a failed spell; the Veesa-Teeleel
+      call the ground sick.', answer: 'gemin place card (history, faith)'}
