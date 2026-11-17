@@ -1,4 +1,4 @@
-<!-- imported unchanged from elder-souls-argonia docs/standards/text/style-core.md @ b581910f0f87d8da88eaa9876d238cdc5d709e78 (0.1 §f) -->
+<!-- imported from elder-souls-argonia docs/standards/text/style-core.md @ b581910f0f87d8da88eaa9876d238cdc5d709e78 (0.1 §f) and extended -->
 # Style core: the reviewer's checklist
 
 The rules a prose reviewer holds, in one file. Writers read the full
@@ -47,7 +47,9 @@ tapestry, intricate, delve, realm, pivotal*); `it-is-said`, `not-x-but-y`,
 `self-gloss`, `ellipsis`; `feelings-formula` and `soft-idiom` ("quietly
 resentful", "gets by", "leave alone"); `eat-figurative` ("a road that eats
 iron"); `within-span` ("would move within a season"); `personified-thing`;
-`nobody-somebody`; `rather-than`; `call-what`; `squashed-relative`.
+`nobody-somebody`; `rather-than`; `call-what`; `squashed-relative`;
+`fight-place` (B15: a place as the object of fight, kill, clear or sneak past). Capped: `hold-place` (B14: *hold* or
+*keep* for occupying a place, more than twice in a file fails). Warned: `passive-actor` (B16), `sold-bare` (B17).
 
 ## 3. The shape faults (what a phrase list cannot catch)
 
@@ -106,7 +108,29 @@ For each sentence, ask what else it is doing; any answer is a finding.
     fact-image-closer; every `mood` an adjective pair with a twist). Vary the
     shape between records, not just the words. Uniform sentence length is a
     fingerprint too: let one sentence be four words and the next twenty.
-17. **Modern idiom.** "Okay", "issue", "leverage", "infrastructure", "reach
+17. **Hold for occupying a place.** "Unbound scouts hold the cave", "the
+    Collector's men hold the tower". *Hold* (and *keep* in the same sense)
+    for being somewhere is used at most once per section of a page. Say who
+    is there and what they are doing, in a different shape each time:
+    "Unbound scouts camp in the cave", "the Collector's men have the tower's
+    door barred", "the cave is the scouts' camp", "ferrymen watch the road
+    from the tower". Lint B14.
+18. **Passive for the actor.** "They are fought, or passed." The actor is the
+    subject: "The player fights them or passes them by stealth." Passive only
+    when the actor is unknown or irrelevant ("the bridge was burned years ago").
+    Lint B16 warns on the common forms.
+19. **A place as the object of a fight.** "The player fights the yard and the
+    hall." You cannot fight, kill, beat, clear (meaning fight through) or sneak
+    past a yard, hall, tower or gate; you fight or sneak past the people or
+    creatures in it: "The player fights the guards in the yard and the men in
+    the hall." This is personification (item 7) applied to verbs of fighting.
+    Lint B15.
+20. **The bare sale.** A sale, bribe, betrayal or deal says in full who gave
+    what to whom for what. Never "sold that", "sold the course", "sold him"
+    for a betrayal. Write "the company told the privateers where the best ship
+    would sail, for gold", "she sold the Collector the key for fifty gold".
+    Lint B17 warns on the bare forms.
+21. **Modern idiom.** "Okay", "issue", "leverage", "infrastructure", "reach
     out", "ordinary until it isn't". The plain word a fourth-era speaker
     could hold.
 

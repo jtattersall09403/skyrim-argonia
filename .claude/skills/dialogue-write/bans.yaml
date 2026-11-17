@@ -171,3 +171,44 @@
     - Follow the shore north-east a fair way, until you have Lilmoth on your right.
     - The cooking fire? Just north-east of here. You can see the smoke.
   detect: "(?i)\\b(?:\\d+|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|fifteen|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety|hundred|thousand|dozen)\\b[\\w\\s-]{0,24}?\\b(?:paces|steps|strides|yards|metres|meters|leagues|miles)\\b|\\bpaces\\b"
+
+- id: B14-hold-place
+  rule: '"Hold" (and "keep") for occupying a place is used at most twice in a file. Say who is there and what they are doing,
+    in a different shape each time: they camp in it, they have the door barred, they watch the road from it, they sleep in
+    it, it is theirs.'
+  bad:
+  - Unbound scouts hold the cave.
+  - The Collector's men hold the tower.
+  good:
+  - Unbound scouts camp in the cave.
+  - The Collector's men have the tower's door barred.
+  detect: (?i)\b(?:hold|holds|held|holding|keep|keeps|kept|keeping)\s+(?:the|a|an)\s+(?:[a-z-]+\s+)?(?:cave|tower|fort|keep|hall|yard|camp|gate|door|room|ruin|mine|wreck|island|isle|landing|cellar|vault|galleries|halls)\b
+  max_per_file: 2
+- id: B15-fight-place
+  rule: 'A place, building or room is never the object of fight, kill, clear or sneak past: that is personification. Name
+    the people or creatures in it.'
+  bad:
+  - The player fights the yard and the hall.
+  good:
+  - The player fights the guards in the yard and the men in the hall.
+  detect: (?i)\b(?:fight|fights|fought|fighting|kill|kills|killed|clear|clears|cleared|sneak|sneaks|sneaked|slip|slips)\s+(?:past\s+)?the\s+(?:[a-z-]+\s+)?(?:cave|tower|fort|keep|hall|yard|camp|gate|door|room|ruin|mine|wreck|island|isle|landing|cellar|vault|galleries|halls)\b
+- id: B16-passive-actor
+  rule: 'The actor is the subject: the player or a named person does the thing. Passive only when the actor is unknown or
+    irrelevant.'
+  bad:
+  - They are fought, or passed.
+  good:
+  - The player fights them or passes them by stealth.
+  detect: (?i)\b(?:is|are|was|were)\s+(?:fought|passed|killed|taken|slipped past|shot|turned)(?:\s+by)?\b
+  severity: warn
+- id: B17-sold-bare
+  rule: A sale, bribe, betrayal or deal says in full who gave what to whom for what. Never "sold that", "sold the course"
+    or "sold him" for a betrayal.
+  bad:
+  - The company sold the course of the best ship.
+  - He sold them.
+  good:
+  - The company told the privateers where the best ship would sail, for gold.
+  - He told the Legion where they hid, for coin.
+  detect: (?i)\b(?:sold|sells?)\s+(?:that|this|it|him|her|them|out)\s*(?:[.,;:!?]|$)|\bsold\s+the\s+course\b
+  severity: warn

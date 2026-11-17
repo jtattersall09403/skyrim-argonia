@@ -242,6 +242,12 @@ with its source in [owner-rulings-on-factions](../../docs/research/writing/owner
   closing question that does not follow from the line. The player does not know a speaker's trade until told. No
   two people share a sentence word for word. Talk of trade or of danger is true of what the player will then meet
   (first repo, the owner's notes of 2026-10-17 to 2026-10-19).
+- Four writing rules from the story explorer notes (OR 2026-11-17): "hold" is overused for occupying a place, so
+  vary the words and structures; the actor is the subject, "the player fights them or passes them by stealth", not
+  "they are fought, or passed"; "you cannot fight a yard or a hall, you fight people or creatures in them"; and
+  agents are too concise about buying and selling, so say in full who gave what to whom for what ("sold the course
+  of the best ship" meant telling other privateers where it would sail, for gold). Lint B14 to B17; rules in
+  [style-core](text/style-core.md).
 - No personification, no verbless fragments, no dangling modifiers, nothing opaque to the player; British
   punctuation (OR "Writing"; walk 4).
 - Every story, quest and line passes through our text rules: the owner finds "a lot of annoying AI writing style"

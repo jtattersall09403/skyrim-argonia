@@ -1,4 +1,4 @@
-<!-- imported unchanged from elder-souls-argonia docs/standards/text/style-guide.md @ b581910f0f87d8da88eaa9876d238cdc5d709e78 (0.1 §f) -->
+<!-- imported from elder-souls-argonia docs/standards/text/style-guide.md @ b581910f0f87d8da88eaa9876d238cdc5d709e78 (0.1 §f) and extended -->
 # The style guide (binding)
 
 > Read before writing any player-visible text. A reviewer reads the
@@ -192,6 +192,19 @@ definite-article abstractions.
   heard you", "the village wants", "the law knows". Name who does it ("I add
   months to the roll", "we heard you in the hold") or state the plain fact.
   Lint ban B01.
+- **Do not overuse "hold" or "keep" for occupying a place.** At most one
+  per section of a page, at most two in a file (lint B14). Say who is there
+  and what they are doing: "Unbound scouts camp in the cave", "the
+  Collector's men have the tower's door barred".
+- **The actor is the subject.** Not "they are fought, or passed" but "the
+  player fights them or passes them by stealth". Passive only when the actor
+  is unknown or irrelevant. Lint B16 (warning).
+- **You fight people, not places.** Never fight, kill, beat, clear or sneak
+  past a yard, hall, tower or gate: name the guards in the yard, the men in
+  the hall. Lint B15.
+- **Say a sale in full.** Who gave what to whom for what: not "sold the
+  course" but "told the privateers where the ship would sail, for gold".
+  Lint B17 (warning).
 - **No em-dash-and-gravitas syntax.** See §2.
 - **No packed, pithy sentence that assumes the player knows the speaker.**
   See §2.9; "claim", "the count" and "the tally" are on the overuse list.
