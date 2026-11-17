@@ -149,7 +149,7 @@ placements:
 - {ref: npc.mn.teku-attendant-3, kind: person, name: Drowned Attendant, level: 22, hostile: true, base: {kind: template_person,
     id: Skyrim draugr under our name}, anchor: {place: sunken-ruin-23-m112, rule: navmesh, need: the east halls, by their
       far door}}
-- {ref: thing.mn13.gate, kind: thing, base: {kind: existing_base, id: King of the Murkmire Xanmeer gate with three pedestals},
+- {ref: thing.mn13.gate, kind: container, base: {kind: existing_base, id: King of the Murkmire Xanmeer gate with three pedestals},
   anchor: {place: sunken-ruin-23-m112, rule: surface, need: the end of the gallery in the Halls}}
 - {ref: npc.mn.priest-ghost, kind: person, name: Ghost of Sul-Xeeth, base: {kind: template_person, id: 'a ghost of Skyrim''s
       (ghost shader) under our name'}, enabled: true, anchor: {place: sunken-ruin-23-m112, rule: navmesh, need: 'before
@@ -464,7 +464,7 @@ topics:
   stages: [20]
   essential: true
   intent: 'The Ghost of Sul-Xeeth, first speaker of this shared topic, before the gate. Tells: he was a priest of the
-    last king; when the king fell, his priests shut the tower''s lowest halls, the way to the Root, behind this gate;
+    last king; when the king fell, his priests shut the tower''s lowest halls, the way to the Root (where the roots of every Hist meet under the sea and the Eye sits), behind this gate;
     they cut three seal-stones, one for each socket, and sent them far apart so that no one hand could open it; set all
     three and the gate opens, no fewer; one went with a masked thief who sought the Eye and died in the cells of Blackrose
     Prison, and the warden took it into his vault; one lies in the flooded vaults of Gemin; one in the deepest hall of

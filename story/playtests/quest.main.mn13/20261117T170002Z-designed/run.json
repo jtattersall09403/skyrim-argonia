@@ -1,0 +1,49 @@
+{
+ "quest": "quest.main.mn13",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn13.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": null,
+ "choose": null,
+ "know": "story/playtests/quest.main.mn11/20261117T165846Z-designed/notes.md",
+ "created": "20261117T170002Z",
+ "stages": [
+  10,
+  20,
+  30,
+  90
+ ],
+ "ended": "complete",
+ "milestones": 4,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I am hunting for the tower marked by the Kings Marker Stone, for Never-Writes-Twice in Helstrom. She says it is one of the drowned spires off Lilmoth. The Unbound are also after it, and the Collector Vanin is digging ahead of us. 2. Ask the steward of Bell Station, on the islet east of Lilmoth, which tower the stone marks. The markers are on Meer-Tasi and Sees-Below. 3. I can talk to Meer-Tasi or Sees-Below. Fort Chalkmoth is a separate errand I could do instead or later. 4. I do not know what the Toh-Reel-Ka are, what moans in the Fort Chalkmoth cellar, or who C. is. I could ask people here and at the fort.",
+  "look",
+  "talk Meer-Tasi",
+  "say 1",
+  "answer 1. The stone marks Teku-Sul Spire, a drowned tower west of Bell Station. Its east halls hold a great gate with three empty sockets that nobody has forced, and a priest ghost stands before it. 2. Dive to Teku-Sul and find the great gate. The markers are the doors to the Teku-Sul halls and the Ghost of Sul-Xeeth. 3. I need waterbreathing, and Meer-Tasi sells potions. Inside the tower there is air. I can fight the attendants or slip past them. 4. I do not know what the three sockets take, who Sul-Xeeth is, or whether I breathe water already. I could ask the ghost or check my journal.",
+  "journal",
+  "go Door to Teku-Sul Halls",
+  "go marker 2",
+  "answer 1. The Kings Gate in Teku-Sul seals the lowest halls and the way to the Root. It needs three seal-stones set in its sockets: one in the warden vault at Blackrose Prison, one in the flooded vaults of Gemin, one in the deepest hall of Vorannuhl. I work for Never-Writes-Twice. 2. Go back to Never-Writes-Twice in Nesh-Deeka House, Helstrom, and tell her what the ghost said. 3. I could report first, or go after a stone myself. Fort Chalkmoth is still a separate errand. The Unbound and Vanin may be after the stones too. 4. I do not know what the Root is or where Gemin and Vorannuhl are. I could ask Never-Writes-Twice.",
+  "go Never-Writes-Twice",
+  "talk Never-Writes-Twice",
+  "say 1",
+  "answer 1. The Kings Gate quest is done. Bell Station steward Meer-Tasi named Teku-Sul Spire as the marked tower. Its Kings Gate needs three seal-stones, held at Blackrose Prison (warden vault), the flooded vaults of Gemin, and the deepest hall of Vorannuhl. Never-Writes-Twice made me a Reel-Ka Warrior and gave me a Reel-Ka Cuirass, a Reel-Ka Helm and 300 gold. I also get a free bed in every Archwarden fort. 2. Fetch the three stones before the Unbound do. Blackrose is the least dangerous and Vorannuhl the worst. My own errand to Fort Chalkmoth, to ask what moans in the cellar, is still open. 3. I can take the stones in any order, or go to Fort Chalkmoth first. 4. I do not know what the Root is, what lies behind the gate, who C. is, or what the Toh-Reel-Ka want. I could ask Never-Writes-Twice or the fort.",
+  "answer Notes: I am a Reel-Ka Warrior of the Archwardens. I have the Reel-Ka Cuirass, the Reel-Ka Helm and about 300 gold. I may still carry the Unbound Recipe for the Seal. The marker stone points to Teku-Sul Spire, west of Bell Station, off Lilmoth. Its Kings Gate has three empty sockets and needs all three seal-stones. The ghost of the priest Sul-Xeeth explained this, and the gate leads to the lowest halls and the Root. The stones are at the Blackrose Prison warden vault (least dangerous), the flooded vaults of Gemin, and the deepest hall of Vorannuhl (worst). Never-Writes-Twice wants all three before the Unbound get them, and Vanin is digging ahead of us. Still open: Fort Chalkmoth, the cellar that moans, on Chixathe Mesa above Noota Nara. Cuts-the-Old-Knot and the Toh-Reel-Ka are tied to it. Never-Writes-Twice dismissed it, which I find suspicious. I got to Teku-Sul without buying waterbreathing, apparently because I am Argonian. Next: Blackrose Prison, or Fort Chalkmoth.",
+  "answer Notes: I am a Reel-Ka Warrior of the Archwardens. I have the Reel-Ka Cuirass, the Reel-Ka Helm and about 300 gold. I may still carry the Unbound Recipe for the Seal. The marker stone points to Teku-Sul Spire, west of Bell Station, off Lilmoth. Its Kings Gate has three empty sockets and needs all three seal-stones. The ghost of the priest Sul-Xeeth explained this, and the gate leads to the lowest halls and the Root. The stones are at the Blackrose Prison warden vault (least dangerous), the flooded vaults of Gemin, and the deepest hall of Vorannuhl (worst). Never-Writes-Twice wants all three before the Unbound get them, and Vanin is digging ahead of us. Still open: Fort Chalkmoth, the cellar that moans, on Chixathe Mesa above Noota Nara. Cuts-the-Old-Knot and the Toh-Reel-Ka are tied to it. Never-Writes-Twice dismissed it, which I find suspicious. I got to Teku-Sul without buying waterbreathing, apparently because I am Argonian. Next: Blackrose Prison, or Fort Chalkmoth."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.0825982,
+ "minutes": 0.7,
+ "turns": 16,
+ "tokens": {
+  "input_tokens": 28,
+  "output_tokens": 3684,
+  "cache_read_input_tokens": 93382,
+  "cache_creation_input_tokens": 9091
+ }
+}

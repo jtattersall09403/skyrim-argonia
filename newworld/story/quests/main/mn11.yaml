@@ -221,7 +221,7 @@ placements:
 - {ref: npc.mn.unbound-scout-3, kind: person, name: Unbound Scout, level: 16, hostile: true, enabled: false, base: {kind: template_person,
     id: 'tribeless Argonian (our Unbound template)'}, anchor: {place: shipwreck-36-m82, rule: navmesh, need: digging at
       the ballast crates at the far end of the hold}}
-- {ref: thing.mn.ballast-crate, kind: thing, base: {kind: existing_base, id: 'Skyrim crate'}, enabled: false, anchor: {
+- {ref: thing.mn.ballast-crate, kind: container, base: {kind: existing_base, id: 'Skyrim crate'}, enabled: false, anchor: {
     place: shipwreck-36-m82, rule: surface, need: among the ballast crates at the far end of the hold}}
 - {ref: thing.mn.marker-stone, kind: thing, base: {kind: template_item, id: 'King of the Murkmire carved stone'}, container: thing.mn.ballast-crate,
   enabled: true}
