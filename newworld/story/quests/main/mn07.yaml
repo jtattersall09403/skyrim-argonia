@@ -62,7 +62,7 @@ things:
     amulet''s mesh, made a key record (it opens MN09''s tomb door)', where: in thing.mn07.strongbox, states: {all: carried
       from here to MN09}}
 placements:
-- {ref: npc.mn.nesh-deeka, kind: person, anchor: {place: helstrom, rule: navmesh, need: Nesh-Deeka in Nesh-Deeka's House}}
+- {ref: npc.mn.nesh-deeka, kind: person, name: Nesh-Deeka, anchor: {place: helstrom, rule: navmesh, need: Nesh-Deeka in Nesh-Deeka's House}}
 - {ref: door.mn07.hull, kind: door, anchor: {place: shipwreck-33-m67, rule: surface, need: 'a door in the sunken hull,
       named "The Pale Harvest", leading to the hold with air in it'}, placeName: The Pale Harvest}
 - {ref: npc.mn07.drowned-captain, kind: person, base: {kind: template_person, id: 'draugr boss template'}, anchor: {place: shipwreck-33-m67,
@@ -154,10 +154,10 @@ stages:
     next: MN08 starts; its first entry marks Toklea.
     ways: none
     carriers:
-    - {know: Kothringi and the Chime-Keepers, by: [journal, 'line:topic.mn07-report', 'ask:topic.mn-kothringi']}
+    - {know: Kothringi and the Chime-Keepers, by: [journal, 'ask:topic.mn07-report', 'ask:topic.mn-kothringi']}
     - {know: she turned the question aside, by: [journal, 'line:topic.mn07-how-know']}
 - {id: 95, place: helstrom, journal: text.journal.mn07.95, journalText: 'Nesh-Deeka is dead. Nobody else in the
-    Toh-Reel-Ka knows me, and the trail of the Eye ends with her.', ending: failed, endingId: e-thread}
+    Toh-Reel-Ka knows me, and the trail of the Eye ends with her.', ending: failed, endingId: e-thread, information: {going: 'The one the hunt for the Eye depends on is dead; the main quest cannot go on.', next: Nothing more in the main quest., ways: none}}
 endings:
 - {id: e-read, when: Nesh-Deeka read the keystone, rewards: [{giveGold: 100}], seen: the player keeps the keystone}
 - {id: e-thread, when: Nesh-Deeka died, world: [{setFlag: [flag.main.thread-severed, true]}], seen: the main quest's message}

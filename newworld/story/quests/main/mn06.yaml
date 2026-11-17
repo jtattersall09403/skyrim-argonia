@@ -101,7 +101,7 @@ things:
     stone is gone and the stone is what I hunt. Look inside the band. Someone scratched a ship''s name there long ago.
     It means nothing to me. Perhaps it will to you. With my compliments, E. Vanin, collector.'}
 placements:
-- {ref: npc.mn.nesh-deeka, kind: person, anchor: {place: helstrom, rule: navmesh, need: 'Nesh-Deeka standing in her
+- {ref: npc.mn.nesh-deeka, kind: person, name: Nesh-Deeka, anchor: {place: helstrom, rule: navmesh, need: 'Nesh-Deeka standing in her
       house, its door named "Nesh-Deeka''s House"'}, enabled: true}
 - {ref: door.mn.nesh-deeka-house, kind: door, anchor: {place: helstrom, rule: surface, need: 'the door of the quiet
       house, named "Nesh-Deeka''s House"'}, placeName: Nesh-Deeka's House}
@@ -127,6 +127,7 @@ placements:
   enabled: true}
 - {ref: thing.mn06.collector-note, kind: thing, base: {kind: item, id: thing.mn06.collector-note}, container: thing.mn06.chest,
   enabled: true}
+- {ref: npc.mn.cheeval-xu, kind: person, name: Cheeval-Xu, anchor: {place: helstrom, rule: navmesh, need: 'Cheeval-Xu at the rootworm landing under the city tree'}, enabled: true}
 - {ref: marker.mn06.rootworm-helstrom, kind: marker, anchor: {place: helstrom, rule: navmesh, need: 'the rootworm''s
       landing under the city tree, where Cheeval-Xu calls it'}}
 hooks:
@@ -177,10 +178,10 @@ stages:
     ways: 'Ask the dealer about the Eye. He will tell the truth about it to a little persuasion (Speech) or for 20
       gold; or his note can be lifted from his pocket (Pickpocket) and read.'
     carriers:
-    - {know: who I serve and why, by: [journal, 'ask:topic.mn-toh-reel-ka', 'ask:topic.mn-eye-of-argonia']}
-    - {know: the way to Gideon by rootworm, by: [journal, objective, marker:marker.mn06.rootworm-helstrom, 'line:topic.mn06-rootworm']}
+    - {know: who I serve and why, by: [journal]}
+    - {know: the way to Gideon by rootworm, by: [journal, objective, marker:marker.mn06.rootworm-helstrom, 'ask:topic.mn06-rootworm']}
     - {know: the dealer, by: [objective, marker:npc.mn.ovinius-calo, 'name:npc.mn.ovinius-calo', 'name:thing.mn06.glass-eye']}
-    - {know: 'persuade, pay or pick his pocket', by: ['line:topic.mn06-ask-eye', 'line:topic.mn06-persuade', 'line:topic.mn06-buy-truth']}
+    - {know: 'persuade, pay or pick his pocket', by: ['ask:topic.mn06-ask-eye', 'line:topic.mn06-persuade', 'line:topic.mn06-buy-truth']}
 - id: 20
   place: imperial-ruin-m25-m85
   journal: text.journal.mn06.20
@@ -254,10 +255,10 @@ stages:
     next: MN07 starts; its first entry marks the wreck.
     ways: none here
     carriers:
-    - {know: the Pale Harvest, by: [journal, 'line:topic.mn06-report']}
+    - {know: the Pale Harvest, by: [journal, 'ask:topic.mn06-report']}
     - {know: she turned the question aside, by: [journal, 'line:topic.mn06-how-know', 'ask:topic.mn-how-she-knows']}
 - {id: 95, place: helstrom, journal: text.journal.mn06.95, journalText: 'Nesh-Deeka is dead. Nobody else in the
-    Toh-Reel-Ka knows me, and the trail of the Eye ends with her.', ending: failed, endingId: e-thread}
+    Toh-Reel-Ka knows me, and the trail of the Eye ends with her.', ending: failed, endingId: e-thread, information: {going: 'The one the hunt for the Eye depends on is dead; the main quest cannot go on.', next: Nothing more in the main quest., ways: none}}
 endings:
 - id: e-read
   when: Nesh-Deeka read the setting

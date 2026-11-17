@@ -79,7 +79,7 @@ placements:
 - {ref: npc.mn08.bull, kind: person, base: {kind: template_person, id: crocodile (ecology, large)}, anchor: {place: abandoned-village-m4-m109,
     rule: navmesh, need: an old bull crocodile on the highest roof}, name: Old Bull Crocodile, level: 16, hostile: true,
   enabled: true}
-- {ref: npc.mn.nesh-deeka, kind: person, anchor: {place: helstrom, rule: navmesh, need: Nesh-Deeka in Nesh-Deeka's House}}
+- {ref: npc.mn.nesh-deeka, kind: person, name: Nesh-Deeka, anchor: {place: helstrom, rule: navmesh, need: Nesh-Deeka in Nesh-Deeka's House}}
 conclusions:
 - {id: c1, statement: The keystone opens the knight-captain's tomb at Eurydike., clues: [k1, k2, k3]}
 clues:
@@ -203,9 +203,9 @@ stages:
     next: MN09 starts; its first entry marks Eurydike.
     ways: none
     carriers:
-    - {know: Unbound asking about Eurydike, and she turned the question aside, by: [journal, 'line:topic.mn08-report', 'line:topic.mn08-how-know']}
+    - {know: Unbound asking about Eurydike, and she turned the question aside, by: [journal, 'ask:topic.mn08-report', 'line:topic.mn08-how-know']}
 - {id: 95, place: helstrom, journal: text.journal.mn08.95, journalText: 'Nesh-Deeka is dead. Nobody else in the
-    Toh-Reel-Ka knows me, and the trail of the Eye ends with her.', ending: failed, endingId: e-thread}
+    Toh-Reel-Ka knows me, and the trail of the Eye ends with her.', ending: failed, endingId: e-thread, information: {going: 'The one the hunt for the Eye depends on is dead; the main quest cannot go on.', next: Nothing more in the main quest., ways: none}}
 - {id: 96, place: toklea, journal: text.journal.mn08.96, journalText: 'Hums-the-Long-Note is dead. The other
     Chime-Keepers say only the elder knew the keystone; it was carved for a door "near Gideon, where the knights lie".
     I''m to tell Nesh-Deeka in Helstrom.', objectives: [{id: report96, text: text.objective.mn08.report96, objectiveText: Tell

@@ -70,6 +70,7 @@ things:
 - {id: thing.mn.bronze-disc, kind: item, name: Knight-Captain's Bronze Disc, source: 'new: King of the Murkmire''s
     bronze disc, its description "Stamped with a mine''s mark: a pick crossed with a tower."', where: in thing.mn09.tomb-chest}
 placements:
+- {ref: npc.mn.nesh-deeka, kind: person, name: Nesh-Deeka, anchor: {place: helstrom, rule: navmesh, need: Nesh-Deeka in Nesh-Deeka's House}}
 - {ref: npc.mn09.dead, kind: person, base: {kind: template_person, id: skeleton/draugr template}, anchor: {place: kothringi-ruin-m25-m80,
     rule: navmesh, need: the knights' restless dead walking the barracks wing}, name: Restless Knight, level: 12, count: 5,
   hostile: true, enabled: true}
@@ -189,10 +190,10 @@ stages:
     next: MN10 starts; its first entry marks Vicrium.
     ways: none
     carriers:
-    - {know: Vicrium, by: [journal, 'line:topic.mn09-report']}
+    - {know: Vicrium, by: [journal, 'ask:topic.mn09-report']}
     - {know: she turned the question aside; the seal question open, by: [journal, 'line:topic.mn09-how-know', 'ask:topic.mn09-why-seal']}
 - {id: 95, place: helstrom, journal: text.journal.mn09.95, journalText: 'Nesh-Deeka is dead. Nobody else in the
-    Toh-Reel-Ka knows me, and the trail of the Eye ends with her.', ending: failed, endingId: e-thread}
+    Toh-Reel-Ka knows me, and the trail of the Eye ends with her.', ending: failed, endingId: e-thread, information: {going: 'The one the hunt for the Eye depends on is dead; the main quest cannot go on.', next: Nothing more in the main quest., ways: none}}
 endings:
 - {id: e-read, when: Nesh-Deeka read the disc, rewards: [{giveGold: 100}], seen: the tomb stands open}
 - {id: e-thread, when: Nesh-Deeka died, world: [{setFlag: [flag.main.thread-severed, true]}], seen: the main quest's message}

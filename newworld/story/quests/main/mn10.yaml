@@ -106,7 +106,7 @@ placements:
 - {ref: npc.mn.never-writes-twice, kind: person, base: {kind: template_person, id: Argonian officer template}, anchor: {place: helstrom,
     rule: navmesh, need: 'Never-Writes-Twice standing at the back of the one room of Nesh-Deeka''s House'}, name: Never-Writes-Twice,
   level: 25, enabled: false}
-- {ref: npc.mn.nesh-deeka, kind: person, anchor: {place: helstrom, rule: navmesh, need: Nesh-Deeka in Nesh-Deeka's House}}
+- {ref: npc.mn.nesh-deeka, kind: person, name: Nesh-Deeka, anchor: {place: helstrom, rule: navmesh, need: Nesh-Deeka in Nesh-Deeka's House}}
 conclusions:
 - {id: c1, statement: The map shows the way to the Root runs by a tooth-shaped crag and seven sea towers., clues: [k1, k2, k3]}
 clues:
@@ -127,7 +127,7 @@ stages:
     strongbox. The lower galleries are shut behind a locked timber door; the gallery-boss, Ah-Zish, keeps the key, and
     an old adit on the creek bank goes round it through water where crocodiles nest. I''m to get into the lower
     galleries and find the knights'' strongbox. Ah-Zish might give the key to good words or 100 gold, or it can be
-    lifted from him.'
+    lifted from him. Smugglers have moved into the lower galleries; I may fight them or sneak past.'
   directions: 'Poles-Upriver''s boats run from Helstrom to Archon and on up the coast to Seafalls, the village by the
     white falls. From Seafalls follow the road inland to the hillside cut in rust and yellow bands with a timber
     headframe; the adit''s mouth is down on the creek bank below it.'
@@ -154,8 +154,8 @@ stages:
     carriers:
     - {know: the place and the way, by: [journal, objective]}
     - {know: the key or the adit, by: [journal, marker:npc.mn.ah-zish, marker:thing.mn10.adit, 'name:thing.mn10.timber-door',
-        'name:thing.mn10.adit', 'line:topic.mn10-door']}
-    - {know: smugglers inside; fight or sneak, by: ['line:topic.mn10-door', marker:thing.mn10.strongbox]}
+        'name:thing.mn10.adit', 'ask:topic.mn10-door']}
+    - {know: smugglers inside; fight or sneak, by: [journal, 'ask:topic.mn10-door', marker:thing.mn10.strongbox]}
 - id: 20
   place: helstrom
   journal: text.journal.mn10.20
@@ -198,7 +198,7 @@ stages:
     next: Choose the rank's weapon.
     ways: a rapier (one-handed) or a quarterstaff (two-handed)
     carriers:
-    - {know: the rank and its meaning, by: [journal, 'line:topic.mn10-report', 'ask:topic.mn-ranks']}
+    - {know: the rank and its meaning, by: [journal, 'ask:topic.mn10-report', 'ask:topic.mn-ranks']}
     - {know: she turned the question aside, by: [journal, 'line:topic.mn10-how-know']}
     - {know: the choice, by: [objective, 'line:topic.mn10-rapier', 'line:topic.mn10-staff']}
 - id: 40
@@ -256,9 +256,9 @@ stages:
     - {know: Grey Tooth, by: [journal, 'line:topic.mn10-nwt-meet']}
     - {know: her account of Cuts-the-Old-Knot, by: [journal, 'line:topic.mn10-nwt-meet', 'ask:topic.mn-cuts-the-old-knot']}
 - {id: 95, place: helstrom, journal: text.journal.mn10.95, journalText: 'Nesh-Deeka is dead. Nobody else in the
-    Toh-Reel-Ka knows me, and the trail of the Eye ends with her.', ending: failed, endingId: e-thread}
+    Toh-Reel-Ka knows me, and the trail of the Eye ends with her.', ending: failed, endingId: e-thread, information: {going: 'The one the hunt for the Eye depends on is dead; the main quest cannot go on.', next: Nothing more in the main quest., ways: none}}
 - {id: 96, place: helstrom, journal: text.journal.mn10.96, journalText: 'Never-Writes-Twice is dead. Without the
-    order''s officer the hunt for the Eye goes no further.', ending: failed, endingId: e-thread}
+    order''s officer the hunt for the Eye goes no further.', ending: failed, endingId: e-thread, information: {going: 'The one the hunt for the Eye depends on is dead; the main quest cannot go on.', next: Nothing more in the main quest., ways: none}}
 endings:
 - {id: e-toh-wo, when: Never-Writes-Twice marked the Grey Tooth, rewards: [{giveGold: 200}], seen: 'the player is a
     Toh-Wo with a rapier or a quarterstaff; Never-Writes-Twice stands at the back of Nesh-Deeka''s House from now on'}
