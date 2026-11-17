@@ -172,8 +172,10 @@ Each is quoted from the notes and cited to its row. The place's own hooks note c
 
 - Both camps believe the captain of the Stormwidow buried his share under the cairn, and both have dug around it and found only stones. <!-- place_note:peak-39-m79/hooks -->
 - Pirates tell of a shaman's bones in a cave on the north face. <!-- place_note:peak-39-m79/hooks -->
+- An Imperial relic-hunter's hired men camp at the foot of the goat-path and dig in the cave on the north face. <!-- place_note:peak-39-m79/hooks -->
 
 **Wreck of the Stormwidow.**
 
 - The captain's strongbox is still sealed in the stern, and the pirates believe its brass key opens the cache under the cairn on the Grey Tooth. <!-- place_note:shipwreck-36-m82/hooks -->
 - Both camps search for it and neither has found it. <!-- place_note:shipwreck-36-m82/hooks -->
+- Unbound scouts camp in the sand-filled hold, searching the ballast crates, and one of them lies wounded on the beach below the bow. <!-- place_note:shipwreck-36-m82/hooks -->

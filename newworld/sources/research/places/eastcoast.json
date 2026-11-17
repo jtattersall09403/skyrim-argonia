@@ -4524,7 +4524,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "Both camps believe the captain of the Stormwidow buried his share under the cairn, and both have dug around it and found only stones. Pirates tell of a shaman's bones in a cave on the north face.",
+     "text": "Both camps believe the captain of the Stormwidow buried his share under the cairn, and both have dug around it and found only stones. Pirates tell of a shaman's bones in a cave on the north face. An Imperial relic-hunter's hired men camp at the foot of the goat-path and dig in the cave on the north face.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4542,6 +4542,10 @@
        "kind": "reasoning",
        "title": "The Arnesian island has dark green-grey terrain unlike the rest of the province (Lore:Arnesia); both Skeith camps need a lookout over the Thorn and Archon sea lanes (state §10.2 holdings)",
        "locator": "story/lore/extrapolation/argonia-4e201-state.md section 10"
+      },
+      {
+       "kind": "reasoning",
+       "title": "the main quest's plot, quests 1 to 4 (story/design/quests/lines/main-plot.md; owner's story explorer notes of 2026-11-17, notes 3 and 10)"
       }
      ]
     },
@@ -5060,7 +5064,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "The captain's strongbox is still sealed in the stern, and the pirates believe its brass key opens the cache under the cairn on the Grey Tooth. Both camps search for it and neither has found it.",
+     "text": "The captain's strongbox is still sealed in the stern, and the pirates believe its brass key opens the cache under the cairn on the Grey Tooth. Both camps search for it and neither has found it. Unbound scouts camp in the sand-filled hold, searching the ballast crates, and one of them lies wounded on the beach below the bow.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5072,6 +5076,10 @@
        "kind": "reasoning",
        "title": "The chartered privateers of the Archon coast are the state's arm on the water (state §10.2); wreck and strip by rival camps follows from the two crews being rivals (Hollow Tide against Marque Landing)",
        "locator": "story/lore/extrapolation/argonia-4e201-state.md section 10"
+      },
+      {
+       "kind": "reasoning",
+       "title": "the main quest's plot, quests 1 to 4 (story/design/quests/lines/main-plot.md; owner's story explorer notes of 2026-11-17, notes 3 and 10)"
       }
      ]
     },

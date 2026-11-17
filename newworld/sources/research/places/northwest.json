@@ -608,7 +608,7 @@
     },
     {
      "kind": "shrine-blessing",
-     "detail": "the Hist pool: a blessing of waterbreathing from the tree-minder",
+     "detail": "the Hist pool: a blessing of waterbreathing from the tree-minder, and for an Argonian, who already breathes water, a blessing of resist poison",
      "count": 1
     }
    ]
@@ -2659,23 +2659,12 @@
     },
     {
      "aspect": "look",
-     "text": "Reed-thatched lean-tos on a mud bank, bundled reed stacked like haystacks, flat boats pulled up and a work barge moored at the landing.",
+     "text": "Reed-thatched lean-tos on a mud bank, bundled reed stacked like haystacks and flat boats pulled up at the landing.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
-       "kind": "map",
-       "title": "green triangle (jade) at (-3,-60)",
-       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
-      },
-      {
-       "kind": "extrapolation",
-       "title": "argonia-4e201-state.md",
-       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
-      },
-      {
-       "kind": "dossier",
-       "title": "tribes.md",
-       "locator": "story/lore/tribes.md"
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     },
@@ -2703,29 +2692,19 @@
     },
     {
      "aspect": "hooks",
-     "text": "The gang-master keeps a strongbox in his lean-to with the easiest of locks, and its key hangs on his belt; the barge's hold locks from outside, and the cutters do not say who was last kept in it.",
+     "text": "The gang-master keeps a strongbox in his lean-to with the easiest of locks, and its key hangs on his belt. Two cutters quarrel over whose bundles were counted short.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
-       "kind": "map",
-       "title": "green triangle (jade) at (-3,-60)",
-       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
-      },
-      {
-       "kind": "extrapolation",
-       "title": "argonia-4e201-state.md",
-       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
-      },
-      {
        "kind": "dossier",
-       "title": "tribes.md",
-       "locator": "story/lore/tribes.md"
+       "title": "the Owing, the marsh's sentence of owed work",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
     {
      "aspect": "source",
-     "text": "Its main source, Military Camp Winterhold Sons (Skyrim), is a Nordic camp of fourteen buildings with no interior, and its Nordic pieces are replaced with Argonian reed lean-tos from Ree-An-Wo (King of the Murkmire). The barge's hold is a ship interior borrowed from Thorn (Black Marsh North), given a door that locks from outside. Still to add: the mud bank, the bundled reed stacks, the moored work barge and flat boats, the gang-master's lean-to with its strongbox and the Hist-shoot on its post.",
+     "text": "Its main source, Military Camp Winterhold Sons (Skyrim), is a Nordic camp of fourteen buildings with no interior, and its Nordic pieces are replaced with Argonian reed lean-tos from Ree-An-Wo (King of the Murkmire). Still to add: the mud bank, the bundled reed stacks, the flat boats, the gang-master's lean-to with its strongbox and the Hist-shoot on its post.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6161,54 +6140,49 @@
   },
   {
    "id": "outpost-m13-m65",
-   "name": "Ashgate Post",
+   "name": "Ashgate Landing",
    "culture_id": "stone-grey",
    "status": "inhabited",
-   "held_by": "A Vicecanon's reeve and two guards",
-   "population": 4,
+   "held_by": "A Dunmer gang-master and his Owing reed-cutters",
+   "population": 15,
    "footprint_radius_m": 35,
    "siting": "inland",
    "danger_band_id": "D2",
    "importance": 1,
-   "summary": "A stone road post west of Loriasel on the Slough Point road, watching the track toward the ruins.",
+   "summary": "A reed-cutters' camp of the Owing on the river west of Loriasel, where the old road post's gate still stands and a work barge lies moored at the landing.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "Ashgate Post is a Vicecanon's road post west of Loriasel on the Slough Point road. The Vicecanons keep the road toward the western frontier and its toll; the gate stands where the track to the ruins leaves it.",
+     "text": "Ashgate Landing is a camp of Owing reed-cutters on the river west of Loriasel. The gangs serve their months of the Owing cutting reed for Stormhold's mat-makers, and the barge that brings each gang lies moored at the landing. It keeps the name of the road post whose stone hut and gate still stand there.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
+       "kind": "dossier",
+       "title": "the Owing, the marsh's sentence of owed work",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      },
+      {
        "kind": "reasoning",
-       "title": "the Stormhold-Slough Point road (map); Vicecanons keep the roads and tolls round Stormhold (spine §10.2)"
+       "title": "the main quest's plot, quests 1 to 4 (story/design/quests/lines/main-plot.md; owner's story explorer notes of 2026-11-17, notes 3 and 10)"
       },
       {
        "kind": "map",
        "title": "outpost icon W of Loriasel on the road",
        "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
-      },
-      {
-       "kind": "dossier",
-       "title": "stormhold.md",
-       "locator": "story/lore/stormhold.md"
       }
      ]
     },
     {
      "aspect": "history",
-     "text": "A post on the long road from Stormhold to the western frontier, west of Loriasel on the Slough Point road.",
+     "text": "The Vicecanons kept a road post here on the Slough Point road. When the toll moved to Slough Point the post was given over to the reed gangs, whose barges can reach it up the river from the sea.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
-       "kind": "map",
-       "title": "Barsaebica, the high ground west of Stormhold",
-       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
-      },
-      {
        "kind": "reasoning",
-       "title": "jade culture: Veesa-Teeleel of Valley of Storms and Barsaebica"
+       "title": "the river at the post is joined to the sea (water raster, 2026-11-17)"
       },
       {
        "kind": "extrapolation",
@@ -6219,59 +6193,45 @@
     },
     {
      "aspect": "present",
-     "text": "A small stone hut and a gate across the road mark the post. The reeve and guards watch the track toward the ruins.",
+     "text": "Twelve cutters of the Owing and their cook work the reed beds along the river under a Dunmer gang-master. The barge's hold is where a new gang sleeps until the gang-master takes its names onto his roll.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
-       "kind": "map",
-       "title": "Barsaebica, the high ground west of Stormhold",
-       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+       "kind": "dossier",
+       "title": "the Owing, the marsh's sentence of owed work",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       },
       {
        "kind": "reasoning",
-       "title": "jade culture: Veesa-Teeleel of Valley of Storms and Barsaebica"
-      },
-      {
-       "kind": "extrapolation",
-       "title": "argonia-4e201-state.md",
-       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+       "title": "the main quest's plot, quests 1 to 4 (story/design/quests/lines/main-plot.md; owner's story explorer notes of 2026-11-17, notes 3 and 10)"
       }
      ]
     },
     {
      "aspect": "people",
-     "text": "A Vicecanon's reeve and two guards hold the post, a long way from any other garrison.",
+     "text": "A Dunmer gang-master, Dralin Uveran, a cook named Okeeh and a dozen cutters of every race, each serving months of the Owing.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
-       "kind": "map",
-       "title": "Barsaebica, the high ground west of Stormhold",
-       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+       "kind": "dossier",
+       "title": "the Owing, the marsh's sentence of owed work",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       },
       {
        "kind": "reasoning",
-       "title": "jade culture: Veesa-Teeleel of Valley of Storms and Barsaebica"
-      },
-      {
-       "kind": "extrapolation",
-       "title": "argonia-4e201-state.md",
-       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+       "title": "the main quest's plot, quests 1 to 4 (story/design/quests/lines/main-plot.md; owner's story explorer notes of 2026-11-17, notes 3 and 10)"
       }
      ]
     },
     {
      "aspect": "economy",
-     "text": "The post takes a small toll and sells lamp oil and dried fish from a stall to passing carters.",
+     "text": "Cut reed goes downriver to Stormhold's mat-makers by barge. The cook sells dried fish and lamp oil from a stall by the hut.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
-       "kind": "map",
-       "title": "Barsaebica, the high ground west of Stormhold",
-       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
-      },
-      {
-       "kind": "reasoning",
-       "title": "jade culture: Veesa-Teeleel of Valley of Storms and Barsaebica"
+       "kind": "dossier",
+       "title": "the Owing, the marsh's sentence of owed work",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       },
       {
        "kind": "extrapolation",
@@ -6282,18 +6242,9 @@
     },
     {
      "aspect": "faith",
-     "text": "A grave-stake stands for the post's dead. It is the post's sole mark of worship.",
+     "text": "A grave-stake stands by the gate for the cutters who died here. It is the camp's sole mark of worship.",
      "tier": "EXTRAPOLATED",
      "sources": [
-      {
-       "kind": "map",
-       "title": "Barsaebica, the high ground west of Stormhold",
-       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
-      },
-      {
-       "kind": "reasoning",
-       "title": "jade culture: Veesa-Teeleel of Valley of Storms and Barsaebica"
-      },
       {
        "kind": "extrapolation",
        "title": "argonia-4e201-state.md",
@@ -6303,75 +6254,53 @@
     },
     {
      "aspect": "look",
-     "text": "A low stone hut and a wooden gate stand across a causeway on the road west of Loriasel.",
-     "tier": "EXTRAPOLATED",
-     "sources": [
-      {
-       "kind": "map",
-       "title": "Barsaebica, the high ground west of Stormhold",
-       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
-      },
-      {
-       "kind": "reasoning",
-       "title": "jade culture: Veesa-Teeleel of Valley of Storms and Barsaebica"
-      },
-      {
-       "kind": "extrapolation",
-       "title": "argonia-4e201-state.md",
-       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
-      }
-     ]
-    },
-    {
-     "aspect": "dangers",
-     "text": "The post is far from help; wildlife and the odd thief are the dangers on this stretch of road.",
-     "tier": "EXTRAPOLATED",
-     "sources": [
-      {
-       "kind": "map",
-       "title": "Barsaebica, the high ground west of Stormhold",
-       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
-      },
-      {
-       "kind": "reasoning",
-       "title": "jade culture: Veesa-Teeleel of Valley of Storms and Barsaebica"
-      },
-      {
-       "kind": "extrapolation",
-       "title": "argonia-4e201-state.md",
-       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
-      }
-     ]
-    },
-    {
-     "aspect": "hooks",
-     "text": "A reeve who wants word sent to Stormhold; a guard who saw lights at Loriasel.",
-     "tier": "EXTRAPOLATED",
-     "sources": [
-      {
-       "kind": "map",
-       "title": "Barsaebica, the high ground west of Stormhold",
-       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
-      },
-      {
-       "kind": "reasoning",
-       "title": "jade culture: Veesa-Teeleel of Valley of Storms and Barsaebica"
-      },
-      {
-       "kind": "extrapolation",
-       "title": "argonia-4e201-state.md",
-       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
-      }
-     ]
-    },
-    {
-     "aspect": "source",
-     "text": "Its main source, Military Camp Hjaalmarch Imperial (Skyrim), is an Imperial camp of sixteen people with no interior, and its pieces serve as the post's gate and hut walls. The record needs no interior, so the hut is an outside prop. Ree-An-Wo (King of the Murkmire) lends the stall and lamp pieces. Still to add: the wooden gate across the causeway, the stall of lamp oil and dried fish, the bench and the grave-stake.",
+     "text": "A low stone hut and a wooden gate stand on the river bank, with reed lean-tos, bundled reed stacked by the landing and a work barge moored in the pool below the camp.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
        "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      },
+      {
+       "kind": "reasoning",
+       "title": "the main quest's plot, quests 1 to 4 (story/design/quests/lines/main-plot.md; owner's story explorer notes of 2026-11-17, notes 3 and 10)"
+      }
+     ]
+    },
+    {
+     "aspect": "dangers",
+     "text": "The camp is safe. Mudcrabs work the river bank and one young crocodile lies in the reed beds.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the main quest's plot, quests 1 to 4 (story/design/quests/lines/main-plot.md; owner's story explorer notes of 2026-11-17, notes 3 and 10)"
+      }
+     ]
+    },
+    {
+     "aspect": "hooks",
+     "text": "The barge's hold locks from outside, and a new gang waits in it until the gang-master frees them. The gang-master keeps a strongbox with the easiest of locks in the hut, and its key hangs on his belt.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the main quest's plot, quests 1 to 4 (story/design/quests/lines/main-plot.md; owner's story explorer notes of 2026-11-17, notes 3 and 10)"
+      }
+     ]
+    },
+    {
+     "aspect": "source",
+     "text": "Its main source, Military Camp Hjaalmarch Imperial (Skyrim), is an Imperial camp of sixteen people with no interior, and its pieces serve as the old post's gate and hut walls. Ree-An-Wo (King of the Murkmire) lends the reed lean-tos and the stall. The barge is Black Marsh & Valenwood's Imperial ship (Black Marsh.esm, hull 0ShipImperial, ImperialShip01Base.nif, 29.3 m long and 10.1 m in the beam by its bounds) with its furnished hold, the interior cell 01dock3to4 (25 containers and 128 loose things), given a door that locks from outside. The river here is 29 to 41 m wide within 200 m, and a pool 63 m west-north-west of the hut is 81 m across and about 3.8 m deep; the hull is moored in that pool along the east bank, raised about 4 m above its own keel depth, and the river runs from the pool to the sea. Still to add: the moored barge and its door, the reed lean-tos, the bundled reed by the landing, the strongbox in the hut and the grave-stake.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
+      },
+      {
+       "kind": "reasoning",
+       "title": "barge measured 2026-11-17: tools/argonia_world/esm.py OBND of ImperialShip01Base; out/newworld/water_classified.png and terrain/heightmap.npy"
       }
      ]
     }
@@ -6386,12 +6315,33 @@
    "gives": [
     {
      "kind": "trader-general",
-     "detail": "a stall of lamp oil and dried fish",
+     "detail": "the cook's stall of dried fish and lamp oil",
      "count": 1
     },
     {
      "kind": "free-bed",
      "detail": "a bench in the hut",
+     "count": 1
+    },
+    {
+     "kind": "cooking-pot",
+     "detail": "the cook's fire by the hut",
+     "count": 1
+    },
+    {
+     "kind": "harvest-common",
+     "detail": "sedge and swamp fungus on the reed beds",
+     "count": 2
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "mudcrabs on the river bank and one young crocodile in the reed beds",
+     "count": 3,
+     "reward": "treasure"
+    },
+    {
+     "kind": "treasure",
+     "detail": "the gang-master's strongbox in the hut",
      "count": 1
     }
    ]
@@ -6464,23 +6414,13 @@
     },
     {
      "aspect": "present",
-     "text": "Stilt huts stand in a ring around a young Hist sapling, with sap-tapping and egg-tending going on beneath the canopy. Three nights ago the young tree's scar closed over a grey paste that none of its tenders put there.",
+     "text": "Stilt huts stand in a ring around a young Hist sapling, with sap-tapping and egg-tending going on beneath the canopy.",
      "tier": "EXTRAPOLATED",
      "sources": [
-      {
-       "kind": "map",
-       "title": "dark-green triangle (-16,-68)",
-       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
-      },
       {
        "kind": "dossier",
        "title": "hist-placement.md",
        "locator": "story/lore/topics/hist-placement.md"
-      },
-      {
-       "kind": "extrapolation",
-       "title": "argonia-4e201-state.md",
-       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
@@ -6574,51 +6514,30 @@
     },
     {
      "aspect": "dangers",
-     "text": "Wildlife roams the swamp around the stand. The Root-Folk are wary of strangers, and strangers come and go at a reed hide beside a lone dead tree outside the stand.",
+     "text": "Wildlife roams the swamp around the stand. The Root-Folk are wary of strangers.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
-       "kind": "map",
-       "title": "dark-green triangle (-16,-68)",
-       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
-      },
-      {
-       "kind": "dossier",
-       "title": "hist-placement.md",
-       "locator": "story/lore/topics/hist-placement.md"
-      },
-      {
-       "kind": "extrapolation",
-       "title": "argonia-4e201-state.md",
-       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       }
      ]
     },
     {
      "aspect": "hooks",
-     "text": "The young Hist is sick: its scar has closed over a grey paste and its sap no longer runs. A reed hide beside a lone dead tree outside the stand, where strangers keep jars of sap.",
+     "text": "The sap-gatherers want word carried to Helstrom's Root-Folk that the sapling has set its first eggs. A Root-Folk hunter has seen a giant snake in the reeds west of the stand.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
-       "kind": "map",
-       "title": "dark-green triangle (-16,-68)",
-       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
-      },
-      {
        "kind": "dossier",
-       "title": "hist-placement.md",
-       "locator": "story/lore/topics/hist-placement.md"
-      },
-      {
-       "kind": "extrapolation",
-       "title": "argonia-4e201-state.md",
-       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+       "title": "hist-and-sap.md",
+       "locator": "story/lore/topics/hist-and-sap.md"
       }
      ]
     },
     {
      "aspect": "source",
-     "text": "Its main source, Riverside Shack (Skyrim), is a homestead of one shack with farm pieces and does not fit a Root-Folk stand. Ree-An-Wo (King of the Murkmire) fits better: Argonian stilt huts and camp pieces, with no interior. Its huts, and the shrine pieces of the camp near Loreisian, make the ring round the sapling. Still to add: the young Hist tree, the sap bench under a stilt hut, the tapping cuts and the reed hide beside a dead tree.",
+     "text": "Its main source, Riverside Shack (Skyrim), is a homestead of one shack with farm pieces and does not fit a Root-Folk stand. Ree-An-Wo (King of the Murkmire) fits better: Argonian stilt huts and camp pieces, with no interior. Its huts, and the shrine pieces of the camp near Loreisian, make the ring round the sapling. Still to add: the young Hist tree, the sap bench under a stilt hut and the tapping cuts.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6660,22 +6579,6 @@
      "kind": "harvest-rare",
      "detail": "Hist sap at the tapping cuts",
      "count": 1
-    },
-    {
-     "kind": "combat-foes",
-     "detail": "three Unbound sap-takers at the reed hide",
-     "count": 3,
-     "reward": "treasure",
-     "setting": "nearby",
-     "spot": "the reed hide beside a lone dead tree outside the stand",
-     "bearing_deg": 270,
-     "distance_m": 130
-    },
-    {
-     "kind": "treasure",
-     "detail": "jars of sap and the sap-takers' packs at the reed hide",
-     "count": 1,
-     "setting": "nearby"
     }
    ]
   },
@@ -6690,29 +6593,29 @@
    "siting": "riverbank",
    "danger_band_id": "D3",
    "importance": 1,
-   "summary": "A weir-wardens' camp on the creek north-east of Gandranen, keeping traps for Jal-Veesa.",
+   "summary": "A weir-wardens' camp of the Veesa-Teeleel on the creek south of Jal-Veesa, round a young Hist that grew from the roots of Jal-Veesa's tree.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "Teel-Fen Weir is the Veesa-Teeleel weir closest to Jal-Veesa on the Gandranen creek; its catch goes to Urvyn Farm's cart on the northern road, the nearest way to market.",
+     "text": "Teel-Fen Weir is the Veesa-Teeleel weir closest to Jal-Veesa on the creek south of the town. A young Hist rose here from the roots of Jal-Veesa's tree, and the wardens' families tend it beside their traps.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
+       "kind": "dossier",
+       "title": "hist-placement.md",
+       "locator": "story/lore/topics/hist-placement.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "hist-and-sap.md",
+       "locator": "story/lore/topics/hist-and-sap.md"
+      },
+      {
        "kind": "reasoning",
-       "title": "Veesa-Teeleel weirs feed Jal-Veesa; Urvyn Farm on the northern road beside it (map)"
-      },
-      {
-       "kind": "map",
-       "title": "outpost icon on the creek between Jal-Veesa and Gandranen",
-       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
-      },
-      {
-       "kind": "extrapolation",
-       "title": "argonia-4e201-state.md §10 (the spine)",
-       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+       "title": "the main quest's plot, quests 1 to 4 (story/design/quests/lines/main-plot.md; owner's story explorer notes of 2026-11-17, notes 3 and 10)"
       }
      ]
     },
@@ -6739,43 +6642,28 @@
     },
     {
      "aspect": "present",
-     "text": "Five wardens and their families live on a small stilt platform at the weir, with a landing and a drying rack of fish. Their catch goes to Urvyn Farm to be carted up the northern road.",
+     "text": "Five wardens and their families live on a small stilt platform at the weir, with a landing, a drying rack of fish and the young Hist in the middle of the huts. Three nights ago the young tree's scar closed over a grey paste that none of its tenders put there.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
-       "kind": "map",
-       "title": "Barsaebica, the high ground west of Stormhold",
-       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
-      },
-      {
        "kind": "reasoning",
-       "title": "jade culture: Veesa-Teeleel of Valley of Storms and Barsaebica"
+       "title": "the main quest's plot, quests 1 to 4 (story/design/quests/lines/main-plot.md; owner's story explorer notes of 2026-11-17, notes 3 and 10)"
       },
       {
-       "kind": "extrapolation",
-       "title": "argonia-4e201-state.md",
-       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+       "kind": "dossier",
+       "title": "hist-and-sap.md",
+       "locator": "story/lore/topics/hist-and-sap.md"
       }
      ]
     },
     {
      "aspect": "people",
-     "text": "Veesa-Teeleel families live at the weir on the creek north-east of Gandranen, five wardens and their kin.",
+     "text": "Veesa-Teeleel families live at the weir, five wardens and their kin, with Heem-Jasa, the young tree's minder.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
-       "kind": "map",
-       "title": "Barsaebica, the high ground west of Stormhold",
-       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
-      },
-      {
        "kind": "reasoning",
-       "title": "jade culture: Veesa-Teeleel of Valley of Storms and Barsaebica"
-      },
-      {
-       "kind": "extrapolation",
-       "title": "argonia-4e201-state.md",
-       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+       "title": "the main quest's plot, quests 1 to 4 (story/design/quests/lines/main-plot.md; owner's story explorer notes of 2026-11-17, notes 3 and 10)"
       }
      ]
     },
@@ -6802,91 +6690,56 @@
     },
     {
      "aspect": "faith",
-     "text": "A Hist-shoot post stands at the weir, where the wardens keep their shrine.",
+     "text": "The young Hist stands at the centre of the platform. The wardens hatch their eggs in its pool and worship at it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
-       "kind": "map",
-       "title": "Barsaebica, the high ground west of Stormhold",
-       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
-      },
-      {
-       "kind": "reasoning",
-       "title": "jade culture: Veesa-Teeleel of Valley of Storms and Barsaebica"
-      },
-      {
-       "kind": "extrapolation",
-       "title": "argonia-4e201-state.md",
-       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+       "kind": "dossier",
+       "title": "hist-and-sap.md",
+       "locator": "story/lore/topics/hist-and-sap.md"
       }
      ]
     },
     {
      "aspect": "look",
-     "text": "Pale stilt huts stand on a small platform beside a woven weir across the creek.",
+     "text": "Pale stilt huts on a small platform round a young Hist, beside a woven weir across the creek, with a reed hide by a lone dead tree on the bank to the west.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
-       "kind": "map",
-       "title": "Barsaebica, the high ground west of Stormhold",
-       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+       "kind": "reasoning",
+       "title": "the place's source places and what they hold (python3 -m tools.newworld.place_card --mined; out/newworld/sources/mined)"
       },
       {
        "kind": "reasoning",
-       "title": "jade culture: Veesa-Teeleel of Valley of Storms and Barsaebica"
-      },
-      {
-       "kind": "extrapolation",
-       "title": "argonia-4e201-state.md",
-       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+       "title": "the main quest's plot, quests 1 to 4 (story/design/quests/lines/main-plot.md; owner's story explorer notes of 2026-11-17, notes 3 and 10)"
       }
      ]
     },
     {
      "aspect": "dangers",
-     "text": "Crocodiles and giant snakes gather under the log boom. The camp is safe; the Nenria marsh south of it is not.",
+     "text": "Crocodiles gather under the log boom. The wardens are wary of strangers, and strangers come and go at a reed hide beside a lone dead tree west of the weir.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
-       "kind": "map",
-       "title": "Barsaebica, the high ground west of Stormhold",
-       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
-      },
-      {
        "kind": "reasoning",
-       "title": "jade culture: Veesa-Teeleel of Valley of Storms and Barsaebica"
-      },
-      {
-       "kind": "extrapolation",
-       "title": "argonia-4e201-state.md",
-       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+       "title": "the main quest's plot, quests 1 to 4 (story/design/quests/lines/main-plot.md; owner's story explorer notes of 2026-11-17, notes 3 and 10)"
       }
      ]
     },
     {
      "aspect": "hooks",
-     "text": "Strangers come asking the way to Gandranen. The wardens wonder what they want there.",
+     "text": "The young Hist is sick: its scar has closed over a grey paste and its sap no longer runs. A reed hide beside a lone dead tree west of the weir, where strangers keep jars of sap.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
-       "kind": "map",
-       "title": "Barsaebica, the high ground west of Stormhold",
-       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
-      },
-      {
        "kind": "reasoning",
-       "title": "jade culture: Veesa-Teeleel of Valley of Storms and Barsaebica"
-      },
-      {
-       "kind": "extrapolation",
-       "title": "argonia-4e201-state.md",
-       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+       "title": "the main quest's plot, quests 1 to 4 (story/design/quests/lines/main-plot.md; owner's story explorer notes of 2026-11-17, notes 3 and 10)"
       }
      ]
     },
     {
      "aspect": "source",
-     "text": "Its main source, a camp near Left Hand Mine (Skyrim), is a Nordic camp of seventeen buildings with no interior, whose camp pieces are replaced. Ree-An-Wo (King of the Murkmire) fits better: Argonian stilt huts with no interior, which suit a weir camp. Still to add: the small platform of huts, the woven weir with its log boom, the drying rack, the Hist-shoot post and the landing.",
+     "text": "Its main source, a camp near Left Hand Mine (Skyrim), is a Nordic camp of seventeen buildings with no interior, whose camp pieces are replaced. Ree-An-Wo (King of the Murkmire) fits better: Argonian stilt huts with no interior, which suit a weir camp, and the shrine pieces of the camp near Loreisian ring the young tree. Still to add: the small platform of huts, the young Hist and its pool, the woven weir with its log boom, the drying rack, the landing and the reed hide beside a dead tree.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6918,6 +6771,32 @@
      "kind": "tanning-rack",
      "detail": "on the platform",
      "count": 1
+    },
+    {
+     "kind": "trader-apothecary",
+     "detail": "Heem-Jasa, the tree's minder, selling sap, swamp fungus and eggshells",
+     "count": 1
+    },
+    {
+     "kind": "trainer",
+     "detail": "Adept Alchemy trainer, Heem-Jasa",
+     "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "three Unbound sap-takers at the reed hide",
+     "count": 3,
+     "reward": "treasure",
+     "setting": "nearby",
+     "spot": "the reed hide beside a lone dead tree west of the weir",
+     "bearing_deg": 270,
+     "distance_m": 130
+    },
+    {
+     "kind": "treasure",
+     "detail": "jars of sap and the sap-takers' packs at the reed hide",
+     "count": 1,
+     "setting": "nearby"
     }
    ]
   },

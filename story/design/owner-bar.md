@@ -195,7 +195,28 @@ with its source in [owner-rulings-on-factions](../../docs/research/writing/owner
   [the factions overhaul](../../docs/phases/new-worldspace-plan/nw-05c-factions-overhaul.md), in his words
   (OR 2026-11-16, story explorer notes). Each faction is heard of through rumours, which start a small quest to find it; a late point in a rival's
   line shuts its door.
-
+- Every major thing a quest asks of a place (a cellar, a locked inner part, water inside, a second way in, a great
+  door), every named item and every creature says in brackets that it was checked and how it is made: the source
+  place that has it, the mod or Skyrim record that gives it, or a plausible stand-in under our name; what cannot be
+  made is written out ("every time you refer to something that requires something major of a source place, check
+  that the source place has it") (OR 2026-11-17, story explorer notes).
+- The player is told plainly what the story's central thing is and how to know it on sight (a Hist, its eggs, its
+  sap, the village round it), with dialogue topics to ask more; what the whole province knows (Umbriel) many people
+  answer (OR 2026-11-17, story explorer notes).
+- The fast travel network serves the main quest: it can be played by short walks and swims and boat and rootworm
+  links between places that make sense as stops, with hard travel only where a quest means it, such as the long
+  dive; "that doesn't mean every single place should be linked directly". The player is given gold early to use it,
+  at joining and as quest rewards, in fixed sums (OR 2026-11-17, story explorer notes).
+- A player who is inside a place unseen and is then detected is attacked: that state turns hostile (OR 2026-11-17,
+  story explorer notes).
+- An optional act (robbing, killing) has a point in play and a cost, or the option is cut: "What would be the
+  point of doing either of these?" (OR 2026-11-17, story explorer notes).
+- A vision is a black screen with the scene described in text, and the player then tells it in dialogue: "Visions
+  are hard for us to create" (OR 2026-11-17, story explorer notes).
+- People a quest offers to talk to or buy from start non-hostile, and attacking outlaws of that kind is no crime
+  (OR 2026-11-17, story explorer notes).
+- A small choice such as telling the truth or a comfort has a real, fixed difference in play (what a person gives,
+  sells or teaches), or the choice goes (OR 2026-11-17, story explorer notes).
 
 ## Truth and lore
 

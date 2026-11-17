@@ -744,3 +744,20 @@ added here the day they are made, with the date and the issue.
   their office of fort, road and toll wardens; the Toh-Reel-Ka keep the dreamers. Written into the lore
   (argonia-4e201-state.md §1, §2.5, §10, §11.2), the rename map and owner-bar; every other mismatch goes to him as
   a call (`docs/phases/new-worldspace-plan/research/reconciliation-call.md`).
+- 2026-11-17 (story explorer notes on the main plot): what quests and stories should be like. Every major thing
+  asked of a place, every item and every creature is checked against its source and says how it is made ("every
+  time you refer to something that requires something major of a source place, check that the source place has
+  it, and say in brackets that you've checked it"; "We must only have items authored that we know we can
+  deliver"). The player is "explicitly told" what a Hist is and how to recognise one, "or at least have dialogue
+  topics available to ask about them"; Umbriel "is not exactly a secret, the whole province knows". The fast travel
+  network must let the main quest be done by "short-ish walks and swims, plus fast travel between places that make
+  sense as fast travel locations", with arduous travel only where authored, and "the player needs ways to get gold
+  to actually use the network as well, especially early on". A player detected while sneaking "should be attacked,
+  i.e. move into the hostile condition". Robbing or killing must have a point ("What would be the point of doing
+  either of these?"). Visions are "a black screen with the scene described in text", told afterwards in dialogue.
+  Truth or comfort needs "actual impact ... for the player in-game". People to talk to and buy from are "set to non
+  hostile initially ... but also made so that attacking them is not a crime". Recorded in owner-bar.
+- 2026-11-17 (story explorer note on the main plot's guardian): "We do make music, we've made music already using
+  Fal. Change whatever rule says we can't, I am very happy to make music and we should for this final boss fight. It
+  should be in the same style as our existing music." The rule against making art no longer covers music; the
+  guardian's boss track is ours, made with Fal in the style of our existing music (CLAUDE.md "Never").

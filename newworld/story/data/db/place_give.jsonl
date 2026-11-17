@@ -480,7 +480,7 @@
 {"place_id":"jal-veesa","seq":5,"give_kind_id":"fishing","detail":"the weir channels: eels and gar","count":1}
 {"place_id":"jal-veesa","seq":6,"give_kind_id":"cooking-pot","detail":"at the fish racks","count":1}
 {"place_id":"jal-veesa","seq":7,"give_kind_id":"tanning-rack","detail":"by the boat sheds","count":1}
-{"place_id":"jal-veesa","seq":8,"give_kind_id":"shrine-blessing","detail":"the Hist pool: a blessing of waterbreathing from the tree-minder","count":1}
+{"place_id":"jal-veesa","seq":8,"give_kind_id":"shrine-blessing","detail":"the Hist pool: a blessing of waterbreathing from the tree-minder, and for an Argonian, who already breathes water, a blessing of resist poison","count":1}
 {"place_id":"jarecai","seq":0,"give_kind_id":"boat-stop","detail":"a raft-master at the lake landing","count":1}
 {"place_id":"jarecai","seq":1,"give_kind_id":"trader-blacksmith","detail":"a Mine-Burner smith selling salvaged mine iron, steel and hide armour","count":1}
 {"place_id":"jarecai","seq":2,"give_kind_id":"forge","detail":"the smith's forge and anvil","count":1}
@@ -962,8 +962,12 @@
 {"place_id":"outpost-m11-m63","seq":2,"give_kind_id":"combat-creature","detail":"mudcrabs on the bank and one young crocodile below the weir","count":3,"reward_kind_id":"treasure"}
 {"place_id":"outpost-m11-m63","seq":3,"give_kind_id":"treasure","detail":"a thief's sack of stolen traps and coin hidden in the reeds","count":1}
 {"place_id":"outpost-m11-m63","seq":4,"give_kind_id":"harvest-rare","detail":"Sithis' beard, a grey moss hanging over the creek below the weir","count":2}
-{"place_id":"outpost-m13-m65","seq":0,"give_kind_id":"trader-general","detail":"a stall of lamp oil and dried fish","count":1}
+{"place_id":"outpost-m13-m65","seq":0,"give_kind_id":"trader-general","detail":"the cook's stall of dried fish and lamp oil","count":1}
 {"place_id":"outpost-m13-m65","seq":1,"give_kind_id":"free-bed","detail":"a bench in the hut","count":1}
+{"place_id":"outpost-m13-m65","seq":2,"give_kind_id":"cooking-pot","detail":"the cook's fire by the hut","count":1}
+{"place_id":"outpost-m13-m65","seq":3,"give_kind_id":"harvest-common","detail":"sedge and swamp fungus on the reed beds","count":2}
+{"place_id":"outpost-m13-m65","seq":4,"give_kind_id":"combat-creature","detail":"mudcrabs on the river bank and one young crocodile in the reed beds","count":3,"reward_kind_id":"treasure"}
+{"place_id":"outpost-m13-m65","seq":5,"give_kind_id":"treasure","detail":"the gang-master's strongbox in the hut","count":1}
 {"place_id":"outpost-m13-m79","seq":0,"give_kind_id":"combat-creature","detail":"spriggans at the place the totem was moved from","count":2,"reward_kind_id":"boss-chest"}
 {"place_id":"outpost-m13-m79","seq":1,"give_kind_id":"combat-creature","detail":"a spriggan matron","count":1,"reward_kind_id":"boss-chest"}
 {"place_id":"outpost-m13-m79","seq":2,"give_kind_id":"boss-chest","detail":"boss chest","count":1}
@@ -990,8 +994,6 @@
 {"place_id":"outpost-m16-m68","seq":2,"give_kind_id":"trainer","detail":"Adept Alchemy trainer, the stand's sap-gatherer","count":1}
 {"place_id":"outpost-m16-m68","seq":3,"give_kind_id":"alchemy-lab","detail":"a sap bench under a stilt hut","count":1}
 {"place_id":"outpost-m16-m68","seq":4,"give_kind_id":"harvest-rare","detail":"Hist sap at the tapping cuts","count":1}
-{"place_id":"outpost-m16-m68","seq":5,"give_kind_id":"combat-foes","detail":"three Unbound sap-takers at the reed hide","count":3,"reward_kind_id":"treasure","setting":"nearby","spot":"the reed hide beside a lone dead tree outside the stand","bearing_deg":270.0,"distance_m":130.0}
-{"place_id":"outpost-m16-m68","seq":6,"give_kind_id":"treasure","detail":"jars of sap and the sap-takers' packs at the reed hide","count":1,"setting":"nearby"}
 {"place_id":"outpost-m16-m87","seq":0,"give_kind_id":"trainer","detail":"Journeyman Light Armor trainer, the watch-leader","count":1}
 {"place_id":"outpost-m16-m87","seq":1,"give_kind_id":"fishing","detail":"gar at the border water","count":1}
 {"place_id":"outpost-m16-m87","seq":2,"give_kind_id":"combat-creature","detail":"crocodiles and marsh snakes at the border water","count":1,"reward_kind_id":"treasure"}
@@ -1053,6 +1055,10 @@
 {"place_id":"outpost-m6-m66","seq":0,"give_kind_id":"fishing","detail":"the traps: eels and carp","count":1}
 {"place_id":"outpost-m6-m66","seq":1,"give_kind_id":"cooking-pot","detail":"by the drying rack","count":1}
 {"place_id":"outpost-m6-m66","seq":2,"give_kind_id":"tanning-rack","detail":"on the platform","count":1}
+{"place_id":"outpost-m6-m66","seq":3,"give_kind_id":"trader-apothecary","detail":"Heem-Jasa, the tree's minder, selling sap, swamp fungus and eggshells","count":1}
+{"place_id":"outpost-m6-m66","seq":4,"give_kind_id":"trainer","detail":"Adept Alchemy trainer, Heem-Jasa","count":1}
+{"place_id":"outpost-m6-m66","seq":5,"give_kind_id":"combat-foes","detail":"three Unbound sap-takers at the reed hide","count":3,"reward_kind_id":"treasure","setting":"nearby","spot":"the reed hide beside a lone dead tree west of the weir","bearing_deg":270.0,"distance_m":130.0}
+{"place_id":"outpost-m6-m66","seq":6,"give_kind_id":"treasure","detail":"jars of sap and the sap-takers' packs at the reed hide","count":1,"setting":"nearby"}
 {"place_id":"outpost-m7-m77","seq":0,"give_kind_id":"trader-hunter","detail":"the Hutan-Tzel buy hides","count":1}
 {"place_id":"outpost-m7-m77","seq":1,"give_kind_id":"tanning-rack","detail":"the canoe shed","count":1}
 {"place_id":"outpost-m7-m77","seq":2,"give_kind_id":"trainer","detail":"Journeyman Sneak (a Hutan-Tzel go-between)","count":1}
