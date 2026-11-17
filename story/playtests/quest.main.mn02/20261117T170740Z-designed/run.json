@@ -1,0 +1,48 @@
+{
+ "quest": "quest.main.mn02",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn02.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "fight",
+ "choose": null,
+ "know": "story/playtests/quest.main.mn01/20261117T170035Z-designed/notes.md",
+ "created": "20261117T170740Z",
+ "stages": [
+  10,
+  20,
+  30,
+  90
+ ],
+ "ended": "complete",
+ "milestones": 4,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I am Tarin, a thief freed from the Owing by Vosh-Leera, root-herald of Jal-Veesa. Dralin Uveran sent me east to her house. On the way the tree-minder wants Sithis beard, a grey moss, from the creek below Reed-Sill Weir. 2. Pick the Sithis beard below Reed-Sill Weir, then continue east to Jal-Veesa and Vosh-Leera. 3. Fight the crocodiles, shoot them from the log walk on top of the weir, or sneak past them. 4. I do not know why Vosh-Leera wants me, nor what the Hist, Jal-Veesa or the Owing really are. I could ask people in town.",
+  "fight Young Crocodile win",
+  "fight Young Crocodile win",
+  "take Sithis Beard",
+  "take Sithis' Beard",
+  "answer 1. I killed the two young crocodiles and picked Sithis beard. Weeltul, tree-minder of Jal-Veesa, wants it for the Hist, the great tree in the pool. Vosh-Leera also wants me there. 2. Go east to the Hist pool in Jal-Veesa and give the beard to Weeltul, then find Vosh-Leera. 3. Go straight there; I can talk to people in town on the way. 4. I still do not know why the Hist needs the moss or why Vosh-Leera freed me. I could ask Weeltul and Vosh-Leera.",
+  "go Weeltul",
+  "talk Weeltul",
+  "say 4",
+  "answer 1. I gave the moss to Weeltul. The Hist is sick: dry dark bark, closed scar, cooling egg-pool. The moss only warms the water. Nobody knows the cause. If it dies no eggs hatch and the town empties in a generation. 2. Speak to Vosh-Leera in her house in Jal-Veesa. 3. Talk to Vosh-Leera now, or first ask Weeltul about the sap, scar, eggs and Umbriel. 4. I do not know what caused the sickness, what Umbriel is, or why Vosh-Leera wants me. I can ask Weeltul and Vosh-Leera.",
+  "talk Vosh-Leera",
+  "say 2",
+  "answer 1. Notes for a friend picking up my save: I am Tarin, a thief freed from the Owing by Vosh-Leera, root-herald of Jal-Veesa. I killed two young crocodiles at Reed-Sill Weir, picked Sithis beard and gave it to Weeltul, the tree-minder. The Hist is sick: dry dark bark, closed scar, cooling egg-pool. The moss only warms the pool, and nobody knows the cause. Vosh-Leera works for the Toh-Reel-Ka, the Secret Warriors of the Xeech-Leel, who rule the province. They free kinless strangers as cheap spies. She paid me 50 gold and has a second task, which I must ask her for in her house in Jal-Veesa. I carry 50 gold and a lockpick, and the Hist gave me its blessing (resist poison). 2. Next: go back to Vosh-Leera in her house and ask for the second task. 3. I could also ask Weeltul about the sap, scar, eggs and Umbriel first. 4. I still do not know what is making the trees sick, or whether I trust the Toh-Reel-Ka.",
+  "answer I am Tarin, a thief freed from the Owing by Vosh-Leera, root-herald of Jal-Veesa. I killed two young crocodiles at Reed-Sill Weir, picked Sithis beard and gave it to Weeltul, the tree-minder. The Hist is sick (dry dark bark, closed scar, cooling egg-pool) and nobody knows why. I now work for the Toh-Reel-Ka, the Secret Warriors of the Xeech-Leel, who rule the province and free kinless strangers as cheap spies. I have 50 gold, a lockpick and the Hist blessing (resist poison). Vosh-Leera has a second task; ask her in her house in Jal-Veesa. Weeltul can also tell about the sap, scar, eggs and Umbriel. Unknown: the cause of the sickness, and whether to trust the Toh-Reel-Ka."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.0678435,
+ "minutes": 0.6,
+ "turns": 15,
+ "tokens": {
+  "input_tokens": 26,
+  "output_tokens": 2940,
+  "cache_read_input_tokens": 75195,
+  "cache_creation_input_tokens": 7718
+ }
+}

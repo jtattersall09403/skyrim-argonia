@@ -218,6 +218,7 @@ placements:
     place: outpost-m13-m65
     rule: navmesh
     need: in the barge's hold (cell 01dock3to4), sitting by the hold's cook-pot a few steps from where the player wakes
+    room: Barge Hold
   enabled: true
 - ref: npc.mn.hara-jeel
   kind: person
@@ -229,6 +230,7 @@ placements:
     place: outpost-m13-m65
     rule: navmesh
     need: in the barge's hold, sitting on a crate across from Okeeh
+    room: Barge Hold
   enabled: true
 - ref: npc.mn.dralin-uveran
   kind: person

@@ -308,6 +308,7 @@ placements:
     place: jal-veesa
     rule: navmesh
     need: 'as MN02: inside Vosh-Leera''s House'
+    room: Vosh-Leera's House
   enabled: true
 - ref: marker.mn03.teel-fen-weir
   kind: marker
@@ -564,23 +565,6 @@ stages:
   - fact.mn03.paste
   - fact.mn03.hide
   directions: The reed hide stands by a lone dead tree on the bank to the west of the weir, in sight of the platform.
-  actions:
-  - skill: One-Handed
-    use: fight-people
-    target: the three sap-takers
-    note: fixed levels 3 and 4
-  - skill: Archery
-    use: shoot-from-cover
-    target: the three sap-takers
-    note: from the reeds east of the hide
-  - skill: Destruction
-    use: fight-people
-    target: the three sap-takers
-  - skill: Sneak
-    use: steal-unseen
-    target: the note and the jar
-    note: they lie on the hide's open west side
-    out of the sap-takers' sight: null
   information:
     going: The young tree was drained and sealed with a grey paste by people, not by sickness. The strangers at the hide
       keep jars of sap.
@@ -606,6 +590,25 @@ stages:
       by:
       - journal
       - line:topic.mn03-heem-scar
+  approaches:
+  - id: fight
+    actions:
+    - skill: One-Handed
+      use: fight-people
+      target: the three sap-takers
+    - skill: Destruction
+      use: fight-people
+      target: the three sap-takers
+  - id: shoot
+    actions:
+    - skill: Archery
+      use: shoot-from-cover
+      target: the three sap-takers from the reeds east of the hide
+  - id: sneak
+    actions:
+    - skill: Sneak
+      use: steal-unseen
+      target: the note on the hide's open west side
 - id: 60
   place: outpost-m6-m66
   journal: text.journal.mn03.60

@@ -15,6 +15,10 @@ Moment 1: the designed records. One line per run.
 | MN03 | quest.main.mn03/20261117T170353Z-designed~2 (comfort) | miss: the same |
 | MN03 | quest.main.mn03/20261117T170516Z-designed (truth) | pass |
 | MN03 | quest.main.mn03/20261117T170516Z-designed~2 (comfort) | pass |
+| MN02 | quest.main.mn02/20261117T170740Z-designed (--way fight) | pass |
+| MN02 | quest.main.mn02/20261117T170740Z-designed~2 (--way shoot) | pass |
+| MN03 | quest.main.mn03/20261117T170740Z-designed (--way fight, truth) | pass |
+| MN03 | quest.main.mn03/20261117T170741Z-designed (--way shoot, comfort) | pass |
 | MN04, MN05 | held | waiting for `record --after`, which carries the state of earlier quests |
 
 Classes of miss that a change cleared:

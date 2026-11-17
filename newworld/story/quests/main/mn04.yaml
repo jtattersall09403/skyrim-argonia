@@ -181,10 +181,16 @@ things:
   where: the player's pack
   text: Jars to Karsh-Naal Camp by the next dark moon. Stack them by the longhouse with the rest and the Naga will pay you.
     Seal every scar behind you, as she showed you. Leave nothing at the hide. - K.
-hooks:
-- thing: thing.mn04.cage
-  hook: activate
-  setsFlag: flag.mn04.cage-open
+- id: thing.mn04.sesk-sack
+  kind: item
+  name: Sesk's Sack
+  source: 'new: a small sack of Sesk''s things (Skyrim''s sack item under our name), lying inside the cage'
+  states:
+    before-20: in the cage
+    after-20: carried
+    after-30: given back to Sesk
+  where: inside Sesk's Cage
+hooks: []
 placements:
 - ref: npc.mn.sesk
   kind: person
@@ -292,6 +298,17 @@ placements:
     need: the place's map marker, named Karsh-Naal Camp
   enabled: true
   placeName: Karsh-Naal Camp
+- ref: thing.mn04.sesk-sack
+  kind: thing
+  base:
+    kind: template_item
+    id: Skyrim sack, small
+  name: Sesk's Sack
+  anchor:
+    place: tribal-camp-m2-m68
+    rule: surface
+    need: on the floor inside Sesk's Cage, out of reach through the bars
+  enabled: true
 conclusions:
 - id: c1
   statement: A cult, the Unbound, drains the trees for a draught its leader brews, and seals them behind.
@@ -340,14 +357,14 @@ stages:
   journalText: The note from the reed hide sent the sap-takers' jars to Karsh-Naal Camp, a Naga camp in the marsh east of
     Teel-Fen Weir. Someone there is caged at the camp's edge. The key to the cage is on a guard named Jeeta-Sakka, who stands
     at the fire with the others. I can pick the cage's lock, steal the key from him, or fight the guards. I'm to open the
-    cage.
+    cage; once it is open, Sesk wants her sack from the floor inside handed to her.
   onEnter:
   - grantMapMarker: marker.mn04.karsh-naal
   objectives:
   - id: cage
     text: text.objective.mn04.cage
-    objectiveText: Open the cage at Karsh-Naal Camp (a Novice lock, or the key on Jeeta-Sakka).
-    target: thing.mn04.cage, npc.mn04.jeeta-sakka
+    objectiveText: Open the cage at Karsh-Naal Camp and take Sesk's sack from inside (a Novice lock, or the key on Jeeta-Sakka).
+    target: thing.mn04.cage, npc.mn04.jeeta-sakka, thing.mn04.sesk-sack
     completeWhen:
       questStage:
       - quest.main.mn04
@@ -356,9 +373,9 @@ stages:
   successors:
   - to: 20
     when:
-      flag:
-      - flag.mn04.cage-open
-      - true
+      hasItem:
+      - thing.mn04.sesk-sack
+      - 1
   failForward:
   - to: 95
     when:
@@ -366,31 +383,9 @@ stages:
         npcAlive: npc.mn.sesk
   directions: Karsh-Naal Camp lies in the marsh east of Teel-Fen Weir, about as far as Jal-Veesa is from the weir. The cage
     stands at the camp's west edge, behind the huts; the guards keep to the fire by the longhouse.
-  actions:
-  - skill: Lockpicking
-    use: pick-a-lock
-    target: Sesk's Cage
-    note: Novice
-  - skill: Pickpocket
-    use: pickpocket
-    target: Jeeta-Sakka
-    note: the cage key
-  - skill: Sneak
-    use: slip-past
-    target: the guards at the fire
-  - skill: One-Handed
-    use: fight-people
-    target: four Naga guards
-    note: fixed levels 4 and 5
-  - skill: Archery
-    use: shoot-from-cover
-    target: four Naga guards
-  - skill: Destruction
-    use: fight-people
-    target: four Naga guards
   information:
     going: The sap goes to Karsh-Naal Camp, guarded by Naga. Someone is caged there.
-    next: Open the cage at the camp's west edge.
+    next: Open the cage at the camp's west edge and take Sesk's sack from inside it.
     ways: Pick its Novice lock; steal the key from Jeeta-Sakka at the fire; or fight the four guards (or shoot them from
       the reeds). The guards stay at the fire, so I can sneak to the cage.
     carriers:
@@ -399,12 +394,13 @@ stages:
       - journal
       - marker:marker.mn04.karsh-naal
       - read:thing.mn.unbound-note
-    - know: open the cage
+    - know: open the cage and take Sesk's sack from inside
       by:
       - journal
       - objective
       - marker:thing.mn04.cage
       - name:thing.mn04.cage
+      - name:thing.mn04.sesk-sack
     - know: the key is on Jeeta-Sakka
       by:
       - journal
@@ -415,10 +411,38 @@ stages:
       by:
       - journal
       - ask:topic.mn04-sesk-call
+  approaches:
+  - id: pick
+    actions:
+    - skill: Lockpicking
+      use: pick-a-lock
+      target: Sesk's Cage
+    - skill: Sneak
+      use: slip-past
+      target: the guards at the fire
+  - id: pickpocket
+    actions:
+    - skill: Pickpocket
+      use: pickpocket
+      target: Jeeta-Sakka
+    - skill: Sneak
+      use: slip-past
+      target: the guards at the fire
+  - id: fight
+    actions:
+    - skill: One-Handed
+      use: fight-people
+      target: four Naga guards
+    - skill: Archery
+      use: shoot-from-cover
+      target: four Naga guards
+    - skill: Destruction
+      use: fight-people
+      target: four Naga guards
 - id: 20
   place: tribal-camp-m2-m68
   journal: text.journal.mn04.20
-  journalText: I opened the cage. The Naga inside is named Sesk. I'm to hear what she knows.
+  journalText: I opened the cage and have Sesk's sack. I'm to give it to her and hear what she knows.
   objectives:
   - id: sesk
     text: text.objective.mn04.sesk
@@ -507,6 +531,10 @@ stages:
       - journal
       - objective
       - marker:npc.mn.vosh-leera
+  onEnter:
+  - takeItem:
+    - thing.mn04.sesk-sack
+    - 1
 - id: 40
   place: jal-veesa
   journal: text.journal.mn04.40
@@ -557,7 +585,8 @@ stages:
   place: jal-veesa
   journal: text.journal.mn04.90
   journalText: 'Weeltul told me how the rootworm works: a great worm that swims the roots between the trees'' pools, and
-    she calls it for travellers at Jal-Veesa''s pool. The fare to Helstrom is twenty-five gold, paid to her. I'm to pay her the fare, ride to Helstrom and find Nesh-Deeka's House there.'
+    she calls it for travellers at Jal-Veesa''s pool. The fare to Helstrom is twenty-five gold, paid to her. I''m to pay
+    her the fare, ride to Helstrom and find Nesh-Deeka''s House there.'
   learns:
   - fact.mn04.rootworm
   ending: complete
@@ -702,7 +731,8 @@ topics:
   essential: false
   intent: 'Sesk, through the bars. Tells: she is Sesk, and she will tell the player everything about the sap if they get
     her out. The key is on Jeeta-Sakka, the big one at the fire; the lock is a poor one; the guards never look this way.
-    Checks: nothing. Does: nothing.'
+    Her sack is on the floor in there with her; when the door is open, the player is to hand it to her. Checks: nothing.
+    Does: nothing.'
   new: true
 - id: topic.mn04-sesk-who
   label: Who are you?
@@ -716,7 +746,7 @@ topics:
     nothing.'
   new: true
 - id: topic.mn04-sesk-talk
-  label: Tell me about the sap.
+  label: Here is your sack. Tell me about the sap.
   person: npc.mn.sesk
   stages:
   - 20
@@ -732,6 +762,10 @@ topics:
   - fact.mn04.draught
   - fact.mn04.seal
   new: true
+  when:
+    hasItem:
+    - thing.mn04.sesk-sack
+    - 1
 - id: topic.mn-unbound
   label: Who are the Unbound?
   person: npc.mn.sesk

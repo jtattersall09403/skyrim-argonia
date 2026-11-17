@@ -245,6 +245,7 @@ placements:
     place: jal-veesa
     rule: navmesh
     need: inside Vosh-Leera's House, standing by her table
+    room: Vosh-Leera's House
   enabled: true
 - ref: door.mn02.vosh-leera-house
   kind: door
@@ -342,23 +343,6 @@ stages:
         npcAlive: npc.mn.vosh-leera
   directions: Reed-Sill Weir is the first camp east of Ashgate Landing, where the road meets the creek. The moss hangs from
     the trees over the water just below the woven weir.
-  actions:
-  - skill: One-Handed
-    use: fight-creature
-    target: the young crocodiles
-    note: two young crocodiles at a fixed level
-  - skill: Archery
-    use: shoot-from-cover
-    target: the young crocodiles
-    note: from the log walk on top of the weir
-  - skill: Destruction
-    use: fight-creature
-    target: the young crocodiles
-    note: from the log walk
-  - skill: Sneak
-    use: slip-past
-    target: the moss
-    note: the crocodiles face the offal stones; the moss lies on the bank behind them
   information:
     going: I am free; Vosh-Leera of Jal-Veesa had me freed and wants me. Her town's tree-minder wants Sithis' beard.
     next: Pick Sithis' beard below Reed-Sill Weir, then go on to Jal-Veesa.
@@ -378,6 +362,25 @@ stages:
       - journal
       - look:npc.mn02.crocodile-1
       - ask:topic.mn02-moss-what
+  approaches:
+  - id: fight
+    actions:
+    - skill: One-Handed
+      use: fight-creature
+      target: the young crocodiles
+    - skill: Destruction
+      use: fight-creature
+      target: the young crocodiles
+  - id: shoot
+    actions:
+    - skill: Archery
+      use: shoot-from-cover
+      target: the young crocodiles from the log walk
+  - id: sneak
+    actions:
+    - skill: Sneak
+      use: slip-past
+      target: the moss behind the crocodiles
 - id: 20
   place: jal-veesa
   journal: text.journal.mn02.20

@@ -219,6 +219,7 @@ placements:
     place: helstrom
     rule: navmesh
     need: inside Nesh-Deeka's House, standing by the table in its one room; she stays there
+    room: Nesh-Deeka's House
   enabled: true
 - ref: door.mn.nesh-deeka-house
   kind: door
@@ -245,6 +246,7 @@ placements:
     rule: navmesh
     need: inside the Boatmen's Lodge (Helstrom's inn, a ship's hold interior; Sleeps-Last keeps it), at a table at the far
       end of the hold from the door; not hostile; in faction.mn05.keel-raa-hands
+    room: Boatmen's Lodge
   enabled: true
 - ref: thing.mn.stolen-sap-jar
   kind: thing
@@ -265,6 +267,7 @@ placements:
     place: helstrom
     rule: navmesh
     need: inside the Boatmen's Lodge, standing beside Keel-Raa's table; not hostile; in faction.mn05.keel-raa-hands
+    room: Boatmen's Lodge
   enabled: true
 - ref: npc.mn.ah-meesei
   kind: person
@@ -278,6 +281,7 @@ placements:
     place: helstrom
     rule: navmesh
     need: inside the Boatmen's Lodge, sitting on a crate by Keel-Raa's table; not hostile; in faction.mn05.keel-raa-hands
+    room: Boatmen's Lodge
   enabled: true
 - ref: npc.mn.cheeval-xu
   kind: person
@@ -420,21 +424,6 @@ stages:
   - fact.mn05.go-between
   directions: The Boatmen's Lodge is Helstrom's inn, by the city landing where the rafts tie up; Keel-Raa sits at the far
     end of its hold.
-  actions:
-  - skill: Pickpocket
-    use: pickpocket
-    target: Keel-Raa
-    note: the jar in his pack
-  - skill: One-Handed
-    use: fight-people
-    target: Keel-Raa and his two hired men
-    note: fixed levels 5 and 6; no crime
-  - skill: Destruction
-    use: fight-people
-    target: the three
-  - skill: Archery
-    use: fight-people
-    target: the three
   information:
     going: Cuts-the-Old-Knot hunts the Eye of Argonia at the Root and brews her draught to kill its guardian. The order
       wants proof of me.
@@ -464,6 +453,28 @@ stages:
       - objective
       - line:topic.mn05-draught
       - ask:topic.mn05-keel-jar
+  approaches:
+  - id: pickpocket
+    actions:
+    - skill: Pickpocket
+      use: pickpocket
+      target: Keel-Raa
+  - id: buy
+    actions:
+    - skill: Speech
+      use: barter
+      target: Keel-Raa, 100 gold
+  - id: fight
+    actions:
+    - skill: One-Handed
+      use: fight-people
+      target: Keel-Raa and his two hired men
+    - skill: Destruction
+      use: fight-people
+      target: the three
+    - skill: Archery
+      use: fight-people
+      target: the three
 - id: 26
   place: helstrom
   journal: text.journal.mn05.26
