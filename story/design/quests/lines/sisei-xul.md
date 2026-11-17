@@ -38,7 +38,7 @@ at Tsonac, where the Stone-Sleepers' minders teach the flesh spells of stone. It
 Enchanting, Alteration and Restoration, with Destruction's poisons for a fight. Our mods add no craft beyond Skyrim's
 three, so its making is smithing, alchemy and enchanting. None of its places is hostile to anyone.
 
-Its enemy is House Cardruhn of Thorn, which raises the Argonian dead and sells them over the border as thralls. To
+Its enemy is House Cardruhn of Thorn, which raises the Argonian dead and sells them to northern estates as thralls. To
 an Argonian, a body pulled from its stake and made to work for a Dunmer master is the slave-coffles of Thorn over
 again. Raising the dead breaks no Argonian law, but a soul kept from its Hist is the Toh-Reel-Ka's business (**X**,
 reconciliation item 6), so the Cardruhns work quietly and the order fights them itself. Joining gives the player the
@@ -60,11 +60,10 @@ crop to it. The salt mine's dead were never staked, which made them the easiest 
 tried them first. **X**, from the two cited lines.
 
 **Where the dead go.** The house binds the raised dead and ships them out of Thorn on its own ship, the *Saltrice
-Queen*, to Telvanni buyers over the border. House Telvanni refused the Pact that ended Argonian slavery and kept
-taking Argonians (`regions/thornmarsh-and-east.md:65`). Inside the province the trade in people is a trade in sold
-Owings; over the border the Telvanni are the market for the dead and, rarely, for the living (**X**, reconciliation
-item 2). The Barsaebic Ayleids did the same thing first: when their Argonian slaves rose, their necromancer kings had
-them killed and raised as guards (`topics/lost-peoples.md:108-109`).
+Queen*, north up the coast to estates that want hands that need no food. Its papers write each body as an Owing that
+never ends, so the sale passes the crossings as a sale of Owings, the only trade in people the province has in 4E 201
+(**X**, reconciliation item 2). The Barsaebic Ayleids did the same thing first: when their Argonian slaves rose,
+their necromancer kings had them killed and raised as guards (`topics/lost-peoples.md:108-109`).
 
 **Who began it.** Morvayn Cardruhn, the house's master, bought Argonian captives from the slaver brig *Silt Bride*
 when he was young, late in the Third Era, when the Dres still raided the Thorn coast (lore §10.1). She sank off Thorn
@@ -76,8 +75,9 @@ home to Thorn to sell dead what he could no longer sell alive.
 soul is denied its return to the Hist (`topics/sithis-nisswo-shadowscales.md:130-134`). In the mother hall at
 Helstrom there is such an urn. The First Grave-Singer says it holds a Hist-poisoner. It holds Keel-Vaxa, an Archein
 of the Thorn coast. In the 4E 160s he sold Morvayn Cardruhn the Owings of forty of his own village's debtors for
-gold, and Morvayn shipped them over the border to Telvanni buyers (**X**, reconciliation items 2 and 10). The First Grave-Singer
-bound Keel-Vaxa herself, out of grief: her clutch-sister was among the forty. His granddaughter, Neeja, now works for
+gold, and Morvayn sold the Owings on to House Ulvarys' factor at Thorn (**X**, reconciliation items 2 and 10). The
+First Grave-Singer bound Keel-Vaxa herself, out of grief: her clutch-sister was among the forty. His granddaughter,
+Neeja, now works for
 the house. The player learns this in quest 8.
 
 ## 3. The people who matter
@@ -362,7 +362,7 @@ What each road leaves:
 
 Morvayn's death ends the house. The *Saltrice Queen* does not sail. The Vicecanon of Thorn takes the Cardruhns'
 stall and house in Thorn, and Ervyn, if alive, is put to a long Owing in Thorn's saltrice fields. The order stakes
-the bound dead it finds. The threat to the living goes with it: no buyer over the border has a source left, and the
+the bound dead it finds. The threat to the living goes with it: no estate in the north has a source of bound dead left, and the
 order's grave-singers go back to every grave-ground the house opened.
 
 | Outcome | It gives | It costs |

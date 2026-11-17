@@ -1,5 +1,22 @@
 # Reconciling the stories with the lore: your call
 
+## Answered by the owner on 2026-11-17
+
+1. The Owing: the recommendation (a, with the Archwardens setting and selling Owings at their crossings).
+2. a: every sale in 4E 201 is a sale of Owings; no Telvanni buyers of the living or the dead now.
+3. c: the Toh-Reel-Ka do not know the Shadowscales survive; the Shadowscales have nothing to do with the main quest
+   or the Toh-Reel-Ka.
+4. Decided on the names call (#74).
+5. a: the Company is a Gideon house; the letters of marque were the Xeech-Leel's, bought in 4E 173.
+6. The recommendation: the Sisei-Xul a native loose order; a soul kept from its Hist is the Toh-Reel-Ka's business.
+7. Ruled in the story explorer notes.
+8. a: no tree-minder knows of the dreamers; the face of the reveal at the gate is Cuts-the-Old-Knot.
+9. a: rename King of the Murkmire's "An-Xileel" people in our plugin where placed.
+10. Yes to all four dates, rewritten for lore consistency.
+11. Ignored: the old world is being replaced.
+12. a: Gideon alone keeps a rope; Thorn does not hang.
+13. Answered on the names call (#74).
+
 On 2026-11-17 you asked for the main quest and every faction to be reconciled against the province's lore, and
 for options and a recommendation on each thing that does not fit, before anything else is changed. This page is
 that list. The nine plot pages and the Owing house page are not changed until you rule.
@@ -30,8 +47,6 @@ from the Owing.
   escaped slaves to freedom.
 - **The Shadowscales are back in secret**; the death of "the last one" in 4E 201 was a cover (your ruling of
   2026-11-16).
-- **The faction-names call** (`faction-names-call.md`) is still open for every name but the hidden order's. Item 4
-  below touches it.
 
 The lore now says all of the above. Everything below is still open, ordered from the change that would alter the
 stories most to the least.
@@ -278,12 +293,6 @@ tree cannot hear it (lore §11.3). Nothing conflicts. The faction-names call off
 Unbound".
 
 **Recommendation:** nothing to change beyond your answer on the names call.
-
-## What happens until you answer
-
-The faction plots are being rewritten today to your notes of 17 November. So that they are not written twice, the
-writers use each recommendation above as a working default. Any item you answer differently is then a text change
-to the pages it names.
 
 ## How to reply
 

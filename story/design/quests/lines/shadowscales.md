@@ -14,9 +14,7 @@ as hatchlings. *Ku-vastei*: "those who bring needed change", the Argonian name f
 as judges and enforcers. *The brass*: the brass medallion that every Shadowscale wears. *A contract*: one killing the
 order takes on. *The Eldest*: the order's head. *Shadow-born*: an Argonian born under the Shadow. *The Black-Tongues*:
 the Murkmire tribe that gives the order most of its hatchlings. *The Dark Brotherhood*: the guild of assassins of
-Cyrodiil, a foreign order, which once trained the Shadowscales. *The Xeech-Leel*: the party that rules the province
-from Helstrom. *The Toh-Reel-Ka*: the Xeech-Leel's secret warriors, their intelligence and security order. *The
-Lampbearers*: the investigators of Soulrest. *The Eelskins*: the thieves' guild of the south.
+Cyrodiil, a foreign order, which once trained the Shadowscales. *The Lampbearers*: the investigators of Soulrest. *The Eelskins*: the thieves' guild of the south.
 
 ## 1. What the faction is
 
@@ -57,18 +55,17 @@ rivals then offer the order a way out, and the Eldest leaves the choice to the p
 
 **What is true.** The Dark Brotherhood's Listener at Cheydinhal wants the Archon school reopened and the
 Shadow-born for her own (`topics/guilds-and-orders.md:203-223`; `argonia-4e201-state.md` §2.4). Her agent, Vetrix, has
-bought Shadow-born hatchlings for a year from the men of the washes, to train them for the Brotherhood. The
-Toh-Reel-Ka know the order lives. Last month one of them came to Beem-Xal's door and offered the order a charter: to
-kill for the Xeech-Leel whomever the Toh-Reel-Ka name (**X**, from `argonia-4e201-state.md` §2.5). Ukka-Teel refused:
-the order judged for the people, and it will not be the blade of a party that watches the trees. So the order must
-now hide from the state as well, and a case before an arbiter that proves the order lives would bring the
-Toh-Reel-Ka down on it. Ukka-Teel tells the player he kills for the hatchlings' sake, and that is half the truth.
+bought Shadow-born hatchlings for a year from the men of the washes, to train them for the Brotherhood. No one
+outside the order knows it lives, and Ukka-Teel means to keep it so. Since the school was sealed the order has had
+no one's leave to judge, so in the marsh's eyes each of its killings is a murder (**X**, from `archon.md:48-52`). A
+case before an arbiter that proves the order lives would tell the whole south, and the Listener, where its
+hatchlings train. Ukka-Teel tells the player he kills for the hatchlings' sake, and that is half the truth.
 
 ## 3. The people who matter
 
 | Who | What they want | What they hide, or what it costs |
 |---|---|---|
-| **Ukka-Teel**, the Eldest, at Ra'tal Den (at Beem-Xal's house in Act III) | the order alive and its hatchlings his, free of the Brotherhood and of the Toh-Reel-Ka | he refused the Toh-Reel-Ka's charter and has made the order an enemy of the state, and he has not told his novices |
+| **Ukka-Teel**, the Eldest, at Ra'tal Den (at Beem-Xal's house in Act III) | the order alive and its hatchlings his, free of the Brotherhood | the order has killed without anyone's leave since the school was sealed, so each killing is a murder in the marsh's eyes, and he has not told his novices |
 | **Hulee-Tah**, a Shadowscale, the player's handler, at Beem-Xal's house in Archon | to see the order judge the marsh again, as it did before he was hatched | he planted his own "body" to test the player (section 4). He lies easily and kindly |
 | **Beem-Xal**, the old ku-vastei, in his house beside the sealed school | to die in his bed with the order alive | the town thinks he watches the sealed school for them; he watches it for the order |
 | **Teesh-Vaal**, the Lampbearers' arbiter, at Soulrest | to judge fairly, and to keep the hatchlings safe | she was a Shadowscale, and she called Veezara the last to cover the order |
@@ -260,9 +257,9 @@ where the order trains, for his freedom." *Leads on:* the Eldest calls the playe
 **11. Whose Offer** (Archon; Lilmoth, the Eelskins' hall; Soulrest, the Lamp-Hall). This quest holds the line's
 choice, written as the player meets it.
 
-1. *At Beem-Xal's house*, Ukka-Teel speaks first. He tells the player of the Toh-Reel-Ka's charter and his refusal
-   (section 2). The Lampbearers know where the order trains. If Marcella brings a case before Teesh-Vaal, the whole
-   south will know the order lives, and the Toh-Reel-Ka will hunt it. Two offers have come to Beem-Xal's door. The
+1. *At Beem-Xal's house*, Ukka-Teel speaks first. The Lampbearers know where the order trains. If Marcella brings a
+   case before Teesh-Vaal, the whole south will know the order lives and that it kills without leave, and the
+   Listener will know where its hatchlings are (section 2). Two offers have come to Beem-Xal's door. The
    journal says: "Hear Swims-Without-Ripples at the Eelskins' hall and Marcella Dovi at the Lamp-Hall, then bring the
    Eldest your answer." Markers lead to the hatch on Pusbottom's walkways and to the Lamp-Hall. Hulee-Tah gives the
    player a jar of eel-slime from Black-Tongue Brews for the cistern behind the hatch, where the Eelskins' ripper
@@ -274,7 +271,7 @@ choice, written as the player meets it.
    south as one underworld.
 3. *At the Lamp-Hall*, Marcella Dovi speaks first. Lilmoth's merchant council, which pays a third of her Lampbearers,
    wants the Eelskins broken. If the order kills their leader, she will raid the hall, burn the case on the order and
-   keep its name from the Toh-Reel-Ka and from the arbiter.
+   keep its name from the arbiter.
 4. *The answer.* The player may hear both in either order. Back at Beem-Xal's house, Ukka-Teel asks whose offer the
    order takes, and leaves the choice to the player, who will do the work. The player's answer sets the stage for
    that ally, and the other's line closes.
@@ -321,7 +318,7 @@ theirs. *Leads on:* the line ends. Contracts go on, small and repeating, from Hu
 
 - *It gives:* the Elder's rank and the Hook-and-Eye. The Eel-Skin Gloves from the contract. The law's blind eye:
   once, Marcella clears the player's bounty in Soulrest, Truowa and Lilmoth. The Lampbearers never take a case against
-  a Shadowscale, and they keep the order's name from the Toh-Reel-Ka. Teesh-Vaal, glad the order lives, trains
+  a Shadowscale, and they keep the order's name out of every hearing. Teesh-Vaal, glad the order lives, trains
   Illusion to Master.
 - *It costs:* every Eelskin left alive attacks on sight, and their fences close. The player killed a thief who never
   killed anyone, for a merchant council's purse, and the journal says so.
@@ -392,9 +389,8 @@ stages.
 - *Place records:* Beem-Xal's house beside the sealed school in Archon as the order's door, with its alchemy table;
   Black-Tongue Brews in Lilmoth as the branch; Ra'tal Den's passages and hearth chamber as the trial ground, where the
   order's novices are not hostile to a member; the traps named above. The sealed school stays sealed.
-- *Lore:* the hidden order, Ukka-Teel, the planted test, the cover story about Veezara and the Toh-Reel-Ka's refused
-  charter are extrapolations, grounded above. They go into `story/lore/extrapolation/argonia-4e201-state.md` when the
-  owner passes the plot.
+- *Lore:* the hidden order, Ukka-Teel, the planted test and the cover story about Veezara are extrapolations,
+  grounded above. They go into `story/lore/extrapolation/argonia-4e201-state.md` when the owner passes the plot.
 
 ## 9. Read on paper
 

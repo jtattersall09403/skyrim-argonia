@@ -15,9 +15,10 @@ Archon. To call a Xeech-Leel officer "An-Xileel" is the gravest insult.
 
 **The Toh-Reel-Ka.** "The Secret Warriors" are the Xeech-Leel's elite order of spies and guards (§2.5). Their ranks,
 lowest first, are Voh-Vastei, Toh-Wo, Reel-Ka, Ka-Deelith and Toh-Nassa. They watch the Hist through dreamers kept in
-the cellar of Fort Chalkmoth. Only the main quest knows the dreamers. A faction line may know the Toh-Reel-Ka by name
-and fear them (they offered the Shadowscales a charter, and a soul kept from its Hist is their business), and nothing
-more.
+the cellar of Fort Chalkmoth. Only the main quest knows the dreamers, and no tree-minder or Root Talk elder knows of
+them. A faction line may know the Toh-Reel-Ka by name and fear them (a soul kept from its Hist is their business),
+and nothing more. They do not know the Shadowscales survive, and the Shadowscales, the Eelskins and the Lampbearers
+have nothing to do with them.
 
 **The Archwardens.** The Xeech-Leel's wardens. Their garrisons, of old Archein families, keep the old Imperial forts,
 roads, tolls and customs. Each fort or post keeps its own law: a bounty set at one is kept by that post and the fort
@@ -44,8 +45,9 @@ alone keeps a rope.
   Brotherhood is "the Brotherhood of Cyrodiil", whose Listener at Cheydinhal wants the Shadow-born.
 - **The Lampbearers** are Soulrest's investigators, founded in 4E 189. They are not the Twin Lamps. The Chainbreakers
   see themselves as the Twin Lamps' more militant heirs, and their safe houses show the Twin Lamps' sign of two lamps.
-- **Helstrom's eldest tree-minder**, who keeps the city tree and knows of the dreamers, is not Okan-Zeel, the
-  Sisei-Xul's First Grave-Singer, who works in the same hall.
+- **The trade in people** in 4E 201 is the Owing alone: every sale of a person is a sale of an Owing, and the buyers
+  are inside the province (House Ulvarys and its factor). No Telvanni buyer takes the living or the dead now;
+  the Telvanni's taking of Argonians and the Dres slavers of the Thorn coast are history, ended by the late Third Era.
 - **The Stormwidow** was a ship of Bramman's Brethren. In 4E 181 Gaius Cassena told the Archwardens her course; the
   privateers of the *Black Kestrel* ran her onto Skeith Isle's beach and killed her crew. Her captain hid her letter
   of marque in the cache under the cairn on the Grey Tooth before he died. One-Eye keeps a copy at Kelp-Mouth Cave.

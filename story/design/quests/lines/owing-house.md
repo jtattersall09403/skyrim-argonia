@@ -79,10 +79,10 @@ for food, for a bed in a locked shed and for anything they break, so the months 
 between its places by barge. People kept for years far from their Hist are washed out, and the family's workers are
 known by it (`topics/labour-and-bondage.md:112-116`).
 
-The Owing is the trade in people inside the province. Over the border, House Telvanni still buys, rarely, the living
-as well as the dead. When a debtor is too sick or too old to work off anything, House Ulvarys now and then sell that
-debtor's body and labour to a Telvanni buyer's agent for gold and send them up the border river in old Dres shackles. The flat barge
-held at Fort Willowmoth's jetty is one such (the Chainbreakers' 13).
+The Owing is the province's whole trade in people: every sale of a person in 4E 201 is a sale of an Owing, and no
+Telvanni buyer takes the living now. The family's factor buys Owings at the Archwardens' crossings and sends the
+debtors on by barge, in old Dres shackles kept from the slaving days. The flat barge held at Fort Willowmoth's jetty
+is one such, carrying three carters the fort's wardens set Owings on and sold to the factor (the Chainbreakers' 13).
 
 ## Its fighters
 
@@ -113,5 +113,5 @@ living and want nothing of the dead.
 | Marzai | the family's barge, with five held workers in its hold | 10. The Lantern on the Lake |
 | Thorn | the counting-house and the factor's letters | 11. The Counting-House |
 | Calvian Waystation | Ah-Kesh's camp | 12. The Catch-Captain |
-| Fort Willowmoth | a flat barge held at the jetty with Dres shackles and three held workers, bound for a Telvanni buyer | 13. The Vicecanon's Price |
+| Fort Willowmoth | a flat barge held at the jetty with Dres shackles and three held carters whose Owings the family's factor bought at the fort's crossing | 13. The Vicecanon's Price |
 | Julo | the estate, Aldyne and the great roll | 14. The Great Roll |

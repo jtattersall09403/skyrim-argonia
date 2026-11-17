@@ -36,7 +36,7 @@ cook of the Owing gang at Ashgate Landing, and Dralin Uveran, its gang-master.
 | Who | Where they stand | What they want |
 |---|---|---|
 | **Marcella Dovi** | The Lampbearers' chief, an Imperial of Soulrest's old civil office families, in the Lamp-Hall (also in the Eelskins, the Shadowscales) | crimes solved and the Lampbearers paid by all three powers of Soulrest, so that none can call them its own |
-| **Teesh-Vaal** | The arbiter, a very old Argonian woman, in the Lamp-Hall's hearing room (also in the Shadowscales) | to judge fairly in the years she has left, and to keep the hatchlings out of the Toh-Reel-Ka's hands |
+| **Teesh-Vaal** | The arbiter, a very old Argonian woman, in the Lamp-Hall's hearing room (also in the Shadowscales) | to judge fairly in the years she has left, and to keep the hatchlings out of the Dark Brotherhood's hands |
 | **J'zahri** | A Khajiit, the head of the Lampbearers' branch on Truowa's quay (also in the Eelskins) | to run her own branch one day, away from Soulrest's three powers |
 
 ### The Eelskins
@@ -57,7 +57,7 @@ cook of the Owing gang at Ashgate Landing, and Dralin Uveran, its gang-master.
 
 | Who | Where they stand | What they want |
 |---|---|---|
-| **Ukka-Teel** | The Eldest, at Ra'tal Den (at Beem-Xal's house in Act III) (also in the Lampbearers) | the order alive and its hatchlings his, free of the Brotherhood and of the Toh-Reel-Ka |
+| **Ukka-Teel** | The Eldest, at Ra'tal Den (at Beem-Xal's house in Act III) (also in the Lampbearers) | the order alive and its hatchlings his, free of the Brotherhood |
 | **Hulee-Tah** | A Shadowscale, the player's handler, at Beem-Xal's house in Archon (also in the Eelskins) | to see the order judge the marsh again, as it did before he was hatched |
 | **Beem-Xal** | The old ku-vastei, in his house beside the sealed school | to die in his bed with the order alive |
 | **Lucan Vetrix** | An Imperial who calls himself a rice buyer, at Lilmoth's stilt-hall tavern (also in the Lampbearers) | the Archon school and its hatchlings for the Brotherhood |

@@ -14,9 +14,8 @@ in section 8.
 quarrel choose, here the old woman who hears the Lampbearers' cases. *The Owing*: the marsh's sentence, a counted
 number of months or years of owed work in place of a cell. *Ku-vastei*: "those who bring needed change", the
 Argonian name for the Shadowscales when they served as judges and enforcers. *The Shadowscales*: Argonian
-assassins, given to the order at birth. *The Eelskins*: the thieves' guild of the south. *The Xeech-Leel*: the party
-that rules the province from Helstrom. *The Toh-Reel-Ka*: the Xeech-Leel's secret warriors, their intelligence and
-security order. *Hist*: the great thinking trees of Black Marsh.
+assassins, given to the order at birth. *The Eelskins*: the thieves' guild of the south. *Hist*: the great
+thinking trees of Black Marsh.
 
 ## 1. What the faction is
 
@@ -56,8 +55,9 @@ dead on his own boat landing at Silt-Orrel Estate.
 cover. The Black-Tongue tribe never stopped finding Shadow-born hatchlings (`argonia-4e201-state.md:214-216`), and an
 old Shadowscale, Ukka-Teel, the Eldest, trains them in secret at Ra'tal Den, a ruin of the Banujha Basin. The
 arbiter, Teesh-Vaal, was a Shadowscale herself before she retired to judge (`topics/sithis-nisswo-shadowscales.md:65-67`).
-She knows the order lives, and she hides it for a reason of her own: the Toh-Reel-Ka would make a living order their
-blade, or hunt it if it refused (**X**, from `argonia-4e201-state.md` §2.5).
+She knows the order lives, and she hides it for a reason of her own: a foreign order of assassins wants the
+order's hatchlings, and word that the order lives would show it where they are (**X**, from `argonia-4e201-state.md`
+§2.4).
 
 **The murder.** For a year, men of the washes have sold Shadow-born hatchlings for gold to Lucan Vetrix, an Imperial who
 calls himself a rice buyer. Vetrix is the agent of the Dark Brotherhood's Listener at Cheydinhal, a foreign order of
@@ -80,7 +80,7 @@ the killer.
 | Who | What they want | What they hide, or what it costs |
 |---|---|---|
 | **Marcella Dovi**, the Lampbearers' chief, an Imperial of Soulrest's old civil office families, in the Lamp-Hall | crimes solved and the Lampbearers paid by all three powers of Soulrest, so that none can call them its own | she takes money from all three powers. Any one of them could close the Lampbearers by stopping its share, and she bends a little to keep each one |
-| **Teesh-Vaal**, the arbiter, a very old Argonian woman, in the Lamp-Hall's hearing room | to judge fairly in the years she has left, and to keep the hatchlings out of the Toh-Reel-Ka's hands | she was a Shadowscale. She knows the order lives and called Veezara the last to cover it. She trained with Ukka-Teel at Archon |
+| **Teesh-Vaal**, the arbiter, a very old Argonian woman, in the Lamp-Hall's hearing room | to judge fairly in the years she has left, and to keep the hatchlings out of the Dark Brotherhood's hands | she was a Shadowscale. She knows the order lives and called Veezara the last to cover it. She trained with Ukka-Teel at Archon |
 | **J'zahri**, a Khajiit, the head of the Lampbearers' branch on Truowa's quay | to run her own branch one day, away from Soulrest's three powers | she thinks Marcella too soft on the merchant council, and says so |
 | **Ukka-Teel**, the Eldest of the Shadowscales, at Ra'tal Den, unseen until Act III | his hatchlings safe and the order alive in its old work: judging and killing for the Argonian people | he killed Orrel-Sakka and lost his brass doing it |
 | **Swims-Without-Ripples**, the leader of the Eelskins, in their hall under Pusbottom in Lilmoth | protection from the law for her thieves | she holds the Eldest's brass and will trade it only for that protection |
@@ -354,7 +354,7 @@ practice blade, a brass chain link and the dead men's sale-notes. The notes say 
 that the Shadowscales are gone, and the journal records that she would not look at the link. The player can make her
 speak: an Expert Speech check (75), or showing her the link, the blade and the notes together. She admits that she
 was a Shadowscale, that the order lives and that its Eldest is Ukka-Teel. She called Veezara the last to keep the
-hatchlings from the Toh-Reel-Ka. She will not hear any case against them. *Leads on:* the next morning a runner from
+hatchlings from the Dark Brotherhood. She will not hear any case against them. *Leads on:* the next morning a runner from
 Lilmoth brings word that Orrel-Sakka is dead. Marcella takes the case herself, pays 500 gold and sends the player to
 Silt-Orrel, a walk north of Lilmoth's harbour.
 

@@ -106,7 +106,6 @@ A skilled non-combat character can advance in the Marsh Charter through tactics,
 
 | Senior role | Incompatible or strongly conflicting role |
 |---|---|
-| State-chartered Shadowscale | Night-Reed criminal leadership; anti-state independent Shadowscale |
 | Dark Brotherhood-aligned Shadowscale | Anti-Brotherhood Shadowscale; some public League offices |
 | Night-Reed oligarch/blackmailer | Senior League public office |
 | Night-Reed redistributive branch | Compatible with lower League membership; conflicts with strict law-enforcement office |
@@ -186,7 +185,7 @@ The deferral principle: cut breadth before depth, and never defer a line's final
 
 **Ranks:** Watcher → Knife-Bearer → Writ-Keeper → senior branch office. Leadership is possible only in the independent branch and remains accountable to a council.  
 
-**Senior exclusions:** State-controlled senior rank conflicts with senior Night-Reed/League roles; Brotherhood affiliation conflicts with an anti-Brotherhood independent ending.  
+**Senior exclusions:** Brotherhood affiliation conflicts with an anti-Brotherhood independent ending.  
 
 **World-generation summary:** One ruined cradle, one adaptable sanctuary, target homes/offices, rooftops, canals and underwater exits. Reuse existing city fabric; do not build a separate province-scale assassin network.
 
@@ -199,9 +198,9 @@ The deferral principle: cut breadth before depth, and never defer a line's final
 | SS05 | A Brother from Falkreath | A Dark Brotherhood emissary offers training, contracts and Listener legitimacy in exchange for absorption — executing the revival Listener Dupre and Rasha planned before the Brotherhood's own collapse (lore: topics/sithis-nisswo-shadowscales.md). The emissary is useful, courteous and plainly seeking control. | **P11/P12/P13:** Guest safehouse, ritual chamber and discreet dock/escape; 4-actor negotiation marks. | L09, L29; A02, V03 |
 | SS06 | The Honest Target | A contract names a corrupt magistrate, but the patron is a smuggler trying to erase a conviction. Bonus conditions reward discovery and restraint, not one prescribed kill method. | **P11/P12/P13:** Magistrate courthouse/home, smuggler warehouse, patrol schedules, poison/stealth/social approaches and evidence sockets. | L08–L09; A18–A20, V02–V03 |
 | SS07 | Two Knives, One Name | Two assassins use the same Shadowscale title. One is an impostor; the other committed an atrocity under a genuine writ. Authenticity and innocence diverge — and the order's own law makes it worse: canon holds that **a Shadowscale may not kill a fellow Shadowscale**, and that tenet-breaking is punished by an assassin sent by the **Argonian Royal Court**, which does not exist and canon doubts ever did. So whoever executes either of them is **claiming the empty throne's authority**, which ties this line to the main quest's kingship question without requiring a single main-quest stage. | **P11/P12/P13:** Twin safehouses, **pursuit-by-inference** route (three sites, each already vacated, read the exit from the evidence — no fleeing-NPC pathing), interrogation room and fail-forward journals. | L08–L09; A02, V03 |
-| SS08 | The State’s Hand | The Toh-Reel-Ka offers an official charter: legal protection and resources in return for state-directed contracts. It is the third bidder — after the Brotherhood (SS05) and the Black-Tongues (SS04) — for an order everyone wants and nobody made. Refusal leaves the order vulnerable but independent. | **P11/P12:** Xeech-Leel office, Shadowscale council chamber and branch-specific banner/guard state only. **Touches:** no main-quest writes — zero coupling to `veiledReedTrust` (§30b); the Reed's charter offer is recognition dialogue and local charter state only. | L02, L08–L09; A02–A03 |
+| SS08 | The State’s Hand | Withdrawn (owner ruling 2026-11-17, #75): the Toh-Reel-Ka do not know the order survives and offer it no charter; the Shadowscales have nothing to do with them or the main quest. | none | none |
 | SS09 | No Listener in Black Marsh | A ritual meant to contact the Night Mother yields ambiguous evidence and a staged deception. The player can bind the order to the Brotherhood, expose the fraud, or adopt a local non-mystical charter. | **P12/P13:** Ritual sanctuary, coffin/crypt, acoustic/lighting variants, secret observer route and one compact combat space. | L08–L09, L29; A02, A20, V03 |
-| SS10 | Shadow at Dawn | The surviving claimants force a final choice: state service, Brotherhood affiliation, independent ethical order, or dissolution with records returned to victims. | **P11/P12/P14:** One shared headquarters with four local end states; NPC schedule swaps, contract board variants and epilogue letters. | L02, L08–L09, L29; A02–A03, V03 |
+| SS10 | Shadow at Dawn | The surviving claimants force a final choice: Brotherhood affiliation, independent ethical order, or dissolution with records returned to victims. | **P11/P12/P14:** One shared headquarters with four local end states; NPC schedule swaps, contract board variants and epilogue letters. | L02, L08–L09, L29; A02–A03, V03 |
 
 ## 32. Night-Reed Chapter — Thieves Guild
 

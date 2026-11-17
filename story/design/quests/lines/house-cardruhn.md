@@ -26,7 +26,7 @@ the old Imperial forts and take the road tolls. *Telvanni*: the Great House of w
 
 House Cardruhn is a Dunmer trading family of Thorn whose masters are necromancers. By day it sells saltrice and buys
 old Velothi pieces from scavengers. Its members rob tombs, raise and bind the dead, and sell the bound Argonian dead
-to Telvanni buyers over the border.
+to estates in the north as hands that need no food.
 
 Its front is a stall in Thorn's market square, kept by the factor, Ervyn Cardruhn. Its hall is the barred cellar
 under the ruin of Ovezza on the bay. Its master, Morvayn Cardruhn, sits in the hall under the well at Kaochalit, on
@@ -55,18 +55,19 @@ the far side. The player raises the dead, robs tombs and pulls stakes, and is pa
 not rot. So the Cardruhns need the body and its stake together, and an Argonian grave-ground is their crop. The salt
 mine's dead were never staked, which made them the easiest to raise. **X**, from the two cited lines.
 
-**Where the dead go.** The house's ship, the *Saltrice Queen*, carries the bound dead north to Telvanni buyers. House
-Telvanni refused the Pact that ended Argonian slavery and kept taking Argonians (`regions/thornmarsh-and-east.md:65`).
-Inside the province the trade in people is a trade in sold Owings; over the border the Telvanni are the market for the
-dead and, rarely, for the living (**X**, reconciliation item 2).
+**Where the dead go.** The house's ship, the *Saltrice Queen*, carries the bound dead north up the coast to estates
+that want hands that need no food or bed. The house's papers write each body as an Owing that never ends, so the
+sale passes the Archwardens' crossings as a sale of Owings, the only trade in people the province has in 4E 201
+(**X**, reconciliation item 2; `topics/labour-and-bondage.md:90-93`). The Telvanni's taking of Argonians over the
+border is history, ended with the Third Era (`regions/thornmarsh-and-east.md:65`; lore §10.1).
 
 **Who the master is.** Morvayn Cardruhn is old even for a Dunmer. As a young man, late in the Third Era, when the
 Dres still raided the Thorn coast (lore §10.1), he bought Argonian captives from the slaver brig *Silt Bride*, which
 sank off Thorn with her captives shackled in the hold. Her captain's log still names him
 (`place_card "Wreck of the Silt Bride"`). He learnt necromancy in a Telvanni tower and came home to Thorn to sell dead
 what he could no longer sell alive. In the 4E 160s he bought from Keel-Vaxa, an Archein of the Thorn coast, the
-Owings of forty of Keel-Vaxa's own village's debtors for gold. He shipped them over the border to Telvanni buyers
-(**X**, reconciliation item 10). He has been raising the dead whole with the Resurrection spell, which costs the
+Owings of forty of Keel-Vaxa's own village's debtors for gold, and sold the Owings on to House Ulvarys' factor at
+Thorn (**X**, reconciliation items 2 and 10). He has been raising the dead whole with the Resurrection spell, which costs the
 caster nearly all their health (`spell-groups.md`, Necromancy), and it is killing him.
 
 **Why each side can be argued.** The Cardruhns say the dead are empty, since an Argonian soul goes back to its Hist
@@ -85,7 +86,7 @@ pulled off its stake and made to work for a Dunmer master is the slave-coffles o
 | **Ervyn Cardruhn**, the house's factor and Morvayn's grandson, at its stall in Thorn's market square | the house rich and respectable, the dead a quiet sideline | he is ready to hand his grandfather over to the Vicecanon to keep the trade |
 | **Neeja**, an Argonian necromancer of the house, the player's teacher | her grandfather Keel-Vaxa's soul freed from an urn in the Sisei-Xul's hall | she tells the player she works for coin. She works for the urn, and she robs Argonian graves to get it |
 | **Dalvela Cardruhn**, the house's bone-mistress, in the hall at Ovezza | the Sisei-Xul wiped out and a house of the dead after Morvayn | her family's ancestral ash was lost when Argonian armies reached Scathing Bay in the Accession War (`topics/foreign-powers.md:47`). She makes ancestors of other people's dead |
-| **Morvayn Cardruhn**, master of the house, at Kaochalit | his heirs to keep the house after he dies, on his terms | he bought living Argonians late in the Third Era and sold Argonian Owings over the border forty years ago. He is dying of his own spell |
+| **Morvayn Cardruhn**, master of the house, at Kaochalit | his heirs to keep the house after he dies, on his terms | he bought living Argonians late in the Third Era and sold forty Argonian Owings to House Ulvarys forty years ago. He is dying of his own spell |
 | **Okan-Zeel**, First Grave-Singer of the Sisei-Xul | the house destroyed | she bound Neeja's grandfather Keel-Vaxa to an urn. She says the urn holds a poisoner |
 | **Akeeta-Sul**, the Stone-Sleepers' minder at Tsonac | the Velothi graves under her hamlets left shut | she once sold Ervyn grave-goods from under her hamlets for gold and did not ask why he wanted them |
 

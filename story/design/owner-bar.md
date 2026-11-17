@@ -251,6 +251,9 @@ with its source in [owner-rulings-on-factions](../../docs/research/writing/owner
   An-Xileel, and are becoming more like them, ironically, by the means they use to prevent another Umbriel. Their
   elite intelligence and security organisation is the **Toh-Reel-Ka**, "the Secret Warriors". Every faction and
   story is reconciled with this (OR 2026-11-17; `story/lore/extrapolation/argonia-4e201-state.md` §1, §2.5).
+- Every sale of a person in 4E 201 is a sale of an Owing; no one over the border buys the living or the dead now.
+  The Shadowscales stand apart from the main quest and the Toh-Reel-Ka, who do not know the order survives. No
+  tree-minder knows of the dreamers; the face of the reveal at the gate is Cuts-the-Old-Knot (OR 2026-11-17, #75).
 - Quests, places, dialogue, characters and facts are consistent first time, by how they are written.
 
 ## People and talk

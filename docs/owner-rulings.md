@@ -761,3 +761,11 @@ added here the day they are made, with the date and the issue.
   Fal. Change whatever rule says we can't, I am very happy to make music and we should for this final boss fight. It
   should be in the same style as our existing music." The rule against making art no longer covers music; the
   guardian's boss track is ours, made with Fal in the style of our existing music (CLAUDE.md "Never").
+- 2026-11-17 (the reconciliation call, issue #75): "I don't think the faction names call *is* still open - I
+  answered it conclusively here [#74]. 1 your recommendation; 2a; 3c Shadowscales are irrelevant to the main quest
+  and the To-Reel-Ka; 5a; 6 recommendation; 7 I ruled on this in the submitted comments from the story explorer
+  artifact; 8a, "face for the gate" is Cuts the Old Knot, you know this already; 9a; 10 yes to all, rewrite for lore
+  consistency; 11 ignore; we are replacing anyway with the new world; 12a; 13 I've already answered on the name
+  issue." So: every sale of a person in 4E 201 is a sale of an Owing (no Telvanni buyers now); the Toh-Reel-Ka do
+  not know the Shadowscales survive and offered them no charter; no tree-minder knows of the dreamers. Applied to
+  the ten plot pages, the lore and owner-bar.

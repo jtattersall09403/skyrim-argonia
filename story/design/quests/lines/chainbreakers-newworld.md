@@ -112,8 +112,8 @@ In the north and east it has drifted. Whoever has the estate or the crossing now
 who cannot pay a toll and sell those Owings on, and the Xeech-Leel look away because the wardens' pay comes out of the tolls. An
 Owing can be sold on, and the debtor goes with it (`:90-93`). Food, breakage and sickness are added to it, so it grows
 faster than it can be worked (`:94-96`). When a debtor dies, the months pass to the household (`:97-99`). A person can
-be born owing, sold twice and never called a slave (`:101-103`). The Owing is the province's trade in people now;
-the only open buyers of the living are over the border, in House Telvanni's country, and they buy rarely.
+be born owing, sold twice and never called a slave (`:101-103`). The Owing is the province's whole trade in people now:
+every sale of a person in 4E 201 is a sale of an Owing, and no Telvanni buyer takes the living any more.
 
 The player sees this before they hear it explained. Workers in the fields are washed out: their colour has faded
 from years away from their tree (`topics/labour-and-bondage.md:112-116`). An Argonian who dies far from their Hist may
@@ -461,14 +461,14 @@ Stormhold, and the journal marks her hall.
 hears the player in her hall (checked: the source, Markarth, gives its temple and halls as the Vicecanons' hall). She
 will not take a band of roll-thieves at their word. For a week she has had a Dunmer trader's flat barge held at Fort
 Willowmoth's jetty, on a cargo of slaves' shackles that its crew will not explain (the record's hook). She thinks the
-barge is bound up the border river for a Telvanni buyer. If the Chainbreakers can show her what it carries, she will
+barge carries people whose Owings were bought at the fort's crossing for House Ulvarys' factor. If the Chainbreakers can show her what it carries, she will
 hear their case against House Ulvarys when they bring her the great roll. At the jetty the barge's master speaks first
 (checked: the record adds the timber jetty; the barge is the flat barge piece Ranvos Landing's record adds, and a cage
 of Skyrim's iron prison bars is added on its deck under a tarpaulin, with a Master lock). A Speech check of 75 opens
-the cage. If it fails, the master and his crew fight, and the garrison stands back from a quarrel that is not theirs.
+the cage. If it fails, the master and his crew fight, and the garrison, paid already, stands back.
 By night the cage has a Master lock and one crewman awake. In the cage are old Dres shackles (Skyrim's shackles, under
-our name) and three held workers chained in them, people House Ulvarys judged too sick to work off their months. One is
-a Dunmer woman, Ulasi. They fade and are gone. *Skills:* any combat skill, Sneak, Lockpicking, Speech to intimidate.
+our name) and three held workers chained in them, carters the fort's wardens set Owings on for an unpaid toll and sold to
+House Ulvarys' factor. One is a Dunmer woman, Ulasi. They fade and are gone. *Skills:* any combat skill, Sneak, Lockpicking, Speech to intimidate.
 *Reward:* 450 gold and a set of the Vicecanon's own lockpicks, which never break on an Expert lock. *Leads on:*
 Speaks-at-the-Falls has seen the irons. She gives her word: bring her the great roll and she will hear it, with
 Thorn's Vicecanon beside her, since House Ulvarys is a Thorn family. The journal marks Julo, a boat from Stormhold to

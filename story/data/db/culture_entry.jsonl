@@ -1180,7 +1180,7 @@
 {"culture_sheet_id":"culture.region.dunmer-north","kind":"norm","ord":4,"text":"Argonians here speak as Argonians do elsewhere and rarely contract; the Dunmer and Imperial habits of the towns do not set their speech.","source":"inferred"}
 {"culture_sheet_id":"culture.region.dunmer-north","kind":"oath","ord":0,"text":"By the Pools.","source":"inferred"}
 {"culture_sheet_id":"culture.region.dunmer-north","kind":"oath","ord":1,"text":"On my egg record.","source":"inferred"}
-{"culture_sheet_id":"culture.region.dunmer-north","kind":"rumour","ord":0,"text":"The Telvanni still buy across the river, through Archein middlemen.","source":"world/sources/lore/regions/thornmarsh-and-east.md"}
+{"culture_sheet_id":"culture.region.dunmer-north","kind":"rumour","ord":0,"text":"The Telvanni once bought across the river, through Archein middlemen; that trade ended with the Third Era.","source":"world/sources/lore/regions/thornmarsh-and-east.md"}
 {"culture_sheet_id":"culture.region.dunmer-north","kind":"rumour","ord":1,"text":"The flooding round the wamasu pond is worse this year than in any year people remember.","source":"inferred"}
 {"culture_sheet_id":"culture.region.dunmer-north","kind":"taboo","ord":0,"text":"Asking a mixed family on which side of the coffles its grandparents stood.","source":"world/sources/lore/extrapolation/argonia-4e201-state.md"}
 {"culture_sheet_id":"culture.region.dunmer-north","kind":"taboo","ord":1,"text":"Lighting a fire on peat ground; the Great Burn started outside Stormhold.","source":"world/sources/lore/regions/shadowfen.md"}

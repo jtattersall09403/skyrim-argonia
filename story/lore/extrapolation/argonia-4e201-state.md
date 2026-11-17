@@ -333,6 +333,11 @@ of Lilmoth's third Hist. Its dreamers' cellars are recent: they began in the yea
 (§2.4). In 4E 201 some of Chalkmoth's dreamers have been in its cellar nine years and
 more.
 
+**What it does not know, and who does not know it** `OWNER RULING 2026-11-17`. No
+tree-minder and no elder of the Root Talk knows of the dreamers; the secret is the
+order's alone. The order does not know that the Shadowscales survive, and the hidden
+order has nothing to do with it.
+
 **The irony it carries** (§1): the order made so that no faction ever again holds secret
 communion with a tree holds a secret communion with all of them. It calls itself the
 guardian of the old ways. What it takes in return is its dreamers' freedom, and in time
@@ -637,7 +642,10 @@ says so in as many words. Nothing about independence changed the soil.
   the single most lore-appropriate crime in the province), **daril**, antiquities
   looted from xanmeers, and **moon sugar** in transit.
 - **Not exported**: gold and timber at scale (the Soulrest workings have been
-  derelict since 3E 427), and slaves (ended).
+  derelict since 3E 427), and slaves (ended). No one over the border buys
+  Argonians, living or dead, in 4E 201: every sale of a person is a sale of an
+  Owing, inside the province (`topics/labour-and-bondage.md`; `OWNER RULING
+  2026-11-17`).
 
 ### Routes — reconciling canon with our acceptance rule
 

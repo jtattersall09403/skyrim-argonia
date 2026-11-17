@@ -97,9 +97,8 @@ people locked in the cellar of Fort Chalkmoth, fed sap and made to tell their dr
 visions show what any tree has seen, anywhere in the province. That is how the Toh-Reel-Ka know so much, and the
 Xeech-Leel's rule rests on it. The irony is the lore's own: the party that rose because one faction held secret
 communion with one tree now holds, in secret, a communion with all of them (§1). The tree-minders and the Root Talk
-do not know of the dreamers. Vosh-Leera serves the Toh-Reel-Ka without asking what they do. Of all the minders,
-Helstrom's eldest tree-minder, who keeps the city tree, knows and consents, for fear of another Umbriel (X). She is
-not Okan-Zeel, the Sisei-Xul's First Grave-Singer, who works in the same hall.
+do not know of the dreamers, and no tree-minder anywhere knows of them. Vosh-Leera serves the Toh-Reel-Ka without
+asking what they do.
 
 **What the Toh-Reel-Ka want of the Eye.** They want the Unbound stopped and Cuts-the-Old-Knot dead. They want the
 Root found and the player to use the Eye where it sits, to heal the trees. They say that this saves the villages,
