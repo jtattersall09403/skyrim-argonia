@@ -165,13 +165,10 @@ placements:
 - {ref: door.mn12.keep-out, kind: door, placeName: Fort Chalkmoth, anchor: {place: Fort Chalkmoth Keep, rule: surface, need: 'the keep''s door to the yard'}}
 - {ref: door.mn12.store-out, kind: door, placeName: Fort Chalkmoth Keep, anchor: {place: Quartermaster's Store, rule: surface, need: 'the store''s door to the keep hall'}}
 - {ref: door.mn12.guardroom-out, kind: door, placeName: Fort Chalkmoth, anchor: {place: Fort Chalkmoth Guardroom, rule: surface, need: 'the ladder up to the trapdoor in the yard'}}
-- {ref: thing.mn12.door-window, kind: container, name: Barred Window in the Cellar Door, anchor: {place: Fort Chalkmoth Guardroom, rule: surface, need: 'the small barred window in the inner door (Fort Neugrad''s barred cell-door pieces)'}, text: 'Through the bars there is only dark. A low moaning comes out of it, more than one voice, and stops, and starts again.'}
 hooks:
 - {thing: door.mn12.trapdoor, hook: activate, setsFlag: flag.mn12.trapdoor}
 - {thing: door.mn12.inner, hook: activate, setsFlag: flag.mn12.door-tried, message: The door is locked, and no key you
     carry fits it. From behind it comes a low moaning, more than one voice.}
-- {thing: thing.mn12.door-window, hook: activate, setsFlag: flag.mn12.door-tried}
-- {thing: thing.mn12.door-window, hook: read, setsFlag: flag.mn12.door-tried}
 conclusions:
 - id: c1
   statement: 'The order keeps something alive in the cellar, fed on Hist sap from a town far away, and does not want its
@@ -222,6 +219,13 @@ stages:
   directions: Take the boat to Archon, then to Inoja and Noota Nara. Fort Chalkmoth's chalk-white walls stand on the
     mesa shoulder just above Noota Nara, up the road from the village gate.
   learns: []
+  approaches:
+  - id: captain
+    actions:
+    - {skill: Archery, use: fight-raiders, target: the three Sarpa raiders, note: the captain's price; any fighting skill}
+  - id: trapdoor
+    actions:
+    - {skill: Sneak, use: pass-unseen, target: door.mn12.trapdoor}
   information:
     going: This is my own errand, to see what moans in the cellar of Fort Chalkmoth; the order's hunt, at Bell Station,
       is open beside it and either may come first.
@@ -303,8 +307,8 @@ stages:
       topicHeardFrom: [topic.mn12-gaoler-closed, npc.mn.tsleel-vaku]
   - id: door20
     text: text.objective.mn12.door20
-    objectiveText: Listen at the barred window in the cellar door.
-    target: door.mn12.inner, thing.mn12.door-window
+    objectiveText: Try the cellar door.
+    target: door.mn12.inner
     completeWhen: {flag: flag.mn12.door-tried}
   successors:
   - to: 90
@@ -332,9 +336,22 @@ stages:
   - {skill: Illusion, use: cast-as-test, target: npc.mn.tsleel-vaku, note: 'optional: an Illusion spell cast before
       him gets his slip'}
   learns: [fact.mn12.stair-in-store]
+  approaches:
+  - id: lockpick
+    actions:
+    - {skill: Lockpicking, use: pick-a-lock, target: door.mn12.store, note: Adept}
+  - id: pickpocket
+    actions:
+    - {skill: Pickpocket, use: pickpocket, target: npc.mn.chalkmoth-quartermaster}
+  - id: speech
+    actions:
+    - {skill: Speech, use: persuade, target: npc.mn.tsleel-vaku, note: Speech 50 gets the gaoler's slip}
+  - id: illusion
+    actions:
+    - {skill: Illusion, use: cast-as-test, target: npc.mn.tsleel-vaku, note: an Illusion spell cast before him gets his slip}
   information:
     going: I am in the keep by the captain's leave. The cellar stair starts in the quartermaster's store.
-    next: 'Three things, in any order: look in the store, speak to the gaoler at the stair''s foot, try the cellar door and listen at it.'
+    next: 'Three things, in any order: look in the store, speak to the gaoler at the stair''s foot, try the cellar door.'
     ways: Pick the store's Adept lock or lift the quartermaster's key; persuade the gaoler or test him with Illusion for
       more (optional). A theft seen, or an attack on the gaoler, sets the garrison on me.
     carriers:
@@ -363,8 +380,8 @@ stages:
       topicHeardFrom: [topic.mn12-gaoler-closed, npc.mn.tsleel-vaku]
   - id: door25
     text: text.objective.mn12.door25
-    objectiveText: Listen at the barred window in the cellar door.
-    target: door.mn12.inner, thing.mn12.door-window
+    objectiveText: Try the cellar door.
+    target: door.mn12.inner
     completeWhen: {flag: flag.mn12.door-tried}
   successors:
   - to: 90
@@ -389,9 +406,19 @@ stages:
   - {skill: Sneak, use: pass-unseen, target: the garrison, note: seen inside without leave, the garrison attacks}
   - {skill: Speech, use: persuade, target: npc.mn.tsleel-vaku, note: 'optional: Speech 50'}
   - {skill: Illusion, use: cast-as-test, target: npc.mn.tsleel-vaku, note: optional}
+  approaches:
+  - id: trapdoor
+    actions:
+    - {skill: Sneak, use: pass-unseen, target: the garrison, note: the store is reached up the stair from the guardroom}
+  - id: speech
+    actions:
+    - {skill: Speech, use: persuade, target: npc.mn.tsleel-vaku, note: Speech 50 gets the gaoler's slip}
+  - id: illusion
+    actions:
+    - {skill: Illusion, use: cast-as-test, target: npc.mn.tsleel-vaku, note: an Illusion spell cast before him gets his slip}
   information:
     going: I am inside unseen, in the guardroom below the keep. Being seen means a fight with the garrison.
-    next: 'Three things, in any order: look in the store at the top of the stair, speak to the gaoler, try the cellar door and listen at it.'
+    next: 'Three things, in any order: look in the store at the top of the stair, speak to the gaoler, try the cellar door.'
     ways: Stay unseen; persuade the gaoler or test him with Illusion for more (optional).
     carriers:
     - {know: the garrison attacks if it sees me, by: [journal]}

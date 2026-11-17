@@ -248,6 +248,16 @@ stages:
   - {skill: Sneak, use: pass-unseen, target: the drowned attendants}
   - {skill: Restoration, use: turn-undead, target: the drowned attendants}
   learns: [fact.mn13.teku-sul, fact.mn13.dive]
+  approaches:
+  - id: fight
+    actions:
+    - {skill: One-Handed, use: fight-guards, target: the drowned attendants, note: 'Two-Handed, Archery and Destruction alike'}
+  - id: sneak
+    actions:
+    - {skill: Sneak, use: pass-unseen, target: the drowned attendants}
+  - id: turn
+    actions:
+    - {skill: Restoration, use: turn-undead, target: the drowned attendants}
   information:
     going: The marked tower is Teku-Sul Spire, under the sea; its great gate has never been forced.
     next: Dive to Teku-Sul and find the great gate beyond the east halls.

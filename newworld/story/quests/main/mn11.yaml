@@ -304,6 +304,13 @@ stages:
       Archery and Destruction alike}
   - {skill: Sneak, use: pass-unseen, target: the men at the fire and the digger in the cave}
   learns: [fact.mn11.collector-men]
+  approaches:
+  - id: fight
+    actions:
+    - {skill: One-Handed, use: fight-guards, target: the Collector's hired men, note: 'Two-Handed, Archery and Destruction alike'}
+  - id: sneak
+    actions:
+    - {skill: Sneak, use: pass-unseen, target: the Collector's hired men}
   information:
     going: I am a Toh-Wo of the Toh-Reel-Ka on the hunt for the Root and the Eye. The parchment map led to the Grey Tooth
       on Skeith Isle, and the Collector's men got there first.
@@ -350,6 +357,13 @@ stages:
   - {skill: Alchemy, use: learn-a-recipe, target: thing.mn.seal-recipe, note: 'optional: reading the recipe teaches the
       seal''s paralysis effect; three bottles lie beside it'}
   learns: [fact.mn11.stone-to-ship, fact.mn11.wreck-where, fact.mn11.collector-sold]
+  approaches:
+  - id: fight
+    actions:
+    - {skill: One-Handed, use: fight-guards, target: the Unbound scouts, note: 'Two-Handed, Archery and Destruction alike'}
+  - id: sneak
+    actions:
+    - {skill: Sneak, use: pass-unseen, target: the Unbound scouts}
   information:
     going: The stone from the cave's niche went to the Stormwidow twenty years ago; the Collector sold that to someone.
     next: Search the hold of the Wreck of the Stormwidow, on the south-west beach, for the stone.
