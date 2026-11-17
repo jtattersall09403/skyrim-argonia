@@ -315,9 +315,7 @@ stages:
   journal: text.journal.mn08.20
   journalText: 'Hums-the-Long-Note knows the keystone, and named her price: her family''s carved grave-stake lies in a chest
     in the drowned street of Zul-Etha, and she wants it raised. Crocodiles lie on the roof peaks above it. I may kill them
-    from a roof or from range, calm them with Illusion, or swim under them unseen to the chest. It is all on the trail to
-    the Eye of Argonia, the old kings'' jewel that can heal every tree, at the Root, where all the trees'' roots meet under
-    the sea.'
+    from a roof or from range, calm them with Illusion, or swim under them unseen to the chest.'
   directions: Take a boat from Blackrose to Mir-Xal's river quay, then walk south-east into the washes to three roof peaks
     standing out of green water; the chest lies in the street below them.
   objectives:
@@ -388,15 +386,11 @@ stages:
       by:
       - journal
       - line:topic.mn08-keystone
-    - know: 'the hunt''s aim: the Eye of Argonia and the Root'
-      by:
-      - journal
 - id: 30
   place: toklea
   journal: text.journal.mn08.30
   journalText: I raised the grave-stake from the drowned street. I'm to bring it to Hums-the-Long-Note in the Kothringi
-    Greathouse in Toklea. It is all on the trail to the Eye of Argonia, the old kings' jewel that can heal every tree, at
-    the Root, where all the trees' roots meet under the sea.
+    Greathouse in Toklea.
   objectives:
   - id: back
     text: text.objective.mn08.back
@@ -438,16 +432,12 @@ stages:
       - journal
       - objective
       - marker:npc.mn.hums-the-long-note
-    - know: 'the hunt''s aim: the Eye of Argonia and the Root'
-      by:
-      - journal
 - id: 40
   place: helstrom
   journal: text.journal.mn08.40
   journalText: 'Hums-the-Long-Note took her family''s stake and kept her word: the keystone opens the tomb of the knight-captain
     at Eurydike, a ruin near Gideon. The Kothringi knights of Gideon were the last to guard the kings'' road to the Root.
-    I''m to tell Nesh-Deeka in Helstrom. It is all on the trail to the Eye of Argonia, the old kings'' jewel that can heal
-    every tree, at the Root, where all the trees'' roots meet under the sea.'
+    I''m to tell Nesh-Deeka in Helstrom.'
   onEnter:
   - takeItem:
     - thing.mn.grave-stake
@@ -492,16 +482,11 @@ stages:
       - journal
       - objective
       - marker:npc.mn.nesh-deeka
-    - know: 'the hunt''s aim: the Eye of Argonia and the Root'
-      by:
-      - journal
 - id: 90
   place: helstrom
   journal: text.journal.mn08.90
   journalText: Nesh-Deeka heard me out. She already knew that the Unbound have been asking Gideon's diggers about Eurydike.
-    Before I could ask how, she said "we listen" and told me to hurry. She paid me 100 gold. It is all on the trail to the
-    Eye of Argonia, the old kings' jewel that can heal every tree, at the Root, where all the trees' roots meet under the
-    sea.
+    Before I could ask how, she said "we listen" and told me to hurry. She paid me 100 gold.
   onEnter:
   - giveGold: 100
   learns:
@@ -521,9 +506,6 @@ stages:
       - journal
       - line:topic.mn08-report
       - line:topic.mn08-report
-    - know: 'the hunt''s aim: the Eye of Argonia and the Root'
-      by:
-      - journal
 - id: 95
   place: helstrom
   journal: text.journal.mn08.95
@@ -538,8 +520,7 @@ stages:
   place: toklea
   journal: text.journal.mn08.96
   journalText: Hums-the-Long-Note is dead. The other Chime-Keepers say only the elder knew the keystone; it was carved for
-    a door "near Gideon, where the knights lie". I'm to tell Nesh-Deeka in Helstrom. It is all on the trail to the Eye of
-    Argonia, the old kings' jewel that can heal every tree, at the Root, where all the trees' roots meet under the sea.
+    a door "near Gideon, where the knights lie". I'm to tell Nesh-Deeka in Helstrom.
   objectives:
   - id: report96
     text: text.objective.mn08.report96
@@ -573,9 +554,6 @@ stages:
       - journal
       - objective
       - marker:npc.mn.nesh-deeka
-    - know: 'the hunt''s aim: the Eye of Argonia and the Root'
-      by:
-      - journal
 endings:
 - id: e-told
   when: the report to Nesh-Deeka

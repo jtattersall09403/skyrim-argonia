@@ -1,0 +1,84 @@
+{
+ "quest": "quest.main.mn08",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn08.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "quiet",
+ "choose": null,
+ "know": "story/playtests/quest.main.mn07/20261117T172446Z-designed/notes.md",
+ "created": "20261117T172713Z",
+ "stages": [
+  10,
+  20,
+  30,
+  40,
+  90
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b2/newworld/story/quests/main/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b2/newworld/story/quests/main/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b2/newworld/story/quests/main/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b2/newworld/story/quests/main/mn04.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b2/newworld/story/quests/main/mn05.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn06.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn07.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 5,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I am Tarin, a thief working for the Nesh-Deeka house. I took a Kothringi Keystone from the Pale Harvest wreck. The order wants the trail to the Eye of Argonia, a jewel that can heal every tree, found before the Unbound reach it. 2. Go into the Kothringi Greathouse at Toklea and show the keystone to Hums-the-Long-Note, the Chime-Keepers elder. 3. I can talk to the elder and show the keystone. I could also look around Toklea first. I see no other choice yet. 4. I do not know what the seal paste is, who Cuts-the-Old-Knot or Xeech-Leel are, what Umbriel is, or who the Collector Ennodius Vanin is. I could ask the elder or others I meet.",
+  "go Hums-the-Long-Note",
+  "talk Hums-the-Long-Note",
+  "say 2",
+  "answer 1. Hums-the-Long-Note knows the keystone but wants payment: her family carved grave-stake, in a chest in drowned Zul-Etha. Without it she will not tell me. 2. Go to Zul-Etha, reached from Mir-Xal quay by walking south-east, and raise the stake from the chest (Drowned Chest marker). 3. Crocodiles and an old bull lie on three roof peaks. I can kill them from a roof or with arrows, calm them with Illusion, or swim under them unseen. As a thief I favour the quiet swim. 4. I do not know where Mir-Xal quay is exactly, though the marker should guide me. Earlier unknowns remain: seal paste, Cuts-the-Old-Knot, Xeech-Leel, Umbriel, Ennodius Vanin.",
+  "go Drowned Chest",
+  "look",
+  "use Drowned Chest",
+  "take Carved Grave-Stake",
+  "answer 1. I got the grave-stake from the chest in Zul-Etha without waking the crocodiles. Hums-the-Long-Note will tell me about the keystone in return. 2. Take the stake to Hums-the-Long-Note at the Kothringi Greathouse in Toklea. 3. I can hand it over and ask what she knows. I see no other option. 4. Still unknown: seal paste, Cuts-the-Old-Knot, Xeech-Leel, Umbriel, Ennodius Vanin. Hums may tell me more.",
+  "go Hums-the-Long-Note",
+  "talk Hums-the-Long-Note",
+  "say 2",
+  "answer 1. Hums-the-Long-Note took the stake and told me the keystone opens the knight-captain tomb at Eurydike, a roofless Kothringi hall near Gideon. The knights of Gideon guarded the kings road to the Root. 2. Report to Nesh-Deeka in Helstrom. 3. I could report first, or go to Eurydike myself. The journal only points to Nesh-Deeka. Note the Unbound lost the trail at Gideon, so Eurydike may be watched. 4. Still unknown: seal paste, Cuts-the-Old-Knot, Xeech-Leel, Umbriel, Ennodius Vanin.",
+  "go Nesh-Deeka",
+  "talk Nesh-Deeka",
+  "say 1",
+  "answer 1. The quest is done. Nesh-Deeka heard that the keystone opens the knight-captain tomb at Eurydike near Gideon, paid me 100 gold, and told me to hurry because the Unbound are asking Gideon diggers about Eurydike. 2. Nothing is marked. The next step is likely Eurydike near Gideon, but I have no marker. 3. I could go to Eurydike with the keystone, or ask Nesh-Deeka more. 4. Still unknown: seal paste, Cuts-the-Old-Knot, Xeech-Leel, Umbriel, Ennodius Vanin, and how Nesh-Deeka listens.",
+  "answer I am Tarin, thief of Nesh-Deeka house in Helstrom, with about 650 gold, the Kothringi Keystone, Old Silver Setting, a lockpick and Voh-Vastei armour. I took the stake from the drowned chest at Zul-Etha by getting past the crocodiles without a fight, and gave it to Hums-the-Long-Note at Toklea. She told me the keystone opens the knight-captain tomb at Eurydike, a roofless Kothringi hall just north of Gideon. The Kothringi knights guarded the kings road to the Root, where the Eye of Argonia lies. Nesh-Deeka paid me and said to hurry, because the Unbound are asking Gideon diggers about Eurydike. Next step is Eurydike. Still unknown: seal paste, Cuts-the-Old-Knot, Xeech-Leel, Umbriel, and Collector Ennodius Vanin."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.08037560000000002,
+ "minutes": 0.8,
+ "turns": 20,
+ "tokens": {
+  "input_tokens": 34,
+  "output_tokens": 3498,
+  "cache_read_input_tokens": 112756,
+  "cache_creation_input_tokens": 8513
+ }
+}

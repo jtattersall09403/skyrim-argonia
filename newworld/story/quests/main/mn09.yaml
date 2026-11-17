@@ -389,9 +389,7 @@ stages:
   journal: text.journal.mn09.20
   journalText: 'In the Unbound''s packs were bottles of the grey paste they call "the seal". It is a paralysis poison: it
     numbs a tree''s scar shut. The Unbound drain a tree and then poison it. If they wanted the trees dead they could kill
-    them, so why seal a tree they drain? I''m to open the knight-captain''s tomb with the keystone. It is all on the trail
-    to the Eye of Argonia, the old kings'' jewel that can heal every tree, at the Root, where all the trees'' roots meet
-    under the sea.'
+    them, so why seal a tree they drain? I''m to open the knight-captain''s tomb with the keystone.'
   onEnter:
   - setFlag:
     - flag.main.seal-question
@@ -439,15 +437,11 @@ stages:
       - objective
       - marker:thing.mn09.tomb-door
       - name:thing.mn09.tomb-door
-    - know: 'the hunt''s aim: the Eye of Argonia and the Root'
-      by:
-      - journal
 - id: 30
   place: helstrom
   journal: text.journal.mn09.30
   journalText: In the knight-captain's tomb lay a bronze disc stamped with a mine's mark, a pick crossed with a tower. I'm
-    to bring it to Nesh-Deeka in Helstrom. It is all on the trail to the Eye of Argonia, the old kings' jewel that can heal
-    every tree, at the Root, where all the trees' roots meet under the sea.
+    to bring it to Nesh-Deeka in Helstrom.
   objectives:
   - id: report
     text: text.objective.mn09.report
@@ -490,16 +484,12 @@ stages:
       - journal
       - objective
       - marker:npc.mn.nesh-deeka
-    - know: 'the hunt''s aim: the Eye of Argonia and the Root'
-      by:
-      - journal
 - id: 90
   place: helstrom
   journal: text.journal.mn09.90
   journalText: 'Nesh-Deeka knew the mark: Vicrium, an old mine in the clay country behind Seafalls, in the east. She already
     knew the Unbound had been at Eurydike. Before I could ask how, she said "we listen" and would not answer why they seal
-    the trees. She paid me 100 gold. The question stays with me. It is all on the trail to the Eye of Argonia, the old kings''
-    jewel that can heal every tree, at the Root, where all the trees'' roots meet under the sea.'
+    the trees. She paid me 100 gold. The question stays with me.'
   onEnter:
   - giveGold: 100
   learns:
@@ -523,9 +513,6 @@ stages:
       - journal
       - line:topic.mn09-report
       - ask:topic.mn09-why-seal
-    - know: 'the hunt''s aim: the Eye of Argonia and the Root'
-      by:
-      - journal
 - id: 95
   place: helstrom
   journal: text.journal.mn09.95

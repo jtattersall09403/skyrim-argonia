@@ -1,0 +1,116 @@
+[
+ {
+  "stage": 10,
+  "kind": "start",
+  "ending": null,
+  "title": "The Drowned Street",
+  "journal": "Nesh-Deeka sent me with the keystone to the Chime-Keepers of Toklea, who keep what is left of Kothringi lore. I'm to show it to their elder in the Kothringi Greathouse. All of it is a trail to the Eye of Argonia, the old kings' jewel that can heal every tree, which lies at the Root, where all the trees' roots meet under the sea; the order wants it found before the Unbound reach it.",
+  "objectives": [
+   "Show the keystone to the elder of the Chime-Keepers in Toklea. (marker: Hums-the-Long-Note)"
+  ],
+  "plan": {
+   "going": "The keystone from the wreck is Kothringi; the Chime-Keepers' elder may know what it opens. The hunt's aim: find the Eye of Argonia, the old kings' jewel that can heal every tree, at the Root, where all the trees' roots meet under the sea, before the Unbound do.",
+   "next": "Take boats to Lujei Ferry, cross to Toklea and show the keystone to the elder in the Kothringi Greathouse.",
+   "ways": "none yet"
+  },
+  "answers": [
+   "I am Tarin, a thief working for the Nesh-Deeka house. I took a Kothringi Keystone from the Pale Harvest wreck. The order wants the trail to the Eye of Argonia, a jewel that can heal every tree, found before the Unbound reach it.",
+   "Go into the Kothringi Greathouse at Toklea and show the keystone to Hums-the-Long-Note, the Chime-Keepers elder.",
+   "I can talk to the elder and show the keystone. I could also look around Toklea first. I see no other choice yet.",
+   "I do not know what the seal paste is, who Cuts-the-Old-Knot or Xeech-Leel are, what Umbriel is, or who the Collector Ennodius Vanin is. I could ask the elder or others I meet."
+  ],
+  "raw": "1. I am Tarin, a thief working for the Nesh-Deeka house. I took a Kothringi Keystone from the Pale Harvest wreck. The order wants the trail to the Eye of Argonia, a jewel that can heal every tree, found before the Unbound reach it. 2. Go into the Kothringi Greathouse at Toklea and show the keystone to Hums-the-Long-Note, the Chime-Keepers elder. 3. I can talk to the elder and show the keystone. I could also look around Toklea first. I see no other choice yet. 4. I do not know what the seal paste is, who Cuts-the-Old-Knot or Xeech-Leel are, what Umbriel is, or who the Collector Ennodius Vanin is. I could ask the elder or others I meet."
+ },
+ {
+  "stage": 20,
+  "kind": "stage",
+  "ending": null,
+  "title": "The Drowned Street",
+  "journal": "Hums-the-Long-Note knows the keystone, and named her price: her family's carved grave-stake lies in a chest in the drowned street of Zul-Etha, and she wants it raised. Crocodiles lie on the roof peaks above it. I may kill them from a roof or from range, calm them with Illusion, or swim under them unseen to the chest.",
+  "objectives": [
+   "Raise the grave-stake from the chest in Zul-Etha's drowned street. (marker: Drowned Chest)"
+  ],
+  "plan": {
+   "going": "The elder will say what the keystone opens if I raise her family's grave-stake. The hunt's aim: find the Eye of Argonia, the old kings' jewel that can heal every tree, at the Root, where all the trees' roots meet under the sea, before the Unbound do.",
+   "next": "Go to Zul-Etha and take the grave-stake from the chest under the water.",
+   "ways": "Kill the crocodiles (from a roof or from range), calm them with Illusion, or swim under them unseen.",
+   "terms": [
+    "Zul-Etha: Hums-the-Long-Note: a carting village the washes drowned, south-east of Mir-Xal"
+   ]
+  },
+  "answers": [
+   "Hums-the-Long-Note knows the keystone but wants payment: her family carved grave-stake, in a chest in drowned Zul-Etha. Without it she will not tell me.",
+   "Go to Zul-Etha, reached from Mir-Xal quay by walking south-east, and raise the stake from the chest (Drowned Chest marker).",
+   "Crocodiles and an old bull lie on three roof peaks. I can kill them from a roof or with arrows, calm them with Illusion, or swim under them unseen. As a thief I favour the quiet swim.",
+   "I do not know where Mir-Xal quay is exactly, though the marker should guide me. Earlier unknowns remain: seal paste, Cuts-the-Old-Knot, Xeech-Leel, Umbriel, Ennodius Vanin."
+  ],
+  "raw": "1. Hums-the-Long-Note knows the keystone but wants payment: her family carved grave-stake, in a chest in drowned Zul-Etha. Without it she will not tell me. 2. Go to Zul-Etha, reached from Mir-Xal quay by walking south-east, and raise the stake from the chest (Drowned Chest marker). 3. Crocodiles and an old bull lie on three roof peaks. I can kill them from a roof or with arrows, calm them with Illusion, or swim under them unseen. As a thief I favour the quiet swim. 4. I do not know where Mir-Xal quay is exactly, though the marker should guide me. Earlier unknowns remain: seal paste, Cuts-the-Old-Knot, Xeech-Leel, Umbriel, Ennodius Vanin."
+ },
+ {
+  "stage": 30,
+  "kind": "stage",
+  "ending": null,
+  "title": "The Drowned Street",
+  "journal": "I raised the grave-stake from the drowned street. I'm to bring it to Hums-the-Long-Note in the Kothringi Greathouse in Toklea.",
+  "objectives": [
+   "Bring the grave-stake to Hums-the-Long-Note in Toklea. (marker: Hums-the-Long-Note)"
+  ],
+  "plan": {
+   "going": "I have the stake; the elder owes me the keystone's story. The hunt's aim: find the Eye of Argonia, the old kings' jewel that can heal every tree, at the Root, where all the trees' roots meet under the sea, before the Unbound do.",
+   "next": "Bring the stake to Hums-the-Long-Note.",
+   "ways": "none"
+  },
+  "answers": [
+   "I got the grave-stake from the chest in Zul-Etha without waking the crocodiles. Hums-the-Long-Note will tell me about the keystone in return.",
+   "Take the stake to Hums-the-Long-Note at the Kothringi Greathouse in Toklea.",
+   "I can hand it over and ask what she knows. I see no other option.",
+   "Still unknown: seal paste, Cuts-the-Old-Knot, Xeech-Leel, Umbriel, Ennodius Vanin. Hums may tell me more."
+  ],
+  "raw": "1. I got the grave-stake from the chest in Zul-Etha without waking the crocodiles. Hums-the-Long-Note will tell me about the keystone in return. 2. Take the stake to Hums-the-Long-Note at the Kothringi Greathouse in Toklea. 3. I can hand it over and ask what she knows. I see no other option. 4. Still unknown: seal paste, Cuts-the-Old-Knot, Xeech-Leel, Umbriel, Ennodius Vanin. Hums may tell me more."
+ },
+ {
+  "stage": 40,
+  "kind": "stage",
+  "ending": null,
+  "title": "The Drowned Street",
+  "journal": "Hums-the-Long-Note took her family's stake and kept her word: the keystone opens the tomb of the knight-captain at Eurydike, a ruin near Gideon. The Kothringi knights of Gideon were the last to guard the kings' road to the Root. I'm to tell Nesh-Deeka in Helstrom.",
+  "objectives": [
+   "Tell Nesh-Deeka in Helstrom what the keystone opens. (marker: Nesh-Deeka)"
+  ],
+  "plan": {
+   "going": "The keystone opens the knight-captain's tomb at Eurydike, on the old road to the Root. The hunt's aim: find the Eye of Argonia, the old kings' jewel that can heal every tree, at the Root, where all the trees' roots meet under the sea, before the Unbound do.",
+   "next": "Report to Nesh-Deeka in Helstrom.",
+   "ways": "none",
+   "terms": [
+    "Eurydike and the knights of Gideon: Hums-the-Long-Note: the hall of Kothringi knights who served in Gideon's garrison and guarded the kings' road to the Root"
+   ]
+  },
+  "answers": [
+   "Hums-the-Long-Note took the stake and told me the keystone opens the knight-captain tomb at Eurydike, a roofless Kothringi hall near Gideon. The knights of Gideon guarded the kings road to the Root.",
+   "Report to Nesh-Deeka in Helstrom.",
+   "I could report first, or go to Eurydike myself. The journal only points to Nesh-Deeka. Note the Unbound lost the trail at Gideon, so Eurydike may be watched.",
+   "Still unknown: seal paste, Cuts-the-Old-Knot, Xeech-Leel, Umbriel, Ennodius Vanin."
+  ],
+  "raw": "1. Hums-the-Long-Note took the stake and told me the keystone opens the knight-captain tomb at Eurydike, a roofless Kothringi hall near Gideon. The knights of Gideon guarded the kings road to the Root. 2. Report to Nesh-Deeka in Helstrom. 3. I could report first, or go to Eurydike myself. The journal only points to Nesh-Deeka. Note the Unbound lost the trail at Gideon, so Eurydike may be watched. 4. Still unknown: seal paste, Cuts-the-Old-Knot, Xeech-Leel, Umbriel, Ennodius Vanin."
+ },
+ {
+  "stage": 90,
+  "kind": "ending",
+  "ending": "complete",
+  "title": "The Drowned Street",
+  "journal": "Nesh-Deeka heard me out. She already knew that the Unbound have been asking Gideon's diggers about Eurydike. Before I could ask how, she said \"we listen\" and told me to hurry. She paid me 100 gold.",
+  "objectives": [],
+  "plan": {
+   "going": "The Unbound are close behind on the same trail; Nesh-Deeka knows it and will not say how. The hunt's aim: find the Eye of Argonia, the old kings' jewel that can heal every tree, at the Root, where all the trees' roots meet under the sea, before the Unbound do.",
+   "next": "MN09 starts; its first entry marks Eurydike.",
+   "ways": "none"
+  },
+  "answers": [
+   "The quest is done. Nesh-Deeka heard that the keystone opens the knight-captain tomb at Eurydike near Gideon, paid me 100 gold, and told me to hurry because the Unbound are asking Gideon diggers about Eurydike.",
+   "Nothing is marked. The next step is likely Eurydike near Gideon, but I have no marker.",
+   "I could go to Eurydike with the keystone, or ask Nesh-Deeka more.",
+   "Still unknown: seal paste, Cuts-the-Old-Knot, Xeech-Leel, Umbriel, Ennodius Vanin, and how Nesh-Deeka listens."
+  ],
+  "raw": "1. The quest is done. Nesh-Deeka heard that the keystone opens the knight-captain tomb at Eurydike near Gideon, paid me 100 gold, and told me to hurry because the Unbound are asking Gideon diggers about Eurydike. 2. Nothing is marked. The next step is likely Eurydike near Gideon, but I have no marker. 3. I could go to Eurydike with the keystone, or ask Nesh-Deeka more. 4. Still unknown: seal paste, Cuts-the-Old-Knot, Xeech-Leel, Umbriel, Ennodius Vanin, and how Nesh-Deeka listens."
+ }
+]
