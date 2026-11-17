@@ -769,3 +769,6 @@ added here the day they are made, with the date and the issue.
   issue." So: every sale of a person in 4E 201 is a sale of an Owing (no Telvanni buyers now); the Toh-Reel-Ka do
   not know the Shadowscales survive and offered them no charter; no tree-minder knows of the dreamers. Applied to
   the ten plot pages, the lore and owner-bar.
+- 2026-11-17 (#76): "It sounds like you've put Alten Corimont in which is good but I can't see it in the Atlas
+  artifact. Same for Bramman's watch and other stuff." The Atlas is republished whenever the place records change:
+  `make check` now fails while the published Atlas is behind them (`tools/newworld/atlas_state.py`).
