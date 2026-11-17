@@ -176,7 +176,7 @@ placements:
     kind: template_person
     id: Skyrim wraith template
   anchor:
-    place: velothi-ruin-23-m73
+    place: vorannuhl-vault
     rule: navmesh
     need: the household's lord in the vault before the chest
   name: Lord of Vorannuhl
@@ -190,14 +190,16 @@ placements:
     key: thing.mn16.bronze-key
   placeName: Vault of the Household
 - ref: thing.mn16.vault-chest
-  kind: thing
+  kind: container
   base:
     kind: existing_base
     id: the place's boss chest
   anchor:
-    place: velothi-ruin-23-m73
+    place: vorannuhl-vault
     rule: surface
     need: the hoard chest at the back of the vault
+  name: Household's Hoard
+  placeName: Vault of the Household
 - ref: thing.mn.seal-stone-deep
   kind: thing
   base:
@@ -209,6 +211,7 @@ placements:
   kind: marker
   formKey: placed by MN13 (stated alike)
   placeName: Vorannuhl
+  name: Vorannuhl
 conclusions:
 - id: c1
   statement: The raider's key opens the vault where the stone lies.

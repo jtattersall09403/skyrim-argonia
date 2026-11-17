@@ -102,7 +102,7 @@ cast:
 - id: npc.mn.cuts-the-old-knot
   name: Cuts-the-Old-Knot
 - id: npc.mn.jal-veesa-minder
-  name: Jal-Veesa's Tree-Minder
+  name: Weeltul
 things:
 - id: thing.mn.seal-stone-vault
   kind: item
@@ -184,6 +184,7 @@ placements:
   kind: marker
   formKey: placed by MN13 (stated alike)
   placeName: Gemin
+  name: Gemin
 conclusions:
 - id: c1
   statement: The kings sealed the Root because lifting the Eye parts the trees.

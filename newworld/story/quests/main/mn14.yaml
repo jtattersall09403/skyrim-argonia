@@ -244,20 +244,21 @@ placements:
     kind: template_person
     id: 'to choose: an Argonian of the Naga breed''s look (our ecology), a chief''s template'
   anchor:
-    place: blackrose-prison
+    place: blackrose-prison-hall
     rule: navmesh
     need: the raj-kaal's seat in the chief's hall (CrackedTuskKeep01)
   enabled: true
   level: 36
   killChoice: true
   name: Okaz-Teel
+  placeName: Raj-Kaal's Hall
 - ref: npc.mn.ennodius-vanin
   kind: person
   base:
     kind: template_person
     id: the Collector's own (MN06 places him first as a note; this is his first standing self)
   anchor:
-    place: blackrose-prison
+    place: blackrose-prison-hall
     rule: navmesh
     need: a guest's bench in the chief's hall, apart from the garrison
   enabled: true
@@ -284,7 +285,7 @@ placements:
     kind: existing_base
     id: 'to choose: an Imperial fort door (Skyrim)'
   anchor:
-    place: blackrose-prison
+    place: blackrose-prison-hall
     rule: surface
     need: a locked door in the chief's hall wall into a small added room, the warden's vault
   lock:
@@ -293,15 +294,17 @@ placements:
   owner: npc.mn.okaz-teel
   placeName: Warden's Vault
 - ref: thing.mn14.vault-chest
-  kind: thing
+  kind: container
   base:
     kind: existing_base
     id: 'to choose: an Imperial chest (Skyrim)'
   anchor:
-    place: blackrose-prison
+    place: blackrose-prison-vault
     rule: surface
     need: one chest in the warden's vault
   owner: npc.mn.okaz-teel
+  name: Warden's Chest
+  placeName: Warden's Vault
 - ref: thing.mn.seal-stone-thief
   kind: thing
   base:
@@ -336,6 +339,7 @@ placements:
   kind: marker
   formKey: placed by MN13 (stated alike)
   placeName: Blackrose Prison
+  name: Blackrose Prison
 hooks:
 - thing: thing.mn14.hall-door
   hook: activate
@@ -521,7 +525,8 @@ stages:
   journalText: 'Corvus Ulvius let me through the gate as a guest, and the Blackguards'' heirs will not attack me now. The
     vault''s key is on Okaz-Teel, the Naga raj-kaal in his hall. I''m to get the stone: buy the key from him for 1,000 gold,
     lift it from his belt, or pick the vault''s lock at night when the hall is quiet. A theft that is seen turns the garrison
-    on me.'
+    on me. The Collector, Ennodius Vanin, waits in the hall as the chief''s guest; his ring of Kothringi silver helps
+    a hand at locks and pockets, but a dead man gives no errands.'
   onEnter:
   - makePeace: faction.mn.blackrose-heirs
   objectives:
