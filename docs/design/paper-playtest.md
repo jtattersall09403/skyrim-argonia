@@ -55,7 +55,8 @@ What it reads, by field:
 | `start` (else the lowest stage) | the stage the game begins at; a `hidden` start waits for its successor like any stage |
 | stage `place`, `journalText`, `hidden`, `objectives` (`objectiveText`, `target`) | where the player begins; the journal entry and toast; each target (refs separated by commas) is a quest marker, named |
 | stage `successors`, `failForward` (`to`, `when`) | after every command, the current stage's successors then fail-forwards are tried in order; the first whose `when` holds is entered, and again from there |
-| stage `onEnter`, `ending`, `endingId`; `endings[]` `world`, `rewards` | applied as the stage begins: `giveItem`, `takeItem`, `giveGold`, `takeGold`, `setFlag`, `enableRef`, `disableRef`, `setStage`; others pass silently |
+| stage `onEnter`, `ending`, `endingId`; `endings[]` `world`, `rewards` | applied as the stage begins, each action as the player would see it (the actions table below) |
+| `messages[]` `id`, `text` | the texts a `showMessage` names by id |
 | stage `information` | the plan printed beside the player's answers in `milestones.md` |
 | `topics[]` `id`, `label`, `person`, `kind`, `stages`, `when`, `intent`, `fallback` | a topic is open while the current stage is in its `stages` (all stages when it has none) and its `when` holds, a skill or gold check counting as passable; `say` shows its `intent` as what the person says; a `greeting` is said on `talk`; a `speaks-first` is said when the player arrives where the person stands |
 | `placements[]` `ref`, `kind`, `name`, `anchor.place`, `container`, `carriedBy`, `count`, `lock`, `enabled`, `text`, `placeName`, `base` | who and what stands where: a ref stands at its anchor's place (a new-world place id; one with no place is wherever the player is), in its container, or on its carrier; `enabled: false` hides it until `enableRef`; a stock item's `base.id` (`item.lockpick`) is what is held |
@@ -69,10 +70,35 @@ name is the `placeName` of a placement anchored there (not a door's, which names
 part in capitals (`jal-veesa` is Jal-Veesa). A door leads to the place of that name.
 
 **Conditions** played: `all`, `any`, `not`, `topicHeardFrom` [topic, person], `hasItem` [ref or item id, n],
-`npcAlive`, `questStage` [quest, op, n], `stageEverReached`, `flag` [flag, value], `objectiveComplete`, and
-`skillAtLeast` and `goldAtLeast`, which hold by the player's word: a command that meets one with no word is undone
+`npcAlive`, `questStage` [quest, op, n], `stageEverReached`, `flag` [flag, value], `objectiveComplete`,
+`counterAtLeast` [counter, n], and `skillAtLeast`, `goldAtLeast` and `spellCastNear` [school, npc] (labelled
+"(<School>)"), which hold by the player's word: a command that meets one with no word is undone
 and the game asks for `pass` or `fail` at its end. `say` of a topic whose successors from the current stage all fail
 on that word shows the topic's `fallback` and the topic is not heard.
+
+**Actions** played, and what the player is shown (a message box is printed as `[Message box]` and its text):
+
+| Action | The player sees |
+|---|---|
+| `giveItem`, `takeItem`, `giveGold`, `takeGold` | "Added: <name>", "Removed: <name>", "<n> gold added", "<n> gold removed" |
+| `showMessage: <text or a messages id>` | a message box with the text |
+| `fadeToBlack: true` | "The screen goes black." before the next message |
+| `showChoice: {text, buttons: [{label, sets}]}` | a message box with numbered buttons; every command but `answer` is refused until `choose <label or number>`, which sets that stage |
+| `endingScene: <id>`, siblings `messages: [texts]`, `before: [actions]` | `before` applied silently, then "The screen fades to black." and each message in order |
+| `setPlayerName: true` | "What is your name?"; every command but `answer` is refused until `name <name>`, which `look` uses after |
+| `killNpc: <npc>` | "<name> is dead." |
+| `raiseSkill: [skill, n]` | "<Skill> increased by n." |
+| `grantMapMarker: <ref or place>` | "Map marker added: <name>" |
+| `setFactionRank: [faction, rank]` | "You are now <rank> of <faction>" |
+| `makePeace`, `makeEnemy: <faction>` | "<faction> is now friendly to you", "<faction> is now hostile to you" |
+| `grantAbility: [spell id, name]` | "Spell learned: <name>" |
+| `giveHome: <ref or place>` | "<name> is now yours." |
+| `addCounter: [counter, n]` | nothing (state a `counterAtLeast` reads) |
+| `setDoorAccess: [door, open\|locked]` | the door's state on `look` ("(locked)", "(open)"); a locked door opens by key or pick |
+| `enableRef`, `disableRef`, `setFlag`, `setStage`, `killRef`, `giveOwnership` | the ref appears or goes; the rest are silent |
+
+Names of factions, ranks and places are the record's (placement, thing, cast, term, place) else the id's last word
+capitalised.
 
 **Commands**: `look` (the place by its name; the people, things and doors there, a quest marker marked, and where each
 marker away from here points), `journal` (the entries so far, the objectives, each marker by name and place, what the
@@ -80,11 +106,13 @@ player carries and their gold), `talk <person>`, `say <topic or number> [pass|fa
 ground, an opened container, or a body), `use <thing or door>` (opens a container, unlocking it with its key held;
 goes through a door; fires an `activate` hook), `read <thing>` (its `text`; fires a `read` hook), `fight <who>
 win|lose` (a win leaves what they carried on the body; a loss changes nothing), `pick <lock> win|fail`, `pickpocket
-<person> win|fail`, `go <place, person, thing or marker N>`, `answer '<text>'`.
+<person> win|fail`, `go <place, person, thing or marker N>`, `choose <button label or number>` (only while a message box has buttons),
+`name <name>` (only while the game asks it), `answer '<text>'`.
 
 **`--check`** validates the record and prints one line per fault, exiting 1 on any: every successor and fail-forward
-stage, objective target, topic person and stage, hook thing, condition and action ref exists; every condition term is
-one the game plays; `topicHeardFrom` names the topic's own person; every person, thing and door the player can see,
+stage, objective target, topic person and stage, hook thing, condition and action ref exists; every condition term and every action term
+is one the game plays (an unknown one is a fault naming the term and where it stands, so no message box is hidden);
+a `showMessage` names a `messages` row or is a text, a `showChoice` button sets a stage, an `endingScene` has messages; `topicHeardFrom` names the topic's own person; every person, thing and door the player can see,
 and every item a stage gives, has a name; every shown stage has `journalText` and `information` with `going`, `next`
 and `ways` (an ending needs only `going`); every carrier channel names what exists, and has a channel other than
 `ask:`; a `line:` carrier names a topic on the path. A **topic is on the path** when a successor or fail-forward of

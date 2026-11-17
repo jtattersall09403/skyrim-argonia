@@ -122,3 +122,90 @@ def test_a_session_keeps_the_run_folder(tmp_path):
     assert "| Going on | Old Teeka, Yulca's mender" in md and "| a |" in md
     assert (folder / "notes.md").read_text().startswith("I know about")
     assert json.loads((folder / "session.json").read_text())["know_text"] == "You came to Yulca to mend nets."
+
+
+def with_onenter(acts, stage=40, **extra):
+    q = copy.deepcopy(rec())
+    next(s for s in q["stages"] if s["id"] == stage)["onEnter"] = acts
+    q.update(extra)
+    return q
+
+
+def test_a_message_by_id_a_fade_and_a_choice_with_buttons():
+    buttons = [{"label": "Teeka's", "sets": 90}, {"label": "Hanu-Mah's", "sets": 91}]
+    q = with_onenter([{"showMessage": "msg.vision"}, {"fadeToBlack": True},
+                      {"showChoice": {"text": "Whose is the satchel?", "buttons": buttons}}],
+                     messages=[{"id": "msg.vision", "text": "You see two old women at one net."}])
+    assert R.check(q) == []
+    g, _ = started(q)
+    g.do(A)
+    out = "\n".join(g.enter(40))
+    assert out.index("You see two old women at one net.") < out.index("The screen goes black.") \
+        < out.index("Whose is the satchel?")
+    assert "1. [Teeka's]" in out and "2. [Hanu-Mah's]" in out
+    assert g.do("look").startswith("The game is paused at a milestone")           # the milestone is answered first
+    assert "Whose is the satchel?" in g.do(A)
+    assert "A message box is open" in g.do("look")                                 # refused while it is open
+    assert "not one of the buttons" in g.do("choose nobody")
+    out = g.do("choose hanu")
+    assert g.s["stage"] == 91 and g.s["ended"] == "complete" and "Quest complete" in out and g.s["choice"] is None
+
+
+def test_an_ending_scene_fades_then_shows_each_message_after_its_before_actions():
+    scene = {"endingScene": "scene.mended", "messages": ["The nets are mended.", "Yulca sleeps."],
+             "before": [{"addCounter": ["c.done", 1]}]}
+    q = with_onenter([scene], stage=90)
+    assert R.check(q) == []
+    g, _ = started(q)
+    out = "\n".join(g.enter(90))
+    assert "c.done" not in out
+    assert out.index("The screen fades to black.") < out.index("The nets are mended.") < out.index("Yulca sleeps.")
+    assert g.s["counters"] == {"c.done": 1} and g.s["scenes"] == ["scene.mended"]
+
+
+def test_the_other_actions_say_what_skyrim_says_and_the_name_is_asked():
+    g, _ = started()
+    out = g.apply([{"killNpc": "npc.example.hanu"}, {"raiseSkill": ["sneak", 5]},
+                   {"setFactionRank": ["faction.mages", "initiate"]}, {"makePeace": "faction.hlaalu"},
+                   {"makeEnemy": "faction.redoran"}, {"grantAbility": ["spell.x", "Mud Ward"]},
+                   {"grantMapMarker": "yulca-hut"}, {"giveHome": "yulca"}])
+    assert out == ["Hanu-Mah is dead.", "Sneak increased by 5.", "You are now Initiate of Mages",
+                   "Hlaalu is now friendly to you", "Redoran is now hostile to you", "Spell learned: Mud Ward",
+                   "Map marker added: Hanu-Mah's Hut", "Yulca is now yours."]
+    g.apply([{"setPlayerName": True}])
+    g.do(A)
+    assert "waiting for your name" in g.do("look")
+    assert g.do("name Ssaren") == "You are Ssaren." and "You are Ssaren, at" in g.do("look")
+
+
+def test_a_counter_gates_a_successor_and_a_spell_check_is_the_players_word():
+    q = copy.deepcopy(rec())
+    q["stages"][0]["successors"].insert(0, {"to": 20, "when": {"counterAtLeast": ["c.herbs", 2]}})
+    q["topics"][0]["when"] = {"spellCastNear": ["destruction", "npc.example.teeka"]}
+    assert R.check(q) == []
+    g, _ = started(q)
+    g.do(A)
+    g.apply([{"addCounter": ["c.herbs", 1]}])
+    g.advance()
+    assert g.s["stage"] == 10
+    g.apply([{"addCounter": ["c.herbs", 1]}])
+    g.advance()
+    assert g.s["stage"] == 20
+    g.s["pending"].clear()
+    g.s["at"] = "yulca"
+    g.do("talk teeka")
+    assert "(Destruction) a spell cast near Old Teeka" in g.do("say 1")
+    assert "satchel of needles" in g.do("say 1 pass")
+
+
+def test_check_names_an_unknown_action_or_condition_term_and_where_it_stands(tmp_path, capsys):
+    q = with_onenter([{"summonDragon": 1}])
+    q["stages"][0]["successors"][0]["when"] = {"moonPhase": "full"}
+    bad = R.check(q)
+    assert "stage 40 onEnter: action term summonDragon is not one the paper game plays" in bad
+    assert any("condition term moonPhase" in b for b in bad)
+    import yaml
+    p = tmp_path / "q.yaml"
+    p.write_text(yaml.safe_dump(q))
+    assert main(["record", str(p), "--check"]) == 1
+    assert "summonDragon" in capsys.readouterr().out

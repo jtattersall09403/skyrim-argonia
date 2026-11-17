@@ -9,7 +9,7 @@ What it reads of the record: `id`, `title`, `start`; `stages[]` (`id`, `place`, 
 `ending`, `endingId`, `information`); `endings[]` (`id`, `world`, `rewards`); `topics[]` (`id`, `label`, `person`,
 `kind`, `stages`, `when`, `intent`, `fallback`); `things[]` (`id`, `kind`, `name`, `text`); `cast[]` (`id`, `name`);
 `placements[]` (`ref`, `kind`, `name`, `base`, `anchor.place`, `container`, `carriedBy`, `count`, `lock`, `enabled`,
-`text`, `placeName`); `hooks[]` (`thing`, `hook` activate or read, `setsFlag`); `terms[]`.
+`text`, `placeName`); `hooks[]` (`thing`, `hook` activate or read, `setsFlag`); `terms[]`; `messages[]` (`id`, `text`).
 """
 from __future__ import annotations
 
@@ -25,11 +25,17 @@ from tools.playtest.game import HarnessError
 
 LOCKPICK = "item.lockpick"
 COND_TERMS = {"all", "any", "not", "topicHeardFrom", "hasItem", "goldAtLeast", "skillAtLeast", "npcAlive",
-              "questStage", "stageEverReached", "flag", "objectiveComplete"}
-COMMANDS = ("look", "journal", "talk", "say", "take", "use", "read", "fight", "pick", "pickpocket", "go", "answer")
+              "questStage", "stageEverReached", "flag", "objectiveComplete", "counterAtLeast", "spellCastNear"}
+ACT_TERMS = {"giveItem", "takeItem", "removeItem", "giveGold", "takeGold", "removeGold", "setFlag", "enableRef",
+             "disableRef", "giveOwnership", "setStage", "killRef", "showMessage", "fadeToBlack", "showChoice",
+             "endingScene", "setPlayerName", "killNpc", "raiseSkill", "grantMapMarker", "setFactionRank", "makePeace",
+             "makeEnemy", "grantAbility", "giveHome", "addCounter", "setDoorAccess"}
+COMMANDS = ("look", "journal", "talk", "say", "take", "use", "read", "fight", "pick", "pickpocket", "go", "answer",
+            "choose", "name")
 HELP = ("Commands: look, journal, talk <person>, say <topic or number> [pass|fail], take <thing>, use <thing or door>, "
         "read <thing>, fight <who> win|lose, pick <lock> win|fail, pickpocket <person> win|fail, "
-        "go <place, person, thing or marker N>, answer '<text>'.")
+        "go <place, person, thing or marker N>, choose <button label or number> (when a message box has buttons), "
+        "name <your name> (when the game asks it), answer '<text>'.")
 
 
 class NeedCheck(Exception):
@@ -76,7 +82,10 @@ def _args(a) -> list:
 def _actions(v) -> list[tuple[str, list]]:
     out = []
     for a in ([v] if isinstance(v, dict) else (v or [])):
-        if isinstance(a, dict):
+        if isinstance(a, dict) and "endingScene" in a:
+            out.append(("endingScene", [a["endingScene"], a.get("messages") or [], a.get("before") or []]))
+            out += [(k, _args(x)) for k, x in a.items() if k not in ("endingScene", "messages", "before")]
+        elif isinstance(a, dict):
             for k, x in a.items():
                 out.append((k, _args(x)))
     return out
@@ -98,6 +107,7 @@ class Record:
         self.endings = {e["id"]: e for e in q.get("endings") or [] if isinstance(e, dict) and "id" in e}
         self.hooks = [h for h in q.get("hooks") or [] if isinstance(h, dict)]
         self.terms = [t for t in q.get("terms") or [] if isinstance(t, dict)]
+        self.messages = {m["id"]: m.get("text") for m in q.get("messages") or [] if isinstance(m, dict) and "id" in m}
         names = {}
         for r in self.rows.values():
             pl = (r.get("anchor") or {}).get("place")
@@ -187,6 +197,23 @@ class Record:
 
     def known(self, ref) -> bool:
         return ref in self.rows or ref in self.things or ref in self.cast or str(ref).startswith("item.")
+
+    def label(self, ref) -> str:
+        """A name for a person, place, faction or rank: the record's name, else the id capitalised."""
+        if isinstance(ref, int):
+            return str(ref)
+        n = self.name(ref)
+        if n:
+            return n
+        for t in self.terms:
+            if t.get("term") and str(t["term"]).lower() == str(ref).lower():
+                return str(t["term"])
+        if ref in self.places():
+            return self.place_name(ref)
+        return humanize(ref)
+
+    def message(self, ref) -> str:
+        return self.messages.get(ref) or str(ref)
 
 
 # -- the check: a record the game can play -------------------------------------------------------------------------
@@ -286,6 +313,34 @@ def _cond_faults(R, c, where) -> list[str]:
 def _act_faults(R, v, where) -> list[str]:
     bad = []
     for k, args in _actions(v):
+        if k not in ACT_TERMS:
+            bad.append(f"{where}: action term {k} is not one the paper game plays")
+            continue
+        if k == "showMessage" and args and isinstance(args[0], str) and args[0] not in R.messages \
+                and re.fullmatch(r"[\w.-]+", args[0]):
+            bad.append(f"{where}: showMessage {args[0]} is neither a row of messages nor a text")
+        if k == "showChoice":
+            c = args[0] if args and isinstance(args[0], dict) else {}
+            if not c.get("text") or not c.get("buttons"):
+                bad.append(f"{where}: showChoice needs a text and buttons")
+            for b in c.get("buttons") or []:
+                if not isinstance(b, dict) or not b.get("label"):
+                    bad.append(f"{where}: showChoice button with no label")
+                elif b.get("sets") not in R.stages:
+                    bad.append(f"{where}: showChoice button {b['label']!r} sets stage {b.get('sets')}, which is not "
+                               "a stage of the record")
+        if k == "endingScene":
+            if not args[1]:
+                bad.append(f"{where}: endingScene {args[0]} has no messages")
+            bad += _act_faults(R, args[2], f"{where} endingScene {args[0]} before")
+        if k in ("killNpc", "setDoorAccess") and args and not R.known(args[0]):
+            bad.append(f"{where}: {k} {args[0]} is not a placement or cast row")
+        if k in ("grantMapMarker", "giveHome") and args and not R.known(args[0]) and args[0] not in R.places():
+            bad.append(f"{where}: {k} {args[0]} is not a placement or a place of the record")
+        if k == "setDoorAccess" and (len(args) < 2 or args[1] not in ("open", "locked")):
+            bad.append(f"{where}: setDoorAccess takes [door, open|locked]")
+        if k in ("raiseSkill", "setFactionRank", "grantAbility", "addCounter") and len(args) < 2:
+            bad.append(f"{where}: {k} takes two values")
         if k in ("giveItem", "takeItem", "removeItem", "enableRef", "disableRef", "giveOwnership") and args \
                 and not R.known(args[0]):
             bad.append(f"{where}: {k} {args[0]} is not a placement or thing row")
@@ -322,12 +377,16 @@ class Game:
     def __init__(self, q: dict, state: dict | None = None):
         self.R = Record(q)
         self.s = state if state is not None else self._fresh()
+        for k, v in self._fresh().items():
+            self.s.setdefault(k, v)
         self.word = None          # pass or fail, said with the command, for a skill or gold check
 
     def _fresh(self) -> dict:
         return {"stage": None, "done": [], "items": {}, "gold": 0, "flags": {}, "dead": [], "heard": [],
                 "at": None, "taken": [], "enabled": {}, "unlocked": [], "opened": [], "talking": None, "menu": [],
-                "ended": None, "pending": [], "want_notes": False, "over": False, "milestones": [], "commands": 0}
+                "ended": None, "pending": [], "want_notes": False, "over": False, "milestones": [], "commands": 0,
+                "choice": None, "ask_name": False, "name": None, "counters": {}, "doors": {}, "skills": {},
+                "ranks": {}, "peace": {}, "spells": [], "scenes": []}
 
     # -- state reads
     def stage(self) -> dict:
@@ -355,6 +414,10 @@ class Game:
         return ref not in self.s["dead"]
 
     def _locked(self, ref) -> bool:
+        if self.s["doors"].get(ref) == "locked":
+            return ref not in self.s["unlocked"]
+        if self.s["doors"].get(ref) == "open":
+            return False
         lock = (self.R.rows.get(ref) or {}).get("lock")
         return bool(lock) and ref not in self.s["unlocked"]
 
@@ -421,11 +484,15 @@ class Game:
             return any(h[0] == args[0] and (len(args) < 2 or h[1] == args[1]) for h in s["heard"])
         if k == "hasItem":
             return s["items"].get(args[0], 0) >= (args[1] if len(args) > 1 else 1)
-        if k in ("goldAtLeast", "skillAtLeast"):
+        if k == "counterAtLeast":
+            return s["counters"].get(args[0], 0) >= args[1]
+        if k in ("goldAtLeast", "skillAtLeast", "spellCastNear"):
             if lenient:
                 return True
             if self.word is None:
-                raise NeedCheck(f"{args[0]} {args[1]}" if k == "skillAtLeast" else f"{args[0]} gold")
+                raise NeedCheck(f"{args[0]} {args[1]}" if k == "skillAtLeast" else f"{args[0]} gold"
+                                if k == "goldAtLeast" else
+                                f"({humanize(args[0])}) a spell cast near {self.R.label(args[1])}")
             return self.word == "pass"
         if k == "npcAlive":
             return self._alive(args[0])
@@ -471,6 +538,49 @@ class Game:
                 self.s["enabled"][a[0]] = k == "enableRef"
             elif k == "giveOwnership":
                 pass
+            elif k == "showMessage":
+                out.append(self._box(self.R.message(a[0])))
+            elif k == "fadeToBlack":
+                out.append("The screen goes black.")
+            elif k == "showChoice":
+                c = a[0]
+                self.s["choice"] = {"text": c.get("text"), "buttons": [
+                    {"label": b.get("label"), "sets": b.get("sets")} for b in c.get("buttons") or []]}
+                out.append(self._prompt())
+            elif k == "endingScene":
+                self.apply(a[2])
+                self.s["scenes"].append(a[0])
+                out.append("The screen fades to black.")
+                out += [self._box(self.R.message(m)) for m in a[1]]
+            elif k == "setPlayerName":
+                self.s["ask_name"] = True
+                out.append(self._prompt())
+            elif k == "killNpc":
+                if a[0] not in self.s["dead"]:
+                    self.s["dead"].append(a[0])
+                    out.append(f"{self.R.label(a[0])} is dead.")
+            elif k == "raiseSkill":
+                n = a[1]
+                self.s["skills"][a[0]] = self.s["skills"].get(a[0], 0) + n
+                out.append(f"{str(a[0])[:1].upper() + str(a[0])[1:]} increased by {n}.")
+            elif k == "grantMapMarker":
+                out.append(f"Map marker added: {self.R.label(a[0])}")
+            elif k == "setFactionRank":
+                self.s["ranks"][a[0]] = a[1]
+                out.append(f"You are now {self.R.label(a[1])} of {self.R.label(a[0])}")
+            elif k in ("makePeace", "makeEnemy"):
+                self.s["peace"][a[0]] = k == "makePeace"
+                out.append(f"{self.R.label(a[0])} is now {'friendly' if k == 'makePeace' else 'hostile'} to you")
+            elif k == "grantAbility":
+                if a[0] not in self.s["spells"]:
+                    self.s["spells"].append(a[0])
+                out.append(f"Spell learned: {a[1]}")
+            elif k == "giveHome":
+                out.append(f"{self.R.label(a[0])} is now yours.")
+            elif k == "addCounter":
+                self.s["counters"][a[0]] = self.s["counters"].get(a[0], 0) + a[1]
+            elif k == "setDoorAccess":
+                self.s["doors"][a[0]] = a[1]
             elif k == "setStage":
                 if a[0] == self.R.id:
                     out += self.enter(a[1])
@@ -528,6 +638,50 @@ class Game:
         out = self.enter(first) + self.advance()
         return "\n".join(["A new game."] + out + ["", self.c_look()] + self._speaks_first() + self._gate())
 
+    # -- message boxes the player must answer
+    @staticmethod
+    def _box(text) -> str:
+        return "[Message box]\n" + "\n".join("  " + ln for ln in str(text).splitlines())
+
+    def _prompt(self) -> str:
+        c = self.s["choice"]
+        if c:
+            return "\n".join([self._box(c["text"])] + [f"  {i}. [{b['label']}]" for i, b in enumerate(c["buttons"], 1)]
+                              + ["Pick a button: choose <label or number>"])
+        if self.s["ask_name"]:
+            return self._box("What is your name?") + "\nTell the game: name <your name>"
+        return ""
+
+    def _blocked(self) -> str | None:
+        if self.s["choice"]:
+            return "A message box is open. Pick one of its buttons first.\n" + self._prompt()
+        if self.s["ask_name"]:
+            return "The game is waiting for your name.\n" + self._prompt()
+        return None
+
+    def c_choose(self, arg) -> str:
+        c = self.s["choice"]
+        if not c:
+            return "There is no message box with buttons open."
+        a = arg.lower().strip().strip("'\"")
+        bs = c["buttons"]
+        b = bs[int(a) - 1] if a.isdigit() and 0 < int(a) <= len(bs) else \
+            next((x for x in bs if x["label"].lower() == a), None) or \
+            next((x for x in bs if a and a in x["label"].lower()), None)
+        if b is None:
+            return "That is not one of the buttons.\n" + self._prompt()
+        self.s["choice"] = None
+        return "\n".join([f"You press [{b['label']}]."] + self.enter(b["sets"]))
+
+    def c_name(self, arg) -> str:
+        if not self.s["ask_name"]:
+            return "Nobody is asking your name."
+        if not arg.strip():
+            return "Give a name: name <your name>"
+        self.s["name"] = arg.strip().strip("'\"")
+        self.s["ask_name"] = False
+        return f"You are {self.s['name']}."
+
     # -- the milestone gate
     def _gate(self) -> list[str]:
         if self.s["pending"]:
@@ -547,7 +701,7 @@ class Game:
             if self.s["ended"]:
                 self.s["want_notes"] = True
                 return "Noted.\n\n" + M.NOTES_ASK
-            return "Noted. The game goes on."
+            return "\n".join(["Noted. The game goes on."] + ([self._prompt()] if self._blocked() else []))
         if self.s["want_notes"]:
             self.s["notes"] = text.strip()
             self.s["want_notes"] = False
@@ -569,6 +723,8 @@ class Game:
             return M.refusal()
         if self.s["want_notes"]:
             return M.NOTES_ASK
+        if self._blocked() and verb not in ("choose", "name"):
+            return self._blocked()
         if verb not in COMMANDS:
             return f"'{verb}' is not something you can do here. {HELP}"
         self.s["commands"] += 1
@@ -577,7 +733,7 @@ class Game:
         if m and verb in ("say", "take", "use", "read", "talk"):
             self.word, arg = m.group(1).lower(), arg[:m.start()]
         before = copy.deepcopy(self.s)
-        if verb not in ("say", "journal"):
+        if verb not in ("say", "journal", "choose", "name"):
             self.s["talking"] = None
         try:
             out = getattr(self, "c_" + verb)(arg)
@@ -608,7 +764,8 @@ class Game:
         people = [r for r in here if self.R.kind(r) == "person"]
         things = [r for r in here if self.R.kind(r) in ("thing", "container")]
         doors = [r for r in here if self.R.kind(r) == "door"]
-        out = [f"You are at {self.R.place_name(self.s['at'])}."]
+        who = f"You are {self.s['name']}, at" if self.s["name"] else "You are at"
+        out = [f"{who} {self.R.place_name(self.s['at'])}."]
         if people:
             out.append("People: " + "; ".join(
                 (self.R.must_name(r) if self._alive(r) else f"the body of {self.R.must_name(r)}") + tag(r)
@@ -617,7 +774,9 @@ class Game:
             out.append("Things: " + "; ".join(self.R.must_name(r) + (" (locked)" if self._locked(r) else "") + tag(r)
                                               for r in things))
         if doors:
-            out.append("Doors: " + "; ".join(self.R.must_name(r) + (" (locked)" if self._locked(r) else "") + tag(r)
+            state = lambda r: " (locked)" if self._locked(r) else \
+                " (open)" if self.s["doors"].get(r) == "open" else ""   # noqa: E731
+            out.append("Doors: " + "; ".join(self.R.must_name(r) + state(r) + tag(r)
                                              for r in doors))
         off = [r for r in mk if r not in here and self.where(r) and self.where(r) != self.s["at"]]
         for r in off:

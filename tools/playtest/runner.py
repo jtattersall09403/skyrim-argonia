@@ -58,7 +58,9 @@ COMMANDS_RECORD = """  {play} 'look'                     where you are, who and 
   {play} 'say <topic or its number>'   pick a topic while talking; add pass or fail when the game asks for a check
   {play} 'take <thing>'   {play} 'use <thing or door>'   {play} 'read <thing>'
   {play} 'fight <who> win|lose'     you choose how a fight ends (losing means you load your last save)
-  {play} 'pick <lock> win|fail'   {play} 'pickpocket <person> win|fail'"""
+  {play} 'pick <lock> win|fail'   {play} 'pickpocket <person> win|fail'
+  {play} 'choose <button label or number>'   pick a button when a message box offers choices
+  {play} 'name <your name>'         answer when the game asks your name"""
 
 COMMANDS_FORMS = """  {play} 'look'                     where you are, who and what is near you, the doors
   {play} 'journal'                  your quests: journal entries and active objectives
