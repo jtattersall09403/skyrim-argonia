@@ -1,0 +1,46 @@
+{
+ "quest": "quest.main.mn02",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn02.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": null,
+ "choose": null,
+ "know": "story/playtests/quest.main.mn02/know-from-mn01-design.md",
+ "created": "20261117T165848Z",
+ "stages": [
+  10,
+  20,
+  30,
+  90
+ ],
+ "ended": "complete",
+ "milestones": 4,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I was freed from my Owing at Ashgate Landing by Vosh-Leera, root-herald of Jal-Veesa. I am heading to her House in Jal-Veesa. Jal-Veesa's tree-minder wants Sithis' beard, a grey moss below Reed-Sill Weir. Jal-Veesa's Hist has looked poorly, so this may matter for it. 2. Pick Sithis' beard below Reed-Sill Weir, then continue east to Vosh-Leera's House in Jal-Veesa. 3. Fight the crocodiles, shoot them from the log walk on top of the weir, or keep out of their sight and sneak to the moss. 4. I do not know why Vosh-Leera wanted me, or what the moss does for the tree. I could ask the people in Jal-Veesa.",
+  "look",
+  "take Sithis' Beard",
+  "answer 1. I picked the moss without trouble from the crocodiles. It is for the tree-minder of Jal-Veesa, probably to help the ailing Hist. 2. Bring it to the tree-minder at the Hist pool in Jal-Veesa, east along the road (marker Weeltul). 3. Just go there; I can also see Vosh-Leera at her House. 4. Weeltul is a name I do not know, probably the tree-minder. I can ask in Jal-Veesa.",
+  "go marker 1",
+  "talk Weeltul",
+  "say 4",
+  "answer 1. The Hist of Jal-Veesa is dying: dry dark bark, closed scar, cooling egg-pool. The moss only warms the pool; nobody knows the cause. If it dies, no eggs hatch here again. Vosh-Leera freed me, perhaps to help. 2. Speak to Vosh-Leera in her House in Jal-Veesa. 3. Talk to her (she is here, or through the door to her House); I could also ask Weeltul about the topics she offered. 4. I do not understand the scar, the sap, or Umbriel (Weeltul has topics on them); I can ask her.",
+  "talk Vosh-Leera",
+  "say 2",
+  "answer 1. I now work for the Toh-Reel-Ka, the Secret Warriors of the Xeech-Leel, who rule the province. They want to know why Hist trees are falling sick along the river. They picked me because I am a stranger with no kin, so I am cheap and useful as a spy. I did not choose this. She paid me 50 gold. 2. Return to Vosh-Leera at her House in Jal-Veesa for a second task. 3. I can take her task, or ask her and Weeltul more first. I do not know of any way to refuse safely. 4. I do not fully understand the Xeech-Leel, the An-Xileel or Umbriel in detail, or why the trees are sick. I could ask Weeltul and Vosh-Leera.",
+  "answer I am a hunter freed from the Owing at Ashgate Landing by Vosh-Leera, root-herald of Jal-Veesa. I picked Sithis' beard at Reed-Sill Weir without a fight and gave it to Weeltul, the tree-minder. It only warms the pool. Jal-Veesa's Hist is dying: dry dark bark, closed scar, cooling egg-pool. Nobody knows why, and trees are sickening along the river. I received the Hist's blessing and 50 gold. Vosh-Leera told me privately that she serves the Toh-Reel-Ka, the Secret Warriors of the Xeech-Leel, who rule the province. They exist to stop another Umbriel-type disaster. They use friendless strangers like me as cheap spies. She wants me back at her House in Jal-Veesa for a second task, which I have not yet taken. I carry 50 gold and two lockpicks. Unknowns: why the trees are sick, and what the second task is. Weeltul has topics on the sap, the scar and Umbriel that I have not asked about."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.0648581,
+ "minutes": 0.6,
+ "turns": 13,
+ "tokens": {
+  "input_tokens": 22,
+  "output_tokens": 2727,
+  "cache_read_input_tokens": 66561,
+  "cache_creation_input_tokens": 7722
+ }
+}

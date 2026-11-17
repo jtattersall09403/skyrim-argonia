@@ -1,0 +1,88 @@
+[
+ {
+  "stage": 10,
+  "kind": "start",
+  "ending": null,
+  "title": "The Dry Tree",
+  "journal": "Dralin Uveran sent me east up the road to Vosh-Leera, the root-herald of Jal-Veesa, who had me freed. On the way, Jal-Veesa's tree-minder wants Sithis' beard, a grey moss hanging over the creek below Reed-Sill Weir. Crocodiles lie under the weir. I can fight them, shoot them from the log walk on top of the weir, or keep out of their sight. I'm to pick the moss.",
+  "objectives": [
+   "Pick Sithis' beard below Reed-Sill Weir. (marker: Sithis' Beard)"
+  ],
+  "plan": {
+   "going": "I am free; Vosh-Leera of Jal-Veesa had me freed and wants me. Her town's tree-minder wants Sithis' beard.",
+   "next": "Pick Sithis' beard below Reed-Sill Weir, then go on to Jal-Veesa.",
+   "ways": "Fight the crocodiles, shoot them from the log walk, or sneak to the moss behind them."
+  },
+  "answers": [
+   "I was freed from my Owing at Ashgate Landing by Vosh-Leera, root-herald of Jal-Veesa. I am heading to her House in Jal-Veesa. Jal-Veesa's tree-minder wants Sithis' beard, a grey moss below Reed-Sill Weir. Jal-Veesa's Hist has looked poorly, so this may matter for it.",
+   "Pick Sithis' beard below Reed-Sill Weir, then continue east to Vosh-Leera's House in Jal-Veesa.",
+   "Fight the crocodiles, shoot them from the log walk on top of the weir, or keep out of their sight and sneak to the moss.",
+   "I do not know why Vosh-Leera wanted me, or what the moss does for the tree. I could ask the people in Jal-Veesa."
+  ],
+  "raw": "1. I was freed from my Owing at Ashgate Landing by Vosh-Leera, root-herald of Jal-Veesa. I am heading to her House in Jal-Veesa. Jal-Veesa's tree-minder wants Sithis' beard, a grey moss below Reed-Sill Weir. Jal-Veesa's Hist has looked poorly, so this may matter for it. 2. Pick Sithis' beard below Reed-Sill Weir, then continue east to Vosh-Leera's House in Jal-Veesa. 3. Fight the crocodiles, shoot them from the log walk on top of the weir, or keep out of their sight and sneak to the moss. 4. I do not know why Vosh-Leera wanted me, or what the moss does for the tree. I could ask the people in Jal-Veesa."
+ },
+ {
+  "stage": 20,
+  "kind": "stage",
+  "ending": null,
+  "title": "The Dry Tree",
+  "journal": "I picked Sithis' beard below Reed-Sill Weir. I'm to bring it to the tree-minder at the Hist pool in the middle of Jal-Veesa, east along the road.",
+  "objectives": [
+   "Bring Sithis' beard to the tree-minder at Jal-Veesa's Hist pool. (marker: Weeltul)"
+  ],
+  "plan": {
+   "going": "I have the moss the tree-minder wanted. A Hist is a great thinking tree; Jal-Veesa's stands in the pool in the middle of the town.",
+   "next": "Bring the moss to the tree-minder at the Hist pool in the middle of Jal-Veesa.",
+   "ways": "One way, handing it to her."
+  },
+  "answers": [
+   "I picked the moss without trouble from the crocodiles. It is for the tree-minder of Jal-Veesa, probably to help the ailing Hist.",
+   "Bring it to the tree-minder at the Hist pool in Jal-Veesa, east along the road (marker Weeltul).",
+   "Just go there; I can also see Vosh-Leera at her House.",
+   "Weeltul is a name I do not know, probably the tree-minder. I can ask in Jal-Veesa."
+  ],
+  "raw": "1. I picked the moss without trouble from the crocodiles. It is for the tree-minder of Jal-Veesa, probably to help the ailing Hist. 2. Bring it to the tree-minder at the Hist pool in Jal-Veesa, east along the road (marker Weeltul). 3. Just go there; I can also see Vosh-Leera at her House. 4. Weeltul is a name I do not know, probably the tree-minder. I can ask in Jal-Veesa."
+ },
+ {
+  "stage": 30,
+  "kind": "stage",
+  "ending": null,
+  "title": "The Dry Tree",
+  "journal": "I gave the moss to Weeltul, the tree-minder of Jal-Veesa. The town's Hist is sick: its bark is dry and dark, its scar has closed and its egg-pool is cooling, and nobody knows why. If it dies, no egg here will hatch again. The moss only warms the pool. She let me lay a hand on the bark for its blessing. I'm to go to Vosh-Leera's House in the town.",
+  "objectives": [
+   "Speak to Vosh-Leera in her house in Jal-Veesa. (marker: Vosh-Leera)"
+  ],
+  "plan": {
+   "going": "Jal-Veesa's tree is sick (dry dark bark, a closed scar, a cooling egg-pool) for no known reason; if it dies the town's eggs never hatch. I have its blessing for a time.",
+   "next": "Go to Vosh-Leera's House and speak to her.",
+   "ways": "One way."
+  },
+  "answers": [
+   "The Hist of Jal-Veesa is dying: dry dark bark, closed scar, cooling egg-pool. The moss only warms the pool; nobody knows the cause. If it dies, no eggs hatch here again. Vosh-Leera freed me, perhaps to help.",
+   "Speak to Vosh-Leera in her House in Jal-Veesa.",
+   "Talk to her (she is here, or through the door to her House); I could also ask Weeltul about the topics she offered.",
+   "I do not understand the scar, the sap, or Umbriel (Weeltul has topics on them); I can ask her."
+  ],
+  "raw": "1. The Hist of Jal-Veesa is dying: dry dark bark, closed scar, cooling egg-pool. The moss only warms the pool; nobody knows the cause. If it dies, no eggs hatch here again. Vosh-Leera freed me, perhaps to help. 2. Speak to Vosh-Leera in her House in Jal-Veesa. 3. Talk to her (she is here, or through the door to her House); I could also ask Weeltul about the topics she offered. 4. I do not understand the scar, the sap, or Umbriel (Weeltul has topics on them); I can ask her."
+ },
+ {
+  "stage": 90,
+  "kind": "ending",
+  "ending": "complete",
+  "title": "The Dry Tree",
+  "journal": "Vosh-Leera told me who I work for now: the Toh-Reel-Ka, the \"Secret Warriors\" of the Xeech-Leel, who rule the province. They were made after Umbriel, when the An-Xileel used Lilmoth's mad tree to call a flying city down on the marsh, so that no tree and nobody allied with a tree can do it again. They free strangers like me because we come cheap and have no kin. She paid me fifty gold and has a second task for me at her house.",
+  "objectives": [],
+  "plan": {
+   "going": "I work for the Toh-Reel-Ka, the secret order of the Xeech-Leel who rule the province, made to stop another Umbriel. I was freed because a stranger with no kin is a cheap spy. The trees are sick.",
+   "next": "Ask Vosh-Leera for her second task, here in her house (MN03 stage 10).",
+   "ways": "One way."
+  },
+  "answers": [
+   "I now work for the Toh-Reel-Ka, the Secret Warriors of the Xeech-Leel, who rule the province. They want to know why Hist trees are falling sick along the river. They picked me because I am a stranger with no kin, so I am cheap and useful as a spy. I did not choose this. She paid me 50 gold.",
+   "Return to Vosh-Leera at her House in Jal-Veesa for a second task.",
+   "I can take her task, or ask her and Weeltul more first. I do not know of any way to refuse safely.",
+   "I do not fully understand the Xeech-Leel, the An-Xileel or Umbriel in detail, or why the trees are sick. I could ask Weeltul and Vosh-Leera."
+  ],
+  "raw": "1. I now work for the Toh-Reel-Ka, the Secret Warriors of the Xeech-Leel, who rule the province. They want to know why Hist trees are falling sick along the river. They picked me because I am a stranger with no kin, so I am cheap and useful as a spy. I did not choose this. She paid me 50 gold. 2. Return to Vosh-Leera at her House in Jal-Veesa for a second task. 3. I can take her task, or ask her and Weeltul more first. I do not know of any way to refuse safely. 4. I do not fully understand the Xeech-Leel, the An-Xileel or Umbriel in detail, or why the trees are sick. I could ask Weeltul and Vosh-Leera."
+ }
+]

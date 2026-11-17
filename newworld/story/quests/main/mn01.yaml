@@ -802,6 +802,4254 @@ stages:
       counterAtLeast:
       - counter.mn01.picked
       - 5
+  - to: 101
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-one-handed
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-one-handed
+          - true
+  - to: 102
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-two-handed
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-two-handed
+          - true
+  - to: 103
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-archery
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-archery
+          - true
+  - to: 104
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-block
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-block
+          - true
+  - to: 105
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-heavy-armor
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-heavy-armor
+          - true
+  - to: 106
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-light-armor
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-light-armor
+          - true
+  - to: 107
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-smithing
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-smithing
+          - true
+  - to: 108
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-destruction
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-destruction
+          - true
+  - to: 109
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-alteration
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-alteration
+          - true
+  - to: 110
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-illusion
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-illusion
+          - true
+  - to: 111
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-conjuration
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-conjuration
+          - true
+  - to: 112
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-restoration
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-restoration
+          - true
+  - to: 113
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-enchanting
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-enchanting
+          - true
+  - to: 114
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-alchemy
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-alchemy
+          - true
+  - to: 115
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-sneak
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-sneak
+          - true
+  - to: 116
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-lockpicking
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-lockpicking
+          - true
+  - to: 117
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-pickpocket
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-pickpocket
+          - true
+  - to: 118
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-speech
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-speech
+          - true
+  failForward:
+  - to: 95
+    when:
+      not:
+        npcAlive: npc.mn.okeeh
+  information:
+    going: I am naming my own five skills to Okeeh instead of a trade; each one I name rises by five.
+    next: Name five skills to Okeeh, one at a time; when the fifth is named the hold's door opens.
+    ways: Any five of the eighteen skills, each once.
+    carriers:
+    - know: name five skills, one at a time
+      by:
+      - journal
+      - objective
+      - marker:npc.mn.okeeh
+      - line:topic.mn01-trade-own
+- id: 101
+  place: outpost-m13-m65
+  journal: text.journal.mn01.101
+  journalText: I named One-Handed to Okeeh as one of my five. I'm to name the rest.
+  onEnter:
+  - raiseSkill:
+    - OneHanded
+    - 5
+  - setFlag:
+    - flag.mn01.pick-one-handed
+    - true
+  - addCounter:
+    - counter.mn01.picked
+    - 1
+  objectives:
+  - id: pick
+    text: text.objective.mn01.pick
+    objectiveText: Name five skills to Okeeh.
+    target: npc.mn.okeeh
+    completeWhen:
+      questStage:
+      - quest.main.mn01
+      - ≥
+      - 40
+  successors:
+  - to: 40
+    when:
+      counterAtLeast:
+      - counter.mn01.picked
+      - 5
+  - to: 101
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-one-handed
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-one-handed
+          - true
+  - to: 102
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-two-handed
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-two-handed
+          - true
+  - to: 103
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-archery
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-archery
+          - true
+  - to: 104
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-block
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-block
+          - true
+  - to: 105
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-heavy-armor
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-heavy-armor
+          - true
+  - to: 106
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-light-armor
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-light-armor
+          - true
+  - to: 107
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-smithing
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-smithing
+          - true
+  - to: 108
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-destruction
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-destruction
+          - true
+  - to: 109
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-alteration
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-alteration
+          - true
+  - to: 110
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-illusion
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-illusion
+          - true
+  - to: 111
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-conjuration
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-conjuration
+          - true
+  - to: 112
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-restoration
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-restoration
+          - true
+  - to: 113
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-enchanting
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-enchanting
+          - true
+  - to: 114
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-alchemy
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-alchemy
+          - true
+  - to: 115
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-sneak
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-sneak
+          - true
+  - to: 116
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-lockpicking
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-lockpicking
+          - true
+  - to: 117
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-pickpocket
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-pickpocket
+          - true
+  - to: 118
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-speech
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-speech
+          - true
+  failForward:
+  - to: 95
+    when:
+      not:
+        npcAlive: npc.mn.okeeh
+  information:
+    going: I am naming my own five skills to Okeeh instead of a trade; each one I name rises by five.
+    next: Name five skills to Okeeh, one at a time; when the fifth is named the hold's door opens.
+    ways: Any five of the eighteen skills, each once.
+    carriers:
+    - know: name five skills, one at a time
+      by:
+      - journal
+      - objective
+      - marker:npc.mn.okeeh
+      - line:topic.mn01-trade-own
+- id: 102
+  place: outpost-m13-m65
+  journal: text.journal.mn01.102
+  journalText: I named Two-Handed to Okeeh as one of my five. I'm to name the rest.
+  onEnter:
+  - raiseSkill:
+    - TwoHanded
+    - 5
+  - setFlag:
+    - flag.mn01.pick-two-handed
+    - true
+  - addCounter:
+    - counter.mn01.picked
+    - 1
+  objectives:
+  - id: pick
+    text: text.objective.mn01.pick
+    objectiveText: Name five skills to Okeeh.
+    target: npc.mn.okeeh
+    completeWhen:
+      questStage:
+      - quest.main.mn01
+      - ≥
+      - 40
+  successors:
+  - to: 40
+    when:
+      counterAtLeast:
+      - counter.mn01.picked
+      - 5
+  - to: 101
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-one-handed
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-one-handed
+          - true
+  - to: 102
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-two-handed
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-two-handed
+          - true
+  - to: 103
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-archery
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-archery
+          - true
+  - to: 104
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-block
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-block
+          - true
+  - to: 105
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-heavy-armor
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-heavy-armor
+          - true
+  - to: 106
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-light-armor
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-light-armor
+          - true
+  - to: 107
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-smithing
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-smithing
+          - true
+  - to: 108
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-destruction
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-destruction
+          - true
+  - to: 109
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-alteration
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-alteration
+          - true
+  - to: 110
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-illusion
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-illusion
+          - true
+  - to: 111
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-conjuration
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-conjuration
+          - true
+  - to: 112
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-restoration
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-restoration
+          - true
+  - to: 113
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-enchanting
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-enchanting
+          - true
+  - to: 114
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-alchemy
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-alchemy
+          - true
+  - to: 115
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-sneak
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-sneak
+          - true
+  - to: 116
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-lockpicking
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-lockpicking
+          - true
+  - to: 117
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-pickpocket
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-pickpocket
+          - true
+  - to: 118
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-speech
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-speech
+          - true
+  failForward:
+  - to: 95
+    when:
+      not:
+        npcAlive: npc.mn.okeeh
+  information:
+    going: I am naming my own five skills to Okeeh instead of a trade; each one I name rises by five.
+    next: Name five skills to Okeeh, one at a time; when the fifth is named the hold's door opens.
+    ways: Any five of the eighteen skills, each once.
+    carriers:
+    - know: name five skills, one at a time
+      by:
+      - journal
+      - objective
+      - marker:npc.mn.okeeh
+      - line:topic.mn01-trade-own
+- id: 103
+  place: outpost-m13-m65
+  journal: text.journal.mn01.103
+  journalText: I named Archery to Okeeh as one of my five. I'm to name the rest.
+  onEnter:
+  - raiseSkill:
+    - Archery
+    - 5
+  - setFlag:
+    - flag.mn01.pick-archery
+    - true
+  - addCounter:
+    - counter.mn01.picked
+    - 1
+  objectives:
+  - id: pick
+    text: text.objective.mn01.pick
+    objectiveText: Name five skills to Okeeh.
+    target: npc.mn.okeeh
+    completeWhen:
+      questStage:
+      - quest.main.mn01
+      - ≥
+      - 40
+  successors:
+  - to: 40
+    when:
+      counterAtLeast:
+      - counter.mn01.picked
+      - 5
+  - to: 101
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-one-handed
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-one-handed
+          - true
+  - to: 102
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-two-handed
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-two-handed
+          - true
+  - to: 103
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-archery
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-archery
+          - true
+  - to: 104
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-block
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-block
+          - true
+  - to: 105
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-heavy-armor
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-heavy-armor
+          - true
+  - to: 106
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-light-armor
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-light-armor
+          - true
+  - to: 107
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-smithing
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-smithing
+          - true
+  - to: 108
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-destruction
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-destruction
+          - true
+  - to: 109
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-alteration
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-alteration
+          - true
+  - to: 110
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-illusion
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-illusion
+          - true
+  - to: 111
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-conjuration
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-conjuration
+          - true
+  - to: 112
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-restoration
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-restoration
+          - true
+  - to: 113
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-enchanting
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-enchanting
+          - true
+  - to: 114
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-alchemy
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-alchemy
+          - true
+  - to: 115
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-sneak
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-sneak
+          - true
+  - to: 116
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-lockpicking
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-lockpicking
+          - true
+  - to: 117
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-pickpocket
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-pickpocket
+          - true
+  - to: 118
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-speech
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-speech
+          - true
+  failForward:
+  - to: 95
+    when:
+      not:
+        npcAlive: npc.mn.okeeh
+  information:
+    going: I am naming my own five skills to Okeeh instead of a trade; each one I name rises by five.
+    next: Name five skills to Okeeh, one at a time; when the fifth is named the hold's door opens.
+    ways: Any five of the eighteen skills, each once.
+    carriers:
+    - know: name five skills, one at a time
+      by:
+      - journal
+      - objective
+      - marker:npc.mn.okeeh
+      - line:topic.mn01-trade-own
+- id: 104
+  place: outpost-m13-m65
+  journal: text.journal.mn01.104
+  journalText: I named Block to Okeeh as one of my five. I'm to name the rest.
+  onEnter:
+  - raiseSkill:
+    - Block
+    - 5
+  - setFlag:
+    - flag.mn01.pick-block
+    - true
+  - addCounter:
+    - counter.mn01.picked
+    - 1
+  objectives:
+  - id: pick
+    text: text.objective.mn01.pick
+    objectiveText: Name five skills to Okeeh.
+    target: npc.mn.okeeh
+    completeWhen:
+      questStage:
+      - quest.main.mn01
+      - ≥
+      - 40
+  successors:
+  - to: 40
+    when:
+      counterAtLeast:
+      - counter.mn01.picked
+      - 5
+  - to: 101
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-one-handed
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-one-handed
+          - true
+  - to: 102
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-two-handed
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-two-handed
+          - true
+  - to: 103
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-archery
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-archery
+          - true
+  - to: 104
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-block
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-block
+          - true
+  - to: 105
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-heavy-armor
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-heavy-armor
+          - true
+  - to: 106
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-light-armor
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-light-armor
+          - true
+  - to: 107
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-smithing
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-smithing
+          - true
+  - to: 108
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-destruction
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-destruction
+          - true
+  - to: 109
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-alteration
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-alteration
+          - true
+  - to: 110
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-illusion
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-illusion
+          - true
+  - to: 111
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-conjuration
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-conjuration
+          - true
+  - to: 112
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-restoration
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-restoration
+          - true
+  - to: 113
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-enchanting
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-enchanting
+          - true
+  - to: 114
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-alchemy
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-alchemy
+          - true
+  - to: 115
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-sneak
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-sneak
+          - true
+  - to: 116
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-lockpicking
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-lockpicking
+          - true
+  - to: 117
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-pickpocket
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-pickpocket
+          - true
+  - to: 118
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-speech
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-speech
+          - true
+  failForward:
+  - to: 95
+    when:
+      not:
+        npcAlive: npc.mn.okeeh
+  information:
+    going: I am naming my own five skills to Okeeh instead of a trade; each one I name rises by five.
+    next: Name five skills to Okeeh, one at a time; when the fifth is named the hold's door opens.
+    ways: Any five of the eighteen skills, each once.
+    carriers:
+    - know: name five skills, one at a time
+      by:
+      - journal
+      - objective
+      - marker:npc.mn.okeeh
+      - line:topic.mn01-trade-own
+- id: 105
+  place: outpost-m13-m65
+  journal: text.journal.mn01.105
+  journalText: I named Heavy Armor to Okeeh as one of my five. I'm to name the rest.
+  onEnter:
+  - raiseSkill:
+    - HeavyArmor
+    - 5
+  - setFlag:
+    - flag.mn01.pick-heavy-armor
+    - true
+  - addCounter:
+    - counter.mn01.picked
+    - 1
+  objectives:
+  - id: pick
+    text: text.objective.mn01.pick
+    objectiveText: Name five skills to Okeeh.
+    target: npc.mn.okeeh
+    completeWhen:
+      questStage:
+      - quest.main.mn01
+      - ≥
+      - 40
+  successors:
+  - to: 40
+    when:
+      counterAtLeast:
+      - counter.mn01.picked
+      - 5
+  - to: 101
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-one-handed
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-one-handed
+          - true
+  - to: 102
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-two-handed
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-two-handed
+          - true
+  - to: 103
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-archery
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-archery
+          - true
+  - to: 104
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-block
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-block
+          - true
+  - to: 105
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-heavy-armor
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-heavy-armor
+          - true
+  - to: 106
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-light-armor
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-light-armor
+          - true
+  - to: 107
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-smithing
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-smithing
+          - true
+  - to: 108
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-destruction
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-destruction
+          - true
+  - to: 109
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-alteration
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-alteration
+          - true
+  - to: 110
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-illusion
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-illusion
+          - true
+  - to: 111
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-conjuration
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-conjuration
+          - true
+  - to: 112
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-restoration
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-restoration
+          - true
+  - to: 113
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-enchanting
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-enchanting
+          - true
+  - to: 114
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-alchemy
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-alchemy
+          - true
+  - to: 115
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-sneak
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-sneak
+          - true
+  - to: 116
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-lockpicking
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-lockpicking
+          - true
+  - to: 117
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-pickpocket
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-pickpocket
+          - true
+  - to: 118
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-speech
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-speech
+          - true
+  failForward:
+  - to: 95
+    when:
+      not:
+        npcAlive: npc.mn.okeeh
+  information:
+    going: I am naming my own five skills to Okeeh instead of a trade; each one I name rises by five.
+    next: Name five skills to Okeeh, one at a time; when the fifth is named the hold's door opens.
+    ways: Any five of the eighteen skills, each once.
+    carriers:
+    - know: name five skills, one at a time
+      by:
+      - journal
+      - objective
+      - marker:npc.mn.okeeh
+      - line:topic.mn01-trade-own
+- id: 106
+  place: outpost-m13-m65
+  journal: text.journal.mn01.106
+  journalText: I named Light Armor to Okeeh as one of my five. I'm to name the rest.
+  onEnter:
+  - raiseSkill:
+    - LightArmor
+    - 5
+  - setFlag:
+    - flag.mn01.pick-light-armor
+    - true
+  - addCounter:
+    - counter.mn01.picked
+    - 1
+  objectives:
+  - id: pick
+    text: text.objective.mn01.pick
+    objectiveText: Name five skills to Okeeh.
+    target: npc.mn.okeeh
+    completeWhen:
+      questStage:
+      - quest.main.mn01
+      - ≥
+      - 40
+  successors:
+  - to: 40
+    when:
+      counterAtLeast:
+      - counter.mn01.picked
+      - 5
+  - to: 101
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-one-handed
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-one-handed
+          - true
+  - to: 102
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-two-handed
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-two-handed
+          - true
+  - to: 103
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-archery
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-archery
+          - true
+  - to: 104
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-block
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-block
+          - true
+  - to: 105
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-heavy-armor
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-heavy-armor
+          - true
+  - to: 106
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-light-armor
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-light-armor
+          - true
+  - to: 107
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-smithing
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-smithing
+          - true
+  - to: 108
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-destruction
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-destruction
+          - true
+  - to: 109
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-alteration
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-alteration
+          - true
+  - to: 110
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-illusion
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-illusion
+          - true
+  - to: 111
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-conjuration
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-conjuration
+          - true
+  - to: 112
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-restoration
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-restoration
+          - true
+  - to: 113
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-enchanting
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-enchanting
+          - true
+  - to: 114
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-alchemy
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-alchemy
+          - true
+  - to: 115
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-sneak
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-sneak
+          - true
+  - to: 116
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-lockpicking
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-lockpicking
+          - true
+  - to: 117
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-pickpocket
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-pickpocket
+          - true
+  - to: 118
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-speech
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-speech
+          - true
+  failForward:
+  - to: 95
+    when:
+      not:
+        npcAlive: npc.mn.okeeh
+  information:
+    going: I am naming my own five skills to Okeeh instead of a trade; each one I name rises by five.
+    next: Name five skills to Okeeh, one at a time; when the fifth is named the hold's door opens.
+    ways: Any five of the eighteen skills, each once.
+    carriers:
+    - know: name five skills, one at a time
+      by:
+      - journal
+      - objective
+      - marker:npc.mn.okeeh
+      - line:topic.mn01-trade-own
+- id: 107
+  place: outpost-m13-m65
+  journal: text.journal.mn01.107
+  journalText: I named Smithing to Okeeh as one of my five. I'm to name the rest.
+  onEnter:
+  - raiseSkill:
+    - Smithing
+    - 5
+  - setFlag:
+    - flag.mn01.pick-smithing
+    - true
+  - addCounter:
+    - counter.mn01.picked
+    - 1
+  objectives:
+  - id: pick
+    text: text.objective.mn01.pick
+    objectiveText: Name five skills to Okeeh.
+    target: npc.mn.okeeh
+    completeWhen:
+      questStage:
+      - quest.main.mn01
+      - ≥
+      - 40
+  successors:
+  - to: 40
+    when:
+      counterAtLeast:
+      - counter.mn01.picked
+      - 5
+  - to: 101
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-one-handed
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-one-handed
+          - true
+  - to: 102
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-two-handed
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-two-handed
+          - true
+  - to: 103
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-archery
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-archery
+          - true
+  - to: 104
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-block
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-block
+          - true
+  - to: 105
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-heavy-armor
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-heavy-armor
+          - true
+  - to: 106
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-light-armor
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-light-armor
+          - true
+  - to: 107
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-smithing
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-smithing
+          - true
+  - to: 108
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-destruction
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-destruction
+          - true
+  - to: 109
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-alteration
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-alteration
+          - true
+  - to: 110
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-illusion
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-illusion
+          - true
+  - to: 111
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-conjuration
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-conjuration
+          - true
+  - to: 112
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-restoration
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-restoration
+          - true
+  - to: 113
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-enchanting
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-enchanting
+          - true
+  - to: 114
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-alchemy
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-alchemy
+          - true
+  - to: 115
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-sneak
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-sneak
+          - true
+  - to: 116
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-lockpicking
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-lockpicking
+          - true
+  - to: 117
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-pickpocket
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-pickpocket
+          - true
+  - to: 118
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-speech
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-speech
+          - true
+  failForward:
+  - to: 95
+    when:
+      not:
+        npcAlive: npc.mn.okeeh
+  information:
+    going: I am naming my own five skills to Okeeh instead of a trade; each one I name rises by five.
+    next: Name five skills to Okeeh, one at a time; when the fifth is named the hold's door opens.
+    ways: Any five of the eighteen skills, each once.
+    carriers:
+    - know: name five skills, one at a time
+      by:
+      - journal
+      - objective
+      - marker:npc.mn.okeeh
+      - line:topic.mn01-trade-own
+- id: 108
+  place: outpost-m13-m65
+  journal: text.journal.mn01.108
+  journalText: I named Destruction to Okeeh as one of my five. I'm to name the rest.
+  onEnter:
+  - raiseSkill:
+    - Destruction
+    - 5
+  - setFlag:
+    - flag.mn01.pick-destruction
+    - true
+  - addCounter:
+    - counter.mn01.picked
+    - 1
+  objectives:
+  - id: pick
+    text: text.objective.mn01.pick
+    objectiveText: Name five skills to Okeeh.
+    target: npc.mn.okeeh
+    completeWhen:
+      questStage:
+      - quest.main.mn01
+      - ≥
+      - 40
+  successors:
+  - to: 40
+    when:
+      counterAtLeast:
+      - counter.mn01.picked
+      - 5
+  - to: 101
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-one-handed
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-one-handed
+          - true
+  - to: 102
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-two-handed
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-two-handed
+          - true
+  - to: 103
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-archery
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-archery
+          - true
+  - to: 104
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-block
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-block
+          - true
+  - to: 105
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-heavy-armor
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-heavy-armor
+          - true
+  - to: 106
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-light-armor
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-light-armor
+          - true
+  - to: 107
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-smithing
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-smithing
+          - true
+  - to: 108
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-destruction
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-destruction
+          - true
+  - to: 109
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-alteration
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-alteration
+          - true
+  - to: 110
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-illusion
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-illusion
+          - true
+  - to: 111
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-conjuration
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-conjuration
+          - true
+  - to: 112
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-restoration
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-restoration
+          - true
+  - to: 113
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-enchanting
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-enchanting
+          - true
+  - to: 114
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-alchemy
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-alchemy
+          - true
+  - to: 115
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-sneak
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-sneak
+          - true
+  - to: 116
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-lockpicking
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-lockpicking
+          - true
+  - to: 117
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-pickpocket
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-pickpocket
+          - true
+  - to: 118
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-speech
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-speech
+          - true
+  failForward:
+  - to: 95
+    when:
+      not:
+        npcAlive: npc.mn.okeeh
+  information:
+    going: I am naming my own five skills to Okeeh instead of a trade; each one I name rises by five.
+    next: Name five skills to Okeeh, one at a time; when the fifth is named the hold's door opens.
+    ways: Any five of the eighteen skills, each once.
+    carriers:
+    - know: name five skills, one at a time
+      by:
+      - journal
+      - objective
+      - marker:npc.mn.okeeh
+      - line:topic.mn01-trade-own
+- id: 109
+  place: outpost-m13-m65
+  journal: text.journal.mn01.109
+  journalText: I named Alteration to Okeeh as one of my five. I'm to name the rest.
+  onEnter:
+  - raiseSkill:
+    - Alteration
+    - 5
+  - setFlag:
+    - flag.mn01.pick-alteration
+    - true
+  - addCounter:
+    - counter.mn01.picked
+    - 1
+  objectives:
+  - id: pick
+    text: text.objective.mn01.pick
+    objectiveText: Name five skills to Okeeh.
+    target: npc.mn.okeeh
+    completeWhen:
+      questStage:
+      - quest.main.mn01
+      - ≥
+      - 40
+  successors:
+  - to: 40
+    when:
+      counterAtLeast:
+      - counter.mn01.picked
+      - 5
+  - to: 101
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-one-handed
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-one-handed
+          - true
+  - to: 102
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-two-handed
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-two-handed
+          - true
+  - to: 103
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-archery
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-archery
+          - true
+  - to: 104
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-block
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-block
+          - true
+  - to: 105
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-heavy-armor
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-heavy-armor
+          - true
+  - to: 106
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-light-armor
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-light-armor
+          - true
+  - to: 107
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-smithing
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-smithing
+          - true
+  - to: 108
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-destruction
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-destruction
+          - true
+  - to: 109
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-alteration
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-alteration
+          - true
+  - to: 110
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-illusion
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-illusion
+          - true
+  - to: 111
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-conjuration
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-conjuration
+          - true
+  - to: 112
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-restoration
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-restoration
+          - true
+  - to: 113
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-enchanting
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-enchanting
+          - true
+  - to: 114
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-alchemy
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-alchemy
+          - true
+  - to: 115
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-sneak
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-sneak
+          - true
+  - to: 116
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-lockpicking
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-lockpicking
+          - true
+  - to: 117
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-pickpocket
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-pickpocket
+          - true
+  - to: 118
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-speech
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-speech
+          - true
+  failForward:
+  - to: 95
+    when:
+      not:
+        npcAlive: npc.mn.okeeh
+  information:
+    going: I am naming my own five skills to Okeeh instead of a trade; each one I name rises by five.
+    next: Name five skills to Okeeh, one at a time; when the fifth is named the hold's door opens.
+    ways: Any five of the eighteen skills, each once.
+    carriers:
+    - know: name five skills, one at a time
+      by:
+      - journal
+      - objective
+      - marker:npc.mn.okeeh
+      - line:topic.mn01-trade-own
+- id: 110
+  place: outpost-m13-m65
+  journal: text.journal.mn01.110
+  journalText: I named Illusion to Okeeh as one of my five. I'm to name the rest.
+  onEnter:
+  - raiseSkill:
+    - Illusion
+    - 5
+  - setFlag:
+    - flag.mn01.pick-illusion
+    - true
+  - addCounter:
+    - counter.mn01.picked
+    - 1
+  objectives:
+  - id: pick
+    text: text.objective.mn01.pick
+    objectiveText: Name five skills to Okeeh.
+    target: npc.mn.okeeh
+    completeWhen:
+      questStage:
+      - quest.main.mn01
+      - ≥
+      - 40
+  successors:
+  - to: 40
+    when:
+      counterAtLeast:
+      - counter.mn01.picked
+      - 5
+  - to: 101
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-one-handed
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-one-handed
+          - true
+  - to: 102
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-two-handed
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-two-handed
+          - true
+  - to: 103
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-archery
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-archery
+          - true
+  - to: 104
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-block
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-block
+          - true
+  - to: 105
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-heavy-armor
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-heavy-armor
+          - true
+  - to: 106
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-light-armor
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-light-armor
+          - true
+  - to: 107
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-smithing
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-smithing
+          - true
+  - to: 108
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-destruction
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-destruction
+          - true
+  - to: 109
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-alteration
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-alteration
+          - true
+  - to: 110
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-illusion
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-illusion
+          - true
+  - to: 111
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-conjuration
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-conjuration
+          - true
+  - to: 112
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-restoration
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-restoration
+          - true
+  - to: 113
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-enchanting
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-enchanting
+          - true
+  - to: 114
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-alchemy
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-alchemy
+          - true
+  - to: 115
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-sneak
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-sneak
+          - true
+  - to: 116
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-lockpicking
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-lockpicking
+          - true
+  - to: 117
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-pickpocket
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-pickpocket
+          - true
+  - to: 118
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-speech
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-speech
+          - true
+  failForward:
+  - to: 95
+    when:
+      not:
+        npcAlive: npc.mn.okeeh
+  information:
+    going: I am naming my own five skills to Okeeh instead of a trade; each one I name rises by five.
+    next: Name five skills to Okeeh, one at a time; when the fifth is named the hold's door opens.
+    ways: Any five of the eighteen skills, each once.
+    carriers:
+    - know: name five skills, one at a time
+      by:
+      - journal
+      - objective
+      - marker:npc.mn.okeeh
+      - line:topic.mn01-trade-own
+- id: 111
+  place: outpost-m13-m65
+  journal: text.journal.mn01.111
+  journalText: I named Conjuration to Okeeh as one of my five. I'm to name the rest.
+  onEnter:
+  - raiseSkill:
+    - Conjuration
+    - 5
+  - setFlag:
+    - flag.mn01.pick-conjuration
+    - true
+  - addCounter:
+    - counter.mn01.picked
+    - 1
+  objectives:
+  - id: pick
+    text: text.objective.mn01.pick
+    objectiveText: Name five skills to Okeeh.
+    target: npc.mn.okeeh
+    completeWhen:
+      questStage:
+      - quest.main.mn01
+      - ≥
+      - 40
+  successors:
+  - to: 40
+    when:
+      counterAtLeast:
+      - counter.mn01.picked
+      - 5
+  - to: 101
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-one-handed
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-one-handed
+          - true
+  - to: 102
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-two-handed
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-two-handed
+          - true
+  - to: 103
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-archery
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-archery
+          - true
+  - to: 104
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-block
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-block
+          - true
+  - to: 105
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-heavy-armor
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-heavy-armor
+          - true
+  - to: 106
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-light-armor
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-light-armor
+          - true
+  - to: 107
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-smithing
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-smithing
+          - true
+  - to: 108
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-destruction
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-destruction
+          - true
+  - to: 109
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-alteration
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-alteration
+          - true
+  - to: 110
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-illusion
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-illusion
+          - true
+  - to: 111
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-conjuration
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-conjuration
+          - true
+  - to: 112
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-restoration
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-restoration
+          - true
+  - to: 113
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-enchanting
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-enchanting
+          - true
+  - to: 114
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-alchemy
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-alchemy
+          - true
+  - to: 115
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-sneak
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-sneak
+          - true
+  - to: 116
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-lockpicking
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-lockpicking
+          - true
+  - to: 117
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-pickpocket
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-pickpocket
+          - true
+  - to: 118
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-speech
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-speech
+          - true
+  failForward:
+  - to: 95
+    when:
+      not:
+        npcAlive: npc.mn.okeeh
+  information:
+    going: I am naming my own five skills to Okeeh instead of a trade; each one I name rises by five.
+    next: Name five skills to Okeeh, one at a time; when the fifth is named the hold's door opens.
+    ways: Any five of the eighteen skills, each once.
+    carriers:
+    - know: name five skills, one at a time
+      by:
+      - journal
+      - objective
+      - marker:npc.mn.okeeh
+      - line:topic.mn01-trade-own
+- id: 112
+  place: outpost-m13-m65
+  journal: text.journal.mn01.112
+  journalText: I named Restoration to Okeeh as one of my five. I'm to name the rest.
+  onEnter:
+  - raiseSkill:
+    - Restoration
+    - 5
+  - setFlag:
+    - flag.mn01.pick-restoration
+    - true
+  - addCounter:
+    - counter.mn01.picked
+    - 1
+  objectives:
+  - id: pick
+    text: text.objective.mn01.pick
+    objectiveText: Name five skills to Okeeh.
+    target: npc.mn.okeeh
+    completeWhen:
+      questStage:
+      - quest.main.mn01
+      - ≥
+      - 40
+  successors:
+  - to: 40
+    when:
+      counterAtLeast:
+      - counter.mn01.picked
+      - 5
+  - to: 101
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-one-handed
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-one-handed
+          - true
+  - to: 102
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-two-handed
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-two-handed
+          - true
+  - to: 103
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-archery
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-archery
+          - true
+  - to: 104
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-block
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-block
+          - true
+  - to: 105
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-heavy-armor
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-heavy-armor
+          - true
+  - to: 106
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-light-armor
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-light-armor
+          - true
+  - to: 107
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-smithing
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-smithing
+          - true
+  - to: 108
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-destruction
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-destruction
+          - true
+  - to: 109
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-alteration
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-alteration
+          - true
+  - to: 110
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-illusion
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-illusion
+          - true
+  - to: 111
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-conjuration
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-conjuration
+          - true
+  - to: 112
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-restoration
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-restoration
+          - true
+  - to: 113
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-enchanting
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-enchanting
+          - true
+  - to: 114
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-alchemy
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-alchemy
+          - true
+  - to: 115
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-sneak
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-sneak
+          - true
+  - to: 116
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-lockpicking
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-lockpicking
+          - true
+  - to: 117
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-pickpocket
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-pickpocket
+          - true
+  - to: 118
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-speech
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-speech
+          - true
+  failForward:
+  - to: 95
+    when:
+      not:
+        npcAlive: npc.mn.okeeh
+  information:
+    going: I am naming my own five skills to Okeeh instead of a trade; each one I name rises by five.
+    next: Name five skills to Okeeh, one at a time; when the fifth is named the hold's door opens.
+    ways: Any five of the eighteen skills, each once.
+    carriers:
+    - know: name five skills, one at a time
+      by:
+      - journal
+      - objective
+      - marker:npc.mn.okeeh
+      - line:topic.mn01-trade-own
+- id: 113
+  place: outpost-m13-m65
+  journal: text.journal.mn01.113
+  journalText: I named Enchanting to Okeeh as one of my five. I'm to name the rest.
+  onEnter:
+  - raiseSkill:
+    - Enchanting
+    - 5
+  - setFlag:
+    - flag.mn01.pick-enchanting
+    - true
+  - addCounter:
+    - counter.mn01.picked
+    - 1
+  objectives:
+  - id: pick
+    text: text.objective.mn01.pick
+    objectiveText: Name five skills to Okeeh.
+    target: npc.mn.okeeh
+    completeWhen:
+      questStage:
+      - quest.main.mn01
+      - ≥
+      - 40
+  successors:
+  - to: 40
+    when:
+      counterAtLeast:
+      - counter.mn01.picked
+      - 5
+  - to: 101
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-one-handed
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-one-handed
+          - true
+  - to: 102
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-two-handed
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-two-handed
+          - true
+  - to: 103
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-archery
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-archery
+          - true
+  - to: 104
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-block
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-block
+          - true
+  - to: 105
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-heavy-armor
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-heavy-armor
+          - true
+  - to: 106
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-light-armor
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-light-armor
+          - true
+  - to: 107
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-smithing
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-smithing
+          - true
+  - to: 108
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-destruction
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-destruction
+          - true
+  - to: 109
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-alteration
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-alteration
+          - true
+  - to: 110
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-illusion
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-illusion
+          - true
+  - to: 111
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-conjuration
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-conjuration
+          - true
+  - to: 112
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-restoration
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-restoration
+          - true
+  - to: 113
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-enchanting
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-enchanting
+          - true
+  - to: 114
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-alchemy
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-alchemy
+          - true
+  - to: 115
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-sneak
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-sneak
+          - true
+  - to: 116
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-lockpicking
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-lockpicking
+          - true
+  - to: 117
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-pickpocket
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-pickpocket
+          - true
+  - to: 118
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-speech
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-speech
+          - true
+  failForward:
+  - to: 95
+    when:
+      not:
+        npcAlive: npc.mn.okeeh
+  information:
+    going: I am naming my own five skills to Okeeh instead of a trade; each one I name rises by five.
+    next: Name five skills to Okeeh, one at a time; when the fifth is named the hold's door opens.
+    ways: Any five of the eighteen skills, each once.
+    carriers:
+    - know: name five skills, one at a time
+      by:
+      - journal
+      - objective
+      - marker:npc.mn.okeeh
+      - line:topic.mn01-trade-own
+- id: 114
+  place: outpost-m13-m65
+  journal: text.journal.mn01.114
+  journalText: I named Alchemy to Okeeh as one of my five. I'm to name the rest.
+  onEnter:
+  - raiseSkill:
+    - Alchemy
+    - 5
+  - setFlag:
+    - flag.mn01.pick-alchemy
+    - true
+  - addCounter:
+    - counter.mn01.picked
+    - 1
+  objectives:
+  - id: pick
+    text: text.objective.mn01.pick
+    objectiveText: Name five skills to Okeeh.
+    target: npc.mn.okeeh
+    completeWhen:
+      questStage:
+      - quest.main.mn01
+      - ≥
+      - 40
+  successors:
+  - to: 40
+    when:
+      counterAtLeast:
+      - counter.mn01.picked
+      - 5
+  - to: 101
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-one-handed
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-one-handed
+          - true
+  - to: 102
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-two-handed
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-two-handed
+          - true
+  - to: 103
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-archery
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-archery
+          - true
+  - to: 104
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-block
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-block
+          - true
+  - to: 105
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-heavy-armor
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-heavy-armor
+          - true
+  - to: 106
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-light-armor
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-light-armor
+          - true
+  - to: 107
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-smithing
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-smithing
+          - true
+  - to: 108
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-destruction
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-destruction
+          - true
+  - to: 109
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-alteration
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-alteration
+          - true
+  - to: 110
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-illusion
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-illusion
+          - true
+  - to: 111
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-conjuration
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-conjuration
+          - true
+  - to: 112
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-restoration
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-restoration
+          - true
+  - to: 113
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-enchanting
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-enchanting
+          - true
+  - to: 114
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-alchemy
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-alchemy
+          - true
+  - to: 115
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-sneak
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-sneak
+          - true
+  - to: 116
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-lockpicking
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-lockpicking
+          - true
+  - to: 117
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-pickpocket
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-pickpocket
+          - true
+  - to: 118
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-speech
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-speech
+          - true
+  failForward:
+  - to: 95
+    when:
+      not:
+        npcAlive: npc.mn.okeeh
+  information:
+    going: I am naming my own five skills to Okeeh instead of a trade; each one I name rises by five.
+    next: Name five skills to Okeeh, one at a time; when the fifth is named the hold's door opens.
+    ways: Any five of the eighteen skills, each once.
+    carriers:
+    - know: name five skills, one at a time
+      by:
+      - journal
+      - objective
+      - marker:npc.mn.okeeh
+      - line:topic.mn01-trade-own
+- id: 115
+  place: outpost-m13-m65
+  journal: text.journal.mn01.115
+  journalText: I named Sneak to Okeeh as one of my five. I'm to name the rest.
+  onEnter:
+  - raiseSkill:
+    - Sneak
+    - 5
+  - setFlag:
+    - flag.mn01.pick-sneak
+    - true
+  - addCounter:
+    - counter.mn01.picked
+    - 1
+  objectives:
+  - id: pick
+    text: text.objective.mn01.pick
+    objectiveText: Name five skills to Okeeh.
+    target: npc.mn.okeeh
+    completeWhen:
+      questStage:
+      - quest.main.mn01
+      - ≥
+      - 40
+  successors:
+  - to: 40
+    when:
+      counterAtLeast:
+      - counter.mn01.picked
+      - 5
+  - to: 101
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-one-handed
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-one-handed
+          - true
+  - to: 102
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-two-handed
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-two-handed
+          - true
+  - to: 103
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-archery
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-archery
+          - true
+  - to: 104
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-block
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-block
+          - true
+  - to: 105
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-heavy-armor
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-heavy-armor
+          - true
+  - to: 106
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-light-armor
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-light-armor
+          - true
+  - to: 107
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-smithing
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-smithing
+          - true
+  - to: 108
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-destruction
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-destruction
+          - true
+  - to: 109
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-alteration
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-alteration
+          - true
+  - to: 110
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-illusion
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-illusion
+          - true
+  - to: 111
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-conjuration
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-conjuration
+          - true
+  - to: 112
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-restoration
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-restoration
+          - true
+  - to: 113
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-enchanting
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-enchanting
+          - true
+  - to: 114
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-alchemy
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-alchemy
+          - true
+  - to: 115
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-sneak
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-sneak
+          - true
+  - to: 116
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-lockpicking
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-lockpicking
+          - true
+  - to: 117
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-pickpocket
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-pickpocket
+          - true
+  - to: 118
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-speech
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-speech
+          - true
+  failForward:
+  - to: 95
+    when:
+      not:
+        npcAlive: npc.mn.okeeh
+  information:
+    going: I am naming my own five skills to Okeeh instead of a trade; each one I name rises by five.
+    next: Name five skills to Okeeh, one at a time; when the fifth is named the hold's door opens.
+    ways: Any five of the eighteen skills, each once.
+    carriers:
+    - know: name five skills, one at a time
+      by:
+      - journal
+      - objective
+      - marker:npc.mn.okeeh
+      - line:topic.mn01-trade-own
+- id: 116
+  place: outpost-m13-m65
+  journal: text.journal.mn01.116
+  journalText: I named Lockpicking to Okeeh as one of my five. I'm to name the rest.
+  onEnter:
+  - raiseSkill:
+    - Lockpicking
+    - 5
+  - setFlag:
+    - flag.mn01.pick-lockpicking
+    - true
+  - addCounter:
+    - counter.mn01.picked
+    - 1
+  objectives:
+  - id: pick
+    text: text.objective.mn01.pick
+    objectiveText: Name five skills to Okeeh.
+    target: npc.mn.okeeh
+    completeWhen:
+      questStage:
+      - quest.main.mn01
+      - ≥
+      - 40
+  successors:
+  - to: 40
+    when:
+      counterAtLeast:
+      - counter.mn01.picked
+      - 5
+  - to: 101
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-one-handed
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-one-handed
+          - true
+  - to: 102
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-two-handed
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-two-handed
+          - true
+  - to: 103
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-archery
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-archery
+          - true
+  - to: 104
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-block
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-block
+          - true
+  - to: 105
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-heavy-armor
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-heavy-armor
+          - true
+  - to: 106
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-light-armor
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-light-armor
+          - true
+  - to: 107
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-smithing
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-smithing
+          - true
+  - to: 108
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-destruction
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-destruction
+          - true
+  - to: 109
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-alteration
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-alteration
+          - true
+  - to: 110
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-illusion
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-illusion
+          - true
+  - to: 111
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-conjuration
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-conjuration
+          - true
+  - to: 112
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-restoration
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-restoration
+          - true
+  - to: 113
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-enchanting
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-enchanting
+          - true
+  - to: 114
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-alchemy
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-alchemy
+          - true
+  - to: 115
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-sneak
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-sneak
+          - true
+  - to: 116
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-lockpicking
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-lockpicking
+          - true
+  - to: 117
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-pickpocket
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-pickpocket
+          - true
+  - to: 118
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-speech
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-speech
+          - true
+  failForward:
+  - to: 95
+    when:
+      not:
+        npcAlive: npc.mn.okeeh
+  information:
+    going: I am naming my own five skills to Okeeh instead of a trade; each one I name rises by five.
+    next: Name five skills to Okeeh, one at a time; when the fifth is named the hold's door opens.
+    ways: Any five of the eighteen skills, each once.
+    carriers:
+    - know: name five skills, one at a time
+      by:
+      - journal
+      - objective
+      - marker:npc.mn.okeeh
+      - line:topic.mn01-trade-own
+- id: 117
+  place: outpost-m13-m65
+  journal: text.journal.mn01.117
+  journalText: I named Pickpocket to Okeeh as one of my five. I'm to name the rest.
+  onEnter:
+  - raiseSkill:
+    - Pickpocket
+    - 5
+  - setFlag:
+    - flag.mn01.pick-pickpocket
+    - true
+  - addCounter:
+    - counter.mn01.picked
+    - 1
+  objectives:
+  - id: pick
+    text: text.objective.mn01.pick
+    objectiveText: Name five skills to Okeeh.
+    target: npc.mn.okeeh
+    completeWhen:
+      questStage:
+      - quest.main.mn01
+      - ≥
+      - 40
+  successors:
+  - to: 40
+    when:
+      counterAtLeast:
+      - counter.mn01.picked
+      - 5
+  - to: 101
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-one-handed
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-one-handed
+          - true
+  - to: 102
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-two-handed
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-two-handed
+          - true
+  - to: 103
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-archery
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-archery
+          - true
+  - to: 104
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-block
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-block
+          - true
+  - to: 105
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-heavy-armor
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-heavy-armor
+          - true
+  - to: 106
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-light-armor
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-light-armor
+          - true
+  - to: 107
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-smithing
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-smithing
+          - true
+  - to: 108
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-destruction
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-destruction
+          - true
+  - to: 109
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-alteration
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-alteration
+          - true
+  - to: 110
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-illusion
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-illusion
+          - true
+  - to: 111
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-conjuration
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-conjuration
+          - true
+  - to: 112
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-restoration
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-restoration
+          - true
+  - to: 113
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-enchanting
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-enchanting
+          - true
+  - to: 114
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-alchemy
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-alchemy
+          - true
+  - to: 115
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-sneak
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-sneak
+          - true
+  - to: 116
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-lockpicking
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-lockpicking
+          - true
+  - to: 117
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-pickpocket
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-pickpocket
+          - true
+  - to: 118
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-speech
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-speech
+          - true
+  failForward:
+  - to: 95
+    when:
+      not:
+        npcAlive: npc.mn.okeeh
+  information:
+    going: I am naming my own five skills to Okeeh instead of a trade; each one I name rises by five.
+    next: Name five skills to Okeeh, one at a time; when the fifth is named the hold's door opens.
+    ways: Any five of the eighteen skills, each once.
+    carriers:
+    - know: name five skills, one at a time
+      by:
+      - journal
+      - objective
+      - marker:npc.mn.okeeh
+      - line:topic.mn01-trade-own
+- id: 118
+  place: outpost-m13-m65
+  journal: text.journal.mn01.118
+  journalText: I named Speech to Okeeh as one of my five. I'm to name the rest.
+  onEnter:
+  - raiseSkill:
+    - Speechcraft
+    - 5
+  - setFlag:
+    - flag.mn01.pick-speech
+    - true
+  - addCounter:
+    - counter.mn01.picked
+    - 1
+  objectives:
+  - id: pick
+    text: text.objective.mn01.pick
+    objectiveText: Name five skills to Okeeh.
+    target: npc.mn.okeeh
+    completeWhen:
+      questStage:
+      - quest.main.mn01
+      - ≥
+      - 40
+  successors:
+  - to: 40
+    when:
+      counterAtLeast:
+      - counter.mn01.picked
+      - 5
+  - to: 101
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-one-handed
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-one-handed
+          - true
+  - to: 102
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-two-handed
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-two-handed
+          - true
+  - to: 103
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-archery
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-archery
+          - true
+  - to: 104
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-block
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-block
+          - true
+  - to: 105
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-heavy-armor
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-heavy-armor
+          - true
+  - to: 106
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-light-armor
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-light-armor
+          - true
+  - to: 107
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-smithing
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-smithing
+          - true
+  - to: 108
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-destruction
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-destruction
+          - true
+  - to: 109
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-alteration
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-alteration
+          - true
+  - to: 110
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-illusion
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-illusion
+          - true
+  - to: 111
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-conjuration
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-conjuration
+          - true
+  - to: 112
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-restoration
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-restoration
+          - true
+  - to: 113
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-enchanting
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-enchanting
+          - true
+  - to: 114
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-alchemy
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-alchemy
+          - true
+  - to: 115
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-sneak
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-sneak
+          - true
+  - to: 116
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-lockpicking
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-lockpicking
+          - true
+  - to: 117
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-pickpocket
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-pickpocket
+          - true
+  - to: 118
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn01-pick-speech
+        - npc.mn.okeeh
+      - not:
+          flag:
+          - flag.mn01.pick-speech
+          - true
   failForward:
   - to: 95
     when:
@@ -1119,540 +5367,594 @@ topics:
   person: npc.mn.okeeh
   stages:
   - 37
+  - 101
+  - 102
+  - 103
+  - 104
+  - 105
+  - 106
+  - 107
+  - 108
+  - 109
+  - 110
+  - 111
+  - 112
+  - 113
+  - 114
+  - 115
+  - 116
+  - 117
+  - 118
   essential: true
   when:
-    all:
-    - not:
-        counterAtLeast:
-        - counter.mn01.picked
-        - 5
-    - not:
-        flag:
-        - flag.mn01.pick-one-handed
-        - true
-  results:
-  - raiseSkill:
-    - OneHanded
-    - 5
-  - setFlag:
-    - flag.mn01.pick-one-handed
-    - true
-  - addCounter:
-    - counter.mn01.picked
-    - 1
+    not:
+      flag:
+      - flag.mn01.pick-one-handed
+      - true
   intent: 'Okeeh. Tells: she says One-Handed back and how many are left to name; at the fifth, five is plenty for a reed
-    gang, and she hears the bar lift from the hold''s door. Does: raises One-Handed by five and counts it (the fifth moves
-    the quest to stage 40). Checks: nothing.'
+    gang, and she hears the bar lift from the hold''s door. Does: sets this skill''s stage (101 to 118), whose start raises
+    it by five and counts it; the fifth count moves the quest to stage 40. Checks: nothing.'
   new: true
 - id: topic.mn01-pick-two-handed
   label: Two-Handed.
   person: npc.mn.okeeh
   stages:
   - 37
+  - 101
+  - 102
+  - 103
+  - 104
+  - 105
+  - 106
+  - 107
+  - 108
+  - 109
+  - 110
+  - 111
+  - 112
+  - 113
+  - 114
+  - 115
+  - 116
+  - 117
+  - 118
   essential: true
   when:
-    all:
-    - not:
-        counterAtLeast:
-        - counter.mn01.picked
-        - 5
-    - not:
-        flag:
-        - flag.mn01.pick-two-handed
-        - true
-  results:
-  - raiseSkill:
-    - TwoHanded
-    - 5
-  - setFlag:
-    - flag.mn01.pick-two-handed
-    - true
-  - addCounter:
-    - counter.mn01.picked
-    - 1
+    not:
+      flag:
+      - flag.mn01.pick-two-handed
+      - true
   intent: 'Okeeh. Tells: she says Two-Handed back and how many are left to name; at the fifth, five is plenty for a reed
-    gang, and she hears the bar lift from the hold''s door. Does: raises Two-Handed by five and counts it (the fifth moves
-    the quest to stage 40). Checks: nothing.'
+    gang, and she hears the bar lift from the hold''s door. Does: sets this skill''s stage (101 to 118), whose start raises
+    it by five and counts it; the fifth count moves the quest to stage 40. Checks: nothing.'
   new: true
 - id: topic.mn01-pick-archery
   label: Archery.
   person: npc.mn.okeeh
   stages:
   - 37
+  - 101
+  - 102
+  - 103
+  - 104
+  - 105
+  - 106
+  - 107
+  - 108
+  - 109
+  - 110
+  - 111
+  - 112
+  - 113
+  - 114
+  - 115
+  - 116
+  - 117
+  - 118
   essential: true
   when:
-    all:
-    - not:
-        counterAtLeast:
-        - counter.mn01.picked
-        - 5
-    - not:
-        flag:
-        - flag.mn01.pick-archery
-        - true
-  results:
-  - raiseSkill:
-    - Archery
-    - 5
-  - setFlag:
-    - flag.mn01.pick-archery
-    - true
-  - addCounter:
-    - counter.mn01.picked
-    - 1
+    not:
+      flag:
+      - flag.mn01.pick-archery
+      - true
   intent: 'Okeeh. Tells: she says Archery back and how many are left to name; at the fifth, five is plenty for a reed gang,
-    and she hears the bar lift from the hold''s door. Does: raises Archery by five and counts it (the fifth moves the quest
-    to stage 40). Checks: nothing.'
+    and she hears the bar lift from the hold''s door. Does: sets this skill''s stage (101 to 118), whose start raises it
+    by five and counts it; the fifth count moves the quest to stage 40. Checks: nothing.'
   new: true
 - id: topic.mn01-pick-block
   label: Block.
   person: npc.mn.okeeh
   stages:
   - 37
+  - 101
+  - 102
+  - 103
+  - 104
+  - 105
+  - 106
+  - 107
+  - 108
+  - 109
+  - 110
+  - 111
+  - 112
+  - 113
+  - 114
+  - 115
+  - 116
+  - 117
+  - 118
   essential: true
   when:
-    all:
-    - not:
-        counterAtLeast:
-        - counter.mn01.picked
-        - 5
-    - not:
-        flag:
-        - flag.mn01.pick-block
-        - true
-  results:
-  - raiseSkill:
-    - Block
-    - 5
-  - setFlag:
-    - flag.mn01.pick-block
-    - true
-  - addCounter:
-    - counter.mn01.picked
-    - 1
+    not:
+      flag:
+      - flag.mn01.pick-block
+      - true
   intent: 'Okeeh. Tells: she says Block back and how many are left to name; at the fifth, five is plenty for a reed gang,
-    and she hears the bar lift from the hold''s door. Does: raises Block by five and counts it (the fifth moves the quest
-    to stage 40). Checks: nothing.'
+    and she hears the bar lift from the hold''s door. Does: sets this skill''s stage (101 to 118), whose start raises it
+    by five and counts it; the fifth count moves the quest to stage 40. Checks: nothing.'
   new: true
 - id: topic.mn01-pick-heavy-armor
   label: Heavy Armor.
   person: npc.mn.okeeh
   stages:
   - 37
+  - 101
+  - 102
+  - 103
+  - 104
+  - 105
+  - 106
+  - 107
+  - 108
+  - 109
+  - 110
+  - 111
+  - 112
+  - 113
+  - 114
+  - 115
+  - 116
+  - 117
+  - 118
   essential: true
   when:
-    all:
-    - not:
-        counterAtLeast:
-        - counter.mn01.picked
-        - 5
-    - not:
-        flag:
-        - flag.mn01.pick-heavy-armor
-        - true
-  results:
-  - raiseSkill:
-    - HeavyArmor
-    - 5
-  - setFlag:
-    - flag.mn01.pick-heavy-armor
-    - true
-  - addCounter:
-    - counter.mn01.picked
-    - 1
+    not:
+      flag:
+      - flag.mn01.pick-heavy-armor
+      - true
   intent: 'Okeeh. Tells: she says Heavy Armor back and how many are left to name; at the fifth, five is plenty for a reed
-    gang, and she hears the bar lift from the hold''s door. Does: raises Heavy Armor by five and counts it (the fifth moves
-    the quest to stage 40). Checks: nothing.'
+    gang, and she hears the bar lift from the hold''s door. Does: sets this skill''s stage (101 to 118), whose start raises
+    it by five and counts it; the fifth count moves the quest to stage 40. Checks: nothing.'
   new: true
 - id: topic.mn01-pick-light-armor
   label: Light Armor.
   person: npc.mn.okeeh
   stages:
   - 37
+  - 101
+  - 102
+  - 103
+  - 104
+  - 105
+  - 106
+  - 107
+  - 108
+  - 109
+  - 110
+  - 111
+  - 112
+  - 113
+  - 114
+  - 115
+  - 116
+  - 117
+  - 118
   essential: true
   when:
-    all:
-    - not:
-        counterAtLeast:
-        - counter.mn01.picked
-        - 5
-    - not:
-        flag:
-        - flag.mn01.pick-light-armor
-        - true
-  results:
-  - raiseSkill:
-    - LightArmor
-    - 5
-  - setFlag:
-    - flag.mn01.pick-light-armor
-    - true
-  - addCounter:
-    - counter.mn01.picked
-    - 1
+    not:
+      flag:
+      - flag.mn01.pick-light-armor
+      - true
   intent: 'Okeeh. Tells: she says Light Armor back and how many are left to name; at the fifth, five is plenty for a reed
-    gang, and she hears the bar lift from the hold''s door. Does: raises Light Armor by five and counts it (the fifth moves
-    the quest to stage 40). Checks: nothing.'
+    gang, and she hears the bar lift from the hold''s door. Does: sets this skill''s stage (101 to 118), whose start raises
+    it by five and counts it; the fifth count moves the quest to stage 40. Checks: nothing.'
   new: true
 - id: topic.mn01-pick-smithing
   label: Smithing.
   person: npc.mn.okeeh
   stages:
   - 37
+  - 101
+  - 102
+  - 103
+  - 104
+  - 105
+  - 106
+  - 107
+  - 108
+  - 109
+  - 110
+  - 111
+  - 112
+  - 113
+  - 114
+  - 115
+  - 116
+  - 117
+  - 118
   essential: true
   when:
-    all:
-    - not:
-        counterAtLeast:
-        - counter.mn01.picked
-        - 5
-    - not:
-        flag:
-        - flag.mn01.pick-smithing
-        - true
-  results:
-  - raiseSkill:
-    - Smithing
-    - 5
-  - setFlag:
-    - flag.mn01.pick-smithing
-    - true
-  - addCounter:
-    - counter.mn01.picked
-    - 1
+    not:
+      flag:
+      - flag.mn01.pick-smithing
+      - true
   intent: 'Okeeh. Tells: she says Smithing back and how many are left to name; at the fifth, five is plenty for a reed gang,
-    and she hears the bar lift from the hold''s door. Does: raises Smithing by five and counts it (the fifth moves the quest
-    to stage 40). Checks: nothing.'
+    and she hears the bar lift from the hold''s door. Does: sets this skill''s stage (101 to 118), whose start raises it
+    by five and counts it; the fifth count moves the quest to stage 40. Checks: nothing.'
   new: true
 - id: topic.mn01-pick-destruction
   label: Destruction.
   person: npc.mn.okeeh
   stages:
   - 37
+  - 101
+  - 102
+  - 103
+  - 104
+  - 105
+  - 106
+  - 107
+  - 108
+  - 109
+  - 110
+  - 111
+  - 112
+  - 113
+  - 114
+  - 115
+  - 116
+  - 117
+  - 118
   essential: true
   when:
-    all:
-    - not:
-        counterAtLeast:
-        - counter.mn01.picked
-        - 5
-    - not:
-        flag:
-        - flag.mn01.pick-destruction
-        - true
-  results:
-  - raiseSkill:
-    - Destruction
-    - 5
-  - setFlag:
-    - flag.mn01.pick-destruction
-    - true
-  - addCounter:
-    - counter.mn01.picked
-    - 1
+    not:
+      flag:
+      - flag.mn01.pick-destruction
+      - true
   intent: 'Okeeh. Tells: she says Destruction back and how many are left to name; at the fifth, five is plenty for a reed
-    gang, and she hears the bar lift from the hold''s door. Does: raises Destruction by five and counts it (the fifth moves
-    the quest to stage 40). Checks: nothing.'
+    gang, and she hears the bar lift from the hold''s door. Does: sets this skill''s stage (101 to 118), whose start raises
+    it by five and counts it; the fifth count moves the quest to stage 40. Checks: nothing.'
   new: true
 - id: topic.mn01-pick-alteration
   label: Alteration.
   person: npc.mn.okeeh
   stages:
   - 37
+  - 101
+  - 102
+  - 103
+  - 104
+  - 105
+  - 106
+  - 107
+  - 108
+  - 109
+  - 110
+  - 111
+  - 112
+  - 113
+  - 114
+  - 115
+  - 116
+  - 117
+  - 118
   essential: true
   when:
-    all:
-    - not:
-        counterAtLeast:
-        - counter.mn01.picked
-        - 5
-    - not:
-        flag:
-        - flag.mn01.pick-alteration
-        - true
-  results:
-  - raiseSkill:
-    - Alteration
-    - 5
-  - setFlag:
-    - flag.mn01.pick-alteration
-    - true
-  - addCounter:
-    - counter.mn01.picked
-    - 1
+    not:
+      flag:
+      - flag.mn01.pick-alteration
+      - true
   intent: 'Okeeh. Tells: she says Alteration back and how many are left to name; at the fifth, five is plenty for a reed
-    gang, and she hears the bar lift from the hold''s door. Does: raises Alteration by five and counts it (the fifth moves
-    the quest to stage 40). Checks: nothing.'
+    gang, and she hears the bar lift from the hold''s door. Does: sets this skill''s stage (101 to 118), whose start raises
+    it by five and counts it; the fifth count moves the quest to stage 40. Checks: nothing.'
   new: true
 - id: topic.mn01-pick-illusion
   label: Illusion.
   person: npc.mn.okeeh
   stages:
   - 37
+  - 101
+  - 102
+  - 103
+  - 104
+  - 105
+  - 106
+  - 107
+  - 108
+  - 109
+  - 110
+  - 111
+  - 112
+  - 113
+  - 114
+  - 115
+  - 116
+  - 117
+  - 118
   essential: true
   when:
-    all:
-    - not:
-        counterAtLeast:
-        - counter.mn01.picked
-        - 5
-    - not:
-        flag:
-        - flag.mn01.pick-illusion
-        - true
-  results:
-  - raiseSkill:
-    - Illusion
-    - 5
-  - setFlag:
-    - flag.mn01.pick-illusion
-    - true
-  - addCounter:
-    - counter.mn01.picked
-    - 1
+    not:
+      flag:
+      - flag.mn01.pick-illusion
+      - true
   intent: 'Okeeh. Tells: she says Illusion back and how many are left to name; at the fifth, five is plenty for a reed gang,
-    and she hears the bar lift from the hold''s door. Does: raises Illusion by five and counts it (the fifth moves the quest
-    to stage 40). Checks: nothing.'
+    and she hears the bar lift from the hold''s door. Does: sets this skill''s stage (101 to 118), whose start raises it
+    by five and counts it; the fifth count moves the quest to stage 40. Checks: nothing.'
   new: true
 - id: topic.mn01-pick-conjuration
   label: Conjuration.
   person: npc.mn.okeeh
   stages:
   - 37
+  - 101
+  - 102
+  - 103
+  - 104
+  - 105
+  - 106
+  - 107
+  - 108
+  - 109
+  - 110
+  - 111
+  - 112
+  - 113
+  - 114
+  - 115
+  - 116
+  - 117
+  - 118
   essential: true
   when:
-    all:
-    - not:
-        counterAtLeast:
-        - counter.mn01.picked
-        - 5
-    - not:
-        flag:
-        - flag.mn01.pick-conjuration
-        - true
-  results:
-  - raiseSkill:
-    - Conjuration
-    - 5
-  - setFlag:
-    - flag.mn01.pick-conjuration
-    - true
-  - addCounter:
-    - counter.mn01.picked
-    - 1
+    not:
+      flag:
+      - flag.mn01.pick-conjuration
+      - true
   intent: 'Okeeh. Tells: she says Conjuration back and how many are left to name; at the fifth, five is plenty for a reed
-    gang, and she hears the bar lift from the hold''s door. Does: raises Conjuration by five and counts it (the fifth moves
-    the quest to stage 40). Checks: nothing.'
+    gang, and she hears the bar lift from the hold''s door. Does: sets this skill''s stage (101 to 118), whose start raises
+    it by five and counts it; the fifth count moves the quest to stage 40. Checks: nothing.'
   new: true
 - id: topic.mn01-pick-restoration
   label: Restoration.
   person: npc.mn.okeeh
   stages:
   - 37
+  - 101
+  - 102
+  - 103
+  - 104
+  - 105
+  - 106
+  - 107
+  - 108
+  - 109
+  - 110
+  - 111
+  - 112
+  - 113
+  - 114
+  - 115
+  - 116
+  - 117
+  - 118
   essential: true
   when:
-    all:
-    - not:
-        counterAtLeast:
-        - counter.mn01.picked
-        - 5
-    - not:
-        flag:
-        - flag.mn01.pick-restoration
-        - true
-  results:
-  - raiseSkill:
-    - Restoration
-    - 5
-  - setFlag:
-    - flag.mn01.pick-restoration
-    - true
-  - addCounter:
-    - counter.mn01.picked
-    - 1
+    not:
+      flag:
+      - flag.mn01.pick-restoration
+      - true
   intent: 'Okeeh. Tells: she says Restoration back and how many are left to name; at the fifth, five is plenty for a reed
-    gang, and she hears the bar lift from the hold''s door. Does: raises Restoration by five and counts it (the fifth moves
-    the quest to stage 40). Checks: nothing.'
+    gang, and she hears the bar lift from the hold''s door. Does: sets this skill''s stage (101 to 118), whose start raises
+    it by five and counts it; the fifth count moves the quest to stage 40. Checks: nothing.'
   new: true
 - id: topic.mn01-pick-enchanting
   label: Enchanting.
   person: npc.mn.okeeh
   stages:
   - 37
+  - 101
+  - 102
+  - 103
+  - 104
+  - 105
+  - 106
+  - 107
+  - 108
+  - 109
+  - 110
+  - 111
+  - 112
+  - 113
+  - 114
+  - 115
+  - 116
+  - 117
+  - 118
   essential: true
   when:
-    all:
-    - not:
-        counterAtLeast:
-        - counter.mn01.picked
-        - 5
-    - not:
-        flag:
-        - flag.mn01.pick-enchanting
-        - true
-  results:
-  - raiseSkill:
-    - Enchanting
-    - 5
-  - setFlag:
-    - flag.mn01.pick-enchanting
-    - true
-  - addCounter:
-    - counter.mn01.picked
-    - 1
+    not:
+      flag:
+      - flag.mn01.pick-enchanting
+      - true
   intent: 'Okeeh. Tells: she says Enchanting back and how many are left to name; at the fifth, five is plenty for a reed
-    gang, and she hears the bar lift from the hold''s door. Does: raises Enchanting by five and counts it (the fifth moves
-    the quest to stage 40). Checks: nothing.'
+    gang, and she hears the bar lift from the hold''s door. Does: sets this skill''s stage (101 to 118), whose start raises
+    it by five and counts it; the fifth count moves the quest to stage 40. Checks: nothing.'
   new: true
 - id: topic.mn01-pick-alchemy
   label: Alchemy.
   person: npc.mn.okeeh
   stages:
   - 37
+  - 101
+  - 102
+  - 103
+  - 104
+  - 105
+  - 106
+  - 107
+  - 108
+  - 109
+  - 110
+  - 111
+  - 112
+  - 113
+  - 114
+  - 115
+  - 116
+  - 117
+  - 118
   essential: true
   when:
-    all:
-    - not:
-        counterAtLeast:
-        - counter.mn01.picked
-        - 5
-    - not:
-        flag:
-        - flag.mn01.pick-alchemy
-        - true
-  results:
-  - raiseSkill:
-    - Alchemy
-    - 5
-  - setFlag:
-    - flag.mn01.pick-alchemy
-    - true
-  - addCounter:
-    - counter.mn01.picked
-    - 1
+    not:
+      flag:
+      - flag.mn01.pick-alchemy
+      - true
   intent: 'Okeeh. Tells: she says Alchemy back and how many are left to name; at the fifth, five is plenty for a reed gang,
-    and she hears the bar lift from the hold''s door. Does: raises Alchemy by five and counts it (the fifth moves the quest
-    to stage 40). Checks: nothing.'
+    and she hears the bar lift from the hold''s door. Does: sets this skill''s stage (101 to 118), whose start raises it
+    by five and counts it; the fifth count moves the quest to stage 40. Checks: nothing.'
   new: true
 - id: topic.mn01-pick-sneak
   label: Sneak.
   person: npc.mn.okeeh
   stages:
   - 37
+  - 101
+  - 102
+  - 103
+  - 104
+  - 105
+  - 106
+  - 107
+  - 108
+  - 109
+  - 110
+  - 111
+  - 112
+  - 113
+  - 114
+  - 115
+  - 116
+  - 117
+  - 118
   essential: true
   when:
-    all:
-    - not:
-        counterAtLeast:
-        - counter.mn01.picked
-        - 5
-    - not:
-        flag:
-        - flag.mn01.pick-sneak
-        - true
-  results:
-  - raiseSkill:
-    - Sneak
-    - 5
-  - setFlag:
-    - flag.mn01.pick-sneak
-    - true
-  - addCounter:
-    - counter.mn01.picked
-    - 1
+    not:
+      flag:
+      - flag.mn01.pick-sneak
+      - true
   intent: 'Okeeh. Tells: she says Sneak back and how many are left to name; at the fifth, five is plenty for a reed gang,
-    and she hears the bar lift from the hold''s door. Does: raises Sneak by five and counts it (the fifth moves the quest
-    to stage 40). Checks: nothing.'
+    and she hears the bar lift from the hold''s door. Does: sets this skill''s stage (101 to 118), whose start raises it
+    by five and counts it; the fifth count moves the quest to stage 40. Checks: nothing.'
   new: true
 - id: topic.mn01-pick-lockpicking
   label: Lockpicking.
   person: npc.mn.okeeh
   stages:
   - 37
+  - 101
+  - 102
+  - 103
+  - 104
+  - 105
+  - 106
+  - 107
+  - 108
+  - 109
+  - 110
+  - 111
+  - 112
+  - 113
+  - 114
+  - 115
+  - 116
+  - 117
+  - 118
   essential: true
   when:
-    all:
-    - not:
-        counterAtLeast:
-        - counter.mn01.picked
-        - 5
-    - not:
-        flag:
-        - flag.mn01.pick-lockpicking
-        - true
-  results:
-  - raiseSkill:
-    - Lockpicking
-    - 5
-  - setFlag:
-    - flag.mn01.pick-lockpicking
-    - true
-  - addCounter:
-    - counter.mn01.picked
-    - 1
+    not:
+      flag:
+      - flag.mn01.pick-lockpicking
+      - true
   intent: 'Okeeh. Tells: she says Lockpicking back and how many are left to name; at the fifth, five is plenty for a reed
-    gang, and she hears the bar lift from the hold''s door. Does: raises Lockpicking by five and counts it (the fifth moves
-    the quest to stage 40). Checks: nothing.'
+    gang, and she hears the bar lift from the hold''s door. Does: sets this skill''s stage (101 to 118), whose start raises
+    it by five and counts it; the fifth count moves the quest to stage 40. Checks: nothing.'
   new: true
 - id: topic.mn01-pick-pickpocket
   label: Pickpocket.
   person: npc.mn.okeeh
   stages:
   - 37
+  - 101
+  - 102
+  - 103
+  - 104
+  - 105
+  - 106
+  - 107
+  - 108
+  - 109
+  - 110
+  - 111
+  - 112
+  - 113
+  - 114
+  - 115
+  - 116
+  - 117
+  - 118
   essential: true
   when:
-    all:
-    - not:
-        counterAtLeast:
-        - counter.mn01.picked
-        - 5
-    - not:
-        flag:
-        - flag.mn01.pick-pickpocket
-        - true
-  results:
-  - raiseSkill:
-    - Pickpocket
-    - 5
-  - setFlag:
-    - flag.mn01.pick-pickpocket
-    - true
-  - addCounter:
-    - counter.mn01.picked
-    - 1
+    not:
+      flag:
+      - flag.mn01.pick-pickpocket
+      - true
   intent: 'Okeeh. Tells: she says Pickpocket back and how many are left to name; at the fifth, five is plenty for a reed
-    gang, and she hears the bar lift from the hold''s door. Does: raises Pickpocket by five and counts it (the fifth moves
-    the quest to stage 40). Checks: nothing.'
+    gang, and she hears the bar lift from the hold''s door. Does: sets this skill''s stage (101 to 118), whose start raises
+    it by five and counts it; the fifth count moves the quest to stage 40. Checks: nothing.'
   new: true
 - id: topic.mn01-pick-speech
   label: Speech.
   person: npc.mn.okeeh
   stages:
   - 37
+  - 101
+  - 102
+  - 103
+  - 104
+  - 105
+  - 106
+  - 107
+  - 108
+  - 109
+  - 110
+  - 111
+  - 112
+  - 113
+  - 114
+  - 115
+  - 116
+  - 117
+  - 118
   essential: true
   when:
-    all:
-    - not:
-        counterAtLeast:
-        - counter.mn01.picked
-        - 5
-    - not:
-        flag:
-        - flag.mn01.pick-speech
-        - true
-  results:
-  - raiseSkill:
-    - Speechcraft
-    - 5
-  - setFlag:
-    - flag.mn01.pick-speech
-    - true
-  - addCounter:
-    - counter.mn01.picked
-    - 1
+    not:
+      flag:
+      - flag.mn01.pick-speech
+      - true
   intent: 'Okeeh. Tells: she says Speech back and how many are left to name; at the fifth, five is plenty for a reed gang,
-    and she hears the bar lift from the hold''s door. Does: raises Speech by five and counts it (the fifth moves the quest
-    to stage 40). Checks: nothing.'
+    and she hears the bar lift from the hold''s door. Does: sets this skill''s stage (101 to 118), whose start raises it
+    by five and counts it; the fifth count moves the quest to stage 40. Checks: nothing.'
   new: true
 - id: topic.mn-owing
   label: What is the Owing?
