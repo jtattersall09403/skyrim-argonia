@@ -75,7 +75,7 @@ truth:
     while his men are needed on the walls.
 - id: t4
   when: always
-  who: [npc.mn.chalkmoth-gaoler]
+  who: [npc.mn.tsleel-vaku]
   where: the guardroom
   what: A gaoler of the Toh-Reel-Ka stands before the inner door and turns everyone away, the order's own people too.
     He carries no key.
@@ -104,8 +104,8 @@ cast:
   persona: invented. Theyne Indarys, Dunmer quartermaster and smith (place record), keeps the store and asks nothing
   wants: his store left alone
   knowledge: {fact.mn12.stair-in-store: knows, fact.mn12.jal-veesa-sap: knows}
-- id: npc.mn.chalkmoth-gaoler
-  persona: invented. Weeltul, gaoler of the Toh-Reel-Ka, Argonian, tired and careful
+- id: npc.mn.tsleel-vaku
+  persona: invented. Tsleel-Vaku, gaoler of the Toh-Reel-Ka, Argonian, tired and careful
   wants: his door kept shut and no trouble
   fears: Never-Writes-Twice
   knowledge: {fact.mn12.closed: knows, fact.mn12.they-dream: 'hides: says it only to someone he will not refuse'}
@@ -129,7 +129,7 @@ placements:
 - {ref: npc.mn.chalkmoth-quartermaster, kind: person, name: Theyne Indarys, base: {kind: template_person, id: invented},
   enabled: true, anchor: {place: fort-chalkmoth, rule: navmesh, need: 'the keep''s hall, at his counter beside the store
       door'}}
-- {ref: npc.mn.chalkmoth-gaoler, kind: person, name: Weeltul, base: {kind: template_person, id: invented}, enabled: true,
+- {ref: npc.mn.tsleel-vaku, kind: person, name: Tsleel-Vaku, base: {kind: template_person, id: invented}, enabled: true,
   anchor: {place: fort-chalkmoth, rule: navmesh, need: 'the guardroom at the foot of the stair, a step from the trapdoor''s
       ladder and the stair''s foot, before the inner door'}}
 - {ref: npc.mn.sarpa-raider-1, kind: person, name: Sarpa Raider, level: 20, hostile: true, base: {kind: template_person,
@@ -166,7 +166,7 @@ conclusions:
   clues: [k1, k2, k3, k4]
 clues:
 - {id: k1, form: thing, carrier: thing.mn12.sap-jar, gives: [fact.mn12.jal-veesa-sap], supports: [c1]}
-- {id: k2, form: line, carrier: npc.mn.chalkmoth-gaoler, gives: [fact.mn12.closed, fact.mn12.they-dream], supports: [c1]}
+- {id: k2, form: line, carrier: npc.mn.tsleel-vaku, gives: [fact.mn12.closed, fact.mn12.they-dream], supports: [c1]}
 - {id: k3, form: place, carrier: door.mn12.inner, gives: [fact.mn12.moaning], supports: [c1]}
 - {id: k4, form: line, carrier: npc.mn.chalkmoth-quartermaster, gives: [fact.mn12.jal-veesa-sap], supports: [c1]}
 shapeData:
@@ -285,9 +285,9 @@ stages:
   - id: gaoler20
     text: text.objective.mn12.gaoler20
     objectiveText: Speak to the gaoler at the foot of the cellar stair.
-    target: npc.mn.chalkmoth-gaoler
+    target: npc.mn.tsleel-vaku
     completeWhen:
-      topicHeardFrom: [topic.mn12-gaoler-closed, npc.mn.chalkmoth-gaoler]
+      topicHeardFrom: [topic.mn12-gaoler-closed, npc.mn.tsleel-vaku]
   - id: door20
     text: text.objective.mn12.door20
     objectiveText: Try the cellar door.
@@ -299,14 +299,14 @@ stages:
       all:
       - {flag: flag.mn12.door-tried}
       - hasItem: [thing.mn12.sap-jar, 1]
-      - topicHeardFrom: [topic.mn12-gaoler-closed, npc.mn.chalkmoth-gaoler]
+      - topicHeardFrom: [topic.mn12-gaoler-closed, npc.mn.tsleel-vaku]
       - not: {questStage: [quest.main.mn13, ≥, 90]}
   - to: 91
     when:
       all:
       - {flag: flag.mn12.door-tried}
       - hasItem: [thing.mn12.sap-jar, 1]
-      - topicHeardFrom: [topic.mn12-gaoler-closed, npc.mn.chalkmoth-gaoler]
+      - topicHeardFrom: [topic.mn12-gaoler-closed, npc.mn.tsleel-vaku]
       - questStage: [quest.main.mn13, ≥, 90]
   failForward:
   - to: 95
@@ -315,8 +315,8 @@ stages:
   actions:
   - {skill: Lockpicking, use: pick-a-lock, target: door.mn12.store, note: Adept}
   - {skill: Pickpocket, use: pickpocket, target: npc.mn.chalkmoth-quartermaster, note: the store's key}
-  - {skill: Speech, use: persuade, target: npc.mn.chalkmoth-gaoler, note: 'optional: Speech 50 gets his slip'}
-  - {skill: Illusion, use: cast-as-test, target: npc.mn.chalkmoth-gaoler, note: 'optional: an Illusion spell cast before
+  - {skill: Speech, use: persuade, target: npc.mn.tsleel-vaku, note: 'optional: Speech 50 gets his slip'}
+  - {skill: Illusion, use: cast-as-test, target: npc.mn.tsleel-vaku, note: 'optional: an Illusion spell cast before
       him gets his slip'}
   learns: [fact.mn12.stair-in-store]
   information:
@@ -327,7 +327,7 @@ stages:
     carriers:
     - {know: the store holds the stair, by: [journal, 'name:door.mn12.store', 'line:topic.mn12-captain-paid']}
     - {know: lock or key, by: [journal, 'marker:door.mn12.store', 'marker:npc.mn.chalkmoth-quartermaster']}
-    - {know: the three things to do, by: [objective, 'marker:thing.mn12.sap-jar', 'marker:npc.mn.chalkmoth-gaoler', 'marker:door.mn12.inner']}
+    - {know: the three things to do, by: [objective, 'marker:thing.mn12.sap-jar', 'marker:npc.mn.tsleel-vaku', 'marker:door.mn12.inner']}
     - {know: a seen theft brings the garrison down, by: ['line:topic.mn12-captain-paid']}
 - id: 25
   place: fort-chalkmoth
@@ -345,9 +345,9 @@ stages:
   - id: gaoler25
     text: text.objective.mn12.gaoler25
     objectiveText: Speak to the gaoler at the foot of the cellar stair.
-    target: npc.mn.chalkmoth-gaoler
+    target: npc.mn.tsleel-vaku
     completeWhen:
-      topicHeardFrom: [topic.mn12-gaoler-closed, npc.mn.chalkmoth-gaoler]
+      topicHeardFrom: [topic.mn12-gaoler-closed, npc.mn.tsleel-vaku]
   - id: door25
     text: text.objective.mn12.door25
     objectiveText: Try the cellar door.
@@ -359,14 +359,14 @@ stages:
       all:
       - {flag: flag.mn12.door-tried}
       - hasItem: [thing.mn12.sap-jar, 1]
-      - topicHeardFrom: [topic.mn12-gaoler-closed, npc.mn.chalkmoth-gaoler]
+      - topicHeardFrom: [topic.mn12-gaoler-closed, npc.mn.tsleel-vaku]
       - not: {questStage: [quest.main.mn13, ≥, 90]}
   - to: 91
     when:
       all:
       - {flag: flag.mn12.door-tried}
       - hasItem: [thing.mn12.sap-jar, 1]
-      - topicHeardFrom: [topic.mn12-gaoler-closed, npc.mn.chalkmoth-gaoler]
+      - topicHeardFrom: [topic.mn12-gaoler-closed, npc.mn.tsleel-vaku]
       - questStage: [quest.main.mn13, ≥, 90]
   failForward:
   - to: 95
@@ -374,17 +374,17 @@ stages:
       not: {npcAlive: npc.mn.never-writes-twice}
   actions:
   - {skill: Sneak, use: pass-unseen, target: the garrison, note: seen inside without leave, the garrison attacks}
-  - {skill: Speech, use: persuade, target: npc.mn.chalkmoth-gaoler, note: 'optional: Speech 50'}
-  - {skill: Illusion, use: cast-as-test, target: npc.mn.chalkmoth-gaoler, note: optional}
+  - {skill: Speech, use: persuade, target: npc.mn.tsleel-vaku, note: 'optional: Speech 50'}
+  - {skill: Illusion, use: cast-as-test, target: npc.mn.tsleel-vaku, note: optional}
   information:
     going: I am inside unseen, in the guardroom below the keep. Being seen means a fight with the garrison.
     next: 'Three things, in any order: look in the store at the top of the stair, speak to the gaoler, try the cellar door.'
     ways: Stay unseen; persuade the gaoler or test him with Illusion for more (optional).
     carriers:
     - {know: the garrison attacks if it sees me, by: [journal]}
-    - {know: the three things, by: [journal, objective, 'marker:thing.mn12.sap-jar', 'marker:npc.mn.chalkmoth-gaoler',
+    - {know: the three things, by: [journal, objective, 'marker:thing.mn12.sap-jar', 'marker:npc.mn.tsleel-vaku',
         'marker:door.mn12.inner']}
-    - {know: the gaoler will talk, by: ['line:topic.mn12-gaoler-closed', 'marker:npc.mn.chalkmoth-gaoler']}
+    - {know: the gaoler will talk, by: ['line:topic.mn12-gaoler-closed', 'marker:npc.mn.tsleel-vaku']}
 - id: 90
   place: fort-chalkmoth
   journal: text.journal.mn12.90
@@ -401,7 +401,7 @@ stages:
     ways: One way on.
     carriers:
     - {know: what I found and the open question, by: [journal]}
-    - {know: back to Bell Station, by: [journal, 'marker:npc.mn.bell-steward']}
+    - {know: back to Bell Station, by: [journal, 'marker:npc.mn.meer-tasi']}
 - id: 91
   place: fort-chalkmoth
   journal: text.journal.mn12.91
@@ -514,21 +514,21 @@ topics:
   new: true
 - id: topic.mn12-gaoler-closed
   label: (the gaoler speaks first) The cellar is closed.
-  person: npc.mn.chalkmoth-gaoler
+  person: npc.mn.tsleel-vaku
   kind: speaks-first
   stages: [20, 25]
   essential: true
-  intent: 'Weeltul, gaoler of the Toh-Reel-Ka, before the inner door. Tells: the cellar is closed to the player, Toh-Wo
+  intent: 'Tsleel-Vaku, gaoler of the Toh-Reel-Ka, before the inner door. Tells: the cellar is closed to the player, Toh-Wo
     or not; nobody goes through this door; he carries no key; Never-Writes-Twice keeps it; go back up. Checks: nothing.
     Does: nothing (the objective completes).'
   uses: [fact.mn12.closed]
   new: true
 - id: topic.mn12-gaoler-persuade
   label: (Persuade) I have come a long way. Tell me what is down there.
-  person: npc.mn.chalkmoth-gaoler
+  person: npc.mn.tsleel-vaku
   stages: [20, 25]
   essential: false
-  intent: 'Weeltul. Checks: skillAtLeast [Speech, 50]. Tells, if it holds: "They sleep, and they dream. That is all they
+  intent: 'Tsleel-Vaku. Checks: skillAtLeast [Speech, 50]. Tells, if it holds: "They sleep, and they dream. That is all they
     do down there." Then nothing more. Does: setFlag flag.mn12.slip. Fallback when it fails: he has said what he will
     say; a stronger voice, or a better trick, might move him.'
   fallback: He has said all he will say; a stronger voice, or a better trick, might move him.
@@ -536,12 +536,12 @@ topics:
   new: true
 - id: topic.mn12-gaoler-test
   label: (Illusion) Watch, then. You will not refuse me.
-  person: npc.mn.chalkmoth-gaoler
+  person: npc.mn.tsleel-vaku
   stages: [20, 25]
   essential: false
   when:
-    spellCastNear: [Illusion, npc.mn.chalkmoth-gaoler]
-  intent: 'Weeltul, after the player casts an Illusion spell before him (the block "a spell cast in front of a person
+    spellCastNear: [Illusion, npc.mn.tsleel-vaku]
+  intent: 'Tsleel-Vaku, after the player casts an Illusion spell before him (the block "a spell cast in front of a person
     as a test"; stand-in skillAtLeast [Illusion, 25] until proven). Tells: "They sleep, and they dream. That is all they
     do down there." Does: setFlag flag.mn12.slip. Fallback: the spell did not take; he is not moved.'
   fallback: The spell did not take; he is not moved.
@@ -549,10 +549,10 @@ topics:
   new: true
 - id: topic.mn12-gaoler-who
   label: Who are you?
-  person: npc.mn.chalkmoth-gaoler
+  person: npc.mn.tsleel-vaku
   stages: [20, 25, 90, 91]
   essential: false
-  intent: 'Weeltul. Tells: a gaoler of the Toh-Reel-Ka, set on this door; the order''s business is the order''s. Checks:
+  intent: 'Tsleel-Vaku. Tells: a gaoler of the Toh-Reel-Ka, set on this door; the order''s business is the order''s. Checks:
     nothing. Does: nothing.'
   uses: [fact.mn12.closed]
   new: true
@@ -566,7 +566,7 @@ review:
   - {id: L3, severity: lore, ids: [placements], finding: 'The keep, the prison, the Adept lock, the passage door as trapdoor.',
     answer: 'sourced: place_card fort-chalkmoth (Fort Neugrad''s two interiors); main-plot.md §5 quest 12 (Checked)'}
   - {id: L4, severity: lore, ids: [cast], finding: 'Names filled: Sakeeus-Wan (wall captain), Theyne Indarys (quartermaster),
-      Weeltul (gaoler); the keep key, the store key, the jar''s name.', answer: 'gap: unnamed in the plot; checked against
+      Tsleel-Vaku (gaoler); the keep key, the store key, the jar''s name.', answer: 'gap: unnamed in the plot; checked against
       86-never-reuse-names.md and story/data (no hit)'}
   - {id: L5, severity: lore, ids: [topics.topic.mn12-gaoler-closed], finding: 'Two speak-first people in the plot; the
       ceiling allows one: the gaoler speaks first, the captain carries a marker and the objective.', answer: 'changed:

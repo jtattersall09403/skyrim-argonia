@@ -71,7 +71,7 @@ truth:
     of Gemin, one in the deepest hall of Vorannuhl. The priest''s ghost stands before the gate and knows where each lies.'
 - id: t3
   when: for years
-  who: [npc.mn.bell-steward, npc.mn.bell-diver]
+  who: [npc.mn.meer-tasi, npc.mn.bell-diver]
   where: Bell Station
   what: The station's divers have stripped Teku-Sul's upper floors and know its great gate, which they have never forced.
     They know the marker stone's cut tower by its shape.
@@ -96,8 +96,8 @@ facts:
     hall of Vorannuhl.', from: t2}
 - {id: fact.mn13.orders, claim: Never-Writes-Twice's orders are to take all three stones before the Unbound do., from: t4}
 cast:
-- id: npc.mn.bell-steward
-  persona: invented. Ah-Meesei, steward of Bell Station, Argonian of the Archein line (place record); weighs every find
+- id: npc.mn.meer-tasi
+  persona: invented. Meer-Tasi, steward of Bell Station, Argonian of the Archein line (place record); weighs every find
     and sells potions of waterbreathing; brisk, proud of her divers
   wants: the council's share and her divers alive
   knowledge: {fact.mn13.teku-sul: knows, fact.mn13.dive: knows}
@@ -129,7 +129,7 @@ things:
 placements:
 - {ref: marker.mn13.bell-station, kind: marker, anchor: {place: bell-station, rule: surface, need: the plank landing with
       the ship's bell on its post}}
-- {ref: npc.mn.bell-steward, kind: person, name: Ah-Meesei, base: {kind: template_person, id: invented}, enabled: true,
+- {ref: npc.mn.meer-tasi, kind: person, name: Meer-Tasi, base: {kind: template_person, id: invented}, enabled: true,
   anchor: {place: bell-station, rule: navmesh, need: 'the steward''s counter by the landing'}}
 - {ref: npc.mn.bell-diver, kind: person, name: Sees-Below, base: {kind: template_person, id: invented}, enabled: true, anchor: {
     place: bell-station, rule: navmesh, need: by the racks of diving gear}}
@@ -185,13 +185,13 @@ stages:
   - id: steward
     text: text.objective.mn13.steward
     objectiveText: Ask the steward of Bell Station which tower the marker stone shows.
-    target: npc.mn.bell-steward, npc.mn.bell-diver
+    target: npc.mn.meer-tasi, npc.mn.bell-diver
     completeWhen:
       questStage: [quest.main.mn13, ≥, 20]
   successors:
   - to: 20
     when:
-      topicHeardFrom: [topic.mn13-which-tower, npc.mn.bell-steward]
+      topicHeardFrom: [topic.mn13-which-tower, npc.mn.meer-tasi]
   - to: 20
     when:
       topicHeardFrom: [topic.mn13-diver-tower, npc.mn.bell-diver]
@@ -209,11 +209,11 @@ stages:
     carriers:
     - {know: hunt vs own errand, both open, by: [journal]}
     - {know: where Bell Station is, by: [journal, 'marker:marker.mn13.bell-station']}
-    - {know: ask the steward, by: [objective, 'marker:npc.mn.bell-steward', 'name:npc.mn.bell-steward']}
+    - {know: ask the steward, by: [objective, 'marker:npc.mn.meer-tasi', 'name:npc.mn.meer-tasi']}
 - id: 20
   place: sunken-ruin-23-m112
   journal: text.journal.mn13.20
-  journalText: 'The steward, Ah-Meesei, knew the cut tower at once: Teku-Sul Spire, the drowned tower nearest Lilmoth,
+  journalText: 'The steward, Meer-Tasi, knew the cut tower at once: Teku-Sul Spire, the drowned tower nearest Lilmoth,
     whose great gate her divers have never forced. The dive is long. I need a Hist''s blessing, a spell or potion of waterbreathing
     (she sells them) or an enchantment, unless I am Argonian; inside the tower there is air. I''m to dive to Teku-Sul
     and find the great gate. The drowned priests'' attendants walk its east halls; I may fight them or slip past.'
@@ -388,10 +388,10 @@ terms:
 topics:
 - id: topic.mn13-which-tower
   label: Which tower does this stone show? (the seven towers in the sea)
-  person: npc.mn.bell-steward
+  person: npc.mn.meer-tasi
   stages: [10]
   essential: true
-  intent: 'Ah-Meesei, steward of Bell Station. Tells: she knows the cut tower at once: Teku-Sul Spire, the drowned tower
+  intent: 'Meer-Tasi, steward of Bell Station. Tells: she knows the cut tower at once: Teku-Sul Spire, the drowned tower
     nearest Lilmoth, west of the station on the sea floor; her divers stripped its upper floors long ago; past its east
     halls stands a great gate with three empty sockets that nobody has forced, and divers say a priest''s ghost stands
     before it; the dive is long and drowns the careless: take a Hist''s blessing, a spell or potion of waterbreathing
@@ -405,7 +405,7 @@ topics:
   stages: [10]
   essential: true
   when:
-    not: {npcAlive: npc.mn.bell-steward}
+    not: {npcAlive: npc.mn.meer-tasi}
   intent: 'Sees-Below, head diver, only while the steward is dead. Tells: the same as the steward: Teku-Sul, the nearest
     drowned tower, its sealed gate, the long dive and what keeps a diver breathing; the potions are in the steward''s
     chest now. Checks: nothing. Does: sets stage 20.'
@@ -413,28 +413,28 @@ topics:
   new: true
 - id: topic.mn13-buy-potion
   label: I'll buy potions of waterbreathing.
-  person: npc.mn.bell-steward
+  person: npc.mn.meer-tasi
   stages: [10, 20, 30, 90, 91]
   essential: false
-  intent: 'Ah-Meesei. Tells: she opens her stock; a potion of waterbreathing lasts long enough for the dive down if the
+  intent: 'Meer-Tasi. Tells: she opens her stock; a potion of waterbreathing lasts long enough for the dive down if the
     diver does not dawdle; take two. Checks: nothing. Does: opens her trade.'
   uses: [fact.mn13.dive]
   new: true
 - id: topic.mn13-steward-who
   label: Who are you?
-  person: npc.mn.bell-steward
+  person: npc.mn.meer-tasi
   stages: [10, 20, 30, 90, 91]
   essential: false
-  intent: 'Ah-Meesei. Tells: steward of Bell Station for Lilmoth''s merchant council; her crew dive the drowned spires
+  intent: 'Meer-Tasi. Tells: steward of Bell Station for Lilmoth''s merchant council; her crew dive the drowned spires
     and she weighs every find and sets aside the council''s share. Checks: nothing. Does: nothing.'
   uses: [fact.mn13.teku-sul]
   new: true
 - id: topic.mn13-teku-sul
   label: Tell me about Teku-Sul.
-  person: npc.mn.bell-steward
+  person: npc.mn.meer-tasi
   stages: [20, 30, 90, 91]
   essential: false
-  intent: 'Ah-Meesei. Tells: the spires stand on the sea floor of Benthic Yobesh, towers of the land that sank before
+  intent: 'Meer-Tasi. Tells: the spires stand on the sea floor of Benthic Yobesh, towers of the land that sank before
     the kings fell; Teku-Sul is the nearest to Lilmoth; the drowned priests'' attendants still walk its east halls and
     strike at divers, a great mudcrab keeps one gallery, and her divers pray before they go in. Checks: nothing. Does: nothing.'
   uses: [fact.mn13.teku-sul]
@@ -509,7 +509,7 @@ review:
   - {id: L2, severity: lore, ids: [truth.t3], finding: Bell Station's divers and its steward who sells waterbreathing.,
     answer: 'sourced: place record bell-station'}
   - {id: L3, severity: lore, ids: [stages.90], finding: Reel-Ka's rewards., answer: 'sourced: main-plot.md §5 rank table'}
-  - {id: L4, severity: lore, ids: [cast], finding: 'Names filled: Ah-Meesei (steward), Sees-Below (head diver), the Ghost
+  - {id: L4, severity: lore, ids: [cast], finding: 'Names filled: Meer-Tasi (steward), Sees-Below (head diver), the Ghost
       of Sul-Xeeth, Drowned Attendant, Kings'' Gate, Reel-Ka Cuirass and Helm.', answer: 'gap: unnamed in the plot; checked
       against 86-never-reuse-names.md and story/data (no hit)'}
   - {id: L5, severity: lore, ids: [placements.npc.mn.priest-ghost], finding: 'The ghost must not die before he speaks;
