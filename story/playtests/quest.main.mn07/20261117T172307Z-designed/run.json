@@ -1,0 +1,73 @@
+{
+ "quest": "quest.main.mn07",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn07.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "fight",
+ "choose": null,
+ "know": "story/playtests/quest.main.mn06/20261117T172027Z-designed/notes.md",
+ "created": "20261117T172307Z",
+ "stages": [
+  10,
+  20,
+  90
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn04.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn05.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn06.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 3,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I am Tarin, a thief of the Toh-Reel-Ka in Nesh-Deeka house. Nesh-Deeka sent me to the wreck of the Pale Harvest in Hatandros Bight to open the captain strongbox; it is a trail to the Eye of Argonia, a jewel that can heal the trees, at the Root. The Unbound are after it too. 2. Get into the hold of the Pale Harvest, and open the captain strongbox. Ysan Jetty is the way out/in. 3. Fight the drowned crew and take the captain key, or sneak past and pick the strongbox lock. 4. I do not understand the Root, seal paste, Cuts-the-Old-Knot, Xeech-Leel or Umbriel yet; I could ask Nesh-Deeka or find clues in the wreck.",
+  "go door to The Pale Harvest",
+  "use Door to The Pale Harvest",
+  "fight Drowned Sailor win",
+  "fight Drowned Captain win",
+  "take Pale Harvest Strongbox Key",
+  "use Captain's Strongbox",
+  "take Kothringi Keystone",
+  "answer 1. I killed the drowned sailor and captain, took the key, and found a Kothringi Keystone in the strongbox. It is part of the trail to the Eye of Argonia. 2. Bring the keystone to Nesh-Deeka in Helstrom. 3. Go straight to her; I could also keep it or look around the wreck, but the journal says deliver it. 4. I do not know what Kothringi means here or what the keystone opens; Nesh-Deeka may tell me.",
+  "go Nesh-Deeka",
+  "talk Nesh-Deeka",
+  "say 1",
+  "answer 1. I delivered the Kothringi keystone to Nesh-Deeka, who was paid me 100 gold. The Kothringi were a silver-skinned marsh people killed by the Knahaten Flu. The keystone is a step toward the Eye of Argonia at the Root. The Unbound have not found the wreck. 2. Quest is complete; the next lead is the Chime-Keepers of Toklea in the Tulmek Washes, whose elder may read the keystone. 3. Go to Toklea, ask Nesh-Deeka more (Chime-Keepers topic), or ask about the Unbound and how she knows things. 4. Still unknown: seal paste, Cuts-the-Old-Knot, Xeech-Leel, Umbriel, and how Nesh-Deeka knows what the Unbound do (\"we listen\"). I could ask her or the Chime-Keepers.",
+  "answer I am Tarin, thief of Nesh-Deeka house in Helstrom. I finished the Pale Harvest: killed the drowned sailor and captain at the wreck, took the strongbox key and opened the strongbox, and got a Kothringi Keystone. I gave my find to Nesh-Deeka, who was paid me 100 gold (I should have about 550). She did not know the carving but said it is Kothringi; the Kothringi were silver-skinned marsh people who died of the Knahaten Flu. The Chime-Keepers of Toklea, a town on the river fork in the Tulmek Washes, keep Kothringi lore and their elder should know it. The Eye of Argonia is the kings jewel that can heal every tree, at the Root under the sea. The Unbound lost the trail at Gideon and have not been to the wreck; Nesh-Deeka says \"we listen\" about how she knows. I still hold the Old Silver Setting and my gear. Unknown: seal paste, Cuts-the-Old-Knot, Xeech-Leel, Umbriel, the Collector Ennodius Vanin plans. Next: go to Toklea and ask the Chime-Keepers elder about the keystone."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.0633436,
+ "minutes": 0.6,
+ "turns": 16,
+ "tokens": {
+  "input_tokens": 28,
+  "output_tokens": 2741,
+  "cache_read_input_tokens": 80416,
+  "cache_creation_input_tokens": 6959
+ }
+}

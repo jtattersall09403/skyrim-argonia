@@ -260,7 +260,9 @@ stages:
   journal: text.journal.mn07.10
   journalText: Nesh-Deeka sent me to the wreck of the Pale Harvest in Hatandros Bight, a short swim out from Ysan's jetty.
     I'm to get into the hold, where the drowned crew walk, and open the captain's strongbox. I may fight them or steal past
-    and pick its lock; the captain carries its key.
+    and pick its lock; the captain carries its key. All of it is a trail to the Eye of Argonia, the old kings' jewel that
+    can heal every tree, which lies at the Root, where all the trees' roots meet under the sea; the order wants it found
+    before the Unbound reach it.
   directions: Poles-Upriver's boats run from Helstrom's landing down the rivers to Archon and on round the coast to Thorn.
     From Thorn's quay walk south along the coast to Ysan's stone jetty, then swim east past the slaughterfish to the listing
     hull; its door lets into the hold.
@@ -304,7 +306,9 @@ stages:
       target: the strongbox
       note: Adept
   information:
-    going: The silver setting named the Pale Harvest, a wreck that may hold the next clue to the Eye.
+    going: 'The silver setting named the Pale Harvest, a wreck that may hold the next clue to the Eye. The hunt''s aim:
+      find the Eye of Argonia, the old kings'' jewel that can heal every tree, at the Root, where all the trees'' roots
+      meet under the sea, before the Unbound do.'
     next: Travel by boat to Thorn, walk to Ysan's jetty, swim to the wreck and open the captain's strongbox.
     ways: Fight the drowned crew and take the captain's key, or sneak past them and pick the strongbox's Adept lock.
     carriers:
@@ -320,11 +324,16 @@ stages:
       - journal
       - marker:npc.mn07.drowned-captain
       - name:thing.mn07.strongbox
+    - know: 'the hunt''s aim: the Eye of Argonia and the Root'
+      by:
+      - journal
+      - ask:topic.mn-the-hunt
 - id: 20
   place: helstrom
   journal: text.journal.mn07.20
   journalText: In the captain's strongbox lay a keystone on a chain, carved in a style I do not know. I'm to bring it to
-    Nesh-Deeka in her house in Helstrom.
+    Nesh-Deeka in her house in Helstrom. It is all on the trail to the Eye of Argonia, the old kings' jewel that can heal
+    every tree, at the Root, where all the trees' roots meet under the sea.
   objectives:
   - id: report
     text: text.objective.mn07.report
@@ -353,7 +362,9 @@ stages:
   learns:
   - fact.mn07.keystone
   information:
-    going: I have a keystone from the wreck; I do not know what it opens.
+    going: 'I have a keystone from the wreck; I do not know what it opens. The hunt''s aim: find the Eye of Argonia, the
+      old kings'' jewel that can heal every tree, at the Root, where all the trees'' roots meet under the sea, before the
+      Unbound do.'
     next: Bring it to Nesh-Deeka in Helstrom, by boat back up the rivers.
     ways: none
     carriers:
@@ -366,13 +377,17 @@ stages:
       - journal
       - objective
       - marker:npc.mn.nesh-deeka
+    - know: 'the hunt''s aim: the Eye of Argonia and the Root'
+      by:
+      - journal
 - id: 90
   place: helstrom
   journal: text.journal.mn07.90
   journalText: Nesh-Deeka did not know the keystone, but it is of Kothringi make (the Kothringi were the silver-skinned
     people of the marsh, all dead of the Knahaten Flu long ago), and the Chime-Keepers of Toklea keep what is left of Kothringi
     lore. She already knew the Unbound had not found the wreck. Before I could ask how, she said "we listen" and talked
-    of Toklea instead. She paid me 100 gold.
+    of Toklea instead. She paid me 100 gold. It is all on the trail to the Eye of Argonia, the old kings' jewel that can
+    heal every tree, at the Root, where all the trees' roots meet under the sea.
   onEnter:
   - giveGold: 100
   learns:
@@ -381,8 +396,9 @@ stages:
   ending: complete
   endingId: e-read
   information:
-    going: The keystone is Kothringi; the Chime-Keepers of Toklea may know what it opens. Nesh-Deeka again knew where the
-      Unbound had or had not been.
+    going: 'The keystone is Kothringi; the Chime-Keepers of Toklea may know what it opens. Nesh-Deeka again knew where the
+      Unbound had or had not been. The hunt''s aim: find the Eye of Argonia, the old kings'' jewel that can heal every tree,
+      at the Root, where all the trees'' roots meet under the sea, before the Unbound do.'
     next: MN08 starts; its first entry marks Toklea.
     ways: none
     carriers:
@@ -395,6 +411,9 @@ stages:
       by:
       - journal
       - line:topic.mn07-report
+    - know: 'the hunt''s aim: the Eye of Argonia and the Root'
+      by:
+      - journal
 - id: 95
   place: helstrom
   journal: text.journal.mn07.95
@@ -450,11 +469,12 @@ topics:
     hasItem:
     - thing.mn.keystone
     - 1
-  intent: 'Nesh-Deeka. Tells: this is one more step towards the Eye of Argonia at the Root; she does not know it, but the
-    carving is Kothringi; the Chime-Keepers of Toklea, a town on the river fork in the Tulmek Washes, keep what is left
-    of Kothringi lore; their elder will know. Then she says the Unbound have not been to the wreck: they lost the trail
-    at Gideon. She sees the question coming, how she can know this, and answers it before it is asked: "We listen." She
-    turns to Toklea and pays 100 gold. Does: sets stage 90.'
+  intent: 'Nesh-Deeka. Tells: this is one more step towards the Eye of Argonia, the old kings'' jewel that can heal every
+    tree, which lies at the Root, where all the trees'' roots meet under the sea; she does not know it, but the carving
+    is Kothringi; the Chime-Keepers of Toklea, a town on the river fork in the Tulmek Washes, keep what is left of Kothringi
+    lore; their elder will know. Then she says the Unbound have not been to the wreck: they lost the trail at Gideon. She
+    sees the question coming, how she can know this, and answers it before it is asked: "We listen." She turns to Toklea
+    and pays 100 gold. Does: sets stage 90.'
   new: true
 - id: topic.mn-kothringi
   label: Who were the Kothringi?

@@ -1,0 +1,73 @@
+{
+ "quest": "quest.main.mn07",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn07.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "fight",
+ "choose": null,
+ "know": "story/playtests/quest.main.mn06/20261117T172027Z-designed/notes.md",
+ "created": "20261117T172446Z",
+ "stages": [
+  10,
+  20,
+  90
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn04.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn05.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn06.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 3,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I am Tarin, a thief of Nesh-Deeka house. The order wants the Eye of Argonia, a jewel that can heal the trees, found before the Unbound reach it. The Pale Harvest, a sunk Company freighter, is a trail to it. 2. Get into the wreck of the Pale Harvest in Hatandros Bight and open the captain's strongbox. 3. Fight the drowned crew, or sneak past and pick the strongbox lock; the Drowned Captain carries the key. 4. I do not know who Cuts-the-Old-Knot is, or what seal paste, Xeech-Leel and Umbriel are. I could ask Nesh-Deeka or look for clues in the wreck.",
+  "look",
+  "use Door to The Pale Harvest",
+  "fight Drowned Sailor win",
+  "fight Drowned Captain win",
+  "take Pale Harvest Strongbox Key",
+  "use Captain's Strongbox",
+  "take Kothringi Keystone",
+  "answer 1. I killed the drowned captain and sailor, took the key and found a Kothringi Keystone in the strongbox. It is part of the trail to the Eye of Argonia, which the order wants before the Unbound. 2. Bring the keystone to Nesh-Deeka in her house in Helstrom. 3. I can go straight there; the marker leads me. I do not see other choices. 4. I do not know what the Kothringi style or the keystone is for, or where the Root is. Nesh-Deeka may tell me.",
+  "go Nesh-Deeka",
+  "talk Nesh-Deeka",
+  "say 1",
+  "answer 1. I work for Nesh-Deeka. The keystone is Kothringi make, a step toward the Eye of Argonia at the Root. She paid me 100 gold and says the Unbound have not found the wreck; she says \"we listen\". 2. Nothing is set as an objective now; the hint is to go to Toklea in the Tulmek Washes and ask the Chime-Keepers elder about the keystone. 3. Go to Toklea, or ask Nesh-Deeka more about the Kothringi and Chime-Keepers first. 4. I do not know what the keystone opens, where the Root is, or how Nesh-Deeka listens so well. Seal paste, Cuts-the-Old-Knot, Xeech-Leel and Umbriel are still unknown.",
+  "answer I am Tarin, thief of Nesh-Deeka house in Helstrom. I killed the drowned captain and sailor at the Pale Harvest wreck, took the key and got the Kothringi Keystone, and Nesh-Deeka paid 100 gold (about 550 total). I still have the keystone, Old Silver Setting, lockpick, Voh-Vastei armour. Nesh-Deeka says the carving is Kothringi (the silver-skinned people, dead of the Knahaten Flu) and sends me to the Chime-Keepers elder at Toklea, in the Tulmek Washes on the river fork. The Unbound lost the trail at Gideon and have not found the wreck; Nesh-Deeka knows it because \"we listen\". The Eye of Argonia heals every tree and lies at the Root under the sea. Unknown: seal paste, Cuts-the-Old-Knot, Xeech-Leel, Umbriel, and the Collector Ennodius Vanin, who was at the wreck first. Next: go to Toklea."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.060286200000000005,
+ "minutes": 0.7,
+ "turns": 15,
+ "tokens": {
+  "input_tokens": 26,
+  "output_tokens": 2531,
+  "cache_read_input_tokens": 74322,
+  "cache_creation_input_tokens": 6873
+ }
+}

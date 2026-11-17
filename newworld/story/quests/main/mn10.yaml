@@ -341,7 +341,9 @@ stages:
     The lower galleries are shut behind a locked timber door; the gallery-boss, Ah-Zish, keeps the key, and an old adit
     on the creek bank goes round it through water where crocodiles nest. I'm to get into the lower galleries and find the
     knights' strongbox. Ah-Zish might give the key to good words or 100 gold, or it can be lifted from him. Smugglers have
-    moved into the lower galleries; I may fight them or sneak past.
+    moved into the lower galleries; I may fight them or sneak past. All of it is a trail to the Eye of Argonia, the old
+    kings' jewel that can heal every tree, which lies at the Root, where all the trees' roots meet under the sea; the order
+    wants it found before the Unbound reach it.
   directions: Poles-Upriver's boats run from Helstrom to Archon and on up the coast to Seafalls, the village by the white
     falls. From Seafalls follow the road inland to the hillside cut in rust and yellow bands with a timber headframe; the
     adit's mouth is down on the creek bank below it.
@@ -402,7 +404,9 @@ stages:
       use: sneak-past
       target: smugglers
   information:
-    going: The disc points to Vicrium, where the knights kept a strongbox in galleries now shut.
+    going: 'The disc points to Vicrium, where the knights kept a strongbox in galleries now shut. The hunt''s aim: find
+      the Eye of Argonia, the old kings'' jewel that can heal every tree, at the Root, where all the trees'' roots meet
+      under the sea, before the Unbound do.'
     next: Go by boat to Seafalls and up the road to Vicrium; get into the lower galleries and find the strongbox.
     ways: Ah-Zish's key (persuade him, pay 100 gold or pick his pocket), or the flooded adit past the crocodiles. In the
       galleries, fight the smugglers or sneak past them.
@@ -424,11 +428,16 @@ stages:
       - journal
       - ask:topic.mn10-door
       - marker:thing.mn10.strongbox
+    - know: 'the hunt''s aim: the Eye of Argonia and the Root'
+      by:
+      - journal
+      - ask:topic.mn-the-hunt
 - id: 20
   place: helstrom
   journal: text.journal.mn10.20
   journalText: 'In the knights'' strongbox lay an old parchment map: seven towers standing in the sea, and a crag shaped
-    like a tooth on an island. I''m to bring it to Nesh-Deeka in Helstrom.'
+    like a tooth on an island. I''m to bring it to Nesh-Deeka in Helstrom. It is all on the trail to the Eye of Argonia,
+    the old kings'' jewel that can heal every tree, at the Root, where all the trees'' roots meet under the sea.'
   onEnter:
   - enableRef: npc.mn.never-writes-twice
   objectives:
@@ -459,7 +468,9 @@ stages:
   learns:
   - fact.mn10.map
   information:
-    going: I have a map of seven sea towers and a tooth-shaped crag.
+    going: 'I have a map of seven sea towers and a tooth-shaped crag. The hunt''s aim: find the Eye of Argonia, the old
+      kings'' jewel that can heal every tree, at the Root, where all the trees'' roots meet under the sea, before the Unbound
+      do.'
     next: Bring it to Nesh-Deeka.
     ways: none
     carriers:
@@ -472,12 +483,16 @@ stages:
       - journal
       - objective
       - marker:npc.mn.nesh-deeka
+    - know: 'the hunt''s aim: the Eye of Argonia and the Root'
+      by:
+      - journal
 - id: 30
   place: helstrom
   journal: text.journal.mn10.30
   journalText: 'Nesh-Deeka already knew the Unbound had not reached Vicrium. Before I could ask how, she said "we listen"
     and named me Toh-Wo, "Secret-Speaker", the order''s second rank, with 200 gold. I''m to choose the order''s gift: a
-    rapier or a quarterstaff.'
+    rapier or a quarterstaff. It is all on the trail to the Eye of Argonia, the old kings'' jewel that can heal every tree,
+    at the Root, where all the trees'' roots meet under the sea.'
   onEnter:
   - giveGold: 200
   - setFlag:
@@ -512,7 +527,9 @@ stages:
   learns:
   - fact.mn10.not-yet
   information:
-    going: I am a Toh-Wo now. Nesh-Deeka again knew where the Unbound had not been and would not say how.
+    going: 'I am a Toh-Wo now. Nesh-Deeka again knew where the Unbound had not been and would not say how. The hunt''s aim:
+      find the Eye of Argonia, the old kings'' jewel that can heal every tree, at the Root, where all the trees'' roots
+      meet under the sea, before the Unbound do.'
     next: Choose the rank's weapon.
     ways: a rapier (one-handed) or a quarterstaff (two-handed)
     carriers:
@@ -530,11 +547,15 @@ stages:
       - objective
       - line:topic.mn10-rapier
       - line:topic.mn10-staff
+    - know: 'the hunt''s aim: the Eye of Argonia and the Root'
+      by:
+      - journal
 - id: 40
   place: helstrom
   journal: text.journal.mn10.40
   journalText: I took the rapier. Nesh-Deeka passed me to her officer, Never-Writes-Twice, who stands at the back of the
-    same room; from now on I report to her. I'm to show her the map.
+    same room; from now on I report to her. I'm to show her the map. It is all on the trail to the Eye of Argonia, the old
+    kings' jewel that can heal every tree, at the Root, where all the trees' roots meet under the sea.
   onEnter:
   - giveItem:
     - thing.mn10.rapier
@@ -561,7 +582,9 @@ stages:
       not:
         npcAlive: npc.mn.never-writes-twice
   information:
-    going: I now answer to Never-Writes-Twice, the order's officer.
+    going: 'I now answer to Never-Writes-Twice, the order''s officer. The hunt''s aim: find the Eye of Argonia, the old
+      kings'' jewel that can heal every tree, at the Root, where all the trees'' roots meet under the sea, before the Unbound
+      do.'
     next: Show her the map, at the back of the room.
     ways: none
     carriers:
@@ -571,11 +594,15 @@ stages:
       - objective
       - marker:npc.mn.never-writes-twice
       - name:npc.mn.never-writes-twice
+    - know: 'the hunt''s aim: the Eye of Argonia and the Root'
+      by:
+      - journal
 - id: 41
   place: helstrom
   journal: text.journal.mn10.41
   journalText: I took the quarterstaff. Nesh-Deeka passed me to her officer, Never-Writes-Twice, who stands at the back
-    of the same room; from now on I report to her. I'm to show her the map.
+    of the same room; from now on I report to her. I'm to show her the map. It is all on the trail to the Eye of Argonia,
+    the old kings' jewel that can heal every tree, at the Root, where all the trees' roots meet under the sea.
   onEnter:
   - giveItem:
     - thing.mn10.staff
@@ -602,7 +629,9 @@ stages:
       not:
         npcAlive: npc.mn.never-writes-twice
   information:
-    going: I now answer to Never-Writes-Twice, the order's officer.
+    going: 'I now answer to Never-Writes-Twice, the order''s officer. The hunt''s aim: find the Eye of Argonia, the old
+      kings'' jewel that can heal every tree, at the Root, where all the trees'' roots meet under the sea, before the Unbound
+      do.'
     next: Show her the map, at the back of the room.
     ways: none
     carriers:
@@ -612,19 +641,25 @@ stages:
       - objective
       - marker:npc.mn.never-writes-twice
       - name:npc.mn.never-writes-twice
+    - know: 'the hunt''s aim: the Eye of Argonia and the Root'
+      by:
+      - journal
 - id: 90
   place: helstrom
   journal: text.journal.mn10.90
   journalText: 'Never-Writes-Twice knew the crag on the map: the Grey Tooth, the seamark of Skeith Isle. She told me Cuts-the-Old-Knot
-    was once one of the order, who went mad on sap and killed her minders. She marked the Grey Tooth.'
+    was once one of the order, who went mad on sap and killed her minders. She marked the Grey Tooth. It is all on the trail
+    to the Eye of Argonia, the old kings'' jewel that can heal every tree, at the Root, where all the trees'' roots meet
+    under the sea.'
   learns:
   - fact.mn10.grey-tooth
   - fact.mn10.lie
   ending: complete
   endingId: e-toh-wo
   information:
-    going: The map leads to the Grey Tooth on Skeith Isle. Never-Writes-Twice says Cuts-the-Old-Knot was one of the order
-      gone mad on sap.
+    going: 'The map leads to the Grey Tooth on Skeith Isle. Never-Writes-Twice says Cuts-the-Old-Knot was one of the order
+      gone mad on sap. The hunt''s aim: find the Eye of Argonia, the old kings'' jewel that can heal every tree, at the
+      Root, where all the trees'' roots meet under the sea, before the Unbound do.'
     next: MN11 starts; its first entry marks the Grey Tooth.
     ways: none
     carriers:
@@ -637,6 +672,9 @@ stages:
       - journal
       - line:topic.mn10-nwt-meet
       - ask:topic.mn-cuts-the-old-knot
+    - know: 'the hunt''s aim: the Eye of Argonia and the Root'
+      by:
+      - journal
 - id: 95
   place: helstrom
   journal: text.journal.mn10.95
@@ -746,9 +784,10 @@ topics:
     hasItem:
     - thing.mn.parchment-map
     - 1
-  intent: 'Nesh-Deeka. Tells: this is one more step towards the Eye of Argonia at the Root; seven towers in the sea and
-    a crag like a tooth: that is for her officer to read. She says the Unbound have not reached Vicrium. She sees the question
-    coming, how she can know this, and answers it before it is asked: "We listen." Then she names the player Toh-Wo, "Secret-Speaker",
+  intent: 'Nesh-Deeka. Tells: this is one more step towards the Eye of Argonia, the old kings'' jewel that can heal every
+    tree, which lies at the Root, where all the trees'' roots meet under the sea; seven towers in the sea and a crag like
+    a tooth: that is for her officer to read. She says the Unbound have not reached Vicrium. She sees the question coming,
+    how she can know this, and answers it before it is asked: "We listen." Then she names the player Toh-Wo, "Secret-Speaker",
     the second rank, with 200 gold, and offers the order''s weapon: a rapier or a quarterstaff. Does: sets stage 30.'
   new: true
 - id: topic.mn10-rapier

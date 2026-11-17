@@ -1,0 +1,84 @@
+{
+ "quest": "quest.main.mn09",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn09.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "quiet",
+ "choose": null,
+ "know": "story/playtests/quest.main.mn08/20261117T172307Z-designed/notes.md",
+ "created": "20261117T172446Z",
+ "stages": [
+  10,
+  20,
+  30,
+  90
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn04.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn05.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn06.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn07.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn08.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 4,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I work for Nesh-Deeka and her order. We want the Eye of Argonia, the old kings jewel that can heal every tree, at the Root under the sea, before the Unbound reach it. The knight-captain buried at Eurydike has what marks the way. The Unbound are already here digging. 2. Search the Unbound packs in the barracks wing at Eurydike, then open the knight-captain tomb with the keystone. 3. I can fight the dead, slip past quietly (my preferred way), or turn the dead with Restoration. 4. I do not fully understand the Root or how Nesh-Deeka knows things. I could learn more from the packs, the tomb and people I meet.",
+  "look",
+  "take Unbound Pack",
+  "use Unbound Pack",
+  "take Grey Seal",
+  "journal",
+  "answer 1. I work for Nesh-Deeka. The Unbound drain trees and then seal them with a grey paralysis poison, the seal, which I found in their pack. We want the Eye of Argonia at the Root before them. 2. Open the knight-captain tomb door here at Eurydike with the keystone and search the chest inside. 3. Use the keystone on the door; deal with the Restless Knight and Unbound Digger by sneaking, fighting or turning the dead. 4. I do not understand why the Unbound seal a tree they drain. I might learn from Nesh-Deeka or the tomb.",
+  "use Door to Knight-Captain's Tomb",
+  "use Knight-Captain's Tomb Chest",
+  "take Knight-Captain's Bronze Disc",
+  "answer 1. I work for Nesh-Deeka. The keystone opened the knight-captain tomb and I took a bronze disc stamped with a mine mark, a pick crossed with a tower. It is a step on the trail to the Eye of Argonia, which the Unbound also want. 2. Bring the disc to Nesh-Deeka in Helstrom. 3. I can go straight to Helstrom. I could also look around first, but the Unbound are close, so I should hurry. 4. I do not know which mine the pick and tower mark belongs to. Nesh-Deeka may know, or I could ask around.",
+  "go Nesh-Deeka",
+  "talk Nesh-Deeka",
+  "say 1",
+  "answer 1. The quest is done. I work for Nesh-Deeka. The disc bears the mark of Vicrium, an old ochre and alum mine in the clay country behind Seafalls in Okuwun Rahei, in the east. The knights kept a strongbox there. It is the next step toward the Eye of Argonia at the Root. The Unbound are ahead of us. 2. No new objective is set. Likely I go to Vicrium near Seafalls and find the strongbox. 3. I can travel east to Seafalls and Vicrium, or ask Nesh-Deeka more first. 4. I still do not know how Nesh-Deeka knows things (\"we listen\"), why the Unbound seal the trees they drain, or what the Eye does exactly. I have not found how to learn these yet.",
+  "answer Knights Tomb is done. I opened the knight-captain tomb at Eurydike with the keystone, took Grey Seal paralysis poison (x3) from the Unbound pack, and took the bronze disc from the chest. Nesh-Deeka in Helstrom paid me 100 gold, so I have about 700 gold. The disc bears the mark of Vicrium, an old ochre and alum mine in the clay country behind Seafalls, in Okuwun Rahei in the east, where the knights kept a strongbox. Next step is to go there before the Unbound. The Unbound drain a tree and then seal it with the grey poison, and I do not know why. Nesh-Deeka only says \"we listen\" about how she knows things. I still carry the Old Silver Setting, The Collector note (Ennodius Vanin also hunts the Eye), the smuggler key, the Pale Harvest Strongbox Key, the bronze disc and the Grey Seal. The Eye of Argonia is a jewel that can heal every tree and lies at the Root under the sea."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.0690275,
+ "minutes": 0.7,
+ "turns": 17,
+ "tokens": {
+  "input_tokens": 28,
+  "output_tokens": 2951,
+  "cache_read_input_tokens": 85935,
+  "cache_creation_input_tokens": 7717
+ }
+}

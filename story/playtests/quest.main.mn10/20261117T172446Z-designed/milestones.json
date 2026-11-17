@@ -1,0 +1,123 @@
+[
+ {
+  "stage": 10,
+  "kind": "start",
+  "ending": null,
+  "title": "Down into Vicrium",
+  "journal": "The knight-captain's disc bears the mark of Vicrium, a mine behind Seafalls, where the knights kept a strongbox. The lower galleries are shut behind a locked timber door; the gallery-boss, Ah-Zish, keeps the key, and an old adit on the creek bank goes round it through water where crocodiles nest. I'm to get into the lower galleries and find the knights' strongbox. Ah-Zish might give the key to good words or 100 gold, or it can be lifted from him. Smugglers have moved into the lower galleries; I may fight them or sneak past. All of it is a trail to the Eye of Argonia, the old kings' jewel that can heal every tree, which lies at the Root, where all the trees' roots meet under the sea; the order wants it found before the Unbound reach it.",
+  "objectives": [
+   "Get into Vicrium's lower galleries, by Ah-Zish's key or the old lower adit. (marker: Ah-Zish, Door to Lower Galleries, Old Lower Adit)",
+   "Search the knights' strongbox in the lower galleries. (marker: Knights' Strongbox)"
+  ],
+  "plan": {
+   "going": "The disc points to Vicrium, where the knights kept a strongbox in galleries now shut. The hunt's aim: find the Eye of Argonia, the old kings' jewel that can heal every tree, at the Root, where all the trees' roots meet under the sea, before the Unbound do.",
+   "next": "Go by boat to Seafalls and up the road to Vicrium; get into the lower galleries and find the strongbox.",
+   "ways": "Ah-Zish's key (persuade him, pay 100 gold or pick his pocket), or the flooded adit past the crocodiles. In the galleries, fight the smugglers or sneak past them.",
+   "terms": [
+    "Ah-Zish: journal 10"
+   ]
+  },
+  "answers": [
+   "I work for Nesh-Deeka in Helstrom. I opened the knight-captain tomb at Eurydike and took a bronze disc with the Vicrium mark. The Unbound drain and seal trees, and the order wants the Eye of Argonia, a jewel said to heal every tree, found before them.",
+   "Get into the lower galleries of Vicrium and search the knights strongbox there.",
+   "Get the key from Ah-Zish by talking, paying 100 gold, or lifting it; or take the old lower adit through crocodile water; smugglers in the galleries can be fought or sneaked past.",
+   "I do not know what the Eye of Argonia really is, what the Collector wants, or what the strongbox holds. I could learn more by talking to Ah-Zish and searching the strongbox."
+  ],
+  "raw": "1. I work for Nesh-Deeka in Helstrom. I opened the knight-captain tomb at Eurydike and took a bronze disc with the Vicrium mark. The Unbound drain and seal trees, and the order wants the Eye of Argonia, a jewel said to heal every tree, found before them. 2. Get into the lower galleries of Vicrium and search the knights strongbox there. 3. Get the key from Ah-Zish by talking, paying 100 gold, or lifting it; or take the old lower adit through crocodile water; smugglers in the galleries can be fought or sneaked past. 4. I do not know what the Eye of Argonia really is, what the Collector wants, or what the strongbox holds. I could learn more by talking to Ah-Zish and searching the strongbox."
+ },
+ {
+  "stage": 20,
+  "kind": "stage",
+  "ending": null,
+  "title": "Down into Vicrium",
+  "journal": "In the knights' strongbox lay an old parchment map: seven towers standing in the sea, and a crag shaped like a tooth on an island. I'm to bring it to Nesh-Deeka in Helstrom. It is all on the trail to the Eye of Argonia, the old kings' jewel that can heal every tree, at the Root, where all the trees' roots meet under the sea.",
+  "objectives": [
+   "Bring the parchment map to Nesh-Deeka in Helstrom. (marker: Nesh-Deeka)"
+  ],
+  "plan": {
+   "going": "I have a map of seven sea towers and a tooth-shaped crag. The hunt's aim: find the Eye of Argonia, the old kings' jewel that can heal every tree, at the Root, where all the trees' roots meet under the sea, before the Unbound do.",
+   "next": "Bring it to Nesh-Deeka.",
+   "ways": "none"
+  },
+  "answers": [
+   "I work for Nesh-Deeka. I got into Vicrium lower galleries (key lifted from Ah-Zish) and found the knights strongbox with an old parchment map: seven towers standing in the sea and a tooth-shaped crag on an island. It is a trail to the Eye of Argonia, a jewel said to heal every tree, at the Root under the sea; the Unbound are also after it.",
+   "Bring the map to Nesh-Deeka in Helstrom.",
+   "Go straight back to Helstrom; I could study the map myself first, but I see no other option. The smuggler here I can avoid.",
+   "I do not know where the seven towers or the tooth crag are, what the Eye really is, or what the Collector wants. Nesh-Deeka may know."
+  ],
+  "raw": "1. I work for Nesh-Deeka. I got into Vicrium lower galleries (key lifted from Ah-Zish) and found the knights strongbox with an old parchment map: seven towers standing in the sea and a tooth-shaped crag on an island. It is a trail to the Eye of Argonia, a jewel said to heal every tree, at the Root under the sea; the Unbound are also after it. 2. Bring the map to Nesh-Deeka in Helstrom. 3. Go straight back to Helstrom; I could study the map myself first, but I see no other option. The smuggler here I can avoid. 4. I do not know where the seven towers or the tooth crag are, what the Eye really is, or what the Collector wants. Nesh-Deeka may know."
+ },
+ {
+  "stage": 30,
+  "kind": "stage",
+  "ending": null,
+  "title": "Down into Vicrium",
+  "journal": "Nesh-Deeka already knew the Unbound had not reached Vicrium. Before I could ask how, she said \"we listen\" and named me Toh-Wo, \"Secret-Speaker\", the order's second rank, with 200 gold. I'm to choose the order's gift: a rapier or a quarterstaff. It is all on the trail to the Eye of Argonia, the old kings' jewel that can heal every tree, at the Root, where all the trees' roots meet under the sea.",
+  "objectives": [
+   "Choose a rapier or a quarterstaff from Nesh-Deeka. (marker: Nesh-Deeka)"
+  ],
+  "plan": {
+   "going": "I am a Toh-Wo now. Nesh-Deeka again knew where the Unbound had not been and would not say how. The hunt's aim: find the Eye of Argonia, the old kings' jewel that can heal every tree, at the Root, where all the trees' roots meet under the sea, before the Unbound do.",
+   "next": "Choose the rank's weapon.",
+   "ways": "a rapier (one-handed) or a quarterstaff (two-handed)",
+   "terms": [
+    "Toh-Wo: Nesh-Deeka: \"Secret-Speaker\", the order's second rank"
+   ]
+  },
+  "answers": [
+   "I gave Nesh-Deeka the map. She says it is another step to the Eye of Argonia; her officer will read the towers and tooth crag. She knew the Unbound had not reached Vicrium and only said we listen. She named me Toh-Wo, Secret-Speaker, second rank, and paid 200 gold.",
+   "Choose the order gift, a rapier or a quarterstaff, from Nesh-Deeka in Helstrom.",
+   "Take the rapier or the quarterstaff; as a stealthy character I lean to the rapier.",
+   "I do not know how she listens, who her officer is, what the Eye truly is, or what the Collector wants. I could ask Nesh-Deeka or her officer."
+  ],
+  "raw": "1. I gave Nesh-Deeka the map. She says it is another step to the Eye of Argonia; her officer will read the towers and tooth crag. She knew the Unbound had not reached Vicrium and only said we listen. She named me Toh-Wo, Secret-Speaker, second rank, and paid 200 gold. 2. Choose the order gift, a rapier or a quarterstaff, from Nesh-Deeka in Helstrom. 3. Take the rapier or the quarterstaff; as a stealthy character I lean to the rapier. 4. I do not know how she listens, who her officer is, what the Eye truly is, or what the Collector wants. I could ask Nesh-Deeka or her officer."
+ },
+ {
+  "stage": 40,
+  "kind": "stage",
+  "ending": null,
+  "title": "Down into Vicrium",
+  "journal": "I took the rapier. Nesh-Deeka passed me to her officer, Never-Writes-Twice, who stands at the back of the same room; from now on I report to her. I'm to show her the map. It is all on the trail to the Eye of Argonia, the old kings' jewel that can heal every tree, at the Root, where all the trees' roots meet under the sea.",
+  "objectives": [
+   "Show the map to Never-Writes-Twice in Nesh-Deeka's House. (marker: Never-Writes-Twice)"
+  ],
+  "plan": {
+   "going": "I now answer to Never-Writes-Twice, the order's officer. The hunt's aim: find the Eye of Argonia, the old kings' jewel that can heal every tree, at the Root, where all the trees' roots meet under the sea, before the Unbound do.",
+   "next": "Show her the map, at the back of the room.",
+   "ways": "none",
+   "terms": [
+    "Never-Writes-Twice: Nesh-Deeka: her officer, to whom the player now reports"
+   ]
+  },
+  "answers": [
+   "I took the rapier from Nesh-Deeka. I now report to her officer Never-Writes-Twice, who is in the same room and will read the map of seven towers and a tooth-shaped crag. All of it is a trail to the Eye of Argonia.",
+   "Show the map to Never-Writes-Twice in Nesh-Deeka House.",
+   "Just talk to her; no other option is visible.",
+   "I still do not know what the Eye truly is, what the Collector wants, how the order listens, or where the towers and crag are. Never-Writes-Twice may explain."
+  ],
+  "raw": "1. I took the rapier from Nesh-Deeka. I now report to her officer Never-Writes-Twice, who is in the same room and will read the map of seven towers and a tooth-shaped crag. All of it is a trail to the Eye of Argonia. 2. Show the map to Never-Writes-Twice in Nesh-Deeka House. 3. Just talk to her; no other option is visible. 4. I still do not know what the Eye truly is, what the Collector wants, how the order listens, or where the towers and crag are. Never-Writes-Twice may explain."
+ },
+ {
+  "stage": 90,
+  "kind": "ending",
+  "ending": "complete",
+  "title": "Down into Vicrium",
+  "journal": "Never-Writes-Twice knew the crag on the map: the Grey Tooth, the seamark of Skeith Isle. She told me Cuts-the-Old-Knot was once one of the order, who went mad on sap and killed her minders. She marked the Grey Tooth. It is all on the trail to the Eye of Argonia, the old kings' jewel that can heal every tree, at the Root, where all the trees' roots meet under the sea.",
+  "objectives": [],
+  "plan": {
+   "going": "The map leads to the Grey Tooth on Skeith Isle. Never-Writes-Twice says Cuts-the-Old-Knot was one of the order gone mad on sap. The hunt's aim: find the Eye of Argonia, the old kings' jewel that can heal every tree, at the Root, where all the trees' roots meet under the sea, before the Unbound do.",
+   "next": "MN11 starts; its first entry marks the Grey Tooth.",
+   "ways": "none",
+   "terms": [
+    "the Grey Tooth and Skeith Isle: Never-Writes-Twice: a crag that is the seamark of Skeith Isle"
+   ]
+  },
+  "answers": [
+   "The quest Down into Vicrium is done. Never-Writes-Twice read the map: the tooth crag is the Grey Tooth, seamark of Skeith Isle, reached by boat to Archon and Arorha; she marked it. She warned me about Cuts-the-Old-Knot, once of the order, who went mad on sap and killed her minders, and told me not to listen to her.",
+   "No new objective is given; the next step seems to be Skeith Isle via a boat to Archon and Arorha.",
+   "I can seek a boat to Skeith Isle or ask the order for more.",
+   "I do not know what the seven towers are, what the Eye truly is, what the Collector wants, who Cuts-the-Old-Knot is now, or where Archon and Arorha lie."
+  ],
+  "raw": "1. The quest Down into Vicrium is done. Never-Writes-Twice read the map: the tooth crag is the Grey Tooth, seamark of Skeith Isle, reached by boat to Archon and Arorha; she marked it. She warned me about Cuts-the-Old-Knot, once of the order, who went mad on sap and killed her minders, and told me not to listen to her. 2. No new objective is given; the next step seems to be Skeith Isle via a boat to Archon and Arorha. 3. I can seek a boat to Skeith Isle or ask the order for more. 4. I do not know what the seven towers are, what the Eye truly is, what the Collector wants, who Cuts-the-Old-Knot is now, or where Archon and Arorha lie."
+ }
+]

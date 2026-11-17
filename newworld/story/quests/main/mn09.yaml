@@ -114,7 +114,7 @@ things:
 - id: thing.mn.keystone
   kind: item
   name: Kothringi Keystone
-  source: 'MN07''s keystone (Here There Be Monsters'' Kothringi keystone amulet''s mesh, a key record); carried in'
+  source: MN07's keystone (Here There Be Monsters' Kothringi keystone amulet's mesh, a key record); carried in
   where: carried by the player
 - id: thing.mn09.packs
   kind: container
@@ -320,7 +320,8 @@ stages:
     tomb with the keystone; the knights once guarded the kings' road to the Root, the place under the sea where every Hist's
     roots meet and the Eye of Argonia lies. The knights' dead walk the barracks wing, and the Unbound got there before me.
     I'm to search the Unbound's packs by their fire on the way to the tomb. I may fight, slip past, or turn the dead with
-    Restoration.
+    Restoration. All of it is a trail to the Eye of Argonia, the old kings' jewel that can heal every tree, which lies at
+    the Root, where all the trees' roots meet under the sea; the order wants it found before the Unbound reach it.
   directions: Ride the rootworm from Helstrom's city tree to Gideon's Hist garden, then walk north out of Gideon to the
     long grey-white hall with its roof gone and a broken gable; the barracks wing stands at the back.
   objectives:
@@ -364,7 +365,9 @@ stages:
       use: sneak-past
       target: the dead and the Unbound
   information:
-    going: The keystone opens the knight-captain's tomb at Eurydike; the Unbound are there ahead of me.
+    going: 'The keystone opens the knight-captain''s tomb at Eurydike; the Unbound are there ahead of me. The hunt''s aim:
+      find the Eye of Argonia, the old kings'' jewel that can heal every tree, at the Root, where all the trees'' roots
+      meet under the sea, before the Unbound do.'
     next: Go to Eurydike and search the Unbound's packs on the way to the tomb.
     ways: Fight the dead and the Unbound, slip past them, or turn the dead with Restoration.
     carriers:
@@ -377,12 +380,18 @@ stages:
     - know: the ways
       by:
       - journal
+    - know: 'the hunt''s aim: the Eye of Argonia and the Root'
+      by:
+      - journal
+      - ask:topic.mn-the-hunt
 - id: 20
   place: kothringi-ruin-m25-m80
   journal: text.journal.mn09.20
   journalText: 'In the Unbound''s packs were bottles of the grey paste they call "the seal". It is a paralysis poison: it
     numbs a tree''s scar shut. The Unbound drain a tree and then poison it. If they wanted the trees dead they could kill
-    them, so why seal a tree they drain? I''m to open the knight-captain''s tomb with the keystone.'
+    them, so why seal a tree they drain? I''m to open the knight-captain''s tomb with the keystone. It is all on the trail
+    to the Eye of Argonia, the old kings'' jewel that can heal every tree, at the Root, where all the trees'' roots meet
+    under the sea.'
   onEnter:
   - setFlag:
     - flag.main.seal-question
@@ -412,7 +421,9 @@ stages:
   - fact.mn09.poison
   - fact.mn09.question
   information:
-    going: 'The seal is a paralysis poison. I do not know why the Unbound seal trees they drain: that question is open.'
+    going: 'The seal is a paralysis poison. I do not know why the Unbound seal trees they drain: that question is open.
+      The hunt''s aim: find the Eye of Argonia, the old kings'' jewel that can heal every tree, at the Root, where all the
+      trees'' roots meet under the sea, before the Unbound do.'
     next: Open the tomb with the keystone and search the knight-captain's chest.
     ways: The keystone is the door's key; the dead and the Unbound may still be about.
     carriers:
@@ -428,11 +439,15 @@ stages:
       - objective
       - marker:thing.mn09.tomb-door
       - name:thing.mn09.tomb-door
+    - know: 'the hunt''s aim: the Eye of Argonia and the Root'
+      by:
+      - journal
 - id: 30
   place: helstrom
   journal: text.journal.mn09.30
   journalText: In the knight-captain's tomb lay a bronze disc stamped with a mine's mark, a pick crossed with a tower. I'm
-    to bring it to Nesh-Deeka in Helstrom.
+    to bring it to Nesh-Deeka in Helstrom. It is all on the trail to the Eye of Argonia, the old kings' jewel that can heal
+    every tree, at the Root, where all the trees' roots meet under the sea.
   objectives:
   - id: report
     text: text.objective.mn09.report
@@ -461,7 +476,8 @@ stages:
   learns:
   - fact.mn09.disc
   information:
-    going: The disc bears a mine's mark; I do not know which mine.
+    going: 'The disc bears a mine''s mark; I do not know which mine. The hunt''s aim: find the Eye of Argonia, the old kings''
+      jewel that can heal every tree, at the Root, where all the trees'' roots meet under the sea, before the Unbound do.'
     next: Bring the disc to Nesh-Deeka.
     ways: none
     carriers:
@@ -474,12 +490,16 @@ stages:
       - journal
       - objective
       - marker:npc.mn.nesh-deeka
+    - know: 'the hunt''s aim: the Eye of Argonia and the Root'
+      by:
+      - journal
 - id: 90
   place: helstrom
   journal: text.journal.mn09.90
   journalText: 'Nesh-Deeka knew the mark: Vicrium, an old mine in the clay country behind Seafalls, in the east. She already
     knew the Unbound had been at Eurydike. Before I could ask how, she said "we listen" and would not answer why they seal
-    the trees. She paid me 100 gold. The question stays with me.'
+    the trees. She paid me 100 gold. The question stays with me. It is all on the trail to the Eye of Argonia, the old kings''
+    jewel that can heal every tree, at the Root, where all the trees'' roots meet under the sea.'
   onEnter:
   - giveGold: 100
   learns:
@@ -488,8 +508,9 @@ stages:
   ending: complete
   endingId: e-read
   information:
-    going: The disc points to Vicrium. Why the Unbound seal the trees is still open; Nesh-Deeka knows where they go and
-      will not say how.
+    going: 'The disc points to Vicrium. Why the Unbound seal the trees is still open; Nesh-Deeka knows where they go and
+      will not say how. The hunt''s aim: find the Eye of Argonia, the old kings'' jewel that can heal every tree, at the
+      Root, where all the trees'' roots meet under the sea, before the Unbound do.'
     next: MN10 starts; its first entry marks Vicrium.
     ways: none
     carriers:
@@ -502,6 +523,9 @@ stages:
       - journal
       - line:topic.mn09-report
       - ask:topic.mn09-why-seal
+    - know: 'the hunt''s aim: the Eye of Argonia and the Root'
+      by:
+      - journal
 - id: 95
   place: helstrom
   journal: text.journal.mn09.95
@@ -543,10 +567,11 @@ topics:
     hasItem:
     - thing.mn.bronze-disc
     - 1
-  intent: 'Nesh-Deeka. Tells: this is one more step towards the Eye of Argonia at the Root; the pick and tower is Vicrium''s
-    mark, an old ochre and alum mine in the clay country behind Seafalls, in Okuwun Rahei in the east; the knights kept
-    a strongbox there. She says she knew the Unbound had got into Eurydike. She sees the question coming, how she can know
-    this, and answers it before it is asked: "We listen." She pays 100 gold. Does: sets stage 90.'
+  intent: 'Nesh-Deeka. Tells: this is one more step towards the Eye of Argonia, the old kings'' jewel that can heal every
+    tree, which lies at the Root, where all the trees'' roots meet under the sea; the pick and tower is Vicrium''s mark,
+    an old ochre and alum mine in the clay country behind Seafalls, in Okuwun Rahei in the east; the knights kept a strongbox
+    there. She says she knew the Unbound had got into Eurydike. She sees the question coming, how she can know this, and
+    answers it before it is asked: "We listen." She pays 100 gold. Does: sets stage 90.'
   new: true
 - id: topic.mn09-why-seal
   label: The seal is a poison. Why would the Unbound seal a tree they drain?

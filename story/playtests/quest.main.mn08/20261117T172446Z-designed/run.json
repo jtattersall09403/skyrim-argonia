@@ -1,0 +1,86 @@
+{
+ "quest": "quest.main.mn08",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn08.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "quiet",
+ "choose": null,
+ "know": "story/playtests/quest.main.mn07/20261117T172307Z-designed/notes.md",
+ "created": "20261117T172446Z",
+ "stages": [
+  10,
+  20,
+  30,
+  40,
+  90
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn04.yaml",
+   "ending": 90
+  },
+  {
+   "record": "/tmp/claude-1000/-home-ubuntu-skyrim-argonia/7f2a02b4-3027-4299-a1a6-992f4e9864af/scratchpad/lane-b/newworld/story/quests/main/mn05.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn06.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn07.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 5,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I am Tarin, a thief working for Nesh-Deeka house in Helstrom. I took a Kothringi Keystone from a wreck. Nesh-Deeka sent me to Toklea to show it to the Chime-Keepers elder. It is part of a trail to the Eye of Argonia, the jewel that can heal every tree, at the Root under the sea. The order wants it before the Unbound. 2. Go to the Kothringi Greathouse in Toklea and show the keystone to Hums-the-Long-Note, the elder. 3. I can just walk in and talk to the elder, openly. I could also try a quieter approach, but nothing else is offered yet. 4. I do not know what the Root really is or where, nor what the keystone opens. The elder may tell me.",
+  "go Hums-the-Long-Note",
+  "talk Hums-the-Long-Note",
+  "say 2",
+  "answer 1. Hums-the-Long-Note knows the keystone but wants payment: her familys carved grave-stake raised from a chest in drowned Zul-Etha. Then she will tell me. It is on the trail to the Eye of Argonia. 2. Go to Zul-Etha (via Mir-Xal quay, south-east) and raise the grave-stake from the Drowned Chest. 3. Kill the crocodiles and old bull on the roofs from a roof or by arrows, calm them with Illusion, or swim under them unseen. As a thief I favour the quiet swim. 4. I do not know where exactly Mir-Xal is, nor what the keystone means; the elder will tell after the stake.",
+  "go Drowned Chest",
+  "look",
+  "take Drowned Chest",
+  "use Drowned Chest",
+  "take Carved Grave-Stake",
+  "answer 1. I got the grave-stake from the chest in Zul-Etha without fighting the crocodiles. It is the price Hums-the-Long-Note set for telling me about the keystone, on the trail to the Eye of Argonia. 2. Bring the stake to Hums-the-Long-Note at the Kothringi Greathouse in Toklea. 3. Just return and hand it over; no other choice is visible. 4. I still do not know what the keystone means or where the Root is; the elder should tell me.",
+  "go Hums-the-Long-Note",
+  "talk Hums-the-Long-Note",
+  "say 2",
+  "answer 1. Hums-the-Long-Note took the stake and told me the keystone opens the tomb of the knight-captain at Eurydike, a roofless Kothringi hall north of Gideon. The knights of Gideon were the last guards of the kings road to the Root. 2. Go to Nesh-Deeka in Helstrom and tell her. 3. Report to Nesh-Deeka first as asked; I could go to Eurydike myself, but the Unbound lost the trail at Gideon so it may be watched. 4. I do not know what is in the tomb or exactly how Eurydike is reached; Nesh-Deeka may know.",
+  "go Nesh-Deeka",
+  "talk Nesh-Deeka",
+  "say 1",
+  "answer 1. Nesh-Deeka heard that the keystone opens the knight-captains tomb at Eurydike. She said the Unbound have been asking Gideons diggers about Eurydike, so I must hurry. She paid 100 gold. 2. Go to Eurydike, north of Gideon, and open the tomb with the keystone; no marker given yet. 3. Go quietly and quickly to Eurydike before the Unbound; no other choice shown. 4. I do not know how Nesh-Deeka knows what she knows (\"we listen\"), nor what is in the tomb.",
+  "answer I am Tarin, thief of Nesh-Deeka house in Helstrom, about 750 gold, holding the Kothringi Keystone, Old Silver Setting and my gear. Hums-the-Long-Note, elder of the Chime-Keepers at Toklea, told me the keystone opens the knight-captains tomb at Eurydike, a roofless Kothringi hall a short walk north of Gideon; the knights of Gideon guarded the kings road to the Root, where the Eye of Argonia lies. I fetched her family grave-stake from the chest in Zul-Etha quietly without fighting the crocodiles. Nesh-Deeka knows the Unbound have been asking Gideons diggers about Eurydike, so hurry. She says \"we listen\" about how she knows. Next: go to Eurydike and open the tomb. Unknown: tomb contents, seal paste, Cuts-the-Old-Knot, Xeech-Leel, Umbriel, the Collector Ennodius Vanin.",
+  "answer I am Tarin, thief of Nesh-Deeka house in Helstrom, about 750 gold, holding the Kothringi Keystone, Old Silver Setting and my gear. Hums-the-Long-Note, elder of the Chime-Keepers at Toklea, told me the keystone opens the knight-captains tomb at Eurydike, a roofless Kothringi hall a short walk north of Gideon; the knights of Gideon guarded the kings road to the Root, where the Eye of Argonia lies. I fetched her family grave-stake from the chest in Zul-Etha quietly without fighting the crocodiles. Nesh-Deeka knows the Unbound have been asking Gideons diggers about Eurydike, so hurry. She says \"we listen\" about how she knows. Next: go to Eurydike and open the tomb. Unknown: tomb contents, seal paste, Cuts-the-Old-Knot, Xeech-Leel, Umbriel, the Collector Ennodius Vanin."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.08804479999999999,
+ "minutes": 0.8,
+ "turns": 22,
+ "tokens": {
+  "input_tokens": 38,
+  "output_tokens": 3792,
+  "cache_read_input_tokens": 131648,
+  "cache_creation_input_tokens": 9221
+ }
+}

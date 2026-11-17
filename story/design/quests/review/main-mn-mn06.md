@@ -32,3 +32,4 @@ Classes of miss a change cleared:
 - could not tell a place or thing for what it is (row 6): a placeName for every place whose id is not a name; containers placed as kind container
 - record fault: a reward given both in the stage's onEnter and the ending's rewards (paid twice)
 - did not know what to do next (row 1): a stage moved only by an optional-looking reply; the line on the path now moves it
+- met a word with nothing to explain it, forgotten across quests (row 4): the hunt's aim (the Eye of Argonia, the old kings' jewel that can heal every tree; the Root, where all the trees' roots meet under the sea) is glossed in every journal entry, every report line and every stage's information.going. Runs 20261117T172307Z (MN07 to MN10) missed; 20261117T172446Z passed
