@@ -65,7 +65,7 @@ that uses it. Never compile or deploy while the owner streams.
 
 ## 5. Play the built quest
 
-[quest-playtest](../quest-playtest/SKILL.md) moment 3: one careful player on the read-back forms (`--source built`).
+[quest-playtest](../quest-playtest/SKILL.md) moment 3: a fresh player on the read-back forms (`--source built`), graded milestone by milestone.
 Commit `plugin/Argonia`, the records and the runs together, by path.
 
 ## 6. The owner's walk check

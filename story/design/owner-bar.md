@@ -294,10 +294,15 @@ with its source in [owner-rulings-on-factions](../../docs/research/writing/owner
 
 - The overall story of the main quest and of each major faction is written by Fable, knowing the quest rules and
   the ceiling so that nothing undeliverable is written (OR 2026-11-12).
-- The story is read on paper by fresh readers, quest by quest, before quests are written; quests are played on
-  paper by fresh players as they are written and once built. Every round gathers all readers' findings and answers
-  them in one coherent set of changes; readers' personas are honest and a little hard to please, not harsh
-  (OR 2026-11-12).
+- The story is read on paper by fresh readers, quest by quest, before quests are written. Every round gathers all
+  readers' findings and answers them in one coherent set of changes (OR 2026-11-12).
+- Quests are played on paper, as written and once built, by one fresh player with no persona and no opinion: the
+  owner judges how good a quest is himself. The one test is that the player "always understands what's going on and
+  has the information they need to make their own decisions about what to do next, at every milestone and stage
+  throughout". The writer reasons out, stage by stage, what the player is given and when (markers, explanations in
+  dialogue, topics to ask what Jel terms mean and about a faction's history or a person's backstory, journal entries
+  and objective toasts, the names on doors, items and containers), and rewrites until the player gets it right
+  (OR 2026-11-17).
 - A paper player's finding that a fix clears is folded into the skill that produced the fault (OR 2026-11-12).
 - Review findings are weighed by what the player would notice (OR 2026-11-11). Reviews of look are the owner's
   (OR, #43).

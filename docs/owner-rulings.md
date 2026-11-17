@@ -772,3 +772,19 @@ added here the day they are made, with the date and the issue.
 - 2026-11-17 (#76): "It sounds like you've put Alten Corimont in which is good but I can't see it in the Atlas
   artifact. Same for Bramman's watch and other stuff." The Atlas is republished whenever the place records change:
   `make check` now fails while the published Atlas is behind them (`tools/newworld/atlas_state.py`).
+- 2026-11-17 (in session, the main quest's records): "Write the detailed quest records for the main quest only."
+  The paper player loop changes: "get rid of the different personas, and all the judgment about how good it is and
+  any value or opinion or vibe checks. I've done that myself now." Its one focus is "providing the player with the
+  right information they need in order to understand what's going on and what they're expected to do next". While
+  writing every quest record the writer "explicitly needs to reason through precisely what needs to be provided to
+  the player (map/in-world quest markers, information and explanations in dialogue, dialogue options for the player
+  to ask about what Jel terms mean and about faction history or backstory, journal entries and the journal update
+  toast lines, names on doors/items/containers etc) and at what point". The loop runs between the writer and a
+  play-on-paper agent (Sonnet 5.5, medium) that tests "whether the quest gives the player what they need, at every
+  milestone and point within the quest", back to the writer "until the play on paper agent gets it right (i.e.
+  correctly knows what's going on at every milestone within the quest and knows what options it has for what to do
+  next)". "The key outcome for me is just that any player playing through our main quest always understands what's
+  going on and has the information they need to make their own decisions about what to do next, at every milestone
+  and stage throughout." Then Helstrom's draft is edited to give the main quest's quests there what they need.
+  In quest-write §3a, quest-record (`information`, `terms`), quest-playtest, quest-system and the owner's bar.
+

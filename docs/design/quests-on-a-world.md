@@ -58,9 +58,15 @@ as any change to the method; the quest skills carry it step by step, and their m
   is found, is told, or happens where the player is not.
 - **Each quest is a record** ([quest-write](../../.claude/skills/quest-write/SKILL.md)) that compiles to the quest
   form ([quest-form](quest-form.md)), routed to the design principles for its shape, with every person, thing, door
-  and marker a measured placement. A fresh [quest-review](../../.claude/skills/quest-review/SKILL.md) reader judges
-  it, and fresh paper players play the designed form ([quest-playtest](../../.claude/skills/quest-playtest/SKILL.md))
-  before any dialogue is written.
+  and marker a measured placement. Each stage carries its information plan: what the player must know
+  then (what is going on, the next step and where, the ways through) and the channel on the path that gives each
+  point (journal, objective, marker, a line, a name the game shows, a message); every new term has a plain gloss at
+  first use and a topic to ask more. A fresh [quest-review](../../.claude/skills/quest-review/SKILL.md) reader judges
+  it, and a fresh paper player plays the designed record milestone by milestone
+  ([quest-playtest](../../.claude/skills/quest-playtest/SKILL.md)), saying at each what is going on and what they
+  will do next; the writer grades that against the plan and changes the record until a run passes. The passing
+  run's notes are what the next quest's player knows. A record on a world whose places are not yet in the story
+  database is kept as its YAML view and played from it.
 - **Skill use.** Every step that asks something names the skills it uses, and each way through can go wrong as
   Skyrim's own systems make it go wrong (a check, a lock, a theft seen, a fight lost). Every main quest has at least
   two ways through on different skills, so any build can finish it; faction quests lean on the faction's own skills.
@@ -110,7 +116,7 @@ Morrowind lines as the model; the brief holding that speaker's sourced facts, th
 stand, each line's stage window, check and result, and what the others in the same place say. Then
 [text-review](../../.claude/skills/text-review/SKILL.md) by another agent: a style reader, and a truth reader who sets
 each line beside its speaker's measured surroundings and lists every claim the facts do not support. Then the paper
-players play the written quest. Lines live in the story data (`story/data/quest_lines/<code>.json` beside the record) and nowhere else. A line tells; a question is a
+player plays the written quest, milestone by milestone. Lines live in the story data (`story/data/quest_lines/<code>.json` beside the record) and nowhere else. A line tells; a question is a
 choice with a topic per reply; a line offers only what its result delivers, and a line that moves a stage never
 refuses. A prompt is a sentence the player would say with what they know. Journal entries tell one step each, in the
 first person and the past tense, only what the player has done; objectives are imperatives with a target.

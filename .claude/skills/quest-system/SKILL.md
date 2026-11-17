@@ -95,9 +95,9 @@ only what the player has just done; nothing is said that the game's systems do n
 | # | Step | Skill | Leaves behind |
 |---|---|---|---|
 | 1 | The story of the main quest or a faction's line | [story-line](../story-line/SKILL.md) | a line story read on paper: each quest an outline with its sketch, passing `python3 -m tools.questform sketch` |
-| 2 | Each quest as a record that compiles to the form | [quest-write](../quest-write/SKILL.md) | the record in the database; its form passing `check` and `reach` |
+| 2 | Each quest as a record that compiles to the form, with what the player is given at each stage | [quest-write](../quest-write/SKILL.md) | the record in the database (a new-world record as its YAML view until its places are in it); its form passing `check` and `reach` |
 | 3 | A fresh review of the record | [quest-review](../quest-review/SKILL.md) | findings; nothing blocking left |
-| 4 | The designed quest played on paper | [quest-playtest](../quest-playtest/SKILL.md), moment 1 | runs kept; findings answered in the record |
+| 4 | The designed quest played on paper, milestone by milestone, until a run passes | [quest-playtest](../quest-playtest/SKILL.md), moment 1 | a passing run per way through; its notes carried to the next quest |
 | 5 | The quest's dialogue, then its review | [dialogue-write](../dialogue-write/SKILL.md), [text-review](../text-review/SKILL.md) (its style reader, and its truth reader against the speaker's measured surroundings) | lines in `story/data/quest_lines/`; review hits applied |
 | 6 | The written quest played on paper | quest-playtest, moment 2 | runs kept; findings answered |
 | 7 | Records into the game | [quest-build](../quest-build/SKILL.md) | the plugin seeded, read back, compared to zero, checked |
@@ -106,7 +106,8 @@ only what the player has just done; nothing is said that the game's systems do n
 
 - **A minor quest** (one place's people, no line) starts at step 2 from a premise; steps 3 to 9 are the same.
 - **A whole line** runs step 1 once, then steps 2 to 8 per quest in the line's order, so each later quest is played
-  with the earlier ones' state (`--after`).
+  with what the player knew at the end of the one before (`--know` its passing run's notes) and its state
+  (`--after`).
 - **Going back.** A finding goes to the step whose output holds the fault (quest-playtest says whose each finding
   is), and every step after it is run again only where what the player meets changed.
 - **Settlement talk** (everyone a player can walk up to, not only a quest's people) is [talk-write](../talk-write/SKILL.md),
@@ -124,8 +125,7 @@ only what the player has just done; nothing is said that the game's systems do n
 
 ## How rounds converge
 
-Every review step (story readers, quest reviewers, paper players, text readers) runs in rounds, and rounds never
-chase each other:
+Every review step (story readers, quest reviewers, text readers) runs in rounds, and rounds never chase each other:
 
 1. In one round every reader reads **the same version**.
 2. The author gathers **all** their findings before changing anything.
@@ -134,9 +134,13 @@ chase each other:
 4. The next round's **fresh readers judge the set whole**.
 
 Readers are evidence, not votes: agreement across readers is a finding, one reader's preference is not, and a
-reader's call on look goes to the owner instead. Each persona is an honest player who is a little hard to please and
-says so plainly, never a critic paid to find fault. A round ends the loop when it raises nothing blocking and
-nothing new the author agrees with.
+reader's call on look goes to the owner instead. A round ends the loop when it raises nothing blocking and nothing
+new the author agrees with.
+
+Paper players are not readers and give no opinions. Each run is one fresh player who says at every milestone what is
+going on, what they will do next and what options they have; the writer grades the answers against the record's
+information plan, answers every miss, and plays it again with a fresh player until a run passes
+([quest-playtest](../quest-playtest/SKILL.md)).
 
 ## Where the bar and the research live
 

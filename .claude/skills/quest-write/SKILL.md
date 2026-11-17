@@ -148,6 +148,39 @@ general.md's table of dramatic jobs, never scripted.
 13. **Simple and active.** At most two real choices and three endings; about 8 stages for a middle-sized quest, 12
     for a large one. Action, danger and discovery drive it; law and procedure are background, never the climax.
 
+## 3a. What the player is given, and when
+
+A player with only what the game shows must always know what is going on, what they are expected to do next and
+what options they have. The writer works this out stage by stage, before the stage's words are final, and writes it
+into the stage's `information` (quest-record.md §1) and the quest's `terms`:
+
+1. **For each shown stage, say what the player must have from here on**: `going` (who they work for, what has
+   happened, why it matters), `next` (the one step owed, and where), `ways` (each way through by skill, and any
+   choice with what it gives and costs).
+2. **Give every point a channel on the path**, and list it in `carriers`:
+   - *the journal entry* (what they just did, why, "I'm to ..." for the step) and *the objective* (the toast and the
+     quest list: an imperative naming the place or person as the game shows them);
+   - *a marker* on every person, door, container or thing the step needs, and on the place when it is far;
+   - *a line on the path* (a speaks-first line, or a topic the step moves through) for every fact the plot needs:
+     who sent them and why, what the thing is, what the person wants;
+   - *names the game shows*: a door's destination ("Vosh-Leera's House"), a container's owner ("Dralin's
+     Strongbox"), a person's name and a named thing ("Jar of Hist Sap") so the player can tell them on sight;
+   - *a message box* for what happens off screen or in a vision, and *a note or book to read* where the fact is
+     written in the world.
+   An optional topic is never the only channel for something the next step needs.
+3. **Plan when each fact lands.** A fact comes at the step that needs it, said plainly once; the journal repeats
+   only what the next step relies on. Where the plot keeps a question open on purpose (a mystery), the plan says the
+   player knows the question, and the journal writes it down.
+4. **Name the ways through in words.** Where the player may fight, sneak, pick, pickpocket, persuade or pay, the
+   entry or the giver's line says so, and a marker shows the key, the cage or the person for each way.
+5. **Give every new term a gloss and a topic.** Each Jel word, name, faction, rank or piece of lore met here is a
+   `terms` row: told plainly on the path at first use (a few words beside it), and a topic the player can pick to
+   hear more: what the Jel word means, the faction's history and name, the person's backstory. Those topics stay
+   open to the end of the line wherever their speaker stands.
+6. **Hand over between quests.** The last stage says where the next quest starts and why, with a marker on the
+   person or place; a report back is written out as the lines that say what the handler makes of the find and where
+   the player goes next.
+
 ## 4. Write the record in order
 
 The sections are those of [quest-record.md](quest-record.md) §2.
@@ -173,9 +206,11 @@ The sections are those of [quest-record.md](quest-record.md) §2.
    player gains and loses in play, who pays and where the player sees it, and the record's `world` and `rewards`
    actions that build each row; fixed rewards.
 10. **Journal text** is each stage's `journalText` in the record, its one home; a rewrite from the journal brief is
-    written back there.
+    written back there. With it, each shown stage's `information` (§3a).
+10b. **Terms**: the quest's `terms` (§3a step 5).
 11. **Topics**, per person and stage window, in the order the player meets them:
     - the prompt is a sentence the player would say with only the names and facts they have then, never a bare label;
+    - the `intent` says in plain words every fact the line gives (quest-record.md, the topics section);
     - a line that sets a stage the journal relies on never refuses;
     - a question the speaker asks has one answer topic per reply; otherwise the speaker tells;
     - every person the quest places answers "Who are you?" in each window the player can reach them, true of where
@@ -218,7 +253,9 @@ Run until all pass, before anyone else reads the quest:
 
 1. [quest-review](../quest-review/SKILL.md) by a `quest-reviewer` agent that has not seen your reasoning. Answer
    every finding in the record's `review` (fixed, or why it stands); set `recordStatus: reviewed`.
-2. [quest-playtest](../quest-playtest/SKILL.md), moment 1, on the designed form; its findings come back here.
+2. [quest-playtest](../quest-playtest/SKILL.md), moment 1, on the designed record, with `--know` the notes of the
+   line's quest before: grade it against the stages' `information`, answer every miss in the record's channels, and
+   play it again with a fresh player until a run passes on every way through.
 3. The briefs: `python3 .claude/skills/quest-write/brief.py <quest id> <out dir>` writes one brief per person with
    topics in the record (every person the quest places has at least "Who are you?") and a journal brief. It writes nothing while the record is not whole
    (a missing reference, vocabulary term, `shapeData` section or ending, a step with no skill, a form that fails its

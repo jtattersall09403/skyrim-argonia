@@ -49,6 +49,7 @@ quest.local.lq25` (local).
 | + `actions` / `approaches` | `{skill, use, target, setting, note}` from `skill-uses.yaml`; approaches are `{id, actions}` (principles/actions.md). Supporting acts as `{system, use}` |
 | + `learns` | fact ids the player learns here (player knowledge is computed from these) |
 | + `directions` | how the player finds the place in words (landmarks, the way, compass points and a word for how far, never a count; against the real route network), written into the journal entry beside the objective's target |
+| + `information` | the stage's information plan: what the player must have from this point on, written before any paper run and graded against by it (quest-playtest §1). `going`: what is going on, as the player should be able to say it now; `next`: what they are expected to do next, and where; `ways`: each way through or choice open to them; `carriers`: `{know, by}` for each point of those three, `by` listing every channel that gives it: `journal`, `objective`, `marker:<ref>`, `line:<topic id>` (a line on the path), `name:<ref>` (what the game shows on a door, container, person or thing), `read:<ref>`, `look:<ref>`, `message:<stage>`, and `ask:<topic id>` for a topic the player may pick. Every point has a channel other than `ask:` |
 
 ## 2. The record's sections (added to the object, written in this order)
 
@@ -66,8 +67,14 @@ quest.local.lq25` (local).
 | 9 | `shapeData` | the sections each shape requires (`shapes.yaml`) | truth + clues |
 | 10 | `stages` | as §1, with actions, learns and directions | conclusions + clues |
 | 11 | `endings` | `{id, when, world (actions, may be left out), seen, rewards (actions)}`: two or more with real costs | stages |
+| 11b | `terms` | every word, name, person and piece of lore the player meets for the first time in this quest: `{term, meets, told, ask}`: the stage and channel where they first meet it; the line or entry on the path that says plainly what it is at that point; the topic id the player can pick to hear more (a Jel word and its meaning, a faction's history, a person's backstory). A term the quest relies on is never met before it is told | stages + topics |
 | 12 | `topics` | `{id: topic.<slug>, label, person, kind, stages, essential, when, intent, fallback, uses, hides, grants}`; the id is an existing `topic` row or `new`; `kind` is left out for a topic the player picks, `greeting`, or `speaks-first` (the quest's one force-greet: placed a step from the door the player arrives through, the person greets them there; it stays open as a topic too). `when` gates every line of the topic (a hand-in that moves no stage: `hasItem`); `fallback` is what the person says when the line's check fails, its gist until the lines are written. See "Checks and their fallbacks" below | cast + stages |
 | 13 | `review` | the `quest-review` findings and how each was answered; first the writer's lore-check entries (`id: L<n>`, `severity: lore`, quest-write §5), then the reviewer's (`severity: blocking` for a quest-review §1 blocking item, otherwise `high`, `medium`, `low`) | quest-write §5, quest-review |
+
+A topic's `intent` says in plain words every fact its line will give, as the speaker would tell it ("The Toh-Reel-Ka
+are the Xeech-Leel's secret warriors, made after Umbriel so that no tree can be turned on the marsh again"), never
+what the line does ("explains the order"): it is what the paper player reads until the lines are written, and the
+brief the dialogue writer keeps to.
 
 A **line record** (faction, main, Daedric) comes before its quests: `principles/questlines.md` lists its sections.
 
@@ -115,6 +122,16 @@ A key opens a lock, but what an owned container holds stays its owner's: taking 
 player have it (she gives or sells the key and means the jar to go), the stage that gives the key also carries
 `giveOwnership: <the container's ref>`.
 
+### A record whose places are not in the story database yet
+
+The new world's places are drafted in `newworld/`, not in the story database's `place` table, so its quests' records
+cannot be imported yet. Such a record is kept as its YAML view at `newworld/story/quests/<line>/<code lower>.yaml`
+(the main quest's line is `main`), in this same form: its `settlement`, `anchorPlaces` and each stage's `place` are
+the new world's place ids (`yulca`, `jal-veesa`); each new placement is anchored `{place: <new-world place id>, rule,
+need: <what the place must have here, as the player would call it on sight>}` with no `at` until the place is built,
+and the place's build takes each `need` as a promise. The paper player plays it directly (quest-playtest §2). It is
+imported, compiled and checked when its places are in the story database.
+
 ## 3. How the record becomes the game
 
 `python3 -m tools.questform compile <quest id>` turns the record into its quest form; the
@@ -133,7 +150,7 @@ every form ("How a form becomes records" there).
 | `placements` | refs: existing, or placed by anchor, in a container or carried, with lock, owner, level and `at` |
 | `topics` and the written lines (`story/data/quest_lines/<code>.json`) | lines in the record's order, with conditions, results, windows; a gist until written |
 | `things[].name`, `text` for items that are not refs | `names`, `texts` |
-| `actionPlan`, `actions`, `approaches`, `truth`, `facts`, `cast`, `conclusions`, `clues`, `shapeData`, `playerStart`, `learns`, `centrepiece`, `review` | design only: read by `brief.py` and `quest-review`; not built |
+| `actionPlan`, `actions`, `approaches`, `truth`, `facts`, `cast`, `conclusions`, `clues`, `shapeData`, `playerStart`, `learns`, `information`, `terms`, `centrepiece`, `review` | design only: read by `brief.py` and `quest-review`; not built |
 
 ## 4. Journal rules
 
