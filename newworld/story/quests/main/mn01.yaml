@@ -1,0 +1,965 @@
+# MN01 No Name on the Work Roll: the quest record's YAML view (a record whose places are not in the story database
+# yet: quest-record.md "A record whose places are not in the story database yet"). The main quest's opening.
+id: quest.main.mn01
+code: MN01
+title: No Name on the Work Roll
+line: quest.line.main
+group: main
+tier: 0
+status: concept
+shapes: [BONDAGE]
+region: barsaebica
+settlement: outpost-m13-m65
+anchorPlaces: [outpost-m13-m65]
+premise: A stranger sent up the river on an Owing barge gives the gang's cook their name and trade in the barge's hold,
+  and is freed on the landing by a sour gang-master on an order from Vosh-Leera of Jal-Veesa.
+costTier: M
+milestone: 1
+touches:
+- {id: npc.mn.okeeh, access: write}
+- {id: npc.mn.dralin-uveran, access: write}
+- {id: npc.mn.vosh-leera, access: read}
+- {id: npc.mn.jal-veesa-minder, access: read}
+- {id: flag.main.thread-severed, access: write}
+- {id: topic.mn-hist, access: write}
+- {id: topic.mn-jal-veesa, access: write}
+- {id: topic.mn-owing, access: write}
+sources: [story/design/quests/lines/main-plot.md §1 §2 §5 quest 1 §9, story/design/owner-bar.md]
+essentialTopics: [topic.mn01-where, topic.mn01-name, topic.mn01-trade, topic.mn01-dralin-free]
+start: 10
+recordStatus: design
+foundation: 'Built from main-plot.md §5 quest 1 (passed by the owner, 2026-11-17) and §1. The game opens in the hold
+  of the Owing barge moored at Ashgate Landing; the hold''s door is locked. Okeeh, the gang''s cook, asks the player''s
+  name (the "player''s name set from a conversation" block: the stage after her line opens the game''s own name entry)
+  and their trade (a profession as in Morrowind: each answer sets a stage that raises five skills by five; one answer
+  lets the player name their own five, one at a time, each pick a stage that raises that skill by five). When the trade
+  is given the door is unlocked from outside. Dralin Uveran, the gang-master, speaks first on the landing (the quest''s
+  one speaks-first line), says the player''s name was struck from his roll this morning on Vosh-Leera''s order, and
+  sends them to her house in Jal-Veesa, passing on the tree-minder''s request for Sithis'' beard from Reed-Sill Weir on
+  the way. The player''s pack holds two lockpicks. MN02 starts on this quest''s stage 90 and carries the markers on the
+  weir''s moss and on Vosh-Leera''s door. The side quest What the Herald Sent is left out: the main quest only. Okeeh and
+  Dralin first answer the line''s shared topics Hist, Jal-Veesa and the Owing.'
+recordSources:
+  place: outpost-m13-m65 (place card --mined, 2026-11-17); the barge's hold is Black Marsh & Valenwood's interior cell
+    01dock3to4 ("Ship"), main-plot §9 "The barge"
+  lore: [story/lore/topics/hist-and-sap.md (lines 15-16, 31-32, 54-56, 78-80, 106-107), 'story/lore/extrapolation/argonia-4e201-state.md
+      §1, §2.5', story/lore/topics/labour-and-bondage.md (the Owing), story/design/province-vibe.md §5 §9]
+centrepiece: CHOOSE
+actionPlan:
+- {skill: Speech, use: persuade, reason: 'none needed: the opening has no check; the player''s profession picks their skills, which every later quest uses'}
+- {skill: Lockpicking, use: pick-a-lock, reason: 'the player starts with two lockpicks for the early quests'' Novice locks (owner-bar: a skill way a level-one character can do)'}
+truth:
+- id: t1
+  when: four days before the game opens
+  who: [npc.mn.okeeh]
+  where: Stormhold's river landing
+  what: The player, a stranger with no kin in the marsh, was given months of the Owing for a debt and put on the barge
+    with a new reed gang bound for Ashgate Landing. Nobody on the barge knows them.
+- id: t2
+  when: the night before the game opens
+  who: [npc.mn.dralin-uveran]
+  where: Ashgate Landing
+  what: The barge moored in the river pool below the camp. Dralin locked the new gang in the hold to sleep, as he does
+    with every new gang until their names are on his roll.
+- id: t3
+  when: the morning the game opens
+  who: [npc.mn.vosh-leera, npc.mn.dralin-uveran]
+  where: Ashgate Landing
+  what: Vosh-Leera, root-herald of Jal-Veesa, came down the road with an order that the stranger's months be struck
+    from the roll. Dralin cannot refuse a root-herald. He struck the name and lost a cutter he had paid for. She did not
+    say why, and went back to Jal-Veesa. (She acts for the Toh-Reel-Ka, who comb the gangs for strangers with no kin;
+    the player learns that in MN02.)
+- id: t4
+  when: the morning the game opens
+  who: [npc.mn.jal-veesa-minder]
+  where: Jal-Veesa
+  what: Weeltul, Jal-Veesa's tree-minder, has asked every gang on the river for Sithis' beard, a grey moss that hangs
+    over the creek below Reed-Sill Weir, to warm her sick tree's cooling egg-pool.
+playerStart: [The player knows nothing of the marsh, the gang or why they are here.]
+facts:
+- {id: fact.mn01.where, claim: 'The player is in the hold of an Owing barge moored at Ashgate Landing, a reed-cutters''
+    camp on the river west of Loriasel, in Black Marsh.', from: t2}
+- {id: fact.mn01.owing, claim: 'The Owing is the marsh''s sentence: months of owed work in place of a cell. The gang
+    is here to serve its months cutting reed.', from: t1}
+- {id: fact.mn01.locked, claim: The hold's door is locked from outside until the gang-master takes the new gang's
+    names., from: t2}
+- {id: fact.mn01.struck, claim: 'The player''s name was struck from the gang-master''s roll this morning, on an order
+    brought by Vosh-Leera, the root-herald of Jal-Veesa: they owe no months and are free.', from: t3}
+- {id: fact.mn01.go-to-vosh, claim: 'Vosh-Leera wants to see the player at her house in Jal-Veesa, a town up the road
+    to the east.', from: t3}
+- {id: fact.mn01.moss, claim: 'Jal-Veesa''s tree-minder wants Sithis'' beard, a grey moss hanging over the creek below
+    Reed-Sill Weir, which is on the road to the town.', from: t4}
+- {id: fact.mn01.hist, claim: 'A Hist is a great thinking tree, the size of a tower, with pale grey bark, roots standing
+    out of the water and a pool of eggs at its foot; every Argonian village is built round one.', from: hist-and-sap.md}
+cast:
+- id: npc.mn.okeeh
+  persona: {status: invented, race: Argonian, sex: female, role: the reed gang's cook, home: outpost-m13-m65, voice: warm,
+    practical, curious about strangers}
+  wants: a gang that eats and works without trouble
+  fears: Dralin's temper on a short day
+  knowledge: {fact.mn01.where: knows, fact.mn01.owing: knows, fact.mn01.locked: knows, fact.mn01.hist: knows}
+  changes:
+  - {atStage: 90, fact: fact.mn01.struck, to: knows}
+- id: npc.mn.dralin-uveran
+  persona: {status: invented, race: Dunmer, sex: male, role: gang-master of Ashgate Landing, home: outpost-m13-m65,
+    voice: sour, clipped, fair to the letter}
+  wants: his roll full and his reed cut
+  fears: losing paid months to orders he cannot refuse
+  knowledge: {fact.mn01.struck: knows, fact.mn01.go-to-vosh: knows, fact.mn01.moss: knows, fact.mn01.owing: knows,
+    fact.mn01.hist: knows}
+- id: npc.mn.hara-jeel
+  persona: {status: invented, race: Argonian, sex: male, role: an Owing reed-cutter of the new gang, home: outpost-m13-m65,
+    voice: tired, wry}
+  wants: his months over
+  knowledge: {fact.mn01.owing: knows, fact.mn01.locked: knows}
+things:
+- id: thing.mn01.hold-door
+  kind: door
+  name: Ashgate Landing (from the hold); Barge Hold (from the landing)
+  source: new door on the barge (main-plot §9 "The barge"); locked, key-only, until a profession is chosen
+  states: {before-trade: locked, after-trade: unlocked}
+  where: the barge's hold, 01dock3to4, to the deck and the landing
+- id: thing.mn01.lockpicks
+  kind: item
+  source: two of Skyrim's lockpicks, given at stage 10 (in the player's pack at the start)
+  states: {all: carried}
+  where: the player's pack
+placements:
+- ref: npc.mn.okeeh
+  kind: person
+  base: {kind: template_person, id: 'new: Argonian female commoner'}
+  name: Okeeh
+  anchor: {place: outpost-m13-m65, rule: navmesh, need: 'in the barge''s hold (cell 01dock3to4), sitting by the hold''s
+      cook-pot a few steps from where the player wakes'}
+  enabled: true
+- ref: npc.mn.hara-jeel
+  kind: person
+  base: {kind: template_person, id: 'new: Argonian male commoner'}
+  name: Hara-Jeel
+  anchor: {place: outpost-m13-m65, rule: navmesh, need: 'in the barge''s hold, sitting on a crate across from Okeeh'}
+  enabled: true
+- ref: npc.mn.dralin-uveran
+  kind: person
+  base: {kind: template_person, id: 'new: Dunmer male in plain clothes'}
+  name: Dralin Uveran
+  anchor: {place: outpost-m13-m65, rule: navmesh, need: 'on the landing a step from the barge''s hold door, where the
+      player comes out (his speaks-first spot); from stage 90 his routine is the hut and the reed beds'}
+  enabled: true
+- ref: thing.mn01.hold-door
+  kind: door
+  base: {kind: existing_base, id: 'a wooden ship door of Black Marsh.esm'}
+  anchor: {place: outpost-m13-m65, rule: surface, need: 'the barge''s hold (01dock3to4) joined to the landing by a load
+      door that shows "Ashgate Landing" from inside and "Barge Hold" from outside'}
+  lock: {level: key, key: thing.mn01.hold-key}
+  enabled: true
+  placeName: Barge Hold
+- ref: thing.mn01.hold-key
+  kind: thing
+  base: {kind: item, id: thing.mn01.hold-key}
+  carriedBy: npc.mn.dralin-uveran
+  enabled: true
+conclusions:
+- id: c1
+  statement: The player is free of the Owing because someone powerful in Jal-Veesa wanted it, and must go there to learn
+    why.
+  clues: [k1, k2, k3]
+clues:
+- {id: k1, kind: lead, form: line, carrier: npc.mn.dralin-uveran, gives: [fact.mn01.struck], supports: [c1]}
+- {id: k2, kind: lead, form: line, carrier: npc.mn.dralin-uveran, gives: [fact.mn01.go-to-vosh], supports: [c1]}
+- {id: k3, kind: concept, form: line, carrier: npc.mn.okeeh, gives: [fact.mn01.owing], supports: [c1]}
+shapeData:
+  bond: the Owing, months of work owed in place of a cell (labour-and-bondage)
+  holder: Dralin Uveran, the gang-master, who keeps the roll
+  release: an order from a root-herald that he cannot refuse
+  cost: Dralin loses a cutter he paid for and is sour about it; the player owes a stranger for their freedom
+stages:
+- id: 10
+  place: outpost-m13-m65
+  journal: text.journal.mn01.10
+  journalText: I woke in the hold of a barge with a gang of strangers. The door is locked. The cook, an Argonian woman
+    named Okeeh, is watching me. I'm to speak to her and find out where I am.
+  onEnter:
+  - giveItem: [item.lockpick, 2]
+  objectives:
+  - id: okeeh
+    text: text.objective.mn01.okeeh
+    objectiveText: Speak to Okeeh in the barge's hold.
+    target: npc.mn.okeeh
+    completeWhen: {questStage: [quest.main.mn01, ≥, 20]}
+  successors:
+  - to: 20
+    when: {topicHeardFrom: [topic.mn01-name, npc.mn.okeeh]}
+  failForward:
+  - to: 95
+    when: {not: {npcAlive: npc.mn.okeeh}}
+  information:
+    going: I am in a locked ship's hold with strangers and know nothing else.
+    next: Speak to Okeeh, the woman watching me.
+    ways: There is one way on, to talk to her. I carry two lockpicks, but the door has no lock I can pick.
+    carriers:
+    - {know: I am locked in a hold with strangers, by: [journal, look:thing.mn01.hold-door, name:thing.mn01.hold-door]}
+    - {know: Okeeh is the one to speak to, by: [journal, objective, marker:npc.mn.okeeh, name:npc.mn.okeeh]}
+- id: 20
+  place: outpost-m13-m65
+  journal: text.journal.mn01.20
+  journalText: Okeeh told me where I am. This is the hold of an Owing barge moored at Ashgate Landing, a reed-cutters'
+    camp in Black Marsh, and the gang here are sent to cut reed for the months they owe. I gave her my name. I'm to tell
+    her what my trade was.
+  onEnter:
+  - {setPlayerName: true}
+  objectives:
+  - id: trade
+    text: text.objective.mn01.trade
+    objectiveText: Tell Okeeh your trade.
+    target: npc.mn.okeeh
+    completeWhen: {questStage: [quest.main.mn01, ≥, 30]}
+  successors:
+  - {to: 31, when: {topicHeardFrom: [topic.mn01-trade-warrior, npc.mn.okeeh]}}
+  - {to: 32, when: {topicHeardFrom: [topic.mn01-trade-hunter, npc.mn.okeeh]}}
+  - {to: 33, when: {topicHeardFrom: [topic.mn01-trade-thief, npc.mn.okeeh]}}
+  - {to: 34, when: {topicHeardFrom: [topic.mn01-trade-battlemage, npc.mn.okeeh]}}
+  - {to: 35, when: {topicHeardFrom: [topic.mn01-trade-healer, npc.mn.okeeh]}}
+  - {to: 36, when: {topicHeardFrom: [topic.mn01-trade-nightblade, npc.mn.okeeh]}}
+  - {to: 37, when: {topicHeardFrom: [topic.mn01-trade-own, npc.mn.okeeh]}}
+  failForward:
+  - to: 95
+    when: {not: {npcAlive: npc.mn.okeeh}}
+  learns: [fact.mn01.where, fact.mn01.owing, fact.mn01.locked]
+  information:
+    going: 'I am in the hold of an Owing barge at Ashgate Landing, a reed-cutters'' camp in Black Marsh. The Owing is
+      the marsh''s sentence: months of owed work in place of a cell. The door stays locked until the gang-master takes
+      the new gang''s names.'
+    next: Tell Okeeh what my trade was.
+    ways: 'Seven answers: warrior, hunter, thief, battlemage, healer, nightblade (each names the five skills it raises
+      by five), or naming my own five skills one by one.'
+    carriers:
+    - {know: where I am and what the Owing is, by: [journal, line:topic.mn01-where, ask:topic.mn-owing]}
+    - {know: the door opens when the gang-master takes names, by: [line:topic.mn01-where]}
+    - {know: 'tell her my trade, and what each trade gives', by: [journal, objective, marker:npc.mn.okeeh, line:topic.mn01-trade]}
+- id: 31
+  place: outpost-m13-m65
+  journal: text.journal.mn01.31
+  journalText: I told Okeeh I was a warrior. Someone has unbarred the hold's door from outside. I'm to go out onto the
+    landing.
+  onEnter: [{raiseSkill: [OneHanded, 5]}, {raiseSkill: [TwoHanded, 5]}, {raiseSkill: [Block, 5]}, {raiseSkill: [HeavyArmor,
+        5]}, {raiseSkill: [Smithing, 5]}, {setDoorAccess: [thing.mn01.hold-door, unlocked]}]
+  objectives: &out
+  - id: out
+    text: text.objective.mn01.out
+    objectiveText: Go out onto the landing.
+    target: thing.mn01.hold-door
+    completeWhen: {questStage: [quest.main.mn01, ≥, 90]}
+  successors: &dralin
+  - to: 90
+    when: {topicHeardFrom: [topic.mn01-dralin-free, npc.mn.dralin-uveran]}
+  failForward: &dralin-dead
+  - to: 96
+    when: {not: {npcAlive: npc.mn.dralin-uveran}}
+  information: &out-info
+    going: My trade is told and the hold's door is open. Someone on the landing must have opened it.
+    next: Go out through the door onto the landing.
+    ways: One way, through the door.
+    carriers:
+    - {know: the door is open and I am to go out, by: [journal, objective, marker:thing.mn01.hold-door, name:thing.mn01.hold-door]}
+- id: 32
+  place: outpost-m13-m65
+  journal: text.journal.mn01.32
+  journalText: I told Okeeh I was a hunter. Someone has unbarred the hold's door from outside. I'm to go out onto the
+    landing.
+  onEnter: [{raiseSkill: [Archery, 5]}, {raiseSkill: [Sneak, 5]}, {raiseSkill: [LightArmor, 5]}, {raiseSkill: [Alchemy,
+        5]}, {raiseSkill: [OneHanded, 5]}, {setDoorAccess: [thing.mn01.hold-door, unlocked]}]
+  objectives: *out
+  successors: *dralin
+  failForward: *dralin-dead
+  information: *out-info
+- id: 33
+  place: outpost-m13-m65
+  journal: text.journal.mn01.33
+  journalText: I told Okeeh I was a thief. Someone has unbarred the hold's door from outside. I'm to go out onto the
+    landing.
+  onEnter: [{raiseSkill: [Sneak, 5]}, {raiseSkill: [Lockpicking, 5]}, {raiseSkill: [Pickpocket, 5]}, {raiseSkill: [Speechcraft,
+        5]}, {raiseSkill: [LightArmor, 5]}, {setDoorAccess: [thing.mn01.hold-door, unlocked]}]
+  objectives: *out
+  successors: *dralin
+  failForward: *dralin-dead
+  information: *out-info
+- id: 34
+  place: outpost-m13-m65
+  journal: text.journal.mn01.34
+  journalText: I told Okeeh I was a battlemage. Someone has unbarred the hold's door from outside. I'm to go out onto
+    the landing.
+  onEnter: [{raiseSkill: [Destruction, 5]}, {raiseSkill: [Alteration, 5]}, {raiseSkill: [Conjuration, 5]}, {raiseSkill: [
+        OneHanded, 5]}, {raiseSkill: [HeavyArmor, 5]}, {setDoorAccess: [thing.mn01.hold-door, unlocked]}]
+  objectives: *out
+  successors: *dralin
+  failForward: *dralin-dead
+  information: *out-info
+- id: 35
+  place: outpost-m13-m65
+  journal: text.journal.mn01.35
+  journalText: I told Okeeh I was a healer. Someone has unbarred the hold's door from outside. I'm to go out onto the
+    landing.
+  onEnter: [{raiseSkill: [Restoration, 5]}, {raiseSkill: [Alchemy, 5]}, {raiseSkill: [Illusion, 5]}, {raiseSkill: [Alteration,
+        5]}, {raiseSkill: [Speechcraft, 5]}, {setDoorAccess: [thing.mn01.hold-door, unlocked]}]
+  objectives: *out
+  successors: *dralin
+  failForward: *dralin-dead
+  information: *out-info
+- id: 36
+  place: outpost-m13-m65
+  journal: text.journal.mn01.36
+  journalText: I told Okeeh I was a nightblade. Someone has unbarred the hold's door from outside. I'm to go out onto
+    the landing.
+  onEnter: [{raiseSkill: [Illusion, 5]}, {raiseSkill: [Sneak, 5]}, {raiseSkill: [OneHanded, 5]}, {raiseSkill: [Destruction,
+        5]}, {raiseSkill: [LightArmor, 5]}, {setDoorAccess: [thing.mn01.hold-door, unlocked]}]
+  objectives: *out
+  successors: *dralin
+  failForward: *dralin-dead
+  information: *out-info
+- id: 37
+  place: outpost-m13-m65
+  journal: text.journal.mn01.37
+  journalText: I told Okeeh my trade was none of hers to name. She asked me for the five things I do best. I'm to name
+    five skills to her, one at a time.
+  onEnter:
+  - addCounter: [counter.mn01.picks-left, 5]
+  objectives: &pick
+  - id: pick
+    text: text.objective.mn01.pick
+    objectiveText: Name your five best skills to Okeeh.
+    target: npc.mn.okeeh
+    completeWhen: {questStage: [quest.main.mn01, ≥, 40]}
+  successors: &picks
+  - to: 101
+    when: {all: [{topicHeardFrom: [topic.mn01-pick-one-handed, npc.mn.okeeh]}, {counterAtLeast: [counter.mn01.picks-left, 1]}, {flag: [flag.mn01.pick-one-handed, false]}]}
+  - to: 102
+    when: {all: [{topicHeardFrom: [topic.mn01-pick-two-handed, npc.mn.okeeh]}, {counterAtLeast: [counter.mn01.picks-left, 1]}, {flag: [flag.mn01.pick-two-handed, false]}]}
+  - to: 103
+    when: {all: [{topicHeardFrom: [topic.mn01-pick-archery, npc.mn.okeeh]}, {counterAtLeast: [counter.mn01.picks-left, 1]}, {flag: [flag.mn01.pick-archery, false]}]}
+  - to: 104
+    when: {all: [{topicHeardFrom: [topic.mn01-pick-block, npc.mn.okeeh]}, {counterAtLeast: [counter.mn01.picks-left, 1]}, {flag: [flag.mn01.pick-block, false]}]}
+  - to: 105
+    when: {all: [{topicHeardFrom: [topic.mn01-pick-heavy-armor, npc.mn.okeeh]}, {counterAtLeast: [counter.mn01.picks-left, 1]}, {flag: [flag.mn01.pick-heavy-armor, false]}]}
+  - to: 106
+    when: {all: [{topicHeardFrom: [topic.mn01-pick-light-armor, npc.mn.okeeh]}, {counterAtLeast: [counter.mn01.picks-left, 1]}, {flag: [flag.mn01.pick-light-armor, false]}]}
+  - to: 107
+    when: {all: [{topicHeardFrom: [topic.mn01-pick-smithing, npc.mn.okeeh]}, {counterAtLeast: [counter.mn01.picks-left, 1]}, {flag: [flag.mn01.pick-smithing, false]}]}
+  - to: 108
+    when: {all: [{topicHeardFrom: [topic.mn01-pick-destruction, npc.mn.okeeh]}, {counterAtLeast: [counter.mn01.picks-left, 1]}, {flag: [flag.mn01.pick-destruction, false]}]}
+  - to: 109
+    when: {all: [{topicHeardFrom: [topic.mn01-pick-alteration, npc.mn.okeeh]}, {counterAtLeast: [counter.mn01.picks-left, 1]}, {flag: [flag.mn01.pick-alteration, false]}]}
+  - to: 110
+    when: {all: [{topicHeardFrom: [topic.mn01-pick-illusion, npc.mn.okeeh]}, {counterAtLeast: [counter.mn01.picks-left, 1]}, {flag: [flag.mn01.pick-illusion, false]}]}
+  - to: 111
+    when: {all: [{topicHeardFrom: [topic.mn01-pick-conjuration, npc.mn.okeeh]}, {counterAtLeast: [counter.mn01.picks-left, 1]}, {flag: [flag.mn01.pick-conjuration, false]}]}
+  - to: 112
+    when: {all: [{topicHeardFrom: [topic.mn01-pick-restoration, npc.mn.okeeh]}, {counterAtLeast: [counter.mn01.picks-left, 1]}, {flag: [flag.mn01.pick-restoration, false]}]}
+  - to: 113
+    when: {all: [{topicHeardFrom: [topic.mn01-pick-enchanting, npc.mn.okeeh]}, {counterAtLeast: [counter.mn01.picks-left, 1]}, {flag: [flag.mn01.pick-enchanting, false]}]}
+  - to: 114
+    when: {all: [{topicHeardFrom: [topic.mn01-pick-alchemy, npc.mn.okeeh]}, {counterAtLeast: [counter.mn01.picks-left, 1]}, {flag: [flag.mn01.pick-alchemy, false]}]}
+  - to: 115
+    when: {all: [{topicHeardFrom: [topic.mn01-pick-sneak, npc.mn.okeeh]}, {counterAtLeast: [counter.mn01.picks-left, 1]}, {flag: [flag.mn01.pick-sneak, false]}]}
+  - to: 116
+    when: {all: [{topicHeardFrom: [topic.mn01-pick-lockpicking, npc.mn.okeeh]}, {counterAtLeast: [counter.mn01.picks-left, 1]}, {flag: [flag.mn01.pick-lockpicking, false]}]}
+  - to: 117
+    when: {all: [{topicHeardFrom: [topic.mn01-pick-pickpocket, npc.mn.okeeh]}, {counterAtLeast: [counter.mn01.picks-left, 1]}, {flag: [flag.mn01.pick-pickpocket, false]}]}
+  - to: 118
+    when: {all: [{topicHeardFrom: [topic.mn01-pick-speech, npc.mn.okeeh]}, {counterAtLeast: [counter.mn01.picks-left, 1]}, {flag: [flag.mn01.pick-speech, false]}]}
+  - to: 40
+    when: {all: [{topicHeardFrom: [topic.mn01-picks-done, npc.mn.okeeh]}, {counterAtLeast: [counter.mn01.picked, 5]}]}
+  failForward: &okeeh-dead
+  - to: 95
+    when: {not: {npcAlive: npc.mn.okeeh}}
+  information: &pick-info
+    going: I am naming my own five skills to Okeeh instead of a trade; each one I name rises by five.
+    next: Name to Okeeh the skills I have not named yet until I have named five, then tell her that is all.
+    ways: Any of the eighteen skills, each once; when five are named, the line "That is all I do" ends it.
+    carriers:
+    - {know: 'name five skills, one at a time, then say that is all', by: [journal, objective, marker:npc.mn.okeeh, line:topic.mn01-trade-own]}
+- id: 101
+  place: outpost-m13-m65
+  journal: text.journal.mn01.101
+  journalText: I named One-Handed to Okeeh as one of my five. I'm to name the rest, then tell her that is all.
+  onEnter: [{raiseSkill: [OneHanded, 5]}, {setFlag: [flag.mn01.pick-one-handed, true]}, {addCounter: [counter.mn01.picks-left, -1]}, {addCounter: [counter.mn01.picked, 1]}]
+  objectives: *pick
+  successors: *picks
+  failForward: *okeeh-dead
+  information: *pick-info
+- id: 102
+  place: outpost-m13-m65
+  journal: text.journal.mn01.102
+  journalText: I named Two-Handed to Okeeh as one of my five. I'm to name the rest, then tell her that is all.
+  onEnter: [{raiseSkill: [TwoHanded, 5]}, {setFlag: [flag.mn01.pick-two-handed, true]}, {addCounter: [counter.mn01.picks-left, -1]}, {addCounter: [counter.mn01.picked, 1]}]
+  objectives: *pick
+  successors: *picks
+  failForward: *okeeh-dead
+  information: *pick-info
+- id: 103
+  place: outpost-m13-m65
+  journal: text.journal.mn01.103
+  journalText: I named Archery to Okeeh as one of my five. I'm to name the rest, then tell her that is all.
+  onEnter: [{raiseSkill: [Archery, 5]}, {setFlag: [flag.mn01.pick-archery, true]}, {addCounter: [counter.mn01.picks-left, -1]}, {addCounter: [counter.mn01.picked, 1]}]
+  objectives: *pick
+  successors: *picks
+  failForward: *okeeh-dead
+  information: *pick-info
+- id: 104
+  place: outpost-m13-m65
+  journal: text.journal.mn01.104
+  journalText: I named Block to Okeeh as one of my five. I'm to name the rest, then tell her that is all.
+  onEnter: [{raiseSkill: [Block, 5]}, {setFlag: [flag.mn01.pick-block, true]}, {addCounter: [counter.mn01.picks-left, -1]}, {addCounter: [counter.mn01.picked, 1]}]
+  objectives: *pick
+  successors: *picks
+  failForward: *okeeh-dead
+  information: *pick-info
+- id: 105
+  place: outpost-m13-m65
+  journal: text.journal.mn01.105
+  journalText: I named Heavy Armor to Okeeh as one of my five. I'm to name the rest, then tell her that is all.
+  onEnter: [{raiseSkill: [HeavyArmor, 5]}, {setFlag: [flag.mn01.pick-heavy-armor, true]}, {addCounter: [counter.mn01.picks-left, -1]}, {addCounter: [counter.mn01.picked, 1]}]
+  objectives: *pick
+  successors: *picks
+  failForward: *okeeh-dead
+  information: *pick-info
+- id: 106
+  place: outpost-m13-m65
+  journal: text.journal.mn01.106
+  journalText: I named Light Armor to Okeeh as one of my five. I'm to name the rest, then tell her that is all.
+  onEnter: [{raiseSkill: [LightArmor, 5]}, {setFlag: [flag.mn01.pick-light-armor, true]}, {addCounter: [counter.mn01.picks-left, -1]}, {addCounter: [counter.mn01.picked, 1]}]
+  objectives: *pick
+  successors: *picks
+  failForward: *okeeh-dead
+  information: *pick-info
+- id: 107
+  place: outpost-m13-m65
+  journal: text.journal.mn01.107
+  journalText: I named Smithing to Okeeh as one of my five. I'm to name the rest, then tell her that is all.
+  onEnter: [{raiseSkill: [Smithing, 5]}, {setFlag: [flag.mn01.pick-smithing, true]}, {addCounter: [counter.mn01.picks-left, -1]}, {addCounter: [counter.mn01.picked, 1]}]
+  objectives: *pick
+  successors: *picks
+  failForward: *okeeh-dead
+  information: *pick-info
+- id: 108
+  place: outpost-m13-m65
+  journal: text.journal.mn01.108
+  journalText: I named Destruction to Okeeh as one of my five. I'm to name the rest, then tell her that is all.
+  onEnter: [{raiseSkill: [Destruction, 5]}, {setFlag: [flag.mn01.pick-destruction, true]}, {addCounter: [counter.mn01.picks-left, -1]}, {addCounter: [counter.mn01.picked, 1]}]
+  objectives: *pick
+  successors: *picks
+  failForward: *okeeh-dead
+  information: *pick-info
+- id: 109
+  place: outpost-m13-m65
+  journal: text.journal.mn01.109
+  journalText: I named Alteration to Okeeh as one of my five. I'm to name the rest, then tell her that is all.
+  onEnter: [{raiseSkill: [Alteration, 5]}, {setFlag: [flag.mn01.pick-alteration, true]}, {addCounter: [counter.mn01.picks-left, -1]}, {addCounter: [counter.mn01.picked, 1]}]
+  objectives: *pick
+  successors: *picks
+  failForward: *okeeh-dead
+  information: *pick-info
+- id: 110
+  place: outpost-m13-m65
+  journal: text.journal.mn01.110
+  journalText: I named Illusion to Okeeh as one of my five. I'm to name the rest, then tell her that is all.
+  onEnter: [{raiseSkill: [Illusion, 5]}, {setFlag: [flag.mn01.pick-illusion, true]}, {addCounter: [counter.mn01.picks-left, -1]}, {addCounter: [counter.mn01.picked, 1]}]
+  objectives: *pick
+  successors: *picks
+  failForward: *okeeh-dead
+  information: *pick-info
+- id: 111
+  place: outpost-m13-m65
+  journal: text.journal.mn01.111
+  journalText: I named Conjuration to Okeeh as one of my five. I'm to name the rest, then tell her that is all.
+  onEnter: [{raiseSkill: [Conjuration, 5]}, {setFlag: [flag.mn01.pick-conjuration, true]}, {addCounter: [counter.mn01.picks-left, -1]}, {addCounter: [counter.mn01.picked, 1]}]
+  objectives: *pick
+  successors: *picks
+  failForward: *okeeh-dead
+  information: *pick-info
+- id: 112
+  place: outpost-m13-m65
+  journal: text.journal.mn01.112
+  journalText: I named Restoration to Okeeh as one of my five. I'm to name the rest, then tell her that is all.
+  onEnter: [{raiseSkill: [Restoration, 5]}, {setFlag: [flag.mn01.pick-restoration, true]}, {addCounter: [counter.mn01.picks-left, -1]}, {addCounter: [counter.mn01.picked, 1]}]
+  objectives: *pick
+  successors: *picks
+  failForward: *okeeh-dead
+  information: *pick-info
+- id: 113
+  place: outpost-m13-m65
+  journal: text.journal.mn01.113
+  journalText: I named Enchanting to Okeeh as one of my five. I'm to name the rest, then tell her that is all.
+  onEnter: [{raiseSkill: [Enchanting, 5]}, {setFlag: [flag.mn01.pick-enchanting, true]}, {addCounter: [counter.mn01.picks-left, -1]}, {addCounter: [counter.mn01.picked, 1]}]
+  objectives: *pick
+  successors: *picks
+  failForward: *okeeh-dead
+  information: *pick-info
+- id: 114
+  place: outpost-m13-m65
+  journal: text.journal.mn01.114
+  journalText: I named Alchemy to Okeeh as one of my five. I'm to name the rest, then tell her that is all.
+  onEnter: [{raiseSkill: [Alchemy, 5]}, {setFlag: [flag.mn01.pick-alchemy, true]}, {addCounter: [counter.mn01.picks-left, -1]}, {addCounter: [counter.mn01.picked, 1]}]
+  objectives: *pick
+  successors: *picks
+  failForward: *okeeh-dead
+  information: *pick-info
+- id: 115
+  place: outpost-m13-m65
+  journal: text.journal.mn01.115
+  journalText: I named Sneak to Okeeh as one of my five. I'm to name the rest, then tell her that is all.
+  onEnter: [{raiseSkill: [Sneak, 5]}, {setFlag: [flag.mn01.pick-sneak, true]}, {addCounter: [counter.mn01.picks-left, -1]}, {addCounter: [counter.mn01.picked, 1]}]
+  objectives: *pick
+  successors: *picks
+  failForward: *okeeh-dead
+  information: *pick-info
+- id: 116
+  place: outpost-m13-m65
+  journal: text.journal.mn01.116
+  journalText: I named Lockpicking to Okeeh as one of my five. I'm to name the rest, then tell her that is all.
+  onEnter: [{raiseSkill: [Lockpicking, 5]}, {setFlag: [flag.mn01.pick-lockpicking, true]}, {addCounter: [counter.mn01.picks-left, -1]}, {addCounter: [counter.mn01.picked, 1]}]
+  objectives: *pick
+  successors: *picks
+  failForward: *okeeh-dead
+  information: *pick-info
+- id: 117
+  place: outpost-m13-m65
+  journal: text.journal.mn01.117
+  journalText: I named Pickpocket to Okeeh as one of my five. I'm to name the rest, then tell her that is all.
+  onEnter: [{raiseSkill: [Pickpocket, 5]}, {setFlag: [flag.mn01.pick-pickpocket, true]}, {addCounter: [counter.mn01.picks-left, -1]}, {addCounter: [counter.mn01.picked, 1]}]
+  objectives: *pick
+  successors: *picks
+  failForward: *okeeh-dead
+  information: *pick-info
+- id: 118
+  place: outpost-m13-m65
+  journal: text.journal.mn01.118
+  journalText: I named Speech to Okeeh as one of my five. I'm to name the rest, then tell her that is all.
+  onEnter: [{raiseSkill: [Speechcraft, 5]}, {setFlag: [flag.mn01.pick-speech, true]}, {addCounter: [counter.mn01.picks-left, -1]}, {addCounter: [counter.mn01.picked, 1]}]
+  objectives: *pick
+  successors: *picks
+  failForward: *okeeh-dead
+  information: *pick-info
+- id: 40
+  place: outpost-m13-m65
+  journal: text.journal.mn01.40
+  journalText: I named my five skills to Okeeh. Someone has unbarred the hold's door from outside. I'm to go out onto
+    the landing.
+  onEnter: [{setDoorAccess: [thing.mn01.hold-door, unlocked]}]
+  objectives: *out
+  successors: *dralin
+  failForward: *dralin-dead
+  information: *out-info
+- id: 90
+  place: outpost-m13-m65
+  journal: text.journal.mn01.90
+  journalText: 'Dralin Uveran, the Dunmer gang-master of Ashgate Landing, met me on the landing. My name was struck from
+    his roll this morning, on an order brought by Vosh-Leera, the root-herald of Jal-Veesa, so I owe no months. He does
+    not know why she wants me, and he is sour about it. I''m to go to Vosh-Leera''s house in Jal-Veesa, east up the
+    road. On the way, at Reed-Sill Weir, the town''s tree-minder wants Sithis'' beard, a grey moss that hangs over the
+    creek below the weir.'
+  learns: [fact.mn01.struck, fact.mn01.go-to-vosh, fact.mn01.moss]
+  ending: complete
+  endingId: e-freed
+  directions: Jal-Veesa is east up the road from the camp's gate. Reed-Sill Weir is the first camp on the road, where
+    the road meets the creek, a short walk from the gate; the town is a little further on past the weir.
+  information:
+    going: 'I am free of the Owing: Vosh-Leera, root-herald of Jal-Veesa, had my name struck from the roll. I do not
+      know why.'
+    next: Go east up the road to Vosh-Leera's House in Jal-Veesa; on the way, pick Sithis' beard below Reed-Sill Weir
+      for the town's tree-minder. (MN02 carries the markers and objectives.)
+    ways: The moss is a favour on the road; Vosh-Leera is where the answers are.
+    carriers:
+    - {know: I am free and who freed me, by: [journal, line:topic.mn01-dralin-free]}
+    - {know: 'a root-herald speaks for a town and its tree', by: [line:topic.mn01-dralin-free, ask:topic.mn01-root-herald]}
+    - {know: go to Vosh-Leera's house in Jal-Veesa, by: [journal, line:topic.mn01-dralin-free, 'objective (MN02 stage 10)', 'marker:door.mn02.vosh-leera-house']}
+    - {know: pick Sithis' beard at Reed-Sill Weir on the way, by: [journal, line:topic.mn01-dralin-free, 'objective (MN02 stage 10)', 'marker:thing.mn02.sithis-beard']}
+    - {know: what a Hist is and that Jal-Veesa has one, by: [line:topic.mn01-dralin-free, ask:topic.mn-hist, ask:topic.mn-jal-veesa]}
+- {id: 95, place: outpost-m13-m65, journal: text.journal.mn01.95, journalText: Okeeh is dead. Nobody else in the hold
+    will speak for me, and the door stays shut., ending: failed, endingId: e-okeeh-dead}
+- {id: 96, place: outpost-m13-m65, journal: text.journal.mn01.96, journalText: 'Dralin Uveran is dead. Nobody at Ashgate
+    Landing can tell me who struck my name from the roll, or why.', ending: failed, endingId: e-dralin-dead}
+endings:
+- id: e-freed
+  when: Dralin told the player they are free and sent them to Vosh-Leera
+  seen: the hold's door stands open; Dralin keeps to the hut and the reed beds; MN02 starts with the moss and Vosh-Leera's
+    door marked
+  rewards: []
+- id: e-okeeh-dead
+  when: Okeeh died before the player gave their trade
+  world: [{setFlag: [flag.main.thread-severed, true]}]
+  seen: the main quest's message that the thread is severed
+- id: e-dralin-dead
+  when: Dralin died before he freed the player
+  world: [{setFlag: [flag.main.thread-severed, true]}]
+  seen: the main quest's message that the thread is severed
+terms:
+- {term: Black Marsh, meets: '10, look', told: 'topic.mn01-where: "Black Marsh, the Argonians'' country"', ask: topic.mn01-where}
+- {term: Ashgate Landing, meets: '20, topic.mn01-where', told: 'topic.mn01-where: a reed-cutters'' camp on the river
+    west of Loriasel', ask: topic.mn01-where}
+- {term: the Owing, meets: '20, topic.mn01-where', told: 'topic.mn01-where: months of owed work in place of a cell',
+  ask: topic.mn-owing}
+- {term: Dralin Uveran, meets: '20, topic.mn01-where', told: 'topic.mn01-where: the gang-master, a Dunmer who keeps the
+    roll', ask: topic.mn01-dralin-who}
+- {term: Vosh-Leera, meets: '90, topic.mn01-dralin-free', told: '"the root-herald of Jal-Veesa"', ask: topic.mn01-root-herald}
+- {term: root-herald, meets: '90, topic.mn01-dralin-free', told: '"the one who speaks for the town''s elders and its tree
+    to outsiders"', ask: topic.mn01-root-herald}
+- {term: Jal-Veesa, meets: '90, topic.mn01-dralin-free', told: '"the town up the road east, round its Hist"', ask: topic.mn-jal-veesa}
+- {term: Hist, meets: '90, topic.mn01-dralin-free', told: '"the town''s great tree"', ask: topic.mn-hist}
+- {term: tree-minder, meets: '90, topic.mn01-dralin-free', told: '"the woman who tends the town''s tree"', ask: topic.mn-hist}
+- {term: Sithis' beard, meets: '90, topic.mn01-dralin-free', told: '"a grey moss that hangs over the creek below Reed-Sill
+    Weir"', ask: topic.mn01-moss}
+- {term: Reed-Sill Weir, meets: '90, topic.mn01-dralin-free', told: '"the weir-wardens'' camp on the road, where the
+    road meets the creek"', ask: topic.mn01-moss}
+topics:
+- id: topic.mn01-where
+  label: Where am I?
+  person: npc.mn.okeeh
+  stages: [10, 20, 31, 32, 33, 34, 35, 36, 37, 40]
+  essential: true
+  intent: 'Okeeh. Tells: "You''re in the hold of the work barge, moored at Ashgate Landing, a reed-cutters'' camp on the
+    river west of Loriasel. This is Black Marsh, the Argonians'' country." The barge brought this gang up from the sea
+    to serve the Owing: months of owed work given by the marsh in place of a cell, served here cutting reed for the
+    mat-makers of Stormhold. She is Okeeh, the gang''s cook. The door is locked from outside, as it is for every new gang,
+    until the gang-master, a Dunmer named Dralin Uveran, takes their names onto his roll; it will not be long. She
+    does not know the player''s face, and asks their name (a question; its answer is topic.mn01-name). Checks: nothing.
+    Does: nothing.'
+  uses: [fact.mn01.where, fact.mn01.owing, fact.mn01.locked]
+  new: true
+- id: topic.mn01-name
+  label: My name? I'll tell you.
+  person: npc.mn.okeeh
+  stages: [10]
+  essential: true
+  intent: 'Okeeh. Tells: she listens and says the name back, so she can shout it at mealtimes. Does: sets stage 20, whose
+    start opens the game''s name entry; then she asks what the player did before the marsh caught them: "Every gang has
+    a fighter, a hunter, a thief and someone who knows a poultice. What were you?" (a question; its answers are the
+    seven trade topics). Checks: nothing.'
+  uses: []
+  new: true
+- id: topic.mn01-trade
+  label: What do you mean, my trade?
+  person: npc.mn.okeeh
+  stages: [20]
+  essential: true
+  intent: 'Okeeh. Tells: what the player did before is what they will be good at here; she lists the answers she has
+    heard and what each is good for: a warrior (One-Handed, Two-Handed, Block, Heavy Armor, Smithing), a hunter (Archery,
+    Sneak, Light Armor, Alchemy, One-Handed), a thief (Sneak, Lockpicking, Pickpocket, Speech, Light Armor), a battlemage
+    (Destruction, Alteration, Conjuration, One-Handed, Heavy Armor), a healer (Restoration, Alchemy, Illusion, Alteration,
+    Speech), a nightblade (Illusion, Sneak, One-Handed, Destruction, Light Armor), or "none of those: name me your own
+    five". Whatever the player says, those five come a little easier from today. Checks: nothing. Does: nothing.'
+  uses: []
+  new: true
+- {id: topic.mn01-trade-warrior, label: 'I was a warrior.', person: npc.mn.okeeh, stages: [20], essential: true, intent: 'Okeeh.
+    Tells: then the player can carry a blade and a shield; she has heard noise on the landing. Does: sets stage 31 (One-Handed,
+    Two-Handed, Block, Heavy Armor and Smithing each raised by five; the door unbarred). Checks: nothing.', new: true}
+- {id: topic.mn01-trade-hunter, label: 'I was a hunter.', person: npc.mn.okeeh, stages: [20], essential: true, intent: 'Okeeh.
+    Tells: there is game enough in the reeds for a hunter. Does: sets stage 32 (Archery, Sneak, Light Armor, Alchemy and
+    One-Handed each raised by five; the door unbarred). Checks: nothing.', new: true}
+- {id: topic.mn01-trade-thief, label: 'I was a thief.', person: npc.mn.okeeh, stages: [20], essential: true, intent: 'Okeeh.
+    Tells: she will count her spoons. Does: sets stage 33 (Sneak, Lockpicking, Pickpocket, Speech and Light Armor each
+    raised by five; the door unbarred). Checks: nothing.', new: true}
+- {id: topic.mn01-trade-battlemage, label: 'I was a battlemage.', person: npc.mn.okeeh, stages: [20], essential: true,
+  intent: 'Okeeh. Tells: a mage with a blade, and on a reed gang. Does: sets stage 34 (Destruction, Alteration, Conjuration,
+    One-Handed and Heavy Armor each raised by five; the door unbarred). Checks: nothing.', new: true}
+- {id: topic.mn01-trade-healer, label: 'I was a healer.', person: npc.mn.okeeh, stages: [20], essential: true, intent: 'Okeeh.
+    Tells: the gang will want the player when the reed cuts their hands. Does: sets stage 35 (Restoration, Alchemy, Illusion,
+    Alteration and Speech each raised by five; the door unbarred). Checks: nothing.', new: true}
+- {id: topic.mn01-trade-nightblade, label: 'I was a nightblade.', person: npc.mn.okeeh, stages: [20], essential: true,
+  intent: 'Okeeh. Tells: she will not ask whose nights. Does: sets stage 36 (Illusion, Sneak, One-Handed, Destruction and
+    Light Armor each raised by five; the door unbarred). Checks: nothing.', new: true}
+- {id: topic.mn01-trade-own, label: 'None of those. I''ll name my own five.', person: npc.mn.okeeh, stages: [20], essential: true,
+  intent: 'Okeeh. Tells: then name them, one at a time, and say when that is all; each skill named comes a little easier
+    from today (by five), and she will not take the same one twice. Does: sets stage 37. Checks: nothing.', new: true}
+- id: topic.mn01-pick-one-handed
+  label: 'One-Handed.'
+  person: npc.mn.okeeh
+  stages: &pickwin [37, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118]
+  essential: true
+  when: {all: [{counterAtLeast: [counter.mn01.picks-left, 1]}, {flag: [flag.mn01.pick-one-handed, false]}]}
+  intent: 'Okeeh. Tells: she says One-Handed back and how many are left to name. Does: sets stage 101 (One-Handed raised by five). Checks: nothing.'
+  new: true
+- id: topic.mn01-pick-two-handed
+  label: 'Two-Handed.'
+  person: npc.mn.okeeh
+  stages: *pickwin
+  essential: true
+  when: {all: [{counterAtLeast: [counter.mn01.picks-left, 1]}, {flag: [flag.mn01.pick-two-handed, false]}]}
+  intent: 'Okeeh. Tells: she says Two-Handed back and how many are left to name. Does: sets stage 102 (Two-Handed raised by five). Checks: nothing.'
+  new: true
+- id: topic.mn01-pick-archery
+  label: 'Archery.'
+  person: npc.mn.okeeh
+  stages: *pickwin
+  essential: true
+  when: {all: [{counterAtLeast: [counter.mn01.picks-left, 1]}, {flag: [flag.mn01.pick-archery, false]}]}
+  intent: 'Okeeh. Tells: she says Archery back and how many are left to name. Does: sets stage 103 (Archery raised by five). Checks: nothing.'
+  new: true
+- id: topic.mn01-pick-block
+  label: 'Block.'
+  person: npc.mn.okeeh
+  stages: *pickwin
+  essential: true
+  when: {all: [{counterAtLeast: [counter.mn01.picks-left, 1]}, {flag: [flag.mn01.pick-block, false]}]}
+  intent: 'Okeeh. Tells: she says Block back and how many are left to name. Does: sets stage 104 (Block raised by five). Checks: nothing.'
+  new: true
+- id: topic.mn01-pick-heavy-armor
+  label: 'Heavy Armor.'
+  person: npc.mn.okeeh
+  stages: *pickwin
+  essential: true
+  when: {all: [{counterAtLeast: [counter.mn01.picks-left, 1]}, {flag: [flag.mn01.pick-heavy-armor, false]}]}
+  intent: 'Okeeh. Tells: she says Heavy Armor back and how many are left to name. Does: sets stage 105 (Heavy Armor raised by five). Checks: nothing.'
+  new: true
+- id: topic.mn01-pick-light-armor
+  label: 'Light Armor.'
+  person: npc.mn.okeeh
+  stages: *pickwin
+  essential: true
+  when: {all: [{counterAtLeast: [counter.mn01.picks-left, 1]}, {flag: [flag.mn01.pick-light-armor, false]}]}
+  intent: 'Okeeh. Tells: she says Light Armor back and how many are left to name. Does: sets stage 106 (Light Armor raised by five). Checks: nothing.'
+  new: true
+- id: topic.mn01-pick-smithing
+  label: 'Smithing.'
+  person: npc.mn.okeeh
+  stages: *pickwin
+  essential: true
+  when: {all: [{counterAtLeast: [counter.mn01.picks-left, 1]}, {flag: [flag.mn01.pick-smithing, false]}]}
+  intent: 'Okeeh. Tells: she says Smithing back and how many are left to name. Does: sets stage 107 (Smithing raised by five). Checks: nothing.'
+  new: true
+- id: topic.mn01-pick-destruction
+  label: 'Destruction.'
+  person: npc.mn.okeeh
+  stages: *pickwin
+  essential: true
+  when: {all: [{counterAtLeast: [counter.mn01.picks-left, 1]}, {flag: [flag.mn01.pick-destruction, false]}]}
+  intent: 'Okeeh. Tells: she says Destruction back and how many are left to name. Does: sets stage 108 (Destruction raised by five). Checks: nothing.'
+  new: true
+- id: topic.mn01-pick-alteration
+  label: 'Alteration.'
+  person: npc.mn.okeeh
+  stages: *pickwin
+  essential: true
+  when: {all: [{counterAtLeast: [counter.mn01.picks-left, 1]}, {flag: [flag.mn01.pick-alteration, false]}]}
+  intent: 'Okeeh. Tells: she says Alteration back and how many are left to name. Does: sets stage 109 (Alteration raised by five). Checks: nothing.'
+  new: true
+- id: topic.mn01-pick-illusion
+  label: 'Illusion.'
+  person: npc.mn.okeeh
+  stages: *pickwin
+  essential: true
+  when: {all: [{counterAtLeast: [counter.mn01.picks-left, 1]}, {flag: [flag.mn01.pick-illusion, false]}]}
+  intent: 'Okeeh. Tells: she says Illusion back and how many are left to name. Does: sets stage 110 (Illusion raised by five). Checks: nothing.'
+  new: true
+- id: topic.mn01-pick-conjuration
+  label: 'Conjuration.'
+  person: npc.mn.okeeh
+  stages: *pickwin
+  essential: true
+  when: {all: [{counterAtLeast: [counter.mn01.picks-left, 1]}, {flag: [flag.mn01.pick-conjuration, false]}]}
+  intent: 'Okeeh. Tells: she says Conjuration back and how many are left to name. Does: sets stage 111 (Conjuration raised by five). Checks: nothing.'
+  new: true
+- id: topic.mn01-pick-restoration
+  label: 'Restoration.'
+  person: npc.mn.okeeh
+  stages: *pickwin
+  essential: true
+  when: {all: [{counterAtLeast: [counter.mn01.picks-left, 1]}, {flag: [flag.mn01.pick-restoration, false]}]}
+  intent: 'Okeeh. Tells: she says Restoration back and how many are left to name. Does: sets stage 112 (Restoration raised by five). Checks: nothing.'
+  new: true
+- id: topic.mn01-pick-enchanting
+  label: 'Enchanting.'
+  person: npc.mn.okeeh
+  stages: *pickwin
+  essential: true
+  when: {all: [{counterAtLeast: [counter.mn01.picks-left, 1]}, {flag: [flag.mn01.pick-enchanting, false]}]}
+  intent: 'Okeeh. Tells: she says Enchanting back and how many are left to name. Does: sets stage 113 (Enchanting raised by five). Checks: nothing.'
+  new: true
+- id: topic.mn01-pick-alchemy
+  label: 'Alchemy.'
+  person: npc.mn.okeeh
+  stages: *pickwin
+  essential: true
+  when: {all: [{counterAtLeast: [counter.mn01.picks-left, 1]}, {flag: [flag.mn01.pick-alchemy, false]}]}
+  intent: 'Okeeh. Tells: she says Alchemy back and how many are left to name. Does: sets stage 114 (Alchemy raised by five). Checks: nothing.'
+  new: true
+- id: topic.mn01-pick-sneak
+  label: 'Sneak.'
+  person: npc.mn.okeeh
+  stages: *pickwin
+  essential: true
+  when: {all: [{counterAtLeast: [counter.mn01.picks-left, 1]}, {flag: [flag.mn01.pick-sneak, false]}]}
+  intent: 'Okeeh. Tells: she says Sneak back and how many are left to name. Does: sets stage 115 (Sneak raised by five). Checks: nothing.'
+  new: true
+- id: topic.mn01-pick-lockpicking
+  label: 'Lockpicking.'
+  person: npc.mn.okeeh
+  stages: *pickwin
+  essential: true
+  when: {all: [{counterAtLeast: [counter.mn01.picks-left, 1]}, {flag: [flag.mn01.pick-lockpicking, false]}]}
+  intent: 'Okeeh. Tells: she says Lockpicking back and how many are left to name. Does: sets stage 116 (Lockpicking raised by five). Checks: nothing.'
+  new: true
+- id: topic.mn01-pick-pickpocket
+  label: 'Pickpocket.'
+  person: npc.mn.okeeh
+  stages: *pickwin
+  essential: true
+  when: {all: [{counterAtLeast: [counter.mn01.picks-left, 1]}, {flag: [flag.mn01.pick-pickpocket, false]}]}
+  intent: 'Okeeh. Tells: she says Pickpocket back and how many are left to name. Does: sets stage 117 (Pickpocket raised by five). Checks: nothing.'
+  new: true
+- id: topic.mn01-pick-speech
+  label: 'Speech.'
+  person: npc.mn.okeeh
+  stages: *pickwin
+  essential: true
+  when: {all: [{counterAtLeast: [counter.mn01.picks-left, 1]}, {flag: [flag.mn01.pick-speech, false]}]}
+  intent: 'Okeeh. Tells: she says Speech back and how many are left to name. Does: sets stage 118 (Speech raised by five). Checks: nothing.'
+  new: true
+- id: topic.mn01-picks-done
+  label: That is all I do.
+  person: npc.mn.okeeh
+  stages: &pickstages [101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118]
+  essential: true
+  when: {counterAtLeast: [counter.mn01.picked, 5]}
+  intent: 'Okeeh, once five skills are named. Tells: five is plenty for a reed gang; she hears the bar lift from the hold''s
+    door. Does: sets stage 40 (the door unbarred). Checks: nothing.'
+  new: true
+- id: topic.mn-owing
+  label: What is the Owing?
+  person: npc.mn.okeeh
+  stages: [10, 20, 31, 32, 33, 34, 35, 36, 37, 40, 90]
+  essential: false
+  intent: 'Okeeh (and, by his own row, Dralin from stage 90). Tells: the Owing is the marsh''s sentence. Black Marsh''s
+    own towns keep no jails; a debtor, a thief or a stranger who broke the peace is given months of owed work instead,
+    and a broker sells those months to a gang-master like Dralin, who feeds the gang and works them until the months
+    are served. Most of this gang owe six months or a year. Nobody counts a stranger''s months kindly. Checks: nothing.
+    Does: nothing.'
+  uses: [fact.mn01.owing]
+  new: true
+- id: topic.mn-owing
+  label: What is the Owing?
+  person: npc.mn.dralin-uveran
+  stages: [90]
+  essential: false
+  intent: 'Dralin. Tells: months of work owed instead of a cell; he buys them from the broker at Stormhold and his cutters
+    work them off on the reed beds. The player''s months were bought and are gone now, and that is his loss, not theirs.
+    Checks: nothing. Does: nothing.'
+  uses: [fact.mn01.owing]
+  new: true
+- id: topic.mn-hist
+  label: What is a Hist?
+  person: npc.mn.okeeh
+  stages: [10, 20, 31, 32, 33, 34, 35, 36, 37, 40, 90]
+  essential: false
+  intent: 'Okeeh, an Argonian. Tells: a Hist is one of the great trees of Black Marsh, and they think. A Hist is as tall
+    as a tower, with pale grey bark and roots standing up out of the water, and a pool at its foot where the eggs lie
+    among the roots. Every Argonian village is built round its own tree. On a hatchling''s naming day it licks its tree''s
+    sap, and the sap shapes it for life; her own tree is far to the south, and she still dreams of it. All the trees
+    are joined at the root, so what one knows the others can know. An Argonian with a hand on the bark can hear them.
+    They are not just trees: if a village''s tree dies, no egg in its pools will hatch again. Checks: nothing. Does: nothing.'
+  uses: [fact.mn01.hist]
+  new: true
+- id: topic.mn-hist
+  label: What is a Hist?
+  person: npc.mn.dralin-uveran
+  stages: [90]
+  essential: false
+  intent: 'Dralin, a Dunmer. Tells: the Argonians'' great trees, grey-barked and as big as towers, with an egg-pool at
+    the foot; every village stands round one, and they say the trees think. He has seen men stand with a hand on one
+    for an hour. Jal-Veesa''s is the tall grey tree in the pool at the middle of the town, and it has looked poorly since
+    the rains. Checks: nothing. Does: nothing.'
+  uses: [fact.mn01.hist]
+  new: true
+- id: topic.mn-jal-veesa
+  label: What is Jal-Veesa?
+  person: npc.mn.okeeh
+  stages: [10, 20, 31, 32, 33, 34, 35, 36, 37, 40, 90]
+  essential: false
+  intent: 'Okeeh. Tells: the town of the Veesa-Teeleel, the Sedge-Wardens, east up the road: stilt houses on mud banks
+    round a pool, boat-lanes cut through the sedge, mats and fish drying on racks. The tall grey tree standing in the pool
+    at the middle of the town is its Hist. She buys the gang''s dried fish there. Checks: nothing. Does: nothing.'
+  uses: []
+  new: true
+- id: topic.mn-jal-veesa
+  label: What is Jal-Veesa?
+  person: npc.mn.dralin-uveran
+  stages: [90]
+  essential: false
+  intent: 'Dralin. Tells: the Sedge-Wardens'' town, east up the road past Reed-Sill Weir: stilt houses round a pool with
+    their Hist in the middle. Its elders answer to nobody in Stormhold, and its root-herald, Vosh-Leera, speaks for them
+    to outsiders. Her house is in the town; any warden will point to it. Checks: nothing. Does: nothing.'
+  uses: [fact.mn01.go-to-vosh]
+  new: true
+- id: topic.mn01-okeeh-who
+  label: Who are you?
+  person: npc.mn.okeeh
+  stages: [10, 20, 31, 32, 33, 34, 35, 36, 37, 40, 90]
+  essential: false
+  intent: 'Okeeh. Tells: the gang''s cook; she owes no months, she is paid, and she has cooked for Dralin''s gangs four
+    seasons. She sells dried fish and lamp oil from her stall by the hut. Checks: nothing. Does: nothing.'
+  new: true
+- id: topic.mn01-hara-who
+  label: Who are you?
+  person: npc.mn.hara-jeel
+  stages: [10, 20, 31, 32, 33, 34, 35, 36, 37, 40, 90]
+  essential: false
+  intent: 'Hara-Jeel. Tells: a reed-cutter of this gang, owing a year for a debt at Stormhold; he came up on the barge
+    beside the player and does not know them either. The door opens when the gang-master wants it to. Checks: nothing.
+    Does: nothing.'
+  uses: [fact.mn01.locked]
+  new: true
+- id: topic.mn01-dralin-free
+  label: (speaks first) You. Off the barge.
+  person: npc.mn.dralin-uveran
+  kind: speaks-first
+  stages: [31, 32, 33, 34, 35, 36, 40]
+  essential: true
+  intent: 'Dralin Uveran, a step from the hold''s door as the player comes out. Tells: he is Dralin Uveran, gang-master
+    here. The player''s name is not on his roll: it was struck this morning, before they cut a single reed, on an order
+    brought down the road by Vosh-Leera, the root-herald of Jal-Veesa, the one who speaks for that town''s elders and
+    its tree to outsiders. He cannot refuse a root-herald. "You must have friends in high places." He paid for the player''s
+    months and has lost them. She wants the player at her house in Jal-Veesa, east up the road; he does not know why
+    and does not care to. While they are going that way: the town''s tree-minder has asked every gang on the river for
+    Sithis'' beard, a grey moss that hangs over the creek below Reed-Sill Weir, the weir-wardens'' camp where the road
+    meets the creek. Mind the crocodiles under the weir. Does: sets stage 90. Checks: nothing.'
+  uses: [fact.mn01.struck, fact.mn01.go-to-vosh, fact.mn01.moss]
+  new: true
+- id: topic.mn01-dralin-who
+  label: Who are you?
+  person: npc.mn.dralin-uveran
+  stages: [90]
+  essential: false
+  intent: 'Dralin. Tells: the gang-master of Ashgate Landing, a Dunmer of Stormhold who buys Owing months and works them
+    off on the reed. He has nothing more for the player. Checks: nothing. Does: nothing.'
+  new: true
+- id: topic.mn01-root-herald
+  label: Who is Vosh-Leera?
+  person: npc.mn.dralin-uveran
+  stages: [90]
+  essential: false
+  intent: 'Dralin. Tells: Jal-Veesa''s root-herald. A root-herald speaks for a town''s elders and its tree to anyone from
+    outside, so an order from her is the town''s order. She walked down this morning, gave the order and went back.
+    Checks: nothing. Does: nothing.'
+  uses: [fact.mn01.struck]
+  new: true
+- id: topic.mn01-moss
+  label: What is Sithis' beard?
+  person: npc.mn.dralin-uveran
+  stages: [90]
+  essential: false
+  intent: 'Dralin. Tells: a long grey moss that hangs from the trees over the creek below Reed-Sill Weir, the first camp
+    on the road east. Tree-minders use it for something; Jal-Veesa''s minder wants it badly. There are crocodiles under
+    the weir where the wardens throw their offal; kill them, shoot them from the log walk on top of the weir, or keep
+    out of their sight. Checks: nothing. Does: nothing.'
+  uses: [fact.mn01.moss]
+  new: true
+review:
+  reviewer: writer lore checks (quest-write §5); quest-reviewer round to follow
+  findings:
+  - {id: L1, severity: lore, ids: [topics.topic.mn-owing], finding: 'The Owing in place of a cell; no native jail.', answer: 'sourced:
+      owner-bar "A native Argonian place has no jail; the Owing is the sentence"; labour-and-bondage.md'}
+  - {id: L2, severity: lore, ids: [topics.topic.mn-hist], finding: 'What a Hist is, the naming-day sap, the egg-pool, joined
+      roots, hearing the bark.', answer: 'sourced: hist-and-sap.md lines 15-16, 54-56, 78-80, 106-107'}
+  - {id: L3, severity: lore, ids: [truth.t3], finding: 'A root-herald''s order frees an Owing stranger.', answer: 'sourced:
+      main-plot.md §1; argonia-4e201-state.md §2.5 (local people pass things on for the order)'}
+  - {id: L4, severity: lore, ids: [stages.20], finding: 'Name entry and professions are the owner-approved blocks.', answer: 'sourced:
+      owner-bar "the player''s name set from a conversation"; main-plot §9'}
