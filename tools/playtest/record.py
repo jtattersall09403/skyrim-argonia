@@ -24,6 +24,7 @@ from tools.playtest import milestone as M
 from tools.playtest.game import HarnessError
 
 LOCKPICK = "item.lockpick"
+STATE_TERMS = {"all", "any", "not", "questStage", "stageEverReached", "hasItem", "flag", "counterAtLeast", "npcAlive"}
 COND_TERMS = {"all", "any", "not", "topicHeardFrom", "hasItem", "goldAtLeast", "skillAtLeast", "npcAlive",
               "questStage", "stageEverReached", "flag", "objectiveComplete", "counterAtLeast", "spellCastNear"}
 ACT_TERMS = {"giveItem", "takeItem", "removeItem", "giveGold", "takeGold", "removeGold", "setFlag", "enableRef",
@@ -114,6 +115,8 @@ class Record:
             if pl and r.get("placeName") and r.get("kind") != "door":
                 names.setdefault(pl, r["placeName"])
         self.place_names = names
+        self.rooms = {(r.get("anchor") or {}).get("room") for r in self.rows.values()
+                      if (r.get("anchor") or {}).get("room")}
 
     @property
     def start(self):
@@ -155,6 +158,8 @@ class Record:
         return n
 
     def place_name(self, pid) -> str:
+        if pid in self.rooms:
+            return pid
         return self.place_names.get(pid) or (pid if not str(pid).startswith(("place.",)) and " " in str(pid)
                                              else humanize(pid))
 
@@ -164,7 +169,8 @@ class Record:
     def home(self, ref):
         """The place a placement stands at to begin with (None: wherever the player is)."""
         r = self.rows.get(ref) or {}
-        return (r.get("anchor") or {}).get("place") or (r.get("at") or {}).get("place")
+        a = r.get("anchor") or {}
+        return a.get("room") or a.get("place") or (r.get("at") or {}).get("place")
 
     def door_to(self, ref):
         to = (self.rows.get(ref) or {}).get("placeName")
@@ -277,6 +283,9 @@ def check(q: dict) -> list[str]:
         if not h.get("setsFlag"):
             bad.append(f"hook on {h.get('thing')}: no setsFlag")
     for ref, r in R.rows.items():
+        room = (r.get("anchor") or {}).get("room")
+        if "room" in (r.get("anchor") or {}) and not (isinstance(room, str) and room.strip()):
+            bad.append(f"placement {ref}: anchor room is empty (the room's name as its door shows it)")
         if r.get("kind") in ("person", "thing", "door", "container") and not R.name(ref):
             what = "placeName (the place it leads to)" if r.get("kind") == "door" else "name"
             bad.append(f"placement {ref}: a {r.get('kind')} the player can see with no {what}")
@@ -374,8 +383,10 @@ def _carrier_faults(R, sid, carriers) -> list[str]:
 
 # -- the game ----------------------------------------------------------------------------------------------------
 class Game:
-    def __init__(self, q: dict, state: dict | None = None):
+    def __init__(self, q: dict, state: dict | None = None, earlier=()):
         self.R = Record(q)
+        self.earlier_qs = list(earlier or ())          # earlier quest records (--after), their state in s["loaded"]
+        self.earlier = {x["id"]: Record(x) for x in self.earlier_qs}
         self.s = state if state is not None else self._fresh()
         for k, v in self._fresh().items():
             self.s.setdefault(k, v)
@@ -386,7 +397,7 @@ class Game:
                 "at": None, "taken": [], "enabled": {}, "unlocked": [], "opened": [], "talking": None, "menu": [],
                 "ended": None, "pending": [], "want_notes": False, "over": False, "milestones": [], "commands": 0,
                 "choice": None, "ask_name": False, "name": None, "counters": {}, "doors": {}, "skills": {},
-                "ranks": {}, "peace": {}, "spells": [], "scenes": []}
+                "ranks": {}, "peace": {}, "spells": [], "scenes": [], "loaded": {}}
 
     # -- state reads
     def stage(self) -> dict:
@@ -497,14 +508,16 @@ class Game:
         if k == "npcAlive":
             return self._alive(args[0])
         if k == "questStage":
-            if args[0] != self.R.id:
+            qs = self._qstate(args[0])
+            if qs is None:
                 return False
             op, n = (args[1], args[2]) if len(args) > 2 else ("=", args[1])
-            cur = s["stage"] if s["stage"] is not None else -1
+            cur = qs["stage"] if qs["stage"] is not None else -1
             return {"≥": cur >= n, ">=": cur >= n, "=": cur == n, "==": cur == n, ">": cur > n, "<": cur < n,
                     "≤": cur <= n, "<=": cur <= n}.get(op, False)
         if k == "stageEverReached":
-            return args[0] == self.R.id and args[1] in s["done"]
+            qs = self._qstate(args[0])
+            return qs is not None and args[1] in qs["done"]
         if k == "flag":
             want = args[1] if len(args) > 1 else True
             return s["flags"].get(args[0], False) == want
@@ -512,6 +525,49 @@ class Game:
             return any(o.get("id") == args[0] for sid in s["done"] if sid != s["stage"]
                        for o in self.R.stages[sid].get("objectives") or [])
         raise HarnessError(f"condition term {k} is not one the paper game plays")
+
+    def _qstate(self, qid):
+        """The stage and stages reached of the played quest or of an earlier one loaded by --after, else None."""
+        if qid == self.R.id:
+            return {"stage": self.s["stage"], "done": self.s["done"]}
+        return self.s["loaded"].get(qid)
+
+    # -- the earlier quests (--after): moved silently by what the played quest does
+    def _sub(self, qid) -> "Game":
+        ls = self.s["loaded"][qid]
+        shared = dict(self.s)
+        shared.update(stage=ls["stage"], done=list(ls["done"]), ended=ls["ended"], pending=[], choice=None,
+                      ask_name=False)
+        shared["loaded"] = {k: v for k, v in self.s["loaded"].items() if k != qid}
+        shared["loaded"][self.R.id] = {"stage": self.s["stage"], "done": self.s["done"], "ended": self.s["ended"]}
+        sub = Game(self.earlier[qid].q, shared)
+        sub.word = self.word
+        return sub
+
+    def _loaded_advance(self) -> bool:
+        """Each earlier quest's successors that depend only on state are entered when they hold; True if any moved."""
+        moved = False
+        for _ in range(100):
+            step = False
+            for qid, rec in self.earlier.items():
+                ls = self.s["loaded"].get(qid)
+                if not ls or ls["ended"] or ls["stage"] is None:
+                    continue
+                st = rec.stages[ls["stage"]]
+                for sc in (st.get("successors") or []) + (st.get("failForward") or []):
+                    if not all(k in STATE_TERMS for k, _ in _terms(sc.get("when"))):
+                        continue
+                    sub = self._sub(qid)
+                    if sub.holds(sc.get("when")):
+                        sub.enter(sc["to"])
+                        self.s["loaded"][qid] = {"stage": sub.s["stage"], "done": sub.s["done"],
+                                                 "ended": sub.s["ended"]}
+                        self.s["gold"] = sub.s["gold"]
+                        step = moved = True
+                        break
+            if not step:
+                return moved
+        raise HarnessError("the earlier quests' stages move in a loop")
 
     # -- actions and stages
     def apply(self, acts) -> list[str]:
@@ -617,6 +673,16 @@ class Game:
     def advance(self) -> list[str]:
         out = []
         for _ in range(100):
+            moved = self._loaded_advance()
+            n = len(self.s["done"])
+            out += self._advance_main()
+            if not moved and len(self.s["done"]) == n:
+                return out
+        raise HarnessError("the stages move in a loop")
+
+    def _advance_main(self) -> list[str]:
+        out = []
+        for _ in range(100):
             if self.s["ended"] or self.s["stage"] is None:
                 return out
             st = self.stage()
@@ -634,6 +700,9 @@ class Game:
         st0 = self.R.stages.get(first)
         if st0 is None:
             raise HarnessError(f"start stage {first} is not a stage of the record")
+        sw = self.R.q.get("startWhen")
+        if self.earlier and sw and not self.holds(sw, lenient=True):
+            raise HarnessError(f"the earlier quests' state does not satisfy {self.R.id}'s startWhen {sw}")
         self.s["at"] = at or st0.get("place") or (self.R.places() or [None])[0]
         out = self.enter(first) + self.advance()
         return "\n".join(["A new game."] + out + ["", self.c_look()] + self._speaks_first() + self._gate())
@@ -919,6 +988,8 @@ class Game:
                 pre = [f"You unlock {self.R.must_name(r)} with {self.R.must_name(key)}."]
             else:
                 lvl = lock.get("level") or "key"
+                if k == "door":
+                    self._hook(r, "activate")          # Skyrim sends the activation whatever the lock
                 return f"{self.R.must_name(r)} is locked ({lvl}). Pick it (pick <lock> win|fail) or find its key."
         else:
             pre = []
@@ -1082,8 +1153,17 @@ def _rel(p) -> str:
         return str(p)
 
 
+def parse_after(specs) -> list[tuple[str, int | None]]:
+    """`<record.yaml>[@<ending stage>]` each."""
+    out = []
+    for sp in specs or ():
+        path, _, tail = str(sp).rpartition("@")
+        out.append((path, int(tail)) if path and tail.isdigit() else (str(sp), None))
+    return out
+
+
 def new(path, *, root: Path, know=None, way=None, choose=None, model=None, effort=None,
-        max_commands=60) -> tuple[Path, str]:
+        max_commands=60, after=()) -> tuple[Path, str]:
     """A new record session: (its run folder, the opening screen). A record with faults is refused, each fault
     a line of the HarnessError."""
     from tools.playtest import session as S
@@ -1091,7 +1171,11 @@ def new(path, *, root: Path, know=None, way=None, choose=None, model=None, effor
     bad = check(q)
     if bad:
         raise HarnessError(f"{path}: the record has {len(bad)} fault(s):\n  " + "\n  ".join(bad))
-    g = Game(q)
+    earlier, state = [], None
+    if after:
+        from tools.playtest import record_after as A
+        earlier, state = A.play_before([(load(p), n, p) for p, n in parse_after(after)])
+    g = Game(q, state, earlier=[e["record"] for e in earlier])
     screen = g.begin()
     folder = Path(root) / q["id"] / f"{S.utc_stamp()}-designed"
     n = 1
@@ -1101,7 +1185,8 @@ def new(path, *, root: Path, know=None, way=None, choose=None, model=None, effor
     folder.mkdir(parents=True)
     sess = {"quest": q["id"], "record_path": _rel(path), "record": q, "state": g.s, "know": know,
             "know_text": S.know_text(know), "way": way, "choose": choose, "model": model, "effort": effort,
-            "max_commands": max_commands, "created": S.utc_stamp(), "broken": None}
+            "max_commands": max_commands, "created": S.utc_stamp(), "broken": None,
+            "after": [{"path": _rel(e["path"]), "ending": e["ending"], "record": e["record"]} for e in earlier]}
     _save(folder, sess)
     _append(folder, {"time": S.utc_stamp(), "think": None, "command": "(new game)", "result": screen,
                      "summary": g.summary()})
@@ -1122,7 +1207,7 @@ def do(folder, command: str, think: str | None) -> tuple[int, str]:
     if st["commands"] >= sess["max_commands"] and not command.strip().lower().startswith("answer"):
         return 2, (f"You have used all {sess['max_commands']} commands. Stop now and give your notes: "
                    "play end '<what you now know and have>'")
-    g = Game(sess["record"], st)
+    g = Game(sess["record"], st, earlier=[e["record"] for e in sess.get("after") or []])
     try:
         screen, code = g.do(command), 0
     except HarnessError as e:
@@ -1163,6 +1248,7 @@ def _keep(folder, sess, extra: dict | None = None) -> dict:
            "choose": sess.get("choose"), "know": sess.get("know"), "created": sess["created"],
            "stages": st["done"], "ended": st["ended"] or ("harness error" if sess["broken"] else
                                                         "stopped" if st.get("over") else "open"),
+           "after": [{"record": e["path"], "ending": e["ending"]} for e in sess.get("after") or []],
            "milestones": len(st["milestones"]), "notes": bool(st.get("notes")),
            "commands_used": [c for c in cmds if c != "(new game)"], **(extra or {})}
     (folder / "run.json").write_text(json.dumps(run, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")

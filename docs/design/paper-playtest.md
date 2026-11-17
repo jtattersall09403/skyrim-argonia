@@ -41,6 +41,7 @@ ends. A player who is stuck or out of commands gives the same notes with `end`.
 ## The record game (moment 1)
 
     python3 -m tools.playtest record <record.yaml> [--know <notes.md>] [--way <approach id>] [--choose <ending id>]
+                                     [--after <earlier.yaml>[@<ending stage>] ...]
     python3 -m tools.playtest record <record.yaml> --check
     python3 -m tools.playtest record <record.yaml> --new          # a session for a hand to play with `do`
 
@@ -59,10 +60,24 @@ What it reads, by field:
 | `messages[]` `id`, `text` | the texts a `showMessage` names by id |
 | stage `information` | the plan printed beside the player's answers in `milestones.md` |
 | `topics[]` `id`, `label`, `person`, `kind`, `stages`, `when`, `intent`, `fallback` | a topic is open while the current stage is in its `stages` (all stages when it has none) and its `when` holds, a skill or gold check counting as passable; `say` shows its `intent` as what the person says; a `greeting` is said on `talk`; a `speaks-first` is said when the player arrives where the person stands |
-| `placements[]` `ref`, `kind`, `name`, `anchor.place`, `container`, `carriedBy`, `count`, `lock`, `enabled`, `text`, `placeName`, `base` | who and what stands where: a ref stands at its anchor's place (a new-world place id; one with no place is wherever the player is), in its container, or on its carrier; `enabled: false` hides it until `enableRef`; a stock item's `base.id` (`item.lockpick`) is what is held |
+| `placements[]` `ref`, `kind`, `name`, `anchor.place`, `anchor.room`, `container`, `carriedBy`, `count`, `lock`, `enabled`, `text`, `placeName`, `base` | who and what stands where: a ref stands at its anchor's place (a new-world place id; one with no place is wherever the player is), in its container, or on its carrier; an `anchor.room` (the room's name as its door shows it) makes the ref stand in that room, a place of its own inside the place, named by the `room` and reached by the doors whose `placeName` is that room; `enabled: false` hides it until `enableRef`; a stock item's `base.id` (`item.lockpick`) is what is held |
 | `things[]` `name`, `text`; `cast[]` `name` | the names the game shows when a placement has none; a thing's words for `read` |
 | `hooks[]` `thing`, `hook` (`activate` or `read`), `setsFlag` | `use` or `read` of the thing sets the flag, for a successor whose `when` is that `flag` |
 | `terms[]` (`meets` beginning with the stage id) | listed under that stage's plan in `milestones.md` |
+
+**`--after`.** `record <record.yaml> --after <earlier.yaml>[@<ending stage>] ...` loads each earlier record, in the
+order given, and before the player starts plays it to a completed ending by a shortest path (to the named ending stage
+with `@<stage>`; a `fail` ending is never chosen unless named), as an able character who passes every check and wins
+every fight, applying every stage's `onEnter` and every ending's `world` and `rewards`. The path takes what a
+condition or action wants held, sets the flags a condition reads, hears the topics a successor waits on, kills the
+people a condition needs dead and presses each button of a choice. What carries into the played quest: things held,
+gold, flags, counters, the dead, faction ranks, enabled and disabled refs, doors, topics heard and each earlier quest's
+current stage (so `questStage` and `stageEverReached` on it hold); the played record's `startWhen`, when it has one, must
+hold of that state. The earlier quests' journals are not shown to the player (what it knows comes from `--know`).
+After each action in the played quest every loaded quest's successors that depend only on state (`questStage`,
+`stageEverReached`, `hasItem`, `flag`, `counterAtLeast`, `npcAlive`) are tried and applied silently. A record that
+cannot reach the ending asked for stops the run with a harness error saying so. The run's `run.json` names the
+`after` records and the ending each reached.
 
 **Names.** A person's name is its placement's `name`, else its cast row's; a thing's is its placement's, else its
 thing row's; a door's is its `name`, else "Door to" its `placeName`; a stock item's is its id's last word. A place's
@@ -104,7 +119,7 @@ capitalised.
 marker away from here points), `journal` (the entries so far, the objectives, each marker by name and place, what the
 player carries and their gold), `talk <person>`, `say <topic or number> [pass|fail]`, `take <thing>` (from the
 ground, an opened container, or a body), `use <thing or door>` (opens a container, unlocking it with its key held;
-goes through a door; fires an `activate` hook), `read <thing>` (its `text`; fires a `read` hook), `fight <who>
+goes through a door; fires an `activate` hook, a locked door's too, before it says the door is locked), `read <thing>` (its `text`; fires a `read` hook), `fight <who>
 win|lose` (a win leaves what they carried on the body; a loss changes nothing), `pick <lock> win|fail`, `pickpocket
 <person> win|fail`, `go <place, person, thing or marker N>`, `choose <button label or number>` (only while a message box has buttons),
 `name <name>` (only while the game asks it), `answer '<text>'`.

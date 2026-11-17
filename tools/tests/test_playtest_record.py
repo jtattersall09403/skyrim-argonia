@@ -209,3 +209,122 @@ def test_check_names_an_unknown_action_or_condition_term_and_where_it_stands(tmp
     p.write_text(yaml.safe_dump(q))
     assert main(["record", str(p), "--check"]) == 1
     assert "summonDragon" in capsys.readouterr().out
+
+
+# -- --after: earlier records played to an ending first; rooms; a locked door's activation ----------------------
+def _end(sid, eid, **kw):
+    return {"id": sid, "place": "yulca", "journalText": f"It ended {sid}.", "ending": "complete", "endingId": eid,
+            "information": {"going": "It is over."}, **kw}
+
+
+def earlier_a():
+    buttons = [{"label": "Road", "sets": 90}, {"label": "Ruin", "sets": 91}, {"label": "River", "sets": 92}]
+    return {"id": "quest.a", "title": "A", "start": 10, "things": [{"id": "thing.a.pearl", "name": "Pearl"}],
+            "stages": [{"id": 10, "hidden": True, "place": "yulca",
+                        "onEnter": [{"showChoice": {"text": "Which way?", "buttons": buttons}}]},
+                       _end(90, "e90"), _end(92, "e92"),
+                       {"id": 91, "hidden": True, "ending": "fail", "endingId": "e91"}],
+            "endings": [{"id": "e90", "world": [{"giveItem": "thing.a.pearl"}, {"setFlag": "f.road"},
+                                                {"giveGold": 3}, {"killNpc": "npc.a.ghost"}]},
+                        {"id": "e91"}, {"id": "e92", "world": [{"setFlag": "f.river"}]}],
+            "cast": [{"id": "npc.a.ghost", "name": "Ghost"}]}
+
+
+def later_b():
+    return {"id": "quest.b", "title": "B", "start": 10, "things": [{"id": "thing.a.pearl", "name": "Pearl"}],
+            "startWhen": {"any": [{"questStage": ["quest.a", "=", 90]}, {"questStage": ["quest.a", "=", 92]}]},
+            "stages": [{"id": 10, "place": "yulca", "journalText": "Now B.", "objectives": [],
+                        "information": {"going": "g", "next": "n", "ways": "w"},
+                        "successors": [{"to": 90, "when": {"all": [{"hasItem": ["thing.a.pearl", 1]},
+                                                                   {"flag": ["f.road", True]},
+                                                                   {"stageEverReached": ["quest.a", 90]}]}}]},
+                       _end(90, "e")], "endings": [{"id": "e"}]}
+
+
+def write(tmp_path, name, q):
+    import yaml
+    p = tmp_path / name
+    p.write_text(yaml.safe_dump(q))
+    return p
+
+
+def test_after_plays_the_earlier_record_to_a_completed_ending_and_carries_its_state(tmp_path):
+    a, b = write(tmp_path, "a.yaml", earlier_a()), write(tmp_path, "b.yaml", later_b())
+    folder, screen = R.new(b, root=tmp_path / "runs", after=[str(a)])
+    s = json.loads((folder / "session.json").read_text())["state"]
+    assert s["stage"] == 90 and s["ended"] == "complete"                       # B's start held and its successor too
+    assert s["items"] == {"thing.a.pearl": 1} and s["gold"] == 3 and s["flags"] == {"f.road": True}
+    assert s["dead"] == ["npc.a.ghost"]
+    assert s["loaded"]["quest.a"] == {"stage": 90, "done": [10, 90], "ended": "complete"}
+    assert "It ended 90" not in screen and "Which way" not in screen          # A's journal and boxes are not shown
+    run = json.loads((folder / "run.json").read_text())
+    assert run["after"][0]["ending"] == 90
+
+
+def test_after_at_a_stage_plays_to_that_ending_and_a_fail_is_never_chosen_otherwise(tmp_path):
+    a, b = write(tmp_path, "a.yaml", earlier_a()), write(tmp_path, "b.yaml", later_b())
+    folder, _ = R.new(b, root=tmp_path / "runs", after=[f"{a}@92"])
+    s = json.loads((folder / "session.json").read_text())["state"]
+    assert s["loaded"]["quest.a"]["stage"] == 92 and s["flags"] == {"f.river": True} and s["stage"] == 10
+    assert s["items"] == {} and s["gold"] == 0
+    assert R.parse_after([f"{a}@91", str(a)]) == [(str(a), 91), (str(a), None)]
+    q = earlier_a()
+    q["stages"] = [s_ for s_ in q["stages"] if s_["id"] not in (90, 92)]
+    q["stages"][0]["onEnter"][0]["showChoice"]["buttons"] = [{"label": "Ruin", "sets": 91}]
+    bad = write(tmp_path, "bad.yaml", q)
+    import pytest
+
+    from tools.playtest.game import HarnessError
+    with pytest.raises(HarnessError, match="cannot reach a completed ending"):
+        R.new(b, root=tmp_path / "runs", after=[str(bad)])
+    assert main(["record", str(b), "--new", "--out", str(tmp_path / "runs"), "--after", str(bad)]) == 3
+
+
+def test_a_loaded_quest_is_moved_silently_by_the_played_quests_state(tmp_path):
+    a = {"id": "quest.a", "start": 10, "stages": [
+        {"id": 10, "hidden": True, "successors": [{"to": 90, "when": {"flag": ["f.x", True]}}]},
+        {"id": 90, "hidden": True, "ending": "complete", "endingId": "e", "onEnter": [{"giveGold": 7}]}],
+        "endings": [{"id": "e"}]}
+    g = R.Game(later_b(), earlier=[a])
+    g.s["loaded"]["quest.a"] = {"stage": 10, "done": [10], "ended": None}
+    g.apply([{"setFlag": ["f.x", True]}])
+    g.advance()
+    assert g.s["loaded"]["quest.a"] == {"stage": 90, "done": [10, 90], "ended": "complete"} and g.s["gold"] == 7
+    assert not g.s["pending"]
+
+
+def fort():
+    return {"id": "quest.fort", "start": 10, "cast": [{"id": "npc.q", "name": "Quartermaster"}],
+            "stages": [{"id": 10, "hidden": True, "place": "fort-chalkmoth",
+                        "successors": [{"to": 90, "when": {"flag": ["f.knocked", True]}}]},
+                       {"id": 90, "hidden": True, "ending": "complete", "endingId": "e"}],
+            "endings": [{"id": "e"}],
+            "hooks": [{"thing": "door.store", "hook": "activate", "setsFlag": "f.knocked"}],
+            "placements": [
+                {"ref": "door.store", "kind": "door", "placeName": "Quartermaster's Store",
+                 "anchor": {"place": "fort-chalkmoth"}, "lock": {"level": "key"}},
+                {"ref": "npc.q", "kind": "person", "name": "Quartermaster",
+                 "anchor": {"place": "fort-chalkmoth", "room": "Quartermaster's Store"}}]}
+
+
+def test_a_room_is_a_place_of_its_own_reached_by_its_door():
+    q = fort()
+    assert R.check(q) == []
+    q["placements"][1]["anchor"]["room"] = " "
+    assert any("anchor room is empty" in b for b in R.check(q))
+    q = fort()
+    q["hooks"] = []
+    g = R.Game(q)
+    g.begin()
+    assert "People:" not in g.do("look")                  # the person stands in the room, not the fort
+    g.s["unlocked"].append("door.store")
+    assert "You go through Door to Quartermaster's Store" in g.do("use door")
+    assert g.s["at"] == "Quartermaster's Store" and "People: Quartermaster" in g.do("look")
+    assert "You are at Quartermaster's Store." in g.do("look")
+
+
+def test_using_a_locked_door_fires_its_activate_hook_then_says_it_is_locked():
+    g = R.Game(fort())
+    g.begin()
+    out = g.do("use door")
+    assert "is locked" in out and g.s["flags"] == {"f.knocked": True} and g.s["stage"] == 90

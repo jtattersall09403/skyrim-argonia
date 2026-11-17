@@ -209,14 +209,14 @@ def run(forms, know: str | None = None, names=(), at=None, start=None, source="d
 
 
 def run_record(path, know: str | None = None, way: str | None = None, choose: str | None = None,
-               max_commands=60, root: Path = S.RUNS) -> Path:
+               max_commands=60, root: Path = S.RUNS, after=()) -> Path:
     """A record run (moment 1): the paper player plays the record's YAML view."""
     from tools.playtest import record as R
     model, effort = agent_settings()
 
     def make():
         folder, screen = R.new(path, root=root, know=know, way=way, choose=choose, model=model, effort=effort,
-                               max_commands=max_commands)
+                               max_commands=max_commands, after=after)
         sess = json.loads((folder / "session.json").read_text(encoding="utf-8"))
         return folder, screen, brief("{play}", sess.get("know_text") or "", "record", way, choose)
     return _play(make, model, effort, R)

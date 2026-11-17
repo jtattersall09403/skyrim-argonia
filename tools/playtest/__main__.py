@@ -1,7 +1,7 @@
 """The paper playtest's command line (docs/design/paper-playtest.md).
 
     python3 -m tools.playtest record <record.yaml> [--know <notes.md>] [--way <approach id>] [--choose <ending id>]
-                                     [--check] [--new]   # a headless run of the record; --check only validates it;
+                                     [--after <earlier.yaml>[@<ending stage>] ...] [--check] [--new]   # a headless run of the record; --check only validates it;
                                                          # --new makes the session for a hand to play
     python3 -m tools.playtest new --forms <dir|files...> [--start <quest id>|--new-game] [--at <ref id>]
                                   [--sheet race=Argonian,sex=female,Speech=30] [--know <file>] [--names <file>...]
@@ -50,6 +50,8 @@ def main(argv=None) -> int:
     rr.add_argument("--choose", help="the ending id the player means to take")
     rr.add_argument("--check", action="store_true", help="only validate the record: one line per fault")
     rr.add_argument("--new", action="store_true", help="make the session and print its opening; play it with do")
+    rr.add_argument("--after", nargs="+", default=[], metavar="EARLIER[@ENDING]",
+                    help="earlier records, each played to a completed ending (or the named ending stage) first")
     rr.add_argument("--max-commands", type=int, default=60)
     rr.add_argument("--out", default=str(S.RUNS), help="the runs folder (default story/playtests)")
     n = sub.add_parser("new")
@@ -89,12 +91,12 @@ def main(argv=None) -> int:
                 return 1 if bad else 0
             if a.new:
                 folder, screen = R.new(a.record, root=Path(a.out), know=a.know, way=a.way, choose=a.choose,
-                                       max_commands=a.max_commands)
+                                       max_commands=a.max_commands, after=a.after)
                 print(f"session: {folder}\n\n{screen}")
                 return 0
             from tools.playtest import runner
             folder = runner.run_record(a.record, know=a.know, way=a.way, choose=a.choose,
-                                       max_commands=a.max_commands, root=Path(a.out))
+                                       max_commands=a.max_commands, root=Path(a.out), after=a.after)
             print(f"run: {folder}")
             print((folder / "run.json").read_text())
             return 0

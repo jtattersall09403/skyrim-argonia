@@ -53,7 +53,7 @@ characters (one able in every skill, one new); an unreached stage is a finding b
 
 ## 3. Run the player
 
-    python3 -m tools.playtest record <record.yaml> [--know <notes.md>] [--way <approach id>] [--choose <ending id>]
+    python3 -m tools.playtest record <record.yaml> [--know <notes.md>] [--way <approach id>] [--choose <ending id>] [--after <earlier.yaml>[@<ending>] ...]
     python3 -m tools.playtest run --forms <dir|files> [--after <quest id>...] [--know <notes.md>] [--source built]
 
 - **One player, fresh each run**: a headless run of the `paper-player` agent's model and effort
@@ -63,6 +63,7 @@ characters (one able in every skill, one new); an unreached stage is a finding b
 - **What the player already knows.** A quest of a line is played with `--know` the `notes.md` of the passing run of
   the quest before it in the line's order: the last thing a player writes at an ending is what they now know and
   have, in their own words, and it is all the next quest's player is told. A line's first quest runs with none. A
+  later quest takes `--after` the records before it so their state carries, as the form game does. A
   form-based run of a later quest also takes `--after` the quests before it, so its state and things are loaded.
 - **Ways and choices.** The player chooses freely. Where a stage has several ways through or the quest has a choice,
   one passing run per way and per ending is owed: a later run steers with `--way` or `--choose`, which tells the
