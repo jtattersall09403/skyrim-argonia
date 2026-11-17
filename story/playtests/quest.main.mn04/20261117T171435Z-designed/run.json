@@ -1,0 +1,64 @@
+{
+ "quest": "quest.main.mn04",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn04.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "pick",
+ "choose": null,
+ "know": "story/playtests/quest.main.mn03/20261117T170516Z-designed/notes.md",
+ "created": "20261117T171435Z",
+ "stages": [
+  10,
+  20,
+  30
+ ],
+ "ended": "stopped",
+ "after": [
+  {
+   "record": "newworld/story/quests/main/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn03.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 3,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I followed the Unbound sap-takers note to Karsh-Naal Camp. The Unbound drain Hist sap and seal scars. Someone named Sesk is caged at the camp edge, and guards hold the camp. 2. Open Sesk cage here at the camp and hand her sack from the floor inside back to her. 3. Pick the Novice lock, steal the key from Jeeta-Sakka, or fight the guards. Perhaps talk to Sesk first. 4. I do not know who Sesk is or why she is caged, nor who the Unbound master is. I can find out by talking to Sesk and the guards.",
+  "talk Sesk",
+  "say 1",
+  "pick Sesk's Cage win",
+  "take Sesk's Sack",
+  "answer 1. I picked the cage lock unseen and took Sesk sack. She promised to tell me all about the sap if freed. 2. Give her the sack and talk to her, at the camp. 3. Hand over the sack and ask questions; or leave. 4. I still do not know who the Unbound master is or what the paste is; Sesk may tell me.",
+  "talk Sesk",
+  "say 2",
+  "answer 1. Sesk, freed, says the Unbound tribeless cult led by Cuts-the-Old-Knot drain Hist sap for a draught tied to \"the Eye\", and seal scars with a paste called the seal. 2. Go to Vosh-Leera in Jal-Veesa and tell her. 3. Go straight back, or first ask Sesk more or trade with Heem-Jasa. 4. I do not know what the Eye is, what is in the seal, or where Cuts-the-Old-Knot is. Vosh-Leera or Sesk might know.",
+  "go Vosh-Leera",
+  "go Jal-Veesa",
+  "look",
+  "journal",
+  "go marker 1",
+  "talk Vosh-Leera",
+  "go Heem-Jasa",
+  "go Teel-Fen Weir"
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.07014089999999999,
+ "minutes": 0.7,
+ "turns": 19,
+ "tokens": {
+  "input_tokens": 34,
+  "output_tokens": 2883,
+  "cache_read_input_tokens": 109589,
+  "cache_creation_input_tokens": 7571
+ }
+}

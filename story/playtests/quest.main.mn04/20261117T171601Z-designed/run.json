@@ -1,0 +1,49 @@
+{
+ "quest": "quest.main.mn04",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn04.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "pickpocket",
+ "choose": null,
+ "know": "story/playtests/quest.main.mn03/20261117T170516Z-designed/notes.md",
+ "created": "20261117T171601Z",
+ "stages": [
+  10
+ ],
+ "ended": "harness error",
+ "after": [
+  {
+   "record": "newworld/story/quests/main/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn03.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 1,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I followed the sap-takers note to Karsh-Naal Camp, a Naga camp in the marsh. Someone named Sesk is caged at the edge. The Unbound want sap jars here; stacked jars of sap are in the camp. 2. Open Sesk cage at Karsh-Naal and hand her sack from the floor inside back to her. 3. Pick the Novice lock, steal the key from guard Jeeta-Sakka (pickpocketing suits a thief like me), or fight the three guards. 4. I do not know who Sesk is or why she is caged, or who the Naga guards serve. I could ask her and Jeeta-Sakka by talking.",
+  "pickpocket Jeeta-Sakka win",
+  "pickpocket Jeeta-Sakka win",
+  "use Sesk's Cage"
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.0309702,
+ "minutes": 0.3,
+ "turns": 6,
+ "tokens": {
+  "input_tokens": 12,
+  "output_tokens": 1220,
+  "cache_read_input_tokens": 26542,
+  "cache_creation_input_tokens": 4023
+ }
+}

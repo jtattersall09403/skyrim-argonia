@@ -1,0 +1,48 @@
+{
+ "quest": "quest.main.mn04",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn04.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "pickpocket",
+ "choose": null,
+ "know": "story/playtests/quest.main.mn03/20261117T170516Z-designed/notes.md",
+ "created": "20261117T171435Z",
+ "stages": [
+  10
+ ],
+ "ended": "harness error",
+ "after": [
+  {
+   "record": "newworld/story/quests/main/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn03.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 1,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I am Tarin, a thief. The Unbound Sap-Takers drain Hist sap and their master wants jars brought to Karsh-Naal Camp. Someone named Sesk is caged at the camp edge, and her sack is on the floor inside. 2. Open Sesk cage at Karsh-Naal Camp and hand her the sack. 3. Pick the cage lock (Novice), pickpocket the key from guard Jeeta-Sakka (my build favours this), or fight the guards. 4. I do not know who Sesk is or why she was caged, or who the Unbound master is. I can ask Sesk and look around the camp.",
+  "pickpocket Jeeta-Sakka win",
+  "use Sesk's Cage"
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.0309005,
+ "minutes": 0.3,
+ "turns": 6,
+ "tokens": {
+  "input_tokens": 12,
+  "output_tokens": 1212,
+  "cache_read_input_tokens": 26525,
+  "cache_creation_input_tokens": 4026
+ }
+}

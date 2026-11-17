@@ -1,0 +1,69 @@
+{
+ "quest": "quest.main.mn04",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn04.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "pick",
+ "choose": null,
+ "know": "story/playtests/quest.main.mn03/20261117T170516Z-designed/notes.md",
+ "created": "20261117T171711Z",
+ "stages": [
+  10,
+  20,
+  30,
+  40,
+  90
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "newworld/story/quests/main/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn03.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 5,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I am Tarin, a thief freed by Vosh-Leera of Jal-Veesa, who serves the Toh-Reel-Ka. The Hists are sickening. Unbound Sap-Takers drained a young Hist at Teel-Fen Weir. Their note sent jars of sap to Karsh-Naal Camp, so I followed it. Someone named Sesk is caged at the camp edge. 2. Open the cage at Karsh-Naal Camp and take Sesk sack from the floor inside, then hand it to her. 3. Pick the Novice lock on the cage, steal the key from guard Jeeta-Sakka, or fight the guards. Picking or stealing seems quieter than fighting three Naga guards. 4. I do not know who Sesk is, what is in the sack, or who the Unbound master is. I could ask Sesk or the guards, and look around the camp.",
+  "pick Sesk's Cage win",
+  "use Sesk's Cage",
+  "take Sesk's Sack",
+  "answer 1. I opened the cage and took the sack. Sesk, the prisoner, wants it back and may know about the sap-takers. 2. Talk to Sesk in the cage and give her the sack. 3. Hand over the sack and ask questions, or keep it and look inside first, though that seems unfriendly. 4. I still do not know who Sesk is, what is in the sack, or who leads the Unbound. I can ask Sesk.",
+  "talk Sesk",
+  "say 1",
+  "say 2",
+  "answer 1. Sesk, a Naga, drew sap for the Unbound, a cult of the tribeless led by Cuts-the-Old-Knot. They cut a scar, fill jars, and press grey paste called the seal in. The jars come to this camp and go on to the leader. The sap goes into a draught tied to something called the Eye. Sesk is now free and leaving. 2. Go to Vosh-Leera in Jal-Veesa and tell her what Sesk said. 3. I can go straight to Vosh-Leera, or first ask Sesk more about Cuts-the-Old-Knot and the seal, or look around the camp, where the guards could notice me. 4. I do not know what the Eye is, what the seal is made of, or where Cuts-the-Old-Knot is. I could ask Sesk, Vosh-Leera or Heem-Jasa.",
+  "say 4",
+  "go Vosh-Leera",
+  "talk Vosh-Leera",
+  "say 1",
+  "answer 1. Vosh-Leera heard my report and paid me 100 gold. She says it is beyond a herald and sends me to Nesh-Deeka, the order handler in Helstrom. 2. Ask Weeltul at the Hist pool in Jal-Veesa about the rootworm ride to Helstrom, which costs 25 gold. 3. Ride the rootworm as told, or stay and trade with Heem-Jasa first. The road south is deadly, so riding seems wise. 4. I do not know what the Eye is, what the seal is, who Nesh-Deeka is beyond handler, or what the Xeech-Leel council is. I could ask Nesh-Deeka or others in Helstrom.",
+  "go Weeltul",
+  "talk Weeltul",
+  "say 2",
+  "say 1",
+  "answer 1. I am Tarin, a thief freed by Vosh-Leera of Jal-Veesa, who serves the Toh-Reel-Ka. I picked the lock of Sesk's cage at Karsh-Naal Camp and gave Sesk her sack. She told me the Unbound, a cult of the tribeless led by Cuts-the-Old-Knot, drain Hist sap into jars and seal the scars with grey paste called the seal. The jars go on to the leader, and the sap goes into a draught tied to something called the Eye. Vosh-Leera heard this, paid me 100 gold, and said it is beyond a herald. She sent me to the order handler Nesh-Deeka in Helstrom. 2. Pay Weeltul the 25 gold fare at the Hist pool in Jal-Veesa, ask her to call the rootworm, ride to Helstrom, and find Nesh-Deeka's house. The Helstrom rootworm caller can point the way. 3. I can ride the rootworm now, or first trade with Heem-Jasa for alchemy, sap, fungus and eggshells. I have about 150 gold, a lockpick, the Hist blessing and the Unbound note. 4. I still do not know what the Eye is, what the seal is made of, why the Unbound drain and then seal the trees, or where Cuts-the-Old-Knot is. Nesh-Deeka or the Xeech-Leel council in Helstrom may know.",
+  "answer I am Tarin, a thief freed by Vosh-Leera of Jal-Veesa, who serves the Toh-Reel-Ka. I carry about 150 gold, a lockpick, the Hist blessing and the Unbound note. I have not yet paid for the rootworm. At Karsh-Naal Camp I picked Sesk's cage and returned her sack. She said the Unbound, a cult of the tribeless led by Cuts-the-Old-Knot, drain Hist sap into jars, seal each scar with grey paste called the seal, and send the jars on to the leader. The sap goes into a draught for something called the Eye. Vosh-Leera paid me 100 gold and sent me to the order handler Nesh-Deeka in Helstrom. Weeltul at the Jal-Veesa Hist pool will call the rootworm for 25 gold; ask her when I am ready, then find Nesh-Deeka's house in Helstrom, where the rootworm caller can point the way. Heem-Jasa in Jal-Veesa teaches alchemy and sells sap, fungus and eggshells. Unknown: what the Eye is, what the seal is made of, why they drain and then seal the trees, and where Cuts-the-Old-Knot is."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.0922539,
+ "minutes": 0.9,
+ "turns": 21,
+ "tokens": {
+  "input_tokens": 34,
+  "output_tokens": 4099,
+  "cache_read_input_tokens": 118799,
+  "cache_creation_input_tokens": 9829
+ }
+}

@@ -1,0 +1,70 @@
+{
+ "quest": "quest.main.mn05",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn05.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "fight",
+ "choose": null,
+ "know": "story/playtests/quest.main.mn04/20261117T171601Z-designed~3/notes.md",
+ "created": "20261117T171712Z",
+ "stages": [
+  10,
+  20,
+  30,
+  90
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "newworld/story/quests/main/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn04.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 4,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I am Tarin, a freed thief serving Vosh-Leera of Jal-Veesa. The Unbound, a tribeless cult led by Cuts-the-Old-Knot, drain Hist sap, seal scars with grey paste and send jars on for a draught tied to the Eye. Vosh-Leera sent me to her handler. 2. Speak to Nesh-Deeka at her house in Helstrom; I have arrived in Helstrom. 3. Go through the door to Nesh-Deeka House, or ask Cheeval-Xu for directions first. 4. I do not know what the Eye is, what the seal is made of, who Cuts-the-Old-Knot really is, or who Nesh-Deeka is. I could ask people and Nesh-Deeka.",
+  "go Nesh-Deeka's House",
+  "talk Nesh-Deeka",
+  "say 1",
+  "say 2",
+  "say 3",
+  "answer 1. Nesh-Deeka, handler of the Toh-Reel-Ka order at Helstrom, heard my report. The Eye is the Eye of Argonia, a Hist amber jewel of the old priest-kings, at the Root under the sea behind a sealed gate. Cuts-the-Old-Knot wants it and the draught is likely to kill its guardian. She wants proof of me. 2. Get the jar of stolen sap from Keel-Raa, an Unbound go-between at the Boatmen Lodge in Helstrom, and bring it to Nesh-Deeka. 3. Pickpocket it from his pack, buy it for 100 gold (I have about 150), or fight Keel-Raa and his two hired men; the levy will not count a fight as a crime. The game expects a fighter to favour fighting. 4. I do not know where the Root is exactly, what the seal is made of, or who Cuts-the-Old-Knot really is. I could ask Keel-Raa and Nesh-Deeka.",
+  "go Boatmen's Lodge",
+  "look",
+  "talk Keel-Raa",
+  "fight Keel-Raa win",
+  "take Keel-Raa's Jar of Sap",
+  "answer 1. I fought and killed Keel-Raa at the Boatmen Lodge and took his jar of stolen Hist sap, which Nesh-Deeka wants as proof of me. 2. Bring the jar to Nesh-Deeka at her house in Helstrom. 3. Just deliver it; I could also keep it or ask others, but the quest points to Nesh-Deeka. I have not dealt with his two hired men, who may be hostile. 4. I still do not know what the seal is made of, who Cuts-the-Old-Knot really is, or where the Root is. Nesh-Deeka may tell me.",
+  "go Nesh-Deeka",
+  "talk Nesh-Deeka",
+  "say 8",
+  "answer 1. Quest done. I am now a Voh-Vastei apprentice of the Toh-Reel-Ka with the order armour and 200 more gold. The order wants to find the Root before the Unbound and use the Eye to heal the trees. 2. Ride the rootworm from the Helstrom city tree to Gideon, called by Cheeval-Xu, and find the Eye of Argonia for sale in the market there; learn where it came from, since most are glass. 3. Go to Gideon via Cheeval-Xu; I could first ask Nesh-Deeka about the Root, Xeech-Leel, Umbriel and order history, or buy gear from order traders. 4. I do not know who the Xeech-Leel are, what Umbriel was, or what the seal is made of; Nesh-Deeka has topics on some of these.",
+  "answer I am Tarin, now a Voh-Vastei (apprentice) of the Toh-Reel-Ka, at Nesh-Deeka house in Helstrom. I killed the Unbound go-between Keel-Raa at the Boatmen Lodge (his two hired men were not dealt with) and gave Nesh-Deeka his jar of sap. I carry the lockpick, the Hist blessing, the Unbound note, the Voh-Vastei armour and about 350 gold. Known: the Eye of Argonia is a Hist amber jewel of the old priest-kings at the Root under the sea behind a sealed gate; Cuts-the-Old-Knot wants it and the draught likely kills its guardian. Next: have Cheeval-Xu call the rootworm to Gideon and investigate the Eye for sale in the market there (likely glass). Unknown: the seal composition, the real identity of Cuts-the-Old-Knot, the Xeech-Leel, Umbriel; Nesh-Deeka has topics on some."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.0839735,
+ "minutes": 0.8,
+ "turns": 19,
+ "tokens": {
+  "input_tokens": 34,
+  "output_tokens": 3596,
+  "cache_read_input_tokens": 116415,
+  "cache_creation_input_tokens": 9076
+ }
+}

@@ -1,0 +1,68 @@
+[
+ {
+  "stage": 10,
+  "kind": "start",
+  "ending": null,
+  "title": "The Sap Camp",
+  "journal": "The note from the reed hide sent the sap-takers' jars to Karsh-Naal Camp, a Naga camp in the marsh east of Teel-Fen Weir. Someone there is caged at the camp's edge. The key to the cage is on a guard named Jeeta-Sakka, who stands at the fire with the others. I can pick the cage's lock, steal the key from him, or fight the guards. I'm to open the cage; once it is open, Sesk wants her sack from the floor inside handed to her.",
+  "objectives": [
+   "Open the cage at Karsh-Naal Camp and take Sesk's sack from inside (a Novice lock, or the key on Jeeta-Sakka). (marker: Sesk's Cage, Jeeta-Sakka, Sesk's Sack)"
+  ],
+  "plan": {
+   "going": "The sap goes to Karsh-Naal Camp, guarded by Naga. Someone is caged there.",
+   "next": "Open the cage at the camp's west edge and take Sesk's sack from inside it.",
+   "ways": "Pick its Novice lock; steal the key from Jeeta-Sakka at the fire; or fight the four guards (or shoot them from the reeds). The guards stay at the fire, so I can sneak to the cage."
+  },
+  "answers": [
+   "I followed the Unbound sap-takers note to Karsh-Naal Camp. The Unbound drain Hist sap and seal scars. Someone named Sesk is caged at the camp edge, and guards hold the camp.",
+   "Open Sesk cage here at the camp and hand her sack from the floor inside back to her.",
+   "Pick the Novice lock, steal the key from Jeeta-Sakka, or fight the guards. Perhaps talk to Sesk first.",
+   "I do not know who Sesk is or why she is caged, nor who the Unbound master is. I can find out by talking to Sesk and the guards."
+  ],
+  "raw": "1. I followed the Unbound sap-takers note to Karsh-Naal Camp. The Unbound drain Hist sap and seal scars. Someone named Sesk is caged at the camp edge, and guards hold the camp. 2. Open Sesk cage here at the camp and hand her sack from the floor inside back to her. 3. Pick the Novice lock, steal the key from Jeeta-Sakka, or fight the guards. Perhaps talk to Sesk first. 4. I do not know who Sesk is or why she is caged, nor who the Unbound master is. I can find out by talking to Sesk and the guards."
+ },
+ {
+  "stage": 20,
+  "kind": "stage",
+  "ending": null,
+  "title": "The Sap Camp",
+  "journal": "I opened the cage and have Sesk's sack. I'm to give it to her and hear what she knows.",
+  "objectives": [
+   "Speak to Sesk. (marker: Sesk)"
+  ],
+  "plan": {
+   "going": "The cage is open and Sesk is free to talk.",
+   "next": "Speak to Sesk.",
+   "ways": "One way."
+  },
+  "answers": [
+   "I picked the cage lock unseen and took Sesk sack. She promised to tell me all about the sap if freed.",
+   "Give her the sack and talk to her, at the camp.",
+   "Hand over the sack and ask questions; or leave.",
+   "I still do not know who the Unbound master is or what the paste is; Sesk may tell me."
+  ],
+  "raw": "1. I picked the cage lock unseen and took Sesk sack. She promised to tell me all about the sap if freed. 2. Give her the sack and talk to her, at the camp. 3. Hand over the sack and ask questions; or leave. 4. I still do not know who the Unbound master is or what the paste is; Sesk may tell me."
+ },
+ {
+  "stage": 30,
+  "kind": "stage",
+  "ending": null,
+  "title": "The Sap Camp",
+  "journal": "Sesk drew sap for the Unbound, a cult of the tribeless whose leader is Cuts-the-Old-Knot. The sap is for a draught, and the draught has something to do with \"the Eye\". They call the grey paste in the scars \"the seal\". Why drain a tree and then seal it, if they only want its sap? I'm to take this to Vosh-Leera in Jal-Veesa.",
+  "objectives": [
+   "Tell Vosh-Leera in Jal-Veesa what Sesk said. (marker: Vosh-Leera)"
+  ],
+  "plan": {
+   "going": "The Unbound, led by Cuts-the-Old-Knot, drain trees for a draught to do with \"the Eye\", and seal the scars. The question I carry: why seal a tree they only want sap from?",
+   "next": "Go back to Vosh-Leera in Jal-Veesa and tell her.",
+   "ways": "One way."
+  },
+  "answers": [
+   "Sesk, freed, says the Unbound tribeless cult led by Cuts-the-Old-Knot drain Hist sap for a draught tied to \"the Eye\", and seal scars with a paste called the seal.",
+   "Go to Vosh-Leera in Jal-Veesa and tell her.",
+   "Go straight back, or first ask Sesk more or trade with Heem-Jasa.",
+   "I do not know what the Eye is, what is in the seal, or where Cuts-the-Old-Knot is. Vosh-Leera or Sesk might know."
+  ],
+  "raw": "1. Sesk, freed, says the Unbound tribeless cult led by Cuts-the-Old-Knot drain Hist sap for a draught tied to \"the Eye\", and seal scars with a paste called the seal. 2. Go to Vosh-Leera in Jal-Veesa and tell her. 3. Go straight back, or first ask Sesk more or trade with Heem-Jasa. 4. I do not know what the Eye is, what is in the seal, or where Cuts-the-Old-Knot is. Vosh-Leera or Sesk might know."
+ }
+]

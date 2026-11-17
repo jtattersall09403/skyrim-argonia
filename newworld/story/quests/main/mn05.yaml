@@ -295,6 +295,28 @@ placements:
     kind: existing_base
     id: a faction of ours with Skyrim's flag that reports no crimes against its members
   name: Keel-Raa's Hands
+- ref: npc.mn.jal-veesa-minder
+  kind: person
+  base:
+    kind: template_person
+    id: as MN02
+  name: Weeltul
+  anchor:
+    place: jal-veesa
+    rule: navmesh
+    need: 'as MN02: at the edge of the Hist pool'
+  enabled: true
+- ref: door.mn05.boatmens-lodge
+  kind: door
+  base:
+    kind: existing_base
+    id: Helstrom's inn door
+  anchor:
+    place: helstrom
+    rule: surface
+    need: the Boatmen's Lodge's door by the city landing (its ship's hold interior), showing "Boatmen's Lodge"
+  enabled: true
+  placeName: Boatmen's Lodge
 conclusions:
 - id: c1
   statement: Cuts-the-Old-Knot hunts the Eye of Argonia at the Root, and her draught is to kill what guards it.
@@ -894,12 +916,12 @@ topics:
   stages:
   - 90
   essential: false
-  intent: 'Nesh-Deeka, from the player''s rank to the end of the line wherever she stands (later lanes add their own
-    rows). Tells: the Hist trees are sickening one by one. The Unbound drain them and seal the scars with a grey paste.
-    Their leader, Cuts-the-Old-Knot, brews the sap into a draught strong enough to kill the beast that guards the Root,
-    the place under the sea where the roots of all the trees meet. There the Eye of Argonia lies, the old priest-kings''
-    jewel of Hist amber, behind a gate the last king sealed. The order wants the player to find it first and use it where
-    it sits to heal the trees. Her one lead now is the "Eye of Argonia" for sale in Gideon. Checks: nothing. Does: nothing.'
+  intent: 'Nesh-Deeka, from the player''s rank to the end of the line wherever she stands (later lanes add their own rows).
+    Tells: the Hist trees are sickening one by one. The Unbound drain them and seal the scars with a grey paste. Their leader,
+    Cuts-the-Old-Knot, brews the sap into a draught strong enough to kill the beast that guards the Root, the place under
+    the sea where the roots of all the trees meet. There the Eye of Argonia lies, the old priest-kings'' jewel of Hist amber,
+    behind a gate the last king sealed. The order wants the player to find it first and use it where it sits to heal the
+    trees. Her one lead now is the "Eye of Argonia" for sale in Gideon. Checks: nothing. Does: nothing.'
   uses:
   - fact.mn05.eye
   - fact.mn05.draught

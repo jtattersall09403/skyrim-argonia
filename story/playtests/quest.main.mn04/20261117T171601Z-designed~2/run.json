@@ -1,0 +1,51 @@
+{
+ "quest": "quest.main.mn04",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn04.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "pick",
+ "choose": null,
+ "know": "story/playtests/quest.main.mn03/20261117T170516Z-designed/notes.md",
+ "created": "20261117T171601Z",
+ "stages": [
+  10
+ ],
+ "ended": "harness error",
+ "after": [
+  {
+   "record": "newworld/story/quests/main/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn03.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 1,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I am Tarin, a thief freed by Vosh-Leera of Jal-Veesa. The Hists are sickening and Unbound Sap-Takers drain sap; their note sent jars to Karsh-Naal Camp. Someone named Sesk is caged here. 2. Open the cage at Karsh-Naal Camp and hand Sesk her sack from inside. 3. Pick the Novice lock, steal the key from guard Jeeta-Sakka, or fight the guards. 4. I do not know who the Unbound or their master are, or who Sesk is. I could ask Sesk and the guards.",
+  "talk Sesk",
+  "say 1",
+  "say 2",
+  "pick Sesk's Cage win",
+  "use Sesk's Cage"
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.0356577,
+ "minutes": 0.4,
+ "turns": 9,
+ "tokens": {
+  "input_tokens": 16,
+  "output_tokens": 1360,
+  "cache_read_input_tokens": 38617,
+  "cache_creation_input_tokens": 4541
+ }
+}

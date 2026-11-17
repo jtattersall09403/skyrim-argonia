@@ -1,0 +1,13 @@
+# Milestones: quest.main.mn04
+
+## 1. Stage 10 (start): The Sap Camp
+
+Journal: The note from the reed hide sent the sap-takers' jars to Karsh-Naal Camp, a Naga camp in the marsh east of Teel-Fen Weir. Someone there is caged at the camp's edge. The key to the cage is on a guard named Jeeta-Sakka, who stands at the fire with the others. I can pick the cage's lock, steal the key from him, or fight the guards. I'm to open the cage; once it is open, Sesk wants her sack from the floor inside handed to her.
+
+| | Plan | Player |
+|---|---|---|
+| Going on | The sap goes to Karsh-Naal Camp, guarded by Naga. Someone is caged there. | I followed the sap-takers note to Karsh-Naal Camp, a Naga camp in the marsh. Someone named Sesk is caged at the edge. The Unbound want sap jars here; stacked jars of sap are in the camp. |
+| Next | Open the cage at the camp's west edge and take Sesk's sack from inside it. | Open Sesk cage at Karsh-Naal and hand her sack from the floor inside back to her. |
+| Ways | Pick its Novice lock; steal the key from Jeeta-Sakka at the fire; or fight the four guards (or shoot them from the reeds). The guards stay at the fire, so I can sneak to the cage. | Pick the Novice lock, steal the key from guard Jeeta-Sakka (pickpocketing suits a thief like me), or fight the three guards. |
+| Not understood | (none) | I do not know who Sesk is or why she is caged, or who the Naga guards serve. I could ask her and Jeeta-Sakka by talking. |
+

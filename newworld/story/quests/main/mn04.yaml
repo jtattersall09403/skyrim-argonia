@@ -202,6 +202,7 @@ placements:
     place: tribal-camp-m2-m68
     rule: navmesh
     need: inside Sesk's Cage at the camp's west edge, the side farthest from the fire, facing the reeds
+    room: Sesk's Cage
   enabled: true
 - ref: thing.mn04.cage
   kind: door
@@ -218,6 +219,7 @@ placements:
     level: novice
     key: thing.mn04.cage-key
   enabled: true
+  placeName: Sesk's Cage
 - ref: npc.mn04.jeeta-sakka
   kind: person
   base:
@@ -308,6 +310,41 @@ placements:
     place: tribal-camp-m2-m68
     rule: surface
     need: on the floor inside Sesk's Cage, out of reach through the bars
+    room: Sesk's Cage
+  enabled: true
+- ref: door.mn02.vosh-leera-house
+  kind: door
+  base:
+    kind: existing_base
+    id: the source town's house door
+  anchor:
+    place: jal-veesa
+    rule: surface
+    need: 'as MN02: the door showing "Vosh-Leera''s House"'
+  enabled: true
+  placeName: Vosh-Leera's House
+- ref: npc.mn.vosh-leera
+  kind: person
+  base:
+    kind: template_person
+    id: as MN02
+  name: Vosh-Leera
+  anchor:
+    place: jal-veesa
+    room: Vosh-Leera's House
+    rule: navmesh
+    need: 'as MN02: inside Vosh-Leera''s House'
+  enabled: true
+- ref: npc.mn.jal-veesa-minder
+  kind: person
+  base:
+    kind: template_person
+    id: as MN02
+  name: Weeltul
+  anchor:
+    place: jal-veesa
+    rule: navmesh
+    need: 'as MN02: at the edge of the Hist pool'
   enabled: true
 conclusions:
 - id: c1

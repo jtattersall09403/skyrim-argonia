@@ -1,0 +1,70 @@
+{
+ "quest": "quest.main.mn05",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn05.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "buy",
+ "choose": null,
+ "know": "story/playtests/quest.main.mn04/20261117T171601Z-designed~3/notes.md",
+ "created": "20261117T171712Z",
+ "stages": [
+  10,
+  20,
+  26,
+  90
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "newworld/story/quests/main/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn04.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 4,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I am Tarin, a freed thief working for Vosh-Leera of Jal-Veesa. I helped Sesk at Karsh-Naal Camp; she told me the Unbound, a tribeless cult led by Cuts-the-Old-Knot, drain Hist sap, seal scars with grey paste called the seal, and send jars to him for a draught tied to the Eye. Vosh-Leera sent me to her handler. 2. Speak to Nesh-Deeka in her house in Helstrom, through the Door to Nesh-Deeka's House here (marker). 3. I can ask Cheeval-Xu for directions, or go straight in through the door. The other door leads to the Boatmen's Lodge. 4. I do not know what the Eye is, what the seal is made of, who Cuts-the-Old-Knot really is, or who Nesh-Deeka is. I could ask Nesh-Deeka and Cheeval-Xu.",
+  "talk Cheeval-Xu",
+  "say 1",
+  "use Door to Nesh-Deeka's House",
+  "talk Nesh-Deeka",
+  "say 2",
+  "say 3",
+  "answer 1. Nesh-Deeka, the handler, heard my report. The Eye is the Eye of Argonia, a Hist amber jewel of the old priest-kings, at the Root under the sea behind a sealed gate. Cuts-the-Old-Knot wants it, and the sap draught is likely to kill whatever guards it. She wants proof of me. 2. Get the jar of stolen sap from Keel-Raa, an Unbound go-between at the Boatmen's Lodge, and bring it to Nesh-Deeka. 3. Pickpocket it, buy it for 100 gold (I have about 150), or fight Keel-Raa and his two hired men. The game suggests buying for my build. 4. I do not know what guards the Root, where exactly the Root is, or what the seal is made of. Keel-Raa might tell me more when I talk to him.",
+  "go Keel-Raa",
+  "talk Keel-Raa",
+  "say 3",
+  "say 3 pass",
+  "answer 1. I bought the jar of stolen sap from Keel-Raa for 100 gold, to prove myself to Nesh-Deeka, the handler. 2. Bring the jar to Nesh-Deeka in her house in Helstrom. 3. Just deliver it; I could also talk to others at the lodge first. 4. Still unknown: what guards the Root, what the seal is made of, and who Cuts-the-Old-Knot really is.",
+  "go Nesh-Deeka",
+  "talk Nesh-Deeka",
+  "say 8",
+  "answer 1. Nesh-Deeka accepted the jar and made me a Voh-Vastei, apprentice of the Toh-Reel-Ka, giving me armour and 200 gold. The order wants to find the Root before the Unbound and use the Eye to heal the trees. 2. Ride the rootworm from Helstrom to Gideon, calling it through Cheeval-Xu, and look into the Eye of Argonia for sale in Gideon market; most are glass, so learn where it came from. 3. Go to Gideon, ask traders, or first ask Nesh-Deeka about the Root, the Xeech-Leel and Umbriel. 4. I do not understand the Xeech-Leel or Umbriel, nor where the Root is, what guards it, or what the seal is made of. Nesh-Deeka has topics on some of these.",
+  "answer I am Tarin, now a Voh-Vastei (apprentice) of the Toh-Reel-Ka, with the order light armour and about 250 gold. I bought Keel-Raa jar of sap for 100 gold and gave it to Nesh-Deeka in Helstrom. The Eye of Argonia is a Hist-amber jewel of the priest-kings at the Root under the sea behind a sealed gate; the order wants to find it before the Unbound (Cuts-the-Old-Knot) and use it to heal the trees. Next lead: an Eye for sale in Gideon market, probably glass; ride the rootworm from Helstrom via Cheeval-Xu. Unknown: what guards the Root, the seal composition, Xeech-Leel, Umbriel; Nesh-Deeka has topics on them that I did not read."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.07969730000000001,
+ "minutes": 0.9,
+ "turns": 19,
+ "tokens": {
+  "input_tokens": 34,
+  "output_tokens": 3245,
+  "cache_read_input_tokens": 114553,
+  "cache_creation_input_tokens": 8931
+ }
+}
