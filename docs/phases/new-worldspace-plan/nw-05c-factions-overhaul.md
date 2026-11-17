@@ -311,6 +311,14 @@ reconciliation call's recommendations (#75) stand as working defaults until the 
 Owed, in order:
 
 1. The owner reads the plots in the explorer and notes them. No outline is written for a plot before he passes it.
+   The main plot is passed (owner, 2026-11-17: "Write the detailed quest records for the main quest only"): its
+   nineteen quests are records at `newworld/story/quests/main/mn01.yaml` to `mn19.yaml`, each with a per-stage
+   information plan (what the player must know and the channel that tells them), and each passes the paper
+   playtest milestone by milestone on every way through and every ending, played in order with the earlier
+   quests' state carried (runs under `story/playtests/quest.main.mn*/`, logs in `story/design/quests/review/main-mn-*.md`).
+   Helstrom's draft gives them Nesh-Deeka's House (house 8, its household recast as hers) and the Boatmen's Lodge.
+   Owed for the main quest: its records imported once the new world's places are in the story database; the
+   Unbound's highest rank named; the side quests of plot §6 written; dialogue (dialogue-write) and the build.
 2. The eleven blocks beyond the ceiling are approved (#73, 2026-11-16) and listed in
    [blocks](../../design/blocks.md), "Blocks owed". Each is built and proven once before a quest uses it.
 3. The travel menu (`newworld/sources/travel/menu.json`, an input of the world file's writer) still labels Bramman's
