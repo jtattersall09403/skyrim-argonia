@@ -6,111 +6,183 @@ line: quest.line.main
 group: main
 tier: 0
 status: concept
-shapes: [RECKONING, CONFRONTATION]
+shapes:
+- RECKONING
+- CONFRONTATION
 region: benthic-yobesh
 settlement: sunken-ruin-23-m112
-anchorPlaces: [helstrom, bell-station, sunken-ruin-23-m112]
-premise: With three stones in hand the player is made a Ka-Deelith and sent to open the gate, finds Cuts-the-Old-Knot
-  there first, hears the truth about the Toh-Reel-Ka's dreamers, and chooses to fight her or believe her.
+anchorPlaces:
+- helstrom
+- bell-station
+- sunken-ruin-23-m112
+premise: With three stones in hand the player is made a Ka-Deelith and sent to open the gate, finds Cuts-the-Old-Knot there
+  first, hears the truth about the Toh-Reel-Ka's dreamers, and chooses to fight her or believe her.
 costTier: L
 milestone: 2
 touches:
-- {id: npc.mn.never-writes-twice, access: write}
-- {id: npc.mn.cuts-the-old-knot, access: write}
-- {id: npc.mn.nesh-deeka, access: read}
-- {id: faction.toh-reel-ka, access: write}
-- {id: flag.mn.cuts-believed, access: write}
-- {id: thing.mn.seal-stone-thief, access: read}
-- {id: thing.mn.seal-stone-vault, access: read}
-- {id: thing.mn.seal-stone-deep, access: read}
-sources: [story/design/quests/lines/main-plot.md §3, §4, §5 quests 11 to 17, §7]
-essentialTopics: [topic.mn17-report, topic.mn17-pike, topic.mn17-claws, topic.mn17-cuts-truth, topic.mn17-fight,
-  topic.mn17-believe]
+- id: npc.mn.never-writes-twice
+  access: write
+- id: npc.mn.cuts-the-old-knot
+  access: write
+- id: npc.mn.nesh-deeka
+  access: read
+- id: faction.toh-reel-ka
+  access: write
+- id: flag.mn.cuts-believed
+  access: write
+- id: thing.mn.seal-stone-thief
+  access: read
+- id: thing.mn.seal-stone-vault
+  access: read
+- id: thing.mn.seal-stone-deep
+  access: read
+sources:
+- story/design/quests/lines/main-plot.md §3
+- §4
+- §5 quests 11 to 17
+- §7
+essentialTopics:
+- topic.mn17-report
+- topic.mn17-pike
+- topic.mn17-claws
+- topic.mn17-cuts-truth
+- topic.mn17-fight
+- topic.mn17-believe
 startWhen:
   any:
-  - questStage: [quest.main.mn14, '=', 93]
-  - questStage: [quest.main.mn15, '=', 93]
-  - questStage: [quest.main.mn16, '=', 93]
+  - questStage:
+    - quest.main.mn14
+    - '='
+    - 93
+  - questStage:
+    - quest.main.mn15
+    - '='
+    - 93
+  - questStage:
+    - quest.main.mn16
+    - '='
+    - 93
 start: 10
 recordStatus: design
 foundation: 'Written 2026-11-17 from main-plot.md quest 16''s leads-on, quest 17 and §7. Whichever stone quest ends last
-  ends at its stage 93 (all three held), which starts this quest. Stage 10 is the report with three stones in hand: at
-  Never-Writes-Twice, who stands at the back of Nesh-Deeka''s House in Helstrom, the player is made a Ka-Deelith (pike
-  or claws, and the rest of the Stormhold set) and given the last order. Then the dive; the Unbound rearguard in the
-  east halls; Cuts-the-Old-Knot before the gate speaks first (this quest''s one speaks-first) and tells the truth,
-  calling back to MN05 to MN13; the player fights her or believes her. Believing sets flag.mn.cuts-believed, which MN18
-  reads when the gate opens.'
+  ends at its stage 93 (all three held), which starts this quest. Stage 10 is the report with three stones in hand: at Never-Writes-Twice,
+  who stands at the back of Nesh-Deeka''s House in Helstrom, the player is made a Ka-Deelith (pike or claws, and the rest
+  of the Stormhold set) and given the last order. Then the dive; the Unbound rearguard in the east halls; Cuts-the-Old-Knot
+  before the gate speaks first (this quest''s one speaks-first) and tells the truth, calling back to MN05 to MN13; the player
+  fights her or believes her. Believing sets flag.mn.cuts-believed, which MN18 reads when the gate opens.'
 recordSources:
   place: 'python -m tools.newworld.place_card sunken-ruin-23-m112 --mined (Teeth of Sithis: East Xanmeer as the east halls,
     Halls as the gallery and the gate, West Xanmeer as the guardian''s hall and the Root''s chamber); Helstrom ruling of
     the lead (2026-11-17): one-room houses, Never-Writes-Twice at the back of Nesh-Deeka''s House'
-  lore: ['story/lore/extrapolation/argonia-4e201-state.md §1, §2.5, §11.2 (the Xeech-Leel; the Toh-Reel-Ka; the dreamers
-    of Fort Chalkmoth)', 'story/lore/topics/umbriel.md', 'story/lore/topics/hist-and-sap.md (sap and visions; roots
-    joined)', 'story/design/quests/lines/main-plot.md §3, §7']
+  lore:
+  - story/lore/extrapolation/argonia-4e201-state.md §1, §2.5, §11.2 (the Xeech-Leel; the Toh-Reel-Ka; the dreamers of Fort
+    Chalkmoth)
+  - story/lore/topics/umbriel.md
+  - story/lore/topics/hist-and-sap.md (sap and visions; roots joined)
+  - story/design/quests/lines/main-plot.md §3, §7
 centrepiece: CONFRONT
 actionPlan:
-- {skill: One-Handed, use: fight, reason: 'the Unbound rearguard in the east halls; Cuts-the-Old-Knot, if fought (any
-    fighting skill; Destruction and Archery serve)'}
-- {skill: Sneak, use: slip-past, reason: past the rearguard to the gate}
-- {skill: Illusion, use: calm, reason: 'hold the rearguard off with magic (Calm, Fear) while passing'}
-- {skill: Alteration, use: waterbreathing, reason: 'the long dive (or a potion from Bell Station, the Hist''s blessing,
-    an enchantment, or being Argonian)'}
+- skill: One-Handed
+  use: fight
+  reason: the Unbound rearguard in the east halls; Cuts-the-Old-Knot, if fought (any fighting skill; Destruction and Archery
+    serve)
+- skill: Sneak
+  use: slip-past
+  reason: past the rearguard to the gate
+- skill: Illusion
+  use: calm
+  reason: hold the rearguard off with magic (Calm, Fear) while passing
+- skill: Alteration
+  use: waterbreathing
+  reason: the long dive (or a potion from Bell Station, the Hist's blessing, an enchantment, or being Argonian)
 truth:
 - id: t1
   when: 4E 187 onward
-  who: [npc.mn.never-writes-twice]
+  who:
+  - npc.mn.never-writes-twice
   where: the cellar of Fort Chalkmoth
   what: The Toh-Reel-Ka keep dreamers in the cellar, fed sap and made to tell their dreams; a dreamer sees what any tree
-    has seen. Never-Writes-Twice ran the cellar and kept its key. Cuts-the-Old-Knot was a dreamer there for nine years
-    until she got out.
+    has seen. Never-Writes-Twice ran the cellar and kept its key. Cuts-the-Old-Knot was a dreamer there for nine years until
+    she got out.
 - id: t2
   when: since her escape
-  who: [npc.mn.cuts-the-old-knot]
+  who:
+  - npc.mn.cuts-the-old-knot
   where: across the marsh
   what: She drains trees for a draught to kill the Root's guardian, and seals each drained tree with her paralysis poison,
     so that the order draws no sap from it for its dreamers and its dreamers cannot see her through it. Some sealed trees
     have died of it, which she never meant.
 - id: t3
   when: days before the player comes
-  who: [npc.mn.cuts-the-old-knot, the Unbound rearguard]
+  who:
+  - npc.mn.cuts-the-old-knot
+  - the Unbound rearguard
   where: Teku-Sul Spire
-  what: She dived to Teku-Sul with a rearguard. No tree grows under the sea, so no dreamer saw them. She has no stones
-    and waits before the gate; she left her rearguard in the east halls.
+  what: She dived to Teku-Sul with a rearguard. No tree grows under the sea, so no dreamer saw them. She has no stones and
+    waits before the gate; she left her rearguard in the east halls.
 - id: t4
   when: the day the player reports
-  who: [npc.mn.never-writes-twice]
+  who:
+  - npc.mn.never-writes-twice
   where: Nesh-Deeka's House, Helstrom
   what: The dreamers have seen no Unbound near Teku-Sul, so she believes the player is ahead and sends them now.
 facts:
-- {id: fact.mn17.ahead, claim: 'Never-Writes-Twice says the order''s watchers have not seen the Unbound near Teku-Sul,
-    so the player is ahead of them.', from: t4}
-- {id: fact.mn17.order, claim: 'The last order: open the gate with the stones, use the Eye where it sits to heal the
-    trees, bring the stones back to Never-Writes-Twice so the chamber is sealed for good, then find and kill Cuts-the-Old-Knot.',
-  from: t4}
-- {id: fact.mn17.dreamers, claim: 'The Toh-Reel-Ka keep people in the cellar of Fort Chalkmoth, feed them sap and make
-    them tell their dreams; a dreamer sees what any tree has seen. The moaning behind the door is theirs.', from: t1}
-- {id: fact.mn17.she-was-one, claim: 'Cuts-the-Old-Knot was a dreamer in that cellar for nine years, and Never-Writes-Twice
-    kept the key.', from: t1}
-- {id: fact.mn17.why-seal, claim: 'She seals the trees she drains so that the order draws no sap from them for its dreamers
-    and its dreamers cannot see her through them. Some have died of it.', from: t2}
-- {id: fact.mn17.healing-for-dreamers, claim: 'A sick tree shows the dreamers nothing; a healed one shows them everything.
-    The stones "kept safe" mean only the order can ever reach the Eye.', from: t1}
-- {id: fact.mn17.lift, claim: 'She wants the Eye lifted: it parts the trees, ends the dreams and breaks the order, and
-    many trees will die of it, with the villages under them.', from: t2}
-- {id: fact.mn17.unseen-here, claim: 'No tree grows under the sea, so the dreamers never saw the Unbound at Teku-Sul.',
-  from: t3}
+- id: fact.mn17.ahead
+  claim: Never-Writes-Twice says the order's watchers have not seen the Unbound near Teku-Sul, so the player is ahead of
+    them.
+  from: t4
+- id: fact.mn17.order
+  claim: 'The last order: open the gate with the stones, use the Eye where it sits to heal the trees, bring the stones back
+    to Never-Writes-Twice so the chamber is sealed for good, then find and kill Cuts-the-Old-Knot.'
+  from: t4
+- id: fact.mn17.dreamers
+  claim: The Toh-Reel-Ka keep people in the cellar of Fort Chalkmoth, feed them sap and make them tell their dreams; a dreamer
+    sees what any tree has seen. The moaning behind the door is theirs.
+  from: t1
+- id: fact.mn17.she-was-one
+  claim: Cuts-the-Old-Knot was a dreamer in that cellar for nine years, and Never-Writes-Twice kept the key.
+  from: t1
+- id: fact.mn17.why-seal
+  claim: She seals the trees she drains so that the order draws no sap from them for its dreamers and its dreamers cannot
+    see her through them. Some have died of it.
+  from: t2
+- id: fact.mn17.healing-for-dreamers
+  claim: A sick tree shows the dreamers nothing; a healed one shows them everything. The stones "kept safe" mean only the
+    order can ever reach the Eye.
+  from: t1
+- id: fact.mn17.lift
+  claim: 'She wants the Eye lifted: it parts the trees, ends the dreams and breaks the order, and many trees will die of
+    it, with the villages under them.'
+  from: t2
+- id: fact.mn17.unseen-here
+  claim: No tree grows under the sea, so the dreamers never saw the Unbound at Teku-Sul.
+  from: t3
 cast:
 - id: npc.mn.never-writes-twice
   wants: no tree and nobody allied with one able to make another Umbriel (main-plot §4)
   fears: Cuts-the-Old-Knot, because she knows what the cellar holds
-  knowledge: {fact.mn17.ahead: knows, fact.mn17.order: knows, fact.mn17.dreamers: 'hides: the order''s rule rests on it',
-    fact.mn17.she-was-one: 'hides: she told the player Cuts-the-Old-Knot went mad on sap (MN10)'}
+  knowledge:
+    fact.mn17.ahead: knows
+    fact.mn17.order: knows
+    fact.mn17.dreamers: 'hides: the order''s rule rests on it'
+    fact.mn17.she-was-one: 'hides: she told the player Cuts-the-Old-Knot went mad on sap (MN10)'
+  name: Never-Writes-Twice
 - id: npc.mn.cuts-the-old-knot
-  persona: {race: Argonian, sex: female, role: 'leader of the Unbound; a dreamer of Fort Chalkmoth for nine years', invented: true}
+  persona:
+    race: Argonian
+    sex: female
+    role: leader of the Unbound; a dreamer of Fort Chalkmoth for nine years
+    invented: true
   wants: the Eye lifted and every dreamer free (main-plot §4)
   fears: the cellar
-  knowledge: {fact.mn17.dreamers: knows, fact.mn17.she-was-one: knows, fact.mn17.why-seal: knows, fact.mn17.healing-for-dreamers: knows,
-    fact.mn17.lift: knows, fact.mn17.unseen-here: knows}
+  knowledge:
+    fact.mn17.dreamers: knows
+    fact.mn17.she-was-one: knows
+    fact.mn17.why-seal: knows
+    fact.mn17.healing-for-dreamers: knows
+    fact.mn17.lift: knows
+    fact.mn17.unseen-here: knows
+  name: Cuts-the-Old-Knot
 things:
 - id: thing.mn17.order-pike
   kind: item
@@ -132,55 +204,123 @@ things:
 - id: thing.mn17.gate
   kind: door
   name: The Kings' Gate
-  source: 'MN13''s gate (King of the Murkmire''s crystal pedestals in a gate of its Xanmeer pieces), in the Halls; stated
-    alike in MN13 and MN18'
+  source: MN13's gate (King of the Murkmire's crystal pedestals in a gate of its Xanmeer pieces), in the Halls; stated alike
+    in MN13 and MN18
+- id: thing.mn.seal-stone-thief
+  kind: item
+  name: Seal-Stone of the Kings
+  source: 'stated alike in MN14 to MN16: from Blackrose Prison (MN14)'
+  where: carried
+- id: thing.mn.seal-stone-vault
+  kind: item
+  name: Seal-Stone of the Kings
+  source: 'stated alike in MN14 to MN16: from Gemin (MN15)'
+  where: carried
+- id: thing.mn.seal-stone-deep
+  kind: item
+  name: Seal-Stone of the Kings
+  source: 'stated alike in MN14 to MN16: from Vorannuhl (MN16)'
+  where: carried
 placements:
 - ref: npc.mn.never-writes-twice
   kind: person
-  base: {kind: template_person, id: 'as MN10 places her'}
-  anchor: {place: helstrom, rule: navmesh, need: 'at the back of Nesh-Deeka''s House (one room), behind Nesh-Deeka'}
+  base:
+    kind: template_person
+    id: as MN10 places her
+  anchor:
+    place: helstrom
+    rule: navmesh
+    need: at the back of Nesh-Deeka's House (one room), behind Nesh-Deeka
   enabled: true
+  name: Never-Writes-Twice
 - ref: npc.mn.cuts-the-old-knot
   kind: person
-  base: {kind: template_person, id: 'to choose: an Argonian battlemage template of ours'}
-  anchor: {place: sunken-ruin-23-m112, rule: navmesh, need: 'before the Kings'' Gate in the Halls, a step from the door
-      the player comes through from the gallery'}
+  base:
+    kind: template_person
+    id: 'to choose: an Argonian battlemage template of ours'
+  anchor:
+    place: sunken-ruin-23-m112
+    rule: navmesh
+    need: before the Kings' Gate in the Halls, a step from the door the player comes through from the gallery
   enabled: false
   level: 40
   killChoice: true
+  name: Cuts-the-Old-Knot
 - ref: npc.mn17.rearguard
   kind: person
-  base: {kind: template_person, id: 'our Unbound templates'}
+  base:
+    kind: template_person
+    id: our Unbound templates
   count: 4
-  anchor: {place: sunken-ruin-23-m112, rule: navmesh, need: 'four Unbound in the east halls (East Xanmeer), where the
-      air holds'}
+  anchor:
+    place: sunken-ruin-23-m112
+    rule: navmesh
+    need: four Unbound in the east halls (East Xanmeer), where the air holds
   name: Unbound Rearguard
   level: 30
   enabled: false
   hostile: true
 - ref: thing.mn17.cuts-draught
   kind: thing
-  base: {kind: template_item, id: 'to choose: a potion bottle (Skyrim)'}
+  base:
+    kind: template_item
+    id: 'to choose: a potion bottle (Skyrim)'
   carriedBy: npc.mn.cuts-the-old-knot
   count: 3
 conclusions:
 - id: c1
-  statement: 'The Toh-Reel-Ka see the marsh through dreamers kept in Fort Chalkmoth''s cellar, and that is why the Unbound
-    seal the trees.'
-  clues: [k1, k2, k3, k4, k5]
+  statement: The Toh-Reel-Ka see the marsh through dreamers kept in Fort Chalkmoth's cellar, and that is why the Unbound
+    seal the trees.
+  clues:
+  - k1
+  - k2
+  - k3
+  - k4
+  - k5
 clues:
-- {id: k1, form: thing, carrier: Fort Chalkmoth's store, gives: [fact.mn17.dreamers], supports: [c1], note: 'MN12: sap
-    by the stair in a fort with no tree'}
-- {id: k2, form: line, carrier: the gaoler, gives: [fact.mn17.dreamers], supports: [c1], note: 'MN12: "They sleep, and
-    they dream"'}
-- {id: k3, form: place, carrier: the cellar door, gives: [fact.mn17.dreamers], supports: [c1], note: 'MN12: moaning'}
-- {id: k4, form: behaviour, carrier: npc.mn.nesh-deeka, gives: [fact.mn17.dreamers], supports: [c1], note: 'MN06 to
-    MN10: "we listen", turning aside how she knows'}
-- {id: k5, form: behaviour, carrier: npc.mn17.rearguard, gives: [fact.mn17.unseen-here], supports: [c1], note: 'the
-    order said the Unbound were not here, and they are'}
+- id: k1
+  form: thing
+  carrier: Fort Chalkmoth's store
+  gives:
+  - fact.mn17.dreamers
+  supports:
+  - c1
+  note: 'MN12: sap by the stair in a fort with no tree'
+- id: k2
+  form: line
+  carrier: the gaoler
+  gives:
+  - fact.mn17.dreamers
+  supports:
+  - c1
+  note: 'MN12: "They sleep, and they dream"'
+- id: k3
+  form: place
+  carrier: the cellar door
+  gives:
+  - fact.mn17.dreamers
+  supports:
+  - c1
+  note: 'MN12: moaning'
+- id: k4
+  form: behaviour
+  carrier: npc.mn.nesh-deeka
+  gives:
+  - fact.mn17.dreamers
+  supports:
+  - c1
+  note: 'MN06 to MN10: "we listen", turning aside how she knows'
+- id: k5
+  form: behaviour
+  carrier: npc.mn17.rearguard
+  gives:
+  - fact.mn17.unseen-here
+  supports:
+  - c1
+  note: the order said the Unbound were not here, and they are
 shapeData:
-  reckoning: 'the question in the journal since MN09 (why seal a tree you drain?) answered by the woman who seals them;
-    every earlier clue named back'
+  reckoning: the question in the journal since MN09 (why seal a tree you drain?) answered by the woman who seals them; every
+    earlier clue named back
   confrontation: Cuts-the-Old-Knot before the gate; fight or believe
 stages:
 - id: 10
@@ -194,18 +334,26 @@ stages:
     objectiveText: Bring the three seal-stones to Never-Writes-Twice in Nesh-Deeka's House, Helstrom.
     target: npc.mn.never-writes-twice
     completeWhen:
-      questStage: [quest.main.mn17, ≥, 20]
+      questStage:
+      - quest.main.mn17
+      - ≥
+      - 20
   successors:
   - to: 20
     when:
-      topicHeardFrom: [topic.mn17-pike, npc.mn.never-writes-twice]
+      topicHeardFrom:
+      - topic.mn17-pike
+      - npc.mn.never-writes-twice
   - to: 21
     when:
-      topicHeardFrom: [topic.mn17-claws, npc.mn.never-writes-twice]
+      topicHeardFrom:
+      - topic.mn17-claws
+      - npc.mn.never-writes-twice
   failForward:
   - to: 95
     when:
-      not: {npcAlive: npc.mn.never-writes-twice}
+      not:
+        npcAlive: npc.mn.never-writes-twice
   directions: Boats from Blackrose and Noota Nara go up to Helstrom, and the rootworm runs from Jal-Veesa's Hist pool to
     Helstrom's city tree. Nesh-Deeka's House is the quiet house with her name on the door.
   information:
@@ -213,118 +361,256 @@ stages:
     next: report to Never-Writes-Twice in Nesh-Deeka's House, Helstrom
     ways: none; the report is the step
     carriers:
-    - {know: report to Never-Writes-Twice, by: [journal, objective, marker:npc.mn.never-writes-twice, name:npc.mn.never-writes-twice]}
+    - know: report to Never-Writes-Twice
+      by:
+      - journal
+      - objective
+      - marker:npc.mn.never-writes-twice
+      - name:npc.mn.never-writes-twice
 - id: 20
   place: sunken-ruin-23-m112
   journal: text.journal.mn17.20
-  journalText: 'Never-Writes-Twice made me a Ka-Deelith, a War-Teacher of the Toh-Reel-Ka, and gave me the order''s pike.
-    Her watchers have not seen the Unbound near Teku-Sul, so I am ahead of them. I''m to dive to Teku-Sul Spire, open
-    the Kings'' Gate with the three stones and use the Eye where it sits to heal the trees. Then I''m to bring the stones
-    back to her and hunt down Cuts-the-Old-Knot.'
+  journalText: Never-Writes-Twice made me a Ka-Deelith, a War-Teacher of the Toh-Reel-Ka, and gave me the order's pike.
+    Her watchers have not seen the Unbound near Teku-Sul, so I am ahead of them. I'm to dive to Teku-Sul Spire, open the
+    Kings' Gate with the three stones and use the Eye where it sits to heal the trees. Then I'm to bring the stones back
+    to her and hunt down Cuts-the-Old-Knot.
   onEnter:
-  - {setRank: [faction.toh-reel-ka, ka-deelith]}
-  - giveItem: [thing.mn17.order-pike, 1]
-  - giveItem: [thing.mn17.stormhold-rest, 1]
-  - {switchOn: npc.mn.cuts-the-old-knot}
-  - {switchOn: npc.mn17.rearguard}
-  objectives: &dive
+  - setFactionRank:
+    - faction.toh-reel-ka
+    - ka-deelith
+  - giveItem:
+    - thing.mn17.order-pike
+    - 1
+  - giveItem:
+    - thing.mn17.stormhold-rest
+    - 1
+  - enableRef: npc.mn.cuts-the-old-knot
+  - enableRef: npc.mn17.rearguard
+  objectives:
   - id: gate
     text: text.objective.mn17.gate
     objectiveText: Dive to Teku-Sul Spire and go to the Kings' Gate.
     target: thing.mn17.gate
     completeWhen:
-      questStage: [quest.main.mn17, ≥, 30]
-  successors: &meet
+      questStage:
+      - quest.main.mn17
+      - ≥
+      - 30
+  successors:
   - to: 30
     when:
-      topicHeardFrom: [topic.mn17-cuts-truth, npc.mn.cuts-the-old-knot]
+      topicHeardFrom:
+      - topic.mn17-cuts-truth
+      - npc.mn.cuts-the-old-knot
   - to: 91
     when:
-      not: {npcAlive: npc.mn.cuts-the-old-knot}
-  directions: &divedir Take the boat to Bell Station, the divers' islet south of Lilmoth. Teku-Sul Spire stands on the
-    sea floor south-west of the station; the dive is long, so carry waterbreathing (the steward sells potions) or the
-    Hist's blessing, or be Argonian. The east halls hold air; the gallery past them leads to the gate.
-  information: &diveinfo
-    going: 'I am a Ka-Deelith now. The order thinks I am ahead of the Unbound and has sent me to open the gate and heal
-      the trees with the Eye; afterwards the stones go back to Never-Writes-Twice and I hunt Cuts-the-Old-Knot'
+      not:
+        npcAlive: npc.mn.cuts-the-old-knot
+  directions: Take the boat to Bell Station, the divers' islet south of Lilmoth. Teku-Sul Spire stands on the sea floor
+    south-west of the station; the dive is long, so carry waterbreathing (the steward sells potions) or the Hist's blessing,
+    or be Argonian. The east halls hold air; the gallery past them leads to the gate.
+  information:
+    going: I am a Ka-Deelith now. The order thinks I am ahead of the Unbound and has sent me to open the gate and heal the
+      trees with the Eye; afterwards the stones go back to Never-Writes-Twice and I hunt Cuts-the-Old-Knot
     next: dive to Teku-Sul and go to the Kings' Gate
     ways: 'carry waterbreathing for the dive; in the east halls Unbound I was not warned of wait for me: fight them, slip
       past or hold them off with magic'
     carriers:
-    - {know: 'my rank and what it means', by: [journal, line:topic.mn17-report, ask:topic.mn-ranks]}
-    - {know: the last order, by: [journal, line:topic.mn17-report]}
-    - {know: the dreamers saw no Unbound there, by: [journal, line:topic.mn17-report]}
-    - {know: dive to the gate, by: [objective, marker:thing.mn17.gate]}
-    - {know: Unbound in the east halls; fight, sneak or magic, by: [look:npc.mn17.rearguard, name:npc.mn17.rearguard]}
-  actions: &diveacts
-  - {skill: One-Handed, use: fight, target: the rearguard, note: any fighting skill}
-  - {skill: Sneak, use: slip-past, target: the east halls}
-  - {skill: Illusion, use: calm, target: the rearguard}
+    - know: my rank and what it means
+      by:
+      - journal
+      - line:topic.mn17-pike
+    - know: the last order
+      by:
+      - journal
+      - line:topic.mn17-pike
+    - know: the dreamers saw no Unbound there
+      by:
+      - journal
+      - line:topic.mn17-pike
+    - know: dive to the gate
+      by:
+      - objective
+      - marker:thing.mn17.gate
+    - know: Unbound in the east halls; fight
+      sneak or magic: null
+      by:
+      - look:npc.mn17.rearguard
+      - name:npc.mn17.rearguard
+  actions:
+  - skill: One-Handed
+    use: fight
+    target: the rearguard
+    note: any fighting skill
+  - skill: Sneak
+    use: slip-past
+    target: the east halls
+  - skill: Illusion
+    use: calm
+    target: the rearguard
 - id: 21
   place: sunken-ruin-23-m112
   journal: text.journal.mn17.21
-  journalText: 'Never-Writes-Twice made me a Ka-Deelith, a War-Teacher of the Toh-Reel-Ka, and gave me the order''s claws.
-    Her watchers have not seen the Unbound near Teku-Sul, so I am ahead of them. I''m to dive to Teku-Sul Spire, open
-    the Kings'' Gate with the three stones and use the Eye where it sits to heal the trees. Then I''m to bring the stones
-    back to her and hunt down Cuts-the-Old-Knot.'
+  journalText: Never-Writes-Twice made me a Ka-Deelith, a War-Teacher of the Toh-Reel-Ka, and gave me the order's claws.
+    Her watchers have not seen the Unbound near Teku-Sul, so I am ahead of them. I'm to dive to Teku-Sul Spire, open the
+    Kings' Gate with the three stones and use the Eye where it sits to heal the trees. Then I'm to bring the stones back
+    to her and hunt down Cuts-the-Old-Knot.
   onEnter:
-  - {setRank: [faction.toh-reel-ka, ka-deelith]}
-  - giveItem: [thing.mn17.order-claws, 1]
-  - giveItem: [thing.mn17.stormhold-rest, 1]
-  - {switchOn: npc.mn.cuts-the-old-knot}
-  - {switchOn: npc.mn17.rearguard}
-  objectives: *dive
-  successors: *meet
-  directions: *divedir
-  information: *diveinfo
-  actions: *diveacts
+  - setFactionRank:
+    - faction.toh-reel-ka
+    - ka-deelith
+  - giveItem:
+    - thing.mn17.order-claws
+    - 1
+  - giveItem:
+    - thing.mn17.stormhold-rest
+    - 1
+  - enableRef: npc.mn.cuts-the-old-knot
+  - enableRef: npc.mn17.rearguard
+  objectives:
+  - id: gate
+    text: text.objective.mn17.gate
+    objectiveText: Dive to Teku-Sul Spire and go to the Kings' Gate.
+    target: thing.mn17.gate
+    completeWhen:
+      questStage:
+      - quest.main.mn17
+      - ≥
+      - 30
+  successors:
+  - to: 30
+    when:
+      topicHeardFrom:
+      - topic.mn17-cuts-truth
+      - npc.mn.cuts-the-old-knot
+  - to: 91
+    when:
+      not:
+        npcAlive: npc.mn.cuts-the-old-knot
+  directions: Take the boat to Bell Station, the divers' islet south of Lilmoth. Teku-Sul Spire stands on the sea floor
+    south-west of the station; the dive is long, so carry waterbreathing (the steward sells potions) or the Hist's blessing,
+    or be Argonian. The east halls hold air; the gallery past them leads to the gate.
+  information:
+    going: I am a Ka-Deelith now. The order thinks I am ahead of the Unbound and has sent me to open the gate and heal the
+      trees with the Eye; afterwards the stones go back to Never-Writes-Twice and I hunt Cuts-the-Old-Knot
+    next: dive to Teku-Sul and go to the Kings' Gate
+    ways: 'carry waterbreathing for the dive; in the east halls Unbound I was not warned of wait for me: fight them, slip
+      past or hold them off with magic'
+    carriers:
+    - know: my rank and what it means
+      by:
+      - journal
+      - line:topic.mn17-pike
+    - know: the last order
+      by:
+      - journal
+      - line:topic.mn17-pike
+    - know: the dreamers saw no Unbound there
+      by:
+      - journal
+      - line:topic.mn17-pike
+    - know: dive to the gate
+      by:
+      - objective
+      - marker:thing.mn17.gate
+    - know: Unbound in the east halls; fight
+      sneak or magic: null
+      by:
+      - look:npc.mn17.rearguard
+      - name:npc.mn17.rearguard
+  actions:
+  - skill: One-Handed
+    use: fight
+    target: the rearguard
+    note: any fighting skill
+  - skill: Sneak
+    use: slip-past
+    target: the east halls
+  - skill: Illusion
+    use: calm
+    target: the rearguard
 - id: 30
   place: sunken-ruin-23-m112
   journal: text.journal.mn17.30
-  journalText: 'Cuts-the-Old-Knot was waiting before the Kings'' Gate, without stones. She says the Toh-Reel-Ka keep
-    dreamers in the cellar of Fort Chalkmoth, fed on sap, and see the whole marsh through them. She was one of them for
-    nine years, and Never-Writes-Twice kept the key. That is why she seals the trees she drains: a sealed tree shows the
-    dreamers nothing. If I fight her, I take what she carries and go on alone, and giving her the Eye is closed to me.
-    If I believe her, she fights the guardian beside me. Either way the choice at the Eye stays mine. I''m to choose.'
+  journalText: 'Cuts-the-Old-Knot was waiting before the Kings'' Gate, without stones. She says the Toh-Reel-Ka keep dreamers
+    in the cellar of Fort Chalkmoth, fed on sap, and see the whole marsh through them. She was one of them for nine years,
+    and Never-Writes-Twice kept the key. That is why she seals the trees she drains: a sealed tree shows the dreamers nothing.
+    If I fight her, I take what she carries and go on alone, and giving her the Eye is closed to me. If I believe her, she
+    fights the guardian beside me. Either way the choice at the Eye stays mine. I''m to choose.'
   objectives:
   - id: choose
     text: text.objective.mn17.choose
     objectiveText: Fight Cuts-the-Old-Knot, or believe her.
     target: npc.mn.cuts-the-old-knot
     completeWhen:
-      questStage: [quest.main.mn17, ≥, 40]
+      questStage:
+      - quest.main.mn17
+      - ≥
+      - 40
   successors:
   - to: 40
     when:
-      topicHeardFrom: [topic.mn17-fight, npc.mn.cuts-the-old-knot]
+      topicHeardFrom:
+      - topic.mn17-fight
+      - npc.mn.cuts-the-old-knot
   - to: 90
     when:
-      topicHeardFrom: [topic.mn17-believe, npc.mn.cuts-the-old-knot]
+      topicHeardFrom:
+      - topic.mn17-believe
+      - npc.mn.cuts-the-old-knot
   - to: 91
     when:
-      not: {npcAlive: npc.mn.cuts-the-old-knot}
-  learns: [fact.mn17.dreamers, fact.mn17.she-was-one, fact.mn17.why-seal, fact.mn17.healing-for-dreamers, fact.mn17.lift,
-    fact.mn17.unseen-here]
+      not:
+        npcAlive: npc.mn.cuts-the-old-knot
+  learns:
+  - fact.mn17.dreamers
+  - fact.mn17.she-was-one
+  - fact.mn17.why-seal
+  - fact.mn17.healing-for-dreamers
+  - fact.mn17.lift
+  - fact.mn17.unseen-here
   information:
     going: 'Cuts-the-Old-Knot told me what the Toh-Reel-Ka are: they see the marsh through sap-fed dreamers in Fort Chalkmoth''s
-      cellar, the moaning I heard. She seals trees to blind them, not to kill the trees. The healing I was sent to do
-      would let the dreamers see again, and the stones in the order''s hands would keep the Eye theirs. She wants the Eye
-      lifted, which ends the dreams and kills many trees. This answers the question in my journal'
+      cellar, the moaning I heard. She seals trees to blind them, not to kill the trees. The healing I was sent to do would
+      let the dreamers see again, and the stones in the order''s hands would keep the Eye theirs. She wants the Eye lifted,
+      which ends the dreams and kills many trees. This answers the question in my journal'
     next: choose whether to fight her or believe her
     ways: 'fight: the hardest fight yet (she drinks her draught and fights as a battlemage); I get her spell tomes, robes,
       staff and draughts; I face the guardian alone; at the Eye I can only use it or take it. Believe: she waits in the
       hall beyond the gate and fights the guardian beside me; at the Eye I can use it, take it, or give it to her. Using
       the Eye with her alive kills her'
     carriers:
-    - {know: the dreamers and the cellar, by: [line:topic.mn17-cuts-truth, journal, ask:topic.mn17-cellar]}
-    - {know: why she seals the trees, by: [line:topic.mn17-cuts-truth, journal, ask:topic.mn17-why-seal]}
-    - {know: 'callbacks: sap in a fort with no tree, the gaoler''s words, the moaning, Nesh-Deeka''s "we listen", nobody
-        warned me here', by: [line:topic.mn17-cuts-truth]}
-    - {know: what healing and the stones mean for the order, by: [line:topic.mn17-cuts-truth, ask:topic.mn17-what-order-wants]}
-    - {know: what lifting the Eye does and costs, by: [line:topic.mn17-cuts-truth, ask:topic.mn17-lift, read:thing.mn15.kings-tablet]}
-    - {know: the order's reason (no second Umbriel), by: [line:topic.mn17-cuts-truth, ask:topic.mn-umbriel]}
-    - {know: 'what fighting gives and costs; what believing gives and costs', by: [journal, line:topic.mn17-if-fight,
-        line:topic.mn17-if-believe]}
+    - know: the dreamers and the cellar
+      by:
+      - line:topic.mn17-cuts-truth
+      - journal
+      - ask:topic.mn17-cellar
+    - know: why she seals the trees
+      by:
+      - line:topic.mn17-cuts-truth
+      - journal
+      - ask:topic.mn17-why-seal
+    - know: 'callbacks: sap in a fort with no tree, the gaoler''s words, the moaning, Nesh-Deeka''s "we listen", nobody
+        warned me here'
+      by:
+      - line:topic.mn17-cuts-truth
+    - know: what healing and the stones mean for the order
+      by:
+      - line:topic.mn17-cuts-truth
+      - ask:topic.mn17-what-order-wants
+    - know: what lifting the Eye does and costs
+      by:
+      - line:topic.mn17-cuts-truth
+      - ask:topic.mn17-lift
+    - know: the order's reason (no second Umbriel)
+      by:
+      - line:topic.mn17-cuts-truth
+      - ask:topic.mn-umbriel
+    - know: what fighting gives and costs; what believing gives and costs
+      by:
+      - journal
+      - ask:topic.mn17-if-fight
+      - ask:topic.mn17-if-believe
 - id: 40
   place: sunken-ruin-23-m112
   journal: text.journal.mn17.40
@@ -335,41 +621,85 @@ stages:
     objectiveText: Kill Cuts-the-Old-Knot.
     target: npc.mn.cuts-the-old-knot
     completeWhen:
-      questStage: [quest.main.mn17, ≥, 91]
+      questStage:
+      - quest.main.mn17
+      - ≥
+      - 91
   successors:
   - to: 91
     when:
-      not: {npcAlive: npc.mn.cuts-the-old-knot}
+      not:
+        npcAlive: npc.mn.cuts-the-old-knot
   information:
     going: I chose to fight her; she has drunk her draught
     next: kill her
     ways: any fighting skill
     carriers:
-    - {know: kill her, by: [journal, objective, marker:npc.mn.cuts-the-old-knot]}
+    - know: kill her
+      by:
+      - journal
+      - objective
+      - marker:npc.mn.cuts-the-old-knot
   actions:
-  - {skill: Destruction, use: fight, target: Cuts-the-Old-Knot, note: any fighting skill; she is a battlemage}
+  - skill: Destruction
+    use: fight
+    target: Cuts-the-Old-Knot
+    note: any fighting skill; she is a battlemage
 - id: 90
   place: sunken-ruin-23-m112
   journal: text.journal.mn17.90
-  journalText: I chose to believe Cuts-the-Old-Knot. She will wait in the hall beyond the gate and fight the guardian
-    with me. I have not promised her the Eye. I'm to set the three stones in the Kings' Gate.
+  journalText: I chose to believe Cuts-the-Old-Knot. She will wait in the hall beyond the gate and fight the guardian with
+    me. I have not promised her the Eye. I'm to set the three stones in the Kings' Gate.
   onEnter:
-  - setFlag: [flag.mn.cuts-believed, true]
+  - setFlag:
+    - flag.mn.cuts-believed
+    - true
   ending: complete
   endingId: e-believed
+  information:
+    going: I chose to believe Cuts-the-Old-Knot. She will wait in the hall beyond the gate and fight the guardian with me.
+      I have not promised her the Eye. I'm to set the three stones in the Kings' Gate.
+    next: nothing more in this quest; the next quests entry carries the step
+    ways: none
+    carriers:
+    - know: what happened
+      by:
+      - journal
 - id: 91
   place: sunken-ruin-23-m112
   journal: text.journal.mn17.91
   journalText: Cuts-the-Old-Knot is dead before the Kings' Gate. I go on alone. I'm to set the three stones in the gate.
   ending: complete
   endingId: e-killed
-- {id: 95, place: helstrom, journal: text.journal.mn17.95, journalText: Never-Writes-Twice is dead. Nobody is left in
-    the order to take my report or send me to the gate., ending: failed, endingId: e-thread}
+  information:
+    going: Cuts-the-Old-Knot is dead before the Kings' Gate. I go on alone. I'm to set the three stones in the gate.
+    next: nothing more in this quest; the next quests entry carries the step
+    ways: none
+    carriers:
+    - know: what happened
+      by:
+      - journal
+- id: 95
+  place: helstrom
+  journal: text.journal.mn17.95
+  journalText: Never-Writes-Twice is dead. Nobody is left in the order to take my report or send me to the gate.
+  ending: failed
+  endingId: e-thread
+  information:
+    going: Never-Writes-Twice is dead. Nobody is left in the order to take my report or send me to the gate.
+    next: nothing; the main quest cannot go on
+    ways: none
+    carriers:
+    - know: what happened
+      by:
+      - journal
 endings:
 - id: e-believed
   when: the player believed her
   world:
-  - setFlag: [flag.mn.cuts-believed, true]
+  - setFlag:
+    - flag.mn.cuts-believed
+    - true
   seen: she stands before the gate until it opens; then she is in the hall beyond (MN18)
   gives: an ally against the guardian; the Give ending stays open
   costs: nothing yet; the order's people do not know
@@ -381,122 +711,174 @@ endings:
 - id: e-thread
   when: Never-Writes-Twice died before the report
   world:
-  - setFlag: [flag.main.thread-severed, true]
+  - setFlag:
+    - flag.main.thread-severed
+    - true
   seen: the main quest's message that the thread is severed
 terms:
-- {term: Ka-Deelith, meets: '10, line:topic.mn17-report', told: '"War-Teacher", the order''s fourth rank', ask: topic.mn-ranks}
-- {term: the dreamers, meets: '20, line:topic.mn17-cuts-truth', told: 'people kept in Fort Chalkmoth''s cellar, fed
-    sap and made to tell what the trees have seen', ask: topic.mn17-cellar}
-- {term: Cuts-the-Old-Knot, meets: 'MN04 by name; 20 in person, speaks first', told: 'the leader of the Unbound', ask: topic.mn-cuts-the-old-knot}
-- {term: the draught, meets: '20, line:topic.mn17-if-fight', told: 'her sap-brewed draught, made to kill the guardian', ask: topic.mn17-if-fight}
+- term: Ka-Deelith
+  meets: 10, line:topic.mn17-report
+  told: '"War-Teacher", the order''s fourth rank'
+  ask: topic.mn-ranks
+- term: the dreamers
+  meets: 20, line:topic.mn17-cuts-truth
+  told: people kept in Fort Chalkmoth's cellar, fed sap and made to tell what the trees have seen
+  ask: topic.mn17-cellar
+- term: Cuts-the-Old-Knot
+  meets: MN04 by name; 20 in person, speaks first
+  told: the leader of the Unbound
+  ask: topic.mn-cuts-the-old-knot
+- term: the draught
+  meets: 20, line:topic.mn17-if-fight
+  told: her sap-brewed draught, made to kill the guardian
+  ask: topic.mn17-if-fight
 topics:
+- id: topic.mn-ranks
+  label: What do the order's ranks mean?
+  person: npc.mn.never-writes-twice
+  stages: [10, 20, 21]
+  intent: 'Never-Writes-Twice. Tells: the Toh-Reel-Ka''s ranks, lowest first, are Voh-Vastei, "Apprentice"; Toh-Wo,
+    "Secret-Speaker"; Reel-Ka, "Warrior"; Ka-Deelith, "War-Teacher", who may teach the order''s fighters; and Toh-Nassa,
+    "Leader of the Secret", the order''s highest.'
+  new: false
 - id: topic.mn17-report
   label: I have all three seal-stones.
   person: npc.mn.never-writes-twice
-  stages: [10]
+  stages:
+  - 10
   essential: true
   when:
     all:
-    - hasItem: [thing.mn.seal-stone-thief, 1]
-    - hasItem: [thing.mn.seal-stone-vault, 1]
-    - hasItem: [thing.mn.seal-stone-deep, 1]
+    - hasItem:
+      - thing.mn.seal-stone-thief
+      - 1
+    - hasItem:
+      - thing.mn.seal-stone-vault
+      - 1
+    - hasItem:
+      - thing.mn.seal-stone-deep
+      - 1
   intent: 'Never-Writes-Twice, at the back of Nesh-Deeka''s House. Tells: she looks at each stone and does not take them;
-    the player has done what the order''s best could not and is now a Ka-Deelith, a War-Teacher, the fourth rank, with
-    the right to teach the order''s fighters; she gives the gauntlets and boots that finish the order''s heavier armour.
-    Her watchers have not seen the Unbound anywhere near Teku-Sul, so the player is ahead of them and must go now. The
-    order: dive to Teku-Sul, set the stones in the Kings'' Gate, use the Eye where it sits so that strength runs down
-    every root and every tree is healed; do not lift it, for lifted it parts the trees. Then take the stones back from
-    the gate and bring them to her, so the chamber is sealed for good and nobody reaches the Eye again. Then find
-    Cuts-the-Old-Knot and kill her, and rid the marsh of the Unbound. She asks which weapon of the order the player will
-    carry: the pike or the claws (topic.mn17-pike and topic.mn17-claws). Fallback when the stones are not all held: bring
-    all three.'
-  uses: [fact.mn17.ahead, fact.mn17.order]
+    the player has done what the order''s best could not and is now a Ka-Deelith, a War-Teacher, the fourth rank, with the
+    right to teach the order''s fighters; she gives the gauntlets and boots that finish the order''s heavier armour. Her
+    watchers have not seen the Unbound anywhere near Teku-Sul, so the player is ahead of them and must go now. The order:
+    dive to Teku-Sul, set the stones in the Kings'' Gate, use the Eye where it sits so that strength runs down every root
+    and every tree is healed; do not lift it, for lifted it parts the trees. Then take the stones back from the gate and
+    bring them to her, so the chamber is sealed for good and nobody reaches the Eye again. Then find Cuts-the-Old-Knot and
+    kill her, and rid the marsh of the Unbound. She asks which weapon of the order the player will carry: the pike or the
+    claws (topic.mn17-pike and topic.mn17-claws). Fallback when the stones are not all held: bring all three.'
+  uses:
+  - fact.mn17.ahead
+  - fact.mn17.order
   new: true
 - id: topic.mn17-pike
   label: The pike.
   person: npc.mn.never-writes-twice
-  stages: [10]
+  stages:
+  - 10
   essential: true
   when:
-    topicHeardFrom: [topic.mn17-report, npc.mn.never-writes-twice]
+    topicHeardFrom:
+    - topic.mn17-report
+    - npc.mn.never-writes-twice
   intent: 'Never-Writes-Twice. Tells: a Ka-Deelith''s pike, that drinks the life of what it strikes; go now. Does: sets
     stage 20.'
   new: true
 - id: topic.mn17-claws
   label: The claws.
   person: npc.mn.never-writes-twice
-  stages: [10]
+  stages:
+  - 10
   essential: true
   when:
-    topicHeardFrom: [topic.mn17-report, npc.mn.never-writes-twice]
+    topicHeardFrom:
+    - topic.mn17-report
+    - npc.mn.never-writes-twice
   intent: 'Never-Writes-Twice. Tells: a Ka-Deelith''s claws, that stun and burn what they strike; go now. Does: sets stage
     21.'
   new: true
 - id: topic.mn17-how-know
   label: How do you know the Unbound are not at Teku-Sul?
   person: npc.mn.never-writes-twice
-  stages: [10, 20, 21]
+  stages:
+  - 10
+  - 20
+  - 21
   intent: 'Never-Writes-Twice. Tells: "We listen." The order hears what passes in the marsh; she turns the question aside,
     as Nesh-Deeka always did.'
   new: true
 - id: topic.mn-fort-chalkmoth
   label: Fort Chalkmoth
   person: npc.mn.never-writes-twice
-  stages: [10, 20, 21]
-  intent: 'Never-Writes-Twice. Tells: a fort like any other; what is in its cellar is the order''s business and not a
-    Ka-Deelith''s yet.'
+  stages:
+  - 10
+  - 20
+  - 21
+  intent: 'Never-Writes-Twice. Tells: a fort like any other; what is in its cellar is the order''s business and not a Ka-Deelith''s
+    yet.'
   new: false
 - id: topic.mn17-cuts-truth
   label: (speaks first)
   person: npc.mn.cuts-the-old-knot
   kind: speaks-first
-  stages: [20, 21]
+  stages:
+  - 20
+  - 21
   essential: true
-  intent: 'Cuts-the-Old-Knot, before the gate, staff lowered, with no stones. Tells, in order: she knows who the
-    player is and what they carry; she cannot open the gate without them. "How did your handler always know where to
-    send you? Why was there sap in a fort with no tree (the jar of Jal-Veesa sap the player took from the store, thing.mn12.sap-jar)? Who did you think was behind the cellar door? And why did nobody
-    warn you that we were here?" The Toh-Reel-Ka keep people in the cellar of Fort Chalkmoth, feed them sap and make them
-    tell their dreams; a dreamer sees what any tree has seen, anywhere, and through them the order sees the whole marsh.
-    The moans were dreamers. She was one for nine years; Never-Writes-Twice kept the key, and her story that Cuts went
-    mad on sap and killed her minders is a lie. The answer to the player''s question: she seals each tree she drains so
-    the order draws no sap from it for its dreamers and its dreamers cannot see her through it; under the sea there are
-    no trees, so nobody saw her here. She never meant a tree to die of her seal, and some have. She grants the order
-    its reason: no second Umbriel. But the Xeech-Leel took the marsh by being not the An-Xileel and now rule unseen
-    through the trees as the An-Xileel did. The healing the player was sent to do is for the dreamers: a sick tree shows
-    them nothing, a healed one shows them everything, and the stones "kept safe" mean only the order can ever reach the
-    Eye. She wants the Eye lifted, which parts the trees, ends the dreams and breaks the order; many trees will die of
-    it, with the villages under them, and she will not pretend otherwise. She asks the player to stand with her or
-    fight her here (answers: topic.mn17-fight, topic.mn17-believe). Does: sets stage 30.'
-  uses: [fact.mn17.dreamers, fact.mn17.she-was-one, fact.mn17.why-seal, fact.mn17.healing-for-dreamers, fact.mn17.lift,
-    fact.mn17.unseen-here]
+  intent: 'Cuts-the-Old-Knot, before the gate, staff lowered, with no stones. Tells, in order: she knows who the player
+    is and what they carry; she cannot open the gate without them. "How did your handler always know where to send you?
+    Why was there sap in a fort with no tree (the jar of Jal-Veesa sap the player took from the store, thing.mn12.sap-jar)?
+    Who did you think was behind the cellar door? And why did nobody warn you that we were here?" The Toh-Reel-Ka keep people
+    in the cellar of Fort Chalkmoth, feed them sap and make them tell their dreams; a dreamer sees what any tree has seen,
+    anywhere, and through them the order sees the whole marsh. The moans were dreamers. She was one for nine years; Never-Writes-Twice
+    kept the key, and her story that Cuts went mad on sap and killed her minders is a lie. The answer to the player''s question:
+    she seals each tree she drains so the order draws no sap from it for its dreamers and its dreamers cannot see her through
+    it; under the sea there are no trees, so nobody saw her here. She never meant a tree to die of her seal, and some have.
+    She grants the order its reason: no second Umbriel. But the Xeech-Leel took the marsh by being not the An-Xileel and
+    now rule unseen through the trees as the An-Xileel did. The healing the player was sent to do is for the dreamers: a
+    sick tree shows them nothing, a healed one shows them everything, and the stones "kept safe" mean only the order can
+    ever reach the Eye. She wants the Eye lifted, which parts the trees, ends the dreams and breaks the order; many trees
+    will die of it, with the villages under them, and she will not pretend otherwise. She asks the player to stand with
+    her or fight her here (answers: topic.mn17-fight, topic.mn17-believe). Does: sets stage 30.'
+  uses:
+  - fact.mn17.dreamers
+  - fact.mn17.she-was-one
+  - fact.mn17.why-seal
+  - fact.mn17.healing-for-dreamers
+  - fact.mn17.lift
+  - fact.mn17.unseen-here
   new: true
 - id: topic.mn17-cellar
   label: Tell me about the cellar.
   person: npc.mn.cuts-the-old-knot
-  stages: [30]
-  intent: 'Cuts. Tells: the dreamers lie behind the locked door the player heard; they are given sap each night and
-    asked each morning what they saw; she was there nine years; she found a way out and will not say how, because the
-    way may still serve the others.'
+  stages:
+  - 30
+  intent: 'Cuts. Tells: the dreamers lie behind the locked door the player heard; they are given sap each night and asked
+    each morning what they saw; she was there nine years; she found a way out and will not say how, because the way may
+    still serve the others.'
   new: true
 - id: topic.mn17-why-seal
   label: Why seal a tree you have drained?
   person: npc.mn.cuts-the-old-knot
-  stages: [30]
-  intent: 'Cuts. Tells: so the order gets no sap from it for its dreamers and its dreamers cannot see through it where
-    she goes. The seal is a paralysis poison; it numbs the scar shut. She meant it to close a tree, not kill it, and
-    some have died; she carries that.'
+  stages:
+  - 30
+  intent: 'Cuts. Tells: so the order gets no sap from it for its dreamers and its dreamers cannot see through it where she
+    goes. The seal is a paralysis poison; it numbs the scar shut. She meant it to close a tree, not kill it, and some have
+    died; she carries that.'
   new: true
 - id: topic.mn17-what-order-wants
   label: What does the order really want with the Eye?
   person: npc.mn.cuts-the-old-knot
-  stages: [30]
-  intent: 'Cuts. Tells: every tree healed is a tree their dreamers can see through again; the stones taken home mean
-    nobody but them reaches the Eye after; the Xeech-Leel''s rule rests on the dreamers.'
+  stages:
+  - 30
+  intent: 'Cuts. Tells: every tree healed is a tree their dreamers can see through again; the stones taken home mean nobody
+    but them reaches the Eye after; the Xeech-Leel''s rule rests on the dreamers.'
   new: true
 - id: topic.mn17-lift
   label: What happens if the Eye is lifted?
   person: npc.mn.cuts-the-old-knot
-  stages: [30]
+  stages:
+  - 30
   intent: 'Cuts. Tells: every tree is cut from every other for good; no dreamer sees through them again; the strong trees
     live alone; the weak die, perhaps three in ten, and their villages with them, because no egg in a dead tree''s pool
     hatches. She thinks a free marsh is worth that. If the player asks about Jal-Veesa''s or Teel-Fen''s tree, she says
@@ -505,57 +887,83 @@ topics:
 - id: topic.mn17-if-fight
   label: And if I fight you?
   person: npc.mn.cuts-the-old-knot
-  stages: [30]
-  intent: 'Cuts. Tells: then she drinks the draught she brewed for the guardian and the player will have to kill her;
-    they may take what she carries, her tomes and her staff and the rest of the draught, and face the guardian alone;
-    and the Eye will be theirs to use or lift, never hers.'
+  stages:
+  - 30
+  intent: 'Cuts. Tells: then she drinks the draught she brewed for the guardian and the player will have to kill her; they
+    may take what she carries, her tomes and her staff and the rest of the draught, and face the guardian alone; and the
+    Eye will be theirs to use or lift, never hers.'
   new: true
 - id: topic.mn17-if-believe
   label: And if I believe you?
   person: npc.mn.cuts-the-old-knot
-  stages: [30]
-  intent: 'Cuts. Tells: she goes through the gate with them when it opens and fights the guardian at their side; she
-    asks for no promise now; at the Eye the choice is theirs, to use it as the order wants, lift it themselves, or let
-    her lift it. If they use it while she lives, the sap she has drunk will carry its power through her, and she knows
-    it.'
+  stages:
+  - 30
+  intent: 'Cuts. Tells: she goes through the gate with them when it opens and fights the guardian at their side; she asks
+    for no promise now; at the Eye the choice is theirs, to use it as the order wants, lift it themselves, or let her lift
+    it. If they use it while she lives, the sap she has drunk will carry its power through her, and she knows it.'
   new: true
 - id: topic.mn17-fight
   label: The order sent me to kill you. I will.
   person: npc.mn.cuts-the-old-knot
-  stages: [30]
+  stages:
+  - 30
   essential: true
-  intent: 'Cuts. Tells: then so be it; she drinks. Does: sets stage 40; she turns hostile (speaker_hostile) and drinks
-    her draught.'
-  grants: [speakerHostile]
+  intent: 'Cuts. Tells: then so be it; she drinks. Does: sets stage 40; she turns hostile (speaker_hostile) and drinks her
+    draught.'
+  grants:
+  - speakerHostile
   new: true
 - id: topic.mn17-believe
   label: I believe you. Open the gate with me.
   person: npc.mn.cuts-the-old-knot
-  stages: [30]
+  stages:
+  - 30
   essential: true
   intent: 'Cuts. Tells: then set the stones; she will be at their side beyond the gate. Does: sets stage 90 (flag.mn.cuts-believed).'
   new: true
 - id: topic.mn-cuts-the-old-knot
   label: Who are you?
   person: npc.mn.cuts-the-old-knot
-  stages: [30, 90]
-  intent: 'Cuts. Tells: she leads the Unbound, the tribeless who belong to no tree''s village; her name is the one she
-    gave herself when she got out of the cellar.'
+  stages:
+  - 30
+  - 90
+  intent: 'Cuts. Tells: she leads the Unbound, the tribeless who belong to no tree''s village; her name is the one she gave
+    herself when she got out of the cellar.'
   new: false
 - id: topic.mn-umbriel
   label: Umbriel
   person: npc.mn.cuts-the-old-knot
-  stages: [30, 90]
+  stages:
+  - 30
+  - 90
   intent: 'Cuts. Tells: the An-Xileel spoke alone with Lilmoth''s mad tree and brought the city down; the order was made
     so nobody could do it again, and now the order speaks alone with every tree.'
   new: false
 review:
   reviewer: writer's lore checks; quest-reviewer round to follow
   findings:
-  - {id: L1, severity: lore, ids: [truth.t1, facts.fact.mn17.dreamers], finding: 'The dreamers of Fort Chalkmoth.', answer: 'argonia-4e201-state.md
-      §2.5, §11.2; main-plot §3, §7'}
-  - {id: L2, severity: lore, ids: [topics.topic.mn17-cuts-truth], finding: 'The Xeech-Leel rule unseen as the An-Xileel
-      did.', answer: 'argonia-4e201-state.md §1 (the irony is the lore''s own); umbriel.md'}
-  - {id: L3, severity: lore, ids: [topics.topic.mn17-lift], finding: 'About three in ten die; no egg hatches in a dead
-      tree''s pool.', answer: 'main-plot §2, §8; hist-and-sap.md:78-80'}
-  - {id: L4, severity: lore, ids: [topics.topic.mn17-cellar], finding: 'How she got out.', answer: 'left untold, as the plot leaves it; she will not say'}
+  - id: L1
+    severity: lore
+    ids:
+    - truth.t1
+    - facts.fact.mn17.dreamers
+    finding: The dreamers of Fort Chalkmoth.
+    answer: argonia-4e201-state.md §2.5, §11.2; main-plot §3, §7
+  - id: L2
+    severity: lore
+    ids:
+    - topics.topic.mn17-cuts-truth
+    finding: The Xeech-Leel rule unseen as the An-Xileel did.
+    answer: argonia-4e201-state.md §1 (the irony is the lore's own); umbriel.md
+  - id: L3
+    severity: lore
+    ids:
+    - topics.topic.mn17-lift
+    finding: About three in ten die; no egg hatches in a dead tree's pool.
+    answer: main-plot §2, §8; hist-and-sap.md:78-80
+  - id: L4
+    severity: lore
+    ids:
+    - topics.topic.mn17-cellar
+    finding: How she got out.
+    answer: left untold, as the plot leaves it; she will not say
