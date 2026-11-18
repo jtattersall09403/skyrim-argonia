@@ -290,7 +290,7 @@ The tools lay the network by these rules.
   households, trades, wealth and backstories are the skill `place-people`; its last step carries them into the
   place files.
 - **Nothing levelled is ever placed** (decision 0035); the tools drop it and list it. A person's base is never a
-  levelled character nor one that takes anything from a template (stats, inventory, spells) unless that template is
+  beast (a creature's race), a levelled character, nor one that takes anything from a template (stats, inventory, spells) unless that template is
   itself a fitting base of the source: the next fitting base of the same people and role is taken, and `draft check`
   fails a person built on such a base.
 
