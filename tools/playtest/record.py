@@ -54,6 +54,23 @@ def load(path) -> dict:
     return q
 
 
+_world_places: dict | None = None
+
+
+def world_place_names() -> dict:
+    """The world's place names by id (newworld/story/data/db/place.jsonl), read once."""
+    global _world_places
+    if _world_places is None:
+        p = Path(__file__).resolve().parents[2] / "newworld" / "story" / "data" / "db" / "place.jsonl"
+        _world_places = {}
+        if p.exists():
+            for line in p.read_text().splitlines():
+                if line.strip():
+                    r = json.loads(line)
+                    _world_places[r["id"]] = r.get("name") or r["id"]
+    return _world_places
+
+
 def humanize(pid: str) -> str:
     tail = str(pid).split(".")[-1]
     return " ".join("-".join(w.capitalize() for w in part.split("-")) for part in tail.split("_"))
@@ -160,7 +177,7 @@ class Record:
     def place_name(self, pid) -> str:
         if pid in self.rooms:
             return pid
-        return self.place_names.get(pid) or (pid if not str(pid).startswith(("place.",)) and " " in str(pid)
+        return self.place_names.get(pid) or world_place_names().get(str(pid)) or (pid if not str(pid).startswith(("place.",)) and " " in str(pid)
                                              else humanize(pid))
 
     def text(self, ref) -> str | None:

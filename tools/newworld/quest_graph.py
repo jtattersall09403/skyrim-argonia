@@ -173,6 +173,12 @@ def build(q: dict, records: dict[str, dict]) -> dict:
                 if isinstance(x, dict) and str(x.get("to")) in stages:
                     edges.append({"from": f"s{sid}", "to": f"s{x['to']}", "kind": "go" if k == "successors" else "fail",
                                   "label": _cond(p, w, x.get("when"), True), "full": _cond(p, w, x.get("when"), False)})
+        for a in s.get("onEnter") or []:   # a message box's buttons each set a stage
+            c = a.get("showChoice") if isinstance(a, dict) else None
+            for b in (c.get("buttons") or []) if isinstance(c, dict) else []:
+                if isinstance(b, dict) and str(b.get("sets")) in stages:
+                    t = f"choose “{w.scrub(str(b.get('label') or ''))}” in the message box"
+                    edges.append({"from": f"s{sid}", "to": f"s{b['sets']}", "kind": "go", "label": t, "full": t})
     merged: dict[tuple, dict] = {}
     for e in edges:   # moves between the same two beats are one arrow with every way listed
         m = merged.get((e["from"], e["to"], e["kind"]))
@@ -195,7 +201,7 @@ def build(q: dict, records: dict[str, dict]) -> dict:
                 j = w.scrub(QP.one(s.get("journalText", ""))).split(". ")[0].rstrip(".")
                 if j:
                     nodes[i]["title"] = j
-    gaps = find_gaps(q, p, w, stages, edges, start)
+    gaps = find_gaps(q, p, w, stages, edges, start, records)
     for g in gaps:
         nodes.get(g["node"], nodes["start"]).setdefault("gaps", []).append(g["text"])
     rank(nodes, edges)
@@ -255,7 +261,76 @@ def rank(nodes: dict, edges: list[dict]) -> None:
         e["back"] = (e["from"], e["to"]) in back
 
 
-def find_gaps(q, p: QP.Play, w: Words, stages: dict, edges: list[dict], start: str) -> list[dict]:
+def _walk(c):
+    """Every leaf condition of a `when`, with whether it sits under a `not`."""
+    def go(c, neg):
+        if isinstance(c, list):
+            for x in c:
+                yield from go(x, neg)
+        elif isinstance(c, dict):
+            for k, v in c.items():
+                if k == "not":
+                    yield from go(v, not neg)
+                elif k in ("all", "any"):
+                    yield from go(v, neg)
+                else:
+                    yield k, v, neg
+    yield from go(c, False)
+
+
+def _arg(v):
+    return v[0] if isinstance(v, list) and v else v
+
+
+def dead_in(when, npc: str) -> bool:
+    """The condition reads the person's death (`not npcAlive <npc>`)."""
+    return any(k == "npcAlive" and neg and _arg(v) == npc for k, v, neg in _walk(when))
+
+
+def needs_talk(when, npc: str) -> bool:
+    return any(k == "topicHeardFrom" and isinstance(v, list) and len(v) > 1 and v[1] == npc and not neg
+               for k, v, neg in _walk(when))
+
+
+def cannot_die(p: QP.Play, npc: str) -> bool:
+    """A person who cannot die: the placement says so (cannotDie, essential, ghost) or its actor is a ghost."""
+    pl = p.place_of.get(npc) or {}
+    if pl.get("cannotDie") or pl.get("essential") or pl.get("ghost"):
+        return True
+    base = pl.get("base") or {}
+    return pl.get("kind") == "person" and bool(re.search(r"\bghost\b", str(base.get("id", "")), re.I))
+
+
+def lootable(q: dict, p: QP.Play, when, npc: str) -> bool:
+    """The move is made by taking (or reading) a thing that lies in a container or on a body, not by the person."""
+    if needs_talk(when, npc):
+        return False
+    reads = {h.get("setsFlag"): h.get("thing") for h in q.get("hooks") or [] if isinstance(h, dict)}
+    for k, v, neg in _walk(when):
+        if neg:
+            continue
+        t = _arg(v) if k == "hasItem" else reads.get(_arg(v)) if k == "flag" else None
+        pl = p.place_of.get(str(t)) or {}
+        if t and (pl.get("container") or pl.get("carriedBy")):
+            return True
+    return False
+
+
+def death_handled(q: dict, p: QP.Play, s: dict, npc: str, records: dict[str, dict] | None) -> bool:
+    """A person's death at this stage is handled: they cannot die; a move out of the stage reads their death or
+    goes on by looting what they held; or a later quest of the line starts on their death."""
+    if cannot_die(p, npc):
+        return True
+    moves = [x for k in ("successors", "failForward") for x in s.get(k) or [] if isinstance(x, dict)]
+    if any(dead_in(x.get("when"), npc) or lootable(q, p, x.get("when"), npc) for x in moves):
+        return True
+    line = q.get("line")
+    return bool(line) and any(r is not q and r.get("line") == line and dead_in(r.get("startWhen"), npc)
+                              for r in (records or {}).values() if isinstance(r, dict))
+
+
+def find_gaps(q, p: QP.Play, w: Words, stages: dict, edges: list[dict], start: str,
+              records: dict[str, dict] | None = None) -> list[dict]:
     gaps: list[dict] = []
     add = lambda node, text: gaps.append({"node": node, "text": text})  # noqa: E731
     reach, todo = set(), ["start"]
@@ -299,9 +374,7 @@ def find_gaps(q, p: QP.Play, w: Words, stages: dict, edges: list[dict], start: s
                     add(n, f"{w.plain(t['id'])}, asked of {w.plain(t.get('person'))}, is meant to move the quest to "
                            f"stage {to}, but no move in the record goes there from here.")
         needed = set(re.findall(r"'topicHeardFrom': \['[^']+', '([^']+)'\]", repr(s.get("successors"))))
-        guarded = set(re.findall(r"'npcAlive': '([^']+)'|'npcAlive': \['([^']+)'", repr(s.get("failForward"))))
-        guarded = {x for pair in guarded for x in pair if x}
-        for npc in sorted(needed - guarded):
+        for npc in sorted(n_ for n_ in needed if not death_handled(q, p, s, n_, records)):
             add(n, f"The quest moves on only by talking to {w.plain(npc)}; if {w.plain(npc)} dies here, nothing "
                    "handles it.")
     placed = {r for r, pl in p.place_of.items() if pl.get("kind") == "person" and pl.get("enabled", True) is not False

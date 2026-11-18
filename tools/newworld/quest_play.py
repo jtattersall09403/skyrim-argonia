@@ -37,23 +37,8 @@ def link(code: str, title: str = "") -> str:
     return f"[{code}{'. ' + one(title) if title else ''}](#q-{code.lower()})"
 
 
+from tools.playtest.record import world_place_names as _PLACE_NAMES  # noqa: E402,N812,F401 - the one helper
 
-_place_names: dict | None = None
-
-
-def _PLACE_NAMES() -> dict:  # noqa: N802 - read once, the world's place names by id
-    global _place_names
-    if _place_names is None:
-        import json
-        from pathlib import Path
-        p = Path(__file__).resolve().parents[2] / "newworld" / "story" / "data" / "db" / "place.jsonl"
-        _place_names = {}
-        if p.exists():
-            for line in p.read_text().splitlines():
-                if line.strip():
-                    r = json.loads(line)
-                    _place_names[r["id"]] = r.get("name") or r["id"]
-    return _place_names
 
 class Play:
     """One record's names and where things stand, for describing its play."""
