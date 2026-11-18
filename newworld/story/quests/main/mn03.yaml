@@ -364,7 +364,7 @@ stages:
 - id: 10
   place: jal-veesa
   journal: text.journal.mn03.10
-  journalText: Vosh-Leera has a second task for me. I'm to ask her for it in her house in Jal-Veesa.
+  journalText: "Vosh-Leera has a second task for me. She asked me to come to her house in Jal-Veesa for it."
   objectives:
   - id: ask
     text: text.objective.mn03.ask
@@ -400,8 +400,9 @@ stages:
 - id: 20
   place: jal-veesa
   journal: text.journal.mn03.20
-  journalText: Vosh-Leera gave me a cup of Jal-Veesa's sap, drawn before its scar closed. Tree-minders drink sap to ask
-    the trees a question, and she wants me to ask where the sickness is. I'm to drink it here, in front of her.
+  journalText: "Vosh-Leera gave me a cup of Jal-Veesa's sap, drawn before its scar closed. Tree-minders drink sap to
+    ask the trees a question, she told me, and she wants me to ask where the sickness is. She wants me to drink it
+    here, in front of her."
   onEnter:
   - giveItem:
     - thing.mn.cup-of-sap
@@ -449,8 +450,8 @@ stages:
 - id: 30
   place: jal-veesa
   journal: text.journal.mn03.30
-  journalText: I drank the sap and the world went black. I saw a young Hist among stilt huts beside a woven weir, and a
-    reed hide beside a lone dead tree. I'm to tell Vosh-Leera what I saw.
+  journalText: "I drank the sap and the world went black. I saw a young Hist among stilt huts beside a woven weir, and
+    a reed hide beside a lone dead tree. Vosh-Leera is waiting to hear what I saw."
   onEnter:
   - takeItem:
     - thing.mn.cup-of-sap
@@ -499,9 +500,9 @@ stages:
 - id: 40
   place: outpost-m6-m66
   journal: text.journal.mn03.40
-  journalText: Vosh-Leera knew the place from what I told her. It is Teel-Fen Weir, a weir-wardens' camp south of Jal-Veesa,
-    where a young Hist grew from the roots of Jal-Veesa's own. Heem-Jasa minds its tree there. I'm to go to Teel-Fen Weir
-    and speak to Heem-Jasa.
+  journalText: "Vosh-Leera knew the place from what I told her. It is Teel-Fen Weir, a weir-wardens' camp south of
+    Jal-Veesa, where a young Hist grew from the roots of Jal-Veesa's own. Heem-Jasa minds its tree there, and
+    Vosh-Leera told me to see what she knows before I go near the hide."
   objectives:
   - id: heem
     text: text.objective.mn03.heem
@@ -518,6 +519,11 @@ stages:
       topicHeardFrom:
       - topic.mn03-heem-scar
       - npc.mn.heem-jasa
+  - to: 60
+    when:
+      hasItem:
+      - thing.mn.unbound-note
+      - 1
   failForward:
   - to: 92
     when:
@@ -541,10 +547,11 @@ stages:
 - id: 50
   place: outpost-m6-m66
   journal: text.journal.mn03.50
-  journalText: Heem-Jasa showed me her young tree's scar. It closed three nights ago over a grey paste that none of her
-    people put there. Someone drained the tree and sealed it. Strangers who call themselves the Unbound keep jars at the
-    reed hide by the lone dead tree west of the weir, the hide from my vision. I'm to take what they have. I can fight them,
-    shoot them from the reeds, or creep in to the jars unseen.
+  journalText: "Heem-Jasa showed me her young tree's scar. It closed three nights ago over a grey paste that none of
+    her people put there. Someone drained the tree and sealed it. Strangers who call themselves the Unbound keep jars
+    at the reed hide by the lone dead tree west of the weir, the hide from my vision. I need to take what they have
+    there. Heem-Jasa said I can go at them, shoot them from the reeds, or creep round to the hide's open side unseen;
+    the hide has no door or lock, and if they see me they will fight."
   objectives:
   - id: hide
     text: text.objective.mn03.hide
@@ -612,10 +619,8 @@ stages:
 - id: 60
   place: outpost-m6-m66
   journal: text.journal.mn03.60
-  journalText: I took the note from the reed hide. The crew's master orders them to bring their jars to Karsh-Naal Camp,
-    and to seal every scar behind them. I'm to go back to Heem-Jasa on the platform. She will ask whether her tree will
-    live. If I am straight with her, she will teach me alchemy and sell me what she has; if I ease her with a kind word
-    instead, she will not deal with me after.
+  journalText: "I took the note from the reed hide. The crew's master orders them to bring their jars to Karsh-Naal
+    Camp, and to seal every scar behind them. I should go back to Heem-Jasa on the platform and tell her."
   objectives:
   - id: back
     text: text.objective.mn03.back
@@ -668,9 +673,9 @@ stages:
 - id: 90
   place: outpost-m6-m66
   journal: text.journal.mn03.90
-  journalText: I told Heem-Jasa the truth, that her tree may die. She thanked me for not lying, and will teach me alchemy
-    and sell me sap, fungus and eggshells. I'm to go to Karsh-Naal Camp, the Naga camp in the marsh east of Teel-Fen Weir,
-    where the jars are taken.
+  journalText: "I told Heem-Jasa the truth, that her tree may die. She thanked me for not lying, and will teach me
+    alchemy and sell me sap, fungus and eggshells. Next comes Karsh-Naal Camp, the Naga camp in the marsh east of
+    Teel-Fen Weir, where the note sends the jars."
   ending: complete
   endingId: e-truth
   information:
@@ -685,9 +690,9 @@ stages:
 - id: 91
   place: outpost-m6-m66
   journal: text.journal.mn03.91
-  journalText: 'I told Heem-Jasa her tree will live. She gave me three potions of Cure Poison, but she will not teach me
-    or sell to me: she deals only with those who are straight with her. I''m to go to Karsh-Naal Camp, the Naga camp in
-    the marsh east of Teel-Fen Weir, where the jars are taken.'
+  journalText: "I told Heem-Jasa her tree will live. She gave me three potions of Cure Poison, but she will not teach
+    me or sell to me: she deals only with those who are straight with her. Next comes Karsh-Naal Camp, the Naga camp in
+    the marsh east of Teel-Fen Weir, where the note sends the jars."
   onEnter:
   - giveItem:
     - item.potion-cure-poison
@@ -706,8 +711,8 @@ stages:
 - id: 92
   place: outpost-m6-m66
   journal: text.journal.mn03.92
-  journalText: Heem-Jasa is dead, and her young tree has no minder now. I'm to go to Karsh-Naal Camp, the Naga camp in the
-    marsh east of Teel-Fen Weir, where the jars are taken.
+  journalText: "Heem-Jasa is dead, and her young tree has no minder now. Next comes Karsh-Naal Camp, the Naga camp in
+    the marsh east of Teel-Fen Weir, where the note sends the jars."
   ending: complete
   endingId: e-no-minder
   information:
@@ -893,12 +898,13 @@ topics:
 - id: topic.mn03-heem-ask
   label: I found the hide.
   person: npc.mn.heem-jasa
-  stages:
-  - 60
+  stages: [60]
   essential: true
-  intent: 'Heem-Jasa. Tells: she sees the note and the jar, if the player has one, and knows it is her tree''s sap. She
-    asks whether her tree will live (a question; its answers are topic.mn03-truth and topic.mn03-comfort). Checks: nothing.
-    Does: nothing.'
+  intent: "Heem-Jasa. Tells: if the player went to the hide before speaking to her, she first shows them the closed
+    scar and the grey paste in it, as topic.mn03-heem-scar tells, and says a warden heard the strangers called the
+    Unbound; she sees the note and the jar, if the player has one, and knows it is her tree's sap. She asks whether her
+    tree will live (a question; its answers are topic.mn03-truth and topic.mn03-comfort). Checks: nothing. Does:
+    nothing."
   replies:
   - topic.mn03-truth
   - topic.mn03-comfort

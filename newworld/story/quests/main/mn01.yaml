@@ -50,8 +50,9 @@ foundation: 'Built from main-plot.md §5 quest 1 (passed by the owner, 2026-11-1
   trade (a profession as in Morrowind: each answer sets a stage that raises five skills by five; one answer lets the player
   name their own five, one at a time, each pick a stage that raises that skill by five). When the trade is given the door
   is unlocked from outside. Dralin Uveran, the gang-master, speaks first on the landing (the quest''s one speaks-first line),
-  says the player''s name was struck from his roll this morning on Vosh-Leera''s order, and sends them to her house in Jal-Veesa,
-  passing on the tree-minder''s request for Sithis'' beard from Reed-Sill Weir on the way. The player''s pack holds two
+  says the player''s name was struck from his roll this morning on Vosh-Leera''s order, and passes on her word: she will
+  have work for the player if they bring her some Sithis'' beard from Reed-Sill Weir (owner, 2026-11-18: one place at a
+  time, the moss first, then Vosh-Leera). The player''s pack holds two
   lockpicks. MN02 starts on this quest''s stage 90 and carries the markers on the weir''s moss and on Vosh-Leera''s door.
   The side quest What the Herald Sent is left out: the main quest only. Okeeh and Dralin first answer the line''s shared
   topics Hist, Jal-Veesa and the Owing.'
@@ -106,8 +107,10 @@ truth:
   who:
   - npc.mn.jal-veesa-minder
   where: Jal-Veesa
-  what: Weeltul, Jal-Veesa's tree-minder, has asked every gang on the river for Sithis' beard, a grey moss that hangs over
-    the creek below Reed-Sill Weir, to warm her sick tree's cooling egg-pool.
+  what: Weeltul, Jal-Veesa's tree-minder, needs Sithis' beard, a grey moss that hangs over the creek below Reed-Sill Weir,
+    to warm her sick tree's cooling egg-pool. Vosh-Leera, who chose the stranger off the barge's list, left word with
+    Dralin that she will have work for the stranger if they bring the moss, for she gives work only to one who helps the
+    tree-minder first.
 playerStart:
 - The player knows nothing of the marsh
 - the gang or why they are here.
@@ -128,11 +131,11 @@ facts:
     root-herald of Jal-Veesa: they owe no months and are free.'
   from: t3
 - id: fact.mn01.go-to-vosh
-  claim: Vosh-Leera wants to see the player at her house in Jal-Veesa, a town up the road to the east.
+  claim: Vosh-Leera's house is in Jal-Veesa, a town up the road to the east, past Reed-Sill Weir.
   from: t3
 - id: fact.mn01.moss
-  claim: Jal-Veesa's tree-minder wants Sithis' beard, a grey moss hanging over the creek below Reed-Sill Weir, which is
-    on the road to the town.
+  claim: Vosh-Leera will have work for the player if they bring her Sithis' beard, a grey moss hanging over the creek below
+    Reed-Sill Weir, which is on the road to the town.
   from: t4
 - id: fact.mn01.hist
   claim: A Hist is a great thinking tree, the size of a tower, with pale grey bark, roots standing out of the water and
@@ -320,8 +323,8 @@ stages:
 - id: 10
   place: outpost-m13-m65
   journal: text.journal.mn01.10
-  journalText: I woke in the hold of a barge with a gang of strangers. The door is locked. The cook, an Argonian woman named
-    Okeeh, is watching me. I'm to speak to her and find out where I am.
+  journalText: "I woke in the hold of a barge among a gang of strangers. The door is locked. An Argonian woman named
+    Okeeh is watching me. I should speak to her and find out where I am."
   onEnter:
   - giveItem:
     - item.lockpick
@@ -366,9 +369,9 @@ stages:
 - id: 20
   place: outpost-m13-m65
   journal: text.journal.mn01.20
-  journalText: Okeeh told me where I am. This is the hold of an Owing barge moored at Ashgate Landing, a reed-cutters' camp
-    in Black Marsh, and the gang here are sent to cut reed for the months they owe. I gave her my name. I'm to tell her
-    what my trade was. The door stays locked until the gang-master takes our names.
+  journalText: "Okeeh told me where I am: the hold of an Owing barge moored at Ashgate Landing, a reed-cutters' camp in
+    Black Marsh, where the gang cut reed for the months they owe. I gave her my name, and now she wants to know what my
+    trade was. She says the door stays barred until the gang-master takes our names."
   onEnter:
   - setPlayerName: true
   objectives:
@@ -454,7 +457,8 @@ stages:
 - id: 31
   place: outpost-m13-m65
   journal: text.journal.mn01.31
-  journalText: I told Okeeh I was a warrior. Someone has unbarred the hold's door from outside. I'm to go out onto the landing.
+  journalText: "I told Okeeh I was a warrior. Then we heard the bar lift from the hold's door, and Okeeh told me I can
+    go out onto the landing now, where the gang-master waits."
   onEnter:
   - raiseSkill:
     - OneHanded
@@ -496,11 +500,11 @@ stages:
       not:
         npcAlive: npc.mn.dralin-uveran
   information:
-    going: My trade is told and the hold's door is open. Someone on the landing must have opened it.
+    going: My trade is told. The bar was lifted from the hold's door outside, and Okeeh told me I can go out onto the landing, where the gang-master waits.
     next: Go out through the door onto the landing.
     ways: One way, through the door.
     carriers:
-    - know: the door is open and I am to go out
+    - know: the door is open and Okeeh told me to go out
       by:
       - journal
       - objective
@@ -509,7 +513,8 @@ stages:
 - id: 32
   place: outpost-m13-m65
   journal: text.journal.mn01.32
-  journalText: I told Okeeh I was a hunter. Someone has unbarred the hold's door from outside. I'm to go out onto the landing.
+  journalText: "I told Okeeh I was a hunter. Then we heard the bar lift from the hold's door, and Okeeh told me I can
+    go out onto the landing now, where the gang-master waits."
   onEnter:
   - raiseSkill:
     - Archery
@@ -551,11 +556,11 @@ stages:
       not:
         npcAlive: npc.mn.dralin-uveran
   information:
-    going: My trade is told and the hold's door is open. Someone on the landing must have opened it.
+    going: My trade is told. The bar was lifted from the hold's door outside, and Okeeh told me I can go out onto the landing, where the gang-master waits.
     next: Go out through the door onto the landing.
     ways: One way, through the door.
     carriers:
-    - know: the door is open and I am to go out
+    - know: the door is open and Okeeh told me to go out
       by:
       - journal
       - objective
@@ -564,7 +569,8 @@ stages:
 - id: 33
   place: outpost-m13-m65
   journal: text.journal.mn01.33
-  journalText: I told Okeeh I was a thief. Someone has unbarred the hold's door from outside. I'm to go out onto the landing.
+  journalText: "I told Okeeh I was a thief. Then we heard the bar lift from the hold's door, and Okeeh told me I can go
+    out onto the landing now, where the gang-master waits."
   onEnter:
   - raiseSkill:
     - Sneak
@@ -606,11 +612,11 @@ stages:
       not:
         npcAlive: npc.mn.dralin-uveran
   information:
-    going: My trade is told and the hold's door is open. Someone on the landing must have opened it.
+    going: My trade is told. The bar was lifted from the hold's door outside, and Okeeh told me I can go out onto the landing, where the gang-master waits.
     next: Go out through the door onto the landing.
     ways: One way, through the door.
     carriers:
-    - know: the door is open and I am to go out
+    - know: the door is open and Okeeh told me to go out
       by:
       - journal
       - objective
@@ -619,8 +625,8 @@ stages:
 - id: 34
   place: outpost-m13-m65
   journal: text.journal.mn01.34
-  journalText: I told Okeeh I was a battlemage. Someone has unbarred the hold's door from outside. I'm to go out onto the
-    landing.
+  journalText: "I told Okeeh I was a battlemage. Then we heard the bar lift from the hold's door, and Okeeh told me I
+    can go out onto the landing now, where the gang-master waits."
   onEnter:
   - raiseSkill:
     - Destruction
@@ -662,11 +668,11 @@ stages:
       not:
         npcAlive: npc.mn.dralin-uveran
   information:
-    going: My trade is told and the hold's door is open. Someone on the landing must have opened it.
+    going: My trade is told. The bar was lifted from the hold's door outside, and Okeeh told me I can go out onto the landing, where the gang-master waits.
     next: Go out through the door onto the landing.
     ways: One way, through the door.
     carriers:
-    - know: the door is open and I am to go out
+    - know: the door is open and Okeeh told me to go out
       by:
       - journal
       - objective
@@ -675,7 +681,8 @@ stages:
 - id: 35
   place: outpost-m13-m65
   journal: text.journal.mn01.35
-  journalText: I told Okeeh I was a healer. Someone has unbarred the hold's door from outside. I'm to go out onto the landing.
+  journalText: "I told Okeeh I was a healer. Then we heard the bar lift from the hold's door, and Okeeh told me I can
+    go out onto the landing now, where the gang-master waits."
   onEnter:
   - raiseSkill:
     - Restoration
@@ -717,11 +724,11 @@ stages:
       not:
         npcAlive: npc.mn.dralin-uveran
   information:
-    going: My trade is told and the hold's door is open. Someone on the landing must have opened it.
+    going: My trade is told. The bar was lifted from the hold's door outside, and Okeeh told me I can go out onto the landing, where the gang-master waits.
     next: Go out through the door onto the landing.
     ways: One way, through the door.
     carriers:
-    - know: the door is open and I am to go out
+    - know: the door is open and Okeeh told me to go out
       by:
       - journal
       - objective
@@ -730,8 +737,8 @@ stages:
 - id: 36
   place: outpost-m13-m65
   journal: text.journal.mn01.36
-  journalText: I told Okeeh I was a nightblade. Someone has unbarred the hold's door from outside. I'm to go out onto the
-    landing.
+  journalText: "I told Okeeh I was a nightblade. Then we heard the bar lift from the hold's door, and Okeeh told me I
+    can go out onto the landing now, where the gang-master waits."
   onEnter:
   - raiseSkill:
     - Illusion
@@ -773,11 +780,11 @@ stages:
       not:
         npcAlive: npc.mn.dralin-uveran
   information:
-    going: My trade is told and the hold's door is open. Someone on the landing must have opened it.
+    going: My trade is told. The bar was lifted from the hold's door outside, and Okeeh told me I can go out onto the landing, where the gang-master waits.
     next: Go out through the door onto the landing.
     ways: One way, through the door.
     carriers:
-    - know: the door is open and I am to go out
+    - know: the door is open and Okeeh told me to go out
       by:
       - journal
       - objective
@@ -786,8 +793,8 @@ stages:
 - id: 37
   place: outpost-m13-m65
   journal: text.journal.mn01.37
-  journalText: I told Okeeh my trade was none of hers to name. She asked me for the five things I do best. I'm to name five
-    skills to her, one at a time.
+  journalText: "I told Okeeh my trade was none of hers to name, so she asked me for the five things I do best. I need
+    to name five skills to her, one at a time."
   objectives:
   - id: pick
     text: text.objective.mn01.pick
@@ -1003,7 +1010,7 @@ stages:
 - id: 101
   place: outpost-m13-m65
   journal: text.journal.mn01.101
-  journalText: I named One-Handed to Okeeh as one of my five. I'm to name the rest.
+  journalText: "I named One-Handed to Okeeh as one of my five. She is waiting for the rest."
   onEnter:
   - raiseSkill:
     - OneHanded
@@ -1229,7 +1236,7 @@ stages:
 - id: 102
   place: outpost-m13-m65
   journal: text.journal.mn01.102
-  journalText: I named Two-Handed to Okeeh as one of my five. I'm to name the rest.
+  journalText: "I named Two-Handed to Okeeh as one of my five. She is waiting for the rest."
   onEnter:
   - raiseSkill:
     - TwoHanded
@@ -1455,7 +1462,7 @@ stages:
 - id: 103
   place: outpost-m13-m65
   journal: text.journal.mn01.103
-  journalText: I named Archery to Okeeh as one of my five. I'm to name the rest.
+  journalText: "I named Archery to Okeeh as one of my five. She is waiting for the rest."
   onEnter:
   - raiseSkill:
     - Archery
@@ -1681,7 +1688,7 @@ stages:
 - id: 104
   place: outpost-m13-m65
   journal: text.journal.mn01.104
-  journalText: I named Block to Okeeh as one of my five. I'm to name the rest.
+  journalText: "I named Block to Okeeh as one of my five. She is waiting for the rest."
   onEnter:
   - raiseSkill:
     - Block
@@ -1907,7 +1914,7 @@ stages:
 - id: 105
   place: outpost-m13-m65
   journal: text.journal.mn01.105
-  journalText: I named Heavy Armor to Okeeh as one of my five. I'm to name the rest.
+  journalText: "I named Heavy Armor to Okeeh as one of my five. She is waiting for the rest."
   onEnter:
   - raiseSkill:
     - HeavyArmor
@@ -2133,7 +2140,7 @@ stages:
 - id: 106
   place: outpost-m13-m65
   journal: text.journal.mn01.106
-  journalText: I named Light Armor to Okeeh as one of my five. I'm to name the rest.
+  journalText: "I named Light Armor to Okeeh as one of my five. She is waiting for the rest."
   onEnter:
   - raiseSkill:
     - LightArmor
@@ -2359,7 +2366,7 @@ stages:
 - id: 107
   place: outpost-m13-m65
   journal: text.journal.mn01.107
-  journalText: I named Smithing to Okeeh as one of my five. I'm to name the rest.
+  journalText: "I named Smithing to Okeeh as one of my five. She is waiting for the rest."
   onEnter:
   - raiseSkill:
     - Smithing
@@ -2585,7 +2592,7 @@ stages:
 - id: 108
   place: outpost-m13-m65
   journal: text.journal.mn01.108
-  journalText: I named Destruction to Okeeh as one of my five. I'm to name the rest.
+  journalText: "I named Destruction to Okeeh as one of my five. She is waiting for the rest."
   onEnter:
   - raiseSkill:
     - Destruction
@@ -2811,7 +2818,7 @@ stages:
 - id: 109
   place: outpost-m13-m65
   journal: text.journal.mn01.109
-  journalText: I named Alteration to Okeeh as one of my five. I'm to name the rest.
+  journalText: "I named Alteration to Okeeh as one of my five. She is waiting for the rest."
   onEnter:
   - raiseSkill:
     - Alteration
@@ -3037,7 +3044,7 @@ stages:
 - id: 110
   place: outpost-m13-m65
   journal: text.journal.mn01.110
-  journalText: I named Illusion to Okeeh as one of my five. I'm to name the rest.
+  journalText: "I named Illusion to Okeeh as one of my five. She is waiting for the rest."
   onEnter:
   - raiseSkill:
     - Illusion
@@ -3263,7 +3270,7 @@ stages:
 - id: 111
   place: outpost-m13-m65
   journal: text.journal.mn01.111
-  journalText: I named Conjuration to Okeeh as one of my five. I'm to name the rest.
+  journalText: "I named Conjuration to Okeeh as one of my five. She is waiting for the rest."
   onEnter:
   - raiseSkill:
     - Conjuration
@@ -3489,7 +3496,7 @@ stages:
 - id: 112
   place: outpost-m13-m65
   journal: text.journal.mn01.112
-  journalText: I named Restoration to Okeeh as one of my five. I'm to name the rest.
+  journalText: "I named Restoration to Okeeh as one of my five. She is waiting for the rest."
   onEnter:
   - raiseSkill:
     - Restoration
@@ -3715,7 +3722,7 @@ stages:
 - id: 113
   place: outpost-m13-m65
   journal: text.journal.mn01.113
-  journalText: I named Enchanting to Okeeh as one of my five. I'm to name the rest.
+  journalText: "I named Enchanting to Okeeh as one of my five. She is waiting for the rest."
   onEnter:
   - raiseSkill:
     - Enchanting
@@ -3941,7 +3948,7 @@ stages:
 - id: 114
   place: outpost-m13-m65
   journal: text.journal.mn01.114
-  journalText: I named Alchemy to Okeeh as one of my five. I'm to name the rest.
+  journalText: "I named Alchemy to Okeeh as one of my five. She is waiting for the rest."
   onEnter:
   - raiseSkill:
     - Alchemy
@@ -4167,7 +4174,7 @@ stages:
 - id: 115
   place: outpost-m13-m65
   journal: text.journal.mn01.115
-  journalText: I named Sneak to Okeeh as one of my five. I'm to name the rest.
+  journalText: "I named Sneak to Okeeh as one of my five. She is waiting for the rest."
   onEnter:
   - raiseSkill:
     - Sneak
@@ -4393,7 +4400,7 @@ stages:
 - id: 116
   place: outpost-m13-m65
   journal: text.journal.mn01.116
-  journalText: I named Lockpicking to Okeeh as one of my five. I'm to name the rest.
+  journalText: "I named Lockpicking to Okeeh as one of my five. She is waiting for the rest."
   onEnter:
   - raiseSkill:
     - Lockpicking
@@ -4619,7 +4626,7 @@ stages:
 - id: 117
   place: outpost-m13-m65
   journal: text.journal.mn01.117
-  journalText: I named Pickpocket to Okeeh as one of my five. I'm to name the rest.
+  journalText: "I named Pickpocket to Okeeh as one of my five. She is waiting for the rest."
   onEnter:
   - raiseSkill:
     - Pickpocket
@@ -4845,7 +4852,7 @@ stages:
 - id: 118
   place: outpost-m13-m65
   journal: text.journal.mn01.118
-  journalText: I named Speech to Okeeh as one of my five. I'm to name the rest.
+  journalText: "I named Speech to Okeeh as one of my five. She is waiting for the rest."
   onEnter:
   - raiseSkill:
     - Speechcraft
@@ -5071,8 +5078,8 @@ stages:
 - id: 40
   place: outpost-m13-m65
   journal: text.journal.mn01.40
-  journalText: I named my five skills to Okeeh. Someone has unbarred the hold's door from outside. I'm to go out onto the
-    landing.
+  journalText: "I named my five skills to Okeeh. Then we heard the bar lift from the hold's door, and Okeeh told me I
+    can go out onto the landing now, where the gang-master waits."
   onEnter:
   - setDoorAccess:
     - thing.mn01.hold-door
@@ -5099,11 +5106,11 @@ stages:
       not:
         npcAlive: npc.mn.dralin-uveran
   information:
-    going: My trade is told and the hold's door is open. Someone on the landing must have opened it.
+    going: My trade is told. The bar was lifted from the hold's door outside, and Okeeh told me I can go out onto the landing, where the gang-master waits.
     next: Go out through the door onto the landing.
     ways: One way, through the door.
     carriers:
-    - know: the door is open and I am to go out
+    - know: the door is open and Okeeh told me to go out
       by:
       - journal
       - objective
@@ -5112,25 +5119,24 @@ stages:
 - id: 90
   place: outpost-m13-m65
   journal: text.journal.mn01.90
-  journalText: Dralin Uveran, the Dunmer gang-master of Ashgate Landing, met me on the landing. My name was struck from
+  journalText: "Dralin Uveran, the Dunmer gang-master of Ashgate Landing, met me on the landing. He struck my name from
     his roll this morning, on an order brought by Vosh-Leera, the root-herald of Jal-Veesa, so I owe no months. He does
-    not know why she wants me, and he is sour about it. I'm to go to Vosh-Leera's house in Jal-Veesa, east up the road.
-    On the way, at Reed-Sill Weir, the town's tree-minder wants Sithis' beard, a grey moss that hangs over the creek below
-    the weir.
+    not know why she wants me, and he is sour about it. He says she will have work for me if I bring her some Sithis'
+    beard, a grey moss that hangs over the creek below Reed-Sill Weir, east up the road. I should pick the moss first,
+    then take it to her house in Jal-Veesa, past the weir."
   learns:
   - fact.mn01.struck
   - fact.mn01.go-to-vosh
   - fact.mn01.moss
   ending: complete
   endingId: e-freed
-  directions: Jal-Veesa is east up the road from the camp's gate. Reed-Sill Weir is the first camp on the road, where the
-    road meets the creek, a short walk from the gate; the town is a little further on past the weir.
+  directions: "Reed-Sill Weir is the first camp on the road east from the camp's gate, where the road meets the creek,
+    a short walk away; Jal-Veesa is a little further on past the weir."
   information:
     going: 'I am free of the Owing: Vosh-Leera, root-herald of Jal-Veesa, had my name struck from the roll. I do not know
-      why.'
-    next: Go east up the road to Vosh-Leera's House in Jal-Veesa; on the way, pick Sithis' beard below Reed-Sill Weir for
-      the town's tree-minder.
-    ways: The moss is a favour on the road; Vosh-Leera is where the answers are.
+      why. She will have work for me if I bring her Sithis'' beard.'
+    next: Pick Sithis' beard below Reed-Sill Weir, east up the road, then take it to Vosh-Leera's House in Jal-Veesa.
+    ways: One way on, the moss first; the crocodiles under the weir can be fought, shot from the log walk or kept clear of.
     carriers:
     - know: I am free and who freed me
       by:
@@ -5140,11 +5146,11 @@ stages:
       by:
       - line:topic.mn01-dralin-free
       - ask:topic.mn01-root-herald
-    - know: go to Vosh-Leera's house in Jal-Veesa
+    - know: bring the moss to Vosh-Leera's house in Jal-Veesa
       by:
       - journal
       - line:topic.mn01-dralin-free
-    - know: pick Sithis' beard at Reed-Sill Weir on the way
+    - know: pick Sithis' beard at Reed-Sill Weir first
       by:
       - journal
       - line:topic.mn01-dralin-free
@@ -5157,12 +5163,11 @@ stages:
 - id: 95
   place: outpost-m13-m65
   journal: text.journal.mn01.95
-  journalText: Okeeh is dead. Nobody else in the hold will speak for me
-  and the door stays shut.: null
+  journalText: Okeeh is dead. Nobody else in the hold will speak for me, and the door stays shut.
   ending: failed
   endingId: e-okeeh-dead
   information:
-    going: Okeeh is dead. Nobody else in the hold will speak for me
+    going: Okeeh is dead. Nobody else in the hold will speak for me, and the door stays shut.
     next: 'Nothing: this quest is over.'
     ways: None.
     carriers:
@@ -5236,10 +5241,6 @@ terms:
   meets: 90, topic.mn01-dralin-free
   told: '"the town''s great tree"'
   ask: topic.mn-hist
-- term: tree-minder
-  meets: 90, topic.mn01-dralin-free
-  told: '"the woman who tends the town''s tree"'
-  ask: topic.mn-hist
 - term: Sithis' beard
   meets: 90, topic.mn01-dralin-free
   told: '"a grey moss that hangs over the creek below Reed-Sill Weir"'
@@ -5307,8 +5308,10 @@ topics:
   stages:
   - 20
   essential: true
-  intent: 'Okeeh. Tells: then the player can carry a blade and a shield; she has heard noise on the landing. Does: sets
-    stage 31 (One-Handed, Two-Handed, Block, Heavy Armor and Smithing each raised by five; the door unbarred). Checks: nothing.'
+  intent: "Okeeh. Tells: then the player can carry a blade and a shield. As she says it, the bar lifts from the hold's
+    door outside; she tells the player they can go out onto the landing now: the gang-master is out there and will want
+    their name. Does: sets stage 31 (One-Handed, Two-Handed, Block, Heavy Armor and Smithing each raised by five; the
+    door unbarred). Checks: nothing."
   new: true
 - id: topic.mn01-trade-hunter
   label: I was a hunter.
@@ -5316,8 +5319,10 @@ topics:
   stages:
   - 20
   essential: true
-  intent: 'Okeeh. Tells: there is game enough in the reeds for a hunter. Does: sets stage 32 (Archery, Sneak, Light Armor,
-    Alchemy and One-Handed each raised by five; the door unbarred). Checks: nothing.'
+  intent: "Okeeh. Tells: there is game enough in the reeds for a hunter. As she says it, the bar lifts from the hold's
+    door outside; she tells the player they can go out onto the landing now: the gang-master is out there and will want
+    their name. Does: sets stage 32 (Archery, Sneak, Light Armor, Alchemy and One-Handed each raised by five; the door
+    unbarred). Checks: nothing."
   new: true
 - id: topic.mn01-trade-thief
   label: I was a thief.
@@ -5325,8 +5330,10 @@ topics:
   stages:
   - 20
   essential: true
-  intent: 'Okeeh. Tells: she will count her spoons. Does: sets stage 33 (Sneak, Lockpicking, Pickpocket, Speech and Light
-    Armor each raised by five; the door unbarred). Checks: nothing.'
+  intent: "Okeeh. Tells: she will count her spoons. As she says it, the bar lifts from the hold's door outside; she
+    tells the player they can go out onto the landing now: the gang-master is out there and will want their name. Does:
+    sets stage 33 (Sneak, Lockpicking, Pickpocket, Speech and Light Armor each raised by five; the door unbarred).
+    Checks: nothing."
   new: true
 - id: topic.mn01-trade-battlemage
   label: I was a battlemage.
@@ -5334,8 +5341,10 @@ topics:
   stages:
   - 20
   essential: true
-  intent: 'Okeeh. Tells: a mage with a blade, and on a reed gang. Does: sets stage 34 (Destruction, Alteration, Conjuration,
-    One-Handed and Heavy Armor each raised by five; the door unbarred). Checks: nothing.'
+  intent: "Okeeh. Tells: a mage with a blade, and on a reed gang. As she says it, the bar lifts from the hold's door
+    outside; she tells the player they can go out onto the landing now: the gang-master is out there and will want
+    their name. Does: sets stage 34 (Destruction, Alteration, Conjuration, One-Handed and Heavy Armor each raised by
+    five; the door unbarred). Checks: nothing."
   new: true
 - id: topic.mn01-trade-healer
   label: I was a healer.
@@ -5343,8 +5352,10 @@ topics:
   stages:
   - 20
   essential: true
-  intent: 'Okeeh. Tells: the gang will want the player when the reed cuts their hands. Does: sets stage 35 (Restoration,
-    Alchemy, Illusion, Alteration and Speech each raised by five; the door unbarred). Checks: nothing.'
+  intent: "Okeeh. Tells: the gang will want the player when the reed cuts their hands. As she says it, the bar lifts
+    from the hold's door outside; she tells the player they can go out onto the landing now: the gang-master is out
+    there and will want their name. Does: sets stage 35 (Restoration, Alchemy, Illusion, Alteration and Speech each
+    raised by five; the door unbarred). Checks: nothing."
   new: true
 - id: topic.mn01-trade-nightblade
   label: I was a nightblade.
@@ -5352,8 +5363,10 @@ topics:
   stages:
   - 20
   essential: true
-  intent: 'Okeeh. Tells: she will not ask whose nights. Does: sets stage 36 (Illusion, Sneak, One-Handed, Destruction and
-    Light Armor each raised by five; the door unbarred). Checks: nothing.'
+  intent: "Okeeh. Tells: she will not ask whose nights. As she says it, the bar lifts from the hold's door outside; she
+    tells the player they can go out onto the landing now: the gang-master is out there and will want their name. Does:
+    sets stage 36 (Illusion, Sneak, One-Handed, Destruction and Light Armor each raised by five; the door unbarred).
+    Checks: nothing."
   new: true
 - id: topic.mn01-trade-own
   label: None of those. I'll name my own five.
@@ -5393,9 +5406,10 @@ topics:
       flag:
       - flag.mn01.pick-one-handed
       - true
-  intent: 'Okeeh. Tells: she says One-Handed back and how many are left to name; at the fifth, five is plenty for a reed
-    gang, and she hears the bar lift from the hold''s door. Does: sets this skill''s stage (101 to 118), whose start raises
-    it by five and counts it; the fifth count moves the quest to stage 40. Checks: nothing.'
+  intent: "Okeeh. Tells: she says One-Handed back and how many are left to name; at the fifth, five is plenty for a
+    reed gang, the bar lifts from the hold's door outside as she says it, and she tells the player they can go out onto
+    the landing now: the gang-master is out there and will want their name. Does: sets this skill's stage (101 to 118),
+    whose start raises it by five and counts it; the fifth count moves the quest to stage 40. Checks: nothing."
   new: true
 - id: topic.mn01-pick-two-handed
   label: Two-Handed.
@@ -5426,9 +5440,10 @@ topics:
       flag:
       - flag.mn01.pick-two-handed
       - true
-  intent: 'Okeeh. Tells: she says Two-Handed back and how many are left to name; at the fifth, five is plenty for a reed
-    gang, and she hears the bar lift from the hold''s door. Does: sets this skill''s stage (101 to 118), whose start raises
-    it by five and counts it; the fifth count moves the quest to stage 40. Checks: nothing.'
+  intent: "Okeeh. Tells: she says Two-Handed back and how many are left to name; at the fifth, five is plenty for a
+    reed gang, the bar lifts from the hold's door outside as she says it, and she tells the player they can go out onto
+    the landing now: the gang-master is out there and will want their name. Does: sets this skill's stage (101 to 118),
+    whose start raises it by five and counts it; the fifth count moves the quest to stage 40. Checks: nothing."
   new: true
 - id: topic.mn01-pick-archery
   label: Archery.
@@ -5459,9 +5474,10 @@ topics:
       flag:
       - flag.mn01.pick-archery
       - true
-  intent: 'Okeeh. Tells: she says Archery back and how many are left to name; at the fifth, five is plenty for a reed gang,
-    and she hears the bar lift from the hold''s door. Does: sets this skill''s stage (101 to 118), whose start raises it
-    by five and counts it; the fifth count moves the quest to stage 40. Checks: nothing.'
+  intent: "Okeeh. Tells: she says Archery back and how many are left to name; at the fifth, five is plenty for a reed
+    gang, the bar lifts from the hold's door outside as she says it, and she tells the player they can go out onto the
+    landing now: the gang-master is out there and will want their name. Does: sets this skill's stage (101 to 118),
+    whose start raises it by five and counts it; the fifth count moves the quest to stage 40. Checks: nothing."
   new: true
 - id: topic.mn01-pick-block
   label: Block.
@@ -5492,9 +5508,10 @@ topics:
       flag:
       - flag.mn01.pick-block
       - true
-  intent: 'Okeeh. Tells: she says Block back and how many are left to name; at the fifth, five is plenty for a reed gang,
-    and she hears the bar lift from the hold''s door. Does: sets this skill''s stage (101 to 118), whose start raises it
-    by five and counts it; the fifth count moves the quest to stage 40. Checks: nothing.'
+  intent: "Okeeh. Tells: she says Block back and how many are left to name; at the fifth, five is plenty for a reed
+    gang, the bar lifts from the hold's door outside as she says it, and she tells the player they can go out onto the
+    landing now: the gang-master is out there and will want their name. Does: sets this skill's stage (101 to 118),
+    whose start raises it by five and counts it; the fifth count moves the quest to stage 40. Checks: nothing."
   new: true
 - id: topic.mn01-pick-heavy-armor
   label: Heavy Armor.
@@ -5525,9 +5542,10 @@ topics:
       flag:
       - flag.mn01.pick-heavy-armor
       - true
-  intent: 'Okeeh. Tells: she says Heavy Armor back and how many are left to name; at the fifth, five is plenty for a reed
-    gang, and she hears the bar lift from the hold''s door. Does: sets this skill''s stage (101 to 118), whose start raises
-    it by five and counts it; the fifth count moves the quest to stage 40. Checks: nothing.'
+  intent: "Okeeh. Tells: she says Heavy Armor back and how many are left to name; at the fifth, five is plenty for a
+    reed gang, the bar lifts from the hold's door outside as she says it, and she tells the player they can go out onto
+    the landing now: the gang-master is out there and will want their name. Does: sets this skill's stage (101 to 118),
+    whose start raises it by five and counts it; the fifth count moves the quest to stage 40. Checks: nothing."
   new: true
 - id: topic.mn01-pick-light-armor
   label: Light Armor.
@@ -5558,9 +5576,10 @@ topics:
       flag:
       - flag.mn01.pick-light-armor
       - true
-  intent: 'Okeeh. Tells: she says Light Armor back and how many are left to name; at the fifth, five is plenty for a reed
-    gang, and she hears the bar lift from the hold''s door. Does: sets this skill''s stage (101 to 118), whose start raises
-    it by five and counts it; the fifth count moves the quest to stage 40. Checks: nothing.'
+  intent: "Okeeh. Tells: she says Light Armor back and how many are left to name; at the fifth, five is plenty for a
+    reed gang, the bar lifts from the hold's door outside as she says it, and she tells the player they can go out onto
+    the landing now: the gang-master is out there and will want their name. Does: sets this skill's stage (101 to 118),
+    whose start raises it by five and counts it; the fifth count moves the quest to stage 40. Checks: nothing."
   new: true
 - id: topic.mn01-pick-smithing
   label: Smithing.
@@ -5591,9 +5610,10 @@ topics:
       flag:
       - flag.mn01.pick-smithing
       - true
-  intent: 'Okeeh. Tells: she says Smithing back and how many are left to name; at the fifth, five is plenty for a reed gang,
-    and she hears the bar lift from the hold''s door. Does: sets this skill''s stage (101 to 118), whose start raises it
-    by five and counts it; the fifth count moves the quest to stage 40. Checks: nothing.'
+  intent: "Okeeh. Tells: she says Smithing back and how many are left to name; at the fifth, five is plenty for a reed
+    gang, the bar lifts from the hold's door outside as she says it, and she tells the player they can go out onto the
+    landing now: the gang-master is out there and will want their name. Does: sets this skill's stage (101 to 118),
+    whose start raises it by five and counts it; the fifth count moves the quest to stage 40. Checks: nothing."
   new: true
 - id: topic.mn01-pick-destruction
   label: Destruction.
@@ -5624,9 +5644,10 @@ topics:
       flag:
       - flag.mn01.pick-destruction
       - true
-  intent: 'Okeeh. Tells: she says Destruction back and how many are left to name; at the fifth, five is plenty for a reed
-    gang, and she hears the bar lift from the hold''s door. Does: sets this skill''s stage (101 to 118), whose start raises
-    it by five and counts it; the fifth count moves the quest to stage 40. Checks: nothing.'
+  intent: "Okeeh. Tells: she says Destruction back and how many are left to name; at the fifth, five is plenty for a
+    reed gang, the bar lifts from the hold's door outside as she says it, and she tells the player they can go out onto
+    the landing now: the gang-master is out there and will want their name. Does: sets this skill's stage (101 to 118),
+    whose start raises it by five and counts it; the fifth count moves the quest to stage 40. Checks: nothing."
   new: true
 - id: topic.mn01-pick-alteration
   label: Alteration.
@@ -5657,9 +5678,10 @@ topics:
       flag:
       - flag.mn01.pick-alteration
       - true
-  intent: 'Okeeh. Tells: she says Alteration back and how many are left to name; at the fifth, five is plenty for a reed
-    gang, and she hears the bar lift from the hold''s door. Does: sets this skill''s stage (101 to 118), whose start raises
-    it by five and counts it; the fifth count moves the quest to stage 40. Checks: nothing.'
+  intent: "Okeeh. Tells: she says Alteration back and how many are left to name; at the fifth, five is plenty for a
+    reed gang, the bar lifts from the hold's door outside as she says it, and she tells the player they can go out onto
+    the landing now: the gang-master is out there and will want their name. Does: sets this skill's stage (101 to 118),
+    whose start raises it by five and counts it; the fifth count moves the quest to stage 40. Checks: nothing."
   new: true
 - id: topic.mn01-pick-illusion
   label: Illusion.
@@ -5690,9 +5712,10 @@ topics:
       flag:
       - flag.mn01.pick-illusion
       - true
-  intent: 'Okeeh. Tells: she says Illusion back and how many are left to name; at the fifth, five is plenty for a reed gang,
-    and she hears the bar lift from the hold''s door. Does: sets this skill''s stage (101 to 118), whose start raises it
-    by five and counts it; the fifth count moves the quest to stage 40. Checks: nothing.'
+  intent: "Okeeh. Tells: she says Illusion back and how many are left to name; at the fifth, five is plenty for a reed
+    gang, the bar lifts from the hold's door outside as she says it, and she tells the player they can go out onto the
+    landing now: the gang-master is out there and will want their name. Does: sets this skill's stage (101 to 118),
+    whose start raises it by five and counts it; the fifth count moves the quest to stage 40. Checks: nothing."
   new: true
 - id: topic.mn01-pick-conjuration
   label: Conjuration.
@@ -5723,9 +5746,10 @@ topics:
       flag:
       - flag.mn01.pick-conjuration
       - true
-  intent: 'Okeeh. Tells: she says Conjuration back and how many are left to name; at the fifth, five is plenty for a reed
-    gang, and she hears the bar lift from the hold''s door. Does: sets this skill''s stage (101 to 118), whose start raises
-    it by five and counts it; the fifth count moves the quest to stage 40. Checks: nothing.'
+  intent: "Okeeh. Tells: she says Conjuration back and how many are left to name; at the fifth, five is plenty for a
+    reed gang, the bar lifts from the hold's door outside as she says it, and she tells the player they can go out onto
+    the landing now: the gang-master is out there and will want their name. Does: sets this skill's stage (101 to 118),
+    whose start raises it by five and counts it; the fifth count moves the quest to stage 40. Checks: nothing."
   new: true
 - id: topic.mn01-pick-restoration
   label: Restoration.
@@ -5756,9 +5780,10 @@ topics:
       flag:
       - flag.mn01.pick-restoration
       - true
-  intent: 'Okeeh. Tells: she says Restoration back and how many are left to name; at the fifth, five is plenty for a reed
-    gang, and she hears the bar lift from the hold''s door. Does: sets this skill''s stage (101 to 118), whose start raises
-    it by five and counts it; the fifth count moves the quest to stage 40. Checks: nothing.'
+  intent: "Okeeh. Tells: she says Restoration back and how many are left to name; at the fifth, five is plenty for a
+    reed gang, the bar lifts from the hold's door outside as she says it, and she tells the player they can go out onto
+    the landing now: the gang-master is out there and will want their name. Does: sets this skill's stage (101 to 118),
+    whose start raises it by five and counts it; the fifth count moves the quest to stage 40. Checks: nothing."
   new: true
 - id: topic.mn01-pick-enchanting
   label: Enchanting.
@@ -5789,9 +5814,10 @@ topics:
       flag:
       - flag.mn01.pick-enchanting
       - true
-  intent: 'Okeeh. Tells: she says Enchanting back and how many are left to name; at the fifth, five is plenty for a reed
-    gang, and she hears the bar lift from the hold''s door. Does: sets this skill''s stage (101 to 118), whose start raises
-    it by five and counts it; the fifth count moves the quest to stage 40. Checks: nothing.'
+  intent: "Okeeh. Tells: she says Enchanting back and how many are left to name; at the fifth, five is plenty for a
+    reed gang, the bar lifts from the hold's door outside as she says it, and she tells the player they can go out onto
+    the landing now: the gang-master is out there and will want their name. Does: sets this skill's stage (101 to 118),
+    whose start raises it by five and counts it; the fifth count moves the quest to stage 40. Checks: nothing."
   new: true
 - id: topic.mn01-pick-alchemy
   label: Alchemy.
@@ -5822,9 +5848,10 @@ topics:
       flag:
       - flag.mn01.pick-alchemy
       - true
-  intent: 'Okeeh. Tells: she says Alchemy back and how many are left to name; at the fifth, five is plenty for a reed gang,
-    and she hears the bar lift from the hold''s door. Does: sets this skill''s stage (101 to 118), whose start raises it
-    by five and counts it; the fifth count moves the quest to stage 40. Checks: nothing.'
+  intent: "Okeeh. Tells: she says Alchemy back and how many are left to name; at the fifth, five is plenty for a reed
+    gang, the bar lifts from the hold's door outside as she says it, and she tells the player they can go out onto the
+    landing now: the gang-master is out there and will want their name. Does: sets this skill's stage (101 to 118),
+    whose start raises it by five and counts it; the fifth count moves the quest to stage 40. Checks: nothing."
   new: true
 - id: topic.mn01-pick-sneak
   label: Sneak.
@@ -5855,9 +5882,10 @@ topics:
       flag:
       - flag.mn01.pick-sneak
       - true
-  intent: 'Okeeh. Tells: she says Sneak back and how many are left to name; at the fifth, five is plenty for a reed gang,
-    and she hears the bar lift from the hold''s door. Does: sets this skill''s stage (101 to 118), whose start raises it
-    by five and counts it; the fifth count moves the quest to stage 40. Checks: nothing.'
+  intent: "Okeeh. Tells: she says Sneak back and how many are left to name; at the fifth, five is plenty for a reed
+    gang, the bar lifts from the hold's door outside as she says it, and she tells the player they can go out onto the
+    landing now: the gang-master is out there and will want their name. Does: sets this skill's stage (101 to 118),
+    whose start raises it by five and counts it; the fifth count moves the quest to stage 40. Checks: nothing."
   new: true
 - id: topic.mn01-pick-lockpicking
   label: Lockpicking.
@@ -5888,9 +5916,10 @@ topics:
       flag:
       - flag.mn01.pick-lockpicking
       - true
-  intent: 'Okeeh. Tells: she says Lockpicking back and how many are left to name; at the fifth, five is plenty for a reed
-    gang, and she hears the bar lift from the hold''s door. Does: sets this skill''s stage (101 to 118), whose start raises
-    it by five and counts it; the fifth count moves the quest to stage 40. Checks: nothing.'
+  intent: "Okeeh. Tells: she says Lockpicking back and how many are left to name; at the fifth, five is plenty for a
+    reed gang, the bar lifts from the hold's door outside as she says it, and she tells the player they can go out onto
+    the landing now: the gang-master is out there and will want their name. Does: sets this skill's stage (101 to 118),
+    whose start raises it by five and counts it; the fifth count moves the quest to stage 40. Checks: nothing."
   new: true
 - id: topic.mn01-pick-pickpocket
   label: Pickpocket.
@@ -5921,9 +5950,10 @@ topics:
       flag:
       - flag.mn01.pick-pickpocket
       - true
-  intent: 'Okeeh. Tells: she says Pickpocket back and how many are left to name; at the fifth, five is plenty for a reed
-    gang, and she hears the bar lift from the hold''s door. Does: sets this skill''s stage (101 to 118), whose start raises
-    it by five and counts it; the fifth count moves the quest to stage 40. Checks: nothing.'
+  intent: "Okeeh. Tells: she says Pickpocket back and how many are left to name; at the fifth, five is plenty for a
+    reed gang, the bar lifts from the hold's door outside as she says it, and she tells the player they can go out onto
+    the landing now: the gang-master is out there and will want their name. Does: sets this skill's stage (101 to 118),
+    whose start raises it by five and counts it; the fifth count moves the quest to stage 40. Checks: nothing."
   new: true
 - id: topic.mn01-pick-speech
   label: Speech.
@@ -5954,9 +5984,10 @@ topics:
       flag:
       - flag.mn01.pick-speech
       - true
-  intent: 'Okeeh. Tells: she says Speech back and how many are left to name; at the fifth, five is plenty for a reed gang,
-    and she hears the bar lift from the hold''s door. Does: sets this skill''s stage (101 to 118), whose start raises it
-    by five and counts it; the fifth count moves the quest to stage 40. Checks: nothing.'
+  intent: "Okeeh. Tells: she says Speech back and how many are left to name; at the fifth, five is plenty for a reed
+    gang, the bar lifts from the hold's door outside as she says it, and she tells the player they can go out onto the
+    landing now: the gang-master is out there and will want their name. Does: sets this skill's stage (101 to 118),
+    whose start raises it by five and counts it; the fifth count moves the quest to stage 40. Checks: nothing."
   new: true
 - id: topic.mn-owing
   label: What is the Owing?
@@ -6117,14 +6148,15 @@ topics:
   - 36
   - 40
   essential: true
-  intent: 'Dralin Uveran, a step from the hold''s door as the player comes out. Tells: he is Dralin Uveran, gang-master
-    here. The player''s name is not on his roll: it was struck this morning, before they cut a single reed, on an order
-    brought down the road by Vosh-Leera, the root-herald of Jal-Veesa, the one who speaks for that town''s elders and its
-    tree to outsiders. He cannot refuse a root-herald. "You must have friends in high places." He paid for the player''s
-    months and has lost them. She wants the player at her house in Jal-Veesa, east up the road; he does not know why and
-    does not care to. While they are going that way: the town''s tree-minder has asked every gang on the river for Sithis''
-    beard, a grey moss that hangs over the creek below Reed-Sill Weir, the weir-wardens'' camp where the road meets the
-    creek. Mind the crocodiles under the weir. Does: sets stage 90. Checks: nothing.'
+  intent: "Dralin Uveran, a step from the hold's door as the player comes out. Tells: he is Dralin Uveran, gang-master
+    here. The player's name is not on his roll: he struck it this morning, before they cut a single reed, on an order
+    brought down the road by Vosh-Leera, the root-herald of Jal-Veesa, the one who speaks for that town's elders and
+    its tree to outsiders. He cannot refuse a root-herald. \"You must have friends in high places.\" He paid for the
+    player's months and has lost them. Vosh-Leera left word: she will have work for the player if they bring her some
+    Sithis' beard, a grey moss that hangs over the creek below Reed-Sill Weir, the weir-wardens' camp where the road
+    east meets the creek; her house is in Jal-Veesa, a little further on past the weir. What she wants with either of
+    them he does not know and does not care to. Mind the crocodiles under the weir. Does: sets stage 90. Checks:
+    nothing."
   uses:
   - fact.mn01.struck
   - fact.mn01.go-to-vosh
@@ -6157,10 +6189,10 @@ topics:
   stages:
   - 90
   essential: false
-  intent: 'Dralin. Tells: a long grey moss that hangs from the trees over the creek below Reed-Sill Weir, the first camp
-    on the road east. Tree-minders use it for something; Jal-Veesa''s minder wants it badly. There are crocodiles under
-    the weir where the wardens throw their offal; kill them, shoot them from the log walk on top of the weir, or keep out
-    of their sight. Checks: nothing. Does: nothing.'
+  intent: "Dralin. Tells: a long grey moss that hangs from the trees over the creek below Reed-Sill Weir, the first
+    camp on the road east. Tree-minders use it for something; why Vosh-Leera wants it he does not know. There are
+    crocodiles under the weir where the wardens throw their offal; kill them, shoot them from the log walk on top of
+    the weir, or keep out of their sight. Checks: nothing. Does: nothing."
   uses:
   - fact.mn01.moss
   new: true

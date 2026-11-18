@@ -14,8 +14,9 @@ settlement: jal-veesa
 anchorPlaces:
 - outpost-m11-m63
 - jal-veesa
-premise: On the road to Jal-Veesa the freed stranger picks Sithis' beard from under the crocodiles at Reed-Sill Weir for
-  the town's sick Hist, and Vosh-Leera tells them that they now work for the Toh-Reel-Ka.
+premise: On the road to Jal-Veesa the freed stranger picks Sithis' beard from under the crocodiles at Reed-Sill Weir and
+  brings it to Vosh-Leera, who sends them on with it to the tree-minder of the town's sick Hist, then tells them that they
+  now work for the Toh-Reel-Ka.
 costTier: M
 milestone: 1
 touches:
@@ -53,7 +54,11 @@ start: 10
 recordStatus: design
 foundation: 'Built from main-plot.md §5 quest 2 and §2. Starts as MN01 ends, with the player freed and sent to Vosh-Leera.
   The player picks Sithis'' beard below Reed-Sill Weir, past or through two young crocodiles (fight, shoot from the log
-  walk, or sneak), and brings it to Weeltul, Jal-Veesa''s tree-minder, at the Hist pool. She shows the sick tree (dry dark
+  walk, or sneak), and brings it to Vosh-Leera, who greets them and sends them on with it to Weeltul, Jal-Veesa''s
+  tree-minder, at the Hist pool (owner, 2026-11-18: one place at a time; Vosh-Leera is the early handler). Out of
+  order: a player who takes the moss straight to Weeltul skips ahead cleanly (Vosh-Leera greets them at the report); a
+  player who goes to Vosh-Leera without the moss is greeted and sent back for it; Weeltul''s topics open only once the
+  player holds the moss in Jal-Veesa. She shows the sick tree (dry dark
   bark, a closed scar, a cooling egg-pool), makes a poultice that warms the pool but does not open the scar, says what the
   town loses if the tree dies, and has the player lay a hand on the bark for the tree''s blessing (the town''s own shrine-blessing:
   waterbreathing, or resist poison for an Argonian). Vosh-Leera then tells the player who they now work for, how the An-Xileel
@@ -316,10 +321,10 @@ stages:
 - id: 10
   place: outpost-m11-m63
   journal: text.journal.mn02.10
-  journalText: Dralin Uveran sent me east up the road to Vosh-Leera, the root-herald of Jal-Veesa, who had me freed. On
-    the way, Jal-Veesa's tree-minder wants Sithis' beard, a grey moss hanging over the creek below Reed-Sill Weir. Crocodiles
-    lie under the weir. I can fight them, shoot them from the log walk on top of the weir, or keep out of their sight. I'm
-    to pick the moss.
+  journalText: "Dralin Uveran told me that Vosh-Leera, the root-herald of Jal-Veesa, who had me freed, will have work
+    for me if I bring her some Sithis' beard, a grey moss hanging over the creek below Reed-Sill Weir. Crocodiles lie
+    under the weir; he said I can kill them, shoot them from the log walk on top of the weir, or keep out of their
+    sight, and if they see me they will come for me. First I need to pick the moss."
   objectives:
   - id: moss
     text: text.objective.mn02.moss
@@ -344,11 +349,11 @@ stages:
   directions: Reed-Sill Weir is the first camp east of Ashgate Landing, where the road meets the creek. The moss hangs from
     the trees over the water just below the woven weir.
   information:
-    going: I am free; Vosh-Leera of Jal-Veesa had me freed and wants me. Her town's tree-minder wants Sithis' beard.
-    next: Pick Sithis' beard below Reed-Sill Weir, then go on to Jal-Veesa.
+    going: I am free; Vosh-Leera of Jal-Veesa had me freed, and she will have work for me if I bring her Sithis' beard.
+    next: Pick Sithis' beard below Reed-Sill Weir, then take it to Vosh-Leera in Jal-Veesa.
     ways: Fight the crocodiles, shoot them from the log walk, or sneak to the moss behind them.
     carriers:
-    - know: who freed me and where she is
+    - know: who freed me, where she is and what she wants
       by:
       - journal
     - know: pick the moss below the weir
@@ -361,7 +366,6 @@ stages:
       by:
       - journal
       - look:npc.mn02.crocodile-1
-      - ask:topic.mn02-moss-what
   approaches:
   - id: fight
     actions:
@@ -384,13 +388,66 @@ stages:
 - id: 20
   place: jal-veesa
   journal: text.journal.mn02.20
-  journalText: 'I picked Sithis'' beard below Reed-Sill Weir. I''m to bring it to Weeltul, the tree-minder of Jal-Veesa,
-    at the Hist pool in the middle of the town, east along the road. The Hist is the town''s great tree, a thinking tree:
-    the tall grey one standing in the pool, with the stilt houses round it.'
+  journalText: "I picked Sithis' beard below Reed-Sill Weir. I should bring it to Vosh-Leera at her house in Jal-Veesa,
+    a short walk on east along the road."
+  objectives:
+  - id: vosh-moss
+    text: text.objective.mn02.vosh-moss
+    objectiveText: Bring Sithis' beard to Vosh-Leera in her house in Jal-Veesa.
+    target: npc.mn.vosh-leera
+    completeWhen:
+      questStage:
+      - quest.main.mn02
+      - ≥
+      - 25
+  successors:
+  - to: 25
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn02-vosh-moss
+        - npc.mn.vosh-leera
+      - hasItem:
+        - thing.mn02.sithis-beard
+        - 1
+  - to: 30
+    when:
+      all:
+      - topicHeardFrom:
+        - topic.mn02-give-moss
+        - npc.mn.jal-veesa-minder
+      - hasItem:
+        - thing.mn02.sithis-beard
+        - 1
+  failForward:
+  - to: 95
+    when:
+      not:
+        npcAlive: npc.mn.vosh-leera
+  directions: Jal-Veesa is a short walk on east along the road from the weir. Vosh-Leera's House is one of the stilt
+    houses on the ring of mud banks round the town's pool; its door bears her name.
+  information:
+    going: I have the moss Vosh-Leera asked for; she will have work for me when I bring it.
+    next: Bring the moss to Vosh-Leera's House in Jal-Veesa.
+    ways: One way, handing it to her. If I meet the tree-minder at the pool first, I may give it to her there.
+    carriers:
+    - know: bring the moss to Vosh-Leera at her house
+      by:
+      - journal
+      - objective
+      - marker:npc.mn.vosh-leera
+      - name:door.mn02.vosh-leera-house
+- id: 25
+  place: jal-veesa
+  journal: text.journal.mn02.25
+  journalText: "Vosh-Leera greeted me in her house. She is the root-herald of Jal-Veesa, who speaks for the town's elders
+    and its tree to outsiders, and she had my name struck from the roll. The moss is not for her: the town's tree-minder,
+    Weeltul, needs it for the sick Hist. Vosh-Leera asked me to take it to Weeltul at the Hist pool in the middle of the
+    town, the tall grey tree standing in the water, and come back to her after."
   objectives:
   - id: give
     text: text.objective.mn02.give
-    objectiveText: Bring Sithis' beard to the tree-minder at Jal-Veesa's Hist pool.
+    objectiveText: Bring Sithis' beard to Weeltul at Jal-Veesa's Hist pool.
     target: npc.mn.jal-veesa-minder
     completeWhen:
       questStage:
@@ -416,32 +473,39 @@ stages:
     when:
       not:
         npcAlive: npc.mn.vosh-leera
-  directions: Jal-Veesa is a short walk on east along the road from the weir. The Hist is the tall grey tree standing in
-    the pool at the middle of the town, ringed by stilt houses.
+  directions: The Hist is the tall grey tree standing in the pool at the middle of the town, ringed by stilt houses;
+    Weeltul tends it at the pool's edge.
   information:
-    going: I have the moss the tree-minder wanted. A Hist is a great thinking tree; Jal-Veesa's stands in the pool in the
-      middle of the town.
-    next: Bring the moss to the tree-minder at the Hist pool in the middle of Jal-Veesa.
+    going: Vosh-Leera, root-herald of Jal-Veesa, freed me. She gives work only to one who helps the tree-minder first; the
+      moss is for the town's sick Hist. A Hist is a great thinking tree; Jal-Veesa's stands in the pool in the middle of
+      the town.
+    next: Bring the moss to Weeltul, the tree-minder, at the Hist pool, then go back to Vosh-Leera.
     ways: One way, handing it to her.
     carriers:
-    - know: bring the moss to the tree-minder at the pool
+    - know: who Vosh-Leera is and why the moss goes to Weeltul
+      by:
+      - journal
+      - line:topic.mn02-vosh-moss
+    - know: bring the moss to Weeltul at the pool
       by:
       - journal
       - objective
+      - line:topic.mn02-vosh-moss
       - marker:npc.mn.jal-veesa-minder
       - name:npc.mn.jal-veesa-minder
     - know: how to know the Hist on sight
       by:
       - journal
+      - line:topic.mn02-vosh-moss
       - look:thing.mn02.sick-hist
       - ask:topic.mn-hist
 - id: 30
   place: jal-veesa
   journal: text.journal.mn02.30
-  journalText: 'I gave the moss to Weeltul, the tree-minder of Jal-Veesa. The town''s Hist is sick: its bark is dry and
-    dark, its scar has closed and its egg-pool is cooling, and nobody knows why. If it dies, no egg here will hatch again.
-    The moss only warms the pool. She let me lay a hand on the bark for its blessing. I''m to go to Vosh-Leera''s House
-    in the town.'
+  journalText: "I gave the moss to Weeltul, the tree-minder of Jal-Veesa. The town's Hist is sick: its bark is dry and
+    dark, its scar has closed and its egg-pool is cooling, and nobody knows why. If it dies, no egg here will hatch
+    again. The moss only warms the pool. She let me lay a hand on the bark for its blessing, and told me Vosh-Leera is
+    waiting for me in her house. I should go back to her."
   onEnter:
   - takeItem:
     - thing.mn02.sithis-beard
@@ -502,11 +566,11 @@ stages:
 - id: 90
   place: jal-veesa
   journal: text.journal.mn02.90
-  journalText: 'Vosh-Leera told me who I work for now: the Toh-Reel-Ka, the "Secret Warriors" of the Xeech-Leel, who rule
-    the province. They were made after Umbriel, when the An-Xileel used Lilmoth''s mad tree to call a flying city down on
-    the marsh, so that no tree and nobody allied with a tree can do it again. They free strangers like me because we come
-    cheap and have no kin. She paid me fifty gold. She has a second task for me, and I''m to ask her for it here in her
-    house in Jal-Veesa.'
+  journalText: "Vosh-Leera told me who I work for now: the Toh-Reel-Ka, the \"Secret Warriors\" of the Xeech-Leel, who
+    rule the province. They were made after Umbriel, when the An-Xileel used Lilmoth's mad tree to call a flying city
+    down on the marsh, so that no tree and nobody allied with a tree can do it again. They free strangers like me
+    because we come cheap and have no kin. She paid me fifty gold, and she has a second task for me: she asked me to
+    come back to her here, in her house, for it."
   learns:
   - fact.mn02.order
   - fact.mn02.why-me
@@ -627,38 +691,51 @@ terms:
   ask: topic.mn-umbriel
 topics:
 - id: topic.mn02-vosh-early
-  label: Dralin Uveran said you wanted me.
+  label: "Dralin Uveran said you would have work for me."
   person: npc.mn.vosh-leera
-  stages:
-  - 10
-  - 20
+  stages: [10]
   essential: false
-  intent: 'Vosh-Leera, if the player comes before the moss is given. Tells: she did; she is Vosh-Leera, root-herald of Jal-Veesa.
-    But Weeltul, the tree-minder at the pool in the middle of the town, needs that moss first; bring it from the weir to
-    her, let her show you the tree, then come back and Vosh-Leera will tell you what you were freed for. Checks: nothing.
-    Does: nothing.'
+  intent: "Vosh-Leera, if the player comes before they have the moss. Tells: she greets them: she is Vosh-Leera,
+    root-herald of Jal-Veesa, and she had their name struck from Dralin's roll. She will give work only to one who
+    helps the town's tree-minder first, and the tree-minder needs Sithis' beard. Go back to Reed-Sill Weir, west down
+    the road, pick the moss that hangs over the creek below it, and bring it here. Checks: nothing. Does: nothing."
+  new: true
+- id: topic.mn02-vosh-moss
+  label: I brought the Sithis' beard you wanted.
+  person: npc.mn.vosh-leera
+  stages: [20]
+  essential: true
+  intent: "Vosh-Leera, in her house. Checks: hasItem [thing.mn02.sithis-beard, 1]. Tells: she greets the player: she is
+    Vosh-Leera, root-herald of Jal-Veesa; a root-herald speaks for a town's elders and its tree to anyone from outside,
+    so it was her order that struck the player's name from Dralin's roll. A little talk: she asks how they found the
+    weir, and says the town's Hist, the tall grey tree standing in the pool in the middle of the town, is sick this
+    season. The moss is not for her: Weeltul, the tree-minder, needs it to warm the tree's egg-pool. She gives work only
+    to one who helps the tree-minder first, so take it to Weeltul at the Hist pool, let her show you the tree, then come
+    back here and Vosh-Leera will tell the player what they were freed for. Does: sets stage 25."
+  uses: []
+  new: true
+- id: topic.mn02-vosh-wait
+  label: What did you free me for?
+  person: npc.mn.vosh-leera
+  stages: [25]
+  essential: false
+  intent: "Vosh-Leera, before the moss is given. Tells: Weeltul first; she is at the Hist pool in the middle of the town,
+    and she needs that moss more than Vosh-Leera needs to talk. Come back after. Checks: nothing. Does: nothing."
+  uses: []
   new: true
 - id: topic.mn02-moss-what
-  label: What is Sithis' beard for?
+  label: "What will you do with the moss?"
   person: npc.mn.jal-veesa-minder
-  stages:
-  - 10
-  - 20
-  - 30
-  - 90
+  stages: [20, 25]
   essential: false
-  intent: 'Weeltul. Tells: a long grey moss that hangs over the creek below Reed-Sill Weir. Laid in an egg-pool as a poultice
-    it warms the water for a few days. The crocodiles lie under the weir where the moss hangs; a hunter shoots them from
-    the log walk, and a careful one picks the moss from the bank behind them. Checks: nothing. Does: nothing.'
+  intent: "Weeltul, while the player holds the moss. Tells: laid in an egg-pool as a poultice, Sithis' beard warms the
+    water for a few days; her pool is cooling and she has turned the eggs twice today. Give it to her and she will show
+    the player the tree. Checks: nothing. Does: nothing."
   new: true
 - id: topic.mn-hist
   label: What is a Hist?
   person: npc.mn.jal-veesa-minder
-  stages:
-  - 10
-  - 20
-  - 30
-  - 90
+  stages: [20, 25, 30, 90]
   essential: false
   intent: 'Weeltul. Tells: the great thinking tree every Argonian town stands round; this one is the tall grey tree in the
     pool behind her, Jal-Veesa''s own. Its bark should be pale and soft; feel how dry it is now. Checks: nothing. Does:
@@ -667,21 +744,17 @@ topics:
 - id: topic.mn02-weeltul-who
   label: Who are you?
   person: npc.mn.jal-veesa-minder
-  stages:
-  - 10
-  - 20
-  - 30
-  - 90
+  stages: [10, 20, 25, 30, 90]
   essential: false
-  intent: 'Weeltul. Tells: she is Weeltul, tree-minder of Jal-Veesa: she tends the town''s Hist, keeps its egg-pool and
-    draws its sap; every hatchling of the town comes to her on its naming day. She is waiting on Sithis'' beard from the
-    weir. Checks: nothing. Does: nothing.'
+  intent: "Weeltul. Tells: she is Weeltul, tree-minder of Jal-Veesa: she tends the town's Hist, keeps its egg-pool and
+    draws its sap; every hatchling of the town comes to her on its naming day. Before the player has the moss she adds
+    that she is waiting on Sithis' beard from the creek below Reed-Sill Weir, west down the road, for her cooling pool.
+    Checks: nothing. Does: nothing."
   new: true
 - id: topic.mn02-give-moss
   label: I brought Sithis' beard from the weir.
   person: npc.mn.jal-veesa-minder
-  stages:
-  - 20
+  stages: [20, 25]
   essential: true
   when:
     hasItem:
@@ -703,10 +776,7 @@ topics:
 - id: topic.mn-eggs
   label: Tell me about the eggs.
   person: npc.mn.jal-veesa-minder
-  stages:
-  - 20
-  - 30
-  - 90
+  stages: [25, 30, 90]
   essential: false
   intent: 'Weeltul. Tells: Argonian eggs are laid in the pool among a Hist''s roots, and the tree keeps them warm and alive
     through its roots. If a tree''s bond with its eggs is cut, the unborn die in the shell. A village whose tree dies has
@@ -718,10 +788,7 @@ topics:
 - id: topic.mn-sap
   label: What is the sap?
   person: npc.mn.jal-veesa-minder
-  stages:
-  - 20
-  - 30
-  - 90
+  stages: [25, 30, 90]
   essential: false
   intent: 'Weeltul. Tells: sap is what a Hist bleeds, amber-coloured and thick. A hatchling licks its tree''s sap on its
     naming day, and the sap shapes its body for life. Drunk, it brings visions the tree sends, of far places; minders drink
@@ -731,10 +798,7 @@ topics:
 - id: topic.mn-scar
   label: What is the scar?
   person: npc.mn.jal-veesa-minder
-  stages:
-  - 20
-  - 30
-  - 90
+  stages: [25, 30, 90]
   essential: false
   intent: 'Weeltul. Tells: every Hist has one place in its bark, low on the trunk, where its minder cuts a little and the
     tree gives sap there and nowhere else; that is the scar. A healthy tree''s scar weeps sap when it is opened. A sick
@@ -745,10 +809,7 @@ topics:
 - id: topic.mn-umbriel
   label: What was Umbriel?
   person: npc.mn.jal-veesa-minder
-  stages:
-  - 20
-  - 30
-  - 90
+  stages: [25, 30, 90]
   essential: false
   intent: 'Weeltul. Tells, in a line or two: a flying city that came down on Lilmoth long ago, called by the An-Xileel through
     Lilmoth''s mad tree; every minder is taught it as a warning of what a tree can be made to do. Checks: nothing. Does:
@@ -759,11 +820,7 @@ topics:
 - id: topic.mn02-vosh-who
   label: Who are you?
   person: npc.mn.vosh-leera
-  stages:
-  - 10
-  - 20
-  - 30
-  - 90
+  stages: [10, 20, 25, 30, 90]
   essential: false
   intent: 'Vosh-Leera. Tells: root-herald of Jal-Veesa: she speaks for the town''s elders and its tree to anyone from outside,
     Dunmer buyers and Stormhold''s halls and gang-masters among them. Checks: nothing. Does: nothing.'
@@ -774,15 +831,18 @@ topics:
   stages:
   - 30
   essential: true
-  intent: 'Vosh-Leera, in her house, privately: nobody names the order aloud in company. Tells: the player has seen the
-    tree. Trees are falling sick, one at a time, along the river, and nobody knows why. The people she answers to want it
-    found. They are the Toh-Reel-Ka, the Secret Warriors: the elite order of the Xeech-Leel, the People of the New Beginning,
-    who have ruled the province since the An-Xileel fell. In 4E 48 the An-Xileel, who ruled then, used the mad Hist of Lilmoth
-    to call down the flying city Umbriel, and its dead killed Lilmoth''s people. The Xeech-Leel made the Toh-Reel-Ka so
-    that no tree, and nobody allied with a tree, can ever turn on the marsh like that again. They comb the work gangs for
-    strangers with no kin and no ties, because such a stranger makes a useful spy and a cheap one; she chose the player
-    off the barge''s list. Nobody in the marsh is owed a reason. They pay, and they give work. She gives the player fifty
-    gold and asks them to come back to her, here, for a second task. Does: sets stage 90. Checks: nothing.'
+  intent: "Vosh-Leera, in her house, privately: nobody names the order aloud in company. Tells: if this is the first
+    time the player has spoken to her (they took the moss straight to Weeltul), she greets them first: she is
+    Vosh-Leera, root-herald of Jal-Veesa, who had their name struck, and she is glad they helped the tree-minder before
+    anything else. The player has seen the tree. Trees are falling sick, one at a time, along the river, and nobody
+    knows why. The people she answers to want it found. They are the Toh-Reel-Ka, the Secret Warriors: the elite order
+    of the Xeech-Leel, the People of the New Beginning, who have ruled the province since the An-Xileel fell. In 4E 48
+    the An-Xileel, who ruled then, used the mad Hist of Lilmoth to call down the flying city Umbriel, and its dead
+    killed Lilmoth's people. The Xeech-Leel made the Toh-Reel-Ka so that no tree, and nobody allied with a tree, can
+    ever turn on the marsh like that again. They comb the work gangs for strangers with no kin and no ties, because
+    such a stranger makes a useful spy and a cheap one; she chose the player off the barge's list. Nobody in the marsh
+    is owed a reason. They pay, and they give work. She gives the player fifty gold and asks them to come back to her,
+    here, for a second task. Does: sets stage 90. Checks: nothing."
   uses:
   - fact.mn02.order
   - fact.mn02.why-me
