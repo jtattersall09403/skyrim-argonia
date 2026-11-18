@@ -8,3 +8,5 @@
 {"place_id":"helstrom","need_seq":7,"need_sign_id":"person","detail":"Nesh-Deeka heads the household and lives there; Never-Writes-Twice keeps a bed in it","person_id":"helstrom.70XB8VD8S4A3J2CHESHXF26B2C"}
 {"place_id":"helstrom","need_seq":8,"need_sign_id":"label","detail":"its door shows \"Boatmen's Lodge\""}
 {"place_id":"helstrom","need_seq":8,"need_sign_id":"person","detail":"the innkeeper Sleeps-Last keeps it and rents its bed","person_id":"helstrom.8A62J4KYJ8DA3F58WKMRY3Y79F"}
+{"place_id":"helstrom","need_seq":9,"need_sign_id":"label","detail":"its door shows \"Tree-Minders' Hall\"; inside, the case names itself \"Urn Case\", locked (Expert)"}
+{"place_id":"helstrom","need_seq":10,"need_sign_id":"person","detail":"the raft-master Poles-Upriver works the city landing","person_id":"helstrom.YFMTJK20VGQ52AK51GM46YJQYR"}

@@ -35,6 +35,21 @@
     "need": 0,
     "tier": "AGENT_INVENTED",
     "why": "a locked chest the main story can use in place of a back room, in the one-room house nearest the city landing (Ixtul-Bei's household): King of the Murkmire's rustic chest beside the household's dresser (Black Marsh.esm:1E4354), against the same wall and turned as it is, at the floor's height there (the dresser's base 14771 plus the chest's 19 below its middle); owned by the household and locked at Novice in the stock source"
+   },
+   {
+    "base": "King of the Murkmire.esp:B7F081",
+    "kind": "container",
+    "space": "01BlackRoseJail",
+    "pos": [
+     10000.0,
+     -2420.0,
+     7537.0
+    ],
+    "rot_z": 0.0,
+    "need": 9,
+    "name": "Urn Case",
+    "tier": "AGENT_INVENTED",
+    "why": "the case that holds the order's sealed urn (Sisei-Xul, quests 5 to 10 and the ending; House Cardruhn, 9. The Urn): King of the Murkmire's rustic chest beside the hall's arcane enchanter inside the door, named so a player reads what it is; owned by the town and locked at Expert in the stock source; the urn itself is the quests' own thing put inside it"
    }
   ]
  },

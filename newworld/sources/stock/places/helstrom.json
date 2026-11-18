@@ -412,6 +412,23 @@
     "person:helstrom.TA28STYJ3XNYJ9FPVMQEYJVQQ4",
     "story/design/quests/lines/main-plot.md"
    ]
+  },
+  {
+   "ref": "helstrom.JH7GJQBX839W4R6CB06KEZ9QAY",
+   "space": "01BlackRoseJail",
+   "kind": "chest",
+   "owner_faction": "helstrom.town",
+   "lock": "Expert",
+   "security": "S4",
+   "tier": "T4",
+   "gold": 0,
+   "items": [],
+   "why": "the case that holds the Sisei-Xul's sealed urn in the tree-minders' hall: the assembly of tree-minders keeps it, so the town owns it, and it is locked at Expert (House Cardruhn's 9. The Urn asks an expert lock); it holds nothing of the stock's, the urn is the quests' own thing",
+   "cites": [
+    "place_wealth:helstrom",
+    "story/design/quests/lines/house-cardruhn.md",
+    "story/design/quests/lines/sisei-xul.md"
+   ]
   }
  ],
  "loose": [

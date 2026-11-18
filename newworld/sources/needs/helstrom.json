@@ -249,6 +249,53 @@
     "result": "recognised",
     "said": "2026-11-17: an inn at the docks by its door name and its keeper; the go-between and his men are not seen (the quest places them)"
    }
+  },
+  {
+   "seq": 9,
+   "from": [
+    "d8b4b73dd5",
+    "9d3faf211a"
+   ],
+   "thing": "the tree-minders' hall with its arcane enchanter and the order's urn in a case with an expert lock",
+   "line": "sisei-xul",
+   "rests": {
+    "space": "01BlackRoseJail",
+    "ref": "helstrom.JH7GJQBX839W4R6CB06KEZ9QAY"
+   },
+   "signs": [
+    {
+     "sign": "label",
+     "detail": "its door shows \"Tree-Minders' Hall\"; inside, the case names itself \"Urn Case\", locked (Expert)"
+    }
+   ],
+   "met": true,
+   "why": "Met for the place's part. The cave by the waterfalls shows \"Tree-Minders' Hall\" on its door; inside the door stand the arcane enchanter and, beside it, a chest the game names \"Urn Case\", locked at Expert and owned by the town. Okan-Zeel, the order's enchanter, the two grave-singers and the urn itself are the quests' own placements and thing.",
+   "fit": "The hall's entrance, beside the enchanter, where the healer Taleeka-Ma already works.",
+   "narrow": "Yes: one container placed by hand and its lock; nothing else changed.",
+   "tier": "AGENT_INVENTED"
+  },
+  {
+   "seq": 10,
+   "from": [
+    "77ab711065"
+   ],
+   "thing": "the market where the council's treasurer walks by day, and a raft-master at the city landing",
+   "line": "thieves",
+   "rests": {
+    "person": "helstrom.YFMTJK20VGQ52AK51GM46YJQYR"
+   },
+   "signs": [
+    {
+     "sign": "person",
+     "detail": "the raft-master Poles-Upriver works the city landing",
+     "person": "helstrom.YFMTJK20VGQ52AK51GM46YJQYR"
+    }
+   ],
+   "met": true,
+   "why": "Met for the place's part. The raft-master Poles-Upriver works at the city landing, and the market (the Market Cave with its stalls, and the traders round the sacred tree) is there by day. The treasurer is the quest's own placement, walking the market by day.",
+   "fit": "The landing and the market as they stand.",
+   "narrow": "Nothing to change.",
+   "tier": "AGENT_INVENTED"
   }
  ],
  "dismissed": []
