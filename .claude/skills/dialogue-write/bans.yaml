@@ -173,16 +173,18 @@
   detect: "(?i)\\b(?:\\d+|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|fifteen|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety|hundred|thousand|dozen)\\b[\\w\\s-]{0,24}?\\b(?:paces|steps|strides|yards|metres|meters|leagues|miles)\\b|\\bpaces\\b"
 
 - id: B14-hold-place
-  rule: '"Hold" (and "keep") for occupying a place is used at most twice in a file. Say who is there and what they are doing,
-    in a different shape each time: they camp in it, they have the door barred, they watch the road from it, they sleep in
-    it, it is theirs.'
+  rule: '"Hold", and "keep" for garrisoning, manning or holding a place or post, is used at most twice in a file. Say who
+    is there and what they are doing, in a different shape each time: they camp in it, they have the door barred, they
+    watch the road from it, they man it, they garrison it and collect tolls, it is theirs.'
   bad:
   - Unbound scouts hold the cave.
   - The Collector's men hold the tower.
+  - whose garrisons keep the old Imperial forts
   good:
+  - whose garrisons man the old Imperial forts
   - Unbound scouts camp in the cave.
   - The Collector's men have the tower's door barred.
-  detect: (?i)\b(?:hold|holds|held|holding|keep|keeps|kept|keeping)\s+(?:the|a|an)\s+(?:[a-z-]+\s+)?(?:cave|tower|fort|keep|hall|yard|camp|gate|door|room|ruin|mine|wreck|island|isle|landing|cellar|vault|galleries|halls)\b
+  detect: (?i)\b(?:hold|holds|held|holding|keep|keeps|kept|keeping)\s+(?:the|a|an|their|its|our)\s+(?:[A-Za-z-]+\s+){0,2}?(?:caves?|towers?|forts?|keeps?|hall|yards?|camps?|gates?|doors?|rooms?|ruins?|mines?|wrecks?|island|isle|landings?|cellar|vault|galleries|halls|posts?|walls?|bridges?|passes?|crossings?|ford)\b
   max_per_file: 2
 - id: B15-fight-place
   rule: 'A place, building or room is never the object of fight, kill, clear or sneak past: that is personification. Name
@@ -211,4 +213,14 @@
   - The company told the privateers where the best ship would sail, for gold.
   - He told the Legion where they hid, for coin.
   detect: (?i)\b(?:sold|sells?)\s+(?:that|this|it|him|her|them|out)\s*(?:[.,;:!?]|$)|\bsold\s+the\s+course\b
+  severity: warn
+- id: B19-im-to
+  rule: 'A journal''s call to action varies: "I''m to" at most once in a quest record''s journal text. Use "I should", "I need to", "I must", "she asked me to", "I was told to", "Dralin told me that I should", "I promised to", "it falls to me to", "I mean to", "the next thing is to", "I ought to", "I had better", "he wants me to", "I said I would"
+    or another shape.'
+  bad:
+  - I'm to go to Vosh-Leera's house. I'm to bring the moss.
+  good:
+  - Dralin told me that I should bring the moss to Vosh-Leera.
+  detect: (?i)\bI(?:'|’)m\s+to\b|\bI\s+am\s+to\b
+  max_per_file: 1
   severity: warn

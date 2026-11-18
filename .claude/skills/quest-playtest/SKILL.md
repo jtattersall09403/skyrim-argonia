@@ -106,7 +106,10 @@ player knew at the end), `run.json`.
 | a harness error, or the game doing what Skyrim would not | the tool's lane | a report to the lead; never worked round |
 
 The fix goes into the record's channels (journal, objective, marker, line, name, message), and the stage's
-`information.carriers` says which channel now carries the missing point.
+`information.carriers` says which channel now carries the missing point; the journal is never the only one. A miss is
+fixed by the plainest change; a new beat (a person who talks only after a hand-over, one who answers a question
+before it is asked) is added only when a player was lost without it. A journal fact with no carrier in the world, or
+a stage that sends the player to two places at once, is a miss of that milestone.
 
 ## 6. Loop until it passes
 

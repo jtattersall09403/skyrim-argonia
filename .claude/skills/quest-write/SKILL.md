@@ -158,8 +158,11 @@ into the stage's `information` (quest-record.md §1) and the quest's `terms`:
    happened, why it matters), `next` (the one step owed, and where), `ways` (each way through by skill, and any
    choice with what it gives and costs).
 2. **Give every point a channel on the path**, and list it in `carriers`:
-   - *the journal entry* (what they just did, why, "I'm to ..." for the step) and *the objective* (the toast and the
-     quest list: an imperative naming the place or person as the game shows them);
+   - *the journal entry*, which only records what the player has just been told, seen or overheard in the world
+     (sometimes with a little more detail) and ends with a call to action for the step, varied ("I should", "she
+     asked me to", "I was told to"; "I'm to" at most once a record, lint B19), and *the objective* (the toast and
+     the quest list: an imperative naming the place or person as the game shows them). Nothing is learnt first from
+     the journal: every fact in it has another carrier at or before that stage;
    - *a marker* on every person, door, container or thing the step needs, and on the place when it is far;
    - *a line on the path* (a speaks-first line, or a topic the step moves through) for every fact the plot needs:
      who sent them and why, what the thing is, what the person wants;
@@ -168,11 +171,16 @@ into the stage's `information` (quest-record.md §1) and the quest's `terms`:
    - *a message box* for what happens off screen or in a vision, and *a note or book to read* where the fact is
      written in the world.
    An optional topic is never the only channel for something the next step needs.
-3. **Plan when each fact lands.** A fact comes at the step that needs it, said plainly once; the journal repeats
-   only what the next step relies on. Where the plot keeps a question open on purpose (a mystery), the plan says the
+3. **Plan when each fact lands.** A fact comes at the step that needs it, told once in the world; the journal
+   records it there and never repeats it later. A reminder of a central fact is an optional topic the player can
+   ask whenever they like, never a forced line or a later entry. Where the plot keeps a question open on purpose (a mystery), the plan says the
    player knows the question, and the journal writes it down.
 4. **Name the ways through in words.** Where the player may fight, sneak, pick, pickpocket, persuade or pay, the
-   entry or the giver's line says so, and a marker shows the key, the cage or the person for each way.
+   entry or a person's line says so. The marker points at the obvious main route (the person with the key, the
+   front door); a sneakier or side way is only mentioned, for the player to find. Every quest has a way for a player
+   with no stealth (a fight, Speech or gold, magic), named. Every sneak way says what happens if the player is
+   caught (who sees, what they do: hostile, a fine, thrown out, a fight; how the quest still goes on) and whether
+   its doors and hatches are locked (lock level, where the key is).
 5. **Give every new term a gloss and a topic.** Each Jel word, name, faction, rank or piece of lore met here is a
    `terms` row: told plainly on the path at first use (a few words beside it), and a topic the player can pick to
    hear more: what the Jel word means, the faction's history and name, the person's backstory. Those topics stay
@@ -180,12 +188,10 @@ into the stage's `information` (quest-record.md §1) and the quest's `terms`:
 6. **Hand over between quests.** The last stage says where the next quest starts and why, with a marker on the
    person or place; a report back is written out as the lines that say what the handler makes of the find and where
    the player goes next. An ending also says what it has closed (a trader who will no longer deal, a door shut).
-7. **Keep the line's centre in view.** Players forget across a long line. Each quest's first entry names who the
-   player works for and glosses, in one plain clause each, the line's aim and the central things it turns on (in the
-   main quest the Eye of Argonia and the Root); each report line does the same; a topic with the line's handler
-   restates the whole aim and stays open to the end. Never in every entry: a thing is explained once where it
-   matters. A late quest that turns on something told long before (a twist on the rulers' history) glosses it
-   again where it is used.
+7. **Keep the line's centre in reach.** The line's aim and central things (in the main quest the Eye of Argonia
+   and the Root) are told once where they matter; a topic with the line's handler restates the whole aim and stays
+   open to the end, for the player who forgets. A late quest that turns on something told long before (a twist on
+   the rulers' history) glosses it again where it is used.
 8. **Make every step reachable from what the player does there.**
    - A stage moves on any line the player could pick to do the step (every way to talk a guard round), and a report
      line moves the stage itself; never on a reply the player may not choose.
@@ -195,6 +201,10 @@ into the stage's `information` (quest-record.md §1) and the quest's `terms`:
      quest that sends the player there.
    - The journal names the person each objective marks, and before any choice says what each answer gives and
      costs.
+9. **Out of sequence and too soon.** The opening sends the player to one place at a time, never two destinations at
+   once. For every person the player can reach early and every step that can be done out of order, the record says
+   which holds: allowed to skip ahead (the quest jumps forward cleanly, the journal coherent) or refused in the world
+   (the person says why and sends the player to the right step).
 
 ## 4. Write the record in order
 

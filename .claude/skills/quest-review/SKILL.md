@@ -90,12 +90,15 @@ Premise and truth
 
 The trail
 4. Does each conclusion have at least three clues in at least two forms?
-5. Can the player finish after missing any one clue, failing any one check, or going in another order?
+5. Can the player finish after missing any one clue, failing any one check, or going in another order? Does the
+   record say, for every person reachable early and every step doable out of order, whether the quest skips ahead
+   cleanly or the person refuses and sends the player back; does the opening send them to one place at a time?
 6. Does the player find out or decide something, rather than being told?
 
 Play
-7. Is each thing to do next its own stage, with an entry that tells that step only (first person, past tense, "I'm
-   to ..."), an objective in the imperative and a target switched on at it? Can the step also be followed from the
+7. Is each thing to do next its own stage, with an entry that records only what the player was just told, saw or
+   overheard (each fact with a carrier in the world) and tells that step only (first person, past tense, a varied call
+   to action), an objective in the imperative and a target switched on at it? Can the step also be followed from the
    entry's words (landmark, direction, a word for how far)?
 8. Can the player say each prompt with what they know at that stage, and is each a sentence? Does every question a
    speaker asks have reply topics, and every offer the result that delivers it? Does any line refuse while it moves
@@ -105,7 +108,9 @@ Play
 11. Is any task still offered or described after the quest has ended? Does each ending leave its people a greeting
     true of that ending, and does a line shared by several endings say only what is true of all?
 12. Is any fact given to two speakers in one place and stage window?
-13. Is there more than one approach somewhere, with different costs, and is the quest long enough beside comparable
+13. Is there more than one approach somewhere, with different costs, one of them for a player with no stealth; does
+    every sneak way say what happens if the player is caught and which doors on it are locked (level, key); does the
+    marker show the obvious route and leave the sneaky one to words; and is the quest long enough beside comparable
     Morrowind, Oblivion and Skyrim quests?
 
 Who can die

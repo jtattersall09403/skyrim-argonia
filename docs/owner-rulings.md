@@ -806,3 +806,12 @@ added here the day they are made, with the date and the issue.
   offline"); offline, every edit, save and note is kept on the tablet; back online nothing is sent until he chooses
   "Send my offline work" or "Send it, then save and finalise", and a save that moved on meanwhile is never
   overwritten (docs/design/place-studio.md, Offline).
+- 2026-11-18 (story explorer notes 1, 3 to 6, 9, 11, 14 to 17): writing and quest rules. "Keep" for garrisoning
+  or holding a place is capped like "hold" (B14). Journal calls to action vary, "I'm to" at most once a record (B19).
+  The journal only records what the player learnt in the world, with a call to action; nothing is learnt from it.
+  Each quest says what happens out of sequence or too soon (skip ahead cleanly, or refused and sent back) and opens
+  to one place at a time. Every sneak way says what happens when caught and what is locked; every quest has a
+  no-stealth way. Markers show the obvious route; the sneaky way is mentioned. Reminders are an optional topic, never
+  repeated entries. Odd beats invented in paper playtests are dropped; findings get the plainest fix. Landed in
+  quest-write §3a, principles/general.md 25, quest-review 5, 7 and 13, quest-playtest §5, the style guide and core,
+  owner-bar.

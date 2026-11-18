@@ -140,6 +140,29 @@ with its source in [owner-rulings-on-factions](../../docs/research/writing/owner
 
 ## Shape of a quest and a line of quests
 
+- The journal "is only ever recording things that you have learned through other means": what the player was told,
+  saw or overheard, "sometimes with a little more detail, and always with a call to action"; the player "should never
+  actually learn something *from* the journal". Every journal fact has a carrier in the world (OR 2026-11-18, story
+  explorer notes).
+- The call to action varies: "I'm to" is "overused"; "I should, I need to, she/he asked me to, I was told to, I was
+  told that I should", and more; "I'm to" at most once a quest record (lint B19) (OR 2026-11-18, story explorer notes).
+- Out of sequence and too soon: "your quest writing process needs to work through these edge cases": for every person
+  reachable early and every step doable out of order, the record says whether the quest skips ahead cleanly or the
+  person refuses and sends the player back. The opening sends the player to one place at a time ("we should just
+  cleanly send them to the tree minder first") (OR 2026-11-18, story explorer notes).
+- Every sneak way says what happens if the player is caught and whether its doors and hatches are locked (level,
+  key); every quest has a way for a player with no stealth (OR 2026-11-18, story explorer notes).
+- "The marker should always be for the more 'obvious' main route"; a sneakier way in is mentioned in the journal or
+  by a person, "and let the player find it for themselves" (OR 2026-11-18, story explorer notes).
+- A reminder of a central fact is "an optional topic you can always ask if you forget", never forced "repetitively";
+  a quest's first entry does not say again what was told before ("If I want to know again what they are I'll look
+  back at the earlier journal entry") (OR 2026-11-18, story explorer notes).
+- Beats invented in paper playtests ("she talks once the player hands her the sack", "says 'we listen' before the
+  player asks") are dropped: "This feels pointless". A playtest finding is fixed by the plainest change; a new beat
+  only when a player was lost without it (OR 2026-11-18, story explorer notes).
+- "Keep" for garrisoning or holding a place gets the same cap as "hold" ("Agents overuse 'keep' in this context, just
+  like they by default overuse 'hold'"): "whose garrisons keep the old Imperial forts" becomes "whose garrisons man
+  the old Imperial forts" or another structure (lint B14) (OR 2026-11-18, story explorer notes).
 - Nothing more complicated than Morrowind-level scripting, and much less world editing per quest (walk 6,
   OR 2026-11-12; the ceiling: [quest-form](../../docs/design/quest-form.md)). Before that ruling the bar was
   "nothing harder to script than an average Skyrim quest" (OR 2026-11-06); the lower ceiling replaces it.

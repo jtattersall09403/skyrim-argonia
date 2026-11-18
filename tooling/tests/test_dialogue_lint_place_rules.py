@@ -1,4 +1,4 @@
-"""B14 to B17 in the dialogue linter: place-occupying hold, fighting a place, bare passive, bare sale."""
+"""B14 to B17 and B19 in the dialogue linter: place-occupying hold, fighting a place, bare passive, bare sale."""
 import importlib.util
 import pathlib
 import re
@@ -18,8 +18,13 @@ def rx(ban_id):
 
 CASES = {
     "B14-hold-place": (
-        ["Unbound scouts hold the cave.", "The Collector's men held the old tower.", "They keep the vault."],
-        ["They hold the line.", "She held a grudge."],
+        ["Unbound scouts hold the cave.", "The Collector's men held the old tower.", "They keep the vault.",
+         "whose garrisons keep the old Imperial forts", "Legionaries kept the river crossing."],
+        ["They hold the line.", "She held a grudge.", "They keep the peace.", "Keep the old coin."],
+    ),
+    "B19-im-to": (
+        ["I'm to go to Vosh-Leera.", "Now i’m to wait.", "I am to go."],
+        ["I should go to Vosh-Leera.", "Dralin told me that I should wait.", "Tim to go."],
     ),
     "B15-fight-place": (
         ["The player fights the yard and the hall.", "She kills the gate.", "You sneak past the camp."],
@@ -48,3 +53,13 @@ def test_hold_place_has_a_cap_and_others_are_warn_or_hard():
     assert BANS["B16-passive-actor"]["severity"] == "warn"
     assert BANS["B17-sold-bare"]["severity"] == "warn"
     assert "severity" not in BANS["B15-fight-place"]
+
+
+def test_im_to_warns_above_one_per_record(tmp_path, capsys, monkeypatch):
+    assert BANS["B19-im-to"]["max_per_file"] == 1 and BANS["B19-im-to"]["severity"] == "warn"
+    f = tmp_path / "journal.txt"
+    f.write_text("I'm to go east.\nI was told to wait.\n")
+    monkeypatch.setattr("sys.argv", ["lint.py", str(f), "--race", "imperial"])
+    assert lint.main() == 0 and "B19" not in capsys.readouterr().out.split("review by hand")[0]
+    f.write_text("I'm to go east.\nI'm to wait.\n")
+    assert lint.main() == 0 and "warn B19-im-to: 2 in the file" in capsys.readouterr().out

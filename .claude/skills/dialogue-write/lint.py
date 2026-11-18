@@ -7,7 +7,8 @@ Prints one row per hit (line number, ban id, matched text) and every `review` ba
 A ban with `detect: subject-act` is built from its `subjects` and `acts` lists: a determiner (the, our, a name's...),
 an optional modifier, an inanimate subject, optional auxiliaries, then a person's act in any tense (B01, personification).
 A ban with `severity: warn` is printed as a warning and never fails the run. A ban with `max_per_file: N` fails only
-when it hits more than N times in the file (one person's lines: B11's warm address).
+when it hits more than N times in the file (one person's lines: B11's warm address); with `severity: warn` too it
+only warns (B19, "I'm to" in one quest record's journal text).
 Exit code 1 when any other regex ban hits, 0 when none does, 2 on a usage error. The speaker's race is required
 (any case): a missing or misspelt race used to skip the race bans silently and pass a line that breaks them.
 """
@@ -69,8 +70,10 @@ def main() -> int:
     for b in bans:
         got = counted.get(b["id"], [])
         if len(got) > b.get("max_per_file", len(got)):
-            print(f"{b['id']}: {len(got)} in the file, at most {b['max_per_file']}: {got}")
-            hits += 1
+            warn = b.get("severity") == "warn"
+            print(f"{'warn ' if warn else ''}{b['id']}: {len(got)} in the file, at most {b['max_per_file']}: {got}")
+            warns += warn
+            hits += not warn
     review = [b["id"] for b in bans if b["detect"] == "review" or b.get("severity") == "warn"]
     print(f"{hits} regex hits, {warns} warnings; review by hand: {', '.join(review)}")
     return 1 if hits else 0

@@ -192,10 +192,13 @@ definite-article abstractions.
   heard you", "the village wants", "the law knows". Name who does it ("I add
   months to the roll", "we heard you in the hold") or state the plain fact.
   Lint ban B01.
-- **Do not overuse "hold" or "keep" for occupying a place.** At most one
-  per section of a page, at most two in a file (lint B14). Say who is there
-  and what they are doing: "Unbound scouts camp in the cave", "the
-  Collector's men have the tower's door barred".
+- **Do not overuse "hold" or "keep" for occupying a place.** *Keep* for
+  garrisoning, manning or holding a place or post gets the same cap as
+  *hold*: at most one per section of a page, at most two in a file (lint
+  B14). Say who is there and what they are doing, or use another structure:
+  "Unbound scouts camp in the cave", "the Collector's men have the tower's
+  door barred", "whose garrisons man the old Imperial forts", "who use their
+  forces to garrison the old Imperial forts and collect tolls".
 - **The actor is the subject.** Not "they are fought, or passed" but "the
   player fights them or passes them by stealth". Passive only when the actor
   is unknown or irrelevant. Lint B16 (warning).
@@ -579,8 +582,11 @@ Fixed slots keep Morrowind's shapes:
 §2.3.
 
 ### `journal`
-**First person, past tense for events, "I'm to…" / "I must…" / "Now I'll…" for
-the outstanding objective.** Full names and place names spelled out **every
+**First person, past tense for events, a varied call to action for the
+outstanding objective** ("I should", "I need to", "I must", "she asked me to", "I was told to", "Dralin told me that I should", "I promised to", "it falls to me to", "I mean to", "the next thing is to", "I ought to", "I had better", "he wants me to", "I said I would"; "I'm to" at most once a quest
+record, lint B19). An entry only records what the player was just told, saw
+or overheard, sometimes with a little more detail; nothing is learnt first
+from the journal, and a central fact is never restated in a later entry. Full names and place names spelled out **every
 entry** — the journal is the quest log *and* the search index. Directions
 restated in landmark prose. Failure states get their own flat entry with the
 consequence attached.

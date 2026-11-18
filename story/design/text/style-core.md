@@ -49,7 +49,8 @@ resentful", "gets by", "leave alone"); `eat-figurative` ("a road that eats
 iron"); `within-span` ("would move within a season"); `personified-thing`;
 `nobody-somebody`; `rather-than`; `call-what`; `squashed-relative`;
 `fight-place` (B15: a place as the object of fight, kill, clear or sneak past). Capped: `hold-place` (B14: *hold* or
-*keep* for occupying a place, more than twice in a file fails). Warned: `passive-actor` (B16), `sold-bare` (B17).
+*keep* for occupying a place, more than twice in a file fails); `im-to` (B19: "I'm to" in journal text more than once
+in a quest record warns). Warned: `passive-actor` (B16), `sold-bare` (B17).
 
 ## 3. The shape faults (what a phrase list cannot catch)
 
@@ -109,12 +110,13 @@ For each sentence, ask what else it is doing; any answer is a finding.
     shape between records, not just the words. Uniform sentence length is a
     fingerprint too: let one sentence be four words and the next twenty.
 17. **Hold for occupying a place.** "Unbound scouts hold the cave", "the
-    Collector's men hold the tower". *Hold* (and *keep* in the same sense)
-    for being somewhere is used at most once per section of a page. Say who
+    Collector's men hold the tower", "whose garrisons keep the old Imperial
+    forts". *Hold* (and *keep* for garrisoning, manning or holding a place or
+    post) for being somewhere is used at most once per section of a page. Say who
     is there and what they are doing, in a different shape each time:
     "Unbound scouts camp in the cave", "the Collector's men have the tower's
     door barred", "the cave is the scouts' camp", "ferrymen watch the road
-    from the tower". Lint B14.
+    from the tower", "whose garrisons man the old Imperial forts". Lint B14.
 18. **Passive for the actor.** "They are fought, or passed." The actor is the
     subject: "The player fights them or passes them by stealth." Passive only
     when the actor is unknown or irrelevant ("the bridge was burned years ago").
