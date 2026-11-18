@@ -796,3 +796,13 @@ added here the day they are made, with the date and the issue.
   queued next session (tooling/next_session.sh) run on Opus 5.5 at medium effort.
 - 2026-11-18 (in session): "raise the Aws limit from 150 to 200 for November". The AWS limit for November 2026 is
   $200; it returns to $150 in December (CLAUDE.md, decision 0008).
+
+- 2026-11-18 (#78): "Currently the place edit studio is served from the build machine. I would like to be able to use
+  it on my tablet offline, make a bunch of edits and leave notes etc (including saving locally and going away and
+  coming back etc), then go online to 'save and finalise' when I choose to. I'm fine with having to (e.g.) load it up
+  while online and choose 'download' or 'continue offline' or something before doing offline work. Note that we are
+  not talking about distributing assets here; only I have access to the page (it's behind my own personal cloudflare
+  login) so don't treat that as a blocker". The studio's Offline panel takes a place onto the tablet ("Use this place
+  offline"); offline, every edit, save and note is kept on the tablet; back online nothing is sent until he chooses
+  "Send my offline work" or "Send it, then save and finalise", and a save that moved on meanwhile is never
+  overwritten (docs/design/place-studio.md, Offline).

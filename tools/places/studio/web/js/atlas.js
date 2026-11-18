@@ -2,7 +2,7 @@
 // /atlas/) shown over the studio on request, opened on the place being edited (#place=<id>). Nothing of the
 // Atlas is copied here: the frame loads the built page itself, the first time the map is opened.
 const ATLAS = `${window.STUDIO_API || ''}/atlas/index.html`;
-export function setupAtlas({ placeId, toast }) {
+export function setupAtlas({ placeId, toast, offline = () => false }) {
   const btn = document.getElementById('atlas-btn'), box = document.getElementById('atlas'), frame = box.querySelector('iframe');
   let built = null; // null: not yet asked; true or false once the server has answered
   const ask = () => fetch(ATLAS, { method: 'HEAD', credentials: 'same-origin' }).then((r) => r.ok).catch(() => false)
@@ -15,6 +15,7 @@ export function setupAtlas({ placeId, toast }) {
   ask();
   const close = () => { box.hidden = true; btn.setAttribute('aria-expanded', 'false'); btn.focus(); };
   btn.onclick = async () => {
+    if (offline()) { toast('The world map needs the build machine, so it cannot be shown offline.', 6000); return; }
     if (!(built ?? await ask())) { toast('The world map has not been built on this machine yet, so it cannot be shown.', 6000); return; }
     const src = `${ATLAS}#place=${encodeURIComponent(placeId() || '')}`;
     if (frame.dataset.src !== src) { frame.dataset.src = src; frame.src = src; }

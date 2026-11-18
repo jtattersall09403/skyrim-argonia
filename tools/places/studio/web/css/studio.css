@@ -44,6 +44,14 @@ select { min-height: 44px; border-radius: 10px; border: 1px solid var(--line); b
 .save-state[data-state="unsaved"] { color: var(--warn); }
 .save-state[data-state="saving"] { color: var(--muted); }
 .warn { background: var(--warn); color: #fff; padding: 10px 16px; font-size: 15px; }
+/* offline (offline_ui.js): one calm line under the top bar, the panel's progress, the button's state */
+.offline-line { display: flex; align-items: center; gap: 12px; padding: 4px 16px; background: var(--panel-2); color: var(--ink); font-size: 15px; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+.offline-line button { min-height: 40px; }
+.offline-progress { display: flex; flex-direction: column; gap: 6px; margin: 8px 0; }
+.offline-progress b { display: block; height: 8px; border-radius: 4px; background: var(--panel-2); overflow: hidden; }
+.offline-progress i { display: block; height: 100%; width: 0; background: var(--accent); }
+#offline-btn[data-state="offline"], #offline-btn[data-state="unsent"] { color: var(--warn); }
+.save-state[data-state="tablet"] { color: var(--muted); }
 
 #stage { flex: 1; display: flex; min-height: 0; position: relative; }
 #rail { width: 76px; background: var(--panel); border-right: 1px solid var(--line); display: flex; flex-direction: column; gap: 2px; padding: 6px 4px; overflow-y: auto; }

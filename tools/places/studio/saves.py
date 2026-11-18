@@ -6,7 +6,11 @@ on disk and copied to the private bucket, never committed. Every write is atomic
 
 Each save carries `rev`, a counter the server raises on every write. A PUT carries the `rev` the tab last read
 (0 for a new save); if the file on disk has moved on, the write is refused with 409 and the current rev, so a
-stale tab never silently overwrites newer work."""
+stale tab never silently overwrites newer work.
+
+A save sent from a tablet's offline store carries `client_token` (one per version of the tablet's copy). A write whose
+token equals the stored save's is the same write sent again after its answer was lost: it is answered with the stored
+save and nothing is written, so a send can be repeated without making a second copy."""
 from __future__ import annotations
 
 import json
@@ -79,6 +83,9 @@ class Saves:
         p = self.path(place_id, save_id)
         cur = self.read(place_id, save_id)
         have = (cur or {}).get("rev", 0)
+        token = body.get("client_token")
+        if cur and token and cur.get("client_token") == token:
+            return cur | {"repeat": True}
         if int(body.get("rev") or 0) != have:
             raise Conflict({"rev": have, "at": (cur or {}).get("at"), "name": (cur or {}).get("name")})
         if cur and cur.get("final"):

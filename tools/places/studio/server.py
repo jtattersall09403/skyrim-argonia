@@ -21,7 +21,7 @@ import warnings
 from aiohttp import web
 
 from tools.places import navexport, needs, notes
-from tools.places.studio import awake, links
+from tools.places.studio import awake, links, offline
 from tools.places.studio.saves import AUTOSAVE, PLACE_ID, SAVE_ID, Conflict, Saves, atomic_write
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -387,6 +387,8 @@ async def save_put(req: web.Request) -> web.Response:
         except ValueError as e:
             return jerr(400, str(e))
     p = req.app["saves"].path(pid, sid)
+    if save.get("repeat"):   # the same tablet write sent again: already stored, nothing new to keep
+        return jok({"save_id": sid, "rev": save["rev"], "at": save["at"], "kept": "repeat"})
     if sid == AUTOSAVE:
         req.app["bucket_q"][pid] = p
         kept = "disk+bucket"
@@ -605,6 +607,34 @@ async def run_get(req: web.Request) -> web.Response:
                      "report": st.get("report_md")})
 
 
+# ---- offline: what a place needs on a tablet with no connection --------------------------------------------------
+
+async def offline_get(req: web.Request) -> web.Response:
+    """Every URL the front end asks for when it opens and edits the place, with sizes (tools/places/studio/offline.py).
+    Meshes, textures and thumbnails are converted first; the list is kept until a stamp, the app or the saves change."""
+    cfg: Config = req.app["cfg"]
+    pid = req.match_info["place_id"]
+    if not PLACE_ID.match(pid):
+        return jerr(400, "bad place id")
+    if not (cfg.places / pid / "place.json").exists():
+        return jerr(404, "no such place")
+    await fresh_draft(req.app, pid)
+    saves = [r["save_id"] for r in req.app["saves"].list(pid)]
+    loop = asyncio.get_running_loop()
+    stamps = await loop.run_in_executor(None, lambda: offline.Bundles(cfg.out, cfg.places, pid).stamps())
+    key = json.dumps([stamps, offline.web_version(cfg.web), saves])
+    hit = req.app["offline"].get(pid)
+    if hit and hit[0] == key:
+        return jok(hit[1])
+    async with req.app["offline_locks"].setdefault(pid, asyncio.Lock()):
+        try:
+            m = await loop.run_in_executor(None, offline.manifest, pid, cfg.out, cfg.places, cfg.web, links.asset, saves)
+        except FileNotFoundError as e:
+            return jerr(404, str(e))
+    req.app["offline"][pid] = (key, m)
+    return jok(m)
+
+
 # ---- seat, heartbeat, status --------------------------------------------------------------------------------------
 
 async def seat(req: web.Request) -> web.Response:
@@ -667,7 +697,8 @@ async def status(req: web.Request) -> web.Response:
         g = {"ground_sha": None, "deployed_sha": None, "match": False, "error": str(e)[:300]}
     ix = Index.open(req.app["cfg"].out / "search")
     return jok(g | {"versions": {"studio": req.app["sha"], "repo_head": git_sha(), "python": platform.python_version(),
-                                 "aiohttp": version("aiohttp"), "search_model": MODEL, "search_rows": len(ix.rows)},
+                                 "aiohttp": version("aiohttp"), "search_model": MODEL, "search_rows": len(ix.rows),
+                                 "web": offline.web_version(req.app["cfg"].web)},
                     "awake": {"job_alive": awake.job_alive(), "release_after_s": awake.HOLD}})
 
 
@@ -745,6 +776,7 @@ def make_app(cfg: Config | None = None) -> web.Application:
     app = web.Application(middlewares=[errors], client_max_size=64 * 1024 * 1024)
     app["cfg"], app["saves"] = cfg, Saves(cfg.places, cfg.out)
     app["draft_locks"], app["nav_locks"], app["finalising"] = {}, {}, {}
+    app["offline"], app["offline_locks"] = {}, {}
     app["locks"], app["pending"], app["bucket_q"] = {}, {}, {}
     app["commit_q"] = asyncio.Queue()
     app["sha"] = git_sha()
@@ -771,6 +803,7 @@ def make_app(cfg: Config | None = None) -> web.Application:
     r.add_post("/api/place/{place_id}/needs/changed", needs_changed_post)
     r.add_get("/api/place/{place_id}/runs/{run_id}", run_get)
     r.add_get("/api/place/{place_id}/seat", seat)
+    r.add_get("/api/place/{place_id}/offline", offline_get)
     r.add_post("/api/heartbeat", heartbeat)
     r.add_post("/api/clientlog", client_log)
     r.add_get("/api/status", status)

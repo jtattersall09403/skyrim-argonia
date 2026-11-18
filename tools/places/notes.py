@@ -15,7 +15,8 @@ sent.
     python -m tools.places notes done helstrom <note id> --reply "what was done"
 
 A note: {id, at, text, things: [{id, space, base, name, kind, pos, src}], view: {space, at: [x, y, z]}, save,
-sent, sent_at, batch, done, done_at, reply}. An agent answers a sent note by changing what it asks for and closing it
+sent, sent_at, batch, done, done_at, reply}; a note written on a tablet offline adds `client_id` (adding it again
+returns the note already kept) and `written_at`, when it was written. An agent answers a sent note by changing what it asks for and closing it
 with `done`; the reply shows beside the note in the studio.
 
 The owner's notes on changes live in the saves with the changes they cover (tools/places/change_notes.py) and are
@@ -36,6 +37,8 @@ AUTOSAVES = ROOT / "out" / "places" / "autosave"
 PLACE_ID = re.compile(r"^[a-z0-9][a-z0-9._-]{0,95}$")
 NOTE_ID = re.compile(r"n(\d+)")
 MAX_TEXT, MAX_THINGS = 4000, 200
+CLIENT_ID = re.compile(r"[A-Za-z0-9._-]{1,64}")
+WHEN = re.compile(r"\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d(\.\d+)?Z")
 
 
 def path(place_id: str, places: Path = PLACES) -> Path:
@@ -105,8 +108,18 @@ def add(place_id: str, body: dict, places: Path = PLACES) -> dict:
         note["view"] = {"space": str(view.get("space") or "exterior")[:200], "at": _xyz(view["at"])}
     if body.get("save"):
         note["save"] = str(body["save"])[:64]
+    cid = body.get("client_id")
+    if cid is not None:   # written on a tablet offline: sent again after a lost answer, it is the same note
+        if not (isinstance(cid, str) and CLIENT_ID.fullmatch(cid)):
+            raise ValueError("client_id: letters, digits, dot, dash, underscore, at most 64")
+        note["client_id"] = cid
+        if isinstance(body.get("written_at"), str) and WHEN.fullmatch(body["written_at"]):
+            note["written_at"] = body["written_at"]
     with _locked(place_id, places):
         rows = read(place_id, places)
+        same = next((r for r in rows if cid is not None and r.get("client_id") == cid), None)
+        if same:
+            return same
         note["id"] = _next_id(rows)
         _write(place_id, rows + [note], places)
     return note

@@ -588,7 +588,10 @@ PUT  /api/place/<id>/saves/<save_id>          write a save {name, base, ops, rev
                                               (0 for a new save); 200 {save_id, rev, at, kept}; 409 {error,
                                               current:{rev, at, name}} when the save moved on since (another tab),
                                               is final, or is being finalised (from the POST below until its chain
-                                              ends; a chain that failed leaves it open to change). save_id: [a-z0-9][a-z0-9._-]*; "autosave" is the autosave
+                                              ends; a chain that failed leaves it open to change). save_id: [a-z0-9][a-z0-9._-]*; "autosave" is the autosave.
+                                              A save sent from a tablet's offline store carries client_token; a PUT
+                                              whose token equals the stored save's is answered 200 with the stored
+                                              save (kept: repeat) and writes nothing (Offline, below)
 POST /api/place/<id>/finalise {save_id}       starts the chain; 202 {run_id}
 GET  /api/place/<id>/runs/<run_id>            {run_id, save_id, state: starting|running|done|failed, step, rc,
                                               log (tail), report (markdown, when done)} plus every
@@ -603,7 +606,9 @@ GET  /api/place/<id>/nav                      the built place's walking mesh (to
 GET  /api/place/<id>/notes                    the owner's notes for the agent, oldest first: [{id, at, text, things:
                                               [{id, space, base, name, kind, pos, src}], view: {space, at}, sent,
                                               sent_at, batch, done, done_at, reply}] (Notes for the agent, below)
-POST /api/place/<id>/notes                    {text, things, view} keeps a new note, unsent; {id, text} changes the
+POST /api/place/<id>/notes                    {text, things, view, client_id?, written_at?} keeps a new note, unsent
+                                              (a client_id already kept returns that note: a tablet's note sent twice
+                                              is kept once); {id, text} changes the
                                               words of an unsent one, {id, delete: true} deletes it (400 once sent);
                                               {id, done} closes or reopens a sent one. Notes on changes are in the
                                               saves (Edits: notes on changes)
@@ -621,9 +626,14 @@ GET  /api/place/<id>/needs                    what the stories need of the place
 POST /api/place/<id>/needs/changed            the owner carried on past a need's warning: {need | person, change:
                                               removed|moved|renamed, what, save}; appended at OWNER_STATED to
                                               newworld/sources/needs/<id>.changed.jsonl and committed by path
+GET  /api/place/<id>/offline                  everything the place needs on a tablet with no connection (Offline,
+                                              below): {version, place_id, web, stamps:{ground, draft, src}, files:
+                                              [{url, bytes, kind: app|api|bundle|mesh|texture|thumb|land}], bytes,
+                                              counts}; meshes, textures and thumbnails are converted before it answers
 POST /api/heartbeat                           an open tab, every 60 s; {held, started, release_after_s}
 GET  /api/status                              {ground_sha, deployed_sha, match, error?, versions:{studio, repo_head,
-                                              python, aiohttp, search_model, search_rows}, awake:{job_alive}}
+                                              python, aiohttp, search_model, search_rows, web}, awake:{job_alive}};
+                                              web is the hash of the app's files (offline.web_version)
 ```
 
 Errors are `{error}` with a plain-English message; a missing source is 404. Bundle, web and asset files
@@ -777,6 +787,99 @@ of it is a studio start, which resumes no agent (Claude waits at its prompt), so
 usage; work a resume was owed is kept in `state/resume-owed` for the next start that is not the studio's. The
 machine stops itself as before: the Awake job ends five minutes after the last tab closes and the owner's alarm
 stops it about 30 minutes later.
+
+## Offline
+
+The owner takes a place onto his tablet, edits it with no connection or with the build machine stopped, closes the
+browser and comes back, and sends the work when he chooses (`tools/places/studio/offline.py`, `web/sw.js`,
+`web/js/offline.js` the store and the send, `web/js/offline_ui.js` what he sees, `web/js/seat.js`).
+
+**Taking a place offline.** The top bar's Offline button opens the Offline panel, which also gives the five steps
+in plain words. "Use this place offline" reads `GET /api/place/<id>/offline`, a manifest of every URL the front end
+asks for when it opens and edits the place, each with its size, so the client never guesses:
+- the app's files (all of `web/` but `test/` and `dev/`), the place list and the status;
+- the draft, ground and allocated source bundles as served (`bundle.json`, `bases`, `npcs`, each space's
+  `space.json`, `refs`, `terrain.json` and `terrain.f32`, the draft's `people`, `paths`, `clear` and `land`) and
+  the source rooms the copied rooms are lit from;
+- every mesh at the level the views draw it (level 1 for trees, plants, ground cover and rocks and for the grass the
+  land textures grow, level 0 otherwise), every base of the draft and the source included, so anything can be added
+  from them; the textures those meshes draw with (base colour and emissive, never a normal map) at the sizes the views
+  ask for (no more than 256 for small things); the draft's and the source's thumbnails; the land table and its
+  textures;
+- the place's stock, needs, nav, notes and saves (each one) as last read.
+
+The server converts what it has not yet, then answers; the answer is kept until a stamp, the app or the saves change.
+The client asks for persistent storage (`navigator.storage.persist()`), checks `navigator.storage.estimate()`
+against the size and says plainly when the room is short or the browser will not promise to keep the place, fetches
+every file (six at a time, each tried three times) into a new Cache API cache `studio-place-<id>-<n>` (the app's
+files into `studio-shell-<web>`), and only when every file is held records the place in IndexedDB `argonia-studio`
+(`held`: its cache, the app's version, the stamps, the place's row, bytes, files, when, seconds) and drops the old
+copy. The panel shows the progress, the size and when it finished, and lists every place held with its size and
+age, "Update" and "Remove". The service worker is registered only while a place is held. Measured on Helstrom on
+the build machine (2026-11-18): 2,398 files, 122 MB (33 MB of bundles, 62 MB of meshes, 24 MB of textures, 4.5 MB
+of thumbnails, the app 1.3 MB), downloaded from a local server in 12 to 30 seconds; the first manifest, which
+rendered the thumbnails not yet made, took 74 seconds, a later one under a second.
+
+**The service worker** (`web/sw.js`) reads the page's mode from the cache `studio-meta` (`/__studio/state`:
+`{mode, shell, held}`), which the page writes on every change.
+- It never touches a write: a PUT or POST goes to the network as it is, and nothing it answers is kept.
+- The page and the app's files come from the held copy of the app. When the machine answers and its `versions.web`
+  differs, the page fetches the new app and reloads once; the held bundles and the work not sent are untouched.
+- A wake (`?wake=`), a sign-in (`?signin=`), the page's probe (header `X-Studio-Probe`) and the Atlas always go to
+  the network.
+- Online, an API read goes to the network. Only when that fails (no connection, the tunnel's 502 to 530 with the
+  machine stopped, an expired sign-in turning the request away) is the held copy served, marked `X-Studio-Offline:
+  1`, and the page told, which then works offline. A held place's notes and saves and the status are kept as last
+  read online; the bundles and the rest change only by Update.
+- Offline, every read comes from the held copies (a texture at another size, or a mesh at its other level, serves
+  when the exact one is missing); what is not held is a 503 marked the same way, which the views draw as a box.
+
+**Working offline.** At the page's start one probe of `/api/status` (`redirect: manual`, never cached) decides:
+answered, online; turned away (an opaque redirect, 401, 403, a sign-in page), signed out; otherwise the network or
+the machine is down. With a place held and no answer, the studio works offline and says so in one calm line under
+the top bar, with "Start the build machine" when the machine is down (it asks the studio's own address, which the
+play switch answers by starting the machine for the owner, then probes until it answers) and "Sign in again to send"
+when the sign-in ran out (the latest work is kept first). `js/api.js` sends every write to the device:
+- a save, named or the autosave, is kept whole in IndexedDB `saves` with `base_rev`, the server's rev it was based
+  on (the answer keeps that rev, so the tab goes on writing at it), and a new `token` for each version;
+- a note for the agent is kept in `notes` under a client id (`t-...`), and can be changed or deleted until sent; a
+  note kept on the server cannot be changed offline, and says so;
+- the owner's "carry on" past a need's warning is kept in `changes`.
+
+Lists show the device's own over the server's last read. The search looks only in what is held (the source's and
+our place's bases, by name, editor id and model words) and says so; the item search looks in the stock's items; the
+seat answer is worked out from the loaded ground and its patches (`js/seat.js`, the arithmetic of `seat.py`
+`Ground.at`, proved equal on sample points by `tools/tests/test_places_studio_offline.py`). Finalising, sending
+notes to the agent, searching everything, a model never downloaded (drawn as a box), the Atlas and following a run
+need the machine: each says so in plain words, and nothing shows as an error. A held place whose connection drops
+while it is open goes offline at the first save that cannot reach the server.
+
+**Sending.** Offline, the probe runs every 30 seconds and when the browser says it is online. When the machine
+answers the line says "The build machine is back", and nothing is sent until the owner chooses "Send my offline
+work" or "Send it, then save and finalise" in the Offline panel.
+- Each save goes through the ordinary PUT at its `base_rev` with its `client_token`, named saves first and the
+  autosave last. A 409 (the server's save moved on meanwhile, or it is final) overwrites nothing: the owner is shown
+  both in plain words (when each was saved, how many changes each holds) and keeps his as a new named save
+  (`<save>-tablet-<when>`, named "... (from the tablet, <when>)"), drops it, or decides later.
+- Notes are added through the notes POST with their client ids and arrive unsent, for the owner to send to the
+  agent; the changes to what a story needs follow.
+- An item leaves the device only when the server has answered that it is stored. A send stopped part way (the
+  network, a sign-in) is sent again from where it stopped, and an item sent twice is stored once (a save's token, a
+  note's or a change's client id).
+- Then the studio is online again; with "finalise" chosen, the ordinary Save and finalise follows.
+
+**Safe by construction.** The store has a version (IndexedDB's own, `SCHEMA` in `offline.js`), and nothing in it is
+deleted but by a confirmed send or the owner's own drop. A new app or a redrafted place never discards offline work:
+the app's files are replaced and the work stays; a held place whose draft stamp differs from the server's is shown
+as "edited offline on an older draft", and its work is sent as it is (opening it applies the edits that still fit,
+as any save made on an older draft does). Only the studio's own endpoints are fetched into the browser's storage;
+nothing is written to the repo.
+
+**Browsers.** Tested on Chromium (`web/test/test_offline.py`: headless, a real studio server on Helstrom, the
+network cut and the server stopped). Android Chrome keeps a persisted site's storage and offers a large share of the
+free disk. iPad Safari (16.4 and later) has service workers, the Cache API and IndexedDB, but may clear a site's
+storage after seven days without a visit unless the studio is added to the home screen: on an iPad the studio is
+added to the home screen, and a held place is updated before going offline.
 
 ## What the stories need of a place
 

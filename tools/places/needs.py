@@ -287,8 +287,15 @@ def record_change(pid: str, body: dict, root: Path = NEEDS) -> dict:
         raise ValueError("name the need or the person")
     if body.get("save"):
         row["save"] = str(body["save"])[:96]
+    cid = body.get("client_id")
+    if isinstance(cid, str) and cid:   # recorded on a tablet offline: sent again, it is the same change
+        row["client_id"] = cid[:64]
     with _locked(root):
         p = changes_path(pid, root)
+        if cid and p.exists():
+            for ln in p.read_text(encoding="utf-8").splitlines():
+                if ln.strip() and json.loads(ln).get("client_id") == row.get("client_id"):
+                    return json.loads(ln)
         with open(p, "a", encoding="utf-8") as f:
             f.write(json.dumps(row, ensure_ascii=False) + "\n")
             f.flush()

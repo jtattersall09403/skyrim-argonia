@@ -1,4 +1,7 @@
-// The Studio API (docs/design/place-studio.md): the only thing the front end talks to.
+// The Studio API (docs/design/place-studio.md): the only thing the front end talks to. Offline (offline.js), every
+// write is kept on this device and every read comes from what it holds; what needs the build machine says so.
+import { off, Unavailable } from './offline.js';
+import { seatAt } from './seat.js';
 const BASE = (globalThis.STUDIO_API || '') + '/api';
 export const API_BASE = BASE;
 
@@ -30,7 +33,13 @@ export async function getMesh(model, { tries = 30, signal, level = 0 } = {}) {
 }
 export const texUrl = (path, size = 256) => `${BASE}/asset/tex?path=${encodeURIComponent(path)}&size=${size}`;
 
-export const api = {
+const NEEDS_MACHINE = {
+  finalise: 'Finalising needs the build machine. Your work is kept on this tablet: when you are back online, send it and finalise from the Offline panel.',
+  sendNotes: 'Sending notes to the agent needs the build machine. Your notes are kept on this tablet and go with your offline work when you send it.',
+  run: 'A finalise run can only be followed online.',
+};
+const isNetFail = (e) => e instanceof TypeError || /: 5\d\d$/.test(String(e?.message));
+const online = {
   places: () => getJSON('/places'),
   status: () => getJSON('/status'),
   search: (q) => getJSON('/search?' + new URLSearchParams(q)),
@@ -42,7 +51,7 @@ export const api = {
       method: 'PUT', credentials: 'same-origin', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
     const j = await r.json().catch(() => ({}));
     if (r.status === 409) return { conflict: true, ...j };
-    if (!r.ok) throw new Error(j.error || `saving: ${r.status}`);
+    if (!r.ok) throw Object.assign(new Error(j.error || `saving: ${r.status}`), { status: r.status });
     return j;
   },
   finalise: (id, save_id) => getJSON(`/place/${id}/finalise`, {
@@ -68,3 +77,39 @@ export const api = {
   sendNotes: (id) => getJSON(`/place/${id}/notes/send`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' }),
   heartbeat: () => fetch(BASE + '/heartbeat', { method: 'POST', credentials: 'same-origin', keepalive: true }).catch(() => {}),
 };
+// Offline: writes to this device, reads from what it holds (the service worker answers the plain reads).
+const tablet = {
+  async places() {
+    const held = await off.heldList(), list = await getJSON('/places').catch(() => []);
+    return held.map((h) => ({ ...(list.find((p) => p.place_id === h.place_id) || {}), ...h.place }));
+  },
+  async saves(id) { return off.mergeSaves(id, await getJSON(`/place/${id}/saves`).catch(() => [])); },
+  async save(id, sid) { return (await off.localSave(id, sid)) || getJSON(`/place/${id}/saves/${encodeURIComponent(sid)}`); },
+  putSave: (id, sid, body) => off.putSave(id, sid, body),
+  async notes(id) { return off.mergeNotes(id, await getJSON(`/place/${id}/notes`).catch(() => [])); },
+  note: (id, body) => off.note(id, body),
+  needChanged: (id, body) => off.needChanged(id, body),
+  search: async (q) => off.search(q),
+  items: async (id, q) => off.items(q),
+  async seat(id, x, y) { const t = off.providers.terrain?.(); if (!t) throw new Unavailable('The ground is not loaded.'); return seatAt(t.terrain, x, y, t.water); },
+  heartbeat: async () => {},
+};
+for (const k of Object.keys(NEEDS_MACHINE)) tablet[k] = async () => { throw new Unavailable(NEEDS_MACHINE[k]); };
+
+export const api = new Proxy(online, {
+  get(o, k) {
+    if (off.active && k in tablet) return tablet[k];
+    if (k === 'putSave') {
+      // the connection lost while editing a held place: the save is kept on this device and the studio goes offline
+      return async (id, sid, body) => {
+        try { return await o.putSave(id, sid, body); }
+        catch (e) {
+          if (!isNetFail(e) && !(e.status >= 500) || !(await off.heldFor(id))) throw e;
+          await off.setMode(true, 'down'); return off.putSave(id, sid, body);
+        }
+      };
+    }
+    return o[k];
+  },
+});
+export { off, Unavailable };

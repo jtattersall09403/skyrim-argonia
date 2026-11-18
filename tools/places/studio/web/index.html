@@ -38,11 +38,13 @@ __say('page', { w: innerWidth, h: innerHeight, dpr: window.devicePixelRatio });
     <button id="redo" class="icon-btn" aria-label="Redo"><svg viewBox="0 0 24 24"><path d="m15 14 5-5-5-5"/><path d="M20 9H10a6 6 0 0 0 0 12h3"/></svg><span>Redo</span></button>
     <span id="save-state" class="save-state" data-state="saved">All changes saved</span>
     <button id="atlas-btn" class="icon-btn" aria-label="World map" aria-haspopup="dialog" aria-expanded="false"><svg viewBox="0 0 24 24"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/></svg><span>World map</span></button>
+    <button id="offline-btn" class="icon-btn" aria-label="Offline: use this place on this tablet with no connection" data-state="online"><svg viewBox="0 0 24 24"><path d="M7 18a5 5 0 0 1-.9-9.9A6 6 0 0 1 17.6 9 4.5 4.5 0 0 1 17 18H7z"/><path d="M12 10v6m-3-3 3 3 3-3"/></svg><span>Offline</span></button>
     <button id="settings-btn" class="icon-btn" aria-label="Settings"><svg viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg><span>Detail</span></button>
     <button id="finalise-btn" class="primary">Save and finalise</button>
   </div>
 </header>
 <div id="warn" class="warn" hidden></div>
+<div id="offline-line" class="offline-line" role="status" hidden></div>
 <div id="atlas" class="atlas" role="dialog" aria-modal="true" aria-label="World map" hidden>
   <div class="atlas-bar"><strong>World map</strong><span class="atlas-note">where this place stands in the wider world</span><span class="bar-gap"></span>
     <button id="atlas-close" class="icon-btn quiet" aria-label="Close the world map"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg><span>Close</span></button></div>
@@ -101,6 +103,7 @@ __say('page', { w: innerWidth, h: innerHeight, dpr: window.devicePixelRatio });
 <div id="start" class="intro" hidden></div>
 <div id="settings" class="intro" hidden></div>
 <div id="needwarn" class="intro needwarn" hidden></div>
+<div id="offline-sheet" class="intro" hidden></div>
 <script>
 // If the studio's code has not started after a few seconds, the usual cause is a sign-in that has run out (the page
 // itself came from the browser's memory, and every request behind it is turned away). Say so and offer the way out.

@@ -1,6 +1,6 @@
 // The sliding panel and the small overlays: what is selected, search, people, land, plants, paths, history,
 // saves and finalise, notes for the agent and the first-run guide. Plain English throughout.
-import { api } from './api.js';
+import { api, off } from './api.js';
 import { ICON } from './icons.js';
 import { thumb } from './thumbs.js';
 import { STOP_KINDS, isInnkeeper, patrolOf, setPatrol } from './people.js';
@@ -74,7 +74,8 @@ export class Panels {
   open(name) {
     this.name = name;
     const f = { select: () => this.selectPanel(), search: () => this.searchPanel(), people: () => this.peoplePanel(), land: () => this.landPanel(),
-      plants: () => this.plantsPanel(), paths: () => this.pathsPanel(), history: () => this.historyPanel(), saves: () => this.savesPanel(), notes: () => this.notesPanel(), needs: () => this.app.needs.panel() }[name];
+      plants: () => this.plantsPanel(), paths: () => this.pathsPanel(), history: () => this.historyPanel(), saves: () => this.savesPanel(), notes: () => this.notesPanel(), needs: () => this.app.needs.panel(),
+      offline: () => this.app.offline.panel() }[name];
     if (f) f();
   }
   // ---------- selection ----------
@@ -243,6 +244,7 @@ export class Panels {
       parts.push(el(`<p><strong>Tap our place where the ${esc(this.T.placing.base.name || 'thing')} should go.</strong></p>`));
       const c = el('<button class="quiet">Cancel</button>'); c.onclick = () => { this.T.stopPlacing(); this.searchPanel(); }; parts.push(c);
     }
+    if (off.active) parts.push(el('<p class="tag">Offline: searching only what this tablet holds (the source place and our place). Searching everything we have needs the build machine.</p>'));
     const grid = el('<div class="grid" role="list"></div>');
     for (const res of s.results) {
       const card = el(`<button class="card" role="listitem" aria-pressed="${this.T.placing?.base?.key === res.key}"><img alt=""><span class="name">${esc(res.name || res.edid)}</span><span class="tag">${esc(plainKind(res.kind))}</span></button>`);
@@ -517,7 +519,7 @@ export class Panels {
     // one batch: every unsent note goes at once, after one confirmation that says what will happen
     const sendBox = el('<div class="send-notes"></div>');
     const sendBtn = el(`<button class="primary send-notes-btn">Send notes to the agent (${unsent.length})</button>`);
-    sendBtn.disabled = !unsent.length;
+    sendBtn.disabled = !unsent.length || off.active;
     sendBtn.onclick = () => {
       const n = unsent.length, count = n <= 10 ? ['no', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'][n] : String(n);
       const ask = el(`<div class="report confirm-send"><p>An agent will read ${n === 1 ? 'this note' : `these ${count} notes`} and make the changes. You can keep editing.</p></div>`);
@@ -534,6 +536,7 @@ export class Panels {
     };
     sendBox.append(sendBtn);
     if (!unsent.length && list.length) sendBox.append(el('<p class="tag">Every note has been sent.</p>'));
+    if (off.active) sendBox.append(el('<p class="tag">Offline: notes are kept on this tablet. Sending them to the agent needs the build machine; they go with your offline work when you send it, and arrive unsent.</p>'));
     // the notes kept with changes (the note bar under the views, or History): each with the changes it is about
     const groups = groupsOf(a.log?.applied() || [], a.log?.notes);
     if (groups.length) {
@@ -692,6 +695,7 @@ export class Panels {
   }
   // ---------- finalise ----------
   finalise() {
+    if (off.active) { this.app.offline.finaliseOffline(); return; }
     const a = this.app, ops = a.log.applied(), taste = ops.filter((o) => o.call === 'taste').length;
     const parts = [el(`<div class="report">
       <p>This saves your ${ops.length} change${ops.length === 1 ? '' : 's'} as final and then, without you:</p>

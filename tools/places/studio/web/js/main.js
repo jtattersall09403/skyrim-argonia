@@ -1,6 +1,8 @@
 // Place Studio: the owner's editor for one of our places beside the source place it was seeded from.
 import * as THREE from 'three';
 import { api, API_BASE } from './api.js';
+import { off } from './offline.js';
+import { OfflineUI } from './offline_ui.js';
 import { loadBundle, seatZ } from './bundle.js';
 import { EditLog, modelFromFiles, describe, vegKey } from './edits.js';
 import { View } from './view.js';
@@ -44,6 +46,10 @@ class Studio {
     this.ours.view.side = this.ours; this.src.view.side = this.src;
     for (const s of [this.ours, this.src]) s.view.lighting = new ViewLighting(s.view, () => this.lightSource(s));
     this.tools = new Tools(this); this.people = new People(this); this.needs = new Needs(this); this.panels = new Panels(this); this.noteBar = new NoteBar(this);
+    this.offline = new OfflineUI(this);
+    // offline, the search, the item search and the seat are answered here from what is held (offline.js)
+    off.providers = { bases: () => [...(this.srcBases?.values() || []), ...(this.bases?.values() || [])], items: () => this.stockItems || new Map(),
+      terrain: () => (this.terrain ? { terrain: this.terrain, water: this.ground?.spaces.exterior?.info?.water?.default_height ?? null } : null) };
     this.linked = false; this.dirtySave = false; this.revs = {}; this.loop();
     this.wireChrome();
   }
@@ -51,11 +57,18 @@ class Studio {
   async start() {
     window.__studioBooted = true;
     report('boot', { gl: glInfo(), w: innerWidth, h: innerHeight, dpr: devicePixelRatio, mem: navigator.deviceMemory });
+    // online or offline, decided before anything is read; a device holding a place takes a new version of the app
+    // when the machine answers (the held places' files and the work not sent yet are kept)
+    const b = await off.boot().catch(() => ({ held: [], online: true }));
+    if (b.online && b.held.length && off.status?.versions?.web && b.held[0].web !== off.status.versions.web && !sessionStorage.getItem('studio.shell')) {
+      try { sessionStorage.setItem('studio.shell', '1'); if (await off.updateShell(off.status.versions.web)) { location.reload(); return; } } catch { /* the held app stays */ }
+    }
+    this.offline.render();
     this.places = await api.places();
     if (!this.places?.length) { this.loading('No place has a draft yet. Run the draft step for a place first.'); return; }
     const sel = $('#place-pick'); sel.innerHTML = '';
     for (const p of this.places) sel.add(new Option(p.title || p.place_id, p.place_id));
-    const want = new URLSearchParams(location.search).get('place') || this.places[0].place_id;
+    const asked = new URLSearchParams(location.search).get('place'), want = this.places.some((p) => p.place_id === asked) ? asked : this.places[0].place_id;
     sel.value = want; sel.onchange = () => this.openPlaceSafe(sel.value);
     this.heartbeat(); this.statusCheck();
     // the guide shows while the place loads, and can be put away at once
@@ -424,7 +437,7 @@ class Studio {
   saveState(s) {
     const el = $('#save-state'); el.dataset.state = s;
     el.textContent = { saved: 'All changes saved', unsaved: 'Unsaved changes', saving: 'Saving…', failed: 'Not saved: the studio server did not answer. Retrying.',
-      conflict: 'Not saved: this place was saved from another tab. Reload to carry on from there.' }[s];
+      conflict: 'Not saved: this place was saved from another tab. Reload to carry on from there.', tablet: 'Kept on this tablet' }[s];
   }
   saveBody(save_id, name, final = false) {
     return { save_id, place_id: this.place.place_id, name, at: new Date().toISOString(), final, rev: this.revs[save_id] || 0,
@@ -444,7 +457,7 @@ class Studio {
     try {
       const r = await this.putSave('autosave', 'Autosave');
       if (r.conflict) { this.saveState('conflict'); return; }
-      this.dirtySave = false; this.saveState('saved');
+      this.dirtySave = false; this.saveState(r.kept === 'tablet' ? 'tablet' : 'saved');
     }
     catch { this.saveState('failed'); clearTimeout(this.autoT); this.autoT = setTimeout(() => this.autosave(), 5000); }
   }
@@ -469,10 +482,10 @@ class Studio {
   // ---------- chrome ----------
   wireChrome() {
     $('#undo').onclick = () => this.log?.undo(); $('#redo').onclick = () => this.log?.redo();
-    $('#finalise-btn').onclick = () => this.panels.finalise();
+    $('#finalise-btn').onclick = () => (off.active ? this.offline.finaliseOffline() : this.panels.finalise());
     $('#settings-btn').onclick = () => this.panels.settings();
     $('#player-names').onclick = () => this.needs.setNames(!this.needs.names);
-    setupAtlas({ placeId: () => this.place?.place_id, toast: (t, ms) => this.toast(t, ms) });
+    setupAtlas({ placeId: () => this.place?.place_id, toast: (t, ms) => this.toast(t, ms), offline: () => off.active });
     $('#link').onclick = (e) => { this.linked = !this.linked; e.currentTarget.setAttribute('aria-pressed', this.linked); if (this.linked) this.cameraMoved(this.ours.view); };
     // the source place can be put away to make room, and asked back; remembered on this device
     const srcShown = (on) => {
@@ -520,7 +533,7 @@ class Studio {
     document.addEventListener('visibilitychange', beat);
   }
   async statusCheck() {
-    try { this.status = await api.status(); } catch { return; }
+    try { this.status = off.status || await api.status(); } catch { return; }
     const s = this.status, fp = $('#fingerprint'), short = (x) => (x || 'unknown').slice(0, 10);
     fp.textContent = `World build ${short(s.ground_sha)}`; fp.dataset.ok = String(!!s.match);
     fp.title = `This view is built from world file ${s.ground_sha}. The play machine has ${s.deployed_sha}.`;
