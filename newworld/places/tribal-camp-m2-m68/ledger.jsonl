@@ -1,0 +1,521 @@
+{"src":"*","space":"DushnikhYalCellar","status":"placed","as":["DushnikhYalCellar"],"count":614}
+{"src":"Skyrim.esm:0E957A","space":"DushnikhYalCellar","copy":"DushnikhYalCellar","status":"dropped","why":"a trigger (FXcameraAttachEffectsACT, script FXCameraAttachScript) whose activation reaches nothing the place keeps (no ref follows it, it links to none): the source's quest or scene, not ours"}
+{"src":"*","space":"DushnikhYalLonghouse","status":"placed","as":["DushnikhYalLonghouse"],"count":334}
+{"src":"Skyrim.esm:019928","space":"DushnikhYalLonghouse","status":"dropped","why":"people come from the place record's promises, the guards and the beds"}
+{"src":"Skyrim.esm:019929","space":"DushnikhYalLonghouse","status":"dropped","why":"people come from the place record's promises, the guards and the beds"}
+{"src":"Skyrim.esm:01992A","space":"DushnikhYalLonghouse","status":"dropped","why":"people come from the place record's promises, the guards and the beds"}
+{"src":"Skyrim.esm:01992B","space":"DushnikhYalLonghouse","status":"dropped","why":"people come from the place record's promises, the guards and the beds"}
+{"src":"Skyrim.esm:01992C","space":"DushnikhYalLonghouse","status":"dropped","why":"people come from the place record's promises, the guards and the beds"}
+{"src":"Skyrim.esm:01992D","space":"DushnikhYalLonghouse","status":"dropped","why":"people come from the place record's promises, the guards and the beds"}
+{"src":"Skyrim.esm:01992E","space":"DushnikhYalLonghouse","status":"dropped","why":"people come from the place record's promises, the guards and the beds"}
+{"src":"Skyrim.esm:019930","space":"DushnikhYalLonghouse","status":"dropped","why":"people come from the place record's promises, the guards and the beds"}
+{"src":"*","space":"DushnikhYalMine","status":"placed","as":["DushnikhYalMine"],"count":521}
+{"src":"Skyrim.esm:01992F","space":"DushnikhYalMine","status":"dropped","why":"people come from the place record's promises, the guards and the beds"}
+{"src":"Skyrim.esm:0C78BF","space":"DushnikhYalMine","status":"dropped","why":"people come from the place record's promises, the guards and the beds"}
+{"src":"Skyrim.esm:0C78C1","space":"DushnikhYalMine","status":"dropped","why":"people come from the place record's promises, the guards and the beds"}
+{"src":"Skyrim.esm:0C78C3","space":"DushnikhYalMine","status":"dropped","why":"people come from the place record's promises, the guards and the beds"}
+{"src":"Skyrim.esm:01623E","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.NJJE9YFQA6TFW4CJD148XQQQZ5","cluster":"b01"}
+{"src":"Skyrim.esm:019919","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.9ADGNM2EKC8MKMWZBRBT1YFSCF","cluster":"b01"}
+{"src":"Skyrim.esm:02051F","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.EF85MN15XV9K1M6HDV41YZ7FMF","cluster":"b01"}
+{"src":"Skyrim.esm:02C7D7","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.29JYSFX326TEREFE3REYDAP1KG","cluster":"b01"}
+{"src":"Skyrim.esm:044911","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.WHCS15RND801RJAZBQTD86WDTB","cluster":"b01"}
+{"src":"Skyrim.esm:044912","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.5M50F8RY3KT45H59Z0V6TMNJVN","cluster":"b01"}
+{"src":"Skyrim.esm:044913","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.1VWGT2X5A1Y5XZJTM22E9FTH4J","cluster":"b01"}
+{"src":"Skyrim.esm:044914","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.NYZV2281525ZQN2AKYTZ1A3GEN","cluster":"b01"}
+{"src":"Skyrim.esm:044915","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.892V8XTN5Y39QX1SXSHNEJ1WC4","cluster":"s01"}
+{"src":"Skyrim.esm:044916","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.VH3PRTC1VQ77T4NNHDW5PMFVVS","cluster":"s01"}
+{"src":"Skyrim.esm:055556","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.AAZRBQSGP96ENF53KNWXGNGF1X","cluster":"s02"}
+{"src":"Skyrim.esm:055557","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.43PBGYQ7CYBN3QWRXVR8BHAW9Y","cluster":"s03"}
+{"src":"Skyrim.esm:05A348","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.ASA8N4J2ZT70DDCRP0ERN63MYV","cluster":"s01"}
+{"src":"Skyrim.esm:05A34C","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.9GEGK3HBJQ6G4RCMNVH3MFP7Z3","cluster":"s04"}
+{"src":"Skyrim.esm:05A34D","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.B88W43C970B89BX5VVQKNFC1EC","cluster":"s04"}
+{"src":"Skyrim.esm:05A357","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Skyrim.esm:05A359","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.SYF3VMDZ2EJG9PWXHSTXFWFB65","cluster":"s04"}
+{"src":"Skyrim.esm:05A35A","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.N2C7MK11CMX3Z6MTD0KRCQ70JS","cluster":"s04"}
+{"src":"Skyrim.esm:05A35B","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.5M4VNGAQQ2SB3RZ8Z6FTQ3HA2M","cluster":"s04"}
+{"src":"Skyrim.esm:05A35E","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.0GDQ55Y582SCJW5C07H33KFYDB","cluster":"s04"}
+{"src":"Skyrim.esm:05A360","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.D8TV9WTTWMCH93ZXY077ZRK0YF","cluster":"s04"}
+{"src":"Skyrim.esm:05A362","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.R8TRYFX142MWD8K25M6CGBGSNP","cluster":"s04"}
+{"src":"Skyrim.esm:05A363","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.09HC1M3JB74GXQKPWC20437BVX","cluster":"s04"}
+{"src":"Skyrim.esm:05A365","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.SA131M71ZYGCBPCQSZMV5BNVZX","cluster":"s04"}
+{"src":"Skyrim.esm:05A368","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.6XDES4YF0Q5FEZJCC6AYB5D50N","cluster":"s04"}
+{"src":"Skyrim.esm:05A369","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.5XENBV1PNGMSE8KN8HV4W49GC2","cluster":"s04"}
+{"src":"Skyrim.esm:05A36A","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.B4AYYJN9MFQ080WT6S2HDJ5X99","cluster":"s04"}
+{"src":"Skyrim.esm:05A36D","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.Y9VWMQW58AEHQYPGPEKRXVKVS1","cluster":"s04"}
+{"src":"Skyrim.esm:05A36E","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.G4QZTM99WRWCMAJW9GP2X7J3JX","cluster":"s04"}
+{"src":"Skyrim.esm:05A36F","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.9AZD6YTFEX77J9QJQ3PSSJE1KP","cluster":"s04"}
+{"src":"Skyrim.esm:05A60E","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.WY2NB25J7AH5YKRR54MJ0RSGEA","cluster":"s04"}
+{"src":"Skyrim.esm:05A60F","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.R6T27MXP8XA3RJ87ERTDSWJS0E","cluster":"s04"}
+{"src":"Skyrim.esm:05A611","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.9XN6BD4X5P4MYEEK86C6VTVZ03","cluster":"s04"}
+{"src":"Skyrim.esm:05A614","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.8B9YHNWBWVED18D4Y9A6BQQP55","cluster":"b01"}
+{"src":"Skyrim.esm:05A616","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.XD6BMN0ZYM3NTJXMXDJPA4ANDS","cluster":"b01"}
+{"src":"Skyrim.esm:05A617","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.JRSY8WQDSP23V422EH00SXFTVK","cluster":"b01"}
+{"src":"Skyrim.esm:05A61B","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.E9JNMC8CQRK1VKCWVEMAYDR8GW","cluster":"b01"}
+{"src":"Skyrim.esm:05A623","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.5PK704AAFMS4DWAA7B1APVN8Q8","cluster":"s04"}
+{"src":"Skyrim.esm:05A624","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.SVQGRGRFK976Q03KG18RNGTBZ6","cluster":"s04"}
+{"src":"Skyrim.esm:05A625","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.W161AN5FX936M7J6DMBG8QH4QF","cluster":"s04"}
+{"src":"Skyrim.esm:05A626","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.ABY70GY7T10XDWF10MD0XXMKSJ","cluster":"s04"}
+{"src":"Skyrim.esm:05A627","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.E9Q7QNX9SDCB9EWXZ1QR5R14P4","cluster":"s04"}
+{"src":"Skyrim.esm:05A628","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.G5MRNSKW58ZZN9MA75JBRH1EYQ","cluster":"s04"}
+{"src":"Skyrim.esm:05A629","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.950AYHSGJ5G56H3GH8HYMQRY30","cluster":"s04"}
+{"src":"Skyrim.esm:05A63F","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.14S2XCZJPVWXN4MG8EHVN79CDR","cluster":"b01"}
+{"src":"Skyrim.esm:05A646","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.5S7H7SGPA3W83R4V8E1VZD4JHK","cluster":"b01"}
+{"src":"Skyrim.esm:05A64A","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.F0NADD9ZXZ2X9J5NXWQ4CMHCZP","cluster":"s03"}
+{"src":"Skyrim.esm:05A64C","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.4TE3X1PE5QMD5ZMRG9YWVYDXG6","cluster":"b01"}
+{"src":"Skyrim.esm:05A655","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.T2CQTNNDPFN1ZD3FCHWFE62S4N","cluster":"s04"}
+{"src":"Skyrim.esm:05A65A","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.KC4H7NGHDTDD7SY8BFKJSNYNHB","cluster":"b01"}
+{"src":"Skyrim.esm:05A65C","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.0RAVPDDHZ58P0KTMJAPC9R01VP","cluster":"b01"}
+{"src":"Skyrim.esm:05A66C","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.5XXAYQQCM14WD64BWHCBXGF50D","cluster":"s04"}
+{"src":"Skyrim.esm:05A66D","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.Y98FT0P7160GX6C6GJ62MFKEGH","cluster":"s04"}
+{"src":"Skyrim.esm:05A66E","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.KXG3JX71M416RDYJKMEVJDFW3H","cluster":"s04"}
+{"src":"Skyrim.esm:05AC8D","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.HDXTEMAHVYGWJRYZW9AGA5A5XY","cluster":"b01"}
+{"src":"Skyrim.esm:05AC8F","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.K61QXS6PFXE710V9MSE4S3WYB9","cluster":"s04"}
+{"src":"Skyrim.esm:05AC96","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.03SCVK5P6X7VSTNAXJ61AFZAZK","cluster":"b01"}
+{"src":"Skyrim.esm:05AC97","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.A9073HK281JA3KM9N2S0ZG8XKC","cluster":"s04"}
+{"src":"Skyrim.esm:05AC98","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.F02GBAXXY7MXYENHC2JXDH1TWM","cluster":"s04"}
+{"src":"Skyrim.esm:05AC99","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.5V4H4C5NNMTCK67CAQT8XDSQ74","cluster":"s04"}
+{"src":"Skyrim.esm:05AC9A","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.DGWEZG57QTXTZHF89MW6QGSCNX","cluster":"s04"}
+{"src":"Skyrim.esm:05AC9B","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.NNXRWYXWK76QJ6B5GSTPVMCQZ5","cluster":"b01"}
+{"src":"Skyrim.esm:05AC9C","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.XCBH5XF14C27DF7G6XFNSCR40Q","cluster":"s04"}
+{"src":"Skyrim.esm:05AC9D","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.6VHS0N4RKHP6RJRJ9HM6RCXQJZ","cluster":"s04"}
+{"src":"Skyrim.esm:05AC9E","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.W8REK950TWTSM696ZDM083DEYC","cluster":"s05"}
+{"src":"Skyrim.esm:05AC9F","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.Z46KBGHFA1Q5B2QAFJ6R8VB54Q","cluster":"s03"}
+{"src":"Skyrim.esm:05ACA0","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.9D0VP48YVXC466BYVT4JCTV7BD","cluster":"s06"}
+{"src":"Skyrim.esm:05ACA1","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.G7VN7RY7X9ZE5G48JZWYCY6TXM","cluster":"s04"}
+{"src":"Skyrim.esm:05ACA2","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.SW2WTT37XJG5MKP3712TS286K3","cluster":"s04"}
+{"src":"Skyrim.esm:05ACA3","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.91C1V2EXHAG7FX59JFC267ZP8K","cluster":"b01"}
+{"src":"Skyrim.esm:05ACA4","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.4RYFW3YQ04BVYHY07KFKMZ9ZMX","cluster":"b01"}
+{"src":"Skyrim.esm:05ACA5","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.GB3NFCS7028XYTXJF07JDG0E9D","cluster":"b01"}
+{"src":"Skyrim.esm:05ACA6","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.84WHXWQJEX1KYME9D5S63JQFXZ","cluster":"b01"}
+{"src":"Skyrim.esm:05ACA7","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.T950ZY2XTA0RNZSGW1AXB0MGHD","cluster":"b01"}
+{"src":"Skyrim.esm:05ACAA","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.DSKW5ZDSHHV1RRY5ZSE7X8F8VF","cluster":"s01"}
+{"src":"Skyrim.esm:05ACAB","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.FNSKJXYNZSJNBY8EQF2WT73JZ8","cluster":"s01"}
+{"src":"Skyrim.esm:067E9C","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Skyrim.esm:06853F","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.TW98JRNA7EV628NJKGVYYPP2Y9","cluster":"b01"}
+{"src":"Skyrim.esm:068541","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.YN206M0RZTQXW8F36G679FY718","cluster":"s04"}
+{"src":"Skyrim.esm:068545","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.0CNVXE1AJF26SMYCFVN787H475","cluster":"b01"}
+{"src":"Skyrim.esm:068546","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.4G4MH9R0S5MSMGJ86QEFMHK0A7","cluster":"b01"}
+{"src":"Skyrim.esm:068547","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.2842ST4YXQF7C1BDVJMNXW004P","cluster":"b01"}
+{"src":"Skyrim.esm:068548","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.BEECA9ND2TN1FRWHDEDPGSBWTP","cluster":"b01"}
+{"src":"Skyrim.esm:068549","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.4HZ2EZARVF8E7TGYF53K2AE9NW","cluster":"b01"}
+{"src":"Skyrim.esm:06854A","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.ZDZDAZFPGT0KPMZPV1HT68HV03","cluster":"b01"}
+{"src":"Skyrim.esm:06854B","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.8GM30XJCB84FQ8X8GJDC0DFSYB","cluster":"b01"}
+{"src":"Skyrim.esm:06854C","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.P6DZK7WS3BMDDC7PJGHSC85RFM","cluster":"b01"}
+{"src":"Skyrim.esm:06854D","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.EASHX2E1SPT77YMD0Y0D22C9PB","cluster":"b01"}
+{"src":"Skyrim.esm:06854E","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.JS6MNJXRH34F7V3280P1VE3C15","cluster":"b01"}
+{"src":"Skyrim.esm:06854F","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.GS6CKT139XCCKS3XPRPSEY6MY1","cluster":"b01"}
+{"src":"Skyrim.esm:068550","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.KQWGMKP21YWKB9Y32ZZAESTVZ5","cluster":"b01"}
+{"src":"Skyrim.esm:068551","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.JHAGAZ257S7WJ6T6CNAQ1XCV7E","cluster":"b01"}
+{"src":"Skyrim.esm:068555","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.GAJQHDSFJMPBR4SWQB0J9PTAH0","cluster":"b01"}
+{"src":"Skyrim.esm:068556","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.X5S0FVRM119KV1C0MT5Y3C16KG","cluster":"b01"}
+{"src":"Skyrim.esm:06855C","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.YHHNRXEVSSZY2NEVQZEKHCXDYD","cluster":"b01"}
+{"src":"Skyrim.esm:06855D","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Skyrim.esm:068560","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Skyrim.esm:068565","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.D56XACNV0ECDBK2MN3YKNCVMNN","cluster":"b01"}
+{"src":"Skyrim.esm:068566","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.0N47VV805YQMVSBNSSDCW0XGK6","cluster":"b01"}
+{"src":"Skyrim.esm:068567","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.J55Q634N21Q7BDHVRC5Q435D8M","cluster":"s07"}
+{"src":"Skyrim.esm:068568","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.KGHV38MK44X7KTHG95KCGRPHWX","cluster":"s07"}
+{"src":"Skyrim.esm:06856A","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.M81D5HTRSCSYM5C03KPTKRKSF9","cluster":"s07"}
+{"src":"Skyrim.esm:06856C","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.QGQRPWKGFKMZ6D74BER1C3MZ9N","cluster":"s07"}
+{"src":"Skyrim.esm:06856D","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.H9Q1R1PEBR9TQ6F5K6MXN57419","cluster":"s07"}
+{"src":"Skyrim.esm:06856F","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.HA4NPM1APSSHJHCRPR2RNA4V4X","cluster":"s07"}
+{"src":"Skyrim.esm:068571","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.Z84C68YJWSZ6DBEJEZPQMSYG8V","cluster":"s07"}
+{"src":"Skyrim.esm:068572","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.RFEPNR1RVZKMCDWEZXBBA46520","cluster":"s07"}
+{"src":"Skyrim.esm:068574","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.2FKSR5NAZF9NV80X6YXXJ2DQVC","cluster":"s07"}
+{"src":"Skyrim.esm:068576","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.5XERGWQDVY6PX0AKE5SJJ7R9P2","cluster":"s07"}
+{"src":"Skyrim.esm:068577","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.4AFVE6MFHKFWW2745SCEDZ1N3N","cluster":"s07"}
+{"src":"Skyrim.esm:068579","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.Z5ZKHVHFY5QSNN2A1B3NPG379C","cluster":"s07"}
+{"src":"Skyrim.esm:06857B","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.07F8MB9QA5SHRVWA2HDE4GDR7E","cluster":"s07"}
+{"src":"Skyrim.esm:06857C","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.XZS79RF13EK4HWS86XKVX405XN","cluster":"s07"}
+{"src":"Skyrim.esm:06857D","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.Q9R8CN2E5F6NZKN0JBHJQWQEV4","cluster":"s07"}
+{"src":"Skyrim.esm:068580","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.4G9GP6T0D4NNKTKENS4ZMW1ZEM","cluster":"s07"}
+{"src":"Skyrim.esm:068581","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Skyrim.esm:068582","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Skyrim.esm:068583","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Skyrim.esm:068584","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Skyrim.esm:068585","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Skyrim.esm:068587","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.Y57TPGRWHPXA70Y68ND2WC94C9","cluster":"s07"}
+{"src":"Skyrim.esm:06858A","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.CBFKGQS30H4RGK83MCWS8CR8D0","cluster":"s07"}
+{"src":"Skyrim.esm:06858C","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.AGFBWMJZ5Y0KGA7X5SAKT4XQGS","cluster":"s07"}
+{"src":"Skyrim.esm:06858D","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Skyrim.esm:06858F","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.67HFH03ZE7ZNVNM33TEBQMNQAF","cluster":"s07"}
+{"src":"Skyrim.esm:068590","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.MPDHNDWMQ72XGJ5NT0FKC9NHTW","cluster":"b01"}
+{"src":"Skyrim.esm:068591","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.KS1HB89ZRS3PWH7MTGE9W03JRH","cluster":"b01"}
+{"src":"Skyrim.esm:068593","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.T6J2JTYZ5G33AW26YMVJ62J5AX","cluster":"s07"}
+{"src":"Skyrim.esm:068596","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.T8KCE42AFN3XWJ47ESQ59RM78K","cluster":"s04"}
+{"src":"Skyrim.esm:068597","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.898Z3RF9JFS93GT566YGXBG1XD","cluster":"b01"}
+{"src":"Skyrim.esm:068599","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.8D6JW86D2FRFD6VJDZC72AHNVV","cluster":"s09"}
+{"src":"Skyrim.esm:06859B","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.RRT4WMWMR874YSK84DPY2V3X67","cluster":"b01"}
+{"src":"Skyrim.esm:06859C","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Skyrim.esm:06859D","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.3ZAF1WT5KJPW06Q74GW2QDDDPA","cluster":"b01"}
+{"src":"Skyrim.esm:06859E","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.5Q463E3E77ZF5C2PSKHYDHZ29P","cluster":"b01"}
+{"src":"Skyrim.esm:06859F","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.WY86DKRMY7JETQTKQKY55N0VQA","cluster":"b01"}
+{"src":"Skyrim.esm:0685A1","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.FMV6R2337KV2TTPA4GW32SPRAE","cluster":"b01"}
+{"src":"Skyrim.esm:0685A2","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.4VPN7QAYRX1ZB120ZW3P4HHG71","cluster":"b01"}
+{"src":"Skyrim.esm:0685A3","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.C1R3QHVB42C3HXK3WRRQHA11CP","cluster":"b01"}
+{"src":"Skyrim.esm:0685A4","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.T17B7ADY1CG1PJJWA0SYP733PK","cluster":"b01"}
+{"src":"Skyrim.esm:0685AC","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.82D00ZD72Q0FW6P4R9HAFP85G7","cluster":"b01"}
+{"src":"Skyrim.esm:0685B0","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.Z9ZEQTB73JDZFJRZ1RBA1KK42B","cluster":"b01"}
+{"src":"Skyrim.esm:0685B1","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.VHXDQPZ72AJ7JCMENHJJ24HQN6","cluster":"b01"}
+{"src":"Skyrim.esm:0685B2","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.F9A9HGP90R03KVJK1J67KD8EVM","cluster":"b01"}
+{"src":"Skyrim.esm:0685B3","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.5HXMNMDWTS7VCMWXFKCV4ZVNS1","cluster":"b01"}
+{"src":"Skyrim.esm:0685B8","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.BE3CS9BNRBSVJJ47NJWDCN5FQ5","cluster":"b01"}
+{"src":"Skyrim.esm:0685B9","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.06PHTMWJ8XF3QBJ4CPRCS77C8H","cluster":"b01"}
+{"src":"Skyrim.esm:0685BA","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.WN8PFZ1MD1KNHRNP94F392MDZ9","cluster":"b01"}
+{"src":"Skyrim.esm:0685C7","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.V1FGKTKJSG8PV9Z107JJT81CFZ","cluster":"b01"}
+{"src":"Skyrim.esm:0685C9","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.WVXAMH7RDA1A4D5HQGMSP23XXN","cluster":"b01"}
+{"src":"Skyrim.esm:0685D3","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.09X5DQ7J7K4H3S9MJATK1W8565","cluster":"b01"}
+{"src":"Skyrim.esm:0685D4","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.QDNJ4NVXY32N5EK1037G2H3C9J","cluster":"s04"}
+{"src":"Skyrim.esm:0685D5","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.ATR4J28VCTRC9B6PNSTFKH431S","cluster":"s04"}
+{"src":"Skyrim.esm:0685D6","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.Q70PQMEXN36D48E8D6SF5924H7","cluster":"s04"}
+{"src":"Skyrim.esm:0685D8","space":"exterior","status":"dropped","why":"people come from the place record's promises, the guards and the beds"}
+{"src":"Skyrim.esm:0685E0","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.EMEA3B2NB2XZSH9R3650D4NVG9","cluster":"s04"}
+{"src":"Skyrim.esm:0685E7","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.MF69WNVRQ3TVASJ8B3F4W8DHPP","cluster":"s04"}
+{"src":"Skyrim.esm:0685E9","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.3M1RQAM4G0K0ZDD24SYT29GA06","cluster":"s04"}
+{"src":"Skyrim.esm:0685EB","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.J1BMZTQYHPDDVYDJDTG5EZ9TJF","cluster":"s04"}
+{"src":"Skyrim.esm:0685EC","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.9MTDNMJQ3GSXA1GENZCA28CJXT","cluster":"b01"}
+{"src":"Skyrim.esm:0685EF","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.X5DG9RSJ40DACTHQQAYV5BVZXW","cluster":"b01"}
+{"src":"Skyrim.esm:0685F0","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.THQGRSDZV4RP4YP09PBQ9CD1K5","cluster":"b01"}
+{"src":"Skyrim.esm:0685F1","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.PTVG5ZYEFEQEAX38KKKVWB4X6Y","cluster":"b01"}
+{"src":"Skyrim.esm:0685F2","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.CRDX4R85D5ZA9TRJTW9SZ1JNVH","cluster":"b01"}
+{"src":"Skyrim.esm:0685F3","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.T0XCDD3X2E1QPRHEDXB8Z0TH6P","cluster":"b01"}
+{"src":"Skyrim.esm:0685F4","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.P0FHN0ZT6SXJMD0V3W1X35GBP3","cluster":"b01"}
+{"src":"Skyrim.esm:0685F7","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.NPM21R3YQ3GP41KCG54MY3P1S2","cluster":"b01"}
+{"src":"Skyrim.esm:0685FB","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.XR4W8Z6RJSCDC8YVEJ1WXR6W0R","cluster":"s04"}
+{"src":"Skyrim.esm:0685FC","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.2C8Y41FHEXWVXJFWWYHCGCHWR6","cluster":"s04"}
+{"src":"Skyrim.esm:0685FE","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.5H8ZY4D7X2099KH4VXGHEZ3121","cluster":"s04"}
+{"src":"Skyrim.esm:0685FF","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.QRJ2WG249GDXTFYFMZQRA1ECHJ","cluster":"s04"}
+{"src":"Skyrim.esm:068601","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.ZGW6EDRT163W8GZB10Z49FAMSY","cluster":"s04"}
+{"src":"Skyrim.esm:068602","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.ESRJB11YW093Q05FA35BZ0G5CF","cluster":"s04"}
+{"src":"Skyrim.esm:068603","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.QEK5FSHJQEW6X335F5R837ZY0R","cluster":"s04"}
+{"src":"Skyrim.esm:068604","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.QS863VZ71BFJSPC63E79K09042","cluster":"s04"}
+{"src":"Skyrim.esm:068605","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.WFM1D4QJJKMSS5FDS2NJC9VMGA","cluster":"s04"}
+{"src":"Skyrim.esm:068606","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.ZRNF9ZT3YCBDRJTACQ2DY0KEXW","cluster":"s04"}
+{"src":"Skyrim.esm:068610","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.TH7BCMSCERKVC1ERT4H2SMS1VX","cluster":"s04"}
+{"src":"Skyrim.esm:068616","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.2HCFCPHV0SW0W58MG6BFTSQV5P","cluster":"s04"}
+{"src":"Skyrim.esm:068618","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.86QCD27PQ4BCQHYE17GR8NH2HH","cluster":"s04"}
+{"src":"Skyrim.esm:06861A","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.D21YQWYS4Y8JZSJYZDT356JP6X","cluster":"s04"}
+{"src":"Skyrim.esm:06861B","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.HFDXPCX95XQGK91B2V9BHQ0HSF","cluster":"s04"}
+{"src":"Skyrim.esm:068621","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.GH4CMWXDG5AMRYQCXSYTP2STAR","cluster":"s04"}
+{"src":"Skyrim.esm:068628","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.VPM5J08R3MQE53YHN3TQB0XY3H","cluster":"s04"}
+{"src":"Skyrim.esm:068629","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.0W44WY1CBK6D3DC9DS2JGTR0KN","cluster":"s04"}
+{"src":"Skyrim.esm:06862A","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.3M2VCRY4W5218EF46EX0D92CA8","cluster":"s04"}
+{"src":"Skyrim.esm:06862C","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.DKS20QJMFJ0R6MX0GFS4NVPH72","cluster":"s04"}
+{"src":"Skyrim.esm:06862D","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.0QKX2JDQEX7V2W972MVCDEBRZN","cluster":"s04"}
+{"src":"Skyrim.esm:068630","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.W1ZXSMS6X9QN81NZGYTQB0PXA8","cluster":"s04"}
+{"src":"Skyrim.esm:068632","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.6E7Z6TW0A7YJRQVQ6KNJYGAZE5","cluster":"s04"}
+{"src":"Skyrim.esm:068633","space":"exterior","status":"dropped","why":"the source's water plane; our world's water stands here"}
+{"src":"Skyrim.esm:068634","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.PJ3HMJ0GXPRWSWMBTVFQCKARVM","cluster":"s04"}
+{"src":"Skyrim.esm:068635","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.4FJBXJ5RFFFCWA2RKA5ZC3W6FA","cluster":"s04"}
+{"src":"Skyrim.esm:068636","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.ZVC2WDK1PEYGD9PRV4XN2ABXF4","cluster":"s04"}
+{"src":"Skyrim.esm:068637","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.3SE811VFRTXAJ7ADGXWR12CTQN","cluster":"s04"}
+{"src":"Skyrim.esm:068638","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.W8VT0CJRQSD96C0Y99M79089SX","cluster":"s04"}
+{"src":"Skyrim.esm:068639","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.HFMDZCY5305MG0S6WX67GPRCN1","cluster":"s04"}
+{"src":"Skyrim.esm:06863A","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.7W62GQCSC75GEP4R0J93XZJ36X","cluster":"s04"}
+{"src":"Skyrim.esm:06863F","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.XWEPFZSKJD8PC5FHSGWDHCDK5F","cluster":"s04"}
+{"src":"Skyrim.esm:068644","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.6NNX8AQAH44QBJEDEXHMCMB9F4","cluster":"s04"}
+{"src":"Skyrim.esm:068647","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.HBM9N6HNMXBEWKDYJCM37Q6PBJ","cluster":"s04"}
+{"src":"Skyrim.esm:068649","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Skyrim.esm:06864A","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.F7VVDK27XZHDN1BHJZ19DDW20J","cluster":"s04"}
+{"src":"Skyrim.esm:06864B","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.4ZSKN543B943WF476V3B95XH3F","cluster":"s04"}
+{"src":"Skyrim.esm:06864C","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.VHYY0CV5GX16W6209S1WB8JAQB","cluster":"s04"}
+{"src":"Skyrim.esm:06864D","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.KDMYQYRKBG0F0NQ06JS5736FE9","cluster":"s04"}
+{"src":"Skyrim.esm:06864E","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.7JZ98CXQ0PBQ9WRPKBZHR2P8P4","cluster":"b01"}
+{"src":"Skyrim.esm:06867D","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.Z6NQQ2XB322B369D3M5VG76HDP","cluster":"b01"}
+{"src":"Skyrim.esm:06867E","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.P3A6BS3XS63TB9R3H9R0QPZ4H2","cluster":"b01"}
+{"src":"Skyrim.esm:068680","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.5GYSNMD4P0B5JG152CK8HHWGA2","cluster":"b01"}
+{"src":"Skyrim.esm:068683","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.KTPE74Z56Z0Y9PXSBQBF489W4E","cluster":"b01"}
+{"src":"Skyrim.esm:068684","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.T6VMKRRBGSKPN3GDT84DXNQZJ0","cluster":"b01"}
+{"src":"Skyrim.esm:068686","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.YSCQNX0NT1TFXNV6VSAE364N3F","cluster":"b01"}
+{"src":"Skyrim.esm:06868A","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.5HW1MTRGMYQPT0WW4EQ8G0DBDT","cluster":"b01"}
+{"src":"Skyrim.esm:06868C","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.01A8Y48E99JAH0S6Q4BT6R2XXJ","cluster":"b01"}
+{"src":"Skyrim.esm:06868D","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.M6BJWXVJHTCHEKASJAJS90NWE9","cluster":"s08"}
+{"src":"Skyrim.esm:06868F","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.9VKZXXFNRSZW6FNDDE2SY9P58X","cluster":"b01"}
+{"src":"Skyrim.esm:068697","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.T7AEVC7ERE3S4TY5BKS12TJKR2","cluster":"s03"}
+{"src":"Skyrim.esm:06869C","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Skyrim.esm:0686A5","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.M5891HD1B0NS46HPT24V0HRG1V","cluster":"s01"}
+{"src":"Skyrim.esm:0686A7","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Skyrim.esm:0686AA","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Skyrim.esm:0686AE","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Skyrim.esm:0686AF","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Skyrim.esm:0686B1","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.97JY119356GWPMCJ1MCMRB0QKX","cluster":"s01"}
+{"src":"Skyrim.esm:0686BE","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.QFS1FD10PX07YP1V5KY10DVJVV","cluster":"b01"}
+{"src":"Skyrim.esm:0686BF","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.JX91V3NDP42TX89J1CZ7WZ3B18","cluster":"b01"}
+{"src":"Skyrim.esm:0686C2","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.W2MTAFZ83ZEE9M65CNW8BT9YQS","cluster":"s04"}
+{"src":"Skyrim.esm:0686C3","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.BQ0FMGSH9EQTX4RD1BB3N18XME","cluster":"b01"}
+{"src":"Skyrim.esm:0686C8","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.VRA1SNJJK1ZZ4DPDQE94X1V014","cluster":"s04"}
+{"src":"Skyrim.esm:0686CF","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.9K9804RV8FP1QM82ETT756231M","cluster":"b01"}
+{"src":"Skyrim.esm:0686D3","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.949D2SH0ERP30JMM4NGECYE6Q9","cluster":"b01"}
+{"src":"Skyrim.esm:0686D7","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.SNHRX4X4KCPBC2MBDC5DT4JY16","cluster":"b01"}
+{"src":"Skyrim.esm:0686DB","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.SEF85DBG30GMP60TCWTF5QWZ5G","cluster":"b01"}
+{"src":"Skyrim.esm:0686DC","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.F85EA4Y839HHJPTDSVR582276G","cluster":"b01"}
+{"src":"Skyrim.esm:0686E2","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.6EQ9RT1P3S77GNWFKQFH2WJCKK","cluster":"s04"}
+{"src":"Skyrim.esm:0686E3","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.ABA5VQGKK4XGDGQH7RDDT4AXPK","cluster":"s04"}
+{"src":"Skyrim.esm:0686E9","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.Q020RM11VQCV72ZFQGMG7G2ZKF","cluster":"s04"}
+{"src":"Skyrim.esm:0686EC","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.H1EVBYMB19KG8AHDMP8V8ATVDA","cluster":"s04"}
+{"src":"Skyrim.esm:0686F2","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.3R8AWWMQEC904420DEEKGTRS5A","cluster":"s04"}
+{"src":"Skyrim.esm:0686F4","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.H1G1SB18V6QHQK9RESV2EQQ9YE","cluster":"s04"}
+{"src":"Skyrim.esm:0686F5","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.Z3EZ2XS3QPZ3G5XNPE8W8VAXM4","cluster":"s04"}
+{"src":"Skyrim.esm:0686F9","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.ZBX53JY52RAX1552XJBBSK56RX","cluster":"s04"}
+{"src":"Skyrim.esm:0686FA","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.HW9Q56HW737XJG6BE50KN2JRHX","cluster":"s04"}
+{"src":"Skyrim.esm:068701","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.1RMYBJ90Q39E5PXV3QWH669NAA","cluster":"s04"}
+{"src":"Skyrim.esm:06871C","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.9NVYFY31C5HHHCGKZSGR4F88ED","cluster":"s04"}
+{"src":"Skyrim.esm:06871D","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.YZS2PM46CWWBXXD8CKZGVV2YN4","cluster":"b01"}
+{"src":"Skyrim.esm:06871E","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.0AFTBSZZZTQTPJQQ6QH1KX7XPR","cluster":"b01"}
+{"src":"Skyrim.esm:06871F","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.ATK8NJGWJDH1D0SYQX04EKEFS2","cluster":"b01"}
+{"src":"Skyrim.esm:068720","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.59D8388YHAXZQ996R1GDB8B9PS","cluster":"b01"}
+{"src":"Skyrim.esm:068722","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.23NFAXQZ7V43Z0C79VR3FSDCHQ","cluster":"b01"}
+{"src":"Skyrim.esm:068723","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.SD1MWA3MX4HQ5NDAQJQGJ62AS9","cluster":"b01"}
+{"src":"Skyrim.esm:068724","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.QW7K1PQ1R9M2D5DH8AV1G03G5Y","cluster":"b01"}
+{"src":"Skyrim.esm:06872D","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.2SWMEBYF58B93GMB4T7SVFFFX6","cluster":"s04"}
+{"src":"Skyrim.esm:06A8DF","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.Y9J0MPQP1H1MSBJXFGJDAW5M25","cluster":"b01"}
+{"src":"Skyrim.esm:06A8FB","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.5J14ZPE9KC941C1R4ZABKK5EEA","cluster":"b01"}
+{"src":"Skyrim.esm:06AC4F","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.30NXYYZ4RPS1GT6T5W8X2P04RK","cluster":"s04"}
+{"src":"Skyrim.esm:06AC51","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.J991EFC179QJPNTSTEGDEXHRQG","cluster":"s04"}
+{"src":"Skyrim.esm:06D8EC","space":"exterior","status":"dropped","cluster":"s04","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Skyrim.esm:06EA74","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Skyrim.esm:0705F7","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Skyrim.esm:0705F8","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Skyrim.esm:0705FB","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Skyrim.esm:0705FD","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Skyrim.esm:0705FE","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Skyrim.esm:0705FF","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Skyrim.esm:070600","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Skyrim.esm:070601","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Skyrim.esm:070602","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Skyrim.esm:070603","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.22AJNA8BXY426FX5DT45NPG14W","cluster":"s02"}
+{"src":"Skyrim.esm:070604","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.E6BETD626NGM0H3RCHHD4Y36TD","cluster":"s02"}
+{"src":"Skyrim.esm:070605","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Skyrim.esm:070609","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Skyrim.esm:07060A","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Skyrim.esm:07060B","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.PSJYSMWD82085X9A46W937TAJE","cluster":"s04"}
+{"src":"Skyrim.esm:071A1C","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Skyrim.esm:071A22","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Skyrim.esm:071A23","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Skyrim.esm:071A24","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Skyrim.esm:071A32","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Skyrim.esm:071A33","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Skyrim.esm:071A34","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Skyrim.esm:071A35","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Skyrim.esm:0975FE","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.QTQNYZ565SZ476EQS642TVNZHW","cluster":"b01"}
+{"src":"Skyrim.esm:0987D2","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Skyrim.esm:0998CD","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.YRMKQAXXNWMZ8HE13NQ5MMA5DT","cluster":"b01"}
+{"src":"Skyrim.esm:099E0B","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.SPK8MK7DNY8C5Q3F4DD74R81FJ","cluster":"b01"}
+{"src":"Skyrim.esm:099E84","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.KD8QB180Y7CT9BMCPPH1DY54CJ","cluster":"b01"}
+{"src":"Skyrim.esm:099E85","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.G5N1Y5JPYRPJP3CF5MS94JBNWX","cluster":"b01"}
+{"src":"Skyrim.esm:099E86","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.CB4H8413XRM8KW63G6MTY6ZB3Q","cluster":"b01"}
+{"src":"Skyrim.esm:099E87","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.8H64HZCQBAJQRJS38EV3CNBW1Q","cluster":"b01"}
+{"src":"Skyrim.esm:099E88","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.WKR1GGP45VC6GFHYZ4Y6P4FYZJ","cluster":"b01"}
+{"src":"Skyrim.esm:099E91","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.CVDV09KXQPRG184JPRVZDV7DV0","cluster":"s04"}
+{"src":"Skyrim.esm:099E92","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.SAAQ4QXXQ9PG4ADXHH4GYPZTT8","cluster":"b01"}
+{"src":"Skyrim.esm:099E93","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.96W2TX4Y1MDCJKG2ZH5X6CH5DT","cluster":"b01"}
+{"src":"Skyrim.esm:099E94","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.KKQCYDQ0XV13WGSYXF3B7XEDJ6","cluster":"s04"}
+{"src":"Skyrim.esm:099E95","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.NZ7R0ND6650XYEVSK2Z5CSS0VD","cluster":"s04"}
+{"src":"Skyrim.esm:099E96","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.G051CMTTQT1GG2X9ZWJ82YE9ZN","cluster":"s04"}
+{"src":"Skyrim.esm:099E97","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.YY3S9Q43FCHJ3NZQ3D9XSN0TYD","cluster":"s04"}
+{"src":"Skyrim.esm:099E98","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.J4TXD6BCM9SSAGHNS6FJJNHFKE","cluster":"s04"}
+{"src":"Skyrim.esm:099E9A","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Skyrim.esm:099E9B","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Skyrim.esm:099E9C","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.XCT2J176JWVX06NWCQKXD0T60W","cluster":"b01"}
+{"src":"Skyrim.esm:099E9D","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.CA1796T3MRY992YEZ0Q4S18XAF","cluster":"b01"}
+{"src":"Skyrim.esm:099E9E","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.PFZGTM0DCZTMB091BN06VH03BZ","cluster":"b01"}
+{"src":"Skyrim.esm:099E9F","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Skyrim.esm:099EA0","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Skyrim.esm:099EA1","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Skyrim.esm:099EA2","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.9EC97JNH57E3RNVJSRVH3AJ9TE","cluster":"b01"}
+{"src":"Skyrim.esm:099EA3","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.Y2GTR082S286D5T2XYK9F7E2S2","cluster":"b01"}
+{"src":"Skyrim.esm:099EA4","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.MD1JBNNWF2XF5ZRV919DHEYW5W","cluster":"b01"}
+{"src":"Skyrim.esm:099EA5","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.C5XDPVARJD71VZYRS5JG4P1XG2","cluster":"b01"}
+{"src":"Skyrim.esm:099EA6","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.7N8YVWSRDKK6M4JRW0WD6Z9XYH","cluster":"b01"}
+{"src":"Skyrim.esm:099EA7","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.XGQH9WNE0P6BXFP9CN7SMJFPP7","cluster":"b01"}
+{"src":"Skyrim.esm:099EAA","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.9G8W4FNBC77CCN568NYCBSGNJ2","cluster":"b01"}
+{"src":"Skyrim.esm:099EAB","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.5MNY3V0H3P7C6EQ8ECJVJEPRA2","cluster":"b01"}
+{"src":"Skyrim.esm:099EAD","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.FKYTGWNX6AJ4QH4QE28J971C32","cluster":"b01"}
+{"src":"Skyrim.esm:099EAE","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.Q68XBNJSBTA0PJW7RRA76FW4FA","cluster":"s04"}
+{"src":"Skyrim.esm:099EAF","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.TFQYP624CJWGANYRFNPYC9TN0D","cluster":"s04"}
+{"src":"Skyrim.esm:099EB1","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.C5MJ1MN7Z90TJ1VE4HRVZGM1BC","cluster":"s04"}
+{"src":"Skyrim.esm:099EB2","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.3VS4JFA06Z13TNR152BBD6JXGK","cluster":"s04"}
+{"src":"Skyrim.esm:099EB3","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.6SVQN8KXV26TFRXWYJ5WWEKMQN","cluster":"s04"}
+{"src":"Skyrim.esm:099EB4","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.P5BH21QDX7562ETFBBM2T0MWAP","cluster":"s04"}
+{"src":"Skyrim.esm:099EB5","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.MWATAZT33Q4V637SH545P84KBW","cluster":"s04"}
+{"src":"Skyrim.esm:099EB6","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.TQQ4PAYDQQET15R5CXPCATTYYQ","cluster":"s04"}
+{"src":"Skyrim.esm:099EB7","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.EWMQ7A52VPPKH3J5GYQ8NDJSME","cluster":"s04"}
+{"src":"Skyrim.esm:099EB8","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.574P1XA70HCR26BMTRKETQKDPM","cluster":"s04"}
+{"src":"Skyrim.esm:099EB9","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.3TVG0FYKQH0X265HWRJTDPPEZ6","cluster":"s04"}
+{"src":"Skyrim.esm:099EBA","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.G3MJFXZCSDMN0QX5EC203PC5FV","cluster":"s04"}
+{"src":"Skyrim.esm:099EBB","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.WS7C1XTAE9NMK3KJR9EP6FTMHZ","cluster":"s04"}
+{"src":"Skyrim.esm:099EBC","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.57E9APECJW63QT3BW735FP7084","cluster":"s04"}
+{"src":"Skyrim.esm:099EBD","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.BH546TEA5ERBADJ8C1FH29G4ZW","cluster":"s04"}
+{"src":"Skyrim.esm:099EBE","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.K5D1B0FHC0Z8QHHGWM933HTER9","cluster":"s04"}
+{"src":"Skyrim.esm:099EBF","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.B9B45ZN0R9VJAMA4D01NG7G1TC","cluster":"s04"}
+{"src":"Skyrim.esm:099EC0","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.CE3AEBA7MG6BXBA5G15C83DYN7","cluster":"s04"}
+{"src":"Skyrim.esm:099EC1","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.NX396WDY9TH5WTCY7YPH5DY7ZY","cluster":"s04"}
+{"src":"Skyrim.esm:099EC6","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.B1QPQ7A39QKG0JRF8VAZEC6E54","cluster":"s04"}
+{"src":"Skyrim.esm:099EC7","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.N4M2R851SRZ67GFDGA6115WZQH","cluster":"s04"}
+{"src":"Skyrim.esm:099EC8","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.C63S87B43YXEAAW5C517PQJP1C","cluster":"s04"}
+{"src":"Skyrim.esm:099EC9","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.995BBWFARPAE2J4T9SEEK2QAZ2","cluster":"s04"}
+{"src":"Skyrim.esm:099ECC","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.5T7GS3PMF4F0BQZX4PJ8AHWS4M","cluster":"s04"}
+{"src":"Skyrim.esm:099ECE","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.T777TSJ89JPTS1YFVX4PNCS3KK","cluster":"s04"}
+{"src":"Skyrim.esm:099ED1","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.EXXF7YA092VSC63Q3MBCB06CM0","cluster":"s04"}
+{"src":"Skyrim.esm:099ED2","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.JQF4HCQW9N6VYM37CAEZBGEGY0","cluster":"s04"}
+{"src":"Skyrim.esm:099ED3","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.W85MDTFG95B8PDZ8XPP2PDXD7Q","cluster":"s04"}
+{"src":"Skyrim.esm:099ED4","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.38D50T7QEWJCRC7GSE8GN8QBSK","cluster":"s04"}
+{"src":"Skyrim.esm:099ED5","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.YK8XEH755NC9XE0K3F2Z99GYEV","cluster":"s04"}
+{"src":"Skyrim.esm:099ED6","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.JFSFJNDZ61F58HYYD0YTCT8DKD","cluster":"s04"}
+{"src":"Skyrim.esm:099ED7","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.4NQYE4YNNW5A34JST2ADZHNS9D","cluster":"s04"}
+{"src":"Skyrim.esm:099EDA","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.TX4WJDSRV84E0FHWK5A8FG8VD2","cluster":"s04"}
+{"src":"Skyrim.esm:099EDC","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.CVH1855NFGDWBJ6WEEH47TV6WA","cluster":"s04"}
+{"src":"Skyrim.esm:099EE1","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.DK4T0MX14VVAV1V9V56Q0K26MS","cluster":"s04"}
+{"src":"Skyrim.esm:099EE2","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.RGQSA14TQ2GM079FDP8R7Q70RE","cluster":"s04"}
+{"src":"Skyrim.esm:099EE4","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.REZ5PYMRSEZKH4H8F9ZK7A6TJ9","cluster":"s04"}
+{"src":"Skyrim.esm:099EE5","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.WP98B8JB4BP9SYPSPQYZM547WT","cluster":"s04"}
+{"src":"Skyrim.esm:099EE6","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.TBCK8S4RJP44V1ESXFFNXPA5TH","cluster":"b01"}
+{"src":"Skyrim.esm:099EE9","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.GWNR5SDJPQ487E8E4DJY0XQA16","cluster":"b01"}
+{"src":"Skyrim.esm:099EEA","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.MKSFMFSBSHBAKS8SMDJ7YPK6HT","cluster":"b01"}
+{"src":"Skyrim.esm:099EEB","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.GJVJPHV7RCQFEENPMPGM2ZHYDY","cluster":"b01"}
+{"src":"Skyrim.esm:099EED","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.8P5713R2F6G58RWQCQJ1P1EFRQ","cluster":"b01"}
+{"src":"Skyrim.esm:099EEE","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.BDT8YPBV1B4JJCJ54YNE6K45E5","cluster":"b01"}
+{"src":"Skyrim.esm:099EEF","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.7HCCPNVVSK7NZH2ZBH3K2FEAK8","cluster":"b01"}
+{"src":"Skyrim.esm:099EF0","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.J6G6F1TX6SPEPWAQW76A7W1M20","cluster":"b01"}
+{"src":"Skyrim.esm:099EF1","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.FHV6VQN2CBCWKGC07C1M2D05A2","cluster":"b01"}
+{"src":"Skyrim.esm:099EF2","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.ZHD43DMP417H2R9E64XZRRGNFR","cluster":"b01"}
+{"src":"Skyrim.esm:099EF3","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.RJY9GMZ9S4KRE16MHKPFG46QCV","cluster":"b01"}
+{"src":"Skyrim.esm:099EF4","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.FJQ18NZ797J3W91G54BCW9Z57G","cluster":"b01"}
+{"src":"Skyrim.esm:099EFB","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.KHZ6BCN47ATTCRH4ZDX96REDW2","cluster":"b01"}
+{"src":"Skyrim.esm:099EFC","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.0DPQ555D9HWEWDH51727QDPSDS","cluster":"s01"}
+{"src":"Skyrim.esm:099EFD","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.5TPKX7M6B4RH57TRNBFZDYPP8W","cluster":"b01"}
+{"src":"Skyrim.esm:099EFF","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.NBPHJ18P3Z34CQFVPW7B0HRK0R","cluster":"s07"}
+{"src":"Skyrim.esm:099F00","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.KAVT30KAEZ7F59PKY73WJBV2NN","cluster":"s09"}
+{"src":"Skyrim.esm:09E12D","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.GSB843KBCTDBCH3RV6VHSDS09W","cluster":"b01"}
+{"src":"Skyrim.esm:0A892E","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.9SAPDTC9HQ4ACN88QC5QBDTDJS","cluster":"s04"}
+{"src":"Skyrim.esm:0A8934","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.4W7Z2FFGAAHCDXPV0S5AZGB69S","cluster":"s04"}
+{"src":"Skyrim.esm:0A8935","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.ZY22B0B3H8DE6K3N9K5V9Z4AYM","cluster":"s04"}
+{"src":"Skyrim.esm:0A8936","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.N43DQRXYXA44FR5JAHXS4ZTD8J","cluster":"b01"}
+{"src":"Skyrim.esm:0A8939","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.A9G902PGN9ZCAY65DACVFN08A0","cluster":"b01"}
+{"src":"Skyrim.esm:0A893D","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.ETBHNQAQDV46QQMAQQA27J7SNE","cluster":"b01"}
+{"src":"Skyrim.esm:0A8941","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.HHRKNVBHK9Y4WA9VGS15KRJK9T","cluster":"s04"}
+{"src":"Skyrim.esm:0BBA9B","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.4A1SMMFXQK2M4NAS6P02ZBNN2H","cluster":"s04"}
+{"src":"Skyrim.esm:0BBAA5","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.1WF1ZM7K5RCJX3VFJZ6ETND710","cluster":"s03"}
+{"src":"Skyrim.esm:0C81F9","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.VBJZDW1WV2J3A8HKSWN1R2FGN4","cluster":"s04"}
+{"src":"Skyrim.esm:0CD954","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.72N8HT9B60PY72JFB9YTTM2KPK","cluster":"b01"}
+{"src":"Skyrim.esm:0CD959","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.0AHSFZ8P8R5Y6WQEJV0JCCWGM3","cluster":"b01"}
+{"src":"Skyrim.esm:0CD95A","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.3VFMBNFDEPAW59Z6HJQ1T78MDA","cluster":"s01"}
+{"src":"Skyrim.esm:0CD95C","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.CZFJ02W4SPAC44TYQQRT6W9QSC","cluster":"b01"}
+{"src":"Skyrim.esm:0EBE28","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.QEBZA61XE03VHFB2XM8W8PS55D","cluster":"b01"}
+{"src":"Skyrim.esm:0EC358","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.Y9Q3NA50K23HRYDK41Q3Q10PEX","cluster":"s04"}
+{"src":"Skyrim.esm:0EC359","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.HY444WY733RHEBM6616DSC40TQ","cluster":"s04"}
+{"src":"Skyrim.esm:0EC35A","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.8WKN2ZT6SHMBYWVH63ZDN8AP6K","cluster":"b01"}
+{"src":"Skyrim.esm:0EC35D","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.1DY9DE0PERQMTDZH26KPRY8TEY","cluster":"b01"}
+{"src":"Skyrim.esm:0EC360","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Skyrim.esm:0EC361","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.67VWR94F37HZFKFK1PWGMSRW23","cluster":"s08"}
+{"src":"Skyrim.esm:0EC362","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.A8Z9F43DS2EN142T5Q4100BXVF","cluster":"b01"}
+{"src":"Skyrim.esm:0EC363","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.N4JNXZ7M6C1R5A8EKBRKX8CWGY","cluster":"b01"}
+{"src":"Skyrim.esm:0EC364","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.6J4VWGE55HGM5XKX5JYQXS0K3J","cluster":"b01"}
+{"src":"Skyrim.esm:0EC365","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.XKD09EVMTVJAEP34WC9G7KH0T3","cluster":"b01"}
+{"src":"Skyrim.esm:0EC371","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.DZHPXEVJXVBYQ2FRC8GNEEP7DZ","cluster":"b01"}
+{"src":"Skyrim.esm:0EC373","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Skyrim.esm:0EC374","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.M5KG7PDF98C6038HBNFD9TND3X","cluster":"s01"}
+{"src":"Skyrim.esm:0EC375","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.F40K2J1E66V9Z31433S3PRFYPT","cluster":"s01"}
+{"src":"Skyrim.esm:0EC376","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.D566M87MQJ7XTZEVH4PMSN1MEC","cluster":"s01"}
+{"src":"Skyrim.esm:0EC377","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.ZFJNRFVAZ49EQDR16NS2HG32JX","cluster":"b01"}
+{"src":"Skyrim.esm:0EC379","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.SZ8GTWBYAG921SK24T90GX237E","cluster":"b01"}
+{"src":"Skyrim.esm:0EC37B","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.AY2F45CWCMDME5P21W0W15RYHX","cluster":"s04"}
+{"src":"Skyrim.esm:0EC37C","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.KJPZE292ZCTHVGXESWJ6SJVVSD","cluster":"s04"}
+{"src":"Skyrim.esm:0EC37D","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.GSH6EET1CM8NYJN4JBSX6VAWW6","cluster":"s04"}
+{"src":"Skyrim.esm:0EC37F","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.JM1MEFMB7B8673HN614D8Q66D2","cluster":"s04"}
+{"src":"Skyrim.esm:0EC380","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.WDEAEQERAGQCCVNXQDZ9RVB5MT","cluster":"b01"}
+{"src":"Skyrim.esm:0EC381","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.Z3NK5HTFJT6R2CAYD9FMB65GPM","cluster":"b01"}
+{"src":"Skyrim.esm:0EC382","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.DG42F1NN8JYQDBHCSF8MNFA0E9","cluster":"b01"}
+{"src":"Skyrim.esm:0EC383","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.S19EX4WRT8KEGJQJF6VRRW9JNE","cluster":"s04"}
+{"src":"Skyrim.esm:0EC384","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.9E8DRETHYYT270GH1V1FSE872X","cluster":"s04"}
+{"src":"Skyrim.esm:0EC387","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.JCC4HXTN25J9SSRBC8CCQC5WDG","cluster":"b01"}
+{"src":"Skyrim.esm:0EC388","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.JHPEVPE2YSTC88Z6X25Q3A792C","cluster":"s01"}
+{"src":"Skyrim.esm:0EC389","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.83B3QST1T1G3Q3Q71C5W1HCQKS","cluster":"b01"}
+{"src":"Skyrim.esm:0F3D85","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.NR6PK3MB1HXBFKHNRY91YT0MT9","cluster":"b01"}
+{"src":"Skyrim.esm:0F3D86","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.GG419A3QBFQBR20T00A6SFT57D","cluster":"s04"}
+{"src":"Skyrim.esm:0F3D87","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.2MW3Q02BJY8H93RKXJQ8NG0T4Y","cluster":"b01"}
+{"src":"Skyrim.esm:0F3D88","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.YCB5NMBNHAFV6K06ZHC5WNC43B","cluster":"s08"}
+{"src":"Skyrim.esm:0F3D89","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Skyrim.esm:0F3D8A","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Skyrim.esm:0F3D8B","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Skyrim.esm:0F3D8C","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Skyrim.esm:0F3D8E","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Skyrim.esm:0F3D8F","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Skyrim.esm:0F3D90","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.56RC8TRJX23J3JZVQT9YE4DSCQ","cluster":"b01"}
+{"src":"Skyrim.esm:0F762C","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.5F17W122WRAY82QEPDDB8HY0JY","cluster":"s04"}
+{"src":"Skyrim.esm:0F9B01","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.14GKSWH4HTDMS2VXT6ZPYR70XJ","cluster":"s07"}
+{"src":"Skyrim.esm:0F9B02","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.81JRF2ANXFD1W1FC525ZFJVQFC","cluster":"s07"}
+{"src":"Skyrim.esm:0F9B03","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.RJ6RCNGWGQH4ZHDPEX98MJVJTA","cluster":"s07"}
+{"src":"Skyrim.esm:0F9B04","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.Z9YZN1YJK3F4D4CD96G2G8CTM4","cluster":"b01"}
+{"src":"Skyrim.esm:0F9B05","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.BD0A6QXT8QN6D3168NH853RWHB","cluster":"b01"}
+{"src":"Skyrim.esm:0F9B06","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.ZJVSTGRMWN2ZGQS8H3CKQXCQE3","cluster":"s04"}
+{"src":"Skyrim.esm:0F9B07","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.AD963F50MMEPGTS7ZH8YQ5N0A8","cluster":"s04"}
+{"src":"Skyrim.esm:0F9B08","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.GGWDQF8HTV6BGG8VN0YPY8VT59","cluster":"s04"}
+{"src":"Skyrim.esm:0F9B09","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.KPS36DYREVXRQDEE0G35Y1TSWB","cluster":"b01"}
+{"src":"Skyrim.esm:0F9B0A","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.QY29G85R4FQBFMWTE4Q7SKHAB6","cluster":"s04"}
+{"src":"Skyrim.esm:0FA04F","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.2JN7PJTCJFPH691HEECXAYKSZW","cluster":"b01"}
+{"src":"Skyrim.esm:107D98","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.QZN1ZYYW4WQ7HGVKXH0CEY7FBY","cluster":"b01"}
+{"src":"Skyrim.esm:108F57","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Skyrim.esm:108F58","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.GVY0QYKZC1HXAY9NTXVE31916C","cluster":"s04"}
+{"src":"Skyrim.esm:108F59","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.DSAGNADF93BXZ75FK97BZSNMZF","cluster":"b01"}
+{"src":"Skyrim.esm:10D5A4","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.FX639ZTBEXVR7ZK8WPPH08VE4F","cluster":"b01"}
+{"src":"Skyrim.esm:10DBBD","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.FWYZVEQQT7Q08G7BP3JDE30944","cluster":"s11"}
+{"src":"Skyrim.esm:10FFBD","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.2NW5434SYM563Q9K0EJYS427B4","cluster":"b01"}
+{"src":"Skyrim.esm:10FFBE","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.266DB1QCNCGQPNRZTNTFZ1FJHP","cluster":"b01"}
+{"src":"Skyrim.esm:10FFBF","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.QWWEYSPHE0P26GSP20A4W7NF89","cluster":"b01"}
+{"src":"Skyrim.esm:10FFC0","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.81G8JTAGXFBFFMMW5YDKA1PZ7A","cluster":"b01"}
+{"src":"Update.esm:001FA9","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.BJCP4TEW23K7SX1JB09XY6N5WY","cluster":"s04"}
+{"src":"Update.esm:001FAA","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.CAAT94E6NTEANMCK00FTMRRKT7","cluster":"b01"}
+{"src":"Update.esm:001FAB","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.KKRTYP06MTZ9RZGVK3HBDRY75Q","cluster":"b01"}
+{"src":"Update.esm:001FAC","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.SNT8Q80H7DM72JTRFG762RM9A2","cluster":"s04"}
+{"src":"Update.esm:001FAD","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.23M209NGN2R3D5K2Y4E4B0GZDA","cluster":"s04"}
+{"src":"Update.esm:001FAE","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.JY7MPMK1QHQ3AHNP9VEH9GV8P3","cluster":"s04"}
+{"src":"Update.esm:001FAF","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.47VPN6S4NZ57JXQKAQJXG2QWR2","cluster":"s04"}
+{"src":"Update.esm:001FB0","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.NCAZK7PZXZ0HCRWTG9YSJKFNH0","cluster":"s04"}
+{"src":"Update.esm:001FB1","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.EB9G1CT0VC9ACC43QTBYP8ZD4V","cluster":"s04"}
+{"src":"Update.esm:001FB2","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.HTRX4G9GG75AJHFT32F9GA3G0D","cluster":"s04"}
+{"src":"Update.esm:001FB3","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.7D5QCBT2AJXHEE0T8JQM95NQ6W","cluster":"s04"}
+{"src":"Update.esm:001FB4","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.49H8YFC6XR2BPVNPYPMZBPM454","cluster":"s04"}
+{"src":"Update.esm:001FB5","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.8VZYS6FP33VVTRTFCMMZFZQ210","cluster":"s04"}
+{"src":"Update.esm:001FB6","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Update.esm:001FB7","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.6NM9XX54FX25YQM0GM9Q0X4KWX","cluster":"s04"}
+{"src":"Update.esm:001FB8","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.N9YSFT2YKVPTSR410PHRGT9YRB","cluster":"s04"}
+{"src":"Update.esm:001FB9","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.4Y345Y0SVDSF4JGBEGZ8KC93G1","cluster":"s04"}
+{"src":"Update.esm:001FBA","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.R999TY87AJGKN0YWD6AMJFQNQX","cluster":"s04"}
+{"src":"Update.esm:001FBB","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.YQ47SDKKC07ZGA4R3YYJMNXDN4","cluster":"s04"}
+{"src":"Update.esm:001FBC","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.XT3A6QNTM6A99AASNJW8NGY3VR","cluster":"s04"}
+{"src":"Update.esm:001FBD","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.WA57N8SXR3JPJRSSPW9SCGT8GS","cluster":"s04"}
+{"src":"Update.esm:001FBE","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.NVFMMG2RE1DFGW3ZQYH3MV64RG","cluster":"s04"}
+{"src":"Update.esm:001FBF","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.MQCG57SYXH2V4EKHX135TV96DC","cluster":"s04"}
+{"src":"Update.esm:001FC0","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.71CB5ZPMPYVMYM8RVMK4WVAHXP","cluster":"s04"}
+{"src":"Update.esm:001FC1","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.29EWMHHNK68E9K5W30456RB3XM","cluster":"s04"}
+{"src":"Update.esm:001FC2","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.G5SY6Q9TH023QS41QXJSXRFRZJ","cluster":"s04"}
+{"src":"Update.esm:001FC3","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.83G53E5R92AP8V8WDF53ZH8G1H","cluster":"s04"}
+{"src":"Update.esm:001FC4","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.JKH7WRHKPY22P075RAJNX0A9WD","cluster":"s04"}
+{"src":"Update.esm:001FC5","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.CRVKXKBMRKA8SS287K9EJ44M2X","cluster":"s04"}
+{"src":"Update.esm:001FC6","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Update.esm:001FC7","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.SHZAXYZXWPGJDG29D6DCSQZZ9A","cluster":"s04"}
+{"src":"Update.esm:001FC8","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Update.esm:001FC9","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Update.esm:001FCA","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Update.esm:001FCB","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Update.esm:001FCC","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.9N33NP740C7Q4QBHVK7657K0RW","cluster":"s03"}
+{"src":"Update.esm:001FCD","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.N0RQWQ24RN7YVKR68Z75R0J2WV","cluster":"s04"}
+{"src":"Update.esm:001FCE","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.GNG88NZ9PVG8C2C4ZRBA6VWDPK","cluster":"s04"}
+{"src":"Update.esm:001FCF","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Update.esm:001FD0","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.HZDMZYNNZYEWK3JD69SSMFTCDP","cluster":"s04"}
+{"src":"Update.esm:001FD1","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Update.esm:001FD2","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Update.esm:001FD3","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.WG3038QFGYKWFMV2Q1BXWDNR6G","cluster":"s03"}
+{"src":"Update.esm:001FD4","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.ECEW19RBPHWB9QXPABS18XSPQQ","cluster":"s03"}
+{"src":"Update.esm:001FD5","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Update.esm:001FD6","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Update.esm:001FD7","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Update.esm:001FD8","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.9WVBC4DW7GV7EWZ79ECMT77PG3","cluster":"s04"}
+{"src":"Update.esm:001FD9","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.YGQAWNYQDTMH5CA3CRG27AR27J","cluster":"s04"}
+{"src":"Update.esm:001FDA","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.ZE65GKQ2YVC5A9H2F51P6WEZFB","cluster":"s04"}
+{"src":"Update.esm:001FDB","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.13E31MRTGBRTXDM0H1YAVMTPQD","cluster":"s04"}
+{"src":"Update.esm:001FDC","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.F48HXA1SK8YJBHER0XP2XVHAK1","cluster":"s04"}
+{"src":"Update.esm:001FDD","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.P2DERDTH42RFMF4XNBA0HPDC2E","cluster":"s06"}
+{"src":"Update.esm:001FDE","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
+{"src":"Update.esm:001FDF","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}

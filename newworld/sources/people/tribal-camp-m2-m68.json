@@ -1,0 +1,281 @@
+{
+ "place_id": "tribal-camp-m2-m68",
+ "about": "Karsh-Naal Camp's people as world facts (person, household, person_note tables; tools/newworld/stockdb.py). Placement stays in newworld/places/tribal-camp-m2-m68/people.jsonl under the same ids. The tribeless Naga band sleeps in the longhouse as one household; they have no chief, so the one who counts the jars heads it. Jeeta-Sakka of quest 4 is cast on the night guard; Sesk and quest 4's three other Naga guards are the quest's to place.",
+ "guard_body": "warband",
+ "households": [
+  {
+   "id": "tribal-camp-m2-m68.household.DushnikhYalLonghouse",
+   "home_space": "DushnikhYalLonghouse",
+   "name": null
+  }
+ ],
+ "people": [
+  {
+   "id": "tribal-camp-m2-m68.7PPTW3WSTPDPAZ05VNAD6T0165",
+   "name": "Jeeta-Sakka",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "stone-grey",
+   "household": {
+    "id": "tribal-camp-m2-m68.household.DushnikhYalLonghouse",
+    "role": "levy"
+   },
+   "role": "guard",
+   "trade": "the Unbound's hired warband, night watch; keeps the key to the cage",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "He is the hired Naga who stands at the fire by the longhouse and carries the key to the cage at the camp's edge. He took the Unbound's coin first and talked the others into it.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:tribal-camp-m2-m68/present",
+      "place_note:tribal-camp-m2-m68/history",
+      "newworld/story/quests/main/mn04.yaml"
+     ]
+    }
+   ],
+   "relations": [],
+   "cast": "npc.mn04.jeeta-sakka"
+  },
+  {
+   "id": "tribal-camp-m2-m68.WHQGHMGVDP17ZTPTTZZ24E01A1",
+   "name": "Mazh-Teel",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "stone-grey",
+   "household": {
+    "id": "tribal-camp-m2-m68.household.DushnikhYalLonghouse",
+    "role": "levy"
+   },
+   "role": "guard",
+   "trade": "the Unbound's hired warband, day watch",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "She guards the jars by day for the Unbound's coin. She once took tolls on the road from Stormhold to Helstrom and misses the travellers more than the coin.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:tribal-camp-m2-m68/history",
+      "place_note:tribal-camp-m2-m68/economy"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "tribal-camp-m2-m68.ADMKVT2ATB97NEDGY5P0H8WSDR",
+   "name": "Hesseth",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "stone-grey",
+   "household": {
+    "id": "tribal-camp-m2-m68.household.DushnikhYalLonghouse",
+    "role": "head"
+   },
+   "role": "resident",
+   "trade": "stacks and counts the sap jars for the Unbound's crews",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "She counts the jars the crews bring and the coin the Unbound leave, and the others let her speak for the camp though no one leads it. She keeps the tally in knots on a cord.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:tribal-camp-m2-m68/economy",
+      "place_note:tribal-camp-m2-m68/people"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "tribal-camp-m2-m68.62Z5T9BK5AG21A4P08BR3XGXSM",
+   "name": "Ozhi-Rak",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "stone-grey",
+   "household": {
+    "id": "tribal-camp-m2-m68.household.DushnikhYalLonghouse",
+    "role": "partner"
+   },
+   "role": "resident",
+   "trade": "carries sap jars between the crews and the longhouse",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "He carries the crews' jars in from the marsh to the longhouse wall. He is Hesseth's partner and the strongest back in the camp.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:tribal-camp-m2-m68/economy",
+      "place_note:tribal-camp-m2-m68/look"
+     ]
+    }
+   ],
+   "relations": [
+    {
+     "to": "tribal-camp-m2-m68.ADMKVT2ATB97NEDGY5P0H8WSDR",
+     "kind": "partner-of"
+    }
+   ]
+  },
+  {
+   "id": "tribal-camp-m2-m68.KKS4N5M31295M1G777AP7W3SKY",
+   "name": "Vuxalt",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "stone-grey",
+   "household": {
+    "id": "tribal-camp-m2-m68.household.DushnikhYalLonghouse",
+    "role": "elder"
+   },
+   "role": "resident",
+   "trade": "keeps the bone shrine to Sithis",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "He is the oldest of the camp and keeps the shrine of bones to Sithis. He says the jars bring nothing good and takes his share of the coin all the same.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:tribal-camp-m2-m68/faith",
+      "place_note:tribal-camp-m2-m68/people"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "tribal-camp-m2-m68.RNT2SPEMAH3J1PPYVW2TQWA1JT",
+   "name": "Sileeth",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "stone-grey",
+   "household": {
+    "id": "tribal-camp-m2-m68.household.DushnikhYalLonghouse",
+    "role": "kin"
+   },
+   "role": "resident",
+   "trade": "hunts the marsh for the camp's meat",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "She hunts the reeds round the camp for meat and hangs the best skulls on the trophy pole. She watches the cage more often than the guards do.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:tribal-camp-m2-m68/look",
+      "place_note:tribal-camp-m2-m68/dangers"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "tribal-camp-m2-m68.MRBME68XR0QSKQ2K3MXFT36RFQ",
+   "name": "Nakhoo",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "stone-grey",
+   "household": {
+    "id": "tribal-camp-m2-m68.household.DushnikhYalLonghouse",
+    "role": "kin"
+   },
+   "role": "resident",
+   "trade": "fishes the creek and mends the hide tents",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "He is the youngest of the band and fishes the creek below the camp. He joined for the coin and is quieter since the cage was filled.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:tribal-camp-m2-m68/hooks",
+      "place_note:tribal-camp-m2-m68/present"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "tribal-camp-m2-m68.5M6BY4FP7QPYAMZNP3M5SWF84N",
+   "name": "Druuz",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "stone-grey",
+   "household": {
+    "id": "tribal-camp-m2-m68.household.DushnikhYalLonghouse",
+    "role": "kin"
+   },
+   "role": "resident",
+   "trade": "poles the jars downriver to the cult's crews",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "He poles a flat boat that takes the stacked jars to where the Unbound's crews collect them. He is paid by the trip and asks nothing of what the jars hold.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:tribal-camp-m2-m68/economy"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "tribal-camp-m2-m68.YBZ2P1FMS72RNK709P22VD9E11",
+   "name": "Tsoxi",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "stone-grey",
+   "household": {
+    "id": "tribal-camp-m2-m68.household.DushnikhYalLonghouse",
+    "role": "kin"
+   },
+   "role": "resident",
+   "trade": "tans hides and boils bones for the tents",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "He tans the hides the tents are hung with and boils the bones that hang on them. He came to the band from the road traffic days with nothing but his knives.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:tribal-camp-m2-m68/look",
+      "place_note:tribal-camp-m2-m68/history"
+     ]
+    }
+   ],
+   "relations": []
+  }
+ ]
+}

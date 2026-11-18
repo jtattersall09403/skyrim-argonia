@@ -1,0 +1,40 @@
+{
+ "place_id": "tribal-camp-m2-m68",
+ "needs": [
+  {
+   "seq": 0,
+   "from": ["9f4b5bd3db"],
+   "thing": "a cage at the camp's edge with Sesk in it, its key on a guard who stands at the fire (Skyrim's cage door, placed)",
+   "line": "main",
+   "rests": {"space": "exterior", "ref": "tribal-camp-m2-m68.WDX1YSEE6CGXSXQWS53QPF65X9"},
+   "signs": [{"sign": "look", "detail": "Skyrim's long metal cage on the camp's west edge, some 2,700 units from the fire by the longhouse, open toward the reeds"}, {"sign": "person", "detail": "Jeeta-Sakka, cast on the camp's night guard, carries its key"}],
+   "met": false,
+   "why": "Partly met. The cage stands at the camp's west edge, far from the fire and the longhouse, and Jeeta-Sakka is cast on the night guard. Its gate (Skyrim's cage gate with a Novice lock) and Sesk inside it are the quest's to place. But the camp's built walking mesh is cut off from the world round it, so the guards' patrols break and no one yet walks to the fire or the cage from outside.",
+   "fit": "The right spot: the edge farthest from the fire.",
+   "narrow": "Yes: the quest's gate at the cage's own place and turn; the camp's mesh joined to the world's (the walls or rocks that close it read and opened).",
+   "tier": "AGENT_INVENTED"
+  },
+  {
+   "seq": 1,
+   "from": ["11283710fa"],
+   "thing": "jars of sap stacked by the longhouse",
+   "line": "main",
+   "rests": {"space": "exterior", "ref": "tribal-camp-m2-m68.RNWK6HVARG0W3T5W1ZCR5928JT"},
+   "signs": [{"sign": "look", "detail": "glazed urns stacked against the longhouse wall beside its door"}],
+   "met": true,
+   "why": "Met. Three urns stand stacked against the longhouse wall beside its door, where the quest puts its own stack of sap jars; together they are more than a camp would need.",
+   "tier": "AGENT_INVENTED"
+  },
+  {
+   "seq": 2,
+   "from": ["bc28c00f44"],
+   "thing": "the longhouse and its cellar (the source camp's longhouse and cellar)",
+   "line": "main",
+   "rests": {"space": "exterior", "ref": "tribal-camp-m2-m68.9ADGNM2EKC8MKMWZBRBT1YFSCF"},
+   "signs": [{"sign": "label", "detail": "the longhouse door shows the household's name, and the cellar \"Karsh-Naal Cellar\""}],
+   "met": true,
+   "why": "Met. Dushnikh Yal's longhouse and its cellar are copied whole behind the longhouse door; the Naga band sleeps in the longhouse and the cellar is named Karsh-Naal Cellar. Its door reads by the household's head (Hesseth's House) until the Give ending names it the player's.",
+   "tier": "AGENT_INVENTED"
+  }
+ ]
+}

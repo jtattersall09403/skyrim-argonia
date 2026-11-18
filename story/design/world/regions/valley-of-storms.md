@@ -94,7 +94,7 @@ It is to be built from Dawnguard Valley01 in Dawnguard.esm (a fort: 653 building
 
 ### Karsh-Naal Camp
 
-A tribal camp, about 90 m across, sited on swamp, whose culture the data does not say. In 4E 201 it is inhabited, held by Tribeless Naga hired as guards by the Unbound, a sap-takers' cult; 12 people live there. It is not built yet. <!-- place:tribal-camp-m2-m68 -->
+A tribal camp, about 90 m across, sited on swamp, whose culture the data does not say. In 4E 201 it is inhabited, held by Tribeless Naga hired as guards by the Unbound, a sap-takers' cult; 12 people live there. It is drafted: its place files are in newworld/places/tribal-camp-m2-m68. <!-- place:tribal-camp-m2-m68 -->
 
 Karsh-Naal Camp is a camp of tribeless Naga in the marsh south of Stormhold, hired out to the Unbound as guards. The Naga are the tribeless Argonians of canon who sell their blades to whoever pays; the Unbound use the camp as the store for the sap their crews draw. <!-- place_note:tribal-camp-m2-m68/overview --> A few Naga guards keep the camp, standing at the fire by the longhouse. A cage stands at the camp's edge for anyone who tries to leave the Unbound's work. <!-- place_note:tribal-camp-m2-m68/present --> Tribeless Naga, tall and hard-eyed, who guard for pay and answer to the Unbound; they have no chief of their own. <!-- place_note:tribal-camp-m2-m68/people --> The Naga once lived off the road traffic from Stormhold to Helstrom. When the Unbound came with coin, they took to guarding the sap jars instead. <!-- place_note:tribal-camp-m2-m68/history -->
 

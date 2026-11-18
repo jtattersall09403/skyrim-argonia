@@ -1387,8 +1387,8 @@
 {"place_id":"tribal-camp-m18-m91","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (harvest-common: marsh-bird eggs and swamp herbs on the dry ground)"}
 {"place_id":"tribal-camp-m18-m91","give_seq":4,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-creature: basin crocodiles and giant snakes on the camp's edge)"}
 {"place_id":"tribal-camp-m18-m91","give_seq":5,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (treasure: a hide bundle and purse at the boundary stone)"}
-{"place_id":"tribal-camp-m2-m68","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-foes: the Unbound's hired Naga guards at the fire)"}
-{"place_id":"tribal-camp-m2-m68","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (treasure: the guards' pay and stolen goods in the longhouse)"}
+{"place_id":"tribal-camp-m2-m68","give_seq":0,"seq":0,"by":"record","status":"open","why":"combat-foes 'the Unbound's hired Naga guards at the fire': main quest 4 places them (Jeeta-Sakka, cast on the night guard, and three Naga guards, hostile, levels 4 to 5) at the fire by the longhouse; the draft's two guards keep the camp as a town's watch, not as foes, so the owner rules: the quest's placement delivers it, or the place's guards are made the camp's hostile warband at a fixed level"}
+{"place_id":"tribal-camp-m2-m68","give_seq":1,"seq":0,"by":"container","ref_id":"Skyrim.esm:097E36","status":"delivered","why":"the longhouse's store chest holds the guards' pay and stolen goods, T3 behind an Adept lock"}
 {"place_id":"tribal-camp-m2-m71","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-foes: Naga raiders)"}
 {"place_id":"tribal-camp-m2-m71","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-boss: the scarred old female who leads them)"}
 {"place_id":"tribal-camp-m2-m71","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (boss-chest: boss chest)"}

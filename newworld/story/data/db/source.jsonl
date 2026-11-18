@@ -1,6 +1,7 @@
 {"id":"cite-culture-forest-green","kind":"reasoning","title":"culture:forest-green","locator":"culture:forest-green"}
 {"id":"cite-newworld-story-quests-main-mn01-yaml","kind":"dossier","title":"newworld/story/quests/main/mn01.yaml","locator":"newworld/story/quests/main/mn01.yaml"}
 {"id":"cite-newworld-story-quests-main-mn03-yaml","kind":"dossier","title":"newworld/story/quests/main/mn03.yaml","locator":"newworld/story/quests/main/mn03.yaml"}
+{"id":"cite-newworld-story-quests-main-mn04-yaml","kind":"dossier","title":"newworld/story/quests/main/mn04.yaml","locator":"newworld/story/quests/main/mn04.yaml"}
 {"id":"cite-person-helstrom-87wth0ew4wj6aq9ctrc7gxazts","kind":"dossier","title":"person:helstrom.87WTH0EW4WJ6AQ9CTRC7GXAZTS","locator":"person:helstrom.87WTH0EW4WJ6AQ9CTRC7GXAZTS"}
 {"id":"cite-person-helstrom-8a62j4kyj8da3f58wkmry3y79f","kind":"dossier","title":"person:helstrom.8A62J4KYJ8DA3F58WKMRY3Y79F","locator":"person:helstrom.8A62J4KYJ8DA3F58WKMRY3Y79F"}
 {"id":"cite-person-helstrom-bgdsp6p2ttv6hnacjgn6kpvvby","kind":"dossier","title":"person:helstrom.BGDSP6P2TTV6HNACJGN6KPVVBY","locator":"person:helstrom.BGDSP6P2TTV6HNACJGN6KPVVBY"}
@@ -36,6 +37,7 @@
 {"id":"cite-place-give-outpost-m6-m66-3","kind":"reasoning","title":"place_give:outpost-m6-m66/3","locator":"place_give:outpost-m6-m66/3"}
 {"id":"cite-place-give-outpost-m6-m66-4","kind":"reasoning","title":"place_give:outpost-m6-m66/4","locator":"place_give:outpost-m6-m66/4"}
 {"id":"cite-place-give-outpost-m6-m66-6","kind":"reasoning","title":"place_give:outpost-m6-m66/6","locator":"place_give:outpost-m6-m66/6"}
+{"id":"cite-place-give-tribal-camp-m2-m68-1","kind":"reasoning","title":"place_give:tribal-camp-m2-m68/1","locator":"place_give:tribal-camp-m2-m68/1"}
 {"id":"cite-place-note-helstrom-dangers","kind":"reasoning","title":"place_note:helstrom/dangers","locator":"place_note:helstrom/dangers"}
 {"id":"cite-place-note-helstrom-economy","kind":"reasoning","title":"place_note:helstrom/economy","locator":"place_note:helstrom/economy"}
 {"id":"cite-place-note-helstrom-faith","kind":"reasoning","title":"place_note:helstrom/faith","locator":"place_note:helstrom/faith"}
@@ -54,9 +56,18 @@
 {"id":"cite-place-note-outpost-m6-m66-faith","kind":"reasoning","title":"place_note:outpost-m6-m66/faith","locator":"place_note:outpost-m6-m66/faith"}
 {"id":"cite-place-note-outpost-m6-m66-history","kind":"reasoning","title":"place_note:outpost-m6-m66/history","locator":"place_note:outpost-m6-m66/history"}
 {"id":"cite-place-note-outpost-m6-m66-present","kind":"reasoning","title":"place_note:outpost-m6-m66/present","locator":"place_note:outpost-m6-m66/present"}
+{"id":"cite-place-note-tribal-camp-m2-m68-dangers","kind":"reasoning","title":"place_note:tribal-camp-m2-m68/dangers","locator":"place_note:tribal-camp-m2-m68/dangers"}
+{"id":"cite-place-note-tribal-camp-m2-m68-economy","kind":"reasoning","title":"place_note:tribal-camp-m2-m68/economy","locator":"place_note:tribal-camp-m2-m68/economy"}
+{"id":"cite-place-note-tribal-camp-m2-m68-faith","kind":"reasoning","title":"place_note:tribal-camp-m2-m68/faith","locator":"place_note:tribal-camp-m2-m68/faith"}
+{"id":"cite-place-note-tribal-camp-m2-m68-history","kind":"reasoning","title":"place_note:tribal-camp-m2-m68/history","locator":"place_note:tribal-camp-m2-m68/history"}
+{"id":"cite-place-note-tribal-camp-m2-m68-hooks","kind":"reasoning","title":"place_note:tribal-camp-m2-m68/hooks","locator":"place_note:tribal-camp-m2-m68/hooks"}
+{"id":"cite-place-note-tribal-camp-m2-m68-look","kind":"reasoning","title":"place_note:tribal-camp-m2-m68/look","locator":"place_note:tribal-camp-m2-m68/look"}
+{"id":"cite-place-note-tribal-camp-m2-m68-people","kind":"reasoning","title":"place_note:tribal-camp-m2-m68/people","locator":"place_note:tribal-camp-m2-m68/people"}
+{"id":"cite-place-note-tribal-camp-m2-m68-present","kind":"reasoning","title":"place_note:tribal-camp-m2-m68/present","locator":"place_note:tribal-camp-m2-m68/present"}
 {"id":"cite-place-wealth-helstrom","kind":"dossier","title":"place_wealth:helstrom","locator":"place_wealth:helstrom"}
 {"id":"cite-place-wealth-outpost-m13-m65","kind":"dossier","title":"place_wealth:outpost-m13-m65","locator":"place_wealth:outpost-m13-m65"}
 {"id":"cite-place-wealth-outpost-m6-m66","kind":"dossier","title":"place_wealth:outpost-m6-m66","locator":"place_wealth:outpost-m6-m66"}
+{"id":"cite-place-wealth-tribal-camp-m2-m68","kind":"dossier","title":"place_wealth:tribal-camp-m2-m68","locator":"place_wealth:tribal-camp-m2-m68"}
 {"id":"cite-region-murkwood","kind":"reasoning","title":"region:murkwood","locator":"region:murkwood"}
 {"id":"cite-story-design-quests-35-cast-md","kind":"dossier","title":"story/design/quests/35-cast.md","locator":"story/design/quests/35-cast.md"}
 {"id":"cite-story-design-quests-lines-house-cardruhn-md","kind":"dossier","title":"story/design/quests/lines/house-cardruhn.md","locator":"story/design/quests/lines/house-cardruhn.md"}

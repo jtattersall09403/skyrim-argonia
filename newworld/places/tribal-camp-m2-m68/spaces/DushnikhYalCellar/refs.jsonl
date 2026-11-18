@@ -1,0 +1,2 @@
+{"id":"tribal-camp-m2-m68.K98TAEJK1P7EBA5SHY45ZAJH88","edid":null,"base":"Skyrim.esm:05AD3C","kind":"door","pos":[120,-1080,232],"rot":[0,0,0],"scale":1,"layer":"place","flags":["persistent"],"src":"Skyrim.esm:067742","door":{"to_space":"DushnikhYalLonghouse","to_ref":"tribal-camp-m2-m68.CTAKRXWTS1S681FQ5EB4YQ39MM","to_pos":[208.25258,249.30089,1.1185589],"to_rot":[0,0,-2.4831848],"flags":"0"},"seat":{"mode":"free"}}
+{"id":"tribal-camp-m2-m68.T1MW06F0FRSQQD6SNADJM4935K","src":"Skyrim.esm:0E957A","removed":true}

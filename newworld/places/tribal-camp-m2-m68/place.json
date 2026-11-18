@@ -2,5 +2,477 @@
  "place_id": "tribal-camp-m2-m68",
  "source_id": "skyrim.dushnikhyallocation",
  "similar": [],
- "draft": {}
+ "draft": {
+  "people_from": [
+   "kingofthemurkmire.seekhatyollocation",
+   "kingofthemurkmire.keebahollowlocation"
+  ],
+  "add": [
+   {
+    "base": "Skyrim.esm:0CE0AE",
+    "kind": "static",
+    "pos": [
+     -12700,
+     -553300
+    ],
+    "rot_z": 4.712,
+    "need": 0,
+    "tier": "AGENT_INVENTED",
+    "why": "the cage at the camp's west edge, far from the fire by the longhouse and open toward the reeds (place record: look and present notes; main quest 4's need: Sesk's Cage): Skyrim's long metal cage; its gate is the quest's cage door (MetalCageLongGate01, Novice lock, its key on Jeeta-Sakka), at the cage's own place and turn"
+   },
+   {
+    "base": "Skyrim.esm:08632A",
+    "kind": "clutter",
+    "pos": [
+     -10760,
+     -552250
+    ],
+    "rot_z": 0.0,
+    "need": 1,
+    "tier": "AGENT_INVENTED",
+    "why": "jars of Hist sap stacked by the longhouse wall beside its door, more than any camp would need (place record: economy and hooks notes; main quest 4's need): Skyrim's glazed urns, beside the quest's own stack of sap jars"
+   },
+   {
+    "base": "Skyrim.esm:08632A",
+    "kind": "clutter",
+    "pos": [
+     -10700,
+     -552300
+    ],
+    "rot_z": 0.9,
+    "need": 1,
+    "tier": "AGENT_INVENTED",
+    "why": "jars of Hist sap stacked by the longhouse wall beside its door, more than any camp would need (place record: economy and hooks notes; main quest 4's need): Skyrim's glazed urns, beside the quest's own stack of sap jars"
+   },
+   {
+    "base": "Skyrim.esm:08632A",
+    "kind": "clutter",
+    "pos": [
+     -10735,
+     -552190
+    ],
+    "rot_z": 2.1,
+    "need": 1,
+    "tier": "AGENT_INVENTED",
+    "why": "jars of Hist sap stacked by the longhouse wall beside its door, more than any camp would need (place record: economy and hooks notes; main quest 4's need): Skyrim's glazed urns, beside the quest's own stack of sap jars"
+   }
+  ],
+  "room_names": {
+   "DushnikhYalMine": {
+    "name": "Karsh-Naal Mine",
+    "why": "the old mine under the camp, from before the Naga came; a player finds tunnels and ore there"
+   },
+   "DushnikhYalCellar": {
+    "name": "Karsh-Naal Cellar",
+    "why": "the cellar under the longhouse (main quest 4 need: the longhouse and its cellar), where the guards keep their pay and stolen goods"
+   }
+  }
+ },
+ "fit": {
+  "pivot": [
+   -145814.0,
+   -23757.1
+  ],
+  "anchor": [
+   -11059.2,
+   -552960.0
+  ],
+  "rot_deg": 0.0,
+  "cost": 0.0,
+  "clusters": {
+   "b01": {
+    "pivot": [
+     -145814.0,
+     -23757.1
+    ],
+    "to": [
+     -11059.2,
+     -552960.0
+    ],
+    "rot": 0.0,
+    "dx": 0.0,
+    "dy": 0.0,
+    "drot_deg": 0.0,
+    "cost_before": 0.0,
+    "cost_after": 0.0
+   },
+   "s01": {
+    "pivot": [
+     -145814.0,
+     -23757.1
+    ],
+    "to": [
+     -10985.7,
+     -553137.4
+    ],
+    "rot": 0.0,
+    "dx": 0.0,
+    "dy": 0.0,
+    "drot_deg": 0.0,
+    "cost_before": 0.0,
+    "cost_after": 0.0
+   },
+   "s02": {
+    "pivot": [
+     -145814.0,
+     -23757.1
+    ],
+    "to": [
+     -11059.2,
+     -552960.0
+    ],
+    "rot": 0.0,
+    "dx": 0.0,
+    "dy": 0.0,
+    "drot_deg": 0.0,
+    "cost_before": 0.0,
+    "cost_after": 0.0
+   },
+   "s03": {
+    "pivot": [
+     -145814.0,
+     -23757.1
+    ],
+    "to": [
+     -11059.2,
+     -552960.0
+    ],
+    "rot": 0.0,
+    "dx": 0.0,
+    "dy": 0.0,
+    "drot_deg": 0.0,
+    "cost_before": 0.0,
+    "cost_after": 0.0
+   },
+   "s04": {
+    "pivot": [
+     -145814.0,
+     -23757.1
+    ],
+    "to": [
+     -11251.2,
+     -552960.0
+    ],
+    "rot": 0.0,
+    "dx": 0.0,
+    "dy": 0.0,
+    "drot_deg": 0.0,
+    "cost_before": 0.0,
+    "cost_after": 0.0
+   },
+   "s05": {
+    "pivot": [
+     -145814.0,
+     -23757.1
+    ],
+    "to": [
+     -11059.2,
+     -552960.0
+    ],
+    "rot": 0.0,
+    "dx": 0.0,
+    "dy": 0.0,
+    "drot_deg": 0.0,
+    "cost_before": 0.0,
+    "cost_after": 0.0
+   },
+   "s06": {
+    "pivot": [
+     -145814.0,
+     -23757.1
+    ],
+    "to": [
+     -11059.2,
+     -552960.0
+    ],
+    "rot": 0.0,
+    "dx": 0.0,
+    "dy": 0.0,
+    "drot_deg": 0.0,
+    "cost_before": 0.0,
+    "cost_after": 0.0
+   },
+   "s07": {
+    "pivot": [
+     -145814.0,
+     -23757.1
+    ],
+    "to": [
+     -10863.3,
+     -553433.0
+    ],
+    "rot": 0.0,
+    "dx": 0.0,
+    "dy": 0.0,
+    "drot_deg": 0.0,
+    "cost_before": 0.0,
+    "cost_after": 0.0
+   },
+   "s08": {
+    "pivot": [
+     -145814.0,
+     -23757.1
+    ],
+    "to": [
+     -11059.2,
+     -552960.0
+    ],
+    "rot": 0.0,
+    "dx": 0.0,
+    "dy": 0.0,
+    "drot_deg": 0.0,
+    "cost_before": 0.0,
+    "cost_after": 0.0
+   },
+   "s09": {
+    "pivot": [
+     -145814.0,
+     -23757.1
+    ],
+    "to": [
+     -11330.7,
+     -553231.5
+    ],
+    "rot": 0.0,
+    "dx": 0.0,
+    "dy": 0.0,
+    "drot_deg": 0.0,
+    "cost_before": 0.0,
+    "cost_after": 0.0
+   },
+   "s11": {
+    "pivot": [
+     -145814.0,
+     -23757.1
+    ],
+    "to": [
+     -11059.2,
+     -552960.0
+    ],
+    "rot": 0.0,
+    "dx": 0.0,
+    "dy": 0.0,
+    "drot_deg": 0.0,
+    "cost_before": 0.0,
+    "cost_after": 0.0
+   }
+  },
+  "separated": [
+   {
+    "cluster": "s07",
+    "dx": 195.9,
+    "dy": -473.0,
+    "clear_of": "b01"
+   },
+   {
+    "cluster": "s01",
+    "dx": 73.5,
+    "dy": -177.4,
+    "clear_of": "b01"
+   },
+   {
+    "cluster": "s04",
+    "dx": -192.0,
+    "dy": -0.0,
+    "clear_of": "b01"
+   },
+   {
+    "cluster": "s09",
+    "dx": -271.5,
+    "dy": -271.5,
+    "clear_of": "b01"
+   }
+  ],
+  "clusters_info": [
+   {
+    "id": "b01",
+    "kind": "building",
+    "head": "Skyrim.esm:0975FE",
+    "members": 175,
+    "centre": [
+     -145814.0,
+     -23757.1
+    ]
+   },
+   {
+    "id": "s01",
+    "kind": "street",
+    "head": null,
+    "members": 13,
+    "centre": [
+     -144362.1,
+     -25860.9
+    ]
+   },
+   {
+    "id": "s02",
+    "kind": "street",
+    "head": null,
+    "members": 3,
+    "centre": [
+     -142915.7,
+     -21054.1
+    ]
+   },
+   {
+    "id": "s03",
+    "kind": "street",
+    "head": null,
+    "members": 8,
+    "centre": [
+     -143259.0,
+     -21798.6
+    ]
+   },
+   {
+    "id": "s04",
+    "kind": "street",
+    "head": null,
+    "members": 203,
+    "centre": [
+     -145040.9,
+     -21953.3
+    ]
+   },
+   {
+    "id": "s05",
+    "kind": "street",
+    "head": null,
+    "members": 1,
+    "centre": [
+     -143544.6,
+     -20604.7
+    ]
+   },
+   {
+    "id": "s06",
+    "kind": "street",
+    "head": null,
+    "members": 2,
+    "centre": [
+     -145154.7,
+     -20707.8
+    ]
+   },
+   {
+    "id": "s07",
+    "kind": "street",
+    "head": null,
+    "members": 25,
+    "centre": [
+     -147016.9,
+     -24696.1
+    ]
+   },
+   {
+    "id": "s08",
+    "kind": "street",
+    "head": null,
+    "members": 3,
+    "centre": [
+     -145092.5,
+     -25025.8
+    ]
+   },
+   {
+    "id": "s09",
+    "kind": "street",
+    "head": null,
+    "members": 2,
+    "centre": [
+     -147089.5,
+     -23260.8
+    ]
+   },
+   {
+    "id": "s11",
+    "kind": "street",
+    "head": null,
+    "members": 1,
+    "centre": [
+     -145517.4,
+     -25642.3
+    ]
+   }
+  ],
+  "relief_norm": 64.0,
+  "patch_max": 105.0
+ },
+ "clearance": {
+  "tree": {
+   "building": 59.9,
+   "door": 768.0,
+   "street": 193.1,
+   "samples": 138
+  },
+  "low": {
+   "building": 8.9,
+   "door": 290.0,
+   "street": 150.7,
+   "samples": 95
+  }
+ },
+ "factions": [
+  {
+   "id": "tribal-camp-m2-m68.crime",
+   "kind": "crime",
+   "name": "Karsh-Naal Camp",
+   "jail": null,
+   "owing": null,
+   "law": "none",
+   "law_why": "no one keeps law: hostile, inhabited"
+  },
+  {
+   "id": "tribal-camp-m2-m68.guard",
+   "kind": "guard",
+   "crime": "tribal-camp-m2-m68.crime"
+  },
+  {
+   "id": "tribal-camp-m2-m68.town",
+   "kind": "town",
+   "crime": "tribal-camp-m2-m68.crime"
+  }
+ ],
+ "stations": {
+  "needed": [],
+  "found": {},
+  "missing": [],
+  "added": [],
+  "rent_bed": null
+ },
+ "lights": {
+  "added": []
+ },
+ "hang": {
+  "added": []
+ },
+ "ground": {
+  "bundle": "ground.tribal-camp-m2-m68",
+  "sha": "55a7b4621b93be314c702d8a8be57d0cbdd3f102ce5456e6f347a95fdeddcafc",
+  "stamp": "85df25bc9f0c645b"
+ },
+ "source": {
+  "bundle": "src.skyrim.dushnikhyallocation",
+  "stamp": "1d45dc45625dd059"
+ },
+ "radius_m": 130,
+ "counts": {
+  "source_refs": 520,
+  "placed": 439,
+  "adapted": 0,
+  "replaced": 0,
+  "dropped": 81,
+  "exterior_refs": 440,
+  "clusters": 11,
+  "land_patches": 0,
+  "plants_cleared": 91,
+  "paths": 1,
+  "interiors": 3,
+  "people": {
+   "guard": 2,
+   "resident": 7
+  },
+  "beds": 9
+ },
+ "draft_key": "22a7262c9e40d3f7"
 }
