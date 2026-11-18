@@ -791,3 +791,6 @@ added here the day they are made, with the date and the issue.
 - 2026-11-18 (#77): "Add a toggle-able layer to the atlas for the fast travel network. Make it so it will be
   automatically always up to date if we make changes to the network". The Atlas has a "Fast travel" layer drawn
   from the travel network at each build, and `make check` fails while the published Atlas is behind the network.
+- 2026-11-18 (in session): "change default model type to opus 5.5 medium effort for planner sessions (I'm out of
+  fable usage for this week)". The lead session started by the build VM's wake (infra/build-vm/resume.sh) and a
+  queued next session (tooling/next_session.sh) run on Opus 5.5 at medium effort.

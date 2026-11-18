@@ -38,7 +38,7 @@ done
 
 if [ $DRY = 0 ] && tmux has-session -t argonia 2>/dev/null; then exit 0; fi
 
-CLAUDE="claude --permission-mode auto"
+CLAUDE="claude --permission-mode auto --model claude-opus-5-5 --effort medium"
 mode=idle
 # No marker is not proof of an interrupted task: the CloudWatch backstop alarm (an hour under 3% CPU) and a manual
 # stop from the console write none (2026-11-05 19:31: an idle stop by the alarm read as a cut-off). The build VM is
