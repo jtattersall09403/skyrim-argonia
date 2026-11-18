@@ -173,7 +173,7 @@ const $ = (s, el = document) => el.querySelector(s);
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const STATUS = {outlined:"Outlined", written:"Written", reviewed:"Reviewed", built:"Built"};
 const STATUS_HELP = {outlined:"This quest is told at arc level in its line's story. It is not yet written out stage by stage.",
-  written:"This quest is written out in full, with its people, stages and endings.", reviewed:"This quest is written out in full and fresh readers have read it on paper.",
+  written:"This quest is written out in full, with its people, stages and endings, but no fresh player has yet played it through on paper.", reviewed:"This quest is written out in full and has passed a play-through on paper by a fresh player, or a fresh reading of its line.",
   built:"Our plugin holds a record of this quest."};
 const KIND = {plot:"Faction story", line:"Line story", background:"Background", ledger:"Ledger", world:"Province digest", region:"Region", spells:"Spells by use"};
 const kindOf = d => d.kind === "plot" && d.id === "main-plot" ? "Main quest plot" : KIND[d.kind] || d.kind;
@@ -340,7 +340,7 @@ async function viewDoc(id) {
 async function viewQuest(hid) {
   const q = CAT.quests.find(x => hashId(x.id) === hid); if (!q) return notFound();
   setNav("quests"); CUR = {item: q.id, label: `${q.id} ${q.title}`};
-  const d = await loadDoc(q.line), byId = Object.fromEntries(d.blocks.map(b => [b.id, b]));
+  const d = await loadDoc(q.doc || q.line), byId = Object.fromEntries(d.blocks.map(b => [b.id, b]));
   const pLink = n => { const p = personById(slug(n)); return p ? `<a class="chip" href="#p-${p.id}">${esc(n)}</a>` : `<span class="chip">${esc(n)}</span>`; };
   const plLink = n => { const p = placeById(slug(n.replace(/\s*\(.*$/, ""))); return p ? `<a class="chip" href="#pl-${p.id}">${esc(n)}</a>` : `<span class="chip">${esc(n)}</span>`; };
   const cast = q.cast.length ? q.cast.map(c => c.name.split(",")[0]) : q.sketch.people.map(p => p.name);

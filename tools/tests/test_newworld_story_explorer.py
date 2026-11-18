@@ -226,3 +226,54 @@ def test_the_note_bar_sits_under_the_header_clear_of_chrome_android():
     rule = page.split(".act{", 1)[1].split("}", 1)[0]
     assert "position:fixed" in rule and "top:var(--act-top" in rule and "bottom:" not in rule
     assert "getBoundingClientRect" in page.split("function placeAct", 1)[1][:200]
+
+
+RECORD_YAML = """id: quest.main.mn02
+code: MN02
+title: The Dry Tree
+line: quest.line.main
+premise: A dying tree and a herald who wants it saved.
+anchorPlaces: [jal-veesa]
+cast:
+- {id: npc.mn.vosh-leera, name: Vosh-Leera, persona: {role: root-herald, race: Argonian, home: jal-veesa}, wants: the tree saved}
+stages:
+- {id: 10, place: jal-veesa, journalText: I am to see Vosh-Leera., objectives: [{objectiveText: Speak to Vosh-Leera.}],
+   information: {next: Go to Jal-Veesa.}}
+- {id: 90, ending: true, journalText: It is done.}
+endings:
+- {id: e-done, when: the tree was saved, seen: the herald thanks the player, rewards: [{giveGold: 50}]}
+"""
+
+
+def record_tree(root: Path) -> Path:
+    plot_tree(root)
+    (root / se.RECORDS / "main").mkdir(parents=True)
+    (root / se.RECORDS / "main" / "mn02.yaml").write_text(RECORD_YAML)
+    return root
+
+
+def test_a_quest_record_is_a_quest_with_its_stages(tmp_path):
+    root = record_tree(tmp_path / "r")
+    c = se.generate(root, tmp_path / "out")
+    q = next(x for x in c["quests"] if x["id"] == "MN02")
+    assert (q["title"], q["line"], q["status"], q["doc"]) == ("The Dry Tree", "main-plot", "written", "mn02")
+    assert [s["stage"] for s in q["stages"]] == ["10", "90"]
+    assert [f["name"] for f in q["fields"]] == ["Premise", "People", "Places", "Stages", "Endings"]
+    assert "MN02" in next(x for x in c["lines"] if x["id"] == "main-plot")["quests"]
+    doc = json.loads((tmp_path / "out" / "data" / "doc-mn02.json").read_text())
+    text = json.dumps(doc)
+    assert "Speak to Vosh-Leera." in text and "50 gold" in text
+    assert all(b["id"].startswith("mn02/") for b in doc["blocks"])
+    assert "MN02" in next(p for p in c["people"] if p["name"] == "Vosh-Leera")["quests"]
+    grade = root / se.PLAYTESTS / "quest.main.mn02" / "run1" / "grade.md"
+    grade.parent.mkdir(parents=True)
+    grade.write_text("pass: all clear\n")
+    assert next(x for x in se.generate(root, tmp_path / "out")["quests"] if x["id"] == "MN02")["status"] == "reviewed"
+
+
+def test_a_record_change_changes_the_hash(tmp_path):
+    root = record_tree(tmp_path / "r")
+    before = se.sources_hash(root)
+    p = root / se.RECORDS / "main" / "mn02.yaml"
+    p.write_text(p.read_text().replace("Dry Tree", "Wet Tree"))
+    assert se.sources_hash(root) != before

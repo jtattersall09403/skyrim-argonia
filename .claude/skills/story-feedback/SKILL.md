@@ -47,7 +47,9 @@ notes; `story-explorer-drafts-gone`, removals by id and time) and merges the two
    `data: {"status": "picked up", "pickedUpAt": <now>, "pickedUpBy": <your session>}`.
 3. Act on every note. The quote and `block` find the passage in its source file (the document id is the file's
    name under `story/design/quests/lines/` or `story/design/world/`, and `spell-groups` is
-   `story/design/quests/spell-groups.md`; each numbered item, each table and each paragraph is its own block); a note made on an older `version` may point
+   `story/design/quests/spell-groups.md`; each numbered item, each table and each paragraph is its own block). A
+   note on a quest that has a record carries `item` = its code (`MN05`) and a block `mn05/<section>/<n>`; its source
+   is the record, `newworld/story/quests/<line>/<code>.yaml`, changed only through `quest-write`. A note made on an older `version` may point
    at text that has since moved, so search for the quote. Story and quest changes go through the quest skills,
    entered at `quest-system`, and the owner's bar; a ruling in a note goes to owner-rulings and owner-bar the same
    day.

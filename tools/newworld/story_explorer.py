@@ -23,6 +23,11 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
+if __package__ in (None, ""):
+    sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+from tools.playtest.game import HarnessError  # noqa: E402
+from tools.playtest.record import humanize, load  # noqa: E402  the quest tools' one reader of a record
+
 ROOT = Path(__file__).resolve().parents[2]
 LINES = Path("story/design/quests/lines")
 WORLD = Path("story/design/world")
@@ -32,6 +37,8 @@ PAGE = Path(__file__).with_name("story_explorer_page.html")
 RECORD = Path(__file__).with_name("story_explorer.json")
 OUT = ROOT / "out" / "story-explorer"
 PLUGIN_QUESTS = Path("plugin/Argonia/Quests")
+RECORDS = Path("newworld/story/quests")          # quest records, one YAML view each: <line>/<code>.yaml
+PLAYTESTS = Path("story/playtests")             # paper playtest runs: <quest id>/<run>/grade.md
 
 QUEST_HEAD = re.compile(r"^([A-Z]{2}\d{2})\.\s+(.+)$")
 ARC_QUEST = re.compile(r"^\*\*([A-Z]{2}\d{2})[.,]?\s+(.+?)\*\*\s*(.*)$")
@@ -51,7 +58,14 @@ def sources(root: Path = ROOT) -> list[Path]:
     out += sorted((root / WORLD / "regions").glob("*.md"))
     if (root / SPELLS).exists():
         out.append(root / SPELLS)
+    out += record_files(root)
+    out += sorted((root / PLAYTESTS).glob("*/*/grade.md"))
     return [p.relative_to(root) for p in out]
+
+
+def record_files(root: Path = ROOT) -> list[Path]:
+    """The new world's quest records: each record's YAML view, the quest skills' source for it."""
+    return sorted((root / RECORDS).glob("*/*.yaml"))
 
 
 def sources_hash(root: Path = ROOT) -> str:
@@ -313,6 +327,144 @@ def built_records(root: Path) -> dict[str, str]:
     return out
 
 
+# ---- quest records -------------------------------------------------------------------------------------------
+
+def _one(s) -> str:
+    return re.sub(r"\s+", " ", str(s)).strip()
+
+
+def _reward(a) -> str:
+    """An ending's reward or world action in plain words."""
+    if isinstance(a, dict) and len(a) == 1:
+        (k, v), = a.items()
+        if k == "giveGold":
+            return f"{v} gold"
+        if k == "giveItem" and isinstance(v, list):
+            return f"{humanize(v[0])}" + (f" ({v[1]})" if len(v) > 1 and v[1] != 1 else "")
+        if k == "setFactionRank" and isinstance(v, list):
+            return f"a place in {humanize(v[0])}"
+        return ""
+    return _one(a) if isinstance(a, str) else ""
+
+
+def record_markdown(q: dict) -> str:
+    """A quest record as a readable page: one section per kind of content, only those the record has."""
+    names = {c["id"]: c.get("name") or humanize(c["id"]) for c in q.get("cast") or [] if isinstance(c, dict)}
+    pname = {p.get("anchor", {}).get("place") if isinstance(p.get("anchor"), dict) else None: p.get("placeName")
+             for p in q.get("placements") or [] if isinstance(p, dict) and p.get("placeName")}
+    place = lambda pid: pname.get(pid) or humanize(pid)  # noqa: E731
+    out = [f"# {q['code']}. {_one(q['title'])}"]
+    if q.get("premise"):
+        out += ["## Premise", _one(q["premise"])]
+    if q.get("playerStart") or q.get("facts"):
+        out.append("## What the player learns")
+        if q.get("playerStart"):
+            out.append("At the start: " + _one(", ".join(map(str, q["playerStart"]))) + ".")
+        out += ["- " + _one(f["claim"]) for f in q.get("facts") or [] if isinstance(f, dict) and f.get("claim")]
+    if q.get("cast"):
+        out.append("## People")
+        for c in q["cast"]:
+            per = c.get("persona") if isinstance(c.get("persona"), dict) else {}
+            bits = [x for x in (per.get("role"), per.get("race")) if x]
+            home = f", at {place(str(per['home']).split(' ')[0])}" if per.get("home") else ""
+            line = f"- **{names[c['id']]}**" + (f", {', '.join(map(str, bits))}" if bits else "") + home + "."
+            if c.get("wants"):
+                line += f" Wants {_one(c['wants'])}."
+            if c.get("fears"):
+                line += f" Fears {_one(c['fears'])}."
+            out.append(line)
+    places = list(dict.fromkeys([*(q.get("anchorPlaces") or []), *(s.get("place") for s in q.get("stages") or [])]))
+    places = [p for p in places if p]
+    if places:
+        out += ["## Places", "- " + "\n- ".join(place(p) for p in places)]
+    if q.get("things"):
+        out.append("## Things")
+        for t in q["things"]:
+            if isinstance(t, dict) and t.get("name"):
+                out.append(f"- **{_one(t['name'])}**" + (f": {_one(t['where'])}" if t.get("where") else "") + ".")
+    if q.get("stages"):
+        out.append("## Stages")
+        for s in q["stages"]:
+            out.append(f"### Stage {s['id']}" + (f" at {place(s['place'])}" if s.get("place") else ""))
+            if s.get("journalText"):
+                out.append(f"Journal: *{_one(s['journalText'])}*")
+            objs = [o.get("objectiveText") for o in s.get("objectives") or [] if isinstance(o, dict)]
+            if any(objs):
+                out.append("- " + "\n- ".join("Objective: " + _one(o) for o in objs if o))
+            info = s.get("information") if isinstance(s.get("information"), dict) else {}
+            told = [f"{lab} {_one(info[k])}" for k, lab in (("going", "What is going on:"), ("next", "What to do next:"),
+                                                            ("ways", "Ways through:")) if info.get(k)]
+            if told:
+                out.append("- " + "\n- ".join(told))
+            if s.get("directions"):
+                out.append(f"Directions: {_one(s['directions'])}")
+    if q.get("endings"):
+        out.append("## Endings")
+        for e in q["endings"]:
+            line = f"- **When {_one(e.get('when', e['id']))}.**"
+            if e.get("seen"):
+                line += f" What follows: {_one(e['seen'])}."
+            gives = [x for x in [*map(_reward, e.get("rewards") or []), *map(_reward, e.get("world") or [])] if x]
+            gives += [_one(x) for x in (e.get("gives") or []) if isinstance(x, str)] if isinstance(e.get("gives"), list) \
+                else ([_one(e["gives"])] if e.get("gives") else [])
+            if gives:
+                line += f" Gives: {'; '.join(gives)}."
+            costs = e.get("costs")
+            if costs:
+                line += f" Costs: {'; '.join(map(_one, costs)) if isinstance(costs, list) else _one(costs)}."
+            out.append(line)
+    return "\n\n".join(out) + "\n"
+
+
+def playtest_passed(root: Path, qid: str) -> bool:
+    return any(g.read_text(errors="ignore").lstrip().lower().startswith("pass")
+               for g in (root / PLAYTESTS / qid).glob("*/grade.md"))
+
+
+def line_doc(line: str, docs: list[dict]) -> dict | None:
+    """The explorer's line page for a record's `line` (quest.line.main -> main-plot)."""
+    tail = str(line).split(".")[-1]
+    ids = {d["id"]: d for d in docs if d["kind"] in ("line", "plot")}
+    return next((ids[c] for c in (f"{tail}-plot", f"{tail}-newworld", tail) if c in ids), None)
+
+
+def record_quests(root: Path, docs: list[dict], built: dict[str, str]) -> tuple[list[dict], list[dict]]:
+    """Every quest record as a quest of the Quests tab, with the record's own page as a document."""
+    quests, rdocs = [], []
+    for p in record_files(root):
+        try:
+            q = load(p)
+        except HarnessError:
+            continue
+        ld = line_doc(q.get("line", ""), docs)
+        if not ld or not q.get("code"):
+            continue
+        rel = p.relative_to(root)
+        d = build_doc(rel, record_markdown(q))
+        d["kind"] = "record"
+        rdocs.append(d)
+        fields: list[dict] = []
+        for b in d["blocks"]:
+            if b["_raw"]["t"] == "h" and b["_raw"]["level"] == 1:
+                continue
+            name = b["section"].split(" / ")[0]
+            if not fields or fields[-1]["name"] != name:
+                fields.append({"name": name, "blocks": []})
+            fields[-1]["blocks"].append(b["id"])
+        status = "reviewed" if playtest_passed(root, q["id"]) else "written"
+        if built.get(q["code"], "").find(str(q["title"])) >= 0:
+            status = "built"
+        cast = [{"name": c.get("name") or humanize(c["id"]), "row": {"what they want": _one(c.get("wants", ""))}}
+                for c in q.get("cast") or [] if isinstance(c, dict)]
+        places = [b for b in d["blocks"] if b["section"] == "Places" and b["_raw"]["t"] == "list"]
+        sketch = {"places": [{"name": plain(x)} for b in places for x in b["_raw"]["items"]], "people": [], "things": []}
+        stages = [{"stage": str(s["id"]), "journal": _one(s.get("journalText", ""))} for s in q["stages"]]
+        quests.append({"id": q["code"], "title": _one(q["title"]), "line": ld["id"], "lineTitle": ld["title"],
+                       "doc": d["id"], "status": status, "fields": fields, "cast": cast, "stages": stages,
+                       "sketch": sketch, "_text": " ".join(json.dumps(b["_raw"]) for b in d["blocks"])})
+    return quests, rdocs
+
+
 # ---- people and places ---------------------------------------------------------------------------------------
 
 def people_and_places(docs: list[dict], quests: list[dict]) -> tuple[list[dict], list[dict]]:
@@ -459,8 +611,12 @@ def summary(d: dict) -> str:
 def generate(root: Path = ROOT, out: Path = OUT) -> dict:
     version = sources_hash(root)
     built = built_records(root)
-    docs = [build_doc(rel, (root / rel).read_text()) for rel in sources(root)]
+    docs = [build_doc(rel, (root / rel).read_text()) for rel in sources(root)
+            if rel.suffix == ".md" and not rel.is_relative_to(PLAYTESTS)]
     quests = [q for d in docs for q in quests_of(d, built)]
+    rquests, rdocs = record_quests(root, docs, built)
+    have = {q["id"] for q in rquests}
+    quests = [q for q in quests if q["id"] not in have] + rquests   # a record replaces its outline
     people, places = people_and_places(docs, quests)
     lines = []
     for d in docs:
@@ -471,6 +627,7 @@ def generate(root: Path = ROOT, out: Path = OUT) -> dict:
             lines.append({"id": d["id"], "title": d["title"], "kind": d["kind"], "quests": [q["id"] for q in qs],
                           "readOnPaper": reviewed, "status": d["status"],
                           "summary": summary(d)})
+    docs += rdocs
     catalog = {
         "version": version,
         "generated": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
