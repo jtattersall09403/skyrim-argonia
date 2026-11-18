@@ -28,6 +28,7 @@ if __package__ in (None, ""):
 from tools.playtest.game import HarnessError  # noqa: E402
 from tools.playtest.record import humanize, load  # noqa: E402  the quest tools' one reader of a record
 from tools.newworld import quest_play as QP  # noqa: E402  a record read as the play
+from tools.newworld import quest_graph as QG  # noqa: E402  a record as a branching sequence of beats
 
 ROOT = Path(__file__).resolve().parents[2]
 LINES = Path("story/design/quests/lines")
@@ -169,7 +170,25 @@ def render(b: dict) -> dict:
         return {"t": "list", "ordered": b["ordered"], "items": [inline(x) for x in b["items"]], "start": b.get("start", 1)}
     if b["t"] == "table":
         return {"t": "table", "head": [inline(x) for x in b["head"]], "rows": [[inline(x) for x in r] for r in b["rows"]]}
+    if b["lang"] in ("beat", "questgraph"):
+        d = json.loads(b["text"])
+        if b["lang"] == "questgraph":
+            return {"t": "graph", "graph": d}
+        return {"t": "beat", "node": d["node"], "kind": d.get("kind", ""), "title": inline(d["title"]), "place": d.get("place", ""),
+                "stage": d.get("stage"), "gaps": len(d.get("gaps") or []), "html": md_html(d["prose"]),
+                "detail": md_html(d["detail"])}
     return {"t": "code", "lang": b["lang"], "text": b["text"]}
+
+
+def md_html(chunks: list[str]) -> str:
+    """Short markdown chunks (paragraphs, or lists of "- " items) as safe HTML."""
+    out = []
+    for c in chunks:
+        if c.startswith("- "):
+            out.append("<ul>" + "".join(f"<li>{inline(x)}</li>" for x in c[2:].split("\n- ")) + "</ul>")
+        else:
+            out.append(f"<p>{inline(c)}</p>")
+    return "".join(out)
 
 
 # ---- documents, sections, quests -----------------------------------------------------------------------------
@@ -335,16 +354,17 @@ def _one(s) -> str:
     return re.sub(r"\s+", " ", str(s)).strip()
 
 
-def _reward(a) -> str:
+def _reward(a, words=None) -> str:
     """An ending's reward or world action in plain words."""
+    name = words.plain if words else humanize
     if isinstance(a, dict) and len(a) == 1:
         (k, v), = a.items()
         if k == "giveGold":
             return f"{v} gold"
         if k == "giveItem" and isinstance(v, list):
-            return f"{humanize(v[0])}" + (f" ({v[1]})" if len(v) > 1 and v[1] != 1 else "")
+            return f"{name(v[0])}" + (f" ({v[1]})" if len(v) > 1 and v[1] != 1 else "")
         if k == "setFactionRank" and isinstance(v, list):
-            return f"a place in {humanize(v[0])}"
+            return f"a place in {name(v[0])}"
         return ""
     return _one(a) if isinstance(a, str) else ""
 
@@ -389,12 +409,21 @@ def record_markdown(q: dict, records: dict[str, dict] | None = None) -> str:
         for t in q["things"]:
             if isinstance(t, dict) and t.get("name"):
                 out.append(f"- **{_one(t['name'])}**" + (f": {_one(t['where'])}" if t.get("where") else "") + ".")
+    play = QP.Play(q, records)
+    words = QG.Words(play, records)
     if q.get("stages"):
-        play = QP.Play(q, records)
-        out += ["## Stages", QP.GIST_NOTE]
-        for s in play.stages:
-            out.append(f"### {QP.stage_heading(play, s)}")
-            out += play.stage_play(s) + play.stage_rest(s)
+        g = QG.build(q, records)
+        bs = QG.beats(q, records, g)
+        out += ["## The quest at a glance",
+                "Each box is a beat of the quest; an arrow is what moves you from one to the next. Solid arrows are "
+                "the ways through, dashed ones are what happens when things go wrong, and a box marked with a "
+                "warning is a gap the record leaves. Tap a box to read that beat.",
+                "```questgraph\n" + json.dumps(QG.diagram(g), ensure_ascii=False) + "\n```"]
+        if g["gaps"]:
+            out.append("**Gaps the record leaves.**")
+            out.append("- " + "\n- ".join(f"{_gap_where(g, x)}: {x['text']}" for x in g["gaps"]))
+        out += ["## The quest, beat by beat", QP.GIST_NOTE]
+        out += ["```beat\n" + json.dumps(b, ensure_ascii=False) + "\n```" for b in bs]
         readable = play.readables()
         if readable:
             out += ["## Things you can read", *readable]
@@ -404,7 +433,8 @@ def record_markdown(q: dict, records: dict[str, dict] | None = None) -> str:
             line = f"- **When {_one(e.get('when', e['id']))}.**"
             if e.get("seen"):
                 line += f" What follows: {_one(e['seen'])}."
-            gives = [x for x in [*map(_reward, e.get("rewards") or []), *map(_reward, e.get("world") or [])] if x]
+            gives = [x for x in [*(_reward(a, words) for a in e.get("rewards") or []),
+                                 *(_reward(a, words) for a in e.get("world") or [])] if x]
             gives += [_one(x) for x in (e.get("gives") or []) if isinstance(x, str)] if isinstance(e.get("gives"), list) \
                 else ([_one(e["gives"])] if e.get("gives") else [])
             if gives:
@@ -414,7 +444,12 @@ def record_markdown(q: dict, records: dict[str, dict] | None = None) -> str:
                 line += f" Costs: {'; '.join(map(_one, costs)) if isinstance(costs, list) else _one(costs)}."
             out.append(line)
     out += ["## Leads on", *QP.leads_on(q, records)]
-    return "\n\n".join(out) + "\n"
+    return words.scrub("\n\n".join(out) + "\n")
+
+
+def _gap_where(g: dict, x: dict) -> str:
+    n = next(n for n in g["nodes"] if n["id"] == x["node"])
+    return f"[{n['title']}](#beat-{n['id']})" if n["kind"] != "start" else "At the start"
 
 
 def playtest_passed(root: Path, qid: str) -> bool:

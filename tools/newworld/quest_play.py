@@ -112,8 +112,9 @@ class Play:
         return ""
 
     def who(self, ref) -> str:
-        w = self.where(ref)
-        return f"{self.name(ref)} ({w})" if w else self.name(ref)
+        w, n = self.where(ref), self.name(ref)
+        w = re.sub(rf"^{re.escape(n)}\s*,?\s*", "", w) if w else w
+        return f"{n} ({w})" if w else n
 
     # ---- words --------------------------------------------------------------------------------------------------
     def said(self, t: dict) -> list[str]:
@@ -127,8 +128,10 @@ class Play:
             return out + [f"*“{one(x.get('text', x) if isinstance(x, dict) else x)}”*" for x in lines]
         ip = intent_parts(t.get("intent", ""))
         setting = re.sub(rf"^{re.escape(sp)}[,.]?\s*", "", ip.get("setting", "")).strip().rstrip(".")
-        head = f"**{sp}**" + (f", {setting}" if setting else "") + ", says (the gist):"
-        out = [head, f"*{ip.get('tells') or one(t.get('intent', ''))}*"]
+        if ip.get("tells"):
+            out = [f"**{sp}**" + (f", {setting}," if setting else "") + " says (the gist):", f"*{ip['tells']}*"]
+        else:
+            out = [f"**{sp}** (the gist):", f"*{setting or one(t.get('intent', ''))}*"]
         if t.get("fallback"):
             out.append(f"If the player cannot meet what is asked, {sp} says: *“{one(t['fallback'])}”*")
         return out
@@ -401,8 +404,6 @@ def before_this(q: dict, records: dict[str, dict]) -> list[str]:
         info = (s or {}).get("information") or {}
         if info.get("going"):
             out.append(f"**What you know.** {one(info['going'])}")
-        if info.get("next"):
-            out.append(f"**What you were sent to do.** {one(info['next'])}")
         others = [e for e in ending_stages(r) if str(e["id"]) != st]
         for e in others:
             out.append(f"Another way {r['code']} can end (stage {e['id']}): *{one(e.get('journalText', ''))}*")
@@ -431,16 +432,19 @@ def stage_heading(p: Play, s: dict) -> str:
 
 
 def whole_story(title: str, recs: list[dict], records: dict[str, dict]) -> str:
-    """A line's quests, every beat in order, on one page."""
+    """A line's quests, every beat in order, on one page: each quest's beats told as the play, no ids."""
+    from tools.newworld import quest_graph as QG
     out = [f"# {title}: the whole story", GIST_NOTE]
     for q in recs:
         p = Play(q, records)
+        w = QG.Words(p, records)
         out.append(f"## {q['code']}. {one(q['title'])}")
         if q.get("premise"):
-            out.append(f"*{one(q['premise'])}*")
-        for s in p.stages:
-            out.append(f"### {q['code']} {stage_heading(p, s)}")
-            out += p.stage_play(s, journal_only=True)
+            out.append(f"*{w.scrub(one(q['premise']))}*")
+        for b in QG.beats(q, records):
+            head = b["title"] + (f", at {b['place']}" if b.get("place") else "")
+            out.append(f"### {q['code']}: {head}")
+            out += [re.sub(r"\[([^\]]+)\]\(#beat-[\w-]+\)", r"\1", x) for x in b["prose"]]
         nx = leads_on(q, records)
         out.append("**Leads on.** " + " ".join(x for x in nx if not x.startswith("**")))
     return "\n\n".join(out) + "\n"

@@ -258,8 +258,8 @@ def test_a_quest_record_is_a_quest_with_its_stages(tmp_path):
     q = next(x for x in c["quests"] if x["id"] == "MN02")
     assert (q["title"], q["line"], q["status"], q["doc"]) == ("The Dry Tree", "main-plot", "written", "mn02")
     assert [s["stage"] for s in q["stages"]] == ["10", "90"]
-    assert [f["name"] for f in q["fields"]] == ["Premise", "Before this", "People", "Places", "Stages",
-                                                  "Endings", "Leads on"]
+    assert [f["name"] for f in q["fields"]] == ["Premise", "Before this", "People", "Places", "The quest at a glance",
+                                                  "The quest, beat by beat", "Endings", "Leads on"]
     assert "MN02" in next(x for x in c["lines"] if x["id"] == "main-plot")["quests"]
     doc = json.loads((tmp_path / "out" / "data" / "doc-mn02.json").read_text())
     text = json.dumps(doc)
@@ -312,18 +312,89 @@ stages:
 """
 
 
-def test_a_stage_shows_who_moved_it_what_they_said_and_the_thread():
+def test_a_beat_shows_who_moved_it_what_they_said_and_the_thread():
     import yaml
     from tools.newworld import quest_play as QP
     q, prev = yaml.safe_load(PLAY_YAML), yaml.safe_load(PREV_YAML)
     recs = {q["id"]: q, prev["id"]: prev}
     md = se.record_markdown(q, recs)
-    s30 = md.split("### Stage 30")[1]
-    assert "you say to Weeltul (beside the sick tree, at Jal-Veesa): “I brought the moss.”" in s30
+    beats = [json.loads(b["text"]) for b in se.parse(md) if b["t"] == "code" and b["lang"] == "beat"]
+    assert [b["node"] for b in beats] == ["start", "s10", "s30"]
+    s30 = "\n".join(beats[2]["prose"])
+    assert "you ask Weeltul (beside the sick tree, at Jal-Veesa): “I brought the moss.”" in s30
     assert "Vosh-Leera waits in her house on the bank." in s30
-    assert s30.index("What you are told") < s30.index("Journal.")
-    assert "“Tell me about the eggs.”, asked of Weeltul: the eggs are cooling." in md
-    assert "[MN01. No Name](#q-mn01)" in md.split("## Before this")[1]
+    assert "](#beat-s10)" in s30
+    assert any("“Tell me about the eggs.”, asked of Weeltul: the eggs are cooling." in d for d in beats[1]["detail"])
+    assert any(d.startswith("**The journal.**") for d in beats[1]["detail"])
+    assert "[MN01. No Name](#q-mn01)" in "\n".join(beats[0]["prose"])
     assert "[MN02. The Dry Tree](#q-mn02)" in se.record_markdown(prev, recs)
-    assert "### MN02 Stage 30" in QP.whole_story("Main", [prev, q], recs)
+    story = QP.whole_story("Main", [prev, q], recs)
+    assert "### MN02: The end: " in story and "#beat-" not in story
     assert '<a href="#q-mn01">' in se.inline("[MN01](#q-mn01)") and "http" not in se.inline("[x](http://e)")
+
+
+GAP_YAML = """
+id: quest.main.mn09
+code: MN09
+title: Gaps
+line: quest.line.main
+start: 10
+cast:
+- {id: npc.mn.boss, persona: {name: Ah-Zish}}
+placements:
+- {ref: npc.mn.boss, kind: person, name: Ah-Zish, anchor: {place: vicrium, need: by the door}}
+things:
+- {id: thing.mn09.box, kind: container, name: Knights' Strongbox, where: past the smugglers}
+- {id: thing.mn09.map, kind: item, name: Old Map, where: in thing.mn09.box}
+stages:
+- id: 10
+  objectives: [{objectiveText: Find the map., target: thing.mn09.box}]
+  actions: [{skill: Sneak, use: sneak-past, target: smugglers}]
+  successors: [{to: 20, when: {hasItem: [thing.mn09.map, 1]}}, {to: 30, when: {hasItem: [thing.mn09.box, 1]}}]
+- {id: 20, objectives: [{objectiveText: Tell Ah-Zish., target: npc.mn.boss}],
+   successors: [{to: 90, when: {topicHeardFrom: [topic.tell, npc.mn.boss]}}]}
+- {id: 30, journalText: Nowhere to go.}
+- {id: 40, journalText: Never reached., successors: [{to: 90, when: {flag: [flag.mn09.x, true]}}]}
+- {id: 90, ending: complete, endingId: e, journalText: Done.}
+endings: [{id: e, when: Ah-Zish was told}]
+topics:
+- {id: topic.tell, label: I found it., person: npc.mn.boss, stages: [20], intent: 'Ah-Zish. Tells: good.'}
+- {id: topic.pay, label: Here is gold., person: npc.mn.boss, stages: [10], when: {goldAtLeast: 100},
+   intent: 'Ah-Zish. Gives thing.mn09.map.'}
+"""
+
+
+def test_the_graph_draws_every_move_and_names_each_gap():
+    import yaml
+    from tools.newworld import quest_graph as QG
+    q = yaml.safe_load(GAP_YAML)
+    g = QG.build(q, {q["id"]: q})
+    moves = {(e["from"], e["to"], e["kind"]) for e in g["edges"]}
+    assert {("start", "s10", "go"), ("s10", "s20", "go"), ("s10", "s30", "go"), ("s20", "s90", "go")} <= moves
+    text = " ".join(x["text"] for x in g["gaps"])
+    assert "caught trying to sneak past smugglers" in text
+    assert "If you fail the check for “Here is gold.”" in text
+    assert "dead end" in text and "never reach" in text
+    assert "if Ah-Zish dies here, nothing handles it" in text
+    d = QG.diagram(g)
+    assert {n["id"] for n in d["nodes"]} == {"start", "s10", "s20", "s30", "s40", "s90"}
+    assert next(n for n in d["nodes"] if n["id"] == "s10")["gaps"] == 2
+
+
+ID_TOKEN = r"\b(npc|thing|door|topic|flag|quest)\.[a-z0-9.-]+"
+
+
+def test_no_rendered_quest_page_shows_an_id(tmp_path):
+    """Every quest page and whole-story page names people, things and places in words, never by id."""
+    import re
+    import yaml
+    q = yaml.safe_load(GAP_YAML)
+    md = se.record_markdown(q, {q["id"]: q})
+    assert not re.search(ID_TOKEN, md) and "Knights' Strongbox" in md
+    se.generate(se.ROOT, tmp_path / "out")
+    cat = json.loads((tmp_path / "out" / "data" / "catalog.json").read_text())
+    pages = [d["id"] for d in cat["docs"] if d["kind"] in ("record", "story")]
+    assert pages
+    for p in pages:
+        hit = re.search(ID_TOKEN, (tmp_path / "out" / "data" / f"doc-{p}.json").read_text())
+        assert not hit, f"{p} shows {hit.group(0)}"

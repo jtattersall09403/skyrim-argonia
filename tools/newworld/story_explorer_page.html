@@ -150,6 +150,27 @@ mark{background:var(--mark);color:var(--mark-ink);border-radius:3px;padding:0 2p
 .act .actin button#actBtn{background:var(--accent);color:var(--accent-ink)}
 .readbar{position:fixed;left:0;top:env(safe-area-inset-top,0px);height:3px;background:var(--accent);z-index:6;width:0}
 .thread{display:flex;flex-direction:column;gap:8px}
+/* a quest's beats: the branching diagram (scrolls sideways when wide) and the beat-by-beat chronology */
+.qg{overflow:auto;background:var(--paper);border:1px solid var(--line);border-radius:14px;margin:.6em 0;-webkit-overflow-scrolling:touch;max-height:80vh}
+.qg svg{display:block}
+.qg text{font-family:var(--sans);fill:var(--ink)}
+.qg .gt{font-size:12px;font-weight:600}.qg .gs{font-size:10.5px;fill:var(--muted)}.qg .gl{font-size:10px;fill:var(--muted)}
+.qg .gn{cursor:pointer}.qg .gn rect.b{fill:var(--paper);stroke:var(--accent);stroke-width:1.5}
+.qg .gn.start rect.b{fill:var(--chip);stroke:var(--muted)}
+.qg .gn.won rect.b{stroke:var(--ok);stroke-width:2.5}.qg .gn.lost rect.b{stroke:var(--warn);stroke-dasharray:5 3}
+.qg .gn.group rect.b{stroke-width:3}
+.qg .gn.on rect.b{stroke:var(--glow);stroke-width:3.5}
+.qg .gn:focus{outline:none}.qg .gn:focus-visible rect.b{stroke-width:4}
+.qg .ge{fill:none;stroke:var(--muted);stroke-width:1.5}.qg .ge.fail{stroke:var(--warn);stroke-dasharray:4 4;opacity:.6}
+.qg .lb{fill:var(--paper);stroke:var(--line)}
+.qg .warn{fill:var(--warn)}.qg .wn{fill:var(--paper);font-size:12px;font-weight:700}
+.qkey{display:flex;flex-wrap:wrap;gap:4px 14px;font-family:var(--sans);font-size:.82rem;color:var(--muted)}
+.beat{border-left:3px solid var(--line);padding-left:12px!important;margin:1.2em -8px}
+.beat.won{border-left-color:var(--ok)}.beat.lost{border-left-color:var(--warn)}.beat.flash{background:var(--chip)}
+.beat h3{font-family:var(--sans);font-size:1.02rem;margin:.2em 0}
+.beat .where{font-family:var(--sans);font-size:.82rem;color:var(--muted);margin:0}
+.beat details{font-size:.95rem;margin:.4em 0}.beat summary{font-family:var(--sans);font-weight:600;font-size:.88rem;color:var(--accent);cursor:pointer;min-height:32px}
+.beat .gapn{color:var(--warn);font-weight:700}
 @media (prefers-reduced-motion:no-preference){.sheet{animation:up .18s ease-out}@keyframes up{from{transform:translateY(24px);opacity:.6}}}
 </style>
 
@@ -251,6 +272,10 @@ function blockHtml(b, item, field) {
   else if (b.t === "list") inner = `<${b.ordered ? `ol start="${b.start || 1}"` : "ul"}>${b.items.map(i => `<li>${i}</li>`).join("")}</${b.ordered ? "ol" : "ul"}>`;
   else if (b.t === "table") inner = `<div class="tbl"><table><thead><tr>${b.head.map(h => `<th>${h}</th>`).join("")}</tr></thead><tbody>${
       b.rows.map(r => `<tr>${r.map(c => `<td>${c}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+  else if (b.t === "graph") inner = graphHtml(b.graph);
+  else if (b.t === "beat") return `<div class="blk beat ${esc(b.kind || "")}${noted}" data-beat="${esc(b.node)}" data-block="${esc(b.id)}" data-item="${esc(item)}" data-field="${esc(field || b.section)}">
+    <h3>${b.title}</h3>${b.place || b.stage || b.gaps ? `<p class="where">${[b.stage ? `Stage ${esc(b.stage)}` : "", esc(b.place || ""), b.gaps ? `<span class="gapn">${b.gaps} gap${b.gaps > 1 ? "s" : ""} in the record</span>` : ""].filter(Boolean).join(" · ")}</p>` : ""}
+    ${b.html}${b.detail ? `<details><summary>The detail: what you can ask, the journal, the marker, how you find things out</summary>${b.detail}</details>` : ""}</div>`;
   else inner = `<pre>${esc(b.text)}</pre>`;
   return `<div class="blk${noted}" data-block="${esc(b.id)}" data-item="${esc(item)}" data-field="${esc(field || b.section)}">${inner}</div>`;
 }
@@ -415,6 +440,7 @@ async function route() {
     else html = notFound();
   } catch (e) { html = `<h1>Could not load this</h1><p class="lede">${esc(e.message)}. Reload the page to try again.</p>`; }
   v.innerHTML = html; window.scrollTo(0, 0); clearActive();
+  document.querySelectorAll(".qg").forEach(el => { el.scrollLeft = (el.scrollWidth - el.clientWidth) / 2; });
   if ($("#qlist")) { fillQuests();
     $("#qq").oninput = e => { F.q = e.target.value; fillQuests(); };
     document.querySelectorAll("[data-ln]").forEach(b => b.onclick = () => { F.line = b.dataset.ln; document.querySelectorAll("[data-ln]").forEach(x => x.setAttribute("aria-pressed", x === b)); fillQuests(); });
@@ -625,6 +651,65 @@ function wireMap(focus) {
 }
 
 
+/* ---------- a quest's beats as a branching diagram ---------- */
+const GW = 176, GH = 70, GX = 22, GY = 54, GP = 14;
+function wrapText(t, n, max) { const w = String(t).split(/\s+/); const out = []; let cur = "";
+  for (const x of w) { if ((cur + " " + x).trim().length > n && cur.trim()) { out.push(cur.trim()); cur = x; } else cur += " " + x; }
+  if (cur.trim()) out.push(cur.trim()); if (out.length > max) { out.length = max; out[max - 1] = out[max - 1].replace(/\s*\S*$/, "") + "…"; } return out; }
+function graphHtml(g) {
+  const cols = Math.max(...g.nodes.map(n => n.col)) + 1, rows = Math.max(...g.nodes.map(n => n.row)) + 1;
+  const W = GP * 2 + cols * GW + (cols - 1) * GX + 40, H = GP * 2 + rows * GH + (rows - 1) * GY;
+  const byRow = {}; g.nodes.forEach(n => (byRow[n.row] ||= []).push(n));
+  const at = {}; for (const [r, ns] of Object.entries(byRow)) { const off = (W - 40 - (ns.length * GW + (ns.length - 1) * GX)) / 2;
+    ns.sort((a, b) => a.col - b.col).forEach((n, i) => at[n.id] = [off + i * (GW + GX), GP + r * (GH + GY)]); }
+  let e = "", lab = "";
+  const outs = {}; g.edges.forEach(x => { if (x.kind === "go") (outs[x.from] ||= []).push(x); });
+  for (const x of g.edges) { const a = at[x.from], b = at[x.to]; if (!a || !b) continue;
+    let d; const x1 = a[0] + GW / 2, y1 = a[1] + GH, x2 = b[0] + GW / 2, y2 = b[1];
+    if (b[1] <= a[1]) { const sx = Math.max(a[0], b[0]) + GW + 30; d = `M${a[0] + GW},${a[1] + GH / 2} C${sx},${a[1] + GH / 2} ${sx},${b[1] + GH / 2} ${b[0] + GW},${b[1] + GH / 2}`; }
+    else d = `M${x1},${y1} C${x1},${y1 + GY * .8} ${x2},${y2 - GY * .8} ${x2},${y2}`;
+    e += `<path class="ge ${x.kind}" d="${d}" marker-end="url(#ga-${x.kind})"/>`;
+    if (x.kind === "go" && (outs[x.from] || []).length > 1 && b[1] > a[1]) {
+      const lines = wrapText(x.label, 26, 2), mx = x2, my = b[1] - GY / 2 - 4;
+      lab += `<rect class="lb" x="${mx - 78}" y="${my - 9}" width="156" height="${lines.length * 12 + 6}" rx="5"/>` +
+        lines.map((l, i) => `<text class="gl" x="${mx}" y="${my + 3 + i * 12}" text-anchor="middle">${esc(l)}</text>`).join(""); }
+  }
+  let nodes = "";
+  for (const n of g.nodes) { const [x, y] = at[n.id]; const t = wrapText(n.title, 27, 3);
+    const sub = n.kind === "start" ? "Where you begin" : n.kind === "group" ? "Tap to list them" : [n.stage ? "Stage " + n.stage : "", n.place, n.kind === "won" ? "the end" : n.kind === "lost" ? "it fails" : ""].filter(Boolean).join(" · ");
+    nodes += `<g class="gn ${n.kind}" data-gnode="${esc(n.id)}" tabindex="0" role="button" aria-label="${esc(n.title)}"><rect class="b" x="${x}" y="${y}" width="${GW}" height="${GH}" rx="10"/>
+      ${t.map((l, i) => `<text class="gt" x="${x + 10}" y="${y + 17 + i * 14}">${esc(l)}</text>`).join("")}<text class="gs" x="${x + 10}" y="${y + GH - 7}">${esc(sub)}</text>
+      ${n.gaps ? `<circle class="warn" cx="${x + GW - 4}" cy="${y + 4}" r="10"/><text class="wn" x="${x + GW - 4}" y="${y + 8}" text-anchor="middle">${n.gaps > 9 ? "!" : n.gaps}</text>` : ""}</g>`; }
+  const mk = k => `<marker id="ga-${k}" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0L10,5L0,10z" style="fill:${k === "fail" ? "var(--warn)" : "var(--muted)"}"/></marker>`;
+  return `<div class="qkey"><span>Solid arrow: a way through</span><span>Dashed: when things go wrong</span><span>Green box: an ending</span><span>Orange dot: gaps in the record</span>${W > 400 ? "<span>Scroll sideways to see it all</span>" : ""}</div>
+    <div class="qg"><svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="group" aria-label="The quest's beats and how they branch"><defs>${mk("go")}${mk("fail")}</defs>${e}${lab}${nodes}</svg></div>`;
+}
+function openBeat(id) {
+  document.querySelectorAll(".qg .gn").forEach(n => n.classList.toggle("on", n.dataset.gnode === id));
+  if (/^g\d/.test(id)) { const q = quest(CUR.item); const gr = q && DOCS[q.doc] && DOCS[q.doc].blocks.find(b => b.t === "graph");
+    const node = gr && gr.graph.nodes.find(n => n.id === id); if (!node) return;
+    sheet(`<div class="sheet-h"><h2>${esc(node.title)}</h2><button class="x" type="button" data-close aria-label="Close">✕</button></div>
+      <p class="msg">These beats lead into one another in any order. Tap one to read it.</p>
+      <div class="list">${node.members.map(m => { const b = document.querySelector(`[data-beat="${CSS.escape(m)}"]`); const t = b ? b.querySelector("h3").textContent : m;
+        return `<button type="button" class="li" style="width:100%;background:none;border:0;border-bottom:1px solid var(--line);cursor:pointer;text-align:left" data-openbeat="${esc(m)}"><span class="t">${esc(t)}</span></button>`; }).join("")}</div>`);
+    document.querySelectorAll("[data-openbeat]").forEach(b => b.onclick = () => openBeat(b.dataset.openbeat)); return; }
+  const b = document.querySelector(`[data-beat="${CSS.escape(id)}"]`); if (!b) return;
+  const body = b.cloneNode(true); body.querySelectorAll("details").forEach(d => d.open = true); body.querySelector("h3")?.remove();
+  body.querySelectorAll(".xr").forEach(x => x.replaceWith(x.textContent));
+  sheet(`<div class="sheet-h"><h2>${esc(b.querySelector("h3").textContent)}</h2><button class="x" type="button" data-close aria-label="Close">✕</button></div>
+    <div class="doc">${body.innerHTML}</div>
+    <div class="row"><button class="btn" type="button" id="toBeat">Read it in the beat-by-beat</button><button class="btn" type="button" data-close>Close</button></div>`);
+  document.querySelectorAll(".sheet a[href^='#beat-']").forEach(a => a.onclick = ev => { ev.preventDefault(); openBeat(a.getAttribute("href").slice(6)); });
+  $("#toBeat").onclick = () => { closeSheet(); gotoBeat(id); };
+}
+function gotoBeat(id) { const b = document.querySelector(`[data-beat="${CSS.escape(id)}"]`); if (!b) return;
+  b.scrollIntoView({block: "start", behavior: "smooth"}); b.classList.add("flash"); setTimeout(() => b.classList.remove("flash"), 1500); }
+document.addEventListener("click", e => {
+  const a = e.target.closest("a[href^='#beat-']"); if (a && !a.closest(".sheet")) { e.preventDefault(); e.stopImmediatePropagation(); gotoBeat(a.getAttribute("href").slice(6)); return; }
+  const n = e.target.closest("[data-gnode]"); if (n) { e.stopImmediatePropagation(); openBeat(n.dataset.gnode); }
+}, true);
+document.addEventListener("keydown", e => { const n = e.target.closest && e.target.closest("[data-gnode]"); if (n && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); openBeat(n.dataset.gnode); } });
+
 /* ---------- X-ray: tap a name ---------- */
 let NAMES = null;
 function xray() {
@@ -637,7 +722,7 @@ function xray() {
       re: new RegExp(`(?<![\\w-])(${all.map(([, p]) => p.name).sort((a, b) => b.length - a.length).map(n => n.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|")})(?![\\w-])`, "g")};
   }
   const tw = document.createTreeWalker(art, NodeFilter.SHOW_TEXT); const nodes = []; let n;
-  while ((n = tw.nextNode())) if (!n.parentElement.closest("a,button,code,pre,th,.xr,mark")) nodes.push(n);
+  while ((n = tw.nextNode())) if (!n.parentElement.closest("a,button,code,pre,th,.xr,mark,svg")) nodes.push(n);
   for (const node of nodes) {
     NAMES.re.lastIndex = 0; if (!NAMES.re.test(node.data)) continue;
     const frag = document.createDocumentFragment(); let last = 0; NAMES.re.lastIndex = 0; let m;
