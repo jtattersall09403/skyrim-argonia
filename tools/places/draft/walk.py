@@ -482,12 +482,15 @@ def pairs(isl: np.ndarray, net: np.ndarray) -> list[tuple[float, np.ndarray, np.
 
 def walk_base(rows: list[dict], bases: dict) -> str | None:
     """The walkway piece the place's own joins and bridges use: the commonest the draft already laid, else the
-    commonest walkway piece of the place."""
-    laid = Counter(r["base"] for r in rows if not r.get("src") and r.get("kind") == "building" and r.get("why"))
+    commonest walkway piece of the place. A walkway piece is a level one (never a flight of steps); a building or a
+    tent added by hand (`draft.add`) is none."""
+    def way(r):
+        model = str((bases.get(r["base"]) or {}).get("model", ""))
+        return r.get("kind") == "building" and paths_mod.WALKWAY.search(model) and not STEPS.search(model)
+    laid = Counter(r["base"] for r in rows if not r.get("src") and r.get("why") and way(r))
     if laid:
         return sorted(laid, key=lambda b: (-laid[b], b))[0]
-    ways = Counter(r["base"] for r in rows if r.get("kind") == "building"
-                   and paths_mod.WALKWAY.search(str((bases.get(r["base"]) or {}).get("model", ""))))
+    ways = Counter(r["base"] for r in rows if way(r))
     return sorted(ways, key=lambda b: (-ways[b], b))[0] if ways else None
 
 
@@ -862,6 +865,7 @@ def join(place_id: str, places: Path = io.PLACES, out: Path = CHECK_OUT, log=pri
         if up:
             done += len(up) + moved
             io.write_jsonl(pdir / "spaces" / "exterior" / "refs.jsonl", rows + up)
+            record_kit(pdir, up, bases, src.bases)
             settle()
             continue   # the flights are the network once built
         for key, (c, want) in sorted(deck_islands(ctx, Wd, paths).items()):
@@ -877,6 +881,7 @@ def join(place_id: str, places: Path = io.PLACES, out: Path = CHECK_OUT, log=pri
         if new:
             done += len(new) + moved
             io.write_jsonl(pdir / "spaces" / "exterior" / "refs.jsonl", rows + new)
+            record_kit(pdir, new, bases, src.bases)
             settle()
             continue   # the flights are the network once built
         isl = islands(ctx, W)
@@ -933,15 +938,57 @@ def is_steps(r: dict, bases: dict) -> bool:
     return r.get("kind") == "building" and bool(STEPS.search(str((bases.get(r["base"]) or {}).get("model", ""))))
 
 
-def steps_bases(rows: list[dict], bases: dict, G) -> list[str]:
-    """The source's own steps pieces, the ones that bring a deck down to the water or a bank first: the place's steps
-    and stair pieces standing over the water, commonest first, then the rest of its steps and stairs."""
+def steps_bases(rows: list[dict], bases: dict, G, catalogue: Path | None = None) -> list[str]:
+    """The steps pieces a flight may be hung from, the source's own first: the place's steps and stair pieces
+    standing over the water, commonest first, then the rest of its steps and stairs; then the steps of its deck
+    pieces' own kit (the non-Nordic steps pieces of the catalogue in the folder of a deck piece's model, as Skyrim's
+    DockStepsDown01 and 02 belong with its dock pieces), by name. A kit piece's base is added to `bases`."""
     out: list[str] = []
     for pick in ([r for r in rows if is_steps(r, bases) and G.wet(r["pos"][0], r["pos"][1])],
                  [r for r in rows if is_steps(r, bases)]):
         got = Counter(r["base"] for r in pick)
         out += [b for b in sorted(got, key=lambda b: (-got[b], b)) if b not in out]
+    for k, b in kit_steps({r["base"] for r, _, _ in decks(rows, bases)}, bases, catalogue).items():
+        bases.setdefault(k, b)
+        if k not in out:
+            out.append(k)
     return out
+
+
+def kit_steps(deck_bases: set[str], bases: dict, catalogue: Path | None = None) -> dict[str, dict]:
+    """{key: base} of the steps pieces of the deck pieces' own kit: non-Nordic steps of the catalogue whose model
+    stands in the folder of a deck piece's model, by editor id."""
+    folders = {str((bases.get(b) or {}).get("model", "")).lower().rsplit("/", 1)[0] + "/" for b in deck_bases}
+    folders.discard("/")
+    path = catalogue or io.CATALOGUE
+    if not folders or not path.exists():
+        return {}
+    got = []
+    with path.open() as f:
+        for line in f:
+            if not STEPS.search(line):
+                continue
+            r = json.loads(line)
+            m = str(r.get("model") or "").lower()
+            if (r.get("kind") == "building" and not r.get("nordic") and STEPS.search(m.rsplit("/", 1)[-1])
+                    and m.rsplit("/", 1)[0] + "/" in folders and flight(r) is not None):
+                got.append(r)
+    return {r["key"]: r for r in sorted(got, key=lambda r: (r.get("edid") or "", r["key"]))}
+
+
+def record_kit(pdir: Path, laid: list[dict], bases: dict, src_bases: dict) -> None:
+    """A flight laid from a deck's kit (a base the source does not hold) is named in place.json `steps.kit`, so the
+    draft's later stages and the build know its base."""
+    kit = sorted({r["base"] for r in laid if r["base"] not in src_bases and STEPS.search(str((bases.get(r["base"]) or {}).get("model", "")))})
+    if not kit:
+        return
+    p = pdir / "place.json"
+    place = json.loads(p.read_text())
+    have = (place.get("steps") or {}).get("kit") or []
+    if set(kit) <= set(have):
+        return
+    place["steps"] = {**(place.get("steps") or {}), "kit": sorted(set(have) | set(kit))}
+    p.write_text(json.dumps(place, indent=1, ensure_ascii=False) + "\n")
 
 
 def flight(base: dict) -> dict | None:
@@ -1092,6 +1139,8 @@ def stairs(place_id: str, key: str, c: int, Wd: "Walkable", rows: list[dict], ba
             h = Wd.deck(a[0] + o[0] * 2 * STEP_ABUT, a[1] + o[1] * 2 * STEP_ABUT) if Wd.deck else None
             if h is not None and abs(h - dz) <= TREAD_MEET:
                 continue   # the deck goes on there: no edge to leave it by
+            if railed(bases.get(d["base"]) or {}, (x0, y0, x1, y1), e):
+                continue   # a rail runs along that edge: steps are hung at a deck's open end
             for sbase in sbases:
                 fl = flight(bases[sbase])
                 if fl is None:
@@ -1120,8 +1169,103 @@ def stairs(place_id: str, key: str, c: int, Wd: "Walkable", rows: list[dict], ba
                     continue
                 to = min((math.dist(landed[:2], q[:2]) for q in want), default=0.0)
                 cand.append((round(buried / BURY), round(to), row["id"], row))
+    if not cand:
+        cand = onto(place_id, key, c, Wd, rows, bases, sbases, G, want)
     cand.sort(key=lambda t: t[:3])
     return [t[3] for t in (cand if every else cand[:1])]
+
+
+RAIL_BAND = (24.0, 160.0)   # units over a deck: a solid of the piece there along an edge is its rail
+RAIL_IN = 48.0              # how far in from the edge a rail is looked for
+_RAILED: dict = {}
+
+
+def railed(base: dict, rect: tuple, e: int) -> bool:
+    """Whether a level deck piece's own collision stands along edge e of its deck (0 +y, 1 -y, 2 +x, 3 -x, as
+    `stairs` walks them) between RAIL_BAND over the deck, within RAIL_IN of it, over the edge's middle half: a rail or
+    a wall, which a flight is never hung across (Skyrim's dock steps hang on a dock piece's open end)."""
+    from tools.places.seat import _collision_tris
+    m = str(base.get("model") or "").lower()
+    key = (m, rect, e)
+    if key not in _RAILED:
+        d = deck_rect(base)
+        try:
+            t = _collision_tris(m) if d is not None else None
+        except Exception:
+            t = None
+        got = False
+        if t is not None and len(t):
+            p = np.asarray(t, float).reshape(-1, 3)
+            x0, y0, x1, y1 = rect
+            hi = (p[:, 2] > d[0] + RAIL_BAND[0]) & (p[:, 2] < d[0] + RAIL_BAND[1])
+            qx, qy = (x1 - x0) / 4, (y1 - y0) / 4
+            if e in (0, 1):
+                y = y1 if e == 0 else y0
+                near = (np.abs(p[:, 1] - y) <= RAIL_IN) & (p[:, 0] >= x0 + qx) & (p[:, 0] <= x1 - qx)
+            else:
+                x = x1 if e == 2 else x0
+                near = (np.abs(p[:, 0] - x) <= RAIL_IN) & (p[:, 1] >= y0 + qy) & (p[:, 1] <= y1 - qy)
+            got = bool((hi & near).any())
+        _RAILED[key] = got
+    return _RAILED[key]
+
+
+def onto(place_id: str, key: str, c: int, Wd: "Walkable", rows: list[dict], bases: dict, sbases: list[str], G,
+         want: list) -> list[tuple]:
+    """Flights down onto an island's deck that stands below a deck of the town (a moored ship's deck under its
+    quay): hung the same way off a free edge of one of the town's deck pieces, running down until its treads meet the
+    island's own walked surface (its navmesh), never through the ground or a solid but the thing the island stands
+    on: the flight names that thing (the island door's `on` and every piece of its cluster, the ship) as its
+    `carrier`. [(sort key..., row)]."""
+    door = next((r for r in rows if r["id"] == key), None)
+    on = next((r for r in rows if r["id"] == ((door or {}).get("seat") or {}).get("on")), None)
+    # the thing the island stands on, every piece of it (a ship's hull and its masts are one cluster)
+    carrier = sorted(r["id"] for r in rows if on is not None and (r is on or (
+        r.get("kind") == "building" and on.get("cluster") is not None and r.get("cluster") == on.get("cluster"))))
+    near = [r for r in rows if r.get("kind") in overlap.SOLID]
+    cand = []
+    for d, dz, (x0, y0, x1, y1) in decks(rows, bases):
+        t = Wd.found((d["pos"][0], d["pos"][1], dz))[0]
+        if t < 0 or not Wd.main[t]:
+            continue
+        for e, (mx, my, ox, oy) in enumerate((((x0 + x1) / 2, y1, 0, 1), ((x0 + x1) / 2, y0, 0, -1),
+                                             (x1, (y0 + y1) / 2, 1, 0), (x0, (y0 + y1) / 2, -1, 0))):
+            a = to_world(d, mx, my)
+            far = to_world(d, mx + ox, my + oy)
+            o = (far[0] - a[0], far[1] - a[1])
+            L = math.hypot(*o)
+            o = (o[0] / L, o[1] / L)
+            h = Wd.deck(a[0] + o[0] * 2 * STEP_ABUT, a[1] + o[1] * 2 * STEP_ABUT) if Wd.deck else None
+            if h is not None and abs(h - dz) <= TREAD_MEET or railed(bases.get(d["base"]) or {}, (x0, y0, x1, y1), e):
+                continue
+            for sbase in sbases:
+                fl = flight(bases[sbase])
+                if fl is None:
+                    continue
+                pos, rot, seat = hang(fl, d, dz, a, o)
+                landed = buried = None
+                for u, z in zip(fl["us"], fl["zs"]):
+                    run = abs(u - fl["top"])
+                    x, y = a[0] + o[0] * run, a[1] + o[1] * run
+                    g, tz = G.height(x, y), pos[2] + z
+                    if g is not None and g > tz + 8:
+                        break
+                    tri, _, zt = Wd._cands((x, y), ON_TOL)
+                    on = (Wd.comp[tri] == c) & (np.abs(zt - tz) <= TREAD_MEET)
+                    if on.any():
+                        landed, buried = (x, y, tz), abs(fl["foot"] - u)
+                        break
+                if landed is None:
+                    continue
+                row = {"id": io.mint(place_id, "steps", d["id"], str(e), "onto"), "base": sbase, "kind": "building",
+                       "pos": pos, "rot": rot, "scale": 1.0, "layer": "place", "flags": [], "src": None,
+                       "walk": geom_walk(bases[sbase]), "seat": {**seat, **({"carrier": carrier} if carrier else {})},
+                       "why": f"brings the town's deck down onto {key}'s deck"}
+                if overlap.hits(row, near, bases):
+                    continue
+                to = min((math.dist(landed[:2], q[:2]) for q in want), default=0.0)
+                cand.append((round(buried / BURY), round(to), row["id"], row))
+    return cand
 
 
 BANK_REACH = 768.0     # how far along its street past a deck's end the top of the bank over it is looked for

@@ -209,8 +209,10 @@ the true footprint `[x0, y0, x1, y1]` in the ref's own frame (not centred on the
 geometry (`seat.model_bounds`, cached in `out/places/footprints.json`); every footprint test calls it. dz is
 measured in the source the same way. A ref rests on what its seat names: the ref it stands `on` (a barrel on a
 deck, a flight of steps hung on its pier, a walkway piece on the one it continues) and its `carrier` (the ship
-whose gangway a laid walkway piece is; the seat's mode is then `free`). A flight of steps is seated `on` the deck
-piece it leaves, its top tread at the deck's height.
+whose gangway a laid walkway piece is; the seat's mode is then `free`; a ship of several pieces, its hull and its
+masts, is named as the list of them). A flight of steps is seated `on` the deck piece it leaves, its top tread at
+the deck's height; a flight down onto a ship's deck also names the ship as its `carrier`. `steps.kit` in
+`place.json` names the steps bases a flight was taken from out of a deck's own kit (the source having none).
 
 `place.json` also holds: `draft` (the agent's calls: `anchor`, `rot_deg`, `search`, `replace`, `drop`, `add`,
 `roles`, `keep_patches`, `room_names`; skill `place-build`), `fit` (global and per-cluster transforms, `clusters_info`,

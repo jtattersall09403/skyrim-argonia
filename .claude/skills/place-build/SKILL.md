@@ -121,12 +121,21 @@ The tools lay the network by these rules.
   source moored beside its pier with steps between them is joined by those steps.
 - **Flights for decks above our bank.** After the draft the tools build the place and read its navmesh. A deck
   that carries a door or a street and that the town reaches only by swimming (a pier or quay the source met at its
-  bank's height, standing above ours) gets one flight of the source's own steps, hung as above off a free edge of
-  one of its deck pieces and running down until its treads meet our ground where the town's network walks. The
-  bank may bury the rest of the run, as steps set into a slope; no tread stands under the ground before that, and
-  the flight's body is clear of every solid by the build's overlap rule. Of the flights that fit, the one the bank
-  buries least is laid, then the one nearest the deck's streets and doors. A deck nothing of the town uses (a
-  rowing boat, a bridge deck high overhead) gets none. Look at each flight in the render.
+  bank's height, standing above ours) gets one flight of steps, hung as above off a free edge of one of its deck
+  pieces and running down until its treads meet our ground where the town's network walks. The steps are the
+  source's own; where the source has none, the steps of the deck pieces' own kit (the non-Nordic steps pieces in
+  the folder of a deck piece's model: Skyrim's DockStepsDown01 and 02 with its dock pieces), which `place.json`
+  `steps.kit` then names. A free edge is an open end: one the deck does not go on from, with no rail or wall of the
+  piece along it. The bank may bury the rest of the run, as steps set into a slope; no tread stands under the
+  ground before that, and the flight's body is clear of every solid by the build's overlap rule. Of the flights
+  that fit, the one the bank buries least is laid, then the one nearest the deck's streets and doors. A deck
+  nothing of the town uses (a rowing boat, a bridge deck high overhead) gets none. Look at each flight in the
+  render.
+- **Flights onto a deck below the town's.** An island deck that is no walkway piece and stands below a deck of the
+  town (a moored ship's deck under its quay) gets one flight hung the same way off a free edge of the town's deck
+  piece, running down until its treads meet the island's own walked surface. The flight rests on the quay and is
+  carried by the ship: its seat names every piece of the ship (the island door's `on` and the pieces of its
+  cluster) as its `carrier`.
 - **Flights for decks below our bank.** Where a street leaves a deck for a bank that stands over it by more than
   a step and too steep for the mesh to walk (a low bridge ending against a bank face), one flight of the source's
   own steps is hung on the deck piece there, square to it: its top tread at the height of the bank's top where
@@ -136,7 +145,7 @@ The tools lay the network by these rules.
   bank's top. A crossing whose banks have no deck (a ford between steep banks) is not joined by this: name it in
   the hand-over and change the world's ground first (the skill `world-build`).
 - **Gangways and joins.** A door whose walkable ground is still an island is joined to the town by level walkway
-  pieces laid from the island to the nearest point of the network at its height (never across a height the
+  pieces (the place's commonest walkway piece, never a flight, a building or a tent) laid from the island to the nearest point of the network at its height (never across a height the
   navmesh does not climb: that is a flight's work). A piece laid for a door that stands on a thing (a ship's
   hatch) rests on that thing as its gangway and names it as its `carrier`; a piece that continues a walkway stands
   `on` it. The build's overlap check lets a piece rest on what its seat names, by the same rule the drafter lays

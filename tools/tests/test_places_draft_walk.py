@@ -323,6 +323,65 @@ def test_one_carrier_rule_for_the_drafter_and_the_build(monkeypatch):
     assert C.overlap_pairs([overlap.thing(r, bases) for r in (ship, plank)])
 
 
+def test_a_ship_of_several_pieces_carries_what_rests_on_it(monkeypatch):
+    from tools.places.draft import overlap
+    bases = _docks(monkeypatch)
+    hull = {"id": "hull", "base": "ship", "kind": "building", "pos": [0.0, 0.0, 0.0], "rot": [0, 0, 0], "scale": 1.0,
+            "seat": {"mode": "stilts"}}
+    masts = {**hull, "id": "masts"}
+    steps = {"id": "fl", "base": "steps", "kind": "building", "pos": [100.0, 0.0, 200.0], "rot": [0, 0, 0],
+             "scale": 1.0, "seat": {"mode": "on", "on": "quay", "carrier": "hull"}}
+    assert overlap.hits(steps, [hull, masts], bases) == [masts]
+    steps["seat"]["carrier"] = ["hull", "masts"]
+    assert overlap.hits(steps, [hull, masts], bases) == []
+    pairs = C.overlap_pairs([overlap.thing(r, bases) for r in (hull, masts, steps)])
+    assert not any("fl" in (a["id"], b["id"]) for a, b in pairs)          # the build's check agrees
+
+
+def test_joins_are_laid_of_walkway_pieces_never_a_tent_or_a_flight():
+    bases = {"dock": {"model": "architecture/docks/dockstrent01.nif"}, "tent": {"model": "camp/tent01.nif"},
+             "steps": {"model": "architecture/docks/dockstepsdown01.nif"}}
+    added = [{"id": f"t{i}", "base": "tent", "kind": "building", "why": "a cutters' tent", "src": None} for i in range(3)]
+    flights = [{"id": f"s{i}", "base": "steps", "kind": "building", "why": "brings a deck down", "src": None} for i in range(2)]
+    quay = [{"id": "q", "base": "dock", "kind": "building", "src": "X.esm:1"}]
+    assert walk.walk_base(added + flights + quay, bases) == "dock"
+    assert walk.walk_base(added, bases) is None
+
+
+def test_a_deck_with_no_steps_of_the_source_takes_the_steps_of_its_own_kit(tmp_path, monkeypatch):
+    monkeypatch.setattr(walk, "flight", lambda base: FLIGHT if "steps" in base.get("model", "") else None)
+    cat = tmp_path / "bases.jsonl"
+    rows = [{"key": "S:2", "edid": "DockStepsDown02", "model": "architecture/docks/dockstepsdown02.nif", "kind": "building", "nordic": False},
+            {"key": "S:1", "edid": "DockStepsDown01", "model": "architecture/docks/dockstepsdown01.nif", "kind": "building", "nordic": False},
+            {"key": "S:3", "edid": "RTDockStairs", "model": "architecture/riften/docks/rtdockstairs.nif", "kind": "building", "nordic": True},
+            {"key": "S:4", "edid": "FarmSteps", "model": "architecture/farmhouse/steps01.nif", "kind": "building", "nordic": False},
+            {"key": "S:5", "edid": "DockStrEnt01", "model": "architecture/docks/dockstrent01.nif", "kind": "building", "nordic": False}]
+    cat.write_text("".join(json.dumps(r) + "\n" for r in rows))
+    monkeypatch.setattr(walk, "deck_rect", lambda base: (0.0, (-160.0, -256.0, 160.0, 256.0))
+                        if "dockstrent" in base.get("model", "") else None)
+    bases = {"Q": {"model": "architecture/docks/dockstrent01.nif"}}
+    quay = [{"id": "q", "base": "Q", "kind": "building", "pos": [0.0, 0.0, 100.0], "rot": [0, 0, 0], "scale": 1.0}]
+
+    class G:
+        @staticmethod
+        def wet(x, y):
+            return False
+    assert walk.steps_bases(quay, bases, G, cat) == ["S:1", "S:2"]          # the docks' own steps, by name
+    assert bases["S:1"]["edid"] == "DockStepsDown01"                      # known to the draft from then on
+
+
+def test_a_flight_is_never_hung_across_a_decks_rail(monkeypatch):
+    """A dock piece railed along its long sides: only its two open ends take a flight."""
+    from tools.places import seat
+    walk._RAILED.clear()
+    rail = [[[x, -250.0 + k * 100, 60.0] for k in range(3)] for x in (-150.0, 150.0)]   # rail tops along x = +-150
+    deck = [[[-150.0, -250.0, 0.0], [150.0, -250.0, 0.0], [150.0, 250.0, 0.0]]]
+    monkeypatch.setattr(seat, "_collision_tris", lambda m: np.array(deck + rail, float))
+    monkeypatch.setattr(walk, "deck_rect", lambda base: (0.0, (-150.0, -250.0, 150.0, 250.0)))
+    rect = (-150.0, -250.0, 150.0, 250.0)
+    assert [walk.railed({"model": "dockrail.nif"}, rect, e) for e in range(4)] == [False, False, True, True]
+
+
 def _deck_over_land():
     """Ground ten squares long with a deck 250 over squares 3 to 5, joined to the ground at its west end (a flight)."""
     land, deck = _Nav("land", [(x, 0) for x in range(10)], 0.0), _Nav("deck", [(3, 0), (4, 0), (5, 0)], 250.0)

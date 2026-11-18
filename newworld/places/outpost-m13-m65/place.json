@@ -283,17 +283,6 @@
     "rot_z": 1.5708,
     "tier": "AGENT_INVENTED",
     "why": "the old road post's gate (place record: summary, 'the old road post's gate still stands'): King of the Murkmire's palisade gate on the road side of the camp"
-   },
-   {
-    "base": "Skyrim.esm:0AE630",
-    "kind": "building",
-    "pos": [
-     -101394,
-     -526619
-    ],
-    "rot_z": 0.0,
-    "tier": "AGENT_INVENTED",
-    "why": "the landing's steps from the quay down to our bank: the barge source has no steps of its own, and Skyrim's dock steps are the kind its dock pieces (Skyrim.esm DockStrEnt) are built with"
    }
   ]
  }

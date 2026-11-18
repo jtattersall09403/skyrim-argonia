@@ -593,9 +593,12 @@ def check_overlap(ctx) -> list[str]:
 def rests(a: dict, b: dict) -> bool:
     """One of the pair rests on the other: its seat names the other as what it stands `on` (a barrel on a deck, a
     flight of steps hung on its pier, a walkway piece on the one it continues) or as its `carrier` (the ship whose
-    gangway it is). The one carrier rule, the drafter's and the build's."""
-    sa, sb = a.get("seat") or {}, b.get("seat") or {}
-    return b.get("id") in (sa.get("on"), sa.get("carrier")) or a.get("id") in (sb.get("on"), sb.get("carrier"))
+    gangway it is; a ship of several pieces is named as the list of them). The one carrier rule, the drafter's and
+    the build's."""
+    def by(seat):
+        c = seat.get("carrier")
+        return {seat.get("on"), *(c if isinstance(c, list) else [c])} - {None}
+    return b.get("id") in by(a.get("seat") or {}) or a.get("id") in by(b.get("seat") or {})
 
 
 def _source_had(a: dict, b: dict) -> bool:
