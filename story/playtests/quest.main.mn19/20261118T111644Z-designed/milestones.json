@@ -1,0 +1,66 @@
+[
+ {
+  "stage": 10,
+  "kind": "start",
+  "ending": null,
+  "title": "The Eye",
+  "journal": "The Root is where the roots of every Hist meet. The Eye of Argonia, the old kings' jewel, sits among them: used where it sits, it heals every tree; lifted, it parts them for good. Beyond the guardian's hall lies the Root, where the roots of every Hist meet, and the Eye of Argonia sits among them. I'm to go to the Eye and decide what to do with it.",
+  "objectives": [
+   "Go to the Eye of Argonia in the Root's chamber. (marker: The Eye of Argonia)"
+  ],
+  "plan": {
+   "going": "The Root is where the roots of every Hist meet. The Eye of Argonia, the old kings' jewel, sits among them: used where it sits, it heals every tree; lifted, it parts them for good. the guardian is dead; the Eye is through the far door",
+   "next": "go to the Eye",
+   "ways": "I already know the choice: use it as the order ordered, take it, or (if Cuts-the-Old-Knot lives) let her lift it"
+  },
+  "answers": [
+   "I am in the Black Marsh (Argonia). I opened the Kings' Gate with the three seal-stones and killed the hydra Guardian of the Root with Cuts-the-Old-Knot. The Eye of Argonia, the old kings' jewel, sits in the Root where all Hist roots meet. Used in place it heals every tree and the dreams continue; lifted it ends the dreams, about three in ten trees die, and the order breaks.",
+   "Go through the door at the far end of Guardian's Hall to the Root and the Eye of Argonia (the quest marker), and decide what to do with it. I mean to use it in place (the give/heal choice).",
+   "Use the Eye in place, or lift it. I could also loot the hydra body first, and I could check Cuts' claims about the Fort Chalkmoth cellar dreamers and Never-Writes-Twice, though they are unverified.",
+   "I do not fully understand what the dreams are or how the order works, and I do not know if Cuts or Never-Writes-Twice is telling the truth. I could find out by talking to people and reading what I find."
+  ],
+  "raw": "1. I am in the Black Marsh (Argonia). I opened the Kings' Gate with the three seal-stones and killed the hydra Guardian of the Root with Cuts-the-Old-Knot. The Eye of Argonia, the old kings' jewel, sits in the Root where all Hist roots meet. Used in place it heals every tree and the dreams continue; lifted it ends the dreams, about three in ten trees die, and the order breaks. 2. Go through the door at the far end of Guardian's Hall to the Root and the Eye of Argonia (the quest marker), and decide what to do with it. I mean to use it in place (the give/heal choice). 3. Use the Eye in place, or lift it. I could also loot the hydra body first, and I could check Cuts' claims about the Fort Chalkmoth cellar dreamers and Never-Writes-Twice, though they are unverified. 4. I do not fully understand what the dreams are or how the order works, and I do not know if Cuts or Never-Writes-Twice is telling the truth. I could find out by talking to people and reading what I find."
+ },
+ {
+  "stage": 20,
+  "kind": "stage",
+  "ending": null,
+  "title": "The Eye",
+  "journal": "I laid my hand on the Eye of Argonia. I'm to choose what to do with it.",
+  "objectives": [
+   "Choose what to do with the Eye of Argonia. (marker: The Eye of Argonia)"
+  ],
+  "plan": {
+   "going": "the choice is in front of me on the message box",
+   "next": "choose",
+   "ways": "use (heals all trees; the order's rule made fast; Cuts-the-Old-Knot dies; I get Toh-Nassa, a keep, training, stronger blessings; the Unbound hunt me); take (trees part, three in ten die, dreams end; I get the Eye and the Unbound's highest rank; the order hunts me; no more blessings); give (the same parting; she keeps the Eye; I get her as an ally, her spells and the Karsh-Naal longhouse)"
+  },
+  "answers": [
+   "I stand at the Eye in the Root with Cuts-the-Old-Knot. I must decide its fate. Using it heals all trees but keeps the order's dreamers and rule, and kills Cuts. Taking it parts the trees, kills about 3 in 10 with their villages, ends the dreams, and the order hunts me. Giving it to Cuts does the same parting and deaths, but she keeps the Eye and stands with me.",
+   "Choose one of the three buttons here at the Eye.",
+   "Use the Eye, Take the Eye, or Give it to Cuts-the-Old-Knot. I have decided to give it to Cuts, which I now prefer over my earlier leaning to use it in place.",
+   "I do not know whether Cuts' claims about the Fort Chalkmoth cellar dreamers are true, or whether Never-Writes-Twice lied. I also do not know what Cuts will do with the Eye. I could have checked at Fort Chalkmoth but have not."
+  ],
+  "raw": "1. I stand at the Eye in the Root with Cuts-the-Old-Knot. I must decide its fate. Using it heals all trees but keeps the order's dreamers and rule, and kills Cuts. Taking it parts the trees, kills about 3 in 10 with their villages, ends the dreams, and the order hunts me. Giving it to Cuts does the same parting and deaths, but she keeps the Eye and stands with me. 2. Choose one of the three buttons here at the Eye. 3. Use the Eye, Take the Eye, or Give it to Cuts-the-Old-Knot. I have decided to give it to Cuts, which I now prefer over my earlier leaning to use it in place. 4. I do not know whether Cuts' claims about the Fort Chalkmoth cellar dreamers are true, or whether Never-Writes-Twice lied. I also do not know what Cuts will do with the Eye. I could have checked at Fort Chalkmoth but have not."
+ },
+ {
+  "stage": 50,
+  "kind": "ending",
+  "ending": "complete",
+  "title": "The Eye",
+  "journal": "Cuts-the-Old-Knot lifted the Eye of Argonia from its plinth, and the trees parted. I saw about three in ten of them die. The dreamers will see nothing now. She keeps the Eye and makes me a Knot-Breaker, the Unbound's highest rank, her equal among them, one who has broken the old knot that tied every tree to every other. She will come when I call her. Every member and friend of the Toh-Reel-Ka will attack me, and no Hist will bless me again.",
+  "objectives": [],
+  "plan": {
+   "going": "she lifted the Eye; the trees parted; she is my ally; I am a Knot-Breaker, the Unbound's highest rank",
+   "next": "the main quest is over; I can call her with a power; the Karsh-Naal longhouse is mine",
+   "ways": "none"
+  },
+  "answers": [
+   "The quest is finished. I gave the Eye to Cuts-the-Old-Knot, who lifted it. The trees are parted, about three in ten died, Jal-Veesa and Teel-Fen Weir were abandoned, the dreamers in Fort Chalkmoth woke seeing nothing, and the order is raging. I am now Knot-Breaker of the Unbound and Karsh-Naal Longhouse is mine. The Toh-Reel-Ka are hostile and no Hist will bless me.",
+   "Nothing is required. I could leave the Root and go to Karsh-Naal Longhouse.",
+   "I can call Cuts-the-Old-Knot with my new spells, use Knot-Breaker's Storm and Root Ward, and expect attacks from the Toh-Reel-Ka.",
+   "I do not know whether Cuts or Never-Writes-Twice told the truth, since I never verified either. I also do not know what became of the Eye in her hands beyond what the journal said.\nNotes for a friend picking up my save: I gave the Eye to Cuts. The trees are parted for good and about 30% died. I hold the rank Knot-Breaker, the Longhouse Karsh-Naal, and four new spells (Call Cuts-the-Old-Knot, Send Cuts-the-Old-Knot Home, Knot-Breaker's Storm, Root Ward). I still carry Eye-Setting, Keystone, Grave-Stake, 3 Paralysis Poison, Sap-Jar, Order-Pike, Reelka armour, Rapier, Bronze Key, Bronze Disc, Parchment Map, Unbound-Note, 2 lockpicks and 1650 gold. I never looted the hydra."
+  ],
+  "raw": "1. The quest is finished. I gave the Eye to Cuts-the-Old-Knot, who lifted it. The trees are parted, about three in ten died, Jal-Veesa and Teel-Fen Weir were abandoned, the dreamers in Fort Chalkmoth woke seeing nothing, and the order is raging. I am now Knot-Breaker of the Unbound and Karsh-Naal Longhouse is mine. The Toh-Reel-Ka are hostile and no Hist will bless me. 2. Nothing is required. I could leave the Root and go to Karsh-Naal Longhouse. 3. I can call Cuts-the-Old-Knot with my new spells, use Knot-Breaker's Storm and Root Ward, and expect attacks from the Toh-Reel-Ka. 4. I do not know whether Cuts or Never-Writes-Twice told the truth, since I never verified either. I also do not know what became of the Eye in her hands beyond what the journal said.\nNotes for a friend picking up my save: I gave the Eye to Cuts. The trees are parted for good and about 30% died. I hold the rank Knot-Breaker, the Longhouse Karsh-Naal, and four new spells (Call Cuts-the-Old-Knot, Send Cuts-the-Old-Knot Home, Knot-Breaker's Storm, Root Ward). I still carry Eye-Setting, Keystone, Grave-Stake, 3 Paralysis Poison, Sap-Jar, Order-Pike, Reelka armour, Rapier, Bronze Key, Bronze Disc, Parchment Map, Unbound-Note, 2 lockpicks and 1650 gold. I never looted the hydra."
+ }
+]

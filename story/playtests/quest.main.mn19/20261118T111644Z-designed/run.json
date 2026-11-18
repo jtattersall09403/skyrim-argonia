@@ -1,0 +1,118 @@
+{
+ "quest": "quest.main.mn19",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn19.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": null,
+ "choose": "e-give",
+ "know": "story/playtests/quest.main.mn18/20261117T172837Z-designed/notes.md",
+ "created": "20261118T111644Z",
+ "stages": [
+  10,
+  20,
+  50
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "newworld/story/quests/main/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn04.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn05.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn06.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn07.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn08.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn09.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn10.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn11.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn12.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn13.yaml",
+   "ending": 91
+  },
+  {
+   "record": "newworld/story/quests/main/mn14.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn15.yaml",
+   "ending": 91
+  },
+  {
+   "record": "newworld/story/quests/main/mn16.yaml",
+   "ending": 93
+  },
+  {
+   "record": "newworld/story/quests/main/mn17.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn18.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 3,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I am in the Black Marsh (Argonia). I opened the Kings' Gate with the three seal-stones and killed the hydra Guardian of the Root with Cuts-the-Old-Knot. The Eye of Argonia, the old kings' jewel, sits in the Root where all Hist roots meet. Used in place it heals every tree and the dreams continue; lifted it ends the dreams, about three in ten trees die, and the order breaks. 2. Go through the door at the far end of Guardian's Hall to the Root and the Eye of Argonia (the quest marker), and decide what to do with it. I mean to use it in place (the give/heal choice). 3. Use the Eye in place, or lift it. I could also loot the hydra body first, and I could check Cuts' claims about the Fort Chalkmoth cellar dreamers and Never-Writes-Twice, though they are unverified. 4. I do not fully understand what the dreams are or how the order works, and I do not know if Cuts or Never-Writes-Twice is telling the truth. I could find out by talking to people and reading what I find.",
+  "look",
+  "go Guardian's Hall",
+  "take hydra treasure",
+  "take hydra",
+  "use The Root",
+  "use The Eye of Argonia",
+  "answer 1. I stand at the Eye in the Root with Cuts-the-Old-Knot. I must decide its fate. Using it heals all trees but keeps the order's dreamers and rule, and kills Cuts. Taking it parts the trees, kills about 3 in 10 with their villages, ends the dreams, and the order hunts me. Giving it to Cuts does the same parting and deaths, but she keeps the Eye and stands with me. 2. Choose one of the three buttons here at the Eye. 3. Use the Eye, Take the Eye, or Give it to Cuts-the-Old-Knot. I have decided to give it to Cuts, which I now prefer over my earlier leaning to use it in place. 4. I do not know whether Cuts' claims about the Fort Chalkmoth cellar dreamers are true, or whether Never-Writes-Twice lied. I also do not know what Cuts will do with the Eye. I could have checked at Fort Chalkmoth but have not.",
+  "choose 3",
+  "answer 1. The quest is finished. I gave the Eye to Cuts-the-Old-Knot, who lifted it. The trees are parted, about three in ten died, Jal-Veesa and Teel-Fen Weir were abandoned, the dreamers in Fort Chalkmoth woke seeing nothing, and the order is raging. I am now Knot-Breaker of the Unbound and Karsh-Naal Longhouse is mine. The Toh-Reel-Ka are hostile and no Hist will bless me. 2. Nothing is required. I could leave the Root and go to Karsh-Naal Longhouse. 3. I can call Cuts-the-Old-Knot with my new spells, use Knot-Breaker's Storm and Root Ward, and expect attacks from the Toh-Reel-Ka. 4. I do not know whether Cuts or Never-Writes-Twice told the truth, since I never verified either. I also do not know what became of the Eye in her hands beyond what the journal said.\nNotes for a friend picking up my save: I gave the Eye to Cuts. The trees are parted for good and about 30% died. I hold the rank Knot-Breaker, the Longhouse Karsh-Naal, and four new spells (Call Cuts-the-Old-Knot, Send Cuts-the-Old-Knot Home, Knot-Breaker's Storm, Root Ward). I still carry Eye-Setting, Keystone, Grave-Stake, 3 Paralysis Poison, Sap-Jar, Order-Pike, Reelka armour, Rapier, Bronze Key, Bronze Disc, Parchment Map, Unbound-Note, 2 lockpicks and 1650 gold. I never looted the hydra.",
+  "answer I gave the Eye of Argonia to Cuts-the-Old-Knot and she lifted it. The trees are parted for good and about three in ten died. Jal-Veesa and Teel-Fen Weir were abandoned. The Fort Chalkmoth dreamers woke seeing nothing and the Unbound broke the cellar door. I am now Knot-Breaker of the Unbound, and Karsh-Naal Longhouse is mine. The Toh-Reel-Ka are hostile and no Hist will bless me. I learned four spells: Call Cuts-the-Old-Knot, Send Cuts-the-Old-Knot Home, Knot-Breaker's Storm and Root Ward. I still carry Eye-Setting, Keystone, Grave-Stake, 3 Paralysis Poison, Sap-Jar, Order-Pike, Reelka armour, Rapier, Bronze Key, Bronze Disc, Parchment Map, Unbound-Note, 2 lockpicks and 1650 gold. I never looted the hydra, because the game offered no way to take its treasure. I never checked Cuts' claims about the cellar dreamers or whether Never-Writes-Twice lied."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.07015869999999999,
+ "minutes": 0.7,
+ "turns": 12,
+ "tokens": {
+  "input_tokens": 22,
+  "output_tokens": 3304,
+  "cache_read_input_tokens": 61707,
+  "cache_creation_input_tokens": 7726
+ }
+}

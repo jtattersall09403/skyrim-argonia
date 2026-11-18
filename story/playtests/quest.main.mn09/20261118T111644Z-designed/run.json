@@ -1,0 +1,83 @@
+{
+ "quest": "quest.main.mn09",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn09.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "quiet",
+ "choose": null,
+ "know": "story/playtests/quest.main.mn08/20261117T172446Z-designed/notes.md",
+ "created": "20261118T111644Z",
+ "stages": [
+  10,
+  20,
+  30,
+  90
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "newworld/story/quests/main/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn04.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn05.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn06.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn07.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn08.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 4,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I work for Nesh-Deeka house (I am a thief, Tarin). Elder Hums-the-Long-Note sent me to open the knight-captain tomb at Eurydike with the Kothringi Keystone. It is a trail to the Eye of Argonia at the Root, a jewel that can heal the trees. The Unbound are also hunting it and got here first. 2. Search the Unbound packs in the barracks wing at Eurydike, then open the locked tomb door. 3. Fight, slip past quietly (my build favours quiet), or turn the restless dead with Restoration. 4. I do not understand the seal paste, Cuts-the-Old-Knot, Xeech-Leel, Umbriel or the Collector Ennodius Vanin. I could ask people or read what I find.",
+  "look",
+  "take Unbound Pack",
+  "use Unbound Pack",
+  "take Grey Seal",
+  "answer 1. I work for Nesh-Deeka. The Unbound packs held grey seal paste, a paralysis poison that numbs a tree scar shut after they drain the tree. Odd, since sealing a tree they drain does not kill it. 2. Open the knight-captain tomb door at Eurydike with the keystone and search it, including the chest. 3. Use the keystone on the door; the Restless Knight and Unbound Digger are around, so I can sneak, fight or turn the dead. 4. I still do not know why the Unbound seal the trees, or who Cuts-the-Old-Knot, Xeech-Leel, Umbriel or Ennodius Vanin are. I may learn from the tomb or from people.",
+  "use Door to Knight-Captain's Tomb",
+  "use Knight-Captain's Tomb Chest",
+  "take Knight-Captain's Bronze Disc",
+  "answer 1. I work for Nesh-Deeka. I opened the tomb with the keystone and found a bronze disc stamped with a pick crossed with a tower, a mine mark. It is probably a clue on the trail to the Eye of Argonia. 2. Take the disc to Nesh-Deeka in Helstrom. 3. Go straight to Helstrom. I could also look for what the mine mark means first, but the journal points to Nesh-Deeka. 4. I do not know which mine the mark is, or who Cuts-the-Old-Knot, Xeech-Leel, Umbriel or Ennodius Vanin are. Nesh-Deeka may know.",
+  "go Nesh-Deeka",
+  "talk Nesh-Deeka",
+  "say 1",
+  "answer 1. The quest is done. Nesh-Deeka paid me 100 gold. The disc is the mark of Vicrium, an old ochre and alum mine in the clay country behind Seafalls in Okuwun Rahei, in the east. The knights kept a strongbox there. It is the next step toward the Eye of Argonia. 2. Nothing is set yet. The next lead is Vicrium, behind Seafalls. 3. I could go to Vicrium, or ask Nesh-Deeka more, or find out why the Unbound seal trees. 4. I do not know why the Unbound seal the trees they drain. Nesh-Deeka says it does not matter, but it bothers me. I also do not know how Nesh-Deeka knows what the Unbound do (\"we listen\"), or who Cuts-the-Old-Knot, Xeech-Leel, Umbriel or Ennodius Vanin are.",
+  "answer I am Tarin, thief of Nesh-Deeka house in Helstrom. I have about 850 gold, the Kothringi Keystone, the Old Silver Setting, my gear, 3 Grey Seal paralysis poisons from the Unbound packs, and the Knight-Captain Bronze Disc. I opened the tomb at Eurydike quietly and gave the disc to Nesh-Deeka. She says the pick-and-tower mark is Vicrium, an old ochre and alum mine in the clay country behind Seafalls in Okuwun Rahei, in the east. The knights kept a strongbox there. This is the trail to the Eye of Argonia, which lies at the Root under the sea and can heal every tree. The Unbound are ahead of us. They drain trees and then seal the scar with the grey paralysis paste, and nobody can say why. Nesh-Deeka says it does not matter, but it nags at me. She knows the Unbound moves because \"we listen\", and she does not say who listens. Still unknown: Cuts-the-Old-Knot, Xeech-Leel, Umbriel and Ennodius Vanin. Next: go to Vicrium."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.0704454,
+ "minutes": 0.7,
+ "turns": 16,
+ "tokens": {
+  "input_tokens": 30,
+  "output_tokens": 3079,
+  "cache_read_input_tokens": 92714,
+  "cache_creation_input_tokens": 7581
+ }
+}

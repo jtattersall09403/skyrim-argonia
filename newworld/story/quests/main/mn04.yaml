@@ -14,6 +14,7 @@ settlement: tribal-camp-m2-m68
 anchorPlaces:
 - tribal-camp-m2-m68
 - jal-veesa
+- helstrom
 premise: At the Naga camp where the sap goes, the player frees Sesk from her cage and hears the names of the Unbound and
   Cuts-the-Old-Knot; Vosh-Leera sends them by the rootworm to the order's handler in Helstrom.
 costTier: M
@@ -59,7 +60,10 @@ foundation: Built from main-plot.md §5 quest 4. Starts on any of MN03's complet
   door (a use hook) moves the quest. Sesk names the Unbound and Cuts-the-Old-Knot, says the sap is for a draught that has
   something to do with "the Eye", and calls the grey paste "the seal". Back in Jal-Veesa Vosh-Leera sends the player to
   the order's handler in Helstrom and pays 100 gold; Weeltul, at the Hist pool, explains the rootworm and its 25-gold fare,
-  and the quest ends there; MN05 carries the ride and the handler's house.
+  and the quest ends there; MN05 carries the ride and the handler's house. The fare is taken by the rootworm stop's own
+  travel line (the tree-minder is the stop's operator; tools/places/build.py plan_travel writes the line and TIF_ARG_BoatTravel removes the fare), so
+  this record only states it. Sesk leaves the camp; the ending switches her off there and on at Helstrom's city landing,
+  where she waits for a raft down the river and owes the player (her side quest, main-plot §6, hangs on that line).
 recordSources:
   place: tribal-camp-m2-m68, jal-veesa (place cards --mined, 2026-11-17); docs/design/travel-network.md (the rootworm)
   lore:
@@ -312,6 +316,21 @@ placements:
     need: on the floor inside Sesk's Cage, out of reach through the bars
     room: Sesk's Cage
   enabled: true
+- ref: npc.mn04.sesk-landing
+  kind: person
+  base:
+    kind: template_person
+    id: npc.mn.sesk (the same person; a second position is her one reference moved, not a copy)
+  name: Sesk
+  anchor:
+    place: helstrom
+    rule: navmesh
+    need: outdoors at Helstrom's city landing, on the planks by the water a few steps from where the raft-master
+      Poles-Upriver works (his work spot, exterior -23821,-630400), at the end away from the Boatmen's Lodge door, facing
+      the river
+  note: built as a move of npc.mn.sesk's one reference when the ending switches her off at the camp; listed so the place
+    has the spot
+  enabled: false
 - ref: door.mn02.vosh-leera-house
   kind: door
   base:
@@ -645,12 +664,11 @@ stages:
 - id: 95
   place: tribal-camp-m2-m68
   journal: text.journal.mn04.95
-  journalText: Sesk is dead. Nobody at the camp will tell me who takes the sap
-  or why.: null
+  journalText: Sesk is dead. Nobody at the camp will tell me who takes the sap or why.
   ending: failed
   endingId: e-sesk-dead
   information:
-    going: Sesk is dead. Nobody at the camp will tell me who takes the sap
+    going: Sesk is dead. Nobody at the camp will tell me who takes the sap or why.
     next: 'Nothing: this quest is over.'
     ways: None.
     carriers:
@@ -688,10 +706,12 @@ stages:
 endings:
 - id: e-sent
   when: Weeltul told the player about the rootworm
-  seen: Sesk gone from the camp (switched off by this ending, set in Jal-Veesa, another cell far from the camp); the camp's
-    guards still at the fire if alive
+  seen: Sesk gone from the camp (switched off by this ending, set in Jal-Veesa, another cell far from the camp) and standing
+    at Helstrom's city landing (switched on there, far from Jal-Veesa), waiting for a raft; the camp's guards still at the
+    fire if alive
   world:
   - disableRef: npc.mn.sesk
+  - enableRef: npc.mn04.sesk-landing
   rewards: []
 - id: e-sesk-dead
   when: Sesk died before she spoke
@@ -777,6 +797,7 @@ topics:
   stages:
   - 10
   - 20
+  - 90
   essential: false
   intent: 'Sesk. Tells: a Naga: the Naga are tribeless Argonians of the deep marsh, tall and hard, who sell their blades
     or their hands to whoever pays. She drew sap for the Unbound and tried to leave with her pay. Checks: nothing. Does:
@@ -803,6 +824,16 @@ topics:
     hasItem:
     - thing.mn04.sesk-sack
     - 1
+- id: topic.mn04-sesk-landing
+  label: You got out of the camp, then.
+  person: npc.mn.sesk
+  stages:
+  - 90
+  essential: false
+  intent: 'Sesk, at Helstrom''s city landing. Tells: she walked south through the marsh by night and came here for the
+    rafts; she waits for one going down the river, as far from the Unbound as the water runs. She has not forgotten the
+    cage: she owes the player, and a Naga pays what she owes. Checks: nothing. Does: nothing.'
+  new: true
 - id: topic.mn-unbound
   label: Who are the Unbound?
   person: npc.mn.sesk
@@ -908,6 +939,24 @@ review:
     finding: The rootworm and its fare.
     answer: 'sourced: jal-veesa place card (rootworm-stop); main-plot §9 travel; docs/design/travel-network.md. Its look
       (a great worm in the root waters) is the travel network''s; any mismatch is changed to the network''s words'
+  - id: L4
+    severity: lore
+    ids:
+    - stages.90
+    finding: The rootworm fare of 25 gold is stated but nothing in the record takes it.
+    answer: 'sourced: the stop''s travel line takes it. Every stop''s operator gets one line per route that carries the
+      fare and removes it from the player before the ride (docs/design/travel-network.md "The service"; tools/places/build.py
+      plan_travel; papyrus/TIF_ARG_BoatTravel.psc); Jal-Veesa''s operator is its tree-minder (place card: rootworm-stop).
+      The record states the fare and takes nothing.'
+  - id: L5
+    severity: lore
+    ids:
+    - endings.e-sent
+    - topics.topic.mn04-sesk-landing
+    finding: Sesk stood nowhere after the ending, yet main-plot §6 has her give a side quest if freed.
+    answer: 'changed: the ending switches her on at Helstrom''s city landing (the raft-masters'' boat stop on the helstrom
+      place card; she wants the price of a boat, main-plot §4), with a line that says she owes the player. Her side quest
+      is its own record, owed.'
   - id: L3
     severity: lore
     ids:

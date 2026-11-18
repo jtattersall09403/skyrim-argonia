@@ -1,0 +1,119 @@
+{
+ "quest": "quest.main.mn19",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn19.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": null,
+ "choose": "e-take",
+ "know": "story/playtests/quest.main.mn18/20261117T172909Z-designed/notes.md",
+ "created": "20261118T111645Z",
+ "stages": [
+  10,
+  21,
+  40
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "newworld/story/quests/main/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn04.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn05.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn06.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn07.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn08.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn09.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn10.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn11.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn12.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn13.yaml",
+   "ending": 91
+  },
+  {
+   "record": "newworld/story/quests/main/mn14.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn15.yaml",
+   "ending": 91
+  },
+  {
+   "record": "newworld/story/quests/main/mn16.yaml",
+   "ending": 93
+  },
+  {
+   "record": "newworld/story/quests/main/mn17.yaml",
+   "ending": 91
+  },
+  {
+   "record": "newworld/story/quests/main/mn18.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 3,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I am a hero in the Black Marsh. The Eye of Argonia, the old kings jewel, sits in the Root where all Hist roots meet. I have to decide what to do with it: use it in place (heals every tree) or lift it (parts them for good). 2. Go to the Eye of Argonia in the Root chamber, past the guardian hall, and decide. 3. Use the Eye in place, or lift it. I mean to take it (lift). 4. I do not fully understand the Hist, the Root, or the order. I could ask people or read in the game.",
+  "look",
+  "go The Eye of Argonia",
+  "talk Cuts-the-Old-Knot",
+  "take The Eye of Argonia",
+  "look",
+  "journal",
+  "use The Eye of Argonia",
+  "answer 1. I stand at the Root with the Eye. The order wants it used in place; the choice is mine alone. 2. Choose at the Root: use the Eye or take it. 3. Use it: trees healed, order sees through trees, its rule made fast, gate returns stones. Take it: dreams end, order broken, about three in ten trees and their villages die, order hunts me, no Hist blesses me. 4. I do not know whether the dreamers in the Fort Chalkmoth cellar are real; I could check there, but I have decided to take it.",
+  "choose 2",
+  "answer 1. I lifted the Eye. The trees are parted, about three in ten died, the dreams ended, and the order is broken. The Unbound count me Knot-Breaker. The Toh-Reel-Ka are hostile and will hunt me. No Hist will bless me. 2. The quest is complete, so nothing is required. 3. I could go to Fort Chalkmoth to see the cellar, or keep clear of the order. 4. I still do not know whether the Fort Chalkmoth cellar dreamers were as the dead man said. Ennodius Vanin the Collector is still an open matter.",
+  "answer I lifted the Eye of Argonia at the Root. The trees are parted for good. About three in ten died, and Jal-Veesa and Teel-Fen Weir were abandoned. The dreams have ended and the order is broken. The Unbound are friendly and call me Knot-Breaker. The Toh-Reel-Ka are hostile and will hunt me, and no Hist will bless me. The Unbound broke open the Fort Chalkmoth cellar. I had not verified that myself, and I did not go there. I learned the spell The Eyes Gaze. I carry the Eye, 1650 gold, the rapier, the Order-Pike, the Eye-Setting, the Keystone, the Bronze-Key, paralysis poison x3 and two lockpicks. Cuts-the-Old-Knot showed as present at the Root but would not speak to me. Still open: Fort Chalkmoth key and cellar, and Ennodius Vanin the Collector. The three seal-stones stay in the gate. I did not loot the hydras treasure."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.0594962,
+ "minutes": 0.6,
+ "turns": 13,
+ "tokens": {
+  "input_tokens": 24,
+  "output_tokens": 2505,
+  "cache_read_input_tokens": 65542,
+  "cache_creation_input_tokens": 6961
+ }
+}

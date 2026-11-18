@@ -302,7 +302,7 @@ stages:
     going: the choice is in front of me on the message box
     next: choose
     ways: use (heals all trees; the order's rule made fast; Cuts-the-Old-Knot dies; I get Toh-Nassa, a keep, training, stronger
-      blessings; the Unbound hunt me); take (trees part, three in ten die, dreams end; I get the Eye and the Unbound's highest
+      blessings; the Unbound hunt me); take (trees part, three in ten die, dreams end; I get the Eye and Knot-Breaker, the Unbound's highest
       rank; the order hunts me; no more blessings); give (the same parting; she keeps the Eye; I get her as an ally, her
       spells and the Karsh-Naal longhouse)
     carriers:
@@ -483,8 +483,9 @@ stages:
   place: sunken-ruin-23-m112
   journal: text.journal.mn19.40
   journalText: I lifted the Eye of Argonia from its plinth, and the trees parted. I saw about three in ten of them die.
-    The dreamers will see nothing now, and the Unbound will open the cellar. Every member and friend of the Toh-Reel-Ka
-    will attack me, and no Hist will bless me again. The Eye is mine.
+    The dreamers will see nothing now, and the Unbound will open the cellar. They count me a Knot-Breaker now, their
+    highest rank, one who has broken the old knot that tied every tree to every other. Every member and friend of the
+    Toh-Reel-Ka will attack me, and no Hist will bless me again. The Eye is mine.
   onEnter:
   - endingScene: take
     messages:
@@ -506,7 +507,7 @@ stages:
   - makePeace: faction.mn.unbound
   - setFactionRank:
     - faction.mn.unbound
-    - top
+    - knot-breaker
   - setFlag:
     - flag.mn.no-hist-blessing
     - true
@@ -514,7 +515,8 @@ stages:
   ending: complete
   endingId: e-take
   information:
-    going: I took the Eye; the trees parted and some died; the order is my enemy
+    going: I took the Eye; the trees parted and some died; the order is my enemy; the Unbound make me a Knot-Breaker, their
+      highest rank
     next: the main quest is over; the marsh is open, and dead trees stand where I will see them
     ways: none
     carriers:
@@ -526,8 +528,9 @@ stages:
   place: sunken-ruin-23-m112
   journal: text.journal.mn19.50
   journalText: Cuts-the-Old-Knot lifted the Eye of Argonia from its plinth, and the trees parted. I saw about three in ten
-    of them die. The dreamers will see nothing now. She keeps the Eye and calls me her equal among the Unbound; she will
-    come when I call her. Every member and friend of the Toh-Reel-Ka will attack me, and no Hist will bless me again.
+    of them die. The dreamers will see nothing now. She keeps the Eye and makes me a Knot-Breaker, the Unbound's highest
+    rank, her equal among them, one who has broken the old knot that tied every tree to every other. She will come when
+    I call her. Every member and friend of the Toh-Reel-Ka will attack me, and no Hist will bless me again.
   onEnter:
   - endingScene: give
     before:
@@ -559,7 +562,7 @@ stages:
   - makePeace: faction.mn.unbound
   - setFactionRank:
     - faction.mn.unbound
-    - top
+    - knot-breaker
   - setFlag:
     - flag.mn.no-hist-blessing
     - true
@@ -567,7 +570,7 @@ stages:
   ending: complete
   endingId: e-give
   information:
-    going: she lifted the Eye; the trees parted; she is my ally
+    going: she lifted the Eye; the trees parted; she is my ally; I am a Knot-Breaker, the Unbound's highest rank
     next: the main quest is over; I can call her with a power; the Karsh-Naal longhouse is mine
     ways: none
     carriers:
@@ -657,7 +660,8 @@ endings:
 - id: e-take
   when: the player lifted the Eye
   gives: 'the Eye (amulet: Fortify Health 50, Fortify Magicka 50, Resist Poison 50; a power once a day, the Eye''s Gaze);
-    the Unbound''s highest rank; their trainers and traders as friends; Cuts-the-Old-Knot''s thanks if she lives'
+    Knot-Breaker, the Unbound''s highest rank; their trainers and traders as friends; Cuts-the-Old-Knot''s thanks if
+    she lives'
   costs: every member and friend of the Toh-Reel-Ka attacks on sight; no Hist gives a blessing again; about three trees
     in ten dead, Teel-Fen Weir's and Jal-Veesa's among them
   seen: dead Hists blackened at their places with their villages empty (Jal-Veesa, Teel-Fen Weir and the others chosen at
@@ -668,7 +672,7 @@ endings:
     - true
 - id: e-give
   when: Cuts-the-Old-Knot lifted the Eye at the player's word
-  gives: the Unbound's highest rank; Cuts-the-Old-Knot as an ally called with one power and sent away with another, fighting
+  gives: Knot-Breaker, the Unbound's highest rank; Cuts-the-Old-Knot as an ally called with one power and sent away with another, fighting
     as a battlemage; strong spells she teaches with a power once a day; the longhouse of Karsh-Naal Camp as the player's
     stronghold
   costs: as e-take, and the Eye is hers
@@ -682,6 +686,10 @@ terms:
   meets: 10, journal
   told: where the roots of every Hist meet, under the sea
   ask: topic.mn-the-root
+- term: Knot-Breaker
+  meets: 40 and 50, journal
+  told: '"the Unbound''s highest rank: one who has broken the old knot that tied every tree to every other"'
+  ask: topic.mn19-knot-breaker
 - term: Toh-Nassa
   meets: 90, line:topic.mn19-stones
   told: '"Leader of the Secret", the order''s highest rank'
@@ -741,6 +749,19 @@ topics:
     stands beside her at the head of the Unbound; the power she taught calls her to their side, the other sends her home
     to Karsh-Naal, and the longhouse there is theirs.'
   new: true
+- id: topic.mn19-knot-breaker
+  label: What is a Knot-Breaker?
+  person: npc.mn.cuts-the-old-knot
+  stages:
+  - 40
+  - 50
+  when:
+    npcAlive: npc.mn.cuts-the-old-knot
+  intent: 'Cuts-the-Old-Knot. Tells: the old knot is the bond that tied every tree to every other and every hatchling to
+    a tree, the bond that cast out the tribeless; the Unbound take their name from being out of it. A Knot-Breaker is
+    one who has cut it, the highest the Unbound name anyone; she took her own name from the same work, and her storm
+    spell carries it. The player is one now. Checks: nothing. Does: nothing.'
+  new: true
 - id: topic.mn19-cuts-take
   label: (greeting)
   person: npc.mn.cuts-the-old-knot
@@ -782,3 +803,14 @@ review:
     - failForward
     finding: No who-must-live row.
     answer: 'deliberate: every ending reads with Never-Writes-Twice or Cuts-the-Old-Knot dead (e-use-no-rank; Give closed)'
+  - id: L4
+    severity: lore
+    ids:
+    - stages.40
+    - stages.50
+    - terms
+    finding: The Unbound's highest rank was unnamed.
+    answer: 'gap filled: Knot-Breaker, a translated title as the Unbound name themselves and their leader in plain words
+      (main-plot §1 and §4; Cuts-the-Old-Knot), from their aim of cutting the old bond (argonia-4e201-state.md §11.3: the
+      tribeless are cast out of a tree''s bond) and Cuts-the-Old-Knot''s own spell, Knot-Breaker''s Storm (main-plot §8);
+      a plain-word title like the faction''s own name, where the order''s ranks are Jel (rulers-rename-map.md)'

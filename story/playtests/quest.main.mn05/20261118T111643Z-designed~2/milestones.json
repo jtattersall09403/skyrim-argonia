@@ -1,0 +1,88 @@
+[
+ {
+  "stage": 10,
+  "kind": "start",
+  "ending": null,
+  "title": "The Handler",
+  "journal": "Vosh-Leera sent me to the order's handler, Nesh-Deeka, at her house in Helstrom, the oldest city. I'm to ride the rootworm there from Jal-Veesa's Hist pool, paying Weeltul twenty-five gold, and find Nesh-Deeka's House. Cheeval-Xu, who works the rootworm at Helstrom's city tree, can point the way.",
+  "objectives": [
+   "Speak to Nesh-Deeka in Nesh-Deeka's House, Helstrom. (marker: Nesh-Deeka)"
+  ],
+  "plan": {
+   "going": "I carry the Unbound's names, their draught for \"the Eye\" and the seal to the order's handler.",
+   "next": "Ride the rootworm to Helstrom and speak to Nesh-Deeka in her house.",
+   "ways": "One way; the fare is twenty-five gold, and I have more than that."
+  },
+  "answers": [
+   "I am Tarin, a freed thief working for Vosh-Leera of Jal-Veesa. I found that the Unbound, a tribeless cult led by Cuts-the-Old-Knot, drain Hist sap, seal scars with grey paste, and send jars to him for a draught tied to something called the Eye. Vosh-Leera sent me to her handler.",
+   "Speak to Nesh-Deeka in her house in Helstrom, through the Door to Nesh-Deeka's House here. Cheeval-Xu can point the way.",
+   "I can ask Cheeval-Xu for directions, go straight in the door, or use my lockpick if it is locked. I can also try the Boatmen's Lodge. Stealing is my usual way.",
+   "I do not know what the Eye is, what the seal is made of, who Cuts-the-Old-Knot really is, or who Nesh-Deeka is. I could find out by asking Nesh-Deeka and Cheeval-Xu."
+  ],
+  "raw": "1. I am Tarin, a freed thief working for Vosh-Leera of Jal-Veesa. I found that the Unbound, a tribeless cult led by Cuts-the-Old-Knot, drain Hist sap, seal scars with grey paste, and send jars to him for a draught tied to something called the Eye. Vosh-Leera sent me to her handler. 2. Speak to Nesh-Deeka in her house in Helstrom, through the Door to Nesh-Deeka's House here. Cheeval-Xu can point the way. 3. I can ask Cheeval-Xu for directions, go straight in the door, or use my lockpick if it is locked. I can also try the Boatmen's Lodge. Stealing is my usual way. 4. I do not know what the Eye is, what the seal is made of, who Cuts-the-Old-Knot really is, or who Nesh-Deeka is. I could find out by asking Nesh-Deeka and Cheeval-Xu."
+ },
+ {
+  "stage": 20,
+  "kind": "stage",
+  "ending": null,
+  "title": "The Handler",
+  "journal": "Nesh-Deeka heard my report. The Eye is the Eye of Argonia, the old priest-kings' jewel of Hist amber. It lies at the Root, where every tree's roots meet under the sea, behind a gate the old kings sealed, and no living diver has found it. I said the draught must be to kill whatever guards the Root, and she agreed. To prove me, she wants a jar of stolen sap from Keel-Raa, an Unbound go-between lodging at the Boatmen's Lodge with two hired men. I can lift it from his pack on the crates behind them while they are not looking, buy it for a hundred gold, or fight the three of them for it, which the levy will not count as a crime. I'm to bring her the jar.",
+  "objectives": [
+   "Get Keel-Raa's jar of sap at the Boatmen's Lodge (from his pack unseen, for 100 gold, or by a fight). (marker: Keel-Raa, Keel-Raa's Pack)"
+  ],
+  "plan": {
+   "going": "Cuts-the-Old-Knot hunts the Eye of Argonia at the Root and brews her draught to kill its guardian. The order wants proof of me.",
+   "next": "Get Keel-Raa's jar at the Boatmen's Lodge and bring it to Nesh-Deeka.",
+   "ways": "Take the jar from his pack on the crates behind him unseen (Sneak); buy it for 100 gold, and he gives me the pack; or fight him and his two hired men (no crime: the levy ignores their band)."
+  },
+  "answers": [
+   "Nesh-Deeka is the Toh-Reel-Ka handler in Helstrom. She heard my report. The Eye is the Eye of Argonia, the priest-kings' Hist amber jewel at the Root under the sea behind a sealed gate. Cuts-the-Old-Knot wants it and the draught is probably to kill whatever guards the Root. She wants proof of me.",
+   "Go to the Boatmen's Lodge and get the jar of stolen sap from Keel-Raa, then bring it to Nesh-Deeka.",
+   "Lift it from his pack on the crates unseen (my thief way), buy it for 100 gold, or fight Keel-Raa and his two hired men, which the levy will not count as a crime.",
+   "I do not know what the Root guardian is, or the exact route to the Root. I do not know what the seal is made of. I could find out by talking to Keel-Raa and Nesh-Deeka later."
+  ],
+  "raw": "1. Nesh-Deeka is the Toh-Reel-Ka handler in Helstrom. She heard my report. The Eye is the Eye of Argonia, the priest-kings' Hist amber jewel at the Root under the sea behind a sealed gate. Cuts-the-Old-Knot wants it and the draught is probably to kill whatever guards the Root. She wants proof of me. 2. Go to the Boatmen's Lodge and get the jar of stolen sap from Keel-Raa, then bring it to Nesh-Deeka. 3. Lift it from his pack on the crates unseen (my thief way), buy it for 100 gold, or fight Keel-Raa and his two hired men, which the levy will not count as a crime. 4. I do not know what the Root guardian is, or the exact route to the Root. I do not know what the seal is made of. I could find out by talking to Keel-Raa and Nesh-Deeka later."
+ },
+ {
+  "stage": 30,
+  "kind": "stage",
+  "ending": null,
+  "title": "The Handler",
+  "journal": "I have Keel-Raa's jar of sap. I'm to bring it to Nesh-Deeka.",
+  "objectives": [
+   "Bring Keel-Raa's jar to Nesh-Deeka. (marker: Nesh-Deeka)"
+  ],
+  "plan": {
+   "going": "I have the jar.",
+   "next": "Bring it to Nesh-Deeka in her house.",
+   "ways": "One way."
+  },
+  "answers": [
+   "I took Keel-Raa's jar of stolen sap from his pack as proof for Nesh-Deeka, the Toh-Reel-Ka handler. The Unbound want the Eye of Argonia at the Root.",
+   "Bring the jar to Nesh-Deeka at her house in Helstrom.",
+   "Deliver it straight away, or keep it or sell it, but delivering is the aim.",
+   "I still do not know what the seal is made of, who Cuts-the-Old-Knot really is, or how to reach the Root. Nesh-Deeka might tell me."
+  ],
+  "raw": "1. I took Keel-Raa's jar of stolen sap from his pack as proof for Nesh-Deeka, the Toh-Reel-Ka handler. The Unbound want the Eye of Argonia at the Root. 2. Bring the jar to Nesh-Deeka at her house in Helstrom. 3. Deliver it straight away, or keep it or sell it, but delivering is the aim. 4. I still do not know what the seal is made of, who Cuts-the-Old-Knot really is, or how to reach the Root. Nesh-Deeka might tell me."
+ },
+ {
+  "stage": 90,
+  "kind": "ending",
+  "ending": "complete",
+  "title": "The Handler",
+  "journal": "Nesh-Deeka took the jar and made me a Voh-Vastei, an apprentice of the Toh-Reel-Ka, with the order's armour and two hundred gold; the order's traders will deal with me now. The order means to find the Root before the Unbound, and I am to use the Eye where it sits to heal the trees. Her one lead: an \"Eye of Argonia\" is for sale in Gideon's market. I'm to ride the rootworm from Helstrom's city tree to Gideon.",
+  "objectives": [],
+  "plan": {
+   "going": "I am a Voh-Vastei of the Toh-Reel-Ka. The order wants the Root found before the Unbound and the Eye used there to heal the trees.",
+   "next": "Ride the rootworm from Helstrom's city tree to Gideon and find the \"Eye of Argonia\" for sale (MN06).",
+   "ways": "One way on."
+  },
+  "answers": [
+   "Notes: I am Tarin, now a Voh-Vastei (apprentice) of the Toh-Reel-Ka, with the order armour and about 350 gold, plus my lockpick, the Hist blessing and the Unbound note. Nesh-Deeka is the handler in Helstrom. The Eye of Argonia is the priest-kings Hist amber jewel at the Root under the sea, behind a gate sealed by the last king. Cuts-the-Old-Knot of the Unbound wants it and probably means to kill whatever guards the Root. The order wants to find the Root first and use the Eye to heal the trees. Next: ride the rootworm from Helstrom city tree (Cheeval-Xu calls it) to Gideon, and investigate an Eye of Argonia for sale in the market. Most such eyes are glass, so I must find where it came from. Still unknown: the seal paste, who Cuts-the-Old-Knot is, and the route to the Root. I could also ask Nesh-Deeka about the Xeech-Leel, Umbriel, and the order ranks.",
+   "",
+   "",
+   ""
+  ],
+  "raw": "Notes: I am Tarin, now a Voh-Vastei (apprentice) of the Toh-Reel-Ka, with the order armour and about 350 gold, plus my lockpick, the Hist blessing and the Unbound note. Nesh-Deeka is the handler in Helstrom. The Eye of Argonia is the priest-kings Hist amber jewel at the Root under the sea, behind a gate sealed by the last king. Cuts-the-Old-Knot of the Unbound wants it and probably means to kill whatever guards the Root. The order wants to find the Root first and use the Eye to heal the trees. Next: ride the rootworm from Helstrom city tree (Cheeval-Xu calls it) to Gideon, and investigate an Eye of Argonia for sale in the market. Most such eyes are glass, so I must find where it came from. Still unknown: the seal paste, who Cuts-the-Old-Knot is, and the route to the Root. I could also ask Nesh-Deeka about the Xeech-Leel, Umbriel, and the order ranks."
+ }
+]

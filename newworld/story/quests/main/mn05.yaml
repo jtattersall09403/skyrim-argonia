@@ -28,6 +28,8 @@ touches:
   access: write
 - id: thing.mn.stolen-sap-jar
   access: write
+- id: thing.mn05.keel-raa-pack
+  access: write
 - id: faction.toh-reel-ka
   access: write
 - id: faction.mn05.keel-raa-hands
@@ -60,10 +62,11 @@ foundation: 'Built from main-plot.md §5 quest 5 and the rank table. The player 
   (the travel network''s fare line, 25 gold) to Helstrom''s city tree, where Cheeval-Xu works the rootworm, and finds Nesh-Deeka''s
   House, one of the city''s one-room Argonian houses, its door showing her name. Nesh-Deeka hears the report and tells the
   player what the Eye of Argonia is and where it lies; the player says what the draught must be for and she agrees. To prove
-  the player she sends them for a jar of stolen sap carried by Keel-Raa, an Unbound go-between who lodges at the Boatmen''s
+  the player she sends them for a jar of stolen sap kept by Keel-Raa, an Unbound go-between who lodges at the Boatmen''s
   Lodge (Helstrom''s inn, a ship''s hold interior kept by Sleeps-Last) with two hired men beside him, none hostile, in a
   band of ours whose members'' wrongs Helstrom''s levy does not punish (Skyrim''s flag that reports no crimes against its
-  members). The player lifts the jar from his pack (Pickpocket), buys it for 100 gold, or fights the three for it. On the
+  members). The jar is in his pack, a knapsack on the crates behind the three. The player lifts it from the pack unseen
+  (Sneak), buys it for 100 gold (he gives the player the pack, and so the one jar in it), or fights the three for it. On the
   jar''s hand-in Nesh-Deeka makes the player a Voh-Vastei (the rank, Sign of Cipactli''s light Argonian armour under our
   name, the order''s traders and 200 gold), gives the order''s aim and her one lead, an "Eye of Argonia" for sale in Gideon,
   by the rootworm from Helstrom''s city tree: stage 90, which starts MN06. The rank is given at the end, after the test
@@ -78,9 +81,9 @@ recordSources:
   - story/lore/topics/umbriel.md
 centrepiece: ACQUIRE
 actionPlan:
-- skill: Pickpocket
-  use: pickpocket
-  reason: the jar is in Keel-Raa's pack
+- skill: Sneak
+  use: steal
+  reason: the jar is in Keel-Raa's pack on the crates behind him and his men, who face the lodge's door
 - skill: One-Handed
   use: fight-people
   reason: Keel-Raa and two hired men; attacking his band is no crime
@@ -200,10 +203,18 @@ things:
   name: Keel-Raa's Jar of Sap
   source: 'new: Skyrim''s clay jar under our name (main-plot §9)'
   states:
-    before-30: in Keel-Raa's pack
+    before-30: in Keel-Raa's Pack
     after-30: carried
     after-90: with Nesh-Deeka
-  where: carried by Keel-Raa
+  where: in Keel-Raa's Pack
+- id: thing.mn05.keel-raa-pack
+  kind: container
+  name: Keel-Raa's Pack
+  source: 'existing base: a Skyrim knapsack container, owned by Keel-Raa; it holds the jar'
+  states:
+    before-26: Keel-Raa's
+    after-26: the player's, if they bought the jar
+  where: on the crates at the far end of the Boatmen's Lodge, behind Keel-Raa and his men
 - id: item.mn05.voh-vastei-armour
   kind: item
   name: Voh-Vastei Armour (cuirass, boots, gauntlets, helm)
@@ -248,12 +259,26 @@ placements:
       the shelf at the far end of the hold from the door; not hostile; in faction.mn05.keel-raa-hands
     room: Boatmen's Lodge
   enabled: true
+- ref: thing.mn05.keel-raa-pack
+  kind: container
+  base:
+    kind: existing_base
+    id: Skyrim knapsack
+  name: Keel-Raa's Pack
+  owner: npc.mn.keel-raa
+  anchor:
+    place: helstrom
+    room: Boatmen's Lodge
+    rule: surface
+    need: on the crates at the far end of the hold, behind where Keel-Raa and his two men stand facing the door
+  enabled: true
 - ref: thing.mn.stolen-sap-jar
   kind: thing
   base:
     kind: template_item
     id: Skyrim clay jar
-  carriedBy: npc.mn.keel-raa
+  container: thing.mn05.keel-raa-pack
+  owner: npc.mn.keel-raa
   enabled: true
 - ref: npc.mn.varus-atrius
   kind: person
@@ -351,10 +376,11 @@ clues:
   - c1
 shapeData:
   prize: Keel-Raa's jar of stolen sap
-  kept: in his pack, on him (carriedBy), in the Boatmen's Lodge
-  key: none; the pack is pickpocketed
-  waysIn: Pickpocket; 100 gold; a fight with three people of a band whose wrongs are no crime
-  goesWrong: a failed pickpocket turns the three hostile, and the fight follows
+  kept: in his pack, a knapsack he owns on the crates behind him, in the Boatmen's Lodge
+  key: none; the pack is not locked, and taking from it is theft unless he has sold it
+  waysIn: Sneak (take it from the pack unseen); 100 gold (he gives the player the pack); a fight with three people of a
+    band whose wrongs are no crime
+  goesWrong: seen taking from the pack, the player is set on by the three, and the fight follows
   whoPays: Keel-Raa loses the jar or his life; the Unbound one go-between
   terms: one hundred gold for the jar
   parties: Keel-Raa, the player for the order
@@ -410,13 +436,13 @@ stages:
     lies at the Root, where every tree's roots meet under the sea, behind a gate the old kings sealed, and no living diver
     has found it. I said the draught must be to kill whatever guards the Root, and she agreed. To prove me, she wants a
     jar of stolen sap from Keel-Raa, an Unbound go-between lodging at the Boatmen's Lodge with two hired men. I can lift
-    it from his pack, buy it for a hundred gold, or fight the three of them for it, which the levy will not count as a crime.
+    it from his pack on the crates behind them while they are not looking, buy it for a hundred gold, or fight the three of them for it, which the levy will not count as a crime.
     I'm to bring her the jar.
   objectives:
   - id: jar
     text: text.objective.mn05.jar
-    objectiveText: Get Keel-Raa's jar of sap at the Boatmen's Lodge (Pickpocket, 100 gold, or a fight).
-    target: npc.mn.keel-raa
+    objectiveText: Get Keel-Raa's jar of sap at the Boatmen's Lodge (from his pack unseen, for 100 gold, or by a fight).
+    target: npc.mn.keel-raa, thing.mn05.keel-raa-pack
     completeWhen:
       questStage:
       - quest.main.mn05
@@ -450,8 +476,8 @@ stages:
     going: Cuts-the-Old-Knot hunts the Eye of Argonia at the Root and brews her draught to kill its guardian. The order
       wants proof of me.
     next: Get Keel-Raa's jar at the Boatmen's Lodge and bring it to Nesh-Deeka.
-    ways: 'Pickpocket the jar from his pack; buy it for 100 gold; or fight him and his two hired men (no crime: the levy
-      ignores their band).'
+    ways: 'Take the jar from his pack on the crates behind him unseen (Sneak); buy it for 100 gold, and he gives me the
+      pack; or fight him and his two hired men (no crime: the levy ignores their band).'
     carriers:
     - know: the Eye and the Root
       by:
@@ -469,6 +495,8 @@ stages:
       - objective
       - marker:npc.mn.keel-raa
       - name:npc.mn.keel-raa
+      - marker:thing.mn05.keel-raa-pack
+      - name:thing.mn05.keel-raa-pack
     - know: the three ways and that a fight is no crime
       by:
       - journal
@@ -476,11 +504,11 @@ stages:
       - line:topic.mn05-draught
       - ask:topic.mn05-keel-jar
   approaches:
-  - id: pickpocket
+  - id: steal
     actions:
-    - skill: Pickpocket
-      use: pickpocket
-      target: Keel-Raa
+    - skill: Sneak
+      use: steal
+      target: Keel-Raa's Pack
   - id: buy
     actions:
     - skill: Speech
@@ -500,48 +528,44 @@ stages:
 - id: 26
   place: helstrom
   journal: text.journal.mn05.26
-  journalText: I paid Keel-Raa a hundred gold for his jar of sap. I'm to bring it to Nesh-Deeka.
+  journalText: I paid Keel-Raa a hundred gold for his jar of sap, and he gave me his pack with the jar in it. I'm to take
+    the jar from Keel-Raa's Pack on the crates behind him and bring it to Nesh-Deeka.
   onEnter:
   - takeGold: 100
-  - giveItem:
-    - thing.mn.stolen-sap-jar
-    - 1
+  - giveOwnership: thing.mn05.keel-raa-pack
   objectives:
-  - id: bring
-    text: text.objective.mn05.bring
-    objectiveText: Bring Keel-Raa's jar to Nesh-Deeka.
-    target: npc.mn.nesh-deeka
+  - id: take
+    text: text.objective.mn05.take
+    objectiveText: Take the jar from Keel-Raa's Pack.
+    target: thing.mn05.keel-raa-pack
     completeWhen:
       questStage:
       - quest.main.mn05
       - ≥
-      - 90
+      - 30
   successors:
-  - to: 90
+  - to: 30
     when:
-      all:
-      - topicHeardFrom:
-        - topic.mn05-give-jar
-        - npc.mn.nesh-deeka
-      - hasItem:
-        - thing.mn.stolen-sap-jar
-        - 1
+      hasItem:
+      - thing.mn.stolen-sap-jar
+      - 1
   failForward:
   - to: 95
     when:
       not:
         npcAlive: npc.mn.nesh-deeka
   information:
-    going: I have the jar.
-    next: Bring it to Nesh-Deeka in her house.
+    going: I bought the jar; the pack it is in is mine now.
+    next: Take the jar from Keel-Raa's Pack, then bring it to Nesh-Deeka in her house.
     ways: One way.
     carriers:
-    - know: bring it to her
+    - know: the pack is mine and the jar is in it
       by:
       - journal
       - objective
-      - marker:npc.mn.nesh-deeka
-      - name:door.mn.nesh-deeka-house
+      - marker:thing.mn05.keel-raa-pack
+      - name:thing.mn05.keel-raa-pack
+      - line:topic.mn05-buy
 - id: 30
   place: helstrom
   journal: text.journal.mn05.30
@@ -849,7 +873,7 @@ topics:
   stages:
   - 20
   essential: false
-  intent: 'Keel-Raa. Tells: he does, in his pack, and it stays there until someone pays. A hundred gold, and it is the player''s.
+  intent: 'Keel-Raa. Tells: he does, in his pack on the crates behind him, and it stays there until someone pays. A hundred gold, and it is the player''s.
     Checks: nothing. Does: nothing.'
   replies:
   - topic.mn05-buy
@@ -860,8 +884,9 @@ topics:
   stages:
   - 20
   essential: true
-  intent: 'Keel-Raa. Checks: goldAtLeast 100. Tells: a pleasure; he hands over the jar. Does: sets stage 26, whose start
-    takes a hundred gold and gives the jar. Fallback when the check fails: no coin, no jar; he names a hundred again.'
+  intent: 'Keel-Raa. Checks: goldAtLeast 100. Tells: a pleasure; the jar is in his pack on the crates behind him, and
+    the pack goes with it: the player may take it. Does: sets stage 26, whose start takes a hundred gold and makes the
+    pack the player''s. Fallback when the check fails: no coin, no jar; he names a hundred again.'
   fallback: No coin, no jar. A hundred, and it's yours.
   new: true
 - id: topic.mn05-varus-who
@@ -963,6 +988,10 @@ review:
     severity: lore
     ids:
     - stages.26
-    finding: Buying gives a second copy of the jar while Keel-Raa's stays in his pack.
-    answer: 'gap: the build should remove his jar when the buy stage starts (no take-from-person term in the vocabulary
-      yet); left for the builder'
+    finding: Buying gave a second copy of the jar while Keel-Raa's stayed in his pack.
+    answer: 'changed: the one jar lies in Keel-Raa''s Pack, a knapsack he owns on the crates behind him; buying gives the
+      player the pack (giveOwnership, the ceiling''s "give the player a container''s contents"), so the player takes
+      that jar and no copy is made. The suggestion of a build step taking the jar from his inventory was not followed:
+      the vocabulary has no result that takes a thing from a person, and a build step of one quest''s own is outside the
+      ceiling. The pickpocket way becomes lifting the jar from the pack unseen (Sneak); the plot''s words, "lifts the jar
+      from his pack", stand.'

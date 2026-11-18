@@ -454,7 +454,7 @@ rewards serve every build: some protect, some heal and some attack.
 | Who gives it | Where the riddle leads | The reward, against the guardian |
 |---|---|---|
 | Vosh-Leera, after quest 5 | Mistwatch, an Imperial ruin on Cape Percar | an amulet that turns most of the guardian's venom |
-| Sesk, if freed in quest 4 | Kitsa Burrow, a Lilmothiit ruin of the Althii Archipelago | scrolls of a paralysing spell, enough to stop the guardian three times |
+| Sesk, if freed in quest 4, who then waits for a raft at Helstrom's city landing and owes the player | Kitsa Burrow, a Lilmothiit ruin of the Althii Archipelago | scrolls of a paralysing spell, enough to stop the guardian three times |
 | the Toklea elder, after quest 8 | Va-Seeth Spire, a drowned tower | a spell tome: a spell of ours that burns the guardian far worse than it burns anything else |
 | a spared Unbound, after quest 9 | Anutasil, an Ayleid ruin of Blackwood | a quiver of arrows that slow what they strike |
 | Bell Station's steward, after quest 13 | Zeshul-Tha Spire, a drowned tower | scrolls of a storm that strikes every head in reach at once, the roaming heads among them, and potions that cure its venom quickly |
@@ -517,7 +517,7 @@ the player carries them to Never-Writes-Twice.
   words: the Unbound opening the cellar of Fort Chalkmoth, and the order's people raging.
 - *It gives:* the Eye, an amulet that fortifies health and magicka and resists poison, with a power usable once a
   day, the Eye's Gaze, which paralyses every foe in sight. The Unbound's highest
-  rank. Their trainers and traders as friends. If Cuts-the-Old-Knot lives, she thanks the player.
+  rank, Knot-Breaker: one who has broken the old knot that tied every tree to every other. Their trainers and traders as friends. If Cuts-the-Old-Knot lives, she thanks the player.
 - *It costs:* every member and every friend of the Toh-Reel-Ka attacks on sight. No Hist gives the player its
   blessing again. About three trees in ten are dead when the player next sees them: blackened, with their villages
   empty. Teel-Fen Weir's and Jal-Veesa's are among them.
@@ -525,7 +525,7 @@ the player carries them to Never-Writes-Twice.
 **Give her the Eye.** Open only if Cuts-the-Old-Knot is alive. She lifts the Eye and keeps it.
 
 - *The vision:* as in Take.
-- *It gives:* the Unbound's highest rank. Cuts-the-Old-Knot as an ally whom the player calls with one power and
+- *It gives:* the Unbound's highest rank, Knot-Breaker. Cuts-the-Old-Knot as an ally whom the player calls with one power and
   sends away with another, and who fights as a battlemage. When she is not called, she stands at the Karsh-Naal
   longhouse. Two strong spells that she teaches, Knot-Breaker's Storm and Root Ward, one of them a power usable
   once a day. The longhouse of Karsh-Naal Camp as the player's stronghold.
@@ -637,7 +637,7 @@ place its rows, and the place is built to them.
 | Karsh-Naal Camp | jars of sap stacked by the longhouse | 4. The Sap Camp | The jars show the player this is where the sap goes. | their look |
 | Karsh-Naal Camp | the longhouse and its cellar (the source camp's longhouse and cellar) | the Give ending | The longhouse becomes the player's stronghold. | Cuts-the-Old-Knot gives it to them |
 | Helstrom | a quiet house nearest the city landing, its door showing "Nesh-Deeka's House" (the source city's one-room Argonian house 8, with its tables, benches, beds, enchanter and locked chest), where the handler, Nesh-Deeka, stands by the table and Never-Writes-Twice at the back | 5. The Handler; the reports of quests 6 to 13; the report with three stones that opens quest 17; the Use ending | Nesh-Deeka makes the player a Voh-Vastei and takes their reports; Never-Writes-Twice takes them from quest 10. | its door shows its name; a marker |
-| Helstrom | the Unbound go-between, Keel-Raa, lodging at the Boatmen's Lodge, the city's inn (the source's ship interior), among the crates at the far end of the hold, with his two hired men beside him and a jar of stolen sap in his pack | 5. The Handler | The player lifts the jar, buys it or fights the three for it. | Nesh-Deeka tells them; a marker; the jar is a named thing |
+| Helstrom | the Unbound go-between, Keel-Raa, lodging at the Boatmen's Lodge, the city's inn (the source's ship interior), among the crates at the far end of the hold, with his two hired men beside him, and his pack (a knapsack he owns, Skyrim's container) on the crates behind them with a jar of stolen sap in it | 5. The Handler | The player lifts the jar from the pack unseen, buys it (he gives them the pack) or fights the three for it. | Nesh-Deeka tells them; markers; the pack and the jar are named things |
 | Gideon | a relic dealer's stall in the market with a glass Eye for sale (the source city's market stalls) | 6. The Glass Eye | The player learns the Eye is glass and where its setting went. | the dealer shows it; a marker |
 | Gideon South Watch | the smugglers' locked chest in the inner room, with the Eye's old setting and the Collector's note (the second source's one interior) | 6. The Glass Eye | The player takes the setting by force or by stealth. | a marker; the setting and the note are named things |
 | Wreck of the Pale Harvest | a ship that can be entered, with air inside, the drowned crew in the hold and the captain's locked strongbox, its key on the captain (the source ship's hold) | 7. The Pale Harvest | The player swims out from Ysan's jetty and opens the strongbox. | the game names the wreck and the strongbox; a marker |
