@@ -1,6 +1,6 @@
 # Who the new world already names
 
-The person table holds 57 people. They are the people of the drafted places, given light identities when their place was drafted; their status is 'alive' unless the table says otherwise. Every other place's people are counted (its population) but not named.
+The person table holds 60 people. They are the people of the drafted places, given light identities when their place was drafted; their status is 'alive' unless the table says otherwise. Every other place's people are counted (its population) but not named.
 
 ## Ashgate Landing (Barsaebica)
 
@@ -68,6 +68,14 @@ The person table holds 57 people. They are the people of the drafted places, giv
 | Tzalun | male Argonian, guard | Tzalun's (head) | the city levy, leads the day watch | Modest | He is the oldest of the levy at the camp and leads the day watch. He settles quarrels among the guards before the naheesh hear of them. | <!-- person:helstrom.87WTH0EW4WJ6AQ9CTRC7GXAZTS -->
 | Gahzeel | male Argonian, guard | Tzalun's (levy) | the city levy, night watch | Poor | He guards the streets by night for the levy and sleeps at its camp. He has no kin in the city. | <!-- person:helstrom.4GBW9ZEQ76A1V9ZGQ97EVH2G8Y -->
 | Nine-Teeth | female Argonian, guard | Tzalun's (levy) | the city levy, night watch | Poor | She lost nine teeth in a fight on the plank walks and has been called Nine-Teeth since. She guards the streets by night for the levy. | <!-- person:helstrom.6E8A5X2P02B4VC5QE4D7CPY62V -->
+
+## Teel-Fen Weir (Barsaebica)
+
+| Name | Who | Household | Trade | Means | What the data says of them |
+|---|---|---|---|---|---|
+| Heem-Jasa | female Argonian, apothecary | Heem-Jasa's (head) | minder of the young Hist; sells sap, swamp fungus and eggshells; teaches alchemy | Poor | She has tended the weir's young Hist since it first broke from the roots of Jal-Veesa's tree, and she sells what it and the creek give. She speaks bluntly to strangers and has not slept well since its scar closed over the grey paste. | <!-- person:outpost-m6-m66.YD5KBEBAEJ872QV0FZ3X1W0D5V -->
+| Hulzeeth | male Argonian, guard | Heem-Jasa's (levy) | weir-warden of the levy, night watch; leads the wardens on watch | Poor | He keeps the night watch on the traps for the Sedge-Wardens of Jal-Veesa. He counts every stranger who passes the reed hide to the west and trusts none of them. | <!-- person:outpost-m6-m66.BNWFXXF0AM8MRVF4KM7MPGHHVD -->
+| Vasha-Ree | female Argonian, guard | Heem-Jasa's (levy) | weir-warden of the levy, day watch | Poor | She works the eel traps by day and loads the catch for Urvyn Farm. She keeps the crocodiles off the log boom with a pole and a loud voice. | <!-- person:outpost-m6-m66.VH5KST5J9YZKCX5FDTFKQCG8CS -->
 
 ## Names the place notes give
 

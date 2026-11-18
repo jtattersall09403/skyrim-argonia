@@ -252,7 +252,7 @@ static class People
             FixOutfit(ctx, o.DefaultOutfit, $"{o.EditorID}_Outfit", false);
             FixOutfit(ctx, o.SleepingOutfit, $"{o.EditorID}_SleepOutfit", true);
             // what the body holds when it dies is a levelled list by its type: one of ours, every entry at level 1
-            if (!o.DeathItem.IsNull && Cache.TryResolve<ILeveledItemGetter>(o.DeathItem.FormKey, out var di) && Levelled(di, Cache))
+            if (!o.DeathItem.IsNull && Lvli(o.DeathItem.FormKey) is { } di && Levelled(di, Cache))
             {
                 var own = new LeveledItem(ctx.TakeFixed(), C.Rel) { EditorID = $"{o.EditorID}_DeathItem", Flags = LeveledItem.Flag.UseAll, Entries = new() };
                 foreach (var (k, c) in Fixed(di))
@@ -370,7 +370,7 @@ static class People
         {
             var k = e.Data!.Reference.FormKey;
             var n = Math.Max(1, (int)e.Data.Count);
-            if (Cache.TryResolve<ILeveledItemGetter>(k, out var inner)) res.AddRange(Fixed(inner, depth + 1).Select(x => (x.Item, x.Count * n)));
+            if (Lvli(k) is { } inner) res.AddRange(Fixed(inner, depth + 1).Select(x => (x.Item, x.Count * n)));
             else res.Add((k, n));
         }
         return res;
@@ -397,6 +397,26 @@ static class People
     public static bool HoldsLevelled(IReadOnlyList<IContainerEntryGetter>? items) =>
         items?.Any(i => Cache.TryResolve<ILeveledItemGetter>(i.Item.Item.FormKey, out var li) && Levelled(li, Cache)) == true;
 
+    /// The plugins the write copies from (Write.Ctx.Fc), set by the write: a base copied from a plugin that is no master
+    /// names that plugin's levelled lists, which the masters' cache does not hold.
+    public static ForeignCopy? Fc;
+    static readonly Dictionary<FormKey, ILeveledItemGetter?> foreignLvli = new();
+
+    /// A levelled item list by key: a master's, one we copied in, or a list of a plugin we copy from.
+    static ILeveledItemGetter? Lvli(FormKey k)
+    {
+        if (Cache.TryResolve<ILeveledItemGetter>(k, out var li)) return li;
+        if (Fc == null || k.IsNull) return null;
+        if (Fc.Copies.TryGetValue(k, out var own)) return own as ILeveledItemGetter;
+        if (!foreignLvli.TryGetValue(k, out var f))
+        {
+            try { f = Fc.Plugin(k.ModKey.FileName).LeveledItems.FirstOrDefault(x => x.FormKey == k); }
+            catch (Exception e) when (e is FileNotFoundException or InvalidDataException) { f = null; }
+            foreignLvli[k] = f;
+        }
+        return f;
+    }
+
     public static void Flatten(ExtendedList<ContainerEntry>? items)
     {
         if (items == null) return;
@@ -404,7 +424,7 @@ static class People
         foreach (var e in items)
         {
             var k = e.Item.Item.FormKey;
-            if (Cache.TryResolve<ILeveledItemGetter>(k, out var li))
+            if (Lvli(k) is { } li)
                 foreach (var (f, n) in Fixed(li))
                     outList.Add(new ContainerEntry { Item = new ContainerItem { Item = new FormLink<IItemGetter>(f), Count = e.Item.Count * n } });
             else outList.Add(e);

@@ -241,9 +241,10 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
                 row["enable_parent"] = {**ep, "ref": our_id[ep["ref"]]}
             elif ep["ref"] in by_src:
                 row.pop("enable_parent")     # its parent was left out
-        if row.get("linked"):
-            row["linked"] = [{**lk, "ref": our_id.get(lk["ref"], lk["ref"])} for lk in row["linked"]
-                             if lk.get("ref") in our_id or lk.get("ref") not in by_src]
+        if row.get("linked"):    # a link leads only to a thing the place carries: the source's world is not ours
+            row["linked"] = [{**lk, "ref": our_id[lk["ref"]]} for lk in row["linked"] if lk.get("ref") in our_id]
+            if not row["linked"]:
+                row.pop("linked")
     # things the place record promises that the source lacks, added by the agent (draft.add)
     # (the rows for rooms are placed by the `add` stage once the rooms are written)
     from tools.places.draft import adds
@@ -536,6 +537,8 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
         counts: dict[str, int] = {}
         for r in walk_src:
             kb = (replace.get(r["base"]) or {}).get("base", r["base"])
+            if re.search(r"step|stair", str((bases.get(kb) or {}).get("model", "")), re.I):
+                continue    # a bridge is laid of level walkway pieces, never of a flight
             if not (bases.get(kb) or {}).get("nordic") and geom.foot({"base": kb, "kind": "building"}, bases):
                 counts[kb] = counts.get(kb, 0) + 1
         walk_base = max(sorted(counts), key=lambda kb: counts[kb]) if counts else None
@@ -1218,10 +1221,12 @@ def draft_people(place_id, rec, gives, src, bases, our, spaces, clusters, fit, o
             bed, home = None, work.get("space") if work.get("space") != "exterior" else home
         else:
             bed = bed_for([home] if home else []) or bed_for(houses + [h for h in halls if h not in barracks])
+            if bed is None and not houses and not halls:
+                bed = bed_for(["exterior"])     # a camp with no roof: its people sleep in its open beds, as its guards do
             home = bed["space"] if bed else home
         pid = io.mint(place_id, "person", role, str(n))
         bed_at = {"space": bed["space"], "ref": bed["ref"], "radius": 128} if bed else town
-        eat = {"space": home, "radius": 1024} if home else town
+        eat = people.guard_eat(bed) if home == "exterior" else {"space": home, "radius": 1024} if home else town
         wander = {"space": inn_space, "radius": 1024} if inn_space and role != "innkeeper" else town
         services_ids = [g["kind"] for g in sp["gives"]]
         fr = [{"faction": crime, "rank": 0}, {"faction": f"{place_id}.town", "rank": 0}]

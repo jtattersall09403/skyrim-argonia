@@ -184,7 +184,7 @@ It is to be built from near Teeth of Sithis in King of the Murkmire.esp (a ruin 
 
 ### Teel-Fen Weir
 
-An outpost, about 80 m across, sited on riverbank, of The Sedge-Wardens of Jal-Veesa (Veesa-Teeleel). In 4E 201 it is inhabited, held by Veesa-Teeleel weir-wardens; 23 people live there. It is not built yet. <!-- place:outpost-m6-m66 -->
+An outpost, about 80 m across, sited on riverbank, of The Sedge-Wardens of Jal-Veesa (Veesa-Teeleel). In 4E 201 it is inhabited, held by Veesa-Teeleel weir-wardens; 23 people live there. It is drafted: its place files are in newworld/places/outpost-m6-m66. <!-- place:outpost-m6-m66 -->
 
 Teel-Fen Weir is the Veesa-Teeleel weir closest to Jal-Veesa on the creek south of the town. A young Hist rose here from the roots of Jal-Veesa's tree, and the wardens' families tend it beside their traps. <!-- place_note:outpost-m6-m66/overview --> Five wardens and their families live on a small cypress platform on posts at the weir, with a landing, a drying rack of fish and the young Hist in the middle of the tents. Three nights ago the young tree's scar closed over a grey paste that none of its tenders put there. <!-- place_note:outpost-m6-m66/present --> Veesa-Teeleel families live at the weir, five wardens and their kin, with Heem-Jasa, the young tree's minder. <!-- place_note:outpost-m6-m66/people --> The weirs here belong to the Sedge-Wardens, the Veesa-Teeleel who keep the traps for Jal-Veesa. <!-- place_note:outpost-m6-m66/history -->
 

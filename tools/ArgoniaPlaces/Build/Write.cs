@@ -138,6 +138,7 @@ static class Write
         mod.ModHeader.Description = "The new world's places: built by tools/places/build.py";
         var fc = new ForeignCopy(mod, Masters.Select(m => ModKey.FromFileName(m)).Append(world.ModKey), C.Data, CopyFirst);
         var ctx = new Ctx { Mod = mod, Fc = fc, World = world };
+        People.Fc = fc;
         ctx.Allowed.UnionWith(Masters.Select(m => ModKey.FromFileName(m)));
         ctx.Allowed.Add(world.ModKey);
 

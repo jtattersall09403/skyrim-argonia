@@ -32,10 +32,10 @@ STATION_MATCH = {
 }
 # what a source actor's base must show (class, factions, services, edid) to stand in for a role
 ROLE_MATCH = {
-    "merchant": r"merchant|vendor|general|trader", "smith": r"blacksmith|smith|weapon|armou?r", "apothecary": r"apothecary|alchem",
+    "merchant": r"merchant|vendor|general|trader", "smith": r"blacksmith|smith|weapon|armou?r", "apothecary": r"apothecary|alchem|treeminder",
     "spell-trader": r"spell|mage|healer|priest|wizard", "innkeeper": r"innkeeper|inn\b|tavern|bartender",
     "boatman": r"boat|ferry|raft|captain|sailor|ship", "carter": r"carriage|carter|driver|stable|wagon|\bcart\b",
-    "guard": r"guard|soldier", "fence": r"fence|thie",
+    "guard": r"guard|soldier|watchman", "fence": r"fence|thie",
     "resident": r"citizen|villager|farmer|resident|townsperson|commoner",
 }
 INDOOR = {"innkeeper", "spell-trader"}

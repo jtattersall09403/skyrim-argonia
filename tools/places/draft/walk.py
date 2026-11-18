@@ -72,6 +72,22 @@ def islands(ctx: dict, W: "Walkable") -> dict:
             row = m["rows"].get(d)
             if not W.main[W.off[n.fk] + ti] and row is not None and row["id"] not in out:
                 out[row["id"]] = (int(c), W.cent[W.comp == c])
+    # a camp's bed in the open is a stop as a door is: one whose deck the town reaches only by swimming (a tent
+    # platform standing in a pool) is an island to join the same way
+    pdir = ctx.get("place_dir")
+    folk = io.read_jsonl(Path(pdir) / "people.jsonl") if pdir and (Path(pdir) / "people.jsonl").exists() else []
+    by_id = {r["id"]: r for r in m["rows"].values()}
+    seen = {c for c, _ in out.values()}
+    for p in folk:
+        bed = p.get("bed") or {}
+        row = by_id.get(bed.get("ref")) if bed.get("space") == "exterior" else None
+        if row is None:
+            continue
+        t = W.found(row["pos"])[0]
+        if t >= 0 and not W.main[t] and int(W.comp[t]) not in seen:
+            c = int(W.comp[t])
+            seen.add(c)
+            out[row["id"]] = (c, W.cent[W.comp == c])
     return out
 
 

@@ -14,3 +14,8 @@
 {"place_id":"outpost-m13-m65","need_seq":0,"need_sign_id":"look","detail":"Black Marsh & Valenwood's Imperial ship moored against the camp's bank, its hold door on the deck"}
 {"place_id":"outpost-m13-m65","need_seq":1,"need_sign_id":"beside","detail":"inside the gang-master's large tent, by his bed"}
 {"place_id":"outpost-m13-m65","need_seq":1,"need_sign_id":"label","detail":"the game shows \"Dralin's Strongbox\" on it"}
+{"place_id":"outpost-m6-m66","need_seq":0,"need_sign_id":"look","detail":"a young Hist some 6 m tall standing in the wardens' pool, against the east side of the cypress tent platform"}
+{"place_id":"outpost-m6-m66","need_seq":0,"need_sign_id":"person","detail":"Heem-Jasa, the tree's minder, works on the platform beside it and sleeps there"}
+{"place_id":"outpost-m6-m66","need_seq":1,"need_sign_id":"label","detail":"the game names the knapsack \"Sap-Takers' Pack\""}
+{"place_id":"outpost-m6-m66","need_seq":1,"need_sign_id":"look","detail":"a scale-hide lean-to on the west bank, beside a tall dead swamp tree, with a crate, two clay urns and a knapsack on its open west side"}
+{"place_id":"outpost-m6-m66","need_seq":2,"need_sign_id":"look","detail":"the young Hist by the platform"}

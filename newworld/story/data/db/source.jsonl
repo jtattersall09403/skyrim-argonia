@@ -1,5 +1,6 @@
 {"id":"cite-culture-forest-green","kind":"reasoning","title":"culture:forest-green","locator":"culture:forest-green"}
 {"id":"cite-newworld-story-quests-main-mn01-yaml","kind":"dossier","title":"newworld/story/quests/main/mn01.yaml","locator":"newworld/story/quests/main/mn01.yaml"}
+{"id":"cite-newworld-story-quests-main-mn03-yaml","kind":"dossier","title":"newworld/story/quests/main/mn03.yaml","locator":"newworld/story/quests/main/mn03.yaml"}
 {"id":"cite-person-helstrom-87wth0ew4wj6aq9ctrc7gxazts","kind":"dossier","title":"person:helstrom.87WTH0EW4WJ6AQ9CTRC7GXAZTS","locator":"person:helstrom.87WTH0EW4WJ6AQ9CTRC7GXAZTS"}
 {"id":"cite-person-helstrom-8a62j4kyj8da3f58wkmry3y79f","kind":"dossier","title":"person:helstrom.8A62J4KYJ8DA3F58WKMRY3Y79F","locator":"person:helstrom.8A62J4KYJ8DA3F58WKMRY3Y79F"}
 {"id":"cite-person-helstrom-bgdsp6p2ttv6hnacjgn6kpvvby","kind":"dossier","title":"person:helstrom.BGDSP6P2TTV6HNACJGN6KPVVBY","locator":"person:helstrom.BGDSP6P2TTV6HNACJGN6KPVVBY"}
@@ -13,6 +14,7 @@
 {"id":"cite-person-helstrom-yfmtjk20vgq52ak51gm46yjqyr","kind":"dossier","title":"person:helstrom.YFMTJK20VGQ52AK51GM46YJQYR","locator":"person:helstrom.YFMTJK20VGQ52AK51GM46YJQYR"}
 {"id":"cite-person-outpost-m13-m65-rp1zwttmyj5qz7eky4szehe05s","kind":"dossier","title":"person:outpost-m13-m65.RP1ZWTTMYJ5QZ7EKY4SZEHE05S","locator":"person:outpost-m13-m65.RP1ZWTTMYJ5QZ7EKY4SZEHE05S"}
 {"id":"cite-person-outpost-m13-m65-vd51zd4gp90n4wygpgw43d7ppc","kind":"dossier","title":"person:outpost-m13-m65.VD51ZD4GP90N4WYGPGW43D7PPC","locator":"person:outpost-m13-m65.VD51ZD4GP90N4WYGPGW43D7PPC"}
+{"id":"cite-person-outpost-m6-m66-yd5kbebaej872qv0fz3x1w0d5v","kind":"dossier","title":"person:outpost-m6-m66.YD5KBEBAEJ872QV0FZ3X1W0D5V","locator":"person:outpost-m6-m66.YD5KBEBAEJ872QV0FZ3X1W0D5V"}
 {"id":"cite-place-give-helstrom-1","kind":"reasoning","title":"place_give:helstrom/1","locator":"place_give:helstrom/1"}
 {"id":"cite-place-give-helstrom-11","kind":"reasoning","title":"place_give:helstrom/11","locator":"place_give:helstrom/11"}
 {"id":"cite-place-give-helstrom-13","kind":"reasoning","title":"place_give:helstrom/13","locator":"place_give:helstrom/13"}
@@ -30,6 +32,10 @@
 {"id":"cite-place-give-helstrom-8","kind":"reasoning","title":"place_give:helstrom/8","locator":"place_give:helstrom/8"}
 {"id":"cite-place-give-outpost-m13-m65-0","kind":"reasoning","title":"place_give:outpost-m13-m65/0","locator":"place_give:outpost-m13-m65/0"}
 {"id":"cite-place-give-outpost-m13-m65-5","kind":"reasoning","title":"place_give:outpost-m13-m65/5","locator":"place_give:outpost-m13-m65/5"}
+{"id":"cite-place-give-outpost-m6-m66-0","kind":"reasoning","title":"place_give:outpost-m6-m66/0","locator":"place_give:outpost-m6-m66/0"}
+{"id":"cite-place-give-outpost-m6-m66-3","kind":"reasoning","title":"place_give:outpost-m6-m66/3","locator":"place_give:outpost-m6-m66/3"}
+{"id":"cite-place-give-outpost-m6-m66-4","kind":"reasoning","title":"place_give:outpost-m6-m66/4","locator":"place_give:outpost-m6-m66/4"}
+{"id":"cite-place-give-outpost-m6-m66-6","kind":"reasoning","title":"place_give:outpost-m6-m66/6","locator":"place_give:outpost-m6-m66/6"}
 {"id":"cite-place-note-helstrom-dangers","kind":"reasoning","title":"place_note:helstrom/dangers","locator":"place_note:helstrom/dangers"}
 {"id":"cite-place-note-helstrom-economy","kind":"reasoning","title":"place_note:helstrom/economy","locator":"place_note:helstrom/economy"}
 {"id":"cite-place-note-helstrom-faith","kind":"reasoning","title":"place_note:helstrom/faith","locator":"place_note:helstrom/faith"}
@@ -43,8 +49,14 @@
 {"id":"cite-place-note-outpost-m13-m65-overview","kind":"reasoning","title":"place_note:outpost-m13-m65/overview","locator":"place_note:outpost-m13-m65/overview"}
 {"id":"cite-place-note-outpost-m13-m65-people","kind":"reasoning","title":"place_note:outpost-m13-m65/people","locator":"place_note:outpost-m13-m65/people"}
 {"id":"cite-place-note-outpost-m13-m65-present","kind":"reasoning","title":"place_note:outpost-m13-m65/present","locator":"place_note:outpost-m13-m65/present"}
+{"id":"cite-place-note-outpost-m6-m66-dangers","kind":"reasoning","title":"place_note:outpost-m6-m66/dangers","locator":"place_note:outpost-m6-m66/dangers"}
+{"id":"cite-place-note-outpost-m6-m66-economy","kind":"reasoning","title":"place_note:outpost-m6-m66/economy","locator":"place_note:outpost-m6-m66/economy"}
+{"id":"cite-place-note-outpost-m6-m66-faith","kind":"reasoning","title":"place_note:outpost-m6-m66/faith","locator":"place_note:outpost-m6-m66/faith"}
+{"id":"cite-place-note-outpost-m6-m66-history","kind":"reasoning","title":"place_note:outpost-m6-m66/history","locator":"place_note:outpost-m6-m66/history"}
+{"id":"cite-place-note-outpost-m6-m66-present","kind":"reasoning","title":"place_note:outpost-m6-m66/present","locator":"place_note:outpost-m6-m66/present"}
 {"id":"cite-place-wealth-helstrom","kind":"dossier","title":"place_wealth:helstrom","locator":"place_wealth:helstrom"}
 {"id":"cite-place-wealth-outpost-m13-m65","kind":"dossier","title":"place_wealth:outpost-m13-m65","locator":"place_wealth:outpost-m13-m65"}
+{"id":"cite-place-wealth-outpost-m6-m66","kind":"dossier","title":"place_wealth:outpost-m6-m66","locator":"place_wealth:outpost-m6-m66"}
 {"id":"cite-region-murkwood","kind":"reasoning","title":"region:murkwood","locator":"region:murkwood"}
 {"id":"cite-story-design-quests-35-cast-md","kind":"dossier","title":"story/design/quests/35-cast.md","locator":"story/design/quests/35-cast.md"}
 {"id":"cite-story-design-quests-lines-house-cardruhn-md","kind":"dossier","title":"story/design/quests/lines/house-cardruhn.md","locator":"story/design/quests/lines/house-cardruhn.md"}

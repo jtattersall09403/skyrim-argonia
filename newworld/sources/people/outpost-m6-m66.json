@@ -1,0 +1,65 @@
+{
+ "place_id": "outpost-m6-m66",
+ "about": "Teel-Fen Weir's people as world facts (person, household, person_note tables; tools/newworld/stockdb.py). Placement (bed, work, routine) stays in newworld/places/outpost-m6-m66/people.jsonl under the same ids. The camp has no roof of its own: Heem-Jasa and the two wardens on watch sleep in its open beds as one household. The three Unbound sap-takers whom quest 3 places at the reed hide are the quest's to place: the draft holds no hostile people to cast them on.",
+ "guard_body": "levy",
+ "households": [
+  {"id": "outpost-m6-m66.household.exterior", "home_space": "exterior", "name": null}
+ ],
+ "people": [
+  {
+   "id": "outpost-m6-m66.YD5KBEBAEJ872QV0FZ3X1W0D5V",
+   "name": "Heem-Jasa",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "jade",
+   "household": {"id": "outpost-m6-m66.household.exterior", "role": "head"},
+   "role": "apothecary",
+   "trade": "minder of the young Hist; sells sap, swamp fungus and eggshells; teaches alchemy",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "cast": "npc.mn.heem-jasa",
+   "notes": [
+    {"aspect": "backstory", "text": "She has tended the weir's young Hist since it first broke from the roots of Jal-Veesa's tree, and she sells what it and the creek give. She speaks bluntly to strangers and has not slept well since its scar closed over the grey paste.", "tier": "AGENT_INVENTED", "cites": ["place_give:outpost-m6-m66/3", "place_give:outpost-m6-m66/4", "place_note:outpost-m6-m66/faith", "place_note:outpost-m6-m66/present", "newworld/story/quests/main/mn03.yaml"]}
+   ],
+   "relations": []
+  },
+  {
+   "id": "outpost-m6-m66.BNWFXXF0AM8MRVF4KM7MPGHHVD",
+   "name": "Hulzeeth",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "jade",
+   "household": {"id": "outpost-m6-m66.household.exterior", "role": "levy"},
+   "role": "guard",
+   "trade": "weir-warden of the levy, night watch; leads the wardens on watch",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {"aspect": "backstory", "text": "He keeps the night watch on the traps for the Sedge-Wardens of Jal-Veesa. He counts every stranger who passes the reed hide to the west and trusts none of them.", "tier": "AGENT_INVENTED", "cites": ["place_note:outpost-m6-m66/history", "place_note:outpost-m6-m66/dangers"]}
+   ],
+   "relations": []
+  },
+  {
+   "id": "outpost-m6-m66.VH5KST5J9YZKCX5FDTFKQCG8CS",
+   "name": "Vasha-Ree",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "jade",
+   "household": {"id": "outpost-m6-m66.household.exterior", "role": "levy"},
+   "role": "guard",
+   "trade": "weir-warden of the levy, day watch",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {"aspect": "backstory", "text": "She works the eel traps by day and loads the catch for Urvyn Farm. She keeps the crocodiles off the log boom with a pole and a loud voice.", "tier": "AGENT_INVENTED", "cites": ["place_note:outpost-m6-m66/economy", "place_note:outpost-m6-m66/dangers", "place_give:outpost-m6-m66/0"]}
+   ],
+   "relations": []
+  }
+ ]
+}

@@ -190,6 +190,10 @@ def pieces(st: Standing, log=print) -> None:
             for k in ("owner", "lock", "door", "linked", "enable_parent", "primitive", "map_marker", "edid", "radius", "count"):
                 if r.get(k) is not None:
                     row[k] = r[k]
+            if row.get("linked"):    # a link leads only to a thing the place carries
+                row["linked"] = [{**lk, "ref": ours[lk["ref"]]["id"]} for lk in row["linked"] if lk.get("ref") in ours]
+                if not row["linked"]:
+                    row.pop("linked")
             st.ext.append(row)
             ours[sid] = row
             row["seat"] = st.seat_rule(r, of[sid], ours)

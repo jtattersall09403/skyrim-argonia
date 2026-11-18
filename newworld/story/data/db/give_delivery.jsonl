@@ -482,9 +482,9 @@
 {"place_id":"jal-veesa","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (free-bed: a mat in the elders' long house)"}
 {"place_id":"jal-veesa","give_seq":4,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trainer: Adept Archery trainer, a ruin-warden of the Veesa-Teeleel)"}
 {"place_id":"jal-veesa","give_seq":5,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (fishing: the weir channels: eels and gar)"}
-{"place_id":"jal-veesa","give_seq":6,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (cooking-pot: at the fish racks)"}
-{"place_id":"jal-veesa","give_seq":7,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (tanning-rack: by the boat sheds)"}
-{"place_id":"jal-veesa","give_seq":8,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (shrine-blessing: the Hist pool: a blessing of waterbreathing from the tree-minder, and for an Argonian, who already breathes water, a blessing of resist poison)"}
+{"place_id":"jal-veesa","give_seq":6,"seq":0,"by":"ref","ref_id":"jal-veesa.P1R5QVKSM177Y2PDFWBEMWQ1BV","status":"delivered","why":"the place's cooking-pot (place.json stations)"}
+{"place_id":"jal-veesa","give_seq":7,"seq":0,"by":"ref","ref_id":"jal-veesa.Q8HD6HGMGF0GRV749RYRD14V5A","status":"delivered","why":"the place's tanning-rack (place.json stations)"}
+{"place_id":"jal-veesa","give_seq":8,"seq":0,"by":"ref","ref_id":"jal-veesa.6GZR9CZ8M4AJEMAJW5108FW37F","status":"delivered","why":"the place's shrine (place.json stations)"}
 {"place_id":"jarecai","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (boat-stop: a raft-master at the lake landing)"}
 {"place_id":"jarecai","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-blacksmith: a Mine-Burner smith selling salvaged mine iron, steel and hide armour)"}
 {"place_id":"jarecai","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (forge: the smith's forge and anvil)"}
@@ -971,7 +971,7 @@
 {"place_id":"outpost-m13-m65","give_seq":2,"seq":0,"by":"ref","ref_id":"outpost-m13-m65.J0KTQNPTJ7JCY9BYWXXXAPV5ZS","status":"delivered","why":"the place's cooking-pot (place.json stations)"}
 {"place_id":"outpost-m13-m65","give_seq":3,"seq":0,"by":"record","status":"open","why":"harvest-common 'sedge and swamp fungus on the reed beds': no reed bed is drafted; the place-build pass must lay the reed beds' sedge and fungus along the bank"}
 {"place_id":"outpost-m13-m65","give_seq":4,"seq":0,"by":"record","status":"open","why":"combat-creature 'mudcrabs on the river bank and one young crocodile in the reed beds': the creatures are placed at a fixed level by the place-build pass once the reed beds are laid"}
-{"place_id":"outpost-m13-m65","give_seq":5,"seq":0,"by":"container","ref_id":"outpost-m13-m65.H2ST2KHQFZATRW9NEP4YSS6GRM","status":"delivered","why":"the gang-master's strongbox stands in the hut (draft.add, need 1), stocked at T1 behind a Novice lock"}
+{"place_id":"outpost-m13-m65","give_seq":5,"seq":0,"by":"container","ref_id":"outpost-m13-m65.H2ST2KHQFZATRW9NEP4YSS6GRM","status":"delivered","why":"the gang-master's strongbox stands in the hut (draft.add, need 1), stocked at T2 behind a Novice lock"}
 {"place_id":"outpost-m13-m79","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-creature: spriggans at the place the totem was moved from)"}
 {"place_id":"outpost-m13-m79","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-creature: a spriggan matron)"}
 {"place_id":"outpost-m13-m79","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (boss-chest: boss chest)"}
@@ -1056,13 +1056,13 @@
 {"place_id":"outpost-m3-m83","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-creature: giant spiders at the last crossing)"}
 {"place_id":"outpost-m3-m83","give_seq":4,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-creature: a giant spider)"}
 {"place_id":"outpost-m3-m83","give_seq":5,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (boss-chest: boss chest)"}
-{"place_id":"outpost-m6-m66","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (fishing: the traps: eels and carp)"}
-{"place_id":"outpost-m6-m66","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (cooking-pot: by the drying rack)"}
-{"place_id":"outpost-m6-m66","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (tanning-rack: on the platform)"}
-{"place_id":"outpost-m6-m66","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-apothecary: Heem-Jasa, the tree's minder, selling sap, swamp fungus and eggshells)"}
-{"place_id":"outpost-m6-m66","give_seq":4,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trainer: Adept Alchemy trainer, Heem-Jasa)"}
-{"place_id":"outpost-m6-m66","give_seq":5,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-foes: three Unbound sap-takers at the reed hide)"}
-{"place_id":"outpost-m6-m66","give_seq":6,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (treasure: jars of sap and the sap-takers' packs at the reed hide)"}
+{"place_id":"outpost-m6-m66","give_seq":0,"seq":0,"by":"record","status":"open","why":"fishing 'the traps: eels and carp': the woven weir is built across the creek but no trap or fishing spot is placed on it; the place-build pass must set the traps (a fishing activator of the marsh's mods) at the weir"}
+{"place_id":"outpost-m6-m66","give_seq":1,"seq":0,"by":"ref","ref_id":"outpost-m6-m66.VQHCG9NFJASJMQ0G2VYY8JHYVQ","status":"delivered","why":"the place's cooking-pot (place.json stations)"}
+{"place_id":"outpost-m6-m66","give_seq":2,"seq":0,"by":"ref","ref_id":"outpost-m6-m66.G2SVD727X29WD3AMEVP8X75B8P","status":"delivered","why":"the place's tanning-rack (place.json stations)"}
+{"place_id":"outpost-m6-m66","give_seq":3,"seq":0,"by":"person","person_id":"outpost-m6-m66.YD5KBEBAEJ872QV0FZ3X1W0D5V","status":"delivered","why":"Heem-Jasa (apothecary) gives it (people.jsonl services)"}
+{"place_id":"outpost-m6-m66","give_seq":4,"seq":0,"by":"person","person_id":"outpost-m6-m66.YD5KBEBAEJ872QV0FZ3X1W0D5V","status":"delivered","why":"Heem-Jasa (apothecary) gives it (people.jsonl services)"}
+{"place_id":"outpost-m6-m66","give_seq":5,"seq":0,"by":"record","status":"open","why":"combat-foes 'three Unbound sap-takers at the reed hide': main quest 3 places them (npc.mn03.sap-taker-1 to 3, hostile, levels 3 to 4) at the hide the draft built; the place holds no hostile people of its own to deliver them, so the owner rules: the quest's placement delivers it, or the place-build pass places them"}
+{"place_id":"outpost-m6-m66","give_seq":6,"seq":0,"by":"container","ref_id":"outpost-m6-m66.AZW5NSGYVQ67YJSWRZYC14KD9G","status":"delivered","why":"the sap-takers' pack stands at the reed hide (draft.add, need 1), stocked at T2"}
 {"place_id":"outpost-m7-m77","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-hunter: the Hutan-Tzel buy hides)"}
 {"place_id":"outpost-m7-m77","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (tanning-rack: the canoe shed)"}
 {"place_id":"outpost-m7-m77","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trainer: Journeyman Sneak (a Hutan-Tzel go-between))"}

@@ -248,8 +248,11 @@ def items() -> int:
         for h in doc.get("possessions", []) + doc.get("traders", []):
             keys |= {i["item"] for i in h.get("items", [])}
     keys |= {u["item_id"] for u in _json(STOCK / "unique.json")["items"]}
-    rec = Records.load(["Skyrim.esm", "Update.esm", "Dawnguard.esm", "HearthFires.esm", "Dragonborn.esm",
-                        "Black Marsh.esm", "Black Marsh North.esp"])
+    order = ["Skyrim.esm", "Update.esm", "Dawnguard.esm", "HearthFires.esm", "Dragonborn.esm",
+             "Black Marsh.esm", "Black Marsh North.esp"]
+    # and every other plugin a source names an item of (a person built on King of the Murkmire's villagers carries its gear)
+    order += sorted({k.rsplit(":", 1)[0] for k in keys if ":" in k} - set(order))
+    rec = Records.load(order)
     edids = {t["soul_gem"] for t in sc["tiers"]} | {n for t in sc["tiers"] for n in t["gem"] + t["jewellery"]}
     keys |= {k for k, r in rec.raw.items() if r.edid in edids and r.sig in ("MISC", "ARMO", "SLGM")}
     never = set(sc["never"]["materials"])

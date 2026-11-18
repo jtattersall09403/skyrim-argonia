@@ -2,5 +2,674 @@
  "place_id": "outpost-m6-m66",
  "source_id": "kingofthemurkmire.marker.ree-an-wo",
  "similar": [],
- "draft": {}
+ "draft": {
+  "rot_deg": 338,
+  "people_from": [
+   "kingofthemurkmire.keebahollowlocation",
+   "kingofthemurkmire.seekhatyollocation"
+  ],
+  "add": [
+   {
+    "base": "King of the Murkmire.esp:0D72B8",
+    "kind": "static",
+    "pos": [
+     -40523,
+     -540117
+    ],
+    "rot_z": 0.0,
+    "need": 0,
+    "tier": "AGENT_INVENTED",
+    "why": "the young Hist that grew from Jal-Veesa's roots, standing in the wardens' pool beside the platform where Heem-Jasa tends it (place record: faith note; main quest 3's need: the sealed scar is on its trunk): King of the Murkmire's HistTree04, a young Hist some 6 m tall"
+   },
+   {
+    "base": "King of the Murkmire.esp:1AD5F2",
+    "kind": "static",
+    "pos": [
+     -42750,
+     -543300
+    ],
+    "rot_z": 0.0,
+    "tier": "AGENT_INVENTED",
+    "why": "the woven weir across the creek below the camp's pool (place record: look note, 'a woven weir across the creek'; fishing: 'the traps: eels and carp'): King of the Murkmire's woven Saxhleel fence set in the creek bed"
+   },
+   {
+    "base": "King of the Murkmire.esp:1AD5F2",
+    "kind": "static",
+    "pos": [
+     -42542,
+     -543300
+    ],
+    "rot_z": 0.0,
+    "tier": "AGENT_INVENTED",
+    "why": "the woven weir across the creek below the camp's pool (place record: look note, 'a woven weir across the creek'; fishing: 'the traps: eels and carp'): King of the Murkmire's woven Saxhleel fence set in the creek bed"
+   },
+   {
+    "base": "King of the Murkmire.esp:1AD5F2",
+    "kind": "static",
+    "pos": [
+     -42334,
+     -543300
+    ],
+    "rot_z": 0.0,
+    "tier": "AGENT_INVENTED",
+    "why": "the woven weir across the creek below the camp's pool (place record: look note, 'a woven weir across the creek'; fishing: 'the traps: eels and carp'): King of the Murkmire's woven Saxhleel fence set in the creek bed"
+   },
+   {
+    "base": "King of the Murkmire.esp:1AD5F2",
+    "kind": "static",
+    "pos": [
+     -42126,
+     -543300
+    ],
+    "rot_z": 0.0,
+    "tier": "AGENT_INVENTED",
+    "why": "the woven weir across the creek below the camp's pool (place record: look note, 'a woven weir across the creek'; fishing: 'the traps: eels and carp'): King of the Murkmire's woven Saxhleel fence set in the creek bed"
+   },
+   {
+    "base": "King of the Murkmire.esp:1AD5F2",
+    "kind": "static",
+    "pos": [
+     -41918,
+     -543300
+    ],
+    "rot_z": 0.0,
+    "tier": "AGENT_INVENTED",
+    "why": "the woven weir across the creek below the camp's pool (place record: look note, 'a woven weir across the creek'; fishing: 'the traps: eels and carp'): King of the Murkmire's woven Saxhleel fence set in the creek bed"
+   },
+   {
+    "base": "King of the Murkmire.esp:15B1ED",
+    "kind": "tree",
+    "pos": [
+     -44300,
+     -544280
+    ],
+    "rot_z": 0.6,
+    "need": 1,
+    "tier": "AGENT_INVENTED",
+    "why": "the lone dead tree the reed hide stands by, west of the weir: the Unbound's reed hide beside a lone dead tree west of the weir (place record: hooks and dangers notes; main quest 3's need); King of the Murkmire's dead swamp tree"
+   },
+   {
+    "base": "King of the Murkmire.esp:10A52C",
+    "kind": "static",
+    "pos": [
+     -44000,
+     -544350
+    ],
+    "rot_z": 4.71,
+    "need": 1,
+    "tier": "AGENT_INVENTED",
+    "why": "the hide itself, a scale-hide lean-to of the source's own kind opening east toward the weir: the Unbound's reed hide beside a lone dead tree west of the weir (place record: hooks and dangers notes; main quest 3's need)"
+   },
+   {
+    "base": "Skyrim.esm:0C2C13",
+    "kind": "static",
+    "pos": [
+     -44200,
+     -544420
+    ],
+    "rot_z": 0.3,
+    "need": 1,
+    "tier": "AGENT_INVENTED",
+    "why": "the crate on the hide's open west side that the note and the jars stand on (main quest 3's placements): the Unbound's reed hide beside a lone dead tree west of the weir (place record: hooks and dangers notes; main quest 3's need)"
+   },
+   {
+    "base": "Skyrim.esm:08632A",
+    "kind": "clutter",
+    "pos": [
+     -44250,
+     -544370
+    ],
+    "rot_z": 0.0,
+    "need": 1,
+    "tier": "AGENT_INVENTED",
+    "why": "jars stacked at the hide beside the quest's own jar of sap (main quest 3: 'one of several clay jars stacked at the hide, the rest clutter')"
+   },
+   {
+    "base": "Skyrim.esm:08632A",
+    "kind": "clutter",
+    "pos": [
+     -44265,
+     -544470
+    ],
+    "rot_z": 1.2,
+    "need": 1,
+    "tier": "AGENT_INVENTED",
+    "why": "jars stacked at the hide beside the quest's own jar of sap (main quest 3: 'one of several clay jars stacked at the hide, the rest clutter')"
+   },
+   {
+    "base": "Dragonborn.esm:039F87",
+    "kind": "container",
+    "pos": [
+     -44150,
+     -544530
+    ],
+    "rot_z": 0.0,
+    "need": 1,
+    "name": "Sap-Takers' Pack",
+    "tier": "AGENT_INVENTED",
+    "why": "the sap-takers' pack at the hide (place record: treasure, 'jars of sap and the sap-takers' packs at the reed hide'): Dragonborn's empty knapsack (King of the Murkmire's own carries a levelled list)"
+   }
+  ],
+  "roles": {
+   "apothecary": {
+    "space": "exterior",
+    "pos": [
+     -40780,
+     -539860
+    ]
+   }
+  },
+  "replace": {
+   "King of the Murkmire.esp:005DBA": "King of the Murkmire.esp:B7F081"
+  }
+ },
+ "fit": {
+  "pivot": [
+   -124036.9,
+   -116298.8
+  ],
+  "anchor": [
+   -40389.1,
+   -539061.8
+  ],
+  "rot_deg": 338.0,
+  "cost": 2829.451,
+  "clusters": {
+   "landing": {
+    "pivot": [
+     -124036.9,
+     -116298.8
+    ],
+    "to": [
+     -42148.6,
+     -539422.2
+    ],
+    "rot": 5.11381,
+    "dx": -256.0,
+    "dy": 0.0,
+    "drot_deg": -45.0,
+    "cost_before": 765.625,
+    "cost_after": 546.875
+   },
+   "s01": {
+    "pivot": [
+     -124036.9,
+     -116298.8
+    ],
+    "to": [
+     -36106.4,
+     -542356.9
+    ],
+    "rot": 6.42281,
+    "dx": 768.0,
+    "dy": -256.0,
+    "drot_deg": 30.0,
+    "cost_before": 714.286,
+    "cost_after": 0.0
+   },
+   "s02": {
+    "pivot": [
+     -124036.9,
+     -116298.8
+    ],
+    "to": [
+     -40389.1,
+     -539061.8
+    ],
+    "rot": 5.89921,
+    "dx": 0.0,
+    "dy": 0.0,
+    "drot_deg": 0.0,
+    "cost_before": 0.0,
+    "cost_after": 0.0
+   },
+   "s03": {
+    "pivot": [
+     -124036.9,
+     -116298.8
+    ],
+    "to": [
+     -40389.1,
+     -539061.8
+    ],
+    "rot": 5.89921,
+    "dx": 0.0,
+    "dy": 0.0,
+    "drot_deg": 0.0,
+    "cost_before": 0.0,
+    "cost_after": 0.0
+   },
+   "s04": {
+    "pivot": [
+     -124036.9,
+     -116298.8
+    ],
+    "to": [
+     -40335.6,
+     -538983.4
+    ],
+    "rot": 5.76831,
+    "dx": 0.0,
+    "dy": 0.0,
+    "drot_deg": -7.5,
+    "cost_before": 83.333,
+    "cost_after": 66.667
+   },
+   "s05": {
+    "pivot": [
+     -124036.9,
+     -116298.8
+    ],
+    "to": [
+     -45334.3,
+     -538194.0
+    ],
+    "rot": 5.11381,
+    "dx": -1024.0,
+    "dy": 512.0,
+    "drot_deg": -45.0,
+    "cost_before": 333.333,
+    "cost_after": 0.0
+   },
+   "s06": {
+    "pivot": [
+     -124036.9,
+     -116298.8
+    ],
+    "to": [
+     -40389.1,
+     -539061.8
+    ],
+    "rot": 5.89921,
+    "dx": 0.0,
+    "dy": 0.0,
+    "drot_deg": 0.0,
+    "cost_before": 0.0,
+    "cost_after": 0.0
+   },
+   "s08": {
+    "pivot": [
+     -124036.9,
+     -116298.8
+    ],
+    "to": [
+     -40389.1,
+     -539061.8
+    ],
+    "rot": 5.89921,
+    "dx": 0.0,
+    "dy": 0.0,
+    "drot_deg": 0.0,
+    "cost_before": 0.0,
+    "cost_after": 0.0
+   },
+   "s09": {
+    "pivot": [
+     -124036.9,
+     -116298.8
+    ],
+    "to": [
+     -40389.1,
+     -539061.8
+    ],
+    "rot": 5.89921,
+    "dx": 0.0,
+    "dy": 0.0,
+    "drot_deg": 0.0,
+    "cost_before": 0.0,
+    "cost_after": 0.0
+   },
+   "s10": {
+    "pivot": [
+     -124036.9,
+     -116298.8
+    ],
+    "to": [
+     -41029.3,
+     -539182.2
+    ],
+    "rot": 5.37561,
+    "dx": 256.0,
+    "dy": -512.0,
+    "drot_deg": -30.0,
+    "cost_before": 454.545,
+    "cost_after": 90.909
+   },
+   "w01": {
+    "pivot": [
+     -124036.9,
+     -116298.8
+    ],
+    "to": [
+     -40389.1,
+     -538165.8
+    ],
+    "rot": 5.89921,
+    "dx": 0.0,
+    "dy": -128.0,
+    "drot_deg": 0.0,
+    "cost_before": 125.0,
+    "cost_after": 125.0
+   },
+   "w02": {
+    "pivot": [
+     -124036.9,
+     -116298.8
+    ],
+    "to": [
+     -40389.1,
+     -539061.8
+    ],
+    "rot": 5.89921,
+    "dx": 0.0,
+    "dy": 0.0,
+    "drot_deg": 0.0,
+    "cost_before": 1000.0,
+    "cost_after": 1000.0
+   },
+   "w03": {
+    "pivot": [
+     -124036.9,
+     -116298.8
+    ],
+    "to": [
+     -40389.1,
+     -539061.8
+    ],
+    "rot": 5.89921,
+    "dx": 0.0,
+    "dy": 0.0,
+    "drot_deg": 0.0,
+    "cost_before": 0.0,
+    "cost_after": 0.0
+   },
+   "w04": {
+    "pivot": [
+     -124036.9,
+     -116298.8
+    ],
+    "to": [
+     -40389.1,
+     -539061.8
+    ],
+    "rot": 5.89921,
+    "dx": 0.0,
+    "dy": 0.0,
+    "drot_deg": 0.0,
+    "cost_before": 1000.0,
+    "cost_after": 1000.0
+   }
+  },
+  "separated": [
+   {
+    "cluster": "s04",
+    "dx": 73.5,
+    "dy": 177.4,
+    "clear_of": "landing"
+   },
+   {
+    "cluster": "w01",
+    "dx": 0.0,
+    "dy": 1024.0,
+    "clear_of": "s06"
+   }
+  ],
+  "clusters_info": [
+   {
+    "id": "landing",
+    "kind": "landing",
+    "head": null,
+    "members": 79,
+    "centre": [
+     -125078.0,
+     -118029.9
+    ]
+   },
+   {
+    "id": "s01",
+    "kind": "street",
+    "head": null,
+    "members": 3,
+    "centre": [
+     -130691.8,
+     -122322.6
+    ]
+   },
+   {
+    "id": "s02",
+    "kind": "street",
+    "head": null,
+    "members": 3,
+    "centre": [
+     -125370.1,
+     -112187.7
+    ]
+   },
+   {
+    "id": "s03",
+    "kind": "street",
+    "head": null,
+    "members": 3,
+    "centre": [
+     -118902.6,
+     -114779.2
+    ]
+   },
+   {
+    "id": "s04",
+    "kind": "street",
+    "head": null,
+    "members": 12,
+    "centre": [
+     -123421.5,
+     -116764.9
+    ]
+   },
+   {
+    "id": "s05",
+    "kind": "street",
+    "head": null,
+    "members": 2,
+    "centre": [
+     -127959.4,
+     -119627.1
+    ]
+   },
+   {
+    "id": "s06",
+    "kind": "street",
+    "head": null,
+    "members": 17,
+    "centre": [
+     -127478.2,
+     -117314.4
+    ]
+   },
+   {
+    "id": "s08",
+    "kind": "street",
+    "head": null,
+    "members": 2,
+    "centre": [
+     -121471.1,
+     -118365.6
+    ]
+   },
+   {
+    "id": "s09",
+    "kind": "street",
+    "head": null,
+    "members": 1,
+    "centre": [
+     -129968.8,
+     -119140.3
+    ]
+   },
+   {
+    "id": "s10",
+    "kind": "street",
+    "head": null,
+    "members": 3,
+    "centre": [
+     -125683.1,
+     -117226.2
+    ]
+   },
+   {
+    "id": "w01",
+    "kind": "wet",
+    "head": null,
+    "members": 33,
+    "centre": [
+     -126948.5,
+     -117545.7
+    ]
+   },
+   {
+    "id": "w02",
+    "kind": "wet",
+    "head": null,
+    "members": 1,
+    "centre": [
+     -118835.0,
+     -122500.4
+    ]
+   },
+   {
+    "id": "w03",
+    "kind": "wet",
+    "head": null,
+    "members": 1,
+    "centre": [
+     -120046.6,
+     -112132.5
+    ]
+   },
+   {
+    "id": "w04",
+    "kind": "wet",
+    "head": null,
+    "members": 1,
+    "centre": [
+     -129276.4,
+     -111285.2
+    ]
+   }
+  ],
+  "relief_norm": 64.0,
+  "patch_max": 105.0
+ },
+ "clearance": {
+  "tree": {
+   "building": 55.1,
+   "door": 211.5,
+   "street": 128.4,
+   "samples": 252
+  },
+  "low": {
+   "building": 768.0,
+   "door": 111.2,
+   "street": 57.1,
+   "samples": 64
+  }
+ },
+ "factions": [
+  {
+   "id": "outpost-m6-m66.crime",
+   "kind": "crime",
+   "name": "Teel-Fen Weir",
+   "jail": null,
+   "owing": {
+    "work": "outpost-m6-m66.FGJW9RNA2DP6V3RT3FGVEA2MR0",
+    "return": "outpost-m6-m66.AK1GWM5MSAQRNZ6SGRY4J1M0NT",
+    "bed": "outpost-m6-m66.YTSFPTPFNAPWSXQPJKBTQ9FGNG",
+    "stolen": "outpost-m6-m66.BMFRARB74875FFWDVTD53KYAXX",
+    "work_at": "the work stop 2 of the place's people share"
+   },
+   "law": "native",
+   "law_why": "Argonian law, no cell: Veesa-Teeleel weir-wardens"
+  },
+  {
+   "id": "outpost-m6-m66.guard",
+   "kind": "guard",
+   "crime": "outpost-m6-m66.crime"
+  },
+  {
+   "id": "outpost-m6-m66.town",
+   "kind": "town",
+   "crime": "outpost-m6-m66.crime"
+  },
+  {
+   "id": "outpost-m6-m66.vendor.01",
+   "kind": "vendor",
+   "crime": "outpost-m6-m66.crime",
+   "hours": [
+    8,
+    20
+   ],
+   "sells": [
+    "trader-apothecary"
+   ],
+   "chest": true,
+   "person": "outpost-m6-m66.YD5KBEBAEJ872QV0FZ3X1W0D5V"
+  }
+ ],
+ "stations": {
+  "needed": [
+   "cooking-pot",
+   "tanning-rack"
+  ],
+  "found": {
+   "cooking-pot": [
+    "outpost-m6-m66.VQHCG9NFJASJMQ0G2VYY8JHYVQ"
+   ],
+   "tanning-rack": [
+    "outpost-m6-m66.G2SVD727X29WD3AMEVP8X75B8P"
+   ]
+  },
+  "missing": [],
+  "added": [],
+  "rent_bed": null
+ },
+ "lights": {
+  "added": []
+ },
+ "hang": {
+  "added": [
+   {
+    "id": "outpost-m6-m66.hang.S60W22PPW4P7EYP4N7K13VYA9J.0",
+    "base": "King of the Murkmire.esp:2F01D6",
+    "on": "outpost-m6-m66.S60W22PPW4P7EYP4N7K13VYA9J"
+   }
+  ]
+ },
+ "ground": {
+  "bundle": "ground.outpost-m6-m66",
+  "sha": "8e7fc35f50767b002d6d75f9d8459c0c76a15dee44e9629a2949eac1ced79823",
+  "stamp": "1e55808f3184277b"
+ },
+ "source": {
+  "bundle": "src.kingofthemurkmire.marker.ree-an-wo",
+  "stamp": "cb1702a0d6ffd6d9"
+ },
+ "radius_m": 150,
+ "counts": {
+  "source_refs": 477,
+  "placed": 29,
+  "adapted": 128,
+  "replaced": 1,
+  "dropped": 319,
+  "exterior_refs": 177,
+  "clusters": 14,
+  "land_patches": 0,
+  "plants_cleared": 53,
+  "paths": 2,
+  "interiors": 0,
+  "people": {
+   "apothecary": 1,
+   "guard": 2
+  },
+  "beds": 0
+ },
+ "draft_key": "b33686fb48c72e30"
 }
