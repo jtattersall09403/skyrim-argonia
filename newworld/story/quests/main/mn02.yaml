@@ -483,8 +483,7 @@ stages:
       - journal
       - line:topic.mn02-give-moss
       - look:thing.mn02.sick-hist
-    - know: what eggs
-      sap and the scar are: null
+    - know: 'what eggs, sap and the scar are'
       by:
       - line:topic.mn02-give-moss
       - ask:topic.mn-eggs

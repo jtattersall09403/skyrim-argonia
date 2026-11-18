@@ -37,6 +37,24 @@ def link(code: str, title: str = "") -> str:
     return f"[{code}{'. ' + one(title) if title else ''}](#q-{code.lower()})"
 
 
+
+_place_names: dict | None = None
+
+
+def _PLACE_NAMES() -> dict:  # noqa: N802 - read once, the world's place names by id
+    global _place_names
+    if _place_names is None:
+        import json
+        from pathlib import Path
+        p = Path(__file__).resolve().parents[2] / "newworld" / "story" / "data" / "db" / "place.jsonl"
+        _place_names = {}
+        if p.exists():
+            for line in p.read_text().splitlines():
+                if line.strip():
+                    r = json.loads(line)
+                    _place_names[r["id"]] = r.get("name") or r["id"]
+    return _place_names
+
 class Play:
     """One record's names and where things stand, for describing its play."""
 
@@ -71,7 +89,8 @@ class Play:
         return humanize(i).replace("-", " ") if not i.startswith(("npc.", "thing.", "door.")) else humanize(i)
 
     def place(self, pid) -> str:
-        return one(humanize(pid))   # a placement's placeName names a door or a room, never the place it stands in
+        """A place id named as the world's records name it (outpost-m11-m63 -> Reed-Sill Weir)."""
+        return one(_PLACE_NAMES().get(str(pid)) or humanize(pid))
 
     def where(self, ref) -> str:
         """Where a person or thing stands, in a few words."""

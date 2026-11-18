@@ -357,7 +357,8 @@ def record_markdown(q: dict, records: dict[str, dict] | None = None) -> str:
     names = {c["id"]: c.get("name") or humanize(c["id"]) for c in q.get("cast") or [] if isinstance(c, dict)}
     pname = {p.get("anchor", {}).get("place") if isinstance(p.get("anchor"), dict) else None: p.get("placeName")
              for p in q.get("placements") or [] if isinstance(p, dict) and p.get("placeName")}
-    place = lambda pid: pname.get(pid) or humanize(pid)  # noqa: E731
+    from tools.newworld.quest_play import _PLACE_NAMES
+    place = lambda pid: _PLACE_NAMES().get(pid) or pname.get(pid) or humanize(pid)  # noqa: E731
     out = [f"# {q['code']}. {_one(q['title'])}"]
     if q.get("premise"):
         out += ["## Premise", _one(q["premise"])]
