@@ -1,0 +1,45 @@
+[
+ {
+  "stage": 10,
+  "kind": "start",
+  "ending": null,
+  "title": "The Vault's Stone",
+  "journal": "The second seal-stone lies in the lowest hall of the Vaults of Gemin, which is under water. The dead walk the vaults and a wraith guards the last hall, and Unbound may be searching there; all of them attack whoever they see. I need to go down and take it. I can fight through, slip past them or turn the dead with Restoration.",
+  "objectives": [
+   "Take the seal-stone from the drowned lowest hall of Gemin. (marker: Seal-Stone of the Kings, Gemin)",
+   "Read the Tablet of the Kings beside the stone. (marker: Tablet of the Kings)"
+  ],
+  "plan": {
+   "going": "The Eye of Argonia, the old kings' jewel, sits at the Root under Teku-Sul, where the roots of every Hist meet; used there it heals every sick tree. The Kings' Gate shuts it in and opens only with three seal-stones. I am hunting the three seal-stones for the Toh-Reel-Ka; this one is in Gemin's drowned lowest hall",
+   "next": "go down through the vaults to the lowest hall and take the stone; read the tablet beside it",
+   "ways": "fight the Unbound, the dead and the wraith; slip past them (Sneak); turn the dead and the wraith (Restoration); I must swim the last hall, or carry waterbreathing"
+  },
+  "answers": [
+   "I am collecting three seal-stones for the Kings Gate at Teku-Sul Spire off Lilmoth. I already have the first from Blackrose. The second is in the drowned lowest hall of the Vaults of Gemin. Dead walk the vaults, a wraith guards the last hall, and Unbound may be there too.",
+   "Go down through the vaults to the lowest hall, take the Seal-Stone of the Kings, and read the Tablet of the Kings beside it.",
+   "Fight through, slip past them, or turn the dead with Restoration.",
+   "I do not know what the Root and Eye truly are, or whether Ennodius Vanin is the real master. I could learn more from the tablet and by talking to people."
+  ],
+  "raw": "1. I am collecting three seal-stones for the Kings Gate at Teku-Sul Spire off Lilmoth. I already have the first from Blackrose. The second is in the drowned lowest hall of the Vaults of Gemin. Dead walk the vaults, a wraith guards the last hall, and Unbound may be there too. 2. Go down through the vaults to the lowest hall, take the Seal-Stone of the Kings, and read the Tablet of the Kings beside it. 3. Fight through, slip past them, or turn the dead with Restoration. 4. I do not know what the Root and Eye truly are, or whether Ennodius Vanin is the real master. I could learn more from the tablet and by talking to people."
+ },
+ {
+  "stage": 91,
+  "kind": "ending",
+  "ending": "complete",
+  "title": "The Vault's Stone",
+  "journal": "I took the second seal-stone from the drowned hall of Gemin. The tablet beside it says that the Eye, lifted, parts every tree from every other, and used where it sits, it strengthens them. I already carry the thief's stone from Blackrose. One is left in the deepest hall of Vorannuhl, and it is still marked.",
+  "objectives": [],
+  "plan": {
+   "going": "I took the second seal-stone from the drowned hall of Gemin. The tablet beside it says that the Eye, lifted, parts every tree from every other, and used where it sits, it strengthens them. I already carry the thief's stone from Blackrose. One is left, in the deepest hall of Vorannuhl, and it is still marked.",
+   "next": "nothing more in this quest; the next quests entry carries the step",
+   "ways": "none"
+  },
+  "answers": [
+   "I took the second seal-stone from Gemin. The tablet says the Eye, if lifted, parts every tree from every other, and if used where it sits it strengthens them. I now hold two stones; the third is at Vorannuhl.",
+   "Go to the deepest hall of Vorannuhl (marked) for the last stone, then take all three to the Kings Gate at Teku-Sul Spire off Lilmoth.",
+   "Fight, sneak or turn the dead there; I could also check Fort Chalkmoth cellar or look into Vanin first.",
+   "I still do not know what the Root and Eye truly are, what the trees are, or whether Vanin is the real master. I could learn more by reading further tablets and asking people."
+  ],
+  "raw": "1. I took the second seal-stone from Gemin. The tablet says the Eye, if lifted, parts every tree from every other, and if used where it sits it strengthens them. I now hold two stones; the third is at Vorannuhl. 2. Go to the deepest hall of Vorannuhl (marked) for the last stone, then take all three to the Kings Gate at Teku-Sul Spire off Lilmoth. 3. Fight, sneak or turn the dead there; I could also check Fort Chalkmoth cellar or look into Vanin first. 4. I still do not know what the Root and Eye truly are, what the trees are, or whether Vanin is the real master. I could learn more by reading further tablets and asking people."
+ }
+]

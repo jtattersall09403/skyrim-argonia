@@ -201,8 +201,9 @@ stages:
   journalText: "Never-Writes-Twice says Fort Chalkmoth is a fort like any other, but a wounded Unbound scout told me to
     ask what moans in its cellar. This is my own errand, not the order's; the order's hunt waits at Bell Station, and
     either may come first. Fort Chalkmoth is the Archwardens' fort on the Chixathe Mesa above Noota Nara. I want to get
-    into the fort and see its cellar. Who goes into the keep is for the wall captain at the gate to say. A quiet
-    visitor might find another way in, but the garrison will attack anyone it catches inside without leave."
+    into the fort and see its cellar. Who goes into the keep is for the wall captain at the gate to say: its door opens
+    only to his key, and no pick will open it. A quiet visitor might find another way in, but the garrison will attack
+    anyone it catches inside without leave."
   onEnter:
   - grantMapMarker: marker.mn12.fort
   objectives:
@@ -289,7 +290,8 @@ stages:
   journal: text.journal.mn12.15
   journalText: "The wall captain, Sakeeus-Wan, says a Toh-Wo may sleep in the barracks, but the keep stays shut to
     strangers while three Sarpa raiders rob the chalk carts on the western approach. If I kill the three raiders, he
-    will open the keep and pay me. I could still look for a way in unseen instead."
+    will open the keep and pay me. The keep's door opens only to his key, but I could still look for another way in
+    unseen."
   objectives:
   - id: raiders
     text: text.objective.mn12.raiders
@@ -583,9 +585,10 @@ topics:
   person: npc.mn.chalkmoth-captain
   stages: [10]
   essential: true
-  intent: 'Sakeeus-Wan, wall captain, at the gatehouse. Tells: a Toh-Wo may sleep in the barracks; the keep is shut to
-    strangers while three Sarpa raiders rob the chalk carts on the western approach and he needs every spear on the walls;
-    kill those three and he will open the keep and pay a hundred gold. Checks: nothing. Does: sets stage 15.'
+  intent: "Sakeeus-Wan, wall captain, at the gatehouse. Tells: a Toh-Wo may sleep in the barracks; the keep is shut to
+    strangers while three Sarpa raiders rob the chalk carts on the western approach and he needs every spear on the
+    walls; kill those three and he will open the keep and pay a hundred gold. The keep's door opens only to his key; no
+    pick will open it. Checks: nothing. Does: sets stage 15."
   uses: [fact.mn12.price]
   new: true
 - id: topic.mn-fort-chalkmoth

@@ -1,0 +1,96 @@
+{
+ "quest": "quest.main.mn13",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn13.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "sneak",
+ "choose": null,
+ "know": "story/playtests/quest.main.mn12/20261117T173146Z-designed/notes.md",
+ "created": "20261118T160528Z",
+ "stages": [
+  10,
+  20,
+  30,
+  91
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "newworld/story/quests/main/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn04.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn05.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn06.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn07.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn08.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn09.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn10.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn11.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn12.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 4,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I am Toh-Wo. Never-Writes-Twice says a marker stone points to one of the drowned spires off Lilmoth. The Kings Gate quest has started and the divers of Bell Station should know which tower it is. 2. Ask Meer-Tasi, the steward of Bell Station, which tower the marker stone shows. Sees-Below is also marked. 3. Talk to Meer-Tasi or Sees-Below. I could also go back to Fort Chalkmoth later. 4. I do not know what the Kings Gate is, or what is behind the cellar door at Fort Chalkmoth. I could ask the people here.",
+  "talk Meer-Tasi",
+  "say 1",
+  "answer 1. The marker stone shows Teku-Sul Spire, a drowned tower west of Bell Station. Past its east halls is a great gate with three empty sockets that nobody has forced. A priest ghost, Sul-Xeeth, stands before it. 2. Dive to Teku-Sul and find the great gate. Use the doors to Teku-Sul Halls and East Halls. 3. I am Argonian, so I breathe water. I can sneak past the priests attendants, fight them, or turn them with Restoration. 4. I do not know what the three sockets take, or what the gate opens. I could ask the ghost.",
+  "go Door to Teku-Sul Halls",
+  "go Teku-Sul",
+  "answer 1. The ghost of Sul-Xeeth, a priest of the last king, says the Kings Gate seals the way to the Root, where the Hist roots meet and the Eye sits. Three seal-stones open it, and all three are needed. One is in the warden vault at Blackrose Prison, one in the flooded vaults of Gemin, and one in the deepest hall of Vorannuhl. 2. Tell Never-Writes-Twice in Nesh-Deeka House, Helstrom, what the ghost said. 3. I can go to Helstrom now. Later I could fetch the stones, sneaking where I can. I could also go back to Fort Chalkmoth. 4. I do not know what the Eye or the Root really is, or why the Fort Chalkmoth order feeds sap to something. I do not know the way into the three places. I could ask Never-Writes-Twice.",
+  "go Never-Writes-Twice",
+  "talk Never-Writes-Twice",
+  "say 1",
+  "answer 1. I serve the Toh-Reel-Ka and am now a Reel-Ka, the third rank. The order wants all three seal-stones, to open the gate to the Root and use the Eye of Argonia, before the Unbound get them. 2. Take the stones from Blackrose Prison, Gemin and Vorannuhl, in any order. Blackrose is the least dangerous and Vorannuhl the worst. 3. I can pick any order, and sneak, fight or talk my way in. The order has free beds in Archwarden forts. 4. I do not know who the Unbound are, what the Eye does when used, or why the order feeds sap to something at Fort Chalkmoth. I could ask Never-Writes-Twice.",
+  "answer I am Toh-Wo, an Argonian, now Reel-Ka (third rank) of the Toh-Reel-Ka. I have the Reel-Ka cuirass and helm, about 1450 gold, 2 lockpicks, a rapier, 3 paralysis poisons, the keystone, eye-setting, bronze disc, parchment map and the Fort Chalkmoth keep key. The marker stone shows Teku-Sul Spire, west of Bell Station. Its Kings Gate has three sockets. The ghost of Sul-Xeeth says the gate guards the way to the Root and the Eye. The three seal-stones are at Blackrose Prison (in the warden vault), the flooded vaults of Gemin, and the deepest hall of Vorannuhl. All three must be set. Never-Writes-Twice in Helstrom wants all three before the Unbound. All three are marked on the map. Blackrose is the least dangerous, Vorannuhl the worst. Open questions: who the Unbound are, what the Eye does, and what the Fort Chalkmoth cellar holds and why it is fed sap. The cellar door is locked and I have not tried picking it. Next I would sneak into Blackrose Prison for the first stone."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.0675018,
+ "minutes": 0.6,
+ "turns": 13,
+ "tokens": {
+  "input_tokens": 22,
+  "output_tokens": 2848,
+  "cache_read_input_tokens": 69378,
+  "cache_creation_input_tokens": 8010
+ }
+}

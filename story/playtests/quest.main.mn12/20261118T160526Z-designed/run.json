@@ -1,0 +1,108 @@
+{
+ "quest": "quest.main.mn12",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn12.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "ask",
+ "choose": null,
+ "know": "story/playtests/quest.main.mn11/20261117T172439Z-designed/notes.md",
+ "created": "20261118T160526Z",
+ "stages": [
+  10,
+  15,
+  20,
+  90
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "newworld/story/quests/main/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn04.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn05.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn06.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn07.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn08.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn09.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn10.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn11.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 4,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I am Toh-Wo, Secret-Speaker for Nesh-Deeka in Helstrom. A hurt Unbound scout told me to ask what moans in the cellar of Fort Chalkmoth, an Archwarden fort. The order hunt for the Eye of Argonia at the Root waits at Bell Station, but this is my own errand first. 2. Get into the keep of Fort Chalkmoth and see its cellar, starting with the wall captain Sakeeus-Wan at the gate. 3. Ask the captain for leave to enter, or find a quiet way in unseen; the garrison will attack anyone caught inside without leave. The keep door is locked and I have lockpicks. 4. I do not know what moans in the cellar, nor what the Root and Eye truly are. I could find out by seeing the cellar and by talking to people.",
+  "talk Sakeeus-Wan",
+  "say 1",
+  "answer 1. The captain Sakeeus-Wan keeps the keep shut while three Sarpa raiders rob chalk carts on the western approach. He will open the keep and pay 100 gold if I kill them. 2. Kill the three Sarpa raiders on the western approach, then report to Sakeeus-Wan. 3. Fight the raiders for the captain, or look for a quiet way in unseen (lockpick the keep door), risking the garrison. 4. I do not know who the Sarpa are beyond raiders; the captain has a topic about them I can ask.",
+  "fight Sarpa Raider win",
+  "fight Sarpa Raider win",
+  "fight Sarpa Raider win",
+  "fight Sarpa Raider win",
+  "fight Sarpa Raider win",
+  "talk Sakeeus-Wan",
+  "say 3",
+  "answer 1. I killed the raiders; the captain gave me the keep key and 100 gold. The cellar stair is in the quartermaster store, whose key Theyne Indarys holds. 2. Go into the keep and the quartermaster store, look at the sap jars (Jal-Veesa Knot), speak to gaoler Tsleel-Vaku at the stair foot, try the cellar door. 3. Ask Theyne to open the store with words or gold, pick the lock, or lift the key; being caught makes me a thief. 4. I do not know what Jal-Veesa Knot means, nor what moans in the cellar. I can ask Theyne and the gaoler.",
+  "go Theyne Indarys",
+  "talk Theyne Indarys",
+  "say 2",
+  "say 5",
+  "say 5 pass",
+  "use Door to Quartermaster's Store",
+  "use store key",
+  "journal",
+  "go Stack of Sap Jars",
+  "read Stack of Sap Jars",
+  "go Tsleel-Vaku",
+  "say 2 pass",
+  "say 3 pass",
+  "use Door to Cellar Door",
+  "answer 1. I work for Nesh-Deeka as Secret-Speaker of the order. In Fort Chalkmoth I found jars of Hist sap tied with Jal-Veesa tree-minder knots stacked by the cellar stair, in a fort with no Hist. The order gaoler Tsleel-Vaku will not open the cellar; Never-Writes-Twice holds the key. Something moans behind the door. 2. Return to the order hunt: go to Bell Station off Lilmoth and ask the divers which drowned tower is cut deeper. 3. Bell Station first; or confront Never-Writes-Twice about the cellar key, or pick the cellar door lock (the gaoler stands there). 4. I do not know who or what is in the cellar or why the order feeds them sap; I could ask Never-Writes-Twice or find the key.",
+  "answer Toh-Wo, Secret-Speaker for Nesh-Deeka. At Fort Chalkmoth I killed the three Sarpa raiders for captain Sakeeus-Wan (keep key plus 100 gold) and paid quartermaster Theyne Indarys 150 gold to get into his store. Jars of Hist sap tied with the knot of the Jal-Veesa tree-minder are stacked by the cellar stair. The fort has no Hist of its own, so someone ships it in each season and it goes down the stair. Gaoler Tsleel-Vaku guards the locked cellar door and refused persuasion and illusion; he says Never-Writes-Twice holds the key. Something moans behind the door. I did not pick it. I have about 1000 gold, rapier, 2 lockpicks, 3 paralysis poison, the Unbound-Note, keystone, eye-setting, disc, map and the keep key. Still unknown: who or what moans below, and why the order feeds it sap. Next: Bell Station (islet east of Lilmoth, boat from Lilmoth), where the divers know which of the seven drowned towers is cut deeper, for the Eye of Argonia hunt. Could also confront Never-Writes-Twice over the cellar."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.11451789999999999,
+ "minutes": 1.1,
+ "turns": 28,
+ "tokens": {
+  "input_tokens": 52,
+  "output_tokens": 4364,
+  "cache_read_input_tokens": 224379,
+  "cache_creation_input_tokens": 12084
+ }
+}

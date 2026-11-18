@@ -1,0 +1,100 @@
+{
+ "quest": "quest.main.mn12",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn12.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "trapdoor",
+ "choose": null,
+ "know": "story/playtests/quest.main.mn11/20261118T160524Z-designed/notes.md",
+ "created": "20261118T160720Z",
+ "stages": [
+  10,
+  15,
+  25,
+  90
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "newworld/story/quests/main/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn04.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn05.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn06.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn07.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn08.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn09.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn10.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn11.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 4,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I am on my own errand, not the order's: a wounded Unbound scout told me to ask what moans in the cellar of Fort Chalkmoth, which Never-Writes-Twice dismissed. The order's hunt at Bell Station can wait. 2. Get into the fort's keep and see its cellar, starting with the wall captain Sakeeus-Wan at the gate. 3. Ask the captain for leave to enter, or find a quiet way in unseen; the keep door is locked and no pick opens it, and the garrison attacks anyone caught inside without leave. 4. I do not know what moans in the cellar or why the Unbound care; I can find out by talking to the captain and exploring.",
+  "talk Sakeeus-Wan",
+  "say 2",
+  "say 1",
+  "answer 1. The captain will open the keep and pay 100 gold if I kill three Sarpa raiders robbing chalk carts on the western approach. I still want to see the cellar for the Unbound scout's question. 2. Kill the three raiders on the western approach, then report to Sakeeus-Wan. 3. Fight the raiders (the game says the trapdoor way is favoured, though), or look for another way in unseen. 4. I do not know what the trapdoor is or where it is; the old prison below the keep is said to be the order's. I could explore the fort.",
+  "look",
+  "use Door to Fort Chalkmoth Guardroom",
+  "answer 1. I got into the cellar guardroom unseen through the unlocked yard trapdoor. If the garrison catches me they attack. I am still on my own errand to learn what moans in the cellar. 2. Look at the sap jars in the quartermaster's store, speak to the gaoler Tsleel-Vaku, and try the cellar door, all here. 3. Do those three in any order; talk to the gaoler, try the locked cellar door (I have lockpicks), or go up to the store. 4. I do not know what the sap jars (Jal-Veesa Knot) mean or what is behind the cellar door; I can look and ask the gaoler.",
+  "talk Tsleel-Vaku",
+  "say 2 pass",
+  "say 3 pass",
+  "use Door to Quartermaster's Store",
+  "read Stack of Sap Jars",
+  "use Door to Fort Chalkmoth Guardroom",
+  "journal",
+  "pick Door to Cellar Door win",
+  "use Door to Cellar Door",
+  "answer 1. The Toh-Reel-Ka keeps something or someone moaning behind the locked cellar door at Fort Chalkmoth and feeds it Hist sap tied with the knot of Jal-Veesa's tree-minder, though the fort has no Hist. Never-Writes-Twice, who dismissed the question, holds the key. 2. Go back to the order's hunt: Bell Station, by boat from Lilmoth, to learn which drowned tower. 3. Bell Station first; or confront Never-Writes-Twice about the cellar and the sap; or find the key. 4. I do not know who or what moans below, or why the order feeds them sap or why the Unbound say the Hist are drained; I could ask Never-Writes-Twice or the Unbound.",
+  "answer Notes: Fort Chalkmoth (Archwarden fort, Chixathe Mesa) has a trapdoor in the yard, unlocked, that leads unseen to the order's cellar guardroom. Gaoler Tsleel-Vaku will not talk; persuasion and illusion both failed. The inner cellar door needs a key that Never-Writes-Twice keeps, and a pick will not open it. Something moans behind it. The quartermaster's store above holds jars of Hist sap tied with the knot of Jal-Veesa's tree-minder, in a fort with no Hist of its own. Captain Sakeeus-Wan offered 100 gold to kill three Sarpa raiders on the western approach; I did not do it. Open questions: who or what is in the cellar, and why the order feeds it sap. Next step is Bell Station (boat from Lilmoth) for the drowned tower hunt. I carry the rapier, 2 lockpicks, 3 paralysis poison, the Unbound note, keystone, bronze disc, eye-setting, grave-stake, map and 1050 gold.",
+  "answer Notes: Fort Chalkmoth (Archwarden fort, Chixathe Mesa) has a trapdoor in the yard, unlocked, that leads unseen to the order's cellar guardroom. Gaoler Tsleel-Vaku will not talk; persuasion and illusion both failed. The inner cellar door needs a key that Never-Writes-Twice keeps, and a pick will not open it. Something moans behind it. The quartermaster's store above holds jars of Hist sap tied with the knot of Jal-Veesa's tree-minder, in a fort with no Hist of its own. Captain Sakeeus-Wan offered 100 gold to kill three Sarpa raiders on the western approach; I did not do it. Open questions: who or what is in the cellar, and why the order feeds it sap. Next step is Bell Station (boat from Lilmoth) for the drowned tower hunt. I carry the rapier, 2 lockpicks, 3 paralysis poison, the Unbound note, keystone, bronze disc, eye-setting, grave-stake, map and 1050 gold."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.09874079999999999,
+ "minutes": 0.9,
+ "turns": 21,
+ "tokens": {
+  "input_tokens": 38,
+  "output_tokens": 4026,
+  "cache_read_input_tokens": 151328,
+  "cache_creation_input_tokens": 10818
+ }
+}

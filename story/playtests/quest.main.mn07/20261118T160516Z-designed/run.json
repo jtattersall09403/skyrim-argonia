@@ -1,0 +1,73 @@
+{
+ "quest": "quest.main.mn07",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn07.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "fight",
+ "choose": null,
+ "know": "story/playtests/quest.main.mn06/20261117T172028Z-designed~2/notes.md",
+ "created": "20261118T160516Z",
+ "stages": [
+  10,
+  20,
+  90
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "newworld/story/quests/main/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn04.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn05.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn06.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 3,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I work for Nesh-Deeka and the Toh-Reel-Ka. The Pale Harvest was a Company freighter that sank in Hatandros Bight with a Gideon dealer stock aboard, and it is tied to the glass Eye that Ennodius Vanin has hunted for twenty years. 2. Get into the wreck of the Pale Harvest, from Ysan jetty, and open the captain's strongbox in the hold. 3. Fight the drowned crew, or sneak past them and pick the hard lock; the Drowned Captain carries the key. 4. I do not know who Cuts-the-Old-Knot, Xeech-Leel or Umbriel are, or what seal paste is. I might learn by asking people or reading what is in the strongbox.",
+  "look",
+  "use Door to The Pale Harvest",
+  "fight Drowned Sailor win",
+  "fight Drowned Captain win",
+  "take Pale Harvest Strongbox Key",
+  "use Captain's Strongbox",
+  "take Kothringi Keystone",
+  "answer 1. I killed the drowned sailor and captain in the Pale Harvest wreck, took the key and opened the strongbox. It held a Kothringi Keystone on a chain, carved in a style I do not know. It may be linked to the Eye hunt, but I do not know how. 2. Bring the keystone to Nesh-Deeka in Helstrom. 3. I can go straight to her, or look at the keystone and ask others about it first. I see no other choice. 4. I do not know what a Kothringi Keystone is or what it opens. The Kothringi are a people I only vaguely know of. Nesh-Deeka might know. Cuts-the-Old-Knot, seal paste, Xeech-Leel and Umbriel are still unknown.",
+  "go Nesh-Deeka",
+  "talk Nesh-Deeka",
+  "say 1",
+  "answer 1. I brought the keystone to Nesh-Deeka and she paid me 100 gold. She does not know the keystone, but it is Kothringi make. The Kothringi were a silver-skinned marsh people, dead of the Knahaten Flu. She says the Unbound never found the wreck, and I do not know how she knows that. 2. The quest is done. The lead is to take the keystone to the Chime-Keepers of Toklea, on the river fork in the Tulmek Washes, and ask their elder. 3. I can go to Toklea, ask Nesh-Deeka more, or look for the other leads. 4. I do not know what the keystone opens or does, who the Chime-Keepers really are, or how Nesh-Deeka knows what the Unbound have done. Cuts-the-Old-Knot, seal paste, Xeech-Leel and Umbriel are still unknown. I can ask in Toklea.",
+  "answer I am Tarin, Voh-Vastei of the Toh-Reel-Ka. I cleared the Pale Harvest wreck at Hatandros Bight by killing the drowned sailor and captain, took the strongbox key and opened it. I now carry the Kothringi Keystone, on a chain. I also have the old silver setting, the Collectors note about Ennodius Vanin, my lockpick and armour, the Hist blessing, and roughly 630 gold. Nesh-Deeka paid me 100 gold. She does not know the keystone, but it is Kothringi, and she says the Chime-Keepers of Toklea, on the river fork in the Tulmek Washes, keep Kothringi lore and their elder will know. She knew the Unbound had not found the wreck and only says \"We listen\" if asked how. Next step: go to Toklea with the keystone. Still unknown: Cuts-the-Old-Knot, seal paste, Xeech-Leel, Umbriel, and what the keystone does."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.0622372,
+ "minutes": 0.6,
+ "turns": 15,
+ "tokens": {
+  "input_tokens": 28,
+  "output_tokens": 2709,
+  "cache_read_input_tokens": 79912,
+  "cache_creation_input_tokens": 6775
+ }
+}

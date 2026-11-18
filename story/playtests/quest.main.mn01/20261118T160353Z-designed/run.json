@@ -1,0 +1,51 @@
+{
+ "quest": "quest.main.mn01",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn01.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": null,
+ "choose": null,
+ "know": null,
+ "created": "20261118T160353Z",
+ "stages": [
+  10,
+  20,
+  32,
+  90
+ ],
+ "ended": "complete",
+ "after": [],
+ "milestones": 4,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I woke in a barge hold among strangers, door locked. An Argonian woman, Okeeh, is watching me. I do not know who I work for or why I am here. 2. Speak to Okeeh in the barge hold (marker). 3. Talk to Okeeh; there is also a lockpick I was given, and Dralin Uveran is nearby. 4. I do not know who Okeeh or Dralin Uveran are, or what the work roll is; I can find out by talking to them.",
+  "look",
+  "talk Dralin Uveran",
+  "go Okeeh",
+  "talk Okeeh",
+  "say 1",
+  "say 3",
+  "say 2",
+  "answer 1. I am on a work barge at Ashgate Landing in Black Marsh, serving the Owing: months of owed work cutting reed instead of a cell. The gang-master Dralin Uveran will put our names on his roll and unlock the door. 2. Give my name, then tell Okeeh my trade. 3. Name entry, then choose a trade from seven topics; I can still ask Okeeh about the Hist, Jal-Veesa. 4. I do not understand what a Hist or Jal-Veesa is; I can ask Okeeh.",
+  "name Wanderer",
+  "talk Okeeh",
+  "say 4",
+  "answer 1. I told Okeeh I was a hunter and the door was unbarred. The gang-master Dralin Uveran waits on the landing to take my name onto his roll. 2. Go out the door to Ashgate Landing and speak to Dralin. 3. Go out now, or first ask Okeeh about the Hist or Jal-Veesa. 4. Still do not know what a Hist or Jal-Veesa is; I can ask Okeeh.",
+  "go Ashgate Landing",
+  "answer 1. My name was struck from the Owing roll on an order from Vosh-Leera, root-herald of Jal-Veesa, so I owe no months. She will have work for me if I bring Sithis beard moss. I do not know why she wants me. 2. Pick Sithis beard, grey moss over the creek below Reed-Sill Weir east up the road (beware crocodiles), then take it to her house in Jal-Veesa past the weir. 3. Do the errand, or ignore it; I have no other leads. 4. I do not know who Vosh-Leera really is or what she wants, nor what a Hist or the tree of Jal-Veesa is; I could ask her or Okeeh.",
+  "answer I am Wanderer, a hunter (told Okeeh the cook). I woke on an Owing work barge at Ashgate Landing, Black Marsh. Gang-master Dralin Uveran struck my name from his roll on the order of Vosh-Leera, root-herald of Jal-Veesa, so I am free of the Owing. She will have work for me if I bring Sithis beard, grey moss hanging over the creek below Reed-Sill Weir (east up the road; crocodiles). Her house is in Jal-Veesa past the weir. I carry a lockpick. Unknown: why she wants me, what a Hist or Jal-Veesa is (Okeeh could tell me)."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.0645043,
+ "minutes": 0.6,
+ "turns": 17,
+ "tokens": {
+  "input_tokens": 28,
+  "output_tokens": 2622,
+  "cache_read_input_tokens": 78883,
+  "cache_creation_input_tokens": 7585
+ }
+}

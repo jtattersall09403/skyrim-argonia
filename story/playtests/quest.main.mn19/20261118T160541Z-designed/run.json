@@ -1,0 +1,122 @@
+{
+ "quest": "quest.main.mn19",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn19.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": null,
+ "choose": null,
+ "know": "story/playtests/quest.main.mn18/20261117T172909Z-designed/notes.md",
+ "created": "20261118T160541Z",
+ "stages": [
+  10,
+  20,
+  30,
+  90
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "newworld/story/quests/main/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn04.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn05.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn06.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn07.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn08.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn09.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn10.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn11.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn12.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn13.yaml",
+   "ending": 91
+  },
+  {
+   "record": "newworld/story/quests/main/mn14.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn15.yaml",
+   "ending": 91
+  },
+  {
+   "record": "newworld/story/quests/main/mn16.yaml",
+   "ending": 93
+  },
+  {
+   "record": "newworld/story/quests/main/mn17.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn18.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 4,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I am in Black Marsh after setting the seal-stones and killing the hydra guardian. The Eye of Argonia sits in the Root; it can heal the trees in place (but the order can see through them) or be lifted (ends the dreams, kills about three in ten trees). 2. Go to the Eye of Argonia in the Root chamber, through the door at the far end of Guardian Hall. 3. Use the Eye in place, or lift it; or first check the Fort Chalkmoth cellar claim about dreamers, or loot the hydra treasure. 4. I do not know who exactly the order is, nor Ennodius Vanin the Collector; I could ask people or check the journal.",
+  "look",
+  "go The Eye of Argonia",
+  "talk Cuts-the-Old-Knot",
+  "journal",
+  "use The Eye of Argonia",
+  "answer 1. I am at the Root with my hand on the Eye. I must decide its fate. Using it heals all trees but locks in the order rule and its dreamers, and Cuts-the-Old-Knot dies. Taking or giving it kills about three in ten trees with their villages, ends the dreams and breaks the order. 2. Choose one of the three buttons here at the Root. 3. Use it; take it myself (no Hist will bless me, the order hunts me); or give it to Cuts-the-Old-Knot (same deaths, she stands with me). 4. I do not understand how Cuts-the-Old-Knot is alive here when I killed her, nor whether her claim about dreamers in the Fort Chalkmoth cellar is true. I could not verify it.",
+  "choose 1",
+  "answer 1. I used the Eye in place. All trees healed, no trees died, but the Xeech-Leel order rule is made fast and its dreamers in the Fort Chalkmoth cellar see through every tree again. Cuts-the-Old-Knot died. The gate returned the three seal-stones to me. 2. Bring the three stones to Never-Writes-Twice in Nesh-Deeka House, Helstrom. 3. Deliver them as asked, or look into Fort Chalkmoth cellar first, or keep the stones. 4. I do not know what Unbound being hostile to me means or who they are, nor what Never-Writes-Twice wants the stones for. I could ask her.",
+  "go Never-Writes-Twice",
+  "talk Never-Writes-Twice",
+  "say 3",
+  "answer 1. Quest The Eye is complete. I used the Eye in place: all trees healed, none died, the Xeech-Leel order rule is made fast and its dreamers see through every tree again. Cuts-the-Old-Knot died from the sap. I gave the three seal-stones to Never-Writes-Twice in Helstrom; she named me Toh-Nassa, Leader of the Secret, and gave me the Keep of Fort Chalkmoth. 2. Nothing is required. Optionally visit Fort Chalkmoth, its smith and trainer, and check the cellar dreamers myself. 3. Go to Fort Chalkmoth; ask Never-Writes-Twice about the order ranks and the Root; loot the hydra treasure; find Ennodius Vanin the Collector. 4. Unverified: whether the dreamers in the cellar are truly captives as Cuts-the-Old-Knot claimed, and why the Unbound are hostile to me. I would find out by visiting the cellar.",
+  "answer Notes: I chose to use the Eye in place. Every tree is healed, no villages died, but the order (Xeech-Leel) rule is fixed and its dreamers see through all trees again. Cuts-the-Old-Knot died. Unbound are now hostile to me. I returned the three seal-stones to Never-Writes-Twice, who made me Toh-Nassa of Toh-Reel-Ka and gave me the Keep of Fort Chalkmoth, with a smith, a trainer and free teaching from the order. I carry the Order-Pike, armour, Eye-Setting, Keystone, poison, rapier, Bronze Key, lockpicks and about 1650 gold. The dreamers in the Fort Chalkmoth cellar are unverified: Never-Writes-Twice says they prevent a second Umbriel, Cuts-the-Old-Knot said they are held captive. Still open: check the cellar, the hydra treasure, and Ennodius Vanin the Collector."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.0752572,
+ "minutes": 0.7,
+ "turns": 15,
+ "tokens": {
+  "input_tokens": 28,
+  "output_tokens": 3210,
+  "cache_read_input_tokens": 89212,
+  "cache_creation_input_tokens": 8545
+ }
+}

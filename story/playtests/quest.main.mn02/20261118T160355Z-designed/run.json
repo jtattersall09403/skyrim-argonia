@@ -1,0 +1,62 @@
+{
+ "quest": "quest.main.mn02",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn02.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": null,
+ "choose": null,
+ "know": "story/playtests/quest.main.mn01/20261117T171828Z-designed/notes.md",
+ "created": "20261118T160355Z",
+ "stages": [
+  10,
+  20,
+  25,
+  30,
+  90
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "newworld/story/quests/main/mn01.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 5,
+ "notes": true,
+ "commands_used": [
+  "answer 1. Vosh-Leera, root-herald of Jal-Veesa, had me freed from Dralin Uveran. She wants me at her house in Jal-Veesa, and I do not know why. Dralin says she will have work for me if I bring her Sithis beard, a grey moss below Reed-Sill Weir. 2. Pick the Sithis beard at the marker below Reed-Sill Weir, then go on to Jal-Veesa. 3. Kill the young crocodiles, shoot them from the log walk on the weir, or sneak past them unseen. 4. I do not understand what Hist means, or why Vosh-Leera wants me. I could ask people in Jal-Veesa.",
+  "look",
+  "take Sithis' Beard",
+  "answer 1. I picked the Sithis beard without the crocodiles bothering me. Vosh-Leera, who freed me, wants it. 2. Take it to Vosh-Leera at her house in Jal-Veesa, east along the road. 3. Just go there; I can see no other choice. 4. I still do not know what Hist means or why she wants me or what the moss is for. I can ask her.",
+  "go Vosh-Leera",
+  "talk Vosh-Leera",
+  "say 2",
+  "say 1",
+  "answer 1. Vosh-Leera is the root-herald who speaks for the town elders and tree to outsiders. The moss is for the tree-minder Weeltul, to warm the egg-pool of the sick Hist, the tall grey tree in the town pool. She will say why she freed me after I help Weeltul. 2. Take the moss to Weeltul at the Hist pool, let her show me the tree, then return to Vosh-Leera. 3. No real choice seen; just do it. 4. I still do not know exactly why she freed me, or what the egg-pool is. I can ask Weeltul.",
+  "go Weeltul",
+  "talk Weeltul",
+  "say 2",
+  "say 4",
+  "answer 1. Jal-Veesa Hist is dying: dry dark bark, closed scar, cooling egg-pool. If it dies no eggs hatch and the town empties. The moss only warms the pool. Weeltul gave me the tree blessing. 2. Return to Vosh-Leera in her house in Jal-Veesa to learn what I was freed for. 3. No choice yet; I could also ask Weeltul about the sap, scar, eggs and Umbriel first. 4. I do not know what caused the sickness, what the sap or scar means in detail, or what Umbriel was. I can ask Weeltul.",
+  "talk Weeltul",
+  "say 6",
+  "go Vosh-Leera",
+  "talk Vosh-Leera",
+  "say 2",
+  "answer 1. I now work for the Toh-Reel-Ka, the Secret Warriors of the Xeech-Leel who rule the marsh. Trees are falling sick along the river and they want to know why. I was chosen as a kinless stranger, a cheap spy. I got 50 gold. 2. Come back to Vosh-Leera in her house for a second task. 3. Take the second task, or leave; I see no other stated option. 4. I do not know the cause of the sick trees, nor what the second task is. I can ask Vosh-Leera.",
+  "answer I am Wanderer, a hunter, freed from Dralin Uveran by Vosh-Leera, root-herald of Jal-Veesa. I fetched Sithis beard from Reed-Sill Weir without a fight, gave it to Weeltul the tree-minder, and got the Hist blessing (resist poison). Jal-Veesa Hist is sick: dry bark, closed scar, cooling egg-pool; cause unknown, and trees along the river are falling sick. Vosh-Leera serves the Toh-Reel-Ka, the Secret Warriors of the Xeech-Leel, who were founded after Umbriel to stop any tree turning on the marsh. They use kinless strangers like me as cheap spies. I have 50 gold and a lockpick. She has a second task for me, so go back to her in her house in Jal-Veesa. Weeltul would not tell me about Umbriel just now. Unknown: why the trees are sick, and what the second task is."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.08502449999999999,
+ "minutes": 0.8,
+ "turns": 22,
+ "tokens": {
+  "input_tokens": 36,
+  "output_tokens": 3372,
+  "cache_read_input_tokens": 126445,
+  "cache_creation_input_tokens": 9647
+ }
+}

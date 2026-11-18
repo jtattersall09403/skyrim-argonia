@@ -1,0 +1,69 @@
+{
+ "quest": "quest.main.mn04",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn04.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "pick",
+ "choose": null,
+ "know": "story/playtests/quest.main.mn03/20261117T171829Z-designed~2/notes.md",
+ "created": "20261118T160510Z",
+ "stages": [
+  10,
+  30,
+  40,
+  90
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "newworld/story/quests/main/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn03.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 4,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I am Tarin, a thief freed by Vosh-Leera of Jal-Veesa, who works for the Toh-Reel-Ka. Sap-takers are taking Hist sap from scarred trees and sealing the scars with grey paste; the Teel-Fen Weir tree may die. A note ordered jars brought to Karsh-Naal Camp. 2. Go to Karsh-Naal Camp, east of the weir, and find out who takes the jars. 3. Talk to Jeeta-Sakka, look at the jars, or approach the locked Sesk's Cage; guards are dangerous so fighting is risky. 4. I do not know who leads the Unbound, what the grey paste is, why sap is wanted, or who Sesk is. I could ask people here, Weeltul or Vosh-Leera.",
+  "talk Jeeta-Sakka",
+  "look",
+  "journal",
+  "talk Naga Guard",
+  "look at Stacked Jars of Sap",
+  "use Sesk's Cage",
+  "pick Sesk's Cage win",
+  "use Sesk's Cage",
+  "talk Sesk",
+  "say 3",
+  "answer 1. I freed Sesk, who drew sap for the Unbound, a cult of the tribeless led by Cuts-the-Old-Knot, an Argonian woman who moves about. Jars come to this camp then go to her; the sap goes into a draught for something to do with \"the Eye\". The grey paste is called the seal. 2. Go back to Vosh-Leera in Jal-Veesa and tell her. 3. I could go straight to Vosh-Leera, or first ask Sesk more questions, or look for Cuts-the-Old-Knot myself, which seems dangerous. 4. I do not know what the Eye is, what is in the seal, or where Cuts-the-Old-Knot is. Vosh-Leera or Weeltul may know.",
+  "go Vosh-Leera",
+  "talk Vosh-Leera",
+  "say 1",
+  "answer 1. I work for the Toh-Reel-Ka through Vosh-Leera. The Unbound drain Hist trees for sap for a draught tied to \"the Eye\", then seal the scars. Vosh-Leera says it is beyond her and paid me 100 gold. 2. Go to Weeltul at the Hist pool in Jal-Veesa, pay 25 gold, and ride the rootworm to Helstrom to find Nesh-Deeka, the order handler. 3. Take the rootworm as told, or travel another way, though the land is deadly. I could also prepare first. 4. I do not know what the Eye is, what the seal is made of, or exactly where Nesh-Deeka lives beyond her named door. Weeltul and the Helstrom root-tender can guide me.",
+  "go Weeltul",
+  "talk Weeltul",
+  "say 1",
+  "answer 1. The Unbound, led by Cuts-the-Old-Knot, drain Hist sap for a draught tied to \"the Eye\" and seal the scars. Vosh-Leera sent me on to the handler Nesh-Deeka in Helstrom. 2. Pay Weeltul 25 gold and have her call the rootworm to Helstrom, then ask the root-tender there for Nesh-Deeka's House. 3. Ride the rootworm now, or ask Weeltul more first. 4. I still do not know what the Eye is, what the seal is, or where Cuts-the-Old-Knot is.",
+  "answer I am Tarin, a thief working for the Toh-Reel-Ka via Vosh-Leera of Jal-Veesa. At Karsh-Naal Camp I picked the novice lock on Sesk's Cage and freed Sesk. She said the Unbound, a cult of the tribeless led by Cuts-the-Old-Knot (an Argonian woman who moves about), drain Hist trees. Jars go via the camp to her, and the sap goes into a draught for something to do with \"the Eye\". The grey paste in the scars is called the seal, and its contents are unknown. Vosh-Leera paid me 100 gold and sent me to the order handler Nesh-Deeka in Helstrom, far south. Weeltul at Jal-Veesa's Hist pool will call the rootworm for 25 gold, and it surfaces in Helstrom's city tree pool. The root-tender there can point to Nesh-Deeka's House. I have about 150 gold, 2 lockpicks, the Note to the Sap-Takers, Cure Poison potions and the Hist blessing. Unknown: what the Eye is, what the seal is, where Cuts-the-Old-Knot is, and whether the Teel-Fen tree lives."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.08539470000000002,
+ "minutes": 0.9,
+ "turns": 20,
+ "tokens": {
+  "input_tokens": 36,
+  "output_tokens": 3614,
+  "cache_read_input_tokens": 122667,
+  "cache_creation_input_tokens": 9229
+ }
+}

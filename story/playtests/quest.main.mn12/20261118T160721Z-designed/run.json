@@ -1,0 +1,116 @@
+{
+ "quest": "quest.main.mn12",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn12.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "ask",
+ "choose": null,
+ "know": "story/playtests/quest.main.mn11/20261118T160524Z-designed/notes.md",
+ "created": "20261118T160721Z",
+ "stages": [
+  10,
+  15,
+  20,
+  90
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "newworld/story/quests/main/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn04.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn05.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn06.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn07.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn08.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn09.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn10.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn11.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 4,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I am on my own errand, not the Order hunt at Bell Station. An Unbound scout told me to ask what moans in the cellar of Fort Chalkmoth, an Archwarden fort on Chixathe Mesa. Never-Writes-Twice dismissed it. Why it matters I do not yet know. 2. Get into the fort keep and see its cellar. The keep door is locked and opens only to the wall captain key, no pick works. Sakeeus-Wan is the quest marker at the gate. 3. Ask the wall captain for leave to enter, or find another quiet way in unseen, but the garrison attacks anyone caught inside without leave. There is also a guardroom door. 4. I do not know who Sakeeus-Wan is (probably the wall captain), or why the Sarpa Raiders are here. I can find out by talking to him and looking around.",
+  "talk Sakeeus-Wan",
+  "say 2",
+  "say 3",
+  "say 1",
+  "answer 1. Captain Sakeeus-Wan will open the keep and pay 100 gold if I kill three Sarpa raiders robbing chalk carts on the western approach. The old prison below the keep belongs to the order. 2. Kill the three raiders on the western approach, then report to Sakeeus-Wan. 3. Fight the raiders (I have a rapier and paralysis poison), or look for a quiet way into the keep unseen. 4. I do not know what is in the cellar or why it moans; I hope to find out inside.",
+  "go Sarpa Raider",
+  "fight Sarpa Raider win",
+  "fight Sarpa Raider win",
+  "fight Sarpa Raider win",
+  "talk Sakeeus-Wan",
+  "say 3",
+  "answer 1. The raiders are dead and the captain gave me the keep key and 100 gold. The cellar stair starts in the quartermaster store inside the keep; Theyne Indarys, a Dunmer quartermaster, holds that key. The captain said his leave does not cover the store. 2. Go into the keep, reach the quartermaster store, look at the sap jars by the cellar stair, speak to gaoler Tsleel-Vaku below, and try the cellar door. 3. Ask Theyne to open the store with good words or gold, or pick the lock or lift the key and risk being treated as a thief. 4. I do not know what the Jal-Veesa Knot sap jars mean, or who Tsleel-Vaku is; I can find out by looking and talking.",
+  "use Door to Fort Chalkmoth Keep",
+  "talk Theyne Indarys",
+  "say 2",
+  "say 4 pass",
+  "use Door to Quartermaster's Store",
+  "journal",
+  "say 3",
+  "talk Theyne Indarys",
+  "say 3",
+  "say 5",
+  "say 5 pass",
+  "use Door to Quartermaster's Store",
+  "pick Door to Quartermaster's Store win",
+  "use Door to Quartermaster's Store",
+  "look at Stack of Sap Jars",
+  "read Stack of Sap Jars",
+  "journal",
+  "go Tsleel-Vaku",
+  "say 2 pass",
+  "say 3 pass",
+  "use Door to Cellar Door",
+  "answer 1. The Cellar Door is done. Fort Chalkmoth has stacked Hist sap jars tied with the knot of Jal-Veesa tree-minder, in a fort with no Hist of its own. The Toh-Reel-Ka gaoler Tsleel-Vaku guards a locked inner cellar door and refused me; Never-Writes-Twice keeps the key. Something moans behind it. I killed three Sarpa raiders for Captain Sakeeus-Wan (keep key, 100 gold), and paid Theyne Indarys 150 gold, then picked the store lock. 2. Return to the order hunt: go to Bell Station (boat from Lilmoth) and ask the divers which drowned tower is the cut-deep one. 3. Go to Bell Station first, or return to Never-Writes-Twice in Helstrom and press him about the cellar key and why the order feeds sap to whoever is down there; I could also pick the cellar door (a key lock) but the gaoler stands there. 4. I do not know who or what is moaning in the cellar, why the order feeds them Hist sap, or why the Unbound drain trees; I would find out through Never-Writes-Twice, the Unbound, or by getting through that door.",
+  "answer Notes: Fort Chalkmoth quest finished. I killed the three Sarpa raiders for Captain Sakeeus-Wan (got keep key and 100 gold), paid Theyne Indarys 150 gold and picked the quartermaster store lock. Behind the store is the stair to the order prison; the sap jars there carry the Jal-Veesa tree-minder knot, though the fort has no Hist. Gaoler Tsleel-Vaku would not let me past the inner cellar door; persuasion and illusion failed. The door needs a key that Never-Writes-Twice holds. Something moans behind it. I do not know who or why. I carry the Toh-Wo Rapier, 2 lockpicks, 3 paralysis poison, Unbound note, keystone, bronze disc, Eye setting, grave-stake, parchment map, keep key, about 1150 gold. Next: Bell Station (boat from Lilmoth) to find the drowned tower, or confront Never-Writes-Twice in Helstrom about the cellar. Open questions: who moans in the cellar, why the Unbound drain trees, where the Eye of Argonia lies."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.1523911,
+ "minutes": 1.4,
+ "turns": 37,
+ "tokens": {
+  "input_tokens": 70,
+  "output_tokens": 5457,
+  "cache_read_input_tokens": 359131,
+  "cache_creation_input_tokens": 15442
+ }
+}

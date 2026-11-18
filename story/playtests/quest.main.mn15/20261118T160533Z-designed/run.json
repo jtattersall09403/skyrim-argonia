@@ -1,0 +1,97 @@
+{
+ "quest": "quest.main.mn15",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn15.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "turn",
+ "choose": null,
+ "know": "story/playtests/quest.main.mn14/20261117T173527Z-designed/notes.md",
+ "created": "20261118T160533Z",
+ "stages": [
+  10,
+  91
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "newworld/story/quests/main/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn04.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn05.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn06.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn07.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn08.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn09.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn10.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn11.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn12.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn13.yaml",
+   "ending": 91
+  },
+  {
+   "record": "newworld/story/quests/main/mn14.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 2,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I am collecting three seal-stones for the Kings Gate at Teku-Sul Spire off Lilmoth. I already have the first from Blackrose. The second is in the drowned lowest hall of the Vaults of Gemin. Dead walk the vaults, a wraith guards the last hall, and Unbound may be there too. 2. Go down through the vaults to the lowest hall, take the Seal-Stone of the Kings, and read the Tablet of the Kings beside it. 3. Fight through, slip past them, or turn the dead with Restoration. 4. I do not know what the Root and Eye truly are, or whether Ennodius Vanin is the real master. I could learn more from the tablet and by talking to people.",
+  "look",
+  "talk Warden of the Vaults",
+  "go Seal-Stone of the Kings",
+  "take Seal-Stone of the Kings",
+  "answer 1. I took the second seal-stone from Gemin. The tablet says the Eye, if lifted, parts every tree from every other, and if used where it sits it strengthens them. I now hold two stones; the third is at Vorannuhl. 2. Go to the deepest hall of Vorannuhl (marked) for the last stone, then take all three to the Kings Gate at Teku-Sul Spire off Lilmoth. 3. Fight, sneak or turn the dead there; I could also check Fort Chalkmoth cellar or look into Vanin first. 4. I still do not know what the Root and Eye truly are, what the trees are, or whether Vanin is the real master. I could learn more by reading further tablets and asking people.",
+  "answer I now hold two seal-stones, from Blackrose and Gemin, plus about 50 gold, rapier, lockpicks, 3 Grey Seals, 3 Unbound Seals and the Warden Vault Key. The Gemin tablet says the Eye, if lifted, parts every tree from every other, and if used where it sits it strengthens them. The last stone is in the deepest hall of Vorannuhl and is marked; it is the worst of the three. After that, take all three to the Kings Gate at Teku-Sul Spire off Lilmoth. Still unknown: what the Root and Eye truly are, whether Ennodius Vanin is the real master (his Kothringi silver ring aids locks and pockets), and what is moaning in the Fort Chalkmoth cellar, which I have not checked."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.039900200000000004,
+ "minutes": 0.4,
+ "turns": 8,
+ "tokens": {
+  "input_tokens": 16,
+  "output_tokens": 1699,
+  "cache_read_input_tokens": 38382,
+  "cache_creation_input_tokens": 4760
+ }
+}

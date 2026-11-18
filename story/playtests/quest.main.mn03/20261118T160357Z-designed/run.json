@@ -1,0 +1,74 @@
+{
+ "quest": "quest.main.mn03",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn03.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": null,
+ "choose": null,
+ "know": "story/playtests/quest.main.mn02/20261117T171828Z-designed/notes.md",
+ "created": "20261118T160357Z",
+ "stages": [
+  10,
+  20,
+  30,
+  40,
+  50,
+  60,
+  90
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "newworld/story/quests/main/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn02.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 7,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I am Tarin, freed from the Owing barge. Vosh-Leera works for the Toh-Reel-Ka, a secret order of the Xeech-Leel. Trees are sickening along the river and they want to know why. The Hist at Jal-Veesa is sick too. 2. Go to Vosh-Leera house in Jal-Veesa and ask her for her second task. 3. Enter her house and talk to her; I could also talk to Weeltul again about sap, scar, eggs and Umbriel. 4. I do not know the cause of the sickness, nor exactly what the Toh-Reel-Ka want from me. I could ask Vosh-Leera and Weeltul.",
+  "go Vosh-Leera",
+  "talk Vosh-Leera",
+  "say 1",
+  "answer 1. Vosh-Leera, for the Toh-Reel-Ka, gave me a cup of Hist sap drawn before the scar closed. Trees are joined at the root, so drinking it lets me ask where the sickness is. 2. Drink the cup here in Vosh-Leera house, in front of her, then tell her everything I see. 3. Drink it now, or first talk to Weeltul or look at the cup; I could refuse, but she wants it done here. 4. I do not know what the sap will do to me or whether it is safe. I will find out by using it.",
+  "use Cup of Hist Sap",
+  "look",
+  "talk Vosh-Leera",
+  "say 1",
+  "answer 1. I drank the sap and had a vision: a young grey Hist among pale stilt huts, a woven weir over a creek, and west of the weir a reed hide beside a lone dead tree with clay jars stacked in its shade. Vosh-Leera wants to hear all of it. 2. Tell Vosh-Leera what I saw, here in her house. 3. Talk to her and tell her; I can only report it. 4. I do not know which place this is (the weir could be Reed-Sill Weir, but I am not sure), or what the jars and the dead tree mean. Vosh-Leera may know.",
+  "talk Vosh-Leera",
+  "say 1",
+  "say 2",
+  "say 3",
+  "answer 1. The vision showed Teel-Fen Weir, a Sedge-Warden camp south of Jal-Veesa down the creek, where a young Hist grew from Jal-Veesa tree roots. Jars by a hide suggest someone is keeping sap. This may be where the sickness shows. I work for Vosh-Leera and the Toh-Reel-Ka. 2. Go to Teel-Fen Weir and speak to Heem-Jasa, its tree-minder, on the platform round the tree. Be careful at the hide. 3. Go straight to Heem-Jasa and ask her; or look around the camp or hide, but I was told to see Heem-Jasa first. 4. I do not know who the Sedge-Wardens are, who keeps the jars, or what is at the hide. I can ask Heem-Jasa.",
+  "go Heem-Jasa",
+  "talk Heem-Jasa",
+  "say 2",
+  "answer 1. Heem-Jasa tree was drained and its scar sealed with grey paste three nights ago, not by her people. Strangers calling themselves the Unbound, three Sap-Takers, keep jars at the reed hide west of the weir. This is likely tied to the sickness of the trees. 2. Take the note from the reed hide west of Teel-Fen Weir. 3. Fight them, shoot them from the reeds east of the hide, or creep round to the open west side unseen and take the note. If they see me they fight. 4. I do not know who the Unbound really are, who they answer to, or what the grey paste is. The note may tell me.",
+  "take Note to the Sap-Takers",
+  "answer 1. I took the note unseen. The crew master orders the Sap-Takers to bring their jars to Karsh-Naal Camp and seal every scar behind them. So someone organised draining and sealing trees. 2. Return to Heem-Jasa at Teel-Fen Weir and tell her. 3. Tell her what the note says, or read the note again; later perhaps go to Karsh-Naal Camp. 4. I do not know where Karsh-Naal Camp is, who the crew master is, or why they want sap. Heem-Jasa or Vosh-Leera may know.",
+  "talk Heem-Jasa",
+  "say 2",
+  "say 3",
+  "answer 1. Someone, the Unbound Sap-Takers under a crew master, drain Hist trees, seal the scars with grey paste and take the sap to Karsh-Naal Camp. That is likely what sickens the trees. Heem-Jasa now trusts me. 2. Next is Karsh-Naal Camp, a Naga camp in the marsh east of Teel-Fen Weir. I should probably report to Vosh-Leera too. 3. Go to Karsh-Naal Camp, report to Vosh-Leera first, or buy and learn alchemy from Heem-Jasa. 4. I do not know who the crew master is, what the grey paste is, why they want sap, or what Naga means here. I could find out at the camp.",
+  "answer I am Tarin, working for Vosh-Leera of the Toh-Reel-Ka. I drank Hist sap and saw Teel-Fen Weir, south of Jal-Veesa. Heem-Jasa, its tree-minder, had her young tree drained and its scar sealed with grey paste. The Unbound Sap-Takers, three of them, used a reed hide west of the weir. I took their note unseen. It tells the crew to bring jars to Karsh-Naal Camp, a Naga camp east of the weir, and to seal every scar behind them. I told Heem-Jasa honestly her tree may die. She will now teach me alchemy and sell sap, fungus and eggshells. I have about 50 gold. I have not reported back to Vosh-Leera. I do not know who the crew master is, what the paste is, or why they want sap. Next: go to Karsh-Naal Camp, and report to Vosh-Leera.",
+  "answer I am Tarin, working for Vosh-Leera of the Toh-Reel-Ka. I drank Hist sap and saw Teel-Fen Weir, south of Jal-Veesa. Heem-Jasa, its tree-minder, had her young tree drained and its scar sealed with grey paste. The Unbound Sap-Takers, three of them, used a reed hide west of the weir. I took their note unseen. It tells the crew to bring jars to Karsh-Naal Camp, a Naga camp east of the weir, and to seal every scar behind them. I told Heem-Jasa honestly her tree may die. She will now teach me alchemy and sell sap, fungus and eggshells. I have about 50 gold. I have not reported back to Vosh-Leera. I do not know who the crew master is, what the paste is, or why they want sap. Next: go to Karsh-Naal Camp, and report to Vosh-Leera."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.1157226,
+ "minutes": 1.1,
+ "turns": 28,
+ "tokens": {
+  "input_tokens": 46,
+  "output_tokens": 4980,
+  "cache_read_input_tokens": 183946,
+  "cache_creation_input_tokens": 11859
+ }
+}

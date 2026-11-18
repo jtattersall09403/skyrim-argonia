@@ -1,0 +1,88 @@
+[
+ {
+  "stage": 10,
+  "kind": "start",
+  "ending": null,
+  "title": "The Guardian",
+  "journal": "The three seal-stones go into the empty sockets of the Kings' Gate.",
+  "objectives": [
+   "Set the three seal-stones in the Kings' Gate. (marker: The Kings' Gate)"
+  ],
+  "plan": {
+   "going": "Beyond the Kings' Gate lies the Root, where the roots of every Hist meet, and the Eye of Argonia, the old kings' jewel, sits there. I stand before the gate with the three stones",
+   "next": "set them in the gate's sockets",
+   "ways": "none; the stones are the key"
+  },
+  "answers": [
+   "I am Ka-Deelith of Toh-Reel-Ka. I gave the three seal-stones to Never-Writes-Twice, who sent me to the Kings Gate under Teku-Sul. I killed Cuts-the-Old-Knot, who claimed the order keeps sap-fed dreamers in the Fort Chalkmoth cellar and wanted the Eye lifted (killing about three in ten trees). I could not verify her claims. The gate is still shut.",
+   "Set the three seal-stones (Blackrose, Gemin, Kings) in the empty sockets of the Kings Gate here at Sunken-Ruin-23-M112.",
+   "Set the stones and face the guardian alone; at the Eye I plan to use it in place and not lift it. Afterward return the stones to Never-Writes-Twice.",
+   "Unknown: what the guardian is, whether the dreamer claim is true, and what the Xeech-Leel really intend. I might learn by going through the gate and talking to people."
+  ],
+  "raw": "1. I am Ka-Deelith of Toh-Reel-Ka. I gave the three seal-stones to Never-Writes-Twice, who sent me to the Kings Gate under Teku-Sul. I killed Cuts-the-Old-Knot, who claimed the order keeps sap-fed dreamers in the Fort Chalkmoth cellar and wanted the Eye lifted (killing about three in ten trees). I could not verify her claims. The gate is still shut. 2. Set the three seal-stones (Blackrose, Gemin, Kings) in the empty sockets of the Kings Gate here at Sunken-Ruin-23-M112. 3. Set the stones and face the guardian alone; at the Eye I plan to use it in place and not lift it. Afterward return the stones to Never-Writes-Twice. 4. Unknown: what the guardian is, whether the dreamer claim is true, and what the Xeech-Leel really intend. I might learn by going through the gate and talking to people."
+ },
+ {
+  "stage": 15,
+  "kind": "stage",
+  "ending": null,
+  "title": "The Guardian",
+  "journal": "I set the three seal-stones in their sockets, and the Kings' Gate opened. The stones stay in the gate. Beyond it lies the hall of the Root's guardian, and I mean to go through.",
+  "objectives": [
+   "Go through the Kings' Gate. (marker: The Kings' Gate)"
+  ],
+  "plan": {
+   "going": "the gate is open; the stones are in it",
+   "next": "go through",
+   "ways": "none"
+  },
+  "answers": [
+   "The stones are set and the Kings Gate is open. Beyond is the hall of the Root guardian. The stones stay in the gate for now.",
+   "Go through the Kings Gate.",
+   "Go in and face the guardian alone; at the Eye use it in place rather than lifting it.",
+   "I do not understand what the guardian is or what the Eye truly does; I can find out only by going in."
+  ],
+  "raw": "1. The stones are set and the Kings Gate is open. Beyond is the hall of the Root guardian. The stones stay in the gate for now. 2. Go through the Kings Gate. 3. Go in and face the guardian alone; at the Eye use it in place rather than lifting it. 4. I do not understand what the guardian is or what the Eye truly does; I can find out only by going in."
+ },
+ {
+  "stage": 20,
+  "kind": "stage",
+  "ending": null,
+  "title": "The Guardian",
+  "journal": "Beyond the gate a hydra, older than any king, guards the hall. Its breath and the water round it are poison. When it is badly hurt its heads grow back, and heads that come off crawl away and hunt the hall. Cuts-the-Old-Knot stands with me. It has to die before I can reach the Root.",
+  "objectives": [
+   "Kill the Guardian of the Root. (marker: Guardian of the Root)"
+  ],
+  "plan": {
+   "going": "the guardian of the Root stands before me; Cuts-the-Old-Knot fights beside me",
+   "next": "kill the guardian",
+   "ways": "fight it with any skill; cure its venom (potions, Restoration, the side quests' amulet and cures); cut down or burn the roaming heads; Cuts-the-Old-Knot fights as a battlemage at my side"
+  },
+  "answers": [
+   "I am through the gate. A very old hydra guards the hall, and its breath and the water round it are poison. When badly hurt its heads grow back, and severed heads crawl off and hunt the hall. It must die before I can reach the Root. The journal says Cuts-the-Old-Knot stands with me, but I killed her at the gate, so I do not understand that line.",
+   "Kill the Guardian of the Root in the hall beyond the Kings Gate.",
+   "Fight the hydra, using my paralysis poisons, rapier and pike, and watch for the poison water and crawling heads. I could also look around the hall first.",
+   "I do not understand how Cuts-the-Old-Knot can be with me when she is dead. I also still do not know whether her dreamer claim is true or what the Xeech-Leel intend. I can only learn by looking and going on."
+  ],
+  "raw": "1. I am through the gate. A very old hydra guards the hall, and its breath and the water round it are poison. When badly hurt its heads grow back, and severed heads crawl off and hunt the hall. It must die before I can reach the Root. The journal says Cuts-the-Old-Knot stands with me, but I killed her at the gate, so I do not understand that line. 2. Kill the Guardian of the Root in the hall beyond the Kings Gate. 3. Fight the hydra, using my paralysis poisons, rapier and pike, and watch for the poison water and crawling heads. I could also look around the hall first. 4. I do not understand how Cuts-the-Old-Knot can be with me when she is dead. I also still do not know whether her dreamer claim is true or what the Xeech-Leel intend. I can only learn by looking and going on."
+ },
+ {
+  "stage": 90,
+  "kind": "ending",
+  "ending": "complete",
+  "title": "The Guardian",
+  "journal": "The Guardian of the Root is dead, and its body holds the treasure of ages. A door stands at the far end of its hall. Beyond it lies the Root.",
+  "objectives": [],
+  "plan": {
+   "going": "The Guardian of the Root is dead, and its body holds the treasure of ages. A door stands at the far end of its hall. Beyond it lies the Root.",
+   "next": "nothing more in this quest; the next quests entry carries the step",
+   "ways": "none"
+  },
+  "answers": [
+   "I killed the hydra guardian. Its body holds treasure, and a door at the far end of the hall leads to the Root. The quest The Guardian is complete.",
+   "Loot the body if I wish, then go through the Door to The Root, where the Eye is.",
+   "Take the treasure, talk to Cuts-the-Old-Knot (she had nothing to say, and I still do not know why she is here after I killed her), then enter the Root and use the Eye in place, not lift it. Afterward return the stones to Never-Writes-Twice.",
+   "I do not understand why Cuts-the-Old-Knot is alive in the hall, whether her dreamer claim is true, or what the Xeech-Leel intend. I may learn more at the Root."
+  ],
+  "raw": "1. I killed the hydra guardian. Its body holds treasure, and a door at the far end of the hall leads to the Root. The quest The Guardian is complete. 2. Loot the body if I wish, then go through the Door to The Root, where the Eye is. 3. Take the treasure, talk to Cuts-the-Old-Knot (she had nothing to say, and I still do not know why she is here after I killed her), then enter the Root and use the Eye in place, not lift it. Afterward return the stones to Never-Writes-Twice. 4. I do not understand why Cuts-the-Old-Knot is alive in the hall, whether her dreamer claim is true, or what the Xeech-Leel intend. I may learn more at the Root."
+ }
+]

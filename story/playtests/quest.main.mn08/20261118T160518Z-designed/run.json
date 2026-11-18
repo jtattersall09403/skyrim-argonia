@@ -1,0 +1,85 @@
+{
+ "quest": "quest.main.mn08",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn08.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "quiet",
+ "choose": null,
+ "know": "story/playtests/quest.main.mn07/20261117T172446Z-designed/notes.md",
+ "created": "20261118T160518Z",
+ "stages": [
+  10,
+  20,
+  30,
+  40,
+  90
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "newworld/story/quests/main/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn04.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn05.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn06.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn07.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 5,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I am Tarin, a thief of Nesh-Deeka house in Helstrom. I took a Kothringi Keystone from the Pale Harvest wreck. Nesh-Deeka says the carving is Kothringi and sent me to Toklea to show it to the Chime-Keepers elder. 2. Go into the Kothringi Greathouse at Toklea and show the keystone to Hums-the-Long-Note, the elder (the quest marker). 3. I can talk to the elder and show the keystone, quietly. I have not seen other choices yet. 4. I do not understand seal paste, Cuts-the-Old-Knot, Xeech-Leel, Umbriel, or the Collector Ennodius Vanin. I could ask the elder or others about them.",
+  "go Hums-the-Long-Note",
+  "talk Hums-the-Long-Note",
+  "say 2",
+  "answer 1. Hums-the-Long-Note knows the keystone but wants payment first: her family carved grave-stake, in a chest in drowned Zul-Etha. 2. Go to Zul-Etha (south-east from Mir-Xal quay) and take the grave-stake from the unlocked Drowned Chest, then bring it back. 3. Crocodiles and an old bull lie on three roof peaks. I could kill them from a roof or with arrows, calm them with Illusion, or swim under them unseen. As a quiet thief, swimming unseen seems best. 4. I do not know Mir-Xal or Zul-Etha beyond what she said. I still do not know seal paste, Cuts-the-Old-Knot, Xeech-Leel, Umbriel or Ennodius Vanin; maybe she will tell me later.",
+  "go Drowned Chest",
+  "look",
+  "take Drowned Chest",
+  "use Drowned Chest",
+  "take Carved Grave-Stake",
+  "answer 1. I have the grave-stake from the drowned chest; the crocodiles did not trouble me. Hums-the-Long-Note will tell me about the keystone once I bring it. 2. Return to Hums-the-Long-Note in the Kothringi Greathouse, Toklea, and give her the stake. 3. Just hand it over and ask about the keystone; nothing else is offered. 4. Still unknown: seal paste, Cuts-the-Old-Knot, Xeech-Leel, Umbriel, Ennodius Vanin. Hopefully Hums-the-Long-Note explains.",
+  "go Hums-the-Long-Note",
+  "talk Hums-the-Long-Note",
+  "say 2",
+  "answer 1. Hums-the-Long-Note took the stake and told me the keystone opens the tomb of the knight-captain at Eurydike, a roofless Kothringi hall north of Gideon. The knights of Gideon were the last guards of the kings road to the Root. 2. Report to Nesh-Deeka in Helstrom. 3. I could report to Nesh-Deeka as told, or go to Eurydike myself first; the journal only points to Nesh-Deeka. 4. Still unknown: seal paste, Cuts-the-Old-Knot, Xeech-Leel, Umbriel, Ennodius Vanin. I do not know exactly what the tomb holds beyond what marked the way.",
+  "go Nesh-Deeka",
+  "talk Nesh-Deeka",
+  "say 1",
+  "answer 1. The quest is done. The keystone opens the knight-captain tomb at Eurydike near Gideon; Nesh-Deeka paid 100 gold and said to hurry because the Unbound are asking Gideon diggers about Eurydike. 2. Nothing is set; the next step would be to go to Eurydike quickly. 3. Go to Eurydike myself with the keystone, or ask Nesh-Deeka more. 4. Still unknown: seal paste, Cuts-the-Old-Knot, Xeech-Leel, Umbriel, Ennodius Vanin, and how Nesh-Deeka knows (she says we listen).",
+  "answer I am Tarin, thief of Nesh-Deeka house in Helstrom, with about 650 gold, the Kothringi Keystone, Old Silver Setting, lockpick and Voh-Vastei armour. Hums-the-Long-Note, Chime-Keeper elder at Toklea, told me for the price of her family grave-stake, which I took quietly from the chest in drowned Zul-Etha, that the keystone opens the knight-captain tomb at Eurydike, a roofless Kothringi hall just north of Gideon. The knights of Gideon were the last guards of the kings road to the Root. I told Nesh-Deeka, who paid 100 gold and said to hurry: the Unbound are asking Gideon diggers about Eurydike. She knows this because we listen. Next: go to Eurydike before the Unbound. Still unknown: seal paste, Cuts-the-Old-Knot, Xeech-Leel, Umbriel, Collector Ennodius Vanin."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.08254600000000001,
+ "minutes": 0.8,
+ "turns": 21,
+ "tokens": {
+  "input_tokens": 36,
+  "output_tokens": 3617,
+  "cache_read_input_tokens": 120600,
+  "cache_creation_input_tokens": 8561
+ }
+}

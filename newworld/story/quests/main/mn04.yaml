@@ -286,6 +286,7 @@ placements:
   enabled: true
 - ref: marker.mn04.karsh-naal
   kind: marker
+  name: Karsh-Naal Camp
   base:
     kind: existing_base
     id: map marker

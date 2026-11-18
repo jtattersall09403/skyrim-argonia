@@ -1,0 +1,101 @@
+{
+ "quest": "quest.main.mn11",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn11.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "sneak",
+ "choose": null,
+ "know": "story/playtests/quest.main.mn10/20261117T172713Z-designed/notes.md",
+ "created": "20261118T160524Z",
+ "stages": [
+  10,
+  20,
+  30,
+  40,
+  90
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "newworld/story/quests/main/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn04.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn05.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn06.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn07.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn08.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn09.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn10.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 5,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I work for Never-Writes-Twice and the order in Helstrom (I am Toh-Wo, Secret-Speaker). The map showed the Grey Tooth, seamark of Skeith Isle. The Collector Ennodius Vanin, an Imperial relic-hunter, also hunts the Eye of Argonia and his hired men dig in a cave on the north face. 2. Find out what they found in the Grey Tooth Cave, at the Grey Tooth; the markers are the cave door and Vanins Rubbing. 3. Fight the three hirelings, or sneak past them to the cave door and the rubbing. I favour sneaking. 4. I do not know what Vanins Rubbing is, or what is in the cave. I can find out by looking at it and reading it.",
+  "go Vanin's Rubbing",
+  "take Vanin's Rubbing",
+  "read Vanin's Rubbing",
+  "answer 1. The rubbing shows the stone from the niche was carried to the ship Stormwidow in year 181 by her captain. The ship lies on the south-west beach of Skeith Isle. Vanin has sold her name to diggers. I still serve Never-Writes-Twice. 2. Go to the Wreck of the Stormwidow and find the kings stone in her hold, at the ballast crate. 3. Fight whoever is at the wreck or sneak past them. I prefer sneaking. 4. I do not know what the kings stone is or why it matters, nor who the diggers are. I may learn at the wreck.",
+  "go Stormwidow's Ballast Crate",
+  "look",
+  "talk Tah-Leesh",
+  "say 1",
+  "take Recipe for the Seal",
+  "take Stormwidow's Ballast Crate",
+  "use Door to Stormwidow's Hold",
+  "go Stormwidow's Ballast Crate",
+  "use Stormwidow's Ballast Crate",
+  "take Kings' Marker Stone",
+  "answer 1. I took the Kings Marker Stone from the ballast crate before the Unbound scouts. It shows seven towers in water, one cut deeper. I also took the Unbound recipe for the seal. 2. Speak to the wounded scout Tah-Leesh below the bow, at the wreck. 3. Talk to her, ignore her, or fight the scouts. She cannot fight. 4. I do not know what the seven towers mean or which one is deeper, nor what the seal does. Tah-Leesh or the order may tell me.",
+  "talk Tah-Leesh",
+  "say 2",
+  "answer 1. I have the kings marker stone. Tah-Leesh, an Unbound scout, says her leader Cuts-the-Old-Knot tells servants of the Toh-Reel-Ka (my order) to ask what moans in the cellar of Fort Chalkmoth, the Archwardens fort on Chixathe Mesa. 2. Bring the marker stone to Never-Writes-Twice in Nesh-Deeka House, Helstrom. 3. Go straight there, or first look at Fort Chalkmoth; the journal only points to Helstrom. 4. I do not know what moans in the Fort Chalkmoth cellar or why the Unbound say it. I could ask Never-Writes-Twice or go there.",
+  "go Never-Writes-Twice",
+  "talk Never-Writes-Twice",
+  "say 2",
+  "answer 1. I gave the marker stone to Never-Writes-Twice. The seven towers are the drowned spires off Lilmoth on the sea floor of Benthic Yobesh. Divers of Bell Station, east of Lilmoth, will know which tower is marked. I was paid 100 gold. 2. Go by boat from Lilmoth to Bell Station to find the tower. 3. Bell Station first, or Fort Chalkmoth on Chixathe Mesa above Noota Nara first to learn what moans in the cellar. 4. I do not know what moans at Fort Chalkmoth, or why the Unbound drain trees. I could go see the fort.",
+  "answer Grey Tooth quest done. Stormwidow wreck on Skeith Isle held the Kings Marker Stone (seven drowned towers, one cut deeper); I gave it to Never-Writes-Twice in Helstrom, paid 100 gold. The towers are the drowned spires off Lilmoth; the divers of Bell Station (islet east of Lilmoth, boat from Lilmoth) will know which tower. Unbound scout Tah-Leesh said her leader Cuts-the-Old-Knot says to ask what moans in the cellar of Fort Chalkmoth (Archwarden fort, Chixathe Mesa above Noota Nara); Never-Writes-Twice dismissed it. I carry the Toh-Wo Rapier, lockpicks, 3 Grey Seal paralysis poison, bronze disc, Old Silver Setting, Unbound note, keystone, Vanins Rubbing, the Unbound Recipe for the Seal, and about 950 gold. Next: Bell Station for the hunt, or Fort Chalkmoth first. Open: why the Unbound drain trees, what moans at Chalkmoth, where the Eye of Argonia lies."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.09987420000000001,
+ "minutes": 1.0,
+ "turns": 25,
+ "tokens": {
+  "input_tokens": 42,
+  "output_tokens": 4170,
+  "cache_read_input_tokens": 160062,
+  "cache_creation_input_tokens": 10521
+ }
+}

@@ -1,0 +1,107 @@
+{
+ "quest": "quest.main.mn10",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn10.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "key",
+ "choose": null,
+ "know": "story/playtests/quest.main.mn09/20261118T111644Z-designed/notes.md",
+ "created": "20261118T160522Z",
+ "stages": [
+  10,
+  15,
+  20,
+  30,
+  40,
+  90
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "newworld/story/quests/main/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn04.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn05.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn06.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn07.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn08.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn09.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 6,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I am Tarin, a thief of Nesh-Deeka house. The knight-captain disc carries a pick-and-tower mark that Nesh-Deeka says is Vicrium, an old mine, where the knights kept a strongbox. It is on the trail to the Eye of Argonia, and the Unbound are ahead of us. 2. Ask Ah-Zish, the gallery-boss here at Vicrium, about the knights strongbox. 3. I can talk to Ah-Zish, or try the locked door to the Lower Galleries (needs a pick or key), or the Old Lower Adit. There is also a Crocodile here. 4. I do not understand why the Unbound seal trees with paralysis paste, or who the \"we\" is that listens. Cuts-the-Old-Knot, Xeech-Leel, Umbriel and Ennodius Vanin are unknown. I could ask people along the way.",
+  "talk Ah-Zish",
+  "say 2",
+  "answer 1. Ah-Zish locked the lower galleries after a roof fall and hears voices below, likely smugglers coming by the flooded crocodile adit. The knights strongbox is down there. 2. Get the key from Ah-Zish, then find the strongbox in the lower galleries. 3. Persuade him, pay 100 gold, pickpocket the key (risk: he shouts for miners), or try the flooded adit with crocodiles. The door cannot be picked. 4. Nothing new that I do not understand, except who the smugglers are, maybe Unbound; I will find out below.",
+  "talk Ah-Zish",
+  "say 3 pass",
+  "use Door to Lower Galleries",
+  "journal",
+  "say 4",
+  "talk Ah-Zish",
+  "say 4",
+  "say 4 pass",
+  "use Door to Lower Galleries",
+  "journal",
+  "look",
+  "pickpocket Ah-Zish win",
+  "use Door to Lower Galleries",
+  "fight Smuggler win",
+  "use Knights' Strongbox",
+  "take Old Parchment Map",
+  "answer 1. I got into the lower galleries of Vicrium with a key lifted from Ah-Zish, killed a smuggler, and found an old parchment map in the knights strongbox: seven towers in the sea and a tooth-shaped crag on an island. It is probably a lead toward the Eye of Argonia. 2. Bring the map to Nesh-Deeka in Helstrom. 3. Go straight back to Helstrom, or look at the map and explore more first. I could also read the map before leaving. 4. I do not know what the seven towers or the tooth crag are, or who the smugglers worked for (maybe the Unbound). Nesh-Deeka or the map itself may tell me.",
+  "go Nesh-Deeka",
+  "talk Nesh-Deeka",
+  "say 1",
+  "answer 1. I gave Nesh-Deeka the map. She said the Unbound had not reached Vicrium, without saying how she knew. She promoted me to Toh-Wo, Secret-Speaker, second rank, paid 200 gold and offered the orders weapon. 2. Choose a rapier or a quarterstaff from Nesh-Deeka, here in her house in Helstrom. 3. Rapier or quarterstaff. As a thief I favour the rapier, light and quick. 4. I still do not know who \"we\" is in \"we listen\", what the seven towers and tooth crag mean (her officer is to read them), or the four unknown names. I could ask her how she knows.",
+  "talk Nesh-Deeka",
+  "say 1",
+  "say 2",
+  "answer 1. I took the rapier. Nesh-Deeka answered how she knew only with \"We listen\". She now passes me to her officer Never-Writes-Twice, who wants to see the map. 2. Show the map to Never-Writes-Twice, at the back of this same room. 3. Just talk to her; I could also ask Nesh-Deeka what Toh-Wo means. 4. Still unknown: who \"we\" are who listen, what the seven towers and tooth crag are, and the names Cuts-the-Old-Knot, Xeech-Leel, Umbriel, Ennodius Vanin. Never-Writes-Twice may read the map for me.",
+  "talk Never-Writes-Twice",
+  "say 2",
+  "answer 1. The Vicrium quest is done. The map shows the Grey Tooth, seamark of Skeith Isle, reached by boat to Archon and Arorha. Never-Writes-Twice marked it, and warned me that Cuts-the-Old-Knot was once of the order, went mad on sap, killed her minders, and I should not listen to her. 2. Nothing is set yet; the next step is presumably to go to Skeith Isle via Archon and Arorha. 3. Ask Never-Writes-Twice more, or head for the boat to Archon/Arorha. 4. Unknown still: who \"we\" are who listen, why the Unbound seal trees with paralysis paste, Xeech-Leel, Umbriel, Ennodius Vanin, and the seven towers meaning.",
+  "answer I am Tarin, now Toh-Wo (Secret-Speaker) of Nesh-Deeka house in Helstrom, reporting to her officer Never-Writes-Twice. At Vicrium, Ah-Zish gave no key by talk (the dialogue handoff failed twice, with 100 gold apparently taken once), so I pickpocketed it, killed a smuggler in the lower galleries and took the Old Parchment Map from the knights strongbox. Never-Writes-Twice read it: the tooth crag is the Grey Tooth, seamark of Skeith Isle, reached by boat to Archon and Arorha, and she marked it. I carry the Toh-Wo rapier, 2 lockpicks, 3 Grey Seal paralysis poisons, Keystone, Eye-Setting, Bronze Disc, map, and about 850 gold. Warned: Cuts-the-Old-Knot was of the order, went mad on sap and killed her minders, so do not listen to her. Nesh-Deeka says \"We listen\" about how she knows things, and does not say who. Open questions: why the Unbound seal trees with paralysis paste, who Xeech-Leel, Umbriel and Ennodius Vanin are, the seven towers. Next: take a boat to Archon and Arorha, then Skeith Isle."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.1349982,
+ "minutes": 1.4,
+ "turns": 34,
+ "tokens": {
+  "input_tokens": 62,
+  "output_tokens": 5560,
+  "cache_read_input_tokens": 274822,
+  "cache_creation_input_tokens": 12948
+ }
+}

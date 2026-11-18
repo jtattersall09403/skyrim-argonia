@@ -1,0 +1,83 @@
+{
+ "quest": "quest.main.mn09",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn09.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "quiet",
+ "choose": null,
+ "know": "story/playtests/quest.main.mn08/20261117T172713Z-designed/notes.md",
+ "created": "20261118T160520Z",
+ "stages": [
+  10,
+  20,
+  30,
+  90
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "newworld/story/quests/main/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn04.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn05.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn06.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn07.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn08.yaml",
+   "ending": 90
+  }
+ ],
+ "milestones": 4,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I am Tarin, a thief working for Nesh-Deeka. I hold the Kothringi Keystone, which opens the knight-captain tomb at Eurydike. The Kothringi knights guarded the road to the Root, where the Eye of Argonia lies. The Unbound have got here first and are asking about this place. 2. Go through Eurydike barracks wing and search the Unbound packs by their fire, then reach the locked tomb door. 3. Fight the restless knights or the Unbound, slip past quietly (my preference as a thief), or turn the dead with Restoration. 4. I do not understand seal paste, Cuts-the-Old-Knot, Xeech-Leel, Umbriel, or Collector Ennodius Vanin. I might learn from the packs, from people, or from the journal.",
+  "look",
+  "take Unbound Pack",
+  "use Unbound Pack",
+  "take Grey Seal",
+  "answer 1. I work for Nesh-Deeka. The Unbound left bottles of grey paste, called the seal, a paralysis poison that numbs a tree scar shut. They drain a tree then poison it, and I do not know why. 2. Use the keystone on the knight-captain tomb door here at Eurydike, then search the tomb chest. 3. Open the door with the keystone, or pick the lock; the knight and digger nearby attack if they see me, so I can sneak, fight or turn the dead. 4. I still do not understand Cuts-the-Old-Knot, Xeech-Leel, Umbriel, or Collector Ennodius Vanin, nor why the Unbound seal trees. I might learn from the tomb or from people.",
+  "use Door to Knight-Captain's Tomb",
+  "use Knight-Captain's Tomb Chest",
+  "take Knight-Captain's Bronze Disc",
+  "answer 1. I work for Nesh-Deeka. The keystone opened the tomb at Eurydike and I took a bronze disc stamped with a mine mark, a pick crossed with a tower. The Unbound seal trees they drain with paralysis poison, and I do not know why. 2. Bring the disc to Nesh-Deeka in Helstrom, who should know the mark. 3. Go straight to Helstrom, or look around more first; the Unbound are nearby and asking about this place, so I should leave quietly. 4. I do not know what the mine mark means, or who Cuts-the-Old-Knot, Xeech-Leel, Umbriel or Collector Ennodius Vanin are. Nesh-Deeka may explain the mark.",
+  "go Nesh-Deeka",
+  "talk Nesh-Deeka",
+  "say 1",
+  "answer 1. The quest is done. The disc marks Vicrium, an old ochre and alum mine in the clay country behind Seafalls in Okuwun Rahei, where the knights kept a strongbox. Nesh-Deeka paid me 100 gold. She knew the Unbound were at Eurydike and would not say how, only that they listen. She does not know why the Unbound poison the trees they drain. 2. No new objective is shown; the next lead is Vicrium, east near Seafalls. 3. Go to Vicrium, ask Nesh-Deeka more, or look into the tree-sealing question. 4. I still do not know why the Unbound seal the trees, how Nesh-Deeka knows what she knows, or who Cuts-the-Old-Knot, Xeech-Leel, Umbriel and Collector Ennodius Vanin are.",
+  "answer Notes: I am Tarin, thief of Nesh-Deeka house in Helstrom. I opened the knight-captain tomb at Eurydike with the Kothringi Keystone, sneaking in without a fight. I took 3 Grey Seal paralysis poison from the Unbound pack and the Knight-Captain bronze disc. Nesh-Deeka identified the disc as the mark of Vicrium, an old ochre and alum mine behind Seafalls in Okuwun Rahei in the east, where the knights kept a strongbox. She paid 100 gold, so I have about 750. I also still hold the Old Silver Setting, a lockpick and Voh-Vastei armour. Open questions: why the Unbound seal the trees they drain with the grey paste; how Nesh-Deeka knew the Unbound were at Eurydike (she said only we listen); and who Cuts-the-Old-Knot, Xeech-Leel, Umbriel and Collector Ennodius Vanin are. Next step is Vicrium. The Eye of Argonia at the Root is the larger goal."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.0696961,
+ "minutes": 0.7,
+ "turns": 16,
+ "tokens": {
+  "input_tokens": 28,
+  "output_tokens": 3126,
+  "cache_read_input_tokens": 84441,
+  "cache_creation_input_tokens": 7484
+ }
+}
