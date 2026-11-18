@@ -537,7 +537,7 @@ terms:
 - {term: Fort Chalkmoth, meets: '40, line:topic.mn11-scout-words', told: 'Tah-Leesh''s line: a fort of the Archwardens',
   ask: topic.mn-fort-chalkmoth}
 - {term: the Archwardens, meets: '40, line:topic.mn11-scout-words', told: 'Never-Writes-Twice in topic.mn-fort-chalkmoth:
-    the Xeech-Leel''s wardens who keep the old Imperial forts and roads', ask: topic.mn-fort-chalkmoth}
+    the Xeech-Leel''s wardens, whose garrisons man the old Imperial forts and roads', ask: topic.mn-fort-chalkmoth}
 - {term: Bell Station, meets: '90, line:topic.mn11-give-stone', told: 'her line: a divers'' station on an islet east of
     Lilmoth, whose divers salvage the drowned spires', ask: topic.mn11-bell-station}
 - {term: the drowned spires off Lilmoth, meets: '90, line:topic.mn11-give-stone', told: 'her line: towers of the old kings''

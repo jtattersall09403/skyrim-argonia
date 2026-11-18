@@ -476,8 +476,8 @@ stages:
 - id: 91
   place: velothi-ruin-23-m73
   journal: text.journal.mn16.91
-  journalText: I took the third seal-stone from the vault of Vorannuhl, and I already carry the thief's stone from Blackrose.
-    One is left, in the flooded vaults of Gemin, and it is still marked.
+  journalText: "I took the third seal-stone from the vault of Vorannuhl, and I already carry the thief's stone from
+    Blackrose. One is left in the flooded vaults of Gemin, and it is still marked."
   ending: complete
   endingId: e-stone
   information:
@@ -492,8 +492,8 @@ stages:
 - id: 92
   place: velothi-ruin-23-m73
   journal: text.journal.mn16.92
-  journalText: I took the third seal-stone from the vault of Vorannuhl, and I already carry Gemin's. One is left, in Blackrose
-    Prison, and it is still marked.
+  journalText: "I took the third seal-stone from the vault of Vorannuhl, and I already carry Gemin's. One is left in
+    Blackrose Prison, and it is still marked."
   ending: complete
   endingId: e-stone
   information:

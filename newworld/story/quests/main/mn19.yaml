@@ -216,10 +216,9 @@ stages:
 - id: 10
   place: sunken-ruin-23-m112
   journal: text.journal.mn19.10
-  journalText: 'The Root is where the roots of every Hist meet. The Eye of Argonia, the old kings'' jewel, sits among them:
-    used where it sits, it heals every tree; lifted, it parts them for good. Beyond the guardian''s hall lies the Root,
-    where the roots of every Hist meet, and the Eye of Argonia sits among them. I''m to go to the Eye and decide what to
-    do with it.'
+  journalText: "Beyond the guardian's hall lies the Root, where the roots of every Hist meet, and the Eye of Argonia
+    sits among them. Used where it sits, it heals every tree; lifted, it parts them for good. What I do with it is mine
+    to decide."
   objectives:
   - id: eye
     text: text.objective.mn19.eye
@@ -264,7 +263,7 @@ stages:
 - id: 20
   place: sunken-ruin-23-m112
   journal: text.journal.mn19.20
-  journalText: I laid my hand on the Eye of Argonia. I'm to choose what to do with it.
+  journalText: "I laid my hand on the Eye of Argonia. Now I must choose what to do with it."
   onEnter:
   - showChoice:
       text: 'The Eye of Argonia sits among the roots of every tree. Under your hand you feel them all.
@@ -313,8 +312,8 @@ stages:
 - id: 21
   place: sunken-ruin-23-m112
   journal: text.journal.mn19.21
-  journalText: I laid my hand on the Eye of Argonia. Cuts-the-Old-Knot is dead, so it is mine alone to use or to take. I'm
-    to choose.
+  journalText: "I laid my hand on the Eye of Argonia. Cuts-the-Old-Knot is dead, so it is mine alone to use or to take,
+    and I must choose."
   onEnter:
   - showChoice:
       text: 'The Eye of Argonia sits among the roots of every tree. Under your hand you feel them all.
@@ -353,9 +352,9 @@ stages:
 - id: 30
   place: sunken-ruin-23-m112
   journal: text.journal.mn19.30
-  journalText: 'I used the Eye where it sits. I saw the trees of the marsh heal, every one. Cuts-the-Old-Knot died of it
-    in the guardian''s hall: the sap she drank carried the Eye''s power through her. The Kings'' Gate gave the three stones
-    back to me as it closed. I''m to bring them to Never-Writes-Twice in Nesh-Deeka''s House in Helstrom.'
+  journalText: "I used the Eye where it sits. I saw the trees of the marsh heal, every one. Cuts-the-Old-Knot died of
+    it in the guardian's hall: the sap she drank carried the Eye's power through her. The Kings' Gate gave the three
+    stones back to me as it closed. Never-Writes-Twice wants them back, in Nesh-Deeka's House in Helstrom."
   onEnter:
   - endingScene: use
     messages:
@@ -418,9 +417,9 @@ stages:
 - id: 31
   place: sunken-ruin-23-m112
   journal: text.journal.mn19.31
-  journalText: I used the Eye where it sits. I saw the trees of the marsh heal, every one, and the order's dreamers will
-    see through them again. The Kings' Gate gave the three stones back to me as it closed. I'm to bring them to Never-Writes-Twice
-    in Nesh-Deeka's House in Helstrom.
+  journalText: "I used the Eye where it sits. I saw every tree of the marsh heal, and the order's dreamers will see
+    through them again. The Kings' Gate gave the three stones back to me as it closed. Never-Writes-Twice wants them
+    back, in Nesh-Deeka's House in Helstrom."
   onEnter:
   - endingScene: use
     messages:

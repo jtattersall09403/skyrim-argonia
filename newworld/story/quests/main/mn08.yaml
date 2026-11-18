@@ -617,7 +617,7 @@ topics:
   - 40
   - 90
   essential: false
-  intent: 'Hums-the-Long-Note. Tells: Kothringi who served in Gideon''s garrison in the Second Era and kept the road the
+  intent: 'Hums-the-Long-Note. Tells: Kothringi who served in Gideon''s garrison in the Second Era and guarded the road the
     priest-kings used to the Root; the flu killed them with all their people, and their dead are said to walk their hall
     still. Does: nothing.'
   new: true

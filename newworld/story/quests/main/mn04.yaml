@@ -685,7 +685,7 @@ stages:
 - id: 95
   place: tribal-camp-m2-m68
   journal: text.journal.mn04.95
-  journalText: Sesk is dead. Nobody at the camp will tell me who takes the sap or why.
+  journalText: "Sesk is dead. None of the Naga will tell me who takes the sap or why."
   ending: failed
   endingId: e-sesk-dead
   information:
@@ -713,7 +713,7 @@ stages:
 - id: 97
   place: jal-veesa
   journal: text.journal.mn04.97
-  journalText: Weeltul, the tree-minder of Jal-Veesa, is dead, and nobody else can call the rootworm.
+  journalText: "Weeltul is dead. She was Jal-Veesa's tree-minder, and nobody else can call the rootworm."
   ending: failed
   endingId: e-minder-dead
   information:

@@ -185,8 +185,7 @@ stages:
 - id: 10
   place: sunken-ruin-23-m112
   journal: text.journal.mn18.10
-  journalText: Beyond the Kings' Gate lies the Root, where the roots of every Hist meet, and the Eye of Argonia, the old
-    kings' jewel, sits there. I'm to set the three seal-stones in the empty sockets of the Kings' Gate.
+  journalText: "The three seal-stones go into the empty sockets of the Kings' Gate."
   objectives:
   - id: set
     text: text.objective.mn18.set
@@ -218,8 +217,8 @@ stages:
 - id: 15
   place: sunken-ruin-23-m112
   journal: text.journal.mn18.15
-  journalText: I set the three seal-stones in their sockets, and the Kings' Gate opened. The stones stay in the gate. Beyond
-    it lies the hall of the Root's guardian. I'm to go through.
+  journalText: "I set the three seal-stones in their sockets, and the Kings' Gate opened. The stones stay in the gate.
+    Beyond it lies the hall of the Root's guardian, and I mean to go through."
   onEnter:
   - takeItem:
     - thing.mn.seal-stone-thief
@@ -281,9 +280,9 @@ stages:
 - id: 20
   place: sunken-ruin-23-m112
   journal: text.journal.mn18.20
-  journalText: Beyond the gate a hydra, older than any king, guards the hall. Its breath and the water round it are poison.
-    When it is badly hurt its heads grow back, and heads that come off crawl away and hunt the hall. Cuts-the-Old-Knot stands
-    with me. I'm to kill it.
+  journalText: "Beyond the gate a hydra, older than any king, guards the hall. Its breath and the water round it are
+    poison. When it is badly hurt its heads grow back, and heads that come off crawl away and hunt the hall.
+    Cuts-the-Old-Knot stands with me. It has to die before I can reach the Root."
   onEnter:
   - disableRef: npc.mn.cuts-the-old-knot
   - enableRef: npc.mn18.cuts-in-hall
@@ -336,9 +335,9 @@ stages:
 - id: 21
   place: sunken-ruin-23-m112
   journal: text.journal.mn18.21
-  journalText: Beyond the gate a hydra, older than any king, guards the hall. Its breath and the water round it are poison.
-    When it is badly hurt its heads grow back, and heads that come off crawl away and hunt the hall. I face it alone. I'm
-    to kill it.
+  journalText: "Beyond the gate a hydra, older than any king, guards the hall. Its breath and the water round it are
+    poison. When it is badly hurt its heads grow back, and heads that come off crawl away and hunt the hall. I face it
+    alone. It has to die before I can reach the Root."
   objectives:
   - id: kill
     text: text.objective.mn18.kill

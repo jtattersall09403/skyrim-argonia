@@ -5163,7 +5163,7 @@ stages:
 - id: 95
   place: outpost-m13-m65
   journal: text.journal.mn01.95
-  journalText: Okeeh is dead. Nobody else in the hold will speak for me, and the door stays shut.
+  journalText: "Okeeh is dead. None of the gang will speak for me, and the door stays shut."
   ending: failed
   endingId: e-okeeh-dead
   information:

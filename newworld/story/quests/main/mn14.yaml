@@ -106,7 +106,7 @@ truth:
   who:
   - the Blackguards' heirs
   where: Blackrose Prison
-  what: The prison-born heirs of the Rose's inmates took the fortress. In 4E 201 they hold the upper walls under a Naga
+  what: The prison-born heirs of the Rose's inmates took the fortress. In 4E 201 they live on the upper walls under a Naga
     raj-kaal, Okaz-Teel, who carries the vault's key on his belt. They attack strangers on sight. Their gate-captain, Corvus
     Ulvius, stands outside the gate and lets in whom he chooses, for a toll, for good words or for a fight he loses.
 - id: t4
@@ -1035,7 +1035,7 @@ stages:
 - id: 91
   place: blackrose-prison
   journal: text.journal.mn14.91
-  journalText: "I took the thief's seal-stone from Blackrose Prison, and I already carry Gemin's. One stone is left, in
+  journalText: "I took the thief's seal-stone from Blackrose Prison, and I already carry Gemin's. One stone is left in
     the deepest hall of Vorannuhl, and it is still marked."
   ending: complete
   endingId: e-stone
@@ -1051,8 +1051,8 @@ stages:
 - id: 92
   place: blackrose-prison
   journal: text.journal.mn14.92
-  journalText: "I took the thief's seal-stone from Blackrose Prison, and I already carry Vorannuhl's. One stone is
-    left, in the flooded vaults of Gemin, and it is still marked."
+  journalText: "I took the thief's seal-stone from Blackrose Prison, and I already carry Vorannuhl's. One stone is left
+    in the flooded vaults of Gemin, and it is still marked."
   ending: complete
   endingId: e-stone
   information:

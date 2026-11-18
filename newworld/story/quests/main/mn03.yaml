@@ -400,9 +400,9 @@ stages:
 - id: 20
   place: jal-veesa
   journal: text.journal.mn03.20
-  journalText: "Vosh-Leera gave me a cup of Jal-Veesa's sap, drawn before its scar closed. Tree-minders drink sap to
-    ask the trees a question, she told me, and she wants me to ask where the sickness is. She wants me to drink it
-    here, in front of her."
+  journalText: "Vosh-Leera gave me a cup of Jal-Veesa's sap, drawn before its scar closed. She told me that
+    tree-minders drink sap to ask the trees a question. She wants me to ask where the sickness is. She wants me to
+    drink it here, in front of her."
   onEnter:
   - giveItem:
     - thing.mn.cup-of-sap

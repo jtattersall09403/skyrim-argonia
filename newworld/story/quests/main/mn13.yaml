@@ -221,8 +221,8 @@ stages:
 - id: 15
   place: sunken-ruin-23-m112
   journal: text.journal.mn13.15
-  journalText: "Meer-Tasi, Bell Station's steward, and Sees-Below, its head diver, are both dead. The divers left at
-    the station say the cut tower can only be Teku-Sul Spire, the drowned tower nearest Lilmoth, whose great gate nobody
+  journalText: "Bell Station's steward Meer-Tasi and its head diver Sees-Below are both dead. The divers left at the
+    station say the cut tower can only be Teku-Sul Spire, the drowned tower nearest Lilmoth, whose great gate nobody
     has forced; the dive is long, and the potions of waterbreathing are in the steward's chest. I should dive to
     Teku-Sul and find the gate; the attendants in its east halls attack whoever they see."
   onEnter:
@@ -570,7 +570,7 @@ topics:
   stages: [10, 15, 20, 30, 90, 91]
   essential: false
   intent: 'The Ghost of Sul-Xeeth. Tells: a priest of the old kings, who served in this tower when it stood in air; he
-    keeps the gate until all three stones come back. Checks: nothing. Does: nothing.'
+    stands before the gate until all three stones come back. Checks: nothing. Does: nothing.'
   uses: [fact.mn13.seal-stones]
   new: true
 - id: topic.mn13-report

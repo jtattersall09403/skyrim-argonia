@@ -878,7 +878,7 @@ topics:
   intent: 'Vosh-Leera. Tells: Xeech-Leel means the People of the New Beginning: Xeech, the planting month, and leel, people.
     They took the province in the generations after Umbriel by being everything the An-Xileel were not. Their first promise
     is that no faction may speak alone with a tree; they swore to govern in the open, and their council sits at Helstrom.
-    They hold the old forts, roads and tolls through their Archwardens; inland the towns and tribes run themselves, as Jal-Veesa
+    Their Archwardens man the old forts, patrol the roads and collect the tolls; inland the towns and tribes run themselves, as Jal-Veesa
     does. People call them "the Wardens", or "the New Beginning". Checks: nothing. Does: nothing.'
   new: true
 - id: topic.mn-umbriel

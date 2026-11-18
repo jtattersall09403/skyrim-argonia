@@ -229,7 +229,7 @@ stages:
   journal: text.journal.mn15.10
   journalText: "The second seal-stone lies in the lowest hall of the Vaults of Gemin, which is under water. The dead
     walk the vaults and a wraith guards the last hall, and Unbound may be searching there; all of them attack whoever
-    they see. I need to go down and take it. I can fight through, slip past them, or turn the dead with Restoration."
+    they see. I need to go down and take it. I can fight through, slip past them or turn the dead with Restoration."
   objectives:
   - id: stone
     text: text.objective.mn15.stone
@@ -402,9 +402,9 @@ stages:
 - id: 91
   place: gemin
   journal: text.journal.mn15.91
-  journalText: I took the second seal-stone from the drowned hall of Gemin. The tablet beside it says that the Eye, lifted,
-    parts every tree from every other, and used where it sits, it strengthens them. I already carry the thief's stone from
-    Blackrose. One is left, in the deepest hall of Vorannuhl, and it is still marked.
+  journalText: "I took the second seal-stone from the drowned hall of Gemin. The tablet beside it says that the Eye,
+    lifted, parts every tree from every other, and used where it sits, it strengthens them. I already carry the thief's
+    stone from Blackrose. One is left in the deepest hall of Vorannuhl, and it is still marked."
   ending: complete
   endingId: e-stone
   information:
@@ -420,9 +420,9 @@ stages:
 - id: 92
   place: gemin
   journal: text.journal.mn15.92
-  journalText: I took the second seal-stone from the drowned hall of Gemin. The tablet beside it says that the Eye, lifted,
-    parts every tree from every other, and used where it sits, it strengthens them. I already carry Vorannuhl's stone. One
-    is left, in Blackrose Prison, and it is still marked.
+  journalText: "I took the second seal-stone from the drowned hall of Gemin. The tablet beside it says that the Eye,
+    lifted, parts every tree from every other, and used where it sits, it strengthens them. I already carry Vorannuhl's
+    stone. One is left in Blackrose Prison, and it is still marked."
   ending: complete
   endingId: e-stone
   information:
