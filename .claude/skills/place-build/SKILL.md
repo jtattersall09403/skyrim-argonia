@@ -122,7 +122,8 @@ The tools lay the network by these rules.
 - **Flights for decks above our bank.** After the draft the tools build the place and read its navmesh. A deck
   that carries a door or a street and that the town reaches only by swimming (a pier or quay the source met at its
   bank's height, standing above ours) gets one flight of steps, hung as above off a free edge of one of its deck
-  pieces and running down until its treads meet our ground where the town's network walks. The steps are the
+  pieces and running down until its treads meet our ground where the town's network walks, dry or under water no
+  deeper than half a wade (the mesh under a foot lies a little below the ground it met, and deeper is swum). The steps are the
   source's own; where the source has none, the steps of the deck pieces' own kit (the non-Nordic steps pieces in
   the folder of a deck piece's model: Skyrim's DockStepsDown01 and 02 with its dock pieces), which `place.json`
   `steps.kit` then names. A free edge is an open end: one the deck does not go on from, with no rail or wall of the

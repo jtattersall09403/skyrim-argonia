@@ -22,13 +22,21 @@ from tools.places.draft import io, overlap
 from tools.places.draft import paths as paths_mod
 
 CHECK_OUT = io.ROOT / "out" / "places" / "draft_check"
+
+
+def check_out(place_id: str) -> Path:
+    """Where a place's draft is built: a folder of its own, so the plugin holds that place alone and lanes drafting
+    other places at once never build each other's shards (a shard of another place, built on another world plan,
+    fails the build)."""
+    return CHECK_OUT / place_id
 LEVEL = 48.0         # units of height a join may leave between its two ends (a step the navmesh climbs)
 JOIN_ROUNDS = 6
 TRIES = 200        # joins tried per island, shortest first, for one no house or ship stands across
 
 
-def build(place_id: str, places: Path = io.PLACES, out: Path = CHECK_OUT) -> list[str]:
-    """`build <place_id> --keep-going` into `out`: the build's problems, or the failure."""
+def build(place_id: str, places: Path = io.PLACES, out: Path | None = None) -> list[str]:
+    """`build <place_id> --keep-going` into `out` (`check_out`): the build's problems, or the failure."""
+    out = out or check_out(place_id)
     p = subprocess.run([sys.executable, "-m", "tools.places", "build", place_id, "--keep-going", "--places-dir", str(places),
                         "--out", str(out)], cwd=io.ROOT, capture_output=True, text=True)
     lines = [x.strip() for x in (p.stdout + p.stderr).splitlines() if x.strip()]
@@ -38,8 +46,9 @@ def build(place_id: str, places: Path = io.PLACES, out: Path = CHECK_OUT) -> lis
     return bad
 
 
-def network(place_id: str, places: Path = io.PLACES, out: Path = CHECK_OUT) -> tuple[dict | None, list[str]]:
+def network(place_id: str, places: Path = io.PLACES, out: Path | None = None) -> tuple[dict | None, list[str]]:
     """The built place as `check` loads it (its context dict), and the build's problems."""
+    out = out or check_out(place_id)
     bad = build(place_id, places, out)
     if any(b.startswith("build failed") for b in bad):
         return None, bad
@@ -817,7 +826,7 @@ def finish(place_id: str, places: Path, bases: dict, log=print) -> int:
     return n
 
 
-def join(place_id: str, places: Path = io.PLACES, out: Path = CHECK_OUT, log=print) -> int:
+def join(place_id: str, places: Path = io.PLACES, out: Path | None = None, log=print) -> int:
     """Settle the place files (`finish`), build the place and read its walkable network; in each build round move the sleepers it does not reach
     (`rehome`), join every door's island to it by level walkway pieces, and once no island is left (or none can be
     joined) lay every street and patrol on it (`streets`); a round that changed what the mesh is built from (pieces,
@@ -1156,10 +1165,7 @@ def stairs(place_id: str, key: str, c: int, Wd: "Walkable", rows: list[dict], ba
                     if tz - g <= TREAD_MEET:
                         landed, buried = (x, y, g), abs(fl["foot"] - u)
                         break
-                if landed is None:
-                    continue
-                t = Wd.found(landed)[0]
-                if t < 0 or not Wd.main[t]:
+                if landed is None or not lands(Wd, landed):
                     continue       # it comes down in water too deep to wade, or on ground the town does not reach
                 row = {"id": io.mint(place_id, "steps", d["id"], str(e)), "base": sbase, "kind": "building",
                        "pos": pos, "rot": rot, "scale": 1.0, "layer": "place", "flags": [], "src": None,
@@ -1173,6 +1179,22 @@ def stairs(place_id: str, key: str, c: int, Wd: "Walkable", rows: list[dict], ba
         cand = onto(place_id, key, c, Wd, rows, bases, sbases, G, want)
     cand.sort(key=lambda t: t[:3])
     return [t[3] for t in (cand if every else cand[:1])]
+
+
+FOOT_DEPTH = 32.0   # the deepest water a flight's foot may come down in: check.WADE (64) less the mesh's own fall
+#                     under the ground a tread met (a tread's meet and a detail error, 16 each); Ashgate's quay flight
+#                     met the bed 64 under the water and its foot was built at 80, swum, cut off from the bank
+
+
+def lands(Wd: "Walkable", p) -> bool:
+    """Whether a flight's foot at p (where its tread meets our ground) stands where the town walks: on a triangle of
+    the main network, and on dry ground or under water no deeper than FOOT_DEPTH, so the mesh built under the foot is
+    waded, never swum."""
+    t = Wd.found(p)[0]
+    if t < 0 or not Wd.main[t]:
+        return False
+    w = Wd.wet(p[0], p[1]) if Wd.wet else None
+    return w is None or w - p[2] <= FOOT_DEPTH
 
 
 RAIL_BAND = (24.0, 160.0)   # units over a deck: a solid of the piece there along an edge is its rail

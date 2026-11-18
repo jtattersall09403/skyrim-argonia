@@ -42,7 +42,10 @@
    "Black Marsh.esm:1C408A": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
    "Black Marsh.esm:1C408C": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
    "Black Marsh.esm:1C408D": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
-   "Black Marsh.esm:1C408E": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank"
+   "Black Marsh.esm:1C408E": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
+   "Black Marsh.esm:0B6A35": "the quay's three dock pieces: they stand 170 over our shore, whose water is a wade deep under them, so no flight lands on dry ground; the barge is joined to the bank by a gangway at its own deck's height instead",
+   "Black Marsh.esm:0B6A36": "the quay's three dock pieces: they stand 170 over our shore, whose water is a wade deep under them, so no flight lands on dry ground; the barge is joined to the bank by a gangway at its own deck's height instead",
+   "Black Marsh.esm:0B6A44": "the quay's three dock pieces: they stand 170 over our shore, whose water is a wade deep under them, so no flight lands on dry ground; the barge is joined to the bank by a gangway at its own deck's height instead"
   },
   "anchor": [
    -102100,
@@ -284,6 +287,309 @@
     "tier": "AGENT_INVENTED",
     "why": "the old road post's gate (place record: summary, 'the old road post's gate still stands'): King of the Murkmire's palisade gate on the road side of the camp"
    }
+  ],
+  "roles": {
+   "merchant": {
+    "space": "01dock3to4",
+    "pos": [
+     3167,
+     3640,
+     7020
+    ],
+    "why": "Okeeh, the cook (main story, quest 1: 'sitting by the hold's cook-pot a few steps from where the player wakes'): her work spot is the hold's own spit pot"
+   }
+  }
+ },
+ "fit": {
+  "pivot": [
+   137032.7,
+   -69543.6
+  ],
+  "anchor": [
+   -102228.0,
+   -527160.0
+  ],
+  "rot_deg": 232.0,
+  "cost": 333.333,
+  "clusters": {
+   "landing": {
+    "pivot": [
+     137032.7,
+     -69543.6
+    ],
+    "to": [
+     -103247.5,
+     -526526.6
+    ],
+    "rot": 4.31096,
+    "dx": -768.0,
+    "dy": 256.0,
+    "drot_deg": 15.0,
+    "cost_before": 1593.75,
+    "cost_after": 0.0
+   },
+   "s01": {
+    "pivot": [
+     137032.7,
+     -69543.6
+    ],
+    "to": [
+     -101266.5,
+     -527921.7
+    ],
+    "rot": 4.57276,
+    "dx": -256.0,
+    "dy": 0.0,
+    "drot_deg": 30.0,
+    "cost_before": 214.286,
+    "cost_after": 0.0
+   },
+   "s02": {
+    "pivot": [
+     137032.7,
+     -69543.6
+    ],
+    "to": [
+     -102228.0,
+     -527288.0
+    ],
+    "rot": 4.04916,
+    "dx": 0.0,
+    "dy": -128.0,
+    "drot_deg": 0.0,
+    "cost_before": 58.824,
+    "cost_after": 0.0
+   },
+   "w01": {
+    "pivot": [
+     137032.7,
+     -69543.6
+    ],
+    "to": [
+     -102228.0,
+     -527160.0
+    ],
+    "rot": 4.04916,
+    "dx": 0.0,
+    "dy": 0.0,
+    "drot_deg": 0.0,
+    "cost_before": 0.0,
+    "cost_after": 0.0
+   },
+   "w02": {
+    "pivot": [
+     137032.7,
+     -69543.6
+    ],
+    "to": [
+     -102228.0,
+     -527160.0
+    ],
+    "rot": 4.04916,
+    "dx": 0.0,
+    "dy": 0.0,
+    "drot_deg": 0.0,
+    "cost_before": 0.0,
+    "cost_after": 0.0
+   },
+   "w03": {
+    "pivot": [
+     137032.7,
+     -69543.6
+    ],
+    "to": [
+     -103764.0,
+     -525880.0
+    ],
+    "rot": 4.04916,
+    "dx": -1536.0,
+    "dy": 1280.0,
+    "drot_deg": 0.0,
+    "cost_before": 1000.0,
+    "cost_after": 333.333
+   }
+  },
+  "separated": [],
+  "clusters_info": [
+   {
+    "id": "landing",
+    "kind": "landing",
+    "head": null,
+    "members": 23,
+    "centre": [
+     137128.9,
+     -71278.3
+    ]
+   },
+   {
+    "id": "s01",
+    "kind": "street",
+    "head": null,
+    "members": 2,
+    "centre": [
+     135442.7,
+     -67270.1
+    ]
+   },
+   {
+    "id": "s02",
+    "kind": "street",
+    "head": null,
+    "members": 2,
+    "centre": [
+     135977.6,
+     -65894.6
+    ]
+   },
+   {
+    "id": "w01",
+    "kind": "wet",
+    "head": null,
+    "members": 12,
+    "centre": [
+     137837.0,
+     -68769.5
+    ]
+   },
+   {
+    "id": "w02",
+    "kind": "wet",
+    "head": null,
+    "members": 7,
+    "centre": [
+     137986.1,
+     -66422.3
+    ]
+   },
+   {
+    "id": "w03",
+    "kind": "wet",
+    "head": null,
+    "members": 1,
+    "centre": [
+     135178.8,
+     -71704.4
+    ]
+   }
+  ],
+  "relief_norm": 64.0,
+  "patch_max": 105.0
+ },
+ "clearance": {
+  "tree": {
+   "building": 768.0,
+   "door": 0.0,
+   "street": 0.0,
+   "samples": 2
+  },
+  "low": {
+   "building": 0.0,
+   "door": 0.0,
+   "street": 0.0,
+   "samples": 0
+  }
+ },
+ "factions": [
+  {
+   "id": "outpost-m13-m65.crime",
+   "kind": "crime",
+   "name": "Ashgate Landing",
+   "jail": null,
+   "owing": {
+    "work": "outpost-m13-m65.S2AM7P262GYVA6ESBJWFZVR63Y",
+    "return": "outpost-m13-m65.KVD02EV6HSJQZN2BXFE5WNKFBK",
+    "bed": "outpost-m13-m65.H7T7ZWP0A1C70F4KPYSA1NQTJM",
+    "stolen": "outpost-m13-m65.8Y11H9B8FV5BAVYZK92TAC43W7",
+    "work_at": "the work stop 2 of the place's people share"
+   },
+   "law": "native",
+   "law_why": "Argonian law, no cell: A Dunmer gang-master and his Owing reed-cutters"
+  },
+  {
+   "id": "outpost-m13-m65.guard",
+   "kind": "guard",
+   "crime": "outpost-m13-m65.crime"
+  },
+  {
+   "id": "outpost-m13-m65.town",
+   "kind": "town",
+   "crime": "outpost-m13-m65.crime"
+  },
+  {
+   "id": "outpost-m13-m65.vendor.01",
+   "kind": "vendor",
+   "crime": "outpost-m13-m65.crime",
+   "hours": [
+    8,
+    20
+   ],
+   "sells": [
+    "trader-general"
+   ],
+   "chest": true,
+   "person": "outpost-m13-m65.RP1ZWTTMYJ5QZ7EKY4SZEHE05S"
+  }
+ ],
+ "stations": {
+  "needed": [
+   "cooking-pot"
+  ],
+  "found": {
+   "cooking-pot": [
+    "outpost-m13-m65.J0KTQNPTJ7JCY9BYWXXXAPV5ZS"
+   ]
+  },
+  "missing": [],
+  "added": [
+   {
+    "station": "cooking-pot",
+    "id": "outpost-m13-m65.J0KTQNPTJ7JCY9BYWXXXAPV5ZS",
+    "base": "King of the Murkmire.esp:1AD601",
+    "space": "01dock3to4",
+    "by": "outpost-m13-m65.RP1ZWTTMYJ5QZ7EKY4SZEHE05S"
+   }
+  ],
+  "rent_bed": null
+ },
+ "lights": {
+  "added": []
+ },
+ "hang": {
+  "added": []
+ },
+ "ground": {
+  "bundle": "ground.outpost-m13-m65",
+  "sha": "e5761ba411c5df54d1470d18ae78631f80b9b9c3085dcdb3ea9b6276f0b47bad",
+  "stamp": "e07cb46620466a1e"
+ },
+ "source": {
+  "bundle": "src.bmv.imperial-barge",
+  "stamp": "7e116fa3f610d590"
+ },
+ "radius_m": 55,
+ "counts": {
+  "source_refs": 69,
+  "placed": 1,
+  "adapted": 7,
+  "replaced": 3,
+  "dropped": 58,
+  "exterior_refs": 29,
+  "clusters": 6,
+  "land_patches": 0,
+  "plants_cleared": 2,
+  "paths": 1,
+  "interiors": 1,
+  "people": {
+   "guard": 2,
+   "merchant": 1
+  },
+  "beds": 0
+ },
+ "draft_key": "1eafe1c13e2f2db7",
+ "steps": {
+  "kit": [
+   "Skyrim.esm:0AE630",
+   "Skyrim.esm:0AEDF3"
   ]
  }
 }

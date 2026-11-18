@@ -1251,7 +1251,7 @@ rows and fields it owns. After a stage runs the tool checks that; if the stage w
 restores the files and fails. A row a
 finalised save under `edits/` touched is kept as it stands. The run prints `{file: {changed, added, removed}}`. The
 whole `draft <place_id>` refuses a place with finalised saves unless `--force "<why>"` is given.
-`draft check <place_id>` runs this same check (the build into `out/places/draft_check/`, then these functions on
+`draft check <place_id>` runs this same check (the build into `out/places/draft_check/<place_id>/`, the place alone, then these functions on
 that plugin), so a draft that passes it passes `check` on the build; it also mends every street again on that
 built mesh and fails if a stretch is re-laid (the streets are settled).
 

@@ -581,3 +581,17 @@ def test_a_street_leaving_a_deck_for_a_bank_over_it_gets_one_flight_up_the_bank(
     assert walk.bank_stairs("fx", street, B, [dock, fl], bases, ["steps"], B) == []   # that end has its flight
     low = _Bank(40.0)                                                   # a bank a step over the deck: the mesh walks it
     assert walk.bank_stairs("fx", street, low, [dock], bases, ["steps"], low) == []
+
+
+def test_a_flights_foot_lands_on_the_bank_or_a_shallow_ford_never_where_the_mesh_would_be_swum():
+    """The water stands at 0 over a shore whose bed falls from 20 under it to 64 under it: a foot comes down on the
+    shallow half, never where the bed is a wade's depth down (the mesh under the foot falls below it and is swum)."""
+    shallow, deep = _Nav("shallow", [(0, 0), (1, 0)], -20.0), _Nav("deep", [(2, 0), (3, 0)], -64.0)
+    _link(shallow, 2, deep, 0)
+    navs = {"shallow": shallow, "deep": deep}
+    W = walk.Walkable({"navs": navs}, lambda x, y: -20.0 if x < 200 else -64.0, None, lambda x, y: 0.0,
+                      comp=C.components(navs, {}))
+    assert walk.lands(W, (100.0, 50.0, -20.0))
+    assert not walk.lands(W, (300.0, 50.0, -64.0))
+    dry = walk.Walkable({"navs": navs}, lambda x, y: -64.0, None, lambda x, y: None, comp=C.components(navs, {}))
+    assert walk.lands(dry, (300.0, 50.0, -64.0))           # no water there: dry ground at any height

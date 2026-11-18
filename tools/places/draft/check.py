@@ -419,7 +419,7 @@ def build_check(place_id: str, places: Path = io.PLACES) -> list[str]:
     res = C.run(ctx)
     summary["network"] = ctx.get("streets")
     summary["build_check"] = {k: len(v) for k, v in res.items()}
-    full = walk.CHECK_OUT / "shards" / place_id / "check_failures"
+    full = walk.check_out(place_id) / "shards" / place_id / "check_failures"
     full.mkdir(parents=True, exist_ok=True)
     for k, v in res.items():
         (full / f"{k}.txt").write_text("".join(f"{f}\n" for f in v))
