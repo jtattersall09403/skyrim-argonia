@@ -155,7 +155,8 @@ The tools lay the network by these rules.
 - **Door arrivals.** Every door's arrival outside stands on the built walkable network at its own level (the deck or the ground where the door lands a person): an arrival more than 16 units over or under the mesh is put at the mesh's
   height where it is; one off the network is moved to the nearest point of it, on the same side of its door and
   outside every placed thing's body, at the mesh's height there. A person's outdoor work stop named by a thing the
-  network does not reach (a Hist's trunk) becomes the nearest point of the network beside it.
+  network does not reach (a Hist's trunk) becomes the nearest point of the network beside it, measured from the
+  thing's body (a great Hist's trunk cuts the mesh far round it).
 - **Streets and patrols lie on the built walkable network.** Once the doors are joined, every street, path and
   walkway is walked along its whole line (a point every 64 units) on the town's main network of the built navmesh
   (ours and the world's own round the place). A point stands on a dry triangle at a level where a person can stand:
@@ -243,8 +244,9 @@ The tools lay the network by these rules.
   seq, working at the landing: a boat's at the water's edge or on a deck over it, a coach's at the gate on the major
   road, a rootworm's at the place's Hist, whose roots the worms run in. Where they go and for what fare is the
   travel network's (`docs/design/travel-network.md`), never the person's.
-- **A promised shrine blessing needs a thing to carry it**: the source's own Hist or shrine, else the tools add a
-  young Hist in the town's middle, clear of buildings and streets (`stations` `shrine`); look at it in the render.
+- **A promised shrine blessing needs a thing to carry it**: the source's own Hist or shrine, or a Hist the story
+  needs placed by hand (`draft.add`), else the tools add a young Hist in the town's middle, clear of buildings and
+  streets (`stations` `shrine`); the Hist itself carries it, never its roots or its pool. Look at it in the render.
 - **The sentence follows the place's law** (`place_law` in the database, the one source of the fact;
   `docs/design/law.md`). A place where no one keeps law has no sentence and its guards speak no arrest lines.
   A foreign law jails: the jail is the copied room holding the jail kit (bars, jail walls, jail doors), never a
@@ -278,7 +280,9 @@ The tools lay the network by these rules.
 - **People follow Skyrim's days** (`docs/research/skyrim/town-life.md`): an innkeeper keeps the inn day and
   night and owns no bed; guards keep two 12-hour shifts on the streets. Never bend a day to satisfy a check: a check that disagrees with how Skyrim does it is a fault of the tool, to be reported and mended there.
 - **Beds decide the people.** A house copied from a cell several houses share keeps only its own room, by the
-  builder's room rule (the drafter calls it, so the beds counted are the beds built). Every promised service
+  builder's room rule (the drafter calls it, so the beds counted are the beds built). A cell whose ways out all open
+  into one walkable island by that rule is one building with several doors (a front and a back door, a door on each
+  floor): it is copied once, every one of its doors paired with its own door inside. Every promised service
   person works; residents fill the homes' remaining beds. A promise a townsman keeps beside his own life (a rootworm stop's handler, a follower) makes no person of its own: it is given to a resident (the skill `place-people` chooses which, by the trade it writes; until it has chosen, the first resident who has no service to give). A stop's handler works at it through the service hours.
 - **Who sleeps where, the vanilla way.** An inn that rents a room keeps one of its beds unowned: that is the
   rented bed (`stations.rent_bed`). Guards sleep in a barracks or their camp's own beds (tents and bedrolls
@@ -293,6 +297,10 @@ The tools lay the network by these rules.
   beast (a creature's race), a levelled character, nor one that takes anything from a template (stats, inventory, spells) unless that template is
   itself a fitting base of the source: the next fitting base of the same people and role is taken, and `draft check`
   fails a person built on such a base.
+- **People are of the place's people.** Bases come from the source's own actors. Where the source's people are not
+  the place's (a Dunmer town drafted for an Argonian one, actors that are creatures), name in `draft.people_from` the
+  sources whose actors are (`["bmv.helstrom"]` for Argonians: Black Marsh's own, nothing levelled in them); every base
+  is then taken from those.
 
 ## 6. Check and iterate
 

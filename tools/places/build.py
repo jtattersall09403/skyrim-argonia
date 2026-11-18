@@ -253,7 +253,9 @@ def place_key(pdir: Path, world_key: str) -> str:
 
 
 def sources() -> dict:
-    return {r["source_id"]: r for r in jsonl(PLACES / "sources.jsonl")}
+    """Every declared source, mined ones included (sources.jsonl's hand-written rows win on a shared id)."""
+    from tools.places.extract import load_sources
+    return load_sources()
 
 
 def resolve_copy(copy_of: str) -> tuple[str, str]:
@@ -264,7 +266,7 @@ def resolve_copy(copy_of: str) -> tuple[str, str]:
         return src, cell
     row = sources().get(src)
     if not row:
-        raise SystemExit(f"copy_of {copy_of}: source {src} is not in newworld/places/sources.jsonl")
+        raise SystemExit(f"copy_of {copy_of}: source {src} is not in newworld/places/sources.jsonl or sources_mined.jsonl")
     bdir = OUT / "bundles" / f"src.{src}"
     sj = bdir / "spaces" / cell / "space.json"
     own = row["plugins"] + row.get("extra_refs_plugins", [])
@@ -1589,17 +1591,19 @@ SHRINE = {  # the vanilla blessing, measured on Skyrim.esm's TempleBlessingScrip
 
 
 def plan_shrines(P: dict, S: dict, ids: Ids) -> list[dict]:
-    """Each `shrine` row of place.json stations.added becomes the vanilla temple shrine: the ref keeps its id and form
-    key, its base becomes an activator of ours with the old base's model and TempleBlessingScript, whose blessing is a
-    spell of ours (Resist Disease, fixed magnitude, eight hours), a message of ours and vanilla's remove message."""
+    """Each shrine of place.json stations (the Hist `found` there: the source's own, one the agent placed by hand, or
+    the one the tools `added`) becomes the vanilla temple shrine: the ref keeps its id and form key, its base becomes
+    an activator of ours with the old base's model and TempleBlessingScript, whose blessing is a spell of ours (Resist
+    Disease, fixed magnitude, eight hours), a message of ours and vanilla's remove message."""
     from tools.places import people as ppl
     out = []
-    for row in ((P["place"].get("stations") or {}).get("added") or []):
-        if row.get("station") != "shrine":
-            continue
-        ref = S["by_id"].get(row.get("id"))
+    stn = P["place"].get("stations") or {}
+    shrine_ids = list(dict.fromkeys(list((stn.get("found") or {}).get("shrine") or [])
+                                    + [r.get("id") for r in stn.get("added") or [] if r.get("station") == "shrine"]))
+    for sid in shrine_ids:
+        ref = S["by_id"].get(sid)
         if ref is None:
-            problem(f"place.json: stations.added shrine {row.get('id')} is not a ref of the place")
+            problem(f"place.json: stations shrine {sid} is not a ref of the place")
             continue
         n = ppl._edid(ref["id"])
         pid = ids.path.parent.name
@@ -1778,6 +1782,14 @@ def _plan_place(pid: str, pdir: Path, out: Path, no_navmesh: bool, plan_only: bo
                     problem(f"space {I['space']}: no navmesh (the source has none and its collision gives no floor): "
                             f"nobody can walk in it")
             navs += got
+    # a shipped mesh may lie past the cells asked of the world (an inner ring that came out unlike the world's, when
+    # the window grew): its cell is asked too, so the plugin holds the cell its navmesh is written into
+    beyond = {tuple(n["cell"]) for n in navs if n["space"] == "exterior"} - ask
+    if beyond:
+        more = world_facts(beyond, tmp)
+        facts["cells"] += more["cells"]
+        facts["by_cell"].update(more["by_cell"])
+        ask |= beyond
     world_raw = nav_fid(facts["worldspace"])
     nav_rows, n2 = finish_navmesh(navs, S, world_raw)
     notes += n2

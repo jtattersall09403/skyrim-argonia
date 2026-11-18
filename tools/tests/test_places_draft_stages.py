@@ -146,6 +146,20 @@ def test_a_copied_rooms_lights_go_back_to_the_sources_own_bases():
     assert interiors.own_lights(src, rows) == (rows, 0, 0)       # run again on its own output: the same rows
 
 
+def test_one_building_with_several_doors(monkeypatch):
+    """A cell whose ways out all open into one walkable island is one building with several doors (copied once); one
+    whose ways out open into islands of their own packs several houses' rooms."""
+    def door(i, to="exterior"):
+        return {"id": i, "kind": "door", "door": {"to_space": to, "to_ref": "x" + i}}
+    refs = [door("A"), door("B"), door("C", "cellar"), {"id": "bed", "kind": "furniture"}]
+    one = frozenset({"bed", "A", "B"})
+    monkeypatch.setattr(interiors, "rooms_of", lambda co: {"A": one, "B": one})
+    assert interiors.one_building("s/house", refs)
+    monkeypatch.setattr(interiors, "rooms_of", lambda co: {"A": frozenset({"bed", "A"}), "B": frozenset({"B"})})
+    assert not interiors.one_building("s/house", refs)
+    assert not interiors.one_building("s/house", refs[:1])     # one way out: nothing to decide
+
+
 # --- the build's checks ---
 def test_a_source_places_own_piece_is_not_judged_nordic_and_an_added_one_is():
     import test_places_check as T

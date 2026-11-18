@@ -711,11 +711,12 @@ def arrivals(place_id: str, pdir: Path, W: Walkable, bases: dict, log=print) -> 
     return moved
 
 
-def stops(place_id: str, pdir: Path, W: Walkable, log=print) -> int:
+def stops(place_id: str, pdir: Path, W: Walkable, log=print, bases: dict | None = None) -> int:
     """A person's work stop outdoors named by a thing (the Hist a handler tends) whose spot the town's network does
-    not reach, as the build looks a stop up, becomes the nearest point of the network beside it. Returns the stops
-    moved."""
+    not reach, as the build looks a stop up, becomes the nearest point of the network beside it: within SNAP of the
+    thing's body (its reach from its middle), since the mesh is cut round a great trunk. Returns the stops moved."""
     from tools.places import check as C
+    from tools.places.draft import geom
     fj = pdir / "people.jsonl"
     folk = io.read_jsonl(fj) if fj.exists() else []
     rows = {r["id"]: r for r in io.read_jsonl(pdir / "spaces" / "exterior" / "refs.jsonl")}
@@ -725,10 +726,11 @@ def stops(place_id: str, pdir: Path, W: Walkable, log=print) -> int:
         r = rows.get(w.get("ref")) if w.get("space") == "exterior" else None
         if r is None or W.on(r["pos"], tol=C.STOP_PLAN_TOL):
             continue
-        q = W.snap(r["pos"][:2])
+        reach = SNAP + (geom.reach(r, bases) if bases and bases.get(r.get("base")) else 0.0)
+        q = W.snap(r["pos"][:2], reach)
         if q is None:
             log(f"join {place_id}: {p['id']}: the work stop at {w['ref']} is off the walkable network, with no point "
-                f"of it within {SNAP:.0f} units")
+                f"of it within {reach:.0f} units")
             continue
         new = {"space": "exterior", "pos": [round(float(q[0]), 1), round(float(q[1]), 1)], "radius": w.get("radius", 384)}
         for st in p.get("routine") or []:
@@ -926,7 +928,7 @@ def join(place_id: str, places: Path = io.PLACES, out: Path | None = None, log=p
             log(f"join {place_id}: no island ({', '.join(sorted(isl))}) has a clear walkable way to the network")
             moved += cut(place_id, sorted(isl), rows, pdir, log)
         world = [r for r in (grd.exterior.refs if grd.exterior else []) if r.get("layer", "world") == "world"]
-        got = arrivals(place_id, pdir, W, bases, log) + stops(place_id, pdir, W, log) + streets(place_id, pdir, W, world, log, bases)
+        got = arrivals(place_id, pdir, W, bases, log) + stops(place_id, pdir, W, log, bases) +streets(place_id, pdir, W, world, log, bases)
         done += got + moved
         if got or moved:
             settle()

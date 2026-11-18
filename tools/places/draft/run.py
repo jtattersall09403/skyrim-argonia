@@ -395,6 +395,8 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
         if sp["parent"] == "exterior":
             row = our_by_id[sp["door_from"]]
             row["door"] = {**row["door"], "to_space": sid, "to_ref": sp["door_back"]}
+            for door_out, back in sp.get("also") or []:   # a building's further doors, each paired with its own inside
+                our_by_id[door_out]["door"] = {**our_by_id[door_out]["door"], "to_space": sid, "to_ref": back}
     copies: dict[str, list[str]] = {}
     for sid, sp in spaces.items():
         copies.setdefault(sp["src_space"], []).append(sid)
@@ -703,12 +705,12 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
             r["walk"] = w
     # --- doors: where one arrives outside each door, on our ground, and which way the door opens ---
     our_by_id = {r["id"]: r for r in our}
-    for sid, sp in sorted(spaces.items()):
-        if sp["parent"] != "exterior":
-            continue
-        ext_door = our_by_id[sp["door_from"]]
+    pairs = [(sp, a, b) for _, sp in sorted(spaces.items()) if sp["parent"] == "exterior"
+             for a, b in [(sp["door_from"], sp["door_back"])] + [tuple(x) for x in sp.get("also") or []]]
+    for sp, door_out, door_in in pairs:   # every door into the place's rooms, a building's further doors among them
+        ext_door = our_by_id[door_out]
         p = nodes_our.get(ext_door["src"])
-        back = next((r for r in sp["overrides"] if r["id"] == sp["door_back"]), None)
+        back = next((r for r in sp["overrides"] if r["id"] == door_in), None)
         if p is None or back is None:
             continue
         # one arrives on dry ground clear of every placed thing's body (geom.stands_in, the build's own test): step
@@ -851,7 +853,7 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
 
 
 SHRINE_GIVE = "shrine-blessing"
-SHRINE_EDID = re.compile(r"hist|shrine|altar", re.I)
+SHRINE_EDID = re.compile(r"^hist(tree|gland|trunk)|shrine|altar", re.I)   # a Hist itself, never its roots or pool
 SHRINE_BASE = "King of the Murkmire.esp:0D72B8"   # HistTree04: a young Hist, some 6 m tall
 
 
@@ -1083,12 +1085,22 @@ def draft_people(place_id, rec, gives, src, bases, our, spaces, clusters, fit, o
             if r.get("kind") == "actor" and r.get("base") in src.npcs:
                 actors.append((sp_id, r))
     used_bases: dict[str, int] = {}
+    # the bases our people are built on: the source's own actors, or, where the source's people are not the place's
+    # (a Dunmer town drafted for an Argonian one), the actors of the sources `draft.people_from` names
+    pool, pool_npcs = actors, src.npcs
+    if dec.get("people_from"):
+        pool, pool_npcs = [], {}
+        for sid_ in dec["people_from"]:
+            b_ = io.load(f"src.{sid_}", src.path.parent)
+            pool_npcs.update(b_.npcs)
+            pool += [(sp_id, r) for sp_id, sp in sorted(b_.spaces.items()) for r in sp.refs
+                     if r.get("kind") == "actor" and r.get("base") in b_.npcs]
 
     def pick_base(role: str) -> str | None:
-        cands = sorted({r["base"] for _, r in actors if people.usable(src.npcs[r["base"]], src.npcs)})
+        cands = sorted({r["base"] for _, r in pool if people.usable(pool_npcs[r["base"]], pool_npcs)})
         if not cands:
             return None
-        best = max(cands, key=lambda k: (people.role_score(src.npcs[k], role), -used_bases.get(k, 0), k))
+        best = max(cands, key=lambda k: (people.role_score(pool_npcs[k], role), -used_bases.get(k, 0), k))
         used_bases[best] = used_bases.get(best, 0) + 1
         return best
 

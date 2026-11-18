@@ -1,6 +1,8 @@
 """Interiors: every enterable building brings its interior as a copy of the source space, its doors paired.
 
-A source interior reached by several exterior doors is copied once per door, so each house has its own. When the
+A source interior reached by several exterior doors is copied once per door, so each house has its own, unless its
+ways out all open into one walkable island (by the room rule below): that is one building with several doors (a front
+and a back door, a door on each floor), copied once with every one of its doors paired to the copy. When the
 source packs several rooms into one interior cell (one room behind each door), the copy keeps one room: the builder's
 room rule (tools.places.build.room_partition: the walkable island reached from its own way out, each ref to the door
 island nearest it), so the drafter's beds and stops are exactly what the build keeps. An interior reached only from
@@ -59,6 +61,17 @@ def shared(refs: list[dict], src: Bundle) -> bool:
     through a cell we do not copy: nobody could walk to it in the copy)."""
     load = [r for r in refs if r.get("door") and (r["door"].get("to_ref") or r["door"].get("to_space"))]
     return sum(1 for r in load if door_target(r) == "exterior") > 1 or any(door_target(r) not in src.spaces for r in load)
+
+
+def one_building(copy_of: str, refs: list[dict]) -> bool:
+    """Whether a source cell with several ways out to the exterior is one building with several doors: every way out
+    opens into the same walkable island of the cell (the room rule's islands)."""
+    load = [r for r in refs if r.get("door") and (r["door"].get("to_ref") or r["door"].get("to_space"))]
+    outs = [r["id"] for r in load if door_target(r) == "exterior"]
+    if len(outs) < 2:
+        return False
+    rooms = rooms_of(copy_of)
+    return len({rooms.get(o) for o in outs}) == 1 and rooms.get(outs[0]) is not None
 
 
 def door_target(r: dict) -> str | None:
@@ -157,10 +170,18 @@ def plan(place_id: str, src: Bundle, ext_doors: list[dict], our_door_id: dict[st
     spaces: dict[str, dict] = {}
     uses: dict[str, int] = {}
     queue: list[tuple[str, str, str, str, tuple]] = []
+    by_target: dict[str, list[dict]] = {}
     for d in sorted(ext_doors, key=lambda r: r["id"]):
         t = door_target(d)
         if t and t in src.spaces and t != "exterior":
+            by_target.setdefault(t, []).append(d)
+    house = {t: len(ds) > 1 and one_building(f"{source_id}/{t}", src.spaces[t].refs) for t, ds in by_target.items()}
+    also: dict[str, str] = {}   # a further door of one building: its source ref -> our exterior door
+    for t, ds in by_target.items():
+        for d in (ds[:1] if house[t] else ds):
             queue.append((t, our_door_id[d["id"]], d["id"], "exterior", (t,)))
+        if house[t]:
+            also.update({d["id"]: our_door_id[d["id"]] for d in ds[1:]})
     while queue:
         t, our_from, src_from, parent, chain = queue.pop(0)
         uses[t] = uses.get(t, 0) + 1
@@ -172,7 +193,7 @@ def plan(place_id: str, src: Bundle, ext_doors: list[dict], our_door_id: dict[st
         back_row = back[0] if back else None
         sp = {"space_id": sid, "copy_of": f"{source_id}/{t}", "src_space": t, "door_from": our_from,
               "door_back": mint(place_id, sid, back_row["id"]) if back_row else None,
-              "room": back_row["id"] if back_row and shared(refs, src) else None,
+              "room": back_row["id"] if back_row and shared(refs, src) and not house.get(t) else None,
               "parent": parent, "name": src.spaces[t].meta.get("name"), "overrides": []}
         spaces[sid] = sp
         keep = kept(sp["copy_of"], sp["room"])
@@ -191,6 +212,11 @@ def plan(place_id: str, src: Bundle, ext_doors: list[dict], our_door_id: dict[st
                 row.update(swap(r, bases, rep))
             if r is back_row:
                 row["door"] = {**r["door"], "to_space": parent, "to_ref": our_from}
+            elif parent == "exterior" and t2 == "exterior" and house.get(t) and (r.get("door") or {}).get("to_ref") in also:
+                # another door of the same building: paired with its own door outside
+                ext = also[r["door"]["to_ref"]]
+                row["door"] = {**r["door"], "to_space": "exterior", "to_ref": ext}
+                sp.setdefault("also", []).append([ext, row["id"]])
             elif t2 == "exterior" and sp["room"]:
                 # another room's way out (rooms packed in one cell): not this house's; gone if inside the kept room
                 if keep is not None and r["id"] not in keep:
