@@ -4,8 +4,7 @@ This page is the plot of the Shadowscales, the Argonian assassins, written on 20
 [the factions overhaul](../../../../docs/phases/new-worldspace-plan/nw-05c-factions-overhaul.md) and revised on
 2026-11-17 to his story explorer notes. The Shadowscales have two rivals, the Lampbearers ([lamps](lamps.md)) and the
 Eelskins ([thieves](thieves.md)). Each of the three lines tells its own late story; the rivals appear in it with the
-same leaders and the same seats. Every quest is set in a place whose source holds what the quest needs
-(`python3 -m tools.newworld.place_card <place> --mined`), and the brackets say what was checked. Everything is inside
+same leaders and the same seats. Every quest is set in a place whose source holds what the quest needs, and a bracket says which source place gives it and how we know: what that source's buildings, interiors and placed pieces are. Everything is inside
 the quest ceiling ([quest-system](../../../../.claude/skills/quest-system/SKILL.md)), with the blocks listed in
 section 8.
 
@@ -147,8 +146,7 @@ quest 1, rising to 1,000 in quest 8. The bonus doubles it.
 ### Act I: the brass
 
 **1. The Drowned Man's Writ** (Xi-Inou, a raft hamlet on Archon's estuary). The player takes the satchel from under
-the landing and reads the writ. Golven Rethan drinks at the quay by night with two of his crew (the record's
-smugglers on the quay by night). The journal says that the player may fight or go quietly, and that the order
+the landing and reads the writ. Golven Rethan drinks at the quay by night with two of his crew (checked: Xi-Inou's source is Keeba Hollow from King of the Murkmire, an Argonian village of huts with dock pieces, with stilt houses from its Ree-An-Wo, and the plank landing is an addition, with the smugglers placed on the quay by night). The journal says that the player may fight or go quietly, and that the order
 prefers the stack. A stack of logs is roped above the landing (Skyrim's rolling-log trap, placed), and its rope can
 be cut when he stands below it. The player can also shoot him from the bank (Archery), stab him on his way to his
 boat (Sneak and One-Handed) or fight all three. His crew are few and stand at the quay's end, so a quiet player can
@@ -158,7 +156,7 @@ school in Archon. The journal marks Beem-Xal's house, a short walk up the estuar
 **2. The Old One by the School** (Archon, the eastern harbour city). Beem-Xal takes the brass and says nothing for a
 long moment. Then he lets the player into his back room, where Hulee-Tah waits, alive: the drowned man was his test.
 He tells the player that the order lives and what it does. He sets a first trial. A brass token lies in the
-strongbox of the Archwardens' customs officer on the quay (the record's customs post), and the officer sits beside it
+strongbox of the Archwardens' customs officer on the quay (checked: Archon's source is Journey to Baan Malur's waterside city of 162 interiors, whose dockhouses and houses serve for Beem-Xal's house beside the sealed school, with a back room and an alchemy table of Skyrim's set in it, while the customs post on the quay and the sealed school's locked door are additions the place's record lists), and the officer sits beside it
 by day. The journal says: "Take the brass token from the customs post on the quay unseen." The marker leads to the
 post. The player waits for the officer to turn to the boats and slips in (Sneak), picks the strongbox (a Novice
 lock), or lifts its key from his belt (Pickpocket). Seen, they fail the trial and must pay the officer's fine before
@@ -167,8 +165,7 @@ toll sergeant who eats each night at Tal-Neesh Farm.
 
 **3. The Supper at Tal-Neesh** (Tal-Neesh Farm, a rice farm on the island road near Fort Reedmoth). The contract is
 the toll sergeant of Fort Reedmoth. He drowned a Shadow-born child of the farm's tenants rather than let the order
-have her, and he eats each night at the farm (the record says the family sells rice to the fort's cooks and soldiers
-trade there on credit). Hulee-Tah teaches the player a poison: he shows them the recipe, and the player learns the
+have her, and he eats each night at the farm (the record says the family sells rice to the fort's cooks and soldiers trade there on credit) (checked: Tal-Neesh's source is Hlaalu Farm from Skyrim, a plain farm with one interior that serves as the low house, and the paddy and the marsh edge are added). Hulee-Tah teaches the player a poison: he shows them the recipe, and the player learns the
 effects of deathbell and nightshade. The player gathers the deathbell at the marsh edge past the snakes and buys
 nightshade at Black-Tongue Brews in Lilmoth. They make the poison at the alchemy table in Beem-Xal's house. Then they
 enter the farmhouse while the family works outside and poison the sergeant's own bowl on the table. The farm's dog is
@@ -179,8 +176,7 @@ at his meal. A player who would rather can kill him on the road to the fort (One
 
 **4. The Hatchling Seller** (Tailfall Mound, a Lilmothiit ruin near Fort Reedmoth, where smugglers hide). The
 smugglers' headman buys Shadow-born hatchlings from desperate families and sells them on. Two hatchlings sit caged
-in the lower hall (checked: the record sets the source's interior, Huluxinoag's, as the smugglers' lower hall, with
-the tomb-rooms beyond). The smugglers stand at the hall's mouth and on its stair. The journal says: "Kill the
+in the lower hall (checked: Tailfall Mound's source is Huluxinoag from King of the Murkmire, an Argonian ruin with one interior of cave pieces that serves as the smugglers' lower hall, and a second interior, Wajeem-Krona's cave rooms, serves as the tomb-rooms beyond it, while the cracked domes are an addition). The smugglers stand at the hall's mouth and on its stair. The journal says: "Kill the
 headman in the lower hall." The player sneaks past the smugglers or fights them. The headman sits at his table under
 a cracked roof (the record's cracked domes; Skyrim's rockfall trap, placed above his table, with its pull-chain on
 the wall). The chain brings the roof down on him. The player can also shoot him (Archery) or knife him. The cage's
@@ -192,9 +188,7 @@ the rank of Brass. Taking it shuts the other doors (section 4).
 
 **5. The Spell-Fire** (Mazurath, a ruined Velothi holding on the headland south of Khiar). The smugglers' boss of
 Mazurath ships moon sugar into the bayou villages, and two children of Khiar have died of it. His crew keep their
-cache in the sea-cave, which a swimmer reaches from the water. Ancestor ghosts walk the halls (checked: the record sets the source's
-halls, Redeyn Ancestral Tomb's, as the upper tier and the halls, and a second interior of cave pieces behind a door at
-the waterline as the sea-cave). The boss keeps a Khiar fisherman captive on the upper tier (the record's hook).
+cache in the sea-cave, which a swimmer reaches from the water. Ancestor ghosts walk the halls (checked: Mazurath's source is Redeyn Ancestral Tomb from Journey to Baan Malur, a ruin by water with one interior of halls and shrine niches that serves as the upper tier and the halls, and the sea-cave is a second interior of Frossel's cave pieces from Dragonborn, reached through a door at the waterline). The boss keeps a Khiar fisherman captive on the upper tier (the record's hook).
 Hulee-Tah teaches Muffle before the player goes. The journal says: "Kill the boss on the upper tier of Mazurath. The
 order would have the fisherman live." The bonus way is to free the fisherman (an Adept lock on his cell) before the
 boss dies. With Muffle the player passes the ghosts in the halls unheard. They can also fight the ghosts, or shoot the
@@ -207,12 +201,10 @@ nothing. The Reedmoth garrison has a price on his head and will not go into the 
 the road from the burnt shell, where his bandits hang a lamp over the oil they burn for light (Skyrim's hanging oil
 lamp and oil pool, placed). A shot that brings the lamp down sets the oil alight under him. The journal says: "Kill
 the bandit leader in the burnt shell of Fort Lowmoth." The player gets close enough to shoot unseen past the lookout,
-fights the bandits in the shell, or knifes him at the strongroom's iron door (checked: the source's single interior
-is the strongroom behind the iron door). His chest holds the names of the men he sold. *Leads on:* Hulee-Tah pays 500
+fights the bandits in the shell, or knifes him at the strongroom's iron door (checked: Fort Lowmoth's source is a ruined fort from Black Marsh North with 551 fort pieces and one interior, a jail block, which serves as the strongroom behind the iron door, and the charred timbers and lookout post are added). His chest holds the names of the men he sold. *Leads on:* Hulee-Tah pays 500
 gold and sends the player into the washes, to Khariton.
 
-**7. The Watch Captain** (Khariton, an abandoned Kothringi town in the washes). The Blackguards keep a watch post of
-tents at Khariton (the record's watch post), and their watch captain killed a ku-vastei of Lilmoth last winter.
+**7. The Watch Captain** (Khariton, an abandoned Kothringi town in the washes). The Blackguards have a watch post of tents at Khariton (checked: Khariton's source is a hamlet near Way to Ruins in Black Marsh & Valenwood with Argonian stilt-hall pieces from Keeba Hollow, and the Blackguards' post of tents is an addition made from camp pieces), and their watch captain killed a ku-vastei of Lilmoth last winter.
 Hulee-Tah teaches Night-Eye, since the dead town is dark under its rotted stilt houses. The journal says: "Kill the
 watch captain at the Blackguards' post in Khariton." The bonus way is to take the post's horn from its peg first, so
 that no one can raise the watch, and then kill the captain. Blackguards walk the town in pairs, with gaps a quiet
@@ -222,8 +214,7 @@ player can use. The player can also fight them, or shoot the captain from the fo
 **8. The Signal Tower** (Nine Reeds Waystation, a ruined Imperial tower on the road north of Gideon). The bandit
 leader of Nine Reeds takes Argonian carters off the road and holds them in the tower until their kin pay. Those whose
 kin cannot pay, he sells as Owings to the first buyer. Archers watch the road from the tower top, and his men camp in
-the granary (the record's archers, granary and carter held for ransom; the source, Driftshade Sanctuary, has two
-interiors, the tower's rooms and the smugglers' cellar). Hulee-Tah teaches Invisibility. At dusk the leader comes
+the granary (checked: Nine Reeds' source is Driftshade Sanctuary from Skyrim, an Imperial ruin with two interiors that serve as the tower's rooms and the smugglers' cellar, and the granary block and the hearth platform on the tower top are additions). Hulee-Tah teaches Invisibility. At dusk the leader comes
 down to the tower door to see the road, under the old portcullis (Skyrim's portcullis and lever, placed at the door),
 whose lever is on the stair. The journal says: "Kill the bandit leader at the tower of Nine Reeds." The bonus way is
 to drop the portcullis on him. The player can slip past the granary and the stair with Invisibility and Muffle,
@@ -238,16 +229,15 @@ buys the hatchlings.
 player that the "rice buyer of Lilmoth" is Lucan Vetrix, who buys for the Brotherhood. He keeps hatchlings at
 Sheh-Ara before they are shipped. The journal says: "Free the hatchlings at Sheh-Ara." The marker leads to the drowned
 village; the raft of Lujei Ferry crosses from the Blackrose side, and Sheh-Ara is a short walk east of Lujei. Four of Vetrix's hired men guard a cage on
-the minder's platform, and crocodiles lie in the flooded yard below (the record's platform and crocodiles; the men and
-the cage placed). The player frees the hatchlings (the cage's Expert lock, or its key on the men's leader), and the
+the minder's platform, and crocodiles lie in the flooded yard below (checked: Sheh-Ara's source is Keeba Hollow from King of the Murkmire, which gives the Argonian stilt halls and posts, and the minder's platform is an addition, with the crocodiles, the men and the cage placed). The player frees the hatchlings (the cage's Expert lock, or its key on the men's leader), and the
 screen fades as they go. Then the journal says: "Search Vetrix's room at the stilt-hall tavern in Lilmoth." The room
-has an Expert lock. In it lie the Listener's letter, which tells Vetrix to buy the Shadow-born and find where the
+has an Expert lock (checked: the stilt-hall tavern is the taverna of King of the Murkmire's Lilmoth, and the place's record lists rooms to rent in it). In it lie the Listener's letter, which tells Vetrix to buy the Shadow-born and find where the
 order trains, and a note from Marcella Dovi: the Lampbearers have caught him at the hatchling trade, and she offers him
 his freedom if he tells her where the order trains its novices. *Leads on:* the Eldest says Vetrix's name goes into a
 contract, and that it must be done before he speaks.
 
 **10. The Rice Buyer** (Lilmoth, the rebuilt stilt city). Vetrix has left the tavern for a room at the harbour's
-lodging house (a named interior of Lilmoth's source, King of the Murkmire's Lilmoth), with two hired men, to wait for
+lodging house (checked: the lodging house is a named interior of King of the Murkmire's Lilmoth), with two hired men, to wait for
 a ship out. The journal says: "Kill Lucan Vetrix at the lodging house on Lilmoth's harbour." The bonus way is that
 nobody dies but him. The player can slip past the hired men (Sneak) and knife him, shoot him from the walkway outside
 the door, or fight all three. On his body is his answer to Marcella, sent the day before: he told her that the
@@ -263,8 +253,7 @@ choice, written as the player meets it.
    journal says: "Hear Swims-Without-Ripples at the Eelskins' hall and Marcella Dovi at the Lamp-Hall, then bring the
    Eldest your answer." Markers lead to the hatch on Pusbottom's walkways and to the Lamp-Hall. Hulee-Tah gives the
    player a jar of eel-slime from Black-Tongue Brews for the cistern behind the hatch, where the Eelskins' ripper
-   eels swim (checked: Lilmoth's record sets the source's sewer hideout as the cellars under Pusbottom, entered by a
-   hatch from the walkways).
+   eels swim (checked: Lilmoth's source is King of the Murkmire's Lilmoth, whose sewers have a hideout room that serves as the Eelskins' hall under Pusbottom, entered through a hatch door that we set on the walkways, and whose first sewer room, the Surface Cisterns, serves as the cistern behind it).
 2. *In the Eelskins' hall*, the Eelskins let the player through, since Swims has sent word; a player who attacks them
    ends that leave. Swims-Without-Ripples speaks first. The Lampbearers hunt both the order and her thieves. If the
    order kills Marcella Dovi, the Eelskins will take the Lampbearers' house at Truowa, and the two will share the
@@ -281,7 +270,7 @@ choice, written as the player meets it.
 **12. The Contract** (Soulrest, the Lamp-Hall; Lilmoth, the Eelskins' hall).
 
 - *With the Eelskins.* The contract is Marcella Dovi. The journal says: "Kill Marcella Dovi in the Lamp-Hall at
-  Soulrest." She sits each evening in the hearing room under its hanging lamp (Skyrim's hanging oil lamp, placed, with
+  Soulrest" (checked: Soulrest's source is Skyrim's Solitude, whose Castle Dour palace interiors are the halls from which the government quarter is to be built, so the Lamp-Hall with its hearing room is made from them as an addition the place's record lists). She sits each evening in the hearing room under its hanging lamp (Skyrim's hanging oil lamp, placed, with
   the lamp-oil spilt under her chair); the bonus way is to shoot it down. The Lamp-Hall's two guards stand at the
   front door, and its back door has an Expert lock. The player can also shoot her from the gallery above the hearing
   room, or knife her. The same night the Eelskins drive J'zahri's Lampbearers out of Truowa, and the house on the
@@ -296,8 +285,7 @@ choice, written as the player meets it.
 
 **13. The Trial at Ra'tal Den** (Ra'tal Den, a Lilmothiit ruin of the Banujha Basin). The order's last trial for the
 player. The journal says: "Reach the Eldest in the hearth chamber of Ra'tal Den." The marker leads to the den, a walk
-west from Blackrose's landing (checked: the record sets the source, Haj-Uxith, as the dome's dark passages and the
-hearth chamber). Three novices wait in the dark passages, set against the player for the trial alone. The player
+west from Blackrose's landing (checked: Ra'tal Den's source is Haj-Uxith from King of the Murkmire, a small Argonian ruin of 236 Argonian pieces whose one interior serves as the dome's dark passages and hearth chamber). Three novices wait in the dark passages, set against the player for the trial alone. The player
 must pass them unseen, or fight past them without killing one (a Shadowscale may not kill a Shadowscale,
 `topics/sithis-nisswo-shadowscales.md:69-70`); a dead novice fails the trial, and Hulee-Tah sets it again after three
 days. The giant mudcrab of the hearth chamber (the record's) the player kills with any weapon. Ukka-Teel waits beside
@@ -354,15 +342,15 @@ theirs. *Leads on:* the line ends. Contracts go on, small and repeating, from Hu
 | Place | The thing | Quest | What happens there | How the player knows it |
 |---|---|---|---|---|
 | Xi-Inou | bones and a satchel under the plank landing, Golven Rethan and two crewmen on the quay by night, and a roped stack of logs above the landing | joining; 1. The Drowned Man's Writ | The player finds the test and does the work. | the third rumour; markers |
-| Archon | Beem-Xal's house beside the sealed school (one of the source city's houses), with a back room, an alchemy table, beds and Hulee-Tah (Ukka-Teel too in Act III); the customs post on the quay with its officer and strongbox (a Novice lock) | 2 to 12 | The order's door to the world, and the first trial. | the door shows "Beem-Xal's House"; Archon's people call the school the closed school (the place's record); a marker |
-| Lilmoth | Black-Tongue Brews (a named interior of the source city), whose keeper sells nightshade, poisons and eel-slime to the order | 3, 4, 11 | The order's branch. | its door shows its name; Hulee-Tah tells them |
+| Archon | Beem-Xal's house beside the sealed school (one of the houses of Baan Malur, the source city), with a back room, an alchemy table, beds and Hulee-Tah (Ukka-Teel too in Act III); the customs post on the quay with its officer and strongbox (a Novice lock) | 2 to 12 | The order's door to the world, and the first trial. | the door shows "Beem-Xal's House"; Archon's people call the school the closed school (the place's record); a marker |
+| Lilmoth | Black-Tongue Brews (a named interior of King of the Murkmire's Lilmoth), whose keeper sells nightshade, poisons and eel-slime to the order | 3, 4, 11 | The order's branch. | its door shows its name; Hulee-Tah tells them |
 | Tal-Neesh Farm | the farmhouse with the sergeant's bowl on the table, a dog at the door and deathbell at the marsh edge | 3. The Supper at Tal-Neesh | The player poisons the sergeant's meal. | Hulee-Tah tells them; a marker on the farm |
 | Tailfall Mound | the headman's table in the lower hall under a placed rockfall trap with its chain, a cage with two hatchlings (an Apprentice lock), smugglers at the hall's mouth and stair | 4. The Hatchling Seller | The contract and the freeing. | a marker on the lower hall |
 | Mazurath | the boss and the Khiar fisherman in his cell (an Adept lock) on the upper tier, the ghosts in the halls, the smugglers' sea-cave (in the place's record) | 5. The Spell-Fire | The contract. | a marker on the upper tier |
 | Fort Lowmoth | the bandit leader in the burnt shell under a hanging lamp, a pool of spilt oil at his feet, a lookout and the strongroom's iron door (the record holds the leader, the lookout and the strongroom) | 6. The Burnt Fort | The contract. | a marker on the shell |
 | Khariton | the Blackguards' watch post of tents with its captain and a horn on a peg (the post is in the record) | 7. The Watch Captain | The contract. | a marker on the post |
 | Nine Reeds Waystation | the bandit leader at the tower door at dusk, a placed portcullis above it with its lever on the stair, archers on the tower top, carters in shackles in the tower (an Expert lock) | 8. The Signal Tower | The contract and the freeing. | a marker on the tower |
-| Sheh-Ara | a cage of hatchlings on the minder's platform (an Expert lock), four of Vetrix's men, crocodiles in the flooded yard (the platform and crocodiles are in the record) | 9. The Caged Hatchlings | The player frees the hatchlings. | a marker on the village |
+| Sheh-Ara | a cage of hatchlings on the minder's platform (an Expert lock), four of Vetrix's men, crocodiles in the flooded yard (the minder's platform is an addition and the crocodiles are placed) | 9. The Caged Hatchlings | The player frees the hatchlings. | a marker on the village |
 | Lilmoth | Lucan Vetrix's room at the stilt-hall tavern (an Expert lock), with the Listener's letter and Marcella's note | 9. The Caged Hatchlings | The player learns of the Lampbearers' bargain. | a marker on the tavern |
 | Lilmoth | the lodging house on the harbour with Vetrix and two hired men | 10. The Rice Buyer | The contract. | a marker on the lodging house |
 | Lilmoth | the hatch on Pusbottom's walkways, the cistern with ripper eels, the Eelskins' hall with Swims-Without-Ripples and her strongbox (a Master lock) | 11. Whose Offer; 12, with the Lampbearers | An offer; the contract. | a marker on the hatch |

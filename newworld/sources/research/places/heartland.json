@@ -208,7 +208,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Helstrom in Black Marsh & Valenwood (Black Marsh.esm), is a town of 308 buildings built in Nordic and Dunmer style with two interiors, one of them an Argonian house. Its Nordic and Dunmer pieces are replaced with root-hollow and stilt houses from King of the Murkmire. Lilmoth (King of the Murkmire) supplies the interiors a city needs in Argonian and Imperial style: a tavern, an ironworks, an apothecary, a healer's hut and a guardhouse. They are set here as the boatmen's lodge, the market smithy, the sap-seller's stall and the levy's post. Still to add: the city tree and the tree-minders' hall, the root landing and raft moorings, and the market square.",
+     "text": "Its main source, Helstrom in Black Marsh & Valenwood (Black Marsh.esm), is a town of 308 buildings built in Nordic and Dunmer style with two interiors, one of them an Argonian house. Its Nordic and Dunmer pieces are replaced with root-hollow and stilt houses from King of the Murkmire. Lilmoth (King of the Murkmire) supplies the interiors a city needs in Argonian and Imperial style: a tavern, an ironworks, an apothecary, a healer's hut and a guardhouse. They are set here as the boatmen's lodge, the market smithy, the sap-seller's stall and the levy's post. Still to add: the council house, from Lilmoth's Dragonthorn Manor (King of the Murkmire) with its barracks for the wardens and a strongroom behind an added iron door, the city tree and the tree-minders' hall, the root landing and raft moorings, and the market square.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1394,7 +1394,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Honningbrew Meadery (Skyrim), is a Nordic hamlet of farm pieces with three interiors and 23 hostile figures. Its farm pieces and interiors serve as the farmhouse. The hostile figures are removed and the Nordic pieces are replaced with stone footings and reed and mud walls. Ree-An-Wo (King of the Murkmire) is the closer match in size: a small Argonian hamlet of 31 buildings with no interior. Still to add: the laid-stone causeway to the ferry post, the saltrice paddies, the ferry raft and the opened cairn on the near bank.",
+     "text": "Its main source, Honningbrew Meadery (Skyrim), is a Nordic hamlet of farm pieces with three interiors and 23 hostile figures. Its three interiors serve the estate: the Meadery's hall as Aldyne Ulvarys' hall, its Basement as the cellar under it, and the Boilery as the rice store. The hostile figures are removed and the Nordic pieces are replaced with stone footings and reed and mud walls. Ree-An-Wo (King of the Murkmire) is the closer match in size: a small Argonian hamlet of 31 buildings with no interior. Still to add: the laid-stone causeway to the ferry post, the saltrice paddies, the ferry raft and the opened cairn on the near bank.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2163,7 +2163,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Fort Tulis (Journey to Baan Malur), is a ruined Imperial fort of nine buildings on water with no interior and no people. It lends its Imperial walls and keep. Cracked Tusk (Skyrim), an Imperial fort with two interiors, supplies the interior pieces: one serves as the barracks and the other as the cellar behind a bricked door. Still to add: reed re-roofing and moss on the stone, a signal lantern on a tower of Imperial pieces, a chain across the channel, the smithy and the stone chapel of the Nine.",
+     "text": "Its main source, Fort Tulis (Journey to Baan Malur), is a ruined Imperial fort of nine buildings on water with no interior and no people. It lends its Imperial walls and keep. Cracked Tusk (Skyrim), an Imperial fort with two interiors, supplies the interior pieces: its keep hall serves as the barracks, and its vault of barred gates and shallow water as the cellar. The bricked door in front of the cellar is added. Still to add: reed re-roofing and moss on the stone, a signal lantern on a tower of Imperial pieces, a chain across the channel, the smithy and the stone chapel of the Nine.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

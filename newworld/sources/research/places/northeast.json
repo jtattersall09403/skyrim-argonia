@@ -1133,7 +1133,7 @@
     },
     {
      "aspect": "look",
-     "text": "A stilted watch house with a lantern pole, a stone-lined well and a heavy chain across the track between two posts.",
+     "text": "A raised platform of cypress planks on posts with a hide tent on it, a lantern pole, a stone-lined well and a heavy chain across the track between two posts.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1196,7 +1196,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Captain Guomundr's Village (Here There Be Monsters), is a Nordic hamlet of wreck pieces with 26 hostiles and no interior, so it does not fit. Ree-An-Wo (King of the Murkmire) fits better: a small Argonian hamlet of stilt pieces with no interior, which suits a watch house on stilts. No source holds a watch house interior, so the guards' bench stands on the stilt platform in the open. Still to add: the lantern pole, the stone-lined well and the chain between two posts.",
+     "text": "Its main source, Captain Guomundr's Village (Here There Be Monsters), is a Nordic hamlet of wreck pieces with 26 hostiles and no interior, so it does not fit. Ree-An-Wo (King of the Murkmire) fits better: a small Argonian camp of cypress platforms and walkways on posts, hide tents and hide fences with no interior, which suits a raised watch platform. No source holds a watch house, so the guards' bench stands on the platform in the open and they sleep in the tent. Still to add: the lantern pole, the stone-lined well and the chain between two posts.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1214,7 +1214,7 @@
     },
     {
      "kind": "free-bed",
-     "detail": "a bench on the watch house's stilt platform",
+     "detail": "a bench on the raised watch platform",
      "count": 1
     },
     {
@@ -1502,7 +1502,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, BlackMarsh2 -7,-4 (Black Marsh.esm), holds eight buildings of ship and farm pieces with no people and no interior, so it lends little. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet of 31 buildings in stilt and camp pieces with 16 people and no interior. Its stilt houses are set on the bay's mud shore and its five hostiles are removed. Still to add: the rope bridges, the drying and tanning racks, the dugouts on the mud, the smoking fire and the root hollow with the egg clutch.",
+     "text": "Its main source, BlackMarsh2 -7,-4 (Black Marsh.esm), holds eight buildings of ship and farm pieces with no people and no interior, so it lends little. Ree-An-Wo (King of the Murkmire) fits better: an Argonian camp of sixteen people with cypress platforms and walkways on posts, hide tents and hide fences and no interior. Its platforms are set on the bay's mud shore and its five hostiles are removed; the houses on them are Seekhat Yol's thatched houses (King of the Murkmire), added. Still to add: the rope bridges, the drying and tanning racks, the dugouts on the mud, the smoking fire and the root hollow with the egg clutch.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2384,7 +2384,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, BlackMarshNorth -17,3 (Black Marsh North), is a Nordic dock hamlet of 56 buildings with no interior, so its houses do not fit. Ree-An-Wo (King of the Murkmire) is closer: an Argonian hamlet of stilt and camp pieces on the water with no interior. Still to add: the square stone houses with reed roofs, the terraced plots, the hillside quarry and the stone quay. The elder's house is an interior from Seekhat Yol's elder's hut (King of the Murkmire). The sealed Velothi chamber under the oldest foundation is a small interior built from Redeyn Ancestral Tomb's Dunmer pieces (Journey to Baan Malur).",
+     "text": "Its main source, BlackMarshNorth -17,3 (Black Marsh North), is a Nordic dock hamlet of 56 buildings with no interior, so its houses do not fit. Ree-An-Wo (King of the Murkmire) is closer: an Argonian camp on the water of cypress platforms and walkways on posts, hide tents, hide fences and ruin pieces, with no interior. Still to add: the square stone houses with reed roofs, the terraced plots, the hillside quarry and the stone quay. The elder's house is an interior from Seekhat Yol's elder's hut (King of the Murkmire). The sealed Velothi chamber under the oldest foundation is a small interior built from Redeyn Ancestral Tomb's Dunmer pieces (Journey to Baan Malur).",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

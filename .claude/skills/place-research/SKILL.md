@@ -35,7 +35,10 @@ One researcher per batch of about 30 places, grouped by neighbouring regions, ea
    needs. Every sentence of the summary, notes and gives passes the deliverability test (FORMAT.md, Deliverable in
    Skyrim): Skyrim and our mods can show or do it with at most a small addition (a thing placed, a person, a lock);
    every structure it names is in the sources or named in the `source` note as added, from which mod's pieces; it
-   agrees with the record's `siting`. Each note is about this
+   agrees with the record's `siting`. A source holds a structure when its placed pieces or interiors show it, not
+   when its style tags suggest it, and the `source` note says so as a plain sentence naming the source and the
+   evidence ("Bonestrewn Grove, from King of the Murkmire, has cypress walkways on posts and two hide tents"),
+   never a command or an id. Each note is about this
    place alone, drawn from what is particular to it; no sentence is shared with another place, with only the
    names changed. The overview adds what the summary does not. An unnamed place gets a name in its culture's
    style, unique in the province. Importance: 5 shapes the province, 4 major, 3 regional, 2 local, 1 local colour.

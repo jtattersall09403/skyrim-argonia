@@ -4,9 +4,9 @@ This page is the plot of the Imperial merchants' line, written on 2026-11-16 fro
 factions overhaul](../../../../docs/phases/new-worldspace-plan/nw-05c-factions-overhaul.md) and revised on 2026-11-17
 to his story explorer notes. Its rival is Bramman's Brethren, the pirates ([pirates](pirates.md)). The two plots are
 one war seen from both sides: the shared events are fixed once, in section 6 of the pirates' page, and named again
-here. Every quest is set in a place whose source place holds what it needs, and each sentence that leans on a part of
-a place, a named thing or a creature says in brackets how that was checked (`python3 -m tools.newworld.place_card
-"<place>" --mined`). Everything is inside the quest ceiling
+here. Every quest is set in a place whose source place has what it needs, and each sentence that leans on a part of a
+place, a named thing or a creature says in brackets which source place gives it and how we know: what that source's
+buildings, interiors and placed pieces are, or which named addition supplies it. Everything is inside the quest ceiling
 ([quest-system](../../../../.claude/skills/quest-system/SKILL.md)), with the additions listed in section 8. The line
 can be played at any point of the main quest: it uses nothing the main quest needs.
 
@@ -129,14 +129,17 @@ The Company's ranks come with the line, each with a fixed reward:
 **1. The Ruction Ring** (Gideon, the Company's seat; Teth-Kasa Station, a Naka-Desh river station in the mangroves
 south of Gideon). Company cargo has gone missing off Gideon's quay and turned up for sale under the city. Nuxal-Tei
 sends the player into the Ruction Ring, the fighting pit that Gideon's lowlifes dug under the city
-(`gideon.md:45`; checked: the record has the Ruction Ring and its fixer), to find out who brings the stolen cargo there to sell. Drusus Faleria,
+(`gideon.md:45`), to find out who brings the stolen cargo there to sell (checked: Gideon's main source, Riften from
+Skyrim, has an underground warren of halls, the Ratway, beneath it, so the pit is a named addition set in one of those
+halls, and the fixer is placed in the pit). Drusus Faleria,
 the Ring's fixer, talks only to a winner or a buyer. The player fights one bout in the pit, which ends when the other
 fighter yields (One-Handed, Two-Handed, Block). The pit fighter is a novice, placed at a low fixed level, so a new
 character of any build can win; a player who loses yields and may fight again. Or the player buys Drusus's word for
 150 gold, or for 75 with Speech 25. Drusus says the goods come up the mangrove channels to a drop at Teth-Kasa
 Station. The journal names the station's mangrove roots and its marker leads there. Two hands of the Brethren's bay
-crew wait at the drop with a crate of the Company's wine (checked: the record has a smuggler's cache in the mangrove
-roots), and they fight. *Leads on:* Nuxal-Tei hears that the thieves were the Brethren, makes the player a Hireling
+crew wait at the drop with a crate of the Company's wine (checked: the station's main source is a Nordic tower, so the
+station is drawn from Ree-An-Wo, an Argonian hamlet in King of the Murkmire; the drifted crate wedged in the
+mangrove roots is a placed container), and they fight. *Leads on:* Nuxal-Tei hears that the thieves were the Brethren, makes the player a Hireling
 and tells them who the pirates are. She has a salvage job off Olvani. The journal marks the Company's smith in
 Gideon.
 
@@ -144,17 +147,19 @@ Gideon.
 west of Gideon). Gideon's harbour officer has sold the Company the salvage of the *Grey Heron*, a Leyawiin
 merchantman that sank off the estuary with iron in her hold. The Company's smith in Gideon teaches the player the
 recipe for the Company's banded shield, made from the *Heron*'s iron. The player buys a potion of Waterbreathing
-from Gideon's herbalist, or needs none if Argonian, and dives from Olvani's jetty, a short walk west. Air has stayed
-inside the hull (checked: the wreck's second source, Icerunner, has a ship's interior, which serves as the hold and the
-stern cabin). Two of the Brethren's salvors are already inside and attack. The player fights them in the narrow hold
+from Gideon's herbalist, or needs none if Argonian, and dives from Olvani's jetty, a short walk west (checked: the jetty is built of the dock pieces of Seekhat Yol in King
+of the Murkmire, a named addition). Air has stayed
+inside the hull (checked: the wreck's second source is Icerunner, a ship from Skyrim whose one interior of ship
+timbers, crates and barrels serves as the hold and the stern cabin). Two of the Brethren's salvors are already inside and attack. The player fights them in the narrow hold
 with blade and shield, or with a two-handed weapon in the open stern cabin, and takes four iron ingots from the hold.
 Back at Gideon's forge the player makes the banded shield (Smithing) and shows it to the smith. *Leads on:* the smith
 pays 100 gold for the iron, and the player keeps the shield. Nuxal-Tei says Fort Silvermoth's toll chain stops the
 Company's carts to Soulrest. The journal marks the fort, a short walk east on the coast road.
 
 **3. The Captain's Chain** (Fort Silvermoth, an Archwarden toll fort on the coast road). Captain Hareel Tullan has
-closed the road to Company carts (checked: the record lists the toll chain and the stockade to be added to its
-source, Cracked Tusk). The Brethren have paid him, and one of their bosuns, Kesh-Ulee, sits in his stockade with
+closed the road to Company carts (checked: the fort's source is Cracked Tusk, an Imperial fort from Skyrim with two keep
+interiors and wooden stockade walls in its yard; the toll chain is a named addition, and the stockade cell is one
+locked door in the yard). The Brethren have paid him, and one of their bosuns, Kesh-Ulee, sits in his stockade with
 the purse he carried. The player meets the choice so:
 
 1. The journal's marker leads to the toll chain. Hareel stands there and speaks first: the road is closed to the
@@ -176,7 +181,9 @@ bay).
 
 **4. Wreckers' Lights** (Acra-Tiin, a fishing village on the cape's south shore). Wreckers light false lamps on the
 shore by night and loot the ships that strike the rocks. Three wreckers tend the lamp on the dunes, and their cache
-lies in a hollow behind it (checked: the record has the wreckers' cache in the dunes; the lamp is a placed lantern).
+lies in a hollow behind it (checked: Acra-Tiin's main source is a thin eight-building town, so the village is drawn
+from Seekhat Yol in King of the Murkmire, which has Argonian stilt houses and dock pieces; the wreckers' cache in the
+dunes is a placed container, and the lamp is a placed lantern).
 The journal says the player may come at them over the open dune or along the tide line below it. Over the dune, the
 player charges in heavy armour with a two-handed weapon and fights all three at once. Along the tide line, the player
 comes up under the lamp and fights them one at a time with blade and shield. In the cache are the lost coaster's goods
@@ -187,9 +194,9 @@ her. The journal sends the player to the Company's boatman on the fort's quay.
 **5. Guarding the Leyawiin Pride** (Fort Shellmoth, an Archwarden harbour fort near Soulrest, with the *Leyawiin
 Pride* at anchor off its sea wall). This is the boarding at sea of the Brethren's page (section 1), seen from the
 other deck. The Company's boatman on the fort's quay asks if the player is ready, and the player says yes. The screen
-fades. The player sits in his small boat under the *Pride*'s side (checked: the ship is Skyrim's Red Wave, its hull
-pieces set at anchor and its deck door leading to its one interior, the cabin and hold; the small boat is a Skyrim
-rowing boat). The Brethren's boarding party is already on the deck and in the hold, and Gallus Ostorius has shut
+fades. The player sits in his small boat under the *Pride*'s side (checked: the ship is the Red Wave, a merchantman from Skyrim's
+Solitude docks whose one interior is a cabin and hold; its hull is set at anchor off the fort's sea wall as a named
+addition, and the small boat is a Skyrim rowing boat). The Brethren's boarding party is already on the deck and in the hold, and Gallus Ostorius has shut
 himself in his cabin. The boatman gives the player a scroll of Tinur's Hoptoad. The player climbs the hull with
 FreeClimb or leaps to the rail. They fight the boarders on the deck in heavy armour, or with a shield at the head of
 the hold's ladder, where the boarders come up one at a time. When the boarders are dead, Gallus comes out of his
@@ -202,9 +209,9 @@ marks it, a walk east from Soulrest.
 
 **6. Iron of the Ninth Shaft** (Ninth Shaft, a numbered Imperial mine on Cape Percar; Soulrest, the old capital and
 port). The Company's smith teaches the player the recipe for the Company's boarding sword: two iron ingots and a
-strip of leather. Smugglers store their goods in the lower galleries of Ninth Shaft and keep watch in the upper levels
-under their quartermaster (checked: the source, Bilegulch Mine, has one interior, which serves as the upper levels
-and the lower galleries, the lower part set under water). The player has two ways:
+strip of leather. Smugglers store their goods in the lower galleries of Ninth Shaft and watch from the upper levels
+under their quartermaster (checked: the mine's main source is Bilegulch Mine from Skyrim, an Orc mine with one
+interior, which serves as the upper levels and the lower galleries, the lower part set under water). The player has two ways:
 
 - *Fight them out* with blade and shield or a two-handed weapon. The smugglers' store in the lower galleries is the
   player's, and Nuxal-Tei pays 200 gold for a smugglers' nest cleared of its smugglers.
@@ -212,16 +219,17 @@ and the lower galleries, the lower part set under water). The player has two way
   quartermaster becomes a fence for the player. Nuxal-Tei pays 100 gold, since the smugglers are still there.
 
 The player mines six iron ore from the upper veins (a pickaxe is sold at Soulrest's smithy), smelts it at
-Soulrest's harbour smelter and forges three boarding swords at the Imperial-quarter forge (Smithing; checked: the
-record has the smelter and the forge). *Leads on:* Gallus takes the swords for his crew. He says the smugglers of
+Soulrest's harbour smelter and forges three boarding swords at the Imperial-quarter forge (Smithing; checked: Soulrest's main source, Solitude from Skyrim, has a smithy interior with a forge and an anvil,
+and the harbour smelter is a named addition, Skyrim's smelter placed at the quay). *Leads on:* Gallus takes the swords for his crew. He says the smugglers of
 Hollow Tide Camp on Skeith Isle carry the Brethren's goods, and the Company has hired a boat at Arorha to land the
 player there. Arorha's boatmen row to the isle for nobody else; the Company pays them well. The journal marks Arorha's
 quay (the boats from Soulrest to Lilmoth, Archon and Arorha) and the camp.
 
 **7. The Hollow Tide** (Hollow Tide Camp, the smugglers' beach camp on Skeith Isle). The Company's boatman at Arorha
-(the village of the Sisei-Xul's 1, The Burnt Kilns) lands the player on the island's south-west beach. Eight
-lookouts and boat crew live in the camp, and snares string the coves (checked: the record has the lookouts, the
-snares, the lean-tos and the bluff cave with the cache). The player fights through the lean-tos, or stands on the
+(the village of the Sisei-Xul's 1, The Burnt Kilns) lands the player on the island's south-west beach. Eight lookouts and boat crew live in the camp, and snares string the coves (checked: the camp's main source, New
+Zainab, is a Dunmer camp of twelve people by water, whose yurts are replaced by open lean-tos of reed and hide from
+Bonestrewn Grove in King of the Murkmire, so the snares and the bluff cave with the cache, a small interior of Skyrim's
+cave pieces, are named additions). The player fights through the lean-tos, or stands on the
 narrow path from the beach with a shield and lets them come. Rajeel-Kosh stands at the bluff cave with his last two
 men. He talks before he fights. The player chooses:
 
@@ -235,11 +243,11 @@ bay. Outlaws have camped in it. The journal marks it (the boats back to Soulrest
 
 **8. A Post at Wrackmoth** (Wrackmoth, a ruined Imperial fort on the cape's north coast). Six outlaws camp in the
 yard under a captain in the gatehouse. Mudcrabs and crocodiles (Black Marsh & Valenwood's) lie in the flooded gate
-(checked: the fort's source, Morvunskar, is set in standing water at the yard and gate). The player fights in by the
+(checked: the fort's main source, Morvunskar from Skyrim, is an Imperial fort whose cells stand in shallow water
+and whose two interiors serve as the gatehouse and the strongroom). The player fights in by the
 flooded gate in heavy armour, or comes over the broken wall and fights the outlaws in the yard with a two-handed
 weapon. The outlaw captain is the last fight. *Leads on:* the Company's people move into the fort. The player is made
-Factor and given a bed in the gatehouse, the use of the Legion forge (checked: to be added, in the record; Skyrim's
-forge) and a Company trader in the yard. Nuxal-Tei says the Company needs gold for the war that is coming, and the
+Factor and given a bed in the gatehouse, the use of the Legion forge (checked: the forge is a named addition, Skyrim's forge placed in the yard) and a Company trader in the yard. Nuxal-Tei says the Company needs gold for the war that is coming, and the
 gold is in Old Goldseam. The journal marks the mine.
 
 ### Act III: the war on Aphon Isle
@@ -247,9 +255,10 @@ gold is in Old Goldseam. The journal marks the mine.
 **9. Gold of Old Goldseam** (Old Goldseam, a derelict gold mine of the old Imperial concession). The Company's smith
 teaches the player the recipe for the Company's gold signet: one gold ingot. The Company pays its hired swords in
 these rings, and it is hiring for the war. Five outlaws camp at the mine mouth and their chief in the hut at the shaft
-head (checked: the record's fallen winch house, rebuilt as a plain ruined shed). The journal says the player may fight
-in by the mouth or swim in by the flooded lower shafts (checked: the Flooded Mine Shaft's interior, which stands full
-of water, serves as the lower galleries). By the mouth the player fights the outlaws in the galleries. By the shafts,
+head (checked: the mine's main source, Gloombound Mine from Skyrim, is a small mine with one
+interior, and the winch house is a named addition built as a plain ruined shed). The journal says the player may fight
+in by the mouth or swim in by the flooded lower shafts (checked: the interior of the Flooded Mine Shaft from the Underwater Skyrim Rivers and Lakes
+mod, which stands full of water, serves as the lower galleries). By the mouth the player fights the outlaws in the galleries. By the shafts,
 with Waterbreathing, the player comes up behind them near the shaft head. The player mines four gold ore from the
 upper gallery, smelts it at Soulrest's harbour smelter, and makes four signets at Wrackmoth's forge (Smithing).
 *Leads on:* the Company opens the mine with its own miners. Nuxal-Tei pays 300 gold. Opilia herself sends for the
@@ -258,9 +267,11 @@ wreck and Seafalls (the boats to Archon, then to Seafalls).
 
 **10. The Septim Warship** (Seafalls, a pilots' village on the coast north of Archon; Wreck of the Resolute Crest, a
 Septim man-of-war sunk in deep water off Skeith Isle). Seafalls' pilot-elder knows where the *Resolute Crest* lies
-and sells potions of Waterbreathing (checked: the record has the pilot-elder). Two of Skeith's divers have died in
-her. The player dives. Air has stayed inside the hull (checked: the hull is Pilgrims Trench's ship pieces set upright
-on the deep shelf, with an added interior of Skyrim's ship pieces behind a hull door). Six drowned marines (Skyrim's
+and sells potions of Waterbreathing (checked: Seafalls' main source, Seekhat Yol in King of the Murkmire, is an
+Argonian village by water whose huts serve as the pilot-elder's house and the trader's). Two of Skeith's divers have died in
+her. The player dives. Air has stayed inside the hull (checked: no source place of the wreck fits, so the hull is the ship of Pilgrims Trench from Skyrim, set upright on the
+deep shelf, and the decks and lower hold are a named addition, an interior built from Skyrim's ship pieces behind a
+hull door). Six drowned marines (Skyrim's
 draugr, under our name) guard the main deck and their captain stands on the quarterdeck. The player fights them in
 heavy armour down the gun deck or blocks the hatch with a shield. The Akaviri chest holds 600 gold in Akaviri coin and
 a blade, *the Resolute* (Skyrim's Blades sword under our name), enchanted with frost. *Leads on:* Opilia takes the
@@ -269,12 +280,13 @@ the lower hall of Fort Swiftmoth, and she will not send her people against crews
 the fort, inland from Archon.
 
 **11. The Scroll Store** (Fort Swiftmoth, an empty Imperial keep inland from Archon). Smugglers who work for the
-Brethren camp in the lower hall with a captain who carries the strongroom's key (checked: the source, Mistwatch, has
-three halls one above another; the lowest serves as the lower hall and a side room as the strongroom, with a locked
-door). The Eelskins' 7, The Locked Strongroom, robs the same strongroom of the
+Brethren camp in the lower hall with a captain who carries the strongroom's key (checked: the keep's source is Mistwatch from Skyrim, an Imperial fort round a
+tall stair-tower with three interiors, the tower's halls one above another; the lowest serves as the lower hall and a
+side room as the strongroom, given a locked door). The Eelskins' 7, The Locked Strongroom, robs the same strongroom of the
 Brethren's coin and goods. Each of the two quests switches on its own watch and its own store when it starts, so
-they can be played in either order. Mud-crocodiles lie in the ditch round the
-rise. Aroxhu families shelter in the dry upper floor and do not fight. The player fights the smugglers through the
+they can be played in either order. Mud-crocodiles, a Black Marsh & Valenwood creature, lie in the ditch round the
+rise, which is a named addition. Aroxhu families shelter in the dry upper floor, which is the tower's top hall, and do
+not fight. The player fights the smugglers through the
 lower hall with blade and shield or a two-handed weapon. The strongroom has the Brethren's store of scrolls in it.
 *Leads on:* the scrolls of Mayhem and Frenzy are the player's to use in the assault. Nuxal-Tei says the Company will
 arm its landing party in Company plate, and the iron for it is in Blackdrift. The journal marks the mine. It lies on the cape
@@ -283,18 +295,19 @@ east of Soulrest.
 **12. Armour for the Landing** (Blackdrift, a burned timber-and-gold mine in the Percar hills). The Company's smith
 teaches the player the recipe for the Company's heavy cuirass: four iron ingots and two strips of leather. Armed
 scavengers camp at the mine's portal under a headman. The player fights through the scavengers at the portal and
-mines the iron vein near it (checked: the source, the Flooded Mine Shaft, has one flooded interior, which serves as
-the burned galleries). The player smelts the ore at Soulrest's harbour smelter and forges the cuirass at Wrackmoth
-(Smithing). Behind placed fallen stone, a sealed gallery has the overseers' gold from 3E 427 in it (checked: in the
-record), which is the player's if they clear the stone and swim on. *Leads on:* the player is made Master-at-Arms.
+mines the iron vein near it (checked: the mine's main source is the Flooded Mine Shaft from the Underwater Skyrim
+Rivers and Lakes mod, with one flooded interior, which serves as the burned galleries). The player smelts the ore at Soulrest's harbour smelter and forges the cuirass at Wrackmoth
+(Smithing). Behind placed fallen stone, a sealed gallery has the overseers' gold from 3E 427 in it (checked: the gold chest and the
+fallen stone are named additions to the mine), which is the player's if they clear the stone and swim on. *Leads on:* the player is made Master-at-Arms.
 Opilia names the night. The Company's sellswords and Gallus's crew will land at Bramman's Watch when the player has
 silenced the lookouts on the Signal Tower. The Company's boatman waits at Olvani's jetty. The journal marks him.
 
 **13. The Landing** (Aphon Signal Tower, the Brethren's lookout on Aphon Isle; Bramman's Watch, the Brethren's seat).
 The Company's boatman at Olvani asks if the player is ready, and the player says yes. The screen fades, and the
 player stands on the shingle below the Signal Tower, on the side of the isle away from the Watch. Four Brethren
-lookouts live in the tower's base and on its top (checked: the source, Old Laboratory, has one interior, which serves
-as the tower's base; the record adds the tower and its outside stair). If the player turned Rajeel-Kosh in quest 7,
+lookouts live in the tower's base and on its top (checked: the tower's main source, Ash Crypt, is a cave crypt and does not fit, so the base is
+the one interior of Old Laboratory, an Imperial ruin in King of the Murkmire; the tall tower and its outside stair
+are named additions). If the player turned Rajeel-Kosh in quest 7,
 they give the Brethren's sign at the stair's foot; that line makes peace with the lookouts' faction, and the player
 walks up among them and fights them where they choose. Otherwise the player fights them on the outside stair, or
 shoots them from the rocks below. Meanwhile the Company's boats have come in at the Watch's landing (the quest's
@@ -307,8 +320,9 @@ One-Eye fights to the death. *Leads on:* her sea chest has the key to the Brethr
 the store's crew are still there under Selvo. The journal marks the cave. It lies on the far shore of the isle.
 
 **14. The Store at Kelp-Mouth** (Kelp-Mouth Cave, the Brethren's store on Aphon Isle). Selvo Arenim and four of the
-store's crew camp in the dry outer chamber (checked: the source, Wajeem-Krona, has one interior with a dry chamber and
-a pool of water beyond it). The player fights them in the outer chamber, or fights them one at a time in the narrow
+store's crew camp in the dry outer chamber (checked: the cave's main source is Wajeem-Krona in King of the Murkmire, an Argonian sea
+cave with one interior that holds water and nine placed foes, and that interior serves as the dry outer chamber and the
+pool beyond it, the water set deep enough to swim). The player fights them in the outer chamber, or fights them one at a time in the narrow
 cave mouth with a shield. Selvo carries a second key to the store chest. The store chest stands in the flooded inner
 chamber, reached by swimming past slaughterfish. In the chest are the Brethren's prize cargo and One-Eye's copy of the
 *Stormwidow*'s letter of marque (a Skyrim letter under our name). Reading it, the player learns what Gaius Cassena did.
@@ -351,11 +365,14 @@ Company.
   people, since the letter's story names him as the man who told the Company where the Brethren moored.
 
 **In both.** Bramman's Watch becomes the player's stronghold: the view-house as a bed, the old Nine shrine and the
-captain's sea chest to keep things in. The Company founds a post at the Watch's landing. It grows after the line in
+captain's sea chest to keep things in (checked: the view-house room is a hut interior from Seekhat Yol, and the shrine
+comes from Stendarrs Beacon, a Skyrim tower with shrine pieces). The Company founds a post at the Watch's landing. It grows after the line in
 three stages, as Raven Rock grew after the Dragonborn's work on Solstheim. Each stage is a small job given in the
 view-house:
 
-1. *A pier and a trader*: the player brings twenty logs from Redgum Camp's foreman.
+1. *A pier and a trader*: the player brings twenty logs from Redgum Camp's foreman (checked: the camp's main source
+is a moored ship, which does not fit, so it is drawn from Chillwater Mill in Wyrmstooth, a mill with lumber pieces and
+one interior that serves as the bunkhouse, and the foreman is the camp's trader).
 2. *A smith and a forge*: the player brings ten iron ingots.
 3. *Houses and settlers*: the player brings the four Company signets of quest 9, or four more.
 
@@ -386,28 +403,28 @@ player. Hollow Tide Camp is hostile unless Rajeel-Kosh was turned. The Brethren'
 | Place | The thing | Quest | What happens there | How the player knows it |
 |---|---|---|---|---|
 | Gideon | a large hall on Blackwood Way named the Topal Bay Company House, with Nuxal-Tei, Opilia and a strong room (one of the source city's larger halls, a door named for the Company) | joining; 1; reports through the line | The player signs on and takes jobs. | its door shows the name; the marker on the house |
-| Gideon | the Ruction Ring, a pit under the city with Drusus Faleria and a novice pit fighter (the record's Ruction Ring and its fixer) | 1. The Ruction Ring | The player wins a bout or buys Drusus's word. | Drusus speaks; the marker on the Ring |
-| Gideon | the town smith by the arena, who teaches the recipes (in the record) | 2; 6; 9; 12 | The player learns each recipe. | the marker on the smithy |
-| Teth-Kasa Station | two Brethren hands at a cache in the mangrove roots, with a crate of Company wine (the record's smuggler's cache) | 1. The Ruction Ring | The player fights them and takes the crate. | the marker on the roots; the crate is a named thing |
+| Gideon | the Ruction Ring, a pit under the city with Drusus Faleria and a novice pit fighter (a named addition, a pit set in one of the Ratway's halls, with the fixer placed in it) | 1. The Ruction Ring | The player wins a bout or buys Drusus's word. | Drusus speaks; the marker on the Ring |
+| Gideon | the town smith by the arena, who teaches the recipes | 2; 6; 9; 12 | The player learns each recipe. | the marker on the smithy |
+| Teth-Kasa Station | two Brethren hands at a cache in the mangrove roots, with a crate of Company wine (a placed crate in the mangrove roots) | 1. The Ruction Ring | The player fights them and takes the crate. | the marker on the roots; the crate is a named thing |
 | The Grey Heron | a hull with air inside, iron ingots in the hold and two Brethren salvors (the source wreck's interior) | 2. Iron from the Heron | The player fights the salvors and raises the iron. | the game names the wreck; the marker on the wreck |
-| Fort Silvermoth | Captain Hareel at the toll chain, the stockade with Kesh-Ulee (to be added, in the record) | 3. The Captain's Chain | The player gets the chain lifted. | Hareel speaks first; the marker on the chain |
-| Acra-Tiin | a wreckers' lamp on the dunes and the wreckers' cache (the record's cache; the lamp a placed lantern) | 4. Wreckers' Lights | The player kills the wreckers and takes the cache. | the marker on the dunes |
+| Fort Silvermoth | Captain Hareel at the toll chain, the stockade with Kesh-Ulee (the toll chain a named addition; the stockade a locked door in the yard) | 3. The Captain's Chain | The player gets the chain lifted. | Hareel speaks first; the marker on the chain |
+| Acra-Tiin | a wreckers' lamp on the dunes and the wreckers' cache (the cache a placed container; the lamp a placed lantern) | 4. Wreckers' Lights | The player kills the wreckers and takes the cache. | the marker on the dunes |
 | Fort Shellmoth | the Company's boatman on the quay, the *Leyawiin Pride* at anchor off the sea wall with a small boat at her side, boarders on the deck and in the hold, and Gallus in his cabin (Skyrim's Red Wave) | 5. Guarding the Leyawiin Pride | The player kills the boarders. | the ship's name on her deck door; the marker on the ship |
-| Ninth Shaft | smugglers and their quartermaster in the upper levels, iron veins, the store in the lower galleries (in the record) | 6. Iron of the Ninth Shaft | The player fights or buys off the smugglers and mines iron. | the marker on the mine |
-| Soulrest | the harbour smelter and the Imperial-quarter forge (in the record) | 6; 9; 12 | The player smelts and forges. | their look; the marker on each |
+| Ninth Shaft | smugglers and their quartermaster in the upper levels, iron veins, the store in the lower galleries | 6. Iron of the Ninth Shaft | The player fights or buys off the smugglers and mines iron. | the marker on the mine |
+| Soulrest | the harbour smelter and the Imperial-quarter forge | 6; 9; 12 | The player smelts and forges. | their look; the marker on each |
 | Arorha | the Company's boatman at the quay | 7. The Hollow Tide | He lands the player on Skeith Isle. | he speaks of the isle; the marker on the quay |
-| Hollow Tide Camp | the lookouts, the snares, Rajeel-Kosh at the bluff cave and his cache (in the record) | 7. The Hollow Tide | The player fights the smugglers and kills or turns Rajeel-Kosh. | the marker on the bluff cave |
-| Wrackmoth | outlaws in the yard, the captain in the gatehouse, the Legion forge (to be added, in the record), and a Company trader once taken | 8. A Post at Wrackmoth; 9; 12 | The player takes the fort and uses its forge. | the marker on the fort; the forge is in sight |
-| Old Goldseam | outlaws at the mouth, the chief in the hut at the shaft head, the flooded lower shafts, the gold veins (in the record) | 9. Gold of Old Goldseam | The player fights the outlaws and mines gold. | the marker on the mine |
-| Seafalls | the pilot-elder, who sells potions of Waterbreathing (the record's pilot-elder) | 10. The Septim Warship | The player learns where the wreck lies. | she speaks of the wreck; the marker on her house |
-| Wreck of the Resolute Crest | a hull with air inside, the drowned marines and captain, the Akaviri chest (the record's added interior) | 10. The Septim Warship | The player takes the chest. | the game names the wreck and the chest; the marker on the wreck |
-| Fort Swiftmoth | smugglers in the lower hall, their captain with the strongroom key, the strongroom with the scrolls (the record's locked strongroom off the lower hall) | 11. The Scroll Store | The player takes the scrolls. | the marker on the lower hall |
-| Blackdrift | scavengers at the portal, the iron vein near it, the sealed gallery with the overseers' gold (in the record) | 12. Armour for the Landing | The player mines iron and may take the gold. | the marker on the mine |
+| Hollow Tide Camp | the lookouts, the snares, Rajeel-Kosh at the bluff cave and his cache | 7. The Hollow Tide | The player fights the smugglers and kills or turns Rajeel-Kosh. | the marker on the bluff cave |
+| Wrackmoth | outlaws in the yard, the captain in the gatehouse, the Legion forge (the toll chain a named addition; the stockade a locked door in the yard), and a Company trader once taken | 8. A Post at Wrackmoth; 9; 12 | The player takes the fort and uses its forge. | the marker on the fort; the forge is in sight |
+| Old Goldseam | outlaws at the mouth, the chief in the hut at the shaft head, the flooded lower shafts, the gold veins | 9. Gold of Old Goldseam | The player fights the outlaws and mines gold. | the marker on the mine |
+| Seafalls | the pilot-elder, who sells potions of Waterbreathing (the pilot-elder placed in the village) | 10. The Septim Warship | The player learns where the wreck lies. | she speaks of the wreck; the marker on her house |
+| Wreck of the Resolute Crest | a hull with air inside, the drowned marines and captain, the Akaviri chest (the added interior) | 10. The Septim Warship | The player takes the chest. | the game names the wreck and the chest; the marker on the wreck |
+| Fort Swiftmoth | smugglers in the lower hall, their captain with the strongroom key, the strongroom with the scrolls (a side room of the source's lowest hall, given a locked door) | 11. The Scroll Store | The player takes the scrolls. | the marker on the lower hall |
+| Blackdrift | scavengers at the portal, the iron vein near it, the sealed gallery with the overseers' gold | 12. Armour for the Landing | The player mines iron and may take the gold. | the marker on the mine |
 | Olvani | the Company's boatman at the jetty | 13. The Landing | He carries the player to Aphon Isle. | the marker on the jetty |
-| Aphon Signal Tower | four Brethren lookouts in the base and on the top (in the record) | 13. The Landing | The player kills the lookouts. | the marker on the tower |
-| Bramman's Watch | the Brethren's crews on the landing and the stair, One-Eye in the view-house with her sea chest, Bar-Neeus at the tower on the water, the Company's sellswords and Gallus's crew on the landing (in the record) | 13. The Landing | The player takes the Watch. | the marker on the landing, then on the view-house |
-| Kelp-Mouth Cave | Selvo and the store crew in the dry chamber, the store chest in the flooded chamber with the letter's copy (in the record) | 14. The Store at Kelp-Mouth | The player takes the store and finds the letter. | the marker on the cave; the letter is a named thing |
-| Bramman's Watch | the view-house's bed, the Nine shrine, the captain's sea chest (in the record) | the ending | The Watch becomes the player's stronghold. | the journal; the view-house door bears the player's name |
+| Aphon Signal Tower | four Brethren lookouts in the base and on the top | 13. The Landing | The player kills the lookouts. | the marker on the tower |
+| Bramman's Watch | the Brethren's crews on the landing and the stair, One-Eye in the view-house with her sea chest, Bar-Neeus at the tower on the water, the Company's sellswords and Gallus's crew on the landing | 13. The Landing | The player takes the Watch. | the marker on the landing, then on the view-house |
+| Kelp-Mouth Cave | Selvo and the store crew in the dry chamber, the store chest in the flooded chamber with the letter's copy | 14. The Store at Kelp-Mouth | The player takes the store and finds the letter. | the marker on the cave; the letter is a named thing |
+| Bramman's Watch | the view-house's bed, the Nine shrine, the captain's sea chest | the ending | The Watch becomes the player's stronghold. | the journal; the view-house door bears the player's name |
 | Bramman's Watch | the post's three stages of buildings and people at the landing | after the ending | The post grows as the player brings timber, iron and signets. | their look; the post's people speak of the Company |
 
 `plot_check` runs with `--opens-at D2`. The place database has no place that reads D1 on this coast: outside the

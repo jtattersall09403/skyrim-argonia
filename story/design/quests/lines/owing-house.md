@@ -7,7 +7,7 @@ page is its background. In speech its people are "House Ulvarys".
 **Words.** *The Owing*: the marsh's sentence, months of owed work in place of a cell. *A work roll*: the sheet that
 names a person under an Owing, the months set on them and who has bought them. *The great roll*: Aldyne Ulvarys's
 own book of every Owing her family has bought. *Catchers*: the family's hired fighters, who bring back people who
-run. *The Archwardens*: the wardens of the ruling party, the Xeech-Leel, whose garrisons keep the old Imperial forts,
+run. *The Archwardens*: the wardens of the ruling party, the Xeech-Leel, whose garrisons man the old Imperial forts,
 roads and tolls.
 
 ## Where it comes from
@@ -40,12 +40,12 @@ the tolls. An Owing can be sold on, and nothing in custom forbids a buyer of any
 So House Ulvarys buy. They pay the ex-Archein assessors and the toll wardens in silver for Owings that have grown past
 paying, and they own the months from then on. Thorn's Vicecanons take the family's taxes and its gifts, and Thorn's
 guards look away (`thorn.md:6-8`). Because the family has Argonian and Dunmer debtors on the same roll, it can say it
-is not a Dunmer family owning Argonians, and some Argonian families who keep Owings of their own agree with it.
+is not a Dunmer family owning Argonians, and some Argonian families who buy Owings of their own agree with it.
 
 ## Who leads it
 
 **Aldyne Ulvarys** is the matriarch. She keeps the great roll in her own hand and lives at the family's estate at
-Julo, far from the city's eyes. She wants the family's fortune kept, and the Owing left as it is. She believes what
+Julo, far from the city's eyes. She wants the family's fortune to last, and the Owing left as it is. She believes what
 she says: that without the Owing the province has no law at all, and that what came after it would be worse
 (`topics/labour-and-bondage.md:154-159`).
 
@@ -57,17 +57,20 @@ generations. He wants his pay and a name for never losing a runaway. House Ulvar
 cannot replace him.
 
 **Llaros Seloth** was the family's assessor for ten years and set many of the months in the great roll. Aldyne put
-him out for skimming. He now keeps the Chainbreakers' safe house in Thorn, which his family has kept since the Twin
+him out for skimming. He now keeps the Chainbreakers' safe house in Thorn, which his family has run since the Twin
 Lamps' days, and lies to the band about why he left. He still tells House Ulvarys' factor where safe houses are, and
 the factor pays him in gold for it.
 
 ## Where it sits
 
-The family's seat in Thorn is its counting-house, a saltrice store by the quay (Lilmoth's Plantation Storehouse
-interior, which Thorn borrows). Its country seat is the estate at Julo, a hamlet of stone-footed farmhouses where the
-river braid enters Lake Ulaish, with a ferry and saltrice paddies. A Naga band hunts the delta and crocodiles lie in
+The family's seat in Thorn is its counting-house, a saltrice store by the quay (Thorn's own source has only a ship
+interior, so the store is the Plantation Storehouse of Lilmoth from King of the Murkmire, a raised timber hall of
+saltrice baskets, dressers and partition rooms, which Thorn borrows). Its country seat is the estate at Julo, a hamlet where the river braid enters Lake Ulaish (its source is Honningbrew
+Meadery from Skyrim, a hamlet of farm buildings with a meadery hall, a boilery and a cellar basement, whose Nordic
+walls the record replaces with stone footings and reed and mud; the ferry and the saltrice paddies are added by the
+record). A Naga band hunts the delta and crocodiles lie in
 the braid, so the estate is hard to reach (Julo's place record, strength D4). Julo's record does not yet name the
-estate as House Ulvarys'. The family's factor has a stall in Stormhold's old Ayleid compound.
+estate as House Ulvarys'. The family's factor has a stall in Stormhold's old Ayleid compound (the record gives a merchant there, in white Ayleid stone added to Markarth, Stormhold's source city).
 
 ## How it makes the Owing pay
 
@@ -86,9 +89,9 @@ is one such, carrying three carters the fort's wardens set Owings on and sold to
 
 ## Its fighters
 
-The family keeps catchers, swords and bows hired from both sides of the border, led by Ah-Kesh. Two or three stand at
+The family pays catchers, swords and bows hired from both sides of the border, led by Ah-Kesh. Two or three stand at
 each place where its debtors work. It pays the wardens of some toll posts and the garrison of Fort Gysilla to lock
-up runaways for it. Its barge carries a crew of four and a master. At Julo it keeps its largest band, round Aldyne.
+up runaways for it. Its barge carries a crew of four and a master. Its largest band is at Julo, round Aldyne.
 
 ## Its kin
 

@@ -919,7 +919,7 @@
 {"place_id":"outpost-22-m77","seq":6,"give_kind_id":"combat-foes","detail":"Root-Folk hunters who attack strangers on the trap line, 2","count":1,"reward_kind_id":"treasure","setting":"provoked"}
 {"place_id":"outpost-22-m77","seq":7,"give_kind_id":"treasure","detail":"a hunter's stash behind the egg-racks","count":1}
 {"place_id":"outpost-23-m64","seq":0,"give_kind_id":"trader-innkeeper","detail":"the guards sell water, dried fish and bread","count":1}
-{"place_id":"outpost-23-m64","seq":1,"give_kind_id":"free-bed","detail":"a bench on the watch house's stilt platform","count":1}
+{"place_id":"outpost-23-m64","seq":1,"give_kind_id":"free-bed","detail":"a bench on the raised watch platform","count":1}
 {"place_id":"outpost-23-m64","seq":2,"give_kind_id":"combat-creature","detail":"a pair of giant snakes that lair beside the well","count":1,"reward_kind_id":"treasure"}
 {"place_id":"outpost-23-m64","seq":3,"give_kind_id":"treasure","detail":"the abandoned carver's cart up the track: a locked chest and carved stone pieces","count":1}
 {"place_id":"outpost-25-m71","seq":0,"give_kind_id":"trader-hunter","detail":"the elder buys hides and sells feathers and smoked meat","count":1}
@@ -928,7 +928,7 @@
 {"place_id":"outpost-25-m71","seq":3,"give_kind_id":"combat-creature","detail":"a pair of giant snakes on the mesa lip","count":2,"reward_kind_id":"treasure"}
 {"place_id":"outpost-25-m71","seq":4,"give_kind_id":"treasure","detail":"the snakes' lair under the lip: bones and a dead traveller's purse","count":1}
 {"place_id":"outpost-28-m86","seq":0,"give_kind_id":"grindstone","detail":"a grindstone beside the spear rack","count":1}
-{"place_id":"outpost-28-m86","seq":1,"give_kind_id":"free-bed","detail":"spear-watch mats in the hut","count":1}
+{"place_id":"outpost-28-m86","seq":1,"give_kind_id":"free-bed","detail":"spear-watch mats in the tent","count":1}
 {"place_id":"outpost-28-m86","seq":2,"give_kind_id":"follower","detail":"the watch-leader of Khiar, a spear fighter who knows the road","count":1}
 {"place_id":"outpost-28-m86","seq":3,"give_kind_id":"combat-foes","detail":"smuggler bands on the road","count":4,"reward_kind_id":"treasure","setting":"nearby","spot":"the Renhu-Seafalls road beyond the bar","bearing_deg":47.0,"distance_m":115.0}
 {"place_id":"outpost-28-m86","seq":4,"give_kind_id":"treasure","detail":"the smugglers' cache by the road","count":1,"setting":"nearby"}
@@ -1498,7 +1498,7 @@
 {"place_id":"velothi-ruin-28-m82","seq":4,"give_kind_id":"treasure","detail":"altar niches and coffers in the lower halls","count":3}
 {"place_id":"velothi-ruin-28-m82","seq":5,"give_kind_id":"spell-tome","detail":"one Illusion tome (Adept) left in an upper niche","count":1}
 {"place_id":"velothi-ruin-28-m92","seq":0,"give_kind_id":"combat-foes","detail":"ancestor ghosts and the smuggling crew, 6","count":1,"reward_kind_id":"boss-chest"}
-{"place_id":"velothi-ruin-28-m92","seq":1,"give_kind_id":"combat-boss","detail":"the smuggling crew's captain in the sea-cave","count":1,"reward_kind_id":"boss-chest"}
+{"place_id":"velothi-ruin-28-m92","seq":1,"give_kind_id":"combat-boss","detail":"the smuggling crew's captain on the upper tier, beside the captive","count":1,"reward_kind_id":"boss-chest"}
 {"place_id":"velothi-ruin-28-m92","seq":2,"give_kind_id":"boss-chest","detail":"boss chest","count":1}
 {"place_id":"velothi-ruin-28-m92","seq":3,"give_kind_id":"treasure","detail":"the smugglers' cache in the sea-cave","count":2}
 {"place_id":"velothi-ruin-28-m92","seq":4,"give_kind_id":"harvest-common","detail":"sea-bird eggs from the roof","count":1}

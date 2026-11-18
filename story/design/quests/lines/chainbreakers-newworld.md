@@ -3,9 +3,9 @@
 This page is the Chainbreakers' plot, written on 2026-11-16 to the owner's words in
 [the factions overhaul](../../../../docs/phases/new-worldspace-plan/nw-05c-factions-overhaul.md) and revised on
 2026-11-17 to his story explorer notes and his names reply. Every quest is set in a place whose source holds what the
-quest needs (`python3 -m tools.newworld.place_card "<place>" --mined` shows a place and its sources). Where a quest
-relies on something major of a place, an item or a creature, the text says in brackets that it was checked and how
-it is made. Everything is inside the quest ceiling ([quest-system](../../../../.claude/skills/quest-system/SKILL.md)),
+quest needs. Where a quest relies on something major of a place, an item or a creature, the text says in brackets
+which source place gives it and how we know: what that source's buildings, interiors and placed pieces are, or
+that the thing is added from a named mod or from Skyrim. Everything is inside the quest ceiling ([quest-system](../../../../.claude/skills/quest-system/SKILL.md)),
 with the additions listed in section 11. The family the Chainbreakers fight has its own page:
 [House Ulvarys](owing-house.md).
 
@@ -13,10 +13,9 @@ with the additions listed in section 11. The family the Chainbreakers fight has 
 that work. *A work roll*: the written sheet that names a person under an Owing, the months set on them and who has
 bought them. *House Ulvarys*: a Dunmer merchant family of Thorn that buys Owings and works the people under them for
 profit; "House Ulvarys" in speech. *Catchers*: House Ulvarys' hired fighters, who bring back people who run. *A safe
-house*: a bed, a chest and a friend of the Chainbreakers, kept hidden in a town or a post. *Washed out*: the faded
+house*: a bed, a chest and a friend of the Chainbreakers, hidden in a town or a post. *Washed out*: the faded
 colour of an Argonian kept for years away from their Hist. *Vicecanon*: a city magistrate of Stormhold or Thorn,
-chosen by the city. *The Archwardens*: the wardens of the ruling party, the Xeech-Leel, whose garrisons keep the old
-Imperial forts, roads and tolls. *The Twin Lamps*: the secret society of Morrowind that hid runaway slaves and led
+chosen by the city. *The Archwardens*: the wardens of the ruling party, the Xeech-Leel, whose garrisons man the old Imperial forts, roads and tolls. *The Twin Lamps*: the secret society of Morrowind that hid runaway slaves and led
 them to freedom, before slavery there ended.
 
 ## 1. What the Chainbreakers are
@@ -85,7 +84,7 @@ Lamps worked in secret against a law; Mere-Halu wants a ruling that makes the la
 
 **Who carries it now.** Mere-Halu keeps the two lamps in the Well-Room. Her grandmother's grandmother was one of the
 runaways the Twin Lamps led out of Tear, and Mere-Halu was born owing in Thorn's saltrice fields all the same.
-Llaros Seloth, Tirasa's great-nephew, keeps the Thorn safe house his family has kept since the Twin Lamps' days,
+Llaros Seloth, Tirasa's great-nephew, keeps the Thorn safe house his family has run since the Twin Lamps' days,
 and is proud of it (section 4 says what he hides).
 
 **The history and the name, asked.** From joining, the player can ask Llaros Seloth in Thorn about "the
@@ -170,8 +169,8 @@ which boats from Thorn and Archon serve). Rumours heard later add the name of th
 
 **The work roll.** At Saltmeadow a washed-out Argonian herds the guar. He is Jeen-Wei, and he speaks first. He tells
 the player his story: his Owing was bought by a Thorn family and sold on to this farm, and it has grown every season.
-His roll is in the farmhouse (checked: the source, Farmhouse of Journey to Baan Malur, has a farmhouse interior and a
-storehouse, with eighteen containers between them; the roll lies in the chest by the householder's bed). He says the
+His roll is in the farmhouse (the source place is the Farmhouse of Journey to Baan Malur, a small farm whose farmhouse interior has a double bed
+and whose storehouse has barrels and urns but no chest, so the chest by the householder's bed is added from Skyrim). He says the
 player looks as if they know what a roll is. The journal says: "Get Jeen-Wei's roll from the farmhouse. Take it
 quietly, frighten the householder into giving it up, or fight him for it." The marker leads to the farmhouse door,
 not to the chest. Every way is open to a new character.
@@ -197,26 +196,32 @@ other line shuts it: House Ulvarys cannot be joined.
 
 ## 7. The chain of safe houses, and getting about
 
-The Chainbreakers keep a safe house in every region that has a town. Each is a bed, a chest the player may use and a
+The Chainbreakers have a safe house in every region that has a town. Each is a bed, a chest the player may use and a
 keeper who will not take their coin, marked by two lanterns. The player may sleep in the first two from joining, and
-in all of them from the rank of Breaker (quest 9). Each is a small addition to its place: a bed, a chest, a keeper
-and two lanterns, in a room the place already has.
+in all of them from the rank of Breaker (quest 9). Each is a small addition to its place: a bed, a chest, a keeper and two lanterns, put in a room that one of the place's source interiors gives, named in the table.
 
 | Place | The safe house |
 |---|---|
 | Stormhold | the Well-Room in the Silyanorn tunnels, the seat, with Mere-Halu |
-| Thorn | Llaros Seloth's house in the Argonian timber quarter |
-| Tenmal | the back room of the long wayhouse |
-| Ranvos Landing | a room of the roadhouse, kept by the ferry-keeper's family (after quest 5, if the roll is burned) |
+| Thorn | Llaros Seloth's house in the Argonian timber quarter (the Lodging House interior of Lilmoth, which Thorn borrows) |
+| Tenmal | the back room of the long wayhouse (the Guides' Quarters of Seekhat Yol, which has four beds and partition rooms) |
+| Ranvos Landing | a bed of the roadhouse, run by the ferry-keeper's family (after quest 5, if the roll is burned) |
 | Ysan | a mat and a chest under the reed roof of a loading shed on the landing (Ysan has no interior) |
-| Redclay Watch | a mat by the spear-watch's hut, until quest 8 |
-| Inoja | a room at the stilted inn |
-| Ayiin | a stone house of the Stone-Sleepers |
-| Truowa | a merchant's loft on the lake shore |
-| Alten Corimont | a room above the town docks, where the raft-masters winter |
-| Helstrom | a quiet room by the river fork |
-| Gideon, Soulrest, Archon, Lilmoth, Blackrose | a room in each, kept for people the Brethren have not yet carried out |
-| Gul-Tej, Korydon, Jarecai, Umpholo | a room in each |
+| Redclay Watch | a mat by the spear-watch's scale-hide tent, until quest 8 |
+| Inoja | a room at the inn raised on posts over the water (the Lodging House interior of Alten Meerhleel, a lodging hall built of platform posts and walkways) |
+| Ayiin | a stone house of the Stone-Sleepers (the elder's hut interior of Seekhat Yol, set in a house with added squared stone walls) |
+| Truowa | a room of a merchant's house on the lake shore (a merchant manor interior of Lilmoth) |
+| Alten Corimont | a room of the lodging house by the docks, where the raft-masters winter (the Lodging House interior of Alten Meerhleel) |
+| Helstrom | a quiet room off the market (one of the Argonian house interiors of Black Marsh & Valenwood's Helstrom, the town's own source) |
+| Gideon | a room of Haelga's Bunkhouse (a Riften interior), set aside for people the Brethren have not yet carried out |
+| Soulrest | a room of a house of Solitude (Erikur's house), set aside in the same way |
+| Archon | a room of a dockhouse of Baan Malur, set aside in the same way |
+| Lilmoth | a room of Mergua's Bunkhouse (Lilmoth's own interior), set aside in the same way |
+| Blackrose | a room of a bunkhouse of Lilmoth (lent for Blackrose's stilt houses), set aside in the same way |
+| Gul-Tej | a room of the Vilemyr Inn (an Ivarstead interior) |
+| Korydon | a room of one of the sixteen huts of Shedet |
+| Jarecai | a room of a house of Nyhus (Lyka's house) |
+| Umpholo | a room of the carpenter's house of Root Whisper Village |
 
 **Getting about.** The line has two homes, Thorn in the east and Stormhold in the north-west, and the lake between
 them in the south. Every quest place lies within a short walk of a boat or rootworm stop of the travel network, and
@@ -264,15 +269,14 @@ faction's first ranks. The last is one of two, and the player is told before the
 **1. The Salt Shed** (Thorn, the grassland border city; Coldbrine Mine, a salt working of Thorn's field-owners). In
 Thorn, Llaros Seloth tells the player what House Ulvarys is and why he left them, in his version. His first job is
 close by, 377 m by road from Thorn's quay. At Coldbrine Mine six diggers work under Owings House Ulvarys bought. The
-overseer locks them in the bunk shed each night and carries the key (checked: the source, Gloombound Mine, has one
-interior of timbered galleries; the bunk shed is added as a reed-roofed hut with a Novice lock, beside the record's
-carts and salt blocks). The overseer speaks first at the headframe. An easy Speech check (15) makes him give up the
+overseer locks them in the bunk shed each night and carries the key (the source place is Gloombound Mine from Skyrim, whose one interior is a mine of timbered galleries and which has no
+huts, so the bunk shed is added as a small reed-roofed hut with a Novice lock, like the reed-roofed carts and salt
+blocks the record adds). The overseer speaks first at the headframe. An easy Speech check (15) makes him give up the
 key. If it fails, he and two hired hands fight, and they are weak. By night a quiet player picks the shed's Novice
 lock while the overseer sleeps in his hut. One digger, Huzei, will not go until his father's bones are brought out to
 be staked. His father died in the collapse of the old shaft, and an old giant mudcrab (Skyrim's giant mudcrab) dragged
-his body into its burrow by the walled-off gallery (checked: the record gives the walled gallery, the brine pools and
-the old crab; the second source, Whistling Mine, serves as the older shaft, with the crab's burrow and the boss chest
-in it). The journal says "search the old shaft for the bones" and the marker leads to the shaft's mouth. The player
+his body into its burrow by the walled-off gallery (the older shaft is the interior of Whistling Mine from Skyrim, a mine of timbered galleries and cave halls; the
+walled gallery, the brine pools and the crab are the record's own additions). The journal says "search the old shaft for the bones" and the marker leads to the shaft's mouth. The player
 kills the crab or slips past it, and brings out the bones in a sack. (House Cardruhn's 1 and the Sisei-Xul's 3 also
 reach the walled gallery.) The diggers fade and are gone. *Skills:* any combat skill, Sneak, Lockpicking, Speech to
 intimidate. *Reward:* 100 gold, five lockpicks and the crab's boss chest. *Leads on:* Llaros says the player has
@@ -280,14 +284,15 @@ earned a meeting with the band's leader. He gives them the Well-Room's key, mark
 way: the border road west, or the boats round by Archon and Helstrom.
 
 **2. The Catchers Below** (Stormhold, the northern gate city). Mere-Halu meets the player in the Well-Room and tells
-them what the band is (checked: the Well-Room is in Stormhold's record as an addition, "the sunken Ayleid well-room
-under the tunnels", built from the white Ayleid stone the record names; the source, Markarth, gives Nchuand-Zel's
-halls as the Silyanorn tunnels and crystal galleries). Two lamps hang over her table, and she will tell the player
+them what the band is (the source place is Markarth from Skyrim, whose mine and the dwarven ruin of Nchuand-Zel give the Silyanorn tunnels
+and crystal galleries; Markarth holds no well-room, so Stormhold's record adds "the sunken Ayleid well-room under the
+tunnels" in white Ayleid stone). Two lamps hang over her table, and she will tell the player
 whose they were. Her first job is in the tunnels. A runaway, Mim-Teeus, hides in the crystal galleries, and two of
 House Ulvarys' catchers are hunting her there. The journal says "find Mim-Teeus in the crystal galleries" and the
 marker leads to the galleries. The catchers start calm. A Speech check of 20 sends them off with a warning. If it
 fails or the player draws first, they fight. A quiet player goes round by a side gallery and reaches Mim-Teeus
-unseen (checked: Nchuand-Zel's interiors have more than one gallery between their doors). She knows the way out and
+unseen (Nchuand-Zel in Markarth is five interiors of halls and galleries, an excavation site, the ruin, its quarters, an
+armory and a control hall, so there is more than one way through). She knows the way out and
 needs only to be told where the catchers stand. Mim-Teeus thanks the player. The screen fades, and she is gone.
 *Skills:* any combat skill, Sneak, Speech to intimidate. *Reward:* 100 gold. *Leads on:* Mere-Halu has had word from
 Tenmal, where a delver got a message out of the crystal pit. The journal marks the wayhouse at Tenmal, 653 m on foot
@@ -300,9 +305,8 @@ pit-boss speaks first at the adit. A Speech check of 25 frightens him into openi
 his foreman fight. A quiet player searches the pit-boss's hut while he is at the face and takes the wall door's key
 from his chest (Apprentice lock; the journal says "search the pit-boss's hut"). Either way, past the door are the
 spiders and their brood-mother (Black Marsh & Valenwood's giant forest spider, the largest), and the three delvers
-holding a gallery against them (checked: the source, Whistling Mine, has one interior of timbered galleries; the
-record walls one gallery off with a wall piece, and a locked timber door of Skyrim's mine pieces is added in that
-wall). The player kills the brood-mother or gets the delvers to the door past her. They fade and are gone. *Skills:*
+holding a gallery against them (the galleries are the one interior of Whistling Mine from Skyrim, timbered galleries and cave halls; the record walls
+one gallery off with a wall piece, and a locked timber door of Skyrim's mine pieces is added in that wall). The player kills the brood-mother or gets the delvers to the door past her. They fade and are gone. *Skills:*
 any combat skill, Block, Sneak, Lockpicking, Speech to intimidate. *Reward:* 150 gold and a cut Stormhold Crystal ring
 (Skyrim's amethyst ring, under our name). *Leads on:* in the pit-boss's chest is a letter from House Ulvarys' overseer
 at Vandrel Farm, who has a Dunmer family of the valley under an Owing. Mere-Halu reads it and marks the farm, 273 m
@@ -312,13 +316,12 @@ from Stormhold's quay.
 Dunmer, tenants of the city's farm-holders, and House Ulvarys bought their Owing as well. In the saltrice country
 Dunmer and Argonian labourers are bound under the same roll (`topics/labour-and-bondage.md:132`). House Ulvarys'
 overseer, Fenas Ulvarys, the matriarch's nephew, lodges at the farm with two catchers. He works the family's son,
-Saveri, in the fields by day and locks him in the barn by night (checked: the second source, Farmhouse of Journey to
-Baan Malur, gives its storehouse as the stone barn with its loft; the barn door is set to an Apprentice lock). Fenas
+Saveri, in the fields by day and locks him in the barn by night (the stone barn is the storehouse interior of the Farmhouse of Journey to Baan Malur, a hall of hay bales,
+barrels and shelves with no loft, and its door is set to an Apprentice lock). Fenas
 speaks first and is amused. He says a Dunmer house will not be told its business by a stranger. A Speech check of 30
 frightens him off the farm. If it fails he and the catchers fight, and he yields when he is badly hurt and gives up
 the roll. By night a quiet player picks the barn's lock while the catchers drink in the farmhouse. Crocodiles lie in
-the irrigation ditch (Black Marsh & Valenwood's crocodile; the record's danger). Saveri fades and is gone, and the
-family keep their farm free. *Skills:* any combat skill, Sneak, Lockpicking, Speech to intimidate. *Reward:* 200
+the irrigation ditch (Black Marsh & Valenwood's crocodile; the record's danger). Saveri fades and is gone, and the family farm their land free. *Skills:* any combat skill, Sneak, Lockpicking, Speech to intimidate. *Reward:* 200
 gold. *Leads on:* Saveri's mother says House Ulvarys pays a ferry-keeper on the road to Helstrom, and runaways who reach
 his landing are never seen again. Mere-Halu says that now House Ulvarys knows the band's name they will answer, and the
 band needs a chain of houses before they do. Her first link is that ferry. She marks Ranvos Landing, 854 m on foot
@@ -326,19 +329,17 @@ from Stormhold's quay.
 
 **5. The Ferryman's Price** (Ranvos Landing, a ferry stage on the road toward Helstrom). The ferry-keeper, Gulu-Tasa,
 is to be the next link. Runaways who reach him have been vanishing. Two catchers lodge in his roadhouse and wait for
-the next (checked: the source, Velothi Victuals of Nyhus, has one interior, which serves as the roadhouse with its
-room). Gulu-Tasa speaks first. A Speech check of 35 frightens him into the truth: House Ulvarys bought his own family's
+the next (the roadhouse is the one interior of Velothi Victuals from Nyhus, a Dunmer inn hall with four beds, tables and a
+cooking pot, so it gives the room; the chest in the room is added from Skyrim). Gulu-Tasa speaks first. A Speech check of 35 frightens him into the truth: House Ulvarys bought his own family's
 Owing, and he pays it in runaways. If it fails, he says nothing and the catchers come out to see who is asking, and
 fight. A quiet player searches the roadhouse room while the catchers sleep (the journal says "search the roadhouse")
 and finds, in the chest there (Apprentice lock), the roll that binds the ferry family and the catchers' orders. Either
 way the player now knows. *The choice, as the player meets it:* the journal says "decide what to do with Gulu-Tasa".
 The player speaks to him, and he speaks first: "Now you know. What will you do?" The player has two answers.
 
-- *"Burn your family's roll."* The player burns it before him (the game takes it from the inventory). Gulu-Tasa keeps the
-  safe house honestly, the ferry and the roadhouse are free to the player from then on, and his family stand at the
+- *"Burn your family's roll."* The player burns it before him (the game takes it from the inventory). Gulu-Tasa runs the safe house honestly, the ferry and the roadhouse are free to the player from then on, and his family stand at the
   landing as freed people (section 9).
-- *"Mere-Halu will judge you."* The screen fades and Gulu-Tasa is gone to the Well-Room. The band keeps the landing
-  without him. Mere-Halu pays the player the ferry's takings, 150 gold. The roadhouse trader is closed to the player,
+- *"Mere-Halu will judge you."* The screen fades and Gulu-Tasa is gone to the Well-Room. The band takes over the landing without him. Mere-Halu pays the player the ferry's takings, 150 gold. The roadhouse trader is closed to the player,
   and the family's help in the main quest is lost.
 
 The predators in the sedge and the Naga watching the road make the way there dangerous (Here There Be Monsters -
@@ -352,9 +353,9 @@ east, then 511 m by road from the boat stop at Tsonac.
 **6. The Toll Chain** (Thornway Watch, a toll post on the Tsonac track). The four wardens of the post take a toll from
 the stone carts, and when a carter cannot pay they set an Owing on him "for damage to the way". They sell those
 Owings to House Ulvarys for silver (`topics/labour-and-bondage.md:134`). The carter Romi-Tei blocks the chain with his
-cart, because the wardens have his son in a cage on the watch house's platform (checked: the record's hook gives the
-carter who blocks the chain; no source has a watch house interior, so the cage is added: Skyrim's iron prison bars on
-the stilt platform, with an Adept lock). The sergeant speaks first. A Speech check of 40 makes him hand over the son's
+cart, because the wardens have his son in a cage on the post's raised platform (no source has a watch house, and the nearest source, Ree-An-Wo from King of the Murkmire,
+has cypress scaffold platforms on posts, with ramps and scale-hide tents but no stilt house, so the post is such a
+platform with a tent on it, and the cage is added as Skyrim's iron prison bars with an Adept lock). The sergeant speaks first. A Speech check of 40 makes him hand over the son's
 roll and open the cage, out of fear that his captain at Fort Thornmoth learns he has kept House Ulvarys' silver for
 himself. If it fails, the wardens fight. Fort Thornmoth remembers it: its quartermaster will not trade with the
 player again. By night two of the wardens sleep, one stands at the chain, and the cage has an Adept lock. Giant
@@ -367,11 +368,11 @@ word comes by the Thorn safe house: the journal marks the keeper at Ysan, 539 m 
 **7. Out by Sea** (Ysan, a Stone-Sleeper landing; Bala Karag, a ruined Velothi stronghold on a rocky island). The
 Brethren carry hunted people out of the province by sea, and their crew bring a boat to Bala Karag's causeway after
 dark when a signal fire burns. At Ysan, a landing where the quarrymen turn away any trader who asks after labour, the
-safe house's keeper, Oleeta, tells the player the signal. Bala Karag lies 314 m over the water from Thorn (checked: the
-record adds a stone causeway and a broken tower of Dunmer pieces; the signal brazier is added at the causeway's
-island end, Skyrim's brazier). On the island the four runaways have hidden in the upper halls among the Velothi dead
-(checked: the source, Redeyn Ancestral Tomb of Journey to Baan Malur, has one large interior of tomb halls and
-niches). The catchers came first and camp at the causeway's fire. There is no talking to them here: they are hostile
+safe house's keeper, Oleeta, tells the player the signal. Bala Karag lies 314 m over the water from Thorn (Bala Karag's main source, the ruin near Dunmeth Pass from Journey to Baan Malur, has no interior, so the record adds a
+stone causeway and a broken tower of Dunmer pieces, and the signal brazier is added at the causeway's island end,
+Skyrim's brazier). On the island the four runaways have hidden in the upper halls among the Velothi dead
+(the halls are the one large interior of the Redeyn Ancestral Tomb from Journey to Baan Malur, which has tomb halls,
+niches, ash pits and braziers). The catchers came first and camp at the causeway's fire. There is no talking to them here: they are hostile
 from the start. The player fights them on the causeway, shoots them from the rocks above it, or slips past their fire
 and into the ruin. Inside, the ghosts and skeletons of the upper halls (Skyrim's ghosts and skeletons, as the record
 gives) stand between the player and the runaways. The journal says "find the runaways in the upper halls". The player
@@ -383,13 +384,13 @@ Ysan sends word that a runaway who reached the Aroxhu spear-watch has seen the g
 Watch: the boat from Thorn to Seafalls, then 652 m by road.
 
 **8. Hold the Watch** (Redclay Watch, a mound-top spear-post on the Seafalls road). Tumma-Ra ran from House Ulvarys'
-estate at Julo, where he carried the great roll's chest from boat to cellar. The spear-watch shelters him by its hut.
+estate at Julo, where he carried the great roll's chest from boat to cellar. The spear-watch shelters him by its tent.
 The watch-leader tells the player that House Ulvarys' fighters were seen on the Renhu road and will come at nightfall,
 an hour away. The journal gives the player that hour. The watch-leader gives them six rune scrolls (Skyrim's Fire Rune
 scroll, and Paralysis Rune scrolls of the spell our spell groups list under Destruction), two bundles of arrows and
-the mound's top, which looks down on the road and the bar (checked: the record adds the mound top and the bar across
-the road to the camp of near Loreisian, King of the Murkmire; the hut has no interior and no roof to stand on, so the
-player shoots from the mound). The player sets the runes on the road and the mound's path, chooses their ground and
+the mound's top, which looks down on the road and the bar (the record adds the mound top and the bar across the road; the watch hut is a scale-hide tent of the kind
+Ree-An-Wo from King of the Murkmire has, so it has no interior and no roof to stand on, and the player shoots from
+the mound). The player sets the runes on the road and the mound's path, chooses their ground and
 waits. When the hour is up, Ah-Kesh's fighters come: eight swords and bows of House Ulvarys, switched on at the road's
 far end out of sight. The quest is won when every attacker is dead. If Tumma-Ra dies, the quest fails. The player is
 then put out of the Chainbreakers, as the owner asked. The journal says so, and a reload is the way back. The
@@ -403,9 +404,9 @@ lake for House Ulvarys. The journal marks the fort, 358 m over the water from th
 **9. The Island Keep** (Fort Gysilla, an Archwarden toll fort on an island of Lake Ulaish). The garrison, of old
 Archein families, takes the toll on the lake (the Eelskins' 8, The Toll Chest, robs its store) and takes the
 Ulvarys' coin to lock up runaways caught on the lake until House Ulvarys' barge collects them. Three are in a lock-room
-of the barracks now (checked: the source, Fort Tulis of Journey to Baan Malur, gives the Imperial walls and keep;
-Cracked Tusk gives two keep interiors, the barracks and the bricked cellar; the lock-room is a room of the barracks
-with its door set to an Adept lock). The way in is across the water. The Archein captain speaks first at the gate and
+of the barracks now (the fort's walls and keep are Fort Tulis from Journey to Baan Malur, nine Imperial buildings with no interior; the
+rooms inside come from Cracked Tusk of Skyrim, an Imperial fort whose two interiors are a keep hall and a vault of
+barred portcullis gates, so the lock-room is a barred chamber of the vault with its door set to an Adept lock). The way in is across the water. The Archein captain speaks first at the gate and
 refuses. A Speech check of 50 frightens him into opening the lock-room, because he fears the Archwardens at Stormhold
 will learn he hires out the fort's rooms for private coin. If it fails, the garrison fights. A quiet player swims to
 the island by night, climbs the curtain wall where nobody walks it (FreeClimb, or a spell), and picks the lock-room's
@@ -417,13 +418,13 @@ water.
 
 **10. The Lantern on the Lake** (Marzai, a clay-mound village on the lake's north-east shore). The ferryman at Marzai
 has seen a lantern on the lake at night where no boat should be (the record's hook). It is House Ulvarys' barge, moored
-off the shore below the kilns, with five held workers in its hold (checked: not in the sources; added as the barge
-the main quest's opening uses, Black Marsh & Valenwood's Imperial ship with its hold cell, moored and still). The
+off the shore below the kilns, with five held workers in its hold (Marzai's sources hold no barge, so it is added: the Imperial ship of Black Marsh & Valenwood with its furnished
+hold, the same ship the main quest's opening uses at Ashgate Landing, moored and still). The
 barge carries a crew of four and a Dunmer master. The master stands on the landing by day and speaks first. A Speech
 check of 55 frightens him into opening the hold. If it fails, the master and his crew fight on the deck. The quiet way
 is to swim out past the slaughterfish below the kilns by night (Skyrim's slaughterfish; the record's danger), climb
 aboard at the stern and pick the hold's Expert lock while the crew sleep forward. The five fade and are gone. One,
-Weeta-Lan, says the barge's next stop is Julo, where House Ulvarys keeps its fighters, and that their catch-captain has
+Weeta-Lan, says the barge's next stop is Julo, where House Ulvarys posts its fighters, and that their catch-captain has
 camped at the old Calvian Waystation on the northern road, hunting Mere-Halu. *Skills:* any combat skill, Sneak,
 Lockpicking, Speech to intimidate. *Reward:* 350 gold and the master's sword. *Leads on:* Mere-Halu says that before
 they go for Julo they need to know what House Ulvarys knows of them. Their letters are in their counting-house in Thorn.
@@ -431,9 +432,10 @@ The journal marks it.
 
 ### Act III: the great roll
 
-**11. The Counting-House** (Thorn). House Ulvarys keeps its counting-house in a saltrice store by the quay (checked:
-Thorn's source has one interior, a ship; the city borrows interiors from Lilmoth of King of the Murkmire; the
-Plantation Storehouse serves as the counting-house, with the factor's room in it). A night break-in is the only way:
+**11. The Counting-House** (Thorn). House Ulvarys has its counting-house in a saltrice store by the quay (Thorn's own source,
+Thorn of Black Marsh North, has only a ship interior, so the store is the Plantation Storehouse of Lilmoth from King
+of the Murkmire, a raised timber hall of saltrice baskets, dressers and partition rooms, and one of its rooms is the
+factor's). A night break-in is the only way:
 the store is in the city, under the city's law, and a fight there brings the guards. The player picks the front door's
 Expert lock at night, or walks in by day while the store is open and hides until it shuts. Two watchmen walk the
 stacks. The journal says "search the factor's room" and the marker leads to the room. A player who is seen can
@@ -447,7 +449,7 @@ house in Thorn. She sends the player to break the catch-captain: the boats round
 Jal-Veesa, 91 m from the waystation.
 
 **12. The Catch-Captain** (Calvian Waystation, a ruined Imperial road station north of Jal-Veesa). Ah-Kesh has made
-camp in the roofless ruin with hired scavengers (the record's scavengers in the corners). He carries the key to the
+camp in the roofless ruin with hired scavengers (the source place is the Imperial ruin of Black Marsh North, which has an arch, a plinth and a shrine piece but no roof or interior; the low wall, the sleeping corners for the scavengers and the chest in the plinth's hollow are added by the record). He carries the key to the
 cellar at Julo. He and his men start calm, and he speaks first, by his fire. A hard Speech check (70) makes him give up
 the key and leave the province. If it fails, he and the scavengers fight, and he takes the key to his grave, where the
 player finds it on him. A quiet player waits for him to sleep and takes the key from his strongbox in the plinth's
@@ -458,13 +460,14 @@ great roll would free the names in it tonight. She means to do more. She sends t
 Stormhold, and the journal marks her hall.
 
 **13. The Vicecanon's Price** (Stormhold; Fort Willowmoth, an Archwarden fort east of the city). Speaks-at-the-Falls
-hears the player in her hall (checked: the source, Markarth, gives its temple and halls as the Vicecanons' hall). She
+hears the player in her hall (Stormhold's source, Markarth from Skyrim, has a temple and stone halls such as Vlindrel Hall and Understone Keep, and
+one of them serves as the Vicecanons' hall). She
 will not take a band of roll-thieves at their word. For a week she has had a Dunmer trader's flat barge held at Fort
 Willowmoth's jetty, on a cargo of slaves' shackles that its crew will not explain (the record's hook). She thinks the
 barge carries people whose Owings were bought at the fort's crossing for House Ulvarys' factor. If the Chainbreakers can show her what it carries, she will
 hear their case against House Ulvarys when they bring her the great roll. At the jetty the barge's master speaks first
-(checked: the record adds the timber jetty; the barge is the flat barge piece Ranvos Landing's record adds, and a cage
-of Skyrim's iron prison bars is added on its deck under a tarpaulin, with a Master lock). A Speech check of 75 opens
+(the timber jetty is added to the fort by its record; the barge is the flat barge that Ranvos Landing's record adds, and
+a cage of Skyrim's iron prison bars is added on its deck under a tarpaulin, with a Master lock). A Speech check of 75 opens
 the cage. If it fails, the master and his crew fight, and the garrison, paid already, stands back.
 By night the cage has a Master lock and one crewman awake. In the cage are old Dres shackles (Skyrim's shackles, under
 our name) and three held workers chained in them, carters the fort's wardens set Owings on for an unpaid toll and sold to
@@ -478,8 +481,9 @@ Helstrom and on to Julo.
 hardest place of the line. A Naga band hunts the delta shallows (Curse of Cipactli's Naga), and crocodiles lie in the
 braid (Black Marsh & Valenwood's crocodile). House Ulvarys' fighters are posted at the farmhouses and the ferry. Aldyne
 Ulvarys is there, and so is Ah-Kesh if he lived through quest 12. The great roll is in the cellar under the
-estate's hall (checked: the source, Honningbrew Meadery, gives three interiors, the hall and the lower rooms reached
-by an inner door; the lower rooms serve as the cellar, its door set to a Master lock that Ah-Kesh's key opens). The
+estate's hall (the source place is Honningbrew Meadery from Skyrim, whose three interiors are the Meadery hall with its lofts, the
+Boilery and a Basement of mead barrels and hay below; the hall serves as the estate's hall and the Basement as the
+cellar, its door set to a Master lock that Ah-Kesh's key opens). The
 journal says the player may storm the estate, slip in by night or face the matriarch. Aldyne speaks first, at the
 hall's door. A very hard Speech check (85) makes her give up the roll, and she leaves for the border. If it fails,
 she and her fighters attack. She fights with Destruction and yields when badly hurt. The player may then spare her,
@@ -592,7 +596,7 @@ player chooses, the journal says what each gives and costs.
 
 | Place | The thing | Quest | What happens there | How the player knows it |
 |---|---|---|---|---|
-| Saltmeadow Farm | Jeen-Wei herding guar; the farmhouse (source interior) with a Novice lock and a chest by the householder's bed holding his roll | Who Breaks Chains | The player takes the roll and gives it to him. | Jeen-Wei speaks first; a marker on the farmhouse |
+| Saltmeadow Farm | Jeen-Wei herding guar; the farmhouse (source interior) with a Novice lock and an added chest by the householder's bed holding his roll | Who Breaks Chains | The player takes the roll and gives it to him. | Jeen-Wei speaks first; a marker on the farmhouse |
 | Stormhold | the Well-Room, an Ayleid chamber in the Silyanorn tunnels (the record's addition), with a Master-locked door, a bed, a chest, two lamps and a brazier | 2. The Catchers Below; 15. The Hearing | The band's seat, where Mere-Halu gives the jobs. | its door shows its name; a marker |
 | Stormhold | the crystal galleries of the tunnels (Nchuand-Zel's interiors), with a side gallery round the main one | 2. The Catchers Below | The player turns the catchers away and Mim-Teeus slips out. | a marker on the galleries |
 | Stormhold | House Ulvarys' factor at a stall in the Ayleid compound | Who Breaks Chains | He offers to buy a roll. | he speaks of rolls |
@@ -601,19 +605,20 @@ player chooses, the journal says what each gives and costs.
 | Thorn | a saltrice store by the quay as House Ulvarys' counting-house (Lilmoth's Plantation Storehouse interior), its door with an Expert lock, two watchmen, a letter chest in the factor's room | 11. The Counting-House | The player breaks in by night and takes the letters. | the door shows the family's name; a marker on the room |
 | Coldbrine Mine | a bunk shed with a Novice lock (added hut), the overseer's hut and key, the old giant mudcrab's burrow by the walled gallery in the older shaft, with Huzei's father's bones and the boss chest | 1. The Salt Shed | The player frees the diggers and brings out the bones. | the overseer speaks first; markers on the shed and the shaft |
 | Tenmal Pits | a locked timber door in the old wall (added to the record's wall piece), its key in the pit-boss's hut chest (Apprentice lock), three delvers beyond it among the spiders | 3. Behind the Old Wall | The player opens the wall and brings the delvers out. | the pit-boss speaks first; markers on the hut and the galleries |
-| Vandrel Farm | Fenas Ulvarys and two catchers lodging at the farm, Saveri in the stone barn by night (Apprentice lock) | 4. The Dunmer's Field | The player drives Fenas off and frees Saveri. | Fenas speaks first; markers |
+| Vandrel Farm | Fenas Ulvarys and two catchers lodging at the farm, Saveri in the stone barn (a source storehouse, with hay and no loft) by night (Apprentice lock) | 4. The Dunmer's Field | The player drives Fenas off and frees Saveri. | Fenas speaks first; markers |
 | Ranvos Landing | two catchers in the roadhouse, and a chest in its room (Apprentice lock) with the ferry family's roll | 5. The Ferryman's Price | The player learns who sells the runaways and decides what to do. | Gulu-Tasa speaks first; a marker on the roadhouse |
-| Thornway Watch | a cage of iron bars with an Adept lock on the stilt platform (added), the carter's son inside, Romi-Tei's cart at the chain | 6. The Toll Chain | The player frees the son. | Romi-Tei tells them; markers |
+| Thornway Watch | a cage of iron bars with an Adept lock on the post's scaffold platform (added), the carter's son inside, Romi-Tei's cart at the chain | 6. The Toll Chain | The player frees the son. | Romi-Tei tells them; markers |
 | Ysan | a mat and a chest under a loading shed's roof, two lanterns, the keeper | 7. Out by Sea | The keeper gives the signal. | a marker; the keeper tells them |
 | Bala Karag | catchers at the causeway's fire, four runaways in the upper halls, the signal brazier at the causeway's island end (added) | 7. Out by Sea | The player clears a way and lights the signal. | markers on the upper halls and the brazier |
-| Redclay Watch | Tumma-Ra by the reed hut, the mound top above the road and the bar | 8. Hold the Watch | The player prepares and defends the watch for an hour. | the watch-leader tells them; markers |
-| Fort Gysilla | three runaways in a lock-room of the barracks (Adept lock), a stretch of curtain wall nobody walks | 9. The Island Keep | The player frees them by talk, fight or night. | the captain speaks first; markers |
+| Redclay Watch | Tumma-Ra by the scale-hide tent, the mound top above the road and the bar | 8. Hold the Watch | The player prepares and defends the watch for an hour. | the watch-leader tells them; markers |
+| Fort Gysilla | three runaways in a barred lock-room of the vault interior (Adept lock), a stretch of curtain wall nobody walks | 9. The Island Keep | The player frees them by talk, fight or night. | the captain speaks first; markers |
 | Marzai | House Ulvarys' barge (the opening's barge block) moored below the kilns, its hold with an Expert lock and five held workers, the master on the landing | 10. The Lantern on the Lake | The player frees the hold. | the ferryman tells them; markers |
 | Calvian Waystation | Ah-Kesh by a fire with hired scavengers, his strongbox in the plinth's hollow (Expert lock) with the cellar key | 12. The Catch-Captain | The player takes the key. | Ah-Kesh speaks first; a marker on the ruin |
 | Fort Willowmoth | the Dunmer trader's flat barge at the jetty (added), a cage on its deck (added, Master lock), Dres shackles and three held workers | 13. The Vicecanon's Price | The player opens the cage. | the barge master speaks first; markers |
-| Julo | House Ulvarys' hall with Aldyne, the cellar under it behind a Master-locked door holding the great roll (the source's lower rooms), twelve held workers in the paddies | 14. The Great Roll | The player takes the great roll. | Aldyne speaks first; markers on the hall and the paddies |
+| Julo | House Ulvarys' hall with Aldyne, the cellar under it behind a Master-locked door holding the great roll (the source's Basement interior), twelve held workers in the paddies | 14. The Great Roll | The player takes the great roll. | Aldyne speaks first; markers on the hall and the paddies |
+| Helstrom | the band's safe house, a quiet room off the market: one of the Argonian house interiors of Black Marsh & Valenwood's Helstrom (the drafted place already holds nine of that interior), with a bed, a chest, a keeper and two lanterns, all added | The safe-house chain (section 7): the player may sleep there from the rank of Breaker, quest 9 | The player rests and stores things there, and the keeper gives the band's word. | two lanterns in the window; the keeper answers the password; Helstrom's own hook says visitors find a quiet house off the market only by word of mouth |
 
-Julo's record says a family of causeway farmers keeps the hamlet; it does not yet say that House Ulvarys own the
+Julo's record says a family of causeway farmers lives in the hamlet; it does not yet say that House Ulvarys own the
 estate. That record change is the lead's to make (see the reply).
 
 ### What it asks of the ceiling

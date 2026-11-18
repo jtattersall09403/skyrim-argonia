@@ -919,7 +919,7 @@
 {"place_id":"outpost-22-m77","give_seq":6,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-foes: Root-Folk hunters who attack strangers on the trap line, 2)"}
 {"place_id":"outpost-22-m77","give_seq":7,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (treasure: a hunter's stash behind the egg-racks)"}
 {"place_id":"outpost-23-m64","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-innkeeper: the guards sell water, dried fish and bread)"}
-{"place_id":"outpost-23-m64","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (free-bed: a bench on the watch house's stilt platform)"}
+{"place_id":"outpost-23-m64","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (free-bed: a bench on the raised watch platform)"}
 {"place_id":"outpost-23-m64","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-creature: a pair of giant snakes that lair beside the well)"}
 {"place_id":"outpost-23-m64","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (treasure: the abandoned carver's cart up the track: a locked chest and carved stone pieces)"}
 {"place_id":"outpost-25-m71","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-hunter: the elder buys hides and sells feathers and smoked meat)"}
@@ -928,7 +928,7 @@
 {"place_id":"outpost-25-m71","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-creature: a pair of giant snakes on the mesa lip)"}
 {"place_id":"outpost-25-m71","give_seq":4,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (treasure: the snakes' lair under the lip: bones and a dead traveller's purse)"}
 {"place_id":"outpost-28-m86","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (grindstone: a grindstone beside the spear rack)"}
-{"place_id":"outpost-28-m86","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (free-bed: spear-watch mats in the hut)"}
+{"place_id":"outpost-28-m86","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (free-bed: spear-watch mats in the tent)"}
 {"place_id":"outpost-28-m86","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (follower: the watch-leader of Khiar, a spear fighter who knows the road)"}
 {"place_id":"outpost-28-m86","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-foes: smuggler bands on the road)"}
 {"place_id":"outpost-28-m86","give_seq":4,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (treasure: the smugglers' cache by the road)"}
@@ -1498,7 +1498,7 @@
 {"place_id":"velothi-ruin-28-m82","give_seq":4,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (treasure: altar niches and coffers in the lower halls)"}
 {"place_id":"velothi-ruin-28-m82","give_seq":5,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (spell-tome: one Illusion tome (Adept) left in an upper niche)"}
 {"place_id":"velothi-ruin-28-m92","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-foes: ancestor ghosts and the smuggling crew, 6)"}
-{"place_id":"velothi-ruin-28-m92","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-boss: the smuggling crew's captain in the sea-cave)"}
+{"place_id":"velothi-ruin-28-m92","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-boss: the smuggling crew's captain on the upper tier, beside the captive)"}
 {"place_id":"velothi-ruin-28-m92","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (boss-chest: boss chest)"}
 {"place_id":"velothi-ruin-28-m92","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (treasure: the smugglers' cache in the sea-cave)"}
 {"place_id":"velothi-ruin-28-m92","give_seq":4,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (harvest-common: sea-bird eggs from the roof)"}

@@ -82,9 +82,11 @@ the document's own extrapolation, derived from cited lore and never from nothing
   source place: the rough layout, each building and interior, its rooms, doors, water and containers, who and what
   already stands there (`newworld/places/`, the census, the digest). Use what it holds. Ask only for small
   additions: a thing placed, a person, a lock, a name. Every major thing asked of a place (a cellar, a flooded
-  passage, a second way in, a great door) and every named item and creature carries its check in brackets: which
-  source, mod or Skyrim record gives it and how it is enabled (`python3 -m tools.newworld.place_card "<place>"
-  --mined`), or the stand-in. What cannot be enabled is not written.
+  passage, a second way in, a great door) and every named item and creature carries its check in brackets, written
+  for the owner as one plain sentence naming the source and the evidence ("the source is Icerunner, a Skyrim ship
+  whose hull interior has a hold below decks"), or the named addition or stand-in; never a command or an id. Read
+  the evidence with `python3 -m tools.newworld.place_card "<place>" --mined` and the base objects the source
+  places. What cannot be enabled is not written.
 - *Danger climbs with the line.* Each quest's places are no harder (the place's band and the band of the way to
   it) than the line has reached. The main quest opens in D1 and a faction in D1 or D2 (`--opens-at D2`); a line
   rises a band at a time and ends in the hardest places it uses. Skill checks follow: a lock or a pocket in a first quest opens for a level-one

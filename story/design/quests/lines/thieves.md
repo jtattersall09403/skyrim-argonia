@@ -5,7 +5,7 @@ This page is the plot of the Eelskins, the thieves' guild of the south, written 
 2026-11-17 to his story explorer notes. The Eelskins have two rivals, the Lampbearers ([lamps](lamps.md)) and the
 Shadowscales ([shadowscales](shadowscales.md)). Each of the three lines tells its own late story; the rivals appear
 in it with the same leaders and the same seats. Every quest is set in a place whose source holds what the quest
-needs (`python3 -m tools.newworld.place_card <place> --mined`), and the brackets say what was checked. Everything is
+needs, and a bracket says which source place gives it and how we know: what that source's buildings, interiors and placed pieces are. Everything is
 inside the quest ceiling ([quest-system](../../../../.claude/skills/quest-system/SKILL.md)), with the blocks listed
 in section 8.
 
@@ -121,7 +121,7 @@ share: each job pays less for every person killed, and the journal says so.
 ### Act I: the outpost
 
 **1. The Hulk at the Boardwalk** (Blackrose, the lake-island city where three rivers meet). The key opens the deck
-hatch of the hulk moored at the boardwalks (checked: Blackrose's source, Black Rose, has a ship interior). Below,
+hatch of the hulk moored at the boardwalks (checked: Blackrose's source is Black Rose from Black Marsh North, a town of 222 buildings over water with a ship among its interiors, so the ship's pieces and interior serve as the hulk and the outpost below its hatch, and an enchanting table of Skyrim's is set in the outpost). Below,
 Corso Delling runs the outpost: a fence, a bed and an Eelskin or two. He sets the first test. The canoe-men's
 toll-taker at the landing of the island core carries the day's tolls in a purse. The journal says: "Take the
 toll-taker's purse at the landing of the island core." The marker leads to the landing. The player lifts the purse
@@ -130,8 +130,7 @@ new character with a lockpick can do it. *Leads on:* Corso pays 75 gold, makes t
 Reedfall Farm, which the journal marks, a short walk east along the channel.
 
 **2. The Rice Shed** (Reedfall Farm, a rice farm on the channel east of Blackrose). The family keeps the season's
-rice money in a strongbox in the rice shed (checked: the record sets the source's second interior as the rice
-shed). Marsh beasts come up the channel bank at night, so one of the family is always awake on watch (the record's
+rice money in a strongbox in the rice shed (checked: Reedfall's source is Pinewood Farm from Nyhus, a farm of 158 buildings with two interiors, which serve as the stilted house and the rice shed, and the paddies and reed beds are added). Marsh beasts come up the channel bank at night, so one of the family is always awake on watch (the record's
 dangers). The journal says the player may sneak in or take the key, and the marker leads to the shed. The player
 waits for the watcher to walk to the landing and slips into the shed (Sneak), then picks the strongbox (a Novice
 lock). Or the player lifts the key from the eldest son, who sleeps in the stilted house (Pickpocket). *Leads on:*
@@ -141,7 +140,7 @@ longhouse.
 **3. Light Fingers** (Natai, a salvagers' village at the southern edge of the washes). Corso teaches the player to
 enchant. He gives them an old Eelskin ring of Fortify Pickpocket and a petty soul gem. At the outpost's enchanter the
 player breaks the ring to learn its enchantment and puts it on a pair of gloves. At Natai, the salvager who strips
-the wreck off the beach carries a gold pearl in his pocket (the record's wreck to dive). The journal says: "Find the
+the wreck off the beach carries a gold pearl in his pocket (checked: Natai's source is King of the Murkmire's Seekhat Yol, Argonian stilt huts with dock pieces whose fisher's hut and accommodation hut serve as the salvagers' longhouse, and the wreck off the beach is an addition of Skyrim's wrecked ship pieces, as at Pilgrims Trench). The journal says: "Find the
 salvager in the longhouse." The pocket is Adept: the gloves bring a new thief's Pickpocket to it. The player can
 instead pick his sea-chest in the longhouse at night (an Apprentice lock), or dive to the wreck for the other pearls
 past the sea-drake that hunts off the shore (the record's sea-drakes). *Leads on:* Corso has heard a Lampbearer
@@ -149,7 +148,7 @@ asking about the hulk. The journal marks Ka-Asei.
 
 **4. The Lampbearer's Man** (Blackrose; Ka-Asei, a stilt village a day from Blackrose). A man called Bolus Matius
 lodges in Ka-Asei's longhouse and has been asking canoe-men about the hulk. Corso wants the sketch of it from his
-strongbox (an Apprentice lock). Bandits moor their boats under the stilts at night (the record's bandit boats), so
+strongbox (an Apprentice lock). Bandits moor their boats under the stilts at night (checked: Ka-Asei's source is Keeba Hollow from King of the Murkmire, an Argonian stilt village whose fisher's hut and crafter's hut serve as the longhouse and whose dock pieces make the moorings under the stilts, where the bandits' boats are placed), so
 the walk from the landing to the longhouse passes them. The journal says: "Take Matius's sketch from his lodging in
 the longhouse." When the player has the sketch, Matius speaks first. He says he is a Lampbearer, and offers 300 gold
 to learn where the Eelskins' hall is. The player can refuse him. They can take the gold and give him a false place
@@ -164,19 +163,17 @@ marks it.
 
 **5. Eel-Slime** (Brackwater Waystation, a ruined customs shed east of Lilmoth; Lilmoth, the rebuilt stilt city).
 Smugglers guard their cache in the sea-cave under the shed, entered by a hatch in the shed floor, and they keep
-ripper eels in its deep pool to render slime (checked: the record sets the source's one interior, Old Laboratory's,
-as the sea-cave with a deep pool; the eels are Skyrim's slaughterfish placed in it). The journal says the player may
+ripper eels in its deep pool to render slime (checked: Brackwater's source is Old Laboratory from King of the Murkmire, a small Imperial ruin on the water with one interior that serves as the sea-cave, while the shed above it, the hatch in its floor and the deep pool in the cave are added, with Skyrim's slaughterfish placed in the pool). The journal says the player may
 fight the smugglers or go quietly. The player fights them, sneaks past them to the pool (Sneak, with Muffle from the
 outpost's spell-seller), or buys a jar from their cache-master (Speech and 150 gold). With the slime on, the player
 opens the hatch on Pusbottom's walkways and swims the cistern below it, where the hall's own ripper eels leave them
-alone (checked: Lilmoth's record sets the source's sewer hideout as the cellars under Pusbottom, entered by a hatch
-from the walkways; the first room behind the hatch is the source's "Lilmoth Surface Cisterns"). Without the slime
+alone (checked: Lilmoth's source is King of the Murkmire's Lilmoth, whose sewers have a hideout room that serves as the hall under Pusbottom, entered through a hatch door that we set on the walkways, and whose first sewer room, the Surface Cisterns, serves as the cistern behind it). Without the slime
 the eels attack. At the far end is the hall, and its people, who attack a stranger, let a member pass. Its watchers
 take the player to Swims-Without-Ripples. *Leads on:* she sets the player to work. Her first job is at the delta
 ferry.
 
 **6. The Marked Sack** (Delta Ferry, the crossing east of Blackrose). A Lilmoth council merchant ships pearls across
-the delta, hidden in a marked rice sack (the record's rice sacks). The sack lies overnight on the raft moored at the
+the delta, hidden in a marked rice sack (checked: Delta Ferry's source is Alten Meerhleel from King of the Murkmire, a small Argonian dock with a moored ship, whose dock pieces make the plank landing, while the raft, the lamp post and the rice sacks are added). The sack lies overnight on the raft moored at the
 landing, with the pearl box tied on top of the load, and the merchant's two guards stand on the plank landing between
 the shore and the raft. The journal says: "Take the pearl box from the merchant's raft." The marker leads to the
 landing. Swims teaches the player Telekinesis, and from the reeds on the far bank the player lifts the box off the
@@ -186,8 +183,7 @@ Swims has a bigger cellar for them.
 
 **7. The Locked Strongroom** (Fort Swiftmoth, an empty keep inland from Archon). Smugglers of Bramman's Brethren,
 the pirates, cache their goods in the keep's locked strongroom off the lower hall, with a watch of four and their
-captain (checked: the record sets the source's lowest hall, Mistwatch's, as the lower hall and a side room as the
-strongroom behind a locked door). The Topal Bay Company's 11, The Scroll Store, raids the same strongroom for the
+captain (checked: Fort Swiftmoth's source is Mistwatch from Skyrim, a ruined Imperial fort round a tall stair-tower with three interiors that are the tower's halls one above another, so its lowest hall serves as the lower hall, a side room of it as the strongroom behind a door that we lock, and its top hall as the dry upper floor). The Topal Bay Company's 11, The Scroll Store, raids the same strongroom for the
 scrolls in it. Each of the two quests switches on its own watch and its own store when it starts, so they can be
 played in either order. Aroxhu
 families rest in the dry upper floor and are to be left alone. The journal says: "Empty the strongroom off the lower
@@ -198,12 +194,11 @@ from Fort Gysilla.
 
 **8. The Toll Chest** (Fort Gysilla, an Archwarden toll fort on a lake island; Truowa, the lake harbour). The first
 heist. A Truowa council merchant, who will not pay Gysilla's toll, pays the Eelskins to take it (the record's quarrel
-between the council and the fort). The tolls lie in an iron chest in the garrison's barracks (checked: the record sets
-one of the second source's two interiors, Cracked Tusk's, as the barracks). The player chooses the way in. They can
+between the council and the fort). The tolls lie in an iron chest in the garrison's barracks (checked: Fort Gysilla's walls come from Fort Tulis in Journey to Baan Malur, a ruined Imperial fort with no interior, and its barracks interior comes from Cracked Tusk, an Imperial fort from Skyrim with two keep interiors). The player chooses the way in. They can
 swim to the islet by night and climb the curtain wall (FreeClimb, or a scroll). They can ride in a rice crate on the
 garrison's supply boat, which takes a bribe of 200 gold to its boatman at Truowa's quay or an Expert Speech check
 (75): the screen fades, and the player stands on the fort's landing. Or they can force the gate, and the journal
-warns that a fight sets a bounty that Fort Gysilla's garrison keeps. The same garrison buys and sells Owings at its crossing, and some of
+warns that a fight sets a bounty with Fort Gysilla's garrison. The same garrison buys and sells Owings at its crossing, and some of
 those it holds go on to House Ulvarys (the Chainbreakers' 9, The Island Keep). The chest's key is on the toll-master,
 and the lock is Expert. Two guards stand in the barracks and the rest are at the landing and the toll chain, so a
 quiet player can reach it. A player who freed Naxi-Ru in the Chainbreakers' 9, The Island Keep, has learnt from Naxi-Ru the
@@ -215,7 +210,7 @@ them to the hall. She is ready to speak of the great heist.
 **9. The Council's Strongroom** (Lilmoth; Helstrom, the interior capital). Swims tells the player what the great
 heist is and why the gold is owed (section 2). She sends them to look the council house over. The Xeech-Leel govern
 in the open, so the council house's hall stands open to anyone by day (`argonia-4e201-state.md` §1). The journal
-says: "Go to Helstrom and look over the council house." The marker leads to the house; Lilmoth's lighter-men sail to
+says: "Go to Helstrom and look over the council house" (checked: Helstrom's own source, Black Marsh & Valenwood's Helstrom, has only a one-room Argonian house and a ship among its interiors, so the council house is a building to be added to Helstrom from Dragonthorn Manor of King of the Murkmire's Lilmoth, whose hall with silver plate and writing desks, stair to an upper room and partition doors serve as the hall, the treasurer's room and the doors, with Dragonthorn Manor Barracks as the wardens' quarters and the strongroom added as one locked iron door and a room of Imperial pieces). The marker leads to the house; Lilmoth's lighter-men sail to
 Truowa, and Truowa's boat road runs on to Helstrom's raft landing (Truowa's record names the road). Inside by day the
 player sees the hall, the wardens on watch, the stair to the treasurer's room and the iron door to the strongroom.
 Outside they find the three ways in, and the journal records each as it is found: the front door, where two wardens
@@ -234,8 +229,7 @@ The player does any two of these, and then Swims calls the plan set. Each one re
 - *The treasurer's key.* The council's treasurer carries the strongroom's key on his belt when he walks Helstrom's
   market by day. The journal says: "Lift the treasurer's key in Helstrom's market." The player lifts it (Pickpocket,
   an Expert pocket). With it, the iron door opens without its Master lock.
-- *Silent feet.* The bull crocodile of Rushiit Den wears a golden ring in its nest chamber (the record's hook; the
-  source, Huluxinoag, serves as the tunnels and the nest chamber). The ring carries Muffle. The player kills the
+- *Silent feet.* The bull crocodile of Rushiit Den wears a golden ring in its nest chamber (checked: Rushiit Den's tunnels come from Huluxinoag of King of the Murkmire, an Argonian ruin with one interior of cave pieces that serves as the tunnels and the nest chamber, and the golden ring is an added item). The ring carries Muffle. The player kills the
   beast, or lifts the ring while it sleeps, breaks the ring at the hall's enchanter and puts Muffle on their own
   boots. With them, the wardens never hear the player's feet.
 - *The raft out.* A raft-master at Helstrom's city landing (the record's raft-masters) takes 300 gold, or an Expert
@@ -253,7 +247,7 @@ Lilmothiit ruin of the Banujha Basin). This quest holds the line's choice, writt
    A Swims sent to the Owing robs nobody. Two offers have come through the guild's fences. The journal says: "Hear
    the Shadowscale at Black-Tongue Brews and Marcella Dovi at the Lamp-Hall in Soulrest, then give one of them your
    word." Markers lead to both doors.
-2. *At Black-Tongue Brews* (checked: a named interior of Lilmoth's source, King of the Murkmire's Lilmoth),
+2. *At Black-Tongue Brews* (checked: Black-Tongue Brews is a named interior of King of the Murkmire's Lilmoth, a city of 46 interiors),
    Hulee-Tah speaks first. The Lampbearers hunt his Eldest for three killings. If the Eelskins help end the
    Lampbearers, a Shadowscale will kill Marcella Dovi, and the player is to kill J'zahri and her two Lampbearers at
    Truowa and take her case chest. Then the two orders share the south.
@@ -353,8 +347,8 @@ enchantment made for this line (no Chameleon spell exists).
 | Fort Swiftmoth | the locked strongroom off the lower hall, with the smugglers' cache, its key on their captain, and Aroxhu families in the upper floor (in the place's record) | 7. The Locked Strongroom | The player empties the cache. | a marker on the keep |
 | Fort Gysilla | the iron toll chest in the barracks (an Expert lock), its key on the toll-master, the curtain wall, the landing, two guards in the barracks | 8. The Toll Chest | The first heist. | the merchant tells them; a marker on the fort |
 | Truowa | the council merchant who hires the Eelskins; the supply boat's boatman at the quay | 8. The Toll Chest | The job is given and paid. | a marker |
-| Helstrom | the Xeech-Leel's council house: a hall open by day, the treasurer's room upstairs, a front door, a back door to the river landing (an Expert lock), a gallery door reached up the stilts, a strongroom behind an iron door (a Master lock) with the gold, the seal ring and the silver, six wardens at night, and the cook (not in Helstrom's record or sources: the record says the state's seat is lodged here, and the city's source pool, King of the Murkmire's Lilmoth, has a second merchant manor with its own barracks for the house and the wardens; the strongroom is added as one locked iron door and a room of Imperial pieces) | 9. The Council's Strongroom; 10. Two of Four; 12. The Great Heist | The player looks it over and robs the strongroom. | its door shows "The Council House of the Xeech-Leel"; a marker; the journal records each way in |
-| Helstrom | the treasurer in the market by day; a raft-master at the city landing | 10. Two of Four | The player lifts the key and hires the raft. | a marker on the market and the landing |
+| Helstrom | the Xeech-Leel's council house (a building Helstrom does not have): a hall open by day, the treasurer's room upstairs, a front door, a back door to the river landing (an Expert lock), a gallery door reached up the stilts, a strongroom behind an iron door (a Master lock) with the gold, the seal ring and the silver, six wardens at night, and the cook (to be added to Helstrom: its source has only a one-room house and a ship, so the building is made from Dragonthorn Manor of King of the Murkmire's Lilmoth with its barracks for the wardens, and the strongroom is added as one locked iron door and a room of Imperial pieces) | 9. The Council's Strongroom; 10. Two of Four; 12. The Great Heist | The player looks it over and robs the strongroom. | its door shows "The Council House of the Xeech-Leel"; a marker; the journal records each way in |
+| Helstrom | the treasurer in the market by day; a raft-master at the city landing (the market square and the root landing are additions that the place's record lists) | 10. Two of Four | The player lifts the key and hires the raft. | a marker on the market and the landing |
 | Lilmoth | the moneylender's manor with his strongbox (an Expert lock) and the cook's note of debt; the moneylender at the stilt-hall tavern | 10. Two of Four | The player clears the cook's debt. | a marker on the manor |
 | Rushiit Den | the bull crocodile with the golden ring, in its nest chamber (in the place's record) | 10. Two of Four | The player takes the ring. | a marker; the ring is a named thing |
 | Lilmoth | Black-Tongue Brews with Hulee-Tah, the keeper and his strongbox in the back room (an Expert lock) | 11. Two Offers | An offer, and in the Lampbearers' branch the order's word on Ra'tal Den. | a marker on its door |
@@ -384,8 +378,8 @@ quest 11 is a line that sets one of two stages.
 
 - *Place records:* the Eelskins' hall in Lilmoth's drowned cellars (the record's hostile smugglers there become the
   Eelskins, friendly to members) and the ripper eels in its cistern; the hulk at Blackrose; the ripper eels in
-  Brackwater's pool; and at Helstrom, the council house of the Xeech-Leel with its strongroom, which Helstrom's needs data
-  holds as a promise to keep at the place's next change.
+  Brackwater's pool; and at Helstrom, the council house of the Xeech-Leel with its strongroom, a building to be added to Helstrom at the
+  place's next change from Dragonthorn Manor of King of the Murkmire's Lilmoth.
 - *Lore:* the Eelskins and Swims-Without-Ripples's reason, and the Xeech-Leel keeping the An-Xileel's gold, are
   extrapolations, grounded above. They go into `story/lore/extrapolation/argonia-4e201-state.md` when the owner
   passes the plot.

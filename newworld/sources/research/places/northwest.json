@@ -808,7 +808,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Dawnguard Valley01 (Dawnguard), is a fort of the right size but its interiors are caves and a Nordic hall, so it does not fit. Cracked Tusk (Skyrim) fits better: an Imperial fort of a yard and two keep interiors, which serve as the barracks and the captain's hall. Its orc pieces are replaced with Imperial stone. Still to add: the moss on the walls, the Imperial relief over the gate, the toll-bar and the timber jetty on the road outside.",
+     "text": "Its main source, Dawnguard Valley01 (Dawnguard), is a fort of the right size but its interiors are caves and a Nordic hall, so it does not fit. Cracked Tusk (Skyrim) fits better: an Imperial fort of a yard, a keep hall and a vault of barred gates under it; the keep hall serves as the barracks and the captain's hall, and the vault as the fort's cellar. Its orc pieces are replaced with Imperial stone. Still to add: the moss on the walls, the Imperial relief over the gate, the toll-bar and the timber jetty on the road outside.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1686,7 +1686,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Ruined Farmhouse (Journey to Baan Malur), is a Dunmer farm of four people and one interior, and serves as the farmhouse once its ruin pieces are swapped for whole walls. The Storehouse of Farmhouse (Journey to Baan Malur) serves as the stone barn with its loft bed. Still to add: the raised mound, the paddy dikes, the causeway, the ancestor stones by the door and the Hist shoot in its clay pot.",
+     "text": "Its main source, Ruined Farmhouse (Journey to Baan Malur), is a Dunmer farm of four people and one interior, and serves as the farmhouse once its ruin pieces are swapped for whole walls. The Storehouse of Farmhouse (Journey to Baan Malur) serves as the stone barn: hay, barrels, urns and shelves. Still to add as well: a bed in a loft over the barn's hay. Still to add: the raised mound, the paddy dikes, the causeway, the ancestor stones by the door and the Hist shoot in its clay pot.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2241,7 +2241,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, a camp near Katlas Farm (Skyrim), is a Nordic camp of one building and does not fit. Velothi Victuals (Nyhus) fits better: a Dunmer roadside hamlet with one interior, which serves as the roadhouse with its room. Ree-An-Wo (King of the Murkmire) lends the Argonian crew's huts. Still to add: the timber landing, the flat barge moored beside it, the row of grave-stakes on the rise and the smoked-meat rack.",
+     "text": "Its main source, a camp near Katlas Farm (Skyrim), is a Nordic camp of one building and does not fit. Velothi Victuals (Nyhus) fits better: a Dunmer roadside hamlet with one interior, which serves as the roadhouse with its room. Ree-An-Wo (King of the Murkmire) lends the hide tents the Argonian crew sleep in. Still to add: the timber landing, the flat barge moored beside it, the row of grave-stakes on the rise and the smoked-meat rack.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6254,7 +6254,7 @@
     },
     {
      "aspect": "look",
-     "text": "A low stone hut and a wooden gate stand on the river bank, with reed lean-tos, bundled reed stacked by the landing and a work barge moored in the pool below the camp.",
+     "text": "A low stone hut and a wooden gate stand on the river bank, with the cutters' hide tents, bundled reed stacked by the landing and a work barge moored in the pool below the camp.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6291,7 +6291,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Military Camp Hjaalmarch Imperial (Skyrim), is an Imperial camp of sixteen people with no interior, and its pieces serve as the old post's gate and hut walls. Ree-An-Wo (King of the Murkmire) lends the reed lean-tos and the stall. The barge is Black Marsh & Valenwood's Imperial ship (Black Marsh.esm, hull 0ShipImperial, ImperialShip01Base.nif, 29.3 m long and 10.1 m in the beam by its bounds) with its furnished hold, the interior cell 01dock3to4 (25 containers and 128 loose things), given a door that locks from outside. The river here is 29 to 41 m wide within 200 m, and a pool 63 m west-north-west of the hut is 81 m across and about 3.8 m deep; the hull is moored in that pool along the east bank, raised about 4 m above its own keel depth, and the river runs from the pool to the sea. Still to add: the moored barge and its door, the reed lean-tos, the bundled reed by the landing, the strongbox in the hut and the grave-stake.",
+     "text": "Its main source, Military Camp Hjaalmarch Imperial (Skyrim), is an Imperial camp of sixteen people with no interior, and its pieces serve as the old post's gate and hut walls. Ree-An-Wo (King of the Murkmire) lends hide tents and a stall. The barge is Black Marsh & Valenwood's Imperial ship (Black Marsh.esm, hull 0ShipImperial, ImperialShip01Base.nif, 29.3 m long and 10.1 m in the beam by its bounds) with its furnished hold, the interior cell 01dock3to4 (25 containers and 128 loose things), given a door that locks from outside. The river here is 29 to 41 m wide within 200 m, and a pool 63 m west-north-west of the hut is 81 m across and about 3.8 m deep; the hull is moored in that pool along the east bank, raised about 4 m above its own keel depth, and the river runs from the pool to the sea. Still to add: the moored barge and its door, the bundled reed by the landing, the strongbox in the hut and the grave-stake.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

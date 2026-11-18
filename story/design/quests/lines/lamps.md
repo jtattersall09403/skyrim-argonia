@@ -5,7 +5,7 @@ This page is the plot of the Lampbearers, the detectives, written on 2026-11-16 
 2026-11-17 to his story explorer notes. The Lampbearers have two rivals, the Eelskins ([thieves](thieves.md)) and the
 Shadowscales ([shadowscales](shadowscales.md)). Each of the three lines tells its own late story; the rivals appear
 in it with the same leaders and the same seats. Every quest is set in a place whose source holds what the quest
-needs (`python3 -m tools.newworld.place_card <place> --mined`), and the brackets say what was checked. Everything is
+needs, and a bracket says which source place gives it and how we know: what that source's buildings, interiors and placed pieces are. Everything is
 inside the quest ceiling ([quest-system](../../../../.claude/skills/quest-system/SKILL.md)), with the blocks listed
 in section 8.
 
@@ -24,7 +24,7 @@ to prove it. A Lampbearer searches the scene, finds the evidence, questions the 
 brings that person before the arbiter.
 
 The Lampbearers work from the Lamp-Hall, a stone house in Soulrest's half-empty government quarter, with a branch
-in a house on the quay of Truowa. Their skills are Speech, Sneak and Lockpicking for getting at evidence that people
+in a house on the quay of Truowa (checked: Soulrest's source is Skyrim's Solitude, whose palace interiors give the halls that the half-empty government quarter, with the Lamp-Hall and its hearing room, is to be built from, an addition the place's record lists; Truowa's source is King of the Murkmire's Lilmoth, whose merchant manors give a house, and the quay is an addition the record lists). Their skills are Speech, Sneak and Lockpicking for getting at evidence that people
 hide, and Illusion: Calm, Fury and Mayhem, with Throw Noise and Clairvoyance from the spells by use
 ([spell-groups](../spell-groups.md)). Their rivals are the Eelskins, whom they catch. The Shadowscales are rivals
 too, since the Lampbearers are paid to solve their killings. Joining gives the player cases that pay in coin and rank, a bed in Soulrest, and
@@ -141,13 +141,12 @@ failed, which counts as one more wrong answer.
   the coin.
 - *Flame.* **The Salt Pan** (Karketa): a Lilmoth family's new salt pan was fouled with lamp oil. The headwoman's son,
   the family's foreman and a netter who lost the pan for a debt are suspects; the oil flask under the foreman's hut
-  is his own, bought to ruin the pan and sell the debt on.
+  is his own, bought to ruin the pan and sell the debt on (checked: Karketa's source is Keeba Hollow from King of the Murkmire, an Argonian village of huts with dock and lighthouse pieces, and the salt pans on the shore are an addition).
 - *Flame.* **The Bad Shellfish** (Amalaja): a rice trader died after a meal of shellfish. The cook, a rival trader
   and the trader's wife are suspects; the rival bought nightshade from a Lilmoth herb-wife, and her stall remembers
-  him.
+  him (checked: Amalaja's source is Hjaalmarch Trading Post from Skyrim Trading Posts, four buildings with no interior, whose Nordic pieces are replaced by Argonian reed huts from Seekhat Yol, whose interiors give the seller's room; the Lilmoth herb-wife's stall is the apothecary of King of the Murkmire's Lilmoth).
 - *Lantern.* **The Drowned Diver** (Lilmoth): a salvager was found drowned in the drowned quarter with his weights
-  cut. His partner, a fence and his creditor are suspects; the partner's knife matches the cut cords, and the
-  villa's silver lies in his boat.
+  cut. His partner, a fence and his creditor are suspects; the partner's knife matches the cut cords, and the villa's silver lies in his boat (checked: Lilmoth's drowned quarter of Imperial villas is an addition of submerged ruin pieces that the place's record lists).
 - *Lantern.* **The Boat beyond the Reef** (Karketa): a boat went out past the reef with a villager's father aboard
   and came back without him. The two crewmen and his son are suspects; one crewman's boat-hook has blood under its
   iron, and the son was mending nets in front of the village all night.
@@ -172,7 +171,7 @@ quest 1 to 600 in quest 12, so the boats are paid for from the first case.
 ### Act I: small crimes
 
 **1. The Mate's Pay** (Soulrest, the old capital on the Topal Bay coast). Marcella signs the player on and gives them
-a first case. A Khajiit ship's mate's pay chest was opened in his room at the harbour inn and emptied. The suspects
+a first case. A Khajiit ship's mate's pay chest was opened in his room at the harbour inn and emptied (checked: Soulrest's source is Skyrim's Solitude, whose inn interior with its rooms serves as the harbour inn and the crew's back room, and King of the Murkmire's Lilmoth gives a silver refinery that serves as the harbour smelter). The suspects
 are the innkeeper's son, who owes money, the mate's shipmate, who quarrelled with him over a share, and the inn's
 maid, who cleans the room. The journal says: "Search the mate's room at the harbour inn. Speak to people at the inn
 and on the harbour." Markers lead to the room and to the harbour front.
@@ -195,7 +194,7 @@ Soulrest's harbour boatman sails to Truowa.
 **2. The Cloth on the Quay** (Truowa, the lake harbour on Lake Ulaish). Bolts of Lilmoth cloth have gone from a
 warehouse on the quay. The council merchant who owned them blames Fort Gysilla's garrison, which has begun stopping
 Truowa boats over the toll (the place's record). The suspects are the merchant, a garrison sergeant drinking in the
-quay tavern and the quay's smuggler. J'zahri's journal entry: "Search the warehouse on the quay. Ask in the quay
+quay tavern and the quay's smuggler (checked: Truowa's source is King of the Murkmire's Lilmoth, whose taverna serves as the quay tavern and whose merchant manors serve as the merchant's house, while the warehouse and the smuggler's shed are made from the reed-pile quay buildings that the place's record lists as an addition). J'zahri's journal entry: "Search the warehouse on the quay. Ask in the quay
 tavern. The merchant's house is on the council street." Markers lead to the warehouse, the tavern and the house.
 
 - *The warehouse* has a Novice lock. The player picks it, or charms the watchman into opening it (Speech). Inside,
@@ -212,7 +211,7 @@ to Marcella, who has a case from the farms west of
 Lilmoth. The journal marks Seeku Farm, a walk west from Lilmoth's harbour.
 
 **3. The Missing Guar** (Seeku Farm, a guar farm west of Lilmoth; Lilmoth, the rebuilt stilt city). A guar has gone
-from the farm's stockade (the place's record), the second this season. Marcella teaches the player Calm before they
+from the farm's stockade, the second this season (checked: Seeku's source is Chillfurrow Farm from Skyrim, one farmhouse interior that serves as the low house, while the stockaded paddock and the barn are additions made from the reed fence and wall pieces of King of the Murkmire). Marcella teaches the player Calm before they
 go: a stranger who rents the barn keeps a guard dog, and a Lampbearer calms a dog in place of killing it. The
 suspects are the stranger in the barn, the farm's neighbour from Ixa-Ruu Farm, who quarrels over the boundary, and
 the farm's hired hand, who has drink debts. The journal says: "Look over the farm and its barn. Ask in Lilmoth's
@@ -230,8 +229,7 @@ market who has sold guar." Markers lead to the farm and to Lilmoth's market walk
 *Leads on:* Marcella pays 100 gold and sends the player to a rice estate north-west of Lilmoth, where a man has died.
 
 **4. The Walled Cellar** (Dunhallow Plantation, a rice estate north-west of Lilmoth). The family walled up the old
-cellar years ago, with the planters' strongbox and the unrested Breton dead inside it (checked: the record sets the
-source's storehouse, Cormar Crossing's, as the old cellar behind a door walled with placed boards and stone). Three
+cellar years ago, with the planters' strongbox and the unrested Breton dead inside it (checked: the plantation's source is Cormar Crossing, a Dunmer farm from Journey to Baan Malur with five interiors, whose farmhouse serves as the great house and whose storehouse serves as the old cellar, behind a door that we wall up with placed boards and stone). Three
 nights ago someone pried the boards loose and took the strongbox, and the family's old watchman was found dead at the
 cellar door with his head broken. It is the player's first death. The suspects are a son of the rival family that
 claims the estate's east fields, a tenant whose wife the watchman once had beaten, and the family's steward, who
@@ -259,22 +257,21 @@ From here the cases are killings. In quest 9 the structure begins to break.
 **5. The Pilot's Bar** (Archon, the eastern harbour city; Wreck of the Tidewarden, a cog aground north of Archon). An
 Archon pilot has been found drowned in the harbour. Marcella teaches the player Throw Noise before they go. The
 suspects are the daughter of the Khajiit captain whose cog the pilot ran onto the bar years ago, a rival pilot, and
-a fence on the lower wharves. The journal says: "Ask on Archon's wharves. Look over the fence's store on the lower
+a fence on the lower wharves (checked: Archon's source is Journey to Baan Malur's waterside city of 162 interiors, whose dockhouses and general store serve the wharves and the fence's store, and King of the Murkmire's Lilmoth gives the stilt houses and the wharf sheds). The journal says: "Ask on Archon's wharves. Look over the fence's store on the lower
 wharves. The Tidewarden lies on the beach north of the city." Markers lead to the wharves, the store and the wreck.
 
 - *On the wharves* people say the captain's daughter swam in the harbour games that night, before twenty children,
   and that the rival pilot was out at sea.
 - *The fence's store* is watched by a wharf watchman. The player draws him off with Throw Noise or waits for him to
   turn and slips past (Sneak). In the store is the pilot's knife, bloody (a named thing).
-- *In the Tidewarden's hull* the captain's strongbox lies on the broken lower deck among mudcrabs (checked: the
-  sources hold no ship's hold, so the record puts the strongbox on the open lower deck). It has an Apprentice lock.
+- *In the Tidewarden's hull* the captain's strongbox lies on the broken lower deck among mudcrabs (checked: the wreck's source is Pilgrims Trench from Skyrim, five wrecked ship hulls with no interior, so there is no ship's hold and the strongbox lies on the broken lower deck, open to the air). It has an Apprentice lock.
   Inside is the logbook that names the pilot and the fence's payments to him. The journal: "The fence paid the
   pilot to run ships aground, and the pilot wanted out."
 
 *Leads on:* Marcella pays 250 gold and sends the player to Chasepoint, on the coast road east of Soulrest.
 
 **6. The Lost Cart** (Chasepoint, a salvage and carting village east of Soulrest; Redgum Camp, a timber camp in the
-Percar hills). A carter was found dead at the roadside and his cart is gone. The suspects are a logger at Redgum Camp
+Percar hills). A carter was found dead at the roadside and his cart is gone (checked: Chasepoint's source is Docks from Black Marsh & Valenwood, a town of 482 buildings whose ship pieces make the salvage yard and whose ship and cabin interiors serve as the inn and the yard smithy; Redgum Camp's source is Chillwater Mill from Wyrmstooth, a mill with lumber pieces whose one interior serves as the bunk house, and the log yard of red gum is added). The suspects are a logger at Redgum Camp
 who lost money to him at dice, the carter's partner, who wanted the cart, and a salvager of Chasepoint, who wanted
 its load of wreck brass. The journal says: "Ask in Chasepoint. Search the woods round Redgum Camp." Markers lead to
 the village and to the camp's edge.
@@ -291,7 +288,7 @@ Mir-Xal sails nearest, and the journal marks the walk from there.
 
 **7. The Ferryman** (Lujei, the shore village on the Blackrose channel; Lujei Ferry, the raft landing west of it).
 The ferryman did not come home. The suspects are the island core's toll-taker, the ferryman's wife's kinsman and a
-Blackrose boardwalk outlaw. The journal says: "Search the reeds round the ferry landing. Ask in Lujei." Markers lead
+Blackrose boardwalk outlaw (checked: Lujei's source is Keeba Hollow from King of the Murkmire, an Argonian stilt village with nine interiors whose fisher's hut serves as the ferry families' cookhouse, and Lujei Ferry's source is Northshore Landing from Dragonborn, a dock of 24 buildings with no interior, with Argonian dock pieces from King of the Murkmire's Alten Meerhleel; the kinsman's house is one of Keeba Hollow's huts). The journal says: "Search the reeds round the ferry landing. Ask in Lujei." Markers lead
 to the landing and the village.
 
 - *In the reeds* by the landing lie the ferryman's body and a drowned traveller's purse. Marcella has taught the
@@ -304,8 +301,7 @@ to the landing and the village.
 
 *Leads on:* Marcella pays 350 gold and has a case in the burnt mines of the cape.
 
-**8. The Burnt Cut** (Naxan, a logging village on the Soulrest coast; Ashfall Cut, a burnt open mine near it). A
-log-hauler of Naxan was found at the foot of the old vent shaft in Ashfall Cut (the record's forgotten vent shaft). He
+**8. The Burnt Cut** (Naxan, a logging village on the Soulrest coast; Ashfall Cut, a burnt open mine near it). A log-hauler of Naxan was found at the foot of the old vent shaft in Ashfall Cut (checked: Naxan's source is King of the Murkmire's Seekhat Yol, Argonian stilt houses with dock pieces, and its log landing is added; Ashfall Cut's source is Bilegulch Mine from Skyrim, whose one interior serves as the burned passages that the vent shaft leads down to, and the open cut, its gas vents and the grave goods at the shaft are added). He
 went there for the grave goods that lie at the shaft. (Bramman's Brethren's 3, The Naxan Landing, robs the pay chest on the
 same village's log landing.) The suspects are two men who went with him and a third who was not meant to be there.
 The journal says: "Ask in Naxan who went to the cut. Search the cut and the vent shaft." Markers lead to the village
@@ -322,13 +318,12 @@ from Mir-Xal.
 
 **9. The Road Watcher** (Mir-Xal, the market town on the Soulrest-Blackrose road; Mudmoth, a ruined road station in
 the washes). Travellers on the Soulrest road have been robbed and one killed, and Mir-Xal's toll-man swears it is
-outlaws from Mudmoth. The journal says: "Ask in Mir-Xal. Search the road ditches south of the town." Markers lead to
+outlaws from Mudmoth (checked: Mir-Xal's source is the walled town of Fort Frostmoth from Bloodmoon Dungeons Restored, whose two interiors serve as the toll house and the guards' quarters, and King of the Murkmire's Alten Meerhleel gives the market house and a lodging house that serve as the stage inn). The journal says: "Ask in Mir-Xal. Search the road ditches south of the town." Markers lead to
 the town and the road. A witness at the stage inn describes the robbers. A bloody toll token lies in a ditch by the
 road. As the player takes the token, the toll-man learns that the Lampbearer is close. The journal marks Mudmoth for
 the third clue. When the player reaches it, he is already there with the outlaws he pays, and they attack. Marcella
 taught Fury before the case. Fury turns the outlaws on each other. The player can also fight through them, or shoot
-down at them from the broken tower (checked: the record has the broken stone tower and the cellars where the outlaws
-sleep). The toll-man's body carries his share and a key to his Mir-Xal house, where the rest of the travellers'
+down at them from the broken tower (checked: Mudmoth's source is Old Laboratory from King of the Murkmire, an Imperial ruin on the water with one interior that serves as the cellars where the outlaws sleep, and its outside already has a tower piece and ruin walls for the broken stone tower). The toll-man's body carries his share and a key to his Mir-Xal house, where the rest of the travellers'
 things lie. There is no hearing: the culprit is dead or he yields, and the journal says what the Lampbearers then do.
 *Leads on:* Marcella pays 450 gold and has a man who must be brought in alive.
 
@@ -336,8 +331,7 @@ things lie. There is no hearing: the culprit is dead or he yields, and the journ
 begins. A Lilmoth boat-builder strangled his partner, and the evidence is plain. He has fled to the squatters of
 Fort Sallowmoth. Marcella wants him alive. The squatters' lookout stands on the north wall and the smugglers camp in
 the yard (both in the place's record). The journal says the player may fight or go quietly, and the marker leads to
-the fort's upper hall. In the armoury there (checked: the source, Fort Hraggstad, has an upper hall that the record
-sets as barracks and armoury) he speaks first. A hard Speech check (60) brings him to come quietly: the screen fades
+the fort's upper hall. In the armoury there (checked: Sallowmoth's source is Fort Hraggstad from Skyrim, an Imperial fort with two interiors, of which the upper hall serves as the barracks and armoury and the lower hall as the cellar) he speaks first. A hard Speech check (60) brings him to come quietly: the screen fades
 and he is gone to Soulrest. If the check fails, or the player does not try, he attacks. A dead man pays the
 Lampbearers nothing, so the reward is half of 500 gold. *Leads on:* Marcella has three deaths that look the same.
 
@@ -346,8 +340,7 @@ Lampbearers nothing, so the reward is half of 500 gold. *Leads on:* Marcella has
 **11. The Clean Kills** (Tarak Shan, a stormed Argonian stronghold east of the washes; Soulrest). Three men of the
 washes died this year, each with one cut to the throat and nothing taken. One died under a fallen roof at Tailfall
 Mound and one in his boat; the last died at Tarak Shan, where the dead men met. The journal says: "Search the halls
-of Tarak Shan." The marker leads to the ruin. A feather-serpent dens in the great hall (checked: the record sets the
-source's halls interior, Teeth of Sithis Halls, as the serpent's den; its two xanmeer interiors lie past it). The
+of Tarak Shan." The marker leads to the ruin. A feather-serpent dens in the great hall (checked: Tarak Shan's source is Teeth of Sithis from King of the Murkmire, an Argonian ruin of tiered halls with three interiors, of which the halls interior serves as the serpent's den and the two xanmeer interiors lie past it). The
 player kills it, or slips past it, to the west xanmeer, where the last man died. There they find a hatchling's
 practice blade, a brass chain link and the dead men's sale-notes. The notes say they sold Shadow-born hatchlings to
 "the rice buyer of Lilmoth" and carried them on "the Silt-Orrel boats". Back in Soulrest, Teesh-Vaal tells the player
@@ -360,9 +353,7 @@ Silt-Orrel, a walk north of Lilmoth's harbour.
 
 **12. The Night at Silt-Orrel** (Silt-Orrel Estate, a rice estate north of Lilmoth; Lilmoth). The grand case. Two
 Lampbearers and the family's guards watch the estate. Orrel-Sakka was found at dawn on his own boat landing, by the
-woven reed post, and the family carried him into the planter's house (checked: the record sets the source's
-farmhouse, Cormar Crossing's, as the planter's house and its storehouse as the cellar with the salvage chest; the
-landing and its reed post are promised in the record). There are four suspects. Orrel-Sakka's cousin is back from his
+woven reed post, and the family carried him into the planter's house (checked: Silt-Orrel's source is Cormar Crossing, a Dunmer farm from Journey to Baan Malur whose farmhouse interior serves as the planter's house and whose storehouse interior serves as the cellar with the salvage chest; the landing and its reed post are added from King of the Murkmire's dock and reed pieces). There are four suspects. Orrel-Sakka's cousin is back from his
 service in an Archwarden fort and wants a share of the boats. Lucan Vetrix paid gold for the hatchlings that the boats carried. A thief robbed the estate that
 night. The fourth is the killer. The journal says: "Look at the
 body in the planter's house. Search the landing and the storehouse. Speak to the people of the estate." Markers lead
@@ -388,7 +379,7 @@ ground at Meris-Keth, for 200 gold or an Expert Speech check. The journal marks 
 **13. The Witness in the Dead Village** (Meris-Keth, an abandoned stilt village of the Banujha Basin). Khajiit
 moon-sugar smugglers store their goods in the dry halls, and the unstaked dead rise from the water under the
 walkways (both in the place's record). Drips-From-Eaves hides in the headman's hall with the smugglers' captain
-(checked: the record sets the source's Argonian house as the headman's hall). The journal says the player may fight
+(checked: Meris-Keth's main source is an empty hamlet from Black Marsh & Valenwood with one Argonian house interior, which serves as the headman's hall; the tiers of stilt halls joined by walkways are added from the stilt huts of King of the Murkmire's Seekhat Yol). The journal says the player may fight
 the smugglers or go quietly, and the marker leads to the hall. The player fights the smugglers, sneaks past them, or
 buys their captain off for 500 gold. Drips-From-Eaves speaks first. He tells what he saw: a back on the landing, and
 the brass in the dead man's hand, which he took and gave to Swims-Without-Ripples, his leader, as her share. As the
@@ -409,7 +400,7 @@ Lamp-Master.
 **Step 1: Ra'tal Den.** Marcella says: "Teesh-Vaal has sent word to him under the old truce of the ku-vastei. He will
 speak with you, once." The journal says: "Go to Ra'tal Den and speak with the Eldest." The marker leads to the den,
 a walk west from Blackrose's landing through the Banujha Basin. While the truce holds, the Shadowscales' novices in the den
-do not attack the player; the den's mudcrabs still do (the record's mudcrabs). The marker then leads to the hearth
+do not attack the player; the den's mudcrabs still do (checked: Ra'tal Den's source is Haj-Uxith from King of the Murkmire, a small Argonian ruin whose one interior serves as the dome's passages and hearth chamber, and the mudcrabs are placed in it). The marker then leads to the hearth
 chamber. Ukka-Teel stands apart from his novices by the hearth and speaks first. He says why he killed: Orrel-Sakka
 was selling the order's children to the Brotherhood.
 
@@ -429,8 +420,7 @@ strongbox. Report to Marcella." The marker leads to the Lamp-Hall.
 player tells her, and a player who tells her ends the frame (the journal says so). She says: "Then we need the brass,
 and we need the thief to say before Teesh-Vaal where it came from. Swims-Without-Ripples will want a price. Pay it."
 The journal says: "Go to the Eelskins' hall under Pusbottom and get the Eldest's brass." The marker leads to the hatch
-on Pusbottom's walkways (checked: Lilmoth's record sets the source's sewer hideout as the cellars under Pusbottom,
-entered by a hatch door from the walkways). Marcella gives the player the hatch's key, which a Lampbearer took from a
+on Pusbottom's walkways (checked: Lilmoth's source is King of the Murkmire's Lilmoth, whose sewers have a hideout room that serves as the cellars under Pusbottom, entered through a hatch door that we set on the walkways). Marcella gives the player the hatch's key, which a Lampbearer took from a
 thief last year.
 
 **Step 5: the Eelskins' hall.** Behind the hatch, the Eelskins in the cisterns let the player through to the hall,
