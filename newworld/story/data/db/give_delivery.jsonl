@@ -962,16 +962,16 @@
 {"place_id":"outpost-m11-m102","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-creature: crocodiles in the channel below the post)"}
 {"place_id":"outpost-m11-m102","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (treasure: a smuggler's sunken crate by the chain)"}
 {"place_id":"outpost-m11-m63","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (fishing: the weir traps: eels and gar)"}
-{"place_id":"outpost-m11-m63","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (cooking-pot: by the landing)"}
+{"place_id":"outpost-m11-m63","give_seq":1,"seq":0,"by":"ref","ref_id":"outpost-m11-m63.PBF61HY6V53GZ8090HEFCFY3PB","status":"delivered","why":"the place's cooking-pot (place.json stations)"}
 {"place_id":"outpost-m11-m63","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-creature: mudcrabs on the bank and one young crocodile below the weir)"}
 {"place_id":"outpost-m11-m63","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (treasure: a thief's sack of stolen traps and coin hidden in the reeds)"}
 {"place_id":"outpost-m11-m63","give_seq":4,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (harvest-rare: Sithis' beard, a grey moss hanging over the creek below the weir)"}
-{"place_id":"outpost-m13-m65","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-general: the cook's stall of dried fish and lamp oil)"}
-{"place_id":"outpost-m13-m65","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (free-bed: a bench in the hut)"}
-{"place_id":"outpost-m13-m65","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (cooking-pot: the cook's fire by the hut)"}
-{"place_id":"outpost-m13-m65","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (harvest-common: sedge and swamp fungus on the reed beds)"}
-{"place_id":"outpost-m13-m65","give_seq":4,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-creature: mudcrabs on the river bank and one young crocodile in the reed beds)"}
-{"place_id":"outpost-m13-m65","give_seq":5,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (treasure: the gang-master's strongbox in the hut)"}
+{"place_id":"outpost-m13-m65","give_seq":0,"seq":0,"by":"person","person_id":"outpost-m13-m65.RP1ZWTTMYJ5QZ7EKY4SZEHE05S","status":"delivered","why":"Okeeh (merchant) gives it (people.jsonl services)"}
+{"place_id":"outpost-m13-m65","give_seq":1,"seq":0,"by":"record","status":"open","why":"free-bed 'a bench in the hut': the hut is the Hjaalmarch camp's large tent, with a bed but no bench; the owner rules: add a bench in the hut by draft.add, or edit the record"}
+{"place_id":"outpost-m13-m65","give_seq":2,"seq":0,"by":"ref","ref_id":"outpost-m13-m65.J0KTQNPTJ7JCY9BYWXXXAPV5ZS","status":"delivered","why":"the place's cooking-pot (place.json stations)"}
+{"place_id":"outpost-m13-m65","give_seq":3,"seq":0,"by":"record","status":"open","why":"harvest-common 'sedge and swamp fungus on the reed beds': no reed bed is drafted; the place-build pass must lay the reed beds' sedge and fungus along the bank"}
+{"place_id":"outpost-m13-m65","give_seq":4,"seq":0,"by":"record","status":"open","why":"combat-creature 'mudcrabs on the river bank and one young crocodile in the reed beds': the creatures are placed at a fixed level by the place-build pass once the reed beds are laid"}
+{"place_id":"outpost-m13-m65","give_seq":5,"seq":0,"by":"container","ref_id":"outpost-m13-m65.H2ST2KHQFZATRW9NEP4YSS6GRM","status":"delivered","why":"the gang-master's strongbox stands in the hut (draft.add, need 1), stocked at T1 behind a Novice lock"}
 {"place_id":"outpost-m13-m79","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-creature: spriggans at the place the totem was moved from)"}
 {"place_id":"outpost-m13-m79","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-creature: a spriggan matron)"}
 {"place_id":"outpost-m13-m79","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (boss-chest: boss chest)"}

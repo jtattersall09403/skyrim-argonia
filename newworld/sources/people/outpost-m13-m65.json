@@ -1,0 +1,66 @@
+{
+ "place_id": "outpost-m13-m65",
+ "about": "Ashgate Landing's people as world facts (person, household, person_note tables; tools/newworld/stockdb.py). Placement (bed, work, routine) stays in newworld/places/outpost-m13-m65/people.jsonl under the same ids. Dralin Uveran and Hara-Jeel, whom quest 1 places here, are the quest's to place: the draft has no Dunmer gang-master nor a second cutter in the hold to cast them on.",
+ "guard_body": "guard",
+ "households": [
+  {"id": "outpost-m13-m65.household.exterior", "home_space": "exterior", "name": null},
+  {"id": "outpost-m13-m65.household.01dock3to4", "home_space": "01dock3to4", "name": null}
+ ],
+ "people": [
+  {
+   "id": "outpost-m13-m65.RP1ZWTTMYJ5QZ7EKY4SZEHE05S",
+   "name": "Okeeh",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "stone-grey",
+   "household": {"id": "outpost-m13-m65.household.01dock3to4", "role": "head"},
+   "role": "merchant",
+   "trade": "the gang's cook; keeps the cook's stall of dried fish and lamp oil",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "cast": "npc.mn.okeeh",
+   "notes": [
+    {"aspect": "backstory", "text": "She cooks for the reed gang and sells dried fish and lamp oil from her stall by the hut. Each new gang meets her first, at the spit pot in the barge's hold, before the gang-master takes their names.", "tier": "AGENT_INVENTED", "cites": ["place_give:outpost-m13-m65/0", "place_note:outpost-m13-m65/people", "place_note:outpost-m13-m65/present", "newworld/story/quests/main/mn01.yaml"]}
+   ],
+   "relations": []
+  },
+  {
+   "id": "outpost-m13-m65.VD51ZD4GP90N4WYGPGW43D7PPC",
+   "name": "Aulus Petrenius",
+   "sex": "male",
+   "race": "ImperialRace",
+   "culture_id": "stone-grey",
+   "household": {"id": "outpost-m13-m65.household.exterior", "role": "head"},
+   "role": "guard",
+   "trade": "the gang-master's guard, day watch; leads the camp's two guards",
+   "wealth": "W3",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {"aspect": "backstory", "text": "He is a sword the gang-master pays to keep the cutters at their months of the Owing. He served at the old road post before the toll moved to Slough Point and stayed when the reed gangs came.", "tier": "AGENT_INVENTED", "cites": ["place_note:outpost-m13-m65/history", "place_note:outpost-m13-m65/overview"]}
+   ],
+   "relations": []
+  },
+  {
+   "id": "outpost-m13-m65.WHM2H7QJJWKMZ93N3ZFEE967NE",
+   "name": "Calvia Durnas",
+   "sex": "female",
+   "race": "ImperialRace",
+   "culture_id": "stone-grey",
+   "household": {"id": "outpost-m13-m65.household.exterior", "role": "lodger"},
+   "role": "guard",
+   "trade": "the gang-master's guard, night watch",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {"aspect": "backstory", "text": "She keeps the night watch over the barge and the tents, and walks the bank when the river runs high. She came up from the sea on a reed barge and never went back down.", "tier": "AGENT_INVENTED", "cites": ["place_note:outpost-m13-m65/look", "place_note:outpost-m13-m65/history"]}
+   ],
+   "relations": []
+  }
+ ]
+}

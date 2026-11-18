@@ -9,3 +9,5 @@
 {"id":"helstrom.household.01ArgonianHouseinside.9","place_id":"helstrom","home_space":"01ArgonianHouseinside.9"}
 {"id":"helstrom.household.01Ship","place_id":"helstrom","home_space":"01Ship"}
 {"id":"helstrom.household.levy-camp","place_id":"helstrom","home_space":"exterior"}
+{"id":"outpost-m13-m65.household.01dock3to4","place_id":"outpost-m13-m65","home_space":"01dock3to4"}
+{"id":"outpost-m13-m65.household.exterior","place_id":"outpost-m13-m65","home_space":"exterior"}

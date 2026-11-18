@@ -62,6 +62,21 @@
    "never": false
   },
   {
+   "id": "Dawnguard.esm:0037E5",
+   "form_key": "0037E5:Dawnguard.esm",
+   "plugin": "Dawnguard.esm",
+   "edid": "DLC1TrapCrossbowWeapon01",
+   "name": null,
+   "record": "WEAP",
+   "item_kind_id": "weapon",
+   "value": 5,
+   "material": "WeapMaterialSteel",
+   "stock_tier_id": "T1",
+   "enchanted": false,
+   "significant": true,
+   "never": false
+  },
+  {
    "id": "Skyrim.esm:00000F",
    "form_key": "00000F:Skyrim.esm",
    "plugin": "Skyrim.esm",
@@ -1214,6 +1229,21 @@
    "stock_tier_id": "T1",
    "enchanted": false,
    "significant": false,
+   "never": false
+  },
+  {
+   "id": "Skyrim.esm:07A91A",
+   "form_key": "07A91A:Skyrim.esm",
+   "plugin": "Skyrim.esm",
+   "edid": "Scimitar",
+   "name": null,
+   "record": "WEAP",
+   "item_kind_id": "weapon",
+   "value": 5,
+   "material": "WeapMaterialSteel",
+   "stock_tier_id": "T1",
+   "enchanted": false,
+   "significant": true,
    "never": false
   },
   {
