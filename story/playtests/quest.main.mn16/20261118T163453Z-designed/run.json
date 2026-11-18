@@ -1,0 +1,105 @@
+{
+ "quest": "quest.main.mn16",
+ "moment": "designed",
+ "record": "newworld/story/quests/main/mn16.yaml",
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "way": "turn",
+ "choose": null,
+ "know": "story/playtests/quest.main.mn15/20261117T172919Z-designed/notes.md",
+ "created": "20261118T163453Z",
+ "stages": [
+  10,
+  20,
+  93
+ ],
+ "ended": "complete",
+ "after": [
+  {
+   "record": "newworld/story/quests/main/mn01.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn02.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn03.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn04.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn05.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn06.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn07.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn08.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn09.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn10.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn11.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn12.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn13.yaml",
+   "ending": 91
+  },
+  {
+   "record": "newworld/story/quests/main/mn14.yaml",
+   "ending": 90
+  },
+  {
+   "record": "newworld/story/quests/main/mn15.yaml",
+   "ending": 91
+  }
+ ],
+ "milestones": 3,
+ "notes": true,
+ "commands_used": [
+  "answer 1. I hold two seal-stones (Blackrose, Gemin) and need the third from the vault in Vorannuhl deep halls. The Eye must not be lifted from its place; rivals are the Unbound and Ennodius Vanin. 2. Get the Bronze Key from Hesh-Var in the outer yard of Vorannuhl, then open the bronze door to the Vault of the Household. 3. Pickpocket Hesh-Var unseen (if caught all the raiders attack), or kill him and take it. I favour stealth as my build is a sneaky one. 4. I do not know why the Unbound drain trees, what moans in the Fort Chalkmoth cellar, or how Nesh-Deeka knows about the Unbound. Exploring and talking may tell me.",
+  "pickpocket Hesh-Var win",
+  "answer 1. I stole the bronze key unseen. Plague-dead and a wraith lord guard the vault below. 2. Go to the Door to the Vault of the Household and open it, take the seal-stone. 3. Fight the dead, slip past them, or turn them with Restoration (I have no obvious Restoration). Paralysis poisons may help. 4. Nothing new; still unknown are the Unbound motives, the Chalkmoth cellar moaning, and Nesh-Deeka.",
+  "use Door to Vault of the Household",
+  "take Household's Hoard",
+  "look",
+  "use Household's Hoard",
+  "take Seal-Stone of the Kings",
+  "answer 1. I now hold all three seal-stones. Never-Writes-Twice ordered all three brought to her in Nesh-Deeka's House in Helstrom before anyone goes near the Kings Gate. The Eye must not be lifted. 2. Go to Nesh-Deeka's House in Helstrom and deliver the stones to Never-Writes-Twice. 3. Deliver them as ordered, or go to the Kings Gate myself under Teku-Sul Spire; the journal says to bring them first. 4. Still unknown: why the Unbound drain trees, what moans in the Fort Chalkmoth cellar, how Nesh-Deeka knows of the Unbound. I could ask in Helstrom.",
+  "answer I hold all three seal-stones (Blackrose, Gemin, Kings), got the third by pickpocketing the bronze key from Hesh-Var at Vorannuhl and opening the Household vault; the wraith lord there did not attack. Never-Writes-Twice wants all three brought to her at Nesh-Deeka's House in Helstrom before anyone goes to the Kings Gate under Teku-Sul Spire (dive from Bell Station). Gemin tablet: the Eye used in place strengthens every tree, lifted it cuts them off and the weak die alone; do not lift the Eye. Rivals: the Unbound and the collector Ennodius Vanin at Blackrose. Open questions: why the Unbound drain trees, what moans in the Fort Chalkmoth cellar, how Nesh-Deeka knows the Unbound. I have about 350 gold, Reel-Ka armour, rapier, 2 lockpicks, 3 paralysis poisons, sap jar, keystone, eye-setting, and the bronze key. Next: go to Helstrom."
+ ],
+ "player_error": null,
+ "stopped": "result",
+ "subtype": "success",
+ "cost_usd": 0.052068199999999995,
+ "minutes": 0.5,
+ "turns": 11,
+ "tokens": {
+  "input_tokens": 20,
+  "output_tokens": 2324,
+  "cache_read_input_tokens": 54402,
+  "cache_creation_input_tokens": 5837
+ }
+}

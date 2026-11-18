@@ -178,14 +178,15 @@ a Velothi watch-hold a walk south-east down the bight.
 **3. The Fire-Stone** (Kornakim, a ruined Velothi watch-hold on Hatandros Bight). Neeja teaches Soul Trap. A brazier
 at the top of Kornakim's tower holds a spell-lit fire that has never gone out, because a soul is bound in its
 fire-stone (a Skyrim black soul gem mesh under our name). Ervyn wants the stone (Kornakim's main source, Frossel in
-Dragonborn, is a Dunmer and Nordic ruin of cave pieces with one interior, so the inner hall is taken from Redeyn
-Ancestral Tomb in Journey to Baan Malur, a Velothi tomb whose one interior is corridors, ash pits, altars and shrine
-niches; the tower stair, the broken tower and the brazier are added). Household ghosts walk the inner hall, and the
+Dragonborn, is a Dunmer and Nordic ruin whose one interior is an ice cave, so the inner hall is taken from Fort
+Blacklight's bulwark in Journey to Baan Malur, Dunmer brick halls and tower walls with a stair; the shrine niches,
+the broken tower and the brazier are added). Household ghosts walk the inner hall, and the
 watch-captain's ghost stands on the tower stair (Velothi ghosts, section 9; the captain is the record's boss). The
 journal says the player may fight the ghosts or sneak past them. On the stair they kill the captain's ghost with Soul
 Trap on him, so that his soul goes into their gem, and take the fire-stone from the brazier. A hole in the courtyard
-floor leads down to a sea cave where a smugglers' crew left a cache (Frossel's cave pieces build the sea cave as a
-second interior, behind an added door in the hole); the journal says nothing of it, and a player who goes down finds
+floor leads down to a sea cave where a smugglers' crew left a cache (Coldcinder Cave in Dragonborn, a basalt sea
+cave with standing water and the skeletons of the dead, is the second interior, behind an added door in the hole);
+the journal says nothing of it, and a player who goes down finds
 300 gold and a sea-chest of goods guarded by mudcrabs. *Leads on:* Ervyn sells the stone to a buyer in Thorn for a
 great price, pays the player 200 gold and makes them a Gravewright. Then Neeja gives the player the house's real work:
 the Argonian dead of Tazhul.
@@ -211,11 +212,11 @@ our name). The lord's ghost and the ghosts of his halls strike with frost, as Sk
 player a ring of Resist Frost to break at the arcane enchanter of the Conclave of the One in Thorn, which teaches them
 the enchantment (Enchanting; Thorn's own source has only a ship interior, so the Conclave of the One is an interior
 added from Imperial and Dunmer pieces, as Thorn's record lists). The player enchants their own armour against frost.
-Bala Karag is a walk south of Thorn and across the stone causeway to the rock (Bala Karag's main source is a small
-Dunmer ruin of 23 pieces with no interior, so the rock and its stone causeway are added, as the record lists). The
-lord's ghost carries the key to the lowest hall, behind a barred door, where knee-deep water has trapped slaughterfish
-(Bala Karag's halls come from Redeyn Ancestral Tomb in Journey to Baan Malur, whose one tomb interior of corridors and
-niches serves as the upper halls and the lowest hall, with the barred door and the knee-deep still water added).
+Bala Karag is a walk south of Thorn and across the stone causeway to the rock (Bala Karag's main source, Fort Dulan
+in Journey to Baan Malur, is a Velothi fort by the water, so the rock and its stone causeway are added, as the record
+lists). The lord's ghost carries the key to the lowest hall, behind a barred door, where knee-deep water has trapped
+slaughterfish (Fort Dulan's one interior of Velothi halls, pillared rooms and barred cells serves as the upper halls
+and the lowest hall, with the barred door and the knee-deep still water added).
 (Runaways hide in the upper halls in the Chainbreakers' line, and the lord's chest is their reward too.) The player
 fights the ghosts in the upper halls or turns them, kills the lord's ghost for the key, and wades the lowest hall past
 the slaughterfish to the chest that holds the urn. *Leads on:* Ervyn sells the urn to his buyer and pays the player
@@ -256,9 +257,9 @@ of Thorn.
 
 **8. Below the Spider** (Ovezza, a ruined Velothi town on the bay). Ovezza's ghosts walk the market square and
 slaughterfish swim in the water over the drowned quay. Behind the market, the key opens the cellar door with Mephala's
-spider carved on it (Ovezza's source is Redeyn Ancestral Tomb in Journey to Baan Malur, whose one tomb interior of
-corridors and altar niches serves as the barred cellar and the house's hall, behind a door whose spider carving is
-added). Inside is the house's hall, where the bound dead stand in rows and let a member pass. The wraith that guards
+spider carved on it (Ovezza's cellar is Raven Rock's Ulen Ancestral Tomb in Dragonborn, a small Dunmer tomb of
+Redoran halls, ash pits and burial urns that serves as the barred cellar and the house's hall, behind a door whose
+spider carving is added). Inside is the house's hall, where the bound dead stand in rows and let a member pass. The wraith that guards
 the inner door (the record's boss, a Velothi ghost) has slipped its binding and killed two of the house. Dalvela
 teaches Sun Fire (Dawnguard's), a spell against the undead that a necromancer turns on a rival's dead. The player puts
 the wraith down with it, or with fire and blade. In the inner room Morvayn waits. He takes the log from the player,
@@ -297,12 +298,12 @@ for a quiet errand that Dalvela must not hear of.
 lord's house that the steward's ghost still wears. He says it is for a buyer. Virtluush is a walk north of Arorha's
 boat stop. Dalvela has bound that ghost as a guard for her own store, and an apprentice of hers tends it with her
 raised dead (Virtluush's main source, Thirsk in Dragonborn, carries camp and farm pieces and seven living people that
-a haunted ruin does not need, so its halls come from Redeyn Ancestral Tomb in Journey to Baan Malur, whose one tomb
-interior serves as the lower halls and the vault; the steward's ghost is the record's boss). A Sarpa lookout (King of
+a haunted ruin does not need, so its halls come from Raven Rock's Morvayn Ancestral Tomb in Dragonborn, a small
+Dunmer tomb whose Redoran halls serve as the lower halls and the vault; the steward's ghost is the record's boss). A Sarpa lookout (King of
 the Murkmire's raider, as the ecology binds the Sarpa) shoots at anyone on the reed-path. The journal says the player
 may shoot the lookout or pass him by stealth. Inside, the cistern is a water-filled hall that the player swims across
-to reach the lower halls (Redeyn's interior has no flooded hall, so the cistern is a still water plane added in one of
-its halls). They fight Dalvela's apprentice and her dead with Sun Fire and Turn Undead, or command her dead from under
+to reach the lower halls (the tomb has no flooded hall, so the cistern is a still water plane added in one of its
+halls). They fight Dalvela's apprentice and her dead with Sun Fire and Turn Undead, or command her dead from under
 her (Command Undead), and take the ring from the steward. In the ring's box is Ervyn's letter to the Vicecanon of
 Thorn: he offers to hand Morvayn and Dalvela over to the Vicecanon if she lets the trade go on.
 
@@ -346,10 +347,10 @@ stop.
 
 **13. The Old Master** (Kaochalit, a ruined Velothi settlement on the mesa south of Tsonac). The herbalist of the
 outer tomb lets a member through (Kaochalit's source has only one interior, so the outer tomb with the herbalist's
-bench is a small interior added from Redeyn Ancestral Tomb's Velothi tomb pieces). Morvayn has raised a priestess of
-Mephala to guard the hall under the well, and he waits there (Kaochalit's source is Redeyn Ancestral Tomb in Journey
-to Baan Malur, whose one tomb interior serves as the lower halls with the hall under the well at its far end; the
-priestess is the record's boss, a Velothi ghost). He tells the player he chose them as heir the night they brought him
+bench is a small interior added from Redoran tomb pieces). Morvayn has raised a priestess of Mephala to guard the hall
+under the well, and he waits there (Kaochalit's lower halls are Raven Rock's Temple Ancestral Tomb in Dragonborn, a
+Dunmer tomb of Redoran halls, ash pits and burial urns with the hall under the well at its far end; the priestess is
+the record's boss, a Velothi ghost). He tells the player he chose them as heir the night they brought him
 his log, and that an heir he cannot trust is an heir he will raise instead. The player fights the priestess, then
 Morvayn, who raises the fallen again and again until he dies (his combat spells, Skyrim's reanimation). With him dead,
 the house is the player's. *Leads on:* the ending (section 7).

@@ -64,3 +64,18 @@ def test_a_few_huts_with_beds_are_a_hamlet_and_ruin_pieces_a_ruin_of_their_tiles
     ruin = cand("r", [[0, 0]], 120, keywords=["cluster"], location=None, residents=0, enemies=3,
                 counts={"refs": 120, "building": 12}, tags={"ayleid": 15, "ruin": 12})
     assert classify(ruin)[0] == "ruin-ayleid"
+
+
+def test_fixed_places_have_distinct_sources_and_a_reason_each():
+    from tools.places.sources_match import FIXED, FIXED_WHY
+    ids = [sid for sid, _rx in FIXED.values()]
+    assert len(ids) == len(set(ids))
+    assert set(FIXED) == set(FIXED_WHY)
+    for sid, rx in FIXED.values():
+        assert rx.search(sid) or sid.startswith("bmv.")
+
+
+def test_pin_refuses_a_place_that_is_not_fixed():
+    from tools.places.sources_match import pin
+    with pytest.raises(SystemExit):
+        pin(["no-such-place"])

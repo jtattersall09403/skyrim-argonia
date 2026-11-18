@@ -543,7 +543,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, near Dunmeth Pass (Journey to Baan Malur), is a small Dunmer ruin of 23 pieces with no interior, so it cannot hold halls. Redeyn Ancestral Tomb (Journey to Baan Malur) fits better: a Dunmer ruin by water with one large interior of tomb halls and niches, which serves as the upper halls and the lowest hall, the latter given a barred door and a still water plane at knee depth for the slaughterfish. Still to add: the rock itself, the stone causeway, the broken tower of Dunmer pieces over the door, the barnacled base courses and the ancestor tablets in the niches.",
+     "text": "Its main source, Fort Dulan (Journey to Baan Malur), is a Velothi fort by the water, with stone walls, stairs and braziers outside and one large interior. Its halls, rooms of pillars, cells with barred doors and shackles and pools of standing water serve as the upper halls and the lowest hall. The lowest hall's door is barred and the hall is given a still water plane at knee depth, where the slaughterfish swim. Its bandits are removed. Still to add: the rock itself, the stone causeway, the broken tower over the door, the barnacled base courses and the ancestor tablets in the niches.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -809,7 +809,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Frossel (Dragonborn), is a Dunmer and Nordic ruin with cave pieces and one interior. Its Nordic pieces are replaced. Redeyn Ancestral Tomb (Journey to Baan Malur) fits the hold better: a Dunmer ruin by water whose one interior of corridors, ash pits and altars serves as the inner hall; the stair up to the tower is added. The sea cave is a second interior built from Frossel's cave pieces and reached by a door in a hole in the courtyard floor. Still to add: the roofless courses on the headland, the broken watch-tower, the brazier with its fire, the sand drifts and the smugglers' cache.",
+     "text": "Its main source, Frossel (Dragonborn), is a Dunmer and Nordic ruin with cave pieces and one interior. Its Dunmer ruin pieces serve outside and its Nordic pieces are replaced; its interior, an ice cave of riekling pieces, is not used. Fort Blacklight's bulwark (Journey to Baan Malur) fits the hold better: Dunmer brick halls and tower walls with stairs, bunks, stores and lanterns, which serve as the inner hall and the stair up to the tower. Its guards are removed. Coldcinder Cave (Dragonborn), a basalt sea cave with standing water, pearl oysters, barnacles and the skeletons of the dead, serves as the sea cave beneath. It is reached by a door in a hole in the courtyard floor. Its Nordic ruin pieces are left out. Still to add: the ancestor shrine niches of the inner hall, the roofless courses on the headland, the broken watch-tower, the brazier with its fire, the sand drifts and the smugglers' cache.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2203,7 +2203,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Thirsk Unifying Dummy (Dragonborn), is a small Dunmer and Imperial ruin of 51 buildings with one interior, but it carries camp and farm pieces and seven living people that a haunted ruin does not need. Redeyn Ancestral Tomb (Journey to Baan Malur) fits the lower halls better: a Dunmer ruin by water with one interior of tomb halls and shrine pieces. Its interior serves as the lower halls and the vault, with a still water plane added in the cistern hall. Still to add: the collapsed courts, the standing tower, the Sarpa perches at the edge and the steward's ring.",
+     "text": "Its main source, Thirsk Unifying Dummy (Dragonborn), is a small Dunmer and Imperial ruin of 51 buildings with one interior, but it carries camp and farm pieces and seven living people that a haunted ruin does not need. Raven Rock's Morvayn Ancestral Tomb (Dragonborn) fits the lower halls better: a small Dunmer tomb of Redoran hall pieces with ash pits, burial urns, benches, candles and bones. It serves as the lower halls and the vault, with a still water plane added in the cistern hall. Still to add: the collapsed courts, the standing tower, the altar niches and family tablets, the Sarpa perches at the edge and the steward's ring.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -11412,7 +11412,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Mortrag Glacier Ruins (Forgotten Bloodmoon Dungeons), is a Daedric ruin on dry ground and does not fit. Redeyn Ancestral Tomb (Journey to Baan Malur) fits better: a Dunmer and Ayleid ruin by water whose one interior of corridors, ash pits and altars, with a gate and some sixteen doors, serves as the upper halls the Agaceph read in and the lower halls; a lock is added to the door between them, which becomes the humming door. Still to add: the ruin's wall above the river bank, the landing, the humming door's sound and the Illusion tome in an upper niche.",
+     "text": "Its main source, Masvos (Journey to Baan Malur), is an ash-covered Velothi ruin by the water, with ruined walls, arches, pillars and stairs outside and one interior. The interior is a set of small Velothi halls with ruined walls, rubble, dripping water and the remains of a camp of beds, tables and shelves. It serves as the upper halls, where the Agaceph read, and the lower halls. A lock is added to the door between them, which becomes the humming door. Its ash spawn are removed and its ash is cleared. Still to add: the ruin's wall above the river bank, the broken tower, the landing, the Daedric shrine of the lower hall, the humming door's sound and the Illusion tome in an upper niche.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -11740,7 +11740,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Ashimmidarum (Journey to Baan Malur), is a Daedric ruin with Nordic pieces and 355 buildings. It does not fit a sea-cliff hold. Redeyn Ancestral Tomb (Journey to Baan Malur) fits better: a Dunmer and Ayleid ruin by water with one interior of halls and shrine niches, which serves as the upper tier and the halls. The sea-cave is a second interior built from Frossel's cave pieces (Dragonborn) behind a door at the waterline. Still to add: the cliff, the spell-fire, the rotten floor over the drop, the captive's cell and the smugglers' cache.",
+     "text": "Its main source, Ashimmidarum (Journey to Baan Malur), is a Daedric ruin with Nordic pieces and 355 buildings. It does not fit a sea-cliff hold. Fort Velothi Pass (Caves of Morrowind), a Redoran bulwark held by bandits, fits the halls better. Its main hall of Redoran stone, with ash, scaffolds, crates, skooma, metal cages and anchor chains, serves as the upper tier and the halls, and one of its cages serves as the captive's cell. Its foyer and barracks serve as the lower hall and the smugglers' quarters. Broken Oar Grotto (Skyrim) serves as the sea-cave, a second interior behind a door at the waterline: a sea grotto of waist-deep water and kelp, with wooden scaffolds and walkways, stores of food and drink and chests. The bandits and the grotto's marauders are removed, and so are its ship pieces. Still to add: the cliff, the spell-fire, the rotten floor over the drop, the shrine of the lower hall and the smugglers' cache.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

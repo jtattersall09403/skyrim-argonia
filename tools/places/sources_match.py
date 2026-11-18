@@ -14,8 +14,11 @@ Matches every place of ours (newworld/story/data/db/place.jsonl) to the mined ca
 Similarity is a weighted sum of explainable parts (WEIGHTS): kind (KIND_FIT), the text of the summary against the
 candidate's description (bge-small, tools/places/search/embed.py), size, status, culture or tileset, water and
 interior. The allocation is one linear assignment (scipy) whose cost is (1 - score) times the place's importance
-weight, so a major place gets the most similar source. Fixed: FIXED (a drafted place keeps its source); excluded:
-EXCLUDE (the owner did not like BM&V's Lilmoth).
+weight, so a major place gets the most similar source. Fixed: FIXED (a drafted place keeps its source, or a place
+is given a source by hand); excluded: EXCLUDE (the owner did not like BM&V's Lilmoth).
+
+    python -m tools.places sources-match --pin <place_id>...   apply FIXED to those places in the committed match
+                                                               without re-matching the rest
 """
 from __future__ import annotations
 
@@ -41,10 +44,16 @@ NAME_GROUPS = {"bmv", "kotm"}   # the Black Marsh mods: a shared name there is t
 IMPORTANCE_WEIGHT = {1: 1.0, 2: 1.5, 3: 2.5, 4: 4.0, 5: 6.0}
 FIXED = {"helstrom": ("bmv.helstrom", re.compile(r"^blackmarsh\.cluster\.helstrom\.")),
          "yulca": ("blackmarsh.cluster.murkmire.-23.20", re.compile(r"^blackmarsh\.cluster\.murkmire\.-23\.20$")),
-         "jarecai": ("nyhus.cluster.nyhus.51.-39", re.compile(r"^nyhus\.cluster\.nyhus\.51\.-39$"))}
+         "jarecai": ("nyhus.cluster.nyhus.51.-39", re.compile(r"^nyhus\.cluster\.nyhus\.51\.-39$")),
+         "bala-karag": ("journeytobaanmalur.marker.fort-dulan",
+                        re.compile(r"^journeytobaanmalur\.(marker\.fort-dulan|dulanfortlocation)$")),
+         "velothi-ruin-28-m82": ("journeytobaanmalur.cluster.masvos.-1.-20",
+                                 re.compile(r"^journeytobaanmalur\.cluster\.masvos\.-1\.-20$"))}
 FIXED_WHY = {"helstrom": "the place is drafted from this source",
              "yulca": "Alten Corimont's docks, Dunmer outbuildings and ship are canon's (owner, 2026-11-17)",
-             "jarecai": "swapped with Alten Corimont: Nyhus's fort, smithy and inn serve the fortified town (owner, 2026-11-17)"}
+             "jarecai": "swapped with Alten Corimont: Nyhus's fort, smithy and inn serve the fortified town (owner, 2026-11-17)",
+             "bala-karag": "Fort Dulan's Dunmer tower by the water holds the halls; no other place uses it (2026-11-18)",
+             "velothi-ruin-28-m82": "Masvos's Velothi ruin by the water holds the halls; no other place uses it (2026-11-18)"}
 EXCLUDE = [("bmv", re.compile(r"l[io]lmoth(?!iit)", re.I))]
 LIVED = {"inhabited", "garrisoned", "occupied"}
 WET_SITING = {"coast", "riverbank", "swamp", "lakeshore", "island", "seabed"}
@@ -555,9 +564,123 @@ def repopulate() -> int:
     return 0
 
 
+def fixed_columns(cands: list[dict]) -> dict:
+    """Each FIXED place: (its source id, the candidate column it is pinned to or None, every column of that place)."""
+    fixed = {}
+    for place_id, (source_id, rx) in FIXED.items():
+        js = [j for j, c in enumerate(cands) if rx.search(c["source_id"]) or any(rx.search(a) for a in c.get("aliases") or [])]
+        fixed[place_id] = (source_id, js[0] if js else None, js)  # every piece of the fixed place leaves the pool
+    return fixed
+
+
+def rank_rows(i: int, p: dict, j0: int, total, parts: dict, cands: list[dict], fixed: dict, gives: dict) -> list[dict]:
+    """A place's rows: rank 0 its allocated candidate j0, ranks 1-3 the next most similar."""
+    order = np.argsort(-total[i])
+    alts = [int(j) for j in order if int(j) != j0][:3]
+    out = []
+    for rank, j in enumerate([j0] + alts):
+        c = cands[j]
+        sid = fixed[p["id"]][0] if rank == 0 and p["id"] in fixed else c["source_id"]
+        part = {k: round(float(parts[k][i, j]), 3) for k in (*WEIGHTS, "name")}
+        why = (f"{c['kind']} ({c['kind_why']}) for a {p['place_kind_id']}; best parts: "
+               + ", ".join(f"{k} {v:.2f}" for k, v in sorted(part.items(), key=lambda x: -x[1] * WEIGHTS.get(x[0], NAME_BONUS))[:3]))
+        row = {"place_id": p["id"], "rank": rank, "source_place_id": sid, "score": round(min(1.0, float(total[i, j])), 3),
+               **{f"score_{k}": v for k, v in part.items()}, "why": why}
+        if rank == 0:
+            pop, pwhy = population(p, gives.get(p["id"], []), c)
+            row.update(population_before=p.get("population"), population_after=pop, population_why=pwhy)
+            if p["id"] in fixed:
+                row["why"] = "fixed: " + FIXED_WHY[p["id"]] + "; " + why
+        out.append((row, dict(c, source_id=sid)))
+    return out
+
+
+def source_rows(sid: str, c: dict) -> tuple[dict, dict | None]:
+    """A named source's row of source_place.jsonl and its extractor row of sources_mined.jsonl (None for a source
+    declared by hand in newworld/places/sources.jsonl)."""
+    src = {
+        "id": sid, "title": f"{c['name']} ({Path(c['plugin']).stem})", "name": c["name"], "plugin": c["plugin"],
+        "mod_id": c["credit"], "mined_group": c["group"], "kind": c["kind"], "kind_why": c["kind_why"],
+        "worldspace": c["worldspace"], "worldspace_edid": c.get("worldspace_edid"), "location": c.get("location"),
+        "cells": len(c["cells"]), "interiors": c.get("interior_count", 0), "residents": c.get("residents", 0),
+        "enemies": c.get("enemies", 0), "buildings": c["counts"].get("building", 0), "refs": c["counts"].get("refs", 0),
+        "footprint_m": max(c["footprint_m"]) if c.get("footprint_m") else None,
+        "wet_share": round(c.get("wet_cells", 0) / max(1, c.get("land_cells", 0)), 2),
+        "aliases": ",".join(c.get("aliases") or []) or None,
+        "culture_tags": ",".join(k for k, _ in sorted(culture_tags(c).items(), key=lambda x: -x[1])[:3]) or None,
+        "description": c["description"],
+    }
+    if sid in FIXED.get("helstrom", ("",))[0:1]:
+        return src, None
+    ext = {"source_id": sid, "title": f"{c['name']} ({Path(c['plugin']).stem}, mined)", "plugins": GROUPS[c["group"]][0],
+           "worldspace": c["worldspace"], "cells": sorted(c["cells"], key=lambda x: (x[1], x[0])), "follow_doors": True,
+           **({"extent_m": [c["footprint_m"][0], c["footprint_m"][1]]} if c.get("footprint_m") else {})}
+    return src, ext
+
+
+def pin(place_ids: list[str]) -> int:
+    """Apply FIXED to the named places in the committed match without re-matching the rest: each named place's rows
+    are rewritten (rank 0 its pinned source), every other place keeps its rows, and the source rows follow the
+    sources the match now names (a new one added, one no longer named dropped). The pinned source must be no other
+    place's allocation and share no cell with one."""
+    from tools.places.search.embed import Embedder
+    unknown = [x for x in place_ids if x not in FIXED]
+    if unknown:
+        raise SystemExit(f"not in FIXED: {unknown}")
+    cands, _ = load_candidates()
+    places, gives = place_features()
+    byid = {p["id"]: p for p in places}
+    sub = [byid[x] for x in place_ids]
+    emb = Embedder()
+    emb_p = emb([f"{p['place_kind_id'].replace('-', ' ')}: {p.get('summary') or p['name']}" for p in sub])
+    emb_c = emb([c["description"] for c in cands])
+    total, parts = scores(sub, gives, cands, emb_p, emb_c)
+    fixed = fixed_columns(cands)
+    rows = [json.loads(line) for line in (MATCH / "place_source.jsonl").open() if line.strip()]
+    new, named = {}, {}
+    for i, p in enumerate(sub):
+        j = fixed[p["id"]][1]
+        if j is None:
+            raise SystemExit(f"the FIXED source of {p['id']} matches no candidate")
+        pairs = rank_rows(i, p, j, total, parts, cands, fixed, gives)
+        new[p["id"]] = [r for r, _ in pairs]
+        named.update({r["source_place_id"]: c for r, c in pairs})
+    out, done = [], set()
+    for r in rows:
+        if r["place_id"] not in new:
+            out.append(r)
+        elif r["place_id"] not in done:
+            out += new[r["place_id"]]
+            done.add(r["place_id"])
+    by_sid = {c["source_id"]: c for c in cands}
+    alloc = {r["place_id"]: r["source_place_id"] for r in out if r["rank"] == 0}
+    for x in place_ids:
+        twice = [o for o, s in alloc.items() if s == alloc[x] and o != x]
+        if twice:
+            raise SystemExit(f"{alloc[x]} is already allocated to {twice}")
+    check_unique([by_sid[s] for s in alloc.values() if s in by_sid])
+    src = {json.loads(line)["id"]: json.loads(line) for line in (MATCH / "source_place.jsonl").open() if line.strip()}
+    ext = {json.loads(line)["source_id"]: json.loads(line) for line in ROWS.open() if line.strip()}
+    still = {r["source_place_id"] for r in out}
+    for sid, c in named.items():
+        if sid not in src:
+            s, e = source_rows(sid, c)
+            src[sid] = s
+            if e:
+                ext[sid] = e
+    write_jsonl(MATCH / "place_source.jsonl", out)
+    write_jsonl(MATCH / "source_place.jsonl", [src[s] for s in sorted(src) if s in still])
+    write_jsonl(ROWS, [ext[s] for s in sorted(ext) if s in still])
+    for x in place_ids:
+        print(f"{x}: {alloc[x]} (score {new[x][0]['score']})")
+    return 0
+
+
 def main(argv: list[str]) -> int:
     if argv[:1] == ["--population"]:
         return repopulate()
+    if argv[:1] == ["--pin"]:
+        return pin(argv[1:])
     from scipy.optimize import linear_sum_assignment
     from tools.places.search.embed import Embedder
     cands, dropped = load_candidates()
@@ -568,10 +691,7 @@ def main(argv: list[str]) -> int:
     total, parts = scores(places, gives, cands, emb_p, emb_c)
     pid = {p["id"]: i for i, p in enumerate(places)}
     # fixed allocations leave the pool first
-    fixed = {}
-    for place_id, (source_id, rx) in FIXED.items():
-        js = [j for j, c in enumerate(cands) if rx.search(c["source_id"]) or any(rx.search(a) for a in c.get("aliases") or [])]
-        fixed[place_id] = (source_id, js[0] if js else None, js)  # every piece of the fixed place leaves the pool
+    fixed = fixed_columns(cands)
     cost = np.empty_like(total)
     for i, p in enumerate(places):
         cost[i] = (1 - total[i]) * IMPORTANCE_WEIGHT[p.get("importance") or 1]
@@ -589,48 +709,16 @@ def main(argv: list[str]) -> int:
     used: dict[str, dict] = {}
     match_rows, ranked = [], {}
     for i, p in enumerate(places):
-        order = np.argsort(-total[i])
-        j0 = alloc[i]
-        alts = [int(j) for j in order if int(j) != j0][:3]
-        ranked[p["id"]] = [int(j) for j in order[:10]]
-        for rank, j in enumerate([j0] + alts):
-            c = cands[j]
-            sid = c["source_id"]
-            if rank == 0 and p["id"] in fixed:
-                sid = fixed[p["id"]][0]
-            used.setdefault(sid, dict(c, source_id=sid))
-            part = {k: round(float(parts[k][i, j]), 3) for k in (*WEIGHTS, "name")}
-            why = (f"{c['kind']} ({c['kind_why']}) for a {p['place_kind_id']}; best parts: "
-                   + ", ".join(f"{k} {v:.2f}" for k, v in sorted(part.items(), key=lambda x: -x[1] * WEIGHTS.get(x[0], NAME_BONUS))[:3]))
-            row = {"place_id": p["id"], "rank": rank, "source_place_id": sid, "score": round(min(1.0, float(total[i, j])), 3),
-                   **{f"score_{k}": v for k, v in part.items()}, "why": why}
-            if rank == 0:
-                pop, pwhy = population(p, gives.get(p["id"], []), c)
-                row.update(population_before=p.get("population"), population_after=pop, population_why=pwhy)
-                if p["id"] in fixed:
-                    row["why"] = "fixed: " + FIXED_WHY[p["id"]] + "; " + why
+        ranked[p["id"]] = [int(j) for j in np.argsort(-total[i])[:10]]
+        for row, c in rank_rows(i, p, alloc[i], total, parts, cands, fixed, gives):
+            used.setdefault(row["source_place_id"], c)
             match_rows.append(row)
     src_rows, ext_rows = [], []
     for sid, c in sorted(used.items()):
-        src_rows.append({
-            "id": sid, "title": f"{c['name']} ({Path(c['plugin']).stem})", "name": c["name"], "plugin": c["plugin"],
-            "mod_id": c["credit"], "mined_group": c["group"], "kind": c["kind"], "kind_why": c["kind_why"],
-            "worldspace": c["worldspace"], "worldspace_edid": c.get("worldspace_edid"), "location": c.get("location"),
-            "cells": len(c["cells"]), "interiors": c.get("interior_count", 0), "residents": c.get("residents", 0),
-            "enemies": c.get("enemies", 0), "buildings": c["counts"].get("building", 0), "refs": c["counts"].get("refs", 0),
-            "footprint_m": max(c["footprint_m"]) if c.get("footprint_m") else None,
-            "wet_share": round(c.get("wet_cells", 0) / max(1, c.get("land_cells", 0)), 2),
-            "aliases": ",".join(c.get("aliases") or []) or None,
-            "culture_tags": ",".join(k for k, _ in sorted(culture_tags(c).items(), key=lambda x: -x[1])[:3]) or None,
-            "description": c["description"],
-        })
-        if sid in FIXED.get("helstrom", ("",))[0:1]:
-            continue
-        load = GROUPS[c["group"]][0]
-        ext_rows.append({"source_id": sid, "title": f"{c['name']} ({Path(c['plugin']).stem}, mined)", "plugins": load,
-                         "worldspace": c["worldspace"], "cells": sorted(c["cells"], key=lambda x: (x[1], x[0])),
-                         "follow_doors": True,
-                         **({"extent_m": [c["footprint_m"][0], c["footprint_m"][1]]} if c.get("footprint_m") else {})})
+        s, e = source_rows(sid, c)
+        src_rows.append(s)
+        if e:
+            ext_rows.append(e)
     write_jsonl(MATCH / "source_place.jsonl", src_rows)
     write_jsonl(MATCH / "place_source.jsonl", match_rows)
     write_jsonl(ROWS, ext_rows)

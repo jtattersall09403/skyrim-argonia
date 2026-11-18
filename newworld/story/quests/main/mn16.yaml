@@ -44,8 +44,9 @@ foundation: 'Written 2026-11-17 from main-plot.md quest 16. Starts with MN14 and
   one of four end stages that say which stones are still out. The Ka-Deelith rank and Never-Writes-Twice''s last order are
   MN17''s first stage, the report made with three stones in hand, whatever the order.'
 recordSources:
-  place: 'python -m tools.newworld.place_card velothi-ruin-23-m73 --mined (Redeyn Ancestral Tomb: one tomb interior as the
-    deep halls, its vault behind a locked door that the bronze key opens; the outer yard is the exterior)'
+  place: 'python -m tools.newworld.place_card velothi-ruin-23-m73 --mined (the Desecrated Ancestral Tomb of Caves of
+    Morrowind: one tomb interior as the deep halls, its vault behind a door locked to the bronze key; the outer yard is
+    the exterior)'
   lore:
   - 'story/design/quests/lines/main-plot.md §5 quest 12 and 16, §9 (the Sarpa raiders: King of the Murkmire''s Argonian
     raiders bound to the Sarpa in newworld/sources/ecology/bindings.json)'
@@ -118,7 +119,7 @@ things:
 - id: thing.mn16.vault-door
   kind: door
   name: Vault of the Household
-  source: the source tomb's locked inner door (Redeyn Ancestral Tomb), set to the bronze key only
+  source: one of the source tomb's inner doors (the Desecrated Ancestral Tomb, Caves of Morrowind), locked to the bronze key only
   where: the deep halls
 - id: thing.mn16.vault-chest
   kind: container

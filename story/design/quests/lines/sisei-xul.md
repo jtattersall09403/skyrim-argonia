@@ -292,10 +292,10 @@ lied about the poisoner. Whatever the player chose, she sends them to the order'
 
 **9. The Humming Door** (Helstrom; Sethiral, a ruined Velothi holding at Yina). The order's enchanter gives the player
 a blade enchanted with Turn Undead and asks them to break it at the arcane enchanter in the hall. That teaches them
-the enchantment (Enchanting). Sethiral's sealed door hums at night (Sethiral's source is Redeyn Ancestral Tomb in
-Journey to Baan Malur, a Velothi tomb whose one interior of corridors, altars and ash pits has about sixteen doors,
-among them a gate and two jail doors, so locking one of them splits it into the upper halls and the lower halls behind
-the humming door; the hum is a sound we add). The house has bound the household's ghost behind it to guard its second
+the enchantment (Enchanting). Sethiral's sealed door hums at night (Sethiral's source is Masvos in Journey to
+Baan Malur, an ash-covered Velothi ruin by the water whose one interior of small Velothi halls has five doors, so
+locking one of them splits it into the upper halls and the lower halls behind the humming door; the hum is a sound we
+add). The house has bound the household's ghost behind it to guard its second
 stake store, and Yina's eldest will pay 300 gold to anyone who opens it quietly. Yina is a walk south of Arorha's boat
 stop. The player enchants their own weapon with Turn Undead and goes down past the ghosts in the upper halls (Velothi
 ghosts, section 9) and the river crocodiles at the landing (Curse of Cipactli's). Behind the door the player finds the
@@ -306,9 +306,9 @@ from inside. The journal marks Ovezza, a walk west of Thorn.
 
 **10. The Barred Cellar** (Ovezza, a ruined Velothi town on the bay). The order teaches Circle of Protection
 (Restoration). Ovezza's ghosts walk the market square and slaughterfish swim in the water over the drowned quay.
-Behind the market, the cellar door with Mephala's spider carved on it opens to the key (Ovezza's source is Redeyn
-Ancestral Tomb in Journey to Baan Malur, whose one tomb interior of corridors and altar niches serves as the barred
-cellar and the house's hall, behind a door whose spider carving is added). Behind it is the house's hall, where its
+Behind the market, the cellar door with Mephala's spider carved on it opens to the key (Ovezza's cellar is Raven
+Rock's Ulen Ancestral Tomb in Dragonborn, a small Dunmer tomb of Redoran halls, ash pits and burial urns that serves as
+the barred cellar and the house's hall, behind a door whose spider carving is added). Behind it is the house's hall, where its
 bound dead stand in rows (the Argonian skeletons of quest 3) and a wraith guards the inner door (the record's boss, a
 Velothi ghost). The player raises the Circle at the stair's foot so that the bound dead cannot close on them, and
 fights the dead or slips past them to the wraith. In the hall's inner room lies a sealed letter of Morvayn's. It names
@@ -349,12 +349,12 @@ first (section 6).
 **13. Under the Well** (Kaochalit, a ruined Velothi settlement on the mesa south of Tsonac). The order teaches Sun
 Fire (Restoration, Dawnguard's). Kaochalit is a walk from Tsonac's boat stop. A Dunmer herbalist tends a bench in the
 outer tomb, and she is the house's watch (Kaochalit's source has only one interior, so the outer tomb with the
-herbalist's bench is a small interior added from Redeyn Ancestral Tomb's Velothi tomb pieces). The lower halls are
-full of the flu-dead, and Morvayn has raised a priestess of Mephala to guard the hall under the well (Kaochalit's
-source is Redeyn Ancestral Tomb in Journey to Baan Malur, whose one tomb interior serves as the lower halls with the
-hall under the well at its far end; the priestess is the record's boss, a Velothi ghost). He sits there with the last
+herbalist's bench is a small interior added from Redoran tomb pieces). The lower halls are full of the flu-dead,
+and Morvayn has raised a priestess of Mephala to guard the hall under the well (Kaochalit's lower halls are Raven
+Rock's Temple Ancestral Tomb in Dragonborn, a Dunmer tomb of Redoran halls, ash pits and burial urns with the hall
+under the well at its far end; the priestess is the record's boss, a Velothi ghost). He sits there with the last
 of his house. The player comes in by the front, past the herbalist and through the dead in the halls, or by the back
-way if Neeja opened it (Redeyn's interior has no second way in, so the back way is one locked door added at the well's
+way if Neeja opened it (the tomb has no second way in, so the back way is one locked door added at the well's
 foot into the far end of the interior). The fight is the line's hardest: the priestess, then Morvayn, who raises the
 fallen dead again until the player kills him. When Morvayn falls, the dead he raised fall with him, as Skyrim's raised
 dead do when their caster dies. *Leads on:* the ending (section 7).

@@ -368,11 +368,11 @@ word comes by the Thorn safe house: the journal marks the keeper at Ysan, 539 m 
 **7. Out by Sea** (Ysan, a Stone-Sleeper landing; Bala Karag, a ruined Velothi stronghold on a rocky island). The
 Brethren carry hunted people out of the province by sea, and their crew bring a boat to Bala Karag's causeway after
 dark when a signal fire burns. At Ysan, a landing where the quarrymen turn away any trader who asks after labour, the
-safe house's keeper, Oleeta, tells the player the signal. Bala Karag lies 314 m over the water from Thorn (Bala Karag's main source, the ruin near Dunmeth Pass from Journey to Baan Malur, has no interior, so the record adds a
-stone causeway and a broken tower of Dunmer pieces, and the signal brazier is added at the causeway's island end,
+safe house's keeper, Oleeta, tells the player the signal. Bala Karag lies 314 m over the water from Thorn (Bala Karag's main source, Fort Dulan from Journey to Baan Malur, is a Velothi fort by the water, so the record adds the
+rock, a stone causeway and a broken tower of Dunmer pieces, and the signal brazier is added at the causeway's island end,
 Skyrim's brazier). On the island the four runaways have hidden in the upper halls among the Velothi dead
-(the halls are the one large interior of the Redeyn Ancestral Tomb from Journey to Baan Malur, which has tomb halls,
-niches, ash pits and braziers). The catchers came first and camp at the causeway's fire. There is no talking to them here: they are hostile
+(the halls are Fort Dulan's one large interior, which has Velothi halls, pillared rooms, barred cells and pools of
+standing water). The catchers came first and camp at the causeway's fire. There is no talking to them here: they are hostile
 from the start. The player fights them on the causeway, shoots them from the rocks above it, or slips past their fire
 and into the ruin. Inside, the ghosts and skeletons of the upper halls (Skyrim's ghosts and skeletons, as the record
 gives) stand between the player and the runaways. The journal says "find the runaways in the upper halls". The player

@@ -453,9 +453,9 @@ bronze key opens. A band of Sarpa raiders (King of the Murkmire's Argonian raide
 the Sarpa) shelters in the outer yard, and one of them, Hesh-Var, carries the key. The player lifts it from him or
 kills him for it; raiders who catch the player at his belt all attack. The vault's bronze door takes only its key. The
 plague-dead of the old household walk the deep halls, and its lord, a wraith, guards the vault; they attack whoever
-they see. Vorannuhl is built from Redeyn Ancestral Tomb, a Dunmer ruin in Journey to Baan Malur with one tomb
-interior, which serves as the deep halls, with the vault behind a door we lock to the bronze key. It is the hardest
-place of the hunt, with its hardest fight or its hardest sneak. *Leads on:* whichever stone the player takes
+they see. Vorannuhl's deep halls are the Desecrated Ancestral Tomb from Caves of Morrowind, a large Dunmer tomb
+of Redoran halls and rough cave passages, with the vault behind one of its doors, which is locked so that only the
+bronze key opens it. It is the hardest place of the hunt, with its hardest fight or its hardest sneak. *Leads on:* whichever stone the player takes
 last, the journal sends the player with all three to Never-Writes-Twice in Helstrom, who ordered them brought to her
 first.
 

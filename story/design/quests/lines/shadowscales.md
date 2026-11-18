@@ -188,7 +188,7 @@ the rank of Brass. Taking it shuts the other doors (section 4).
 
 **5. The Spell-Fire** (Mazurath, a ruined Velothi holding on the headland south of Khiar). The smugglers' boss of
 Mazurath ships moon sugar into the bayou villages, and two children of Khiar have died of it. His crew keep their
-cache in the sea-cave, which a swimmer reaches from the water. Ancestor ghosts walk the halls (checked: Mazurath's source is Redeyn Ancestral Tomb from Journey to Baan Malur, a ruin by water with one interior of halls and shrine niches that serves as the upper tier and the halls, and the sea-cave is a second interior of Frossel's cave pieces from Dragonborn, reached through a door at the waterline). The boss keeps a Khiar fisherman captive on the upper tier (the record's hook).
+cache in the sea-cave, which a swimmer reaches from the water. Ancestor ghosts walk the halls (checked: Mazurath's halls are built from Fort Velothi Pass in Caves of Morrowind, a Redoran bulwark. Its main hall, foyer and barracks, with metal cages and anchor chains, serve as the upper tier and the halls. The sea-cave is a second interior from Broken Oar Grotto in Skyrim, a sea grotto of waist-deep water, reached through a door at the waterline.). The boss keeps a Khiar fisherman captive on the upper tier (the record's hook).
 Hulee-Tah teaches Muffle before the player goes. The journal says: "Kill the boss on the upper tier of Mazurath. The
 order would have the fisherman live." The bonus way is to free the fisherman (an Adept lock on his cell) before the
 boss dies. With Muffle the player passes the ghosts in the halls unheard. They can also fight the ghosts, or shoot the
