@@ -1660,7 +1660,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, BlackMarsh2 1,-11 in Black Marsh & Valenwood (Black Marsh.esm), is a hamlet of 129 buildings in Nordic and Imperial style with one house interior and nine hostile figures. The house serves as the family's home and the Nordic pieces are replaced with stone-footed Argonian pieces from Ree-An-Wo (King of the Murkmire). Still to add: the island's low ground in the lake, the stone causeway over the shoal with reeds beside it, the eel pots, the lantern post and the landing.",
+     "text": "Its main source, BlackMarsh2 1,-11 in Black Marsh & Valenwood (Black Marsh.esm), is a hamlet of mossy spike walls, a house, a bench and a guard stand, with one cabin interior of plank walls, a shelf and a table, and nine hostile figures. The cabin serves as the family's home and the Nordic pieces are replaced with the cypress platforms and Xanmeer stone walls of Ree-An-Wo (King of the Murkmire). Still to add: the reed walls on the stone footings of the low houses, the island's low ground in the lake, the stone causeway over the shoal with reeds beside it, the eel pots, the lantern post and the landing.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1907,7 +1907,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Hunter's Shack (Wyrmstooth), is a lone group of twelve buildings in mine and farm pieces with no interior and no people. None of the four listed sources holds an interior, so the farmhouse and the old cook's house are added as interiors built from Argonian hut pieces of Ree-An-Wo (King of the Murkmire), an Argonian hamlet of 31 buildings. Still to add: stone footings under the farms, saltrice paddies, a spare boat at the shore and the smugglers' landing on the south bank.",
+     "text": "Its main source, Hunter's Shack (Wyrmstooth), is a lone group of plank shacks on timber scaffold platforms with rope scaffolds and a farm table, with no interior and no people. None of the four listed sources holds an interior, so the farmhouse and the old cook's house are added as interiors built from Black Marsh & Valenwood's reed-hut pieces. Ree-An-Wo (King of the Murkmire), an Argonian hamlet with cypress walkways and platforms on posts, hide fences and hide tents, supplies the quay and the fences. Still to add: stone footings under the farms, saltrice paddies, a spare boat at the shore and the smugglers' landing on the south bank.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2406,7 +2406,7 @@
     },
     {
      "aspect": "look",
-     "text": "Stilt houses on a hummock, a tall chime-post of tin and copper above the roofs, herb racks and boats tied to every post.",
+     "text": "Hide tents on cypress platforms raised on posts on a hummock, a tall chime-post of tin and copper above the roofs, herb racks and boats tied to every post.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2483,7 +2483,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Old Hroldan (Skyrim), is a Nordic hamlet of ten buildings with one interior and farm pieces. The interior serves as the herb drying-hut and the Nordic pieces are replaced with Argonian pieces from Ree-An-Wo (King of the Murkmire). Still to add: hummocks and channels of water round the hamlet, the chime-post with its chime, the patches of dragon's-tongue and the spriggan's hummock.",
+     "text": "Its main source, Old Hroldan (Skyrim), is a Nordic hamlet of ten buildings with farm pieces and one interior, an inn hall of tables, a bar, mead barrels and hanging game. The interior serves as the herb drying-hut and the Nordic pieces are replaced with the cypress platforms and hide tents of Ree-An-Wo (King of the Murkmire). Still to add: the herb racks and boats tied at the posts, hummocks and channels of water round the hamlet, the chime-post with its chime, the patches of dragon's-tongue and the spriggan's hummock.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2670,7 +2670,7 @@
     },
     {
      "aspect": "look",
-     "text": "A few stilt houses beside a green waterway, hung with chimes; a lantern post; mossy moorings.",
+     "text": "A few hide tents on cypress platforms raised on posts beside a green waterway, hung with chimes; a lantern post; mossy moorings.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2729,7 +2729,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Headwaters Of Harstrad (Dragonborn), is a three-person hamlet of 16 buildings in Nordic and Dunmer style with one interior and cave, mine and ruin pieces. Its Nordic pieces are replaced. Ree-An-Wo (King of the Murkmire) fits the waterway better: an Argonian hamlet whose pieces serve the boat-wife's house. Still to add: the waystation bench and lantern, the wreck in the reeds and the Kothringi cairn behind the houses.",
+     "text": "Its main source, Headwaters Of Harstrad (Dragonborn), is a three-person hamlet of snowy trees and rock with one interior that is an ice cave, so it holds no house. Ree-An-Wo (King of the Murkmire) fits the waterway better: an Argonian hamlet by water with cypress walkways and platforms on posts, hide tents and hide fences and no interior, whose pieces serve the waterside dwellings. Still to add: the boat-wife's house, an interior built from Black Marsh & Valenwood's reed-hut pieces, the waystation bench and lantern, the wreck in the reeds and the Kothringi cairn behind the houses.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2990,7 +2990,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, BlackMarsh 5,-1 in Black Marsh & Valenwood (Black Marsh.esm), is a hamlet of 109 buildings in Nordic and Dwemer style on dry ground, with one house interior that serves as the chime-maker's house. Its Nordic and Dwemer pieces are replaced with Argonian stilt-and-stone pieces from King of the Murkmire. Still to add: the lizard pens, the hide racks, the chime-maker's forge and the watch post on the nearest peak.",
+     "text": "Its main source, BlackMarsh 5,-1 in Black Marsh & Valenwood (Black Marsh.esm), is a hamlet on dry ground of a few Nordic farmhouses and a longhouse roof, with one cabin interior of plank walls and a shelf that serves as the chime-maker's house. Its Nordic pieces are replaced with the cypress platforms, hide fences and Xanmeer stone walls of Ree-An-Wo (King of the Murkmire). Still to add: the stone footings and low walls of the huts, the lizard pens, the hide racks, the chime-maker's forge and the watch post on the nearest peak.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3192,7 +3192,7 @@
     },
     {
      "aspect": "look",
-     "text": "Stilt-and-stone houses against a rock rise, a signal fire basket on the peak, chimes in the wind.",
+     "text": "Hide tents on cypress platforms and stone footings against a rock rise, a signal fire basket on the peak, chimes in the wind.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3251,7 +3251,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, near Honrich Lake Cave (UWRL_UnderWaterSkyrimRiversAndLakes), is a Nordic hamlet of 116 buildings with one interior on dry ground, which serves as a hunter's house. Its Nordic pieces are replaced with Argonian pieces from Ree-An-Wo (King of the Murkmire). BlackMarsh 5,-1 (Black Marsh.esm) offers one house interior as an alternate. Still to add: stilt-and-stone houses against a rock rise, the signal fire basket on the peak, the chime-menders' forge, the hunters' racks and the spiders' nest on the ridge path.",
+     "text": "Its main source, near Honrich Lake Cave (UWRL_UnderWaterSkyrimRiversAndLakes), is a shore of fishing nets, crab traps and broken shack poles with one interior, a warehouse of crates and barrels, which serves as the hunters' store and house. Ree-An-Wo (King of the Murkmire) supplies the cypress platforms, hide tents and hide fences. BlackMarsh 5,-1 (Black Marsh.esm) offers one cabin interior of plank walls and a shelf as an alternate. Still to add: the stone footings of the houses against a rock rise, the signal fire basket on the peak, the chime-menders' forge, the hunters' racks and the spiders' nest on the ridge path.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3454,7 +3454,7 @@
     },
     {
      "aspect": "look",
-     "text": "Four stilt huts and a drying frame of sap-skins on a firm bank, an eel-trap line across the shallows and a canoe landing wreathed in hanging moss.",
+     "text": "Four hide tents on cypress platforms raised on posts and a drying frame of sap-skins on a firm bank, an eel-trap line across the shallows and a canoe landing wreathed in hanging moss.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3513,7 +3513,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Riften Military Camp (Skyrim), is a camp of 16 buildings with no interior, built in camp, Imperial and Nordic pieces. It lends its tents and racks and its Nordic pieces are replaced. Near Loreisian (King of the Murkmire) is the closer kind: an Argonian camp of eight buildings with shrine pieces, which serves as the keeper's huts and the totem. Still to add: the sap-skins on the bank trees, the station fire and spears at each door.",
+     "text": "Its main source, Riften Military Camp (Skyrim), is a camp of 16 buildings with no interior, built in camp, Imperial and Nordic pieces. It lends its tents, chairs, tables and campfires and its Nordic pieces are replaced. Ree-An-Wo (King of the Murkmire), an Argonian camp by water of cypress walkways and platforms on posts, six hide tents and hide fences, is the closer kind and serves as the keeper's huts. Near Loreisian (King of the Murkmire), an Argonian camp of doomstone circles, cypress knees and bog beacons with no tents, serves as the totem. Still to add: the drying frame, the eel-trap line, the sap-skins on the bank trees, the station fire and spears at each door.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3587,7 +3587,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Five Saxhleel of the Root-Folk of Helstrom hold its stilt platforms over the junction and tend eggs in clay nest-pits.",
+     "text": "Five Saxhleel of the Root-Folk of Helstrom hold its platforms on posts over the junction and tend eggs in clay nest-pits.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3711,7 +3711,7 @@
     },
     {
      "aspect": "look",
-     "text": "Tall stilt platforms over a wide river junction, nest-pits of clay lined with moss, a watch post with a lantern and a horn.",
+     "text": "Tall cypress platforms on posts over a wide river junction, nest-pits of clay lined with moss, a watch post with a lantern and a horn.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3770,7 +3770,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Southroad Pass (Wyrmstooth), is a large Nordic and Imperial tower fort of 365 buildings with one interior, far beyond a one-keeper station, so it does not fit. Near Loreisian (King of the Murkmire) fits better: a small Argonian camp of eight buildings with shrine pieces, which serves as the stilt platform and the totem-post. Still to add: the nest-pits, the junction landing and the platform's fishing edge.",
+     "text": "Its main source, Southroad Pass (Wyrmstooth), is a large Nordic and Imperial tower fort of 365 buildings with one interior, far beyond a one-keeper station, so it does not fit. Ree-An-Wo (King of the Murkmire) fits better: an Argonian camp by water whose cypress walkways and platforms on posts serve as the platform. Near Loreisian (King of the Murkmire), a small Argonian camp of doomstone circles, cypress knees and bog beacons, serves as the totem-post. Still to add: the watch post with its lantern and horn, the nest-pits, the junction landing and the platform's fishing edge.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3800,7 +3800,7 @@
     },
     {
      "kind": "free-bed",
-     "detail": "a stilt platform",
+     "detail": "a platform on posts",
      "count": 1
     },
     {
@@ -3853,7 +3853,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Four Saxhleel of the Root-Folk of Helstrom keep three stilt huts on a hummock hung with drying skins and feather bundles.",
+     "text": "Four Saxhleel of the Root-Folk of Helstrom keep three hide tents on platforms raised on posts on a hummock hung with drying skins and feather bundles.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3918,7 +3918,7 @@
     },
     {
      "aspect": "people",
-     "text": "About four Saxhleel hunters and a feather-trader live on the hummock east of Helstrom, sharing three stilt huts.",
+     "text": "About four Saxhleel hunters and a feather-trader live on the hummock east of Helstrom, sharing three hide tents on a raised platform.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3977,7 +3977,7 @@
     },
     {
      "aspect": "look",
-     "text": "A hummock hung with drying skins and feather bundles, three stilt huts and a narrow canoe lane under overhanging roots.",
+     "text": "A hummock hung with drying skins and feather bundles, three hide tents on cypress platforms and a narrow canoe lane under overhanging roots.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4036,7 +4036,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Serpents Bluff Redoubt (Skyrim), is a ruined Imperial redoubt of 166 buildings with one interior and 16 hostile figures, far larger than a four-keeper hummock, so it does not fit. Near Loreisian (King of the Murkmire) is the better kind: a small Argonian camp with shrine pieces, which serves as the hunters' huts. Still to add: the racks for hides and feathers, the feather-trader's stall and the landing at the river bend.",
+     "text": "Its main source, Serpents Bluff Redoubt (Skyrim), is a ruined Imperial redoubt of 166 buildings with one interior and 16 hostile figures, far larger than a four-keeper hummock, so it does not fit. Ree-An-Wo (King of the Murkmire) is the better kind: an Argonian camp by water of six hide tents on cypress platforms raised on posts and hide fences, which serves as the hunters' huts. Still to add: the canoe lane under the roots, the racks for hides and feathers, the feather-trader's stall and the landing at the river bend.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4554,7 +4554,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Bleakwind Bluff (Skyrim), is a Nordic tower of ten buildings with no interior and four people. Its Nordic pieces are replaced with Argonian hut pieces from Ree-An-Wo (King of the Murkmire). Alten Meerhleel (King of the Murkmire) adds a small Argonian dock for the guide's landing. Still to add: the hunters' hut with its bed, the post's fire and the hide racks on the hummock.",
+     "text": "Its main source, Bleakwind Bluff (Skyrim), is a Nordic tower site of hagraven fences, sticks and tusks, stairs and bones, with no interior and four people. Its Nordic pieces are replaced with the thatched huts on platforms of Alten Meerhleel and the hide tents and fences of Ree-An-Wo (both King of the Murkmire). Alten Meerhleel (King of the Murkmire) adds a small Argonian dock for the guide's landing. Still to add: the hunters' hut with its bed, an interior built from the dockmaster's house of Alten Meerhleel, the post's fire and the hide racks on the hummock.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4811,7 +4811,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Wulfmere's Watch (Wyrmstooth), is a Nordic tower of eleven buildings with no interior and a dock piece, a good fit for a lake islet. Its Nordic pieces are replaced with Argonian reed pieces from near Loreisian (King of the Murkmire). Still to add: the eel traps round the islet, the keepers' lantern, smoked-eel racks and the canoe off the islet.",
+     "text": "Its main source, Wulfmere's Watch (Wyrmstooth), is a Nordic tower ruin of sacks, barrels, crates and stockade planks with no interior, which serves as the islet's landing and stores. Its Nordic pieces are replaced with the hide tents and fences of Ree-An-Wo (King of the Murkmire). Still to add: the two reed huts, built from Black Marsh & Valenwood's reed-hut pieces, the eel traps round the islet, the keepers' lantern, smoked-eel racks and the canoe off the islet.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4885,7 +4885,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Four Saxhleel of the Root-Folk of Helstrom hold a reed-built platform with a lamp tower and racks of dried fish.",
+     "text": "Four Saxhleel of the Root-Folk of Helstrom hold a cypress platform on posts with a lamp tower and racks of dried fish.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5009,7 +5009,7 @@
     },
     {
      "aspect": "look",
-     "text": "A reed-built platform on silt with a lamp tower, an eel line and a stack of dried fish racks.",
+     "text": "A platform of cypress planks raised on posts on silt with a lamp tower, an eel line and a stack of dried fish racks.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5068,7 +5068,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Cradle Stone Tower (Skyrim), is a Nordic tower of 49 buildings with one interior and six hostile figures. Its Nordic pieces are replaced and the interior serves as the platform hut. Near Loreisian (King of the Murkmire) lends Argonian reed pieces for the platform. Still to add: the reed platform on silt, a lamp tower, the eel line, the dried-fish racks and the cask marked with Truowa's quay-mark.",
+     "text": "Its main source, Cradle Stone Tower (Skyrim), is a Nordic tower of 49 buildings with one interior and six hostile figures. Its Nordic pieces are replaced; its one interior is a bare chamber with a bed, which serves as the platform hut. Ree-An-Wo (King of the Murkmire) lends its cypress platforms and walkways on posts for the platform. Still to add: the platform on silt, a lamp tower, the eel line, the dried-fish racks and the cask marked with Truowa's quay-mark.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5156,7 +5156,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Five Saxhleel of the Root-Folk of Helstrom keep stilt huts round a boat-yard, with a bell at the landing.",
+     "text": "Five Saxhleel of the Root-Folk of Helstrom keep huts and hide tents on platforms raised on posts round a boat-yard, with a bell at the landing.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5280,7 +5280,7 @@
     },
     {
      "aspect": "look",
-     "text": "Stilt huts around a boat-yard with a bell at the landing and herb racks on every rail.",
+     "text": "Huts and hide tents on platforms raised on posts around a boat-yard with a bell at the landing and herb racks on every rail.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5339,7 +5339,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Hesperide (Here There Be Monsters - Curse of Cipactli), is a camp of 96 buildings with no interior and 62 people, built in Ayleid and Argonian pieces with ruin and shrine pieces. Its Argonian and camp pieces serve as the crews' lodging hut and the herb-gatherers' shed. The Ayleid ruin and shrine pieces and the hostile figures are removed. Still to add: the landing, the wreck of the Blackrose boat in the shallows and the dragon's-tongue beds.",
+     "text": "Its main source, Hesperide (Here There Be Monsters - Curse of Cipactli), is a camp of 96 buildings with no interior and 62 people, built in Ayleid and Argonian pieces with ruin and shrine pieces. Its village huts, bedrolls, racks and barrels serve as the crews' lodging hut and the herb-gatherers' shed, set on the cypress platforms and hide tents of Ree-An-Wo (King of the Murkmire). The Ayleid ruin and shrine pieces and the hostile figures are removed. Still to add: the boat-yard with its bell, the landing, the wreck of the Blackrose boat in the shallows and the dragon's-tongue beds.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5605,7 +5605,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Shors Watchtower (Skyrim), is a Nordic and Imperial watchtower of one building with no interior. It lends its stone footing for a river watch and its Nordic pieces are replaced. Near Loreisian (King of the Murkmire) fits better: an Argonian camp of eight buildings with shrine pieces, which serves as the rune-carved totems. Still to add: a reed palisade round the bank, the ferry post and the landing.",
+     "text": "Its main source, Shors Watchtower (Skyrim), is a Nordic and Imperial watchtower of one building with no interior. It lends its stone footing for a river watch and its Nordic pieces are replaced. Near Loreisian (King of the Murkmire) fits better: an Argonian camp of eight buildings with doomstone circles, cypress knees and bog beacons and no tents, whose standing stones serve as the rune-carved totems. Still to add: a reed palisade round the bank, the ferry post and the landing.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5847,7 +5847,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Sadrith Kegran (Dwarfsphere), is a Dwemer and Dunmer tower city of 33 interiors and 247 hostile figures, far too large for a go-between post, so it does not fit. Near Loreisian (King of the Murkmire) fits better: a small Argonian camp of eight buildings with shrine pieces, which serves as the totems and huts. Still to add: a reed palisade, the canoe shed and the landing.",
+     "text": "Its main source, Sadrith Kegran (Dwarfsphere), is a Dwemer and Dunmer tower city of 33 interiors and 247 hostile figures, far too large for a go-between post, so it does not fit. Near Loreisian (King of the Murkmire) fits better: a small Argonian camp of eight buildings with doomstone circles, cypress knees and bog beacons and no tents, whose standing stones serve as the totems. Ree-An-Wo (King of the Murkmire), with six hide tents on cypress platforms, supplies the huts. Still to add: a reed palisade, the canoe shed and the landing.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6212,7 +6212,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Blizzard Rest (Skyrim), is a small camp of a few camp, mine and ruin pieces with no building, too small for nine Naga. Near Loreisian (King of the Murkmire) fits better: an Argonian camp of eight buildings, whose huts and shrine pieces serve as the lean-tos and the old leader's place. Still to add: bones strung on lines, a fire pit, the stolen sap-skins and the captive sap-gatherer.",
+     "text": "Its main source, Blizzard Rest (Skyrim), is a small camp of giant obelisk slabs, mammoth skulls, a giant mortar and skewers with no building, too small for nine Naga. Near Loreisian (King of the Murkmire), an Argonian camp of doomstone circles, cypress knees and bog beacons with no tents, serves as the old leader's place, and Ree-An-Wo (King of the Murkmire), whose six hide tents on cypress platforms serve as the lean-tos, fits better. Still to add: the slit-trench latrine, bones strung on lines, a fire pit, the stolen sap-skins and the captive sap-gatherer.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7132,7 +7132,7 @@
     },
     {
      "aspect": "look",
-     "text": "Domed mud huts at the edge of a mere, hung with strings of knuckle-bones. The Paatru croak at dusk.",
+     "text": "Mud huts with reed roofs at the edge of a mere, hung with strings of knuckle-bones. The Paatru croak at dusk.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7221,7 +7221,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Largashbur (Skyrim), is an Orc and Nordic camp of 65 buildings with two interiors and twelve people, the size of twelve Paatru. Its interiors serve as the elder's den and a storehouse. Its Nordic pieces are replaced with Argonian pieces from near Loreisian (King of the Murkmire). Still to add: the mere with the caravan's goods in the mud and the mudpot herbs round it.",
+     "text": "Its main source, Largashbur (Skyrim), is an Orc and Nordic camp of 65 buildings with two interiors and twelve people, the size of twelve Paatru. Its interiors serve as the elder's den and a storehouse. Its Nordic pieces are replaced with the mud huts of Keeba Hollow and the cypress knees and bog beacons of near Loreisian (both King of the Murkmire). Still to add: the strings of knuckle-bones, the mere with the caravan's goods in the mud and the mudpot herbs round it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7459,7 +7459,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Cradlecrush Rock (Skyrim), is a tiny camp of a few camp and mine pieces with no building and no interior. It lends only its tents. Near Loreisian (King of the Murkmire) fits better: an Argonian camp of eight buildings with shrine pieces, which serves as the headwoman's place and the reed-mat racks. Still to add: net-lines and fish-traps at the shore, the camp fire and the cut net-line.",
+     "text": "Its main source, Cradlecrush Rock (Skyrim), is a tiny camp of hay mounds, hanging bones and a giant's chest with no building, no tent and no interior. Ree-An-Wo (King of the Murkmire) fits better: an Argonian camp by water of six hide tents, hide fences and cypress walkways on posts, which serves as the reed shelters, the headwoman's place and the reed-mat racks. Still to add: reed mats in place of the hide on the tents, net-lines and fish-traps at the shore, the camp fire and the cut net-line.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7696,7 +7696,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Bloodstone Camp (Wyrmstooth), is a small camp of eleven buildings built in Nordic, ruin and mine pieces with three people and no interior. Its Nordic pieces are replaced with Argonian pieces from near Loreisian (King of the Murkmire). Still to add: cattails round the huts, herb bundles on poles, a smoke fire and the dragon's-tongue beds.",
+     "text": "Its main source, Bloodstone Camp (Wyrmstooth), is a small camp of Nordic rubble piles, giant obelisk slabs, mammoth ribs and a giant's chest with three people, no shelter and no interior. Its Nordic and giant pieces are replaced: Ree-An-Wo (King of the Murkmire) supplies six hide tents on cypress platforms as the shelters, and near Loreisian (King of the Murkmire) the cypress knees and bog beacons. Still to add: reed mats in place of the hide on the tents, cattails round the shelters, herb bundles on poles, a smoke fire and the dragon's-tongue beds.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7928,7 +7928,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Doomstone Apprentice (Skyrim), is a landmark of six shrine pieces with no building, on dry ground. They are Nordic standing-stone work and are replaced, so only the bare rise is used. Velothi Mountain Pass (Nyhus), a peak with Dunmer and Imperial mine pieces, is an alternate. Still to add: the bare rock summit, a fire-basket, the Kothringi bead-cairn and the den below the summit.",
+     "text": "Its main source, Doomstone Apprentice (Skyrim), is a landmark of six shrine pieces with no building, on dry ground. They are Nordic standing-stone work and are replaced, so only the bare rise is used. Velothi Mountain Pass (Nyhus), a peak of cliffs, a dirt road and signposts, is an alternate. Still to add: the bare rock summit, a fire-basket, the Kothringi bead-cairn and the den below the summit.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8145,7 +8145,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Velothi Mountain Pass (Nyhus), is a peak with four Dunmer and Imperial buildings and three people. Its pieces serve as the sentry's hut. Still to add: the chime post, the crevice den and the lost scout's pack.",
+     "text": "Its main source, Velothi Mountain Pass (Nyhus), is a peak of cliffs, a dirt road with signposts, two banners and two bulwark pieces round a doorway, with three people and no interior. Its cliffs and road serve as the summit. Still to add: the sentry's hut, a one-room interior built from Black Marsh & Valenwood's reed-hut pieces, the chime post, the crevice den and the lost scout's pack.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

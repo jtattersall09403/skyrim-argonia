@@ -1150,7 +1150,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Toil's End (Here There Be Monsters, Curse of Cipactli), is a Kothringi town of 173 buildings with dock pieces and one interior, the Kothringi Greathouse, so it fits the name and the stone footing. Alten Meerhleel (King of the Murkmire) adds Argonian stilt houses and three interiors, a market and a lodging house among them, for the inn and the chime-smith's trading room. Its Nordic pieces are replaced. Still to add: tin and copper chimes on the eaves, the rope-walks and the boatyard on the channel.",
+     "text": "Its main source, Toil's End (Here There Be Monsters, Curse of Cipactli), is a Kothringi town of 173 buildings with dock pieces and one interior, the Kothringi Greathouse, so it fits the name, with its huts raised on docks and poles. Alten Meerhleel (King of the Murkmire) adds Argonian stilt houses and three interiors, a market and a lodging house among them, for the inn and the chime-smith's trading room. Its Nordic pieces are replaced. Still to add: the stone footings under the houses, tin and copper chimes on the eaves, the rope-walks and the boatyard on the channel.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2813,7 +2813,7 @@
     },
     {
      "aspect": "look",
-     "text": "Paddies in shallow terraces, stilt houses with rice stores, a boardwalk road.",
+     "text": "Paddies in shallow terraces, thatched huts on raised platforms with rice stores, a boardwalk road.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2863,7 +2863,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Cormaris (Journey to Baan Malur), is a Dunmer farm hamlet of 16 buildings with one small interior and does not fit an Argonian rice village. Seekhat Yol (King of the Murkmire) fits better: an Argonian stilt village of 160 buildings and seven interiors, one of which serves as the granary. Cormaris lends its farm pieces for the rice stores. Still to add: the terraced paddies, the boardwalk road and the channel fish traps.",
+     "text": "Its main source, Cormaris (Journey to Baan Malur), is a Dunmer farm hamlet of 16 buildings with one small interior and does not fit an Argonian rice village. Seekhat Yol (King of the Murkmire) fits better: an Argonian village of thatched huts on raised plank platforms, 160 buildings and seven interiors, of which the egg-tenders' quarters, a hut of shelves, baskets and chests, serves as the granary. Cormaris lends its farm pieces for the rice stores. Still to add: the terraced paddies, the boardwalk road and the channel fish traps.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3470,7 +3470,7 @@
     },
     {
      "aspect": "look",
-     "text": "A wooden jetty runs out from the shore, with drying racks above the beach, low stilt houses and a salt pan behind them.",
+     "text": "A wooden jetty runs out from the shore, with drying racks above the beach, low thatched huts on raised platforms and a salt pan behind them.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3526,7 +3526,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Alten Merihall (Black Marsh & Valenwood), is a hamlet of 38 buildings with dock and ship pieces and no interior, which suits a landing with no room the record needs. Its Nordic pieces are replaced with Argonian stilt houses from Seekhat Yol (King of the Murkmire). Still to add: the salt pan behind the houses, the drying racks above the beach, the shrine of piled conch shells and the wooden jetty from the dock pieces.",
+     "text": "Its main source, Alten Merihall (Black Marsh & Valenwood), is a hamlet of 38 buildings with dock and ship pieces and no interior, which suits a landing with no room the record needs. Its Nordic pieces are replaced with Argonian thatched huts on raised plank platforms from Seekhat Yol (King of the Murkmire). Still to add: the salt pan behind the houses, the drying racks above the beach, the shrine of piled conch shells and the wooden jetty from the dock pieces.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3834,7 +3834,7 @@
    "siting": "swamp",
    "danger_band_id": "D3",
    "importance": 2,
-   "summary": "Bucalos is a Kothringi-named stilt town beside Toklea, abandoned when its people moved into the larger town.",
+   "summary": "Bucalos is a Kothringi-named ruined town of stone footings beside Toklea, abandoned when its people moved into the larger town.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -3979,7 +3979,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Wild predators roam the empty stilts. Scavengers from Toklea's rival towns raid the footings for stone and metal.",
+     "text": "Wild predators roam the empty footings. Scavengers from Toklea's rival towns raid the footings for stone and metal.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4012,7 +4012,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Pilgrim Pass (Nyhus), is a Nordic hamlet of 16 buildings with ruin and shrine pieces and no interior, small enough for a few footings and a fallen hall. Its Nordic pieces are replaced with Argonian stilt pieces from Root Whisper Village (King of the Murkmire). Still to add: the moss, the rusted chimes, the bead cords on the doorposts and the Kothringi cache chest set among the footings.",
+     "text": "Its main source, Pilgrim Pass (Nyhus), is a Nordic hamlet of 16 buildings with ruin and shrine pieces and no interior, small enough for a few footings and a fallen hall. Its Nordic pieces are replaced with the stone footings and fallen halls of Root Whisper Village's Xanmeer ruin pieces (King of the Murkmire). Still to add: the moss, the rusted chimes, the bead cords on the doorposts and the Kothringi cache chest set among the footings.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4033,7 +4033,7 @@
    "gives": [
     {
      "kind": "combat-creature",
-     "detail": "crocodiles and giant snakes under the empty stilts",
+     "detail": "crocodiles and giant snakes among the empty footings",
      "count": 4,
      "reward": "treasure"
     },
@@ -4596,7 +4596,7 @@
    "siting": "swamp",
    "danger_band_id": "D3",
    "importance": 1,
-   "summary": "Oru-Neel is a stilt village in the north-east farm country, emptied when its dyke failed and salt water came into the rice paddies.",
+   "summary": "Oru-Neel is an abandoned village of posts and platforms in the north-east farm country, emptied when its dyke failed and salt water came into the rice paddies.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -4801,7 +4801,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, a hamlet near Way to Ruins (Black Marsh & Valenwood), is 120 buildings of ruin and camp pieces with one small Argonian house interior, which serves as the half-buried granary with its locked bin. Its Nordic pieces are replaced with grey Argonian posts from Seekhat Yol (King of the Murkmire). Still to add: the broken dyke with its hanging sluice gates, the tilted hall platform and the brown water in the empty paddy.",
+     "text": "Its main source, a hamlet near Way to Ruins (Black Marsh & Valenwood), shows outside only a mud house's door and window among ferns; its one interior of beds, pelts and lanterns serves as the half-buried granary with its locked bin. The ring of grey posts comes from the platform posts of Seekhat Yol (King of the Murkmire). Still to add: the broken dyke with its hanging sluice gates, the tilted hall platform and the brown water in the empty paddy.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5047,7 +5047,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Kagrumez (Dragonborn), is a Dwemer ruin of 264 buildings with one interior and does not fit a drowned Argonian village. Seekhat Yol (King of the Murkmire) fits better: an Argonian stilt village of 160 buildings and docks. Its huts are set so that three roof peaks and a leaning platform show above the water. Still to add: the line of stumps along the old street, the fish-bone shrine on the highest roof and the chest under water in the street.",
+     "text": "Its main source, Kagrumez (Dragonborn), is a Dwemer ruin of 264 buildings with one interior and does not fit a drowned Argonian village. Seekhat Yol (King of the Murkmire) fits better: an Argonian village of 160 buildings, with thatched huts on raised plank platforms and docks. Its huts are set so that three roof peaks and a leaning platform show above the water. Still to add: the line of stumps along the old street, the fish-bone shrine on the highest roof and the chest under water in the street.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6289,7 +6289,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, The Lair of Ymir (Here There Be Monsters), is four ship pieces with no interior and no hold. Icerunner (Skyrim) fits better: a wreck with two ship interiors, which serve as the hold and the stern. Its Nordic hull pieces are replaced with a Khajiit coaster's. Still to add: the broken ribs on the sand bar, the casks of salt with a false bottom, the captain's locked chest and the fish laid on the bow.",
+     "text": "Its main source, The Lair of Ymir (Here There Be Monsters), is four ship pieces with no interior and no hold. Icerunner (Skyrim) fits better: a wreck whose one interior is a hold of crates, barrels, hay and benches, which serves as the hold. Its Nordic hull pieces are replaced with a Khajiit coaster's. Still to add: the stern cabin, a small interior built from Skyrim's ship pieces behind its own door on the stern deck, the broken ribs on the sand bar, the casks of salt with a false bottom, the captain's locked chest and the fish laid on the bow.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9253,7 +9253,7 @@
    "siting": "inland",
    "danger_band_id": "D3",
    "importance": 1,
-   "summary": "A stilt village on the cape abandoned after the 3E 427 uprisings.",
+   "summary": "A mud-hut village on the cape abandoned after the 3E 427 uprisings.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -9303,7 +9303,7 @@
     },
     {
      "aspect": "present",
-     "text": "Only rotted stilts remain, with the halls above them sagging and open to the weather.",
+     "text": "Only rotted walkway posts remain, with the halls beside them sagging and open to the weather.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9376,7 +9376,7 @@
     },
     {
      "aspect": "look",
-     "text": "A ring of rotted halls stands among the trees on sagging stilts, with creepers climbing the old walls.",
+     "text": "A ring of rotted halls stands among the trees on ground gone soft, joined by sagging plank walkways, with creepers climbing the old walls.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9431,7 +9431,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Irkngthand (Skyrim), is a Dwemer ruin of 2661 buildings with four interiors and does not fit a stilt village in the trees. Keeba Hollow (King of the Murkmire) fits better: Argonian stilt huts and nine interiors, whose huts serve as the dry halls where scavengers sleep. Left Hand Mine (Skyrim), a mining village, lends the mine crews' barracks. Still to add: the creepers on the old walls, the hollow stump shrine with its bird bones and the buried gold chest under a hall floor.",
+     "text": "Its main source, Irkngthand (Skyrim), is a Dwemer ruin of 2661 buildings with four interiors and does not fit a village in the trees. Keeba Hollow (King of the Murkmire) fits better: Argonian mud huts with reed roofs and raised plank walkways, and nine interiors, whose huts serve as the dry halls where scavengers sleep. Left Hand Mine (Skyrim), a mining village, lends the mine crews' barracks. Still to add: the creepers on the old walls, the hollow stump shrine with its bird bones and the buried gold chest under a hall floor.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9649,7 +9649,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, a camp near the Shrine of Boethiah (Skyrim), is a dry Imperial camp of 40 buildings and does not fit a stilt platform in the water. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet of 31 buildings on water with its people. Still to add: the tall lookout platform, the boat tied below, the Banujha tree-token shrine and the watch leader's chest.",
+     "text": "Its main source, a camp near the Shrine of Boethiah (Skyrim), is a dry Imperial camp of 40 buildings and does not fit a stilt platform in the water. Ree-An-Wo (King of the Murkmire) fits better: an Argonian camp on the water of cypress walkways and platforms on posts, hide tents and hide fences, which gives the platform and the watchers' tents. Still to add: the tall lookout platform, the boat tied below, the Banujha tree-token shrine and the watch leader's chest.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9819,7 +9819,7 @@
     },
     {
      "aspect": "look",
-     "text": "A small group of huts stands on a river bank, with fishing weirs running out into the water.",
+     "text": "A small group of hide tents on cypress platforms stands on a river bank, with fishing weirs running out into the water.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9868,7 +9868,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, The Reaver's Respite (Journey to Baan Malur), is a pirate hamlet of 48 buildings with ship pieces and two interiors and does not fit a river station of the Naka-Desh. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet of 31 buildings on water. Still to add: the fishing weir from dock pieces, the elder's chest and the riddle trading room.",
+     "text": "Its main source, The Reaver's Respite (Journey to Baan Malur), is a pirate hamlet of 48 buildings with ship pieces and two interiors and does not fit a river station of the Naka-Desh. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet of 31 buildings on water, with cypress platforms on posts, hide tents and hide fences, which supplies the platforms and tents. Still to add: the fishing weir from dock pieces, the elder's chest and the riddle trading room, a small interior taken from the Reaver's Respite's interior of crates, shelves and fish barrels.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -10209,7 +10209,7 @@
     },
     {
      "aspect": "present",
-     "text": "A keeper family lives in the stilt house at the base and tends the lamp each night.",
+     "text": "A keeper family lives in the mud house at the base and tends the lamp each night.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -10274,7 +10274,7 @@
     },
     {
      "aspect": "look",
-     "text": "A stone tower on a rock with a stilt keeper's house, rimed with sea salt.",
+     "text": "A stone tower on a rock with a reed-roofed mud keeper's house, rimed with sea salt.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -10324,7 +10324,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Abandoned Lighthouse (Wyrmstooth), is a lighthouse of 44 buildings with one interior, which serves as the tower stair and lamp room. Its Nordic pieces are replaced with stone and Argonian stilt pieces from Keeba Hollow (King of the Murkmire) for the keeper's house. Still to add: the net-knot token on the stair, the rock under the tower and the shore rocks for the wreckers' takings.",
+     "text": "Its main source, Abandoned Lighthouse (Wyrmstooth), is a lighthouse of 44 buildings with one interior, which serves as the tower stair and lamp room. Its Nordic pieces are replaced with stone, and the keeper's house is a reed-roofed mud hut from Keeba Hollow (King of the Murkmire) with one of its hut interiors. Still to add: the net-knot token on the stair, the rock under the tower and the shore rocks for the wreckers' takings.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -10609,7 +10609,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, the Wreck of the Serpent's Wake (Northwatch Coast), is five ship pieces with no interior, so it has no hold. Icerunner (Skyrim) fits better: a wreck with two ship interiors, which serve as the hold and the stern. Its Nordic hull pieces are replaced with a Bosmer coaster's. Still to add: the dark hull on the sea floor, the trailing weed, the captain's chest and the oilcloth bundles of silk and bows.",
+     "text": "Its main source, the Wreck of the Serpent's Wake (Northwatch Coast), is five ship pieces with no interior, so it has no hold. Icerunner (Skyrim) fits better: a wreck whose one interior is a hold of crates, barrels, hay and benches, which serves as the hold. Its Nordic hull pieces are replaced with a Bosmer coaster's. Still to add: the stern cabin, a small interior built from Skyrim's ship pieces behind its own door on the stern deck, the dark hull on the sea floor, the trailing weed, the captain's chest and the oilcloth bundles of silk and bows.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

@@ -939,7 +939,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Chillwater Mill (Wyrmstooth), is a small mill of four people with farm, lumber and dock pieces and one house interior, which matches a bank camp of four. The house interior serves as the sawyers' bunkhouse. Its nine Nordic pieces are replaced with Argonian plank and stilt pieces from King of the Murkmire. Still to add: the plank-drying sheds, the saw-pit, the moored log rafts and the raw earth bank.",
+     "text": "Its main source, Chillwater Mill (Wyrmstooth), is a small mill of four people with farm, lumber and dock pieces and one house interior, which matches a bank camp of four. The house interior serves as the sawyers' bunkhouse. Its nine Nordic pieces are replaced with Argonian plank pieces and walkways on posts from King of the Murkmire, which raise the bunkhouse and drying sheds above the bank. Still to add: the plank-drying sheds, the saw-pit, the moored log rafts and the raw earth bank.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2818,7 +2818,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Xuvagol is a Root-Folk hunting station on a forested rise at the jungle's western end, the last stilt houses before the mesa road. The name is the hunters' own.",
+     "text": "Xuvagol is a Root-Folk hunting station on a forested rise at the jungle's western end, the last hide tents on cypress platforms before the mesa road. The name is the hunters' own.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2944,7 +2944,7 @@
     },
     {
      "aspect": "look",
-     "text": "Stilt houses under the trees, with pelts stretched on frames and a lookout in a tall trunk.",
+     "text": "Hide tents on cypress platforms under the trees, with pelts stretched on frames and a lookout in a tall trunk.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3007,7 +3007,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Stendarrs Beacon (Skyrim), is an Imperial tower with six hostiles and no interior or people, so it does not fit a stilt-house station. near Loreisian (King of the Murkmire) fits better: an Argonian camp of eight buildings with five people, shrine and camp pieces and no interior, which gives the root shrine at the camp's edge. Still to add: the stilt houses, the pelt frames, the lookout in a tall trunk and the gully with the snake's den.",
+     "text": "Its main source, Stendarrs Beacon (Skyrim), is an Imperial tower with six hostiles and no interior or people, so it does not fit a hunting camp. near Loreisian (King of the Murkmire) fits better: an Argonian camp of eight buildings with five people, shrine and camp pieces and no interior, which gives the root shrine at the camp's edge. Ree-An-Wo (King of the Murkmire), with cypress walkways and platforms on posts and hide tents, supplies the platforms and tents the hunters live in. Still to add: the pelt frames, the lookout in a tall trunk and the gully with the snake's den.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4722,7 +4722,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Mor Khazgur (Skyrim), is an Orc stronghold of stone and palisade with three interiors, so its style does not fit hide tents. near Loreisian (King of the Murkmire) fits better: a small Argonian camp of eight buildings with shrine and camp pieces and no interior, which suits a camp that needs none. Still to add: the hide tents with a larger one for the chief, the feather-hung poles, the drying racks, the camp fire and the drop at the shelf's edge.",
+     "text": "Its main source, Mor Khazgur (Skyrim), is an Orc stronghold of stone and palisade with three interiors, so its style does not fit hide tents. near Loreisian (King of the Murkmire) fits better: a small Argonian camp of eight buildings with shrine and camp pieces and no interior, which suits a camp that needs none. Still to add: the hide tents from Ree-An-Wo (King of the Murkmire) with a larger one for the chief, the feather-hung poles, the drying racks, the camp fire and the drop at the shelf's edge.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5291,7 +5291,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Root Whisper Village (King of the Murkmire), is an Argonian village of 19 people, the same count as Noota Nara, with eight hut interiors among them a carpenter's, a hunter's and a treeminder's. They serve as the potters' houses, the spear-smiths' house and the elders' hall. Seekhat Yol's smithy hut (King of the Murkmire) is the alternate for the forge. Still to add: the timber and clay walls, the burned-black post where the gate stood and the dragon-spear beside the village Hist.",
+     "text": "Its main source, Root Whisper Village (King of the Murkmire), is an Argonian village of 19 people, the same count as Noota Nara, with eight hut interiors among them a carpenter's, a hunter's and a treeminder's. They serve as the potters' houses and the spear-smiths' house. Seekhat Yol's elders' hut (King of the Murkmire) serves as the elders' hall, and its smithy hut, with an anvil, an armour workbench and a forge, as the spear-smiths' forge. Still to add: the timber and clay walls built from its cypress palisade pieces, the village Hist tree built from its Hist roots and flowers, the clay deposit on the bank, the raft at the landing from its boats, the burned-black post where the gate stood and the dragon-spear beside the village Hist.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5544,7 +5544,7 @@
     },
     {
      "aspect": "look",
-     "text": "Stilt houses on slender posts, raft racks at the landing a short walk down the path, bright painted shutters and a reed-roofed house where the mission books are kept dry.",
+     "text": "Hide tents on cypress platforms raised on slender posts, raft racks at the landing a short walk down the path, bright painted shutters and a reed-roofed house where the mission books are kept dry.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5622,7 +5622,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Dimfrost (Wyrmstooth), is a Nordic hamlet of mine and shrine pieces with nine people, the same count as Hirecan, and no interior, so its style does not fit. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet of stilt pieces on the water. The reed-roofed mission-book house and the illusionist's shop are interiors from Keeba Hollow's hut interiors (King of the Murkmire). Still to add: the slender posts, the raft racks and the painted shutters.",
+     "text": "Its main source, Dimfrost (Wyrmstooth), is a Nordic hamlet of mine and shrine pieces with nine people, the same count as Hirecan, and no interior, so its style does not fit. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet with cypress walkways and platforms on posts, hide tents and hide fences, which supplies the platforms and tents the Agaceph live on. The reed-roofed mission-book house and the illusionist's shop are interiors from Keeba Hollow's hut interiors (King of the Murkmire), the crafter's and the treeminder's, the first under a reed-roofed mud hut. Still to add: the slender posts, the raft racks and the painted shutters.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6215,7 +6215,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Darkstone Mine (Nyhus), is a mine of 111 cave pieces and 27 mine pieces with one interior, which serves as the timbered gallery with the rough older tunnel and the end chamber. Its Imperial and Nordic pieces are replaced and its 17 hostiles are removed. Gloombound Mine (Skyrim) is the alternate: a plain mine interior with no cave pieces. Still to add: the raw cut in the mesa wall, the spoil heaps, the cairn of chips and the ox-cart track.",
+     "text": "Its main source, Darkstone Mine (Nyhus), is a mine of 111 cave pieces and 27 mine pieces with one interior, which serves as the timbered gallery with the rough older tunnel and the end chamber. Its Imperial and Nordic pieces are replaced and its 17 hostiles are removed. Gloombound Mine (Skyrim) is the alternate: a plain mine interior with no cave pieces. Still to add: the timbered entrance, the rockfall traps in the gallery, the webs in the older tunnel, the raw cut in the mesa wall, the spoil heaps, the cairn of chips and the ox-cart track.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6519,7 +6519,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Llerush Kwama Mine (Journey to Baan Malur), is a mine of 15 people, the same count as the pit's families, with 172 mine pieces and 32 Imperial pieces and one interior. The Imperial pieces serve as the bricked storeroom behind the fallen chalk face. Still to add: the white-scarred pit, the lime kiln with its smoke, the handprints on the inner wall and the cart track to Noota Nara.",
+     "text": "Its main source, Llerush Kwama Mine (Journey to Baan Malur), is a mine of 15 people, the same count as the pit's families, with 172 mine pieces and 32 Imperial pieces and one interior. Its Imperial timber beams frame the storeroom behind the fallen chalk face. Still to add: the brick walls of that storeroom, from Skyrim's Imperial pieces, the white-scarred pit, the lime kiln with its smoke, the handprints on the inner wall and the cart track to Noota Nara.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6807,7 +6807,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Kolskeggr Mine (Skyrim), is a mine of 256 mine pieces and 68 cave pieces with two interiors, a foreman's house and the mine, which serve as the gallery and the fissure's cavern behind it. Its Nordic and Dwemer pieces are replaced. Still to add: the sheer cut above the road, the stacked blocks, the cairn at the gallery mouth and the steep cart track.",
+     "text": "Its main source, Kolskeggr Mine (Skyrim), is a mine of 256 mine pieces and 68 cave pieces with two interiors, a foreman's house and the mine, which serve as the gallery and the fissure's cavern behind it. Its Nordic and Dwemer pieces are replaced. Still to add: the timbered entrance, the sheer cut above the road, the stacked blocks, the cairn at the gallery mouth and the steep cart track.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7027,7 +7027,7 @@
     },
     {
      "aspect": "look",
-     "text": "Stilt houses under a few trees on the mesa's south edge, drying racks and a lookout in a trunk that faces the Velothi ruins.",
+     "text": "Hide tents on cypress platforms under a few trees on the mesa's south edge, drying racks and a lookout in a trunk that faces the Velothi ruins.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7105,7 +7105,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Secundas Shelf (Skyrim), is four ruin pieces and one camp piece with two hostiles and no people, so it does not fit. near Loreisian (King of the Murkmire) fits better: an Argonian camp of five people with shrine and camp pieces, the same count as Yuvexa, which gives the Hist shrine at the settlement edge. Still to add: the stilt houses, the drying racks, the goat pen, the lookout in a trunk facing the ruins and the snakes' lair under the lip.",
+     "text": "Its main source, Secundas Shelf (Skyrim), is four ruin pieces and one camp piece with two hostiles and no people, so it does not fit. near Loreisian (King of the Murkmire) fits better: an Argonian camp of five people with shrine and camp pieces, the same count as Yuvexa, which gives the Hist shrine at the settlement edge. Ree-An-Wo (King of the Murkmire), with cypress walkways and platforms on posts and hide tents, supplies the platforms and tents the families live in. Still to add: the drying racks, the goat pen, the lookout in a trunk facing the ruins and the snakes' lair under the lip.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7168,7 +7168,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Nuxhal is a Root-Folk post at the mesa's north-west edge, the hunters' own name for it. Its stilt houses stand under a stand of trees, with a lookout built into a trunk.",
+     "text": "Nuxhal is a Root-Folk post at the mesa's north-west edge, the hunters' own name for it. Its hide tents on cypress platforms stand under a stand of trees, with a lookout built into a trunk.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7324,7 +7324,7 @@
     },
     {
      "aspect": "look",
-     "text": "Stilt houses under a stand of trees, drying racks and a lookout built in a trunk facing Tenmal Pits' smoke.",
+     "text": "Hide tents on cypress platforms under a stand of trees, drying racks and a lookout built in a trunk facing Tenmal Pits' smoke.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7402,7 +7402,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Tumble Arch Pass (Skyrim), is four ruin pieces and two camp pieces with three hostiles and no people, so it does not fit. near Loreisian (King of the Murkmire) fits better: an Argonian camp of five people with shrine and camp pieces, the same count as Nuxhal, which gives the Hist shrine at the post's edge. Still to add: the stilt houses, the drying racks, the lookout in a trunk and the gully with the snakes' den.",
+     "text": "Its main source, Tumble Arch Pass (Skyrim), is four ruin pieces and two camp pieces with three hostiles and no people, so it does not fit. near Loreisian (King of the Murkmire) fits better: an Argonian camp of five people with shrine and camp pieces, the same count as Nuxhal, which gives the Hist shrine at the post's edge. Ree-An-Wo (King of the Murkmire), with cypress walkways and platforms on posts and hide tents, supplies the platforms and tents the families live in. Still to add: the drying racks, the lookout in a trunk and the gully with the snakes' den.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7460,7 +7460,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Reeka-Veesa is the Sedge-Wardens' southernmost post, its name taken from Jal-Veesa, their town. Its stilt houses stand under a few trees on the mesa's west side, with drying racks of reed and feather.",
+     "text": "Reeka-Veesa is the Sedge-Wardens' southernmost post, its name taken from Jal-Veesa, their town. Its hide tents on cypress platforms stand under a few trees on the mesa's west side, with drying racks of reed and feather.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7616,7 +7616,7 @@
     },
     {
      "aspect": "look",
-     "text": "Stilt houses under a few trees, drying racks of reed and feather and a lookout in a trunk that faces Sahlpesh Cave.",
+     "text": "Hide tents on cypress platforms under a few trees, drying racks of reed and feather and a lookout in a trunk that faces Sahlpesh Cave.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7694,7 +7694,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Military Camp Falkreath Sons (Skyrim), is a Nordic and Imperial tent camp of 20 people and 11 hostiles, so its tents and style do not fit stilt houses. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet of stilt and camp pieces with 16 people and no interior. Still to add: the drying racks of reed and feather, the shrine at the post's edge, the lookout in a trunk facing the cave and the web on the cave path.",
+     "text": "Its main source, Military Camp Falkreath Sons (Skyrim), is a Nordic and Imperial tent camp of 20 people and 11 hostiles, so its tents and style do not fit a camp of hide tents on platforms. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet of cypress walkways and platforms on posts, hide tents and hide fences with 16 people and no interior, which supplies the platforms and tents the families live in. Still to add: the drying racks of reed and feather, the shrine at the post's edge, the lookout in a trunk facing the cave and the web on the cave path.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

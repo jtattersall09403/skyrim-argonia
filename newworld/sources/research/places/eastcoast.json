@@ -1622,7 +1622,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Katariah (Skyrim), is a large Imperial ship with a hold interior, six doors and many crates and chests. It fits a freighter. The hull is set on the seabed under water with its hold as the interior, entered by a door in the hull. Icerunner (Skyrim), a wrecked ship with two interiors and nineteen foes, is the alternate for the lower deck, its Nordic pieces replaced. Still to add: the silt, the barnacled ribs, the sacks of rotted cargo, the drowned crew and the captain's strongbox.",
+     "text": "Its main source, Katariah (Skyrim), is a large Imperial ship with a hold interior, six doors and many crates and chests. It fits a freighter. The hull is set on the seabed under water with its hold as the interior, entered by a door in the hull. Icerunner (Skyrim), a wrecked ship whose one interior is a hold of crates, barrels, hay and benches, with nineteen foes, is the alternate for the lower deck, its Nordic pieces replaced. Still to add: the sinking of the hull into the seabed, the silt, the barnacled ribs, the sacks of rotted cargo, the drowned crew and the captain's strongbox.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1920,7 +1920,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Broken Tower Redoubt (Skyrim), is an Imperial and Nordic ruined fort of 307 buildings with 11 foes and two interiors. It does not fit a camp of nine. near Loreisian (King of the Murkmire) fits better: a small Argonian tribal camp of eight buildings with shrine and camp pieces, by water. Its tents and posts serve as the Sarpa camp, with no interior. Still to add: the high perches of timber and rock, the boundary poles marked in feathers and bones, the hoard chest of ash-glass and the hawk nests.",
+     "text": "Its main source, Broken Tower Redoubt (Skyrim), is an Imperial and Nordic ruined fort of 307 buildings with 11 foes and two interiors. It does not fit a camp of nine. near Loreisian (King of the Murkmire) fits better: a small Argonian tribal camp of eight buildings, by water. It has doomstone circles, cypress knees, bog beacons, Hist roots and a few Xanmeer busts but no tents and no interior, so it serves as the marsh setting around the roost. Ree-An-Wo (King of the Murkmire), a camp of six hide tents, hide fences and cypress walkways on posts, supplies the tents. Still to add: the high perches of timber and rock, the boundary poles marked in feathers and bones, the nets slung between the trees, the hoard chest of ash-glass and the hawk nests.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2642,7 +2642,7 @@
     },
     {
      "aspect": "look",
-     "text": "A cluster of reed-and-root stilt houses above the shore line, drying racks of kelp, canoes drawn up on mud, nets in a line.",
+     "text": "A cluster of hide tents on cypress platforms raised on posts above the shore line, drying racks of kelp, canoes drawn up on mud, nets in a line.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2703,7 +2703,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Velothi Victuals (Nyhus), is a small Dunmer hamlet of sixteen buildings with one interior and three people. It fits a station of five. Its Dunmer and Nordic pieces are replaced with Argonian reed and wood from Ree-An-Wo (King of the Murkmire). Its interior serves as the station hall holding the sap-jar. Still to add: the canoe landing, the salt piles, the kelp racks, the beached outlaw boat in the cove and the cove chest.",
+     "text": "Its main source, Velothi Victuals (Nyhus), is a small Dunmer hamlet of one house, woven fences and lanterns with three people and one interior of beds, tables and urns. It fits a station of five. Its Dunmer pieces are replaced with Argonian reed and wood, and its interior serves as the station hall holding the sap-jar. Ree-An-Wo (King of the Murkmire), a camp by water with cypress walkways and platforms on posts, six hide tents and hide fences, supplies the dwellings on the shore. Still to add: the drying racks of kelp, the nets, the canoe landing, the salt piles, the beached outlaw boat in the cove and the cove chest.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6213,7 +6213,7 @@
     },
     {
      "aspect": "look",
-     "text": "Stilted mounds along the lake edge, drying racks of eel, rice terraces with water-lilies, reed boats pulled up and a small stone cairn on the point.",
+     "text": "Clay mounds and thatched huts on plank platforms along the lake edge, drying racks of eel, rice terraces with water-lilies, reed boats pulled up and a small stone cairn on the point.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6294,7 +6294,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Darkwater Crossing (Skyrim), is a Nordic and Imperial river village of 82 buildings with two interiors. Its pieces are replaced. Seekhat Yol (King of the Murkmire) fits better: an Argonian village by water with 48 dock pieces, a fishers' hut and an accommodation hut among its seven interiors. The accommodation hut serves the eel-paste kitchen and a second hut serves as the elders' mound, the Nordic pieces replaced with reed and mud-brick. Still to add: the clay mounds and rice terraces, the landing for rafts, the lily beds, the fisher's lockbox on the point and the worked stones in the shallows.",
+     "text": "Its main source, Darkwater Crossing (Skyrim), is a Nordic and Imperial river village of 82 buildings with two interiors. Its pieces are replaced. Seekhat Yol (King of the Murkmire) fits better: an Argonian village by water of thatched huts on plank platforms raised on posts, with plank walkways, bridges and woven fences, and seven hut interiors. The fishers' hut serves the eel-paste kitchen with its cooking pot and stand, and the elders' hut serves as the elders' mound with its bed. Still to add: the clay mounds, the eel racks, the reed boats and rice terraces, the landing for rafts, the lily beds, the cairn and the fisher's lockbox on the point and the worked stones in the shallows.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8078,7 +8078,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Solitude Lighthouse Exterior (Skyrim), is a lighthouse of 55 buildings with three people and one interior. It fits the tower and the keeper's family. The Nordic and Imperial stone is replaced with Imperial coast stone. Its interior serves as the keeper's stair and lamp room. Alten Meerhleel (King of the Murkmire), an Argonian dock with a moored ship interior, lends the keeper's hut. Still to add: the lamp that lights at night, the gallery rail, the salvage chest and the point's rocks and driftwood.",
+     "text": "Its main source, Solitude Lighthouse Exterior (Skyrim), is a lighthouse of 55 buildings with three people and one interior. It fits the tower and the keeper's family. The Nordic and Imperial stone is replaced with Imperial coast stone. Its one interior holds stone walls, tables, shelves, barrels and crates and serves as the keeper's rooms at the tower's foot. Alten Meerhleel (King of the Murkmire), an Argonian dock of painted plank houses with a dockmaster's house interior holding a bed and shelves, lends the keeper's hut. Still to add: the stair and the lamp room above the keeper's rooms, the boat-slip, the lamp that lights at night, the gallery rail, the salvage chest and the point's rocks and driftwood.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8344,7 +8344,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Hlaalu Farm (Skyrim), is a Nordic farm of sixteen buildings with one interior and four foes. Its Nordic pieces would be replaced. Farmhouse (Journey to Baan Malur) fits better: a small farm by water with two interiors, a farmhouse and a storehouse, which serve as the reed house and the boiling shed. Still to add: the salt pans, the salt piles, the salt pot, the sedge beds and the smuggler's cache in the pans.",
+     "text": "Its main source, Hlaalu Farm (Skyrim), is a Nordic farm of sixteen buildings with one interior and four foes. Its Nordic pieces would be replaced. Farmhouse (Journey to Baan Malur) fits better: a small farm by water of a Dunmer stone farmhouse with a bed, table and shelves plus a silo of barrels and hay, two interiors that serve as the reed house and the boiling shed, their Dunmer stone replaced with reed. Still to add: the salt pans, the salt piles, the salt pot, the sedge beds and the smuggler's cache in the pans.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8822,7 +8822,7 @@
     },
     {
      "aspect": "look",
-     "text": "A single stilt house above the shingle, nets spread on the fence, a tarred boat pulled up the beach.",
+     "text": "A single plank shack on a raised timber platform above the shingle, nets spread on the fence, a tarred boat pulled up the beach.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8888,7 +8888,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Crabbers Shanty (Skyrim), is a shore shanty of 30 buildings with mine pieces, one person, three foes and no interior. Meekos Shack (Skyrim), a small shack of sixteen buildings with no interior, fits as well. Neither holds a room, so the one-room house is an interior added from Black Marsh & Valenwood's reed-hut pieces. Still to add: the net frames and rope walk on the shingle, the hearth pot, the pallet, the clam beds and the dropped satchel.",
+     "text": "Its main source, Crabbers Shanty (Skyrim), is a shore shanty of plank shack roofs on timber scaffold platforms with rope scaffolds and crates, one person, three foes and no interior. Meekos Shack (Skyrim), a small plank shack with no interior, fits as well. Neither holds a room, so the one-room house is an interior added from Black Marsh & Valenwood's reed-hut pieces. Still to add: the tarred boat, the fence for the nets, the net frames and rope walk on the shingle, the hearth pot, the pallet, the clam beds and the dropped satchel.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9022,7 +9022,7 @@
     },
     {
      "aspect": "present",
-     "text": "A hamlet of raft-houses and stilts, bounded by reed screens. The Agaceph keep to their lake and sell tomes and illusion-work to those who ask politely.",
+     "text": "A hamlet of raft-houses and platforms on posts, bounded by reed screens. The Agaceph keep to their lake and sell tomes and illusion-work to those who ask politely.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9211,7 +9211,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, near Masvos (Journey to Baan Malur), is a Dunmer and Nordic hamlet of 24 buildings with no interior. Its pieces would be replaced. Ree-An-Wo (King of the Murkmire) fits better: an Argonian and Ayleid hamlet by water of 31 buildings with camp and ruin pieces. It supplies the stilt houses, the reed screens and the landings. The eldest's raft-house, holding the book shelf, is an interior added from Black Marsh & Valenwood's reed-hut pieces. Still to add: the moored razor-thin rafts, the lake shallows and the bandit's cache by the screens.",
+     "text": "Its main source, near Masvos (Journey to Baan Malur), is a Dunmer and Nordic hamlet of 24 buildings with no interior. Its pieces would be replaced. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet by water with cypress walkways and platforms on posts, six hide tents, hide fences and ruin pieces and no interior. It supplies the platforms and walkways that serve as the landings, the hide fences that serve as the reed screens and the tents that stand on the platforms. The eldest's raft-house, holding the book shelf, is an interior added from Black Marsh & Valenwood's reed-hut pieces. Still to add: the raft-houses lashed together on the water, the moored razor-thin rafts, the lake shallows and the bandit's cache by the screens.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9295,7 +9295,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A raft-and-stilt hamlet in the marsh between Gaweja and Renhu.",
+     "text": "A raft-and-platform hamlet in the marsh between Gaweja and Renhu.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9432,7 +9432,7 @@
     },
     {
      "aspect": "look",
-     "text": "Raft-houses and stilts on a marsh pond, books drying on lines in the sun, rafts hauled onto reed beds.",
+     "text": "Raft-houses and hide tents on platforms raised on posts on a marsh pond, books drying on lines in the sun, rafts hauled onto reed beds.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9498,7 +9498,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, near Dark Brotherhood Sanctuary (Wyrmstooth), is a Nordic hamlet of 43 buildings with ship and farm pieces and no interior, which does not fit a marsh island. Ree-An-Wo (King of the Murkmire) fits better: an Argonian and Ayleid hamlet by water of 31 buildings and no interior. It supplies the stilt huts and camp pieces on the island. The eldest's raft-house with the book shelf is an interior added from Black Marsh & Valenwood's reed-hut pieces. Still to add: the raft with its locked coffer, the marsh reed beds and the guards' posts on the approach.",
+     "text": "Its main source, near Dark Brotherhood Sanctuary (Wyrmstooth), is a Nordic hamlet of 43 buildings with ship and farm pieces and no interior, which does not fit a marsh island. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet by water with cypress walkways and platforms on posts, six hide tents and hide fences and no interior. It supplies the platforms and hide tents on the island. The eldest's raft-house with the book shelf is an interior added from Black Marsh & Valenwood's reed-hut pieces. Still to add: the raft-houses, the lines for drying books, the raft with its locked coffer, the marsh reed beds and the guards' posts on the approach.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -10768,7 +10768,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Kazmalgur (Wyrmstooth), is an Orc and Nordic camp of 30 buildings with a longhouse interior. Its pieces would all be replaced. near Loreisian (King of the Murkmire) fits better: a small Argonian camp of eight buildings with shrine and camp pieces and no interior. Its tents and posts serve the camp. Still to add: the high perches, the wing-chief's tent, the perch caches and the boss chest.",
+     "text": "Its main source, Kazmalgur (Wyrmstooth), is an Orc and Nordic camp of 30 buildings with a longhouse interior. Its pieces would all be replaced. near Loreisian (King of the Murkmire) fits better: a small Argonian camp of eight buildings, by water, with doomstone circles, cypress knees, bog beacons and Hist roots but no tents and no interior; it serves as the marsh setting. Ree-An-Wo (King of the Murkmire), a camp of six hide tents, hide fences and cypress walkways on posts, supplies the tents. Still to add: the high perches, the reed shelters on the bank's crown, the rope nets, the wing-chief's tent, the perch caches and the boss chest.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -11084,7 +11084,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Cursed Tomb (SolsthDungeonPack), is a small Dunmer and Imperial ruin by water of 88 buildings with cave pieces and one interior, which serves as the halls, the drowned halls with a still water plane and the vault behind its sealed door. Redeyn Ancestral Tomb (Journey to Baan Malur), a Dunmer and Ayleid ruin with one interior of tomb halls and urns, is the alternate. Still to add: the ruin half sunk in the marsh, the mud-ridge, the drowned courtyard with its crocodiles, the tower for the warden ghost and the family urns and coffers.",
+     "text": "Its main source, Cursed Tomb (SolsthDungeonPack), has no outside pieces and one interior of ash-strewn hut-wall halls with bones, urns and cave lamps, which serves as the halls. Redeyn Ancestral Tomb (Journey to Baan Malur), a Dunmer ruin with ruined entrance pillars and one interior of tomb halls with ash pits, crates, bones and an altar, is the alternate and supplies the outside. Still to add: the drowned halls with a still water plane and the vault behind its sealed door, two more interiors built from the tomb's pieces, the ruin half sunk in the marsh, the mud-ridge, the drowned courtyard with its crocodiles, the tower for the warden ghost and the family urns and coffers.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

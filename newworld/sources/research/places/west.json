@@ -367,7 +367,7 @@
     },
     {
      "aspect": "present",
-     "text": "About nine people live in lean-to huts on stilts below the castle. They sell guided walks to the ruin, tend small yam beds and pay Gideon a gate-toll for the right to shelter under its guard.",
+     "text": "About nine people live in lean-to hide tents on raised cypress platforms below the castle. They sell guided walks to the ruin, tend small yam beds and pay Gideon a gate-toll for the right to shelter under its guard.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -448,7 +448,7 @@
     },
     {
      "aspect": "look",
-     "text": "Grey, root-split castle walls on a low mound, a dozen huts below on stilts, a plank causeway to Gideon's gate and lamps burning all night.",
+     "text": "Grey, root-split castle walls on a low mound, a dozen hide tents below on raised cypress platforms, a plank causeway to Gideon's gate and lamps burning all night.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -508,7 +508,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, BlackMarsh 22,-4 (Black Marsh & Valenwood), is a hamlet of thirteen people on a rise with no interior; its Nordic pieces are replaced with stilt huts, and Ree-An-Wo (King of the Murkmire) fits as the alternate with sixteen people and Argonian pieces. A hut interior for the bedroll comes from Root Whisper Village (King of the Murkmire). No source holds the castle: its halls and cell block are added as one ruin interior from the keep pieces of Cracked Tusk (Skyrim). Still to add: the root-split castle walls on the mound, the plank causeway, the roadside shrine and the yam beds.",
+     "text": "Its main source, BlackMarsh 22,-4 (Black Marsh & Valenwood), is a hamlet of thirteen people on a rise with no interior; its Nordic pieces are replaced with the hide tents and cypress platforms on posts of Ree-An-Wo (King of the Murkmire), a camp of sixteen people with cypress walkways, hide tents and hide fences that fits as the alternate. One plank hut interior of a bed, a table and a hearth, for the bedroll, comes from Root Whisper Village (King of the Murkmire). No source holds the castle: its halls and cell block are added as one ruin interior from the keep pieces of Cracked Tusk (Skyrim). Still to add: the root-split castle walls on the mound, the plank causeway, the roadside shrine and the yam beds.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -557,7 +557,7 @@
     },
     {
      "kind": "free-bed",
-     "detail": "a squatter's bedroll in a stilt hut",
+     "detail": "a squatter's bedroll in the one plank hut",
      "count": 1
     },
     {
@@ -584,7 +584,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A village of stilt houses and house-rafts moored to stakes on the northern caravan road above Gideon. The ring of rafts has been moored where it is for years.",
+     "text": "A village of thatched huts on raised plank platforms and house-rafts moored to stakes on the northern caravan road above Gideon. The ring of rafts has been moored where it is for years.",
      "tier": "CANON_DERIVED",
      "sources": [
       {
@@ -708,7 +708,7 @@
     },
     {
      "aspect": "look",
-     "text": "Tiered stilt huts, reed rafts roped end to end, black water, crows on the roof-poles and a long causeway of laid planks running out to the road.",
+     "text": "Thatched huts on raised plank platforms, reed rafts roped end to end, black water, crows on the roof-poles and a long causeway of laid planks running out to the road.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -753,7 +753,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Dragon Bridge (Skyrim), is a Nordic bridge town of five interiors (a tavern, a lumber camp, a farm) and does not fit a raft village. Seekhat Yol (King of the Murkmire) fits better: Argonian huts on dock pieces, with seven hut interiors that serve as the rest-house and the keeper's house. Still to add: the house-rafts roped end to end, the causeway of laid planks, the ferry stage, the raft shrine to Sithis and the sleeping platform.",
+     "text": "Its main source, Dragon Bridge (Skyrim), is a Nordic bridge town of five interiors (a tavern, a lumber camp, a farm) and does not fit a raft village. Seekhat Yol (King of the Murkmire) fits better: Argonian thatched huts on plank platforms raised on posts and joined by plank walkways, with seven hut interiors: the accommodation hut of beds, tables and partition walls serves as the rest-house and the fisher's hut as the keeper's house. Still to add: the house-rafts roped end to end, the causeway of laid planks, the ferry stage, the raft shrine to Sithis and the sleeping platform.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1399,7 +1399,7 @@
     },
     {
      "aspect": "present",
-     "text": "About eleven people live in stilt-and-clay houses, fire their pots in the kilns by the road and send the best to Gideon's market.",
+     "text": "About eleven people live in clay-walled thatched huts, some raised on platforms,, fire their pots in the kilns by the road and send the best to Gideon's market.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1475,7 +1475,7 @@
     },
     {
      "aspect": "look",
-     "text": "Round clay kilns smoking along the road, red mud, drying pots on racks, stilt houses beyond.",
+     "text": "Round clay kilns smoking along the road, red mud, drying pots on racks, thatched huts on raised platforms beyond.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1538,7 +1538,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, the Ancient Gold Mine (Here There Be Monsters - Curse of Cipactli), is a mine entrance with one mine interior and eleven people, a poor fit for a village of potters. Seekhat Yol (King of the Murkmire) fits better: seven Argonian hut interiors (a carpenter's, a smithy, a fisher's, an accommodation hut) that serve as the potter's house and the caravan rest-house, with dock pieces. Still to add: the round clay kilns along the road, the drying racks, the rice paddies and the red-clay pits.",
+     "text": "Its main source, the Ancient Gold Mine (Here There Be Monsters - Curse of Cipactli), is a mine entrance with one mine interior and eleven people, a poor fit for a village of potters. Seekhat Yol (King of the Murkmire) fits better: seven Argonian hut interiors (a smithy, a carpenter's, a fisher's, a treeminder's hung with pottery and an accommodation hut of beds and tables) that serve as the potter's house and the caravan rest-house, with thatched huts on raised plank platforms and walkways. Still to add: the round clay kilns along the road, the drying racks, the rice paddies and the red-clay pits.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2052,7 +2052,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, near Swampy Grotto (Here There Be Monsters - Curse of Cipactli), is a small ruin of ruin and Ayleid pieces with a shrine, three people and no interior, which fits a half-sunk shrine without needing a room. Still to add: the leaf-carved altar slab, the mangrove roots over the broken pillars, the pools, the landing and the chimes.",
+     "text": "Its main source, near Swampy Grotto (Here There Be Monsters - Curse of Cipactli), is a small ruin of three people and a few ruin bridge and building pieces beside a swamp pool, with no interior, which fits a half-sunk shrine without needing a room. Still to add: the leaf-carved altar slab, the mangrove roots over the broken pillars, the pools, the landing and the chimes.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2311,7 +2311,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Driftshade Sanctuary (Skyrim), is an Imperial ruin of 960 Imperial pieces with two interiors: one serves as the knight-captain's tomb behind the sealed stone door and the other as the rooms of the barracks wing. Still to add: the roofless hall of grey-white stone, the row of broken columns, the gable that carts steer by, the shield-hook and the socket for the keystone.",
+     "text": "Its main source, Driftshade Sanctuary (Skyrim), is an Imperial ruin of 960 Imperial pieces with two interiors: the one of rubble, shelves, tables and benches serves as the rooms of the barracks wing and the one of barrels and ruin halls as the knight-captain's tomb behind the sealed stone door. Still to add: the roofless hall of grey-white stone, the row of broken columns, the gable that carts steer by, the shield-hook and the socket for the keystone.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2583,7 +2583,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, near Karthspire (UWRL_UnderWaterSkyrimRiversAndLakes), is a bare ruin marker with no pieces and no interior. The terraces and chime-posts are built from the ruin and shrine pieces of Nightcaller Temple (Skyrim), whose one interior serves as the great tomb. Still to add: the stepped grave-stones, the ring of posts hung with tin and copper chimes, the middle pool and the nightshade.",
+     "text": "Its main source, near Karthspire (UWRL_UnderWaterSkyrimRiversAndLakes), is a bare ruin marker with no pieces and no interior. The terraces and chime-posts are built from the ruin blocks, walls and arch supports of Nightcaller Temple (Skyrim), whose one interior of ruin halls, jail walls, shelves and barrels serves as the great tomb. Still to add: the burial slabs of the great tomb, the stepped grave-stones, the ring of posts hung with tin and copper chimes, the middle pool and the nightshade.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2843,7 +2843,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, ArgoniaWorld -2,-45 (King of the Murkmire), is an Imperial ruin of eighteen pieces with no interior and is too small for a quay and a boat-house. Japhet's Folly (Skyrim) fits better: a ruined hamlet of Imperial pieces with 37 ship pieces and two interiors, one serving as the boat-house floor. Still to add: the stone quay, the launching slip with its half-built hull, the sunken lower shed in the shallows and the Kynareth wind-chime.",
+     "text": "Its main source, ArgoniaWorld -2,-45 (King of the Murkmire), is an Imperial ruin of eighteen pieces with no interior and is too small for a quay and a boat-house. Japhet's Folly (Skyrim) fits better: a ruined hamlet of Imperial pieces, plank shacks and stockade scaffolds with a few ship planks and two interiors, one a tower storehouse of hay, barrels, crates and shelves that serves as the boat-house floor. Still to add: the stone quay, the launching slip with its half-built hull, the sunken lower shed in the shallows and the Kynareth wind-chime.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3071,7 +3071,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Provision Cellar (Nyhus), is a small ruin of mine and Imperial pieces with two interiors, which serve as the back room with the snake nest and the strongroom behind the iron door. Teeth of Sithis (King of the Murkmire) is an Argonian ruin of 66 hostile and does not fit a family hall. Still to add: the long pale-stone hall above ground from Imperial ruin pieces, the leviathan horn on the lintel, the hearth, the fallen roof-beam and the spiked grate.",
+     "text": "Its main source, Provision Cellar (Nyhus), is a small ruin of mine and Imperial pieces with two interiors: a provision cellar of barrels, cupboards and food serves as the back room with the snake nest, and a hideout of coffins, a metal cage and a table as the strongroom behind the iron door. Teeth of Sithis (King of the Murkmire) is an Argonian ruin of 66 hostile and does not fit a family hall. Still to add: the long pale-stone hall above ground from Imperial ruin pieces, the leviathan horn on the lintel, the hearth, the fallen roof-beam and the spiked grate.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3331,7 +3331,7 @@
     },
     {
      "aspect": "source",
-     "text": "No source fits a long music-hall: the main one, near Yngol Barrow (Black Marsh & Valenwood), is a hamlet with one ship interior. The hall is added as a ring of tall ruin columns under open sky from Imperial ruin pieces. The crypt below the stage is the single interior of Nightcaller Temple (Skyrim), a temple of Imperial pieces. Still to add: the iron arms and chimes on the columns, the drifted leaves and the chime-master's chest.",
+     "text": "No source fits a long music-hall: the main one, near Yngol Barrow (Black Marsh & Valenwood), is a hamlet with one ship interior. The hall is added as a ring of tall ruin columns under open sky from Imperial ruin pieces. The crypt below the stage is the single interior of Nightcaller Temple (Skyrim), a hall of rubble, jail walls, shelves and barrels in Imperial pieces. Still to add: the iron arms and chimes on the columns, the drifted leaves and the chime-master's chest.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4325,7 +4325,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Stonehill Bluff (Skyrim), is a tribal camp site of fifteen ruin pieces with no people and no interior, too bare for a hunters' camp. Near Loreisian (King of the Murkmire) fits better: an Argonian tribal camp of five people, Argonian pieces and shrine pieces. No room inside is needed. Still to add: the reed and hide lean-tos, the smoke-rack, the drawn-up boat, the hearth pit and the feather charms.",
+     "text": "Its main source, Stonehill Bluff (Skyrim), is a giants' camp site of mammoth bones, giant skewers and stone slabs with no people and no interior, too bare for a hunters' camp. Near Loreisian (King of the Murkmire) fits better: an Argonian tribal camp of five people with bog beacons, cypress knees, a stone circle and a few Xanmeer busts. No room inside is needed. Still to add: the reed and hide lean-tos, the smoke-rack, the drawn-up boat, the hearth pit and the feather charms and the reed platform for the hunter's cache.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4582,7 +4582,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Talking Stone Camp (Skyrim), is a camp site with five pieces, no people and no interior, too bare for a hunters' camp. Near Loreisian (King of the Murkmire) fits better: an Argonian tribal camp of five people with shrine pieces. No room inside is needed. Still to add: the ring of reed shelters, the smoke-rack, the stack of hides, the reed mound for the dead and the boundary stone with bones.",
+     "text": "Its main source, Talking Stone Camp (Skyrim), is a giants' camp site of stone slabs, spits, hanging bones and pelts, with no people and no interior, too bare for a hunters' camp. Near Loreisian (King of the Murkmire) fits better: an Argonian tribal camp of five people with bog beacons, a stone circle and a few Xanmeer busts. No room inside is needed. Still to add: the ring of reed shelters, the smoke-rack, the stack of hides, the reed mound for the dead and the boundary stone with bones.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4839,7 +4839,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Dragon Bridge Overlook (Skyrim), is a camp site of five pieces with no interior. The ruin's inner rooms come from Narzulbur (Skyrim), a tribal camp whose basement serves as the inner rooms with the urns and whose longhouse serves as the roofed room; both are re-dressed in grey-white ruin stone. Still to add: the broken Kothringi wall, the hide and reed shelters, the smoke-rack, the hearth pit and the chimes on the lintel.",
+     "text": "Its main source, Dragon Bridge Overlook (Skyrim), is a hagraven camp site of fences, sticks and two small huts, with no interior. The ruin's inner rooms come from Narzulbur (Skyrim), a tribal camp whose basement of stockade beams, mead barrels, sacks and shelves in cave walls serves as the inner rooms with the urns and whose longhouse of partitions, hay, pelts and beds serves as the roofed room; both are re-dressed in grey-white ruin stone. Still to add: the broken Kothringi wall, the hide and reed shelters, the smoke-rack, the hearth pit and the chimes on the lintel.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4907,7 +4907,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Ukeel Station is a reed-thatched stilt platform above the Banujha with a fish-rack, a net-drying frame and a boat landing. Five Naka-Desh keep it.",
+     "text": "Ukeel Station is a reed-thatched plank platform raised on posts above the Banujha with a fish-rack, a net-drying frame and a boat landing. Five Naka-Desh keep it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5048,7 +5048,7 @@
     },
     {
      "aspect": "look",
-     "text": "A stilt platform of reed thatch above the Banujha, a fish-rack, a net-drying frame and a boat landing with a chime-post at the end. Fish scales glitter on the planks.",
+     "text": "A plank platform raised on posts and thatched with reed above the Banujha, a fish-rack, a net-drying frame and a boat landing with a chime-post at the end. Fish scales glitter on the planks.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5111,7 +5111,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Military Camp Haafingar Sons (Skyrim), is a camp of thirteen people with 27 camp pieces and no interior, so it lends tents and racks with its Nordic pieces replaced. Black Rose (Black Marsh & Valenwood) is a hamlet of three people with ruin pieces and is too bare. Still to add: the reed-thatched stilt platform, the fish-rack, the net-drying frame, the landing and the chime-post from near Loreisian (King of the Murkmire).",
+     "text": "Its main source, Military Camp Haafingar Sons (Skyrim), is a camp of thirteen people with 27 camp pieces and no interior, so it lends tents and racks with its Nordic pieces replaced. Black Rose (Black Marsh & Valenwood) is a hamlet of three people with ruin pieces and is too bare. Ree-An-Wo (King of the Murkmire) supplies the platform: an Argonian camp of sixteen people with cypress platforms on posts, ramps and hide tents. Still to add: the reed thatch over the raised platform, the fish-rack, the net-drying frame, the landing and the chime-post.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5174,7 +5174,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Sakeepa Station is a reed-thatched platform on stilts at a bend of the Nha Enasa channel, with a long boat-landing and poled barges moored beneath. Five Naka-Desh keep it.",
+     "text": "Sakeepa Station is a reed-thatched plank platform raised on posts at a bend of the Nha Enasa channel, with a long boat-landing and poled barges moored beneath. Five Naka-Desh keep it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5304,7 +5304,7 @@
     },
     {
      "aspect": "look",
-     "text": "A reed-thatched platform on stilts at the channel's edge, a long boat-landing, a fish-rack and a chime-post with a signal lamp. Poled barges lie moored beneath.",
+     "text": "A reed-thatched plank platform raised on posts at the channel's edge, a long boat-landing, a fish-rack and a chime-post with a signal lamp. Poled barges lie moored beneath.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5373,7 +5373,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Military Camp Winterhold Imperial (Skyrim), is a camp of eleven people with 29 camp pieces and no interior; it lends tents and racks. Near Loreisian (King of the Murkmire) is a tribal camp with a chime shrine and fits the chime-post. No room inside is needed. Still to add: the reed-thatched stilt platform, the long landing, the fish-rack, the signal lamp and the moored barges.",
+     "text": "Its main source, Military Camp Winterhold Imperial (Skyrim), is a camp of eleven people with 29 camp pieces and no interior; it lends tents and bedrolls. Ree-An-Wo (King of the Murkmire) supplies the platform: an Argonian camp of sixteen people with cypress platforms on posts, ramps and hide tents. No room inside is needed. Still to add: the reed thatch over the raised platform, the long landing, the fish-rack, the chime-post with its signal lamp and the moored barges.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5431,7 +5431,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Nahk-Zeel Station is a reed platform on stilts with a lamp-post, a fish-rack and a boat landing. Five Naka-Desh keep a lamp lit there for boats.",
+     "text": "Nahk-Zeel Station is a reed-covered plank platform raised on posts with a lamp-post, a fish-rack and a boat landing. Five Naka-Desh keep a lamp lit there for boats.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5572,7 +5572,7 @@
     },
     {
      "aspect": "look",
-     "text": "A reed platform on stilts at the channel's northern edge, with a lamp-post, a fish-rack and a boat landing. Hides hang drying on a frame beside the landing.",
+     "text": "A reed-covered plank platform raised on posts at the channel's northern edge, with a lamp-post, a fish-rack and a boat landing. Hides hang drying on a frame beside the landing.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5641,7 +5641,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Military Camp Reach Sons (Skyrim), is a camp of twelve people with camp and Dwemer pieces and no interior; its Dwemer and Nordic pieces are not used. Ree-An-Wo (King of the Murkmire) fits better with Argonian stilt pieces. Still to add: the reed platform, the lamp-post, the fish-rack, the hide-drying frame and the chime-post.",
+     "text": "Its main source, Military Camp Reach Sons (Skyrim), is a camp of twelve people with camp and Dwemer pieces and no interior; its Dwemer and Nordic pieces are not used. Ree-An-Wo (King of the Murkmire) fits better with its cypress platforms on posts, ramps and hide tents. Still to add: the reed cover for the raised platform, the lamp-post, the fish-rack, the hide-drying frame and the chime-post.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5965,14 +5965,14 @@
    "siting": "swamp",
    "danger_band_id": "D3",
    "importance": 1,
-   "summary": "Sarth-Hul Station is a small Root-Folk hunting and egg-tending station in the Nha Enasa. It lies deep in Nha Enasa's reeds, a stilt post where hunters tend a Hist sapling and a clutch of eggs.",
+   "summary": "Sarth-Hul Station is a small Root-Folk hunting and egg-tending station in the Nha Enasa. It lies deep in Nha Enasa's reeds, a raised plank post where hunters tend a Hist sapling and a clutch of eggs.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "Sarth-Hul Station is a stilt platform in the reed-beds with an egg-hut and a young Hist sapling ringed with stones. Four Saxhleel hold it.",
+     "text": "Sarth-Hul Station is a plank platform raised on posts in the reed-beds with an egg-hut and a young Hist sapling ringed with stones. Four Saxhleel hold it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6110,7 +6110,7 @@
     },
     {
      "aspect": "look",
-     "text": "A stilt platform in the reed-beds, with a drying rack, an egg-hut and a young Hist sapling with a ring of stones round it. The reeds are tall enough to hide the whole post.",
+     "text": "A plank platform raised on posts in the reed-beds, with a drying rack, an egg-hut and a young Hist sapling with a ring of stones round it. The reeds are tall enough to hide the whole post.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6176,7 +6176,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, CWAttacker Camp Whiterun (Skyrim), is a small camp of four people and ten camp pieces with no interior. Ree-An-Wo (King of the Murkmire) fits better with Argonian stilt pieces. The egg-hut's room is added as the Egg Tender's Quarters interior from Seekhat Yol (King of the Murkmire). Still to add: the stilt platform, the drying rack and the young Hist sapling ringed with stones.",
+     "text": "Its main source, CWAttacker Camp Whiterun (Skyrim), is a small camp of four people and ten camp pieces with no interior. Ree-An-Wo (King of the Murkmire) fits better with its cypress platforms on posts, ramps and hide tents. The egg-hut's room is added as the Egg Tender's Quarters interior from Seekhat Yol (King of the Murkmire). Still to add: the drying rack and the young Hist sapling ringed with stones.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6232,14 +6232,14 @@
    "siting": "swamp",
    "danger_band_id": "D3",
    "importance": 1,
-   "summary": "Olaxa Station is a small Root-Folk hunting and egg-tending station in the Banujha Basin. It lies in the basin's northern reeds, a stilt post with a drying rack and an egg-hut.",
+   "summary": "Olaxa Station is a small Root-Folk hunting and egg-tending station in the Banujha Basin. It lies in the basin's northern reeds, a raised plank post with a drying rack and an egg-hut.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "Olaxa Station is a stilt platform with a long drying rack, a thatched egg-hut and a landing hidden in the grass. Four Saxhleel hold it.",
+     "text": "Olaxa Station is a plank platform raised on posts with a long drying rack, a thatched egg-hut and a landing hidden in the grass. Four Saxhleel hold it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6382,7 +6382,7 @@
     },
     {
      "aspect": "look",
-     "text": "A stilt platform in the northern reeds with a long drying rack, an egg-hut with a thatch roof and a boat landing hidden in the grass. Smoke from the fish-rack hangs over it.",
+     "text": "A plank platform raised on posts in the northern reeds with a long drying rack, an egg-hut with a thatch roof and a boat landing hidden in the grass. Smoke from the fish-rack hangs over it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6448,7 +6448,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Saerings Watch (Dragonborn), is a Nordic tower on Solstheim and does not fit a reed station. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet of sixteen people on the water. The egg-hut's room is added as the Egg Tender's Quarters interior from Seekhat Yol (King of the Murkmire). Still to add: the stilt platform, the long drying rack and the hidden landing.",
+     "text": "Its main source, Saerings Watch (Dragonborn), is a Nordic tower on Solstheim and does not fit a reed station. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet of sixteen people on the water, with cypress platforms on posts. The egg-hut's room is added as the Egg Tender's Quarters interior from Seekhat Yol (King of the Murkmire). Still to add: the thatch roof of the egg-hut from Seekhat Yol's thatch house piece, the long drying rack and the hidden landing.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6511,7 +6511,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Zul-Meeka Station is a stilt platform at the swamp's edge with an egg-hut and a lookout post. Four Saxhleel hold it.",
+     "text": "Zul-Meeka Station is a plank platform raised on posts at the swamp's edge with an egg-hut and a lookout post. Four Saxhleel hold it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6657,7 +6657,7 @@
     },
     {
      "aspect": "look",
-     "text": "A stilt platform on the basin's south-east edge, an egg-hut, a lookout post and a boat landing. The abandoned village's roofs show through the reeds nearby.",
+     "text": "A plank platform raised on posts on the basin's south-east edge, an egg-hut, a lookout post and a boat landing. The abandoned village's roofs show through the reeds nearby.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6724,7 +6724,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Meekos Shack (Skyrim), is a three-metre homestead of four pieces and is too small. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet of sixteen people. The egg-hut's room is added as the Egg Tender's Quarters interior from Seekhat Yol (King of the Murkmire). Still to add: the stilt platform, the lookout post and the landing.",
+     "text": "Its main source, Meekos Shack (Skyrim), is a three-metre homestead of four pieces and is too small. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet of sixteen people with cypress platforms on posts. The egg-hut's room is added as the Egg Tender's Quarters interior from Seekhat Yol (King of the Murkmire). Still to add: the egg-hut, the lookout post and the landing.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6787,7 +6787,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Banu-Veeth Post is a stilt watch-post with a lookout platform, a long boat-landing and a toll chain across the channel. Six Mine-Burner watchers live on it.",
+     "text": "Banu-Veeth Post is a plank watch-post raised on posts with a lookout platform, a long boat-landing and a toll chain across the channel. Six Mine-Burner watchers live on it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6919,7 +6919,7 @@
     },
     {
      "aspect": "look",
-     "text": "A stilt watch-post on the water with a lookout platform and a long boat-landing, with a toll chain across the channel. A heap of salt sacks sits under a lean-to.",
+     "text": "A plank watch-post raised on posts on the water with a lookout platform and a long boat-landing, with a toll chain across the channel. A heap of salt sacks sits under a lean-to.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6981,7 +6981,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Military Camp Pale Sons (Skyrim), is a camp of ten people and no interior; its Nordic pieces are replaced. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet of 105 Argonian pieces. The post needs no room inside, so it is built of stilt platforms with dock pieces from Seekhat Yol (King of the Murkmire). Still to add: the lookout platform, the long landing, the toll chain, the lean-to of salt sacks and the fang charm.",
+     "text": "Its main source, Military Camp Pale Sons (Skyrim), is a camp of ten people and no interior; its Nordic pieces are replaced. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet of 105 Argonian pieces. The post needs no room inside, so it is built of Ree-An-Wo's cypress platforms on posts with plank walkways and platform bridges from Seekhat Yol (King of the Murkmire). Still to add: the lookout platform, the long landing, the toll chain, the lean-to of salt sacks and the fang charm.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7039,7 +7039,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Jal-Resh Post is a stilt post at a channel bend with a lookout tower, a signal horn and two war-canoes drawn up at the landing. Six Mine-Burners keep the watch here.",
+     "text": "Jal-Resh Post is a plank post raised on posts at a channel bend with a lookout tower, a signal horn and two war-canoes drawn up at the landing. Six Mine-Burners keep the watch here.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7171,7 +7171,7 @@
     },
     {
      "aspect": "look",
-     "text": "A stilt post at a channel bend, a lookout tower with a signal horn and a landing with two war-canoes drawn up. The ruined cities show faintly through the haze on either side.",
+     "text": "A plank post raised on posts at a channel bend, a lookout tower with a signal horn and a landing with two war-canoes drawn up. The ruined cities show faintly through the haze on either side.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7233,7 +7233,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Military Camp Hjaalmarch Sons (Skyrim), is a camp of eleven people with camp and Nordic pieces and no interior; its Nordic pieces are replaced. Ree-An-Wo (King of the Murkmire) fits better: a small Argonian hamlet on the water with sixteen people. No room inside is needed. Still to add: the stilt platform, the lookout tower with its signal horn, the landing and the two war-canoes.",
+     "text": "Its main source, Military Camp Hjaalmarch Sons (Skyrim), is a camp of eleven people with camp and Nordic pieces and no interior; its Nordic pieces are replaced. Ree-An-Wo (King of the Murkmire) fits better: a small Argonian hamlet on the water with sixteen people and cypress platforms on posts. No room inside is needed. Still to add: the lookout tower with its signal horn, the landing and the two war-canoes.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7291,7 +7291,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Xul-Banu Post is a stilt post with a gate-tower and a trading float tied beside the landing. Six Mine-Burners stand the watch.",
+     "text": "Xul-Banu Post is a plank post raised on posts with a gate-tower and a trading float tied beside the landing. Six Mine-Burners stand the watch.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7433,7 +7433,7 @@
     },
     {
      "aspect": "look",
-     "text": "A stilt post on the basin's north-west edge, a gate-tower facing Nha Enasa and a trading float tied beside the landing. Hides and baskets lie stacked on the float.",
+     "text": "A plank post raised on posts on the basin's north-west edge, a gate-tower facing Nha Enasa and a trading float tied beside the landing. Hides and baskets lie stacked on the float.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7495,7 +7495,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Military Camp Reach Imperial (Skyrim), is a small Imperial camp with sixteen people, camp pieces and a fort piece, and no interior; it lends the gate-tower ground. No room inside is needed. Ree-An-Wo (King of the Murkmire) is the alternate for Argonian stilt pieces. Still to add: the stilt platform, the trading float, the burn-marks on the gate and the cache under the platform.",
+     "text": "Its main source, Military Camp Reach Imperial (Skyrim), is a small Imperial camp with sixteen people, camp pieces and a fort piece, and no interior; it lends the gate-tower ground. No room inside is needed. Ree-An-Wo (King of the Murkmire) is the alternate that supplies the cypress platforms on posts. Still to add: the gate-tower, the trading float, the burn-marks on the gate and the cache under the platform.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7553,7 +7553,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Deshaa Post is a stilt post with a toll gate, a lookout and a wagon yard beside a raised causeway. Six Mine-Burners man it.",
+     "text": "Deshaa Post is a plank post raised on posts with a toll gate, a lookout and a wagon yard beside a raised causeway. Six Mine-Burners man it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7685,7 +7685,7 @@
     },
     {
      "aspect": "look",
-     "text": "A stilt post at the basin's edge where the road turns toward the coast, with a toll gate, a lookout and a wagon yard. The road runs in a raised causeway beside it.",
+     "text": "A plank post raised on posts at the basin's edge where the road turns toward the coast, with a toll gate, a lookout and a wagon yard. The road runs in a raised causeway beside it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7751,7 +7751,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Military Camp Rift Imperial (Skyrim), is a camp of thirteen people with mine and camp pieces and no interior; its Nordic pieces are replaced. Ree-An-Wo (King of the Murkmire) fits as the alternate for the Argonian stilt pieces. No room inside is needed. Still to add: the toll gate, the lookout, the wagon yard, the raised causeway and the fang-charm over the gate.",
+     "text": "Its main source, Military Camp Rift Imperial (Skyrim), is a camp of thirteen people with mine and camp pieces and no interior; its Nordic pieces are replaced. Ree-An-Wo (King of the Murkmire) fits as the alternate for the Argonian cypress platforms on posts. No room inside is needed. Still to add: the toll gate, the lookout, the wagon yard, the raised causeway and the fang-charm over the gate.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8366,7 +8366,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Murkwood (Black Marsh & Valenwood), is a town of thirty people with 116 dock pieces and one ship interior, which serves as the metal-trader's store. Alten Meerhleel (King of the Murkmire) is the alternate, with three Argonian hut interiors. Still to add: the stilt halls, the scorched palisade, the tin chimes on the market posts, the spoil heaps and the smelter.",
+     "text": "Its main source, Murkwood (Black Marsh & Valenwood), is a town of thirty people with 116 dock pieces and one ship interior, a ship's hold of crates and barrels that serves as the metal-trader's store. Alten Meerhleel (King of the Murkmire) is the alternate, with painted plank houses raised over the water that serve as the stilt halls and three interiors (a dockmaster's house, a general store and a bunkhouse). Still to add: the stilt halls, the scorched palisade, the tin chimes on the market posts, the spoil heaps and the smelter.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8675,7 +8675,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Brodir Grove (Dragonborn), is a Solstheim hamlet of mine pieces with one person and no interior; its Nordic pieces are replaced. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet of 105 Argonian pieces with sixteen people. The chime-smith's hut interior is added from Root Whisper Village (King of the Murkmire). Still to add: the stone footings under the stilt houses, the long landing, the forge and the chimes on every eave.",
+     "text": "Its main source, Brodir Grove (Dragonborn), is a Solstheim hamlet of mine pieces with one person and no interior; its Nordic pieces are replaced. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet of 105 Argonian pieces with sixteen people. The chime-smith's hut interior is added from Root Whisper Village (King of the Murkmire). Still to add: the stilt houses, from the painted plank houses of Alten Meerhleel (King of the Murkmire), set on stone footings, the long landing, the forge and the chimes on every eave.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8941,7 +8941,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Solitude Sawmill (Skyrim), is a Nordic sawmill with one interior and five people; its Nordic pieces are replaced and it lends the lumber pieces and the foreman's room. The Lady Padomay (King of the Murkmire) fits the style better: a small Argonian mill with one interior and dock pieces. Still to add: the log huts, the skid-road, the piled red logs and the chest in the foreman's hut.",
+     "text": "Its main source, Solitude Sawmill (Skyrim), is a Nordic sawmill with one interior and five people; its Nordic pieces are replaced and it lends the lumber mill and water-wheel pieces, and its one interior of sawmill wall and column pieces and crates serves as the foreman's hut. The Lady Padomay (King of the Murkmire) fits the style better: a plank travel ship with cabin interiors of crates, barrels and a table, and dock and platform pieces, though it is no mill. Still to add: the log huts, the skid-road, the piled red logs and the chest in the foreman's hut.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -10956,7 +10956,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Icerunner (Skyrim), is a wreck of 214 ship pieces with a ship's hold interior, which serves as the sloop's hold; its Nordic ship pieces are replaced. Wreck of the Winter Sparrow (Wyrmstooth) is a bare nineteen-piece hull and fits the smaller sloop outside. Still to add: the rock cleft from rock pieces, the snapped mast, the kelp on the deck, the tin cup of coins and the strongbox in the cleft.",
+     "text": "Its main source, Icerunner (Skyrim), is a wrecked ship whose one interior of ship beams and walls, crates, sacks and hay serves as the sloop's hold; its Nordic ship pieces are replaced. Wreck of the Winter Sparrow (Wyrmstooth) is a bare nineteen-piece hull and fits the smaller sloop outside. Still to add: the rock cleft from rock pieces, the snapped mast, the kelp on the deck, the tin cup of coins and the strongbox in the cleft.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

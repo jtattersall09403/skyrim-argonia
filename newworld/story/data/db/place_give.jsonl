@@ -160,7 +160,7 @@
 {"place_id":"blackrose-prison","seq":5,"give_kind_id":"forge","detail":"the Blackguards' forge in the yard with its anvil","count":1}
 {"place_id":"blackrose-prison","seq":6,"give_kind_id":"fence","detail":"a Blackguard quartermaster who buys stolen goods once the gate is opened to the player","count":1}
 {"place_id":"blackrose-prison","seq":7,"give_kind_id":"skill-book","detail":"a Lockpicking skill book in the old warden's office","count":1}
-{"place_id":"bucalos","seq":0,"give_kind_id":"combat-creature","detail":"crocodiles and giant snakes under the empty stilts","count":4,"reward_kind_id":"treasure"}
+{"place_id":"bucalos","seq":0,"give_kind_id":"combat-creature","detail":"crocodiles and giant snakes among the empty footings","count":4,"reward_kind_id":"treasure"}
 {"place_id":"bucalos","seq":1,"give_kind_id":"combat-foes","detail":"rival scavengers raiding the footings","count":4,"reward_kind_id":"boss-chest"}
 {"place_id":"bucalos","seq":2,"give_kind_id":"combat-boss","detail":"the scavenger gang's leader","count":1,"reward_kind_id":"boss-chest"}
 {"place_id":"bucalos","seq":3,"give_kind_id":"treasure","detail":"treasure: a Kothringi cache of chimes and silver among the footings","count":1}
@@ -344,7 +344,7 @@
 {"place_id":"giovesse","seq":1,"give_kind_id":"combat-boss","detail":"the ghost of the castle's last gaoler, in the cell block","count":1,"reward_kind_id":"boss-chest","setting":"interior"}
 {"place_id":"giovesse","seq":2,"give_kind_id":"boss-chest","detail":"the gaoler's chest in Tavia's old cell","count":1}
 {"place_id":"giovesse","seq":3,"give_kind_id":"treasure","detail":"urns and a rotted strongbox in the castle halls","count":3}
-{"place_id":"giovesse","seq":4,"give_kind_id":"free-bed","detail":"a squatter's bedroll in a stilt hut","count":1}
+{"place_id":"giovesse","seq":4,"give_kind_id":"free-bed","detail":"a squatter's bedroll in the one plank hut","count":1}
 {"place_id":"giovesse","seq":5,"give_kind_id":"harvest-common","detail":"yams from the hut beds; swamp fungus on the castle walls","count":1}
 {"place_id":"gul-tej","seq":0,"give_kind_id":"boat-stop","detail":"river boats at the market landing","count":1}
 {"place_id":"gul-tej","seq":1,"give_kind_id":"trader-general","detail":"a plank-market trader of salt, iron and cloth","count":1}
@@ -884,7 +884,7 @@
 {"place_id":"outpost-1-m75","seq":4,"give_kind_id":"combat-creature","detail":"a giant spider","count":1,"reward_kind_id":"boss-chest"}
 {"place_id":"outpost-1-m75","seq":5,"give_kind_id":"boss-chest","detail":"boss chest","count":1}
 {"place_id":"outpost-1-m81","seq":0,"give_kind_id":"fishing","detail":"the junction landing","count":1}
-{"place_id":"outpost-1-m81","seq":1,"give_kind_id":"free-bed","detail":"a stilt platform","count":1}
+{"place_id":"outpost-1-m81","seq":1,"give_kind_id":"free-bed","detail":"a platform on posts","count":1}
 {"place_id":"outpost-1-m81","seq":2,"give_kind_id":"cooking-pot","detail":"the station fire","count":1}
 {"place_id":"outpost-1-m81","seq":3,"give_kind_id":"combat-foes","detail":"an egg-thieves' boat crew","count":3,"reward_kind_id":"boss-chest","setting":"nearby","spot":"the river junction below the platforms where the boat ties up","bearing_deg":202.0,"distance_m":120.0}
 {"place_id":"outpost-1-m81","seq":4,"give_kind_id":"combat-boss","detail":"the egg-thieves' pilot","count":1,"reward_kind_id":"boss-chest","setting":"nearby","spot":"the river junction below the platforms where the boat ties up","bearing_deg":202.0,"distance_m":120.0}
@@ -996,7 +996,7 @@
 {"place_id":"outpost-m16-m68","seq":0,"give_kind_id":"shrine-blessing","detail":"the young Hist: a blessing of resist poison from its tenders","count":1}
 {"place_id":"outpost-m16-m68","seq":1,"give_kind_id":"trader-apothecary","detail":"a sap-gatherer selling Hist sap, swamp fungus and eggshells","count":1}
 {"place_id":"outpost-m16-m68","seq":2,"give_kind_id":"trainer","detail":"Adept Alchemy trainer, the stand's sap-gatherer","count":1}
-{"place_id":"outpost-m16-m68","seq":3,"give_kind_id":"alchemy-lab","detail":"a sap bench under a stilt hut","count":1}
+{"place_id":"outpost-m16-m68","seq":3,"give_kind_id":"alchemy-lab","detail":"a sap bench under a hide tent","count":1}
 {"place_id":"outpost-m16-m68","seq":4,"give_kind_id":"harvest-rare","detail":"Hist sap at the tapping cuts","count":1}
 {"place_id":"outpost-m16-m87","seq":0,"give_kind_id":"trainer","detail":"Journeyman Light Armor trainer, the watch-leader","count":1}
 {"place_id":"outpost-m16-m87","seq":1,"give_kind_id":"fishing","detail":"gar at the border water","count":1}

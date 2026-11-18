@@ -160,7 +160,7 @@
 {"place_id":"blackrose-prison","give_seq":5,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (forge: the Blackguards' forge in the yard with its anvil)"}
 {"place_id":"blackrose-prison","give_seq":6,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (fence: a Blackguard quartermaster who buys stolen goods once the gate is opened to the player)"}
 {"place_id":"blackrose-prison","give_seq":7,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (skill-book: a Lockpicking skill book in the old warden's office)"}
-{"place_id":"bucalos","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-creature: crocodiles and giant snakes under the empty stilts)"}
+{"place_id":"bucalos","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-creature: crocodiles and giant snakes among the empty footings)"}
 {"place_id":"bucalos","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-foes: rival scavengers raiding the footings)"}
 {"place_id":"bucalos","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-boss: the scavenger gang's leader)"}
 {"place_id":"bucalos","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (treasure: treasure: a Kothringi cache of chimes and silver among the footings)"}
@@ -344,7 +344,7 @@
 {"place_id":"giovesse","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-boss: the ghost of the castle's last gaoler, in the cell block)"}
 {"place_id":"giovesse","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (boss-chest: the gaoler's chest in Tavia's old cell)"}
 {"place_id":"giovesse","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (treasure: urns and a rotted strongbox in the castle halls)"}
-{"place_id":"giovesse","give_seq":4,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (free-bed: a squatter's bedroll in a stilt hut)"}
+{"place_id":"giovesse","give_seq":4,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (free-bed: a squatter's bedroll in the one plank hut)"}
 {"place_id":"giovesse","give_seq":5,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (harvest-common: yams from the hut beds; swamp fungus on the castle walls)"}
 {"place_id":"gul-tej","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (boat-stop: river boats at the market landing)"}
 {"place_id":"gul-tej","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-general: a plank-market trader of salt, iron and cloth)"}
@@ -884,7 +884,7 @@
 {"place_id":"outpost-1-m75","give_seq":4,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-creature: a giant spider)"}
 {"place_id":"outpost-1-m75","give_seq":5,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (boss-chest: boss chest)"}
 {"place_id":"outpost-1-m81","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (fishing: the junction landing)"}
-{"place_id":"outpost-1-m81","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (free-bed: a stilt platform)"}
+{"place_id":"outpost-1-m81","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (free-bed: a platform on posts)"}
 {"place_id":"outpost-1-m81","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (cooking-pot: the station fire)"}
 {"place_id":"outpost-1-m81","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-foes: an egg-thieves' boat crew)"}
 {"place_id":"outpost-1-m81","give_seq":4,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-boss: the egg-thieves' pilot)"}
@@ -996,7 +996,7 @@
 {"place_id":"outpost-m16-m68","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (shrine-blessing: the young Hist: a blessing of resist poison from its tenders)"}
 {"place_id":"outpost-m16-m68","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-apothecary: a sap-gatherer selling Hist sap, swamp fungus and eggshells)"}
 {"place_id":"outpost-m16-m68","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trainer: Adept Alchemy trainer, the stand's sap-gatherer)"}
-{"place_id":"outpost-m16-m68","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (alchemy-lab: a sap bench under a stilt hut)"}
+{"place_id":"outpost-m16-m68","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (alchemy-lab: a sap bench under a hide tent)"}
 {"place_id":"outpost-m16-m68","give_seq":4,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (harvest-rare: Hist sap at the tapping cuts)"}
 {"place_id":"outpost-m16-m87","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trainer: Journeyman Light Armor trainer, the watch-leader)"}
 {"place_id":"outpost-m16-m87","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (fishing: gar at the border water)"}

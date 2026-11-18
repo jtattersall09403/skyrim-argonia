@@ -1787,7 +1787,7 @@
     },
     {
      "aspect": "present",
-     "text": "A few stilt huts and a drying-rack yard on the bank, with a boat landing and a weir across the creek.",
+     "text": "A few hide tents on cypress platforms and a drying-rack yard on the bank, with a boat landing and a weir across the creek.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1875,7 +1875,7 @@
     },
     {
      "aspect": "look",
-     "text": "Pale stilt huts on a mud bank, a woven fish-weir across the creek, mats and fish drying on racks.",
+     "text": "Pale hide tents on cypress platforms on a mud bank, a woven fish-weir across the creek, mats and fish drying on racks.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1941,7 +1941,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Imperial Camp (Wyrmstooth), is a military camp with no interior and does not suit weir-wardens. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet of stilt huts and camp pieces with no interiors, which is all the record holds. Still to add: the woven weir of stakes across the creek, the boat landing, the drying racks, the small Hist-shoot shrine and the drowned strongbox below the weir.",
+     "text": "Its main source, Imperial Camp (Wyrmstooth), is a military camp with no interior and does not suit weir-wardens. Ree-An-Wo (King of the Murkmire) fits better: an Argonian camp by water of sixteen people, with cypress walkways and platforms on posts, hide tents and hide fences and no interior, which is all the record holds. It supplies the platforms and tents the wardens live on. Still to add: the woven weir of stakes across the creek, the boat landing, the drying racks, the small Hist-shoot shrine and the drowned strongbox below the weir.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2485,7 +2485,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Doomstone Tower (Skyrim), is a Nordic tower with no interior, so its Nordic pieces are replaced with a low Imperial-style stone hut. The record needs no interior, so the hut is an outside prop and the reeve and guards work in the open. Ree-An-Wo (King of the Murkmire) lends Argonian lamp posts and stall pieces. Still to add: the bar across the causeway, the lamp post, the oil-and-rope stall, the grave-stake and the Dunmer ancestor stone.",
+     "text": "Its main source, Doomstone Tower (Skyrim), is a Nordic tower with no interior, so its Nordic pieces are replaced with a low Imperial-style stone hut. The record needs no interior, so the hut is an outside prop and the reeve and guards work in the open. Ree-An-Wo (King of the Murkmire) lends its glowing bog beacons for the lamp and its rustic tables and chests for the stall. Still to add: the bar across the causeway, the lamp post, the reeve's shed, the oil-and-rope stall, the grave-stake and the Dunmer ancestor stone.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2704,7 +2704,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Military Camp Winterhold Sons (Skyrim), is a Nordic camp of fourteen buildings with no interior, and its Nordic pieces are replaced with Argonian reed lean-tos from Ree-An-Wo (King of the Murkmire). Still to add: the mud bank, the bundled reed stacks, the flat boats, the gang-master's lean-to with its strongbox and the Hist-shoot on its post.",
+     "text": "Its main source, Military Camp Winterhold Sons (Skyrim), is a Nordic camp of fourteen buildings with no interior, and its Nordic pieces are replaced with hide tents from Ree-An-Wo (King of the Murkmire) that serve as the lean-tos, with reed thatch laid over their roofs. Still to add: the mud bank, the bundled reed stacks, the flat boats, the work barge with a locking hatch on its hold, the gang-master's lean-to with its strongbox and the Hist-shoot on its post.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3658,7 +3658,7 @@
     },
     {
      "aspect": "look",
-     "text": "Reed-and-bone huts and a timber longhouse around a fire pit, jars of sap stacked by the longhouse wall, a cage at the camp's edge and a pole of trophies.",
+     "text": "Hide tents hung with bones and a timber longhouse around a fire pit, jars of sap stacked by the longhouse wall, a cage at the camp's edge and a pole of trophies.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3727,7 +3727,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Dushnikh Yal (Skyrim), is an orc camp with a longhouse, a mine and a cellar, and its longhouse interior serves as the Naga longhouse where the pay and stolen goods lie. Its orc pieces are replaced with reed-and-bone huts and a bone shrine from the Argonian camp near Loreisian (King of the Murkmire). Still to add: the fire pit, the stacked jars of sap, the pole of trophies and the cage at the camp's edge, built from placed bars and posts.",
+     "text": "Its main source, Dushnikh Yal (Skyrim), is an orc camp with a longhouse, a mine and a cellar, and its longhouse interior serves as the Naga longhouse where the pay and stolen goods lie. Its orc pieces are replaced with hide tents hung with bones from Ree-An-Wo and, for the bone shrine, the ring of standing stones and scattered bones of the Argonian camp near Loreisian (both King of the Murkmire). Still to add: the fire pit, the stacked jars of sap, the pole of trophies and the cage at the camp's edge, built from placed bars and posts.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3945,7 +3945,7 @@
     },
     {
      "aspect": "look",
-     "text": "A long white bridge broken in the middle over a black river; a stone customs house with weathered Imperial eagles; mud-and-timber houses on stilts and a few Cyrodiilic gables; hackwing-chewed guards.",
+     "text": "A long white bridge broken in the middle over a black river; a stone customs house with weathered Imperial eagles; mud huts, thatched huts on raised plank platforms and a few Cyrodiilic gables; hackwing-chewed guards.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4041,7 +4041,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Cyrodiil Morrowind Border (Nyhus), is an Imperial border village of eleven people with one interior, a guard house, which serves as the old customs house. Its Nordic pieces are replaced with Cyrodiilic gables and stilt houses. Root Whisper Village and Seekhat Yol (King of the Murkmire) lend Argonian stilt houses, and one of their interiors serves as the ferry tavern with its room. Still to add: the black river, the white bridge missing its middle span, the Dibella shrine and the rope ferry stage with its moored boat.",
+     "text": "Its main source, Cyrodiil Morrowind Border (Nyhus), is an Imperial border village of eleven people with one interior, a guard house, which serves as the old customs house. Its Nordic pieces are replaced with Cyrodiilic gables. Root Whisper Village (King of the Murkmire) lends mud huts and Seekhat Yol (King of the Murkmire) thatched huts on raised plank platforms, and Seekhat Yol's accommodation hut of beds, tables and benches serves as the ferry tavern with its room. Still to add: the black river, the weathered Imperial eagles on the customs house, the white bridge missing its middle span, the Dibella shrine and the rope ferry stage with its moored boat.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4302,7 +4302,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Ashfallow (Dragonborn), is a large Imperial citadel with a single great interior, too big for a toll fort. Fort Tulis (Journey to Baan Malur) fits better: an Imperial keep with six interiors, its main hall, warden's tower and prison block serving as the barracks, the captain's tower and the storeroom. Its prison cave is not used. Still to add: the Imperial eagle over the gate and the reed pond in place of the moat.",
+     "text": "Its main source, Ashfallow (Dragonborn), is a large Imperial citadel with a single great interior, too big for a toll fort. Fort Tulis (Journey to Baan Malur) fits better: an Imperial keep with six interiors: its main hall of beds, shelves, crates and barrels serves as the barracks, its warden's tower of scroll piles, sacks and crates as the captain's tower, and its prison block of hay, barrels and cells as the storeroom. Its cave and two older interiors are not used. Still to add: the Imperial eagle over the gate, the reed pond in place of the moat and the yard's forge with its anvil, grindstone and armour workbench, placed from Skyrim's crafting furniture.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4830,7 +4830,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Black Marsh 5,0 (Black Marsh and Valenwood), is a small Ayleid ruin of one interior and does not hold a citadel, so only its interior is used, as the keystone hall. Feren Tarn (King of the Murkmire) serves as the lamia caverns, since its interior joins cave pieces to Ayleid stone. Still to add: the hilltop amphitheatre with its ring of seats and the inner bailey, built from Ayleid pieces, the tomb wings, the Enchanter's workbench and the Hist-shoot outside the walls.",
+     "text": "Its main source, Black Marsh 5,0 (Black Marsh and Valenwood), is a small ruin of one interior of narrow stone passages lined with urns and does not hold a citadel, so only its interior is used, as the tomb wings with their grave goods. Feren Tarn (King of the Murkmire) serves as the keystone hall and the lamia caverns, its one interior joining Ayleid stone halls to cave pieces, the halls as the keystone hall and the cave end as the caverns. Still to add: the hilltop amphitheatre with its ring of seats and the inner bailey, built from Ayleid pieces, the Enchanter's workbench and the Hist-shoot outside the walls.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5327,7 +5327,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Fort Kastav (Skyrim), is an Imperial fort with two interiors, four doors and bandits, and fits a broken road post. One of its interiors serves as the smugglers' cache under the tower, and its Nordic pieces are replaced. Nightcaller Temple and Old Laboratory are not used, being a temple and a lab. Still to add: the tower stump, the half-buried arch, the worn plinth and the scavenger corner in the yard.",
+     "text": "Its main source, Fort Kastav (Skyrim), is an Imperial fort with two interiors, four doors and bandits, and fits a broken road post. One of its interiors, a hold of barrels, hay and sacks, serves as the smugglers' cache under the tower, and its Nordic pieces are replaced. Nightcaller Temple and Old Laboratory are not used, being a temple and a lab. Still to add: the tower stump, the half-buried arch, the worn plinth and the scavenger corner in the yard.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5577,7 +5577,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, a stretch of ArgoniaWorld (King of the Murkmire), is a small exterior Ayleid ruin of arches and Argonian pieces with no interior. The undercroft is the one interior of Black Marsh 5,0 (Black Marsh and Valenwood), given a water level and reached by a stair down. Still to add: the sedge island, the fallen column over the pool, the altar under its vine, the ring of ward-stakes and the nirnroot at the water's edge.",
+     "text": "Its main source, a stretch of ArgoniaWorld (King of the Murkmire), is a small exterior Ayleid ruin of arches and Argonian pieces with no interior. The undercroft is the one interior of Black Marsh 5,0 (Black Marsh and Valenwood), a run of narrow stone passages lined with urns, given a water level and reached by a stair down. Still to add: the sedge island, the fallen column over the pool, the altar under its vine, the ring of ward-stakes and the nirnroot at the water's edge.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5945,7 +5945,7 @@
     },
     {
      "aspect": "present",
-     "text": "Six or so wardens live here in stilt huts around a log weir with a landing, running the eel and fish traps that supply Jal-Veesa's market.",
+     "text": "Six or so wardens live here in hide tents on cypress platforms around a log weir with a landing, running the eel and fish traps that supply Jal-Veesa's market.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6029,7 +6029,7 @@
     },
     {
      "aspect": "look",
-     "text": "Pale stilt huts on a mud bank and a woven weir across the creek, with a log walk along its top and long grey moss hanging from the trees over the water below it.",
+     "text": "Pale hide tents on cypress platforms on a mud bank and a woven weir across the creek, with a log walk along its top and long grey moss hanging from the trees over the water below it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6092,7 +6092,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Hunters Rest (Skyrim), is a Nordic homestead with no interior and does not suit a weir camp. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet of stilt huts, with no interior, which is all the record holds. Still to add: the woven log weir with its walk, the landing, the Hist-shoot post, the hanging moss over the creek and the hidden sack in the reeds.",
+     "text": "Its main source, Hunters Rest (Skyrim), is a Nordic homestead with no interior and does not suit a weir camp. Ree-An-Wo (King of the Murkmire) fits better: an Argonian camp of hide tents and hide fences on cypress platforms and walkways, with no interior, which is all the record holds. Still to add: the woven log weir with its walk, the landing, the Hist-shoot post, the hanging moss over the creek and the hidden sack in the reeds.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6414,7 +6414,7 @@
     },
     {
      "aspect": "present",
-     "text": "Stilt huts stand in a ring around a young Hist sapling, with sap-tapping and egg-tending going on beneath the canopy.",
+     "text": "Hide tents on cypress platforms stand in a ring around a young Hist sapling, with sap-tapping and egg-tending going on beneath the canopy.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6492,7 +6492,7 @@
     },
     {
      "aspect": "look",
-     "text": "Stilt huts sit under a thick canopy on the Barsaebica edge.",
+     "text": "Hide tents on cypress platforms sit under a thick canopy on the Barsaebica edge.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6537,7 +6537,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Riverside Shack (Skyrim), is a homestead of one shack with farm pieces and does not fit a Root-Folk stand. Ree-An-Wo (King of the Murkmire) fits better: Argonian stilt huts and camp pieces, with no interior. Its huts, and the shrine pieces of the camp near Loreisian, make the ring round the sapling. Still to add: the young Hist tree, the sap bench under a stilt hut and the tapping cuts.",
+     "text": "Its main source, Riverside Shack (Skyrim), is a homestead of one shack with farm pieces and does not fit a Root-Folk stand. Ree-An-Wo (King of the Murkmire) fits better: Argonian hide tents on cypress platforms and hide fences, with no interior. Its tents, and the shrine pieces of the camp near Loreisian, make the ring round the sapling. Still to add: the young Hist tree, the sap bench under a hide tent and the tapping cuts.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6572,7 +6572,7 @@
     },
     {
      "kind": "alchemy-lab",
-     "detail": "a sap bench under a stilt hut",
+     "detail": "a sap bench under a hide tent",
      "count": 1
     },
     {
@@ -6642,7 +6642,7 @@
     },
     {
      "aspect": "present",
-     "text": "Five wardens and their families live on a small stilt platform at the weir, with a landing, a drying rack of fish and the young Hist in the middle of the huts. Three nights ago the young tree's scar closed over a grey paste that none of its tenders put there.",
+     "text": "Five wardens and their families live on a small cypress platform on posts at the weir, with a landing, a drying rack of fish and the young Hist in the middle of the tents. Three nights ago the young tree's scar closed over a grey paste that none of its tenders put there.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6702,7 +6702,7 @@
     },
     {
      "aspect": "look",
-     "text": "Pale stilt huts on a small platform round a young Hist, beside a woven weir across the creek, with a reed hide by a lone dead tree on the bank to the west.",
+     "text": "Pale hide tents on a small cypress platform round a young Hist, beside a woven weir across the creek, with a reed hide by a lone dead tree on the bank to the west.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6739,7 +6739,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, a camp near Left Hand Mine (Skyrim), is a Nordic camp of seventeen buildings with no interior, whose camp pieces are replaced. Ree-An-Wo (King of the Murkmire) fits better: Argonian stilt huts with no interior, which suit a weir camp, and the shrine pieces of the camp near Loreisian ring the young tree. Still to add: the small platform of huts, the young Hist and its pool, the woven weir with its log boom, the drying rack, the landing and the reed hide beside a dead tree.",
+     "text": "Its main source, a camp near Left Hand Mine (Skyrim), is a Nordic camp of seventeen buildings with no interior, whose camp pieces are replaced. Ree-An-Wo (King of the Murkmire) fits better: Argonian hide tents on cypress platforms with no interior, which suit a weir camp, and the shrine pieces of the camp near Loreisian ring the young tree. Still to add: the small platform of tents, the young Hist and its pool, the woven weir with its log boom, the drying rack, the landing and the reed hide beside a dead tree.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7112,7 +7112,7 @@
     },
     {
      "aspect": "present",
-     "text": "Huts of reed and bone ring a fire pit in the marsh south of Gandranen.",
+     "text": "Hide tents hung with bones ring a fire pit in the marsh south of Gandranen.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7204,7 +7204,7 @@
     },
     {
      "aspect": "look",
-     "text": "Huts of reed and bone stand around the fire, and a pole hung with trophies marks the camp.",
+     "text": "Hide tents hung with bones stand around the fire, and a pole hung with trophies marks the camp.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7273,7 +7273,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Narzulbur (Skyrim), is an orc camp with a longhouse and a basement, and its longhouse interior serves as the leader's hut with its chest. Its orc pieces are replaced with reed-and-bone huts and a bone shrine from the Argonian camp near Loreisian (King of the Murkmire). Still to add: the fire pit, the pole of trophies, the palisade of stakes round the camp and the stockade door that one Naga can open.",
+     "text": "Its main source, Narzulbur (Skyrim), is an orc camp with a longhouse and a basement, and its longhouse interior serves as the leader's hut with its chest. Its orc pieces are replaced with hide tents hung with bones from Ree-An-Wo and, for the bone shrine, the ring of standing stones and scattered bones of the Argonian camp near Loreisian (both King of the Murkmire). Still to add: the fire pit, the pole of trophies, the palisade of stakes round the camp and the stockade door that one Naga can open.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7628,7 +7628,7 @@
     },
     {
      "aspect": "present",
-     "text": "A palisade of dark posts surrounds a few huts, with a totem carved in runes standing inside.",
+     "text": "A palisade of dark posts surrounds a few hide tents, with a totem carved in runes standing inside.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7712,7 +7712,7 @@
     },
     {
      "aspect": "look",
-     "text": "A palisade of dark posts encloses a rune-carved totem and a few huts, with a landing on the river branch.",
+     "text": "A palisade of dark posts encloses a rune-carved totem and a few hide tents, with a landing on the river branch.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7775,7 +7775,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Military Camp Falkreath Imperial (Skyrim), is an Imperial camp of twelve people with no interior, and its Imperial pieces are replaced with dark palisade posts. Ree-An-Wo and the camp near Loreisian (King of the Murkmire) lend the huts and the shrine posts that become the carved totem. Still to add: the palisade, the landing on the river branch, the tanning rack and the cooking pot by the totem.",
+     "text": "Its main source, Military Camp Falkreath Imperial (Skyrim), is an Imperial camp of twelve people with no interior, and its Imperial pieces are replaced with dark palisade posts. Ree-An-Wo and the camp near Loreisian (King of the Murkmire) lend the hide tents that serve as the huts and the carved Argonian busts and standing stones that become the totem. Still to add: the palisade, the landing on the river branch, the runes cut into the totem, the tanning rack and the cooking pot by the totem.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7990,7 +7990,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, a tower in Apocrypha (Dragonborn), is a strange Daedric tower of camp pieces and does not suit the border post. The camp near Loreisian and Ree-An-Wo (King of the Murkmire) fit better, with no interior: Argonian huts and shrine posts. Still to add: the dark palisade, the totem made from a shrine post, the landing and the cooking pot inside.",
+     "text": "Its main source, a tower in Apocrypha (Dragonborn), is a strange Daedric tower of book stacks and tentacles and does not suit the border post. The camp near Loreisian and Ree-An-Wo (King of the Murkmire) fit better, with no interior: Ree-An-Wo's hide tents and the Loreisian camp's carved Argonian busts and standing stones. Still to add: the dark palisade, the totem made from a carved bust, the landing and the cooking pot inside.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8201,7 +8201,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Bloodlet Throne (Skyrim), is a large fort with a cave interior and does not fit a lone tower. Tamriel 18,35 (DepthsOfSkyrim) fits better: ten Imperial ruin pieces, a tower stump and a length of wall, with no interior. Still to add: the thicket, the shrine niche in the tower base, the rubble and the courier's strongbox.",
+     "text": "Its main source, Bloodlet Throne (Skyrim), is a large fort with a cave interior and does not fit a lone tower. The exterior of Old Laboratory (King of the Murkmire) fits better: a ruined Imperial tower, broken ruin walls and rubble on cypress ground, which supply the tower stump and the length of wall; its interior is not used. Still to add: the thicket, the shrine niche in the tower base, the rubble and the courier's strongbox.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8971,7 +8971,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, BlackMarshNorth -16,16 (Black Marsh North), is a small Ayleid exterior of ruin and Ayleid pieces with no interior. The drowned hall is the interior of Loreisian (King of the Murkmire), given a water level and entered by a stair. Still to add: the white arches in the reeds, the vines, the shrine fragments and the Welkynd stone on the stair.",
+     "text": "Its main source, BlackMarshNorth -16,16 (Black Marsh North), is a bandit shack camp with a few broken ruin columns, one mossy arch and bone piles, and no interior. The white arches come from the exterior of Loreisian (King of the Murkmire), its arch columns and ring arches. The drowned hall is the interior of Loreisian (King of the Murkmire), given a water level and entered by a stair. Still to add: the white arches in the reeds, the vines, the shrine fragments and the Welkynd stone on the stair.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

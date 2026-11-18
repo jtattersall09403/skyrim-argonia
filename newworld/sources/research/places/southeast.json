@@ -1577,7 +1577,7 @@
     },
     {
      "aspect": "look",
-     "text": "Six raft-houses on pole stilts either side of the channel, a long guide-rope between two stump posts, lanterns on poles and boats pulled onto mud.",
+     "text": "Six raft-houses, hide tents on cypress platforms raised on posts, either side of the channel, a long guide-rope between two stump posts, lanterns on poles and boats pulled onto mud.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1679,7 +1679,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Black Rose (Black Marsh), is a hamlet of eight buildings with only ruin pieces and no interiors, so it lends little. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet of thirty-one buildings with camp pieces and no interiors, which serves as the six pole-stilt raft-houses. Still to add: the guide-rope between two stump posts, the lantern poles, the moored boats on the mud and the drowned traveller's satchel.",
+     "text": "Its main source, Black Rose (Black Marsh), is a hamlet of eight buildings with only ruin pieces and no interiors, so it lends little. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet of thirty-one buildings with camp pieces and no interiors, with cypress walkways and platforms on posts, hide tents and hide fences, which serve as the six raft-houses. Still to add: the guide-rope between two stump posts, the lantern poles, the moored boats on the mud and the drowned traveller's satchel.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1951,7 +1951,7 @@
     },
     {
      "aspect": "look",
-     "text": "Low reed-thatch houses on stilts above hummocks, tall drying racks of pale reed and eel traps hung like baskets over the water.",
+     "text": "Low reed-thatch houses, hide tents on cypress platforms raised on posts above hummocks, tall drying racks of pale reed and eel traps hung like baskets over the water.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2053,7 +2053,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, a hamlet at Solstheim's cell -1,-5 (Journey to Baan Malur), is eighteen Dunmer-style buildings with mine and ship pieces and no interior, so it does not fit. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet of thirty-one buildings with no interior, which serves as the six stilt houses and their drying frames. Siluo needs no interior. Still to add: the pole walkway, the tall reed racks, the hanging eel traps and the corroded strongbox in the mud.",
+     "text": "Its main source, a hamlet at Solstheim's cell -1,-5 (Journey to Baan Malur), is eighteen Dunmer-style buildings with mine and ship pieces and no interior, so it does not fit. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet of thirty-one buildings with no interior, with cypress walkways and platforms on posts, hide tents and hide fences, which serve as the six houses. Siluo needs no interior. Still to add: the pole walkway, the tall reed racks, the hanging eel traps and the corroded strongbox in the mud.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2325,7 +2325,7 @@
     },
     {
      "aspect": "look",
-     "text": "Pole houses over grey mudflats, shell middens like low white hills, nets spread to dry on frames and salt pans.",
+     "text": "Hide tents on cypress platforms raised on posts over grey mudflats, shell middens like low white hills, nets spread to dry on frames and salt pans.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2427,7 +2427,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Hunter's Shack (Wyrmstooth), is a single hunter's camp of mine, farm and camp pieces and does not fit a shellfish hamlet. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet of thirty-one buildings with no interior, which serves as the pole houses over the flats. Shalaia needs no interior. Still to add: the shell middens as low white mounds, the net frames, the salt pans, the shell banks and the beads in the old midden.",
+     "text": "Its main source, Hunter's Shack (Wyrmstooth), is a single hunter's camp of mine, farm and camp pieces and does not fit a shellfish hamlet. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet of thirty-one buildings with no interior, with cypress walkways and platforms on posts and hide tents, which serve as the houses over the flats. Shalaia needs no interior. Still to add: the shell middens as low white mounds, the net frames, the salt pans, the shellfish raft at the flats, the shell banks and the beads in the old midden.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2709,7 +2709,7 @@
     },
     {
      "aspect": "look",
-     "text": "Rafts of rice-bed in neat rows beside stilt storehouses, with drying racks, sacks and a long landing of poles.",
+     "text": "Rafts of rice-bed in neat rows beside hide-tent storehouses on cypress platforms raised on posts, with drying racks, sacks and a long landing of poles.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2811,7 +2811,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Skjaldur (Northwatch Coast), is a Nordic farm hamlet whose pieces are replaced, so it does not fit. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet of thirty-one buildings with no interior, which serves as the stilt storehouses and the pole landing. Still to add: the rice beds as rows of placed rafts with saltrice plants, the drying racks, an open thatched cook-stall for the visitors' meals and the hidden grain-raft cache.",
+     "text": "Its main source, Skjaldur (Northwatch Coast), is a Nordic farm hamlet whose pieces are replaced, so it does not fit. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet of thirty-one buildings with no interior, with cypress walkways and platforms on posts and hide tents, which serve as the storehouses and the landing. Still to add: the rice beds as rows of placed rafts with saltrice plants, the drying racks, an open thatched cook-stall for the visitors' meals and the hidden grain-raft cache.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3270,7 +3270,7 @@
    "siting": "coast",
    "danger_band_id": "D3",
    "importance": 2,
-   "summary": "Oju is a stilt village on the strait between Archon's coast and the Althii islands. It is a landing and ferry stop for cargo moving between Archon and Lilmoth.",
+   "summary": "Oju is a village of thatched huts on platforms raised on posts over the strait between Archon's coast and the Althii islands. It is a landing and ferry stop for cargo moving between Archon and Lilmoth.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -3445,7 +3445,7 @@
     },
     {
      "aspect": "look",
-     "text": "Stilt houses and platforms linked by gangways, a hostel with a long deck, boats tied three deep and a lantern on a mast.",
+     "text": "Thatched huts on plank platforms raised on posts, linked by gangways, a hostel with a long deck, boats tied three deep and a lantern on a mast.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3526,7 +3526,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Dunnashammipuri (Journey to Baan Malur), is a Daedric-style town with one interior, so it does not fit. Seekhat Yol (King of the Murkmire) fits better: an Argonian stilt village of seven huts with dock and ship pieces, which serves as the hostel with its long deck and the landing's boat gear. Still to add: the lantern mast, the carved channel post for the drowned and the cargo box at the empty boat.",
+     "text": "Its main source, Dunnashammipuri (Journey to Baan Malur), is a Daedric-style town with one interior, so it does not fit. Seekhat Yol (King of the Murkmire) fits better: an Argonian village of seven thatched huts on plank platforms raised on posts, with walkways, bridges and three boats, whose Accommodation Hut interior of beds, partition walls and a food cupboard serves as the hostel and whose platform and bridge pieces make its long deck and the landing. Still to add: the boat gear, the boats tied three deep, the lantern mast, the carved channel post for the drowned and the cargo box at the empty boat.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3837,7 +3837,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Black Briar Lodge (Skyrim), is a Nordic lodge with one interior and does not fit. Root Whisper Village (King of the Murkmire) fits better: an Argonian village of eight interiors, huts and a hall, which serve as the households and the elder's hall. Still to add: the raised red-clay mounds, the kilns, the clay pits, the drying racks of dyed cloth and the landing on the inlet.",
+     "text": "Its main source, Black Briar Lodge (Skyrim), is a Nordic lodge with one interior and does not fit. Root Whisper Village (King of the Murkmire) fits better: an Argonian village of eight interiors, six round-hut houses with hearths, beds and shelves and two Xanmeer ruin halls, where the huts serve as the households and the larger Xanmeer hall, Vakka-Bok, as the elders' hall. Still to add: the raised red-clay mounds, the kilns, the clay pits, the drying racks of dyed cloth and the landing on the inlet.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4475,7 +4475,7 @@
     },
     {
      "aspect": "source",
-     "text": "Built from Redeyn Ancestral Tomb (Journey to Baan Malur), a Dunmer tomb of one interior with shrine, ruin and some Ayleid and Imperial pieces, which fits a Velothi shrine well. Its single interior serves as the lower rooms, the south hall behind the fallen dome side and the inner dome with its boss chest, as parts of one cell. Still to add: the stepped dome in grey stone with vine, the dome's fallen side as placed rubble, the carved ash-grey doors, the east niche with its ash-bowls, the nightshade on the mound and the smugglers' digging.",
+     "text": "Built from Redeyn Ancestral Tomb (Journey to Baan Malur), a Dunmer tomb of one interior of Velothi halls with ash-pits, altars, braziers, bones and loot barrels and, outside, a Velothi entrance with steps, a brazier and broken pillars, which fits a Velothi shrine well. Its single interior serves as the lower rooms, the south hall behind the fallen dome side and the inner dome with its boss chest, as parts of one cell. Still to add: the stepped dome in grey stone with vine, the dome's fallen side as placed rubble, the carved ash-grey doors, the east niche with its ash-bowls, the nightshade on the mound and the smugglers' digging.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5285,7 +5285,7 @@
     },
     {
      "aspect": "look",
-     "text": "Stilt houses beside paddies cut in low ground, sluice gates and a ferry pier.",
+     "text": "Thatched huts on plank platforms raised on posts and reed-roofed mud huts beside paddies cut in low ground, sluice gates and a ferry pier.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5366,7 +5366,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Nzech (Black Marsh), is a Dwemer ruin town of two interiors and does not fit a rice village. Seekhat Yol (King of the Murkmire) fits better: an Argonian stilt village of seven huts with dock and ship pieces for the ferry pier, and Keeba Hollow (King of the Murkmire) adds nine interiors for the households. Still to add: the paddies cut in low ground, the sluice gates, the carved post on the rice dyke and the old bones with their grave goods.",
+     "text": "Its main source, Nzech (Black Marsh), is a Dwemer ruin town of two interiors and does not fit a rice village. Seekhat Yol (King of the Murkmire) fits better: an Argonian village of seven thatched huts on plank platforms raised on posts, whose platform and bridge pieces and boats serve as the ferry pier, and Keeba Hollow (King of the Murkmire) adds nine interiors, eight mud-hut houses for the households and a Hist-root hall. Still to add: the paddies cut in low ground, the sluice gates, the carved post on the rice dyke and the old bones with their grave goods.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6399,7 +6399,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Ashguard (SolstheimExpand), is a Dunmer fort of three interiors, a watchtower, a manor and a barracks, which serve as the beacon tower, the keep hall and the garrison's barracks, with its few Nordic pieces replaced. The sources hold no cave, so the wreckers' sea-cave is added as a small cave interior from Skyrim's cave pieces behind a door on the shore. Still to add: the beacon lamp, the landing below the keep, the gate stores, the boss chest in the cave and the salvage.",
+     "text": "Its main source, Ashguard (SolstheimExpand), is a Dunmer fort of three interiors, a tower, a main hall and a barracks, which serve as the beacon tower, the keep hall and the garrison's barracks, but its outside holds only a few roots and ash, so it gives no keep walls. The sources hold no cave, so the wreckers' sea-cave is added as a small cave interior from Skyrim's cave pieces behind a door on the shore. Still to add: the keep's stone outer walls, gate and the beacon tower's outside, built from Imperial fort wall and tower pieces as at Cracked Tusk Keep (Skyrim), the beacon lamp, the landing below the keep, the gate stores, the boss chest in the cave and the salvage.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7560,7 +7560,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Ramshackle Trading Post (Dragonborn), is thirty-five buildings of Dwemer and mine pieces with no interior, so it does not fit. Cormar Crossing (Journey to Baan Malur) fits better: a Dunmer farm of five interiors, where the farmhouse serves as the two-storey house and the storehouse as the rice-barn. Still to add: the veranda, the landing with its post, the tall palms and the smugglers' cache.",
+     "text": "Its main source, Ramshackle Trading Post (Dragonborn), is thirty-five buildings of Dwemer and mine pieces with no interior, so it does not fit. Cormar Crossing (Journey to Baan Malur) fits better: a Dunmer farm of five interiors, where the farmhouse serves as the two-storey house, a silo of saltrice barrels, flour and hay as the rice-barn and the guardhouse, with its bed and table, as the tenants' quarters beside the landing. Still to add: the veranda, the landing with its post, the tall palms and the smugglers' cache.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8301,7 +8301,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A couple and a child keep Wattle-Pool, a small stilt house among fruit trees beside a pond ringed with wattle. They sell honey and fruit at the nearest village.",
+     "text": "A couple and a child keep Wattle-Pool, a small farmhouse among fruit trees beside a pond ringed with wattle. They sell honey and fruit at the nearest village.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8487,7 +8487,7 @@
     },
     {
      "aspect": "look",
-     "text": "A small stilt house, fruit trees and a pond ringed with wattle.",
+     "text": "A small farmhouse, fruit trees and a pond ringed with wattle.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8580,7 +8580,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Cliffside Retreat (Skyrim), is a single homestead hut of eight mine-style pieces with no interior and does not fit. Salvius Farm (Skyrim) fits better: a farm of five buildings with one farmhouse interior, which serves as the small stilt house, its Dwemer and Nordic pieces replaced. Still to add: the fruit trees, the pond ringed with wattle, the hives, the driftwood post with its fish-bone string and the drowned fisher's box in the shallows.",
+     "text": "Its main source, Cliffside Retreat (Skyrim), is a single homestead hut of eight mine-style pieces with no interior and does not fit. Salvius Farm (Skyrim) fits better: a farm of five buildings with one farmhouse interior, which serves as the small farmhouse, its Dwemer and Nordic pieces replaced. Still to add: the shed, the fruit trees, the pond ringed with wattle, the hives, the driftwood post with its fish-bone string and the drowned fisher's box in the shallows.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -10314,7 +10314,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, a ruined Argonian site at cell 2,-40 of King of the Murkmire's world, is fifty-one buildings of Argonian and ruin pieces with no interior, which serve as the cracked turf-and-leaf domes. The child's tomb and its grave-passages are the single interior of Haj-Uxith (King of the Murkmire), reached by a dome door. Still to add: the shell midden, the vine cover, the fox-tail charm, the carved bone flute and the trap triggers.",
+     "text": "Its main source, a ruined Argonian site at cell 2,-40 of King of the Murkmire's world, is fifty-one buildings of Xanmeer ruin walls, stairs and rubble with no interior, which serve as the cracked ruin walls round the den. The child's tomb and its grave-passages are one of the Xanmeer ruin interiors of Teeth of Sithis (King of the Murkmire), halls, columns and rubble, reached by a dome door. Still to add: the turf-and-leaf domes, built from the mud-hut pieces of Haj-Uxith (King of the Murkmire) with turf and leaf roofs, the shell midden, the vine cover, the fox-tail charm, the carved bone flute and the trap triggers.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -10683,7 +10683,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, a small Argonian ruin at cell -10,-44 of King of the Murkmire's world, is eleven buildings of Argonian and ruin pieces with no interior, which serve as the half-buried domes. The tunnels and the inner burrow are the single interior of Haj-Uxith (King of the Murkmire), with a door cut into it for the smugglers. Still to add: the dune sand drifts, the shell charms in the niches, the ash scratchings, the moon-sugar crates and the captain's strongbox.",
+     "text": "Its main source, a small Argonian ruin at cell -10,-44 of King of the Murkmire's world, is eleven buildings of burnt planks, rubble and platform bases with no interior, which serve as the ruined walls of the burrow-village. The tunnels and the inner burrow are one of the Xanmeer ruin interiors of Teeth of Sithis (King of the Murkmire), hallways, columns and rubble, with a door cut into it for the smugglers. Still to add: the half-buried domes, built from the mud-hut pieces of Haj-Uxith (King of the Murkmire) sunk in sand, the dune sand drifts, the shell charms in the niches, the ash scratchings, the moon-sugar crates and the captain's strongbox.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -12117,7 +12117,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Solitude Docks (Skyrim), is a city waterfront of sixty buildings with one ship interior, far too large for eight crew on an islet, so it lends only its dock pieces, crates and nets. Alten Meerhleel (King of the Murkmire) fits better: a small Argonian dock of four buildings with a moored ship whose hold is an interior, set here on the islet's shore as the landing. Still to add: the islet's rock, a crew hut with bunks from Black Marsh & Valenwood's stilt-hut pieces, a lantern mast, a ship's bell on a post and the steward's counter.",
+     "text": "Its main source, Solitude Docks (Skyrim), is a city waterfront of sixty buildings with one ship interior, far too large for eight crew on an islet, so it lends only its dock pieces, crates and nets. Alten Meerhleel (King of the Murkmire) fits better: a small Argonian dock of painted plank houses on platforms with walkways, boats and a moored ship whose hold is an interior, set here on the islet's shore as the landing, with its Bunkhouse interior of bunks, tables and bar stools as the crew hut and its General Store interior with a bar counter as the steward's counter. Still to add: the islet's rock, the diving racks, a lantern mast and a ship's bell on a post.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -12950,7 +12950,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Winter War (Skyrim), is a wreck of eleven buildings of ship pieces with no interior, so it gives only the hull. Icerunner (Skyrim) fits better: a wrecked ship of 214 ship pieces with a ship interior, which serves as the broken hold and the stern cabin with the locked chest, given a water plane. Still to add: the barge's flat hull and snapped mast, the kelp over it, the brass stern lantern, the silt bank, the pearl clams and the anchor chain across the sand.",
+     "text": "Its main source, Winter War (Skyrim), is a wreck of eleven buildings of ship pieces with no interior, so it gives only the hull. Icerunner (Skyrim) fits better: a wrecked ship whose one interior is a hold of crates, barrels, sacks and hay, which serves as the broken hold, given a water plane. Still to add: the stern cabin with the locked chest, a small interior built from Skyrim's ship pieces behind its own door on the stern deck, the barge's flat hull and snapped mast, the kelp over it, the brass stern lantern, the silt bank, the pearl clams and the anchor chain across the sand.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -13305,7 +13305,7 @@
     },
     {
      "aspect": "source",
-     "text": "Built from Teeth of Sithis (King of the Murkmire), whose three interiors, two Xanmeer towers and a halls level, serve as the dry east halls where the attendants walk, the mudcrab's gallery with the spiral stair and the lower halls ending at the great gate, with its Xanmeer pieces for the broken spire. Its Dwemer pieces are replaced. Still to add: the weed and coral, the great gate with its three empty sockets and the old kings' marks, the half-opened salvage chest, the priest's ghost before the gate and the pearl clams on the reef.",
+     "text": "Built from Teeth of Sithis (King of the Murkmire), whose three interiors, two Xanmeer towers and a halls level, serve as the dry east halls where the attendants walk, the mudcrab's gallery with the spiral stair and the lower halls ending at the great gate, with its Xanmeer pieces for the broken spire. Still to add: the spiral of the stair, set from Xanmeer stair pieces round a column, the weed and coral, the great gate with its three empty sockets and the old kings' marks, the half-opened salvage chest, the priest's ghost before the gate and the pearl clams on the reef.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -13672,7 +13672,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Haj-Uxith (King of the Murkmire), is an Argonian ruin of one interior with lighthouse pieces and does not give a xanmeer tower. Teeth of Sithis (King of the Murkmire) fits better: its East Xanmeer interior serves as the tower's flooded hall, given a water plane, with its Xanmeer pieces for the curling stone arms outside. Still to add: the weed, the half-cleared rooms, the dead-end gallery with the drowned diver, the locked grate and the salvage chest.",
+     "text": "Its main source, Haj-Uxith (King of the Murkmire), is a mud-hut home of one interior with woven walls and shelves and does not give a xanmeer tower. Teeth of Sithis (King of the Murkmire) fits better: its East Xanmeer interior serves as the tower's flooded hall, given a water plane, with its Xanmeer pieces for the curling stone arms outside. Still to add: the curling stone arms, shaped from Xanmeer wall pieces, the weed, the half-cleared rooms, the dead-end gallery with the drowned diver, the locked grate and the salvage chest.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -14389,7 +14389,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, a ruin near Bonestrewn Grove (King of the Murkmire), is 129 Argonian, ruin and Imperial pieces with no interior, so it supplies only the silt-buried base. Teeth of Sithis (King of the Murkmire) fits better: its Halls interior serves as the dreugh-held rooms and the crown, given a water plane, and its Xanmeer pieces make the spire. Its few Nordic pieces are replaced. Still to add: the silt around the base, the coral on the crown, the carved prize, the cut bell-chain and the bell with its crew's remains.",
+     "text": "Its main source, a ruin near Bonestrewn Grove (King of the Murkmire), is 129 Argonian, ruin and Imperial pieces with no interior, so it supplies only the silt-buried base. Teeth of Sithis (King of the Murkmire) fits better: its Halls interior serves as the dreugh-held rooms and the crown, given a water plane, and its Xanmeer pieces make the spire. Still to add: the silt around the base, the coral on the crown, the carved prize, the cut bell-chain and the bell with its crew's remains.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -15100,7 +15100,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, a small ruin at cell -10,-56 of King of the Murkmire's world, is eight Argonian and ship pieces with no interior, which serve as the old salvage platform at the spire's foot. Haj-Uxith (King of the Murkmire) fits the lower gallery: an Argonian ruin of one interior, which serves as the grave-rooms where the crew lies. The tower's Xanmeer pieces come from Teeth of Sithis (King of the Murkmire). Still to add: the anchor chains from Bell Station, the first bell on its post, the bell-cord on the platform and the trapped lock on the crew's cache.",
+     "text": "Its main source, a small ruin at cell -10,-56 of King of the Murkmire's world, is eight pieces of ship planks, an Imperial wreck and shore waves with no interior, which serve as the wrecked planking of the old salvage platform at the spire's foot. Teeth of Sithis (King of the Murkmire) supplies both the Xanmeer pieces of the tower and, in its Halls interior, the lower gallery with the grave-rooms where the crew lies. Still to add: the anchor chains from Bell Station, the first bell on its post, the bell-cord on the platform and the trapped lock on the crew's cache.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
