@@ -404,12 +404,10 @@ stages:
 - id: 10
   place: gideon
   journal: text.journal.mn06.10
-  journalText: 'Nesh-Deeka made me a Voh-Vastei of the Toh-Reel-Ka and gave me my first lead: someone in Gideon''s market
-    is selling an "Eye of Argonia". I''m to ride the rootworm from Helstrom''s city tree to Gideon and find the dealer who
-    sells it. Nesh-Deeka says Gideon''s dealers tell the truth for a little persuasion or a few coins, and keep their papers
-    in their pockets. All of it is a trail to the Eye of Argonia, the old kings'' jewel that can heal every tree, which
-    lies at the Root, where all the trees'' roots meet under the sea; the order wants it found before the Unbound reach
-    it.'
+  journalText: "Nesh-Deeka made me a Voh-Vastei of the Toh-Reel-Ka and gave me my first lead: someone in Gideon's
+    market is selling an \"Eye of Argonia\". Most such eyes are glass, she said, and she wants to know where this one
+    came from. I should ride the rootworm from the pool under Helstrom's city tree to Gideon and find the dealer who
+    sells it."
   directions: Cheeval-Xu calls the rootworm at the landing under Helstrom's great tree; the fare is 25 gold. In Gideon the
     rootworm comes up at the red-clay stop by the Hist garden; the market lies along Blackwood Way, the one dry street through
     the town.
@@ -465,7 +463,9 @@ stages:
     - skill: Pickpocket
       use: pickpocket
       target: Ovinius Calo
-      note: his Note from the South Watch says the same
+      note: "his Note from the South Watch says the same. If the player is caught at his pocket, Ovinius shouts for
+        Gideon's watch: as in Skyrim, the player pays the fine or fights the watch; he will still tell the truth for 20
+        gold or a little Speech."
   information:
     going: 'I serve the Toh-Reel-Ka, the Xeech-Leel''s secret warriors, as a Voh-Vastei. The Unbound want the Eye of Argonia,
       which lies at the Root; an "Eye of Argonia" is for sale in Gideon, and Nesh-Deeka wants to know if it is real. The
@@ -496,17 +496,14 @@ stages:
       - ask:topic.mn06-ask-eye
       - line:topic.mn06-persuade
       - line:topic.mn06-buy-truth
-    - know: 'the hunt''s aim: the Eye of Argonia and the Root'
-      by:
-      - journal
-      - ask:topic.mn-the-hunt
 - id: 20
   place: imperial-ruin-m25-m85
   journal: text.journal.mn06.20
-  journalText: The Eye on Ovinius Calo's stall is glass. The smugglers who sold it to him keep the old silver setting it
-    came in, at Gideon South Watch, a leaning tower south-east of the quay. I'm to take the setting from their locked chest
-    in the tower's inner room. I may fight the smugglers or slip past them; the chest's lock can be picked, and their boss
-    carries its key. A man called the Collector, an Imperial relic-hunter, has been asking after the Eye too.
+  journalText: "The Eye on Ovinius Calo's stall is glass. The smugglers who sold it to him keep the old silver setting
+    it came in, at Gideon South Watch, a leaning tower south-east of the quay. I need to take the setting from their
+    locked chest in the tower's inner room. I may fight the smugglers or slip past them, but if they catch me they will
+    all attack. The chest has a simple lock I can pick, and their boss carries its key. A man called the Collector, an
+    Imperial relic-hunter, has been asking after the Eye too."
   directions: From Gideon's quay, follow the mangrove edge south-east to the leaning stone tower with the rotted pier; the
     inner room's door opens off the pier.
   objectives:
@@ -548,6 +545,8 @@ stages:
     - skill: Sneak
       use: sneak-past
       target: smugglers
+      note: "If the player is caught, every smuggler in the tower attacks and it becomes a fight; the chest's key is
+        then on the boss's body. The chest has an Apprentice lock."
     - skill: Lockpicking
       use: pick-a-lock
       target: the chest
@@ -584,10 +583,10 @@ stages:
 - id: 30
   place: helstrom
   journal: text.journal.mn06.30
-  journalText: 'I took the old silver setting from the smugglers'' chest. Ennodius Vanin, the Collector, an Imperial relic-hunter
-    who has chased the Eye for twenty years, had opened it before me and left a note: the setting is no use to him, but
-    a ship''s name is scratched inside the band. I''m to bring the setting to Nesh-Deeka in her house in Helstrom, by the
-    rootworm from Gideon''s Hist garden.'
+  journalText: "I took the old silver setting from the smugglers' chest. Ennodius Vanin, the Collector, an Imperial
+    relic-hunter who has chased the Eye for twenty years, had opened it before me and left a note: the setting is no
+    use to him, but a ship's name is scratched inside the band. Nesh-Deeka should see it; the rootworm from Gideon's
+    Hist garden goes back to Helstrom."
   objectives:
   - id: report
     text: text.objective.mn06.report
@@ -636,10 +635,10 @@ stages:
 - id: 90
   place: helstrom
   journal: text.journal.mn06.90
-  journalText: 'Nesh-Deeka read the name inside the setting: the Pale Harvest, a ship that sank in Hatandros Bight, the
-    bay on the east coast south of Thorn, with a Gideon dealer''s whole stock aboard. She already knew that two Unbound
-    had asked after the glass Eye in Gideon a month ago. Before I could ask how she knew, she said "we listen" and spoke
-    of the wreck instead. She paid me 100 gold.'
+  journalText: "Nesh-Deeka read the name inside the setting: the Pale Harvest, a ship that sank in Hatandros Bight, the
+    bay on the east coast south of Thorn, with a Gideon dealer's whole stock aboard. She already knew that two Unbound
+    had asked after the glass Eye in Gideon a month ago. I never told her that, and she did not say who had. She paid
+    me 100 gold."
   onEnter:
   - giveGold: 100
   learns:
@@ -813,21 +812,19 @@ topics:
     hasItem:
     - thing.mn.eye-setting
     - 1
-  intent: 'Nesh-Deeka. Tells: this is one more step towards the Eye of Argonia, the old kings'' jewel that can heal every
-    tree, which lies at the Root, where all the trees'' roots meet under the sea; she turns it to the light and reads the
-    name scratched inside: the Pale Harvest. She knows it: a Company freighter that sank in Hatandros Bight with a Gideon
-    dealer''s whole stock aboard. Then she says the Unbound were in Gideon''s market a month ago, two of them, asking after
-    that same glass. She sees the question coming, how she can know this, and answers it before it is asked: "We listen."
-    She turns to the wreck, pays 100 gold and gives the setting back. Does: sets stage 90.'
+  intent: "Nesh-Deeka. Tells: she turns it to the light and reads the name scratched inside: the Pale Harvest. She
+    knows it: a Company freighter that sank in Hatandros Bight with a Gideon dealer's whole stock aboard. Then she says
+    the Unbound were in Gideon's market a month ago, two of them, asking after that same glass. She says it as a thing
+    she simply knows, and does not say how; only if the player asks how she knows does she answer \"We listen\" and
+    change the subject. She turns to the wreck, pays 100 gold and gives the setting back. Does: sets stage 90."
   new: true
 - id: topic.mn-how-she-knows
-  label: How do you always know where the Unbound have been?
+  label: How did you know that?
   person: npc.mn.nesh-deeka
-  stages:
-  - 90
+  stages: [90]
   essential: false
-  intent: 'Nesh-Deeka. Tells: "We listen, and the marsh talks." She will say no more and asks about the player''s road.
-    Open in every later report window of Act II. Does: nothing.'
+  intent: "Nesh-Deeka, asked how she knew where the Unbound have or have not been. Tells: \"We listen.\" She says no more
+    and asks about the player's road. Does: nothing."
   new: true
 - id: topic.mn-the-hunt
   label: Remind me what we are hunting, and why.

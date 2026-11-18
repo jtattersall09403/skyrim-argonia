@@ -185,15 +185,6 @@ things:
   where: the player's pack
   text: Jars to Karsh-Naal Camp by the next dark moon. Stack them by the longhouse with the rest and the Naga will pay you.
     Seal every scar behind you, as she showed you. Leave nothing at the hide. - K.
-- id: thing.mn04.sesk-sack
-  kind: item
-  name: Sesk's Sack
-  source: 'new: a small sack of Sesk''s things (Skyrim''s sack item under our name), lying inside the cage'
-  states:
-    before-20: in the cage
-    after-20: carried
-    after-30: given back to Sesk
-  where: inside Sesk's Cage
 hooks: []
 placements:
 - ref: npc.mn.sesk
@@ -304,18 +295,6 @@ placements:
     need: the place's map marker, named Karsh-Naal Camp
   enabled: true
   placeName: Karsh-Naal Camp
-- ref: thing.mn04.sesk-sack
-  kind: thing
-  base:
-    kind: template_item
-    id: Skyrim sack, small
-  name: Sesk's Sack
-  anchor:
-    place: tribal-camp-m2-m68
-    rule: surface
-    need: on the floor inside Sesk's Cage, out of reach through the bars
-    room: Sesk's Cage
-  enabled: true
 - ref: npc.mn04.sesk-landing
   kind: person
   base:
@@ -410,17 +389,15 @@ stages:
 - id: 10
   place: tribal-camp-m2-m68
   journal: text.journal.mn04.10
-  journalText: The note from the reed hide sent the sap-takers' jars to Karsh-Naal Camp, a Naga camp in the marsh east of
-    Teel-Fen Weir. Someone there is caged at the camp's edge. The key to the cage is on a guard named Jeeta-Sakka, who stands
-    at the fire with the others. I can pick the cage's lock, steal the key from him, or fight the guards. I'm to open the
-    cage; once it is open, Sesk wants her sack from the floor inside handed to her.
+  journalText: "The note from the reed hide sends the sap-takers' jars to Karsh-Naal Camp, a Naga camp in the marsh east of
+    Teel-Fen Weir. I should go there and find out who takes them."
   onEnter:
   - grantMapMarker: marker.mn04.karsh-naal
   objectives:
-  - id: cage
-    text: text.objective.mn04.cage
-    objectiveText: Open the cage at Karsh-Naal Camp and take Sesk's sack from inside (a Novice lock, or the key on Jeeta-Sakka).
-    target: thing.mn04.cage, npc.mn04.jeeta-sakka, thing.mn04.sesk-sack
+  - id: camp
+    text: text.objective.mn04.camp
+    objectiveText: Go to Karsh-Naal Camp and find out who takes the jars.
+    target: marker.mn04.karsh-naal, thing.mn04.cage
     completeWhen:
       questStage:
       - quest.main.mn04
@@ -429,9 +406,14 @@ stages:
   successors:
   - to: 20
     when:
-      hasItem:
-      - thing.mn04.sesk-sack
-      - 1
+      topicHeardFrom:
+      - topic.mn04-sesk-call
+      - npc.mn.sesk
+  - to: 30
+    when:
+      topicHeardFrom:
+      - topic.mn04-sesk-talk
+      - npc.mn.sesk
   failForward:
   - to: 95
     when:
@@ -440,33 +422,22 @@ stages:
   directions: Karsh-Naal Camp lies in the marsh east of Teel-Fen Weir, about as far as Jal-Veesa is from the weir. The cage
     stands at the camp's west edge, behind the huts; the guards keep to the fire by the longhouse.
   information:
-    going: The sap goes to Karsh-Naal Camp, guarded by Naga. Someone is caged there.
-    next: Open the cage at the camp's west edge and take Sesk's sack from inside it.
-    ways: Pick its Novice lock; steal the key from Jeeta-Sakka at the fire; or fight the four guards (or shoot them from
-      the reeds). The guards stay at the fire, so I can sneak to the cage.
+    going: The sap goes to Karsh-Naal Camp, a camp of Naga.
+    next: Go to the camp and find out who takes the jars.
+    ways: The guards stay at the fire by the longhouse; a caged prisoner at the camp's west edge calls out to anyone who
+      comes near.
     carriers:
     - know: where the camp is
       by:
       - journal
+      - objective
       - marker:marker.mn04.karsh-naal
       - read:thing.mn.unbound-note
-    - know: open the cage and take Sesk's sack from inside
+    - know: someone is caged at the camp's edge
       by:
-      - journal
-      - objective
       - marker:thing.mn04.cage
       - name:thing.mn04.cage
-      - name:thing.mn04.sesk-sack
-    - know: the key is on Jeeta-Sakka
-      by:
-      - journal
-      - objective
-      - marker:npc.mn04.jeeta-sakka
-      - name:npc.mn04.jeeta-sakka
-    - know: fight or sneak
-      by:
-      - journal
-      - ask:topic.mn04-sesk-call
+      - line:topic.mn04-sesk-call
   approaches:
   - id: pick
     actions:
@@ -476,14 +447,17 @@ stages:
     - skill: Sneak
       use: slip-past
       target: the guards at the fire
+      note: "If the player is caught (a guard sees them at the cage or feels a hand in Jeeta-Sakka's pouch), all four guards attack and it becomes a fight; the cage can still be opened with the key from Jeeta-Sakka's body."
   - id: pickpocket
     actions:
     - skill: Pickpocket
       use: pickpocket
       target: Jeeta-Sakka
+      note: "If the player is caught (a guard sees them at the cage or feels a hand in Jeeta-Sakka's pouch), all four guards attack and it becomes a fight; the cage can still be opened with the key from Jeeta-Sakka's body."
     - skill: Sneak
       use: slip-past
       target: the guards at the fire
+      note: "If the player is caught (a guard sees them at the cage or feels a hand in Jeeta-Sakka's pouch), all four guards attack and it becomes a fight; the cage can still be opened with the key from Jeeta-Sakka's body."
   - id: fight
     actions:
     - skill: One-Handed
@@ -498,12 +472,15 @@ stages:
 - id: 20
   place: tribal-camp-m2-m68
   journal: text.journal.mn04.20
-  journalText: I opened the cage and have Sesk's sack. I'm to give it to her and hear what she knows.
+  journalText: "A Naga woman named Sesk is caged at the camp's edge. She says she will tell me everything about the sap if I
+    get her out. The key is on Jeeta-Sakka, the big guard at the fire, and the lock is a poor one; the guards never look
+    her way. I can pick the lock, lift the key from him or fight the four guards. If they catch me at the cage or in
+    Jeeta-Sakka's pouch, they will all attack."
   objectives:
-  - id: sesk
-    text: text.objective.mn04.sesk
-    objectiveText: Speak to Sesk.
-    target: npc.mn.sesk
+  - id: cage
+    text: text.objective.mn04.cage
+    objectiveText: Open Sesk's cage (a Novice lock, or the key on Jeeta-Sakka) and speak to her.
+    target: thing.mn04.cage, npc.mn04.jeeta-sakka
     completeWhen:
       questStage:
       - quest.main.mn04
@@ -521,21 +498,66 @@ stages:
       not:
         npcAlive: npc.mn.sesk
   information:
-    going: The cage is open and Sesk is free to talk.
-    next: Speak to Sesk.
-    ways: One way.
+    going: Sesk, caged by the Naga, knows where the sap goes and will tell me if I free her.
+    next: Open the cage and speak to her.
+    ways: Pick its Novice lock; lift the key from Jeeta-Sakka at the fire; or fight the four guards (or shoot them from the
+      reeds). The guards stay at the fire, so I can sneak to the cage; if they catch me, they all attack.
     carriers:
-    - know: speak to her
+    - know: open the cage and hear her
       by:
       - journal
       - objective
-      - marker:npc.mn.sesk
+      - line:topic.mn04-sesk-call
+      - marker:thing.mn04.cage
+      - name:thing.mn04.cage
+    - know: the key is on Jeeta-Sakka
+      by:
+      - journal
+      - line:topic.mn04-sesk-call
+      - marker:npc.mn04.jeeta-sakka
+      - name:npc.mn04.jeeta-sakka
+    - know: fight or sneak, and what happens if caught
+      by:
+      - journal
+      - line:topic.mn04-sesk-call
+  approaches:
+  - id: pick
+    actions:
+    - skill: Lockpicking
+      use: pick-a-lock
+      target: Sesk's Cage
+    - skill: Sneak
+      use: slip-past
+      target: the guards at the fire
+      note: "If the player is caught (a guard sees them at the cage or feels a hand in Jeeta-Sakka's pouch), all four guards attack and it becomes a fight; the cage can still be opened with the key from Jeeta-Sakka's body."
+  - id: pickpocket
+    actions:
+    - skill: Pickpocket
+      use: pickpocket
+      target: Jeeta-Sakka
+      note: "If the player is caught (a guard sees them at the cage or feels a hand in Jeeta-Sakka's pouch), all four guards attack and it becomes a fight; the cage can still be opened with the key from Jeeta-Sakka's body."
+    - skill: Sneak
+      use: slip-past
+      target: the guards at the fire
+      note: "If the player is caught (a guard sees them at the cage or feels a hand in Jeeta-Sakka's pouch), all four guards attack and it becomes a fight; the cage can still be opened with the key from Jeeta-Sakka's body."
+  - id: fight
+    actions:
+    - skill: One-Handed
+      use: fight-people
+      target: four Naga guards
+    - skill: Archery
+      use: shoot-from-cover
+      target: four Naga guards
+    - skill: Destruction
+      use: fight-people
+      target: four Naga guards
 - id: 30
   place: jal-veesa
   journal: text.journal.mn04.30
-  journalText: Sesk drew sap for the Unbound, a cult of the tribeless whose leader is Cuts-the-Old-Knot, an Argonian woman. The sap is
-    for a draught she brews, and the draught has something to do with "the Eye". They call the grey paste in the scars "the seal". Why
-    drain a tree and then seal it, if they only want its sap? I'm to take this to Vosh-Leera in Jal-Veesa.
+  journalText: "Sesk talked as soon as I opened her cage. She drew sap for the Unbound, a cult of the tribeless whose
+    leader is Cuts-the-Old-Knot, an Argonian woman. The sap is for a draught she brews, and the draught has something
+    to do with \"the Eye\". They call the grey paste in the scars \"the seal\". Why drain a tree and then seal it, if
+    they only want its sap? Vosh-Leera in Jal-Veesa should hear this."
   objectives:
   - id: report
     text: text.objective.mn04.report
@@ -587,16 +609,15 @@ stages:
       - journal
       - objective
       - marker:npc.mn.vosh-leera
-  onEnter:
-  - takeItem:
-    - thing.mn04.sesk-sack
-    - 1
 - id: 40
   place: jal-veesa
   journal: text.journal.mn04.40
-  journalText: Vosh-Leera says this is more than a herald can judge, and paid me a hundred gold. I'm to go to the order's
-    handler, Nesh-Deeka, at her house in Helstrom. Helstrom is far to the south through deadly country, so I'm to ride the
-    rootworm, which the tree-minder calls at the Hist pool here. First I'm to ask Weeltul about it.
+  journalText: "Vosh-Leera says this is more than a herald can judge, and paid me a hundred gold. She is sending me to
+    the order's handler, Nesh-Deeka, at her house in Helstrom, far to the south through deadly country. She told me to
+    ride the rootworm: a great blind worm that swims the waters under the roots from one Hist's pool to another's. It
+    stops at a tree's root pool, the open water among the roots at its foot, where a root-tender calls it and takes the
+    fare. Here the tender is Weeltul, at the Hist pool in the middle of the town, and the fare is twenty-five gold. I
+    should ask her to send me."
   onEnter:
   - giveGold: 100
   objectives:
@@ -624,7 +645,7 @@ stages:
   - fact.mn04.handler
   information:
     going: I am sent on to the order's handler, Nesh-Deeka, in Helstrom.
-    next: Ask Weeltul at the Hist pool about the rootworm to Helstrom.
+    next: Ask Weeltul, the root-tender at Jal-Veesa's Hist pool, to send me to Helstrom by the rootworm.
     ways: One way; the road on foot runs through deadly country.
     carriers:
     - know: go to Nesh-Deeka in Helstrom
@@ -640,9 +661,9 @@ stages:
 - id: 90
   place: jal-veesa
   journal: text.journal.mn04.90
-  journalText: 'Weeltul told me how the rootworm works: a great worm that swims the roots between the trees'' pools, and
-    she calls it for travellers at Jal-Veesa''s pool. The fare to Helstrom is twenty-five gold, paid to her. I''m to pay
-    her the fare, ride to Helstrom and find Nesh-Deeka''s House there.'
+  journalText: "Weeltul will call the rootworm for me from Jal-Veesa's pool to the pool under Helstrom's city tree, for
+    twenty-five gold paid to her. At Helstrom I need to find Nesh-Deeka's House; the root-tender there can point the
+    way."
   learns:
   - fact.mn04.rootworm
   ending: complete
@@ -781,49 +802,43 @@ terms:
   ask: topic.mn-rootworm
 topics:
 - id: topic.mn04-sesk-call
-  label: Who's in the cage?
+  label: "Who's in the cage?"
   person: npc.mn.sesk
   stages:
   - 10
   essential: false
-  intent: 'Sesk, through the bars. Tells: she is Sesk, and she will tell the player everything about the sap if they get
-    her out. The key is on Jeeta-Sakka, the big one at the fire; the lock is a poor one; the guards never look this way.
-    Her sack is on the floor in there with her; when the door is open, the player is to hand it to her. Checks: nothing.
-    Does: nothing.'
+  intent: "Sesk, through the bars, to anyone who comes near the cage. Tells: she is Sesk, a Naga; she drew sap for the
+    people who send their jars here, and they caged her for trying to leave with her pay. She will tell the player
+    everything about the sap the moment they get her out. The key is on Jeeta-Sakka, the big one at the fire; the lock
+    is a poor one; the guards never look this way, but if they catch the player at the cage or in Jeeta-Sakka's pouch,
+    all four will come. Checks: nothing. Does: sets stage 20."
   new: true
 - id: topic.mn04-sesk-who
   label: Who are you?
   person: npc.mn.sesk
-  stages:
-  - 10
-  - 20
-  - 90
+  stages: [10, 20, 90]
   essential: false
   intent: 'Sesk. Tells: a Naga: the Naga are tribeless Argonians of the deep marsh, tall and hard, who sell their blades
     or their hands to whoever pays. She drew sap for the Unbound and tried to leave with her pay. Checks: nothing. Does:
     nothing.'
   new: true
 - id: topic.mn04-sesk-talk
-  label: Here is your sack. Tell me about the sap.
+  label: "The cage is open. Tell me about the sap."
   person: npc.mn.sesk
-  stages:
-  - 20
+  stages: [10, 20]
   essential: true
-  intent: 'Sesk, out of the cage. Tells: the crews who drain the trees are the Unbound, a cult of the tribeless, and their
-    leader is Cuts-the-Old-Knot, an Argonian woman; she never stays where her crews are. Sesk drew sap for them: cut the scar, fill the jars, press the grey paste in after. They
-    call the paste "the seal"; she never knew what is in it, and she was told never to leave a scar open. The jars come
-    here and go on to Cuts-the-Old-Knot. The sap is for a draught she brews, and the draught is for something to do with
-    "the Eye"; Sesk never learned what. She wants out, with the price of a boat, and goes now, before the guards look round.
-    Does: sets stage 30. Checks: nothing.'
+  intent: "Sesk, the moment the cage door is open (she stands inside the cage, so this is the first thing she says once
+    the player can reach her). Tells: the crews who drain the trees are the Unbound, a cult of the tribeless, and their
+    leader is Cuts-the-Old-Knot, an Argonian woman; she never stays where her crews are. Sesk drew sap for them: cut
+    the scar, fill the jars, press the grey paste in after. They call the paste \"the seal\"; she never knew what is in
+    it, and she was told never to leave a scar open. The jars come here and go on to Cuts-the-Old-Knot. The sap is for
+    a draught she brews, and the draught is for something to do with \"the Eye\"; Sesk never learned what. She wants
+    out, with the price of a boat, and goes now, before the guards look round. Does: sets stage 30. Checks: nothing."
   uses:
   - fact.mn04.unbound
   - fact.mn04.draught
   - fact.mn04.seal
   new: true
-  when:
-    hasItem:
-    - thing.mn04.sesk-sack
-    - 1
 - id: topic.mn04-sesk-landing
   label: You got out of the camp, then.
   person: npc.mn.sesk
@@ -873,12 +888,16 @@ topics:
   stages:
   - 30
   essential: true
-  intent: 'Vosh-Leera. Tells: she hears it all: the Unbound, Cuts-the-Old-Knot, a draught, "the Eye", the seal. This is
-    more than a herald can judge. The order''s handler for this country is Nesh-Deeka, who keeps a quiet house in Helstrom,
-    the oldest city, far to the south, where the Xeech-Leel''s council sits; the door bears her name. The road there runs
-    through deadly country, so the player is to ride the rootworm: Weeltul calls it at the Hist pool in the middle of the
-    town, and the fare is twenty-five gold. She pays the player a hundred gold. Does: sets stage 40, whose start gives the
-    gold. Checks: nothing.'
+  intent: "Vosh-Leera. Tells: she hears it all: the Unbound, Cuts-the-Old-Knot, a draught, \"the Eye\", the seal. This
+    is more than a herald can judge. The order's handler for this country is Nesh-Deeka, who keeps a quiet house in
+    Helstrom, the oldest city, far to the south, where the Xeech-Leel's council sits; the door bears her name. The road
+    there runs through deadly country, so the player is to ride the rootworm, and she tells them what it is: a great
+    blind worm that swims the waters under the roots from one Hist's pool to another's, faster than any boat. It stops
+    at a tree's root pool, the open water among the roots at the tree's foot, where a root-tender calls it with a hand
+    on the bark and takes the fare. Here the root-tender is Weeltul, at the Hist pool in the middle of the town; the
+    fare is twenty-five gold. At Helstrom it comes up in the pool under the city tree, and the root-tender there can
+    point the way to Nesh-Deeka's House. She pays the player a hundred gold. Does: sets stage 40, whose start gives the
+    gold. Checks: nothing."
   uses:
   - fact.mn04.handler
   new: true
@@ -893,6 +912,26 @@ topics:
     is the handler at Helstrom; Vosh-Leera has met her twice and found her sharp and well informed. Helstrom is the oldest
     city of the Argonians, at the river fork in the middle of the Hist forest, a city no invader ever took. Checks: nothing.
     Does: nothing.'
+  new: true
+- id: topic.mn04-vosh-early
+  label: Have you news for me?
+  person: npc.mn.vosh-leera
+  stages: [10, 20]
+  essential: false
+  intent: "Vosh-Leera, before the player has been to Karsh-Naal Camp. Tells: no; the note sends the jars to Karsh-Naal
+    Camp, east of Teel-Fen Weir, and she wants to know who takes them there before she says anything to anyone. Go and
+    see. Checks: nothing. Does: nothing."
+  uses: []
+  new: true
+- id: topic.mn04-weeltul-early
+  label: Can you send me somewhere by the rootworm?
+  person: npc.mn.jal-veesa-minder
+  stages: [10, 20, 30]
+  essential: false
+  intent: "Weeltul, before Vosh-Leera sends the player south. Tells: the rootworm is hers to call, from this pool to the
+    pool under Helstrom's city tree, but a stranger rides it only on the root-herald's word; Vosh-Leera has not given it.
+    Checks: nothing. Does: nothing."
+  uses: []
   new: true
 - id: topic.mn04-ride
   label: Vosh-Leera says you can send me to Helstrom by the rootworm.

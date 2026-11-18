@@ -337,21 +337,64 @@ stages:
 - id: 10
   place: vicrium
   journal: text.journal.mn10.10
-  journalText: The knight-captain's disc bears the mark of Vicrium, a mine behind Seafalls, where the knights kept a strongbox.
-    The lower galleries are shut behind a locked timber door; the gallery-boss, Ah-Zish, keeps the key, and an old adit
-    on the creek bank goes round it through water where crocodiles nest. I'm to get into the lower galleries and find the
-    knights' strongbox. Ah-Zish might give the key to good words or 100 gold, or it can be lifted from him. Smugglers have
-    moved into the lower galleries; I may fight them or sneak past. All of it is a trail to the Eye of Argonia, the old
-    kings' jewel that can heal every tree, which lies at the Root, where all the trees' roots meet under the sea; the order
-    wants it found before the Unbound reach it.
+  journalText: "Nesh-Deeka knew the mark on the knight-captain's disc: Vicrium, an old mine behind Seafalls, where the
+    knights kept a strongbox. I should go there and ask at the mine; Ah-Zish is its gallery-boss."
   directions: Poles-Upriver's boats run from Helstrom to Archon and on up the coast to Seafalls, the village by the white
-    falls. From Seafalls follow the road inland to the hillside cut in rust and yellow bands with a timber headframe; the
-    adit's mouth is down on the creek bank below it.
+    falls. From Seafalls follow the road inland to the hillside cut in rust and yellow bands with a timber headframe.
+  objectives:
+  - id: ask
+    text: text.objective.mn10.ask
+    objectiveText: Ask Ah-Zish, the gallery-boss of Vicrium, about the knights' strongbox.
+    target: npc.mn.ah-zish
+    completeWhen:
+      questStage:
+      - quest.main.mn10
+      - ≥
+      - 15
+  successors:
+  - to: 15
+    when:
+      topicHeardFrom:
+      - topic.mn10-door
+      - npc.mn.ah-zish
+  - to: 20
+    when:
+      hasItem:
+      - thing.mn.parchment-map
+      - 1
+  failForward:
+  - to: 16
+    when:
+      not:
+        npcAlive: npc.mn.ah-zish
+  - to: 95
+    when:
+      not:
+        npcAlive: npc.mn.nesh-deeka
+  information:
+    going: The disc points to Vicrium, where the knights kept a strongbox.
+    next: Go by boat to Seafalls and up the road to Vicrium, and ask the gallery-boss, Ah-Zish.
+    ways: One way, asking him.
+    carriers:
+    - know: the place and whom to ask
+      by:
+      - journal
+      - objective
+      - marker:npc.mn.ah-zish
+      - name:npc.mn.ah-zish
+- id: 15
+  place: vicrium
+  journal: text.journal.mn10.15
+  journalText: "Ah-Zish shut the lower galleries behind a locked timber door after a roof fall, and keeps its key on his
+    belt; the door cannot be picked. He hears voices below, smugglers, he thinks, come in by the old adit on the creek
+    bank, which is flooded and full of crocodiles. He might give me the key for good words or a hundred gold, or I could
+    lift it from him; if he catches me at it, he shouts for his miners. Past the door I need to find the knights'
+    strongbox, and the smugglers down there will attack anyone they see."
   objectives:
   - id: in
     text: text.objective.mn10.in
-    objectiveText: Get into Vicrium's lower galleries, by Ah-Zish's key or the old lower adit.
-    target: npc.mn.ah-zish, thing.mn10.timber-door, thing.mn10.adit
+    objectiveText: Get the key to the lower galleries from Ah-Zish.
+    target: npc.mn.ah-zish
     completeWhen:
       questStage:
       - quest.main.mn10
@@ -377,12 +420,38 @@ stages:
     when:
       not:
         npcAlive: npc.mn.nesh-deeka
+  information:
+    going: The knights' strongbox is in Vicrium's lower galleries, shut behind a timber door whose key Ah-Zish carries.
+      Smugglers have moved in below.
+    next: Get the key from Ah-Zish, go through the timber door and find the strongbox.
+    ways: Persuade Ah-Zish, pay him 100 gold or pick his pocket; or find the old adit on the creek bank and swim in past
+      the crocodiles. Below, fight the smugglers or sneak past them.
+    carriers:
+    - know: the key is on Ah-Zish
+      by:
+      - journal
+      - objective
+      - line:topic.mn10-door
+      - marker:npc.mn.ah-zish
+      - name:thing.mn10.timber-door
+    - know: the adit is another way
+      by:
+      - journal
+      - line:topic.mn10-door
+      - name:thing.mn10.adit
+    - know: smugglers inside; fight or sneak
+      by:
+      - journal
+      - line:topic.mn10-door
+      - marker:thing.mn10.strongbox
   approaches:
   - id: key
     actions:
     - skill: Pickpocket
       use: pickpocket
       target: Ah-Zish
+      note: "If the player is caught at his belt, Ah-Zish shouts for his miners: as in Skyrim, the player pays a fine
+        or fights them; he will still take words or 100 gold for the key."
     - skill: Speech
       use: persuade
       target: Ah-Zish
@@ -395,6 +464,8 @@ stages:
     - skill: Sneak
       use: sneak-past
       target: crocodiles
+      note: "If the crocodiles see the player in the adit's water, they attack and it becomes a fight; the adit has no
+        door to lock."
   - id: smugglers
     actions:
     - skill: One-Handed
@@ -403,40 +474,49 @@ stages:
     - skill: Sneak
       use: sneak-past
       target: smugglers
+      note: "If the player is caught by the smugglers, they all attack and it becomes a fight."
+- id: 16
+  place: vicrium
+  journal: text.journal.mn10.16
+  journalText: "Ah-Zish, the gallery-boss, is dead. His miners say the lower galleries are shut behind a timber door
+    whose key he carried on his belt, and that smugglers have got in below, by the old adit on the creek bank, they
+    think. The knights' strongbox should be down there."
+  objectives:
+  - id: box16
+    text: text.objective.mn10.box16
+    objectiveText: Search the knights' strongbox in the lower galleries.
+    target: thing.mn10.strongbox
+    completeWhen:
+      questStage:
+      - quest.main.mn10
+      - ≥
+      - 20
+  successors:
+  - to: 20
+    when:
+      hasItem:
+      - thing.mn.parchment-map
+      - 1
+  failForward:
+  - to: 95
+    when:
+      not:
+        npcAlive: npc.mn.nesh-deeka
   information:
-    going: 'The disc points to Vicrium, where the knights kept a strongbox in galleries now shut. The hunt''s aim: find
-      the Eye of Argonia, the old kings'' jewel that can heal every tree, at the Root, where all the trees'' roots meet
-      under the sea, before the Unbound do.'
-    next: Go by boat to Seafalls and up the road to Vicrium; get into the lower galleries and find the strongbox.
-    ways: Ah-Zish's key (persuade him, pay 100 gold or pick his pocket), or the flooded adit past the crocodiles. In the
-      galleries, fight the smugglers or sneak past them.
+    going: Ah-Zish is dead; the key to the lower galleries was on his belt, and smugglers are below.
+    next: Take the key from his body, or find the adit on the creek bank, and search the strongbox.
+    ways: The key from his body, or the adit past the crocodiles; below, fight or sneak past the smugglers.
     carriers:
-    - know: the place and the way
+    - know: the strongbox is below
       by:
       - journal
       - objective
-    - know: the key or the adit
-      by:
-      - journal
-      - marker:npc.mn.ah-zish
-      - marker:thing.mn10.adit
-      - name:thing.mn10.timber-door
-      - name:thing.mn10.adit
-      - ask:topic.mn10-door
-    - know: smugglers inside; fight or sneak
-      by:
-      - journal
-      - ask:topic.mn10-door
       - marker:thing.mn10.strongbox
-    - know: 'the hunt''s aim: the Eye of Argonia and the Root'
-      by:
-      - journal
-      - ask:topic.mn-the-hunt
 - id: 20
   place: helstrom
   journal: text.journal.mn10.20
-  journalText: 'In the knights'' strongbox lay an old parchment map: seven towers standing in the sea, and a crag shaped
-    like a tooth on an island. I''m to bring it to Nesh-Deeka in Helstrom.'
+  journalText: "In the knights' strongbox lay an old parchment map: seven towers standing in the sea, and a crag shaped
+    like a tooth on an island. Nesh-Deeka will want it in Helstrom."
   onEnter:
   - enableRef: npc.mn.never-writes-twice
   objectives:
@@ -485,9 +565,9 @@ stages:
 - id: 30
   place: helstrom
   journal: text.journal.mn10.30
-  journalText: 'Nesh-Deeka already knew the Unbound had not reached Vicrium. Before I could ask how, she said "we listen"
-    and named me Toh-Wo, "Secret-Speaker", the order''s second rank, with 200 gold. I''m to choose the order''s gift: a
-    rapier or a quarterstaff.'
+  journalText: "Nesh-Deeka already knew the Unbound had not reached Vicrium, and did not say how. She named me Toh-Wo,
+    \"Secret-Speaker\", the order's second rank, with 200 gold, and offered me the order's gift: a rapier or a
+    quarterstaff."
   onEnter:
   - giveGold: 200
   - setFlag:
@@ -545,8 +625,8 @@ stages:
 - id: 40
   place: helstrom
   journal: text.journal.mn10.40
-  journalText: I took the rapier. Nesh-Deeka passed me to her officer, Never-Writes-Twice, who stands at the back of the
-    same room; from now on I report to her. I'm to show her the map.
+  journalText: "I took the rapier. Nesh-Deeka passed me to her officer, Never-Writes-Twice, who stands at the back of
+    the same room; from now on I report to her. She wants to see the map."
   onEnter:
   - giveItem:
     - thing.mn10.rapier
@@ -588,8 +668,8 @@ stages:
 - id: 41
   place: helstrom
   journal: text.journal.mn10.41
-  journalText: I took the quarterstaff. Nesh-Deeka passed me to her officer, Never-Writes-Twice, who stands at the back
-    of the same room; from now on I report to her. I'm to show her the map.
+  journalText: "I took the quarterstaff. Nesh-Deeka passed me to her officer, Never-Writes-Twice, who stands at the
+    back of the same room; from now on I report to her. She wants to see the map."
   onEnter:
   - giveItem:
     - thing.mn10.staff
@@ -707,23 +787,20 @@ topics:
 - id: topic.mn10-ah-zish-who
   label: Who are you?
   person: npc.mn.ah-zish
-  stages:
-  - 10
-  - 20
-  - 90
+  stages: [10, 15, 20, 90]
   essential: false
   intent: 'Ah-Zish, gallery-boss of Vicrium; his miners are Oxhu clay-diggers and Seafalls families; Umbriel in a line:
     his grandfather said the sky went dark over the east. Does: nothing.'
   new: true
 - id: topic.mn10-door
-  label: I need to get into the lower galleries.
+  label: "I am looking for the knights' old strongbox, in your lower galleries."
   person: npc.mn.ah-zish
-  stages:
-  - 10
+  stages: [10, 15]
   essential: true
-  intent: 'Ah-Zish. Tells: no; a roof fall killed two men down there and he locked the timber door himself; and lately he
-    hears voices below, smugglers, he thinks, come in by the old adit on the creek bank, which is flooded and full of crocodiles.
-    The player can argue (Persuade), pay 100 gold, or go round by the adit. Does: nothing.'
+  intent: "Ah-Zish. Tells: no; a roof fall killed two men down there and he locked the timber door himself; and lately
+    he hears voices below, smugglers, he thinks, come in by the old adit on the creek bank, which is flooded and full
+    of crocodiles. The key stays on his belt, and the door is not one a pick will open. The player can argue (Persuade)
+    or pay 100 gold; the adit is their own lookout. Does: sets stage 15."
   replies:
   - topic.mn10-persuade
   - topic.mn10-pay
@@ -731,8 +808,7 @@ topics:
 - id: topic.mn10-persuade
   label: (Persuade) If smugglers are under your feet, better I clear them than your miners.
   person: npc.mn.ah-zish
-  stages:
-  - 10
+  stages: [10, 15]
   essential: false
   when:
     skillAtLeast:
@@ -744,14 +820,13 @@ topics:
 - id: topic.mn10-pay
   label: Here is 100 gold for the key. (100 gold)
   person: npc.mn.ah-zish
-  stages:
-  - 10
+  stages: [10, 15]
   essential: false
   when:
     goldAtLeast: 100
   intent: 'Ah-Zish. Takes 100 gold and gives the key. Does: gives thing.mn10.door-key.'
-  fallback: A hundred
-  or the adit.: null
+  fallback: "Ah-Zish. Tells: a hundred gold, not a coin less; without it the player can talk him round or find another
+    way in."
   new: true
 - id: topic.mn10-report
   label: The knights' strongbox held this map.
@@ -763,11 +838,28 @@ topics:
     hasItem:
     - thing.mn.parchment-map
     - 1
-  intent: 'Nesh-Deeka. Tells: this is one more step towards the Eye of Argonia, the old kings'' jewel that can heal every
-    tree, which lies at the Root, where all the trees'' roots meet under the sea; seven towers in the sea and a crag like
-    a tooth: that is for her officer to read. She says the Unbound have not reached Vicrium. She sees the question coming,
-    how she can know this, and answers it before it is asked: "We listen." Then she names the player Toh-Wo, "Secret-Speaker",
-    the second rank, with 200 gold, and offers the order''s weapon: a rapier or a quarterstaff. Does: sets stage 30.'
+  intent: "Nesh-Deeka. Tells: seven towers in the sea and a crag like a tooth: that is for her officer to read. She
+    says the Unbound have not reached Vicrium. She says it as a thing she simply knows, and does not say how; only if
+    the player asks how she knows does she answer \"We listen\" and change the subject. Then she names the player
+    Toh-Wo, \"Secret-Speaker\", the second rank, with 200 gold, and offers the order's weapon: a rapier or a
+    quarterstaff. Does: sets stage 30."
+  new: true
+- id: topic.mn10-nesh-early
+  label: What do I do with the disc's mark?
+  person: npc.mn.nesh-deeka
+  stages: [10, 15]
+  essential: false
+  intent: "Nesh-Deeka, before the player brings anything from Vicrium. Tells: Vicrium first; the knights' strongbox is in
+    the mine behind Seafalls, and she wants whatever is in it. Checks: nothing. Does: nothing."
+  uses: []
+  new: true
+- id: topic.mn-how-she-knows
+  label: How did you know that?
+  person: npc.mn.nesh-deeka
+  stages: [30, 40, 41, 90]
+  essential: false
+  intent: "Nesh-Deeka, asked how she knew where the Unbound have or have not been. Tells: \"We listen.\" She says no more
+    and asks about the player's road. Does: nothing."
   new: true
 - id: topic.mn10-rapier
   label: I'll take the rapier.

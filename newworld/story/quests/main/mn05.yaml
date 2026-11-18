@@ -388,9 +388,9 @@ stages:
 - id: 10
   place: helstrom
   journal: text.journal.mn05.10
-  journalText: Vosh-Leera sent me to the order's handler, Nesh-Deeka, at her house in Helstrom, the oldest city. I'm to
-    ride the rootworm there from Jal-Veesa's Hist pool, paying Weeltul twenty-five gold, and find Nesh-Deeka's House. Cheeval-Xu,
-    who works the rootworm at Helstrom's city tree, can point the way.
+  journalText: "Vosh-Leera sent me to the order's handler, Nesh-Deeka, at her house in Helstrom, the oldest city.
+    Weeltul can send me there by the rootworm from Jal-Veesa's Hist pool for twenty-five gold. The worm comes up in the
+    root pool under Helstrom's city tree, and the root-tender there can point the way to Nesh-Deeka's House."
   objectives:
   - id: nesh
     text: text.objective.mn05.nesh
@@ -432,12 +432,13 @@ stages:
 - id: 20
   place: helstrom
   journal: text.journal.mn05.20
-  journalText: Nesh-Deeka heard my report. The Eye is the Eye of Argonia, the old priest-kings' jewel of Hist amber. It
-    lies at the Root, where every tree's roots meet under the sea, behind a gate the old kings sealed, and no living diver
-    has found it. I said the draught must be to kill whatever guards the Root, and she agreed. To prove me, she wants a
-    jar of stolen sap from Keel-Raa, an Unbound go-between lodging at the Boatmen's Lodge with two hired men. I can lift
-    it from his pack on the crates behind them while they are not looking, buy it for a hundred gold, or fight the three of them for it, which the levy will not count as a crime.
-    I'm to bring her the jar.
+  journalText: "Nesh-Deeka heard my report. The Eye is the Eye of Argonia, the old priest-kings' jewel of Hist amber.
+    It lies at the Root, where every tree's roots meet under the sea, behind a gate the old kings sealed, and no living
+    diver has found it. I said the draught must be to kill whatever guards the Root, and she agreed. To prove me, she
+    wants a jar of stolen sap from Keel-Raa, an Unbound go-between lodging at the Boatmen's Lodge with two hired men. I
+    can lift it from his pack on the crates behind them while they are not looking, buy it for a hundred gold, or fight
+    the three of them for it, which the levy will not count as a crime. If they catch me at the pack, all three will
+    fight me. She wants the jar brought to her."
   objectives:
   - id: jar
     text: text.objective.mn05.jar
@@ -509,6 +510,8 @@ stages:
     - skill: Sneak
       use: steal
       target: Keel-Raa's Pack
+      note: "If the player is caught at the pack, Keel-Raa and his two men attack and it becomes a fight; they are of a
+        band the levy does not protect, so the fight is no crime, and the jar can be taken from the pack after."
   - id: buy
     actions:
     - skill: Speech
@@ -528,8 +531,8 @@ stages:
 - id: 26
   place: helstrom
   journal: text.journal.mn05.26
-  journalText: I paid Keel-Raa a hundred gold for his jar of sap, and he gave me his pack with the jar in it. I'm to take
-    the jar from Keel-Raa's Pack on the crates behind him and bring it to Nesh-Deeka.
+  journalText: "I paid Keel-Raa a hundred gold for his jar of sap, and he gave me his pack with the jar in it. I should
+    take the jar from Keel-Raa's Pack on the crates behind him and bring it to Nesh-Deeka."
   onEnter:
   - takeGold: 100
   - giveOwnership: thing.mn05.keel-raa-pack
@@ -569,7 +572,7 @@ stages:
 - id: 30
   place: helstrom
   journal: text.journal.mn05.30
-  journalText: I have Keel-Raa's jar of sap. I'm to bring it to Nesh-Deeka.
+  journalText: "I have Keel-Raa's jar of sap. Nesh-Deeka is waiting for it in her house."
   objectives:
   - id: bring
     text: text.objective.mn05.bring
@@ -609,10 +612,11 @@ stages:
 - id: 90
   place: helstrom
   journal: text.journal.mn05.90
-  journalText: 'Nesh-Deeka took the jar and made me a Voh-Vastei, an apprentice of the Toh-Reel-Ka, with the order''s armour
-    and two hundred gold; the order''s traders will deal with me now. The order means to find the Root before the Unbound,
-    and I am to use the Eye where it sits to heal the trees. Her one lead: an "Eye of Argonia" is for sale in Gideon''s
-    market. I''m to ride the rootworm from Helstrom''s city tree to Gideon.'
+  journalText: "Nesh-Deeka took the jar and made me a Voh-Vastei, an apprentice of the Toh-Reel-Ka, with the order's
+    armour and two hundred gold; the order's traders will deal with me now. The order means to find the Root before the
+    Unbound, and she wants me to use the Eye where it sits to heal the trees. Her one lead: an \"Eye of Argonia\" is
+    for sale in Gideon's market. Cheeval-Xu, the root-tender at the pool under Helstrom's city tree, can send me there
+    by the rootworm."
   onEnter:
   - takeItem:
     - thing.mn.stolen-sap-jar
@@ -723,9 +727,10 @@ topics:
   stages:
   - 10
   essential: false
-  intent: 'Cheeval-Xu, at the root landing under the city tree. Tells: he works the rootworm here. Nesh-Deeka''s House is
-    a quiet house off the market, one of the houses nearest the city tree; her name is on the door; she takes visitors by
-    word of mouth. Checks: nothing. Does: nothing.'
+  intent: "Cheeval-Xu, the root-tender at the root pool under the city tree, where the rootworm comes up. Tells: he
+    calls the rootworm here and takes its fares. Nesh-Deeka's House is a quiet house off the market, one of the houses
+    nearest the city tree; her name is on the door; she takes visitors by word of mouth. Checks: nothing. Does:
+    nothing."
   new: true
 - id: topic.mn05-nesh-who
   label: Who are you?
@@ -763,12 +768,13 @@ topics:
   stages:
   - 10
   essential: true
-  intent: 'Nesh-Deeka. Tells: (after topic.mn05-report: the Eye of Argonia is the priest-kings'' jewel of Hist amber, at
-    the Root under the sea behind a sealed gate) she agrees: whatever guards the Root, Cuts-the-Old-Knot means to kill it.
-    Now she wants proof of the player. Keel-Raa, an Unbound go-between, lodges at the Boatmen''s Lodge, the inn by the city
-    landing, with two hired men and a jar of stolen sap in his pack. Bring her the jar. He is not looking for a fight and
-    will talk, so lift it from his pack, buy it, or take it by force: his band pays the levy to look away from them, so
-    the levy will not count it a crime either. Does: sets stage 20. Checks: nothing.'
+  intent: "Nesh-Deeka. Tells: (after topic.mn05-report: the Eye of Argonia is the priest-kings' jewel of Hist amber, at
+    the Root under the sea behind a sealed gate) she agrees: whatever guards the Root, Cuts-the-Old-Knot means to kill
+    it. Now she wants proof of the player. Keel-Raa, an Unbound go-between, lodges at the Boatmen's Lodge, the inn by
+    the raft landing on the river, with two hired men and a jar of stolen sap in his pack. Bring her the jar. He is not
+    looking for a fight and will talk, so lift it from his pack (if he or his men catch the player at it, all three
+    will fight), buy it, or take it by force: his band pays the levy to look away from them, so the levy will not count
+    it a crime either. Does: sets stage 20. Checks: nothing."
   uses:
   - fact.mn05.draught
   - fact.mn05.go-between
@@ -917,20 +923,19 @@ topics:
 - id: topic.mn05-give-jar
   label: Here is Keel-Raa's jar.
   person: npc.mn.nesh-deeka
-  stages:
-  - 26
-  - 30
+  stages: [30]
   essential: true
   when:
     hasItem:
     - thing.mn.stolen-sap-jar
     - 1
-  intent: 'Nesh-Deeka. Checks: hasItem the jar. Tells: good. She makes the player a Voh-Vastei, an apprentice of the order,
-    and gives them the order''s light armour and two hundred gold for the road; the order''s traders will deal with them
-    now. The order''s aim: the Root must be found before the Unbound find it, and the player is to use the Eye where it
-    sits to heal the trees. She has one lead: an "Eye of Argonia" is for sale in Gideon''s market, the relic-dealers'' city
-    to the west. Most such eyes are glass; find out where this one came from. The rootworm runs from Helstrom''s city tree
-    to Gideon; Cheeval-Xu calls it there. Does: sets stage 90. '
+  intent: "Nesh-Deeka. Checks: hasItem the jar. Tells: good. She makes the player a Voh-Vastei, an apprentice of the
+    order, and gives them the order's light armour and two hundred gold for the road; the order's traders will deal
+    with them now. The order's aim: the Root must be found before the Unbound find it, and the player is to use the Eye
+    where it sits to heal the trees. She has one lead: an \"Eye of Argonia\" is for sale in Gideon's market, the
+    relic-dealers' city to the west. Most such eyes are glass; find out where this one came from. The rootworm runs
+    from the root pool under Helstrom's city tree to Gideon; Cheeval-Xu, the root-tender at the pool, calls it. Does:
+    sets stage 90. "
   uses:
   - fact.mn05.aim
   - fact.mn05.gideon

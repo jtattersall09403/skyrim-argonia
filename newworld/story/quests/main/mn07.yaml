@@ -258,11 +258,10 @@ stages:
 - id: 10
   place: shipwreck-33-m67
   journal: text.journal.mn07.10
-  journalText: Nesh-Deeka sent me to the wreck of the Pale Harvest in Hatandros Bight, a short swim out from Ysan's jetty.
-    I'm to get into the hold, where the drowned crew walk, and open the captain's strongbox. I may fight them or steal past
-    and pick its lock; the captain carries its key. All of it is a trail to the Eye of Argonia, the old kings' jewel that
-    can heal every tree, which lies at the Root, where all the trees' roots meet under the sea; the order wants it found
-    before the Unbound reach it.
+  journalText: "Nesh-Deeka sent me to the wreck of the Pale Harvest in Hatandros Bight, a short swim out from Ysan's
+    jetty. I need to get into the hold, where the drowned crew walk, and open the captain's strongbox. I may fight
+    them, or steal past them and pick its lock, a hard one; the captain carries its key. The drowned attack whoever
+    they see, so a quiet player who is seen has a fight on their hands."
   directions: Poles-Upriver's boats run from Helstrom's landing down the rivers to Archon and on round the coast to Thorn.
     From Thorn's quay walk south along the coast to Ysan's stone jetty, then swim east past the slaughterfish to the listing
     hull; its door lets into the hold.
@@ -301,6 +300,8 @@ stages:
     - skill: Sneak
       use: sneak-past
       target: the drowned crew
+      note: "The drowned crew are hostile: if the player is seen, they attack, and the strongbox's key is on the
+        captain's body. The strongbox has an Adept lock."
     - skill: Lockpicking
       use: pick-a-lock
       target: the strongbox
@@ -324,15 +325,11 @@ stages:
       - journal
       - marker:npc.mn07.drowned-captain
       - name:thing.mn07.strongbox
-    - know: 'the hunt''s aim: the Eye of Argonia and the Root'
-      by:
-      - journal
-      - ask:topic.mn-the-hunt
 - id: 20
   place: helstrom
   journal: text.journal.mn07.20
-  journalText: In the captain's strongbox lay a keystone on a chain, carved in a style I do not know. I'm to bring it to
-    Nesh-Deeka in her house in Helstrom.
+  journalText: "In the captain's strongbox lay a keystone on a chain, carved in a style I do not know. Nesh-Deeka will
+    want to see it in Helstrom."
   objectives:
   - id: report
     text: text.objective.mn07.report
@@ -379,10 +376,10 @@ stages:
 - id: 90
   place: helstrom
   journal: text.journal.mn07.90
-  journalText: Nesh-Deeka did not know the keystone, but it is of Kothringi make (the Kothringi were the silver-skinned
-    people of the marsh, all dead of the Knahaten Flu long ago), and the Chime-Keepers of Toklea keep what is left of Kothringi
-    lore. She already knew the Unbound had not found the wreck. Before I could ask how, she said "we listen" and talked
-    of Toklea instead. She paid me 100 gold.
+  journalText: "Nesh-Deeka did not know the keystone, but it is of Kothringi make (the Kothringi were the
+    silver-skinned people of the marsh, all dead of the Knahaten Flu long ago), and the Chime-Keepers of Toklea keep
+    what is left of Kothringi lore. She already knew the Unbound had not found the wreck, and did not say how. She paid
+    me 100 gold."
   onEnter:
   - giveGold: 100
   learns:
@@ -451,6 +448,14 @@ topics:
     a landing of stone-cutters with a dry-stone jetty; the wreck lies a short swim out, with slaughterfish about it. Does:
     nothing.'
   new: true
+- id: topic.mn-how-she-knows
+  label: How did you know that?
+  person: npc.mn.nesh-deeka
+  stages: [90]
+  essential: false
+  intent: "Nesh-Deeka, asked how she knew where the Unbound have or have not been. Tells: \"We listen.\" She says no more
+    and asks about the player's road. Does: nothing."
+  new: true
 - id: topic.mn07-report
   label: I found this keystone in the captain's strongbox.
   person: npc.mn.nesh-deeka
@@ -461,12 +466,11 @@ topics:
     hasItem:
     - thing.mn.keystone
     - 1
-  intent: 'Nesh-Deeka. Tells: this is one more step towards the Eye of Argonia, the old kings'' jewel that can heal every
-    tree, which lies at the Root, where all the trees'' roots meet under the sea; she does not know it, but the carving
-    is Kothringi; the Chime-Keepers of Toklea, a town on the river fork in the Tulmek Washes, keep what is left of Kothringi
-    lore; their elder will know. Then she says the Unbound have not been to the wreck: they lost the trail at Gideon. She
-    sees the question coming, how she can know this, and answers it before it is asked: "We listen." She turns to Toklea
-    and pays 100 gold. Does: sets stage 90.'
+  intent: "Nesh-Deeka. Tells: she does not know it, but the carving is Kothringi; the Chime-Keepers of Toklea, a town
+    on the river fork in the Tulmek Washes, keep what is left of Kothringi lore; their elder will know. Then she says
+    the Unbound have not been to the wreck: they lost the trail at Gideon. She says it as a thing she simply knows, and
+    does not say how; only if the player asks how she knows does she answer \"We listen\" and change the subject. She
+    turns to Toklea and pays 100 gold. Does: sets stage 90."
   new: true
 - id: topic.mn-kothringi
   label: Who were the Kothringi?

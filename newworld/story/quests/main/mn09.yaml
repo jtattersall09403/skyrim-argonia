@@ -316,12 +316,10 @@ stages:
 - id: 10
   place: kothringi-ruin-m25-m80
   journal: text.journal.mn09.10
-  journalText: Nesh-Deeka sent me to Eurydike, the roofless hall of the Kothringi knights north of Gideon, to open the knight-captain's
-    tomb with the keystone; the knights once guarded the kings' road to the Root, the place under the sea where every Hist's
-    roots meet and the Eye of Argonia lies. The knights' dead walk the barracks wing, and the Unbound got there before me.
-    I'm to search the Unbound's packs by their fire on the way to the tomb. I may fight, slip past, or turn the dead with
-    Restoration. All of it is a trail to the Eye of Argonia, the old kings' jewel that can heal every tree, which lies at
-    the Root, where all the trees' roots meet under the sea; the order wants it found before the Unbound reach it.
+  journalText: "Nesh-Deeka sent me to Eurydike, the roofless hall of the Kothringi knights north of Gideon, to open the
+    knight-captain's tomb with the keystone. The knights' dead walk the barracks wing, and the Unbound got there before
+    me. I should search the Unbound's packs by their fire on the way to the tomb. I may fight, slip past, or turn the
+    dead with Restoration; the dead and the Unbound both attack whoever they see."
   directions: Ride the rootworm from Helstrom's city tree to Gideon's Hist garden, then walk north out of Gideon to the
     long grey-white hall with its roof gone and a broken gable; the barracks wing stands at the back.
   objectives:
@@ -364,6 +362,8 @@ stages:
     - skill: Sneak
       use: sneak-past
       target: the dead and the Unbound
+      note: "If the player is seen, the dead and the Unbound attack and it becomes a fight; the tomb's door opens only
+        to the keystone."
   information:
     going: 'The keystone opens the knight-captain''s tomb at Eurydike; the Unbound are there ahead of me. The hunt''s aim:
       find the Eye of Argonia, the old kings'' jewel that can heal every tree, at the Root, where all the trees'' roots
@@ -380,16 +380,12 @@ stages:
     - know: the ways
       by:
       - journal
-    - know: 'the hunt''s aim: the Eye of Argonia and the Root'
-      by:
-      - journal
-      - ask:topic.mn-the-hunt
 - id: 20
   place: kothringi-ruin-m25-m80
   journal: text.journal.mn09.20
-  journalText: 'In the Unbound''s packs were bottles of the grey paste they call "the seal". It is a paralysis poison: it
-    numbs a tree''s scar shut. The Unbound drain a tree and then poison it. If they wanted the trees dead they could kill
-    them, so why seal a tree they drain? I''m to open the knight-captain''s tomb with the keystone.'
+  journalText: "In the Unbound's packs were bottles of the grey paste they call \"the seal\". It is a paralysis poison:
+    it numbs a tree's scar shut. The Unbound drain a tree and then poison it. If they wanted the trees dead they could
+    kill them, so why seal a tree they drain? Now the tomb: the keystone should open its door."
   onEnter:
   - setFlag:
     - flag.main.seal-question
@@ -440,8 +436,8 @@ stages:
 - id: 30
   place: helstrom
   journal: text.journal.mn09.30
-  journalText: In the knight-captain's tomb lay a bronze disc stamped with a mine's mark, a pick crossed with a tower. I'm
-    to bring it to Nesh-Deeka in Helstrom.
+  journalText: "In the knight-captain's tomb lay a bronze disc stamped with a mine's mark, a pick crossed with a tower.
+    Nesh-Deeka will know the mark."
   objectives:
   - id: report
     text: text.objective.mn09.report
@@ -487,10 +483,9 @@ stages:
 - id: 90
   place: helstrom
   journal: text.journal.mn09.90
-  journalText: 'Nesh-Deeka knew the mark: Vicrium, an old mine in the clay country behind Seafalls, in the east. She already
-    knew the Unbound had been at Eurydike. Before I could ask how, she said "we listen" and turned to the mine. She does
-    not know why the Unbound seal the trees they drain, and says it does not matter. She paid me 100 gold. The question
-    stays with me.'
+  journalText: "Nesh-Deeka knew the mark: Vicrium, an old mine in the clay country behind Seafalls, in the east. She
+    already knew the Unbound had been at Eurydike, and did not say how. She does not know why the Unbound seal the
+    trees they drain, and says it does not matter. She paid me 100 gold. The question stays with me."
   onEnter:
   - giveGold: 100
   learns:
@@ -555,13 +550,20 @@ topics:
     hasItem:
     - thing.mn.bronze-disc
     - 1
-  intent: 'Nesh-Deeka. Tells: this is one more step towards the Eye of Argonia, the old kings'' jewel that can heal every
-    tree, which lies at the Root, where all the trees'' roots meet under the sea; the pick and tower is Vicrium''s mark,
-    an old ochre and alum mine in the clay country behind Seafalls, in Okuwun Rahei in the east; the knights kept a strongbox
-    there. She says she knew the Unbound had got into Eurydike. She sees the question coming, how she can know this, and
-    answers it before it is asked: "We listen.", and turns back to the mine. She does not know why the Unbound seal the
-    trees they drain, a poison pressed into a tree they want sap from; madness or spite, she supposes, and it does not
-    matter beside the Eye. She pays 100 gold. Does: sets stage 90.'
+  intent: "Nesh-Deeka. Tells: the pick and tower is Vicrium's mark, an old ochre and alum mine in the clay country
+    behind Seafalls, in Okuwun Rahei in the east; the knights kept a strongbox there. She says she knew the Unbound had
+    got into Eurydike. She says it as a thing she simply knows, and does not say how; only if the player asks how she
+    knows does she answer \"We listen\" and change the subject. and turns back to the mine. She does not know why the
+    Unbound seal the trees they drain, a poison pressed into a tree they want sap from; madness or spite, she supposes,
+    and it does not matter beside the Eye. She pays 100 gold. Does: sets stage 90."
+  new: true
+- id: topic.mn-how-she-knows
+  label: How did you know that?
+  person: npc.mn.nesh-deeka
+  stages: [90]
+  essential: false
+  intent: "Nesh-Deeka, asked how she knew where the Unbound have or have not been. Tells: \"We listen.\" She says no more
+    and asks about the player's road. Does: nothing."
   new: true
 - id: topic.mn09-why-seal
   label: The seal is a poison. Why would the Unbound seal a tree they drain?

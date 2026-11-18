@@ -616,6 +616,8 @@ stages:
     - skill: Sneak
       use: steal-unseen
       target: the note on the hide's open west side
+      note: "If the player is caught (a sap-taker sees them at the hide), all three attack and it becomes a fight; the hide has no door
+        or lock, and the note can be taken from their bodies."
 - id: 60
   place: outpost-m6-m66
   journal: text.journal.mn03.60
@@ -867,15 +869,12 @@ topics:
 - id: topic.mn03-heem-who
   label: Who are you?
   person: npc.mn.heem-jasa
-  stages:
-  - 40
-  - 50
-  - 60
-  - 90
-  - 91
+  stages: [10, 20, 30, 40, 50, 60, 90, 91]
   essential: false
-  intent: 'Heem-Jasa. Tells: tree-minder of Teel-Fen Weir; she tends the young tree and makes remedies from its sap and
-    the marsh''s fungus, and sells them to the wardens. Checks: nothing. Does: nothing.'
+  intent: "Heem-Jasa. Tells: tree-minder of Teel-Fen Weir; she tends the young tree and makes remedies from its sap and
+    the marsh's fungus, and sells them to the wardens. Met before Vosh-Leera sends the player (stages 10 to 30), she
+    says no more than that: her tree is not well, and she does not tell its troubles to strangers. Checks: nothing.
+    Does: nothing."
   new: true
 - id: topic.mn03-heem-scar
   label: Vosh-Leera of Jal-Veesa sent me. What is wrong with your tree?

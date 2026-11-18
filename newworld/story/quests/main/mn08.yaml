@@ -262,10 +262,8 @@ stages:
 - id: 10
   place: toklea
   journal: text.journal.mn08.10
-  journalText: Nesh-Deeka sent me with the keystone to the Chime-Keepers of Toklea, who keep what is left of Kothringi lore.
-    I'm to show it to their elder in the Kothringi Greathouse. All of it is a trail to the Eye of Argonia, the old kings'
-    jewel that can heal every tree, which lies at the Root, where all the trees' roots meet under the sea; the order wants
-    it found before the Unbound reach it.
+  journalText: "Nesh-Deeka sent me with the keystone to the Chime-Keepers of Toklea, who keep what is left of Kothringi
+    lore. I should show it to their elder in the Kothringi Greathouse."
   directions: Poles-Upriver's boats run from Helstrom to Blackrose and on to Lujei Ferry. From the ferry's raft, cross the
     channel north to Toklea, the town on stone footings where chimes hang from every eave; the greathouse is the old Kothringi
     hall in the middle.
@@ -306,16 +304,13 @@ stages:
       - journal
       - objective
       - marker:npc.mn.hums-the-long-note
-    - know: 'the hunt''s aim: the Eye of Argonia and the Root'
-      by:
-      - journal
-      - ask:topic.mn-the-hunt
 - id: 20
   place: abandoned-village-m4-m109
   journal: text.journal.mn08.20
-  journalText: 'Hums-the-Long-Note knows the keystone, and named her price: her family''s carved grave-stake lies in a chest
-    in the drowned street of Zul-Etha, and she wants it raised. Crocodiles lie on the roof peaks above it. I may kill them
-    from a roof or from range, calm them with Illusion, or swim under them unseen to the chest.'
+  journalText: "Hums-the-Long-Note knows the keystone, and named her price: her family's carved grave-stake lies in a
+    chest in the drowned street of Zul-Etha, and she wants it raised. Crocodiles lie on the roof peaks above it. She
+    said I may kill them from a roof or from range, calm them with Illusion, or swim under them unseen to the chest; if
+    they see me in the water, they will come for me. The chest is not locked."
   directions: Take a boat from Blackrose to Mir-Xal's river quay, then walk south-east into the washes to three roof peaks
     standing out of green water; the chest lies in the street below them.
   objectives:
@@ -364,7 +359,8 @@ stages:
     - skill: Sneak
       use: sneak-past
       target: crocodiles
-      note: under the water
+      note: "under the water. If the player is seen in the water, the crocodiles attack and it becomes a fight; the
+        chest under them is not locked."
   information:
     going: 'The elder will say what the keystone opens if I raise her family''s grave-stake. The hunt''s aim: find the Eye
       of Argonia, the old kings'' jewel that can heal every tree, at the Root, where all the trees'' roots meet under the
@@ -389,8 +385,8 @@ stages:
 - id: 30
   place: toklea
   journal: text.journal.mn08.30
-  journalText: I raised the grave-stake from the drowned street. I'm to bring it to Hums-the-Long-Note in the Kothringi
-    Greathouse in Toklea.
+  journalText: "I raised the grave-stake from the drowned street. Hums-the-Long-Note is waiting for it in the Kothringi
+    Greathouse in Toklea."
   objectives:
   - id: back
     text: text.objective.mn08.back
@@ -435,9 +431,9 @@ stages:
 - id: 40
   place: helstrom
   journal: text.journal.mn08.40
-  journalText: 'Hums-the-Long-Note took her family''s stake and kept her word: the keystone opens the tomb of the knight-captain
-    at Eurydike, a ruin near Gideon. The Kothringi knights of Gideon were the last to guard the kings'' road to the Root.
-    I''m to tell Nesh-Deeka in Helstrom.'
+  journalText: "Hums-the-Long-Note took her family's stake and kept her word: the keystone opens the tomb of the
+    knight-captain at Eurydike, a ruin near Gideon. The Kothringi knights of Gideon were the last to guard the kings'
+    road to the Root. Nesh-Deeka in Helstrom should hear of it."
   onEnter:
   - takeItem:
     - thing.mn.grave-stake
@@ -485,8 +481,8 @@ stages:
 - id: 90
   place: helstrom
   journal: text.journal.mn08.90
-  journalText: Nesh-Deeka heard me out. She already knew that the Unbound have been asking Gideon's diggers about Eurydike.
-    Before I could ask how, she said "we listen" and told me to hurry. She paid me 100 gold.
+  journalText: "Nesh-Deeka heard me out. She already knew that the Unbound have been asking Gideon's diggers about
+    Eurydike, and did not say how. She told me to hurry, and paid me 100 gold."
   onEnter:
   - giveGold: 100
   learns:
@@ -519,8 +515,8 @@ stages:
 - id: 96
   place: toklea
   journal: text.journal.mn08.96
-  journalText: Hums-the-Long-Note is dead. The other Chime-Keepers say only the elder knew the keystone; it was carved for
-    a door "near Gideon, where the knights lie". I'm to tell Nesh-Deeka in Helstrom.
+  journalText: "Hums-the-Long-Note is dead. The other Chime-Keepers say only the elder knew the keystone; it was carved
+    for a door \"near Gideon, where the knights lie\". I should tell Nesh-Deeka in Helstrom."
   objectives:
   - id: report96
     text: text.objective.mn08.report96
@@ -632,10 +628,18 @@ topics:
   - 40
   - 96
   essential: true
-  intent: 'Nesh-Deeka. Tells: this is one more step towards the Eye of Argonia, the old kings'' jewel that can heal every
-    tree, which lies at the Root, where all the trees'' roots meet under the sea; good; the Unbound have been asking Gideon''s
-    diggers about Eurydike, so the player must be quick. She sees the question coming, how she can know this, and answers
-    it before it is asked: "We listen." She tells the player to hurry, and pays 100 gold. Does: sets stage 90.'
+  intent: "Nesh-Deeka. Tells: good; the Unbound have been asking Gideon's diggers about Eurydike, so the player must be
+    quick. She says it as a thing she simply knows, and does not say how; only if the player asks how she knows does
+    she answer \"We listen\" and change the subject. She tells the player to hurry, and pays 100 gold. Does: sets stage
+    90."
+  new: true
+- id: topic.mn-how-she-knows
+  label: How did you know that?
+  person: npc.mn.nesh-deeka
+  stages: [90]
+  essential: false
+  intent: "Nesh-Deeka, asked how she knew where the Unbound have or have not been. Tells: \"We listen.\" She says no more
+    and asks about the player's road. Does: nothing."
   new: true
 - id: topic.mn-the-hunt
   label: Remind me what we are hunting, and why.

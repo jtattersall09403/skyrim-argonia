@@ -385,6 +385,8 @@ stages:
     - skill: Sneak
       use: slip-past
       target: the moss behind the crocodiles
+      note: "If the player is caught in their sight, the crocodiles attack, and it becomes a fight; the moss can still be picked once
+        they are dead or left behind."
 - id: 20
   place: jal-veesa
   journal: text.journal.mn02.20
@@ -420,6 +422,10 @@ stages:
         - thing.mn02.sithis-beard
         - 1
   failForward:
+  - to: 96
+    when:
+      not:
+        npcAlive: npc.mn.jal-veesa-minder
   - to: 95
     when:
       not:
