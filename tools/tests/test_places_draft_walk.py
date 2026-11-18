@@ -196,6 +196,14 @@ def test_a_base_taking_its_stats_from_a_template_we_cannot_see_is_levelled():
     assert people.usable({**merchant, "template_flags": ""}, {})
 
 
+def test_a_beast_of_the_source_is_no_person_to_build_on():
+    from tools.places.draft import people
+    assert not people.usable({"edid": "EncMarshFox", "race_edid": "FoxRace"}, {})
+    assert not people.usable({"edid": "EncMarshBoar", "race_edid": "DLC2BoarRace"}, {})
+    assert people.usable({"edid": "ArgCitizen", "race_edid": "ArgonianRaceVampire"}, {})
+    assert people.usable({"edid": "OldImperial", "race_edid": "ElderRace"}, {})
+
+
 def _water(fk, cells, z):
     n = _Nav(fk, cells, z)
     n.flags |= C.WATER

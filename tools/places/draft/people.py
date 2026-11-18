@@ -220,6 +220,11 @@ def role_score(npc: dict, role: str, races: dict | None = None) -> float:
     return s
 
 
+# the races a person of a place is built on: Skyrim's ten peoples and their elder and vampire forms (a creature's race,
+# a fox's or a boar's, is never one)
+PERSON_RACE = re.compile(r"(Argonian|Breton|DarkElf|HighElf|Imperial|Khajiit|Nord|Orc|Redguard|WoodElf|Elder)Race", re.I)
+
+
 def usable(npc: dict, npcs: dict | None = None, _seen: frozenset = frozenset()) -> bool:
     """No levelled actor and no Nordic one. A base that takes anything from a template (stats, inventory, spells)
     is levelled unless the template is a base of `npcs` that is itself usable: a template outside them is taken
@@ -230,11 +235,24 @@ def usable(npc: dict, npcs: dict | None = None, _seen: frozenset = frozenset()) 
     if (t in ("LVLN", "LeveledNpc") or npc.get("nordic") or re.search(r"\bnord", race, re.I)
             or re.search(r"corpse|bandit|dremora|draugr", blob, re.I)):
         return False
+    if npc.get("race_edid") and not PERSON_RACE.match(str(npc["race_edid"])):
+        return False   # a beast of the source (King of the Murkmire's marsh fox and boar) is no person to build on
     tpl = npc.get("template")
     if tpl and npc.get("template_flags"):
         up = (npcs or {}).get(tpl)
         return up is not None and tpl not in _seen and usable(up, npcs, _seen | {tpl})
     return True
+
+
+def guard_eat(bed: dict | None) -> dict:
+    """Where a guard eats: in the room of their bed (a barracks, a home that lodges them), or, sleeping in their camp
+    outdoors, at their own bed, as a camp eats round its beds; a stop outdoors with no spot is put where the town's
+    middle is, which may be open water or a pocket the network never reaches."""
+    if bed is None:
+        return {"space": "exterior", "radius": 1024}
+    if bed["space"] == "exterior":
+        return {"space": "exterior", "ref": bed["ref"], "radius": 1024}
+    return {"space": bed["space"], "radius": 1024}
 
 
 def routine(role: str, bed: dict, work: dict, eat: dict, wander: dict, shift: str = "day") -> list[dict]:

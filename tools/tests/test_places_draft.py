@@ -227,3 +227,11 @@ def test_plant_inside_a_placed_thing_is_cleared():
     assert clear.inside_placed(inside, [rock], bases)
     assert clear.stray([inside, outside], set(), [rock], bases, []) == ["world plant p1 (T:1) stands in r"]
     assert clear.stray([inside], {"p1"}, [rock], bases, []) == []
+
+
+def test_a_guard_sleeping_in_the_camp_eats_by_their_bed_never_at_the_towns_middle():
+    camp = {"space": "exterior", "ref": "fx.bedroll", "radius": 128}
+    assert people.guard_eat(camp) == {"space": "exterior", "ref": "fx.bedroll", "radius": 1024}
+    assert people.guard_eat({"space": "barracks", "ref": "fx.bunk", "radius": 128}) == {"space": "barracks", "radius": 1024}
+    day = people.routine("guard", camp, {"space": "exterior", "pos": [0, 0], "radius": 256}, people.guard_eat(camp), camp)
+    assert next(s for s in day if s["kind"] == "eat")["at"]["ref"] == "fx.bedroll"

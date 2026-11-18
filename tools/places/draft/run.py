@@ -1292,8 +1292,8 @@ def draft_people(place_id, rec, gives, src, bases, our, spaces, clusters, fit, o
                      "bed": bed_at if bed else None, "work": work, "services": [],
                      "faction_ranks": [{"faction": crime, "rank": 0}, {"faction": f"{place_id}.guard", "rank": 0}],
                      "patrol": {"points": pts, "loop": True},
-                     "routine": people.routine("guard", bed_at, work, {"space": bed["space"] if bed else "exterior",
-                                                                      "radius": 1024}, town, shift)})
+                     "routine": people.routine("guard", bed_at, work, people.guard_eat(bed_at if bed else None),
+                                               town, shift)})
     # residents fill the beds left in the homes
     n = 0
     for sid in houses:
