@@ -47,7 +47,8 @@ git -C "$main" fetch -q origin
 if [ "$(git -C "$main" symbolic-ref -q --short HEAD)" != main ]; then
   echo "main tree left as is: it is not on main"
 elif job=$("$PY" -c 'import sys; sys.path.insert(0, sys.argv[1]); import tidy
-print(next((n for n, c in tidy.job_cwds(waits=False) if tidy._inside(c, tidy.Path(sys.argv[2]))), ""))' "$here" "$main") && [ -n "$job" ]; then
+m = tidy.Path(sys.argv[2])
+print(next((n for n, c in tidy.job_cwds(waits=False) if tidy._inside(c, m) and not tidy._inside(c, m / ".claude" / "worktrees")), ""))' "$here" "$main") && [ -n "$job" ]; then
   echo "main tree left as is: job $job runs from it; fast-forward it when the job ends (git merge --ff-only origin/main)"
 elif git -C "$main" merge -q --ff-only origin/main 2>/dev/null; then
   echo "main tree is at $(git -C "$main" rev-parse --short HEAD)"
