@@ -82,3 +82,19 @@ def test_import_closure_follows_relative_imports_and_path_chains(tmp_path):
     (tmp_path / "tools" / "pkg" / "b.py").write_text('X = ROOT / "data" / "things"\n')
     files, named = gate.Index(tmp_path).closure(tmp_path / "tools" / "pkg" / "a.py")
     assert "tools/pkg/b.py" in files and "data/things" in named
+
+
+def test_every_mapped_stage_is_a_stage_with_a_make_target():
+    import re
+    import tomllib
+    m = tomllib.loads((REPO / "tooling" / "gate_map.toml").read_text())
+    named = set(m.get("stages", {}))
+    for rule in m.get("rule", []):
+        named |= set(rule.get("stages", []))
+    makefile = (REPO / "Makefile").read_text()
+    targets = set(re.findall(r"^([A-Za-z0-9_-]+):", makefile, re.M))
+    check_all = re.search(r"^check-all:(.*)$", makefile, re.M).group(1).split()
+    for s in named:
+        assert s in gate.STAGES, s
+        assert s == "skse" or s in targets, s
+        assert s == "skse" or s in check_all, s

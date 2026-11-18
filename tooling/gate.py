@@ -13,7 +13,7 @@ How a change picks its checks (the map is tooling/gate_map.toml, one comment per
   - a pytest file runs when a changed path is in its import closure inside the repo (tools.*, tooling.*), or is a
     repo path its code names: a string such as "story/data/x.json" or "tools.places.studio", or a chain such as
     REPO / "newworld" / "sources" (a named directory covers everything under it);
-  - the make stages adaptation, questtext, questform, reach and storyexplorer run the same way from their module;
+  - the make stages adaptation, questtext, questform, reach, storyexplorer and atlas run the same way from their module;
   - the map's rules add stages and tests for path globs (story markdown -> the explorer and story tests, skse/** ->
     the C++ tests, and so on);
   - a path in the map's `full` list, or a path nothing above picks up, runs the whole gate; so does any error in
@@ -36,7 +36,7 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parents[1]
 MAP = REPO / "tooling" / "gate_map.toml"
 TEST_DIRS = ("tooling/tests", "tools/tests")
-STAGES = ("adaptation", "questtext", "questform", "reach", "storyexplorer", "skse")
+STAGES = ("adaptation", "questtext", "questform", "reach", "storyexplorer", "atlas", "skse")
 TOP = None  # top-level repo entries, filled lazily
 PATH_RE = re.compile(r"^[A-Za-z0-9_.-]+(?:/[A-Za-z0-9_.*-]+)+/?$")
 MOD_RE = re.compile(r"^(tools|tooling)(\.[A-Za-z_][A-Za-z0-9_]*)+$")
