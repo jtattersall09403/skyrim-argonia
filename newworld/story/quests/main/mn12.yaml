@@ -198,18 +198,18 @@ stages:
 - id: 10
   place: fort-chalkmoth
   journal: text.journal.mn12.10
-  journalText: 'Never-Writes-Twice says Fort Chalkmoth is a fort like any other, but a wounded Unbound scout told me to
-    ask what moans in its cellar. This is my own errand, not that of my order, the Toh-Reel-Ka. The Toh-Reel-Ka''s hunt for the Eye of Argonia (the old kings'' jewel that
-    can heal every sick Hist, at the Root, where the roots of every Hist meet under the sea) waits at Bell Station, whose divers know which drowned tower the marker stone shows, and either may come first. Fort Chalkmoth
-    is the Archwardens'' fort on the Chixathe Mesa above Noota Nara. I''m to get into the fort and see its cellar. The keep''s
-    door opens only with the wall captain''s key and cannot be picked, so he may let me in, or I may find another way in unseen.'
+  journalText: "Never-Writes-Twice says Fort Chalkmoth is a fort like any other, but a wounded Unbound scout told me to
+    ask what moans in its cellar. This is my own errand, not the order's; the order's hunt waits at Bell Station, and
+    either may come first. Fort Chalkmoth is the Archwardens' fort on the Chixathe Mesa above Noota Nara. I want to get
+    into the fort and see its cellar. The wall captain at the gate decides who goes into the keep. A quiet visitor
+    might find another way in, but the garrison will attack anyone it catches inside without leave."
   onEnter:
   - grantMapMarker: marker.mn12.fort
   objectives:
   - id: in
     text: text.objective.mn12.in
     objectiveText: Get into Fort Chalkmoth's keep, by the wall captain's leave or unseen.
-    target: npc.mn.chalkmoth-captain, door.mn12.trapdoor
+    target: npc.mn.chalkmoth-captain
     completeWhen:
       questStage: [quest.main.mn12, ≥, 15]
   successors:
@@ -219,6 +219,9 @@ stages:
   - to: 25
     when: {flag: flag.mn12.trapdoor}
   failForward:
+  - to: 12
+    when:
+      not: {npcAlive: npc.mn.chalkmoth-captain}
   - to: 95
     when:
       not: {npcAlive: npc.mn.never-writes-twice}
@@ -231,29 +234,62 @@ stages:
     - {skill: Archery, use: fight-raiders, target: the three Sarpa raiders, note: the captain's price; any fighting skill}
   - id: trapdoor
     actions:
-    - {skill: Sneak, use: pass-unseen, target: door.mn12.trapdoor}
+    - {skill: Sneak, use: pass-unseen, target: door.mn12.trapdoor, note: 'If the player is caught in the yard or the guardroom without leave, the garrison attacks and it becomes a fight; the trapdoor is not locked (the gaoler comes and goes by it), and the inner door stays shut whatever happens, because its key is not in the fort.'}
   - id: captain-pickpocket
     actions:
     - {skill: One-Handed, use: fight-raiders, target: the three Sarpa raiders, note: the captain's price first}
-    - {skill: Pickpocket, use: pickpocket, target: npc.mn.chalkmoth-quartermaster, note: then lift the store's key inside the
-        keep}
+    - {skill: Pickpocket, use: pickpocket, target: npc.mn.chalkmoth-quartermaster, note: 'then lift the store''s key inside the         keep. If the player is caught at Theyne''s belt or at the store''s lock, he raises the alarm and the garrison treats them as a thief: as in Skyrim, a fine or a fight; the store opens to its key, its Adept lock, or Theyne''s own word.'}
   information:
-    going: The order hunts the Eye of Argonia, the old kings' jewel that can heal every sick Hist; it lies at the Root, where the roots of every Hist meet under the sea, and the Unbound want it first. This is my own errand, to see what moans in the cellar of Fort Chalkmoth; the order's hunt, at Bell Station,
+    going: This is my own errand, to see what moans in the cellar of Fort Chalkmoth; the order's hunt, at Bell Station,
       is open beside it and either may come first.
     next: Get into Fort Chalkmoth's keep, on the mesa above Noota Nara.
-    ways: Ask the wall captain at the gate for leave, or go in unseen by the trapdoor in the yard.
+    ways: Ask the wall captain at the gate for leave (the marked way), or look for a way in unseen; the trapdoor in the
+      yard behind the barracks is there to be found, unmarked and not locked.
     carriers:
     - {know: own errand vs the hunt for the Eye at Bell Station, by: [journal]}
-    - {know: the keep door takes the captain's key, by: [journal, 'name:door.mn12.keep']}
+    - {know: the captain decides who enters the keep, by: [journal, 'name:door.mn12.keep', 'marker:npc.mn.chalkmoth-captain']}
     - {know: where the fort is, by: [journal, 'marker:marker.mn12.fort']}
     - {know: the captain may let me in, by: [journal, objective, 'marker:npc.mn.chalkmoth-captain', 'line:topic.mn12-captain-price']}
-    - {know: there is a way in unseen, by: [journal, objective, 'marker:door.mn12.trapdoor', 'name:door.mn12.trapdoor']}
+    - {know: there may be a way in unseen, and being caught means a fight, by: [journal, 'name:door.mn12.trapdoor']}
+- id: 12
+  place: fort-chalkmoth
+  journal: text.journal.mn12.12
+  journalText: "The wall captain, Sakeeus-Wan, is dead, and nobody else will give me leave to enter the keep. If I want
+    to see the cellar, I need to find a way in unseen, and the garrison will attack if they catch me."
+  objectives:
+  - id: unseen
+    text: text.objective.mn12.unseen
+    objectiveText: Find a way into Fort Chalkmoth's cellar unseen.
+    target: marker.mn12.fort
+    completeWhen:
+      questStage:
+      - quest.main.mn12
+      - ≥
+      - 25
+  successors:
+  - to: 25
+    when: {flag: flag.mn12.trapdoor}
+  failForward:
+  - to: 95
+    when:
+      not: {npcAlive: npc.mn.never-writes-twice}
+  approaches:
+  - id: trapdoor
+    actions:
+    - {skill: Sneak, use: pass-unseen, target: door.mn12.trapdoor, note: 'If the player is caught, the garrison attacks;
+        the trapdoor in the yard behind the barracks is not locked.'}
+  information:
+    going: The captain is dead; the keep's main door is shut to me.
+    next: Find a way into the cellar unseen.
+    ways: Look round the yard for another way in; if the garrison catches me, they attack.
+    carriers:
+    - {know: the captain is dead and the keep is shut, by: [journal, objective]}
 - id: 15
   place: fort-chalkmoth
   journal: text.journal.mn12.15
-  journalText: 'The wall captain, Sakeeus-Wan, says a Toh-Wo may sleep in the barracks, but the keep stays shut to strangers
-    while three Sarpa raiders rob the chalk carts on the western approach. I''m to kill the three raiders; then he will
-    open the keep and pay me. I can still go in unseen by the trapdoor in the yard instead.'
+  journalText: "The wall captain, Sakeeus-Wan, says a Toh-Wo may sleep in the barracks, but the keep stays shut to
+    strangers while three Sarpa raiders rob the chalk carts on the western approach. If I kill the three raiders, he
+    will open the keep and pay me. I could still look for a way in unseen instead."
   objectives:
   - id: raiders
     text: text.objective.mn12.raiders
@@ -277,13 +313,16 @@ stages:
   - to: 25
     when: {flag: flag.mn12.trapdoor}
   failForward:
+  - to: 12
+    when:
+      not: {npcAlive: npc.mn.chalkmoth-captain}
   - to: 95
     when:
       not: {npcAlive: npc.mn.never-writes-twice}
   actions:
   - {skill: Archery, use: fight-raiders, target: the three Sarpa raiders, note: fixed level 20; open road, so range serves;
       One-Handed, Two-Handed and Destruction alike}
-  - {skill: Sneak, use: pass-unseen, target: door.mn12.trapdoor, note: the other way in}
+  - {skill: Sneak, use: pass-unseen, target: door.mn12.trapdoor, note: 'the other way in. If the player is caught in the yard or the guardroom without leave, the garrison attacks and it becomes a fight; the trapdoor is not locked (the gaoler comes and goes by it), and the inner door stays shut whatever happens, because its key is not in the fort.'}
   learns: [fact.mn12.price]
   information:
     going: The captain will open the keep once the raiders on the western approach are dead.
@@ -293,14 +332,15 @@ stages:
     - {know: the price, by: [journal, 'line:topic.mn12-captain-price']}
     - {know: where the raiders are, by: [objective, 'marker:npc.mn.sarpa-raider-1', 'marker:npc.mn.sarpa-raider-2', 'marker:npc.mn.sarpa-raider-3']}
     - {know: report back, by: [objective, 'marker:npc.mn.chalkmoth-captain']}
-    - {know: the trapdoor is still open to me, by: [journal]}
+    - {know: a way in unseen is still open to me, by: [journal]}
 - id: 20
   place: fort-chalkmoth
   journal: text.journal.mn12.20
-  journalText: 'I killed the Sarpa raiders, and the wall captain gave me the key to the keep and a hundred gold. The
-    stair down to the cellar starts in the quartermaster''s store, inside the keep, behind a good lock; the Dunmer quartermaster,
-    Theyne Indarys, carries its key. I''m to get into the store and go down to the cellar. I may pick the lock or lift
-    his key.'
+  journalText: "I killed the Sarpa raiders, and the wall captain gave me the key to the keep and a hundred gold. The
+    stair down to the cellar starts in the quartermaster's store, inside the keep, behind a good lock; the Dunmer
+    quartermaster, Theyne Indarys, carries its key. The captain warned me that his leave covers the keep, not the
+    store. I can pick the lock or lift the key, and if I am caught at either the garrison will treat me as a thief; or
+    I can ask Theyne to open it, with good words or with gold."
   onEnter:
   - giveItem: [thing.mn12.keep-key, 1]
   - {giveGold: 100}
@@ -354,19 +394,23 @@ stages:
     when:
       not: {npcAlive: npc.mn.never-writes-twice}
   actions:
-  - {skill: Lockpicking, use: pick-a-lock, target: door.mn12.store, note: Adept}
-  - {skill: Pickpocket, use: pickpocket, target: npc.mn.chalkmoth-quartermaster, note: the store's key}
+  - {skill: Lockpicking, use: pick-a-lock, target: door.mn12.store, note: 'Adept. If the player is caught at Theyne''s belt or at the store''s lock, he raises the alarm and the garrison treats them as a thief: as in Skyrim, a fine or a fight; the store opens to its key, its Adept lock, or Theyne''s own word.'}
+  - {skill: Pickpocket, use: pickpocket, target: npc.mn.chalkmoth-quartermaster, note: 'the store''s key. If the player is caught at Theyne''s belt or at the store''s lock, he raises the alarm and the garrison treats them as a thief: as in Skyrim, a fine or a fight; the store opens to its key, its Adept lock, or Theyne''s own word.'}
   - {skill: Speech, use: persuade, target: npc.mn.tsleel-vaku, note: 'optional: Speech 50 gets his slip'}
   - {skill: Illusion, use: cast-as-test, target: npc.mn.tsleel-vaku, note: 'optional: an Illusion spell cast before
       him gets his slip'}
   learns: [fact.mn12.stair-in-store]
   approaches:
+  - id: ask
+    actions:
+    - {skill: Speech, use: persuade, target: npc.mn.chalkmoth-quartermaster, note: 'Speech 40, or 150 gold: he gives the
+        store''s key'}
   - id: lockpick
     actions:
-    - {skill: Lockpicking, use: pick-a-lock, target: door.mn12.store, note: Adept}
+    - {skill: Lockpicking, use: pick-a-lock, target: door.mn12.store, note: 'Adept. If the player is caught at Theyne''s belt or at the store''s lock, he raises the alarm and the garrison treats them as a thief: as in Skyrim, a fine or a fight; the store opens to its key, its Adept lock, or Theyne''s own word.'}
   - id: pickpocket
     actions:
-    - {skill: Pickpocket, use: pickpocket, target: npc.mn.chalkmoth-quartermaster}
+    - {skill: Pickpocket, use: pickpocket, target: npc.mn.chalkmoth-quartermaster, note: 'If the player is caught at Theyne''s belt or at the store''s lock, he raises the alarm and the garrison treats them as a thief: as in Skyrim, a fine or a fight; the store opens to its key, its Adept lock, or Theyne''s own word.'}
   - id: speech
     actions:
     - {skill: Speech, use: persuade, target: npc.mn.tsleel-vaku, note: Speech 50 gets the gaoler's slip}
@@ -376,7 +420,8 @@ stages:
   information:
     going: I am in the keep by the captain's leave. The cellar stair starts in the quartermaster's store.
     next: 'Three things, in any order: look in the store, speak to the gaoler at the stair''s foot, try the cellar door.'
-    ways: Pick the store's Adept lock or lift the quartermaster's key; persuade the gaoler or test him with Illusion for
+    ways: Talk the quartermaster round (Speech) or pay him 150 gold for the store's key; or pick the store's Adept lock
+      or lift his key, where being caught makes me a thief to the garrison; persuade the gaoler or test him with Illusion for
       more (optional). A theft seen, or an attack on the gaoler, sets the garrison on me.
     carriers:
     - {know: the store holds the stair, by: [journal, 'name:door.mn12.store', 'line:topic.mn12-captain-paid']}
@@ -386,9 +431,10 @@ stages:
 - id: 25
   place: fort-chalkmoth
   journal: text.journal.mn12.25
-  journalText: 'I came up through the trapdoor in the yard into the cellar''s guardroom, unseen. If the garrison sees
-    me in here, they will attack. The stair from the guardroom climbs to the quartermaster''s store. I''m to see what
-    I can of the cellar: the store above, the gaoler at the stair''s foot and the inner door.'
+  journalText: "I came up through the trapdoor in the yard into the cellar's guardroom, unseen; the trapdoor was not
+    locked. If the garrison catches me in here, they will attack. The stair from the guardroom climbs to the
+    quartermaster's store. I want to see what I can of the cellar: the store above, the gaoler at the stair's foot and
+    the inner door."
   objectives:
   - id: store25
     text: text.objective.mn12.store25
@@ -439,13 +485,13 @@ stages:
     when:
       not: {npcAlive: npc.mn.never-writes-twice}
   actions:
-  - {skill: Sneak, use: pass-unseen, target: the garrison, note: seen inside without leave, the garrison attacks}
+  - {skill: Sneak, use: pass-unseen, target: the garrison, note: 'seen inside without leave. If the player is caught in the yard or the guardroom without leave, the garrison attacks and it becomes a fight; the trapdoor is not locked (the gaoler comes and goes by it), and the inner door stays shut whatever happens, because its key is not in the fort.'}
   - {skill: Speech, use: persuade, target: npc.mn.tsleel-vaku, note: 'optional: Speech 50'}
   - {skill: Illusion, use: cast-as-test, target: npc.mn.tsleel-vaku, note: optional}
   approaches:
   - id: trapdoor
     actions:
-    - {skill: Sneak, use: pass-unseen, target: the garrison, note: the store is reached up the stair from the guardroom}
+    - {skill: Sneak, use: pass-unseen, target: the garrison, note: 'the store is reached up the stair from the guardroom. If the player is caught in the yard or the guardroom without leave, the garrison attacks and it becomes a fight; the trapdoor is not locked (the gaoler comes and goes by it), and the inner door stays shut whatever happens, because its key is not in the fort.'}
   - id: speech
     actions:
     - {skill: Speech, use: persuade, target: npc.mn.tsleel-vaku, note: Speech 50 gets the gaoler's slip}
@@ -464,10 +510,11 @@ stages:
 - id: 90
   place: fort-chalkmoth
   journal: text.journal.mn12.90
-  journalText: 'Jars of Hist sap tied with the knot of the tree-minder of Jal-Veesa, the town whose sick Hist I first saw, are stacked
-    by the cellar stair, in a fort with no Hist of its own. The order''s gaoler turned me away from the inner door, Toh-Wo or not, and said Never-Writes-Twice keeps
-    its key. Behind the door, something moans. Who is down there, and why the order feeds them sap, I cannot learn here.
-    I''m to go back to the order''s hunt for the drowned tower that Bell Station''s divers know.'
+  journalText: "Jars of Hist sap tied with the knot of the tree-minder of Jal-Veesa, the town whose sick Hist I first
+    saw, are stacked by the cellar stair, in a fort with no Hist of its own. The order's gaoler turned me away from the
+    inner door, Toh-Wo or not, and said Never-Writes-Twice has its key. Behind the door, something moans. Who is down
+    there, and why the order feeds them sap, I cannot learn here. Back to the order's hunt: the drowned tower that Bell
+    Station's divers know."
   ending: complete
   endingId: e-seen
   information:
@@ -481,11 +528,11 @@ stages:
 - id: 91
   place: fort-chalkmoth
   journal: text.journal.mn12.91
-  journalText: 'Jars of Hist sap tied with the knot of the tree-minder of Jal-Veesa, the town whose sick Hist I first saw, are stacked
-    by the cellar stair, in a fort with no Hist of its own. The order''s gaoler turned me away from the inner door, Toh-Wo or not, and said Never-Writes-Twice keeps
-    its key. Behind the door, something moans. Who is down there, and why the order feeds them sap, I cannot learn here.
-    I''m to go back to the hunt for the three seal-stones, at Blackrose Prison, Gemin and Vorannuhl, all marked on my
-    map.'
+  journalText: "Jars of Hist sap tied with the knot of the tree-minder of Jal-Veesa, the town whose sick Hist I first
+    saw, are stacked by the cellar stair, in a fort with no Hist of its own. The order's gaoler turned me away from the
+    inner door, Toh-Wo or not, and said Never-Writes-Twice has its key. Behind the door, something moans. Who is down
+    there, and why the order feeds them sap, I cannot learn here. Back to the hunt for the three seal-stones, at
+    Blackrose Prison, Gemin and Vorannuhl, all marked on my map."
   ending: complete
   endingId: e-seen
   information:
@@ -570,10 +617,10 @@ topics:
     - not: {npcAlive: npc.mn.sarpa-raider-1}
     - not: {npcAlive: npc.mn.sarpa-raider-2}
     - not: {npcAlive: npc.mn.sarpa-raider-3}
-  intent: 'Sakeeus-Wan. Checks: all three raiders dead. Tells: he gives the keep''s key and a hundred gold; the stair
-    to the old prison goes down from the quartermaster''s store, and the quartermaster keeps that key himself; he warns
-    that his leave covers the keep, not the store, and a man caught in another''s store is a thief here like anywhere.
-    Does: sets stage 20, whose start gives the key and the gold.'
+  intent: "Sakeeus-Wan. Checks: all three raiders dead. Tells: he gives the keep's key and a hundred gold; the stair to
+    the old prison goes down from the quartermaster's store, and the quartermaster keeps that key himself; he warns
+    that his leave covers the keep, not the store, and a man caught in another's store is a thief here like anywhere;
+    Theyne might open it for a good reason, or for gold. Does: sets stage 20, whose start gives the key and the gold."
   uses: [fact.mn12.stair-in-store]
   new: true
 - id: topic.mn12-captain-who
@@ -604,6 +651,40 @@ topics:
     with Jal-Veesa''s knot, and go down the stair; the fort has no Hist and its people take their eggs and dead to Noota
     Nara''s tree; he stores them and asks nothing, and advises the player to do the same. Checks: nothing. Does: nothing.'
   uses: [fact.mn12.jal-veesa-sap]
+  new: true
+- id: topic.mn12-qm-store
+  label: I need to see what is in your store.
+  person: npc.mn.chalkmoth-quartermaster
+  stages: [20]
+  essential: false
+  intent: "Theyne Indarys. Tells: his store is his, and the captain's leave does not cover it; the stair down goes to the
+    order's prison, which is none of his business and should be none of the player's. He might be talked round, or paid
+    for his trouble: a hundred and fifty gold, and he looks the other way. Checks: nothing. Does: nothing."
+  uses: []
+  new: true
+- id: topic.mn12-qm-persuade
+  label: (Persuade) I am a Toh-Wo of the order. The order's business is down that stair, and so is mine.
+  person: npc.mn.chalkmoth-quartermaster
+  stages: [20]
+  essential: false
+  when:
+    skillAtLeast:
+    - Speech
+    - 40
+  intent: "Theyne Indarys. Tells: if the order wants to look at its own jars, that is the order's affair; he hands over
+    the store's key and asks not to be told what is down there. Does: gives thing.mn12.store-key."
+  fallback: "Theyne Indarys. Tells: a Toh-Wo is still a stranger in his store; gold, perhaps, would speak louder."
+  new: true
+- id: topic.mn12-qm-pay
+  label: Here is a hundred and fifty gold for your key. (150 gold)
+  person: npc.mn.chalkmoth-quartermaster
+  stages: [20]
+  essential: false
+  when:
+    goldAtLeast: 150
+  intent: "Theyne Indarys. Takes 150 gold and hands over the store's key; he did not see who opened it. Does: gives
+    thing.mn12.store-key."
+  fallback: "Theyne Indarys. Tells: a hundred and fifty, not a coin less."
   new: true
 - id: topic.mn12-gaoler-closed
   label: (the gaoler speaks first) The cellar is closed.

@@ -338,12 +338,8 @@ stages:
 - id: 10
   place: helstrom
   journal: text.journal.mn17.10
-  journalText: 'I serve the Toh-Reel-Ka, the secret warriors of the Xeech-Leel who rule Black Marsh. We hunt the Eye of
-    Argonia: a great jewel the old priest-kings cut from Hist amber, the hardened sap of the trees. It lies at the Root,
-    a chamber under the sea below Teku-Sul Spire where the roots of every Hist in the marsh meet, and it binds them together;
-    used where it sits, it can pour strength into every sick tree. The last king shut the Root behind the Kings'' Gate,
-    which opens only with its three seal-stones. I carry all three seal-stones of the kings'' gate. I''m to bring them to
-    Never-Writes-Twice, who stands at the back of Nesh-Deeka''s House in Helstrom.'
+  journalText: "I carry all three seal-stones of the Kings' Gate. Never-Writes-Twice ordered them brought to her, at
+    the back of Nesh-Deeka's House in Helstrom."
   objectives:
   - id: report
     text: text.objective.mn17.report
@@ -392,10 +388,10 @@ stages:
 - id: 20
   place: sunken-ruin-23-m112
   journal: text.journal.mn17.20
-  journalText: Never-Writes-Twice made me a Ka-Deelith, a War-Teacher of the Toh-Reel-Ka, and gave me the order's pike.
-    Her watchers have not seen the Unbound near Teku-Sul, so I am ahead of them. I'm to dive to Teku-Sul Spire, open the
-    Kings' Gate with the three stones and use the Eye where it sits to heal the trees. Then I'm to bring the stones back
-    to her and hunt down Cuts-the-Old-Knot.
+  journalText: "Never-Writes-Twice made me a Ka-Deelith, a War-Teacher of the Toh-Reel-Ka, and gave me the order's
+    pike. Her watchers have not seen the Unbound near Teku-Sul, so I am ahead of them. Her orders: dive to Teku-Sul
+    Spire, open the Kings' Gate with the three stones and use the Eye where it sits to heal the trees, then bring the
+    stones back to her and hunt down Cuts-the-Old-Knot."
   onEnter:
   - setFactionRank:
     - faction.toh-reel-ka
@@ -489,10 +485,10 @@ stages:
 - id: 21
   place: sunken-ruin-23-m112
   journal: text.journal.mn17.21
-  journalText: Never-Writes-Twice made me a Ka-Deelith, a War-Teacher of the Toh-Reel-Ka, and gave me the order's claws.
-    Her watchers have not seen the Unbound near Teku-Sul, so I am ahead of them. I'm to dive to Teku-Sul Spire, open the
-    Kings' Gate with the three stones and use the Eye where it sits to heal the trees. Then I'm to bring the stones back
-    to her and hunt down Cuts-the-Old-Knot.
+  journalText: "Never-Writes-Twice made me a Ka-Deelith, a War-Teacher of the Toh-Reel-Ka, and gave me the order's
+    claws. Her watchers have not seen the Unbound near Teku-Sul, so I am ahead of them. Her orders: dive to Teku-Sul
+    Spire, open the Kings' Gate with the three stones and use the Eye where it sits to heal the trees, then bring the
+    stones back to her and hunt down Cuts-the-Old-Knot."
   onEnter:
   - setFactionRank:
     - faction.toh-reel-ka
@@ -586,15 +582,16 @@ stages:
 - id: 30
   place: sunken-ruin-23-m112
   journal: text.journal.mn17.30
-  journalText: 'Cuts-the-Old-Knot waited before the Kings'' Gate without stones, and told me what the order I serve is.
-    The Toh-Reel-Ka are the secret warriors of the Xeech-Leel, the party that rules Black Marsh, made so that no tree could
-    bring another Umbriel. They keep dreamers in the cellar of Fort Chalkmoth: people fed sap and made to tell what the
-    trees have seen, so the order sees the whole marsh. She was a dreamer for nine years, and Never-Writes-Twice kept the
-    key. She seals the trees she drains so the dreamers cannot see through them. Used where it sits, the Eye heals every
-    tree, and the dreamers see through them all again; lifted, it parts the trees, about three in ten die, and the dreams
-    end. If I fight her, I take her tomes, staff and draughts, face the guardian alone, and cannot give her the Eye. If
-    I believe her, she fights the guardian beside me and giving her the Eye stays open. Either way the choice at the Eye
-    is mine. I''m to choose.'
+  journalText: "Cuts-the-Old-Knot waited before the Kings' Gate without stones, and told me what the order I serve is.
+    The Toh-Reel-Ka are the secret warriors of the Xeech-Leel, the party that rules Black Marsh, made so that no tree
+    could bring another Umbriel. They keep dreamers in the cellar of Fort Chalkmoth: people fed sap and made to tell
+    what the trees have seen, so the order sees the whole marsh. She was a dreamer for nine years, and
+    Never-Writes-Twice kept the key. She seals the trees she drains so the dreamers cannot see through them. Used where
+    it sits, the Eye heals every tree, and the dreamers see through them all again; lifted, it parts the trees, about
+    three in ten die, and the dreams end. If I fight her, I take her tomes, staff and draughts, face the guardian
+    alone, and cannot give her the Eye. If I believe her, she fights the guardian beside me and giving her the Eye
+    stays open. Either way the choice at the Eye is mine, and now I must choose between fighting her and believing
+    her."
   objectives:
   - id: choose
     text: text.objective.mn17.choose
@@ -687,7 +684,7 @@ stages:
 - id: 40
   place: sunken-ruin-23-m112
   journal: text.journal.mn17.40
-  journalText: I chose to fight Cuts-the-Old-Knot. She drank her draught. I'm to kill her before the Kings' Gate.
+  journalText: "I chose to fight Cuts-the-Old-Knot. She drank her draught, and one of us dies before the Kings' Gate."
   objectives:
   - id: kill
     text: text.objective.mn17.kill
@@ -721,8 +718,8 @@ stages:
 - id: 90
   place: sunken-ruin-23-m112
   journal: text.journal.mn17.90
-  journalText: I chose to believe Cuts-the-Old-Knot. She will wait in the hall beyond the gate and fight the guardian with
-    me. I have not promised her the Eye. I'm to set the three stones in the Kings' Gate.
+  journalText: "I chose to believe Cuts-the-Old-Knot. She will wait in the hall beyond the gate and fight the guardian
+    with me. I have not promised her the Eye. Next, the three stones go into the Kings' Gate."
   onEnter:
   - setFlag:
     - flag.mn.cuts-believed
@@ -741,7 +738,7 @@ stages:
 - id: 91
   place: sunken-ruin-23-m112
   journal: text.journal.mn17.91
-  journalText: Cuts-the-Old-Knot is dead before the Kings' Gate. I go on alone. I'm to set the three stones in the gate.
+  journalText: "Cuts-the-Old-Knot is dead before the Kings' Gate. I go on alone, and the three stones go into the gate."
   ending: complete
   endingId: e-killed
   information:

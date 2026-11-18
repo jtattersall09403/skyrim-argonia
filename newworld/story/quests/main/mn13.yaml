@@ -179,11 +179,9 @@ stages:
 - id: 10
   place: bell-station
   journal: text.journal.mn13.10
-  journalText: 'Never-Writes-Twice says the marked tower is one of the drowned spires off Lilmoth, and the divers of Bell
-    Station will know which. This is the hunt of my order, the Toh-Reel-Ka, the Xeech-Leel''s secret warriors. The Toh-Reel-Ka hunt the Eye of Argonia, the old kings'' jewel that can heal every sick Hist, which lies at the Root, the
-    place under the sea where the roots of every Hist meet, before the Unbound, the tribeless cult of Cuts-the-Old-Knot,
-    can reach it. My own errand to Fort Chalkmoth may wait or come first. I''m to
-    ask Meer-Tasi, the steward of Bell Station, on an islet east of Lilmoth, which tower the stone marks.'
+  journalText: "Never-Writes-Twice says the marked tower is one of the drowned spires off Lilmoth, and the divers of
+    Bell Station will know which. My own errand to Fort Chalkmoth may wait or come first. Meer-Tasi, the steward of
+    Bell Station, on an islet east of Lilmoth, is the one to ask which tower the stone marks."
   onEnter:
   - grantMapMarker: marker.mn13.bell-station
   objectives:
@@ -201,6 +199,11 @@ stages:
     when:
       topicHeardFrom: [topic.mn13-diver-tower, npc.mn.bell-diver]
   failForward:
+  - to: 15
+    when:
+      all:
+      - not: {npcAlive: npc.mn.meer-tasi}
+      - not: {npcAlive: npc.mn.bell-diver}
   - to: 95
     when:
       not: {npcAlive: npc.mn.never-writes-twice}
@@ -215,13 +218,70 @@ stages:
     - {know: hunt vs own errand, both open, by: [journal]}
     - {know: where Bell Station is, by: [journal, 'marker:marker.mn13.bell-station']}
     - {know: ask the steward, Meer-Tasi, by: [journal, objective, 'marker:npc.mn.meer-tasi', 'name:npc.mn.meer-tasi']}
+- id: 15
+  place: sunken-ruin-23-m112
+  journal: text.journal.mn13.15
+  journalText: "Meer-Tasi, Bell Station's steward, and Sees-Below, its head diver, are both dead. The divers left at
+    the station say the cut tower can only be Teku-Sul Spire, the drowned tower nearest Lilmoth, whose great gate nobody
+    has forced; the dive is long, and the potions of waterbreathing are in the steward's chest. I should dive to
+    Teku-Sul and find the gate; the attendants in its east halls attack whoever they see."
+  onEnter:
+  - grantMapMarker: marker.mn13.teku-sul
+  objectives:
+  - id: gate15
+    text: text.objective.mn13.gate15
+    objectiveText: Find the great gate deep in Teku-Sul Spire.
+    target: door.mn13.east-halls, door.mn13.halls, npc.mn.priest-ghost
+    completeWhen:
+      questStage: [quest.main.mn13, ≥, 30]
+  successors:
+  - to: 30
+    when:
+      topicHeardFrom: [topic.mn-seal-stones, npc.mn.priest-ghost]
+  failForward:
+  - to: 95
+    when:
+      not: {npcAlive: npc.mn.never-writes-twice}
+  directions: From Bell Station's landing swim west and down toward Lilmoth's drowned quarter; Teku-Sul is the nearest
+    of the drowned spires, a broken tower furred with weed on the sea floor. Its way in leads to the east halls, where
+    the air holds.
+  actions:
+  - {skill: Alchemy, use: brew-or-buy-a-potion, target: thing.mn13.wb-potion, note: 'bought from the steward, brewed,
+      or replaced by a blessing, a spell, an enchantment or an Argonian body'}
+  - {skill: Two-Handed, use: fight-undead, target: the drowned attendants, note: 'three of fixed level 22; One-Handed, Archery,
+      Destruction alike'}
+  - {skill: Sneak, use: pass-unseen, target: the drowned attendants, note: 'The attendants are hostile: if the player is seen, they attack and it becomes a fight. The tower''s doors are not locked.'}
+  - {skill: Restoration, use: turn-undead, target: the drowned attendants}
+  learns: [fact.mn13.teku-sul, fact.mn13.dive]
+  approaches:
+  - id: fight
+    actions:
+    - {skill: One-Handed, use: fight-guards, target: the drowned attendants, note: 'Two-Handed, Archery and Destruction alike'}
+  - id: sneak
+    actions:
+    - {skill: Sneak, use: pass-unseen, target: the drowned attendants, note: 'The attendants are hostile: if the player is seen, they attack and it becomes a fight. The tower''s doors are not locked.'}
+  - id: turn
+    actions:
+    - {skill: Restoration, use: turn-undead, target: the drowned attendants}
+  information:
+    going: The marked tower is Teku-Sul Spire, under the sea; its great gate has never been forced.
+    next: Dive to Teku-Sul and find the great gate beyond the east halls.
+    ways: 'Breathe by a potion (bought or brewed), a blessing, a spell, an enchantment, or being Argonian; fight the attendants,
+      turn them with Restoration, or pass them by stealth.'
+    carriers:
+    - {know: which tower and that it has a sealed gate, by: [journal, objective]}
+    - {know: how to survive the dive, by: [journal]}
+    - {know: where it is, by: [journal, 'marker:marker.mn13.teku-sul', 'marker:door.mn13.east-halls']}
+    - {know: fight or sneak, by: [journal]}
+    - {know: find the gate, by: [objective, 'marker:door.mn13.halls', 'marker:npc.mn.priest-ghost', 'name:thing.mn13.gate']}
 - id: 20
   place: sunken-ruin-23-m112
   journal: text.journal.mn13.20
-  journalText: 'The steward, Meer-Tasi, knew the cut tower at once: Teku-Sul Spire, the drowned tower nearest Lilmoth,
-    whose great gate her divers have never forced. The dive is long. I need a Hist''s blessing, a spell or potion of waterbreathing
-    (she sells them) or an enchantment, unless I am Argonian; inside the tower there is air. I''m to dive to Teku-Sul
-    and find the great gate. The drowned priests'' attendants walk its east halls; I may fight them or slip past.'
+  journalText: "The steward, Meer-Tasi, knew the cut tower at once: Teku-Sul Spire, the drowned tower nearest Lilmoth,
+    whose great gate her divers have never forced. The dive is long. I need a Hist's blessing, a spell or potion of
+    waterbreathing (she sells them) or an enchantment, unless I am Argonian; inside the tower there is air. Next I need
+    to dive to Teku-Sul and find the great gate. The drowned priests' attendants walk its east halls and attack whoever
+    they see; I may fight them, turn them with Restoration or slip past."
   onEnter:
   - grantMapMarker: marker.mn13.teku-sul
   objectives:
@@ -247,7 +307,7 @@ stages:
       or replaced by a blessing, a spell, an enchantment or an Argonian body'}
   - {skill: Two-Handed, use: fight-undead, target: the drowned attendants, note: 'three of fixed level 22; One-Handed, Archery,
       Destruction alike'}
-  - {skill: Sneak, use: pass-unseen, target: the drowned attendants}
+  - {skill: Sneak, use: pass-unseen, target: the drowned attendants, note: 'The attendants are hostile: if the player is seen, they attack and it becomes a fight. The tower''s doors are not locked.'}
   - {skill: Restoration, use: turn-undead, target: the drowned attendants}
   learns: [fact.mn13.teku-sul, fact.mn13.dive]
   approaches:
@@ -256,7 +316,7 @@ stages:
     - {skill: One-Handed, use: fight-guards, target: the drowned attendants, note: 'Two-Handed, Archery and Destruction alike'}
   - id: sneak
     actions:
-    - {skill: Sneak, use: pass-unseen, target: the drowned attendants}
+    - {skill: Sneak, use: pass-unseen, target: the drowned attendants, note: 'The attendants are hostile: if the player is seen, they attack and it becomes a fight. The tower''s doors are not locked.'}
   - id: turn
     actions:
     - {skill: Restoration, use: turn-undead, target: the drowned attendants}
@@ -274,10 +334,10 @@ stages:
 - id: 30
   place: helstrom
   journal: text.journal.mn13.30
-  journalText: 'Before the great gate in Teku-Sul stands the ghost of a priest of the old kings, Sul-Xeeth. The gate has
-    three empty sockets, one for each seal-stone the last king''s priests cut, and only all three open it. One lies in
-    the warden''s vault at Blackrose Prison, one in the flooded vaults of Gemin, one in the deepest hall of Vorannuhl.
-    I''m to tell Never-Writes-Twice in Nesh-Deeka''s House in Helstrom.'
+  journalText: "Before the great gate in Teku-Sul stands the ghost of a priest of the old kings, Sul-Xeeth. The gate
+    has three empty sockets, one for each seal-stone the last king's priests cut, and only all three open it. One lies
+    in the warden's vault at Blackrose Prison, one in the flooded vaults of Gemin, one in the deepest hall of
+    Vorannuhl. Never-Writes-Twice should hear this, in Nesh-Deeka's House in Helstrom."
   objectives:
   - id: report
     text: text.objective.mn13.report
@@ -315,10 +375,10 @@ stages:
 - id: 90
   place: helstrom
   journal: text.journal.mn13.90
-  journalText: 'Never-Writes-Twice made me a Reel-Ka, a Warrior of the order, and gave me its heavier armour, three hundred
-    gold and a free bed in every Archwarden fort. Her orders are to take all three seal-stones before the Unbound do.
-    I''m to fetch them from Blackrose Prison, Gemin and Vorannuhl, in any order; all three are marked, Blackrose the
-    least dangerous and Vorannuhl the worst. My own errand to Fort Chalkmoth is still open.'
+  journalText: "Never-Writes-Twice made me a Reel-Ka, a Warrior of the order, and gave me its heavier armour, three
+    hundred gold and a free bed in every Archwarden fort. Her orders are to take all three seal-stones before the
+    Unbound do, from Blackrose Prison, Gemin and Vorannuhl, in any order; all three are marked, Blackrose the least
+    dangerous and Vorannuhl the worst. My own errand to Fort Chalkmoth is still open."
   onEnter:
   - setFactionRank: [faction.toh-reel-ka, reel-ka]
   - giveItem: [thing.mn13.reelka-cuirass, 1]
@@ -343,10 +403,10 @@ stages:
 - id: 91
   place: helstrom
   journal: text.journal.mn13.91
-  journalText: 'Never-Writes-Twice made me a Reel-Ka, a Warrior of the order, and gave me its heavier armour, three hundred
-    gold and a free bed in every Archwarden fort. Her orders are to take all three seal-stones before the Unbound do.
-    I''m to fetch them from Blackrose Prison, Gemin and Vorannuhl, in any order; all three are marked, Blackrose the
-    least dangerous and Vorannuhl the worst.'
+  journalText: "Never-Writes-Twice made me a Reel-Ka, a Warrior of the order, and gave me its heavier armour, three
+    hundred gold and a free bed in every Archwarden fort. Her orders are to take all three seal-stones before the
+    Unbound do, from Blackrose Prison, Gemin and Vorannuhl, in any order; all three are marked, Blackrose the least
+    dangerous and Vorannuhl the worst."
   onEnter:
   - setFactionRank: [faction.toh-reel-ka, reel-ka]
   - giveItem: [thing.mn13.reelka-cuirass, 1]
@@ -474,7 +534,7 @@ topics:
   label: (the ghost speaks first) Who comes to the gate?
   person: npc.mn.priest-ghost
   kind: speaks-first
-  stages: [20]
+  stages: [15, 20]
   essential: true
   intent: 'The Ghost of Sul-Xeeth, first speaker of this shared topic, before the gate. Tells: he was a priest of the
     last king; when the king fell, his priests shut the tower''s lowest halls, the way to the Root (where the roots of every Hist meet under the sea and the Eye sits), behind this gate;
@@ -487,7 +547,7 @@ topics:
 - id: topic.mn13-ghost-eye
   label: What is the Eye that sits at the Root?
   person: npc.mn.priest-ghost
-  stages: [20, 30, 90, 91]
+  stages: [15, 20, 30, 90, 91]
   essential: false
   intent: 'The Ghost of Sul-Xeeth. Tells: the Eye of Argonia is the jewel the kings had cut from Hist amber, the hard sap
     the trees no longer make; it sits at the Root, where the roots of every Hist meet, and is the knot that ties them all;
@@ -507,7 +567,7 @@ topics:
 - id: topic.mn13-ghost-who
   label: Who are you?
   person: npc.mn.priest-ghost
-  stages: [20, 30, 90, 91]
+  stages: [10, 15, 20, 30, 90, 91]
   essential: false
   intent: 'The Ghost of Sul-Xeeth. Tells: a priest of the old kings, who served in this tower when it stood in air; he
     keeps the gate until all three stones come back. Checks: nothing. Does: nothing.'

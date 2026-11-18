@@ -266,12 +266,10 @@ stages:
 - id: 10
   place: peak-39-m79
   journal: text.journal.mn11.10
-  journalText: 'Never-Writes-Twice read the parchment map from Vicrium and named the tooth-shaped crag: the Grey Tooth,
+  journalText: "Never-Writes-Twice read the parchment map from Vicrium and named the tooth-shaped crag: the Grey Tooth,
     the seamark of Skeith Isle. The hired men of the Collector, Ennodius Vanin, an Imperial relic-hunter who hunts the
-    Eye too, are camped at the foot of its goat-path and dig in a small cave
-    on its north face. The order hunts the Eye of Argonia, the old kings'' jewel that can heal every sick Hist, which lies at the Root, the
-    place under the sea where the roots of every Hist meet. The Unbound, the tribeless cult of Cuts-the-Old-Knot that
-    drains Hist sap, want it first. I''m to find out what they found in the Grey Tooth Cave. I may fight them or slip past them.'
+    Eye too, are camped at the foot of its goat-path and dig in a small cave on its north face. She wants to know what
+    they found in the Grey Tooth Cave. I may fight them or slip past them; if they see me, they will fight."
   onEnter:
   - enableRef: npc.mn.vanin-hireling-1
   - enableRef: npc.mn.vanin-hireling-2
@@ -305,7 +303,7 @@ stages:
   actions:
   - {skill: One-Handed, use: fight-guards, target: the Collector's hired men, note: three sell-swords of fixed level; Two-Handed,
       Archery and Destruction alike}
-  - {skill: Sneak, use: pass-unseen, target: the men at the fire and the digger in the cave}
+  - {skill: Sneak, use: pass-unseen, target: the men at the fire and the digger in the cave, note: 'If the player is caught, the Collector''s men attack and it becomes a fight; the cave has no door to lock.'}
   learns: [fact.mn11.collector-men]
   approaches:
   - id: fight
@@ -313,7 +311,7 @@ stages:
     - {skill: One-Handed, use: fight-guards, target: the Collector's hired men, note: 'Two-Handed, Archery and Destruction alike'}
   - id: sneak
     actions:
-    - {skill: Sneak, use: pass-unseen, target: the Collector's hired men}
+    - {skill: Sneak, use: pass-unseen, target: the Collector's hired men, note: 'If the player is caught, the Collector''s men attack and it becomes a fight; the cave has no door to lock.'}
   information:
     going: The order hunts the Eye of Argonia, the old kings' jewel that can heal every sick Hist; it lies at the Root, where the roots of every Hist meet under the sea, and the Unbound want it first. I am a Toh-Wo of the Toh-Reel-Ka on the hunt for the Root and the Eye. The parchment map led to the Grey Tooth
       on Skeith Isle, and the Collector's men got there first.
@@ -330,10 +328,10 @@ stages:
 - id: 20
   place: shipwreck-36-m82
   journal: text.journal.mn11.20
-  journalText: 'In the Grey Tooth Cave I found an empty niche and the Collector''s rubbing of a sailor''s scratch above
-    it: the stone was carried off to the Stormwidow by her captain''s order. The Stormwidow lies beached on the south-west
-    shore of Skeith Isle, and the Collector has sold her name to someone who will dig for him. I''m to search the wreck''s
-    hold for the stone. I may fight whoever is there or slip past them.'
+  journalText: "In the Grey Tooth Cave I found an empty niche and the Collector's rubbing of a sailor's scratch above
+    it: the stone was carried off to the Stormwidow by her captain's order. The Stormwidow lies beached on the
+    south-west shore of Skeith Isle, and the Collector has sold her name to someone who will dig for him. Her hold is
+    where I should search for the stone. Whoever is there will fight me if they see me; I may fight them or slip past."
   onEnter:
   - grantMapMarker: marker.mn11.stormwidow
   objectives:
@@ -356,7 +354,7 @@ stages:
   actions:
   - {skill: Archery, use: shoot-from-cover, target: the Unbound scouts, note: 'three scouts of fixed level at their fire
       and the crates; melee and Destruction alike'}
-  - {skill: Sneak, use: pass-unseen, target: the scouts at the fire}
+  - {skill: Sneak, use: pass-unseen, target: the scouts at the fire, note: 'If the player is caught, the scouts attack and it becomes a fight; the hold''s door is not locked.'}
   - {skill: Alchemy, use: learn-a-recipe, target: thing.mn.seal-recipe, note: 'optional: reading the recipe teaches the
       seal''s paralysis effect; three bottles lie beside it'}
   learns: [fact.mn11.stone-to-ship, fact.mn11.wreck-where, fact.mn11.collector-sold]
@@ -366,7 +364,7 @@ stages:
     - {skill: One-Handed, use: fight-guards, target: the Unbound scouts, note: 'Two-Handed, Archery and Destruction alike'}
   - id: sneak
     actions:
-    - {skill: Sneak, use: pass-unseen, target: the Unbound scouts}
+    - {skill: Sneak, use: pass-unseen, target: the Unbound scouts, note: 'If the player is caught, the scouts attack and it becomes a fight; the hold''s door is not locked.'}
   information:
     going: The stone from the cave's niche went to the Stormwidow twenty years ago; the Collector sold that to someone.
     next: Search the hold of the Wreck of the Stormwidow, on the south-west beach, for the stone.
@@ -381,10 +379,9 @@ stages:
 - id: 30
   place: shipwreck-36-m82
   journal: text.journal.mn11.30
-  journalText: 'Unbound scouts were searching the Stormwidow''s hold, and I took the kings'' marker stone from a ballast
+  journalText: "Unbound scouts were searching the Stormwidow's hold, and I took the kings' marker stone from a ballast
     crate before them. It is carved with seven towers standing in water, one cut deeper than the rest. The scouts had
-    the recipe for their seal with them. A wounded scout lies on the sand below the bow. I''m to hear what she has to
-    say.'
+    the recipe for their seal with them. A wounded scout lies on the sand below the bow, and she wants to talk."
   objectives:
   - id: scout
     text: text.objective.mn11.scout
@@ -415,8 +412,8 @@ stages:
 - id: 35
   place: shipwreck-36-m82
   journal: text.journal.mn11.35
-  journalText: 'The wounded scout is dead. She carried a scrap of bark scratched with one line: "Ask what moans in the
-    cellar of Fort Chalkmoth." I''m to bring the marker stone to Never-Writes-Twice in Nesh-Deeka''s House in Helstrom.'
+  journalText: "The wounded scout is dead. She carried a scrap of bark scratched with one line: \"Ask what moans in the
+    cellar of Fort Chalkmoth.\" Never-Writes-Twice will want the marker stone, in Nesh-Deeka's House in Helstrom."
   objectives:
   - id: report35
     text: text.objective.mn11.report35
@@ -448,9 +445,9 @@ stages:
 - id: 40
   place: helstrom
   journal: text.journal.mn11.40
-  journalText: 'The wounded scout, Tah-Leesh, told me that her leader, Cuts-the-Old-Knot, says whoever serves the Toh-Reel-Ka,
-    my order, should ask what moans in the cellar of Fort Chalkmoth. She did not know what it meant. I''m to bring the marker stone
-    to Never-Writes-Twice in Nesh-Deeka''s House in Helstrom.'
+  journalText: "The wounded scout, Tah-Leesh, told me that her leader, Cuts-the-Old-Knot, says whoever serves the
+    Toh-Reel-Ka, my order, should ask what moans in the cellar of Fort Chalkmoth. She did not know what it meant.
+    Never-Writes-Twice will want the marker stone, in Nesh-Deeka's House in Helstrom."
   objectives:
   - id: report40
     text: text.objective.mn11.report40
@@ -482,13 +479,11 @@ stages:
 - id: 90
   place: helstrom
   journal: text.journal.mn11.90
-  journalText: 'Never-Writes-Twice read the marker stone, a step nearer the Root, where the roots of every Hist meet
-    under the sea and the Eye of Argonia, the jewel that can heal every sick Hist, sits. The marked tower is one of the
-    drowned spires off Lilmoth,
-    and the divers of Bell Station, east of Lilmoth, will know which; finding the tower is the order''s hunt, and she
+  journalText: "Never-Writes-Twice read the marker stone. The marked tower is one of the drowned spires off Lilmoth,
+    and the divers of Bell Station, east of Lilmoth, will know which; finding the tower is the order's hunt, and she
     paid me a hundred gold. I asked her about Fort Chalkmoth. She said it is a fort like any other, but someone moans
-    in its cellar, and I mean to see it for myself on my own account. I''m to go to Bell Station for the hunt, or to
-    Fort Chalkmoth first; either may come first.'
+    in its cellar, and I mean to see it for myself on my own account. Bell Station for the hunt, or Fort Chalkmoth
+    first: either may come first."
   onEnter:
   - takeItem: [thing.mn.marker-stone, 1]
   learns: [fact.mn11.lilmoth-spires, fact.mn11.fort-like-any]
@@ -588,13 +583,13 @@ topics:
   essential: true
   when:
     hasItem: [thing.mn.marker-stone, 1]
-  intent: 'Never-Writes-Twice. Checks: hasItem [thing.mn.marker-stone, 1]. Tells: the stone brings the order a step nearer the Root, the place under the sea where the roots of every Hist meet,
-    where the Eye of Argonia, the old kings'' jewel that can heal every sick Hist, sits; the seven towers are the drowned spires
-    off Lilmoth, towers of the old kings'' land that sank, standing on the sea floor of Benthic Yobesh; the divers of
-    Bell Station, a salvage station on an islet east of Lilmoth, have dived them for years and will know which tower
-    this is; go there by boat from Lilmoth; that is the hunt, and it comes before anything. To the cellar: Fort Chalkmoth
-    is an Archwarden fort like any other, on the Chixathe Mesa above Noota Nara, and an Unbound scout''s words are worth
-    nothing; carters hear the wind. She pays a hundred gold. Does: sets stage 90, whose start takes the stone.'
+  intent: "Never-Writes-Twice. Checks: hasItem [thing.mn.marker-stone, 1]. Tells: the seven towers are the drowned
+    spires off Lilmoth, towers of the old kings' land that sank, standing on the sea floor of Benthic Yobesh; the
+    divers of Bell Station, a salvage station on an islet east of Lilmoth, have dived them for years and will know
+    which tower this is; go there by boat from Lilmoth; that is the hunt, and it comes before anything. To the cellar:
+    Fort Chalkmoth is an Archwarden fort like any other, on the Chixathe Mesa above Noota Nara, and an Unbound scout's
+    words are worth nothing; carters hear the wind. She pays a hundred gold. Does: sets stage 90, whose start takes the
+    stone."
   uses: [fact.mn11.lilmoth-spires, fact.mn11.fort-like-any]
   new: true
 - id: topic.mn-fort-chalkmoth
@@ -602,10 +597,10 @@ topics:
   person: npc.mn.never-writes-twice
   stages: [40, 90]
   essential: false
-  intent: 'Never-Writes-Twice, first speaker of this shared topic. Tells: an old Imperial fort on the Chixathe Mesa above
-    Noota Nara; the Archwardens, the Xeech-Leel''s wardens who keep the old Imperial forts, roads and tolls, man it and
-    take a toll on the chalk carts; it is a fort like any other; a Toh-Wo may sleep in its barracks. Checks: nothing. Does:
-    nothing.'
+  intent: "Never-Writes-Twice, first speaker of this shared topic. Tells: an old Imperial fort on the Chixathe Mesa
+    above Noota Nara; the Archwardens, the Xeech-Leel's wardens, whose garrisons man the old Imperial forts and the
+    roads, have a garrison there and take a toll on the chalk carts; it is a fort like any other; a Toh-Wo may sleep in
+    its barracks. Checks: nothing. Does: nothing."
   uses: [fact.mn11.fort-like-any]
   new: true
 - id: topic.mn11-bell-station

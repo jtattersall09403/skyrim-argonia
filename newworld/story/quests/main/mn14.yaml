@@ -385,14 +385,10 @@ stages:
 - id: 10
   place: blackrose-prison
   journal: text.journal.mn14.10
-  journalText: 'I serve the Toh-Reel-Ka, the secret warriors of the Xeech-Leel who rule Black Marsh. We hunt the Eye of
-    Argonia: a great jewel the old priest-kings cut from Hist amber, the hardened sap of the trees. It lies at the Root,
-    a chamber under the sea below Teku-Sul Spire where the roots of every Hist in the marsh meet, and it binds them together;
-    used where it sits, it can pour strength into every sick tree. The last king shut the Root behind the Kings'' Gate,
-    which opens only with its three seal-stones. Never-Writes-Twice sent me after the three seal-stones. A dead thief''s
-    stone lies in the warden''s vault at Blackrose Prison, whose people, the Blackguards'' heirs, attack strangers on sight.
-    Their gate-captain stands outside the gate. I''m to get in: as a guest past the gate-captain (a toll, words or a duel),
-    unseen past the walls, or by force.'
+  journalText: "Never-Writes-Twice sent me after the three seal-stones. The thief's stone lies in the warden's vault at
+    Blackrose Prison, whose people, the Blackguards' heirs, attack strangers on sight. Their gate-captain stands
+    outside the gate. I can go in as a guest past him (a toll, words or a duel), slip in unseen, where any guard who
+    sees me will attack, or fight my way in."
   objectives:
   - id: gate
     text: text.objective.mn14.gate
@@ -502,8 +498,8 @@ stages:
 - id: 15
   place: blackrose-prison
   journal: text.journal.mn14.15
-  journalText: Corvus Ulvius, the gate-captain, took up my challenge. He fights until he is badly hurt and then yields.
-    If he yields, I go in as a guest. If I kill him, the whole garrison will fight me. I'm to beat him.
+  journalText: "Corvus Ulvius, the gate-captain, took up my challenge. He fights until he is badly hurt and then
+    yields. If he yields, I go in as a guest. If I kill him, the whole garrison will fight me. I need to beat him."
   objectives:
   - id: duel
     text: text.objective.mn14.duel
@@ -551,11 +547,11 @@ stages:
 - id: 20
   place: blackrose-prison
   journal: text.journal.mn14.20
-  journalText: 'Corvus Ulvius let me through the gate as a guest, and the Blackguards'' heirs will not attack me now. The
-    vault''s key is on Okaz-Teel, the Naga raj-kaal in his hall. I''m to get the stone: buy the key from him for 1,000 gold,
-    lift it from his belt, or pick the vault''s lock at night when the hall is quiet. A theft that is seen turns the garrison
-    on me. The Collector, Ennodius Vanin, waits in the hall as the chief''s guest; his ring of Kothringi silver helps a
-    hand at locks and pockets, but a dead man gives no errands.'
+  journalText: "Corvus Ulvius let me through the gate as a guest, and the Blackguards' heirs will not attack me now.
+    The vault's key is on Okaz-Teel, the Naga raj-kaal in his hall. I can buy the key from him for 1,000 gold, lift it
+    from his belt, or pick the vault's Expert lock at night when the hall is quiet; a theft that is seen turns the
+    garrison on me. The Collector, Ennodius Vanin, waits in the hall as the chief's guest; his ring of Kothringi silver
+    helps a hand at locks and pockets, but a dead man gives no errands."
   onEnter:
   - makePeace: faction.mn.blackrose-heirs
   objectives:
@@ -701,8 +697,8 @@ stages:
 - id: 22
   place: blackrose-prison
   journal: text.journal.mn14.22
-  journalText: I paid Okaz-Teel 1,000 gold, and he gave me the key to the warden's vault and what lies in it. I'm to take
-    the seal-stone from the vault.
+  journalText: "I paid Okaz-Teel 1,000 gold, and he gave me the key to the warden's vault and what lies in it. The
+    seal-stone is in the vault."
   onEnter:
   - takeGold: 1000
   - giveItem:
@@ -798,9 +794,9 @@ stages:
 - id: 25
   place: blackrose-prison
   journal: text.journal.mn14.25
-  journalText: 'I got into the raj-kaal''s hall without the gate-captain''s leave. If a guard sees me, the whole garrison
-    will attack. The vault''s key is on Okaz-Teel, the Naga raj-kaal. I''m to get the stone unseen: lift the key from him
-    or pick the vault''s Expert lock. Or I can fight him and take the key from his body.'
+  journalText: "I got into the raj-kaal's hall without the gate-captain's leave. If a guard sees me, the whole garrison
+    will attack. The vault's key is on Okaz-Teel, the Naga raj-kaal. I can lift the key from him or pick the vault's
+    Expert lock unseen, or fight him and take the key from his body."
   objectives:
   - id: stone25
     text: text.objective.mn14.stone25
@@ -922,9 +918,9 @@ stages:
 - id: 30
   place: blackrose-prison
   journal: text.journal.mn14.30
-  journalText: Corvus Ulvius is dead, and the Blackguards' heirs are fighting me. The vault's key is on Okaz-Teel, the Naga
-    raj-kaal, in his hall across the yard. I'm to fight through to him and take the key from his body, or pick the vault's
-    Expert lock.
+  journalText: "Corvus Ulvius is dead, and the Blackguards' heirs are fighting me. The vault's key is on Okaz-Teel, the
+    Naga raj-kaal, in his hall across the yard. Either I fight through to him and take the key from his body, or I pick
+    the vault's Expert lock."
   objectives:
   - id: stone30
     text: text.objective.mn14.stone30
@@ -1023,8 +1019,8 @@ stages:
 - id: 90
   place: blackrose-prison
   journal: text.journal.mn14.90
-  journalText: I took the thief's seal-stone from the warden's vault in Blackrose Prison. Two stones are still out, in the
-    flooded vaults of Gemin and the deepest hall of Vorannuhl, and both are still marked. I'm to take them.
+  journalText: "I took the thief's seal-stone from the warden's vault in Blackrose Prison. Two stones are still out, in
+    the flooded vaults of Gemin and the deepest hall of Vorannuhl, and both are still marked."
   ending: complete
   endingId: e-stone
   information:
@@ -1039,8 +1035,8 @@ stages:
 - id: 91
   place: blackrose-prison
   journal: text.journal.mn14.91
-  journalText: I took the thief's seal-stone from Blackrose Prison, and I already carry Gemin's. One stone is left, in the
-    deepest hall of Vorannuhl, and it is still marked. I'm to take it.
+  journalText: "I took the thief's seal-stone from Blackrose Prison, and I already carry Gemin's. One stone is left, in
+    the deepest hall of Vorannuhl, and it is still marked."
   ending: complete
   endingId: e-stone
   information:
@@ -1055,8 +1051,8 @@ stages:
 - id: 92
   place: blackrose-prison
   journal: text.journal.mn14.92
-  journalText: I took the thief's seal-stone from Blackrose Prison, and I already carry Vorannuhl's. One stone is left,
-    in the flooded vaults of Gemin, and it is still marked. I'm to take it.
+  journalText: "I took the thief's seal-stone from Blackrose Prison, and I already carry Vorannuhl's. One stone is
+    left, in the flooded vaults of Gemin, and it is still marked."
   ending: complete
   endingId: e-stone
   information:
@@ -1071,9 +1067,9 @@ stages:
 - id: 93
   place: blackrose-prison
   journal: text.journal.mn14.93
-  journalText: I took the thief's seal-stone from Blackrose Prison. I now carry all three seal-stones. Never-Writes-Twice
-    ordered all three brought to her before anyone goes near the gate. I'm to bring them to her in Nesh-Deeka's House in
-    Helstrom.
+  journalText: "I took the thief's seal-stone from Blackrose Prison. I now carry all three seal-stones.
+    Never-Writes-Twice ordered all three brought to her before anyone goes near the gate, in Nesh-Deeka's House in
+    Helstrom."
   ending: complete
   endingId: e-stone
   information:
