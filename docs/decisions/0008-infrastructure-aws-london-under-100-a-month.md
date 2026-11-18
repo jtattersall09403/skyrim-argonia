@@ -54,3 +54,6 @@ paid work, applies the levers, and only then asks the owner (raise the cap for t
 ## Amended 2026-11-10
 
 The owner raised the monthly AWS limit from $100 to $150 (in session, 2026-11-10). Everything else stands.
+
+The owner raised the limit for November 2026 alone from $150 to $200 (in session, 2026-11-18). From December the
+limit is $150 again.

@@ -794,3 +794,5 @@ added here the day they are made, with the date and the issue.
 - 2026-11-18 (in session): "change default model type to opus 5.5 medium effort for planner sessions (I'm out of
   fable usage for this week)". The lead session started by the build VM's wake (infra/build-vm/resume.sh) and a
   queued next session (tooling/next_session.sh) run on Opus 5.5 at medium effort.
+- 2026-11-18 (in session): "raise the Aws limit from 150 to 200 for November". The AWS limit for November 2026 is
+  $200; it returns to $150 in December (CLAUDE.md, decision 0008).
