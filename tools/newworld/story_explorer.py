@@ -27,6 +27,7 @@ if __package__ in (None, ""):
     sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 from tools.playtest.game import HarnessError  # noqa: E402
 from tools.playtest.record import humanize, load  # noqa: E402  the quest tools' one reader of a record
+from tools.newworld import quest_play as QP  # noqa: E402  a record read as the play
 
 ROOT = Path(__file__).resolve().parents[2]
 LINES = Path("story/design/quests/lines")
@@ -84,8 +85,9 @@ def slug(s: str) -> str:
 def inline(s: str) -> str:
     """Markdown inline markup to safe HTML: code, bold, italic; links keep their text."""
     s = re.sub(r"<!--.*?-->", "", s)
-    s = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", s)
     s = html.escape(s, quote=False)
+    s = re.sub(r"\[([^\]]+)\]\((#[\w-]+)\)", r'<a href="\2">\1</a>', s)   # a link within the page stays a link
+    s = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", s)
     s = re.sub(r"`([^`]+)`", r"<code>\1</code>", s)
     s = re.sub(r"\*\*(.+?)\*\*", r"<b>\1</b>", s)
     s = re.sub(r"(?<![\w*])\*(?!\s)(.+?)(?<!\s)\*(?![\w*])", r"<i>\1</i>", s)
@@ -347,8 +349,11 @@ def _reward(a) -> str:
     return _one(a) if isinstance(a, str) else ""
 
 
-def record_markdown(q: dict) -> str:
-    """A quest record as a readable page: one section per kind of content, only those the record has."""
+def record_markdown(q: dict, records: dict[str, dict] | None = None) -> str:
+    """A quest record as a readable page: one section per kind of content, only those the record has; its stages
+    read as the play (what happens, what the player is told, then the journal), between what came before and what
+    leads on."""
+    records = records or {q.get("id"): q}
     names = {c["id"]: c.get("name") or humanize(c["id"]) for c in q.get("cast") or [] if isinstance(c, dict)}
     pname = {p.get("anchor", {}).get("place") if isinstance(p.get("anchor"), dict) else None: p.get("placeName")
              for p in q.get("placements") or [] if isinstance(p, dict) and p.get("placeName")}
@@ -356,6 +361,7 @@ def record_markdown(q: dict) -> str:
     out = [f"# {q['code']}. {_one(q['title'])}"]
     if q.get("premise"):
         out += ["## Premise", _one(q["premise"])]
+    out += ["## Before this", *QP.before_this(q, records)]
     if q.get("playerStart") or q.get("facts"):
         out.append("## What the player learns")
         if q.get("playerStart"):
@@ -383,21 +389,14 @@ def record_markdown(q: dict) -> str:
             if isinstance(t, dict) and t.get("name"):
                 out.append(f"- **{_one(t['name'])}**" + (f": {_one(t['where'])}" if t.get("where") else "") + ".")
     if q.get("stages"):
-        out.append("## Stages")
-        for s in q["stages"]:
-            out.append(f"### Stage {s['id']}" + (f" at {place(s['place'])}" if s.get("place") else ""))
-            if s.get("journalText"):
-                out.append(f"Journal: *{_one(s['journalText'])}*")
-            objs = [o.get("objectiveText") for o in s.get("objectives") or [] if isinstance(o, dict)]
-            if any(objs):
-                out.append("- " + "\n- ".join("Objective: " + _one(o) for o in objs if o))
-            info = s.get("information") if isinstance(s.get("information"), dict) else {}
-            told = [f"{lab} {_one(info[k])}" for k, lab in (("going", "What is going on:"), ("next", "What to do next:"),
-                                                            ("ways", "Ways through:")) if info.get(k)]
-            if told:
-                out.append("- " + "\n- ".join(told))
-            if s.get("directions"):
-                out.append(f"Directions: {_one(s['directions'])}")
+        play = QP.Play(q, records)
+        out += ["## Stages", QP.GIST_NOTE]
+        for s in play.stages:
+            out.append(f"### {QP.stage_heading(play, s)}")
+            out += play.stage_play(s) + play.stage_rest(s)
+        readable = play.readables()
+        if readable:
+            out += ["## Things you can read", *readable]
     if q.get("endings"):
         out.append("## Endings")
         for e in q["endings"]:
@@ -413,6 +412,7 @@ def record_markdown(q: dict) -> str:
             if costs:
                 line += f" Costs: {'; '.join(map(_one, costs)) if isinstance(costs, list) else _one(costs)}."
             out.append(line)
+    out += ["## Leads on", *QP.leads_on(q, records)]
     return "\n\n".join(out) + "\n"
 
 
@@ -431,16 +431,21 @@ def line_doc(line: str, docs: list[dict]) -> dict | None:
 def record_quests(root: Path, docs: list[dict], built: dict[str, str]) -> tuple[list[dict], list[dict]]:
     """Every quest record as a quest of the Quests tab, with the record's own page as a document."""
     quests, rdocs = [], []
+    loaded = []
     for p in record_files(root):
         try:
-            q = load(p)
+            loaded.append((p, load(p)))
         except HarnessError:
             continue
+    records = {q["id"]: q for _, q in loaded}
+    by_line: dict[str, list[dict]] = {}
+    for p, q in loaded:
         ld = line_doc(q.get("line", ""), docs)
         if not ld or not q.get("code"):
             continue
+        by_line.setdefault(ld["id"], []).append(q)
         rel = p.relative_to(root)
-        d = build_doc(rel, record_markdown(q))
+        d = build_doc(rel, record_markdown(q, records))
         d["kind"] = "record"
         rdocs.append(d)
         fields: list[dict] = []
@@ -462,6 +467,12 @@ def record_quests(root: Path, docs: list[dict], built: dict[str, str]) -> tuple[
         quests.append({"id": q["code"], "title": _one(q["title"]), "line": ld["id"], "lineTitle": ld["title"],
                        "doc": d["id"], "status": status, "fields": fields, "cast": cast, "stages": stages,
                        "sketch": sketch, "_text": " ".join(json.dumps(b["_raw"]) for b in d["blocks"])})
+    for lid, recs in by_line.items():   # each line's quests as one story, beat by beat
+        ld = next(x for x in docs if x["id"] == lid)
+        recs = sorted(recs, key=lambda r: str(r["code"]))
+        d = build_doc(Path(f"{lid}-whole-story.md"), QP.whole_story(ld["title"], recs, records))
+        d["kind"], d["path"], d["line"] = "story", f"{RECORDS}/{recs[0]['line'].split('.')[-1]}", lid
+        rdocs.append(d)
     return quests, rdocs
 
 
@@ -632,6 +643,7 @@ def generate(root: Path = ROOT, out: Path = OUT) -> dict:
         "version": version,
         "generated": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
         "docs": [{"id": d["id"], "title": d["title"], "kind": d["kind"], "path": d["path"], "status": d["status"],
+                  **({"line": d["line"]} if d.get("line") else {}),
                   "hash": hashlib.sha1("".join(b["h"] for b in d["blocks"]).encode()).hexdigest()[:10],
                   "words": sum(len(json.dumps(b["_raw"]).split()) for b in d["blocks"])} for d in docs],
         "lines": lines,

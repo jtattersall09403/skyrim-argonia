@@ -175,7 +175,7 @@ const STATUS = {outlined:"Outlined", written:"Written", reviewed:"Reviewed", bui
 const STATUS_HELP = {outlined:"This quest is told at arc level in its line's story. It is not yet written out stage by stage.",
   written:"This quest is written out in full, with its people, stages and endings, but no fresh player has yet played it through on paper.", reviewed:"This quest is written out in full and has passed a play-through on paper by a fresh player, or a fresh reading of its line.",
   built:"Our plugin holds a record of this quest."};
-const KIND = {plot:"Faction story", line:"Line story", background:"Background", ledger:"Ledger", world:"Province digest", region:"Region", spells:"Spells by use"};
+const KIND = {plot:"Faction story", line:"Line story", background:"Background", ledger:"Ledger", world:"Province digest", region:"Region", spells:"Spells by use", story:"The whole story", record:"Quest record"};
 const kindOf = d => d.kind === "plot" && d.id === "main-plot" ? "Main quest plot" : KIND[d.kind] || d.kind;
 const MAIN = () => CAT.lines.find(l => l.id === "main-plot") || CAT.lines.find(l => l.id === "main");
 let CAT = null; const DOCS = {}; let db = null, dbState = "connecting", batches = [], dreplies = {};
@@ -292,7 +292,8 @@ let F = {q: "", line: "", status: ""};
 function viewQuests() {
   setNav("quests"); CUR = {item: "quests", label: "The quest list"};
   const lines = CAT.lines.filter(l => l.quests.length);
-  return `<h1>Quests</h1>${stamp()}<div class="tools">
+  const stories = CAT.docs.filter(d => d.kind === "story");
+  return `<h1>Quests</h1>${stamp()}${stories.length ? `<div class="row">${stories.map(d => `<a class="chip" href="#d-${d.id}">Read the whole story: ${esc(d.title.replace(/: the whole story$/, ""))}</a>`).join("")}</div>` : ""}<div class="tools">
     <input type="search" id="qq" placeholder="Search quests, people, places" value="${esc(F.q)}" aria-label="Search quests">
 </div>
     <div class="lchips" role="group" aria-label="Quest line"><button type="button" data-ln="" aria-pressed="${!F.line}">Every line</button>${lines.map(l => `<button type="button" data-ln="${l.id}" style="--lc:${lineColor(l.id)}" aria-pressed="${F.line === l.id}"><span class="swatch"></span>${esc(shortLine(l))}</button>`).join("")}</div>
@@ -332,6 +333,7 @@ async function viewDoc(id) {
   return `<div class="read"><p class="eyebrow">${kindOf(d)} · <code>${esc(d.path)}</code></p><h1>${esc(d.title)}</h1></div>
     <div class="tools"><button class="notebtn" type="button" data-whole="${esc(id)}" data-label="${esc(d.title)}">Note on this whole ${d.kind === "line" || d.kind === "plot" ? "story" : "document"}</button>
     ${heads.length ? `<select class="toc" id="toc" aria-label="Jump to section"><option value="">Jump to a section</option>${heads.map(h => `<option value="${esc(h.id)}">${h.html.replace(/<[^>]+>/g, "")}</option>`).join("")}</select>` : ""}</div>
+    ${CAT.docs.filter(x => x.kind === "story" && x.line === id).map(x => `<div class="row"><a class="chip" href="#d-${x.id}">Read the whole story, quest by quest</a></div>`).join("")}
     ${qs.length ? `<div class="list">${qs.map(q => `<a class="li" href="#q-${hashId(q.id)}"><span class="id">${q.id}</span><span class="t">${esc(q.title)}</span>${pill(q.status)}</a>`).join("")}</div>` : ""}
     <div id="changes"></div>
     <article class="doc read">${d.blocks.filter(b => !(b.t === "h" && b.level === 1)).map(b => blockHtml(b, id, b.section)).join("")}</article>`;

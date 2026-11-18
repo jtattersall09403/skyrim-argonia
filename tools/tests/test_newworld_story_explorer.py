@@ -258,7 +258,8 @@ def test_a_quest_record_is_a_quest_with_its_stages(tmp_path):
     q = next(x for x in c["quests"] if x["id"] == "MN02")
     assert (q["title"], q["line"], q["status"], q["doc"]) == ("The Dry Tree", "main-plot", "written", "mn02")
     assert [s["stage"] for s in q["stages"]] == ["10", "90"]
-    assert [f["name"] for f in q["fields"]] == ["Premise", "People", "Places", "Stages", "Endings"]
+    assert [f["name"] for f in q["fields"]] == ["Premise", "Before this", "People", "Places", "Stages",
+                                                  "Endings", "Leads on"]
     assert "MN02" in next(x for x in c["lines"] if x["id"] == "main-plot")["quests"]
     doc = json.loads((tmp_path / "out" / "data" / "doc-mn02.json").read_text())
     text = json.dumps(doc)
@@ -277,3 +278,52 @@ def test_a_record_change_changes_the_hash(tmp_path):
     p = root / se.RECORDS / "main" / "mn02.yaml"
     p.write_text(p.read_text().replace("Dry Tree", "Wet Tree"))
     assert se.sources_hash(root) != before
+
+
+PLAY_YAML = """
+id: quest.main.mn02
+code: MN02
+title: The Dry Tree
+line: quest.line.main
+start: 10
+startWhen: {questStage: [quest.main.mn01, '=', 90]}
+cast:
+- {id: npc.mn.minder, persona: {name: Weeltul}}
+placements:
+- {ref: npc.mn.minder, kind: person, anchor: {place: jal-veesa, need: beside the sick tree}}
+stages:
+- {id: 10, journalText: Bring the moss., successors: [{to: 30, when: {topicHeardFrom: [topic.give, npc.mn.minder]}}]}
+- {id: 30, ending: complete, journalText: I am to go to Vosh-Leera's House.}
+topics:
+- {id: topic.give, label: I brought the moss., person: npc.mn.minder, stages: [10], essential: true,
+   intent: 'Weeltul. Tells: Vosh-Leera waits in her house on the bank. Does: sets stage 30.'}
+- {id: topic.eggs, label: Tell me about the eggs., person: npc.mn.minder, stages: [10],
+   intent: 'Weeltul. Tells: the eggs are cooling.'}
+"""
+
+PREV_YAML = """
+id: quest.main.mn01
+code: MN01
+title: No Name
+line: quest.line.main
+start: 90
+stages:
+- {id: 90, ending: complete, journalText: Go east to Jal-Veesa., information: {next: Go east.}}
+"""
+
+
+def test_a_stage_shows_who_moved_it_what_they_said_and_the_thread():
+    import yaml
+    from tools.newworld import quest_play as QP
+    q, prev = yaml.safe_load(PLAY_YAML), yaml.safe_load(PREV_YAML)
+    recs = {q["id"]: q, prev["id"]: prev}
+    md = se.record_markdown(q, recs)
+    s30 = md.split("### Stage 30")[1]
+    assert "you say to Weeltul (beside the sick tree, at Jal-Veesa): “I brought the moss.”" in s30
+    assert "Vosh-Leera waits in her house on the bank." in s30
+    assert s30.index("What you are told") < s30.index("Journal.")
+    assert "“Tell me about the eggs.”, asked of Weeltul: the eggs are cooling." in md
+    assert "[MN01. No Name](#q-mn01)" in md.split("## Before this")[1]
+    assert "[MN02. The Dry Tree](#q-mn02)" in se.record_markdown(prev, recs)
+    assert "### MN02 Stage 30" in QP.whole_story("Main", [prev, q], recs)
+    assert '<a href="#q-mn01">' in se.inline("[MN01](#q-mn01)") and "http" not in se.inline("[x](http://e)")
