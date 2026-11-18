@@ -25,7 +25,7 @@ def export(place_id: str, out: Path) -> Path:
     esp = out / "plugin" / B.PLUGIN
     # with the world's own mesh round ours (the cells the plugin leaves as they are), as the build's checker loads it
     xs, ys = [c["x"] for c in plan["cells"]] or [0], [c["y"] for c in plan["cells"]] or [0]
-    navs = C.load_navs(esp, C.world_nav_rows((min(xs) - B.NAV_RING, min(ys) - B.NAV_RING, max(xs) + B.NAV_RING, max(ys) + B.NAV_RING)))
+    navs = C.load_navs(esp, C.world_nav_rows((min(xs) - B.NAV_RING, min(ys) - B.NAV_RING, max(xs) + B.NAV_RING, max(ys) + B.NAV_RING)), plan)
     room = {i["fk"]: i["space"] for i in plan["interiors"]}
     ref_id = {r["fk"]: r["id"] for r in plan["refs"]}
     by_space = defaultdict(list)

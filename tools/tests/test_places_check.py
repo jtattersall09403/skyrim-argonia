@@ -569,3 +569,26 @@ def test_the_nordic_review_outranks_the_rule_and_a_bare_light_passes():
     d.update(model=None, base_type="LIGH", base_edid="WRFireLightNS")
     c["nordic_review"] = {}
     assert not C.check_nordic(c)
+
+
+def test_only_the_places_own_navmeshes_are_judged_as_its_own():
+    """The plugin holds every built place: another place's mesh beside ours is a neighbour, one farther off is left
+    out, and only ours is checked (a far place's links into meshes round it are not this place's to load)."""
+    ours = nav(k(0x601, W), "exterior", (0, 0), 0, 0, 4096, 4096, 800)
+    beside = nav(k(0x602, W), "exterior", (1, 0), 4096, 0, 8192, 4096, 800)
+    far = nav(k(0x603, W), "exterior", (0, -30), 0, 0, 4096, 4096, 800)
+    far.links = [(0, k(0x699, W), 0)]
+    far.flags[0] |= 1
+    far.edge[0][0] = 0
+    room = nav(k(0x604), k(0x100), None, 0, 0, 512, 512, 0)
+    other_room = nav(k(0x605), k(0x200), None, 0, 0, 512, 512, 0)
+    plan = {"navmesh": {"navm": [{"cell": [0, 0]}]}, "interiors": [{"fk": k(0x100)}]}
+    navs = {n.fk: n for n in (ours, beside, far, room, other_room)}
+    c = ctx()
+    c["navs"] = dict(navs)
+    assert any("not loaded" in f for f in C.check_navmesh(c))
+    got = C.this_place(navs, plan, {(0, 0), (1, 0)})
+    assert set(got) == {ours.fk, beside.fk, room.fk}
+    assert got[beside.fk].world and not getattr(ours, "world", False) and not getattr(room, "world", False)
+    c["navs"] = got
+    assert not any("not loaded" in f for f in C.check_navmesh(c))

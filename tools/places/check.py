@@ -277,7 +277,7 @@ def components(navs: dict[str, Nav], door_pairs: dict[str, str], wade=None) -> d
 
 # ---- loading --------------------------------------------------------------------------------------------------------
 
-def load_navs(esp: Path, world_rows: dict) -> dict[str, Nav]:
+def load_navs(esp: Path, world_rows: dict, plan: dict | None = None) -> dict[str, Nav]:
     from tools.navmesh import esm, nvnm
     masters = esm.masters(esp)
     names = masters + [B.PLUGIN]
@@ -307,7 +307,24 @@ def load_navs(esp: Path, world_rows: dict) -> dict[str, Nav]:
         wn = ["Skyrim.esm", B.WORLD]
         out[fk] = Nav(fk, "exterior", (x, y), nv, lambda r, wn=wn: B.key_of(wn[r >> 24] if (r >> 24) < 2 else "?", r & 0xFFFFFF))
         out[fk].world = True
-    return out
+    return out if plan is None else this_place(out, plan, set(world_rows))
+
+
+def this_place(navs: dict, plan: dict, around: set) -> dict:
+    """The plugin holds every built place; the place's own navmeshes are those its plan wrote (its exterior cells, its
+    rooms). Another place's exterior navmesh in the cells round ours is the world as built there (a neighbour, never
+    judged as ours); one farther off, and another place's rooms, are left out."""
+    nm = plan.get("navmesh") or {}
+    cells = {tuple(e["cell"]) for e in nm.get("navm", []) if isinstance(e.get("cell"), list)}
+    rooms = {i["fk"] for i in plan.get("interiors", [])}
+    keep = {}
+    for fk, n in navs.items():
+        if getattr(n, "world", False) or (n.space in rooms if n.space != "exterior" else tuple(n.cell) in cells):
+            keep[fk] = n
+        elif n.space == "exterior" and tuple(n.cell) in around:
+            n.world = True
+            keep[fk] = n
+    return keep
 
 
 def world_nav_rows(box) -> dict:
@@ -337,7 +354,7 @@ def load(place_id: str, out: Path) -> dict:
     xs, ys = [c[0] for c in cells] or [0], [c[1] for c in cells] or [0]
     r = B.NAV_RING + 4  # every world mesh a shipped one can link into
     world_rows = world_nav_rows((min(xs) - r, min(ys) - r, max(xs) + r, max(ys) + r))
-    navs = load_navs(esp, world_rows)
+    navs = load_navs(esp, world_rows, plan)
     edid = {c["fk"]: c["edid"] for c in dump["cells"]}
     for n in navs.values():
         n.space = edid.get(n.space, n.space) if n.space != "exterior" else n.space
