@@ -571,6 +571,6 @@ What a story writer will want and the database does not hold. These are for the 
 - How many live in a place: for 134 places the population was reset from the research's estimate to the residents of the place's source, so the number in a place row can differ from the number its people note gives.
 - How many live in Helstrom: the place row says 17 (its source's residents), the person table names 54.
 - How many live in Ashgate Landing: the place row says 16 (its source's residents), the person table names 3.
-- Built places: only Ashgate Landing, Helstrom and Reed-Sill Weir is drafted; every other place is a record and a source, not yet ground a quest can be checked against.
+- Built places: only Ashgate Landing, Helstrom, Jal-Veesa and Reed-Sill Weir is drafted; every other place is a record and a source, not yet ground a quest can be checked against.
 
 The region files list 651 hooks the notes already hold.

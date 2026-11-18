@@ -2,5 +2,459 @@
  "place_id": "jal-veesa",
  "source_id": "journeytobaanmalur.cormarislocation",
  "similar": [],
- "draft": {}
+ "draft": {
+  "add": [
+   {
+    "base": "King of the Murkmire.esp:0D72B7",
+    "kind": "static",
+    "pos": [
+     -50600.0,
+     -502800.0
+    ],
+    "need": 0,
+    "tier": "AGENT_INVENTED",
+    "why": "the town's Hist (main story, The Dry Tree; the record's Hist pool at the heart of the town; Cormaris has none): King of the Murkmire's HistTree03, a grown Hist some 14 m tall, standing where Cormaris had its harbour, so the town faces its tree as the source faced its sea; it carries the shrine blessing and the rootworm stop. Its bark is not yet darkened: the sick-bark block is owed (docs/design/blocks.md)"
+   },
+   {
+    "base": "King of the Murkmire.esp:3D870E",
+    "kind": "activator",
+    "pos": [
+     -51280.0,
+     -502800.0
+    ],
+    "scale": 1.5,
+    "need": 0,
+    "tier": "AGENT_INVENTED",
+    "why": "the Hist's egg-pool at its foot (main story, The Dry Tree: 'its pool cooling'): King of the Murkmire's own Hist water (WaterPuddleHist) on the ground at the trunk's west foot, by the street; a stand-in until the world's ground holds a real pool there, which moves the waterline and is the owner's call"
+   },
+   {
+    "base": "King of the Murkmire.esp:165612",
+    "kind": "static",
+    "pos": [
+     -49900.0,
+     -502800.0
+    ],
+    "rot_z": 0.0,
+    "need": 0,
+    "tier": "AGENT_INVENTED",
+    "why": "a dead root of the town's sick Hist (main story, The Dry Tree: 'dead roots round it'): King of the Murkmire's HistRoot12 (deadrootlarge01), laid from the trunk outward, 0 degrees from east"
+   },
+   {
+    "base": "King of the Murkmire.esp:165613",
+    "kind": "static",
+    "pos": [
+     -50250.0,
+     -502193.8
+    ],
+    "rot_z": 5.236,
+    "need": 0,
+    "tier": "AGENT_INVENTED",
+    "why": "a dead root of the town's sick Hist (main story, The Dry Tree: 'dead roots round it'): King of the Murkmire's HistRoot13 (deadrootlarge02), laid from the trunk outward, 60 degrees from east"
+   },
+   {
+    "base": "King of the Murkmire.esp:165614",
+    "kind": "static",
+    "pos": [
+     -50063.8,
+     -503250.0
+    ],
+    "rot_z": 5.4105,
+    "need": 0,
+    "tier": "AGENT_INVENTED",
+    "why": "a dead root of the town's sick Hist (main story, The Dry Tree: 'dead roots round it'): King of the Murkmire's HistRoot14 (deadrootlarge03), laid from the trunk outward, -40 degrees from east"
+   },
+   {
+    "base": "King of the Murkmire.esp:165615",
+    "kind": "static",
+    "pos": [
+     -50478.4,
+     -503489.4
+    ],
+    "rot_z": 6.1087,
+    "need": 0,
+    "tier": "AGENT_INVENTED",
+    "why": "a dead root of the town's sick Hist (main story, The Dry Tree: 'dead roots round it'): King of the Murkmire's HistRoot15 (deadrootlarge04), laid from the trunk outward, 280 degrees from east"
+   }
+  ],
+  "people_from": [
+   "bmv.helstrom"
+  ]
+ },
+ "fit": {
+  "pivot": [
+   -118090.1,
+   45470.3
+  ],
+  "anchor": [
+   -52858.9,
+   -503951.4
+  ],
+  "rot_deg": 0.0,
+  "cost": 4953.125,
+  "clusters": {
+   "b01": {
+    "pivot": [
+     -118090.1,
+     45470.3
+    ],
+    "to": [
+     -52858.9,
+     -503951.4
+    ],
+    "rot": 0.0,
+    "dx": 0.0,
+    "dy": 0.0,
+    "drot_deg": 0.0,
+    "cost_before": 0.0,
+    "cost_after": 0.0
+   },
+   "b02": {
+    "pivot": [
+     -118090.1,
+     45470.3
+    ],
+    "to": [
+     -52858.9,
+     -503951.4
+    ],
+    "rot": 0.0,
+    "dx": 0.0,
+    "dy": 0.0,
+    "drot_deg": 0.0,
+    "cost_before": 46.875,
+    "cost_after": 46.875
+   },
+   "landing": {
+    "pivot": [
+     -118090.1,
+     45470.3
+    ],
+    "to": [
+     -52794.9,
+     -503951.4
+    ],
+    "rot": 0.0,
+    "dx": 0.0,
+    "dy": 0.0,
+    "drot_deg": 0.0,
+    "cost_before": 2906.25,
+    "cost_after": 2906.25
+   },
+   "s01": {
+    "pivot": [
+     -118090.1,
+     45470.3
+    ],
+    "to": [
+     -52799.8,
+     -503975.9
+    ],
+    "rot": 0.0,
+    "dx": 0.0,
+    "dy": 0.0,
+    "drot_deg": 0.0,
+    "cost_before": 0.0,
+    "cost_after": 0.0
+   },
+   "s02": {
+    "pivot": [
+     -118090.1,
+     45470.3
+    ],
+    "to": [
+     -52858.9,
+     -503951.4
+    ],
+    "rot": 0.0,
+    "dx": 0.0,
+    "dy": 0.0,
+    "drot_deg": 0.0,
+    "cost_before": 0.0,
+    "cost_after": 0.0
+   },
+   "s03": {
+    "pivot": [
+     -118090.1,
+     45470.3
+    ],
+    "to": [
+     -52858.9,
+     -503951.4
+    ],
+    "rot": 0.0,
+    "dx": 0.0,
+    "dy": 0.0,
+    "drot_deg": 0.0,
+    "cost_before": 0.0,
+    "cost_after": 0.0
+   },
+   "w01": {
+    "pivot": [
+     -118090.1,
+     45470.3
+    ],
+    "to": [
+     -52809.9,
+     -503833.1
+    ],
+    "rot": 0.0,
+    "dx": 0.0,
+    "dy": 0.0,
+    "drot_deg": 0.0,
+    "cost_before": 1000.0,
+    "cost_after": 1000.0
+   },
+   "w02": {
+    "pivot": [
+     -118090.1,
+     45470.3
+    ],
+    "to": [
+     -52858.9,
+     -503951.4
+    ],
+    "rot": 0.0,
+    "dx": 0.0,
+    "dy": 0.0,
+    "drot_deg": 0.0,
+    "cost_before": 1000.0,
+    "cost_after": 1000.0
+   }
+  },
+  "separated": [
+   {
+    "cluster": "landing",
+    "dx": 64.0,
+    "dy": 0.0,
+    "clear_of": "b02"
+   },
+   {
+    "cluster": "w01",
+    "dx": 49.0,
+    "dy": 118.3,
+    "clear_of": "b02"
+   },
+   {
+    "cluster": "s01",
+    "dx": 59.1,
+    "dy": -24.5,
+    "clear_of": "b02"
+   }
+  ],
+  "clusters_info": [
+   {
+    "id": "b01",
+    "kind": "building",
+    "head": "Journey to Baan Malur.esp:0D5A6A",
+    "members": 80,
+    "centre": [
+     -118277.8,
+     40372.6
+    ]
+   },
+   {
+    "id": "b02",
+    "kind": "building",
+    "head": "Journey to Baan Malur.esp:1851F5",
+    "members": 825,
+    "centre": [
+     -120315.9,
+     45592.5
+    ]
+   },
+   {
+    "id": "landing",
+    "kind": "landing",
+    "head": null,
+    "members": 84,
+    "centre": [
+     -116132.1,
+     46649.2
+    ]
+   },
+   {
+    "id": "s01",
+    "kind": "street",
+    "head": null,
+    "members": 175,
+    "centre": [
+     -118083.1,
+     42271.6
+    ]
+   },
+   {
+    "id": "s02",
+    "kind": "street",
+    "head": null,
+    "members": 1,
+    "centre": [
+     -118710.0,
+     38194.8
+    ]
+   },
+   {
+    "id": "s03",
+    "kind": "street",
+    "head": null,
+    "members": 1,
+    "centre": [
+     -120721.0,
+     48512.6
+    ]
+   },
+   {
+    "id": "w01",
+    "kind": "wet",
+    "head": null,
+    "members": 67,
+    "centre": [
+     -118189.5,
+     48278.9
+    ]
+   },
+   {
+    "id": "w02",
+    "kind": "wet",
+    "head": null,
+    "members": 1,
+    "centre": [
+     -117535.2,
+     46458.5
+    ]
+   }
+  ],
+  "relief_norm": 95.7,
+  "patch_max": 105.0
+ },
+ "clearance": {
+  "tree": {
+   "building": 578.8,
+   "door": 768.0,
+   "street": 492.6,
+   "samples": 26
+  },
+  "low": {
+   "building": 70.3,
+   "door": 221.8,
+   "street": 157.4,
+   "samples": 195
+  }
+ },
+ "factions": [
+  {
+   "id": "jal-veesa.crime",
+   "kind": "crime",
+   "name": "Jal-Veesa",
+   "jail": null,
+   "owing": {
+    "work": "jal-veesa.M0EXWP2X1F3VQ1KXNPX2JMGWZY",
+    "return": "jal-veesa.G00TQY0X2QE752859XQ7QWRGMT",
+    "bed": "jal-veesa.F4P5E0382SKCVR4YKKBP7NRRTJ",
+    "stolen": "jal-veesa.0H4GEY01V530ENNKV0VRZTJWYX",
+    "work_at": "the work stop 14 of the place's people share"
+   },
+   "law": "native",
+   "law_why": "Argonian law, no cell: The Veesa-Teeleel elders; their own, not the Vicecanons"
+  },
+  {
+   "id": "jal-veesa.guard",
+   "kind": "guard",
+   "crime": "jal-veesa.crime"
+  },
+  {
+   "id": "jal-veesa.town",
+   "kind": "town",
+   "crime": "jal-veesa.crime"
+  },
+  {
+   "id": "jal-veesa.vendor.01",
+   "kind": "vendor",
+   "crime": "jal-veesa.crime",
+   "hours": [
+    8,
+    20
+   ],
+   "sells": [
+    "trader-general",
+    "trader-innkeeper"
+   ],
+   "chest": true,
+   "person": "jal-veesa.HVXFP5GXQ7X8T0FBGN9T38CWQF"
+  }
+ ],
+ "stations": {
+  "needed": [
+   "cooking-pot",
+   "shrine",
+   "tanning-rack"
+  ],
+  "found": {
+   "cooking-pot": [
+    "jal-veesa.P1R5QVKSM177Y2PDFWBEMWQ1BV"
+   ],
+   "tanning-rack": [
+    "jal-veesa.Q8HD6HGMGF0GRV749RYRD14V5A",
+    "jal-veesa.W2ZVT99GZ1N51ZKGED90BFHDMB",
+    "jal-veesa.AQRSBREEBR6DPX4WP2DA3DJNQY"
+   ],
+   "shrine": [
+    "jal-veesa.6GZR9CZ8M4AJEMAJW5108FW37F"
+   ]
+  },
+  "missing": [],
+  "added": [
+   {
+    "station": "cooking-pot",
+    "id": "jal-veesa.P1R5QVKSM177Y2PDFWBEMWQ1BV",
+    "base": "King of the Murkmire.esp:1AD601",
+    "space": "CormarisBakery",
+    "by": "jal-veesa.HVXFP5GXQ7X8T0FBGN9T38CWQF"
+   },
+   {
+    "station": "tanning-rack",
+    "id": "jal-veesa.AQRSBREEBR6DPX4WP2DA3DJNQY",
+    "base": "King of the Murkmire.esp:0AAE85",
+    "space": "CormarisBakery",
+    "by": "jal-veesa.HVXFP5GXQ7X8T0FBGN9T38CWQF"
+   }
+  ],
+  "rent_bed": null
+ },
+ "lights": {
+  "added": []
+ },
+ "hang": {
+  "added": []
+ },
+ "ground": {
+  "bundle": "ground.jal-veesa",
+  "sha": "9e069504df3a234a8975ebe2af5822adc07a4db5b950586b164e8c051f6ecb35",
+  "stamp": "b567c944dceaf9d5"
+ },
+ "source": {
+  "bundle": "src.journeytobaanmalur.cormarislocation",
+  "stamp": "0d4f2acb1896c271"
+ },
+ "radius_m": 105,
+ "counts": {
+  "source_refs": 1444,
+  "placed": 1103,
+  "adapted": 0,
+  "replaced": 0,
+  "dropped": 341,
+  "exterior_refs": 1095,
+  "clusters": 8,
+  "land_patches": 0,
+  "plants_cleared": 0,
+  "paths": 21,
+  "interiors": 15,
+  "people": {
+   "guard": 2,
+   "merchant": 1,
+   "resident": 15,
+   "trainer": 1
+  },
+  "beds": 29
+ },
+ "draft_key": "a04c5806814a6d0c"
 }

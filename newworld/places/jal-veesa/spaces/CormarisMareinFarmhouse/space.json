@@ -1,0 +1,8 @@
+{
+ "space_id": "CormarisMareinFarmhouse",
+ "copy_of": "journeytobaanmalur.cormarislocation/CormarisMareinFarmhouse",
+ "name": "Marein Farmhouse",
+ "door_from": "jal-veesa.79VC1B4MMR5YH214FZNF8RN5FH",
+ "parent": "exterior",
+ "room": null
+}

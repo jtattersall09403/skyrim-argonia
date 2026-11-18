@@ -1,0 +1,8 @@
+{
+ "space_id": "CormarisFarmhouse",
+ "copy_of": "journeytobaanmalur.cormarislocation/CormarisFarmhouse",
+ "name": "Llefta Household",
+ "door_from": "jal-veesa.C3KK25DS5Z46ABNJWDKVZF2QE8",
+ "parent": "exterior",
+ "room": "Journey to Baan Malur.esp:0EA568"
+}

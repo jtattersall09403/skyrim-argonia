@@ -1,0 +1,45 @@
+{
+ "place_id": "jal-veesa",
+ "needs": [
+  {
+   "seq": 0,
+   "from": ["af1a9afb2e"],
+   "thing": "the town's Hist dry and dark, with dead roots round it and its pool cooling, which is also the rootworm's stop",
+   "line": "main",
+   "rests": {"space": "exterior", "ref": "jal-veesa.6GZR9CZ8M4AJEMAJW5108FW37F"},
+   "signs": [],
+   "met": false,
+   "why": "Partly met. A grown Hist (King of the Murkmire's HistTree03, some 14 metres tall) stands on open ground at the town's east edge, where Cormaris had its harbour, with four of King of the Murkmire's dead roots laid out from its trunk and a patch of its Hist water at its west foot by the street. It carries the shrine blessing and the rootworm stop; the root-tender works beside it. Not met yet: its bark is the living tree's (the sick-bark block is owed), the pool is a stand-in puddle (a real pool needs the world's ground and moves the waterline), and no person is named yet.",
+   "fit": "The tree as placed; the puddle stands where the pool would be.",
+   "narrow": "Yes for the people (place-people names the root-tender Weeltul). The darkened bark is the owed sick-bark block; the true pool is a world-build change and the owner's call.",
+   "tier": "AGENT_INVENTED"
+  },
+  {
+   "seq": 1,
+   "from": ["813f5dd530"],
+   "thing": "a house for the root-herald (one of the source town's houses)",
+   "line": "main",
+   "rests": {"space": "CormarisCouncillorsHouse"},
+   "signs": [],
+   "met": false,
+   "why": "Not met yet. The councillor's house of the source (a house with a table and beds, two doors) is the one meant for Vosh-Leera, who speaks for the town's elders; its door still shows the drafter's name until place-people casts her as its head.",
+   "fit": "The councillor's house, near the middle of the town.",
+   "narrow": "Yes: place-people casts its head as Vosh-Leera and draft names renames the door.",
+   "tier": "AGENT_INVENTED"
+  },
+  {
+   "seq": 2,
+   "from": ["21b571479b"],
+   "thing": "its Hist dead and blackened, its people gone",
+   "line": "main",
+   "rests": {"space": "exterior", "ref": "jal-veesa.6GZR9CZ8M4AJEMAJW5108FW37F"},
+   "signs": [],
+   "met": false,
+   "why": "Not met. The ending's dead tree is a state the quest switches in (the living Hist disabled, a dead one enabled, the people gone): King of the Murkmire's HistTree03Dead is the same tree dead and stands ready as the base; nothing is placed for it yet.",
+   "fit": "The Hist as placed.",
+   "narrow": "Yes: one disabled HistTree03Dead at the same spot, enabled by the ending; the quest's to switch.",
+   "tier": "AGENT_INVENTED"
+  }
+ ],
+ "dismissed": []
+}

@@ -1,0 +1,8 @@
+{
+ "space_id": "FortTulisPrison01OLD",
+ "copy_of": "journeytobaanmalur.cormarislocation/FortTulisPrison01OLD",
+ "name": "Fort Tulis Prison",
+ "door_from": "jal-veesa.ZQS8TF79M2ZWH5J6W4A7SY1RP9",
+ "parent": "exterior",
+ "room": "Journey to Baan Malur.esp:12DA5C"
+}
