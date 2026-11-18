@@ -1,0 +1,300 @@
+{
+ "place_id": "outpost-m13-m65",
+ "source_id": "bmv.imperial-barge",
+ "similar": [],
+ "draft": {
+  "drop": {
+   "Black Marsh.esm:0B6A34": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
+   "Black Marsh.esm:0B6A37": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
+   "Black Marsh.esm:0B6A38": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
+   "Black Marsh.esm:0B6A39": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
+   "Black Marsh.esm:0B6A3A": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
+   "Black Marsh.esm:0B6A3C": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
+   "Black Marsh.esm:0B6A3D": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
+   "Black Marsh.esm:0B6A3E": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
+   "Black Marsh.esm:0B6A3F": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
+   "Black Marsh.esm:0B6A40": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
+   "Black Marsh.esm:0B6A42": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
+   "Black Marsh.esm:0B6A43": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
+   "Black Marsh.esm:0B6A45": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
+   "Black Marsh.esm:0B6A46": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
+   "Black Marsh.esm:0B6A48": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
+   "Black Marsh.esm:0B6A4B": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
+   "Black Marsh.esm:0B6A4C": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
+   "Black Marsh.esm:0B6A4E": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
+   "Black Marsh.esm:0B6A4F": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
+   "Black Marsh.esm:0B6A51": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
+   "Black Marsh.esm:0B6A52": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
+   "Black Marsh.esm:0B6A53": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
+   "Black Marsh.esm:0B6A54": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
+   "Black Marsh.esm:0B6A56": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
+   "Black Marsh.esm:0B6A57": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
+   "Black Marsh.esm:0B6A81": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
+   "Black Marsh.esm:0B6BFF": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
+   "Black Marsh.esm:1307B0": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
+   "Black Marsh.esm:14547E": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
+   "Black Marsh.esm:14547F": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
+   "Black Marsh.esm:145480": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
+   "Black Marsh.esm:14548C": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
+   "Black Marsh.esm:14548D": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
+   "Black Marsh.esm:14548E": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
+   "Black Marsh.esm:14548F": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
+   "Black Marsh.esm:1C408A": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
+   "Black Marsh.esm:1C408C": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
+   "Black Marsh.esm:1C408D": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
+   "Black Marsh.esm:1C408E": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank"
+  },
+  "anchor": [
+   -102100,
+   -527800
+  ],
+  "search": 512,
+  "rot_deg": 232,
+  "add": [
+   {
+    "base": "Skyrim.esm:0800D9",
+    "kind": "building",
+    "pos": [
+     -100640,
+     -529240
+    ],
+    "rot_z": 4.7124,
+    "tier": "AGENT_INVENTED",
+    "why": "the gang-master's hut: the camp's large Imperial tent at the place's position, its open side to the landing; the reed-cutters' camp on the bank (place record: look note), from Military Camp Hjaalmarch Imperial's own pieces (Skyrim), the record's named source for the camp"
+   },
+   {
+    "base": "Skyrim.esm:0800DC",
+    "kind": "building",
+    "pos": [
+     -100150,
+     -529950
+    ],
+    "rot_z": 4.3124,
+    "tier": "AGENT_INVENTED",
+    "why": "a cutters' tent; the reed-cutters' camp on the bank (place record: look note), from Military Camp Hjaalmarch Imperial's own pieces (Skyrim), the record's named source for the camp"
+   },
+   {
+    "base": "Skyrim.esm:0800DC",
+    "kind": "building",
+    "pos": [
+     -99800,
+     -529300
+    ],
+    "rot_z": 4.7124,
+    "tier": "AGENT_INVENTED",
+    "why": "a cutters' tent; the reed-cutters' camp on the bank (place record: look note), from Military Camp Hjaalmarch Imperial's own pieces (Skyrim), the record's named source for the camp"
+   },
+   {
+    "base": "Skyrim.esm:0800DC",
+    "kind": "building",
+    "pos": [
+     -99950,
+     -528550
+    ],
+    "rot_z": 5.1124,
+    "tier": "AGENT_INVENTED",
+    "why": "a cutters' tent; the reed-cutters' camp on the bank (place record: look note), from Military Camp Hjaalmarch Imperial's own pieces (Skyrim), the record's named source for the camp"
+   },
+   {
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "pos": [
+     -100126.63489946148,
+     -530005.2636596402
+    ],
+    "rot_z": 4.3124,
+    "tier": "AGENT_INVENTED",
+    "why": "a cutter's bedroll in tent 1, as the Hjaalmarch camp lays two to a small tent"
+   },
+   {
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "pos": [
+     -100173.36510053852,
+     -529894.7363403598
+    ],
+    "rot_z": 4.3124,
+    "tier": "AGENT_INVENTED",
+    "why": "a cutter's bedroll in tent 1, as the Hjaalmarch camp lays two to a small tent"
+   },
+   {
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "pos": [
+     -99800.0,
+     -529360.0
+    ],
+    "rot_z": 4.7124,
+    "tier": "AGENT_INVENTED",
+    "why": "a cutter's bedroll in tent 2, as the Hjaalmarch camp lays two to a small tent"
+   },
+   {
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "pos": [
+     -99800.0,
+     -529240.0
+    ],
+    "rot_z": 4.7124,
+    "tier": "AGENT_INVENTED",
+    "why": "a cutter's bedroll in tent 2, as the Hjaalmarch camp lays two to a small tent"
+   },
+   {
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "pos": [
+     -99973.36510053852,
+     -528605.2636596402
+    ],
+    "rot_z": 5.1124,
+    "tier": "AGENT_INVENTED",
+    "why": "a cutter's bedroll in tent 3, as the Hjaalmarch camp lays two to a small tent"
+   },
+   {
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "pos": [
+     -99926.63489946148,
+     -528494.7363403598
+    ],
+    "rot_z": 5.1124,
+    "tier": "AGENT_INVENTED",
+    "why": "a cutter's bedroll in tent 3, as the Hjaalmarch camp lays two to a small tent"
+   },
+   {
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "pos": [
+     -100350,
+     -528650
+    ],
+    "rot_z": 4.7124,
+    "tier": "AGENT_INVENTED",
+    "why": "a cutter's bedroll in the open by the fire: sixteen people sleep where they can (place record: population 16)"
+   },
+   {
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "pos": [
+     -100200,
+     -528900
+    ],
+    "rot_z": 4.7124,
+    "tier": "AGENT_INVENTED",
+    "why": "a cutter's bedroll in the open by the fire: sixteen people sleep where they can (place record: population 16)"
+   },
+   {
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "pos": [
+     -100600,
+     -528500
+    ],
+    "rot_z": 4.7124,
+    "tier": "AGENT_INVENTED",
+    "why": "a cutter's bedroll in the open by the fire: sixteen people sleep where they can (place record: population 16)"
+   },
+   {
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "pos": [
+     -100800,
+     -528750
+    ],
+    "rot_z": 4.7124,
+    "tier": "AGENT_INVENTED",
+    "why": "a cutter's bedroll in the open by the fire: sixteen people sleep where they can (place record: population 16)"
+   },
+   {
+    "base": "Skyrim.esm:03B436",
+    "kind": "furniture",
+    "pos": [
+     -100560,
+     -529380
+    ],
+    "rot_z": 4.7124,
+    "tier": "AGENT_INVENTED",
+    "why": "the gang-master's bed in his hut (the Hjaalmarch camp's officer's bed)"
+   },
+   {
+    "base": "Skyrim.esm:068ADB",
+    "kind": "furniture",
+    "pos": [
+     -100700,
+     -528800
+    ],
+    "rot_z": 0.0,
+    "tier": "AGENT_INVENTED",
+    "why": "the cook's fire by the hut (place_give cooking-pot: 'the cook's fire by the hut'); the Hjaalmarch camp's own cooking spit"
+   },
+   {
+    "base": "Skyrim.esm:10AAD2",
+    "kind": "container",
+    "pos": [
+     -100500,
+     -529180
+    ],
+    "rot_z": 4.7124,
+    "tier": "AGENT_INVENTED",
+    "why": "Dralin's strongbox in the hut (main story, What the Herald Sent; place record hook: easiest lock, key on his belt); its owner, lock and contents are a stock row",
+    "name": "Dralin's Strongbox",
+    "need": 1
+   },
+   {
+    "base": "Journey to Baan Malur.esp:2E4CC9",
+    "kind": "static",
+    "pos": [
+     -101350,
+     -527650
+    ],
+    "rot_z": 0.0,
+    "tier": "AGENT_INVENTED",
+    "why": "bundled reed stacked by the landing (place record: look note), as a bundle of cut stalks"
+   },
+   {
+    "base": "Journey to Baan Malur.esp:2E4CC9",
+    "kind": "static",
+    "pos": [
+     -101300,
+     -527800
+    ],
+    "rot_z": 0.3,
+    "tier": "AGENT_INVENTED",
+    "why": "bundled reed stacked by the landing (place record: look note), as a bundle of cut stalks"
+   },
+   {
+    "base": "Journey to Baan Malur.esp:2E4CC9",
+    "kind": "static",
+    "pos": [
+     -101380,
+     -527950
+    ],
+    "rot_z": 0.6,
+    "tier": "AGENT_INVENTED",
+    "why": "bundled reed stacked by the landing (place record: look note), as a bundle of cut stalks"
+   },
+   {
+    "base": "King of the Murkmire.esp:05557F",
+    "kind": "building",
+    "pos": [
+     -100100,
+     -527900
+    ],
+    "rot_z": 1.5708,
+    "tier": "AGENT_INVENTED",
+    "why": "the old road post's gate (place record: summary, 'the old road post's gate still stands'): King of the Murkmire's palisade gate on the road side of the camp"
+   },
+   {
+    "base": "Skyrim.esm:0AE630",
+    "kind": "building",
+    "pos": [
+     -101394,
+     -526619
+    ],
+    "rot_z": 0.0,
+    "tier": "AGENT_INVENTED",
+    "why": "the landing's steps from the quay down to our bank: the barge source has no steps of its own, and Skyrim's dock steps are the kind its dock pieces (Skyrim.esm DockStrEnt) are built with"
+   }
+  ]
+ }
+}

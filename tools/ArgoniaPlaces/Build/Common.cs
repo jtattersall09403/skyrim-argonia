@@ -23,8 +23,11 @@ static class C
         if (File.Exists(p)) return p;
         // the staged mods in name order: the same file every run when two mods carry a plugin of one name
         var mods = Path.Combine(Environment.GetEnvironmentVariable("HOME")!, ".argonia/stack/MO2/mods");
+        // then the asset mods beside Data (newworld-assets), where the extractor also finds a source's plugin
+        var assets = Path.Combine(Path.GetDirectoryName(Data)!, "newworld-assets");
         return (Directory.Exists(mods) ? Directory.EnumerateDirectories(mods).Order(StringComparer.Ordinal).Select(d => Path.Combine(d, file)).FirstOrDefault(File.Exists) : null)
-            ?? throw new FileNotFoundException($"{file} not in {Data} nor the staged mods");
+            ?? (Directory.Exists(assets) ? Directory.EnumerateDirectories(assets).Order(StringComparer.Ordinal).Select(d => Path.Combine(d, file)).FirstOrDefault(File.Exists) : null)
+            ?? throw new FileNotFoundException($"{file} not in {Data}, the staged mods nor the asset mods");
     }
 
     static readonly Dictionary<string, ISkyrimModDisposableGetter> open = new(StringComparer.OrdinalIgnoreCase);

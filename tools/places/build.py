@@ -1006,7 +1006,11 @@ def _plugin_path(file: str) -> Path:
     for d in sorted(mods.iterdir()) if mods.is_dir() else []:
         if (d / file).exists():
             return d / file
-    raise SystemExit(f"{file} not in {data} nor the staged mods")
+    assets = data.parent / "newworld-assets"   # the asset mods, where the extractor also finds a source's plugin
+    for d in sorted(assets.iterdir()) if assets.is_dir() else []:
+        if (d / file).exists():
+            return d / file
+    raise SystemExit(f"{file} not in {data}, the staged mods nor the asset mods")
 
 
 _SRC_NAVM: dict[str, dict[str, bytes | None]] = {}  # plugin file -> navmesh form key -> its NVNM bytes (None: not in it)

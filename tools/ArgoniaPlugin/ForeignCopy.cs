@@ -57,7 +57,11 @@ sealed class ForeignCopy : IDisposable
         {
             var mods = Path.Combine(Environment.GetEnvironmentVariable("HOME")!, ".argonia/stack/MO2/mods");
             path = Directory.Exists(mods) ? Directory.EnumerateDirectories(mods).Select(d => Path.Combine(d, file)).FirstOrDefault(File.Exists) ?? "" : "";
-            if (path == "") throw new FileNotFoundException($"{file} not in {data} nor the staged mods");
+            // then the asset mods beside Data (newworld-assets), where the place extractor also finds a source's plugin
+            var assets = Path.Combine(Path.GetDirectoryName(Path.GetFullPath(data))!, "newworld-assets");
+            if (path == "" && Directory.Exists(assets))
+                path = Directory.EnumerateDirectories(assets).Order(StringComparer.Ordinal).Select(d => Path.Combine(d, file)).FirstOrDefault(File.Exists) ?? "";
+            if (path == "") throw new FileNotFoundException($"{file} not in {data}, the staged mods nor the asset mods");
         }
         return plugins[file] = SkyrimMod.CreateFromBinaryOverlay(path, SkyrimRelease.SkyrimSE, Survey.NoStrings);
     }
