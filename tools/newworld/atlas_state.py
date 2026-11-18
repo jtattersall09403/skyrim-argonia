@@ -1,4 +1,4 @@
-"""Whether the published Atlas (the new world's map page) is current with the place records it shows.
+"""Whether the published Atlas (the new world's map page) is current with the place records and the fast travel network it shows.
 
     python3 -m tools.newworld.atlas_state check            # exit 1 when the Atlas is behind
     python3 -m tools.newworld.atlas_state mark-published   # after publishing out/newworld/map/index.html
@@ -19,14 +19,16 @@ TABLES = (
     "place", "place_alias", "place_danger", "place_encounter", "place_give", "place_kind", "place_law",
     "place_note", "place_note_source", "place_source", "place_terrain_need", "source_place", "region",
     "region_note", "region_note_source", "culture", "symbol", "cell", "road", "road_vertex", "border_vertex",
+    "travel_mode", "travel_operator", "travel_stop", "travel_route",
 )
 TEMPLATE = Path("tools/newworld/map_page.html")
+NETWORK = Path("newworld/sources/travel/network.json")  # the fast travel layer's source (tools/newworld/travel.py)
 RECORD = Path(__file__).with_name("atlas.json")
 
 
 def sources_hash(root: Path = ROOT) -> str:
     h = hashlib.sha256()
-    for rel in [*(DB / f"{t}.jsonl" for t in TABLES), TEMPLATE]:
+    for rel in [*(DB / f"{t}.jsonl" for t in TABLES), TEMPLATE, NETWORK]:
         p = root / rel
         h.update(str(rel).encode() + b"\0" + (p.read_bytes() if p.exists() else b"") + b"\0")
     return h.hexdigest()[:16]

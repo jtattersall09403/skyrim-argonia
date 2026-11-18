@@ -125,6 +125,22 @@ def masks_rgb(water: np.ndarray, foreign: np.ndarray) -> np.ndarray:
     return rgb
 
 
+def travel_data(w: db.World) -> dict:
+    """The fast travel network as the database holds it, built each time from newworld/sources/travel/network.json
+    (tools/newworld/travel.py measures each link's way, fare and hours): stops by place and mode, links by pair."""
+    ops = {o.id: o for o in w.rows("travel_operator")}
+    links = {}  # the table holds each link both ways at the same fare and hours; the page draws it once
+    for r in w.rows("travel_route"):
+        links.setdefault((min(r.from_place_id, r.to_place_id), max(r.from_place_id, r.to_place_id), r.travel_mode_id), r)
+    return {
+        "modes": {m.id: {"n": m.name, "by": m.operated_by} for m in w.rows("travel_mode")},
+        "stops": [{"p": s.place_id, "m": s.travel_mode_id, "op": ops[s.travel_operator_id].name if s.travel_operator_id
+                   in ops else None, "rank": s.rank, "why": s.why} for s in w.rows("travel_stop")],
+        "links": [{"a": r.from_place_id, "b": r.to_place_id, "m": r.travel_mode_id, "d": r.distance_m,
+                   "sea": r.open_sea_m, "fare": r.fare, "h": r.hours, "why": r.why} for r in links.values()],
+    }
+
+
 def data(w: db.World) -> dict:
     kinds = {k.id: k for k in w.rows("place_kind")}
     tiers = {t.id: t for t in w.rows("statement_tier")}
@@ -233,6 +249,7 @@ def data(w: db.World) -> dict:
         "symbols": [{"id": s.id, "label": s.label, "glyph": s.glyph, "pt": s.pt_key_name, "meaning": s.meaning,
                      "why": s.why, "tier": s.statement_tier_id} for s in symbols.values()],
         "regionNames": {r.id: r.name for r in regions.values()},
+        "travel": travel_data(w),
     }
 
 

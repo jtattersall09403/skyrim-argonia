@@ -114,10 +114,11 @@ globs = ["tools/*", "tooling/*", ".claude/*", "infra/*", "mods/*", ".github/*"]
 [[rule]]
 globs = ["README.md", "CLAUDE.md", "LICENSE*", ".gitignore"]
 
-# The Atlas: the place and region tables and the page it shows them in.
+# The Atlas: the place and region tables, the fast travel network and the page it shows them in.
 [[rule]]
 globs = ["newworld/story/data/db/place*", "newworld/story/data/db/region*", "newworld/story/data/db/source_place*", "newworld/story/data/db/road*",
          "newworld/story/data/db/border_vertex*", "newworld/story/data/db/cell.jsonl", "newworld/story/data/db/culture.jsonl",
-         "newworld/story/data/db/symbol.jsonl", "tools/newworld/map_page.*", "tools/newworld/atlas*"]
+         "newworld/story/data/db/symbol.jsonl", "newworld/story/data/db/travel_*", "newworld/sources/travel/network.json",
+         "tools/newworld/map_page.*", "tools/newworld/atlas*"]
 stages = ["atlas"]
 tests = ["tools/tests/test_newworld_atlas_state.py"]

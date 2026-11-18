@@ -121,8 +121,8 @@ const placeById = Object.fromEntries(D.places.map(p => [p.id, p]));
 // ---- layers ----
 const LAYERS = [
   ["base", "Terrain"], ["pt", "Original map"], ["regions", "Regions"], ["danger", "Danger"],
-  ["water", "Water"], ["roads", "Roads"], ["borders", "Borders"], ["places", "Places"], ["labels", "Names"]];
-const on = { base: true, pt: false, regions: true, danger: false, water: false, roads: true, borders: true, places: true, labels: true };
+  ["water", "Water"], ["roads", "Roads"], ["borders", "Borders"], ["places", "Places"], ["labels", "Names"], ["travel", "Fast travel"]];
+const on = { base: true, pt: false, regions: true, danger: false, water: false, roads: true, borders: true, places: true, labels: true, travel: false };
 try { Object.assign(on, JSON.parse(localStorage.getItem("bm-layers") || "{}")); } catch (e) {}
 function drawLayerButtons() {
   $("#layers").innerHTML = LAYERS.map(([k, n]) => `<button aria-pressed="${!!on[k]}" data-k="${k}">${n}</button>`).join("");
@@ -234,11 +234,114 @@ function draw() {
     else { ctx.setLineDash([]); ctx.strokeStyle = "#d9542c"; ctx.lineWidth = 2.4 / view.s; }
     poly(r.p); ctx.stroke(); ctx.setLineDash([]);
   }
+  if (on.travel) travelLinks();
   ctx.restore();
   if (on.places) for (const p of D.places) glyph(p);
+  if (on.travel) travelStops();
   if (on.labels) labels();
   drawWaterArrows();
 }
+// ---- fast travel: links as lines under the places, each stop a small badge beside its place's symbol ----
+const TR = D.travel || { modes: {}, stops: [], links: [] };
+const TSTYLE = { boat: { c: "#1f6fd1", dash: [7, 4], shape: "circle" }, rootworm: { c: "#2f9a4a", dash: [], shape: "square" },
+  coach: { c: "#9a3fb8", dash: [2, 3], shape: "triangle" } };
+const tstyle = m => TSTYLE[m] || { c: "#c0582a", dash: [10, 3, 2, 3], shape: "diamond" };
+const modeName = m => (TR.modes[m] || {}).n || m;
+const stopsAt = id => TR.stops.filter(s => s.p === id);
+const linksOf = id => TR.links.filter(l => l.a === id || l.b === id);
+function travelLinks() {
+  for (const casing of [true, false]) TR.links.forEach((l, i) => {
+    const a = placeById[l.a], b = placeById[l.b]; if (!a || !b) return;
+    const st = tstyle(l.m), picked = sel && sel.type === "link" && sel.i === i;
+    ctx.setLineDash(casing ? [] : st.dash.map(v => v / view.s));
+    ctx.strokeStyle = casing ? "rgba(255,255,255,.85)" : st.c;
+    ctx.lineWidth = ((casing ? 5 : 2.6) + (picked ? 2 : 0)) / view.s;
+    ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+  });
+  ctx.setLineDash([]);
+}
+// A stop's badge sits up and right of its place's symbol (one per mode, side by side), so it never covers the symbol.
+function stopBadges() {
+  const out = [], n = {};
+  for (const s of TR.stops) {
+    const p = placeById[s.p]; if (!p) continue;
+    const i = n[s.p] = (n[s.p] || 0) + 1, [sx, sy] = toScreen(p.x, p.y);
+    out.push({ s, x: sx + 10 + (i - 1) * 13, y: sy - 11 });
+  }
+  return out;
+}
+function badge(shape, c, x, y, r) {
+  ctx.fillStyle = c; ctx.strokeStyle = "#fff"; ctx.lineWidth = 1.8; ctx.beginPath();
+  if (shape === "circle") ctx.arc(x, y, r, 0, 7);
+  else if (shape === "square") ctx.rect(x - r * .9, y - r * .9, r * 1.8, r * 1.8);
+  else if (shape === "triangle") { ctx.moveTo(x, y - r * 1.1); ctx.lineTo(x + r, y + r * .8); ctx.lineTo(x - r, y + r * .8); ctx.closePath(); }
+  else { ctx.moveTo(x, y - r); ctx.lineTo(x + r, y); ctx.lineTo(x, y + r); ctx.lineTo(x - r, y); ctx.closePath(); }
+  ctx.fill(); ctx.stroke();
+}
+function travelStops() {
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  for (const b of stopBadges()) {
+    const st = tstyle(b.s.m); badge(st.shape, st.c, b.x, b.y, 5);
+    if (sel && sel.type === "stop" && sel.id === b.s.p && sel.m === b.s.m) { ctx.strokeStyle = css("--accent") || "#96570f"; ctx.lineWidth = 2.5; ctx.beginPath(); ctx.arc(b.x, b.y, 9, 0, 7); ctx.stroke(); }
+  }
+}
+function travelSwatch(m) {
+  const st = tstyle(m), x = 30, y = 11;
+  const shape = st.shape === "circle" ? `<circle cx="${x}" cy="${y}" r="5"/>` : st.shape === "square" ? `<rect x="${x - 4.5}" y="${y - 4.5}" width="9" height="9"/>`
+    : st.shape === "triangle" ? `<path d="M${x} ${y - 5.5}L${x + 5} ${y + 4}L${x - 5} ${y + 4}Z"/>` : `<path d="M${x} ${y - 5}L${x + 5} ${y}L${x} ${y + 5}L${x - 5} ${y}Z"/>`;
+  return `<svg width="40" height="22" viewBox="0 0 40 22" aria-hidden="true" style="vertical-align:middle"><line x1="1" y1="11" x2="24" y2="11" stroke="#fff" stroke-width="5"/><line x1="1" y1="11" x2="24" y2="11" stroke="${st.c}" stroke-width="2.6" stroke-dasharray="${st.dash.join(" ")}"/><g fill="${st.c}" stroke="#fff" stroke-width="1.8">${shape}</g></svg>`;
+}
+const hrs = h => `${h} ${h === 1 ? "hour" : "hours"}`;
+const km = (d, sea) => `${(d / 1000).toFixed(1)} km${sea ? `, ${(sea / 1000).toFixed(1)} km of it on open sea` : ""}`;
+function linkSentence(l, from) {
+  const to = from === l.a ? l.b : l.a, tp = placeById[to];
+  return `<p>${travelSwatch(l.m)} By ${esc(modeName(l.m).toLowerCase())} to <button class="chip" data-place="${to}">${esc(tp ? tp.n : to)}</button> for ${l.fare} gold, ${hrs(l.h)} on the way (${km(l.d, l.sea)}). <span style="color:var(--muted)">${esc(l.why)}</span></p>`;
+}
+function stopSentence(s, p) {
+  const m = modeName(s.m).toLowerCase();
+  return `${esc(p.n)} is a ${esc(m)} stop${s.op ? `, kept by a ${esc(s.op.toLowerCase())}` : ""}${s.rank === "hub" ? `, and a hub of the ${esc(m)} lines` : ""}.`;
+}
+function travelHtml(id) {
+  const p = placeById[id], ss = stopsAt(id), ls = linksOf(id);
+  if (!ss.length && !ls.length) return "";
+  return `<h3>Fast travel</h3>${ss.map(s => `<p>${travelSwatch(s.m)} ${stopSentence(s, p)} <span style="color:var(--muted)">${esc(s.why)}</span></p>`).join("")}${ls.map(l => linkSentence(l, id)).join("")}`;
+}
+function showStop(id, m) {
+  const p = placeById[id], s = stopsAt(id).find(x => x.m === m); sel = { type: "stop", id, m }; draw();
+  const ls = linksOf(id).filter(l => l.m === m);
+  setBody(`<button class="back" data-home>← Overview</button><h2>${esc(p.n)}</h2>
+  <div class="chips"><span class="chip">${travelSwatch(m)} ${esc(modeName(m))} stop</span><button class="chip" data-place="${id}">The place</button></div>
+  <p class="lead">${s ? stopSentence(s, p) : ""} From here the ${esc(modeName(m).toLowerCase())} goes to ${ls.length} ${ls.length === 1 ? "place" : "places"}.</p>
+  ${s ? `<p style="color:var(--muted)">${esc(s.why)}</p>` : ""}${ls.map(l => linkSentence(l, id)).join("")}`, "stop");
+}
+function showLink(i) {
+  const l = TR.links[i], a = placeById[l.a], b = placeById[l.b]; sel = { type: "link", i }; draw();
+  const m = modeName(l.m).toLowerCase();
+  setBody(`<button class="back" data-home>← Overview</button><h2>${esc(a.n)} to ${esc(b.n)}</h2>
+  <div class="chips"><span class="chip">${travelSwatch(l.m)} ${esc(modeName(l.m))}</span><button class="chip" data-place="${l.a}">${esc(a.n)}</button><button class="chip" data-place="${l.b}">${esc(b.n)}</button></div>
+  <p class="lead">The ${esc(m)} between ${esc(a.n)} and ${esc(b.n)} costs ${l.fare} gold either way and takes ${hrs(l.h)}, over ${km(l.d, l.sea)}.</p>
+  <p>${esc(l.why)}</p>`, "link");
+}
+function segDist(px, py, ax, ay, bx, by) {
+  const dx = bx - ax, dy = by - ay, L = dx * dx + dy * dy, t = L ? Math.max(0, Math.min(1, ((px - ax) * dx + (py - ay) * dy) / L)) : 0;
+  return Math.hypot(px - ax - t * dx, py - ay - t * dy);
+}
+// What of the fast travel layer is under a tap: a stop's badge first, else the nearest link within a finger's reach.
+function travelHit(sx, sy) {
+  if (!on.travel) return null;
+  let best = null, bd = 12;
+  for (const b of stopBadges()) { const d = Math.hypot(b.x - sx, b.y - sy); if (d < bd) { bd = d; best = { stop: b.s }; } }
+  if (best) return best;
+  bd = 10;
+  TR.links.forEach((l, i) => {
+    const a = placeById[l.a], b = placeById[l.b]; if (!a || !b) return;
+    const [ax, ay] = toScreen(a.x, a.y), [bx, by] = toScreen(b.x, b.y), d = segDist(sx, sy, ax, ay, bx, by);
+    if (d < bd) { bd = d; best = { link: i }; }
+  });
+  return best;
+}
+// A tap within 8 px of a place's centre is the place; further out the fast travel layer is read first.
+function travelFirst(p, sx, sy) { if (!p) return travelHit(sx, sy); const [x, y] = toScreen(p.x, p.y); return Math.hypot(x - sx, y - sy) > 8 ? travelHit(sx, sy) : null; }
 function poly(a) { ctx.beginPath(); ctx.moveTo(a[0], a[1]); for (let i = 2; i < a.length; i += 2) ctx.lineTo(a[i], a[i + 1]); }
 const TIER_R = { "settlement.metropolis": 9, "settlement.large-city": 8, "settlement.small-city": 7, "settlement.small-city-seat": 7, "settlement.town": 6, "settlement.town-seat": 6, "settlement.village": 5, "settlement.village-seat": 5, "settlement.outpost": 5, "settlement.minor": 3 };
 const SIDES = { "settlement.metropolis": 8, "settlement.large-city": 7, "settlement.small-city": 6, "settlement.small-city-seat": 6, "settlement.town": 5, "settlement.town-seat": 5, "settlement.village": 4, "settlement.village-seat": 4, "settlement.outpost": 3 };
@@ -341,13 +444,17 @@ function hit(sx, sy) {
   return best;
 }
 function hover(e) {
-  const p = hit(e.offsetX, e.offsetY); const t = $("#tip");
-  if (p) { t.hidden = false; t.style.left = e.offsetX + "px"; t.style.top = e.offsetY + "px"; t.textContent = `${p.n} · ${p.kind}`; cv.style.cursor = "pointer"; }
+  const p = hit(e.offsetX, e.offsetY); const t = $("#tip"), th = travelFirst(p, e.offsetX, e.offsetY);
+  if (th && (th.stop || !p)) { const l = th.link != null ? TR.links[th.link] : null; t.hidden = false; t.style.left = e.offsetX + "px"; t.style.top = e.offsetY + "px";
+    t.textContent = l ? `${modeName(l.m)}: ${placeById[l.a].n} to ${placeById[l.b].n}` : `${placeById[th.stop.p].n} · ${modeName(th.stop.m).toLowerCase()} stop`; cv.style.cursor = "pointer"; }
+  else if (p) { t.hidden = false; t.style.left = e.offsetX + "px"; t.style.top = e.offsetY + "px"; t.textContent = `${p.n} · ${p.kind}`; cv.style.cursor = "pointer"; }
   else { t.hidden = true; cv.style.cursor = ""; }
 }
 function tap(sx, sy) {
-  const p = hit(sx, sy);
+  const p = hit(sx, sy), th = travelFirst(p, sx, sy);
+  if (th && th.stop) return showStop(th.stop.p, th.stop.m);
   if (p) return showPlace(p.id);
+  if (th) return showLink(th.link);
   const [mx, my] = toMap(sx, sy);
   if (on.water) { const wi = waterAt(mx, my); if (wi && WB[wi]) return showWater(wi); } const c = cellRegion.get(cellOf(mx, my).join(","));
   if (c) showRegion(c[2], c);
@@ -378,6 +485,7 @@ function home() {
   let legend = "";
   if (on.danger) legend += `<h3>Ground danger</h3><p class="sub" style="color:var(--muted)">Each cell by what roams there now: the country's own band, made safe only inside a city or town and calmer along roads and beside a village or garrisoned fort.</p><div class="legend">${Object.entries(D.bands).map(([k, b]) => `<div class="row"><span class="sw" style="background:${BANDCOL(k)}"></span><b>${k}</b> ${esc(b.label)}: ${esc(b.about)}</div>`).join("")}</div>`;
   if (on.places) legend += `<h3>How a place meets you</h3><div class="legend">${Object.entries(D.dispositions).map(([k, d]) => `<div class="row">${dispSwatch(k)}<b>${esc(d.label)}</b> (${D.places.filter(p => p.disp === k).length}): ${esc(d.about)}</div>`).join("")}</div>`;
+  if (on.travel) legend += `<h3>Fast travel</h3><p class="sub" style="color:var(--muted)">Each line is a paid journey between two stops, and each badge beside a place is a stop. Tap one to read its fares, hours and why it runs.</p><div class="legend">${Object.keys(TR.modes).map(m => `<div class="row">${travelSwatch(m)}<b>${esc(modeName(m))}</b> ${TR.stops.filter(s => s.m === m).length} stops, ${TR.links.filter(l => l.m === m).length} links</div>`).join("")}</div>`;
   legend += `<h3>Cultures</h3><div class="legend">${Object.entries(D.cultures).map(([k, c]) => `<div class="row"><span class="sw" style="background:${c.hex}"></span><button class="chip" data-culture="${k}">${esc(c.n)}</button></div>`).join("")}</div>`;
   setBody(`<p class="lead">This is Project Tamriel's map of Black Marsh, the Argonian homeland, turned into the base of our new worldspace. Every symbol on it is a place in the database below, researched as it stands in 4E 201.</p>
   <div class="stats"><div><b>${n}</b><span>places</span></div><div><b>${D.regions.length}</b><span>regions</span></div><div><b>${Object.keys(D.cultures).length}</b><span>cultures</span></div><div><b>${km}</b><span>km of road</span></div><div><b>${D.cells.length}</b><span>cells, 117 m a side</span></div><div><b>${researched}</b><span>places researched</span></div></div>
@@ -413,6 +521,7 @@ function showPlace(id) {
   ${p.enc && p.enc.length ? `<h3>Encounters near it</h3>${p.enc.map(e => `<p><b>${esc(e.k)}</b>: ${esc(e.d)}, at ${esc(e.spot)} <span class="mono">(${esc(e.at)})</span><br>${bandChip(e.s, e.sl)} <span style="color:var(--muted)">${esc(e.sw)}</span><br>Reward ${bandChip(e.r, e.rl)} <span style="color:var(--muted)">${esc(e.rw)}</span></p>`).join("")}` : ""}
   ${p.law ? `<h3>Law</h3><p><b>${esc(p.law[0])}</b>: ${esc(p.law[1])} <span style="color:var(--muted)">${esc(p.law[2])}</span></p>` : ""}
   ${p.gives && p.gives.length ? `<h3>What it gives the player</h3>${p.gives.map(g => `<p><b>${esc(g.k)}</b>${g.c > 1 ? ` ×${g.c}` : ""}: ${esc(g.d)}${g.near ? ` <span style="color:var(--muted)">(near the place)</span>` : ""}${g.r ? ` <span style="color:var(--muted)">(reward: ${esc(g.r)})</span>` : ""}</p>`).join("")}` : ""}
+  ${travelHtml(p.id)}
   ${p.needs.length ? `<h3>What it needs of the ground</h3>${p.needs.map(n => `<p>${esc(n.n)} <span class="mono">(${Math.round(n.r)} m)</span>: ${esc(n.why)}</p>`).join("")}` : ""}
   ${notesHtml(p.notes)}`, "place");
 }

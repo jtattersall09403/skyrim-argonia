@@ -83,7 +83,8 @@ One researcher per batch of about 30 places, grouped by neighbouring regions, ea
    `python3 -m tools.newworld.place_danger check` and `python3 -m tools.newworld.travel check` show 0 problems.
 3. Text review (the `text-review` skill) by someone other than the writer: reader passes over the exported prose,
    the rewrites applied, then the linter at 0 hard hits.
-4. Rebuild the Atlas (`~/.argonia/venv/bin/python -m tools.newworld.map_page`), publish `out/newworld/map/index.html` to
+4. Whenever the places or the travel network changed, rebuild the Atlas
+   (`~/.argonia/venv/bin/python -m tools.newworld.map_page`), publish `out/newworld/map/index.html` to
    the url in `tools/newworld/atlas.json` with the Artifact tool (index.html alone unless the terrain or water
    changed), then `python3 -m tools.newworld.atlas_state mark-published`.
 
