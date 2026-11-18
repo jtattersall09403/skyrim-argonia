@@ -202,7 +202,7 @@ It is to be built from near Left Hand Mine in Skyrim.esm (a camp military: 17 bu
 
 ### Ashgate Landing
 
-An outpost, about 70 m across, sited on inland, of The Shadowfen Border (Stormhold). In 4E 201 it is inhabited, held by a Dunmer gang-master and his Owing reed-cutters; 16 people live there. It is not built yet. <!-- place:outpost-m13-m65 -->
+An outpost, about 70 m across, sited on inland, of The Shadowfen Border (Stormhold). In 4E 201 it is inhabited, held by a Dunmer gang-master and his Owing reed-cutters; 16 people live there. It is drafted: its place files are in newworld/places/outpost-m13-m65. <!-- place:outpost-m13-m65 -->
 
 Ashgate Landing is a camp of Owing reed-cutters on the river west of Loriasel. The gangs serve their months of the Owing cutting reed for Stormhold's mat-makers, and the barge that brings each gang lies moored at the landing. It keeps the name of the road post whose stone hut and gate still stand there. <!-- place_note:outpost-m13-m65/overview --> Twelve cutters of the Owing and their cook work the reed beds along the river under a Dunmer gang-master. The barge's hold is where a new gang sleeps until the gang-master takes its names onto his roll. <!-- place_note:outpost-m13-m65/present --> A Dunmer gang-master, Dralin Uveran, a cook named Okeeh and a dozen cutters of every race, each serving months of the Owing. <!-- place_note:outpost-m13-m65/people --> The Vicecanons kept a road post here on the Slough Point road. When the toll moved to Slough Point the post was given over to the reed gangs, whose barges can reach it up the river from the sea. <!-- place_note:outpost-m13-m65/history -->
 
@@ -256,7 +256,7 @@ It is to be built from Riverside Shack in Skyrim.esm (a homestead: 23 buildings,
 
 ### Reed-Sill Weir
 
-An outpost, about 80 m across, sited on riverbank, of The Sedge-Wardens of Jal-Veesa (Veesa-Teeleel). In 4E 201 it is inhabited, held by Veesa-Teeleel weir-wardens; 2 people live there. It is not built yet. <!-- place:outpost-m11-m63 -->
+An outpost, about 80 m across, sited on riverbank, of The Sedge-Wardens of Jal-Veesa (Veesa-Teeleel). In 4E 201 it is inhabited, held by Veesa-Teeleel weir-wardens; 2 people live there. It is drafted: its place files are in newworld/places/outpost-m11-m63. <!-- place:outpost-m11-m63 -->
 
 Reed-Sill Weir is a Veesa-Teeleel weir on the creek north-east of Gandranen. The Sedge-Wardens hold the creeks of Barsaebica and sell their catch at Jal-Veesa; an outpost on a creek in their country is one of their weirs. <!-- place_note:outpost-m11-m63/overview --> Six or so wardens live here in hide tents on cypress platforms around a log weir with a landing, running the eel and fish traps that supply Jal-Veesa's market. <!-- place_note:outpost-m11-m63/present --> Veesa-Teeleel families take turns at the weir, sent in rotation from Jal-Veesa, whose market the traps feed. <!-- place_note:outpost-m11-m63/people --> The weirs date back to before the Dunmer and are kept by the Veesa-Teeleel wardens of Jal-Veesa. <!-- place_note:outpost-m11-m63/history -->
 

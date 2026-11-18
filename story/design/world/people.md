@@ -1,6 +1,14 @@
 # Who the new world already names
 
-The person table holds 54 people. They are the people of the drafted places, given light identities when their place was drafted; their status is 'alive' unless the table says otherwise. Every other place's people are counted (its population) but not named.
+The person table holds 57 people. They are the people of the drafted places, given light identities when their place was drafted; their status is 'alive' unless the table says otherwise. Every other place's people are counted (its population) but not named.
+
+## Ashgate Landing (Barsaebica)
+
+| Name | Who | Household | Trade | Means | What the data says of them |
+|---|---|---|---|---|---|
+| Okeeh | female Argonian, merchant | Okeeh's (head) | the gang's cook; keeps the cook's stall of dried fish and lamp oil | Poor | She cooks for the reed gang and sells dried fish and lamp oil from her stall by the hut. Each new gang meets her first, at the spit pot in the barge's hold, before the gang-master takes their names. | <!-- person:outpost-m13-m65.RP1ZWTTMYJ5QZ7EKY4SZEHE05S -->
+| Aulus Petrenius | male Imperial, guard | Aulus Petrenius's (head) | the gang-master's guard, day watch; leads the camp's two guards | Modest | He is a sword the gang-master pays to keep the cutters at their months of the Owing. He served at the old road post before the toll moved to Slough Point and stayed when the reed gangs came. | <!-- person:outpost-m13-m65.VD51ZD4GP90N4WYGPGW43D7PPC -->
+| Calvia Durnas | female Imperial, guard | Aulus Petrenius's (lodger) | the gang-master's guard, night watch | Poor | She keeps the night watch over the barge and the tents, and walks the bank when the river runs high. She came up from the sea on a reed barge and never went back down. | <!-- person:outpost-m13-m65.WHM2H7QJJWKMZ93N3ZFEE967NE -->
 
 ## Helstrom (Murkwood)
 
