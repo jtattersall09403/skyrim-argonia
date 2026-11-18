@@ -788,3 +788,6 @@ added here the day they are made, with the date and the issue.
   and stage throughout." Then Helstrom's draft is edited to give the main quest's quests there what they need.
   In quest-write §3a, quest-record (`information`, `terms`), quest-playtest, quest-system and the owner's bar.
 
+- 2026-11-18 (#77): "Add a toggle-able layer to the atlas for the fast travel network. Make it so it will be
+  automatically always up to date if we make changes to the network". The Atlas has a "Fast travel" layer drawn
+  from the travel network at each build, and `make check` fails while the published Atlas is behind the network.
