@@ -31,6 +31,25 @@ place is at the top of the skill `place-build`.
   the story's roster (`db.open()`, table `npc`, kind `person`) and of every BM&V talker (table `talker`).
 - The lookups, `newworld/sources/people/lookups.json`: the ids a row may use for `race`, `role`, a household role,
   a relation and the place's guard body. A row uses an id only after the lookup has it.
+- The story's people at the place: each `placements` row of kind `person` anchored `{place: <place_id>}` in the
+  quest records, `newworld/story/quests/<line>/*.yaml` (its `ref`, `name`, and the `need` and `room` of its anchor),
+  with what the record's stages, cast and lines say of them.
+
+## The story's people come first
+
+A person a quest record places at the place is that place's person in that role: one person, never two. Before
+anything else, match each to the drafted person the record describes: the role the record gives them (the cook, the
+gang-master, the tree-minder) and where its `need` stands them. That person's row takes from the record:
+
+- `cast`: the placement's `ref`;
+- `name`: the record's name, as it is (it is no clash: the check accepts the name on the row that casts it, and on
+  no other);
+- the trade, household and backstory built round what the record says of them, never contradicting it;
+- where they stand: the drafted work stop is where the record's `need` puts them. Where it is not, set the role's
+  spot with `draft.roles` (`{<role>: {space, pos}}`, the skill `place-build`) and run `draft people` again.
+
+A person the record places here whom the drafted people lack (a prisoner in a hold, a visitor) is the quest's to
+place, and gets no row here. Every other person is invented below.
 
 ## 1. Lay out the households
 
@@ -84,7 +103,8 @@ Read the band's `about` in the scale and choose the one that describes the perso
 
 ## 4. Name each person
 
-1. Read every name already given (Inputs) first. A name is used once in the whole new world.
+1. Read every name already given (Inputs) first. A name is used once in the whole new world. A person the story
+   casts keeps the record's name (above); every other name is new.
 2. Choose the form by who carries it (35-cast section 54):
    - Jel, untranslated, for the marsh-born and anyone whose life faces inward: one word or two joined by a
      hyphen, built from the sounds of the Jel names in the lore and equal to none of them.
@@ -95,8 +115,8 @@ Read the band's `about` in the scale and choose the one that describes the perso
    - For a person of another people, a name by their own province's conventions.
 3. An image (water, reed, root, stone, shadow, sky, boat, blade, eye, hand) appears in one name of the place at
    most.
-4. No canon name, no name the lore files carry, no name on the never-reuse list, no name another place or the
-   story's roster gives, no name of a talker of BM&V (Black Marsh & Valenwood, the world mod the story plays in),
+4. No canon name, no name the lore files carry, no name on the never-reuse list, no name another place, the
+   story's roster or a quest record gives (but the one a quest record gives the person the row casts), no name of a talker of BM&V (Black Marsh & Valenwood, the world mod the story plays in),
    and nothing Nordic (decision 0006).
 
 ## 5. Write each backstory
@@ -117,7 +137,8 @@ One note per person with `aspect: backstory`: one or two sentences, plain, in th
 
 The source holds `{place_id, about, guard_body, households, people}`; each person's row is
 `{id, name, sex, race, culture_id, household: {id, role}, role, trade, wealth, level: null, status: "alive",
-tier: "AGENT_INVENTED", notes: [...], relations: [...]}`. `sex` and `race` are the built-on actor's. `culture_id` is
+tier: "AGENT_INVENTED", notes: [...], relations: [...]}`, and `cast` on the row of a person a quest record places
+here. `sex` and `race` are the built-on actor's. `culture_id` is
 the place's culture unless the backstory makes the person an outsider. `level` stays null.
 
 A name, note or reason at the tier `OWNER_STATED` is the owner's own words, written in the studio. Never change or
@@ -130,7 +151,9 @@ remove it. Build the rest of the person round it.
    and a person for every row, roles equal to `people.jsonl`'s, names unique in the new world (every other place's
    people source, the story's roster, BM&V's talkers) and by the naming rules, one roof and one head for each
    household, the drafter's head and partner kept, every guard's trade naming the place's guard body, one or two
-   sentences of backstory and every cite existing.
+   sentences of backstory, every cite existing, and the story's people as one: a row's `cast` names a person a
+   quest record places here, under the record's name, on one row only, and a name a quest record gives is carried
+   only by the row that casts it.
 3. Text review (the skill `text-review`) of the people source by someone other than the writer: one reader pass
    against the style guide, the rewrites applied, then the linter with `--race argonian` at 0 hard hits. Run the
    check again afterwards.

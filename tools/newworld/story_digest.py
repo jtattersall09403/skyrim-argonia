@@ -3,7 +3,7 @@
     python3 -m tools.newworld.story_digest [--out story/design/world]
 
 Writes, wholly from the database (newworld/story/data/db through tools.argonia_world.db) and the place folders
-(newworld/places/<id>/place.json says a place is drafted):
+(a place is drafted once its draft has written newworld/places/<id>/ledger.jsonl beside its place.json):
 
     province.md            the province in one read: land, travel, peoples, power and law, danger, what it offers,
                            a table of every place, and the gaps the data leaves
@@ -198,7 +198,7 @@ class World:
         self.pw_bands = {r["id"]: r for r in q("SELECT * FROM person_wealth_band")}
         self.counts = {t: q(f'SELECT count(*) AS n FROM "{t}"')[0]["n"]
                        for t in ("person_faction", "person_relation", "unique_item", "place_good", "person")}
-        self.drafted = {p for p in self.places if (places_dir / p / "place.json").exists()}
+        self.drafted = {p for p in self.places if (places_dir / p / "ledger.jsonl").exists()}
         self._geography()
         self._roads()
         self._water()
@@ -1021,8 +1021,8 @@ def index_file(W: World, files: dict[str, int], counts: dict[str, int], today: s
           "`region_note:<region>/<aspect>`, `culture:<id>`, `place_give:<place>/<seq>`, `place_source:<place>/<rank>`, "
           "`travel_route:<from>/<to>/<mode>`, and so on). Hooks are each place's hooks note, then every sentence of its "
           "other notes (and its region's) that names a tension, shortage, rivalry, mystery or loss. Roads are read "
-          "from the road graph, place to place through junctions. A place is built when newworld/places/<id>/"
-          "place.json exists.", "",
+          "from the road graph, place to place through junctions. A place is built when its draft has written newworld/places/<id>/"
+          "ledger.jsonl.", "",
           f"Counts: {counts['places']} places, {counts['regions']} regions, {counts['cultures']} cultures, "
           f"{counts['hooks']} hooks, {counts['people']} named people.", ""]
     return "\n".join(L)

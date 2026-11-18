@@ -295,14 +295,16 @@ people source is its home. `people.jsonl` holds the drafter's copy, and `identit
 **The people source** `newworld/sources/people/<place_id>.json`: `{place_id, households: [{id, home_space, name}],
 people: [{id, name, sex, race (RACE editor id), culture_id, household: {id, role}, role, trade, wealth: W1..W5, level
 (fixed, or null until set), status: alive|dead|missing, tier (statement tier), notes: [{aspect: backstory|personality|
-secrets|relationships, text, tier, cites: [...]}], relations: [{to, kind}], factions: [{faction, rank}]}]}`. A cite
+secrets|relationships, text, tier, cites: [...]}], relations: [{to, kind}], factions: [{faction, rank}], cast}]}` (`cast`: the ref of the quest record's
+placement this person is, on the row of a person a quest places at the place). A cite
 is a repo path or a database row: `place_note:<place>/<aspect>`, `place_give:<place>/<seq>`, `culture:<id>`,
 `region:<id>`; each becomes a `source` row (`cite-...`). `guard_body` is the place's own name for its watch, one of
 the lookups' `guard_body` ids, chosen from the record's `held_by` ("levy" where a tribal levy keeps the guard).
 `python -m tools.places identities check <place>` proves a person per placed person, names unique in the new world
 (never a name another place's people source, the story's roster or a BM&V talker gives) and by the naming rules, one
-household per roof with one head, every guard's trade naming the place's guard body, every cite existing and roles
-equal to `people.jsonl`'s. `tools.places.identities.read` gives the drafter
+household per roof with one head, every guard's trade naming the place's guard body, every cite existing, roles
+equal to `people.jsonl`'s, and a quest record's person as one: a name a quest record gives only on the row that
+casts it, under that name, one row per cast. `tools.places.identities.read` gives the drafter
 each person's name.
 
 **The stock source** `newworld/sources/stock/places/<place_id>.json`:

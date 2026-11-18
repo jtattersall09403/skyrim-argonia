@@ -16,7 +16,8 @@ def _write(tmp_path, rows, guard_body="levy", place="x"):
     (src / "lookups.json").write_text(json.dumps({"guard_body": [{"id": "levy"}, {"id": "watch"}]}))
     people = [{"id": r["id"], "name": r["name"], "household": r["household"], "trade": r["trade"],
                "wealth": r["wealth"], "role": r.get("person_role", ROLES.get(r["id"])),
-               "notes": [{"aspect": "backstory", "text": r["backstory"], "cites": r["cites"]}]} for r in rows]
+               "notes": [{"aspect": "backstory", "text": r["backstory"], "cites": r["cites"]}],
+               **({"cast": r["cast"]} if r.get("cast") else {})} for r in rows]
     (src / f"{place}.json").write_text(json.dumps({"place_id": place, "guard_body": guard_body, "households": [],
                                                   "people": people}))
 
@@ -43,8 +44,39 @@ def _row(pid, name, role, **kw):
     return r
 
 
-def _check(tmp_path):
-    return identities.check("x", tmp_path / "places", resolve=lambda c: c == "lore.md", names=({"nesh-deeka"}, {"okeemu"}))
+def _check(tmp_path, story=None):
+    return identities.check("x", tmp_path / "places", resolve=lambda c: c == "lore.md", names=({"nesh-deeka"}, {"okeemu"}),
+                            story=story or {})
+
+
+STORY = {"npc.mn.smith": {"name": "Meshu-Ka", "places": {"x"}, "quest": "mn01"},
+         "npc.mn.far": {"name": "Neeshal", "places": {"y"}, "quest": "mn02"}}
+
+
+def test_a_person_a_quest_places_here_is_the_places_person_by_its_cast(tmp_path):
+    """One person: the row that casts the record's person carries its name; anyone else carrying a quest's name, a
+    cast of a person placed elsewhere, a wrong name or a second row of one cast, fails."""
+    guard = _row("x.g", "Uxal-Dee", "lodger", trade="the city levy")
+    _place(tmp_path, [_row("x.a", "Meshu-Ka", "head", cast="npc.mn.smith"), _row("x.b", "Teeja", "partner"), guard])
+    assert _check(tmp_path, STORY) == []
+    _write(tmp_path, [_row("x.a", "Meshu-Ka", "head"), _row("x.b", "Neeshal", "partner", cast="npc.mn.far"), guard])
+    bad = "\n".join(_check(tmp_path, STORY))
+    assert "x.a: 'Meshu-Ka' is the story's npc.mn.smith" in bad
+    assert "x.b: cast 'npc.mn.far' is placed at ['y'], not here" in bad
+    _write(tmp_path, [_row("x.a", "Meshu", "head", cast="npc.mn.smith"), _row("x.b", "Teeja", "partner", cast="npc.mn.smith"),
+                      guard])
+    bad = "\n".join(_check(tmp_path, STORY))
+    assert "x.a: cast 'npc.mn.smith' is named 'Meshu-Ka' by mn01, not 'Meshu'" in bad
+    assert "x.b: cast 'npc.mn.smith' is already x.a" in bad
+
+
+def test_the_story_people_are_read_from_the_quest_records(tmp_path):
+    q = tmp_path / "main"
+    q.mkdir()
+    (q / "mn01.yaml").write_text("placements:\n- {ref: npc.mn.a, kind: person, name: Okeeh, anchor: {place: x}}\n"
+                                 "- {ref: thing.a, kind: thing, name: Jar, anchor: {place: x}}\n")
+    (q / "mn02.yaml").write_text("placements:\n- {ref: npc.mn.a, kind: person, name: Okeeh, anchor: {place: y}}\n")
+    assert identities.story_people(tmp_path) == {"npc.mn.a": {"name": "Okeeh", "places": {"x", "y"}, "quest": "mn01"}}
 
 
 def test_a_good_place_passes(tmp_path):

@@ -15,7 +15,12 @@ once); a household is one roof (its members share a home in people.jsonl, it has
 put in a house's household keeps that household id and its head or partner place); a guard belongs to the place's
 own guard body (the people source's `guard_body`, one of the lookups' guard_body ids, chosen from the record's
 `held_by`: "levy" where a tribal levy keeps the guard) and says so in the trade; one or two sentences of backstory; every cite exists (a repo path, or place_note:<place>/<aspect>,
-place_give:<place>/<seq>, culture:<id>, region:<id> in the new world's database)."""
+place_give:<place>/<seq>, culture:<id>, region:<id> in the new world's database).
+
+A person a quest record places at the place (a `placements` row of kind person anchored `{place: <this place>}` in
+newworld/story/quests/) is that place's person in that role, one person: the row names the placement's ref as its
+`cast` and carries the record's name. A cast row's name is the record's and is no clash; a cast names a person the
+record places here, and one row only; a name a quest record gives anyone, carried without that cast, is taken."""
 from __future__ import annotations
 
 import argparse
@@ -26,6 +31,7 @@ from pathlib import Path
 from typing import Callable
 
 ROOT = Path(__file__).resolve().parents[2]
+QUESTS = ROOT / "newworld" / "story" / "quests"
 PLACES = ROOT / "newworld" / "places"
 WEALTH = ("W1", "W2", "W3", "W4", "W5")
 FIXED_ROLES = ("head", "partner")     # the drafter's household places an identity keeps
@@ -46,7 +52,8 @@ def person_rows(place_id: str, places: Path = PLACES) -> list[dict]:
     for r in json.loads(p.read_text(encoding="utf-8")).get("people", []):
         note = next((n for n in r.get("notes", []) if n.get("aspect") == "backstory"), {})
         out.append({"id": r.get("id"), "name": r.get("name"), "household": r.get("household"), "trade": r.get("trade"),
-                    "wealth": r.get("wealth"), "role": r.get("role"), "backstory": note.get("text"),
+                    "wealth": r.get("wealth"), "role": r.get("role"), "cast": r.get("cast"),
+                    "backstory": note.get("text"),
                     "cites": note.get("cites") or []})
     return out
 
@@ -101,6 +108,21 @@ def name_rules(place_id: str, places: Path = PLACES) -> tuple[set[str], dict[str
     return banned, taken
 
 
+def story_people(quests: Path = QUESTS) -> dict[str, dict]:
+    """Every person the quest records place: {ref: {name, places, quest}} (`places` the place ids its rows anchor
+    it at; `quest` the first record naming it)."""
+    import yaml
+    out: dict[str, dict] = {}
+    for p in sorted(quests.rglob("*.yaml")):
+        q = yaml.safe_load(p.read_text(encoding="utf-8")) or {}
+        for r in q.get("placements") or []:
+            if r.get("kind") == "person" and r.get("ref") and r.get("name"):
+                o = out.setdefault(r["ref"], {"name": r["name"], "places": set(), "quest": p.stem})
+                if (r.get("anchor") or {}).get("place"):
+                    o["places"].add(r["anchor"]["place"])
+    return out
+
+
 def guard_bodies(places: Path = PLACES) -> set[str]:
     """The guard bodies a place may name (lookups.json, guard_body)."""
     p = places.parent / "sources" / "people" / "lookups.json"
@@ -114,12 +136,15 @@ def guard_body(place_id: str, places: Path = PLACES) -> str | None:
 
 
 def check(place_id: str, places: Path = PLACES, resolve: Callable[[str], bool] | None = None,
-          names: tuple[set[str], set[str] | dict[str, str]] | None = None) -> list[str]:
+          names: tuple[set[str], set[str] | dict[str, str]] | None = None,
+          story: dict[str, dict] | None = None) -> list[str]:
     from tools.argonia_world.talk_check import IMAGES, NORDIC, VERB_NOUN
     resolve = resolve or db_resolver()
     banned, taken = names if names is not None else name_rules(place_id, places)
     if not isinstance(taken, dict):
         taken = {n: "a talker's name" for n in taken}
+    story = story_people() if story is None else story
+    story_name = {v["name"].lower(): k for k, v in story.items()}
     pdir = places / place_id
     people = {p["id"]: p for p in (json.loads(ln) for ln in (pdir / "people.jsonl").read_text().splitlines() if ln)}
     rows_ = person_rows(place_id, places)
@@ -140,6 +165,22 @@ def check(place_id: str, places: Path = PLACES, resolve: Callable[[str], bool] |
     bad += [f"{i}: no person of that id in people.jsonl" for i in seen if i not in people]
     bad += [f"{i}: person without an identity" for i in people if i not in seen]
 
+    cast_by: dict[str, str] = {}
+    for r in rows:
+        ref = r.get("cast")
+        if not ref:
+            continue
+        cast = story.get(ref)
+        if cast is None:
+            bad.append(f"{r.get('id')}: cast {ref!r} is no person a quest record places")
+        elif place_id not in cast["places"]:
+            bad.append(f"{r.get('id')}: cast {ref!r} is placed at {sorted(cast['places'])}, not here")
+        elif (r.get("name") or "").strip() != cast["name"]:
+            bad.append(f"{r.get('id')}: cast {ref!r} is named {cast['name']!r} by {cast['quest']}, not {r.get('name')!r}")
+        if ref in cast_by:
+            bad.append(f"{r.get('id')}: cast {ref!r} is already {cast_by[ref]}")
+        cast_by.setdefault(ref, r.get("id"))
+
     by_name: dict[str, str] = {}
     images: dict[str, str] = {}
     homes: dict[str, set] = defaultdict(set)
@@ -153,9 +194,15 @@ def check(place_id: str, places: Path = PLACES, resolve: Callable[[str], bool] |
             bad.append(f"{pid}: name {name!r} also {by_name[name.lower()]}")
         else:
             by_name[name.lower()] = pid
-            if name.lower() in banned:
+            ref = story_name.get(name.lower())
+            cast_ok = bool(ref) and r.get("cast") == ref
+            if ref and not cast_ok:
+                bad.append(f"{pid}: {name!r} is the story's {ref} ({story[ref]['quest']}, placed at "
+                           f"{sorted(story[ref]['places'])}): one person, so only the row that names it as its cast "
+                           f"carries it")
+            if name.lower() in banned and not cast_ok:
                 bad.append(f"{pid}: {name!r} is a canon or never-reuse name")
-            if name.lower() in taken:
+            if name.lower() in taken and not cast_ok:
                 bad.append(f"{pid}: {name!r} is already {taken[name.lower()]}")
             if NORDIC.search(name):
                 bad.append(f"{pid}: {name!r} has a Nordic element")

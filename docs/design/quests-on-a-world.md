@@ -87,6 +87,11 @@ as any change to the method; the quest skills carry it step by step, and their m
   called; no new art, never a Nordic-specific model.
 - **Traders:** a trader whose stock does not fit gets a vendor faction and chest of their own with a fixed stock.
 - **Moving a quest spot** within its place to the nearest measured ground is a record edit, not a redesign.
+- **A quest's person at a place is the place's person:** one person, never two. Where a quest record places a person
+  in a role the place's drafted people have (its cook, its gang-master), the place's people source gives that row
+  the placement's ref as its `cast`, the record's name and the spot the record's `need` names; the identities check
+  accepts the name on that row alone. A person the place's people lack (a prisoner, a visitor) is the quest's to
+  place.
 
 ## 5. Build every quest from the one form
 
