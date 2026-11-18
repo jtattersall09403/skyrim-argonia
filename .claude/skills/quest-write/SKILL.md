@@ -127,8 +127,9 @@ general.md's table of dramatic jobs, never scripted.
    the prompt (`(Persuade)`, `(Alchemy)`, `(20 gold)`); a label written by hand must be that one, and never a
    threshold.
 10. **One stage, one step.** Every shown stage has an objective with one or more targets switched on at it, and the
-    entry says, first person and past tense, what the player has just done and "I'm to ..." for the one step owed,
-    with the place by a name the player can see; never a later step, never an event that did not happen. Objectives
+    entry says, first person and past tense, what the player has just done, been told or seen, and a varied call to
+    action for the one step owed ("I should", "she asked me to", "I need to"), with the place by a name the player can
+    see; never a later step, never an event that did not happen, never a fact the world has not told first. Objectives
     are imperatives with a full stop ("Speak to Wuleen-Sei in the barge's hold.").
 11. **Placements are measured from the world.** Every person, thing, door and marker the quest names is a
     `placements` row: an existing reference by its form key from the census, or a new one with its base, its anchor
