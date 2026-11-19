@@ -24,6 +24,9 @@ full = [
 
 # Stages: guard and lint always; unit is the picked pytest files; the rest run when a rule or their module's closure
 # names them. Each stage's module is what its make target runs, for the automatic closure.
+# modules that read a whole story tree: the paths they name reach only the tests that import them directly
+named_direct = ["tools/places/needs.py"]
+
 [stages]
 adaptation = "tools.argonia_world.adaptation_check"
 questtext = "tools.argonia_world.quest_text_check"

@@ -148,17 +148,21 @@ class Index:
             self._scan[rel] = (files, named)
         return self._scan[rel]
 
-    def closure(self, start: Path) -> tuple[set[str], set[str]]:
+    def closure(self, start: Path, direct_only: frozenset[str] = frozenset()) -> tuple[set[str], set[str]]:
+        """The files `start` reaches and the paths they name; the paths a `direct_only` module names count only when
+        `start` itself imports that module (not through another module)."""
         files: set[str] = set()
         paths: set[str] = set()
-        todo = [start.relative_to(self.repo).as_posix()]
+        first = start.relative_to(self.repo).as_posix()
+        todo = [first]
         while todo:
             rel = todo.pop()
             if rel in files:
                 continue
             files.add(rel)
             deps, named = self._deps(rel)
-            paths |= named
+            if rel not in direct_only or rel in self._deps(first)[0]:
+                paths |= named
             todo.extend(deps - files)
         return files, paths
 
@@ -192,8 +196,9 @@ def pick(changed: list[str], repo: Path = REPO, mapfile: Path = MAP) -> Plan:
         return plan
     idx = Index(repo)
     matched: set[str] = set()
+    direct = frozenset(gate.get("named_direct", []))
     for t in idx.tests():
-        files, named = idx.closure(repo / t)
+        files, named = idx.closure(repo / t, direct)
         for c in changed:
             if c in files or _named(c, named):
                 plan.tests.add(t); plan.why.setdefault(t, c); matched.add(c)
