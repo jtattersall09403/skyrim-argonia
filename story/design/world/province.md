@@ -564,15 +564,13 @@ What a story writer will want and the database does not hold. These are for the 
 - Who rules a region: there is no ruler column for a region or a culture; a place's holder is a line of free text (held_by), and nothing joins the holders of several places into one authority.
 - The names of rivers and lakes: of 1770 bodies of water in the regions, 0 carry a name; a river is named only where a region's or a place's notes name it.
 - What a culture believes: its row says nothing of belief for Soulrest and the Topal Coast, The Agaceph, The Archon Harbour Folk, The Hutan-Tzel, The Shadowfen Border (Stormhold) and The Three Waters Tribe (the places' faith notes say what each place keeps).
-- Named people: the person table holds 98 people, all of Ashgate Landing, Helstrom, Jal-Veesa, Karsh-Naal Camp, Reed-Sill Weir and Teel-Fen Weir; every other place's people are numbers only. Faction memberships (0 rows) and ties between people (12 rows) are empty.
+- Named people: the person table holds 131 people, all of Ashgate Landing, Helstrom, Jal-Veesa, Karsh-Naal Camp, Reed-Sill Weir and Teel-Fen Weir; every other place's people are numbers only. Faction memberships (0 rows) and ties between people (32 rows) are empty.
 - Goods: what places make, trade and need is a table of 11 rows (one place's market); the rest lives only in the economy notes.
 - Uniques: the world's unique things are a table of 0 rows; two places promise a unique item in their gives.
 - The make-up of a source place: the mining counts buildings, interiors, residents and hostiles, and names its piece families, but how many of each kind of building (houses, halls, piers, shrines) it holds: the data does not say.
 - How many live in a place: for 134 places the population was reset from the research's estimate to the residents of the place's source, so the number in a place row can differ from the number its people note gives.
 - How many live in Helstrom: the place row says 17 (its source's residents), the person table names 62.
 - How many live in Jal-Veesa: the place row says 46 (its source's residents), the person table names 19.
-- How many live in Ashgate Landing: the place row says 16 (its source's residents), the person table names 3.
-- How many live in Teel-Fen Weir: the place row says 23 (its source's residents), the person table names 3.
 - How many live in Karsh-Naal Camp: the place row says 12 (its source's residents), the person table names 9.
 - Built places: only Ashgate Landing, Helstrom, Jal-Veesa, Karsh-Naal Camp, Reed-Sill Weir and Teel-Fen Weir is drafted; every other place is a record and a source, not yet ground a quest can be checked against.
 
