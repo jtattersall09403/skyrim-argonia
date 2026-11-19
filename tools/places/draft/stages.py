@@ -60,7 +60,7 @@ OWNS: dict[str, dict[str, tuple]] = {
                    "ledger.jsonl": (ANY, True)},
     "hang": {"spaces/exterior/refs.jsonl": (ANY, True), "place.json": ({"hang"}, False)},
     "sap": {"spaces/exterior/refs.jsonl": (ANY, True), "place.json": ({"sap"}, False), "land.jsonl": (ANY, True)},
-    "add": {"spaces/*/refs.jsonl": (ANY, True)},
+    "add": {"spaces/*/refs.jsonl": (ANY, True), "spaces/*/space.json": (ANY, True)},
     "names": {"spaces/*/space.json": ({"name"}, False)},
 }
 STAGES = tuple(OWNS)
@@ -74,7 +74,7 @@ class StageError(RuntimeError):
 # --- the standing files ---
 class Standing:
     def __init__(self, place_id: str, places: Path = io.PLACES, bundles: Path = io.BUNDLES):
-        self.place_id, self.pdir = place_id, places / place_id
+        self.place_id, self.pdir, self.bundles = place_id, places / place_id, bundles
         self.files = edits.load_place(self.pdir)
         self.place = self.files["place"]
         self.src = io.load(f"src.{self.place['source_id']}", bundles)
@@ -250,10 +250,10 @@ def pieces(st: Standing, log=print) -> None:
     # the copied rooms: each override on the base the step gives it; a room's piece once removed stands again
     for sid, sp in sorted(st.files["spaces"].items()):
         info = sp.get("space") or {}
-        if sid == "exterior" or not info.get("copy_of"):
+        if sid == "exterior" or not info.get("copy_of") or info.get("added"):   # an added room is the add stage's
             continue
         src_sp = st.src.spaces.get(info["copy_of"].split("/", 1)[1])
-        by_id = {r["id"]: r for r in (src_sp.refs if src_sp else [])}
+        by_id ={r["id"]: r for r in (src_sp.refs if src_sp else [])}
         keep = []
         for row in sp["refs"]:
             r = by_id.get(row.get("src"))

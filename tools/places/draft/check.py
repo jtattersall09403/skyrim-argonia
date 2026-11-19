@@ -59,8 +59,8 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
     from tools.places import edits
     from tools.places.draft import names
     files = edits.load_place(pdir)
-    srcn = {sid: (src.spaces[c].meta.get("name") if c in src.spaces else None) for sid, sp in files["spaces"].items()
-            if sid != "exterior" for c in [((sp.get("space") or {}).get("copy_of") or "").split("/", 1)[-1]]}
+    srcn = {sid: (c.meta.get("name") if c else None) for sid, sp in files["spaces"].items()
+            if sid != "exterior" for c in [io.copied_space((sp.get("space") or {}).get("copy_of") or "", src, bundles)]}
     bad += names.faults(files, names.room_names(place_id, files, place, gives, places, srcn),
                         people=(places.parent / "sources" / "people" / f"{place_id}.json").exists())
     from tools.places.draft import hang
@@ -140,8 +140,8 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
         if sdir.name == "exterior" or not sj.exists():
             continue
         sj = json.loads(sj.read_text())
-        copy_of = sj["copy_of"].split("/", 1)[1]
-        for b in interiors.beds_in(src.spaces[copy_of].refs, bases, sj.get("room"), sj["copy_of"]):
+        copied = io.copied_space(sj["copy_of"], src, bundles)
+        for b in interiors.beds_in(copied.refs if copied else [], bases, sj.get("room"), sj["copy_of"]):
             beds_total += b["sleeps"]
             bed_refs[(sdir.name, b["ref"])] = b["sleeps"]
     for r in refs:   # the guard camp's beds, outdoors
@@ -357,7 +357,7 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
             bad.append(f"{r['id']} adds a Nordic base {r['base']} from outside the source place")
         if str(b.get("type")) in LEVELLED:
             bad.append(f"{r['id']} places a levelled base {r['base']}")
-    bad += nordic_in_copies(pdir, src, bases)
+    bad += nordic_in_copies(pdir, src, bases, bundles)
     bad += light_checks(pdir, place, src, bases, refs)
 
     # 14. no world plant left standing in what we placed or on a street (the build's clear check)
@@ -385,9 +385,10 @@ def light_checks(pdir: Path, place: dict, src, bases: dict, refs: list[dict]) ->
     return bad
 
 
-def nordic_in_copies(pdir: Path, src, bases: dict) -> list[str]:
+def nordic_in_copies(pdir: Path, src, bases: dict, bundles: Path = io.BUNDLES) -> list[str]:
     """An interior copy brings its source room whole and as it comes; an override row that swaps in or adds a base
-    from outside the source place must not be Nordic (the review's verdict, else the folder rule)."""
+    from outside the source place must not be Nordic (the review's verdict, else the folder rule). A room added from
+    another source (`draft.add` `room`) is all from outside: none of its pieces may be Nordic."""
     bad = []
     for sj in sorted((pdir / "spaces").glob("*/space.json")):
         sp = json.loads(sj.read_text())
@@ -395,7 +396,9 @@ def nordic_in_copies(pdir: Path, src, bases: dict) -> list[str]:
             continue
         rows = {r["src"]: r for r in io.read_jsonl(sj.parent / "refs.jsonl") if r.get("src")}
         keep = interiors.kept(sp["copy_of"], sp.get("room"))
-        src_sp = src.spaces.get(sp["copy_of"].split("/", 1)[1])
+        src_sp = io.copied_space(sp["copy_of"], src, bundles)
+        if sp.get("added") and src_sp:
+            bases = {**bases, **io.catalogue_bases({r["base"] for r in src_sp.refs})}
         for r in (src_sp.refs if src_sp else []):
             if r.get("kind") == "actor" or (keep is not None and r["id"] not in keep):
                 continue

@@ -1,35 +1,56 @@
 """Things the agent adds to a place by hand: place.json `draft.add`, one row per thing.
 
 A row: {base, pos: [x, y] outside | [x, y, z] in a room, space? (a room's space id; default the exterior), rot_z?,
-scale?, kind?, dz?, on?, name?, need?, why, tier?}. Outside the thing is seated on the ground (its true footprint, `dz`
-over the lowest ground under it), or, with `on` (a placed row's id), on that thing, `dz` over its origin (moss draped
-on a fence, carried with it); in a room it stands where `pos` puts it (a room's floor is the source's, so its
-height is measured off the floor-standing piece beside it and given). `name` is the name the game shows on looking
-at it (a container's: the build makes the container of ours carry it); `need` the story need it meets, by seq. Its
-id is minted from its place in the list and its base, so a rerun keeps it. The whole draft adds them; on a drafted
-place `draft add <place>` places them again from `draft.add` and touches no other row.
+scale?, kind?, dz?, on?, name?, need?, map_marker?, room?, why, tier?}. Outside the thing is seated on the ground (its
+true footprint, `dz` over the lowest ground under it), or with `on` (a placed row's id, an added row's minted id
+included) `dz` over that row's origin, carried with it (moss on a fence, a door on its building); in a room it stands
+where `pos` puts
+it (a room's floor is the source's, so its height is measured off the floor-standing piece beside it and given).
+`name` is the name the game shows on looking at it (a container's: the build makes the container of ours carry it);
+`need` the story need it meets, by seq; `map_marker` the name a map marker shows on the world map (the row's base is
+Skyrim's map marker, 000010). Its id is minted from its place in the list and its base, so a rerun keeps it. The whole
+draft adds them; on a drafted place `draft add <place>` places them again from `draft.add` and touches no other row.
+
+A door with `room` {copy_of: "<source_id>/<cell>", door?: the cell's way out (source ref id), space?: our space id
+(default the cell's), arrival: [x, y] where one steps out, drop?: {source ref id: why} for a piece the room must not
+have (a container of levelled treasure: decision 0035)} brings that interior of any source we hold as a copied
+room of ours, its way out paired with this door: the room's `space.json` (marked `added`) and its refs file of our
+changes only (the way out re-pointed at our door, any further way out removed, every piece the catalogue judges
+Nordic replaced by `draft.replace` or removed: decision 0006). A room with a door on into a further interior is
+refused. Once the streets stage has moved the door's arrival onto the walkable network, a rerun keeps it.
 """
 from __future__ import annotations
 
-from tools.places.draft import geom, io
+import copy
+
+from tools.places.draft import geom, interiors, io
 
 FIELDS = ("name", "need", "tier")
 
 
-def rows(place_id: str, dec: dict, bases: dict) -> list[dict]:
+def rows(place_id: str, dec: dict, bases: dict) -> list[tuple[str, dict]]:
     """Each `draft.add` row as a place row with its `space`."""
     out = []
-    for k, a in enumerate(dec.get("add") or []):
+    adds = dec.get("add") or []
+    for k, a in enumerate(adds):
         space = a.get("space") or "exterior"
         z = float(a["pos"][2]) if len(a["pos"]) > 2 else 0.0
+        if space != "exterior":
+            seat = {"mode": "free"}
+        elif a.get("on"):
+            seat = {"mode": "on", "on": a["on"], "dz": float(a.get("dz", 0.0))}
+        else:
+            seat = {"mode": "ground", "dz": float(a.get("dz", 0.0))}
         row = {"id": io.mint(place_id, "add", str(k), a["base"]), "base": a["base"], "kind": a.get("kind", "furniture"),
                "pos": [float(a["pos"][0]), float(a["pos"][1]), z], "rot": [0.0, 0.0, float(a.get("rot_z", 0.0))],
                "scale": float(a.get("scale", 1.0)), "layer": "place", "flags": [], "src": None,
-               "seat": ({"mode": "on", "on": a["on"], "dz": float(a.get("dz", 0.0))} if a.get("on") else
-                        {"mode": "ground", "dz": float(a.get("dz", 0.0))}) if space == "exterior" else {"mode": "free"},
-               "why": a.get("why", "")}
+               "seat": seat, "why": a.get("why", "")}
         row.update({f: a[f] for f in FIELDS if a.get(f) is not None})
-        if space == "exterior" and not a.get("on"):
+        if a.get("map_marker"):
+            row["map_marker"] = {"$type": "MapMarker", "Flags": "Visible", "Name": a["map_marker"]}
+        if a.get("map_marker") or a.get("room"):
+            row["flags"] = ["persistent"]
+        if seat["mode"] == "ground":
             f = geom.foot(row, bases)
             if f:
                 row["seat"]["foot"] = f
@@ -99,27 +120,107 @@ def settle(rows: list[dict], others: list[dict], bases: dict, G, norm: float, lo
     return moved
 
 
+def room(place_id: str, door: dict, spec: dict, src, replace: dict, nordic: set, G,
+         arrival: list | None = None) -> tuple[str, dict, list[dict]]:
+    """The copied room a door of ours leads into: (space id, space.json, refs of our changes). Sets the door's own
+    `door`: into the room, and its `arrival` outside (`arrival` when the streets stage has placed it, else the row's)."""
+    cell = spec["copy_of"].split("/", 1)[1]
+    sp = src.spaces.get(cell)
+    if sp is None:
+        raise ValueError(f"draft.add {door['id']}: room {spec['copy_of']}: the source bundle has no space {cell}")
+    sid = spec.get("space") or cell
+    ways = sorted((r for r in sp.refs if (r.get("door") or {}).get("to_space") == "exterior"), key=lambda r: r["id"])
+    back = next((r for r in ways if r["id"] == spec.get("door")), None) if spec.get("door") else (ways[0] if ways else None)
+    if back is None:
+        raise ValueError(f"draft.add {door['id']}: room {spec['copy_of']} has no way out {spec.get('door') or ''}")
+    inner = [r["id"] for r in sp.refs if (r.get("door") or {}).get("to_space") not in (None, "exterior")]
+    if inner:
+        raise ValueError(f"draft.add {door['id']}: room {spec['copy_of']} leads on into further rooms ({inner[:3]})")
+    if arrival is None:
+        ax, ay = (float(v) for v in spec["arrival"][:2])
+        h = G.height(ax, ay)
+        arrival = [round(ax, 2), round(ay, 2), round(h if h is not None else door["pos"][2], 2)]
+    back_id = io.mint(place_id, sid, back["id"])
+    into = next(((r["door"].get("to_pos"), r["door"].get("to_rot")) for r in (src.exterior.refs if src.exterior else [])
+                 if (r.get("door") or {}).get("to_ref") == back["id"]), (None, None))
+    door["door"] = {"to_space": sid, "to_ref": back_id, "to_pos": list(into[0] or back["pos"]),
+                    "to_rot": list(into[1] or back.get("rot") or [0, 0, 0]), "flags": "0", "arrival": list(arrival)}
+    out = [{**back, "id": back_id, "src": back["id"], "seat": {"mode": "free"},
+            "door": {**back["door"], "to_space": "exterior", "to_ref": door["id"], "to_pos": list(arrival),
+                     "to_rot": [0.0, 0.0, door["rot"][2]]}}]
+    for r in sorted(sp.refs, key=lambda r: r["id"]):
+        if r is back or r.get("kind") == "actor":
+            continue
+        rid = io.mint(place_id, sid, r["id"])
+        if (r.get("door") or {}).get("to_space") == "exterior" or r["id"] in (spec.get("drop") or {}):
+            out.append({"id": rid, "src": r["id"], "removed": True})       # one way in: this door's; or the agent's drop
+        elif r.get("base") in replace:
+            out.append({**r, **interiors.swap(r, {}, replace[r["base"]]), "id": rid, "src": r["id"], "seat": {"mode": "free"}})
+        elif r.get("base") in nordic:
+            out.append({"id": rid, "src": r["id"], "removed": True})       # a Nordic piece we would add (0006)
+    info = {"space_id": sid, "copy_of": spec["copy_of"], "name": sp.meta.get("name"), "door_from": door["id"],
+            "parent": "exterior", "room": None, "added": True}
+    return sid, info, out
+
+
 def apply(st, log=print) -> None:
-    """The `add` stage: every `draft.add` row placed again as `rows` gives it; rows it minted before and no longer
-    lists are taken out; nothing else is touched."""
+    """The `add` stage: every `draft.add` row placed again as `rows` gives it, and every room a row brings copied
+    again; rows and rooms it made before and no longer lists are taken out; nothing else is touched."""
     from tools.places.seat import seat_all
     dec = st.place.get("draft") or {}
+    adds = dec.get("add") or []
     want = rows(st.place_id, dec, st.bases)
     st.bases.update(io.catalogue_bases({r["base"] for _, r in want} - set(st.bases)))
     want = rows(st.place_id, dec, st.bases)
-    minted = {io.mint(st.place_id, "add", str(k), b) for k in range(len(dec.get("add") or []) + 64)
-              for b in {a["base"] for a in dec.get("add") or []} | {r["base"] for sp in st.files["spaces"].values()
-                                                                   for r in sp["refs"] if r.get("why") and not r.get("src")}}
+    minted = {io.mint(st.place_id, "add", str(k), b) for k in range(len(adds) + 64)
+              for b in {a["base"] for a in adds} | {r["base"] for sp in st.files["spaces"].values()
+                                                    for r in sp["refs"] if r.get("why") and not r.get("src")}}
     ids = {r["id"] for _, r in want}
     for sid, sp in st.files["spaces"].items():
         gone = [r["id"] for r in sp["refs"] if r["id"] in minted and r["id"] not in ids]
         if gone:
             sp["refs"] = [r for r in sp["refs"] if r["id"] not in gone]
             log(f"draft add {st.place_id}: {sid}: no longer listed, taken out: {', '.join(gone)}")
+    # the rooms the rows bring
+    rooms: dict[str, tuple[dict, list[dict]]] = {}
+    srcs: dict[str, object] = {}
+    replace = io.replacements(dec, st.bases)
+    standing = {r["id"]: r for r in st.files["spaces"]["exterior"]["refs"]}
+    for (sid, r), a in zip(want, adds):
+        if not a.get("room"):
+            continue
+        if sid != "exterior":
+            raise ValueError(f"draft.add {r['id']}: a room's door stands outside")
+        source_id, cell = a["room"]["copy_of"].split("/", 1)
+        if source_id not in srcs:
+            srcs[source_id] = st.src if source_id == st.place.get("source_id") else io.load(f"src.{source_id}", st.bundles)
+        src = srcs[source_id]
+        keys = {x["base"] for x in (src.spaces[cell].refs if cell in src.spaces else [])}
+        nordic = {k for k, b in io.catalogue_bases(keys).items() if b.get("nordic")}
+        moved = ((standing.get(r["id"]) or {}).get("door") or {}).get("arrival")
+        rid, info, refs = room(st.place_id, r, a["room"], src, replace, nordic, st.G, moved)
+        have = (st.files["spaces"].get(rid) or {}).get("space")
+        if (have is not None and not have.get("added")) or rid in rooms:
+            raise ValueError(f"draft.add {r['id']}: room {rid} is already a space of the place: give the room a `space`")
+        rooms[rid] = (info, refs)
+    for sid in [s for s, sp in st.files["spaces"].items() if (sp.get("space") or {}).get("added") and s not in rooms]:
+        del st.files["spaces"][sid]
+        log(f"draft add {st.place_id}: room {sid}: no longer listed, taken out")
+    for sid, (info, refs) in rooms.items():
+        sp = st.files["spaces"].get(sid)
+        if sp is None or sp.get("space") is None:
+            st.files["spaces"][sid] = {"space": info, "refs": refs}
+            log(f"draft add {st.place_id}: room {sid} copied from {info['copy_of']} behind {info['door_from']}")
+            continue
+        info = {**info, "name": sp["space"].get("name") or info["name"]}     # its name is the names stage's
+        if info != sp["space"] or refs != sp["refs"]:
+            sp["space"], sp["refs"] = info, refs
+            log(f"draft add {st.place_id}: room {sid} copied again")
     outside = [r for sid, r in want if sid == "exterior"]
     settle(outside, [r for r in st.ext if r["id"] not in ids], st.bases, st.G,
            float((st.place.get("fit") or {}).get("relief_norm", 64.0)), lambda m: log(f"draft add {st.place_id}: {m}"))
-    seat_all(outside, st.G)
+    held = {r["seat"]["on"] for r in outside if r["seat"].get("on")} - ids     # what our things stand on, as it stands
+    seat_all(outside + [copy.deepcopy(r) for r in st.ext if r["id"] in held], st.G)
     for sid, r in want:
         sp = st.files["spaces"].get(sid)
         if sp is None:

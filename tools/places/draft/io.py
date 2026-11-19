@@ -1,6 +1,7 @@
 """Reading bundles and place files for the draft (the contract's shapes, docs/design/place-studio.md)."""
 from __future__ import annotations
 
+import functools
 import hashlib
 import json
 import re
@@ -66,6 +67,26 @@ def load(bundle_id: str, root: Path = BUNDLES) -> Bundle:
         b.spaces[sdir.name] = Space(sdir.name, smeta, read_jsonl(sdir / "refs.jsonl"), read_jsonl(sdir / "navmesh.jsonl"),
                                     sdir)
     return b
+
+
+def copied_space(copy_of: str, src: Bundle, root: Path = BUNDLES) -> "Space | None":
+    """The source space a copied room of ours is read from: `<source_id>/<cell>` in the place's own source bundle, or
+    in another source's bundle for a room added from elsewhere (`draft.add` `room`)."""
+    if not copy_of or "/" not in copy_of:
+        return None
+    source_id, cell = copy_of.split("/", 1)
+    own = src.meta.get("source_id") or src.meta.get("bundle_id", "").removeprefix("src.")
+    if source_id == own:
+        return src.spaces.get(cell)
+    try:
+        return _other(source_id, str(root)).spaces.get(cell)
+    except FileNotFoundError:
+        return None
+
+
+@functools.lru_cache(maxsize=4)
+def _other(source_id: str, root: str) -> Bundle:
+    return load(f"src.{source_id}", Path(root))
 
 
 _B32 = "0123456789ABCDEFGHJKMNPQRSTVWXYZ"

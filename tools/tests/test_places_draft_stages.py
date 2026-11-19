@@ -203,3 +203,41 @@ def test_clearance_takes_a_reused_world_ref_as_the_plant_the_world_has_now(fx):
     counts = stages.run("clearance", "fx", fx / "places", fx / "bundles", log=lambda *_: None)
     assert counts == {"clear.jsonl": {"changed": 1, "added": 0, "removed": 0}}
     assert next(r for r in rows(p) if r["ref"] == stale["ref"])["pos"] == true_pos
+
+
+def test_add_brings_a_room_of_another_source_behind_an_added_door_and_takes_it_out_again(fx, monkeypatch):
+    """A `draft.add` door with `room` copies that source interior as a room of ours, its way out paired with the door
+    and the door seated on the building row it names by `on`; a Nordic piece of the room is removed; a rerun changes
+    nothing; dropping the rows takes the room out again."""
+    from tools.places.draft import io
+    monkeypatch.setattr(io, "catalogue_bases", lambda keys, path=None: {k: {"key": k, "nordic": True} for k in keys
+                                                                        if k == "T.esm:000007"})
+    pj = fx / "places/fx/place.json"
+    place = json.loads(pj.read_text())
+    before = list(place["draft"].get("add") or [])
+    place["draft"]["add"] = before + [
+        {"base": "T.esm:000001", "kind": "building", "pos": [40500, 1500], "why": "a hall"},
+        {"base": "T.esm:000005", "kind": "door", "pos": [40500, 1240], "on": io.mint("fx", "add", str(len(before)), "T.esm:000001"), "dz": 5.0, "why": "its door",
+         "room": {"copy_of": "t.fx/HallInt", "space": "AddedHall", "arrival": [40500, 1100]}},
+        {"base": "Skyrim.esm:000010", "kind": "marker", "pos": [40600, 1100], "map_marker": "Hall Landing", "why": "a marker"}]
+    pj.write_text(json.dumps(place, indent=1) + "\n")
+    stages.run("add", "fx", fx / "places", fx / "bundles", log=lambda *_: None)
+    ext = {r["id"]: r for r in rows(fx / "places/fx/spaces/exterior/refs.jsonl")}
+    house = ext[io.mint("fx", "add", str(len(before)), "T.esm:000001")]
+    door = ext[io.mint("fx", "add", str(len(before) + 1), "T.esm:000005")]
+    mark = ext[io.mint("fx", "add", str(len(before) + 2), "Skyrim.esm:000010")]
+    assert door["seat"] == {"mode": "on", "on": house["id"], "dz": 5.0} and abs(door["pos"][2] - house["pos"][2] - 5.0) < 1e-3
+    assert mark["map_marker"]["Name"] == "Hall Landing" and "persistent" in mark["flags"]
+    sj = json.loads((fx / "places/fx/spaces/AddedHall/space.json").read_text())
+    assert sj["copy_of"] == "t.fx/HallInt" and sj["door_from"] == door["id"] and sj["added"] and sj["parent"] == "exterior"
+    inside = rows(fx / "places/fx/spaces/AddedHall/refs.jsonl")
+    back = next(r for r in inside if r.get("src") == "HLD")
+    assert door["door"]["to_space"] == "AddedHall" and door["door"]["to_ref"] == back["id"]
+    assert back["door"]["to_ref"] == door["id"] and back["door"]["to_pos"][:2] == [40500.0, 1100.0]
+    assert sum(1 for r in inside if r.get("removed")) == 8          # the hall's eight Nordic beds
+    assert stages.run("add", "fx", fx / "places", fx / "bundles", log=lambda *_: None) == {}
+    place["draft"]["add"] = before
+    pj.write_text(json.dumps(place, indent=1) + "\n")
+    stages.run("add", "fx", fx / "places", fx / "bundles", log=lambda *_: None)
+    assert not (fx / "places/fx/spaces/AddedHall").exists()
+    assert door["id"] not in {r["id"] for r in rows(fx / "places/fx/spaces/exterior/refs.jsonl")}

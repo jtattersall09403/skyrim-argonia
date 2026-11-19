@@ -7,6 +7,10 @@
    "01cellDUPLICATE002": {
     "name": "Market Cave",
     "why": "the source cell has no name (Black Marsh.esm 01cellDUPLICATE002) and no household or promise of ours is kept in it; what a player finds inside is three market stalls, an armour rack, a weapon rack and food stores in a cave, so it is named for that (AGENT_INVENTED)"
+   },
+   "XeechLeelCouncilHouse": {
+    "name": "The Council House of the Xeech-Leel",
+    "why": "the thieves' line names the house by its door (thieves.md:350); no household lives there and no promise of the place record names it (AGENT_INVENTED)"
    }
   },
   "add": [
@@ -50,8 +54,89 @@
     "name": "Urn Case",
     "tier": "AGENT_INVENTED",
     "why": "the case that holds the order's sealed urn (Sisei-Xul, quests 5 to 10 and the ending; House Cardruhn, 9. The Urn): King of the Murkmire's rustic chest beside the hall's arcane enchanter inside the door, named so a player reads what it is; owned by the town and locked at Expert in the stock source; the urn itself is the quests' own thing put inside it"
+   },
+   {
+    "base": "Skyrim.esm:09727E",
+    "kind": "activator",
+    "pos": [
+     -31020.4,
+     -610425.3
+    ],
+    "scale": 1.8,
+    "dz": 2.0,
+    "need": 11,
+    "tier": "AGENT_INVENTED",
+    "why": "the rootworm's root pool under the city tree (main story, 5. The Handler, 6. The Glass Eye, every ride; the Underground Express of the canon, whose riders board at a root pool): Skyrim's plain still water puddle (WaterPuddle, clear water, not the tree's amber sap) at 1.8 scale, 900 units west of the trunk of the sacred tree (helstrom.W8H2ZE5XRXHVJN6080NV1ASNXE), beyond the root-tender Cheeval-Xu's spot and clear of the tree's own sap pool at its foot"
+   },
+   {
+    "base": "King of the Murkmire.esp:0CF38A",
+    "kind": "clutter",
+    "pos": [
+     -31330.0,
+     -610383.0
+    ],
+    "rot_z": 1.5708,
+    "dz": -20.0,
+    "need": 11,
+    "tier": "AGENT_INVENTED",
+    "why": "the mouth of the rootworm's tunnel at the root pool's west lip, where the worm comes up among the roots: King of the Murkmire's own rootworm tunnel entrance (RootWormTunnelsEnt01MarshMud02), sunk 20 units into the mud"
+   },
+   {
+    "base": "Skyrim.esm:000010",
+    "kind": "marker",
+    "pos": [
+     -30650.0,
+     -610383.0
+    ],
+    "map_marker": "Rootworm Landing (Helstrom)",
+    "need": 11,
+    "tier": "AGENT_INVENTED",
+    "why": "the map marker of the rootworm's landing under the city tree (MN06's marker.mn06.rootworm-helstrom), on the root pool's east lip between the pool and the root-tender's spot"
+   },
+   {
+    "base": "King of the Murkmire.esp:05CCD1",
+    "kind": "building",
+    "pos": [
+     -28282.0,
+     -614700.5
+    ],
+    "rot_z": 4.7124,
+    "need": 6,
+    "tier": "AGENT_INVENTED",
+    "why": "the council house of the Xeech-Leel (thieves, 9. The Council's Strongroom, 10. Two of Four, 12. The Great Heist): the house Dragonthorn Manor stands in at King of the Murkmire's Lilmoth (MurkmireHouse06Beige), on flat dry ground in the town south-east of the sacred tree, its front door opening east onto the street"
+   },
+   {
+    "base": "King of the Murkmire.esp:093D0D",
+    "kind": "door",
+    "pos": [
+     -27955.1,
+     -614447.5
+    ],
+    "rot_z": 4.7124,
+    "on": "helstrom.AM9WF1VR5PD1MJ3VWS1DMZYNC4",
+    "dz": 8.86,
+    "need": 6,
+    "tier": "AGENT_INVENTED",
+    "room": {
+     "copy_of": "kingofthemurkmire.lilmothlocation/LilmothMerchantManor01",
+     "door": "King of the Murkmire.esp:864AD2",
+     "space": "XeechLeelCouncilHouse",
+     "arrival": [
+      -27854.8,
+      -614439.1
+     ],
+     "drop": {
+      "King of the Murkmire.esp:864C11": "Lilmoth's strong box of levelled gems and jewellery: nothing levelled is placed (decision 0035); the council's gold is the strongroom's, placed by its quest"
+     }
+    },
+    "why": "the council house's front door (MudHutLDoor02, where Lilmoth sets it on the house, without Lilmoth's door frame, which the door would stand inside), into a copy of Dragonthorn Manor's interior (King of the Murkmire's Lilmoth: a Murkmire house with its hall, writing desks, stair to an upper room and partition doors), the hall open by day"
    }
-  ]
+  ],
+  "replace": {
+   "Skyrim.esm:0E29F4": {
+    "base": "Skyrim.esm:08C4B1"
+   }
+  }
  },
  "fit": {
   "pivot": [
@@ -7005,7 +7090,7 @@
  },
  "ground": {
   "bundle": "ground.helstrom",
-  "sha": "082926089062d048e812c60e31d81b54b72e92100cbdc1baaf2a643f4bad6f38",
+  "sha": "0f97a7d93e2c38b6b3b2c8714f0e0d637984e74b7a75e5f8e9c9c9bb33f90e34",
   "stamp": "5450d013b0bdaa01"
  },
  "source": {

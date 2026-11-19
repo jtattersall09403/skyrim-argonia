@@ -236,7 +236,20 @@ The tools lay the network by these rules.
   `rests` at it. Outside, a thing stands on ground that carries its whole footprint: the ground under it rises no
   more than the source's builders built on (`fit.relief_norm`) and no water lies under any of it (a building, a bed, a container; a fence or a tree may stand in a creek bed). Choose such a
   spot; the tools move one that is not to the nearest spot within 1536 units that is, clear of every solid, with
-  what stands inside it (a tent's bed), and `draft check` fails one with no ground under part of it.
+  what stands inside it (a tent's bed), and `draft check` fails one with no ground under part of it. A thing set on another (moss on a fence, a door on its
+  building) names that placed row's id, an added row's included, in `on`, with `dz` its height over that row's origin.
+  A map marker a story names is a row on Skyrim's map marker (`Skyrim.esm:000010`) with `map_marker`
+  (the name the world map shows).
+- **A building a story needs and the source lacks** is added whole from a place of our mods that has it, laid as
+  that place lays it: its exterior piece, then each piece set on it (door, door frame) as a `draft.add` row with `on`
+  (the building row's id) and `dz` (its height over the building there), at the source's offsets and turn, on
+  flat dry ground clear of every placed solid and off the streets. Its door carries `room` {`copy_of`
+  `<source_id>/<cell>`, `door` (the cell's way out), `space` (our space id), `arrival` (where one steps out, in
+  front of the door), `drop` ({source ref id: why} for a piece the room must not bring, such as a container of
+  levelled treasure)}: the `add` stage copies that interior as a room of ours behind the door, the pair made, every
+  further way out and every Nordic piece of it removed (or swapped by `draft.replace`). A piece set into the
+  building's wall round the door (a door frame) is left out: the door would stand inside it. Name the room in
+  `draft.room_names` and run `names`, then `clearance` and `streets`.
 - **What the record promises and the source lacks is added in the source's own style.** The tools add each
   missing crafting station by the person who works it, the way Skyrim's towns do (the smith's yard outside the
   smithy; the alchemy lab with the apothecary; the enchanter with the spell trader; the cooking pot at the inn).
@@ -378,7 +391,7 @@ and removed per file; a stage that would write outside what it owns changes noth
 | `primitives` | the source bundle, the kept pieces or the primitive classes changed | each exterior row's `primitive`, and a kept collision box's place, turn, seat and cluster by its piece; a dropped box's or trigger's row and its ledger row |
 | `hang` | trees under a place's Hist moved, turned or were swapped; lanterns are owed to a drafted place | the place's rope lanterns on its Hist and the trees round it; `place.json` `hang` |
 | `sap` | a Hist was added, moved, swapped or died | each living Hist's sap pool and its hollow; `place.json` `sap`; `land.jsonl` rows `by` "sap" |
-| `add` | `draft.add` changed: a thing placed by hand, outside or in a room | the rows `draft.add` mints |
+| `add` | `draft.add` changed: a thing placed by hand, outside or in a room | the rows `draft.add` mints; the rooms its doors bring (their `space.json`, marked `added`, and refs) |
 | `names` | who lives or works in a room changed, a promise moved, `draft.room_names` changed | each room's `name` in its `space.json` |
 
 1. Make the change that calls for it (`place.json` `draft`, the people source, a rule of the tools).

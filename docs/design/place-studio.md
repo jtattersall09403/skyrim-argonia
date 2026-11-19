@@ -234,7 +234,9 @@ space, by}), `ground`, `source`,
 
 An interior copy brings every ref of the source space except actors. Its `space.json` adds `door_from` (our door
 that leads in), `parent` and `room`: when the source packs several rooms into one cell, the source door of this
-copy's own room (its beds are the ones nearer that door than any other way out). Its `refs.jsonl` rows carry `src`
+copy's own room (its beds are the ones nearer that door than any other way out). A room the draft adds from another
+source behind a `draft.add` door (`copy_of` naming that source) carries `added: true`: it is the `add` stage's, and
+the checks read it from that source's bundle. Its `refs.jsonl` rows carry `src`
 (the source ref they override, by its source id); refs not listed are copied unchanged. A person's `bed` and
 routine `at` name a copied ref by its source id with the copy's `space`; a row with no `src` in a copy is an
 addition (a station). `clear.jsonl` rows add `why` and `ref`. A ref the draft added (station, bridge) has `src`

@@ -170,24 +170,31 @@
   {
    "seq": 6,
    "from": [
-    "dc97d42585"
+    "d5ef89834f"
    ],
-   "thing": "the Xeech-Leel's council house: a hall open by day, the treasurer's room upstairs, a front door, a back door to the river landing, a gallery door reached up the stilts and a strongroom behind an iron door",
+   "thing": "the Xeech-Leel's council house (a building Helstrom does not have): a hall open by day, the treasurer's room upstairs, a front door, a back door to the river landing (an Expert lock), a gallery door reached up the stilts, a strongroom behind an iron door (a Master lock) with the gold, the seal ring and the silver, six wardens at night, and the cook (to be added to Helstrom: its source has only a one-room house and a ship, so the building is made from Dragonthorn Manor of King of the Murkmire's Lilmoth with its barracks for the wardens, and the strongroom is added as one locked iron door and a room of Imperial pieces)",
    "line": "thieves",
-   "rests": null,
-   "signs": [],
+   "rests": {
+    "space": "XeechLeelCouncilHouse"
+   },
+   "signs": [
+    {
+     "sign": "label",
+     "detail": "its door shows \"The Council House of the Xeech-Leel\""
+    }
+   ],
    "met": false,
-   "why": "Not met. Helstrom's place files hold no council house: no building there is the seat of the Xeech-Leel's council, and none has a strongroom.",
-   "fit": "A promise to keep at the place's next change: a large stilt hall near the sacred tree, built from the source city's Argonian pieces, whose door shows \"Council House\", with a hall by day, an upper room for the treasurer, a back door down to the river landing, a gallery door up the stilts and a strongroom behind an iron door. It must not be the Toh-Reel-Ka's quiet house or any building the main quest uses.",
-   "narrow": "No: it is a new building with its interiors, added to the drafted town as one change, not a redraft.",
+   "why": "Partly met. A Murkmire stilt house stands in the town south-east of the sacred tree, its front door opening east onto the street and showing \"The Council House of the Xeech-Leel\"; inside is a copy of Dragonthorn Manor of King of the Murkmire's Lilmoth, its hall with writing desks and silver, a stair to an upper room and partition doors, open (no lock) by day. Not yet there: the back door to the river landing (Expert lock), the gallery door up the stilts, the strongroom behind an iron door (Master lock), Dragonthorn Manor's barracks for the six wardens, and the cook and wardens themselves.",
+   "fit": "The council house as placed; the upper room of the copied manor serves as the treasurer's room.",
+   "narrow": "Yes, each by a narrow change: the barracks as a second added room behind a door on the house's back (draft.add room, Dragonthorn Manor Barracks), the strongroom as one locked iron door and a room of Imperial pieces added inside the copy, and the wardens and cook as people rows (place-people) or the quest's own placements; the back and gallery doors need a second way into one copied room, which the add stage does not yet make.",
    "tier": "AGENT_INVENTED"
   },
   {
    "seq": 7,
    "from": [
-    "ef3c7cdb4f"
+    "17782250e2"
    ],
-   "thing": "a quiet house, its door showing \"Nesh-Deeka's House\" (one of the source city's one-room Argonian houses), where the handler, Nesh-Deeka, stands by the door and Never-Writes-Twice at the back",
+   "thing": "a quiet house south of the city tree by the city landing, its door showing \"Nesh-Deeka's House\" (the source city's one-room Argonian house 8, with its tables, benches, beds, enchanter and locked chest), where the handler, Nesh-Deeka, stands by the table and Never-Writes-Twice at the back",
    "line": "main",
    "rests": {
     "space": "01ArgonianHouseinside.8"
@@ -212,7 +219,7 @@
     }
    ],
    "met": true,
-   "why": "Met. The one-room Argonian house nearest the city landing now shows \"Nesh-Deeka's House\" on its door; its household is hers alone, with Never-Writes-Twice as its lodger (the quest keeps her disabled until quest 10). The room holds three tables, two chairs and three benches, six beds, four dressers, two workbenches, an arcane enchanter, an iron door and a locked chest the household owns; the other residents left the city's people.",
+   "why": "Met. The one-room Argonian house nearest the city landing now shows \"Nesh-Deeka's House\" on its door; its household is hers alone, with Never-Writes-Twice as its lodger (the quest keeps her disabled until quest 10). The room holds three tables, two chairs and three benches, six beds, four dressers, two workbenches, an arcane enchanter, an iron door and a locked chest the household owns; the other residents left the city's people. Nesh-Deeka's own spot by the table is the quest's placement.",
    "tier": "AGENT_INVENTED",
    "sight": {
     "result": "recognised",
@@ -222,9 +229,9 @@
   {
    "seq": 8,
    "from": [
-    "8c11f84fec"
+    "711670371c"
    ],
-   "thing": "the Unbound go-between lodging at the Boatmen's Lodge, the city's inn (the source's ship interior), with his two hired men beside him and a jar of stolen sap in his pack",
+   "thing": "the Unbound go-between, Keel-Raa, lodging at the Boatmen's Lodge, the city's inn (the source's ship interior), among the crates at the far end of the hold, with his two hired men beside him, and his pack (a knapsack he owns, Skyrim's container) on the crates behind them with a jar of stolen sap in it",
    "line": "main",
    "rests": {
     "space": "01Ship"
@@ -241,7 +248,7 @@
     }
    ],
    "met": true,
-   "why": "Met as a lodging. The moored ship's hold shows \"Boatmen's Lodge\" on its door and is the city's inn, kept by Sleeps-Last, with one bed to rent. The go-between and his two hired men are the quest's own placements. The hold has no dining table: its far end, about 6 to 7 metres from the door, holds a long crate, a shelf and stacked crates; the only table is a small end table by the bed, about 2 metres in.",
+   "why": "Met for the place's part. The moored ship's hold shows \"Boatmen's Lodge\" on its door and is the city's inn, kept by Sleeps-Last; its far end, 6 to 7 metres from the door, holds a long crate, a shelf and stacked crates. Keel-Raa, his two hired men and his pack with the jar of sap are the quest's own placements among those crates.",
    "fit": "The go-between and his men can stand at the far end of the hold among the crates, or by the end table and the bed.",
    "narrow": "Yes, if a table is wanted: one table placed by hand at the far end of the hold (draft.add) is a narrow change.",
    "tier": "AGENT_INVENTED",
@@ -253,10 +260,10 @@
   {
    "seq": 9,
    "from": [
-    "d8b4b73dd5",
-    "9d3faf211a"
+    "05b6d4beb7",
+    "78525de852"
    ],
-   "thing": "the tree-minders' hall with its arcane enchanter and the order's urn in a case with an expert lock",
+   "thing": "the tree-minders' hall (an added interior built from King of the Murkmire's Hist-root pieces) with its arcane enchanter, Okan-Zeel, the order's enchanter and an urn niche",
    "line": "sisei-xul",
    "rests": {
     "space": "01BlackRoseJail",
@@ -269,7 +276,7 @@
     }
    ],
    "met": true,
-   "why": "Met for the place's part. The cave by the waterfalls shows \"Tree-Minders' Hall\" on its door; inside the door stand the arcane enchanter and, beside it, a chest the game names \"Urn Case\", locked at Expert and owned by the town. Okan-Zeel, the order's enchanter, the two grave-singers and the urn itself are the quests' own placements and thing.",
+   "why": "Met for the place's part. The cave by the waterfalls shows \"Tree-Minders' Hall\" on its door; inside the door stand the arcane enchanter and, beside it, a chest the game names \"Urn Case\", locked at Expert and owned by the town, which serves as the urn's niche. The hall is the source city's own cave, not built from King of the Murkmire's Hist-root pieces as the story words it; a player meets a hall of the order either way. Okan-Zeel, the two grave-singers and the urn itself are the quests' own placements and thing.",
    "fit": "The hall's entrance, beside the enchanter, where the healer Taleeka-Ma already works.",
    "narrow": "Yes: one container placed by hand and its lock; nothing else changed.",
    "tier": "AGENT_INVENTED"
@@ -277,9 +284,9 @@
   {
    "seq": 10,
    "from": [
-    "77ab711065"
+    "04f01fd433"
    ],
-   "thing": "the market where the council's treasurer walks by day, and a raft-master at the city landing",
+   "thing": "the treasurer in the market by day; a raft-master at the city landing (the market square and the root landing are additions that the place's record lists)",
    "line": "thieves",
    "rests": {
     "person": "helstrom.YFMTJK20VGQ52AK51GM46YJQYR"
@@ -296,6 +303,52 @@
    "fit": "The landing and the market as they stand.",
    "narrow": "Nothing to change.",
    "tier": "AGENT_INVENTED"
+  },
+  {
+   "seq": 11,
+   "from": [
+    "2a34cb82eb"
+   ],
+   "thing": "the city tree with a root pool at its foot, the rootworm's stop, and Cheeval-Xu, its root-tender, beside it (the tree and Cheeval-Xu are in the draft; the pool is owed)",
+   "line": "main",
+   "tier": "AGENT_INVENTED",
+   "rests": {
+    "space": "exterior",
+    "ref": "helstrom.NH7D6CHSYD27JCAJXRXG1NHRQ1"
+   },
+   "signs": [
+    {
+     "sign": "label",
+     "detail": "the world map marks \"Rootworm Landing (Helstrom)\" at the pool"
+    },
+    {
+     "sign": "look",
+     "detail": "a clear pool of still water under the sacred tree, distinct from the amber sap at its foot, with the rootworm's tunnel mouth at its far lip"
+    },
+    {
+     "sign": "person",
+     "detail": "the root-tender Cheeval-Xu works beside it and sells the rootworm's rides",
+     "person": "helstrom.C2855503QH3SHVRJDJSG1E9MKM"
+    }
+   ],
+   "met": true,
+   "why": "Met. Under the sacred tree (HistTree04), 900 units west of its trunk and clear of its own sap pool, lies a clear root pool (Skyrim's still water puddle at 1.8 scale) with King of the Murkmire's rootworm tunnel mouth at its west lip, and a map marker \"Rootworm Landing (Helstrom)\" on its east lip; the root-tender Cheeval-Xu works between the pool and the trunk and gives the rootworm stop (seq 0 of the record's gives).",
+   "fit": "The pool as placed.",
+   "narrow": "Nothing more to change."
+  },
+  {
+   "seq": 12,
+   "from": [
+    "8c29921fde"
+   ],
+   "thing": "the band's safe house, a quiet room off the market: one of the Argonian house interiors of Black Marsh & Valenwood's Helstrom (the drafted place already holds nine of that interior), with a bed, a chest, a keeper and two lanterns, all added",
+   "line": "chainbreakers",
+   "tier": "AGENT_INVENTED",
+   "signs": [],
+   "met": false,
+   "why": "Not met. Helstrom holds nine one-room Argonian house interiors, but none is the band's safe house: no house off the market stands empty of a household, and none holds the band's bed, chest, keeper and two lanterns in its window.",
+   "fit": "One of the one-room Argonian houses near the Market Cave and the traders round the sacred tree, its household moved out, with the band's bed and chest inside and two lanterns placed by its window.",
+   "narrow": "Yes: a house's household moved (place-people), then a bed, a chest and two lanterns placed by hand (draft.add in the room) and the keeper as a person row or the quest's placement."
   }
  ],
  "dismissed": []
