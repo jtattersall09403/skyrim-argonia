@@ -135,7 +135,10 @@ added here the day they are made, with the date and the issue.
 - The main quest is delivered as the owner authored it (main-plot.md and the MN records, Act I above all); places,
   records and sources are fitted to it, with only minor tweaks to the story where a place or the lore cannot carry
   it (2026-11-19, #80).
-- A source place may serve several places, each adapted differently so no two feel alike (2026-11-19, #80).
+- A source place may serve several places, each adapted differently so no two feel alike, judged case by case:
+  two stilt villages on one stilt-village source can be fine, many places on one source is not, and two mines on
+  one source is not when another good mine source fits with light re-authoring (2026-11-19, #80).
+- When things must change to fit, change the cheapest thing with the fewest knock-on effects (2026-11-19, #80).
 - The terrain and the water are not rebuilt or regenerated in this review (2026-11-19, #80).
 - A draft never holds an obviously wrong thing: a piece floating in mid-air, a bridge without two supports, a
   stand-in box where a building's model did not resolve (Helstrom's Xanmeer pyramid); the drafting tools detect
