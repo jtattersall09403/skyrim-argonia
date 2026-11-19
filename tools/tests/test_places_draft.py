@@ -23,7 +23,22 @@ def fx(tmp_path_factory):
         mp.setattr(io, "_stations", None)
         mp.setattr(lights, "_lights", None)
         counts = run.draft("fx", root / "bundles", root / "places", record=(F.RECORD, F.GIVES))
+        _plan(root / "places" / "fx")
         yield root, counts
+
+
+def _plan(pdir: Path) -> None:
+    """The agent's plan against the record (place-build): every look line delivered, every standing building of the
+    source judged kept."""
+    place = json.loads((pdir / "place.json").read_text())
+    refs = [json.loads(line) for line in (pdir / "spaces/exterior/refs.jsonl").read_text().splitlines()]
+    clusters = sorted({r["cluster"] for r in refs if r.get("kind") == "building" and r.get("src") and r.get("cluster")})
+    place.setdefault("draft", {})["plan"] = {
+        "look": [{"line": "a river town of houses and a hall", "by": "S0 S1 S2 HALL"},
+                 {"line": "a pier on the river", "by": "PIER"}],
+        "structures": [{"cluster": c, "what": "source building", "verdict": "kept", "why": "the record's town"}
+                       for c in clusters]}
+    (pdir / "place.json").write_text(json.dumps(place, indent=1))
 
 
 def test_ground_queries(tmp_path):
@@ -66,6 +81,8 @@ def test_patches_shift_vertices(tmp_path):
 def test_draft_passes_its_checks(fx):
     root, counts = fx
     assert check.check("fx", root / "bundles", root / "places", gives=F.GIVES) == []
+    place = json.loads((root / "places/fx/place.json").read_text())
+    assert check.plan_checks({}, []) and check.plan_checks(place, []) == []
     assert counts["interiors"] == 4            # three houses share one source interior: three copies, and the hall
     assert counts["people"]["boatman"] == 1 and counts["people"]["guard"] >= 2
 
