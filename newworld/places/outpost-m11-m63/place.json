@@ -265,7 +265,7 @@
     "why": "the Hist-shoot post: a young shoot of Jal-Veesa's Hist the wardens keep at the camp (place record: source note, 'Still to add: ... the Hist-shoot post'): King of the Murkmire's smallest Hist, young"
    },
    {
-    "base": "Curse of Cipactli.esp:2EF781",
+    "base": "King of the Murkmire.esp:01FA38",
     "kind": "static",
     "pos": [
      -82380.0,
@@ -273,7 +273,7 @@
     ],
     "rot_z": 0.0,
     "tier": "AGENT_INVENTED",
-    "why": "the post the Hist shoot is tied to (place record: source note, 'the Hist-shoot post'): a carved Saxhleel stake of Curse of Cipactli's"
+    "why": "the post the Hist shoot is tied to (place record: source note, 'the Hist-shoot post'): a cypress stake of King of the Murkmire's (MudHutWalkwayPole)"
    },
    {
     "base": "King of the Murkmire.esp:01FA35",
@@ -411,7 +411,7 @@
     },
     {
      "line": "the Hist-shoot post (source note)",
-     "by": "an added young Hist (HistTree05 at 0.5) in its sap pool, with a carved Saxhleel stake beside it"
+     "by": "an added young Hist (HistTree05 at 0.5) in its sap pool, with a cypress stake beside it"
     },
     {
      "line": "the hidden sack in the reeds (treasure x1)",
@@ -451,7 +451,8 @@
      "verdict": "kept",
      "why": "an ordinary part of the marsh round a Hist-keeping camp; no building"
     }
-   ]
+   ],
+   "source": "Allocated King of the Murkmire cluster -29,-29 is a ruin and trap site with no tent or platform: a poor match. Of the ranked alternatives, near Loreisian (King of the Murkmire camp-tribal: 8 Argonian camp and shrine pieces, 5 people) is closest to a two-warden camp of hide tents on platforms; Ree-An-Wo (31 buildings, 16 people) is far too big, Black Rose is a ruin hamlet. Recommended: switch to near Loreisian by one whole redraft (not yet done); until then the camp is built from the pool on the allocated layout."
   }
  },
  "fit": {

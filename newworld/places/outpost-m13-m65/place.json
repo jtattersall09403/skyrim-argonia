@@ -375,7 +375,7 @@
     "why": "swamp fungus on the river bank's reed beds (place record: harvest-common, 'sedge and swamp fungus on the reed beds')"
    },
    {
-    "base": "Curse of Cipactli.esp:2EF781",
+    "base": "King of the Murkmire.esp:01FA38",
     "kind": "static",
     "pos": [
      -100260.0,
@@ -383,7 +383,7 @@
     ],
     "rot_z": 1.5708,
     "tier": "AGENT_INVENTED",
-    "why": "the grave-stake by the old post's gate (source note: 'Still to add: ... the grave-stake'): a carved Saxhleel grave-stake of Curse of Cipactli's"
+    "why": "the grave-stake by the old post's gate (source note: 'Still to add: ... the grave-stake'): a cypress stake of King of the Murkmire's (MudHutWalkwayPole), driven upright"
    },
    {
     "base": "Skyrim.esm:01769A",
@@ -438,7 +438,7 @@
     },
     {
      "line": "the grave-stake (source note)",
-     "by": "an added carved Saxhleel grave-stake by the gate"
+     "by": "an added cypress grave-stake by the gate"
     },
     {
      "line": "the cook's stall of dried fish and lamp oil (trader-general)",
@@ -460,7 +460,8 @@
      "verdict": "kept",
      "why": "the record's work barge; owner-approved"
     }
-   ]
+   ],
+   "source": "The Imperial barge source kept (owner-approved barge, gangway, hold door, hold kit, strongbox); the camp round it is built from the pool (hide tents, gate, reed, stake, cook's rack), as no ranked source is a reed-cutters' camp with a stone hut."
   }
  },
  "fit": {
