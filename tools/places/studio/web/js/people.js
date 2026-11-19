@@ -18,12 +18,15 @@ export function setPatrol(x, pts) {
   x.patrol = { points: pts, loop: Array.isArray(x.patrol) ? true : (x.patrol?.loop ?? true) };
 }
 
+const FIGURE = [[0, 0], [22, 0], [20, 70], [26, 95], [30, 130], [12, 142], [9, 148], [17, 158], [16, 172], [9, 182], [0, 184]];
+// the standing figure of a person, as the People layer and the Quests layer both draw one
+export const figureGeometry = () => new THREE.LatheGeometry(FIGURE.map(([x, y]) => new THREE.Vector2(x, y)), 10).rotateX(Math.PI / 2);
+
 export class People {
   constructor(app) {
     this.app = app; this.active = false; this.sel = null; this.armed = null; this.markers = new Map(); this._bySrc = new Map(); this._first = new Map(); this._walk = null; this._legs = new Map();
     // a simple standing figure turned from a profile: legs, body, shoulders, neck, head
-    const prof = [[0, 0], [22, 0], [20, 70], [26, 95], [30, 130], [12, 142], [9, 148], [17, 158], [16, 172], [9, 182], [0, 184]];
-    this.geo = new THREE.LatheGeometry(prof.map(([x, y]) => new THREE.Vector2(x, y)), 10).rotateX(Math.PI / 2);
+    this.geo = figureGeometry();
   }
   setActive(on) { this.active = on; if (!on) { this.armed = null; } this.refresh(); }
   list() { return [...(this.app.model?.people.values() || [])]; }

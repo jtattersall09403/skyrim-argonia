@@ -6,7 +6,8 @@
 import * as THREE from 'three';
 import { api } from './api.js';
 import { loadModel } from './objects.js';
-import { spotRow, moveOp, turned, keptRow } from './quest_ops.js';
+import { figureGeometry } from './people.js';
+import { spotRow, moveOp, turned, keptRow, drawAs } from './quest_ops.js';
 
 const NS = 'http://www.w3.org/2000/svg';
 const GOLD = '#d4a017', GOLD_SEL = '#ffcf33';
@@ -21,7 +22,7 @@ export class Quests {
     this.app = app; this.data = null; this.sel = null; this.armed = null; this.drag = null; this.markers = new Map();
     this.shown = store.get('studio.quests.shown') !== 'off';
     const pin = new THREE.ConeGeometry(45, 160, 12).rotateX(-Math.PI / 2).translate(0, 0, 80);   // point down on the spot
-    this.geo = { pin, head: new THREE.SphereGeometry(55, 14, 10).translate(0, 0, 195), face: new THREE.BoxGeometry(14, 120, 14).translate(0, 60, 12) };
+    this.geo = { pin, head: new THREE.SphereGeometry(55, 14, 10).translate(0, 0, 195), face: new THREE.BoxGeometry(14, 120, 14).translate(0, 60, 12), figure: figureGeometry() };
   }
   get a() { return this.app; }
   // ---------- data ----------
@@ -47,9 +48,11 @@ export class Quests {
         const mat = new THREE.MeshLambertMaterial({ color: KIND_COLOUR[it.kind] || GOLD, emissive: '#3a2a00' });
         m = new THREE.Group(); m.userData.quest = it.id; this.markers.set(it.id, m);
         // a thing with a model is drawn as that model (the way the place's own objects are), the pin only where none resolves
-        const pin = new THREE.Group(); pin.add(new THREE.Mesh(this.geo.pin, mat), new THREE.Mesh(this.geo.head, mat), new THREE.Mesh(this.geo.face, mat));
-        m.add(pin); m.userData.pin = pin;
-        if (it.model && it.kind !== 'person') {
+        const how = drawAs(it), pin = new THREE.Group();
+        if (how === 'person') pin.add(new THREE.Mesh(this.geo.figure, mat));
+        else pin.add(new THREE.Mesh(this.geo.pin, mat), new THREE.Mesh(this.geo.head, mat), new THREE.Mesh(this.geo.face, mat));
+        m.add(pin); m.userData.pin = pin; m.userData.draw = how;
+        if (how === 'model') {
           loadModel(it.model, 0, 0, 'other').then((parts) => {
             if (!parts?.length || parts.placeholder || this.markers.get(it.id) !== m) return;
             const real = new THREE.Group();
@@ -66,7 +69,7 @@ export class Quests {
       m.rotation.set(0, 0, -h);   // a heading turns clockwise seen from above
       m.scale.setScalar(mine ? 1.3 : 1);
       const col = mine ? GOLD_SEL : (KIND_COLOUR[it.kind] || GOLD);
-      m.userData.pin.scale.setScalar(m.userData.real ? 0.3 : 1);
+      m.userData.pin.visible = !m.userData.real;   // the real thing drawn: its name label alone marks it
       for (const c of m.userData.pin.children) { c.material.color.set(col); c.material.wireframe = drafted; c.material.transparent = drafted; c.material.opacity = drafted ? 0.6 : 1; }
       m.userData.real?.traverse((o) => { if (o.isMesh) { o.material.transparent = drafted; o.material.opacity = drafted ? 0.55 : 1; } });
       m.userData.at = p;
@@ -173,7 +176,7 @@ export class Quests {
   }
   panel() {
     const P = this.a.panels, parts = [];
-    parts.push(el(`<p>Things the quests put at this place. They are not part of the place itself: each belongs to a quest, and is in the world only when that quest says. Gold pins in the view are quest things (purple: a quest's person). Drag a pin to move it, or press <strong>Place</strong> and tap the ground. A move is saved with your other changes and, when you finalise, becomes the one spot the quest is built with.</p>`));
+    parts.push(el(`<p>Things the quests put at this place. They are not part of the place itself: each belongs to a quest, and is in the world only when that quest says. Quest things in the view are drawn as their real model where one is known (a quest's people as standing figures, otherwise a gold pin). Drag a pin to move it, or press <strong>Place</strong> and tap the ground. A move is saved with your other changes and, when you finalise, becomes the one spot the quest is built with.</p>`));
     const tog = el(`<button class="quiet" aria-pressed="${this.shown}">Quest things in the view: ${this.shown ? 'shown' : 'hidden'}</button>`);
     tog.onclick = () => { this.setShown(!this.shown); this.panel(); }; parts.push(tog);
     if (!this.data) parts.push(el('<p class="tag">The quest things could not be read for this place.</p>'));

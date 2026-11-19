@@ -220,7 +220,8 @@ placements:
   kind: thing
   base:
     kind: existing_base
-    id: Skyrim clutter, grey paste
+    id: 'Journey to Baan Malur.esp:0E5668'
+    about: Skyrim clutter, grey paste
   name: Sealed Scar
   anchor:
     place: outpost-m6-m66
@@ -281,7 +282,8 @@ placements:
   kind: thing
   base:
     kind: template_item
-    id: Skyrim clay jar
+    id: 'Skyrim.esm:08632A'
+    about: Skyrim clay jar
   anchor:
     place: outpost-m6-m66
     rule: surface
@@ -291,7 +293,8 @@ placements:
   kind: door
   base:
     kind: existing_base
-    id: the source town's house door
+    id: 'Dragonborn.esm:03ABD2'
+    about: the source town's house door
   anchor:
     place: jal-veesa
     rule: surface
@@ -314,7 +317,8 @@ placements:
   kind: marker
   base:
     kind: existing_base
-    id: map marker
+    id: 'Skyrim.esm:000010'
+    about: map marker
   anchor:
     place: outpost-m6-m66
     rule: surface

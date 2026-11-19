@@ -24,3 +24,9 @@ export function keptRow(row) {
   const { drafted, why, ...rest } = row; // eslint-disable-line no-unused-vars
   return rest;
 }
+// How an item is drawn: a person or creature as the standing figure (as the People layer draws one), a thing with a
+// resolved model as that model, anything else as a pin.
+export function drawAs(item) {
+  if (item.kind === 'person') return 'person';
+  return item.model ? 'model' : 'pin';
+}

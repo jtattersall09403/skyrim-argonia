@@ -196,7 +196,8 @@ placements:
   kind: thing
   base:
     kind: template_item
-    id: Here There Be Monsters hanging moss ingredient
+    id: 'Here There Be Monsters - Curse of Cipactli.esp:516172'
+    about: Here There Be Monsters hanging moss ingredient
   name: Sithis' Beard
   anchor:
     place: outpost-m11-m63
@@ -284,7 +285,8 @@ placements:
   kind: door
   base:
     kind: existing_base
-    id: the source town's house door
+    id: 'Dragonborn.esm:03ABD2'
+    about: the source town's house door
   anchor:
     place: jal-veesa
     rule: surface
@@ -296,7 +298,8 @@ placements:
   kind: thing
   base:
     kind: existing_base
-    id: the town's Hist tree
+    id: 'King of the Murkmire.esp:0D72B7'
+    about: the town's Hist tree
   name: Jal-Veesa's Hist
   anchor:
     place: jal-veesa

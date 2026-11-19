@@ -2,7 +2,7 @@
 // and undo gives the spot back.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { spotRow, moveOp, turned, keptRow } from '../js/quest_ops.js';
+import { spotRow, moveOp, turned, keptRow, drawAs } from '../js/quest_ops.js';
 import { modelFromFiles, modelToFiles, applyOp, revertOp } from '../js/edits.js';
 
 const item = { id: 'quest.main.mn04/thing.mn04.cage', quest: 'quest.main.mn04', ref: 'thing.mn04.cage' };
@@ -40,4 +40,11 @@ test('keeping a drafted spot drops drafted and why; an owner move of one drops t
   const m = modelFromFiles({ spaces: { exterior: [] }, quests: [row] });
   applyOp(m, { n: 1, op: 'quest.edit', quest: keptRow(row), before: row });
   assert.deepEqual(modelToFiles(m).quests, [keptRow(row)]);
+});
+
+test('a person is a figure, a thing with a model is the model, anything else a pin', () => {
+  assert.equal(drawAs({ kind: 'person', model: 'a.nif' }), 'person');
+  assert.equal(drawAs({ kind: 'person' }), 'person');
+  assert.equal(drawAs({ kind: 'door', model: 'a.nif' }), 'model');
+  assert.equal(drawAs({ kind: 'thing', model: null }), 'pin');
 });

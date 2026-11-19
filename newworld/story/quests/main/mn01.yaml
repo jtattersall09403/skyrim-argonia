@@ -251,7 +251,8 @@ placements:
   kind: door
   base:
     kind: existing_base
-    id: a wooden ship door of Black Marsh.esm
+    id: 'Skyrim.esm:027FE8'
+    about: a wooden ship door of Black Marsh.esm
   anchor:
     place: outpost-m13-m65
     rule: surface
@@ -274,7 +275,8 @@ placements:
   kind: marker
   base:
     kind: existing_base
-    id: map marker
+    id: 'Skyrim.esm:000010'
+    about: map marker
   anchor:
     place: outpost-m13-m65
     rule: surface

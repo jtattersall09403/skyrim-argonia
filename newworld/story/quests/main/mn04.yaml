@@ -208,7 +208,8 @@ placements:
   kind: door
   base:
     kind: existing_base
-    id: Skyrim cage door
+    id: 'Skyrim.esm:10AA96'
+    about: Skyrim cage door
   name: Sesk's Cage
   anchor:
     place: tribal-camp-m2-m68
@@ -283,7 +284,8 @@ placements:
   kind: thing
   base:
     kind: existing_base
-    id: Skyrim clay jars, clutter
+    id: 'Skyrim.esm:08632A'
+    about: Skyrim clay jars, clutter
   anchor:
     place: tribal-camp-m2-m68
     rule: surface
@@ -294,7 +296,8 @@ placements:
   name: Karsh-Naal Camp
   base:
     kind: existing_base
-    id: map marker
+    id: 'Skyrim.esm:000010'
+    about: map marker
   anchor:
     place: tribal-camp-m2-m68
     rule: surface
@@ -320,7 +323,8 @@ placements:
   kind: door
   base:
     kind: existing_base
-    id: the source town's house door
+    id: 'Dragonborn.esm:03ABD2'
+    about: the source town's house door
   anchor:
     place: jal-veesa
     rule: surface

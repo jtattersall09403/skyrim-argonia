@@ -236,7 +236,8 @@ placements:
   kind: door
   base:
     kind: existing_base
-    id: Helstrom's Argonian house door
+    id: 'Black Marsh.esm:1DE5DF'
+    about: Helstrom's Argonian house door
   anchor:
     place: helstrom
     rule: surface
@@ -263,7 +264,8 @@ placements:
   kind: container
   base:
     kind: existing_base
-    id: Skyrim knapsack
+    id: 'Skyrim.esm:0B7879'
+    about: Skyrim knapsack
   name: Keel-Raa's Pack
   owner: npc.mn.keel-raa
   anchor:
@@ -335,7 +337,8 @@ placements:
   kind: door
   base:
     kind: existing_base
-    id: Helstrom's inn door
+    id: 'Skyrim.esm:031897'
+    about: Helstrom's inn door
   anchor:
     place: helstrom
     rule: surface

@@ -13,6 +13,7 @@ too (`orphan`), so it is seen and cleared rather than kept by a record that no l
 from __future__ import annotations
 
 import json
+import os
 import re
 from pathlib import Path
 
@@ -157,20 +158,31 @@ def _catalogue_rows(path: Path | None) -> dict:
     """The asset catalogue by base key ({} when this machine has none)."""
     from tools.places import draft_bundle as D
     try:
-        return D.catalogue(path) if Path(path or D.CATALOGUE).exists() else {}
+        p = Path(path or os.environ.get("PLACES_CATALOGUE") or D.CATALOGUE)
+        return D.catalogue(p) if p.exists() else {}
     except (OSError, ValueError, KeyError):
         return {}
 
 
-def model_of(base, rows: dict) -> str | None:
+MARKER_BASE = "Skyrim.esm:000034"   # XMarkerHeading: what a marker with no base of its own is drawn as
+
+
+def model_of(base, rows: dict, kind: str | None = None) -> str | None:
     """The model path of a placement's base, or None. A base that is a catalogue key (`Skyrim.esm:0CE0AE`) resolves to
     its row's model; a base named in words (`a wooden ship door of Black Marsh.esm`, `to choose: ...`) does not."""
     if isinstance(base, dict):
         base = base.get("id")
-    if not isinstance(base, str):
+    if not isinstance(base, str) or not base:
+        base = MARKER_BASE if kind == "marker" else None
+    if not base:
         return None
     row = rows.get(base) or next((r for k, r in rows.items() if k.lower() == base.lower()), None)
+    if row is None and re.search(r"\b(note|letter)\b", base.replace(".", " ").replace("-", " ")):
+        row = rows.get(NOTE_LOOK)   # a written thing of our own (its id is its ref) looks like Skyrim's note
     return (row or {}).get("model") or None
+
+
+NOTE_LOOK = "Skyrim.esm:015421"   # HighPolyNote04
 
 
 def payload(place_id: str, places: Path = PLACES, quests: Path = QUESTS, sources: Path = SOURCES,
@@ -181,6 +193,7 @@ def payload(place_id: str, places: Path = PLACES, quests: Path = QUESTS, sources
     recs = records(quests)
     by_id = {q["id"]: q for q in recs}
     sw = switches(recs)
+    ref_base = {r["ref"]: r["base"] for q in recs for r in q.get("placements") or [] if r.get("ref") and r.get("base")}   # a ref placed again takes its base
     rooms, cast = _rooms(place_dir), _cast(place_id, sources)
     spots = read(place_dir)
     rows = _catalogue_rows(catalogue)
@@ -215,7 +228,7 @@ def payload(place_id: str, places: Path = PLACES, quests: Path = QUESTS, sources
                 "kind": r.get("kind"), "kind_word": KIND_WORD.get(r.get("kind"), r.get("kind")),
                 "name": r.get("name") or r.get("placeName") or r["ref"],
                 "base": (r.get("base") or {}).get("id") if isinstance(r.get("base"), dict) else r.get("base"),
-                "model": model_of(r.get("base"), rows) if r.get("kind") in ("thing", "container", "door", "marker") else None,
+                "model": model_of(r.get("base") or ref_base.get(r["ref"]), rows, r.get("kind")) if r.get("kind") in ("thing", "container", "door", "marker") else None,
                 "need": _one(a.get("need")), "room": room, "space": rooms.get(str(room).lower(), "exterior") if room else "exterior",
                 "rule": a.get("rule"), "hostile": bool(r.get("hostile")), "enabled": bool(r.get("enabled", True)),
                 "lock": r.get("lock"),
