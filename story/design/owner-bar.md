@@ -327,6 +327,9 @@ with its source in [owner-rulings-on-factions](../../docs/research/writing/owner
 
 ## How the story is made
 
+- The main quest is delivered as the owner has authored it (`story/design/quests/lines/main-plot.md` and the
+  `newworld/story/quests/main/` records, Act I above all): places, records and sources are fitted to it; the story
+  itself takes only minor tweaks, and only when a place or the lore cannot carry it (OR 2026-11-19, #80).
 - The overall story of the main quest and of each major faction is written by Fable, knowing the quest rules and
   the ceiling so that nothing undeliverable is written (OR 2026-11-12).
 - The story is read on paper by fresh readers, quest by quest, before quests are written. Every round gathers all

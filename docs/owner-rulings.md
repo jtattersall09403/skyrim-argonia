@@ -132,6 +132,9 @@ added here the day they are made, with the date and the issue.
 - No place is moved: where a record clashes with the ground, the record changes (Jal-Veesa). Fixes are made at
   the root cause, as one decision that keeps the Atlas, the records, the sources, the story and the quests
   consistent, never symptom by symptom (2026-11-19, #80).
+- The main quest is delivered as the owner authored it (main-plot.md and the MN records, Act I above all); places,
+  records and sources are fitted to it, with only minor tweaks to the story where a place or the lore cannot carry
+  it (2026-11-19, #80).
 - A quest's people and things at a place get first positions in every place draft without being asked, drafted
   as their real records and models, shown in the studio's Quests layer for the owner to move and note
   (2026-11-19, #80).
