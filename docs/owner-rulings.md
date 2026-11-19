@@ -129,6 +129,9 @@ added here the day they are made, with the date and the issue.
   scratch (2026-11-19, #80).
 - A Hist pool is always a pool of Hist sap (the sap stage's pool), never plain water; a rootworm stop at a Hist is
   at its sap pool (2026-11-19, #80).
+- No place is moved: where a record clashes with the ground, the record changes (Jal-Veesa). Fixes are made at
+  the root cause, as one decision that keeps the Atlas, the records, the sources, the story and the quests
+  consistent, never symptom by symptom (2026-11-19, #80).
 - A quest's people and things at a place get first positions in every place draft without being asked, drafted
   as their real records and models, shown in the studio's Quests layer for the owner to move and note
   (2026-11-19, #80).
