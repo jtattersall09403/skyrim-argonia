@@ -37,6 +37,8 @@ from pathlib import Path
 
 import numpy as np
 
+from tools.places.heavy_lock import heavy_lock
+
 ROOT = Path(__file__).resolve().parents[2]
 PLACES = ROOT / "newworld" / "places"
 OUT = ROOT / "out" / "places"
@@ -172,7 +174,8 @@ def _build_tool() -> None:
 
 
 def tool(*args: str) -> None:
-    r = subprocess.run(["dotnet", str(TOOL), *args], env=DOTNET_ENV, capture_output=True, text=True)
+    with heavy_lock():   # 5 to 7 GB each: one at a time across every worktree
+        r = subprocess.run(["dotnet", str(TOOL), *args], env=DOTNET_ENV, capture_output=True, text=True)
     if r.returncode:
         raise SystemExit(f"ArgoniaPlacesBuild {args[0]} failed\n{(r.stdout + r.stderr)[-4000:]}")
     if r.stdout.strip():
