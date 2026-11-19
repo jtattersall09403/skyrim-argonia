@@ -62,6 +62,28 @@ def test_a_bridge_laid_on_a_board_is_laid_again_on_the_deck_at_its_walking_heigh
     assert math.dist(mid, [100.0, 200.0]) < 0.1 and math.isclose(new[0]["rot"][2], (0.3 - math.pi / 2) % (2 * math.pi), abs_tol=1e-4)
 
 
+LEDGE = {"key": "K:ledge", "edid": "MorrImpKeepLedgeMid02",
+         "model": "tesak1243/mwimperialarchitecture/architecture/keep/exterior/ledges/mwimparchledgemid02.nif",
+         "bounds": [[-256, -256, 0], [256, 256, 0]]}
+
+
+def test_a_keeps_ledge_plate_is_walked_but_never_laid_as_a_gangway():
+    bases = {"K:ledge": LEDGE, "K:dock": DOCK}
+    rows = [{"id": f"l{i}", "base": "K:ledge", "kind": "building", "src": "X.esp:1"} for i in range(8)]
+    rows += [{"id": "d", "base": "K:dock", "kind": "building", "src": "X.esp:2"}]
+    assert paths.is_deck(LEDGE) and walk.walk_base(rows, bases) == "K:dock"
+    old = {"id": "p.J", "base": "K:ledge", "kind": "building", "pos": [0.0, 0.0, 500.0], "rot": [0, 0, 0], "src": None,
+           "walk": 0.0, "seat": {"mode": "stilts", "dz": 0.0}, "why": "joins door p.D to the town"}
+    rows.append(old)
+    assert walk.relay(rows, "K:dock", bases, log=lambda m: None) == 1
+    assert all(r["base"] == "K:dock" for r in rows if not r.get("src"))
+
+
+def test_a_wall_with_a_stair_in_it_is_no_flight():
+    wall = {"model": "keep/exterior/walls/mwimparchwallstairs01.nif", "bounds": [[-256, -132, 0], [256, 132, 1174]]}
+    assert walk.flight(wall) is None
+
+
 def test_a_thing_on_a_slope_or_over_water_has_no_ground_under_it():
     row = {"id": "a", "base": "S:tent", "kind": "building", "pos": [0.0, 0.0, 0.0], "rot": [0, 0, 0],
            "seat": {"mode": "ground", "dz": 0.0, "foot": [-200, -290, 200, 290]}}

@@ -535,9 +535,11 @@ def walk_base(rows: list[dict], bases: dict) -> str | None:
     """The walkway piece the place's own joins and bridges use: the commonest the draft already laid, else the
     commonest walkway piece of the place, else the style's own (`io.walkway_base`, added to `bases`). A walkway
     piece is a level deck a person walks on (`paths.is_deck`: never a flight of steps, nor a board stood on edge); a
-    building or a tent added by hand (`draft.add`) is none."""
+    building or a tent added by hand (`draft.add`) is none, and so is a floor plate (a keep's ledge): walked on where
+    it stands, never laid as a gangway."""
     def way(r):
-        return r.get("kind") == "building" and paths_mod.is_deck(bases.get(r["base"]))
+        b = bases.get(r["base"])
+        return r.get("kind") == "building" and paths_mod.is_deck(b) and not paths_mod.is_plate(b)
     laid = Counter(r["base"] for r in rows if not r.get("src") and r.get("why") and way(r))
     if laid:
         return sorted(laid, key=lambda b: (-laid[b], b))[0]
@@ -559,14 +561,16 @@ LAID = ("joins door ", "carries street ")
 
 
 def relay(rows: list[dict], base: str, bases: dict, log=print) -> int:
-    """A walkway the draft laid (a join, a bridge) on a piece no one walks on is laid again on `base`, one deck piece
+    """A walkway the draft laid (a join, a bridge) on a piece no one walks on, or on a floor plate (a keep's ledge,
+    never a gangway), is laid again on `base`, one deck piece
     per length of the old piece along its line, at the old piece's walking height. Returns the pieces changed."""
     from tools.places.draft import geom
     length, turn = paths_mod.deck_run(bases[base])
     top = geom.walk(bases[base]) or 0.0
     done = 0
     for r in list(rows):
-        if r.get("src") or not str(r.get("why", "")).startswith(LAID) or paths_mod.is_deck(bases.get(r["base"])):
+        ob = bases.get(r["base"])
+        if r.get("src") or not str(r.get("why", "")).startswith(LAID) or (paths_mod.is_deck(ob) and not paths_mod.is_plate(ob)):
             continue
         old = bases.get(r["base"]) or {}
         old_len, old_turn = paths_mod.deck_run(old) if old.get("bounds") else (length, 0.0)
@@ -587,7 +591,7 @@ def relay(rows: list[dict], base: str, bases: dict, log=print) -> int:
             new.append(row)
         rows[i:i + 1] = new
         done += 1
-        log(f"relay: {r['id']} ({old.get('edid')}, no deck to walk on) laid again as {n} {bases[base].get('edid')}")
+        log(f"relay: {r['id']} ({old.get('edid')}, no gangway piece) laid again as {n} {bases[base].get('edid')}")
     return done
 
 
@@ -1208,6 +1212,9 @@ def record_kit(pdir: Path, laid: list[dict], bases: dict, src_bases: dict) -> No
     p.write_text(json.dumps(place, indent=1, ensure_ascii=False) + "\n")
 
 
+FLIGHT_STEEP = 1.5   # a steps piece whose body stands taller than this times its run is a wall or tower, never a flight
+
+
 def flight(base: dict) -> dict | None:
     """A steps piece's walked profile along its run (the longer side of its box), read from its collision's treads:
     {axis, v (the middle across), top, foot (the run's two ends), us, zs (tread height every 16 units along it, top
@@ -1221,6 +1228,8 @@ def flight(base: dict) -> dict | None:
     if not len(up):
         return None
     axis = 0 if bb[1][0] - bb[0][0] >= bb[1][1] - bb[0][1] else 1
+    if bb[1][2] - bb[0][2] > FLIGHT_STEEP * (bb[1][axis] - bb[0][axis]):
+        return None   # a wall or a tower with a stair in it (a keep's wall stairs, 1174 high on a 512 run), no flight
     v = (bb[0][1 - axis] + bb[1][1 - axis]) / 2
     prof = []
     for u in np.arange(bb[0][axis], bb[1][axis] + 1, 16.0):
