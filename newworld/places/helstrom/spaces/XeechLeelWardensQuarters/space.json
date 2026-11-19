@@ -4,6 +4,6 @@
  "name": "Council Wardens' Quarters",
  "door_from": "helstrom.VE03RAVKW4J54PQPFH4YHB5KVW",
  "parent": "exterior",
- "room": "King of the Murkmire.esp:89DD4C",
+ "room": null,
  "added": true
 }

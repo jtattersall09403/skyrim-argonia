@@ -159,19 +159,19 @@
     "base": "King of the Murkmire.esp:0D45E5",
     "kind": "building",
     "pos": [
-     -29051.7,
+     -29951.7,
      -614501.3
     ],
     "rot_z": 1.5708,
     "need": 6,
     "tier": "AGENT_INVENTED",
-    "why": "the wardens' quarters behind the council house, where Lilmoth sets Dragonthorn Manor's barracks behind the manor (MurkmireHouse07Red), seated on the town's ground"
+    "why": "the wardens' quarters behind the council house, set back from it as Lilmoth sets Dragonthorn Manor's barracks behind the manor, with room for the back door between (MurkmireHouse07Red), seated on the town's ground"
    },
    {
     "base": "King of the Murkmire.esp:093D0D",
     "kind": "door",
     "pos": [
-     -28931.8,
+     -29831.8,
      -614057.5
     ],
     "rot_z": 4.7124,
@@ -183,8 +183,9 @@
      "copy_of": "kingofthemurkmire.lilmothlocation/LilmothMerchantManor01Barracks",
      "door": "King of the Murkmire.esp:89DD4C",
      "space": "XeechLeelWardensQuarters",
+     "whole": true,
      "arrival": [
-      -28831.8,
+      -29731.8,
       -614057.5
      ]
     },
@@ -195,29 +196,29 @@
     "kind": "door",
     "space": "XeechLeelCouncilHouse",
     "pos": [
-     7540.0,
-     -6300.0,
+     8220.0,
+     -5790.0,
      5648.0
     ],
-    "rot_z": 4.7124,
+    "rot_z": 0.0,
     "need": 6,
     "tier": "AGENT_INVENTED",
-    "why": "the council house's back door, inside: a Murkmire door (MudHutLDoor02, the house's own) in the hall's west wall on the ground floor, at the floor's height (the shell's 5648)"
+    "why": "the council house's back door, inside: a Murkmire door (MudHutLDoor02, the house's own) in the hall's back wall on the ground floor, at the floor's height (the shell's 5648)"
    },
    {
     "base": "King of the Murkmire.esp:093D0D",
     "kind": "door",
     "pos": [
-     -28444.0,
-     -615205.5
+     -29027.0,
+     -614481.5
     ],
-    "rot_z": 0.0,
+    "rot_z": 1.5708,
     "on": "helstrom.AM9WF1VR5PD1MJ3VWS1DMZYNC4",
     "dz": 8.86,
     "pair": "helstrom.EB2QYX38HZMAZ8YJJ19YG4ETDG",
     "arrival": [
-     -28444.0,
-     -615340.5
+     -29162.0,
+     -614481.5
     ],
     "need": 6,
     "tier": "AGENT_INVENTED",
@@ -226,15 +227,15 @@
      "key": null,
      "flags": "0"
     },
-    "why": "the council house's back door, outside, in the house's side wall towards the boardwalk and the river landing beyond the town, locked at Expert (thieves.md:350)"
+    "why": "the council house's back door, outside, in the house's back wall towards the wardens' quarters, locked at Expert (thieves.md:350)"
    },
    {
     "base": "Skyrim.esm:0163F0",
     "kind": "door",
     "space": "XeechLeelCouncilHouse",
     "pos": [
-     8180.0,
-     -5795.0,
+     8300.0,
+     -5790.0,
      5648.0
     ],
     "rot_z": 0.0,
@@ -250,8 +251,8 @@
      "door": "Journey to Baan Malur.esp:24B01E",
      "space": "XeechLeelStrongroom",
      "arrival": [
-      8180.0,
-      -5900.0,
+      8300.0,
+      -5870.0,
       5648.0
      ],
      "drop": {
@@ -265,9 +266,9 @@
     "kind": "door",
     "space": "01cellDUPLICATE002",
     "pos": [
-     -440.0,
-     1276.0,
-     -1092.0
+     -330.0,
+     1500.0,
+     -1044.0
     ],
     "rot_z": 4.7124,
     "need": 12,
@@ -277,10 +278,14 @@
      "door": "Black Marsh.esm:1E4419",
      "space": "ChainbreakersSafeHouse",
      "arrival": [
-      -320.0,
-      1276.0,
-      -1092.0
-     ]
+      -230.0,
+      1500.0,
+      -1044.0
+     ],
+     "drop": {
+      "Black Marsh.esm:1E436F": "a candlelight scroll the source left loose: the safe house holds only the band's things",
+      "Black Marsh.esm:1E4383": "a candlelight scroll the source left loose: the safe house holds only the band's things"
+     }
     },
     "why": "the Chainbreakers' safe house, a quiet room off the market (chainbreakers-newworld.md:619): a door of the city's own Argonian houses in the Market Cave's west wall, into a further copy of the city's one-room Argonian house"
    },

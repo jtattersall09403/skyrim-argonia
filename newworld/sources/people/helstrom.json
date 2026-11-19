@@ -59,6 +59,11 @@
    "name": null
   },
   {
+   "id": "helstrom.household.XeechLeelCouncilHouse",
+   "home_space": "XeechLeelCouncilHouse",
+   "name": null
+  },
+  {
    "id": "helstrom.household.XeechLeelWardensQuarters",
    "home_space": "XeechLeelWardensQuarters",
    "name": null
@@ -1738,8 +1743,8 @@
    "race": "ArgonianRace",
    "culture_id": "forest-green",
    "household": {
-    "id": "helstrom.household.XeechLeelWardensQuarters",
-    "role": "lodger"
+    "id": "helstrom.household.XeechLeelCouncilHouse",
+    "role": "head"
    },
    "role": "resident",
    "trade": "cook to the council house",
@@ -1750,7 +1755,7 @@
    "notes": [
     {
      "aspect": "backstory",
-     "text": "Born in Pusbottom, she cooks for the council house and sleeps in the wardens' quarters. She owes a Lilmoth moneylender more than a cook can pay.",
+     "text": "Born in Pusbottom, she cooks for the council house and sleeps in a room of the council house. She owes a Lilmoth moneylender more than a cook can pay.",
      "tier": "AGENT_INVENTED",
      "cites": [
       "story/design/quests/lines/thieves.md"

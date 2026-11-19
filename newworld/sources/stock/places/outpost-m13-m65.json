@@ -159,7 +159,11 @@
     "place_note:outpost-m13-m65/hooks",
     "place_wealth:outpost-m13-m65",
     "story/design/quests/lines/main-plot.md"
-   ]
+   ],
+   "owner_exception": {
+    "ruling": "owner, #80 story note 1 and 2026-11-19: the strongbox holds what Vosh-Leera sent (100 gold, an iron dagger, a Ring of Minor Health, a scroll each of firebolt and fast healing)",
+    "why": "the side quest's reward, worth over a gang-master's strongbox budget by the owner's call"
+   }
   }
  ],
  "loose": [],

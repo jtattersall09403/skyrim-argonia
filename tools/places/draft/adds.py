@@ -13,7 +13,8 @@ minted from its place in the list and its base, so a rerun keeps it. The whole d
 `draft add <place>` places them again from `draft.add` and touches no other row.
 
 A door with `room` {copy_of: "<source_id>/<cell>", door?: the cell's way out (source ref id), space?: our space id
-(default the cell's), arrival: where one steps out ([x, y] outside, [x, y, z] in a room), drop?: {source ref id: why}
+(default the cell's), whole?: true to copy a cell of several ways out whole (one building; its other ways out
+removed), arrival: where one steps out ([x, y] outside, [x, y, z] in a room), drop?: {source ref id: why}
 for a piece the room must not have (a container of levelled treasure: decision 0035; a door on to a further room)}
 brings that interior of any source we hold as a copied room of ours behind the door, outside or in another room (of
 a cell that packs several rooms, the one behind that way out):
@@ -140,8 +141,10 @@ def room(place_id: str, door: dict, spec: dict, src, replace: dict, nordic: set,
     back = next((r for r in ways if r["id"] == spec.get("door")), None) if spec.get("door") else (ways[0] if ways else None)
     if back is None:
         raise ValueError(f"draft.add {door['id']}: room {spec['copy_of']} has no way out {spec.get('door') or ''}")
-    # a cell that packs several rooms (one behind each way out) is copied as the one room behind this way out
-    part = back["id"] if len(ways) > 1 and interiors.shared(sp.refs, src) else None
+    # a cell that packs several rooms (one behind each way out) is copied as the one room behind this way out; a
+    # building whose ways out all open into one walkable island (a front and an upper door) is copied whole
+    part = back["id"] if (len(ways) > 1 and not spec.get("whole") and interiors.shared(sp.refs, src)
+                          and not interiors.one_building(spec["copy_of"], sp.refs)) else None   # one building: copied whole
     keep = interiors.kept(spec["copy_of"], part)
     inner = [r["id"] for r in sp.refs if (r.get("door") or {}).get("to_space") not in (None, "exterior")
              and r["id"] not in (spec.get("drop") or {}) and (keep is None or r["id"] in keep)]

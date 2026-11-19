@@ -256,6 +256,16 @@ The tools lay the network by these rules.
   origin, from the source's navmesh there) where its mesh's top is a rail. The `add` stage lays each added door a
   path from its arrival to the nearest street (`<place>.path.add.<door>`). Name the room in
   `draft.room_names` and run `names`, then `clearance` and `streets`.
+- **Inside an added building.** A room the story needs behind a door inside another (a strongroom off a hall, a
+  quiet room off a market cave) is a `draft.add` door standing in that room, `space` set, with `room` and an
+  `arrival` [x, y, z] on the room's floor. A further way into a room (a back door) is a pair of added doors: one
+  standing in the room, one outside naming it in `pair`, with its own `arrival`. Put every inner door on a wall
+  whose floor the source's navmesh covers, so its arrival stands on it. A cell that packs several rooms is copied as
+  the room behind the named way out; a building whose ways out all serve one house is copied with `whole: true`.
+  A door's lock is its row's `lock` ({level, key, flags}). Each room's people (`place-people`) and stock
+  (`place-stock`) follow as for any room of the place.
+- **A handler's stop.** The thing a travel stop's handler works at (a rootworm's root pool) carries `stop` (the give
+  kind, `rootworm-stop`); the `people` stage sets the handler's work and work hours there.
 - **What the record promises and the source lacks is added in the source's own style.** The tools add each
   missing crafting station by the person who works it, the way Skyrim's towns do (the smith's yard outside the
   smithy; the alchemy lab with the apothecary; the enchanter with the spell trader; the cooking pot at the inn).

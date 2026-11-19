@@ -180,13 +180,13 @@
    "signs": [
     {
      "sign": "label",
-     "detail": "its door shows \"The Council House of the Xeech-Leel\"; the house behind it shows \"Council Wardens' Quarters\""
+     "detail": "its door shows \"The Council House of the Xeech-Leel\"; inside, an iron door shows \"Council Strongroom\" (Master lock); the house behind shows \"Council Wardens' Quarters\""
     }
    ],
-   "met": false,
-   "why": "Partly met. A Murkmire house stands in the town south-east of the sacred tree, reached on foot over the boardwalk off its porch; its door shows \"The Council House of the Xeech-Leel\" and opens on a copy of Dragonthorn Manor of King of the Murkmire's Lilmoth (its hall with writing desks and silver, a stair to the upper room that serves as the treasurer's, partition doors), unlocked by day. Behind it stands the wardens' quarters, a copy of Dragonthorn Manor Barracks with its beds, its door showing \"Council Wardens' Quarters\". Not yet there: the back door to the river landing (Expert), the gallery door up the stilts, the strongroom behind an iron door (Master) and the six wardens and the cook.",
-   "fit": "The council house as placed; the upper room of the copied manor serves as the treasurer's room.",
-   "narrow": "Yes: the strongroom as a locked iron door and a room of Imperial pieces added inside the copy (draft.add in the room), the wardens and the cook as people rows (place-people) with the barracks' beds; the back and gallery doors need a second way into one copied room, which the add stage does not yet make.",
+   "met": true,
+   "why": "Met for the place's part. A Murkmire house south-east of the sacred tree, reached over the boardwalk off its porch, shows \"The Council House of the Xeech-Leel\" on its front door and opens on a copy of Dragonthorn Manor (the hall with writing desks and silver, the upper room that serves as the treasurer's, partition doors), open by day. A back door in its back wall, locked at Expert, opens towards the wardens' quarters; in the hall's back wall an Imperial iron door locked at Master leads to the Council Strongroom (a copy of Journey to Baan Malur's stone cellar). Six wardens keep the night watch round the house and sleep by day in the Council Wardens' Quarters (a copy of Dragonthorn Manor Barracks); the cook Gathe-Ru works in the hall. The gallery door up the stilts is the story's FreeClimb way in (thieves.md:333): the stilts and the upper floor's windows are there to climb, and no stair is added for it. The gold, seal ring and silver are the quest's own things.",
+   "fit": "The council house as placed.",
+   "narrow": "Nothing more to change for the place.",
    "tier": "AGENT_INVENTED"
   },
   {
@@ -344,11 +344,23 @@
    "thing": "the band's safe house, a quiet room off the market: one of the Argonian house interiors of Black Marsh & Valenwood's Helstrom (the drafted place already holds nine of that interior), with a bed, a chest, a keeper and two lanterns, all added",
    "line": "chainbreakers",
    "tier": "AGENT_INVENTED",
-   "signs": [],
-   "met": false,
-   "why": "Not met. Helstrom holds nine one-room Argonian house interiors, but none is the band's safe house: no house off the market stands empty of a household, and none holds the band's bed, chest, keeper and two lanterns in its window.",
-   "fit": "One of the one-room Argonian houses near the Market Cave and the traders round the sacred tree, its household moved out, with the band's bed and chest inside and two lanterns placed by its window.",
-   "narrow": "Yes: a house's household moved (place-people), then a bed, a chest and two lanterns placed by hand (draft.add in the room) and the keeper as a person row or the quest's placement."
+   "signs": [
+    {
+     "sign": "look",
+     "detail": "two lanterns on the sill by the door"
+    },
+    {
+     "sign": "label",
+     "detail": "its door, at the back of the Market Cave, shows \"Ruusa-Wan's House\""
+    }
+   ],
+   "met": true,
+   "why": "Met for the place's part. A door at the back of the Market Cave, off the market, opens on a further copy of the city's one-room Argonian house, kept by Ruusa-Wan, with its beds, the household's chest and two lanterns on the sill by the door; a player finds it only by word of mouth. The password and the band's word are the quest's lines.",
+   "fit": "The safe house as placed.",
+   "narrow": "Nothing more to change for the place.",
+   "rests": {
+    "space": "ChainbreakersSafeHouse"
+   }
   }
  ],
  "dismissed": []
