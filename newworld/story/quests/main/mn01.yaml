@@ -281,6 +281,45 @@ placements:
     need: the place's map marker, named Ashgate Landing
   enabled: true
   placeName: Ashgate Landing
+- ref: npc.mn01.mudcrab-1
+  kind: person
+  base:
+    kind: template_person
+    id: mudcrab of our ecology bindings
+  name: Mudcrab
+  level: 2
+  hostile: true
+  anchor:
+    place: outpost-m13-m65
+    rule: navmesh
+    need: on the river bank below the landing, at the water's edge (the place record's mudcrabs on the river bank)
+  enabled: true
+- ref: npc.mn01.mudcrab-2
+  kind: person
+  base:
+    kind: template_person
+    id: mudcrab of our ecology bindings
+  name: Mudcrab
+  level: 2
+  hostile: true
+  anchor:
+    place: outpost-m13-m65
+    rule: navmesh
+    need: on the river bank a little upstream of the first mudcrab, at the water's edge
+  enabled: true
+- ref: npc.mn01.young-crocodile
+  kind: person
+  base:
+    kind: template_person
+    id: young crocodile of our ecology bindings
+  name: Young Crocodile
+  level: 3
+  hostile: true
+  anchor:
+    place: outpost-m13-m65
+    rule: navmesh
+    need: in the reed beds on the river bank (the place record's one young crocodile in the reed beds)
+  enabled: true
 conclusions:
 - id: c1
   statement: The player is free of the Owing because someone powerful in Jal-Veesa wanted it, and must go there to learn

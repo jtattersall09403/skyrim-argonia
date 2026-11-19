@@ -27,6 +27,8 @@ owns changes nothing and fails.
   add        the things the agent adds by hand (`draft.add`), outside or in a room (tools/places/draft/adds.py)
   names      each room's name, the one its door and the room show, from what the place data holds
              (tools/places/draft/names.py)
+  quests     a first spot for every quest placement at the place that has none, drafted from the placement's words
+             on the place's rows and walking mesh; the owner's spots are never changed (tools/places/quest_draft.py)
 """
 from __future__ import annotations
 
@@ -62,6 +64,7 @@ OWNS: dict[str, dict[str, tuple]] = {
     "sap": {"spaces/exterior/refs.jsonl": (ANY, True), "place.json": ({"sap"}, False), "land.jsonl": (ANY, True)},
     "add": {"spaces/*/refs.jsonl": (ANY, True), "spaces/*/space.json": (ANY, True), "paths.jsonl": (ANY, True)},
     "names": {"spaces/*/space.json": ({"name"}, False)},
+    "quests": {"quests.jsonl": (ANY, True)},
 }
 STAGES = tuple(OWNS)
 BUILT = "formids.json"      # the build's own file in the place folder: no stage's, and no stage is judged by it
@@ -640,6 +643,10 @@ def run(stage: str, place_id: str, places: Path = io.PLACES, bundles: Path = io.
     try:
         if stage == "streets":
             streets(place_id, places, log)
+        elif stage == "quests":
+            from tools.places import quest_draft
+            r = quest_draft.draft(place_id, places)
+            log(f"draft quests {place_id}: {len(r['drafted'])} drafted, {len(r['unresolved'])} on no named anchor")
         else:
             st = Standing(place_id, places, bundles)
             was = {sid: {r["id"]: copy.deepcopy(r) for r in sp["refs"]} for sid, sp in st.files["spaces"].items()}

@@ -13,6 +13,7 @@ the writer copied from a plugin that is not a master is read as its source (`<es
 from __future__ import annotations
 
 import json
+import re
 from collections import Counter, defaultdict
 from pathlib import Path
 
@@ -139,7 +140,7 @@ def load(place_id: str, plan: dict, dump: dict, esp: Path) -> dict | None:
                         "person": d.person_id, "ref": d.ref_id, "why": d.why}
                        for d in w.rows("give_delivery", place_id=place_id)],
         "unique": [{"item": u.item_id, "place": u.place_id, "held_by": u.held_by} for u in w.rows("unique_item")],
-        "built": built, "owner_fk": owner_fk, "world_markers": set((dump.get("world_markers") or {}).values()),
+        "place_id": place_id, "built": built, "owner_fk": owner_fk, "world_markers": set((dump.get("world_markers") or {}).values()),
     }
 
 
@@ -340,7 +341,31 @@ def check_promises(ctx) -> list[str]:
                     bad.append(f"{what}: delivered by {d['person']}, who is not in the build")
                 if d["by"] in ("ref", "container", "loose") and d["ref"] not in refs_built:
                     bad.append(f"{what}: delivered by {d['ref']}, which is not in the build")
+                if d["by"] == "record":
+                    bad += [f"{what}: {m}" for m in quest_delivery_problems(X.get("place_id"), d["why"])]
     return bad
+
+
+QUEST_SPOT = re.compile(r"\bquest\.[\w.-]+/[\w.-]*\w")
+
+
+def quest_delivery_problems(place_id, why: str, places: Path | None = None, quests: Path | None = None) -> list[str]:
+    """A promise a quest delivers (`by: record`) names in its why each quest thing that delivers it
+    (`<quest id>/<ref>`); each must be a placement of that quest at the place with a spot in its quests.jsonl (the
+    studio's Quests layer shows it as a pin)."""
+    from tools.places import quest_spots as qs
+    ids = QUEST_SPOT.findall(why or "")
+    if not ids or not place_id:
+        return []
+    items = {it["id"]: it for it in qs.payload(place_id, places or qs.PLACES, quests or qs.QUESTS, url="")["items"]}
+    out = []
+    for i in ids:
+        it = items.get(i)
+        if it is None or it.get("orphan"):
+            out.append(f"{i} is no placement of its quest at {place_id}")
+        elif not it.get("spot"):
+            out.append(f"{i} has no spot yet (studio Quests layer, or `python -m tools.places quest-draft {place_id}`)")
+    return out
 
 
 def summary(X: dict, top: int = 10) -> dict:

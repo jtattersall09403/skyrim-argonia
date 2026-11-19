@@ -484,6 +484,7 @@ and removed per file; a stage that would write outside what it owns changes noth
 | `sap` | a Hist was added, moved, swapped or died | each living Hist's sap pool and its hollow; `place.json` `sap`; `land.jsonl` rows `by` "sap" |
 | `add` | `draft.add` changed: a thing placed by hand, outside or in a room | the rows `draft.add` mints; the rooms its doors bring (their `space.json`, marked `added`, and refs) |
 | `names` | who lives or works in a room changed, a promise moved, `draft.room_names` changed | each room's `name` in its `space.json` |
+| `quests` | a quest placement at the place was added or changed; the place has quest things with no spot (every whole draft runs it last) | a drafted first spot in `quests.jsonl` for each placement with none, from its words on the place's rows and walking mesh; never a row the owner set |
 
 1. Make the change that calls for it (`place.json` `draft`, the people source, a rule of the tools).
 2. Run the stage and read its counts: they are the whole change. Then run `streets` when what the network is built

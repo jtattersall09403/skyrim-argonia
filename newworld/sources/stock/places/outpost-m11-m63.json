@@ -176,8 +176,8 @@
   {
    "give_seq": 2,
    "by": "record",
-   "status": "open",
-   "why": "combat-creature 'mudcrabs on the bank and one young crocodile below the weir': the main quest's second quest places two young crocodiles below the weir (npc.mn02.crocodile-1 and 2); the place files hold no creatures, so the mudcrabs are the world's ecology's or the place-build pass's once a place can hold placed creatures"
+   "status": "delivered",
+   "why": "combat-creature 'mudcrabs on the bank and one young crocodile below the weir': the quest's own placements at a fixed level (main quest 2: two mudcrabs at level 2, two young crocodiles at level 3), each standing at its spot in the studio's Quests layer: quest.main.mn02/npc.mn02.mudcrab-1, quest.main.mn02/npc.mn02.mudcrab-2, quest.main.mn02/npc.mn02.crocodile-1, quest.main.mn02/npc.mn02.crocodile-2"
   }
  ],
  "taken_out": [

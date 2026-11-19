@@ -230,6 +230,32 @@ placements:
     rule: navmesh
     need: on the mud below the weir, facing the offal stones, its back to the weir where the moss hangs
   enabled: true
+- ref: npc.mn02.mudcrab-1
+  kind: person
+  base:
+    kind: template_person
+    id: mudcrab of our ecology bindings
+  name: Mudcrab
+  level: 2
+  hostile: true
+  anchor:
+    place: outpost-m11-m63
+    rule: navmesh
+    need: on the bank below the weir, at the water's edge (the place record's mudcrabs on the bank)
+  enabled: true
+- ref: npc.mn02.mudcrab-2
+  kind: person
+  base:
+    kind: template_person
+    id: mudcrab of our ecology bindings
+  name: Mudcrab
+  level: 2
+  hostile: true
+  anchor:
+    place: outpost-m11-m63
+    rule: navmesh
+    need: on the bank a little downstream of the first mudcrab, at the water's edge
+  enabled: true
 - ref: npc.mn.jal-veesa-minder
   kind: person
   base:

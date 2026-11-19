@@ -223,8 +223,8 @@
   {
    "give_seq": 5,
    "by": "record",
-   "status": "open",
-   "why": "combat-foes 'three Unbound sap-takers at the reed hide': main quest 3 places them (npc.mn03.sap-taker-1 to 3, hostile, levels 3 to 4) at the hide the draft built; the place holds no hostile people of its own to deliver them, so the owner rules: the quest's placement delivers it, or the place-build pass places them"
+   "status": "delivered",
+   "why": "combat-foes 'three Unbound sap-takers at the reed hide': the quest's own placements at a fixed level (main quest 3: three hostile sap-takers at the hide), each standing at its spot in the studio's Quests layer: quest.main.mn03/npc.mn03.sap-taker-1, quest.main.mn03/npc.mn03.sap-taker-2, quest.main.mn03/npc.mn03.sap-taker-3"
   },
   {
    "give_seq": 0,

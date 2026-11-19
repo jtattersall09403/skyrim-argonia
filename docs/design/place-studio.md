@@ -183,7 +183,8 @@ paths.jsonl            streets, paths and walkways: {id, kind: path|street|walkw
                        draws a person's way between two stops outside by the same rules (round buildings, never
                        through open water, along these lines where one leads the right way)
 quests.jsonl           where the quests' things at the place stand, one per line: {id: "<quest id>/<ref>", quest,
-                       ref, space, pos, rot: [0, 0, heading]}; the one spot of a quest record's placement anchored
+                       ref, space, pos, rot: [0, 0, heading], drafted?, why?}; `drafted` marks a first spot the
+                       draft took from the placement's words, `why` says what it stands by; the one spot of a quest record's placement anchored
                        at this place (Quest things, below); written only when it has rows
 people.jsonl           one person per line: {id, name, base_from, role, home, bed, work, services, faction_ranks,
                        routine:[{start, hours, kind, at, days?}], patrol?: {points:[[x,y] | stop...], loop}}.
@@ -912,6 +913,23 @@ frames it. Tapping a pin with the Select tool opens it in the Quests panel. Each
 notes and saves like any other, offline too, and finalise writes `quests.jsonl`, the one spot the quest is built with
 (quests-on-a-world §4). A person the place's people source casts as the placement (`cast`) is the place's person and
 is moved with the People tool; a spot no record asks for any more is listed to be cleared.
+
+Every quest thing has a spot before the owner opens the layer. The draft's `quests` stage
+(`python -m tools.places draft quests <place_id>`, run by every whole draft, or `python -m tools.places quest-draft
+<place_id>`; `tools/places/quest_draft.py`) gives each placement at the place with no row a first spot: it reads the
+placement's words (`need`, `room`) and resolves them on the place's own rows (a room by its name, a piece by the
+words of its `why` and its kind, a room's door, a person by name, a quest thing already placed by name, the far end
+of a room from its door for "back" or "far end"), then stands a person or creature on a walkable triangle of the
+built place's walking mesh near it (never water unless the words ask for the shallows) and a thing on the mesh
+beside it; where the words name nothing the place holds it takes the middle of the room or the place and says so.
+A thing another quest already stands at the place (the same ref) takes that spot. The row is marked `drafted` with
+its `why`. The studio draws a quest thing with its real model where its base resolves (the same model path as the
+place's own pieces) and a pin otherwise; a drafted one is drawn hollow and its card says "Drafted, not yet checked
+by you" with its why and a **Keep this spot** button. Moving, turning or keeping it makes it the owner's; the draft
+never changes a row without `drafted`, and keeps a drafted row unless run with `--redraft`. The quest builder builds
+the same spot, drafted or not. A place promise (`give_delivery`) a quest's placements keep is `by: record`,
+`delivered`, its why naming each `<quest id>/<ref>`; the promises check (`draft check`, `check promises`) fails it
+while any of them is no placement at the place or has no spot.
 
 ## What the stories need of a place
 

@@ -126,6 +126,26 @@ def _cast(place_id: str, sources: Path) -> dict[str, dict]:
     return {r["cast"]: r for r in doc.get("people") or [] if isinstance(r, dict) and r.get("cast")}
 
 
+def _person_spot(place_dir: Path, pid) -> dict | None:
+    """Where the place's own person cast as a quest's person stands: their work spot in people.jsonl (moved with
+    the People tool, not in quests.jsonl), marked `by: people`."""
+    pf = Path(place_dir) / "people.jsonl"
+    if not pf.exists():
+        return None
+    row = next((json.loads(ln) for ln in pf.read_text(encoding="utf-8").splitlines()
+                if ln.strip() and json.loads(ln).get("id") == pid), None)
+    at = (row or {}).get("work") or (row or {}).get("bed") or {}
+    pos, space = at.get("pos"), at.get("space", "exterior")
+    if not pos and at.get("ref"):
+        for ln in (Path(place_dir) / "spaces" / space / "refs.jsonl").read_text(encoding="utf-8").splitlines() \
+                if (Path(place_dir) / "spaces" / space / "refs.jsonl").exists() else []:
+            r = json.loads(ln)
+            if r.get("id") == at["ref"]:
+                pos = r.get("pos")
+                break
+    return {"space": space, "pos": pos, "by": "people", "person": pid} if pos and len(pos) >= 2 else None
+
+
 def read(place_dir: Path) -> list[dict]:
     p = Path(place_dir) / FILE
     if not p.exists():
@@ -133,8 +153,28 @@ def read(place_dir: Path) -> list[dict]:
     return [json.loads(ln) for ln in p.read_text(encoding="utf-8").splitlines() if ln.strip()]
 
 
+def _catalogue_rows(path: Path | None) -> dict:
+    """The asset catalogue by base key ({} when this machine has none)."""
+    from tools.places import draft_bundle as D
+    try:
+        return D.catalogue(path) if Path(path or D.CATALOGUE).exists() else {}
+    except (OSError, ValueError, KeyError):
+        return {}
+
+
+def model_of(base, rows: dict) -> str | None:
+    """The model path of a placement's base, or None. A base that is a catalogue key (`Skyrim.esm:0CE0AE`) resolves to
+    its row's model; a base named in words (`a wooden ship door of Black Marsh.esm`, `to choose: ...`) does not."""
+    if isinstance(base, dict):
+        base = base.get("id")
+    if not isinstance(base, str):
+        return None
+    row = rows.get(base) or next((r for k, r in rows.items() if k.lower() == base.lower()), None)
+    return (row or {}).get("model") or None
+
+
 def payload(place_id: str, places: Path = PLACES, quests: Path = QUESTS, sources: Path = SOURCES,
-            url: str | None = None) -> dict:
+            url: str | None = None, catalogue: Path | None = None) -> dict:
     """{items: [...], spots: [quests.jsonl rows], explorer}: every quest thing at the place (see the module's words)."""
     url = url if url is not None else explorer_url()
     place_dir = places / place_id
@@ -143,6 +183,7 @@ def payload(place_id: str, places: Path = PLACES, quests: Path = QUESTS, sources
     sw = switches(recs)
     rooms, cast = _rooms(place_dir), _cast(place_id, sources)
     spots = read(place_dir)
+    rows = _catalogue_rows(catalogue)
     have = {r["id"]: r for r in spots}
     items, seen = [], set()
     for q in recs:
@@ -174,18 +215,19 @@ def payload(place_id: str, places: Path = PLACES, quests: Path = QUESTS, sources
                 "kind": r.get("kind"), "kind_word": KIND_WORD.get(r.get("kind"), r.get("kind")),
                 "name": r.get("name") or r.get("placeName") or r["ref"],
                 "base": (r.get("base") or {}).get("id") if isinstance(r.get("base"), dict) else r.get("base"),
+                "model": model_of(r.get("base"), rows) if r.get("kind") in ("thing", "container", "door", "marker") else None,
                 "need": _one(a.get("need")), "room": room, "space": rooms.get(str(room).lower(), "exterior") if room else "exterior",
                 "rule": a.get("rule"), "hostile": bool(r.get("hostile")), "enabled": bool(r.get("enabled", True)),
                 "lock": r.get("lock"),
                 "appears": appears | {"url": link(url, appears["code"], appears["stage"])}, "gone": gone,
                 "quest_url": link(url, q.get("code")),
                 "place_person": {"id": person.get("id"), "name": person.get("name")} if person else None,
-                "spot": have.get(sid)})
+                "spot": have.get(sid) or (_person_spot(place_dir, person.get("id")) if person else None)})
     for r in spots:
         if r["id"] not in seen:
             items.append({"id": r["id"], "quest": r.get("quest"), "ref": r.get("ref"), "name": r.get("ref"), "orphan": True,
                           "spot": r, "appears": {"words": "No quest record places this here any more: clear its spot."},
-                          "gone": [], "space": r.get("space", "exterior"), "kind": "thing", "kind_word": "thing"})
+                          "gone": [], "space": r.get("space", "exterior"), "kind": "thing", "kind_word": "thing", "model": None})
     return {"place_id": place_id, "explorer": url, "items": items, "spots": spots}
 
 

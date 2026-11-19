@@ -136,7 +136,11 @@ general.md's table of dramatic jobs, never scripted.
     anchor. A new one at a place of the new world is anchored `{place, rule, need, room?}`: `need` says in words
     where it stands and what it stands by, and the record holds no position; the owner sets the exact spot in the
     place studio's Quests layer, kept in the place's `quests.jsonl` (quests-on-a-world §4, "Where a quest's thing
-    stands"). A new one anchored `near` an existing reference takes an `at` measured with
+    stands"). Write `need` as a spot the place shows (a named room, a piece, a door, a person, "the far end"): the
+    place's `draft quests <place_id>` stage drafts the first spot from those words, and is run after a placement at a
+    drafted place is added or changed. A creature or foe the place's record promises is the quest's placement at a
+    fixed `level`, and the place's stock source marks that promise `by: record`, `delivered`, naming each
+    `<quest id>/<ref>` in its why. A new one anchored `near` an existing reference takes an `at` measured with
     `bash tools/ArgoniaPlugin/plugin.sh inspect navnear:<x>:<y>:<z>`, `near:...`, `cellrefs:<cell>`,
     `cellat:<cell>:<x>,<y>` or `cellgrid:...` (a person on navmesh, a thing on a modelled surface).
     A body to be found is one the world already holds (an existing reference from the census's corpses) or a

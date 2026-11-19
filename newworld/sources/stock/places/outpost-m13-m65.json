@@ -354,8 +354,8 @@
   {
    "give_seq": 4,
    "by": "record",
-   "status": "open",
-   "why": "combat-creature 'mudcrabs on the river bank and one young crocodile in the reed beds': the reed beds now stand on the bank (seq 3); the creatures are the quest's own placement at a fixed level, as the encounter places its foes, so the place files hold none and the promise stays open until that placement is built"
+   "status": "delivered",
+   "why": "combat-creature 'mudcrabs on the river bank and one young crocodile in the reed beds': the quest's own placements at a fixed level (main quest 1: two mudcrabs at level 2, one young crocodile at level 3), each standing at its spot in the studio's Quests layer: quest.main.mn01/npc.mn01.mudcrab-1, quest.main.mn01/npc.mn01.mudcrab-2, quest.main.mn01/npc.mn01.young-crocodile"
   }
  ],
  "taken_out": [

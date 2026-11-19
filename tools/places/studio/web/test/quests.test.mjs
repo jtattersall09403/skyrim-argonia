@@ -2,7 +2,7 @@
 // and undo gives the spot back.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { spotRow, moveOp, turned } from '../js/quest_ops.js';
+import { spotRow, moveOp, turned, keptRow } from '../js/quest_ops.js';
 import { modelFromFiles, modelToFiles, applyOp, revertOp } from '../js/edits.js';
 
 const item = { id: 'quest.main.mn04/thing.mn04.cage', quest: 'quest.main.mn04', ref: 'thing.mn04.cage' };
@@ -28,4 +28,16 @@ test('no change is no op', () => {
   const a = spotRow(item, 'exterior', [1, 2, 3], 0);
   assert.equal(moveOp(a, { ...a }), null);
   assert.equal(moveOp(null, null), null);
+});
+
+test('keeping a drafted spot drops drafted and why; an owner move of one drops them too', () => {
+  const row = { ...spotRow(item, 'exterior', [1, 2, 3], 0.5), drafted: true, why: 'beside the door' };
+  assert.deepEqual(keptRow(row), spotRow(item, 'exterior', [1, 2, 3], 0.5));
+  const moved = spotRow(item, 'exterior', [9, 2, 3], 0.5);
+  assert.ok(!('drafted' in moved) && !('why' in moved));
+  const op = moveOp(row, moved);
+  assert.equal(op.op, 'quest.edit'); assert.ok(!('drafted' in op.quest) && op.before.drafted === true);
+  const m = modelFromFiles({ spaces: { exterior: [] }, quests: [row] });
+  applyOp(m, { n: 1, op: 'quest.edit', quest: keptRow(row), before: row });
+  assert.deepEqual(modelToFiles(m).quests, [keptRow(row)]);
 });

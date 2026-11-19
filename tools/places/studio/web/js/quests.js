@@ -5,7 +5,8 @@
 // spot the quest builder reads (docs/design/place-studio.md, "Quest things"; tools/places/quest_spots.py).
 import * as THREE from 'three';
 import { api } from './api.js';
-import { spotRow, moveOp, turned } from './quest_ops.js';
+import { loadModel } from './objects.js';
+import { spotRow, moveOp, turned, keptRow } from './quest_ops.js';
 
 const NS = 'http://www.w3.org/2000/svg';
 const GOLD = '#d4a017', GOLD_SEL = '#ffcf33';
@@ -44,16 +45,30 @@ export class Quests {
       let m = this.markers.get(it.id);
       if (!m) {
         const mat = new THREE.MeshLambertMaterial({ color: KIND_COLOUR[it.kind] || GOLD, emissive: '#3a2a00' });
-        m = new THREE.Group(); m.add(new THREE.Mesh(this.geo.pin, mat), new THREE.Mesh(this.geo.head, mat), new THREE.Mesh(this.geo.face, mat));
-        m.userData.quest = it.id; this.markers.set(it.id, m);
+        m = new THREE.Group(); m.userData.quest = it.id; this.markers.set(it.id, m);
+        // a thing with a model is drawn as that model (the way the place's own objects are), the pin only where none resolves
+        const pin = new THREE.Group(); pin.add(new THREE.Mesh(this.geo.pin, mat), new THREE.Mesh(this.geo.head, mat), new THREE.Mesh(this.geo.face, mat));
+        m.add(pin); m.userData.pin = pin;
+        if (it.model && it.kind !== 'person') {
+          loadModel(it.model, 0, 0, 'other').then((parts) => {
+            if (!parts?.length || parts.placeholder || this.markers.get(it.id) !== m) return;
+            const real = new THREE.Group();
+            for (const p of parts) real.add(new THREE.Mesh(p.geometry, p.material));
+            m.add(real); m.userData.real = real; this.refresh();
+          });
+        }
       }
+      const drafted = !!s.drafted;
       if (m.parent !== v.overlay) v.overlay.add(m);
       const mine = this.sel === it.id, p = this.drag?.id === it.id ? this.drag.pos : s.pos, h = this.drag?.id === it.id ? this.drag.heading : (s.rot?.[2] || 0);
       m.visible = this.shown && (s.space || 'exterior') === a.ours.space;
       m.position.set(p[0] - a.ours.origin[0], p[1] - a.ours.origin[1], p[2] - a.ours.origin[2]);
       m.rotation.set(0, 0, -h);   // a heading turns clockwise seen from above
       m.scale.setScalar(mine ? 1.3 : 1);
-      for (const c of m.children) c.material.color.set(mine ? GOLD_SEL : (KIND_COLOUR[it.kind] || GOLD));
+      const col = mine ? GOLD_SEL : (KIND_COLOUR[it.kind] || GOLD);
+      m.userData.pin.scale.setScalar(m.userData.real ? 0.3 : 1);
+      for (const c of m.userData.pin.children) { c.material.color.set(col); c.material.wireframe = drafted; c.material.transparent = drafted; c.material.opacity = drafted ? 0.6 : 1; }
+      m.userData.real?.traverse((o) => { if (o.isMesh) { o.material.transparent = drafted; o.material.opacity = drafted ? 0.55 : 1; } });
       m.userData.at = p;
     }
     for (const [id, m] of this.markers) if (!seen.has(id)) { m.removeFromParent(); this.markers.delete(id); }
@@ -74,7 +89,7 @@ export class Quests {
       if (q.behind || q.x < 0 || q.y < 0 || q.x > v.el.clientWidth || q.y > v.el.clientHeight) continue;
       const t = document.createElementNS(NS, 'text');
       t.setAttribute('class', `who name quest${this.sel === it.id ? ' sel' : ''}`); t.setAttribute('x', q.x); t.setAttribute('y', q.y); t.setAttribute('text-anchor', 'middle');
-      t.textContent = `Quest: ${it.name} (${it.code})`; svg.append(t);
+      t.textContent = `Quest: ${it.name} (${it.code})${this.spot(it)?.drafted ? ' (drafted)' : ''}`; svg.append(t);
     }
   }
   // ---------- picking, dragging, placing ----------
@@ -120,6 +135,7 @@ export class Quests {
     const it = this.item(id), s = it && this.spot(it); if (!s) return;
     const op = moveOp(s, spotRow(it, s.space, s.pos, turned(s.rot?.[2], by))); if (op) this.a.push(op, s.space);
   }
+  keep(id) { const it = this.item(id), s = it && this.spot(it); if (s?.drafted) this.a.push({ op: 'quest.edit', quest: keptRow(s), before: JSON.parse(JSON.stringify(s)) }, s.space); }
   clear(id) { const it = this.item(id), s = it && this.spot(it); if (s) this.a.push(moveOp(s, null), s.space); }
   show(id) {
     const it = this.item(id), s = it && this.spot(it); if (!s) return;
@@ -141,11 +157,13 @@ export class Quests {
     const where = it.place_person ? `This person is the place's own ${esc(it.place_person.name || it.place_person.id)}: move them with the People tool.`
       : s ? `Placed${s.space !== 'exterior' ? ` inside (${esc(this.a.spaceName?.(this.a.ours, s.space) || s.space)})` : ''}, facing ${Math.round(((s.rot?.[2] || 0) * 180) / Math.PI)}°.`
         : 'Not placed yet: press Place, then tap the ground where it should stand.';
+    const draft = s?.drafted ? `<p class="q-drafted"><strong>Drafted, not yet checked by you:</strong> ${esc(s.why || 'no reason given')}</p>` : '';
     li.innerHTML = `<div class="q-head"><span class="tag">${esc(it.kind_word || it.kind)}</span> <strong>${esc(it.name)}</strong>${it.hostile ? ' <span class="tag">hostile</span>' : ''}${it.lock ? ` <span class="tag">lock: ${esc(it.lock.level)}</span>` : ''}</div>
       ${it.orphan ? '' : `<p class="q-need"><strong>The story asks for:</strong> ${esc(it.need || '(no words given)')}${it.room ? ` <em>(in ${esc(it.room)})</em>` : ''}</p>`}
-      <ul class="q-when">${this.when(it)}</ul><p class="q-where">${where}</p><div class="row q-buttons"></div>`;
+      ${draft}<ul class="q-when">${this.when(it)}</ul><p class="q-where">${where}</p><div class="row q-buttons"></div>`;
     const btns = li.querySelector('.q-buttons'), b = (label, fn, cls = '') => { const x = el(`<button class="${cls}">${esc(label)}</button>`); x.onclick = (e) => { e.stopPropagation(); fn(); }; btns.append(x); return x; };
     if (!it.place_person) {
+      if (s?.drafted) b('Keep this spot', () => this.keep(it.id), 'primary');
       if (s) b('Show', () => this.show(it.id));
       b(this.armed === it.id ? 'Tap the ground…' : s ? 'Move to a tap' : 'Place', () => { this.armed = it.id; this.sel = it.id; this.a.tools.use('quests'); this.panel(); }, 'primary');
       if (s) { b('Turn left', () => this.turn(it.id, -TURN)); b('Turn right', () => this.turn(it.id, TURN)); b('Clear spot', () => this.clear(it.id), 'quiet'); }

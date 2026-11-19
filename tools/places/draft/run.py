@@ -801,6 +801,8 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
     st = stages.Standing(place_id, places, bundles)
     names.apply(st, lambda *_: None, gives)
     st.write()
+    # a first spot for each quest thing the records put here (never over the owner's)
+    counts["quests"] = stages.run("quests", place_id, places, bundles, log=lambda *_: None)
     return counts
 
 

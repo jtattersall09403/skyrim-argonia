@@ -19,3 +19,8 @@ export function turned(heading, by) {
   const t = 2 * Math.PI, h = ((heading || 0) + by) % t;
   return h < 0 ? h + t : h;
 }
+// A drafted spot (a row with `drafted` and `why`) kept as it stands: the same row without them, owner-set.
+export function keptRow(row) {
+  const { drafted, why, ...rest } = row; // eslint-disable-line no-unused-vars
+  return rest;
+}

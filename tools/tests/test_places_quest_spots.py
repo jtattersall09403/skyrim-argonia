@@ -97,3 +97,20 @@ def test_studio_serves_quests_and_lists_them_offline(tmp_path, monkeypatch):
     asyncio.run(go())
     src = (Path(quest_spots.__file__).parent / "studio" / "offline.py").read_text()
     assert '"quests"' in src
+
+
+def test_payload_items_carry_the_model_of_a_resolved_base(tmp_path):
+    quests, places, sources = _world(tmp_path)
+    q = yaml.safe_load((quests / "main" / "mn04.yaml").read_text())
+    for r in q["placements"]:
+        if r["ref"] == "thing.mn04.cage":
+            r["base"] = {"kind": "existing_base", "id": "Skyrim.esm:0CE0AE"}
+    q["placements"].append({"ref": "thing.mn04.chest", "kind": "container", "name": "Chest", "enabled": True,
+                            "base": {"kind": "existing_base", "id": "a chest in words"},
+                            "anchor": {"place": "camp", "rule": "surface", "need": "x"}})
+    (quests / "main" / "mn04.yaml").write_text(yaml.safe_dump(q))
+    cat = tmp_path / "bases.jsonl"
+    cat.write_text(json.dumps({"key": "Skyrim.esm:0CE0AE", "model": "meshes/dungeons/cage.nif"}) + "\n")
+    by = {i["ref"]: i for i in quest_spots.payload("camp", places, quests, sources, url=URL, catalogue=cat)["items"]}
+    assert by["thing.mn04.cage"]["model"] == "meshes/dungeons/cage.nif"
+    assert by["thing.mn04.chest"]["model"] is None and by["npc.mn.sesk"]["model"] is None

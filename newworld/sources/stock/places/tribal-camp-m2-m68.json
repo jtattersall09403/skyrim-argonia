@@ -363,8 +363,8 @@
   {
    "give_seq": 0,
    "by": "record",
-   "status": "open",
-   "why": "combat-foes 'the Unbound's hired Naga guards at the fire': main quest 4 places them (Jeeta-Sakka, cast on the night guard, and three Naga guards, hostile, levels 4 to 5) at the fire by the longhouse; the draft's two guards keep the camp as a town's watch, not as foes, so the owner rules: the quest's placement delivers it, or the place's guards are made the camp's hostile warband at a fixed level"
+   "status": "delivered",
+   "why": "combat-foes 'the Unbound's hired Naga guards at the fire': the quest's own placements at a fixed level (main quest 4: three hostile Naga guards at the fire by the longhouse, with Jeeta-Sakka cast on the night guard), each standing at its spot in the studio's Quests layer: quest.main.mn04/npc.mn04.guard-1, quest.main.mn04/npc.mn04.guard-2, quest.main.mn04/npc.mn04.guard-3"
   }
  ],
  "taken_out": [
