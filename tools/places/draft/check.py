@@ -70,6 +70,9 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
         bad += hang.faults(refs, bases, *hang.measurers(bases))
     from tools.places.draft import sap
     bad += sap.faults(refs, bases)                         # every living Hist stands in its sap pool
+    if places == io.PLACES:                                # the plan answers the record and the source's structures
+        from tools.places.draft import plan
+        bad += plan.for_place(place_id)[1]
     for r in ledger:
         if r["status"] not in ("placed", "adapted", "replaced", "dropped"):
             bad.append(f"ledger {r['src']}: unknown status {r['status']}")

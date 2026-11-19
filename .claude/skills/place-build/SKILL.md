@@ -41,7 +41,8 @@ and with what, and what is still to add.
    building kind, the water and what stands in it, the market, the shrine, the racks and sheds, the look's
    materials) and, against it, the source pieces or the added pieces that deliver it. The `source` note's
    replacements are done, never left as the source had them (a "houses replaced with Argonian stilt huts" means
-   every house shell of the source is swapped).
+   every house shell of the source is swapped). `draft plan <place_id>` lists the plan and its faults, and `draft
+   check` fails while any promise or major structure has no line.
 3. Each major structure of the source (walls, terraces, keeps, mines, caves, harbours, temples, forts) is judged
    against the record's words: kept only when the record names it or it is an ordinary part of such a place;
    otherwise dropped with its doors, rooms and pieces. `python -m tools.places draft structures <place_id>` lists
