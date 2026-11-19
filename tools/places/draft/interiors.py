@@ -30,10 +30,30 @@ BED = re.compile(r"bed(?!side)|bedroll|hammock|sleep", re.I)
 DOUBLE = re.compile(r"double|dbl", re.I)
 
 
-@functools.lru_cache(maxsize=None)
 def rooms_of(copy_of: str) -> dict[str, frozenset]:
     """{way-out door ref: the source refs its room keeps} of a shared source cell, read and partitioned exactly as
     the builder does (its source cell from every plugin of the source, then room_partition; both cached by build)."""
+    return {k: frozenset(v["refs"]) for k, v in _partition(copy_of).items()}
+
+
+def on_room_mesh(copy_of: str, room: str, pos) -> bool:
+    """Whether a point of a shared source cell stands on its room's walkable mesh (within the build's reach of a
+    stop): a bed outside every wall of the cell (a builder's leftover in the void) stands on none."""
+    from tools.places import build
+    m = _partition(copy_of).get(room, {}).get("mesh") or {}
+    V, T = m.get("verts") or [], m.get("tris") or []
+    for t in T:
+        cx = sum(V[i][0] for i in t) / 3
+        cy = sum(V[i][1] for i in t) / 3
+        cz = sum(V[i][2] for i in t) / 3
+        if math.hypot(cx - pos[0], cy - pos[1]) <= 2 * build.COVER_PLAN and abs(cz - pos[2]) <= build.COVER_Z:
+            return True
+    return False
+
+
+@functools.lru_cache(maxsize=None)
+def _partition(copy_of: str) -> dict:
+    from tools.places import build
     from tools.places import build
     plugin, cell = build.resolve_copy(copy_of)
     with tempfile.TemporaryDirectory() as td:
@@ -45,8 +65,7 @@ def rooms_of(copy_of: str) -> dict[str, frozenset]:
         seen = {r["fk"] for r in refs}
         for more in got[1:]:
             refs += [r for r in more["refs"] if r["fk"] not in seen]
-        part = build.room_partition(copy_of, refs, tmp)
-    return {k: frozenset(v["refs"]) for k, v in part["rooms"].items()}
+        return build.room_partition(copy_of, refs, tmp)["rooms"]
 
 
 def kept(copy_of: str | None, room: str | None) -> frozenset | None:
@@ -92,13 +111,14 @@ def sleeps(b: dict) -> int:
 
 
 def beds_in(space_refs: list[dict], bases: dict, room: str | None = None, copy_of: str | None = None) -> list[dict]:
-    """Bed refs of a space (of one room when `room` names its way-out door), each with the sleepers it takes."""
+    """Bed refs of a space (of one room when `room` names its way-out door, and on that room's walkable mesh), each
+    with the sleepers it takes."""
     keep = kept(copy_of, room)
     out = []
     for r in space_refs:
         if r.get("kind") != "furniture" or not is_bed(bases.get(r.get("base")) or {}):
             continue
-        if keep is not None and r["id"] not in keep:
+        if keep is not None and (r["id"] not in keep or not on_room_mesh(copy_of, room, r["pos"])):
             continue
         out.append({"ref": r["id"], "sleeps": sleeps(bases.get(r.get("base")) or {})})
     return sorted(out, key=lambda b: b["ref"])

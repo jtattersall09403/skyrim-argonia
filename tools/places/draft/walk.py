@@ -729,6 +729,19 @@ def rehome(place_id: str, W: "Walkable", bases: dict, src, pdir: Path, log=print
     ppl = io.read_jsonl(pdir / "people.jsonl")
     inns = {(p.get("work") or {}).get("space") for p in ppl
             if any((g.get("give_kind_id") or g.get("kind")) == "inn-room" for g in p.get("services") or [])}
+    valid: set = set()
+    for sdir in sorted((pdir / "spaces").iterdir()):
+        sp = json.loads((sdir / "space.json").read_text()) if (sdir / "space.json").exists() else None
+        src_space = str((sp or {}).get("copy_of") or "").split("/")[-1]
+        if sp and src_space in src.spaces:
+            valid |= {(sp["space_id"], b["ref"]) for b in interiors.beds_in(
+                src.spaces[src_space].refs, bases, sp.get("room"), sp.get("copy_of"))}
+    for p in ppl:   # a bed indoors that is no bed of its room (off the room's walkable mesh) is given up
+        bed = p.get("bed") or {}
+        if bed.get("space") not in (None, "exterior") and (bed["space"], bed.get("ref")) not in valid \
+                and any(s.name == bed["space"] for s in (pdir / "spaces").iterdir()):
+            log(f"join {place_id}: {p['id']}'s bed {bed.get('ref')} in {bed['space']} is off its room's walkable mesh")
+            p["_was_bed"], p["bed"] = bed, None
     taken = Counter(((p.get("bed") or {}).get("space"), (p.get("bed") or {}).get("ref")) for p in ppl)
     free = []
     for sdir in sorted((pdir / "spaces").iterdir()):
@@ -748,10 +761,14 @@ def rehome(place_id: str, W: "Walkable", bases: dict, src, pdir: Path, log=print
     for p in ppl:   # a sleeper with no bed takes a free one: a home's, else the camp's in the open
         if p.get("bed") or p.get("role") in people_mod.NO_BED or not (free or camp):
             continue
-        sid, ref = free.pop(0) if free else ("exterior", camp.pop(0))
+        was = p.pop("_was_bed", None)
+        home = [f for f in free if was and f[0] == was["space"]]   # a bed given up is replaced in its own room first
+        if home:
+            free.remove(home[0])
+        sid, ref = home[0] if home else (free.pop(0) if free else ("exterior", camp.pop(0)))
         p["bed"], p["home"] = {"space": sid, "ref": ref, "radius": 128}, sid
         for st in p.get("routine") or []:
-            if st.get("kind") == "sleep":
+            if st.get("kind") == "sleep" or (was and st.get("at") == was):
                 st["at"] = p["bed"]
         log(f"join {place_id}: {p['id']} had no bed: sleeps in {sid} {ref}")
         moved += 1
@@ -776,6 +793,9 @@ def rehome(place_id: str, W: "Walkable", bases: dict, src, pdir: Path, log=print
             if st.get("at") == bed:
                 st["at"] = p["bed"]
         moved += 1
+    for p in ppl:   # no free bed anywhere: the bed stays as it was, and the check names it
+        if "_was_bed" in p:
+            p["bed"] = p.pop("_was_bed")
     if moved:
         io.write_jsonl(pdir / "people.jsonl", [q for q in ppl if not q.get("_gone")])
     return moved

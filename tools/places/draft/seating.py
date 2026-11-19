@@ -112,27 +112,29 @@ def _plan_box(r: dict, b) -> tuple[float, float, float, float]:
 
 
 def levels(rows: list[dict], by_src: dict[str, dict], bases: dict, g: Ground) -> int:
-    """Seat each walked level that has its own flight as one body. The source's walked pieces (decks, floor plates,
-    flights by their top) that touch in plan and meet in height are one level. Where a level holds a flight, its
-    pieces keep their source heights relative to each other, so a flight's top still meets its deck and a level yard
-    stays level: the level stands by the flight whose own seat rule (its foot on our ground) moves the level's pieces
-    least from their own rules at worst, and every other piece of it is seated `on` that flight at its source
-    offset. Pieces seated on the water or on another thing keep their rule. Returns the number of rows re-seated."""
-    from tools.places.draft.paths import FLIGHT
+    """Seat each floor-plate level that has its own flight as one body. The source's floor plates and flights (by
+    their top) that touch in plan and meet in height are one level (a keep's yard and its stairs). Where a level
+    holds a flight, its pieces keep their source heights relative to each other, so a flight's top still meets its
+    yard and the yard stays level: the level stands by the flight whose own seat rule (its foot on our ground) moves
+    the level's pieces least from their own rules at worst, and every other piece of it is seated `on` that flight at
+    its source offset. A piece a building or a door stands on (a house's porch) belongs to its building and keeps its
+    rule, as do pieces seated on the water or on another thing. Returns the number of rows re-seated."""
+    from tools.places.draft.paths import FLIGHT, is_plate
     from tools.places.seat import seat_z
+    held = {(x.get("seat") or {}).get("on") for x in rows if x.get("kind") in ("building", "door")}
     mem = []
     for row in rows:
         r = by_src.get(row.get("src"))
-        if r is None or row.get("base") != r.get("base") or row.get("primitive"):
+        if r is None or row.get("base") != r.get("base") or row.get("primitive") or row["id"] in held:
             continue
         if (row.get("seat") or {}).get("mode") not in LEVEL_MODES:
             continue
         base = bases.get(r.get("base")) or {}
+        flight = bool(FLIGHT.search(str(base.get("model") or "")))
         w, b = geom.walk(base), geom.bounds(r, bases)
-        if w is None or not b:
+        if w is None or not b or not (flight or is_plate(base)):
             continue
-        mem.append((row, r, r["pos"][2] + w, _plan_box(r, b),
-                    bool(FLIGHT.search(str(base.get("model") or "")))))
+        mem.append((row, r, r["pos"][2] + w, _plan_box(r, b), flight))
     par = list(range(len(mem)))
 
     def find(i: int) -> int:
