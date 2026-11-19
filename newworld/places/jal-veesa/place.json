@@ -163,7 +163,8 @@
     ],
     "rot_z": 0.727,
     "tier": "AGENT_INVENTED",
-    "why": "a fisher household's house above the jetty: Alten Meerhleel's dockmaster's house (MurkmireHouse03)"
+    "why": "a fisher household's house above the jetty: Alten Meerhleel's dockmaster's house (MurkmireHouse03)",
+    "dz": -84.0
    },
    {
     "base": "King of the Murkmire.esp:157397",
@@ -298,7 +299,7 @@
      -510300.0
     ],
     "rot_z": 4.7124,
-    "dz": 20.0,
+    "dz": -80.0,
     "tier": "AGENT_INVENTED",
     "why": "the sedge cutter's household's house: Seekhat Yol's egg-tenders' thatch hut (MurkmireThatchHouse07), set on the town's dry ground at its south edge, since its own platform stands where the town's ground cannot reach it"
    },
@@ -325,14 +326,24 @@
      ]
     },
     "why": "the hut's door, where Seekhat Yol sets it, into a copy of the egg-tenders' quarters (its other way out removed)"
+   },
+   {
+    "base": "King of the Murkmire.esp:0D72B7",
+    "kind": "static",
+    "pos": [
+     -56511.0,
+     -505472.0
+    ],
+    "rot_z": 1.5708,
+    "stop": "rootworm-stop",
+    "need": 0,
+    "tier": "AGENT_INVENTED",
+    "why": "the town's Hist at the heart of the town (place record: 'the Hist pool at the heart of the town'; main story, The Dry Tree): King of the Murkmire's HistTree03, standing where Seekhat Yol's own Hist stood among its glands, flowers and mossy vines (the source's tree is a plant of its land, which the draft leaves to our world); it carries the rootworm stop and the shrine blessing"
    }
   ],
   "people_from": [
    "bmv.helstrom"
   ],
-  "replace": {
-   "King of the Murkmire.esp:0E67B0": "King of the Murkmire.esp:0D72B7"
-  },
   "plan": [
    {
     "thing": "the source: Seekhat Yol",
@@ -434,7 +445,10 @@
   ],
   "drop": {
    "King of the Murkmire.esp:1B78D5": "the smithy smelter: the record has no smith",
-   "King of the Murkmire.esp:1B78DE": "the smithy ore: the record has no smith"
+   "King of the Murkmire.esp:1B78DE": "the smithy ore: the record has no smith",
+   "King of the Murkmire.esp:198C28": "the egg-tenders' hut's door on its platform: the platform stands where the town's ground cannot reach it; the hut's room is behind the hut added on the dry ground (draft.add)",
+   "King of the Murkmire.esp:198C2B": "the egg-tenders' hut's back door on its platform: as its front door",
+   "King of the Murkmire.esp:1C1D4C": "a Creation Club curio the catalogue judges Nordic (decision 0006); the hut keeps its own things"
   }
  },
  "fit": {
@@ -1217,16 +1231,8 @@
  "sap": {
   "added": [
    {
-    "id": "jal-veesa.sap.AHFQAJAKB1F6X1FWJJ06D8VB3V",
-    "on": "AHFQAJAKB1F6X1FWJJ06D8VB3V"
-   },
-   {
-    "id": "jal-veesa.sap.HP1JEJ9340AYR88STTVEW6XSVF",
-    "on": "HP1JEJ9340AYR88STTVEW6XSVF"
-   },
-   {
-    "id": "jal-veesa.sap.MNNC8V2R0QFQGMDMEW99HA15CA",
-    "on": "MNNC8V2R0QFQGMDMEW99HA15CA"
+    "id": "jal-veesa.sap.7SWK29SQSJ276Q5JVM1M6FCTK4",
+    "on": "7SWK29SQSJ276Q5JVM1M6FCTK4"
    },
    {
     "id": "jal-veesa.sap.RNQ1281B2E5X8752E8TM05G1YV",

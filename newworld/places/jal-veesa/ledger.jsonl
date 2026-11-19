@@ -368,7 +368,7 @@
 {"src":"King of the Murkmire.esp:198C27","space":"exterior","status":"placed","as":"jal-veesa.N4F3DA1J5X6VNTGE9P8MNPQ2M7","cluster":"b04"}
 {"src":"King of the Murkmire.esp:198C28","space":"exterior","status":"dropped","why":"its only door jal-veesa.S7810T3D4PVBEA5JTA0HRKGJB8 stands on a walkable island with no way to the town (the source gives no way aboard) and nobody lives or works in it"}
 {"src":"King of the Murkmire.esp:198C2A","space":"exterior","status":"placed","as":"jal-veesa.PMMYQ9M271PCJV6S845GYHJB63","cluster":"b04"}
-{"src":"King of the Murkmire.esp:198C2B","space":"exterior","status":"placed","as":"jal-veesa.13386Q01R74MK48EJQ7EZE286W","cluster":"b04"}
+{"src":"King of the Murkmire.esp:198C2B","space":"exterior","status":"dropped","cluster":"b04","why":"the egg-tenders' hut's back door on its platform: as its front door","by":"draft.drop"}
 {"src":"King of the Murkmire.esp:198C2C","space":"exterior","status":"placed","as":"jal-veesa.C1EXSRK3HK9TJPXEXY77CNEKGA","cluster":"b04"}
 {"src":"King of the Murkmire.esp:198C2D","space":"exterior","status":"placed","as":"jal-veesa.7HQCY9YE4PXCX64BKS5TS8JQ33","cluster":"b04"}
 {"src":"King of the Murkmire.esp:198C2E","space":"exterior","status":"placed","as":"jal-veesa.WZRTGGE8QJ3E18Q69DNGD3JFFG","cluster":"b04"}

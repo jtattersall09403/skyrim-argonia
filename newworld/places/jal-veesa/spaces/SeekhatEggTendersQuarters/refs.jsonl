@@ -2,8 +2,7 @@
 {"id":"jal-veesa.7H8K26X187CJ35T8JTCMNWZ2ZM","src":"King of the Murkmire.esp:19DF87","removed":true}
 {"id":"jal-veesa.9J4GFMZDZV95GWKYK97BV2VVZ7","src":"King of the Murkmire.esp:19DF8A","removed":true}
 {"id":"jal-veesa.D5MJH53J991BSWSSVKGW5SGZN7","src":"King of the Murkmire.esp:19DF82","removed":true}
-{"id":"jal-veesa.GKMN1HZAMRP1V3PGPD19DVQBX6","edid":null,"base":"King of the Murkmire.esp:0D72B7","kind":"tree","pos":[7796.5166,-2548.8445,6802.9766],"rot":[0,0,1.5708],"scale":1.64,"layer":"place","flags":[],"src":"King of the Murkmire.esp:19DF70","seat":{"mode":"free"}}
-{"id":"jal-veesa.GSXCM4SPSHZTCC8DBDBF88W95E","edid":null,"base":"King of the Murkmire.esp:0259D2","kind":"door","pos":[8300.705,-4031.436,6828.874],"rot":[-0.1047204,2.7939674e-07,0],"scale":1.1,"layer":"place","flags":["persistent"],"src":"King of the Murkmire.esp:19DF88","door":{"to_space":"exterior","to_ref":"jal-veesa.EFKY8K1944911YN80AZYXQABCS","to_pos":[-54994.4,-510063.0,384.0],"to_rot":[0.0,0.0,3.14159],"flags":"0"},"seat":{"mode":"free"}}
+{"id":"jal-veesa.GSXCM4SPSHZTCC8DBDBF88W95E","edid":null,"base":"King of the Murkmire.esp:0259D2","kind":"door","pos":[8300.705,-4031.436,6828.874],"rot":[-0.1047204,2.7939674e-07,0],"scale":1.1,"layer":"place","flags":["persistent"],"src":"King of the Murkmire.esp:19DF88","door":{"to_space":"exterior","to_ref":"jal-veesa.EFKY8K1944911YN80AZYXQABCS","to_pos":[-54706.4,-510063.0,382.39],"to_rot":[0.0,0.0,1.67459],"flags":"0"},"seat":{"mode":"free"}}
 {"id":"jal-veesa.GYPWRJJG9B3PBD3V4ZFXXK5N8J","src":"King of the Murkmire.esp:19DF7B","removed":true}
 {"id":"jal-veesa.HBHGG7AMYJP3R13F852407BP82","src":"King of the Murkmire.esp:19DF86","removed":true}
 {"id":"jal-veesa.J16PWTGSPM7QZ8XYQQA79NV4AW","src":"King of the Murkmire.esp:19DF7C","removed":true}
