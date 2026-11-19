@@ -94,7 +94,10 @@ as any change to the method; the quest skills carry it step by step, and their m
   when it is in the world: from the start of the game, or the stage or ending that switches it on and off, with links
   to that quest and stage in the story explorer, `#q-<quest>/s-<stage>`). A move is an edit of the studio save
   (`quest.add`, `quest.edit`, `quest.remove`) and finalise writes it to `quests.jsonl` with the place's other files.
-  The builder takes the row as the form's `at`; a row whose placement has left the records shows in the Quests
+  The quest compiler takes the row as the form's `at` (`tools/questform/compile.py` `spot_at`: its `pos`, its
+  heading `rot[2]` as `rz`, and its `space`: outdoors the new world's worldspace, the builder taking the cell holding
+  the spot; a room's cell from the place's `formids.json`); a placement with no row has no `at`, and the form check
+  reports it `not-placed` and the seed refuses it, never building it at 0,0; a row whose placement has left the records shows in the Quests
   layer as no longer asked for (`tools/places/quest_spots.py`, `check`) and is cleared, never kept. A person the place's people are cast as (below) is
   placed as the place's person, not here.
 - **A quest's person at a place is the place's person:** one person, never two. Where a quest record places a person

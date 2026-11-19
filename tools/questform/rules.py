@@ -33,7 +33,7 @@ REGARD_MIN, REGARD_MAX = -4, 4
 # The ways of a quest the late-trigger walk follows at most (each a set of stages done); a quest with more is not walked.
 MAX_WAYS = 50000
 
-RULES = ("schema", "vocabulary", "unique-ids", "stages-exist", "refs-exist", "placement", "lock", "owner", "contents",
+RULES = ("schema", "vocabulary", "unique-ids", "stages-exist", "refs-exist", "placement", "not-placed", "lock", "owner", "contents",
          "item-id", "journal-text",
          "way-out", "reachable", "objective-target-on", "asked-is-target", "completes-on-target", "hand-in", "held-take",
          "line-window", "switch-cause", "away", "must-live-fails", "must-live-window", "main-message", "death-hostile",
@@ -725,6 +725,9 @@ def _placement(fm: Form):
             out.append(("placement", f"ref {r['id']}: a fixed level is a new person's or creature's"))
         if "count" in r and (r["kind"] != "thing" or p["base"]["kind"] != "item" or "anchor" not in p):
             out.append(("placement", f"ref {r['id']}: a count is on a stock item placed by an anchor"))
+        if "place" in (p.get("anchor") or {}) and "at" not in r:
+            out.append(("not-placed", f"ref {r['id']}: not placed yet: set its spot at {p['anchor']['place']} in "
+                                      "the place studio's Quests layer"))
     return out
 
 

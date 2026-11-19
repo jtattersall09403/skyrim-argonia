@@ -178,7 +178,8 @@
               "interior": {"type": "boolean"},
               "x": {"type": "number"},
               "y": {"type": "number"},
-              "z": {"type": "number"}
+              "z": {"type": "number"},
+              "rz": {"type": "number"}
             }
           }
         }

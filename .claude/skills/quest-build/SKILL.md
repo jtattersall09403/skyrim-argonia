@@ -35,7 +35,8 @@ adds it for an in-game diagnosis only, and that tree is never committed or deplo
 - **A refusal** is one line, `questform <quest>: <rule>: <what>`, and fails the seed (the
   [quest-form](../../../docs/design/quest-form.md) "refusals" list says what each rule means). Fix it in the record:
   a spot with no navmesh within 300 units is moved to a measured one (`bash tools/ArgoniaPlugin/plugin.sh inspect
-  navnear:<x>:<y>:<z>`, `cellgrid:<cell>:<x>:<y>:<z>:<step>`), a word that resolves to no record is corrected, then
+  navnear:<x>:<y>:<z>`, `cellgrid:<cell>:<x>:<y>:<z>:<step>`), a `not-placed` thing at a new-world place gets its spot in the place studio's Quests layer (finalise writes it to
+  the place's `quests.jsonl`, which the compiler reads as its `at`), a word that resolves to no record is corrected, then
   compile and seed again. `seed --refused-ok` only shows what else would build; nothing seeded that way ships.
 - **The build log** says where each person who speaks first stands and how far from the door, and names each person
   who stands with no navmesh near and will not walk. Read both.

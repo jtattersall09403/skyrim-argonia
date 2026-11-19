@@ -13,6 +13,10 @@ from tools.argonia_world.quest_record import export
 from tools.questform import rules
 
 QUEST_LINES = db.REPO / "story/data/quest_lines"
+# A new-world place's quest spots: one row per placement in <place>/quests.jsonl (tools/places/quest_spots.py).
+NW_PLACES = db.REPO / "newworld/places"
+NW_WORLD = "000800:ArgoniaNewWorld.esm"     # the new world's worldspace: an exterior spot's `at.cell`
+NW_PLACES_PLUGIN = "ArgoniaNWPlaces.esp"    # a place's interior cells, by the place's formids.json "space:<id>"
 
 HINT_PLACE = "a stage moves when the player talks, takes, uses or kills; where the player stands moves nothing"
 HINT_CLOCK = "the clock moves and gates nothing: drop the wait, or let a line or a happening move the stage"
@@ -894,6 +898,8 @@ class Compiler:
         return names, texts
 
     def _at(self, r):
+        if r["place"] and (NW_PLACES / r["place"]).is_dir():
+            return spot_at(self.qid, r["ref"], r["place"])
         if r["cell"] is not None and r["x"] is not None:
             return {"cell": r["cell"], "interior": bool(r["interior"]), "x": r["x"], "y": r["y"], "z": r["z"]}
         if r["form_key"]:
@@ -905,6 +911,30 @@ class Compiler:
                 if got:
                     return {**dict(got[0]), "interior": bool(got[0]["interior"])}
         return None
+
+
+def spot_at(qid: str, ref: str, place: str, places: Path = NW_PLACES) -> dict | None:
+    """The form's `at` of a placement at a new-world place: its row of the place's quests.jsonl (set in the studio's
+    Quests layer), or None when it is not placed yet (no row, or a room whose cell has no form id yet). An exterior
+    spot names the new world's worldspace as its cell (the builder takes the cell holding x, y); `rz` is its heading."""
+    from tools.places import quest_spots
+    row = next((r for r in quest_spots.read(places / place) if r.get("id") == quest_spots.spot_id(qid, ref)), None)
+    if row is None or len(row.get("pos") or []) != 3:
+        return None
+    space = row.get("space") or "exterior"
+    if space == "exterior":
+        cell, interior = NW_WORLD, False
+    else:
+        try:
+            local = json.loads((places / place / "formids.json").read_text()).get(f"space:{space}")
+        except (OSError, ValueError):
+            local = None
+        if local is None:
+            return None
+        cell, interior = f"{local:06X}:{NW_PLACES_PLUGIN}", True
+    x, y, z = (float(v) for v in row["pos"])
+    rot = row.get("rot") or [0, 0, 0]
+    return {"cell": cell, "interior": interior, "x": x, "y": y, "z": z, "rz": float(rot[2] if len(rot) > 2 else 0)}
 
 
 def _merged(objectives) -> list[dict]:

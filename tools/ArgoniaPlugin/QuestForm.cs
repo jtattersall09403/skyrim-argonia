@@ -232,6 +232,10 @@ static class QuestForm
         return true;
     }
     static P3Float? Pos(IMajorRecordGetter r) => r switch { IPlacedObjectGetter o => o.Placement?.Position, IPlacedNpcGetter n => n.Placement?.Position, _ => null };
+    /// The form's heading for a new ref (`at.rz`, radians, 0 faces +y), else 0.
+    static float Heading(Ref r) =>
+        r.Json.TryGetProperty("at", out var at) && at.TryGetProperty("rz", out var rz) ? (float)rz.GetDouble() : 0f;
+
     static FormKey CellAt(Ctx c, FormKey world, P3Float p) =>
         c.Grid.TryGetValue((world, (int)MathF.Floor(p.X / 4096), (int)MathF.Floor(p.Y / 4096)), out var k) ? k : FormKey.Null;
 
@@ -710,7 +714,7 @@ static class QuestForm
             if (bk != "template_person") throw c.No("placement", $"{r.Id}: a new person is a template_person");
             var npc = Person(c, b, r, bid);
             // by a load door, facing where the player comes out of it (heading 0 is north, +y; clockwise)
-            var face = r.Door is { } dr ? new P3Float(0, 0, MathF.Atan2(dr.arrival.X - at.X, dr.arrival.Y - at.Y)) : new P3Float();
+            var face = r.Door is { } dr ? new P3Float(0, 0, MathF.Atan2(dr.arrival.X - at.X, dr.arrival.Y - at.Y)) : new P3Float(0, 0, Heading(r));
             var a = new PlacedNpc(key, SkyrimRelease.SkyrimSE) { EditorID = edid, MajorRecordFlagsRaw = flags, Placement = new Placement { Position = at, Rotation = face } };
             a.Base.SetTo(npc); r.Base = npc; r.Npc = true; placed = a;
         }
@@ -722,7 +726,7 @@ static class QuestForm
             else if (bk == "existing_base" && So(j0, "name") != null && IsContainer(c.Mods, r.Base)) r.Base = Contents(c, b, r, bk, bid, null);
             if (r.Kind == "door" && !c.Mods.Any(m => m.Doors.Any(d => d.FormKey == r.Base))) throw c.No("placement", $"{r.Id}: base {bid} is not a door");
             if (S(anchor, "rule") == "surface") at = Footprint(c, cell, world, interior, at, r.Base);
-            var o = new PlacedObject(key, SkyrimRelease.SkyrimSE) { EditorID = edid, MajorRecordFlagsRaw = flags, Placement = new Placement { Position = at, Rotation = new P3Float() } };
+            var o = new PlacedObject(key, SkyrimRelease.SkyrimSE) { EditorID = edid, MajorRecordFlagsRaw = flags, Placement = new Placement { Position = at, Rotation = new P3Float(0, 0, Heading(r)) } };
             o.Base.SetTo(r.Base); placed = o;
             if (j0.TryGetProperty("count", out var cnt)) o.ItemCount = cnt.GetInt32();
         }
@@ -826,7 +830,14 @@ static class QuestForm
             interior = B(at, "interior");
             try { cell = FormKey.Factory(S(at, "cell")); } catch (Exception) { throw c.No("placement", $"{r.Id}: at.cell {S(at, "cell")} is no form key"); }
             p = new P3Float((float)at.GetProperty("x").GetDouble(), (float)at.GetProperty("y").GetDouble(), (float)at.GetProperty("z").GetDouble());
-            world = interior ? FormKey.Null : c.CellWorld.TryGetValue(cell, out var w) ? w : throw c.No("placement", $"{r.Id}: exterior cell {cell} is in no world of the load order");
+            // an exterior spot may name its worldspace for its cell (a new-world place's quest spot): the cell holding x, y
+            if (!interior && !c.CellWorld.ContainsKey(cell) && c.CellWorld.ContainsValue(cell))
+            {
+                world = cell;
+                cell = CellAt(c, world, p);
+                if (cell.IsNull) throw c.No("placement", $"{r.Id}: {p.X:F0},{p.Y:F0} is in no cell of worldspace {world}");
+            }
+            else world = interior ? FormKey.Null : c.CellWorld.TryGetValue(cell, out var w) ? w : throw c.No("placement", $"{r.Id}: exterior cell {cell} is in no world of the load order");
             if (!interior && CellAt(c, world, p) != cell) throw c.No("placement", $"{r.Id}: {p.X:F0},{p.Y:F0} is not in cell {cell}");
         }
         else if (anchor.TryGetProperty("near", out var near))
@@ -845,7 +856,7 @@ static class QuestForm
                 if (!interior) cell = CellAt(c, world, p);
             }
         }
-        else throw c.No("placement", $"{r.Id}: a place anchor needs the form's `at` (where in the place it stands)");
+        else throw c.No("not-placed", $"{r.Id}: not placed yet: a place anchor needs the form's `at` (its spot, set in the place studio's Quests layer)");
         if (rule == "navmesh")
         {
             // the nearest point of a navmesh at the spot's level: by a load door, at the player's feet (within 100 up or

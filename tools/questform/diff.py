@@ -33,6 +33,7 @@ from pathlib import Path
 NEAR_UNITS = 1024.0       # a placement "near" a reference stands within this of it (about 15 m)
 PLACE_UNITS = 8192.0      # a placement "at" a place stands within this of the place's position (two cells)
 PLACED_UNITS = 400.0      # an anchored ref stands within this of its designed `at` (navmesh 300 plus the door step 100)
+NW_WORLD = "000800:ArgoniaNewWorld.esm"  # a designed exterior spot in the new world names the worldspace, not a cell
 POS_UNITS = 1.0           # an existing ref's designed and built positions agree within this
 
 
@@ -200,7 +201,7 @@ def diff_form(d: dict, b: dict, res: Resolver) -> list[str]:
                     r.append(f"{w}.placement.anchor {_show(px['anchor'])} not satisfied: {why}")
             elif ay is None:
                 r.append(f"{w}.at: designed {_show(ax)}, built none")
-            elif ax["cell"] != ay["cell"]:
+            elif ax["cell"] != ay["cell"] and (ax["interior"] or ax["cell"] != NW_WORLD):
                 r.append(f"{w}.at: designed in cell {ax['cell']}, built in {ay['cell']}")
             else:
                 d = math.dist((ax["x"], ax["y"]), (ay["x"], ay["y"]))
