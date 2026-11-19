@@ -228,7 +228,7 @@ def give_to_residents(folk: list[dict], gives: list[dict], identities: dict[str,
 def spots_of(place_id: str, place: dict) -> dict[str, str]:
     """{give kind: ref id} of the `draft.add` rows marked with a `stop` (the rootworm's root pool)."""
     from tools.places.draft import io
-    return {a["stop"]: io.mint(place_id, "add", str(k), a["base"])
+    return {a["stop"]: io.mint(place_id, "add", str(k), a.get("id_base") or a["base"])
             for k, a in enumerate((place.get("draft") or {}).get("add") or []) if a.get("stop")}
 
 

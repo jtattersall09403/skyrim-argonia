@@ -509,6 +509,14 @@ def stations(st: Standing, log=print) -> None:
         added.append({"station": kind, "id": row["id"], "base": b["key"], "space": space, "by": owner["id"]})
         found.setdefault(kind, []).append(row["id"])
         log(f"draft stations {st.place_id}: {kind} added in {space} for {owner['id']}")
+    dec = st.place.get("draft") or {}
+    if dec.get("shrine"):
+        st.bases.update(io.catalogue_bases({dec["shrine"]["base"]} - set(st.bases)))
+        for a in [a for a in added if a["station"] == "shrine"]:
+            row = next((r for r in st.ext if r["id"] == a["id"]), None)
+            if row and R.shrine_swap(row, dec, st.bases):
+                a["base"] = row["base"]
+                log(f"draft stations {st.place_id}: shrine {row['id']} stands as {row['base']} (draft.shrine)")
     stn.update({"needed": sorted(set(need) | ({"shrine"} if "shrine" in (stn.get("needed") or []) else set())),
                 "found": {**(stn.get("found") or {}), **found}, "added": added,
                 "missing": [s for s in need if not found.get(s)]

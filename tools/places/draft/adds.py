@@ -9,7 +9,8 @@ the floor-standing piece beside it and given). `walk` is a walkway's deck height
 `stop` marks the thing a travel stop's handler works at (`rootworm-stop` on a root pool); `lock` is the ref's lock
 ({level, key, flags}); `name` the name the game shows on looking at it; `need` the story need it meets, by seq;
 `map_marker` the name a map marker shows on the world map (the row's base is Skyrim's map marker, 000010). Its id is
-minted from its place in the list and its base, so a rerun keeps it. The whole draft adds them; on a drafted place
+minted from its place in the list and its base, so a rerun keeps it; `id_base` keeps the id a row was first
+minted from when its base is swapped in place (the ids the stories rest on stay). The whole draft adds them; on a drafted place
 `draft add <place>` places them again from `draft.add` and touches no other row.
 
 A door with `room` {copy_of: "<source_id>/<cell>", door?: the cell's way out (source ref id), space?: our space id
@@ -46,7 +47,7 @@ def rows(place_id: str, dec: dict, bases: dict) -> list[tuple[str, dict]]:
             seat = {"mode": "on", "on": a["on"], "dz": float(a.get("dz", 0.0))}
         else:
             seat = {"mode": "ground", "dz": float(a.get("dz", 0.0))}
-        row = {"id": io.mint(place_id, "add", str(k), a["base"]), "base": a["base"], "kind": a.get("kind", "furniture"),
+        row = {"id": io.mint(place_id, "add", str(k), a.get("id_base") or a["base"]), "base": a["base"], "kind": a.get("kind", "furniture"),
                "pos": [float(a["pos"][0]), float(a["pos"][1]), z], "rot": [0.0, 0.0, float(a.get("rot_z", 0.0))],
                "scale": float(a.get("scale", 1.0)), "layer": "place", "flags": [], "src": None,
                "seat": seat, "why": a.get("why", "")}
@@ -243,7 +244,7 @@ def apply(st, log=print) -> None:
     st.bases.update(io.catalogue_bases({r["base"] for _, r in want} - set(st.bases)))
     want = rows(st.place_id, dec, st.bases)
     minted = {io.mint(st.place_id, "add", str(k), b) for k in range(len(adds) + 64)
-              for b in {a["base"] for a in adds} | {r["base"] for sp in st.files["spaces"].values()
+              for b in {a["base"] for a in adds} | {a["id_base"] for a in adds if a.get("id_base")} | {r["base"] for sp in st.files["spaces"].values()
                                                     for r in sp["refs"] if r.get("why") and not r.get("src")}}
     ids = {r["id"] for _, r in want}
     for sid, sp in st.files["spaces"].items():

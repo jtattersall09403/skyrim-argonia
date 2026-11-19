@@ -811,6 +811,25 @@ SHRINE_EDID = re.compile(r"^hist(tree|gland|trunk)|shrine|altar", re.I)   # a Hi
 SHRINE_BASE = "King of the Murkmire.esp:0D72B8"   # HistTree04: a young Hist, some 6 m tall
 
 
+def shrine_swap(row: dict, dec: dict, bases: dict) -> bool:
+    """The Hist an added shrine stands as, when the record asks for more than a young one (a city's great tree):
+    `draft.shrine` {base, scale?} names it, and the added row takes that base and scale in its own place and id.
+    True when the row changed."""
+    want = dec.get("shrine") or {}
+    if not want.get("base") or not str(row.get("why", "")).startswith("shrine:"):
+        return False
+    scale = float(want.get("scale", 1.0))
+    if row["base"] == want["base"] and float(row.get("scale", 1.0)) == scale:
+        return False
+    row["base"], row["scale"] = want["base"], scale
+    f = geom.foot(row, bases)
+    if f:
+        row["seat"] = dict(row.get("seat") or {"mode": "ground", "dz": 0.0}, foot=f)
+    row["why"] = ("shrine: the record promises a Hist blessing and names the place's own great tree; the source has "
+                  "no Hist, so the great Hist the record names (draft.shrine) stands in the town's middle")
+    return True
+
+
 def add_shrine(place_id, gives, our, bases, stations, centre, paths_our, G) -> None:
     """A promised shrine blessing needs a thing to carry it: the source's own Hist or shrine when it placed one,
     else a young Hist added where a town's shrine stands (its square, the town's middle), clear of buildings and
