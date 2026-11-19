@@ -362,7 +362,7 @@ def clearance(st: Standing, log=print) -> None:
 
 def streets(place_id: str, places: Path, log=print) -> None:
     from tools.places.draft import walk
-    walk.join(place_id, places, log=log)
+    walk.join(place_id, places, log=log, first=False)
 
 
 def people_stage(st: Standing, log=print) -> None:
@@ -416,6 +416,37 @@ def lights_stage(st: Standing, log=print) -> None:
     seat_all(st.ext, st.G)
 
 
+def outdoor_station(st: Standing, kind: str, found: dict, added: list, folk: list) -> list[str]:
+    """The place's own station of `kind` outdoors (its base's editor id, io.STATION_EDID): when one stands, a station
+    of that kind this stage added in a room is taken out, and its worker's work, and the work and wander stops of
+    their day in that room, move to the outdoor one (a room's station is the last resort: its room may be one only
+    the player reaches). Returns the workers moved."""
+    import re
+    pat = re.compile(io.STATION_EDID[kind], re.I)
+    ours = {a["id"] for a in added}
+    own = sorted(r["id"] for r in st.ext if r["id"] not in ours and not r.get("removed")
+                 and pat.search(str((st.bases.get(r["base"]) or {}).get("edid", ""))))
+    gone = [a for a in added if a["station"] == kind and a["space"] != "exterior"]
+    if not own or not gone:
+        return []
+    out = []
+    for a in gone:
+        sp = st.files["spaces"].get(a["space"])
+        if sp is not None:
+            sp["refs"][:] = [r for r in sp["refs"] if r["id"] != a["id"]]
+        added.remove(a)
+        p = next((x for x in folk if x["id"] == a["by"]), None)
+        if p is not None and (p.get("work") or {}).get("space") == a["space"]:
+            new = {"space": "exterior", "ref": own[0], "radius": 384}
+            for s_ in p.get("routine") or []:
+                if (s_.get("at") or {}).get("space") == a["space"] and s_.get("kind") in ("work", "wander"):
+                    s_["at"] = dict(new) if s_.get("kind") == "work" else {**new, "radius": 1024}
+            p["work"] = new
+            out.append(p["id"])
+    found[kind] = own
+    return out
+
+
 def stations(st: Standing, log=print) -> None:
     from tools.places.draft import people
     from tools.places.draft import run as R
@@ -426,6 +457,11 @@ def stations(st: Standing, log=print) -> None:
     found = {k: [i for i in v if i in every] for k, v in (stn.get("found") or {}).items()}
     added = [a for a in stn.get("added") or [] if a["id"] in every]
     folk = st.files["people"]
+    for kind in need:   # the place's own station outdoors is worked before one added in a room
+        moved = outdoor_station(st, kind, found, added, folk)
+        if moved:
+            log(f"draft stations {st.place_id}: {kind} worked at the place's own {found[kind][0]} outdoors by "
+                f"{', '.join(moved)}; the one added in a room taken out")
     for kind in sorted(need, key=lambda x: (x != "forge", x)):
         if found.get(kind):
             continue

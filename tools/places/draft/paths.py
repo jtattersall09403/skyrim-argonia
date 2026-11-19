@@ -190,11 +190,29 @@ WALKWAY = re.compile(r"dock|boardwalk|bridge|walkway|steps|stair|road|plank|pier
 LEVEL_WAY = re.compile(r"dock|boardwalk|walkway|pier|jetty|bridge|plank", re.I)
 FLIGHT = re.compile(r"step|stair", re.I)
 DECK_MIN = 96.0     # plan units: the narrow side of a piece a person walks along (a stockade board stood on edge is none)
+PLATE_MIN = 192.0   # plan units: the narrow side of a flat floor plate (a keep's ledge, a floor slab); a rug is narrower
+PLATE_H = 32.0      # a flat floor plate's record box is no taller than this
+
+
+def is_plate(base: dict | None) -> bool:
+    """A flat floor plate a person walks on whatever its model is called: a building piece whose record box is
+    no taller than PLATE_H and at least PLATE_MIN wide on its narrow side (a keep's ledge, a floor slab)."""
+    if not base or not base.get("bounds") or FLIGHT.search(str(base.get("model") or "")):
+        return False
+    (x0, y0, z0), (x1, y1, z1) = base["bounds"]
+    return z1 - z0 <= PLATE_H and min(x1 - x0, y1 - y0) >= PLATE_MIN
+
+
+def walked(base: dict | None) -> bool:
+    """A piece one walks on: a walkway by its model (docks, bridges, steps) or a flat floor plate."""
+    return bool(base) and (bool(WALKWAY.search(str(base.get("model") or ""))) or is_plate(base))
 
 
 def is_deck(base: dict | None) -> bool:
     """A level walkway piece a person walks on: a walkway by its model, no flight of steps, and a deck at least
-    DECK_MIN wide in plan (its record box's narrow side)."""
+    DECK_MIN wide in plan (its record box's narrow side); or a flat floor plate."""
+    if is_plate(base):
+        return True
     if not base or not LEVEL_WAY.search(str(base.get("model") or "")) or FLIGHT.search(str(base.get("model") or "")):
         return False
     (x0, y0, _), (x1, y1, _) = base.get("bounds") or [[0, 0, 0], [0, 0, 0]]

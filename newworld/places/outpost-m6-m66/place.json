@@ -148,6 +148,19 @@
     "name": "Sap-Takers' Pack",
     "tier": "AGENT_INVENTED",
     "why": "the sap-takers' pack at the hide (place record: treasure, 'jars of sap and the sap-takers' packs at the reed hide'): Dragonborn's empty knapsack (King of the Murkmire's own carries a levelled list)"
+   },
+   {
+    "base": "Skyrim.esm:10638E",
+    "kind": "activator",
+    "pos": [
+     -42334,
+     -543600
+    ],
+    "rot_z": 0,
+    "dz": 40,
+    "need": 0,
+    "tier": "AGENT_INVENTED",
+    "why": "the traps on the woven weir (place record: fishing, 'the traps: eels and carp'): a fishing spot set at the weir"
    }
   ],
   "roles": {
@@ -587,7 +600,7 @@
     "return": "outpost-m6-m66.AK1GWM5MSAQRNZ6SGRY4J1M0NT",
     "bed": "outpost-m6-m66.YTSFPTPFNAPWSXQPJKBTQ9FGNG",
     "stolen": "outpost-m6-m66.BMFRARB74875FFWDVTD53KYAXX",
-    "work_at": "the work stop 2 of the place's people share"
+    "work_at": "the work stop 2 of the place's people share, on the nearest street with footing"
    },
    "law": "native",
    "law_why": "Argonian law, no cell: Veesa-Teeleel weir-wardens"

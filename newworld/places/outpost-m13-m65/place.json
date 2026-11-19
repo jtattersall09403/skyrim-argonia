@@ -286,6 +286,90 @@
     "rot_z": 1.5708,
     "tier": "AGENT_INVENTED",
     "why": "the old road post's gate (place record: summary, 'the old road post's gate still stands'): King of the Murkmire's palisade gate on the road side of the camp"
+   },
+   {
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "pos": [
+     -100720,
+     -529110
+    ],
+    "rot_z": 4.7124,
+    "need": 1,
+    "tier": "AGENT_INVENTED",
+    "why": "the free bed in the hut (place record: free-bed, 'a bench in the hut'): an unowned bedroll by the hut's wall, where a traveller may sleep, as Skyrim's camps give a free bed"
+   },
+   {
+    "base": "King of the Murkmire.esp:03A575",
+    "kind": "plant",
+    "pos": [
+     -101344,
+     -528146
+    ],
+    "rot_z": 0.0,
+    "need": 3,
+    "tier": "AGENT_INVENTED",
+    "why": "a reed bed's marshmerrow sedge on the river bank (place record: harvest-common, 'sedge and swamp fungus on the reed beds')"
+   },
+   {
+    "base": "Skyrim.esm:07E8B8",
+    "kind": "plant",
+    "pos": [
+     -100972,
+     -529041
+    ],
+    "rot_z": 1.1,
+    "need": 3,
+    "tier": "AGENT_INVENTED",
+    "why": "swamp fungus on the river bank's reed beds (place record: harvest-common, 'sedge and swamp fungus on the reed beds')"
+   },
+   {
+    "base": "King of the Murkmire.esp:03A575",
+    "kind": "plant",
+    "pos": [
+     -101606,
+     -527836
+    ],
+    "rot_z": 2.2,
+    "need": 3,
+    "tier": "AGENT_INVENTED",
+    "why": "a reed bed's marshmerrow sedge on the river bank (place record: harvest-common, 'sedge and swamp fungus on the reed beds')"
+   },
+   {
+    "base": "Skyrim.esm:07E8B8",
+    "kind": "plant",
+    "pos": [
+     -101511,
+     -529416
+    ],
+    "rot_z": 3.3,
+    "need": 3,
+    "tier": "AGENT_INVENTED",
+    "why": "swamp fungus on the river bank's reed beds (place record: harvest-common, 'sedge and swamp fungus on the reed beds')"
+   },
+   {
+    "base": "King of the Murkmire.esp:03A575",
+    "kind": "plant",
+    "pos": [
+     -101320,
+     -526460
+    ],
+    "rot_z": 4.4,
+    "need": 3,
+    "tier": "AGENT_INVENTED",
+    "why": "a reed bed's marshmerrow sedge on the river bank (place record: harvest-common, 'sedge and swamp fungus on the reed beds')"
+   },
+   {
+    "base": "Skyrim.esm:07E8B8",
+    "kind": "plant",
+    "pos": [
+     -100997,
+     -526145
+    ],
+    "rot_z": 5.5,
+    "need": 3,
+    "tier": "AGENT_INVENTED",
+    "why": "swamp fungus on the river bank's reed beds (place record: harvest-common, 'sedge and swamp fungus on the reed beds')"
    }
   ],
   "roles": {
@@ -506,7 +590,7 @@
     "return": "outpost-m13-m65.KVD02EV6HSJQZN2BXFE5WNKFBK",
     "bed": "outpost-m13-m65.H7T7ZWP0A1C70F4KPYSA1NQTJM",
     "stolen": "outpost-m13-m65.8Y11H9B8FV5BAVYZK92TAC43W7",
-    "work_at": "the work stop 2 of the place's people share"
+    "work_at": "the work stop 2 of the place's people share, on the nearest street with footing"
    },
    "law": "native",
    "law_why": "Argonian law, no cell: A Dunmer gang-master and his Owing reed-cutters"
@@ -542,19 +626,11 @@
   ],
   "found": {
    "cooking-pot": [
-    "outpost-m13-m65.J0KTQNPTJ7JCY9BYWXXXAPV5ZS"
+    "outpost-m13-m65.S3NDEE0SCNN3EGBKJYJ6AVE74C"
    ]
   },
   "missing": [],
-  "added": [
-   {
-    "station": "cooking-pot",
-    "id": "outpost-m13-m65.J0KTQNPTJ7JCY9BYWXXXAPV5ZS",
-    "base": "King of the Murkmire.esp:1AD601",
-    "space": "01dock3to4",
-    "by": "outpost-m13-m65.RP1ZWTTMYJ5QZ7EKY4SZEHE05S"
-   }
-  ],
+  "added": [],
   "rent_bed": null
  },
  "lights": {

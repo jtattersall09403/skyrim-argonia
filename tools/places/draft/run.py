@@ -33,7 +33,8 @@ from tools.places.draft.cluster import VEG, decompose
 from tools.places.draft.fit import Scorer, global_fit, local_fit, patch_for, patch_verts, relief_norm
 from tools.places.draft.fit import _pivot as fit_pivot
 from tools.places.draft.paths import PATH_WIDTH, STREET_WIDTH, NavGraph, network, simplify
-from tools.places.seat import Ground, model_bounds, foot_points, foot_relief, seat_all, seat_z
+from tools.places.draft import bridges as bridges_mod
+from tools.places.seat import Ground, model_bounds, foot_points, foot_relief, seat_all
 
 UNITS_PER_M = 70.0
 STREET_SLOPE_MIN, STREET_SLOPE_MAX = 15.0, 35.0   # degrees: our streets climb no steeper than the source's did
@@ -499,8 +500,8 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
     # the source's streets: its painted roads, its walkways, its navmesh's preferred paths
     paint = paths_mod.road_points(src.exterior.path)
     paint_grid = {(round(x / 128), round(y / 128)) for x, y in paint}
-    walk_src = [r for r in ext if r.get("kind") in ("building", "static") and paths_mod.WALKWAY.search(
-        str((bases.get(r["base"]) or {}).get("model", "")))]
+    walk_src = [r for r in ext if r.get("kind") in ("building", "static") and paths_mod.walked(
+        bases.get(r["base"]))]
     prefer = {(int(x // 128), int(y // 128)) for x, y in paint}
     for r in walk_src:
         for x, y in foot_points(r["pos"][0], r["pos"][1], r["rot"][2], geom.foot(r, bases), 5):
@@ -556,80 +557,9 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
             walk_base = wb["key"]
 
     def bridge_over(route, k) -> list[dict]:
-        """Walkway pieces end to end over each wet stretch of a route, walked along it by length (one piece per piece
-        length, never one per route step), standing on stilts; a piece that would stand in or round a solid already
-        there (a dock, a pier) is left out: that solid carries the street there."""
         if not walk_base:
             return []
-        length, turn = paths_mod.deck_run(bases[walk_base])
-        foot = geom.foot({"base": walk_base, "kind": "building"}, bases)
-        deck = geom.walk(bases[walk_base]) or 0.0   # the deck under its posts, from the mesh
-        # the route by length, and its wet runs
-        cum = [0.0]
-        for p, q in zip(route, route[1:]):
-            cum.append(cum[-1] + geom.dist(p, q))
-
-        def at(d):
-            d = max(0.0, min(cum[-1], d))
-            for i in range(1, len(cum)):
-                if cum[i] >= d:
-                    t = (d - cum[i - 1]) / ((cum[i] - cum[i - 1]) or 1.0)
-                    p, q = route[i - 1], route[i]
-                    return (p[0] + (q[0] - p[0]) * t, p[1] + (q[1] - p[1]) * t)
-            return tuple(route[-1][:2])
-        step = 32.0
-        runs, start = [], None
-        n_s = int(cum[-1] // step) + 1
-        for i in range(n_s + 1):
-            d = min(i * step, cum[-1])
-            w = G.wet(*at(d), 8)
-            if w and start is None:
-                start = d
-            if (not w or i == n_s) and start is not None:
-                runs.append((start, d))
-                start = None
-        joined: list[tuple[float, float]] = []
-        for d0, d1 in runs:   # a dry blink shorter than half a piece is still the one crossing
-            if joined and d0 - joined[-1][1] < length / 2:
-                joined[-1] = (joined[-1][0], d1)
-            else:
-                joined.append((d0, d1))
-        out = []
-        for ri, (d0, d1) in enumerate(joined):
-            n = max(1, math.ceil((d1 - d0) / length))
-            for j in range(n):
-                m0 = d0 + (d1 - d0) * (j + 0.5) / n
-                row = None
-                # slid along the route (never off it) until it stands clear of every solid there
-                for slide in [0.0] + [sgn * k * 32.0 for k in range(1, int(length // 64) + 1) for sgn in (1, -1)]:
-                    m = m0 + slide
-                    p, q = at(m - length / 2), at(m + length / 2)
-                    x, y = at(m)
-                    yaw = (math.atan2(q[0] - p[0], q[1] - p[1]) + turn) % (2 * math.pi)
-                    cand = {"id": io.mint(place_id, "bridge", str(k), str(ri), str(j)), "base": walk_base,
-                            "kind": "building", "pos": [round(x, 2), round(y, 2), 0.0],
-                            "rot": [0.0, 0.0, round(yaw, 5)], "scale": 1.0, "layer": "place", "flags": [],
-                            "src": None, "walk": deck,
-                            "seat": {"mode": "stilts", "dz": round(DECK_OVER - deck, 1), "foot": foot},
-                            "why": f"carries street {k + 1:02d} over our water, which parts what the source's land "
-                                   f"joined"}
-                    near = [o for o in our + bridges + out if o.get("kind") in overlap.SOLID
-                            and geom.dist(o["pos"], cand["pos"]) < length * 2 + 2048]
-                    cand["pos"][2] = seat_z(cand, G)    # by height too: a deck over a drowned mound is clear of it
-                    under = [o for o in near if overlap.inside(cand["pos"], o, bases)]
-                    lift = max((o["pos"][2] + overlap.box(o, bases)[1][2] + 2 - cand["pos"][2] for o in under),
-                               default=0.0)
-                    if 0 < lift <= DECK_LIFT:   # a deck lifted a hand's breadth over a low thing just under it
-                        cand["seat"]["dz"] = round(cand["seat"]["dz"] + lift, 1)
-                        cand["pos"][2] = seat_z(cand, G)
-                    if not any(overlap.inside(cand["pos"], o, bases) or overlap.inside(o["pos"], cand, bases)
-                               for o in near):
-                        row = cand
-                        break
-                if row is None:
-                    continue
-                out.append(row)
-        return out
+        return bridges_mod.over(place_id, route, k, walk_base, bases, G, our + bridges)
 
     # Every link is routed on our ground, our decks counting as ground: over land and the place's own walkways
     # wherever they lead, crossing open water only where nothing else joins the two ends, and then where it is
@@ -713,10 +643,8 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
                           "style": "boardwalk" if deck else "dirt", "from": a, "to": b,
                           "laid": "routed on our ground and decks" if routed else "the source's line, mapped"})
 
-    for r in our:   # one stands on a walkway's deck (its mesh's top surface), not on its rails
-        w = geom.walk(bases.get(r["base"]) or {})
-        if w is not None:
-            r["walk"] = w
+    from tools.places.draft.walk import deck_heights
+    deck_heights(our, bases)   # one stands on a walkway's deck (its mesh's top surface), not on its rails
     # --- doors: where one arrives outside each door, on our ground, and which way the door opens ---
     our_by_id = {r["id"]: r for r in our}
     pairs = [(sp, a, b) for _, sp in sorted(spaces.items()) if sp["parent"] == "exterior"
@@ -935,8 +863,6 @@ GOING_DEAR = 1.2         # how much dearer the hardest going underfoot is than t
 WALL_DEAR = 0.8          # a step in a cell right beside a wall: a path keeps to the middle of a gap
 TRODDEN = 0.55           # a step where a path already runs costs this much of a fresh one: links share a stretch
 TREE_DEAR = 1.5          # how much dearer a street's step is in a cell a world tree or rock stands in
-DECK_OVER = 16.0         # a laid bridge's deck stands this far over the water under it
-DECK_LIFT = 24.0         # the most a bridge deck is lifted over a drowned thing under it
 FLOOR = re.compile(r"road|dock|boardwalk|walkway|pier|jetty", re.I)
 YARD_PAD = 24.0          # the least gap between two placed bodies
 DOOR_CLEAR = 256.0       # no station within this of a door

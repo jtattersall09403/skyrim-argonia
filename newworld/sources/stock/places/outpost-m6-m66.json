@@ -228,9 +228,10 @@
   },
   {
    "give_seq": 0,
-   "by": "record",
-   "status": "open",
-   "why": "fishing 'the traps: eels and carp': the woven weir is built across the creek but no trap or fishing spot is placed on it; the place-build pass must set the traps (a fishing activator of the marsh's mods) at the weir"
+   "by": "ref",
+   "ref": "outpost-m6-m66.2KFNDEJD7XDRHH82HTAZBMQ0CJ",
+   "status": "delivered",
+   "why": "the traps: a fishing spot stands on the woven weir across the creek (draft.add, need 0), where eels and carp are taken"
   }
  ],
  "taken_out": [

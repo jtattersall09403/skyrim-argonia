@@ -119,10 +119,10 @@ def stand_height(x: float, y: float, ground: float, refs: list[dict], bases: dic
 
 
 def walk(base: dict) -> float | None:
-    """A walkway piece's deck as a height over its origin, from its mesh (seat.walk_top); None for other pieces."""
-    from tools.places.draft.paths import WALKWAY
+    """A walked-on piece's deck (a walkway, a flat floor plate) as a height over its origin, from its mesh (seat.walk_top); None for other pieces."""
+    from tools.places.draft.paths import walked
     from tools.places.seat import walk_top
-    if not WALKWAY.search(str(base.get("model") or "")):
+    if not walked(base):
         return None
     return round(walk_top(base), 1)
 

@@ -97,6 +97,7 @@ RISE, CLIMB = 1.0, 32.0  # a walked line climbs or drops no steeper than 45 degr
 WATER_EDGE = 8.0       # over water with no deck: a dry triangle this near in plan, no lower than this under the water
 PICK_TOL, Z_TOL = 96.0, 128.0   # the build's own lookup of a stop's triangle (check.STOP_PLAN_TOL, STOP_Z_TOL)
 BUCKET = 512.0
+DECK_OVER_GROUND = 24.0  # a stop whose mesh stands this far over the ground is on a deck: it is written with its height
 STEP = 64.0            # units between the samples of a street tested against the network (paths.smooth's spacing)
 SNAP = 384.0           # an end off the network (a doorway) is taken to the nearest network point this near
 ROUTE_CAP = 200_000    # triangles a re-lay's search may open
@@ -305,6 +306,26 @@ class Walkable:
         """Whether p stands on the town's main network: the triangle it is found on is of it, within `tol` in plan."""
         t, d = self.pick(p)
         return t >= 0 and bool(self.main[t]) and d <= tol
+
+    def stood(self, p) -> list:
+        """p as a stop the build places: [x, y] where one stands on the ground (the build seats it there), [x, y, z]
+        at the mesh's height where one stands on a deck over the ground (the build would seat a plan point under
+        the deck)."""
+        q = [round(float(p[0]), 1), round(float(p[1]), 1)]
+        z = self.found(p)[2]
+        g = self.zref(q[0], q[1]) if self.zref else None
+        return q + [round(float(z), 1)] if z is not None and g is not None and z - g > DECK_OVER_GROUND else q
+
+    def dry_on(self, p) -> bool:
+        """Whether p stands on the town's main network out of the water: on a deck, or on a triangle at or over the
+        water's level (a guard's beat and a stop are walked dry; a ford is crossed, never stood in)."""
+        if not self.on(p):
+            return False
+        w = self.wet(float(p[0]), float(p[1])) if self.wet else None
+        if w is None:
+            return True
+        z = self.found(p)[2]
+        return z is not None and z >= w
 
     def snap(self, p, reach: float = SNAP):
         """The nearest point of the main network to p within `reach` in plan (p itself when it is on it), else None."""
@@ -615,7 +636,7 @@ def lay(place_id: str, door_id: str, a, b, base: str, rows: list[dict], bases: d
                 "seat": {"mode": "free", **({"carrier": carrier} if carrier else {})},
                 "why": f"joins door {door_id}'s walkable island to the town's network"}
         hit = overlap.hits(cand, near, bases)
-        ways = [o for o in hit if paths_mod.WALKWAY.search(str((bases.get(o["base"]) or {}).get("model", "")))]
+        ways = [o for o in hit if paths_mod.walked(bases.get(o["base"]))]
         if len(hit) > 1 or (hit and not ways):
             continue  # a door, a house or two pieces stand there: the join leaves that piece out
         if ways:
@@ -836,6 +857,18 @@ def stops(place_id: str, pdir: Path, W: Walkable, log=print, bases: dict | None 
                 st["at"] = new
         p["work"], n = new, n + 1
         log(f"join {place_id}: {p['id']}: works beside {w['ref']}, at the nearest point of the walkable network")
+    # a stop of the day outdoors that names no spot (an eat or a wander "somewhere in town") would be built at the
+    # first door's arrival, which may be a hatch only the player reaches: it stands at the town's middle instead, the
+    # network's point nearest the place's anchor
+    pf = pdir / "place.json"
+    anchor = (json.loads(pf.read_text()).get("fit") or {}).get("anchor") if pf.exists() else None
+    mid = W.stood(W.snap(anchor[:2], 4 * SNAP)) if anchor and W.snap(anchor[:2], 4 * SNAP) else None
+    for p in folk:
+        for st in p.get("routine") or []:
+            at = st.get("at") or {}
+            if mid and at.get("space", "exterior") == "exterior" and not at.get("pos") and not at.get("ref") and at:
+                st["at"] = {**at, "space": "exterior", "pos": mid}
+                n += 1
     if n:
         io.write_jsonl(fj, folk)
     return n
@@ -846,7 +879,7 @@ def streets(place_id: str, pdir: Path, W: Walkable, world: list[dict] | None = N
     way the mesh walks (`mend`), said in the street's `laid`, and the world's plants (`world`, the ground bundle's)
     the new line reaches are cleared by the draft's own measure, and those whose body lies across it (`bases`: the
     ground bundle's, for their meshes); then each guard's patrol is taken again from the
-    streets, every point on the network. Returns the changes (stretches re-laid and patrols changed)."""
+    streets, every point on the network and out of the water (`Walkable.dry_on`), its first the guard's work stop. Returns the changes (stretches re-laid and patrols changed)."""
     from tools.places.draft import people
     pj, fj = pdir / "paths.jsonl", pdir / "people.jsonl"
     paths = io.read_jsonl(pj) if pj.exists() else []
@@ -880,7 +913,7 @@ def streets(place_id: str, pdir: Path, W: Walkable, world: list[dict] | None = N
     for g in folk:
         if g.get("role") != "guard" or g["id"] not in guards or not isinstance(g.get("patrol"), dict):
             continue
-        pts = people.patrol(beats, guards[g["id"]], W.on)
+        pts = [W.stood(q) for q in people.patrol(beats, guards[g["id"]], W.dry_on)]
         if not pts or pts == g["patrol"].get("points"):
             continue
         old = g.get("work")
@@ -896,9 +929,23 @@ def streets(place_id: str, pdir: Path, W: Walkable, world: list[dict] | None = N
     return n + changed
 
 
+def deck_heights(rows: list[dict], bases: dict) -> int:
+    """Give every piece one walks on (a walkway by its model, a flat floor plate: `paths.walked`) its deck height
+    `walk` from its mesh where it has none, so the build's deck surface, the streets and the check stand on it.
+    Returns the rows given one."""
+    n = 0
+    for r in rows:
+        if r.get("walk") is None and not r.get("removed"):
+            w = geom_walk(bases.get(r["base"]) or {})
+            if w is not None:
+                r["walk"] = w
+                n += 1
+    return n
+
+
 def finish(place_id: str, places: Path, bases: dict, log=print) -> int:
     """What the draft settles on the place files before the build, each a rule that leaves a file it already holds
-    for as it was: the source's steps hung flush on their decks (`flush_steps`), the promises a resident keeps given
+    for as it was: each walked-on piece's deck height (`deck_heights`), the source's steps hung flush on their decks (`flush_steps`), the promises a resident keeps given
     to a resident (`people.give_to_residents`), and each person's name from the people source
     (`people.apply_identities`). Returns the rows changed."""
     from tools.places import identities
@@ -907,7 +954,7 @@ def finish(place_id: str, places: Path, bases: dict, log=print) -> int:
     pdir = places / place_id
     ext, fj = pdir / "spaces" / "exterior" / "refs.jsonl", pdir / "people.jsonl"
     rows = io.read_jsonl(ext)
-    n = flush_steps(rows, bases, log)
+    n = deck_heights(rows, bases) + flush_steps(rows, bases, log)
     if n:
         io.write_jsonl(ext, rows)
     folk = io.read_jsonl(fj) if fj.exists() else []
@@ -927,8 +974,9 @@ def finish(place_id: str, places: Path, bases: dict, log=print) -> int:
     return n
 
 
-def join(place_id: str, places: Path = io.PLACES, out: Path | None = None, log=print) -> int:
-    """Settle the place files (`finish`), build the place and read its walkable network; in each build round move the sleepers it does not reach
+def join(place_id: str, places: Path = io.PLACES, out: Path | None = None, log=print, first: bool = True) -> int:
+    """Settle the place files (`finish`), lay walkway pieces over each street's water deeper than a wade that no
+    deck carries (`bridges.streets`), build the place and read its walkable network; in each build round move the sleepers it does not reach
     (`rehome`), join every door's island to it by level walkway pieces, and once no island is left (or none can be
     joined) lay every street and patrol on it (`streets`); a round that changed what the mesh is built from (pieces,
     streets) builds again. Returns the changes made."""
@@ -958,6 +1006,13 @@ def join(place_id: str, places: Path = io.PLACES, out: Path | None = None, log=p
     if twins(rows, bases, log=lambda m: log(f"join {place_id}: {m}")):
         io.write_jsonl(pdir / "spaces" / "exterior" / "refs.jsonl", rows)
         done += 1
+    from tools.places.draft import bridges
+    over = bridges.streets(place_id, io.read_jsonl(pdir / "paths.jsonl") if (pdir / "paths.jsonl").exists() else [],
+                           rows, bases, G, base or walk_base(rows, bases), log=lambda m: log(f"join {place_id}: {m}"))
+    if over:
+        rows += over
+        io.write_jsonl(pdir / "spaces" / "exterior" / "refs.jsonl", rows)
+        done += len(over)
     settle()
     for _ in range(JOIN_ROUNDS):
         ctx, bad = network(place_id, places, out)
@@ -1033,7 +1088,8 @@ def join(place_id: str, places: Path = io.PLACES, out: Path | None = None, log=p
                 settle()
                 continue   # the joined islands are the network once built
             log(f"join {place_id}: no island ({', '.join(sorted(isl))}) has a clear walkable way to the network")
-            moved += cut(place_id, sorted(isl), rows, pdir, log)
+            if first:   # a first draft leaves out a room no one can reach; a drafted place keeps its rooms
+                moved += cut(place_id, sorted(isl), rows, pdir, log)
         world = [r for r in (grd.exterior.refs if grd.exterior else []) if r.get("layer", "world") == "world"]
         got = arrivals(place_id, pdir, W, bases, log) + stops(place_id, pdir, W, log, bases) +streets(place_id, pdir, W, world, log, bases)
         done += got + moved

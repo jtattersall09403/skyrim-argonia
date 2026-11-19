@@ -21,6 +21,8 @@ from tools.places.draft.fit import relief_allowed
 from tools.places.draft.paths import connected, dist_to_paths
 from tools.places.seat import Ground, foot_points, foot_relief, seat_all
 
+from tools.places.check import WADE   # the one depth rule: deeper water than a wade needs a walkway
+
 SEAT_TOL = 1.0
 RELIEF_SLACK_ALL = 48.0
 SOLID = {"building", "static", "furniture", "container", "door", "activator"}
@@ -219,7 +221,7 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
     summary["patch_largest"] = max((abs(v[2]) for p in land for v in p["verts"]), default=0.0)
 
     # 9. streets: never through a building, never over open water without a walkway
-    walk = [r for r in refs if paths_mod.WALKWAY.search(str((bases.get(r["base"]) or {}).get("model", "")))
+    walk = [r for r in refs if paths_mod.walked(bases.get(r["base"]))
             or "street" in str(r.get("why", ""))]
     solid_b = [r for r in refs if r.get("kind") == "building" and r not in walk and r["seat"].get("foot")
                and not geom.underfoot(r, bases, G)]
@@ -238,7 +240,7 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
                 if any(geom.contains_xy(r, bases, q[0], q[1], -48) for r in solid_b if r["id"] not in own):
                     bad.append(f"street {p['id']} runs through a building at {q[0]:.0f},{q[1]:.0f}")
                     break
-                if G.wet(q[0], q[1], 32) and not any(geom.contains_xy(r, bases, q[0], q[1], 96) for r in walk):
+                if G.wet(q[0], q[1], WADE) and not any(geom.contains_xy(r, bases, q[0], q[1], 96) for r in walk):
                     bad.append(f"street {p['id']} crosses open water at {q[0]:.0f},{q[1]:.0f} with no walkway")
                     break
     summary["streets"], summary["street_length_m"] = len(paths), round(total / 70.0)

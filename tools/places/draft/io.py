@@ -222,7 +222,7 @@ def replacements(dec: dict, bases: dict, refused: list | None = None) -> dict[st
 STATION_EDID = {
     "forge": r"^CraftingBlacksmithForge", "anvil": r"Anvil", "grindstone": r"SharpeningWheel|Grindstone",
     "smelter": r"Smelter", "tanning-rack": r"TanningRack", "alchemy-lab": r"AlchemyWorkbench|AlchemyLab",
-    "arcane-enchanter": r"EnchantingWorkbench|ArcaneEnchanter", "cooking-pot": r"CookingPot|Cookpot",
+    "arcane-enchanter": r"EnchantingWorkbench|ArcaneEnchanter", "cooking-pot": r"CookingPot|Cookpot|CookingFireSpit|CookingSpit",
     "armour-workbench": r"ArmorWorkbench|ArmorTable", "oven": r"Oven", "staff-enchanter": r"StaffEnchant",
 }
 STATION_SKIP = r"Invisible|Inv$|test|Drink|NPC|Skyforge|Tabletop|Poison|DB|WR$|Dwe|DwaSp"

@@ -25,7 +25,7 @@ class Outside:
 
     def __init__(self, refs: list[dict], bases: dict, paths: list[dict], G):
         self.refs, self.bases, self.G = refs, bases, G
-        self.walk = [r for r in refs if paths_mod.WALKWAY.search(str((bases.get(r["base"]) or {}).get("model", "")))
+        self.walk = [r for r in refs if paths_mod.walked(bases.get(r["base"]))
                      or "street" in str(r.get("why", ""))]
         walk_ids = {id(r) for r in self.walk}
         self.solid = [r for r in refs if r.get("kind") == "building" and id(r) not in walk_ids and geom.foot(r, bases)

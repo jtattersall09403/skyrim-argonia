@@ -106,13 +106,22 @@ The tools lay the network by these rules.
   to the middle of a gap between buildings, and shares a stretch with a path already laid. No street climbs
   steeper than the source's streets did. A camp (beds in the open) is a stop like a door: a street reaches its
   edge.
+- **What is walked on.** A piece is walked on when its model names a walkway (a dock, boardwalk, bridge, pier,
+  plank, steps or stair) or when it is a flat floor plate: a piece whose record box is no taller than 32 units and
+  at least 192 across on its narrow side (a keep's ledge, a floor slab), whatever its model is called. A town built
+  on such a floor (a keep's yard over the ground) has its streets, deck heights and checks on the floor, never on
+  the ground under it. Every walked piece carries its deck height (`walk`, the top of its collision at its centre),
+  given by the `streets` stage to any piece that lacks it.
 - **Decks count as ground.** Every link is routed on our ground with our decks counting as ground, a link to a
   door on the water included, so a boardwalk's line runs along its decks (over the water a step of the route
   stands where the deck is, its middle on the deck or on the deck's long middle line, never beside it) and a ship's
   hatch is reached over its own ship. The landing's shore end is where the landing's own pieces meet our dry
   ground, never a bank it does not touch.
-- **Bridges.** Open water is crossed only where nothing else joins the two ends, and then where it is narrowest,
-  on bridges of the source's own walkway pieces: one piece per piece length along the route, its long side along
+- **Bridges.** One depth rule holds for the draft, the build and the checks: water no deeper than a wade (64
+  units, `check.WADE`) is waded; a street over deeper water needs a walkway under it. Open water is crossed only
+  where nothing else joins the two ends, and then where it is narrowest, on bridges of the source's own walkway
+  pieces (`bridges.over`, the one rule for the whole draft and the `streets` stage, which lays them under any
+  street stretch deeper than a wade that no walked piece carries): one piece per piece length along the route, its long side along
   the route, each slid along it clear of any solid there, its deck a hand's breadth over the water. A walkway piece
   is a level deck a person walks on, at least 96 units across (a stockade board stood on edge is none); where the
   source has none, the style's own walkway piece (`io.walkway_base`: King of the Murkmire's MudHutWalkway01 for
@@ -154,13 +163,16 @@ The tools lay the network by these rules.
   navmesh does not climb: that is a flight's work). A piece laid for a door that stands on a thing (a ship's
   hatch) rests on that thing as its gangway and names it as its `carrier`; a piece that continues a walkway stands
   `on` it. The build's overlap check lets a piece rest on what its seat names, by the same rule the drafter lays
-  it with. A door whose island no join reaches and whose room has no resident or worker is left out with its room
-  and the links that led to it, with the reason in the ledger.
+  it with. In a first draft, a door whose island no join reaches and whose room has no resident or worker is left
+  out with its room and the links that led to it, with the reason in the ledger. A drafted place keeps its rooms:
+  the `streets` stage lists such an island and never takes a room out.
 - **Door arrivals.** Every door's arrival outside stands on the built walkable network at its own level (the deck or the ground where the door lands a person): an arrival more than 16 units over or under the mesh is put at the mesh's
   height where it is; one off the network is moved to the nearest point of it, on the same side of its door and
   outside every placed thing's body, at the mesh's height there. A person's outdoor work stop named by a thing the
   network does not reach (a Hist's trunk) becomes the nearest point of the network beside it, measured from the
-  thing's body (a great Hist's trunk cuts the mesh far round it).
+  thing's body (a great Hist's trunk cuts the mesh far round it). A stop of a day outdoors that names no spot (an
+  eat or a wander anywhere in town) stands at the town's middle: the network's point nearest the place's anchor,
+  never the first door's arrival, which may be a hatch only the player reaches.
 - **Streets and patrols lie on the built walkable network.** Once the doors are joined, every street, path and
   walkway is walked along its whole line (a point every 64 units) on the town's main network of the built navmesh
   (ours and the world's own round the place). A point stands on a dry triangle at a level where a person can stand:
@@ -175,7 +187,10 @@ The tools lay the network by these rules.
   Two streets that cross the same water share one walkway: a piece the draft laid that stands in another it laid
   (by the build's overlap rule, and not resting on it as a join's next piece does) is dropped before the build,
   and both streets are laid on the one left.
-  Guards' patrols are then taken from those streets, each point on the network (a patrol keeps at least two). One
+  Guards' patrols are then taken from those streets, each point on the network and out of the water (on a deck,
+  or on mesh at or over the water's level; a ford is crossed, never stood in), the first the guard's work stop (a
+  patrol keeps at least two). A stop or patrol point on a deck over the ground is written with its height, since
+  the build seats a plan point on the ground under the deck. One
   pass settles every line: `draft check` mends each street again on the built mesh and fails if any stretch moves.
   `draft check` and the build's `streets` check list any street or patrol point still off the network.
 
@@ -278,7 +293,10 @@ The tools lay the network by these rules.
   the yard, the rest in that layout or the nearest clear ground round the forge within the worker's reach. Clear
   means: dry under its outline, its body clear of every placed solid by true record box (on a road or a deck only
   by its edge), 256 units from any door, off the streets. A station added indoors stands on the walked-in floor
-  clear of the room's things. Check each in the render (`stations.added`); move one with `draft.add` and
+  clear of the room's things. The place's own station outdoors (a cooking spit by the fire is a cooking pot) is
+  worked before any added in a room, since a room may be one only the player reaches: the `stations` stage takes
+  out a station it added in a room once the place holds its own outdoors, and moves the worker's work and the
+  work and wander stops of their day there to it. Check each in the render (`stations.added`); move one with `draft.add` and
   `draft.roles` when it stands wrong. Traders work where the source's own trader of that trade worked.
 - **A travel stop is a person's service like a trade.** A `boat-stop`, `coach-stop` or `rootworm-stop` promise is
   kept by the operator the place's people name (a boatman, a carter, a root-tender), given the stop's give by its
@@ -307,7 +325,10 @@ The tools lay the network by these rules.
   the Owing, the engine's jail served outside. The tools stand the work spot where the place's labour is done (the
   landing where the boatman works, else the work stop most of its people share) on the deck or walkway built there,
   with a bedroll beside it (lying down on it serves the sentence); the return spot on the street nearest it, at
-  least 384 units off; and the stolen goods chest out of reach under the ground. The return spot's prison marker is
+  least 384 units off; and the stolen goods chest out of reach under the ground. Work spot and return spot each
+  need footing: a deck, or dry ground at least 8 units over the water, and inside no solid thing's body by the
+  build's arrival test; a spot without it is the nearest street point with it. The stolen goods and evidence chests
+  are the crime faction's: place-stock never gives them a household. The return spot's prison marker is
   the faction's JAIL and WAIT, and its teleport leads to the work spot's and back. The guards are in the arrest
   dialogue, so pay, the Owing and resist are all offered; the Owing's line is ours, first in vanilla's "go to jail"
   topic and said only by the place's guards, running vanilla's own fragment that keeps the player's belongings

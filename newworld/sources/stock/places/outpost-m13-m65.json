@@ -108,20 +108,6 @@
    ]
   },
   {
-   "ref": "outpost-m13-m65.8Y11H9B8FV5BAVYZK92TAC43W7",
-   "space": "exterior",
-   "kind": "chest",
-   "owner_household": "outpost-m13-m65.household.exterior",
-   "security": "S1",
-   "tier": "T1",
-   "gold": 0,
-   "items": [],
-   "why": "the household's other chest: its source's significant things are taken out and its store is outpost-m13-m65.H2ST2KHQFZATRW9NEP4YSS6GRM; set dressing stays",
-   "cites": [
-    "place_wealth:outpost-m13-m65"
-   ]
-  },
-  {
    "ref": "outpost-m13-m65.H2ST2KHQFZATRW9NEP4YSS6GRM",
    "space": "exterior",
    "kind": "strongbox",
@@ -353,21 +339,23 @@
   },
   {
    "give_seq": 1,
-   "by": "record",
-   "status": "open",
-   "why": "free-bed 'a bench in the hut': the hut is the Hjaalmarch camp's large tent, with a bed but no bench; the owner rules: add a bench in the hut by draft.add, or edit the record"
+   "by": "ref",
+   "ref": "outpost-m13-m65.ET81EX756BWY1815520YP5TYDW",
+   "status": "delivered",
+   "why": "the free bed in the hut: an unowned bedroll by the hut's wall (draft.add, need 1)"
   },
   {
    "give_seq": 3,
-   "by": "record",
-   "status": "open",
-   "why": "harvest-common 'sedge and swamp fungus on the reed beds': no reed bed is drafted; the place-build pass must lay the reed beds' sedge and fungus along the bank"
+   "by": "ref",
+   "ref": "outpost-m13-m65.SE3WHF8EFJ9DZW7KD9G9PEM967",
+   "status": "delivered",
+   "why": "the reed beds on the river bank: marshmerrow sedge and swamp fungal pods, three of each along the bank (draft.add, need 3)"
   },
   {
    "give_seq": 4,
    "by": "record",
    "status": "open",
-   "why": "combat-creature 'mudcrabs on the river bank and one young crocodile in the reed beds': the creatures are placed at a fixed level by the place-build pass once the reed beds are laid"
+   "why": "combat-creature 'mudcrabs on the river bank and one young crocodile in the reed beds': the reed beds now stand on the bank (seq 3); the creatures are the quest's own placement at a fixed level, as the encounter places its foes, so the place files hold none and the promise stays open until that placement is built"
   }
  ],
  "taken_out": [

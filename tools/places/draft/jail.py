@@ -50,6 +50,7 @@ import re
 
 import numpy as np
 
+from tools.places.draft import geom
 from tools.places.draft import interiors, io, overlap
 
 RETURN_MIN = 384.0      # the return spot stands this far from the work spot at least
@@ -323,6 +324,34 @@ def seat_on(pos: list[float], things: list[dict], bases: dict, ground) -> dict:
     return {"mode": "on", "on": piece["id"], "dz": round(z - piece["pos"][2], 2)} if piece and abs(z - pos[2]) < 0.01 else {"mode": "free"}
 
 
+SHORE = 8.0     # ground this far over the water is dry ground, not the waterline
+
+
+def footing(x: float, y: float, things: list[dict], bases: dict, ground) -> bool:
+    """One can stand and work at (x, y), out of the water and in no body: on a deck or walkway built there, or on
+    dry ground, and inside no solid thing there (a rock's box, a house: the build's arrival test, geom.stands_in)."""
+    try:
+        z, piece = stand(x, y, things, bases, ground)
+    except ValueError:
+        return False
+    w, g = ground.water(x, y), ground.height(x, y)
+    if not (piece is not None or w is None or g >= w + SHORE):
+        return False
+    return not any(t is not piece and t.get("kind") in overlap.SOLID and not t.get("removed")
+                   and math.dist(t["pos"][:2], (x, y)) < 4096 and geom.stands_in(t, bases, [x, y, z]) for t in things)
+
+
+def dry_spot(spot: tuple[float, float], paths: list[dict], things: list[dict], bases: dict, ground) -> tuple[float, float]:
+    """`spot` where one can stand there (`footing`), else the nearest point of the streets where one can."""
+    if footing(spot[0], spot[1], things, bases, ground):
+        return spot
+    cand = sorted((math.dist(p, spot), p) for p in street_points(paths))
+    for _, p in cand:
+        if footing(p[0], p[1], things, bases, ground):
+            return (float(p[0]), float(p[1]))
+    raise ValueError(f"no street point near {spot[0]:.0f}, {spot[1]:.0f} has footing: lay the streets first")
+
+
 def work_spot(people: list[dict]) -> tuple[tuple[float, float], str]:
     """Where the place's labour is done: the landing (the boat-stop operator's work stop), else the exterior work
     stop most of its people share."""
@@ -357,9 +386,13 @@ def street_points(paths: list[dict], step: float = 64.0):
 
 def plan_owing(place_id: str, things: list[dict], people: list[dict], paths: list[dict], bases: dict, ground) -> dict:
     """The Owing's spots: {work: [x, y, z], work_how, back: [x, y, z], bed: [x, y, z], chest: [x, y, z]}."""
-    (wx, wy), how = work_spot(people)
+    spot, how = work_spot(people)
+    wx, wy = dry_spot(spot, paths, things, bases, ground)
+    if (wx, wy) != spot:
+        how += ", on the nearest street with footing"
     work = [round(wx, 2), round(wy, 2), stand_z(wx, wy, things, bases, ground)]
-    cand = sorted((math.dist(p, (wx, wy)), p) for p in street_points(paths) if math.dist(p, (wx, wy)) >= RETURN_MIN)
+    cand = sorted((math.dist(p, (wx, wy)), p) for p in street_points(paths) if math.dist(p, (wx, wy)) >= RETURN_MIN
+                  and footing(p[0], p[1], things, bases, ground))
     if not cand:
         raise ValueError(f"{place_id}: no street stands {RETURN_MIN:.0f} units from the work spot: lay the streets first")
     bx, by = cand[0][1]
