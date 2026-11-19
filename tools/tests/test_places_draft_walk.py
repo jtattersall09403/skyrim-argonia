@@ -632,3 +632,51 @@ def test_two_pieces_set_on_one_building_rest_together():
     walkway = {"id": "w", "seat": {"mode": "on", "on": "house", "dz": -53.0}}
     assert C.rests(door, walkway)
     assert not C.rests({"id": "a", "seat": {"mode": "ground"}}, {"id": "b", "seat": {"mode": "ground"}})
+
+
+def _room(p, sid, copy_of, refs=()):
+    (p / "spaces" / sid).mkdir(parents=True)
+    (p / "spaces" / sid / "space.json").write_text(json.dumps({"space_id": sid, "parent": "exterior",
+                                                                "copy_of": copy_of}))
+    if refs:
+        walk.io.write_jsonl(p / "spaces" / sid / "refs.jsonl", list(refs))
+
+
+def _other_town(refs, bases):
+    return type("B", (), {"spaces": {"Bunk": type("S", (), {"refs": refs})()}, "bases": bases})()
+
+
+def test_room_beds_reads_a_room_copied_from_another_source_and_beds_added_in_a_room(tmp_path, monkeypatch):
+    p = tmp_path / "p"
+    (p / "spaces" / "exterior").mkdir(parents=True)
+    _room(p, "Bunk", "other.town/Bunk")
+    _room(p, "Hut", "own.town/Hut", [{"id": "added.bed", "kind": "furniture", "base": "D"}])
+    other = _other_town([{"id": "b1", "kind": "furniture", "base": "S", "pos": [0, 0, 0]}],
+                        {"S": {"edid": "ALPAFurnSingleBed01R"}})
+    monkeypatch.setattr(walk, "_bundle", lambda sid: other)
+    src = type("Src", (), {"meta": {"bundle_id": "src.own.town"},
+                           "spaces": {"Hut": type("S", (), {"refs": []})()}})()
+
+    def sp(s):
+        return json.loads((p / "spaces" / s / "space.json").read_text())
+    assert walk.room_beds(sp("Bunk"), p / "spaces" / "Bunk", src, {}) == [{"ref": "b1", "sleeps": 1}]
+    assert walk.room_beds(sp("Hut"), p / "spaces" / "Hut", src, {"D": {"edid": "ALPAFurnDoubleBed01L"}}) == \
+        [{"ref": "added.bed", "sleeps": 2}]
+
+
+def test_rehome_gives_a_bedless_sleeper_a_bed_of_a_room_copied_from_another_source(tmp_path, monkeypatch):
+    p = tmp_path / "p"
+    (p / "spaces" / "exterior").mkdir(parents=True)
+    walk.io.write_jsonl(p / "spaces" / "exterior" / "refs.jsonl", [])
+    _room(p, "Bunk", "other.town/Bunk")
+    walk.io.write_jsonl(p / "people.jsonl", [{"id": "g", "role": "guard", "bed": None, "home": None,
+                                             "routine": [{"kind": "sleep", "at": None}]}])
+    other = _other_town([{"id": "b1", "kind": "furniture", "base": "S", "pos": [0, 0, 0]}],
+                        {"S": {"edid": "ALPAFurnSingleBed01R"}})
+    monkeypatch.setattr(walk, "_bundle", lambda sid: other)
+    navs = {"main": _Nav("main", [(0, 0), (1, 0)])}
+    W = walk.Walkable({"navs": navs}, comp=C.components(navs, {}))
+    src = type("Src", (), {"meta": {"bundle_id": "src.own.town"}, "spaces": {}})()
+    assert walk.rehome("p", W, {}, src, p, log=lambda *_: None) == 1
+    g = walk.io.read_jsonl(p / "people.jsonl")[0]
+    assert g["bed"]["space"] == "Bunk" and g["bed"]["ref"] == "b1" and g["routine"][0]["at"]["ref"] == "b1"
