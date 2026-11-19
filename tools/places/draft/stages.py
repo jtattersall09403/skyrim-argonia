@@ -187,6 +187,9 @@ def pieces(st: Standing, log=print) -> None:
                                            interiors.record_text(st.place_id, rec, gives)).items():
         for sid in interiors.mouth(st.by_src[did], cls, of, st.by_src):
             drop.setdefault(sid, why)
+    from tools.places.draft import promised
+    for sid, why in promised.drops(st.src_ext, st.bases, promised.record(st.place_id), dec.get("add")).items():
+        drop.setdefault(sid, why)
     ours, led = st.ours(), st.led()
     # a piece dropped by this step's old verdict and no longer dropped comes back; one newly dropped goes
     for sid, lr in sorted(led.items()):

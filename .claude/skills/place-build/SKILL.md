@@ -41,14 +41,21 @@ and with what, and what is still to add.
    building kind, the water and what stands in it, the market, the shrine, the racks and sheds, the look's
    materials) and, against it, the source pieces or the added pieces that deliver it. The `source` note's
    replacements are done, never left as the source had them (a "houses replaced with Argonian stilt huts" means
-   every house shell of the source is swapped).
+   every house shell of the source is swapped). Its shape: `look` rows `{line, by}` (each thing the record names,
+   and the pieces that deliver it) and `structures` rows `{cluster, what, verdict: kept|dropped, why}`; `draft
+   check` fails a place with no plan, a line delivered by nothing, or a standing building the plan does not keep.
 3. Each major structure of the source (walls, terraces, keeps, mines, caves, harbours, temples, forts) is judged
    against the record's words: kept only when the record names it or it is an ordinary part of such a place;
    otherwise dropped with its doors, rooms and pieces. `python -m tools.places draft structures <place_id>` lists
    each one kept or dropped with its reason and its source pieces; a dropped one's pieces go into `draft.drop` with
    that reason, and the `pieces` stage takes them out. A piece that stood on a dropped floor stands on our ground
    at its height over that floor. The plan lists each structure, kept or dropped, with its reason.
-4. A draft is finished only when it reads as the record's `look`: compare the renders (`draft render`) with the
+4. The source brings nothing the record does not promise. Its traps and hazards (a vine snare, a gas vent, a
+   poison bloom) stay only where the place is not friendly and its dangers name such a thing; its loot containers
+   (`Treas*`) keep the record's treasure count, a treasure placed by hand counting first; a Nordic sign (a
+   Doomstone, a word wall, a shrine of Talos) never stands, the source's own included. The `pieces` stage drops
+   them with the reason, and `draft check` and the build's `nordic` check fail one that stands.
+5. A draft is finished only when it reads as the record's `look`: compare the renders (`draft render`) with the
    look line by line and name any line not yet met. A check that passes on a place that does not look like its
    record is not a finished draft.
 
@@ -245,10 +252,11 @@ The tools lay the network by these rules.
 - **The source's own pieces are accepted as they come.** A piece the source place itself uses, from its own mods,
   Tropical Skyrim or the base game, is never judged by its look, replaced for it or dropped for it: a Solitude
   door, a High Hrothgar fire pit or a Dawnguard runner the source set there stands in ours, lit or unlit as the
-  source has it. Decision 0006 governs only what we add from elsewhere (a station, a replacement, a laid piece):
+  source has it. Decision 0006 governs what we add from elsewhere (a station, a replacement, a laid piece):
   the tools take those from non-Nordic bases, by the catalogue's folder rule, or the looked-at verdict in
-  `newworld/places/nordic_review.jsonl` where a base has one (contract: Bundles). `draft check` and the build's
-  `nordic` check fail a Nordic base added from outside the source place.
+  `newworld/places/nordic_review.jsonl` where a base has one (contract: Bundles). A Nordic sign is no builder's
+  piece: it never stands, the source's own included (section "The place record is the brief", 3). `draft check`
+  and the build's `nordic` check fail a Nordic base added from outside the source place and any Nordic sign.
 - **A piece that cannot stand in our place as it is** (a door whose model does not fit the wall we give it, a piece
   whose function ours lacks) is swapped by `draft.replace` `{old: new}` or `{old: {base, turn_deg}}`, for a piece of
   like size and use from a non-Nordic source we deploy (`python3 -m tools.places search query "<what it is>"`, or
