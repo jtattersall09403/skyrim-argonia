@@ -34,6 +34,7 @@ questform = "tools.questform.__main__"
 reach = "tools.playtest.__main__"
 storyexplorer = "tools.newworld.story_explorer"
 atlas = "tools.newworld.atlas_state"
+consistency = "tools.newworld.consistency"
 
 # Story design and the docs: the explorer and the story tests read them.
 [[rule]]
