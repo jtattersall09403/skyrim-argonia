@@ -63,6 +63,22 @@ def placeholder_name(seed: str, taken: set[str]) -> str:
     raise RuntimeError("names exhausted")
 
 
+def work_stops(folk: list[dict]) -> list[str]:
+    """Each person's work hours are spent at their work stop as it stands (`work`: the spot a later stage set, a
+    room's with its height): a routine's work stop that says otherwise is the work stop again. Returns who changed."""
+    out = []
+    for p in folk:
+        w = p.get("work")
+        if not w:
+            continue
+        for st in p.get("routine") or []:
+            if st.get("kind") == "work" and st.get("at") != w:
+                st["at"] = dict(w)
+                if p["id"] not in out:
+                    out.append(p["id"])
+    return out
+
+
 def apply_identities(folk: list[dict], identities: dict[str, dict]) -> None:
     """Each person's name from the people source newworld/sources/people/<place>.json (tools.places.identities); a
     person without a row keeps a placeholder, minted again if it collides with an identity's name."""

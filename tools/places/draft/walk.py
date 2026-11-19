@@ -570,6 +570,27 @@ def relay(rows: list[dict], base: str, bases: dict, log=print) -> int:
     return done
 
 
+def twins(rows: list[dict], bases: dict, log=print) -> int:
+    """A walkway piece the draft laid that stands in another it laid (two streets crossing the same water each
+    carried on a deck of their own) is one too many: the later by id goes, and the streets are laid on the one left.
+    Returns the pieces dropped."""
+    from tools.places import check as C
+    laid = sorted((r for r in rows if not r.get("src") and str(r.get("why", "")).startswith(LAID)), key=lambda r: r["id"])
+    gone: set = set()
+    for i, a in enumerate(laid):
+        if a["id"] in gone:
+            continue
+        for b in laid[i + 1:]:
+            if b["id"] in gone or math.dist(a["pos"][:2], b["pos"][:2]) > 1024 or C.rests(a, b):
+                continue    # one piece of a join resting on the next is laid so
+            if overlap.inside(b["pos"], a, bases) or overlap.inside(a["pos"], b, bases):
+                gone.add(b["id"])
+                log(f"{b['id']} stands in {a['id']}, a walkway laid at the same crossing: dropped")
+    if gone:
+        rows[:] = [r for r in rows if r["id"] not in gone]
+    return len(gone)
+
+
 def lay(place_id: str, door_id: str, a, b, base: str, rows: list[dict], bases: dict, G,
         carrier: str | None = None) -> list[dict]:
     """Walkway pieces end to end from a to b ([x, y, z] each), their decks (the top surface of the mesh, geom.walk) on
@@ -675,7 +696,21 @@ def rehome(place_id: str, W: "Walkable", bases: dict, src, pdir: Path, log=print
             continue
         for b in interiors.beds_in(src.spaces[src_space].refs, bases, sp.get("room"), sp.get("copy_of")):
             free += [(sp["space_id"], b["ref"])] * max(0, b["sleeps"] - taken[(sp["space_id"], b["ref"])])
+    from tools.places.draft import people as people_mod
+    camp = sorted(r["id"] for r in rows.values() if r.get("kind") == "furniture" and not r.get("removed")
+                  and interiors.is_bed(bases.get(r.get("base")) or {}) and not taken[("exterior", r["id"])]
+                  and reached(r["pos"]))
     moved = 0
+    for p in ppl:   # a sleeper with no bed takes a free one: a home's, else the camp's in the open
+        if p.get("bed") or p.get("role") in people_mod.NO_BED or not (free or camp):
+            continue
+        sid, ref = free.pop(0) if free else ("exterior", camp.pop(0))
+        p["bed"], p["home"] = {"space": sid, "ref": ref, "radius": 128}, sid
+        for st in p.get("routine") or []:
+            if st.get("kind") == "sleep":
+                st["at"] = p["bed"]
+        log(f"join {place_id}: {p['id']} had no bed: sleeps in {sid} {ref}")
+        moved += 1
     for p in ppl:
         bed = p.get("bed") or {}
         r = rows.get(bed.get("ref")) if bed.get("space") == "exterior" else None
@@ -917,6 +952,9 @@ def join(place_id: str, places: Path = io.PLACES, out: Path | None = None, log=p
     rows = io.read_jsonl(pdir / "spaces" / "exterior" / "refs.jsonl")
     base = walk_base(rows, bases)
     if base and relay(rows, base, bases, log=lambda m: log(f"join {place_id}: {m}")):
+        io.write_jsonl(pdir / "spaces" / "exterior" / "refs.jsonl", rows)
+        done += 1
+    if twins(rows, bases, log=lambda m: log(f"join {place_id}: {m}")):
         io.write_jsonl(pdir / "spaces" / "exterior" / "refs.jsonl", rows)
         done += 1
     settle()

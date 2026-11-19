@@ -1111,6 +1111,44 @@ def nav_islands(meshes: dict[str, dict]) -> int:
     return len({root(x) for x in list(par)})
 
 
+COVER_PLAN, COVER_Z = 96.0, 128.0  # a standing point is on a mesh within these (check.STOP_PLAN_TOL, STOP_Z_TOL)
+
+
+def room_stands(I: dict, S: dict) -> list[list[float]]:
+    """Where one must stand in an interior: each arrival of a load door into it and each piece of furniture in it (a
+    bed, a seat, a work station: the stops of the people's routines)."""
+    refs = S.get("refs") or []
+    space_of = {r["fk"]: r["space"] for r in refs}
+    out = [x["teleport"]["pos"] for x in refs if space_of.get((x.get("teleport") or {}).get("to")) == I["space"]]
+    out += [r["pos"] for r in refs if r["space"] == I["space"] and r.get("kind") == "furniture"
+            and not r.get("disabled")]
+    return [[float(v) for v in p] for p in out]
+
+
+def uncovered(meshes: dict[str, dict], points: list) -> int:
+    """How many of `points` stand on none of `meshes` (within COVER_PLAN of a triangle in plan, COVER_Z of its mean
+    height). A source room meshed only in part (a counter's corner, the ground floor of a house whose beds are up
+    the stair) is meshed again from its collision, as a cell with no navmesh is."""
+    from tools.places.check import _seg_d
+    tri = [np.asarray(m["verts"], float)[np.asarray(m["tris"]["v"], np.int64)] for m in meshes.values() if len(m["tris"])]
+    if not tri:
+        return len(points)
+    T = np.concatenate(tri)
+    a, b, c = T[:, 0], T[:, 1], T[:, 2]
+    zc = T[:, :, 2].mean(axis=1)
+    miss = 0
+    for p in points:
+        px, py = p[0], p[1]
+        d1 = (px - b[:, 0]) * (a[:, 1] - b[:, 1]) - (a[:, 0] - b[:, 0]) * (py - b[:, 1])
+        d2 = (px - c[:, 0]) * (b[:, 1] - c[:, 1]) - (b[:, 0] - c[:, 0]) * (py - c[:, 1])
+        d3 = (px - a[:, 0]) * (c[:, 1] - a[:, 1]) - (c[:, 0] - a[:, 0]) * (py - a[:, 1])
+        inside = ~(((d1 < 0) | (d2 < 0) | (d3 < 0)) & ((d1 > 0) | (d2 > 0) | (d3 > 0)))
+        dp = np.where(inside, 0.0, np.minimum(np.minimum(_seg_d(px, py, a, b), _seg_d(px, py, b, c)), _seg_d(px, py, c, a)))
+        if not ((dp <= COVER_PLAN) & (np.abs(zc - p[2]) <= COVER_Z)).any():
+            miss += 1
+    return miss
+
+
 def interior_navmesh(I: dict, S: dict, ids: Ids) -> list[dict]:
     """An interior's navmesh: its room's island (a `room` copy); else the source cell's own navmeshes when they make
     one walkable island (a source cell meshed in pieces that do not join is meshed again from its collision by the
@@ -1124,6 +1162,9 @@ def interior_navmesh(I: dict, S: dict, ids: Ids) -> list[dict]:
     meshes = source_interior_navmesh(I)
     I["src_islands"] = nav_islands(meshes)
     if I["src_islands"] != 1:
+        return []
+    I["src_uncovered"] = uncovered(meshes, room_stands(I, S))
+    if I["src_uncovered"]:
         return []
     ours = {key: ids.local(f"navm:{I['space']}:{split_key(key)[1]:06X}") for key in meshes}
     cell_raw = raw_fid(NAV_SELF, split_key(I["fk"])[1])
@@ -1148,7 +1189,7 @@ def recast_refs(rows: list[dict], work: Path, tag: str, ground: bool) -> tuple[l
         f, local = split_key(r["base"])
         coll.append({"base": f"{local:06X}:{f}", "pos": r["pos"], "rot": r.get("rot") or [0.0, 0.0, 0.0],
                      "scale": r.get("scale", 1.0), "formKey": r["fk"], "box": collision_box(r)})
-    tris, _ = placed.collide(coll, game_data(), {})
+    tris, _ = place_collide(coll)
     if not len(tris):
         return [], []
     lo, hi = tris.reshape(-1, 3).min(axis=0), tris.reshape(-1, 3).max(axis=0)
@@ -1239,7 +1280,7 @@ def components(tris: list) -> np.ndarray:
     return np.array([root(i) for i in range(len(tris))], np.int64)
 
 
-ROOM_RULE = "3"  # bump when room_partition's rule changes: its cache is keyed by it
+ROOM_RULE = "4"  # bump when room_partition's rule changes: its cache is keyed by it
 
 
 def room_partition(copy_of: str, refs: list[dict], work: Path) -> dict:
@@ -1388,16 +1429,26 @@ def exterior_navmesh(touched: set, objects, patched: dict, polylines, out: Path,
         nv = nvnm.decode(next(p for s, p in subrecords(rec[24:]) if s == b"NVNM"))
         fid = struct.unpack_from("<I", rec, 12)[0]
         mine.append({"fid": fid, "nv": nv, "space": "exterior", "cell": list(c), "nvmi": nvmis.get(fid)})
-    seam["one_way_unlinked"] = unlink_one_way(mine)
+    kept = []   # the world's own meshes round the shipped ones, which stay in the game as they are
+    for c, e in sorted(world_rows.items()):
+        if c in ship:
+            continue
+        rec = base64.b64decode(e["navm"])
+        kept.append({"fid": struct.unpack_from("<I", rec, 12)[0], "space": "exterior",
+                     "nv": nvnm.decode(next(p for s, p in subrecords(rec[24:]) if s == b"NVNM"))})
+    seam["one_way_unlinked"] = unlink_one_way(mine, kept)
     seam["joined_edges"] = join_seams(mine)
     return mine, {"box": list(box), "times": res.get("times"), "seam": seam}
 
 
-def unlink_one_way(navs: list[dict]) -> int:
-    """Open every edge link between two shipped meshes that the other side does not answer (the stitch can leave a
-    few); join_seams then pairs those edges again edge for edge. Returns how many links were opened."""
+def unlink_one_way(navs: list[dict], kept: list[dict] = ()) -> int:
+    """Open every edge link of a shipped mesh that the other side does not answer: another shipped mesh (the stitch
+    can leave a few), or one of the world's meshes round them that stays as it is (`kept`: a link the ring's build
+    made into its own copy of that mesh, which the world's does not have); join_seams then pairs the shipped edges
+    again edge for edge. Returns how many links were opened."""
     from tools.navmesh import nvnm
     by_fid = {n["fid"] & 0xFFFFFF: n for n in navs if n["space"] == "exterior"}
+    others = {n["fid"] & 0xFFFFFF: n for n in kept if n["fid"] & 0xFFFFFF not in by_fid}
 
     def answers(o, tt, fid, i):
         t = o["nv"].tris[tt]
@@ -1411,7 +1462,7 @@ def unlink_one_way(navs: list[dict]) -> int:
                 if not t["flags"] & nvnm.EDGE_LINK[k]:
                     continue
                 L = nv.links[t["e"][k]]
-                o = by_fid.get(int(L["navm"]) & 0xFFFFFF)
+                o = by_fid.get(int(L["navm"]) & 0xFFFFFF) or others.get(int(L["navm"]) & 0xFFFFFF)
                 tt = int(L["tri"])
                 if o is not None and (not 0 <= tt < len(o["nv"].tris) or not answers(o, tt, f, i)):
                     drop.append((n, i, k))
@@ -1569,8 +1620,16 @@ def collision_objects(refs: list[dict]):
                      "box": box})
     if not rows:
         return None, {"refs": 0}
-    from tools.navmesh import meshes
-    was, meshes.PROFILE = meshes.PROFILE, "NewWorld"   # a place's mod meshes are found by the new world's mod order, never as boxes
+    return place_collide(rows)
+
+
+def place_collide(rows: list[dict]):
+    """`placed.collide` of a place's refs, outdoors or in a room: a place's mod meshes and bases are found by the new
+    world's mod order (a room copied from a mod is meshed from its own pieces' collision, never from the few vanilla
+    ones alone)."""
+    from tools.navmesh import meshes, placed
+    from tools.navmesh.__main__ import game_data
+    was, meshes.PROFILE = meshes.PROFILE, "NewWorld"
     try:
         return placed.collide(rows, game_data(), {})
     finally:
@@ -1789,7 +1848,8 @@ def _plan_place(pid: str, pdir: Path, out: Path, no_navmesh: bool, plan_only: bo
                 got = generate_interior_navmesh(I, S, ids, tmp)
                 if got:
                     why = (f"the source's navmesh is in {I['src_islands']} pieces that do not join" if I.get("src_islands", 0) > 1
-                           else "the source has no navmesh over the kept room")
+                           else f"the source's navmesh misses {I['src_uncovered']} of the room's arrivals and furniture"
+                           if I.get("src_uncovered") else "the source has no navmesh over the kept room")
                     notes.append(f"interior {I['space']}: {why}; generated ({sum(len(n['nv'].tris) for n in got)} triangles)")
                 else:
                     problem(f"space {I['space']}: no navmesh (the source has none and its collision gives no floor): "

@@ -592,3 +592,14 @@ def test_only_the_places_own_navmeshes_are_judged_as_its_own():
     assert got[beside.fk].world and not getattr(ours, "world", False) and not getattr(room, "world", False)
     c["navs"] = got
     assert not any("not loaded" in f for f in C.check_navmesh(c))
+
+
+def test_a_bed_owned_by_the_sleepers_household_is_theirs_and_a_vendor_factions_is_not():
+    c = ctx()
+    d = c["dump"]
+    d["refs"][3]["owner"] = k(31)                  # the inn's vendor faction, which the person is in
+    assert any("no bed owned" in b for b in C.check_people(c))
+    d["factions"].append({"fk": k(32), "edid": "ANP_t_Household_T_Hh"})
+    d["npcs"][0]["faction_keys"].append(k(32))
+    d["refs"][3]["owner"] = k(32)                  # a couple's bed, owned by their household
+    assert not any("no bed owned" in b for b in C.check_people(c))

@@ -27,6 +27,12 @@ def plugin_file(name: str, data: Path, stack: Path = STACK) -> Path | None:
         for ln in ml.read_text(encoding="utf-8", errors="replace").splitlines():
             if ln.startswith("+") and (stack / "mods" / ln[1:].strip() / name).is_file():
                 return stack / "mods" / ln[1:].strip() / name
+    # a place's source mod whose plugin the game never loads (its pieces copied into our places): its plugin lies with
+    # its assets in newworld-assets/<mod>, beside the game's Data
+    assets = data.parent / "newworld-assets"
+    for d in sorted(assets.iterdir()) if assets.is_dir() else []:
+        if (d / name).is_file():
+            return d / name
     return None
 
 

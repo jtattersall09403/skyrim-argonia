@@ -172,6 +172,9 @@ The tools lay the network by these rules.
   through water deeper than a ford: through the middles of the triangle edges it crosses, pulled straight and
   eased only where the line still walks the same way. Stretches close together are laid again as one. The
   street's `laid` says so, and the world's plants the new line reaches are cleared by the draft's own measure.
+  Two streets that cross the same water share one walkway: a piece the draft laid that stands in another it laid
+  (by the build's overlap rule, and not resting on it as a join's next piece does) is dropped before the build,
+  and both streets are laid on the one left.
   Guards' patrols are then taken from those streets, each point on the network (a patrol keeps at least two). One
   pass settles every line: `draft check` mends each street again on the built mesh and fails if any stretch moves.
   `draft check` and the build's `streets` check list any street or patrol point still off the network.
@@ -280,7 +283,9 @@ The tools lay the network by these rules.
   `sap` stage centres one on each living Hist's trunk (a dead Hist's pool is dry), sizes it to the tree, seats it on
   the lowest ground or water under it and lowers the ground inside it to that height (its own land rows, `by`
   "sap"), so the sap lies in a hollow on any slope and the waterline never moves. A pool placed by hand on the
-  trunk is kept in its stead. `draft check` fails a living Hist with no pool on its trunk. The studio draws it in
+  trunk is kept in its stead. `draft check` fails a living Hist with no pool on its trunk. The pool is centred
+  on the trunk by design, so the build's overlap rule lets a pool and its own Hist stand in each other (the pool's
+  id is its Hist's with `.sap.` after the place), and no other pair. The studio draws it in
   its sap's colour; search "hist sap" finds it.
 - **The sentence follows the place's law** (`place_law` in the database, the one source of the fact;
   `docs/design/law.md`). A place where no one keeps law has no sentence and its guards speak no arrest lines.
@@ -323,8 +328,14 @@ The tools lay the network by these rules.
   rented bed (`stations.rent_bed`). Guards sleep in a barracks or their camp's own beds (tents and bedrolls
   outdoors), one guard to a bed, never in the inn's rooms. A guard whose camp bed the town's network does not
   reach (a tent shut in by blocks) sleeps in a home's free bed instead; with none free, the last resident gives up
-  theirs. Each house holds one household: a family, headed by the working person who lives there, then a partner,
+  theirs. A sleeper the draft left with no bed (a camp with a roofed room but no bed free under it) takes a free
+  one in the `streets` stage: a home's first, else a free bed of the camp's in the open the network reaches, and
+  sleeps there. A couple shares a double bed: the bed is owned by their household's faction, the one stock owns a
+  household's things by, and each of them is in it (a reference has one owner, a person or a faction), so the bed
+  is each one's own. Each house holds one household: a family, headed by the working person who lives there, then a partner,
   then their kin; never strangers thrown together. The one other sleeper a home takes is such a guard, as its lodger.
+- **A day is spent where its stops say.** The work hours are spent at the person's work stop as `work` holds it
+  (the spot a later stage set, a room's with its height): the `people` stage sets every routine's work stop to it.
 - **Who the people are comes after the draft.** The draft gives each person a placeholder name. Their names,
   households, trades, wealth and backstories are the skill `place-people`; its last step carries them into the
   place files.
@@ -416,7 +427,14 @@ and removed per file; a stage that would write outside what it owns changes noth
    placed there (the world's refs shards) but the plants the place clears and its gates (a door that leads nowhere
    else is walked through, as Skyrim's navmesh runs under its doors), so it meets the world's own navmesh edge
    for edge: the world file, its refs shards and its navmesh must be of one build, and the build fails when the
-   shards do not hold every world ref the place clears. The build keeps, in `out/places/shards/<place_id>/world.json`,
+   shards do not hold every world ref the place clears. A link the ring's build made into a world mesh that the
+   world's own does not answer is opened. Every piece's collision is its own mesh, found by the new world's mod
+   order; a source mod whose plugin the game never loads (its pieces copied into our places) is read from its
+   plugin among the asset mods (`newworld-assets/<mod>`), outdoors and in every room, so no piece is missing from
+   the mesh for want of its plugin. A copied room keeps its source's navmesh only when that is one walkable island
+   that reaches every arrival into the room and every piece of furniture in it (a bed up the stair, a seat in a
+   corner); else the room is meshed again from its own collision, and the build's notes say why. A thing stock
+   takes out of a copied room takes its links with it (a trigger's link to the item it watched). The build keeps, in `out/places/shards/<place_id>/world.json`,
    the stamp of the world records it stands on (Inputs): a place whose records the world file no longer holds is
    stale, the read-back's `places` row names what moved, and `infra/gpu-box/places_deploy.sh` refuses it. The
    world's own stages read of the place only who gives which promise, the stations found and the cells its plan

@@ -205,11 +205,14 @@ def plan(P: dict, S: dict, ids, facts: dict, notes: list[str]) -> dict:
     made = {}
     by_fk = {r["fk"]: r for r in S["refs"]}  # with the markers made here: what a patrol's chain links
     taken_beds = set()
+    sleepers: dict = {}  # bed id -> how many sleep in it (a couple's double bed: two)
     for q in people:
         b = q.get("bed") if isinstance(q, dict) else None
         r = find_ref(b) if isinstance(b, dict) else by_id.get(b) if isinstance(b, str) else None
         if r is not None:
             taken_beds.add(r["id"])
+            sleepers[r["id"]] = sleepers.get(r["id"], 0) + 1
+    shared: dict = {}  # bed id -> the faction that owns it, when more than one sleeps in it
 
     def one(p):
         who = p["id"]
@@ -266,10 +269,25 @@ def plan(P: dict, S: dict, ids, facts: dict, notes: list[str]) -> dict:
             bed = by_id.get(p["bed"])
             if bed is None:
                 raise Bad(f"people.jsonl: {who}: bed {p['bed']} is not in the place")
-            bed["owner"] = npc_fk
+            owner = npc_fk
+            if sleepers.get(bed["id"], 0) > 1:
+                # a bed two sleep in (a couple's) is owned by their household's faction (the one stock owns a
+                # household's things by), as a reference's ownership is one person or one faction: each sleeper is in
+                # it, so the bed is each one's own
+                if bed["id"] not in shared:
+                    hid = (p.get("household") or {}).get("id") or bed["id"]
+                    fk = ids(f"fact:household:{hid}")
+                    shared[bed["id"]] = {"fk": fk, "edid": f"ANP_{pid}_Household_{_edid(hid)}", "name": f"{hid} household"}
+                    if not any(f["fk"] == fk for f in out["factions"]):
+                        out["factions"].append({**shared[bed["id"]]})
+                owner = shared[bed["id"]]["fk"]
+            bed["owner"] = owner
             bed["persistent"] = True
-            out["owned_beds"].append({"bed": bed["fk"], "owner": npc_fk})
+            if not any(o["bed"] == bed["fk"] for o in out["owned_beds"]):
+                out["owned_beds"].append({"bed": bed["fk"], "owner": owner})
         factions = [{"faction": out["crime_faction"]["fk"], "rank": 0}]
+        if p.get("bed") and by_id.get(p["bed"]) is not None and by_id[p["bed"]]["id"] in shared:
+            factions.append({"faction": shared[by_id[p["bed"]]["id"]]["fk"], "rank": 0})
         for fr in p.get("faction_ranks", []):
             f = fr["faction"]
             if f == f"{pid}.crime" or f.startswith(f"{pid}.vendor"):

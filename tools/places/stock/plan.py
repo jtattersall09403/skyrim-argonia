@@ -205,9 +205,11 @@ def plan(P: dict, S: dict, people: dict, ids, problem, notes: list[str], st: "St
         if (space, sref) not in seen_rows:
             problem(f"stock: container row {sref} in {space} names no container of the place")
     if gone:
+        lost = {r["fk"] for r in S["refs"] if r["id"] in gone}
         S["refs"][:] = [r for r in S["refs"] if r["id"] not in gone]
         for i in gone:
             S["by_id"].pop(i, None)
+        unlink(S["refs"], lost)
 
     # new loose things
     have = {stock_ref(r) for r in S["refs"]} | set(out["kept_loose"])
@@ -286,14 +288,26 @@ def plan(P: dict, S: dict, people: dict, ids, problem, notes: list[str], st: "St
     # household factions: one of ours per owning household, every member at rank 0
     for hid in sorted(households_used):
         fk = ids(f"fact:household:{hid}")
-        people["factions"].append({"fk": fk, "edid": f"ANP_{pid}_Household_{_edid(hid)}", "name": f"{hid} household"})
+        if not any(f["fk"] == fk for f in people["factions"]):  # a couple's shared bed made it already (people)
+            people["factions"].append({"fk": fk, "edid": f"ANP_{pid}_Household_{_edid(hid)}", "name": f"{hid} household"})
         for p in st.persons.values():
-            if p.household_id == hid and p.id in npc_of:
+            if p.household_id == hid and p.id in npc_of and not any(f["faction"] == fk for f in npc_of[p.id]["factions"]):
                 npc_of[p.id]["factions"].append({"faction": fk, "rank": 0})
     out["counts"] = {"containers": len(out["containers"]), "rows": sum(c["row"] for c in out["containers"]),
                      "outfits": len(out["outfits"]), "kept_loose": len(out["kept_loose"]),
                      "placed_loose": len(out["placed_loose"]), "taken_out": len(out["taken_out"])}
     return out
+
+
+def unlink(refs: list[dict], lost: set) -> None:
+    """A thing taken out of the place takes its links with it: a ref that linked to it (a source trigger to the item it
+    watches) or had it as its enable parent keeps no link to a ref the build no longer holds."""
+    for r in refs:
+        if r.get("linked"):
+            r["linked"] = [ln for ln in r["linked"] if ln.get("ref") not in lost]
+        if r.get("enable_parent") in lost:
+            r.pop("enable_parent")
+            r.pop("enable_parent_flags", None)
 
 
 def _obnd_top(rec) -> float | None:

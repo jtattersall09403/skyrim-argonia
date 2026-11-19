@@ -610,11 +610,19 @@ def rests(a: dict, b: dict) -> bool:
             or (sa.get("mode") == sb.get("mode") == "on" and sa.get("on") is not None and sa.get("on") == sb.get("on")))
 
 
+def sap_of(pool: dict, hist: dict) -> bool:
+    """`pool` is the sap pool the draft's sap stage set at the roots of the Hist `hist` (its id is the Hist's with
+    `.sap.` after the place: draft.sap.pool_for). The pool is centred on the trunk by design, so each stands in the
+    other."""
+    pid, _, rest = str(hist.get("id") or "").partition(".")
+    return bool(rest) and pool.get("id") == f"{pid}.sap.{rest}"
+
+
 def _source_had(a: dict, b: dict) -> bool:
     """The pair may stand in each other: one rests on the other (`rests`), or the source had them in this relative
     pose: both copied, and either inside one copied interior (it keeps its frame) or in one exterior cluster (the fit
     moves a cluster as one rigid piece)."""
-    if rests(a, b):
+    if rests(a, b) or sap_of(a, b) or sap_of(b, a):
         return True
     if not (a.get("src") and b.get("src") and a["space"] == b["space"]):
         return False
@@ -671,6 +679,7 @@ def check_people(ctx) -> list[str]:
     pk = {p["fk"]: p for p in ctx["dump"]["packages"]}
     comp = components(ctx["navs"], door_pairs(ctx))
     node = nav_index(ctx).at
+    fac_edid = {f["fk"]: f.get("edid") for f in ctx["dump"].get("factions") or []}
     bad = []
 
     def where(fk):
@@ -685,7 +694,9 @@ def check_people(ctx) -> list[str]:
         if got is None:
             bad.append(f"{who}: no actor base in the plugin")
             continue
-        beds = [r for r in m["refs"].values() if r.get("owner") == n["fk"] and r.get("base_type") == "FURN"]
+        # a couple's bed is owned by their household's faction (never the vendor faction an inn's rented bed has)
+        mine_ = {n["fk"], *(f for f in got.get("faction_keys") or [] if "_Household_" in (fac_edid.get(f) or ""))}
+        beds = [r for r in m["refs"].values() if r.get("owner") in mine_ and r.get("base_type") == "FURN"]
         if not beds and n.get("role") != "innkeeper":  # vanilla's innkeepers keep the inn all day (one 24-hour package)
             bad.append(f"{who}: no bed owned")
         prev = None

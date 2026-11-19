@@ -103,3 +103,20 @@ def test_a_source_cells_navmeshes_are_copied_whole_with_their_links_when_they_jo
     assert t["flags"] & nvnm.EDGE_LINK[1] and not t["flags"] & (nvnm.EDGE_LINK[0] | nvnm.DOOR) and t["e"][0] == -1
     held.update({"Src.esm:000A01": src(0, 0x01000777), "Src.esm:000A02": src(4096, 0x01000777)})  # two pieces that do not join
     assert B.interior_navmesh(I, {}, Ids()) == [] and I["src_islands"] == 2
+
+
+def test_a_link_into_a_world_mesh_that_does_not_answer_it_is_opened():
+    a = {"fid": 0x10, "space": "exterior", "cell": [0, 0], "nv": cell_mesh(0, 100)}
+    world = {"fid": 0x11, "space": "exterior", "nv": cell_mesh(4096, 100)}   # stays in the game as it is
+    nv = a["nv"]
+    nv.links = np.array([(nvnm.PORTAL, 0x11, 0), (nvnm.PORTAL, 0x11, 1)], nvnm.LINK)
+    nv.tris["e"][0][1], nv.tris["e"][1][2] = 0, 1
+    nv.tris["flags"][0] |= nvnm.EDGE_LINK[1]
+    nv.tris["flags"][1] |= nvnm.EDGE_LINK[2]
+    w = world["nv"]                                   # the world's tri 1 answers a's tri 1; its tri 0 answers nothing
+    w.links = np.array([(nvnm.PORTAL, 0x10, 1)], nvnm.LINK)
+    w.tris["e"][1][0] = 0
+    w.tris["flags"][1] |= nvnm.EDGE_LINK[0]
+    assert B.unlink_one_way([a]) == 0                 # without the world's meshes nothing is judged
+    assert B.unlink_one_way([a], [world]) == 1
+    assert not nv.tris["flags"][0] & nvnm.EDGE_LINK[1] and nv.tris["flags"][1] & nvnm.EDGE_LINK[2]
