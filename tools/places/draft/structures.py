@@ -94,9 +94,8 @@ def judge(refs: list[dict], bases: dict, text: str) -> dict[str, dict]:
 
 
 def for_place(place_id: str) -> dict[str, dict]:
-    from tools.places.draft import interiors, stages
-    from tools.places.draft.run import place_record
-    st = stages.Standing(place_id)
+    from tools.places.draft import stages
+    st =stages.Standing(place_id)
     return judge(st.src_ext, st.bases, record_words(place_id))
 
 
