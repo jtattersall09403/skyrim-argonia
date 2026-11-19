@@ -127,6 +127,8 @@ added here the day they are made, with the date and the issue.
   drafter rethinks; places the main quest uses get their closest-match source; a place with no close match is
   built from the whole asset pool, taking only what a source gives cheaply. The allocation is not redone from
   scratch (2026-11-19, #80).
+- A Hist pool is always a pool of Hist sap (the sap stage's pool), never plain water; a rootworm stop at a Hist is
+  at its sap pool (2026-11-19, #80).
 - A quest's people and things at a place get first positions in every place draft without being asked, drafted
   as their real records and models, shown in the studio's Quests layer for the owner to move and note
   (2026-11-19, #80).
