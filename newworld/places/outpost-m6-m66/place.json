@@ -161,6 +161,65 @@
     "need": 0,
     "tier": "AGENT_INVENTED",
     "why": "the traps on the woven weir (place record: fishing, 'the traps: eels and carp'): a fishing spot set at the weir"
+   },
+   {
+    "base": "Skyrim.esm:01769A",
+    "kind": "static",
+    "pos": [
+     -41250.0,
+     -540250.0
+    ],
+    "rot_z": 2.0,
+    "tier": "AGENT_INVENTED",
+    "why": "the drying rack the camp's cooking pot stands by (place record: cooking-pot 'by the drying rack'; source note: 'Still to add: the drying rack'): Skyrim's fish drying rack, of no hold's kit"
+   },
+   {
+    "base": "King of the Murkmire.esp:05555C",
+    "kind": "static",
+    "pos": [
+     -42650.0,
+     -543120.0
+    ],
+    "rot_z": 0.0,
+    "dz": 40.0,
+    "tier": "AGENT_INVENTED",
+    "why": "the log boom floating across the creek above the woven weir, where the crocodiles gather (place record: dangers, 'Crocodiles gather under the log boom'; source note: 'the woven weir with its log boom'): King of the Murkmire's long cypress log"
+   },
+   {
+    "base": "King of the Murkmire.esp:05555C",
+    "kind": "static",
+    "pos": [
+     -41950.0,
+     -543120.0
+    ],
+    "rot_z": 0.0,
+    "dz": 30.0,
+    "tier": "AGENT_INVENTED",
+    "why": "the log boom floating across the creek above the woven weir, where the crocodiles gather (place record: dangers, 'Crocodiles gather under the log boom'; source note: 'the woven weir with its log boom'): King of the Murkmire's long cypress log"
+   },
+   {
+    "base": "King of the Murkmire.esp:01FA35",
+    "kind": "static",
+    "pos": [
+     -41380.0,
+     -541380.0
+    ],
+    "rot_z": 0.0,
+    "dz": -83.0,
+    "tier": "AGENT_INVENTED",
+    "why": "the landing: a plank jetty from the west bank into the creek below the camp (source note: 'Still to add: ... the landing'): King of the Murkmire's mud-hut walkway, the marsh's walkway piece"
+   },
+   {
+    "base": "King of the Murkmire.esp:01FA35",
+    "kind": "static",
+    "pos": [
+     -41130.0,
+     -541380.0
+    ],
+    "rot_z": 0.0,
+    "dz": -51.0,
+    "tier": "AGENT_INVENTED",
+    "why": "the landing: a plank jetty from the west bank into the creek below the camp (source note: 'Still to add: ... the landing'): King of the Murkmire's mud-hut walkway, the marsh's walkway piece"
    }
   ],
   "roles": {
@@ -176,7 +235,101 @@
    "King of the Murkmire.esp:005DBA": "King of the Murkmire.esp:B7F081"
   },
   "drop": {
-   "King of the Murkmire.esp:855049": "a rock plateau of Ree-An-Wo's own ground (ArgoniaRockPlateau02MarshGrass, 21 by 16 m), standing far out from the camp on our creek's bank, where it sinks 370 into our ground: our ground is not the source's, and the record has no use for it"
+   "King of the Murkmire.esp:855049": "a rock plateau of Ree-An-Wo's own ground (ArgoniaRockPlateau02MarshGrass, 21 by 16 m), standing far out from the camp on our creek's bank, where it sinks 370 into our ground: our ground is not the source's, and the record has no use for it",
+   "King of the Murkmire.esp:85A26D": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
+   "King of the Murkmire.esp:85A28D": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
+   "King of the Murkmire.esp:85A26B": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
+   "King of the Murkmire.esp:85A273": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
+   "King of the Murkmire.esp:85A27F": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
+   "King of the Murkmire.esp:85A27C": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
+   "King of the Murkmire.esp:85A279": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
+   "King of the Murkmire.esp:85A282": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
+   "King of the Murkmire.esp:85A274": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
+   "King of the Murkmire.esp:85A28A": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
+   "King of the Murkmire.esp:85A288": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
+   "King of the Murkmire.esp:85A275": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
+   "King of the Murkmire.esp:85A271": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
+   "King of the Murkmire.esp:85A27D": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
+   "King of the Murkmire.esp:85A26E": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
+   "King of the Murkmire.esp:85A284": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
+   "King of the Murkmire.esp:85A286": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
+   "King of the Murkmire.esp:85A285": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
+   "King of the Murkmire.esp:85A278": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
+   "King of the Murkmire.esp:85A272": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
+   "King of the Murkmire.esp:85A283": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
+   "King of the Murkmire.esp:85A27A": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
+   "King of the Murkmire.esp:85A281": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
+   "King of the Murkmire.esp:85A27B": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
+   "King of the Murkmire.esp:85A26F": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
+   "King of the Murkmire.esp:85A26C": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
+   "King of the Murkmire.esp:85A276": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
+   "King of the Murkmire.esp:85A270": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
+   "King of the Murkmire.esp:85A28E": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
+   "King of the Murkmire.esp:85A27E": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
+   "King of the Murkmire.esp:85A28C": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
+   "King of the Murkmire.esp:85F6EF": "a smith's grindstone: Teel-Fen's record has no smith and promises no smithing (place record)"
+  },
+  "plan": {
+   "look": [
+    {
+     "line": "pale hide tents on a small cypress platform round a young Hist",
+     "by": "the source's scale-hide tents (ALPAScaleTent02/03) on its cypress scaffold decks (cluster w01, the landing cluster's camp) round the added young Hist (HistTree04) in its sap pool. Still too tall and too large: w01 is a four-storey scaffold tower; to be cut to one low deck"
+    },
+    {
+     "line": "a woven weir across the creek",
+     "by": "5 added woven Saxhleel fences (ALPAFenceWoven04) across the creek"
+    },
+    {
+     "line": "the log boom (source note; dangers)",
+     "by": "2 added long cypress logs floating across the creek above the weir"
+    },
+    {
+     "line": "the drying rack with the cooking pot by it (gives)",
+     "by": "an added fish drying rack (FishRack01) by the source's Argonian cooking pot"
+    },
+    {
+     "line": "the landing (source note)",
+     "by": "2 added mud-hut walkways from the west bank into the creek"
+    },
+    {
+     "line": "a reed hide by a lone dead tree on the bank to the west",
+     "by": "the added dead swamp tree with a scale-hide lean-to, crate, jars and the sap-takers' pack"
+    },
+    {
+     "line": "the tanning rack on the platform (gives)",
+     "by": "the source's scale tanning rack marker"
+    },
+    {
+     "line": "23 people (population)",
+     "by": ""
+    }
+   ],
+   "structures": [
+    {
+     "cluster": "landing",
+     "what": "the source's Xanmeer ruin (walls, floors, stairs, columns, busts, rubble)",
+     "verdict": "dropped",
+     "why": "the record has no ruin"
+    },
+    {
+     "cluster": "landing",
+     "what": "the source camp's tents, fences, cooking stand and scaffold decks",
+     "verdict": "kept",
+     "why": "the record's hide tents on a cypress platform"
+    },
+    {
+     "cluster": "w01",
+     "what": "a tower of cypress scaffold decks carrying two tents",
+     "verdict": "kept",
+     "why": "the record's platform of tents; still far larger than 'small'"
+    },
+    {
+     "cluster": "s06",
+     "what": "a scaffold deck with two tents and fences",
+     "verdict": "kept",
+     "why": "hide tents on a cypress platform"
+    }
+   ]
   }
  },
  "fit": {

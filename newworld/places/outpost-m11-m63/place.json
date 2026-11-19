@@ -109,23 +109,27 @@
     "base": "Skyrim.esm:03B3CD",
     "kind": "furniture",
     "pos": [
-     -82700,
-     -513430
+     -82700.0,
+     -513430.0
     ],
     "rot_z": 0.8,
     "tier": "AGENT_INVENTED",
-    "why": "a warden's bedroll in the open by the camp (place record: population 2, 'six or so wardens live here' by turns): the source's only beds were a bog blight's ambush spots, dropped"
+    "why": "a warden's bedroll in the open by the camp (place record: population 2, 'six or so wardens live here' by turns), in a hide tent on its platform",
+    "on": "outpost-m11-m63.R094ZZC2PMXY45D7591NYHG2ZP",
+    "dz": 4.0
    },
    {
     "base": "Skyrim.esm:03B3CD",
     "kind": "furniture",
     "pos": [
-     -82800,
-     -513540
+     -82960.0,
+     -513660.0
     ],
     "rot_z": 0.8,
     "tier": "AGENT_INVENTED",
-    "why": "a warden's bedroll in the open by the camp (place record: population 2, 'six or so wardens live here' by turns): the source's only beds were a bog blight's ambush spots, dropped"
+    "why": "a warden's bedroll in the open by the camp (place record: population 2, 'six or so wardens live here' by turns), in a hide tent on its platform",
+    "on": "outpost-m11-m63.E9M0AHKZT29T5SJDG9D65ZWMDM",
+    "dz": 4.0
    },
    {
     "base": "Skyrim.esm:0BB951",
@@ -195,19 +199,259 @@
     "dz": 40.0,
     "tier": "AGENT_INVENTED",
     "why": "the weir's catch (place record: fishing, 'the weir traps: eels and gar'): Skyrim's own deep-pond critter spawner, fish only, in the pool below the weir, its pond square clear of the weir's fences, the way Skyrim's streams give fish a player can catch"
+   },
+   {
+    "base": "King of the Murkmire.esp:05556C",
+    "kind": "static",
+    "pos": [
+     -82700.0,
+     -513430.0
+    ],
+    "rot_z": 0.8,
+    "dz": 30.0,
+    "tier": "AGENT_INVENTED",
+    "why": "a cypress platform of the wardens' camp on the mud bank (place record: look, 'pale hide tents on cypress platforms on a mud bank'): King of the Murkmire's cypress scaffold deck, as Ree-An-Wo's camp sets its tents"
+   },
+   {
+    "base": "King of the Murkmire.esp:10A52C",
+    "kind": "static",
+    "pos": [
+     -82700.0,
+     -513430.0
+    ],
+    "rot_z": 0.8,
+    "scale": 0.6,
+    "on": "outpost-m11-m63.R094ZZC2PMXY45D7591NYHG2ZP",
+    "dz": 4.0,
+    "tier": "AGENT_INVENTED",
+    "why": "a warden's pale hide tent on its cypress platform (place record: look; source note: Ree-An-Wo's hide tents): King of the Murkmire's scale-hide tent"
+   },
+   {
+    "base": "King of the Murkmire.esp:05556C",
+    "kind": "static",
+    "pos": [
+     -82960.0,
+     -513660.0
+    ],
+    "rot_z": 0.8,
+    "dz": 30.0,
+    "tier": "AGENT_INVENTED",
+    "why": "a cypress platform of the wardens' camp on the mud bank (place record: look, 'pale hide tents on cypress platforms on a mud bank'): King of the Murkmire's cypress scaffold deck, as Ree-An-Wo's camp sets its tents"
+   },
+   {
+    "base": "King of the Murkmire.esp:10A52C",
+    "kind": "static",
+    "pos": [
+     -82960.0,
+     -513660.0
+    ],
+    "rot_z": 0.8,
+    "scale": 0.6,
+    "on": "outpost-m11-m63.E9M0AHKZT29T5SJDG9D65ZWMDM",
+    "dz": 4.0,
+    "tier": "AGENT_INVENTED",
+    "why": "a warden's pale hide tent on its cypress platform (place record: look; source note: Ree-An-Wo's hide tents): King of the Murkmire's scale-hide tent"
+   },
+   {
+    "base": "King of the Murkmire.esp:0D72B9",
+    "kind": "tree",
+    "pos": [
+     -82450.0,
+     -513650.0
+    ],
+    "rot_z": 0.0,
+    "scale": 0.5,
+    "tier": "AGENT_INVENTED",
+    "why": "the Hist-shoot post: a young shoot of Jal-Veesa's Hist the wardens keep at the camp (place record: source note, 'Still to add: ... the Hist-shoot post'): King of the Murkmire's smallest Hist, young"
+   },
+   {
+    "base": "Curse of Cipactli.esp:2EF781",
+    "kind": "static",
+    "pos": [
+     -82380.0,
+     -513620.0
+    ],
+    "rot_z": 0.0,
+    "tier": "AGENT_INVENTED",
+    "why": "the post the Hist shoot is tied to (place record: source note, 'the Hist-shoot post'): a carved Saxhleel stake of Curse of Cipactli's"
+   },
+   {
+    "base": "King of the Murkmire.esp:01FA35",
+    "kind": "static",
+    "pos": [
+     -82200.0,
+     -514110.0
+    ],
+    "rot_z": 1.5708,
+    "dz": -95.0,
+    "tier": "AGENT_INVENTED",
+    "why": "the landing: a plank jetty from the mud bank into the pool below the camp, by the cooking pot (place record: cooking-pot 'by the landing'; source note: 'Still to add: the landing'): King of the Murkmire's mud-hut walkway, the marsh's walkway piece"
+   },
+   {
+    "base": "King of the Murkmire.esp:01FA35",
+    "kind": "static",
+    "pos": [
+     -82200.0,
+     -514360.0
+    ],
+    "rot_z": 1.5708,
+    "dz": -52.0,
+    "tier": "AGENT_INVENTED",
+    "why": "the landing: a plank jetty from the mud bank into the pool below the camp, by the cooking pot (place record: cooking-pot 'by the landing'; source note: 'Still to add: the landing'): King of the Murkmire's mud-hut walkway, the marsh's walkway piece"
    }
   ],
   "drop": {
    "King of the Murkmire.esp:046192": "a bog blight's ambush spot (King of the Murkmire's BogBlightAmbushFurniture, its quest's creatures): Reed-Sill's dangers are mudcrabs and a young crocodile (place record: dangers), and the drafter took the spot for a camp bed in the creek",
    "King of the Murkmire.esp:046193": "a bog blight's ambush spot (King of the Murkmire's BogBlightAmbushFurniture, its quest's creatures): Reed-Sill's dangers are mudcrabs and a young crocodile (place record: dangers), and the drafter took the spot for a camp bed in the creek",
    "King of the Murkmire.esp:046195": "a bog blight's ambush spot (King of the Murkmire's BogBlightAmbushFurniture, its quest's creatures): Reed-Sill's dangers are mudcrabs and a young crocodile (place record: dangers), and the drafter took the spot for a camp bed in the creek",
-   "King of the Murkmire.esp:046196": "a bog blight's ambush spot (King of the Murkmire's BogBlightAmbushFurniture, its quest's creatures): Reed-Sill's dangers are mudcrabs and a young crocodile (place record: dangers), and the drafter took the spot for a camp bed in the creek"
+   "King of the Murkmire.esp:046196": "a bog blight's ambush spot (King of the Murkmire's BogBlightAmbushFurniture, its quest's creatures): Reed-Sill's dangers are mudcrabs and a young crocodile (place record: dangers), and the drafter took the spot for a camp bed in the creek",
+   "King of the Murkmire.esp:04611C": "a ruin column, chompy bust or bog beacon of the source's camp: Reed-Sill's record has pale hide tents on cypress platforms and no ruin or shrine (look)",
+   "King of the Murkmire.esp:85A3E8": "a ruin column, chompy bust or bog beacon of the source's camp: Reed-Sill's record has pale hide tents on cypress platforms and no ruin or shrine (look)",
+   "King of the Murkmire.esp:046119": "a ruin column, chompy bust or bog beacon of the source's camp: Reed-Sill's record has pale hide tents on cypress platforms and no ruin or shrine (look)",
+   "King of the Murkmire.esp:04611A": "a ruin column, chompy bust or bog beacon of the source's camp: Reed-Sill's record has pale hide tents on cypress platforms and no ruin or shrine (look)",
+   "King of the Murkmire.esp:85A3F0": "a ruin column, chompy bust or bog beacon of the source's camp: Reed-Sill's record has pale hide tents on cypress platforms and no ruin or shrine (look)",
+   "King of the Murkmire.esp:85A3F2": "a ruin column, chompy bust or bog beacon of the source's camp: Reed-Sill's record has pale hide tents on cypress platforms and no ruin or shrine (look)",
+   "King of the Murkmire.esp:046118": "a ruin column, chompy bust or bog beacon of the source's camp: Reed-Sill's record has pale hide tents on cypress platforms and no ruin or shrine (look)",
+   "King of the Murkmire.esp:85A3EB": "a ruin column, chompy bust or bog beacon of the source's camp: Reed-Sill's record has pale hide tents on cypress platforms and no ruin or shrine (look)",
+   "King of the Murkmire.esp:85A3EC": "a ruin column, chompy bust or bog beacon of the source's camp: Reed-Sill's record has pale hide tents on cypress platforms and no ruin or shrine (look)",
+   "King of the Murkmire.esp:85A3EF": "a ruin column, chompy bust or bog beacon of the source's camp: Reed-Sill's record has pale hide tents on cypress platforms and no ruin or shrine (look)",
+   "King of the Murkmire.esp:04611B": "a ruin column, chompy bust or bog beacon of the source's camp: Reed-Sill's record has pale hide tents on cypress platforms and no ruin or shrine (look)",
+   "King of the Murkmire.esp:85A3E7": "a ruin column, chompy bust or bog beacon of the source's camp: Reed-Sill's record has pale hide tents on cypress platforms and no ruin or shrine (look)",
+   "King of the Murkmire.esp:85A3F1": "a ruin column, chompy bust or bog beacon of the source's camp: Reed-Sill's record has pale hide tents on cypress platforms and no ruin or shrine (look)",
+   "King of the Murkmire.esp:03B511": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:046147": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:084CAA": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:084CA4": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:0407E9": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:04618F": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:084CBC": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:04614D": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:084CB3": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:0407E6": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:084C9B": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:046145": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:03B50A": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:046146": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:04618E": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:084C9C": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:084CB6": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:03B510": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:03B50F": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:0407E7": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:084CB8": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:04614A": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:0407EA": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:03B513": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:084C99": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:03B50E": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:084C97": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:0407EE": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:0407ED": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:084C98": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:084CB0": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:084CB7": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:084CA1": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:084C9E": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:084C9D": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:084CBB": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:084C9A": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:084C9F": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:084CA8": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:084CA5": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:046190": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:084CA7": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:084CBA": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:084CA0": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:0407E5": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:04614C": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:084CB5": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:046197": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:0407E8": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:03B50B": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:03B50C": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:0407EC": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:084CB1": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:084CA2": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:046148": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:084CB4": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:046144": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:046149": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:084CA3": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:084CA6": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:03B4FD": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
+   "King of the Murkmire.esp:084CB2": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)"
   },
   "replace": {
    "King of the Murkmire.esp:046191": {
     "base": "Skyrim.esm:03B3CD",
     "why": "King of the Murkmire's BogBlightAmbushFurniture is a bog blight's ambush spot with a bedroll's model; the one on the camp's bank is the wardens' bed, so it is a plain bedroll here (the four in the creek are dropped)"
    }
+  },
+  "plan": {
+   "look": [
+    {
+     "line": "pale hide tents on cypress platforms on a mud bank",
+     "by": "2 added King of the Murkmire scale-hide tents (ALPAScaleTent03 at 0.6) each on a cypress scaffold deck (CypressStockadeScaffoldFloor01) on the north mud bank, a warden's bedroll in each"
+    },
+    {
+     "line": "a woven weir across the creek",
+     "by": "6 added woven Saxhleel fences (ALPAFenceWoven04) set in the creek bed"
+    },
+    {
+     "line": "a log walk along its top",
+     "by": "2 added long cypress logs (CypressStockadeBridgeA03) along the fences"
+    },
+    {
+     "line": "long grey moss draped on its fences over the water",
+     "by": "3 added hanging moss (TreeFloraHangingMoss03) seated on the downstream fences"
+    },
+    {
+     "line": "the landing (source note) with the cooking pot by it (gives)",
+     "by": "2 added mud-hut walkways (MudHutWalkway01) from the bank into the pool; the Argonian cooking pot beside"
+    },
+    {
+     "line": "the Hist-shoot post (source note)",
+     "by": "an added young Hist (HistTree05 at 0.5) in its sap pool, with a carved Saxhleel stake beside it"
+    },
+    {
+     "line": "the hidden sack in the reeds (treasure x1)",
+     "by": "the added Thief's Sack at the waterline east of the weir"
+    },
+    {
+     "line": "the weir traps: eels and gar (fishing)",
+     "by": "Skyrim's deep-pond fish spawner below the weir"
+    },
+    {
+     "line": "mudcrabs and a young crocodile (combat-creature x3)",
+     "by": "the quest places them (need judged)"
+    }
+   ],
+   "structures": [
+    {
+     "cluster": "s01,s03,s04,s06",
+     "what": "the source camp's Xanmeer columns, chompy busts and bog beacons",
+     "verdict": "dropped",
+     "why": "no ruin or shrine in the record: its camp is hide tents on cypress platforms"
+    },
+    {
+     "cluster": "s09",
+     "what": "the source's vine trap field (vines, pustule, bones, gas traps, a strongbox)",
+     "verdict": "dropped",
+     "why": "a friendly weir camp; its dangers name no trap; the treasure is the thief's sack"
+    },
+    {
+     "cluster": "s10",
+     "what": "gas traps and a gas fissure",
+     "verdict": "dropped",
+     "why": "the camp is safe"
+    },
+    {
+     "cluster": "s05",
+     "what": "Hist roots and a root-worm tunnel mouth in the marsh to the south-west",
+     "verdict": "kept",
+     "why": "an ordinary part of the marsh round a Hist-keeping camp; no building"
+    }
+   ]
   }
  },
  "fit": {
@@ -686,5 +930,13 @@
   },
   "beds": 0
  },
- "draft_key": "4719e555cf84fdd2"
+ "draft_key": "4719e555cf84fdd2",
+ "sap": {
+  "added": [
+   {
+    "id": "outpost-m11-m63.sap.K4G3JJWT6J12E3CHEYZ37VRK1Z",
+    "on": "K4G3JJWT6J12E3CHEYZ37VRK1Z"
+   }
+  ]
+ }
 }
