@@ -385,66 +385,6 @@
     "person:helstrom.87WTH0EW4WJ6AQ9CTRC7GXAZTS"
    ],
    "owner_faction": "helstrom.guard"
-  },
-  {
-   "ref": "helstrom.FDFK0WXD3T1JDBRX2PRY07A0ZR",
-   "space": "exterior",
-   "kind": "corpse",
-   "security": "S0",
-   "effort": "E1",
-   "tier": "T1",
-   "gold": 5,
-   "items": [
-    {
-     "item": "Skyrim.esm:01397E",
-     "count": 1,
-     "why": "the dead one's own knife"
-    }
-   ],
-   "why": "a body on the city's ground with no owner, so free to take; the open tier T1 of a D1 place, the least gold of that tier",
-   "cites": [
-    "place_wealth:helstrom"
-   ]
-  },
-  {
-   "ref": "helstrom.HQXTF188GYDM9GF1BAY4DJZ697",
-   "space": "exterior",
-   "kind": "corpse",
-   "security": "S0",
-   "effort": "E1",
-   "tier": "T1",
-   "gold": 5,
-   "items": [
-    {
-     "item": "Skyrim.esm:01397E",
-     "count": 1,
-     "why": "the dead one's own knife"
-    }
-   ],
-   "why": "a body on the city's ground with no owner, so free to take; the open tier T1 of a D1 place, the least gold of that tier",
-   "cites": [
-    "place_wealth:helstrom"
-   ]
-  },
-  {
-   "ref": "helstrom.P7NJDDJTEQEF5H3J9R12KT3SWH",
-   "space": "exterior",
-   "kind": "corpse",
-   "security": "S0",
-   "effort": "E1",
-   "tier": "T1",
-   "gold": 5,
-   "items": [
-    {
-     "item": "Skyrim.esm:01397E",
-     "count": 1,
-     "why": "the dead one's own knife"
-    }
-   ],
-   "why": "a body on the city's ground with no owner, so free to take; the open tier T1 of a D1 place, the least gold of that tier",
-   "cites": [
-    "place_wealth:helstrom"
-   ]
   }
  ],
  "loose": [

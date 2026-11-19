@@ -171,53 +171,53 @@
 {"src":"Black Marsh North.esp:078657","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:078658","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:078659","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
-{"src":"Black Marsh North.esp:07865A","space":"exterior","status":"placed","as":"helstrom.V06DMWQ0PHXKPR1YQVS6ZNQKKA","cluster":"b39"}
+{"src":"Black Marsh North.esp:07865A","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:07865B","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:07865C","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
-{"src":"Black Marsh North.esp:07865D","space":"exterior","status":"placed","as":"helstrom.BK3S3HRG353MKJ3KZDRXGKA1A5","cluster":"b39"}
+{"src":"Black Marsh North.esp:07865D","space":"exterior","status":"dropped","cluster":"b39","why":"a collision volume of the source whose visible building (a stepped Xanmeer the boxes outline, z to 2500) is not among the source pieces: invisible steps standing in the air","by":"draft.drop"}
 {"src":"Black Marsh North.esp:07865E","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:07865F","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:078660","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:078661","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
-{"src":"Black Marsh North.esp:078662","space":"exterior","status":"placed","as":"helstrom.HGD045ZG0BJPAT2VZBM0RP4CQH","cluster":"b39"}
+{"src":"Black Marsh North.esp:078662","space":"exterior","status":"dropped","cluster":"b39","why":"a collision volume of the source whose visible building (a stepped Xanmeer the boxes outline, z to 2500) is not among the source pieces: invisible steps standing in the air","by":"draft.drop"}
 {"src":"Black Marsh North.esp:078663","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
-{"src":"Black Marsh North.esp:078664","space":"exterior","status":"placed","as":"helstrom.58DB7VRKD83GJN8VQAF5AE4B5V","cluster":"b39"}
-{"src":"Black Marsh North.esp:078665","space":"exterior","status":"placed","as":"helstrom.2JVP56B073AC3YAEK4AN03GQ7J","cluster":"b39"}
+{"src":"Black Marsh North.esp:078664","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078665","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:078666","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:078667","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:078668","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
-{"src":"Black Marsh North.esp:078669","space":"exterior","status":"placed","as":"helstrom.48ZM43YNS4YV9PWDG0ZFVWAQ2A","cluster":"b39"}
-{"src":"Black Marsh North.esp:07866A","space":"exterior","status":"placed","as":"helstrom.8JJHS7NCVGY3W1JNNZQAVGMCAN","cluster":"b39"}
+{"src":"Black Marsh North.esp:078669","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07866A","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:07866B","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:07866C","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:07866D","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:07866E","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
-{"src":"Black Marsh North.esp:07866F","space":"exterior","status":"placed","as":"helstrom.TT1GBE9QYJ993ZG0XSHHKHV38T","cluster":"b39"}
+{"src":"Black Marsh North.esp:07866F","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:078670","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:078671","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
-{"src":"Black Marsh North.esp:078672","space":"exterior","status":"placed","as":"helstrom.6YDZPVM1DSSMTSJKRW6MSNRTQ4","cluster":"b39"}
+{"src":"Black Marsh North.esp:078672","space":"exterior","status":"dropped","cluster":"b39","why":"a collision volume of the source whose visible building (a stepped Xanmeer the boxes outline, z to 2500) is not among the source pieces: invisible steps standing in the air","by":"draft.drop"}
 {"src":"Black Marsh North.esp:078673","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:078674","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:078675","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:078676","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
-{"src":"Black Marsh North.esp:078677","space":"exterior","status":"placed","as":"helstrom.FS6V0STYAB62ZH799JQC98KMCY","cluster":"b39"}
+{"src":"Black Marsh North.esp:078677","space":"exterior","status":"dropped","cluster":"b39","why":"a collision volume of the source whose visible building (a stepped Xanmeer the boxes outline, z to 2500) is not among the source pieces: invisible steps standing in the air","by":"draft.drop"}
 {"src":"Black Marsh North.esp:078678","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:078679","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:07867A","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:07867B","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:07867C","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:07867D","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
-{"src":"Black Marsh North.esp:07867E","space":"exterior","status":"placed","as":"helstrom.0M0ZFCXRYZVXC6GVYZEWEASBV9","cluster":"b39"}
+{"src":"Black Marsh North.esp:07867E","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:07867F","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:078680","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:078681","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
-{"src":"Black Marsh North.esp:078682","space":"exterior","status":"placed","as":"helstrom.QH043KHXD90CRWK9Y7QV0TM597","cluster":"b39"}
+{"src":"Black Marsh North.esp:078682","space":"exterior","status":"dropped","cluster":"b39","why":"a collision volume of the source whose visible building (a stepped Xanmeer the boxes outline, z to 2500) is not among the source pieces: invisible steps standing in the air","by":"draft.drop"}
 {"src":"Black Marsh North.esp:078683","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:078684","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:078685","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:078686","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:078687","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
-{"src":"Black Marsh North.esp:078688","space":"exterior","status":"placed","as":"helstrom.0PZ39W3K48FW9JSYFGSYZMV6QD","cluster":"b39"}
+{"src":"Black Marsh North.esp:078688","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:078689","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:07868A","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:07868B","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
@@ -227,16 +227,16 @@
 {"src":"Black Marsh North.esp:07868F","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:078690","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:078691","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
-{"src":"Black Marsh North.esp:078692","space":"exterior","status":"placed","as":"helstrom.A573BRB0RY9SK9SC6ZGTEWR7A1","cluster":"b39"}
+{"src":"Black Marsh North.esp:078692","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:078693","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:078694","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:078695","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:078696","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
-{"src":"Black Marsh North.esp:078697","space":"exterior","status":"placed","as":"helstrom.JEMA6QBWQWG2366A72REKS3NB3","cluster":"b39"}
+{"src":"Black Marsh North.esp:078697","space":"exterior","status":"dropped","cluster":"b39","why":"a collision volume of the source whose visible building (a stepped Xanmeer the boxes outline, z to 2500) is not among the source pieces: invisible steps standing in the air","by":"draft.drop"}
 {"src":"Black Marsh North.esp:078698","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:078699","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:07869A","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
-{"src":"Black Marsh North.esp:07869B","space":"exterior","status":"placed","as":"helstrom.XJRMN2BGXRHCRYGMDKFFK3ZV4W","cluster":"b39"}
+{"src":"Black Marsh North.esp:07869B","space":"exterior","status":"dropped","cluster":"b39","why":"a collision volume of the source whose visible building (a stepped Xanmeer the boxes outline, z to 2500) is not among the source pieces: invisible steps standing in the air","by":"draft.drop"}
 {"src":"Black Marsh North.esp:07869C","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:07869D","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:07869E","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
@@ -246,7 +246,7 @@
 {"src":"Black Marsh North.esp:0786A2","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:0786A3","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:0786A4","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
-{"src":"Black Marsh North.esp:0786A5","space":"exterior","status":"placed","as":"helstrom.9N26WMJZCDKYSDSSF1D0JWJ2V1","cluster":"b39"}
+{"src":"Black Marsh North.esp:0786A5","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:0786A6","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:0786A7","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:0786A8","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
@@ -255,7 +255,7 @@
 {"src":"Black Marsh North.esp:0786AB","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:0786AC","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:0786AD","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
-{"src":"Black Marsh North.esp:0786AE","space":"exterior","status":"placed","as":"helstrom.RE4TK36SPNCXWCTGGWA4585RZZ","cluster":"b39"}
+{"src":"Black Marsh North.esp:0786AE","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:0786AF","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:0786B0","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:0786B1","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
@@ -278,7 +278,7 @@
 {"src":"Black Marsh North.esp:0786C6","space":"exterior","status":"dropped","cluster":"s01","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:0786C7","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:0786C8","space":"exterior","status":"dropped","cluster":"s01","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
-{"src":"Black Marsh North.esp:0786C9","space":"exterior","status":"placed","as":"helstrom.BYT2MF1S3MHAH7MMZC5N5G1A6T","cluster":"b39"}
+{"src":"Black Marsh North.esp:0786C9","space":"exterior","status":"dropped","cluster":"b39","why":"a collision volume of the source whose visible building (a stepped Xanmeer the boxes outline, z to 2500) is not among the source pieces: invisible steps standing in the air","by":"draft.drop"}
 {"src":"Black Marsh North.esp:0786CA","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:0786CB","space":"exterior","status":"dropped","cluster":"s01","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:0786CC","space":"exterior","status":"dropped","cluster":"s01","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
@@ -293,10 +293,10 @@
 {"src":"Black Marsh North.esp:0786D7","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:0786D8","space":"exterior","status":"dropped","cluster":"s01","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:0786D9","space":"exterior","status":"dropped","cluster":"s01","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
-{"src":"Black Marsh North.esp:0786DA","space":"exterior","status":"placed","as":"helstrom.DG1VMTPY299C0MSCX0115QF77Y","cluster":"b39"}
-{"src":"Black Marsh North.esp:0786DB","space":"exterior","status":"placed","as":"helstrom.J25SAWYSR36KYH5WSPGJSNMYZ9","cluster":"b39"}
+{"src":"Black Marsh North.esp:0786DA","space":"exterior","status":"dropped","cluster":"b39","why":"a collision volume of the source whose visible building (a stepped Xanmeer the boxes outline, z to 2500) is not among the source pieces: invisible steps standing in the air","by":"draft.drop"}
+{"src":"Black Marsh North.esp:0786DB","space":"exterior","status":"dropped","cluster":"b39","why":"a collision volume of the source whose visible building (a stepped Xanmeer the boxes outline, z to 2500) is not among the source pieces: invisible steps standing in the air","by":"draft.drop"}
 {"src":"Black Marsh North.esp:0786DC","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
-{"src":"Black Marsh North.esp:0786DD","space":"exterior","status":"placed","as":"helstrom.4RN34JGS3P3XPAQ052PF8RSP4V","cluster":"b39"}
+{"src":"Black Marsh North.esp:0786DD","space":"exterior","status":"dropped","cluster":"b39","why":"a collision volume of the source whose visible building (a stepped Xanmeer the boxes outline, z to 2500) is not among the source pieces: invisible steps standing in the air","by":"draft.drop"}
 {"src":"Black Marsh North.esp:0786DE","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:0786DF","space":"exterior","status":"dropped","cluster":"s01","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:0786E0","space":"exterior","status":"dropped","cluster":"s01","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
@@ -323,9 +323,9 @@
 {"src":"Black Marsh North.esp:0786F9","space":"exterior","status":"dropped","cluster":"s01","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:0786FA","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:0786FB","space":"exterior","status":"dropped","cluster":"s01","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
-{"src":"Black Marsh North.esp:0786FC","space":"exterior","status":"placed","as":"helstrom.7RYC225E3BQRWY41N3JYE45ACD","cluster":"b39"}
+{"src":"Black Marsh North.esp:0786FC","space":"exterior","status":"dropped","cluster":"b39","why":"a collision volume of the source whose visible building (a stepped Xanmeer the boxes outline, z to 2500) is not among the source pieces: invisible steps standing in the air","by":"draft.drop"}
 {"src":"Black Marsh North.esp:0786FE","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
-{"src":"Black Marsh North.esp:0786FF","space":"exterior","status":"placed","as":"helstrom.C1HJJZ1FEWV0M1Y371CMF0SVG8","cluster":"b39"}
+{"src":"Black Marsh North.esp:0786FF","space":"exterior","status":"dropped","cluster":"b39","why":"a collision volume of the source whose visible building (a stepped Xanmeer the boxes outline, z to 2500) is not among the source pieces: invisible steps standing in the air","by":"draft.drop"}
 {"src":"Black Marsh North.esp:078700","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:078701","space":"exterior","status":"dropped","cluster":"s01","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:078702","space":"exterior","status":"dropped","cluster":"s01","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
@@ -335,7 +335,7 @@
 {"src":"Black Marsh North.esp:078706","space":"exterior","status":"dropped","cluster":"s01","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:078708","space":"exterior","status":"dropped","cluster":"s01","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:078709","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
-{"src":"Black Marsh North.esp:07870A","space":"exterior","status":"placed","as":"helstrom.E3WQG24A7E1GHGZXCN7YD0AKCB","cluster":"b39"}
+{"src":"Black Marsh North.esp:07870A","space":"exterior","status":"dropped","cluster":"b39","why":"a collision volume of the source whose visible building (a stepped Xanmeer the boxes outline, z to 2500) is not among the source pieces: invisible steps standing in the air","by":"draft.drop"}
 {"src":"Black Marsh North.esp:07870B","space":"exterior","status":"dropped","cluster":"s01","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:07870C","space":"exterior","status":"dropped","cluster":"s01","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:07870D","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
@@ -415,18 +415,18 @@
 {"src":"Black Marsh North.esp:0787BA","space":"exterior","status":"dropped","cluster":"s08","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:0787BB","space":"exterior","status":"dropped","cluster":"s09","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:0787BC","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
-{"src":"Black Marsh North.esp:0787BD","space":"exterior","status":"placed","as":"helstrom.FA8ZXXR1CRP7BR6CYXFQQH77QK","cluster":"b39"}
-{"src":"Black Marsh North.esp:0787BE","space":"exterior","status":"placed","as":"helstrom.R4M9NA7BNW0S9TAPAGNPE6PD1Z","cluster":"b39"}
-{"src":"Black Marsh North.esp:0787BF","space":"exterior","status":"placed","as":"helstrom.WSWZS8N9BMNGEGDT3M5F3Y9KD7","cluster":"b39"}
+{"src":"Black Marsh North.esp:0787BD","space":"exterior","status":"dropped","cluster":"b39","why":"a collision volume of the source whose visible building (a stepped Xanmeer the boxes outline, z to 2500) is not among the source pieces: invisible steps standing in the air","by":"draft.drop"}
+{"src":"Black Marsh North.esp:0787BE","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0787BF","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:0787C0","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
-{"src":"Black Marsh North.esp:0787C1","space":"exterior","status":"placed","as":"helstrom.79RH644GWWE9DSFF1CFC62H7DR","cluster":"b39"}
-{"src":"Black Marsh North.esp:0787C2","space":"exterior","status":"placed","as":"helstrom.17PQ2Z26TC9X5ADVD44P5JRND4","cluster":"b39"}
-{"src":"Black Marsh North.esp:0787C3","space":"exterior","status":"placed","as":"helstrom.G1KNHW8T8GBKVY3MD12W401PPH","cluster":"b39"}
-{"src":"Black Marsh North.esp:0787C4","space":"exterior","status":"placed","as":"helstrom.KFTV72H48AZHHWZ8G00Y0X4AFZ","cluster":"b39"}
-{"src":"Black Marsh North.esp:0787C5","space":"exterior","status":"placed","as":"helstrom.F09DT9VK941ST6PXJ7EKPDT51N","cluster":"b39"}
+{"src":"Black Marsh North.esp:0787C1","space":"exterior","status":"dropped","cluster":"b39","why":"a collision volume of the source whose visible building (a stepped Xanmeer the boxes outline, z to 2500) is not among the source pieces: invisible steps standing in the air","by":"draft.drop"}
+{"src":"Black Marsh North.esp:0787C2","space":"exterior","status":"dropped","cluster":"b39","why":"a collision volume of the source whose visible building (a stepped Xanmeer the boxes outline, z to 2500) is not among the source pieces: invisible steps standing in the air","by":"draft.drop"}
+{"src":"Black Marsh North.esp:0787C3","space":"exterior","status":"dropped","cluster":"b39","why":"a collision volume of the source whose visible building (a stepped Xanmeer the boxes outline, z to 2500) is not among the source pieces: invisible steps standing in the air","by":"draft.drop"}
+{"src":"Black Marsh North.esp:0787C4","space":"exterior","status":"dropped","cluster":"b39","why":"a collision volume of the source whose visible building (a stepped Xanmeer the boxes outline, z to 2500) is not among the source pieces: invisible steps standing in the air","by":"draft.drop"}
+{"src":"Black Marsh North.esp:0787C5","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:0787C8","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
-{"src":"Black Marsh North.esp:0787C9","space":"exterior","status":"placed","as":"helstrom.M03V132X0XJMK813S8C7RB3P7F","cluster":"b39"}
-{"src":"Black Marsh North.esp:0787CA","space":"exterior","status":"placed","as":"helstrom.4DARDM5J0CHESRV1NYR0KYHATW","cluster":"b39"}
+{"src":"Black Marsh North.esp:0787C9","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0787CA","space":"exterior","status":"dropped","cluster":"b39","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:0787CE","space":"exterior","status":"placed","as":"helstrom.0VGPDKZBWXG9E0YB9JKZWHGSNY","cluster":"b39"}
 {"src":"Black Marsh North.esp:0787D0","space":"exterior","status":"placed","as":"helstrom.EF00QAA48NH6K7EVKTGKF8EDAT","cluster":"b39"}
 {"src":"Black Marsh North.esp:0787D1","space":"exterior","status":"placed","as":"helstrom.SQT616ZCMRDV4EGQ3A7DQ6SBQG","cluster":"b39"}
@@ -621,18 +621,18 @@
 {"src":"Black Marsh.esm:1CE906","space":"exterior","status":"placed","as":"helstrom.CSC3NFXP3HAVHZ2ZA16D2RS0XT","cluster":"b18"}
 {"src":"Black Marsh.esm:1CE907","space":"exterior","status":"adapted","as":"helstrom.4SCDT2PHR2XAN65B5BHQSJ296K","cluster":"b19"}
 {"src":"Black Marsh.esm:1CE908","space":"exterior","status":"adapted","as":"helstrom.SHQY0QFQCCXXGVY6Q8GWVH81C6","cluster":"b19"}
-{"src":"Black Marsh.esm:1CE90A","space":"exterior","status":"adapted","as":"helstrom.Y3VSTP911EJGN8VAEFEP6W00N9","cluster":"b20"}
-{"src":"Black Marsh.esm:1CE90B","space":"exterior","status":"adapted","as":"helstrom.HS6ZB27NFN09EAH45MWWB9DG2W","cluster":"b20"}
-{"src":"Black Marsh.esm:1CE90C","space":"exterior","status":"adapted","as":"helstrom.9JTER9209AWC58P19NCP6H9TYQ","cluster":"b20"}
-{"src":"Black Marsh.esm:1CE90D","space":"exterior","status":"adapted","as":"helstrom.2QWQMV3F0CQYRJR7E4W0RCRFBS","cluster":"b20"}
-{"src":"Black Marsh.esm:1CE90E","space":"exterior","status":"adapted","as":"helstrom.SVRGXFB5P7H3010J83N6XWQ07D","cluster":"b20"}
-{"src":"Black Marsh.esm:1CE90F","space":"exterior","status":"adapted","as":"helstrom.VRZSAZA8NW5G0NZ869AVK0TVZH","cluster":"b20"}
-{"src":"Black Marsh.esm:1CE910","space":"exterior","status":"adapted","as":"helstrom.66DKZZ48ST4WQ4BRNGRM5S8YR3","cluster":"b20"}
-{"src":"Black Marsh.esm:1CE911","space":"exterior","status":"adapted","as":"helstrom.78YKM4VKBZMN97C6VD351KBZE4","cluster":"b20"}
-{"src":"Black Marsh.esm:1CE912","space":"exterior","status":"adapted","as":"helstrom.6Q2QXBYF7E2GR57FWE7D5RZVX0","cluster":"b20"}
-{"src":"Black Marsh.esm:1CE913","space":"exterior","status":"adapted","as":"helstrom.74S2S4SAGHRTZ7CV47FBDM1ZJY","cluster":"b20"}
-{"src":"Black Marsh.esm:1CE914","space":"exterior","status":"adapted","as":"helstrom.MS8S0XAWZPVFNWRQ7SDYKFX1JQ","cluster":"b20"}
-{"src":"Black Marsh.esm:1CE915","space":"exterior","status":"adapted","as":"helstrom.7QA8FHZTC9C3TNDZPF0149T52X","cluster":"b20"}
+{"src":"Black Marsh.esm:1CE90A","space":"exterior","status":"dropped","cluster":"b20","why":"a Dwemer stone road: the record's city has no stone; rafts and plank walks thread the districts","by":"draft.drop"}
+{"src":"Black Marsh.esm:1CE90B","space":"exterior","status":"dropped","cluster":"b20","why":"a Dwemer stone road: the record's city has no stone; rafts and plank walks thread the districts","by":"draft.drop"}
+{"src":"Black Marsh.esm:1CE90C","space":"exterior","status":"dropped","cluster":"b20","why":"a Dwemer stone road: the record's city has no stone; rafts and plank walks thread the districts","by":"draft.drop"}
+{"src":"Black Marsh.esm:1CE90D","space":"exterior","status":"dropped","cluster":"b20","why":"a Dwemer stone road: the record's city has no stone; rafts and plank walks thread the districts","by":"draft.drop"}
+{"src":"Black Marsh.esm:1CE90E","space":"exterior","status":"dropped","cluster":"b20","why":"a Dwemer stone road: the record's city has no stone; rafts and plank walks thread the districts","by":"draft.drop"}
+{"src":"Black Marsh.esm:1CE90F","space":"exterior","status":"dropped","cluster":"b20","why":"a Dwemer stone road: the record's city has no stone; rafts and plank walks thread the districts","by":"draft.drop"}
+{"src":"Black Marsh.esm:1CE910","space":"exterior","status":"dropped","cluster":"b20","why":"a Dwemer stone road: the record's city has no stone; rafts and plank walks thread the districts","by":"draft.drop"}
+{"src":"Black Marsh.esm:1CE911","space":"exterior","status":"dropped","cluster":"b20","why":"a Dwemer stone road: the record's city has no stone; rafts and plank walks thread the districts","by":"draft.drop"}
+{"src":"Black Marsh.esm:1CE912","space":"exterior","status":"dropped","cluster":"b20","why":"a Dwemer stone road: the record's city has no stone; rafts and plank walks thread the districts","by":"draft.drop"}
+{"src":"Black Marsh.esm:1CE913","space":"exterior","status":"dropped","cluster":"b20","why":"a Dwemer stone road: the record's city has no stone; rafts and plank walks thread the districts","by":"draft.drop"}
+{"src":"Black Marsh.esm:1CE914","space":"exterior","status":"dropped","cluster":"b20","why":"a Dwemer stone road: the record's city has no stone; rafts and plank walks thread the districts","by":"draft.drop"}
+{"src":"Black Marsh.esm:1CE915","space":"exterior","status":"dropped","cluster":"b20","why":"a Dwemer stone road: the record's city has no stone; rafts and plank walks thread the districts","by":"draft.drop"}
 {"src":"Black Marsh.esm:1CE91A","space":"exterior","status":"adapted","as":"helstrom.13ZVWASK9327DGZHGC7YZGWZE5","cluster":"b21"}
 {"src":"Black Marsh.esm:1CE91B","space":"exterior","status":"adapted","as":"helstrom.VR035H80KMN9PWAQ2EPPR70WM2","cluster":"b21"}
 {"src":"Black Marsh.esm:1CE91C","space":"exterior","status":"adapted","as":"helstrom.EJGWK7X57T7GH6EHKBGGH39RT5","cluster":"w06"}
@@ -663,16 +663,16 @@
 {"src":"Black Marsh.esm:1CE938","space":"exterior","status":"adapted","as":"helstrom.7EZB673NHQKFRBPQSREJ2SGA3Y","cluster":"b20"}
 {"src":"Black Marsh.esm:1CE939","space":"exterior","status":"adapted","as":"helstrom.RZDRBRKEP5DJNENSZBMS150Y4A","cluster":"s19"}
 {"src":"Black Marsh.esm:1CE93C","space":"exterior","status":"adapted","as":"helstrom.AM714NNPJMJJEXHBB2V29A6T7S","cluster":"b25"}
-{"src":"Black Marsh.esm:1CE93E","space":"exterior","status":"adapted","as":"helstrom.WM9340DTMM0393GKPKNHY73BSF","cluster":"b26"}
-{"src":"Black Marsh.esm:1CE93F","space":"exterior","status":"adapted","as":"helstrom.JSR4WGJJHJMWBJ4A04VYHZGD0A","cluster":"b27"}
+{"src":"Black Marsh.esm:1CE93E","space":"exterior","status":"dropped","cluster":"b26","why":"a Dwemer ruin piece: the record's city has no stone and no ruin","by":"draft.drop"}
+{"src":"Black Marsh.esm:1CE93F","space":"exterior","status":"dropped","cluster":"b27","why":"a Dwemer ruin piece: the record's city has no stone and no ruin","by":"draft.drop"}
 {"src":"Black Marsh.esm:1CE941","space":"exterior","status":"dropped","cluster":"w48","why":"no water within 384 units of its fitted spot; our water and land are kept as they are"}
-{"src":"Black Marsh.esm:1CE942","space":"exterior","status":"adapted","as":"helstrom.EF98CMFYNZBEFNJND7NFDG4EH0","cluster":"b28"}
-{"src":"Black Marsh.esm:1CE943","space":"exterior","status":"placed","as":"helstrom.S7YGRW192YXS1Y37NRYZWRQMZP","cluster":"s20"}
+{"src":"Black Marsh.esm:1CE942","space":"exterior","status":"dropped","cluster":"b28","why":"a Dwemer ruin piece: the record's city has no stone and no ruin","by":"draft.drop"}
+{"src":"Black Marsh.esm:1CE943","space":"exterior","status":"dropped","cluster":"s20","why":"a Dwemer ruin piece: the record's city has no stone and no ruin","by":"draft.drop"}
 {"src":"Black Marsh.esm:1CE945","space":"exterior","status":"dropped","why":"stood in Black Marsh.esm:1D9114 once the clusters were fitted, with no step of either cluster clear"}
 {"src":"Black Marsh.esm:1CE948","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1CE949","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:1CE94A","space":"exterior","status":"adapted","as":"helstrom.67Q7CCRHB8GQWDEKT7GTF1FRXK","cluster":"s21"}
-{"src":"Black Marsh.esm:1CE94C","space":"exterior","status":"placed","as":"helstrom.AZ483VS23058X5884JK3Q0WQYB","cluster":"b29"}
+{"src":"Black Marsh.esm:1CE94A","space":"exterior","status":"dropped","cluster":"s21","why":"a Dwemer ruin piece: the record's city has no stone and no ruin","by":"draft.drop"}
+{"src":"Black Marsh.esm:1CE94C","space":"exterior","status":"dropped","cluster":"b29","why":"a Dwemer ruin piece: the record's city has no stone and no ruin","by":"draft.drop"}
 {"src":"Black Marsh.esm:1CE94E","space":"exterior","status":"adapted","as":"helstrom.A1P5S3NQC6FAYJHMJHMTE36NYX","cluster":"b17"}
 {"src":"Black Marsh.esm:1CE953","space":"exterior","status":"adapted","as":"helstrom.ACNE93P88GRA8MC2A8WZT9JMDE","cluster":"b21"}
 {"src":"Black Marsh.esm:1CE954","space":"exterior","status":"adapted","as":"helstrom.1T5C9P4J1KD4QQBBR6SKH1T0CP","cluster":"b20"}
@@ -2764,24 +2764,24 @@
 {"src":"Black Marsh.esm:1E4513","space":"exterior","status":"adapted","as":"helstrom.9KG76Q6899M7SF5KZ4AMJH3CX2","cluster":"s72"}
 {"src":"Black Marsh.esm:1E4517","space":"exterior","status":"adapted","as":"helstrom.J766QAX99PHH9Z455QHB847E3P","cluster":"s73"}
 {"src":"Black Marsh.esm:1E4518","space":"exterior","status":"placed","as":"helstrom.YVKA7WG70F1CBD2QW7KGV9MRSE","cluster":"b23"}
-{"src":"Black Marsh.esm:1E4519","space":"exterior","status":"adapted","as":"helstrom.6N14Y9HF7A1HAGEDA39FD3974N","cluster":"s55"}
+{"src":"Black Marsh.esm:1E4519","space":"exterior","status":"dropped","cluster":"s55","why":"a bench the great city tree now stands over","by":"draft.drop"}
 {"src":"Black Marsh.esm:1E451A","space":"exterior","status":"adapted","as":"helstrom.3CJ1QZ2HFR3JC03GSRWGX282JS","cluster":"b20"}
 {"src":"Black Marsh.esm:1E451B","space":"exterior","status":"adapted","as":"helstrom.RWEADJCD2JX7NPAJD5EEZ9TZBB","cluster":"b20"}
 {"src":"Black Marsh.esm:1E451C","space":"exterior","status":"placed","as":"helstrom.5TAPCS8F8JXXNB02VSYTC0ZC60","cluster":"s74"}
 {"src":"Black Marsh.esm:1E451D","space":"exterior","status":"placed","as":"helstrom.9NTXWW963EX5RPJY767N8GRERY","cluster":"s75"}
 {"src":"Black Marsh.esm:1E451E","space":"exterior","status":"adapted","as":"helstrom.TK9Y37HM9GKHNZ4RAWRFQZ86F4","cluster":"b30"}
-{"src":"Black Marsh.esm:1E97F3","space":"exterior","status":"adapted","as":"helstrom.S4SMSZ9W79H2E281RCHQQVKXC7","cluster":"b17"}
-{"src":"Black Marsh.esm:1E97F4","space":"exterior","status":"adapted","as":"helstrom.2KBYMP2N4ESYVRH3FBQGYWGCBG","cluster":"b17"}
-{"src":"Black Marsh.esm:1E97F5","space":"exterior","status":"adapted","as":"helstrom.R6HF0W0M57D2DV1TRAPCD02KYR","cluster":"b17"}
-{"src":"Black Marsh.esm:1E97F6","space":"exterior","status":"adapted","as":"helstrom.XVY708HFWP5ES3JDYE1Q53XG8B","cluster":"b17"}
-{"src":"Black Marsh.esm:1E97F7","space":"exterior","status":"adapted","as":"helstrom.ZHME14AW7VB45M14HSR5ZNK7PG","cluster":"b17"}
-{"src":"Black Marsh.esm:1E97F8","space":"exterior","status":"adapted","as":"helstrom.AW33E6QRNG9TKB73KVTE82XQE3","cluster":"b17"}
-{"src":"Black Marsh.esm:1E97F9","space":"exterior","status":"adapted","as":"helstrom.SQVQZ360098S770D59MPMWG3MZ","cluster":"b17"}
-{"src":"Black Marsh.esm:1E97FA","space":"exterior","status":"adapted","as":"helstrom.FZW5PENQSGCM7659730YX0JFB5","cluster":"b17"}
-{"src":"Black Marsh.esm:1E97FB","space":"exterior","status":"adapted","as":"helstrom.FGC3DTCKR4HBYY5J5PWVJ4HCDR","cluster":"b17"}
-{"src":"Black Marsh.esm:1E97FC","space":"exterior","status":"adapted","as":"helstrom.3JWHVPT0F8NMSTCF43GZYJD93J","cluster":"b17"}
-{"src":"Black Marsh.esm:1E97FD","space":"exterior","status":"adapted","as":"helstrom.WHHXPVNF1HZCRTB4T31GTSBRH0","cluster":"b17"}
-{"src":"Black Marsh.esm:1E97FE","space":"exterior","status":"adapted","as":"helstrom.HAXXK94834M8MCPPMJJ4XS8Q4K","cluster":"b17"}
+{"src":"Black Marsh.esm:1E97F3","space":"exterior","status":"dropped","cluster":"b17","why":"the source's castle wall (1sovcastlewall): the record's city has no outward wall, the marsh is the wall","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E97F4","space":"exterior","status":"dropped","cluster":"b17","why":"the source's castle wall (1sovcastlewall): the record's city has no outward wall, the marsh is the wall","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E97F5","space":"exterior","status":"dropped","cluster":"b17","why":"the source's castle wall (1sovcastlewall): the record's city has no outward wall, the marsh is the wall","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E97F6","space":"exterior","status":"dropped","cluster":"b17","why":"the source's castle wall (1sovcastlewall): the record's city has no outward wall, the marsh is the wall","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E97F7","space":"exterior","status":"dropped","cluster":"b17","why":"the source's castle wall (1sovcastlewall): the record's city has no outward wall, the marsh is the wall","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E97F8","space":"exterior","status":"dropped","cluster":"b17","why":"the source's castle wall (1sovcastlewall): the record's city has no outward wall, the marsh is the wall","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E97F9","space":"exterior","status":"dropped","cluster":"b17","why":"the source's castle wall (1sovcastlewall): the record's city has no outward wall, the marsh is the wall","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E97FA","space":"exterior","status":"dropped","cluster":"b17","why":"the source's castle wall (1sovcastlewall): the record's city has no outward wall, the marsh is the wall","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E97FB","space":"exterior","status":"dropped","cluster":"b17","why":"the source's castle wall (1sovcastlewall): the record's city has no outward wall, the marsh is the wall","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E97FC","space":"exterior","status":"dropped","cluster":"b17","why":"the source's castle wall (1sovcastlewall): the record's city has no outward wall, the marsh is the wall","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E97FD","space":"exterior","status":"dropped","cluster":"b17","why":"the source's castle wall (1sovcastlewall): the record's city has no outward wall, the marsh is the wall","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E97FE","space":"exterior","status":"dropped","cluster":"b17","why":"the source's castle wall (1sovcastlewall): the record's city has no outward wall, the marsh is the wall","by":"draft.drop"}
 {"src":"Black Marsh.esm:1E97FF","space":"exterior","status":"adapted","as":"helstrom.WPEBJB8C83DNVVJNV0Y83PWBMG","cluster":"b17"}
 {"src":"Black Marsh.esm:1E9800","space":"exterior","status":"adapted","as":"helstrom.NB8B6QRMT08HQF9A7VG0AX9BDW","cluster":"b17"}
 {"src":"Black Marsh.esm:1E9801","space":"exterior","status":"adapted","as":"helstrom.JQ6795FJP6CEVP6NYS37NWRVZ7","cluster":"b17"}
@@ -2858,29 +2858,29 @@
 {"src":"Black Marsh.esm:1E9849","space":"exterior","status":"adapted","as":"helstrom.N7628X6FR1M1MBSSXE3EKTX9NM","cluster":"b11"}
 {"src":"Black Marsh.esm:1E984A","space":"exterior","status":"adapted","as":"helstrom.1319VFE9BF4WR310HSYB01MHWW","cluster":"b11"}
 {"src":"Black Marsh.esm:1E984B","space":"exterior","status":"adapted","as":"helstrom.AR58V6PWV2Z6DAZVEGY8HR5B84","cluster":"b11"}
-{"src":"Black Marsh.esm:1E984D","space":"exterior","status":"adapted","as":"helstrom.BY3WMPSR819NWF8Q8FXT5XBGQC","cluster":"b17"}
-{"src":"Black Marsh.esm:1E984E","space":"exterior","status":"adapted","as":"helstrom.308WZ7PE4B9PV1B4AQ5SW8CGM7","cluster":"b17"}
-{"src":"Black Marsh.esm:1E984F","space":"exterior","status":"adapted","as":"helstrom.RVKACKPX7C90WYJHBD9M8XYNKX","cluster":"b17"}
-{"src":"Black Marsh.esm:1E9850","space":"exterior","status":"adapted","as":"helstrom.QYGKRDX7S2HRJKEF26RZR3J6N1","cluster":"b17"}
-{"src":"Black Marsh.esm:1E9851","space":"exterior","status":"adapted","as":"helstrom.85TW4X3P997R7XRJ1ZB4VF7SDF","cluster":"b17"}
-{"src":"Black Marsh.esm:1E9852","space":"exterior","status":"adapted","as":"helstrom.JX23Z3H9MTHRQZ5E2NHNBN6SVC","cluster":"b17"}
-{"src":"Black Marsh.esm:1E9853","space":"exterior","status":"adapted","as":"helstrom.9SFP6CNCF7MGVQZ34GNRJZ4GHJ","cluster":"b17"}
-{"src":"Black Marsh.esm:1E9854","space":"exterior","status":"adapted","as":"helstrom.GY75G13AZP44NWQARZV3JEXRV3","cluster":"b17"}
-{"src":"Black Marsh.esm:1E9856","space":"exterior","status":"adapted","as":"helstrom.KQKA4F4W0HW2P233NCE1FA13PG","cluster":"b17"}
-{"src":"Black Marsh.esm:1E9857","space":"exterior","status":"adapted","as":"helstrom.0QH5G6V31JH4HWB67MPNK2W6N8","cluster":"b17"}
-{"src":"Black Marsh.esm:1E9858","space":"exterior","status":"adapted","as":"helstrom.B5D59CSX8GEAV30Y99H95TZBDY","cluster":"b17"}
-{"src":"Black Marsh.esm:1E9859","space":"exterior","status":"adapted","as":"helstrom.B0SD0K51EMCEMKB0EBKD5RGDV5","cluster":"b17"}
-{"src":"Black Marsh.esm:1E985A","space":"exterior","status":"adapted","as":"helstrom.4G5ZQ1TJPV00132TXNA94H5XRR","cluster":"b17"}
-{"src":"Black Marsh.esm:1E985B","space":"exterior","status":"adapted","as":"helstrom.R6CXZCV3KYC2JDJQG17ZNN8RBQ","cluster":"b17"}
-{"src":"Black Marsh.esm:1E985C","space":"exterior","status":"adapted","as":"helstrom.RZV8RHR5TW539ZQKBQHM1JTB3Q","cluster":"b17"}
-{"src":"Black Marsh.esm:1E985D","space":"exterior","status":"adapted","as":"helstrom.HH8KCHD8QAFS509MJYP0HH07A0","cluster":"b17"}
-{"src":"Black Marsh.esm:1E985E","space":"exterior","status":"adapted","as":"helstrom.CGBP4VPH02HYHE27Y9ACG6TZG3","cluster":"b17"}
+{"src":"Black Marsh.esm:1E984D","space":"exterior","status":"dropped","cluster":"b17","why":"a stockade pike or torture pole: no outward wall and no war camp in a friendly city","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E984E","space":"exterior","status":"dropped","cluster":"b17","why":"a stockade pike or torture pole: no outward wall and no war camp in a friendly city","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E984F","space":"exterior","status":"dropped","cluster":"b17","why":"a stockade pike or torture pole: no outward wall and no war camp in a friendly city","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E9850","space":"exterior","status":"dropped","cluster":"b17","why":"a stockade pike or torture pole: no outward wall and no war camp in a friendly city","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E9851","space":"exterior","status":"dropped","cluster":"b17","why":"a stockade pike or torture pole: no outward wall and no war camp in a friendly city","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E9852","space":"exterior","status":"dropped","cluster":"b17","why":"a stockade pike or torture pole: no outward wall and no war camp in a friendly city","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E9853","space":"exterior","status":"dropped","cluster":"b17","why":"a stockade pike or torture pole: no outward wall and no war camp in a friendly city","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E9854","space":"exterior","status":"dropped","cluster":"b17","why":"a stockade pike or torture pole: no outward wall and no war camp in a friendly city","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E9856","space":"exterior","status":"dropped","cluster":"b17","why":"a stockade pike or torture pole: no outward wall and no war camp in a friendly city","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E9857","space":"exterior","status":"dropped","cluster":"b17","why":"a stockade pike or torture pole: no outward wall and no war camp in a friendly city","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E9858","space":"exterior","status":"dropped","cluster":"b17","why":"a stockade pike or torture pole: no outward wall and no war camp in a friendly city","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E9859","space":"exterior","status":"dropped","cluster":"b17","why":"a stockade pike or torture pole: no outward wall and no war camp in a friendly city","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E985A","space":"exterior","status":"dropped","cluster":"b17","why":"a stockade pike or torture pole: no outward wall and no war camp in a friendly city","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E985B","space":"exterior","status":"dropped","cluster":"b17","why":"a stockade pike or torture pole: no outward wall and no war camp in a friendly city","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E985C","space":"exterior","status":"dropped","cluster":"b17","why":"a stockade pike or torture pole: no outward wall and no war camp in a friendly city","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E985D","space":"exterior","status":"dropped","cluster":"b17","why":"a stockade pike or torture pole: no outward wall and no war camp in a friendly city","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E985E","space":"exterior","status":"dropped","cluster":"b17","why":"a stockade pike or torture pole: no outward wall and no war camp in a friendly city","by":"draft.drop"}
 {"src":"Black Marsh.esm:1E985F","space":"exterior","status":"dropped","why":"stood in Black Marsh.esm:1D911A once the clusters were fitted, with no step of either cluster clear"}
 {"src":"Black Marsh.esm:1E9861","space":"exterior","status":"dropped","why":"stood in Black Marsh.esm:1D911A once the clusters were fitted, with no step of either cluster clear"}
 {"src":"Black Marsh.esm:1E9862","space":"exterior","status":"dropped","cluster":"b17","why":"no dry land within 384 units of its fitted spot; our water and land are kept as they are"}
-{"src":"Black Marsh.esm:1E9866","space":"exterior","status":"adapted","as":"helstrom.WZWQFPV4QA0KQ83E0X89T6RQNZ","cluster":"b17"}
-{"src":"Black Marsh.esm:1E9867","space":"exterior","status":"adapted","as":"helstrom.8FGKB607BJH65TBFT6WC45F4YT","cluster":"b17"}
-{"src":"Black Marsh.esm:1E9868","space":"exterior","status":"adapted","as":"helstrom.66C0Y15W9M0THHVWK15CNW0QSY","cluster":"b17"}
+{"src":"Black Marsh.esm:1E9866","space":"exterior","status":"dropped","cluster":"b17","why":"a stockade pike or torture pole: no outward wall and no war camp in a friendly city","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E9867","space":"exterior","status":"dropped","cluster":"b17","why":"a stockade pike or torture pole: no outward wall and no war camp in a friendly city","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E9868","space":"exterior","status":"dropped","cluster":"b17","why":"a Skyrim Imperial grave or war table: nothing of the record","by":"draft.drop"}
 {"src":"Black Marsh.esm:1E9869","space":"exterior","status":"adapted","as":"helstrom.0N78W9ZG0VVTSXGWXRVB6GBPHW","cluster":"b17"}
 {"src":"Black Marsh.esm:1E986A","space":"exterior","status":"adapted","as":"helstrom.PEHNCB9DYNXX1QVDWJE0GEF57C","cluster":"b17"}
 {"src":"Black Marsh.esm:1E986B","space":"exterior","status":"adapted","as":"helstrom.E2NP74K0NF59BFVQF05H2AG9HF","cluster":"b17"}
@@ -2892,39 +2892,39 @@
 {"src":"Black Marsh.esm:1E9876","space":"exterior","status":"adapted","as":"helstrom.0KGEFA827WATCQ3MCQNY0123F8","cluster":"b17"}
 {"src":"Black Marsh.esm:1E987A","space":"exterior","status":"adapted","as":"helstrom.GFAG1C5Q43PACH8BJ9N2V165K8","cluster":"b17"}
 {"src":"Black Marsh.esm:1E987C","space":"exterior","status":"adapted","as":"helstrom.E2RCD60P78S7P8HNZ8FD8BFW1E","cluster":"b17"}
-{"src":"Black Marsh.esm:1E9880","space":"exterior","status":"placed","as":"helstrom.N7SJ177R2KEX3VSKRSS2QQMT55","cluster":"b39"}
-{"src":"Black Marsh.esm:1E9882","space":"exterior","status":"placed","as":"helstrom.CNVRBQZJQFPC9R2Q1D9NED7P2B","cluster":"b39"}
-{"src":"Black Marsh.esm:1E9883","space":"exterior","status":"placed","as":"helstrom.D11BRET05YF8X7E3WMFZ3903VZ","cluster":"b39"}
-{"src":"Black Marsh.esm:1E9884","space":"exterior","status":"placed","as":"helstrom.WS70J89G53QM5S83DD4M8PP0NP","cluster":"b39"}
-{"src":"Black Marsh.esm:1E9885","space":"exterior","status":"placed","as":"helstrom.4VGFSRS22FYCF1F1RFXB2C3SJ9","cluster":"b39"}
-{"src":"Black Marsh.esm:1E9886","space":"exterior","status":"placed","as":"helstrom.B701YEPNPEWYR3MX6CMAZ4VCZD","cluster":"b39"}
-{"src":"Black Marsh.esm:1E9887","space":"exterior","status":"placed","as":"helstrom.1KSSGTHKS47VCAGA2SQPEHBD5Z","cluster":"b39"}
-{"src":"Black Marsh.esm:1E9888","space":"exterior","status":"placed","as":"helstrom.Z9605WJ4CMESSCSNF1GB0MMEYZ","cluster":"b39"}
-{"src":"Black Marsh.esm:1E9889","space":"exterior","status":"placed","as":"helstrom.ZHQ3V5AKVP8GS0ZTCQFRJXVJMX","cluster":"b39"}
-{"src":"Black Marsh.esm:1E988A","space":"exterior","status":"placed","as":"helstrom.T0686D050HT6A81G4ZG42DPJ2Z","cluster":"b39"}
-{"src":"Black Marsh.esm:1E988B","space":"exterior","status":"placed","as":"helstrom.K2J9B93MVZB66T2F2B8FSGHV9R","cluster":"b39"}
-{"src":"Black Marsh.esm:1E988C","space":"exterior","status":"placed","as":"helstrom.NA30DQS10P0M75XT1ZPE53E2NQ","cluster":"b39"}
-{"src":"Black Marsh.esm:1E988D","space":"exterior","status":"placed","as":"helstrom.PBJMNKA7874QKTD7PPKS11W41A","cluster":"b39"}
-{"src":"Black Marsh.esm:1E988E","space":"exterior","status":"placed","as":"helstrom.BT2JBZ13SBN0D34VCQRYZZWM05","cluster":"b39"}
-{"src":"Black Marsh.esm:1E988F","space":"exterior","status":"placed","as":"helstrom.T96BWCC8YHJCV6BDZY0VYY1VDH","cluster":"b39"}
-{"src":"Black Marsh.esm:1E9890","space":"exterior","status":"placed","as":"helstrom.367QRQ0Y16291K1A3B18K7BB9Z","cluster":"b39"}
-{"src":"Black Marsh.esm:1E9891","space":"exterior","status":"placed","as":"helstrom.30TEMXHVXZSBVSM3E7AQPPG17H","cluster":"b39"}
-{"src":"Black Marsh.esm:1E9892","space":"exterior","status":"placed","as":"helstrom.AYA125VS2ZYMCBXG01XBXF32YK","cluster":"b39"}
-{"src":"Black Marsh.esm:1E9893","space":"exterior","status":"placed","as":"helstrom.6A1VAZ6EGQWGJ0ZBQ4Y2FHFCGC","cluster":"b39"}
-{"src":"Black Marsh.esm:1E9894","space":"exterior","status":"placed","as":"helstrom.1BZQXB561ZXKVTF9BG70BQXNA1","cluster":"b39"}
-{"src":"Black Marsh.esm:1E9895","space":"exterior","status":"placed","as":"helstrom.XHEQKYP9P27A136PZ5V9QDZ2ZZ","cluster":"b39"}
-{"src":"Black Marsh.esm:1E9896","space":"exterior","status":"placed","as":"helstrom.ZW3A0QVS73HS85TPW29YD6TVW6","cluster":"b39"}
-{"src":"Black Marsh.esm:1E9897","space":"exterior","status":"placed","as":"helstrom.07J3Y1CK0NRGJ1QWNYXK9FHT9X","cluster":"b39"}
-{"src":"Black Marsh.esm:1E9898","space":"exterior","status":"placed","as":"helstrom.Z8XS8E195VJ62C1B2PJR31E11Z","cluster":"b39"}
+{"src":"Black Marsh.esm:1E9880","space":"exterior","status":"dropped","cluster":"b39","why":"stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E9882","space":"exterior","status":"dropped","cluster":"b39","why":"stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E9883","space":"exterior","status":"dropped","cluster":"b39","why":"stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E9884","space":"exterior","status":"dropped","cluster":"b39","why":"stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E9885","space":"exterior","status":"dropped","cluster":"b39","why":"stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E9886","space":"exterior","status":"dropped","cluster":"b39","why":"stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E9887","space":"exterior","status":"dropped","cluster":"b39","why":"stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E9888","space":"exterior","status":"dropped","cluster":"b39","why":"stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E9889","space":"exterior","status":"dropped","cluster":"b39","why":"stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E988A","space":"exterior","status":"dropped","cluster":"b39","why":"stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E988B","space":"exterior","status":"dropped","cluster":"b39","why":"stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E988C","space":"exterior","status":"dropped","cluster":"b39","why":"stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E988D","space":"exterior","status":"dropped","cluster":"b39","why":"stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E988E","space":"exterior","status":"dropped","cluster":"b39","why":"stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E988F","space":"exterior","status":"dropped","cluster":"b39","why":"stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E9890","space":"exterior","status":"dropped","cluster":"b39","why":"stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E9891","space":"exterior","status":"dropped","cluster":"b39","why":"stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E9892","space":"exterior","status":"dropped","cluster":"b39","why":"stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E9893","space":"exterior","status":"dropped","cluster":"b39","why":"stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E9894","space":"exterior","status":"dropped","cluster":"b39","why":"stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E9895","space":"exterior","status":"dropped","cluster":"b39","why":"stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E9896","space":"exterior","status":"dropped","cluster":"b39","why":"stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E9897","space":"exterior","status":"dropped","cluster":"b39","why":"stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E9898","space":"exterior","status":"dropped","cluster":"b39","why":"stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone","by":"draft.drop"}
 {"src":"Black Marsh.esm:1E9899","space":"exterior","status":"placed","as":"helstrom.AJXERBBANAT1DPZCQ0MD3HX8WX","cluster":"b39"}
-{"src":"Black Marsh.esm:1E989C","space":"exterior","status":"placed","as":"helstrom.NN3Y8KQKDSG9WH5SZMD3PBNYWP","cluster":"b39"}
-{"src":"Black Marsh.esm:1E989D","space":"exterior","status":"placed","as":"helstrom.TZRC6JMF4RXPTQVGME7T6Q6A8A","cluster":"b39"}
-{"src":"Black Marsh.esm:1E989E","space":"exterior","status":"placed","as":"helstrom.YDAX6JB8GZ4PGVKNW6DYAQJY23","cluster":"b39"}
-{"src":"Black Marsh.esm:1E989F","space":"exterior","status":"placed","as":"helstrom.X3PPWRK95B9S2R22DYYB7YPG5D","cluster":"b39"}
-{"src":"Black Marsh.esm:1E98A1","space":"exterior","status":"placed","as":"helstrom.PACSR7F0TYWDDMT24DBZKQC9CZ","cluster":"b39"}
-{"src":"Black Marsh.esm:1E98A2","space":"exterior","status":"placed","as":"helstrom.VZFVE3V93AA25ZA7DB51QJZR8P","cluster":"b39"}
-{"src":"Black Marsh.esm:1E98A3","space":"exterior","status":"placed","as":"helstrom.ADR1JYK0HZFFHA58RJHHNQW842","cluster":"b39"}
-{"src":"Black Marsh.esm:1E98A4","space":"exterior","status":"placed","as":"helstrom.2GHTSYG02S8ES49BYH1CS882B9","cluster":"b39"}
+{"src":"Black Marsh.esm:1E989C","space":"exterior","status":"dropped","cluster":"b39","why":"stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E989D","space":"exterior","status":"dropped","cluster":"b39","why":"stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E989E","space":"exterior","status":"dropped","cluster":"b39","why":"stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E989F","space":"exterior","status":"dropped","cluster":"b39","why":"stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E98A1","space":"exterior","status":"dropped","cluster":"b39","why":"stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E98A2","space":"exterior","status":"dropped","cluster":"b39","why":"stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E98A3","space":"exterior","status":"dropped","cluster":"b39","why":"stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E98A4","space":"exterior","status":"dropped","cluster":"b39","why":"stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone","by":"draft.drop"}
 {"src":"Black Marsh.esm:1EEB70","space":"exterior","status":"placed","as":"helstrom.BEYD4B38BPBT4FQSB7KS4W1SW4","cluster":"s77"}
 {"src":"Black Marsh.esm:1EEB71","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1EEB74","space":"exterior","status":"placed","as":"helstrom.JB65E1GWCX2WD3XB7BHQA549RT","cluster":"s77"}
@@ -3096,7 +3096,7 @@
 {"src":"Black Marsh.esm:1F01D0","space":"exterior","status":"placed","as":"helstrom.X6NWETA4C51MF3C1QVFTS57XSE","cluster":"w15"}
 {"src":"Black Marsh.esm:1F01DB","space":"exterior","status":"placed","as":"helstrom.9Y4F4CAJJDBYYSCDG9RMTB7VPS","cluster":"w15"}
 {"src":"Black Marsh.esm:1F01DE","space":"exterior","status":"placed","as":"helstrom.W0ATM2P5MQDT40C4TA8M8BQVQM","cluster":"s28"}
-{"src":"Black Marsh.esm:1F01E1","space":"exterior","status":"placed","as":"helstrom.5XZPQA8HFP86304JG5VSRJGNJS","cluster":"w15"}
+{"src":"Black Marsh.esm:1F01E1","space":"exterior","status":"dropped","cluster":"w15","why":"a trap: Helstrom is friendly, its danger is social, not traps in its streets","by":"draft.drop"}
 {"src":"Black Marsh.esm:1F01E2","space":"exterior","status":"placed","as":"helstrom.YPD4PVEPHGSGNZN6XKER71HB3A","cluster":"s83"}
 {"src":"Black Marsh.esm:1F01E4","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1F01E5","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
@@ -3111,7 +3111,7 @@
 {"src":"Black Marsh.esm:1F01FB","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1F01FD","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1F01FF","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:1F0202","space":"exterior","status":"placed","as":"helstrom.1M78FRB6HAC059G48Q5AR6QH87","cluster":"w15"}
+{"src":"Black Marsh.esm:1F0202","space":"exterior","status":"dropped","cluster":"w15","why":"a trap: Helstrom is friendly, its danger is social, not traps in its streets","by":"draft.drop"}
 {"src":"Black Marsh.esm:1F0203","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1F0205","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1F0206","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
@@ -3213,37 +3213,37 @@
 {"src":"Black Marsh.esm:1F07ED","space":"exterior","status":"placed","as":"helstrom.0NYZWN341P7TYVQ3FCVVBHAM1H","cluster":"s80"}
 {"src":"Black Marsh.esm:1F07EE","space":"exterior","status":"placed","as":"helstrom.011WE2F5D2H4ZWMGPHQFRBT2HQ","cluster":"w02"}
 {"src":"Black Marsh.esm:1F07EF","space":"exterior","status":"placed","as":"helstrom.2RRAA10C99RD1ZB1DX2D1TDPG9","cluster":"s77"}
-{"src":"Black Marsh.esm:2001D7","space":"exterior","status":"placed","as":"helstrom.KWM4CZ7PDWXSXV67S65PXFV4EK","cluster":"b39"}
-{"src":"Black Marsh.esm:2001D8","space":"exterior","status":"placed","as":"helstrom.47AT69JWQKB4YW1HVCCG2SVEJB","cluster":"b39"}
-{"src":"Black Marsh.esm:2001D9","space":"exterior","status":"placed","as":"helstrom.HR6XJ6XVS5GJ08G0GZPTFFTNQ8","cluster":"b39"}
-{"src":"Black Marsh.esm:2001DA","space":"exterior","status":"placed","as":"helstrom.5QDH83NC04VDPMZ0NHZSZTXB9V","cluster":"b39"}
-{"src":"Black Marsh.esm:2001DB","space":"exterior","status":"placed","as":"helstrom.21XSB1A40BTPXGYFZ68GFVAK91","cluster":"b39"}
-{"src":"Black Marsh.esm:2001DC","space":"exterior","status":"placed","as":"helstrom.TFGJ2DWC6K7BK2R68EYJERF8YV","cluster":"b39"}
-{"src":"Black Marsh.esm:2001DD","space":"exterior","status":"placed","as":"helstrom.3E7JQMWYECPRMWKSQ5RJRTX36E","cluster":"b39"}
-{"src":"Black Marsh.esm:2001DE","space":"exterior","status":"placed","as":"helstrom.23575JMBRTBN653P6EGZK48FAP","cluster":"b39"}
-{"src":"Black Marsh.esm:2001DF","space":"exterior","status":"placed","as":"helstrom.KEMQEH8BA4FAF2PDDYMKQHE8PZ","cluster":"b39"}
-{"src":"Black Marsh.esm:2001E0","space":"exterior","status":"placed","as":"helstrom.TMVCPNEN1YC7CBQEMGNCYBJ7HF","cluster":"b39"}
-{"src":"Black Marsh.esm:2001E1","space":"exterior","status":"placed","as":"helstrom.THYWBHBWZA8HDH3E9Q3RVMGKWS","cluster":"b39"}
-{"src":"Black Marsh.esm:2001E2","space":"exterior","status":"placed","as":"helstrom.GKH36ZGNRJE9M4ACB2PH47YF3F","cluster":"b39"}
-{"src":"Black Marsh.esm:2001E3","space":"exterior","status":"placed","as":"helstrom.B4SVW5PQE8Z099QJC6Q5DHVBBE","cluster":"b39"}
+{"src":"Black Marsh.esm:2001D7","space":"exterior","status":"dropped","cluster":"b39","why":"stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone","by":"draft.drop"}
+{"src":"Black Marsh.esm:2001D8","space":"exterior","status":"dropped","cluster":"b39","why":"stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone","by":"draft.drop"}
+{"src":"Black Marsh.esm:2001D9","space":"exterior","status":"dropped","cluster":"b39","why":"stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone","by":"draft.drop"}
+{"src":"Black Marsh.esm:2001DA","space":"exterior","status":"dropped","cluster":"b39","why":"stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone","by":"draft.drop"}
+{"src":"Black Marsh.esm:2001DB","space":"exterior","status":"dropped","cluster":"b39","why":"stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone","by":"draft.drop"}
+{"src":"Black Marsh.esm:2001DC","space":"exterior","status":"dropped","cluster":"b39","why":"stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone","by":"draft.drop"}
+{"src":"Black Marsh.esm:2001DD","space":"exterior","status":"dropped","cluster":"b39","why":"stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone","by":"draft.drop"}
+{"src":"Black Marsh.esm:2001DE","space":"exterior","status":"dropped","cluster":"b39","why":"stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone","by":"draft.drop"}
+{"src":"Black Marsh.esm:2001DF","space":"exterior","status":"dropped","cluster":"b39","why":"stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone","by":"draft.drop"}
+{"src":"Black Marsh.esm:2001E0","space":"exterior","status":"dropped","cluster":"b39","why":"stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone","by":"draft.drop"}
+{"src":"Black Marsh.esm:2001E1","space":"exterior","status":"dropped","cluster":"b39","why":"stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone","by":"draft.drop"}
+{"src":"Black Marsh.esm:2001E2","space":"exterior","status":"dropped","cluster":"b39","why":"stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone","by":"draft.drop"}
+{"src":"Black Marsh.esm:2001E3","space":"exterior","status":"dropped","cluster":"b39","why":"stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone","by":"draft.drop"}
 {"src":"Black Marsh.esm:2001E4","space":"exterior","status":"placed","as":"helstrom.74ACEX3QA5RHYNMFFECJCSXSVF","cluster":"b39"}
 {"src":"Black Marsh.esm:2001E5","space":"exterior","status":"placed","as":"helstrom.XE15PX7XYP69R21161KMVYG1PB","cluster":"b39"}
 {"src":"Black Marsh.esm:2001E6","space":"exterior","status":"dropped","cluster":"w43","why":"no water within 384 units of its fitted spot; our water and land are kept as they are"}
 {"src":"Black Marsh.esm:2001E8","space":"exterior","status":"dropped","cluster":"w43","why":"no water within 384 units of its fitted spot; our water and land are kept as they are"}
-{"src":"Black Marsh.esm:2001ED","space":"exterior","status":"placed","as":"helstrom.CD2DNVX0BFW1CTG6VW88KV49JJ","cluster":"b39"}
-{"src":"Black Marsh.esm:2001EF","space":"exterior","status":"placed","as":"helstrom.BM34ZFFSN3VYD6WE6F8XVPQ85X","cluster":"b39"}
-{"src":"Black Marsh.esm:2001F0","space":"exterior","status":"placed","as":"helstrom.5PVZ5XTVK7HZR048FYYCDTAS7E","cluster":"b39"}
-{"src":"Black Marsh.esm:2001F1","space":"exterior","status":"placed","as":"helstrom.5B9NGP7NKYVBBQBAQAYMCP85BT","cluster":"b39"}
-{"src":"Black Marsh.esm:2001F2","space":"exterior","status":"placed","as":"helstrom.J67K640BBZMHGT3FGTMHW17H19","cluster":"b39"}
-{"src":"Black Marsh.esm:2001F4","space":"exterior","status":"placed","as":"helstrom.Q17QBQBCD4RFF1HK5H68A3R34T","cluster":"b39"}
-{"src":"Black Marsh.esm:2001F5","space":"exterior","status":"placed","as":"helstrom.Q3YZSE5549J02R04AFDKCP1SWQ","cluster":"b39"}
+{"src":"Black Marsh.esm:2001ED","space":"exterior","status":"replaced","as":"helstrom.CD2DNVX0BFW1CTG6VW88KV49JJ","cluster":"b39","base":"King of the Murkmire.esp:10A52B"}
+{"src":"Black Marsh.esm:2001EF","space":"exterior","status":"replaced","as":"helstrom.BM34ZFFSN3VYD6WE6F8XVPQ85X","cluster":"b39","base":"King of the Murkmire.esp:10A52B"}
+{"src":"Black Marsh.esm:2001F0","space":"exterior","status":"replaced","as":"helstrom.5PVZ5XTVK7HZR048FYYCDTAS7E","cluster":"b39","base":"King of the Murkmire.esp:10A52B"}
+{"src":"Black Marsh.esm:2001F1","space":"exterior","status":"replaced","as":"helstrom.5B9NGP7NKYVBBQBAQAYMCP85BT","cluster":"b39","base":"King of the Murkmire.esp:10A52B"}
+{"src":"Black Marsh.esm:2001F2","space":"exterior","status":"replaced","as":"helstrom.J67K640BBZMHGT3FGTMHW17H19","cluster":"b39","base":"King of the Murkmire.esp:10A52C"}
+{"src":"Black Marsh.esm:2001F4","space":"exterior","status":"replaced","as":"helstrom.Q17QBQBCD4RFF1HK5H68A3R34T","cluster":"b39","base":"King of the Murkmire.esp:10A52C"}
+{"src":"Black Marsh.esm:2001F5","space":"exterior","status":"replaced","as":"helstrom.Q3YZSE5549J02R04AFDKCP1SWQ","cluster":"b39","base":"King of the Murkmire.esp:10A52C"}
 {"src":"Black Marsh.esm:2001F9","space":"exterior","status":"placed","as":"helstrom.V648E74P2GK6ZN902DHD3PCB1K","cluster":"b39"}
 {"src":"Black Marsh.esm:2001FB","space":"exterior","status":"placed","as":"helstrom.RB93SS4ND5BX8GSXQFDTM2TZ5P","cluster":"b39"}
 {"src":"Black Marsh.esm:2001FC","space":"exterior","status":"placed","as":"helstrom.VJM89E1GG5848W6722NT4TQSNY","cluster":"b39"}
 {"src":"Black Marsh.esm:2001FD","space":"exterior","status":"placed","as":"helstrom.9YPQ4BM4TSV0EWEQ7SN2TGCXAJ","cluster":"b39"}
-{"src":"Black Marsh.esm:2001FE","space":"exterior","status":"placed","as":"helstrom.P7NJDDJTEQEF5H3J9R12KT3SWH","cluster":"b39"}
-{"src":"Black Marsh.esm:2001FF","space":"exterior","status":"placed","as":"helstrom.HQXTF188GYDM9GF1BAY4DJZ697","cluster":"b39"}
-{"src":"Black Marsh.esm:200200","space":"exterior","status":"placed","as":"helstrom.FDFK0WXD3T1JDBRX2PRY07A0ZR","cluster":"b39"}
+{"src":"Black Marsh.esm:2001FE","space":"exterior","status":"dropped","cluster":"b39","why":"a Skyrim Imperial grave or war table: nothing of the record","by":"draft.drop"}
+{"src":"Black Marsh.esm:2001FF","space":"exterior","status":"dropped","cluster":"b39","why":"a Skyrim Imperial grave or war table: nothing of the record","by":"draft.drop"}
+{"src":"Black Marsh.esm:200200","space":"exterior","status":"dropped","cluster":"b39","why":"a Skyrim Imperial grave or war table: nothing of the record","by":"draft.drop"}
 {"src":"Black Marsh.esm:200201","space":"exterior","status":"placed","as":"helstrom.5Z3B418XF3HWWKZ7KSMCGGPA2T","cluster":"b39"}
 {"src":"Black Marsh.esm:200202","space":"exterior","status":"placed","as":"helstrom.KR705H193CQ1N58MRP084ZDQH6","cluster":"b39"}
 {"src":"Black Marsh.esm:200203","space":"exterior","status":"placed","as":"helstrom.G98GKEDNM2ZJYR2WVM4A7VCANT","cluster":"b39"}
@@ -4733,38 +4733,38 @@
 {"src":"Black Marsh.esm:201ACF","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:201AD8","space":"exterior","status":"placed","as":"helstrom.E2DAMH1W4YYBB06KTMVZWFAVH1","cluster":"w46"}
 {"src":"Black Marsh.esm:201ADA","space":"exterior","status":"placed","as":"helstrom.FYY0E50DKJNY11F5AZ5WX2D3QR","cluster":"w46"}
-{"src":"Black Marsh.esm:207497","space":"exterior","status":"placed","as":"helstrom.56RQMZ6GTEB1F3PDG9RTS8W6J4","cluster":"s130"}
-{"src":"Black Marsh.esm:207498","space":"exterior","status":"placed","as":"helstrom.1HPX4QN7KKSH0YJES0MZ18ZM2D","cluster":"s130"}
-{"src":"Black Marsh.esm:207499","space":"exterior","status":"placed","as":"helstrom.YN9KF6F9Q7FPWFXSRYVKXZQMFT","cluster":"s130"}
-{"src":"Black Marsh.esm:20749A","space":"exterior","status":"placed","as":"helstrom.TR1H0MCYFGCQ8D2S5HDW7EW873","cluster":"s130"}
-{"src":"Black Marsh.esm:20749B","space":"exterior","status":"placed","as":"helstrom.3G1RGYGY78SYWSF96ZWPDCVZQD","cluster":"s118"}
-{"src":"Black Marsh.esm:20749C","space":"exterior","status":"placed","as":"helstrom.D78TAF8HSV8A5P2QDNHQTE93W3","cluster":"s118"}
-{"src":"Black Marsh.esm:20749D","space":"exterior","status":"placed","as":"helstrom.1TH93407V14EHET250FG1MY0WP","cluster":"s118"}
-{"src":"Black Marsh.esm:20749E","space":"exterior","status":"placed","as":"helstrom.J9K25QSFPK6QYD6R9VVXF8YTTW","cluster":"s118"}
-{"src":"Black Marsh.esm:20749F","space":"exterior","status":"placed","as":"helstrom.BA23XBRZZAT4HE12RR3BAA88FP","cluster":"s127"}
-{"src":"Black Marsh.esm:2074A0","space":"exterior","status":"placed","as":"helstrom.CD7K5A5SG2S3ZTDJA9TJV5TAYM","cluster":"s127"}
-{"src":"Black Marsh.esm:2074A1","space":"exterior","status":"placed","as":"helstrom.ERM95P55PRB6E46DXHWB7NGA9K","cluster":"s127"}
-{"src":"Black Marsh.esm:2074A2","space":"exterior","status":"placed","as":"helstrom.4E60MD3SEG99NXV463HFM1BRH0","cluster":"s127"}
-{"src":"Black Marsh.esm:2074A3","space":"exterior","status":"placed","as":"helstrom.14X6A98SRHADGCGFG51V2W6GDW","cluster":"s133"}
-{"src":"Black Marsh.esm:2074A4","space":"exterior","status":"placed","as":"helstrom.FJGGBWCACQJV5HXQRCYFRAA74K","cluster":"s133"}
-{"src":"Black Marsh.esm:2074A5","space":"exterior","status":"placed","as":"helstrom.J84D765GBE1V755XKFRYZBGB4S","cluster":"s133"}
-{"src":"Black Marsh.esm:2074A6","space":"exterior","status":"placed","as":"helstrom.7MP2NXV69XHSADED5GFQA7JBVM","cluster":"s133"}
-{"src":"Black Marsh.esm:2074A7","space":"exterior","status":"placed","as":"helstrom.5BZ4X1SDMR83TFG792KSMHQMEK","cluster":"s133"}
-{"src":"Black Marsh.esm:2074A8","space":"exterior","status":"placed","as":"helstrom.NVEYXGM90X3DDC2FZ6T0PWYCJZ","cluster":"s133"}
-{"src":"Black Marsh.esm:2074A9","space":"exterior","status":"placed","as":"helstrom.SB92DE5ADQWTVAQT5W9T9GD0YR","cluster":"s133"}
-{"src":"Black Marsh.esm:2074AA","space":"exterior","status":"placed","as":"helstrom.XCV5WFST2YSQD1ZW766TVV80FM","cluster":"s133"}
-{"src":"Black Marsh.esm:2074AB","space":"exterior","status":"placed","as":"helstrom.KHXFC0HF4P6FT1WGMBPA20SDJN","cluster":"s165"}
-{"src":"Black Marsh.esm:2074AC","space":"exterior","status":"placed","as":"helstrom.0FNKA9S91ATQGARNEFA5XBNGJD","cluster":"s165"}
-{"src":"Black Marsh.esm:2074AD","space":"exterior","status":"placed","as":"helstrom.3R4151TM03S05KNGVZ6BKEMVJQ","cluster":"s165"}
-{"src":"Black Marsh.esm:2074AE","space":"exterior","status":"placed","as":"helstrom.Q6X99F166BWBNTAJ1ZJ2QEGNNB","cluster":"s165"}
+{"src":"Black Marsh.esm:207497","space":"exterior","status":"dropped","cluster":"s130","why":"a trap: Helstrom is friendly, its danger is social, not traps in its streets","by":"draft.drop"}
+{"src":"Black Marsh.esm:207498","space":"exterior","status":"dropped","cluster":"s130","why":"a trap: Helstrom is friendly, its danger is social, not traps in its streets","by":"draft.drop"}
+{"src":"Black Marsh.esm:207499","space":"exterior","status":"dropped","cluster":"s130","why":"a trap: Helstrom is friendly, its danger is social, not traps in its streets","by":"draft.drop"}
+{"src":"Black Marsh.esm:20749A","space":"exterior","status":"dropped","cluster":"s130","why":"a trap: Helstrom is friendly, its danger is social, not traps in its streets","by":"draft.drop"}
+{"src":"Black Marsh.esm:20749B","space":"exterior","status":"dropped","cluster":"s118","why":"a trap: Helstrom is friendly, its danger is social, not traps in its streets","by":"draft.drop"}
+{"src":"Black Marsh.esm:20749C","space":"exterior","status":"dropped","cluster":"s118","why":"a trap: Helstrom is friendly, its danger is social, not traps in its streets","by":"draft.drop"}
+{"src":"Black Marsh.esm:20749D","space":"exterior","status":"dropped","cluster":"s118","why":"a trap: Helstrom is friendly, its danger is social, not traps in its streets","by":"draft.drop"}
+{"src":"Black Marsh.esm:20749E","space":"exterior","status":"dropped","cluster":"s118","why":"a trap: Helstrom is friendly, its danger is social, not traps in its streets","by":"draft.drop"}
+{"src":"Black Marsh.esm:20749F","space":"exterior","status":"dropped","cluster":"s127","why":"a trap: Helstrom is friendly, its danger is social, not traps in its streets","by":"draft.drop"}
+{"src":"Black Marsh.esm:2074A0","space":"exterior","status":"dropped","cluster":"s127","why":"a trap: Helstrom is friendly, its danger is social, not traps in its streets","by":"draft.drop"}
+{"src":"Black Marsh.esm:2074A1","space":"exterior","status":"dropped","cluster":"s127","why":"a trap: Helstrom is friendly, its danger is social, not traps in its streets","by":"draft.drop"}
+{"src":"Black Marsh.esm:2074A2","space":"exterior","status":"dropped","cluster":"s127","why":"a trap: Helstrom is friendly, its danger is social, not traps in its streets","by":"draft.drop"}
+{"src":"Black Marsh.esm:2074A3","space":"exterior","status":"dropped","cluster":"s133","why":"a trap: Helstrom is friendly, its danger is social, not traps in its streets","by":"draft.drop"}
+{"src":"Black Marsh.esm:2074A4","space":"exterior","status":"dropped","cluster":"s133","why":"a trap: Helstrom is friendly, its danger is social, not traps in its streets","by":"draft.drop"}
+{"src":"Black Marsh.esm:2074A5","space":"exterior","status":"dropped","cluster":"s133","why":"a trap: Helstrom is friendly, its danger is social, not traps in its streets","by":"draft.drop"}
+{"src":"Black Marsh.esm:2074A6","space":"exterior","status":"dropped","cluster":"s133","why":"a trap: Helstrom is friendly, its danger is social, not traps in its streets","by":"draft.drop"}
+{"src":"Black Marsh.esm:2074A7","space":"exterior","status":"dropped","cluster":"s133","why":"a trap: Helstrom is friendly, its danger is social, not traps in its streets","by":"draft.drop"}
+{"src":"Black Marsh.esm:2074A8","space":"exterior","status":"dropped","cluster":"s133","why":"a trap: Helstrom is friendly, its danger is social, not traps in its streets","by":"draft.drop"}
+{"src":"Black Marsh.esm:2074A9","space":"exterior","status":"dropped","cluster":"s133","why":"a trap: Helstrom is friendly, its danger is social, not traps in its streets","by":"draft.drop"}
+{"src":"Black Marsh.esm:2074AA","space":"exterior","status":"dropped","cluster":"s133","why":"a trap: Helstrom is friendly, its danger is social, not traps in its streets","by":"draft.drop"}
+{"src":"Black Marsh.esm:2074AB","space":"exterior","status":"dropped","cluster":"s165","why":"a trap: Helstrom is friendly, its danger is social, not traps in its streets","by":"draft.drop"}
+{"src":"Black Marsh.esm:2074AC","space":"exterior","status":"dropped","cluster":"s165","why":"a trap: Helstrom is friendly, its danger is social, not traps in its streets","by":"draft.drop"}
+{"src":"Black Marsh.esm:2074AD","space":"exterior","status":"dropped","cluster":"s165","why":"a trap: Helstrom is friendly, its danger is social, not traps in its streets","by":"draft.drop"}
+{"src":"Black Marsh.esm:2074AE","space":"exterior","status":"dropped","cluster":"s165","why":"a trap: Helstrom is friendly, its danger is social, not traps in its streets","by":"draft.drop"}
 {"src":"Black Marsh.esm:207617","space":"exterior","status":"dropped","cluster":"w04","why":"no water within 384 units of its fitted spot; our water and land are kept as they are"}
 {"src":"Black Marsh.esm:207618","space":"exterior","status":"dropped","cluster":"w04","why":"no water within 384 units of its fitted spot; our water and land are kept as they are"}
 {"src":"Black Marsh.esm:207619","space":"exterior","status":"dropped","cluster":"w04","why":"no water within 384 units of its fitted spot; our water and land are kept as they are"}
 {"src":"Black Marsh.esm:20761A","space":"exterior","status":"dropped","cluster":"w04","why":"no water within 384 units of its fitted spot; our water and land are kept as they are"}
-{"src":"Black Marsh.esm:2076B3","space":"exterior","status":"placed","as":"helstrom.4A2MND1ZDCN07F73HSEDDAFQ8S","cluster":"s104"}
-{"src":"Black Marsh.esm:2076B4","space":"exterior","status":"placed","as":"helstrom.R1M323Y7EEHKX7HAC136EJT04E","cluster":"s104"}
-{"src":"Black Marsh.esm:2076B5","space":"exterior","status":"placed","as":"helstrom.YWWYJWS8E1SQ22CGXKED22G041","cluster":"s104"}
-{"src":"Black Marsh.esm:2076B6","space":"exterior","status":"placed","as":"helstrom.NH16Z62XQY88HMERH8RHET3P9H","cluster":"s104"}
+{"src":"Black Marsh.esm:2076B3","space":"exterior","status":"dropped","cluster":"s104","why":"a trap: Helstrom is friendly, its danger is social, not traps in its streets","by":"draft.drop"}
+{"src":"Black Marsh.esm:2076B4","space":"exterior","status":"dropped","cluster":"s104","why":"a trap: Helstrom is friendly, its danger is social, not traps in its streets","by":"draft.drop"}
+{"src":"Black Marsh.esm:2076B5","space":"exterior","status":"dropped","cluster":"s104","why":"a trap: Helstrom is friendly, its danger is social, not traps in its streets","by":"draft.drop"}
+{"src":"Black Marsh.esm:2076B6","space":"exterior","status":"dropped","cluster":"s104","why":"a trap: Helstrom is friendly, its danger is social, not traps in its streets","by":"draft.drop"}
 {"src":"Black Marsh.esm:207718","space":"exterior","status":"placed","as":"helstrom.1TS7A5V3QWCH5CNQ90WDJE5874","cluster":"b20"}
 {"src":"Black Marsh.esm:207719","space":"exterior","status":"placed","as":"helstrom.FSJS2FZX8CK3E11HEJXVQV5MGM","cluster":"b09"}
 {"src":"Black Marsh.esm:20771A","space":"exterior","status":"placed","as":"helstrom.P5E0VDVWM7VWB3K7BDZ5G1J058","cluster":"b10"}

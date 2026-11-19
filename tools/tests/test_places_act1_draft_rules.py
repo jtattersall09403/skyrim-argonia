@@ -59,6 +59,16 @@ def test_a_sap_pool_and_its_hist_stand_in_each_other_by_design():
     assert C.overlap_pairs([hist, other])
 
 
+def test_a_hand_placed_sap_pool_on_the_trunk_is_the_trees_own():
+    from tools.places.draft import sap
+    box = [-100, -100, 0, 100, 100, 300]
+    hist = {"id": "p.H1", "kind": "static", "space": "exterior", "pos": [0.0, 0.0, 0.0], "rot": [0, 0, 0], "bounds": box}
+    pool = {"id": "p.STOP", "base": sap.POOL, "kind": "activator", "space": "exterior", "rot": [0, 0, 0], "scale": 1.0,
+            "bounds": box, "pos": [-sap.POOL_CENTRE[0], -sap.POOL_CENTRE[1], 0.0]}
+    assert C.overlap_pairs([hist, pool]) == []
+    assert C.overlap_pairs([hist, {**pool, "base": "K:puddle"}])
+
+
 def test_a_source_mesh_that_misses_a_bed_or_an_arrival_is_not_kept():
     tris = np.zeros(2, [("v", "<i4", 3)])
     tris["v"] = [[0, 1, 2], [0, 2, 3]]
