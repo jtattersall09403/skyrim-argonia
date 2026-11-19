@@ -132,9 +132,13 @@ general.md's table of dramatic jobs, never scripted.
     see; never a later step, never an event that did not happen, never a fact the world has not told first. Objectives
     are imperatives with a full stop ("Speak to Wuleen-Sei in the barge's hold.").
 11. **Placements are measured from the world.** Every person, thing, door and marker the quest names is a
-    `placements` row: an existing reference by its form key from the census, or a new one with its base, its anchor
-    and an `at` measured with `bash tools/ArgoniaPlugin/plugin.sh inspect navnear:<x>:<y>:<z>`, `near:...`,
-    `cellrefs:<cell>`, `cellat:<cell>:<x>,<y>` or `cellgrid:...` (a person on navmesh, a thing on a modelled surface).
+    `placements` row: an existing reference by its form key from the census, or a new one with its base and its
+    anchor. A new one at a place of the new world is anchored `{place, rule, need, room?}`: `need` says in words
+    where it stands and what it stands by, and the record holds no position; the owner sets the exact spot in the
+    place studio's Quests layer, kept in the place's `quests.jsonl` (quests-on-a-world §4, "Where a quest's thing
+    stands"). A new one anchored `near` an existing reference takes an `at` measured with
+    `bash tools/ArgoniaPlugin/plugin.sh inspect navnear:<x>:<y>:<z>`, `near:...`, `cellrefs:<cell>`,
+    `cellat:<cell>:<x>,<y>` or `cellgrid:...` (a person on navmesh, a thing on a modelled surface).
     A body to be found is one the world already holds (an existing reference from the census's corpses) or a
     person the quest places hostile and the player kills; a dead stranger the story needs is told, and what the
     player examines is a thing at the spot (a satchel, a cut net, a note) to take or read. A new thing is a

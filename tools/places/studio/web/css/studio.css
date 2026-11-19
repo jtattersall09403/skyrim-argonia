@@ -270,6 +270,15 @@ ul.plain { margin: 4px 0 12px; padding-left: 18px; color: var(--muted); line-hei
 #atlas-btn[data-built="0"] { opacity: .6; }
 
 /* What the story needs of this place (js/needs.js) */
+/* Quest things (js/quests.js): their own layer, gold, apart from the place's own things */
+.sketch .who.name.quest { fill: #8a6a00; }
+.sketch .who.name.quest.sel { fill: #b8860b; font-size: 14px; }
+ul.quests { list-style: none; padding: 0; margin: 0 0 12px; display: grid; gap: 10px; }
+ul.quests li.quest-item { background: var(--panel-2); border-radius: 12px; padding: 10px 12px; border-left: 4px solid #d4a017; cursor: pointer; line-height: 1.4; }
+ul.quests li.quest-item.sel { outline: 2px solid #d4a017; }
+ul.quests .q-when { margin: 6px 0; padding-left: 18px; font-size: 14px; }
+ul.quests .q-need, ul.quests .q-where { margin: 6px 0; font-size: 14px; }
+ul.quests .q-buttons { display: flex; gap: 6px; flex-wrap: wrap; }
 ol.needs { list-style: none; padding: 0; margin: 0 0 12px; display: grid; gap: 10px; }
 ol.needs li { background: var(--panel-2); border-radius: 12px; padding: 10px 12px; border-left: 4px solid var(--line); }
 ol.needs li[data-met="true"] { border-left-color: var(--ok); }

@@ -63,6 +63,9 @@ const online = {
   notes: (id) => getJSON(`/place/${id}/notes`),
   // what the stories need of the place, in plain words; null when the server has none (an older server)
   needs: (id) => getJSON(`/place/${id}/needs`, { optional: true }),
+  // the things the quests put at the place, when each is in the world, its spot and its story explorer links; null
+  // when the server has none (an older server)
+  quests: (id) => getJSON(`/place/${id}/quests`, { optional: true }),
   // the owner carried on past a need's warning: {need | person, change, what, save}
   needChanged: (id, body) => getJSON(`/place/${id}/needs/changed`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) }),
   // who the place's people are and what it holds (the database's sources), with the items' facts and the scale;

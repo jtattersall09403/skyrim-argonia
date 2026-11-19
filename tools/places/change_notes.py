@@ -173,6 +173,12 @@ def say(op: dict, names: dict[str, str] | None = None, refs: dict[str, dict] | N
         verb = {"add": "added", "edit": "changed", "remove": "removed"}[kind.split(".")[1]]
         out |= {"what": f"{verb} person {p.get('name') or p['id']} (id {p['id']})", "from": b, "to": p if kind != "person.remove" else None,
                 "where": _xyz(p.get("pos") or (p.get("stops") or [{}])[0].get("pos"))}
+    elif kind.startswith("quest."):   # where a quest's thing stands (tools/places/quest_spots.py)
+        q, b = op["quest"], op.get("before")
+        verb = {"add": "placed", "edit": "moved", "remove": "cleared the spot of"}[kind.split(".")[1]]
+        out |= {"what": f"{verb} quest thing {q.get('ref')} of {q.get('quest')}"
+                        + (f", {_way(b['pos'], q['pos'])}" if kind == "quest.edit" and b and b.get("pos") and q.get("pos") else ""),
+                "from": b, "to": q if kind != "quest.remove" else None, "where": _xyz(q.get("pos"))}
     else:   # who a person is, what a thing holds
         field = next((k for k in ("person", "container", "loose", "possessions", "trader", "delivery") if k in op), None)
         row, before = op.get(field), op.get("before")

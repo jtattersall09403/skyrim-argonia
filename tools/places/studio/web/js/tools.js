@@ -11,7 +11,7 @@ import { scaledPrim, wallsOf } from './prims.js';
 
 const VEG = new Set(['tree', 'plant', 'groundcover']);
 const RAIL = [
-  ['select', 'Select'], ['search', 'Add'], ['people', 'People'], ['land', 'Land'], ['plants', 'Plants'], ['paths', 'Paths'],
+  ['select', 'Select'], ['search', 'Add'], ['people', 'People'], ['quests', 'Quests'], ['land', 'Land'], ['plants', 'Plants'], ['paths', 'Paths'],
   null, ['needs', 'Story'], ['history', 'History'], ['saves', 'Saves'], ['notes', 'Notes'], ['help', 'Help'],
 ];
 const rnd = (v, k = 100) => Math.round(v * k) / k;
@@ -90,7 +90,7 @@ export class Tools {
     const a = this.app;
     if (view === a.src.view) return a.people.active ? a.people.srcTool : this.srcSelect;
     if (this.placing) return this.placeTool;
-    return { select: this.selectTool, search: this.selectTool, land: this.landTool, plants: this.vegTool, paths: this.pathTool, people: a.people.tool }[this.current] || this.selectTool;
+    return { select: this.selectTool, search: this.selectTool, land: this.landTool, plants: this.vegTool, paths: this.pathTool, people: a.people.tool, quests: a.quests.tool }[this.current] || this.selectTool;
   }
   // Previews under the pen are drawn once per animation frame, however many pen events arrive in it.
   soon(name, fn) {
@@ -122,7 +122,8 @@ export class Tools {
     return this._sel || (this._sel = {
       fingerTap: true,
       wantsDrag: (e) => e.pointerType === 'pen' || e.pointerType === 'mouse',
-      tap: (e) => t.tapPick(e, a.ours, a.selection),
+      // a quest thing's pin is picked before the place's own things under it
+      tap: (e) => { const q = a.quests.pick(e); if (q) { t.use('quests'); a.quests.select(q); return; } t.tapPick(e, a.ours, a.selection); },
       down: (e) => { t.lasso = { pts: [[e.x, e.y]], el: t.svg(e.view, t.opts.selMode === 'box' ? 'rect' : 'polygon', { class: 'lasso' }) }; },
       move: (e) => t.lassoMove(e),
       up: (e) => t.lassoEnd(e, a.ours),

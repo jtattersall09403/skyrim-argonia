@@ -86,7 +86,17 @@ as any change to the method; the quest skills carry it step by step, and their m
 - **Things of ours** only where no world or base-game item serves, each on an item whose model reads as what it is
   called; no new art, never a Nordic-specific model.
 - **Traders:** a trader whose stock does not fit gets a vendor faction and chest of their own with a fixed stock.
-- **Moving a quest spot** within its place to the nearest measured ground is a record edit, not a redesign.
+- **Moving a quest spot** within its place is a studio edit of its spot (below), not a redesign.
+- **Where a quest's thing stands:** a placement anchored at a place of the new world (`anchor: {place, rule, need,
+  room?}`) says in words where it stands; its exact spot is one row of that place's `newworld/places/<id>/quests.jsonl`,
+  `{id: "<quest id>/<ref>", quest, ref, space, pos: [x, y, z], rot: [0, 0, heading]}`, and nowhere else. The owner
+  sets and moves it in the place studio's Quests layer (gold pins apart from the place's own things, each showing
+  when it is in the world: from the start of the game, or the stage or ending that switches it on and off, with links
+  to that quest and stage in the story explorer, `#q-<quest>/s-<stage>`). A move is an edit of the studio save
+  (`quest.add`, `quest.edit`, `quest.remove`) and finalise writes it to `quests.jsonl` with the place's other files.
+  The builder takes the row as the form's `at`; a row whose placement has left the records shows in the Quests
+  layer as no longer asked for (`tools/places/quest_spots.py`, `check`) and is cleared, never kept. A person the place's people are cast as (below) is
+  placed as the place's person, not here.
 - **A quest's person at a place is the place's person:** one person, never two. Where a quest record places a person
   in a role the place's drafted people have (its cook, its gang-master), the place's people source gives that row
   the placement's ref as its `cast`, the record's name and the spot the record's `need` names; the identities check

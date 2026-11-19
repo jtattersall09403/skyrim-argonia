@@ -223,7 +223,7 @@ def manifest(place_id: str, out: Path, places: Path, web: Path, asset, saves: li
     add("/", (web / "index.html").stat().st_size if (web / "index.html").exists() else 0, "app")
     for u in ("/api/places", "/api/status"):
         add(u, 0, "api")
-    for u in ("stock", "needs", "nav", "notes", "saves"):
+    for u in ("stock", "needs", "quests", "nav", "notes", "saves"):
         add(f"/api/place/{place_id}/{u}", 0, "api")
     for sid in saves:
         add(f"/api/place/{place_id}/saves/{enc(sid)}", 0, "api")

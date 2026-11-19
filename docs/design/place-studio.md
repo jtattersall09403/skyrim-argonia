@@ -182,6 +182,9 @@ paths.jsonl            streets, paths and walkways: {id, kind: path|street|walkw
                        name the doors (source ids), `landing` or `camp.<cluster>` a drafted link joins. The studio
                        draws a person's way between two stops outside by the same rules (round buildings, never
                        through open water, along these lines where one leads the right way)
+quests.jsonl           where the quests' things at the place stand, one per line: {id: "<quest id>/<ref>", quest,
+                       ref, space, pos, rot: [0, 0, heading]}; the one spot of a quest record's placement anchored
+                       at this place (Quest things, below); written only when it has rows
 people.jsonl           one person per line: {id, name, base_from, role, home, bed, work, services, faction_ranks,
                        routine:[{start, hours, kind, at, days?}], patrol?: {points:[[x,y] | stop...], loop}}.
                        A stop (`at`, `bed`, `work`, a patrol point) is {space, ref | pos, radius}: `ref` our id or a
@@ -504,6 +507,7 @@ An op: `{n, at, op, space, call: "fault"|"taste", note_group?, stroke?, ...paylo
 | `land.patch` | `cell`, `verts:[[row,col,before_z,after_z]]`, `tool:{kind: raise|lower|level|smooth, radius, strength}` |
 | `path.add` / `path.remove` / `path.edit` | `path`, `before?` |
 | `person.add` / `person.remove` / `person.edit` | `person`, `before?` (placement, routine stops, patrol points) |
+| `quest.add` / `quest.remove` / `quest.edit` | `quest` (a `quests.jsonl` row: a quest thing's spot), `before?` |
 | `identity.edit` | `person` (the people source's row: name, sex, race, household, role, trade, wealth, level, notes), `before` |
 | `stock.container.set` / `stock.container.remove` | `container` (the stock source's whole container row with its items); `.set` with `before` replaces it, without adds it |
 | `stock.loose.add` / `stock.loose.remove` / `stock.loose.edit` | `loose` (whole row), `before` on `.edit` |
@@ -512,6 +516,7 @@ An op: `{n, at, op, space, call: "fault"|"taste", note_group?, stroke?, ...paylo
 | `stock.delivery.set` | `delivery` ({give_seq, by, person?, ref?, status, why} or null), `before?` (found by the whole row) |
 
 - `land.patch` heights are the patch's `dz` at that vertex, as `land.jsonl` holds it (0 is the world's own ground).
+- `quest.*` ops are `person.*`'s rules over `quests.jsonl` (keyed by `id`).
 - `path.add` and `person.add` carry the new row; `.remove` carries the removed row; `.edit` carries the row after
   and `before` the row before.
 - `veg.clear` writes the item as the row (`by: owner` unless the item names `by`); `veg.restore` items carry the
@@ -627,6 +632,11 @@ GET  /api/place/<id>/needs                    what the stories need of the place
                                               rewrite, url}], judged, know, signs, rests, met, why, fit, narrow,
                                               sight, changed}], people: {person id: {who, name, uses: [{for, line,
                                               rewrite, sources}]}}, changed_story: [{seq, was_for, line, placed}]}
+GET  /api/place/<id>/quests                   the things the quest records put at the place (Quest things, below):
+                                              {place_id, explorer, spots: [quests.jsonl rows], items: [{id, quest,
+                                              code, title, ref, kind, name, need, room, space, hostile, lock,
+                                              appears: {words, stage, url}, gone: [{words, stage, url}], quest_url,
+                                              place_person, orphan?, spot}]}
 POST /api/place/<id>/needs/changed            the owner carried on past a need's warning: {need | person, change:
                                               removed|moved|renamed, what, save}; appended at OWNER_STATED to
                                               newworld/sources/needs/<id>.changed.jsonl and committed by path
@@ -810,7 +820,7 @@ asks for when it opens and edits the place, each with its size, so the client ne
   from them; the textures those meshes draw with (base colour and emissive, never a normal map) at the sizes the views
   ask for (no more than 256 for small things); the draft's and the source's thumbnails; the land table and its
   textures;
-- the place's stock, needs, nav, notes and saves (each one) as last read.
+- the place's stock, needs, quests, nav, notes and saves (each one) as last read.
 
 The server converts what it has not yet, then answers; the answer is kept until a stamp, the app or the saves change.
 The client asks for persistent storage (`navigator.storage.persist()`), checks `navigator.storage.estimate()`
@@ -884,6 +894,22 @@ network cut and the server stopped). Android Chrome keeps a persisted site's sto
 free disk. iPad Safari (16.4 and later) has service workers, the Cache API and IndexedDB, but may clear a site's
 storage after seven days without a visit unless the studio is added to the home screen: on an iPad the studio is
 added to the home screen, and a held place is updated before going offline.
+
+## Quest things
+
+A quest record's placement anchored at the place (`anchor: {place: <id>, rule, need, room?}` in
+`newworld/story/quests/`) is the quest's, not the place's: a caged prisoner, the cage door, a quest's guards. The
+Quests tool on the rail shows them as their own layer, gold pins (purple for a person) with "Quest: <name> (<quest>)"
+over each, drawn in the space their spot is in and switched on or off with one button (remembered on the device). The
+Quests panel lists them by quest; each says what it is, what the story asks for (`need`, its room), when it is in the
+world (from the start of the game, or the stage or ending that switches it on, and the one that switches it off),
+where it stands now or that it is not placed yet, and links to its quest and that stage in the story explorer
+(`#q-<quest>/s-<stage>`: the quest's page scrolled to that stage's beat). Drag a pin to move it, or press Place (Move
+to a tap) and tap the ground; Turn left and Turn right turn it 15 degrees; Clear spot takes the spot away; Show
+frames it. Tapping a pin with the Select tool opens it in the Quests panel. Each is an edit (`quest.*`) with undo,
+notes and saves like any other, offline too, and finalise writes `quests.jsonl`, the one spot the quest is built with
+(quests-on-a-world §4). A person the place's people source casts as the placement (`cast`) is the place's person and
+is moved with the People tool; a spot no record asks for any more is listed to be cleared.
 
 ## What the stories need of a place
 

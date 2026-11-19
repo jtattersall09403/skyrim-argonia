@@ -8,7 +8,7 @@ order (by id, or by cell, or by base and position), so independent ops give the 
 Place files in memory:
     {"place": {...place.json...},
      "spaces": {space_id: {"refs": [row...], "space": {...} | None}},
-     "clear": [...], "land": [...], "paths": [...], "people": [...],
+     "clear": [...], "land": [...], "paths": [...], "people": [...], "quests": [...] (only when it has rows),
      "identities": the people source (newworld/sources/people/<place_id>.json) | None,
      "stock": the stock source (newworld/sources/stock/places/<place_id>.json) | None}
 The last two are the database's sources for who the place's people are and what the place holds (Stock). The
@@ -25,7 +25,11 @@ OWNER_TIER = "OWNER_STATED"   # the statement tier of the owner's own words (new
 CONTENT_OPS = ("identity.edit", "stock.container.set", "stock.container.remove", "stock.loose.add", "stock.loose.remove",
                "stock.loose.edit", "stock.possessions.set", "stock.trader.set", "stock.delivery.set")
 OPS = ("ref.add", "ref.remove", "ref.move", "veg.clear", "veg.restore", "land.patch",
-       "path.add", "path.remove", "path.edit", "person.add", "person.remove", "person.edit") + CONTENT_OPS
+       "path.add", "path.remove", "path.edit", "person.add", "person.remove", "person.edit",
+       "quest.add", "quest.remove", "quest.edit") + CONTENT_OPS
+# a row table's op family -> its list in the place files (rows keyed by id); `quests` is where the quests' things
+# stand (tools/places/quest_spots.py)
+TABLES = {"path": "paths", "person": "people", "quest": "quests"}
 # A content op's row: the op's payload key, the source it lives in, its list there, the fields that name it (a
 # delivery has none: it is found by its whole row)
 CONTENT = {"identity": ("person", "identities", "people", ("id",)),
@@ -89,6 +93,10 @@ def canonical(files: dict) -> dict:
         row["verts"].sort()
     out["paths"].sort(key=lambda r: r["id"])
     out["people"].sort(key=lambda r: r["id"])
+    if out.get("quests"):   # kept only when it has rows
+        out["quests"].sort(key=lambda r: r["id"])
+    else:
+        out.pop("quests", None)
     for k in SOURCE_ORDER:   # the people and stock sources, when the files carry them
         if out.get(k) is not None:
             out[k] = canonical_source(k, out[k])
@@ -153,7 +161,7 @@ def check_op(op: dict) -> None:
                 raise EditError(f"op {op['n']} (land.patch): each vert is [row, col, before_dz, after_dz], row and col 0..32")
     elif kind in CONTENT_OPS:
         _check_content(op)
-    elif kind.startswith(("path.", "person.")):
+    elif kind.startswith(("path.", "person.", "quest.")):
         _need(op, kind.split(".")[0])
         if "id" not in op[kind.split(".")[0]]:
             raise EditError(f"op {op['n']} ({kind}): the row has no id")
@@ -361,7 +369,7 @@ def _apply_one(files, op):
         _apply_content(files, op)
     else:
         table, verb = kind.split(".")
-        rows = files["paths" if table == "path" else "people"]
+        rows = files.setdefault(TABLES[table], [])
         row = op[table]
         i = _find(rows, row["id"])
         if verb == "add":
@@ -670,7 +678,7 @@ def load_place(root: Path, sources: Path | None = None) -> dict:
         sj = sp / "space.json"
         files["spaces"][sp.name] = {"refs": _jsonl(sp / "refs.jsonl"),
                                     "space": json.loads(sj.read_text()) if sj.exists() else None}
-    for k in ("clear", "land", "paths", "people"):
+    for k in ("clear", "land", "paths", "people", "quests"):
         files[k] = _jsonl(root / f"{k}.jsonl")
     return canonical(files)
 
@@ -710,9 +718,9 @@ def write_place(root: Path, files: dict, sources: Path | None = None) -> None:
         _write_jsonl(root / "spaces" / sid / "refs.jsonl", sp["refs"])
         if sp.get("space") is not None:
             (root / "spaces" / sid / "space.json").write_text(json.dumps(sp["space"], indent=1, ensure_ascii=False) + "\n")
-    for k in ("clear", "land", "paths", "people"):
-        if files[k] or (root / f"{k}.jsonl").exists():
-            _write_jsonl(root / f"{k}.jsonl", files[k])
+    for k in ("clear", "land", "paths", "people", "quests"):
+        if files.get(k) or (root / f"{k}.jsonl").exists():
+            _write_jsonl(root / f"{k}.jsonl", files.get(k) or [])
 
 
 def main(argv: list[str]) -> int:

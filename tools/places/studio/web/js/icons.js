@@ -4,6 +4,7 @@ export const ICON = {
   select: p('<path d="M5 3l14 8-6 2-2 6z"/>'),
   search: p('<circle cx="10.5" cy="10.5" r="6.5"/><path d="m20 20-4.8-4.8"/>'),
   people: p('<circle cx="9" cy="7" r="3.2"/><path d="M3 20c0-3.8 2.7-6 6-6s6 2.2 6 6"/><circle cx="17.5" cy="8.5" r="2.4"/><path d="M16 14.2c2.9.1 5 2 5 5.3"/>'),
+  quests: p('<path d="M6 21V4"/><path d="M6 4h11l-2.5 4L17 12H6"/>'),
   land: p('<path d="M2 19l6-9 4 5 3-3 7 7z"/><path d="M14 6h6M17 3v6"/>'),
   plants: p('<path d="M12 21v-8"/><path d="M12 13c-4 0-6-3-6-7 4 0 6 3 6 7z"/><path d="M12 15c3 0 5-2 5-5-3 0-5 2-5 5z"/>'),
   paths: p('<path d="M5 21c2-6 10-5 10-10S9 6 11 3"/><path d="M10 21c2-5 9-4 9-10S14 6 16 3" opacity=".45"/>'),

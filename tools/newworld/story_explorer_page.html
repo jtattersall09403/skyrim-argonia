@@ -273,7 +273,7 @@ function blockHtml(b, item, field) {
   else if (b.t === "table") inner = `<div class="tbl"><table><thead><tr>${b.head.map(h => `<th>${h}</th>`).join("")}</tr></thead><tbody>${
       b.rows.map(r => `<tr>${r.map(c => `<td>${c}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
   else if (b.t === "graph") inner = graphHtml(b.graph);
-  else if (b.t === "beat") return `<div class="blk beat ${esc(b.kind || "")}${noted}" data-beat="${esc(b.node)}" data-block="${esc(b.id)}" data-item="${esc(item)}" data-field="${esc(field || b.section)}">
+  else if (b.t === "beat") return `<div class="blk beat ${esc(b.kind || "")}${noted}" data-beat="${esc(b.node)}" data-stage="${esc(b.stage ?? "")}" data-block="${esc(b.id)}" data-item="${esc(item)}" data-field="${esc(field || b.section)}">
     <h3>${b.title}</h3>${b.place || b.stage || b.gaps ? `<p class="where">${[b.stage ? `Stage ${esc(b.stage)}` : "", esc(b.place || ""), b.gaps ? `<span class="gapn">${b.gaps} gap${b.gaps > 1 ? "s" : ""} in the record</span>` : ""].filter(Boolean).join(" · ")}</p>` : ""}
     ${b.html}${b.detail ? `<details><summary>The detail: what you can ask, the journal, the marker, how you find things out</summary>${b.detail}</details>` : ""}</div>`;
   else inner = `<pre>${esc(b.text)}</pre>`;
@@ -433,7 +433,7 @@ async function route() {
     else if (h === "world") html = viewWorld();
     else if (h === "map" || h.startsWith("map-")) html = viewMap();
     else if (h === "notes") { html = viewHome(); setTimeout(openTray); }
-    else if (h.startsWith("q-")) html = await viewQuest(h.slice(2));
+    else if (h.startsWith("q-")) { const [hid, at] = h.slice(2).split("/s-"); html = await viewQuest(hid); if (at) pendingStage = at; }
     else if (h.startsWith("d-")) html = await viewDoc(h.slice(2));
     else if (h.startsWith("pl-")) html = await viewEntity("pl", h.slice(3));
     else if (h.startsWith("p-")) html = await viewEntity("p", h.slice(2));
@@ -452,8 +452,10 @@ async function route() {
   if ($("#map")) wireMap(h.startsWith("map-") ? h.slice(4) : "");
   xray(); readMemory(h); paintHighlights();
   if (pendingJump) { const el = document.querySelector(`[data-block="${CSS.escape(pendingJump)}"]`); pendingJump = null; if (el) { el.scrollIntoView({block: "center"}); el.classList.add("active"); } }
+  /* #q-<quest>/s-<stage> (the place studio's links): the quest, scrolled to that stage's beat */
+  if (pendingStage) { const el = document.querySelector(`.beat[data-stage="${CSS.escape(pendingStage)}"]`); pendingStage = null; if (el) { el.scrollIntoView({block: "start"}); el.classList.add("flash"); setTimeout(() => el.classList.remove("flash"), 2500); } }
 }
-let pendingJump = null;
+let pendingJump = null, pendingStage = null;
 
 /* ---------- selecting and noting ---------- */
 let target = null; // {item, field, block, quote, label}

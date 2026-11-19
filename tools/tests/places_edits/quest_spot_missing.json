@@ -1,0 +1,42 @@
+{
+ "error": "does not exist",
+ "ops": [
+  {
+   "before": {
+    "id": "quest.main.mn04/thing.mn04.cage",
+    "pos": [
+     1200.0,
+     2100.0,
+     40.0
+    ],
+    "quest": "quest.main.mn04",
+    "ref": "thing.mn04.cage",
+    "rot": [
+     0,
+     0,
+     1.57
+    ],
+    "space": "exterior"
+   },
+   "call": "fault",
+   "n": 1,
+   "op": "quest.edit",
+   "quest": {
+    "id": "quest.main.mn04/thing.mn04.cage",
+    "pos": [
+     1300.0,
+     2000.0,
+     44.0
+    ],
+    "quest": "quest.main.mn04",
+    "ref": "thing.mn04.cage",
+    "rot": [
+     0,
+     0,
+     3.14
+    ],
+    "space": "exterior"
+   }
+  }
+ ]
+}
