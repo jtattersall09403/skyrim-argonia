@@ -8,6 +8,8 @@
 {"id":"helstrom.household.01ArgonianHouseinside.8","place_id":"helstrom","home_space":"01ArgonianHouseinside.8"}
 {"id":"helstrom.household.01ArgonianHouseinside.9","place_id":"helstrom","home_space":"01ArgonianHouseinside.9"}
 {"id":"helstrom.household.01Ship","place_id":"helstrom","home_space":"01Ship"}
+{"id":"helstrom.household.ChainbreakersSafeHouse","place_id":"helstrom","home_space":"ChainbreakersSafeHouse"}
+{"id":"helstrom.household.XeechLeelWardensQuarters","place_id":"helstrom","home_space":"XeechLeelWardensQuarters"}
 {"id":"helstrom.household.levy-camp","place_id":"helstrom","home_space":"exterior"}
 {"id":"jal-veesa.household.CormarisBarracks","place_id":"jal-veesa","home_space":"CormarisBarracks"}
 {"id":"jal-veesa.household.CormarisBlacksmithHouse","place_id":"jal-veesa","home_space":"CormarisBlacksmithHouse"}

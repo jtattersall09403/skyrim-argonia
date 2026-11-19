@@ -15,6 +15,10 @@
    "XeechLeelWardensQuarters": {
     "name": "Council Wardens' Quarters",
     "why": "the thieves' line puts the council's six wardens in Dragonthorn Manor's barracks behind the council house (thieves.md:213, :350); no household lives there (AGENT_INVENTED)"
+   },
+   "XeechLeelStrongroom": {
+    "name": "Council Strongroom",
+    "why": "the thieves' line names the council's strongroom behind an iron door (thieves.md:210-236, :350); no household lives there (AGENT_INVENTED)"
    }
   },
   "add": [
@@ -61,6 +65,7 @@
    },
    {
     "base": "Skyrim.esm:09727E",
+    "stop": "rootworm-stop",
     "kind": "activator",
     "pos": [
      -31020.4,
@@ -184,6 +189,143 @@
      ]
     },
     "why": "the wardens' quarters' door, where Lilmoth sets the barracks' ground door, into a copy of Dragonthorn Manor Barracks (its beds for the council's wardens)"
+   },
+   {
+    "base": "King of the Murkmire.esp:093D0D",
+    "kind": "door",
+    "space": "XeechLeelCouncilHouse",
+    "pos": [
+     7540.0,
+     -6300.0,
+     5648.0
+    ],
+    "rot_z": 4.7124,
+    "need": 6,
+    "tier": "AGENT_INVENTED",
+    "why": "the council house's back door, inside: a Murkmire door (MudHutLDoor02, the house's own) in the hall's west wall on the ground floor, at the floor's height (the shell's 5648)"
+   },
+   {
+    "base": "King of the Murkmire.esp:093D0D",
+    "kind": "door",
+    "pos": [
+     -28444.0,
+     -615205.5
+    ],
+    "rot_z": 0.0,
+    "on": "helstrom.AM9WF1VR5PD1MJ3VWS1DMZYNC4",
+    "dz": 8.86,
+    "pair": "helstrom.EB2QYX38HZMAZ8YJJ19YG4ETDG",
+    "arrival": [
+     -28444.0,
+     -615340.5
+    ],
+    "need": 6,
+    "tier": "AGENT_INVENTED",
+    "lock": {
+     "level": "Expert",
+     "key": null,
+     "flags": "0"
+    },
+    "why": "the council house's back door, outside, in the house's side wall towards the boardwalk and the river landing beyond the town, locked at Expert (thieves.md:350)"
+   },
+   {
+    "base": "Skyrim.esm:0163F0",
+    "kind": "door",
+    "space": "XeechLeelCouncilHouse",
+    "pos": [
+     8180.0,
+     -5795.0,
+     5648.0
+    ],
+    "rot_z": 0.0,
+    "need": 6,
+    "tier": "AGENT_INVENTED",
+    "lock": {
+     "level": "Master",
+     "key": null,
+     "flags": "0"
+    },
+    "room": {
+     "copy_of": "journeytobaanmalur.baanmalurlocation/BaanWDWineCellar",
+     "door": "Journey to Baan Malur.esp:24B01E",
+     "space": "XeechLeelStrongroom",
+     "arrival": [
+      8180.0,
+      -5900.0,
+      5648.0
+     ],
+     "drop": {
+      "Journey to Baan Malur.esp:24AFBD": "the cellar's way on to a storehouse: the strongroom has one way in"
+     }
+    },
+    "why": "the strongroom's iron door (Skyrim's Imperial iron door, ImpJailDoor02) in the hall's back wall, locked at Master (thieves.md:350), into a copy of Journey to Baan Malur's cellar of Imperial stone"
+   },
+   {
+    "base": "Black Marsh.esm:1DE5DF",
+    "kind": "door",
+    "space": "01cellDUPLICATE002",
+    "pos": [
+     -440.0,
+     1276.0,
+     -1092.0
+    ],
+    "rot_z": 4.7124,
+    "need": 12,
+    "tier": "AGENT_INVENTED",
+    "room": {
+     "copy_of": "bmv.helstrom/01ArgonianHouseinside",
+     "door": "Black Marsh.esm:1E4419",
+     "space": "ChainbreakersSafeHouse",
+     "arrival": [
+      -320.0,
+      1276.0,
+      -1092.0
+     ]
+    },
+    "why": "the Chainbreakers' safe house, a quiet room off the market (chainbreakers-newworld.md:619): a door of the city's own Argonian houses in the Market Cave's west wall, into a further copy of the city's one-room Argonian house"
+   },
+   {
+    "base": "King of the Murkmire.esp:B7F081",
+    "kind": "container",
+    "space": "ChainbreakersSafeHouse",
+    "pos": [
+     -5500.0,
+     19250.0,
+     14790.0
+    ],
+    "rot_z": 0.6,
+    "need": 12,
+    "name": "Chest",
+    "tier": "AGENT_INVENTED",
+    "why": "the band's chest in the safe house, where a Breaker stores things (chainbreakers quest 9): King of the Murkmire's rustic chest by the east wall, at the floor's height (14771 plus its 19 below its middle)"
+   },
+   {
+    "base": "Skyrim.esm:0318EC",
+    "kind": "clutter",
+    "space": "ChainbreakersSafeHouse",
+    "pos": [
+     -5290.0,
+     19590.0,
+     14775.0
+    ],
+    "rot_z": 0.0,
+    "need": 12,
+    "tier": "AGENT_INVENTED",
+    "why": "the first of the two lanterns on the sill by the door that tell a Chainbreaker the house is safe (chainbreakers-newworld.md:619)"
+   },
+   {
+    "base": "Skyrim.esm:0318EC",
+    "kind": "clutter",
+    "space": "ChainbreakersSafeHouse",
+    "pos": [
+     -5290.0,
+     19785.0,
+     14775.0
+    ],
+    "rot_z": 0.0,
+    "need": 12,
+    "tier": "AGENT_INVENTED",
+    "why": "the second of the two lanterns on the sill by the door that tell a Chainbreaker the house is safe (chainbreakers-newworld.md:619)"
    }
   ],
   "replace": {

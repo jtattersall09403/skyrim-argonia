@@ -54,12 +54,49 @@
    "name": null
   },
   {
+   "id": "helstrom.household.ChainbreakersSafeHouse",
+   "home_space": "ChainbreakersSafeHouse",
+   "name": null
+  },
+  {
+   "id": "helstrom.household.XeechLeelWardensQuarters",
+   "home_space": "XeechLeelWardensQuarters",
+   "name": null
+  },
+  {
    "id": "helstrom.household.levy-camp",
    "home_space": "exterior",
    "name": null
   }
  ],
  "people": [
+  {
+   "id": "helstrom.0J7C4M95NPCBJYGSFHACG9FWP5",
+   "name": "Okeem-Zuul",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "forest-green",
+   "household": {
+    "id": "helstrom.household.XeechLeelWardensQuarters",
+    "role": "levy"
+   },
+   "role": "guard",
+   "trade": "the city levy, warden of the council house by night",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "He was a raft-guard on the southern rivers before the council took him on to walk the council house's stilts by night.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "story/design/quests/lines/thieves.md"
+     ]
+    }
+   ]
+  },
   {
    "id": "helstrom.1WMHR9CC0ASZH8S4KYVNRGTYW0",
    "name": "Hulun-Kesh",
@@ -236,6 +273,33 @@
    "relations": []
   },
   {
+   "id": "helstrom.4AMYC78958ZTBFVYW3CJSSAYHP",
+   "name": "Neeza-Kai",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "forest-green",
+   "household": {
+    "id": "helstrom.household.XeechLeelWardensQuarters",
+    "role": "levy"
+   },
+   "role": "guard",
+   "trade": "the city levy, warden of the council house by night",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "She came to the wardens from the city levy and still drills with them on her days off.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "story/design/quests/lines/thieves.md"
+     ]
+    }
+   ]
+  },
+  {
    "id": "helstrom.4GBW9ZEQ76A1V9ZGQ97EVH2G8Y",
    "name": "Gahzeel",
    "sex": "male",
@@ -264,6 +328,60 @@
     }
    ],
    "relations": []
+  },
+  {
+   "id": "helstrom.5R90EQ7W21933RPBYHCSFY327T",
+   "name": "Vuh-Jeedus",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "forest-green",
+   "household": {
+    "id": "helstrom.household.XeechLeelWardensQuarters",
+    "role": "levy"
+   },
+   "role": "guard",
+   "trade": "the city levy, warden of the council house by night",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "The youngest warden, set to stand before the strongroom's iron door until dawn.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "story/design/quests/lines/thieves.md"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "helstrom.61JP2A6CW1AQA3223ZEBEF74XP",
+   "name": "Tuxeel-Ra",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "forest-green",
+   "household": {
+    "id": "helstrom.household.XeechLeelWardensQuarters",
+    "role": "levy"
+   },
+   "role": "guard",
+   "trade": "the city levy, warden of the council house by night",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "He keeps the gallery side of the house and sleeps through the day's noise of the hall below.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "story/design/quests/lines/thieves.md"
+     ]
+    }
+   ]
   },
   {
    "id": "helstrom.6E8A5X2P02B4VC5QE4D7CPY62V",
@@ -445,6 +563,33 @@
     }
    ],
    "cast": "npc.mn.nesh-deeka"
+  },
+  {
+   "id": "helstrom.7Z7FD862R24F7SFGXB2226RMJ8",
+   "name": "Ruusa-Wan",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "forest-green",
+   "household": {
+    "id": "helstrom.household.ChainbreakersSafeHouse",
+    "role": "head"
+   },
+   "role": "resident",
+   "trade": "keeps a quiet house off the market",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "She keeps a quiet room behind the market's stalls and lets it only to those who give the right word; two lanterns on her sill mean the room is free.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "story/design/quests/lines/chainbreakers-newworld.md"
+     ]
+    }
+   ]
   },
   {
    "id": "helstrom.82Z8NX6PFJJAFJTXPT9AFW5F4G",
@@ -857,6 +1002,33 @@
     }
    ],
    "relations": []
+  },
+  {
+   "id": "helstrom.CWA9CJ68VPK5676GCNK6NK109T",
+   "name": "Haj-Teesh",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "forest-green",
+   "household": {
+    "id": "helstrom.household.XeechLeelWardensQuarters",
+    "role": "head"
+   },
+   "role": "guard",
+   "trade": "the city levy, warden of the council house by night",
+   "wealth": "W3",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "The council's head warden. He keeps the night's watch on the council house and the key to nothing but his own sword; the strongroom's key stays with the treasurer.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "story/design/quests/lines/thieves.md"
+     ]
+    }
+   ]
   },
   {
    "id": "helstrom.E4G7P7W1SB055JJNA9BMYTA5FC",
@@ -1355,6 +1527,33 @@
    "relations": []
   },
   {
+   "id": "helstrom.QEY7K2WJP4FPXTKFPDZ9CM5BFT",
+   "name": "Seesa-Lur",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "forest-green",
+   "household": {
+    "id": "helstrom.household.XeechLeelWardensQuarters",
+    "role": "levy"
+   },
+   "role": "guard",
+   "trade": "the city levy, warden of the council house by night",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "She watches the back door to the river landing and counts the rafts that tie up below it after dark.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "story/design/quests/lines/thieves.md"
+     ]
+    }
+   ]
+  },
+  {
    "id": "helstrom.QX0K55RYNW76K37N2DWEGSDHEP",
    "name": "Heetaxi",
    "sex": "male",
@@ -1531,6 +1730,33 @@
     }
    ],
    "relations": []
+  },
+  {
+   "id": "helstrom.V8XSN0ZJXPXDQZ7YC5R2EQYRBK",
+   "name": "Gathe-Ru",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "forest-green",
+   "household": {
+    "id": "helstrom.household.XeechLeelWardensQuarters",
+    "role": "lodger"
+   },
+   "role": "resident",
+   "trade": "cook to the council house",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "Born in Pusbottom, she cooks for the council house and sleeps in the wardens' quarters. She owes a Lilmoth moneylender more than a cook can pay.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "story/design/quests/lines/thieves.md"
+     ]
+    }
+   ]
   },
   {
    "id": "helstrom.VP6HTF3EAYM7XEM7WECSPEG8FN",

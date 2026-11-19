@@ -242,6 +242,23 @@
    "owner_household": "helstrom.household.01ArgonianHouseinside.8"
   },
   {
+   "ref": "helstrom.XJYPRMWPC20D47GC846FZFYMC6",
+   "space": "01ArgonianHouseinside.8",
+   "kind": "chest",
+   "owner_household": "helstrom.household.01ArgonianHouseinside.8",
+   "lock": "Novice",
+   "security": "S2",
+   "tier": "T1",
+   "gold": 0,
+   "items": [],
+   "why": "Nesh-Deeka's household's locked chest, in the house nearest the city landing: empty and locked at Novice so the main story can keep a secret in it in place of a back room; the household's store stays its dresser",
+   "cites": [
+    "place_wealth:helstrom",
+    "person:helstrom.TA28STYJ3XNYJ9FPVMQEYJVQQ4",
+    "story/design/quests/lines/main-plot.md"
+   ]
+  },
+  {
    "ref": "Black Marsh.esm:1DE91F",
    "space": "01ArgonianHouseinside.9",
    "kind": "dresser",
@@ -257,6 +274,23 @@
    "owner_household": "helstrom.household.01ArgonianHouseinside.9"
   },
   {
+   "ref": "helstrom.JH7GJQBX839W4R6CB06KEZ9QAY",
+   "space": "01BlackRoseJail",
+   "kind": "chest",
+   "owner_faction": "helstrom.town",
+   "lock": "Expert",
+   "security": "S4",
+   "tier": "T4",
+   "gold": 0,
+   "items": [],
+   "why": "the case that holds the Sisei-Xul's sealed urn in the tree-minders' hall: the assembly of tree-minders keeps it, so the town owns it, and it is locked at Expert (House Cardruhn's 9. The Urn asks an expert lock); it holds nothing of the stock's, the urn is the quests' own thing",
+   "cites": [
+    "place_wealth:helstrom",
+    "story/design/quests/lines/house-cardruhn.md",
+    "story/design/quests/lines/sisei-xul.md"
+   ]
+  },
+  {
    "ref": "Black Marsh.esm:23D5B5",
    "space": "01Ship",
    "kind": "chest",
@@ -270,27 +304,6 @@
     "person:helstrom.8A62J4KYJ8DA3F58WKMRY3Y79F"
    ],
    "owner_household": "helstrom.household.01Ship"
-  },
-  {
-   "ref": "helstrom.86CBE7ZFHVE5RE15Q94RB2FF14",
-   "space": "exterior",
-   "kind": "barrel",
-   "security": "S1",
-   "tier": "T2",
-   "gold": 0,
-   "items": [
-    {
-     "item": "Skyrim.esm:03EADD",
-     "count": 2,
-     "why": "the levy's field dressings"
-    }
-   ],
-   "why": "the levy's camp barrel at the landing: the guard's store, sound gear and field dressings, owned by the levy so taking from it is stealing; its gold is kept by each guard, not the camp",
-   "cites": [
-    "place_wealth:helstrom",
-    "person:helstrom.87WTH0EW4WJ6AQ9CTRC7GXAZTS"
-   ],
-   "owner_faction": "helstrom.guard"
   },
   {
    "ref": "Black Marsh.esm:23D5E6",
@@ -319,6 +332,59 @@
    "cites": [
     "place_wealth:helstrom"
    ]
+  },
+  {
+   "ref": "helstrom.4NQN02EEZCY8HEH6B1RA9VG6W9",
+   "space": "ChainbreakersSafeHouse",
+   "kind": "chest",
+   "security": "S1",
+   "tier": "T1",
+   "gold": 10,
+   "items": [],
+   "why": "the household store of Ruusa-Wan (W2 Poor, head of 1), the safe house's keeper, which a Breaker may use (chainbreakers-newworld.md:619): gold 10; best tier T1; owned and unlocked",
+   "cites": [
+    "place_wealth:helstrom",
+    "person:helstrom.7Z7FD862R24F7SFGXB2226RMJ8",
+    "story/design/quests/lines/chainbreakers-newworld.md"
+   ],
+   "owner_household": "helstrom.household.ChainbreakersSafeHouse"
+  },
+  {
+   "ref": "helstrom.4BT72PN2KW23D2FN72FPPS8FMG",
+   "space": "exterior",
+   "kind": "urn",
+   "owner_faction": "helstrom.town",
+   "lock": "Novice",
+   "security": "S2",
+   "tier": "T1",
+   "gold": 0,
+   "items": [],
+   "why": "the city tree's sealed spring: the town shut it away, so the town owns it and it is locked (Novice, the lock of the open tier); it holds nothing of the stock's, its water is the main story's to give",
+   "cites": [
+    "place_wealth:helstrom",
+    "story/design/quests/lines/main-plot.md"
+   ]
+  },
+  {
+   "ref": "helstrom.86CBE7ZFHVE5RE15Q94RB2FF14",
+   "space": "exterior",
+   "kind": "barrel",
+   "security": "S1",
+   "tier": "T2",
+   "gold": 0,
+   "items": [
+    {
+     "item": "Skyrim.esm:03EADD",
+     "count": 2,
+     "why": "the levy's field dressings"
+    }
+   ],
+   "why": "the levy's camp barrel at the landing: the guard's store, sound gear and field dressings, owned by the levy so taking from it is stealing; its gold is kept by each guard, not the camp",
+   "cites": [
+    "place_wealth:helstrom",
+    "person:helstrom.87WTH0EW4WJ6AQ9CTRC7GXAZTS"
+   ],
+   "owner_faction": "helstrom.guard"
   },
   {
    "ref": "helstrom.FDFK0WXD3T1JDBRX2PRY07A0ZR",
@@ -378,56 +444,6 @@
    "why": "a body on the city's ground with no owner, so free to take; the open tier T1 of a D1 place, the least gold of that tier",
    "cites": [
     "place_wealth:helstrom"
-   ]
-  },
-  {
-   "ref": "helstrom.4BT72PN2KW23D2FN72FPPS8FMG",
-   "space": "exterior",
-   "kind": "urn",
-   "owner_faction": "helstrom.town",
-   "lock": "Novice",
-   "security": "S2",
-   "tier": "T1",
-   "gold": 0,
-   "items": [],
-   "why": "the city tree's sealed spring: the town shut it away, so the town owns it and it is locked (Novice, the lock of the open tier); it holds nothing of the stock's, its water is the main story's to give",
-   "cites": [
-    "place_wealth:helstrom",
-    "story/design/quests/lines/main-plot.md"
-   ]
-  },
-  {
-   "ref": "helstrom.XJYPRMWPC20D47GC846FZFYMC6",
-   "space": "01ArgonianHouseinside.8",
-   "kind": "chest",
-   "owner_household": "helstrom.household.01ArgonianHouseinside.8",
-   "lock": "Novice",
-   "security": "S2",
-   "tier": "T1",
-   "gold": 0,
-   "items": [],
-   "why": "Nesh-Deeka's household's locked chest, in the house nearest the city landing: empty and locked at Novice so the main story can keep a secret in it in place of a back room; the household's store stays its dresser",
-   "cites": [
-    "place_wealth:helstrom",
-    "person:helstrom.TA28STYJ3XNYJ9FPVMQEYJVQQ4",
-    "story/design/quests/lines/main-plot.md"
-   ]
-  },
-  {
-   "ref": "helstrom.JH7GJQBX839W4R6CB06KEZ9QAY",
-   "space": "01BlackRoseJail",
-   "kind": "chest",
-   "owner_faction": "helstrom.town",
-   "lock": "Expert",
-   "security": "S4",
-   "tier": "T4",
-   "gold": 0,
-   "items": [],
-   "why": "the case that holds the Sisei-Xul's sealed urn in the tree-minders' hall: the assembly of tree-minders keeps it, so the town owns it, and it is locked at Expert (House Cardruhn's 9. The Urn asks an expert lock); it holds nothing of the stock's, the urn is the quests' own thing",
-   "cites": [
-    "place_wealth:helstrom",
-    "story/design/quests/lines/house-cardruhn.md",
-    "story/design/quests/lines/sisei-xul.md"
    ]
   }
  ],
@@ -619,6 +635,48 @@
  ],
  "possessions": [
   {
+   "person": "helstrom.0J7C4M95NPCBJYGSFHACG9FWP5",
+   "items": [
+    {
+     "item": "Skyrim.esm:07A91A",
+     "count": 1,
+     "worn": true,
+     "why": "the city levy, warden of the council house by night: a sword of T2 (made here)"
+    },
+    {
+     "item": "Black Marsh North.esp:037DF0",
+     "count": 1,
+     "worn": true,
+     "why": "the levy's issue: Helstrom's guards wear its own culture's guard set, BM&V's Argonian guard armour (T3): the place's mods provide it and its ceiling (T4) reaches it"
+    },
+    {
+     "item": "Black Marsh North.esp:037DF3",
+     "count": 1,
+     "worn": true,
+     "why": "the levy's issue: Helstrom's guards wear its own culture's guard set, BM&V's Argonian guard armour (T3): the place's mods provide it and its ceiling (T4) reaches it"
+    },
+    {
+     "item": "Black Marsh North.esp:037DF7",
+     "count": 1,
+     "worn": true,
+     "why": "the levy's issue: Helstrom's guards wear its own culture's guard set, BM&V's Argonian guard armour (T3): the place's mods provide it and its ceiling (T4) reaches it"
+    },
+    {
+     "item": "Skyrim.esm:01D4EC",
+     "count": 1,
+     "worn": false,
+     "why": "the levy's torch: Every guard carries one plain torch, as Skyrim's guards do through their gear lists: the night watch lights its way after dark. The torch itself, never a levelled list (decision 0035)."
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 5,
+     "worn": false,
+     "why": "carried gold, 2-10 for W2 Poor"
+    }
+   ],
+   "why": "Okeem-Zuul: guard, the city levy, warden of the council house by night, W2; best tier T2"
+  },
+  {
    "person": "helstrom.1WMHR9CC0ASZH8S4KYVNRGTYW0",
    "items": [
     {
@@ -757,6 +815,48 @@
    "why": "Lieshu: resident, herb-gatherer, W3 Modest"
   },
   {
+   "person": "helstrom.4AMYC78958ZTBFVYW3CJSSAYHP",
+   "items": [
+    {
+     "item": "Skyrim.esm:07A91A",
+     "count": 1,
+     "worn": true,
+     "why": "the city levy, warden of the council house by night: a sword of T2 (made here)"
+    },
+    {
+     "item": "Black Marsh North.esp:037DF0",
+     "count": 1,
+     "worn": true,
+     "why": "the levy's issue: Helstrom's guards wear its own culture's guard set, BM&V's Argonian guard armour (T3): the place's mods provide it and its ceiling (T4) reaches it"
+    },
+    {
+     "item": "Black Marsh North.esp:037DF3",
+     "count": 1,
+     "worn": true,
+     "why": "the levy's issue: Helstrom's guards wear its own culture's guard set, BM&V's Argonian guard armour (T3): the place's mods provide it and its ceiling (T4) reaches it"
+    },
+    {
+     "item": "Black Marsh North.esp:037DF7",
+     "count": 1,
+     "worn": true,
+     "why": "the levy's issue: Helstrom's guards wear its own culture's guard set, BM&V's Argonian guard armour (T3): the place's mods provide it and its ceiling (T4) reaches it"
+    },
+    {
+     "item": "Skyrim.esm:01D4EC",
+     "count": 1,
+     "worn": false,
+     "why": "the levy's torch: Every guard carries one plain torch, as Skyrim's guards do through their gear lists: the night watch lights its way after dark. The torch itself, never a levelled list (decision 0035)."
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 5,
+     "worn": false,
+     "why": "carried gold, 2-10 for W2 Poor"
+    }
+   ],
+   "why": "Neeza-Kai: guard, the city levy, warden of the council house by night, W2; best tier T2"
+  },
+  {
    "person": "helstrom.4GBW9ZEQ76A1V9ZGQ97EVH2G8Y",
    "items": [
     {
@@ -803,6 +903,90 @@
     }
    ],
    "why": "Gahzeel: guard, the city levy, night watch, W2 Poor"
+  },
+  {
+   "person": "helstrom.5R90EQ7W21933RPBYHCSFY327T",
+   "items": [
+    {
+     "item": "Skyrim.esm:07A91A",
+     "count": 1,
+     "worn": true,
+     "why": "the city levy, warden of the council house by night: a sword of T2 (made here)"
+    },
+    {
+     "item": "Black Marsh North.esp:037DF0",
+     "count": 1,
+     "worn": true,
+     "why": "the levy's issue: Helstrom's guards wear its own culture's guard set, BM&V's Argonian guard armour (T3): the place's mods provide it and its ceiling (T4) reaches it"
+    },
+    {
+     "item": "Black Marsh North.esp:037DF3",
+     "count": 1,
+     "worn": true,
+     "why": "the levy's issue: Helstrom's guards wear its own culture's guard set, BM&V's Argonian guard armour (T3): the place's mods provide it and its ceiling (T4) reaches it"
+    },
+    {
+     "item": "Black Marsh North.esp:037DF7",
+     "count": 1,
+     "worn": true,
+     "why": "the levy's issue: Helstrom's guards wear its own culture's guard set, BM&V's Argonian guard armour (T3): the place's mods provide it and its ceiling (T4) reaches it"
+    },
+    {
+     "item": "Skyrim.esm:01D4EC",
+     "count": 1,
+     "worn": false,
+     "why": "the levy's torch: Every guard carries one plain torch, as Skyrim's guards do through their gear lists: the night watch lights its way after dark. The torch itself, never a levelled list (decision 0035)."
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 5,
+     "worn": false,
+     "why": "carried gold, 2-10 for W2 Poor"
+    }
+   ],
+   "why": "Vuh-Jeedus: guard, the city levy, warden of the council house by night, W2; best tier T2"
+  },
+  {
+   "person": "helstrom.61JP2A6CW1AQA3223ZEBEF74XP",
+   "items": [
+    {
+     "item": "Skyrim.esm:07A91A",
+     "count": 1,
+     "worn": true,
+     "why": "the city levy, warden of the council house by night: a sword of T2 (made here)"
+    },
+    {
+     "item": "Black Marsh North.esp:037DF0",
+     "count": 1,
+     "worn": true,
+     "why": "the levy's issue: Helstrom's guards wear its own culture's guard set, BM&V's Argonian guard armour (T3): the place's mods provide it and its ceiling (T4) reaches it"
+    },
+    {
+     "item": "Black Marsh North.esp:037DF3",
+     "count": 1,
+     "worn": true,
+     "why": "the levy's issue: Helstrom's guards wear its own culture's guard set, BM&V's Argonian guard armour (T3): the place's mods provide it and its ceiling (T4) reaches it"
+    },
+    {
+     "item": "Black Marsh North.esp:037DF7",
+     "count": 1,
+     "worn": true,
+     "why": "the levy's issue: Helstrom's guards wear its own culture's guard set, BM&V's Argonian guard armour (T3): the place's mods provide it and its ceiling (T4) reaches it"
+    },
+    {
+     "item": "Skyrim.esm:01D4EC",
+     "count": 1,
+     "worn": false,
+     "why": "the levy's torch: Every guard carries one plain torch, as Skyrim's guards do through their gear lists: the night watch lights its way after dark. The torch itself, never a levelled list (decision 0035)."
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 5,
+     "worn": false,
+     "why": "carried gold, 2-10 for W2 Poor"
+    }
+   ],
+   "why": "Tuxeel-Ra: guard, the city levy, warden of the council house by night, W2; best tier T2"
   },
   {
    "person": "helstrom.6E8A5X2P02B4VC5QE4D7CPY62V",
@@ -971,6 +1155,24 @@
     }
    ],
    "why": "Nesh-Deeka: resident, tally-keeper of goods landed at the river fork, W3 Modest"
+  },
+  {
+   "person": "helstrom.7Z7FD862R24F7SFGXB2226RMJ8",
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "worn": true,
+     "why": "keeps a quiet house off the market: a dagger of T1 (made here)"
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 10,
+     "worn": false,
+     "why": "carried gold, 2-10 for W2 Poor"
+    }
+   ],
+   "why": "Ruusa-Wan: resident, keeps a quiet house off the market, W2; best tier T1"
   },
   {
    "person": "helstrom.82Z8NX6PFJJAFJTXPT9AFW5F4G",
@@ -1277,6 +1479,54 @@
     }
    ],
    "why": "Xilsa-Jee: resident, root-tender, learning the tree-minder's work, W2 Poor"
+  },
+  {
+   "person": "helstrom.CWA9CJ68VPK5676GCNK6NK109T",
+   "items": [
+    {
+     "item": "Skyrim.esm:07A91A",
+     "count": 1,
+     "worn": true,
+     "why": "the city levy, warden of the council house by night: a sword of T2 (made here)"
+    },
+    {
+     "item": "Black Marsh North.esp:037DF0",
+     "count": 1,
+     "worn": true,
+     "why": "the levy's issue: Helstrom's guards wear its own culture's guard set, BM&V's Argonian guard armour (T3): the place's mods provide it and its ceiling (T4) reaches it"
+    },
+    {
+     "item": "Black Marsh North.esp:037DF3",
+     "count": 1,
+     "worn": true,
+     "why": "the levy's issue: Helstrom's guards wear its own culture's guard set, BM&V's Argonian guard armour (T3): the place's mods provide it and its ceiling (T4) reaches it"
+    },
+    {
+     "item": "Black Marsh North.esp:037DF7",
+     "count": 1,
+     "worn": true,
+     "why": "the levy's issue: Helstrom's guards wear its own culture's guard set, BM&V's Argonian guard armour (T3): the place's mods provide it and its ceiling (T4) reaches it"
+    },
+    {
+     "item": "Skyrim.esm:01D4EC",
+     "count": 1,
+     "worn": false,
+     "why": "the levy's torch: Every guard carries one plain torch, as Skyrim's guards do through their gear lists: the night watch lights its way after dark. The torch itself, never a levelled list (decision 0035)."
+    },
+    {
+     "item": "Skyrim.esm:03B97C",
+     "count": 1,
+     "worn": true,
+     "why": "modest: worn jewellery"
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 14,
+     "worn": false,
+     "why": "carried gold, 8-25 for W3 Modest"
+    }
+   ],
+   "why": "Haj-Teesh: guard, the city levy, warden of the council house by night, W3; best tier T3"
   },
   {
    "person": "helstrom.E4G7P7W1SB055JJNA9BMYTA5FC",
@@ -1723,6 +1973,48 @@
    "why": "Ooxa-Leet: resident, naheesh of the assembly, W3 Modest"
   },
   {
+   "person": "helstrom.QEY7K2WJP4FPXTKFPDZ9CM5BFT",
+   "items": [
+    {
+     "item": "Skyrim.esm:07A91A",
+     "count": 1,
+     "worn": true,
+     "why": "the city levy, warden of the council house by night: a sword of T2 (made here)"
+    },
+    {
+     "item": "Black Marsh North.esp:037DF0",
+     "count": 1,
+     "worn": true,
+     "why": "the levy's issue: Helstrom's guards wear its own culture's guard set, BM&V's Argonian guard armour (T3): the place's mods provide it and its ceiling (T4) reaches it"
+    },
+    {
+     "item": "Black Marsh North.esp:037DF3",
+     "count": 1,
+     "worn": true,
+     "why": "the levy's issue: Helstrom's guards wear its own culture's guard set, BM&V's Argonian guard armour (T3): the place's mods provide it and its ceiling (T4) reaches it"
+    },
+    {
+     "item": "Black Marsh North.esp:037DF7",
+     "count": 1,
+     "worn": true,
+     "why": "the levy's issue: Helstrom's guards wear its own culture's guard set, BM&V's Argonian guard armour (T3): the place's mods provide it and its ceiling (T4) reaches it"
+    },
+    {
+     "item": "Skyrim.esm:01D4EC",
+     "count": 1,
+     "worn": false,
+     "why": "the levy's torch: Every guard carries one plain torch, as Skyrim's guards do through their gear lists: the night watch lights its way after dark. The torch itself, never a levelled list (decision 0035)."
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 5,
+     "worn": false,
+     "why": "carried gold, 2-10 for W2 Poor"
+    }
+   ],
+   "why": "Seesa-Lur: guard, the city levy, warden of the council house by night, W2; best tier T2"
+  },
+  {
    "person": "helstrom.QX0K55RYNW76K37N2DWEGSDHEP",
    "items": [
     {
@@ -1829,6 +2121,24 @@
     }
    ],
    "why": "Taleeka-Ma: spell-trader, tree-minder and healer; sells Restoration and Alteration tomes, W3 Modest"
+  },
+  {
+   "person": "helstrom.V8XSN0ZJXPXDQZ7YC5R2EQYRBK",
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "worn": true,
+     "why": "cook to the council house: a dagger of T1 (made here)"
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 7,
+     "worn": false,
+     "why": "carried gold, 2-10 for W2 Poor"
+    }
+   ],
+   "why": "Gathe-Ru: resident, cook to the council house, W2; best tier T1"
   },
   {
    "person": "helstrom.VP6HTF3EAYM7XEM7WECSPEG8FN",

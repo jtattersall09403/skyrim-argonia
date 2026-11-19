@@ -1,23 +1,27 @@
 """Things the agent adds to a place by hand: place.json `draft.add`, one row per thing.
 
 A row: {base, pos: [x, y] outside | [x, y, z] in a room, space? (a room's space id; default the exterior), rot_z?,
-scale?, kind?, dz?, on?, walk?, name?, need?, map_marker?, room?, why, tier?}. Outside the thing is seated on the ground (its
-true footprint, `dz` over the lowest ground under it), or with `on` (a placed row's id, an added row's minted id
-included) `dz` over that row's origin, carried with it (moss on a fence, a door on its building); in a room it stands
-where `pos` puts
-it (a room's floor is the source's, so its height is measured off the floor-standing piece beside it and given).
-`name` is the name the game shows on looking at it (a container's: the build makes the container of ours carry it);
-`need` the story need it meets, by seq; `map_marker` the name a map marker shows on the world map (the row's base is
-Skyrim's map marker, 000010). Its id is minted from its place in the list and its base, so a rerun keeps it. The whole
-draft adds them; on a drafted place `draft add <place>` places them again from `draft.add` and touches no other row.
+scale?, kind?, dz?, on?, walk?, stop?, lock?, name?, need?, map_marker?, room?, pair?, arrival?, why, tier?}. Outside
+the thing is seated on the ground (its true footprint, `dz` over the lowest ground under it), or with `on` (a placed
+row's id, an added row's minted id included) `dz` over that row's origin, carried with it (moss on a fence, a door on
+its building); in a room it stands where `pos` puts it (a room's floor is the source's, so its height is measured off
+the floor-standing piece beside it and given). `walk` is a walkway's deck height where its mesh's top is a rail;
+`stop` marks the thing a travel stop's handler works at (`rootworm-stop` on a root pool); `lock` is the ref's lock
+({level, key, flags}); `name` the name the game shows on looking at it; `need` the story need it meets, by seq;
+`map_marker` the name a map marker shows on the world map (the row's base is Skyrim's map marker, 000010). Its id is
+minted from its place in the list and its base, so a rerun keeps it. The whole draft adds them; on a drafted place
+`draft add <place>` places them again from `draft.add` and touches no other row.
 
 A door with `room` {copy_of: "<source_id>/<cell>", door?: the cell's way out (source ref id), space?: our space id
-(default the cell's), arrival: [x, y] where one steps out, drop?: {source ref id: why} for a piece the room must not
-have (a container of levelled treasure: decision 0035)} brings that interior of any source we hold as a copied
-room of ours, its way out paired with this door: the room's `space.json` (marked `added`) and its refs file of our
-changes only (the way out re-pointed at our door, any further way out removed, every piece the catalogue judges
-Nordic replaced by `draft.replace` or removed: decision 0006). A room with a door on into a further interior is
-refused. Once the streets stage has moved the door's arrival onto the walkable network, a rerun keeps it.
+(default the cell's), arrival: where one steps out ([x, y] outside, [x, y, z] in a room), drop?: {source ref id: why}
+for a piece the room must not have (a container of levelled treasure: decision 0035; a door on to a further room)}
+brings that interior of any source we hold as a copied room of ours behind the door, outside or in another room (of
+a cell that packs several rooms, the one behind that way out):
+the room's `space.json` (marked `added`) and its refs file of our changes only (the way out re-pointed at our door,
+any further way out removed, every piece the catalogue judges Nordic replaced by `draft.replace` or removed: decision
+0006). A further way into a room is a pair of added doors: one standing in the room, and one outside naming it in
+`pair`, with its `arrival`. Once the streets stage has moved a door's arrival onto the walkable network, a rerun
+keeps it.
 """
 from __future__ import annotations
 
@@ -25,7 +29,7 @@ import copy
 
 from tools.places.draft import geom, interiors, io
 
-FIELDS = ("name", "need", "tier")
+FIELDS = ("name", "need", "tier", "lock")
 
 
 def rows(place_id: str, dec: dict, bases: dict) -> list[tuple[str, dict]]:
@@ -124,7 +128,7 @@ def settle(rows: list[dict], others: list[dict], bases: dict, G, norm: float, lo
 
 
 def room(place_id: str, door: dict, spec: dict, src, replace: dict, nordic: set, G,
-         arrival: list | None = None) -> tuple[str, dict, list[dict]]:
+         arrival: list | None = None, parent: str = "exterior") -> tuple[str, dict, list[dict]]:
     """The copied room a door of ours leads into: (space id, space.json, refs of our changes). Sets the door's own
     `door`: into the room, and its `arrival` outside (`arrival` when the streets stage has placed it, else the row's)."""
     cell = spec["copy_of"].split("/", 1)[1]
@@ -136,10 +140,16 @@ def room(place_id: str, door: dict, spec: dict, src, replace: dict, nordic: set,
     back = next((r for r in ways if r["id"] == spec.get("door")), None) if spec.get("door") else (ways[0] if ways else None)
     if back is None:
         raise ValueError(f"draft.add {door['id']}: room {spec['copy_of']} has no way out {spec.get('door') or ''}")
-    inner = [r["id"] for r in sp.refs if (r.get("door") or {}).get("to_space") not in (None, "exterior")]
+    # a cell that packs several rooms (one behind each way out) is copied as the one room behind this way out
+    part = back["id"] if len(ways) > 1 and interiors.shared(sp.refs, src) else None
+    keep = interiors.kept(spec["copy_of"], part)
+    inner = [r["id"] for r in sp.refs if (r.get("door") or {}).get("to_space") not in (None, "exterior")
+             and r["id"] not in (spec.get("drop") or {}) and (keep is None or r["id"] in keep)]
     if inner:
         raise ValueError(f"draft.add {door['id']}: room {spec['copy_of']} leads on into further rooms ({inner[:3]})")
-    if arrival is None:
+    if arrival is None and parent != "exterior":     # inside a room: where one steps out is given whole
+        arrival = [float(v) for v in spec["arrival"][:3]]
+    elif arrival is None:
         ax, ay = (float(v) for v in spec["arrival"][:2])
         h = G.height(ax, ay)
         arrival = [round(ax, 2), round(ay, 2), round(h if h is not None else door["pos"][2], 2)]
@@ -149,21 +159,49 @@ def room(place_id: str, door: dict, spec: dict, src, replace: dict, nordic: set,
     door["door"] = {"to_space": sid, "to_ref": back_id, "to_pos": list(into[0] or back["pos"]),
                     "to_rot": list(into[1] or back.get("rot") or [0, 0, 0]), "flags": "0", "arrival": list(arrival)}
     out = [{**back, "id": back_id, "src": back["id"], "seat": {"mode": "free"},
-            "door": {**back["door"], "to_space": "exterior", "to_ref": door["id"], "to_pos": list(arrival),
+            "door": {**back["door"], "to_space": parent, "to_ref": door["id"], "to_pos": list(arrival),
                      "to_rot": [0.0, 0.0, door["rot"][2]]}}]
     for r in sorted(sp.refs, key=lambda r: r["id"]):
-        if r is back or r.get("kind") == "actor":
+        if r is back or r.get("kind") == "actor" or (keep is not None and r["id"] not in keep):
             continue
         rid = io.mint(place_id, sid, r["id"])
-        if (r.get("door") or {}).get("to_space") == "exterior" or r["id"] in (spec.get("drop") or {}):
+        if (r.get("door") or {}).get("to_space") is not None or r["id"] in (spec.get("drop") or {}):
             out.append({"id": rid, "src": r["id"], "removed": True})       # one way in: this door's; or the agent's drop
         elif r.get("base") in replace:
             out.append({**r, **interiors.swap(r, {}, replace[r["base"]]), "id": rid, "src": r["id"], "seat": {"mode": "free"}})
         elif r.get("base") in nordic:
             out.append({"id": rid, "src": r["id"], "removed": True})       # a Nordic piece we would add (0006)
     info = {"space_id": sid, "copy_of": spec["copy_of"], "name": sp.meta.get("name"), "door_from": door["id"],
-            "parent": "exterior", "room": None, "added": True}
+            "parent": parent, "room": part, "added": True}
     return sid, info, out
+
+
+def pair(st, want: list[tuple[str, dict]], adds: list[dict], standing: dict) -> None:
+    """A further way into a room: an added door with `pair` (the id of an added door standing in that room) and
+    `arrival` ([x, y] where one steps out) leads into the room by that inner door, and the inner door out by it. The
+    inner door's arrival is a step in front of it (its local -Y), facing away from it."""
+    import math
+    by = {r["id"]: (sid, r) for sid, r in want}
+    for (sid, r), a in zip(want, adds):
+        if not a.get("pair"):
+            continue
+        if a["pair"] not in by or by[a["pair"]][0] == sid:
+            raise ValueError(f"draft.add {r['id']}: pair {a['pair']} is not an added door in another space")
+        isid, inner = by[a["pair"]]
+        moved = ((standing.get(r["id"]) or {}).get("door") or {}).get("arrival")
+        if moved is None:
+            ax, ay = (float(v) for v in a["arrival"][:2])
+            h = st.G.height(ax, ay) if sid == "exterior" else None
+            moved = [round(ax, 2), round(ay, 2), round(h if h is not None else r["pos"][2], 2)]
+        rz = inner["rot"][2]
+        front = [round(inner["pos"][0] - 128.0 * math.sin(rz), 2), round(inner["pos"][1] - 128.0 * math.cos(rz), 2),
+                 inner["pos"][2]]
+        r["door"] = {"to_space": isid, "to_ref": inner["id"], "to_pos": front,
+                     "to_rot": [0.0, 0.0, round((rz + math.pi) % (2 * math.pi), 5)], "flags": "0", "arrival": list(moved)}
+        inner["door"] = {"to_space": sid, "to_ref": r["id"], "to_pos": list(moved), "to_rot": [0.0, 0.0, r["rot"][2]],
+                         "flags": "0"}
+        for x in (r, inner):
+            x["flags"] = ["persistent"]
 
 
 SPUR = ".path.add."      # an added door's path: `<place>.path.add.<door id's tail>`
@@ -218,8 +256,6 @@ def apply(st, log=print) -> None:
     for (sid, r), a in zip(want, adds):
         if not a.get("room"):
             continue
-        if sid != "exterior":
-            raise ValueError(f"draft.add {r['id']}: a room's door stands outside")
         source_id, cell = a["room"]["copy_of"].split("/", 1)
         if source_id not in srcs:
             srcs[source_id] = st.src if source_id == st.place.get("source_id") else io.load(f"src.{source_id}", st.bundles)
@@ -227,7 +263,7 @@ def apply(st, log=print) -> None:
         keys = {x["base"] for x in (src.spaces[cell].refs if cell in src.spaces else [])}
         nordic = {k for k, b in io.catalogue_bases(keys).items() if b.get("nordic")}
         moved = ((standing.get(r["id"]) or {}).get("door") or {}).get("arrival")
-        rid, info, refs = room(st.place_id, r, a["room"], src, replace, nordic, st.G, moved)
+        rid, info, refs = room(st.place_id, r, a["room"], src, replace, nordic, st.G, moved, sid)
         have = (st.files["spaces"].get(rid) or {}).get("space")
         if (have is not None and not have.get("added")) or rid in rooms:
             raise ValueError(f"draft.add {r['id']}: room {rid} is already a space of the place: give the room a `space`")
@@ -242,9 +278,11 @@ def apply(st, log=print) -> None:
             log(f"draft add {st.place_id}: room {sid} copied from {info['copy_of']} behind {info['door_from']}")
             continue
         info = {**info, "name": sp["space"].get("name") or info["name"]}     # its name is the names stage's
-        if info != sp["space"] or refs != sp["refs"]:
+        refs = sorted(refs + [x for x in sp["refs"] if not x.get("src")], key=lambda x: x["id"])   # what is added in it stays
+        if info != sp["space"] or refs != sorted(sp["refs"], key=lambda x: x["id"]):
             sp["space"], sp["refs"] = info, refs
             log(f"draft add {st.place_id}: room {sid} copied again")
+    pair(st, want, adds, standing)
     spurs(st, [r for sid, r in want if sid == "exterior" and (r.get("door") or {}).get("arrival")], log)
     outside = [r for sid, r in want if sid == "exterior"]
     settle(outside, [r for r in st.ext if r["id"] not in ids], st.bases, st.G,

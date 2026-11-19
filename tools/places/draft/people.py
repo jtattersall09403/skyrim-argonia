@@ -225,6 +225,33 @@ def give_to_residents(folk: list[dict], gives: list[dict], identities: dict[str,
     return out
 
 
+def spots_of(place_id: str, place: dict) -> dict[str, str]:
+    """{give kind: ref id} of the `draft.add` rows marked with a `stop` (the rootworm's root pool)."""
+    from tools.places.draft import io
+    return {a["stop"]: io.mint(place_id, "add", str(k), a["base"])
+            for k, a in enumerate((place.get("draft") or {}).get("add") or []) if a.get("stop")}
+
+
+def stop_spots(folk: list[dict], spots: dict[str, str]) -> list[str]:
+    """A stop's handler works at the stop's own thing where the place has one (`spots`: give kind -> the ref of the
+    `draft.add` row marked with that `stop`, a rootworm's root pool): their work and the work hours of their day
+    stand there. Returns the people moved."""
+    out = []
+    for p in folk:
+        kind = next((s["kind"] for s in p.get("services") or [] if s.get("kind") in spots), None)
+        if kind is None:
+            continue
+        want = {"space": "exterior", "ref": spots[kind], "radius": 384}
+        if p.get("work") == want:
+            continue
+        p["work"] = want
+        for st in p.get("routine") or []:
+            if st.get("kind") == "work":
+                st["at"] = dict(want)
+        out.append(p["id"])
+    return out
+
+
 def role_score(npc: dict, role: str, races: dict | None = None) -> float:
     blob = " ".join(str(npc.get(k, "")) for k in ("edid", "name", "class", "services")) + " " + \
         " ".join(str(f.get("faction", "")) for f in npc.get("factions") or [])

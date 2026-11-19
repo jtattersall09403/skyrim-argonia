@@ -918,6 +918,7 @@ def finish(place_id: str, places: Path, bases: dict, log=print) -> int:
     for pid in people.give_to_residents(folk, place_record(place_id)[1], who, hist,
                                          people.routes_of(place_id)):
         log(f"join {place_id}: {pid} keeps a promise of the place beside their own life")
+    people.stop_spots(folk, people.spots_of(place_id, place))
     people.apply_identities(folk, who)
     if json.dumps(folk, sort_keys=True) != before:
         was = {p["id"]: json.dumps(p, sort_keys=True) for p in json.loads(before)}

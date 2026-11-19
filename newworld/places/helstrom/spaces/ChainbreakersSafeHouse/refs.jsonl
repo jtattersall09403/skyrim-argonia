@@ -1,0 +1,13 @@
+{"id":"helstrom.25RZSCW2BWJQJM7B29WZFBV0YE","src":"Black Marsh.esm:1E43AE","removed":true}
+{"id":"helstrom.2K9VTKKA19WF7YZKVX157QP348","src":"Black Marsh.esm:1E436D","removed":true}
+{"id":"helstrom.4NQN02EEZCY8HEH6B1RA9VG6W9","base":"King of the Murkmire.esp:B7F081","kind":"container","pos":[-5500.0,19250.0,14790.0],"rot":[0.0,0.0,0.6],"scale":1.0,"layer":"place","flags":[],"src":null,"seat":{"mode":"free"},"why":"the band's chest in the safe house, where a Breaker stores things (chainbreakers quest 9): King of the Murkmire's rustic chest by the east wall, at the floor's height (14771 plus its 19 below its middle)","name":"Chest","need":12,"tier":"AGENT_INVENTED"}
+{"id":"helstrom.99JPX1MXT0KB0C7GMCT6AMJDM0","base":"Skyrim.esm:0318EC","kind":"clutter","pos":[-5290.0,19590.0,14775.0],"rot":[0.0,0.0,0.0],"scale":1.0,"layer":"place","flags":[],"src":null,"seat":{"mode":"free"},"why":"the first of the two lanterns on the sill by the door that tell a Chainbreaker the house is safe (chainbreakers-newworld.md:619)","need":12,"tier":"AGENT_INVENTED"}
+{"id":"helstrom.B8VQRHXAVMEWEPH69173V322D2","base":"Skyrim.esm:0318EC","kind":"clutter","pos":[-5290.0,19785.0,14775.0],"rot":[0.0,0.0,0.0],"scale":1.0,"layer":"place","flags":[],"src":null,"seat":{"mode":"free"},"why":"the second of the two lanterns on the sill by the door that tell a Chainbreaker the house is safe (chainbreakers-newworld.md:619)","need":12,"tier":"AGENT_INVENTED"}
+{"id":"helstrom.CQ0BPXRQ828RY3ZD1W4BDEB5NK","src":"Black Marsh.esm:1E4369","removed":true}
+{"id":"helstrom.FQKCYNK227Q3E40V64VR66GSNV","src":"Black Marsh.esm:1E4363","removed":true}
+{"id":"helstrom.GKH7GMPFKRA0EWHPM4V5QZK19D","src":"Black Marsh.esm:1E4496","removed":true}
+{"id":"helstrom.M6G7T9DNF2CVA8YP6W9N8TGT4Q","edid":null,"base":"Black Marsh.esm:1DE5DF","kind":"door","pos":[-5205.2715,19687.234,14774.801],"rot":[0,0,0],"scale":1,"layer":"place","flags":["persistent"],"src":"Black Marsh.esm:1E4419","door":{"to_space":"01cellDUPLICATE002","to_ref":"helstrom.PHEG7T4ZAZ16JDM4HT9AJRSFYM","to_pos":[-320.0,1276.0,-1092.0],"to_rot":[0.0,0.0,4.7124],"flags":"0"},"seat":{"mode":"free"}}
+{"id":"helstrom.NXZCCP6FB0AAHGDECNG3S2SE44","src":"Black Marsh.esm:1E43B0","removed":true}
+{"id":"helstrom.QZYT3Z8NMTBX3J2JW3F76M31R0","src":"Black Marsh.esm:1E4345","removed":true}
+{"id":"helstrom.RQ7TQ3DR8EXD7BH6C2Y0T2H6FT","src":"Black Marsh.esm:1E4450","removed":true}
+{"id":"helstrom.WWHYRV0SRV0SAB29SGPJKK8TFJ","src":"Black Marsh.esm:1E43DE","removed":true}

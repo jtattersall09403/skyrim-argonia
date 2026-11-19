@@ -2,6 +2,7 @@
 {"id":"cite-newworld-story-quests-main-mn01-yaml","kind":"dossier","title":"newworld/story/quests/main/mn01.yaml","locator":"newworld/story/quests/main/mn01.yaml"}
 {"id":"cite-newworld-story-quests-main-mn03-yaml","kind":"dossier","title":"newworld/story/quests/main/mn03.yaml","locator":"newworld/story/quests/main/mn03.yaml"}
 {"id":"cite-newworld-story-quests-main-mn04-yaml","kind":"dossier","title":"newworld/story/quests/main/mn04.yaml","locator":"newworld/story/quests/main/mn04.yaml"}
+{"id":"cite-person-helstrom-7z7fd862r24f7sfgxb2226rmj8","kind":"dossier","title":"person:helstrom.7Z7FD862R24F7SFGXB2226RMJ8","locator":"person:helstrom.7Z7FD862R24F7SFGXB2226RMJ8"}
 {"id":"cite-person-helstrom-87wth0ew4wj6aq9ctrc7gxazts","kind":"dossier","title":"person:helstrom.87WTH0EW4WJ6AQ9CTRC7GXAZTS","locator":"person:helstrom.87WTH0EW4WJ6AQ9CTRC7GXAZTS"}
 {"id":"cite-person-helstrom-8a62j4kyj8da3f58wkmry3y79f","kind":"dossier","title":"person:helstrom.8A62J4KYJ8DA3F58WKMRY3Y79F","locator":"person:helstrom.8A62J4KYJ8DA3F58WKMRY3Y79F"}
 {"id":"cite-person-helstrom-bgdsp6p2ttv6hnacjgn6kpvvby","kind":"dossier","title":"person:helstrom.BGDSP6P2TTV6HNACJGN6KPVVBY","locator":"person:helstrom.BGDSP6P2TTV6HNACJGN6KPVVBY"}
@@ -94,9 +95,11 @@
 {"id":"cite-place-wealth-tribal-camp-m2-m68","kind":"dossier","title":"place_wealth:tribal-camp-m2-m68","locator":"place_wealth:tribal-camp-m2-m68"}
 {"id":"cite-region-murkwood","kind":"reasoning","title":"region:murkwood","locator":"region:murkwood"}
 {"id":"cite-story-design-quests-35-cast-md","kind":"dossier","title":"story/design/quests/35-cast.md","locator":"story/design/quests/35-cast.md"}
+{"id":"cite-story-design-quests-lines-chainbreakers-newworld-md","kind":"dossier","title":"story/design/quests/lines/chainbreakers-newworld.md","locator":"story/design/quests/lines/chainbreakers-newworld.md"}
 {"id":"cite-story-design-quests-lines-house-cardruhn-md","kind":"dossier","title":"story/design/quests/lines/house-cardruhn.md","locator":"story/design/quests/lines/house-cardruhn.md"}
 {"id":"cite-story-design-quests-lines-main-plot-md","kind":"dossier","title":"story/design/quests/lines/main-plot.md","locator":"story/design/quests/lines/main-plot.md"}
 {"id":"cite-story-design-quests-lines-sisei-xul-md","kind":"dossier","title":"story/design/quests/lines/sisei-xul.md","locator":"story/design/quests/lines/sisei-xul.md"}
+{"id":"cite-story-design-quests-lines-thieves-md","kind":"dossier","title":"story/design/quests/lines/thieves.md","locator":"story/design/quests/lines/thieves.md"}
 {"id":"cite-story-lore-extrapolation-argonia-4e201-state-md","kind":"dossier","title":"story/lore/extrapolation/argonia-4e201-state.md","locator":"story/lore/extrapolation/argonia-4e201-state.md"}
 {"id":"cite-story-lore-extrapolation-gap-register-md","kind":"dossier","title":"story/lore/extrapolation/gap-register.md","locator":"story/lore/extrapolation/gap-register.md"}
 {"id":"cite-story-lore-helstrom-md","kind":"dossier","title":"story/lore/helstrom.md","locator":"story/lore/helstrom.md"}

@@ -381,6 +381,9 @@ def people_stage(st: Standing, log=print) -> None:
     if rebased:
         log(f"draft people {st.place_id}: a person's base given for {', '.join(rebased)}")
     people.give_to_residents(st.files["people"], gives, who, hist, routes)
+    moved = people.stop_spots(st.files["people"], people.spots_of(st.place_id, st.place))
+    if moved:
+        log(f"draft people {st.place_id}: works at the stop's own spot: {', '.join(moved)}")
     moved = people.work_stops(st.files["people"])
     if moved:
         log(f"draft people {st.place_id}: the work hours at the work stop for {', '.join(moved)}")

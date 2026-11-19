@@ -241,3 +241,44 @@ def test_add_brings_a_room_of_another_source_behind_an_added_door_and_takes_it_o
     stages.run("add", "fx", fx / "places", fx / "bundles", log=lambda *_: None)
     assert not (fx / "places/fx/spaces/AddedHall").exists()
     assert door["id"] not in {r["id"] for r in rows(fx / "places/fx/spaces/exterior/refs.jsonl")}
+
+
+def test_an_added_room_has_a_second_way_in_by_a_pair_of_added_doors(fx):
+    """A door standing in an added room and a door outside naming it in `pair` lead into each other; the outer one
+    carries its lock and is laid a path to the street."""
+    from tools.places.draft import io
+    pj = fx / "places/fx/place.json"
+    place = json.loads(pj.read_text())
+    n = len(place["draft"].get("add") or [])
+    house = io.mint("fx", "add", str(n), "T.esm:000001")
+    inner = io.mint("fx", "add", str(n + 2), "T.esm:000005")
+    place["draft"]["add"] = (place["draft"].get("add") or []) + [
+        {"base": "T.esm:000001", "kind": "building", "pos": [40500, 1500], "why": "a hall"},
+        {"base": "T.esm:000005", "kind": "door", "pos": [40500, 1240], "on": house, "why": "its front door",
+         "room": {"copy_of": "t.fx/HallInt", "space": "AddedHall", "arrival": [40500, 1100]}},
+        {"base": "T.esm:000005", "kind": "door", "space": "AddedHall", "pos": [0, 600, 0], "rot_z": 0.0, "why": "back"},
+        {"base": "T.esm:000005", "kind": "door", "pos": [40500, 1760], "on": house, "rot_z": 3.1416, "pair": inner,
+         "arrival": [40500, 1900], "lock": {"level": "Expert", "key": None, "flags": "0"}, "why": "its back door"}]
+    pj.write_text(json.dumps(place, indent=1) + "\n")
+    stages.run("add", "fx", fx / "places", fx / "bundles", log=lambda *_: None)
+    ext = {r["id"]: r for r in rows(fx / "places/fx/spaces/exterior/refs.jsonl")}
+    back = ext[io.mint("fx", "add", str(n + 3), "T.esm:000005")]
+    inside = {r["id"]: r for r in rows(fx / "places/fx/spaces/AddedHall/refs.jsonl")}[inner]
+    assert back["door"]["to_space"] == "AddedHall" and back["door"]["to_ref"] == inner
+    assert inside["door"]["to_space"] == "exterior" and inside["door"]["to_ref"] == back["id"]
+    assert inside["door"]["to_pos"][:2] == [40500.0, 1900.0] and back["lock"]["level"] == "Expert"
+    assert any(p.get("from") == back["id"] for p in rows(fx / "places/fx/paths.jsonl"))
+    assert stages.run("add", "fx", fx / "places", fx / "bundles", log=lambda *_: None) == {}
+
+
+def test_a_stop_handler_works_at_the_stops_own_thing():
+    """The handler of a stop works at the `draft.add` row marked with that stop, work hours and all."""
+    from tools.places.draft import io, people
+    place = {"draft": {"add": [{"base": "b:pool", "pos": [0, 0], "stop": "rootworm-stop"}]}}
+    spot = io.mint("p", "add", "0", "b:pool")
+    folk = [{"id": "p.tender", "services": [{"kind": "rootworm-stop"}], "work": {"space": "exterior", "pos": [1, 2]},
+             "routine": [{"kind": "work", "at": {"space": "exterior", "pos": [1, 2]}}]}, {"id": "p.other", "services": []}]
+    assert people.spots_of("p", place) == {"rootworm-stop": spot}
+    assert people.stop_spots(folk, people.spots_of("p", place)) == ["p.tender"]
+    assert folk[0]["work"]["ref"] == spot and folk[0]["routine"][0]["at"]["ref"] == spot
+    assert people.stop_spots(folk, people.spots_of("p", place)) == []
