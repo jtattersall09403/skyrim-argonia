@@ -5,7 +5,7 @@ import { off } from './offline.js';
 import { OfflineUI } from './offline_ui.js';
 import { loadBundle, seatZ } from './bundle.js';
 import { EditLog, modelFromFiles, describe, vegKey } from './edits.js';
-import { View } from './view.js';
+import { View, drawState, onRendererEvent } from './view.js';
 import { TerrainMesh, LandTex } from './terrain_mesh.js';
 import { ObjectLayer } from './objects.js';
 import { GrassLayer } from './grass.js';
@@ -35,6 +35,7 @@ export function report(stage, extra = {}) {
 }
 addEventListener('error', (e) => report('error', { message: String(e.message || e.error || e).slice(0, 500), at: `${(e.filename || '').split('/').pop()}:${e.lineno || 0}` }));
 addEventListener('unhandledrejection', (e) => report('rejection', { message: String(e.reason?.stack || e.reason).slice(0, 700) }));
+onRendererEvent((stage, extra) => report(stage, extra));   // the graphics context taken away and given back
 const $ = (s) => document.querySelector(s);
 const store = { get(k) { try { return localStorage.getItem(k); } catch { return null; } },
   set(k, v) { try { localStorage.setItem(k, v); } catch { /* private window */ } } };
@@ -168,6 +169,7 @@ class Studio {
       v.draw(); await new Promise((r) => requestAnimationFrame(r));
     }
     this.ready = true; this.loading(false);
+    setTimeout(() => { try { report('drawn', { place: id, ...drawState() }); } catch (e) { report('error', { message: `drawState: ${e.message}` }); } }, 3000);
     this.choosing = this.panels.startChoice().finally(() => { this.choosing = null; });
     this.tools.use('select');
   }
