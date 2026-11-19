@@ -28,18 +28,27 @@ Before any draft, and again before any change to a drafted place, read the recor
 promises (`gives`), dangers, hooks and the `source` note, which says which source to take, what of it to replace
 and with what, and what is still to add.
 
-1. Write the place's plan in `draft.plan` before the first stage runs: one line per thing the record names (each
+1. Choose the source before anything else. The record's `source` note and the allocated source are a first idea
+   written with little thought, not a ruling. Weigh the allocated source and its ranked alternatives (the
+   place card's `source 0..3`, and `python3 -m tools.places sources-match` / the catalogue search for others of the
+   same kind and culture) against the record: its style and materials, its layout (water, banks, streets), its
+   buildings and their interiors, its size. Take the source that already looks most like the record, so the draft
+   is mostly kept pieces, not replacements. A place the main quest uses is always given its closest match. When no
+   source is close (most of its buildings would be replaced), build the place from the whole asset pool instead,
+   taking only what a source gives cheaply (a usable street layout, interiors with their furniture and navmesh); say
+   which in the plan and why. Record the chosen source in `place.json` and the reason in the plan.
+2. Write the place's plan in `draft.plan` before the first stage runs: one line per thing the record names (each
    building kind, the water and what stands in it, the market, the shrine, the racks and sheds, the look's
    materials) and, against it, the source pieces or the added pieces that deliver it. The `source` note's
    replacements are done, never left as the source had them (a "houses replaced with Argonian stilt huts" means
    every house shell of the source is swapped).
-2. Each major structure of the source (walls, terraces, keeps, mines, caves, harbours, temples, forts) is judged
+3. Each major structure of the source (walls, terraces, keeps, mines, caves, harbours, temples, forts) is judged
    against the record's words: kept only when the record names it or it is an ordinary part of such a place;
    otherwise dropped with its doors, rooms and pieces. `python -m tools.places draft structures <place_id>` lists
    each one kept or dropped with its reason and its source pieces; a dropped one's pieces go into `draft.drop` with
    that reason, and the `pieces` stage takes them out. A piece that stood on a dropped floor stands on our ground
    at its height over that floor. The plan lists each structure, kept or dropped, with its reason.
-3. A draft is finished only when it reads as the record's `look`: compare the renders (`draft render`) with the
+4. A draft is finished only when it reads as the record's `look`: compare the renders (`draft render`) with the
    look line by line and name any line not yet met. A check that passes on a place that does not look like its
    record is not a finished draft.
 
