@@ -54,7 +54,6 @@ def on_room_mesh(copy_of: str, room: str, pos) -> bool:
 @functools.lru_cache(maxsize=None)
 def _partition(copy_of: str) -> dict:
     from tools.places import build
-    from tools.places import build
     plugin, cell = build.resolve_copy(copy_of)
     with tempfile.TemporaryDirectory() as td:
         tmp = Path(td)
