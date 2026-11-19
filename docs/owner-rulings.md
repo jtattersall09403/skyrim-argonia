@@ -123,6 +123,10 @@ added here the day they are made, with the date and the issue.
   replacements and additions); the source place is an asset pool and layout to draw from, and any source
   structure the record does not support is dropped (the Karsh-Naal mine; Jal-Veesa's stone terrace). Jal-Veesa's
   terrace goes and its houses stay (2026-11-19, #80).
+- A source place is there to make a place easier to build: the record's "built from" note is a first idea the
+  drafter rethinks; places the main quest uses get their closest-match source; a place with no close match is
+  built from the whole asset pool, taking only what a source gives cheaply. The allocation is not redone from
+  scratch (2026-11-19, #80).
 - A quest's people and things at a place get first positions in every place draft without being asked, drafted
   as their real records and models, shown in the studio's Quests layer for the owner to move and note
   (2026-11-19, #80).
