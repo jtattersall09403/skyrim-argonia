@@ -1,8 +1,0 @@
-{
- "space_id": "CormarisFarmSilo",
- "copy_of": "journeytobaanmalur.cormarislocation/CormarisFarmSilo",
- "name": "Grain Silo",
- "door_from": "jal-veesa.KAJWSNHHGQPXHKE2NA8G72595N",
- "parent": "exterior",
- "room": null
-}

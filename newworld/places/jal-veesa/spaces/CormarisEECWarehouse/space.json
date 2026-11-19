@@ -1,8 +1,0 @@
-{
- "space_id": "CormarisEECWarehouse",
- "copy_of": "journeytobaanmalur.cormarislocation/CormarisEECWarehouse",
- "name": "Abandoned Warehouse",
- "door_from": "jal-veesa.FQJ4TYY2GZ8KHYYTJ7REQTFZBB",
- "parent": "exterior",
- "room": null
-}

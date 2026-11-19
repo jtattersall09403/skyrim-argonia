@@ -711,7 +711,7 @@ def cut(place_id: str, door_ids: list[str], rows: list[dict], pdir: Path, log=pr
                        [r for r in rows if r["id"] not in gone and not str(r.get("why", "")).startswith(carried or ("\0",))])
         old = [r for r in io.read_jsonl(pdir / "ledger.jsonl") if r.get("space") not in dropped
                and not (r.get("space") == "exterior" and r.get("src") in srcs)]
-        io.write_jsonl(pdir / "ledger.jsonl", old + ledger)
+        io.write_jsonl(pdir / "ledger.jsonl", sorted(old + ledger, key=lambda r: (r["space"], r["src"])))   # the canonical order
     return len(gone)
 
 
