@@ -116,6 +116,9 @@ added here the day they are made, with the date and the issue.
 - Magic is mostly covered by Magic Expanded; reuse it rather than build magic (2026-10-30).
 - Interiors may look Nordic where a borrowed interior is all there is (2026-10-30); exteriors are BM&V's.
 - Armour pieces stay as base Skyrim has them (2026-10-31, #21).
+- A reward is an ordinary item unless the story needs a named one: the Ashgate strongbox's ring is a plain
+  enchanted ring of about the strength and use of Fargoth's ring in Morrowind (Skyrim's Ring of Minor Health), not
+  a ring of our own (2026-11-19).
 - Climb anything big enough, Breath of the Wild style, through FreeClimb (2026-11-01).
 - Parry, riposte and backstab are what the owner called souls-like (2026-10-29); the collection is used out of
   the box first, and that ruling is revisited only if the owner misses them.

@@ -56,6 +56,8 @@ reads this first; a new ruling is added here the day it is made, as well as to o
   action (of various kinds, I don't just mean combat, use your imagination and anchor on the variety of in game
   skills) over processes and procedures and records" (OR 2026-11-12).
 - Combat is always paired with a reward in proportion to its difficulty (OR 2026-11-09, on what places give).
+- A reward is an ordinary item unless the story needs a named one: a modest enchanted ring is a vanilla one of
+  about the strength of Fargoth's ring in Morrowind, never a renamed record of ours (OR 2026-11-19).
 
 - A choice or an ending matters in play, "beyond just description and text": "what are the actual gameplay
   impacts? In terms of powers, rewards, abilities, unlocking fun stuff" (OR 2026-11-13). Each outcome says what it
