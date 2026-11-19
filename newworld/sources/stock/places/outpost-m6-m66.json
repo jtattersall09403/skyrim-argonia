@@ -39,12 +39,12 @@
    "ref": "outpost-m6-m66.AZW5NSGYVQ67YJSWRZYC14KD9G",
    "space": "exterior",
    "kind": "satchel",
-   "lock": "Novice",
-   "security": "S2",
-   "tier": "T2",
+   "lock": null,
+   "security": "S0",
+   "tier": "T1",
    "gold": 30,
    "items": [],
-   "why": "the sap-takers' pack at the reed hide (treasure: 'jars of sap and the sap-takers' packs at the reed hide'): nobody's (the Unbound are outlaws on wild ground), at the reward band's tier T2 (D2), kept behind a Novice lock (T2 is one tier above what lies open, so one step of security) and by the three sap-takers the quest places round it; its jar of sap is the quest's own thing",
+   "why": "the sap-takers' pack at the reed hide (treasure: 'jars of sap and the sap-takers' packs at the reed hide'): nobody's (the Unbound are outlaws), so it holds what lies open (T1), kept by the three sap-takers the quest places round it; its jar of sap is the quest's own thing",
    "cites": [
     "place_give:outpost-m6-m66/6",
     "newworld/story/quests/main/mn03.yaml"

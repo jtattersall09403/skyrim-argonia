@@ -225,6 +225,10 @@ class Walkable:
         h, lo, hi, plane, reach = lv
         m = (z if plane else self.cent[c, 2])
         k = np.flatnonzero((m >= lo) & (m <= hi) & (dp <= min(tol, reach)))
+        if h is not None:   # at its own level where any is within reach, as the build's check takes it
+            from tools.places.check import STOP_LEVEL
+            own = k[np.abs(m[k] - h) <= STOP_LEVEL]
+            k = own if len(own) else k
         return k, dp[k] + (np.abs(m[k] - h) * 0.01 if h is not None else 0.0)
 
     def near(self, p, tol: float = PICK_TOL) -> tuple[np.ndarray, np.ndarray, np.ndarray]:

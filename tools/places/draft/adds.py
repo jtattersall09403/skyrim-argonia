@@ -39,7 +39,7 @@ def rows(place_id: str, dec: dict, bases: dict) -> list[dict]:
     return out
 
 
-STAND = ("building", "static", "furniture", "container", "activator")
+STAND = ("building", "furniture", "container")   # what people walk into, sleep in or open; a fence or a tree stands in a creek bed
 SEEK, SEEK_STEP = 1536.0, 64.0     # how far round its spot a thing is moved to find ground to stand on, in steps
 
 

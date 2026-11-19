@@ -31,6 +31,7 @@ from tools.places.people import TRAVEL_STOP
 
 SEAT_TOL = 8.0  # units: one VHGT step
 STOP_PLAN_TOL, STOP_Z_TOL = 96.0, 128.0  # a routine stop or arrival point is on navmesh within these
+STOP_LEVEL = 48.0   # a stop stands on mesh within this of its own height when any is within reach (a step)
 DECK_TOL = 48.0  # a line's point over a deck stands on a triangle within this of the deck's own surface
 WATER = 0x200  # NVNM triangle flag: water (the triangle lies on the bed under it)
 WADE = 64.0  # water up to the waist (half the CK's 128 agent height) is waded; deeper, one swims
@@ -146,6 +147,11 @@ class Nav:
         dp = np.minimum(np.minimum(_seg_d(px, py, a, b), _seg_d(px, py, b, c)), _seg_d(px, py, c, a))
         dp = np.where(inside, 0.0, dp)
         score = np.where(dp <= plan_tol, dp + dz * 0.01, np.inf)
+        # a point stands at its own level: a scrap of mesh a step or more over it (atop a bedroll in a tent) is taken
+        # only where nothing at its level is within reach
+        level = np.isfinite(score) & (dz <= STOP_LEVEL)
+        if level.any():
+            score = np.where(level, score, np.inf)
         i = int(np.argmin(score))
         return (int(idx[i]), float(score[i])) if np.isfinite(score[i]) else (-1, float("inf"))
 

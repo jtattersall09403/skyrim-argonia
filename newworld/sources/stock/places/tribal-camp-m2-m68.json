@@ -25,20 +25,6 @@
    ]
   },
   {
-   "ref": "Skyrim.esm:067DEB",
-   "space": "DushnikhYalMine",
-   "kind": "chest",
-   "owner_faction": "tribal-camp-m2-m68.town",
-   "security": "S1",
-   "tier": "T1",
-   "gold": 5,
-   "items": [],
-   "why": "a chest in a shared space of Karsh-Naal Camp: the town's, ordinary (T1), the least gold",
-   "cites": [
-    "place_wealth:tribal-camp-m2-m68"
-   ]
-  },
-  {
    "ref": "Skyrim.esm:0976F6",
    "space": "DushnikhYalLonghouse",
    "kind": "satchel",

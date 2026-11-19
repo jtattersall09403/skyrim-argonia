@@ -300,8 +300,11 @@ def pieces(st: Standing, log=print) -> None:
             src_sp = (info.get("copy_of") or "/").split("/", 1)[1]
             why = next((drop[k] for k in drop if (st.by_src.get(k) or {}).get("door", {}) and
                         interiors.door_target(st.by_src[k]) == src_sp), "its way in is gone")
-            st.ledger = [lr for lr in st.ledger if not (lr.get("space") == src_sp or lr.get("copy") == sid)]
-            st.ledger.append({"src": "*", "space": src_sp, "status": "dropped", "why": why, "by": "draft.drop"})
+            ours = [lr for lr in st.ledger if lr.get("space") == src_sp or lr.get("copy") == sid]
+            # every source ref of the room stays accounted: dropped with it
+            st.ledger = [lr for lr in st.ledger if lr not in ours] + [
+                {"src": s, "space": src_sp, "status": "dropped", "why": why, "by": "draft.drop"}
+                for s in sorted({lr["src"] for lr in ours} | {"*"})]
             log(f"draft pieces {st.place_id}: room {sid} taken out: {why}")
     seat_all(st.ext, st.G)
 

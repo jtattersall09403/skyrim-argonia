@@ -150,7 +150,7 @@ The tools lay the network by these rules.
   bank's top. A crossing whose banks have no deck (a ford between steep banks) is not joined by this: name it in
   the hand-over and change the world's ground first (the skill `world-build`).
 - **Gangways and joins.** A door whose walkable ground is still an island is joined to the town by level walkway
-  pieces (the place's commonest walkway piece, never a flight, a building or a tent) laid from the island to the nearest point of the network at its height (never across a height the
+  pieces (the place's commonest walkway piece, never a flight, a building or a tent) laid from the island to the nearest point of the network at its height, no further than 768 units (a gangway, never a causeway) (never across a height the
   navmesh does not climb: that is a flight's work). A piece laid for a door that stands on a thing (a ship's
   hatch) rests on that thing as its gangway and names it as its `carrier`; a piece that continues a walkway stands
   `on` it. The build's overlap check lets a piece rest on what its seat names, by the same rule the drafter lays
@@ -234,7 +234,7 @@ The tools lay the network by these rules.
   is (a container), `tier` and `why`; its owner, lock and contents are a stock row (the skill `place-stock`). Choose a
   base the source or the marsh's own mods hold that reads as the thing, never a Nordic one. Then point the need's
   `rests` at it. Outside, a thing stands on ground that carries its whole footprint: the ground under it rises no
-  more than the source's builders built on (`fit.relief_norm`) and no water lies under any of it. Choose such a
+  more than the source's builders built on (`fit.relief_norm`) and no water lies under any of it (a building, a bed, a container; a fence or a tree may stand in a creek bed). Choose such a
   spot; the tools move one that is not to the nearest spot within 1536 units that is, clear of every solid, with
   what stands inside it (a tent's bed), and `draft check` fails one with no ground under part of it.
 - **What the record promises and the source lacks is added in the source's own style.** The tools add each
