@@ -6,7 +6,8 @@ stage owns and printing the rows changed per file (tools/places/draft/stages.py)
 streets (also `join`), people, lights, stations, jail, primitives, hang, sap, add, names. A whole draft places its
 things in rooms (`add`) and names its rooms (`names`), then ends with `primitives`, the join and then `jail` (the
 jail's release point is the arrival the join lays).
-`draft check <place_id>` runs the draft's self-checks; `draft render <place_id>` writes top-down PNGs."""
+`draft check <place_id>` runs the draft's self-checks; `draft structures <place_id>` lists each major source
+structure kept or dropped against the place record; `draft render <place_id>` writes top-down PNGs."""
 from __future__ import annotations
 
 import json
@@ -37,6 +38,9 @@ def main(argv: list[str]) -> int:
         return m(argv[1:])
     if argv[0] == "render":
         from tools.places.draft.render import main as m
+        return m(argv[1:])
+    if argv[0] == "structures":
+        from tools.places.draft.structures import main as m
         return m(argv[1:])
     from tools.places.draft import stages
     if argv[0] == "join" or argv[0] in stages.STAGES:

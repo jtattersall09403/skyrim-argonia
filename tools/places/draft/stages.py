@@ -131,7 +131,7 @@ class Standing:
             if s["on"] in ours:
                 s["on"] = ours[s["on"]]["id"]
             else:
-                s = seating.infer({**r, "kind": "tree"}, [], self.bases, self.S, False)
+                s = seating.floor_gone(r, self.by_src.get(s["on"]), self.bases, self.S)
         return s
 
     def write(self) -> None:

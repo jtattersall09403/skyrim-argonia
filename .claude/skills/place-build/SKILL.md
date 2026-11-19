@@ -35,7 +35,10 @@ and with what, and what is still to add.
    every house shell of the source is swapped).
 2. Each major structure of the source (walls, terraces, keeps, mines, caves, harbours, temples, forts) is judged
    against the record's words: kept only when the record names it or it is an ordinary part of such a place;
-   otherwise dropped with its doors, rooms and pieces. The plan lists each one, kept or dropped, with its reason.
+   otherwise dropped with its doors, rooms and pieces. `python -m tools.places draft structures <place_id>` lists
+   each one kept or dropped with its reason and its source pieces; a dropped one's pieces go into `draft.drop` with
+   that reason, and the `pieces` stage takes them out. A piece that stood on a dropped floor stands on our ground
+   at its height over that floor. The plan lists each structure, kept or dropped, with its reason.
 3. A draft is finished only when it reads as the record's `look`: compare the renders (`draft render`) with the
    look line by line and name any line not yet met. A check that passes on a place that does not look like its
    record is not a finished draft.

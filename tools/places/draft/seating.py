@@ -77,6 +77,50 @@ def infer(r: dict, near: list[dict], bases: dict, g: Ground | None, interior: bo
     return {**out, "mode": "above", "dz": round(z - (h if h is not None else z), 2)}
 
 
+def floor_gone(r: dict, sup: dict | None, bases: dict, g: Ground) -> dict:
+    """The seat of source ref r whose supporter `sup` the place does not carry (a terrace taken out): r stands on our
+    ground as it stood on that floor, its height over the floor's walked top kept as its height over the ground."""
+    b = bases.get((sup or {}).get("base")) or {}
+    floor = floor_under(r, sup, b, bases) if sup is not None and b else None
+    if floor is None:
+        return infer({**r, "kind": "tree"}, [], bases, g, False)
+    f = geom.foot(r, bases)
+    out = {"foot": f} if f else {}
+    return {**out, "mode": "ground", "dz": round(r["pos"][2] - floor, 2)}
+
+
+def floor_under(r: dict, sup: dict, b: dict, bases: dict) -> float | None:
+    """The height of the floor of `sup` that r stands on: the highest upward face of its collision under r's origin
+    no higher than its origin (CONTACT allowed), else its walked top; None when it has no collision there."""
+    import numpy as np
+    from tools.places.seat import _collision_tris
+    try:
+        tris = _collision_tris(str(b.get("model") or ""))
+    except Exception:
+        tris = None
+    if tris is None or not len(tris):
+        return None
+    s = float(sup.get("scale") or 1.0)
+    rz = (sup.get("rot") or [0, 0, 0])[2]
+    dx, dy = r["pos"][0] - sup["pos"][0], r["pos"][1] - sup["pos"][1]
+    c, sn = math.cos(rz), math.sin(rz)
+    lx, ly = (dx * c - dy * sn) / s, (dx * sn + dy * c) / s    # the inverse of geom's clockwise yaw
+    lim = (r["pos"][2] - sup["pos"][2]) / s + CONTACT
+    T = np.asarray(tris, float).reshape(-1, 3, 3)
+    a, e1, e2 = T[:, 0], T[:, 1] - T[:, 0], T[:, 2] - T[:, 0]
+    nrm = np.cross(e1, e2)
+    ln = np.linalg.norm(nrm, axis=1)
+    den = e1[:, 0] * e2[:, 1] - e2[:, 0] * e1[:, 1]
+    dd = np.where(den == 0, 1.0, den)
+    vx, vy = lx - a[:, 0], ly - a[:, 1]
+    u = (vx * e2[:, 1] - e2[:, 0] * vy) / dd
+    w = (e1[:, 0] * vy - vx * e1[:, 1]) / dd
+    z = a[:, 2] + u * e1[:, 2] + w * e2[:, 2]
+    ok = (ln > 0) & (np.abs(nrm[:, 2]) >= 0.7 * np.maximum(ln, 1e-9)) & (den != 0) & (u >= 0) & (w >= 0) \
+        & (u + w <= 1) & (z <= lim)
+    return float(sup["pos"][2] + s * z[ok].max()) if ok.any() else None
+
+
 def carry(rows: list[dict], was: dict[str, float]) -> int:
     """A piece laid free and carried by others (a flight or gangway the streets stage hung on a deck: its seat's
     `carrier`) moves up or down with its first carrier that moved, so a re-seated deck keeps its flight. `was`: each
